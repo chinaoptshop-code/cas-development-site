@@ -520,15 +520,17 @@ body.light .map-grat{display:none!important}
 }
 
 
-/* ── MOBILE CONTACT BAR ── */
+
+
+/* ── MOB CONTACT BAR ── */
 .mob-contacts{display:none}
 @media(max-width:767px){
-  .mob-contacts{display:flex!important;gap:8px;overflow-x:auto;padding:20px 0 6px;margin-bottom:24px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .mob-contacts{display:flex!important;gap:8px;overflow-x:auto;padding:16px 22px 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--bg2);border-bottom:1px solid var(--bd)}
   .mob-contacts::-webkit-scrollbar{display:none}
-  .mob-ct-btn{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:70px;padding:15px 8px 12px;background:var(--sf);border:1px solid rgba(191,145,72,.25);border-radius:14px;color:var(--tx);text-decoration:none;flex-shrink:0}
+  .mob-ct-btn{display:flex;flex-direction:column;align-items:center;gap:7px;min-width:68px;padding:14px 8px 12px;background:var(--sf);border:1px solid rgba(191,145,72,.22);border-radius:14px;color:var(--tx);text-decoration:none;flex-shrink:0}
   .mob-ct-btn:active{background:rgba(191,145,72,.12);border-color:var(--ac)}
-  .mob-ct-ic{color:var(--ac);display:flex;align-items:center;justify-content:center}
-  .mob-ct-lbl{font-family:var(--M);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);white-space:nowrap}
+  .mob-ct-ic{color:var(--ac);display:flex}
+  .mob-ct-lbl{font-family:var(--M);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mu);white-space:nowrap}
 }
 </style>
 </head>
@@ -578,32 +580,32 @@ body.light .map-grat{display:none!important}
   <section class="ph"><img class="sbg" src="https://drive.google.com/thumbnail?id=183DWyhu0rYayX8cgaSttNpM6KzswsNci&sz=w1400" loading="lazy" alt=""><div class="ph-inner"><div class="lbl" data-i18n="ct_label">Зв'язатися</div><h1 class="ph-title" id="ct-pg-title">Розпочнемо <em>разом</em></h1></div><span class="ph-num">05</span></section>
 
   <!-- CONTACT LAYOUT -->
-  <div class="ct-layout">
+  <div class="mob-contacts">
+      <a href="tel:+380978667755" class="mob-ct-btn">
+        <span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></span>
+        <span class="mob-ct-lbl">Дзвінок</span>
+      </a>
+      <a href="https://wa.me/380978667755" target="_blank" class="mob-ct-btn">
+        <span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.1 2 3.2 5 4.4.7.3 1.2.5 1.6.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.52 2 12 2zm0 18c-1.7 0-3.2-.5-4.5-1.3l-.3-.2-3.4.9.9-3.3-.2-.3C3.5 14.9 3 13.5 3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9z"/></svg></span>
+        <span class="mob-ct-lbl">WhatsApp</span>
+      </a>
+      <a href="viber://chat?number=%2B380978667755" class="mob-ct-btn">
+        <span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M11.4 2c-4 0-6.6 1.6-7.9 4.2-.9 1.8-1 3.8-.3 5.7l.2.5-.8 2.9 3-.8.5.3c1.5.9 3.2 1.3 4.8 1.2 2.6-.2 4.8-1.5 6-3.6.8-1.4 1-3.1.6-4.7C16.7 4.4 14 2 11.4 2zM8.6 7.1c.2 0 .4.1.6.4.3.4.9 1.3 1 1.5.1.2.1.4 0 .6-.1.2-.2.3-.4.5l-.2.2c-.3.3-.2.5 0 .8.7 1.1 1.6 1.9 2.7 2.4.3.1.5.1.7-.1l.4-.5c.2-.2.4-.2.6-.1l1.6.7c.2.1.3.3.2.5-.1.7-.8 1.4-1.5 1.5-1.4.2-2.8-.2-4-1-1.3-.9-2.4-2.1-3-3.5-.4-1-.3-1.9.1-2.6.2-.4.6-.6 1-.6l.2-.2z"/></svg></span>
+        <span class="mob-ct-lbl">Viber</span>
+      </a>
+      <a href="https://t.me/+380978667755" target="_blank" class="mob-ct-btn">
+        <span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.9 6.8l-1.7 8c-.1.5-.5.7-.9.4l-2.5-1.9-1.2 1.2c-.1.1-.3.2-.5.2l.2-2.6 4.7-4.3c.2-.2 0-.3-.3-.1l-5.8 3.7-2.5-.8c-.5-.2-.5-.5.1-.8l9.8-3.8c.5-.1.8.1.6.8z"/></svg></span>
+        <span class="mob-ct-lbl">Telegram</span>
+      </a>
+      <a href="mailto:China.shop.opt@gmail.com" class="mob-ct-btn">
+        <span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></span>
+        <span class="mob-ct-lbl">Email</span>
+      </a>
+    </div>
+    <div class="ct-layout">
     <div class="ci"><img class="ci-bg" src="https://drive.google.com/thumbnail?id=1p_MqveKjiZ1Y9Xz9koLhlP5MUjinEFPF&sz=w600" loading="lazy" alt=""><div class="ci-in">
       <h2 class="ci-t" data-i18n="ct_title">Давайте обговоримо ваш простір</h2>
-      <p class="ci-s" data-i18n="ct_sub">Розкажіть про проєкт — запропонуємо рішення під ваш стиль і бюджет. Безкоштовна консультація 30 хвилин.</p>
-      <div class="mob-contacts">
-        <a href="tel:+380978667755" class="mob-ct-btn">
-          <span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></span>
-          <span class="mob-ct-lbl">Дзвінок</span>
-        </a>
-        <a href="https://wa.me/380978667755" target="_blank" class="mob-ct-btn">
-          <span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.1 2 3.2 5 4.4.7.3 1.2.5 1.6.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.52 2 12 2zm0 18c-1.7 0-3.2-.5-4.5-1.3l-.3-.2-3.4.9.9-3.3-.2-.3C3.5 14.9 3 13.5 3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9z"/></svg></span>
-          <span class="mob-ct-lbl">WhatsApp</span>
-        </a>
-        <a href="viber://chat?number=%2B380978667755" class="mob-ct-btn">
-          <span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M11.4 2c-4 0-6.6 1.6-7.9 4.2-.9 1.8-1 3.8-.3 5.7l.2.5-.8 2.9 3-.8.5.3c1.5.9 3.2 1.3 4.8 1.2 2.6-.2 4.8-1.5 6-3.6.8-1.4 1-3.1.6-4.7C16.7 4.4 14 2 11.4 2zM8.6 7.1c.2 0 .4.1.6.4.3.4.9 1.3 1 1.5.1.2.1.4 0 .6-.1.2-.2.3-.4.5l-.2.2c-.3.3-.2.5 0 .8.7 1.1 1.6 1.9 2.7 2.4.3.1.5.1.7-.1l.4-.5c.2-.2.4-.2.6-.1l1.6.7c.2.1.3.3.2.5-.1.7-.8 1.4-1.5 1.5-1.4.2-2.8-.2-4-1-1.3-.9-2.4-2.1-3-3.5-.4-1-.3-1.9.1-2.6.2-.4.6-.6 1-.6l.2-.2z"/></svg></span>
-          <span class="mob-ct-lbl">Viber</span>
-        </a>
-        <a href="https://t.me/+380978667755" target="_blank" class="mob-ct-btn">
-          <span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.9 6.8l-1.7 8c-.1.5-.5.7-.9.4l-2.5-1.9-1.2 1.2c-.1.1-.3.2-.5.2l.2-2.6 4.7-4.3c.2-.2 0-.3-.3-.1l-5.8 3.7-2.5-.8c-.5-.2-.5-.5.1-.8l9.8-3.8c.5-.1.8.1.6.8z"/></svg></span>
-          <span class="mob-ct-lbl">Telegram</span>
-        </a>
-        <a href="mailto:China.shop.opt@gmail.com" class="mob-ct-btn">
-          <span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></span>
-          <span class="mob-ct-lbl">Email</span>
-        </a>
-      </div>
+      <p class="ci-s" data-i18n="ct_sub">Розкажіть про проєкт — запропонуємо рішення під ваш стиль і бюджет. Безкоштовна консультація 30 хвилин.</p></div>
       <div class="ci-det">
         <div><div class="dl" data-i18n="ct_city_l">Місто</div><div class="dv">Київ, Україна</div></div>
         <div><div class="dl">Email</div><div class="dv"><a href="mailto:China.shop.opt@gmail.com" style="color:inherit;text-decoration:none">China.shop.opt@gmail.com</a></div></div>
