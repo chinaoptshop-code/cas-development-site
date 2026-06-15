@@ -305,6 +305,27 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 .cr-line{display:flex;justify-content:space-between;font-family:var(--M);font-size:.78rem;color:var(--mu)}
 .cr-line strong{color:var(--tx)}
 
+/* ── FORM VALIDATION ── */
+.ferr{display:block;font-family:var(--M);font-size:.62rem;color:#e05555;margin-top:4px;min-height:16px;opacity:0;transform:translateY(-4px);transition:all .2s}
+.ferr.show{opacity:1;transform:translateY(0)}
+.fi.invalid,.ft.invalid{border-color:#e05555!important;box-shadow:0 0 0 1px rgba(224,85,85,.2)}
+.fi.valid{border-color:rgba(191,145,72,.5)!important}
+
+/* ── SUCCESS STATE ── */
+#ok{text-align:center;padding:48px 32px;display:none}
+.ok-icon{font-size:2.8rem;color:var(--ac);margin-bottom:16px;animation:okPop .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes okPop{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+.ok-title{font-family:var(--D);font-size:2rem;font-weight:300;margin-bottom:8px}
+.ok-sub{font-family:var(--M);font-size:.82rem;color:var(--mu);margin-bottom:28px;line-height:1.7}
+.ok-new{margin:0 auto}
+
+/* ── CALCULATOR RESULT UPGRADE ── */
+.cr-total-wrap{position:relative;padding:20px 0 16px;border-bottom:1px solid var(--bd);margin-bottom:20px}
+.cr-range{font-family:var(--M);font-size:.62rem;letter-spacing:.14em;color:var(--mu);margin-top:6px}
+.cr-send-btn{width:100%;padding:12px;background:linear-gradient(135deg,rgba(191,145,72,.15),rgba(191,145,72,.05));border:1px solid rgba(191,145,72,.35);color:var(--ac);font-family:var(--M);font-size:.72rem;letter-spacing:.14em;cursor:pointer;transition:all .2s;margin-top:20px;display:flex;align-items:center;justify-content:center;gap:8px}
+.cr-send-btn:hover{background:linear-gradient(135deg,rgba(191,145,72,.25),rgba(191,145,72,.1));border-color:var(--ac)}
+.cr-send-btn.sent{color:#4caf81;border-color:rgba(76,175,129,.4);pointer-events:none}
+
 /* ── CONTACTS UPDATE ── */
 .ct-messengers{display:flex;flex-direction:column;gap:14px;margin-top:16px}
 .msg-row{display:flex;align-items:center;gap:12px;font-family:var(--M);font-size:.82rem}
@@ -585,17 +606,56 @@ body.light .map-grat{display:none!important}
       </div>
     </div></div>
     <div class="cf">
-      <form onsubmit="submitForm(event)">
+      <form id="contactForm" onsubmit="submitForm(event)" novalidate>
         <div class="fr">
-          <div class="fg"><label class="fl" data-i18n="f_name">Ваше ім'я</label><input type="text" class="fi" placeholder="Олексій"></div>
-          <div class="fg"><label class="fl" data-i18n="f_phone">Телефон / Telegram</label><input type="text" class="fi" placeholder="+380 97 866 7755"></div>
+          <div class="fg">
+            <label class="fl" data-i18n="f_name">Ваше ім'я</label>
+            <input type="text" id="f-name" class="fi" placeholder="Олексій" required>
+            <span class="ferr" id="err-name"></span>
+          </div>
+          <div class="fg">
+            <label class="fl" data-i18n="f_phone">Телефон / Telegram</label>
+            <input type="tel" id="f-phone" class="fi" placeholder="+380 97 866 7755" required>
+            <span class="ferr" id="err-phone"></span>
+          </div>
         </div>
-        <div class="fg"><label class="fl" data-i18n="f_service">Послуга</label><select class="fi fsel"><option data-i18n="f_pick">Оберіть послугу</option><option>Дизайн інтер'єру</option><option>Ремонт під ключ</option><option>Меблювання</option><option>Повний цикл</option></select></div>
-        <div class="fg"><label class="fl" data-i18n="f_area">Площа об'єкту</label><input type="text" class="fi" placeholder="Наприклад: 80 м²"></div>
-        <div class="fg"><label class="fl" data-i18n="f_msg">Розкажіть про проєкт</label><textarea class="ft" placeholder="Що за об'єкт? Стиль? Терміни?"></textarea></div>
-        <button type="submit" class="btn" style="width:100%;justify-content:center;margin-top:6px"><span data-i18n="f_submit">Надіслати заявку</span><span>→</span></button>
+        <div class="fg">
+          <label class="fl" data-i18n="f_service">Послуга</label>
+          <select id="f-service" class="fi fsel" required>
+            <option value="" data-i18n="f_pick">Оберіть послугу</option>
+            <option>Дизайн інтер'єру</option>
+            <option>Ремонт під ключ</option>
+            <option>Меблювання</option>
+            <option>Будівництво</option>
+            <option>Ландшафтний дизайн</option>
+            <option>Повний цикл</option>
+          </select>
+          <span class="ferr" id="err-service"></span>
+        </div>
+        <div class="fg">
+          <label class="fl" data-i18n="f_area">Площа об'єкту</label>
+          <input type="text" id="f-area" class="fi" placeholder="Наприклад: 80 м²" required>
+          <span class="ferr" id="err-area"></span>
+        </div>
+        <div class="fg">
+          <label class="fl" data-i18n="f_msg">Розкажіть про проєкт</label>
+          <textarea id="f-msg" class="ft" placeholder="Що за об'єкт? Стиль? Терміни?" required></textarea>
+          <span class="ferr" id="err-msg"></span>
+        </div>
+        <button type="submit" class="btn" id="submitBtn" style="width:100%;justify-content:center;margin-top:6px">
+          <span id="submitLabel" data-i18n="f_submit">Надіслати заявку</span><span>→</span>
+        </button>
       </form>
-      <div id="ok">✓ Заявку отримано! Ми зв'яжемося з вами впродовж 24 годин.</div>
+
+      <!-- SUCCESS STATE -->
+      <div id="ok" style="display:none">
+        <div class="ok-icon">✓</div>
+        <div class="ok-title" data-i18n="ok_title">Заявку отримано!</div>
+        <div class="ok-sub" data-i18n="ok_sub">Ми зв'яжемося з вами впродовж 24 годин.</div>
+        <button class="btn ok-new" onclick="resetForm()">
+          <span data-i18n="ok_new">Нова заявка</span><span>→</span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -777,10 +837,18 @@ body.light .map-grat { display: none !important; }
       </div>
       <div class="calc-result-box">
         <span class="cr-label" data-i18n="calc_estimate">Орієнтовна вартість</span>
-        <div class="cr-total">$<span id="cr-num">5,500</span></div>
+        <div class="cr-total-wrap">
+          <div class="cr-total">$<span id="cr-num">5,500</span></div>
+          <div class="cr-range" id="cr-range-sub"></div>
+        </div>
         <div class="cr-sub" data-i18n="calc_sub">Точний розрахунок після консультації</div>
         <div class="cr-lines" id="cr-lines"></div>
-        <button class="btn" style="width:100%;justify-content:center;margin-top:24px" href="/contact.html"><span data-i18n="calc_cta">Отримати консультацію</span><span>→</span></button>
+        <button class="cr-send-btn" onclick="sendCalcToTelegram()">
+          📩 Надіслати результат в Telegram
+        </button>
+        <div style="font-family:var(--M);font-size:.6rem;color:var(--mu);text-align:center;margin-top:10px;line-height:1.5">
+          Або заповніть заявку нижче — менеджер зв'яжеться впродовж 24 год
+        </div>
       </div>
     </div>
   </div>
@@ -934,20 +1002,173 @@ function calcUpdate(){
   if(docs)lines+=`<div class="cr-line"><span>Documentation</span><strong>$${(docs*area).toLocaleString('uk-UA')}</strong></div>`;
   const total=bAmt-disc+extras*area;
   lines+=`<div class="cr-line" style="border-top:1px solid var(--bd);padding-top:12px;margin-top:4px"><span><b>${tLbl}</b></span><strong style="color:var(--ac);font-size:1rem">$${total.toLocaleString('uk-UA')}</strong></div>`;
-  document.getElementById('cr-num').textContent=total.toLocaleString('uk-UA');document.getElementById('cr-lines').innerHTML=lines;
+  document.getElementById('cr-num').textContent=total.toLocaleString('uk-UA');
+  const rangeEl=document.getElementById('cr-range-sub');
+  if(rangeEl)rangeEl.textContent='від $'+Math.round(total*.9).toLocaleString('uk-UA')+' до $'+Math.round(total*1.1).toLocaleString('uk-UA');document.getElementById('cr-lines').innerHTML=lines;
   const hint=document.getElementById('combo-hint');
   if(hint){if(dp===10)hint.textContent=lng.disc10||'';else if(dp===5)hint.textContent=lng.disc5||'';else hint.textContent=lng.combo_base||'';}
 }
 calcUpdate();
 /* ═══ FORM ═══ */
+/* ── PHONE VALIDATION ── */
+function validatePhone(val){
+  const clean=val.replace(/[\s\-\(\)]/g,'');
+  return /^(\+?380\d{9}|\+?38\d{10}|\+?\d{10,15})$/.test(clean);
+}
+
+function showErr(id,msg){
+  const el=document.getElementById('err-'+id);
+  const inp=document.getElementById('f-'+id)||document.querySelector('[id="f-'+id+'"]');
+  if(el){el.textContent=msg;el.classList.toggle('show',!!msg);}
+  if(inp){inp.classList.toggle('invalid',!!msg);inp.classList.toggle('valid',!msg&&inp.value.trim());}
+}
+
+function clearErr(id){showErr(id,'');}
+
+/* ── LIVE VALIDATION ── */
+function initFormListeners(){
+  const fields=['name','phone','area','msg'];
+  fields.forEach(id=>{
+    const el=document.getElementById('f-'+id);
+    if(!el)return;
+    el.addEventListener('blur',()=>validateField(id));
+    el.addEventListener('input',()=>{if(el.classList.contains('invalid'))validateField(id);});
+  });
+  const svc=document.getElementById('f-service');
+  if(svc)svc.addEventListener('change',()=>validateField('service'));
+
+  // Phone: auto-format on input
+  const phone=document.getElementById('f-phone');
+  if(phone){
+    phone.addEventListener('input',()=>{
+      let v=phone.value.replace(/[^\d+]/g,'');
+      if(v&&!v.startsWith('+'))v='+'+v;
+      if(phone.classList.contains('invalid'))validateField('phone');
+    });
+  }
+}
+
+function validateField(id){
+  const lng=I18N[curLang]||I18N.uk;
+  const el=document.getElementById('f-'+id);
+  if(!el)return true;
+  const val=el.value.trim();
+  if(id==='name'){
+    if(!val){showErr('name',lng.err_name||'Введіть ваше ім'я');return false;}
+    if(val.length<2){showErr('name',lng.err_name_short||'Мінімум 2 символи');return false;}
+  }
+  if(id==='phone'){
+    if(!val){showErr('phone',lng.err_phone||'Введіть номер телефону');return false;}
+    if(!validatePhone(val)){showErr('phone',lng.err_phone_fmt||'Невірний формат. Приклад: +380 97 866 7755');return false;}
+  }
+  if(id==='service'){
+    if(!val){showErr('service',lng.err_service||'Оберіть послугу');return false;}
+  }
+  if(id==='area'){
+    if(!val){showErr('area',lng.err_area||'Вкажіть площу об'єкту');return false;}
+  }
+  if(id==='msg'){
+    if(!val){showErr('msg',lng.err_msg||'Розкажіть про проєкт');return false;}
+    if(val.length<10){showErr('msg',lng.err_msg_short||'Мінімум 10 символів');return false;}
+  }
+  showErr(id,'');
+  return true;
+}
+
+function validateForm(){
+  const fields=['name','phone','service','area','msg'];
+  let valid=true;
+  fields.forEach(id=>{if(!validateField(id))valid=false;});
+  return valid;
+}
+
+/* ── SUBMIT ── */
 async function submitForm(e){
-  e.preventDefault();const form=e.target;const inputs=form.querySelectorAll('input[type="text"]');
-  const data={name:inputs[0]?.value||'',phone:inputs[1]?.value||'',service:form.querySelector('select')?.value||'',area:inputs[2]?.value||'',message:form.querySelector('textarea')?.value||''};
-  const btn=form.querySelector('button[type="submit"]');if(btn)btn.textContent='⏳...';
-  try{await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});}catch(err){}
+  e.preventDefault();
+  if(!validateForm())return;
+
+  const btn=document.getElementById('submitBtn');
+  const lbl=document.getElementById('submitLabel');
+  if(btn){btn.disabled=true;btn.style.opacity='.7';}
+  if(lbl)lbl.textContent='⏳ Надсилаємо...';
+
+  // Collect calc data
+  const calcTotal=document.getElementById('cr-total-val')?.textContent||'';
+  const calcLines=document.getElementById('cr-lines')?.innerText||'';
+
+  const data={
+    name:document.getElementById('f-name')?.value||'',
+    phone:document.getElementById('f-phone')?.value||'',
+    service:document.getElementById('f-service')?.value||'',
+    area:document.getElementById('f-area')?.value||'',
+    message:document.getElementById('f-msg')?.value||'',
+    calc_total:calcTotal,
+    calc_details:calcLines,
+    source:'cas-develop.com'
+  };
+
+  try{
+    await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+    });
+  }catch(err){console.log('Send error:',err);}
+
+  // Show success
+  const form=document.getElementById('contactForm');
   const okEl=document.getElementById('ok');
-  if(okEl){const msg=okEl.getAttribute('data-msg')||(I18N[curLang]?.ok_msg||'✓ Заявку отримано!');okEl.textContent=msg;okEl.style.display='block';}
-  form.style.opacity='.4';form.style.pointerEvents='none';
+  if(form)form.style.display='none';
+  if(okEl)okEl.style.display='block';
+}
+
+/* ── RESET FORM ── */
+function resetForm(){
+  const form=document.getElementById('contactForm');
+  const okEl=document.getElementById('ok');
+  if(form){
+    form.reset();
+    form.style.display='';
+    // Clear all validation states
+    form.querySelectorAll('.fi,.ft').forEach(el=>{
+      el.classList.remove('invalid','valid');
+    });
+    form.querySelectorAll('.ferr').forEach(el=>{
+      el.textContent='';el.classList.remove('show');
+    });
+    const btn=document.getElementById('submitBtn');
+    const lbl=document.getElementById('submitLabel');
+    if(btn){btn.disabled=false;btn.style.opacity='';}
+    if(lbl)lbl.textContent=I18N[curLang]?.f_submit||'Надіслати заявку';
+  }
+  if(okEl)okEl.style.display='none';
+}
+
+/* ── SEND CALC TO TELEGRAM ── */
+async function sendCalcToTelegram(){
+  const btn=document.querySelector('.cr-send-btn');
+  const total=document.getElementById('cr-total-val')?.textContent||'';
+  const lines=document.getElementById('cr-lines')?.innerText||'';
+  if(btn){btn.textContent='⏳ Надсилаємо...';btn.classList.add('sending');}
+  try{
+    await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        name:'Розрахунок калькулятора',
+        phone:'—',
+        service:'Калькулятор',
+        area:'—',
+        message:'Запит розрахунку з сайту',
+        calc_total:total,
+        calc_details:lines,
+        source:'calculator'
+      })
+    });
+    if(btn){btn.innerHTML='✓ Результат надіслано!';btn.classList.add('sent');}
+  }catch(err){
+    if(btn){btn.textContent='Надіслати результат →';btn.classList.remove('sending');}
+  }
 }
 /* ═══ NAVIGATION ═══ */
 function go(id){
@@ -976,7 +1197,7 @@ go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.h
 goProject=function(id){window.location.href='/portfolio.html#'+id;};
 filt=function(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');document.querySelectorAll('.pi').forEach(el=>{el.style.display=(cat==='all'||el.dataset.c===cat)?'':'none';});};
 
-setLang(localStorage.getItem('cas-lang')||'uk'); setTimeout(initMap,400);
+setLang(localStorage.getItem('cas-lang')||'uk');setTimeout(initMap,400);setTimeout(initFormListeners,100);
 </script>
 </body>
 </html>
