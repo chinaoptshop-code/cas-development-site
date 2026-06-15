@@ -7,41 +7,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Check
+      - name: Check tunnels and pages
         run: |
           TOKEN="${{ secrets.CLOUDFLARE_API_TOKEN }}"
           ACCOUNT="${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"
+          BASE="https://api.cloudflare.com/client/v4"
 
-          # Zone ID
-          ZONE=$(curl -sf "https://api.cloudflare.com/client/v4/zones?name=cas-develop.com" \
-            -H "Authorization: Bearer $TOKEN" | jq -r '.result[0].id')
-          echo "Zone: $ZONE"
+          {
+            echo "=== TUNNELS ==="
+            curl -sf "$BASE/accounts/$ACCOUNT/cfd_tunnel" \
+              -H "Authorization: Bearer $TOKEN" \
+              | jq -r '.result[]? | "\(.name) | \(.status) | id:\(.id)"'
 
-          echo "=DNS=" > diag.txt
-          curl -sf "https://api.cloudflare.com/client/v4/zones/$ZONE/dns_records" \
-            -H "Authorization: Bearer $TOKEN" \
-            | jq -r '.result[] | [.type, .name, .content, (.proxied|tostring)] | join(" ")' >> diag.txt
+            echo "=== PAGES DOMAINS ==="
+            curl -sf "$BASE/accounts/$ACCOUNT/pages/projects/cas-development-site/domains" \
+              -H "Authorization: Bearer $TOKEN" \
+              | jq -r '.result[]? | "\(.name) | status:\(.status) | verify:\(.verification_status)"'
 
-          echo "=WORKERS=" >> diag.txt
-          curl -sf "https://api.cloudflare.com/client/v4/zones/$ZONE/workers/routes" \
-            -H "Authorization: Bearer $TOKEN" \
-            | jq -r '.result[]? | [.pattern, .script] | join(" -> ")' >> diag.txt
+            echo "=== PAGES PROJECT ==="
+            curl -sf "$BASE/accounts/$ACCOUNT/pages/projects/cas-development-site" \
+              -H "Authorization: Bearer $TOKEN" \
+              | jq -r '"\(.result.name) | subdomain:\(.result.subdomain) | latest:\(.result.latest_deployment.url // "none")"'
 
-          echo "=ACCESS=" >> diag.txt
-          curl -sf "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT/access/apps" \
-            -H "Authorization: Bearer $TOKEN" \
-            | jq -r '.result[]? | [.name, .domain] | join(" | ")' >> diag.txt
+            echo "=== ZONES ==="
+            curl -sf "$BASE/zones" \
+              -H "Authorization: Bearer $TOKEN" \
+              | jq -r '.result[]? | "\(.name) | \(.id)"'
 
-          echo "=HTTP=" >> diag.txt
-          curl -sI https://cas-develop.com 2>&1 | head -6 >> diag.txt
-
-          cat diag.txt
+          } | tee diag.txt
 
           git config user.email "b@b" && git config user.name "b"
           git add diag.txt && git commit -m "diag" && git push
-
-      - uses: actions/setup-python@v4
-        if: failure()
-        with:
-          python-version: '3.x'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
