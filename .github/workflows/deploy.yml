@@ -8,25 +8,28 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      deployments: write
 
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: 📦 Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: 🚀 Deploy via Wrangler
+      - name: 📁 Create Pages project (if not exists)
         run: |
-          npx wrangler@latest pages deploy . \
-            --project-name=cas-development-site \
-            --branch=main \
-            --commit-dirty=true
+          curl -s -X POST \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects" \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"name":"cas-development-site","production_branch":"main"}' \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print('Project:', d.get('result',{}).get('name','already exists') if d.get('success') else d.get('errors'))"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: 🚀 Deploy with Wrangler
+        run: npx wrangler@3 pages deploy . --project-name=cas-development-site --branch=main --commit-dirty=true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: ✅ Print URL
+        run: echo "Site live at https://cas-development-site.pages.dev"
