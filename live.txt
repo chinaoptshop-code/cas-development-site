@@ -1,0 +1,14 @@
+=== cas-develop.com ===
+HTTP/2 200 
+date: Mon, 15 Jun 2026 10:57:37 GMT
+content-type: text/html; charset=utf-8
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=n%2FF9zoy3i7PZRC4YBMd57oM31TRiSgYYfzUSpEtPIBn3pI1Sj10uYClFuyD45gmUNUbbcCOpd7ISmtL%2FTpu5A7GxjVqGPeFERDBtuZtZJ2A2oWYWu9FY9d3ZUoaoOudG7mk%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+=== /services.html ===
+HTTP/2 308 
+date: Mon, 15 Jun 2026 10:57:37 GMT
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=7x2%2F4WEvUnCkYmPSRVOO3eZ50Lk6D5THsqHB5v8aI9fWox0FbPCcOEVr0%2FafUl7tZ1e2w7sIZhprCNalPELLeJqaAwPQ9VemdnrEKygct6I8GF6kuPVIqj8c11HPctZKJSE%3D"}]}
+=== /portfolio.html ===
+HTTP/2 308 
+date: Mon, 15 Jun 2026 10:57:37 GMT
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=%2BldbuNGiqXaRYO4WLUlMdRkjvnTCpMgxxLG1Ma4p6%2B8lB00V4ASiAks2m0YlR5uXT2ZKIbI4ElhM2OOuKdsyg8nP%2B95xcbG5Wyz0M3w4RH%2F989Q8snjrBAORpWEDDn%2BZTXU%3D"}]}
