@@ -1,6 +1,0 @@
-=== TUNNELS ===
-=== PAGES DOMAINS ===
-cas-develop.com | status:pending | verify:null
-=== PAGES PROJECT ===
-cas-development-site | subdomain:cas-development-site.pages.dev | latest:https://1b3211be.cas-development-site.pages.dev
-=== ZONES ===
