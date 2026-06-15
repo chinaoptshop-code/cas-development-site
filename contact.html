@@ -213,6 +213,8 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 .fsel{background:var(--bg);padding:10px 4px}
 .fsel option{background:var(--sf)}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ferr{display:block;font-family:var(--M);font-size:.6rem;color:#c0392b;min-height:14px;margin-top:3px;letter-spacing:.04em}
+.fi.err,.ft.err{border-color:#c0392b!important;box-shadow:0 0 0 1px rgba(192,57,43,.3)}
 #ok{display:none;margin-top:18px;padding:18px;border:1px solid rgba(191,145,72,.26);color:var(--ac);font-family:var(--M);font-size:.82rem;line-height:1.7}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .au{animation:fadeUp .72s ease both}
@@ -585,15 +587,44 @@ body.light .map-grat{display:none!important}
       </div>
     </div></div>
     <div class="cf">
-      <form onsubmit="submitForm(event)">
+      <form onsubmit="submitForm(event)" id="cForm">
         <div class="fr">
-          <div class="fg"><label class="fl" data-i18n="f_name">Ваше ім'я</label><input type="text" class="fi" placeholder="Олексій"></div>
-          <div class="fg"><label class="fl" data-i18n="f_phone">Телефон / Telegram</label><input type="text" class="fi" placeholder="+380 97 866 7755"></div>
+          <div class="fg">
+            <label class="fl" data-i18n="f_name">Ваше ім'я</label>
+            <input type="text" id="fName" class="fi" placeholder="Олексій">
+            <span class="ferr" id="errName"></span>
+          </div>
+          <div class="fg">
+            <label class="fl" data-i18n="f_phone">Телефон</label>
+            <input type="tel" id="fPhone" class="fi" placeholder="+380971234567">
+            <span class="ferr" id="errPhone"></span>
+          </div>
         </div>
-        <div class="fg"><label class="fl" data-i18n="f_service">Послуга</label><select class="fi fsel"><option data-i18n="f_pick">Оберіть послугу</option><option>Дизайн інтер'єру</option><option>Ремонт під ключ</option><option>Меблювання</option><option>Повний цикл</option></select></div>
-        <div class="fg"><label class="fl" data-i18n="f_area">Площа об'єкту</label><input type="text" class="fi" placeholder="Наприклад: 80 м²"></div>
-        <div class="fg"><label class="fl" data-i18n="f_msg">Розкажіть про проєкт</label><textarea class="ft" placeholder="Що за об'єкт? Стиль? Терміни?"></textarea></div>
-        <button type="submit" class="btn" style="width:100%;justify-content:center;margin-top:6px"><span data-i18n="f_submit">Надіслати заявку</span><span>→</span></button>
+        <div class="fg">
+          <label class="fl" data-i18n="f_service">Послуга</label>
+          <select id="fService" class="fi fsel">
+            <option value="" data-i18n="f_pick">Оберіть послугу</option>
+            <option>Дизайн інтер'єру</option>
+            <option>Ремонт під ключ</option>
+            <option>Меблювання</option>
+            <option>Будівництво</option>
+            <option>Повний цикл</option>
+          </select>
+          <span class="ferr" id="errService"></span>
+        </div>
+        <div class="fg">
+          <label class="fl" data-i18n="f_area">Площа об'єкту (м²)</label>
+          <input type="text" id="fArea" class="fi" placeholder="80" inputmode="numeric">
+          <span class="ferr" id="errArea"></span>
+        </div>
+        <div class="fg">
+          <label class="fl" data-i18n="f_msg">Розкажіть про проєкт</label>
+          <textarea id="fMsg" class="ft" placeholder="Що за об'єкт? Стиль? Терміни?"></textarea>
+          <span class="ferr" id="errMsg"></span>
+        </div>
+        <button type="submit" class="btn" id="fBtn" style="width:100%;justify-content:center;margin-top:6px">
+          <span data-i18n="f_submit">Надіслати заявку</span><span>→</span>
+        </button>
       </form>
       <div id="ok">✓ Заявку отримано! Ми зв'яжемося з вами впродовж 24 годин.</div>
     </div>
@@ -813,14 +844,72 @@ function calcUpdate(){
 }
 calcUpdate();
 /* ═══ FORM ═══ */
+/* ── FORM HELPERS ── */
+function ferr(id,msg){
+  const el=document.getElementById('err'+id);
+  const inp=document.getElementById('f'+id);
+  if(el)el.textContent=msg;
+  if(inp){inp.classList.toggle('err',!!msg);}
+  return !msg;
+}
+function clearErr(id){ferr(id,'');}
+function phoneUA(v){
+  const d=v.replace(/[\s\-\(\)]/g,'');
+  return /^\+380\d{9}$/.test(d)||/^0\d{9}$/.test(d);
+}
+
 async function submitForm(e){
-  e.preventDefault();const form=e.target;const inputs=form.querySelectorAll('input[type="text"]');
-  const data={name:inputs[0]?.value||'',phone:inputs[1]?.value||'',service:form.querySelector('select')?.value||'',area:inputs[2]?.value||'',message:form.querySelector('textarea')?.value||''};
-  const btn=form.querySelector('button[type="submit"]');if(btn)btn.textContent='⏳...';
-  try{await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});}catch(err){}
+  e.preventDefault();
+  const name=(document.getElementById('fName')?.value||'').trim();
+  const phone=(document.getElementById('fPhone')?.value||'').trim();
+  const service=document.getElementById('fService')?.value||'';
+  const area=(document.getElementById('fArea')?.value||'').trim();
+  const msg=(document.getElementById('fMsg')?.value||'').trim();
+
+  // ── Валідація ──
+  let ok=true;
+  if(name.length<3){ferr('Name','Мінімум 3 символи');ok=false;}else{clearErr('Name');}
+  if(!phoneUA(phone)){ferr('Phone','Формат: +380971234567 або 0971234567');ok=false;}else{clearErr('Phone');}
+  if(!service){ferr('Service','Оберіть послугу');ok=false;}else{clearErr('Service');}
+  if(!/^\d+$/.test(area)){ferr('Area','Тільки цифри, наприклад: 80');ok=false;}else{clearErr('Area');}
+  if(msg.length<10){ferr('Msg','Мінімум 10 символів');ok=false;}else{clearErr('Msg');}
+  if(!ok)return;
+
+  // ── Відправка ──
+  const btn=document.getElementById('fBtn');
+  if(btn){btn.disabled=true;btn.innerHTML='<span>⏳ Надсилаємо...</span>';}
+  const data={name,phone,service,area,message:msg,source:'cas-develop.com'};
+  try{
+    await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{
+      method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
+    });
+  }catch(err){}
+
+  // ── Успіх ──
+  const form=document.getElementById('cForm');
   const okEl=document.getElementById('ok');
-  if(okEl){const msg=okEl.getAttribute('data-msg')||(I18N[curLang]?.ok_msg||'✓ Заявку отримано!');okEl.textContent=msg;okEl.style.display='block';}
-  form.style.opacity='.4';form.style.pointerEvents='none';
+  if(form)form.style.display='none';
+  if(okEl){
+    okEl.innerHTML='<div style="font-size:2rem;color:var(--ac);margin-bottom:12px">✓</div>'
+      +'<div style="font-family:var(--D);font-size:1.8rem;font-weight:300;margin-bottom:8px">Заявку отримано!</div>'
+      +'<div style="font-family:var(--M);font-size:.82rem;color:var(--mu);margin-bottom:24px;line-height:1.7">Зв'яжемося впродовж 24 годин.</div>'
+      +'<button onclick="resetCForm()" style="background:none;border:1px solid var(--ac);color:var(--ac);padding:10px 28px;cursor:pointer;font-family:var(--M);font-size:.72rem;letter-spacing:.1em">Нова заявка →</button>';
+    okEl.style.cssText='display:block;padding:48px 32px;text-align:center';
+  }
+}
+
+function resetCForm(){
+  const form=document.getElementById('cForm');
+  const okEl=document.getElementById('ok');
+  if(form){
+    form.reset();form.style.display='';
+    form.querySelectorAll('.fi,.ft').forEach(el=>el.classList.remove('err'));
+    form.querySelectorAll('.ferr').forEach(el=>el.textContent='');
+    const btn=document.getElementById('fBtn');
+    if(btn){btn.disabled=false;btn.innerHTML='<span data-i18n="f_submit">Надіслати заявку</span><span>→</span>';}
+    setLang(curLang);
+  }
+  if(okEl){okEl.style.cssText='display:none';}
 }
 /* ═══ NAVIGATION ═══ */
 function go(id){
