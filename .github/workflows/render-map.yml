@@ -1,0 +1,51 @@
+name: Render Map SVG
+on: [workflow_dispatch]
+permissions:
+  contents: write
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Render world map to SVG paths
+        run: |
+          npm install d3 d3-geo topojson-client node-fetch --save-dev 2>/dev/null
+          node << 'JS'
+          const fs = require('fs');
+
+          async function main() {
+            const fetch = (await import('node-fetch')).default;
+            const d3 = await import('d3');
+            const topojson = await import('topojson-client');
+            
+            const W = 900, H = 460;
+            const proj = d3.geoNaturalEarth1().scale(166).translate([W/2, H/2+22]);
+            const path = d3.geoPath().projection(proj);
+            
+            const res = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+            const world = await res.json();
+            
+            const land = topojson.feature(world, world.objects.land);
+            const countries = topojson.feature(world, world.objects.countries);
+            const borders = topojson.mesh(world, world.objects.countries, (a,b) => a !== b);
+            
+            const landPath = path(land);
+            const bordersPath = path(borders);
+            const gratPath = path(d3.geoGraticule()());
+            
+            const result = JSON.stringify({ land: landPath, borders: bordersPath, grat: gratPath });
+            fs.writeFileSync('map-paths.json', result);
+            console.log('Map paths saved, land length:', landPath.length);
+          }
+          main().catch(console.error);
+          JS
+
+      - name: Commit map paths
+        run: |
+          git config user.email "b@b" && git config user.name "b"
+          git add map-paths.json
+          git commit -m "Add pre-rendered map SVG paths"
+          git push
