@@ -762,16 +762,12 @@ body.light .map-grat { display: none !important; }
         <div class="calc-group">
           <label data-i18n="calc_extra">Додаткові опції</label>
           <div class="calc-chk-row">
-            <label class="calc-chk"><input type="checkbox" id="ch-smart" onchange="calcUpdate()"> <span data-i18n="ch_smart">Розумний будинок (+$120/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-climate" onchange="calcUpdate()"> <span data-i18n="ch_climate">Клімат-контроль (+$65/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-3d" onchange="calcUpdate()"> <span data-i18n="ch_3d">3D-рендер (+$25/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-sup" onchange="calcUpdate()"> <span data-i18n="ch_sup">Авторський нагляд (+$20/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-smart" onchange="calcUpdate()"> <span data-i18n="ch_smart">Розумний будинок (+$50/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-climate" onchange="calcUpdate()"> <span data-i18n="ch_climate">Клімат-контроль (+$60/м²)</span></label>
+                        <label class="calc-chk"><input type="checkbox" id="ch-sup" onchange="calcUpdate()"> <span data-i18n="ch_sup">Авторський нагляд (+$15/м²)</span></label>
             <label class="calc-chk"><input type="checkbox" id="ch-china" onchange="calcUpdate()"> <span data-i18n="ch_china">China Opt Shop (−15% на меблі)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-facade" onchange="calcUpdate()"> <span data-i18n="ch_facade">Фасадне оздоблення (+$120/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-sound" onchange="calcUpdate()"> <span data-i18n="ch_sound">Шумоізоляція (+$45/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-cctv" onchange="calcUpdate()"> <span data-i18n="ch_cctv">Відеоспостереження (+$15/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-sec" onchange="calcUpdate()"> <span data-i18n="ch_sec">Охоронна система (+$18/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-docs" onchange="calcUpdate()"> <span data-i18n="ch_docs">Документація та дозволи (+$12/м²)</span></label>
+                        <label class="calc-chk"><input type="checkbox" id="ch-sound" onchange="calcUpdate()"> <span data-i18n="ch_sound">Шумоізоляція (+$25/м²)</span></label>
+                                    <label class="calc-chk"><input type="checkbox" id="ch-docs" onchange="calcUpdate()"> <span data-i18n="ch_docs">Документація та дозволи (+$12/м²)</span></label>
           </div>
         </div>
       </div>
@@ -911,8 +907,8 @@ function sliderMove(sl){const v=+sl.value,pct=(v-30)/(500-30)*100;document.getEl
 function calcUpdate(){
   const area=+document.getElementById('areaSlider').value;const tier=document.getElementById('tierSelect').value;
   const chk=id=>document.getElementById(id)?.checked;
-  const smart=chk('ch-smart')?120:0,clim=chk('ch-climate')?65:0,r3d=chk('ch-3d')?25:0,sup=chk('ch-sup')?20:0,china=chk('ch-china');
-  const facade=chk('ch-facade')?120:0,sound=chk('ch-sound')?45:0,cctv=chk('ch-cctv')?15:0,sec=chk('ch-sec')?18:0,docs=chk('ch-docs')?12:0;
+  const smart=chk('ch-smart')?50:0,clim=chk('ch-climate')?60:0,r3d=0,sup=chk('ch-sup')?15:0,china=chk('ch-china');
+  const facade=0,sound=chk('ch-sound')?25:0,cctv=0,sec=0,docs=chk('ch-docs')?12:0;
   const extras=smart+clim+r3d+sup+facade+sound+cctv+sec+docs;
   const numS=['d','r','f','c','l'].filter(k=>svcSel[k]).length;const dp=numS>=3?10:numS===2?5:0;
   const lng=I18N[curLang]||I18N.uk;const dLbl=lng.discount_lbl||'Знижка';const tLbl=lng.total_lbl||'Разом';
