@@ -608,6 +608,7 @@ body.light .map-grat{display:none!important}
     .lnd{fill:rgba(191,145,72,.11);stroke:rgba(191,145,72,.3);stroke-width:.4}
     body.light .lnd{fill:rgba(154,110,40,.1);stroke:rgba(154,110,40,.22)}
     @keyframes mpd{0%,100%{opacity:.2}50%{opacity:.07}}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
   
 /* ════ HAMBURGER & MOBILE SIDEBAR ════ */
 .hbg-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;margin-left:10px;flex-shrink:0;z-index:100}
@@ -941,13 +942,84 @@ function calcUpdate(){
 calcUpdate();
 /* ═══ FORM ═══ */
 async function submitForm(e){
-  e.preventDefault();const form=e.target;const inputs=form.querySelectorAll('input[type="text"]');
-  const data={name:inputs[0]?.value||'',phone:inputs[1]?.value||'',service:form.querySelector('select')?.value||'',area:inputs[2]?.value||'',message:form.querySelector('textarea')?.value||''};
-  const btn=form.querySelector('button[type="submit"]');if(btn)btn.textContent='⏳...';
-  try{await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});}catch(err){}
+  e.preventDefault();
+  const form=e.target;
+  const inputs=form.querySelectorAll('input[type="text"]');
+  const name=(inputs[0]?.value||'').trim();
+  const phone=(inputs[1]?.value||'').trim();
+  const service=form.querySelector('select')?.value||'';
+  const area=(inputs[2]?.value||'').trim();
+  const message=(form.querySelector('textarea')?.value||'').trim();
+
+  // ── Валідація всіх полів ──
+  if(!name||name.length<2){
+    inputs[0]?.focus();
+    inputs[0]?.style&&(inputs[0].style.borderColor='#e05555');
+    alert('⚠️ Введіть ваше ім'я (мінімум 2 символи)');return;
+  }
+  if(!phone){
+    inputs[1]?.focus();
+    inputs[1]?.style&&(inputs[1].style.borderColor='#e05555');
+    alert('⚠️ Введіть номер телефону');return;
+  }
+  const phoneClean=phone.replace(/[\s\-\(\)]/g,'');
+  if(!/^\+?\d{10,15}$/.test(phoneClean)){
+    inputs[1]?.focus();
+    inputs[1]?.style&&(inputs[1].style.borderColor='#e05555');
+    alert('⚠️ Невірний формат телефону\nПриклад: +380 97 866 7755');return;
+  }
+  const firstOpt=form.querySelector('select option')?.value||'';
+  if(!service||service===firstOpt){
+    form.querySelector('select')?.focus();
+    alert('⚠️ Оберіть послугу зі списку');return;
+  }
+  if(!area){
+    inputs[2]?.focus();
+    inputs[2]?.style&&(inputs[2].style.borderColor='#e05555');
+    alert('⚠️ Вкажіть площу об'єкту');return;
+  }
+  if(!message||message.length<5){
+    form.querySelector('textarea')?.focus();
+    form.querySelector('textarea')?.style&&(form.querySelector('textarea').style.borderColor='#e05555');
+    alert('⚠️ Розкажіть про проєкт (мінімум 5 символів)');return;
+  }
+
+  // ── Відправка ──
+  const btn=form.querySelector('button[type="submit"]');
+  if(btn){btn.disabled=true;btn.innerHTML='<span>⏳ Надсилаємо...</span>';}
+
+  const data={name,phone,service,area,message,source:'cas-develop.com'};
+  try{
+    await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{
+      method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
+    });
+  }catch(err){console.log('Error:',err);}
+
+  // ── Ховаємо форму, показуємо успіх ──
   const okEl=document.getElementById('ok');
-  if(okEl){const msg=okEl.getAttribute('data-msg')||(I18N[curLang]?.ok_msg||'✓ Заявку отримано!');okEl.textContent=msg;okEl.style.display='block';}
-  form.style.opacity='.4';form.style.pointerEvents='none';
+  if(okEl){
+    okEl.innerHTML='<div style="font-size:2.4rem;color:var(--ac);margin-bottom:14px">✓</div>'
+      +'<div style="font-family:var(--D);font-size:1.9rem;font-weight:300;margin-bottom:8px">Заявку отримано!</div>'
+      +'<div style="font-family:var(--M);font-size:.82rem;color:var(--mu);margin-bottom:28px;line-height:1.7">Ми зв'яжемося з вами впродовж 24 годин.</div>'
+      +'<button onclick="resetContactForm()" style="background:none;border:1px solid var(--ac);color:var(--ac);padding:10px 28px;cursor:pointer;font-family:var(--M);font-size:.72rem;letter-spacing:.12em;transition:all .2s">Нова заявка →</button>';
+    okEl.style.cssText='display:block;padding:48px 32px;text-align:center;animation:fadeIn .4s ease';
+  }
+  form.style.display='none';
+}
+
+function resetContactForm(){
+  const form=document.querySelector('form[onsubmit="submitForm(event)"]');
+  const okEl=document.getElementById('ok');
+  if(form){
+    form.reset();
+    form.style.display='';
+    // Reset border colors
+    form.querySelectorAll('input,textarea,select').forEach(el=>el.style&&(el.style.borderColor=''));
+    const btn=form.querySelector('button[type="submit"]');
+    if(btn){btn.disabled=false;btn.innerHTML='<span data-i18n="f_submit">Надіслати заявку</span><span>→</span>';}
+    setLang(curLang); // re-apply i18n
+  }
+  if(okEl){okEl.style.cssText='display:none';}
 }
 /* ═══ NAVIGATION ═══ */
 function go(id){
