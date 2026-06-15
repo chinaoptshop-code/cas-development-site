@@ -1,0 +1,100 @@
+name: Diagnose
+on: [workflow_dispatch]
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Diagnose cas-develop.com
+        run: |
+          CF_TOKEN="$CLOUDFLARE_API_TOKEN"
+          ACCOUNT="$CLOUDFLARE_ACCOUNT_ID"
+          BASE="https://api.cloudflare.com/client/v4"
+
+          # Get zone ID for cas-develop.com
+          ZONE=$(curl -s "$BASE/zones?name=cas-develop.com" \
+            -H "Authorization: Bearer $CF_TOKEN" \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); z=d['result'][0] if d['result'] else {}; print(z.get('id','NOT_FOUND'), z.get('name',''))")
+          ZONE_ID=$(echo $ZONE | cut -d' ' -f1)
+          echo "Zone: $ZONE"
+
+          # Check DNS records
+          echo "=== DNS Records ==="
+          curl -s "$BASE/zones/$ZONE_ID/dns_records?per_page=20" \
+            -H "Authorization: Bearer $CF_TOKEN" \
+            | python3 -c "
+          import sys,json
+          for r in json.load(sys.stdin).get('result',[]):
+              print(r['type'], r['name'], '->', r['content'], '| proxy:', r.get('proxied'))
+          " 
+
+          # Check Page Rules
+          echo "=== Page Rules ==="
+          curl -s "$BASE/zones/$ZONE_ID/pagerules" \
+            -H "Authorization: Bearer $CF_TOKEN" \
+            | python3 -c "
+          import sys,json
+          for r in json.load(sys.stdin).get('result',[]):
+              print(r.get('targets'), r.get('actions'))
+          "
+
+          # Check Workers routes
+          echo "=== Workers Routes ==="
+          curl -s "$BASE/zones/$ZONE_ID/workers/routes" \
+            -H "Authorization: Bearer $CF_TOKEN" \
+            | python3 -c "
+          import sys,json
+          for r in json.load(sys.stdin).get('result',[]):
+              print(r.get('pattern'), '->', r.get('script'))
+          "
+
+          # Check Access apps
+          echo "=== Access Apps ==="
+          curl -s "$BASE/accounts/$ACCOUNT/access/apps" \
+            -H "Authorization: Bearer $CF_TOKEN" \
+            | python3 -c "
+          import sys,json
+          for r in json.load(sys.stdin).get('result',[]):
+              print(r.get('name'), r.get('domain'))
+          "
+
+          # HTTP response headers
+          echo "=== HTTP Headers ==="
+          curl -sI https://cas-develop.com/ | head -15
+
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        continue-on-error: true
+
+      - name: Save result
+        run: |
+          # Re-run and save to file
+          CF_TOKEN="$CLOUDFLARE_API_TOKEN"
+          ACCOUNT="$CLOUDFLARE_ACCOUNT_ID"
+          BASE="https://api.cloudflare.com/client/v4"
+          ZONE_ID=$(curl -s "$BASE/zones?name=cas-develop.com" \
+            -H "Authorization: Bearer $CF_TOKEN" \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['result'][0]['id'] if d['result'] else '')")
+
+          {
+            echo "=DNS=";
+            curl -s "$BASE/zones/$ZONE_ID/dns_records" -H "Authorization: Bearer $CF_TOKEN" \
+              | python3 -c "import sys,json; [print(r['type'],r['name'],r['content'],r.get('proxied')) for r in json.load(sys.stdin).get('result',[])]"
+            echo "=WORKERS=";
+            curl -s "$BASE/zones/$ZONE_ID/workers/routes" -H "Authorization: Bearer $CF_TOKEN" \
+              | python3 -c "import sys,json; [print(r.get('pattern'),r.get('script')) for r in json.load(sys.stdin).get('result',[])]"
+            echo "=ACCESS=";
+            curl -s "$BASE/accounts/$ACCOUNT/access/apps" -H "Authorization: Bearer $CF_TOKEN" \
+              | python3 -c "import sys,json; [print(r.get('name'),r.get('domain')) for r in json.load(sys.stdin).get('result',[])]"
+            echo "=HTTP=";
+            curl -sI https://cas-develop.com/ 2>&1 | grep -E "HTTP|cf-|server:|location:" | head -5
+          } > diag.txt
+          cat diag.txt
+          git config user.email "b@b" && git config user.name "b"
+          git add diag.txt && git commit -m "diag" && git push || true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
