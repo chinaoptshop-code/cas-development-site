@@ -20,6 +20,7 @@
 html{font-size:16px}
 body{background:var(--bg);color:var(--tx);font-family:var(--M);overflow-x:hidden;cursor:none}
 input,textarea,select,button{cursor:none}
+@media(hover:none),(-moz-touch-enabled:1),(pointer:coarse){#cr,#crf{display:none!important}body{cursor:auto!important}input,textarea,select,button{cursor:auto!important}}
 input,textarea,select,button{cursor:none}
 #cr,#crf{position:fixed;pointer-events:none;z-index:99999;border-radius:50%;left:-200px;top:-200px}
 #cr{width:6px;height:6px;background:var(--ac);transform:translate(-50%,-50%)}
@@ -317,7 +318,6 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 
 /* ── CONTACTS UPDATE ── */
 .ct-messengers{display:flex;flex-direction:column;gap:14px;margin-top:16px}
-.mob-contacts{display:none}
 .msg-icon-link:hover{background:rgba(191,145,72,.12);border-color:var(--ac)}
 .msg-row{display:flex;align-items:center;gap:12px;font-family:var(--M);font-size:.82rem}
 .msg-icon{width:28px;height:28px;border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
@@ -414,7 +414,7 @@ body.light .map-grat{display:none!important}
 /* ════════════════════════════════════════
    DESKTOP: always show nav links, hide sidebar
 ════════════════════════════════════════ */
-@media (min-width:768px){
+@media (min-width:768px){.mob-contacts{display:none}
   .nsb,.nsb-ov,.hbg-btn{display:none!important}
   nav .nav-links{display:flex!important}
   nav .lang-sw{display:flex!important}
