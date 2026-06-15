@@ -3,14 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Контакти — CAS Development</title>
-<meta name="description" content="Безкоштовна консультація 30 хвилин. WhatsApp, Telegram, Viber.">
-<meta property="og:title" content="Контакти — CAS Development">
-<meta property="og:description" content="Безкоштовна консультація 30 хвилин. WhatsApp, Telegram, Viber.">
-<meta property="og:image" content="https://drive.google.com/thumbnail?id=1lW6SF-extZy1oSlShUl-F_z9yx-mgvin&sz=w1200">
-<link rel="canonical" href="https://cas-development.com.ua/contact.html">
+<title>Контакти та Консультація | CAS Development</title>
+<meta name="description" content="Безкоштовна 30-хвилинна консультація. WhatsApp, Telegram, Viber. Розрахуйте вартість проєкту онлайн.">
+<link rel="canonical" href="https://cas-develop.com/contact.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 
@@ -31,8 +27,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--ac);transition:width .3s}
 .nav-links a:hover,.nav-links a.on{color:var(--tx)}
 .nav-links a:hover::after,.nav-links a.on::after{width:100%}
-.page{}
-
+.page{display:none;animation:pgIn .45s ease forwards}
+.page.active{display:block}
 @keyframes pgIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .lbl{font-family:var(--M);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ac);display:flex;align-items:center;gap:12px;margin-bottom:18px}
 .lbl::before{content:'';display:inline-block;width:24px;height:1px;background:var(--ac)}
@@ -558,7 +554,7 @@ body.light .map-grat{display:none!important}
 
 <!-- HOME -->
 <main>
-<div id="p-contact">
+<div class="page" id="p-contact">
   <section class="ph"><img class="sbg" src="https://drive.google.com/thumbnail?id=183DWyhu0rYayX8cgaSttNpM6KzswsNci&sz=w1400" loading="lazy" alt=""><div class="ph-inner"><div class="lbl" data-i18n="ct_label">Зв'язатися</div><h1 class="ph-title" id="ct-pg-title">Розпочнемо <em>разом</em></h1></div><span class="ph-num">05</span></section>
 
   <!-- CONTACT LAYOUT -->
@@ -780,7 +776,7 @@ body.light .map-grat { display: none !important; }
         <div class="cr-total">$<span id="cr-num">5,500</span></div>
         <div class="cr-sub" data-i18n="calc_sub">Точний розрахунок після консультації</div>
         <div class="cr-lines" id="cr-lines"></div>
-        <button class="btn" style="width:100%;justify-content:center;margin-top:24px" href="/contact.html"><span data-i18n="calc_cta">Отримати консультацію</span><span>→</span></button>
+        <button class="btn" style="width:100%;justify-content:center;margin-top:24px" onclick="go('contact')"><span data-i18n="calc_cta">Отримати консультацію</span><span>→</span></button>
       </div>
     </div>
   </div>
@@ -947,55 +943,33 @@ async function submitForm(e){
   const name=(inputs[0]?.value||'').trim();
   const phone=(inputs[1]?.value||'').trim();
   const service=form.querySelector('select')?.value||'';
+  const firstOpt=form.querySelector('select option')?.value||'';
   const area=(inputs[2]?.value||'').trim();
-  const message=(form.querySelector('textarea')?.value||'').trim();
-
+  const msg2=(form.querySelector('textarea')?.value||'').trim();
   // Валідація
-  if(!name||name.length<2){inputs[0]?.focus();inputs[0]&&(inputs[0].style.outline='1px solid #e05555');alert('⚠️ Введіть ваше імʼя (мінімум 2 символи)');return;}
-  if(!phone){inputs[1]?.focus();inputs[1]&&(inputs[1].style.outline='1px solid #e05555');alert('⚠️ Введіть номер телефону');return;}
-  if(!/^\+?[\d\s\-\(\)]{10,}$/.test(phone)){inputs[1]?.focus();inputs[1]&&(inputs[1].style.outline='1px solid #e05555');alert('⚠️ Невірний формат телефону
-Приклад: +380 97 866 7755');return;}
-  if(!service||service===form.querySelector('select option')?.value){form.querySelector('select')?.focus();alert('⚠️ Оберіть послугу зі списку');return;}
-  if(!area){inputs[2]?.focus();inputs[2]&&(inputs[2].style.outline='1px solid #e05555');alert('⚠️ Вкажіть площу обʼєкту');return;}
-  if(!message||message.length<5){form.querySelector('textarea')?.focus();alert('⚠️ Розкажіть про проєкт (мінімум 5 символів)');return;}
-
-  // Reset outlines
-  form.querySelectorAll('input,textarea,select').forEach(el=>el.style&&(el.style.outline=''));
-
+  if(!name||name.length<2){alert('\u26A0\uFE0F \u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0432\u0430\u0448\u0435 \u0456\u043c\u2019\u044f');inputs[0]?.focus();return;}
+  if(!phone){alert('\u26A0\uFE0F \u0412\u0432\u0435\u0434\u0456\u0442\u044c \u043d\u043e\u043c\u0435\u0440 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0443');inputs[1]?.focus();return;}
+  if(!/^[+]?[\d\s\-()]{10,}$/.test(phone)){alert('\u26A0\uFE0F \u041d\u0435\u0432\u0456\u0440\u043d\u0438\u0439 \u0444\u043e\u0440\u043c\u0430\u0442. \u041f\u0440\u0438\u043a\u043b\u0430\u0434: +380 97 866 7755');inputs[1]?.focus();return;}
+  if(!service||service===firstOpt){alert('\u26A0\uFE0F \u041e\u0431\u0435\u0440\u0456\u0442\u044c \u043f\u043e\u0441\u043b\u0443\u0433\u0443');form.querySelector('select')?.focus();return;}
+  if(!area){alert('\u26A0\uFE0F \u0412\u043a\u0430\u0436\u0456\u0442\u044c \u043f\u043b\u043e\u0449\u0443');inputs[2]?.focus();return;}
+  if(!msg2||msg2.length<5){alert('\u26A0\uFE0F \u0420\u043e\u0437\u043a\u0430\u0436\u0456\u0442\u044c \u043f\u0440\u043e \u043f\u0440\u043e\u0454\u043a\u0442');form.querySelector('textarea')?.focus();return;}
+  // Відправка
   const btn=form.querySelector('button[type="submit"]');
-  if(btn){btn.disabled=true;btn.innerHTML='<span>⏳ Надсилаємо...</span>';}
-
-  const data={name,phone,service,area,message,source:'cas-develop.com'};
-  try{
-    await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{
-      method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
-    });
-  }catch(err){console.log('send error',err);}
-
-  // Ховаємо форму, показуємо успіх
+  if(btn){btn.disabled=true;btn.innerHTML='<span>\u23F3 \u041d\u0430\u0434\u0441\u0438\u043b\u0430\u0454\u043c\u043e...</span>';}
+  const data={name,phone,service,area,message:msg2,source:'cas-develop.com'};
+  try{await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});}catch(err){}
+  // Успіх
   const okEl=document.getElementById('ok');
   if(okEl){
-    okEl.innerHTML='<div style="font-size:2.4rem;color:var(--ac);margin-bottom:14px">✓</div>'
-      +'<div style="font-family:var(--D);font-size:1.9rem;font-weight:300;margin-bottom:8px">Заявку отримано!</div>'
-      +'<div style="font-family:var(--M);font-size:.82rem;color:var(--mu);margin-bottom:28px;line-height:1.7">Ми звʼяжемося з вами впродовж 24 годин.</div>'
-      +'<button onclick="resetContactForm()" style="background:none;border:1px solid var(--ac);color:var(--ac);padding:10px 28px;cursor:pointer;font-family:var(--M);font-size:.72rem;letter-spacing:.12em">Нова заявка →</button>';
-    okEl.style.display='block';
-    okEl.style.padding='48px 32px';
-    okEl.style.textAlign='center';
+    okEl.innerHTML='<div style="font-size:2rem;margin-bottom:12px;color:var(--ac)">\u2713</div><div style="font-family:var(--D);font-size:1.8rem;font-weight:300;margin-bottom:8px">\u0417\u0430\u044f\u0432\u043a\u0443 \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e!</div><div style="font-family:var(--M);font-size:.82rem;color:var(--mu);margin-bottom:24px">\u041c\u0438 \u0437\u0432\u2019\u044f\u0436\u0435\u043c\u043e\u0441\u044f \u0437 \u0432\u0430\u043c\u0438 \u0432\u043f\u0440\u043e\u0434\u043e\u0432\u0436 24 \u0433\u043e\u0434\u0438\u043d.</div><button onclick="resetContactForm()" style="background:none;border:1px solid var(--ac);color:var(--ac);padding:10px 28px;cursor:pointer;font-family:var(--M);font-size:.72rem;letter-spacing:.12em">\u041d\u043e\u0432\u0430 \u0437\u0430\u044f\u0432\u043a\u0430 \u2192</button>';
+    okEl.style.display='block';okEl.style.padding='48px 32px';okEl.style.textAlign='center';
   }
   form.style.display='none';
 }
-
 function resetContactForm(){
   const form=document.querySelector('form[onsubmit="submitForm(event)"]');
   const okEl=document.getElementById('ok');
-  if(form){
-    form.reset();form.style.display='';
-    form.querySelectorAll('input,textarea,select').forEach(el=>el.style&&(el.style.outline=''));
-    const btn=form.querySelector('button[type="submit"]');
-    if(btn){btn.disabled=false;btn.innerHTML='<span data-i18n="f_submit">Надіслати заявку</span><span>→</span>';}
-    setLang(curLang);
-  }
+  if(form){form.reset();form.style.display='';const btn=form.querySelector('button[type="submit"]');if(btn){btn.disabled=false;btn.innerHTML='<span data-i18n="f_submit">\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0437\u0430\u044f\u0432\u043a\u0443</span><span>\u2192</span>';}}
   if(okEl){okEl.style.display='none';okEl.style.padding='';okEl.style.textAlign='';}
 }
 /* ═══ NAVIGATION ═══ */
@@ -1020,12 +994,11 @@ go('home');
 setLang(curLang);
 
 
-/* ── Multi-page navigation override ── */
+/* multipage nav */
 go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.html',about:'/about.html',contact:'/contact.html'};if(m[p])window.location.href=m[p];};
 goProject=function(id){window.location.href='/portfolio.html#'+id;};
-filt=function(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');document.querySelectorAll('.pi').forEach(el=>{el.style.display=(cat==='all'||el.dataset.c===cat)?'':'none';});};
+setLang(localStorage.getItem('cas-lang')||'uk');setTimeout(initMap,400);
 
-setLang(localStorage.getItem('cas-lang')||'uk'); setTimeout(initMap,400);
 </script>
 </body>
 </html>
