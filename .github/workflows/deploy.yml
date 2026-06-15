@@ -1,0 +1,26 @@
+name: 🚀 Deploy to Server
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: self-hosted
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 📁 Copy files to webroot
+        run: |
+          WEBROOT="${WEBROOT:-/var/www/html}"
+          cp index.html services.html portfolio.html about.html contact.html "$WEBROOT/"
+          cp sitemap.xml robots.txt "$WEBROOT/"
+          echo "✅ Deployed to $WEBROOT"
+          ls -lh "$WEBROOT/"*.html
+
+      - name: 🔄 Reload nginx
+        run: sudo nginx -s reload 2>/dev/null || true
