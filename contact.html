@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Контакти — CAS Development</title>
+<meta name="description" content="Безкоштовна консультація 30 хвилин. WhatsApp, Telegram, Viber.">
+<meta property="og:title" content="Контакти — CAS Development">
+<meta property="og:description" content="Безкоштовна консультація 30 хвилин. WhatsApp, Telegram, Viber.">
+<meta property="og:image" content="https://drive.google.com/thumbnail?id=1lW6SF-extZy1oSlShUl-F_z9yx-mgvin&sz=w1200">
+<link rel="canonical" href="https://cas-development.com.ua/contact.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* DISPLAY → Cormorant Garamond | MONO → DM Mono */
+:root{--bg:#080709;--bg2:#0f0e11;--sf:#181620;--tx:#EDE8DF;--mu:#7a7470;--ac:#BF9148;--bd:rgba(237,232,223,.08);--D:'Cormorant Garamond',Georgia,serif;--M:'Plus Jakarta Sans','Helvetica Neue',sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px}
+body{background:var(--bg);color:var(--tx);font-family:var(--M);overflow-x:hidden;cursor:none}
+#cr,#crf{position:fixed;pointer-events:none;z-index:9999;border-radius:50%}
+#cr{width:6px;height:6px;background:var(--ac);transform:translate(-50%,-50%)}
+#crf{width:28px;height:28px;border:1px solid rgba(191,145,72,.4);transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease,transform .15s}
+body::before{content:'';position:fixed;inset:0;opacity:.25;pointer-events:none;z-index:8000;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E")}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:22px 52px;background:linear-gradient(to bottom,rgba(8,7,9,.97) 0%,rgba(8,7,9,.5) 65%,transparent 100%)}
+.logo{font-family:var(--D);font-size:1.15rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--tx);cursor:pointer}
+.logo em{font-style:normal;color:var(--ac)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:var(--M);font-size:.68rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:color .25s;cursor:pointer;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--ac);transition:width .3s}
+.nav-links a:hover,.nav-links a.on{color:var(--tx)}
+.nav-links a:hover::after,.nav-links a.on::after{width:100%}
+.page{}
+
+@keyframes pgIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.lbl{font-family:var(--M);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ac);display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.lbl::before{content:'';display:inline-block;width:24px;height:1px;background:var(--ac)}
+.ph{padding:88px 52px 44px;position:relative;overflow:hidden}
+.ph-inner{position:relative;z-index:2}
+.ph-title{font-family:var(--D);font-size:clamp(34px,4.5vw,58px);font-weight:300;line-height:1.05;margin-bottom:38px}
+.ph-title em{font-style:italic;color:var(--mu)}
+.ph-num{position:absolute;top:78px;right:48px;font-family:var(--D);font-size:9rem;font-weight:300;color:rgba(237,232,223,.025);line-height:1;pointer-events:none}
+.sbg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.07;filter:saturate(.4);z-index:0}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border:1px solid var(--ac);color:var(--ac);font-family:var(--M);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;background:transparent;transition:all .3s;position:relative;overflow:hidden}
+.btn::before{content:'';position:absolute;inset:0;background:var(--ac);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.btn:hover{color:var(--bg)}.btn:hover::before{transform:scaleX(1)}
+.btn>*{position:relative;z-index:1}
+.btn-g{border-color:rgba(237,232,223,.15);color:var(--mu)}.btn-g::before{background:rgba(237,232,223,.07)}.btn-g:hover{color:var(--tx)}
+footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.fl{font-family:var(--D);font-size:1rem;letter-spacing:.1em;font-weight:300}
+.fc{font-family:var(--M);font-size:.67rem;color:var(--mu)}
+.fs{display:flex;gap:20px}
+.fs a{font-family:var(--M);font-size:.67rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:color .25s}
+.fs a:hover{color:var(--ac)}
+.strip{display:flex;gap:3px;overflow:hidden}
+.strip-item{flex:1;overflow:hidden;position:relative;cursor:pointer;min-width:0}
+.strip-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .4s;filter:saturate(.42) brightness(.62)}
+.strip-item:hover img{transform:scale(1.06);filter:saturate(.85) brightness(.85)}
+.slab{position:absolute;bottom:10px;left:12px;font-family:var(--M);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(237,232,223,.55);opacity:0;transition:opacity .3s}
+.strip-item:hover .slab{opacity:1}
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 52px 68px;position:relative;overflow:hidden}
+.hbg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.50;filter:saturate(.65) brightness(.78);z-index:0}
+.hgrad{position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,7,9,.82) 0%,rgba(8,7,9,.28) 52%,rgba(8,7,9,.52) 100%);z-index:1}
+.hvl{position:absolute;top:0;right:160px;width:1px;height:100vh;background:linear-gradient(to bottom,transparent,var(--bd),transparent);z-index:2}
+.hghost{position:absolute;font-family:var(--D);font-size:clamp(180px,27vw,360px);font-weight:300;color:rgba(237,232,223,.02);top:50%;left:-8px;transform:translateY(-54%);pointer-events:none;z-index:2;line-height:1}
+.hyr{position:absolute;top:50%;right:50px;color:var(--mu);font-family:var(--M);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;writing-mode:vertical-rl;transform:translateY(-50%);z-index:3}
+.hi{position:relative;z-index:3}
+.h1{font-family:var(--D);font-size:clamp(52px,8.5vw,118px);font-weight:300;line-height:.93;letter-spacing:-.01em;margin-bottom:48px}
+.h1 em{font-style:italic;color:var(--ac)}
+.hrow{display:flex;justify-content:space-between;align-items:flex-end;gap:36px}
+.hdesc{max-width:310px;font-family:var(--M);font-size:.84rem;line-height:1.88;color:var(--mu);font-weight:300}
+.hbtns{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.hstats{display:flex;gap:40px;margin-top:48px;padding-top:36px;border-top:1px solid var(--bd)}
+.sn{font-family:var(--D);font-size:2.4rem;font-weight:300;line-height:1}
+.sn em{font-style:normal;color:var(--ac)}
+.sl{font-family:var(--M);font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mu);margin-top:5px}
+.sind{position:absolute;bottom:68px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--mu);font-family:var(--M);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;z-index:3}
+.sbar{width:1px;height:40px;background:linear-gradient(to bottom,var(--ac),transparent);animation:sb 1.6s ease infinite}
+@keyframes sb{0%,100%{opacity:.2;transform:scaleY(.4);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+/* ─── HOME SERVICES ─── */
+.svc-prev{padding:72px 52px;background:var(--bg2)}
+.sph{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--bd)}
+.spt{font-family:var(--D);font-size:2.1rem;font-weight:300}
+.splink{font-family:var(--M);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);cursor:pointer;background:none;border:none}
+.sp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd)}
+.sp-card{background:var(--bg2);padding:36px 32px;cursor:pointer;transition:background .3s;position:relative;overflow:hidden}
+.sp-card:hover{background:rgba(191,145,72,.03)}
+.sp-cbg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.14;filter:saturate(.32);transition:opacity .4s,transform .5s}
+.sp-card:hover .sp-cbg{opacity:.24;transform:scale(1.04)}
+.sp-cc{position:relative;z-index:1}
+.sp-ico{font-size:1.5rem;margin-bottom:16px;opacity:.55}
+.sp-name{font-family:var(--D);font-size:1.65rem;font-weight:300;margin-bottom:8px}
+/* ★ ЦІНИ БІЛЬШІ та ЖИРНІШІ */
+.sp-price{font-family:var(--M);font-size:.92rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ac);margin-bottom:14px}
+.sp-text{font-family:var(--M);font-size:.82rem;color:var(--mu);line-height:1.82;font-weight:300}
+/* ─── PROJECT <div class="proj-cover" onclick="goProject('petrivtsi')"><img src="https://drive.google.com/thumbnail?id=1lW6SF-extZy1oSlShUl-F_z9yx-mgvin&sz=w600" loading="lazy" alt="Petrivtsi House"><div class="proj-cover-ov"><p class="proj-cover-name">Petrivtsi House</p><p class="proj-cover-loc">Київ · 320 м²</p></div></div>
+<div class="proj-cover" onclick="goProject('hoda')"><img src="https://drive.google.com/thumbnail?id=1HTdBNY-oY5p07-ZkTJDKABV1dWjcVU0j&sz=w600" loading="lazy" alt="Hoda Estate"><div class="proj-cover-ov"><p class="proj-cover-name">Hoda Estate</p><p class="proj-cover-loc">Київ · 180 м²</p></div></div>
+<div class="proj-cover" onclick="goProject('usa')"><img src="https://drive.google.com/thumbnail?id=13MS4aVn4wzDHtGN8FMyCljfemDkiVwKM&sz=w600" loading="lazy" alt="USA House"><div class="proj-cover-ov"><p class="proj-cover-name">USA House</p><p class="proj-cover-loc">США · 420 м²</p></div></div>
+<div class="proj-cover" onclick="goProject('pidgirland')"><img src="https://drive.google.com/thumbnail?id=1FiLI9kKE-C87h9pptaRdoA9xA41Cwg6v&sz=w600" loading="lazy" alt="Pidgirland"><div class="proj-cover-ov"><p class="proj-cover-name">Pidgirland</p><p class="proj-cover-loc">Київська обл. · 260 м²</p></div></div>
+<div class="proj-cover" onclick="goProject('hodos')"><img src="https://drive.google.com/thumbnail?id=1M13ysKRsQvnPksL-4RlqyJBntF9tlHIF&sz=w600" loading="lazy" alt="Hodos Villa"><div class="proj-cover-ov"><p class="proj-cover-name">Hodos Villa</p><p class="proj-cover-loc">Київ · 500 м²</p></div></div>
+<div class="proj-cover" onclick="goProject('linden')"><img src="https://drive.google.com/thumbnail?id=1e_eYgoeMFIrvDIH7FEF5aWpru9LpgS4R&sz=w600" loading="lazy" alt="Linden Penthouse"><div class="proj-cover-ov"><p class="proj-cover-name">Linden Penthouse</p><p class="proj-cover-loc">Київ · 210 м²</p></div></div>
+<div class="proj-cover" onclick="goProject('yachtrest')"><img src="https://drive.google.com/thumbnail?id=18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ&sz=w600" loading="lazy" alt="Yacht Restaurant"><div class="proj-cover-ov"><p class="proj-cover-name">Yacht Restaurant</p><p class="proj-cover-loc">Ресторан · Елітний проєкт</p></div></div>
+ ─── */
+.proj-covers{padding:0 52px 72px;background:var(--bg2)}
+.pc-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--bd)}
+.pc-title{font-family:var(--D);font-size:2.1rem;font-weight:300}
+.pc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.proj-cover{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:4/3;background:var(--sf)}
+.proj-cover img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease;filter:saturate(.7) brightness(.85)}
+.proj-cover:hover img{transform:scale(1.06);filter:saturate(1) brightness(.95)}
+.proj-cover-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,transparent 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;z-index:1}
+.proj-cover-name{font-family:var(--D);font-size:1.5rem;font-weight:300;margin-bottom:4px}
+.proj-cover-loc{font-family:var(--M);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ac)}
+/* ─── SERVICES PAGE ─── */
+.sv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--bd);margin:0 52px}
+.sv-card{padding:52px 40px;border-right:1px solid var(--bd);position:relative;overflow:hidden;transition:background .3s}
+.sv-card:last-child{border-right:none}
+.sv-cbg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.07;filter:saturate(.28);z-index:0;transition:opacity .4s,transform .5s}
+.sv-card:hover .sv-cbg{opacity:.14;transform:scale(1.04)}
+.sv-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--ac);transform:scaleX(0);transform-origin:left;transition:transform .4s;z-index:1}
+.sv-card:hover::after{transform:scaleX(1)}
+.sv-card:hover{background:rgba(191,145,72,.02)}
+.sv-inner{position:relative;z-index:2}
+.sv-num{font-family:var(--M);font-size:.7rem;color:var(--ac);letter-spacing:.22em;display:block;margin-bottom:32px}
+.sv-ico{width:48px;height:48px;border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;margin-bottom:24px;transition:border-color .3s}
+.sv-card:hover .sv-ico{border-color:rgba(191,145,72,.35)}
+.sv-name{font-family:var(--D);font-size:1.9rem;font-weight:300;line-height:1.1;margin-bottom:14px}
+/* ★ ЦІНИ БІЛЬШІ */
+.sv-price{font-family:var(--M);font-size:.95rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ac);margin-bottom:20px}
+.sv-desc{font-family:var(--M);font-size:.84rem;line-height:1.84;color:var(--mu);font-weight:300}
+.sv-list{margin-top:24px;display:flex;flex-direction:column;gap:10px}
+.sv-item{font-family:var(--M);font-size:.8rem;color:var(--mu);display:flex;gap:9px;align-items:flex-start}
+.sv-item::before{content:'—';color:var(--ac);flex-shrink:0}
+.proc{padding:68px 52px}
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:44px;padding-bottom:22px;border-bottom:1px solid var(--bd)}
+.sec-t{font-family:var(--D);font-size:2.2rem;font-weight:300}
+.sec-s{font-family:var(--M);font-size:.74rem;color:var(--mu)}
+.proc-row{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--bd)}
+.proc-step{padding:40px 28px;border-right:1px solid var(--bd);position:relative}
+.proc-step:last-child{border-right:none}
+.ps-num{position:absolute;top:12px;right:16px;font-family:var(--D);font-size:3.2rem;font-weight:300;color:rgba(237,232,223,.04);line-height:1}
+.ps-dot{width:7px;height:7px;background:var(--ac);border-radius:50%;margin-bottom:18px}
+.ps-t{font-family:var(--D);font-size:1.18rem;font-weight:400;margin-bottom:9px}
+.ps-d{font-family:var(--M);font-size:.78rem;color:var(--mu);line-height:1.76}
+/* ─── PORTFOLIO ─── */
+.pf-filter{padding:0 52px;display:flex;border-bottom:1px solid var(--bd);margin-bottom:48px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.pf-filter::-webkit-scrollbar{display:none}
+.filt{padding:14px 20px;background:none;border:none;font-family:var(--M);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;transition:all .25s;flex-shrink:0}
+.filt:hover,.filt.on{color:var(--tx);border-bottom-color:var(--ac)}
+.pf-grid{padding:0 52px 60px;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:280px;gap:6px}
+.pf-grid .pi:nth-child(1){grid-column:1/8;grid-row:span 2}
+.pf-grid .pi:nth-child(2),.pf-grid .pi:nth-child(3){grid-column:8/13}
+.pf-grid .pi:nth-child(4),.pf-grid .pi:nth-child(5){grid-column:span 4}
+.pf-grid .pi:nth-child(6){grid-column:9/13}
+.pf-grid .pi:nth-child(7){grid-column:1/6;grid-row:span 2}
+.pf-grid .pi:nth-child(8),.pf-grid .pi:nth-child(9){grid-column:6/13}
+.pf-grid .pi:nth-child(n+10){grid-column:span 4}
+.pi{position:relative;overflow:hidden;cursor:pointer;background:var(--sf)}
+.pi-photo{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.pi:hover .pi-photo{transform:scale(1.07)}
+.pi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.84) 0%,transparent 55%);opacity:0;transition:opacity .4s;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;z-index:1}
+.pi:hover .pi-ov{opacity:1}
+.pi-title{font-family:var(--D);font-size:1.4rem;font-weight:300;margin-bottom:3px}
+.pi-type{font-family:var(--M);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac)}
+.pf-cta{text-align:center;padding:52px;border-top:1px solid var(--bd);position:relative;overflow:hidden}
+.pf-cta-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.06;filter:saturate(.28);z-index:0}
+.pf-cta-in{position:relative;z-index:1}
+.pf-cta p{font-family:var(--D);font-size:1.9rem;font-weight:300;margin-bottom:24px}
+/* ─── ABOUT ─── */
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;padding:0 52px 68px;align-items:start}
+.about-vis{position:relative}
+.about-img{aspect-ratio:3/4;position:relative;overflow:hidden;background:var(--sf)}
+.about-img img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+.about-img::after{content:'';position:absolute;bottom:-20px;right:-20px;width:52%;height:36%;border:1px solid rgba(191,145,72,.26);z-index:0;pointer-events:none}
+.about-badge{position:absolute;bottom:24px;left:24px;background:rgba(8,7,9,.88);border:1px solid var(--bd);padding:16px 20px;z-index:1;backdrop-filter:blur(6px)}
+.ab-n{font-family:var(--D);font-size:1.9rem;font-weight:300;line-height:1}
+.ab-l{font-family:var(--M);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);margin-top:4px}
+.about-txt{padding-top:28px}
+.about-lead{font-family:var(--D);font-size:1.6rem;font-weight:300;line-height:1.55;margin-bottom:24px}
+.about-body{font-family:var(--M);font-size:.84rem;line-height:1.94;color:var(--mu);margin-bottom:18px;font-weight:300}
+.about-vals{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;padding-top:40px;border-top:1px solid var(--bd)}
+.val-n{font-family:var(--D);font-size:1.05rem;font-weight:400;margin-bottom:5px}
+.val-d{font-family:var(--M);font-size:.76rem;color:var(--mu);line-height:1.68}
+.geo{padding:0 52px 68px}
+.geo-h{padding-bottom:24px;margin-bottom:0;border-bottom:1px solid var(--bd)}
+.geo-grid{display:flex;border:1px solid var(--bd);border-top:none}
+.geo-item{flex:1;padding:32px 24px;border-right:1px solid var(--bd)}
+.geo-item:last-child{border-right:none}
+.geo-flag{font-size:1.3rem;margin-bottom:9px}
+.geo-country{font-family:var(--D);font-size:1.05rem;font-weight:400;margin-bottom:5px}
+.geo-desc{font-family:var(--M);font-size:.76rem;color:var(--mu);line-height:1.64}
+/* ─── CONTACT ─── */
+.ct-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--bd);margin:0 52px 68px}
+.ci{padding:56px 52px 56px 0;border-right:1px solid var(--bd);position:relative;overflow:hidden}
+.ci-bg{position:absolute;bottom:0;right:0;width:65%;height:48%;object-fit:cover;opacity:.08;filter:saturate(.28);z-index:0}
+.ci-in{position:relative;z-index:1}
+.cf{padding:56px 0 56px 52px}
+.ci-t{font-family:var(--D);font-size:1.9rem;font-weight:300;margin-bottom:12px}
+.ci-s{font-family:var(--M);font-size:.82rem;color:var(--mu);line-height:1.86;margin-bottom:40px;font-weight:300}
+.ci-det{display:flex;flex-direction:column;gap:24px}
+.dl{font-family:var(--M);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:4px}
+.dv{font-family:var(--D);font-size:1.05rem}
+/* ★ ЦІНИ в контактах теж більші */
+.dv-sm{font-family:var(--M);font-size:.84rem;font-weight:300;line-height:1.94;color:var(--mu)}
+.fg{margin-bottom:20px}
+.fl{display:block;font-family:var(--M);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mu);margin-bottom:7px}
+.fi,.ft,.fsel{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd);padding:10px 0;color:var(--tx);font-family:var(--M);font-size:.88rem;outline:none;transition:border-color .3s;-webkit-appearance:none;appearance:none}
+.fi:focus,.ft:focus{border-bottom-color:var(--ac)}
+.fi::placeholder,.ft::placeholder{color:rgba(112,106,98,.4)}
+.ft{resize:none;height:85px}
+.fsel{background:var(--bg);padding:10px 4px}
+.fsel option{background:var(--sf)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+#ok{display:none;margin-top:18px;padding:18px;border:1px solid rgba(191,145,72,.26);color:var(--ac);font-family:var(--M);font-size:.82rem;line-height:1.7}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.au{animation:fadeUp .72s ease both}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.45s}.d5{animation-delay:.6s}
+@media(max-width:960px){
+  nav{padding:16px 22px}.nav-links{display:none}
+  .hero{padding:0 22px 52px}.h1{font-size:44px}.hstats{flex-wrap:wrap;gap:24px}
+  .strip{height:140px!important}
+  .ph{padding:70px 22px 36px}.ph-num{display:none}
+  .sv-grid,.proc-row{grid-template-columns:1fr}.sv-grid{margin:0 22px}
+  .sv-card{border-right:none;border-bottom:1px solid var(--bd)}
+  .proc{padding:52px 22px}.proc-row{border:none;gap:2px}.proc-step{border-right:none;border:1px solid var(--bd)}
+  .pf-grid{grid-template-columns:1fr 1fr;grid-auto-rows:190px;padding:0 22px 48px}
+  .pf-grid .pi:nth-child(n){grid-column:auto!important;grid-row:auto!important}
+  .pf-filter{padding:0 22px}
+  .about-wrap{grid-template-columns:1fr;gap:36px;padding:0 22px 52px}
+  .geo{padding:0 22px 52px}.geo-grid{flex-direction:column}
+  .geo-item{border-right:none;border-bottom:1px solid var(--bd)}.geo-item:last-child{border-bottom:none}
+  .ct-layout{grid-template-columns:1fr;margin:0 22px 52px}
+  .ci{padding:36px 0;border-right:none;border-bottom:1px solid var(--bd)}.cf{padding:36px 0 0}
+  .fr{grid-template-columns:1fr}
+  .svc-prev{padding:52px 22px}.sp-grid{grid-template-columns:1fr}
+  .proj-covers{padding:0 22px 52px}.pc-grid{grid-template-columns:1fr 1fr}
+  footer{padding:26px 22px}
+}
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-sw{display:flex;gap:4px;align-items:center;margin-left:20px}
+
+/* ── LIGHTBOX ── */
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:99999;display:none;flex-direction:column;align-items:center;justify-content:center}
+#lb.open{display:flex}
+#lb-img{max-width:90vw;max-height:82vh;object-fit:contain;transition:opacity .2s}
+#lb-close{position:absolute;top:20px;right:28px;color:#fff;font-size:2rem;cursor:pointer;line-height:1;opacity:.7}
+#lb-close:hover{opacity:1}
+.lb-arr{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.5rem;cursor:pointer;padding:16px 24px;opacity:.6;transition:opacity .2s;user-select:none}
+.lb-arr:hover{opacity:1}
+#lb-prev{left:0}.#lb-next{right:0}
+#lb-info{position:absolute;bottom:20px;color:var(--ac);font-family:var(--M);font-size:.7rem;letter-spacing:.2em}
+#lb-prev{left:0}
+#lb-next{right:0}
+
+/* ── EXPANDABLE SERVICES ── */
+.sv-more{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.sv-card.exp .sv-more{max-height:800px}
+.sv-toggle{display:inline-flex;align-items:center;gap:8px;margin-top:20px;cursor:pointer;font-family:var(--M);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);border:none;background:none}
+.sv-toggle .tog-ic{display:inline-block;transition:transform .3s;font-size:.9rem}
+.sv-card.exp .sv-toggle .tog-ic{transform:rotate(45deg)}
+.sv-more-list{padding-top:20px;display:flex;flex-direction:column;gap:10px}
+.sv-more-item{font-family:var(--M);font-size:.8rem;color:var(--mu);display:flex;gap:9px;align-items:flex-start}
+.sv-more-item::before{content:'✓';color:var(--ac);flex-shrink:0}
+.sv-more-tag{display:inline-flex;padding:5px 12px;border:1px solid rgba(191,145,72,.25);color:var(--ac);font-family:var(--M);font-size:.62rem;letter-spacing:.14em;margin-top:12px;margin-right:6px}
+
+/* ── EXPANDABLE PROCESS ── */
+.ps-more{max-height:0;overflow:hidden;transition:max-height .4s ease;font-family:var(--M);font-size:.76rem;color:var(--mu);line-height:1.74;margin-top:0}
+.proc-step.exp .ps-more{max-height:400px;margin-top:12px}
+.ps-tog{cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:var(--M);font-size:.62rem;letter-spacing:.16em;color:rgba(191,145,72,.6);border:none;background:none;margin-top:10px;transition:color .2s}
+.ps-tog:hover{color:var(--ac)}
+
+/* ── WORLD MAP ── */
+.world-map-wrap{width:100%;aspect-ratio:2/1;position:relative;overflow:hidden;border:1px solid var(--bd);background:var(--bg2)}
+.world-map-wrap svg{width:100%;height:100%}
+.map-dot{cursor:pointer;transition:r .2s,opacity .2s}
+.map-dot:hover{r:10;opacity:1!important}
+.map-dot circle{fill:var(--ac)}
+.map-tooltip{position:absolute;background:rgba(8,7,9,.9);border:1px solid var(--ac);padding:8px 14px;font-family:var(--M);font-size:.68rem;color:var(--tx);pointer-events:none;display:none;white-space:nowrap;letter-spacing:.1em}
+
+/* ── CALCULATOR ── */
+.calc-wrap{padding:60px 52px;border-top:1px solid var(--bd)}
+.calc-title{font-family:var(--D);font-size:2rem;font-weight:300;margin-bottom:32px}
+.calc-body{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.calc-form{display:flex;flex-direction:column;gap:24px}
+.calc-group label{font-family:var(--M);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);display:block;margin-bottom:8px}
+.calc-tabs-row{display:flex;flex-wrap:wrap;gap:6px}
+.calc-tab{background:none;border:1px solid var(--bd);color:var(--mu);font-family:var(--M);font-size:.66rem;letter-spacing:.14em;padding:8px 16px;cursor:pointer;transition:all .2s}
+.calc-tab:hover,.calc-tab.on{border-color:var(--ac);color:var(--ac)}
+.calc-slider{width:100%;-webkit-appearance:none;height:1px;background:var(--bd);outline:none}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;background:var(--ac);cursor:pointer;border-radius:50%}
+.calc-select{width:100%;background:transparent;border:1px solid var(--bd);color:var(--tx);font-family:var(--M);font-size:.8rem;padding:10px 12px;outline:none;cursor:pointer}
+.calc-select option{background:var(--sf)}
+.calc-chk-row{display:flex;flex-direction:column;gap:10px}
+.calc-chk{display:flex;align-items:center;gap:10px;font-family:var(--M);font-size:.78rem;color:var(--mu);cursor:pointer}
+.calc-chk input{accent-color:var(--ac);width:14px;height:14px}
+.calc-result-box{background:var(--sf);border:1px solid var(--bd);padding:36px;position:sticky;top:100px}
+.cr-label{font-family:var(--M);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);margin-bottom:16px;display:block}
+.cr-total{font-family:var(--D);font-size:3rem;font-weight:300;color:var(--tx);margin-bottom:4px}
+.cr-total span{color:var(--ac)}
+.cr-sub{font-family:var(--M);font-size:.76rem;color:var(--mu);margin-bottom:28px}
+.cr-lines{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--bd);padding-top:20px}
+.cr-line{display:flex;justify-content:space-between;font-family:var(--M);font-size:.78rem;color:var(--mu)}
+.cr-line strong{color:var(--tx)}
+
+/* ── CONTACTS UPDATE ── */
+.ct-messengers{display:flex;flex-direction:column;gap:14px;margin-top:16px}
+.msg-row{display:flex;align-items:center;gap:12px;font-family:var(--M);font-size:.82rem}
+.msg-icon{width:28px;height:28px;border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.msg-label{color:var(--mu);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px}
+.msg-val{color:var(--tx)}
+.qr-wrap{margin-top:24px;text-align:center}
+.qr-wrap canvas{border:1px solid var(--bd);padding:8px;background:#fff}
+.qr-lbl{font-family:var(--M);font-size:.62rem;letter-spacing:.14em;color:var(--mu);margin-top:8px;text-transform:uppercase}
+
+@media(max-width:960px){
+  .calc-body{grid-template-columns:1fr}
+  .lang-sw{margin-left:12px}
+  .calc-wrap{padding:40px 22px}
+  .world-map-wrap{margin:0 22px}
+}
+
+/* ════ LIGHT THEME ════ */
+body.light{--bg:#F5F2ED;--bg2:#EDEBE4;--sf:#E4E0D7;--tx:#1C1814;--mu:#7A7060;--ac:#9A6E28;--bd:rgba(28,24,20,.1)}
+body.light::before{opacity:.04}
+/* Navbar */
+body.light nav{background:linear-gradient(to bottom,rgba(245,242,237,.98) 0%,rgba(245,242,237,.7) 65%,transparent 100%)}
+body.light .nav-links a{color:rgba(28,24,20,.55)}
+body.light .nav-links a:hover,body.light .nav-links a.on{color:var(--tx)}
+/* Hero - show image in light mode */
+body.light .hbg{opacity:.65;filter:saturate(.68) brightness(.88)}
+body.light .hgrad{background:linear-gradient(135deg,rgba(245,242,237,.82) 0%,rgba(245,242,237,.22) 52%,rgba(245,242,237,.62) 100%)}
+body.light .hghost{color:rgba(28,24,20,.025)}
+body.light .h1{color:var(--tx)}
+body.light .h1 em{color:var(--ac)}
+body.light .hdesc{color:rgba(28,24,20,.6)}
+/* Service cards */
+body.light .sp-cbg{opacity:.22;filter:saturate(.5) brightness(.85)}
+body.light .sp-card:hover .sp-cbg{opacity:.32}
+body.light .sv-cbg{opacity:.18;filter:saturate(.5) brightness(.85)}
+body.light .sv-card:hover .sv-cbg{opacity:.28}
+/* World map */
+body.light #wsvg .land,body.light #wsvg path{fill:rgba(154,110,40,.12);stroke:rgba(154,110,40,.3)}
+/* About page */
+body.light .about-img::after{border-color:rgba(154,110,40,.2)}
+/* Form */
+body.light .fi,body.light .ft,body.light .fsel{border-bottom-color:rgba(28,24,20,.15);color:var(--tx)}
+body.light .fi::placeholder,body.light .ft::placeholder{color:rgba(28,24,20,.3)}
+
+/* ════ THEME TOGGLE BUTTON ════ */
+.theme-btn{background:none;border:1px solid rgba(237,232,223,.22);color:var(--mu);font-size:.9rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;margin-left:10px;flex-shrink:0;padding:0;line-height:1}
+.theme-btn:hover{border-color:var(--ac);color:var(--ac)}
+
+/* ════ SINGLE LANG BUTTON ════ */
+.lang-cycle{background:none;border:1px solid rgba(237,232,223,.22);color:var(--tx);font-family:var(--M);font-size:.62rem;letter-spacing:.18em;padding:5px 14px;cursor:pointer;transition:all .2s;min-width:52px;text-align:center}
+.lang-cycle:hover{border-color:var(--ac);color:var(--ac)}
+
+/* ════ BRAND ICONS ════ */
+.msg-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--bd)}
+.mi-wa{background:rgba(37,211,102,.15);color:#25D166;border-color:rgba(37,211,102,.3)!important}
+.mi-vb{background:rgba(123,81,157,.15);color:#9B6ABD;border-color:rgba(123,81,157,.3)!important}
+.mi-tg{background:rgba(42,171,238,.15);color:#2AABEE;border-color:rgba(42,171,238,.3)!important}
+.mi-wc{background:rgba(7,193,96,.15);color:#07C160;border-color:rgba(7,193,96,.3)!important}
+.mi-ig{background:rgba(225,48,108,.15);color:#E1306C;border-color:rgba(225,48,108,.3)!important}
+
+/* ════ SLIDER BUBBLE ════ */
+.area-val{font-family:var(--D);font-size:1.2rem;color:var(--ac);font-weight:300}
+.slider-wrap{position:relative;padding-top:6px}
+#areaBubble{position:absolute;top:-22px;background:var(--sf);border:1px solid var(--ac);color:var(--ac);font-family:var(--M);font-size:.6rem;padding:2px 7px;pointer-events:none;transform:translateX(-50%);white-space:nowrap;transition:left .05s}
+
+
+/* ════════════════════════════════════════
+   HAMBURGER BUTTON
+════════════════════════════════════════ */
+.hbg-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;flex-shrink:0}
+.hbg-btn span{display:block;width:22px;height:1.5px;background:var(--tx);transition:all .25s}
+
+/* ════════════════════════════════════════
+   MOBILE SIDEBAR
+════════════════════════════════════════ */
+.nsb{position:fixed!important;top:0!important;right:0!important;width:280px;height:100vh;background:var(--bg2);border-left:1px solid var(--bd);z-index:99999!important;display:flex;flex-direction:column;padding:28px 24px;transform:translateX(110%);transition:transform .3s ease;visibility:hidden}
+.nsb.open{transform:translateX(0)!important;visibility:visible}
+.nsb-ov{display:none;position:fixed!important;inset:0;background:rgba(0,0,0,.55);z-index:99998!important;backdrop-filter:blur(2px)}
+.nsb-ov.active{display:block}
+.nsb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+.nsb-logo{font-family:var(--M);font-size:.62rem;letter-spacing:.22em;color:var(--ac)}
+.nsb-close{background:none;border:none;color:var(--mu);font-size:1.1rem;cursor:pointer;padding:4px}
+.nsb-close:hover{color:var(--tx)}
+.nsb-nav{display:flex;flex-direction:column;flex:1}
+.nsb-nav a{padding:14px 0;font-family:var(--M);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);cursor:pointer;border-bottom:1px solid var(--bd);transition:color .2s}
+.nsb-nav a:hover{color:var(--ac)}
+
+/* ════════════════════════════════════════
+   MAP & PHONE REVEAL
+════════════════════════════════════════ */
+body.light .map-grat{display:none!important}
+.ph-reveal{color:var(--mu);cursor:pointer;font-family:var(--M);font-size:.78rem;letter-spacing:.04em;border-bottom:1px dashed var(--mu);transition:color .2s,border-color .2s;padding-bottom:1px}
+.ph-reveal:hover{color:var(--ac);border-color:var(--ac)}
+
+/* ════════════════════════════════════════
+   DESKTOP: always show nav links, hide sidebar
+════════════════════════════════════════ */
+@media (min-width:768px){
+  .nsb,.nsb-ov,.hbg-btn{display:none!important}
+  nav .nav-links{display:flex!important}
+  nav .lang-sw{display:flex!important}
+  .lang-cycle{display:flex!important}
+}
+
+/* ════════════════════════════════════════
+   MOBILE LAYOUT — comprehensive
+════════════════════════════════════════ */
+@media (max-width:767px){
+
+  /* NAV */
+  nav{padding:14px 18px!important}
+  nav .nav-links{display:none!important}
+  nav .lang-sw{display:flex!important}
+  .lang-cycle{background:none!important;border:none!important;box-shadow:none!important;outline:none!important;color:var(--ac)!important;font-family:var(--M)!important;font-size:.68rem!important;font-weight:700!important;letter-spacing:.14em!important;padding:4px 8px!important}
+  .hbg-btn{display:flex!important;margin-left:auto}
+  .theme-btn{font-size:.9rem!important;padding:4px 8px!important}
+
+  /* HERO */
+  .hero{padding:0 20px 30px!important;min-height:100svh}
+  .h1{font-size:clamp(36px,9.5vw,58px)!important;margin-bottom:24px!important;line-height:.94!important}
+  .lbl{font-size:.6rem!important;letter-spacing:.18em!important;margin-bottom:14px!important;gap:8px!important}
+  .lbl::before{width:20px!important}
+  .hrow{flex-direction:column!important;align-items:flex-start!important;gap:16px!important}
+  .hdesc{max-width:100%!important;font-size:.88rem!important;line-height:1.78!important;color:rgba(237,232,223,.8)!important}
+  .hbtns{flex-direction:row!important;flex-wrap:wrap!important;gap:10px!important;align-items:center!important}
+  .hbtns .btn,.hbtns .btn-g{font-size:.68rem!important;padding:10px 16px!important;letter-spacing:.1em!important}
+
+  /* PRIMARY BUTTON — filled on mobile */
+  .hbtns .btn{background:var(--ac)!important;color:#080709!important;border-color:var(--ac)!important;font-weight:700!important}
+  .hbtns .btn-g{background:none!important;color:var(--tx)!important;border-color:rgba(237,232,223,.3)!important;opacity:.7}
+  .hbtns .btn-g:hover{opacity:1}
+
+  .hstats{display:grid!important;grid-template-columns:1fr 1fr!important;gap:20px 16px!important;margin-top:28px!important;padding-top:22px!important}
+  .sn{font-size:1.8rem!important}
+  .sl{font-size:.6rem!important;margin-top:3px!important}
+  .hyr{display:none!important}
+  .hghost{display:none!important}
+
+  /* STRIP */
+  .strip{height:130px!important}
+  .strip-item{width:130px!important}
+
+  /* HOME PREVIEW CARDS */
+  .sp-cards{flex-direction:column!important;gap:10px!important}
+  .sp-card{min-width:unset!important;width:100%!important;height:190px!important}
+  .spt{font-size:1rem!important}
+
+  /* SERVICES PAGE */
+  .ph{padding:80px 18px 28px!important}
+  .ph-title{font-size:clamp(28px,7.5vw,46px)!important}
+  .ph-sub{font-size:.78rem!important}
+  .sv-cards{flex-direction:column!important;gap:0!important}
+  .sv-card{width:100%!important;min-height:280px!important}
+  .sv-name{font-size:1.3rem!important}
+  .proc-grid{grid-template-columns:1fr 1fr!important}
+
+  /* PORTFOLIO */
+  .port-grid{grid-template-columns:1fr 1fr!important;gap:6px!important}
+  .filt-wrap{gap:6px!important;padding:0 18px!important}
+  .filt{font-size:.6rem!important;padding:6px 10px!important}
+
+  /* CALCULATOR */
+  .calc-wrap{flex-direction:column!important;gap:20px!important}
+  .calc-left,.calc-right{width:100%!important;position:static!important}
+  .calc-sv{flex-wrap:wrap!important;gap:6px!important}
+  .calc-tab{font-size:.68rem!important;padding:7px 11px!important}
+  .tier-sel{font-size:.82rem!important}
+  .cr-num{font-size:2.2rem!important}
+
+  /* ABOUT */
+  .about-cols{flex-direction:column!important;gap:24px!important}
+  .about-vis,.about-txt{width:100%!important}
+  .vals-grid{grid-template-columns:1fr 1fr!important}
+  .ps-grid{grid-template-columns:1fr 1fr!important}
+
+  /* CONTACT */
+  .ct-wrap{flex-direction:column!important;gap:0!important}
+  .ct-left{width:100%!important;padding:0 18px 28px!important}
+  .ct-form-wrap{width:100%!important;padding:24px 18px!important}
+  .ct-fields{flex-direction:column!important}
+  .ct-f2{grid-template-columns:1fr!important}
+  .world-map-wrap{margin:0 -18px!important}
+
+  /* GENERAL */
+  .sec{padding:44px 18px!important}
+  .sec-head{margin-bottom:24px!important}
+  .sec-title{font-size:clamp(26px,7vw,40px)!important}
+  .hgtx{padding:0 18px!important}
+}
+
+/* EXTRA SMALL (< 480px) */
+@media (max-width:480px){
+  .h1{font-size:clamp(32px,9vw,44px)!important}
+  .hbtns{flex-direction:column!important;align-items:stretch!important;width:100%!important}
+  .hbtns .btn,.hbtns .btn-g{width:100%!important;text-align:center!important;justify-content:center!important}
+  .port-grid{grid-template-columns:1fr!important}
+  .proc-grid{grid-template-columns:1fr!important}
+  .ps-grid{grid-template-columns:1fr!important}
+}
+
+
+/* Contact layout mobile */
+@media (max-width:767px){
+  .ct-layout{flex-direction:column!important;gap:0!important;padding:0!important}
+  .ci{display:none!important}
+  .ci-in{padding:24px 20px!important}
+  .ct-form-area{padding:24px 20px 40px!important;width:100%!important}
+}
+
+</style>
+</head>
+<body>
+<div id="cr"></div><div id="crf"></div>
+<div id="lb">
+  <span id="lb-close" onclick="lbClose()">✕</span>
+  <div class="lb-arr" id="lb-prev" onclick="lbNav(-1)">‹</div>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-arr" id="lb-next" onclick="lbNav(1)">›</div>
+  <div id="lb-info"></div>
+</div>
+
+<nav>
+  <span class="logo" href="/">CAS<em>.</em>Development</span>
+  <ul class="nav-links">
+    <li><a id="n-home" href="/" data-i18n="nav_home">Головна</a></li>
+    <li><a id="n-services" href="/services.html" data-i18n="nav_services">Послуги</a></li>
+    <li><a id="n-portfolio" href="/portfolio.html" data-i18n="nav_portfolio">Портфоліо</a></li>
+    <li><a id="n-about" href="/about.html" data-i18n="nav_about">Про нас</a></li>
+    <li><a id="n-contact" href="/contact.html" data-i18n="nav_contacts" class="on">Контакти</a></li>
+  </ul>
+  <div class="lang-sw">
+    <button class="lang-cycle" id="langCycle" onclick="cycleLang()">UA</button>
+  </div>
+  <button class="hbg-btn" id="hbgBtn" onclick="toggleNav()"><span></span><span></span><span></span></button>
+<button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button>
+</nav>
+<div class="nsb" id="nsb">
+  <div class="nsb-head"><span class="nsb-logo">CAS DEVELOPMENT</span><button class="nsb-close" onclick="closeNav()">✕</button></div>
+  <nav class="nsb-nav">
+    <a id="nsn-home" href="/" onclick="closeNav()">Головна</a>
+    <a id="nsn-sv" href="/services.html" onclick="closeNav()">Послуги</a>
+    <a id="nsn-pf" href="/portfolio.html" onclick="closeNav()">Портфоліо</a>
+    <a id="nsn-ab" href="/about.html" onclick="closeNav()">Про нас</a>
+    <a id="nsn-ct" href="/contact.html" onclick="closeNav()">Контакти</a>
+  </nav>
+  <div style="margin-top:auto;padding-top:24px">
+    <button id="nsbLang" onclick="cycleLang()" style="background:none;border:1px solid var(--bd);color:var(--ac);font-family:var(--M);font-size:.62rem;letter-spacing:.18em;padding:6px 16px;cursor:pointer">UA</button>
+  </div>
+</div>
+<div class="nsb-ov" id="nsbOv" onclick="closeNav()"></div>
+
+<!-- HOME -->
+<main>
+<div id="p-contact">
+  <section class="ph"><img class="sbg" src="https://drive.google.com/thumbnail?id=183DWyhu0rYayX8cgaSttNpM6KzswsNci&sz=w1400" loading="lazy" alt=""><div class="ph-inner"><div class="lbl" data-i18n="ct_label">Зв'язатися</div><h1 class="ph-title" id="ct-pg-title">Розпочнемо <em>разом</em></h1></div><span class="ph-num">05</span></section>
+
+  <!-- CONTACT LAYOUT -->
+  <div class="ct-layout">
+    <div class="ci"><img class="ci-bg" src="https://drive.google.com/thumbnail?id=1p_MqveKjiZ1Y9Xz9koLhlP5MUjinEFPF&sz=w600" loading="lazy" alt=""><div class="ci-in">
+      <h2 class="ci-t" data-i18n="ct_title">Давайте обговоримо ваш простір</h2>
+      <p class="ci-s" data-i18n="ct_sub">Розкажіть про проєкт — запропонуємо рішення під ваш стиль і бюджет. Безкоштовна консультація 30 хвилин.</p>
+      <div class="ci-det">
+        <div><div class="dl" data-i18n="ct_city_l">Місто</div><div class="dv">Київ, Україна</div></div>
+        <div><div class="dl">Email</div><div class="dv"><a href="mailto:China.shop.opt@gmail.com" style="color:inherit;text-decoration:none">China.shop.opt@gmail.com</a></div></div>
+        <div>
+          <div class="dl" data-i18n="ct_phone_l">Телефон / Месенджери</div>
+          <div class="ct-messengers">
+            <div class="msg-row"><div class="msg-icon mi-wa"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.1 2 3.2 5 4.4.7.3 1.2.5 1.6.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.52 2 12 2zm0 18c-1.7 0-3.2-.5-4.5-1.3l-.3-.2-3.4.9.9-3.3-.2-.3C3.5 14.9 3 13.5 3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9z"/></svg></div><div><div class="msg-label">WhatsApp</div><div class="msg-val"><span class="ph-reveal" data-phone="+38 097 866 7755" data-href="https://wa.me/380978667755" data-tgt="_blank" onclick="revealPhone(this)">Показати номер →</span></div></div></div>
+            <div class="msg-row"><div class="msg-icon mi-vb"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M11.4 2c-4 0-6.6 1.6-7.9 4.2-.9 1.8-1 3.8-.3 5.7l.2.5-.8 2.9 3-.8.5.3c1.5.9 3.2 1.3 4.8 1.2 2.6-.2 4.8-1.5 6-3.6.8-1.4 1-3.1.6-4.7C16.7 4.4 14 2 11.4 2zM8.6 7.1c.2 0 .4.1.6.4.3.4.9 1.3 1 1.5.1.2.1.4 0 .6-.1.2-.2.3-.4.5l-.2.2c-.3.3-.2.5 0 .8.7 1.1 1.6 1.9 2.7 2.4.3.1.5.1.7-.1l.4-.5c.2-.2.4-.2.6-.1l1.6.7c.2.1.3.3.2.5-.1.7-.8 1.4-1.5 1.5-1.4.2-2.8-.2-4-1-1.3-.9-2.4-2.1-3-3.5-.4-1-.3-1.9.1-2.6.2-.4.6-.6 1-.6l.2-.2z"/></svg></div><div><div class="msg-label">Viber</div><div class="msg-val"><span class="ph-reveal" data-phone="+38 097 866 7755" data-href="viber://chat?number=%2B380978667755" onclick="revealPhone(this)">Показати номер →</span></div></div></div>
+            <div class="msg-row"><div class="msg-icon mi-tg"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.9 6.8l-1.7 8c-.1.5-.5.7-.9.4l-2.5-1.9-1.2 1.2c-.1.1-.3.2-.5.2l.2-2.6 4.7-4.3c.2-.2 0-.3-.3-.1l-5.8 3.7-2.5-.8c-.5-.2-.5-.5.1-.8l9.8-3.8c.5-.1.8.1.6.8z"/></svg></div><div><div class="msg-label" id="ct-tg-p">Telegram особистий</div><div class="msg-val"><span class="ph-reveal" data-phone="+38 097 866 7755" data-href="https://t.me/+380978667755" data-tgt="_blank" onclick="revealPhone(this)">Показати номер →</span></div></div></div>
+            <div class="msg-row"><div class="msg-icon mi-tg"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.9 6.8l-1.7 8c-.1.5-.5.7-.9.4l-2.5-1.9-1.2 1.2c-.1.1-.3.2-.5.2l.2-2.6 4.7-4.3c.2-.2 0-.3-.3-.1l-5.8 3.7-2.5-.8c-.5-.2-.5-.5.1-.8l9.8-3.8c.5-.1.8.1.6.8z"/></svg></div><div><div class="msg-label" id="ct-tg-c">Telegram канал</div><div class="msg-val"><a href="https://t.me/chinashop_opt" target="_blank" style="color:inherit;text-decoration:none">@chinashop_opt</a></div></div></div>
+            <div class="msg-row"><div class="msg-icon mi-wc"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M19.6 13.2c0 3-2.7 5.4-6 5.4-.8 0-1.6-.2-2.4-.5l-2.6.9.8-2.4C8.5 15.7 8 14.5 8 13.2c0-3 2.7-5.4 6-5.4s5.6 2.4 5.6 5.4zM7.7 5.3c-1.3.7-2.2 2-2.2 3.4 0 1.1.5 2.1 1.3 2.8l-.7 2.1 2.4-.8c.7.3 1.5.5 2.3.5.3 0 .6 0 .9-.1C11.2 12.3 10 10.9 10 9.3c0-2.6 2.4-4.7 5.3-4.7.2 0 .4 0 .6 0C15 3.4 13.1 2.5 11 2.5c-1.6 0-3 .7-4 1.8z"/></svg></div><div><div class="msg-label">WeChat</div><div class="msg-val"><span class="ph-reveal" data-phone="+38 063 866 7755" onclick="revealPhone(this)">Показати номер →</span></div></div></div>
+            <div class="msg-row"><div class="msg-icon mi-ig"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8 0 3.2 0 3.6-.1 4.8-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1-3.2 0-3.6 0-4.8-.1-3.2-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12c0-3.2 0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 4c-3.1 0-3.5 0-4.7.1-2.2.1-3.2 1.1-3.3 3.3C4 8.5 4 8.9 4 12s0 3.5.1 4.7c.1 2.2 1.1 3.2 3.3 3.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c2.2-.1 3.2-1.1 3.3-3.3.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7C19.9 5.1 18.9 4.1 16.7 4 15.5 4 15.1 4 12 4zm0 2.8c2.9 0 5.2 2.3 5.2 5.2S14.9 17.2 12 17.2 6.8 14.9 6.8 12 9.1 6.8 12 6.8zm0 1.8c-1.9 0-3.4 1.5-3.4 3.4s1.5 3.4 3.4 3.4 3.4-1.5 3.4-3.4-1.5-3.4-3.4-3.4zm5.4-3.2c.7 0 1.2.5 1.2 1.2S18.1 8.8 17.4 8.8 16.2 8.3 16.2 7.6s.5-1.2 1.2-1.2z"/></svg></div><div><div class="msg-label">Instagram</div><div class="msg-val"><a href="https://www.instagram.com/cas_development/" target="_blank" style="color:inherit;text-decoration:none">@cas_development</a></div></div></div>
+          </div>
+        </div>
+        <div><div class="dl" data-i18n="ct_prices_l">Вартість послуг</div><div class="dv-sm" id="ct-pr-block">Дизайн інтер'єру — від $40 / м²<br>Ремонт під ключ — від $550 / м²<br>Меблювання та декор — від $250 / м²</div></div>
+
+      </div>
+    </div></div>
+    <div class="cf">
+      <form onsubmit="submitForm(event)">
+        <div class="fr">
+          <div class="fg"><label class="fl" data-i18n="f_name">Ваше ім'я</label><input type="text" class="fi" placeholder="Олексій"></div>
+          <div class="fg"><label class="fl" data-i18n="f_phone">Телефон / Telegram</label><input type="text" class="fi" placeholder="+380 97 866 7755"></div>
+        </div>
+        <div class="fg"><label class="fl" data-i18n="f_service">Послуга</label><select class="fi fsel"><option data-i18n="f_pick">Оберіть послугу</option><option>Дизайн інтер'єру</option><option>Ремонт під ключ</option><option>Меблювання</option><option>Повний цикл</option></select></div>
+        <div class="fg"><label class="fl" data-i18n="f_area">Площа об'єкту</label><input type="text" class="fi" placeholder="Наприклад: 80 м²"></div>
+        <div class="fg"><label class="fl" data-i18n="f_msg">Розкажіть про проєкт</label><textarea class="ft" placeholder="Що за об'єкт? Стиль? Терміни?"></textarea></div>
+        <button type="submit" class="btn" style="width:100%;justify-content:center;margin-top:6px"><span data-i18n="f_submit">Надіслати заявку</span><span>→</span></button>
+      </form>
+      <div id="ok">✓ Заявку отримано! Ми зв'яжемося з вами впродовж 24 годин.</div>
+    </div>
+  </div>
+
+  <!-- WORLD MAP -->
+  <div style="padding:0 52px 48px;margin-top:32px">
+    <div class="lbl" style="margin-bottom:20px" data-i18n="ct_map_label">Наші проєкти по світу</div>
+    <div class="world-map-wrap" id="wmap">
+            <svg id="wsvg" viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+  <defs><clipPath id="mc"><rect width="900" height="460"/></clipPath><style>
+    .lnd{fill:rgba(191,145,72,.11);stroke:rgba(191,145,72,.3);stroke-width:.4}
+    body.light .lnd{fill:rgba(154,110,40,.1);stroke:rgba(154,110,40,.22)}
+    @keyframes mpd{0%,100%{opacity:.2}50%{opacity:.07}}
+  
+/* ════ HAMBURGER & MOBILE SIDEBAR ════ */
+.hbg-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;margin-left:10px;flex-shrink:0;z-index:100}
+.hbg-btn span{display:block;width:22px;height:1.5px;background:var(--tx);transition:all .25s}
+.nsb{position:fixed!important;top:0!important;right:0!important;width:280px;height:100vh;background:var(--bg2);border-left:1px solid var(--bd);z-index:99999!important;transition:transform .3s ease;display:flex;flex-direction:column;padding:28px 24px;transform:translateX(110%);visibility:hidden}
+.nsb.open{transform:translateX(0)!important;visibility:visible}
+.nsb-ov{display:none;position:fixed!important;inset:0;background:rgba(0,0,0,.55);z-index:99998!important;backdrop-filter:blur(2px)}
+.nsb-ov.active{display:block}
+/* Desktop: always hide sidebar + hamburger */
+@media (min-width:768px){.nsb,.nsb-ov,.hbg-btn{display:none!important}nav .nav-links{display:flex!important}nav .lang-sw{display:flex!important}}
+.nsb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+.nsb-logo{font-family:var(--M);font-size:.68rem;letter-spacing:.22em;color:var(--ac)}
+.nsb-close{background:none;border:none;color:var(--mu);font-size:1.1rem;cursor:pointer;padding:4px}
+.nsb-close:hover{color:var(--tx)}
+.nsb-nav{display:flex;flex-direction:column;flex:1}
+.nsb-nav a{padding:14px 0;font-family:var(--M);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);cursor:pointer;border-bottom:1px solid var(--bd);transition:color .2s}
+.nsb-nav a:hover{color:var(--ac)}
+.nsb-foot{padding-top:24px}
+.nsb-lang{background:none;border:1px solid var(--bd);color:var(--tx);font-family:var(--M);font-size:.62rem;letter-spacing:.18em;padding:6px 14px;cursor:pointer;transition:all .2s}
+.nsb-lang:hover{border-color:var(--ac);color:var(--ac)}
+
+/* ════ RESPONSIVE MOBILE ════ */
+@media (max-width:767px){
+  nav .nav-links,nav .lang-sw{display:none!important}
+  .hbg-btn{display:flex!important}
+  .sp-cards{flex-direction:column!important;gap:12px}
+  .sp-card{min-width:unset!important;width:100%!important}
+  .sv-cards{flex-direction:column!important}
+  .sv-card{width:100%!important}
+  .ct-grid{flex-direction:column!important}
+  .calc-row{flex-direction:column!important}
+  .ph{padding:72px 18px 32px!important}
+  .ph-title{font-size:clamp(28px,7vw,48px)!important}
+  .h1{font-size:clamp(34px,9vw,72px)!important}
+  .hbtns{flex-direction:column;align-items:flex-end}
+  nav{padding:0 18px}
+  .hgtx{padding:0 18px}
+  .port-grid{grid-template-columns:1fr 1fr!important}
+  .about-cols{flex-direction:column!important}
+  .about-vis,.about-txt{width:100%!important}
+  .ps-grid{grid-template-columns:1fr 1fr!important}
+}
+@media (max-width:480px){
+  .port-grid{grid-template-columns:1fr!important}
+  .ps-grid{grid-template-columns:1fr!important}
+}
+/* SIDEBAR DESKTOP FIX */
+@media (min-width:768px){.nsb,.nsb-ov,.hbg-btn{display:none!important}nav .nav-links{display:flex!important}nav .lang-sw{display:flex!important}}
+
+/* ════ MOBILE NAV CLEANUP ════ */
+@media (max-width:767px){
+  /* Hide ALL nav items except logo, hamburger, theme */
+  nav .nav-links,
+  nav .lang-sw,
+  nav .lang-cycle,
+  nav .lang-btn { display:none!important; }
+  /* Show hamburger */
+  .hbg-btn { display:flex!important; margin-left:auto; }
+  /* Nav layout on mobile */
+  nav { padding:0 16px!important; }
+}
+
+/* ════ MOBILE LANG SWITCHER ════ */
+@media (max-width:767px){
+  nav .lang-sw { display:flex!important; }
+  .lang-cycle {
+    border:none!important;
+    background:none!important;
+    color:var(--ac)!important;
+    font-family:var(--M)!important;
+    font-size:.65rem!important;
+    letter-spacing:.18em!important;
+    padding:4px 8px!important;
+    font-weight:600!important;
+  }
+}
+
+.nsb-lang-top{background:none;border:1px solid var(--bd);color:var(--ac);font-family:var(--M);font-size:.62rem;letter-spacing:.18em;padding:5px 14px;cursor:pointer;margin-bottom:20px;align-self:flex-start;transition:all .2s}
+.nsb-lang-top:hover{border-color:var(--ac)}
+
+/* Light mode: hide map grid lines, keep only country outlines */
+body.light .map-grat { display: none !important; }
+
+/* Phone reveal button */
+.ph-reveal {
+  color: var(--mu);
+  cursor: pointer;
+  font-family: var(--M);
+  font-size: .78rem;
+  letter-spacing: .04em;
+  border-bottom: 1px dashed var(--mu);
+  transition: color .2s, border-color .2s;
+  padding-bottom: 1px;
+}
+.ph-reveal:hover { color: var(--ac); border-color: var(--ac); }
+</style></defs>
+  <g id="map-fb">
+    <path class="lnd" d="M30,72 L120,42 L175,31 L230,36 L245,46 L238,61 L250,69 L292,77 L310,100 L288,118 L275,125 L265,138 L250,148 L250,166 L242,166 L263,202 L258,210 L245,204 L230,192 L178,176 L158,148 L145,136 L120,87 L88,77 L63,82 Z"/>
+    <path class="lnd" d="M258,210 L263,199 L295,204 L325,230 L360,251 L355,281 L317,317 L290,371 L270,358 L265,314 L250,251 L250,230 Z"/>
+    <path class="lnd" d="M428,138 L445,100 L457,100 L462,82 L490,82 L505,87 L520,64 L505,51 L495,56 L488,72 L475,89 L462,82 L458,100 L475,118 L488,118 L495,128 L530,97 L525,87 L520,125 L515,133 L488,133 L480,118 L468,118 L450,118 L428,118 Z"/>
+    <path class="lnd" d="M405,192 L413,217 L438,217 L455,217 L470,243 L475,302 L490,317 L520,320 L538,294 L550,256 L560,220 L578,202 L545,192 L530,148 L513,148 L438,138 L408,156 Z"/>
+    <path class="lnd" d="M515,123 L588,123 L600,164 L620,169 L650,204 L680,210 L740,251 L770,192 L800,128 L788,115 L750,107 L638,118 L600,112 Z"/>
+    <path class="lnd" d="M735,286 L760,276 L790,261 L820,281 L830,307 L810,327 L735,317 Z"/>
+    <circle cx="526" cy="101" r="6" fill="#BF9148" style="cursor:pointer" onclick="showMapTip(event,this)" data-tip="Київ, Україна · 150+ проєктів"/>
+    <circle cx="190" cy="148" r="5" fill="#BF9148" style="cursor:pointer" onclick="showMapTip(event,this)" data-tip="США · Резиденційні проєкти"/>
+    <circle cx="445" cy="130" r="5" fill="#BF9148" style="cursor:pointer" onclick="showMapTip(event,this)" data-tip="Іспанія · Середземномор'я"/>
+    <circle cx="738" cy="265" r="5" fill="#BF9148" style="cursor:pointer" onclick="showMapTip(event,this)" data-tip="Балі, Індонезія · Вілли"/>
+    <text x="18" y="448" fill="rgba(191,145,72,.4)" font-size="9" font-family="'Plus Jakarta Sans',sans-serif" letter-spacing="2">● НАШІ ПРОЄКТИ</text>
+  </g>
+</svg>
+    </div>
+    <div id="map-tip" class="map-tooltip"></div>
+  </div>
+
+  
+
+  <!-- CALCULATOR -->
+  <div class="calc-wrap">
+    <h2 class="calc-title" data-i18n="calc_title">Калькулятор вартості інтер'єру</h2>
+    <div class="calc-body">
+      <div class="calc-form">
+        <div class="calc-group">
+          <label data-i18n="calc_type">Послуги (виберіть одну або кілька)</label>
+          <div class="calc-tabs-row">
+            <button class="calc-tab on" id="ct-d" onclick="toggleCalcSvc('d',this)" data-i18n="calc_design">Дизайн</button>
+            <button class="calc-tab" id="ct-r" onclick="toggleCalcSvc('r',this)" data-i18n="calc_reno">Ремонт</button>
+            <button class="calc-tab" id="ct-f" onclick="toggleCalcSvc('f',this)" data-i18n="calc_furn">Меблювання</button>
+            <button class="calc-tab" id="ct-c" onclick="toggleCalcSvc('c',this)" data-i18n="calc_constr">Будівництво</button>
+            <button class="calc-tab" id="ct-l" onclick="toggleCalcSvc('l',this)" data-i18n="calc_land">Ландшафт</button>
+          </div>
+          <div id="combo-hint" style="margin-top:8px;font-family:var(--M);font-size:.67rem;color:var(--mu)">Оберіть 2+ послуги — знижка 5–10%</div>
+        </div>
+        <div class="calc-group">
+          <label style="display:flex;justify-content:space-between;align-items:baseline">
+            <span data-i18n="calc_area_lbl">Площа об'єкту</span>
+            <span class="area-val"><strong id="areaDisplay">100</strong> м²</span>
+          </label>
+          <div class="slider-wrap">
+            <div id="areaBubble" style="position:absolute;top:-20px;left:calc(14% - 16px);background:var(--sf);border:1px solid var(--ac);color:var(--ac);font-family:var(--M);font-size:.58rem;padding:2px 6px;pointer-events:none;transform:translateX(-50%)">100 м²</div>
+            <input type="range" class="calc-slider" id="areaSlider" min="30" max="500" value="100" oninput="sliderMove(this)">
+          </div>
+        </div>
+        <div class="calc-group">
+          <label data-i18n="calc_tier">Рівень реалізації</label>
+          <select class="calc-select" id="tierSelect" onchange="calcUpdate()">
+            <option value="eco" data-i18n="tier_eco">Економ — базові матеріали</option>
+            <option value="std" selected data-i18n="tier_std">Стандарт — оптимальне співвідношення</option>
+            <option value="prem" data-i18n="tier_prem">Преміум — якісні матеріали та техніка</option>
+            <option value="lux" data-i18n="tier_lux">Люкс — найкраще з доступного</option>
+          </select>
+        </div>
+        <div class="calc-group">
+          <label data-i18n="calc_extra">Додаткові опції</label>
+          <div class="calc-chk-row">
+            <label class="calc-chk"><input type="checkbox" id="ch-smart" onchange="calcUpdate()"> <span data-i18n="ch_smart">Розумний будинок (+$120/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-climate" onchange="calcUpdate()"> <span data-i18n="ch_climate">Клімат-контроль (+$65/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-3d" onchange="calcUpdate()"> <span data-i18n="ch_3d">3D-рендер (+$25/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-sup" onchange="calcUpdate()"> <span data-i18n="ch_sup">Авторський нагляд (+$20/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-china" onchange="calcUpdate()"> <span data-i18n="ch_china">China Opt Shop (−15% на меблі)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-facade" onchange="calcUpdate()"> <span data-i18n="ch_facade">Фасадне оздоблення (+$120/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-sound" onchange="calcUpdate()"> <span data-i18n="ch_sound">Шумоізоляція (+$45/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-cctv" onchange="calcUpdate()"> <span data-i18n="ch_cctv">Відеоспостереження (+$15/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-sec" onchange="calcUpdate()"> <span data-i18n="ch_sec">Охоронна система (+$18/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-docs" onchange="calcUpdate()"> <span data-i18n="ch_docs">Документація та дозволи (+$12/м²)</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="calc-result-box">
+        <span class="cr-label" data-i18n="calc_estimate">Орієнтовна вартість</span>
+        <div class="cr-total">$<span id="cr-num">5,500</span></div>
+        <div class="cr-sub" data-i18n="calc_sub">Точний розрахунок після консультації</div>
+        <div class="cr-lines" id="cr-lines"></div>
+        <button class="btn" style="width:100%;justify-content:center;margin-top:24px" href="/contact.html"><span data-i18n="calc_cta">Отримати консультацію</span><span>→</span></button>
+      </div>
+    </div>
+  </div>
+
+  <footer><span class="fl">CAS Development</span><span class="fc">© 2025 CAS Development · Київ, Україна</span><div class="fs"><a href="https://www.instagram.com/cas_development/" target="_blank">Instagram</a><a href="https://t.me/chinashop_opt" target="_blank">Telegram</a><a href="https://wa.me/380978667755" target="_blank">WhatsApp</a></div></footer>
+</main>
+<script>
+
+/* ═══ CURSOR ═══ */
+const cr=document.getElementById('cr'),crf=document.getElementById('crf');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cr.style.left=mx+'px';cr.style.top=my+'px'});
+(function a(){fx+=(mx-fx)*.11;fy+=(my-fy)*.11;crf.style.left=fx+'px';crf.style.top=fy+'px';requestAnimationFrame(a)})();
+document.querySelectorAll('a,button,.pi,.sp-card,.strip-item,.proj-cover').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cr.style.transform='translate(-50%,-50%) scale(2)';crf.style.transform='translate(-50%,-50%) scale(1.5)';crf.style.borderColor='rgba(191,145,72,.7)'});
+  el.addEventListener('mouseleave',()=>{cr.style.transform='translate(-50%,-50%) scale(1)';crf.style.transform='translate(-50%,-50%) scale(1)';crf.style.borderColor='rgba(191,145,72,.4)'});
+});
+/* ═══ LIGHTBOX ═══ */
+let lbImgs=[],lbIdx=0;
+function lbOpen(img){const page=img.closest('.page');lbImgs=Array.from(page.querySelectorAll('.pi-photo'));lbIdx=lbImgs.indexOf(img);lbShow();document.getElementById('lb').classList.add('open');document.addEventListener('keydown',lbKey);}
+function lbShow(){const el=document.getElementById('lb-img');el.style.opacity='.3';el.src=lbImgs[lbIdx].src.replace('&sz=w900','&sz=w1600');el.onload=()=>el.style.opacity='1';document.getElementById('lb-info').textContent=(lbIdx+1)+' / '+lbImgs.length;}
+function lbNav(d){lbIdx=(lbIdx+d+lbImgs.length)%lbImgs.length;lbShow();}
+function lbClose(){document.getElementById('lb').classList.remove('open');document.removeEventListener('keydown',lbKey);}
+function lbKey(e){if(e.key==='ArrowRight')lbNav(1);else if(e.key==='ArrowLeft')lbNav(-1);else if(e.key==='Escape')lbClose();}
+document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
+/* ═══ THEME ═══ */
+function toggleTheme(){const light=document.body.classList.toggle('light');document.getElementById('themeBtn').textContent=light?'\u{1F319}':'\u2600\uFE0F';localStorage.setItem('cas-theme',light?'light':'dark');}
+(function(){if(localStorage.getItem('cas-theme')==='light'){document.body.classList.add('light');const b=document.getElementById('themeBtn');if(b)b.textContent='\u{1F319}';}})();
+/* ═══ MOBILE NAV ═══ */
+function toggleNav(){const sb=document.getElementById('nsb'),ov=document.getElementById('nsbOv');sb.classList.toggle('open');ov.classList.toggle('active');}
+function closeNav(){document.getElementById('nsb')?.classList.remove('open');document.getElementById('nsbOv')?.classList.remove('active');}
+/* ═══ ABOUT TRANSLATIONS (via querySelectorAll) ═══ */
+const AB={
+  uk:{lead:'CAS Development \u2014 \u0441\u0442\u0443\u0434\u0456\u044f, \u0434\u0435 \u0430\u0440\u0445\u0456\u0442\u0435\u043a\u0442\u0443\u0440\u0430 \u0437\u0443\u0441\u0442\u0440\u0456\u0447\u0430\u0454\u0442\u044c\u0441\u044f \u0437 \u0434\u0435\u0442\u0430\u043b\u043b\u044e.',b:['\u041c\u0438 \u0437\u0430\u0439\u043c\u0430\u0454\u043c\u043e\u0441\u044f \u0434\u0438\u0437\u0430\u0439\u043d\u043e\u043c \u0456\u043d\u0442\u0435\u0440\u2019\u0454\u0440\u0456\u0432 \u0456 \u0440\u0435\u043c\u043e\u043d\u0442\u043e\u043c \u043f\u0456\u0434 \u043a\u043b\u044e\u0447 \u2014 \u0432\u0456\u0434 \u043a\u043e\u043c\u043f\u0430\u043a\u0442\u043d\u0438\u0445 \u043a\u0432\u0430\u0440\u0442\u0438\u0440 \u0434\u043e \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u043d\u0438\u0445 \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u0438\u0445 \u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0446\u0456\u0439. \u0417\u0430 \u043f\u043e\u043d\u0430\u0434 10 \u0440\u043e\u043a\u0456\u0432 \u0440\u043e\u0431\u043e\u0442\u0438 \u0440\u0435\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u043b\u0438 \u043f\u043e\u043d\u0430\u0434 200 \u043f\u0440\u043e\u0454\u043a\u0442\u0456\u0432.','\u041d\u0430\u0448 \u043f\u0456\u0434\u0445\u0456\u0434 \u2014 \u043d\u0435 \u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0442\u0440\u0435\u043d\u0434\u0438, \u0430 \u0433\u043b\u0438\u0431\u043e\u043a\u043e \u0437\u0440\u043e\u0437\u0443\u043c\u0456\u0442\u0438 \u0432\u0430\u0441 \u0456 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043f\u0440\u043e\u0441\u0442\u0456\u0440, \u0449\u043e \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454 \u0432\u0430\u0448 \u0441\u043f\u043e\u0441\u0456\u0431 \u0436\u0438\u0442\u0442\u044f.','\u041f\u0430\u0440\u0430\u043b\u0435\u043b\u044c\u043d\u043e \u043c\u0438 \u0440\u043e\u0437\u0432\u0438\u0432\u0430\u0454\u043c\u043e \u0432\u043b\u0430\u0441\u043d\u0438\u0439 \u043d\u0430\u043f\u0440\u044f\u043c \u043c\u0435\u0431\u043b\u044e\u0432\u0430\u043d\u043d\u044f \u0447\u0435\u0440\u0435\u0437 \u043f\u0440\u044f\u043c\u0438\u0439 \u0456\u043c\u043f\u043e\u0440\u0442 \u0437 \u041a\u0438\u0442\u0430\u044e: <strong>China Opt Shop</strong>.','\u041a\u043e\u043c\u0430\u043d\u0434\u0430 CAS Development \u2014 \u0430\u0440\u0445\u0456\u0442\u0435\u043a\u0442\u043e\u0440\u0438, \u0434\u0438\u0437\u0430\u0439\u043d\u0435\u0440\u0438, \u0442\u0435\u0445\u043d\u0456\u0447\u043d\u0456 \u043d\u0430\u0433\u043b\u044f\u0434\u0430\u0447\u0456 \u0442\u0430 \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u0438 \u043f\u0440\u043e\u0454\u043a\u0442\u0456\u0432.'],vn:['\u041c\u0456\u043d\u0456\u043c\u0430\u043b\u0456\u0437\u043c','\u042f\u043a\u0456\u0441\u0442\u044c','\u041f\u0440\u043e\u0437\u043e\u0440\u0456\u0441\u0442\u044c','\u041e\u0441\u043e\u0431\u0438\u0441\u0442\u0456\u0441\u0442\u044c'],vd:['\u041f\u0440\u0438\u0431\u0438\u0440\u0430\u0454\u043c\u043e \u0437\u0430\u0439\u0432\u0435 \u2014 \u0437\u0430\u043b\u0438\u0448\u0430\u0454\u043c\u043e \u0441\u0443\u0442\u044c.','\u041c\u0430\u0442\u0435\u0440\u0456\u0430\u043b\u0438, \u0440\u0456\u0448\u0435\u043d\u043d\u044f, \u0432\u0438\u043a\u043e\u043d\u0430\u0432\u0446\u0456 \u2014 \u0442\u0456\u043b\u044c\u043a\u0438 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0435\u043d\u0456 \u0440\u043e\u043a\u0430\u043c\u0438.','\u0429\u043e\u0434\u0435\u043d\u043d\u0456 \u0444\u043e\u0442\u043e-\u0437\u0432\u0456\u0442\u0438. \u041a\u043e\u0448\u0442\u043e\u0440\u0438\u0441 \u0431\u0435\u0437 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0438\u0445 \u0441\u0442\u0430\u0442\u0435\u0439.','\u0416\u043e\u0434\u043d\u0438\u0445 \u0448\u0430\u0431\u043b\u043e\u043d\u0456\u0432. \u041a\u043e\u0436\u0435\u043d \u043f\u0440\u043e\u0454\u043a\u0442 \u2014 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u043e\u0457 \u043b\u044e\u0434\u0438\u043d\u0438.'],badge:'\u0417\u0430\u0441\u043d\u043e\u0432\u0430\u043d\u0430 \u0432 \u041a\u0438\u0454\u0432\u0456'},
+  en:{lead:'CAS Development \u2014 a studio where architecture meets detail.',b:['We specialize in interior design and turnkey renovation \u2014 from compact apartments to large private residences. Over 10 years, we have realized more than 200 projects in Ukraine, USA, Spain, Bali and other countries.','Our approach is not to copy trends, but to deeply understand you and create a space that reflects your way of life.','In parallel, we develop our furniture direction through direct import from China: <strong>China Opt Shop</strong>. Access to quality furniture without middlemen.','The CAS Development team \u2014 architects, designers, technical supervisors and project managers.'],vn:['Minimalism','Quality','Transparency','Personality'],vd:['We remove the excess \u2014 keeping the essence.','Materials, solutions, contractors \u2014 only those verified by years.','Daily photo reports. Budget without hidden items.','No templates. Every project \u2014 a reflection of a specific person.'],badge:'Founded in Kyiv'},
+  es:{lead:'CAS Development \u2014 estudio donde la arquitectura se encuentra con el detalle.',b:['Nos especializamos en dise\u00f1o de interiores y renovaci\u00f3n integral.','Nuestro enfoque es entenderte profundamente y crear un espacio que refleje tu forma de vida.','Importaci\u00f3n directa de China: <strong>China Opt Shop</strong>.','El equipo CAS Development \u2014 arquitectos, dise\u00f1adores y supervisores.'],vn:['Minimalismo','Calidad','Transparencia','Personalidad'],vd:['Eliminamos lo superfluo \u2014 conservamos la esencia.','Materiales y contratistas verificados por a\u00f1os.','Informes fotogr\u00e1ficos diarios. Presupuesto sin ocultos.','Sin plantillas. Cada proyecto \u2014 reflejo de una persona.'],badge:'Fundada en Kyiv'}
+};
+function updateAbout(l){
+  const d=AB[l]||AB.uk;
+  const leadEl=document.getElementById('about-lead-txt')||document.querySelector('.about-lead');
+  if(leadEl)leadEl.innerHTML=d.lead;
+  document.querySelectorAll('#p-about .about-body').forEach((p,i)=>{if(d.b[i])p.innerHTML=d.b[i];});
+  document.querySelectorAll('#p-about .val-n').forEach((el,i)=>{if(d.vn[i])el.textContent=d.vn[i];});
+  document.querySelectorAll('#p-about .val-d').forEach((el,i)=>{if(d.vd[i])el.textContent=d.vd[i];});
+  const bg=document.getElementById('ab-badge');if(bg)bg.textContent=d.badge;
+}
+/* ═══ WORLD MAP ═══ */
+let mapDone=false;
+function initMap(){
+  if(mapDone)return;if(typeof d3==='undefined'||typeof topojson==='undefined')return;mapDone=true;
+  const W=900,H=460,svg=d3.select('#wsvg');
+  svg.select('defs').append('clipPath').attr('id','mc').append('rect').attr('width',W).attr('height',H);
+  const proj=d3.geoNaturalEarth1().scale(166).translate([W/2,H/2+22]);
+  const pfn=d3.geoPath().projection(proj);
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r=>r.json()).then(world=>{
+    const fb=document.getElementById('map-fb');if(fb)fb.style.display='none';
+    const mg=svg.append('g').attr('clip-path','url(#mc)');
+    mg.append('path').attr('class','map-grat').datum(d3.geoGraticule()()).attr('d',pfn).attr('fill','none').attr('stroke','rgba(191,145,72,.04)').attr('stroke-width',.28);
+    mg.append('g').selectAll('path').data(topojson.feature(world,world.objects.countries).features).join('path').attr('class','lnd').attr('d',pfn);
+    mg.append('path').datum(topojson.mesh(world,world.objects.countries,(a,b)=>a!==b)).attr('fill','none').attr('stroke','rgba(191,145,72,.1)').attr('stroke-width',.2).attr('d',pfn);
+    const DOTS=[{ll:[30.52,50.45],sz:'big'},{ll:[-87.63,41.88],sz:'med'},{ll:[-3.70,40.42],sz:'med'},{ll:[115.19,-8.41],sz:'med'},{ll:[28.97,41.01],sz:'sm'},{ll:[55.30,25.20],sz:'sm'},{ll:[34.78,32.08],sz:'sm'},{ll:[21.01,52.23],sz:'sm'},{ll:[14.42,50.08],sz:'sm'},{ll:[4.90,52.37],sz:'sm'},{ll:[2.35,48.86],sz:'sm'},{ll:[13.40,52.52],sz:'sm'},{ll:[103.82,1.35],sz:'sm'},{ll:[139.69,35.69],sz:'sm'},{ll:[18.42,-33.92],sz:'sm'},{ll:[-79.38,43.65],sz:'sm'},{ll:[12.57,55.68],sz:'sm'},{ll:[24.94,60.17],sz:'sm'},{ll:[-46.63,-23.55],sz:'sm'},{ll:[36.82,10.17],sz:'sm'}];
+    DOTS.forEach(d=>{
+      const [x,y]=proj(d.ll);if(isNaN(x)||isNaN(y))return;
+      const g=mg.append('g').style('cursor','pointer');
+      if(d.sz==='big'){g.append('circle').attr('cx',x).attr('cy',y).attr('r',20).attr('fill','rgba(191,145,72,.08)').style('animation','mpd 3s ease infinite');g.append('circle').attr('cx',x).attr('cy',y).attr('r',11).attr('fill','rgba(191,145,72,.2)');g.append('circle').attr('cx',x).attr('cy',y).attr('r',5.5).attr('fill','#BF9148');}
+      else if(d.sz==='med'){g.append('circle').attr('cx',x).attr('cy',y).attr('r',13).attr('fill','rgba(191,145,72,.12)');g.append('circle').attr('cx',x).attr('cy',y).attr('r',7.5).attr('fill','rgba(191,145,72,.22)');g.append('circle').attr('cx',x).attr('cy',y).attr('r',4).attr('fill','#BF9148');}
+      else{g.append('circle').attr('cx',x).attr('cy',y).attr('r',8).attr('fill','rgba(191,145,72,.1)');g.append('circle').attr('cx',x).attr('cy',y).attr('r',4.5).attr('fill','rgba(191,145,72,.22)');g.append('circle').attr('cx',x).attr('cy',y).attr('r',2.8).attr('fill','#BF9148');}
+    });
+    mg.append('text').attr('id','map-lgn').attr('x',18).attr('y',448).attr('fill','rgba(191,145,72,.4)').attr('font-size',9).attr('font-family',"'Plus Jakarta Sans',sans-serif").attr('letter-spacing',2).text(I18N[curLang]?.ct_map_lgn||'\u25cf \u041d\u0410\u0428\u0406 \u041f\u0420\u041e\u0404\u041a\u0422\u0418');
+  }).catch(()=>{});
+}
+function showMapTip(e,el){const t=document.getElementById('map-tip');if(!t)return;t.textContent=el.dataset.tip||'';t.style.display='block';const wr=el.closest('.world-map-wrap').getBoundingClientRect();t.style.left=(e.clientX-wr.left+12)+'px';t.style.top=(e.clientY-wr.top-36)+'px';setTimeout(()=>t.style.display='none',2500);}
+/* ═══ LANGUAGE ═══ */
+const LANG_LIST=['uk','en','es'];const LANG_DISPLAY={uk:'UA',en:'EN',es:'ES'};
+let curLang='uk',langIdx=0;
+const I18N={
+  uk:{nav_home:'Головна',nav_services:'Послуги',nav_portfolio:'Портфоліо',nav_about:'Про нас',nav_contacts:'Контакти',expand:'Детальніше',ct_label:'Зв\u0027язатися',ct_map_label:'Наші проєкти по світу',ct_map_lgn:'\u25cf \u041d\u0410\u0428\u0406 \u041f\u0420\u041e\u0404\u041a\u0422\u0418',ct_title:'Давайте обговоримо ваш простір',ct_sub:'Розкажіть про проєкт \u2014 запропонуємо рішення. Безкоштовна консультація 30 хвилин.',ct_city_l:'Місто',ct_phone_l:'Телефон / Месенджери',ct_prices_l:'Вартість послуг',f_name:'Ваше ім\u0027я',f_phone:'Телефон / Telegram',f_service:'Послуга',f_pick:'Оберіть послугу',f_area:'Площа об\u0027єкту',f_msg:'Розкажіть про проєкт',f_submit:'Надіслати заявку',calc_title:'Калькулятор вартості інтер\u0027єру',calc_type:'Послуги (виберіть одну або кілька)',calc_design:'Дизайн',calc_reno:'Ремонт',calc_furn:'Меблювання',calc_constr:'Будівництво',calc_land:'Ландшафт',calc_area_lbl:'Площа об\u0027єкту',calc_tier:'Рівень реалізації',calc_extra:'Додаткові опції',tier_eco:'Економ \u2014 базові матеріали',tier_std:'Стандарт \u2014 оптимально',tier_prem:'Преміум \u2014 якісні матеріали',tier_lux:'Люкс \u2014 найкраще',ch_smart:'Розумний будинок (+$120/м²)',ch_climate:'Клімат-контроль (+$65/м²)',ch_3d:'3D-рендер (+$25/м²)',ch_sup:'Авторський нагляд (+$20/м²)',ch_china:'China Opt Shop (\u221215% на меблі)',ch_facade:'Фасадне оздоблення (+$120/м²)',ch_sound:'Шумоізоляція (+$45/м²)',ch_cctv:'Відеоспостереження (+$15/м²)',ch_sec:'Охоронна система (+$18/м²)',ch_docs:'Документація та дозволи (+$12/м²)',calc_estimate:'Орієнтовна вартість',calc_sub:'Точний розрахунок після консультації',calc_cta:'Отримати консультацію',discount_lbl:'\u0417\u043d\u0438\u0436\u043a\u0430',total_lbl:'\u0420\u0430\u0437\u043e\u043c',disc10:'\u2713 Знижка 10% на весь комплекс',disc5:'\u2713 Знижка 5% на комбінацію',combo_base:'Оберіть 2+ послуги \u2014 знижка 5\u201310%',ok_msg:'\u2713 Заявку отримано! Ми зв\u0027яжемося з вами впродовж 24 годин.',ph_name:'Ваше ім\u0027я',ph_phone:'Телефон / Telegram',ph_area:'Наприклад: 80 м²',ph_msg:'Що за об\u0027єкт? Стиль? Терміни?'},
+  en:{nav_home:'Home',nav_services:'Services',nav_portfolio:'Portfolio',nav_about:'About',nav_contacts:'Contact',expand:'More Details',ct_label:'Get In Touch',ct_map_label:'Our Projects Worldwide',ct_map_lgn:'\u25cf OUR PROJECTS',ct_title:"Let's Discuss Your Space",ct_sub:"Tell us about your project \u2014 we'll offer solutions. Free 30-minute consultation.",ct_city_l:'City',ct_phone_l:'Phone / Messengers',ct_prices_l:'Service Pricing',f_name:'Your Name',f_phone:'Phone / Telegram',f_service:'Service',f_pick:'Select a service',f_area:'Object Area',f_msg:'Tell us about the project',f_submit:'Send Request',calc_title:'Interior Cost Calculator',calc_type:'Services (select one or more)',calc_design:'Design',calc_reno:'Renovation',calc_furn:'Furniture',calc_constr:'Construction',calc_land:'Landscape',calc_area_lbl:'Object Area',calc_tier:'Implementation Level',calc_extra:'Additional Options',tier_eco:'Economy \u2014 basic materials',tier_std:'Standard \u2014 optimal balance',tier_prem:'Premium \u2014 quality materials',tier_lux:'Luxury \u2014 the very best',ch_smart:'Smart Home (+$120/m²)',ch_climate:'Climate Control (+$65/m²)',ch_3d:'3D Render (+$25/m²)',ch_sup:'Author Supervision (+$20/m²)',ch_china:'China Opt Shop (\u221215% on furniture)',ch_facade:'Facade Finishing (+$120/m²)',ch_sound:'Soundproofing (+$45/m²)',ch_cctv:'CCTV (+$15/m²)',ch_sec:'Security System (+$18/m²)',ch_docs:'Documentation (+$12/m²)',calc_estimate:'Estimated Cost',calc_sub:'Exact calculation after consultation',calc_cta:'Get Consultation',discount_lbl:'Discount',total_lbl:'Total',disc10:'\u2713 10% discount for full complex',disc5:'\u2713 5% discount for combination',combo_base:'Select 2+ services \u2014 5\u201310% discount',ok_msg:"\u2713 Request received! We'll contact you within 24 hours.",ph_name:'Your Name',ph_phone:'Phone / Telegram',ph_area:'Example: 80 m²',ph_msg:'What is the space? Style? Timeline?'},
+  es:{nav_home:'Inicio',nav_services:'Servicios',nav_portfolio:'Portafolio',nav_about:'Nosotros',nav_contacts:'Contacto',expand:'Más Detalles',ct_label:'Contáctenos',ct_map_label:'Nuestros Proyectos',ct_map_lgn:'\u25cf NUESTROS PROYECTOS',ct_title:'Hablemos de Tu Espacio',ct_sub:'Cuéntanos sobre tu proyecto.',ct_city_l:'Ciudad',ct_phone_l:'Teléfono',ct_prices_l:'Precios',f_name:'Tu Nombre',f_phone:'Teléfono',f_service:'Servicio',f_pick:'Selecciona',f_area:'Área',f_msg:'Cuéntanos',f_submit:'Enviar',calc_title:'Calculadora',calc_type:'Servicios',calc_design:'Diseño',calc_reno:'Renovación',calc_furn:'Muebles',calc_constr:'Construcción',calc_land:'Paisajismo',calc_area_lbl:'Área',calc_tier:'Nivel',calc_extra:'Opciones',tier_eco:'Económico',tier_std:'Estándar',tier_prem:'Premium',tier_lux:'Lujo',ch_smart:'Casa Inteligente (+$120)',ch_climate:'Clima (+$65)',ch_3d:'Render 3D (+$25)',ch_sup:'Supervisión (+$20)',ch_china:'China Opt Shop (\u221215%)',ch_facade:'Fachada (+$120)',ch_sound:'Aislamiento (+$45)',ch_cctv:'CCTV (+$15)',ch_sec:'Seguridad (+$18)',ch_docs:'Documentación (+$12)',calc_estimate:'Costo Estimado',calc_sub:'Cálculo después de consulta',calc_cta:'Consulta',discount_lbl:'Descuento',total_lbl:'Total',disc10:'\u2713 Descuento 10%',disc5:'\u2713 Descuento 5%',combo_base:'2+ servicios \u2014 5\u201310%',ok_msg:'\u2713 Solicitud recibida!',ph_name:'Tu Nombre',ph_phone:'Teléfono',ph_area:'Ejemplo: 80 m²',ph_msg:'¿Qué espacio?'}
+};
+const SVC={
+  uk:{dNm:'Дизайн<br>інтер\u0027єру',rNm:'Ремонт<br>під ключ',fNm:'Меблювання<br>та декор',cNm:'Будівництво',lNm:'Ландшафтний<br>дизайн',dPr:'від $40 / м\u00b2',rPr:'від $550 / м\u00b2',fPr:'від $250 / м\u00b2',cPr:'від $600 / м\u00b2',lPr:'від $50 / сотку',dDs:'Розробляємо концепцію, що відображає вашу особистість.',rDs:'Будівельні та оздоблювальні роботи. Дотримуємося проєкту, термінів і бюджету.',fDs:'Підбираємо та постачаємо меблі, освітлення, декор. Прямий імпорт без посередників.',cDs:'Зведення та реконструкція будівель під ключ. Від фундаменту до фінального оздоблення.',lDs:'Проектування та облаштування садів і прилеглих територій. Від концепції до реалізації.',dLi:'<li class="sv-item">Концепція та ескізний проєкт</li><li class="sv-item">3D-візуалізація всіх приміщень</li><li class="sv-item">Робочі та монтажні креслення</li><li class="sv-item">Специфікація матеріалів і меблів</li><li class="sv-item">Авторський нагляд</li>',rLi:'<li class="sv-item">Демонтаж та підготовчі роботи</li><li class="sv-item">Електрика, сантехніка, вентиляція</li><li class="sv-item">Оздоблювальні та малярні роботи</li><li class="sv-item">Укладання підлог та стель</li><li class="sv-item">Здача з гарантією</li>',fLi:'<li class="sv-item">Підбір меблів під проєкт</li><li class="sv-item">Прямий імпорт з виробниками</li><li class="sv-item">Текстиль та м\u0027який декор</li><li class="sv-item">Освітлення та аксесуари</li><li class="sv-item">Збирання та розстановка</li>',cLi:'<li class="sv-item">Монтаж фундаменту та конструктиву</li><li class="sv-item">Зведення стін та перекриттів</li><li class="sv-item">Покрівля та фасадне оздоблення</li><li class="sv-item">Інженерні системи</li><li class="sv-item">Внутрішнє оздоблення та здача</li>',lLi:'<li class="sv-item">Концепція та ескізний план</li><li class="sv-item">Ландшафтне планування ділянки</li><li class="sv-item">Підбір рослин та матеріалів</li><li class="sv-item">Дренаж та полив</li><li class="sv-item">Укладання покриттів та доріжок</li>',dMo:'<div class="sv-more-list"><div class="sv-more-item">Аналіз простору та функціональний зонінг</div><div class="sv-more-item">Концептуальний дизайн</div><div class="sv-more-item">3D-візуалізація</div><div class="sv-more-item">Робочі та монтажні креслення</div><div class="sv-more-item">Специфікація матеріалів з прайс-листами</div><div class="sv-more-item">Авторський нагляд</div><div class="sv-more-item">VR-тур (опція)</div></div><div><span class="sv-more-tag">3\u20138 тижнів</span><span class="sv-more-tag">від $40 / м\u00b2</span><span class="sv-more-tag">Безкоштовна консультація</span></div>',rMo:'<div class="sv-more-list"><div class="sv-more-item">Демонтаж будь-якої складності</div><div class="sv-more-item">Електрика: прихована проводка, смарт-будинок</div><div class="sv-more-item">Сантехніка та опалення</div><div class="sv-more-item">Вентиляція та тепла підлога</div><div class="sv-more-item">Штукатурка, стяжка, вирівнювання</div><div class="sv-more-item">Укладання плитки, паркету, мармуру</div><div class="sv-more-item">Натяжні та гіпсокартонні стелі</div><div class="sv-more-item">Малярні та декоративні роботи</div><div class="sv-more-item">Щоденні фото-звіти у Telegram</div><div class="sv-more-item">Здача з актом та гарантією 2 роки</div></div><div><span class="sv-more-tag">1\u201312 місяців</span><span class="sv-more-tag">від $550 / м\u00b2</span><span class="sv-more-tag">Фіксований кошторис</span></div>',fMo:'<div class="sv-more-list"><div class="sv-more-item">Підбір меблів під проєкт та бюджет</div><div class="sv-more-item">Прямий імпорт через China Opt Shop</div><div class="sv-more-item">200+ перевірених виробників</div><div class="sv-more-item">Меблі на замовлення</div><div class="sv-more-item">Освітлення та аксесуари</div><div class="sv-more-item">Текстиль та декор</div><div class="sv-more-item">Збирання та стилізація</div></div><div><span class="sv-more-tag">2\u20138 тижнів</span><span class="sv-more-tag">від $250 / м\u00b2</span><span class="sv-more-tag">China Opt Shop</span></div>',cMo:'<div class="sv-more-list"><div class="sv-more-item">Геодезичні та топографічні роботи</div><div class="sv-more-item">Проектна документація та ДБН</div><div class="sv-more-item">Фундаментні роботи</div><div class="sv-more-item">Зведення стін та перекриттів</div><div class="sv-more-item">Монтаж даху та покрівлі</div><div class="sv-more-item">Фасадне оздоблення та утеплення</div><div class="sv-more-item">Вікна, двері, перегородки</div><div class="sv-more-item">Інженерні мережі та комунікації</div><div class="sv-more-item">Щоденні фото-звіти у Telegram</div><div class="sv-more-item">Здача з актом та гарантією 3 роки</div></div><div><span class="sv-more-tag">6\u201324 місяці</span><span class="sv-more-tag">від $600 / м\u00b2</span><span class="sv-more-tag">Технічний нагляд</span></div>',lMo:'<div class="sv-more-list"><div class="sv-more-item">Топографічна зйомка та аналіз ділянки</div><div class="sv-more-item">Концептуальний план ландшафту</div><div class="sv-more-item">Посадковий план та специфікація рослин</div><div class="sv-more-item">Дренаж та водовідведення</div><div class="sv-more-item">Система автоматичного поливу</div><div class="sv-more-item">Газон та плиткові доріжки</div><div class="sv-more-item">Декоративне освітлення ділянки</div><div class="sv-more-item">Малі архітектурні форми</div><div class="sv-more-item">Водні елементи (фонтани, ставки)</div></div><div><span class="sv-more-tag">2\u20138 тижнів</span><span class="sv-more-tag">від $50 / сотку</span><span class="sv-more-tag">Підбір рослин</span></div>',spD:'Концепція, 3D-візуалізація, робочі креслення та авторський нагляд.',spR:'Повний цикл будівельних та оздоблювальних робіт з гарантією.',spF:'Прямий імпорт меблів та декору з Китаю та Європи без посередників.',spC:'Зведення та реконструкція будівель під ключ.',spL:'Проектування та облаштування садів і прилеглих територій.'},
+  en:{dNm:'Interior<br>Design',rNm:'Renovation<br>Turnkey',fNm:'Furniture &amp;<br>Decor',cNm:'Construction',lNm:'Landscape<br>Design',dPr:'from $40 / m\u00b2',rPr:'from $550 / m\u00b2',fPr:'from $250 / m\u00b2',cPr:'from $600 / m\u00b2',lPr:'from $50 / 100m\u00b2',dDs:'We develop a concept that reflects your personality.',rDs:'Construction and finishing works. On schedule and within budget.',fDs:'We select and supply furniture, lighting, decor. Direct import without middlemen.',cDs:'Turnkey construction and reconstruction. From foundation to final finish.',lDs:'Design and landscaping of gardens and surrounding areas. From concept to realization.',dLi:'<li class="sv-item">Concept and sketch project</li><li class="sv-item">3D visualization of all rooms</li><li class="sv-item">Working and installation drawings</li><li class="sv-item">Materials and furniture specification</li><li class="sv-item">Author\'s supervision</li>',rLi:'<li class="sv-item">Demolition and preparatory works</li><li class="sv-item">Electrical, plumbing, ventilation</li><li class="sv-item">Finishing and painting works</li><li class="sv-item">Flooring and ceiling installation</li><li class="sv-item">Handover with warranty</li>',fLi:'<li class="sv-item">Furniture selection for project</li><li class="sv-item">Direct import from manufacturers</li><li class="sv-item">Textiles and soft decor</li><li class="sv-item">Lighting and accessories</li><li class="sv-item">Assembly and arrangement</li>',cLi:'<li class="sv-item">Foundation and structural work</li><li class="sv-item">Walls and floor construction</li><li class="sv-item">Roofing and facade finishing</li><li class="sv-item">Engineering systems</li><li class="sv-item">Interior finishing and handover</li>',lLi:'<li class="sv-item">Concept and sketch plan</li><li class="sv-item">Landscape planning</li><li class="sv-item">Plant and material selection</li><li class="sv-item">Drainage and irrigation</li><li class="sv-item">Paving and pathways</li>',dMo:'<div class="sv-more-list"><div class="sv-more-item">Space analysis and zoning</div><div class="sv-more-item">Conceptual design</div><div class="sv-more-item">3D visualization</div><div class="sv-more-item">Working drawings</div><div class="sv-more-item">Specification with price lists</div><div class="sv-more-item">Author\'s supervision</div><div class="sv-more-item">VR tour (option)</div></div><div><span class="sv-more-tag">3\u20138 weeks</span><span class="sv-more-tag">from $40 / m\u00b2</span><span class="sv-more-tag">Free Consultation</span></div>',rMo:'<div class="sv-more-list"><div class="sv-more-item">Demolition of any complexity</div><div class="sv-more-item">Electrical: concealed wiring, smart home</div><div class="sv-more-item">Plumbing and heating</div><div class="sv-more-item">Ventilation and underfloor heating</div><div class="sv-more-item">Plastering, screed, leveling</div><div class="sv-more-item">Tiles, parquet, laminate, marble</div><div class="sv-more-item">Stretch and drywall ceilings</div><div class="sv-more-item">Painting and decorative works</div><div class="sv-more-item">Daily Telegram photo reports</div><div class="sv-more-item">Handover with 2-year warranty</div></div><div><span class="sv-more-tag">1\u201312 months</span><span class="sv-more-tag">from $550 / m\u00b2</span><span class="sv-more-tag">Fixed Estimate</span></div>',fMo:'<div class="sv-more-list"><div class="sv-more-item">Furniture selection for project</div><div class="sv-more-item">Direct import via China Opt Shop</div><div class="sv-more-item">200+ verified manufacturers</div><div class="sv-more-item">Custom furniture to order</div><div class="sv-more-item">Lighting and accessories</div><div class="sv-more-item">Textiles and decor</div><div class="sv-more-item">Assembly and styling</div></div><div><span class="sv-more-tag">2\u20138 weeks</span><span class="sv-more-tag">from $250 / m\u00b2</span><span class="sv-more-tag">China Opt Shop</span></div>',cMo:'<div class="sv-more-list"><div class="sv-more-item">Geodetic and topographic works</div><div class="sv-more-item">Project documentation</div><div class="sv-more-item">Foundation works</div><div class="sv-more-item">Walls and floor slabs</div><div class="sv-more-item">Roof installation</div><div class="sv-more-item">Facade finishing and insulation</div><div class="sv-more-item">Windows, doors, partitions</div><div class="sv-more-item">Engineering networks</div><div class="sv-more-item">Daily photo reports in Telegram</div><div class="sv-more-item">Handover with 3-year warranty</div></div><div><span class="sv-more-tag">6\u201324 months</span><span class="sv-more-tag">from $600 / m\u00b2</span><span class="sv-more-tag">Technical Supervision</span></div>',lMo:'<div class="sv-more-list"><div class="sv-more-item">Topographic survey and analysis</div><div class="sv-more-item">Conceptual landscape plan</div><div class="sv-more-item">Planting plan and specification</div><div class="sv-more-item">Drainage and water management</div><div class="sv-more-item">Automatic irrigation system</div><div class="sv-more-item">Lawn and paving</div><div class="sv-more-item">Decorative lighting</div><div class="sv-more-item">Small architectural forms</div><div class="sv-more-item">Water features (fountains, ponds)</div></div><div><span class="sv-more-tag">2\u20138 weeks</span><span class="sv-more-tag">from $50 / 100m\u00b2</span><span class="sv-more-tag">Plant Selection</span></div>',spD:'Concept, 3D visualization, working drawings and supervision.',spR:'Full cycle of construction and finishing works with warranty.',spF:'Direct import of furniture and decor from China and Europe.',spC:'Turnkey building construction and reconstruction.',spL:'Design and landscaping of gardens and territories.'},
+  es:{dNm:'Diseño de<br>Interiores',rNm:'Renovación<br>Integral',fNm:'Mobiliario &amp;<br>Decor',cNm:'Construcción',lNm:'Diseño<br>Paisajístico',dPr:'desde $40 / m\u00b2',rPr:'desde $550 / m\u00b2',fPr:'desde $250 / m\u00b2',cPr:'desde $600 / m\u00b2',lPr:'desde $50 / 100m\u00b2',dDs:'Desarrollamos un concepto que refleja tu personalidad.',rDs:'Trabajos de construcción y acabado.',fDs:'Importación directa sin intermediarios.',cDs:'Construcción y reconstrucción integral.',lDs:'Diseño y ejecución de jardines y zonas exteriores.',dLi:'<li class="sv-item">Concepto</li><li class="sv-item">3D</li><li class="sv-item">Planos</li><li class="sv-item">Especificación</li><li class="sv-item">Supervisión</li>',rLi:'<li class="sv-item">Demolición</li><li class="sv-item">Electricidad</li><li class="sv-item">Acabados</li><li class="sv-item">Suelos y techos</li><li class="sv-item">Entrega</li>',fLi:'<li class="sv-item">Selección</li><li class="sv-item">Importación</li><li class="sv-item">Textiles</li><li class="sv-item">Iluminación</li><li class="sv-item">Montaje</li>',cLi:'<li class="sv-item">Cimentación</li><li class="sv-item">Paredes y forjados</li><li class="sv-item">Cubierta</li><li class="sv-item">Instalaciones</li><li class="sv-item">Acabados</li>',lLi:'<li class="sv-item">Concepto</li><li class="sv-item">Planificación</li><li class="sv-item">Plantas</li><li class="sv-item">Drenaje</li><li class="sv-item">Pavimentación</li>',dMo:'<div class="sv-more-list"><div class="sv-more-item">Análisis y zonificación</div><div class="sv-more-item">Diseño conceptual</div><div class="sv-more-item">3D fotorrealista</div><div class="sv-more-item">Planos de trabajo</div><div class="sv-more-item">Supervisión de autor</div></div><div><span class="sv-more-tag">3\u20138 semanas</span><span class="sv-more-tag">desde $40 / m\u00b2</span></div>',rMo:'<div class="sv-more-list"><div class="sv-more-item">Demolición</div><div class="sv-more-item">Electricidad</div><div class="sv-more-item">Fontanería</div><div class="sv-more-item">Acabados</div></div><div><span class="sv-more-tag">1\u201312 meses</span><span class="sv-more-tag">desde $550 / m\u00b2</span></div>',fMo:'<div class="sv-more-list"><div class="sv-more-item">Selección de muebles</div><div class="sv-more-item">China Opt Shop</div></div><div><span class="sv-more-tag">2\u20138 semanas</span><span class="sv-more-tag">desde $250 / m\u00b2</span></div>',cMo:'<div class="sv-more-list"><div class="sv-more-item">Documentación</div><div class="sv-more-item">Cimentación</div><div class="sv-more-item">Estructura</div><div class="sv-more-item">Fachada</div></div><div><span class="sv-more-tag">6\u201324 meses</span><span class="sv-more-tag">desde $600 / m\u00b2</span></div>',lMo:'<div class="sv-more-list"><div class="sv-more-item">Topografía</div><div class="sv-more-item">Plan de paisaje</div><div class="sv-more-item">Plantas</div><div class="sv-more-item">Riego</div></div><div><span class="sv-more-tag">2\u20138 semanas</span><span class="sv-more-tag">desde $50 / 100m\u00b2</span></div>',spD:'Concepto, 3D y planos.',spR:'Ciclo completo con garantía.',spF:'Importación directa.',spC:'Construcción y reconstrucción integral.',spL:'Diseño de jardines y exteriores.'}
+};
+const I18N_ID={
+  uk:{'hero-lbl':'Студія дизайну та архітектури','hero-h1':'Простір,<br>що <em>говорить</em><br>вашою мовою','hero-desc':'Перетворюємо порожні кімнати на живі простори \u2014 через дизайн, деталь та діалог з кожним клієнтом.','h-btn-p':'Розпочати проєкт','h-btn-s':'Переглянути роботи','sl1':'Проєктів у портфоліо','sl2':'Реалізовано','sl3':'Років досвіду','sl4':'Дизайн від','spt-home':'Що ми робимо','sp-link-h':'Всі послуги \u2192','sp-link-p':'Всі проєкти \u2192','home-proj-t':'Наші проєкти','lbl-sv':'Наші послуги','lbl-pf':'Наші роботи','lbl-ab':'Про студію','sv-pg-title':'Від ідеї до <em>реалізації</em>','proc-title':'Як ми працюємо','sec-s-proc':'4 чіткі етапи','step1-t':'Зустріч і бриф','step1-d':'Знайомимось, обговорюємо об\u0027єкт, стиль і бюджет. Виїзд або відеодзвінок.','step2-t':'Дизайн-проєкт','step2-d':'Концепція, 3D і повний комплект креслень.','step3-t':'Реалізація','step3-d':'Роботи під авторським наглядом. Щоденні фото-звіти у Telegram.','step4-t':'Здача ключів','step4-d':'Розставляємо меблі, декоруємо і передаємо готовий простір з гарантією.','port-pg-title':'Кожен проєкт \u2014 <em>окрема</em> історія','pf-cta-txt':'Є ідея для вашого простору?','about-pg-title':'Ми будуємо простори, <em>що живуть</em>','ct-pg-title':'Розпочнемо <em>разом</em>','ct-tg-p':'Telegram особистий','ct-tg-c':'Telegram канал','ct-pr-block':'Дизайн інтер\u0027єру \u2014 від $40 / м\u00b2<br>Ремонт під ключ \u2014 від $550 / м\u00b2<br>Меблювання та декор \u2014 від $250 / м\u00b2<br>Будівництво \u2014 від $600 / м\u00b2<br>Ландшафт \u2014 від $50 / сотку','combo-hint':'Оберіть 2+ послуги \u2014 знижка 5\u201310%','nsn-home':'Головна','nsn-sv':'Послуги','nsn-pf':'Портфоліо','nsn-ab':'Про нас','nsn-ct':'Контакти'},
+  en:{'hero-lbl':'Interior Design & Architecture Studio','hero-h1':'Space that <em>speaks</em><br>your language','hero-desc':'We transform empty rooms into living spaces \u2014 through design, detail and dialogue with every client.','h-btn-p':'Start a Project','h-btn-s':'View Portfolio','sl1':'Projects in portfolio','sl2':'Completed','sl3':'Years of experience','sl4':'Design from','spt-home':'What We Do','sp-link-h':'All Services \u2192','sp-link-p':'All Projects \u2192','home-proj-t':'Our Projects','lbl-sv':'Our Services','lbl-pf':'Our Works','lbl-ab':'About Studio','sv-pg-title':'From idea to <em>realization</em>','proc-title':'How We Work','sec-s-proc':'4 clear stages','step1-t':'Meeting & Brief','step1-d':'We meet, discuss the space, style and budget.','step2-t':'Design Project','step2-d':'Concept, 3D and complete drawing set.','step3-t':'Realization','step3-d':'Work under supervision. Daily photo reports in Telegram.','step4-t':'Key Handover','step4-d':'We arrange furniture and hand over with a warranty.','port-pg-title':'Every project \u2014 <em>a separate</em> story','pf-cta-txt':'Have an idea for your space?','about-pg-title':'We build spaces <em>that live</em>','ct-pg-title':'Let\u0027s Start <em>together</em>','ct-tg-p':'Telegram Personal','ct-tg-c':'Telegram Channel','ct-pr-block':'Interior Design \u2014 from $40 / m\u00b2<br>Renovation Turnkey \u2014 from $550 / m\u00b2<br>Furniture & Decor \u2014 from $250 / m\u00b2<br>Construction \u2014 from $600 / m\u00b2<br>Landscape \u2014 from $50 / 100m\u00b2','combo-hint':'Select 2+ services \u2014 5\u201310% discount','nsn-home':'Home','nsn-sv':'Services','nsn-pf':'Portfolio','nsn-ab':'About','nsn-ct':'Contact'},
+  es:{'hero-lbl':'Estudio de Diseño de Interiores','hero-h1':'Espacio que <em>habla</em><br>tu idioma','hero-desc':'Transformamos habitaciones en espacios vivos.','h-btn-p':'Iniciar Proyecto','h-btn-s':'Ver Proyectos','sl1':'Proyectos','sl2':'Completados','sl3':'Años','sl4':'Diseño desde','spt-home':'Qué Hacemos','sp-link-h':'Servicios \u2192','sp-link-p':'Proyectos \u2192','home-proj-t':'Nuestros Proyectos','lbl-sv':'Nuestros Servicios','lbl-pf':'Nuestros Trabajos','lbl-ab':'Sobre Nosotros','sv-pg-title':'De la idea a la <em>realización</em>','proc-title':'Cómo Trabajamos','sec-s-proc':'4 etapas','step1-t':'Reunión','step1-d':'Reunión y brief.','step2-t':'Proyecto','step2-d':'Concepto, 3D y planos.','step3-t':'Realización','step3-d':'Supervisión. Informes diarios.','step4-t':'Entrega','step4-d':'Entrega con garantía.','port-pg-title':'Cada proyecto \u2014 <em>una historia</em>','pf-cta-txt':'¿Tienes una idea?','about-pg-title':'Construimos espacios <em>que viven</em>','ct-pg-title':'Empecemos <em>juntos</em>','ct-tg-p':'Telegram Personal','ct-tg-c':'Canal Telegram','ct-pr-block':'Diseño \u2014 desde $40 / m\u00b2<br>Renovación \u2014 desde $550 / m\u00b2<br>Mobiliario \u2014 desde $250 / m\u00b2<br>Construcción \u2014 desde $600 / m\u00b2<br>Paisajismo \u2014 desde $50 / 100m\u00b2','combo-hint':'2+ servicios \u2014 5\u201310% descuento','nsn-home':'Inicio','nsn-sv':'Servicios','nsn-pf':'Portafolio','nsn-ab':'Nosotros','nsn-ct':'Contacto'}
+};
+function cycleLang(){langIdx=(langIdx+1)%LANG_LIST.length;const l=LANG_LIST[langIdx];document.getElementById('langCycle').textContent=LANG_DISPLAY[l];const nb=document.getElementById('nsbLang');if(nb)nb.textContent=LANG_DISPLAY[l];setLang(l);}
+function setLang(l){
+  curLang=l;
+  const disp=LANG_DISPLAY[l]||l.toUpperCase();
+  document.getElementById('langCycle').textContent=disp;
+  const nb=document.getElementById('nsbLang');if(nb)nb.textContent=disp;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(I18N[l]&&I18N[l][k])el.textContent=I18N[l][k];});
+  const t=I18N_ID[l]||{};Object.keys(t).forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=t[id];});
+  updateAbout(l);
+  const s=SVC[l]||SVC.uk;
+  ['d','r','f','c','l'].forEach(tp=>{
+    const m={nm:'sv-'+tp+'-nm',pr:'sv-'+tp+'-pr',ds:'sv-'+tp+'-ds',li:'sv-list-'+tp,mo:'sv-more-'+tp};
+    const v={nm:s[tp+'Nm'],pr:s[tp+'Pr'],ds:s[tp+'Ds'],li:s[tp+'Li'],mo:s[tp+'Mo']};
+    Object.keys(m).forEach(k=>{const el=document.getElementById(m[k]);if(el&&v[k])el.innerHTML=v[k];});
+    const spNm=document.getElementById('sp-'+tp+'-nm');if(spNm&&s[tp+'Nm'])spNm.innerHTML=s[tp+'Nm'].replace(/<br>/g,' ');
+    const spPr=document.getElementById('sp-'+tp+'-pr');if(spPr&&s[tp+'Pr'])spPr.textContent=s[tp+'Pr'];
+    const spTx=document.getElementById('sp-'+tp+'-tx');if(spTx&&s['sp'+tp.toUpperCase()])spTx.textContent=s['sp'+tp.toUpperCase()];
+  });
+  const tabMap={d:'calc_design',r:'calc_reno',f:'calc_furn',c:'calc_constr',l:'calc_land'};
+  Object.keys(tabMap).forEach(tp=>{const btn=document.getElementById('ct-'+tp);if(btn&&I18N[l][tabMap[tp]])btn.textContent=I18N[l][tabMap[tp]];});
+  const ts=document.getElementById('tierSelect');if(ts&&I18N[l]){['tier_eco','tier_std','tier_prem','tier_lux'].forEach((k,i)=>{if(I18N[l][k])ts.options[i].textContent=I18N[l][k];});}
+  const pm=I18N[l];const fi=document.querySelectorAll('.fi');
+  if(fi[0]&&pm.ph_name)fi[0].placeholder=pm.ph_name;if(fi[1]&&pm.ph_phone)fi[1].placeholder=pm.ph_phone;if(fi[2]&&pm.ph_area)fi[2].placeholder=pm.ph_area;
+  const ft=document.querySelector('.ft');if(ft&&pm.ph_msg)ft.placeholder=pm.ph_msg;
+  const ml=document.getElementById('map-lgn');if(ml&&pm.ct_map_lgn)ml.textContent=pm.ct_map_lgn;
+  const ok=document.getElementById('ok');if(ok)ok.setAttribute('data-msg',pm.ok_msg||'');
+  calcUpdate();
+}
+/* ═══ SERVICE CARD TOGGLE ═══ */
+function toggleSv(card){card.classList.toggle('exp');}
+/* ═══ CALCULATOR ═══ */
+const RATES={d:{eco:40,std:50,prem:60,lux:70},r:{eco:550,std:650,prem:780,lux:900},f:{eco:250,std:300,prem:380,lux:600},c:{eco:600,std:750,prem:950,lux:1200},l:{eco:50,std:80,prem:120,lux:200}};
+const RL={uk:{d:'Дизайн інтер\u0027єру',r:'Ремонт під ключ',f:'Меблювання',c:'Будівництво',l:'Ландшафтний дизайн'},en:{d:'Interior Design',r:'Renovation',f:'Furniture',c:'Construction',l:'Landscape Design'},es:{d:'Diseño',r:'Renovación',f:'Muebles',c:'Construcción',l:'Paisajismo'}};
+function getRL(t){return(RL[curLang]||RL.uk)[t]||t;}
+const svcSel={d:true,r:false,f:false,c:false,l:false};
+function toggleCalcSvc(type,btn){const nv=!svcSel[type];const oth=Object.entries(svcSel).some(([k,v])=>k!==type&&v);if(!nv&&!oth)return;svcSel[type]=nv;btn.classList.toggle('on',nv);calcUpdate();}
+function sliderMove(sl){const v=+sl.value,pct=(v-30)/(500-30)*100;document.getElementById('areaDisplay').textContent=v;const bub=document.getElementById('areaBubble');if(bub){bub.textContent=v+' м²';bub.style.left='calc('+pct+'% - '+(pct/5+12)+'px)';}calcUpdate();}
+function calcUpdate(){
+  const area=+document.getElementById('areaSlider').value;const tier=document.getElementById('tierSelect').value;
+  const chk=id=>document.getElementById(id)?.checked;
+  const smart=chk('ch-smart')?120:0,clim=chk('ch-climate')?65:0,r3d=chk('ch-3d')?25:0,sup=chk('ch-sup')?20:0,china=chk('ch-china');
+  const facade=chk('ch-facade')?120:0,sound=chk('ch-sound')?45:0,cctv=chk('ch-cctv')?15:0,sec=chk('ch-sec')?18:0,docs=chk('ch-docs')?12:0;
+  const extras=smart+clim+r3d+sup+facade+sound+cctv+sec+docs;
+  const numS=['d','r','f','c','l'].filter(k=>svcSel[k]).length;const dp=numS>=3?10:numS===2?5:0;
+  const lng=I18N[curLang]||I18N.uk;const dLbl=lng.discount_lbl||'Знижка';const tLbl=lng.total_lbl||'Разом';
+  let bAmt=0,lines='';
+  if(svcSel.d){const v=RATES.d[tier]*area;bAmt+=v;lines+=`<div class="cr-line"><span>${getRL('d')}</span><strong>$${v.toLocaleString('uk-UA')}</strong></div>`;}
+  if(svcSel.r){const v=RATES.r[tier]*area;bAmt+=v;lines+=`<div class="cr-line"><span>${getRL('r')}</span><strong>$${v.toLocaleString('uk-UA')}</strong></div>`;}
+  if(svcSel.f){let fr=RATES.f[tier];if(china)fr=Math.round(fr*0.85);const v=fr*area;bAmt+=v;lines+=`<div class="cr-line"><span>${getRL('f')}${china?' (China −15%)':''}</span><strong>$${v.toLocaleString('uk-UA')}</strong></div>`;}
+  if(svcSel.c){const v=RATES.c[tier]*area;bAmt+=v;lines+=`<div class="cr-line"><span>${getRL('c')}</span><strong>$${v.toLocaleString('uk-UA')}</strong></div>`;}
+  if(svcSel.l){const sotky=area/100;const v=Math.round(RATES.l[tier]*sotky);bAmt+=v;lines+=`<div class="cr-line"><span>${getRL('l')} (${sotky.toFixed(1)} сотки)</span><strong>$${v.toLocaleString('uk-UA')}</strong></div>`;}
+  let disc=0;if(dp>0){disc=Math.round(bAmt*dp/100);lines+=`<div class="cr-line" style="color:var(--ac)"><span>${dLbl} ${dp}%</span><strong>−$${disc.toLocaleString('uk-UA')}</strong></div>`;}
+  if(smart)lines+=`<div class="cr-line"><span>Smart Home</span><strong>$${(smart*area).toLocaleString('uk-UA')}</strong></div>`;
+  if(clim)lines+=`<div class="cr-line"><span>Climate</span><strong>$${(clim*area).toLocaleString('uk-UA')}</strong></div>`;
+  if(r3d)lines+=`<div class="cr-line"><span>3D Render</span><strong>$${(r3d*area).toLocaleString('uk-UA')}</strong></div>`;
+  if(sup)lines+=`<div class="cr-line"><span>Supervision</span><strong>$${(sup*area).toLocaleString('uk-UA')}</strong></div>`;
+  if(facade)lines+=`<div class="cr-line"><span>Facade</span><strong>$${(facade*area).toLocaleString('uk-UA')}</strong></div>`;
+  if(sound)lines+=`<div class="cr-line"><span>Soundproofing</span><strong>$${(sound*area).toLocaleString('uk-UA')}</strong></div>`;
+  if(cctv)lines+=`<div class="cr-line"><span>CCTV</span><strong>$${(cctv*area).toLocaleString('uk-UA')}</strong></div>`;
+  if(sec)lines+=`<div class="cr-line"><span>Security</span><strong>$${(sec*area).toLocaleString('uk-UA')}</strong></div>`;
+  if(docs)lines+=`<div class="cr-line"><span>Documentation</span><strong>$${(docs*area).toLocaleString('uk-UA')}</strong></div>`;
+  const total=bAmt-disc+extras*area;
+  lines+=`<div class="cr-line" style="border-top:1px solid var(--bd);padding-top:12px;margin-top:4px"><span><b>${tLbl}</b></span><strong style="color:var(--ac);font-size:1rem">$${total.toLocaleString('uk-UA')}</strong></div>`;
+  document.getElementById('cr-num').textContent=total.toLocaleString('uk-UA');document.getElementById('cr-lines').innerHTML=lines;
+  const hint=document.getElementById('combo-hint');
+  if(hint){if(dp===10)hint.textContent=lng.disc10||'';else if(dp===5)hint.textContent=lng.disc5||'';else hint.textContent=lng.combo_base||'';}
+}
+calcUpdate();
+/* ═══ FORM ═══ */
+async function submitForm(e){
+  e.preventDefault();const form=e.target;const inputs=form.querySelectorAll('input[type="text"]');
+  const data={name:inputs[0]?.value||'',phone:inputs[1]?.value||'',service:form.querySelector('select')?.value||'',area:inputs[2]?.value||'',message:form.querySelector('textarea')?.value||''};
+  const btn=form.querySelector('button[type="submit"]');if(btn)btn.textContent='⏳...';
+  try{await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});}catch(err){}
+  const okEl=document.getElementById('ok');
+  if(okEl){const msg=okEl.getAttribute('data-msg')||(I18N[curLang]?.ok_msg||'✓ Заявку отримано!');okEl.textContent=msg;okEl.style.display='block';}
+  form.style.opacity='.4';form.style.pointerEvents='none';
+}
+/* ═══ NAVIGATION ═══ */
+function go(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const p=document.getElementById('p-'+id);if(p){p.classList.add('active');window.scrollTo({top:0,behavior:'instant'});}
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
+  const na=document.getElementById('n-'+id);if(na)na.classList.add('on');
+  if(id==='contact')setTimeout(initMap,180);
+}
+function goProject(id){go('portfolio');setTimeout(()=>{const btn=document.querySelector('.filt[onclick*="\''+id+'\'"]');if(btn)filt(btn,id);},100);}
+function filt(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');document.querySelectorAll('.pi').forEach(item=>{item.style.display=(cat==='all'||item.dataset.c===cat)?'':'none';});}
+function revealPhone(el){
+  const ph=el.dataset.phone||'';
+  const href=el.dataset.href||'';
+  const tgt=el.dataset.tgt||'';
+  if(href){el.outerHTML=`<a href="${href}"${tgt?` target="${tgt}"`:''}  style="color:inherit;text-decoration:none">${ph}</a>`;}
+  else{el.outerHTML=`<span style="color:inherit">${ph}</span>`;}
+}
+go('home');
+/* Initialize translations on load (fixes HTML showing wrong prices) */
+setLang(curLang);
+
+
+/* ── Multi-page navigation override ── */
+go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.html',about:'/about.html',contact:'/contact.html'};if(m[p])window.location.href=m[p];};
+goProject=function(id){window.location.href='/portfolio.html#'+id;};
+filt=function(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');document.querySelectorAll('.pi').forEach(el=>{el.style.display=(cat==='all'||el.dataset.c===cat)?'':'none';});};
+
+setLang(localStorage.getItem('cas-lang')||'uk'); setTimeout(initMap,400);
+</script>
+</body>
+</html>
