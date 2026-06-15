@@ -599,128 +599,7 @@ body.light .map-grat{display:none!important}
     </div>
   </div>
 
-  <!-- WORLD MAP -->
-  <div style="padding:0 52px 48px;margin-top:32px">
-    <div class="lbl" style="margin-bottom:20px" data-i18n="ct_map_label">Наші проєкти по світу</div>
-    <div class="world-map-wrap" id="wmap">
-            <svg id="wsvg" viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
-  <defs><clipPath id="mc"><rect width="900" height="460"/></clipPath><style>
-    .lnd{fill:rgba(191,145,72,.11);stroke:rgba(191,145,72,.3);stroke-width:.4}
-    body.light .lnd{fill:rgba(154,110,40,.1);stroke:rgba(154,110,40,.22)}
-    @keyframes mpd{0%,100%{opacity:.2}50%{opacity:.07}}
-  
-/* ════ HAMBURGER & MOBILE SIDEBAR ════ */
-.hbg-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;margin-left:10px;flex-shrink:0;z-index:100}
-.hbg-btn span{display:block;width:22px;height:1.5px;background:var(--tx);transition:all .25s}
-.nsb{position:fixed!important;top:0!important;right:0!important;width:280px;height:100vh;background:var(--bg2);border-left:1px solid var(--bd);z-index:99999!important;transition:transform .3s ease;display:flex;flex-direction:column;padding:28px 24px;transform:translateX(110%);visibility:hidden}
-.nsb.open{transform:translateX(0)!important;visibility:visible}
-.nsb-ov{display:none;position:fixed!important;inset:0;background:rgba(0,0,0,.55);z-index:99998!important;backdrop-filter:blur(2px)}
-.nsb-ov.active{display:block}
-/* Desktop: always hide sidebar + hamburger */
-@media (min-width:768px){.nsb,.nsb-ov,.hbg-btn{display:none!important}nav .nav-links{display:flex!important}nav .lang-sw{display:flex!important}}
-.nsb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
-.nsb-logo{font-family:var(--M);font-size:.68rem;letter-spacing:.22em;color:var(--ac)}
-.nsb-close{background:none;border:none;color:var(--mu);font-size:1.1rem;cursor:pointer;padding:4px}
-.nsb-close:hover{color:var(--tx)}
-.nsb-nav{display:flex;flex-direction:column;flex:1}
-.nsb-nav a{padding:14px 0;font-family:var(--M);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);cursor:pointer;border-bottom:1px solid var(--bd);transition:color .2s}
-.nsb-nav a:hover{color:var(--ac)}
-.nsb-foot{padding-top:24px}
-.nsb-lang{background:none;border:1px solid var(--bd);color:var(--tx);font-family:var(--M);font-size:.62rem;letter-spacing:.18em;padding:6px 14px;cursor:pointer;transition:all .2s}
-.nsb-lang:hover{border-color:var(--ac);color:var(--ac)}
 
-/* ════ RESPONSIVE MOBILE ════ */
-@media (max-width:767px){
-  nav .nav-links,nav .lang-sw{display:none!important}
-  .hbg-btn{display:flex!important}
-  .sp-cards{flex-direction:column!important;gap:12px}
-  .sp-card{min-width:unset!important;width:100%!important}
-  .sv-cards{flex-direction:column!important}
-  .sv-card{width:100%!important}
-  .ct-grid{flex-direction:column!important}
-  .calc-row{flex-direction:column!important}
-  .ph{padding:72px 18px 32px!important}
-  .ph-title{font-size:clamp(28px,7vw,48px)!important}
-  .h1{font-size:clamp(34px,9vw,72px)!important}
-  .hbtns{flex-direction:column;align-items:flex-end}
-  nav{padding:0 18px}
-  .hgtx{padding:0 18px}
-  .port-grid{grid-template-columns:1fr 1fr!important}
-  .about-cols{flex-direction:column!important}
-  .about-vis,.about-txt{width:100%!important}
-  .ps-grid{grid-template-columns:1fr 1fr!important}
-}
-@media (max-width:480px){
-  .port-grid{grid-template-columns:1fr!important}
-  .ps-grid{grid-template-columns:1fr!important}
-}
-/* SIDEBAR DESKTOP FIX */
-@media (min-width:768px){.nsb,.nsb-ov,.hbg-btn{display:none!important}nav .nav-links{display:flex!important}nav .lang-sw{display:flex!important}}
-
-/* ════ MOBILE NAV CLEANUP ════ */
-@media (max-width:767px){
-  /* Hide ALL nav items except logo, hamburger, theme */
-  nav .nav-links,
-  nav .lang-sw,
-  nav .lang-cycle,
-  nav .lang-btn { display:none!important; }
-  /* Show hamburger */
-  .hbg-btn { display:flex!important; margin-left:auto; }
-  /* Nav layout on mobile */
-  nav { padding:0 16px!important; }
-}
-
-/* ════ MOBILE LANG SWITCHER ════ */
-@media (max-width:767px){
-  nav .lang-sw { display:flex!important; }
-  .lang-cycle {
-    border:none!important;
-    background:none!important;
-    color:var(--ac)!important;
-    font-family:var(--M)!important;
-    font-size:.65rem!important;
-    letter-spacing:.18em!important;
-    padding:4px 8px!important;
-    font-weight:600!important;
-  }
-}
-
-.nsb-lang-top{background:none;border:1px solid var(--bd);color:var(--ac);font-family:var(--M);font-size:.62rem;letter-spacing:.18em;padding:5px 14px;cursor:pointer;margin-bottom:20px;align-self:flex-start;transition:all .2s}
-.nsb-lang-top:hover{border-color:var(--ac)}
-
-/* Light mode: hide map grid lines, keep only country outlines */
-body.light .map-grat { display: none !important; }
-
-/* Phone reveal button */
-.ph-reveal {
-  color: var(--mu);
-  cursor: pointer;
-  font-family: var(--M);
-  font-size: .78rem;
-  letter-spacing: .04em;
-  border-bottom: 1px dashed var(--mu);
-  transition: color .2s, border-color .2s;
-  padding-bottom: 1px;
-}
-.ph-reveal:hover { color: var(--ac); border-color: var(--ac); }
-</style></defs>
-  <g id="map-fb">
-    <path class="lnd" d="M30,72 L120,42 L175,31 L230,36 L245,46 L238,61 L250,69 L292,77 L310,100 L288,118 L275,125 L265,138 L250,148 L250,166 L242,166 L263,202 L258,210 L245,204 L230,192 L178,176 L158,148 L145,136 L120,87 L88,77 L63,82 Z"/>
-    <path class="lnd" d="M258,210 L263,199 L295,204 L325,230 L360,251 L355,281 L317,317 L290,371 L270,358 L265,314 L250,251 L250,230 Z"/>
-    <path class="lnd" d="M428,138 L445,100 L457,100 L462,82 L490,82 L505,87 L520,64 L505,51 L495,56 L488,72 L475,89 L462,82 L458,100 L475,118 L488,118 L495,128 L530,97 L525,87 L520,125 L515,133 L488,133 L480,118 L468,118 L450,118 L428,118 Z"/>
-    <path class="lnd" d="M405,192 L413,217 L438,217 L455,217 L470,243 L475,302 L490,317 L520,320 L538,294 L550,256 L560,220 L578,202 L545,192 L530,148 L513,148 L438,138 L408,156 Z"/>
-    <path class="lnd" d="M515,123 L588,123 L600,164 L620,169 L650,204 L680,210 L740,251 L770,192 L800,128 L788,115 L750,107 L638,118 L600,112 Z"/>
-    <path class="lnd" d="M735,286 L760,276 L790,261 L820,281 L830,307 L810,327 L735,317 Z"/>
-    <circle cx="526" cy="101" r="6" fill="#BF9148" style="cursor:pointer" onclick="showMapTip(event,this)" data-tip="Київ, Україна · 150+ проєктів"/>
-    <circle cx="190" cy="148" r="5" fill="#BF9148" style="cursor:pointer" onclick="showMapTip(event,this)" data-tip="США · Резиденційні проєкти"/>
-    <circle cx="445" cy="130" r="5" fill="#BF9148" style="cursor:pointer" onclick="showMapTip(event,this)" data-tip="Іспанія · Середземномор'я"/>
-    <circle cx="738" cy="265" r="5" fill="#BF9148" style="cursor:pointer" onclick="showMapTip(event,this)" data-tip="Балі, Індонезія · Вілли"/>
-    <text x="18" y="448" fill="rgba(191,145,72,.4)" font-size="9" font-family="'Plus Jakarta Sans',sans-serif" letter-spacing="2">● НАШІ ПРОЄКТИ</text>
-  </g>
-</svg>
-    </div>
-    <div id="map-tip" class="map-tooltip"></div>
-  </div>
 
   
 
@@ -853,9 +732,9 @@ function showMapTip(e,el){const t=document.getElementById('map-tip');if(!t)retur
 const LANG_LIST=['uk','en','es'];const LANG_DISPLAY={uk:'UA',en:'EN',es:'ES'};
 let curLang='uk',langIdx=0;
 const I18N={
-  uk:{nav_home:'Головна',nav_services:'Послуги',nav_portfolio:'Портфоліо',nav_about:'Про нас',nav_contacts:'Контакти',expand:'Детальніше',ct_label:'Зв\u0027язатися',ct_map_label:'Наші проєкти по світу',ct_map_lgn:'\u25cf \u041d\u0410\u0428\u0406 \u041f\u0420\u041e\u0404\u041a\u0422\u0418',ct_title:'Давайте обговоримо ваш простір',ct_sub:'Розкажіть про проєкт \u2014 запропонуємо рішення. Безкоштовна консультація 30 хвилин.',ct_city_l:'Місто',ct_phone_l:'Телефон / Месенджери',ct_prices_l:'Вартість послуг',f_name:'Ваше ім\u0027я',f_phone:'Телефон / Telegram',f_service:'Послуга',f_pick:'Оберіть послугу',f_area:'Площа об\u0027єкту',f_msg:'Розкажіть про проєкт',f_submit:'Надіслати заявку',calc_title:'Калькулятор вартості інтер\u0027єру',calc_type:'Послуги (виберіть одну або кілька)',calc_design:'Дизайн',calc_reno:'Ремонт',calc_furn:'Меблювання',calc_constr:'Будівництво',calc_land:'Ландшафт',calc_area_lbl:'Площа об\u0027єкту',calc_tier:'Рівень реалізації',calc_extra:'Додаткові опції',tier_eco:'Економ \u2014 базові матеріали',tier_std:'Стандарт \u2014 оптимально',tier_prem:'Преміум \u2014 якісні матеріали',tier_lux:'Люкс \u2014 найкраще',ch_smart:'Розумний будинок (+$120/м²)',ch_climate:'Клімат-контроль (+$65/м²)',ch_3d:'3D-рендер (+$25/м²)',ch_sup:'Авторський нагляд (+$20/м²)',ch_china:'China Opt Shop (\u221215% на меблі)',ch_facade:'Фасадне оздоблення (+$120/м²)',ch_sound:'Шумоізоляція (+$45/м²)',ch_cctv:'Відеоспостереження (+$15/м²)',ch_sec:'Охоронна система (+$18/м²)',ch_docs:'Документація та дозволи (+$12/м²)',calc_estimate:'Орієнтовна вартість',calc_sub:'Точний розрахунок після консультації',calc_cta:'Отримати консультацію',discount_lbl:'\u0417\u043d\u0438\u0436\u043a\u0430',total_lbl:'\u0420\u0430\u0437\u043e\u043c',disc10:'\u2713 Знижка 10% на весь комплекс',disc5:'\u2713 Знижка 5% на комбінацію',combo_base:'Оберіть 2+ послуги \u2014 знижка 5\u201310%',ok_msg:'\u2713 Заявку отримано! Ми зв\u0027яжемося з вами впродовж 24 годин.',ph_name:'Ваше ім\u0027я',ph_phone:'Телефон / Telegram',ph_area:'Наприклад: 80 м²',ph_msg:'Що за об\u0027єкт? Стиль? Терміни?'},
-  en:{nav_home:'Home',nav_services:'Services',nav_portfolio:'Portfolio',nav_about:'About',nav_contacts:'Contact',expand:'More Details',ct_label:'Get In Touch',ct_map_label:'Our Projects Worldwide',ct_map_lgn:'\u25cf OUR PROJECTS',ct_title:"Let's Discuss Your Space",ct_sub:"Tell us about your project \u2014 we'll offer solutions. Free 30-minute consultation.",ct_city_l:'City',ct_phone_l:'Phone / Messengers',ct_prices_l:'Service Pricing',f_name:'Your Name',f_phone:'Phone / Telegram',f_service:'Service',f_pick:'Select a service',f_area:'Object Area',f_msg:'Tell us about the project',f_submit:'Send Request',calc_title:'Interior Cost Calculator',calc_type:'Services (select one or more)',calc_design:'Design',calc_reno:'Renovation',calc_furn:'Furniture',calc_constr:'Construction',calc_land:'Landscape',calc_area_lbl:'Object Area',calc_tier:'Implementation Level',calc_extra:'Additional Options',tier_eco:'Economy \u2014 basic materials',tier_std:'Standard \u2014 optimal balance',tier_prem:'Premium \u2014 quality materials',tier_lux:'Luxury \u2014 the very best',ch_smart:'Smart Home (+$120/m²)',ch_climate:'Climate Control (+$65/m²)',ch_3d:'3D Render (+$25/m²)',ch_sup:'Author Supervision (+$20/m²)',ch_china:'China Opt Shop (\u221215% on furniture)',ch_facade:'Facade Finishing (+$120/m²)',ch_sound:'Soundproofing (+$45/m²)',ch_cctv:'CCTV (+$15/m²)',ch_sec:'Security System (+$18/m²)',ch_docs:'Documentation (+$12/m²)',calc_estimate:'Estimated Cost',calc_sub:'Exact calculation after consultation',calc_cta:'Get Consultation',discount_lbl:'Discount',total_lbl:'Total',disc10:'\u2713 10% discount for full complex',disc5:'\u2713 5% discount for combination',combo_base:'Select 2+ services \u2014 5\u201310% discount',ok_msg:"\u2713 Request received! We'll contact you within 24 hours.",ph_name:'Your Name',ph_phone:'Phone / Telegram',ph_area:'Example: 80 m²',ph_msg:'What is the space? Style? Timeline?'},
-  es:{nav_home:'Inicio',nav_services:'Servicios',nav_portfolio:'Portafolio',nav_about:'Nosotros',nav_contacts:'Contacto',expand:'Más Detalles',ct_label:'Contáctenos',ct_map_label:'Nuestros Proyectos',ct_map_lgn:'\u25cf NUESTROS PROYECTOS',ct_title:'Hablemos de Tu Espacio',ct_sub:'Cuéntanos sobre tu proyecto.',ct_city_l:'Ciudad',ct_phone_l:'Teléfono',ct_prices_l:'Precios',f_name:'Tu Nombre',f_phone:'Teléfono',f_service:'Servicio',f_pick:'Selecciona',f_area:'Área',f_msg:'Cuéntanos',f_submit:'Enviar',calc_title:'Calculadora',calc_type:'Servicios',calc_design:'Diseño',calc_reno:'Renovación',calc_furn:'Muebles',calc_constr:'Construcción',calc_land:'Paisajismo',calc_area_lbl:'Área',calc_tier:'Nivel',calc_extra:'Opciones',tier_eco:'Económico',tier_std:'Estándar',tier_prem:'Premium',tier_lux:'Lujo',ch_smart:'Casa Inteligente (+$120)',ch_climate:'Clima (+$65)',ch_3d:'Render 3D (+$25)',ch_sup:'Supervisión (+$20)',ch_china:'China Opt Shop (\u221215%)',ch_facade:'Fachada (+$120)',ch_sound:'Aislamiento (+$45)',ch_cctv:'CCTV (+$15)',ch_sec:'Seguridad (+$18)',ch_docs:'Documentación (+$12)',calc_estimate:'Costo Estimado',calc_sub:'Cálculo después de consulta',calc_cta:'Consulta',discount_lbl:'Descuento',total_lbl:'Total',disc10:'\u2713 Descuento 10%',disc5:'\u2713 Descuento 5%',combo_base:'2+ servicios \u2014 5\u201310%',ok_msg:'\u2713 Solicitud recibida!',ph_name:'Tu Nombre',ph_phone:'Teléfono',ph_area:'Ejemplo: 80 m²',ph_msg:'¿Qué espacio?'}
+  uk:{nav_home:'Головна',nav_services:'Послуги',nav_portfolio:'Портфоліо',nav_about:'Про нас',nav_contacts:'Контакти',expand:'Детальніше',ct_label:'Зв\u0027язатися',ct_map_label:'Наші проєкти по світу',ct_map_lgn:'\u25cf \u041d\u0410\u0428\u0406 \u041f\u0420\u041e\u0404\u041a\u0422\u0418',ct_title:'Давайте обговоримо ваш простір',ct_sub:'Розкажіть про проєкт \u2014 запропонуємо рішення. Безкоштовна консультація 30 хвилин.',ct_city_l:'Місто',ct_phone_l:'Телефон / Месенджери',ct_prices_l:'Вартість послуг',f_name:'Ваше ім\u0027я',f_phone:'Телефон / Telegram',f_service:'Послуга',f_pick:'Оберіть послугу',f_area:'Площа об\u0027єкту',f_msg:'Розкажіть про проєкт',f_submit:'Надіслати заявку',calc_title:'Калькулятор вартості інтер\u0027єру',calc_type:'Послуги (виберіть одну або кілька)',calc_design:'Дизайн',calc_reno:'Ремонт',calc_furn:'Меблювання',calc_constr:'Будівництво',calc_land:'Ландшафт',calc_area_lbl:'Площа об\u0027єкту',calc_tier:'Рівень реалізації',calc_extra:'Додаткові опції',tier_eco:'Економ \u2014 базові матеріали',tier_std:'Стандарт \u2014 оптимально',tier_prem:'Преміум \u2014 якісні матеріали',tier_lux:'Люкс \u2014 найкраще',ch_smart:'Розумний будинок (+$50/м²)',ch_climate:'Клімат-контроль (+$60/м²)',ch_3d:'3D-рендер (+$25/м²)',ch_sup:'Авторський нагляд (+$15/м²)',ch_china:'China Opt Shop (\u221215% на меблі)',ch_facade:'Фасадне оздоблення (+$120/м²)',ch_sound:'Шумоізоляція (+$25/м²)',ch_cctv:'Відеоспостереження (+$15/м²)',ch_sec:'Охоронна система (+$18/м²)',ch_docs:'Документація та дозволи (+$12/м²)',calc_estimate:'Орієнтовна вартість',calc_sub:'Точний розрахунок після консультації',calc_cta:'Отримати консультацію',discount_lbl:'\u0417\u043d\u0438\u0436\u043a\u0430',total_lbl:'\u0420\u0430\u0437\u043e\u043c',disc10:'\u2713 Знижка 10% на весь комплекс',disc5:'\u2713 Знижка 5% на комбінацію',combo_base:'Оберіть 2+ послуги \u2014 знижка 5\u201310%',ok_msg:'\u2713 Заявку отримано! Ми зв\u0027яжемося з вами впродовж 24 годин.',ph_name:'Ваше ім\u0027я',ph_phone:'Телефон / Telegram',ph_area:'Наприклад: 80 м²',ph_msg:'Що за об\u0027єкт? Стиль? Терміни?'},
+  en:{nav_home:'Home',nav_services:'Services',nav_portfolio:'Portfolio',nav_about:'About',nav_contacts:'Contact',expand:'More Details',ct_label:'Get In Touch',ct_map_label:'Our Projects Worldwide',ct_map_lgn:'\u25cf OUR PROJECTS',ct_title:"Let's Discuss Your Space",ct_sub:"Tell us about your project \u2014 we'll offer solutions. Free 30-minute consultation.",ct_city_l:'City',ct_phone_l:'Phone / Messengers',ct_prices_l:'Service Pricing',f_name:'Your Name',f_phone:'Phone / Telegram',f_service:'Service',f_pick:'Select a service',f_area:'Object Area',f_msg:'Tell us about the project',f_submit:'Send Request',calc_title:'Interior Cost Calculator',calc_type:'Services (select one or more)',calc_design:'Design',calc_reno:'Renovation',calc_furn:'Furniture',calc_constr:'Construction',calc_land:'Landscape',calc_area_lbl:'Object Area',calc_tier:'Implementation Level',calc_extra:'Additional Options',tier_eco:'Economy \u2014 basic materials',tier_std:'Standard \u2014 optimal balance',tier_prem:'Premium \u2014 quality materials',tier_lux:'Luxury \u2014 the very best',ch_smart:'Smart Home (+$50/m²)',ch_climate:'Climate Control (+$60/m²)',ch_3d:'3D Render (+$25/m²)',ch_sup:'Author Supervision (+$15/m²)',ch_china:'China Opt Shop (\u221215% on furniture)',ch_facade:'Facade Finishing (+$120/m²)',ch_sound:'Soundproofing (+$25/m²)',ch_cctv:'CCTV (+$15/m²)',ch_sec:'Security System (+$18/m²)',ch_docs:'Documentation (+$12/m²)',calc_estimate:'Estimated Cost',calc_sub:'Exact calculation after consultation',calc_cta:'Get Consultation',discount_lbl:'Discount',total_lbl:'Total',disc10:'\u2713 10% discount for full complex',disc5:'\u2713 5% discount for combination',combo_base:'Select 2+ services \u2014 5\u201310% discount',ok_msg:"\u2713 Request received! We'll contact you within 24 hours.",ph_name:'Your Name',ph_phone:'Phone / Telegram',ph_area:'Example: 80 m²',ph_msg:'What is the space? Style? Timeline?'},
+  es:{nav_home:'Inicio',nav_services:'Servicios',nav_portfolio:'Portafolio',nav_about:'Nosotros',nav_contacts:'Contacto',expand:'Más Detalles',ct_label:'Contáctenos',ct_map_label:'Nuestros Proyectos',ct_map_lgn:'\u25cf NUESTROS PROYECTOS',ct_title:'Hablemos de Tu Espacio',ct_sub:'Cuéntanos sobre tu proyecto.',ct_city_l:'Ciudad',ct_phone_l:'Teléfono',ct_prices_l:'Precios',f_name:'Tu Nombre',f_phone:'Teléfono',f_service:'Servicio',f_pick:'Selecciona',f_area:'Área',f_msg:'Cuéntanos',f_submit:'Enviar',calc_title:'Calculadora',calc_type:'Servicios',calc_design:'Diseño',calc_reno:'Renovación',calc_furn:'Muebles',calc_constr:'Construcción',calc_land:'Paisajismo',calc_area_lbl:'Área',calc_tier:'Nivel',calc_extra:'Opciones',tier_eco:'Económico',tier_std:'Estándar',tier_prem:'Premium',tier_lux:'Lujo',ch_smart:'Casa Inteligente (+$50)',ch_climate:'Clima (+$60)',ch_3d:'Render 3D (+$25)',ch_sup:'Supervisión (+$15)',ch_china:'China Opt Shop (\u221215%)',ch_facade:'Fachada (+$120)',ch_sound:'Aislamiento (+$25)',ch_cctv:'CCTV (+$15)',ch_sec:'Seguridad (+$18)',ch_docs:'Documentación (+$12)',calc_estimate:'Costo Estimado',calc_sub:'Cálculo después de consulta',calc_cta:'Consulta',discount_lbl:'Descuento',total_lbl:'Total',disc10:'\u2713 Descuento 10%',disc5:'\u2713 Descuento 5%',combo_base:'2+ servicios \u2014 5\u201310%',ok_msg:'\u2713 Solicitud recibida!',ph_name:'Tu Nombre',ph_phone:'Teléfono',ph_area:'Ejemplo: 80 m²',ph_msg:'¿Qué espacio?'}
 };
 const SVC={
   uk:{dNm:'Дизайн<br>інтер\u0027єру',rNm:'Ремонт<br>під ключ',fNm:'Меблювання<br>та декор',cNm:'Будівництво',lNm:'Ландшафтний<br>дизайн',dPr:'від $40 / м\u00b2',rPr:'від $550 / м\u00b2',fPr:'від $250 / м\u00b2',cPr:'від $600 / м\u00b2',lPr:'від $50 / сотку',dDs:'Розробляємо концепцію, що відображає вашу особистість.',rDs:'Будівельні та оздоблювальні роботи. Дотримуємося проєкту, термінів і бюджету.',fDs:'Підбираємо та постачаємо меблі, освітлення, декор. Прямий імпорт без посередників.',cDs:'Зведення та реконструкція будівель під ключ. Від фундаменту до фінального оздоблення.',lDs:'Проектування та облаштування садів і прилеглих територій. Від концепції до реалізації.',dLi:'<li class="sv-item">Концепція та ескізний проєкт</li><li class="sv-item">3D-візуалізація всіх приміщень</li><li class="sv-item">Робочі та монтажні креслення</li><li class="sv-item">Специфікація матеріалів і меблів</li><li class="sv-item">Авторський нагляд</li>',rLi:'<li class="sv-item">Демонтаж та підготовчі роботи</li><li class="sv-item">Електрика, сантехніка, вентиляція</li><li class="sv-item">Оздоблювальні та малярні роботи</li><li class="sv-item">Укладання підлог та стель</li><li class="sv-item">Здача з гарантією</li>',fLi:'<li class="sv-item">Підбір меблів під проєкт</li><li class="sv-item">Прямий імпорт з виробниками</li><li class="sv-item">Текстиль та м\u0027який декор</li><li class="sv-item">Освітлення та аксесуари</li><li class="sv-item">Збирання та розстановка</li>',cLi:'<li class="sv-item">Монтаж фундаменту та конструктиву</li><li class="sv-item">Зведення стін та перекриттів</li><li class="sv-item">Покрівля та фасадне оздоблення</li><li class="sv-item">Інженерні системи</li><li class="sv-item">Внутрішнє оздоблення та здача</li>',lLi:'<li class="sv-item">Концепція та ескізний план</li><li class="sv-item">Ландшафтне планування ділянки</li><li class="sv-item">Підбір рослин та матеріалів</li><li class="sv-item">Дренаж та полив</li><li class="sv-item">Укладання покриттів та доріжок</li>',dMo:'<div class="sv-more-list"><div class="sv-more-item">Аналіз простору та функціональний зонінг</div><div class="sv-more-item">Концептуальний дизайн</div><div class="sv-more-item">3D-візуалізація</div><div class="sv-more-item">Робочі та монтажні креслення</div><div class="sv-more-item">Специфікація матеріалів з прайс-листами</div><div class="sv-more-item">Авторський нагляд</div><div class="sv-more-item">VR-тур (опція)</div></div><div><span class="sv-more-tag">3\u20138 тижнів</span><span class="sv-more-tag">від $40 / м\u00b2</span><span class="sv-more-tag">Безкоштовна консультація</span></div>',rMo:'<div class="sv-more-list"><div class="sv-more-item">Демонтаж будь-якої складності</div><div class="sv-more-item">Електрика: прихована проводка, смарт-будинок</div><div class="sv-more-item">Сантехніка та опалення</div><div class="sv-more-item">Вентиляція та тепла підлога</div><div class="sv-more-item">Штукатурка, стяжка, вирівнювання</div><div class="sv-more-item">Укладання плитки, паркету, мармуру</div><div class="sv-more-item">Натяжні та гіпсокартонні стелі</div><div class="sv-more-item">Малярні та декоративні роботи</div><div class="sv-more-item">Щоденні фото-звіти у Telegram</div><div class="sv-more-item">Здача з актом та гарантією 2 роки</div></div><div><span class="sv-more-tag">1\u201312 місяців</span><span class="sv-more-tag">від $550 / м\u00b2</span><span class="sv-more-tag">Фіксований кошторис</span></div>',fMo:'<div class="sv-more-list"><div class="sv-more-item">Підбір меблів під проєкт та бюджет</div><div class="sv-more-item">Прямий імпорт через China Opt Shop</div><div class="sv-more-item">200+ перевірених виробників</div><div class="sv-more-item">Меблі на замовлення</div><div class="sv-more-item">Освітлення та аксесуари</div><div class="sv-more-item">Текстиль та декор</div><div class="sv-more-item">Збирання та стилізація</div></div><div><span class="sv-more-tag">2\u20138 тижнів</span><span class="sv-more-tag">від $250 / м\u00b2</span><span class="sv-more-tag">China Opt Shop</span></div>',cMo:'<div class="sv-more-list"><div class="sv-more-item">Геодезичні та топографічні роботи</div><div class="sv-more-item">Проектна документація та ДБН</div><div class="sv-more-item">Фундаментні роботи</div><div class="sv-more-item">Зведення стін та перекриттів</div><div class="sv-more-item">Монтаж даху та покрівлі</div><div class="sv-more-item">Фасадне оздоблення та утеплення</div><div class="sv-more-item">Вікна, двері, перегородки</div><div class="sv-more-item">Інженерні мережі та комунікації</div><div class="sv-more-item">Щоденні фото-звіти у Telegram</div><div class="sv-more-item">Здача з актом та гарантією 3 роки</div></div><div><span class="sv-more-tag">6\u201324 місяці</span><span class="sv-more-tag">від $600 / м\u00b2</span><span class="sv-more-tag">Технічний нагляд</span></div>',lMo:'<div class="sv-more-list"><div class="sv-more-item">Топографічна зйомка та аналіз ділянки</div><div class="sv-more-item">Концептуальний план ландшафту</div><div class="sv-more-item">Посадковий план та специфікація рослин</div><div class="sv-more-item">Дренаж та водовідведення</div><div class="sv-more-item">Система автоматичного поливу</div><div class="sv-more-item">Газон та плиткові доріжки</div><div class="sv-more-item">Декоративне освітлення ділянки</div><div class="sv-more-item">Малі архітектурні форми</div><div class="sv-more-item">Водні елементи (фонтани, ставки)</div></div><div><span class="sv-more-tag">2\u20138 тижнів</span><span class="sv-more-tag">від $50 / сотку</span><span class="sv-more-tag">Підбір рослин</span></div>',spD:'Концепція, 3D-візуалізація, робочі креслення та авторський нагляд.',spR:'Повний цикл будівельних та оздоблювальних робіт з гарантією.',spF:'Прямий імпорт меблів та декору з Китаю та Європи без посередників.',spC:'Зведення та реконструкція будівель під ключ.',spL:'Проектування та облаштування садів і прилеглих територій.'},
@@ -951,7 +830,7 @@ function go(id){
   const p=document.getElementById('p-'+id);if(p){p.classList.add('active');window.scrollTo({top:0,behavior:'instant'});}
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
   const na=document.getElementById('n-'+id);if(na)na.classList.add('on');
-  if(id==='contact')setTimeout(initMap,180);
+  if(id==='contact')
 }
 function goProject(id){go('portfolio');setTimeout(()=>{const btn=document.querySelector('.filt[onclick*="\''+id+'\'"]');if(btn)filt(btn,id);},100);}
 function filt(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');document.querySelectorAll('.pi').forEach(item=>{item.style.display=(cat==='all'||item.dataset.c===cat)?'':'none';});}
@@ -972,7 +851,7 @@ go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.h
 goProject=function(id){window.location.href='/portfolio.html#'+id;};
 filt=function(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');document.querySelectorAll('.pi').forEach(el=>{el.style.display=(cat==='all'||el.dataset.c===cat)?'':'none';});};
 
-setLang(localStorage.getItem('cas-lang')||'uk'); setTimeout(initMap,400);
+setLang(localStorage.getItem('cas-lang')||'uk'); 
 </script>
 </body>
 </html>
