@@ -918,7 +918,6 @@ function go(id){
   const p=document.getElementById('p-'+id);if(p){p.classList.add('active');window.scrollTo({top:0,behavior:'instant'});}
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('on'));
   const na=document.getElementById('n-'+id);if(na)na.classList.add('on');
-  if(id==='contact')
 }
 function goProject(id){go('portfolio');setTimeout(()=>{const btn=document.querySelector('.filt[onclick*="\''+id+'\'"]');if(btn)filt(btn,id);},100);}
 function filt(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');document.querySelectorAll('.pi').forEach(item=>{item.style.display=(cat==='all'||item.dataset.c===cat)?'':'none';});}
