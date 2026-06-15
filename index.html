@@ -19,7 +19,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:16px}
 body{background:var(--bg);color:var(--tx);font-family:var(--M);overflow-x:hidden;cursor:none}
-#cr,#crf{position:fixed;pointer-events:none;z-index:99999;border-radius:50%;left:-100px;top:-100px;display:block}
+#cr,#crf{position:fixed;pointer-events:none;z-index:9999;border-radius:50%}
 #cr{width:6px;height:6px;background:var(--ac);transform:translate(-50%,-50%)}
 #crf{width:28px;height:28px;border:1px solid rgba(191,145,72,.4);transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease,transform .15s}
 body::before{content:'';position:fixed;inset:0;opacity:.25;pointer-events:none;z-index:8000;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E")}
