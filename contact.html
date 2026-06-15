@@ -664,10 +664,10 @@ body.light .map-grat{display:none!important}
         <div class="calc-group">
           <label data-i18n="calc_tier">Рівень реалізації</label>
           <select class="calc-select" id="tierSelect" onchange="calcUpdate()">
-            <option value="eco" data-i18n="tier_eco">Економ — базові матеріали</option>
-            <option value="std" selected data-i18n="tier_std">Стандарт — оптимальне співвідношення</option>
-            <option value="prem" data-i18n="tier_prem">Преміум — якісні матеріали та техніка</option>
-            <option value="lux" data-i18n="tier_lux">Люкс — найкраще з доступного</option>
+            <option value="eco" data-i18n="tier_eco">Базові матеріали — від $500/м²</option>
+            <option value="std" selected data-i18n="tier_std">Оптимально — від $650/м²</option>
+            <option value="prem" data-i18n="tier_prem">Якісні матеріали — від $700/м²</option>
+            <option value="lux" data-i18n="tier_lux">Найкраще — від $850/м²</option>
           </select>
         </div>
         <div class="calc-group">
@@ -807,7 +807,7 @@ function setLang(l){
 /* ═══ SERVICE CARD TOGGLE ═══ */
 function toggleSv(card){card.classList.toggle('exp');}
 /* ═══ CALCULATOR ═══ */
-const RATES={d:{eco:40,std:50,prem:60,lux:70},r:{eco:550,std:650,prem:780,lux:900},f:{eco:250,std:300,prem:380,lux:600},c:{eco:600,std:750,prem:950,lux:1200},l:{eco:50,std:80,prem:120,lux:200}};
+const RATES={d:{eco:40,std:40,prem:40,lux:40},r:{eco:500,std:650,prem:700,lux:850},f:{eco:250,std:300,prem:380,lux:600},c:{eco:600,std:750,prem:950,lux:1200},l:{eco:50,std:80,prem:120,lux:200}};
 const RL={uk:{d:'Дизайн інтер\u0027єру',r:'Ремонт під ключ',f:'Меблювання',c:'Будівництво',l:'Ландшафтний дизайн'},en:{d:'Interior Design',r:'Renovation',f:'Furniture',c:'Construction',l:'Landscape Design'},es:{d:'Diseño',r:'Renovación',f:'Muebles',c:'Construcción',l:'Paisajismo'}};
 function getRL(t){return(RL[curLang]||RL.uk)[t]||t;}
 const svcSel={d:true,r:false,f:false,c:false,l:false};
