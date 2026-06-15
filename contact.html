@@ -742,7 +742,7 @@ body.light .map-grat { display: none !important; }
             <span class="area-val"><strong id="areaDisplay">100</strong> м²</span>
           </label>
           <div class="slider-wrap">
-            <div id="areaBubble" style="position:absolute;top:-20px;left:calc(14% - 16px);background:var(--sf);border:1px solid var(--ac);color:var(--ac);font-family:var(--M);font-size:.58rem;padding:2px 6px;pointer-events:none;transform:translateX(-50%)">100 м²</div>
+            <div id="areaBubble" style="position:absolute;top:-24px;left:calc(14% - 16px);background:var(--sf);border:1px solid var(--ac);color:var(--ac);font-family:var(--M);font-size:.58rem;padding:2px 6px;pointer-events:none;transform:translateX(-50%)">100 м²</div>
             <input type="range" class="calc-slider" id="areaSlider" min="30" max="500" value="100" oninput="sliderMove(this)">
           </div>
         </div>
@@ -758,15 +758,11 @@ body.light .map-grat { display: none !important; }
         <div class="calc-group">
           <label data-i18n="calc_extra">Додаткові опції</label>
           <div class="calc-chk-row">
-            <label class="calc-chk"><input type="checkbox" id="ch-smart" onchange="calcUpdate()"> <span data-i18n="ch_smart">Розумний будинок (+$120/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-climate" onchange="calcUpdate()"> <span data-i18n="ch_climate">Клімат-контроль (+$65/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-3d" onchange="calcUpdate()"> <span data-i18n="ch_3d">3D-рендер (+$25/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-sup" onchange="calcUpdate()"> <span data-i18n="ch_sup">Авторський нагляд (+$20/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-smart" onchange="calcUpdate()"> <span data-i18n="ch_smart">Розумний будинок (+$50/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-climate" onchange="calcUpdate()"> <span data-i18n="ch_climate">Клімат-контроль (+$60/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-sup" onchange="calcUpdate()"> <span data-i18n="ch_sup">Авторський нагляд (+$15/м²)</span></label>
             <label class="calc-chk"><input type="checkbox" id="ch-china" onchange="calcUpdate()"> <span data-i18n="ch_china">China Opt Shop (−15% на меблі)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-facade" onchange="calcUpdate()"> <span data-i18n="ch_facade">Фасадне оздоблення (+$120/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-sound" onchange="calcUpdate()"> <span data-i18n="ch_sound">Шумоізоляція (+$45/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-cctv" onchange="calcUpdate()"> <span data-i18n="ch_cctv">Відеоспостереження (+$15/м²)</span></label>
-            <label class="calc-chk"><input type="checkbox" id="ch-sec" onchange="calcUpdate()"> <span data-i18n="ch_sec">Охоронна система (+$18/м²)</span></label>
+            <label class="calc-chk"><input type="checkbox" id="ch-sound" onchange="calcUpdate()"> <span data-i18n="ch_sound">Шумоізоляція (+$25/м²)</span></label>
             <label class="calc-chk"><input type="checkbox" id="ch-docs" onchange="calcUpdate()"> <span data-i18n="ch_docs">Документація та дозволи (+$12/м²)</span></label>
           </div>
         </div>
@@ -907,8 +903,8 @@ function sliderMove(sl){const v=+sl.value,pct=(v-30)/(500-30)*100;document.getEl
 function calcUpdate(){
   const area=+document.getElementById('areaSlider').value;const tier=document.getElementById('tierSelect').value;
   const chk=id=>document.getElementById(id)?.checked;
-  const smart=chk('ch-smart')?120:0,clim=chk('ch-climate')?65:0,r3d=chk('ch-3d')?25:0,sup=chk('ch-sup')?20:0,china=chk('ch-china');
-  const facade=chk('ch-facade')?120:0,sound=chk('ch-sound')?45:0,cctv=chk('ch-cctv')?15:0,sec=chk('ch-sec')?18:0,docs=chk('ch-docs')?12:0;
+  const smart=chk('ch-smart')?50:0,clim=chk('ch-climate')?60:0,r3d=0,sup=chk('ch-sup')?15:0,china=chk('ch-china');
+  const facade=0,sound=chk('ch-sound')?25:0,cctv=0,sec=0,docs=chk('ch-docs')?12:0;
   const extras=smart+clim+r3d+sup+facade+sound+cctv+sec+docs;
   const numS=['d','r','f','c','l'].filter(k=>svcSel[k]).length;const dp=numS>=3?10:numS===2?5:0;
   const lng=I18N[curLang]||I18N.uk;const dLbl=lng.discount_lbl||'Знижка';const tLbl=lng.total_lbl||'Разом';
@@ -937,40 +933,13 @@ function calcUpdate(){
 calcUpdate();
 /* ═══ FORM ═══ */
 async function submitForm(e){
-  e.preventDefault();
-  const form=e.target;
-  const inputs=form.querySelectorAll('input[type="text"]');
-  const name=(inputs[0]?.value||'').trim();
-  const phone=(inputs[1]?.value||'').trim();
-  const service=form.querySelector('select')?.value||'';
-  const firstOpt=form.querySelector('select option')?.value||'';
-  const area=(inputs[2]?.value||'').trim();
-  const msg2=(form.querySelector('textarea')?.value||'').trim();
-  // Валідація
-  if(!name||name.length<2){alert('\u26A0\uFE0F \u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0432\u0430\u0448\u0435 \u0456\u043c\u2019\u044f');inputs[0]?.focus();return;}
-  if(!phone){alert('\u26A0\uFE0F \u0412\u0432\u0435\u0434\u0456\u0442\u044c \u043d\u043e\u043c\u0435\u0440 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0443');inputs[1]?.focus();return;}
-  if(!/^[+]?[\d\s\-()]{10,}$/.test(phone)){alert('\u26A0\uFE0F \u041d\u0435\u0432\u0456\u0440\u043d\u0438\u0439 \u0444\u043e\u0440\u043c\u0430\u0442. \u041f\u0440\u0438\u043a\u043b\u0430\u0434: +380 97 866 7755');inputs[1]?.focus();return;}
-  if(!service||service===firstOpt){alert('\u26A0\uFE0F \u041e\u0431\u0435\u0440\u0456\u0442\u044c \u043f\u043e\u0441\u043b\u0443\u0433\u0443');form.querySelector('select')?.focus();return;}
-  if(!area){alert('\u26A0\uFE0F \u0412\u043a\u0430\u0436\u0456\u0442\u044c \u043f\u043b\u043e\u0449\u0443');inputs[2]?.focus();return;}
-  if(!msg2||msg2.length<5){alert('\u26A0\uFE0F \u0420\u043e\u0437\u043a\u0430\u0436\u0456\u0442\u044c \u043f\u0440\u043e \u043f\u0440\u043e\u0454\u043a\u0442');form.querySelector('textarea')?.focus();return;}
-  // Відправка
-  const btn=form.querySelector('button[type="submit"]');
-  if(btn){btn.disabled=true;btn.innerHTML='<span>\u23F3 \u041d\u0430\u0434\u0441\u0438\u043b\u0430\u0454\u043c\u043e...</span>';}
-  const data={name,phone,service,area,message:msg2,source:'cas-develop.com'};
+  e.preventDefault();const form=e.target;const inputs=form.querySelectorAll('input[type="text"]');
+  const data={name:inputs[0]?.value||'',phone:inputs[1]?.value||'',service:form.querySelector('select')?.value||'',area:inputs[2]?.value||'',message:form.querySelector('textarea')?.value||''};
+  const btn=form.querySelector('button[type="submit"]');if(btn)btn.textContent='⏳...';
   try{await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});}catch(err){}
-  // Успіх
   const okEl=document.getElementById('ok');
-  if(okEl){
-    okEl.innerHTML='<div style="font-size:2rem;margin-bottom:12px;color:var(--ac)">\u2713</div><div style="font-family:var(--D);font-size:1.8rem;font-weight:300;margin-bottom:8px">\u0417\u0430\u044f\u0432\u043a\u0443 \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043e!</div><div style="font-family:var(--M);font-size:.82rem;color:var(--mu);margin-bottom:24px">\u041c\u0438 \u0437\u0432\u2019\u044f\u0436\u0435\u043c\u043e\u0441\u044f \u0437 \u0432\u0430\u043c\u0438 \u0432\u043f\u0440\u043e\u0434\u043e\u0432\u0436 24 \u0433\u043e\u0434\u0438\u043d.</div><button onclick="resetContactForm()" style="background:none;border:1px solid var(--ac);color:var(--ac);padding:10px 28px;cursor:pointer;font-family:var(--M);font-size:.72rem;letter-spacing:.12em">\u041d\u043e\u0432\u0430 \u0437\u0430\u044f\u0432\u043a\u0430 \u2192</button>';
-    okEl.style.display='block';okEl.style.padding='48px 32px';okEl.style.textAlign='center';
-  }
-  form.style.display='none';
-}
-function resetContactForm(){
-  const form=document.querySelector('form[onsubmit="submitForm(event)"]');
-  const okEl=document.getElementById('ok');
-  if(form){form.reset();form.style.display='';const btn=form.querySelector('button[type="submit"]');if(btn){btn.disabled=false;btn.innerHTML='<span data-i18n="f_submit">\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0437\u0430\u044f\u0432\u043a\u0443</span><span>\u2192</span>';}}
-  if(okEl){okEl.style.display='none';okEl.style.padding='';okEl.style.textAlign='';}
+  if(okEl){const msg=okEl.getAttribute('data-msg')||(I18N[curLang]?.ok_msg||'✓ Заявку отримано!');okEl.textContent=msg;okEl.style.display='block';}
+  form.style.opacity='.4';form.style.pointerEvents='none';
 }
 /* ═══ NAVIGATION ═══ */
 function go(id){
@@ -994,9 +963,8 @@ go('home');
 setLang(curLang);
 
 
-/* multipage nav */
+/* multipage */
 go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.html',about:'/about.html',contact:'/contact.html'};if(m[p])window.location.href=m[p];};
-goProject=function(id){window.location.href='/portfolio.html#'+id;};
 setLang(localStorage.getItem('cas-lang')||'uk');setTimeout(initMap,400);
 
 </script>
