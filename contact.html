@@ -237,12 +237,6 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
   .geo{padding:0 22px 52px}.geo-grid{flex-direction:column}
   .geo-item{border-right:none;border-bottom:1px solid var(--bd)}.geo-item:last-child{border-bottom:none}
   .ct-layout{grid-template-columns:1fr;margin:0 22px 52px}
-  .mob-contacts{display:flex;gap:8px;overflow-x:auto;padding:18px 0 4px;margin-bottom:20px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .mob-contacts::-webkit-scrollbar{display:none}
-  .mob-ct-btn{display:flex;flex-direction:column;align-items:center;gap:7px;min-width:68px;padding:14px 8px;background:var(--sf);border:1px solid rgba(191,145,72,.22);border-radius:14px;color:var(--tx);text-decoration:none;flex-shrink:0;transition:border-color .2s,background .2s}
-  .mob-ct-btn:active{background:rgba(191,145,72,.1);border-color:var(--ac)}
-  .mob-ct-ic{color:var(--ac);display:flex;align-items:center;justify-content:center}
-  .mob-ct-lbl{font-family:var(--M);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);white-space:nowrap}
   .ci{padding:36px 0;border-right:none;border-bottom:1px solid var(--bd)}.cf{padding:36px 0 0}
   .fr{grid-template-columns:1fr}
   .svc-prev{padding:52px 22px}.sp-grid{grid-template-columns:1fr}
@@ -414,8 +408,7 @@ body.light .map-grat{display:none!important}
 /* ════════════════════════════════════════
    DESKTOP: always show nav links, hide sidebar
 ════════════════════════════════════════ */
-@media (min-width:768px){.mob-contacts{display:none}
-  .nsb,.nsb-ov,.hbg-btn{display:none!important}
+@media (min-width:768px){  .nsb,.nsb-ov,.hbg-btn{display:none!important}
   nav .nav-links{display:flex!important}
   nav .lang-sw{display:flex!important}
   .lang-cycle{display:flex!important}
@@ -526,6 +519,17 @@ body.light .map-grat{display:none!important}
   .ct-form-area{padding:24px 20px 40px!important;width:100%!important}
 }
 
+
+/* ── MOBILE CONTACT BAR ── */
+.mob-contacts{display:none}
+@media(max-width:767px){
+  .mob-contacts{display:flex!important;gap:8px;overflow-x:auto;padding:20px 0 6px;margin-bottom:24px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .mob-contacts::-webkit-scrollbar{display:none}
+  .mob-ct-btn{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:70px;padding:15px 8px 12px;background:var(--sf);border:1px solid rgba(191,145,72,.25);border-radius:14px;color:var(--tx);text-decoration:none;flex-shrink:0}
+  .mob-ct-btn:active{background:rgba(191,145,72,.12);border-color:var(--ac)}
+  .mob-ct-ic{color:var(--ac);display:flex;align-items:center;justify-content:center}
+  .mob-ct-lbl{font-family:var(--M);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);white-space:nowrap}
+}
 </style>
 </head>
 <body>
