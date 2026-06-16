@@ -585,6 +585,31 @@ body.light .map-grat{display:none!important}
 .pf-filter-nav-l{left:0;border-radius:0 3px 3px 0}
 .pf-filter-nav-r{right:0;border-radius:3px 0 0 3px}
 @media(min-width:768px){.pf-filter-nav{display:flex}}
+
+/* ── Project Lightbox ── */
+#plb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:9999;flex-direction:column;align-items:center;justify-content:center;touch-action:pan-y}
+#plb.open{display:flex}
+#plb-close{position:absolute;top:14px;right:18px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;z-index:10;opacity:.65;line-height:1;padding:6px;transition:opacity .2s}
+#plb-close:hover{opacity:1}
+#plb-prev,#plb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);border:none;color:var(--ac);font-size:2.5rem;width:52px;height:72px;cursor:pointer;z-index:10;transition:all .2s;display:flex;align-items:center;justify-content:center}
+#plb-prev{left:0;border-radius:0 4px 4px 0}
+#plb-next{right:0;border-radius:4px 0 0 4px}
+#plb-prev:hover,#plb-next:hover{background:rgba(0,0,0,.85);color:#fff}
+#plb-prev.hidden,#plb-next.hidden{opacity:.25;pointer-events:none}
+#plb-wrap{position:relative;display:flex;align-items:center;justify-content:center;max-width:92vw;max-height:82vh}
+#plb-img{max-width:92vw;max-height:82vh;object-fit:contain;transition:opacity .2s}
+#plb-img.fading{opacity:.2}
+#plb-spin{position:absolute;color:var(--ac);font-size:2rem;display:none;animation:plbSpin 1s linear infinite}
+@keyframes plbSpin{to{transform:rotate(360deg)}}
+#plb-bottom{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none}
+#plb-counter{font-family:var(--M);font-size:.58rem;letter-spacing:.2em;color:rgba(255,255,255,.45);text-transform:uppercase}
+#plb-lbl{font-family:var(--D);font-size:.95rem;color:rgba(255,255,255,.65)}
+#plb-np{font-family:var(--M);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);border:1px solid rgba(191,145,72,.5);background:rgba(0,0,0,.5);padding:10px 24px;cursor:pointer;transition:all .2s;pointer-events:all}
+#plb-np:hover{background:var(--ac);color:#000}
+@media(max-width:767px){
+  #plb-prev,#plb-next{width:36px;height:52px;font-size:1.8rem}
+  #plb-img{max-width:100vw;max-height:76vh}
+}
 </style>
 </head>
 <body>
@@ -974,12 +999,59 @@ body.light .map-grat{display:none!important}
     <button class="proj-row-btn" onclick="filtToProject('osokorky')">Відкрити →</button>
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_9',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_9">
-<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',0)"><img src="https://drive.google.com/thumbnail?id=1BnRMUkaRJsY268cZL8HLAIedespAmUAC&sz=w400" loading="lazy" alt="Osokorky"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',1)"><img src="https://drive.google.com/thumbnail?id=1TohlalW6PL8mdph7KoPoBvmmY4jnoISn&sz=w400" loading="lazy" alt="Osokorky"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',2)"><img src="https://drive.google.com/thumbnail?id=1tyFro2_3CVPU0tTV9s3xK_zzF-qGCt4U&sz=w400" loading="lazy" alt="Osokorky"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',3)"><img src="https://drive.google.com/thumbnail?id=10VnDwUntAIoJgLn4pqJLehmukf-7WzKZ&sz=w400" loading="lazy" alt="Osokorky"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',4)"><img src="https://drive.google.com/thumbnail?id=1wnRwhTIGDq181nYQPTv1cTbLjhKur2WI&sz=w400" loading="lazy" alt="Osokorky"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',5)"><img src="https://drive.google.com/thumbnail?id=1nrmQ8pB0DDgR80rGl6xfAH0nRt7EYWVd&sz=w400" loading="lazy" alt="Osokorky"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',0)"><img src="https://drive.google.com/thumbnail?id=1BnRMUkaRJsY268cZL8HLAIedespAmUAC&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',1)"><img src="https://drive.google.com/thumbnail?id=1TohlalW6PL8mdph7KoPoBvmmY4jnoISn&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',2)"><img src="https://drive.google.com/thumbnail?id=1tyFro2_3CVPU0tTV9s3xK_zzF-qGCt4U&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',3)"><img src="https://drive.google.com/thumbnail?id=10VnDwUntAIoJgLn4pqJLehmukf-7WzKZ&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',4)"><img src="https://drive.google.com/thumbnail?id=1wnRwhTIGDq181nYQPTv1cTbLjhKur2WI&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',5)"><img src="https://drive.google.com/thumbnail?id=1nrmQ8pB0DDgR80rGl6xfAH0nRt7EYWVd&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',6)"><img src="https://drive.google.com/thumbnail?id=1PlMpvWEqMlyT65lAgMv-hUW1kqwcbqub&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',7)"><img src="https://drive.google.com/thumbnail?id=1gAEjwaP_HN_0NJSMfScISxBAl-jirJ1S&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',8)"><img src="https://drive.google.com/thumbnail?id=1NWEbZ-c1KDP0pEuY28LsQ56jf0JfwTE4&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',9)"><img src="https://drive.google.com/thumbnail?id=1GYDzvgMcn9GrN90v01ubC6gJxvIacXMU&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',10)"><img src="https://drive.google.com/thumbnail?id=1oDPcAK5aW6et6_1iR3gjx070TTJqcwEH&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',11)"><img src="https://drive.google.com/thumbnail?id=1oU9YH7G0tNPgy2LIAV8FhmMGN2sAMOOp&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',12)"><img src="https://drive.google.com/thumbnail?id=1MEHyeCv_0bYBmJifLHs0jhjR0U07YzI-&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',13)"><img src="https://drive.google.com/thumbnail?id=1k7HbWV6BClGKSIC3i1XajLjKn7_Nlwbv&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',14)"><img src="https://drive.google.com/thumbnail?id=1gVMtnkJfWiQt9KqiSaf1xm8BxqE2NGKb&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',15)"><img src="https://drive.google.com/thumbnail?id=10wDAh1UB6Xk_PNz66FV_CZh-QlWHtwjC&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',16)"><img src="https://drive.google.com/thumbnail?id=12rLjnq6qQsjrtiUQSccJwJRiApaTOlGZ&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',17)"><img src="https://drive.google.com/thumbnail?id=1MdjHTIJ5itzMadmuwxj8xSRUnQ9fdBa6&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',18)"><img src="https://drive.google.com/thumbnail?id=1-l7fav4TYB3qIwdoHfJzUYk9eN_FgraX&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',19)"><img src="https://drive.google.com/thumbnail?id=1NyloDi7asUWxWXSHfSRWlvQrCDHwgoEI&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',20)"><img src="https://drive.google.com/thumbnail?id=1ODzvgUUrrQ_JiEsGFaHNlLDb_V1Km1_a&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',21)"><img src="https://drive.google.com/thumbnail?id=12_s_375Xld06RUvNzs-5ncrsOJpW866e&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',22)"><img src="https://drive.google.com/thumbnail?id=1t8OQtfPjbOM8W_PRShwI3COc4O0aJjmy&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',23)"><img src="https://drive.google.com/thumbnail?id=1BBQtcuBp-Hlkv9BttPEShzouFgnX2wr4&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',24)"><img src="https://drive.google.com/thumbnail?id=1hRUT3TQU8a0YudFO31GzcYXlu_CUbeCs&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',25)"><img src="https://drive.google.com/thumbnail?id=16Z3vurZJzqbXla5VXdHKxVOvGPBywVSD&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',26)"><img src="https://drive.google.com/thumbnail?id=1ofxRBwUsaUhPwBm26udw7dwvFQElonz2&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',27)"><img src="https://drive.google.com/thumbnail?id=1h8i4BYuGajHg2bdGdbkCjhZ8Hpa4LHWc&sz=w400" loading="lazy" alt="Хол"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',28)"><img src="https://drive.google.com/thumbnail?id=1mpCus4oSzarNlYBkmkjTOEgUIGWBFGiH&sz=w400" loading="lazy" alt="Хол"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',29)"><img src="https://drive.google.com/thumbnail?id=1uBisf4kJEm77gxsoh-lttdA1Kw2YjSfn&sz=w400" loading="lazy" alt="Хол"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',30)"><img src="https://drive.google.com/thumbnail?id=1IB2yRKfW3mhsWMFUijoqf1At-Yt4QRFk&sz=w400" loading="lazy" alt="Кабінет"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',31)"><img src="https://drive.google.com/thumbnail?id=1LXjpAVuOSOXjBRyZwGsqZF4rzC7uqQag&sz=w400" loading="lazy" alt="Кабінет"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',32)"><img src="https://drive.google.com/thumbnail?id=18WbLOtuQe6xGnHg2eRAoHG3yF-7U--uI&sz=w400" loading="lazy" alt="Кабінет"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',33)"><img src="https://drive.google.com/thumbnail?id=1X1KJr9_zUlRAhPQfx53oW_Uyek2-CKpB&sz=w400" loading="lazy" alt="Кабінет"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',34)"><img src="https://drive.google.com/thumbnail?id=10NgYnZUDkHDKbaC1NpY4puKhulg6-VE8&sz=w400" loading="lazy" alt="Кабінет"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',35)"><img src="https://drive.google.com/thumbnail?id=1Bcsn19kro_rEMk1xlqDKcVNZw3aBQt_9&sz=w400" loading="lazy" alt="Кабінет"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',36)"><img src="https://drive.google.com/thumbnail?id=1svz3Zpot_faczB5OmFdjiIw5fjj5XNqM&sz=w400" loading="lazy" alt="Фасад"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',37)"><img src="https://drive.google.com/thumbnail?id=1TppUE8PnXJYTjUL9rn_4i9_yUm1m6oZE&sz=w400" loading="lazy" alt="Фасад"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',38)"><img src="https://drive.google.com/thumbnail?id=1HVWsgTHZwUJDBHNVY3JKeBBsSIu8mrvg&sz=w400" loading="lazy" alt="Фасад"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',39)"><img src="https://drive.google.com/thumbnail?id=1YYiLwgF4IRdFOVFkrIEr1n2_jS5v0aYy&sz=w400" loading="lazy" alt="Фасад"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',40)"><img src="https://drive.google.com/thumbnail?id=1QHFUzmZsslSwAru5TgdNPz_eFhGzjhtt&sz=w400" loading="lazy" alt="Тераса"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',41)"><img src="https://drive.google.com/thumbnail?id=1rQif9wsBAYoHzTtyVpb9rs3nGRrvAI-0&sz=w400" loading="lazy" alt="Тераса"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',42)"><img src="https://drive.google.com/thumbnail?id=105pzeQWugQVsM9hXgLKDn-YGm7CzLplt&sz=w400" loading="lazy" alt="Тераса"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',43)"><img src="https://drive.google.com/thumbnail?id=1Dhs1vslvXE-Wk4ePrf3XtHW5zIwQkSgO&sz=w400" loading="lazy" alt="Санвузол"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',44)"><img src="https://drive.google.com/thumbnail?id=1H6ERWBdXvCG1Umy2CcrePe3b-9cwIpOw&sz=w400" loading="lazy" alt="Санвузол"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',45)"><img src="https://drive.google.com/thumbnail?id=1pS0e0wvFDrlJ5hs8lmpPExjm2wnDR9dR&sz=w400" loading="lazy" alt="Санвузол"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',46)"><img src="https://drive.google.com/thumbnail?id=1q65C5LUg-ZptZrB7vS4UXmT8pH5toFA4&sz=w400" loading="lazy" alt="Санвузол"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',47)"><img src="https://drive.google.com/thumbnail?id=12YOZCsza1kszT3lgZkrFs1dQ1Md8UnnU&sz=w400" loading="lazy" alt="Санвузол"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',48)"><img src="https://drive.google.com/thumbnail?id=1x-_yBgS0V_Ay1PaQqo_UDH7iCi1drobq&sz=w400" loading="lazy" alt="Санвузол"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',49)"><img src="https://drive.google.com/thumbnail?id=1H_bkcCFSWUvQcYaqtlGEihfjPZpDV2Ep&sz=w400" loading="lazy" alt="Гардеробна"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',50)"><img src="https://drive.google.com/thumbnail?id=1-nXNTiKzYqe9ykxu7nrf-WVPhfBGVrph&sz=w400" loading="lazy" alt="Гардеробна"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',51)"><img src="https://drive.google.com/thumbnail?id=1TwoF8PKfJW6sSkR4n2_a9-mRePh-lNgr&sz=w400" loading="lazy" alt="Гардеробна"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',52)"><img src="https://drive.google.com/thumbnail?id=11OUuzkbKZVtVLItKEsyk1Arc9XoybOBi&sz=w400" loading="lazy" alt="Гардеробна"></div>
   </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_9',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
@@ -1546,59 +1618,59 @@ body.light .map-grat{display:none!important}
   <div class="pf-cta"><img class="pf-cta-bg" src="https://drive.google.com/thumbnail?id=1T8jacyJtIwFJS0shd-GTxd4l8xuy3Pl4&sz=w1400" loading="lazy" alt=""><div class="pf-cta-in"><p id="pf-cta-txt">Є ідея для вашого простору?</p><button class="btn" href="/contact.html"><span>Обговорити проєкт</span><span>→</span></button></div></div>
   <footer><span class="fl">CAS Development</span><span class="fc">© 2025 CAS Development · Київ, Україна</span><div class="fs"><a href="https://www.instagram.com/cas_development/" target="_blank">Instagram</a><a href="https://t.me/chinashop_opt" target="_blank">Telegram</a><a href="https://wa.me/380978667755" target="_blank">WhatsApp</a></div></footer>
 
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1BnRMUkaRJsY268cZL8HLAIedespAmUAC&sz=w900" loading="lazy" alt="Вітальня 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 1</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1TohlalW6PL8mdph7KoPoBvmmY4jnoISn&sz=w900" loading="lazy" alt="Вітальня 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 2</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1tyFro2_3CVPU0tTV9s3xK_zzF-qGCt4U&sz=w900" loading="lazy" alt="Вітальня 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 3</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=10VnDwUntAIoJgLn4pqJLehmukf-7WzKZ&sz=w900" loading="lazy" alt="Вітальня 4" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 4</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1wnRwhTIGDq181nYQPTv1cTbLjhKur2WI&sz=w900" loading="lazy" alt="Вітальня 5" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 5</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1nrmQ8pB0DDgR80rGl6xfAH0nRt7EYWVd&sz=w900" loading="lazy" alt="Вітальня 6" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 6</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1PlMpvWEqMlyT65lAgMv-hUW1kqwcbqub&sz=w900" loading="lazy" alt="Вітальня 7" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 7</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1gAEjwaP_HN_0NJSMfScISxBAl-jirJ1S&sz=w900" loading="lazy" alt="Вітальня 8" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 8</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1NWEbZ-c1KDP0pEuY28LsQ56jf0JfwTE4&sz=w900" loading="lazy" alt="Вітальня 8b" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 8b</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1GYDzvgMcn9GrN90v01ubC6gJxvIacXMU&sz=w900" loading="lazy" alt="Вітальня 9" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 9</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1oDPcAK5aW6et6_1iR3gjx070TTJqcwEH&sz=w900" loading="lazy" alt="Вітальня 10" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 10</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1oU9YH7G0tNPgy2LIAV8FhmMGN2sAMOOp&sz=w900" loading="lazy" alt="Вітальня 11" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 11</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1MEHyeCv_0bYBmJifLHs0jhjR0U07YzI-&sz=w900" loading="lazy" alt="Вітальня 12" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 12</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1k7HbWV6BClGKSIC3i1XajLjKn7_Nlwbv&sz=w900" loading="lazy" alt="Вітальня 13" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 13</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1gVMtnkJfWiQt9KqiSaf1xm8BxqE2NGKb&sz=w900" loading="lazy" alt="Вітальня 14" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 14</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=10wDAh1UB6Xk_PNz66FV_CZh-QlWHtwjC&sz=w900" loading="lazy" alt="Вітальня 15" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 15</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=12rLjnq6qQsjrtiUQSccJwJRiApaTOlGZ&sz=w900" loading="lazy" alt="Вітальня 16" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 16</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1MdjHTIJ5itzMadmuwxj8xSRUnQ9fdBa6&sz=w900" loading="lazy" alt="Вітальня 17" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 17</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1-l7fav4TYB3qIwdoHfJzUYk9eN_FgraX&sz=w900" loading="lazy" alt="Вітальня 18" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 18</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1NyloDi7asUWxWXSHfSRWlvQrCDHwgoEI&sz=w900" loading="lazy" alt="Вітальня 19" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 19</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1ODzvgUUrrQ_JiEsGFaHNlLDb_V1Km1_a&sz=w900" loading="lazy" alt="Вітальня 20" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 20</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=12_s_375Xld06RUvNzs-5ncrsOJpW866e&sz=w900" loading="lazy" alt="Вітальня 21" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 21</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1t8OQtfPjbOM8W_PRShwI3COc4O0aJjmy&sz=w900" loading="lazy" alt="Вітальня 22" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 22</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1BBQtcuBp-Hlkv9BttPEShzouFgnX2wr4&sz=w900" loading="lazy" alt="Вітальня 23" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 23</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1hRUT3TQU8a0YudFO31GzcYXlu_CUbeCs&sz=w900" loading="lazy" alt="Вітальня 24" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 24</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=16Z3vurZJzqbXla5VXdHKxVOvGPBywVSD&sz=w900" loading="lazy" alt="Вітальня 25" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 25</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1ofxRBwUsaUhPwBm26udw7dwvFQElonz2&sz=w900" loading="lazy" alt="Вітальня 26" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня 26</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1h8i4BYuGajHg2bdGdbkCjhZ8Hpa4LHWc&sz=w900" loading="lazy" alt="Вітальня-Хол 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня-Хол 1</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1mpCus4oSzarNlYBkmkjTOEgUIGWBFGiH&sz=w900" loading="lazy" alt="Вітальня-Хол 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня-Хол 2</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1uBisf4kJEm77gxsoh-lttdA1Kw2YjSfn&sz=w900" loading="lazy" alt="Вітальня-Хол 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня-Хол 3</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1IB2yRKfW3mhsWMFUijoqf1At-Yt4QRFk&sz=w900" loading="lazy" alt="Кабінет 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кабінет 1</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1LXjpAVuOSOXjBRyZwGsqZF4rzC7uqQag&sz=w900" loading="lazy" alt="Кабінет 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кабінет 2</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=18WbLOtuQe6xGnHg2eRAoHG3yF-7U--uI&sz=w900" loading="lazy" alt="Кабінет 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кабінет 3</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1X1KJr9_zUlRAhPQfx53oW_Uyek2-CKpB&sz=w900" loading="lazy" alt="Кабінет 4" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кабінет 4</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=10NgYnZUDkHDKbaC1NpY4puKhulg6-VE8&sz=w900" loading="lazy" alt="Кабінет 5" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кабінет 5</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1Bcsn19kro_rEMk1xlqDKcVNZw3aBQt_9&sz=w900" loading="lazy" alt="Кабінет 6" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кабінет 6</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1svz3Zpot_faczB5OmFdjiIw5fjj5XNqM&sz=w900" loading="lazy" alt="Кухня 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кухня 1</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1TppUE8PnXJYTjUL9rn_4i9_yUm1m6oZE&sz=w900" loading="lazy" alt="Кухня 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кухня 2</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1HVWsgTHZwUJDBHNVY3JKeBBsSIu8mrvg&sz=w900" loading="lazy" alt="Кухня 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кухня 3</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1YYiLwgF4IRdFOVFkrIEr1n2_jS5v0aYy&sz=w900" loading="lazy" alt="Кухня 4" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кухня 4</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1QHFUzmZsslSwAru5TgdNPz_eFhGzjhtt&sz=w900" loading="lazy" alt="Тераса 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Тераса 1</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1rQif9wsBAYoHzTtyVpb9rs3nGRrvAI-0&sz=w900" loading="lazy" alt="Тераса 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Тераса 2</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=105pzeQWugQVsM9hXgLKDn-YGm7CzLplt&sz=w900" loading="lazy" alt="Тераса 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Тераса 3</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1Dhs1vslvXE-Wk4ePrf3XtHW5zIwQkSgO&sz=w900" loading="lazy" alt="Ванна 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Ванна 1</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1H6ERWBdXvCG1Umy2CcrePe3b-9cwIpOw&sz=w900" loading="lazy" alt="Ванна 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Ванна 2</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1pS0e0wvFDrlJ5hs8lmpPExjm2wnDR9dR&sz=w900" loading="lazy" alt="Ванна 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Ванна 3</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1q65C5LUg-ZptZrB7vS4UXmT8pH5toFA4&sz=w900" loading="lazy" alt="Ванна 4" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Ванна 4</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=12YOZCsza1kszT3lgZkrFs1dQ1Md8UnnU&sz=w900" loading="lazy" alt="Ванна 5" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Ванна 5</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1x-_yBgS0V_Ay1PaQqo_UDH7iCi1drobq&sz=w900" loading="lazy" alt="Ванна 6" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Ванна 6</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1H_bkcCFSWUvQcYaqtlGEihfjPZpDV2Ep&sz=w900" loading="lazy" alt="Гардероб 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардероб 1</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1-nXNTiKzYqe9ykxu7nrf-WVPhfBGVrph&sz=w900" loading="lazy" alt="Гардероб 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардероб 2</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1TwoF8PKfJW6sSkR4n2_a9-mRePh-lNgr&sz=w900" loading="lazy" alt="Гардероб 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардероб 3</p><p class="pi-type">Osokorky</p></div></div>
-<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=11OUuzkbKZVtVLItKEsyk1Arc9XoybOBi&sz=w900" loading="lazy" alt="Гардероб 4" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардероб 4</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1BnRMUkaRJsY268cZL8HLAIedespAmUAC&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1TohlalW6PL8mdph7KoPoBvmmY4jnoISn&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1tyFro2_3CVPU0tTV9s3xK_zzF-qGCt4U&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=10VnDwUntAIoJgLn4pqJLehmukf-7WzKZ&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1wnRwhTIGDq181nYQPTv1cTbLjhKur2WI&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1nrmQ8pB0DDgR80rGl6xfAH0nRt7EYWVd&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1PlMpvWEqMlyT65lAgMv-hUW1kqwcbqub&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1gAEjwaP_HN_0NJSMfScISxBAl-jirJ1S&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1NWEbZ-c1KDP0pEuY28LsQ56jf0JfwTE4&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1GYDzvgMcn9GrN90v01ubC6gJxvIacXMU&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1oDPcAK5aW6et6_1iR3gjx070TTJqcwEH&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1oU9YH7G0tNPgy2LIAV8FhmMGN2sAMOOp&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1MEHyeCv_0bYBmJifLHs0jhjR0U07YzI-&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1k7HbWV6BClGKSIC3i1XajLjKn7_Nlwbv&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1gVMtnkJfWiQt9KqiSaf1xm8BxqE2NGKb&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=10wDAh1UB6Xk_PNz66FV_CZh-QlWHtwjC&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=12rLjnq6qQsjrtiUQSccJwJRiApaTOlGZ&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1MdjHTIJ5itzMadmuwxj8xSRUnQ9fdBa6&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1-l7fav4TYB3qIwdoHfJzUYk9eN_FgraX&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1NyloDi7asUWxWXSHfSRWlvQrCDHwgoEI&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1ODzvgUUrrQ_JiEsGFaHNlLDb_V1Km1_a&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=12_s_375Xld06RUvNzs-5ncrsOJpW866e&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1t8OQtfPjbOM8W_PRShwI3COc4O0aJjmy&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1BBQtcuBp-Hlkv9BttPEShzouFgnX2wr4&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1hRUT3TQU8a0YudFO31GzcYXlu_CUbeCs&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=16Z3vurZJzqbXla5VXdHKxVOvGPBywVSD&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1ofxRBwUsaUhPwBm26udw7dwvFQElonz2&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1h8i4BYuGajHg2bdGdbkCjhZ8Hpa4LHWc&sz=w900" loading="lazy" alt="Хол" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Хол</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1mpCus4oSzarNlYBkmkjTOEgUIGWBFGiH&sz=w900" loading="lazy" alt="Хол" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Хол</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1uBisf4kJEm77gxsoh-lttdA1Kw2YjSfn&sz=w900" loading="lazy" alt="Хол" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Хол</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1IB2yRKfW3mhsWMFUijoqf1At-Yt4QRFk&sz=w900" loading="lazy" alt="Кабінет" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кабінет</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1LXjpAVuOSOXjBRyZwGsqZF4rzC7uqQag&sz=w900" loading="lazy" alt="Кабінет" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кабінет</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=18WbLOtuQe6xGnHg2eRAoHG3yF-7U--uI&sz=w900" loading="lazy" alt="Кабінет" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кабінет</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1X1KJr9_zUlRAhPQfx53oW_Uyek2-CKpB&sz=w900" loading="lazy" alt="Кабінет" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кабінет</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=10NgYnZUDkHDKbaC1NpY4puKhulg6-VE8&sz=w900" loading="lazy" alt="Кабінет" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кабінет</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1Bcsn19kro_rEMk1xlqDKcVNZw3aBQt_9&sz=w900" loading="lazy" alt="Кабінет" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кабінет</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1svz3Zpot_faczB5OmFdjiIw5fjj5XNqM&sz=w900" loading="lazy" alt="Фасад" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Фасад</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1TppUE8PnXJYTjUL9rn_4i9_yUm1m6oZE&sz=w900" loading="lazy" alt="Фасад" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Фасад</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1HVWsgTHZwUJDBHNVY3JKeBBsSIu8mrvg&sz=w900" loading="lazy" alt="Фасад" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Фасад</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1YYiLwgF4IRdFOVFkrIEr1n2_jS5v0aYy&sz=w900" loading="lazy" alt="Фасад" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Фасад</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1QHFUzmZsslSwAru5TgdNPz_eFhGzjhtt&sz=w900" loading="lazy" alt="Тераса" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Тераса</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1rQif9wsBAYoHzTtyVpb9rs3nGRrvAI-0&sz=w900" loading="lazy" alt="Тераса" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Тераса</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=105pzeQWugQVsM9hXgLKDn-YGm7CzLplt&sz=w900" loading="lazy" alt="Тераса" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Тераса</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1Dhs1vslvXE-Wk4ePrf3XtHW5zIwQkSgO&sz=w900" loading="lazy" alt="Санвузол" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1H6ERWBdXvCG1Umy2CcrePe3b-9cwIpOw&sz=w900" loading="lazy" alt="Санвузол" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1pS0e0wvFDrlJ5hs8lmpPExjm2wnDR9dR&sz=w900" loading="lazy" alt="Санвузол" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1q65C5LUg-ZptZrB7vS4UXmT8pH5toFA4&sz=w900" loading="lazy" alt="Санвузол" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=12YOZCsza1kszT3lgZkrFs1dQ1Md8UnnU&sz=w900" loading="lazy" alt="Санвузол" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1x-_yBgS0V_Ay1PaQqo_UDH7iCi1drobq&sz=w900" loading="lazy" alt="Санвузол" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1H_bkcCFSWUvQcYaqtlGEihfjPZpDV2Ep&sz=w900" loading="lazy" alt="Гардеробна" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1-nXNTiKzYqe9ykxu7nrf-WVPhfBGVrph&sz=w900" loading="lazy" alt="Гардеробна" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1TwoF8PKfJW6sSkR4n2_a9-mRePh-lNgr&sz=w900" loading="lazy" alt="Гардеробна" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна</p><p class="pi-type">Osokorky</p></div></div>
+<div class="pi" data-c="osokorky"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=11OUuzkbKZVtVLItKEsyk1Arc9XoybOBi&sz=w900" loading="lazy" alt="Гардеробна" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна</p><p class="pi-type">Osokorky</p></div></div>
 
 <div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1YAHZ30ZL0oPliJXPjQzp5jI1anRyDPct&sz=w900" loading="lazy" alt="SHA 10" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">SHA 10</p><p class="pi-type">Aqulla Arch</p></div></div>
 <div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1pF5ohNHdSnme0AeImi6T4l_mWQjgcwxn&sz=w900" loading="lazy" alt="SHA 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">SHA 2</p><p class="pi-type">Aqulla Arch</p></div></div>
@@ -1665,6 +1737,22 @@ body.light .map-grat{display:none!important}
 <div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1xTY8SJ-O-vcdzi-0vyGOQsuOvlM_eY2a&sz=w900" loading="lazy" alt="GIB 7" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">GIB 7</p><p class="pi-type">Aqulla Arch</p></div></div></div>
 
 <!-- ABOUT -->
+
+<!-- Project Lightbox -->
+<div id="plb" aria-hidden="true">
+  <button id="plb-close" onclick="plbClose()" aria-label="Закрити">✕</button>
+  <button id="plb-prev" onclick="plbNav(-1)" aria-label="‹">‹</button>
+  <div id="plb-wrap">
+    <img id="plb-img" src="" alt="">
+    <div id="plb-spin">◌</div>
+  </div>
+  <button id="plb-next" onclick="plbNav(1)" aria-label="›">›</button>
+  <div id="plb-bottom">
+    <div id="plb-counter"></div>
+    <div id="plb-lbl"></div>
+    <button id="plb-np" onclick="plbNextProj()" style="display:none">Наступний проєкт →</button>
+  </div>
+</div>
 </main>
 <script>
 
@@ -1914,6 +2002,86 @@ setLang(localStorage.getItem('cas-lang')||'uk');
 function pfScroll(dir){var f=document.getElementById('pfFilter');if(!f)return;f.scrollBy({left:dir*220,behavior:'smooth'});}
 
 function prsScroll(id,dir){var s=document.getElementById(id);if(!s)return;var w=s.querySelector('.proj-row-thumb');s.scrollBy({left:dir*(w?w.offsetWidth+4:140)*3,behavior:'smooth'});}
+
+/* ═══ PROJECT LIGHTBOX ═══ */
+var _plbProj='',_plbIdx=0,_plbUrls=[],_plbLabels=[];
+var _plbOrder=['yachtrest','linden','hoda','petrivtsi','usa','pidgirland','hodos','diamond','edelweiss','yacht','osokorky','aqulla'];
+var _plbNames={yachtrest:'Yacht Restaurant',linden:'Linden Penthouse',hoda:'Hoda Estate',petrivtsi:'Petrivtsi House',usa:'USA House',pidgirland:'Pidgirland',hodos:'Hodos Villa',diamond:'Diamond',edelweiss:'Edelweiss',yacht:'Yacht VIP',osokorky:'Osokorky',aqulla:'Aqulla Arch'};
+
+function plbCollect(id){
+  return Array.from(document.querySelectorAll('.proj-row-thumb')).filter(function(el){
+    return (el.getAttribute('onclick')||'').indexOf("'"+id+"'")>=0;
+  });
+}
+function plbShow(){
+  var img=document.getElementById('plb-img');
+  var total=_plbUrls.length;
+  img.classList.add('fading');
+  var src=_plbUrls[_plbIdx];
+  var i=new Image();
+  i.onload=function(){img.src=src;img.classList.remove('fading');};
+  i.src=src;
+  document.getElementById('plb-counter').textContent=(_plbIdx+1)+' / '+total;
+  document.getElementById('plb-lbl').textContent=_plbLabels[_plbIdx]||'';
+  document.getElementById('plb-prev').classList.toggle('hidden',_plbIdx===0);
+  var isLast=_plbIdx===total-1;
+  document.getElementById('plb-next').classList.toggle('hidden',isLast);
+  var pidx=_plbOrder.indexOf(_plbProj),nextId=pidx>=0&&pidx<_plbOrder.length-1?_plbOrder[pidx+1]:null;
+  var npBtn=document.getElementById('plb-np');
+  if(isLast&&nextId){npBtn.style.display='block';npBtn.textContent=(_plbNames[nextId]||nextId)+' →';}
+  else npBtn.style.display='none';
+}
+function plbOpen(projId,idx){
+  var thumbs=plbCollect(projId);
+  if(!thumbs.length)return;
+  _plbProj=projId;_plbIdx=Math.max(0,Math.min(idx,thumbs.length-1));
+  _plbUrls=thumbs.map(function(el){return (el.querySelector('img').getAttribute('src')||'').replace('sz=w400','sz=w1200');});
+  _plbLabels=thumbs.map(function(el){return el.querySelector('img').alt||'';});
+  var plb=document.getElementById('plb');
+  plb.classList.add('open');plb.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  plbShow();
+}
+function plbClose(){
+  var plb=document.getElementById('plb');
+  plb.classList.remove('open');plb.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+function plbNav(dir){_plbIdx=Math.max(0,Math.min(_plbUrls.length-1,_plbIdx+dir));plbShow();}
+function plbNextProj(){
+  var pidx=_plbOrder.indexOf(_plbProj);
+  if(pidx<0||pidx>=_plbOrder.length-1)return;
+  plbClose();
+  var nextId=_plbOrder[pidx+1];
+  setTimeout(function(){
+    var rows=Array.from(document.querySelectorAll('.proj-row'));
+    for(var r of rows){
+      var btn=r.querySelector('.proj-row-btn');
+      if(btn&&(btn.getAttribute('onclick')||'').indexOf("'"+nextId+"'")>=0){
+        r.scrollIntoView({behavior:'smooth',block:'start'});break;
+      }
+    }
+  },250);
+}
+/* Keyboard */
+document.addEventListener('keydown',function(e){
+  if(!document.getElementById('plb').classList.contains('open'))return;
+  if(e.key==='ArrowLeft')plbNav(-1);
+  else if(e.key==='ArrowRight')plbNav(1);
+  else if(e.key==='Escape')plbClose();
+});
+/* Swipe */
+(function(){
+  var el=document.getElementById('plb'),sx=0;
+  el.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  el.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)plbNav(dx<0?1:-1);},{passive:true});
+})();
+/* Override filtAndPhoto: use proj lightbox in rows view */
+var _origFiltAndPhoto=filtAndPhoto;
+filtAndPhoto=function(projId,idx){
+  if(document.querySelector('.pf-rows.active')){plbOpen(projId,idx);}
+  else{filtToProject(projId);setTimeout(function(){var ph=document.querySelectorAll('.pi[data-c="'+projId+'"] .pi-photo');if(ph[idx])lbOpen(ph[idx]);},120);}
+};
 </script>
 
 </body>
