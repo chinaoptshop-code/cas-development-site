@@ -705,6 +705,7 @@ body.light .map-grat{display:none!important}
 <button class="filt" onclick="filt(this,'monpark')">Monpark</button>
 <button class="filt" onclick="filt(this,'yablu')">Yablu Rest</button>
 </div><button class="pf-fnav pf-fnav-r" onclick="pfScroll(1)" aria-label="›">›</button></div>
+<div id="pfRowsWrap">
 <div class="pf-rows pfr-hidden" id="pfRows">
 <div class="proj-row">
   <div class="proj-row-head" onclick="filtToProject('yachtrest')" style="cursor:pointer">
@@ -1445,6 +1446,7 @@ body.light .map-grat{display:none!important}
   </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_yablu',1)" aria-label="›">›</button></div>
 </div>
 </div><!-- /pfRows -->
+</div><!-- /pfRowsWrap -->
 
 
   
@@ -2324,17 +2326,14 @@ function pfSetView(mode){
   var pfRowsEl=document.getElementById('pfRows');
   var gridEl=document.querySelector('.pf-grid');
   var fwEl=document.querySelector('.pf-filter-wrap');
+  var pfRowsWrap=document.getElementById('pfRowsWrap');
+  if(pfRowsWrap){
+    /* Wrapper has NO conflicting CSS rules — plain style.display works perfectly */
+    pfRowsWrap.style.display=isRows?'block':'none';
+  }
   if(pfRowsEl){
-    if(isRows){
-      /* style.setProperty with priority='important' is the ONLY reliable way to override CSS !important via JS */
-      pfRowsEl.style.setProperty('display','block','important');
-      pfRowsEl.classList.add('active');
-      pfRowsEl.classList.remove('pfr-hidden');
-    } else {
-      pfRowsEl.style.removeProperty('display'); /* removes inline override, CSS #pfRows{display:none!important} takes over */
-      pfRowsEl.classList.remove('active');
-      pfRowsEl.classList.add('pfr-hidden');
-    }
+    if(isRows){pfRowsEl.classList.add('active');}
+    else{pfRowsEl.classList.remove('active');}
   }
   if(gridEl){
     if(isRows){
