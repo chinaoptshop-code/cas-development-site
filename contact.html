@@ -558,6 +558,24 @@ body.light .map-grat{display:none!important}
   .ct-f2{grid-template-columns:1fr!important}
 }
 
+
+/* ── Contact quick buttons ── */
+.ct-quick-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.ct-qbtn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px 10px;background:rgba(237,232,223,.07);border:1px solid rgba(237,232,223,.1);color:var(--tx);text-decoration:none;min-width:64px;flex:1;transition:all .2s;cursor:pointer}
+.ct-qbtn:hover{background:rgba(191,145,72,.15);border-color:rgba(191,145,72,.4);color:var(--ac)}
+.ct-qbtn span{font-family:var(--M);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);transition:color .2s}
+.ct-qbtn:hover span{color:var(--ac)}
+.ct-social-links{margin-top:16px;display:flex;flex-direction:column;gap:6px}
+.ct-slink{display:flex;flex-direction:column;text-decoration:none;color:inherit;padding:6px 0;border-bottom:1px solid rgba(237,232,223,.06)}
+.ct-sl-label{font-family:var(--M);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);margin-bottom:2px}
+.ct-sl-val{font-family:var(--M);font-size:.82rem;color:var(--tx);transition:color .2s}
+.ct-slink:hover .ct-sl-val{color:var(--ac)}
+@media(max-width:767px){
+  .ct-quick-btns{gap:6px}
+  .ct-qbtn{min-width:52px;padding:10px 6px;gap:5px}
+  .ct-qbtn svg{width:18px;height:18px}
+  .ct-qbtn span{font-size:.48rem}
+}
 </style>
 </head>
 <body>
@@ -635,18 +653,33 @@ body.light .map-grat{display:none!important}
         <div>
           <div class="dl" data-i18n="ct_phone_l">Телефон / Месенджери</div>
           <div class="ct-messengers">
-            <div class="msg-row" style="flex-direction:column;align-items:flex-start;gap:12px;padding-bottom:4px">
-              <div style="font-family:var(--M);font-size:1.1rem;font-weight:300;color:var(--tx);letter-spacing:.02em">+38 097 866 7755</div>
-              <div style="display:flex;gap:10px">
-                <a href="https://wa.me/380978667755" target="_blank" class="msg-icon-link" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(191,145,72,.35);color:var(--ac);transition:border-color .2s,background .2s;text-decoration:none" title="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.1 2 3.2 5 4.4.7.3 1.2.5 1.6.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.52 2 12 2zm0 18c-1.7 0-3.2-.5-4.5-1.3l-.3-.2-3.4.9.9-3.3-.2-.3C3.5 14.9 3 13.5 3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9z"/></svg></a>
-                <a href="viber://chat?number=%2B380978667755" class="msg-icon-link" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(191,145,72,.35);color:var(--ac);transition:border-color .2s,background .2s;text-decoration:none" title="Viber"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M11.4 2c-4 0-6.6 1.6-7.9 4.2-.9 1.8-1 3.8-.3 5.7l.2.5-.8 2.9 3-.8.5.3c1.5.9 3.2 1.3 4.8 1.2 2.6-.2 4.8-1.5 6-3.6.8-1.4 1-3.1.6-4.7C16.7 4.4 14 2 11.4 2zM8.6 7.1c.2 0 .4.1.6.4.3.4.9 1.3 1 1.5.1.2.1.4 0 .6-.1.2-.2.3-.4.5l-.2.2c-.3.3-.2.5 0 .8.7 1.1 1.6 1.9 2.7 2.4.3.1.5.1.7-.1l.4-.5c.2-.2.4-.2.6-.1l1.6.7c.2.1.3.3.2.5-.1.7-.8 1.4-1.5 1.5-1.4.2-2.8-.2-4-1-1.3-.9-2.4-2.1-3-3.5-.4-1-.3-1.9.1-2.6.2-.4.6-.6 1-.6l.2-.2z"/></svg></a>
-                <a href="https://t.me/+380978667755" target="_blank" class="msg-icon-link" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(191,145,72,.35);color:var(--ac);transition:border-color .2s,background .2s;text-decoration:none" title="Telegram"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.9 6.8l-1.7 8c-.1.5-.5.7-.9.4l-2.5-1.9-1.2 1.2c-.1.1-.3.2-.5.2l.2-2.6 4.7-4.3c.2-.2 0-.3-.3-.1l-5.8 3.7-2.5-.8c-.5-.2-.5-.5.1-.8l9.8-3.8c.5-.1.8.1.6.8z"/></svg></a>
-              </div>
-            </div>
-            <div class="msg-row"><div class="msg-icon mi-tg"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.9 6.8l-1.7 8c-.1.5-.5.7-.9.4l-2.5-1.9-1.2 1.2c-.1.1-.3.2-.5.2l.2-2.6 4.7-4.3c.2-.2 0-.3-.3-.1l-5.8 3.7-2.5-.8c-.5-.2-.5-.5.1-.8l9.8-3.8c.5-.1.8.1.6.8z"/></svg></div><div><div class="msg-label" id="ct-tg-c">Telegram канал</div><div class="msg-val"><a href="https://t.me/chinashop_opt" target="_blank" style="color:inherit;text-decoration:none">@chinashop_opt</a></div></div></div>
-            <div class="msg-row"><div class="msg-icon mi-wc"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M19.6 13.2c0 3-2.7 5.4-6 5.4-.8 0-1.6-.2-2.4-.5l-2.6.9.8-2.4C8.5 15.7 8 14.5 8 13.2c0-3 2.7-5.4 6-5.4s5.6 2.4 5.6 5.4zM7.7 5.3c-1.3.7-2.2 2-2.2 3.4 0 1.1.5 2.1 1.3 2.8l-.7 2.1 2.4-.8c.7.3 1.5.5 2.3.5.3 0 .6 0 .9-.1C11.2 12.3 10 10.9 10 9.3c0-2.6 2.4-4.7 5.3-4.7.2 0 .4 0 .6 0C15 3.4 13.1 2.5 11 2.5c-1.6 0-3 .7-4 1.8z"/></svg></div><div><div class="msg-label">WeChat</div><div class="msg-val"><span class="ph-reveal" data-phone="+38 063 866 7755" onclick="revealPhone(this)">Показати номер →</span></div></div></div>
-            <div class="msg-row"><div class="msg-icon mi-ig"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8 0 3.2 0 3.6-.1 4.8-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1-3.2 0-3.6 0-4.8-.1-3.2-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12c0-3.2 0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 4c-3.1 0-3.5 0-4.7.1-2.2.1-3.2 1.1-3.3 3.3C4 8.5 4 8.9 4 12s0 3.5.1 4.7c.1 2.2 1.1 3.2 3.3 3.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c2.2-.1 3.2-1.1 3.3-3.3.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7C19.9 5.1 18.9 4.1 16.7 4 15.5 4 15.1 4 12 4zm0 2.8c2.9 0 5.2 2.3 5.2 5.2S14.9 17.2 12 17.2 6.8 14.9 6.8 12 9.1 6.8 12 6.8zm0 1.8c-1.9 0-3.4 1.5-3.4 3.4s1.5 3.4 3.4 3.4 3.4-1.5 3.4-3.4-1.5-3.4-3.4-3.4zm5.4-3.2c.7 0 1.2.5 1.2 1.2S18.1 8.8 17.4 8.8 16.2 8.3 16.2 7.6s.5-1.2 1.2-1.2z"/></svg></div><div><div class="msg-label">Instagram</div><div class="msg-val"><a href="https://www.instagram.com/cas_development/" target="_blank" style="color:inherit;text-decoration:none">@cas_development</a></div></div></div>
-          </div>
+  <div class="ct-quick-btns">
+    <a href="tel:+380978667755" class="ct-qbtn" title="Дзвінок">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      <span>Дзвінок</span>
+    </a>
+    <a href="https://wa.me/380978667755" target="_blank" class="ct-qbtn" title="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.1 2 3.2 5 4.4.7.3 1.2.5 1.6.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.7 0-3.2-.5-4.5-1.3l-.3-.2-3.4.9.9-3.3-.2-.3C3.5 14.9 3 13.5 3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a href="https://t.me/+380978667755" target="_blank" class="ct-qbtn" title="Telegram">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.9 6.8l-1.7 8c-.1.5-.5.7-.9.4l-2.5-1.9-1.2 1.2c-.1.1-.3.2-.5.2l.2-2.6 4.7-4.3c.2-.2 0-.3-.3-.1l-5.8 3.7-2.5-.8c-.5-.2-.5-.5.1-.8l9.8-3.8c.5-.1.8.1.6.8z"/></svg>
+      <span>Telegram</span>
+    </a>
+    <a href="mailto:China.shop.opt@gmail.com" class="ct-qbtn" title="Email">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      <span>Email</span>
+    </a>
+    <a href="https://maps.google.com/?q=вулиця+Антоновича+44,+Київ" target="_blank" class="ct-qbtn" title="Адреса">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      <span>Адреса</span>
+    </a>
+  </div>
+  <div class="ct-social-links">
+    <a href="https://t.me/chinashop_opt" target="_blank" class="ct-slink"><span class="ct-sl-label">Telegram канал</span><span class="ct-sl-val">@chinashop_opt</span></a>
+    <a href="https://www.instagram.com/cas_development/" target="_blank" class="ct-slink"><span class="ct-sl-label">Instagram</span><span class="ct-sl-val">@cas_development</span></a>
+  </div>
+</div>
         </div>
         
 
