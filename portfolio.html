@@ -544,6 +544,10 @@ body.light .map-grat{display:none!important}
 
 .pf-rows{display:none;padding:0 0 60px}
 .pf-rows.active{display:block}
+/* Nuclear: body class controls visibility */
+body.view-filter #pfRows{display:none!important}
+body.view-rows .pf-grid{display:none!important}
+body.view-rows #pfRows{display:block!important}
 .pf-grid.hidden{display:none!important}
 .pf-filter{/* always visible */}
 .proj-row{margin-bottom:0;border-top:1px solid rgba(237,232,223,.06)}
@@ -632,7 +636,7 @@ body.light .map-grat{display:none!important}
 
 
 /* ── Portfolio: default hidden state, JS controls visibility ── */
-#pfRows{display:block}
+/* #pfRows initial display controlled by body class */
 .pf-grid{display:none}
 .pf-filter-wrap{display:flex} /* always visible */
 </style>
@@ -699,7 +703,7 @@ body.light .map-grat{display:none!important}
 <button class="filt" onclick="filt(this,'monpark')">Monpark</button>
 <button class="filt" onclick="filt(this,'yablu')">Yablu Rest</button>
 </div><button class="pf-fnav pf-fnav-r" onclick="pfScroll(1)" aria-label="›">›</button></div>
-<div class="pf-rows active" id="pfRows">
+<div class="pf-rows" id="pfRows">
 <div class="proj-row">
   <div class="proj-row-head">
     <div>
@@ -2286,16 +2290,21 @@ go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.h
 goProject=function(id){filtToProject(id);};
 function pfSetView(mode){
   var isRows=(mode==='rows');
-  /* — JS only — no CSS body class dependency — */
   var pfRowsEl=document.getElementById('pfRows');
   var gridEl=document.querySelector('.pf-grid');
   var fwEl=document.querySelector('.pf-filter-wrap');
-  if(pfRowsEl){pfRowsEl.style.cssText='display:'+(isRows?'block':'none')+'!important';}
-  if(gridEl){gridEl.style.cssText='display:'+(isRows?'none':'grid')+'!important';}
-  if(fwEl){fwEl.style.cssText='display:flex!important';}
-  /* body classes for any remaining CSS hooks */
+  /* Nuclear: use body class + inline style + active class removal */
   document.body.classList.toggle('view-rows',isRows);
   document.body.classList.toggle('view-filter',!isRows);
+  if(pfRowsEl){
+    pfRowsEl.style.display=isRows?'block':'none';
+    if(isRows){pfRowsEl.classList.add('active');}
+    else{pfRowsEl.classList.remove('active');}
+  }
+  if(gridEl){
+    gridEl.style.display=isRows?'none':'grid';
+  }
+  if(fwEl){fwEl.style.cssText='display:flex!important';}
   /* update tab buttons */
   document.querySelectorAll('.pf-view-btn').forEach(b=>b.classList.remove('on'));
   var vb=document.querySelector('.pf-view-btn[onclick*="'+mode+'"]');
