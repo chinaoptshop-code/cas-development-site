@@ -782,7 +782,8 @@ body.light .map-grat{display:none!important}
   </div>
 </div>
 </div>
-<div class="pf-filter"><button class="filt on" onclick="filt(this,'yachtrest')">Yacht Restaurant</button>
+<div class="pf-filter"><button class="filt" onclick="filt(this,'all')">Всі проекти</button>
+<button class="filt on" onclick="filt(this,'yachtrest')">Yacht Restaurant</button>
 <button class="filt" onclick="filt(this,'linden')">Linden Penthouse</button>
 <button class="filt" onclick="filt(this,'hoda')">Hoda Estate</button>
 <button class="filt" onclick="filt(this,'petrivtsi')">Petrivtsi House</button>
@@ -1419,13 +1420,13 @@ function pfSetView(mode){
   var grid=document.querySelector('.pf-grid');
   var filter=document.querySelector('.pf-filter');
   document.querySelectorAll('.pf-view-btn').forEach(b=>b.classList.remove('on'));
-  document.querySelector('.pf-view-btn[onclick*="'+mode+'"]').classList.add('on');
+  var activeBtn=document.querySelector('.pf-view-btn[onclick*="'+mode+'"]');if(activeBtn)activeBtn.classList.add('on');
   if(mode==='rows'){rows.classList.add('active');if(grid)grid.classList.add('hidden');if(filter)filter.classList.add('hidden');}
   else{rows.classList.remove('active');if(grid)grid.classList.remove('hidden');if(filter)filter.classList.remove('hidden');}
 }
 function filtToProject(id){
   pfSetView('filter');
-  setTimeout(function(){var btn=document.querySelector(".filt[onclick*=\"'"+id+"'\"]");if(btn)filt(btn,id);},50);
+  setTimeout(function(){var allBtns=document.querySelectorAll(".filt");var btn=null;allBtns.forEach(function(b){if(b.getAttribute("onclick")&&b.getAttribute("onclick").indexOf("'"+id+"'")>=0)btn=b;});if(btn)filt(btn,id);},50);
 }
 function filtAndPhoto(id,photoIdx){
   filtToProject(id);
@@ -1438,13 +1439,16 @@ filt=function(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList
 
 setLang(localStorage.getItem('cas-lang')||'uk');
 /* Init filter: show only first project */
-(function(){var h=location.hash.replace('#','');var cat=h||'yachtrest';var btn=document.querySelector(".filt[onclick*='"+cat+"']");filt(btn||document.querySelector('.filt'),cat);})();
+(function(){
+  var h=location.hash.replace('#','');
+  var cat=h||'yachtrest';
+  var btn=document.querySelector(".filt[onclick*='"+cat+"']");
+  if(!btn&&cat!=='all')btn=document.querySelector(".filt[onclick*='yachtrest']");
+  filt(btn||document.querySelectorAll('.filt')[1],cat);
+})();
 </script>
 </body>
-</html
-<div class="proj-cover" onclick="goProject('osokorky')"><img src="https://drive.google.com/thumbnail?id=1BnRMUkaRJsY268cZL8HLAIedespAmUAC&sz=w600" loading="lazy" alt="Osokorky"><div class="proj-cover-ov"><p class="proj-cover-name">Osokorky</p><p class="proj-cover-loc">Київ · Оsokorky</p></div>
-<div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1g-E1m6cFJ9kvHIwPFNw75WFXxcUpFtS7&sz=w900" loading="lazy" alt="SHA 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">SHA 1</p><p class="pi-type">Aqulla Arch</p></div></div>
-<div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1YAHZ30ZL0oPliJXPjQzp5jI1anRyDPct&sz=w900" loading="lazy" alt="SHA 10" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">SHA 10</p><p class="pi-type">Aqulla Arch</p></div></div>
+</html<div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1YAHZ30ZL0oPliJXPjQzp5jI1anRyDPct&sz=w900" loading="lazy" alt="SHA 10" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">SHA 10</p><p class="pi-type">Aqulla Arch</p></div></div>
 <div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1pF5ohNHdSnme0AeImi6T4l_mWQjgcwxn&sz=w900" loading="lazy" alt="SHA 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">SHA 2</p><p class="pi-type">Aqulla Arch</p></div></div>
 <div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1D5SepOyqNoUiJQbwKxhFxohf4Kc5W34Y&sz=w900" loading="lazy" alt="SHA 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">SHA 3</p><p class="pi-type">Aqulla Arch</p></div></div>
 <div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1kCutMggFic7OwQA9ipUICXGl5hpHDW6v&sz=w900" loading="lazy" alt="SHA 4" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">SHA 4</p><p class="pi-type">Aqulla Arch</p></div></div>
@@ -1507,6 +1511,4 @@ setLang(localStorage.getItem('cas-lang')||'uk');
 <div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1vUyVsc4A6ZGIcKCGuxFxVxI9QKpmxrAr&sz=w900" loading="lazy" alt="GIB 5" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">GIB 5</p><p class="pi-type">Aqulla Arch</p></div></div>
 <div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1Xbqx1kXMwpetDqZYfqL7RdQQKO2taRBR&sz=w900" loading="lazy" alt="GIB 6" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">GIB 6</p><p class="pi-type">Aqulla Arch</p></div></div>
 <div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1xTY8SJ-O-vcdzi-0vyGOQsuOvlM_eY2a&sz=w900" loading="lazy" alt="GIB 7" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">GIB 7</p><p class="pi-type">Aqulla Arch</p></div></div></div>
-
-<div class="proj-cover" onclick="goProject('aqulla')"><img src="https://drive.google.com/thumbnail?id=1g-E1m6cFJ9kvHIwPFNw75WFXxcUpFtS7&sz=w600" loading="lazy" alt="Aqulla Arch"><div class="proj-cover-ov"><p class="proj-cover-name">Aqulla Arch</p><p class="proj-cover-loc">Архітектурні проєкти</p></div></div>
 >
