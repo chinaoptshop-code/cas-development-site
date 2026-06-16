@@ -154,15 +154,7 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 .filt{padding:14px 20px;background:none;border:none;font-family:var(--M);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;transition:all .25s;flex-shrink:0}
 .filt:hover,.filt.on{color:var(--tx);border-bottom-color:var(--ac)}
 .pf-grid{padding:0 52px 60px;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:280px;gap:6px}
-.pf-grid .pf-grid .pi:nth-child(1){grid-column:1/8;grid-row:span 2}
-.pf-grid .pf-grid .pi:nth-child(2),.pf-grid .pi:nth-child(3){grid-column:8/13}
-.pf-grid .pf-grid .pi:nth-child(4),.pf-grid .pi:nth-child(5){grid-column:span 4}
-.pf-grid .pf-grid .pi:nth-child(6){grid-column:9/13}
-.pf-grid .pf-grid .pi:nth-child(7){grid-column:1/6;grid-row:span 2}
-.pf-grid .pf-grid .pi:nth-child(8),.pf-grid .pi:nth-child(9){grid-column:6/13}
-.pf-grid .pf-grid .pi:nth-child(n+10){grid-column:span 4}
-.pi{position:relative;overflow:hidden;cursor:pointer;background:var(--sf)}
-.pi-photo{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.pf-grid 0%;object-fit:cover;transition:transform .7s ease}
 .pi:hover .pi-photo{transform:scale(1.07)}
 .pi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.84) 0%,transparent 55%);opacity:0;transition:opacity .4s;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;z-index:1}
 .pi:hover .pi-ov{opacity:1}
@@ -416,15 +408,20 @@ body.light .map-grat{display:none!important}
 /* ════════════════════════════════════════
    MOBILE LAYOUT — comprehensive
 ════════════════════════════════════════ */
+
+@media(min-width:768px){
+  .pf-grid .pi:nth-child(1){grid-column:1/8;grid-row:span 2}
+  .pf-grid .pi:nth-child(2),.pf-grid .pi:nth-child(3){grid-column:8/13}
+  .pf-grid .pi:nth-child(4),.pf-grid .pi:nth-child(5){grid-column:span 4}
+  .pf-grid .pi:nth-child(6){grid-column:9/13}
+  .pf-grid .pi:nth-child(7){grid-column:1/6;grid-row:span 2}
+  .pf-grid .pi:nth-child(8),.pf-grid .pi:nth-child(9){grid-column:6/13}
+  .pf-grid .pi:nth-child(n+10){grid-column:span 4}
+}
 @media (max-width:767px){
   /* ── pf-grid mobile ── */
   .pf-grid{grid-template-columns:1fr 1fr!important;grid-auto-rows:190px!important;padding:0 12px 48px!important;gap:4px!important}
-  .pf-grid .pi:nth-child(n){grid-column:auto!important;grid-row:auto!important}
-
-
-  /* NAV */
-  nav{padding:14px 18px!important}
-  nav .nav-links{display:none!important}
+  isplay:none!important}
   nav .lang-sw{display:flex!important}
   .lang-cycle{background:none!important;border:none!important;box-shadow:none!important;outline:none!important;color:var(--ac)!important;font-family:var(--M)!important;font-size:.68rem!important;font-weight:700!important;letter-spacing:.14em!important;padding:4px 8px!important}
   .hbg-btn{display:flex!important;margin-left:auto}
