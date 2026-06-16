@@ -578,7 +578,7 @@ body.light .map-grat{display:none!important}
 @media(min-width:768px){#pfBtnFilter{display:none!important}}
 
 /* ── pf-filter scrollable nav (desktop) ── */
-.pf-filter-wrap{display:flex;align-items:stretch;position:relative}
+.pf-filter-wrap{display:none;align-items:stretch;position:relative}
 .pf-filter{flex:1;min-width:0}
 .pf-fnav{flex:none;width:36px;background:rgba(8,7,9,.85);border:none;border-bottom:1px solid var(--bd);color:var(--ac);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;user-select:none;touch-action:manipulation;z-index:5}
 .pf-fnav:hover{background:rgba(191,145,72,.15);color:#fff}
@@ -1693,14 +1693,19 @@ goProject=function(id){filtToProject(id);};
 function pfSetView(mode){
   var rows=document.getElementById('pfRows');
   var grid=document.querySelector('.pf-grid');
+  var fw=document.querySelector('.pf-filter-wrap');
   document.querySelectorAll('.pf-view-btn').forEach(b=>b.classList.remove('on'));
   var activeBtn=document.querySelector('.pf-view-btn[onclick*="'+mode+'"]');if(activeBtn)activeBtn.classList.add('on');
   if(mode==='rows'){
-    rows.classList.add('active');
+    /* По проекту: показуємо рядки проектів, ховаємо фільтр+сітку */
+    if(rows)rows.classList.add('active');
     if(grid)grid.classList.add('hidden');
+    if(fw)fw.style.display='none';
   } else {
-    rows.classList.remove('active');
+    /* ВСІ ПРОЕКТИ: ховаємо рядки, показуємо фільтр+сітку */
+    if(rows)rows.classList.remove('active');
     if(grid)grid.classList.remove('hidden');
+    if(fw)fw.style.display='flex';
   }
 }
 function filtToProject(id){
