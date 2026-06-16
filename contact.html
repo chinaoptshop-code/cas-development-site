@@ -605,6 +605,33 @@ body.light .map-grat{display:none!important}
   .calc-wrap{padding:28px 16px!important}
   .calc-title{font-size:1.4rem!important;margin-bottom:16px!important}
 }
+
+/* ── Calculator mobile compact ── */
+@media(max-width:767px){
+  .calc-wrap{padding:20px 14px 24px!important;border-top:1px solid var(--bd)}
+  .calc-title{font-size:1.3rem!important;margin-bottom:14px!important}
+  .calc-body{grid-template-columns:1fr!important;gap:14px!important}
+  .calc-form{gap:12px!important}
+  .calc-group label{font-size:.58rem!important;letter-spacing:.15em!important;margin-bottom:5px!important}
+  .calc-tabs-row{gap:4px!important}
+  .calc-tab{font-size:.6rem!important;padding:6px 10px!important}
+  .calc-extra-list{gap:6px!important}
+  .calc-extra-list label{font-size:.72rem!important;gap:6px!important}
+  .calc-select{padding:8px 10px!important;font-size:.8rem!important}
+  .calc-slider{margin:8px 0!important}
+  .calc-res{padding:20px 16px!important}
+  .calc-est{font-size:2.4rem!important;margin-bottom:10px!important}
+  .calc-cta-btn{padding:13px!important;font-size:.68rem!important;margin-top:12px!important}
+  .calc-breakdown{margin-top:12px!important;gap:8px!important}
+  .calc-breakdown-row{font-size:.78rem!important}
+}
+
+@media(min-width:768px){
+  .calc-wrap{padding:36px 52px 52px!important}
+  .calc-title{font-size:1.7rem!important;margin-bottom:22px!important}
+  .calc-body{gap:36px!important}
+  .calc-form{gap:18px!important}
+}
 </style>
 </head>
 <body>
@@ -752,7 +779,7 @@ body.light .map-grat{display:none!important}
           <span class="ferr" id="errMsg"></span>
         </div>
         <button type="submit" class="btn" id="fBtn" style="width:100%;justify-content:center;margin-top:6px">
-          <span data-i18n="f_submit">Надіслати заявку</span><span>→</span>
+          <span data-i18n="f_submit">Надіслати</span><span>→</span>
         </button>
       </form>
       <div id="ok">✓ Заявку отримано! Ми зв'яжемося з вами впродовж 24 годин.</div>
@@ -891,7 +918,7 @@ function showMapTip(e,el){const t=document.getElementById('map-tip');if(!t)retur
 const LANG_LIST=['uk','en','es'];const LANG_DISPLAY={uk:'UA',en:'EN',es:'ES'};
 let curLang='uk',langIdx=0;
 const I18N={
-  uk:{nav_home:'Головна',nav_services:'Послуги',nav_portfolio:'Портфоліо',nav_about:'Про нас',nav_contacts:'Контакти',expand:'Детальніше',ct_label:'Зв\u0027язатися',ct_map_label:'Наші проєкти по світу',ct_map_lgn:'\u25cf \u041d\u0410\u0428\u0406 \u041f\u0420\u041e\u0404\u041a\u0422\u0418',ct_title:'Давайте обговоримо ваш простір',ct_sub:'Розкажіть про проєкт \u2014 запропонуємо рішення. Безкоштовна консультація 30 хвилин.',ct_city_l:'Місто',ct_phone_l:'Телефон / Месенджери',ct_prices_l:'Вартість послуг',f_name:'Ваше ім\u0027я',f_phone:'Телефон / Telegram',f_service:'Послуга',f_pick:'Оберіть послугу',f_area:'Площа об\u0027єкту',f_msg:'Розкажіть про проєкт',f_submit:'Надіслати заявку',calc_title:'Калькулятор вартості інтер\u0027єру',calc_type:'Послуги (виберіть одну або кілька)',calc_design:'Дизайн',calc_reno:'Ремонт',calc_furn:'Меблювання',calc_constr:'Будівництво',calc_land:'Ландшафт',calc_area_lbl:'Площа об\u0027єкту',calc_tier:'Рівень реалізації',calc_extra:'Додаткові опції',tier_eco:'Економ \u2014 базові матеріали',tier_std:'Стандарт \u2014 оптимально',tier_prem:'Преміум \u2014 якісні матеріали',tier_lux:'Люкс \u2014 найкраще',ch_smart:'Розумний будинок (+$50/м²)',ch_climate:'Клімат-контроль (+$60/м²)',ch_3d:'3D-рендер (+$25/м²)',ch_sup:'Авторський нагляд (+$15/м²)',ch_china:'China Opt Shop (\u221215% на меблі)',ch_facade:'Фасадне оздоблення (+$120/м²)',ch_sound:'Шумоізоляція (+$45/м²)',ch_cctv:'Відеоспостереження (+$15/м²)',ch_sec:'Охоронна система (+$18/м²)',ch_docs:'Документація та дозволи (+$12/м²)',calc_estimate:'Орієнтовна вартість',calc_sub:'Точний розрахунок після консультації',calc_cta:'Отримати консультацію',discount_lbl:'\u0417\u043d\u0438\u0436\u043a\u0430',total_lbl:'\u0420\u0430\u0437\u043e\u043c',disc10:'\u2713 Знижка 10% на весь комплекс',disc5:'\u2713 Знижка 5% на комбінацію',combo_base:'Оберіть 2+ послуги \u2014 знижка 5\u201310%',ok_msg:'\u2713 Заявку отримано! Ми зв\u0027яжемося з вами впродовж 24 годин.',ph_name:'Ваше ім\u0027я',ph_phone:'Телефон / Telegram',ph_area:'Наприклад: 80 м²',ph_msg:'Що за об\u0027єкт? Стиль? Терміни?'},
+  uk:{nav_home:'Головна',nav_services:'Послуги',nav_portfolio:'Портфоліо',nav_about:'Про нас',nav_contacts:'Контакти',expand:'Детальніше',ct_label:'Зв\u0027язатися',ct_map_label:'Наші проєкти по світу',ct_map_lgn:'\u25cf \u041d\u0410\u0428\u0406 \u041f\u0420\u041e\u0404\u041a\u0422\u0418',ct_title:'Давайте обговоримо ваш простір',ct_sub:'Розкажіть про проєкт \u2014 запропонуємо рішення. Безкоштовна консультація 30 хвилин.',ct_city_l:'Місто',ct_phone_l:'Телефон / Месенджери',ct_prices_l:'Вартість послуг',f_name:'Ваше ім\u0027я',f_phone:'Телефон / Telegram',f_service:'Послуга',f_pick:'Оберіть послугу',f_area:'Площа об\u0027єкту',f_msg:'Розкажіть про проєкт',f_submit:'Надіслати',calc_title:'Калькулятор вартості інтер\u0027єру',calc_type:'Послуги (виберіть одну або кілька)',calc_design:'Дизайн',calc_reno:'Ремонт',calc_furn:'Меблювання',calc_constr:'Будівництво',calc_land:'Ландшафт',calc_area_lbl:'Площа об\u0027єкту',calc_tier:'Рівень реалізації',calc_extra:'Додаткові опції',tier_eco:'Економ \u2014 базові матеріали',tier_std:'Стандарт \u2014 оптимально',tier_prem:'Преміум \u2014 якісні матеріали',tier_lux:'Люкс \u2014 найкраще',ch_smart:'Розумний будинок (+$50/м²)',ch_climate:'Клімат-контроль (+$60/м²)',ch_3d:'3D-рендер (+$25/м²)',ch_sup:'Авторський нагляд (+$15/м²)',ch_china:'China Opt Shop (\u221215% на меблі)',ch_facade:'Фасадне оздоблення (+$120/м²)',ch_sound:'Шумоізоляція (+$45/м²)',ch_cctv:'Відеоспостереження (+$15/м²)',ch_sec:'Охоронна система (+$18/м²)',ch_docs:'Документація та дозволи (+$12/м²)',calc_estimate:'Орієнтовна вартість',calc_sub:'Точний розрахунок після консультації',calc_cta:'Отримати консультацію',discount_lbl:'\u0417\u043d\u0438\u0436\u043a\u0430',total_lbl:'\u0420\u0430\u0437\u043e\u043c',disc10:'\u2713 Знижка 10% на весь комплекс',disc5:'\u2713 Знижка 5% на комбінацію',combo_base:'Оберіть 2+ послуги \u2014 знижка 5\u201310%',ok_msg:'\u2713 Заявку отримано! Ми зв\u0027яжемося з вами впродовж 24 годин.',ph_name:'Ваше ім\u0027я',ph_phone:'Телефон / Telegram',ph_area:'Наприклад: 80 м²',ph_msg:'Що за об\u0027єкт? Стиль? Терміни?'},
   en:{nav_home:'Home',nav_services:'Services',nav_portfolio:'Portfolio',nav_about:'About',nav_contacts:'Contact',expand:'More Details',ct_label:'Get In Touch',ct_map_label:'Our Projects Worldwide',ct_map_lgn:'\u25cf OUR PROJECTS',ct_title:"Let's Discuss Your Space",ct_sub:"Tell us about your project \u2014 we'll offer solutions. Free 30-minute consultation.",ct_city_l:'City',ct_phone_l:'Phone / Messengers',ct_prices_l:'Service Pricing',f_name:'Your Name',f_phone:'Phone / Telegram',f_service:'Service',f_pick:'Select a service',f_area:'Object Area',f_msg:'Tell us about the project',f_submit:'Send Request',calc_title:'Interior Cost Calculator',calc_type:'Services (select one or more)',calc_design:'Design',calc_reno:'Renovation',calc_furn:'Furniture',calc_constr:'Construction',calc_land:'Landscape',calc_area_lbl:'Object Area',calc_tier:'Implementation Level',calc_extra:'Additional Options',tier_eco:'Economy \u2014 basic materials',tier_std:'Standard \u2014 optimal balance',tier_prem:'Premium \u2014 quality materials',tier_lux:'Luxury \u2014 the very best',ch_smart:'Smart Home (+$50/m²)',ch_climate:'Climate Control (+$60/m²)',ch_3d:'3D Render (+$25/m²)',ch_sup:'Author Supervision (+$15/m²)',ch_china:'China Opt Shop (\u221215% on furniture)',ch_facade:'Facade Finishing (+$120/m²)',ch_sound:'Soundproofing (+$45/m²)',ch_cctv:'CCTV (+$15/m²)',ch_sec:'Security System (+$18/m²)',ch_docs:'Documentation (+$12/m²)',calc_estimate:'Estimated Cost',calc_sub:'Exact calculation after consultation',calc_cta:'Get Consultation',discount_lbl:'Discount',total_lbl:'Total',disc10:'\u2713 10% discount for full complex',disc5:'\u2713 5% discount for combination',combo_base:'Select 2+ services \u2014 5\u201310% discount',ok_msg:"\u2713 Request received! We'll contact you within 24 hours.",ph_name:'Your Name',ph_phone:'Phone / Telegram',ph_area:'Example: 80 m²',ph_msg:'What is the space? Style? Timeline?'},
   es:{nav_home:'Inicio',nav_services:'Servicios',nav_portfolio:'Portafolio',nav_about:'Nosotros',nav_contacts:'Contacto',expand:'Más Detalles',ct_label:'Contáctenos',ct_map_label:'Nuestros Proyectos',ct_map_lgn:'\u25cf NUESTROS PROYECTOS',ct_title:'Hablemos de Tu Espacio',ct_sub:'Cuéntanos sobre tu proyecto.',ct_city_l:'Ciudad',ct_phone_l:'Teléfono',ct_prices_l:'Precios',f_name:'Tu Nombre',f_phone:'Teléfono',f_service:'Servicio',f_pick:'Selecciona',f_area:'Área',f_msg:'Cuéntanos',f_submit:'Enviar',calc_title:'Calculadora',calc_type:'Servicios',calc_design:'Diseño',calc_reno:'Renovación',calc_furn:'Muebles',calc_constr:'Construcción',calc_land:'Paisajismo',calc_area_lbl:'Área',calc_tier:'Nivel',calc_extra:'Opciones',tier_eco:'Económico',tier_std:'Estándar',tier_prem:'Premium',tier_lux:'Lujo',ch_smart:'Casa Inteligente (+$50)',ch_climate:'Clima (+$60)',ch_3d:'Render 3D (+$25)',ch_sup:'Supervisión (+$15)',ch_china:'China Opt Shop (\u221215%)',ch_facade:'Fachada (+$120)',ch_sound:'Aislamiento (+$45)',ch_cctv:'CCTV (+$15)',ch_sec:'Seguridad (+$18)',ch_docs:'Documentación (+$12)',calc_estimate:'Costo Estimado',calc_sub:'Cálculo después de consulta',calc_cta:'Consulta',discount_lbl:'Descuento',total_lbl:'Total',disc10:'\u2713 Descuento 10%',disc5:'\u2713 Descuento 5%',combo_base:'2+ servicios \u2014 5\u201310%',ok_msg:'\u2713 Solicitud recibida!',ph_name:'Tu Nombre',ph_phone:'Teléfono',ph_area:'Ejemplo: 80 m²',ph_msg:'¿Qué espacio?'}
 };
@@ -1036,7 +1063,7 @@ function resetCForm(){
     form.querySelectorAll('.fi,.ft').forEach(el=>el.classList.remove('err'));
     form.querySelectorAll('.ferr').forEach(el=>el.textContent='');
     const btn=document.getElementById('fBtn');
-    if(btn){btn.disabled=false;btn.innerHTML='<span data-i18n="f_submit">Надіслати заявку</span><span>→</span>';}
+    if(btn){btn.disabled=false;btn.innerHTML='<span data-i18n="f_submit">Надіслати</span><span>→</span>';}
     setLang(curLang);
   }
   if(okEl){okEl.style.cssText='display:none';}
