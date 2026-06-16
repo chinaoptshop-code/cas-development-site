@@ -543,6 +543,7 @@ body.light .map-grat{display:none!important}
 }
 
 .pf-rows{display:none;padding:0 0 60px}
+#pfRows{display:none!important} /* JS overrides with setProperty */
 .pf-rows.active{display:block}
 .pfr-hidden{display:none!important;height:0!important;overflow:hidden!important;pointer-events:none!important}
 /* THE FIX: CSS class !important beats everything (inline styles can't use !important) */
@@ -2323,21 +2324,25 @@ function pfSetView(mode){
   var pfRowsEl=document.getElementById('pfRows');
   var gridEl=document.querySelector('.pf-grid');
   var fwEl=document.querySelector('.pf-filter-wrap');
-  /* SIMPLE & RELIABLE: only use .pfr-hidden class (no body classes that cause specificity conflicts) */
   if(pfRowsEl){
     if(isRows){
-      pfRowsEl.classList.remove('pfr-hidden');
+      /* style.setProperty with priority='important' is the ONLY reliable way to override CSS !important via JS */
+      pfRowsEl.style.setProperty('display','block','important');
       pfRowsEl.classList.add('active');
+      pfRowsEl.classList.remove('pfr-hidden');
     } else {
-      pfRowsEl.classList.add('pfr-hidden');
+      pfRowsEl.style.removeProperty('display'); /* removes inline override, CSS #pfRows{display:none!important} takes over */
       pfRowsEl.classList.remove('active');
+      pfRowsEl.classList.add('pfr-hidden');
     }
   }
   if(gridEl){
     if(isRows){
       gridEl.classList.add('hidden');
+      gridEl.style.removeProperty('display');
     } else {
       gridEl.classList.remove('hidden');
+      gridEl.style.setProperty('display','grid','important');
     }
   }
   if(fwEl){fwEl.style.display='flex';}
