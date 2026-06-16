@@ -544,13 +544,11 @@ body.light .map-grat{display:none!important}
 
 .pf-rows{display:none;padding:0 0 60px}
 .pf-rows.active{display:block}
+.pfr-hidden{display:none!important;height:0!important;overflow:hidden!important;pointer-events:none!important}
 /* THE FIX: CSS class !important beats everything (inline styles can't use !important) */
 .grid-hidden{display:none!important}
 .pfr-hidden{display:none!important;height:0!important;overflow:hidden!important;visibility:hidden!important;pointer-events:none!important;position:absolute!important;top:-99999px!important}
-/* Nuclear: body class controls visibility */
-body.view-filter #pfRows{display:none!important}
 
-body.view-rows #pfRows{display:block!important}
 .pf-grid.hidden{display:none!important}
 .pf-filter{/* always visible */}
 .proj-row{margin-bottom:0;border-top:1px solid rgba(237,232,223,.06)}
@@ -2325,34 +2323,21 @@ function pfSetView(mode){
   var pfRowsEl=document.getElementById('pfRows');
   var gridEl=document.querySelector('.pf-grid');
   var fwEl=document.querySelector('.pf-filter-wrap');
-  /* CSS class approach: .pfr-hidden has !important which beats inline styles
-     (browsers drop !important from el.style.cssText — CSS class is the ONLY reliable way) */
-  document.body.classList.remove('view-rows','view-filter');
-  document.body.classList.add(isRows?'view-rows':'view-filter');
+  /* SIMPLE & RELIABLE: only use .pfr-hidden class (no body classes that cause specificity conflicts) */
   if(pfRowsEl){
     if(isRows){
       pfRowsEl.classList.remove('pfr-hidden');
       pfRowsEl.classList.add('active');
-      pfRowsEl.removeAttribute('hidden');
-      pfRowsEl.style.display='';
     } else {
       pfRowsEl.classList.add('pfr-hidden');
       pfRowsEl.classList.remove('active');
-      pfRowsEl.setAttribute('hidden','');
-      pfRowsEl.style.display='none';
     }
   }
   if(gridEl){
     if(isRows){
       gridEl.classList.add('hidden');
-      gridEl.style.display='none';
     } else {
-      // Remove ALL classes that could hide the grid
-      gridEl.classList.remove('hidden','grid-hidden','pfr-hidden');
-      gridEl.removeAttribute('hidden');
-      gridEl.style.display='grid';
-      // Force reflow
-      void gridEl.offsetHeight;
+      gridEl.classList.remove('hidden');
     }
   }
   if(fwEl){fwEl.style.display='flex';}
