@@ -629,18 +629,10 @@ body.light .map-grat{display:none!important}
 .prs-nav-l::before{border-left-width:1.5px;border-bottom-width:1.5px;transform:rotate(45deg);margin-left:6px}
 .prs-nav-r::before{border-right-width:1.5px;border-bottom-width:1.5px;transform:rotate(-45deg);margin-right:6px}
 
-/* ── Portfolio view switching via body class ── */
-/* pfRows: visible in rows mode, hidden in filter mode */
-body.view-rows  #pfRows{display:block!important}
-body.view-filter #pfRows{display:none!important}
-/* pf-filter-wrap: ALWAYS visible (project tabs navigation) */
-.pf-filter-wrap{display:flex!important}
-/* pf-grid: hidden in rows mode, visible in filter mode */
-body.view-rows  .pf-grid{display:none!important}
-body.view-filter .pf-grid{display:grid!important}
-body.view-filter .pf-grid.hidden{display:grid!important}
-/* Default state */
+/* ── Portfolio: default hidden state, JS controls visibility ── */
 #pfRows{display:none}
+.pf-grid{display:none}
+.pf-filter-wrap{display:flex} /* always visible */
 </style>
 </head>
 <body>
@@ -1718,27 +1710,28 @@ go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.h
 goProject=function(id){filtToProject(id);};
 function pfSetView(mode){
   var isRows=(mode==='rows');
-  document.body.classList.toggle('view-rows',   isRows);
-  document.body.classList.toggle('view-filter', !isRows);
-  /* Explicit display — no CSS specificity battles */
-  var pfRows=document.getElementById('pfRows');
-  var grid=document.querySelector('.pf-grid');
-  var fw=document.querySelector('.pf-filter-wrap');
-  if(pfRows) pfRows.style.display=isRows?'block':'none';
-  if(grid){grid.style.display=isRows?'none':'grid';grid.classList.toggle('hidden',isRows);}
-  /* pf-filter-wrap always shown */
-  if(fw) fw.style.display='flex';
-  /* Update nav button states */
+  /* — JS only — no CSS body class dependency — */
+  var pfRowsEl=document.getElementById('pfRows');
+  var gridEl=document.querySelector('.pf-grid');
+  var fwEl=document.querySelector('.pf-filter-wrap');
+  if(pfRowsEl){pfRowsEl.style.cssText='display:'+(isRows?'block':'none')+'!important';}
+  if(gridEl){gridEl.style.cssText='display:'+(isRows?'none':'grid')+'!important';}
+  if(fwEl){fwEl.style.cssText='display:flex!important';}
+  /* body classes for any remaining CSS hooks */
+  document.body.classList.toggle('view-rows',isRows);
+  document.body.classList.toggle('view-filter',!isRows);
+  /* update tab buttons */
   document.querySelectorAll('.pf-view-btn').forEach(b=>b.classList.remove('on'));
   var vb=document.querySelector('.pf-view-btn[onclick*="'+mode+'"]');
   if(vb)vb.classList.add('on');
-  /* Highlight "Всі проекти" filt tab in rows mode */
+  /* in rows mode highlight "Всі проекти" filt tab */
   if(isRows){
     document.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));
-    var allTab=document.querySelector(".filt[onclick*=\"'all'\"]");
-    if(allTab)allTab.classList.add('active');
+    var at=document.querySelector('.filt[onclick*="all"]');
+    if(at)at.classList.add('active');
   }
 }
+
 function filtToProject(id){
   pfSetView('filter');
   setTimeout(function(){var allBtns=document.querySelectorAll(".filt");var btn=null;allBtns.forEach(function(b){if(b.getAttribute("onclick")&&b.getAttribute("onclick").indexOf("'"+id+"'")>=0)btn=b;});if(btn)filt(btn,id);},50);
