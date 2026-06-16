@@ -1,0 +1,11 @@
+/portfolio.html
+  Cache-Control: no-store, no-cache, must-revalidate
+  Pragma: no-cache
+
+/index.html
+  Cache-Control: no-store, no-cache, must-revalidate
+  Pragma: no-cache
+
+/contact.html
+  Cache-Control: no-store, no-cache, must-revalidate
+  Pragma: no-cache
