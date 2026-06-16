@@ -544,11 +544,11 @@ body.light .map-grat{display:none!important}
 
 .pf-rows{display:none;padding:0 0 60px}
 .pf-rows.active{display:block}
+/* THE FIX: CSS class !important beats everything (inline styles can't use !important) */
+.grid-hidden{display:none!important}
+.pfr-hidden{display:none!important;height:0!important;overflow:hidden!important;visibility:hidden!important;pointer-events:none!important;position:absolute!important;top:-99999px!important}
 /* Nuclear: body class controls visibility */
 body.view-filter #pfRows{display:none!important}
-/* Extra nuclear: hide pfRows when hidden attr set */
-#pfRows[hidden]{display:none!important;height:0!important;overflow:hidden!important;visibility:hidden!important;}
-#pfRows[hidden] *{display:none!important;}
 
 body.view-rows .pf-grid{display:none!important}
 body.view-rows #pfRows{display:block!important}
@@ -2323,24 +2323,28 @@ function pfSetView(mode){
   var pfRowsEl=document.getElementById('pfRows');
   var gridEl=document.querySelector('.pf-grid');
   var fwEl=document.querySelector('.pf-filter-wrap');
-  /* TRIPLE-NUCLEAR: body class + cssText with !important + hidden attr */
+  /* CSS class approach: .pfr-hidden has !important which beats inline styles
+     (browsers drop !important from el.style.cssText — CSS class is the ONLY reliable way) */
   document.body.classList.remove('view-rows','view-filter');
   document.body.classList.add(isRows?'view-rows':'view-filter');
   if(pfRowsEl){
     if(isRows){
-      pfRowsEl.removeAttribute('hidden');
-      pfRowsEl.style.cssText='display:block!important';
+      pfRowsEl.classList.remove('pfr-hidden');
       pfRowsEl.classList.add('active');
+      pfRowsEl.removeAttribute('hidden');
+      pfRowsEl.style.display='';
     } else {
-      pfRowsEl.setAttribute('hidden','');
-      pfRowsEl.style.cssText='display:none!important;height:0!important;overflow:hidden!important;visibility:hidden!important';
+      pfRowsEl.classList.add('pfr-hidden');
       pfRowsEl.classList.remove('active');
+      pfRowsEl.setAttribute('hidden','');
+      pfRowsEl.style.display='none';
     }
   }
   if(gridEl){
-    gridEl.style.cssText=isRows?'display:none!important':'display:grid!important';
+    if(isRows){gridEl.style.display='none';gridEl.classList.add('grid-hidden');}
+    else{gridEl.style.display='grid';gridEl.classList.remove('grid-hidden');}
   }
-  if(fwEl){fwEl.style.cssText='display:flex!important';}
+  if(fwEl){fwEl.style.display='flex';}
   /* update tab buttons */
   document.querySelectorAll('.pf-view-btn').forEach(b=>b.classList.remove('on'));
   var vb=document.querySelector('.pf-view-btn[onclick*="'+mode+'"]');
