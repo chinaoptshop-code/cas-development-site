@@ -149,7 +149,7 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 .ps-t{font-family:var(--D);font-size:1.18rem;font-weight:400;margin-bottom:9px}
 .ps-d{font-family:var(--M);font-size:.78rem;color:var(--mu);line-height:1.76}
 /* ─── PORTFOLIO ─── */
-.pf-filter{padding:0 52px;display:flex;gap:0;border-bottom:1px solid var(--bd);margin-bottom:48px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-behavior:smooth}
+.pf-filter{padding:0 12px;display:flex;gap:0;border-bottom:1px solid var(--bd);margin-bottom:48px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-behavior:smooth}
 .pf-filter::-webkit-scrollbar{display:none}
 .filt{padding:14px 20px;background:none;border:none;font-family:var(--M);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;transition:all .25s;flex-shrink:0}
 .filt:hover,.filt.on{color:var(--tx);border-bottom-color:var(--ac)}
@@ -579,12 +579,14 @@ body.light .map-grat{display:none!important}
 @media(min-width:768px){#pfBtnFilter{display:none!important}}
 
 /* ── pf-filter scrollable nav (desktop) ── */
-.pf-filter-wrap{position:relative}
-.pf-filter-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;background:rgba(8,7,9,.75);border:none;color:var(--ac);font-size:1.3rem;width:32px;height:44px;cursor:pointer;display:none;align-items:center;justify-content:center;transition:background .2s;user-select:none}
-.pf-filter-nav:hover{background:rgba(8,7,9,.95)}
-.pf-filter-nav-l{left:0;border-radius:0 3px 3px 0}
-.pf-filter-nav-r{right:0;border-radius:3px 0 0 3px}
-@media(min-width:768px){.pf-filter-nav{display:flex}}
+.pf-filter-wrap{display:flex;align-items:stretch;position:relative}
+.pf-filter{flex:1;min-width:0}
+.pf-fnav{flex:none;width:36px;background:rgba(8,7,9,.85);border:none;border-bottom:1px solid var(--bd);color:var(--ac);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;user-select:none;touch-action:manipulation;z-index:5}
+.pf-fnav:hover{background:rgba(191,145,72,.15);color:#fff}
+.pf-fnav-l{border-right:1px solid var(--bd)}
+.pf-fnav-r{border-left:1px solid var(--bd)}
+/* hide filter-nav on mobile (touch-scroll enough) */
+@media(max-width:767px){.pf-fnav{display:none}}
 
 /* ── Project Lightbox ── */
 #plb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:9999;flex-direction:column;align-items:center;justify-content:center;touch-action:pan-y}
@@ -1076,7 +1078,7 @@ body.light .map-grat{display:none!important}
   </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_10',1)" aria-label="›">›</button></div>
 </div>
 </div>
-<div class="pf-filter-wrap"><button class="pf-filter-nav pf-filter-nav-l" onclick="pfScroll(-1)">‹</button><div class="pf-filter hidden" id="pfFilter"><button class="filt" onclick="filt(this,'all')">Всі проекти</button>
+<div class="pf-filter-wrap"><button class="pf-fnav pf-fnav-l" onclick="pfScroll(-1)" aria-label="‹">‹</button><div class="pf-filter hidden" id="pfFilter"><button class="filt" onclick="filt(this,'all')">Всі проекти</button>
 <button class="filt on" onclick="filt(this,'yachtrest')">Yacht Restaurant</button>
 <button class="filt" onclick="filt(this,'linden')">Linden Penthouse</button>
 <button class="filt" onclick="filt(this,'hoda')">Hoda Estate</button>
@@ -1089,8 +1091,34 @@ body.light .map-grat{display:none!important}
 <button class="filt" onclick="filt(this,'yacht')">Yacht VIP</button>
 <button class="filt" onclick="filt(this,'osokorky')">Osokorky</button>
 <button class="filt" onclick="filt(this,'aqulla')">A-Frame House</button>
-</div><button class="pf-filter-nav pf-filter-nav-r" onclick="pfScroll(1)">›</button></div>
-  <div class="pf-grid hidden">
+<button class="filt" onclick="filt(this,'monpark')">Monpark</button>
+</div><button class="pf-fnav pf-fnav-r" onclick="pfScroll(1)" aria-label="›">›</button></div>
+  <div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Monpark</div>
+      <div class="proj-row-meta">Архітектурний проєкт</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('monpark')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_monpark',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_monpark">
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',0)"><img src="https://drive.google.com/thumbnail?id=1jKOiN3xyCjZCLdtfIg_dNKn5uakJcPBh&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',1)"><img src="https://drive.google.com/thumbnail?id=12HcLhMA1BYGfJgDXOG0UBwP0RVrF5GRt&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',2)"><img src="https://drive.google.com/thumbnail?id=1a7Iiulje5gvN73rFm255NJpKe2RZfOin&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',3)"><img src="https://drive.google.com/thumbnail?id=1f57D9TAv8lJgRbq_KGmVeQkBkXg1xdRx&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',4)"><img src="https://drive.google.com/thumbnail?id=1fJUIA-kCmfblIcbfMd4bGbaB1N5knDsU&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',5)"><img src="https://drive.google.com/thumbnail?id=1HL1J3k6Vl1nD-8qk8hF1lX0N5ajNzP4I&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',6)"><img src="https://drive.google.com/thumbnail?id=1I84S9MOrJrmtkD2dcq_VgMZG5FpW3rGr&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',7)"><img src="https://drive.google.com/thumbnail?id=1c17SGx_MWDbyFI-nIiYTxshkmn_1YDVd&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',8)"><img src="https://drive.google.com/thumbnail?id=17CXSsdzqH4VIWWeiNSJERPG5zYL4CcqH&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',9)"><img src="https://drive.google.com/thumbnail?id=1pZgJUxqRJ7gaGJuoHU2T4A76EvKLPI6t&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',10)"><img src="https://drive.google.com/thumbnail?id=1wwL33KrIFXK0pyJozCqsa_o5PR2I-wp7&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',11)"><img src="https://drive.google.com/thumbnail?id=1Juzv3QC28JIljRiT9wHfni8Hdoduaz1O&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',12)"><img src="https://drive.google.com/thumbnail?id=19seq_4AT9Kb4avVEEMUD8ScXLE2x_KN6&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',13)"><img src="https://drive.google.com/thumbnail?id=15e6gUmfeplrU1niU8yr4puosQv0Z5Nyq&sz=w400" loading="lazy" alt="Monpark"></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_monpark',1)" aria-label="›">›</button></div>
+</div>
+<div class="pf-grid hidden">
 <div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ&sz=w900" loading="lazy" alt="Головний зал" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Головний зал</p><p class="pi-type">Yacht Restaurant</p></div></div>
 <div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1OGn3TXnLkQenE_1aPE7Tj1P2JhCrwLfT&sz=w900" loading="lazy" alt="Інтер'єр" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Інтер'єр</p><p class="pi-type">Yacht Restaurant</p></div></div>
 <div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=18W9L5_nV9nd-78YHi3e4dwoqWSRo5nug&sz=w900" loading="lazy" alt="Зал" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Зал</p><p class="pi-type">Yacht Restaurant</p></div></div>
@@ -1685,7 +1713,21 @@ body.light .map-grat{display:none!important}
 <div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=19QAFUKOB05VsgyiuIziYYqqo2-r_75HO&sz=w900" loading="lazy" alt="A-Frame House" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">A-Frame House</p><p class="pi-type">A-Frame House</p></div></div>
 <div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1LCIxro-uCXsOv0ktNvtDXHkl7tRwQnGN&sz=w900" loading="lazy" alt="A-Frame House" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">A-Frame House</p><p class="pi-type">A-Frame House</p></div></div>
 <div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1SIOMonpmHZoIvZNf-2AnccErCj_RW9eo&sz=w900" loading="lazy" alt="A-Frame House" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">A-Frame House</p><p class="pi-type">A-Frame House</p></div></div>
-<div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1YAHZ30ZL0oPliJXPjQzp5jI1anRyDPct&sz=w900" loading="lazy" alt="A-Frame House" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">A-Frame House</p><p class="pi-type">A-Frame House</p></div></div></div>
+<div class="pi" data-c="aqulla"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1YAHZ30ZL0oPliJXPjQzp5jI1anRyDPct&sz=w900" loading="lazy" alt="A-Frame House" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">A-Frame House</p><p class="pi-type">A-Frame House</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1jKOiN3xyCjZCLdtfIg_dNKn5uakJcPBh&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=12HcLhMA1BYGfJgDXOG0UBwP0RVrF5GRt&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1a7Iiulje5gvN73rFm255NJpKe2RZfOin&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1f57D9TAv8lJgRbq_KGmVeQkBkXg1xdRx&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1fJUIA-kCmfblIcbfMd4bGbaB1N5knDsU&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1HL1J3k6Vl1nD-8qk8hF1lX0N5ajNzP4I&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1I84S9MOrJrmtkD2dcq_VgMZG5FpW3rGr&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1c17SGx_MWDbyFI-nIiYTxshkmn_1YDVd&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=17CXSsdzqH4VIWWeiNSJERPG5zYL4CcqH&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1pZgJUxqRJ7gaGJuoHU2T4A76EvKLPI6t&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1wwL33KrIFXK0pyJozCqsa_o5PR2I-wp7&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1Juzv3QC28JIljRiT9wHfni8Hdoduaz1O&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=19seq_4AT9Kb4avVEEMUD8ScXLE2x_KN6&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div>
+<div class="pi" data-c="monpark"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=15e6gUmfeplrU1niU8yr4puosQv0Z5Nyq&sz=w900" loading="lazy" alt="Monpark" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Monpark</p><p class="pi-type">Monpark</p></div></div></div>
 
 <!-- ABOUT -->
 
@@ -1956,8 +1998,8 @@ function prsScroll(id,dir){var s=document.getElementById(id);if(!s)return;var w=
 
 /* ═══ PROJECT LIGHTBOX ═══ */
 var _plbProj='',_plbIdx=0,_plbUrls=[],_plbLabels=[];
-var _plbOrder=['yachtrest','linden','hoda','petrivtsi','usa','pidgirland','hodos','diamond','edelweiss','yacht','osokorky','aqulla'];
-var _plbNames={yachtrest:'Yacht Restaurant',linden:'Linden Penthouse',hoda:'Hoda Estate',petrivtsi:'Petrivtsi House',usa:'USA House',pidgirland:'Pidgirland',hodos:'Hodos Villa',diamond:'Diamond',edelweiss:'Edelweiss',yacht:'Yacht VIP',osokorky:'Osokorky',aqulla:'A-Frame House'};
+var _plbOrder=['yachtrest','linden','hoda','petrivtsi','usa','pidgirland','hodos','diamond','edelweiss','yacht','osokorky','aqulla','monpark'];
+var _plbNames={yachtrest:'Yacht Restaurant',linden:'Linden Penthouse',hoda:'Hoda Estate',petrivtsi:'Petrivtsi House',usa:'USA House',pidgirland:'Pidgirland',hodos:'Hodos Villa',diamond:'Diamond',edelweiss:'Edelweiss',yacht:'Yacht VIP',osokorky:'Osokorky',aqulla:'A-Frame House',monpark:'Monpark'};
 
 function plbCollect(id){
   return Array.from(document.querySelectorAll('.proj-row-thumb')).filter(function(el){
