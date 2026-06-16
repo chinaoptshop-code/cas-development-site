@@ -550,7 +550,7 @@ body.light .map-grat{display:none!important}
 /* Nuclear: body class controls visibility */
 body.view-filter #pfRows{display:none!important}
 
-body.view-rows .pf-grid{display:none!important}
+body.view-rows 
 body.view-rows #pfRows{display:block!important}
 .pf-grid.hidden{display:none!important}
 .pf-filter{/* always visible */}
@@ -639,9 +639,9 @@ body.view-rows #pfRows{display:block!important}
 
 
 
-/* ── Portfolio: default hidden state, JS controls visibility ── */
-/* #pfRows initial display controlled by body class */
-.pf-grid{display:none}
+/* ── Portfolio: JS controls visibility via pfSetView ── */
+/* #pfRows initial: pfr-hidden class applied in HTML */
+/* pf-grid initial: hidden class applied in HTML */
 .pf-filter-wrap{display:flex} /* always visible */
 </style>
 </head>
@@ -707,7 +707,7 @@ body.view-rows #pfRows{display:block!important}
 <button class="filt" onclick="filt(this,'monpark')">Monpark</button>
 <button class="filt" onclick="filt(this,'yablu')">Yablu Rest</button>
 </div><button class="pf-fnav pf-fnav-r" onclick="pfScroll(1)" aria-label="›">›</button></div>
-<div class="pf-rows" id="pfRows">
+<div class="pf-rows pfr-hidden" id="pfRows">
 <div class="proj-row">
   <div class="proj-row-head">
     <div>
@@ -2341,8 +2341,13 @@ function pfSetView(mode){
     }
   }
   if(gridEl){
-    if(isRows){gridEl.style.display='none';gridEl.classList.add('grid-hidden');}
-    else{gridEl.style.display='grid';gridEl.classList.remove('grid-hidden');}
+    if(isRows){
+      gridEl.classList.add('hidden');
+      gridEl.style.display='none';
+    } else {
+      gridEl.classList.remove('hidden');
+      gridEl.style.display='grid';
+    }
   }
   if(fwEl){fwEl.style.display='flex';}
   /* update tab buttons */
