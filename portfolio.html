@@ -550,12 +550,11 @@ body.light .map-grat{display:none!important}
 /* Nuclear: body class controls visibility */
 body.view-filter #pfRows{display:none!important}
 
-body.view-rows 
 body.view-rows #pfRows{display:block!important}
 .pf-grid.hidden{display:none!important}
 .pf-filter{/* always visible */}
 .proj-row{margin-bottom:0;border-top:1px solid rgba(237,232,223,.06)}
-.proj-row-head{display:flex;align-items:center;justify-content:space-between;padding:14px 52px 10px;border-bottom:1px solid rgba(237,232,223,.1)}
+.proj-row-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:14px 52px 10px;border-bottom:1px solid rgba(237,232,223,.1)}
 .proj-row-name{font-family:var(--D);font-size:1.4rem;font-weight:300;color:var(--tx)}
 .proj-row-meta{font-family:var(--M);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);margin-top:2px}
 .proj-row-btn{font-family:var(--M);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);background:none;border:1px solid rgba(191,145,72,.35);padding:5px 12px;cursor:pointer;transition:all .2s}
@@ -709,7 +708,7 @@ body.view-rows #pfRows{display:block!important}
 </div><button class="pf-fnav pf-fnav-r" onclick="pfScroll(1)" aria-label="›">›</button></div>
 <div class="pf-rows pfr-hidden" id="pfRows">
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('yachtrest')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">Yacht Restaurant</div>
       <div class="proj-row-meta">Ресторан · Елітний</div>
@@ -739,7 +738,7 @@ body.view-rows #pfRows{display:block!important}
 </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_0',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('linden')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">Linden Penthouse</div>
       <div class="proj-row-meta">Київ · 210 м²</div>
@@ -831,7 +830,7 @@ body.view-rows #pfRows{display:block!important}
 </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_1',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('hoda')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">Hoda Estate</div>
       <div class="proj-row-meta">Київ · 180 м²</div>
@@ -882,7 +881,7 @@ body.view-rows #pfRows{display:block!important}
 </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_2',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('petrivtsi')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">Petrivtsi House</div>
       <div class="proj-row-meta">Петрівці · 320 м²</div>
@@ -993,7 +992,7 @@ body.view-rows #pfRows{display:block!important}
 </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_3',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('usa')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">USA House</div>
       <div class="proj-row-meta">США · 420 м²</div>
@@ -1027,7 +1026,7 @@ body.view-rows #pfRows{display:block!important}
   </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_4',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('pidgirland')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">Pidgirland</div>
       <div class="proj-row-meta">Київська обл. · 260 м²</div>
@@ -1108,7 +1107,7 @@ body.view-rows #pfRows{display:block!important}
 </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_5',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('hodos')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">Hodos Villa</div>
       <div class="proj-row-meta">Київ · 500 м²</div>
@@ -1180,7 +1179,7 @@ body.view-rows #pfRows{display:block!important}
   </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_6',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('diamond')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">Diamond</div>
       <div class="proj-row-meta">Дизайн-проєкт</div>
@@ -1222,7 +1221,7 @@ body.view-rows #pfRows{display:block!important}
   </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_7',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('edelweiss')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">Edelweiss</div>
       <div class="proj-row-meta">Дизайн-проєкт</div>
@@ -1271,7 +1270,7 @@ body.view-rows #pfRows{display:block!important}
   </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_8',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('yacht')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">Yacht VIP</div>
       <div class="proj-row-meta">Елітний VIP · Особняк</div>
@@ -1318,7 +1317,7 @@ body.view-rows #pfRows{display:block!important}
   </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_yacht',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('osokorky')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">Osokorky</div>
       <div class="proj-row-meta">Київ</div>
@@ -1382,7 +1381,7 @@ body.view-rows #pfRows{display:block!important}
   </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_9',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('aqulla')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">A-Frame House</div>
       <div class="proj-row-meta">Архітектура</div>
@@ -1404,7 +1403,7 @@ body.view-rows #pfRows{display:block!important}
 </div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('monpark')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">Monpark</div>
       <div class="proj-row-meta">Архітектурний проєкт</div>
@@ -1429,7 +1428,7 @@ body.view-rows #pfRows{display:block!important}
   </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_monpark',1)" aria-label="›">›</button></div>
 </div>
 <div class="proj-row">
-  <div class="proj-row-head">
+  <div class="proj-row-head" onclick="filtToProject('yablu')" style="cursor:pointer">
     <div>
       <div class="proj-row-name">Yablu Rest</div>
       <div class="proj-row-meta">Rest / Recep / Conf</div>
@@ -2292,7 +2291,10 @@ function go(id){
 function goProject(id){go('portfolio');setTimeout(()=>{const btn=document.querySelector('.filt[onclick*="\''+id+'\'"]');if(btn)filt(btn,id);},100);}
 function filt(btn,cat){
   document.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
+  if(btn)btn.classList.add('active');
+  // Also highlight the tab button for this project
+  var tb=document.querySelector(".filt[onclick*=\"'"+cat+"'\"]");
+  if(tb)tb.classList.add('active');
   if(cat==='all'){
     pfSetView('rows');
     document.querySelectorAll('.pi').forEach(el=>{el.style.display='';});
@@ -2345,8 +2347,12 @@ function pfSetView(mode){
       gridEl.classList.add('hidden');
       gridEl.style.display='none';
     } else {
-      gridEl.classList.remove('hidden');
+      // Remove ALL classes that could hide the grid
+      gridEl.classList.remove('hidden','grid-hidden','pfr-hidden');
+      gridEl.removeAttribute('hidden');
       gridEl.style.display='grid';
+      // Force reflow
+      void gridEl.offsetHeight;
     }
   }
   if(fwEl){fwEl.style.display='flex';}
