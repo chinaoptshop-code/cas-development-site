@@ -546,8 +546,8 @@ body.light .map-grat{display:none!important}
 .pf-rows.active{display:block}
 .pf-grid.hidden{display:none!important}
 .pf-filter{/* always visible */}
-.proj-row{margin-bottom:0}
-.proj-row-head{display:flex;align-items:center;justify-content:space-between;padding:18px 16px 12px;border-bottom:1px solid rgba(237,232,223,.1)}
+.proj-row{margin-bottom:0;border-top:1px solid rgba(237,232,223,.06)}
+.proj-row-head{display:flex;align-items:center;justify-content:space-between;padding:14px 52px 10px;border-bottom:1px solid rgba(237,232,223,.1)}
 .proj-row-name{font-family:var(--D);font-size:1.4rem;font-weight:300;color:var(--tx)}
 .proj-row-meta{font-family:var(--M);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);margin-top:2px}
 .proj-row-btn{font-family:var(--M);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);background:none;border:1px solid rgba(191,145,72,.35);padding:5px 12px;cursor:pointer;transition:all .2s}
@@ -616,18 +616,19 @@ body.light .map-grat{display:none!important}
 /* ── proj-row scroll nav ── */
 .proj-row-scroll-wrap{position:relative}
 .prs-nav{
-  position:absolute;top:0;bottom:0;width:40px;
-  background:none;border:none;cursor:pointer;
+  position:absolute;top:0;bottom:0;width:44px;
+  border:none;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   z-index:10;opacity:0;transition:opacity .25s;
-  color:var(--ac);padding:0;
+  color:rgba(237,232,223,.85);padding:0;font-size:1.2rem;
+  line-height:1;
 }
 .proj-row-scroll-wrap:hover .prs-nav{opacity:1}
-.prs-nav-l{left:0;background:linear-gradient(to right,rgba(8,7,9,.7) 0%,transparent 100%)}
-.prs-nav-r{right:0;background:linear-gradient(to left,rgba(8,7,9,.7) 0%,transparent 100%)}
-.prs-nav::before{content:'';display:block;width:10px;height:10px;border-style:solid;border-color:currentColor;border-width:0}
-.prs-nav-l::before{border-left-width:1.5px;border-bottom-width:1.5px;transform:rotate(45deg);margin-left:6px}
-.prs-nav-r::before{border-right-width:1.5px;border-bottom-width:1.5px;transform:rotate(-45deg);margin-right:6px}
+.prs-nav-l{left:0;background:linear-gradient(to right,rgba(8,7,9,.8) 0%,transparent 100%);overflow:hidden}
+.prs-nav-r{right:0;background:linear-gradient(to left,rgba(8,7,9,.8) 0%,transparent 100%);overflow:hidden}
+
+
+
 
 /* ── Portfolio: default hidden state, JS controls visibility ── */
 #pfRows{display:none}
@@ -684,6 +685,22 @@ body.light .map-grat{display:none!important}
   <button class="pf-view-btn" onclick="pfSetView('filter')" id="pfBtnFilter">По проекту ›</button>
 </div>
 
+<div class="pf-filter-wrap"><button class="pf-fnav pf-fnav-l" onclick="pfScroll(-1)" aria-label="‹">‹</button><div class="pf-filter" id="pfFilter"><button class="filt" onclick="filt(this,'all')">Всі проекти</button>
+<button class="filt on" onclick="filt(this,'yachtrest')">Yacht Restaurant</button>
+<button class="filt" onclick="filt(this,'linden')">Linden Penthouse</button>
+<button class="filt" onclick="filt(this,'hoda')">Hoda Estate</button>
+<button class="filt" onclick="filt(this,'petrivtsi')">Petrivtsi House</button>
+<button class="filt" onclick="filt(this,'usa')">USA House</button>
+<button class="filt" onclick="filt(this,'pidgirland')">Pidgirland</button>
+<button class="filt" onclick="filt(this,'hodos')">Hodos Villa</button>
+<button class="filt" onclick="filt(this,'diamond')">Diamond</button>
+<button class="filt" onclick="filt(this,'edelweiss')">Edelweiss</button>
+<button class="filt" onclick="filt(this,'yacht')">Yacht VIP</button>
+<button class="filt" onclick="filt(this,'osokorky')">Osokorky</button>
+<button class="filt" onclick="filt(this,'aqulla')">A-Frame House</button>
+<button class="filt" onclick="filt(this,'monpark')">Monpark</button>
+<button class="filt" onclick="filt(this,'yablu')">Yablu Rest</button>
+</div><button class="pf-fnav pf-fnav-r" onclick="pfScroll(1)" aria-label="›">›</button></div>
 <div class="pf-rows active" id="pfRows">
 <div class="proj-row">
   <div class="proj-row-head">
@@ -691,7 +708,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">Yacht Restaurant</div>
       <div class="proj-row-meta">Ресторан · Елітний</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('yachtrest')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_0',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_0">
 <div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',0)"><img src="https://drive.google.com/thumbnail?id=18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
@@ -708,7 +725,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">Linden Penthouse</div>
       <div class="proj-row-meta">Київ · 210 м²</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('linden')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_1',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_1">
 <div class="proj-row-thumb" onclick="filtAndPhoto('linden',0)"><img src="https://drive.google.com/thumbnail?id=1MslU7S5X8gIEpV6hE-s2ZHmJJRKOY7pv&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
@@ -725,7 +742,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">Hoda Estate</div>
       <div class="proj-row-meta">Київ · 180 м²</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('hoda')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_2',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_2">
 <div class="proj-row-thumb" onclick="filtAndPhoto('hoda',0)"><img src="https://drive.google.com/thumbnail?id=1FRa0FI6iMHK5LRb4c5yK24HG4CuW87vF&sz=w400" loading="lazy" alt="Hoda Estate"></div>
@@ -742,7 +759,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">Petrivtsi House</div>
       <div class="proj-row-meta">Петрівці · 320 м²</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('petrivtsi')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_3',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_3">
 <div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',0)"><img src="https://drive.google.com/thumbnail?id=1NVeaQcV2TZSN5pN8iBtzm4xyCAFfQzOE&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
@@ -759,7 +776,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">USA House</div>
       <div class="proj-row-meta">США · 420 м²</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('usa')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_4',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_4">
 <div class="proj-row-thumb" onclick="filtAndPhoto('usa',0)"><img src="https://drive.google.com/thumbnail?id=18V9n96tOhjKjhv89z890vR0tQHRdODip&sz=w400" loading="lazy" alt="Вітальня"></div>
@@ -793,7 +810,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">Pidgirland</div>
       <div class="proj-row-meta">Київська обл. · 260 м²</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('pidgirland')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_5',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_5">
 <div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',0)"><img src="https://drive.google.com/thumbnail?id=1usAOI5R4L3xU-pH_mEnuyEwbd8xaJZcZ&sz=w400" loading="lazy" alt="Pidgirland"></div>
@@ -810,7 +827,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">Hodos Villa</div>
       <div class="proj-row-meta">Київ · 500 м²</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('hodos')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_6',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_6">
 <div class="proj-row-thumb" onclick="filtAndPhoto('hodos',0)"><img src="https://drive.google.com/thumbnail?id=1Grj8_m7MJwsbEgb4penV26Ya8xZVe-vT&sz=w400" loading="lazy" alt="Вхід"></div>
@@ -882,7 +899,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">Diamond</div>
       <div class="proj-row-meta">Дизайн-проєкт</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('diamond')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_7',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_7">
 <div class="proj-row-thumb" onclick="filtAndPhoto('diamond',0)"><img src="https://drive.google.com/thumbnail?id=1iGcqtsUqLNWbBnvyOap4oiIV-8_o53dZ&sz=w400" loading="lazy" alt="Вітальня"></div>
@@ -924,7 +941,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">Edelweiss</div>
       <div class="proj-row-meta">Дизайн-проєкт</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('edelweiss')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_8',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_8">
 <div class="proj-row-thumb" onclick="filtAndPhoto('edelweiss',0)"><img src="https://drive.google.com/thumbnail?id=1DL1BY7Tg6L5B5yx8jajhRRHDBUaSnW3P&sz=w400" loading="lazy" alt="Загальний"></div>
@@ -973,7 +990,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">Yacht VIP</div>
       <div class="proj-row-meta">Елітний VIP · Особняк</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('yacht')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_yacht',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_yacht">
 <div class="proj-row-thumb" onclick="filtAndPhoto('yacht',0)"><img src="https://drive.google.com/thumbnail?id=1_0wYN-6Q8LZFXSH01vJWqz6iYJ8b9hgU&sz=w400" loading="lazy" alt="Інтер'єр"></div>
@@ -1020,7 +1037,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">Osokorky</div>
       <div class="proj-row-meta">Київ</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('osokorky')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_9',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_9">
 <div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',0)"><img src="https://drive.google.com/thumbnail?id=1BnRMUkaRJsY268cZL8HLAIedespAmUAC&sz=w400" loading="lazy" alt="Вітальня"></div>
@@ -1084,7 +1101,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">A-Frame House</div>
       <div class="proj-row-meta">Архітектура</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('aqulla')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_10',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_10">
 <div class="proj-row-thumb" onc<div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',0)"><img src="https://drive.google.com/thumbnail?id=1g-E1m6cFJ9kvHIwPFNw75WFXxcUpFtS7&sz=w400" loading="lazy" alt="A-Frame House"></div>
@@ -1106,7 +1123,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">Monpark</div>
       <div class="proj-row-meta">Архітектурний проєкт</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('monpark')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_monpark',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_monpark">
 <div class="proj-row-thumb" onclick="filtAndPhoto('monpark',0)"><img src="https://drive.google.com/thumbnail?id=1jKOiN3xyCjZCLdtfIg_dNKn5uakJcPBh&sz=w400" loading="lazy" alt="Monpark"></div>
@@ -1131,7 +1148,7 @@ body.light .map-grat{display:none!important}
       <div class="proj-row-name">Yablu Rest</div>
       <div class="proj-row-meta">Rest / Recep / Conf</div>
     </div>
-    <button class="proj-row-btn" onclick="filtToProject('yablu')">Відкрити →</button>
+    
   </div>
   <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_yablu',-1)"></button><div class="proj-row-scroll" id="prs_yablu">
 <div class="proj-row-thumb" onclick="filtAndPhoto('yablu',0)"><img src="https://drive.google.com/thumbnail?id=1GqqKXz4Ax1_cM-VY-ibgG3S1myyTx_t4&sz=w400" loading="lazy" alt="Yablu"></div>
@@ -1145,22 +1162,7 @@ body.light .map-grat{display:none!important}
 </div>
 </div><!-- /pfRows -->
 
-<div class="pf-filter-wrap"><button class="pf-fnav pf-fnav-l" onclick="pfScroll(-1)" aria-label="‹">‹</button><div class="pf-filter" id="pfFilter"><button class="filt" onclick="filt(this,'all')">Всі проекти</button>
-<button class="filt on" onclick="filt(this,'yachtrest')">Yacht Restaurant</button>
-<button class="filt" onclick="filt(this,'linden')">Linden Penthouse</button>
-<button class="filt" onclick="filt(this,'hoda')">Hoda Estate</button>
-<button class="filt" onclick="filt(this,'petrivtsi')">Petrivtsi House</button>
-<button class="filt" onclick="filt(this,'usa')">USA House</button>
-<button class="filt" onclick="filt(this,'pidgirland')">Pidgirland</button>
-<button class="filt" onclick="filt(this,'hodos')">Hodos Villa</button>
-<button class="filt" onclick="filt(this,'diamond')">Diamond</button>
-<button class="filt" onclick="filt(this,'edelweiss')">Edelweiss</button>
-<button class="filt" onclick="filt(this,'yacht')">Yacht VIP</button>
-<button class="filt" onclick="filt(this,'osokorky')">Osokorky</button>
-<button class="filt" onclick="filt(this,'aqulla')">A-Frame House</button>
-<button class="filt" onclick="filt(this,'monpark')">Monpark</button>
-<button class="filt" onclick="filt(this,'yablu')">Yablu Rest</button>
-</div><button class="pf-fnav pf-fnav-r" onclick="pfScroll(1)" aria-label="›">›</button></div>
+
   
 
 <div class="pf-grid hidden">
