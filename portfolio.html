@@ -577,6 +577,14 @@ body.light .map-grat{display:none!important}
 }
 
 @media(min-width:768px){#pfBtnFilter{display:none!important}}
+
+/* ── pf-filter scrollable nav (desktop) ── */
+.pf-filter-wrap{position:relative}
+.pf-filter-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;background:rgba(8,7,9,.75);border:none;color:var(--ac);font-size:1.3rem;width:32px;height:44px;cursor:pointer;display:none;align-items:center;justify-content:center;transition:background .2s;user-select:none}
+.pf-filter-nav:hover{background:rgba(8,7,9,.95)}
+.pf-filter-nav-l{left:0;border-radius:0 3px 3px 0}
+.pf-filter-nav-r{right:0;border-radius:3px 0 0 3px}
+@media(min-width:768px){.pf-filter-nav{display:flex}}
 </style>
 </head>
 <body>
@@ -756,10 +764,67 @@ body.light .map-grat{display:none!important}
     <button class="proj-row-btn" onclick="filtToProject('hodos')">Відкрити →</button>
   </div>
   <div class="proj-row-scroll">
-<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',0)"><img src="https://drive.google.com/thumbnail?id=1cRl7TrOdOCclnf7BmP9Qws6LjCgpGzRT&sz=w400" loading="lazy" alt="Hodos Villa"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',1)"><img src="https://drive.google.com/thumbnail?id=1BmrYo1JJhoD0eI22eiLx5iQGtvp9V00l&sz=w400" loading="lazy" alt="Hodos Villa"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',2)"><img src="https://drive.google.com/thumbnail?id=1M13ysKRsQvnPksL-4RlqyJBntF9tlHIF&sz=w400" loading="lazy" alt="Hodos Villa"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',3)"><img src="https://drive.google.com/thumbnail?id=1sSM3fuz42KHveT4a7kOFEzaGMJHnTvJo&sz=w400" loading="lazy" alt="Hodos Villa"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',0)"><img src="https://drive.google.com/thumbnail?id=1Grj8_m7MJwsbEgb4penV26Ya8xZVe-vT&sz=w400" loading="lazy" alt="Вхід"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',1)"><img src="https://drive.google.com/thumbnail?id=1Xdb_M0v9MyKsVA4rJ8V8GZxxg2xfFvSd&sz=w400" loading="lazy" alt="Вхід"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',2)"><img src="https://drive.google.com/thumbnail?id=1jS6hUJuy_cM08oYb3udE2F0F_WC1-uZY&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',3)"><img src="https://drive.google.com/thumbnail?id=1TcDKfxIgD531PQ5o2xIB7JGg1ZgaGjGn&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',4)"><img src="https://drive.google.com/thumbnail?id=1SDryLobUiLJ67OGTYYWagkDy7Yx4SikE&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',5)"><img src="https://drive.google.com/thumbnail?id=1-ZBmZr06YTHNc9OC0NaUZsYCA8_yjCxM&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',6)"><img src="https://drive.google.com/thumbnail?id=1xskjqBvCXgXuLSIFI98-Ittial6_F0ph&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',7)"><img src="https://drive.google.com/thumbnail?id=1amWZypgqtUZ3KKd7Rq_KjvMnzhEGdZD6&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',8)"><img src="https://drive.google.com/thumbnail?id=1hKvQ9T1jDNKOpq8yBXnZzrtZaHd68PKf&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',9)"><img src="https://drive.google.com/thumbnail?id=1-Lit8Tm15S9vlrG8kMAWC471YTP7WVkU&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',10)"><img src="https://drive.google.com/thumbnail?id=17aENHbKpJ78y6JnEyK6W5ARsOulh3nys&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',11)"><img src="https://drive.google.com/thumbnail?id=1YVCt0SH0U_fk_AX8rMWPdcdyEOY73MRZ&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',12)"><img src="https://drive.google.com/thumbnail?id=1akpqWqDXX6sXCz77qlZ2OxkRJH2cxAcY&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',13)"><img src="https://drive.google.com/thumbnail?id=1S8L6r4oQFAg5GDGaAeoOZKFaOenbou0f&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',14)"><img src="https://drive.google.com/thumbnail?id=1KVy31VKXiodBJqrilikT0htnH4usu5yL&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',15)"><img src="https://drive.google.com/thumbnail?id=1FLpe2b2NaaIPtu7wUMKvaD9kRwu-nkby&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',16)"><img src="https://drive.google.com/thumbnail?id=1kxCnAuFqOWXq7EDTLZsUybeVfYquSQxg&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',17)"><img src="https://drive.google.com/thumbnail?id=1lEbzbqufAWR7N596l-ZD5PfcK0gMNuy5&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',18)"><img src="https://drive.google.com/thumbnail?id=1sWwgUEwnF_Tr5svNJmVVBhPerNewgBJX&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',19)"><img src="https://drive.google.com/thumbnail?id=1YM9A7oX54GHU0YKRqrHM5aSLR-Jl5M-C&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',20)"><img src="https://drive.google.com/thumbnail?id=1NrRPjetjjmzXT940FzQqq5jjdRqMlTJW&sz=w400" loading="lazy" alt="Вітальня"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',21)"><img src="https://drive.google.com/thumbnail?id=1VUB7mHyi1SPnpm4PxCjmOShCeHtdt9YT&sz=w400" loading="lazy" alt="Спальня 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',22)"><img src="https://drive.google.com/thumbnail?id=18QGd9cvcoEngv3J6Hpd5o9RSt2upCCNO&sz=w400" loading="lazy" alt="Спальня 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',23)"><img src="https://drive.google.com/thumbnail?id=1L9sYKBbGdSG6gPVM_lxQQCZAo_nw9wBY&sz=w400" loading="lazy" alt="Спальня 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',24)"><img src="https://drive.google.com/thumbnail?id=1RPu-1neix9ZRWKv5aAFKTF1ORUsfwMba&sz=w400" loading="lazy" alt="Спальня 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',25)"><img src="https://drive.google.com/thumbnail?id=1pdpVBh-pCdJ0aQQcdGHMlZ1hrVJ6Mn4G&sz=w400" loading="lazy" alt="Спальня 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',26)"><img src="https://drive.google.com/thumbnail?id=1Uglho8mIjjRCM5CfCIIR8M6mWqgRkwVK&sz=w400" loading="lazy" alt="Спальня 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',27)"><img src="https://drive.google.com/thumbnail?id=1cpatJSs3zoc3Zx7tyiMeNIGP7Rgf3ILQ&sz=w400" loading="lazy" alt="Спальня 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',28)"><img src="https://drive.google.com/thumbnail?id=1VbP8mR23rLxAYBzMVedP2EN0Y5EHs9xE&sz=w400" loading="lazy" alt="Спальня 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',29)"><img src="https://drive.google.com/thumbnail?id=13S65_x8RxCJgjG1we2X1M9ERmCGhuiLo&sz=w400" loading="lazy" alt="Спальня 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',30)"><img src="https://drive.google.com/thumbnail?id=1eyDkON_k3qOm-Nzr8j2Rpeyyn1mgPeZo&sz=w400" loading="lazy" alt="Спальня 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',31)"><img src="https://drive.google.com/thumbnail?id=1rvZLtFPI-5yipXT0dJP3WUYzkqn04wcN&sz=w400" loading="lazy" alt="Спальня 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',32)"><img src="https://drive.google.com/thumbnail?id=13056IopoRl5SGVGutd0ubDI0PaJdnzQ7&sz=w400" loading="lazy" alt="Спальня 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',33)"><img src="https://drive.google.com/thumbnail?id=1IaznF6yqteSognsRMCUg7uAyuIAcPnro&sz=w400" loading="lazy" alt="Спальня 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',34)"><img src="https://drive.google.com/thumbnail?id=1Rye3Ub7GaZ-9tOvh4tkHAANUgiuiOrvi&sz=w400" loading="lazy" alt="Спальня 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',35)"><img src="https://drive.google.com/thumbnail?id=1EvoVkw92W1VRb5k5nLMKaJCpw8fV6Qy7&sz=w400" loading="lazy" alt="Спальня 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',36)"><img src="https://drive.google.com/thumbnail?id=1rX6WjnHT4fCgVH2eYVn0yLf6tigrKFj5&sz=w400" loading="lazy" alt="Спальня 3"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',37)"><img src="https://drive.google.com/thumbnail?id=1amCZv3ztoxi9tDFS7WWa6V_mzJC6wlGq&sz=w400" loading="lazy" alt="Спальня 3"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',38)"><img src="https://drive.google.com/thumbnail?id=1HOnuog3t9a6tPWTImCxeYZhrhNw41ZCG&sz=w400" loading="lazy" alt="Спальня 3"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',39)"><img src="https://drive.google.com/thumbnail?id=1h0DQErA8iJLTmAhzzqBmWyky9qKqHbH9&sz=w400" loading="lazy" alt="Спальня 3"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',40)"><img src="https://drive.google.com/thumbnail?id=1gf2OJce5x5f-xERZASMZlmHuawwg-Q6x&sz=w400" loading="lazy" alt="Спальня 3"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',41)"><img src="https://drive.google.com/thumbnail?id=1piGn5WSwmjShrahTv-HSI72JRlAGCOYe&sz=w400" loading="lazy" alt="Спальня 3"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',42)"><img src="https://drive.google.com/thumbnail?id=1dLPPNEAuguwep3K_PxBILYPlDJ9SbcZ2&sz=w400" loading="lazy" alt="Спальня 3"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',43)"><img src="https://drive.google.com/thumbnail?id=1770Ox4TlZ7Ho1qrSWIBI--BFVRox7noX&sz=w400" loading="lazy" alt="Санвузол 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',44)"><img src="https://drive.google.com/thumbnail?id=1l80YII0VeNjGGmb0p80rDCd3brKfdHCJ&sz=w400" loading="lazy" alt="Санвузол 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',45)"><img src="https://drive.google.com/thumbnail?id=1cYFLgq0KHAGPJeWaC7MHjFrldIEMyxXw&sz=w400" loading="lazy" alt="Санвузол 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',46)"><img src="https://drive.google.com/thumbnail?id=1KC7wnAej6DxF80Gk2yRCnT0_0K2wuqJB&sz=w400" loading="lazy" alt="Санвузол 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',47)"><img src="https://drive.google.com/thumbnail?id=1kCFiBVhuml_dYpGqJ9Hsiy8ObqzA1xvZ&sz=w400" loading="lazy" alt="Санвузол 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',48)"><img src="https://drive.google.com/thumbnail?id=1koFiJyNPUrcPa7mORF_ohqwV5mkd4O5V&sz=w400" loading="lazy" alt="Санвузол 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',49)"><img src="https://drive.google.com/thumbnail?id=1we2aOJeR2kfqxN_DJW7x4js8b1EfDz9i&sz=w400" loading="lazy" alt="Санвузол 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',50)"><img src="https://drive.google.com/thumbnail?id=10oOhYbcJqYkMPcMb5JU-2ev_5s5E8H1Y&sz=w400" loading="lazy" alt="Санвузол 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',51)"><img src="https://drive.google.com/thumbnail?id=1fBtM0vjjN62p4WTJKuPNflRX6Eo8RzD1&sz=w400" loading="lazy" alt="Санвузол 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',52)"><img src="https://drive.google.com/thumbnail?id=1jiEXuONJLmEJAxM2EX7J_zLSTEah-gDv&sz=w400" loading="lazy" alt="Санвузол 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',53)"><img src="https://drive.google.com/thumbnail?id=1sSM3fuz42KHveT4a7kOFEzaGMJHnTvJo&sz=w400" loading="lazy" alt="Гардеробна 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',54)"><img src="https://drive.google.com/thumbnail?id=1M13ysKRsQvnPksL-4RlqyJBntF9tlHIF&sz=w400" loading="lazy" alt="Гардеробна 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',55)"><img src="https://drive.google.com/thumbnail?id=1BmrYo1JJhoD0eI22eiLx5iQGtvp9V00l&sz=w400" loading="lazy" alt="Гардеробна 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',56)"><img src="https://drive.google.com/thumbnail?id=1cRl7TrOdOCclnf7BmP9Qws6LjCgpGzRT&sz=w400" loading="lazy" alt="Гардеробна 1"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',57)"><img src="https://drive.google.com/thumbnail?id=1q6HV2CsaTIwGTjUpGimMPRsWjF3PZyOw&sz=w400" loading="lazy" alt="Гардеробна 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',58)"><img src="https://drive.google.com/thumbnail?id=1pzmheAc0iEYEs1BNzbhiLyegsextxLzm&sz=w400" loading="lazy" alt="Гардеробна 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',59)"><img src="https://drive.google.com/thumbnail?id=1XNEMUBlYgN0kx3g5ddEf8_5AC8NPA7V-&sz=w400" loading="lazy" alt="Гардеробна 2"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',60)"><img src="https://drive.google.com/thumbnail?id=1lRyanOS0NO_P5FNWt-BgVPJDqMwYm7ff&sz=w400" loading="lazy" alt="Гардеробна 2"></div>
   </div>
 </div>
 <div class="proj-row">
@@ -827,7 +892,7 @@ body.light .map-grat{display:none!important}
   </div>
 </div>
 </div>
-<div class="pf-filter hidden"><button class="filt" onclick="filt(this,'all')">Всі проекти</button>
+<div class="pf-filter-wrap"><button class="pf-filter-nav pf-filter-nav-l" onclick="pfScroll(-1)">‹</button><div class="pf-filter hidden" id="pfFilter"><button class="filt" onclick="filt(this,'all')">Всі проекти</button>
 <button class="filt on" onclick="filt(this,'yachtrest')">Yacht Restaurant</button>
 <button class="filt" onclick="filt(this,'linden')">Linden Penthouse</button>
 <button class="filt" onclick="filt(this,'hoda')">Hoda Estate</button>
@@ -840,7 +905,7 @@ body.light .map-grat{display:none!important}
 <button class="filt" onclick="filt(this,'yacht')">Yacht VIP</button>
 <button class="filt" onclick="filt(this,'osokorky')">Osokorky</button>
 <button class="filt" onclick="filt(this,'aqulla')">Aqulla Arch</button>
-</div>
+</div><button class="pf-filter-nav pf-filter-nav-r" onclick="pfScroll(1)">›</button></div>
   <div class="pf-grid hidden">
 <div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ&sz=w900" loading="lazy" alt="Головний зал" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Головний зал</p><p class="pi-type">Yacht Restaurant</p></div></div>
 <div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1OGn3TXnLkQenE_1aPE7Tj1P2JhCrwLfT&sz=w900" loading="lazy" alt="Інтер'єр" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Інтер'єр</p><p class="pi-type">Yacht Restaurant</p></div></div>
@@ -1202,10 +1267,67 @@ body.light .map-grat{display:none!important}
 <div class="pi" data-c="usa"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=12eGppdrKqBNh_6GUsPKpYrmiWEzzMlNc&sz=w900" loading="lazy" alt="Сауна" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Сауна</p><p class="pi-type">USA House</p></div></div>
 
 
-<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1cRl7TrOdOCclnf7BmP9Qws6LjCgpGzRT&sz=w900" loading="lazy" alt="Кімната" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кімната</p><p class="pi-type">Hodos Villa</p></div></div>
-<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1BmrYo1JJhoD0eI22eiLx5iQGtvp9V00l&sz=w900" loading="lazy" alt="Кімната" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Кімната</p><p class="pi-type">Hodos Villa</p></div></div>
-<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1M13ysKRsQvnPksL-4RlqyJBntF9tlHIF&sz=w900" loading="lazy" alt="Простір" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Простір</p><p class="pi-type">Hodos Villa</p></div></div>
-<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1sSM3fuz42KHveT4a7kOFEzaGMJHnTvJo&sz=w900" loading="lazy" alt="Простір" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Простір</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1Grj8_m7MJwsbEgb4penV26Ya8xZVe-vT&sz=w900" loading="lazy" alt="Вхід" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вхід</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1Xdb_M0v9MyKsVA4rJ8V8GZxxg2xfFvSd&sz=w900" loading="lazy" alt="Вхід" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вхід</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1jS6hUJuy_cM08oYb3udE2F0F_WC1-uZY&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1TcDKfxIgD531PQ5o2xIB7JGg1ZgaGjGn&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1SDryLobUiLJ67OGTYYWagkDy7Yx4SikE&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1-ZBmZr06YTHNc9OC0NaUZsYCA8_yjCxM&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1xskjqBvCXgXuLSIFI98-Ittial6_F0ph&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1amWZypgqtUZ3KKd7Rq_KjvMnzhEGdZD6&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1hKvQ9T1jDNKOpq8yBXnZzrtZaHd68PKf&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1-Lit8Tm15S9vlrG8kMAWC471YTP7WVkU&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=17aENHbKpJ78y6JnEyK6W5ARsOulh3nys&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1YVCt0SH0U_fk_AX8rMWPdcdyEOY73MRZ&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1akpqWqDXX6sXCz77qlZ2OxkRJH2cxAcY&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1S8L6r4oQFAg5GDGaAeoOZKFaOenbou0f&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1KVy31VKXiodBJqrilikT0htnH4usu5yL&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1FLpe2b2NaaIPtu7wUMKvaD9kRwu-nkby&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1kxCnAuFqOWXq7EDTLZsUybeVfYquSQxg&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1lEbzbqufAWR7N596l-ZD5PfcK0gMNuy5&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1sWwgUEwnF_Tr5svNJmVVBhPerNewgBJX&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1YM9A7oX54GHU0YKRqrHM5aSLR-Jl5M-C&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1NrRPjetjjmzXT940FzQqq5jjdRqMlTJW&sz=w900" loading="lazy" alt="Вітальня" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вітальня</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1VUB7mHyi1SPnpm4PxCjmOShCeHtdt9YT&sz=w900" loading="lazy" alt="Спальня 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=18QGd9cvcoEngv3J6Hpd5o9RSt2upCCNO&sz=w900" loading="lazy" alt="Спальня 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1L9sYKBbGdSG6gPVM_lxQQCZAo_nw9wBY&sz=w900" loading="lazy" alt="Спальня 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1RPu-1neix9ZRWKv5aAFKTF1ORUsfwMba&sz=w900" loading="lazy" alt="Спальня 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1pdpVBh-pCdJ0aQQcdGHMlZ1hrVJ6Mn4G&sz=w900" loading="lazy" alt="Спальня 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1Uglho8mIjjRCM5CfCIIR8M6mWqgRkwVK&sz=w900" loading="lazy" alt="Спальня 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1cpatJSs3zoc3Zx7tyiMeNIGP7Rgf3ILQ&sz=w900" loading="lazy" alt="Спальня 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1VbP8mR23rLxAYBzMVedP2EN0Y5EHs9xE&sz=w900" loading="lazy" alt="Спальня 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=13S65_x8RxCJgjG1we2X1M9ERmCGhuiLo&sz=w900" loading="lazy" alt="Спальня 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1eyDkON_k3qOm-Nzr8j2Rpeyyn1mgPeZo&sz=w900" loading="lazy" alt="Спальня 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1rvZLtFPI-5yipXT0dJP3WUYzkqn04wcN&sz=w900" loading="lazy" alt="Спальня 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=13056IopoRl5SGVGutd0ubDI0PaJdnzQ7&sz=w900" loading="lazy" alt="Спальня 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1IaznF6yqteSognsRMCUg7uAyuIAcPnro&sz=w900" loading="lazy" alt="Спальня 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1Rye3Ub7GaZ-9tOvh4tkHAANUgiuiOrvi&sz=w900" loading="lazy" alt="Спальня 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1EvoVkw92W1VRb5k5nLMKaJCpw8fV6Qy7&sz=w900" loading="lazy" alt="Спальня 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1rX6WjnHT4fCgVH2eYVn0yLf6tigrKFj5&sz=w900" loading="lazy" alt="Спальня 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 3</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1amCZv3ztoxi9tDFS7WWa6V_mzJC6wlGq&sz=w900" loading="lazy" alt="Спальня 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 3</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1HOnuog3t9a6tPWTImCxeYZhrhNw41ZCG&sz=w900" loading="lazy" alt="Спальня 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 3</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1h0DQErA8iJLTmAhzzqBmWyky9qKqHbH9&sz=w900" loading="lazy" alt="Спальня 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 3</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1gf2OJce5x5f-xERZASMZlmHuawwg-Q6x&sz=w900" loading="lazy" alt="Спальня 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 3</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1piGn5WSwmjShrahTv-HSI72JRlAGCOYe&sz=w900" loading="lazy" alt="Спальня 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 3</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1dLPPNEAuguwep3K_PxBILYPlDJ9SbcZ2&sz=w900" loading="lazy" alt="Спальня 3" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Спальня 3</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1770Ox4TlZ7Ho1qrSWIBI--BFVRox7noX&sz=w900" loading="lazy" alt="Санвузол 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1l80YII0VeNjGGmb0p80rDCd3brKfdHCJ&sz=w900" loading="lazy" alt="Санвузол 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1cYFLgq0KHAGPJeWaC7MHjFrldIEMyxXw&sz=w900" loading="lazy" alt="Санвузол 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1KC7wnAej6DxF80Gk2yRCnT0_0K2wuqJB&sz=w900" loading="lazy" alt="Санвузол 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1kCFiBVhuml_dYpGqJ9Hsiy8ObqzA1xvZ&sz=w900" loading="lazy" alt="Санвузол 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1koFiJyNPUrcPa7mORF_ohqwV5mkd4O5V&sz=w900" loading="lazy" alt="Санвузол 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1we2aOJeR2kfqxN_DJW7x4js8b1EfDz9i&sz=w900" loading="lazy" alt="Санвузол 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=10oOhYbcJqYkMPcMb5JU-2ev_5s5E8H1Y&sz=w900" loading="lazy" alt="Санвузол 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1fBtM0vjjN62p4WTJKuPNflRX6Eo8RzD1&sz=w900" loading="lazy" alt="Санвузол 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1jiEXuONJLmEJAxM2EX7J_zLSTEah-gDv&sz=w900" loading="lazy" alt="Санвузол 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Санвузол 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1sSM3fuz42KHveT4a7kOFEzaGMJHnTvJo&sz=w900" loading="lazy" alt="Гардеробна 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1M13ysKRsQvnPksL-4RlqyJBntF9tlHIF&sz=w900" loading="lazy" alt="Гардеробна 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1BmrYo1JJhoD0eI22eiLx5iQGtvp9V00l&sz=w900" loading="lazy" alt="Гардеробна 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1cRl7TrOdOCclnf7BmP9Qws6LjCgpGzRT&sz=w900" loading="lazy" alt="Гардеробна 1" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна 1</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1q6HV2CsaTIwGTjUpGimMPRsWjF3PZyOw&sz=w900" loading="lazy" alt="Гардеробна 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1pzmheAc0iEYEs1BNzbhiLyegsextxLzm&sz=w900" loading="lazy" alt="Гардеробна 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1XNEMUBlYgN0kx3g5ddEf8_5AC8NPA7V-&sz=w900" loading="lazy" alt="Гардеробна 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна 2</p><p class="pi-type">Hodos Villa</p></div></div>
+<div class="pi" data-c="hodos"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1lRyanOS0NO_P5FNWt-BgVPJDqMwYm7ff&sz=w900" loading="lazy" alt="Гардеробна 2" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна 2</p><p class="pi-type">Hodos Villa</p></div></div>
 <div class="pi" data-c="diamond"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1KRQc2j7r208K3NGJtYavENcgGuzKp93l&sz=w900" loading="lazy" alt="Гардеробна" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна</p><p class="pi-type">Diamond</p></div></div>
 <div class="pi" data-c="diamond"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1fIGqTJq9l1wxcb-OcsGOC3ri9IxIMl46&sz=w900" loading="lazy" alt="Гардеробна" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна</p><p class="pi-type">Diamond</p></div></div>
 <div class="pi" data-c="diamond"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=131zlcfDBGOBKcyvX4TLpqiGUFR7HWwNQ&sz=w900" loading="lazy" alt="Гардеробна" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Гардеробна</p><p class="pi-type">Diamond</p></div></div>
@@ -1588,6 +1710,8 @@ setLang(localStorage.getItem('cas-lang')||'uk');
     pfSetView('rows');
   }
 })();
+
+function pfScroll(dir){var f=document.getElementById('pfFilter');if(!f)return;f.scrollBy({left:dir*220,behavior:'smooth'});}
 </script>
 
 </body>
