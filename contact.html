@@ -632,6 +632,13 @@ body.light .map-grat{display:none!important}
   .calc-body{gap:36px!important}
   .calc-form{gap:18px!important}
 }
+
+/* ── Phone prefix input ── */
+.fi-phone-wrap{display:flex;align-items:center;border-bottom:1px solid rgba(237,232,223,.2);position:relative}
+.fi-phone-wrap .fi{border-bottom:none!important;flex:1;padding-left:4px}
+.fi-prefix{color:var(--tx);opacity:.5;font-family:var(--M);font-size:.9rem;letter-spacing:.05em;white-space:nowrap;padding:0 0 12px 0;user-select:none}
+.fi-phone-wrap:focus-within .fi-prefix{opacity:.8}
+.fi-phone-wrap:focus-within{border-bottom-color:var(--ac)}
 </style>
 </head>
 <body>
@@ -697,6 +704,10 @@ body.light .map-grat{display:none!important}
         <span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></span>
         <span class="mob-ct-lbl">Email</span>
       </a>
+      <a href="https://www.instagram.com/cas_development/" target="_blank" class="mob-ct-btn">
+        <span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span>
+        <span class="mob-ct-lbl">Instagram</span>
+      </a>
       <a href="https://maps.google.com/?q=вулиця+Антоновича+44,+Київ" target="_blank" class="mob-ct-btn"><span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span class="mob-ct-lbl">Адреса</span></a>
     </div>
     <div class="ct-layout">
@@ -730,6 +741,10 @@ body.light .map-grat{display:none!important}
       <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
       <span>Адреса</span>
     </a>
+    <a href="https://www.instagram.com/cas_development/" target="_blank" class="ct-qbtn" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      <span>Instagram</span>
+    </a>
   </div>
   <div class="ct-social-links">
     <a href="https://t.me/chinashop_opt" target="_blank" class="ct-slink"><span class="ct-sl-label">Telegram канал</span><span class="ct-sl-val">@chinashop_opt</span></a>
@@ -752,7 +767,10 @@ body.light .map-grat{display:none!important}
           </div>
           <div class="fg">
             <label class="fl" data-i18n="f_phone">Телефон</label>
-            <input type="tel" id="fPhone" class="fi" placeholder="+380971234567">
+            <div class="fi-phone-wrap">
+              <span class="fi-prefix">+38</span>
+              <input type="tel" id="fPhone" class="fi fi-phone" placeholder="0971234567" maxlength="10" inputmode="numeric">
+            </div>
             <span class="ferr" id="errPhone"></span>
           </div>
         </div>
@@ -1012,7 +1030,16 @@ function ferr(id,msg){
 function clearErr(id){ferr(id,'');}
 function phoneUA(v){
   const d=v.replace(/[\s\-\(\)]/g,'');
-  return /^\+380\d{9}$/.test(d)||/^0\d{9}$/.test(d);
+  // Accept: 0XXXXXXXXX (10 digits from prefix field), +380XXXXXXXXX, 380XXXXXXXXX
+  return /^0\d{9}$/.test(d)||/^\+380\d{9}$/.test(d)||/^380\d{9}$/.test(d);
+}
+function getFullPhone(){
+  const v=(document.getElementById('fPhone')?.value||'').trim();
+  const d=v.replace(/[\s\-\(\)]/g,'');
+  // If user entered just digits without country code (e.g. 0971234567), prepend +38 → +380...
+  if(/^0\d{9}$/.test(d)) return '+38'+d;
+  if(/^380\d{9}$/.test(d)) return '+'+d;
+  return d;
 }
 
 async function submitForm(e){
@@ -1023,19 +1050,17 @@ async function submitForm(e){
   const area=(document.getElementById('fArea')?.value||'').trim();
   const msg=(document.getElementById('fMsg')?.value||'').trim();
 
-  // ── Валідація ──
+  // ── Валідація (обов'язковий тільки телефон) ──
   let ok=true;
-  if(name.length<3){ferr('Name','Мінімум 3 символи');ok=false;}else{clearErr('Name');}
-  if(!phoneUA(phone)){ferr('Phone','Формат: +380971234567 або 0971234567');ok=false;}else{clearErr('Phone');}
-  if(!service){ferr('Service','Оберіть послугу');ok=false;}else{clearErr('Service');}
-  if(!/^\d+$/.test(area)){ferr('Area','Тільки цифри, наприклад: 80');ok=false;}else{clearErr('Area');}
-  if(msg.length<10){ferr('Msg','Мінімум 10 символів');ok=false;}else{clearErr('Msg');}
+  clearErr('Name');
+  if(!phoneUA(phone)){ferr('Phone','Введіть номер: 0971234567');ok=false;}else{clearErr('Phone');}
+  clearErr('Service');clearErr('Area');clearErr('Msg');
   if(!ok)return;
 
   // ── Відправка ──
   const btn=document.getElementById('fBtn');
   if(btn){btn.disabled=true;btn.innerHTML='<span>⏳ Надсилаємо...</span>';}
-  const data={name,phone,service,area,message:msg,source:'cas-develop.com'};
+  const fullPhone=getFullPhone();const data={name,phone:fullPhone,service,area,message:msg,source:'cas-develop.com'};
   try{
     await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{
       method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
