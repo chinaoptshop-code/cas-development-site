@@ -574,8 +574,10 @@ body.light .map-grat{display:none!important}
 @media(min-width:768px){
   .pf-view-toggle{margin-bottom:0;border:1px solid rgba(237,232,223,.15)}
   #pfBtnFilter{opacity:.55;font-size:.6rem}
-  #pfBtnFilter.on{opacity:1}
+  #pfBtnFilter{display:none}
 }
+
+@media(min-width:768px){#pfBtnFilter{display:none!important}}
 </style>
 </head>
 <body>
@@ -622,9 +624,9 @@ body.light .map-grat{display:none!important}
 <main>
 <div id="p-portfolio">
   <section class="ph"><img class="sbg" src="https://drive.google.com/thumbnail?id=1ZRiEBBWt3pzrBWlX-vWi5ggIHA9ZChJw&sz=w1400" loading="lazy" alt=""><div class="ph-inner"><div class="lbl" id="lbl-pf">Наші роботи</div><h1 class="ph-title" id="port-pg-title">Кожен проєкт — <em>окрема</em> історія</h1></div><span class="ph-num">03</span></section>
-  <div class="pf-view-toggle" id="pfViewToggle" style="display:flex;gap:0;margin:0 0 0">
-  <button class="pf-view-btn" onclick="pfSetView('filter')" id="pfBtnFilter">По проекту</button>
+  <div class="pf-view-toggle" id="pfViewToggle" style="display:flex;gap:0;margin:0 0 18px">
   <button class="pf-view-btn on" onclick="pfSetView('rows')" id="pfBtnRows">Всі проекти</button>
+  <button class="pf-view-btn" onclick="pfSetView('filter')" id="pfBtnFilter">По проекту ›</button>
 </div>
 <div class="pf-rows active" id="pfRows">
 <div class="proj-row">
