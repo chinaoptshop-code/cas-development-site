@@ -2292,9 +2292,6 @@ function goProject(id){go('portfolio');setTimeout(()=>{const btn=document.queryS
 function filt(btn,cat){
   document.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');
-  // Also highlight the tab button for this project
-  var tb=document.querySelector(".filt[onclick*=\"'"+cat+"'\"]");
-  if(tb)tb.classList.add('active');
   if(cat==='all'){
     pfSetView('rows');
     document.querySelectorAll('.pi').forEach(el=>{el.style.display='';});
@@ -2329,8 +2326,16 @@ function pfSetView(mode){
   var pfRowsEl=document.getElementById('pfRows');
   if(pfRowsWrap) pfRowsWrap.style.display=isRows?'block':'none';
   if(pfRowsEl) pfRowsEl.style.display=isRows?'block':'none';
-  /* pf-grid */
-  if(gridEl) gridEl.style.display=isRows?'none':'grid';
+  /* pf-grid: MUST remove/add 'hidden' class (has display:none!important) + inline style */
+  if(gridEl){
+    if(isRows){
+      gridEl.classList.add('hidden');
+      gridEl.style.display='none';
+    } else {
+      gridEl.classList.remove('hidden');
+      gridEl.style.display='grid';
+    }
+  }
   if(fwEl) fwEl.style.display='flex';
   /* update tab buttons */
   document.querySelectorAll('.pf-view-btn').forEach(b=>b.classList.remove('on'));
