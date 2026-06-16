@@ -546,8 +546,8 @@ body.light .map-grat{display:none!important}
 .pf-rows.active{display:block}
 .pf-grid.hidden{display:none!important}
 .pf-filter{/* always visible */}
-.proj-row{margin-bottom:36px}
-.proj-row-head{display:flex;align-items:center;justify-content:space-between;padding:0 16px 12px;border-bottom:1px solid rgba(237,232,223,.1)}
+.proj-row{margin-bottom:0}
+.proj-row-head{display:flex;align-items:center;justify-content:space-between;padding:18px 16px 12px;border-bottom:1px solid rgba(237,232,223,.1)}
 .proj-row-name{font-family:var(--D);font-size:1.4rem;font-weight:300;color:var(--tx)}
 .proj-row-meta{font-family:var(--M);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);margin-top:2px}
 .proj-row-btn{font-family:var(--M);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);background:none;border:1px solid rgba(191,145,72,.35);padding:5px 12px;cursor:pointer;transition:all .2s}
@@ -564,7 +564,6 @@ body.light .map-grat{display:none!important}
 .pf-view-btn.on{background:var(--ac);color:#000;border-color:var(--ac)}
 
 /* ── proj-row scroll hints ── */
-.proj-row-scroll{scroll-snap-type:x mandatory;padding:10px 52px;gap:6px}
 .proj-row-scroll::-webkit-scrollbar{display:none}
 @media(max-width:767px){
   .proj-row-thumb{flex:0 0 130px;height:97px}
@@ -615,7 +614,7 @@ body.light .map-grat{display:none!important}
 }
 
 /* ── proj-row scroll nav ── */
-.proj-row-scroll-wrap{position:relative;overflow:hidden}
+.proj-row-scroll-wrap{position:relative}
 .prs-nav{
   position:absolute;top:0;bottom:0;width:40px;
   background:none;border:none;cursor:pointer;
@@ -639,6 +638,7 @@ body.view-filter #pfRows{display:none!important}
 /* pf-grid: hidden in rows mode, visible in filter mode */
 body.view-rows  .pf-grid{display:none!important}
 body.view-filter .pf-grid{display:grid!important}
+body.view-filter .pf-grid.hidden{display:grid!important}
 /* Default state */
 #pfRows{display:none}
 </style>
@@ -1717,15 +1717,26 @@ setLang(curLang);
 go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.html',about:'/about.html',contact:'/contact.html'};if(m[p])window.location.href=m[p];};
 goProject=function(id){filtToProject(id);};
 function pfSetView(mode){
-  document.body.classList.toggle('view-rows',   mode==='rows');
-  document.body.classList.toggle('view-filter', mode!=='rows');
+  var isRows=(mode==='rows');
+  document.body.classList.toggle('view-rows',   isRows);
+  document.body.classList.toggle('view-filter', !isRows);
+  /* Explicit display — no CSS specificity battles */
+  var pfRows=document.getElementById('pfRows');
+  var grid=document.querySelector('.pf-grid');
+  var fw=document.querySelector('.pf-filter-wrap');
+  if(pfRows) pfRows.style.display=isRows?'block':'none';
+  if(grid){grid.style.display=isRows?'none':'grid';grid.classList.toggle('hidden',isRows);}
+  /* pf-filter-wrap always shown */
+  if(fw) fw.style.display='flex';
+  /* Update nav button states */
   document.querySelectorAll('.pf-view-btn').forEach(b=>b.classList.remove('on'));
-  var btn=document.querySelector('.pf-view-btn[onclick*="'+mode+'"]');
-  if(btn)btn.classList.add('on');
-  /* Sync "Всі проекти" filt tab active state */
-  if(mode==='rows'){
-    var allTab=document.querySelector(".filt[onclick*="'all'"]");
-    if(allTab){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));allTab.classList.add('active');}
+  var vb=document.querySelector('.pf-view-btn[onclick*="'+mode+'"]');
+  if(vb)vb.classList.add('on');
+  /* Highlight "Всі проекти" filt tab in rows mode */
+  if(isRows){
+    document.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));
+    var allTab=document.querySelector(".filt[onclick*=\"'all'\"]");
+    if(allTab)allTab.classList.add('active');
   }
 }
 function filtToProject(id){
@@ -1739,7 +1750,7 @@ function filtAndPhoto(id,photoIdx){
     if(photos[photoIdx])lbOpen(photos[photoIdx]);
   },120);
 }
-filt=function(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');document.querySelectorAll('.pi').forEach(el=>{el.style.display=(cat==='all'||el.dataset.c===cat)?'':'none';});};
+/* filt function defined above */
 
 setLang(localStorage.getItem('cas-lang')||'uk');
 /* Init filter: show only first project */
