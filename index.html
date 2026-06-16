@@ -523,14 +523,25 @@ body.light .map-grat{display:none!important}
 @media(max-width:767px){.strip-item{flex:0 0 calc(45% - 2px)}.strip-nav{width:28px;height:44px;font-size:1.2rem}}
 
 @media(max-width:767px){
-  .sp-card{cursor:pointer;transition:height .35s ease,box-shadow .2s;position:relative}
+  .sp-card{cursor:pointer;transition:box-shadow .2s;position:relative}
   .sp-card .sp-text{max-height:0;overflow:hidden;transition:max-height .35s ease;opacity:0}
-  .sp-card.exp{z-index:5;box-shadow:0 8px 32px rgba(0,0,0,.5)}
-  .sp-card.exp .sp-text{max-height:400px;opacity:1}
+  /* KEY FIX: allow card to grow when expanded */
+  .sp-card.exp{height:auto!important;overflow:visible!important;z-index:5;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+  .sp-card.exp .sp-text{max-height:none;opacity:1}
   .sp-card.exp .sp-cbg{opacity:.35}
-  .sp-card-hint{display:block;font-family:var(--M);font-size:.58rem;letter-spacing:.14em;color:var(--mu);opacity:.7;margin-top:4px;text-transform:uppercase}
+  .sp-card-hint{display:block!important;font-family:var(--M);font-size:.58rem;letter-spacing:.14em;color:var(--mu);opacity:.7;margin-top:4px;text-transform:uppercase}
   .sp-card-hint::after{content:' ▾'}
   .sp-card.exp .sp-card-hint::after{content:' ▴'}
+  /* mobile spc-list/footer/cta styles (were desktop-only) */
+  .spc-list{list-style:none;margin:12px 0 0;padding:0}
+  .spc-list li{font-family:var(--M);font-size:.75rem;color:var(--mu);padding:5px 0;border-bottom:1px solid rgba(237,232,223,.06);display:flex;align-items:center;gap:8px;line-height:1.4}
+  .spc-list li::before{content:'→';color:var(--ac);font-size:.7rem;flex-shrink:0}
+  .spc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:14px;border-top:1px solid rgba(191,145,72,.2)}
+  .spc-time{font-family:var(--M);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}
+  .spc-cta{font-family:var(--M);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);border:1px solid rgba(191,145,72,.4);padding:5px 12px;text-decoration:none;display:inline-block}
+  /* arrow rotation on mobile */
+  .sp-card-arr{font-size:.9rem;color:var(--mu);transition:transform .3s;margin-left:auto;display:inline-block}
+  .sp-card.exp .sp-card-arr{transform:rotate(90deg);color:var(--ac)}
 }
 @media(min-width:768px){.sp-card-hint{display:none}}
 
@@ -668,7 +679,7 @@ body.light .map-grat{display:none!important}
   <section class="svc-prev">
     <div class="sph"><h2 class="spt" id="spt-home">Що ми робимо</h2><button class="splink" id="sp-link-h" onclick="window.location.href='/services.html'">Всі послуги →</button></div>
     <div class="sp-grid">
-      <div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1QEJ_y0yTWVLTHkyKfZPjowzQmqhDO38j&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px"><div class="sp-ico">◻</div><span class="sp-card-arr">›</span></div><span class="sp-card-hint" style="display:none">Натисніть для деталей</span><div class="sp-name" id="sp-d-nm">Дизайн інтер'єру</div><div class="sp-price" id="sp-d-pr">від $40 / м²</div><div class="sp-text" id="sp-d-tx">Концепція, 3D-візуалізація, робочі креслення та авторський нагляд.</div></div><div class="sp-card-detail"><ul class="spc-list"><li>Концепція та стиль-борд</li>
+      <div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1QEJ_y0yTWVLTHkyKfZPjowzQmqhDO38j&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px"><div class="sp-ico">◻</div><span class="sp-card-arr">›</span></div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-d-nm">Дизайн інтер'єру</div><div class="sp-price" id="sp-d-pr">від $40 / м²</div><div class="sp-text" id="sp-d-tx">Концепція, 3D-візуалізація, робочі креслення та авторський нагляд.</div></div><div class="sp-card-detail"><ul class="spc-list"><li>Концепція та стиль-борд</li>
 <li>3D-візуалізація всіх зон</li>
 <li>Робочі креслення та специфікації</li>
 <li>Авторський нагляд на будівництві</li>
