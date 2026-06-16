@@ -543,7 +543,6 @@ body.light .map-grat{display:none!important}
 }
 
 .pf-rows{display:none;padding:0 0 60px}
-#pfRows{display:none!important} /* JS overrides with setProperty */
 .pf-rows.active{display:block}
 .pfr-hidden{display:none!important;height:0!important;overflow:hidden!important;pointer-events:none!important}
 /* THE FIX: CSS class !important beats everything (inline styles can't use !important) */
@@ -706,7 +705,7 @@ body.light .map-grat{display:none!important}
 <button class="filt" onclick="filt(this,'yablu')">Yablu Rest</button>
 </div><button class="pf-fnav pf-fnav-r" onclick="pfScroll(1)" aria-label="›">›</button></div>
 <div id="pfRowsWrap">
-<div class="pf-rows pfr-hidden" id="pfRows">
+<div class="pf-rows" id="pfRows">
 <div class="proj-row">
   <div class="proj-row-head" onclick="filtToProject('yachtrest')" style="cursor:pointer">
     <div>
@@ -2323,28 +2322,17 @@ go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.h
 goProject=function(id){filtToProject(id);};
 function pfSetView(mode){
   var isRows=(mode==='rows');
-  var pfRowsEl=document.getElementById('pfRows');
   var gridEl=document.querySelector('.pf-grid');
   var fwEl=document.querySelector('.pf-filter-wrap');
+  /* CLEAN SOLUTION: pfRowsWrap has ZERO CSS rules, so style.display always works */
   var pfRowsWrap=document.getElementById('pfRowsWrap');
-  if(pfRowsWrap){
-    /* Wrapper has NO conflicting CSS rules — plain style.display works perfectly */
-    pfRowsWrap.style.display=isRows?'block':'none';
-  }
-  if(pfRowsEl){
-    if(isRows){pfRowsEl.classList.add('active');}
-    else{pfRowsEl.classList.remove('active');}
-  }
+  if(pfRowsWrap) pfRowsWrap.style.display=isRows?'block':'none';
+  /* pf-grid: toggle hidden class + inline style */
   if(gridEl){
-    if(isRows){
-      gridEl.classList.add('hidden');
-      gridEl.style.removeProperty('display');
-    } else {
-      gridEl.classList.remove('hidden');
-      gridEl.style.setProperty('display','grid','important');
-    }
+    if(isRows){ gridEl.classList.add('hidden'); gridEl.style.display='none'; }
+    else { gridEl.classList.remove('hidden'); gridEl.style.display='grid'; }
   }
-  if(fwEl){fwEl.style.display='flex';}
+  if(fwEl) fwEl.style.display='flex';
   /* update tab buttons */
   document.querySelectorAll('.pf-view-btn').forEach(b=>b.classList.remove('on'));
   var vb=document.querySelector('.pf-view-btn[onclick*="'+mode+'"]');
