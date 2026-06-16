@@ -564,8 +564,7 @@ body.light .map-grat{display:none!important}
 <main>
 <div id="p-portfolio">
   <section class="ph"><img class="sbg" src="https://drive.google.com/thumbnail?id=1ZRiEBBWt3pzrBWlX-vWi5ggIHA9ZChJw&sz=w1400" loading="lazy" alt=""><div class="ph-inner"><div class="lbl" id="lbl-pf">Наші роботи</div><h1 class="ph-title" id="port-pg-title">Кожен проєкт — <em>окрема</em> історія</h1></div><span class="ph-num">03</span></section>
-  <div class="pf-filter"><button class="filt on" onclick="filt(this,'all')">Всі проєкти</button>
-<button class="filt" onclick="filt(this,'yachtrest')">Yacht Restaurant</button>
+  <div class="pf-filter"><button class="filt on" onclick="filt(this,'yachtrest')">Yacht Restaurant</button>
 <button class="filt" onclick="filt(this,'linden')">Linden Penthouse</button>
 <button class="filt" onclick="filt(this,'hoda')">Hoda Estate</button>
 <button class="filt" onclick="filt(this,'petrivtsi')">Petrivtsi House</button>
@@ -985,6 +984,8 @@ goProject=function(id){window.location.href='/portfolio.html#'+id;};
 filt=function(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');document.querySelectorAll('.pi').forEach(el=>{el.style.display=(cat==='all'||el.dataset.c===cat)?'':'none';});};
 
 setLang(localStorage.getItem('cas-lang')||'uk');
+/* Init filter: show only first project */
+(function(){var h=location.hash.replace('#','');var cat=h||'yachtrest';var btn=document.querySelector(".filt[onclick*='"+cat+"']");filt(btn||document.querySelector('.filt'),cat);})();
 </script>
 </body>
 </html>
