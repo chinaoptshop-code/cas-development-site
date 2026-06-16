@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CAS Development — Детальніше про послугу</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#080709;--bg2:#0f0e11;--sf:#181620;--tx:#EDE8DF;--mu:#7a7470;--ac:#BF9148;--bd:rgba(237,232,223,.1);--D:'Cormorant Garamond',serif;--M:'Plus Jakarta Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:var(--M);font-weight:300;line-height:1.72;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:22px 52px;background:rgba(8,7,9,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--bd)}
+.nav-logo{font-family:var(--M);font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;color:var(--tx);text-decoration:none}
+.nav-back{font-family:var(--M);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mu);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
+.nav-back:hover{color:var(--ac)}
+.nav-back::before{content:'←'}
+.nav-right{display:flex;align-items:center;gap:24px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:var(--M);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mu);text-decoration:none;position:relative;transition:color .2s;padding-bottom:2px}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--ac);transition:width .3s}
+.nav-links a:hover,.nav-links a.on{color:var(--tx)}
+.nav-links a:hover::after,.nav-links a.on::after{width:100%}
+
+/* ── SERVICE TABS ── */
+.service-tabs{position:sticky;top:65px;z-index:900;background:var(--bg2);border-bottom:1px solid var(--bd);display:flex;overflow-x:auto;scrollbar-width:none}
+.service-tabs::-webkit-scrollbar{display:none}
+.stab{font-family:var(--M);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:14px 22px;color:var(--mu);cursor:pointer;border:none;background:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;text-decoration:none}
+.stab:hover{color:var(--tx)}
+.stab.on{color:var(--ac);border-bottom-color:var(--ac)}
+
+/* ── HERO ── */
+.sd-hero{min-height:340px;display:flex;align-items:flex-end;padding:100px 52px 52px;position:relative;overflow:hidden}
+.sd-hero-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;opacity:.22;filter:saturate(.6)}
+.sd-hero-grad{position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,transparent 60%)}
+.sd-hero-in{position:relative;z-index:2}
+.sd-tag{font-family:var(--M);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ac);margin-bottom:12px;display:block}
+.sd-title{font-family:var(--D);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;line-height:1.05;margin-bottom:16px}
+.sd-price-hero{font-family:var(--M);font-size:1rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);font-weight:500}
+
+/* ── SECTIONS ── */
+.sd-body{padding:0 52px 80px}
+.sd-section{padding:60px 0;border-bottom:1px solid var(--bd)}
+.sd-section:last-child{border-bottom:none}
+.sd-h2{font-family:var(--D);font-size:2rem;font-weight:300;margin-bottom:32px;color:var(--tx)}
+.sd-h2 em{color:var(--ac);font-style:italic}
+
+/* ── STAGES ── */
+.stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0}
+.stage{padding:32px 28px;border-right:1px solid var(--bd);border-bottom:1px solid var(--bd);position:relative}
+.stage:nth-child(3n){border-right:none}
+.stage-num{font-family:var(--D);font-size:3.5rem;font-weight:300;color:rgba(191,145,72,.12);line-height:1;margin-bottom:8px}
+.stage-dot{width:6px;height:6px;border-radius:50%;background:var(--ac);margin-bottom:14px}
+.stage-name{font-family:var(--M);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx);margin-bottom:8px;font-weight:500}
+.stage-time{font-family:var(--M);font-size:.68rem;color:var(--ac);margin-bottom:10px;letter-spacing:.06em}
+.stage-desc{font-family:var(--M);font-size:.78rem;color:var(--mu);line-height:1.7}
+
+/* ── INCLUDED / EXCLUDED ── */
+.inc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.inc-col{padding:32px 0}
+.inc-col:first-child{padding-right:40px;border-right:1px solid var(--bd)}
+.inc-col:last-child{padding-left:40px}
+.inc-head{font-family:var(--M);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mu);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.inc-head::after{content:'';flex:1;height:1px;background:var(--bd)}
+.inc-list{display:flex;flex-direction:column;gap:10px}
+.inc-item{font-family:var(--M);font-size:.8rem;color:var(--mu);display:flex;gap:10px;align-items:flex-start;line-height:1.6}
+.inc-item.yes::before{content:'✓';color:var(--ac);flex-shrink:0;font-weight:600}
+.inc-item.no::before{content:'○';color:rgba(237,232,223,.25);flex-shrink:0}
+.inc-item.no{color:rgba(237,232,223,.35)}
+.inc-note{font-family:var(--M);font-size:.72rem;color:var(--ac);margin-top:16px;font-style:italic}
+
+/* ── PORTFOLIO GALLERY ── */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.gal-item{aspect-ratio:4/3;overflow:hidden;cursor:pointer;position:relative}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .4s;filter:saturate(.7) brightness(.85)}
+.gal-item:hover img{transform:scale(1.05);filter:saturate(1) brightness(.95)}
+.gal-item:first-child{grid-column:span 2;aspect-ratio:16/9}
+.gal-label{position:absolute;bottom:0;left:0;right:0;padding:12px 16px;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);font-family:var(--M);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(237,232,223,.8);opacity:0;transition:opacity .3s}
+.gal-item:hover .gal-label{opacity:1}
+
+/* ── TAGS ── */
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tag{font-family:var(--M);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;padding:7px 14px;border:1px solid rgba(191,145,72,.28);color:var(--ac)}
+
+/* ── CTA ── */
+.sd-cta{background:var(--bg2);padding:60px 52px;text-align:center;margin:0 -52px}
+.sd-cta-t{font-family:var(--D);font-size:2.2rem;font-weight:300;margin-bottom:8px}
+.sd-cta-s{font-family:var(--M);font-size:.8rem;color:var(--mu);margin-bottom:32px}
+.btn-ac{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;border:1px solid var(--ac);font-family:var(--M);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);text-decoration:none;transition:background .25s,color .25s}
+.btn-ac:hover{background:var(--ac);color:#000}
+
+/* ── LIGHTBOX ── */
+#sdlb{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);align-items:center;justify-content:center}
+#sdlb.open{display:flex}
+#sdlb img{max-width:90vw;max-height:88vh;object-fit:contain}
+#sdlb-close{position:absolute;top:24px;right:32px;font-size:1.5rem;color:var(--mu);cursor:pointer;background:none;border:none;transition:color .2s}
+#sdlb-close:hover{color:var(--tx)}
+
+/* ── MOBILE ── */
+@media(max-width:767px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  .sd-hero{padding:80px 20px 40px;min-height:260px}
+  .sd-body{padding:0 20px 60px}
+  .stages{grid-template-columns:1fr}
+  .stage{border-right:none}
+  .inc-grid{grid-template-columns:1fr;gap:32px}
+  .inc-col:first-child{padding-right:0;border-right:none;padding-bottom:24px;border-bottom:1px solid var(--bd)}
+  .inc-col:last-child{padding-left:0}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gal-item:first-child{grid-column:span 2}
+  .sd-cta{padding:48px 20px;margin:0 -20px}
+  .service-tabs{top:56px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="services.html" class="nav-back">Послуги</a>
+  <a href="index.html" class="nav-logo">CAS.Development</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="services.html" class="on">Послуги</a></li>
+      <li><a href="portfolio.html">Портфоліо</a></li>
+      <li><a href="about.html">Про нас</a></li>
+      <li><a href="contact.html">Контакти</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- SERVICE TABS -->
+<div class="service-tabs">
+  <a href="#design"       class="stab" data-slug="design">Дизайн інтер'єру</a>
+  <a href="#renovation"   class="stab" data-slug="renovation">Ремонт під ключ</a>
+  <a href="#furniture"    class="stab" data-slug="furniture">Меблювання</a>
+  <a href="#construction" class="stab" data-slug="construction">Будівництво</a>
+  <a href="#landscape"    class="stab" data-slug="landscape">Ландшафт</a>
+</div>
+
+<!-- CONTENT (rendered by JS) -->
+<div id="sd-content"></div>
+
+<!-- LIGHTBOX -->
+<div id="sdlb">
+  <button id="sdlb-close" onclick="document.getElementById('sdlb').classList.remove('open')">✕</button>
+  <img id="sdlb-img" src="" alt="">
+</div>
+
+<script>
+const BASE = 'https://drive.google.com/thumbnail?id=';
+
+const SERVICES = {
+  design: {
+    tag: 'Послуга 01',
+    title: 'Дизайн\nінтер\'єру',
+    price: 'від $40 / м²',
+    bg: '18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ',
+    desc: 'Створюємо простори, що відображають вашу особистість і спосіб життя. Від першої концепції до фінальних робочих креслень — повний цикл авторського проєктування.',
+    stages: [
+      {n:'01',name:'Аналіз та брифінг',time:'1–2 тижні',desc:'Зустріч, детальний опитувальник, обмір приміщення. Визначаємо функціональні зони, бюджет та естетичні побажання.'},
+      {n:'02',name:'Концепція',time:'2–3 тижні',desc:'Moodboard, планувальне рішення, розміщення меблів. Погоджуємо стиль, колірну палітру та матеріали.'},
+      {n:'03',name:'3D-візуалізація',time:'3–4 тижні',desc:'Фотореалістичні рендери кожної кімнати. Ви бачите результат ще до початку ремонту.'},
+      {n:'04',name:'Робоча документація',time:'2–3 тижні',desc:'Будівельні та монтажні креслення, схеми розеток, освітлення, сантехніки. Повний пакет для будівельників.'},
+      {n:'05',name:'Авторський нагляд',time:'весь ремонт',desc:'Щотижневі виїзди на об\'єкт, контроль відповідності проєкту, вирішення питань на місці.'},
+      {n:'06',name:'Фотосесія здачі',time:'опціонально',desc:'Після завершення — фотозйомка готового інтер\'єру для портфоліо та вашого архіву.'},
+    ],
+    included: [
+      'Функціональний зонінг та планувальне рішення',
+      'Концептуальний moodboard (настрій, матеріали, колірна палітра)',
+      '3D-візуалізація всіх приміщень у фотореалістичному рендері',
+      'Монтажні та будівельні креслення (підлога, стелі, розетки)',
+      'Специфікація матеріалів та меблів з прайс-листами',
+      'Авторський нагляд під час ремонту',
+      'Консультації з підрядниками та постачальниками',
+    ],
+    excluded: [
+      'VR-тур (опція +15%)',
+      'Підбір та замовлення меблів (окрема послуга)',
+      'Авторські відвідування частіше 1×/тиждень',
+      'Виготовлення меблів на замовлення',
+      'Проєкт освітлення (опція +10%)',
+    ],
+    tags: ['3–8 тижнів','від $40 / м²','Безкоштовна консультація','Авторський нагляд'],
+    gallery: [
+      {id:'18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ',label:'Yacht Restaurant'},
+      {id:'1OGn3TXnLkQenE_1aPE7Tj1P2JhCrwLfT',label:'Yacht Restaurant'},
+      {id:'18W9L5_nV9nd-78YHi3e4dwoqWSRo5nug',label:'Yacht Restaurant'},
+      {id:'1MslU7S5X8gIEpV6hE-s2ZHmJJRKOY7pv',label:'Linden Penthouse'},
+      {id:'1YQyhjEui9fb6voFTdknZ5LwVF_g3FuHc',label:'Linden Penthouse'},
+      {id:'1b9YTkSJVqBhw-xw0lUxu-0_qQ2UqSmBG',label:'Linden Penthouse'},
+      {id:'1FRa0FI6iMHK5LRb4c5yK24HG4CuW87vF',label:'Hoda Estate'},
+      {id:'1f3m1_qf4mDosh8OGxw-lgIiCWLrK-GVL',label:'Hoda Estate'},
+      {id:'1HZT-E30rREI7do3BkhUqUgYEsardbivb',label:'Hoda Estate'},
+      {id:'18V9n96tOhjKjhv89z890vR0tQHRdODip',label:'USA House'},
+      {id:'1pYk5KBK_ne5DjGs0nVsqE1byD5Z9OVcg',label:'USA House'},
+      {id:'1vWmbYVTmViGgW9QJFrsKMWTd_z21Goh6',label:'USA House'},
+    ],
+  },
+
+  renovation: {
+    tag: 'Послуга 02',
+    title: 'Ремонт\nпід ключ',
+    price: 'від $550 / м²',
+    bg: '1HTdBNY-oY5p07-ZkTJDKABV1dWjcVU0j',
+    desc: 'Повний цикл будівельних і оздоблювальних робіт. Дотримуємося проєкту, термінів і бюджету. Щоденні фото-звіти у Telegram. Здача з гарантією 2 роки.',
+    stages: [
+      {n:'01',name:'Демонтаж',time:'1–2 тижні',desc:'Знесення старих покриттів, перегородок, сантехніки. Підготовка «чорного» простору під нові роботи.'},
+      {n:'02',name:'Чорнова робота',time:'3–5 тижнів',desc:'Стяжка підлоги, штукатурка стін, вирівнювання стель. Основа для всіх наступних шарів.'},
+      {n:'03',name:'Інженерія',time:'2–4 тижні',desc:'Прихована електрика, розподільчі щитки, сантехнічна розводка, теплі підлоги, вентиляція.'},
+      {n:'04',name:'Чистова обробка',time:'4–6 тижнів',desc:'Укладання плитки, паркету, ламінату. Фарбування стін, монтаж натяжних та гіпсокартонних стель.'},
+      {n:'05',name:'Встановлення',time:'1–2 тижні',desc:'Монтаж дверей, вікон, сантехніки, світильників. Все встановлюється після чистових робіт.'},
+      {n:'06',name:'Здача',time:'1 тиждень',desc:'Прибирання, підписання акту здачі, передача документів та гарантійного листа.'},
+    ],
+    included: [
+      'Демонтаж будь-якої складності',
+      'Електрика: прихована проводка, смарт-будинок',
+      'Сантехніка та опалення',
+      'Вентиляція та тепла підлога',
+      'Штукатурка, стяжка, вирівнювання',
+      'Укладання плитки, паркету, ламінату, мармуру',
+      'Натяжні та гіпсокартонні стелі',
+      'Малярні та декоративні роботи',
+      'Щоденні фото-звіти у Telegram',
+      'Здача з актом та гарантією 2 роки',
+    ],
+    excluded: [
+      'Підбір та закупівля матеріалів (послуга постачання — окремо)',
+      'Меблювання та декор (окрема послуга)',
+      'Реконструкція несучих конструкцій без дозвільних документів',
+      'Роботи без дизайн-проєкту (не рекомендуємо)',
+    ],
+    tags: ['1–12 місяців','від $550 / м²','Фіксований кошторис','Гарантія 2 роки'],
+    gallery: [
+      {id:'1iyezgpYu1pVWyFKyYG2ar--bwzwANZqS',label:'Hoda Estate'},
+      {id:'1m9fVTTPjd6nQsXO9WbLkxylog7u3gXYq',label:'Hoda Estate'},
+      {id:'1HTdBNY-oY5p07-ZkTJDKABV1dWjcVU0j',label:'Hoda Estate'},
+      {id:'1NVeaQcV2TZSN5pN8iBtzm4xyCAFfQzOE',label:'Petrivtsi House'},
+      {id:'1OR5i7-rm1k0MUNvrcF4-9TRkwLNT4cU2',label:'Petrivtsi House'},
+      {id:'1Xdje8N1V14_0XPhslcDU08OJSoUHpbxf',label:'Petrivtsi House'},
+      {id:'1BnRMUkaRJsY268cZL8HLAIedespAmUAC',label:'Osokorky'},
+      {id:'1TohlalW6PL8mdph7KoPoBvmmY4jnoISn',label:'Osokorky'},
+      {id:'1tyFro2_3CVPU0tTV9s3xK_zzF-qGCt4U',label:'Osokorky'},
+      {id:'13MS4aVn4wzDHtGN8FMyCljfemDkiVwKM',label:'USA House'},
+      {id:'1JuZ-lq-D6YudJ7gUgiZUDDOHdGD9MU0J',label:'USA House'},
+      {id:'1L6z-fyorw1bnO3w_sNIkoB9yfar7Co8S',label:'USA House'},
+    ],
+  },
+
+  furniture: {
+    tag: 'Послуга 03',
+    title: 'Меблювання\nта декор',
+    price: 'від $250 / м²',
+    bg: '1e_eYgoeMFIrvDIH7FEF5aWpru9LpgS4R',
+    desc: 'Підбираємо та постачаємо меблі, освітлення, текстиль і декор. Прямий імпорт з виробниками через China Opt Shop — без посередників та наценок.',
+    stages: [
+      {n:'01',name:'Технічне завдання',time:'1 тиждень',desc:'Збираємо виміри, аналізуємо дизайн-проєкт, визначаємо бюджет та стиль.'},
+      {n:'02',name:'Підбір та візуалізація',time:'1–2 тижні',desc:'Формуємо специфікацію: меблі, тканини, декор. Візуалізація розстановки.'},
+      {n:'03',name:'Замовлення',time:'2–6 тижнів',desc:'Замовлення у виробників та постачальників. Контроль виробництва та терміни.'},
+      {n:'04',name:'Доставка та розпакування',time:'1 тиждень',desc:'Доставка на об\'єкт, розпакування та перевірка кожної позиції.'},
+      {n:'05',name:'Складання та стилізація',time:'3–5 днів',desc:'Монтаж меблів, розміщення декору, налаштування освітлення. Фінальна стилізація простору.'},
+    ],
+    included: [
+      'Підбір меблів під проєкт та бюджет',
+      'Прямий імпорт через China Opt Shop',
+      '200+ перевірених виробників',
+      'Меблі на замовлення під розміри',
+      'Освітлення та люстри',
+      'Текстиль та м\'який декор (подушки, пледи, штори)',
+      'Дзеркала, вази, арт-об\'єкти',
+      'Складання та стилізація',
+    ],
+    excluded: [
+      'Виготовлення вбудованих меблів (столяри — окремо)',
+      'Монтаж освітлення (електрики — окремо)',
+      'Матеріали для прихованого монтажу',
+    ],
+    tags: ['2–8 тижнів','від $250 / м²','China Opt Shop','Без посередників'],
+    gallery: [
+      {id:'1lE1pxDZXpKRFjbrlrIi4MQW4Sv116ozD',label:'Linden Penthouse'},
+      {id:'1x1AqXqQMEpCTaZHBfkhwcUBRT9jAu43Q',label:'Linden Penthouse'},
+      {id:'1MslU7S5X8gIEpV6hE-s2ZHmJJRKOY7pv',label:'Linden Penthouse'},
+      {id:'1YQyhjEui9fb6voFTdknZ5LwVF_g3FuHc',label:'Linden Penthouse'},
+      {id:'1b9YTkSJVqBhw-xw0lUxu-0_qQ2UqSmBG',label:'Linden Penthouse'},
+      {id:'1FRa0FI6iMHK5LRb4c5yK24HG4CuW87vF',label:'Hoda Estate'},
+      {id:'1f3m1_qf4mDosh8OGxw-lgIiCWLrK-GVL',label:'Hoda Estate'},
+      {id:'1JuZ-lq-D6YudJ7gUgiZUDDOHdGD9MU0J',label:'USA House'},
+      {id:'1L6z-fyorw1bnO3w_sNIkoB9yfar7Co8S',label:'USA House'},
+      {id:'18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ',label:'Yacht Restaurant'},
+      {id:'1OGn3TXnLkQenE_1aPE7Tj1P2JhCrwLfT',label:'Yacht Restaurant'},
+      {id:'18W9L5_nV9nd-78YHi3e4dwoqWSRo5nug',label:'Yacht Restaurant'},
+    ],
+  },
+
+  construction: {
+    tag: 'Послуга 04',
+    title: 'Будівництво',
+    price: 'від $600 / м²',
+    bg: '1jKOiN3xyCjZCLdtfIg_dNKn5uakJcPBh',
+    desc: 'Зведення та реконструкція будівель під ключ. Від фундаменту до фінального оздоблення. Проектна документація, технічний нагляд, гарантія 3 роки.',
+    stages: [
+      {n:'01',name:'Геодезія та проєкт',time:'4–8 тижнів',desc:'Топографічна зйомка, підготовка проектної документації, погодження з органами влади.'},
+      {n:'02',name:'Фундамент',time:'4–8 тижнів',desc:'Земляні роботи, монтаж фундаментної плити або паль залежно від типу ґрунту та проєкту.'},
+      {n:'03',name:'Несучі конструкції',time:'8–16 тижнів',desc:'Зведення стін, перекриттів між поверхами. Монтаж перемичок та армованих поясів.'},
+      {n:'04',name:'Покрівля та фасад',time:'4–8 тижнів',desc:'Монтаж кроквяної системи, покрівельних матеріалів, теплоізоляції, вікон та дверей.'},
+      {n:'05',name:'Інженерія',time:'6–10 тижнів',desc:'Вводи комунікацій, електрика, сантехніка, опалення, вентиляція, кондиціонування.'},
+      {n:'06',name:'Оздоблення та здача',time:'8–16 тижнів',desc:'Внутрішнє оздоблення, чистові роботи, здача об\'єкту з актом та гарантійним листом.'},
+    ],
+    included: [
+      'Геодезичні та топографічні роботи',
+      'Проектна документація та погодження',
+      'Фундаментні роботи (плита, паль)',
+      'Зведення стін та перекриттів',
+      'Монтаж даху та покрівлі',
+      'Фасадне оздоблення та утеплення',
+      'Вікна, двері та перегородки',
+      'Інженерні мережі та комунікації',
+      'Щоденні фото-звіти у Telegram',
+      'Здача з актом та гарантією 3 роки',
+    ],
+    excluded: [
+      'Дизайн інтер\'єру (окрема послуга)',
+      'Меблювання та декор (окрема послуга)',
+      'Благоустрій території (опція)',
+      'Зовнішні мережі (каналізація, водопостачання)',
+    ],
+    tags: ['6–24 місяці','від $600 / м²','Технічний нагляд','Гарантія 3 роки'],
+    gallery: [
+      {id:'1jKOiN3xyCjZCLdtfIg_dNKn5uakJcPBh',label:'Monpark'},
+      {id:'12HcLhMA1BYGfJgDXOG0UBwP0RVrF5GRt',label:'Monpark'},
+      {id:'1a7Iiulje5gvN73rFm255NJpKe2RZfOin',label:'Monpark'},
+      {id:'1I84S9MOrJrmtkD2dcq_VgMZG5FpW3rGr',label:'Monpark'},
+      {id:'1c17SGx_MWDbyFI-nIiYTxshkmn_1YDVd',label:'Monpark'},
+      {id:'1FiLI9kKE-C87h9pptaRdoA9xA41Cwg6v',label:'Pidgirland'},
+      {id:'1hXV_Pz6_GfnXe5ipnbSu3RWLfLccdCnx',label:'Pidgirland'},
+      {id:'1RCrrbyNJHQhkgvreHPGW2RWNJi3KSDpc',label:'Pidgirland'},
+      {id:'1g-E1m6cFJ9kvHIwPFNw75WFXxcUpFtS7',label:'A-Frame House'},
+      {id:'1GqqKXz4Ax1_cM-VY-ibgG3S1myyTx_t4',label:'Yablu Rest'},
+      {id:'16Do4G_08hSZtlyENeOf26xAic7X-pLAg',label:'Yablu Rest'},
+      {id:'1KTRoR62drP2kIK0JmXbBoMbvuQfi60TN',label:'Yablu Rest'},
+    ],
+  },
+
+  landscape: {
+    tag: 'Послуга 05',
+    title: 'Ландшафтний\nдизайн',
+    price: 'від $50 / сотку',
+    bg: '1FiLI9kKE-C87h9pptaRdoA9xA41Cwg6v',
+    desc: 'Проектуємо та облаштовуємо сади, прибудинкові та комерційні території. Від концепції до реалізації — включаючи автополив, освітлення та малі архітектурні форми.',
+    stages: [
+      {n:'01',name:'Аналіз ділянки',time:'1 тиждень',desc:'Топографічна зйомка, аналіз ґрунту та мікроклімату, вивчення існуючої рослинності.'},
+      {n:'02',name:'Концепція',time:'1–2 тижні',desc:'Ескізний план озеленення, зонування ділянки, підбір стилю та матеріалів.'},
+      {n:'03',name:'Детальний проєкт',time:'2–3 тижні',desc:'Посадковий план, дренажні схеми, план освітлення, план поливу. Специфікація рослин.'},
+      {n:'04',name:'Підготовчі роботи',time:'1–2 тижні',desc:'Земляні роботи, дренаж, прокладання труб поливу та кабелів освітлення.'},
+      {n:'05',name:'Посадка та оздоблення',time:'2–4 тижні',desc:'Газон, рослини, дерева, плиткові доріжки, декоративна мульча та каміння.'},
+      {n:'06',name:'Здача та догляд',time:'опціонально',desc:'Налаштування автополиву, навчання клієнта, опція сезонного догляду.'},
+    ],
+    included: [
+      'Топографічна зйомка та аналіз ділянки',
+      'Концептуальний план ландшафту',
+      'Посадковий план та специфікація рослин',
+      'Дренаж та водовідведення',
+      'Система автоматичного поливу',
+      'Газон та плиткові доріжки',
+      'Декоративне освітлення ділянки',
+      'Малі архітектурні форми (альтанки, огорожі)',
+    ],
+    excluded: [
+      'Водні об\'єкти (ставки, фонтани — опція)',
+      'Великі дерева (транспортування — окремо)',
+      'Зимовий догляд за рослинами (опція)',
+      'Будівництво огорожі (окремо)',
+    ],
+    tags: ['2–8 тижнів','від $50 / сотку','Підбір рослин','Автополив'],
+    gallery: [
+      {id:'1FiLI9kKE-C87h9pptaRdoA9xA41Cwg6v',label:'Pidgirland'},
+      {id:'1hXV_Pz6_GfnXe5ipnbSu3RWLfLccdCnx',label:'Pidgirland'},
+      {id:'1RCrrbyNJHQhkgvreHPGW2RWNJi3KSDpc',label:'Pidgirland'},
+      {id:'17c2Uv-OmlrmLDFlJX5R-t04-TcjADhao',label:'Pidgirland'},
+      {id:'18VXNYlwqxP5Kuuw968Cdj66Jf5mnPBdk',label:'Pidgirland'},
+      {id:'1HTdBNY-oY5p07-ZkTJDKABV1dWjcVU0j',label:'Hoda Estate'},
+      {id:'1iyezgpYu1pVWyFKyYG2ar--bwzwANZqS',label:'Hoda Estate'},
+      {id:'1m9fVTTPjd6nQsXO9WbLkxylog7u3gXYq',label:'Hoda Estate'},
+      {id:'1g-E1m6cFJ9kvHIwPFNw75WFXxcUpFtS7',label:'A-Frame House'},
+      {id:'1jKOiN3xyCjZCLdtfIg_dNKn5uakJcPBh',label:'Monpark'},
+      {id:'12HcLhMA1BYGfJgDXOG0UBwP0RVrF5GRt',label:'Monpark'},
+      {id:'1GqqKXz4Ax1_cM-VY-ibgG3S1myyTx_t4',label:'Yablu Rest'},
+    ],
+  },
+};
+
+function renderService(slug){
+  const s = SERVICES[slug];
+  if(!s) return;
+  document.title = 'CAS Development — ' + s.title.replace('\n',' ');
+
+  // Update tabs
+  document.querySelectorAll('.stab').forEach(t=>{
+    t.classList.toggle('on', t.dataset.slug===slug);
+  });
+
+  const stagesHTML = s.stages.map(st=>`
+    <div class="stage">
+      <div class="stage-num">${st.n}</div>
+      <div class="stage-dot"></div>
+      <div class="stage-name">${st.name}</div>
+      <div class="stage-time">${st.time}</div>
+      <div class="stage-desc">${st.desc}</div>
+    </div>`).join('');
+
+  const inclHTML = s.included.map(i=>`<div class="inc-item yes">${i}</div>`).join('');
+  const exclHTML = s.excluded.map(e=>`<div class="inc-item no">${e}</div>`).join('');
+
+  const galleryHTML = s.gallery.map((g,i)=>`
+    <div class="gal-item" onclick="lbOpen('${BASE}${g.id}&sz=w1600')">
+      <img src="${BASE}${g.id}&sz=w600" loading="${i<6?'eager':'lazy'}" alt="${g.label}">
+      <div class="gal-label">${g.label}</div>
+    </div>`).join('');
+
+  const tagsHTML = s.tags.map(t=>`<span class="tag">${t}</span>`).join('');
+
+  document.getElementById('sd-content').innerHTML = `
+    <div class="sd-hero">
+      <img class="sd-hero-bg" src="${BASE}${s.bg}&sz=w1400" loading="eager" alt="">
+      <div class="sd-hero-grad"></div>
+      <div class="sd-hero-in">
+        <span class="sd-tag">${s.tag}</span>
+        <h1 class="sd-title">${s.title.replace('\n','<br>')}</h1>
+        <div class="sd-price-hero">${s.price}</div>
+      </div>
+    </div>
+
+    <div class="sd-body">
+      <div class="sd-section">
+        <p style="font-family:var(--M);font-size:.92rem;line-height:1.9;color:var(--mu);max-width:680px">${s.desc}</p>
+        <div class="tag-row">${tagsHTML}</div>
+      </div>
+
+      <div class="sd-section">
+        <h2 class="sd-h2">Етапи <em>роботи</em></h2>
+        <div class="stages">${stagesHTML}</div>
+      </div>
+
+      <div class="sd-section">
+        <h2 class="sd-h2">Що <em>входить</em></h2>
+        <div class="inc-grid">
+          <div class="inc-col">
+            <div class="inc-head">Включено</div>
+            <div class="inc-list">${inclHTML}</div>
+          </div>
+          <div class="inc-col">
+            <div class="inc-head">Не включено</div>
+            <div class="inc-list">${exclHTML}</div>
+            <p class="inc-note">* Позначені позиції можна додати як опцію</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sd-section">
+        <h2 class="sd-h2">Наші <em>роботи</em></h2>
+        <div class="gallery-grid">${galleryHTML}</div>
+      </div>
+
+      <div class="sd-cta">
+        <div class="sd-cta-t">Готові розпочати?</div>
+        <p class="sd-cta-s">Безкоштовна консультація — визначимо обсяг, строки та бюджет</p>
+        <a href="contact.html" class="btn-ac">Обговорити проєкт →</a>
+      </div>
+    </div>`;
+}
+
+function lbOpen(src){
+  document.getElementById('sdlb-img').src=src;
+  document.getElementById('sdlb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+document.getElementById('sdlb').addEventListener('click',function(e){
+  if(e.target===this){this.classList.remove('open');document.body.style.overflow='';}
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){document.getElementById('sdlb').classList.remove('open');document.body.style.overflow='';}
+});
+
+// Tab click navigation
+document.querySelectorAll('.stab').forEach(t=>{
+  t.addEventListener('click',function(e){
+    e.preventDefault();
+    const slug=this.dataset.slug;
+    history.replaceState(null,'','#'+slug);
+    renderService(slug);
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+
+// Init from hash
+const initSlug = (location.hash.replace('#','')) || 'design';
+renderService(SERVICES[initSlug] ? initSlug : 'design');
+</script>
+</body>
+</html>
