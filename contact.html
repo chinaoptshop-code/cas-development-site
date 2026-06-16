@@ -195,7 +195,7 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 .geo-country{font-family:var(--D);font-size:1.05rem;font-weight:400;margin-bottom:5px}
 .geo-desc{font-family:var(--M);font-size:.76rem;color:var(--mu);line-height:1.64}
 /* ─── CONTACT ─── */
-.ct-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--bd);margin:0 52px 68px}
+
 .ci{padding:56px 52px 56px 0;border-right:1px solid var(--bd);position:relative;overflow:hidden}
 .ci-bg{position:absolute;bottom:0;right:0;width:60%;height:72%;object-fit:cover;opacity:.18;filter:saturate(.6);z-index:0;border-radius:2px}
 .ci-in{position:relative;z-index:1}
@@ -532,6 +532,32 @@ body.light .map-grat{display:none!important}
   .mob-ct-ic{color:var(--ac);display:flex}
   .mob-ct-lbl{font-family:var(--M);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mu);white-space:nowrap}
 }
+
+/* ── Contact page desktop redesign ── */
+@media(min-width:768px){
+  .ct-layout{display:grid;grid-template-columns:400px 1fr;min-height:640px;gap:0;border-top:none;margin:0}
+  .ci{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(8,7,9,.92) 0%,rgba(15,14,17,.85) 100%);padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;min-height:640px}
+  .ci-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.18;filter:saturate(.5) brightness(.7);transition:transform 6s ease}
+  .ci:hover .ci-bg{transform:scale(1.04)}
+  .ci-in{position:relative;z-index:1}
+  .ci-t{font-family:var(--D);font-size:2rem;font-weight:300;line-height:1.2;margin-bottom:14px;color:var(--tx)}
+  .ci-s{font-family:var(--M);font-size:.82rem;color:var(--mu);line-height:1.72}
+  .ci-det{position:relative;z-index:1;margin-top:32px}
+  .ci-det>div{margin-bottom:20px}
+  .dl{font-family:var(--M);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);margin-bottom:5px}
+  .dv{font-family:var(--M);font-size:.84rem;color:var(--tx)}
+  .ct-messengers{margin-top:0}
+  .msg-row .msg-icon-link{width:44px;height:44px}
+  /* Form right panel */
+  .ct-form-area{position:relative;display:flex;align-items:center;justify-content:center;background:var(--bg2)}
+  .ct-form-area::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('https://drive.google.com/thumbnail?id=1p_MqveKjiZ1Y9Xz9koLhlP5MUjinEFPF&sz=w1400') center/cover no-repeat;opacity:.06;filter:saturate(.3)}
+  .ct-form-wrap{position:relative;z-index:1;padding:56px 52px;width:100%}
+  .ct-wrap{display:block!important}
+  .ct-left{width:100%!important;padding:0!important}
+  .ct-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .ct-f2{grid-template-columns:1fr!important}
+}
+
 </style>
 </head>
 <body>
@@ -600,7 +626,7 @@ body.light .map-grat{display:none!important}
       <a href="https://maps.google.com/?q=вулиця+Антоновича+44,+Київ" target="_blank" class="mob-ct-btn"><span class="mob-ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span class="mob-ct-lbl">Адреса</span></a>
     </div>
     <div class="ct-layout">
-    <div class="ci"><img class="ci-bg" src="https://drive.google.com/thumbnail?id=1p_MqveKjiZ1Y9Xz9koLhlP5MUjinEFPF&sz=w600" loading="lazy" alt=""><div class="ci-in">
+    <div class="ci"><img class="ci-bg" src="https://drive.google.com/thumbnail?id=1p_MqveKjiZ1Y9Xz9koLhlP5MUjinEFPF&sz=w1400" loading="lazy" alt=""><div class="ci-in">
       <h2 class="ci-t" data-i18n="ct_title">Давайте обговоримо ваш простір</h2>
       <p class="ci-s" data-i18n="ct_sub">Розкажіть про проєкт — запропонуємо рішення під ваш стиль і бюджет. Безкоштовна консультація 30 хвилин.</p></div>
       <div class="ci-det">

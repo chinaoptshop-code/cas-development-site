@@ -545,6 +545,26 @@ body.light .map-grat{display:none!important}
   .sp-card-hint{display:none!important}
   .sp-card .sp-text{max-height:none!important;overflow:visible!important;opacity:1!important}
 }
+
+/* ── sp-card desktop expand ── */
+@media(min-width:768px){
+  .sp-card{cursor:pointer;transition:all .35s ease;position:relative}
+  .sp-card-detail{max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease,opacity .3s ease}
+  .sp-card.exp .sp-card-detail{max-height:320px;opacity:1}
+  .sp-card.exp{background:rgba(191,145,72,.06)!important;box-shadow:0 0 0 1px rgba(191,145,72,.22)}
+  .sp-card.exp .sp-cbg{opacity:.28!important;transform:scale(1.04)}
+  .spc-list{list-style:none;margin:14px 0 0;padding:0}
+  .spc-list li{font-family:var(--M);font-size:.78rem;color:var(--mu);padding:5px 0;border-bottom:1px solid rgba(237,232,223,.06);display:flex;align-items:center;gap:8px;line-height:1.4}
+  .spc-list li::before{content:'→';color:var(--ac);font-size:.7rem;flex-shrink:0}
+  .spc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:16px;border-top:1px solid rgba(191,145,72,.2)}
+  .spc-time{font-family:var(--M);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}
+  .spc-cta{font-family:var(--M);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);border:1px solid rgba(191,145,72,.4);padding:6px 14px;text-decoration:none;transition:all .2s}
+  .spc-cta:hover{background:var(--ac);color:#000}
+  .sp-card-hint{display:none!important}
+  .sp-ico-wrap{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .sp-card-arr{font-size:.9rem;color:var(--mu);transition:transform .3s;margin-left:auto}
+  .sp-card.exp .sp-card-arr{transform:rotate(90deg);color:var(--ac)}
+}
 </style>
 </head>
 <body>
@@ -618,9 +638,29 @@ body.light .map-grat{display:none!important}
   <section class="svc-prev">
     <div class="sph"><h2 class="spt" id="spt-home">Що ми робимо</h2><button class="splink" id="sp-link-h" href="/services.html">Всі послуги →</button></div>
     <div class="sp-grid">
-      <div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1QEJ_y0yTWVLTHkyKfZPjowzQmqhDO38j&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◻</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-d-nm">Дизайн інтер'єру</div><div class="sp-price" id="sp-d-pr">від $40 / м²</div><div class="sp-text" id="sp-d-tx">Концепція, 3D-візуалізація, робочі креслення та авторський нагляд.</div></div></div>
-      <div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1b7sIT2y5gF3a6jhXiSVhvyPykr9dNNof&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">⬡</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-r-nm">Ремонт під ключ</div><div class="sp-price" id="sp-r-pr">від $550 / м²</div><div class="sp-text" id="sp-r-tx">Повний цикл будівельних та оздоблювальних робіт з гарантією.</div></div></div>
-      <div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1dlTNZu4nrrbVPWlwOAjk268q9kBiLdHB&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◈</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-f-nm">Меблювання</div><div class="sp-price" id="sp-f-pr">від $250 / м²</div><div class="sp-text" id="sp-f-tx">Прямий імпорт меблів та декору з Китаю та Європи без посередників.</div></div></div><div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=197Bi23wSzVky7Rd9kJsjDrkRgiEphiwt&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◈</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-c-nm">Будівництво</div><div class="sp-price" id="sp-c-pr">від $600 / м²</div><div class="sp-text" id="sp-c-tx">Зведення та реконструкція будівель під ключ.</div></div></div><div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1QEJ_y0yTWVLTHkyKfZPjowzQmqhDO38j&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◎</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-l-nm">Ландшафт</div><div class="sp-price" id="sp-l-pr">від $50 / сотку</div><div class="sp-text" id="sp-l-tx">Проектування та облаштування садів і прилеглих територій.</div></div></div>
+      <div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1QEJ_y0yTWVLTHkyKfZPjowzQmqhDO38j&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px"><div class="sp-ico">◻</div><span class="sp-card-arr">›</span></div><span class="sp-card-hint" style="display:none">Натисніть для деталей</span><div class="sp-name" id="sp-d-nm">Дизайн інтер'єру</div><div class="sp-price" id="sp-d-pr">від $40 / м²</div><div class="sp-text" id="sp-d-tx">Концепція, 3D-візуалізація, робочі креслення та авторський нагляд.</div></div><div class="sp-card-detail"><ul class="spc-list"><li>Концепція та стиль-борд</li>
+<li>3D-візуалізація всіх зон</li>
+<li>Робочі креслення та специфікації</li>
+<li>Авторський нагляд на будівництві</li>
+<li>Підбір матеріалів та постачальників</li></ul><div class="spc-footer"><span class="spc-time">⏱ Строк: 2–8 тижнів</span><a href="/services.html" class="spc-cta">Детальніше →</a></div></div></div>
+      <div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1b7sIT2y5gF3a6jhXiSVhvyPykr9dNNof&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">⬡</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-r-nm">Ремонт під ключ</div><div class="sp-price" id="sp-r-pr">від $550 / м²</div><div class="sp-text" id="sp-r-tx">Повний цикл будівельних та оздоблювальних робіт з гарантією.</div></div><div class="sp-card-detail"><ul class="spc-list"><li>Чорновий та чистовий ремонт</li>
+<li>Електрика, сантехніка, вентиляція</li>
+<li>Оздоблення та покладання підлоги</li>
+<li>Встановлення дверей та вікон</li>
+<li>Гарантія 2 роки</li></ul><div class="spc-footer"><span class="spc-time">⏱ Строк: 2–6 місяців</span><a href="/services.html" class="spc-cta">Детальніше →</a></div></div></div>
+      <div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1dlTNZu4nrrbVPWlwOAjk268q9kBiLdHB&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◈</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-f-nm">Меблювання</div><div class="sp-price" id="sp-f-pr">від $250 / м²</div><div class="sp-text" id="sp-f-tx">Прямий імпорт меблів та декору з Китаю та Європи без посередників.</div></div><div class="sp-card-detail"><ul class="spc-list"><li>Прямий імпорт з Китаю та Європи</li>
+<li>3D-підбір та розстановка меблів</li>
+<li>Супровід виробництва під замовлення</li>
+<li>Доставка та збірка під ключ</li>
+<li>Без посередників — ціна виробника</li></ul><div class="spc-footer"><span class="spc-time">⏱ Строк: 4–12 тижнів</span><a href="/services.html" class="spc-cta">Детальніше →</a></div></div></div><div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=197Bi23wSzVky7Rd9kJsjDrkRgiEphiwt&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◈</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-c-nm">Будівництво</div><div class="sp-price" id="sp-c-pr">від $600 / м²</div><div class="sp-text" id="sp-c-tx">Зведення та реконструкція будівель під ключ.</div></div><div class="sp-card-detail"><ul class="spc-list"><li>Зведення будинків та комплексів</li>
+<li>Архітектурне проектування</li>
+<li>Реконструкція та надбудова</li>
+<li>Фундаменти та несучі конструкції</li>
+<li>Контроль якості на кожному етапі</li></ul><div class="spc-footer"><span class="spc-time">⏱ Строк: 6–24 місяці</span><a href="/services.html" class="spc-cta">Детальніше →</a></div></div></div><div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1QEJ_y0yTWVLTHkyKfZPjowzQmqhDO38j&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◎</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-l-nm">Ландшафт</div><div class="sp-price" id="sp-l-pr">від $50 / сотку</div><div class="sp-text" id="sp-l-tx">Проектування та облаштування садів і прилеглих територій.</div></div><div class="sp-card-detail"><ul class="spc-list"><li>Планування та геопластика ділянки</li>
+<li>Підбір рослин та озеленення</li>
+<li>Система автоматичного поливу</li>
+<li>Декоративне освітлення</li>
+<li>Укладання доріжок та майданчиків</li></ul><div class="spc-footer"><span class="spc-time">⏱ Строк: 4–12 тижнів</span><a href="/services.html" class="spc-cta">Детальніше →</a></div></div></div>
     </div>
   </section>
   <section class="proj-covers">
