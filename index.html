@@ -8,6 +8,12 @@
 <meta property="og:title" content="CAS Development — Дизайн інтер'єру, Київ">
 <meta property="og:description" content="Студія дизайну інтер'єру та архітектури в Києві. Від $40/м².">
 <meta property="og:image" content="https://drive.google.com/thumbnail?id=1lW6SF-extZy1oSlShUl-F_z9yx-mgvin&sz=w1200">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cas-development.com.ua/">
+<meta property="og:site_name" content="CAS Development">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CAS Development — Дизайн інтер'єру, Київ">
+<meta name="twitter:image" content="https://drive.google.com/thumbnail?id=1lW6SF-extZy1oSlShUl-F_z9yx-mgvin&sz=w1200">
 <link rel="canonical" href="https://cas-development.com.ua/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,14 +102,7 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 /* ★ ЦІНИ БІЛЬШІ та ЖИРНІШІ */
 .sp-price{font-family:var(--M);font-size:.92rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ac);margin-bottom:14px}
 .sp-text{font-family:var(--M);font-size:.82rem;color:var(--mu);line-height:1.82;font-weight:300}
-/* ─── PROJECT <div class="proj-cover" onclick="goProject('petrivtsi')"><img src="https://drive.google.com/thumbnail?id=1lW6SF-extZy1oSlShUl-F_z9yx-mgvin&sz=w600" loading="lazy" alt="Petrivtsi House"><div class="proj-cover-ov"><p class="proj-cover-name">Petrivtsi House</p><p class="proj-cover-loc">Київ · 320 м²</p></div></div>
-<div class="proj-cover" onclick="goProject('hoda')"><img src="https://drive.google.com/thumbnail?id=1HTdBNY-oY5p07-ZkTJDKABV1dWjcVU0j&sz=w600" loading="lazy" alt="Hoda Estate"><div class="proj-cover-ov"><p class="proj-cover-name">Hoda Estate</p><p class="proj-cover-loc">Київ · 180 м²</p></div></div>
-<div class="proj-cover" onclick="goProject('usa')"><img src="https://drive.google.com/thumbnail?id=13MS4aVn4wzDHtGN8FMyCljfemDkiVwKM&sz=w600" loading="lazy" alt="USA House"><div class="proj-cover-ov"><p class="proj-cover-name">USA House</p><p class="proj-cover-loc">США · 420 м²</p></div></div>
-<div class="proj-cover" onclick="goProject('pidgirland')"><img src="https://drive.google.com/thumbnail?id=1FiLI9kKE-C87h9pptaRdoA9xA41Cwg6v&sz=w600" loading="lazy" alt="Pidgirland"><div class="proj-cover-ov"><p class="proj-cover-name">Pidgirland</p><p class="proj-cover-loc">Київська обл. · 260 м²</p></div></div>
-<div class="proj-cover" onclick="goProject('hodos')"><img src="https://drive.google.com/thumbnail?id=1M13ysKRsQvnPksL-4RlqyJBntF9tlHIF&sz=w600" loading="lazy" alt="Hodos Villa"><div class="proj-cover-ov"><p class="proj-cover-name">Hodos Villa</p><p class="proj-cover-loc">Київ · 500 м²</p></div></div>
-<div class="proj-cover" onclick="goProject('linden')"><img src="https://drive.google.com/thumbnail?id=1e_eYgoeMFIrvDIH7FEF5aWpru9LpgS4R&sz=w600" loading="lazy" alt="Linden Penthouse"><div class="proj-cover-ov"><p class="proj-cover-name">Linden Penthouse</p><p class="proj-cover-loc">Київ · 210 м²</p></div></div>
-<div class="proj-cover" onclick="goProject('yachtrest')"><img src="https://drive.google.com/thumbnail?id=18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ&sz=w600" loading="lazy" alt="Yacht Restaurant"><div class="proj-cover-ov"><p class="proj-cover-name">Yacht Restaurant</p><p class="proj-cover-loc">Ресторан · Елітний проєкт</p></div></div>
- ─── */
+/* project-cover cards live in the .proj-covers section of <body> */
 .proj-covers{padding:0 52px 72px;background:var(--bg2)}
 .pc-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--bd)}
 .pc-title{font-family:var(--D);font-size:2.1rem;font-weight:300}
@@ -566,6 +565,9 @@ body.light .map-grat{display:none!important}
   .sp-card.exp .sp-card-arr{transform:rotate(90deg);color:var(--ac)}
 }
 
+/* ── sp-card detail (mobile + desktop expand/accordion) ── */
+.sp-card-detail{max-height:0;overflow:hidden;opacity:0;transition:max-height .45s ease,opacity .3s ease}
+.sp-card.exp .sp-card-detail{max-height:600px;opacity:1}
 /* ── Photo Carousel ── */
 .pcarousel{padding:0 0 72px;background:var(--bg2)}
 .pcarousel-head{display:flex;align-items:center;justify-content:space-between;padding:52px 52px 28px}
@@ -586,6 +588,11 @@ body.light .map-grat{display:none!important}
   .pcarousel-head{padding:36px 18px 20px}
   .pcarousel-title{font-size:1.2rem}
 }
+/* ── WOW: reveal-on-scroll + tilt ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1)}
+.reveal.reveal-in{opacity:1;transform:none}
+.proj-cover{transition:transform .25s ease}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none}}
 </style>
 </head>
 <body>
@@ -656,8 +663,10 @@ body.light .map-grat{display:none!important}
   <div class="strip-wrap">
 <button class="strip-nav strip-nav-l" onclick="stripScroll(-1)" aria-label="← попереднє">‹</button>
 <div class="strip" id="photoStrip" style="height:220px"><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=104gxpc3F-eqXHGmcK814qNElWZEYcWme&sz=w600" loading="lazy" alt="Вітальня"><span class="slab">Вітальня</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1nqFOoTfr5BDtvOis1rsMNn0-WWcg-7AA&sz=w600" loading="lazy" alt="Панорама"><span class="slab">Панорама</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=15xFrkizdxDpRJwNYfOan-cXx0TVu4roV&sz=w600" loading="lazy" alt="Спальня"><span class="slab">Спальня</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1zyjkWscWS5R5CHtsuuL6eDxsVGy-fFjd&sz=w600" loading="lazy" alt="Master"><span class="slab">Master</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1JABMXMbXVWrXP2iC3FLKlZxKAdPPjZ9Q&sz=w600" loading="lazy" alt="Санвузол"><span class="slab">Санвузол</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1JYmujFmkKxfhcWp7zHEwSn2EJkjP0cFd&sz=w600" loading="lazy" alt="Гардеробна"><span class="slab">Гардеробна</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1xKnzT_CB5eKX-RISpbKTHfty5vTzD-pm&sz=w600" loading="lazy" alt="Кабінет"><span class="slab">Кабінет</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1E2tior8Z6MCzSGOPeRvmt_w2xl325U2x&sz=w600" loading="lazy" alt="Пральня"><span class="slab">Пральня</span></div></div>
+<button class="strip-nav strip-nav-r" onclick="stripScroll(1)" aria-label="наступне →">›</button>
+  </div>
   <section class="svc-prev">
-    <div class="sph"><h2 class="spt" id="spt-home">Що ми робимо</h2><button class="splink" id="sp-link-h" href="/services.html">Всі послуги →</button></div>
+    <div class="sph"><h2 class="spt" id="spt-home">Що ми робимо</h2><button class="splink" id="sp-link-h" onclick="window.location.href='/services.html'">Всі послуги →</button></div>
     <div class="sp-grid">
       <div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1QEJ_y0yTWVLTHkyKfZPjowzQmqhDO38j&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px"><div class="sp-ico">◻</div><span class="sp-card-arr">›</span></div><span class="sp-card-hint" style="display:none">Натисніть для деталей</span><div class="sp-name" id="sp-d-nm">Дизайн інтер'єру</div><div class="sp-price" id="sp-d-pr">від $40 / м²</div><div class="sp-text" id="sp-d-tx">Концепція, 3D-візуалізація, робочі креслення та авторський нагляд.</div></div><div class="sp-card-detail"><ul class="spc-list"><li>Концепція та стиль-борд</li>
 <li>3D-візуалізація всіх зон</li>
@@ -685,23 +694,13 @@ body.light .map-grat{display:none!important}
     </div>
   </section>
   <section class="proj-covers">
-    <div class="pc-head"><h2 class="pc-title" id="home-proj-t">Наші проєкти</h2><button class="splink" id="sp-link-p" href="/portfolio.html">Всі проєкти →</button></div>
+    <div class="pc-head"><h2 class="pc-title" id="home-proj-t">Наші проєкти</h2><button class="splink" id="sp-link-p" onclick="window.location.href='/portfolio.html'">Всі проєкти →</button></div>
     <div class="pc-grid"><div class="proj-cover" onclick="goProject('petrivtsi')" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1lW6SF-extZy1oSlShUl-F_z9yx-mgvin&sz=w600" loading="lazy" alt="Petrivtsi House"><div class="proj-cover-ov"><p class="proj-cover-name">Petrivtsi House</p><p class="proj-cover-loc">Київ · 320 м²</p></div></div>
 <div class="proj-cover" onclick="goProject('hoda')" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1HTdBNY-oY5p07-ZkTJDKABV1dWjcVU0j&sz=w600" loading="lazy" alt="Hoda Estate"><div class="proj-cover-ov"><p class="proj-cover-name">Hoda Estate</p><p class="proj-cover-loc">Київ · 180 м²</p></div></div>
 <div class="proj-cover" onclick="goProject('usa')" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=13MS4aVn4wzDHtGN8FMyCljfemDkiVwKM&sz=w600" loading="lazy" alt="USA House"><div class="proj-cover-ov"><p class="proj-cover-name">USA House</p><p class="proj-cover-loc">США · 420 м²</p></div></div>
 <div class="proj-cover" onclick="goProject('pidgirland')" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1FiLI9kKE-C87h9pptaRdoA9xA41Cwg6v&sz=w600" loading="lazy" alt="Pidgirland"><div class="proj-cover-ov"><p class="proj-cover-name">Pidgirland</p><p class="proj-cover-loc">Київська обл. · 260 м²</p></div></div>
 <div class="proj-cover" onclick="goProject('hodos')" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1M13ysKRsQvnPksL-4RlqyJBntF9tlHIF&sz=w600" loading="lazy" alt="Hodos Villa"><div class="proj-cover-ov"><p class="proj-cover-name">Hodos Villa</p><p class="proj-cover-loc">Київ · 500 м²</p></div></div>
 <div class="proj-cover" onclick="goProject('linden')" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1e_eYgoeMFIrvDIH7FEF5aWpru9LpgS4R&sz=w600" loading="lazy" alt="Linden Penthouse"><div class="proj-cover-ov"><p class="proj-cover-name">Linden Penthouse</p><p class="proj-cover-loc">Київ · 210 м²</p></div>
-<div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ&sz=w900" loading="lazy" alt="Ресторан" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Ресторан</p><p class="pi-type">Yacht Restaurant</p></div></div>
-<div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1OGn3TXnLkQenE_1aPE7Tj1P2JhCrwLfT&sz=w900" loading="lazy" alt="Інтер'єр" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Інтер'єр</p><p class="pi-type">Yacht Restaurant</p></div></div>
-<div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=18W9L5_nV9nd-78YHi3e4dwoqWSRo5nug&sz=w900" loading="lazy" alt="Зал" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Зал</p><p class="pi-type">Yacht Restaurant</p></div></div>
-<div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1lovunAyUeQX5c-vvGLHNfjkbdKpnK7JJ&sz=w900" loading="lazy" alt="Зал" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Зал</p><p class="pi-type">Yacht Restaurant</p></div></div>
-<div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1BO7v9EOodBP_TPXcCUGZ-fPnis6Siomg&sz=w900" loading="lazy" alt="Деталь" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Деталь</p><p class="pi-type">Yacht Restaurant</p></div></div>
-<div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1hdb2TvRgvPYUj2c2nWF-ce30g-dC4vao&sz=w900" loading="lazy" alt="Бар" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Бар</p><p class="pi-type">Yacht Restaurant</p></div></div>
-<div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1dCBMYs58M2hfyXCO0N4GVQEzbP9TAjsE&sz=w900" loading="lazy" alt="Простір" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Простір</p><p class="pi-type">Yacht Restaurant</p></div></div>
-<div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1432efN35q6M6V02BsT6PdWk6S3TlTieK&sz=w900" loading="lazy" alt="Атмосфера" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Атмосфера</p><p class="pi-type">Yacht Restaurant</p></div></div>
-<div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1cE9ulLT9tcv8-cm3lNgbO0x3EEdBcO3n&sz=w900" loading="lazy" alt="Деталь" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Деталь</p><p class="pi-type">Yacht Restaurant</p></div></div>
-<div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1AaaZgBHrlYHcwE1YeBpifDZZ7j-1N8v8&sz=w900" loading="lazy" alt="Вхід" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Вхід</p><p class="pi-type">Yacht Restaurant</p></div></div>
 </div>
 </div>
   </section>
@@ -895,7 +894,7 @@ function setLang(l){
   calcUpdate();
 }
 /* ═══ SERVICE CARD TOGGLE ═══ */
-function toggleSv(card){card.classList.toggle('exp');}
+function toggleSv(card){var open=card.classList.contains('exp');document.querySelectorAll('.sp-card.exp').forEach(function(c){if(c!==card)c.classList.remove('exp');});if(open)card.classList.remove('exp');else card.classList.add('exp');}
 /* ═══ CALCULATOR ═══ */
 const RATES={d:{eco:40,std:50,prem:60,lux:70},r:{eco:550,std:650,prem:780,lux:900},f:{eco:250,std:300,prem:380,lux:600},c:{eco:600,std:750,prem:950,lux:1200},l:{eco:50,std:80,prem:120,lux:200}};
 const RL={uk:{d:'Дизайн інтер\u0027єру',r:'Ремонт під ключ',f:'Меблювання',c:'Будівництво',l:'Ландшафтний дизайн'},en:{d:'Interior Design',r:'Renovation',f:'Furniture',c:'Construction',l:'Landscape Design'},es:{d:'Diseño',r:'Renovación',f:'Muebles',c:'Construcción',l:'Paisajismo'}};
@@ -997,6 +996,30 @@ setLang(localStorage.getItem('cas-lang')||'uk');
     var dx=e.changedTouches[0].clientX-tx;
     if(Math.abs(dx)>44)pCarNav(dx>0?-1:1);
   },{passive:true});
+})();
+
+/* ── WOW effects: reveal-on-scroll · animated counters · 3D tilt (vanilla, reduced-motion aware) ── */
+(function(){
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('reveal-in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.svc-prev .sp-card,.spt,.pc-title,.pcarousel-title').forEach(function(el){el.classList.add('reveal');io.observe(el);});
+  function countUp(el){
+    var em=el.querySelector('em');var suffix=em?em.outerHTML:'';
+    var full=el.textContent;var pm=full.match(/^[^0-9]*/);var prefix=pm?pm[0]:'';
+    var target=parseInt(full.replace(/[^0-9]/g,''),10);if(!target)return;
+    var dur=1400,t0=null;
+    function step(ts){if(t0===null)t0=ts;var p=Math.min((ts-t0)/dur,1);var cur=Math.round(target*(1-Math.pow(1-p,3)));el.innerHTML=prefix+cur+suffix;if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  }
+  var sio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);sio.unobserve(e.target);}});},{threshold:.5});
+  document.querySelectorAll('.hstats .sn').forEach(function(el){sio.observe(el);});
+  if(window.matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('.proj-cover').forEach(function(card){
+      card.addEventListener('mousemove',function(e){var r=card.getBoundingClientRect();var rx=(-((e.clientY-r.top)/r.height-.5)*8).toFixed(2);var ry=(((e.clientX-r.left)/r.width-.5)*8).toFixed(2);card.style.transform='perspective(800px) rotateX('+rx+'deg) rotateY('+ry+'deg)';});
+      card.addEventListener('mouseleave',function(){card.style.transform='';});
+    });
+  }
 })();
 
 </script>
