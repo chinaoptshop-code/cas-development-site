@@ -249,12 +249,12 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 /* ── LIGHTBOX ── */
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:99999;display:none;flex-direction:column;align-items:center;justify-content:center}
 #lb.open{display:flex}
-#lb-img{max-width:90vw;max-height:82vh;object-fit:contain;transition:opacity .2s}
+#lb-img{max-width:96vw;max-height:86vh;object-fit:contain;transition:opacity .2s;pointer-events:none}
 #lb-close{position:absolute;top:20px;right:28px;color:#fff;font-size:2rem;cursor:pointer;line-height:1;opacity:.7}
 #lb-close:hover{opacity:1}
 .lb-arr{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.5rem;cursor:pointer;padding:16px 24px;opacity:.6;transition:opacity .2s;user-select:none}
 .lb-arr:hover{opacity:1}
-#lb-prev{left:0}.#lb-next{right:0}
+#lb-prev{left:0}#lb-next{right:0}
 #lb-info{position:absolute;bottom:20px;color:var(--ac);font-family:var(--M);font-size:.7rem;letter-spacing:.2em}
 #lb-prev{left:0}
 #lb-next{right:0}
@@ -524,6 +524,32 @@ body.light .map-grat{display:none!important}
 .pi-info-meta{font-family:var(--M);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ac);display:flex;flex-wrap:wrap;gap:8px}
 .pi-info-meta span{opacity:.9}
 .pi-info-meta span+span::before{content:'·';margin-right:8px;opacity:.5}
+
+@media(max-width:767px){
+  .lb-arr{font-size:2.4rem;padding:20px 16px;background:rgba(8,7,9,.45);border-radius:4px}
+  #lb-close{font-size:2.6rem;top:10px;right:14px;padding:10px}
+  #lb-info{font-size:.65rem;bottom:10px}
+}
+
+.pf-rows{display:none;padding:0 0 60px}
+.pf-rows.active{display:block}
+.pf-grid.hidden{display:none!important}
+.pf-filter.hidden{display:none!important}
+.proj-row{margin-bottom:36px}
+.proj-row-head{display:flex;align-items:center;justify-content:space-between;padding:0 16px 12px;border-bottom:1px solid rgba(237,232,223,.1)}
+.proj-row-name{font-family:var(--D);font-size:1.4rem;font-weight:300;color:var(--tx)}
+.proj-row-meta{font-family:var(--M);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);margin-top:2px}
+.proj-row-btn{font-family:var(--M);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);background:none;border:1px solid rgba(191,145,72,.35);padding:5px 12px;cursor:pointer;transition:all .2s}
+.proj-row-btn:hover{background:var(--ac);color:#000}
+.proj-row-scroll{display:flex;gap:4px;overflow-x:auto;padding:10px 16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.proj-row-scroll::-webkit-scrollbar{display:none}
+.proj-row-thumb{flex:0 0 160px;height:120px;overflow:hidden;position:relative;cursor:pointer;scroll-snap-align:start;background:var(--sf)}
+.proj-row-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s,filter .3s;filter:saturate(.55) brightness(.75)}
+.proj-row-thumb:hover img{transform:scale(1.08);filter:saturate(.9) brightness(.9)}
+@media(max-width:767px){.proj-row-thumb{flex:0 0 130px;height:97px}.proj-row-head{padding:0 12px 10px}.proj-row-scroll{padding:8px 12px}}
+.pf-view-toggle{display:flex;margin:0 0 18px;border:1px solid rgba(237,232,223,.15);width:fit-content}
+.pf-view-btn{font-family:var(--M);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:8px 18px;cursor:pointer;border:none;background:transparent;color:var(--mu);transition:all .2s}
+.pf-view-btn.on{background:var(--ac);color:#000}
 </style>
 </head>
 <body>
@@ -570,7 +596,193 @@ body.light .map-grat{display:none!important}
 <main>
 <div id="p-portfolio">
   <section class="ph"><img class="sbg" src="https://drive.google.com/thumbnail?id=1ZRiEBBWt3pzrBWlX-vWi5ggIHA9ZChJw&sz=w1400" loading="lazy" alt=""><div class="ph-inner"><div class="lbl" id="lbl-pf">Наші роботи</div><h1 class="ph-title" id="port-pg-title">Кожен проєкт — <em>окрема</em> історія</h1></div><span class="ph-num">03</span></section>
-  <div class="pf-filter"><button class="filt on" onclick="filt(this,'yachtrest')">Yacht Restaurant</button>
+  <div class="pf-view-toggle" id="pfViewToggle">
+  <button class="pf-view-btn on" onclick="pfSetView('filter')">По проекту</button>
+  <button class="pf-view-btn" onclick="pfSetView('rows')">Всі проекти</button>
+</div>
+<div class="pf-rows" id="pfRows">
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Yacht Restaurant</div>
+      <div class="proj-row-meta">Ресторан · Елітний</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('yachtrest')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll">
+<div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',0)"><img src="https://drive.google.com/thumbnail?id=18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',1)"><img src="https://drive.google.com/thumbnail?id=1OGn3TXnLkQenE_1aPE7Tj1P2JhCrwLfT&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',2)"><img src="https://drive.google.com/thumbnail?id=18W9L5_nV9nd-78YHi3e4dwoqWSRo5nug&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',3)"><img src="https://drive.google.com/thumbnail?id=1lovunAyUeQX5c-vvGLHNfjkbdKpnK7JJ&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',4)"><img src="https://drive.google.com/thumbnail?id=1AaaZgBHrlYHcwE1YeBpifDZZ7j-1N8v8&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',5)"><img src="https://drive.google.com/thumbnail?id=1BO7v9EOodBP_TPXcCUGZ-fPnis6Siomg&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
+  </div>
+</div>
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Linden Penthouse</div>
+      <div class="proj-row-meta">Київ · 210 м²</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('linden')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll">
+<div class="proj-row-thumb" onclick="filtAndPhoto('linden',0)"><img src="https://drive.google.com/thumbnail?id=1MslU7S5X8gIEpV6hE-s2ZHmJJRKOY7pv&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('linden',1)"><img src="https://drive.google.com/thumbnail?id=1YQyhjEui9fb6voFTdknZ5LwVF_g3FuHc&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('linden',2)"><img src="https://drive.google.com/thumbnail?id=1b9YTkSJVqBhw-xw0lUxu-0_qQ2UqSmBG&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('linden',3)"><img src="https://drive.google.com/thumbnail?id=1x1AqXqQMEpCTaZHBfkhwcUBRT9jAu43Q&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('linden',4)"><img src="https://drive.google.com/thumbnail?id=1lE1pxDZXpKRFjbrlrIi4MQW4Sv116ozD&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('linden',5)"><img src="https://drive.google.com/thumbnail?id=1DhkksToobvm0eiybk5PdO1edQNZ6UI3C&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
+  </div>
+</div>
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Hoda Estate</div>
+      <div class="proj-row-meta">Київ · 180 м²</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('hoda')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll">
+<div class="proj-row-thumb" onclick="filtAndPhoto('hoda',0)"><img src="https://drive.google.com/thumbnail?id=1FRa0FI6iMHK5LRb4c5yK24HG4CuW87vF&sz=w400" loading="lazy" alt="Hoda Estate"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hoda',1)"><img src="https://drive.google.com/thumbnail?id=1f3m1_qf4mDosh8OGxw-lgIiCWLrK-GVL&sz=w400" loading="lazy" alt="Hoda Estate"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hoda',2)"><img src="https://drive.google.com/thumbnail?id=1HZT-E30rREI7do3BkhUqUgYEsardbivb&sz=w400" loading="lazy" alt="Hoda Estate"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hoda',3)"><img src="https://drive.google.com/thumbnail?id=1iyezgpYu1pVWyFKyYG2ar--bwzwANZqS&sz=w400" loading="lazy" alt="Hoda Estate"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hoda',4)"><img src="https://drive.google.com/thumbnail?id=1m9fVTTPjd6nQsXO9WbLkxylog7u3gXYq&sz=w400" loading="lazy" alt="Hoda Estate"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hoda',5)"><img src="https://drive.google.com/thumbnail?id=1Ffy7Evj6CelA3FlqplSNbxC7-L19U1db&sz=w400" loading="lazy" alt="Hoda Estate"></div>
+  </div>
+</div>
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Petrivtsi House</div>
+      <div class="proj-row-meta">Петрівці · 320 м²</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('petrivtsi')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll">
+<div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',0)"><img src="https://drive.google.com/thumbnail?id=1NVeaQcV2TZSN5pN8iBtzm4xyCAFfQzOE&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',1)"><img src="https://drive.google.com/thumbnail?id=1OR5i7-rm1k0MUNvrcF4-9TRkwLNT4cU2&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',2)"><img src="https://drive.google.com/thumbnail?id=1Xdje8N1V14_0XPhslcDU08OJSoUHpbxf&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',3)"><img src="https://drive.google.com/thumbnail?id=1szuqdURge8MMsVttCwp8DBc7jg0-isde&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',4)"><img src="https://drive.google.com/thumbnail?id=1jOeC33fekBMwGkZ_Z0KUHP9GfBh8eqZc&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',5)"><img src="https://drive.google.com/thumbnail?id=1J4aJenwLdzYp4_VJlwQOiOpfOg3zXXf1&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
+  </div>
+</div>
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">USA House</div>
+      <div class="proj-row-meta">США · 420 м²</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('usa')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll">
+<div class="proj-row-thumb" onclick="filtAndPhoto('usa',0)"><img src="https://drive.google.com/thumbnail?id=13MS4aVn4wzDHtGN8FMyCljfemDkiVwKM&sz=w400" loading="lazy" alt="USA House"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('usa',1)"><img src="https://drive.google.com/thumbnail?id=1Sy7cfbfQLVJL3ye1mxd1FlQ51Kx6p9MN&sz=w400" loading="lazy" alt="USA House"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('usa',2)"><img src="https://drive.google.com/thumbnail?id=1m0zZfD8pTTzPHNkfaS57YNJ9g-PHNERN&sz=w400" loading="lazy" alt="USA House"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('usa',3)"><img src="https://drive.google.com/thumbnail?id=1Q5nGl_-ytBh_11Gan6yWq-HcbQ3EOGqW&sz=w400" loading="lazy" alt="USA House"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('usa',4)"><img src="https://drive.google.com/thumbnail?id=1Y_dreM4mLMXXlFcytzVVhseyBlK_PBLg&sz=w400" loading="lazy" alt="USA House"></div>
+  </div>
+</div>
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Pidgirland</div>
+      <div class="proj-row-meta">Київська обл. · 260 м²</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('pidgirland')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll">
+<div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',0)"><img src="https://drive.google.com/thumbnail?id=1usAOI5R4L3xU-pH_mEnuyEwbd8xaJZcZ&sz=w400" loading="lazy" alt="Pidgirland"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',1)"><img src="https://drive.google.com/thumbnail?id=1hXV_Pz6_GfnXe5ipnbSu3RWLfLccdCnx&sz=w400" loading="lazy" alt="Pidgirland"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',2)"><img src="https://drive.google.com/thumbnail?id=1RCrrbyNJHQhkgvreHPGW2RWNJi3KSDpc&sz=w400" loading="lazy" alt="Pidgirland"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',3)"><img src="https://drive.google.com/thumbnail?id=17c2Uv-OmlrmLDFlJX5R-t04-TcjADhao&sz=w400" loading="lazy" alt="Pidgirland"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',4)"><img src="https://drive.google.com/thumbnail?id=18VXNYlwqxP5Kuuw968Cdj66Jf5mnPBdk&sz=w400" loading="lazy" alt="Pidgirland"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',5)"><img src="https://drive.google.com/thumbnail?id=1daFcpcK1gWDEFPqNOEJlnBbzOQFtIfZr&sz=w400" loading="lazy" alt="Pidgirland"></div>
+  </div>
+</div>
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Hodos Villa</div>
+      <div class="proj-row-meta">Київ · 500 м²</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('hodos')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll">
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',0)"><img src="https://drive.google.com/thumbnail?id=1cRl7TrOdOCclnf7BmP9Qws6LjCgpGzRT&sz=w400" loading="lazy" alt="Hodos Villa"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',1)"><img src="https://drive.google.com/thumbnail?id=1BmrYo1JJhoD0eI22eiLx5iQGtvp9V00l&sz=w400" loading="lazy" alt="Hodos Villa"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',2)"><img src="https://drive.google.com/thumbnail?id=1M13ysKRsQvnPksL-4RlqyJBntF9tlHIF&sz=w400" loading="lazy" alt="Hodos Villa"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('hodos',3)"><img src="https://drive.google.com/thumbnail?id=1sSM3fuz42KHveT4a7kOFEzaGMJHnTvJo&sz=w400" loading="lazy" alt="Hodos Villa"></div>
+  </div>
+</div>
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Diamond</div>
+      <div class="proj-row-meta">Дизайн-проєкт</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('diamond')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll">
+<div class="proj-row-thumb" onclick="filtAndPhoto('diamond',0)"><img src="https://drive.google.com/thumbnail?id=1KRQc2j7r208K3NGJtYavENcgGuzKp93l&sz=w400" loading="lazy" alt="Diamond"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('diamond',1)"><img src="https://drive.google.com/thumbnail?id=1fIGqTJq9l1wxcb-OcsGOC3ri9IxIMl46&sz=w400" loading="lazy" alt="Diamond"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('diamond',2)"><img src="https://drive.google.com/thumbnail?id=131zlcfDBGOBKcyvX4TLpqiGUFR7HWwNQ&sz=w400" loading="lazy" alt="Diamond"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('diamond',3)"><img src="https://drive.google.com/thumbnail?id=1_0dwyRHn7GINF0QYgSoYIbByyJf_PPyw&sz=w400" loading="lazy" alt="Diamond"></div>
+  </div>
+</div>
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Edelweiss</div>
+      <div class="proj-row-meta">Дизайн-проєкт</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('edelweiss')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll">
+<div class="proj-row-thumb" onclick="filtAndPhoto('edelweiss',0)"><img src="https://drive.google.com/thumbnail?id=1yIDi0QGi3xQqH6iK5r84q2c9_xhIOm0k&sz=w400" loading="lazy" alt="Edelweiss"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('edelweiss',1)"><img src="https://drive.google.com/thumbnail?id=1DNC-OHY4GsgUq7FAHfQ5rfo4KBHlNeEG&sz=w400" loading="lazy" alt="Edelweiss"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('edelweiss',2)"><img src="https://drive.google.com/thumbnail?id=1ZwqCxDqIAqn7c7zDObXXPDrtiaG5sS7H&sz=w400" loading="lazy" alt="Edelweiss"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('edelweiss',3)"><img src="https://drive.google.com/thumbnail?id=15_7PIy3m4VI-xa6UZ3PQJueAMqQeCIOA&sz=w400" loading="lazy" alt="Edelweiss"></div>
+  </div>
+</div>
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Osokorky</div>
+      <div class="proj-row-meta">Київ</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('osokorky')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll">
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',0)"><img src="https://drive.google.com/thumbnail?id=1BnRMUkaRJsY268cZL8HLAIedespAmUAC&sz=w400" loading="lazy" alt="Osokorky"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',1)"><img src="https://drive.google.com/thumbnail?id=1TohlalW6PL8mdph7KoPoBvmmY4jnoISn&sz=w400" loading="lazy" alt="Osokorky"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',2)"><img src="https://drive.google.com/thumbnail?id=1tyFro2_3CVPU0tTV9s3xK_zzF-qGCt4U&sz=w400" loading="lazy" alt="Osokorky"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',3)"><img src="https://drive.google.com/thumbnail?id=10VnDwUntAIoJgLn4pqJLehmukf-7WzKZ&sz=w400" loading="lazy" alt="Osokorky"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',4)"><img src="https://drive.google.com/thumbnail?id=1wnRwhTIGDq181nYQPTv1cTbLjhKur2WI&sz=w400" loading="lazy" alt="Osokorky"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',5)"><img src="https://drive.google.com/thumbnail?id=1nrmQ8pB0DDgR80rGl6xfAH0nRt7EYWVd&sz=w400" loading="lazy" alt="Osokorky"></div>
+  </div>
+</div>
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Aqulla Arch</div>
+      <div class="proj-row-meta">Архітектура</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('aqulla')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll">
+<div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',0)"><img src="https://drive.google.com/thumbnail?id=1g-E1m6cFJ9kvHIwPFNw75WFXxcUpFtS7&sz=w400" loading="lazy" alt="Aqulla Arch"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',1)"><img src="https://drive.google.com/thumbnail?id=1YAHZ30ZL0oPliJXPjQzp5jI1anRyDPct&sz=w400" loading="lazy" alt="Aqulla Arch"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',2)"><img src="https://drive.google.com/thumbnail?id=1pF5ohNHdSnme0AeImi6T4l_mWQjgcwxn&sz=w400" loading="lazy" alt="Aqulla Arch"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',3)"><img src="https://drive.google.com/thumbnail?id=1D5SepOyqNoUiJQbwKxhFxohf4Kc5W34Y&sz=w400" loading="lazy" alt="Aqulla Arch"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',4)"><img src="https://drive.google.com/thumbnail?id=1kCutMggFic7OwQA9ipUICXGl5hpHDW6v&sz=w400" loading="lazy" alt="Aqulla Arch"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',5)"><img src="https://drive.google.com/thumbnail?id=1gB5Gm7pw3yuo-yWCUshepkQ6OQuwRvPr&sz=w400" loading="lazy" alt="Aqulla Arch"></div>
+  </div>
+</div>
+</div>
+<div class="pf-filter"><button class="filt on" onclick="filt(this,'yachtrest')">Yacht Restaurant</button>
 <button class="filt" onclick="filt(this,'linden')">Linden Penthouse</button>
 <button class="filt" onclick="filt(this,'hoda')">Hoda Estate</button>
 <button class="filt" onclick="filt(this,'petrivtsi')">Petrivtsi House</button>
@@ -1024,6 +1236,16 @@ function lbNav(d){lbIdx=(lbIdx+d+lbImgs.length)%lbImgs.length;lbShow();}
 function lbClose(){document.getElementById('lb').classList.remove('open');document.removeEventListener('keydown',lbKey);}
 function lbKey(e){if(e.key==='ArrowRight')lbNav(1);else if(e.key==='ArrowLeft')lbNav(-1);else if(e.key==='Escape')lbClose();}
 document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
+(function(){
+  var lbEl=document.getElementById('lb'),tx=0,ty=0;
+  lbEl.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+  lbEl.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-tx;
+    var dy=Math.abs(e.changedTouches[0].clientY-ty);
+    if(dy>80){lbClose();return;}
+    if(Math.abs(dx)>44)lbNav(dx>0?-1:1);
+  },{passive:true});
+})();
 /* ═══ THEME ═══ */
 function toggleTheme(){const light=document.body.classList.toggle('light');document.getElementById('themeBtn').textContent=light?'\u{1F319}':'\u2600\uFE0F';localStorage.setItem('cas-theme',light?'light':'dark');}
 (function(){if(localStorage.getItem('cas-theme')==='light'){document.body.classList.add('light');const b=document.getElementById('themeBtn');if(b)b.textContent='\u{1F319}';}})();
@@ -1192,6 +1414,26 @@ setLang(curLang);
 /* ── Multi-page navigation override ── */
 go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.html',about:'/about.html',contact:'/contact.html'};if(m[p])window.location.href=m[p];};
 goProject=function(id){window.location.href='/portfolio.html#'+id;};
+function pfSetView(mode){
+  var rows=document.getElementById('pfRows');
+  var grid=document.querySelector('.pf-grid');
+  var filter=document.querySelector('.pf-filter');
+  document.querySelectorAll('.pf-view-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelector('.pf-view-btn[onclick*="'+mode+'"]').classList.add('on');
+  if(mode==='rows'){rows.classList.add('active');if(grid)grid.classList.add('hidden');if(filter)filter.classList.add('hidden');}
+  else{rows.classList.remove('active');if(grid)grid.classList.remove('hidden');if(filter)filter.classList.remove('hidden');}
+}
+function filtToProject(id){
+  pfSetView('filter');
+  setTimeout(function(){var btn=document.querySelector(".filt[onclick*=\"'"+id+"'\"]");if(btn)filt(btn,id);},50);
+}
+function filtAndPhoto(id,photoIdx){
+  filtToProject(id);
+  setTimeout(function(){
+    var photos=document.querySelectorAll('.pi[data-c="'+id+'"] .pi-photo');
+    if(photos[photoIdx])lbOpen(photos[photoIdx]);
+  },120);
+}
 filt=function(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');document.querySelectorAll('.pi').forEach(el=>{el.style.display=(cat==='all'||el.dataset.c===cat)?'':'none';});};
 
 setLang(localStorage.getItem('cas-lang')||'uk');

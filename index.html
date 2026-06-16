@@ -54,8 +54,8 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 .fs{display:flex;gap:20px}
 .fs a{font-family:var(--M);font-size:.67rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:color .25s}
 .fs a:hover{color:var(--ac)}
-.strip{display:flex;gap:3px;overflow:hidden}
-.strip-item{flex:1;overflow:hidden;position:relative;cursor:pointer;min-width:0}
+
+
 .strip-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .4s;filter:saturate(.42) brightness(.62)}
 .strip-item:hover img{transform:scale(1.06);filter:saturate(.85) brightness(.85)}
 .slab{position:absolute;bottom:10px;left:12px;font-family:var(--M);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(237,232,223,.55);opacity:0;transition:opacity .3s}
@@ -221,7 +221,6 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 @media(max-width:960px){
   nav{padding:16px 22px}.nav-links{display:none}
   .hero{padding:0 22px 52px}.h1{font-size:44px}.hstats{flex-wrap:wrap;gap:24px}
-  .strip{height:140px!important}
   .ph{padding:70px 22px 36px}.ph-num{display:none}
   .sv-grid,.proc-row{grid-template-columns:1fr}.sv-grid{margin:0 22px}
   .sv-card{border-right:none;border-bottom:1px solid var(--bd)}
@@ -246,7 +245,7 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 /* ── LIGHTBOX ── */
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:99999;display:none;flex-direction:column;align-items:center;justify-content:center}
 #lb.open{display:flex}
-#lb-img{max-width:90vw;max-height:82vh;object-fit:contain;transition:opacity .2s}
+#lb-img{max-width:96vw;max-height:86vh;object-fit:contain;transition:opacity .2s;pointer-events:none}
 #lb-close{position:absolute;top:20px;right:28px;color:#fff;font-size:2rem;cursor:pointer;line-height:1;opacity:.7}
 #lb-close:hover{opacity:1}
 .lb-arr{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.5rem;cursor:pointer;padding:16px 24px;opacity:.6;transition:opacity .2s;user-select:none}
@@ -445,8 +444,6 @@ body.light .map-grat{display:none!important}
   .hghost{display:none!important}
 
   /* STRIP */
-  .strip{height:130px!important}
-  .strip-item{width:130px!important}
 
   /* HOME PREVIEW CARDS */
   .sp-cards{flex-direction:column!important;gap:10px!important}
@@ -515,6 +512,34 @@ body.light .map-grat{display:none!important}
   .ct-form-area{padding:24px 20px 40px!important;width:100%!important}
 }
 
+
+.strip-wrap{position:relative;overflow:hidden}
+.strip-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:10;background:rgba(8,7,9,.65);border:none;color:var(--tx);font-size:1.6rem;width:36px;height:56px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;user-select:none;touch-action:manipulation}
+.strip-nav:hover{background:rgba(8,7,9,.85)}
+.strip-nav-l{left:0;border-radius:0 4px 4px 0}
+.strip-nav-r{right:0;border-radius:4px 0 0 4px}
+.strip{display:flex;gap:3px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.strip-item{flex:0 0 calc(33.33% - 2px);scroll-snap-align:start;overflow:hidden;position:relative;cursor:pointer;min-width:120px}
+@media(max-width:767px){.strip-item{flex:0 0 calc(45% - 2px)}.strip-nav{width:28px;height:44px;font-size:1.2rem}}
+
+@media(max-width:767px){
+  .sp-card{cursor:pointer;transition:height .35s ease,box-shadow .2s;position:relative}
+  .sp-card .sp-text{max-height:0;overflow:hidden;transition:max-height .35s ease;opacity:0}
+  .sp-card.exp{z-index:5;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+  .sp-card.exp .sp-text{max-height:400px;opacity:1}
+  .sp-card.exp .sp-cbg{opacity:.35}
+  .sp-card-hint{display:block;font-family:var(--M);font-size:.58rem;letter-spacing:.14em;color:var(--mu);opacity:.7;margin-top:4px;text-transform:uppercase}
+  .sp-card-hint::after{content:' ▾'}
+  .sp-card.exp .sp-card-hint::after{content:' ▴'}
+}
+@media(min-width:768px){.sp-card-hint{display:none}}
+
+@media(max-width:767px){
+  .lb-arr{font-size:2.2rem;padding:20px 18px}
+  #lb-close{font-size:2.4rem;top:12px;right:16px;padding:8px}
+  #lb-info{font-size:.65rem;bottom:12px}
+}
 </style>
 </head>
 <body>
@@ -528,7 +553,7 @@ body.light .map-grat{display:none!important}
 </div>
 
 <nav>
-  <span class="logo" href="/">CAS<em>.</em>Development</span>
+  <a class="logo" href="/" style="text-decoration:none">CAS<em>.</em>Development</a>
   <ul class="nav-links">
     <li><a id="n-home" href="/" data-i18n="nav_home" class="on">Головна</a></li>
     <li><a id="n-services" href="/services.html" data-i18n="nav_services">Послуги</a></li>
@@ -582,23 +607,25 @@ body.light .map-grat{display:none!important}
       </div>
     </div>
   </section>
-  <div class="strip" style="height:220px"><div class="strip-item"><img src="https://drive.google.com/thumbnail?id=104gxpc3F-eqXHGmcK814qNElWZEYcWme&sz=w600" loading="lazy" alt="Вітальня"><span class="slab">Вітальня</span></div><div class="strip-item"><img src="https://drive.google.com/thumbnail?id=1nqFOoTfr5BDtvOis1rsMNn0-WWcg-7AA&sz=w600" loading="lazy" alt="Панорама"><span class="slab">Панорама</span></div><div class="strip-item"><img src="https://drive.google.com/thumbnail?id=15xFrkizdxDpRJwNYfOan-cXx0TVu4roV&sz=w600" loading="lazy" alt="Спальня"><span class="slab">Спальня</span></div><div class="strip-item"><img src="https://drive.google.com/thumbnail?id=1zyjkWscWS5R5CHtsuuL6eDxsVGy-fFjd&sz=w600" loading="lazy" alt="Master"><span class="slab">Master</span></div><div class="strip-item"><img src="https://drive.google.com/thumbnail?id=1JABMXMbXVWrXP2iC3FLKlZxKAdPPjZ9Q&sz=w600" loading="lazy" alt="Санвузол"><span class="slab">Санвузол</span></div><div class="strip-item"><img src="https://drive.google.com/thumbnail?id=1JYmujFmkKxfhcWp7zHEwSn2EJkjP0cFd&sz=w600" loading="lazy" alt="Гардеробна"><span class="slab">Гардеробна</span></div><div class="strip-item"><img src="https://drive.google.com/thumbnail?id=1xKnzT_CB5eKX-RISpbKTHfty5vTzD-pm&sz=w600" loading="lazy" alt="Кабінет"><span class="slab">Кабінет</span></div><div class="strip-item"><img src="https://drive.google.com/thumbnail?id=1E2tior8Z6MCzSGOPeRvmt_w2xl325U2x&sz=w600" loading="lazy" alt="Пральня"><span class="slab">Пральня</span></div></div>
+  <div class="strip-wrap">
+<button class="strip-nav strip-nav-l" onclick="stripScroll(-1)" aria-label="← попереднє">‹</button>
+<div class="strip" id="photoStrip" style="height:220px"><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=104gxpc3F-eqXHGmcK814qNElWZEYcWme&sz=w600" loading="lazy" alt="Вітальня"><span class="slab">Вітальня</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1nqFOoTfr5BDtvOis1rsMNn0-WWcg-7AA&sz=w600" loading="lazy" alt="Панорама"><span class="slab">Панорама</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=15xFrkizdxDpRJwNYfOan-cXx0TVu4roV&sz=w600" loading="lazy" alt="Спальня"><span class="slab">Спальня</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1zyjkWscWS5R5CHtsuuL6eDxsVGy-fFjd&sz=w600" loading="lazy" alt="Master"><span class="slab">Master</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1JABMXMbXVWrXP2iC3FLKlZxKAdPPjZ9Q&sz=w600" loading="lazy" alt="Санвузол"><span class="slab">Санвузол</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1JYmujFmkKxfhcWp7zHEwSn2EJkjP0cFd&sz=w600" loading="lazy" alt="Гардеробна"><span class="slab">Гардеробна</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1xKnzT_CB5eKX-RISpbKTHfty5vTzD-pm&sz=w600" loading="lazy" alt="Кабінет"><span class="slab">Кабінет</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1E2tior8Z6MCzSGOPeRvmt_w2xl325U2x&sz=w600" loading="lazy" alt="Пральня"><span class="slab">Пральня</span></div></div>
   <section class="svc-prev">
     <div class="sph"><h2 class="spt" id="spt-home">Що ми робимо</h2><button class="splink" id="sp-link-h" href="/services.html">Всі послуги →</button></div>
     <div class="sp-grid">
-      <div class="sp-card" href="/services.html"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1QEJ_y0yTWVLTHkyKfZPjowzQmqhDO38j&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◻</div><div class="sp-name" id="sp-d-nm">Дизайн інтер'єру</div><div class="sp-price" id="sp-d-pr">від $40 / м²</div><div class="sp-text" id="sp-d-tx">Концепція, 3D-візуалізація, робочі креслення та авторський нагляд.</div></div></div>
-      <div class="sp-card" href="/services.html"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1b7sIT2y5gF3a6jhXiSVhvyPykr9dNNof&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">⬡</div><div class="sp-name" id="sp-r-nm">Ремонт під ключ</div><div class="sp-price" id="sp-r-pr">від $550 / м²</div><div class="sp-text" id="sp-r-tx">Повний цикл будівельних та оздоблювальних робіт з гарантією.</div></div></div>
-      <div class="sp-card" href="/services.html"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1dlTNZu4nrrbVPWlwOAjk268q9kBiLdHB&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◈</div><div class="sp-name" id="sp-f-nm">Меблювання</div><div class="sp-price" id="sp-f-pr">від $250 / м²</div><div class="sp-text" id="sp-f-tx">Прямий імпорт меблів та декору з Китаю та Європи без посередників.</div></div></div><div class="sp-card" href="/services.html"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=197Bi23wSzVky7Rd9kJsjDrkRgiEphiwt&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◈</div><div class="sp-name" id="sp-c-nm">Будівництво</div><div class="sp-price" id="sp-c-pr">від $600 / м²</div><div class="sp-text" id="sp-c-tx">Зведення та реконструкція будівель під ключ.</div></div></div><div class="sp-card" href="/services.html"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1QEJ_y0yTWVLTHkyKfZPjowzQmqhDO38j&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◎</div><div class="sp-name" id="sp-l-nm">Ландшафт</div><div class="sp-price" id="sp-l-pr">від $50 / сотку</div><div class="sp-text" id="sp-l-tx">Проектування та облаштування садів і прилеглих територій.</div></div></div>
+      <div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1QEJ_y0yTWVLTHkyKfZPjowzQmqhDO38j&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◻</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-d-nm">Дизайн інтер'єру</div><div class="sp-price" id="sp-d-pr">від $40 / м²</div><div class="sp-text" id="sp-d-tx">Концепція, 3D-візуалізація, робочі креслення та авторський нагляд.</div></div></div>
+      <div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1b7sIT2y5gF3a6jhXiSVhvyPykr9dNNof&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">⬡</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-r-nm">Ремонт під ключ</div><div class="sp-price" id="sp-r-pr">від $550 / м²</div><div class="sp-text" id="sp-r-tx">Повний цикл будівельних та оздоблювальних робіт з гарантією.</div></div></div>
+      <div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1dlTNZu4nrrbVPWlwOAjk268q9kBiLdHB&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◈</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-f-nm">Меблювання</div><div class="sp-price" id="sp-f-pr">від $250 / м²</div><div class="sp-text" id="sp-f-tx">Прямий імпорт меблів та декору з Китаю та Європи без посередників.</div></div></div><div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=197Bi23wSzVky7Rd9kJsjDrkRgiEphiwt&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◈</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-c-nm">Будівництво</div><div class="sp-price" id="sp-c-pr">від $600 / м²</div><div class="sp-text" id="sp-c-tx">Зведення та реконструкція будівель під ключ.</div></div></div><div class="sp-card" onclick="toggleSv(this)"><img class="sp-cbg" src="https://drive.google.com/thumbnail?id=1QEJ_y0yTWVLTHkyKfZPjowzQmqhDO38j&sz=w600" loading="lazy" alt=""><div class="sp-cc"><div class="sp-ico">◎</div><span class="sp-card-hint">Натисніть для деталей</span><div class="sp-name" id="sp-l-nm">Ландшафт</div><div class="sp-price" id="sp-l-pr">від $50 / сотку</div><div class="sp-text" id="sp-l-tx">Проектування та облаштування садів і прилеглих територій.</div></div></div>
     </div>
   </section>
   <section class="proj-covers">
     <div class="pc-head"><h2 class="pc-title" id="home-proj-t">Наші проєкти</h2><button class="splink" id="sp-link-p" href="/portfolio.html">Всі проєкти →</button></div>
-    <div class="pc-grid"><div class="proj-cover" href="/portfolio.html#petrivtsi"><img src="https://drive.google.com/thumbnail?id=1lW6SF-extZy1oSlShUl-F_z9yx-mgvin&sz=w600" loading="lazy" alt="Petrivtsi House"><div class="proj-cover-ov"><p class="proj-cover-name">Petrivtsi House</p><p class="proj-cover-loc">Київ · 320 м²</p></div></div>
-<div class="proj-cover" href="/portfolio.html#hoda"><img src="https://drive.google.com/thumbnail?id=1HTdBNY-oY5p07-ZkTJDKABV1dWjcVU0j&sz=w600" loading="lazy" alt="Hoda Estate"><div class="proj-cover-ov"><p class="proj-cover-name">Hoda Estate</p><p class="proj-cover-loc">Київ · 180 м²</p></div></div>
-<div class="proj-cover" href="/portfolio.html#usa"><img src="https://drive.google.com/thumbnail?id=13MS4aVn4wzDHtGN8FMyCljfemDkiVwKM&sz=w600" loading="lazy" alt="USA House"><div class="proj-cover-ov"><p class="proj-cover-name">USA House</p><p class="proj-cover-loc">США · 420 м²</p></div></div>
-<div class="proj-cover" href="/portfolio.html#pidgirland"><img src="https://drive.google.com/thumbnail?id=1FiLI9kKE-C87h9pptaRdoA9xA41Cwg6v&sz=w600" loading="lazy" alt="Pidgirland"><div class="proj-cover-ov"><p class="proj-cover-name">Pidgirland</p><p class="proj-cover-loc">Київська обл. · 260 м²</p></div></div>
-<div class="proj-cover" href="/portfolio.html#hodos"><img src="https://drive.google.com/thumbnail?id=1M13ysKRsQvnPksL-4RlqyJBntF9tlHIF&sz=w600" loading="lazy" alt="Hodos Villa"><div class="proj-cover-ov"><p class="proj-cover-name">Hodos Villa</p><p class="proj-cover-loc">Київ · 500 м²</p></div></div>
-<div class="proj-cover" href="/portfolio.html#linden"><img src="https://drive.google.com/thumbnail?id=1e_eYgoeMFIrvDIH7FEF5aWpru9LpgS4R&sz=w600" loading="lazy" alt="Linden Penthouse"><div class="proj-cover-ov"><p class="proj-cover-name">Linden Penthouse</p><p class="proj-cover-loc">Київ · 210 м²</p></div>
+    <div class="pc-grid"><div class="proj-cover" onclick="goProject('petrivtsi')" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1lW6SF-extZy1oSlShUl-F_z9yx-mgvin&sz=w600" loading="lazy" alt="Petrivtsi House"><div class="proj-cover-ov"><p class="proj-cover-name">Petrivtsi House</p><p class="proj-cover-loc">Київ · 320 м²</p></div></div>
+<div class="proj-cover" onclick="goProject('hoda')" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1HTdBNY-oY5p07-ZkTJDKABV1dWjcVU0j&sz=w600" loading="lazy" alt="Hoda Estate"><div class="proj-cover-ov"><p class="proj-cover-name">Hoda Estate</p><p class="proj-cover-loc">Київ · 180 м²</p></div></div>
+<div class="proj-cover" onclick="goProject('usa')" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=13MS4aVn4wzDHtGN8FMyCljfemDkiVwKM&sz=w600" loading="lazy" alt="USA House"><div class="proj-cover-ov"><p class="proj-cover-name">USA House</p><p class="proj-cover-loc">США · 420 м²</p></div></div>
+<div class="proj-cover" onclick="goProject('pidgirland')" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1FiLI9kKE-C87h9pptaRdoA9xA41Cwg6v&sz=w600" loading="lazy" alt="Pidgirland"><div class="proj-cover-ov"><p class="proj-cover-name">Pidgirland</p><p class="proj-cover-loc">Київська обл. · 260 м²</p></div></div>
+<div class="proj-cover" onclick="goProject('hodos')" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1M13ysKRsQvnPksL-4RlqyJBntF9tlHIF&sz=w600" loading="lazy" alt="Hodos Villa"><div class="proj-cover-ov"><p class="proj-cover-name">Hodos Villa</p><p class="proj-cover-loc">Київ · 500 м²</p></div></div>
+<div class="proj-cover" onclick="goProject('linden')" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1e_eYgoeMFIrvDIH7FEF5aWpru9LpgS4R&sz=w600" loading="lazy" alt="Linden Penthouse"><div class="proj-cover-ov"><p class="proj-cover-name">Linden Penthouse</p><p class="proj-cover-loc">Київ · 210 м²</p></div>
 <div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ&sz=w900" loading="lazy" alt="Ресторан" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Ресторан</p><p class="pi-type">Yacht Restaurant</p></div></div>
 <div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1OGn3TXnLkQenE_1aPE7Tj1P2JhCrwLfT&sz=w900" loading="lazy" alt="Інтер'єр" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Інтер'єр</p><p class="pi-type">Yacht Restaurant</p></div></div>
 <div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=18W9L5_nV9nd-78YHi3e4dwoqWSRo5nug&sz=w900" loading="lazy" alt="Зал" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Зал</p><p class="pi-type">Yacht Restaurant</p></div></div>
@@ -630,12 +657,33 @@ document.querySelectorAll('a,button,.pi,.sp-card,.strip-item,.proj-cover').forEa
 });
 /* ═══ LIGHTBOX ═══ */
 let lbImgs=[],lbIdx=0;
+function stripScroll(dir){
+  var s=document.getElementById('photoStrip');
+  if(!s)return;
+  var w=s.querySelector('.strip-item');
+  s.scrollBy({left:dir*(w?w.offsetWidth+3:200)*2,behavior:'smooth'});
+}
+function stripLbOpen(img){
+  lbImgs=Array.from(document.querySelectorAll('.strip-item img'));
+  lbIdx=lbImgs.indexOf(img);lbShow();
+  document.getElementById('lb').classList.add('open');
+  document.addEventListener('keydown',lbKey);
+}
 function lbOpen(img){const page=img.closest('.page');lbImgs=Array.from(page.querySelectorAll('.pi-photo'));lbIdx=lbImgs.indexOf(img);lbShow();document.getElementById('lb').classList.add('open');document.addEventListener('keydown',lbKey);}
 function lbShow(){const el=document.getElementById('lb-img');el.style.opacity='.3';el.src=lbImgs[lbIdx].src.replace('&sz=w900','&sz=w1600');el.onload=()=>el.style.opacity='1';document.getElementById('lb-info').textContent=(lbIdx+1)+' / '+lbImgs.length;}
 function lbNav(d){lbIdx=(lbIdx+d+lbImgs.length)%lbImgs.length;lbShow();}
 function lbClose(){document.getElementById('lb').classList.remove('open');document.removeEventListener('keydown',lbKey);}
 function lbKey(e){if(e.key==='ArrowRight')lbNav(1);else if(e.key==='ArrowLeft')lbNav(-1);else if(e.key==='Escape')lbClose();}
 document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose();});
+/* Swipe для lightbox */
+(function(){
+  var lbEl=document.getElementById('lb'),tx=0;
+  lbEl.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
+  lbEl.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-tx;
+    if(Math.abs(dx)>44)lbNav(dx>0?-1:1);
+  },{passive:true});
+})();
 /* ═══ THEME ═══ */
 function toggleTheme(){const light=document.body.classList.toggle('light');document.getElementById('themeBtn').textContent=light?'\u{1F319}':'\u2600\uFE0F';localStorage.setItem('cas-theme',light?'light':'dark');}
 (function(){if(localStorage.getItem('cas-theme')==='light'){document.body.classList.add('light');const b=document.getElementById('themeBtn');if(b)b.textContent='\u{1F319}';}})();
