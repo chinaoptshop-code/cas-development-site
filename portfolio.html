@@ -562,7 +562,6 @@ body.light .map-grat{display:none!important}
 .pf-view-btn.on{background:var(--ac);color:#000}
 
 /* ── proj-row scroll hints ── */
-.proj-row-scroll-wrap{position:relative;overflow:hidden}
 .proj-row-scroll{scroll-snap-type:x mandatory;padding:10px 52px;gap:6px}
 .proj-row-scroll::-webkit-scrollbar{display:none}
 @media(max-width:767px){
@@ -579,7 +578,7 @@ body.light .map-grat{display:none!important}
 @media(min-width:768px){#pfBtnFilter{display:none!important}}
 
 /* ── pf-filter scrollable nav (desktop) ── */
-.pf-filter-wrap{display:flex;align-items:stretch;position:relative}
+.pf-filter-wrap{display:none;align-items:stretch;position:relative}
 .pf-filter{flex:1;min-width:0}
 .pf-fnav{flex:none;width:36px;background:rgba(8,7,9,.85);border:none;border-bottom:1px solid var(--bd);color:var(--ac);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;user-select:none;touch-action:manipulation;z-index:5}
 .pf-fnav:hover{background:rgba(191,145,72,.15);color:#fff}
@@ -612,6 +611,22 @@ body.light .map-grat{display:none!important}
   #plb-prev,#plb-next{width:36px;height:52px;font-size:1.8rem}
   #plb-img{max-width:100vw;max-height:76vh}
 }
+
+/* ── proj-row scroll nav ── */
+.proj-row-scroll-wrap{position:relative;overflow:hidden}
+.prs-nav{
+  position:absolute;top:0;bottom:0;width:40px;
+  background:none;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  z-index:10;opacity:0;transition:opacity .25s;
+  color:var(--ac);padding:0;
+}
+.proj-row-scroll-wrap:hover .prs-nav{opacity:1}
+.prs-nav-l{left:0;background:linear-gradient(to right,rgba(8,7,9,.7) 0%,transparent 100%)}
+.prs-nav-r{right:0;background:linear-gradient(to left,rgba(8,7,9,.7) 0%,transparent 100%)}
+.prs-nav::before{content:'';display:block;width:10px;height:10px;border-style:solid;border-color:currentColor;border-width:0}
+.prs-nav-l::before{border-left-width:1.5px;border-bottom-width:1.5px;transform:rotate(45deg);margin-left:6px}
+.prs-nav-r::before{border-right-width:1.5px;border-bottom-width:1.5px;transform:rotate(-45deg);margin-right:6px}
 </style>
 </head>
 <body>
@@ -662,6 +677,7 @@ body.light .map-grat{display:none!important}
   <button class="pf-view-btn on" onclick="pfSetView('rows')" id="pfBtnRows">Всі проекти</button>
   <button class="pf-view-btn" onclick="pfSetView('filter')" id="pfBtnFilter">По проекту ›</button>
 </div>
+
 <div class="pf-rows active" id="pfRows">
 <div class="proj-row">
   <div class="proj-row-head">
@@ -671,14 +687,14 @@ body.light .map-grat{display:none!important}
     </div>
     <button class="proj-row-btn" onclick="filtToProject('yachtrest')">Відкрити →</button>
   </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_0',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_0">
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_0',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_0">
 <div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',0)"><img src="https://drive.google.com/thumbnail?id=18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',1)"><img src="https://drive.google.com/thumbnail?id=1OGn3TXnLkQenE_1aPE7Tj1P2JhCrwLfT&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',2)"><img src="https://drive.google.com/thumbnail?id=18W9L5_nV9nd-78YHi3e4dwoqWSRo5nug&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',3)"><img src="https://drive.google.com/thumbnail?id=1lovunAyUeQX5c-vvGLHNfjkbdKpnK7JJ&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',4)"><img src="https://drive.google.com/thumbnail?id=1AaaZgBHrlYHcwE1YeBpifDZZ7j-1N8v8&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('yachtrest',5)"><img src="https://drive.google.com/thumbnail?id=1BO7v9EOodBP_TPXcCUGZ-fPnis6Siomg&sz=w400" loading="lazy" alt="Yacht Restaurant"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_0',1)" aria-label="›">›</button></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_0',1)" aria-label="›"></button></div>
 </div>
 <div class="proj-row">
   <div class="proj-row-head">
@@ -688,14 +704,14 @@ body.light .map-grat{display:none!important}
     </div>
     <button class="proj-row-btn" onclick="filtToProject('linden')">Відкрити →</button>
   </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_1',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_1">
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_1',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_1">
 <div class="proj-row-thumb" onclick="filtAndPhoto('linden',0)"><img src="https://drive.google.com/thumbnail?id=1MslU7S5X8gIEpV6hE-s2ZHmJJRKOY7pv&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('linden',1)"><img src="https://drive.google.com/thumbnail?id=1YQyhjEui9fb6voFTdknZ5LwVF_g3FuHc&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('linden',2)"><img src="https://drive.google.com/thumbnail?id=1b9YTkSJVqBhw-xw0lUxu-0_qQ2UqSmBG&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('linden',3)"><img src="https://drive.google.com/thumbnail?id=1x1AqXqQMEpCTaZHBfkhwcUBRT9jAu43Q&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('linden',4)"><img src="https://drive.google.com/thumbnail?id=1lE1pxDZXpKRFjbrlrIi4MQW4Sv116ozD&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('linden',5)"><img src="https://drive.google.com/thumbnail?id=1DhkksToobvm0eiybk5PdO1edQNZ6UI3C&sz=w400" loading="lazy" alt="Linden Penthouse"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_1',1)" aria-label="›">›</button></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_1',1)" aria-label="›"></button></div>
 </div>
 <div class="proj-row">
   <div class="proj-row-head">
@@ -705,14 +721,14 @@ body.light .map-grat{display:none!important}
     </div>
     <button class="proj-row-btn" onclick="filtToProject('hoda')">Відкрити →</button>
   </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_2',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_2">
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_2',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_2">
 <div class="proj-row-thumb" onclick="filtAndPhoto('hoda',0)"><img src="https://drive.google.com/thumbnail?id=1FRa0FI6iMHK5LRb4c5yK24HG4CuW87vF&sz=w400" loading="lazy" alt="Hoda Estate"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('hoda',1)"><img src="https://drive.google.com/thumbnail?id=1f3m1_qf4mDosh8OGxw-lgIiCWLrK-GVL&sz=w400" loading="lazy" alt="Hoda Estate"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('hoda',2)"><img src="https://drive.google.com/thumbnail?id=1HZT-E30rREI7do3BkhUqUgYEsardbivb&sz=w400" loading="lazy" alt="Hoda Estate"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('hoda',3)"><img src="https://drive.google.com/thumbnail?id=1iyezgpYu1pVWyFKyYG2ar--bwzwANZqS&sz=w400" loading="lazy" alt="Hoda Estate"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('hoda',4)"><img src="https://drive.google.com/thumbnail?id=1m9fVTTPjd6nQsXO9WbLkxylog7u3gXYq&sz=w400" loading="lazy" alt="Hoda Estate"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('hoda',5)"><img src="https://drive.google.com/thumbnail?id=1Ffy7Evj6CelA3FlqplSNbxC7-L19U1db&sz=w400" loading="lazy" alt="Hoda Estate"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_2',1)" aria-label="›">›</button></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_2',1)" aria-label="›"></button></div>
 </div>
 <div class="proj-row">
   <div class="proj-row-head">
@@ -722,14 +738,14 @@ body.light .map-grat{display:none!important}
     </div>
     <button class="proj-row-btn" onclick="filtToProject('petrivtsi')">Відкрити →</button>
   </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_3',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_3">
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_3',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_3">
 <div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',0)"><img src="https://drive.google.com/thumbnail?id=1NVeaQcV2TZSN5pN8iBtzm4xyCAFfQzOE&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',1)"><img src="https://drive.google.com/thumbnail?id=1OR5i7-rm1k0MUNvrcF4-9TRkwLNT4cU2&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',2)"><img src="https://drive.google.com/thumbnail?id=1Xdje8N1V14_0XPhslcDU08OJSoUHpbxf&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',3)"><img src="https://drive.google.com/thumbnail?id=1szuqdURge8MMsVttCwp8DBc7jg0-isde&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',4)"><img src="https://drive.google.com/thumbnail?id=1jOeC33fekBMwGkZ_Z0KUHP9GfBh8eqZc&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('petrivtsi',5)"><img src="https://drive.google.com/thumbnail?id=1J4aJenwLdzYp4_VJlwQOiOpfOg3zXXf1&sz=w400" loading="lazy" alt="Petrivtsi House"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_3',1)" aria-label="›">›</button></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_3',1)" aria-label="›"></button></div>
 </div>
 <div class="proj-row">
   <div class="proj-row-head">
@@ -739,7 +755,7 @@ body.light .map-grat{display:none!important}
     </div>
     <button class="proj-row-btn" onclick="filtToProject('usa')">Відкрити →</button>
   </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_4',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_4">
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_4',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_4">
 <div class="proj-row-thumb" onclick="filtAndPhoto('usa',0)"><img src="https://drive.google.com/thumbnail?id=18V9n96tOhjKjhv89z890vR0tQHRdODip&sz=w400" loading="lazy" alt="Вітальня"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('usa',1)"><img src="https://drive.google.com/thumbnail?id=1pYk5KBK_ne5DjGs0nVsqE1byD5Z9OVcg&sz=w400" loading="lazy" alt="Вітальня"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('usa',2)"><img src="https://drive.google.com/thumbnail?id=1vWmbYVTmViGgW9QJFrsKMWTd_z21Goh6&sz=w400" loading="lazy" alt="Вітальня"></div>
@@ -763,7 +779,7 @@ body.light .map-grat{display:none!important}
 <div class="proj-row-thumb" onclick="filtAndPhoto('usa',20)"><img src="https://drive.google.com/thumbnail?id=1xHgW4-qNkmwBWirLsLeHfEvYsTdh3yFG&sz=w400" loading="lazy" alt="Сауна"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('usa',21)"><img src="https://drive.google.com/thumbnail?id=15sQdyBkfu3DZYgGqkik_7p26ox0Xlp_h&sz=w400" loading="lazy" alt="Сауна"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('usa',22)"><img src="https://drive.google.com/thumbnail?id=12eGppdrKqBNh_6GUsPKpYrmiWEzzMlNc&sz=w400" loading="lazy" alt="Сауна"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_4',1)" aria-label="›">›</button></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_4',1)" aria-label="›"></button></div>
 </div>
 <div class="proj-row">
   <div class="proj-row-head">
@@ -773,14 +789,14 @@ body.light .map-grat{display:none!important}
     </div>
     <button class="proj-row-btn" onclick="filtToProject('pidgirland')">Відкрити →</button>
   </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_5',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_5">
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_5',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_5">
 <div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',0)"><img src="https://drive.google.com/thumbnail?id=1usAOI5R4L3xU-pH_mEnuyEwbd8xaJZcZ&sz=w400" loading="lazy" alt="Pidgirland"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',1)"><img src="https://drive.google.com/thumbnail?id=1hXV_Pz6_GfnXe5ipnbSu3RWLfLccdCnx&sz=w400" loading="lazy" alt="Pidgirland"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',2)"><img src="https://drive.google.com/thumbnail?id=1RCrrbyNJHQhkgvreHPGW2RWNJi3KSDpc&sz=w400" loading="lazy" alt="Pidgirland"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',3)"><img src="https://drive.google.com/thumbnail?id=17c2Uv-OmlrmLDFlJX5R-t04-TcjADhao&sz=w400" loading="lazy" alt="Pidgirland"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',4)"><img src="https://drive.google.com/thumbnail?id=18VXNYlwqxP5Kuuw968Cdj66Jf5mnPBdk&sz=w400" loading="lazy" alt="Pidgirland"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('pidgirland',5)"><img src="https://drive.google.com/thumbnail?id=1daFcpcK1gWDEFPqNOEJlnBbzOQFtIfZr&sz=w400" loading="lazy" alt="Pidgirland"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_5',1)" aria-label="›">›</button></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_5',1)" aria-label="›"></button></div>
 </div>
 <div class="proj-row">
   <div class="proj-row-head">
@@ -790,7 +806,7 @@ body.light .map-grat{display:none!important}
     </div>
     <button class="proj-row-btn" onclick="filtToProject('hodos')">Відкрити →</button>
   </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_6',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_6">
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_6',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_6">
 <div class="proj-row-thumb" onclick="filtAndPhoto('hodos',0)"><img src="https://drive.google.com/thumbnail?id=1Grj8_m7MJwsbEgb4penV26Ya8xZVe-vT&sz=w400" loading="lazy" alt="Вхід"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('hodos',1)"><img src="https://drive.google.com/thumbnail?id=1Xdb_M0v9MyKsVA4rJ8V8GZxxg2xfFvSd&sz=w400" loading="lazy" alt="Вхід"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('hodos',2)"><img src="https://drive.google.com/thumbnail?id=1jS6hUJuy_cM08oYb3udE2F0F_WC1-uZY&sz=w400" loading="lazy" alt="Вітальня"></div>
@@ -852,7 +868,7 @@ body.light .map-grat{display:none!important}
 <div class="proj-row-thumb" onclick="filtAndPhoto('hodos',58)"><img src="https://drive.google.com/thumbnail?id=1pzmheAc0iEYEs1BNzbhiLyegsextxLzm&sz=w400" loading="lazy" alt="Гардеробна 2"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('hodos',59)"><img src="https://drive.google.com/thumbnail?id=1XNEMUBlYgN0kx3g5ddEf8_5AC8NPA7V-&sz=w400" loading="lazy" alt="Гардеробна 2"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('hodos',60)"><img src="https://drive.google.com/thumbnail?id=1lRyanOS0NO_P5FNWt-BgVPJDqMwYm7ff&sz=w400" loading="lazy" alt="Гардеробна 2"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_6',1)" aria-label="›">›</button></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_6',1)" aria-label="›"></button></div>
 </div>
 <div class="proj-row">
   <div class="proj-row-head">
@@ -862,7 +878,7 @@ body.light .map-grat{display:none!important}
     </div>
     <button class="proj-row-btn" onclick="filtToProject('diamond')">Відкрити →</button>
   </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_7',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_7">
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_7',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_7">
 <div class="proj-row-thumb" onclick="filtAndPhoto('diamond',0)"><img src="https://drive.google.com/thumbnail?id=1iGcqtsUqLNWbBnvyOap4oiIV-8_o53dZ&sz=w400" loading="lazy" alt="Вітальня"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('diamond',1)"><img src="https://drive.google.com/thumbnail?id=1rfuCVdOfWwhMLlFEtYurH5_Bc4-yNQgb&sz=w400" loading="lazy" alt="Вітальня"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('diamond',2)"><img src="https://drive.google.com/thumbnail?id=1-mbd9A7_L1qQHJZIIymvOaCxaE58Ch85&sz=w400" loading="lazy" alt="Вітальня"></div>
@@ -894,7 +910,7 @@ body.light .map-grat{display:none!important}
 <div class="proj-row-thumb" onclick="filtAndPhoto('diamond',28)"><img src="https://drive.google.com/thumbnail?id=131zlcfDBGOBKcyvX4TLpqiGUFR7HWwNQ&sz=w400" loading="lazy" alt="Санвузол"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('diamond',29)"><img src="https://drive.google.com/thumbnail?id=1fIGqTJq9l1wxcb-OcsGOC3ri9IxIMl46&sz=w400" loading="lazy" alt="Санвузол"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('diamond',30)"><img src="https://drive.google.com/thumbnail?id=1KRQc2j7r208K3NGJtYavENcgGuzKp93l&sz=w400" loading="lazy" alt="Санвузол"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_7',1)" aria-label="›">›</button></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_7',1)" aria-label="›"></button></div>
 </div>
 <div class="proj-row">
   <div class="proj-row-head">
@@ -904,7 +920,7 @@ body.light .map-grat{display:none!important}
     </div>
     <button class="proj-row-btn" onclick="filtToProject('edelweiss')">Відкрити →</button>
   </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_8',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_8">
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_8',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_8">
 <div class="proj-row-thumb" onclick="filtAndPhoto('edelweiss',0)"><img src="https://drive.google.com/thumbnail?id=1DL1BY7Tg6L5B5yx8jajhRRHDBUaSnW3P&sz=w400" loading="lazy" alt="Загальний"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('edelweiss',1)"><img src="https://drive.google.com/thumbnail?id=1HMtnMX7Fgpwg5yV0exfrur7T6A7r2f_o&sz=w400" loading="lazy" alt="Вітальня"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('edelweiss',2)"><img src="https://drive.google.com/thumbnail?id=16gZ_bjozxlW-7IRFzfJDja9djBJolyOh&sz=w400" loading="lazy" alt="Вітальня"></div>
@@ -943,7 +959,7 @@ body.light .map-grat{display:none!important}
 <div class="proj-row-thumb" onclick="filtAndPhoto('edelweiss',35)"><img src="https://drive.google.com/thumbnail?id=1v95tqKYHyxy2RW31c7EaFJelXkwRRji0&sz=w400" loading="lazy" alt="Санвузол 2"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('edelweiss',36)"><img src="https://drive.google.com/thumbnail?id=15_7PIy3m4VI-xa6UZ3PQJueAMqQeCIOA&sz=w400" loading="lazy" alt="Санвузол 2"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('edelweiss',37)"><img src="https://drive.google.com/thumbnail?id=1ZwqCxDqIAqn7c7zDObXXPDrtiaG5sS7H&sz=w400" loading="lazy" alt="Санвузол 2"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_8',1)" aria-label="›">›</button></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_8',1)" aria-label="›"></button></div>
 </div>
 <div class="proj-row">
   <div class="proj-row-head">
@@ -953,7 +969,7 @@ body.light .map-grat{display:none!important}
     </div>
     <button class="proj-row-btn" onclick="filtToProject('yacht')">Відкрити →</button>
   </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_yacht',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_yacht">
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_yacht',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_yacht">
 <div class="proj-row-thumb" onclick="filtAndPhoto('yacht',0)"><img src="https://drive.google.com/thumbnail?id=1_0wYN-6Q8LZFXSH01vJWqz6iYJ8b9hgU&sz=w400" loading="lazy" alt="Інтер'єр"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('yacht',1)"><img src="https://drive.google.com/thumbnail?id=1M1G9hYfhwE68E-pJZ24gWEXgK-reLpac&sz=w400" loading="lazy" alt="Інтер'єр"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('yacht',2)"><img src="https://drive.google.com/thumbnail?id=1ZiKpaz1uoRJAfx8I4JpToThbR1wm98DD&sz=w400" loading="lazy" alt="Інтер'єр"></div>
@@ -990,7 +1006,7 @@ body.light .map-grat{display:none!important}
 <div class="proj-row-thumb" onclick="filtAndPhoto('yacht',33)"><img src="https://drive.google.com/thumbnail?id=1bPE17TlSMLbYzIdLfxPLZcSPgtS00xxZ&sz=w400" loading="lazy" alt="Душ"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('yacht',34)"><img src="https://drive.google.com/thumbnail?id=1kXCozWYkz8fGG4gG1b_IxmJ1XK099uDc&sz=w400" loading="lazy" alt="Душ"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('yacht',35)"><img src="https://drive.google.com/thumbnail?id=1Up2fy_4hzPkWGlxVhSQTNBiSngFPCZ9L&sz=w400" loading="lazy" alt="Душ"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_yacht',1)" aria-label="›">›</button></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_yacht',1)" aria-label="›"></button></div>
 </div>
 <div class="proj-row">
   <div class="proj-row-head">
@@ -1000,7 +1016,7 @@ body.light .map-grat{display:none!important}
     </div>
     <button class="proj-row-btn" onclick="filtToProject('osokorky')">Відкрити →</button>
   </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_9',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_9">
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_9',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_9">
 <div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',0)"><img src="https://drive.google.com/thumbnail?id=1BnRMUkaRJsY268cZL8HLAIedespAmUAC&sz=w400" loading="lazy" alt="Вітальня"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',1)"><img src="https://drive.google.com/thumbnail?id=1TohlalW6PL8mdph7KoPoBvmmY4jnoISn&sz=w400" loading="lazy" alt="Вітальня"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',2)"><img src="https://drive.google.com/thumbnail?id=1tyFro2_3CVPU0tTV9s3xK_zzF-qGCt4U&sz=w400" loading="lazy" alt="Вітальня"></div>
@@ -1054,7 +1070,7 @@ body.light .map-grat{display:none!important}
 <div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',50)"><img src="https://drive.google.com/thumbnail?id=1-nXNTiKzYqe9ykxu7nrf-WVPhfBGVrph&sz=w400" loading="lazy" alt="Гардеробна"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',51)"><img src="https://drive.google.com/thumbnail?id=1TwoF8PKfJW6sSkR4n2_a9-mRePh-lNgr&sz=w400" loading="lazy" alt="Гардеробна"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('osokorky',52)"><img src="https://drive.google.com/thumbnail?id=11OUuzkbKZVtVLItKEsyk1Arc9XoybOBi&sz=w400" loading="lazy" alt="Гардеробна"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_9',1)" aria-label="›">›</button></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_9',1)" aria-label="›"></button></div>
 </div>
 <div class="proj-row">
   <div class="proj-row-head">
@@ -1064,7 +1080,7 @@ body.light .map-grat{display:none!important}
     </div>
     <button class="proj-row-btn" onclick="filtToProject('aqulla')">Відкрити →</button>
   </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_10',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_10">
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_10',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_10">
 <div class="proj-row-thumb" onc<div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',0)"><img src="https://drive.google.com/thumbnail?id=1g-E1m6cFJ9kvHIwPFNw75WFXxcUpFtS7&sz=w400" loading="lazy" alt="A-Frame House"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',1)"><img src="https://drive.google.com/thumbnail?id=1pF5ohNHdSnme0AeImi6T4l_mWQjgcwxn&sz=w400" loading="lazy" alt="A-Frame House"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',2)"><img src="https://drive.google.com/thumbnail?id=1D5SepOyqNoUiJQbwKxhFxohf4Kc5W34Y&sz=w400" loading="lazy" alt="A-Frame House"></div>
@@ -1075,9 +1091,54 @@ body.light .map-grat{display:none!important}
 <div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',7)"><img src="https://drive.google.com/thumbnail?id=1LCIxro-uCXsOv0ktNvtDXHkl7tRwQnGN&sz=w400" loading="lazy" alt="A-Frame House"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',8)"><img src="https://drive.google.com/thumbnail?id=1SIOMonpmHZoIvZNf-2AnccErCj_RW9eo&sz=w400" loading="lazy" alt="A-Frame House"></div>
 <div class="proj-row-thumb" onclick="filtAndPhoto('aqulla',9)"><img src="https://drive.google.com/thumbnail?id=1YAHZ30ZL0oPliJXPjQzp5jI1anRyDPct&sz=w400" loading="lazy" alt="A-Frame House"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_10',1)" aria-label="›">›</button></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_10',1)" aria-label="›"></button></div>
 </div>
 </div>
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Monpark</div>
+      <div class="proj-row-meta">Архітектурний проєкт</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('monpark')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_monpark',-1)" aria-label="‹"></button><div class="proj-row-scroll" id="prs_monpark">
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',0)"><img src="https://drive.google.com/thumbnail?id=1jKOiN3xyCjZCLdtfIg_dNKn5uakJcPBh&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',1)"><img src="https://drive.google.com/thumbnail?id=12HcLhMA1BYGfJgDXOG0UBwP0RVrF5GRt&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',2)"><img src="https://drive.google.com/thumbnail?id=1a7Iiulje5gvN73rFm255NJpKe2RZfOin&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',3)"><img src="https://drive.google.com/thumbnail?id=1f57D9TAv8lJgRbq_KGmVeQkBkXg1xdRx&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',4)"><img src="https://drive.google.com/thumbnail?id=1fJUIA-kCmfblIcbfMd4bGbaB1N5knDsU&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',5)"><img src="https://drive.google.com/thumbnail?id=1HL1J3k6Vl1nD-8qk8hF1lX0N5ajNzP4I&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',6)"><img src="https://drive.google.com/thumbnail?id=1I84S9MOrJrmtkD2dcq_VgMZG5FpW3rGr&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',7)"><img src="https://drive.google.com/thumbnail?id=1c17SGx_MWDbyFI-nIiYTxshkmn_1YDVd&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',8)"><img src="https://drive.google.com/thumbnail?id=17CXSsdzqH4VIWWeiNSJERPG5zYL4CcqH&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',9)"><img src="https://drive.google.com/thumbnail?id=1pZgJUxqRJ7gaGJuoHU2T4A76EvKLPI6t&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',10)"><img src="https://drive.google.com/thumbnail?id=1wwL33KrIFXK0pyJozCqsa_o5PR2I-wp7&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',11)"><img src="https://drive.google.com/thumbnail?id=1Juzv3QC28JIljRiT9wHfni8Hdoduaz1O&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',12)"><img src="https://drive.google.com/thumbnail?id=19seq_4AT9Kb4avVEEMUD8ScXLE2x_KN6&sz=w400" loading="lazy" alt="Monpark"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',13)"><img src="https://drive.google.com/thumbnail?id=15e6gUmfeplrU1niU8yr4puosQv0Z5Nyq&sz=w400" loading="lazy" alt="Monpark"></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_monpark',1)" aria-label="›"></button></div>
+</div>
+<div class="proj-row">
+  <div class="proj-row-head">
+    <div>
+      <div class="proj-row-name">Yablu Rest</div>
+      <div class="proj-row-meta">Rest / Recep / Conf</div>
+    </div>
+    <button class="proj-row-btn" onclick="filtToProject('yablu')">Відкрити →</button>
+  </div>
+  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_yablu',-1)"></button><div class="proj-row-scroll" id="prs_yablu">
+<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',0)"><img src="https://drive.google.com/thumbnail?id=1GqqKXz4Ax1_cM-VY-ibgG3S1myyTx_t4&sz=w400" loading="lazy" alt="Yablu"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',1)"><img src="https://drive.google.com/thumbnail?id=16Do4G_08hSZtlyENeOf26xAic7X-pLAg&sz=w400" loading="lazy" alt="Yablu"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',2)"><img src="https://drive.google.com/thumbnail?id=1KTRoR62drP2kIK0JmXbBoMbvuQfi60TN&sz=w400" loading="lazy" alt="Yablu"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',3)"><img src="https://drive.google.com/thumbnail?id=13WiocWsjrHB4BMGhPHvpfur7s_PDHAcD&sz=w400" loading="lazy" alt="Yablu"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',4)"><img src="https://drive.google.com/thumbnail?id=1qpeuEP8q2xNHWfLxSy9hmiDLpCvUVuvP&sz=w400" loading="lazy" alt="Yablu"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',5)"><img src="https://drive.google.com/thumbnail?id=1PYQ1NiQoorPDkjlz3maoWBGuXs2_vs5B&sz=w400" loading="lazy" alt="Yablu"></div>
+<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',6)"><img src="https://drive.google.com/thumbnail?id=1jjk3ERcqKTGqZ_3lhCgXXPVvag1bB4JI&sz=w400" loading="lazy" alt="Yablu"></div>
+  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_yablu',1)"></button></div>
+</div>
+</div><!-- /pfRows -->
+
 <div class="pf-filter-wrap"><button class="pf-fnav pf-fnav-l" onclick="pfScroll(-1)" aria-label="‹">‹</button><div class="pf-filter hidden" id="pfFilter"><button class="filt" onclick="filt(this,'all')">Всі проекти</button>
 <button class="filt on" onclick="filt(this,'yachtrest')">Yacht Restaurant</button>
 <button class="filt" onclick="filt(this,'linden')">Linden Penthouse</button>
@@ -1094,49 +1155,8 @@ body.light .map-grat{display:none!important}
 <button class="filt" onclick="filt(this,'monpark')">Monpark</button>
 <button class="filt" onclick="filt(this,'yablu')">Yablu Rest</button>
 </div><button class="pf-fnav pf-fnav-r" onclick="pfScroll(1)" aria-label="›">›</button></div>
-  <div class="proj-row">
-  <div class="proj-row-head">
-    <div>
-      <div class="proj-row-name">Yablu Rest</div>
-      <div class="proj-row-meta">Rest / Recep / Conf</div>
-    </div>
-    <button class="proj-row-btn" onclick="filtToProject('yablu')">Відкрити →</button>
-  </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_yablu',-1)">‹</button><div class="proj-row-scroll" id="prs_yablu">
-<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',0)"><img src="https://drive.google.com/thumbnail?id=1GqqKXz4Ax1_cM-VY-ibgG3S1myyTx_t4&sz=w400" loading="lazy" alt="Yablu"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',1)"><img src="https://drive.google.com/thumbnail?id=16Do4G_08hSZtlyENeOf26xAic7X-pLAg&sz=w400" loading="lazy" alt="Yablu"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',2)"><img src="https://drive.google.com/thumbnail?id=1KTRoR62drP2kIK0JmXbBoMbvuQfi60TN&sz=w400" loading="lazy" alt="Yablu"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',3)"><img src="https://drive.google.com/thumbnail?id=13WiocWsjrHB4BMGhPHvpfur7s_PDHAcD&sz=w400" loading="lazy" alt="Yablu"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',4)"><img src="https://drive.google.com/thumbnail?id=1qpeuEP8q2xNHWfLxSy9hmiDLpCvUVuvP&sz=w400" loading="lazy" alt="Yablu"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',5)"><img src="https://drive.google.com/thumbnail?id=1PYQ1NiQoorPDkjlz3maoWBGuXs2_vs5B&sz=w400" loading="lazy" alt="Yablu"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('yablu',6)"><img src="https://drive.google.com/thumbnail?id=1jjk3ERcqKTGqZ_3lhCgXXPVvag1bB4JI&sz=w400" loading="lazy" alt="Yablu"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_yablu',1)">›</button></div>
-</div>
-<div class="proj-row">
-  <div class="proj-row-head">
-    <div>
-      <div class="proj-row-name">Monpark</div>
-      <div class="proj-row-meta">Архітектурний проєкт</div>
-    </div>
-    <button class="proj-row-btn" onclick="filtToProject('monpark')">Відкрити →</button>
-  </div>
-  <div class="proj-row-scroll-wrap"><button class="prs-nav prs-nav-l" onclick="prsScroll('prs_monpark',-1)" aria-label="‹">‹</button><div class="proj-row-scroll" id="prs_monpark">
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',0)"><img src="https://drive.google.com/thumbnail?id=1jKOiN3xyCjZCLdtfIg_dNKn5uakJcPBh&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',1)"><img src="https://drive.google.com/thumbnail?id=12HcLhMA1BYGfJgDXOG0UBwP0RVrF5GRt&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',2)"><img src="https://drive.google.com/thumbnail?id=1a7Iiulje5gvN73rFm255NJpKe2RZfOin&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',3)"><img src="https://drive.google.com/thumbnail?id=1f57D9TAv8lJgRbq_KGmVeQkBkXg1xdRx&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',4)"><img src="https://drive.google.com/thumbnail?id=1fJUIA-kCmfblIcbfMd4bGbaB1N5knDsU&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',5)"><img src="https://drive.google.com/thumbnail?id=1HL1J3k6Vl1nD-8qk8hF1lX0N5ajNzP4I&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',6)"><img src="https://drive.google.com/thumbnail?id=1I84S9MOrJrmtkD2dcq_VgMZG5FpW3rGr&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',7)"><img src="https://drive.google.com/thumbnail?id=1c17SGx_MWDbyFI-nIiYTxshkmn_1YDVd&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',8)"><img src="https://drive.google.com/thumbnail?id=17CXSsdzqH4VIWWeiNSJERPG5zYL4CcqH&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',9)"><img src="https://drive.google.com/thumbnail?id=1pZgJUxqRJ7gaGJuoHU2T4A76EvKLPI6t&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',10)"><img src="https://drive.google.com/thumbnail?id=1wwL33KrIFXK0pyJozCqsa_o5PR2I-wp7&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',11)"><img src="https://drive.google.com/thumbnail?id=1Juzv3QC28JIljRiT9wHfni8Hdoduaz1O&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',12)"><img src="https://drive.google.com/thumbnail?id=19seq_4AT9Kb4avVEEMUD8ScXLE2x_KN6&sz=w400" loading="lazy" alt="Monpark"></div>
-<div class="proj-row-thumb" onclick="filtAndPhoto('monpark',13)"><img src="https://drive.google.com/thumbnail?id=15e6gUmfeplrU1niU8yr4puosQv0Z5Nyq&sz=w400" loading="lazy" alt="Monpark"></div>
-  </div><button class="prs-nav prs-nav-r" onclick="prsScroll('prs_monpark',1)" aria-label="›">›</button></div>
-</div>
+  
+
 <div class="pf-grid hidden">
 <div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ&sz=w900" loading="lazy" alt="Yacht Restaurant" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Yacht Restaurant</p><p class="pi-type">Yacht Restaurant</p></div></div>
 <div class="pi" data-c="yachtrest"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1OGn3TXnLkQenE_1aPE7Tj1P2JhCrwLfT&sz=w900" loading="lazy" alt="Yacht Restaurant" onclick="lbOpen(this)"><div class="pi-ov"><p class="pi-title">Yacht Restaurant</p><p class="pi-type">Yacht Restaurant</p></div></div>
@@ -1674,10 +1694,20 @@ function pfSetView(mode){
   var rows=document.getElementById('pfRows');
   var grid=document.querySelector('.pf-grid');
   var filter=document.querySelector('.pf-filter');
+  var filterWrap=document.querySelector('.pf-filter-wrap');
   document.querySelectorAll('.pf-view-btn').forEach(b=>b.classList.remove('on'));
   var activeBtn=document.querySelector('.pf-view-btn[onclick*="'+mode+'"]');if(activeBtn)activeBtn.classList.add('on');
-  if(mode==='rows'){rows.classList.add('active');if(grid)grid.classList.add('hidden');if(filter)filter.classList.add('hidden');}
-  else{rows.classList.remove('active');if(grid)grid.classList.remove('hidden');if(filter)filter.classList.remove('hidden');}
+  if(mode==='rows'){
+    rows.classList.add('active');
+    if(grid)grid.classList.add('hidden');
+    if(filter)filter.classList.add('hidden');
+    if(filterWrap)filterWrap.style.display='none';
+  } else {
+    rows.classList.remove('active');
+    if(grid)grid.classList.remove('hidden');
+    if(filter)filter.classList.remove('hidden');
+    if(filterWrap)filterWrap.style.display='';
+  }
 }
 function filtToProject(id){
   pfSetView('filter');
