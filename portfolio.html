@@ -229,8 +229,8 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
   .sv-grid,.proc-row{grid-template-columns:1fr}.sv-grid{margin:0 22px}
   .sv-card{border-right:none;border-bottom:1px solid var(--bd)}
   .proc{padding:52px 22px}.proc-row{border:none;gap:2px}.proc-step{border-right:none;border:1px solid var(--bd)}
-  .pf-grid{grid-template-columns:1fr 1fr;grid-auto-rows:190px;padding:0 22px 48px}
-  .pf-grid .pi:nth-child(n){grid-column:auto!important;grid-row:auto!important}
+  
+  
   .pf-filter{padding:0 22px}
   .about-wrap{grid-template-columns:1fr;gap:36px;padding:0 22px 52px}
   .geo{padding:0 22px 52px}.geo-grid{flex-direction:column}
@@ -417,6 +417,10 @@ body.light .map-grat{display:none!important}
    MOBILE LAYOUT — comprehensive
 ════════════════════════════════════════ */
 @media (max-width:767px){
+  /* ── pf-grid mobile ── */
+  .pf-grid{grid-template-columns:1fr 1fr!important;grid-auto-rows:190px!important;padding:0 12px 48px!important;gap:4px!important}
+  .pf-grid .pi:nth-child(n){grid-column:auto!important;grid-row:auto!important}
+
 
   /* NAV */
   nav{padding:14px 18px!important}
