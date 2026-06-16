@@ -631,12 +631,16 @@ body.light .map-grat{display:none!important}
 .prs-nav-r::before{border-right-width:1.5px;border-bottom-width:1.5px;transform:rotate(-45deg);margin-right:6px}
 
 /* ── Portfolio view switching via body class ── */
-body.view-rows .pf-filter-wrap{display:none!important}
-body.view-rows .pf-grid{display:none!important}
+/* pfRows: visible in rows mode, hidden in filter mode */
+body.view-rows  #pfRows{display:block!important}
 body.view-filter #pfRows{display:none!important}
-/* Default (on load): rows mode */
-.pf-filter-wrap{display:none}
-#pfRows.active{display:block}
+/* pf-filter-wrap: ALWAYS visible (project tabs navigation) */
+.pf-filter-wrap{display:flex!important}
+/* pf-grid: hidden in rows mode, visible in filter mode */
+body.view-rows  .pf-grid{display:none!important}
+body.view-filter .pf-grid{display:grid!important}
+/* Default state */
+#pfRows{display:none}
 </style>
 </head>
 <body>
@@ -1684,7 +1688,19 @@ function go(id){
   if(id==='contact')setTimeout(initMap,180);
 }
 function goProject(id){go('portfolio');setTimeout(()=>{const btn=document.querySelector('.filt[onclick*="\''+id+'\'"]');if(btn)filt(btn,id);},100);}
-function filt(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');document.querySelectorAll('.pi').forEach(item=>{item.style.display=(cat==='all'||item.dataset.c===cat)?'':'none';});}
+function filt(btn,cat){
+  document.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  if(cat==='all'){
+    pfSetView('rows');
+    document.querySelectorAll('.pi').forEach(el=>{el.style.display='';});
+  } else {
+    pfSetView('filter');
+    document.querySelectorAll('.pi').forEach(el=>{
+      el.style.display=(el.dataset.c===cat)?'':'none';
+    });
+  }
+}
 function revealPhone(el){
   const ph=el.dataset.phone||'';
   const href=el.dataset.href||'';
@@ -1701,18 +1717,16 @@ setLang(curLang);
 go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.html',about:'/about.html',contact:'/contact.html'};if(m[p])window.location.href=m[p];};
 goProject=function(id){filtToProject(id);};
 function pfSetView(mode){
-  /* Use body class — CSS handles all visibility, JS just sets state */
-  document.body.classList.toggle('view-rows', mode==='rows');
+  document.body.classList.toggle('view-rows',   mode==='rows');
   document.body.classList.toggle('view-filter', mode!=='rows');
-  /* Also toggle active/hidden classes for backwards compatibility */
-  var rows=document.getElementById('pfRows');
-  var grid=document.querySelector('.pf-grid');
-  if(rows) rows.classList.toggle('active', mode==='rows');
-  if(grid) grid.classList.toggle('hidden', mode==='rows');
-  /* Update button states */
   document.querySelectorAll('.pf-view-btn').forEach(b=>b.classList.remove('on'));
   var btn=document.querySelector('.pf-view-btn[onclick*="'+mode+'"]');
   if(btn)btn.classList.add('on');
+  /* Sync "Всі проекти" filt tab active state */
+  if(mode==='rows'){
+    var allTab=document.querySelector(".filt[onclick*="'all'"]");
+    if(allTab){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('active'));allTab.classList.add('active');}
+  }
 }
 function filtToProject(id){
   pfSetView('filter');
@@ -1737,7 +1751,7 @@ setLang(localStorage.getItem('cas-lang')||'uk');
     if(!btn)btn=document.querySelectorAll('.filt')[1];
     if(btn)filt(btn,h);
   } else {
-    pfSetView('rows');document.body.classList.add('view-rows');
+    pfSetView('rows');
   }
 })();
 
