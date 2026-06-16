@@ -154,7 +154,11 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 .filt{padding:14px 20px;background:none;border:none;font-family:var(--M);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;transition:all .25s;flex-shrink:0}
 .filt:hover,.filt.on{color:var(--tx);border-bottom-color:var(--ac)}
 .pf-grid{padding:0 52px 60px;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:280px;gap:6px}
-.pf-grid 0%;object-fit:cover;transition:transform .7s ease}
+
+
+/* ── pi grid items ── */
+.pi{position:relative;overflow:hidden;cursor:pointer;background:var(--sf)}
+.pi-photo{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
 .pi:hover .pi-photo{transform:scale(1.07)}
 .pi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.84) 0%,transparent 55%);opacity:0;transition:opacity .4s;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;z-index:1}
 .pi:hover .pi-ov{opacity:1}
@@ -419,6 +423,12 @@ body.light .map-grat{display:none!important}
   .pf-grid .pi:nth-child(n+10){grid-column:span 4}
 }
 @media (max-width:767px){
+  .pf-view-toggle{margin:16px 12px 16px!important}
+  .pf-view-btn{padding:8px 14px!important;font-size:.62rem!important}
+
+  .pf-filter{padding:0 6px!important;margin-bottom:20px!important;gap:4px!important}
+  .filt{font-size:.56rem!important;padding:10px 10px!important;letter-spacing:.08em!important}
+
   /* ── pf-grid mobile ── */
   .pf-grid{grid-template-columns:1fr 1fr!important;grid-auto-rows:190px!important;padding:0 12px 48px!important;gap:4px!important}
   isplay:none!important}
@@ -1427,7 +1437,7 @@ setLang(curLang);
 
 /* ── Multi-page navigation override ── */
 go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.html',about:'/about.html',contact:'/contact.html'};if(m[p])window.location.href=m[p];};
-goProject=function(id){window.location.href='/portfolio.html#'+id;};
+goProject=function(id){filtToProject(id);};
 function pfSetView(mode){
   var rows=document.getElementById('pfRows');
   var grid=document.querySelector('.pf-grid');
