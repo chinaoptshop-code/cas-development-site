@@ -544,7 +544,7 @@ body.light .map-grat{display:none!important}
 .pf-rows{display:none;padding:0 0 60px}
 .pf-rows.active{display:block}
 .pf-grid.hidden{display:none!important}
-.pf-filter.hidden{display:none!important}
+.pf-filter{/* always visible */}
 .proj-row{margin-bottom:36px}
 .proj-row-head{display:flex;align-items:center;justify-content:space-between;padding:0 16px 12px;border-bottom:1px solid rgba(237,232,223,.1)}
 .proj-row-name{font-family:var(--D);font-size:1.4rem;font-weight:300;color:var(--tx)}
@@ -578,7 +578,7 @@ body.light .map-grat{display:none!important}
 @media(min-width:768px){#pfBtnFilter{display:none!important}}
 
 /* ── pf-filter scrollable nav (desktop) ── */
-.pf-filter-wrap{display:none;align-items:stretch;position:relative}
+.pf-filter-wrap{display:flex;align-items:stretch;position:relative}
 .pf-filter{flex:1;min-width:0}
 .pf-fnav{flex:none;width:36px;background:rgba(8,7,9,.85);border:none;border-bottom:1px solid var(--bd);color:var(--ac);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;user-select:none;touch-action:manipulation;z-index:5}
 .pf-fnav:hover{background:rgba(191,145,72,.15);color:#fff}
@@ -1139,7 +1139,7 @@ body.light .map-grat{display:none!important}
 </div>
 </div><!-- /pfRows -->
 
-<div class="pf-filter-wrap"><button class="pf-fnav pf-fnav-l" onclick="pfScroll(-1)" aria-label="‹">‹</button><div class="pf-filter hidden" id="pfFilter"><button class="filt" onclick="filt(this,'all')">Всі проекти</button>
+<div class="pf-filter-wrap"><button class="pf-fnav pf-fnav-l" onclick="pfScroll(-1)" aria-label="‹">‹</button><div class="pf-filter" id="pfFilter"><button class="filt" onclick="filt(this,'all')">Всі проекти</button>
 <button class="filt on" onclick="filt(this,'yachtrest')">Yacht Restaurant</button>
 <button class="filt" onclick="filt(this,'linden')">Linden Penthouse</button>
 <button class="filt" onclick="filt(this,'hoda')">Hoda Estate</button>
@@ -1693,20 +1693,14 @@ goProject=function(id){filtToProject(id);};
 function pfSetView(mode){
   var rows=document.getElementById('pfRows');
   var grid=document.querySelector('.pf-grid');
-  var filter=document.querySelector('.pf-filter');
-  var filterWrap=document.querySelector('.pf-filter-wrap');
   document.querySelectorAll('.pf-view-btn').forEach(b=>b.classList.remove('on'));
   var activeBtn=document.querySelector('.pf-view-btn[onclick*="'+mode+'"]');if(activeBtn)activeBtn.classList.add('on');
   if(mode==='rows'){
     rows.classList.add('active');
     if(grid)grid.classList.add('hidden');
-    if(filter)filter.classList.add('hidden');
-    if(filterWrap)filterWrap.style.display='none';
   } else {
     rows.classList.remove('active');
     if(grid)grid.classList.remove('hidden');
-    if(filter)filter.classList.remove('hidden');
-    if(filterWrap)filterWrap.style.display='';
   }
 }
 function filtToProject(id){
