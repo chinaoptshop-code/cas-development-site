@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CAS Shop — Меблі та декор з Китаю</title>
+<meta name="description" content="Прямий імпорт меблів, освітлення та декору з Китаю. Ціна виробника без посередників.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080709;--bg2:#0f0e11;--sf:#181620;--tx:#EDE8DF;--mu:#7a7470;--ac:#BF9148;--bd:rgba(237,232,223,.08);--D:'Cormorant Garamond',Georgia,serif;--M:'Plus Jakarta Sans','Helvetica Neue',sans-serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px}
+body{background:var(--bg);color:var(--tx);font-family:var(--M);overflow-x:hidden}
+@media(hover:none),(pointer:coarse){body{cursor:auto!important}}
+body::before{content:'';position:fixed;inset:0;opacity:.25;pointer-events:none;z-index:8000;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E")}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:22px 52px;background:rgba(8,7,9,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(237,232,223,.06)}
+.logo{font-family:var(--D);font-size:1.15rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--tx);text-decoration:none;cursor:pointer}
+.logo em{font-style:normal;color:var(--ac)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:var(--M);font-size:.68rem;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:color .25s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--ac);transition:width .3s}
+.nav-links a:hover{color:var(--tx)}.nav-links a:hover::after,.nav-links a.on::after{width:100%}
+.nav-links a.on{color:var(--tx)}
+.nav-r{display:flex;align-items:center;gap:18px}
+.nav-cart{position:relative;cursor:pointer;color:var(--mu);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;transition:color .3s;background:none;border:none;font-family:var(--M)}
+.nav-cart:hover{color:var(--ac)}
+.cart-badge{position:absolute;top:-6px;right:-8px;background:var(--ac);color:var(--bg);font-size:.45rem;font-weight:600;width:14px;height:14px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:1px;background:var(--tx);transition:all .3s}
+
+/* ── PREVIEW BANNER ── */
+.preview-banner{position:relative;z-index:10;background:rgba(191,145,72,.12);border-bottom:1px solid rgba(191,145,72,.25);padding:10px 52px;display:flex;align-items:center;justify-content:center;gap:16px;margin-top:65px}
+.preview-banner-dot{width:6px;height:6px;border-radius:50%;background:var(--ac);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.preview-banner p{font-family:var(--M);font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ac)}
+
+/* ── HERO ── */
+.sh-hero{padding:72px 52px 56px;position:relative;overflow:hidden;border-bottom:1px solid var(--bd)}
+.sh-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(191,145,72,.06) 0%,transparent 60%);pointer-events:none}
+.sh-ghost{position:absolute;font-family:var(--D);font-size:clamp(120px,18vw,240px);font-weight:300;color:rgba(237,232,223,.02);top:50%;right:-20px;transform:translateY(-50%);line-height:1;pointer-events:none;letter-spacing:-.02em}
+.sh-inner{position:relative;z-index:2;max-width:680px}
+.lbl{font-family:var(--M);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ac);display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.lbl::before{content:'';display:inline-block;width:24px;height:1px;background:var(--ac)}
+.sh-title{font-family:var(--D);font-size:clamp(42px,6vw,80px);font-weight:300;line-height:1.0;margin-bottom:24px}
+.sh-title em{font-style:italic;color:var(--ac)}
+.sh-desc{font-family:var(--M);font-size:.9rem;line-height:1.9;color:var(--mu);font-weight:300;max-width:460px;margin-bottom:36px}
+.sh-stats{display:flex;gap:36px;flex-wrap:wrap}
+.sh-stat-val{font-family:var(--D);font-size:2.2rem;font-weight:300;color:var(--tx);line-height:1}
+.sh-stat-label{font-family:var(--M);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);margin-top:4px}
+
+/* ── FILTERS ── */
+.shop-filters{padding:28px 52px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.shop-filters::-webkit-scrollbar{display:none}
+.sf-label{font-family:var(--M);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mu);margin-right:24px;white-space:nowrap;flex-shrink:0}
+.sf-btn{flex-shrink:0;font-family:var(--M);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);background:none;border:1px solid transparent;padding:8px 16px;cursor:pointer;transition:all .25s;white-space:nowrap}
+.sf-btn:hover{color:var(--tx);border-color:rgba(237,232,223,.15)}
+.sf-btn.on{color:var(--ac);border-color:rgba(191,145,72,.3);background:rgba(191,145,72,.06)}
+
+/* ── SORT / RESULTS BAR ── */
+.shop-bar{padding:16px 52px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd)}
+.shop-bar-count{font-family:var(--M);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mu)}
+.shop-bar-sort{font-family:var(--M);font-size:.65rem;letter-spacing:.15em;color:var(--mu);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:8px}
+.shop-bar-sort:hover{color:var(--tx)}
+
+/* ── PRODUCT GRID ── */
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);padding:0}
+.prod-card{background:var(--bg);cursor:pointer;position:relative;overflow:hidden;transition:background .3s}
+.prod-card:hover{background:var(--bg2)}
+.prod-img-wrap{aspect-ratio:1/.9;overflow:hidden;position:relative}
+.prod-img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block}
+.prod-card:hover .prod-img{transform:scale(1.04)}
+.prod-badge{position:absolute;top:12px;left:12px;font-family:var(--M);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;border-radius:1px}
+.badge-new{background:var(--ac);color:var(--bg)}
+.badge-sale{background:rgba(180,60,60,.85);color:#fff}
+.badge-hit{background:rgba(60,60,180,.75);color:#fff}
+.prod-fav{position:absolute;top:12px;right:12px;width:30px;height:30px;background:rgba(8,7,9,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;cursor:pointer;border:none;font-size:.8rem}
+.prod-card:hover .prod-fav{opacity:1}
+.prod-info{padding:18px 20px 20px}
+.prod-cat{font-family:var(--M);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mu);margin-bottom:6px}
+.prod-name{font-family:var(--D);font-size:1.15rem;font-weight:300;line-height:1.2;margin-bottom:10px;color:var(--tx)}
+.prod-price-row{display:flex;align-items:baseline;gap:10px}
+.prod-price{font-family:var(--D);font-size:1.5rem;font-weight:300;color:var(--ac)}
+.prod-price-old{font-family:var(--M);font-size:.7rem;color:var(--mu);text-decoration:line-through}
+.prod-origin{font-family:var(--M);font-size:.55rem;letter-spacing:.15em;color:var(--mu);margin-top:6px;display:flex;align-items:center;gap:6px}
+.prod-origin::before{content:'🇨🇳';font-size:.7rem}
+.prod-card-footer{padding:0 20px 18px;display:flex;align-items:center;justify-content:space-between}
+.prod-add{font-family:var(--M);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);background:none;border:1px solid rgba(237,232,223,.12);padding:8px 16px;cursor:pointer;transition:all .3s}
+.prod-add:hover{border-color:var(--ac);color:var(--ac)}
+.prod-moq{font-family:var(--M);font-size:.58rem;color:var(--mu)}
+
+/* ── COMING SOON OVERLAY ON SOME CARDS ── */
+.prod-soon{position:absolute;inset:0;background:rgba(8,7,9,.82);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;backdrop-filter:blur(2px)}
+.prod-soon-text{font-family:var(--D);font-size:1.2rem;font-weight:300;color:var(--tx);letter-spacing:.1em}
+.prod-soon-sub{font-family:var(--M);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu)}
+
+/* ── BENEFITS STRIP ── */
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bd);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);margin-top:1px}
+.benefit{background:var(--bg);padding:32px;text-align:center}
+.benefit-ico{font-size:1.6rem;margin-bottom:14px}
+.benefit-title{font-family:var(--D);font-size:1.05rem;font-weight:300;margin-bottom:6px}
+.benefit-sub{font-family:var(--M);font-size:.65rem;color:var(--mu);line-height:1.7}
+
+/* ── CATEGORIES FEATURE ── */
+.categories-sect{padding:72px 52px;border-top:1px solid var(--bd)}
+.sect-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px}
+.sect-title{font-family:var(--D);font-size:clamp(28px,3.5vw,44px);font-weight:300}
+.sect-title em{font-style:italic;color:var(--mu)}
+.sect-link{font-family:var(--M);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:color .25s}
+.sect-link:hover{color:var(--ac)}
+.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.cat-tile{position:relative;overflow:hidden;border-radius:1px;cursor:pointer;aspect-ratio:2/3}
+.cat-tile:first-child,.cat-tile:nth-child(2){grid-column:span 2;aspect-ratio:auto;height:260px}
+.cat-tile img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.cat-tile:hover img{transform:scale(1.06)}
+.cat-tile-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,7,9,.8) 0%,rgba(8,7,9,.15) 60%,transparent 100%)}
+.cat-tile-info{position:absolute;bottom:0;left:0;right:0;padding:14px 16px}
+.cat-tile-name{font-family:var(--D);font-size:1.1rem;font-weight:300;color:var(--tx);line-height:1.2}
+.cat-tile-count{font-family:var(--M);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);margin-top:3px}
+
+/* ── HOW IT WORKS ── */
+.how-sect{padding:72px 52px;background:var(--bg2);border-top:1px solid var(--bd)}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:48px}
+.how-step{position:relative;padding-left:20px;border-left:1px solid rgba(191,145,72,.3)}
+.how-num{font-family:var(--D);font-size:4rem;font-weight:300;color:rgba(191,145,72,.15);line-height:1;margin-bottom:8px}
+.how-title{font-family:var(--D);font-size:1.2rem;font-weight:300;margin-bottom:10px}
+.how-text{font-family:var(--M);font-size:.75rem;line-height:1.85;color:var(--mu)}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.fl{font-family:var(--D);font-size:1rem;letter-spacing:.1em;font-weight:300}
+.fc{font-family:var(--M);font-size:.67rem;color:var(--mu)}
+.fs{display:flex;gap:20px}
+.fs a{font-family:var(--M);font-size:.67rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:color .25s}
+.fs a:hover{color:var(--ac)}
+
+/* ── MOBILE ── */
+@media(max-width:767px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .preview-banner{padding:10px 20px;margin-top:57px}
+  .sh-hero{padding:40px 20px 40px}
+  .sh-ghost{display:none}
+  .sh-stats{gap:24px}
+  .shop-filters{padding:18px 20px}
+  .shop-bar{padding:12px 20px}
+  .shop-grid{grid-template-columns:repeat(2,1fr)}
+  .benefits{grid-template-columns:repeat(2,1fr)}
+  .categories-sect{padding:48px 20px}
+  .cat-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .cat-tile:first-child,.cat-tile:nth-child(2){grid-column:span 1;height:160px}
+  .how-sect{padding:48px 20px}
+  .how-grid{grid-template-columns:1fr 1fr;gap:24px}
+  footer{padding:24px 20px;flex-direction:column;text-align:center}
+  .prod-info{padding:12px 14px 14px}
+  .prod-card-footer{padding:0 14px 14px}
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div id="cr"></div><div id="crf"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="/"><span>CAS</span><em>.</em><span>DEVELOPMENT</span></a>
+  <ul class="nav-links">
+    <li><a href="/">Головна</a></li>
+    <li><a href="/services.html">Послуги</a></li>
+    <li><a href="/portfolio.html">Портфоліо</a></li>
+    <li><a href="/about.html">Про нас</a></li>
+    <li><a href="/shop.html" class="on">Магазин</a></li>
+    <li><a href="/contact.html">Контакти</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="nav-cart" onclick="alert('Кошик — незабаром')">
+      Кошик
+      <span class="cart-badge">0</span>
+    </button>
+    <div class="hamburger" onclick="toggleMobileNav(this)">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- PREVIEW BANNER -->
+<div class="preview-banner">
+  <div class="preview-banner-dot"></div>
+  <p>Превʼю сторінки — Магазин у розробці · Скоро відкриття</p>
+  <div class="preview-banner-dot"></div>
+</div>
+
+<!-- HERO -->
+<section class="sh-hero">
+  <div class="sh-hero-bg"></div>
+  <div class="sh-ghost">SHOP</div>
+  <div class="sh-inner">
+    <div class="lbl">Прямий імпорт</div>
+    <h1 class="sh-title">Меблі та декор<br><em>з Китаю напряму</em></h1>
+    <p class="sh-desc">Ціна виробника без посередників. Меблі, освітлення, декор та матеріали — те саме, що CAS Development використовує у своїх проєктах.</p>
+    <div class="sh-stats">
+      <div>
+        <div class="sh-stat-val">−40%</div>
+        <div class="sh-stat-label">нижче ніж у магазинах</div>
+      </div>
+      <div>
+        <div class="sh-stat-val">500+</div>
+        <div class="sh-stat-label">позицій у каталозі</div>
+      </div>
+      <div>
+        <div class="sh-stat-val">14</div>
+        <div class="sh-stat-label">реалізованих проєктів</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="shop-filters">
+  <span class="sf-label">Категорія:</span>
+  <button class="sf-btn on" onclick="setFilter(this,'all')">Всі</button>
+  <button class="sf-btn" onclick="setFilter(this,'furniture')">Меблі</button>
+  <button class="sf-btn" onclick="setFilter(this,'lighting')">Освітлення</button>
+  <button class="sf-btn" onclick="setFilter(this,'decor')">Декор</button>
+  <button class="sf-btn" onclick="setFilter(this,'textile')">Текстиль</button>
+  <button class="sf-btn" onclick="setFilter(this,'materials')">Матеріали</button>
+  <button class="sf-btn" onclick="setFilter(this,'outdoor')">Аутдор</button>
+  <button class="sf-btn" onclick="setFilter(this,'tech')">Технічне</button>
+</div>
+
+<!-- BAR -->
+<div class="shop-bar">
+  <span class="shop-bar-count">Показано 12 з 500+ товарів</span>
+  <button class="shop-bar-sort">Сортування: Популярне ↕</button>
+</div>
+
+<!-- PRODUCT GRID -->
+<div class="shop-grid">
+
+  <!-- Product 1 -->
+  <div class="prod-card">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://drive.google.com/thumbnail?id=1FRa0FI6iMHK5LRb4c5yK24HG4CuW87vF&sz=w600" alt="Диван модульний">
+      <span class="prod-badge badge-hit">Хіт</span>
+      <button class="prod-fav">♡</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-cat">Меблі · Дивани</div>
+      <div class="prod-name">Диван модульний Loft Series L-300</div>
+      <div class="prod-price-row">
+        <span class="prod-price">$1 240</span>
+        <span class="prod-price-old">$2 100</span>
+      </div>
+      <div class="prod-origin">Пряме виробництво · Фошань</div>
+    </div>
+    <div class="prod-card-footer">
+      <button class="prod-add">Замовити</button>
+      <span class="prod-moq">від 1 шт</span>
+    </div>
+  </div>
+
+  <!-- Product 2 -->
+  <div class="prod-card">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://drive.google.com/thumbnail?id=1Grj8_m7MJwsbEgb4penV26Ya8xZVe-vT&sz=w600" alt="Підвісний світильник">
+      <span class="prod-badge badge-new">Новинка</span>
+      <button class="prod-fav">♡</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-cat">Освітлення · Підвісні</div>
+      <div class="prod-name">Люстра Arc Minimal ∅60cm</div>
+      <div class="prod-price-row">
+        <span class="prod-price">$340</span>
+      </div>
+      <div class="prod-origin">Пряме виробництво · Чжуншань</div>
+    </div>
+    <div class="prod-card-footer">
+      <button class="prod-add">Замовити</button>
+      <span class="prod-moq">від 1 шт</span>
+    </div>
+  </div>
+
+  <!-- Product 3 -->
+  <div class="prod-card">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://drive.google.com/thumbnail?id=1iGcqtsUqLNWbBnvyOap4oiIV-8_o53dZ&sz=w600" alt="Стіл обідній">
+      <button class="prod-fav">♡</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-cat">Меблі · Столи</div>
+      <div class="prod-name">Стіл обідній marble top 2000×900</div>
+      <div class="prod-price-row">
+        <span class="prod-price">$890</span>
+        <span class="prod-price-old">$1 400</span>
+      </div>
+      <div class="prod-origin">Пряме виробництво · Шанхай</div>
+    </div>
+    <div class="prod-card-footer">
+      <button class="prod-add">Замовити</button>
+      <span class="prod-moq">від 1 шт</span>
+    </div>
+  </div>
+
+  <!-- Product 4 -->
+  <div class="prod-card">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://drive.google.com/thumbnail?id=1NVeaQcV2TZSN5pN8iBtzm4xyCAFfQzOE&sz=w600" alt="Крісло">
+      <span class="prod-badge badge-sale">−35%</span>
+      <button class="prod-fav">♡</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-cat">Меблі · Крісла</div>
+      <div class="prod-name">Крісло Wabi-sabi Lounge Chair</div>
+      <div class="prod-price-row">
+        <span class="prod-price">$420</span>
+        <span class="prod-price-old">$650</span>
+      </div>
+      <div class="prod-origin">Пряме виробництво · Фошань</div>
+    </div>
+    <div class="prod-card-footer">
+      <button class="prod-add">Замовити</button>
+      <span class="prod-moq">від 2 шт</span>
+    </div>
+  </div>
+
+  <!-- Product 5 -->
+  <div class="prod-card">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://drive.google.com/thumbnail?id=1DL1BY7Tg6L5B5yx8jajhRRHDBUaSnW3P&sz=w600" alt="Декор">
+      <button class="prod-fav">♡</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-cat">Декор · Вази</div>
+      <div class="prod-name">Набір ваз Ceramic Wabi Set (3 шт)</div>
+      <div class="prod-price-row">
+        <span class="prod-price">$185</span>
+      </div>
+      <div class="prod-origin">Пряме виробництво · Цзіндечжень</div>
+    </div>
+    <div class="prod-card-footer">
+      <button class="prod-add">Замовити</button>
+      <span class="prod-moq">від 1 набору</span>
+    </div>
+  </div>
+
+  <!-- Product 6 — Coming Soon -->
+  <div class="prod-card" style="pointer-events:none">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://drive.google.com/thumbnail?id=1_0wYN-6Q8LZFXSH01vJWqz6iYJ8b9hgU&sz=w600" alt="">
+      <div class="prod-soon">
+        <div class="prod-soon-text">Незабаром</div>
+        <div class="prod-soon-sub">Текстиль · 48 позицій</div>
+      </div>
+    </div>
+    <div class="prod-info">
+      <div class="prod-cat">Текстиль</div>
+      <div class="prod-name">Постільна білизна Satin Stripe</div>
+      <div class="prod-price-row"><span class="prod-price">—</span></div>
+    </div>
+    <div class="prod-card-footer">
+      <button class="prod-add" style="opacity:.4">Незабаром</button>
+    </div>
+  </div>
+
+  <!-- Product 7 -->
+  <div class="prod-card">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://drive.google.com/thumbnail?id=1FiLI9kKE-C87h9pptaRdoA9xA41Cwg6v&sz=w600" alt="Підлогова лампа">
+      <span class="prod-badge badge-hit">Хіт</span>
+      <button class="prod-fav">♡</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-cat">Освітлення · Підлогові</div>
+      <div class="prod-name">Торшер Arc Floor Lamp H180</div>
+      <div class="prod-price-row">
+        <span class="prod-price">$280</span>
+        <span class="prod-price-old">$410</span>
+      </div>
+      <div class="prod-origin">Пряме виробництво · Чжуншань</div>
+    </div>
+    <div class="prod-card-footer">
+      <button class="prod-add">Замовити</button>
+      <span class="prod-moq">від 1 шт</span>
+    </div>
+  </div>
+
+  <!-- Product 8 -->
+  <div class="prod-card">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://drive.google.com/thumbnail?id=1MslU7S5X8gIEpV6hE-s2ZHmJJRKOY7pv&sz=w600" alt="Комод">
+      <button class="prod-fav">♡</button>
+    </div>
+    <div class="prod-info">
+      <div class="prod-cat">Меблі · Корпусні</div>
+      <div class="prod-name">Комод Solid Oak 6-Drawer</div>
+      <div class="prod-price-row">
+        <span class="prod-price">$760</span>
+      </div>
+      <div class="prod-origin">Пряме виробництво · Ухань</div>
+    </div>
+    <div class="prod-card-footer">
+      <button class="prod-add">Замовити</button>
+      <span class="prod-moq">від 1 шт</span>
+    </div>
+  </div>
+
+  <!-- Product 9 — Coming Soon -->
+  <div class="prod-card" style="pointer-events:none">
+    <div class="prod-img-wrap">
+      <img class="prod-img" src="https://drive.google.com/thumbnail?id=18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ&sz=w600" alt="">
+      <div class="prod-soon">
+        <div class="prod-soon-text">Незабаром</div>
+        <div class="prod-soon-sub">Матеріали · 120 позицій</div>
+      </div>
+    </div>
+    <div class="prod-info">
+      <div class="prod-cat">Матеріали</div>
+      <div class="prod-name">Мікроцемент, плитка, шпалери</div>
+      <div class="prod-price-row"><span class="prod-price">—</span></div>
+    </div>
+    <div class="prod-card-footer">
+      <button class="prod-add" style="opacity:.4">Незабаром</button>
+    </div>
+  </div>
+
+</div><!-- /shop-grid -->
+
+<!-- BENEFITS -->
+<div class="benefits">
+  <div class="benefit">
+    <div class="benefit-ico">🏭</div>
+    <div class="benefit-title">Пряме виробництво</div>
+    <div class="benefit-sub">Без посередників. Ви платите ціну фабрики.</div>
+  </div>
+  <div class="benefit">
+    <div class="benefit-ico">🚢</div>
+    <div class="benefit-title">Доставка під ключ</div>
+    <div class="benefit-sub">Від фабрики до вашої адреси. Митне оформлення включено.</div>
+  </div>
+  <div class="benefit">
+    <div class="benefit-ico">🛡️</div>
+    <div class="benefit-title">Гарантія якості</div>
+    <div class="benefit-sub">Всі товари перевірені командою CAS Development на об'єктах.</div>
+  </div>
+  <div class="benefit">
+    <div class="benefit-ico">🎨</div>
+    <div class="benefit-title">Кастомізація</div>
+    <div class="benefit-sub">Колір, розмір, матеріал — під ваш дизайн-проєкт.</div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories-sect">
+  <div class="sect-head">
+    <h2 class="sect-title">Популярні<br><em>категорії</em></h2>
+    <a href="#" class="sect-link">Весь каталог →</a>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-tile" onclick="setFilterByName('furniture')">
+      <img src="https://drive.google.com/thumbnail?id=1Grj8_m7MJwsbEgb4penV26Ya8xZVe-vT&sz=w600" alt="Меблі">
+      <div class="cat-tile-ov"></div>
+      <div class="cat-tile-info">
+        <div class="cat-tile-name">Меблі</div>
+        <div class="cat-tile-count">180+ позицій</div>
+      </div>
+    </div>
+    <div class="cat-tile" onclick="setFilterByName('lighting')">
+      <img src="https://drive.google.com/thumbnail?id=1iGcqtsUqLNWbBnvyOap4oiIV-8_o53dZ&sz=w600" alt="Освітлення">
+      <div class="cat-tile-ov"></div>
+      <div class="cat-tile-info">
+        <div class="cat-tile-name">Освітлення</div>
+        <div class="cat-tile-count">90+ позицій</div>
+      </div>
+    </div>
+    <div class="cat-tile" onclick="setFilterByName('decor')">
+      <img src="https://drive.google.com/thumbnail?id=1NVeaQcV2TZSN5pN8iBtzm4xyCAFfQzOE&sz=w600" alt="Декор">
+      <div class="cat-tile-ov"></div>
+      <div class="cat-tile-info">
+        <div class="cat-tile-name">Декор</div>
+        <div class="cat-tile-count">120+ позицій</div>
+      </div>
+    </div>
+    <div class="cat-tile" onclick="setFilterByName('textile')">
+      <img src="https://drive.google.com/thumbnail?id=1FiLI9kKE-C87h9pptaRdoA9xA41Cwg6v&sz=w600" alt="Текстиль">
+      <div class="cat-tile-ov"></div>
+      <div class="cat-tile-info">
+        <div class="cat-tile-name">Текстиль</div>
+        <div class="cat-tile-count">48+ позицій</div>
+      </div>
+    </div>
+    <div class="cat-tile" onclick="setFilterByName('materials')">
+      <img src="https://drive.google.com/thumbnail?id=1DL1BY7Tg6L5B5yx8jajhRRHDBUaSnW3P&sz=w600" alt="Матеріали">
+      <div class="cat-tile-ov"></div>
+      <div class="cat-tile-info">
+        <div class="cat-tile-name">Матеріали</div>
+        <div class="cat-tile-count">120+ позицій</div>
+      </div>
+    </div>
+    <div class="cat-tile" onclick="setFilterByName('outdoor')">
+      <img src="https://drive.google.com/thumbnail?id=1FRa0FI6iMHK5LRb4c5yK24HG4CuW87vF&sz=w600" alt="Аутдор">
+      <div class="cat-tile-ov"></div>
+      <div class="cat-tile-info">
+        <div class="cat-tile-name">Аутдор</div>
+        <div class="cat-tile-count">60+ позицій</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-sect">
+  <div class="lbl">Як це працює</div>
+  <h2 style="font-family:var(--D);font-size:clamp(28px,3.5vw,44px);font-weight:300">Від вибору до <em style="font-style:italic;color:var(--mu)">доставки</em></h2>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="how-num">01</div>
+      <div class="how-title">Оберіть товар</div>
+      <div class="how-text">Каталог сформований з реальних постачальників, яких ми використовуємо у своїх проєктах.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">02</div>
+      <div class="how-title">Консультація</div>
+      <div class="how-text">Наш менеджер уточнить деталі: колір, розмір, кількість, терміни та вартість доставки.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">03</div>
+      <div class="how-title">Оплата та замовлення</div>
+      <div class="how-text">50% передоплата. Виробництво 20–45 днів. Фото контроль якості перед відправкою.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">04</div>
+      <div class="how-title">Доставка</div>
+      <div class="how-text">Морський або авіа фрахт. Митне оформлення. Доставка до адреси по Україні.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fl">CAS<span style="color:var(--ac)">.</span>Development</div>
+  <div class="fc">© 2025 CAS Development. Всі права захищено.</div>
+  <div class="fs">
+    <a href="/portfolio.html">Портфоліо</a>
+    <a href="/contact.html">Контакти</a>
+    <a href="https://instagram.com/cas_development" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<script>
+// Filter
+function setFilter(btn, cat){
+  document.querySelectorAll('.sf-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  window.scrollTo({top:document.querySelector('.shop-grid').offsetTop - 120, behavior:'smooth'});
+}
+function setFilterByName(cat){
+  var btn = document.querySelector('.sf-btn[onclick*="'+cat+'"]');
+  if(btn) setFilter(btn, cat);
+}
+
+// Mobile nav
+function toggleMobileNav(el){
+  var links = document.querySelector('.nav-links');
+  var open = links.style.display === 'flex';
+  links.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:absolute;top:57px;left:0;right:0;background:rgba(8,7,9,.98);padding:20px;gap:16px;border-bottom:1px solid rgba(237,232,223,.08)';
+  el.querySelectorAll('span')[0].style.transform = open ? '' : 'rotate(45deg) translate(4px,4px)';
+  el.querySelectorAll('span')[1].style.opacity = open ? '' : '0';
+  el.querySelectorAll('span')[2].style.transform = open ? '' : 'rotate(-45deg) translate(4px,-4px)';
+}
+
+// Cursor
+var cr=document.getElementById('cr'),crf=document.getElementById('crf');
+if(cr&&window.matchMedia('(hover:hover)').matches){
+  document.addEventListener('mousemove',function(e){cr.style.left=e.clientX+'px';cr.style.top=e.clientY+'px';crf.style.left=e.clientX+'px';crf.style.top=e.clientY+'px'});
+}
+</script>
+</body>
+</html>
