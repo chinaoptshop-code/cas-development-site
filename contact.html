@@ -44,7 +44,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .ph-title{font-family:var(--D);font-size:clamp(34px,4.5vw,58px);font-weight:300;line-height:1.05;margin-bottom:38px}
 .ph-title em{font-style:italic;color:var(--mu)}
 .ph-num{position:absolute;top:78px;right:48px;font-family:var(--D);font-size:9rem;font-weight:300;color:rgba(237,232,223,.025);line-height:1;pointer-events:none}
-.sbg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.2;filter:saturate(.7);z-index:0}
+.sbg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.5;filter:saturate(.85) brightness(.55);z-index:0}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border:1px solid var(--ac);color:var(--ac);font-family:var(--M);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;background:transparent;transition:all .3s;position:relative;overflow:hidden}
 .btn::before{content:'';position:absolute;inset:0;background:var(--ac);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
 .btn:hover{color:var(--bg)}.btn:hover::before{transform:scaleX(1)}
@@ -196,8 +196,8 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 .geo-desc{font-family:var(--M);font-size:.76rem;color:var(--mu);line-height:1.64}
 /* ─── CONTACT ─── */
 
-.ci{padding:56px 52px 56px 0;border-right:1px solid var(--bd);position:relative;overflow:hidden}
-.ci-bg{position:absolute;bottom:0;right:0;width:60%;height:72%;object-fit:cover;opacity:.18;filter:saturate(.6);z-index:0;border-radius:2px}
+.ci{background:linear-gradient(135deg,rgba(8,7,9,.92) 0%,rgba(15,14,17,.75) 60%,rgba(8,7,9,.5) 100%);padding:56px 52px 56px 0;border-right:1px solid var(--bd);position:relative;overflow:hidden}
+.ci-bg{position:absolute;bottom:0;right:0;width:65%;height:80%;object-fit:cover;opacity:.35;filter:saturate(.9) brightness(.7);z-index:0;border-radius:2px}
 .ci-in{position:relative;z-index:1}
 .cf{padding:56px 0 56px 52px;position:relative;z-index:1}
 .ci-t{font-family:var(--D);font-size:1.9rem;font-weight:300;margin-bottom:12px}
@@ -685,7 +685,7 @@ body.light .map-grat{display:none!important}
 <!-- HOME -->
 <main>
 <div id="p-contact">
-  <section class="ph"><img class="sbg" src="https://drive.google.com/thumbnail?id=183DWyhu0rYayX8cgaSttNpM6KzswsNci&sz=w1400" loading="lazy" alt=""><div class="ph-inner"><div class="lbl" data-i18n="ct_label">Зв'язатися</div><h1 class="ph-title" id="ct-pg-title">Розпочнемо <em>разом</em></h1></div><span class="ph-num">05</span></section>
+  <section class="ph"><img class="sbg" src="https://drive.google.com/thumbnail?id=1FRa0FI6iMHK5LRb4c5yK24HG4CuW87vF&sz=w1400" loading="lazy" alt=""><div class="ph-inner"><div class="lbl" data-i18n="ct_label">Зв'язатися</div><h1 class="ph-title" id="ct-pg-title">Розпочнемо <em>разом</em></h1></div><span class="ph-num">05</span></section>
 
   <!-- CONTACT LAYOUT -->
   <div class="mob-contacts">

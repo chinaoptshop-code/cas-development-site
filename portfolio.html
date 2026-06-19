@@ -559,6 +559,8 @@ body.light .map-grat{display:none!important}
 .proj-row-btn{font-family:var(--M);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);background:none;border:1px solid rgba(191,145,72,.35);padding:5px 12px;cursor:pointer;transition:all .2s}
 .proj-row-btn:hover{background:var(--ac);color:#000}
 .proj-row-scroll{display:flex;gap:4px;overflow-x:auto;padding:4px 52px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.prs-inner{display:flex;gap:4px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex:1;min-width:0}
+.prs-inner::-webkit-scrollbar{display:none}
 .proj-row-scroll::-webkit-scrollbar{display:none}
 .proj-row-thumb{flex:0 0 180px;height:140px;overflow:hidden;position:relative;cursor:pointer;scroll-snap-align:start;background:var(--sf)}
 .proj-row-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s,filter .3s;filter:saturate(.55) brightness(.75)}
@@ -2844,6 +2846,10 @@ filtAndPhoto=function(projId,idx){
   if(document.querySelector('.pf-rows.active')){plbOpen(projId,idx);}
   else{filtToProject(projId);setTimeout(function(){var ph=document.querySelectorAll('.pi[data-c="'+projId+'"] .pi-photo');if(ph[idx])lbOpen(ph[idx]);},120);}
 };
+
+/* Scroll functions for new proj-rows with prs-inner */
+function prvPrs(btn){var inner=btn.nextElementSibling;if(inner)inner.scrollBy({left:-inner.offsetWidth*.8,behavior:'smooth'});}
+function nxtPrs(btn){var inner=btn.previousElementSibling;if(inner)inner.scrollBy({left:inner.offsetWidth*.8,behavior:'smooth'});}
 </script>
 
 </body>
