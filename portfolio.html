@@ -153,7 +153,7 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 .pf-filter{padding:0 12px;display:flex;gap:0;border-bottom:1px solid var(--bd);margin-bottom:48px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-behavior:smooth}
 .pf-filter::-webkit-scrollbar{display:none}
 .filt{padding:14px 20px;background:none;border:none;font-family:var(--M);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;transition:all .25s;flex-shrink:0}
-.filt:hover,.filt.on{color:var(--tx);border-bottom-color:var(--ac)}
+.filt:hover,.filt.on,.filt.active{color:var(--tx);border-bottom-color:var(--ac)}
 .pf-grid{padding:0 52px 60px;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:280px;gap:6px}
 
 
@@ -1464,7 +1464,7 @@ body.light .map-grat{display:none!important}
   <div class="proj-row-scroll-wrap">
     <button class="prs-nav prs-prev" onclick="prvPrs(this)" aria-label="‹">‹</button>
     <div class="prs-inner">
-<div class="proj-row-thumb" onclick="rowLbOpen('smartvilla',0)" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1z17FDlnHBsUPEk1m4jyLexOoIPb1OUEn&sz=w400" loading="lazy" alt=""></div>
+
 <div class="proj-row-thumb" onclick="rowLbOpen('smartvilla',1)" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1kHF6cjS291puft0k-Qs5F22EjKYEruQL&sz=w400" loading="lazy" alt=""></div>
 <div class="proj-row-thumb" onclick="rowLbOpen('smartvilla',2)" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1C16Cd6bvENPGLrLhs2QAKAqVAA-Q4QrX&sz=w400" loading="lazy" alt=""></div>
 <div class="proj-row-thumb" onclick="rowLbOpen('smartvilla',3)" style="cursor:pointer"><img src="https://drive.google.com/thumbnail?id=1ssG4DP62XXdPpXSFWIaQP2QBWla_dfdW&sz=w400" loading="lazy" alt=""></div>
@@ -2255,7 +2255,6 @@ body.light .map-grat{display:none!important}
 <div class="pi" data-c="yablu" onclick="lbOpen(this.querySelector(\'.pi-photo\'))"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1qpeuEP8q2xNHWfLxSy9hmiDLpCvUVuvP&sz=w900" alt="Yablu"><div class="pi-ov"><p class="pi-title">Yablu</p><p class="pi-type">Yablu Rest</p></div></div>
 <div class="pi" data-c="yablu" onclick="lbOpen(this.querySelector(\'.pi-photo\'))"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1PYQ1NiQoorPDkjlz3maoWBGuXs2_vs5B&sz=w900" alt="Yablu"><div class="pi-ov"><p class="pi-title">Yablu</p><p class="pi-type">Yablu Rest</p></div></div>
 <div class="pi" data-c="yablu" onclick="lbOpen(this.querySelector(\'.pi-photo\'))"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1jjk3ERcqKTGqZ_3lhCgXXPVvag1bB4JI&sz=w900" alt="Yablu"><div class="pi-ov"><p class="pi-title">Yablu</p><p class="pi-type">Yablu Rest</p></div></div>
-<div class="pi" data-c="smartvilla" onclick="lbOpen(this.querySelector('.pi-photo'))"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1z17FDlnHBsUPEk1m4jyLexOoIPb1OUEn&sz=w900" alt=""><div class="pi-ov" style="pointer-events:none"></div></div>
 <div class="pi" data-c="smartvilla" onclick="lbOpen(this.querySelector('.pi-photo'))"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1kHF6cjS291puft0k-Qs5F22EjKYEruQL&sz=w900" alt=""><div class="pi-ov" style="pointer-events:none"></div></div>
 <div class="pi" data-c="smartvilla" onclick="lbOpen(this.querySelector('.pi-photo'))"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1C16Cd6bvENPGLrLhs2QAKAqVAA-Q4QrX&sz=w900" alt=""><div class="pi-ov" style="pointer-events:none"></div></div>
 <div class="pi" data-c="smartvilla" onclick="lbOpen(this.querySelector('.pi-photo'))"><img class="pi-photo" src="https://drive.google.com/thumbnail?id=1ssG4DP62XXdPpXSFWIaQP2QBWla_dfdW&sz=w900" alt=""><div class="pi-ov" style="pointer-events:none"></div></div>
