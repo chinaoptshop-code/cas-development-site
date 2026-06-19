@@ -604,6 +604,31 @@ body.light .map-grat{display:none!important}
 .reveal.reveal-in{opacity:1;transform:none}
 .proj-cover{transition:transform .25s ease}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none}}
+
+/* Hero CTA pulse + quick form */
+@keyframes heroPulse{0%,100%{box-shadow:0 0 0 0 rgba(191,145,72,.5)}60%{box-shadow:0 0 0 14px rgba(191,145,72,0)}}
+.btn-pulse{animation:heroPulse 2.2s ease-in-out infinite}
+#quickForm{position:absolute;top:0;right:0;bottom:0;width:360px;background:rgba(8,7,9,.92);backdrop-filter:blur(16px);border-left:1px solid rgba(191,145,72,.15);display:flex;flex-direction:column;justify-content:center;padding:48px 40px;transform:translateX(100%);transition:transform .5s cubic-bezier(.22,.68,0,1.2);z-index:50}
+#quickForm.visible{transform:translateX(0)}
+.qf-title{font-family:var(--D);font-size:1.5rem;font-weight:300;margin-bottom:6px;color:var(--tx)}
+.qf-sub{font-family:var(--M);font-size:.65rem;color:var(--mu);letter-spacing:.12em;margin-bottom:32px}
+.qf-field{margin-bottom:16px}
+.qf-field label{display:block;font-family:var(--M);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
+.qf-field input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(237,232,223,.12);color:var(--tx);font-family:var(--M);font-size:.85rem;padding:12px 16px;outline:none;transition:border-color .25s}
+.qf-field input:focus{border-color:rgba(191,145,72,.5)}
+.qf-field input::placeholder{color:var(--mu)}
+.qf-btn{width:100%;margin-top:24px;padding:14px;background:var(--ac);color:#080709;font-family:var(--M);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .2s}
+.qf-btn:hover{opacity:.85}
+.qf-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--mu);font-size:1.2rem;cursor:pointer;line-height:1;padding:4px}
+.qf-close:hover{color:var(--tx)}
+.qf-ok{display:none;text-align:center;padding:20px 0}
+.qf-ok-ico{font-size:2rem;margin-bottom:12px}
+.qf-ok-txt{font-family:var(--D);font-size:1.2rem;font-weight:300;color:var(--ac)}
+@media(max-width:767px){
+  #quickForm{width:100%;top:auto;bottom:0;left:0;right:0;border-left:none;border-top:1px solid rgba(191,145,72,.15);transform:translateY(100%);padding:32px 24px;border-radius:16px 16px 0 0}
+  #quickForm.visible{transform:translateY(0)}
+}
+
 </style>
 </head>
 <body>
@@ -619,12 +644,11 @@ body.light .map-grat{display:none!important}
 <nav>
   <a class="logo" href="/" style="text-decoration:none">CAS<em>.</em>Development</a>
   <ul class="nav-links">
-    <li><a id="n-home" href="/" data-i18n="nav_home" class="on">Головна</a></li>
     <li><a id="n-services" href="/services.html" data-i18n="nav_services">Послуги</a></li>
     <li><a id="n-portfolio" href="/portfolio.html" data-i18n="nav_portfolio">Портфоліо</a></li>
     <li><a id="n-about" href="/about.html" data-i18n="nav_about">Про нас</a></li>
+    <li><a href="/shop.html" id="n-shop">Продукти</a></li>
     <li><a id="n-contact" href="/contact.html" data-i18n="nav_contacts">Контакти</a></li>
-    <li><a href="/shop.html" id="n-shop">Магазин</a></li>
   </ul>
   <div class="lang-sw">
     <button class="lang-cycle" id="langCycle" onclick="cycleLang()">UA</button>
@@ -635,12 +659,11 @@ body.light .map-grat{display:none!important}
 <div class="nsb" id="nsb">
   <div class="nsb-head"><span class="nsb-logo">CAS DEVELOPMENT</span><button class="nsb-close" onclick="closeNav()">✕</button></div>
   <nav class="nsb-nav">
-    <a id="nsn-home" href="/" onclick="closeNav()">Головна</a>
     <a id="nsn-sv" href="/services.html" onclick="closeNav()">Послуги</a>
     <a id="nsn-pf" href="/portfolio.html" onclick="closeNav()">Портфоліо</a>
     <a id="nsn-ab" href="/about.html" onclick="closeNav()">Про нас</a>
+    <a href="/shop.html" onclick="closeNav()">Продукти</a>
     <a id="nsn-ct" href="/contact.html" onclick="closeNav()">Контакти</a>
-    <a href="/shop.html" onclick="closeNav()">Магазин</a>
   </nav>
   <div style="margin-top:auto;padding-top:24px">
     <button id="nsbLang" onclick="cycleLang()" style="background:none;border:1px solid var(--bd);color:var(--ac);font-family:var(--M);font-size:.62rem;letter-spacing:.18em;padding:6px 16px;cursor:pointer">UA</button>
@@ -661,7 +684,7 @@ body.light .map-grat{display:none!important}
       <div class="hrow">
         <p class="hdesc au d3" id="hero-desc">Перетворюємо порожні кімнати на живі простори — через дизайн, деталь та діалог з кожним клієнтом.</p>
         <div class="hbtns au d4">
-          <button class="btn" onclick="window.location.href='/contact.html'"><span id="h-btn-p">Розпочати проєкт</span><span>→</span></button>
+          <button class="btn btn-pulse" id="heroCta" onclick="openQuickForm()"><span id="h-btn-p">Розпочати проєкт</span><span>→</span></button>
           <button class="btn btn-g" onclick="window.location.href='/portfolio.html'"><span id="h-btn-s">Переглянути роботи</span><span>→</span></button>
         </div>
       </div>
@@ -672,7 +695,29 @@ body.light .map-grat{display:none!important}
         <div><div class="sn">$40<em>/м²</em></div><div class="sl" id="sl4">Дизайн від</div></div>
       </div>
     </div>
-  </section>
+  
+<div id="quickForm">
+  <button class="qf-close" onclick="closeQuickForm()">✕</button>
+  <div id="qfContent">
+    <div class="qf-title">Розпочнемо проєкт</div>
+    <div class="qf-sub">Безкоштовна консультація · 30 хвилин</div>
+    <div class="qf-field">
+      <label>Ваше ім'я</label>
+      <input id="qf-name" type="text" placeholder="Ім'я" autocomplete="name">
+    </div>
+    <div class="qf-field">
+      <label>Телефон / Telegram</label>
+      <input id="qf-phone" type="tel" placeholder="+380 __ ___ ____" autocomplete="tel">
+    </div>
+    <button class="qf-btn" onclick="submitQuickForm()">Надіслати заявку →</button>
+  </div>
+  <div class="qf-ok" id="qfOk">
+    <div class="qf-ok-ico">✓</div>
+    <div class="qf-ok-txt">Заявку отримано!</div>
+    <div style="font-family:var(--M);font-size:.7rem;color:var(--mu);margin-top:8px">Ми зв'яжемося з вами<br>впродовж 24 годин</div>
+  </div>
+</div>
+</section>
   <div class="strip-wrap">
 <button class="strip-nav strip-nav-l" onclick="stripScroll(-1)" aria-label="← попереднє">‹</button>
 <div class="strip" id="photoStrip" style="height:280px"><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=18ej1fH-11uoyrpMtkvpu6dQkXO9CuAJJ&sz=w800" loading="lazy" alt="Yacht Restaurant"><span class="slab">Yacht Restaurant</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1OGn3TXnLkQenE_1aPE7Tj1P2JhCrwLfT&sz=w800" loading="lazy" alt="Yacht Restaurant"><span class="slab">Yacht Restaurant</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=18W9L5_nV9nd-78YHi3e4dwoqWSRo5nug&sz=w800" loading="lazy" alt="Yacht Restaurant"><span class="slab">Yacht Restaurant</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1lovunAyUeQX5c-vvGLHNfjkbdKpnK7JJ&sz=w800" loading="lazy" alt="Yacht Restaurant"><span class="slab">Yacht Restaurant</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1AaaZgBHrlYHcwE1YeBpifDZZ7j-1N8v8&sz=w800" loading="lazy" alt="Yacht Restaurant"><span class="slab">Yacht Restaurant</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1BO7v9EOodBP_TPXcCUGZ-fPnis6Siomg&sz=w800" loading="lazy" alt="Yacht Restaurant"><span class="slab">Yacht Restaurant</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1MslU7S5X8gIEpV6hE-s2ZHmJJRKOY7pv&sz=w800" loading="lazy" alt="Linden Penthouse"><span class="slab">Linden Penthouse</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1YQyhjEui9fb6voFTdknZ5LwVF_g3FuHc&sz=w800" loading="lazy" alt="Linden Penthouse"><span class="slab">Linden Penthouse</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1b9YTkSJVqBhw-xw0lUxu-0_qQ2UqSmBG&sz=w800" loading="lazy" alt="Linden Penthouse"><span class="slab">Linden Penthouse</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1x1AqXqQMEpCTaZHBfkhwcUBRT9jAu43Q&sz=w800" loading="lazy" alt="Linden Penthouse"><span class="slab">Linden Penthouse</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1lE1pxDZXpKRFjbrlrIi4MQW4Sv116ozD&sz=w800" loading="lazy" alt="Linden Penthouse"><span class="slab">Linden Penthouse</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1FRa0FI6iMHK5LRb4c5yK24HG4CuW87vF&sz=w800" loading="lazy" alt="Hoda Estate"><span class="slab">Hoda Estate</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1f3m1_qf4mDosh8OGxw-lgIiCWLrK-GVL&sz=w800" loading="lazy" alt="Hoda Estate"><span class="slab">Hoda Estate</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1HZT-E30rREI7do3BkhUqUgYEsardbivb&sz=w800" loading="lazy" alt="Hoda Estate"><span class="slab">Hoda Estate</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1iyezgpYu1pVWyFKyYG2ar--bwzwANZqS&sz=w800" loading="lazy" alt="Hoda Estate"><span class="slab">Hoda Estate</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1m9fVTTPjd6nQsXO9WbLkxylog7u3gXYq&sz=w800" loading="lazy" alt="Hoda Estate"><span class="slab">Hoda Estate</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1NVeaQcV2TZSN5pN8iBtzm4xyCAFfQzOE&sz=w800" loading="lazy" alt="Petrivtsi House"><span class="slab">Petrivtsi House</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1OR5i7-rm1k0MUNvrcF4-9TRkwLNT4cU2&sz=w800" loading="lazy" alt="Petrivtsi House"><span class="slab">Petrivtsi House</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1Xdje8N1V14_0XPhslcDU08OJSoUHpbxf&sz=w800" loading="lazy" alt="Petrivtsi House"><span class="slab">Petrivtsi House</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1szuqdURge8MMsVttCwp8DBc7jg0-isde&sz=w800" loading="lazy" alt="Petrivtsi House"><span class="slab">Petrivtsi House</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1jOeC33fekBMwGkZ_Z0KUHP9GfBh8eqZc&sz=w800" loading="lazy" alt="Petrivtsi House"><span class="slab">Petrivtsi House</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=18V9n96tOhjKjhv89z890vR0tQHRdODip&sz=w800" loading="lazy" alt="USA House"><span class="slab">USA House</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1pYk5KBK_ne5DjGs0nVsqE1byD5Z9OVcg&sz=w800" loading="lazy" alt="USA House"><span class="slab">USA House</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1vWmbYVTmViGgW9QJFrsKMWTd_z21Goh6&sz=w800" loading="lazy" alt="USA House"><span class="slab">USA House</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1JuZ-lq-D6YudJ7gUgiZUDDOHdGD9MU0J&sz=w800" loading="lazy" alt="USA House"><span class="slab">USA House</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1L6z-fyorw1bnO3w_sNIkoB9yfar7Co8S&sz=w800" loading="lazy" alt="USA House"><span class="slab">USA House</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1usAOI5R4L3xU-pH_mEnuyEwbd8xaJZcZ&sz=w800" loading="lazy" alt="Pidgirland"><span class="slab">Pidgirland</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1hXV_Pz6_GfnXe5ipnbSu3RWLfLccdCnx&sz=w800" loading="lazy" alt="Pidgirland"><span class="slab">Pidgirland</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1RCrrbyNJHQhkgvreHPGW2RWNJi3KSDpc&sz=w800" loading="lazy" alt="Pidgirland"><span class="slab">Pidgirland</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=17c2Uv-OmlrmLDFlJX5R-t04-TcjADhao&sz=w800" loading="lazy" alt="Pidgirland"><span class="slab">Pidgirland</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=18VXNYlwqxP5Kuuw968Cdj66Jf5mnPBdk&sz=w800" loading="lazy" alt="Pidgirland"><span class="slab">Pidgirland</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1cRl7TrOdOCclnf7BmP9Qws6LjCgpGzRT&sz=w800" loading="lazy" alt="Hodos Villa"><span class="slab">Hodos Villa</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1BmrYo1JJhoD0eI22eiLx5iQGtvp9V00l&sz=w800" loading="lazy" alt="Hodos Villa"><span class="slab">Hodos Villa</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1M13ysKRsQvnPksL-4RlqyJBntF9tlHIF&sz=w800" loading="lazy" alt="Hodos Villa"><span class="slab">Hodos Villa</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1sSM3fuz42KHveT4a7kOFEzaGMJHnTvJo&sz=w800" loading="lazy" alt="Hodos Villa"><span class="slab">Hodos Villa</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1BnRMUkaRJsY268cZL8HLAIedespAmUAC&sz=w800" loading="lazy" alt="Osokorky"><span class="slab">Osokorky</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1TohlalW6PL8mdph7KoPoBvmmY4jnoISn&sz=w800" loading="lazy" alt="Osokorky"><span class="slab">Osokorky</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1tyFro2_3CVPU0tTV9s3xK_zzF-qGCt4U&sz=w800" loading="lazy" alt="Osokorky"><span class="slab">Osokorky</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=10VnDwUntAIoJgLn4pqJLehmukf-7WzKZ&sz=w800" loading="lazy" alt="Osokorky"><span class="slab">Osokorky</span></div><div class="strip-item" onclick="stripLbOpen(this.querySelector('img'))"><img src="https://drive.google.com/thumbnail?id=1wnRwhTIGDq181nYQPTv1cTbLjhKur2WI&sz=w800" loading="lazy" alt="Osokorky"><span class="slab">Osokorky</span></div></div>
@@ -1034,6 +1079,53 @@ setLang(localStorage.getItem('cas-lang')||'uk');
     });
   }
 })();
+
+
+/* ── Quick Form (hero CTA) ── */
+var qfTimer=null;
+function openQuickForm(){
+  clearTimeout(qfTimer);
+  var qf=document.getElementById('quickForm');
+  if(qf){qf.classList.add('visible');}
+  // Ensure hero section is relative
+  var hero=qf&&qf.closest('section');
+  if(hero)hero.style.overflow='hidden';
+}
+function closeQuickForm(){
+  var qf=document.getElementById('quickForm');
+  if(qf)qf.classList.remove('visible');
+  // Reset form
+  setTimeout(function(){
+    var qfOk=document.getElementById('qfOk');
+    var qfContent=document.getElementById('qfContent');
+    if(qfOk)qfOk.style.display='none';
+    if(qfContent)qfContent.style.display='';
+    var n=document.getElementById('qf-name');
+    var p=document.getElementById('qf-phone');
+    if(n)n.value='';if(p)p.value='';
+  },500);
+}
+function submitQuickForm(){
+  var name=document.getElementById('qf-name').value.trim();
+  var phone=document.getElementById('qf-phone').value.trim();
+  if(!name||!phone){
+    if(!name)document.getElementById('qf-name').style.borderColor='rgba(180,60,60,.7)';
+    if(!phone)document.getElementById('qf-phone').style.borderColor='rgba(180,60,60,.7)';
+    return;
+  }
+  fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:name,phone:phone,source:'hero-quick-form',page:location.href})
+  }).catch(function(){});
+  document.getElementById('qfContent').style.display='none';
+  document.getElementById('qfOk').style.display='block';
+  setTimeout(closeQuickForm,3000);
+}
+/* Auto-show after 3 sec on page load */
+qfTimer=setTimeout(function(){
+  var qf=document.getElementById('quickForm');
+  if(qf&&!qf.classList.contains('visible'))openQuickForm();
+},3000);
 
 </script>
 </body>
