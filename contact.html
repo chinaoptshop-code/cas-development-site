@@ -860,7 +860,7 @@ body.light .map-grat{display:none!important}
         <div class="cr-total">$<span id="cr-num">5,500</span></div>
         <div class="cr-sub" data-i18n="calc_sub">Точний розрахунок після консультації</div>
         <div class="cr-lines" id="cr-lines"></div>
-        <button class="btn" style="width:100%;justify-content:center;margin-top:24px" href="/contact.html"><span data-i18n="calc_cta">Отримати консультацію</span><span>→</span></button>
+        <button class="btn" id="calcConsultBtn" style="width:100%;justify-content:center;margin-top:24px"><span data-i18n="calc_cta">Отримати консультацію</span><span>→</span></button>
       </div>
     </div>
   </div>
@@ -1120,7 +1120,121 @@ go=function(p){var m={home:'/',services:'/services.html',portfolio:'/portfolio.h
 goProject=function(id){window.location.href='/portfolio.html#'+id;};
 filt=function(btn,cat){document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');document.querySelectorAll('.pi').forEach(el=>{el.style.display=(cat==='all'||el.dataset.c===cat)?'':'none';});};
 
-setLang(localStorage.getItem('cas-lang')||'uk'); 
+setLang(localStorage.getItem('cas-lang')||'uk');
+</script>
+<!-- ░░ CALC LEAD MODAL → n8n webhook (Telegram topic «Ліди — Сайт») ░░ -->
+<style>
+/* dropdown chevron fix — calculator tier select (#tierSelect) */
+.calc-select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23BF9148' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") !important;
+  background-repeat:no-repeat !important;background-position:right 14px center !important;
+  -webkit-appearance:none !important;appearance:none !important;padding-right:34px !important;
+}
+.calc-select option{background:var(--sf);color:var(--tx);}
+/* lead modal */
+#calc-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99999;justify-content:center;align-items:center;}
+#calc-overlay.open{display:flex;}
+#calc-modal{background:#0d0c0e;border:1px solid #BF9148;padding:40px 36px;width:90%;max-width:460px;position:relative;border-radius:2px;font-family:var(--M);}
+#calc-modal .cm-close{position:absolute;top:14px;right:18px;background:none;border:none;color:#777;font-size:26px;cursor:pointer;line-height:1;}
+#calc-modal .cm-title{color:#BF9148;font-size:13px;letter-spacing:3px;margin-bottom:6px;font-weight:500;}
+#calc-modal .cm-subtitle{color:#777;font-size:12px;margin-bottom:24px;}
+#calc-modal .cm-summary{background:rgba(191,145,72,.07);border-left:2px solid #BF9148;padding:10px 14px;margin-bottom:24px;font-size:12px;color:#aaa;line-height:1.9;}
+#calc-modal .cm-summary b{color:#BF9148;}
+#calc-modal input{width:100%;background:transparent;border:none;border-bottom:1px solid #3a3a3a;color:#EDE8DF;padding:12px 0;font-size:14px;outline:none;margin-bottom:16px;box-sizing:border-box;transition:border-color .3s;}
+#calc-modal input:focus{border-bottom-color:#BF9148;}
+#calc-modal input::placeholder{color:#555;}
+#calc-modal .cm-btn{width:100%;background:transparent;border:1px solid #BF9148;color:#BF9148;padding:14px;font-size:11px;letter-spacing:3px;cursor:pointer;transition:all .3s;margin-top:8px;font-family:var(--M);}
+#calc-modal .cm-btn:hover{background:#BF9148;color:#000;}
+#calc-modal .cm-btn:disabled{opacity:.4;cursor:not-allowed;}
+#calc-modal .cm-success{display:none;text-align:center;padding:20px 0;}
+#calc-modal .cm-success h3{color:#BF9148;letter-spacing:2px;margin-bottom:8px;}
+#calc-modal .cm-success p{color:#777;font-size:13px;}
+</style>
+<div id="calc-overlay">
+  <div id="calc-modal">
+    <button class="cm-close" id="cm-close">×</button>
+    <div class="cm-title">ОТРИМАТИ КОНСУЛЬТАЦІЮ</div>
+    <div class="cm-subtitle">Менеджер зателефонує протягом 30 хвилин</div>
+    <div id="cm-form">
+      <div class="cm-summary" id="cm-summary"></div>
+      <input id="cm-name" placeholder="Ваше ім'я" autocomplete="name">
+      <input id="cm-phone" placeholder="+380" autocomplete="tel">
+      <button class="cm-btn" id="cm-submit">НАДІСЛАТИ ЗАЯВКУ →</button>
+    </div>
+    <div class="cm-success" id="cm-success">
+      <h3>✓ ЗАЯВКУ ОТРИМАНО</h3>
+      <p>Зателефонуємо вам найближчим часом</p>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  const WEBHOOK='https://n8n.china-opt-shop.pp.ua/webhook/contact-form';
+  function txt(el){return el?el.textContent.replace(/\s+/g,' ').trim():'';}
+  function getCalcData(){
+    const d={};
+    const tabs=document.querySelectorAll('.calc-tab.on');
+    d.services=tabs.length?Array.from(tabs).map(txt).join(', '):'—';
+    const a=document.getElementById('areaSlider');
+    d.area=a?a.value:(txt(document.getElementById('areaDisplay'))||'—');
+    const t=document.getElementById('tierSelect');
+    d.level=(t&&t.options[t.selectedIndex])?t.options[t.selectedIndex].text:'—';
+    const boxes=document.querySelectorAll('.calc-chk input[type="checkbox"]:checked');
+    d.options=boxes.length?Array.from(boxes).map(function(c){return txt(c.closest('label'));}).filter(Boolean).join(', '):'—';
+    const p=document.getElementById('cr-num');
+    d.price=p?('$'+txt(p)):'—';
+    return d;
+  }
+  function buildSummary(d){
+    let h='';
+    if(d.services!=='—')h+='<b>Послуги:</b> '+d.services+'<br>';
+    if(d.area!=='—')h+='<b>Площа:</b> '+d.area+' м²<br>';
+    if(d.level!=='—')h+='<b>Рівень:</b> '+d.level+'<br>';
+    if(d.options!=='—')h+='<b>Опції:</b> '+d.options+'<br>';
+    if(d.price!=='—')h+='<b>Орієнтовна вартість:</b> '+d.price;
+    return h||'Дані калькулятора';
+  }
+  function openModal(){
+    const d=getCalcData();
+    document.getElementById('cm-summary').innerHTML=buildSummary(d);
+    document.getElementById('cm-form').style.display='block';
+    document.getElementById('cm-success').style.display='none';
+    document.getElementById('cm-name').value='';
+    document.getElementById('cm-phone').value='';
+    document.getElementById('calc-overlay').classList.add('open');
+    setTimeout(function(){document.getElementById('cm-name').focus();},150);
+  }
+  function closeModal(){document.getElementById('calc-overlay').classList.remove('open');}
+  async function sendForm(){
+    const name=document.getElementById('cm-name').value.trim();
+    const phone=document.getElementById('cm-phone').value.trim();
+    if(!name){alert("Введіть ваше ім'я");return;}
+    if(phone.replace(/\D/g,'').length<10){alert('Введіть коректний номер телефону');return;}
+    const btn=document.getElementById('cm-submit');
+    btn.disabled=true;btn.textContent='НАДСИЛАЄМО...';
+    const d=getCalcData();
+    try{
+      await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+        name:name,phone:phone,service:d.services,area:d.area,
+        message:[d.level!=='—'?'Рівень: '+d.level:'',d.options!=='—'?'Опції: '+d.options:'',d.price!=='—'?'Ціна: '+d.price:'','Джерело: Калькулятор цін'].filter(Boolean).join(' | ')
+      })});
+      document.getElementById('cm-form').style.display='none';
+      document.getElementById('cm-success').style.display='block';
+      setTimeout(closeModal,3000);
+    }catch(e){
+      btn.disabled=false;btn.textContent='НАДІСЛАТИ ЗАЯВКУ →';
+      alert('Помилка відправки. Зателефонуйте нам напряму.');
+    }
+  }
+  function init(){
+    document.getElementById('cm-close').addEventListener('click',closeModal);
+    document.getElementById('calc-overlay').addEventListener('click',function(e){if(e.target.id==='calc-overlay')closeModal();});
+    document.getElementById('cm-submit').addEventListener('click',sendForm);
+    const cb=document.getElementById('calcConsultBtn');
+    if(cb)cb.addEventListener('click',function(e){e.preventDefault();openModal();});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
 </script>
 </body>
 </html>
