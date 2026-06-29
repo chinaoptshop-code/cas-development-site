@@ -982,7 +982,7 @@ function setLang(l){
 /* ═══ SERVICE CARD TOGGLE ═══ */
 function toggleSv(card){card.classList.toggle('exp');}
 /* ═══ CALCULATOR ═══ */
-const RATES={d:{eco:40,std:40,prem:40,lux:40},r:{eco:500,std:650,prem:700,lux:850},f:{eco:250,std:300,prem:380,lux:600},c:{eco:600,std:750,prem:950,lux:1200},l:{eco:50,std:80,prem:120,lux:200}};
+const RATES={d:{eco:40,std:40,prem:40,lux:40},r:{eco:500,std:650,prem:700,lux:850},f:{eco:250,std:300,prem:380,lux:600},c:{eco:600,std:750,prem:950,lux:1200},l:{eco:15,std:15,prem:15,lux:15}};
 const RL={uk:{d:'Дизайн інтер\u0027єру',r:'Ремонт під ключ',f:'Меблювання',c:'Будівництво',l:'Ландшафтний дизайн'},en:{d:'Interior Design',r:'Renovation',f:'Furniture',c:'Construction',l:'Landscape Design'},es:{d:'Diseño',r:'Renovación',f:'Muebles',c:'Construcción',l:'Paisajismo'}};
 function getRL(t){return(RL[curLang]||RL.uk)[t]||t;}
 const svcSel={d:true,r:false,f:false,c:false,l:false};
@@ -1001,7 +1001,7 @@ function calcUpdate(){
   if(svcSel.r){const v=RATES.r[tier]*area;bAmt+=v;lines+=`<div class="cr-line"><span>${getRL('r')}</span><strong>$${v.toLocaleString('uk-UA')}</strong></div>`;}
   if(svcSel.f){let fr=RATES.f[tier];if(china)fr=Math.round(fr*0.85);const v=fr*area;bAmt+=v;lines+=`<div class="cr-line"><span>${getRL('f')}${china?' (China −15%)':''}</span><strong>$${v.toLocaleString('uk-UA')}</strong></div>`;}
   if(svcSel.c){const v=RATES.c[tier]*area;bAmt+=v;lines+=`<div class="cr-line"><span>${getRL('c')}</span><strong>$${v.toLocaleString('uk-UA')}</strong></div>`;}
-  if(svcSel.l){const sotky=area/100;const v=Math.round(RATES.l[tier]*sotky);bAmt+=v;lines+=`<div class="cr-line"><span>${getRL('l')} (${sotky.toFixed(1)} сотки)</span><strong>$${v.toLocaleString('uk-UA')}</strong></div>`;}
+  if(svcSel.l){const v=Math.round(RATES.l[tier]*area);bAmt+=v;lines+=`<div class="cr-line"><span>Авт. нагляд (${area} м²)</span><strong>$${v.toLocaleString('uk-UA')}</strong></div>`;}
   let disc=0;if(dp>0){disc=Math.round(bAmt*dp/100);lines+=`<div class="cr-line" style="color:var(--ac)"><span>${dLbl} ${dp}%</span><strong>−$${disc.toLocaleString('uk-UA')}</strong></div>`;}
   if(smart)lines+=`<div class="cr-line"><span>Smart Home</span><strong>$${(smart*area).toLocaleString('uk-UA')}</strong></div>`;
   if(clim)lines+=`<div class="cr-line"><span>Climate</span><strong>$${(clim*area).toLocaleString('uk-UA')}</strong></div>`;
