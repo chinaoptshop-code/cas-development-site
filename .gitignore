@@ -1,0 +1,7 @@
+# Telegram tool (tools/telegram): никогда не коммитим сессии и скачанные файлы
+tools/telegram/downloads/
+*.session
+*.session-journal
+.venv/
+__pycache__/
+*.pyc
