@@ -42,3 +42,19 @@ tools/telegram/tg.sh --json <команда> ...        # машиночитае
   домен `*.web.telegram.org`; если «Нет сессии» — нужен `login` (см. README).
 - Настройки через переменные окружения: `TELEGRAM_API_ID`, `TELEGRAM_API_HASH`,
   `TELEGRAM_SESSION` (строка сессии), опционально `TG_TZ` (по умолчанию Europe/Moscow).
+
+## Персональний помічник Михайла — `tools/assistant/`
+
+Користувач (Михайло) має персонального AI-помічника, який працює в цих сесіях через
+Telegram. Усе описано в `tools/assistant/README.md`; правила поведінки, пам'ять і
+безпека — у `tools/assistant/playbooks/00-core.md`. Сценарії (ранок, вечір, тиждень,
+спортзал, вхідні, зустрічі/Plaud, читання, PDF, компанія) — у `tools/assistant/playbooks/`.
+
+Коли планова задача або користувач просить виконати сценарій помічника:
+1. прочитай `tools/assistant/playbooks/00-core.md` і потрібний сценарій;
+2. пам'ять читай/оновлюй у Google Drive, папка «Асистент Михайла» (конектор Google Drive);
+3. відповідай Михайлу через `tools/assistant/bin/tg-out.sh`, нові вхідні — `tools/assistant/bin/inbox.sh`;
+4. PDF — `tools/assistant/bin/md2pdf.sh`.
+
+Репозиторій публічний: ніколи не записуй сюди особисті дані, нотатки, імена клієнтів,
+фінанси; усе таке — тільки в пам'ять на Drive.
