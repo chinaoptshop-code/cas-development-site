@@ -1403,6 +1403,13 @@ def main():
     if not debug:
         logging.getLogger("asyncio").setLevel(logging.CRITICAL)  # «Future exception was never retrieved» при обрыве
 
+        class _QuietResent(logging.Filter):
+            # В HTTP-режиме сервер иногда повторно присылает уже обработанное сообщение; Telethon его игнорирует.
+            def filter(self, record):
+                return "resent the older message" not in record.getMessage()
+
+        logging.getLogger("telethon.network.mtprotosender").addFilter(_QuietResent())
+
     async def with_timeout():
         return await asyncio.wait_for(run(args), timeout=TIMEOUT)
 
