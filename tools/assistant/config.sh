@@ -27,6 +27,8 @@ export ASSISTANT_PREFIX="${ASSISTANT_PREFIX:-🤖}"
 
 # Пам'ять (Google Drive): назва папки, у якій лежать документи пам'яті
 export ASSISTANT_MEMORY_FOLDER="${ASSISTANT_MEMORY_FOLDER:-Асистент Михайла}"
+# Локальний шлях до цієї папки на Mac mini (Google Drive для комп'ютера); у хмарі не потрібен
+export ASSISTANT_MEMORY_DIR="${ASSISTANT_MEMORY_DIR:-}"
 
 # Тимчасові файли (PDF, скачане) — не в репозиторії
 export ASSISTANT_TMP="${ASSISTANT_TMP:-$HOME/.assistant/tmp}"
