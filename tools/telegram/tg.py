@@ -1195,9 +1195,18 @@ def whisper_transcribe(path, model=None, language=None):
         else:
             die("Нет faster-whisper: pip install faster-whisper")
     ensure_requests_ca()
+    # Декодируем через ffmpeg сами (16 кГц, моно, float32): не зависим от версии PyAV,
+    # с которой faster-whisper периодически несовместим.
+    need_ffmpeg()
+    r = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-vn", "-f", "f32le", "-ac", "1",
+                        "-ar", "16000", "-"], capture_output=True)
+    if r.returncode != 0 or not r.stdout:
+        die(f"ffmpeg не смог декодировать {path}: {r.stderr.decode('utf-8', 'replace').strip()}")
+    import numpy as np
+    audio = np.frombuffer(r.stdout, dtype=np.float32)
     eprint(f"[tg] Whisper: модель {model} (первый запуск скачивает модель)…")
     wm = WhisperModel(model, device="cpu", compute_type="int8")
-    segments, info = wm.transcribe(str(path), language=language or None, vad_filter=True, beam_size=5)
+    segments, info = wm.transcribe(audio, language=language or None, vad_filter=True, beam_size=5)
     text = " ".join(s.text.strip() for s in segments if s.text.strip())
     return text, getattr(info, "language", None)
 
@@ -1402,6 +1411,13 @@ def main():
                         format="[telethon] %(levelname)s %(name)s: %(message)s", stream=sys.stderr)
     if not debug:
         logging.getLogger("asyncio").setLevel(logging.CRITICAL)  # «Future exception was never retrieved» при обрыве
+
+        class _QuietResent(logging.Filter):
+            # В HTTP-режиме сервер иногда повторно присылает уже обработанное сообщение; Telethon его игнорирует.
+            def filter(self, record):
+                return "resent the older message" not in record.getMessage()
+
+        logging.getLogger("telethon.network.mtprotosender").addFilter(_QuietResent())
 
     async def with_timeout():
         return await asyncio.wait_for(run(args), timeout=TIMEOUT)
