@@ -110,9 +110,22 @@ tools/assistant/bin/brief-data.sh            # дані для брифінгу:
 
 ## Plaud
 
-Найпростіший шлях: у застосунку Plaud поділитися записом або транскриптом у Telegram
-(у наш чат з помічником) або зберегти в Drive-папку «Асистент Михайла/Вхідні». Помічник
-забере файл при наступному проході вхідних, зробить конспект, PDF, задачі та події.
+Основний шлях: офіційний **Plaud MCP** (`https://mcp.plaud.ai/mcp`, вхід через OAuth, потрібен
+увімкнений Plaud Cloud Sync). Він дає помічнику список записів, транскрипти й резюме прямо з
+хмари Plaud, без пересилання файлів.
+
+- **claude.ai (хмарні сесії)**: Налаштування → Connectors → додати Plaud з каталогу конекторів
+  або «Add custom connector» з URL `https://mcp.plaud.ai/mcp`, далі увійти в Plaud.
+- **Mac mini (локальний бот)**: у терміналі
+  ```bash
+  claude mcp add --transport http plaud https://mcp.plaud.ai/mcp
+  claude            # у сесії команда /mcp → Plaud → увійти в браузері
+  ```
+  або інсталятор Plaud: `npx -y @plaud-ai/mcp@latest install`.
+
+Запасний шлях: поділитися записом або транскриптом у Telegram (у чат з помічником) або
+покласти у Drive-папку «Асистент Михайла/Вхідні». Автоматично: Zapier «Plaud → Google Drive»
+кладе кожен новий транскрипт у цю папку. Сценарій обробки: `playbooks/meeting-notes.md`.
 
 ## Безпека
 

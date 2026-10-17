@@ -92,7 +92,7 @@ def build_prompt(kind, content, caption):
 Правила: прочитай tools/assistant/playbooks/00-core.md і tools/assistant/playbooks/inbox.md (та інші сценарії за потреби).
 Пам'ять — локальна папка {MEMORY} (Markdown-файли: 00 Профіль.md, 01 Цілі.md, 02 Задачі.md, 03 Звички і спорт.md,
 04 Читання.md, 05 Рішення.md, 06 Люди.md, 07 Компанія.md, Журнал YYYY-MM.md, папки Зустрічі/, Тижні/, Документи/).
-Редагуй файли напряму, не через Google Drive. Google Drive і Calendar тут недоступні, якщо не підключені як MCP.
+Редагуй файли напряму, не через Google Drive. Google Drive, Calendar і Plaud доступні лише якщо підключені як MCP (claude mcp list); записи зустрічей бери через інструменти Plaud, якщо вони є.
 Голосові/аудіо розшифровуй: tools/assistant/bin/transcribe.sh <файл>. PDF: tools/assistant/bin/md2pdf.sh.
 
 Нове повідомлення від Михайла ({kind}): {content}
