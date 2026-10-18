@@ -13,6 +13,13 @@ cd "$REPO"
 out="$("$CLAUDE" -p --model "$MODEL" --max-turns "${CLAUDE_MAX_TURNS:-25}" --allowedTools "$ALLOWED" --output-format text "$prompt")"
 reply="$(printf '%s\n' "$out" | grep -v '^SEND_FILE:' | tail -c 3000)"
 "$DIR/bin/tg-out.sh" text "$reply"
-printf '%s\n' "$out" | grep '^SEND_FILE:' | sed 's/^SEND_FILE:[[:space:]]*//' | while IFS= read -r f; do
-  [ -f "$f" ] && "$DIR/bin/tg-out.sh" file "$f" "$(basename "$f")"
-done
+# Файлів у відповіді зазвичай немає, і тоді grep повертає 1. Через set -e
+# це робило останній рядок скрипта «падінням»: launchd щоразу бачив код 1,
+# хоч повідомлення пішло. Справжня поломка на такому тлі була б непомітна.
+files="$(printf '%s\n' "$out" | grep '^SEND_FILE:' | sed 's/^SEND_FILE:[[:space:]]*//' || true)"
+if [ -n "$files" ]; then
+  printf '%s\n' "$files" | while IFS= read -r f; do
+    [ -f "$f" ] && "$DIR/bin/tg-out.sh" file "$f" "$(basename "$f")"
+  done
+fi
+exit 0
