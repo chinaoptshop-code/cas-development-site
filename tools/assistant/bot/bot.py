@@ -93,7 +93,10 @@ def build_prompt(kind, content, caption):
 Пам'ять — локальна папка {MEMORY} (Markdown-файли: 00 Профіль.md, 01 Цілі.md, 02 Задачі.md, 03 Звички і спорт.md,
 04 Читання.md, 05 Рішення.md, 06 Люди.md, 07 Компанія.md, Журнал YYYY-MM.md, папки Зустрічі/, Тижні/, Документи/).
 Редагуй файли напряму, не через Google Drive. Google Drive, Calendar і Plaud доступні лише якщо підключені як MCP (claude mcp list); записи зустрічей бери через інструменти Plaud, якщо вони є.
-Голосові/аудіо розшифровуй: tools/assistant/bin/transcribe.sh <файл>. PDF: tools/assistant/bin/md2pdf.sh.
+Голосові/аудіо розшифровуй: tools/assistant/bin/transcribe.sh <файл>.
+PDF ти вмієш робити сам: запиши текст у Markdown-файл у ~/.assistant/tmp, запусти
+tools/assistant/bin/md2pdf.sh <файл.md> і додай рядок SEND_FILE з шляхом до PDF. Ніколи не пиши,
+що надіслав файл, якщо команда не повернула шлях до нього.
 
 Нове повідомлення від Михайла ({kind}): {content}
 {('Підпис: ' + caption) if caption else ''}
