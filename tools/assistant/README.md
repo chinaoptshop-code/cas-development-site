@@ -91,7 +91,7 @@ tools/assistant/bin/tg-out.sh text "Текст" [--md]     # відповіст�
 tools/assistant/bin/tg-out.sh file тези.pdf "Підпис"  # надіслати файл
 tools/assistant/bin/tg-out.sh voice запис.mp3         # надіслати голосове з аудіофайлу
 tools/assistant/bin/tg-out.sh say "Текст"             # озвучити й надіслати (режим особистого акаунта)
-tools/assistant/bin/md2pdf.sh тези.md [вихід.pdf]     # Markdown → PDF (pandoc + Chromium, стиль pdf.css)
+tools/assistant/bin/md2pdf.sh тези.md [вихід.pdf]     # Markdown → PDF (pandoc або вбудований md2html.py + Chrome, стиль pdf.css)
 tools/assistant/bin/brief-data.sh            # дані для брифінгу: час, непрочитане, вхідні
 ```
 
