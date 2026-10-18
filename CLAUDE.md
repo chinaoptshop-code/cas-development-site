@@ -46,6 +46,21 @@ tools/telegram/tg.sh --json <команда> ...        # машиночитае
 - Настройки через переменные окружения: `TELEGRAM_API_ID`, `TELEGRAM_API_HASH`,
   `TELEGRAM_SESSION` (строка сессии), опционально `TG_TZ` (по умолчанию Europe/Moscow).
 
+## Monobank (лише читання) — `tools/monobank/`
+
+`tools/monobank/mono.sh` — баланси, виписки, підсумки витрат і курси через особистий API Монобанку
+(токен у змінній `MONOBANK_TOKEN`). Подробиці: `tools/monobank/README.md`.
+
+```bash
+tools/monobank/mono.sh balance                    # баланси всіх рахунків і банок
+tools/monobank/mono.sh statement -a fop --days 7  # операції ФОП за тиждень (--search, --income, --expense)
+tools/monobank/mono.sh summary --days 30          # надходження/витрати за категоріями
+tools/monobank/mono.sh rates                      # курси (без токена)
+```
+
+Токен не друкувати й не комітити; суми й операції — тільки Михайлу і в пам'ять на Drive, не в репозиторій.
+Банк дозволяє 1 запит на хвилину — скрипт чекає сам, не запускай кілька копій паралельно.
+
 ## Персональний помічник Михайла — `tools/assistant/`
 
 Користувач (Михайло) має персонального AI-помічника, який працює в цих сесіях через
