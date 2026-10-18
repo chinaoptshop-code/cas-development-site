@@ -928,6 +928,18 @@ async def cmd_send(client, args):
     return 0
 
 
+async def cmd_draft(client, args):
+    ent = await resolve(client, args.chat)
+    text = read_text_arg(args)
+    await client(functions.messages.SaveDraftRequest(peer=ent, message=text))
+    label = await entity_label(client, ent)
+    if args.json:
+        print(json.dumps({"draft": True, "chat": label}, ensure_ascii=False))
+    else:
+        print(f"📝 Черновик сохранён (не отправлен) → {label}")
+    return 0
+
+
 async def cmd_send_file(client, args):
     ent = await resolve(client, args.chat)
     files = [Path(p) for p in args.files]
@@ -1294,6 +1306,11 @@ def build_parser():
     s.add_argument("--no-preview", dest="no_preview", action="store_true", help="без превью ссылок")
     s.add_argument("--silent", action="store_true", help="без звука у получателя")
 
+    s = sub.add_parser("draft", help="сохранить черновик в чате (не отправляет)")
+    s.add_argument("chat")
+    s.add_argument("text", nargs="?", help="текст ('-' = из stdin)")
+    s.add_argument("--text-file", dest="text_file", help="взять текст из файла")
+
     s = sub.add_parser("send-file", help="отправить файл(ы)/фото/видео")
     s.add_argument("chat")
     s.add_argument("files", nargs="+")
@@ -1342,7 +1359,7 @@ def build_parser():
 
 COMMANDS = {
     "chats": cmd_chats, "read": cmd_read, "unread": cmd_unread, "search": cmd_search,
-    "send": cmd_send, "send-file": cmd_send_file, "download": cmd_download,
+    "send": cmd_send, "draft": cmd_draft, "send-file": cmd_send_file, "download": cmd_download,
     "transcribe": cmd_transcribe, "send-voice": cmd_send_voice, "say": cmd_say,
     "mark-read": cmd_mark_read, "contacts": cmd_contacts, "logout": cmd_logout,
 }
