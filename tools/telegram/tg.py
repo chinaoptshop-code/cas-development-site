@@ -977,6 +977,33 @@ async def cmd_join(client, args):
     return 0
 
 
+def video_meta(path):
+    """(ширина, висота, тривалість, обкладинка) відео з урахуванням повороту, або None без ffprobe."""
+    if not shutil.which("ffprobe"):
+        return None
+    try:
+        out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                              "stream=width,height:stream_side_data=rotation:format=duration",
+                              "-of", "json", str(path)], capture_output=True, text=True, timeout=60)
+        info = json.loads(out.stdout)
+        st = info["streams"][0]
+        w, h = int(st["width"]), int(st["height"])
+        rot = next((int(sd.get("rotation", 0)) for sd in st.get("side_data_list", []) if "rotation" in sd), 0)
+        if abs(rot) % 180 == 90:
+            w, h = h, w
+        dur = float(info["format"].get("duration", 0))
+    except Exception:
+        return None
+    thumb = None
+    if shutil.which("ffmpeg"):
+        tp = Path(tempfile.gettempdir()) / f"tg_thumb_{os.getpid()}.jpg"
+        r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(min(1.0, dur / 2)), "-i", str(path),
+                            "-frames:v", "1", "-vf", "scale=320:-2", str(tp)], capture_output=True, timeout=60)
+        if r.returncode == 0 and tp.is_file():
+            thumb = str(tp)
+    return w, h, dur, thumb
+
+
 async def cmd_send_file(client, args):
     ent = await resolve(client, args.chat)
     files = [Path(p) for p in args.files]
@@ -984,9 +1011,19 @@ async def cmd_send_file(client, args):
         if not p.is_file():
             die(f"Файл не найден: {p}")
     paths = [str(p) for p in files]
+    extra = {}
+    # Без розмірів кадру Telegram показує відео розтягнутим — передаємо їх явно (через ffprobe)
+    if len(files) == 1 and not args.as_document and files[0].suffix.lower() in (".mp4", ".mov", ".m4v"):
+        meta = video_meta(files[0])
+        if meta:
+            w, h, dur, thumb = meta
+            extra = {"attributes": [types.DocumentAttributeVideo(duration=dur, w=w, h=h, supports_streaming=True)],
+                     "supports_streaming": True}
+            if thumb:
+                extra["thumb"] = thumb
     res = await client.send_file(ent, paths if len(paths) > 1 else paths[0], caption=args.caption,
                                  force_document=args.as_document, reply_to=args.reply_to,
-                                 parse_mode=None, silent=args.silent)
+                                 parse_mode=None, silent=args.silent, **extra)
     msgs = res if isinstance(res, list) else [res]
     label = await entity_label(client, ent)
     if args.json:
