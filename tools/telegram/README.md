@@ -110,6 +110,8 @@ tools/telegram/tg.sh say "Иван" "Текст, который нужно пр�
 tools/telegram/tg.sh send-voice "Иван" запись.mp3   # любой аудиофайл → голосовое (OGG/Opus)
 tools/telegram/tg.sh mark-read "Иван"               # отметить прочитанным
 tools/telegram/tg.sh contacts --search Петр
+tools/telegram/tg.sh find "ремонт Київ" --groups-only   # поиск публичных групп/каналов
+tools/telegram/tg.sh join @groupname                # вступить в группу (или t.me/+invite)
 tools/telegram/tg.sh --json read "Иван"             # любой вывод в JSON
 tools/telegram/tg.sh --help ; tools/telegram/tg.sh read --help
 ```

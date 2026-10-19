@@ -940,6 +940,43 @@ async def cmd_draft(client, args):
     return 0
 
 
+async def cmd_find(client, args):
+    """Пошук публічних груп і каналів за назвою (глобальний пошук Telegram)."""
+    res = await client(functions.contacts.SearchRequest(q=args.query, limit=args.limit))
+    rows = []
+    for c in getattr(res, "chats", []) or []:
+        kind = "канал" if getattr(c, "broadcast", False) else "група"
+        rows.append({"id": c.id, "type": kind, "title": c.title,
+                     "username": getattr(c, "username", None),
+                     "members": getattr(c, "participants_count", None),
+                     "joined": not getattr(c, "left", True)})
+    if args.groups_only:
+        rows = [r for r in rows if r["type"] == "група"]
+    if args.json:
+        print(json.dumps(rows, ensure_ascii=False, indent=2))
+        return 0
+    if not rows:
+        print("Нічого не знайдено")
+    for r in rows:
+        print(f"{r['type']:6} {('@' + r['username']) if r['username'] else r['id']:32} "
+              f"{r['members'] or '?':>7} учасн. {'✓ вже є' if r['joined'] else ''}  {r['title']}")
+    return 0
+
+
+async def cmd_join(client, args):
+    """Вступити в публічну групу/канал (@username або посилання t.me/...)."""
+    target = args.chat.strip()
+    if "joinchat/" in target or "/+" in target:
+        h = target.rsplit("/", 1)[-1].lstrip("+")
+        await client(functions.messages.ImportChatInviteRequest(h))
+        print(f"✅ Вступ за запрошенням: {target}")
+        return 0
+    ent = await resolve(client, target.replace("https://t.me/", "@").replace("t.me/", "@"))
+    await client(functions.channels.JoinChannelRequest(ent))
+    print(f"✅ Вступив: {await entity_label(client, ent)}")
+    return 0
+
+
 async def cmd_send_file(client, args):
     ent = await resolve(client, args.chat)
     files = [Path(p) for p in args.files]
@@ -1354,6 +1391,14 @@ def build_parser():
 
     s = sub.add_parser("contacts", help="список контактов")
     s.add_argument("--search")
+
+    s = sub.add_parser("find", help="пошук публічних груп/каналів за назвою")
+    s.add_argument("query")
+    s.add_argument("--limit", type=int, default=20)
+    s.add_argument("--groups-only", action="store_true", help="лише групи (без каналів)")
+
+    s = sub.add_parser("join", help="вступити в публічну групу/канал (@username, t.me/... або запрошення)")
+    s.add_argument("chat")
     return p
 
 
@@ -1362,6 +1407,7 @@ COMMANDS = {
     "send": cmd_send, "draft": cmd_draft, "send-file": cmd_send_file, "download": cmd_download,
     "transcribe": cmd_transcribe, "send-voice": cmd_send_voice, "say": cmd_say,
     "mark-read": cmd_mark_read, "contacts": cmd_contacts, "logout": cmd_logout,
+    "find": cmd_find, "join": cmd_join,
 }
 
 
