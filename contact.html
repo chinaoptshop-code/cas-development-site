@@ -808,7 +808,7 @@ body.light .map-grat{display:none!important}
         </div>
         <div class="fg">
           <label class="fl" data-i18n="f_service">Послуга</label>
-          <select id="fService" class="fi fsel">
+          <select id="fService" class="fi fsel" aria-label="Послуга">
             <option value="" data-i18n="f_pick">Оберіть послугу</option>
             <option>Дизайн інтер'єру</option>
             <option>Ремонт під ключ</option>
@@ -864,12 +864,12 @@ body.light .map-grat{display:none!important}
             <span class="area-val"><strong id="areaDisplay">100</strong> м²</span>
           </label>
           <div class="slider-wrap">
-            <input type="range" class="calc-slider" id="areaSlider" min="30" max="500" value="100" oninput="sliderMove(this)">
+            <input type="range" class="calc-slider" id="areaSlider" aria-label="Площа обʼєкта, м²" min="30" max="500" value="100" oninput="sliderMove(this)">
           </div>
         </div>
         <div class="calc-group">
           <label data-i18n="calc_tier">Рівень реалізації</label>
-          <select class="calc-select" id="tierSelect" onchange="calcUpdate()">
+          <select class="calc-select" id="tierSelect" onchange="calcUpdate()" aria-label="Рівень оздоблення">
             <option value="eco" data-i18n="tier_eco">Базові матеріали — від $500/м²</option>
             <option value="std" selected data-i18n="tier_std">Оптимально — від $650/м²</option>
             <option value="prem" data-i18n="tier_prem">Якісні матеріали — від $700/м²</option>
