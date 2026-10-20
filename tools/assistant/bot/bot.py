@@ -280,8 +280,9 @@ def mark(t, status):
 
 
 def start_task(t, state):
+    resumed = t.get("status") == "work"
     t["status"] = "work"; save_state(state); mark(t, "в роботі")
-    send_text(f"▶️ Задача №{t['n']} — в роботі.", t["chat"], t["mid"])
+    send_text(f"▶️ Задача №{t['n']} — " + ("продовжую після перезапуску." if resumed else "в роботі."), t["chat"], t["mid"])
     api("sendChatAction", chat_id=t["chat"], action="typing")
     prompt = f"""Ти AI-асистент Михайла (CAS Development) у робочій групі команди «{t['group']}».
 Правила: прочитай tools/assistant/playbooks/00-core.md. Пам'ять — локальна папка {MEMORY}.
@@ -362,6 +363,12 @@ def main():
     state = load_state()
     global ME
     ME = api("getMe"); LOG(f"бот @{ME['username']} запущено; власник {OWNER}; групи {sorted(GROUPS)}; пам'ять {MEMORY}")
+    for t in [t for t in state.get("tasks", {}).values() if t.get("status") == "work"]:
+        LOG("продовжую обірвану задачу", t["n"])                # перезапуск бота посеред роботи
+        try:
+            start_task(t, state); save_state(state)
+        except Exception as e:
+            LOG("задача", t["n"], "не відновилась:", repr(e)); t["status"] = "error"; save_state(state)
     while True:
         try:
             updates = api("getUpdates", offset=state["offset"], timeout=50, allowed_updates='["message","callback_query"]')
