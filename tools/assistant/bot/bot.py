@@ -111,7 +111,7 @@ def build_prompt(kind, content, caption):
 Редагуй файли напряму, не через Google Drive. Google Drive, Calendar і Plaud доступні лише якщо підключені як MCP (claude mcp list); записи зустрічей бери через інструменти Plaud, якщо вони є.
 Голосові/аудіо розшифровуй: tools/assistant/bin/transcribe.sh <файл>.
 PDF ти вмієш робити сам: запиши текст у Markdown-файл у ~/.assistant/tmp, запусти
-tools/assistant/bin/md2pdf.sh <файл.md> і додай рядок SEND_FILE з шляхом до PDF. Ніколи не пиши,
+tools/assistant/bin/md2pdf.sh <файл.md> (напряму, без «bash» попереду) і додай рядок SEND_FILE з шляхом до PDF. Ніколи не пиши,
 що надіслав файл, якщо команда не повернула шлях до нього.
 
 Нове повідомлення від Михайла ({kind}): {content}
@@ -364,6 +364,7 @@ def start_task(t, state):
 Задачу поставив {t['from']} із команди, Михайло її погодив. Виконай її до кінця.
 {('Вкладення (' + t['att'] + ') — прочитай його; голосові розшифровуй tools/assistant/bin/transcribe.sh <файл>.') if t['att'] else ''}
 PDF: запиши Markdown у ~/.assistant/tmp, запусти tools/assistant/bin/md2pdf.sh <файл.md> і додай рядок SEND_FILE.
+Скрипти запускай НАПРЯМУ шляхом tools/assistant/bin/…, без «bash»/«sh» попереду — інакше дозвіл не спрацює.
 
 ВІДПОВІДЬ ПОБАЧИТЬ УСЯ ГРУПА. Не розкривай особисте Михайла (здоровʼя, сімʼя, фінанси, борги), суми договорів
 і контакти клієнтів поза задачею, закупівельні ціни бригад і нашу націнку (price-contractor). Не пиши й не надсилай
