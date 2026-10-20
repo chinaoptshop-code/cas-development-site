@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://cas-development.com.ua/sitemap.xml
+
+Sitemap: https://cas-develop.com/sitemap.xml

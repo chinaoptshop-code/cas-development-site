@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+<defs><linearGradient id="g" gradientUnits="userSpaceOnUse" x1="110" y1="80" x2="312" y2="300">
+  <stop offset="0" stop-color="#8a6f3a"/><stop offset=".45" stop-color="#EADCB4"/>
+  <stop offset="1" stop-color="#9c7f45"/></linearGradient></defs><rect width="400" height="400" fill="#3b3b3b"/>
+<g fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter">
+  <path d="M217 85 L217 250"/>
+  <path d="M217 85 L281 124 L281 250"/>
+  <path d="M217 85 L142 141 L142 250"/>
+  <path d="M163 170 L217 145"/>
+  <path d="M163 170 L163 250"/></g>
+<line x1="108" y1="252" x2="312" y2="252" stroke="url(#g)" stroke-width="4.5"/>
+<text x="210" y="322" text-anchor="middle" font-family="Avenir Next, Futura, Helvetica, sans-serif"
+  font-size="68" letter-spacing="14" fill="url(#g)">CAS</text>
+<text x="210" y="357" text-anchor="middle" font-family="Avenir Next, Futura, Helvetica, sans-serif"
+  font-size="23" letter-spacing="8" fill="#d8d8d8">DEVELOPMENT</text></svg>
