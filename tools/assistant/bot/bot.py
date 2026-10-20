@@ -388,7 +388,7 @@ PDF: запиши Markdown у ~/.assistant/tmp, запусти tools/assistant/b
     prompt, tools = (client, CLIENT_ALLOWED) if t.get("role") == "client" else (team, GROUP_ALLOWED)
     t["sid"] = str(uuid.uuid4())
     try:
-        out = run_claude(prompt, t["sid"], False, tools, 45)
+        out = run_claude(prompt, t["sid"], False, tools, 65)
     except subprocess.TimeoutExpired:
         out = "⚠️ Не встиг за 15 хвилин. Розбийте задачу на менші частини."
     if t.get("own"):                                       # задача самого Михайла — одразу в групу
