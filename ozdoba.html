@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Оздоба — комплектація інтер'єрів з Китаю | CAS Development</title>
+<meta name="description" content="Оздоба від CAS Development: світло, меблі, декор і матеріали для квартир, кафе, ресторанів, офісів і готелів. Комплекти під обʼєкт, доставка по Україні, рахунок для ФОП і ТОВ.">
+<link rel="canonical" href="https://cas-develop.com/ozdoba">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Оздоба — комплектація інтер'єрів | CAS Development">
+<meta property="og:description" content="Світло, меблі, декор і матеріали під ваш обʼєкт: квартира, кафе, ресторан, офіс, готель.">
+<meta property="og:url" content="https://cas-develop.com/ozdoba">
+<meta property="og:locale" content="uk_UA">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{
+  --ink:#17120E; --surface:#211A15; --surface-2:#2C231C; --line:#3A2E25;
+  --brass:#C79A4E; --glow:#FFD29A; --cream:#EFE7DA; --muted:#988A7A;
+  --ok:#86B06A; --r:14px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--ink);color:var(--cream);font-family:"Manrope",system-ui,sans-serif;
+  font-size:15px;line-height:1.5;padding-bottom:104px;overscroll-behavior-y:contain}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;letter-spacing:.01em;margin:0}
+.serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;text-align:left}
+input,select{font:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px;border-radius:6px}
+
+/* header */
+.top{position:sticky;top:0;z-index:40;background:var(--ink);
+  padding:12px 16px 10px;display:flex;align-items:center;gap:9px;border-bottom:1px solid transparent}
+.top.stuck{border-bottom-color:var(--line)}
+.brand{font-family:"Cormorant Garamond",serif;font-size:24px;line-height:1;flex:1}
+.brand span{color:var(--brass)}
+.ico{width:38px;height:38px;border:1px solid var(--line);border-radius:11px;display:grid;place-items:center;
+  background:var(--surface);position:relative}
+.ico svg{width:18px;height:18px;stroke:var(--cream);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ico.on{border-color:var(--brass)}
+.ico.on svg{stroke:var(--glow)}
+.badge{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;border-radius:9px;
+  background:var(--brass);color:#1B1408;font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 5px}
+
+.searchwrap{padding:0 16px 10px;display:none}
+.searchwrap.on{display:block}
+.searchwrap input{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:11px;
+  padding:12px 14px;color:var(--cream)}
+
+/* venues */
+.vhead{padding:4px 16px 8px;font-size:11.5px;color:var(--muted)}
+.venues{display:flex;gap:8px;overflow-x:auto;padding:0 16px 14px;scrollbar-width:none}
+.venues::-webkit-scrollbar{display:none}
+.venue{flex:0 0 auto;width:104px;border:1px solid var(--line);border-radius:13px;padding:11px 10px 10px;
+  background:var(--surface);display:flex;flex-direction:column;gap:7px}
+.venue svg{width:22px;height:22px;stroke:var(--brass);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.venue b{font-weight:600;font-size:12.5px;line-height:1.25}
+.venue em{font-style:normal;font-size:10.5px;color:var(--muted)}
+.venue[aria-pressed="true"]{border-color:var(--brass);background:var(--surface-2)}
+.venue[aria-pressed="true"] b{color:var(--glow)}
+
+/* tabs */
+.tabs{display:flex;gap:22px;padding:0 16px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.tab{padding:9px 0 11px;font-size:14px;color:var(--muted);font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tab[aria-pressed="true"]{color:var(--cream);border-bottom-color:var(--brass)}
+
+/* toolbar */
+.chips{display:flex;gap:7px;overflow-x:auto;padding:0 16px 12px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:#1B1509;font-weight:600}
+.sortrow{display:flex;align-items:center;justify-content:space-between;padding:0 16px 12px;gap:12px}
+.sortrow .cnt{font-size:12px;color:var(--muted)}
+.sortrow select{background:var(--surface);border:1px solid var(--line);border-radius:9px;
+  padding:7px 10px;color:var(--cream);font-size:12.5px}
+
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px}
+@media(min-width:620px){.grid{grid-template-columns:repeat(3,1fr);max-width:1000px;margin:0 auto}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(4,1fr)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  display:flex;flex-direction:column;position:relative}
+.card:active{border-color:var(--brass)}
+.tile{position:relative;aspect-ratio:4/3;display:grid;place-items:center;color:var(--brass);
+  background:radial-gradient(60% 70% at 50% 42%,#3B2E22 0%,#221A14 62%,#1B1510 100%)}
+.tile svg{width:66%;height:66%;overflow:visible}
+.tile::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(45% 45% at 50% 40%,rgba(255,210,154,.15),transparent 70%)}
+.heart{position:absolute;top:7px;right:7px;width:30px;height:30px;border-radius:50%;
+  background:rgba(23,18,14,.66);display:grid;place-items:center;z-index:2}
+.heart svg{width:15px;height:15px;stroke:var(--cream);fill:none;stroke-width:1.9}
+.heart.on svg{fill:var(--brass);stroke:var(--brass)}
+.card .body{padding:9px 11px 12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card .nm{font-family:"Cormorant Garamond",serif;font-size:16.5px;line-height:1.2}
+.card .sub{font-size:10.5px;color:var(--muted)}
+.card .pr{margin-top:auto;padding-top:5px;font-weight:700;font-size:14px;color:var(--glow)}
+.card .pr small{font-weight:500;color:var(--muted);font-size:11px}
+.sw{display:flex;gap:3px;margin-top:5px}
+.sw i{width:11px;height:11px;border-radius:50%;display:block;border:1px solid rgba(255,255,255,.18)}
+
+/* bundles */
+.blist{padding:0 14px;display:grid;gap:11px}
+@media(min-width:700px){.blist{grid-template-columns:1fr 1fr;max-width:1000px;margin:0 auto}}
+.bcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  display:flex;gap:12px;padding:12px;align-items:center}
+.bcard:active{border-color:var(--brass)}
+.bcard .art{width:74px;height:74px;flex:0 0 74px;border-radius:11px;display:grid;place-items:center;color:var(--brass);
+  background:radial-gradient(62% 70% at 50% 44%,#3E3025,#1D1610)}
+.bcard .art svg{width:60%;height:60%}
+.bcard .info{flex:1;min-width:0}
+.bcard h3{font-size:19px;line-height:1.15;margin-bottom:3px}
+.bcard .note{font-size:11.5px;color:var(--muted);line-height:1.4}
+.bcard .pr{margin-top:7px;font-weight:700;font-size:14px;color:var(--glow)}
+.bcard .pr s{color:var(--muted);font-weight:500;font-size:12px;margin-left:6px}
+
+/* sheets */
+.scrim{position:fixed;inset:0;background:rgba(10,7,5,.74);z-index:50;opacity:0;pointer-events:none;transition:opacity .2s}
+.scrim.open{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--surface);
+  border-radius:20px 20px 0 0;border-top:1px solid var(--line);max-height:90vh;overflow-y:auto;
+  transform:translateY(102%);transition:transform .26s cubic-bezier(.22,1,.36,1);
+  padding-bottom:max(18px,env(safe-area-inset-bottom))}
+.sheet.open{transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.sheet{transition:none}}
+.grab{width:38px;height:4px;border-radius:9px;background:var(--line);margin:9px auto 4px}
+.sh-pad{padding:6px 18px 18px}
+.sh-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:6px}
+.sh-head h2{font-size:24px;line-height:1.15;flex:1}
+.x{font-size:21px;color:var(--muted);line-height:1;padding:2px 6px}
+
+.hero-art{aspect-ratio:16/10;border-radius:12px;display:grid;place-items:center;
+  background:radial-gradient(58% 68% at 50% 44%,#3E3025 0%,#241C15 62%,#1B1510 100%);margin-bottom:13px}
+.hero-art svg{width:46%;height:46%;overflow:visible;transition:color .22s}
+.desc{font-size:13.5px;color:var(--muted);line-height:1.55;margin:0 0 13px;max-width:52ch}
+.meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.tag{border:1px solid var(--line);border-radius:7px;padding:4px 9px;font-size:11.5px;color:var(--muted)}
+.lbl{font-size:11.5px;color:var(--muted);margin:0 0 8px;display:flex;justify-content:space-between}
+.lbl b{color:var(--cream);font-weight:600}
+
+.swatches{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:17px}
+.swatch{width:36px;height:36px;border-radius:50%;border:2px solid transparent;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);position:relative}
+.swatch[aria-pressed="true"]{border-color:var(--brass)}
+.opts{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:17px}
+.opt{border:1px solid var(--line);border-radius:10px;padding:8px 11px;font-size:13px;color:var(--muted);line-height:1.2}
+.opt small{display:block;font-size:10.5px;margin-top:3px;opacity:.75}
+.opt[aria-pressed="true"]{border-color:var(--brass);color:var(--glow);background:var(--surface-2)}
+
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;width:fit-content}
+.qty button{width:40px;height:40px;font-size:19px;color:var(--brass);text-align:center}
+.qty span{min-width:40px;text-align:center;font-weight:700}
+.qty.sm button{width:30px;height:30px;font-size:16px}
+.qty.sm span{min-width:30px;font-size:13px}
+
+.priceline{display:flex;align-items:baseline;gap:10px;margin:18px 0 4px}
+.priceline .big{font-family:"Cormorant Garamond",serif;font-size:32px;color:var(--glow);line-height:1}
+.priceline .per{font-size:12px;color:var(--muted)}
+.hint{font-size:12px;color:var(--muted);margin:0 0 14px}
+
+.btn{display:block;width:100%;text-align:center;background:var(--brass);color:#1B1408;font-weight:700;
+  border-radius:12px;padding:15px;font-size:15px;margin-top:12px}
+.btn:active{filter:brightness(.92)}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--cream);font-weight:600}
+.btn2{display:flex;gap:9px}
+.btn2 .btn{margin-top:12px}
+
+/* rows */
+.ci{display:flex;gap:11px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
+.ci .art{width:54px;height:54px;flex:0 0 54px;border-radius:9px;display:grid;place-items:center;color:var(--brass);
+  background:radial-gradient(60% 70% at 50% 45%,#3B2E22,#1D1610)}
+.ci .art svg{width:60%;height:60%}
+.ci .info{flex:1;min-width:0}
+.ci .info b{display:block;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:16px;line-height:1.2}
+.ci .info em{font-style:normal;font-size:11px;color:var(--muted);display:block;margin-top:2px}
+.ci .right{text-align:right;white-space:nowrap}
+.ci .right .s{font-weight:700;font-size:13.5px;color:var(--glow);display:block;margin-bottom:5px}
+.rm{font-size:11px;color:var(--muted);font-weight:500;padding:3px 0}
+
+.sum{display:flex;justify-content:space-between;padding:8px 0;font-size:13.5px;color:var(--muted)}
+.sum.disc{color:var(--ok)}
+.sum.total{font-size:17px;color:var(--cream);font-weight:700;border-top:1px solid var(--line);margin-top:8px;padding-top:14px}
+.empty{text-align:center;color:var(--muted);padding:44px 24px;font-size:14px;line-height:1.6}
+.promo{display:flex;gap:8px;margin:12px 0 4px}
+.promo input{flex:1;background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:11px 12px;color:var(--cream);font-size:14px}
+.promo button{border:1px solid var(--line);border-radius:10px;padding:0 16px;font-size:13px;font-weight:600}
+
+/* checkout */
+.field{margin-bottom:11px}
+.field label{display:block;font-size:11.5px;color:var(--muted);margin-bottom:6px}
+.field input{width:100%;background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:13px;color:var(--cream);font-size:15px}
+.field input:focus{outline:2px solid var(--brass);outline-offset:-1px;border-color:transparent}
+.pay{display:flex;gap:12px;align-items:flex-start;width:100%;border:1px solid var(--line);
+  border-radius:12px;padding:13px;margin-bottom:9px;background:var(--ink)}
+.pay[aria-pressed="true"]{border-color:var(--brass);background:var(--surface-2)}
+.pay .dot{width:17px;height:17px;flex:0 0 17px;border:1.5px solid var(--line);border-radius:50%;margin-top:2px}
+.pay[aria-pressed="true"] .dot{border-color:var(--brass);box-shadow:inset 0 0 0 4px var(--brass)}
+.pay b{display:block;font-weight:600;font-size:14px}
+.pay small{display:block;color:var(--muted);font-size:12px;margin-top:3px;line-height:1.45}
+.banks{display:flex;gap:5px;margin-top:8px}
+.banks i{width:19px;height:19px;border-radius:50%;display:block}
+.done{text-align:center;padding:28px 10px 10px}
+.done .ring{width:56px;height:56px;border-radius:50%;border:2px solid var(--brass);
+  display:grid;place-items:center;margin:0 auto 15px;color:var(--brass);font-size:24px}
+.demo{border:1px dashed var(--line);border-radius:10px;padding:12px;font-size:12px;
+  color:var(--muted);line-height:1.5;margin-top:16px}
+.demo code{color:var(--brass);font-size:11.5px}
+
+/* bar + toast */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:45;padding:12px 16px max(12px,env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,rgba(23,18,14,0),var(--ink) 34%);
+  transform:translateY(130%);transition:transform .22s ease}
+.bar.show{transform:translateY(0)}
+.bar button{width:100%;background:var(--brass);color:#1B1408;font-weight:700;border-radius:13px;
+  padding:16px;text-align:center;font-size:15px}
+.toast{position:fixed;left:16px;right:16px;bottom:88px;z-index:70;background:var(--surface-2);
+  border:1px solid var(--line);border-radius:12px;padding:13px 15px;font-size:13.5px;
+  opacity:0;transform:translateY(10px);transition:.22s;pointer-events:none}
+.toast.on{opacity:1;transform:translateY(0)}
+.note-honest{color:var(--muted);font-size:12.5px;line-height:1.5;margin:10px 2px 0}
+.ozd-info{margin:10px 16px 4px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:12.5px;line-height:1.5}
+.ozd-info a{color:var(--brass)}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="brand">Оздоба<span>.</span></div>
+  <button class="ico" id="btnSearch" onclick="toggleSearch()" aria-label="Пошук">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg></button>
+  <button class="ico" onclick="setTab('fav')" aria-label="Обране">
+    <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.7A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.3C19 15.4 12 20 12 20z"/></svg>
+    <span class="badge" id="favBadge" hidden>0</span></button>
+  <button class="ico" onclick="openCart()" aria-label="Кошик">
+    <svg viewBox="0 0 24 24"><path d="M4 5h2l2.2 10.4A2 2 0 0 0 10.2 17h7.4a2 2 0 0 0 2-1.6L21 8H6.3"/><circle cx="10.5" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></svg>
+    <span class="badge" id="cartBadge" hidden>0</span></button>
+</header>
+
+<div class="searchwrap" id="searchwrap">
+  <input id="q" type="search" placeholder="Знайти: бра, стілець, керамограніт…" oninput="onSearch()">
+</div>
+
+<p class="ozd-info">Комплектація від <a href="https://cas-develop.com/">CAS Development</a> — дизайн, ремонт під ключ і постачання напряму з Китаю. Ціни орієнтовні: остаточну вартість, наявність і строк менеджер підтверджує після заявки.</p>
+<p class="vhead">Що комплектуємо</p>
+<nav class="venues" id="venues"></nav>
+
+<nav class="tabs">
+  <button class="tab" id="tabCatalog" onclick="setTab('catalog')">Каталог</button>
+  <button class="tab" id="tabBundles" onclick="setTab('bundles')">Комплекти</button>
+  <button class="tab" id="tabFav" onclick="setTab('fav')">Обране</button>
+</nav>
+
+<div id="viewCatalog">
+  <nav class="chips" id="chips"></nav>
+  <div class="sortrow">
+    <span class="cnt" id="cnt"></span>
+    <select id="sort" onchange="renderGrid()">
+      <option value="pop">Спочатку ходові</option>
+      <option value="asc">Дешевші спершу</option>
+      <option value="desc">Дорожчі спершу</option>
+      <option value="az">За назвою</option>
+    </select>
+  </div>
+  <main class="grid" id="grid"></main>
+</div>
+
+<div id="viewBundles" hidden><div class="blist" id="blist"></div></div>
+<div id="viewFav" hidden><main class="grid" id="favGrid"></main></div>
+
+<div class="bar" id="bar"><button onclick="openCart()" id="barTxt">Кошик</button></div>
+<div class="toast" id="toast"></div>
+
+<div class="scrim" id="scrim" onclick="closeAll()"></div>
+<section class="sheet" id="sheetItem" role="dialog" aria-modal="true"><div class="grab"></div><div class="sh-pad" id="itemBody"></div></section>
+<section class="sheet" id="sheetBundle" role="dialog" aria-modal="true"><div class="grab"></div><div class="sh-pad" id="bundleBody"></div></section>
+<section class="sheet" id="sheetCart" role="dialog" aria-modal="true"><div class="grab"></div><div class="sh-pad" id="cartBody"></div></section>
+<section class="sheet" id="sheetPay" role="dialog" aria-modal="true"><div class="grab"></div><div class="sh-pad" id="payBody"></div></section>
+
+<script>
+const DATA = {"items":[{"id":1,"cat":"Освітлення","sub":"Освітлення / підвісне","name":"Підвіс рейковий дерев'яний, циліндр 120 см","en":"wooden slat tube pendant light","unit":"шт","price":8900,"art":"pendant_tube","prio":"A","desc":"Рейковий циліндр з масиву. Головний акцент над барною стійкою або довгим столом.","cs":"wood","ss":"pend_l","vn":["cafe","hotel","office","resto","shop"]},{"id":2,"cat":"Освітлення","sub":"Освітлення / підвісне","name":"Лінійна модульна підвісна система, 3 секції","en":"linear modular pendant lighting","unit":"компл","price":14500,"art":"pendant_linear","prio":"B","desc":"Модульна система: секції стикуються в лінію потрібної довжини.","cs":"metal","ss":"pend_l","vn":["cafe","office","resto","shop"]},{"id":3,"cat":"Освітлення","sub":"Освітлення / підвісне","name":"Підвіс з тканинним циліндричним абажуром","en":"fabric cylinder pendant lamp","unit":"шт","price":3400,"art":"pendant_drum","prio":"A","desc":"Мʼяке розсіяне світло, тканинний абажур на металевому каркасі.","cs":"textile","ss":"pend_d","vn":["apt","beauty","cafe","hotel","resto"]},{"id":4,"cat":"Освітлення","sub":"Освітлення / підвісне","name":"Підвіс плетений з ротангу","en":"rattan pendant light","unit":"шт","price":2900,"art":"pendant_rattan","prio":"B","desc":"Ручне плетіння, теплі тіні на стелі й стінах.","cs":"wood","ss":"pend_d","vn":["apt","cafe","hotel","resto","spa"]},{"id":5,"cat":"Освітлення","sub":"Освітлення / настінне","name":"Бра-туба латунь з рифленим склом","en":"brass fluted glass wall sconce","unit":"шт","price":4200,"art":"sconce_tube","prio":"A","desc":"Рифлене скло в латунній обоймі. Класична пара біля дзеркала.","cs":"metal","ss":"sconce_h","vn":["apt","beauty","hotel","resto","spa"]},{"id":6,"cat":"Освітлення","sub":"Освітлення / настінне","name":"Бра з тканинним абажуром, циліндр","en":"fabric cylinder wall sconce","unit":"шт","price":2600,"art":"sconce_fabric","prio":"A","desc":"Прямокутний тканинний абажур, світло вгору і вниз.","cs":"textile","ss":"sconce_h","vn":["apt","hotel","office","resto"]},{"id":7,"cat":"Освітлення","sub":"Освітлення / настінне","name":"Бра на гнучкій опорі (gooseneck)","en":"gooseneck wall lamp brass","unit":"шт","price":2300,"art":"sconce_gooseneck","prio":"B","desc":"Гнучка опора: світло наводиться на картину чи полицю.","cs":"metal","ss":"sconce_h","vn":["apt","cafe","hotel","resto","shop"]},{"id":8,"cat":"Освітлення","sub":"Освітлення / настінне","name":"Настінний свічник-полиця з підсвіткою","en":"wall candle holder sconce","unit":"шт","price":1350,"art":"sconce_candle","prio":"C","desc":"Полиця під свічку з підсвіткою знизу.","cs":"metal","ss":null,"vn":["hotel","resto","spa"]},{"id":9,"cat":"Освітлення","sub":"Освітлення / технічне","name":"Спот трековий поворотний, чорний","en":"black track spotlight LED","unit":"шт","price":1150,"art":"spot","prio":"A","desc":"Поворотний на 350°, нахил 90°. Під акцентне освітлення столів і вітрин.","cs":"metal","ss":null,"vn":["apt","beauty","cafe","hotel","office","resto","shop","spa"]},{"id":10,"cat":"Освітлення","sub":"Освітлення / технічне","name":"Шина магнітна трекова, 1 м","en":"magnetic track rail system","unit":"м","price":890,"art":"track","prio":"A","desc":"Магнітна шина, врізна або накладна. Стикується в лінії будь-якої довжини.","cs":"metal","ss":null,"vn":["beauty","cafe","office","resto","shop"]},{"id":11,"cat":"Освітлення","sub":"Освітлення / технічне","name":"LED-профіль алюмінієвий з розсіювачем, 2 м","en":"aluminum LED profile diffuser","unit":"шт","price":420,"art":"profile","prio":"A","desc":"Під LED-стрічку: ніші, карнизи, підсвітка стелажів.","cs":"metal","ss":null,"vn":["apt","beauty","cafe","hotel","office","resto","shop","spa"]},{"id":12,"cat":"Освітлення","sub":"Освітлення / технічне","name":"Світильник підлоговий врізний, ґрунтовий","en":"recessed floor uplight IP67","unit":"шт","price":1400,"art":"uplight","prio":"B","desc":"IP67, витримує мийку підлоги. Підсвітка колон і перегородок.","cs":"metal","ss":null,"vn":["hotel","resto","shop","spa"]},{"id":13,"cat":"Освітлення","sub":"Освітлення / технічне","name":"Дзеркало з LED-підсвіткою, овал 50×80","en":"backlit LED mirror oval","unit":"шт","price":5600,"art":"mirror_led","prio":"A","desc":"Контурна підсвітка 3000K, антизапотівання.","cs":"metal","ss":"mirror_sz","vn":["apt","beauty","hotel","spa"]},{"id":14,"cat":"Освітлення","sub":"Освітлення / переносне","name":"Лампа настільна акумуляторна, латунь","en":"cordless rechargeable table lamp restaurant","unit":"шт","price":1890,"art":"lamp_cordless","prio":"A","desc":"Акумулятор до 20 годин, 3 рівні яскравості, зарядна база на 6 ламп.","cs":"metal","ss":null,"vn":["beauty","cafe","hotel","resto"]},{"id":15,"cat":"Освітлення","sub":"Освітлення / переносне","name":"Лампа настільна «гриб», кераміка","en":"mushroom table lamp ceramic","unit":"шт","price":2400,"art":"lamp_mushroom","prio":"B","desc":"Керамічна основа, димер на корпусі.","cs":"ceramic","ss":null,"vn":["apt","cafe","hotel","office"]},{"id":16,"cat":"Освітлення","sub":"Освітлення / переносне","name":"Торшер з конічним абажуром","en":"floor lamp large cone shade","unit":"шт","price":6800,"art":"floor_cone","prio":"B","desc":"Великий конічний абажур, мʼяке заповнювальне світло.","cs":"textile","ss":"height","vn":["apt","hotel","office"]},{"id":17,"cat":"Освітлення","sub":"Освітлення / переносне","name":"Торшер-колона зі світловим циліндром","en":"cylinder column floor lamp","unit":"шт","price":9200,"art":"floor_column","prio":"C","desc":"Світлова колона: працює і як світильник, і як зонувальний обʼєм.","cs":"textile","ss":"height","vn":["hotel","resto","spa"]},{"id":18,"cat":"Меблі","sub":"Меблі / посадкові","name":"Стілець дерев'яний з плетеним сидінням","en":"rattan woven dining chair solid wood","unit":"шт","price":4900,"art":"chair_rattan","prio":"A","desc":"Масив + ручне плетіння. Витримує інтенсивну експлуатацію в залі.","cs":"wood","ss":null,"vn":["apt","cafe","hotel","resto","shop"]},{"id":19,"cat":"Меблі","sub":"Меблі / посадкові","name":"Крісло-карвер м'яке, букле, з підлокітниками","en":"upholstered boucle armchair wood frame","unit":"шт","price":8400,"art":"armchair","prio":"A","desc":"Каркас з масиву, знімні чохли, тканина під заміну.","cs":"fabric","ss":null,"vn":["apt","beauty","hotel","office","resto"]},{"id":20,"cat":"Меблі","sub":"Меблі / посадкові","name":"Крісло лаунж, тканина «ялинка»","en":"herringbone fabric lounge chair","unit":"шт","price":11500,"art":"lounge","prio":"B","desc":"Низька посадка для лаунж-зон і зон очікування.","cs":"fabric","ss":null,"vn":["apt","hotel","office","resto","spa"]},{"id":21,"cat":"Меблі","sub":"Меблі / посадкові","name":"Диван-банкетка ресторанна, 180 см","en":"restaurant banquette sofa","unit":"шт","price":18900,"art":"banquette","prio":"B","desc":"Секційна: збирається в лінію вздовж стіни.","cs":"fabric","ss":"sofa_l","vn":["cafe","hotel","office","resto"]},{"id":22,"cat":"Меблі","sub":"Меблі / посадкові","name":"Пуф круглий м'який","en":"round upholstered ottoman pouf","unit":"шт","price":3200,"art":"pouf","prio":"A","desc":"Додаткова посадка, яка не займає місця.","cs":"fabric","ss":null,"vn":["apt","beauty","hotel","resto","spa"]},{"id":23,"cat":"Меблі","sub":"Меблі / посадкові","name":"Табурет-пень з масиву","en":"natural wood stump stool","unit":"шт","price":2100,"art":"stump","prio":"C","desc":"Зріз масиву, кожен екземпляр унікальний.","cs":"wood","ss":null,"vn":["cafe","resto","spa"]},{"id":24,"cat":"Меблі","sub":"Меблі / посадкові","name":"Стілець барний дерев'яний","en":"wooden bar stool","unit":"шт","price":5400,"art":"barstool","prio":"B","desc":"Підніжка з латуні, стійка до стирання.","cs":"wood","ss":"stool_h","vn":["cafe","resto","shop"]},{"id":25,"cat":"Меблі","sub":"Меблі / столи","name":"Стіл обідній банкетний з масиву, 240 см","en":"solid wood banquet dining table","unit":"шт","price":32000,"art":"table_long","prio":"B","desc":"Суцільний масив, зрощена стільниця, підстілля з масиву.","cs":"wood","ss":"table_l","vn":["apt","hotel","office","resto"]},{"id":26,"cat":"Меблі","sub":"Меблі / столи","name":"Стіл круглий на дисковій опорі, ⌀70","en":"round cafe table metal base","unit":"шт","price":7200,"art":"table_round","prio":"A","desc":"Дискова база з чавуну — не хитається на нерівній підлозі.","cs":"wood","ss":"table_r","vn":["apt","cafe","hotel","office","resto"]},{"id":27,"cat":"Меблі","sub":"Меблі / столи","name":"Стіл ресторанний квадратний, 70×70","en":"restaurant table cast iron base","unit":"шт","price":6100,"art":"table_square","prio":"A","desc":"Чавунна база, стільниця під заміну без демонтажу.","cs":"wood","ss":"table_s","vn":["cafe","resto"]},{"id":28,"cat":"Меблі","sub":"Меблі / корпусні","name":"Комод-сервант з різьбленим фасадом","en":"carved front sideboard credenza","unit":"шт","price":24000,"art":"sideboard","prio":"C","desc":"Різьблений фасад, доводчики. Під сервіровку або касову зону.","cs":"wood","ss":null,"vn":["apt","hotel","office","resto","shop"]},{"id":29,"cat":"Меблі","sub":"Меблі / корпусні","name":"Консоль під накладні раковини, масив","en":"solid wood vanity console","unit":"шт","price":19500,"art":"vanity","prio":"B","desc":"Масив з водовідштовхувальним покриттям, нижня полиця.","cs":"wood","ss":null,"vn":["apt","beauty","hotel","resto","spa"]},{"id":30,"cat":"Меблі","sub":"Меблі / корпусні","name":"Стелаж вітринний металевий з підсвіткою","en":"backlit display shelving unit","unit":"шт","price":27000,"art":"shelving","prio":"C","desc":"Металевий каркас з LED-підсвіткою кожної секції.","cs":"metal","ss":null,"vn":["beauty","office","resto","shop"]},{"id":31,"cat":"Сантехніка","sub":"Сантехніка","name":"Раковина накладна кругла, кераміка","en":"round countertop vessel basin","unit":"шт","price":3800,"art":"basin","prio":"A","desc":"Накладна, товщина стінки 12 мм, брудовідштовхувальна глазур.","cs":"ceramic","ss":null,"vn":["apt","beauty","hotel","resto","spa"]},{"id":32,"cat":"Сантехніка","sub":"Сантехніка","name":"Змішувач високий для накладної раковини","en":"tall vessel sink faucet","unit":"шт","price":4600,"art":"faucet","prio":"A","desc":"Керамічний картридж, аератор проти бризок.","cs":"metal","ss":null,"vn":["apt","beauty","hotel","resto","spa"]},{"id":33,"cat":"Сантехніка","sub":"Сантехніка","name":"Дзеркало овальне в металевій рамі","en":"oval metal frame mirror","unit":"шт","price":3900,"art":"mirror","prio":"A","desc":"Металева рама, кріплення приховане.","cs":"metal","ss":"mirror_sz","vn":["apt","beauty","hotel","resto","spa"]},{"id":34,"cat":"Сантехніка","sub":"Сантехніка","name":"Урна декоративна, метал/кераміка","en":"decorative waste bin bathroom","unit":"шт","price":1700,"art":"bin","prio":"B","desc":"Внутрішнє відро виймається, обʼєм 12 л.","cs":"ceramic","ss":null,"vn":["apt","beauty","hotel","office","resto","spa"]},{"id":35,"cat":"Сантехніка","sub":"Сантехніка","name":"Дозатор для мила з підставкою","en":"soap dispenser tray set","unit":"компл","price":980,"art":"dispenser","prio":"B","desc":"Помпа з нержавіючої сталі, підставка в комплекті.","cs":"metal","ss":null,"vn":["beauty","hotel","resto","spa"]},{"id":36,"cat":"Сантехніка","sub":"Сантехніка","name":"Тримач для рушників з лотком","en":"towel tray holder brass","unit":"шт","price":1250,"art":"towel","prio":"C","desc":"Настінний, з лотком під амініті.","cs":"metal","ss":null,"vn":["beauty","hotel","resto","spa"]},{"id":37,"cat":"Оздоблення","sub":"Оздоблення","name":"Панель рейкова з масиву, 2.8 м","en":"solid wood slat wall panel","unit":"шт","price":2400,"art":"slat_panel","prio":"A","desc":"Рейка з масиву на повстяній основі. Ріже шум, монтується на клей.","cs":"finish","ss":"panel_h","vn":["apt","beauty","cafe","hotel","office","resto","shop","spa"]},{"id":38,"cat":"Оздоблення","sub":"Оздоблення","name":"Перегородка ґратчаста дерев'яна","en":"wooden lattice room divider","unit":"м²","price":5900,"art":"lattice","prio":"B","desc":"Зонувальна перегородка: ділить простір, не перекриваючи світло.","cs":"finish","ss":null,"vn":["apt","hotel","office","resto","shop"]},{"id":39,"cat":"Оздоблення","sub":"Оздоблення","name":"3D-панель різьблена з латунними шпильками, 60×60","en":"3D carved wood wall panel brass stud","unit":"шт","price":3600,"art":"panel_3d","prio":"B","desc":"Різьблений рельєф з латунними шпильками, модуль 60×60.","cs":"finish","ss":null,"vn":["hotel","office","resto","shop"]},{"id":40,"cat":"Оздоблення","sub":"Оздоблення","name":"Керамограніт великоформатний під камінь, 120×60","en":"large format porcelain stone tile","unit":"м²","price":1250,"art":"tile","prio":"A","desc":"Ректифікований керамограніт 9 мм, протиковзкість R10.","cs":"stone","ss":"tile_sz","vn":["apt","beauty","cafe","hotel","office","resto","shop","spa"]},{"id":41,"cat":"Оздоблення","sub":"Оздоблення","name":"Панель декоративна під скелю","en":"artificial rock wall panel","unit":"м²","price":1900,"art":"rock_panel","prio":"C","desc":"Легка панель під дикий камінь, вага 6 кг/м².","cs":"stone","ss":null,"vn":["hotel","resto","spa"]},{"id":42,"cat":"Оздоблення","sub":"Оздоблення","name":"Паркет дубовий інженерний","en":"engineered oak flooring","unit":"м²","price":2300,"art":"flooring","prio":"B","desc":"Шар зносу 4 мм, замок Click, сумісний з теплою підлогою.","cs":"finish","ss":null,"vn":["apt","beauty","cafe","hotel","office","resto","shop","spa"]},{"id":43,"cat":"Текстиль","sub":"Текстиль","name":"Килим джутовий з бахромою, 200×300","en":"jute rug with fringe","unit":"шт","price":7400,"art":"rug_jute","prio":"A","desc":"Ручне плетіння з джуту, бахрома по короткій стороні.","cs":"textile","ss":"rug","vn":["apt","hotel","office","resto"]},{"id":44,"cat":"Текстиль","sub":"Текстиль","name":"Килим вовняний петельний, 200×300","en":"wool loop pile rug","unit":"шт","price":16500,"art":"rug_wool","prio":"C","desc":"Вовна 100%, петельне ворсування, антистатик.","cs":"textile","ss":"rug","vn":["apt","hotel","office"]},{"id":45,"cat":"Текстиль","sub":"Текстиль","name":"Штори блекаут + тюль, комплект","en":"ready made blackout curtain sheer set","unit":"компл","price":5200,"art":"curtain","prio":"B","desc":"Комплект блекаут + тюль, пошиття під ваш розмір.","cs":"textile","ss":"curtain_w","vn":["apt","hotel","office","resto"]},{"id":46,"cat":"Текстиль","sub":"Текстиль","name":"Подушка-валик декоративна","en":"bolster cushion decorative","unit":"шт","price":890,"art":"bolster","prio":"B","desc":"Валик з знімним чохлом, наповнювач холофайбер.","cs":"fabric","ss":null,"vn":["apt","hotel","resto"]},{"id":47,"cat":"Текстиль","sub":"Текстиль","name":"Подушка декоративна 45×45","en":"decorative throw pillow","unit":"шт","price":640,"art":"pillow","prio":"A","desc":"Чохол на потайній блискавці, тканина під заміну.","cs":"fabric","ss":null,"vn":["apt","beauty","hotel","office","resto"]},{"id":48,"cat":"Декор","sub":"Декор","name":"Ваза керамічна глазурована","en":"ceramic vase glazed","unit":"шт","price":1450,"art":"vase","prio":"A","desc":"Реактивна глазур, кожен виріб з унікальним переливом.","cs":"ceramic","ss":null,"vn":["apt","beauty","cafe","hotel","office","resto","shop","spa"]},{"id":49,"cat":"Декор","sub":"Декор","name":"Кашпо керамічне рельєфне, 40 см","en":"textured ceramic planter","unit":"шт","price":2100,"art":"planter","prio":"A","desc":"Рельєфна поверхня, дренажний піддон у комплекті.","cs":"ceramic","ss":"planter_d","vn":["apt","beauty","cafe","hotel","office","resto","shop","spa"]},{"id":50,"cat":"Декор","sub":"Декор","name":"Пампасна трава сушена, пучок","en":"dried pampas grass decor","unit":"пучок","price":380,"art":"pampas","prio":"A","desc":"Стабілізований сухоцвіт, не осипається, без догляду.","cs":"dry","ss":null,"vn":["apt","beauty","cafe","hotel","office","resto","shop","spa"]},{"id":51,"cat":"Декор","sub":"Декор","name":"Дерево штучне в кашпо, 180 см","en":"artificial tree in pot 180cm","unit":"шт","price":4800,"art":"tree","prio":"B","desc":"Штучне, шовк преміум. Кашпо в комплекті.","cs":"plant","ss":null,"vn":["apt","beauty","cafe","hotel","office","resto","shop","spa"]},{"id":52,"cat":"Декор","sub":"Декор","name":"Свічник скляний","en":"glass candle holder","unit":"шт","price":320,"art":"candle","prio":"A","desc":"Товсте скло, тримає температуру. Під чайну свічку і стовпчик.","cs":"glass","ss":null,"vn":["apt","beauty","cafe","hotel","resto","spa"]},{"id":53,"cat":"Сервіровка","sub":"Сервіровка","name":"Декантер скляний для вина","en":"glass wine decanter","unit":"шт","price":1100,"art":"decanter","prio":"B","desc":"Ручне видування, обʼєм 1.5 л, широке дно під аерацію.","cs":"glass","ss":null,"vn":["hotel","resto","shop"]},{"id":54,"cat":"Сервіровка","sub":"Сервіровка","name":"Келихи для вина, набір 6","en":"crystal wine glass set 6","unit":"набір","price":1680,"art":"glass","prio":"A","desc":"Тонкостінне кришталеве скло, мийка в посудомийці.","cs":"glass","ss":"set_n","vn":["cafe","hotel","resto"]},{"id":55,"cat":"Сервіровка","sub":"Сервіровка","name":"Тарілка підставна (charger)","en":"charger plate dinnerware","unit":"шт","price":290,"art":"plate","prio":"A","desc":"Підставна тарілка ⌀32, стійка до подряпин від приборів.","cs":"ceramic","ss":"set_n","vn":["cafe","hotel","resto"]},{"id":56,"cat":"Сервіровка","sub":"Сервіровка","name":"Прибори столові, набір 24","en":"stainless steel cutlery set 24","unit":"набір","price":2400,"art":"cutlery","prio":"B","desc":"Нержавіюча сталь 18/10, PVD-покриття.","cs":"metal","ss":"set_n","vn":["cafe","hotel","resto"]},{"id":57,"cat":"Сервіровка","sub":"Сервіровка","name":"Серветка лляна","en":"linen napkin restaurant","unit":"шт","price":180,"art":"napkin","prio":"B","desc":"Льон 100%, витримує 200 промислових прань.","cs":"textile","ss":null,"vn":["cafe","hotel","resto"]},{"id":58,"cat":"Каміни","sub":"Каміни","name":"Біокамін лінійний вбудований, 120 см","en":"linear built-in bioethanol fireplace","unit":"шт","price":34000,"art":"fireplace_bio","prio":"B","desc":"Біоетанол, без димоходу. Витрата 0.5 л/год.","cs":"metal","ss":"fire_l","vn":["apt","hotel","resto","spa"]},{"id":59,"cat":"Каміни","sub":"Каміни","name":"Електрокамін 3D з паровим полум'ям, 100 см","en":"3D water vapor electric fireplace","unit":"шт","price":28500,"art":"fireplace_el","prio":"A","desc":"Паровий 3D-ефект, підсвітка полум'я, робота без нагріву.","cs":"metal","ss":"fire_l","vn":["apt","hotel","office","resto","spa"]}],"colorsets":{"metal":[["Латунь брашована","#B8914F",0],["Чорний мат","#26241F",0],["Бронза антична","#6E5438",0.06],["Хром сатин","#AEB4B9",0.04],["Білий мат","#E6E1D7",0]],"wood":[["Дуб натуральний","#C69A63",0],["Горіх","#6B4A31",0.08],["Ясен білений","#DBCCB2",0.05],["Термоясен","#8A5F3C",0.1],["Чорний морений","#2A2522",0.12]],"fabric":[["Букле крем","#E0D6C3",0],["Ялинка сіра","#A6A498",0.04],["Графіт","#3C3C3A",0.04],["Теракота","#B2664A",0.07],["Індиго","#4B5878",0.07]],"ceramic":[["Білий мат","#EAE6DD",0],["Графіт мат","#3A3A38",0.05],["Беж пісок","#CBB79A",0.05],["Чорний мат","#232220",0.05]],"textile":[["Пісок","#CDBA9A",0],["Крем","#E3D9C7",0],["Графіт","#41413E",0.05],["Олива","#6E6E4E",0.05],["Теракота","#AD6349",0.06]],"finish":[["Дуб","#C69A63",0],["Горіх","#6B4A31",0.09],["Термоясен","#8A5F3C",0.12],["Графіт","#3A3632",0.06]],"glass":[["Прозорий","#D3DDE2",0],["Димчастий","#8A8177",0.06],["Бурштин","#C08A3E",0.08]],"stone":[["Травертин","#C8B79B",0],["Сірий сланець","#7D7A73",0.04],["Темний базальт","#3E3B37",0.08]],"plant":[["Зелений натуральний","#5E7A4A",0],["Сіро-зелений","#7F8C72",0],["Осінній","#9C7A3E",0.05]],"dry":[["Натуральний беж","#D6C4A3",0],["Білений","#E8DFCC",0.05],["Пудровий","#C9A99B",0.08]]},"sizesets":{"pend_l":[["90 см",0.82],["120 см",1],["150 см",1.22],["180 см",1.45]],"pend_d":[["Ø30 см",0.85],["Ø40 см",1],["Ø50 см",1.2]],"sconce_h":[["40 см",0.88],["55 см",1],["70 см",1.18]],"table_r":[["Ø60 см",0.86],["Ø70 см",1],["Ø80 см",1.14],["Ø90 см",1.3]],"table_l":[["180 см",0.78],["240 см",1],["300 см",1.28],["360 см",1.55]],"table_s":[["60×60",0.88],["70×70",1],["80×80",1.12]],"sofa_l":[["140 см",0.8],["180 см",1],["220 см",1.22]],"rug":[["160×230",0.68],["200×300",1],["250×350",1.45]],"tile_sz":[["60×60",0.85],["120×60",1],["120×120",1.35]],"fire_l":[["100 см",0.85],["120 см",1],["150 см",1.2],["180 см",1.42]],"mirror_sz":[["40×60",0.8],["50×80",1],["60×100",1.25]],"height":[["150 см",0.85],["180 см",1],["210 см",1.2]],"panel_h":[["2.4 м",0.88],["2.8 м",1],["3.2 м",1.14]],"curtain_w":[["2 м",0.8],["3 м",1],["4 м",1.25]],"planter_d":[["Ø30 см",0.78],["Ø40 см",1],["Ø50 см",1.28]],"set_n":[["6 персон",1],["12 персон",1.9],["24 персони",3.6]],"stool_h":[["45 см",0.9],["65 см",1],["75 см",1.06]]},"venues":[["all","Усі приміщення"],["resto","Ресторан і бар"],["hotel","Готель"],["apt","Квартира"],["office","Офіс"],["shop","Магазин і шоурум"],["cafe","Кафе і кавʼярня"],["beauty","Салон краси"],["spa","SPA і велнес"]],"bundles":[{"id":"b1","venue":"resto","name":"Ресторан на 60 місць","note":"Зал, бар і вхідна група під ключ. Без кухні та санвузла.","art":"table_long","rows":[{"id":1,"q":6},{"id":9,"q":24},{"id":10,"q":14},{"id":14,"q":30},{"id":18,"q":40},{"id":19,"q":20},{"id":21,"q":4},{"id":25,"q":2},{"id":27,"q":12},{"id":24,"q":8},{"id":43,"q":3},{"id":37,"q":22},{"id":40,"q":80},{"id":48,"q":8},{"id":49,"q":4},{"id":52,"q":30},{"id":54,"q":8},{"id":55,"q":60},{"id":56,"q":3},{"id":57,"q":80},{"id":58,"q":1}]},{"id":"b2","venue":"cafe","name":"Кавʼярня 40 м²","note":"Компактний формат: 24 посадкових місця, барна стійка, вітрина.","art":"table_round","rows":[{"id":4,"q":5},{"id":9,"q":12},{"id":10,"q":8},{"id":18,"q":16},{"id":26,"q":8},{"id":24,"q":6},{"id":22,"q":4},{"id":37,"q":10},{"id":40,"q":40},{"id":14,"q":10},{"id":49,"q":3},{"id":48,"q":4},{"id":50,"q":6}]},{"id":"b3","venue":"hotel","name":"Готельний номер, стандарт","note":"Один номер 28 м² з санвузлом. Тиражується на поверх.","art":"lounge","rows":[{"id":5,"q":2},{"id":6,"q":2},{"id":16,"q":1},{"id":15,"q":2},{"id":9,"q":6},{"id":11,"q":4},{"id":20,"q":2},{"id":26,"q":1},{"id":28,"q":1},{"id":44,"q":1},{"id":45,"q":2},{"id":47,"q":6},{"id":46,"q":2},{"id":13,"q":1},{"id":31,"q":1},{"id":32,"q":1},{"id":34,"q":2},{"id":35,"q":1},{"id":36,"q":2},{"id":42,"q":28},{"id":40,"q":8},{"id":48,"q":2}]},{"id":"b4","venue":"office","name":"Офіс: переговорна і лаунж","note":"Переговорна на 12 осіб плюс зона очікування.","art":"table_long","rows":[{"id":2,"q":2},{"id":9,"q":14},{"id":10,"q":10},{"id":11,"q":6},{"id":25,"q":1},{"id":19,"q":12},{"id":20,"q":4},{"id":26,"q":2},{"id":28,"q":1},{"id":38,"q":6},{"id":43,"q":2},{"id":45,"q":3},{"id":51,"q":3},{"id":49,"q":3},{"id":47,"q":6},{"id":59,"q":1}]},{"id":"b5","venue":"resto","name":"Санвузол комерційний, 3 раковини","note":"За мотивами рендера: консоль з масиву, три дзеркала, бра.","art":"vanity","rows":[{"id":29,"q":1},{"id":31,"q":3},{"id":32,"q":3},{"id":13,"q":3},{"id":5,"q":4},{"id":12,"q":4},{"id":11,"q":5},{"id":34,"q":3},{"id":35,"q":3},{"id":36,"q":3},{"id":40,"q":26},{"id":37,"q":8},{"id":41,"q":6}]},{"id":"b6","venue":"apt","name":"Вітальня-їдальня, квартира","note":"Обʼєднаний простір 42 м² з зоною відпочинку.","art":"table_round","rows":[{"id":1,"q":1},{"id":6,"q":3},{"id":16,"q":1},{"id":15,"q":2},{"id":9,"q":10},{"id":11,"q":5},{"id":26,"q":1},{"id":18,"q":6},{"id":20,"q":2},{"id":19,"q":2},{"id":22,"q":2},{"id":28,"q":1},{"id":44,"q":1},{"id":45,"q":3},{"id":47,"q":8},{"id":46,"q":2},{"id":37,"q":12},{"id":42,"q":42},{"id":51,"q":2},{"id":48,"q":3},{"id":59,"q":1}]},{"id":"b7","venue":"shop","name":"Шоурум 80 м²","note":"Торговий зал з вітринами, примірочні, касова зона.","art":"shelving","rows":[{"id":10,"q":22},{"id":9,"q":40},{"id":11,"q":12},{"id":30,"q":6},{"id":2,"q":3},{"id":38,"q":8},{"id":39,"q":10},{"id":33,"q":4},{"id":20,"q":3},{"id":22,"q":4},{"id":26,"q":2},{"id":28,"q":1},{"id":40,"q":80},{"id":43,"q":2},{"id":51,"q":4},{"id":49,"q":5},{"id":48,"q":6}]},{"id":"b8","venue":"beauty","name":"Салон краси, 6 робочих місць","note":"Зал, зона очікування, мийки.","art":"mirror_led","rows":[{"id":13,"q":6},{"id":5,"q":8},{"id":9,"q":16},{"id":10,"q":10},{"id":11,"q":8},{"id":19,"q":6},{"id":20,"q":4},{"id":22,"q":4},{"id":26,"q":2},{"id":30,"q":3},{"id":28,"q":1},{"id":31,"q":2},{"id":32,"q":2},{"id":35,"q":4},{"id":36,"q":6},{"id":34,"q":4},{"id":40,"q":34},{"id":37,"q":14},{"id":45,"q":2},{"id":51,"q":2},{"id":49,"q":3},{"id":52,"q":8},{"id":47,"q":6}]}]};
+const S = (b) => '<svg viewBox="0 0 100 80" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">' + b + '</svg>';
+const ART = {
+pendant_tube:S('<path d="M30 4v12M70 4v12"/><rect x="14" y="16" width="72" height="26" rx="13"/><path d="M28 20v18M40 20v18M52 20v18M64 20v18M76 20v18"/>'),
+pendant_linear:S('<path d="M22 4v10M50 4v10M78 4v10"/><rect x="8" y="14" width="26" height="16" rx="8"/><rect x="37" y="14" width="26" height="16" rx="8"/><rect x="66" y="14" width="26" height="16" rx="8"/>'),
+pendant_drum:S('<path d="M50 4v14"/><path d="M32 18h36l7 26H25z"/>'),
+pendant_rattan:S('<path d="M50 4v12"/><path d="M22 44a28 28 0 0156 0z"/><path d="M36 44V22M50 44V16M64 44v-22"/>'),
+sconce_tube:S('<path d="M22 8v64"/><rect x="42" y="14" width="18" height="52" rx="9"/><path d="M22 40h20"/><path d="M51 20v40"/>'),
+sconce_fabric:S('<path d="M22 8v64"/><path d="M22 40h16"/><path d="M38 24h34v32H38z"/>'),
+sconce_gooseneck:S('<path d="M20 8v64"/><path d="M20 30c22 0 30 4 30 14"/><rect x="42" y="42" width="16" height="26" rx="8"/>'),
+sconce_candle:S('<path d="M20 8v64"/><path d="M20 52h34"/><path d="M40 52V34h12v18"/><path d="M46 30c4-5 0-8 0-11-3 4-6 6-6 9a6 6 0 0012 0" stroke-width="1.8"/>'),
+spot:S('<path d="M8 14h84"/><path d="M50 14v8"/><rect x="38" y="22" width="24" height="34" rx="11" transform="rotate(16 50 39)"/>'),
+track:S('<rect x="8" y="30" width="84" height="18" rx="4"/><path d="M28 30v18M50 30v18M72 30v18"/>'),
+profile:S('<rect x="6" y="32" width="88" height="16" rx="3"/><path d="M6 40h88" stroke-dasharray="4 5"/>'),
+uplight:S('<path d="M6 66h88"/><circle cx="50" cy="66" r="9"/><path d="M38 52 24 18M62 52l14-34M50 50V14"/>'),
+mirror_led:S('<rect x="26" y="10" width="48" height="60" rx="22"/><path d="M18 24v32M82 24v32" stroke-dasharray="3 6"/>'),
+lamp_cordless:S('<path d="M34 30a16 16 0 0132 0z"/><path d="M50 30v30"/><ellipse cx="50" cy="63" rx="16" ry="5"/>'),
+lamp_mushroom:S('<path d="M28 38a22 22 0 0144 0z"/><path d="M34 38c0 14 4 20 16 20s16-6 16-20"/><ellipse cx="50" cy="60" rx="14" ry="5"/>'),
+floor_cone:S('<path d="M34 10h32l10 26H24z"/><path d="M50 36v30"/><path d="M34 70h32"/>'),
+floor_column:S('<rect x="36" y="6" width="28" height="58" rx="13"/><path d="M50 12v52" stroke-dasharray="4 6"/><ellipse cx="50" cy="68" rx="18" ry="5"/>'),
+chair_rattan:S('<path d="M30 40h40"/><path d="M32 12h36v28"/><path d="M40 16v20M50 16v20M60 16v20"/><path d="M32 40v28M68 40v28"/>'),
+armchair:S('<path d="M22 36c0-12 6-18 28-18s28 6 28 18"/><path d="M22 36v20h56V36"/><path d="M22 46h56"/><path d="M28 56v14M72 56v14"/>'),
+lounge:S('<path d="M18 40c0-14 8-20 32-20s32 6 32 20"/><rect x="18" y="40" width="64" height="18" rx="6"/><path d="M26 58v12M74 58v12"/>'),
+banquette:S('<path d="M8 16h84v22H8z"/><rect x="8" y="38" width="84" height="16" rx="5"/><path d="M14 54v12M86 54v12"/><path d="M36 16v22M64 16v22"/>'),
+pouf:S('<ellipse cx="50" cy="28" rx="30" ry="10"/><path d="M20 28v24a30 10 0 0060 0V28"/>'),
+stump:S('<ellipse cx="50" cy="24" rx="26" ry="9"/><ellipse cx="50" cy="24" rx="13" ry="4.5"/><path d="M24 24v30c0 6 12 10 26 10s26-4 26-10V24"/>'),
+barstool:S('<ellipse cx="50" cy="18" rx="22" ry="7"/><path d="M32 22 26 72M68 22l6 50"/><path d="M29 48h42"/>'),
+table_long:S('<path d="M6 30h88"/><path d="M6 30v6h88v-6"/><path d="M16 36v34M84 36v34M16 56h68"/>'),
+table_round:S('<ellipse cx="50" cy="22" rx="36" ry="11"/><path d="M50 22v38"/><ellipse cx="50" cy="64" rx="20" ry="7"/>'),
+table_square:S('<path d="M14 26h72l-8 8H22z"/><path d="M50 34v26"/><path d="M32 66h36l-4-6H36z"/>'),
+sideboard:S('<rect x="10" y="20" width="80" height="38" rx="4"/><path d="M36 20v38M64 20v38"/><path d="M28 39h4M52 39h4M76 39h4"/><path d="M18 58v10M82 58v10"/>'),
+vanity:S('<path d="M6 26h88v8H6z"/><path d="M16 34 12 70M84 34l4 36"/><path d="M14 54h72"/>'),
+shelving:S('<rect x="16" y="8" width="68" height="64" rx="3"/><path d="M16 24h68M16 40h68M16 56h68M39 8v64M61 8v64"/>'),
+basin:S('<path d="M8 50h84"/><path d="M24 22h52c0 16-8 26-26 26S24 38 24 22z"/>'),
+faucet:S('<path d="M10 70h80"/><path d="M34 70V22a10 10 0 0120 0v8"/><path d="M54 30h14"/><path d="M68 30v10"/>'),
+mirror:S('<ellipse cx="50" cy="40" rx="27" ry="34"/><path d="M50 14a26 26 0 00-18 26" stroke-width="1.5"/>'),
+bin:S('<path d="M28 20h44l-6 50H34z"/><path d="M28 20h44" stroke-width="2.6"/><path d="M40 32v26M50 32v26M60 32v26" stroke-width="1.4"/>'),
+dispenser:S('<path d="M12 70h76"/><path d="M40 34h20v36H40z"/><path d="M46 34V24h8v10"/><path d="M50 24v-8h10"/><rect x="66" y="58" width="20" height="12" rx="3"/>'),
+towel:S('<path d="M14 20h72"/><path d="M30 20v44a8 8 0 0016 0V20"/><path d="M56 20v40"/>'),
+slat_panel:S('<rect x="12" y="8" width="76" height="64" rx="3"/><path d="M24 14v52M36 14v52M48 14v52M60 14v52M72 14v52"/>'),
+lattice:S('<rect x="12" y="8" width="76" height="64" rx="3"/><path d="M12 27h76M12 46h76M12 65h76M31 8v64M50 8v64M69 8v64"/>'),
+panel_3d:S('<rect x="14" y="12" width="34" height="26" rx="2"/><rect x="52" y="12" width="34" height="26" rx="2"/><rect x="14" y="42" width="34" height="26" rx="2"/><rect x="52" y="42" width="34" height="26" rx="2"/><circle cx="31" cy="25" r="2.6" fill="currentColor"/><circle cx="69" cy="25" r="2.6" fill="currentColor"/><circle cx="31" cy="55" r="2.6" fill="currentColor"/><circle cx="69" cy="55" r="2.6" fill="currentColor"/>'),
+tile:S('<rect x="10" y="16" width="80" height="48" rx="3"/><path d="M22 60c10-18 16-24 30-30M40 64c14-20 22-26 38-34" stroke-width="1.4"/>'),
+rock_panel:S('<path d="M12 22l14-8 18 6 16-8 20 10 8 12-6 16-18 8-20-4-18 6-12-10z"/><path d="M34 26l10 14-6 16M60 22l6 18-10 14" stroke-width="1.3"/>'),
+flooring:S('<rect x="8" y="18" width="50" height="14" rx="2"/><rect x="62" y="18" width="30" height="14" rx="2"/><rect x="8" y="36" width="28" height="14" rx="2"/><rect x="40" y="36" width="52" height="14" rx="2"/><rect x="8" y="54" width="48" height="14" rx="2"/><rect x="60" y="54" width="32" height="14" rx="2"/>'),
+rug_jute:S('<rect x="14" y="18" width="72" height="42" rx="2"/><path d="M14 64v6M26 64v6M38 64v6M50 64v6M62 64v6M74 64v6M86 64v6" stroke-width="1.6"/><path d="M22 26h56M22 34h56" stroke-width="1.2"/>'),
+rug_wool:S('<rect x="12" y="14" width="76" height="52" rx="3"/><path d="M20 26h60M20 34h60M20 42h60M20 50h60" stroke-width="1.3" stroke-dasharray="3 4"/>'),
+curtain:S('<path d="M8 12h84"/><path d="M24 12c-4 18 4 38 0 58M40 12c4 18-4 38 0 58M60 12c-4 18 4 38 0 58M76 12c4 18-4 38 0 58"/>'),
+bolster:S('<rect x="14" y="28" width="72" height="26" rx="13"/><path d="M26 28v26M74 28v26" stroke-width="1.5"/>'),
+pillow:S('<rect x="20" y="16" width="60" height="50" rx="9"/><rect x="28" y="24" width="44" height="34" rx="5" stroke-width="1.3"/>'),
+vase:S('<path d="M40 12h20l-2 12c10 6 14 16 14 26 0 12-10 20-22 20s-22-8-22-20c0-10 4-20 14-26z"/>'),
+planter:S('<path d="M26 26h48l-7 44H33z"/><path d="M26 26h48" stroke-width="2.6"/><path d="M38 40l6 8-6 8M62 40l-6 8 6 8" stroke-width="1.3"/>'),
+pampas:S('<path d="M50 72V30M36 72l8-30M64 72l-8-30"/><path d="M50 30c-7-10-4-18 0-22 4 4 7 12 0 22zM44 42c-9-7-8-15-5-20 5 3 10 10 5 20zM56 42c9-7 8-15 5-20-5 3-10 10-5 20z" stroke-width="1.5"/>'),
+tree:S('<path d="M36 52h28l-5 20H41z"/><path d="M50 52V26"/><path d="M50 26c-10-2-16-8-16-14 8-1 14 3 16 8 2-5 8-9 16-8 0 6-6 12-16 14z"/><path d="M50 38c-8 0-13-5-14-10 7 0 12 3 14 7 2-4 7-7 14-7-1 5-6 10-14 10z" stroke-width="1.4"/>'),
+candle:S('<path d="M34 34h32v30a6 6 0 01-6 6H40a6 6 0 01-6-6z"/><path d="M50 30c5-6 1-10 0-14-4 5-8 7-8 11a8 8 0 0016 0" stroke-width="1.6"/>'),
+decanter:S('<path d="M44 10h12v16c12 8 18 18 18 28 0 10-8 16-24 16s-24-6-24-16c0-10 6-20 18-28z"/><path d="M32 52h36" stroke-width="1.3"/>'),
+glass:S('<path d="M34 10h32c0 16-6 26-16 28-10-2-16-12-16-28z"/><path d="M50 38v26"/><path d="M34 68h32"/>'),
+plate:S('<circle cx="50" cy="40" r="32"/><circle cx="50" cy="40" r="21" stroke-width="1.4"/><circle cx="50" cy="40" r="11" stroke-width="1.1"/>'),
+cutlery:S('<path d="M34 72V34"/><path d="M28 8v18c0 5 3 8 6 8s6-3 6-8V8"/><path d="M34 8v18"/><path d="M66 72V40"/><path d="M66 40c8-4 10-14 8-22-6 2-10 8-8 22z"/>'),
+napkin:S('<path d="M18 22h64v46H18z"/><path d="M18 22l32 22 32-22"/><path d="M32 68l18-24 18 24" stroke-width="1.3"/>'),
+fireplace_bio:S('<rect x="8" y="30" width="84" height="22" rx="3"/><path d="M34 48c-3-5 0-8 1-11 2 3 5 4 5 8M50 48c-5-7 0-12 1-17 3 5 7 7 7 12 0 2-1 4-3 5M66 48c-3-5 0-8 1-11 2 3 5 4 5 8" stroke-width="1.6"/>'),
+fireplace_el:S('<rect x="12" y="12" width="76" height="56" rx="4"/><rect x="24" y="30" width="52" height="26" rx="3"/><path d="M44 52c-4-6 0-10 1-14 3 4 6 6 6 10 0 2-1 3-2 4M58 52c-3-4 0-7 1-9 2 2 4 3 4 6" stroke-width="1.5"/>')
+};
+const fallback = S('<rect x="20" y="20" width="60" height="42" rx="5"/>');
+
+/* ===================== стан ===================== */
+const IT = DATA.items, BU = DATA.bundles;
+let venue='all', tab='catalog', cat='Усе', query='';
+const fav = new Set();
+let cart = [];                 // {id,ci,si,qty}
+let promo = null;              // {code,pct}
+let payMethod = 'card';
+let cur=null, curC=0, curS=0, curQ=1;   // відкритий товар
+let bq = {};                   // кількості в комплекті
+
+const byId = id => IT.find(i => i.id === id);
+const CS = i => DATA.colorsets[i.cs];
+const SS = i => i.ss ? DATA.sizesets[i.ss] : null;
+const defS = i => { const s = SS(i); if(!s) return 0; const n = s.findIndex(x=>x[1]===1); return n<0?0:n; };
+const r10 = n => Math.round(n/10)*10;
+function price(i, ci=0, si=null){
+  const s = SS(i), k = s ? s[si==null?defS(i):si][1] : 1;
+  return r10(i.price * k * (1 + CS(i)[ci][2]));
+}
+const minP = i => { const s=SS(i); return s ? r10(i.price*Math.min(...s.map(x=>x[1]))) : price(i); };
+const money = n => new Intl.NumberFormat('uk-UA').format(Math.round(n)) + ' ₴';
+
+/* світлішаємо темні кольори, щоб лінійна графіка лишалась читаною на темному тлі */
+function vis(hex){
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  const L=(.299*r+.587*g+.114*b)/255;
+  if(L>=.38) return hex;
+  const m=t=>Math.round(t+(168-t)*(.38-L)/.38);
+  return '#'+[m(r),m(g),m(b)].map(v=>v.toString(16).padStart(2,'0')).join('');
+}
+
+/* ===================== іконки приміщень ===================== */
+const V = b => '<svg viewBox="0 0 24 24">'+b+'</svg>';
+const VICON = {
+ all:    V('<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>'),
+ resto:  V('<path d="M6 3v8a2 2 0 0 0 4 0V3M8 11v10"/><path d="M17 3c-2 2-2 8 0 8v10"/>'),
+ hotel:  V('<path d="M3 18v-7h18v7M3 18v2M21 18v2M3 11V7"/><path d="M7 11V9h5v2"/><circle cx="6" cy="6.5" r="1.5"/>'),
+ apt:    V('<path d="M4 11 12 4l8 7"/><path d="M6 10v10h12V10"/><path d="M10 20v-6h4v6"/>'),
+ office: V('<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h3M13 7h3M8 11h3M13 11h3M8 15h3M13 15h3"/>'),
+ shop:   V('<path d="M4 8h16l-1.4 12H5.4z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>'),
+ cafe:   V('<path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 9h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M8 3v2M12 3v2"/>'),
+ beauty: V('<circle cx="7" cy="18" r="2.5"/><circle cx="17" cy="18" r="2.5"/><path d="M8.7 16 18 4M15.3 16 6 4"/>'),
+ spa:    V('<path d="M12 21c-4 0-7-3-7-7 0-4 7-11 7-11s7 7 7 11c0 4-3 7-7 7z"/><path d="M12 17c-1.7 0-3-1.3-3-3"/>')
+};
+
+/* ===================== Telegram ===================== */
+const tg = window.Telegram && window.Telegram.WebApp ? window.Telegram.WebApp : null;
+if (tg){ try{ tg.ready(); tg.expand(); tg.setHeaderColor && tg.setHeaderColor('#17120E'); }catch(e){} }
+function haptic(t){ try{ if(!tg||!tg.HapticFeedback) return;
+  t==='success' ? tg.HapticFeedback.notificationOccurred('success') : tg.HapticFeedback.impactOccurred('light'); }catch(e){} }
+
+/* ===================== рендер каркаса ===================== */
+function venueCount(v){ return v==='all' ? IT.length : IT.filter(i=>i.vn.includes(v)).length; }
+function renderVenues(){
+  document.getElementById('venues').innerHTML = DATA.venues.map(([v,label])=>`
+    <button class="venue" aria-pressed="${v===venue}" onclick="setVenue('${v}')">
+      ${VICON[v]}<b>${label}</b><em>${venueCount(v)} позицій</em></button>`).join('');
+}
+function setVenue(v){ venue=v; cat='Усе'; renderVenues(); renderChips(); render(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function pool(){ return venue==='all' ? IT : IT.filter(i=>i.vn.includes(venue)); }
+function cats(){ return ['Усе', ...[...new Set(pool().map(i=>i.cat))]]; }
+function renderChips(){
+  document.getElementById('chips').innerHTML = cats().map(c=>
+    `<button class="chip" aria-pressed="${c===cat}" onclick="setCat('${c}')">${c}</button>`).join('');
+}
+function setCat(c){ cat=c; renderChips(); renderGrid(); }
+
+function setTab(t){
+  tab=t;
+  ['catalog','bundles','fav'].forEach(k=>{
+    document.getElementById('view'+k[0].toUpperCase()+k.slice(1)).hidden = (k!==t);
+    document.getElementById('tab'+k[0].toUpperCase()+k.slice(1)).setAttribute('aria-pressed', k===t);
+  });
+  render();
+}
+
+function toggleSearch(){
+  const w=document.getElementById('searchwrap'), on=w.classList.toggle('on');
+  document.getElementById('btnSearch').classList.toggle('on', on);
+  if(on) document.getElementById('q').focus();
+  else { query=''; document.getElementById('q').value=''; render(); }
+}
+function onSearch(){ query=document.getElementById('q').value.trim().toLowerCase(); if(tab!=='catalog') setTab('catalog'); else renderGrid(); }
+
+/* ===================== картки ===================== */
+function cardHTML(i){
+  const s=SS(i), from = s ? 'від ' : '';
+  return `<article class="card" onclick="openItem(${i.id})">
+    <div class="tile">${ART[i.art]||''}
+      <button class="heart ${fav.has(i.id)?'on':''}" onclick="event.stopPropagation();toggleFav(${i.id})" aria-label="В обране">
+        <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.7A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.3C19 15.4 12 20 12 20z"/></svg></button>
+    </div>
+    <div class="body">
+      <div class="sub">${i.sub}</div>
+      <div class="nm">${i.name}</div>
+      <div class="sw">${CS(i).slice(0,5).map(c=>`<i style="background:${c[1]}"></i>`).join('')}</div>
+      <div class="pr">${from}${money(minP(i))} <small>/ ${i.unit}</small></div>
+    </div></article>`;
+}
+function renderGrid(){
+  let list = pool();
+  if(cat!=='Усе') list = list.filter(i=>i.cat===cat);
+  if(query) list = list.filter(i=>(i.name+' '+i.sub+' '+i.en+' '+i.desc).toLowerCase().includes(query));
+  const s=document.getElementById('sort').value;
+  const ord={A:0,B:1,C:2};
+  list=[...list].sort((a,b)=>
+    s==='asc'? minP(a)-minP(b) : s==='desc'? minP(b)-minP(a) :
+    s==='az'?  a.name.localeCompare(b.name,'uk') : (ord[a.prio]-ord[b.prio])||(minP(b)-minP(a)));
+  document.getElementById('cnt').textContent = list.length ? `${list.length} позицій` : '';
+  document.getElementById('grid').innerHTML = list.length ? list.map(cardHTML).join('')
+    : `<div class="empty" style="grid-column:1/-1">Нічого не знайшли. Спробуйте інше слово або зніміть фільтр приміщення.</div>`;
+}
+function renderFav(){
+  const list = IT.filter(i=>fav.has(i.id));
+  document.getElementById('favGrid').innerHTML = list.length ? list.map(cardHTML).join('')
+    : `<div class="empty" style="grid-column:1/-1">Обране порожнє.<br>Тисніть сердечко на картці — позиції збережуться тут, щоб зібрати добірку для клієнта.</div>`;
+}
+function toggleFav(id){
+  fav.has(id) ? fav.delete(id) : fav.add(id);
+  haptic(); syncBadges(); renderGrid(); renderFav();
+  toast(fav.has(id) ? 'Додано в обране' : 'Прибрано з обраного');
+}
+
+/* ===================== комплекти ===================== */
+function bundleTotal(b, qty){
+  return b.rows.reduce((s,r,n)=>{ const q = qty ? (qty[n] ?? r.q) : r.q; return s + price(byId(r.id),0,defS(byId(r.id)))*q; },0);
+}
+function renderBundles(){
+  const list = venue==='all' ? BU : BU.filter(b=>b.venue===venue);
+  document.getElementById('blist').innerHTML = list.length ? list.map(b=>{
+    const t=bundleTotal(b), d=Math.round(t*.92);
+    return `<article class="bcard" onclick="openBundle('${b.id}')">
+      <div class="art">${ART[b.art]||''}</div>
+      <div class="info"><h3>${b.name}</h3><div class="note">${b.note}</div>
+        <div class="pr">${money(d)} <s>${money(t)}</s></div></div></article>`;
+  }).join('') : `<div class="empty">Для цього типу приміщення готового комплекту ще немає. Зберіть з каталогу — або напишіть нам, порахуємо під ваш обʼєкт.</div>`;
+}
+function openBundle(id){
+  const b=BU.find(x=>x.id===id); bq={}; b.rows.forEach((r,n)=>bq[n]=r.q);
+  renderBundle(id); open('sheetBundle');
+}
+function renderBundle(id){
+  const b=BU.find(x=>x.id===id);
+  const t=bundleTotal(b,bq), d=Math.round(t*.92);
+  const n0=b.rows.filter((r,n)=>bq[n]>0).length;
+  document.getElementById('bundleBody').innerHTML = `
+    <div class="sh-head"><h2>${b.name}</h2><button class="x" onclick="closeAll()">✕</button></div>
+    <p class="desc">${b.note} Кількості — орієнтовні, міняйте під свій обʼєкт: позиція з нулем у комплект не піде.</p>
+    ${b.rows.map((r,n)=>{ const i=byId(r.id); return `
+      <div class="ci">
+        <div class="art">${ART[i.art]||''}</div>
+        <div class="info"><b>${i.name}</b><em>${money(price(i,0,defS(i)))} / ${i.unit}</em></div>
+        <div class="right">
+          <span class="s">${money(price(i,0,defS(i))*(bq[n]||0))}</span>
+          <div class="qty sm"><button onclick="bqSet('${id}',${n},-1)">−</button><span>${bq[n]||0}</span><button onclick="bqSet('${id}',${n},1)">+</button></div>
+        </div></div>`; }).join('')}
+    <div class="sum"><span>${n0} позицій, без знижки</span><span>${money(t)}</span></div>
+    <div class="sum disc"><span>Знижка за комплект, 8%</span><span>−${money(t-d)}</span></div>
+    <div class="sum total"><span>Разом</span><span>${money(d)}</span></div>
+    <button class="btn" onclick="addBundle('${id}')">Додати комплект у кошик</button>`;
+}
+function bqSet(id,n,dd){ bq[n]=Math.max(0,(bq[n]||0)+dd); renderBundle(id); }
+function addBundle(id){
+  const b=BU.find(x=>x.id===id); let added=0;
+  b.rows.forEach((r,n)=>{ const q=bq[n]||0; if(!q) return;
+    const i=byId(r.id), si=defS(i);
+    const ex=cart.find(c=>c.id===i.id&&c.ci===0&&c.si===si);
+    ex ? ex.qty+=q : cart.push({id:i.id,ci:0,si,qty:q}); added++;
+  });
+  if(!added){ toast('Усі позиції на нулі — нічого додавати'); return; }
+  promo={code:'КОМПЛЕКТ',pct:8};
+  haptic('success'); closeAll(); syncBadges(); toast(`Комплект додано: ${added} позицій, знижка 8%`);
+}
+
+/* ===================== картка товару ===================== */
+function openItem(id){ cur=byId(id); curC=0; curS=defS(cur); curQ=1; renderItem(); open('sheetItem'); }
+function renderItem(){
+  const i=cur, cs=CS(i), s=SS(i);
+  const p=price(i,curC,curS), part=Math.ceil(p*curQ/4);
+  document.getElementById('itemBody').innerHTML = `
+    <div class="sh-head"><h2>${i.name}</h2><button class="x" onclick="closeAll()">✕</button></div>
+    <div class="hero-art"><span style="color:${vis(cs[curC][1])};display:contents">${ART[i.art]||''}</span></div>
+    <p class="desc">${i.desc}</p>
+    <div class="meta"><span class="tag">${i.sub}</span><span class="tag">Ціна за 1 ${i.unit}</span><span class="tag">Поставка 35–50 днів</span></div>
+
+    <p class="lbl">Колір і фактура <b>${cs[curC][0]}</b></p>
+    <div class="swatches">${cs.map((c,n)=>`<button class="swatch" style="background:${c[1]}" aria-pressed="${n===curC}" title="${c[0]}" aria-label="${c[0]}" onclick="setC(${n})"></button>`).join('')}</div>
+
+    ${s ? `<p class="lbl">Розмір <b>${s[curS][0]}</b></p>
+    <div class="opts">${s.map((x,n)=>`<button class="opt" aria-pressed="${n===curS}" onclick="setS(${n})">${x[0]}<small>${money(price(i,curC,n))}</small></button>`).join('')}</div>` : ''}
+
+    <p class="lbl">Кількість</p>
+    <div class="qty"><button onclick="setQ(-1)">−</button><span>${curQ}</span><button onclick="setQ(1)">+</button></div>
+
+    <div class="priceline"><span class="big">${money(p*curQ)}</span>${curQ>1?`<span class="per">${money(p)} × ${curQ}</span>`:''}</div>
+    <p class="hint">Або ${money(part)} × 4 платежі без переплати</p>
+    <div class="btn2">
+      <button class="btn ghost" style="flex:0 0 56px" onclick="toggleFav(${i.id});renderItem()" aria-label="В обране">${fav.has(i.id)?'♥':'♡'}</button>
+      <button class="btn" style="flex:1" onclick="addToCart()">Додати в кошик</button>
+    </div>`;
+}
+function setC(n){ curC=n; renderItem(); }
+function setS(n){ curS=n; renderItem(); }
+function setQ(d){ curQ=Math.max(1,curQ+d); renderItem(); }
+function addToCart(){
+  const ex=cart.find(c=>c.id===cur.id&&c.ci===curC&&c.si===curS);
+  ex ? ex.qty+=curQ : cart.push({id:cur.id,ci:curC,si:curS,qty:curQ});
+  haptic(); closeAll(); syncBadges(); toast(`${cur.name} — додано`);
+}
+
+/* ===================== кошик ===================== */
+const lineSum = c => price(byId(c.id),c.ci,c.si)*c.qty;
+const goods = () => cart.reduce((s,c)=>s+lineSum(c),0);
+const count = () => cart.reduce((s,c)=>s+c.qty,0);
+const discount = () => promo ? Math.round(goods()*promo.pct/100) : 0;
+const ship = () => (goods()-discount()) > 20000 ? 0 : 450;
+const grand = () => goods()-discount()+ship();
+
+function syncBadges(){
+  const n=count(), f=fav.size;
+  const cb=document.getElementById('cartBadge'); cb.hidden=!n; cb.textContent=n;
+  const fb=document.getElementById('favBadge'); fb.hidden=!f; fb.textContent=f;
+  document.getElementById('barTxt').textContent = n ? `Кошик · ${n} шт · ${money(grand())}` : 'Кошик';
+  document.getElementById('bar').classList.toggle('show', n>0);
+  if(tg&&tg.MainButton){ if(n){ tg.MainButton.setText(`Кошик · ${money(grand())}`); tg.MainButton.show(); } else tg.MainButton.hide(); }
+}
+function openCart(){ renderCart(); open('sheetCart'); }
+function renderCart(){
+  const el=document.getElementById('cartBody');
+  if(!cart.length){
+    el.innerHTML=`<div class="sh-head"><h2>Кошик</h2><button class="x" onclick="closeAll()">✕</button></div>
+      <div class="empty">Порожньо. Оберіть позиції в каталозі або візьміть готовий комплект під ваш тип приміщення.</div>
+      <button class="btn ghost" onclick="closeAll();setTab('bundles')">Дивитись комплекти</button>`;
+    return;
+  }
+  el.innerHTML=`
+    <div class="sh-head"><h2>Кошик</h2><button class="x" onclick="closeAll()">✕</button></div>
+    ${cart.map((c,n)=>{ const i=byId(c.id), s=SS(i);
+      return `<div class="ci">
+        <div class="art"><span style="color:${vis(CS(i)[c.ci][1])};display:contents">${ART[i.art]||''}</span></div>
+        <div class="info"><b>${i.name}</b><em>${CS(i)[c.ci][0]}${s?' · '+s[c.si][0]:''} · ${money(price(i,c.ci,c.si))}/${i.unit}</em>
+          <div class="qty sm" style="margin-top:6px"><button onclick="cq(${n},-1)">−</button><span>${c.qty}</span><button onclick="cq(${n},1)">+</button></div></div>
+        <div class="right"><span class="s">${money(lineSum(c))}</span><button class="rm" onclick="rm(${n})">Прибрати</button></div>
+      </div>`; }).join('')}
+    <div class="promo">
+      <input id="promoIn" placeholder="Промокод" value="${promo?promo.code:''}">
+      <button onclick="applyPromo()">Застосувати</button>
+    </div>
+    <div class="sum"><span>Товари, ${count()} шт</span><span>${money(goods())}</span></div>
+    ${promo?`<div class="sum disc"><span>Знижка ${promo.code}, ${promo.pct}%</span><span>−${money(discount())}</span></div>`:''}
+    <div class="sum"><span>Доставка по Україні</span><span>${ship()?money(ship()):'безкоштовно'}</span></div>
+    <div class="sum total"><span>До сплати</span><span>${money(grand())}</span></div>
+    <button class="btn" onclick="openPay()">Оформити замовлення</button>
+    <button class="btn ghost" onclick="copyEstimate()">Скопіювати кошторис</button>`;
+}
+function cq(n,d){ cart[n].qty+=d; if(cart[n].qty<1) cart.splice(n,1); haptic(); syncBadges(); renderCart(); }
+function rm(n){ cart.splice(n,1); haptic(); syncBadges(); renderCart(); }
+function applyPromo(){
+  const v=(document.getElementById('promoIn').value||'').trim().toUpperCase();
+  const codes={'ОЗДОБА10':10,'КОМПЛЕКТ':8,'ДИЗАЙНЕР':15};
+  if(codes[v]){ promo={code:v,pct:codes[v]}; toast(`Промокод застосовано: −${codes[v]}%`); }
+  else { promo=null; toast('Такого промокоду немає'); }
+  syncBadges(); renderCart();
+}
+function copyEstimate(){
+  const lines=cart.map(c=>{ const i=byId(c.id), s=SS(i);
+    return `${i.name} — ${CS(i)[c.ci][0]}${s?', '+s[c.si][0]:''} — ${c.qty} ${i.unit} × ${money(price(i,c.ci,c.si))} = ${money(lineSum(c))}`; });
+  const txt=['КОШТОРИС · Оздоба','',...lines,'',
+    `Товари: ${money(goods())}`, promo?`Знижка ${promo.code}: −${money(discount())}`:null,
+    `Доставка: ${ship()?money(ship()):'безкоштовно'}`,`РАЗОМ: ${money(grand())}`].filter(Boolean).join('\n');
+  const done=()=>toast('Кошторис у буфері обміну');
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done,()=>fb());
+  else fb();
+  function fb(){ const t=document.createElement('textarea'); t.value=txt; document.body.appendChild(t); t.select();
+    try{document.execCommand('copy');done();}catch(e){toast('Не вдалось скопіювати');} t.remove(); }
+}
+
+/* ===================== оплата ===================== */
+function openPay(){ renderPay(); close('sheetCart'); setTimeout(()=>open('sheetPay'),130); }
+function renderPay(){
+  const g=grand(), part=Math.ceil(g/4);
+  const u=tg&&tg.initDataUnsafe&&tg.initDataUnsafe.user;
+  const nm=u?[u.first_name,u.last_name].filter(Boolean).join(' '):'';
+  document.getElementById('payBody').innerHTML=`
+    <div class="sh-head"><h2>Оформлення заявки</h2><button class="x" onclick="closeAll()">✕</button></div>
+    <div class="field"><label>Ім'я та прізвище</label><input id="fName" value="${nm}" placeholder="Ваше імʼя та прізвище"></div>
+    <div class="field"><label>Телефон</label><input id="fPhone" type="tel" inputmode="tel" placeholder="+380 __ ___ __ __"></div>
+    <div class="field"><label>Місто і відділення Нової Пошти</label><input id="fNp" placeholder="Київ, відділення №12"></div>
+    ${payMethod==='invoice'?`<div class="field"><label>Назва компанії та ЄДРПОУ</label><input id="fEdr" placeholder="ТОВ «Приклад», 12345678"></div>`:''}
+
+    <p class="lbl" style="margin-top:18px">Як вам зручніше оплатити</p>
+    <button class="pay" aria-pressed="${payMethod==='card'}" onclick="setPay('card')"><span class="dot"></span>
+      <span><b>Карткою онлайн</b><small>Посилання на оплату надішле менеджер після підтвердження наявності.</small></span></button>
+    <button class="pay" aria-pressed="${payMethod==='parts'}" onclick="setPay('parts')"><span class="dot"></span>
+      <span><b>Оплата частинами</b><small>Орієнтовно ${money(part)} × 4 платежі — умови підтвердить менеджер.</small>
+      <span class="banks"><i style="background:#8CC63E"></i><i style="background:#101010"></i><i style="background:#E30613"></i></span></span></button>
+    <button class="pay" aria-pressed="${payMethod==='invoice'}" onclick="setPay('invoice')"><span class="dot"></span>
+      <span><b>Рахунок для ФОП або ТОВ</b><small>Безготівковий розрахунок з ПДВ, закривні документи. Відвантаження після зарахування.</small></span></button>
+    <button class="pay" aria-pressed="${payMethod==='cod'}" onclick="setPay('cod')"><span class="dot"></span>
+      <span><b>При отриманні</b><small>Наложений платіж. Комісія перевізника 20 ₴ + 2%. Для замовлень до 20 000 ₴.</small></span></button>
+
+    <div class="sum total"><span>Орієнтовна сума</span><span>${money(g)}</span></div>
+    <button class="btn" id="sendBtn" onclick="pay()">Надіслати заявку</button>
+    <p class="note-honest">Це заявка, а не оплата: гроші зараз не списуються. Менеджер зателефонує, підтвердить наявність,
+      ціну й строк поставки і надішле рахунок або посилання на оплату.</p>`;
+}
+function setPay(m){ payMethod=m; renderPay(); }
+async function pay(){
+  const v=id=>((document.getElementById(id)||{}).value||'').trim();
+  const nm=v('fName'), ph=v('fPhone'), np=v('fNp'), edr=v('fEdr');
+  if(!cart.length){ toast('Кошик порожній — додайте товари з каталогу'); return; }
+  if(!nm||ph.replace(/\D/g,'').length<9){ toast('Вкажіть імʼя і телефон — інакше ми не зможемо звʼязатися'); return; }
+  const g=grand(), ord='OZD-'+Date.now().toString().slice(-7);
+  const PM={cod:'при отриманні',parts:'частинами',invoice:'рахунок ФОП/ТОВ',card:'карткою онлайн'};
+  const lines=cart.map(c=>{ const i=byId(c.id), s=SS(i);
+    return `• ${i.name} — ${CS(i)[c.ci][0]}${s?', '+s[c.si][0]:''} — ${c.qty} ${i.unit} × ${money(price(i,c.ci,c.si))} = ${money(lineSum(c))}`; });
+  const message=[`Замовлення ${ord} з Оздоби`,...lines,
+    `Товари: ${money(goods())}`, promo?`Знижка ${promo.code}: −${money(discount())}`:null,
+    `Доставка: ${ship()?money(ship()):'безкоштовно'}`, `РАЗОМ (орієнтовно): ${money(g)}`,
+    `Оплата: ${PM[payMethod]||payMethod}`, np?`Нова Пошта: ${np}`:null, edr?`Компанія/ЄДРПОУ: ${edr}`:null].filter(Boolean).join('\n');
+  const btn=document.getElementById('sendBtn'); if(btn){ btn.disabled=true; btn.textContent='Надсилаємо…'; }
+  let ok=false;
+  try{
+    const r=await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:nm,phone:ph,service:'Оздоба — комплектація',area:'',message,source:'cas-develop.com/ozdoba'})});
+    ok=r.ok;
+  }catch(e){ ok=false; }
+  if(!ok){
+    if(btn){ btn.disabled=false; btn.textContent='Надіслати заявку'; }
+    toast('Не вдалося надіслати. Подзвоніть +380 97 866 77 55 або напишіть нам у Telegram');
+    return;
+  }
+  document.getElementById('payBody').innerHTML=`
+    <div class="done"><div class="ring">✓</div>
+      <h2 style="font-size:25px;margin-bottom:8px">Заявку ${ord} прийнято</h2>
+      <p style="color:var(--muted);font-size:13.5px;margin:0 auto;max-width:34ch">Менеджер звʼяжеться з вами в робочий час,
+        підтвердить наявність, ціну й строк поставки і надішле рахунок або посилання на оплату.</p>
+      <div class="priceline" style="justify-content:center"><span class="big">${money(g)}</span></div></div>
+    <button class="btn ghost" onclick="reset()">До каталогу</button>`;
+  haptic('success');
+}
+function reset(){ cart=[]; promo=null; syncBadges(); closeAll(); render(); }
+
+/* ===================== службове ===================== */
+function open(id){ document.getElementById('scrim').classList.add('open');
+  document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+function close(id){ document.getElementById(id).classList.remove('open'); }
+function closeAll(){ ['sheetItem','sheetBundle','sheetCart','sheetPay'].forEach(close);
+  document.getElementById('scrim').classList.remove('open'); document.body.style.overflow=''; }
+let tt;
+function toast(m){ const t=document.getElementById('toast'); t.textContent=m; t.classList.add('on');
+  clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('on'),2200); }
+function render(){ if(tab==='catalog') renderGrid(); else if(tab==='bundles') renderBundles(); else renderFav(); }
+
+if(tg&&tg.MainButton) tg.MainButton.onClick(openCart);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeAll(); });
+addEventListener('scroll',()=>document.getElementById('top').classList.toggle('stuck',scrollY>8),{passive:true});
+
+renderVenues(); renderChips(); setTab('catalog'); syncBadges();
+
+</script>
+</body>
+</html>
