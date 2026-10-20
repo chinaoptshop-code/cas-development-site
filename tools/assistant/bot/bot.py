@@ -175,6 +175,52 @@ ANSWER_RULE = ("Саму відповідь обгорни рядками ===В�
                "Telegram їх не малює.")
 
 
+# ---------- відповіді клієнтам без підписки Claude ----------
+# Клієнтам відповідаємо через Anthropic API (оплата за використання, як у бота CAS), а якщо API
+# недоступний — локальною моделлю Ollama на Mac mini. Підписка Claude (claude -p) — лише для Михайла й команди.
+API_ENV = pathlib.Path.home() / "jarvis/projects/quiz/.env"
+CLIENT_MODEL = os.environ.get("ASSISTANT_CLIENT_MODEL", "claude-sonnet-5")
+LOCAL_MODEL = os.environ.get("ASSISTANT_LOCAL_MODEL", "qwen3:4b")
+
+
+def api_key():
+    for line in (API_ENV.read_text().splitlines() if API_ENV.exists() else []):
+        if line.startswith("ANTHROPIC_API_KEY="):
+            return line.split("=", 1)[1].strip().strip('"').strip("'")
+    return os.environ.get("ANTHROPIC_API_KEY", "")
+
+
+def client_answer(prompt):
+    """Текст відповіді клієнту: API → локальна модель → чесна заглушка."""
+    key = api_key()
+    if key:
+        try:
+            body = {"model": CLIENT_MODEL, "max_tokens": 900, "messages": [{"role": "user", "content": prompt}]}
+            req = urllib.request.Request("https://api.anthropic.com/v1/messages", data=json.dumps(body).encode(),
+                                         headers={"content-type": "application/json", "x-api-key": key,
+                                                  "anthropic-version": "2023-06-01"})
+            with urllib.request.urlopen(req, timeout=90) as r:
+                d = json.load(r)
+            text = "".join(c.get("text", "") for c in d.get("content", []) if c.get("type") == "text").strip()
+            if text:
+                LOG("клієнт: відповідь через API", CLIENT_MODEL)
+                return text
+        except Exception as e:
+            LOG("клієнт: API не відповів:", repr(e)[:200])
+    try:
+        body = {"model": LOCAL_MODEL, "prompt": prompt + "\n/no_think", "stream": False, "options": {"temperature": 0.3}}
+        req = urllib.request.Request("http://127.0.0.1:11434/api/generate", data=json.dumps(body).encode(),
+                                     headers={"content-type": "application/json"})
+        with urllib.request.urlopen(req, timeout=180) as r:
+            text = re.sub(r"<think>.*?</think>", "", json.load(r).get("response", ""), flags=re.S).strip()
+        if text:
+            LOG("клієнт: відповідь локальною моделлю", LOCAL_MODEL)
+            return "(відповідь локальної моделі — перевір уважніше)\n" + text
+    except Exception as e:
+        LOG("клієнт: локальна модель не відповіла:", repr(e)[:200])
+    return "===ВІДПОВІДЬ===\nДякую за звернення! Михайло відповість вам особисто найближчим часом.\n===КІНЕЦЬ==="
+
+
 def split_out(out):
     files = [f.strip().strip("`'\"") for f in re.findall(r"^SEND_FILE:\s*(.+)$", out, flags=re.M)]
     body = re.sub(r"^SEND_FILE:.*$", "", out, flags=re.M)
@@ -213,7 +259,9 @@ def deliver(out, chat=None, reply_to=None):
 ME = {}
 PUBLIC = """CAS Development — дизайн інтерʼєру, ремонт і будівництво під ключ, меблі й комплектація напряму з Китаю.
 Київ, вул. Антоновича, 44 · +380 97 866 77 55 · cas-develop.com · Instagram @cas_development
-Калькулятор ремонту: https://quiz.china-opt-shop.pp.ua · 150+ реалізованих проєктів, працюємо з 2016 року."""
+Калькулятор ремонту: https://quiz.china-opt-shop.pp.ua · 150+ реалізованих проєктів, працюємо з 2016 року.
+Ціни «від» (як на сайті): дизайн-проєкт від $30/м² (мінімальний бюджет $2 500), ремонт під ключ від $550/м²,
+ремонт офісу від $350/м², меблювання від $250/м², будівництво від $600/м². Кошторис ремонту ±5%, якщо ремонт за проєктом робить CAS."""
 STANDARD = [   # (шаблон, кому, відповідь) — перший збіг; повідомлення довші за 120 знаків ідуть у задачу
     (r"(команд|що ти (вмієш|можеш)|що вмієш|що можеш|допомог|help|/help)", "team", "HELP_TEAM"),
     (r"(команд|що ти (вмієш|можеш)|що вмієш|що можеш|допомог|help|/help)", "client", "HELP_CLIENT"),
@@ -259,8 +307,9 @@ def reply_text(key, role, in_group):
     if key == "CONTACTS":
         return PUBLIC
     if key == "PRICE":
-        return ("Орієнтовну суму ремонту можна порахувати за 2 хвилини в калькуляторі: https://quiz.china-opt-shop.pp.ua\n"
-                "Ціни «від» за м² — на cas-develop.com/services. Точний кошторис робимо після замірів і брифу.\n"
+        return ("Дизайн-проєкт — від $30/м² (мінімальний бюджет $2 500), ремонт під ключ — від $550/м², офіс — від $350/м².\n"
+                "Орієнтовну суму порахуєте за 2 хвилини в калькуляторі: https://quiz.china-opt-shop.pp.ua\n"
+                "Точний кошторис робимо після замірів і брифу.\n"
                 "Хочете — опишіть обʼєкт (тип, площа, місто), передам Михайлу.")
     return "Будь ласка! Якщо щось ще — пишіть."
 
@@ -399,7 +448,8 @@ PDF: запиши Markdown у ~/.assistant/tmp, запусти tools/assistant/b
 {PUBLIC}
 Відповідай лише клієнтською інформацією: послуги, як працюємо, етапи, що потрібно від клієнта, контакти.
 НІЧОГО внутрішнього: інших клієнтів і обʼєкти, суми договорів, ціни бригад і постачальників, націнку, особисте
-Михайла, команду. Точних цін і термінів не обіцяй — лише калькулятор і кошторис після замірів. Не вигадуй.
+Михайла, команду. Можна називати лише ціни «від» з переліку вище; точних сум і термінів не обіцяй —
+калькулятор і кошторис після замірів. Не вигадуй. Не пропонуй дзвінків — краще продовжити тут, у Telegram.
 {('Вкладення (' + t['att'] + ') — опиши, що бачиш, якщо стосується справи.') if t['att'] else ''}
 
 Повідомлення клієнта: {t['text']}
@@ -408,10 +458,14 @@ PDF: запиши Markdown у ~/.assistant/tmp, запусти tools/assistant/b
 {ANSWER_RULE}"""
     prompt, tools = (client, CLIENT_ALLOWED) if t.get("role") == "client" else (team, GROUP_ALLOWED)
     t["sid"] = str(uuid.uuid4())
-    try:
-        out = run_claude(prompt, t["sid"], False, tools, 65)
-    except subprocess.TimeoutExpired:
-        out = "⚠️ Не встиг за 15 хвилин. Розбийте задачу на менші частини."
+    if t.get("role") == "client":                          # клієнтам — без підписки (API / локальна модель)
+        t["prompt"] = prompt
+        out = client_answer(prompt)
+    else:
+        try:
+            out = run_claude(prompt, t["sid"], False, tools, 65)
+        except subprocess.TimeoutExpired:
+            out = "⚠️ Не встиг за 15 хвилин. Розбийте задачу на менші частини."
     if t.get("own"):                                       # задача самого Михайла — одразу в групу
         deliver(f"✅ Задача №{t['n']}\n\n" + out, t["chat"], t["mid"])
         t["status"] = "done"; mark(t, "виконано"); return
@@ -463,7 +517,14 @@ def revise_task(t, kind, content, state):
 Врахуй правки, правила ті самі (відповідь побачить отримувач — група, працівник чи клієнт). Поверни нову ПОВНУ відповідь для групи
 останнім у виводі; файли — рядками SEND_FILE. {ANSWER_RULE}"""
     try:
-        out = run_claude(prompt, t["sid"], True, CLIENT_ALLOWED if t.get("role") == "client" else GROUP_ALLOWED)
+        if t.get("role") == "client":                      # правки до клієнтської відповіді — теж без підписки
+            if kind == "голосове":
+                r = subprocess.run([str(REPO / "tools/assistant/bin/transcribe.sh"), content], capture_output=True, text=True, timeout=300)
+                how = "голосом: " + (r.stdout.strip() or "не розібрав")
+            out = client_answer((t.get("prompt") or "") + "\n\nПопередня чернетка:\n" + split_out(t["draft"])[0]
+                                + "\n\nПравки Михайла (" + how + "). Поверни нову повну відповідь.")
+        else:
+            out = run_claude(prompt, t["sid"], True, GROUP_ALLOWED)
     except subprocess.TimeoutExpired:
         out = t["draft"]; send_text("⚠️ Не встиг переробити за 15 хвилин — лишаю попередню чернетку.")
     show_draft(t, out)
