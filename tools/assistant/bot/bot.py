@@ -142,6 +142,10 @@ def handle(msg, state):
     if text.startswith("/new"):
         state["day"] = ""; state.pop("sid", None); send_text("Нова розмова. Пам'ять збережена, контекст чату очищено."); return
     kind, content = describe(msg)
+    t = state.get("tasks", {}).get(str(state.get("editing") or ""))
+    if t and t.get("status") == "draft":                    # Михайло пише правки до чернетки для групи
+        state.pop("editing", None)
+        revise_task(t, kind, content, state); return
     today = datetime.date.today().isoformat()
     fresh = state.get("day") != today or not state.get("sid")   # нова розмова щодня або після /new
     if fresh:
@@ -156,15 +160,17 @@ def handle(msg, state):
     deliver(out)
 
 
-def deliver(out, chat=None, reply_to=None):
-    files = re.findall(r"^SEND_FILE:\s*(.+)$", out, flags=re.M)
+def split_out(out):
+    files = [f.strip().strip("`'\"") for f in re.findall(r"^SEND_FILE:\s*(.+)$", out, flags=re.M)]
     reply = re.sub(r"^SEND_FILE:.*$", "", out, flags=re.M).strip()
     # Відповідь = останній абзац(и) виводу; якщо вивід довгий, беремо хвіст до 3000 символів
-    if len(reply) > 3000:
-        reply = reply[-3000:]
+    return (reply[-3000:] if len(reply) > 3000 else reply), files
+
+
+def deliver(out, chat=None, reply_to=None):
+    reply, files = split_out(out)
     send_text(reply or "✅ Зроблено.", chat, reply_to)
     for f in files:
-        f = f.strip().strip("`'\"")
         if os.path.isfile(f):
             send_file(f, pathlib.Path(f).name, chat)
         else:
@@ -190,8 +196,9 @@ def help_text():
 Як поставити задачу: @{u} + що зробити одним повідомленням.
 Наприклад: @{u} знайди 3 постачальники травертину для фасаду, ціна за м²
 
-Кожну задачу спершу погоджує Михайло — після його ОК беру в роботу,
-результат пишу сюди у відповідь на ваше повідомлення.
+Кожну задачу спершу погоджує Михайло — після його ОК беру в роботу.
+Готову відповідь він теж переглядає, і лише потім вона зʼявляється тут
+у відповідь на ваше повідомлення.
 Питання на кшталт «що ти вмієш» — відповідаю одразу, без погодження."""
 
 
@@ -234,7 +241,7 @@ def handle_group(msg, state):
         f.write(f"- №{n} · {t['at']} · {t['from']} ({t['group']}): {text}{' [' + att + ']' if att else ''} — на погодженні\n")
     LOG("група: задача", n, t["from"], text[:60])
     if msg.get("from", {}).get("id") == OWNER:             # задачу ставить сам Михайло — погоджувати нема кого
-        start_task(t, state); return
+        t["own"] = True; start_task(t, state); return
     send_text(f"📌 Задача №{n} прийнята: «{text[:200]}»\nПередав Михайлу на погодження — візьму в роботу після його ОК.", chat, mid)
     sent = send_text(f"📌 Задача №{n} від {t['from']} ({t['group']}):\n{text}" + (f"\n📎 {att}" if att else ""),
                      markup={"inline_keyboard": [[{"text": "✅ В роботу", "callback_data": f"ok:{n}"},
@@ -247,6 +254,8 @@ def on_button(cq, state):
         api("answerCallbackQuery", callback_query_id=cq["id"], text="Погоджує лише Михайло"); return
     act, _, n = (cq.get("data") or "").partition(":")
     t = state.get("tasks", {}).get(n)
+    if act in ("send", "edit", "drop"):
+        draft_button(act, t, cq, state); return
     if not t or t.get("status"):
         api("answerCallbackQuery", callback_query_id=cq["id"], text="Вже оброблено" if t else "Задачу не знайдено"); return
     m = cq.get("message", {})
@@ -265,7 +274,7 @@ def on_button(cq, state):
 def mark(t, status):
     try:
         s = TEAM_TASKS.read_text(encoding="utf-8")
-        TEAM_TASKS.write_text(re.sub(rf"^(- №{t['n']} · .*) — (на погодженні|в роботі)$", rf"\1 — {status}", s, flags=re.M), encoding="utf-8")
+        TEAM_TASKS.write_text(re.sub(rf"^(- №{t['n']} · .*) — (на погодженні|в роботі|чернетка у Михайла)$", rf"\1 — {status}", s, flags=re.M), encoding="utf-8")
     except Exception as e:
         LOG("mark:", e)
 
@@ -288,12 +297,64 @@ PDF: запиши Markdown у ~/.assistant/tmp, запусти tools/assistant/b
 
 НЕ викликай tg-out.sh і tg.sh send — відповідь відправлю я. Останнім у виводі напиши текст відповіді
 для групи (до 20 рядків, українською, звертайся до {t['from']}). Файл — окремим рядком: SEND_FILE: /повний/шлях"""
+    t["sid"] = str(uuid.uuid4())
     try:
-        out = run_claude(prompt, str(uuid.uuid4()), False, GROUP_ALLOWED)
+        out = run_claude(prompt, t["sid"], False, GROUP_ALLOWED)
     except subprocess.TimeoutExpired:
         out = "⚠️ Не встиг за 15 хвилин. Розбийте задачу на менші частини."
-    deliver(f"✅ Задача №{t['n']}\n\n" + out, t["chat"], t["mid"])
-    t["status"] = "done"; mark(t, "виконано")
+    if t.get("own"):                                       # задача самого Михайла — одразу в групу
+        deliver(f"✅ Задача №{t['n']}\n\n" + out, t["chat"], t["mid"])
+        t["status"] = "done"; mark(t, "виконано"); return
+    show_draft(t, out)
+
+
+def show_draft(t, out):
+    """Відповідь для групи спершу йде Михайлу: надіслати, поправити чи не надсилати."""
+    t["draft"] = out; t["status"] = "draft"; mark(t, "чернетка у Михайла")
+    reply, files = split_out(out)
+    send_text(f"📝 Чернетка для {t['group']} · задача №{t['n']} від {t['from']}:\n\n{reply or '(порожньо)'}"
+              + (f"\n\n📎 файли: {', '.join(pathlib.Path(f).name for f in files)}" if files else ""),
+              markup={"inline_keyboard": [[{"text": "📤 Надіслати", "callback_data": f"send:{t['n']}"},
+                                           {"text": "✏️ Редагувати", "callback_data": f"edit:{t['n']}"},
+                                           {"text": "🚫 Не надсилати", "callback_data": f"drop:{t['n']}"}]]})
+    for f in files:
+        if os.path.isfile(f):
+            send_file(f, pathlib.Path(f).name)
+
+
+def draft_button(act, t, cq, state):
+    if not t or t.get("status") != "draft":
+        api("answerCallbackQuery", callback_query_id=cq["id"], text="Вже оброблено" if t else "Задачу не знайдено"); return
+    m = cq.get("message", {})
+    note = {"send": "📤 Надіслано в групу", "edit": "✏️ Чекаю правки", "drop": "🚫 Не надіслано"}[act]
+    api("answerCallbackQuery", callback_query_id=cq["id"], text=note)
+    try:
+        api("editMessageText", chat_id=OWNER, message_id=m.get("message_id"), text=(m.get("text") or "")[:3900 - 40] + "\n\n" + note)
+    except Exception as e:
+        LOG("editMessageText:", e)
+    if act == "send":
+        deliver(f"✅ Задача №{t['n']}\n\n" + t["draft"], t["chat"], t["mid"])
+        t["status"] = "done"; mark(t, "виконано")
+    elif act == "edit":
+        state["editing"] = t["n"]
+        send_text(f"Що змінити у відповіді на задачу №{t['n']}? Напиши текстом або голосовим.")
+    else:
+        t["status"] = "dropped"; mark(t, "не надіслано")
+        send_text(f"Задача №{t['n']}: Михайло відповість особисто.", t["chat"], t["mid"])
+
+
+def revise_task(t, kind, content, state):
+    api("sendChatAction", chat_id=OWNER, action="typing")
+    how = (f"голосове — спершу розшифруй: tools/assistant/bin/transcribe.sh {content}" if kind == "голосове"
+           else f"{kind}: {content}")
+    prompt = f"""Михайло прочитав чернетку відповіді для групи і просить змінити її ({how}).
+Врахуй правки, правила ті самі (відповідь побачить уся група). Поверни нову ПОВНУ відповідь для групи
+останнім у виводі; файли — рядками SEND_FILE."""
+    try:
+        out = run_claude(prompt, t["sid"], True, GROUP_ALLOWED)
+    except subprocess.TimeoutExpired:
+        out = t["draft"]; send_text("⚠️ Не встиг переробити за 15 хвилин — лишаю попередню чернетку.")
+    show_draft(t, out)
 
 
 def main():
