@@ -25,6 +25,8 @@ GROUPS = {int(x) for x in os.environ.get("ASSISTANT_GROUPS", "-1003501825627").s
 # У групі відповідь бачить уся команда — тому без пошти й особистого Telegram Михайла.
 GROUP_ALLOWED = ",".join(t for t in re.split(r",\s*", ALLOWED)
                          if t and not t.startswith("mcp__claude_ai_Gmail") and "tools/telegram" not in t)
+# Клієнту — без памʼяті й файлів Михайла: лише веб (наш сайт) і читання вкладення з inbox-files.
+CLIENT_ALLOWED = "WebFetch,WebSearch,Read(" + str(MEMORY / "inbox-files") + "/**)"
 TEAM_TASKS = MEMORY / "02 Задачі команди.md"
 STATE = MEMORY / ".bot-state.json"
 INBOX = MEMORY / "inbox-files"
@@ -120,14 +122,21 @@ tools/assistant/bin/md2pdf.sh <файл.md> і додай рядок SEND_FILE �
 SEND_FILE: /повний/шлях/до/файлу"""
 
 
-def run_claude(prompt, session, resume, tools=ALLOWED):
+def run_claude(prompt, session, resume, tools=ALLOWED, turns=None, _final=False):
     """session — id розмови. Михайло веде одну розмову на день (resume), задачі команди — кожна окремо.
     Раніше тут був --continue, і задача з групи ставала «останньою розмовою» — Михайло продовжив би її."""
-    cmd = [CLAUDE, "-p", "--model", MODEL, "--max-turns", MAX_TURNS, "--allowedTools", tools, "--output-format", "text"]
+    cmd = [CLAUDE, "-p", "--model", MODEL, "--max-turns", str(turns or MAX_TURNS), "--allowedTools", tools, "--output-format", "text"]
     cmd += ["--resume", session] if resume else ["--session-id", session]
     cmd.append(prompt)
     r = subprocess.run(cmd, cwd=REPO, capture_output=True, text=True, timeout=900)
     out = (r.stdout or "").strip()
+    if "Reached max turns" in out and not _final:
+        # 20.10: задача про шпон вичерпала кроки на пошуках і віддала «Error: Reached max turns» замість відповіді.
+        # Підсумовуємо в тій самій розмові вже знайдене — без нових пошуків.
+        LOG("ліміт кроків — прошу підсумок", session[:8])
+        return run_claude("Ліміт кроків вичерпано. Нічого більше не шукай і не відкривай — дай підсумкову відповідь "
+                          "з того, що вже знайшов, у потрібному форматі; чого не встиг — так і напиши.",
+                          session, True, tools, 4, True)
     if r.returncode != 0 and not out:
         out = f"⚠️ Claude завершився з кодом {r.returncode}: {(r.stderr or '')[-800:]}"
     return out
@@ -178,28 +187,63 @@ def deliver(out, chat=None, reply_to=None):
     LOG("←", reply[:80])
 
 
-# ---------- робоча група команди ----------
+# ---------- усі, крім Михайла: команда й клієнти ----------
+# Підпорядковується бот лише Михайлу. Решті: стандартні відповіді — одразу й локально (без Claude),
+# усе інше — задача, яку Михайло погоджує, а відповідь переглядає перед відправкою.
+# Команда (учасники робочих груп) отримує робочу інформацію, клієнти — лише клієнтську.
 ME = {}
-HELP_RE = re.compile(r"(команд|що ти (вмієш|можеш)|що вмієш|що можеш|допомог|help|/start|/help)", re.I)
+PUBLIC = """CAS Development — дизайн інтерʼєру, ремонт і будівництво під ключ, меблі й комплектація напряму з Китаю.
+Київ, вул. Антоновича, 44 · +380 97 866 77 55 · cas-develop.com · Instagram @cas_development
+Калькулятор ремонту: https://quiz.china-opt-shop.pp.ua · 150+ реалізованих проєктів, працюємо з 2016 року."""
+STANDARD = [   # (шаблон, кому, відповідь) — перший збіг; повідомлення довші за 120 знаків ідуть у задачу
+    (r"(команд|що ти (вмієш|можеш)|що вмієш|що можеш|допомог|help|/help)", "team", "HELP_TEAM"),
+    (r"(команд|що ти (вмієш|можеш)|що вмієш|що можеш|допомог|help|/help)", "client", "HELP_CLIENT"),
+    (r"^(/start|привіт|вітаю|добр(ий|ого) (день|ранок|вечір|ранку|вечора)|доброго|хай|hello|hi)[\s!.,]*$", "team", "HELP_TEAM"),
+    (r"^(/start|привіт|вітаю|добр(ий|ого) (день|ранок|вечір|ранку|вечора)|доброго|хай|hello|hi)[\s!.,]*$", "client", "HELLO_CLIENT"),
+    (r"(контакт|телефон|адрес|де ви |де ваш|де знаходит|ваш сайт|інстаграм|instagram)", "*", "CONTACTS"),
+    (r"(скільки коштує|вартість|ціна|ціни|прайс|почім|кошторис|розрахун)", "*", "PRICE"),
+    (r"^(дякую|спасибі|дяк|thanks|thank you|ок|окей|добре|зрозумів|зрозуміла)[\s!.,👍🙏]*$", "*", "THANKS"),
+]
 
 
-def help_text():
+def standard_reply(text, role):
+    if len(text) > 120:
+        return None
+    for pat, who_, key in STANDARD:
+        if who_ in ("*", role) and re.search(pat, text, re.I):
+            if key == "PRICE" and re.search(r"\d", text):    # з площею чи сумою — це вже запит, не довідка
+                continue
+            return key
+    return None
+
+
+def reply_text(key, role, in_group):
     u = ME.get("username", "бот")
-    return f"""Я — AI-асистент Михайла. Ось що можу для команди:
+    tag = f"@{u} " if in_group else ""
+    if key == "HELP_TEAM":
+        return f"""Я — AI-асистент Михайла. Ось що можу для команди:
 
-• знайти й порівняти постачальників, підрядників, ціни (інтернет, наші контакти)
+• знайти й порівняти постачальників, підрядників, ціни
 • підготувати документ: лист, ТЗ, порівняльну таблицю, PDF
-• прочитати файл чи фото, розшифрувати голосове — надішліть його з тегом у підписі
+• прочитати файл чи фото, розшифрувати голосове — надішліть його {('з тегом у підписі' if in_group else 'сюди')}
 • зібрати інфо по обʼєкту з наших нотаток
-• поставити зустріч чи нагадування в календар Михайла
 
-Як поставити задачу: @{u} + що зробити одним повідомленням.
-Наприклад: @{u} знайди 3 постачальники травертину для фасаду, ціна за м²
+Як поставити задачу: {tag}+ що зробити одним повідомленням.
+Наприклад: {tag}знайди 3 постачальники травертину для фасаду, ціна за м²
 
-Кожну задачу спершу погоджує Михайло — після його ОК беру в роботу.
-Готову відповідь він теж переглядає, і лише потім вона зʼявляється тут
-у відповідь на ваше повідомлення.
-Питання на кшталт «що ти вмієш» — відповідаю одразу, без погодження."""
+Кожну задачу спершу погоджує Михайло, готову відповідь він теж переглядає.
+Прості питання (що вмію, контакти, ціни) — відповідаю одразу."""
+    if key in ("HELP_CLIENT", "HELLO_CLIENT"):
+        return ("Вітаю! Я AI-асистент Михайла, CAS Development.\n\n" + PUBLIC +
+                "\n\nНапишіть, що плануєте (обʼєкт, площа, місто, терміни) — передам Михайлу, "
+                "і ви отримаєте відповідь після його перегляду.")
+    if key == "CONTACTS":
+        return PUBLIC
+    if key == "PRICE":
+        return ("Орієнтовну суму ремонту можна порахувати за 2 хвилини в калькуляторі: https://quiz.china-opt-shop.pp.ua\n"
+                "Ціни «від» за м² — на cas-develop.com/services. Точний кошторис робимо після замірів і брифу.\n"
+                "Хочете — опишіть обʼєкт (тип, площа, місто), передам Михайлу.")
+    return "Будь ласка! Якщо щось ще — пишіть."
 
 
 def addressed(msg):
@@ -219,31 +263,61 @@ def who(m):
     return (f.get("first_name", "") + " " + f.get("last_name", "")).strip() or f.get("username") or "?"
 
 
-def handle_group(msg, state):
-    text = addressed(msg)
+def role_of(uid, state):
+    """team — учасник хоч однієї робочої групи; інакше client. Кеш на добу."""
+    if uid == OWNER:
+        return "owner"
+    cache = state.setdefault("roles", {})
+    hit = cache.get(str(uid))
+    if hit and time.time() - hit[1] < 86400:
+        return hit[0]
+    role = "client"
+    for g in GROUPS:
+        try:
+            if api("getChatMember", chat_id=g, user_id=uid).get("status") in ("creator", "administrator", "member", "restricted"):
+                role = "team"; break
+        except Exception:
+            pass
+    cache[str(uid)] = [role, time.time()]
+    return role
+
+
+def handle_external(msg, state):
+    in_group = msg["chat"].get("type") in ("group", "supergroup")
+    text = addressed(msg) if in_group else (msg.get("text") or msg.get("caption") or "").strip()
     if text is None:
         return
+    uid = msg.get("from", {}).get("id")
     chat, mid = msg["chat"]["id"], msg["message_id"]
-    if not text or HELP_RE.search(text) and len(text) < 80:
-        send_text(help_text(), chat, mid); LOG("група: довідка", who(msg)); return
+    role = role_of(uid, state)
+    has_media = any(k in msg for k in ("photo", "document", "voice", "audio", "video_note"))
+    key = "HELP_TEAM" if role in ("team", "owner") and not text and not has_media else \
+          "HELLO_CLIENT" if not text and not has_media else (None if has_media else standard_reply(text, "team" if role == "owner" else role))
+    if key:
+        send_text(reply_text(key, role, in_group), chat, mid if in_group else None)
+        LOG("стандартна відповідь", key, role, who(msg)); return
     tasks = state.setdefault("tasks", {})
+    if role != "owner" and sum(1 for t in tasks.values() if t.get("uid") == uid and t.get("status") in (None, "work", "draft")) >= 3:
+        send_text("Ваші запити вже в Михайла на розгляді — відповім, щойно він перегляне.", chat, mid if in_group else None); return
     state["task_n"] = n = state.get("task_n", 0) + 1
     att = ""
-    if any(k in msg for k in ("photo", "document", "voice", "audio", "video_note")):
+    if has_media:
         kind, path = describe(msg)
         att = f"{kind}: {path}"
-    t = {"n": n, "chat": chat, "mid": mid, "from": who(msg), "text": text, "att": att,
-         "group": msg["chat"].get("title", ""), "at": datetime.datetime.now().strftime("%d.%m %H:%M")}
+    place = msg["chat"].get("title", "") if in_group else "особисто"
+    t = {"n": n, "chat": chat, "mid": mid, "uid": uid, "role": role, "from": who(msg), "text": text or "(без тексту)",
+         "att": att, "group": place, "at": datetime.datetime.now().strftime("%d.%m %H:%M")}
     tasks[str(n)] = t
     for k in sorted(tasks, key=int)[:-50]:               # тримаємо останні 50
         tasks.pop(k)
+    label = {"team": "команда", "client": "клієнт", "owner": "Михайло"}[role]
     with TEAM_TASKS.open("a", encoding="utf-8") as f:
-        f.write(f"- №{n} · {t['at']} · {t['from']} ({t['group']}): {text}{' [' + att + ']' if att else ''} — на погодженні\n")
-    LOG("група: задача", n, t["from"], text[:60])
-    if msg.get("from", {}).get("id") == OWNER:             # задачу ставить сам Михайло — погоджувати нема кого
+        f.write(f"- №{n} · {t['at']} · {t['from']} ({label}, {place}): {t['text']}{' [' + att + ']' if att else ''} — на погодженні\n")
+    LOG("задача", n, label, t["from"], t["text"][:60])
+    if role == "owner":                                  # задачу ставить сам Михайло — погоджувати нема кого
         t["own"] = True; start_task(t, state); return
-    send_text(f"📌 Задача №{n} прийнята: «{text[:200]}»\nПередав Михайлу на погодження — візьму в роботу після його ОК.", chat, mid)
-    sent = send_text(f"📌 Задача №{n} від {t['from']} ({t['group']}):\n{text}" + (f"\n📎 {att}" if att else ""),
+    send_text(f"📌 Запит №{n} прийнято. Передав Михайлу — відповідь буде після його перегляду.", chat, mid if in_group else None)
+    sent = send_text(f"📌 №{n} · {label} · {t['from']} ({place}):\n{t['text']}" + (f"\n📎 {att}" if att else ""),
                      markup={"inline_keyboard": [[{"text": "✅ В роботу", "callback_data": f"ok:{n}"},
                                                   {"text": "❌ Відхилити", "callback_data": f"no:{n}"}]]})
     t["owner_mid"] = sent["message_id"] if sent else None
@@ -267,7 +341,7 @@ def on_button(cq, state):
         t["status"] = "rejected"
         api("answerCallbackQuery", callback_query_id=cq["id"], text="Відхилено")
         api("editMessageText", chat_id=OWNER, message_id=m.get("message_id"), text=(m.get("text") or "") + "\n\n❌ Відхилено")
-        send_text(f"Задача №{t['n']}: Михайло поки не погодив — він уточнить особисто.", t["chat"], t["mid"])
+        send_text(f"Запит №{t['n']}: Михайло відповість особисто.", t["chat"], t["mid"])
         mark(t, "відхилено")
 
 
@@ -284,7 +358,8 @@ def start_task(t, state):
     t["status"] = "work"; save_state(state); mark(t, "в роботі")
     send_text(f"▶️ Задача №{t['n']} — " + ("продовжую після перезапуску." if resumed else "в роботі."), t["chat"], t["mid"])
     api("sendChatAction", chat_id=t["chat"], action="typing")
-    prompt = f"""Ти AI-асистент Михайла (CAS Development) у робочій групі команди «{t['group']}».
+    where = "в особистому чаті з працівником" if t["group"] == "особисто" else f"у робочій групі команди «{t['group']}»"
+    team = f"""Ти AI-асистент Михайла (CAS Development) {where}.
 Правила: прочитай tools/assistant/playbooks/00-core.md. Пам'ять — локальна папка {MEMORY}.
 Задачу поставив {t['from']} із команди, Михайло її погодив. Виконай її до кінця.
 {('Вкладення (' + t['att'] + ') — прочитай його; голосові розшифровуй tools/assistant/bin/transcribe.sh <файл>.') if t['att'] else ''}
@@ -295,12 +370,25 @@ PDF: запиши Markdown у ~/.assistant/tmp, запусти tools/assistant/b
 листів і повідомлень іншим людям — лише результат сюди. Нічого не вигадуй: чого не знайшов — так і скажи.
 
 Задача №{t['n']}: {t['text']}
+Працюй ощадливо: до ~8 пошуків і відкритих сторінок, далі — висновок із того, що є.
 
 НЕ викликай tg-out.sh і tg.sh send — відповідь відправлю я. Останнім у виводі напиши текст відповіді
 для групи (до 20 рядків, українською, звертайся до {t['from']}). Файл — окремим рядком: SEND_FILE: /повний/шлях"""
+    client = f"""Ти AI-асистент Михайла, CAS Development. Пише КЛІЄНТ ({t['from']}, {t['group']}). Михайло дозволив відповісти.
+Відомо про компанію лише це (більше нічого не стверджуй):
+{PUBLIC}
+Відповідай лише клієнтською інформацією: послуги, як працюємо, етапи, що потрібно від клієнта, контакти.
+НІЧОГО внутрішнього: інших клієнтів і обʼєкти, суми договорів, ціни бригад і постачальників, націнку, особисте
+Михайла, команду. Точних цін і термінів не обіцяй — лише калькулятор і кошторис після замірів. Не вигадуй.
+{('Вкладення (' + t['att'] + ') — опиши, що бачиш, якщо стосується справи.') if t['att'] else ''}
+
+Повідомлення клієнта: {t['text']}
+
+Останнім у виводі — текст відповіді клієнту (до 12 рядків, українською або мовою клієнта, ввічливо, на «ви»)."""
+    prompt, tools = (client, CLIENT_ALLOWED) if t.get("role") == "client" else (team, GROUP_ALLOWED)
     t["sid"] = str(uuid.uuid4())
     try:
-        out = run_claude(prompt, t["sid"], False, GROUP_ALLOWED)
+        out = run_claude(prompt, t["sid"], False, tools, 45)
     except subprocess.TimeoutExpired:
         out = "⚠️ Не встиг за 15 хвилин. Розбийте задачу на менші частини."
     if t.get("own"):                                       # задача самого Михайла — одразу в групу
@@ -349,10 +437,10 @@ def revise_task(t, kind, content, state):
     how = (f"голосове — спершу розшифруй: tools/assistant/bin/transcribe.sh {content}" if kind == "голосове"
            else f"{kind}: {content}")
     prompt = f"""Михайло прочитав чернетку відповіді для групи і просить змінити її ({how}).
-Врахуй правки, правила ті самі (відповідь побачить уся група). Поверни нову ПОВНУ відповідь для групи
+Врахуй правки, правила ті самі (відповідь побачить отримувач — група, працівник чи клієнт). Поверни нову ПОВНУ відповідь для групи
 останнім у виводі; файли — рядками SEND_FILE."""
     try:
-        out = run_claude(prompt, t["sid"], True, GROUP_ALLOWED)
+        out = run_claude(prompt, t["sid"], True, CLIENT_ALLOWED if t.get("role") == "client" else GROUP_ALLOWED)
     except subprocess.TimeoutExpired:
         out = t["draft"]; send_text("⚠️ Не встиг переробити за 15 хвилин — лишаю попередню чернетку.")
     show_draft(t, out)
@@ -381,10 +469,10 @@ def main():
             try:
                 if "callback_query" in u:
                     on_button(u["callback_query"], state)
-                elif chat in GROUPS:
-                    handle_group(msg, state)
+                elif chat in GROUPS or (chat != OWNER and msg.get("chat", {}).get("type") == "private"):
+                    handle_external(msg, state)
                 elif chat != OWNER:
-                    LOG("ігнорую чужий чат", chat); continue
+                    LOG("ігнорую чужий чат", chat); continue       # групи, яких немає в ASSISTANT_GROUPS
                 else:
                     handle(msg, state)
             except Exception as e:
