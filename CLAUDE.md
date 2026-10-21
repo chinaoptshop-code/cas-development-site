@@ -25,7 +25,7 @@
 - Нові лендинги послуг — JSON у `tools/site/pages/`, збирає `python3 tools/site/landing.py` (шаблон, hreflang, sitemap, JSON-LD);
   потім `python3 tools/blog/build.py` для блоків «Статті по темі».
 - Оздоба (/ozdoba, «Продукти»): товари, ціни й характеристики — `assets/ozdoba/catalog.json`; фото з вирізаним фоном —
-  `python3 tools/products/photo.py <id> <файл|url>`; після правок — `python3 tools/products/build.py`.
+  `python3 tools/products/photo.py <id> <файл|url>`; після правок — `python3 tools/products/build.py` (оновлює /ozdoba, сторінки товарів /ozdoba/<slug> і sitemap).
 
 ## Telegram (личный аккаунт пользователя) — `tools/telegram/`
 

@@ -107,7 +107,7 @@ function cardHTML(i){
     </div>
     <div class="body">
       <div class="sub">${i.sub}</div>
-      <a class="nm" href="#p-${i.id}" style="color:inherit;text-decoration:none">${i.name}</a>
+      <a class="nm" href="/ozdoba/${i.slug}" onclick="event.preventDefault()" style="color:inherit;text-decoration:none">${i.name}</a>
       <div class="sw">${CS(i).slice(0,5).map(c=>`<i style="background:${c[1]}"></i>`).join('')}</div>
       <div class="pr">${from}${money(minP(i))} <small>/ ${i.unit}</small></div>
     </div></article>`;
