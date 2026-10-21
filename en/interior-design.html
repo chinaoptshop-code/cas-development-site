@@ -163,7 +163,7 @@ document.getElementById('of').addEventListener('submit',async function(e){
   var data={name:document.getElementById('oName').value.trim(),phone:'+'+d,service:'Online interior design (EN)',
     area:document.getElementById('oArea').value.trim(),message:document.getElementById('oMsg').value.trim(),
     source:'cas-develop.com/en/interior-design'};
-  try{await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});}catch(err){}
+  let sent=false;try{const rr=await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});sent=rr.ok;}catch(err){}if(!sent){alert('We could not send your request. Please message or call +380 97 866 77 55 (Telegram, WhatsApp, Viber).');document.querySelectorAll('form button[disabled]').forEach(b=>{b.disabled=false;b.textContent='Send again';});return;}
   this.style.display='none';document.getElementById('oOk').style.display='block';
 });
 </script>

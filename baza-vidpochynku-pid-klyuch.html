@@ -180,7 +180,7 @@ document.getElementById('of').addEventListener('submit',async function(e){
   var data={name:document.getElementById('oName').value.trim(),phone:'+'+d,service:'Проєктування бази відпочинку',
     area:document.getElementById('oArea').value.trim(),message:document.getElementById('oMsg').value.trim(),
     source:'cas-develop.com/baza-vidpochynku-pid-klyuch'};
-  try{await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});}catch(err){}
+  let sent=false;try{const rr=await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});sent=rr.ok;}catch(err){}if(!sent){alert('Не вдалося надіслати заявку. Напишіть або подзвоніть: +380 97 866 77 55 (Telegram, Viber, WhatsApp).');document.querySelectorAll('form button[disabled]').forEach(b=>{b.disabled=false;b.textContent='Надіслати ще раз';});return;}
   this.style.display='none';document.getElementById('oOk').style.display='block';
 });
 </script>
