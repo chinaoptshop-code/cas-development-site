@@ -25,6 +25,9 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
+      - name: 📏 UI budget report (tools/ui/ui.py)
+        run: python3 tools/ui/ui.py budget --report
+
       - name: 🧹 Exclude non-site files (tools, Claude config)
         run: rm -rf tools .claude CLAUDE.md
 
