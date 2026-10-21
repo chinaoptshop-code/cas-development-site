@@ -123,7 +123,10 @@ tools/assistant/bin/md2pdf.sh <файл.md> (напряму, без «bash» п�
 ВАЖЛИВО про відповідь: НЕ викликай tg-out.sh і tg.sh send — відповідь відправлю я. Останнім у своєму виводі напиши
 текст відповіді для Telegram (коротко, до 15 рядків, українською). Обгорни її рядками ===ВІДПОВІДЬ=== і ===КІНЕЦЬ===,
 без Markdown (** і ``` Telegram не малює). Якщо щось не вдалось (інструмент, файл) — коротко скажи про це в самій відповіді. Щоб надіслати файл, додай окремий рядок:
-SEND_FILE: /повний/шлях/до/файлу"""
+SEND_FILE: /повний/шлях/до/файлу
+Коли показуєш переписку чи говориш про конкретну людину/чат із Telegram Михайла — додай окремий рядок
+OPEN_CHAT: @нік | Імʼя   (або числовий id замість ніка, якщо ніка немає; до 5 таких рядків) — я зроблю кнопку «Відкрити чат».
+Якщо просять «всю переписку», а повідомлень більше ~15 — у відповіді коротко, а повний текст файлом (Markdown → PDF, SEND_FILE)."""
 
 
 def run_claude(prompt, session, resume, tools=ALLOWED, turns=None, _final=False):
@@ -360,7 +363,7 @@ def speak(text, chat=None, reply_to=None, limit=VOICE_MAX):
 
 def split_out(out):
     files = [f.strip().strip("`'\"") for f in re.findall(r"^SEND_FILE:\s*(.+)$", out, flags=re.M)]
-    body = re.sub(r"^SEND_FILE:.*$", "", out, flags=re.M)
+    body = re.sub(r"^(SEND_FILE|OPEN_CHAT):.*$", "", out, flags=re.M)
     # 20.10: у чернетку для групи потрапили робочі нотатки Claude («Bash заблоковано… Текст відповіді для групи:»).
     # Тепер відповідь — між маркерами; без маркерів — усе після заголовка «Текст відповіді…», якщо він є.
     m = re.findall(r"===ВІДПОВІДЬ===\s*(.*?)\s*(?:===КІНЕЦЬ===|\Z)", body, flags=re.S)
@@ -378,9 +381,26 @@ def split_out(out):
     return (reply[-3000:] if len(reply) > 3000 else reply), files
 
 
+def chat_buttons(out):
+    """Рядки «OPEN_CHAT: @нік | Назва» або «OPEN_CHAT: 123456 | Назва» → кнопки «відкрити чат» (Михайло 21.10)."""
+    rows = []
+    for ref, title in re.findall(r"^OPEN_CHAT:\s*([@\w]+)\s*(?:\|\s*(.+))?$", out, flags=re.M)[:5]:
+        ref = ref.lstrip("@")
+        url = f"tg://user?id={ref}" if ref.isdigit() else f"https://t.me/{ref}"
+        rows.append([{"text": "💬 Відкрити чат" + (f" — {title.strip()[:40]}" if title else ""), "url": url}])
+    return {"inline_keyboard": rows} if rows else None
+
+
 def deliver(out, chat=None, reply_to=None):
     reply, files = split_out(out)
-    send_text(reply or "✅ Зроблено.", chat, reply_to)
+    buttons = chat_buttons(out) if chat in (None, OWNER) else None
+    try:
+        send_text(reply or "✅ Зроблено.", chat, reply_to, buttons)
+    except Exception as e:                                   # tg://user?id= не спрацює, якщо людина приховала профіль
+        if not buttons:
+            raise
+        LOG("кнопка чату не пройшла:", repr(e)[:120])
+        send_text(reply or "✅ Зроблено.", chat, reply_to)
     for f in files:
         if os.path.isfile(f):
             send_file(f, pathlib.Path(f).name, chat)
