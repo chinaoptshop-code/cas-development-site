@@ -177,7 +177,7 @@ def handle(msg, state):
     deliver(out)
     # Михайлу голосом — коли він сам говорив голосом або попросив («голосом», «озвуч»), без ліміту довжини
     # «моїм голосом» / «запиши Сержу голосом» — це про чужі голосові, а не прохання відповісти голосом тобі
-    asked = kind == "текст" and re.search(r"(відповідай|відповідь|скажи|розкажи|поясни)\s+голосом|голосом\s+(відповідай|скажи)|^озвуч", content.strip(), re.I)
+    asked = kind == "текст" and ASK_VOICE.search(content.strip())
     if kind == "голосове" or asked:
         import threading                                     # озвучення паралельно — наступне повідомлення не чекає
         threading.Thread(target=speak_owner, args=(split_out(out)[0],), daemon=True).start()
@@ -251,6 +251,28 @@ OWN_CHATS = {int(x) for x in os.environ.get("TTS_CLONE_CHATS", "439131779,197958
 CLONE_ON = os.environ.get("TTS_CLONE", "all") != "off"   # Михайло 21.10: його голосом з усіма, клієнтам — як AI-помічник
 AI_INTRO = "Вітаю! Я AI-помічник КАС Девелопмент. "
 INTRO_FILE = MEMORY / ".voice-intro.json"
+# Михайло 21.10: голосом — лише у відповідь на голосове або на прохання; клієнтам — коротко (≈15 с) і до 10 на день
+ASK_VOICE = re.compile(r"(відповідай|відповідь|скажи|розкажи|поясни|відповісти)\s+(мені\s+)?голосом|голосом\s+(відповідай|скажи|будь ласка)|^озвуч|голосове\s+(надішли|запиши)\s+мені", re.I)
+VOICE_DAY = 10
+VOICE_COUNT = MEMORY / ".voice-daily.json"
+
+
+def _voice_counts():
+    try:
+        d = json.loads(VOICE_COUNT.read_text())
+    except Exception:
+        d = {}
+    today = datetime.date.today().isoformat()
+    return d if d.get("day") == today else {"day": today}
+
+
+def voice_left(chat):
+    return int(chat) in OWN_CHATS or _voice_counts().get(str(chat), 0) < VOICE_DAY
+
+
+def count_voice(chat):
+    d = _voice_counts(); d[str(chat)] = d.get(str(chat), 0) + 1
+    VOICE_COUNT.write_text(json.dumps(d))
 
 
 def needs_intro(chat):
@@ -616,8 +638,9 @@ def draft_button(act, t, cq, state):
         LOG("editMessageText:", e)
     if act == "send":
         deliver(f"✅ Задача №{t['n']}\n\n" + t["draft"], t["chat"], t["mid"])
-        if t.get("att", "").startswith("голосове"):
-            speak(split_out(t["draft"])[0], t["chat"], t["mid"])
+        if (t.get("att", "").startswith("голосове") or ASK_VOICE.search(t.get("text", ""))) and voice_left(t["chat"]):
+            if speak(split_out(t["draft"])[0], t["chat"], t["mid"]):
+                count_voice(t["chat"])
         t["status"] = "done"; mark(t, "виконано")
     elif act == "edit":
         state["editing"] = t["n"]
