@@ -535,6 +535,51 @@ def handle_external(msg, state):
     if key:
         send_text(reply_text(key, role, in_group), chat, mid if in_group else None)
         LOG("стандартна відповідь", key, role, who(msg)); return
+
+    # --- дозвіл клієнта: одне підтвердження → 30 повідомлень автономно ---
+    if role == "client" and not in_group:
+        cdata = state.setdefault("client_access", {})
+        access = cdata.get(str(uid), {})
+        if access.get("approved") and access.get("count", 0) < 30:
+            att = ""
+            if has_media:
+                kind, path = describe(msg)
+                att = f"\nВкладення ({kind}): {path}"
+            prompt = (f"Ти AI-помічник Михайла, CAS Development. Пише клієнт.\n{PUBLIC}\n"
+                      f"Відповідай лише клієнтською інформацією: послуги, як працюємо, етапи, контакти, ціни «від».\n"
+                      f"Нічого внутрішнього — інші клієнти, суми договорів, ціни підрядників, особисте Михайла.\n"
+                      f"Не пропонуй дзвінків — краще продовжити тут.\n"
+                      f"Повідомлення клієнта: {text or '(без тексту)'}{att}\n"
+                      f"Відповідь клієнту (до 10 рядків, ввічливо, на «ви», мовою клієнта). {ANSWER_RULE}")
+            out = client_answer(prompt)
+            reply_msg, _ = split_out(out)
+            send_text(reply_msg or "Дякуємо! Якщо є питання — пишіть.", chat)
+            count = access.get("count", 0) + 1
+            cdata[str(uid)]["count"] = count
+            if count >= 30:
+                cdata[str(uid)]["approved"] = False
+                send_text(f"🔔 Клієнт {who(msg)} вичерпав ліміт 30 повідомлень. Дозволити продовжити?",
+                          markup={"inline_keyboard": [[{"text": "✅ Ще 30", "callback_data": f"allow:{uid}:{chat}"},
+                                                       {"text": "❌ Завершити", "callback_data": f"deny:{uid}:{chat}"}]]})
+            LOG("клієнт відповідь", who(msg), f"({count}/30)")
+            return
+        if access and not access.get("approved"):
+            send_text("Ваш запит у черзі. Відповімо найближчим часом.", chat)
+            return
+        # Перший запит або після deny — запитуємо Михайла
+        att_info = ""
+        if has_media:
+            kind, path = describe(msg)
+            att_info = f"\n📎 {kind}"
+        cdata[str(uid)] = {"approved": False, "count": 0,
+                            "pending_text": text or "(медіа)", "pending_chat": chat, "pending_mid": mid}
+        send_text("Дякуємо за звернення! Зараз підтверджу доступ у Михайла — відповімо вам найближчим часом.", chat)
+        send_text(f"🔔 Новий клієнт {who(msg)} хоче спілкуватись:\n{text or '(без тексту)'}{att_info}",
+                  markup={"inline_keyboard": [[{"text": "✅ Дозволити", "callback_data": f"allow:{uid}:{chat}"},
+                                               {"text": "❌ Відхилити", "callback_data": f"deny:{uid}:{chat}"}]]})
+        LOG("клієнт перший запит", who(msg))
+        return
+
     tasks = state.setdefault("tasks", {})
     if role != "owner" and sum(1 for t in tasks.values() if t.get("uid") == uid and t.get("status") in (None, "work", "draft")) >= 3:
         send_text("Ваші запити вже в Михайла на розгляді — відповім, щойно він перегляне.", chat, mid if in_group else None); return
@@ -587,6 +632,8 @@ def on_button(cq, state):
     act, _, n = (cq.get("data") or "").partition(":")
     if act == "blog":                                      # автоблог (~/jarvis/scripts/blog.sh): ОК / правки до статті
         blog_button(n, cq, state); return
+    if act in ("allow", "deny"):
+        client_button(act, n, cq, state); return
     t = state.get("tasks", {}).get(n)
     if act in ("send", "edit", "drop"):
         draft_button(act, t, cq, state); return
@@ -702,6 +749,44 @@ def draft_button(act, t, cq, state):
     else:
         t["status"] = "dropped"; mark(t, "не надіслано")
         send_text(f"Задача №{t['n']}: Михайло відповість особисто.", t["chat"], t["mid"])
+
+
+def client_button(act, uid_chat, cq, state):
+    """Дозвіл або відмова клієнту на пряме спілкування з асистентом."""
+    api("answerCallbackQuery", callback_query_id=cq["id"], text="Дозволено ✅" if act == "allow" else "Відхилено ❌")
+    uid_str, _, chat_str = uid_chat.partition(":")
+    try:
+        chat = int(chat_str)
+    except (ValueError, TypeError):
+        return
+    m = cq.get("message", {})
+    cdata = state.setdefault("client_access", {})
+    access = cdata.get(uid_str, {})
+    note = "\n\n✅ Дозволено" if act == "allow" else "\n\n❌ Відхилено"
+    try:
+        api("editMessageText", chat_id=OWNER, message_id=m.get("message_id"),
+            text=(m.get("text") or "")[:3900] + note)
+    except Exception as e:
+        LOG("client_button editMessage:", e)
+    if act == "allow":
+        cdata[uid_str] = {"approved": True, "count": 0}
+        send_text("Михайло підтвердив! Як я можу вам допомогти?", chat)
+        pending = access.get("pending_text", "")
+        if pending and pending != "(медіа)":
+            prompt = (f"Ти AI-помічник Михайла, CAS Development. Пише клієнт.\n{PUBLIC}\n"
+                      f"Відповідай лише клієнтською інформацією. Ціни лише «від». Не розкривай внутрішнього.\n"
+                      f"Повідомлення клієнта: {pending}\n"
+                      f"Відповідь клієнту (до 10 рядків, ввічливо, на «ви»). {ANSWER_RULE}")
+            out = client_answer(prompt)
+            reply, _ = split_out(out)
+            if reply:
+                send_text(reply, chat)
+                cdata[uid_str]["count"] = 1
+        LOG("клієнт дозволено", uid_str)
+    else:
+        cdata[uid_str] = {"approved": False, "count": 0}
+        send_text("Дякуємо за звернення! Михайло відповість вам особисто.", chat)
+        LOG("клієнт відхилено", uid_str)
 
 
 def revise_task(t, kind, content, state):
