@@ -14,7 +14,9 @@
 <link rel="canonical" href="https://cas-develop.com/portfolio">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
 <style>
 
 /* DISPLAY → Cormorant Garamond | MONO → DM Mono */
@@ -26,7 +28,7 @@ body{background:var(--bg);color:var(--tx);font-family:var(--M);overflow-x:hidden
 #cr,#crf{position:fixed;pointer-events:none;z-index:9999;border-radius:50%}
 #cr{width:6px;height:6px;background:var(--ac);transform:translate(-50%,-50%)}
 #crf{width:28px;height:28px;border:1px solid rgba(191,145,72,.4);transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease,transform .15s}
-body::before{content:'';position:fixed;inset:0;opacity:.25;pointer-events:none;z-index:8000;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E")}
+body::before{content:'';position:fixed;inset:0;opacity:.25;pointer-events:none;z-index:8000;background-image:url(/img/grain.webp)}
 nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:22px 52px;background:rgba(8,7,9,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(237,232,223,.06)}
 .logo{font-family:var(--D);font-size:1.15rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--tx);cursor:pointer;text-decoration:none}
 .logo em{font-style:normal;color:var(--ac)}
@@ -2498,8 +2500,8 @@ body.light .map-grat{display:none!important}
 /* ═══ CURSOR ═══ */
 const cr=document.getElementById('cr'),crf=document.getElementById('crf');
 let mx=0,my=0,fx=0,fy=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cr.style.left=mx+'px';cr.style.top=my+'px'});
-(function a(){fx+=(mx-fx)*.11;fy+=(my-fy)*.11;crf.style.left=fx+'px';crf.style.top=fy+'px';requestAnimationFrame(a)})();
+let crRun=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cr.style.left=mx+'px';cr.style.top=my+'px';if(!crRun){crRun=1;requestAnimationFrame(crLoop)}});
+function crLoop(){fx+=(mx-fx)*.11;fy+=(my-fy)*.11;crf.style.left=fx+'px';crf.style.top=fy+'px';if(Math.abs(mx-fx)+Math.abs(my-fy)>.5)requestAnimationFrame(crLoop);else crRun=0}
 document.querySelectorAll('a,button,.pi,.sp-card,.strip-item,.proj-cover').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cr.style.transform='translate(-50%,-50%) scale(2)';crf.style.transform='translate(-50%,-50%) scale(1.5)';crf.style.borderColor='rgba(191,145,72,.7)'});
   el.addEventListener('mouseleave',()=>{cr.style.transform='translate(-50%,-50%) scale(1)';crf.style.transform='translate(-50%,-50%) scale(1)';crf.style.borderColor='rgba(191,145,72,.4)'});
