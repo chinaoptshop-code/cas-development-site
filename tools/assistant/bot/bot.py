@@ -158,6 +158,10 @@ def handle(msg, state):
     if text.startswith("/new"):
         state["day"] = ""; state.pop("sid", None); send_text("Нова розмова. Пам'ять збережена, контекст чату очищено."); return
     kind, content = describe(msg)
+    if state.get("blog_edit") and not text.startswith("/"):  # правки Михайла до статті блогу
+        slug = state.pop("blog_edit")
+        subprocess.Popen([str(BLOG), "revise", slug, content], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+        send_text(f"Переробляю статтю «{slug}» — нове прев'ю прийде сюди (кілька хвилин)."); return
     t = state.get("tasks", {}).get(str(state.get("editing") or ""))
     if t and t.get("status") == "draft":                    # Михайло пише правки до чернетки для групи
         state.pop("editing", None)
@@ -558,10 +562,31 @@ def handle_external(msg, state):
     t["owner_mid"] = sent["message_id"] if sent else None
 
 
+BLOG = pathlib.Path.home() / "jarvis/scripts/blog.sh"
+
+
+def blog_button(rest, cq, state):
+    sub, _, slug = rest.partition(":")
+    m = cq.get("message", {})
+    note = {"ok": "✅ Погоджено — публікую гілку", "edit": "✏️ Чекаю правки"}.get(sub, "?")
+    api("answerCallbackQuery", callback_query_id=cq["id"], text=note)
+    try:
+        api("editMessageReplyMarkup", chat_id=OWNER, message_id=m.get("message_id"), reply_markup=json.dumps({"inline_keyboard": []}))
+    except Exception as e:
+        LOG("editMessageReplyMarkup:", e)
+    if sub == "ok":
+        subprocess.Popen([str(BLOG), "publish", slug], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+    elif sub == "edit":
+        state["blog_edit"] = slug
+        send_text(f"Що змінити в статті «{slug}»? Напиши текстом або голосовим.")
+
+
 def on_button(cq, state):
     if cq.get("from", {}).get("id") != OWNER:
         api("answerCallbackQuery", callback_query_id=cq["id"], text="Погоджує лише Михайло"); return
     act, _, n = (cq.get("data") or "").partition(":")
+    if act == "blog":                                      # автоблог (~/jarvis/scripts/blog.sh): ОК / правки до статті
+        blog_button(n, cq, state); return
     t = state.get("tasks", {}).get(n)
     if act in ("send", "edit", "drop"):
         draft_button(act, t, cq, state); return
