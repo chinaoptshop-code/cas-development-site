@@ -327,11 +327,11 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 }
 
 /* ════ LIGHT THEME ════ */
-body.light{--bg:#F5F2ED;--bg2:#EDEBE4;--sf:#E4E0D7;--tx:#1C1814;--mu:#7A7060;--ac:#9A6E28;--bd:rgba(28,24,20,.1)}
+body.light{--bg:#F5F2ED;--bg2:#EDEBE4;--sf:#E4E0D7;--tx:#1C1814;--mu:#6A6153;--ac:#805B21;--bd:rgba(28,24,20,.1)}
 body.light::before{opacity:.04}
 /* Navbar */
 body.light nav{background:rgba(245,242,237,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(28,24,20,.07)}
-body.light .nav-links a{color:rgba(28,24,20,.55)}
+body.light .nav-links a{color:var(--mu)}
 body.light .nav-links a:hover,body.light .nav-links a.on{color:var(--tx)}
 /* Hero - show image in light mode */
 body.light .hbg{opacity:.65;filter:saturate(.68) brightness(.88)}
@@ -339,7 +339,7 @@ body.light .hgrad{background:linear-gradient(135deg,rgba(245,242,237,.82) 0%,rgb
 body.light .hghost{color:rgba(28,24,20,.025)}
 body.light .h1{color:var(--tx)}
 body.light .h1 em{color:var(--ac)}
-body.light .hdesc{color:rgba(28,24,20,.6)}
+body.light .hdesc{color:var(--mu)}
 /* Service cards */
 body.light .sp-cbg{opacity:.22;filter:saturate(.5) brightness(.85)}
 body.light .sp-card:hover .sp-cbg{opacity:.32}
@@ -351,7 +351,7 @@ body.light #wsvg .land,body.light #wsvg path{fill:rgba(154,110,40,.12);stroke:rg
 body.light .about-img::after{border-color:rgba(154,110,40,.2)}
 /* Form */
 body.light .fi,body.light .ft,body.light .fsel{border-bottom-color:rgba(28,24,20,.15);color:var(--tx)}
-body.light .fi::placeholder,body.light .ft::placeholder{color:rgba(28,24,20,.3)}
+body.light .fi::placeholder,body.light .ft::placeholder{color:var(--mu)}
 
 /* ════ THEME TOGGLE BUTTON ════ */
 .theme-btn{background:none;border:1px solid rgba(237,232,223,.22);color:var(--mu);font-size:.9rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;margin-left:10px;flex-shrink:0;padding:0;line-height:1}
@@ -682,6 +682,7 @@ body.light .map-grat{display:none!important}
 <link rel="alternate" hreflang="es" href="https://cas-develop.com/es/">
 <link rel="alternate" hreflang="ru" href="https://cas-develop.com/ru/">
 <link rel="alternate" hreflang="x-default" href="https://cas-develop.com/">
+<!--ui-polish--><style id="ui-polish">body{--ui-field:#6C655D}body.light{--ui-field:#877C67}body{--ui-ring:var(--ac,var(--brass,var(--gold,#BF9148)));--ui-ph:var(--mu,var(--muted,#8a837c))}::placeholder{color:var(--ui-ph)!important;opacity:1!important}input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=submit]):not([type=button]):not([type=hidden]):not(:focus),textarea:not(:focus),select:not(:focus){border-color:var(--ui-field)!important}body.light #quickForm{--tx:#EDE8DF;--mu:#938c84;--ac:#BF9148;--ui-field:#6C655D;--ui-ph:#938c84;--ui-ring:#BF9148}body.light #lb,body.light #plb,body.light #sdlb{--ui-ring:#BF9148}body.light .strip-nav{color:#EDE8DF}body.light .hdesc{color:var(--mu)!important}body.light .pf-fnav{background:rgba(245,242,237,.92)}body.light #lb,body.light #plb,body.light #sdlb{--ac:#BF9148}body.light [style*="background:var(--ac"],body.light .sv-card:hover .sv-toggle,body.light .spc-cta:hover,body.light .pcarousel-nav button:hover,body.light .proj-row-btn:hover,body.light .pf-view-btn.on,body.light .hbtns .btn{color:#FBF8F3!important}</style><!--/ui-polish-->
 </head>
 <body>
 <div id="cr"></div><div id="crf"></div>
