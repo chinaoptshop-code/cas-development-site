@@ -172,18 +172,27 @@ def handle(msg, state):
         state["sid"] = str(uuid.uuid4())
     LOG("→", kind, content[:80])
     api("sendChatAction", chat_id=OWNER, action="typing")
+    timed_out = False
     try:
         out = run_claude(build_prompt(kind, content, msg.get("caption", "")), state["sid"], not fresh)
     except subprocess.TimeoutExpired:
-        out = "⚠️ Не встиг за 15 хвилин. Спробуй ще раз або розбий запит."
+        out, timed_out = "⚠️ Не встиг за 15 хвилин. Спробуй ще раз або розбий запит.", True
     state["day"] = today
-    deliver(out)
     # Михайлу голосом — коли він сам говорив голосом або попросив («голосом», «озвуч»), без ліміту довжини
     # «моїм голосом» / «запиши Сержу голосом» — це про чужі голосові, а не прохання відповісти голосом тобі
     asked = kind == "текст" and ASK_VOICE.search(content.strip())
-    if kind == "голосове" or asked:
+    reply, files = split_out(out)
+    if (kind == "голосове" or asked) and not timed_out and reply:
+        # Лише голосом, без дубля текстом (прохання Михайла 21.10). Текст — тільки якщо озвучення не вийшло
+        # або у відповіді є кнопки чи файли, які голосом не передати. Заглушку про таймаут не озвучуємо.
         import threading                                     # озвучення паралельно — наступне повідомлення не чекає
-        threading.Thread(target=speak_owner, args=(split_out(out)[0],), daemon=True).start()
+
+        def voice_only():
+            if not speak_owner(reply) or files or chat_buttons(out):
+                deliver(out)
+        threading.Thread(target=voice_only, daemon=True).start()
+    else:
+        deliver(out)
 
 
 ANSWER_RULE = ("Саму відповідь обгорни рядками ===ВІДПОВІДЬ=== і ===КІНЕЦЬ=== — усе поза ними (хід роботи, "
