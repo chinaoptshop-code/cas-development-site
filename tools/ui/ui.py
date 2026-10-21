@@ -66,7 +66,7 @@ def analyse(rel):
         'hreflang': len(re.findall(r'hreflang=', s.split('</head>')[0])),
         'canonical': bool(re.search(r'<link rel="canonical"', s)),
         'h1_count': len(re.findall(r'<h1\b', s)),
-        'osocor': bool(re.search(r'osocor|осокор', text, re.I)),
+        'osocor': bool(re.search(r'osocor|осокор|osokork', s, re.I)),
         'mu': sorted(set(re.findall(r'--mu:\s*(#[0-9a-fA-F]{3,6})', css))),
         'bg2': sorted(set(re.findall(r'--bg2:\s*(#[0-9a-fA-F]{3,6})', css))),
         'prices_bad': sorted(set(p for p in re.findall(r'\$\s?\d[\d ]*', text) if p.strip().rstrip() not in PRICES_OK and not p.startswith('$1 ') and '/' not in p)),

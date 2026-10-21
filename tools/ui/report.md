@@ -1,11 +1,11 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 79 (MAIN 5, LAND 71, інші 3). HTML разом 3785 КБ, з них інлайн CSS 1342 КБ і JS 821 КБ.
+Сторінок: 79 (MAIN 5, LAND 71, інші 3). HTML разом 3553 КБ, з них інлайн CSS 1342 КБ і JS 821 КБ.
 
 ## Проблеми
 
 - **img без width/height** (2): service-detail.html(2), shop.html(6)
-- **Навігація через onclick** (1): portfolio.html(28)
+- **Навігація через onclick** (1): portfolio.html(27)
 - **Непідтверджені ціни** (9): blog/skilky-koshtuie-remont-budynku-pid-kliuch.html['$110 000 '], blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html['$33 000'], contact.html['$ 5', '$120', '$20', '$65', '$650', '$780', '$900'], en/index.html['$1', '$2'], en/interior-design.html['$2'], es/diseno-interiores.html['$2'], es/index.html['$1', '$2'], ru/dizayn-kvartiry-kiev.html['$3 000'], shop.html['$185 ', '$2 100 ', '$280 ', '$340 ', '$410 ', '$420 ', '$650 ', '$760 ', '$890 ']
 
 ## Токени
@@ -18,8 +18,8 @@
 
 | сторінка | тип | HTML КБ | gzip КБ | CSS КБ | JS КБ | розмірів шрифту | тегів |
 |---|---|---|---|---|---|---|---|
-| portfolio.html | main | 503.6 | 56.9 | 57.6 | 50.6 | 28 | 3971 |
-| index.html | main | 155.3 | 35.3 | 55.3 | 47.7 | 26 | 542 |
+| portfolio.html | main | 272.7 | 44.7 | 57.8 | 50.6 | 28 | 1624 |
+| index.html | main | 153.5 | 35.2 | 55.3 | 47.7 | 26 | 527 |
 | contact.html | main | 134.8 | 34.0 | 59.4 | 47.1 | 23 | 297 |
 | services.html | main | 119.8 | 29.7 | 49.5 | 41.0 | 21 | 328 |
 | about.html | main | 112.7 | 28.7 | 49.9 | 40.9 | 21 | 205 |
@@ -29,7 +29,7 @@
 | proekty/pidgirland.html | land | 52.6 | 12.2 | 14.4 | 7.0 | 8 | 254 |
 | proekty/kitana-beach.html | land | 52.5 | 12.1 | 14.4 | 7.0 | 8 | 250 |
 | proekty/hodos-villa.html | land | 49.8 | 11.9 | 14.4 | 7.0 | 8 | 236 |
-| service-detail.html | other | 47.1 | 14.2 | 15.4 | 29.5 | 7 | 39 |
+| service-detail.html | other | 47.0 | 14.1 | 15.4 | 29.3 | 7 | 39 |
 | shop.html | other | 45.9 | 11.6 | 19.6 | 8.0 | 14 | 293 |
 | proekty/hoda-estate.html | land | 43.0 | 11.1 | 14.4 | 7.0 | 8 | 194 |
 | proekty/edelweiss.html | land | 42.0 | 10.9 | 14.4 | 7.0 | 8 | 186 |
