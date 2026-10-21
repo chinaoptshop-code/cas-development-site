@@ -748,6 +748,7 @@ def msg_json(msg):
         "chat": chat,
         "sender_id": msg.sender_id,
         "sender": sender_name(msg),
+        "sender_username": getattr(msg.sender, "username", None) if getattr(msg, "sender", None) else None,
         "text": msg.message or "",
         "media": describe_media(msg),
         "reply_to": getattr(rt, "reply_to_msg_id", None) if rt else None,
@@ -867,6 +868,7 @@ async def cmd_unread(client, args):
         found += 1
         if args.json:
             out.append({"chat_id": d.id, "chat": d.name, "type": kind, "unread": d.unread_count,
+                        "username": getattr(d.entity, "username", None),
                         "messages": [msg_json(m) for m in msgs]})
         else:
             print(f"=== {d.name} (id {d.id}, {kind}) — непрочитано {d.unread_count}"

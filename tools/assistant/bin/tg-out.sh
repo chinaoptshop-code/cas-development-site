@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Надіслати Михайлу повідомлення/файл/голосове.
-#   tg-out.sh text "Текст"            [--md]        (розмітка Markdown)
+#   tg-out.sh text "Текст"            [--md]        (розмітка Markdown; кнопки — JSON у змінній TG_OUT_MARKUP)
 #   tg-out.sh file шлях.pdf ["Підпис"]
 #   tg-out.sh voice запис.mp3                      (готовий аудіофайл як голосове)
 #   tg-out.sh say "Текст, який озвучити"           (лише режим personal: озвучує tg.sh)
@@ -27,7 +27,7 @@ if [ "$(assistant_mode)" = bot ]; then
     text)
       msg="${1:?текст}"; parse=""; [ "${2:-}" = "--md" ] && parse="-d parse_mode=Markdown"
       # Telegram обмежує 4096 символів — ріжемо на частини
-      python3 - "$msg" <<'PY' | while IFS= read -r -d '' part; do api sendMessage -d chat_id="$cid" $parse --data-urlencode "text=$part" >/dev/null; done
+      python3 - "$msg" <<'PY' | while IFS= read -r -d '' part; do api sendMessage -d chat_id="$cid" $parse ${TG_OUT_MARKUP:+--data-urlencode "reply_markup=$TG_OUT_MARKUP"} --data-urlencode "text=$part" >/dev/null; done
 import sys
 t=sys.argv[1]; n=3900
 for i in range(0,len(t),n): sys.stdout.write(t[i:i+n]+"\0")
