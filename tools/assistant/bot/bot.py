@@ -110,6 +110,8 @@ def build_prompt(kind, content, caption):
 04 Читання.md, 05 Рішення.md, 06 Люди.md, 07 Компанія.md, Журнал YYYY-MM.md, папки Зустрічі/, Тижні/, Документи/).
 Редагуй файли напряму, не через Google Drive. Google Drive, Calendar і Plaud доступні лише якщо підключені як MCP (claude mcp list); записи зустрічей бери через інструменти Plaud, якщо вони є.
 Голосові/аудіо розшифровуй: tools/assistant/bin/transcribe.sh <файл>.
+Голосове ГОЛОСОМ МИХАЙЛА (комусь із його акаунта чи йому): tools/assistant/bin/voice-clone.sh "текст" → шлях .ogg,
+далі tools/telegram/tg.sh send-voice <чат> <файл>. НІКОЛИ не tg.sh say — там чужий жіночий голос Google.
 PDF ти вмієш робити сам: запиши текст у Markdown-файл у ~/.assistant/tmp, запусти
 tools/assistant/bin/md2pdf.sh <файл.md> (напряму, без «bash» попереду) і додай рядок SEND_FILE з шляхом до PDF. Ніколи не пиши,
 що надіслав файл, якщо команда не повернула шлях до нього.
@@ -159,6 +161,10 @@ def handle(msg, state):
         revise_task(t, kind, content, state); return
     today = datetime.date.today().isoformat()
     fresh = state.get("day") != today or not state.get("sid")   # нова розмова щодня або після /new
+    sess = pathlib.Path.home() / ".claude/projects" / str(REPO).replace("/", "-") / f"{state.get('sid')}.jsonl"
+    if not fresh and sess.exists() and sess.stat().st_size > 1_500_000:  # >1,5 МБ — відповіді сповільнюються
+        LOG("розмова розрослась", sess.stat().st_size // 1024, "КБ — починаю нову (памʼять у файлах)")
+        fresh = True
     if fresh:
         state["sid"] = str(uuid.uuid4())
     LOG("→", kind, content[:80])
@@ -170,8 +176,11 @@ def handle(msg, state):
     state["day"] = today
     deliver(out)
     # Михайлу голосом — коли він сам говорив голосом або попросив («голосом», «озвуч»), без ліміту довжини
-    if kind == "голосове" or (kind == "текст" and re.search(r"голосом|озвуч", content, re.I)):
-        speak_owner(split_out(out)[0])
+    # «моїм голосом» / «запиши Сержу голосом» — це про чужі голосові, а не прохання відповісти голосом тобі
+    asked = kind == "текст" and re.search(r"(відповідай|відповідь|скажи|розкажи|поясни)\s+голосом|голосом\s+(відповідай|скажи)|^озвуч", content.strip(), re.I)
+    if kind == "голосове" or asked:
+        import threading                                     # озвучення паралельно — наступне повідомлення не чекає
+        threading.Thread(target=speak_owner, args=(split_out(out)[0],), daemon=True).start()
 
 
 ANSWER_RULE = ("Саму відповідь обгорни рядками ===ВІДПОВІДЬ=== і ===КІНЕЦЬ=== — усе поза ними (хід роботи, "
