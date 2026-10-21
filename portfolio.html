@@ -556,7 +556,7 @@ body.light .map-grat{display:none!important}
 .pf-grid.hidden{display:none!important}
 .pf-filter{/* always visible */}
 .pf-grid{margin-top:0;padding-top:0}
-.proj-row{margin-bottom:0;border-top:1px solid rgba(237,232,223,.06)}
+.proj-row{margin-bottom:0;border-top:1px solid rgba(237,232,223,.06)}.proj-row{content-visibility:auto;contain-intrinsic-size:auto 216px}
 .proj-row-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:14px 52px 10px;border-bottom:1px solid rgba(237,232,223,.1)}
 .proj-row-name{margin:0;font-family:var(--D);font-size:1.4rem;font-weight:300;color:var(--tx)}
 .proj-row-meta{font-family:var(--M);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);margin-top:2px}
@@ -735,7 +735,7 @@ body.light .map-grat{display:none!important}
 <!-- HOME -->
 <main>
 <div id="p-portfolio">
-  <section class="ph"><img class="sbg" src="/img/p/1ZRiEBBWt3pzrB-1400.webp" srcset="/img/p/1ZRiEBBWt3pzrB-r600.webp 600w, /img/p/1ZRiEBBWt3pzrB-r900.webp 900w, /img/p/1ZRiEBBWt3pzrB-1400.webp 1400w" sizes="100vw" loading="eager" fetchpriority="high" alt="" width="1400" height="700"><div class="ph-inner"><div class="lbl" id="lbl-pf">Наші роботи</div><h1 class="ph-title" id="port-pg-title">Кожен проєкт — <em>окрема</em> історія</h1></div><span class="ph-num">03</span></section>
+  <section class="ph"><img class="sbg" src="/img/p/1ZRiEBBWt3pzrB-bg480.webp" loading="eager" alt="" width="480" height="240"><div class="ph-inner"><div class="lbl" id="lbl-pf">Наші роботи</div><h1 class="ph-title" id="port-pg-title">Кожен проєкт — <em>окрема</em> історія</h1></div><span class="ph-num">03</span></section>
   
 
 <div class="pf-filter-wrap"><button class="pf-fnav pf-fnav-l" onclick="pfScroll(-1)" aria-label="‹">‹</button><div class="pf-filter" id="pfFilter"><button class="filt" onclick="filt(this,'all')">Всі проекти</button>
@@ -2877,7 +2877,7 @@ filtAndPhoto=function(projId,idx){
   },{threshold:0.12});
   document.querySelectorAll('.proj-row,.pf-rows .proj-row').forEach(function(el,i){
     el.classList.add('reveal');
-    el.style.transitionDelay=(i*0.05)+'s';
+    el.style.transitionDelay=((i%4)*0.05)+'s';
     io.observe(el);
   });
 })();
