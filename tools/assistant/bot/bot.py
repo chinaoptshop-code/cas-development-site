@@ -184,7 +184,8 @@ ANSWER_RULE = ("Саму відповідь обгорни рядками ===В�
 # недоступний — локальною моделлю Ollama на Mac mini. Підписка Claude (claude -p) — лише для Михайла й команди.
 API_ENV = pathlib.Path.home() / "jarvis/projects/quiz/.env"
 CLIENT_MODEL = os.environ.get("ASSISTANT_CLIENT_MODEL", "claude-sonnet-5")
-LOCAL_MODEL = os.environ.get("ASSISTANT_LOCAL_MODEL", "qwen3:4b")
+# Локальні моделі по черзі: qwen3:8b на SSD (окремий сервер :11435), запас — qwen3:4b на внутрішньому диску (:11434)
+LOCAL_MODELS = [("http://127.0.0.1:11435", "qwen3:8b"), ("http://127.0.0.1:11434", os.environ.get("ASSISTANT_LOCAL_MODEL", "qwen3:4b"))]
 
 
 def api_key():
@@ -211,17 +212,20 @@ def client_answer(prompt):
                 return text
         except Exception as e:
             LOG("клієнт: API не відповів:", repr(e)[:200])
-    try:
-        body = {"model": LOCAL_MODEL, "prompt": prompt + "\n/no_think", "stream": False, "options": {"temperature": 0.3}}
-        req = urllib.request.Request("http://127.0.0.1:11434/api/generate", data=json.dumps(body).encode(),
-                                     headers={"content-type": "application/json"})
-        with urllib.request.urlopen(req, timeout=180) as r:
-            text = re.sub(r"<think>.*?</think>", "", json.load(r).get("response", ""), flags=re.S).strip()
-        if text:
-            LOG("клієнт: відповідь локальною моделлю", LOCAL_MODEL)
-            return "(відповідь локальної моделі — перевір уважніше)\n" + text
-    except Exception as e:
-        LOG("клієнт: локальна модель не відповіла:", repr(e)[:200])
+    for host, model in LOCAL_MODELS:
+        try:
+            guard = ("\n\nВАЖЛИВО: не рахуй жодних сум і не переводь у гривні — локальна модель помиляється в арифметиці. "
+                     "Називай лише ціни «від» за м² з переліку вище, без підсумків. /no_think")
+            body = {"model": model, "prompt": prompt + guard, "stream": False, "options": {"temperature": 0.2}}
+            req = urllib.request.Request(host + "/api/generate", data=json.dumps(body).encode(),
+                                         headers={"content-type": "application/json"})
+            with urllib.request.urlopen(req, timeout=240) as r:
+                text = re.sub(r"<think>.*?</think>", "", json.load(r).get("response", ""), flags=re.S).strip()
+            if text:
+                LOG("клієнт: відповідь локальною моделлю", model)
+                return "(відповідь локальної моделі — перевір уважніше)\n" + text
+        except Exception as e:
+            LOG("клієнт: локальна модель", model, "не відповіла:", repr(e)[:150])
     return "===ВІДПОВІДЬ===\nДякую за звернення! Михайло відповість вам особисто найближчим часом.\n===КІНЕЦЬ==="
 
 
