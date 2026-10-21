@@ -1,0 +1,2416 @@
+[
+ {
+  "page": "about.html",
+  "kind": "main",
+  "html_kb": 130.1,
+  "gzip_kb": 33.8,
+  "css_kb": 49.9,
+  "js_kb": 58.4,
+  "font_sizes": 21,
+  "tags": 205,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#6A6153",
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c",
+   "#EDEBE4"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 1
+ },
+ {
+  "page": "baza-vidpochynku-pid-klyuch.html",
+  "kind": "land",
+  "html_kb": 35.0,
+  "gzip_kb": 10.7,
+  "css_kb": 14.0,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 205,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog.html",
+  "kind": "land",
+  "html_kb": 34.5,
+  "gzip_kb": 10.5,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 95,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/avtorskyi-nahliad-navishcho.html",
+  "kind": "land",
+  "html_kb": 32.4,
+  "gzip_kb": 10.5,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 111,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/dyzain-malenkoi-kvartyry-zberihannia.html",
+  "kind": "land",
+  "html_kb": 33.0,
+  "gzip_kb": 10.6,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 110,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/dyzain-restoranu-z-choho-pochaty.html",
+  "kind": "land",
+  "html_kb": 32.9,
+  "gzip_kb": 10.6,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 110,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/etapy-remontu-kvartyry-pid-kliuch.html",
+  "kind": "land",
+  "html_kb": 33.8,
+  "gzip_kb": 10.9,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 113,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/mebli-z-kytaiu-dlia-interieru.html",
+  "kind": "land",
+  "html_kb": 32.9,
+  "gzip_kb": 10.5,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 111,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html",
+  "kind": "land",
+  "html_kb": 32.9,
+  "gzip_kb": 10.6,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 109,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/shcho-vkhodyt-u-dyzain-proekt-interieru.html",
+  "kind": "land",
+  "html_kb": 34.2,
+  "gzip_kb": 11.1,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 115,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/skilky-koshtuie-dyzain-proekt-kvartyry-kyiv.html",
+  "kind": "land",
+  "html_kb": 35.4,
+  "gzip_kb": 11.3,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 123,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/skilky-koshtuie-remont-budynku-pid-kliuch.html",
+  "kind": "land",
+  "html_kb": 33.4,
+  "gzip_kb": 10.7,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 114,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$110 000 "
+  ],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html",
+  "kind": "land",
+  "html_kb": 35.6,
+  "gzip_kb": 11.1,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 127,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$33 000"
+  ],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/suchasnyi-minimalizm-teplyi-interier.html",
+  "kind": "land",
+  "html_kb": 32.6,
+  "gzip_kb": 10.5,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 106,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/yak-splanuvaty-bazu-vidpochynku.html",
+  "kind": "land",
+  "html_kb": 33.0,
+  "gzip_kb": 10.6,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 115,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/yak-vybraty-dyzainera-interieru.html",
+  "kind": "land",
+  "html_kb": 33.5,
+  "gzip_kb": 10.7,
+  "css_kb": 14.5,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 116,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "budivnytstvo-budynkiv-kyiv.html",
+  "kind": "land",
+  "html_kb": 37.1,
+  "gzip_kb": 11.2,
+  "css_kb": 14.1,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 217,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "contact.html",
+  "kind": "main",
+  "html_kb": 152.2,
+  "gzip_kb": 39.1,
+  "css_kb": 59.4,
+  "js_kb": 64.5,
+  "font_sizes": 23,
+  "tags": 297,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#6A6153",
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c",
+   "#EDEBE4"
+  ],
+  "prices_bad": [
+   "$ 5",
+   "$120",
+   "$20",
+   "$65",
+   "$650",
+   "$780",
+   "$900"
+  ],
+  "facts_bad": [],
+  "webhook_copies": 2
+ },
+ {
+  "page": "dyzain-interieru-kvartyry-kyiv.html",
+  "kind": "land",
+  "html_kb": 37.9,
+  "gzip_kb": 11.3,
+  "css_kb": 14.0,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 223,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 5,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "dyzain-interieru-kyiv.html",
+  "kind": "land",
+  "html_kb": 36.5,
+  "gzip_kb": 11.2,
+  "css_kb": 14.1,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 217,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "dyzain-restoranu-kafe-kyiv.html",
+  "kind": "land",
+  "html_kb": 35.9,
+  "gzip_kb": 11.0,
+  "css_kb": 14.0,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 205,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/index.html",
+  "kind": "land",
+  "html_kb": 31.8,
+  "gzip_kb": 10.2,
+  "css_kb": 13.8,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 193,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 5,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$1",
+   "$2"
+  ],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/interior-design.html",
+  "kind": "land",
+  "html_kb": 30.4,
+  "gzip_kb": 9.8,
+  "css_kb": 13.8,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 153,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 5,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$2"
+  ],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/privacy-policy.html",
+  "kind": "land",
+  "html_kb": 26.5,
+  "gzip_kb": 8.8,
+  "css_kb": 14.2,
+  "js_kb": 6.8,
+  "font_sizes": 10,
+  "tags": 70,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 5,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-interiores.html",
+  "kind": "land",
+  "html_kb": 30.7,
+  "gzip_kb": 9.9,
+  "css_kb": 13.8,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 153,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 5,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$2"
+  ],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/index.html",
+  "kind": "land",
+  "html_kb": 32.0,
+  "gzip_kb": 10.4,
+  "css_kb": 13.8,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 193,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 5,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$1",
+   "$2"
+  ],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/privacidad.html",
+  "kind": "land",
+  "html_kb": 26.8,
+  "gzip_kb": 8.9,
+  "css_kb": 14.2,
+  "js_kb": 6.8,
+  "font_sizes": 10,
+  "tags": 70,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 5,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "index.html",
+  "kind": "main",
+  "html_kb": 172.8,
+  "gzip_kb": 40.4,
+  "css_kb": 55.3,
+  "js_kb": 65.2,
+  "font_sizes": 26,
+  "tags": 542,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 5,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#6A6153",
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c",
+   "#EDEBE4"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 2
+ },
+ {
+  "page": "konfidentsiinist.html",
+  "kind": "land",
+  "html_kb": 27.9,
+  "gzip_kb": 9.3,
+  "css_kb": 14.2,
+  "js_kb": 6.8,
+  "font_sizes": 10,
+  "tags": 69,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 5,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "landshaftnyi-dyzain-kyiv.html",
+  "kind": "land",
+  "html_kb": 34.9,
+  "gzip_kb": 10.8,
+  "css_kb": 14.1,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 207,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ozdoba.html",
+  "kind": "other",
+  "html_kb": 96.2,
+  "gzip_kb": 28.3,
+  "css_kb": 21.3,
+  "js_kb": 69.5,
+  "font_sizes": 9,
+  "tags": 79,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 1
+ },
+ {
+  "page": "portfolio.html",
+  "kind": "main",
+  "html_kb": 521.1,
+  "gzip_kb": 62.0,
+  "css_kb": 57.6,
+  "js_kb": 68.1,
+  "font_sizes": 28,
+  "tags": 3971,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 28,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#6A6153",
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c",
+   "#EDEBE4"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 1
+ },
+ {
+  "page": "proektuvannia-budynku-kyiv.html",
+  "kind": "land",
+  "html_kb": 36.2,
+  "gzip_kb": 10.9,
+  "css_kb": 14.0,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 217,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/a-frame-house.html",
+  "kind": "land",
+  "html_kb": 33.1,
+  "gzip_kb": 10.0,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 132,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/diamond.html",
+  "kind": "land",
+  "html_kb": 39.7,
+  "gzip_kb": 10.7,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 172,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/dolls-salon.html",
+  "kind": "land",
+  "html_kb": 32.8,
+  "gzip_kb": 9.9,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 130,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/dubai-villa.html",
+  "kind": "land",
+  "html_kb": 41.9,
+  "gzip_kb": 10.9,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 188,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/edelweiss.html",
+  "kind": "land",
+  "html_kb": 42.0,
+  "gzip_kb": 10.9,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 186,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/hoda-estate.html",
+  "kind": "land",
+  "html_kb": 43.0,
+  "gzip_kb": 11.1,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 194,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/hodos-villa.html",
+  "kind": "land",
+  "html_kb": 49.8,
+  "gzip_kb": 11.9,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 236,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/house-150.html",
+  "kind": "land",
+  "html_kb": 32.4,
+  "gzip_kb": 10.0,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 128,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/kitana-beach.html",
+  "kind": "land",
+  "html_kb": 52.5,
+  "gzip_kb": 12.1,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 250,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/linden-penthouse.html",
+  "kind": "land",
+  "html_kb": 57.2,
+  "gzip_kb": 12.7,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 276,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/monpark.html",
+  "kind": "land",
+  "html_kb": 34.3,
+  "gzip_kb": 10.1,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 140,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/office-chicago.html",
+  "kind": "land",
+  "html_kb": 32.5,
+  "gzip_kb": 9.9,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 128,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/petrivtsi-house.html",
+  "kind": "land",
+  "html_kb": 63.0,
+  "gzip_kb": 13.4,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 314,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/pidgirland.html",
+  "kind": "land",
+  "html_kb": 52.6,
+  "gzip_kb": 12.2,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 254,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/smart-villa.html",
+  "kind": "land",
+  "html_kb": 32.9,
+  "gzip_kb": 10.1,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 130,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/tetris-hall.html",
+  "kind": "land",
+  "html_kb": 35.8,
+  "gzip_kb": 10.3,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 148,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/usa-house.html",
+  "kind": "land",
+  "html_kb": 37.1,
+  "gzip_kb": 10.5,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 160,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/yablu-rest.html",
+  "kind": "land",
+  "html_kb": 32.2,
+  "gzip_kb": 9.9,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 124,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/yacht-restaurant.html",
+  "kind": "land",
+  "html_kb": 36.3,
+  "gzip_kb": 10.4,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 150,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/yacht-vip.html",
+  "kind": "land",
+  "html_kb": 41.4,
+  "gzip_kb": 10.9,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 8,
+  "tags": 184,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "remont-budynku-pid-klyuch-kyiv.html",
+  "kind": "land",
+  "html_kb": 37.9,
+  "gzip_kb": 11.4,
+  "css_kb": 14.0,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 221,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "remont-komertsiinykh-prymishchen-kyiv.html",
+  "kind": "land",
+  "html_kb": 35.8,
+  "gzip_kb": 11.0,
+  "css_kb": 14.1,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 213,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "remont-kukhni-kyiv.html",
+  "kind": "land",
+  "html_kb": 35.0,
+  "gzip_kb": 10.9,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 203,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "remont-kvartyr-kyiv.html",
+  "kind": "land",
+  "html_kb": 37.8,
+  "gzip_kb": 11.6,
+  "css_kb": 14.1,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 215,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "remont-novobudovy-kyiv.html",
+  "kind": "land",
+  "html_kb": 36.1,
+  "gzip_kb": 11.1,
+  "css_kb": 14.1,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 212,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "remont-ofisu-pid-klyuch-kyiv.html",
+  "kind": "land",
+  "html_kb": 37.8,
+  "gzip_kb": 11.5,
+  "css_kb": 14.0,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 213,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "remont-pid-klyuch-kyiv.html",
+  "kind": "land",
+  "html_kb": 35.6,
+  "gzip_kb": 11.0,
+  "css_kb": 14.1,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 208,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "remont-vannoi-kimnaty-kyiv.html",
+  "kind": "land",
+  "html_kb": 35.9,
+  "gzip_kb": 11.1,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 204,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "remontna-bryhada-kyiv.html",
+  "kind": "land",
+  "html_kb": 35.9,
+  "gzip_kb": 11.1,
+  "css_kb": 14.1,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 208,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/dizayn-interera-kiev.html",
+  "kind": "land",
+  "html_kb": 36.3,
+  "gzip_kb": 11.2,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 212,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/dizayn-kvartiry-kiev.html",
+  "kind": "land",
+  "html_kb": 36.2,
+  "gzip_kb": 11.1,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 211,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 5,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$3 000"
+  ],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/index.html",
+  "kind": "land",
+  "html_kb": 35.1,
+  "gzip_kb": 10.6,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 202,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 5,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/konfidentsialnost.html",
+  "kind": "land",
+  "html_kb": 27.9,
+  "gzip_kb": 9.3,
+  "css_kb": 14.2,
+  "js_kb": 6.8,
+  "font_sizes": 10,
+  "tags": 69,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 5,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/landshaftnyy-dizayn-kiev.html",
+  "kind": "land",
+  "html_kb": 34.3,
+  "gzip_kb": 10.6,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 198,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/proektirovanie-doma-kiev.html",
+  "kind": "land",
+  "html_kb": 35.5,
+  "gzip_kb": 10.8,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 204,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/remont-doma-kiev.html",
+  "kind": "land",
+  "html_kb": 34.8,
+  "gzip_kb": 10.9,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 203,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/remont-kommercheskih-pomeshcheniy-kiev.html",
+  "kind": "land",
+  "html_kb": 35.0,
+  "gzip_kb": 10.7,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 204,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/remont-kvartir-kiev.html",
+  "kind": "land",
+  "html_kb": 37.6,
+  "gzip_kb": 11.5,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 210,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/remont-ofisa-kiev.html",
+  "kind": "land",
+  "html_kb": 33.7,
+  "gzip_kb": 10.6,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 192,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/remont-pod-klyuch-kiev.html",
+  "kind": "land",
+  "html_kb": 35.4,
+  "gzip_kb": 11.0,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 203,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/remont-v-novostroyke-kiev.html",
+  "kind": "land",
+  "html_kb": 35.6,
+  "gzip_kb": 11.0,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 203,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/remontnaya-brigada-kiev.html",
+  "kind": "land",
+  "html_kb": 35.8,
+  "gzip_kb": 11.0,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 203,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ru/stroitelstvo-domov-kiev.html",
+  "kind": "land",
+  "html_kb": 36.8,
+  "gzip_kb": 11.2,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 212,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "service-detail.html",
+  "kind": "other",
+  "html_kb": 47.1,
+  "gzip_kb": 14.2,
+  "css_kb": 15.4,
+  "js_kb": 29.5,
+  "font_sizes": 7,
+  "tags": 39,
+  "img_no_size": 2,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#87807C",
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "services.html",
+  "kind": "main",
+  "html_kb": 137.3,
+  "gzip_kb": 35.3,
+  "css_kb": 49.5,
+  "js_kb": 58.4,
+  "font_sizes": 21,
+  "tags": 328,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#6A6153",
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c",
+   "#EDEBE4"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 1
+ },
+ {
+  "page": "shop.html",
+  "kind": "other",
+  "html_kb": 45.9,
+  "gzip_kb": 11.6,
+  "css_kb": 19.6,
+  "js_kb": 8.0,
+  "font_sizes": 14,
+  "tags": 293,
+  "img_no_size": 6,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#87807C",
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$185 ",
+   "$2 100 ",
+   "$280 ",
+   "$340 ",
+   "$410 ",
+   "$420 ",
+   "$650 ",
+   "$760 ",
+   "$890 "
+  ],
+  "facts_bad": [],
+  "webhook_copies": 0
+ }
+]
