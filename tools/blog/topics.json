@@ -1,0 +1,332 @@
+[
+ {
+  "lang": "ru",
+  "slug": "remont-pod-klyuch-kiev-chto-vhodit",
+  "title": "Ремонт под ключ в Киеве: что входит и как не переплатить",
+  "keyword": "ремонт под ключ киев",
+  "service": [
+   "/ru/remont-pod-klyuch-kiev",
+   "Ремонт под ключ"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "shcho-vkhodyt-u-remont-pid-kliuch",
+  "title": "Що входить у ремонт під ключ: повний перелік робіт",
+  "keyword": "ремонт під ключ київ",
+  "service": [
+   "/remont-pid-klyuch-kyiv",
+   "Ремонт під ключ"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "kak-vybrat-remontnuyu-brigadu-kiev",
+  "title": "Как выбрать ремонтную бригаду в Киеве: 10 вопросов перед договором",
+  "keyword": "ремонтная бригада киев",
+  "service": [
+   "/ru/remontnaya-brigada-kiev",
+   "Ремонтная бригада"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "yak-vybraty-remontnu-bryhadu",
+  "title": "Як вибрати ремонтну бригаду: на що дивитися в договорі",
+  "keyword": "ремонтна бригада київ",
+  "service": [
+   "/remontna-bryhada-kyiv",
+   "Ремонтна бригада"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "skolko-stoit-remont-vannoy-kiev",
+  "title": "Сколько стоит ремонт ванной в Киеве и от чего зависит цена",
+  "keyword": "ремонт ванной киев цена",
+  "service": [
+   "/ru/remont-kvartir-kiev",
+   "Ремонт квартир"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "remont-kukhni-pid-kliuch-z-choho-pochaty",
+  "title": "Ремонт кухні під ключ: з чого почати і як спланувати",
+  "keyword": "ремонт кухні київ",
+  "service": [
+   "/remont-kukhni-kyiv",
+   "Ремонт кухні"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "stroitelstvo-doma-kiev-skolko-stoit",
+  "title": "Строительство дома под Киевом: сколько стоит в 2026 году",
+  "keyword": "строительство домов киев",
+  "service": [
+   "/ru/stroitelstvo-domov-kiev",
+   "Строительство домов"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "hazoblok-chy-keramika-dlia-budynku",
+  "title": "Газоблок чи кераміка: з чого будувати будинок",
+  "keyword": "будівництво будинку з газоблоку",
+  "service": [
+   "/budivnytstvo-budynkiv-kyiv",
+   "Будівництво будинків"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "proekt-doma-chto-vhodit",
+  "title": "Проект частного дома: что входит и зачем он нужен",
+  "keyword": "проектирование дома киев",
+  "service": [
+   "/ru/proektirovanie-doma-kiev",
+   "Проектирование дома"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "proekt-budynku-shcho-vkhodyt",
+  "title": "Проєкт будинку: що входить і скільки коштує",
+  "keyword": "проєктування будинку київ",
+  "service": [
+   "/proektuvannia-budynku-kyiv",
+   "Проєктування будинку"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "dizayn-proekt-kvartiry-skolko-stoit",
+  "title": "Дизайн-проект квартиры в Киеве: сколько стоит и что входит",
+  "keyword": "дизайн проект квартиры киев цена",
+  "service": [
+   "/ru/dizayn-kvartiry-kiev",
+   "Дизайн квартиры"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "dyzain-interieru-z-choho-pochaty",
+  "title": "Дизайн інтерʼєру: з чого почати, якщо ви ще не знаєте стиль",
+  "keyword": "дизайн інтерʼєру київ",
+  "service": [
+   "/dyzain-interieru-kyiv",
+   "Дизайн інтерʼєру"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "remont-ofisa-pod-klyuch-sroki",
+  "title": "Ремонт офиса под ключ: сроки, этапы и бюджет",
+  "keyword": "ремонт офиса киев",
+  "service": [
+   "/ru/remont-ofisa-kiev",
+   "Ремонт офиса"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "remont-komertsiinoho-prymishchennia-etapy",
+  "title": "Ремонт комерційного приміщення: магазин, салон, кафе",
+  "keyword": "ремонт комерційних приміщень київ",
+  "service": [
+   "/remont-komertsiinykh-prymishchen-kyiv",
+   "Ремонт комерційних приміщень"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "remont-doma-pod-klyuch-kiev",
+  "title": "Ремонт частного дома под ключ: с чего начать",
+  "keyword": "ремонт дома киев",
+  "service": [
+   "/ru/remont-doma-kiev",
+   "Ремонт дома"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "landshaftnyi-dyzain-dilianky-z-choho-pochaty",
+  "title": "Ландшафтний дизайн ділянки: з чого почати й скільки коштує",
+  "keyword": "ландшафтний дизайн київ",
+  "service": [
+   "/landshaftnyi-dyzain-kyiv",
+   "Ландшафтний дизайн"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "landshaftnyy-dizayn-uchastka-cena",
+  "title": "Ландшафтный дизайн участка: этапы и цена за сотку",
+  "keyword": "ландшафтный дизайн киев",
+  "service": [
+   "/ru/landshaftnyy-dizayn-kiev",
+   "Ландшафтный дизайн"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "chornovyi-i-chystovyi-remont-riznytsia",
+  "title": "Чорновий і чистовий ремонт: у чому різниця",
+  "keyword": "чорновий ремонт квартири",
+  "service": [
+   "/remont-kvartyr-kyiv",
+   "Ремонт квартир"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "belyy-karkas-ili-beton-chto-vybrat",
+  "title": "Белый каркас или бетон: что выбрать в новостройке",
+  "keyword": "ремонт в новостройке киев",
+  "service": [
+   "/ru/remont-v-novostroyke-kiev",
+   "Ремонт в новостройке"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "pereplanuvannia-kvartyry-shcho-mozhna",
+  "title": "Перепланування квартири: що можна змінювати і що варто знати",
+  "keyword": "перепланування квартири київ",
+  "service": [
+   "/remont-kvartyr-kyiv",
+   "Ремонт квартир"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "elektrika-v-kvartire-pri-remonte",
+  "title": "Электрика при ремонте квартиры: розетки, свет, щиток",
+  "keyword": "электрика при ремонте квартиры",
+  "service": [
+   "/ru/remont-kvartir-kiev",
+   "Ремонт квартир"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "tepla-pidloha-vodiana-chy-elektrychna",
+  "title": "Тепла підлога: водяна чи електрична",
+  "keyword": "тепла підлога в квартирі",
+  "service": [
+   "/remont-kvartyr-kyiv",
+   "Ремонт квартир"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "kak-sostavit-smetu-na-remont",
+  "title": "Как читать смету на ремонт и не переплатить",
+  "keyword": "смета на ремонт квартиры",
+  "service": [
+   "/ru/remont-kvartir-kiev",
+   "Ремонт квартир"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "koshtorys-na-remont-yak-chytaty",
+  "title": "Кошторис на ремонт: як читати і що перевірити",
+  "keyword": "кошторис на ремонт квартири",
+  "service": [
+   "/remont-kvartyr-kyiv",
+   "Ремонт квартир"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "mebel-na-zakaz-iz-kitaya",
+  "title": "Мебель на заказ из Китая: как это работает",
+  "keyword": "мебель из китая киев",
+  "service": [
+   "/ozdoba",
+   "Комплектация"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "osvitlennia-v-interieri-scenarii",
+  "title": "Освітлення в інтерʼєрі: сценарії світла для кожної кімнати",
+  "keyword": "освітлення квартири дизайн",
+  "service": [
+   "/dyzain-interieru-kvartyry-kyiv",
+   "Дизайн квартири"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "kakoy-stil-interera-vybrat",
+  "title": "Какой стиль интерьера выбрать: минимализм, неоклассика, japandi",
+  "keyword": "стиль интерьера квартиры",
+  "service": [
+   "/ru/dizayn-interera-kiev",
+   "Дизайн интерьера"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "baza-vidpochynku-yak-okupyty",
+  "title": "База відпочинку: як спланувати, щоб вона окупилась",
+  "keyword": "будівництво бази відпочинку",
+  "service": [
+   "/baza-vidpochynku-pid-klyuch",
+   "База відпочинку під ключ"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "ru",
+  "slug": "dizayn-restorana-oshibki",
+  "title": "Дизайн ресторана: 7 ошибок, которые стоят денег",
+  "keyword": "дизайн ресторана киев",
+  "service": [
+   "/dyzain-restoranu-kafe-kyiv",
+   "Дизайн ресторанов"
+  ],
+  "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "remont-v-novobudovi-pomylky",
+  "title": "Ремонт у новобудові: 8 помилок, які дорого виправляти",
+  "keyword": "ремонт новобудови київ",
+  "service": [
+   "/remont-novobudovy-kyiv",
+   "Ремонт новобудови"
+  ],
+  "status": "todo"
+ }
+]
