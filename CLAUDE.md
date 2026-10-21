@@ -22,6 +22,8 @@
   гарантія 12 міс.; 150+ проєктів з 2016).
 - Блог: статті — JSON у `tools/blog/articles/`, збирає `python3 tools/blog/build.py` (спершу `--check`).
   Правила й порядок — `tools/blog/WRITE.md`, беклог тем — `tools/blog/topics.json`. Публікація — лише після ОК Михайла.
+- Нові лендинги послуг — JSON у `tools/site/pages/`, збирає `python3 tools/site/landing.py` (шаблон, hreflang, sitemap, JSON-LD);
+  потім `python3 tools/blog/build.py` для блоків «Статті по темі».
 
 ## Telegram (личный аккаунт пользователя) — `tools/telegram/`
 
