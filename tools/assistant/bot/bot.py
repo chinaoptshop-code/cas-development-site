@@ -68,7 +68,7 @@ def send_file(path, caption="", chat=None):
 def download(file_id, name):
     info = api("getFile", file_id=file_id)
     INBOX.mkdir(parents=True, exist_ok=True)
-    target = INBOX / f"{datetime.datetime.now():%Y%m%d-%H%M%S}-{name}"
+    target = INBOX / f"{datetime.datetime.now():%Y%m%d-%H%M%S-%f}-{name}"   # %f — фото з одного альбому приходять у ту саму секунду
     with urllib.request.urlopen(f"https://api.telegram.org/file/bot{TOKEN}/{info['file_path']}", timeout=300) as r, open(target, "wb") as f:
         shutil.copyfileobj(r, f)
     return target
@@ -158,6 +158,19 @@ def handle(msg, state):
     if text.startswith("/new"):
         state["day"] = ""; state.pop("sid", None); send_text("Нова розмова. Пам'ять збережена, контекст чату очищено."); return
     kind, content = describe(msg)
+    # «оздоба <id> [ціна …] [хар: …]» з фото чи без — товар на сторінці «Продукти» (~/jarvis/scripts/ozdoba.sh, без Claude).
+    # Альбом: підпис лише на першому фото — решта того ж media_group_id ідуть у галерею (--add).
+    cap = (msg.get("caption") or text or "").strip()
+    gid, groups = msg.get("media_group_id"), state.setdefault("ozdoba_groups", {})
+    m_oz = re.match(r"^(оздоба|ozdoba)\s+(\d+)\s*(.*)$", cap, re.I | re.S)
+    if m_oz or (gid and gid in groups and not cap):
+        oz_id, rest = (m_oz.group(2), m_oz.group(3).split()) if m_oz else (groups[gid], ["--add"])
+        if gid and m_oz:
+            groups[gid] = oz_id
+        files = [content] if kind in ("фото", "файл") and content else []
+        subprocess.Popen([str(OZDOBA), oz_id, *files, *rest], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+        send_text(f"Оздоба {oz_id}: беру в роботу — прев'ю прийде сюди.") if m_oz else None
+        return
     if state.get("blog_edit") and not text.startswith("/"):  # правки Михайла до статті блогу
         slug = state.pop("blog_edit")
         subprocess.Popen([str(BLOG), "revise", slug, content], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
@@ -608,6 +621,7 @@ def handle_external(msg, state):
 
 
 BLOG = pathlib.Path.home() / "jarvis/scripts/blog.sh"
+OZDOBA = pathlib.Path.home() / "jarvis/scripts/ozdoba.sh"
 
 
 def blog_button(rest, cq, state):
