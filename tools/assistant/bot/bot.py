@@ -231,6 +231,25 @@ VOICE_MAX = 220
 TTS_MODEL, TTS_VOICE, TTS_TEMPO, TTS_CRED = "gemini-3.8-flash-tts", "Algieba", 1.17, "JSMl9lvZ1DExgDFd"
 FFMPEG = next((f for f in ("/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg", "/opt/homebrew/bin/ffmpeg") if os.path.exists(f)), "ffmpeg")
 _tts_key = {"v": "", "at": 0}
+# Клон голосу Михайла — у розмовах із ним і з Сержем (197958492), природний темп; решті — Algieba ×1,17
+CLONE_VOICE = os.environ.get("TTS_CLONE_VOICE", "voice_0xudst09wbpu")
+OWN_CHATS = {int(x) for x in os.environ.get("TTS_CLONE_CHATS", "439131779,197958492").split(",") if x.strip()}
+CLONE_ON = os.environ.get("TTS_CLONE", "all") != "off"   # Михайло 21.10: його голосом з усіма, клієнтам — як AI-помічник
+AI_INTRO = "Вітаю! Я AI-помічник КАС Девелопмент. "
+INTRO_FILE = MEMORY / ".voice-intro.json"
+
+
+def needs_intro(chat):
+    if chat in OWN_CHATS:
+        return False
+    try:
+        seen = set(json.loads(INTRO_FILE.read_text()))
+    except Exception:
+        seen = set()
+    if chat in seen:
+        return False
+    seen.add(chat); INTRO_FILE.write_text(json.dumps(sorted(seen)))
+    return True
 
 
 def tts_key():
@@ -262,11 +281,14 @@ def speak(text, chat=None, reply_to=None, limit=VOICE_MAX):
     if not plain or (limit and (len(plain) > limit or "|" in plain)):
         return False
     say = re.sub(r"CAS\s*Development", "КАС Девелопмент", plain, flags=re.I).replace("CAS", "КАС")
+    clone = CLONE_ON
+    if clone and needs_intro(int(chat or OWNER)):
+        say = AI_INTRO + say
     prompt = ("Озвуч мовою тексту як звичайна жива людина в розмові: вільно, невимушено, з природною інтонацією, "
               "дружньо й впевнено, без рекламного тону. Англійські назви вимовляй англійською. Текст: " + say)
     try:
         body = {"contents": [{"parts": [{"text": prompt}]}], "generationConfig": {"responseModalities": ["AUDIO"],
-                "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": TTS_VOICE}}}}}
+                "speechConfig": {"voiceConfig": {"voice": CLONE_VOICE} if clone else {"prebuiltVoiceConfig": {"voiceName": TTS_VOICE}}}}}
         req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{TTS_MODEL}:generateContent",
                                      data=json.dumps(body).encode(), headers={"x-goog-api-key": tts_key(), "content-type": "application/json"})
         with urllib.request.urlopen(req, timeout=90) as r:
@@ -281,7 +303,7 @@ def speak(text, chat=None, reply_to=None, limit=VOICE_MAX):
             raw = b"RIFF" + struct.pack("<I", 36 + len(raw)) + b"WAVEfmt " + struct.pack("<IHHIIHH", 16, 1, 1, rate, rate * 2, 2, 16) + b"data" + struct.pack("<I", len(raw)) + raw
         src.write_bytes(raw)
         ogg = tmp / "voice.ogg"
-        subprocess.run([FFMPEG, "-loglevel", "error", "-y", "-i", str(src), "-filter:a", f"atempo={TTS_TEMPO}", "-c:a", "libopus", "-b:a", "48k", str(ogg)],
+        subprocess.run([FFMPEG, "-loglevel", "error", "-y", "-i", str(src), *([] if clone else ["-filter:a", f"atempo={TTS_TEMPO}"]), "-c:a", "libopus", "-b:a", "48k", str(ogg)],
                        check=True, timeout=60)
         boundary = "----voice" + str(int(time.time()))
         parts = [f"--{boundary}\r\nContent-Disposition: form-data; name=\"chat_id\"\r\n\r\n{chat or OWNER}\r\n".encode()]
@@ -367,7 +389,7 @@ def reply_text(key, role, in_group):
     u = ME.get("username", "бот")
     tag = f"@{u} " if in_group else ""
     if key == "HELP_TEAM":
-        return f"""Я — AI-асистент Михайла. Ось що можу для команди:
+        return f"""Я — AI-помічник Михайла. Ось що можу для команди:
 
 • знайти й порівняти постачальників, підрядників, ціни
 • підготувати документ: лист, ТЗ, порівняльну таблицю, PDF
@@ -380,7 +402,7 @@ def reply_text(key, role, in_group):
 Кожну задачу спершу погоджує Михайло, готову відповідь він теж переглядає.
 Прості питання (що вмію, контакти, ціни) — відповідаю одразу."""
     if key in ("HELP_CLIENT", "HELLO_CLIENT"):
-        return ("Вітаю! Я AI-асистент Михайла, CAS Development.\n\n" + PUBLIC +
+        return ("Вітаю! Я AI-помічник Михайла, CAS Development.\n\n" + PUBLIC +
                 "\n\nНапишіть, що плануєте (обʼєкт, площа, місто, терміни) — передам Михайлу, "
                 "і ви отримаєте відповідь після його перегляду.")
     if key == "CONTACTS":
@@ -522,7 +544,7 @@ PDF: запиши Markdown у ~/.assistant/tmp, запусти tools/assistant/b
 
 НЕ викликай tg-out.sh і tg.sh send — відповідь відправлю я. Останнім у виводі напиши текст відповіді
 для групи (до 20 рядків, українською, звертайся до {t['from']}). {ANSWER_RULE} Файл — окремим рядком: SEND_FILE: /повний/шлях"""
-    client = f"""Ти AI-асистент Михайла, CAS Development. Пише КЛІЄНТ ({t['from']}, {t['group']}). Михайло дозволив відповісти.
+    client = f"""Ти AI-помічник Михайла, CAS Development. Представляйся як AI-помічник, не як сам Михайло. Пише КЛІЄНТ ({t['from']}, {t['group']}). Михайло дозволив відповісти.
 Відомо про компанію лише це (більше нічого не стверджуй):
 {PUBLIC}
 Відповідай лише клієнтською інформацією: послуги, як працюємо, етапи, що потрібно від клієнта, контакти.
