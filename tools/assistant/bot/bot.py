@@ -8,7 +8,7 @@
 Змінні (див. bot/README.md): ASSISTANT_BOT_TOKEN, ASSISTANT_CHAT_ID, ASSISTANT_MEMORY_DIR,
 ASSISTANT_REPO, CLAUDE_BIN, CLAUDE_MODEL, CLAUDE_ALLOWED_TOOLS, CLAUDE_MAX_TURNS.
 """
-import json, os, re, subprocess, sys, time, urllib.request, urllib.parse, datetime, pathlib, shutil, uuid
+import json, os, re, subprocess, sys, tempfile, time, urllib.request, urllib.parse, datetime, pathlib, shutil, uuid
 
 TOKEN = os.environ.get("ASSISTANT_BOT_TOKEN") or sys.exit("Задайте ASSISTANT_BOT_TOKEN")
 OWNER = int(os.environ.get("ASSISTANT_CHAT_ID") or sys.exit("Задайте ASSISTANT_CHAT_ID (ваш числовий id)"))
@@ -168,6 +168,9 @@ def handle(msg, state):
         out = "⚠️ Не встиг за 15 хвилин. Спробуй ще раз або розбий запит."
     state["day"] = today
     deliver(out)
+    # Михайлу голосом — коли він сам говорив голосом або попросив («голосом», «озвуч»), без ліміту довжини
+    if kind == "голосове" or (kind == "текст" and re.search(r"голосом|озвуч", content, re.I)):
+        speak_owner(split_out(out)[0])
 
 
 ANSWER_RULE = ("Саму відповідь обгорни рядками ===ВІДПОВІДЬ=== і ===КІНЕЦЬ=== — усе поза ними (хід роботи, "
@@ -219,6 +222,82 @@ def client_answer(prompt):
     except Exception as e:
         LOG("клієнт: локальна модель не відповіла:", repr(e)[:200])
     return "===ВІДПОВІДЬ===\nДякую за звернення! Михайло відповість вам особисто найближчим часом.\n===КІНЕЦЬ==="
+
+
+# ---------- голос (як у бота CAS) ----------
+# Голосом — лише у відповідь на голосове і лише коротке (≈15 с), щоб не «жерло». Gemini TTS, голос Algieba,
+# темп ×1,17, «CAS» вимовляється «КАС Девелопмент». Ключ — з облікових даних n8n (не з файлів).
+VOICE_MAX = 220
+TTS_MODEL, TTS_VOICE, TTS_TEMPO, TTS_CRED = "gemini-3.8-flash-tts", "Algieba", 1.17, "JSMl9lvZ1DExgDFd"
+FFMPEG = next((f for f in ("/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg", "/opt/homebrew/bin/ffmpeg") if os.path.exists(f)), "ffmpeg")
+_tts_key = {"v": "", "at": 0}
+
+
+def tts_key():
+    if _tts_key["v"] and time.time() - _tts_key["at"] < 3600:
+        return _tts_key["v"]
+    out = subprocess.run(["docker", "exec", "n8n", "sh", "-c",
+                          f"n8n export:credentials --id={TTS_CRED} --decrypted --output=/tmp/g.json >/dev/null 2>&1; cat /tmp/g.json; rm -f /tmp/g.json"],
+                         capture_output=True, text=True, timeout=60).stdout
+    _tts_key.update(v=json.loads(out[out.index("["):])[0]["data"]["apiKey"], at=time.time())
+    return _tts_key["v"]
+
+
+def speak_owner(text):
+    """Михайлу — без обмеження довжини: довге ділимо по реченнях на голосові до ~800 знаків."""
+    plain = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", text or "")).strip()
+    parts, cur = [], ""
+    for sent in re.split(r"(?<=[.!?…])\s+", plain):
+        if cur and len(cur) + len(sent) > 800:
+            parts.append(cur); cur = sent
+        else:
+            cur = (cur + " " + sent).strip()
+    if cur:
+        parts.append(cur)
+    return all([speak(p, limit=None) for p in parts])
+
+
+def speak(text, chat=None, reply_to=None, limit=VOICE_MAX):
+    plain = re.sub(r"<[^>]+>", "", text or "").strip()
+    if not plain or (limit and (len(plain) > limit or "|" in plain)):
+        return False
+    say = re.sub(r"CAS\s*Development", "КАС Девелопмент", plain, flags=re.I).replace("CAS", "КАС")
+    prompt = ("Озвуч мовою тексту як звичайна жива людина в розмові: вільно, невимушено, з природною інтонацією, "
+              "дружньо й впевнено, без рекламного тону. Англійські назви вимовляй англійською. Текст: " + say)
+    try:
+        body = {"contents": [{"parts": [{"text": prompt}]}], "generationConfig": {"responseModalities": ["AUDIO"],
+                "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": TTS_VOICE}}}}}
+        req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{TTS_MODEL}:generateContent",
+                                     data=json.dumps(body).encode(), headers={"x-goog-api-key": tts_key(), "content-type": "application/json"})
+        with urllib.request.urlopen(req, timeout=90) as r:
+            d = json.load(r)
+        part = next(p["inlineData"] for p in d["candidates"][0]["content"]["parts"] if "inlineData" in p)
+        raw = __import__("base64").b64decode(part["data"])
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        src = tmp / "a.wav"
+        if raw[:4] != b"RIFF":                                  # сирий PCM 24 кГц моно 16 біт
+            import struct
+            rate = int((re.search(r"rate=(\d+)", part.get("mimeType", "")) or [0, 24000])[1])
+            raw = b"RIFF" + struct.pack("<I", 36 + len(raw)) + b"WAVEfmt " + struct.pack("<IHHIIHH", 16, 1, 1, rate, rate * 2, 2, 16) + b"data" + struct.pack("<I", len(raw)) + raw
+        src.write_bytes(raw)
+        ogg = tmp / "voice.ogg"
+        subprocess.run([FFMPEG, "-loglevel", "error", "-y", "-i", str(src), "-filter:a", f"atempo={TTS_TEMPO}", "-c:a", "libopus", "-b:a", "48k", str(ogg)],
+                       check=True, timeout=60)
+        boundary = "----voice" + str(int(time.time()))
+        parts = [f"--{boundary}\r\nContent-Disposition: form-data; name=\"chat_id\"\r\n\r\n{chat or OWNER}\r\n".encode()]
+        if reply_to:
+            parts.append(f"--{boundary}\r\nContent-Disposition: form-data; name=\"reply_to_message_id\"\r\n\r\n{reply_to}\r\n".encode())
+        parts.append(f"--{boundary}\r\nContent-Disposition: form-data; name=\"voice\"; filename=\"voice.ogg\"\r\nContent-Type: audio/ogg\r\n\r\n".encode()
+                     + ogg.read_bytes() + f"\r\n--{boundary}--\r\n".encode())
+        rq = urllib.request.Request(API + "sendVoice", data=b"".join(parts), headers={"Content-Type": f"multipart/form-data; boundary={boundary}"})
+        with urllib.request.urlopen(rq, timeout=120) as r:
+            ok = json.load(r).get("ok")
+        shutil.rmtree(tmp, ignore_errors=True)
+        LOG("голос:", "надіслано" if ok else "не вдалось", len(plain), "зн.")
+        return bool(ok)
+    except Exception as e:
+        LOG("голос: не вдалось", repr(e)[:200])
+        return False
 
 
 def split_out(out):
@@ -500,6 +579,8 @@ def draft_button(act, t, cq, state):
         LOG("editMessageText:", e)
     if act == "send":
         deliver(f"✅ Задача №{t['n']}\n\n" + t["draft"], t["chat"], t["mid"])
+        if t.get("att", "").startswith("голосове"):
+            speak(split_out(t["draft"])[0], t["chat"], t["mid"])
         t["status"] = "done"; mark(t, "виконано")
     elif act == "edit":
         state["editing"] = t["n"]
