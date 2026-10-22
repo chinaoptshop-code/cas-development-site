@@ -144,8 +144,11 @@ def shell():
     s = re.sub(r'<!--ozd:ld-->.*?<!--/ozd:ld-->', '', s, count=1, flags=re.S)
     s = re.sub(r'<link rel="preload" id="ozd-data"[^>]*>\n', '', s)
     s = s.replace('<meta name="twitter:card"', '<meta name="robots" content="noindex, nofollow">\n<meta name="twitter:card"', 1)
-    s = re.sub(r'<button class="ico" id="btnSearch".*?</button>\n  <button class="ico" onclick="setTab\(\'fav\'\)".*?</button>\n  <button class="ico" onclick="openCart\(\)"', '<a class="ico" href="/ozdoba" aria-label="Кошик"', s, count=1, flags=re.S)
-    s = s.replace('<span class="badge" id="cartBadge" hidden>0</span></button>', '</a>', 1)
+    hdr = re.search(r'<button class="ico" id="btnSearch".*?<span class="badge" id="cartBadge" hidden>0</span></button>', s, flags=re.S)
+    if hdr:
+        cart_svg = re.search(r'aria-label="Кошик">(<svg.*?</svg>)', hdr.group(0), flags=re.S).group(1)
+        acc = re.search(r'<a class="ico" id="accLink".*?</a>', hdr.group(0), flags=re.S)
+        s = s.replace(hdr.group(0), (acc.group(0) + '\n  ' if acc else '') + f'<a class="ico" href="/ozdoba" aria-label="Кошик">{cart_svg}</a>')
     return s
 
 
