@@ -172,8 +172,11 @@ def product_page(d, i, shell, items):
     if img: s = re.sub(r'(<meta property="og:image" content=")[^"]*', lambda m: m.group(1) + f'https://cas-develop.com/{img}-800.webp', s, count=1)
     s = re.sub(r'<link rel="preload" id="ozd-data"[^>]*>\n', '', s)
     s = re.sub(r'<!--ozd:ld-->.*?<!--/ozd:ld-->', lambda m: '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>', s, count=1, flags=re.S)
-    s = re.sub(r'<button class="ico" id="btnSearch".*?</button>\n  <button class="ico" onclick="setTab\(\'fav\'\)".*?</button>\n  <button class="ico" onclick="openCart\(\)"', '<a class="ico" href="/ozdoba" aria-label="Кошик"', s, count=1, flags=re.S)
-    s = s.replace('<span class="badge" id="cartBadge" hidden>0</span></button>', '</a>', 1)
+    hdr = re.search(r'<button class="ico" id="btnSearch".*?<span class="badge" id="cartBadge" hidden>0</span></button>', s, flags=re.S)
+    if hdr:
+        cart_svg = re.search(r'aria-label="Кошик">(<svg.*?</svg>)', hdr.group(0), flags=re.S).group(1)
+        acc = re.search(r'<a class="ico" id="accLink".*?</a>', hdr.group(0), flags=re.S)
+        s = s.replace(hdr.group(0), (acc.group(0) + '\n  ' if acc else '') + f'<a class="ico" href="/ozdoba" aria-label="Кошик">{cart_svg}</a>')
     a, b = s.index('<div class="searchwrap"'), s.index('<footer>')
     s = s[:a] + body + '\n' + s[b:]
     a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
