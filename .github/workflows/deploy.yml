@@ -25,11 +25,42 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
+      - name: 🗄️ Кабінети клієнтів (D1 + секрети; без доступу — сайт деплоїться без кабінетів)
+        run: |
+          set +e
+          ID=$(npx wrangler@3 d1 list --json 2>/dev/null | python3 -c "import sys,json
+          try: print(next((d['uuid'] for d in json.load(sys.stdin) if d['name']=='cas-shop'),''))
+          except Exception: print('')")
+          if [ -z "$ID" ]; then
+            npx wrangler@3 d1 create cas-shop >/dev/null 2>&1
+            ID=$(npx wrangler@3 d1 list --json 2>/dev/null | python3 -c "import sys,json
+          try: print(next((d['uuid'] for d in json.load(sys.stdin) if d['name']=='cas-shop'),''))
+          except Exception: print('')")
+          fi
+          if [ -n "$ID" ] && sed -i "s/__D1_ID__/$ID/" wrangler.toml && npx wrangler@3 d1 migrations apply cas-shop --remote; then
+            echo "D1 cas-shop: $ID"
+            for K in TELEGRAM_BOT_TOKEN TELEGRAM_BOT_USERNAME GOOGLE_CLIENT_ID ADMIN_TG_IDS ADMIN_EMAILS; do
+              V="${!K}"; [ -n "$V" ] && printf '%s' "$V" | npx wrangler@3 pages secret put "$K" --project-name=cas-development-site >/dev/null 2>&1 && echo "secret $K ok"
+            done
+          else
+            echo "::warning::D1 недоступна (дозволи токена?) — деплой без кабінетів"
+            rm -rf functions wrangler.toml
+          fi
+          exit 0
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.SHOP_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_BOT_USERNAME: ${{ secrets.SHOP_TELEGRAM_BOT_USERNAME }}
+          GOOGLE_CLIENT_ID: ${{ secrets.SHOP_GOOGLE_CLIENT_ID }}
+          ADMIN_TG_IDS: ${{ secrets.SHOP_ADMIN_TG_IDS }}
+          ADMIN_EMAILS: ${{ secrets.SHOP_ADMIN_EMAILS }}
+
       - name: 📏 UI budget report (tools/ui/ui.py)
         run: python3 tools/ui/ui.py budget --report
 
       - name: 🧹 Exclude non-site files (tools, Claude config)
-        run: rm -rf tools .claude CLAUDE.md
+        run: rm -rf tools .claude CLAUDE.md migrations
 
       - name: 🚀 Deploy with Wrangler
         run: npx wrangler@3 pages deploy . --project-name=cas-development-site --branch=main --commit-dirty=true
