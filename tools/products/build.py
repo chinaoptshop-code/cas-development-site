@@ -22,12 +22,15 @@ def r10(n): return round(n / 10) * 10
 
 
 def min_price(d, i):
+    if i.get('price') is None: return None
     ss = d['sizesets'].get(i['ss']) if i.get('ss') else None
     if ss: return r10(i['price'] * min(k for _, k in ss))
     return r10(i['price'] * (1 + d['colorsets'][i['cs']][0][2]))
 
 
-def money(n): return f'{round(n):,}'.replace(',', ' ') + ' ₴'
+def money(n):
+    if n is None: return 'ціна за запитом'
+    return f'{round(n):,}'.replace(',', ' ') + ' ₴'
 
 
 def pic(d, i):
@@ -38,6 +41,12 @@ def pic(d, i):
     return S.format(d['art'].get(i['art'], '<rect x="20" y="20" width="60" height="42" rx="5"/>'))
 
 
+def price_html(d, i):
+    mp = min_price(d, i)
+    if mp is None: return 'Ціна за запитом'
+    return f'{"від " if i.get("ss") else ""}{money(mp)} <small>/ {e(i["unit"])}</small>'
+
+
 def card(d, i):
     frm = 'від ' if i.get('ss') else ''
     sw = ''.join(f'<i style="background:{c[1]}"></i>' for c in d['colorsets'][i['cs']][:5])
@@ -45,7 +54,7 @@ def card(d, i):
              '<svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.7A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.3C19 15.4 12 20 12 20z"/></svg></button>')
     return (f'<article class="card" onclick="openItem({i["id"]})"><div class="tile{" ph" if i.get("img") else ""}">{pic(d, i)}{heart}</div>'
             f'<div class="body"><div class="sub">{e(i["sub"])}</div><a class="nm" href="/ozdoba/{i["slug"]}" onclick="if(window.openItem)event.preventDefault()" style="color:inherit;text-decoration:none">{e(i["name"])}</a>'
-            f'<div class="sw">{sw}</div><div class="pr">{frm}{money(min_price(d, i))} <small>/ {e(i["unit"])}</small></div></div></article>')
+            f'<div class="sw">{sw}</div><div class="pr">{price_html(d, i)}</div></div></article>')
 
 
 def main():
@@ -61,8 +70,8 @@ def main():
             if b and not os.path.exists(os.path.join(ROOT, b + '-800.webp')):
                 raise SystemExit(f'немає фото {b}-800.webp для товару {i["id"]}')
     order = {'A': 0, 'B': 1, 'C': 2}
-    items = sorted(d['items'], key=lambda i: (order.get(i['prio'], 3), -min_price(d, i)))
-    grid = ''.join(card(d, i) for i in items)
+    items = sorted(d['items'], key=lambda i: (order.get(i['prio'], 3), -(min_price(d, i) or 0)))
+    grid = ''.join(card(d, i) for i in items[:32])  # решту карток домальовує app.js; кожен товар має свою сторінку
     ld = {'@context': 'https://schema.org', '@type': 'ItemList', 'name': 'Оздоба — каталог меблів, світла й декору',
           'numberOfItems': len(items),
           'itemListElement': [{'@type': 'ListItem', 'position': n + 1, 'name': i['name'], 'url': f'https://cas-develop.com/ozdoba/{i["slug"]}'}
@@ -114,14 +123,15 @@ def product_page(d, i, shell, items):
         {'@type': 'Product', 'name': i['name'], 'description': i['desc'], 'category': i['sub'], 'url': u,
          'image': f'https://cas-develop.com/{img}-800.webp' if img else 'https://cas-develop.com/img/og-cas.jpg',
          'brand': {'@type': 'Brand', 'name': 'Оздоба · CAS Development'},
-         'offers': {'@type': 'Offer', 'price': mp, 'priceCurrency': 'UAH', 'availability': 'https://schema.org/PreOrder',
-                    'url': u, 'seller': {'@id': 'https://cas-develop.com/#business'}}},
+         **({'offers': {'@type': 'Offer', 'price': mp, 'priceCurrency': 'UAH', 'availability': 'https://schema.org/PreOrder',
+                    'url': u, 'seller': {'@id': 'https://cas-develop.com/#business'}}} if mp is not None else {})},
         {'@type': 'BreadcrumbList', 'itemListElement': [
             {'@type': 'ListItem', 'position': 1, 'name': 'Головна', 'item': 'https://cas-develop.com/'},
             {'@type': 'ListItem', 'position': 2, 'name': 'Оздоба', 'item': 'https://cas-develop.com/ozdoba'},
             {'@type': 'ListItem', 'position': 3, 'name': i['name'], 'item': u}]}]}
-    title = f'{i["name"]} — {frm}{money(mp)} | Оздоба CAS Development'
-    desc = f'{i["desc"]} {i["sub"]}, {frm}{money(mp)} за {i["unit"]}. Поставка з Китаю 35–50 днів, доставка по Україні.'
+    pr = f'{frm}{money(mp)}' if mp is not None else 'ціна за запитом'
+    title = f'{i["name"]} — {pr} | Оздоба CAS Development'
+    desc = f'{i["desc"]} {i["sub"]}, {pr}{" за " + i["unit"] if mp is not None else ""}. Поставка з Китаю 35–50 днів, доставка по Україні.'
     body = f'''<div class="w">
   <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / {e(i["name"])}</div>
   <article class="pp">
@@ -129,7 +139,7 @@ def product_page(d, i, shell, items):
     <div class="pp-info">
       <p class="sub">{e(i["sub"])}</p>
       <h1>{e(i["name"])}</h1>
-      <p class="pp-price">{frm}{money(mp)} <small>/ {e(i["unit"])}</small></p>
+      <p class="pp-price">{price_html(d, i)}</p>
       <p class="desc">{e(i["desc"])}</p>
       <div class="sw pp-sw">{''.join(f'<i style="background:{c[1]}" title="{e(c[0])}"></i>' for c in colors)}</div>
       <p class="pp-btns"><a class="btn" href="/ozdoba#p-{i["id"]}">Обрати колір і додати в кошик</a><a class="btn ghost" href="#zayavka">Запитати ціну й наявність</a></p>

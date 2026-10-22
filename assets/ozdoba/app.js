@@ -27,12 +27,14 @@ const CS = i => DATA.colorsets[i.cs];
 const SS = i => i.ss ? DATA.sizesets[i.ss] : null;
 const defS = i => { const s = SS(i); if(!s) return 0; const n = s.findIndex(x=>x[1]===1); return n<0?0:n; };
 const r10 = n => Math.round(n/10)*10;
+/* price: null — «ціна за запитом» (позиція йде в заявку, сума уточнюється менеджером) */
 function price(i, ci=0, si=null){
+  if (i.price == null) return null;
   const s = SS(i), k = s ? s[si==null?defS(i):si][1] : 1;
   return r10(i.price * k * (1 + CS(i)[ci][2]));
 }
-const minP = i => { const s=SS(i); return s ? r10(i.price*Math.min(...s.map(x=>x[1]))) : price(i); };
-const money = n => new Intl.NumberFormat('uk-UA').format(Math.round(n)) + ' ₴';
+const minP = i => { if(i.price==null) return null; const s=SS(i); return s ? r10(i.price*Math.min(...s.map(x=>x[1]))) : price(i); };
+const money = n => n==null ? 'за запитом' : new Intl.NumberFormat('uk-UA').format(Math.round(n)) + ' ₴';
 
 /* світлішаємо темні кольори, щоб лінійна графіка лишалась читаною на темному тлі */
 function vis(hex){
@@ -109,7 +111,7 @@ function cardHTML(i){
       <div class="sub">${i.sub}</div>
       <a class="nm" href="/ozdoba/${i.slug}" onclick="event.preventDefault()" style="color:inherit;text-decoration:none">${i.name}</a>
       <div class="sw">${CS(i).slice(0,5).map(c=>`<i style="background:${c[1]}"></i>`).join('')}</div>
-      <div class="pr">${from}${money(minP(i))} <small>/ ${i.unit}</small></div>
+      <div class="pr">${i.price==null?'Ціна за запитом':`${from}${money(minP(i))} <small>/ ${i.unit}</small>`}</div>
     </div></article>`;
 }
 function renderGrid(){
@@ -119,8 +121,8 @@ function renderGrid(){
   const s=document.getElementById('sort').value;
   const ord={A:0,B:1,C:2};
   list=[...list].sort((a,b)=>
-    s==='asc'? minP(a)-minP(b) : s==='desc'? minP(b)-minP(a) :
-    s==='az'?  a.name.localeCompare(b.name,'uk') : (ord[a.prio]-ord[b.prio])||(minP(b)-minP(a)));
+    s==='asc'? (minP(a)??1e12)-(minP(b)??1e12) : s==='desc'? (minP(b)??-1)-(minP(a)??-1) :
+    s==='az'?  a.name.localeCompare(b.name,'uk') : (ord[a.prio]-ord[b.prio])||((minP(b)??0)-(minP(a)??0)));
   document.getElementById('cnt').textContent = list.length ? `${list.length} позицій` : '';
   document.getElementById('grid').innerHTML = list.length ? list.map(cardHTML).join('')
     : `<div class="empty" style="grid-column:1/-1">Нічого не знайшли. Спробуйте інше слово або зніміть фільтр приміщення.</div>`;
@@ -204,13 +206,14 @@ function renderItem(){
     <div class="swatches">${cs.map((c,n)=>`<button class="swatch" style="background:${c[1]}" aria-pressed="${n===curC}" title="${c[0]}" aria-label="${c[0]}" onclick="setC(${n})"></button>`).join('')}</div>
 
     ${s ? `<p class="lbl">Розмір <b>${s[curS][0]}</b></p>
-    <div class="opts">${s.map((x,n)=>`<button class="opt" aria-pressed="${n===curS}" onclick="setS(${n})">${x[0]}<small>${money(price(i,curC,n))}</small></button>`).join('')}</div>` : ''}
+    <div class="opts">${s.map((x,n)=>`<button class="opt" aria-pressed="${n===curS}" onclick="setS(${n})">${x[0]}${i.price==null?'':`<small>${money(price(i,curC,n))}</small>`}</button>`).join('')}</div>` : ''}
 
     <p class="lbl">Кількість</p>
     <div class="qty"><button onclick="setQ(-1)">−</button><span>${curQ}</span><button onclick="setQ(1)">+</button></div>
 
-    <div class="priceline"><span class="big">${money(p*curQ)}</span>${curQ>1?`<span class="per">${money(p)} × ${curQ}</span>`:''}</div>
-    <p class="hint">Або ${money(part)} × 4 платежі без переплати</p>
+    ${p==null?`<div class="priceline"><span class="big">Ціна за запитом</span></div><p class="hint">Додайте в кошик — менеджер назве ціну й строк разом з рештою позицій.</p>`
+    :`<div class="priceline"><span class="big">${money(p*curQ)}</span>${curQ>1?`<span class="per">${money(p)} × ${curQ}</span>`:''}</div>
+    <p class="hint">Або ${money(part)} × 4 платежі без переплати</p>`}
     <div class="btn2">
       <button class="btn ghost" style="flex:0 0 56px" onclick="toggleFav(${i.id});renderItem()" aria-label="В обране">${fav.has(i.id)?'♥':'♡'}</button>
       <button class="btn" style="flex:1" onclick="addToCart()">Додати в кошик</button>
@@ -241,8 +244,9 @@ function addToCart(){
 }
 
 /* ===================== кошик ===================== */
-const lineSum = c => price(byId(c.id),c.ci,c.si)*c.qty;
-const goods = () => cart.reduce((s,c)=>s+lineSum(c),0);
+const lineSum = c => { const p=price(byId(c.id),c.ci,c.si); return p==null?null:p*c.qty; };
+const onReq = () => cart.filter(c=>byId(c.id).price==null).length;
+const goods = () => cart.reduce((s,c)=>s+(lineSum(c)||0),0);
 const count = () => cart.reduce((s,c)=>s+c.qty,0);
 const discount = () => promo ? Math.round(goods()*promo.pct/100) : 0;
 const ship = () => (goods()-discount()) > 20000 ? 0 : 450;
@@ -282,7 +286,8 @@ function renderCart(){
     <div class="sum"><span>Товари, ${count()} шт</span><span>${money(goods())}</span></div>
     ${promo?`<div class="sum disc"><span>Знижка ${promo.code}, ${promo.pct}%</span><span>−${money(discount())}</span></div>`:''}
     <div class="sum"><span>Доставка по Україні</span><span>${ship()?money(ship()):'безкоштовно'}</span></div>
-    <div class="sum total"><span>До сплати</span><span>${money(grand())}</span></div>
+    ${onReq()?`<div class="sum"><span>Позицій за запитом: ${onReq()}</span><span>ціну назве менеджер</span></div>`:''}
+    <div class="sum total"><span>${onReq()?'Сума відомих позицій':'До сплати'}</span><span>${money(grand())}</span></div>
     <button class="btn" onclick="openPay()">Оформити замовлення</button>
     <button class="btn ghost" onclick="copyEstimate()">Скопіювати кошторис</button>`;
 }
@@ -313,13 +318,13 @@ function openPay(){ renderPay(); close('sheetCart'); setTimeout(()=>open('sheetP
 function renderPay(){
   const g=grand(), part=Math.ceil(g/4);
   const u=tg&&tg.initDataUnsafe&&tg.initDataUnsafe.user;
-  const nm=u?[u.first_name,u.last_name].filter(Boolean).join(' '):'';
+  const nm=esc(acct&&acct.name||(u?[u.first_name,u.last_name].filter(Boolean).join(' '):''));
   document.getElementById('payBody').innerHTML=`
     <div class="sh-head"><h2>Оформлення заявки</h2><button class="x" onclick="closeAll()">✕</button></div>
     <div class="field"><label>Ім'я та прізвище</label><input id="fName" value="${nm}" placeholder="Ваше імʼя та прізвище"></div>
-    <div class="field"><label>Телефон</label><input id="fPhone" type="tel" inputmode="tel" placeholder="+380 __ ___ __ __"></div>
-    <div class="field"><label>Місто і відділення Нової Пошти</label><input id="fNp" placeholder="Київ, відділення №12"></div>
-    ${payMethod==='invoice'?`<div class="field"><label>Назва компанії та ЄДРПОУ</label><input id="fEdr" placeholder="ТОВ «Приклад», 12345678"></div>`:''}
+    <div class="field"><label>Телефон</label><input id="fPhone" type="tel" inputmode="tel" placeholder="+380 __ ___ __ __" value="${esc(acct&&acct.phone||'')}"></div>
+    <div class="field"><label>Місто і відділення Нової Пошти</label><input id="fNp" placeholder="Київ, відділення №12" value="${esc(acct&&acct.city||'')}"></div>
+    ${payMethod==='invoice'?`<div class="field"><label>Назва компанії та ЄДРПОУ</label><input id="fEdr" placeholder="ТОВ «Приклад», 12345678" value="${esc(acct&&acct.company||'')}"></div>`:''}
 
     <p class="lbl" style="margin-top:18px">Як вам зручніше оплатити</p>
     <button class="pay" aria-pressed="${payMethod==='card'}" onclick="setPay('card')"><span class="dot"></span>
@@ -352,8 +357,13 @@ async function pay(){
     `Доставка: ${ship()?money(ship()):'безкоштовно'}`, `РАЗОМ (орієнтовно): ${money(g)}`,
     `Оплата: ${PM[payMethod]||payMethod}`, np?`Нова Пошта: ${np}`:null, edr?`Компанія/ЄДРПОУ: ${edr}`:null].filter(Boolean).join('\n');
   const btn=document.getElementById('sendBtn'); if(btn){ btn.disabled=true; btn.textContent='Надсилаємо…'; }
-  let ok=false;
-  try{
+  let ok=false, num=ord;
+  try{ // кабінет клієнта: замовлення зберігається в базі (якщо сервер увімкнено)
+    const r=await fetch('/api/orders',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({cart,name:nm,phone:ph,delivery:np,company:edr,payment:payMethod,promo:promo&&promo.code})});
+    if(r.ok){ const d=await r.json(); if(d.number){ ok=true; num=d.number; } }
+  }catch(e){}
+  if(!ok) try{
     const r=await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({name:nm,phone:ph,service:'Оздоба — комплектація',area:'',message,source:'cas-develop.com/ozdoba',form:'ozdoba-cart',lang:'uk',page:location.pathname})});
@@ -366,10 +376,11 @@ async function pay(){
   }
   document.getElementById('payBody').innerHTML=`
     <div class="done"><div class="ring">✓</div>
-      <h2 style="font-size:25px;margin-bottom:8px">Заявку ${ord} прийнято</h2>
+      <h2 style="font-size:25px;margin-bottom:8px">Заявку ${num} прийнято</h2>
       <p style="color:var(--muted);font-size:13.5px;margin:0 auto;max-width:34ch">Менеджер звʼяжеться з вами в робочий час,
         підтвердить наявність, ціну й строк поставки і надішле рахунок або посилання на оплату.</p>
       <div class="priceline" style="justify-content:center"><span class="big">${money(g)}</span></div></div>
+    ${acct?'<a class="btn" style="text-decoration:none" href="/kabinet">Мої замовлення</a>':''}
     <button class="btn ghost" onclick="reset()">До каталогу</button>`;
   haptic('success');
 }
@@ -391,14 +402,21 @@ if(tg&&tg.MainButton) tg.MainButton.onClick(openCart);
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeAll(); });
 addEventListener('scroll',()=>document.getElementById('top').classList.toggle('stuck',scrollY>8),{passive:true});
 
-function boot(d){
+let acct=null;
+function account(){ // показуємо «Кабінет», лише коли сервер кабінетів працює
+  fetch('/api/me',{credentials:'same-origin'}).then(r=>r.ok?r.json():null).then(d=>{
+    if(!d) return; acct=d.client;
+    const a=document.getElementById('accLink'); if(a){ a.hidden=false; a.title=acct?(acct.name||'Кабінет'):'Увійти'; }
+  }).catch(()=>{});
+}
+function boot(d){ account();
   DATA=d; IT=d.items; BU=d.bundles; for(const k in d.art) ART[k]=S(d.art[k]);
   try{ JSON.parse(localStorage.getItem('ozd-cart')||'[]').forEach(c=>{ if(byId(c.id)) cart.push(c); });
        JSON.parse(localStorage.getItem('ozd-fav')||'[]').forEach(id=>{ if(byId(id)) fav.add(id); }); }catch(e){}
   renderVenues(); renderChips();
   // картки каталогу вже є в HTML (tools/products/build.py) — не перемальовуємо їх без потреби
   const g=document.getElementById('grid');
-  if(g.querySelector('.card')){ g.querySelectorAll('[data-fav]').forEach(b=>b.classList.toggle('on',fav.has(+b.dataset.fav)));
+  if(g.querySelectorAll('.card').length===IT.length){ g.querySelectorAll('[data-fav]').forEach(b=>b.classList.toggle('on',fav.has(+b.dataset.fav)));
     document.getElementById('tabCatalog').setAttribute('aria-pressed','true'); }
   else setTab('catalog');
   syncBadges();
