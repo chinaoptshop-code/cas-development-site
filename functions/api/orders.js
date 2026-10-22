@@ -62,7 +62,8 @@ export async function onRequestPost({ request, env }) {
       VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`)
     .bind(number, c?.id || null, name, phone, JSON.stringify(items), total, onReq, promo, str(d.delivery, 200), payment, str(d.company, 200), str(d.comment, 1000)).run();
   await env.DB.prepare("INSERT INTO order_events (order_id, status, author) VALUES (?, 'new', 'client')").bind(res.meta.last_row_id).run();
-  if (c && !c.phone) await env.DB.prepare('UPDATE clients SET phone = ? WHERE id = ?').bind(phone, c.id).run();
+  if (c) await env.DB.prepare('UPDATE clients SET phone = COALESCE(phone, ?), city = COALESCE(city, ?), company = COALESCE(company, ?) WHERE id = ?')
+    .bind(phone, str(d.delivery, 200), str(d.company, 200), c.id).run();
 
   // сповіщення менеджеру тим самим каналом, що й заявки з сайту (n8n → Telegram)
   const money = n => n == null ? 'за запитом' : new Intl.NumberFormat('uk-UA').format(n) + ' ₴';
