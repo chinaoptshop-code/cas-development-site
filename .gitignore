@@ -5,3 +5,6 @@ tools/telegram/downloads/
 .venv/
 __pycache__/
 *.pyc
+.dev.vars
+.wrangler/
+node_modules/
