@@ -9,6 +9,8 @@
    "date": "2026-10-22", "service": ["/remont-kvartyr-kyiv", "Ремонт квартир"],
    "photo": "img/p/<id>-900.webp", "pair": "<slug іншою мовою>" (необовʼязково),
    "body": [["h2", "..."], ["p", "..."], ["ul", ["...", "..."]], ["ol", [...]]],
+   у "p" і пунктах списків можна внутрішнє посилання: [анкор](/шлях-сторінки) — лише на наявну сторінку,
+   ru-статті → /ru/..., не більше одного на ту саму сторінку; у заголовках посилань немає
    "faq": [["питання", "відповідь"], ...]}
 Ціни й факти — лише підтверджені (CLAUDE.md, розділ «Сайт: UI-kit і правила»).
 """
@@ -70,6 +72,7 @@ def check(a):
     words = sum(len(str(v).split()) for _, v in a['body'] for v in (v if isinstance(v, list) else [v]))
     if words < 450: errs.append(f'замало тексту: {words} слів (мінімум 450)')
     if a.get('photo') and not os.path.exists(os.path.join(ROOT, a['photo'])): errs.append(f"фото {a['photo']} не знайдено")
+    errs += check_links(a)
     return errs
 
 
@@ -78,11 +81,35 @@ def fmt_date(d, lang):
     return f'{int(dd)} {MONTHS[lang][int(m) - 1]} {y}'
 
 
+LINK = re.compile(r'\[([^\[\]]+)\]\((/[a-z0-9/_-]*)\)')
+
+
+def inline(s):
+    """Текст абзацу/пункту: екранування + внутрішні посилання [анкор](/шлях)."""
+    return LINK.sub(lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', esc(s))
+
+
+def check_links(a):
+    errs, seen = [], set()
+    for kind, val in a['body']:
+        for v in (val if isinstance(val, list) else [val]):
+            if kind in ('h2', 'h3') and '](' in v: errs.append(f'посилання в заголовку: {v[:40]}')
+            for anchor, href in LINK.findall(v):
+                p = href.strip('/')
+                if not (os.path.exists(os.path.join(ROOT, p + '.html')) or os.path.exists(os.path.join(ROOT, p, 'index.html'))):
+                    errs.append(f'посилання {href}: сторінки немає')
+                if (a['lang'] == 'ru') != href.startswith('/ru/'): errs.append(f'посилання {href}: інша мова')
+                if href in seen: errs.append(f'посилання {href} повторюється')
+                seen.add(href)
+    return errs
+
+
 def render_body(body):
     out = []
     for kind, val in body:
-        if kind in ('h2', 'h3', 'p'): out.append(f'<{kind}>{esc(val)}</{kind}>')
-        elif kind in ('ul', 'ol'): out.append(f'<{kind}>' + ''.join(f'<li>{esc(x)}</li>' for x in val) + f'</{kind}>')
+        if kind in ('h2', 'h3'): out.append(f'<{kind}>{esc(val)}</{kind}>')
+        elif kind == 'p': out.append(f'<p>{inline(val)}</p>')
+        elif kind in ('ul', 'ol'): out.append(f'<{kind}>' + ''.join(f'<li>{inline(x)}</li>' for x in val) + f'</{kind}>')
     return '\n'.join(out)
 
 
