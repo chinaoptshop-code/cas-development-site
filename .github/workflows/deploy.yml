@@ -28,12 +28,12 @@ jobs:
       - name: 🗄️ Кабінети клієнтів (D1 + секрети; без доступу — сайт деплоїться без кабінетів)
         run: |
           set +e
-          npx wrangler@3 d1 list 2>&1 | tail -5
+          npx wrangler@3 d1 list 2>&1 | grep -vE "^[│├└┌]|Account Name|To see token|Logs were written" | tail -12
           ID=$(npx wrangler@3 d1 list --json 2>/dev/null | python3 -c "import sys,json
           try: print(next((d['uuid'] for d in json.load(sys.stdin) if d['name']=='cas-shop'),''))
           except Exception: print('')")
           if [ -z "$ID" ]; then
-            npx wrangler@3 d1 create cas-shop 2>&1 | tail -8
+            npx wrangler@3 d1 create cas-shop 2>&1 | grep -vE "^[│├└┌]|To see token|Logs were written" | tail -12
             ID=$(npx wrangler@3 d1 list --json 2>/dev/null | python3 -c "import sys,json
           try: print(next((d['uuid'] for d in json.load(sys.stdin) if d['name']=='cas-shop'),''))
           except Exception: print('')")

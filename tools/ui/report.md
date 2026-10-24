@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 287 (MAIN 5, LAND 83, інші 199). HTML разом 13509 КБ, з них інлайн CSS 7045 КБ і JS 2222 КБ.
+Сторінок: 289 (MAIN 5, LAND 85, інші 199). HTML разом 13587 КБ, з них інлайн CSS 7073 КБ і JS 2236 КБ.
 
 ## Проблеми
 
@@ -10,8 +10,8 @@
 
 ## Токени
 
-- `--mu`: {'#6A6153': 5, '#938c84': 287, '#87807C': 1}
-- `--bg2`: {'#100e0c': 287, '#EDEBE4': 5}
+- `--mu`: {'#6A6153': 5, '#938c84': 289, '#87807C': 1}
+- `--bg2`: {'#100e0c': 289, '#EDEBE4': 5}
 - Копій адреси вебхука форми: 7 на 5 сторінках
 
 ## Сторінки
@@ -247,17 +247,19 @@
 | blog/yak-vybraty-dyzainera-interieru.html | land | 40.3 | 12.4 | 14.5 | 6.8 | 7 | 150 |
 | proekty/usa-house.html | land | 39.3 | 10.5 | 14.4 | 7.0 | 8 | 164 |
 | dyzain-interieru-kvartyry-kyiv.html | land | 39.0 | 11.7 | 14.0 | 6.8 | 7 | 239 |
+| ru/dizayn-restorana-kafe-kiev.html | land | 38.8 | 11.6 | 14.3 | 6.8 | 7 | 220 |
 | remont-budynku-pid-klyuch-kyiv.html | land | 38.5 | 11.5 | 14.0 | 6.8 | 7 | 231 |
 | blog/shcho-vkhodyt-u-remont-pid-kliuch.html | land | 38.4 | 11.8 | 14.5 | 6.8 | 7 | 148 |
 | remont-kvartyr-kyiv.html | land | 38.4 | 11.8 | 14.1 | 6.8 | 7 | 225 |
 | remont-ofisu-pid-klyuch-kyiv.html | land | 38.4 | 11.6 | 14.0 | 6.8 | 7 | 223 |
 | ru/remont-kvartir-kiev.html | land | 38.4 | 11.8 | 14.3 | 6.8 | 7 | 224 |
+| ru/baza-otdyha-pod-klyuch.html | land | 38.3 | 11.4 | 14.3 | 6.8 | 7 | 220 |
 | budivnytstvo-budynkiv-kyiv.html | land | 37.7 | 11.4 | 14.1 | 6.8 | 7 | 227 |
+| ru/stroitelstvo-domov-kiev.html | land | 37.7 | 11.4 | 14.3 | 6.8 | 7 | 226 |
 | proekty/yacht-restaurant.html | land | 37.5 | 10.5 | 14.4 | 7.0 | 8 | 154 |
-| ru/stroitelstvo-domov-kiev.html | land | 37.5 | 11.4 | 14.3 | 6.8 | 7 | 224 |
 | ru/dizayn-kvartiry-kiev.html | land | 37.4 | 11.5 | 14.3 | 6.8 | 7 | 229 |
 | blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html | land | 37.2 | 11.7 | 14.5 | 6.8 | 7 | 143 |
-| ru/dizayn-interera-kiev.html | land | 37.2 | 11.5 | 14.3 | 6.8 | 7 | 226 |
+| ru/dizayn-interera-kiev.html | land | 37.2 | 11.4 | 14.3 | 6.8 | 7 | 226 |
 | dyzain-interieru-kyiv.html | land | 37.1 | 11.4 | 14.1 | 6.8 | 7 | 227 |
 | kalkuliator-remontu.html | land | 37.1 | 11.3 | 14.9 | 7.8 | 7 | 201 |
 | proekty/tetris-hall.html | land | 37.1 | 10.4 | 14.4 | 7.0 | 8 | 152 |
@@ -265,27 +267,27 @@
 | ru/blog.html | land | 36.9 | 10.6 | 14.5 | 6.8 | 7 | 108 |
 | ru/kalkulyator-remonta.html | land | 36.9 | 11.3 | 14.9 | 7.8 | 7 | 201 |
 | blog.html | land | 36.8 | 10.7 | 14.5 | 6.8 | 7 | 107 |
+| dyzain-restoranu-kafe-kyiv.html | land | 36.8 | 11.2 | 14.0 | 6.8 | 7 | 219 |
 | mebliuvannia-kvartyry-kyiv.html | land | 36.8 | 11.3 | 14.3 | 6.8 | 7 | 208 |
 | remont-vannoi-kimnaty-kyiv.html | land | 36.8 | 11.3 | 14.3 | 6.8 | 7 | 218 |
 | blog/remont-vannoi-kimnaty-pid-kliuch-etapy.html | land | 36.7 | 11.6 | 14.5 | 6.8 | 7 | 133 |
 | remont-novobudovy-kyiv.html | land | 36.7 | 11.2 | 14.1 | 6.8 | 7 | 222 |
 | ru/remont-v-novostroyke-kiev.html | land | 36.5 | 11.2 | 14.3 | 6.8 | 7 | 217 |
-| dyzain-restoranu-kafe-kyiv.html | land | 36.4 | 11.1 | 14.0 | 6.8 | 7 | 215 |
 | proektuvannia-budynku-kyiv.html | land | 36.4 | 10.9 | 14.0 | 6.8 | 7 | 221 |
 | remont-pid-klyuch-kyiv.html | land | 36.2 | 11.2 | 14.1 | 6.8 | 7 | 218 |
 | ru/remontnaya-brigada-kiev.html | land | 36.2 | 11.1 | 14.3 | 6.8 | 7 | 209 |
 | dyzainer-interieru-kyiv.html | land | 36.1 | 11.2 | 14.3 | 6.8 | 7 | 210 |
 | remontna-bryhada-kyiv.html | land | 36.1 | 11.1 | 14.1 | 6.8 | 7 | 212 |
 | ru/dizayner-interera-kiev.html | land | 36.1 | 11.2 | 14.3 | 6.8 | 7 | 210 |
+| ru/proektirovanie-doma-kiev.html | land | 36.1 | 10.9 | 14.3 | 6.8 | 7 | 212 |
 | remont-komertsiinykh-prymishchen-kyiv.html | land | 36.0 | 11.0 | 14.1 | 6.8 | 7 | 217 |
 | ru/remont-pod-klyuch-kiev.html | land | 36.0 | 11.2 | 14.3 | 6.8 | 7 | 215 |
-| ru/proektirovanie-doma-kiev.html | land | 35.9 | 10.9 | 14.3 | 6.8 | 7 | 210 |
+| baza-vidpochynku-pid-klyuch.html | land | 35.9 | 11.0 | 14.0 | 6.8 | 7 | 219 |
 | ru/remont-vannoy-kiev.html | land | 35.7 | 11.0 | 14.3 | 6.8 | 7 | 204 |
-| baza-vidpochynku-pid-klyuch.html | land | 35.6 | 10.9 | 14.0 | 6.8 | 7 | 215 |
 | remont-kukhni-kyiv.html | land | 35.6 | 11.0 | 14.3 | 6.8 | 7 | 211 |
-| ru/index.html | land | 35.5 | 10.7 | 14.3 | 6.8 | 7 | 208 |
+| ru/index.html | land | 35.6 | 10.7 | 14.3 | 6.8 | 7 | 210 |
 | ru/remont-doma-kiev.html | land | 35.5 | 11.0 | 14.3 | 6.8 | 7 | 215 |
-| ru/remont-kommercheskih-pomeshcheniy-kiev.html | land | 35.4 | 10.8 | 14.3 | 6.8 | 7 | 210 |
+| ru/remont-kommercheskih-pomeshcheniy-kiev.html | land | 35.5 | 10.9 | 14.3 | 6.8 | 7 | 212 |
 | landshaftnyi-dyzain-kyiv.html | land | 35.2 | 10.9 | 14.1 | 6.8 | 7 | 211 |
 | ru/remont-kuhni-kiev.html | land | 34.9 | 10.8 | 14.3 | 6.8 | 7 | 203 |
 | proekty/a-frame-house.html | land | 34.8 | 10.1 | 14.4 | 7.0 | 8 | 136 |
