@@ -8,6 +8,7 @@
   {"slug": "...", "lang": "uk"|"ru", "title": "...", "description": "...(до 160 симв.)", "lead": "...",
    "date": "2026-10-22", "service": ["/remont-kvartyr-kyiv", "Ремонт квартир"],
    "photo": "img/p/<id>-900.webp", "pair": "<slug іншою мовою>" (необовʼязково),
+   "seo_title": "..." (необовʼязково, ≤60 симв.: іде в <title> як є замість title; H1 і решта — з title),
    "body": [["h2", "..."], ["p", "..."], ["ul", ["...", "..."]], ["ol", [...]]],
    у "p" і пунктах списків можна внутрішнє посилання: [анкор](/шлях-сторінки) — лише на наявну сторінку,
    ru-статті → /ru/..., не більше одного на ту саму сторінку; у заголовках посилань немає
@@ -67,6 +68,7 @@ def check(a):
     if a['lang'] not in L: errs.append('lang має бути uk або ru')
     if not re.fullmatch(r'[a-z0-9-]+', a['slug']): errs.append('slug: лише a-z, 0-9, -')
     if len(a['description']) > 170: errs.append('description довший за 170 символів')
+    if len(a.get('seo_title') or title_tag(a['title'])) > 60: errs.append('<title> довший за 60 символів — додати "seo_title" (≤60)')
     txt = json.dumps(a, ensure_ascii=False)
     if re.search(r'osocor|осокор|osokork', txt, re.I): errs.append('Osocor заборонено')
     for p in re.findall(r'\$\s?\d[\d ]*\d|\$\d', txt):
@@ -135,7 +137,7 @@ def build_article(a, arts):
     url = url_of(a)
     og = f"img/og/{a['slug']}.jpg"
     og_url = B + og if os.path.exists(os.path.join(ROOT, og)) else B + 'img/og-cas.jpg'
-    s = re.sub(r'<title>.*?</title>', f"<title>{esc(title_tag(a['title']))}</title>", s, count=1, flags=re.S)
+    s = re.sub(r'<title>.*?</title>', f"<title>{esc(a.get('seo_title') or title_tag(a['title']))}</title>", s, count=1, flags=re.S)
     s = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{esc(a["description"])}">', s, count=1)
     s = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{url}">', s, count=1)
     s = re.sub(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{esc(a["title"])} | CAS Development">', s, count=1)

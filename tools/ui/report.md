@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 298 (MAIN 5, LAND 94, інші 199). HTML разом 14004 КБ, з них інлайн CSS 7008 КБ і JS 2165 КБ.
+Сторінок: 298 (MAIN 5, LAND 94, інші 199). HTML разом 14003 КБ, з них інлайн CSS 7008 КБ і JS 2165 КБ.
 
 ## Проблеми
 
@@ -224,7 +224,7 @@
 | kabinet/admin.html | other | 44.9 | 12.8 | 29.0 | 12.4 | 12 | 60 |
 | kabinet.html | other | 43.3 | 12.5 | 29.0 | 10.7 | 12 | 61 |
 | proekty/linden-penthouse.html | land | 41.8 | 6.9 | 2.0 | 0.7 | 0 | 281 |
-| blog/etapy-remontu-kvartyry-pid-kliuch.html | land | 41.5 | 12.8 | 14.5 | 6.8 | 7 | 155 |
+| blog/etapy-remontu-kvartyry-pid-kliuch.html | land | 41.4 | 12.8 | 14.5 | 6.8 | 7 | 155 |
 | blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html | land | 41.3 | 12.6 | 14.5 | 6.8 | 7 | 159 |
 | blog/avtorskyi-nahliad-navishcho.html | land | 41.1 | 12.7 | 14.5 | 6.8 | 7 | 151 |
 | blog/skilky-koshtuie-dyzain-proekt-kvartyry-kyiv.html | land | 41.1 | 12.4 | 14.5 | 6.8 | 7 | 153 |
@@ -265,7 +265,7 @@
 | remont-kvartyr-kyiv.html | land | 38.5 | 11.9 | 14.1 | 6.8 | 7 | 227 |
 | remont-ofisu-pid-klyuch-kyiv.html | land | 38.5 | 11.7 | 14.0 | 6.8 | 7 | 225 |
 | proekty/pidgirland.html | land | 38.3 | 6.4 | 2.0 | 0.7 | 0 | 259 |
-| budivnytstvo-budynkiv-kyiv.html | land | 37.9 | 11.4 | 14.1 | 6.8 | 7 | 229 |
+| budivnytstvo-budynkiv-kyiv.html | land | 37.8 | 11.4 | 14.1 | 6.8 | 7 | 229 |
 | ru/proektirovanie-doma-kiev.html | land | 37.5 | 11.4 | 14.3 | 6.8 | 7 | 214 |
 | ru/remont-v-novostroyke-kiev.html | land | 37.5 | 11.5 | 14.3 | 6.8 | 7 | 219 |
 | kalkuliator-remontu.html | land | 37.3 | 11.4 | 14.9 | 7.8 | 7 | 203 |
@@ -278,8 +278,8 @@
 | ru/index.html | land | 36.9 | 11.2 | 14.3 | 6.8 | 7 | 213 |
 | blog/remont-vannoi-kimnaty-pid-kliuch-etapy.html | land | 36.8 | 11.6 | 14.5 | 6.8 | 7 | 134 |
 | remont-novobudovy-kyiv.html | land | 36.8 | 11.3 | 14.1 | 6.8 | 7 | 224 |
-| ru/remont-kommercheskih-pomeshcheniy-kiev.html | land | 36.8 | 11.2 | 14.3 | 6.8 | 7 | 214 |
 | ru/remont-vannoy-kiev.html | land | 36.8 | 11.3 | 14.3 | 6.8 | 7 | 206 |
+| ru/remont-kommercheskih-pomeshcheniy-kiev.html | land | 36.7 | 11.2 | 14.3 | 6.8 | 7 | 214 |
 | proektuvannia-budynku-kyiv.html | land | 36.6 | 11.0 | 14.0 | 6.8 | 7 | 223 |
 | ru/remont-doma-kiev.html | land | 36.5 | 11.4 | 14.3 | 6.8 | 7 | 217 |
 | dyzainer-interieru-kyiv.html | land | 36.3 | 11.3 | 14.3 | 6.8 | 7 | 212 |
