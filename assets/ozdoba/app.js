@@ -251,6 +251,9 @@ const count = () => cart.reduce((s,c)=>s+c.qty,0);
 const discount = () => promo ? Math.round(goods()*promo.pct/100) : 0;
 const ship = () => (goods()-discount()) > 20000 ? 0 : 450;
 const grand = () => goods()-discount()+ship();
+/* Оздоба комплектує обʼєкти: поштучно не продаємо, мінімальне замовлення ≈ $500 */
+const MIN_ORDER = 23000;
+const belowMin = () => !onReq() && goods()-discount() < MIN_ORDER;
 
 function save(){ try{ localStorage.setItem('ozd-cart',JSON.stringify(cart)); localStorage.setItem('ozd-fav',JSON.stringify([...fav])); }catch(e){} }
 function syncBadges(){ save();
@@ -288,7 +291,9 @@ function renderCart(){
     <div class="sum"><span>Доставка по Україні</span><span>${ship()?money(ship()):'безкоштовно'}</span></div>
     ${onReq()?`<div class="sum"><span>Позицій за запитом: ${onReq()}</span><span>ціну назве менеджер</span></div>`:''}
     <div class="sum total"><span>${onReq()?'Сума відомих позицій':'До сплати'}</span><span>${money(grand())}</span></div>
-    <button class="btn" onclick="openPay()">Оформити замовлення</button>
+    ${belowMin()?`<p class="note-honest" style="color:var(--glow)">Мінімальне замовлення — від ${money(MIN_ORDER)} (≈ $500): ми комплектуємо обʼєкти й не продаємо поштучно. Додайте позиції або візьміть готовий комплект.</p>
+    <button class="btn ghost" onclick="closeAll();setTab('bundles')">Дивитись комплекти</button>`
+    :`<button class="btn" onclick="openPay()">Оформити замовлення</button>`}
     <button class="btn ghost" onclick="copyEstimate()">Скопіювати кошторис</button>`;
 }
 function cq(n,d){ cart[n].qty+=d; if(cart[n].qty<1) cart.splice(n,1); haptic(); syncBadges(); renderCart(); }
@@ -314,7 +319,7 @@ function copyEstimate(){
 }
 
 /* ===================== оплата ===================== */
-function openPay(){ renderPay(); close('sheetCart'); setTimeout(()=>open('sheetPay'),130); }
+function openPay(){ if(belowMin()){ toast('Мінімальне замовлення — від '+money(MIN_ORDER)); return; } renderPay(); close('sheetCart'); setTimeout(()=>open('sheetPay'),130); }
 function renderPay(){
   const g=grand(), part=Math.ceil(g/4);
   const u=tg&&tg.initDataUnsafe&&tg.initDataUnsafe.user;

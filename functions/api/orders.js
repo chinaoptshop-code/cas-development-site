@@ -54,6 +54,7 @@ export async function onRequestPost({ request, env }) {
   const ship = goods - disc > 20000 || goods === 0 ? 0 : 450;
   const total = goods - disc + ship;
   const onReq = items.filter(i => i.price == null).length;
+  if (!onReq && goods - disc < 23000) return bad('Мінімальне замовлення — від 23 000 ₴ (≈ $500)');
   const number = await nextNumber(env);
   const name = str(d.name, 120) || c?.name || null;
   const payment = ['card', 'parts', 'invoice', 'cod'].includes(d.payment) ? d.payment : 'card';
