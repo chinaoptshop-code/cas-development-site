@@ -44,6 +44,10 @@ def wr(p, s):
 def esc(s): return html.escape(s, quote=True)
 def path_of(a): return f"blog/{a['slug']}.html" if a['lang'] == 'uk' else f"ru/blog/{a['slug']}.html"
 def url_of(a): return B + path_of(a)[:-5]
+def title_tag(t):
+    """<title>: з брендом, якщо вміщається в 60 символів, інакше лише заголовок (бренд обрізався б у видачі)."""
+    full = f'{t} | CAS Development'
+    return full if len(full) <= 60 else t
 
 
 def load():
@@ -131,7 +135,7 @@ def build_article(a, arts):
     url = url_of(a)
     og = f"img/og/{a['slug']}.jpg"
     og_url = B + og if os.path.exists(os.path.join(ROOT, og)) else B + 'img/og-cas.jpg'
-    s = re.sub(r'<title>.*?</title>', f"<title>{esc(a['title'])} | CAS Development</title>", s, count=1, flags=re.S)
+    s = re.sub(r'<title>.*?</title>', f"<title>{esc(title_tag(a['title']))}</title>", s, count=1, flags=re.S)
     s = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{esc(a["description"])}">', s, count=1)
     s = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{url}">', s, count=1)
     s = re.sub(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{esc(a["title"])} | CAS Development">', s, count=1)
@@ -200,7 +204,7 @@ def build_index(lang, items):
     s = rd('blog.html')
     if lang == 'ru': s = ru_shell(s)
     url = B + t['blog_url'].lstrip('/')
-    s = re.sub(r'<title>.*?</title>', f'<title>{t["blog_title"]} | CAS Development</title>', s, count=1, flags=re.S)
+    s = re.sub(r'<title>.*?</title>', f'<title>{esc(title_tag(t["blog_title"]))}</title>', s, count=1, flags=re.S)
     s = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{t["blog_desc"]}">', s, count=1)
     s = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{url}">', s, count=1)
     s = re.sub(r'<meta property="og:(title|description|url)" content="[^"]*">\s*', '', s)

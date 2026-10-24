@@ -47,6 +47,11 @@ def path(lang, slug):
     return ('ru/' if lang == 'ru' else '') + slug + '.html'
 
 
+def title_tag(t):
+    """<title> до 60 символів: якщо з брендом довше — без суфікса « | CAS Development» (og:title лишається повним)."""
+    return t if len(t) <= 60 else re.sub(r'\s*[|—–]\s*CAS Development\s*$', '', t)
+
+
 def faqs(p):
     """Усі пари питання-відповідь: з "faq" або з груп "groups" (сторінка частих питань)."""
     return p.get('faq') or [qa for g in p.get('groups', []) for qa in g['faq']]
@@ -139,7 +144,7 @@ def build(p):
     lang, slug = p['lang'], p['slug']
     s = open(os.path.join(ROOT, TPL[lang]), encoding='utf-8').read()
     u = url(lang, slug)
-    s = re.sub(r'<title>.*?</title>', f'<title>{e(p["title"])}</title>', s, count=1)
+    s = re.sub(r'<title>.*?</title>', f'<title>{e(title_tag(p["title"]))}</title>', s, count=1)
     for k, v in (('name="description"', p['description']), ('property="og:title"', p['title']),
                  ('property="og:description"', p['description']), ('property="og:url"', u)):
         s = re.sub(r'(<meta ' + k + r' content=")[^"]*', lambda m: m.group(1) + a(v), s, count=1)

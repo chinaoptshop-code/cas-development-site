@@ -422,7 +422,7 @@ function renderService(slug){
 
   const galleryHTML = s.gallery.map((g,i)=>`
     <div class="gal-item" onclick="lbOpen('${BASE}${g.id}&sz=w1600')">
-      <img src="${BASE}${g.id}&sz=w600" loading="${i<6?'eager':'lazy'}" alt="${g.label}">
+      <img src="${BASE}${g.id}&sz=w600" loading="${i<6?'eager':'lazy'}" width="600" height="450" alt="${g.label}">
       <div class="gal-label">${g.label}</div>
     </div>`).join('');
 
@@ -430,7 +430,7 @@ function renderService(slug){
 
   document.getElementById('sd-content').innerHTML = `
     <div class="sd-hero">
-      <img class="sd-hero-bg" src="${BASE}${s.bg}&sz=w1400" loading="eager" alt="">
+      <img class="sd-hero-bg" src="${BASE}${s.bg}&sz=w1400" loading="eager" width="1400" height="788" alt="">
       <div class="sd-hero-grad"></div>
       <div class="sd-hero-in">
         <span class="sd-tag">${s.tag}</span>
