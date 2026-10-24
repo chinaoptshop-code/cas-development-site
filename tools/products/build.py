@@ -85,8 +85,9 @@ def main():
     s = re.sub(r'<span class="cnt" id="cnt">[^<]*</span>', f'<span class="cnt" id="cnt">{len(items)} позицій</span>', s, count=1)
     open(PAGE, 'w', encoding='utf-8').write(s)
     pages = product_pages(d)
+    cats = category_pages(d)
     photos = sum(1 for i in d['items'] if i.get('img'))
-    print(f'Оздоба: {len(items)} товарів, з фото {photos}, сторінок товарів {pages}, версія каталогу {ver(CAT)}')
+    print(f'Оздоба: {len(items)} товарів, з фото {photos}, сторінок товарів {pages}, категорій {cats}, версія каталогу {ver(CAT)}')
 
 
 
@@ -133,7 +134,7 @@ def product_page(d, i, shell, items):
     title = f'{i["name"]} — {pr} | Оздоба CAS Development'
     desc = f'{i["desc"]} {i["sub"]}, {pr}{" за " + i["unit"] if mp is not None else ""}. Поставка з Китаю 35–50 днів, доставка по Україні.'
     body = f'''<div class="w">
-  <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / {e(i["name"])}</div>
+  <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / {f'<a href="/ozdoba/kategoriia/{CATS[i["cat"]][0]}">{e(i["cat"])}</a> / ' if i["cat"] in CATS else ''}{e(i["name"])}</div>
   <article class="pp">
     <div class="pp-media"><div class="hero-art{" ph" if img else ""} pp-hero">{hero}</div>{f'<div class="pp-gal">{gal}</div>' if gal else ''}</div>
     <div class="pp-info">
@@ -223,6 +224,80 @@ def product_pages(d):
     add = ''.join(f'  <url><loc>https://cas-develop.com/ozdoba/{i["slug"]}</loc></url>\n' for i in d['items'])
     open(sm, 'w', encoding='utf-8').write(s.replace('</urlset>', add + '</urlset>'))
     return len(d['items'])
+
+
+
+# ===================== сторінки категорій /ozdoba/kategoriia/<slug> =====================
+CATS = {
+    'Освітлення': ('osvitlennia', 'Освітлення для інтерʼєру: люстри, бра, торшери, споти', 'Люстри, підвісні світильники, бра, торшери, настільні лампи, трекові системи, LED-профілі й вуличне світло для квартир, ресторанів, готелів і офісів. Напряму з фабрик Китаю, під ваш дизайн-проєкт.'),
+    'Меблі': ('mebli', 'Меблі для квартири, ресторану й офісу', 'Дивани, крісла, стільці, обідні й журнальні столи, ліжка, шафи, комоди, офісні меблі й стійки ресепшн. Меблі на замовлення й з фабрик Китаю — для житла й комерції.'),
+    'Сантехніка': ('santekhnika', 'Сантехніка: унітази, ванни, раковини, змішувачі', 'Підвісні унітази й інсталяції, окремостоячі ванни, раковини з каменю й кераміки, душові системи, змішувачі, рушникосушки й аксесуари для ванної.'),
+    'Оздоблення': ('ozdoblennia', 'Оздоблення: плитка, паркет, стінові панелі', 'Керамограніт, мозаїка, плитка, інженерна дошка «ялинка», SPC, рейкові й 3D-панелі, молдинги, рейкові стелі й акустичні панелі.'),
+    'Двері': ('dveri', 'Двері: міжкімнатні, приховані, розсувні, вхідні', 'Міжкімнатні двері, приховані двері під фарбування, скляні перегородки й розсувні системи, вхідні двері й фурнітура.'),
+    'Кухня': ('kukhnia', 'Кухня: мийки, змішувачі, витяжки, острови', 'Кухонні мийки з кварцу й сталі, змішувачі, острівні витяжки, кухонні острови, модульні кухні й системи зберігання.'),
+    'Текстиль': ('tekstyl', 'Текстиль: килими, штори, пледи, подушки', 'Килими, штори, покривала, пледи, постільна білизна й декоративні подушки — фінальний шар інтерʼєру.'),
+    'Декор': ('dekor', 'Декор для інтерʼєру: дзеркала, вази, рослини', 'Дзеркала, картини, скульптури, вази, кашпо й штучні рослини, свічники й годинники.'),
+    'Сервіровка': ('servirovka', 'Сервіровка для ресторанів і дому', 'Тарілки, келихи, декантери, столові прибори й текстиль для сервірування.'),
+    'Каміни': ('kaminy', 'Каміни: біокаміни й електрокаміни', 'Біокаміни, електрокаміни з паровим полумʼям і настільні каміни для квартир, ресторанів і готелів.'),
+    'Тераса й сад': ('terasa-i-sad', 'Тераса й сад: вуличні меблі, перголи, парасолі', 'Вуличні дивани й крісла, шезлонги, столи для тераси, перголи, парасолі, кашпо й підвісні крісла.'),
+}
+
+
+def category_pages(d):
+    shell = open(PAGE, encoding='utf-8').read()
+    shell = shell.replace('</style>\n<!--ozd:ld-->', PP_CSS + '</style>\n<!--ozd:ld-->', 1)
+    os.makedirs(os.path.join(ROOT, 'ozdoba/kategoriia'), exist_ok=True)
+    out = []
+    for cat, (slug, h1, lead) in CATS.items():
+        items = [i for i in d['items'] if i['cat'] == cat]
+        if not items: continue
+        u = f'https://cas-develop.com/ozdoba/kategoriia/{slug}'
+        cards = ''.join(re.sub(r'<button class="heart".*?</button>', '', card(d, x), flags=re.S)
+                        .replace(f'onclick="openItem({x["id"]})"', f'onclick="location.href=\'/ozdoba/{x["slug"]}\'"') for x in items)
+        other = ''.join(f'<a href="/ozdoba/kategoriia/{s}">{e(c)}</a>' for c, (s, _, _) in CATS.items() if c != cat and any(i['cat'] == c for i in d['items']))
+        ld = {'@context': 'https://schema.org', '@graph': [
+            {'@type': 'CollectionPage', 'name': h1, 'url': u, 'description': lead},
+            {'@type': 'ItemList', 'numberOfItems': len(items), 'itemListElement': [
+                {'@type': 'ListItem', 'position': n + 1, 'name': x['name'], 'url': f'https://cas-develop.com/ozdoba/{x["slug"]}'} for n, x in enumerate(items)]},
+            {'@type': 'BreadcrumbList', 'itemListElement': [
+                {'@type': 'ListItem', 'position': 1, 'name': 'Головна', 'item': 'https://cas-develop.com/'},
+                {'@type': 'ListItem', 'position': 2, 'name': 'Оздоба', 'item': 'https://cas-develop.com/ozdoba'},
+                {'@type': 'ListItem', 'position': 3, 'name': cat, 'item': u}]}]}
+        body = f'''<div class="w">
+  <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / {e(cat)}</div>
+  <div class="ozd-hero"><h1>{e(h1)}</h1><p>{e(lead)}</p>
+  <ul class="pts"><li>{len(items)} позицій</li><li>Напряму з фабрик Китаю</li><li>Рахунок для ФОП і ТОВ</li><li>Доставка по Україні</li></ul></div>
+</div>
+<main class="grid">{cards}</main>
+<section class="ozd-sec"><h2>Як замовити</h2><p style="color:var(--muted);max-width:70ch">Додайте позиції в кошик у <a href="/ozdoba" style="color:var(--brass)">каталозі Оздоби</a> або надішліть список і креслення — менеджер підтвердить ціну, наявність і строк поставки. Комплектація квартири під ключ — <a href="/mebliuvannia-kvartyry-kyiv" style="color:var(--brass)">від $250 за м²</a>.</p></section>
+<section class="ozd-sec"><h2>Інші категорії</h2><div class="rel">{other}</div></section>
+'''
+        title = f'{h1} — купити з Китаю | Оздоба CAS Development'
+        desc = f'{lead[:150]}'
+        s = shell
+        s = re.sub(r'<title>.*?</title>', f'<title>{e(title)}</title>', s, count=1)
+        s = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m.group(1) + e(desc), s, count=1)
+        s = re.sub(r'(<link rel="canonical" href=")[^"]*', lambda m: m.group(1) + u, s, count=1)
+        s = re.sub(r'(<meta property="og:title" content=")[^"]*', lambda m: m.group(1) + e(title), s, count=1)
+        s = re.sub(r'(<meta property="og:description" content=")[^"]*', lambda m: m.group(1) + e(desc), s, count=1)
+        s = re.sub(r'(<meta property="og:url" content=")[^"]*', lambda m: m.group(1) + u, s, count=1)
+        s = re.sub(r'<link rel="preload" id="ozd-data"[^>]*>\n', '', s)
+        s = re.sub(r'<!--ozd:ld-->.*?<!--/ozd:ld-->', lambda m: '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>', s, count=1, flags=re.S)
+        hdr = re.search(r'<button class="ico" id="btnSearch".*?<span class="badge" id="cartBadge" hidden>0</span></button>', s, flags=re.S)
+        if hdr:
+            cart_svg = re.search(r'aria-label="Кошик">(<svg.*?</svg>)', hdr.group(0), flags=re.S).group(1)
+            s = s.replace(hdr.group(0), f'<a class="ico" href="/ozdoba" aria-label="Кошик">{cart_svg}</a>')
+        a, b = s.index('<div class="searchwrap"'), s.index('<footer>')
+        s = s[:a] + body + '\n' + s[b:]
+        a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
+        s = s[:a] + s[b:]
+        open(os.path.join(ROOT, 'ozdoba/kategoriia', slug + '.html'), 'w', encoding='utf-8').write(s)
+        out.append(u)
+    sm = os.path.join(ROOT, 'sitemap.xml'); t = open(sm, encoding='utf-8').read()
+    t = re.sub(r'  <url><loc>https://cas-develop\.com/ozdoba/kategoriia/[^<]+</loc>.*?</url>\n', '', t)
+    t = t.replace('</urlset>', ''.join(f'  <url><loc>{x}</loc></url>\n' for x in out) + '</urlset>')
+    open(sm, 'w', encoding='utf-8').write(t)
+    return len(out)
 
 
 if __name__ == '__main__':
