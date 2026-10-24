@@ -73,10 +73,11 @@ def main():
     order = {'A': 0, 'B': 1, 'C': 2}
     items = sorted(d['items'], key=lambda i: (order.get(i['prio'], 3), -(min_price(d, i) or 0)))
     grid = ''.join(card(d, i) for i in items[:32])  # решту карток домальовує app.js; кожен товар має свою сторінку
+    # ItemList — лише картки, які є в HTML (бюджет ozdoba.html ≤120 КБ); решта товарів — у категоріях і sitemap
     ld = {'@context': 'https://schema.org', '@type': 'ItemList', 'name': 'Оздоба — каталог меблів, світла й декору',
-          'numberOfItems': len(items),
+          'numberOfItems': len(items[:32]),
           'itemListElement': [{'@type': 'ListItem', 'position': n + 1, 'name': i['name'], 'url': f'https://cas-develop.com/ozdoba/{i["slug"]}'}
-                              for n, i in enumerate(items)]}
+                              for n, i in enumerate(items[:32])]}
     ver = lambda p: hashlib.sha1(open(p, 'rb').read()).hexdigest()[:8]
     s = open(PAGE, encoding='utf-8').read()
     s = re.sub(r'<!--ozd:grid-->.*?<!--/ozd:grid-->', lambda m: '<!--ozd:grid-->' + grid + '<!--/ozd:grid-->', s, count=1, flags=re.S)
