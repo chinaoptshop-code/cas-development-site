@@ -349,8 +349,7 @@ def speak(text, chat=None, reply_to=None, limit=VOICE_MAX):
     clone = CLONE_ON
     if clone and needs_intro(int(chat or OWNER)):
         say = AI_INTRO + say
-    prompt = ("Озвуч мовою тексту як звичайна жива людина в розмові: вільно, невимушено, з природною інтонацією, "
-              "дружньо й впевнено, без рекламного тону. Англійські назви вимовляй англійською. Текст: " + say)
+    prompt = say   # 24.10: без інструкції-префікса — Gemini TTS іноді зачитував її вголос («заглушка» на початку голосового)
     try:
         body = {"contents": [{"parts": [{"text": prompt}]}], "generationConfig": {"responseModalities": ["AUDIO"],
                 "speechConfig": {"voiceConfig": {"voice": CLONE_VOICE} if clone else {"prebuiltVoiceConfig": {"voiceName": TTS_VOICE}}}}}
