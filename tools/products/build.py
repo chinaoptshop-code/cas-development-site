@@ -97,16 +97,55 @@ VENUE = {'apt': 'квартира', 'resto': 'ресторан і бар', 'hote
          'cafe': 'кафе і кавʼярня', 'beauty': 'салон краси', 'spa': 'SPA і велнес'}
 
 
+SITE = 'https://cas-develop.com'
+T_FULL, T_SHORT = ' — купити в Києві | Оздоба CAS', ' — купити в Києві'
+
+
+def title_variants(name):
+    """Варіанти title товару (≤60): повна назва з брендом → назва до коми з брендом → без бренду → обрізка по словах."""
+    segs = [x.strip() for x in name.split(',')]
+    pref = [', '.join(segs[:k]) for k in range(len(segs), 0, -1)]
+    out = [p + T_FULL for p in pref] + [p + T_SHORT for p in pref]
+    w = name.replace(',', '').split()
+    out += [' '.join(w[:k]) + T_SHORT for k in range(len(w), 0, -1)]
+    return [t for t in dict.fromkeys(out) if len(t) <= 60] or [name[:60 - len(T_SHORT)].rstrip() + T_SHORT]
+
+
+def product_titles(items):
+    """Унікальні title для всіх товарів: якщо короткі варіанти збігаються, беремо довший наступний."""
+    var = {i['id']: title_variants(i['name']) for i in items}
+    pick = {k: 0 for k in var}
+    for _ in range(10):
+        seen = {}
+        for k in var: seen.setdefault(var[k][pick[k]], []).append(k)
+        dup = [k for t, ks in seen.items() if len(ks) > 1 for k in ks]
+        if not dup: break
+        for k in dup:
+            if pick[k] + 1 < len(var[k]): pick[k] += 1
+    return {k: var[k][pick[k]] for k in var}
+
+
+def product_desc(d, i):
+    """meta description товару ≤160: ціна, опис (обрізаний по словах), доставка, мін. замовлення."""
+    mp = min_price(d, i)
+    head = f'Ціна {"від " if i.get("ss") else ""}{money(mp)} за {i["unit"]}. ' if mp is not None else 'Ціна за запитом. '
+    tail = ' Доставка по Україні, мін. замовлення від $500.'
+    room = 160 - len(head) - len(tail)
+    body = i['desc'].strip()
+    if len(body) > room:
+        body = body[:room - 1].rsplit(' ', 1)[0].rstrip(' ,.;:—–-') + '…'
+    return head + body + tail
+
+
 def slugify(name, iid):
     s = ''.join(TR.get(c, c) for c in name.lower().replace('ʼ', '').replace("'", ''))
     s = re.sub(r'[^a-z0-9]+', '-', s).strip('-')
     return '-'.join(s.split('-')[:6]) + f'-{iid}'
 
 
-def product_page(d, i, shell, items):
+def product_page(d, i, shell, items, title):
     u = f'https://cas-develop.com/ozdoba/{i["slug"]}'
     mp = min_price(d, i)
-    frm = 'від ' if i.get('ss') else ''
     img = i.get('img')
     hero = (f'<img src="/{img}-800.webp" width="800" height="800" alt="{e(i["name"])}" fetchpriority="high">' if img
             else S.format(d['art'].get(i['art'], '')))
@@ -117,22 +156,35 @@ def product_page(d, i, shell, items):
     rows = [('Категорія', i['sub']), ('Кольори й фактури', ', '.join(c[0] for c in colors))]
     if sizes: rows.append(('Розміри', ', '.join(s[0] for s in sizes)))
     rows += [(k, v) for k, v in specs] + [('Одиниця', i['unit']), ('Поставка', '35–50 днів'), ('Підходить для', ', '.join(VENUE[v] for v in i['vn'] if v in VENUE))]
-    rel = [x for x in items if x['cat'] == i['cat'] and x['id'] != i['id']][:4]
+    # «Схожі товари»: спершу та сама підкатегорія (sub), далі та сама категорія; ходові (prio) — першими
+    po = {'A': 0, 'B': 1, 'C': 2}
+    same = sorted((x for x in items if x['cat'] == i['cat'] and x['id'] != i['id']),
+                  key=lambda x: (x['sub'] != i['sub'], po.get(x.get('prio'), 3), abs(x['id'] - i['id'])))
+    rel = same[:6]
+    cslug = CATS[i['cat']][0] if i['cat'] in CATS else None
     rel_html = ''.join(re.sub(r'<button class="heart".*?</button>', '', card(d, x), flags=re.S)
                        .replace(f'onclick="openItem({x["id"]})"', f'onclick="location.href=\'/ozdoba/{x["slug"]}\'"') for x in rel)
+    images = [f'{SITE}/{b}-800.webp' for b in [img] + list(i.get('imgs') or []) if b] or [f'{SITE}/img/og-cas.jpg']
+    offer = None
+    if mp is not None:  # offers лише з ціною; під замовлення → PreOrder; розміри → діапазон цін
+        offer = {'@type': 'Offer', 'price': mp, 'priceCurrency': 'UAH', 'availability': 'https://schema.org/PreOrder',
+                 'itemCondition': 'https://schema.org/NewCondition', 'url': u, 'seller': {'@id': f'{SITE}/#business'}}
+        if sizes and len(sizes) > 1:
+            hi = r10(i['price'] * max(k for _, k in sizes))
+            if hi > mp:
+                offer = {**offer, '@type': 'AggregateOffer', 'lowPrice': mp, 'highPrice': hi, 'offerCount': len(sizes)}
+                del offer['price']
+    crumbs = [('Головна', f'{SITE}/'), ('Оздоба', f'{SITE}/ozdoba')]
+    if cslug: crumbs.append((i['cat'], f'{SITE}/ozdoba/kategoriia/{cslug}'))
+    crumbs.append((i['name'], u))
     ld = {'@context': 'https://schema.org', '@graph': [
-        {'@type': 'Product', 'name': i['name'], 'description': i['desc'], 'category': i['sub'], 'url': u,
-         'image': f'https://cas-develop.com/{img}-800.webp' if img else 'https://cas-develop.com/img/og-cas.jpg',
-         'brand': {'@type': 'Brand', 'name': 'Оздоба · CAS Development'},
-         **({'offers': {'@type': 'Offer', 'price': mp, 'priceCurrency': 'UAH', 'availability': 'https://schema.org/PreOrder',
-                    'url': u, 'seller': {'@id': 'https://cas-develop.com/#business'}}} if mp is not None else {})},
+        {'@type': 'Product', 'name': i['name'], 'description': i['desc'], 'sku': f'OZD-{i["id"]}',
+         'category': i['sub'].replace(' / ', ' > '), 'url': u, 'image': images if len(images) > 1 else images[0],
+         'brand': {'@type': 'Brand', 'name': 'Оздоба CAS'},
+         **({'offers': offer} if offer else {})},
         {'@type': 'BreadcrumbList', 'itemListElement': [
-            {'@type': 'ListItem', 'position': 1, 'name': 'Головна', 'item': 'https://cas-develop.com/'},
-            {'@type': 'ListItem', 'position': 2, 'name': 'Оздоба', 'item': 'https://cas-develop.com/ozdoba'},
-            {'@type': 'ListItem', 'position': 3, 'name': i['name'], 'item': u}]}]}
-    pr = f'{frm}{money(mp)}' if mp is not None else 'ціна за запитом'
-    title = f'{i["name"]} — {pr} | Оздоба CAS Development'
-    desc = f'{i["desc"]} {i["sub"]}, {pr}{" за " + i["unit"] if mp is not None else ""}. Поставка з Китаю 35–50 днів, доставка по Україні.'
+            {'@type': 'ListItem', 'position': n + 1, 'name': nm, 'item': it} for n, (nm, it) in enumerate(crumbs)]}]}
+    desc = product_desc(d, i)
     body = f'''<div class="w">
   <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / {f'<a href="/ozdoba/kategoriia/{CATS[i["cat"]][0]}">{e(i["cat"])}</a> / ' if i["cat"] in CATS else ''}{e(i["name"])}</div>
   <article class="pp">
@@ -160,7 +212,7 @@ def product_page(d, i, shell, items):
   </form>
   <div class="ok" id="oOk" style="display:none"><h3>Запит отримано</h3><p style="color:var(--muted)">Менеджер звʼяжеться з вами в робочий час.</p></div>
 </section>
-{f'<section class="ozd-sec"><h2>Схожі позиції</h2><div class="grid pp-rel">{rel_html}</div><p style="margin-top:16px"><a class="btn ghost" style="display:inline-block;width:auto;padding:13px 22px" href="/ozdoba">Увесь каталог Оздоби</a></p></section>' if rel else ''}
+{f'<section class="ozd-sec"><h2>Схожі товари</h2><div class="grid pp-rel">{rel_html}</div><p class="pp-more">{f'<a class="btn ghost" href="/ozdoba/kategoriia/{cslug}">Уся категорія «{e(i["cat"])}»</a>' if cslug else ''}<a class="btn ghost" href="/ozdoba">Увесь каталог Оздоби</a></p></section>' if rel else ''}
 '''
     s = shell
     s = re.sub(r'<title>.*?</title>', f'<title>{e(title)}</title>', s, count=1)
@@ -205,6 +257,10 @@ PP_CSS = """
 .pp-form{display:grid;gap:4px;max-width:560px}
 .pp-form .btn{width:auto;justify-self:start;padding:15px 26px}
 .pp-rel{padding:0}
+.pp-more{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.pp-more .btn{display:inline-block;width:auto;margin:0;padding:13px 22px;text-decoration:none}
+.ozd-intro p{color:var(--muted);max-width:70ch;margin:0 0 12px}
+.ozd-intro a,.ozd-sec details a{color:var(--brass)}
 """
 
 
@@ -213,9 +269,10 @@ def product_pages(d):
     shell = shell.replace('</style>\n<!--ozd:ld-->', PP_CSS + '</style>\n<!--ozd:ld-->', 1)
     os.makedirs(os.path.join(ROOT, 'ozdoba'), exist_ok=True)
     keep = set()
+    titles = product_titles(d['items'])
     for i in d['items']:
         f = os.path.join(ROOT, 'ozdoba', i['slug'] + '.html'); keep.add(f)
-        open(f, 'w', encoding='utf-8').write(product_page(d, i, shell, d['items']))
+        open(f, 'w', encoding='utf-8').write(product_page(d, i, shell, d['items'], titles[i['id']]))
     for f in os.listdir(os.path.join(ROOT, 'ozdoba')):  # прибрати сторінки видалених товарів
         p = os.path.join(ROOT, 'ozdoba', f)
         if p not in keep and f.endswith('.html'): os.remove(p)
@@ -243,20 +300,56 @@ CATS = {
 }
 
 
+CATX_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'categories.json')
+LINK = re.compile(r'\[([^\]]+)\]\((/[^)\s]*)\)')
+
+
+def md(t):
+    """Текст з categories.json → HTML: екранування + посилання [текст](/url) (лише внутрішні)."""
+    return LINK.sub(lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', e(t))
+
+
+def plain(t): return LINK.sub(lambda m: m.group(1), t)
+
+
+def load_catx():
+    x = json.load(open(CATX_PATH, encoding='utf-8'))
+    for cat in CATS:
+        c = x.get(cat)
+        assert c, f'categories.json: немає тексту для категорії «{cat}»'
+        assert len(c['title']) <= 60, f'{cat}: title {len(c["title"])} > 60'
+        assert len(c['desc']) <= 160, f'{cat}: description {len(c["desc"])} > 160'
+        n = len(plain(c['intro']).split())
+        assert 80 <= n <= 150, f'{cat}: вступ {n} слів (треба 80–150)'
+        assert 3 <= len(c['faq']) <= 4, f'{cat}: FAQ має бути 3–4 питання'
+        assert all(r in CATS and r != cat for r in c.get('related', [])), f'{cat}: невідома сусідня категорія'
+    return x
+
+
 def category_pages(d):
+    catx = load_catx()
     shell = open(PAGE, encoding='utf-8').read()
     shell = shell.replace('</style>\n<!--ozd:ld-->', PP_CSS + '</style>\n<!--ozd:ld-->', 1)
     os.makedirs(os.path.join(ROOT, 'ozdoba/kategoriia'), exist_ok=True)
     out = []
+    present = {i['cat'] for i in d['items']}
     for cat, (slug, h1, lead) in CATS.items():
         items = [i for i in d['items'] if i['cat'] == cat]
         if not items: continue
+        cx = catx[cat]
         u = f'https://cas-develop.com/ozdoba/kategoriia/{slug}'
         cards = ''.join(re.sub(r'<button class="heart".*?</button>', '', card(d, x), flags=re.S)
                         .replace(f'onclick="openItem({x["id"]})"', f'onclick="location.href=\'/ozdoba/{x["slug"]}\'"') for x in items)
-        other = ''.join(f'<a href="/ozdoba/kategoriia/{s}">{e(c)}</a>' for c, (s, _, _) in CATS.items() if c != cat and any(i['cat'] == c for i in d['items']))
+        near = [c for c in cx.get('related', []) if c in present]
+        rest = [c for c in CATS if c != cat and c in present and c not in near]
+        other = ''.join(f'<a href="/ozdoba/kategoriia/{CATS[c][0]}">{e(c)}</a>' for c in near + rest)
+        title, desc = cx['title'], cx['desc']
+        intro = ''.join(f'<p>{md(p)}</p>' for p in cx['intro'].split('\n\n'))
+        faq = ''.join(f'<details><summary>{e(q)}</summary><p>{md(a)}</p></details>' for q, a in cx['faq'])
         ld = {'@context': 'https://schema.org', '@graph': [
-            {'@type': 'CollectionPage', 'name': h1, 'url': u, 'description': lead},
+            {'@type': 'CollectionPage', 'name': h1, 'url': u, 'description': desc},
+            {'@type': 'FAQPage', 'mainEntity': [
+                {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': plain(a)}} for q, a in cx['faq']]},
             {'@type': 'ItemList', 'numberOfItems': len(items), 'itemListElement': [
                 {'@type': 'ListItem', 'position': n + 1, 'name': x['name'], 'url': f'https://cas-develop.com/ozdoba/{x["slug"]}'} for n, x in enumerate(items)]},
             {'@type': 'BreadcrumbList', 'itemListElement': [
@@ -266,14 +359,14 @@ def category_pages(d):
         body = f'''<div class="w">
   <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / {e(cat)}</div>
   <div class="ozd-hero"><h1>{e(h1)}</h1><p>{e(lead)}</p>
-  <ul class="pts"><li>{len(items)} позицій</li><li>Напряму з фабрик Китаю</li><li>Рахунок для ФОП і ТОВ</li><li>Доставка по Україні</li></ul></div>
+  <ul class="pts"><li>{len(items)} позицій</li><li>Напряму з фабрик Китаю</li><li>Замовлення від $500</li><li>Рахунок для ФОП і ТОВ</li><li>Доставка по Україні</li></ul></div>
 </div>
 <main class="grid">{cards}</main>
-<section class="ozd-sec"><h2>Як замовити</h2><p style="color:var(--muted);max-width:70ch">Додайте позиції в кошик у <a href="/ozdoba" style="color:var(--brass)">каталозі Оздоби</a> або надішліть список і креслення — менеджер підтвердить ціну, наявність і строк поставки. Комплектація квартири під ключ — <a href="/mebliuvannia-kvartyry-kyiv" style="color:var(--brass)">від $250 за м²</a>.</p></section>
-<section class="ozd-sec"><h2>Інші категорії</h2><div class="rel">{other}</div></section>
+<section class="ozd-sec ozd-intro"><h2>{e(cat)} під замовлення: що входить і для кого</h2>{intro}</section>
+<section class="ozd-sec"><h2>Як замовити</h2><p style="color:var(--muted);max-width:70ch">Додайте позиції в кошик у <a href="/ozdoba" style="color:var(--brass)">каталозі Оздоби</a> або надішліть список і креслення — менеджер підтвердить ціну, наявність і строк поставки. Мінімальне замовлення — від $500 (≈ 23 000 ₴), позиції з різних категорій можна поєднувати. Комплектація квартири під ключ — <a href="/mebliuvannia-kvartyry-kyiv" style="color:var(--brass)">від $250 за м²</a>, обʼєкта — <a href="/komplektatsiia-pid-kliuch-kyiv" style="color:var(--brass)">комплектація під ключ</a>.</p></section>
+<section class="ozd-sec"><h2>Питання та відповіді</h2>{faq}</section>
+<section class="ozd-sec"><h2>Сусідні категорії</h2><div class="rel">{other}</div></section>
 '''
-        title = f'{h1} — купити з Китаю | Оздоба CAS Development'
-        desc = f'{lead[:150]}'
         s = shell
         s = re.sub(r'<title>.*?</title>', f'<title>{e(title)}</title>', s, count=1)
         s = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m.group(1) + e(desc), s, count=1)
