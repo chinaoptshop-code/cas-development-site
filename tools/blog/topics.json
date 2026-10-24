@@ -339,5 +339,16 @@
    "Реалізація дизайн-проєкту"
   ],
   "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "komplektatsiya-kvartiry-pod-klyuch-poryadok-i-byudzhet",
+  "title": "Комплектация квартиры под ключ: мебель, свет, текстиль — порядок и бюджет",
+  "keyword": "комплектация квартиры под ключ",
+  "service": [
+   "/ru/meblirovka-kvartiry-kiev",
+   "Меблировка квартиры"
+  ],
+  "status": "published"
  }
 ]
