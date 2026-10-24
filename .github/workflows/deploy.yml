@@ -60,6 +60,9 @@ jobs:
       - name: 📏 UI budget report (tools/ui/ui.py)
         run: python3 tools/ui/ui.py budget --report
 
+      - name: 🖼️ AVIF для зображень (tools/img/picture.py)
+        run: python3 tools/img/picture.py
+
       - name: 🧹 Exclude non-site files (tools, Claude config)
         run: rm -rf tools .claude CLAUDE.md migrations
 

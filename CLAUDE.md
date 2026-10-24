@@ -27,6 +27,9 @@
 - Оздоба (/ozdoba, «Продукти»): товари, ціни й характеристики — `assets/ozdoba/catalog.json`; фото з вирізаним фоном —
   `python3 tools/products/photo.py <id> <файл|url>`; після правок — `python3 tools/products/build.py` (оновлює /ozdoba, сторінки товарів /ozdoba/<slug> і sitemap).
 
+- Зображення: AVIF-копії робить `tools/img/build.py` (нові фото в img/ — запустити його); `<picture>` з AVIF підставляє
+  деплой (`tools/img/picture.py`), у репозиторії HTML лишається з простими `<img>` .webp.
+
 ## Telegram (личный аккаунт пользователя) — `tools/telegram/`
 
 Инструмент `tools/telegram/tg.sh` даёт доступ к личному Telegram-аккаунту пользователя
