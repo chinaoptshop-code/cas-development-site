@@ -49,27 +49,33 @@
  "gallery": [
   [
    "img/p/1MslU7S5X8gIEp-900.webp",
-   "Linden Penthouse"
+   "Linden Penthouse",
+   "Linden Penthouse — прихожая с деревянными панелями и реечной перегородкой, дизайнер интерьера в Киеве, CAS Development"
   ],
   [
    "img/p/1YQyhjEui9fb6v-900.webp",
-   "Linden Penthouse"
+   "Linden Penthouse",
+   "Linden Penthouse — зеркало с подсветкой, кожаные пуфы и гардероб за стеклом, дизайнер интерьера в Киеве, CAS Development"
   ],
   [
    "img/p/1DL1BY7Tg6L5B5-900.webp",
-   "Edelweiss"
+   "Edelweiss",
+   "Edelweiss — бежевая гостиная с кухней, диван, круглые столики, мраморный фартук, дизайнер интерьера в Киеве, CAS Development"
   ],
   [
    "img/p/1HMtnMX7Fgpwg5-900.webp",
-   "Edelweiss"
+   "Edelweiss",
+   "Edelweiss — прихожая: шкаф, реечная ниша с крючками и скамья с подсветкой, дизайнер интерьера в Киеве, CAS Development"
   ],
   [
    "img/p/1Grj8_m7MJwsbE-900.webp",
-   "Hodos Villa"
+   "Hodos Villa",
+   "Hodos Villa — светлый холл с молдингами, зеркалом в латуни, бра и консолями, дизайнер интерьера в Киеве, CAS Development"
   ],
   [
    "img/p/1Xdb_M0v9MyKsV-900.webp",
-   "Hodos Villa"
+   "Hodos Villa",
+   "Hodos Villa — шкаф с латунными ручками, мраморный пол и окно с жалюзи, дизайнер интерьера в Киеве, CAS Development"
   ]
  ],
  "steps": [
@@ -139,7 +145,7 @@
   ],
   [
    "/ru/dizayn-interera-kiev",
-   "Дизайн интерьера"
+   "Студия дизайна интерьера"
   ],
   [
    "/ru/stroitelstvo-domov-kiev",
@@ -156,6 +162,14 @@
   [
    "/ozdoba",
    "Мебель из Китая"
+  ],
+  [
+   "/ru/realizatsiya-dizayn-proekta-kiev",
+   "Реализация дизайн-проекта"
+  ],
+  [
+   "/ru/komplektatsiya-pod-klyuch-kiev",
+   "Комплектация под ключ"
   ]
  ]
 }

@@ -4,7 +4,7 @@
  "pair": "remont-vannoi-kimnaty-kyiv",
  "service": "Ремонт ванной комнаты",
  "title": "Ремонт ванной комнаты под ключ в Киеве | CAS Development",
- "description": "Ремонт ванной и санузла под ключ в Киеве: демонтаж, гидроизоляция, сантехника, плитка, тёплый пол, мебель. Смета до старта, гарантия 12 месяцев.",
+ "description": "Ремонт ванной комнаты и санузла под ключ в Киеве: демонтаж, гидроизоляция, сантехника, плитка, тёплый пол, мебель. Смета до старта, гарантия 12 месяцев.",
  "h1": "Ремонт ванной комнаты под ключ в Киеве",
  "price": "смета до старта · гарантия 12 месяцев",
  "lead": "Ванная — самое сложное помещение в ремонте: вода, электрика, вентиляция и плитка должны быть сделаны безупречно. Делаем санузлы под ключ — от демонтажа до зеркала и света, с проектом раскладки плитки.",
@@ -49,27 +49,33 @@
  "gallery": [
   [
    "img/p/1Grj8_m7MJwsbE-900.webp",
-   "Hodos Villa"
+   "Hodos Villa",
+   "Hodos Villa — прихожая с высоким зеркалом, парными бра и консолями, пол под мрамор, ремонт под ключ в Киеве, CAS Development"
   ],
   [
    "img/p/1Xdb_M0v9MyKsV-900.webp",
-   "Hodos Villa"
+   "Hodos Villa",
+   "Hodos Villa — встроенный шкаф с золотистыми рамками у окна с жалюзи, пол под мрамор, ремонт под ключ в Киеве, CAS Development"
   ],
   [
    "img/p/1MslU7S5X8gIEp-900.webp",
-   "Linden Penthouse"
+   "Linden Penthouse",
+   "Linden Penthouse — коридор в дереве с реечной перегородкой и трековым светом, ремонт под ключ в Киеве, CAS Development"
   ],
   [
    "img/p/1YQyhjEui9fb6v-900.webp",
-   "Linden Penthouse"
+   "Linden Penthouse",
+   "Linden Penthouse — зеркало с подсветкой, кожаный пуф и гардероб за стеклом, ремонт под ключ в Киеве, CAS Development"
   ],
   [
    "img/p/1NVeaQcV2TZSN5-900.webp",
-   "Petrivtsi House"
+   "Petrivtsi House",
+   "Petrivtsi House — серая ванная под мрамор с овальной ванной и душевой за стеклом, ремонт ванной в Киеве, CAS Development"
   ],
   [
    "img/p/1OR5i7-rm1k0MU-900.webp",
-   "Petrivtsi House"
+   "Petrivtsi House",
+   "Petrivtsi House — две раковины на подвесной тумбе, зеркало с подсветкой, ванна у окна, ремонт ванной в Киеве, CAS Development"
   ]
  ],
  "steps": [
@@ -143,7 +149,7 @@
   ],
   [
    "/ru/dizayn-interera-kiev",
-   "Дизайн интерьера"
+   "Студия дизайна интерьера"
   ],
   [
    "/ru/stroitelstvo-domov-kiev",
@@ -156,6 +162,14 @@
   [
    "/ozdoba",
    "Мебель из Китая"
+  ],
+  [
+   "/ru/realizatsiya-dizayn-proekta-kiev",
+   "Реализация дизайн-проекта"
+  ],
+  [
+   "/ru/komplektatsiya-pod-klyuch-kiev",
+   "Комплектация под ключ"
   ]
  ]
 }

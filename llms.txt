@@ -25,8 +25,10 @@
 - [Ремонт кухні під ключ](https://cas-develop.com/remont-kukhni-kyiv): планування, інженерія під техніку, кухня на замовлення
 - [Калькулятор вартості ремонту](https://cas-develop.com/kalkuliator-remontu): онлайн-розрахунок ремонту, будинку, дизайну й меблювання за ставками за м²
 - [Меблювання квартири під ключ](https://cas-develop.com/mebliuvannia-kvartyry-kyiv): комплектація меблями, світлом, текстилем і технікою від $250/м²
+- [Реалізація дизайн-проєкту під ключ](https://cas-develop.com/realizatsiia-dyzain-proektu-kyiv): ремонт, закупівля, меблі за готовим проєктом (зокрема іншого дизайнера), ремонт від $550/м²
+- [Комплектація обʼєкта під ключ](https://cas-develop.com/komplektatsiia-pid-kliuch-kyiv): меблі, світло, сантехніка, декор для квартир під здачу, HoReCa й офісів, замовлення від $500
 - [Дизайнер інтерʼєру в Києві](https://cas-develop.com/dyzainer-interieru-kyiv): дизайн-проєкт від $30/м², авторський нагляд і реалізація
-- [Калькулятор стоимости ремонта](https://cas-develop.com/ru/kalkulyator-remonta), [Меблировка квартиры под ключ](https://cas-develop.com/ru/meblirovka-kvartiry-kiev), [Дизайнер интерьера в Киеве](https://cas-develop.com/ru/dizayner-interera-kiev), [Ремонт ванной](https://cas-develop.com/ru/remont-vannoy-kiev), [Ремонт кухни](https://cas-develop.com/ru/remont-kuhni-kiev)
+- [Калькулятор стоимости ремонта](https://cas-develop.com/ru/kalkulyator-remonta), [Меблировка квартиры под ключ](https://cas-develop.com/ru/meblirovka-kvartiry-kiev), [Дизайнер интерьера в Киеве](https://cas-develop.com/ru/dizayner-interera-kiev), [Ремонт ванной](https://cas-develop.com/ru/remont-vannoy-kiev), [Ремонт кухни](https://cas-develop.com/ru/remont-kuhni-kiev), [Реализация дизайн-проекта](https://cas-develop.com/ru/realizatsiya-dizayn-proekta-kiev), [Комплектация объекта под ключ](https://cas-develop.com/ru/komplektatsiya-pod-klyuch-kiev)
 - [Блог](https://cas-develop.com/blog): статті про ціни на дизайн-проєкт, склад проєкту, етапи ремонту, вибір дизайнера, меблі з Китаю, ремонт ванної, будівництво будинку
 - [Блог російською](https://cas-develop.com/ru/blog): сколько стоит ремонт квартиры в Киеве, ремонт в новостройке
 - [Портфоліо](https://cas-develop.com/portfolio): реалізовані обʼєкти

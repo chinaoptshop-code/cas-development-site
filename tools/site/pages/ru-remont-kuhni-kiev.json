@@ -4,7 +4,7 @@
  "pair": "remont-kukhni-kyiv",
  "service": "Ремонт кухни",
  "title": "Ремонт кухни под ключ в Киеве — с мебелью | CAS Development",
- "description": "Ремонт кухни под ключ в Киеве: перепланировка, электрика и сантехника под технику, фартук, пол, кухня на заказ и из Китая. Смета до старта работ.",
+ "description": "Ремонт кухни под ключ в Киеве: перепланировка, электрика и сантехника под технику, фартук, пол, кухня на заказ и мебель из Китая. Смета до старта работ.",
  "h1": "Ремонт кухни под ключ в Киеве",
  "price": "кухня на заказ · смета до старта",
  "lead": "Кухня, на которой удобно готовить: продуманная планировка, розетки там, где стоит техника, правильный свет над рабочей зоной и мебель, сделанная под ваши размеры. От ремонта до установленной кухни — одной командой.",
@@ -48,27 +48,33 @@
  "gallery": [
   [
    "img/p/1NVeaQcV2TZSN5-900.webp",
-   "Petrivtsi House"
+   "Petrivtsi House",
+   "Petrivtsi House — ванная: отдельно стоящая ванна, душевая, серая плитка под мрамор, ремонт под ключ в Киеве, CAS Development"
   ],
   [
    "img/p/1OR5i7-rm1k0MU-900.webp",
-   "Petrivtsi House"
+   "Petrivtsi House",
+   "Petrivtsi House — санузел с двумя раковинами, подсветкой зеркала и овальной ванной, ремонт под ключ в Киеве, CAS Development"
   ],
   [
    "img/p/1MslU7S5X8gIEp-900.webp",
-   "Linden Penthouse"
+   "Linden Penthouse",
+   "Linden Penthouse — прихожая: деревянные панели, реечная перегородка, трековый свет, ремонт под ключ в Киеве, CAS Development"
   ],
   [
    "img/p/1YQyhjEui9fb6v-900.webp",
-   "Linden Penthouse"
+   "Linden Penthouse",
+   "Linden Penthouse — зеркало с подсветкой, кожаные пуфы, гардероб со стеклом, ремонт под ключ в Киеве, CAS Development"
   ],
   [
    "img/p/1Grj8_m7MJwsbE-900.webp",
-   "Hodos Villa"
+   "Hodos Villa",
+   "Hodos Villa — прихожая: зеркало в золотистой раме, бра, консоли, пол под мрамор, ремонт под ключ в Киеве, CAS Development"
   ],
   [
    "img/p/1Xdb_M0v9MyKsV-900.webp",
-   "Hodos Villa"
+   "Hodos Villa",
+   "Hodos Villa — шкаф с бежевыми фасадами, белые двери, пол под мрамор, окно с жалюзи, ремонт под ключ в Киеве, CAS Development"
   ]
  ],
  "steps": [
@@ -142,7 +148,7 @@
   ],
   [
    "/ru/dizayn-interera-kiev",
-   "Дизайн интерьера"
+   "Студия дизайна интерьера"
   ],
   [
    "/ru/stroitelstvo-domov-kiev",
@@ -155,6 +161,14 @@
   [
    "/ozdoba",
    "Мебель из Китая"
+  ],
+  [
+   "/ru/realizatsiya-dizayn-proekta-kiev",
+   "Реализация дизайн-проекта"
+  ],
+  [
+   "/ru/komplektatsiya-pod-klyuch-kiev",
+   "Комплектация под ключ"
   ]
  ]
 }

@@ -10,7 +10,7 @@
   {"slug": "mebliuvannia-kvartyry-kyiv", "lang": "uk", "pair": "<slug іншою мовою>",
    "title": "...", "description": "...", "h1": "...", "price": "...", "lead": "...", "service": "...",
    "cards": [["Заголовок", ["пункт", ...]], ...], "about": [["h2", ["абзац", ...]], ...],
-   "gallery": [["img/p/<id>-900.webp", "Назва проєкту"], ...], "steps": [["Крок", "опис"], ...],
+   "gallery": [["img/p/<id>-900.webp", "Назва проєкту", "alt (необовʼязково)"], ...], "steps": [["Крок", "опис"], ...],
    "faq": [["питання", "відповідь"], ...], "rel": [["/url", "назва"], ...], "extra": "<html після hero>"}
 Сторінка частих питань (/pytannya): замість cards/steps/faq — "groups": [{"id": "ceny", "h2": "...",
    "faq": [[q, a], ...], "links": [["/url", "назва"], ...]}, ...]; price необовʼязковий.
@@ -95,9 +95,11 @@ def main_html(p):
         o.append(f'<section><div class="w txt"><h2>{e(h)}</h2>' + ''.join(f'<p>{e(x)}</p>' for x in ps) + '</div></section>\n')
     if p.get('gallery'):
         figs = []
-        for src, cap in p['gallery']:
+        for g in p['gallery']:
+            src, cap = g[0], g[1]
+            alt = g[2] if len(g) > 2 else cap + t['alt']  # 3-й елемент — змістовний alt
             w, h = Image.open(os.path.join(ROOT, src)).size
-            figs.append(f'<figure><img src="/{src}" loading="lazy" decoding="async" width="{w}" height="{h}" alt="{a(cap + t["alt"])}"><figcaption>{e(cap)}</figcaption></figure>')
+            figs.append(f'<figure><img src="/{src}" loading="lazy" decoding="async" width="{w}" height="{h}" alt="{a(alt)}"><figcaption>{e(cap)}</figcaption></figure>')
         o += ['<section><div class="w">', f'  <h2>{t["proj"]}</h2>', '  <div class="gal">' + ''.join(figs) + '</div>',
               f'  <p style="margin-top:18px"><a class="btn" href="/portfolio">{"Усе портфоліо" if p["lang"] == "uk" else "Всё портфолио"}</a></p>',
               '</div></section>\n']
@@ -198,7 +200,8 @@ def check(p):
         if m.strip() not in ok and not re.fullmatch(r'\$\d{2,3} \d{3}', m.strip()):  # розрахунок площа × ставка
             errs.append('ціна ' + m)
     if len(p['description']) > 165: errs.append('description > 165')
-    for src, _ in p.get('gallery', []):
+    for g in p.get('gallery', []):
+        src = g[0]
         if not os.path.exists(os.path.join(ROOT, src)): errs.append('нема ' + src)
     return errs
 
