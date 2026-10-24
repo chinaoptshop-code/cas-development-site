@@ -13,8 +13,8 @@ title=""; [ "${1:-}" = "--title" ] && title="$2"
 [ -n "$title" ] || title="$(basename "${in%.*}")"
 
 # Chromium/Chrome: хмарний контейнер, Linux (PATH) або macOS (Mac mini)
-CHROME="${CHROME:-$(ls /opt/pw-browsers/chromium-*/chrome-linux*/chrome 2>/dev/null | head -1)}"
-[ -x "${CHROME:-}" ] || CHROME="$(command -v chromium chromium-browser google-chrome google-chrome-stable 2>/dev/null | head -1)"
+CHROME="${CHROME:-$(ls /opt/pw-browsers/chromium-*/chrome-linux*/chrome 2>/dev/null | head -1 || true)}"
+[ -x "${CHROME:-}" ] || CHROME="$(command -v chromium chromium-browser google-chrome google-chrome-stable 2>/dev/null | head -1 || true)"
 for c in "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
          "/Applications/Chromium.app/Contents/MacOS/Chromium" \
          "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"; do
