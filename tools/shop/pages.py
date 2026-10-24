@@ -3,7 +3,7 @@
 
   python3 tools/shop/pages.py
 """
-import os, re
+import hashlib, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -25,6 +25,8 @@ CSS = """
 .ord ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:var(--fs-small)}
 .ord .tot{margin-top:8px;font-weight:700;color:var(--glow)}
 .acc .btn{display:inline-block;width:auto;padding:12px 20px;margin:0;text-decoration:none}
+.acc-ph{border-top:1px solid var(--line);padding-top:14px}.acc .acc-ph .btn{display:block;width:100%;text-align:center;margin:10px 0 0}
+.acc-ph .field{margin-bottom:0}.acc-ph input:disabled{opacity:.6}.acc-ph .acc-wait{margin:10px 0 0}.acc-ph [hidden]{display:none!important}
 .acc .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .tabs2{display:flex;gap:18px;border-bottom:1px solid var(--line);margin:6px 0 16px}
 .tabs2 button{padding:8px 0 10px;color:var(--muted);font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px}
@@ -35,10 +37,10 @@ table.adm{width:100%;border-collapse:collapse;font-size:var(--fs-small)}table.ad
 CLIENT = """<main class="acc">
   <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / Кабінет</div>
   <h1>Кабінет клієнта</h1>
-  <p class="lead">Ваші замовлення з Оздоби, статуси й дані для доставки. Вхід — через Telegram або Google, без паролів.</p>
+  <p class="lead">Ваші замовлення з Оздоби, статуси й дані для доставки. Вхід — через Telegram, Google або номер телефону, без паролів.</p>
   <div id="acc"></div>
 </main>
-<script src="/assets/account.v1.js" defer></script>
+<script src="/assets/account.v1.js?v=__ACCV__" defer></script>
 <script>
 addEventListener('DOMContentLoaded', function () {
   var A = CASAccount, box = document.getElementById('acc');
@@ -51,7 +53,7 @@ addEventListener('DOMContentLoaded', function () {
   function render(c) {
     if (!c) return guest();
     box.innerHTML = '<div class="acc-grid"><div class="acc-box acc-prof">' + (c.photo ? '<img src="' + esc(c.photo) + '" alt="">' : '') +
-      '<b>' + esc(c.name || 'Клієнт') + '</b><small>' + esc(c.provider === 'telegram' ? (c.username ? '@' + c.username : 'Telegram') : c.email) + '</small>' +
+      '<b>' + esc(c.name || 'Клієнт') + '</b><small>' + esc(c.provider === 'telegram' ? (c.username ? '@' + c.username : 'Telegram') : c.provider === 'phone' ? c.phone : c.email) + '</small>' +
       '<form id="pf" style="clear:both;padding-top:12px">' +
       '<div class="field"><label>Імʼя</label><input name="name" value="' + esc(c.name) + '"></div>' +
       '<div class="field"><label>Телефон</label><input name="phone" type="tel" value="' + esc(c.phone) + '" placeholder="+380…"></div>' +
@@ -88,7 +90,7 @@ ADMIN = """<main class="acc">
   <h1>Облік замовлень і клієнтів</h1>
   <div id="adm"><p class="acc-wait">Перевіряємо доступ…</p></div>
 </main>
-<script src="/assets/account.v1.js" defer></script>
+<script src="/assets/account.v1.js?v=__ACCV__" defer></script>
 <script>
 addEventListener('DOMContentLoaded', function () {
   var A = CASAccount, box = document.getElementById('adm'), ST = {};
@@ -156,7 +158,8 @@ def page(s, title, body, path):
     s = re.sub(r'<title>.*?</title>', f'<title>{title} | CAS Development</title>', s, count=1)
     s = re.sub(r'(<link rel="canonical" href=")[^"]*', lambda m: m.group(1) + 'https://cas-develop.com/' + path, s, count=1)
     a, b = s.index('<div class="searchwrap"'), s.index('<footer>')
-    s = s[:a] + body + '\n' + s[b:]
+    ver = hashlib.sha256(open(os.path.join(ROOT, 'assets', 'account.v1.js'), 'rb').read()).hexdigest()[:8]
+    s = s[:a] + body.replace('__ACCV__', ver) + '\n' + s[b:]
     a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
     s = s[:a] + s[b:]
     f = os.path.join(ROOT, path + '.html')

@@ -6,7 +6,7 @@
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function g(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}if(l.readyState==="complete")setTimeout(g,1500);else c.addEventListener("load",function(){setTimeout(g,1500)});})(window,document,"clarity","script","z19wl000eu");</script>
 <script>document.documentElement.classList.add('js');if(/tgWebApp/.test(location.hash+location.search)){document.documentElement.classList.add('tg');document.write('<script src="https://telegram.org/js/telegram-web-app.js"><\/script>')}</script>
 <title>Облік замовлень | CAS Development</title>
-<meta name="description" content="Каталог Оздоби від CAS Development: меблі, світло, сантехніка, оздоблення й декор з Китаю для квартир, ресторанів, кафе, готелів і офісів. Комплекти під обʼєкт, доставка по Україні.">
+<meta name="description" content="Меблі, світло, сантехніка й декор з Китаю для квартир, ресторанів, готелів і офісів. Ціни в гривнях, доставка по Україні, замовлення від $500.">
 <link rel="canonical" href="https://cas-develop.com/kabinet/admin">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Оздоба — меблі, світло й декор з Китаю | CAS Development">
@@ -322,6 +322,8 @@ footer a{color:var(--muted)}
 .ord ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:var(--fs-small)}
 .ord .tot{margin-top:8px;font-weight:700;color:var(--glow)}
 .acc .btn{display:inline-block;width:auto;padding:12px 20px;margin:0;text-decoration:none}
+.acc-ph{border-top:1px solid var(--line);padding-top:14px}.acc .acc-ph .btn{display:block;width:100%;text-align:center;margin:10px 0 0}
+.acc-ph .field{margin-bottom:0}.acc-ph input:disabled{opacity:.6}.acc-ph .acc-wait{margin:10px 0 0}.acc-ph [hidden]{display:none!important}
 .acc .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .tabs2{display:flex;gap:18px;border-bottom:1px solid var(--line);margin:6px 0 16px}
 .tabs2 button{padding:8px 0 10px;color:var(--muted);font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px}
@@ -347,7 +349,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:var(--fs-small)}table.ad
   <h1>Облік замовлень і клієнтів</h1>
   <div id="adm"><p class="acc-wait">Перевіряємо доступ…</p></div>
 </main>
-<script src="/assets/account.v1.js" defer></script>
+<script src="/assets/account.v1.js?v=07fe1277" defer></script>
 <script>
 addEventListener('DOMContentLoaded', function () {
   var A = CASAccount, box = document.getElementById('adm'), ST = {};

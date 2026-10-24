@@ -1,4 +1,4 @@
-/* CAS Development — вхід клієнтів (Telegram / Google) і доступ до API кабінету.
+/* CAS Development — вхід клієнтів (Telegram / Google / номер телефону через бота) і доступ до API кабінету.
    window.CASAccount: me(), login(container, onDone), logout(), api(path, opts). */
 (function () {
   var cfgP = null, meP = null;
@@ -50,8 +50,48 @@
           google.accounts.id.renderButton(g, { theme: 'filled_black', size: 'large', shape: 'pill', text: 'continue_with', locale: 'uk' });
         });
       }
+      if (c.phoneLogin) { any = true; phoneLogin(box, finish); }
       if (!any) box.innerHTML = '<p class="acc-wait">Вхід для клієнтів запрацює найближчим часом. Замовлення можна оформити й без входу — менеджер звʼяжеться з вами.</p>';
     });
+  }
+  // Вхід за номером: start → посилання на бота (клієнт ділиться контактом) → опитування status кожні 2 с.
+  function phoneLogin(box, finish) {
+    var w = document.createElement('form'); w.className = 'acc-ph'; w.noValidate = true;
+    w.innerHTML = '<div class="field"><label for="accPhone">Номер телефону</label>' +
+      '<input id="accPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 XX XXX XX XX" required></div>' +
+      '<button class="btn" type="submit">Увійти за номером</button><div class="acc-ph-step" hidden></div><p class="acc-err" role="alert" hidden></p>';
+    box.appendChild(w);
+    var inp = w.querySelector('input'), btn = w.querySelector('button'), step = w.querySelector('.acc-ph-step'), err = w.querySelector('.acc-err'), timer = null;
+    function msg(t) { err.textContent = t || ''; err.hidden = !t; }
+    function reset(t) {
+      clearTimeout(timer); timer = null; step.hidden = true; step.innerHTML = '';
+      inp.disabled = false; btn.disabled = false; btn.hidden = false; msg(t);
+    }
+    w.onsubmit = function (e) {
+      e.preventDefault(); msg('');
+      if (!inp.value.trim()) { msg('Введіть номер телефону'); inp.focus(); return; }
+      btn.disabled = true;
+      api('/api/auth/phone/start', { method: 'POST', body: { phone: inp.value } }).then(function (d) {
+        inp.disabled = true; btn.hidden = true; step.hidden = false;
+        step.innerHTML = '<a class="btn" target="_blank" rel="noopener"></a>' +
+          '<p class="acc-wait">Відкрийте бота і натисніть «Поділитися номером». Чекаємо підтвердження…</p>' +
+          '<button class="btn ghost" type="button">Інший номер</button>';
+        var a = step.querySelector('a'); a.href = d.botUrl; a.textContent = 'Підтвердити в Telegram';
+        step.querySelector('button').onclick = function () { reset(''); inp.focus(); };
+        var until = Date.now() + (d.expiresIn || 600) * 1000;
+        (function poll() {
+          if (Date.now() > until) return reset('Час на підтвердження минув. Спробуйте ще раз.');
+          timer = setTimeout(function () {
+            api('/api/auth/phone/status?token=' + encodeURIComponent(d.token)).then(function (r) {
+              if (!timer) return;
+              if (r.status === 'ok') { reset(''); finish(r); }
+              else if (r.status === 'pending') poll();
+              else reset(r.status === 'used' ? 'Цей вхід уже використано. Спробуйте ще раз.' : 'Час на підтвердження минув. Спробуйте ще раз.');
+            }, function (e2) { if (timer) reset(e2.message); });
+          }, 2000);
+        })();
+      }, function (e1) { btn.disabled = false; msg(e1.message); });
+    };
   }
   function logout() { return api('/api/auth/logout', { method: 'POST' }).then(function () { meP = Promise.resolve(null); }); }
   window.CASAccount = { api: api, me: me, login: login, logout: logout, config: config };

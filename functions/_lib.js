@@ -91,3 +91,25 @@ export async function readJSON(request, max = 64 * 1024) {
 
 const str = (v, n = 300) => (v == null ? null : String(v).trim().slice(0, n) || null);
 export { str };
+
+// Номер телефону → +380XXXXXXXXX (Україна: 0XXXXXXXXX, 380…, +380…) або E.164 (+ і 10–15 цифр); інакше null.
+export function normalizePhone(v) {
+  if (v == null) return null;
+  const s = String(v).trim();
+  if (!/^\+?[\d\s()\-.]{9,24}$/.test(s)) return null;
+  const d = s.replace(/\D/g, '');
+  if (/^0\d{9}$/.test(d)) return '+38' + d;
+  if (d.startsWith('380')) return /^380\d{9}$/.test(d) ? '+' + d : null;
+  return /^[1-9]\d{9,14}$/.test(d) ? '+' + d : null;
+}
+
+export const hexOf = hex;
+export const clientIp = request => request.headers.get('cf-connecting-ip') || request.headers.get('x-forwarded-for')?.split(',')[0].trim() || '';
+
+// Підпис запиту бота до /api/auth/phone/confirm: hex(HMAC-SHA256(sha256(TELEGRAM_BOT_TOKEN), token|phone|tg_id)).
+export const botSignature = async (env, token, phone, tgId) => hmac(await sha256(env.TELEGRAM_BOT_TOKEN), `${token}|${phone}|${tgId}`);
+
+// Cookie браузера, що почав вхід за номером (секрет; у БД — лише sha256).
+export const PL_COOKIE = 'cas_pl';
+export const plCookie = (v, maxAge) => `${PL_COOKIE}=${v}; Path=/api/auth/phone; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`;
+export const readCookie = (request, name) => (request.headers.get('cookie') || '').match(new RegExp(`(?:^|;\\s*)${name}=([^;]*)`))?.[1] || null;
