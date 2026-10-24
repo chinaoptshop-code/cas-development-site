@@ -7,7 +7,7 @@
   "css_kb": 50.9,
   "js_kb": 41.0,
   "font_sizes": 21,
-  "tags": 220,
+  "tags": 221,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -651,7 +651,7 @@
   "css_kb": 60.4,
   "js_kb": 47.2,
   "font_sizes": 23,
-  "tags": 312,
+  "tags": 313,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -996,12 +996,12 @@
  {
   "page": "index.html",
   "kind": "main",
-  "html_kb": 153.6,
+  "html_kb": 153.7,
   "gzip_kb": 35.8,
   "css_kb": 56.3,
   "js_kb": 47.8,
   "font_sizes": 26,
-  "tags": 541,
+  "tags": 542,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -1236,10 +1236,7 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [
-   "$500 ",
-   "$500  "
-  ],
+  "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
  },
@@ -7096,12 +7093,12 @@
  {
   "page": "portfolio.html",
   "kind": "main",
-  "html_kb": 271.3,
-  "gzip_kb": 45.0,
+  "html_kb": 271.4,
+  "gzip_kb": 45.1,
   "css_kb": 58.8,
   "js_kb": 50.6,
   "font_sizes": 28,
-  "tags": 1639,
+  "tags": 1640,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7756,6 +7753,36 @@
   "webhook_copies": 0
  },
  {
+  "page": "pytannya.html",
+  "kind": "land",
+  "html_kb": 39.4,
+  "gzip_kb": 11.1,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 188,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "remont-budynku-pid-klyuch-kyiv.html",
   "kind": "land",
   "html_kb": 38.5,
@@ -8210,12 +8237,12 @@
  {
   "page": "ru/index.html",
   "kind": "land",
-  "html_kb": 35.6,
-  "gzip_kb": 10.7,
+  "html_kb": 35.7,
+  "gzip_kb": 10.8,
   "css_kb": 14.3,
   "js_kb": 6.8,
   "font_sizes": 7,
-  "tags": 210,
+  "tags": 211,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -8693,6 +8720,36 @@
   "webhook_copies": 0
  },
  {
+  "page": "ru/voprosy.html",
+  "kind": "land",
+  "html_kb": 39.3,
+  "gzip_kb": 11.2,
+  "css_kb": 14.3,
+  "js_kb": 6.8,
+  "font_sizes": 7,
+  "tags": 188,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "service-detail.html",
   "kind": "other",
   "html_kb": 47.0,
@@ -8726,12 +8783,12 @@
  {
   "page": "services.html",
   "kind": "main",
-  "html_kb": 118.4,
-  "gzip_kb": 29.8,
+  "html_kb": 118.5,
+  "gzip_kb": 29.9,
   "css_kb": 50.5,
   "js_kb": 41.1,
   "font_sizes": 21,
-  "tags": 343,
+  "tags": 344,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,

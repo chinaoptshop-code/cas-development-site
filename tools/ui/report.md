@@ -1,29 +1,29 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 289 (MAIN 5, LAND 85, інші 199). HTML разом 13587 КБ, з них інлайн CSS 7073 КБ і JS 2236 КБ.
+Сторінок: 291 (MAIN 5, LAND 87, інші 199). HTML разом 13666 КБ, з них інлайн CSS 7102 КБ і JS 2250 КБ.
 
 ## Проблеми
 
 - **img без width/height** (2): kabinet.html(1), service-detail.html(2)
 - **Навігація через onclick** (1): portfolio.html(27)
-- **Непідтверджені ціни** (24): blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$90 000 '], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'], blog/dyzain-restoranu-z-choho-pochaty.html['$3 600 '], blog/etapy-remontu-kvartyry-pid-kliuch.html['$38 500'], blog/mebli-z-kytaiu-dlia-interieru.html['$12 500', '$17 500'], blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html['$70 000 '], blog/shcho-vkhodyt-u-dyzain-proekt-interieru.html['$3 000'], blog/shcho-vkhodyt-u-remont-pid-kliuch.html['$15 000', '$33 000'], blog/skilky-koshtuie-dyzain-proekt-kvartyry-kyiv.html['$2 100', '$3 000  ', '$3 600  ', '$38 500', '$4 500  ', '$55 000'], blog/skilky-koshtuie-remont-budynku-pid-kliuch.html['$110 000 ', '$110 000  ', '$66 000  ', '$82 500  '], blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html['$24 750', '$24 750  ', '$33 000  ', '$49 500  '], blog/suchasnyi-minimalizm-teplyi-interier.html['$3 000'] …
+- **Непідтверджені ціни** (23): blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$90 000 '], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'], blog/dyzain-restoranu-z-choho-pochaty.html['$3 600 '], blog/etapy-remontu-kvartyry-pid-kliuch.html['$38 500'], blog/mebli-z-kytaiu-dlia-interieru.html['$12 500', '$17 500'], blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html['$70 000 '], blog/shcho-vkhodyt-u-dyzain-proekt-interieru.html['$3 000'], blog/shcho-vkhodyt-u-remont-pid-kliuch.html['$15 000', '$33 000'], blog/skilky-koshtuie-dyzain-proekt-kvartyry-kyiv.html['$2 100', '$3 000  ', '$3 600  ', '$38 500', '$4 500  ', '$55 000'], blog/skilky-koshtuie-remont-budynku-pid-kliuch.html['$110 000 ', '$110 000  ', '$66 000  ', '$82 500  '], blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html['$24 750', '$24 750  ', '$33 000  ', '$49 500  '], blog/suchasnyi-minimalizm-teplyi-interier.html['$3 000'] …
 
 ## Токени
 
-- `--mu`: {'#6A6153': 5, '#938c84': 289, '#87807C': 1}
-- `--bg2`: {'#100e0c': 289, '#EDEBE4': 5}
+- `--mu`: {'#6A6153': 5, '#938c84': 291, '#87807C': 1}
+- `--bg2`: {'#100e0c': 291, '#EDEBE4': 5}
 - Копій адреси вебхука форми: 7 на 5 сторінках
 
 ## Сторінки
 
 | сторінка | тип | HTML КБ | gzip КБ | CSS КБ | JS КБ | розмірів шрифту | тегів |
 |---|---|---|---|---|---|---|---|
-| portfolio.html | main | 271.3 | 45.0 | 58.8 | 50.6 | 28 | 1639 |
-| index.html | main | 153.6 | 35.8 | 56.3 | 47.8 | 26 | 541 |
-| contact.html | main | 133.4 | 34.3 | 60.4 | 47.2 | 23 | 312 |
+| portfolio.html | main | 271.4 | 45.1 | 58.8 | 50.6 | 28 | 1640 |
+| index.html | main | 153.7 | 35.8 | 56.3 | 47.8 | 26 | 542 |
+| contact.html | main | 133.4 | 34.3 | 60.4 | 47.2 | 23 | 313 |
 | ozdoba.html | other | 119.6 | 26.9 | 26.9 | 7.0 | 11 | 701 |
-| services.html | main | 118.4 | 29.8 | 50.5 | 41.1 | 21 | 343 |
-| about.html | main | 112.3 | 29.1 | 50.9 | 41.0 | 21 | 220 |
+| services.html | main | 118.5 | 29.9 | 50.5 | 41.1 | 21 | 344 |
+| about.html | main | 112.3 | 29.1 | 50.9 | 41.0 | 21 | 221 |
 | proekty/petrivtsi-house.html | land | 69.8 | 13.5 | 14.4 | 7.0 | 8 | 318 |
 | proekty/linden-penthouse.html | land | 60.5 | 12.8 | 14.4 | 7.0 | 8 | 280 |
 | proekty/pidgirland.html | land | 57.1 | 12.3 | 14.4 | 7.0 | 8 | 258 |
@@ -245,7 +245,9 @@
 | blog/dyzain-restoranu-z-choho-pochaty.html | land | 40.3 | 12.7 | 14.5 | 6.8 | 7 | 143 |
 | blog/yak-splanuvaty-bazu-vidpochynku.html | land | 40.3 | 12.6 | 14.5 | 6.8 | 7 | 146 |
 | blog/yak-vybraty-dyzainera-interieru.html | land | 40.3 | 12.4 | 14.5 | 6.8 | 7 | 150 |
+| pytannya.html | land | 39.4 | 11.1 | 14.3 | 6.8 | 7 | 188 |
 | proekty/usa-house.html | land | 39.3 | 10.5 | 14.4 | 7.0 | 8 | 164 |
+| ru/voprosy.html | land | 39.3 | 11.2 | 14.3 | 6.8 | 7 | 188 |
 | dyzain-interieru-kvartyry-kyiv.html | land | 39.0 | 11.7 | 14.0 | 6.8 | 7 | 239 |
 | ru/dizayn-restorana-kafe-kiev.html | land | 38.8 | 11.6 | 14.3 | 6.8 | 7 | 220 |
 | remont-budynku-pid-klyuch-kyiv.html | land | 38.5 | 11.5 | 14.0 | 6.8 | 7 | 231 |
@@ -283,9 +285,9 @@
 | remont-komertsiinykh-prymishchen-kyiv.html | land | 36.0 | 11.0 | 14.1 | 6.8 | 7 | 217 |
 | ru/remont-pod-klyuch-kiev.html | land | 36.0 | 11.2 | 14.3 | 6.8 | 7 | 215 |
 | baza-vidpochynku-pid-klyuch.html | land | 35.9 | 11.0 | 14.0 | 6.8 | 7 | 219 |
+| ru/index.html | land | 35.7 | 10.8 | 14.3 | 6.8 | 7 | 211 |
 | ru/remont-vannoy-kiev.html | land | 35.7 | 11.0 | 14.3 | 6.8 | 7 | 204 |
 | remont-kukhni-kyiv.html | land | 35.6 | 11.0 | 14.3 | 6.8 | 7 | 211 |
-| ru/index.html | land | 35.6 | 10.7 | 14.3 | 6.8 | 7 | 210 |
 | ru/remont-doma-kiev.html | land | 35.5 | 11.0 | 14.3 | 6.8 | 7 | 215 |
 | ru/remont-kommercheskih-pomeshcheniy-kiev.html | land | 35.5 | 10.9 | 14.3 | 6.8 | 7 | 212 |
 | landshaftnyi-dyzain-kyiv.html | land | 35.2 | 10.9 | 14.1 | 6.8 | 7 | 211 |

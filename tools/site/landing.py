@@ -12,6 +12,8 @@
    "cards": [["Заголовок", ["пункт", ...]], ...], "about": [["h2", ["абзац", ...]], ...],
    "gallery": [["img/p/<id>-900.webp", "Назва проєкту"], ...], "steps": [["Крок", "опис"], ...],
    "faq": [["питання", "відповідь"], ...], "rel": [["/url", "назва"], ...], "extra": "<html після hero>"}
+Сторінка частих питань (/pytannya): замість cards/steps/faq — "groups": [{"id": "ceny", "h2": "...",
+   "faq": [[q, a], ...], "links": [["/url", "назва"], ...]}, ...]; price необовʼязковий.
 Після збірки запустіть tools/blog/build.py (блоки «Статті по темі» і sitemap).
 """
 import glob, html, json, os, re, sys
@@ -45,10 +47,34 @@ def path(lang, slug):
     return ('ru/' if lang == 'ru' else '') + slug + '.html'
 
 
+def faqs(p):
+    """Усі пари питання-відповідь: з "faq" або з груп "groups" (сторінка частих питань)."""
+    return p.get('faq') or [qa for g in p.get('groups', []) for qa in g['faq']]
+
+
+def groups_html(p):
+    t = L[p['lang']]
+    o = ['<section><div class="w">', f'  <h2>{"Розділи" if p["lang"] == "uk" else "Разделы"}</h2>',
+         '  <div class="rel">' + ''.join(f'<a href="#{g["id"]}">{e(g["h2"])}</a>' for g in p['groups']) + '</div>',
+         '</div></section>\n']
+    for g in p['groups']:
+        o += [f'<section id="{g["id"]}"><div class="w">', f'  <h2>{e(g["h2"])}</h2>',
+              '  ' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(x)}</p></details>' for q, x in g['faq'])]
+        if g.get('links'):
+            o.append('  <div class="rel" style="margin-top:18px">' + ''.join(f'<a href="{u}">{e(n)}</a>' for u, n in g['links']) + '</div>')
+        o.append('</div></section>\n')
+    if p.get('rel'):
+        o += ['<section><div class="w">', f'  <h2>{t["svc"]}</h2>',
+              '  <div class="rel">' + ''.join(f'<a href="{u}">{e(n)}</a>' for u, n in p['rel']) + '</div>',
+              '</div></section>\n']
+    return o
+
+
 def main_html(p):
     t = L[p['lang']]
-    o = [f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / <a href="{t["svc_url"]}">{t["svc"]}</a> / {e(p["h1"])}</div>\n',
-         '<div class="w hero">', f'  <h1>{e(p["h1"])}</h1>', f'  <div class="price">{e(p["price"])}</div>', f'  <p>{e(p["lead"])}</p>',
+    crumb = '' if p.get('groups') else f' / <a href="{t["svc_url"]}">{t["svc"]}</a>'
+    o = [f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a>{crumb} / {e(p["h1"])}</div>\n',
+         '<div class="w hero">', f'  <h1>{e(p["h1"])}</h1>'] + ([f'  <div class="price">{e(p["price"])}</div>'] if p.get('price') else []) + [f'  <p>{e(p["lead"])}</p>',
          '  <div class="btns">',
          f'    <a class="btn main" href="#zayavka">{"Отримати кошторис" if p["lang"] == "uk" else "Получить смету"}</a>',
          '    <a class="btn" href="tel:+380978667755">+380 97 866 77 55</a>', '  </div>',
@@ -60,6 +86,8 @@ def main_html(p):
         o.append(calc.block(p['lang']) + '\n')
     if p.get('extra'):
         o.append(p['extra'] + '\n')
+    if p.get('groups'):
+        return '\n'.join(o + groups_html(p))
     o += ['<section><div class="w">', f'  <h2>{t["inc"]}</h2>',
           '  <div class="grid">' + ''.join(f'<div class="card"><h3>{e(h)}</h3><ul>' + ''.join(f'<li>{e(i)}</li>' for i in li) + '</ul></div>' for h, li in p['cards']) + '</div>',
           '</div></section>\n']
@@ -87,6 +115,13 @@ def main_html(p):
 
 def ld(p):
     t, u = L[p['lang']], url(p['lang'], p['slug'])
+    if p.get('groups'):
+        g = [{'@type': 'BreadcrumbList', 'itemListElement': [
+                 {'@type': 'ListItem', 'position': 1, 'name': t['home'], 'item': B.rstrip('/') + t['home_url']},
+                 {'@type': 'ListItem', 'position': 2, 'name': p['h1'], 'item': u}]},
+             {'@type': 'FAQPage', '@id': u + '#faq', 'url': u, 'name': p['h1'], 'inLanguage': p['lang'],
+              'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': x}} for q, x in faqs(p)]}]
+        return json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False)
     g = [{'@type': 'Service', 'name': p['service'], 'serviceType': p['service'],
           'areaServed': [{'@type': 'City', 'name': t['city']}, {'@type': 'AdministrativeArea', 'name': t['region']}],
           'provider': {'@id': B + '#business'}, 'url': u},
@@ -158,7 +193,7 @@ def check(p):
     errs = []
     txt = json.dumps(p, ensure_ascii=False)
     if re.search(r'osocor|осокор|osokork', txt, re.I): errs.append('Osocor')
-    ok = {'$30', '$350', '$550', '$250', '$600', '$1 100', '$50', '$2 500'}
+    ok = {'$30', '$350', '$550', '$250', '$600', '$1 100', '$50', '$2 500', '$500'}  # $500 — мін. замовлення Оздоби
     for m in re.findall(r'\$\s?\d[\d ]*\d|\$\d', txt):
         if m.strip() not in ok and not re.fullmatch(r'\$\d{2,3} \d{3}', m.strip()):  # розрахунок площа × ставка
             errs.append('ціна ' + m)
