@@ -160,7 +160,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 </div>
 
 <script>
-const BASE = 'https://drive.google.com/thumbnail?id=';
+const PIMG = (id, w) => '/img/p/' + id.slice(0, 14) + '-' + w + '.webp'; // локальні копії фото проєктів
 
 const SERVICES = {
   design: {
@@ -421,8 +421,8 @@ function renderService(slug){
   const exclHTML = s.excluded.map(e=>`<div class="inc-item no">${e}</div>`).join('');
 
   const galleryHTML = s.gallery.map((g,i)=>`
-    <div class="gal-item" onclick="lbOpen('${BASE}${g.id}&sz=w1600')">
-      <img src="${BASE}${g.id}&sz=w600" loading="${i<6?'eager':'lazy'}" width="600" height="450" alt="${g.label}">
+    <div class="gal-item" onclick="lbOpen('${PIMG(g.id,900)}')">
+      <img src="${PIMG(g.id,400)}" srcset="${PIMG(g.id,400)} 400w, ${PIMG(g.id,900)} 900w" sizes="(max-width:767px) 100vw, 50vw" loading="${i<6?'eager':'lazy'}" decoding="async" width="400" height="500" alt="${g.label}">
       <div class="gal-label">${g.label}</div>
     </div>`).join('');
 
@@ -430,7 +430,7 @@ function renderService(slug){
 
   document.getElementById('sd-content').innerHTML = `
     <div class="sd-hero">
-      <img class="sd-hero-bg" src="${BASE}${s.bg}&sz=w1400" loading="eager" width="1400" height="788" alt="">
+      <img class="sd-hero-bg" src="${PIMG(s.bg,900)}" loading="eager" width="900" height="1125" alt="">
       <div class="sd-hero-grad"></div>
       <div class="sd-hero-in">
         <span class="sd-tag">${s.tag}</span>

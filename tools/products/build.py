@@ -207,7 +207,7 @@ def product_page(d, i, shell, items, title):
   <h2>Запитати ціну й наявність</h2>
   <form id="of" class="pp-form" data-form="ozdoba-product" data-service="Оздоба — {e(i["name"])}" data-source="cas-develop.com/ozdoba/{i["slug"]}" novalidate>
     <div class="field"><label for="oName">Імʼя</label><input id="oName" autocomplete="name"></div>
-    <div class="field"><label for="oPhone">Телефон *</label><input id="oPhone" type="tel" autocomplete="tel" placeholder="097 123 45 67"><div class="err" id="oErr" style="color:#e08a7a;font-size:var(--fs-small);margin-top:6px"></div></div>
+    <div class="field"><label for="oPhone">Телефон *</label><input id="oPhone" type="tel" autocomplete="tel" placeholder="097 123 45 67"><div class="err" id="oErr" style="color:#e07a6a;font-size:var(--fs-small);margin-top:6px"></div></div>
     <div class="field"><label for="oArea">Кількість</label><input id="oArea" inputmode="numeric" placeholder="напр. 6"></div>
     <div class="field"><label for="oMsg">Коментар</label><input id="oMsg" placeholder="Колір, розмір, обʼєкт, терміни"></div>
     <button class="btn" id="oBtn" type="submit">Надіслати запит</button>

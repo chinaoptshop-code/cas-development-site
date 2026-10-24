@@ -241,8 +241,8 @@ def related_blocks(items_by_lang):
         lang = 'ru' if f.startswith('ru/') else 'uk'
         mine = [x for x in lst if x[0] == lang][:6]
         if not mine: continue
-        block = (f'<!--cas:articles--><section><div class="w"><h2>{L[lang]["rel_h"]}</h2><ul class="arts">'
-                 + ''.join(f'<li><a href="{h}">{esc(tt)}</a></li>' for _, h, tt in mine) + '</ul></div></section><!--/cas:articles-->\n')
+        block = (f'<!--cas:articles--><section><div class="w"><h2>{L[lang]["rel_h"]}</h2><div class="rel arts">'
+                 + ''.join(f'<a href="{h}">{esc(tt)}</a>' for _, h, tt in mine) + '</div></div></section><!--/cas:articles-->\n')
         if '<!--cas:articles-->' in s:
             s = re.sub(r'<!--cas:articles-->.*?<!--/cas:articles-->\n?', block, s, count=1, flags=re.S)
         else:

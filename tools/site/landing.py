@@ -144,6 +144,8 @@ def build(p):
     lang, slug = p['lang'], p['slug']
     s = open(os.path.join(ROOT, TPL[lang]), encoding='utf-8').read()
     u = url(lang, slug)
+    if '.hero h1+p{' not in s:  # лід без ціни під H1 не має «злипатися» з заголовком
+        s = s.replace('.hero p{color:var(--mu);max-width:60ch;margin:0 0 28px}', '.hero p{color:var(--mu);max-width:60ch;margin:0 0 28px}\n.hero h1+p{margin-top:14px}', 1)
     s = re.sub(r'<title>.*?</title>', f'<title>{e(title_tag(p["title"]))}</title>', s, count=1)
     for k, v in (('name="description"', p['description']), ('property="og:title"', p['title']),
                  ('property="og:description"', p['description']), ('property="og:url"', u)):
