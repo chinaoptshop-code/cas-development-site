@@ -1,10 +1,9 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 339 (MAIN 5, LAND 95, інші 239). HTML разом 16084 КБ, з них інлайн CSS 8206 КБ і JS 2452 КБ.
+Сторінок: 339 (MAIN 5, LAND 95, інші 239). HTML разом 16084 КБ, з них інлайн CSS 8207 КБ і JS 2452 КБ.
 
 ## Проблеми
 
-- **img без width/height** (1): kabinet.html(1)
 - **Навігація через onclick** (1): portfolio.html(20)
 - **Непідтверджені ціни** (27): blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$90 000 '], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'], blog/dyzain-restoranu-z-choho-pochaty.html['$3 600 '], blog/etapy-remontu-kvartyry-pid-kliuch.html['$38 500'], blog/komplektatsiia-kvartyry-pid-kliuch-poriadok-i-biudzhet.html['$12 500', '$17 500'], blog/mebli-z-kytaiu-dlia-interieru.html['$12 500', '$17 500'], blog/realizatsiia-dyzain-proektu-yak-ne-vtratyty-zadum.html['$55 000 '], blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html['$70 000 '], blog/shcho-vkhodyt-u-dyzain-proekt-interieru.html['$3 000'], blog/shcho-vkhodyt-u-remont-pid-kliuch.html['$15 000', '$33 000'], blog/skilky-koshtuie-dyzain-proekt-kvartyry-kyiv.html['$2 100', '$3 000  ', '$3 600  ', '$38 500', '$4 500  ', '$55 000'], blog/skilky-koshtuie-remont-budynku-pid-kliuch.html['$110 000 ', '$110 000  ', '$66 000  ', '$82 500  '] …
 
@@ -261,8 +260,8 @@
 | ozdoba/elektrokamin-3d-z-parovym-polumiam-100-59.html | other | 48.2 | 13.1 | 28.6 | 7.0 | 12 | 175 |
 | ozdoba/biokamin-liniinyi-vbudovanyi-120-sm-58.html | other | 48.1 | 13.0 | 28.6 | 7.0 | 12 | 175 |
 | service-detail.html | other | 47.2 | 14.2 | 15.4 | 29.5 | 7 | 39 |
-| kabinet/admin.html | other | 45.1 | 12.9 | 29.2 | 12.4 | 12 | 60 |
-| kabinet.html | other | 43.6 | 12.6 | 29.2 | 10.7 | 12 | 61 |
+| kabinet/admin.html | other | 45.3 | 12.9 | 29.5 | 12.4 | 12 | 60 |
+| kabinet.html | other | 43.8 | 12.6 | 29.5 | 10.7 | 12 | 61 |
 | proekty/linden-penthouse.html | land | 41.8 | 6.9 | 2.0 | 0.7 | 0 | 281 |
 | blog/etapy-remontu-kvartyry-pid-kliuch.html | land | 41.5 | 12.8 | 14.5 | 6.8 | 7 | 155 |
 | blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html | land | 41.4 | 12.6 | 14.5 | 6.8 | 7 | 159 |

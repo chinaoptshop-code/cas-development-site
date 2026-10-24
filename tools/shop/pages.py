@@ -8,11 +8,12 @@ import hashlib, os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 CSS = """
-.acc{max-width:1100px;margin:0 auto;padding:18px 16px 40px}
+.acc{max-width:1100px;margin:0 auto;padding:0 16px 40px}
 .acc h1{font-size:clamp(2rem,1.5rem + 2vw,3rem);margin:8px 0 10px}
 .acc .lead{color:var(--muted);max-width:60ch;margin:0 0 22px}
 .acc-box{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:22px;max-width:520px}
-.acc-box>*+*{margin-top:12px}.acc-wait,.acc-err{color:var(--muted);font-size:var(--fs-small)}.acc-err{color:#e08a7a}
+.acc-box>*+*{margin-top:12px}.acc-wait,.acc-err{color:var(--muted);font-size:var(--fs-small)}.acc-err{color:#e07a6a}
+.acc-box>h2{font-size:var(--fs-h3);line-height:1.15;margin:0}
 .acc-grid{display:grid;gap:18px}@media(min-width:900px){.acc-grid{grid-template-columns:340px 1fr;align-items:start}}
 .acc-prof img{width:56px;height:56px;border-radius:50%;object-fit:cover;float:left;margin-right:12px}
 .acc-prof b{display:block;font-size:var(--fs-lead)}.acc-prof small{color:var(--muted)}
@@ -47,12 +48,12 @@ addEventListener('DOMContentLoaded', function () {
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
   var money = function (n) { return n == null ? 'за запитом' : new Intl.NumberFormat('uk-UA').format(n) + ' ₴'; };
   function guest() {
-    box.innerHTML = '<div class="acc-box"><b>Увійти</b><div id="login"></div></div>';
+    box.innerHTML = '<div class="acc-box"><h2>Увійти</h2><div id="login"></div></div>';
     A.login(document.getElementById('login'), render);
   }
   function render(c) {
     if (!c) return guest();
-    box.innerHTML = '<div class="acc-grid"><div class="acc-box acc-prof">' + (c.photo ? '<img src="' + esc(c.photo) + '" alt="">' : '') +
+    box.innerHTML = '<div class="acc-grid"><div class="acc-box acc-prof">' + (c.photo ? '<img src="' + esc(c.photo) + '" width="56" height="56" alt="" loading="lazy">' : '') +
       '<b>' + esc(c.name || 'Клієнт') + '</b><small>' + esc(c.provider === 'telegram' ? (c.username ? '@' + c.username : 'Telegram') : c.provider === 'phone' ? c.phone : c.email) + '</small>' +
       '<form id="pf" style="clear:both;padding-top:12px">' +
       '<div class="field"><label>Імʼя</label><input name="name" value="' + esc(c.name) + '"></div>' +
@@ -97,7 +98,7 @@ addEventListener('DOMContentLoaded', function () {
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
   var money = function (n) { return n == null ? 'за запитом' : new Intl.NumberFormat('uk-UA').format(n) + ' ₴'; };
   A.me().then(function (c) {
-    if (!c) { box.innerHTML = '<div class="acc-box"><b>Увійдіть як менеджер</b><div id="login"></div></div>'; A.login(document.getElementById('login'), function () { location.reload(); }); return; }
+    if (!c) { box.innerHTML = '<div class="acc-box"><h2>Увійдіть як менеджер</h2><div id="login"></div></div>'; A.login(document.getElementById('login'), function () { location.reload(); }); return; }
     if (!c.admin) { box.innerHTML = '<p class="acc-err">Немає доступу. Попросіть адміністратора додати ваш Telegram або пошту.</p>'; return; }
     box.innerHTML = '<div class="tabs2"><button aria-pressed="true" data-t="o">Замовлення</button><button aria-pressed="false" data-t="c">Клієнти</button></div>' +
       '<div class="row" style="margin-bottom:14px"><input id="q" placeholder="Пошук: номер, телефон, імʼя" style="flex:1;min-width:200px;background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:11px;color:var(--cream)">' +
@@ -145,6 +146,7 @@ def shell():
     s = s.replace('</style>\n<!--ozd:ld-->', CSS + '</style>\n<!--ozd:ld-->', 1)
     s = re.sub(r'<!--ozd:ld-->.*?<!--/ozd:ld-->', '', s, count=1, flags=re.S)
     s = re.sub(r'<link rel="preload" id="ozd-data"[^>]*>\n', '', s)
+    s = s.replace(' aria-current="page"', '')  # у кабінеті немає активного пункту меню
     s = s.replace('<meta name="twitter:card"', '<meta name="robots" content="noindex, nofollow">\n<meta name="twitter:card"', 1)
     hdr = re.search(r'<button class="ico" id="btnSearch".*?<span class="badge" id="cartBadge" hidden>0</span></button>', s, flags=re.S)
     if hdr:
