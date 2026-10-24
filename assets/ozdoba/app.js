@@ -200,7 +200,7 @@ function renderItem(){
     ${gallery(i, cs[curC][1])}
     </div><div class="it-info">
     <p class="desc">${i.desc}</p>
-    <div class="meta"><span class="tag">${i.sub}</span><span class="tag">Ціна за 1 ${i.unit}</span><span class="tag">Поставка 35–50 днів</span></div>
+    <div class="meta"><span class="tag">${i.sub}</span><span class="tag">Ціна за 1 ${i.unit}</span><span class="tag">Поставка 30–60 днів</span></div>
 
     <p class="lbl">Колір і фактура <b>${cs[curC][0]}</b></p>
     <div class="swatches">${cs.map((c,n)=>`<button class="swatch" style="background:${c[1]}" aria-pressed="${n===curC}" title="${c[0]}" aria-label="${c[0]}" onclick="setC(${n})"></button>`).join('')}</div>

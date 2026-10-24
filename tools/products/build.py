@@ -156,7 +156,7 @@ def product_page(d, i, shell, items, title):
     specs = list(i.get('specs') or [])
     rows = [('Категорія', i['sub']), ('Кольори й фактури', ', '.join(c[0] for c in colors))]
     if sizes: rows.append(('Розміри', ', '.join(s[0] for s in sizes)))
-    rows += [(k, v) for k, v in specs] + [('Одиниця', i['unit']), ('Поставка', '35–50 днів'), ('Підходить для', ', '.join(VENUE[v] for v in i['vn'] if v in VENUE))]
+    rows += [(k, v) for k, v in specs] + [('Одиниця', i['unit']), ('Поставка', '30–60 днів'), ('Підходить для', ', '.join(VENUE[v] for v in i['vn'] if v in VENUE))]
     # «Схожі товари»: спершу та сама підкатегорія (sub), далі та сама категорія; ходові (prio) — першими
     po = {'A': 0, 'B': 1, 'C': 2}
     same = sorted((x for x in items if x['cat'] == i['cat'] and x['id'] != i['id']),
