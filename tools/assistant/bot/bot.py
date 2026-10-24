@@ -623,25 +623,35 @@ BLOG = pathlib.Path.home() / "jarvis/scripts/blog.sh"
 OZDOBA = pathlib.Path.home() / "jarvis/scripts/ozdoba.sh"
 
 
+def answer_cq(cq, text):
+    """Відповідь на натискання кнопки. 25.10: Telegram повертає 400, якщо натискання старше ~15 с (бот був зайнятий) —
+    це не привід губити саму дію (ОК по статті губився тричі)."""
+    try:
+        answer_cq(cq, text)
+    except Exception as e:
+        LOG("answerCallbackQuery:", e)
+
+
 def blog_button(rest, cq, state):
     sub, _, slug = rest.partition(":")
     m = cq.get("message", {})
     note = {"ok": "✅ Погоджено — публікую гілку", "edit": "✏️ Чекаю правки"}.get(sub, "?")
-    api("answerCallbackQuery", callback_query_id=cq["id"], text=note)
-    try:
-        api("editMessageReplyMarkup", chat_id=OWNER, message_id=m.get("message_id"), reply_markup=json.dumps({"inline_keyboard": []}))
-    except Exception as e:
-        LOG("editMessageReplyMarkup:", e)
-    if sub == "ok":
+    LOG("блог кнопка", sub, slug)
+    if sub == "ok":                                        # спершу дія, потім косметика
         subprocess.Popen([str(BLOG), "publish", slug], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
     elif sub == "edit":
         state["blog_edit"] = slug
         send_text(f"Що змінити в статті «{slug}»? Напиши текстом або голосовим.")
+    answer_cq(cq, note)
+    try:
+        api("editMessageReplyMarkup", chat_id=OWNER, message_id=m.get("message_id"), reply_markup=json.dumps({"inline_keyboard": []}))
+    except Exception as e:
+        LOG("editMessageReplyMarkup:", e)
 
 
 def on_button(cq, state):
     if cq.get("from", {}).get("id") != OWNER:
-        api("answerCallbackQuery", callback_query_id=cq["id"], text="Погоджує лише Михайло"); return
+        answer_cq(cq, "Погоджує лише Михайло"); return
     act, _, n = (cq.get("data") or "").partition(":")
     if act == "blog":                                      # автоблог (~/jarvis/scripts/blog.sh): ОК / правки до статті
         blog_button(n, cq, state); return
@@ -651,15 +661,15 @@ def on_button(cq, state):
     if act in ("send", "edit", "drop"):
         draft_button(act, t, cq, state); return
     if not t or t.get("status"):
-        api("answerCallbackQuery", callback_query_id=cq["id"], text="Вже оброблено" if t else "Задачу не знайдено"); return
+        answer_cq(cq, "Вже оброблено" if t else "Задачу не знайдено"); return
     m = cq.get("message", {})
     if act == "ok":
-        api("answerCallbackQuery", callback_query_id=cq["id"], text="Беру в роботу")
+        answer_cq(cq, "Беру в роботу")
         api("editMessageText", chat_id=OWNER, message_id=m.get("message_id"), text=(m.get("text") or "") + "\n\n✅ Погоджено — в роботі")
         start_task(t, state)
     else:
         t["status"] = "rejected"
-        api("answerCallbackQuery", callback_query_id=cq["id"], text="Відхилено")
+        answer_cq(cq, "Відхилено")
         api("editMessageText", chat_id=OWNER, message_id=m.get("message_id"), text=(m.get("text") or "") + "\n\n❌ Відхилено")
         send_text(f"Запит №{t['n']}: Михайло відповість особисто.", t["chat"], t["mid"])
         mark(t, "відхилено")
@@ -742,10 +752,10 @@ def show_draft(t, out):
 
 def draft_button(act, t, cq, state):
     if not t or t.get("status") != "draft":
-        api("answerCallbackQuery", callback_query_id=cq["id"], text="Вже оброблено" if t else "Задачу не знайдено"); return
+        answer_cq(cq, "Вже оброблено" if t else "Задачу не знайдено"); return
     m = cq.get("message", {})
     note = {"send": "📤 Надіслано в групу", "edit": "✏️ Чекаю правки", "drop": "🚫 Не надіслано"}[act]
-    api("answerCallbackQuery", callback_query_id=cq["id"], text=note)
+    answer_cq(cq, note)
     try:
         api("editMessageText", chat_id=OWNER, message_id=m.get("message_id"), text=(m.get("text") or "")[:3900 - 40] + "\n\n" + note)
     except Exception as e:
@@ -766,7 +776,7 @@ def draft_button(act, t, cq, state):
 
 def client_button(act, uid_chat, cq, state):
     """Дозвіл або відмова клієнту на пряме спілкування з асистентом."""
-    api("answerCallbackQuery", callback_query_id=cq["id"], text="Дозволено ✅" if act == "allow" else "Відхилено ❌")
+    answer_cq(cq, "Дозволено ✅" if act == "allow" else "Відхилено ❌")
     uid_str, _, chat_str = uid_chat.partition(":")
     try:
         chat = int(chat_str)
@@ -853,7 +863,8 @@ def main():
                 else:
                     handle(msg, state)
             except Exception as e:
-                LOG("помилка:", repr(e))
+                LOG("помилка:", repr(e), "| update:", json.dumps(u, ensure_ascii=False)[:300])
+                if "callback_query" in u: continue           # натискання кнопки: дію вже зроблено або залоговано — не лякати «⚠️»
                 try: send_text(f"⚠️ Помилка: {e}")
                 except Exception: pass
             save_state(state)
