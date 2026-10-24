@@ -7093,16 +7093,16 @@
  {
   "page": "portfolio.html",
   "kind": "main",
-  "html_kb": 271.4,
-  "gzip_kb": 45.1,
-  "css_kb": 58.8,
-  "js_kb": 50.6,
+  "html_kb": 253.4,
+  "gzip_kb": 41.5,
+  "css_kb": 53.4,
+  "js_kb": 44.3,
   "font_sizes": 28,
   "tags": 1640,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
-  "onclick_nav": 27,
+  "onclick_nav": 20,
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
@@ -7155,12 +7155,12 @@
  {
   "page": "proekty/a-frame-house.html",
   "kind": "land",
-  "html_kb": 34.8,
-  "gzip_kb": 10.1,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 136,
+  "html_kb": 16.1,
+  "gzip_kb": 4.4,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 137,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7172,12 +7172,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7185,12 +7181,12 @@
  {
   "page": "proekty/diamond.html",
   "kind": "land",
-  "html_kb": 44.5,
-  "gzip_kb": 10.8,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 176,
+  "html_kb": 25.8,
+  "gzip_kb": 5.0,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 177,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7202,12 +7198,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7215,12 +7207,12 @@
  {
   "page": "proekty/dolls-salon.html",
   "kind": "land",
-  "html_kb": 33.2,
-  "gzip_kb": 9.9,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 134,
+  "html_kb": 14.4,
+  "gzip_kb": 4.2,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 135,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7232,12 +7224,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7245,12 +7233,12 @@
  {
   "page": "proekty/dubai-villa.html",
   "kind": "land",
-  "html_kb": 43.1,
-  "gzip_kb": 11.0,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 192,
+  "html_kb": 24.3,
+  "gzip_kb": 5.2,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 193,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7262,12 +7250,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7275,12 +7259,12 @@
  {
   "page": "proekty/edelweiss.html",
   "kind": "land",
-  "html_kb": 47.6,
-  "gzip_kb": 11.1,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 190,
+  "html_kb": 28.9,
+  "gzip_kb": 5.2,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 191,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7292,12 +7276,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7305,12 +7285,12 @@
  {
   "page": "proekty/hoda-estate.html",
   "kind": "land",
-  "html_kb": 44.9,
-  "gzip_kb": 11.1,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 198,
+  "html_kb": 26.2,
+  "gzip_kb": 5.4,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 199,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7322,12 +7302,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7335,12 +7311,12 @@
  {
   "page": "proekty/hodos-villa.html",
   "kind": "land",
-  "html_kb": 52.1,
-  "gzip_kb": 12.0,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 240,
+  "html_kb": 33.3,
+  "gzip_kb": 6.1,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 241,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7352,12 +7328,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7365,12 +7337,12 @@
  {
   "page": "proekty/house-150.html",
   "kind": "land",
-  "html_kb": 33.4,
-  "gzip_kb": 10.0,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 132,
+  "html_kb": 14.6,
+  "gzip_kb": 4.3,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 133,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7382,12 +7354,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7395,12 +7363,12 @@
  {
   "page": "proekty/kitana-beach.html",
   "kind": "land",
-  "html_kb": 54.9,
-  "gzip_kb": 12.1,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 254,
+  "html_kb": 36.2,
+  "gzip_kb": 6.2,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 255,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7412,12 +7380,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7425,12 +7389,12 @@
  {
   "page": "proekty/linden-penthouse.html",
   "kind": "land",
-  "html_kb": 60.5,
-  "gzip_kb": 12.8,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 280,
+  "html_kb": 41.8,
+  "gzip_kb": 6.9,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 281,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7442,12 +7406,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7455,12 +7415,12 @@
  {
   "page": "proekty/monpark.html",
   "kind": "land",
-  "html_kb": 34.8,
-  "gzip_kb": 10.2,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 144,
+  "html_kb": 16.1,
+  "gzip_kb": 4.5,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 145,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7472,12 +7432,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7485,12 +7441,12 @@
  {
   "page": "proekty/office-chicago.html",
   "kind": "land",
-  "html_kb": 33.5,
-  "gzip_kb": 10.0,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 132,
+  "html_kb": 14.7,
+  "gzip_kb": 4.2,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 133,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7502,12 +7458,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7515,12 +7467,12 @@
  {
   "page": "proekty/petrivtsi-house.html",
   "kind": "land",
-  "html_kb": 69.8,
-  "gzip_kb": 13.5,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 318,
+  "html_kb": 51.0,
+  "gzip_kb": 7.5,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 319,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7532,12 +7484,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7545,12 +7493,12 @@
  {
   "page": "proekty/pidgirland.html",
   "kind": "land",
-  "html_kb": 57.1,
-  "gzip_kb": 12.3,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 258,
+  "html_kb": 38.3,
+  "gzip_kb": 6.4,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 259,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7562,12 +7510,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7575,12 +7519,12 @@
  {
   "page": "proekty/smart-villa.html",
   "kind": "land",
-  "html_kb": 33.6,
-  "gzip_kb": 10.1,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 134,
+  "html_kb": 14.9,
+  "gzip_kb": 4.4,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 135,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7592,12 +7536,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7605,12 +7545,12 @@
  {
   "page": "proekty/tetris-hall.html",
   "kind": "land",
-  "html_kb": 37.1,
-  "gzip_kb": 10.4,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 152,
+  "html_kb": 18.4,
+  "gzip_kb": 4.7,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 153,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7622,12 +7562,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7635,12 +7571,12 @@
  {
   "page": "proekty/usa-house.html",
   "kind": "land",
-  "html_kb": 39.3,
-  "gzip_kb": 10.5,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 164,
+  "html_kb": 20.5,
+  "gzip_kb": 4.8,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 165,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7652,12 +7588,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7665,12 +7597,12 @@
  {
   "page": "proekty/yablu-rest.html",
   "kind": "land",
-  "html_kb": 33.4,
-  "gzip_kb": 9.9,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 128,
+  "html_kb": 14.7,
+  "gzip_kb": 4.2,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 129,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7682,12 +7614,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7695,12 +7623,12 @@
  {
   "page": "proekty/yacht-restaurant.html",
   "kind": "land",
-  "html_kb": 37.5,
-  "gzip_kb": 10.5,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 154,
+  "html_kb": 18.8,
+  "gzip_kb": 4.7,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 155,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7712,12 +7640,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
@@ -7725,12 +7649,12 @@
  {
   "page": "proekty/yacht-vip.html",
   "kind": "land",
-  "html_kb": 46.6,
-  "gzip_kb": 11.0,
-  "css_kb": 14.4,
-  "js_kb": 7.0,
-  "font_sizes": 8,
-  "tags": 188,
+  "html_kb": 27.9,
+  "gzip_kb": 5.2,
+  "css_kb": 2.0,
+  "js_kb": 0.7,
+  "font_sizes": 0,
+  "tags": 189,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7742,12 +7666,8 @@
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
+  "mu": [],
+  "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
   "webhook_copies": 0
