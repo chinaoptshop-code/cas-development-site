@@ -8,9 +8,10 @@
 для catalog.json та app.js (кеш браузера оновиться одразу після деплою).
 Фото товарів додає tools/products/photo.py.
 """
-import hashlib, html, json, os, re
+import hashlib, html, json, os, re, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+LASTMOD = time.strftime('%Y-%m-%d', time.localtime(os.path.getmtime(os.path.join(ROOT, 'assets/ozdoba/catalog.json'))))  # для sitemap
 CAT = os.path.join(ROOT, 'assets/ozdoba/catalog.json')
 APP = os.path.join(ROOT, 'assets/ozdoba/app.js')
 PAGE = os.path.join(ROOT, 'ozdoba.html')
@@ -278,7 +279,7 @@ def product_pages(d):
         if p not in keep and f.endswith('.html'): os.remove(p)
     sm = os.path.join(ROOT, 'sitemap.xml'); s = open(sm, encoding='utf-8').read()
     s = re.sub(r'  <url><loc>https://cas-develop\.com/ozdoba/[^<]+</loc>.*?</url>\n', '', s)
-    add = ''.join(f'  <url><loc>https://cas-develop.com/ozdoba/{i["slug"]}</loc></url>\n' for i in d['items'])
+    add = ''.join(f'  <url><loc>https://cas-develop.com/ozdoba/{i["slug"]}</loc><lastmod>{LASTMOD}</lastmod></url>\n' for i in d['items'])
     open(sm, 'w', encoding='utf-8').write(s.replace('</urlset>', add + '</urlset>'))
     return len(d['items'])
 
@@ -388,7 +389,7 @@ def category_pages(d):
         out.append(u)
     sm = os.path.join(ROOT, 'sitemap.xml'); t = open(sm, encoding='utf-8').read()
     t = re.sub(r'  <url><loc>https://cas-develop\.com/ozdoba/kategoriia/[^<]+</loc>.*?</url>\n', '', t)
-    t = t.replace('</urlset>', ''.join(f'  <url><loc>{x}</loc></url>\n' for x in out) + '</urlset>')
+    t = t.replace('</urlset>', ''.join(f'  <url><loc>{x}</loc><lastmod>{LASTMOD}</lastmod></url>\n' for x in out) + '</urlset>')
     open(sm, 'w', encoding='utf-8').write(t)
     return len(out)
 
