@@ -3,7 +3,7 @@
 
   python3 tools/img/picture.py          # усі *.html, повторний запуск безпечний
 
-Пропускає: зображення з id (їх src міняє JS — лайтбокси), уже обгорнуті в <picture>, вміст <script>,
+Пропускає: перше фото з fetchpriority=high, зображення з id (їх src міняє JS — лайтбокси), уже обгорнуті в <picture>, вміст <script>,
 файли без .avif поруч. Браузер без AVIF бере WebP з <img>.
 """
 import glob, os, re
@@ -21,6 +21,7 @@ def avif(url):
 
 def wrap(tag):
     if re.search(r'\bid="', tag): return None
+    if 'fetchpriority="high"' in tag: return None  # перше фото (LCP): WebP декодується швидше на слабких телефонах
     src = re.search(r'\bsrc="([^"]+)"', tag)
     if not src or not avif(src.group(1)): return None
     ss = re.search(r'\bsrcset="([^"]+)"', tag)
