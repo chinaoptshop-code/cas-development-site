@@ -328,5 +328,16 @@
    "Ремонт новобудови"
   ],
   "status": "todo"
+ },
+ {
+  "lang": "uk",
+  "slug": "realizatsiia-dyzain-proektu-yak-ne-vtratyty-zadum",
+  "title": "Реалізація дизайн-проєкту: як не втратити задум на будівництві",
+  "keyword": "реалізація дизайн-проєкту",
+  "service": [
+   "/realizatsiia-dyzain-proektu-kyiv",
+   "Реалізація дизайн-проєкту"
+  ],
+  "status": "published"
  }
 ]
