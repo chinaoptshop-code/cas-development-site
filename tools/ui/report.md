@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 713 (MAIN 5, LAND 365, інші 343). HTML разом 40373 КБ, з них інлайн CSS 16582 КБ і JS 4946 КБ.
+Сторінок: 716 (MAIN 5, LAND 365, інші 346). HTML разом 40672 КБ, з них інлайн CSS 16650 КБ і JS 4962 КБ.
 
 ## Проблеми
 
@@ -9,8 +9,8 @@
 
 ## Токени
 
-- `--mu`: {'#6A6153': 5, '#938c84': 693}
-- `--bg2`: {'#100e0c': 693, '#EDEBE4': 5}
+- `--mu`: {'#6A6153': 5, '#938c84': 696}
+- `--bg2`: {'#100e0c': 696, '#EDEBE4': 5}
 - Копій адреси вебхука форми: 0 на 0 сторінках
 
 ## Сторінки
@@ -20,9 +20,12 @@
 | portfolio.html | main | 225.6 | 34.1 | 48.4 | 11.9 | 26 | 1754 |
 | index.html | main | 133.0 | 28.8 | 53.7 | 14.5 | 27 | 657 |
 | ozdoba/komplekty.html | other | 118.7 | 28.5 | 32.5 | 7.9 | 14 | 1516 |
-| ozdoba.html | other | 108.1 | 24.8 | 30.2 | 7.2 | 13 | 739 |
+| ozdoba/prais.html | other | 114.1 | 27.6 | 6.0 | 1.1 | 9 | 3014 |
+| ozdoba.html | other | 109.2 | 25.1 | 30.2 | 7.2 | 13 | 750 |
 | contact.html | main | 90.6 | 21.8 | 55.7 | 7.1 | 23 | 336 |
 | about.html | main | 89.5 | 21.9 | 48.7 | 7.1 | 22 | 392 |
+| pl/ozdoba.html | other | 88.9 | 21.8 | 30.8 | 7.2 | 13 | 620 |
+| en/ozdoba.html | other | 87.9 | 21.0 | 30.8 | 7.2 | 13 | 620 |
 | services.html | main | 87.6 | 21.3 | 45.1 | 7.1 | 21 | 446 |
 | ozdoba/stilets-krislo-obidnii-bukle-z-pidlokitnykamy-74.html | other | 66.0 | 17.5 | 32.5 | 7.2 | 14 | 326 |
 | ozdoba/krislo-launzh-vulychne-z-tyku-z-541.html | other | 65.6 | 17.4 | 32.5 | 7.2 | 14 | 327 |
@@ -608,7 +611,7 @@
 | es/diseno-interiores-piso.html | land | 45.7 | 12.4 | 15.3 | 7.0 | 9 | 367 |
 | fr/construction-maison.html | land | 45.7 | 12.8 | 15.3 | 7.0 | 9 | 369 |
 | fr/design-appartement.html | land | 45.7 | 12.4 | 15.3 | 7.0 | 9 | 367 |
-| pl/realizacja-projektu.html | land | 45.7 | 13.2 | 15.3 | 7.0 | 9 | 379 |
+| pl/realizacja-projektu.html | land | 45.7 | 13.1 | 15.3 | 7.0 | 9 | 379 |
 | de/renovierung-schluesselfertig.html | land | 45.6 | 12.8 | 15.3 | 7.0 | 9 | 367 |
 | de/umsetzung-designprojekt.html | land | 45.6 | 13.0 | 15.3 | 7.0 | 9 | 368 |
 | de/wohnungsdesign.html | land | 45.6 | 12.6 | 15.3 | 7.0 | 9 | 372 |
