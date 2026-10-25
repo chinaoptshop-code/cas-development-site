@@ -227,7 +227,7 @@
 
   // ===================== вкладки =====================
   var TABS = [
-    ['crm', 'CRM'], ['orders', 'Замовлення Оздоби'], ['clients', 'Клієнти'], ['codes', 'Коди партнерів'],
+    ['crm', 'CRM'], ['orders', 'Замовлення Оздоби'], ['clients', 'Клієнти'], ['projects', 'Проєкти клієнтів'], ['codes', 'Коди партнерів'],
     ['products', 'Товари'], ['blog', 'Блог'], ['landings', 'Лендинги'], ['lang', 'Меню й футер'], ['pages', 'Сторінки'], ['media', 'Медіа'], ['history', 'Історія'],
   ];
   var RENDER = {};
@@ -407,6 +407,127 @@
     $('[data-q]', L).oninput = debounce(load);
     return load();
   };
+
+  // ---------- Проєкти клієнтів (/api/admin/projects, migrations/0005_account.sql) ----------
+  // Клієнт бачить їх у /kabinet/proekty: етапи з прогресом, фотозвіти, документи, особистий код партнера.
+  var SVC = { design: 'Дизайн', repair: 'Ремонт', build: 'Будівництво', furnish: 'Меблювання', landscape: 'Ландшафт', other: 'Інше' };
+  var PST = { active: 'Триває', paused: 'На паузі', done: 'Завершено' };
+  var DKIND = { contract: 'Договір', estimate: 'Кошторис', invoice: 'Рахунок', act: 'Акт', design: 'Дизайн-проєкт', other: 'Інше' };
+  var progressOf = function (st) { return st && st.length ? Math.round(st.reduce(function (s, x) { return s + (+x.progress || 0); }, 0) / st.length) : 0; };
+  var PAPI = '/api/admin/projects';
+  RENDER.projects = function (L, cid, openId) {
+    L.innerHTML = '<p class="muted">Завантаження…</p>';
+    return Promise.all([api('/api/admin/clients'), api(PAPI + (cid ? '?client_id=' + cid : '')), api('/api/admin/partner-codes').catch(function () { return { codes: [] }; })]).then(function (r) {
+      var clients = r[0].clients, d = r[1], codes = r[2].codes || [];
+      var cl = function (id) { return clients.find(function (c) { return c.id === id; }) || { id: id }; };
+      var clName = function (c) { return (c.name || 'Клієнт #' + c.id) + (c.phone ? ' · ' + c.phone : c.email ? ' · ' + c.email : ''); };
+      L.innerHTML = '<div class="tb"><select data-c class="grow" aria-label="Клієнт"><option value="">Усі клієнти</option>' + clients.map(function (c) { return '<option value="' + c.id + '"' + (c.id === cid ? ' selected' : '') + '>' + esc(clName(c)) + '</option>'; }).join('') + '</select>' +
+        '<button class="btn" data-new' + (cid ? '' : ' disabled title="Спершу виберіть клієнта"') + '>+ Проєкт</button></div>' +
+        '<div class="note">Проєкти, етапи, фотозвіти й документи бачить клієнт у своєму кабінеті (<b>/kabinet/proekty</b>). Клієнт має хоча б раз увійти на сайт (Telegram, Google або телефон), щоб зʼявитися у списку.</div>' +
+        (cid ? '<div class="tb" data-pc><b>Особистий код партнера клієнта:</b><input data-code list="pcList" placeholder="DIZ-…" style="text-transform:uppercase" value="' + esc((codes.find(function (x) { return x.client_id === cid; }) || {}).code || '') + '"><datalist id="pcList">' + codes.map(function (x) { return '<option value="' + esc(x.code) + '">' + esc(x.name || '') + '</option>'; }).join('') + '</datalist><button class="btn ghost sm" data-bind>Привʼязати</button><button class="btn ghost sm" data-unbind>Відвʼязати</button></div>' : '') +
+        '<div data-list></div>';
+      $('[data-c]', L).onchange = function () { RENDER.projects(L, +this.value || null); };
+      if (cid) {
+        var pc = function (code) { api(PAPI, { method: 'POST', body: { type: 'partner', client_id: cid, code: code } }).then(function () { toast(code ? 'Код привʼязано' : 'Код відвʼязано'); RENDER.projects(L, cid); }, function (e) { toast(e.message, true); }); };
+        $('[data-bind]', L).onclick = function () { var v = $('[data-code]', L).value.trim(); if (v) pc(v); };
+        $('[data-unbind]', L).onclick = function () { pc(null); };
+      }
+      $('[data-new]', L).onclick = function () {
+        var t = prompt('Назва проєкту (напр. «Ремонт квартири, ЖК …»):'); if (!t) return;
+        api(PAPI, { method: 'POST', body: { type: 'project', client_id: cid, title: t, service: 'repair', stages: [{ name: 'Дизайн-проєкт', progress: 0 }, { name: 'Чорнові роботи', progress: 0 }, { name: 'Чистові роботи', progress: 0 }, { name: 'Меблі й декор', progress: 0 }] } })
+          .then(function (x) { RENDER.projects(L, cid, x.id); }, function (e) { toast(e.message, true); });
+      };
+      var list = $('[data-list]', L);
+      if (!d.projects.length) { list.innerHTML = '<p class="muted">Проєктів немає.</p>'; return; }
+      list.innerHTML = '<div class="tscroll"><table class="adm"><tr><th>Проєкт</th><th>Клієнт</th><th>Прогрес</th><th>Стан</th><th>Наступний крок</th></tr>' + d.projects.map(function (p) {
+        var pr = progressOf(p.stages);
+        return '<tr class="clk" data-id="' + p.id + '"><td><b>' + esc(p.title) + '</b><br><small>' + esc(SVC[p.service] || p.service || '') + (p.address ? ' · ' + esc(p.address) : '') + '</small></td><td>' + esc(p.client_name || '#' + p.client_id) + '</td>' +
+          '<td><progress max="100" value="' + pr + '" style="width:90px"></progress> ' + pr + '%</td><td><span class="pill' + (p.status === 'active' ? ' on' : '') + '">' + esc(PST[p.status] || p.status) + '</span></td><td><small>' + esc(p.next_step || '') + (p.next_date ? ' · ' + esc(p.next_date) : '') + '</small></td></tr>';
+      }).join('') + '</table></div>';
+      $$('tr.clk', list).forEach(function (tr) { tr.onclick = function () { projectForm(L, d, +tr.dataset.id, cid); }; });
+      if (openId) projectForm(L, d, openId, cid);
+    }, function (e) { L.innerHTML = '<p class="err">' + esc(e.message) + (/оновлюється/.test(e.message) ? ' (міграція 0005 ще не застосована — зʼявиться після деплою)' : '') + '</p>'; });
+  };
+  function projectForm(L, d, id, cid) {
+    var p = d.projects.find(function (x) { return x.id === id; }); if (!p) return;
+    var stages = clone(p.stages || []), reports = d.reports.filter(function (r) { return r.project_id === id; }), docs = d.documents.filter(function (x) { return x.client_id === p.client_id && (!x.project_id || x.project_id === id); });
+    var back = function () { RENDER.projects(L, cid); }, reload = function () { RENDER.projects(L, cid, id); };
+    var opt = function (o, v) { return Object.keys(o).map(function (k) { return '<option value="' + k + '"' + (k === v ? ' selected' : '') + '>' + o[k] + '</option>'; }).join(''); };
+    L.innerHTML = '<div class="tb"><button class="btn ghost sm" data-back>← До списку</button><b class="grow">' + esc(p.title) + ' <small>· ' + esc(p.client_name || '#' + p.client_id) + '</small></b><button class="btn danger sm" data-del>Видалити проєкт</button></div>' +
+      '<form class="form two" data-f><label class="f full"><span>Назва</span><input name="title" value="' + esc(p.title) + '"></label>' +
+      '<label class="f"><span>Послуга</span><select name="service">' + opt(SVC, p.service) + '</select></label><label class="f"><span>Стан</span><select name="status">' + opt(PST, p.status) + '</select></label>' +
+      '<label class="f"><span>Адреса обʼєкта</span><input name="address" value="' + esc(p.address || '') + '"></label><label class="f"><span>Площа, м²</span><input name="area" type="number" min="0" step="0.1" value="' + esc(p.area == null ? '' : p.area) + '"></label>' +
+      '<label class="f"><span>Наступний крок (бачить клієнт)</span><input name="next_step" value="' + esc(p.next_step || '') + '"></label><label class="f"><span>Дата наступного кроку</span><input name="next_date" type="date" value="' + esc(p.next_date || '') + '"></label>' +
+      '<label class="f"><span>Відповідальний менеджер</span><input name="manager" value="' + esc(p.manager || '') + '"></label>' +
+      '<div class="f full"><span>Етапи й прогрес <small data-pr></small></span><div data-st></div></div></form>' +
+      '<div class="row" style="margin:10px 0 24px"><button class="btn" data-save>Зберегти проєкт</button></div>' +
+      '<h3>Фотозвіти</h3><div data-rep></div>' +
+      '<form class="form two" data-rf style="margin-top:10px"><label class="f"><span>Дата</span><input name="date" type="date" value="' + today() + '"></label><label class="f"><span>Заголовок</span><input name="title" placeholder="Тиждень 5: стяжка й електрика"></label>' +
+      '<label class="f full"><span>Опис</span><textarea name="note" rows="2"></textarea></label>' +
+      '<label class="f full"><span>Фото — https-посилання, по одному в рядку (Google Drive, Telegram, сайт) або кнопка «Завантажити фото»</span><textarea name="photos" rows="3" placeholder="https://…"></textarea></label>' +
+      '<div class="full row"><button type="button" class="btn ghost sm" data-upl>Завантажити фото</button><button class="btn" type="submit">Додати фотозвіт</button><span class="muted" data-us></span></div></form>' +
+      '<h3 style="margin-top:24px">Документи</h3><div data-docs></div>' +
+      '<form class="tb" data-df style="margin-top:10px"><select name="kind">' + opt(DKIND, 'contract') + '</select><input name="title" placeholder="Назва: Договір №12" required><input name="url" class="grow" type="url" placeholder="https://… (Google Drive, PDF)" required><button class="btn" type="submit">Додати документ</button></form>';
+    var stEl = $('[data-st]', L);
+    function drawStages() {
+      stEl.innerHTML = stages.map(function (s, i) {
+        return '<div class="row" style="margin-bottom:8px"><input class="grow" data-k="name" data-i="' + i + '" value="' + esc(s.name) + '" placeholder="Етап"><input type="range" min="0" max="100" step="5" data-k="progress" data-i="' + i + '" value="' + (+s.progress || 0) + '" aria-label="Прогрес"><b data-pv="' + i + '" style="width:44px">' + (+s.progress || 0) + '%</b>' +
+          '<input type="date" data-k="start" data-i="' + i + '" value="' + esc(s.start || '') + '" aria-label="Початок"><input type="date" data-k="end" data-i="' + i + '" value="' + esc(s.end || '') + '" aria-label="Кінець"><input data-k="note" data-i="' + i + '" value="' + esc(s.note || '') + '" placeholder="Примітка"><button type="button" class="je-add" data-sd="' + i + '">✕</button></div>';
+      }).join('') + '<button type="button" class="je-add" data-sa>+ етап</button>';
+      $('[data-pr]', L).textContent = '· загалом ' + progressOf(stages) + '%';
+      $$('[data-k]', stEl).forEach(function (x) { x.oninput = function () { var s = stages[+x.dataset.i]; s[x.dataset.k] = x.dataset.k === 'progress' ? +x.value : x.value; if (x.dataset.k === 'progress') { $('[data-pv="' + x.dataset.i + '"]', stEl).textContent = x.value + '%'; $('[data-pr]', L).textContent = '· загалом ' + progressOf(stages) + '%'; } }; });
+      $$('[data-sd]', stEl).forEach(function (x) { x.onclick = function () { stages.splice(+x.dataset.sd, 1); drawStages(); }; });
+      $('[data-sa]', stEl).onclick = function () { stages.push({ name: '', progress: 0 }); drawStages(); };
+    }
+    drawStages();
+    $('[data-back]', L).onclick = back;
+    var fail = function (e) { toast(e.message, true); };
+    $('[data-save]', L).onclick = function () {
+      var b = { type: 'project', id: id, stages: stages.filter(function (s) { return String(s.name || '').trim(); }) };
+      new FormData($('[data-f]', L)).forEach(function (v, k) { b[k] = v; });
+      api(PAPI, { method: 'PATCH', body: b }).then(function () { toast('Проєкт збережено'); reload(); }, fail);
+    };
+    $('[data-del]', L).onclick = function () {
+      if (prompt('Видалити проєкт разом із фотозвітами? Напишіть «так».') !== 'так') return;
+      api(PAPI + '?type=project&id=' + id, { method: 'DELETE' }).then(back, fail);
+    };
+    var img = function (u) { return '<a href="' + esc(u) + '" target="_blank" rel="noopener"><img src="' + esc(u) + '" alt="" width="96" height="72" loading="lazy" style="width:96px;height:72px;object-fit:cover;border-radius:8px"></a>'; };
+    $('[data-rep]', L).innerHTML = reports.map(function (r) {
+      return '<div class="ord" style="margin-bottom:10px"><div class="ord-h"><b>' + esc(r.date) + (r.title ? ' · ' + esc(r.title) : '') + '</b><button class="btn ghost sm" data-rd="' + r.id + '">Видалити</button></div>' + (r.note ? '<p class="muted" style="white-space:pre-wrap">' + esc(r.note) + '</p>' : '') + '<div class="row">' + r.photos.map(img).join('') + '</div></div>';
+    }).join('') || '<p class="muted">Фотозвітів ще немає (раз на 1–2 тижні).</p>';
+    $$('[data-rd]', L).forEach(function (b) { b.onclick = function () { if (confirm('Видалити фотозвіт?')) api(PAPI + '?type=report&id=' + b.dataset.rd, { method: 'DELETE' }).then(reload, fail); }; });
+    var rf = $('[data-rf]', L);
+    // фото для звіту: WebP у img/uploads через GitHub (потрібен токен); на сайті зʼявляться після деплою (2–4 хв)
+    $('[data-upl]', L).onclick = function () {
+      repo.status().then(function (s) {
+        if (!s.token) return toast('Для завантаження потрібен токен GitHub (README). Або вставте https-посилання на фото.', true);
+        return pickFiles(true).then(function (fs) {
+          fs = fs.slice(0, 12); if (!fs.length) return;
+          $('[data-us]', L).textContent = 'Обробка ' + fs.length + ' фото…';
+          return Promise.all(fs.map(function (f) { return makePhoto(f, 'img/uploads'); })).then(function (ps) {
+            var files = []; ps.forEach(function (x) { files = files.concat(x.files); });
+            return repo.save('фотозвіт: ' + ps.length + ' фото', files, [], {}).then(function () {
+              rf.elements.photos.value = (rf.elements.photos.value.trim() + '\n' + ps.map(function (x) { return 'https://cas-develop.com' + x.src; }).join('\n')).trim();
+              $('[data-us]', L).textContent = 'Фото завантажено — зʼявляться на сайті за 2–4 хв. Натисніть «Додати фотозвіт».';
+            });
+          });
+        });
+      }).catch(fail);
+    };
+    rf.onsubmit = function (e) {
+      e.preventDefault();
+      api(PAPI, { method: 'POST', body: { type: 'report', project_id: id, date: rf.elements.date.value, title: rf.elements.title.value, note: rf.elements.note.value,
+        photos: rf.elements.photos.value.split(/\s+/).filter(Boolean) } }).then(function () { toast('Фотозвіт додано'); reload(); }, fail);
+    };
+    $('[data-docs]', L).innerHTML = docs.length ? '<table class="adm">' + docs.map(function (x) {
+      return '<tr><td>' + esc(DKIND[x.kind] || x.kind) + '</td><td><a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.title) + '</a>' + (x.project_id ? '' : ' <small>(для клієнта загалом)</small>') + '</td><td><small>' + esc(x.created_at) + '</small></td><td><button class="btn ghost sm" data-dd="' + x.id + '">Видалити</button></td></tr>';
+    }).join('') + '</table>' : '<p class="muted">Документів немає.</p>';
+    $$('[data-dd]', L).forEach(function (b) { b.onclick = function () { if (confirm('Видалити документ?')) api(PAPI + '?type=document&id=' + b.dataset.dd, { method: 'DELETE' }).then(reload, fail); }; });
+    $('[data-df]', L).onsubmit = function (e) {
+      e.preventDefault(); var f = e.target;
+      api(PAPI, { method: 'POST', body: { type: 'document', client_id: p.client_id, project_id: id, kind: f.kind.value, title: f.title.value, url: f.url.value } }).then(function () { toast('Документ додано'); reload(); }, fail);
+    };
+  }
 
   // ---------- Коди партнерів ----------
   RENDER.codes = function (L) {
