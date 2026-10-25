@@ -70,7 +70,7 @@ export async function onRequestPost({ request, env }) {
   if (!onReq && goods - disc < 23000) return bad('Мінімальне замовлення — від 23 000 ₴ (≈ $500)');
   const number = await nextNumber(env);
   const name = str(d.name, 120) || c?.name || null;
-  const payment = ['card', 'invoice'].includes(d.payment) ? d.payment : 'card';
+  const payment = ['card', 'invoice', 'cash', 'usdt'].includes(d.payment) ? d.payment : 'card';
 
   const res = await env.DB.prepare(`INSERT INTO orders (number, client_id, name, phone, items, total, on_request, promo, discount, discount_pct, delivery, payment, company, comment)
       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`)

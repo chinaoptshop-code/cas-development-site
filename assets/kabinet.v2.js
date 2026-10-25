@@ -322,7 +322,7 @@
         (o.discount ? '<dt>Знижка −' + o.discount_pct + '%' + (o.promo ? ' (код ' + esc(o.promo) + ')' : '') + '</dt><dd>−' + money(o.discount) + '</dd>' : '') +
         (ship ? '<dt>Доставка</dt><dd>' + money(ship) + '</dd>' : '') +
         '<dt class="t">Разом</dt><dd class="t">' + money(o.total) + (o.on_request ? ' + ' + o.on_request + ' поз. за запитом' : '') + '</dd></dl>' +
-        '<div class="kb-ord-m">' + (o.delivery ? '<span>Доставка: <strong>' + esc(o.delivery) + '</strong></span>' : '') + (o.payment ? '<span>Оплата: <strong>' + esc({ card: 'карткою', parts: 'частинами', invoice: 'рахунок для ФОП/ТОВ', cod: 'при отриманні' }[o.payment] || o.payment) + '</strong></span>' : '') +
+        '<div class="kb-ord-m">' + (o.delivery ? '<span>Доставка: <strong>' + esc(o.delivery) + '</strong></span>' : '') + (o.payment ? '<span>Оплата: <strong>' + esc({ card: 'карткою', parts: 'частинами', invoice: 'рахунок для ФОП/ТОВ', cod: 'при отриманні', cash: 'готівкою (UAH / USD / EUR)', usdt: 'USDT' }[o.payment] || o.payment) + '</strong></span>' : '') +
         (o.company ? '<span>Компанія: <strong>' + esc(o.company) + '</strong></span>' : '') + '</div>' + (o.comment ? '<p class="muted" style="font-size:var(--fs-small)">Коментар: ' + esc(o.comment) + '</p>' : '') + '</section>' +
         managerCard('s6 kb-noprint') + '</div>';
       paint(h);

@@ -457,14 +457,18 @@ function renderPay(){
       <span><b>Карткою (посилання від менеджера)</b><small>Посилання на оплату надішле менеджер після підтвердження наявності.</small></span></button>
     <button class="pay" aria-pressed="${payMethod==='invoice'}" onclick="setPay('invoice')"><span class="dot"></span>
       <span><b>Рахунок для ФОП або ТОВ</b><small>Безготівковий розрахунок з ПДВ, закривні документи. Відвантаження після зарахування.</small></span></button>
+    <button class="pay" aria-pressed="${payMethod==='cash'}" onclick="setPay('cash')"><span class="dot"></span>
+      <span><b>Готівкою — гривні, долари або євро</b><small>Умови й місце оплати узгодить менеджер після підтвердження замовлення.</small></span></button>
+    <button class="pay" aria-pressed="${payMethod==='usdt'}" onclick="setPay('usdt')"><span class="dot"></span>
+      <span><b>USDT (криптовалюта)</b><small>Гаманець і мережу для переказу надішле менеджер після підтвердження замовлення.</small></span></button>
 
     <div class="sum total"><span>Орієнтовна сума за товари</span><span>${money(g)}</span></div>
     <p class="note-honest" style="margin-top:0">${SHIPTXT}</p>
     <button class="btn" id="sendBtn" onclick="pay()">Надіслати заявку</button>
     <p class="note-honest">Це заявка, а не оплата: гроші зараз не списуються. Менеджер зателефонує, підтвердить наявність,
-      ціну й строк поставки і надішле рахунок або посилання на оплату.</p>`);
+      ціну й строк поставки і надішле рахунок, посилання на оплату або реквізити.</p>`);
 }
-function setPay(m){ payMethod=m==='invoice'?'invoice':'card'; renderPay(); }
+function setPay(m){ payMethod=['invoice','cash','usdt'].includes(m)?m:'card'; renderPay(); }
 async function pay(){
   const v=id=>((document.getElementById(id)||{}).value||'').trim();
   const nm=v('fName'), ph=v('fPhone'), np=v('fNp'), edr=v('fEdr');
@@ -472,7 +476,7 @@ async function pay(){
   if(cart.some(c=>c.qty<MINQ())){ toast(`Мінімум — ${MINQ()} шт кожної позиції`); return; }
   if(!nm||ph.replace(/\D/g,'').length<9){ toast('Вкажіть імʼя і телефон — інакше ми не зможемо звʼязатися'); return; }
   const g=grand(), ord='OZD-'+Date.now().toString().slice(-7);
-  const PM={invoice:'рахунок ФОП/ТОВ',card:'карткою (посилання від менеджера)'};
+  const PM={invoice:'рахунок ФОП/ТОВ',card:'карткою (посилання від менеджера)',cash:'готівкою (UAH / USD / EUR)',usdt:'USDT (криптовалюта)'};
   const lines=cart.map(c=>{ const i=byId(c.id), s=SS(i);
     return `• ${i.name} — ${col(i,c.ci)[0]}${s?', '+s[c.si][0]:''} — ${c.qty} ${i.unit} × ${money(price(i,c.ci,c.si))} = ${money(lineSum(c))}`; });
   const message=[`Замовлення ${ord} з Оздоби`,...lines,
@@ -506,7 +510,7 @@ async function pay(){
     <div class="done"><div class="ring">✓</div>
       <h2 style="font-size:25px;margin-bottom:8px">Заявку ${num} прийнято</h2>
       <p style="color:var(--muted);font-size:13.5px;margin:0 auto;max-width:34ch">Менеджер звʼяжеться з вами в робочий час,
-        підтвердить наявність, ціну й строк поставки і надішле рахунок або посилання на оплату.</p>
+        підтвердить наявність, ціну й строк поставки і надішле рахунок, посилання на оплату або реквізити.</p>
       <div class="priceline" style="justify-content:center"><span class="big">${money(g)}</span></div></div>
     ${acct?'<a class="btn" style="text-decoration:none" href="/kabinet">Мої замовлення</a>':''}
     <button class="btn ghost" onclick="reset()">До каталогу</button>`;
@@ -548,7 +552,7 @@ function account(){ // показуємо «Кабінет», лише коли 
 function boot(d){ account();
   DATA=d; IT=d.items; BU=d.bundles; VOLTXT=VOLTXT_(); for(const k in d.art) ART[k]=S(d.art[k]);
   try{ JSON.parse(localStorage.getItem('ozd-cart')||'[]').forEach(c=>{ if(byId(c.id)) cart.push({...c,qty:Math.max(MINQ(),Math.round(Number(c.qty)||0))}); });
-       if(!['card','invoice'].includes(payMethod)) payMethod='card';
+       if(!['card','invoice','cash','usdt'].includes(payMethod)) payMethod='card';
        JSON.parse(localStorage.getItem('ozd-fav')||'[]').forEach(id=>{ if(byId(id)) fav.add(id); }); }catch(e){}
   renderVenues(); renderChips();
   // перші картки каталогу вже є в HTML (tools/products/build.py) — не перемальовуємо їх, лише дорендерюємо решту
