@@ -25,6 +25,9 @@ e = lambda s: html.escape(str(s), quote=True)
 def r10(n): return round(n / 10) * 10
 
 
+MINQ = 10  # мінімум 10 шт (одиниць) кожної позиції — catalog.json min_qty (Михайло 25.10.2026)
+
+
 def min_price(d, i):
     if i.get('price') is None: return None
     ss = d['sizesets'].get(i['ss']) if i.get('ss') else None
@@ -138,7 +141,7 @@ def product_desc(d, i):
     """meta description товару ≤160: ціна, опис (обрізаний по словах), доставка, мін. замовлення."""
     mp = min_price(d, i)
     head = f'Ціна {"від " if i.get("ss") else ""}{money(mp)} за {i["unit"]}. ' if mp is not None else 'Ціна за запитом. '
-    tail = ' Доставка по Україні, мін. замовлення $500.'
+    tail = ' Від 10 шт, під ваш проєкт, замовлення від $500.'
     room = 160 - len(head) - len(tail)
     body = i['desc'].strip()
     if len(body) > room:
@@ -164,7 +167,11 @@ def product_page(d, i, shell, items, title):
     specs = list(i.get('specs') or [])
     rows = [('Категорія', i['sub']), ('Кольори й фактури', ', '.join(c[0] for c in colors))]
     if sizes: rows.append(('Розміри', ', '.join(s[0] for s in sizes)))
-    rows += [(k, v) for k, v in specs] + [('Одиниця', i['unit']), ('Поставка', '30–60 днів'), ('Підходить для', ', '.join(VENUE[v] for v in i['vn'] if v in VENUE))]
+    mq = d.get('min_qty', MINQ)
+    rows += [(k, v) for k, v in specs] + [('Одиниця', i['unit']), ('Мінімальна кількість', f'{mq} {i["unit"]} (менше не можна)'), ('Поставка', '30–60 днів, виготовлення під замовлення'), ('Підходить для', ', '.join(VENUE[v] for v in i['vn'] if v in VENUE))]
+    custom = list(i.get('custom') or [])
+    custom_html = (f'<div class="pp-custom"><h2>Під ваш проєкт</h2><ul>{"".join(f"<li>{e(x)}</li>" for x in custom)}</ul>'
+                   f'<p>Виготовляємо під замовлення, поставка 30–60 днів. Мінімум — {mq} {e(i["unit"])} кожної позиції; поштучно не продаємо, замовлення від $500 (≈ 23 000 ₴).</p></div>') if custom else ''
     # «Схожі товари»: спершу та сама підкатегорія (sub), далі та сама категорія; ходові (prio) — першими
     po = {'A': 0, 'B': 1, 'C': 2}
     same = sorted((x for x in items if x['cat'] == i['cat'] and x['id'] != i['id']),
@@ -209,6 +216,7 @@ def product_page(d, i, shell, items, title):
       <p class="desc">{e(i["desc"])}</p>
       <div class="sw pp-sw">{''.join(f'<i style="background:{c[1]}" title="{e(c[0])}"></i>' for c in colors)}</div>
       <p class="pp-btns"><a class="btn" href="/ozdoba#p-{i["id"]}">Обрати колір і додати в кошик</a><a class="btn ghost" href="#zayavka">Запитати ціну й наявність</a></p>
+      {custom_html}
       <dl class="specs">{''.join(f'<dt>{e(k)}</dt><dd>{e(v)}</dd>' for k, v in rows)}</dl>
       <p class="note-honest">Ціна орієнтовна: остаточну вартість, наявність і строк менеджер підтверджує після заявки. Рахунок для ФОП і ТОВ; рахунки для компаній з ЄС — незабаром (у процесі підключення).</p>
     </div>
@@ -219,8 +227,8 @@ def product_page(d, i, shell, items, title):
   <form id="of" class="pp-form" data-form="ozdoba-product" data-service="Оздоба — {e(i["name"])}" data-source="cas-develop.com/ozdoba/{i["slug"]}" novalidate>
     <div class="field"><label for="oName">Імʼя</label><input id="oName" autocomplete="name"></div>
     <div class="field"><label for="oPhone">Телефон *</label><input id="oPhone" aria-describedby="oErr" type="tel" autocomplete="tel" placeholder="097 123 45 67"><div class="err" id="oErr" role="alert" style="color:#e07a6a;font-size:var(--fs-small);margin-top:6px"></div></div>
-    <div class="field"><label for="oArea">Кількість</label><input id="oArea" inputmode="numeric" placeholder="напр. 6"></div>
-    <div class="field"><label for="oMsg">Коментар</label><input id="oMsg" placeholder="Колір, розмір, обʼєкт, терміни"></div>
+    <div class="field"><label for="oArea">Кількість (від 10)</label><input id="oArea" inputmode="numeric" placeholder="напр. 24"></div>
+    <div class="field"><label for="oMsg">Коментар</label><input id="oMsg" placeholder="Колір, розмір, матеріал, обʼєкт, терміни"></div>
     <button class="btn" id="oBtn" type="submit">Надіслати запит</button>
   </form>
   <div class="ok" id="oOk" role="status" tabindex="-1" style="display:none"><h3>Запит отримано</h3><p style="color:var(--muted)">Менеджер звʼяжеться з вами в робочий час.</p></div>
@@ -272,6 +280,11 @@ PP_CSS = """
 .pp-rel{padding:0}
 .pp-more{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .pp-more .btn{display:inline-block;width:auto;margin:0;padding:13px 22px;text-decoration:none}
+.pp-custom{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 20px}
+.pp-custom h2{font-size:var(--fs-h3);margin:0 0 10px}
+.pp-custom ul{margin:0 0 10px;padding:0 0 0 18px;line-height:1.6;columns:2 200px;column-gap:24px}
+.pp-custom li{break-inside:avoid}
+.pp-custom p{color:var(--muted);font-size:var(--fs-small);margin:0}
 .ozd-intro p{color:var(--muted);max-width:70ch;margin:0 0 12px}
 .ozd-intro a,.ozd-sec details a{color:var(--brass)}
 """
@@ -372,11 +385,11 @@ def category_pages(d):
         body = f'''<div class="w">
   <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / {e(cat)}</div>
   <div class="ozd-hero"><h1>{e(h1)}</h1><p>{e(lead)}</p>
-  <ul class="pts"><li>{len(items)} позицій</li><li>Напряму з фабрик Китаю</li><li>Замовлення від $500</li><li>Рахунок для ФОП і ТОВ</li><li>Доставка по Україні</li></ul></div>
+  <ul class="pts"><li>{len(items)} позицій</li><li>Напряму з фабрик Китаю</li><li>Замовлення від $500</li><li>Від 10 шт кожної позиції</li><li>Під ваш проєкт</li><li>Рахунок для ФОП і ТОВ</li><li>Доставка по Україні</li></ul></div>
 </div>
 <main class="grid">{cards}</main>
 <section class="ozd-sec ozd-intro"><h2>{e(cat)} під замовлення: що входить і для кого</h2>{intro}</section>
-<section class="ozd-sec"><h2>Як замовити</h2><p style="color:var(--muted);max-width:70ch">Додайте позиції в кошик у <a href="/ozdoba" style="color:var(--brass)">каталозі Оздоби</a> або надішліть список і креслення — менеджер підтвердить ціну, наявність і строк поставки. Мінімальне замовлення — $500 (≈ 23 000 ₴), позиції з різних категорій можна поєднувати. Комплектація квартири під ключ — <a href="/mebliuvannia-kvartyry-kyiv" style="color:var(--brass)">від $250 за м²</a>, обʼєкта — <a href="/komplektatsiia-pid-kliuch-kyiv" style="color:var(--brass)">комплектація під ключ</a>.</p></section>
+<section class="ozd-sec"><h2>Як замовити</h2><p style="color:var(--muted);max-width:70ch">Додайте позиції в кошик у <a href="/ozdoba" style="color:var(--brass)">каталозі Оздоби</a> або надішліть список і креслення — менеджер підтвердить ціну, наявність і строк поставки. Мінімальне замовлення — $500 (≈ 23 000 ₴) і від 10 шт (одиниць) кожної позиції; позиції з різних категорій можна поєднувати. Товари виготовляємо під замовлення — колір, розмір, матеріал і оздоблення змінюємо під ваш проєкт, поставка 30–60 днів. Комплектація квартири під ключ — <a href="/mebliuvannia-kvartyry-kyiv" style="color:var(--brass)">від $250 за м²</a>, обʼєкта — <a href="/komplektatsiia-pid-kliuch-kyiv" style="color:var(--brass)">комплектація під ключ</a>.</p></section>
 <section class="ozd-sec"><h2>Питання та відповіді</h2>{faq}</section>
 <section class="ozd-sec"><h2>Сусідні категорії</h2><div class="rel">{other}</div></section>
 '''
@@ -457,12 +470,20 @@ def kit_total(total, onreq, d=None):
             + (f' <small>· зі знижкою за обсягом −{vp}%: {money(total - int(total * vp / 100 + 0.5))}</small>' if vp else ''))
 
 
+def kit_low(d, rows):
+    """Примітка, якщо в комплекті є позиції менше мінімуму (10 шт): у кошику їх доводять до 10 або прибирають."""
+    mq = d.get('min_qty', MINQ)
+    n = sum(1 for i, q in rows if q < mq)
+    return (f'<p class="knote">Позицій менше {mq} шт: {n} — у кошику доведіть їх до {mq} або приберіть, '
+            f'або надішліть запит розрахунку (підберемо партію під кілька обʼєктів).</p>') if n else ''
+
+
 def kits_cards(d):
     """Картки комплектів для секції «Комплекти під обʼєкт» на /ozdoba."""
     out = []
     for b, rows, total, onreq in kits(d):
         out.append(f'<article class="kit" id="kit-{b["id"]}">{kit_collage(rows)}<div class="kb"><h3>{e(b["name"])}</h3>'
-                   f'<p class="knote">{e(b["note"])}</p><p class="ksum">{len(rows)} позицій · <b>{kit_total(total, onreq, d)}</b></p>'
+                   f'<p class="knote">{e(b["note"])}</p><p class="ksum">{len(rows)} позицій · <b>{kit_total(total, onreq, d)}</b></p>{kit_low(d, rows)}'
                    f'<div class="kbtn"><button type="button" class="btn" onclick="window.addKit&amp;&amp;addKit(\'{b["id"]}\')">Додати весь комплект у кошик</button>'
                    f'<a class="btn ghost" href="/ozdoba/komplekty?kit={b["id"]}#zayavka">Запит розрахунку під мій обʼєкт</a></div>'
                    f'<a class="kmore" href="/ozdoba/komplekty#k-{b["id"]}">Склад комплекту</a></div></article>')
@@ -474,8 +495,8 @@ KITS_DESC = 'Готові комплекти меблів, світла й са�
 KITS_FAQ = [
     ('Як порахована ціна комплекту?', 'Це сума позицій каталогу Оздоби: ціна кожної позиції × кількість. Знижка за обсягом рахується в кошику від усієї суми товарів. Ціни орієнтовні — остаточну вартість, наявність і строк менеджер підтверджує після заявки.'),
     ('Чи є знижка на комплект?', 'Так, діє знижка за обсягом на всю суму товарів, включно з комплектами: від $5 000 (≈ 230 000 ₴) — 3%, від $10 000 (≈ 460 000 ₴) — 5%, від $20 000 (≈ 920 000 ₴) — 7%. Кошик рахує її автоматично. Дизайнерам і архітекторам даємо особистий код партнера — знижки не сумуються, діє більша.'),
-    ('Можна змінити склад або кількості?', 'Так. Комплект — це стартова специфікація: у кошику міняйте кількості, прибирайте позиції чи додавайте інші з каталогу. Під креслення або дизайн-проєкт порахуємо комплектацію саме вашого обʼєкта.'),
-    ('Скільки чекати поставку?', 'Поставка з Китаю — 30–60 днів. Замовлення краще робити паралельно з ремонтом, щоб меблі й світло приїхали до фінішу робіт. Мінімальне замовлення — $500 (≈ 23 000 ₴), поштучно не продаємо.'),
+    ('Можна змінити склад або кількості?', 'Так. Комплект — це стартова специфікація: у кошику міняйте кількості, прибирайте позиції чи додавайте інші з каталогу. Мінімум — 10 шт (одиниць) кожної позиції: якщо в комплекті позиція менша, у кошику доведіть її до 10 або приберіть — або надішліть запит розрахунку, підберемо партію під кілька обʼєктів. Під креслення або дизайн-проєкт порахуємо комплектацію саме вашого обʼєкта.'),
+    ('Скільки чекати поставку?', 'Поставка з Китаю — 30–60 днів. Замовлення краще робити паралельно з ремонтом, щоб меблі й світло приїхали до фінішу робіт. Мінімальне замовлення — $500 (≈ 23 000 ₴) і від 10 шт кожної позиції, поштучно не продаємо.'),
     ('Працюєте з компаніями?', 'Так, виставляємо рахунок для ФОП і ТОВ із закривними документами; рахунки для компаній з ЄС — незабаром (у процесі підключення). Для готелів, ресторанів і офісів можемо взяти обʼєкт повністю — від дизайну й ремонту до розстановки меблів.'),
 ]
 
@@ -483,12 +504,13 @@ KITS_FAQ = [
 def kit_section(d, b, rows, total, onreq):
     def line(i, q):
         p = item_price(d, i)
-        return (f'<tr><td><a href="/ozdoba/{i["slug"]}">{e(i["name"])}</a></td><td>{q} {e(i["unit"])}</td>'
+        low = ' <small>(мін. 10)</small>' if q < d.get('min_qty', MINQ) else ''
+        return (f'<tr><td><a href="/ozdoba/{i["slug"]}">{e(i["name"])}</a></td><td>{q} {e(i["unit"])}{low}</td>'
                 f'<td>{money(p) if p is not None else "за запитом"}</td><td>{money(p * q) if p is not None else "—"}</td></tr>')
     note = f' (без {onreq} поз. за запитом)' if onreq else ''
     return (f'<section class="ozd-sec kitp" id="k-{b["id"]}">\n  <h2>{e(b["name"])}</h2>\n'
             f'  <div class="kitp-top">{kit_collage(rows)}<div><p class="knote">{e(b["note"])}</p>\n'
-            f'  <p class="ksum">{len(rows)} позицій · разом <b>{kit_total(total, onreq, d)}</b></p>\n'
+            f'  <p class="ksum">{len(rows)} позицій · разом <b>{kit_total(total, onreq, d)}</b></p>{kit_low(d, rows)}\n'
             f'  <div class="kbtn"><a class="btn" href="/ozdoba#kit-{b["id"]}">Додати весь комплект у кошик</a>'
             f'<a class="btn ghost" href="?kit={b["id"]}#zayavka">Запит розрахунку під мій обʼєкт</a></div></div></div>\n'
             f'  <details class="ktbl"><summary>Склад комплекту: {len(rows)} позицій</summary><div class="tscroll"><table>'
@@ -500,7 +522,7 @@ KITS_BODY = '''<div class="w">
   <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / Комплекти під обʼєкт</div>
   <div class="ozd-hero"><h1>Комплектація ресторану, готелю й офісу <em>під ключ</em></h1>
   <p>Готові комплекти з каталогу Оздоби під конкретний обʼєкт: ресторанний зал і тераса, лобі й номери готелю, офіс, салон краси, вітальня й спальня в приватному інтерʼєрі. Кожен комплект — стартова специфікація з цінами в гривнях: беріть як є, міняйте кількості або замовляйте розрахунок під свої креслення.</p>
-  <ul class="pts"><li>{n} комплектів від {lo}</li><li>Ціна = сума позицій</li><li>Знижка за обсягом до 7%</li><li>Поставка 30–60 днів</li><li>Рахунок для ФОП і ТОВ</li><li>Мін. замовлення $500</li></ul>
+  <ul class="pts"><li>{n} комплектів від {lo}</li><li>Ціна = сума позицій</li><li>Знижка за обсягом до 7%</li><li>Поставка 30–60 днів</li><li>Рахунок для ФОП і ТОВ</li><li>Мін. замовлення $500</li><li>Від 10 шт кожної позиції</li></ul>
   <p class="vol">{vol}.</p></div>
 </div>
 {sections}
