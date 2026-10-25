@@ -183,8 +183,7 @@ T = {
                       ('/ru/remont-doma-kiev', 'Ремонт дома'), ('/ru/baza-otdyha-pod-klyuch', 'База отдыха'), ('/ru/rekonstruktsiya-doma-kiev', 'Реконструкция дома'), ('/ru/dom-pod-klyuch-koncha-zaspa', 'Дом в Конча-Заспе')]),
             ('Мебель и полезное', [('/ru/meblirovka-kvartiry-kiev', 'Меблировка под ключ'), ('/ru/komplektatsiya-pod-klyuch-kiev', 'Комплектация под ключ'),
                                    ('/ozdoba', 'Оздоба — мебель из Китая'), ('/ru/kalkulyator-remonta', 'Калькулятор стоимости'),
-                                   ('/ru/voprosy', 'Частые вопросы'), ('/ru/blog', 'Блог: цены и советы'),
-                                   ('/ru/o-nas', 'О студии'), ('/ru/kontakty', 'Контакты')]),
+                                   ('/ru/voprosy', 'Частые вопросы'), ('/ru/blog', 'Блог: цены и советы')]),
         ]),
 }
 for _l in LANGS:  # нові мови — словник chrome з tools/site/lang/<мова>.json
