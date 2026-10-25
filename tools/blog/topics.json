@@ -151,7 +151,7 @@
    "/remont-komertsiinykh-prymishchen-kyiv",
    "Ремонт комерційних приміщень"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -404,7 +404,7 @@
    "/biznes-pid-kliuch-kyiv",
    "Бізнес під ключ"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -415,7 +415,7 @@
    "/ru/biznes-pod-klyuch-kiev",
    "Бизнес под ключ"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "uk",
@@ -426,7 +426,7 @@
    "/komplektatsiia-pid-kliuch-kyiv",
    "Комплектація під ключ"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -437,7 +437,7 @@
    "/ru/komplektatsiya-pod-klyuch-kiev",
    "Комплектация под ключ"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -448,7 +448,7 @@
    "/ru/remont-kommercheskih-pomeshcheniy-kiev",
    "Ремонт коммерческих помещений"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "uk",
@@ -459,7 +459,7 @@
    "/biznes-pid-kliuch-kyiv",
    "Бізнес під ключ"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -470,7 +470,7 @@
    "/ru/biznes-pod-klyuch-kiev",
    "Бизнес под ключ"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "uk",
@@ -481,7 +481,7 @@
    "/mebliuvannia-kvartyry-kyiv",
    "Меблювання квартири під ключ"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -492,7 +492,7 @@
    "/ru/meblirovka-kvartiry-kiev",
    "Меблировка квартиры под ключ"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "uk",
@@ -503,7 +503,7 @@
    "/budivnytstvo-budynkiv-kyiv",
    "Будівництво будинків"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -514,7 +514,7 @@
    "/ru/stroitelstvo-domov-kiev",
    "Строительство домов"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "uk",
@@ -525,7 +525,7 @@
    "/dyzain-interieru-kyiv",
    "Дизайн інтерʼєру"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -536,7 +536,7 @@
    "/ru/dizayn-interera-kiev",
    "Дизайн интерьера"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "uk",
@@ -547,7 +547,7 @@
    "/realizatsiia-dyzain-proektu-kyiv",
    "Реалізація дизайн-проєкту"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -558,7 +558,7 @@
    "/ru/realizatsiya-dizayn-proekta-kiev",
    "Реализация дизайн-проекта"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "uk",
@@ -569,7 +569,7 @@
    "/komplektatsiia-pid-kliuch-kyiv",
    "Комплектація під ключ"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -580,7 +580,7 @@
    "/ru/komplektatsiya-pod-klyuch-kiev",
    "Комплектация под ключ"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "uk",
@@ -591,7 +591,7 @@
    "/biznes-pid-kliuch-kyiv",
    "Бізнес під ключ"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -602,7 +602,7 @@
    "/ru/biznes-pod-klyuch-kiev",
    "Бизнес под ключ"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "uk",
@@ -613,7 +613,7 @@
    "/dyzain-interieru-kyiv",
    "Дизайн інтерʼєру"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -624,7 +624,7 @@
    "/ru/dizayn-interera-kiev",
    "Дизайн интерьера"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "uk",
@@ -635,7 +635,7 @@
    "/dyzain-interieru-kyiv",
    "Дизайн інтерʼєру"
   ],
-  "status": "draft"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -646,6 +646,6 @@
    "/ru/dizayn-interera-kiev",
    "Дизайн интерьера"
   ],
-  "status": "draft"
+  "status": "published"
  }
 ]
