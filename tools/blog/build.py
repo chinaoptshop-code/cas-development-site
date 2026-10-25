@@ -8,13 +8,13 @@
   {"slug": "...", "lang": "uk"|"ru", "title": "...", "description": "...(до 160 симв.)", "lead": "...",
    "date": "2026-10-22", "service": ["/remont-kvartyr-kyiv", "Ремонт квартир"],
    "photo": "img/p/<id>-900.webp", "pair": "<slug іншою мовою>" (необовʼязково),
-   "body": [["h2", "..."], ["p", "..."], ["ul", ["...", "..."]], ["ol", [...]]],
+   "body": [["h2", "..."], ["p", "..."], ["ul", ["...", "..."]], ["ol", [...]], ["img", "img/p/<id>-900.webp", "alt-текст"]],
    у "p" і пунктах списків можна внутрішнє посилання: [анкор](/шлях-сторінки) — лише на наявну сторінку,
    ru-статті → /ru/..., не більше одного на ту саму сторінку; у заголовках посилань немає
    "faq": [["питання", "відповідь"], ...]}
 Ціни й факти — лише підтверджені (CLAUDE.md, розділ «Сайт: UI-kit і правила»).
 """
-import glob, html, importlib.util, json, os, re, sys
+import glob, html, importlib.util, json, os, re, struct, sys, zlib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ART = os.path.join(ROOT, 'tools/blog/articles')
@@ -42,6 +42,28 @@ def wr(p, s):
     os.makedirs(os.path.dirname(os.path.join(ROOT, p)) or ROOT, exist_ok=True)
     open(os.path.join(ROOT, p), 'w', encoding='utf-8').write(s)
 def esc(s): return html.escape(s, quote=True)
+
+def img_dims(path):
+    """Повертає (width, height) з WebP або JPEG без PIL. Fallback: (900, 675)."""
+    try:
+        with open(path, 'rb') as f:
+            hdr = f.read(30)
+        if hdr[:4] == b'RIFF' and hdr[8:12] == b'WEBP':
+            if hdr[12:16] == b'VP8 ':
+                w = struct.unpack_from('<H', hdr, 26)[0] & 0x3FFF
+                h = struct.unpack_from('<H', hdr, 28)[0] & 0x3FFF
+                return w, h
+            if hdr[12:16] == b'VP8L':
+                bits = struct.unpack_from('<I', hdr, 21)[0]
+                return (bits & 0x3FFF) + 1, ((bits >> 14) & 0x3FFF) + 1
+            if hdr[12:16] == b'VP8X':
+                w = (struct.unpack_from('<I', hdr, 24)[0] & 0xFFFFFF) + 1
+                h = (struct.unpack_from('<I', hdr, 27)[0] & 0xFFFFFF) + 1
+                return w, h
+    except Exception:
+        pass
+    return 900, 675
+
 def path_of(a): return f"blog/{a['slug']}.html" if a['lang'] == 'uk' else f"ru/blog/{a['slug']}.html"
 def url_of(a): return B + path_of(a)[:-5]
 
@@ -69,9 +91,13 @@ def check(a):
         p = p.strip()
         if not any(p == ok or p.startswith(ok + ' ') for ok in PRICES_OK) and not re.fullmatch(r'\$\d{1,3}( \d{3})+', p):
             errs.append(f'ціна {p} — перевірити (дозволені лише підтверджені ставки або розрахунок із них)')
-    words = sum(len(str(v).split()) for _, v in a['body'] for v in (v if isinstance(v, list) else [v]))
+    words = sum(len(str(v).split()) for item in a['body'] for v in (item[1] if isinstance(item[1], list) else [item[1]]))
     if words < 450: errs.append(f'замало тексту: {words} слів (мінімум 450)')
     if a.get('photo') and not os.path.exists(os.path.join(ROOT, a['photo'])): errs.append(f"фото {a['photo']} не знайдено")
+    for p in a.get('photos', []):
+        if not os.path.exists(os.path.join(ROOT, p)): errs.append(f"photos: {p} не знайдено")
+    for item in a['body']:
+        if item[0] == 'img' and not os.path.exists(os.path.join(ROOT, item[1])): errs.append(f"body img {item[1]} не знайдено")
     errs += check_links(a)
     return errs
 
@@ -91,7 +117,9 @@ def inline(s):
 
 def check_links(a):
     errs, seen = [], set()
-    for kind, val in a['body']:
+    for item in a['body']:
+        kind, val = item[0], item[1]
+        if kind == 'img': continue
         for v in (val if isinstance(val, list) else [val]):
             if kind in ('h2', 'h3') and '](' in v: errs.append(f'посилання в заголовку: {v[:40]}')
             for anchor, href in LINK.findall(v):
@@ -106,10 +134,15 @@ def check_links(a):
 
 def render_body(body):
     out = []
-    for kind, val in body:
+    for item in body:
+        kind, val = item[0], item[1]
         if kind in ('h2', 'h3'): out.append(f'<{kind}>{esc(val)}</{kind}>')
         elif kind == 'p': out.append(f'<p>{inline(val)}</p>')
         elif kind in ('ul', 'ol'): out.append(f'<{kind}>' + ''.join(f'<li>{inline(x)}</li>' for x in val) + f'</{kind}>')
+        elif kind == 'img':
+            alt = item[2] if len(item) > 2 else ''
+            w, h = img_dims(os.path.join(ROOT, val))
+            out.append(f'<figure style="margin:1.5rem 0"><img src="/{val}" loading="lazy" decoding="async" width="{w}" height="{h}" alt="{esc(alt)}" style="width:100%;height:auto;border-radius:4px"></figure>')
     return '\n'.join(out)
 
 
@@ -163,11 +196,24 @@ def build_article(a, arts):
     if lang == 'uk':
         links += ''.join(f'<li><a href="/blog/{x["slug"]}">{esc(x["title"])}</a></li>' for x in legacy_uk()[:max(0, 6 - len(same))] if x['slug'] != a['slug'])
     svc_url, svc_label = a['service']
+    hero = ''
+    if a.get('photo'):
+        pw, ph = img_dims(os.path.join(ROOT, a['photo']))
+        hero = f'<figure style="margin:1.5rem 0 2rem"><img src="/{a["photo"]}" fetchpriority="high" width="{pw}" height="{ph}" alt="{esc(a["title"])} — CAS Development" style="width:100%;height:auto;border-radius:4px"></figure>'
+    gallery = ''
+    if a.get('photos'):
+        items = []
+        for p in a['photos']:
+            w, h = img_dims(os.path.join(ROOT, p))
+            items.append(f'<figure><img src="/{p}" loading="lazy" decoding="async" width="{w}" height="{h}" alt="{esc(a["title"])} — CAS Development" style="width:100%;height:auto"></figure>')
+        gallery = f'<div class="gal" style="margin:2rem 0">{"".join(items)}</div>'
     art = f'''
   <h1 style="font-size:var(--fs-h1)">{esc(a["title"])}</h1>
   <p class="date">CAS Development · <time datetime="{a["date"]}">{fmt_date(a["date"], lang)}</time></p>
   <p style="font-size:19px">{esc(a["lead"])}</p>
+  {hero}
   {render_body(a["body"])}
+  {gallery}
   <h2>{t["faq"]}</h2>
   {''.join(f'<details><summary>{esc(q)}</summary><p>{esc(ans)}</p></details>' for q, ans in a["faq"])}
   <div class="cta"><h2 style="margin-top:0">{t["cta_h"]}</h2><p style="margin:0 0 16px">{t["cta_p"]}</p>
