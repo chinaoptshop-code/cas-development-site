@@ -29,6 +29,8 @@ export ASSISTANT_PREFIX="${ASSISTANT_PREFIX:-🤖}"
 export ASSISTANT_MEMORY_FOLDER="${ASSISTANT_MEMORY_FOLDER:-Асистент Михайла}"
 # Локальний шлях до цієї папки на Mac mini (Google Drive для комп'ютера); у хмарі не потрібен
 export ASSISTANT_MEMORY_DIR="${ASSISTANT_MEMORY_DIR:-}"
+# Дзеркало памʼяті на Google Drive для компʼютера (Mac mini): bin/memory-sync.sh копіює *.md сюди після кожної відповіді бота й сценарію
+export ASSISTANT_MEMORY_DRIVE="${ASSISTANT_MEMORY_DRIVE:-$HOME/Library/CloudStorage/GoogleDrive-china.opt.shop@gmail.com/My Drive/Асистент Михайла}"
 
 # Тимчасові файли (PDF, скачане) — не в репозиторії
 export ASSISTANT_TMP="${ASSISTANT_TMP:-$HOME/.assistant/tmp}"

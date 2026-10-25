@@ -29,6 +29,8 @@ GROUP_ALLOWED = ",".join(t for t in re.split(r",\s*", ALLOWED)
 CLIENT_ALLOWED = "WebFetch,WebSearch,Read(" + str(MEMORY / "inbox-files") + "/**)"
 TEAM_TASKS = MEMORY / "02 Задачі команди.md"
 STATE = MEMORY / ".bot-state.json"
+DIALOG = MEMORY / ".dialog.jsonl"   # останні репліки діалогу з Михайлом — контекст для нової розмови дня (у Drive не йде)
+MEMORY_SYNC = REPO / "tools/assistant/bin/memory-sync.sh"   # дзеркало памʼяті на Google Drive після кожної відповіді
 INBOX = MEMORY / "inbox-files"
 API = f"https://api.telegram.org/bot{TOKEN}/"
 LOG = lambda *a: print(datetime.datetime.now().strftime("%H:%M:%S"), *a, flush=True)
@@ -103,12 +105,80 @@ def describe(msg):
     return "інше", json.dumps(msg, ensure_ascii=False)[:500]
 
 
-def build_prompt(kind, content, caption):
+# ---------- памʼять між днями ----------
+# 25.10: бот починає нову розмову Claude щодня (і після 1,5 МБ), тож «нагадай завтра», сказане ввечері, зранку вже не памʼятав.
+# Тепер на початку розмови в промпт іде: останні репліки діалогу, Журнал за вчора/сьогодні, відкриті задачі й нагадування з 02 Задачі.md.
+def remember(who, text):
+    try:
+        with DIALOG.open("a", encoding="utf-8") as f:
+            f.write(json.dumps({"t": datetime.datetime.now().isoformat(timespec="minutes"), "who": who, "text": str(text)[:1500]}, ensure_ascii=False) + "\n")
+    except OSError as e:
+        LOG("діалог не записано:", e)
+
+
+def _tail_dialog(n=30):
+    try:
+        lines = DIALOG.read_text(encoding="utf-8").splitlines()[-n:]
+    except FileNotFoundError:
+        return ""
+    out = []
+    for l in lines:
+        try:
+            j = json.loads(l)
+        except ValueError:
+            continue
+        out.append(f"{j['t'][5:16].replace('T', ' ')} {j['who']}: {j['text'][:300]}")
+    return "\n".join(out)
+
+
+def _journal_recent(limit=2500):
+    today = datetime.date.today(); yday = today - datetime.timedelta(days=1)
+    text = ""
+    for d in sorted({yday.strftime("%Y-%m"), today.strftime("%Y-%m")}):
+        p = MEMORY / f"Журнал {d}.md"
+        if p.exists():
+            text += p.read_text(encoding="utf-8") + "\n"
+    parts = re.split(r"(?m)^## (?=\d{4}-\d{2}-\d{2})", text)
+    keep = [x for x in parts if x.startswith(today.isoformat()) or x.startswith(yday.isoformat())]
+    return ("## " + "\n## ".join(keep)).strip()[:limit] if keep else ""
+
+
+def _open_tasks(max_lines=60):
+    p = MEMORY / "02 Задачі.md"
+    if not p.exists():
+        return ""
+    out, take = [], False
+    for line in p.read_text(encoding="utf-8").splitlines():
+        if line.startswith("## "):
+            take = line.startswith(("## Сьогодні", "## Цей тиждень", "## Нагадування", "## Завтра"))
+            if take:
+                out.append(line)
+            continue
+        if take and line.strip().startswith("- [ ]"):
+            out.append(line)
+        if len(out) >= max_lines:
+            break
+    return "\n".join(out)
+
+
+def context_block():
+    d, j, t = _tail_dialog(), _journal_recent(), _open_tasks()
+    if not (d or j or t):
+        return ""
+    return ("\n\nКОНТЕКСТ (це нова розмова дня — памʼять між днями, спирайся на неї, не перепитуй відоме):\n"
+            + (f"— Останні репліки діалогу з Михайлом:\n{d}\n" if d else "")
+            + (f"— Журнал за вчора/сьогодні:\n{j}\n" if j else "")
+            + (f"— Відкриті задачі й нагадування (02 Задачі.md):\n{t}\n" if t else ""))
+
+
+def build_prompt(kind, content, caption, fresh=False):
     return f"""Ти персональний помічник Михайла. Ти працюєш на його Mac mini, це режим «локальний бот».
 Правила: прочитай tools/assistant/playbooks/00-core.md і tools/assistant/playbooks/inbox.md (та інші сценарії за потреби).
 Пам'ять — локальна папка {MEMORY} (Markdown-файли: 00 Профіль.md, 01 Цілі.md, 02 Задачі.md, 03 Звички і спорт.md,
 04 Читання.md, 05 Рішення.md, 06 Люди.md, 07 Компанія.md, Журнал YYYY-MM.md, папки Зустрічі/, Тижні/, Документи/).
-Редагуй файли напряму, не через Google Drive. Google Drive, Calendar і Plaud доступні лише якщо підключені як MCP (claude mcp list); записи зустрічей бери через інструменти Plaud, якщо вони є.
+Редагуй файли напряму, не через Google Drive. НАГАДУВАННЯ: на «нагадай завтра / у <день> …» додай рядок «- [ ] 🔔 <що> (нагадати <дд.мм>)» у
+`02 Задачі.md` у розділ «## Сьогодні / <День дд.мм>» того дня (створи розділ одразу після шапки файла, якщо його нема); календар — додатково, якщо підключений.
+Пиши «записав/нагадаю» ЛИШЕ після того, як Edit/Write справді змінив файл; якщо запис не вдався — так і скажи. Ранковий і вечірній сценарії читають саме цей розділ. Google Drive, Calendar і Plaud доступні лише якщо підключені як MCP (claude mcp list); записи зустрічей бери через інструменти Plaud, якщо вони є.
 Голосові/аудіо розшифровуй: tools/assistant/bin/transcribe.sh <файл>.
 Голосове ГОЛОСОМ МИХАЙЛА (комусь із його акаунта чи йому): tools/assistant/bin/voice-clone.sh "текст" → шлях .ogg,
 далі tools/telegram/tg.sh send-voice <чат> <файл>. НІКОЛИ не tg.sh say — там чужий жіночий голос Google.
@@ -126,7 +196,7 @@ tools/assistant/bin/md2pdf.sh <файл.md> (напряму, без «bash» п�
 SEND_FILE: /повний/шлях/до/файлу
 Коли показуєш переписку чи говориш про конкретну людину/чат із Telegram Михайла — додай окремий рядок
 OPEN_CHAT: @нік | Імʼя   (або числовий id замість ніка, якщо ніка немає; до 5 таких рядків) — я зроблю кнопку «Відкрити чат».
-Якщо просять «всю переписку», а повідомлень більше ~15 — у відповіді коротко, а повний текст файлом (Markdown → PDF, SEND_FILE)."""
+Якщо просять «всю переписку», а повідомлень більше ~15 — у відповіді коротко, а повний текст файлом (Markdown → PDF, SEND_FILE).{context_block() if fresh else ""}"""
 
 
 def run_claude(prompt, session, resume, tools=ALLOWED, turns=None, _final=False):
@@ -188,10 +258,11 @@ def handle(msg, state):
     if fresh:
         state["sid"] = str(uuid.uuid4())
     LOG("→", kind, content[:80])
+    remember("Михайло", content if kind == "текст" else f"[{kind}] {content}")
     api("sendChatAction", chat_id=OWNER, action="typing")
     timed_out = False
     try:
-        out = run_claude(build_prompt(kind, content, msg.get("caption", "")), state["sid"], not fresh)
+        out = run_claude(build_prompt(kind, content, msg.get("caption", ""), fresh), state["sid"], not fresh)
     except subprocess.TimeoutExpired:
         out, timed_out = "⚠️ Не встиг за 15 хвилин. Спробуй ще раз або розбий запит.", True
     state["day"] = today
@@ -432,6 +503,9 @@ def deliver(out, chat=None, reply_to=None):
         else:
             send_text(f"⚠️ Файл не знайдено: {f}", chat)
     LOG("←", reply[:80])
+    remember("Помічник", reply)
+    if MEMORY_SYNC.exists():   # дзеркало памʼяті на Drive — хмарні сесії й Михайло бачать свіжі файли
+        subprocess.Popen([str(MEMORY_SYNC)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
 
 
 # ---------- усі, крім Михайла: команда й клієнти ----------

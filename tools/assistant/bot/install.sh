@@ -41,7 +41,7 @@ at() { echo "<dict><key>Hour</key><integer>$1</integer><key>Minute</key><integer
 wd() { echo "<key>Weekday</key><integer>$1</integer>"; }
 
 if [ "${1:-}" = "--remove" ]; then
-  for n in bot morning evening weekly gym; do
+  for n in bot morning evening weekly gym memory-sync; do
     f="$AGENTS/com.assistant.$n.plist"
     [ -f "$f" ] && { launchctl unload "$f" 2>/dev/null || true; rm -f "$f"; echo "✗ $n"; }
   done
@@ -53,4 +53,5 @@ plist morning "$(cal "$(at 7 30)")"                "$DIR/bin/run-playbook.sh" mo
 plist evening "$(cal "$(at 21 0)")"                "$DIR/bin/run-playbook.sh" evening
 plist weekly  "$(cal "$(at 18 0 "$(wd 0)")")"      "$DIR/bin/run-playbook.sh" weekly
 plist gym     "$(cal "$(at 17 30 "$(wd 1)")$(at 17 30 "$(wd 3)")$(at 17 30 "$(wd 5)")")" "$DIR/bin/run-playbook.sh" gym
+plist memory-sync "<key>StartInterval</key><integer>900</integer>" "$DIR/bin/memory-sync.sh"   # дзеркало памʼяті на Drive кожні 15 хв
 echo "Готово. Логи: $LOGS. Напишіть боту «привіт»."
