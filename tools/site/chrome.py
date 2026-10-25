@@ -44,6 +44,86 @@ PHONE, PHONE_TXT = '+380978667755', '+380 97 866 77 55'
 # сторінки, яких не чіпаємо: сторонні юридичні шаблони англійською (власна шапка з H1), верифікація Google
 SKIP = {'privacy.html', 'terms.html'}
 
+
+# Власні шрифти (/fonts/, OFL): Manrope + Cormorant Garamond. Підмножини cyrillic / latin / latin-ext (pl: ą ć ę ł ń ś ź ż;
+# de/fr/es вміщуються в latin U+0000-00FF). Браузер вантажить файл лише коли на сторінці є символи з його unicode-range,
+# тож uk/ru-сторінки latin-ext не тягнуть. Блок <style id="cas-fonts"> (cyrillic + latin) нормалізує apply() на всіх сторінках;
+# @font-face latin-ext (_LATX) — у /assets/site-chrome.v1.css (спільний файл, без зайвих байтів у кожному HTML).
+_CYR = 'U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116'
+_LAT = ('U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, '
+        'U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD')
+_LATX = ('U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, '
+         'U+2020, U+20A0-20AB, U+20AD-20B3, U+20B5-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF')  # без ₴ (U+20B4): інакше uk-сторінки з цінами тягнуть latin-ext
+
+
+def _face(fam, style, wght, f, rng):
+    return (f'@font-face{{font-family:"{fam}";font-style:{style};font-weight:{wght};font-display:swap;'
+            f'src:url(/fonts/{f}.woff2) format("woff2");unicode-range:{rng}}}')
+
+
+FONTS_CSS = ''.join(
+    _face(fam, st, w, f'{base}-{sub}', rng)
+    for fam, st, w, base in (('Manrope', 'normal', '200 800', 'manrope'), ('Cormorant Garamond', 'normal', '300 700', 'cormorant'),
+                             ('Cormorant Garamond', 'italic', '300 700', 'cormorant-italic'))
+    for sub, rng in (('cyrillic', _CYR), ('latin', _LAT))
+) + ('@font-face{font-family:"Manrope Fallback";src:local("Arial"),local("Helvetica"),local("Liberation Sans");size-adjust:96.5%;'
+     'ascent-override:110.5%;descent-override:31.1%;line-gap-override:0%}'
+     '@font-face{font-family:"Cormorant Fallback";src:local("Times New Roman"),local("Times"),local("Liberation Serif");'
+     'size-adjust:96.1%;ascent-override:96.1%;descent-override:29.9%;line-gap-override:0%}')
+FONTS_TAG = f'<style id="cas-fonts">{FONTS_CSS}</style>'
+FONTS_RX = re.compile(r'<style id="cas-fonts">.*?</style>', re.S)
+
+
+# Типографіка цін для всіх мов: суми, валюта й діапазони не розриваються переносом рядка («od $6 / 300», «30– / 60 dni»).
+# Лише текст у <body> (не атрибути, не <script>/<style>/<title>/<textarea>/<pre>/<code>), JSON-LD не чіпаємо.
+NB = '\u00a0'
+_NB_SKIP = ('script', 'style', 'title', 'textarea', 'pre', 'code', 'svg', 'template')
+_NB_THOUS = re.compile(r'(?<![\d.,])(\d{1,3})((?: \d{3})+)(?!\d)')
+_NB_PREP = re.compile(r'(?<!\w)(від|до|от|около|близько|od|do|from|to|ab|bis|desde|hasta|dès|minimum|min\.|мін\.|≈|~|=|×) (?=[$€₴]|\d)', re.I)
+_NB_TIMES = re.compile(r'(\d|m²|м²) ([×=]) ')
+_NB_UNIT = re.compile(r'(\d) (₴|грн|zł|PLN|USD|EUR|€|m²|м²|m2|м2|%|dni|dnia|днів|дні|дня|тижні|тижнів|тижня|тиждень|місяців|міс\.|days|weeks|months|días|semanas|meses|jours|semaines|mois|Tage|Wochen|Monate|tygodnie|tygodni|miesięcy|сотку|сотки|соток|шт|szt\.|pcs|cm|см|мм|mm|кг|kg|м|m)(?!\w)')
+_NB_RANGE = re.compile(r'(?<![\w–-])(\$?\d+(?:\u00a0\d{3})*[–-]\$?\d+(?:\u00a0\d{3})*)(?![\w–-])')
+# однолітерні прийменники й сполучники (uk/ru) не лишаються в кінці рядка: «з Китаю», «і бар»
+_NB_ONE = re.compile(r'(?<![\w\u00a0-])([зйіувоаксиЗЙІУВОАКСИ]) (?=\S)')
+_NB_ONE_PL = re.compile(r'(?<![\w\u00a0-])([wzioauWZIOAU]) (?=\S)')  # pl: «w Kijowie», «z UE»
+_NB_TAG = re.compile(r'<(' + '|'.join(_NB_SKIP) + r')\b[^>]*>.*?</\1\s*>|<!--.*?-->|<[^>]*>', re.S | re.I)
+
+
+def _nb_text(t, lang=None):
+    t = _NB_THOUS.sub(lambda m: m.group(1) + m.group(2).replace(' ', NB), t)
+    t = _NB_TIMES.sub(lambda m: m.group(1) + NB + m.group(2) + ' ', t)
+    t = _NB_PREP.sub(lambda m: m.group(1) + NB, t)
+    t = _NB_UNIT.sub(lambda m: m.group(1) + NB + m.group(2), t)
+    t = _NB_ONE.sub(lambda m: m.group(1) + NB, t)
+    if lang == 'pl':
+        t = _NB_ONE_PL.sub(lambda m: m.group(1) + NB, t)
+    return t
+
+
+def nbsp_prices(s, lang=None):
+    """Нерозривні пробіли в сумах/одиницях і <span class="nw"> для діапазонів «30–60» (ідемпотентно)."""
+    i = s.find('<body')
+    if i < 0:
+        return s
+    head, body = s[:i], s[i:]
+    parts, pos, prev = [], 0, ''
+    for m in list(_NB_TAG.finditer(body)) + [None]:
+        x = body[pos:m.start() if m else len(body)]
+        if x.strip():
+            x = _nb_text(x, lang)
+            if prev != '<span class="nw">':
+                x = _NB_RANGE.sub(lambda r: '<span class="nw">' + r.group(1) + '</span>', x)
+        parts.append(x)
+        if m:  # тег, коментар або цілий блок <script>/<style>/… — без змін
+            parts.append(m.group(0))
+            prev, pos = m.group(0), m.end()
+    return head + ''.join(parts)
+
+
+def fonts_block(s):
+    """Єдиний блок @font-face (див. FONTS_CSS) на сторінці."""
+    return FONTS_RX.sub(lambda m: FONTS_TAG, s, count=1)
+
 import i18n  # реєстр мов, hreflang-кластери (tools/site/i18n.py)
 
 LANGS = i18n.LANGS
@@ -468,6 +548,8 @@ def apply(s, rel):
     s = clarity(s)
     s = skip_and_main(s, lang)
     s = versions(s)
+    s = fonts_block(s)
+    s = nbsp_prices(s, lang)
     s = i18n.fonts(s, lang)  # preload: кирилиця лише для uk/ru, латиниця — en/es/…, zh/ar — без preload
     # підключення стилів і скрипта
     if CSS_TAG not in s:

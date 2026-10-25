@@ -28,7 +28,7 @@
   ["h2", "Minimalne zamówienie, terminy dostawy i płatność"],
   ["p", "W naszym katalogu [Ozdoba (po ukraińsku)](/ozdoba) minimalne zamówienie zaczyna się od $500. Pozycje można łączyć — krzesła, oświetlenie i zastawę w jednym zamówieniu. Nie sprzedajemy pojedynczych sztuk: kompletujemy całe obiekty, więc pracujemy z pełnymi zestawami dla lokalu."],
   ["p", "Dostawa z Chin trwa 30–60 dni. To kluczowe dla harmonogramu: jeśli meble zamówi się po zakończeniu remontu, lokal będzie stał pusty, dopóki wysyłka jest w drodze. Dlatego zamawiamy zaraz po zatwierdzeniu specyfikacji — równolegle z remontem, żeby wszystko dotarło przed końcem prac."],
-  ["p", "Faktury z dokumentami rozliczeniowymi wystawiamy dla firm zarejestrowanych na Ukrainie; faktury dla firm z UE — wkrótce. Ceny w katalogu są orientacyjne: ostateczny koszt, dostępność i termin dostawy każdej pozycji potwierdzamy po otrzymaniu zapytania. Czy i na jakich warunkach możliwa jest dostawa poza Ukrainę, ustalamy osobno dla każdego projektu."],
+  ["p", "Faktury z dokumentami rozliczeniowymi wystawiamy dla firm zarejestrowanych na Ukrainie; faktury dla firm z UE — w trakcie uruchamiania. Ceny w katalogu są orientacyjne: ostateczny koszt, dostępność i termin dostawy każdej pozycji potwierdzamy po otrzymaniu zapytania. Czy i na jakich warunkach możliwa jest dostawa poza Ukrainę, ustalamy osobno dla każdego projektu."],
   ["h2", "Jak przebiega kompletacja lokalu"],
   ["ol", ["brief: typ lokalu, liczba miejsc, styl, budżet i data otwarcia", "specyfikacja z kodami produktów, wymiarami, ilościami i cenami", "akceptacja próbek tkanin, wykończeń i kolorów", "zamówienia w fabrykach i kontrola produkcji", "dostawa, odbiór i sprawdzenie kompletności", "montaż, ustawienie i instalacja oświetlenia", "końcowa stylizacja i przekazanie"]],
   ["p", "Na każdym etapie masz jedną osobę kontaktową — menedżera, który prowadzi kompletację od briefu do ustawienia. Widzisz status zamówienia i z góry wiesz, co i kiedy przyjedzie."],
@@ -48,7 +48,7 @@
  "faq": [
   ["Jakie jest minimalne zamówienie przy kompletacji z Chin?", "Od $500 w naszym katalogu Ozdoba. Pozycje można łączyć; nie sprzedajemy pojedynczych sztuk, bo kompletujemy całe obiekty."],
   ["Jak długo jadą meble i oświetlenie z Chin?", "30–60 dni. Dlatego zamawiamy zaraz po zatwierdzeniu specyfikacji, równolegle z remontem."],
-  ["Czy pracujecie z firmami?", "Tak. Faktury z dokumentami rozliczeniowymi wystawiamy dla firm zarejestrowanych na Ukrainie; faktury dla firm z UE — wkrótce."],
+  ["Czy pracujecie z firmami?", "Tak. Faktury z dokumentami rozliczeniowymi wystawiamy dla firm zarejestrowanych na Ukrainie; faktury dla firm z UE — w trakcie uruchamiania."],
   ["Czy możecie wyposażyć lokal bez własnego projektu wnętrza?", "Tak. Możemy złożyć specyfikację na podstawie rzutów i Twojej koncepcji albo pracować według projektu Twojego projektanta."]
  ]
 }

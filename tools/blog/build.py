@@ -270,6 +270,22 @@ def group(a, arts):
     return out
 
 
+def _words(p):
+    return {w for w in re.findall(r'\w{5,}', (p['title'] + ' ' + p.get('description', '')).lower())}
+
+
+def related_articles(a, arts, n=6):
+    """«Читайте також»: ручний список related (slug) у JSON, далі — схожі за темою (та сама послуга, спільні слова
+    в заголовку й описі), потім новіші. Раніше брались просто перші за датою — однакові 6 під кожною статтею."""
+    same = [p for p in arts if p['lang'] == a['lang'] and p['slug'] != a['slug']]
+    by = {p['slug']: p for p in same}
+    pick = [by[s] for s in a.get('related', []) if s in by]
+    w = _words(a)
+    score = lambda p: (3 * (p.get('service', [''])[0] == a.get('service', [''])[0]) + len(w & _words(p)), p['date'], p['slug'])
+    pick += [p for p in sorted(same, key=score, reverse=True) if p not in pick]
+    return pick[:n]
+
+
 def build_article(a, arts):
     lang, t = a['lang'], L[a['lang']]
     s = shell(rd(TPL_UK), lang)
@@ -301,8 +317,7 @@ def build_article(a, arts):
     s = re.sub(r'<script type="application/ld\+json">.*?</script>', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>', s, count=1, flags=re.S)
     s = re.sub(r'<div class="w crumbs">.*?</div>',
                f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / <a href="{t["blog_url"]}">{t["blog"]}</a> / {esc(a["title"])}</div>', s, count=1, flags=re.S)
-    same = [p for p in arts if p['lang'] == lang and p['slug'] != a['slug']]
-    same = sorted(same, key=lambda p: p['date'], reverse=True)[:6]
+    same = related_articles(a, arts)
     links = ''.join(f'<li><a href="/{path_of(p)[:-5]}">{esc(p["title"])}</a></li>' for p in same)
     if lang == 'uk':
         links += ''.join(f'<li><a href="/blog/{x["slug"]}">{esc(x["title"])}</a></li>' for x in legacy_uk()[:max(0, 6 - len(same))] if x['slug'] != a['slug'])
@@ -316,7 +331,8 @@ def build_article(a, arts):
   <h2>{t["faq"]}</h2>
   {''.join(f'<details><summary>{esc(q)}</summary><p>{esc(ans)}</p></details>' for q, ans in a["faq"])}
   <div class="cta"><h2 style="margin-top:0">{t["cta_h"]}</h2><p style="margin:0 0 16px">{t["cta_p"]}</p>
-  <div class="btns"><a class="btn main" href="{svc_url}">{esc(svc_label)}</a><a class="btn" href="tel:+380978667755">+380 97 866 77 55</a></div></div>
+  <div class="btns"><a class="btn main" href="https://t.me/+380978667755">Telegram</a><a class="btn" href="https://wa.me/380978667755">WhatsApp</a><a class="btn" href="tel:+380978667755">+380 97 866 77 55</a></div>
+  <p style="margin:14px 0 0"><a href="{svc_url}">{esc(svc_label)} →</a></p></div>
   <h2>{t["more"]}</h2><ul>{links}</ul>
 '''
     i = s.index('<article>') + 9; j = s.index('</article>')

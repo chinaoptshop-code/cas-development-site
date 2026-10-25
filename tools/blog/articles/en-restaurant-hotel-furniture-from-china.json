@@ -28,7 +28,7 @@
   ["h2", "Minimum order, delivery times and payment"],
   ["p", "In our catalogue, [Ozdoba (in Ukrainian)](/ozdoba), the minimum order starts at $500. Items can be combined — chairs, lighting and tableware in one order. We do not sell single pieces: we furnish whole properties, so we work with complete sets for a venue."],
   ["p", "Delivery from China takes 30–60 days. This is critical for the schedule: if furniture is ordered after the renovation is finished, the venue will stand empty while the shipment travels. So we order right after the specification is approved — in parallel with the renovation, so everything arrives before works are complete."],
-  ["p", "Invoices with closing documents are issued for companies registered in Ukraine; invoicing for EU companies is coming soon. Catalogue prices are indicative: we confirm the final cost, availability and delivery time for each item after your enquiry. Whether and on what terms we can deliver outside Ukraine is discussed separately for each project."],
+  ["p", "Invoices with closing documents are issued for companies registered in Ukraine; invoicing for EU companies is being set up. Catalogue prices are indicative: we confirm the final cost, availability and delivery time for each item after your enquiry. Whether and on what terms we can deliver outside Ukraine is discussed separately for each project."],
   ["h2", "How venue procurement works"],
   ["ol", ["brief: venue type, number of covers, style, budget and opening date", "specification with product codes, dimensions, quantities and prices", "approval of fabric, finish and colour samples", "factory orders and production control", "delivery, acceptance and completeness check", "assembly, placement and lighting installation", "final styling and handover"]],
   ["p", "At every step you have one contact — a manager who runs procurement from the brief to placement. You see the order status and know in advance what arrives when."],
@@ -48,7 +48,7 @@
  "faq": [
   ["What is the minimum order for sourcing from China?", "From $500 in our Ozdoba catalogue. Items can be combined; we do not sell single pieces because we furnish whole properties."],
   ["How long does furniture and lighting from China take?", "30–60 days. That is why we order right after the specification is approved, in parallel with the renovation."],
-  ["Do you work with companies?", "Yes. Invoices with closing documents are issued for companies registered in Ukraine; EU invoicing is coming soon."],
+  ["Do you work with companies?", "Yes. Invoices with closing documents are issued for companies registered in Ukraine; EU invoicing is being set up."],
   ["Can you furnish a venue without your own design project?", "Yes. We can put together a specification from the floor plans and your concept, or work from your designer's project."]
  ]
 }

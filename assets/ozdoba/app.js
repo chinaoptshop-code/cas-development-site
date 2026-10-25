@@ -27,17 +27,31 @@ let bq = {};                   // кількості в комплекті
 
 const byId = id => IT.find(i => i.id === id);
 const CS = i => DATA.colorsets[i.cs];
+/* колір позиції: -1 — «як на фото» (базове виконання, без доплати); 0… — інший колір під замовлення (catalog.json colorsets) */
+const ASIS = ['Як на фото', '#C9A86A', 0];
+const col = (i, ci) => ci == null || ci < 0 ? ASIS : (CS(i)[ci] || CS(i)[0]);
 const SS = i => i.ss ? DATA.sizesets[i.ss] : null;
-const defS = i => { const s = SS(i); if(!s) return 0; const n = s.findIndex(x=>x[1]===1); return n<0?0:n; };
+/* розмір у назві товару («…, 100 см», «Ø70», «200×300») — той, що відкривається за замовчуванням і показується на картці */
+const nz = t => String(t).toLowerCase().replace(/x/g,'×').replace(/[\sØ⌀]|см/g,'');
+const nameS = i => { const s = SS(i); if(!s) return -1; const nm = nz(i.name);
+  return s.findIndex(x => new RegExp('(^|[^\\d×.])' + nz(x[0]).replace(/[.]/g,'\\.') + '($|[^\\d×.])').test(nm)); };
+const defS = i => { const s = SS(i); if(!s) return 0; const k = nameS(i); if(k>=0) return k; const n = s.findIndex(x=>x[1]===1); return n<0?0:n; };
 const r10 = n => Math.round(n/10)*10;
+/* українська множина: 1 позиція, 2 позиції, 5 позицій */
+const plural = (n, one, few, many) => { const a=n%10, b=n%100; return a===1&&b!==11 ? one : a>=2&&a<=4&&(b<12||b>14) ? few : many; };
+const poz = n => `${n}\u00a0${plural(n,'позиція','позиції','позицій')}`;
+/* нерозривний пробіл після однолітерних прийменників і сполучників (з, й, і, у, в, а, о) */
+const nb1 = t => String(t).replace(/(^|[\s(«])([зйіувоаЗЙІУВОА])\s/g, '$1$2\u00a0');
 /* price: null — «ціна за запитом» (позиція йде в заявку, сума уточнюється менеджером) */
 function price(i, ci=0, si=null){
   if (i.price == null) return null;
   const s = SS(i), k = s ? s[si==null?defS(i):si][1] : 1;
-  return r10(i.price * k * (1 + CS(i)[ci][2]));
+  return r10(i.price * k * (1 + col(i, ci)[2]));
 }
-const minP = i => { if(i.price==null) return null; const s=SS(i); return s ? r10(i.price*Math.min(...s.map(x=>x[1]))) : price(i); };
-const money = n => n==null ? 'за запитом' : new Intl.NumberFormat('uk-UA').format(Math.round(n)) + ' ₴';
+/* ціна на картці: розмір із назви (якщо є) — інакше найменший розмір «від» */
+const minP = i => { if(i.price==null) return null; const s=SS(i); if(!s) return price(i,-1); if(nameS(i)>=0) return price(i,-1,nameS(i)); return r10(i.price*Math.min(...s.map(x=>x[1]))); };
+const fromP = i => SS(i) && nameS(i)<0;
+const money = n => n==null ? 'за запитом' : new Intl.NumberFormat('uk-UA').format(Math.round(n)).replace(/\s/g,'\u00a0') + '\u00a0₴';
 
 /* світлішаємо темні кольори, щоб лінійна графіка лишалась читаною на темному тлі */
 function vis(hex){
@@ -73,7 +87,7 @@ function venueCount(v){ return v==='all' ? IT.length : IT.filter(i=>i.vn.include
 function renderVenues(){
   document.getElementById('venues').innerHTML = DATA.venues.map(([v,label])=>`
     <button class="venue" aria-pressed="${v===venue}" onclick="setVenue('${v}')">
-      ${VICON[v]}<b>${label}</b><em>${venueCount(v)} позицій</em></button>`).join('');
+      ${VICON[v]}<b>${label}</b><em>${poz(venueCount(v))}</em></button>`).join('');
 }
 function setVenue(v){ venue=v; cat='Усе'; renderVenues(); renderChips(); render(); window.scrollTo({top:0,behavior:'smooth'}); }
 
@@ -104,7 +118,7 @@ function onSearch(){ query=document.getElementById('q').value.trim().toLowerCase
 
 /* ===================== картки ===================== */
 function cardHTML(i){
-  const s=SS(i), from = s ? 'від ' : '';
+  const from = fromP(i) ? 'від\u00a0' : '';
   return `<article class="card" onclick="openItem(${i.id})">
     <div class="tile${i.img?' ph':''}">${pic(i)}
       <button type="button" class="heart ${fav.has(i.id)?'on':''}" data-fav="${i.id}" onclick="event.stopPropagation();toggleFav(${i.id})" aria-label="В обране" aria-pressed="${fav.has(i.id)}">
@@ -112,8 +126,7 @@ function cardHTML(i){
     </div>
     <div class="body">
       <div class="sub">${i.sub}</div>
-      <a class="nm" href="/ozdoba/${i.slug}" onclick="event.preventDefault()" style="color:inherit;text-decoration:none">${i.name}</a>
-      <div class="sw">${CS(i).slice(0,5).map(c=>`<i style="background:${c[1]}"></i>`).join('')}</div>
+      <a class="nm" href="/ozdoba/${i.slug}" onclick="event.preventDefault()" style="color:inherit;text-decoration:none">${nb1(i.name)}</a>
       <div class="pr">${i.price==null?'Ціна за запитом':`${from}${money(minP(i))} <small>/ ${i.unit}</small>`}</div>
     </div></article>`;
 }
@@ -130,11 +143,11 @@ function gridList(){
   const ord={A:0,B:1,C:2};
   return [...list].sort((a,b)=>
     s==='asc'? (minP(a)??1e12)-(minP(b)??1e12) : s==='desc'? (minP(b)??-1)-(minP(a)??-1) :
-    s==='az'?  a.name.localeCompare(b.name,'uk') : (ord[a.prio]-ord[b.prio])||((minP(b)??0)-(minP(a)??0)));
+    s==='az'?  a.name.localeCompare(b.name,'uk') : ((!a.img)-(!b.img))||(ord[a.prio]-ord[b.prio])||((minP(b)??0)-(minP(a)??0)));
 }
 function renderGrid(){
   LIST = gridList(); shown = 0;
-  document.getElementById('cnt').textContent = LIST.length ? `${LIST.length} позицій` : '';
+  document.getElementById('cnt').textContent = LIST.length ? poz(LIST.length) : '';
   const g=document.getElementById('grid');
   if(!LIST.length){ g.innerHTML=`<div class="empty" style="grid-column:1/-1">Нічого не знайшли. Спробуйте інше слово або зніміть фільтр приміщення.</div>`; syncMore(); return; }
   g.innerHTML=''; showMore();
@@ -181,7 +194,7 @@ function toggleFav(id){
    за специфікацією (без тихого «доведення» до 10). Якщо в комплекті є позиції менше 10 шт, у кошик його не додати як є:
    у шторці комплекту такі позиції треба довести до 10 (+) або прибрати (−) — або надіслати запит розрахунку. */
 function bundleTotal(b, qty){
-  return b.rows.reduce((s,r,n)=>{ const q = qty ? (qty[n] ?? r.q) : r.q; return s + (price(byId(r.id),0,defS(byId(r.id)))||0)*q; },0);
+  return b.rows.reduce((s,r,n)=>{ const q = qty ? (qty[n] ?? r.q) : r.q; return s + (price(byId(r.id),-1,defS(byId(r.id)))||0)*q; },0);
 }
 const kitOk = b => b.rows.every(r=>r.q>=MINQ());
 const lowRows = () => Object.values(bq).filter(q=>q>0&&q<MINQ()).length;
@@ -212,14 +225,14 @@ function renderBundle(id){
     ${b.rows.map((r,n)=>{ const i=byId(r.id), q=bq[n]||0; return `
       <div class="ci">
         <div class="art${i.img?' ph':''}">${pic(i)}</div>
-        <div class="info"><b>${i.name}</b><em>${money(price(i,0,defS(i)))} / ${i.unit}${q>0&&q<MINQ()?` · <span style="color:var(--glow)">менше мінімуму ${MINQ()}</span>`:''}</em></div>
+        <div class="info"><b>${i.name}</b><em>${money(price(i,-1,defS(i)))} / ${i.unit}${q>0&&q<MINQ()?` · <span style="color:var(--glow)">менше мінімуму ${MINQ()}</span>`:''}</em></div>
         <div class="right">
-          <span class="s">${i.price==null?money(null):money(price(i,0,defS(i))*q)}</span>
+          <span class="s">${i.price==null?money(null):money(price(i,-1,defS(i))*q)}</span>
           <div class="qty sm"><button type="button" onclick="bqSet('${id}',${n},-1)" aria-label="Менше: ${esc(i.name)}">−</button><span aria-live="polite">${q}</span><button type="button" onclick="bqSet('${id}',${n},1)" aria-label="Більше: ${esc(i.name)}">+</button></div>
         </div></div>`; }).join('')}
-    <div class="sum total"><span>Разом, ${n0} позицій</span><span>${money(t)}</span></div>
+    <div class="sum total"><span>Разом, ${poz(n0)}</span><span>${money(t)}</span></div>
     ${vp?`<div class="sum disc"><span>Знижка за обсягом −${vp}% у кошику</span><span>−${money(Math.round(t*vp/100))}</span></div>`:''}
-    <p class="note-honest">Ціна — сума позицій каталогу. ${VOLTXT} — рахується в кошику на всю суму товарів. Поставка з Китаю 30–60 днів, рахунок для ФОП і ТОВ; рахунки для компаній з ЄС — незабаром.${b.premium?' Точну суму під ваш обʼєкт менеджер підтвердить після заявки.':''}</p>
+    <p class="note-honest">Ціна — сума позицій каталогу. ${VOLTXT} — рахується в кошику на всю суму товарів. Поставка з Китаю <span class="nw">30–60</span>\u00a0днів; ${SHIPTXT.toLowerCase()} Рахунок для ФОП і ТОВ; рахунки для компаній з ЄС — у процесі підключення.${b.premium?' Точну суму під ваш обʼєкт менеджер підтвердить після заявки.':''}</p>
     ${low?`<p class="note-honest" style="color:var(--glow)">Позицій менше ${MINQ()} шт: ${low}. Доведіть їх до ${MINQ()} («+») або приберіть («−»), щоб додати комплект у кошик, — або надішліть запит розрахунку: підберемо партію під кілька обʼєктів.</p>`:''}
     <button class="btn" onclick="addBundle('${id}')"${low?' disabled aria-disabled="true"':''}>${b.premium?'Додати весь комплект у кошик':'Додати комплект у кошик'}</button>
     <a class="btn ghost" style="text-decoration:none" href="/ozdoba/komplekty?kit=${b.id}#zayavka">Запит розрахунку під мій обʼєкт</a>`);
@@ -234,11 +247,11 @@ function addBundle(id){
   if(lowRows()){ toast(`Мінімум — ${MINQ()} шт кожної позиції`); return; }
   b.rows.forEach((r,n)=>{ const q=bq[n]||0; if(!q) return;
     const i=byId(r.id), si=defS(i);
-    const ex=cart.find(c=>c.id===i.id&&c.ci===0&&c.si===si);
-    ex ? ex.qty+=q : cart.push({id:i.id,ci:0,si,qty:q}); added++;
+    const ex=cart.find(c=>c.id===i.id&&c.ci===-1&&c.si===si&&c.kit===b.id);
+    ex ? ex.qty+=q : cart.push({id:i.id,ci:-1,si,qty:q,kit:b.id}); added++;
   });
   if(!added){ toast('Усі позиції на нулі — нічого додавати'); return; }
-  haptic('success'); closeAll(); syncBadges(); toast(b.premium?`Комплект «${b.name}» у кошику: ${added} позицій`:`Комплект додано: ${added} позицій`);
+  haptic('success'); closeAll(); syncBadges(); toast(b.premium?`Комплект «${b.name}» у кошику: ${poz(added)}`:`Комплект додано: ${poz(added)}`);
 }
 /* «Додати весь комплект у кошик» із секції /ozdoba і з /ozdoba/komplekty (#kit-k1) — кількості за замовчуванням;
    якщо в комплекті є позиції менше 10 шт — відкриваємо шторку комплекту, де їх можна довести до 10 */
@@ -249,20 +262,23 @@ function addKit(id){
 }
 
 /* ===================== картка товару ===================== */
-function openItem(id){ cur=byId(id); if(!cur) return; curC=0; curS=defS(cur); curQ=MINQ(); renderItem(); open('sheetItem'); try{history.replaceState(null,'','#p-'+id);}catch(e){} }
+function openItem(id){ cur=byId(id); if(!cur) return; curC=-1; curS=defS(cur); curQ=MINQ(); renderItem();
+  const sh=document.getElementById('sheetItem'); sh.scrollTop=0; const g=document.getElementById('gal'); if(g) g.scrollLeft=0;  // нова позиція — з початку (назва й фото)
+  open('sheetItem'); try{history.replaceState(null,'','#p-'+id);}catch(e){} }
 function renderItem(){
   const i=cur, cs=CS(i), s=SS(i);
-  const p=price(i,curC,curS), part=Math.ceil(p*curQ/4);
+  const p=price(i,curC,curS);
   paint('itemBody', `
     <div class="sh-head"><h2>${i.name}</h2><button type="button" class="x" onclick="closeAll()" aria-label="Закрити">✕</button></div>
     <div class="it-grid"><div class="it-media">
-    ${gallery(i, cs[curC][1])}
+    ${gallery(i, col(i,curC)[1])}
     </div><div class="it-info">
     <p class="desc">${i.desc}</p>
-    <div class="meta"><span class="tag">${i.sub}</span><span class="tag">Ціна за 1 ${i.unit}</span><span class="tag">Від ${MINQ()} ${i.unit}</span><span class="tag">Поставка 30–60 днів</span></div>
+    <div class="meta"><span class="tag">${i.sub}</span><span class="tag">Ціна за 1 ${i.unit}</span><span class="tag">Від ${MINQ()} ${i.unit}</span><span class="tag">Поставка <span class="nw">30–60</span>\u00a0днів</span></div>
 
-    <p class="lbl">Колір і фактура <b>${cs[curC][0]}</b></p>
-    <div class="swatches">${cs.map((c,n)=>`<button class="swatch" style="background:${c[1]}" aria-pressed="${n===curC}" title="${c[0]}" aria-label="${c[0]}" onclick="setC(${n})"></button>`).join('')}</div>
+    <p class="lbl">Колір і фактура <b>${col(i,curC)[0]}</b></p>
+    <div class="swatches"><button class="swatch asis" aria-pressed="${curC<0}" aria-label="Як на фото" onclick="setC(-1)">як на фото</button>${cs.map((c,n)=>`<button class="swatch" style="background:${c[1]}" aria-pressed="${n===curC}" title="${c[0]} — під замовлення" aria-label="${c[0]} — під замовлення" onclick="setC(${n})"></button>`).join('')}</div>
+    <p class="hint" style="margin-top:-8px">Інші кольори — виготовлення під замовлення${cs.some(c=>c[2]>0)?', ціна може відрізнятися':''}.</p>
 
     ${s ? `<p class="lbl">Розмір <b>${s[curS][0]}</b></p>
     <div class="opts">${s.map((x,n)=>`<button class="opt" aria-pressed="${n===curS}" onclick="setS(${n})">${x[0]}${i.price==null?'':`<small>${money(price(i,curC,n))}</small>`}</button>`).join('')}</div>` : ''}
@@ -272,9 +288,9 @@ function renderItem(){
 
     ${p==null?`<div class="priceline"><span class="big">Ціна за запитом</span></div><p class="hint">Додайте в кошик — менеджер назве ціну й строк разом з рештою позицій.</p>`
     :`<div class="priceline"><span class="big">${money(p*curQ)}</span>${curQ>1?`<span class="per">${money(p)} × ${curQ}</span>`:''}</div>
-    <p class="hint">Або ${money(part)} × 4 платежі без переплати</p>`}
+    <p class="hint">${SHIPTXT}</p>`}
     <div class="btn2">
-      <button type="button" class="btn ghost" style="flex:0 0 56px" onclick="toggleFav(${i.id});renderItem()" aria-label="В обране" aria-pressed="${fav.has(i.id)}">${fav.has(i.id)?'♥':'♡'}</button>
+      <button type="button" class="btn ghost fav-big" style="flex:0 0 56px" onclick="toggleFav(${i.id});renderItem()" aria-label="${fav.has(i.id)?'Прибрати з обраного':'Додати в обране'}" aria-pressed="${fav.has(i.id)}"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 20s-7-4.6-7-9.7A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.3C19 15.4 12 20 12 20z" fill="${fav.has(i.id)?'currentColor':'none'}" stroke="currentColor" stroke-width="1.9"/></svg></button>
       <button class="btn" style="flex:1" onclick="addToCart()">Додати в кошик</button>
     </div>
     ${i.specs&&i.specs.length?`<p class="lbl" style="margin-top:20px">Характеристики</p><dl class="specs">${i.specs.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`:''}
@@ -302,7 +318,7 @@ function typeQ(v){ const q=Math.round(Number(v)||0); if(q<MINQ()) toast(`Мін�
 function customHTML(i){
   const c=i.custom||[]; if(!c.length) return '';
   return `<div class="custom"><p class="lbl" style="margin-top:20px">Під ваш проєкт</p><ul>${c.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
-    <p class="note-honest" style="margin-top:6px">Виготовляємо під замовлення, поставка 30–60 днів. Мінімум — ${MINQ()} ${esc(i.unit)} позиції.</p></div>`;
+    <p class="note-honest" style="margin-top:6px">Виготовляємо під замовлення, поставка <span class="nw">30–60</span>\u00a0днів. Мінімум — ${MINQ()} ${esc(i.unit)} позиції.</p></div>`;
 }
 function addToCart(){
   const ex=cart.find(c=>c.id===cur.id&&c.ci===curC&&c.si===curS);
@@ -319,8 +335,8 @@ const count = () => cart.reduce((s,c)=>s+c.qty,0);
    (functions/api/orders.js). Особистий код партнера з нею не сумується: діє більша. */
 const VOL = () => (DATA && DATA.volume_discounts) || [];
 const volPct = g => VOL().reduce((p,[t,pc]) => g>=t ? Math.max(p,pc) : p, 0);
-const usd = n => '$' + new Intl.NumberFormat('uk-UA').format(Math.round(n/46/100)*100);  // 230 000 ₴ ≈ $5 000
-const VOLTXT_ = () => 'Знижка за обсягом: ' + VOL().map(([t,pc])=>`від ${usd(t)} — ${pc}%`).join(', ');
+const usd = n => '$' + new Intl.NumberFormat('uk-UA').format(Math.round(n/46/100)*100).replace(/\s/g,'\u00a0');  // 230 000 ₴ ≈ $5 000
+const VOLTXT_ = () => 'Знижка за обсягом: ' + VOL().map(([t,pc])=>`від\u00a0${usd(t)}\u00a0— ${pc}%`).join(', ');
 let VOLTXT = '';
 function disc(){ const g=goods(), v=volPct(g), p=promo?promo.pct:0;
   return p>v ? {kind:'partner',pct:p,code:promo.code} : v ? {kind:'volume',pct:v} : null; }
@@ -329,8 +345,10 @@ const discLabel = d => d.kind==='partner' ? `Знижка партнера ${d.c
 /* підказка «Ще Y ₴ до знижки Z%», коли до наступного порогу лишилось менше 25% */
 function volHint(){ const g=goods(), cur=disc(), n=VOL().find(([t,pc])=>g<t && pc>(cur?cur.pct:0));
   return n && n[0]-g < n[0]*0.25 ? `Ще ${money(n[0]-g)} до знижки ${n[1]}%` : ''; }
-const ship = () => (goods()-discount()) > 20000 ? 0 : 450;
-const grand = () => goods()-discount()+ship();
+/* доставка й митні платежі не фіксовані — розраховуємо індивідуально за обсягом (Михайло 25.10.2026); у суму не додаємо */
+const SHIPTXT = 'Вартість доставки й митних платежів розраховуємо індивідуально залежно від обсягу замовлення (веземо під замовлення з Китаю).';
+const ship = () => 0;
+const grand = () => goods()-discount();
 /* Оздоба комплектує обʼєкти: поштучно не продаємо, мінімальне замовлення ≈ $500 */
 const MIN_ORDER = 23000;
 const belowMin = () => !onReq() && goods()-discount() < MIN_ORDER;
@@ -340,7 +358,7 @@ function syncBadges(){ save();
   const n=count(), f=fav.size;
   const cb=document.getElementById('cartBadge'); cb.hidden=!n; cb.textContent=n;
   const fb=document.getElementById('favBadge'); fb.hidden=!f; fb.textContent=f;
-  document.getElementById('barTxt').textContent = n ? `Кошик · ${n} шт · ${money(grand())}` : 'Кошик';
+  document.getElementById('barTxt').textContent = n ? `Кошик · ${n}\u00a0шт · ${money(grand())}` : 'Кошик';
   document.getElementById('bar').classList.toggle('show', n>0);
   if(tg&&tg.MainButton){ if(n){ tg.MainButton.setText(`Кошик · ${money(grand())}`); tg.MainButton.show(); } else tg.MainButton.hide(); }
 }
@@ -355,10 +373,12 @@ function renderCart(){
   }
   paint('cartBody', `
     <div class="sh-head"><h2>Кошик</h2><button type="button" class="x" onclick="closeAll()" aria-label="Закрити">✕</button></div>
-    ${cart.map((c,n)=>{ const i=byId(c.id), s=SS(i);
-      return `<div class="ci">
-        <div class="art${i.img?' ph':''}"><span style="color:${vis(CS(i)[c.ci][1])};display:contents">${pic(i)}</span></div>
-        <div class="info"><b>${i.name}</b><em>${CS(i)[c.ci][0]}${s?' · '+s[c.si][0]:''} · ${money(price(i,c.ci,c.si))}/${i.unit}</em>
+    ${cart.map((c,n)=>{ const i=byId(c.id), s=SS(i), k=c.kit&&BU.find(b=>b.id===c.kit);
+      const head = k && (n===0 || cart[n-1].kit!==c.kit) ? (()=>{ const m=cart.filter(x=>x.kit===c.kit).length;
+        return `<div class="kit-row"><span>Комплект «${esc(k.name)}» · ${poz(m)}</span><button type="button" class="rm" onclick="rmKit('${c.kit}')">Прибрати комплект</button></div>`; })() : '';
+      return `${head}<div class="ci${c.kit?' in-kit':''}">
+        <div class="art${i.img?' ph':''}"><span style="color:${vis(col(i,c.ci)[1])};display:contents">${pic(i)}</span></div>
+        <div class="info"><b>${i.name}</b><em>${col(i,c.ci)[0]}${s?' · '+s[c.si][0]:''} · ${money(price(i,c.ci,c.si))}/${i.unit}</em>
           <div class="qty sm" style="margin-top:6px"><button type="button" onclick="cq(${n},-1)" aria-label="Менше на ${MINQ()}: ${esc(i.name)}">−</button><input type="number" inputmode="numeric" min="${MINQ()}" value="${c.qty}" aria-label="Кількість: ${esc(i.name)}, мінімум ${MINQ()}" onchange="cqSet(${n},this.value)"><button type="button" onclick="cq(${n},1)" aria-label="Більше на ${MINQ()}: ${esc(i.name)}">+</button></div></div>
         <div class="right"><span class="s">${money(lineSum(c))}</span><button class="rm" onclick="rm(${n})">Прибрати</button></div>
       </div>`; }).join('')}
@@ -371,15 +391,20 @@ function renderCart(){
     <div class="sum"><span>Товари, ${count()} шт</span><span>${money(goods())}</span></div>
     ${disc()?`<div class="sum disc"><span>${discLabel(disc())}</span><span>−${money(discount())}</span></div>`:''}
     ${volHint()?`<p class="note-honest" style="margin:2px 0 6px;color:var(--glow)">${volHint()}</p>`:''}
-    <div class="sum"><span>Доставка по Україні</span><span>${ship()?money(ship()):'безкоштовно'}</span></div>
+    <div class="sum"><span>Доставка й митні платежі</span><span>розраховуємо індивідуально</span></div>
     ${onReq()?`<div class="sum"><span>Позицій за запитом: ${onReq()}</span><span>ціну назве менеджер</span></div>`:''}
-    <div class="sum total"><span>${onReq()?'Сума відомих позицій':'До сплати'}</span><span>${money(grand())}</span></div>
-    <p class="note-honest" style="margin:2px 0 6px">Мінімум — ${MINQ()} шт (одиниць) кожної позиції. Товари виготовляємо під замовлення, поставка з Китаю 30–60 днів.</p>
-    ${belowMin()?`<p class="note-honest" style="color:var(--glow)">Мінімальне замовлення — ${money(MIN_ORDER)} (≈ $500) і від ${MINQ()} шт кожної позиції: ми комплектуємо обʼєкти й не продаємо поштучно. Додайте позиції або візьміть готовий комплект.</p>
+    <div class="sum total"><span>${onReq()?'Сума відомих позицій':belowMin()?'Разом':'Разом за товари'}</span><span>${money(grand())}</span></div>
+    <p class="note-honest" style="margin:2px 0 6px">Мінімум — ${MINQ()}\u00a0шт (одиниць) кожної позиції. Товари виготовляємо під замовлення, поставка з Китаю <span class="nw">30–60</span>\u00a0днів. ${SHIPTXT}</p>
+    ${belowMin()?`<p class="note-honest" style="color:var(--glow)">До мінімального замовлення залишилось ${money(MIN_ORDER-(goods()-discount()))}. Мінімальне замовлення — ${money(MIN_ORDER)} (≈\u00a0$500) і від ${MINQ()}\u00a0шт кожної позиції: ми комплектуємо обʼєкти й не продаємо поштучно. Додайте позиції або візьміть готовий комплект.</p>
     <button class="btn ghost" onclick="closeAll();setTab('bundles')">Дивитись комплекти</button>`
     :`<button class="btn" onclick="openPay()">Оформити замовлення</button>`}
-    <button class="btn ghost" onclick="copyEstimate()">Скопіювати кошторис</button>`);
+    <button class="btn ghost" onclick="copyEstimate()">Скопіювати кошторис</button>
+    <button type="button" class="btn ghost clear" onclick="clearCart()">Очистити кошик</button>`);
 }
+function rmKit(id){ const k=BU.find(b=>b.id===id); cart=cart.filter(c=>c.kit!==id); haptic(); syncBadges(); renderCart();
+  toast(`Комплект${k?' «'+k.name+'»':''} прибрано з кошика`); }
+function clearCart(){ if(!cart.length) return; if(!confirm('Очистити кошик? Усі позиції буде прибрано.')) return;
+  cart=[]; promo=null; promoErr=''; haptic(); syncBadges(); renderCart(); toast('Кошик очищено'); }
 function cq(n,d){ const q=cart[n].qty+d*MINQ();
   if(q<MINQ()){ toast(`Мінімум — ${MINQ()} ${byId(cart[n].id).unit} кожної позиції. Щоб прибрати, натисніть «Прибрати»`); return; }
   cart[n].qty=q; haptic(); syncBadges(); renderCart(); }
@@ -401,10 +426,10 @@ async function applyPromo(){
 }
 function copyEstimate(){
   const lines=cart.map(c=>{ const i=byId(c.id), s=SS(i);
-    return `${i.name} — ${CS(i)[c.ci][0]}${s?', '+s[c.si][0]:''} — ${c.qty} ${i.unit} × ${money(price(i,c.ci,c.si))} = ${money(lineSum(c))}`; });
+    return `${i.name} — ${col(i,c.ci)[0]}${s?', '+s[c.si][0]:''} — ${c.qty} ${i.unit} × ${money(price(i,c.ci,c.si))} = ${money(lineSum(c))}`; });
   const txt=['КОШТОРИС · Оздоба','',...lines,'',
     `Товари: ${money(goods())}`, disc()?`${discLabel(disc())}: −${money(discount())}`:null,
-    `Доставка: ${ship()?money(ship()):'безкоштовно'}`,`РАЗОМ: ${money(grand())}`].filter(Boolean).join('\n');
+    `РАЗОМ за товари: ${money(grand())}`, `Доставка й митні платежі: розраховуємо індивідуально залежно від обсягу замовлення`].filter(Boolean).join('\n');
   const done=()=>toast('Кошторис у буфері обміну');
   if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done,()=>fb());
   else fb();
@@ -415,7 +440,7 @@ function copyEstimate(){
 /* ===================== оплата ===================== */
 function openPay(){ if(belowMin()){ toast('Мінімальне замовлення — '+money(MIN_ORDER)); return; } renderPay(); close('sheetCart'); setTimeout(()=>open('sheetPay'),130); }
 function renderPay(){
-  const g=grand(), part=Math.ceil(g/4);
+  const g=grand();
   const u=tg&&tg.initDataUnsafe&&tg.initDataUnsafe.user;
   const nm=esc(acct&&acct.name||(u?[u.first_name,u.last_name].filter(Boolean).join(' '):''));
   paint('payBody', `
@@ -428,20 +453,16 @@ function renderPay(){
     <p class="lbl" style="margin-top:18px">Як вам зручніше оплатити</p>
     <button class="pay" aria-pressed="${payMethod==='card'}" onclick="setPay('card')"><span class="dot"></span>
       <span><b>Карткою онлайн</b><small>Посилання на оплату надішле менеджер після підтвердження наявності.</small></span></button>
-    <button class="pay" aria-pressed="${payMethod==='parts'}" onclick="setPay('parts')"><span class="dot"></span>
-      <span><b>Оплата частинами</b><small>Орієнтовно ${money(part)} × 4 платежі — умови підтвердить менеджер.</small>
-      <span class="banks"><i style="background:#8CC63E"></i><i style="background:#101010"></i><i style="background:#E30613"></i></span></span></button>
     <button class="pay" aria-pressed="${payMethod==='invoice'}" onclick="setPay('invoice')"><span class="dot"></span>
       <span><b>Рахунок для ФОП або ТОВ</b><small>Безготівковий розрахунок з ПДВ, закривні документи. Відвантаження після зарахування.</small></span></button>
-    <button class="pay" aria-pressed="${payMethod==='cod'}" onclick="setPay('cod')"><span class="dot"></span>
-      <span><b>При отриманні</b><small>Наложений платіж. Комісія перевізника 20 ₴ + 2%. Для замовлень до 20 000 ₴.</small></span></button>
 
-    <div class="sum total"><span>Орієнтовна сума</span><span>${money(g)}</span></div>
+    <div class="sum total"><span>Орієнтовна сума за товари</span><span>${money(g)}</span></div>
+    <p class="note-honest" style="margin-top:0">${SHIPTXT}</p>
     <button class="btn" id="sendBtn" onclick="pay()">Надіслати заявку</button>
     <p class="note-honest">Це заявка, а не оплата: гроші зараз не списуються. Менеджер зателефонує, підтвердить наявність,
       ціну й строк поставки і надішле рахунок або посилання на оплату.</p>`);
 }
-function setPay(m){ payMethod=m; renderPay(); }
+function setPay(m){ payMethod=m==='invoice'?'invoice':'card'; renderPay(); }
 async function pay(){
   const v=id=>((document.getElementById(id)||{}).value||'').trim();
   const nm=v('fName'), ph=v('fPhone'), np=v('fNp'), edr=v('fEdr');
@@ -451,11 +472,11 @@ async function pay(){
   const g=grand(), ord='OZD-'+Date.now().toString().slice(-7);
   const PM={cod:'при отриманні',parts:'частинами',invoice:'рахунок ФОП/ТОВ',card:'карткою онлайн'};
   const lines=cart.map(c=>{ const i=byId(c.id), s=SS(i);
-    return `• ${i.name} — ${CS(i)[c.ci][0]}${s?', '+s[c.si][0]:''} — ${c.qty} ${i.unit} × ${money(price(i,c.ci,c.si))} = ${money(lineSum(c))}`; });
+    return `• ${i.name} — ${col(i,c.ci)[0]}${s?', '+s[c.si][0]:''} — ${c.qty} ${i.unit} × ${money(price(i,c.ci,c.si))} = ${money(lineSum(c))}`; });
   const message=[`Замовлення ${ord} з Оздоби`,...lines,
     `Товари: ${money(goods())}`, disc()?`${discLabel(disc())}: −${money(discount())}`:null,
     promo&&disc()&&disc().kind!=='partner'?`Код партнера ${promo.code} (−${promo.pct}%) — діє більша знижка за обсягом`:null,
-    `Доставка: ${ship()?money(ship()):'безкоштовно'}`, `РАЗОМ (орієнтовно): ${money(g)}`,
+    `РАЗОМ за товари (орієнтовно): ${money(g)}`, 'Доставка й митні платежі: розраховуємо індивідуально',
     `Оплата: ${PM[payMethod]||payMethod}`, np?`Нова Пошта: ${np}`:null, edr?`Компанія/ЄДРПОУ: ${edr}`:null].filter(Boolean).join('\n');
   const btn=document.getElementById('sendBtn'); if(btn){ btn.disabled=true; btn.textContent='Надсилаємо…'; }
   let ok=false, num=ord;
@@ -525,6 +546,7 @@ function account(){ // показуємо «Кабінет», лише коли 
 function boot(d){ account();
   DATA=d; IT=d.items; BU=d.bundles; VOLTXT=VOLTXT_(); for(const k in d.art) ART[k]=S(d.art[k]);
   try{ JSON.parse(localStorage.getItem('ozd-cart')||'[]').forEach(c=>{ if(byId(c.id)) cart.push({...c,qty:Math.max(MINQ(),Math.round(Number(c.qty)||0))}); });
+       if(!['card','invoice'].includes(payMethod)) payMethod='card';
        JSON.parse(localStorage.getItem('ozd-fav')||'[]').forEach(id=>{ if(byId(id)) fav.add(id); }); }catch(e){}
   renderVenues(); renderChips();
   // перші картки каталогу вже є в HTML (tools/products/build.py) — не перемальовуємо їх, лише дорендерюємо решту

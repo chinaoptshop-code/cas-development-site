@@ -23,7 +23,43 @@ S = '<svg viewBox="0 0 100 80" fill="none" stroke="currentColor" stroke-width="2
 e = lambda s: html.escape(str(s), quote=True)
 
 
-def r10(n): return round(n / 10) * 10
+def r10(n):
+    """Округлення до 10 ₴ «половина вгору» — як Math.round в app.js (round() у Python банківське: 24 225 → 24 220 замість 24 230)."""
+    return int(n / 10 + 0.5) * 10 if n >= 0 else -int(-n / 10 + 0.5) * 10
+
+
+def plural(n, one='позиція', few='позиції', many='позицій'):
+    """Українська множина: 1 позиція, 22 позиції, 15 позицій (як plural() в app.js)."""
+    a, b = n % 10, n % 100
+    w = one if a == 1 and b != 11 else few if 2 <= a <= 4 and not 12 <= b <= 14 else many
+    return f'{n}\u00a0{w}'
+
+
+def _nz(t):
+    return re.sub(r'[\sØ⌀]|см', '', str(t).lower().replace('x', '×'))
+
+
+def name_size(d, i):
+    """Індекс розміру з назви товару («…, 100 см», «Ø70», «200×300») або -1 — як nameS() в app.js."""
+    ss = d['sizesets'].get(i['ss']) if i.get('ss') else None
+    if not ss: return -1
+    nm = _nz(i['name'])
+    for n, (lab, _) in enumerate(ss):
+        if re.search(r'(^|[^\d×.])' + re.escape(_nz(lab)) + r'($|[^\d×.])', nm): return n
+    return -1
+
+
+def def_size(d, i):
+    """Розмір за замовчуванням (defS в app.js): з назви, інакше множник 1."""
+    ss = d['sizesets'].get(i['ss']) if i.get('ss') else None
+    if not ss: return 0
+    k = name_size(d, i)
+    return k if k >= 0 else next((n for n, x in enumerate(ss) if x[1] == 1), 0)
+
+
+def is_from(d, i):
+    """«від» перед ціною — лише коли розмір обирається і його немає в назві."""
+    return bool(i.get('ss')) and name_size(d, i) < 0
 
 
 def with_fav(s):
@@ -39,10 +75,12 @@ MINQ = 10  # мінімум 10 шт (одиниць) кожної позиції
 
 
 def min_price(d, i):
+    """Ціна на картці (minP в app.js): розмір із назви, інакше найменший розмір; колір «як на фото» (без доплати)."""
     if i.get('price') is None: return None
     ss = d['sizesets'].get(i['ss']) if i.get('ss') else None
+    if ss and name_size(d, i) >= 0: return r10(i['price'] * ss[name_size(d, i)][1])
     if ss: return r10(i['price'] * min(k for _, k in ss))
-    return r10(i['price'] * (1 + d['colorsets'][i['cs']][0][2]))
+    return r10(i['price'])
 
 
 def money(n):
@@ -61,17 +99,15 @@ def pic(d, i):
 def price_html(d, i):
     mp = min_price(d, i)
     if mp is None: return 'Ціна за запитом'
-    return f'{"від " if i.get("ss") else ""}{money(mp)} <small>/ {e(i["unit"])}</small>'
+    return f'{"від " if is_from(d, i) else ""}{money(mp)} <small>/ {e(i["unit"])}</small>'
 
 
 def card(d, i):
-    frm = 'від ' if i.get('ss') else ''
-    sw = ''.join(f'<i style="background:{c[1]}"></i>' for c in d['colorsets'][i['cs']][:5])
     heart = (f'<button type="button" class="heart" data-fav="{i["id"]}" onclick="event.stopPropagation();toggleFav({i["id"]})" aria-label="В обране" aria-pressed="false">'
              '<svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.7A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.3C19 15.4 12 20 12 20z"/></svg></button>')
     return (f'<article class="card" onclick="openItem({i["id"]})"><div class="tile{" ph" if i.get("img") else ""}">{pic(d, i)}{heart}</div>'
             f'<div class="body"><div class="sub">{e(i["sub"])}</div><a class="nm" href="/ozdoba/{i["slug"]}" onclick="if(window.openItem)event.preventDefault()" style="color:inherit;text-decoration:none">{e(i["name"])}</a>'
-            f'<div class="sw">{sw}</div><div class="pr">{price_html(d, i)}</div></div></article>')
+            f'<div class="pr">{price_html(d, i)}</div></div></article>')
 
 
 def main():
@@ -87,7 +123,7 @@ def main():
             if b and not os.path.exists(os.path.join(ROOT, b + '-800.webp')):
                 raise SystemExit(f'немає фото {b}-800.webp для товару {i["id"]}')
     order = {'A': 0, 'B': 1, 'C': 2}
-    items = sorted(d['items'], key=lambda i: (order.get(i['prio'], 3), -(min_price(d, i) or 0)))
+    items = sorted(d['items'], key=lambda i: (not i.get('img'), order.get(i['prio'], 3), -(min_price(d, i) or 0)))  # без фото — у кінці
     grid = ''.join(card(d, i) for i in items[:FIRST])  # решту карток app.js дорендерює частинами; кожен товар має свою сторінку
     # ItemList — лише картки, які є в HTML (швидкий перший рендер); решта товарів — у категоріях і sitemap
     ld = {'@context': 'https://schema.org', '@type': 'ItemList', 'name': 'Оздоба — каталог меблів, світла й декору',
@@ -100,7 +136,7 @@ def main():
     s = re.sub(r'<!--ozd:ld-->.*?<!--/ozd:ld-->', lambda m: '<!--ozd:ld--><script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script><!--/ozd:ld-->', s, count=1, flags=re.S)
     s = re.sub(r'/assets/ozdoba/catalog\.json\?v=\w+', '/assets/ozdoba/catalog.json?v=' + ver(CAT), s)
     s = re.sub(r'/assets/ozdoba/app\.js\?v=\w+', '/assets/ozdoba/app.js?v=' + ver(APP), s)
-    s = re.sub(r'<span class="cnt" id="cnt">[^<]*</span>', f'<span class="cnt" id="cnt">{len(items)} позицій</span>', s, count=1)
+    s = re.sub(r'<span class="cnt" id="cnt">[^<]*</span>', f'<span class="cnt" id="cnt">{plural(len(items))}</span>', s, count=1)
     s = re.sub(r'<!--ozd:kits-->.*?<!--/ozd:kits-->', lambda m: '<!--ozd:kits-->' + kits_cards(d) + '<!--/ozd:kits-->', s, count=1, flags=re.S)
     open(PAGE, 'w', encoding='utf-8').write(with_fav(chrome.apply(s, 'ozdoba.html')))
     pages = product_pages(d)
@@ -150,7 +186,7 @@ def product_titles(items):
 def product_desc(d, i):
     """meta description товару ≤160: ціна, опис (обрізаний по словах), доставка, мін. замовлення."""
     mp = min_price(d, i)
-    head = f'Ціна {"від " if i.get("ss") else ""}{money(mp)} за {i["unit"]}. ' if mp is not None else 'Ціна за запитом. '
+    head = f'Ціна {"від " if is_from(d, i) else ""}{money(mp)} за {i["unit"]}. ' if mp is not None else 'Ціна за запитом. '
     tail = ' Від 10 шт, під ваш проєкт, замовлення від $500.'
     room = 160 - len(head) - len(tail)
     body = i['desc'].strip()
@@ -175,10 +211,10 @@ def product_page(d, i, shell, items, title):
     colors = d['colorsets'][i['cs']]
     sizes = d['sizesets'].get(i['ss']) if i.get('ss') else None
     specs = list(i.get('specs') or [])
-    rows = [('Категорія', i['sub']), ('Кольори й фактури', ', '.join(c[0] for c in colors))]
+    rows = [('Категорія', i['sub']), ('Колір', 'як на фото; під замовлення також: ' + ', '.join(c[0] for c in colors))]
     if sizes: rows.append(('Розміри', ', '.join(s[0] for s in sizes)))
     mq = d.get('min_qty', MINQ)
-    rows += [(k, v) for k, v in specs] + [('Одиниця', i['unit']), ('Мінімальна кількість', f'{mq} {i["unit"]} (менше не можна)'), ('Поставка', '30–60 днів, виготовлення під замовлення'), ('Підходить для', ', '.join(VENUE[v] for v in i['vn'] if v in VENUE))]
+    rows += [(k, v) for k, v in specs] + [('Одиниця', i['unit']), ('Мінімальна кількість', f'{mq} {i["unit"]} (менше не можна)'), ('Поставка', '30–60 днів, виготовлення під замовлення'), ('Доставка й митні платежі', 'розраховуємо індивідуально залежно від обсягу замовлення'), ('Підходить для', ', '.join(VENUE[v] for v in i['vn'] if v in VENUE))]
     custom = list(i.get('custom') or [])
     custom_html = (f'<div class="pp-custom"><h2>Під ваш проєкт</h2><ul>{"".join(f"<li>{e(x)}</li>" for x in custom)}</ul>'
                    f'<p>Виготовляємо під замовлення, поставка 30–60 днів. Мінімум — {mq} {e(i["unit"])} кожної позиції; поштучно не продаємо, замовлення від $500 (≈ 23 000 ₴).</p></div>') if custom else ''
@@ -224,11 +260,10 @@ def product_page(d, i, shell, items, title):
       <h1>{e(i["name"])}</h1>
       <p class="pp-price">{price_html(d, i)}</p>
       <p class="desc">{e(i["desc"])}</p>
-      <div class="sw pp-sw">{''.join(f'<i style="background:{c[1]}" title="{e(c[0])}"></i>' for c in colors)}</div>
       <p class="pp-btns"><a class="btn" href="/ozdoba#p-{i["id"]}">Обрати колір і додати в кошик</a><a class="btn ghost" href="#zayavka">Запитати ціну й наявність</a></p>
       {custom_html}
       <dl class="specs">{''.join(f'<dt>{e(k)}</dt><dd>{e(v)}</dd>' for k, v in rows)}</dl>
-      <p class="note-honest">Ціна орієнтовна: остаточну вартість, наявність і строк менеджер підтверджує після заявки. Рахунок для ФОП і ТОВ; рахунки для компаній з ЄС — незабаром (у процесі підключення).</p>
+      <p class="note-honest">Ціна орієнтовна: остаточну вартість, наявність і строк менеджер підтверджує після заявки. Вартість доставки й митних платежів розраховуємо індивідуально залежно від обсягу замовлення (веземо під замовлення з Китаю). Рахунок для ФОП і ТОВ; рахунки для компаній з ЄС — у процесі підключення.</p>
     </div>
   </article>
 </div>
@@ -238,7 +273,7 @@ def product_page(d, i, shell, items, title):
     <div class="field"><label for="oName">Імʼя</label><input id="oName" autocomplete="name"></div>
     <div class="field"><label for="oPhone">Телефон *</label><input id="oPhone" aria-describedby="oErr" type="tel" autocomplete="tel" placeholder="097 123 45 67"><div class="err" id="oErr" role="alert" style="color:#e07a6a;font-size:var(--fs-small);margin-top:6px"></div></div>
     <div class="field"><label for="oArea">Кількість (від 10)</label><input id="oArea" inputmode="numeric" placeholder="напр. 24"></div>
-    <div class="field"><label for="oMsg">Коментар</label><input id="oMsg" placeholder="Колір, розмір, матеріал, обʼєкт, терміни"></div>
+    <div class="field"><label for="oMsg">Коментар</label><input id="oMsg" placeholder="Колір, розмір, обʼєкт"></div>
     <button class="btn" id="oBtn" type="submit">Надіслати запит</button>
   </form>
   <div class="ok" id="oOk" role="status" tabindex="-1" style="display:none"><h3>Запит отримано</h3><p style="color:var(--muted)">Менеджер звʼяжеться з вами в робочий час.</p></div>
@@ -285,6 +320,7 @@ PP_CSS = """
 .pp-sw i{width:22px;height:22px}
 .pp-btns{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 22px}
 .pp-btns .btn{width:auto;margin:0;padding:15px 22px;text-decoration:none}
+@media(max-width:599px){.pp-btns{display:grid}.pp-btns .btn{width:100%}}
 .pp-form{display:grid;gap:4px;max-width:560px}
 .pp-form .btn{width:auto;justify-self:start;padding:15px 26px}
 .pp-rel{padding:0}
@@ -395,7 +431,7 @@ def category_pages(d):
         body = f'''<div class="w">
   <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / {e(cat)}</div>
   <div class="ozd-hero"><h1>{e(h1)}</h1><p>{e(lead)}</p>
-  <ul class="pts"><li>{len(items)} позицій</li><li>Напряму з фабрик Китаю</li><li>Замовлення від $500</li><li>Від 10 шт кожної позиції</li><li>Під ваш проєкт</li><li>Рахунок для ФОП і ТОВ</li><li>Доставка по Україні</li></ul></div>
+  <ul class="pts"><li>{plural(len(items))}</li><li>Напряму з фабрик Китаю</li><li>Замовлення від $500</li><li>Від 10 шт кожної позиції</li><li>Під ваш проєкт</li><li>Рахунок для ФОП і ТОВ</li><li>Доставка й мито — розрахунок за обсягом</li></ul></div>
 </div>
 <main class="grid">{cards}</main>
 <section class="ozd-sec ozd-intro"><h2>{e(cat)} під замовлення: що входить і для кого</h2>{intro}</section>
@@ -437,12 +473,11 @@ KITS_URL = f'{SITE}/ozdoba/komplekty'
 
 
 def item_price(d, i):
-    """Ціна позиції як у app.js price(i, 0, defS(i)): розмір за замовчуванням (множник 1) і перший колір."""
+    """Ціна позиції як у app.js price(i, -1, defS(i)): розмір за замовчуванням (з назви або множник 1), колір «як на фото»."""
     if i.get('price') is None: return None
     ss = d['sizesets'].get(i['ss']) if i.get('ss') else None
-    k = 1
-    if ss: k = ss[next((n for n, x in enumerate(ss) if x[1] == 1), 0)][1]
-    return r10(i['price'] * k * (1 + d['colorsets'][i['cs']][0][2]))
+    k = ss[def_size(d, i)][1] if ss else 1
+    return r10(i['price'] * k)
 
 
 def vol_pct(d, total):
@@ -476,7 +511,7 @@ def kit_collage(rows):
 
 def kit_total(total, onreq, d=None):
     vp = vol_pct(d, total) if d else 0
-    return (money(total) + (f' <small>+ {onreq} поз. за запитом</small>' if onreq else '')
+    return (money(total) + (f' <small>без {onreq} поз. за запитом (ціну назве менеджер)</small>' if onreq else '')
             + (f' <small>· зі знижкою за обсягом −{vp}%: {money(total - int(total * vp / 100 + 0.5))}</small>' if vp else ''))
 
 
@@ -493,7 +528,7 @@ def kits_cards(d):
     out = []
     for b, rows, total, onreq in kits(d):
         out.append(f'<article class="kit" id="kit-{b["id"]}">{kit_collage(rows)}<div class="kb"><h3>{e(b["name"])}</h3>'
-                   f'<p class="knote">{e(b["note"])}</p><p class="ksum">{len(rows)} позицій · <b>{kit_total(total, onreq, d)}</b></p>{kit_low(d, rows)}'
+                   f'<p class="knote">{e(b["note"])}</p><p class="ksum">{plural(len(rows))} · <b>{kit_total(total, onreq, d)}</b></p>{kit_low(d, rows)}'
                    f'<div class="kbtn"><button type="button" class="btn" onclick="window.addKit&amp;&amp;addKit(\'{b["id"]}\')">Додати весь комплект у кошик</button>'
                    f'<a class="btn ghost" href="/ozdoba/komplekty?kit={b["id"]}#zayavka">Запит розрахунку під мій обʼєкт</a></div>'
                    f'<a class="kmore" href="/ozdoba/komplekty#k-{b["id"]}">Склад комплекту</a></div></article>')
@@ -506,8 +541,9 @@ KITS_FAQ = [
     ('Як порахована ціна комплекту?', 'Це сума позицій каталогу Оздоби: ціна кожної позиції × кількість. Знижка за обсягом рахується в кошику від усієї суми товарів. Ціни орієнтовні — остаточну вартість, наявність і строк менеджер підтверджує після заявки.'),
     ('Чи є знижка на комплект?', 'Так, діє знижка за обсягом на всю суму товарів, включно з комплектами: від $5 000 (≈ 230 000 ₴) — 3%, від $10 000 (≈ 460 000 ₴) — 5%, від $20 000 (≈ 920 000 ₴) — 7%. Кошик рахує її автоматично. Дизайнерам і архітекторам даємо особистий код партнера — знижки не сумуються, діє більша.'),
     ('Можна змінити склад або кількості?', 'Так. Комплект — це стартова специфікація: у кошику міняйте кількості, прибирайте позиції чи додавайте інші з каталогу. Мінімум — 10 шт (одиниць) кожної позиції: якщо в комплекті позиція менша, у кошику доведіть її до 10 або приберіть — або надішліть запит розрахунку, підберемо партію під кілька обʼєктів. Під креслення або дизайн-проєкт порахуємо комплектацію саме вашого обʼєкта.'),
+    ('Скільки коштує доставка?', 'Вартість доставки й митних платежів розраховуємо індивідуально залежно від обсягу замовлення: веземо під замовлення з Китаю. Менеджер назве суму разом із підтвердженням цін і строку поставки.'),
     ('Скільки чекати поставку?', 'Поставка з Китаю — 30–60 днів. Замовлення краще робити паралельно з ремонтом, щоб меблі й світло приїхали до фінішу робіт. Мінімальне замовлення — $500 (≈ 23 000 ₴) і від 10 шт кожної позиції, поштучно не продаємо.'),
-    ('Працюєте з компаніями?', 'Так, виставляємо рахунок для ФОП і ТОВ із закривними документами; рахунки для компаній з ЄС — незабаром (у процесі підключення). Для готелів, ресторанів і офісів можемо взяти обʼєкт повністю — від дизайну й ремонту до розстановки меблів.'),
+    ('Працюєте з компаніями?', 'Так, виставляємо рахунок для ФОП і ТОВ із закривними документами; рахунки для компаній з ЄС — у процесі підключення. Для готелів, ресторанів і офісів можемо взяти обʼєкт повністю — від дизайну й ремонту до розстановки меблів.'),
 ]
 
 
@@ -520,10 +556,10 @@ def kit_section(d, b, rows, total, onreq):
     note = f' (без {onreq} поз. за запитом)' if onreq else ''
     return (f'<section class="ozd-sec kitp" id="k-{b["id"]}">\n  <h2>{e(b["name"])}</h2>\n'
             f'  <div class="kitp-top">{kit_collage(rows)}<div><p class="knote">{e(b["note"])}</p>\n'
-            f'  <p class="ksum">{len(rows)} позицій · разом <b>{kit_total(total, onreq, d)}</b></p>{kit_low(d, rows)}\n'
+            f'  <p class="ksum">{plural(len(rows))} · разом <b>{kit_total(total, onreq, d)}</b></p>{kit_low(d, rows)}\n'
             f'  <div class="kbtn"><a class="btn" href="/ozdoba#kit-{b["id"]}">Додати весь комплект у кошик</a>'
             f'<a class="btn ghost" href="?kit={b["id"]}#zayavka">Запит розрахунку під мій обʼєкт</a></div></div></div>\n'
-            f'  <details class="ktbl"><summary>Склад комплекту: {len(rows)} позицій</summary><div class="tscroll"><table>'
+            f'  <details class="ktbl"><summary>Склад комплекту: {plural(len(rows))}{f" (з них {onreq} за запитом)" if onreq else ""}</summary><div class="tscroll"><table>'
             f'<thead><tr><th>Позиція</th><th>К-сть</th><th>Ціна</th><th>Сума</th></tr></thead><tbody>{"".join(line(i, q) for i, q in rows)}</tbody>'
             f'<tfoot><tr><td colspan="3">Разом{note}</td><td>{money(total)}</td></tr></tfoot></table></div></details>\n</section>')
 
@@ -547,7 +583,7 @@ KITS_BODY = '''<div class="w">
     <div class="field"><label for="oName">Імʼя</label><input id="oName" autocomplete="name"></div>
     <div class="field"><label for="oPhone">Телефон *</label><input id="oPhone" aria-describedby="oErr" type="tel" autocomplete="tel" placeholder="097 123 45 67"><div class="err" id="oErr" role="alert" style="color:#e07a6a;font-size:var(--fs-small);margin-top:6px"></div></div>
     <div class="field"><label for="oArea">Площа, місця або номери</label><input id="oArea" placeholder="напр. 120 м² або 40 місць"></div>
-    <div class="field"><label for="oMsg">Обʼєкт і комплект</label><input id="oMsg" placeholder="Ресторан, готель, офіс; місто; бажаний строк"></div>
+    <div class="field"><label for="oMsg">Обʼєкт і комплект</label><input id="oMsg" placeholder="Ресторан, місто, строк"></div>
     <button class="btn" id="oBtn" type="submit">Надіслати запит</button>
   </form>
   <div class="ok" id="oOk" role="status" tabindex="-1" style="display:none"><h3>Запит отримано</h3><p style="color:var(--muted)">Менеджер звʼяжеться з вами в робочий час.</p></div>

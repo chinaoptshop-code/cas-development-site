@@ -31,7 +31,7 @@
   ["gallery", [["/img/p/1MP_RPGiZ7XjIO-900.webp", "Jadalnia z papierowym żyrandolem, drewnianym stołem i podświetlanymi wnękami — projekt Pidgirland"], ["/img/p/17c2Uv-OmlrmLD-900.webp", "Schody z podświetlanymi stopniami i lampami wiszącymi — projekt domu Pidgirland"]]],
   ["h2", "Porównanie: stan surowy a pod klucz"],
   ["ul", ["budżet na start: stan surowy — mniejszy; pod klucz — większy, ale kompletny", "Twój czas: stan surowy — dużo koordynacji; pod klucz — minimum", "kontrola jakości: stan surowy — u każdego wykonawcy inna; pod klucz — jeden standard", "gwarancja: stan surowy — w częściach od różnych wykonawców; pod klucz — na cały zakres", "ryzyko przeróbek: stan surowy — wyższe na stykach; pod klucz — niższe"]],
-  ["p", "Jest też wariant pośredni: zamówić stan surowy i instalacje u jednego zespołu, a wykończenie później. Kluczowe, żeby projekt instalacji był gotowy przed startem budowy."],
+  ["p", "Jest też wariant pośredni: zamówić stan surowy i instalacje u jednego zespołu, a wykończenie później. Kluczowe jest, żeby projekt instalacji był gotowy przed startem budowy."],
   ["h2", "Jak porównywać oferty wykonawców"],
   ["p", "Cena za metr kwadratowy to wygodny punkt odniesienia, ale porównywanie wyłącznie po niej jest ryzykowne. Jedna firma wlicza do stanu surowego okna i ocieplony dach, inna tylko ściany i stropy. Dlatego patrz nie na liczbę z nagłówka, tylko na zakres prac w kosztorysie."],
   ["ul", ["jakie konstrukcje i materiały są uwzględnione: fundamenty, ściany, stropy, dach", "czy w cenie są okna, drzwi wejściowe i ocieplenie elewacji", "czy zaplanowano przepusty i przygotowanie pod instalacje", "jakie wykończenie obejmuje wariant pod klucz", "jak ustalana jest cena i co się dzieje przy zmianie projektu", "jaka jest gwarancja i na jaki zakres"]],
@@ -41,7 +41,7 @@
   ["ol", ["określ powierzchnię, liczbę kondygnacji i układ", "sprawdź działkę i możliwości przyłączy", "zamów projekt architektoniczny i projekty instalacji", "uzyskaj kosztorysy i na stan surowy, i na dom pod klucz", "porównaj pełny koszt do wprowadzenia się i wybierz"]],
   ["img", "/img/p/1LWScRofv3Y_4w-900.webp", "Model 3D zabudowy parterowymi domami z basenem i zielonymi patio — projekt House 150", "House 150: model zabudowy na etapie projektu"],
   ["h2", "Jak budujemy domy"],
-  ["p", "CAS Development buduje domy w Kijowie i obwodzie kijowskim — od projektu i fundamentów po wykończenie, meble i zagospodarowanie terenu. Możesz zamówić stan surowy albo dom pod klucz. Dostajesz kosztorys na podstawie projektu, jednego menedżera, raporty zdjęciowe co 1–2 tygodnie i 12 miesięcy gwarancji na prace; faktury wystawiamy dla firm zarejestrowanych na Ukrainie, faktury dla firm z UE — wkrótce. Ceny i formaty — na stronie [budowa domów](/pl/budowa-domow)."]
+  ["p", "CAS Development buduje domy w Kijowie i obwodzie kijowskim — od projektu i fundamentów po wykończenie, meble i zagospodarowanie terenu. Możesz zamówić stan surowy albo dom pod klucz. Dostajesz kosztorys na podstawie projektu, jednego menedżera, raporty zdjęciowe co 1–2 tygodnie i 12 miesięcy gwarancji na prace; faktury wystawiamy dla firm zarejestrowanych na Ukrainie, faktury dla firm z UE — w trakcie uruchamiania. Ceny i formaty — na stronie [budowa domów](/pl/budowa-domow)."]
  ],
  "faq": [
   ["Ile kosztuje stan surowy domu?", "Budowa stanu surowego kosztuje od $600 za m². Dla domu 150 m² to od $90 000. Dokładną kwotę daje kosztorys na podstawie projektu."],

@@ -8,8 +8,12 @@ function linePrice(cat, it, ci, si) {
   if (it.price == null) return null;
   const ss = it.ss ? cat.sizesets[it.ss] : null;
   const k = ss ? (ss[si] || ss.find(x => x[1] === 1) || ss[0])[1] : 1;
-  const cs = cat.colorsets[it.cs][ci] || cat.colorsets[it.cs][0];
-  return r10(it.price * k * (1 + cs[2]));
+  return r10(it.price * k * (1 + color(cat, it, ci)[2]));
+}
+
+// колір: ci < 0 — «як на фото» (базове виконання, без доплати), 0… — колір під замовлення з colorsets (як у app.js col())
+function color(cat, it, ci) {
+  return ci < 0 ? ['Як на фото', '', 0] : (cat.colorsets[it.cs][ci] || cat.colorsets[it.cs][0]);
 }
 
 async function nextNumber(env) {
@@ -45,9 +49,9 @@ export async function onRequestPost({ request, env }) {
     const q = Math.floor(Number(l.qty));
     if (!(q >= minQty)) return bad(`Мінімальна кількість — ${minQty} ${it.unit} кожної позиції: «${it.name}» (у кошику ${Number.isFinite(q) ? q : 0}). Поштучно не продаємо — збільште кількість або приберіть позицію.`);
     const qty = Math.min(10000, q);
-    const ci = Number(l.ci) || 0, si = Number(l.si) || 0;
+    const ci = Number.isInteger(Number(l.ci)) ? Number(l.ci) : -1, si = Number(l.si) || 0;
     const ss = it.ss ? cat.sizesets[it.ss] : null;
-    items.push({ id: it.id, name: it.name, color: (cat.colorsets[it.cs][ci] || cat.colorsets[it.cs][0])[0],
+    items.push({ id: it.id, name: it.name, color: color(cat, it, ci)[0],
       size: ss ? (ss[si] || ss[0])[0] : null, qty, unit: it.unit, price: linePrice(cat, it, ci, si) });
   }
   if (!items.length) return bad('Позицій не знайдено в каталозі');
@@ -59,8 +63,9 @@ export async function onRequestPost({ request, env }) {
   const pct = Math.max(vol, partner ? partner.discount : 0);
   const byPartner = !!partner && partner.discount > vol;
   const disc = Math.round(goods * pct / 100);
-  const ship = goods - disc > 20000 || goods === 0 ? 0 : 450;
-  const total = goods - disc + ship;
+  // доставка й митні платежі не фіксовані — розраховує менеджер залежно від обсягу (Михайло 25.10.2026); у суму не входять
+  const ship = 0;
+  const total = goods - disc;
   const onReq = items.filter(i => i.price == null).length;
   if (!onReq && goods - disc < 23000) return bad('Мінімальне замовлення — від 23 000 ₴ (≈ $500)');
   const number = await nextNumber(env);
@@ -82,8 +87,8 @@ export async function onRequestPost({ request, env }) {
     `Товари: ${money(goods)}`,
     pct ? `${byPartner ? `Знижка партнера ${promo}` : 'Знижка за обсягом'} −${pct}%: −${money(disc)}` : null,
     promo ? `Код партнера: ${promo}${partner.name ? ` (${partner.name})` : ''}, −${partner.discount}%${byPartner ? '' : ' — не застосовано, діє більша знижка за обсягом'}` : null,
-    `Доставка: ${ship ? money(ship) : 'безкоштовно'}`,
-    `РАЗОМ (орієнтовно): ${money(total)}${onReq ? ` + ${onReq} поз. за запитом` : ''}`, `Оплата: ${payment}`,
+    'Доставка й митні платежі: розрахувати індивідуально (залежно від обсягу)',
+    `РАЗОМ за товари (орієнтовно): ${money(total)}${onReq ? ` + ${onReq} поз. за запитом` : ''}`, `Оплата: ${payment}`,
     d.delivery ? `Доставка: ${d.delivery}` : null, d.company ? `Компанія: ${d.company}` : null].filter(Boolean).join('\n');
   try {
     await fetch(env.LEAD_WEBHOOK || 'https://n8n.china-opt-shop.pp.ua/webhook/contact-form', {

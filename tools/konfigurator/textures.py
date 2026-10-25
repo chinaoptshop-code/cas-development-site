@@ -154,20 +154,25 @@ def veneer(n=512):
 
 
 def marble(n=1024):
-    """Мармур: кілька широких мʼяких жилок з ореолом (R), хмарність основи (G)."""
+    """Мармур: мʼякі тонкі жилки з розмитим ореолом (R), хмарність основи (G).
+    Без різких «блискавок»: плавніший вигин (менша амплітуда й частота деформації), тонке приглушене ядро,
+    широкий напівпрозорий ореол і легка хмарність (Calacatta / Nero Marquina / Verde — одна текстура, QA 25.10)."""
     y, x = np.mgrid[0:n, 0:n].astype(np.float64)
-    w1 = spectral(n, beta=3.6, lo=1, hi=9, seed=21); w2 = spectral(n, beta=3.0, lo=1, hi=14, seed=22)
-    w3 = spectral(n, beta=2.2, lo=4, hi=40, seed=25)
+    w1 = spectral(n, beta=3.8, lo=1, hi=6, seed=21); w2 = spectral(n, beta=3.2, lo=1, hi=10, seed=22)
+    w3 = spectral(n, beta=2.4, lo=3, hi=24, seed=25)
     base = spectral(n, beta=2.8, lo=1, seed=23)
     fine = spectral(n, beta=1.8, lo=6, seed=24)
-    t = (x * 1.0 + y * 0.45) / n * 2 * np.pi * 2 + (w1 - 0.5) * 7 + (w2 - 0.5) * 2.5 + (w3 - 0.5) * 0.5
+    t = (x * 1.0 + y * 0.45) / n * 2 * np.pi * 2 + (w1 - 0.5) * 4.2 + (w2 - 0.5) * 1.3 + (w3 - 0.5) * 0.18
     ridge = np.abs(np.sin(t / 2))            # 0 на жилці
-    core = np.exp(-(ridge / 0.022) ** 2)
-    halo = np.exp(-(ridge / 0.16) ** 2) * 0.32
-    t2 = (x * 0.3 - y * 1.0) / n * 2 * np.pi * 3 + (w2 - 0.5) * 10 + (w3 - 0.5) * 0.8
+    fade = np.clip(0.35 + (w2 - 0.3) * 1.2, 0.25, 1)  # жилка то яскравіша, то майже зникає
+    core = np.exp(-(ridge / 0.012) ** 2) * 0.42
+    soft = np.exp(-(ridge / 0.05) ** 2) * 0.22
+    halo = np.exp(-(ridge / 0.22) ** 2) * 0.14
+    t2 = (x * 0.3 - y * 1.0) / n * 2 * np.pi * 3 + (w2 - 0.5) * 6 + (w3 - 0.5) * 0.3
     r2 = np.abs(np.sin(t2 / 2))
-    thin = np.exp(-(r2 / 0.012) ** 2) * np.clip((w1 - 0.35) * 3, 0, 1) * 0.6
-    R = np.clip(core * (0.5 + 0.3 * fine) + halo * 0.9 + thin * 0.7, 0, 1)
+    thin = np.exp(-(r2 / 0.009) ** 2) * np.clip((w1 - 0.4) * 2.5, 0, 1) * 0.28
+    cloud = np.clip((base - 0.5) * 0.18 + 0.05, 0, 1)
+    R = np.clip((core * (0.6 + 0.25 * fine) + soft + halo) * fade + thin + cloud, 0, 1)
     G = np.clip(0.5 + (base - 0.5) * 0.30 + (fine - 0.5) * 0.06, 0, 1)
     return R, G
 

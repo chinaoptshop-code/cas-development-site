@@ -1,3 +1,6 @@
+/* Шрифти latin-ext (pl: ą ć ę ł ń ś ź ż …): основні підмножини cyrillic/latin — інлайн <style id="cas-fonts"> (chrome.FONTS_CSS);
+   ці файли браузер вантажить лише для сторінок із такими літерами (unicode-range), uk/ru їх не тягнуть. OFL, /fonts/OFL-*.txt */
+@font-face{font-family:"Manrope";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20B3, U+20B5-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20B3, U+20B5-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:"Cormorant Garamond";font-style:italic;font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20B3, U+20B5-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
 /* Єдина шапка (.sch) і футер (.scf) сайту — UI-kit CAS. Розмітку генерує tools/site/chrome.py. */
 :root{--sch-h:64px}
 html{scroll-padding-top:calc(var(--sch-h) + 12px)}
@@ -115,8 +118,12 @@ html.sch-lock .mbar{display:none!important}
   .scf-in{padding:0 28px}
 }
 /* зони дотику ≥44px на мобільному */
+.crumbs a{display:inline-flex;align-items:center;min-height:32px;padding:0 4px}
+/* FAQ і «Склад комплекту»: уся висота рядка натискна (відступи на summary, а не на details), вигляд без змін */
+main details:not([class*="sch"])>summary{padding-block:12px;margin-block:-12px}
 @media(max-width:767px){
-  .crumbs a{display:inline-flex;align-items:center;min-height:44px}
+  .crumbs a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:0 6px}
+  .card h3 a,.card p>a:only-child{display:inline-flex;align-items:center;min-height:44px}
   .scf-svc-g a{display:flex;align-items:center;min-height:44px;padding:0}
   .sch-lang a,.sch-lang span{min-height:44px}
 }
@@ -229,3 +236,5 @@ html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{le
 .ui-sc:has(>.mq-on)>:is(.ui-fade,.ui-cnt,.strip-nav,.prs-nav){display:none!important}
 @media(prefers-reduced-motion:reduce){.mq-track{animation:none!important}.mo-rv{opacity:1!important;translate:none!important}}
 @media print{.mo-rv{opacity:1!important;translate:none!important}.mq-btn{display:none}}
+/* суми й діапазони без переносу (chrome.nbsp_prices) */
+.nw{white-space:nowrap}
