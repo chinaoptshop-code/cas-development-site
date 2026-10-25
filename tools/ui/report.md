@@ -19,11 +19,11 @@
 |---|---|---|---|---|---|---|---|
 | portfolio.html | main | 256.8 | 43.5 | 48.4 | 43.0 | 26 | 1754 |
 | index.html | main | 164.8 | 38.3 | 53.7 | 46.3 | 27 | 657 |
-| contact.html | main | 133.1 | 34.5 | 58.0 | 45.8 | 24 | 355 |
+| contact.html | main | 133.0 | 34.5 | 58.0 | 45.8 | 24 | 355 |
 | about.html | main | 122.6 | 31.8 | 48.7 | 39.7 | 22 | 398 |
 | services.html | main | 120.7 | 30.3 | 45.1 | 39.7 | 21 | 452 |
 | ozdoba/komplekty.html | other | 118.7 | 28.5 | 32.5 | 7.9 | 14 | 1516 |
-| ozdoba.html | other | 108.2 | 24.8 | 30.2 | 7.2 | 13 | 739 |
+| ozdoba.html | other | 108.1 | 24.8 | 30.2 | 7.2 | 13 | 739 |
 | ozdoba/stilets-krislo-obidnii-bukle-z-pidlokitnykamy-74.html | other | 66.0 | 17.5 | 32.5 | 7.2 | 14 | 326 |
 | ozdoba/krislo-launzh-vulychne-z-tyku-z-541.html | other | 65.6 | 17.4 | 32.5 | 7.2 | 14 | 327 |
 | ozdoba/dyvan-modulnyi-miakyi-2-sektsii-60.html | other | 65.4 | 17.4 | 32.5 | 7.2 | 14 | 328 |
@@ -61,7 +61,7 @@
 | ozdoba/topka-kaminna-chavunna-vbudovana-frontalne-sklo-505.html | other | 64.9 | 17.2 | 32.5 | 7.2 | 14 | 324 |
 | ozdoba/vohnyshche-hazove-kruhle-z-korten-stali-508.html | other | 64.9 | 17.3 | 32.5 | 7.2 | 14 | 324 |
 | ozdoba/bra-tuba-latun-z-ryflenym-sklom-5.html | other | 64.8 | 17.4 | 32.5 | 7.2 | 14 | 326 |
-| ozdoba/dveri-mizhkimnatni-filenchasti-temnyi-horikh-540.html | other | 64.8 | 17.3 | 32.5 | 7.2 | 14 | 323 |
+| ozdoba/dveri-mizhkimnatni-filenchasti-temnyi-horikh-540.html | other | 64.8 | 17.2 | 32.5 | 7.2 | 14 | 323 |
 | ozdoba/dveri-vkhidni-pivot-z-reikovym-oblytsiuvanniam-539.html | other | 64.8 | 17.2 | 32.5 | 7.2 | 14 | 322 |
 | ozdoba/lampa-nastilna-z-marmurovoiu-kolonoiu-i-118.html | other | 64.8 | 17.1 | 32.5 | 7.2 | 14 | 322 |
 | ozdoba/liustra-liniina-latunna-zi-sklianymy-dyskamy-584.html | other | 64.8 | 17.2 | 32.5 | 7.2 | 14 | 324 |
@@ -385,7 +385,7 @@
 | ru/meblirovka-kvartiry-kiev.html | land | 57.1 | 15.4 | 15.3 | 7.0 | 9 | 408 |
 | ru/komplektatsiya-pod-klyuch-kiev.html | land | 56.9 | 15.3 | 15.3 | 7.0 | 9 | 406 |
 | ru/realizatsiya-dizayn-proekta-kiev.html | land | 56.9 | 15.4 | 15.3 | 7.0 | 9 | 420 |
-| ru/remont-kvartir-zhk-kiev.html | land | 56.7 | 15.5 | 15.3 | 7.0 | 9 | 471 |
+| ru/remont-kvartir-zhk-kiev.html | land | 56.7 | 15.4 | 15.3 | 7.0 | 9 | 471 |
 | blog/yak-vidkryty-kafe-restoran-pid-kliuch.html | land | 56.6 | 16.5 | 14.6 | 7.0 | 7 | 312 |
 | proekty/linden-penthouse.html | land | 56.6 | 10.5 | 2.3 | 0.9 | 1 | 454 |
 | ru/dizayn-remont-kvartiry-pechersk.html | land | 56.6 | 15.5 | 15.3 | 7.0 | 9 | 446 |

@@ -74,7 +74,7 @@ jobs:
           ADMIN_TG_IDS: ${{ secrets.SHOP_ADMIN_TG_IDS }}
           ADMIN_EMAILS: ${{ secrets.SHOP_ADMIN_EMAILS }}
           GITHUB_CONTENT_TOKEN: ${{ secrets.SHOP_GITHUB_CONTENT_TOKEN }}   # редактор контенту в /kabinet/admin (tools/admin/README.md)
-          LEAD_INGEST_KEY: ${{ secrets.SHOP_LEAD_INGEST_KEY }}             # необовʼязково: ключ для POST /api/leads з n8n
+          LEAD_INGEST_KEY: ${{ secrets.SHOP_LEAD_INGEST_KEY }}             # ключ для POST /api/leads з n8n і /api/admin/lead-sla (lead-sla.yml)
 
       - name: 📏 UI budget report (tools/ui/ui.py)
         run: python3 tools/ui/ui.py budget --report

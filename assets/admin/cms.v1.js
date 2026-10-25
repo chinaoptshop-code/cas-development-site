@@ -274,6 +274,9 @@
     var isDue = function (r) { return r.next_contact && r.next_contact <= today() && r.status !== 'delivered' && r.status !== 'cancelled'; };
     var label = function (r) { return r.name || r.phone || r.email || '—'; };
     var what = function (r) { return r.service || (r.items || []).map(function (i) { return i.name + ' × ' + i.qty; }).join(', '); };
+    // час реакції (functions/_alerts.js): скільки хвилин від заявки до «Взяв у роботу» (Telegram або перший статус ≠ «Нове»)
+    var mins = function (n) { return n < 60 ? n + ' хв' : Math.floor(n / 60) + ' год' + (n % 60 ? ' ' + (n % 60) + ' хв' : ''); };
+    var react = function (r) { return r.reaction_min != null ? '<small class="' + (r.reaction_min > 15 ? 'due' : '') + '" title="Час реакції">⏱ ' + mins(r.reaction_min) + '</small>' : ''; };
     function load() {
       return api(qs()).then(function (d) {
         ST = d.statuses; rows = d.rows; AS = d.assignees;
@@ -290,17 +293,17 @@
         '<span>' + esc(label(r)) + (r.phone && r.name ? ' · ' + esc(r.phone) : '') + '</span>' +
         (what(r) ? '<small>' + esc(what(r).slice(0, 90)) + '</small>' : '') +
         '<span>' + ((r.amount != null || r.total != null) ? '<b>' + money(r.amount != null ? r.amount : r.total, r.currency) + '</b> ' : '') + (r.assignee ? '· ' + esc(r.assignee) : '') + '</span>' +
-        (r.next_contact ? '<small class="' + (isDue(r) ? 'due' : '') + '">↻ ' + esc(r.next_contact) + '</small>' : '') + '</div>';
+        (r.next_contact ? '<small class="' + (isDue(r) ? 'due' : '') + '">↻ ' + esc(r.next_contact) + '</small>' : '') + react(r) + '</div>';
     }
     function draw() {
       if (!rows.length) { list.innerHTML = '<p class="muted">Записів немає. Нові замовлення з Оздоби зʼявляються тут автоматично; заявки — з форм сайту (див. README) або кнопкою «+ Заявка».</p>'; return; }
       if (S.view === 'table') {
-        list.innerHTML = '<div class="tscroll"><table class="adm"><tr><th>Номер</th><th>Дата</th><th>Клієнт</th><th>Що</th><th>Сума</th><th>Статус</th><th>Відповідальний</th><th>Контакт</th></tr>' + rows.map(function (r) {
+        list.innerHTML = '<div class="tscroll"><table class="adm"><tr><th>Номер</th><th>Дата</th><th>Клієнт</th><th>Що</th><th>Сума</th><th>Статус</th><th>Відповідальний</th><th>Реакція</th><th>Контакт</th></tr>' + rows.map(function (r) {
           return '<tr class="clk" data-id="' + r.id + '"><td><b>' + esc(r.number) + '</b><br><small>' + (r.kind === 'lead' ? 'заявка' : 'замовлення') + '</small></td><td><small>' + esc(r.created_at) + '</small></td>' +
             '<td>' + esc(label(r)) + '<br><small>' + esc(r.phone) + ' ' + esc(r.email) + '</small></td><td><small>' + esc(what(r).slice(0, 120)) + '</small></td>' +
             '<td>' + (r.amount != null || r.total != null ? money(r.amount != null ? r.amount : r.total, r.currency) : '') + '</td>' +
             '<td><select data-st aria-label="Статус">' + Object.keys(ST).map(function (k) { return '<option value="' + k + '"' + (k === r.status ? ' selected' : '') + '>' + ST[k] + '</option>'; }).join('') + '</select></td>' +
-            '<td>' + esc(r.assignee) + '</td><td class="' + (isDue(r) ? 'err' : '') + '">' + esc(r.next_contact) + '</td></tr>';
+            '<td>' + esc(r.assignee) + '</td><td>' + react(r) + '</td><td class="' + (isDue(r) ? 'err' : '') + '">' + esc(r.next_contact) + '</td></tr>';
         }).join('') + '</table></div>';
         $$('tr.clk', list).forEach(function (tr) {
           tr.onclick = function (e) { if (e.target.tagName !== 'SELECT' && e.target.tagName !== 'OPTION') edit(+tr.dataset.id); };
@@ -329,7 +332,8 @@
       var r = id ? rows.find(function (x) { return x.id === id; }) : { kind: 'lead', status: 'new', currency: 'UAH' };
       var f = function (k) { return esc(r[k] == null ? '' : r[k]); };
       dlg.innerHTML = '<form method="dialog" class="form two"><h2 class="full">' + (id ? esc(r.number) + ' · ' + (r.kind === 'lead' ? 'заявка' : 'замовлення') : 'Нова заявка') + '</h2>' +
-        (id ? '<p class="full muted">' + esc(r.created_at) + (r.source ? ' · ' + esc(r.source) : '') + (r.username ? ' · @' + esc(r.username) : '') + '</p>' +
+        (id ? '<p class="full muted">' + esc(r.created_at) + (r.source ? ' · ' + esc(r.source) : '') + (r.username ? ' · @' + esc(r.username) : '') +
+          (r.reaction_min != null ? ' · час реакції: ' + mins(r.reaction_min) : '') + '</p>' +
           (what(r) ? '<p class="full">' + esc(what(r)) + '</p>' : '') + (r.comment ? '<p class="full muted" style="white-space:pre-wrap">' + esc(r.comment) + '</p>' : '') +
           (r.kind === 'order' ? '<p class="full muted">Сума замовлення: ' + money(r.total) + (r.on_request ? ' + ' + r.on_request + ' поз. за запитом' : '') + ' · оплата: ' + esc(r.payment) + (r.delivery ? ' · ' + esc(r.delivery) : '') + '</p>' : '')
           : '<label class="f"><span>Імʼя</span><input name="name"></label><label class="f"><span>Телефон</span><input name="phone" type="tel"></label>' +

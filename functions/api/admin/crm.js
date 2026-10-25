@@ -3,7 +3,9 @@
 // GET  ?events=<id> — історія статусів
 // POST {name, phone, email, service, source, comment, amount, currency, assignee, next_contact} — нова заявка вручну
 // PATCH {id, status, assignee, crm_note, manager_note, amount, currency, next_contact, note}
+//   перший перехід із «Нове» = «взяли в роботу»: taken_at, час реакції, сповіщення в Telegram оновлюються (functions/_alerts.js)
 import { STATUSES, bad, json, nextLeadNumber, readJSON, requireAdmin, statusLabel, str } from '../../_lib.js';
+import { takeLead } from '../../_alerts.js';
 
 const CUR = ['UAH', 'USD', 'EUR'];
 const date = v => (v == null || v === '' ? null : /^\d{4}-\d{2}-\d{2}$/.test(String(v)) ? String(v) : undefined);
@@ -13,7 +15,7 @@ const who = a => a.name || a.email || `#${a.id}`;
 function csv(rows) {
   const cols = [['number', 'Номер'], ['kind', 'Тип'], ['created_at', 'Створено'], ['status', 'Статус'], ['name', 'Клієнт'], ['phone', 'Телефон'],
     ['email', 'Email'], ['service', 'Послуга / товари'], ['amount', 'Сума'], ['currency', 'Валюта'], ['assignee', 'Відповідальний'],
-    ['next_contact', 'Наступний контакт'], ['source', 'Джерело'], ['crm_note', 'Нотатки'], ['comment', 'Коментар клієнта'], ['payment', 'Оплата'], ['delivery', 'Доставка']];
+    ['next_contact', 'Наступний контакт'], ['reaction_min', 'Реакція, хв'], ['source', 'Джерело'], ['crm_note', 'Нотатки'], ['comment', 'Коментар клієнта'], ['payment', 'Оплата'], ['delivery', 'Доставка']];
   const cell = v => { const s = v == null ? '' : String(v); return /[";\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
   const lines = [cols.map(c => c[1]).join(';')];
   for (const r of rows) lines.push(cols.map(([k]) => cell(
@@ -89,5 +91,6 @@ export async function onRequestPatch({ request, env }) {
       CUR.includes(d.currency) ? d.currency : o.currency || 'UAH', next, status === 'paid' ? 1 : o.paid, o.id).run();
   if (status !== o.status || str(d.note)) await env.DB.prepare('INSERT INTO order_events (order_id, status, note, author) VALUES (?, ?, ?, ?)')
     .bind(o.id, status, str(d.note, 1000), who(a)).run();
+  if (!o.taken_at && o.status === 'new' && status !== 'new') await takeLead(env, o.id, pick('assignee', 80) || who(a), 'CRM');
   return json({ ok: true });
 }

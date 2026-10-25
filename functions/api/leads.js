@@ -1,10 +1,12 @@
 // Прийом заявки в CRM (orders.kind = 'lead'). Формат — як у форми сайту (/assets/lead-form.v1.js → n8n):
 // {name, phone, area, message, service, source, form, lang, page, utm_*}. Обовʼязковий лише телефон (мін. 9 цифр);
 // без імені — «Без імені» (форма «лише номер», Михайло 25.10.2026).
+// Нова заявка → миттєве сповіщення адмінам у Telegram з кнопкою «Взяв у роботу» (functions/_alerts.js).
 // З заголовком x-lead-key = LEAD_INGEST_KEY (n8n, інтеграції) — без ліміту; без ключа — до 5 заявок на годину з IP.
 import { bad, clientIp, hexOf, json, nextLeadNumber, readJSON, same, sha256, str } from '../_lib.js';
+import { notifyNew } from '../_alerts.js';
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, waitUntil }) {
   let d;
   try { d = await readJSON(request, 16 * 1024); } catch { return bad('Некоректні дані'); }
   const key = request.headers.get('x-lead-key') || '';
@@ -30,5 +32,10 @@ export async function onRequestPost({ request, env }) {
       VALUES (?, 'lead', ?, ?, '[]', ?, ?, ?, 'new')`)
     .bind(number, str(d.name, 120) || 'Без імені', phone, str(d.service, 200), str(d.source || d.page, 200), comment).run();
   await env.DB.prepare("INSERT INTO order_events (order_id, status, author) VALUES (?, 'new', ?)").bind(r.meta.last_row_id, str(d.form, 40) || 'site').run();
+  const alert = notifyNew(env, r.meta.last_row_id, {
+    page: str(d.page, 300), form: str(d.form, 40), message: str(d.message, 1500) || '', area: str(d.area, 40),
+    utm_source: str(d.utm_source, 60), utm_medium: str(d.utm_medium, 60), utm_campaign: str(d.utm_campaign, 60),
+  });
+  if (typeof waitUntil === 'function') waitUntil(alert); else await alert;
   return json({ ok: true, number });
 }

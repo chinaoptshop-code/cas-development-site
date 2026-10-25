@@ -1,6 +1,7 @@
 // Замовлення клієнта: GET — мої замовлення; POST — нове замовлення з кошика Оздоби.
 // Ціни перераховуються на сервері з каталогу (/assets/ozdoba/catalog.json), щоб їх не можна було підмінити.
 import { STATUSES, bad, currentClient, json, partnerCode, readJSON, str, volumePct } from '../_lib.js';
+import { notifyNew } from '../_alerts.js';
 
 const r10 = n => Math.round(n / 10) * 10;
 
@@ -30,7 +31,7 @@ export async function onRequestGet({ request, env }) {
   return json({ orders: results.map(o => ({ ...o, items: JSON.parse(o.items), status_label: STATUSES[o.status] || o.status })) });
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, waitUntil }) {
   let d;
   try { d = await readJSON(request); } catch { return bad('Некоректні дані'); }
   const c = await currentClient(request, env);
@@ -80,7 +81,8 @@ export async function onRequestPost({ request, env }) {
   if (c) await env.DB.prepare('UPDATE clients SET phone = COALESCE(phone, ?), city = COALESCE(city, ?), company = COALESCE(company, ?) WHERE id = ?')
     .bind(phone, str(d.delivery, 200), str(d.company, 200), c.id).run();
 
-  // сповіщення менеджеру тим самим каналом, що й заявки з сайту (n8n → Telegram)
+  // сповіщення менеджеру: бот сайту адмінам у Telegram (кнопка «Взяв у роботу», SLA — functions/_alerts.js)
+  // і, як і раніше, n8n (той самий канал, що й заявки з сайту)
   const money = n => n == null ? 'за запитом' : new Intl.NumberFormat('uk-UA').format(n) + ' ₴';
   const message = [`Замовлення ${number} з Оздоби${c ? ` · клієнт #${c.id} (${c.provider})` : ''}`,
     ...items.map(i => `• ${i.name} — ${i.color}${i.size ? ', ' + i.size : ''} — ${i.qty} ${i.unit} × ${money(i.price)}`),
@@ -90,6 +92,8 @@ export async function onRequestPost({ request, env }) {
     'Доставка й митні платежі: розрахувати індивідуально (залежно від обсягу)',
     `РАЗОМ за товари (орієнтовно): ${money(total)}${onReq ? ` + ${onReq} поз. за запитом` : ''}`, `Оплата: ${payment}`,
     d.delivery ? `Доставка: ${d.delivery}` : null, d.company ? `Компанія: ${d.company}` : null].filter(Boolean).join('\n');
+  const alert = notifyNew(env, res.meta.last_row_id, { message: message.split('\n').slice(1).join('\n'), page: '/ozdoba', form: 'ozdoba-order' });
+  if (typeof waitUntil === 'function') waitUntil(alert); else await alert;
   try {
     await fetch(env.LEAD_WEBHOOK || 'https://n8n.china-opt-shop.pp.ua/webhook/contact-form', {
       method: 'POST', headers: { 'content-type': 'application/json' },

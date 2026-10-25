@@ -3,9 +3,10 @@
       поля #oPhone (обовʼязкове), #oName, #oArea, #oMsg (необовʼязкові), #oErr, #oBtn, блок успіху #oOk.
    2) Швидка заявка в один рядок form.lq (телефон + кнопка; ті самі data-service/data-source/data-form), успіх — .lq-ok після форми.
    Розмітку й тексти ставить tools/site/leadform.py; сторінки без неї (кабінет, динамічні) скрипт дооформлює сам.
-   Мова повідомлень — з <html lang>. Успіх показуємо лише після відповіді 2xx; тоді ж подія Clarity `lead_submit`.
+   Мова повідомлень — з <html lang>. Надсилаємо в /api/leads (CRM + Telegram) і в n8n; успіх — лише після 2xx хоча б від одного; тоді ж подія Clarity `lead_submit`.
    Кнопка «Залишити номер» у нижній панелі (.mbar .mb-lead): якщо на сторінці є форма — прокрутка до неї й фокус на телефоні. */
 (function () {
+  var API = '/api/leads';
   var HOOK = 'https://n8n.china-opt-shop.pp.ua/webhook/contact-form';
   var NONAME = 'Без імені'; // для менеджера (Telegram/CRM) — завжди українською
   var T = {
@@ -97,21 +98,25 @@
     });
   }
 
+  // заявка йде паралельно в CRM сайту (/api/leads → D1 + миттєве сповіщення в Telegram) і в n8n (старий ланцюжок);
+  // успіх — коли хоч один із двох відповів 2xx, помилка — коли обидва не змогли (або 12 с тиші)
   function post(data, onOk, onFail) {
-    var done = false;
+    var done = false, left = 2;
     var fail = function () { if (done) return; done = true; onFail(); };
+    var ok = function () {
+      if (done) return;
+      done = true; clearTimeout(timer);
+      try { if (window.clarity) { window.clarity('set', 'lead_form', data.form); window.clarity('event', 'lead_submit'); } } catch (x) {}
+      try { document.dispatchEvent(new CustomEvent('cas:lead', { detail: { form: data.form, service: data.service } })); } catch (x) {}
+      onOk();
+    };
+    var miss = function () { if (--left === 0) { clearTimeout(timer); fail(); } };
     var timer = setTimeout(fail, 12000);
-    fetch(HOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-      .then(function (r) {
-        clearTimeout(timer);
-        if (done) return;
-        if (!r.ok) return fail();
-        done = true;
-        try { if (window.clarity) { window.clarity('set', 'lead_form', data.form); window.clarity('event', 'lead_submit'); } } catch (x) {}
-        try { document.dispatchEvent(new CustomEvent('cas:lead', { detail: { form: data.form, service: data.service } })); } catch (x) {}
-        onOk();
-      })
-      .catch(function () { clearTimeout(timer); fail(); });
+    var body = JSON.stringify(data);
+    [API, HOOK].forEach(function (url) {
+      fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, credentials: url === API ? 'same-origin' : 'omit' })
+        .then(function (r) { if (r.ok) ok(); else miss(); }, miss);
+    });
   }
   function base(form) {
     return {

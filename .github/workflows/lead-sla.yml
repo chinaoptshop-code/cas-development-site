@@ -1,0 +1,51 @@
+name: ⏰ Заявки — SLA 15 хв і звіт
+
+# Кожні 5 хв: нагадування адмінам у Telegram про заявки, не взяті за 15 хв (повтор через 60 хв; тиша 22:00–08:00 Києва),
+# щоденний звіт о 20:45 Києва (сервер сам вирішує, коли пора, і шле його раз на добу) і перевірка вебхука бота.
+# Логіка — functions/api/admin/lead-sla.js, functions/_alerts.js; інструкція — tools/admin/README.md, «Сповіщення про заявки».
+# GitHub може запускати розклад із запізненням на кілька хвилин — це нормально.
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+    inputs:
+      task:
+        description: 'sla — звичайний запуск; report — надіслати звіт за сьогодні зараз; webhook — поставити вебхук бота (навіть замість чужого)'
+        type: choice
+        options: [sla, report, webhook]
+        default: sla
+
+concurrency:
+  group: lead-sla
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  sla:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: POST /api/admin/lead-sla
+        env:
+          KEY: ${{ secrets.SHOP_LEAD_INGEST_KEY }}
+          TASK: ${{ github.event.inputs.task || 'sla' }}
+        run: |
+          if [ -z "$KEY" ]; then
+            echo "::warning::Секрет SHOP_LEAD_INGEST_KEY не задано — нагадування й звіт вимкнені (tools/admin/README.md, «Сповіщення про заявки»)"
+            exit 0
+          fi
+          case "$TASK" in
+            report)  BODY='{"task":"report"}' ;;
+            webhook) BODY='{"task":"webhook","force":true}' ;;
+            *)       BODY='{}' ;;
+          esac
+          code=$(curl -sS -o out.json -w '%{http_code}' --max-time 60 -X POST https://cas-develop.com/api/admin/lead-sla \
+            -H 'content-type: application/json' -H "x-lead-key: $KEY" --data "$BODY") || code=000
+          python3 -c "import json;d=json.load(open('out.json'));d.get('report',{}).get('stats',{}).pop('unanswered',None);print(json.dumps(d,ensure_ascii=False))" 2>/dev/null || head -c 300 out.json; echo
+          case "$code" in
+            200) ;;
+            404|405) echo "::warning::/api/admin/lead-sla ще не викладено (або кабінети без D1) — пропускаю" ;;
+            403) echo "::error::Ключ не підійшов: SHOP_LEAD_INGEST_KEY у GitHub і LEAD_INGEST_KEY на сайті різні — перезапустіть деплой"; exit 1 ;;
+            *) echo "::error::lead-sla відповів $code"; exit 1 ;;
+          esac

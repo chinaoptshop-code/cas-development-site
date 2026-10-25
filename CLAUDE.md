@@ -40,6 +40,8 @@
   `python3 tools/products/photo.py <id> <файл|url>`; після правок — `python3 tools/products/build.py` (оновлює /ozdoba, сторінки товарів /ozdoba/<slug> і sitemap).
 
 - Адмінка /kabinet/admin (CMS + CRM): інструкція — `tools/admin/README.md`; зберігає JSON/HTML комітом у GitHub (секрет `SHOP_GITHUB_CONTENT_TOKEN`).
+  Заявки й замовлення → D1 + миттєве сповіщення адмінам у Telegram (кнопка «Взяв у роботу», SLA 15 хв, звіт о 20:45) —
+  `functions/_alerts.js`, розділ «Сповіщення про заявки» в `tools/admin/README.md`.
   Деплой сам збирає сайт `tools/build-all.sh` (landing → products → shop → blog → chrome → i18n); `rebuild.yml` комітить згенероване з `[rebuild]`.
 - Зображення: AVIF-копії робить `tools/img/build.py` (нові фото в img/ — запустити його); `<picture>` з AVIF підставляє
   деплой (`tools/img/picture.py`), у репозиторії HTML лишається з простими `<img>` .webp.
