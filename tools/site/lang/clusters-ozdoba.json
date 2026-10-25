@@ -1,0 +1,8 @@
+{
+ "_": "Оздоба: /ozdoba українською, /en/ozdoba і /pl/ozdoba (tools/products/intl.py)",
+ "ozdoba": {
+  "uk": "/ozdoba",
+  "en": "/en/ozdoba",
+  "pl": "/pl/ozdoba"
+ }
+}

@@ -13,7 +13,11 @@ import hashlib, html, json, os, re, sys, time
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, 'tools/site'))
 import chrome  # єдина шапка/футер (tools/site/chrome.py)
+import i18n  # noqa: E402  hreflang-кластер /ozdoba ↔ /en/ozdoba ↔ /pl/ozdoba (tools/site/i18n.py)
 import leadform  # noqa: E402  легка заявка (tools/site/leadform.py)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import intl  # noqa: E402  /en/ozdoba, /pl/ozdoba і словники assets/ozdoba/i18n.<мова>.json (tools/products/intl.py)
+import pricelist  # noqa: E402  PDF-прайс /ozdoba/prais (tools/products/pricelist.py)
 
 
 def _chrome_apply(s, rel):
@@ -155,12 +159,17 @@ def main():
     s = re.sub(r'/assets/ozdoba/app\.js\?v=\w+', '/assets/ozdoba/app.js?v=' + ver(APP), s)
     s = re.sub(r'<span class="cnt" id="cnt">[^<]*</span>', f'<span class="cnt" id="cnt">{plural(len(items))}</span>', s, count=1)
     s = re.sub(r'<!--ozd:kits-->.*?<!--/ozd:kits-->', lambda m: '<!--ozd:kits-->' + kits_cards(d) + '<!--/ozd:kits-->', s, count=1, flags=re.S)
+    s = intl.ensure_meta_kp(s)  # адреса скрипта КП з версією (assets/ozdoba/kp.v1.js)
+    s = i18n.set_alternates(s, {'uk': '/ozdoba', **{l: f'/{l}/ozdoba' for l in intl.LANGS}})
     open(PAGE, 'w', encoding='utf-8').write(with_fav(_chrome_apply(s, 'ozdoba.html')))
     pages = product_pages(d)
     cats = category_pages(d)
     nk = kits_page(d)
+    nl, no_tr = intl.build(sys.modules[__name__])
+    npr, kb = pricelist.build(sys.modules[__name__])
     photos = sum(1 for i in d['items'] if i.get('img'))
     print(f'Оздоба: {len(items)} товарів, з фото {photos}, сторінок товарів {pages}, категорій {cats}, комплектів під обʼєкт {nk}, версія каталогу {ver(CAT)}')
+    print(f'Оздоба en/pl: {nl} сторінки' + (f', без перекладу назви: {no_tr} товарів (беремо поле en)' if no_tr else '') + f'; прайс /ozdoba/prais: {npr} позицій, {kb} КБ')
 
 
 
@@ -370,9 +379,15 @@ PP_CSS = """
 """
 
 
+def _shell():
+    """Каркас для сторінок товарів/категорій/комплектів з ozdoba.html: без hreflang /ozdoba і без адреси КП, + PP_CSS."""
+    shell = i18n.ALT_RX.sub('', open(PAGE, encoding='utf-8').read())
+    shell = re.sub(r'<meta name="ozd-kp"[^>]*>\n?', '', shell)
+    return shell.replace('</style>\n<!--ozd:ld-->', PP_CSS + '</style>\n<!--ozd:ld-->', 1)
+
+
 def product_pages(d):
-    shell = open(PAGE, encoding='utf-8').read()
-    shell = shell.replace('</style>\n<!--ozd:ld-->', PP_CSS + '</style>\n<!--ozd:ld-->', 1)
+    shell = _shell()
     os.makedirs(os.path.join(ROOT, 'ozdoba'), exist_ok=True)
     keep = set()
     titles = product_titles(d['items'])
@@ -381,7 +396,7 @@ def product_pages(d):
         open(f, 'w', encoding='utf-8').write(with_fav(_chrome_apply(product_page(d, i, shell, d['items'], titles[i['id']]), 'ozdoba/' + i['slug'] + '.html')))
     for f in os.listdir(os.path.join(ROOT, 'ozdoba')):  # прибрати сторінки видалених товарів
         p = os.path.join(ROOT, 'ozdoba', f)
-        if p not in keep and f.endswith('.html') and f != 'komplekty.html': os.remove(p)
+        if p not in keep and f.endswith('.html') and f not in ('komplekty.html', 'prais.html'): os.remove(p)
     sm = os.path.join(ROOT, 'sitemap.xml'); s = open(sm, encoding='utf-8').read()
     s = re.sub(r'  <url><loc>https://cas-develop\.com/ozdoba/[^<]+</loc>.*?</url>\n', '', s)
     add = ''.join(f'  <url><loc>https://cas-develop.com/ozdoba/{i["slug"]}</loc><lastmod>{LASTMOD}</lastmod></url>\n' for i in d['items'])
@@ -434,8 +449,7 @@ def load_catx():
 
 def category_pages(d):
     catx = load_catx()
-    shell = open(PAGE, encoding='utf-8').read()
-    shell = shell.replace('</style>\n<!--ozd:ld-->', PP_CSS + '</style>\n<!--ozd:ld-->', 1)
+    shell = _shell()
     os.makedirs(os.path.join(ROOT, 'ozdoba/kategoriia'), exist_ok=True)
     out = []
     present = {i['cat'] for i in d['items']}
@@ -640,8 +654,7 @@ KITS_BODY = '''<div class="w">
 def kits_page(d):
     ks = kits(d)
     if not ks: return 0
-    shell = open(PAGE, encoding='utf-8').read()
-    shell = shell.replace('</style>\n<!--ozd:ld-->', PP_CSS + '</style>\n<!--ozd:ld-->', 1)
+    shell = _shell()
     u = KITS_URL
     ld = {'@context': 'https://schema.org', '@graph': [
         {'@type': 'CollectionPage', 'name': KITS_TITLE, 'url': u, 'description': KITS_DESC},

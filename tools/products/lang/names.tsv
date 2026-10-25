@@ -1,0 +1,333 @@
+# Назви товарів Оздоби англійською й польською для /en/ozdoba, /pl/ozdoba, КП і прайсу (tools/products/intl.py).
+# Формат: id<TAB>en<TAB>pl. Нового товару тут немає → береться поле "en" з catalog.json (з великої літери) для обох мов.
+1	Wooden slat cylinder pendant, 120 cm	Lampa wisząca z drewnianych listew, walec 120 cm
+2	Linear modular pendant system, 3 sections	Liniowy modułowy system lamp wiszących, 3 sekcje
+3	Fabric cylinder shade pendant	Lampa wisząca z tekstylnym abażurem w kształcie walca
+4	Woven rattan pendant	Lampa wisząca pleciona z rattanu
+5	Brass tube wall sconce with fluted glass	Kinkiet tuba z mosiądzu z ryflowanym szkłem
+6	Fabric cylinder shade wall sconce	Kinkiet z tekstylnym abażurem, walec
+7	Gooseneck wall lamp	Kinkiet na giętkim ramieniu (gooseneck)
+8	Wall candle shelf sconce with backlight	Ścienny świecznik-półka z podświetleniem
+9	Adjustable track spotlight, black	Reflektor szynowy obrotowy, czarny
+10	Magnetic track rail, 1 m	Szyna magnetyczna, 1 m
+11	Aluminium LED profile with diffuser, 2 m	Aluminiowy profil LED z dyfuzorem, 2 m
+12	Recessed in-ground floor uplight	Oprawa najazdowa wpuszczana w posadzkę
+13	LED backlit mirror, oval 50×80	Lustro z podświetleniem LED, owal 50×80
+14	Rechargeable cordless table lamp, brass	Lampa stołowa akumulatorowa, mosiądz
+15	Ceramic mushroom table lamp	Lampa stołowa „grzybek”, ceramika
+16	Floor lamp with cone shade	Lampa podłogowa ze stożkowym abażurem
+17	Column floor lamp with light cylinder	Lampa podłogowa-kolumna ze świetlnym walcem
+18	Solid wood chair with woven seat	Krzesło drewniane z plecionym siedziskiem
+19	Upholstered bouclé carver armchair	Tapicerowany fotel carver z bouclé, z podłokietnikami
+20	Lounge armchair, herringbone fabric	Fotel lounge, tkanina w jodełkę
+21	Restaurant banquette sofa, 180 cm	Sofa-ławka restauracyjna, 180 cm
+22	Round upholstered pouf	Okrągła miękka pufa
+23	Solid wood stump stool	Taboret-pień z litego drewna
+24	Wooden bar stool	Drewniany hoker barowy
+25	Solid wood banquet dining table, 240 cm	Stół bankietowy z litego drewna, 240 cm
+26	Round table on disc base, Ø70	Okrągły stół na podstawie dyskowej, Ø70
+27	Square restaurant table, 70×70	Kwadratowy stół restauracyjny, 70×70
+28	Sideboard with carved front	Komoda-kredens z rzeźbionym frontem
+29	Solid wood vanity console for vessel basins	Konsola z litego drewna pod umywalki nablatowe
+30	Metal display shelving with lighting	Metalowy regał ekspozycyjny z podświetleniem
+31	Round ceramic vessel basin	Okrągła umywalka nablatowa, ceramika
+32	Tall mixer for vessel basin	Wysoka bateria do umywalki nablatowej
+33	Oval mirror in metal frame	Owalne lustro w metalowej ramie
+34	Decorative bin, metal/ceramic	Ozdobny kosz, metal/ceramika
+35	Soap dispenser with tray	Dozownik do mydła z tacką
+36	Towel holder with tray	Wieszak na ręczniki z tacką
+37	Solid wood slat panel, 2.8 m	Panel lamelowy z litego drewna, 2,8 m
+38	Wooden lattice partition	Drewniana ażurowa ścianka działowa
+39	Carved 3D panel with brass studs, 60×60	Rzeźbiony panel 3D z mosiężnymi ćwiekami, 60×60
+40	Large-format stone-look porcelain tile, 120×60	Wielkoformatowy gres imitujący kamień, 120×60
+41	Decorative rock-effect panel	Panel dekoracyjny imitujący skałę
+42	Engineered oak flooring	Deska warstwowa dębowa
+43	Jute rug with fringe, 200×300	Dywan jutowy z frędzlami, 200×300
+44	Wool loop pile rug, 200×300	Dywan wełniany pętelkowy, 200×300
+45	Blackout curtains + sheer, set	Zasłony zaciemniające + firana, komplet
+46	Decorative bolster cushion	Dekoracyjna poduszka-wałek
+47	Decorative cushion 45×45	Poduszka dekoracyjna 45×45
+48	Glazed ceramic vase	Wazon ceramiczny szkliwiony
+49	Textured ceramic planter, 40 cm	Donica ceramiczna z reliefem, 40 cm
+50	Dried pampas grass, bunch	Suszona trawa pampasowa, pęczek
+51	Artificial tree in planter, 180 cm	Sztuczne drzewo w donicy, 180 cm
+52	Glass candle holder	Szklany świecznik
+53	Glass wine decanter	Szklana karafka do wina
+54	Wine glasses, set of 6	Kieliszki do wina, zestaw 6 szt.
+55	Charger plate	Talerz podstawowy (charger)
+56	Cutlery set, 24 pieces	Sztućce, zestaw 24 szt.
+57	Linen napkin	Serwetka lniana
+58	Linear built-in bio-fireplace, 120 cm	Biokominek liniowy do zabudowy, 120 cm
+59	3D electric fireplace with water-vapour flame, 100 cm	Kominek elektryczny 3D z płomieniem parowym, 100 cm
+60	Modular upholstered sofa, 2 sections	Sofa modułowa miękka, 2 moduły
+61	Modular corner sofa, milk white	Narożnik modułowy, mleczny
+62	Straight leather sofa with quilted back	Prosta sofa skórzana z pikowanym oparciem
+63	Fabric sofa bed on wooden legs	Sofa rozkładana tapicerowana na drewnianych nóżkach
+64	Velvet chaise longue	Szezlong welurowy
+67	White bedside table, 2 drawers	Biała szafka nocna, 2 szuflady
+68	Black bedside table with Viennese cane	Czarna szafka nocna z plecionką wiedeńską
+69	Travertine coffee tables, set of 2	Stoliki kawowe z trawertynu, zestaw 2 szt.
+70	Two-tier coffee table with marble top	Stolik kawowy z marmurowym blatem, 2 poziomy
+71	Solid oak oval dining table	Owalny stół jadalniany z litego dębu
+72	Extendable dining table, ceramic top	Rozkładany stół jadalniany, blat ceramiczny
+73	Round stone-top dining table with lazy Susan	Okrągły stół jadalniany z kamiennym blatem i obrotowym środkiem
+74	Bouclé dining armchair	Krzesło-fotel jadalniany z bouclé, z podłokietnikami
+75	Saddle leather dining chair	Krzesło jadalniane w skórze siodłowej
+76	Lounge armchair with brass slats	Fotel wypoczynkowy z mosiężnymi lamelami
+77	Square leather pouf	Kwadratowa pufa skórzana
+78	Entryway shoe bench with cubbies and cushion	Ławka na buty z przegródkami i poduszką
+79	Bouclé bench on metal legs	Ławka z bouclé na metalowych nogach
+80	Channel-tufted bed-end bench	Ławka przy łóżku z pionowym przeszyciem
+81	Kids house bed, white	Łóżko dziecięce domek, białe
+82	Bunk bed with drawers, grey	Łóżko piętrowe z szufladami, szare
+83	Kids set: table and bunny chairs, solid wood	Zestaw dziecięcy: stolik i krzesełka „króliczek”, lite drewno
+84	Tall chest, 5 drawers, graphite	Wysoka komoda, 5 szuflad, grafit
+85	Open walk-in wardrobe system, metal frame with LED	Otwarta garderoba, metalowy stelaż z LED
+87	Chest of drawers with rounded ends, walnut and light lacquer	Komoda z zaokrąglonymi bokami, orzech i jasny lakier
+88	Oak bedside table, 3 drawers	Dębowa szafka nocna, 3 szuflady
+89	White TV unit with walnut body and open niche	Biała szafka RTV z orzechowym korpusem i otwartą wnęką
+90	Wooden bookshelf with curved side	Drewniany regał na książki z wyprofilowanym bokiem
+91	Loft shelving with black metal frame, 5 shelves	Regał loftowy z czarną metalową ramą, 5 półek
+92	Ergonomic mesh office chair with headrest	Ergonomiczne krzesło biurowe z siatki, z zagłówkiem
+93	High-back executive chair, brown faux leather	Fotel prezesa z wysokim oparciem, brązowa ekoskóra
+94	L-shaped executive desk, walnut and graphite	Biurko prezesa w kształcie L, orzech i grafit
+95	4-person workstation with screens	Stanowisko pracy dla 4 osób z przegrodami
+96	Conference table with cable tray, white frame	Stół konferencyjny z kanałem kablowym, biała rama
+97	Marble-look reception desk, white and black	Lada recepcyjna imitująca marmur, biało-czarna
+98	Acoustic phone booth, 1 person	Akustyczna budka telefoniczna, 1 osoba
+99	PET felt acoustic desk screen	Akustyczny ekran na biurko z filcu PET
+100	Hexagonal felt acoustic panels	Akustyczne panele z filcu, sześciokąt
+101	Black quartz kitchen sink, single bowl	Czarny zlewozmywak kwarcowy, jedna komora
+102	Black stainless steel workstation sink with extra bowls	Czarny zlewozmywak stalowy z dodatkowymi komorami
+103	L-shaped brass kitchen mixer, brushed gold	Mosiężna bateria kuchenna w kształcie L, szczotkowane złoto
+104	Stainless steel island range hood	Okap wyspowy ze stali nierdzewnej
+105	Upholstered counter stool, walnut and light fabric	Tapicerowany hoker półbarowy, orzech i jasna tkanina
+107	Modular kitchen with white shaker fronts	Kuchnia modułowa z białymi frontami ramowymi
+108	Multifunction pull-out cargo unit, graphite	Wysuwane cargo wielofunkcyjne, grafit
+109	Glass jars with black lids, set	Słoje szklane z czarnymi pokrywkami, zestaw
+110	LED ring chandelier, 3 gold rings	Żyrandol LED z pierścieni, 3 złote obręcze
+111	Tiered glass petal chandelier, emerald	Kaskadowy żyrandol ze szklanych płatków, szmaragdowy
+112	Branch chandelier with smoked glass globes, 6 lights	Żyrandol-gałąź z kloszami z dymionego szkła, 6 źródeł
+113	Linear brass chandelier with glass rods	Liniowy żyrandol mosiężny ze szklanymi prętami
+114	Linear pendant over table, 4 opal globes	Liniowa lampa nad stół, 4 opalowe kule
+115	Clear glass globe pendant	Lampa wisząca ze szklaną kulą, szkło przezroczyste
+116	Arc floor lamp with marble base, chrome	Lampa podłogowa łukowa z marmurową podstawą, chrom
+117	Tripod floor lamp with round diffuser	Lampa podłogowa na trójnogu z okrągłym dyfuzorem
+118	Table lamp with marble column and fabric shade	Lampa stołowa z marmurową kolumną i tekstylnym abażurem
+119	Rechargeable table lamp, ribbed smoked glass	Lampa stołowa akumulatorowa, ryflowane dymione szkło
+120	Table lamp with pleated shade, ceramic base	Lampa stołowa z plisowanym abażurem, ceramiczna podstawa
+121	Bedroom wall lamp with double shade, chrome	Kinkiet do sypialni z podwójnym abażurem, chrom
+122	Deep anti-glare COB recessed downlight	Głęboka oprawa wpuszczana COB z osłoną antyolśnieniową
+123	Adjustable recessed spotlight with deep reflector	Obrotowa oprawa wpuszczana z głębokim odbłyśnikiem
+124	COB LED strip 24 V	Taśma LED COB 24 V
+125	Plaster-in profile for LED strip	Profil podtynkowy do taśmy LED (plaster-in)
+126	Up-down cylinder facade light	Oprawa elewacyjna walec, światło góra-dół
+127	Linear wall washer	Liniowy naświetlacz ścienny (wall washer)
+128	L-shaped LED garden bollard	Słupek ogrodowy LED w kształcie L
+129	Adjustable garden spike spotlight	Reflektor ogrodowy na szpikulcu, obrotowy
+130	IP44 bathroom ceiling light, white	Plafon łazienkowy IP44, biały
+131	IP44 over-mirror light bar, 30 cm	Kinkiet nad lustro IP44, listwa 30 cm
+132	Oval LED night light on stand	Owalna lampka nocna LED na podstawce
+133	Surface ceiling light, white metal and wood	Plafon natynkowy, biały metal i drewno
+134	Round recessed stair light	Okrągła oprawa schodowa wpuszczana
+135	Wall-hung ceramic toilet, white	Miska WC podwieszana ceramiczna, biała
+136	Height-adjustable frame for wall-hung bidet	Stelaż podtynkowy do bidetu podwieszanego, regulowany
+137	Wall-hung ceramic bidet, white	Bidet podwieszany ceramiczny, biały
+138	Freestanding acrylic bathtub, matt black with white inside	Wanna wolnostojąca akrylowa, czarna matowa z białym wnętrzem
+139	Freestanding solid-surface bathtub, matt white	Wanna wolnostojąca z konglomeratu, biała matowa
+141	Cast stone shower tray, white, slate texture	Brodzik z konglomeratu, biały, struktura łupka
+144	Calacatta Viola marble vessel basin	Umywalka nablatowa z marmuru Calacatta Viola
+145	Red travertine pedestal basin, monoblock	Umywalka wolnostojąca z czerwonego trawertynu, monoblok
+146	Floating vanity unit, light oak, rounded corners	Szafka podumywalkowa wisząca, jasny dąb, zaokrąglone narożniki
+147	Floating vanity with wavy front, dark wood, integrated basin	Szafka wisząca z falistym frontem, ciemne drewno, zintegrowana umywalka
+148	Tall bathroom cabinet with glass doors, grey	Wysoki słupek łazienkowy ze szklanymi drzwiczkami, szary
+150	Wall-mounted basin mixer, brushed brass	Bateria umywalkowa ścienna, szczotkowany mosiądz
+152	Electric ladder towel warmer, white	Grzejnik łazienkowy elektryczny drabinka, biały
+153	Freestanding toilet roll holder with brush, black	Stojak: uchwyt na papier i szczotka WC, czarny
+154	Single wall hook, matt black	Pojedynczy wieszak ścienny, czarny matowy
+155	Wall-mounted toilet brush with glass holder, black	Szczotka WC ścienna ze szklanym pojemnikiem, czarna
+156	Floor-standing smart toilet, matt black	Inteligentna miska WC stojąca, czarna matowa
+157	Flush plate for frame, brushed gold	Przycisk spłukujący do stelaża, szczotkowane złoto
+158	Linear slot shower drain, stainless steel	Odpływ liniowy szczelinowy, stal nierdzewna
+159	Square tile-insert drain, stainless steel	Kwadratowy odpływ pod płytkę, stal nierdzewna
+160	Floor mirror in slim black frame, with stand	Lustro podłogowe w cienkiej czarnej ramie, na podpórce
+163	Balloon sculpture on marble base	Rzeźba „baloniki” na marmurowej podstawie
+164	Decorative ceramic arch, speckled white	Dekoracyjny łuk ceramiczny, biały nakrapiany
+165	White wall clock with raised numerals	Biały zegar ścienny z wypukłymi cyframi
+166	Artificial strelitzia in pot, large	Sztuczna strelicja w donicy, duża
+169	Quilted bedspread, cream	Narzuta pikowana, kremowa
+170	Flannel throw with embossed stripe, milk white	Koc flanelowy w tłoczone pasy, mleczny
+172	Velvet curtains, dark blue	Zasłony aksamitne, granatowe
+173	Round outdoor sectional sofa with cushions	Okrągła sofa ogrodowa segmentowa z poduszkami
+174	Outdoor rope-weave armchair on teak legs	Fotel ogrodowy z plecionki linowej na nogach z teku
+175	Aluminium sun lounger with textilene	Leżak aluminiowy z textilene
+176	Round teak table on ring base	Okrągły stół z teku na podstawie pierścieniowej
+177	Double cantilever parasol, 2 canopies	Parasol na wysięgniku podwójny, 2 czasze
+178	Aluminium bioclimatic louvred pergola	Pergola bioklimatyczna aluminiowa z lamelami
+179	Tall cylinder planters, set of 3	Wysokie donice cylindryczne, zestaw 3 szt.
+180	Hanging egg chair on stand	Fotel-kokon wiszący na stojaku
+181	Double hanging egg swing on stand	Huśtawka-kokon dwuosobowa na stojaku
+182	Linear wall-mounted electric fireplace, black frame	Kominek elektryczny liniowy ścienny, czarna rama
+183	Tabletop bio-fireplace bowl with glass screen	Biokominek stołowy „czasza” ze szklaną osłoną
+184	Round tabletop bio-fireplace with glass cylinder	Okrągły biokominek stołowy ze szklanym walcem
+300	White marble herringbone mosaic	Mozaika marmurowa w jodełkę, biała
+301	Hexagonal glass and stone mosaic	Mozaika heksagonalna, szkło i kamień
+302	White glossy bevelled subway tile, 100×300	Płytka „cegiełka” biała błyszcząca z fazą, 100×300
+303	Pastel wall tile with wavy glaze, 75×300	Pastelowa płytka ścienna z falistym szkliwem, 75×300
+304	Light terrazzo-look porcelain tile	Gres imitujący lastryko, jasny
+305	Engineered oak herringbone flooring, light	Deska warstwowa dąb w jodełkę, jasna
+306	Engineered oak chevron flooring, dark	Deska warstwowa dąb w jodełkę francuską, ciemna
+307	Grey oak SPC flooring, click system	Podłoga SPC imitująca szary dąb, system click
+308	Fluted half-round MDF panel, walnut	Panel MDF ryflowany półokrągły, orzech
+309	3D wave MDF panel for painting	Panel 3D „fala” z MDF do malowania
+310	3D gypsum panel, white brick look	Gipsowy panel 3D imitujący białą cegłę
+311	Marble-look PVC sheet with UV coating	Płyta PVC imitująca marmur z powłoką UV
+312	Upholstered wall panel, beige with metal inserts	Miękki panel ścienny, beżowy z metalowymi wstawkami
+313	Aluminium U-baffle ceiling, terracotta	Sufit lamelowy aluminiowy, profil U, terakota
+314	Polyurethane moulding with gold-look ornament	Listwa poliuretanowa ze złotym ornamentem
+315	Low aluminium skirting, various colours	Niska listwa przypodłogowa aluminiowa, różne kolory
+316	MDF interior door with metal inserts	Drzwi wewnętrzne MDF z metalowymi wstawkami
+317	Concealed (invisible) door for painting	Drzwi ukryte (bezprzylgowe) do malowania
+318	Sliding glass door in slim black frame	Drzwi przesuwne szklane w wąskiej czarnej ramie
+319	Glass partition in aluminium frame with door	Ścianka szklana w profilu aluminiowym z drzwiami
+320	Steel entrance door, graphite	Drzwi wejściowe stalowe, grafit
+321	Pivot entrance door, walnut with glass	Drzwi wejściowe obrotowe (pivot), orzech ze szkłem
+322	Door handle on round rose, matt black	Klamka na okrągłej rozecie, czarna matowa
+323	Concealed 3D-adjustable hinge, black	Zawias ukryty z regulacją 3D, czarny
+324	Pull handle for entrance door, black	Pochwyt do drzwi wejściowych, czarny
+400	Round carved-pattern rug, Ø200	Okrągły dywan z wypukłym wzorem, Ø200
+401	Hotel terry bath towel, 70×140	Hotelowy ręcznik kąpielowy frotte, 70×140
+402	Hotel waffle bathrobe, white	Hotelowy szlafrok waflowy, biały
+403	Ribbed coupe cocktail glasses, set of 6	Ryflowane kieliszki coupe do koktajli, zestaw 6 szt.
+404	Textured whisky tumblers, set of 6	Szklanki do whisky z reliefem, zestaw 6 szt.
+405	Bartender set with shaker and stand	Zestaw barmański z shakerem na stojaku
+406	Ice bucket with lid, stainless steel	Wiaderko na lód z pokrywką, stal nierdzewna
+407	Acacia serving board with groove	Deska do serwowania z akacji z rowkiem
+408	Bamboo 3-tier dessert stand	Bambusowa etażerka na desery, 3 poziomy
+409	White porcelain dinner plate, 27 cm	Porcelanowy talerz obiadowy biały, 27 cm
+410	Salt and pepper grinder, wood and acrylic	Młynek do soli i pieprzu, drewno i akryl
+411	Velvet bar stool with round back	Welurowy hoker z okrągłym oparciem
+412	Swivel gas-lift bar stool, faux leather	Hoker obrotowy z podnośnikiem gazowym, ekoskóra
+413	Gold chiavari banquet chair	Krzesło bankietowe chiavari, złote
+414	Stackable banquet chair, burgundy	Krzesło bankietowe sztaplowane, bordowe
+415	Upholstered bed with tall headboard, 160×200, graphite	Łóżko tapicerowane z wysokim zagłówkiem, 160×200, grafit
+416	Solid ash bed on brass legs, 160×200	Łóżko z litego jesionu na mosiężnych nóżkach, 160×200
+417	Marble console on trapezoid legs	Konsola z marmuru na trapezowych podstawach
+418	Wooden cube shelving on legs, 5 compartments	Drewniany regał na nóżkach, 5 przegródek
+419	Stainless steel shelving, 4 shelves	Regał ze stali nierdzewnej, 4 półki
+420	Dressing table with flip-up mirror, milk white	Toaletka z uchylnym lustrem, mleczna
+421	Round high bar table on pedestal base	Okrągły wysoki stół barowy na centralnej nodze
+422	Gold bar cart on wheels, 3 tiers	Barek na kółkach, złoty, 3 poziomy
+423	Aluminium outdoor armchair, burgundy	Krzesło ogrodowe aluminiowe z podłokietnikami, bordowe
+424	Outdoor bar stool with woven seat	Ogrodowy hoker barowy z plecionym siedziskiem
+425	Pyramid gas patio heater	Gazowy promiennik tarasowy „piramida”
+426	Arched mirror in slim gold frame	Lustro łukowe w cienkiej złotej ramie
+427	Ribbed smoked glass vase	Wazon z ryflowanego dymionego szkła
+428	Spiral ceramic floor vase, white	Ceramiczny wazon podłogowy „spirala”, biały
+429	Woven rattan basket with lid	Kosz pleciony z rattanu z pokrywą
+430	Banker’s table lamp with green glass shade	Lampa bankierska z zielonym szklanym kloszem
+431	Brass table lamp with opal globe	Lampa stołowa z opalową kulą, mosiądz
+432	Concealed shower system, matt black	Podtynkowy system prysznicowy, czarny matowy
+433	Thermostatic shower column, brushed gold	Kolumna prysznicowa z termostatem, szczotkowane złoto
+434	Freestanding bath mixer, brushed gold	Wolnostojąca bateria wannowa, szczotkowane złoto
+435	Single-lever basin mixer, matt black	Jednouchwytowa bateria umywalkowa, czarna matowa
+436	Automatic hand dryer, stainless steel	Automatyczna suszarka do rąk, stal nierdzewna
+437	Fluted lever handle on square rose, light gold	Klamka ryflowana na kwadratowej rozecie, jasne złoto
+438	Floor door stop, black with rubber	Odbojnik drzwiowy podłogowy, czarny z gumą
+439	Hydraulic door closer, up to 80 kg	Samozamykacz hydrauliczny, do 80 kg
+500	Classic white marble fireplace mantel	Klasyczny portal kominkowy z białego marmuru
+501	Linear wall electric fireplace with remote, 127 cm	Kominek elektryczny liniowy ścienny z pilotem, 127 cm
+502	Electric fireplace with MDF mantel, white	Kominek elektryczny z portalem MDF, biały
+503	Classic cast iron wood stove	Klasyczny żeliwny piec kominkowy na drewno
+504	Steel wood stove with log store, wide glass	Stalowy piec kominkowy ze schowkiem na drewno, szeroka szyba
+505	Built-in cast iron fireplace insert, front glass	Żeliwny wkład kominkowy do zabudowy, szyba frontowa
+506	Tall cylindrical wood stove, panoramic glass	Wysoki cylindryczny piec kominkowy, szyba panoramiczna
+507	Wall-standing wood-burning column fireplace, steel	Przyścienny kominek-kolumna na drewno, stal
+508	Round corten steel gas fire pit	Okrągłe palenisko gazowe ze stali corten
+509	Round gas fire table with glass screen	Okrągły stół z paleniskiem gazowym i szklaną osłoną
+510	Rectangular gas fire table, aluminium	Prostokątny stół z paleniskiem gazowym, aluminium
+511	Automatic built-in bio-fireplace, 120 cm	Automatyczny biokominek do zabudowy, 120 cm
+512	Rectangular tabletop bio-fireplace with glass	Prostokątny biokominek stołowy ze szkłem
+513	Round concrete tabletop bio-fireplace	Okrągły betonowy biokominek stołowy
+514	3D water-vapour fireplace insert with remote, 76 cm	Wkład kominka parowego 3D z pilotem, 76 cm
+515	Painted kitchen island with oak top	Malowana wyspa kuchenna z dębowym blatem
+516	Handmade double-bowl stainless steel sink	Zlewozmywak dwukomorowy ze stali nierdzewnej, ręcznie wykonany
+517	Narrow stainless steel bar sink	Wąski zlewozmywak barowy ze stali nierdzewnej
+518	Workstation sink with board and colander	Zlewozmywak-stanowisko robocze z deską i durszlakiem
+519	Professional spring kitchen mixer, brushed gold	Profesjonalna bateria kuchenna ze sprężyną, szczotkowane złoto
+520	Kitchen mixer with spring spout, black	Bateria kuchenna ze sprężynową wylewką, czarna
+521	L-shaped kitchen mixer, copper	Bateria kuchenna w kształcie L, miedź
+522	T-shaped wall hood, black, 90 cm	Okap ścienny w kształcie T, czarny, 90 cm
+523	Black wall hood with gold trim	Czarny okap ścienny ze złotym obramowaniem
+524	Hotel bed linen set, cotton sateen	Hotelowy komplet pościeli, satyna bawełniana
+525	Quilted plush bedspread with pillowcases	Pikowana pluszowa narzuta z poszewkami
+526	Pinch-pleat linen blackout curtains, pair	Lniane zasłony zaciemniające na fałdach, para
+527	Faux fur throw, cream	Koc ze sztucznego futra, kremowy
+528	Knitted cotton throw, grey melange	Dziergany koc bawełniany, szary melanż
+529	Velvet decorative cushion with pom-poms	Aksamitna poduszka dekoracyjna z pomponami
+530	Embossed hotel terry bath mat	Hotelowy dywanik łazienkowy frotte z reliefem
+531	Hand-tufted striped wool rug	Wełniany dywan tuftowany ręcznie w paski
+532	Black velvet cushion with gold detail	Czarna aksamitna poduszka ze złotą dekoracją
+533	Veneered interior door with horizontal grooves	Drzwi wewnętrzne fornirowane z poziomymi frezami
+534	Sliding barn door with rail, grey	Drzwi przesuwne stodołowe z prowadnicą, szare
+535	Solid pine Z barn door	Drzwi stodołowe z litej sosny, wzór Z
+536	Slim aluminium sliding door with reeded glass	Drzwi przesuwne aluminiowe z ryflowanym szkłem, wąski profil
+537	Black-frame sliding door with decorative grille	Drzwi przesuwne w czarnym profilu ze szprosami
+538	Hotel electronic RFID card lock	Hotelowy zamek elektroniczny na kartę RFID
+539	Pivot entrance door with slat cladding	Drzwi wejściowe pivot z okładziną lamelową
+540	Panelled interior door, dark walnut	Drzwi wewnętrzne płycinowe, ciemny orzech
+541	Teak outdoor lounge chair with rope weave	Ogrodowy fotel lounge z teku z plecionką linową
+542	Aluminium outdoor furniture set, 5 pieces	Aluminiowy zestaw mebli ogrodowych, 5 elementów
+543	Round woven outdoor daybed with canopy	Okrągłe łóżko ogrodowe z daszkiem, plecione
+544	Outdoor rope-weave chair, graphite	Krzesło ogrodowe z plecionki linowej, grafit
+545	Outdoor rope armchair, black, with cushion	Fotel ogrodowy z liny, czarny, z poduszką
+546	Streamlined fibreglass planter bench	Donica-ławka z włókna szklanego, opływowy kształt
+547	Double woven sunbed with mattresses	Leżak dwuosobowy pleciony z materacami
+548	Rocking sun lounger with textilene	Leżak bujany z textilene
+549	Round roll-top chafing dish, gold, 6 l	Okrągły podgrzewacz z kopułą, złoty, 6 l
+550	Rectangular chafing dish on wooden base	Prostokątny podgrzewacz na drewnianej podstawie
+551	Stoneware dinnerware set, dark grey, 16 pieces	Zestaw naczyń z kamionki, ciemnoszary, 16 elementów
+552	Reactive glaze dinnerware set, warm grey	Zestaw naczyń ze szkliwem reaktywnym, ciepła szarość
+553	Black and gold cutlery set, 24 pieces	Sztućce czarno-złote, zestaw 24 szt.
+554	Champagne flutes with gold rim, set of 6	Kieliszki do szampana ze złotym brzegiem, zestaw 6 szt.
+555	Ribbed glass jug with iridescent sheen	Ryflowany szklany dzbanek z opalizującym połyskiem
+556	Cut crystal glasses, set of 6	Kryształowe kieliszki rżnięte, zestaw 6 szt.
+557	White ginger jar vase with gold decor	Wazon „imbirowy” biały ze złotym zdobieniem
+558	Face and hands sculptures, set of 3	Rzeźby „twarz i dłonie”, zestaw 3 szt.
+559	Brass taper candle holders, set of 3	Mosiężne świeczniki na cienkie świece, zestaw 3 szt.
+560	Floor candelabra with crystal cylinders	Kandelabr podłogowy z kryształowymi walcami
+561	Calacatta Viola marble trays, set of 2	Tace z marmuru Calacatta Viola, zestaw 2 szt.
+562	Artificial olive tree in planter, 210 cm	Sztuczne drzewo oliwne w donicy, 210 cm
+563	Organic-shape mirror in slim black frame	Lustro o organicznym kształcie w cienkiej czarnej ramie
+564	Wavy round mirror in gold frame	Faliste okrągłe lustro w złotej ramie
+565	Travertine tiles, French pattern	Płytki z trawertynu, układ „wzór francuski”
+566	End-grain wood mosaic panel	Mozaika z plastrów drewna, panel
+567	Fluted WPC panel, walnut décor	Panel ryflowany WPC, dekor orzech
+568	Fabric-look vinyl wallcovering, fire-resistant	Tapeta winylowa imitująca tkaninę, trudnopalna
+569	Emerald zellige tile, 60×200	Płytka zellige szmaragdowa, 60×200
+570	U-shaped restaurant booth with channel tufting	Restauracyjna loża w kształcie U z pionowym przeszyciem
+571	Curved modular kidney sofa, 2 sections	Sofa modułowa wygięta „nerka”, 2 moduły
+572	Soft curved sofa, taupe velvet	Miękka opływowa sofa, aksamit taupe
+573	Leather dining armchair on wooden legs	Skórzane krzesło-fotel jadalniany na drewnianych nogach
+574	Faux leather dining chair, black legs with gold tips	Krzesło jadalniane z ekoskóry, czarne nogi ze złotymi stopkami
+575	Ash dining armchair with woven seat	Fotel jadalniany z jesionu z plecionym siedziskiem
+576	Hotel bed with wide headboard and frame	Łóżko hotelowe z szerokim zagłówkiem i ramą
+577	L-shaped executive desk with pedestal, light grey	Biurko prezesa w kształcie L z kontenerem, jasnoszare
+578	Swing-arm floor lamp with black shade	Lampa podłogowa na przegubowym ramieniu z czarnym abażurem
+579	Arc floor lamp with hat shade	Lampa podłogowa łukowa z kloszem „kapelusz”
+580	Cantilever floor lamp with red shade	Lampa podłogowa wysięgnikowa z czerwonym abażurem
+581	Wavy floor lamp with mushroom shade, olive	Falista lampa podłogowa z kloszem-grzybkiem, oliwkowa
+582	Ribbed amber glass pendant	Lampa wisząca z ryflowanego szkła w kolorze bursztynu
+583	Opal glass egg pendant	Lampa wisząca „jajko” z opalowego szkła
+584	Linear brass chandelier with glass discs	Liniowy żyrandol mosiężny ze szklanymi dyskami
+585	Minimalist linear LED arc chandelier	Minimalistyczny liniowy żyrandol LED z łukiem
+586	Rectangular freestanding acrylic bathtub with deck mixer	Prostokątna wanna wolnostojąca akrylowa z baterią na brzegu
+587	Round marble-look vessel basin, beige	Okrągła umywalka nablatowa imitująca marmur, beżowa
+588	Fluted floating vanity in terracotta with mirror	Ryflowana szafka wisząca w kolorze terakoty z lustrem
+589	Calacatta Viola marble vanity, 4 drawers	Szafka z marmuru Calacatta Viola, 4 szuflady
+590	Wall-hung sintered stone basin counter	Wisząca umywalka-blat ze spieku kwarcowego
+591	Rimless wall-hung toilet, matt colours	Bezrantowa miska WC podwieszana, matowe kolory
+600	Leather side table on C-shaped base	Stolik pomocniczy w skórze na podstawie w kształcie C
+601	Folding hotel luggage rack, walnut and leather	Składany hotelowy stojak na bagaż, orzech i skóra
+602	Round leather lounge chair with cushions and side table	Okrągły fotel lounge w skórze z poduszkami i stolikiem
+603	Leather saddle stool on arched base	Skórzany taboret-siodło na łukowej podstawie
