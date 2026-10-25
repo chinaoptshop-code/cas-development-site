@@ -71,23 +71,28 @@
    "items": [
     {
      "h": "Mykhailo",
-     "p": "Fondateur et CEO — pilote chaque projet du premier rendez-vous à la livraison."
+     "role": "Fondateur et CEO",
+     "p": "Pilote chaque projet du premier rendez-vous à la livraison. Valide avec le client le budget, les délais et les décisions clés, et répond du résultat."
     },
     {
      "h": "Serzh",
-     "p": "Chef de projet — planning, équipes, achats et comptes rendus réguliers."
+     "role": "Chef de projet",
+     "p": "Établit le devis et le planning des travaux, organise les équipes et les achats de matériaux. Veille au respect des délais sur le chantier et envoie au client des comptes rendus photo réguliers."
     },
     {
      "h": "Alisa",
-     "p": "Architecte d’intérieur — concept, style, visualisations 3D et matériaux."
+     "role": "Architecte d’intérieur",
+     "p": "Conçoit le concept et le style de l’intérieur et réalise les visualisations 3D. Sélectionne matériaux, mobilier et luminaires et rédige les descriptifs suivis par l’équipe."
     },
     {
      "h": "Olena",
-     "p": "Dessinatrice-projeteuse — aménagements, plans d’exécution et descriptifs."
+     "role": "Dessinatrice-projeteuse",
+     "p": "Réalise les plans d’aménagement et d’exécution : cloisons, électricité, plomberie et éclairage. Prépare les descriptifs pour l’équipe et vérifie que les travaux sur place suivent le projet."
     },
     {
      "h": "Roman",
-     "p": "Développeur IA — site, demandes, assistants et automatisation."
+     "role": "Développeur IA",
+     "p": "Site, demandes, assistants et automatisation."
     }
    ]
   },

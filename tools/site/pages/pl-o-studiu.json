@@ -71,23 +71,28 @@
    "items": [
     {
      "h": "Mykhailo",
-     "p": "Założyciel i CEO — prowadzi każdy projekt od pierwszego spotkania do odbioru."
+     "role": "Założyciel i CEO",
+     "p": "Prowadzi każdy projekt od pierwszego spotkania do odbioru. Uzgadnia z klientem budżet, terminy i kluczowe decyzje oraz odpowiada za efekt."
     },
     {
      "h": "Serzh",
-     "p": "Kierownik projektu — harmonogram, ekipy, zakupy i regularne raporty."
+     "role": "Kierownik projektu",
+     "p": "Przygotowuje kosztorys i harmonogram prac, organizuje ekipy i zakupy materiałów. Pilnuje terminów na budowie i regularnie wysyła klientowi raporty zdjęciowe."
     },
     {
      "h": "Alisa",
-     "p": "Projektantka wnętrz — koncepcja, styl, wizualizacje 3D i materiały."
+     "role": "Projektantka wnętrz",
+     "p": "Tworzy koncepcję i styl wnętrza oraz wizualizacje 3D. Dobiera materiały, meble i oświetlenie i przygotowuje zestawienia, według których pracuje ekipa."
     },
     {
      "h": "Olena",
-     "p": "Projektantka — układy, rysunki wykonawcze i zestawienia."
+     "role": "Projektantka",
+     "p": "Opracowuje układy funkcjonalne i rysunki wykonawcze: ściany, elektryka, hydraulika, oświetlenie. Przygotowuje zestawienia dla ekipy i sprawdza, czy prace na budowie są zgodne z projektem."
     },
     {
      "h": "Roman",
-     "p": "Programista AI — strona, zgłoszenia, asystenci i automatyzacja."
+     "role": "Programista AI",
+     "p": "Strona, zgłoszenia, asystenci i automatyzacja."
     }
    ]
   },

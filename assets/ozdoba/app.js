@@ -212,7 +212,7 @@ function renderBundle(id){
         </div></div>`; }).join('')}
     <div class="sum total"><span>Разом, ${n0} позицій</span><span>${money(t)}</span></div>
     ${vp?`<div class="sum disc"><span>Знижка за обсягом −${vp}% у кошику</span><span>−${money(Math.round(t*vp/100))}</span></div>`:''}
-    <p class="note-honest">Ціна — сума позицій каталогу. ${VOLTXT} — рахується в кошику на всю суму товарів. Поставка з Китаю 30–60 днів, рахунок для ФОП і ТОВ.${b.premium?' Точну суму під ваш обʼєкт менеджер підтвердить після заявки.':''}</p>
+    <p class="note-honest">Ціна — сума позицій каталогу. ${VOLTXT} — рахується в кошику на всю суму товарів. Поставка з Китаю 30–60 днів, рахунок для ФОП і ТОВ; рахунки для компаній з ЄС — незабаром.${b.premium?' Точну суму під ваш обʼєкт менеджер підтвердить після заявки.':''}</p>
     <button class="btn" onclick="addBundle('${id}')">${b.premium?'Додати весь комплект у кошик':'Додати комплект у кошик'}</button>
     ${b.premium?`<a class="btn ghost" style="text-decoration:none" href="/ozdoba/komplekty?kit=${b.id}#zayavka">Запит розрахунку під мій обʼєкт</a>`:''}`);
 }

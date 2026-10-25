@@ -71,23 +71,28 @@
    "items": [
     {
      "h": "Mykhailo",
-     "p": "Gründer und CEO — leitet jedes Projekt vom ersten Treffen bis zur Übergabe."
+     "role": "Gründer und CEO",
+     "p": "Leitet jedes Projekt vom ersten Treffen bis zur Übergabe. Stimmt Budget, Termine und wichtige Entscheidungen mit dem Kunden ab und verantwortet das Ergebnis."
     },
     {
      "h": "Serzh",
-     "p": "Projektmanager — Zeitplan, Teams, Einkauf und regelmäßige Berichte."
+     "role": "Projektmanager",
+     "p": "Erstellt Kostenvoranschlag und Bauzeitenplan, organisiert Teams und Materialeinkauf. Achtet auf die Termine auf der Baustelle und schickt dem Kunden regelmäßig Fotoberichte."
     },
     {
      "h": "Alisa",
-     "p": "Innenarchitektin — Konzept, Stil, 3D-Visualisierungen und Materialien."
+     "role": "Innenarchitektin",
+     "p": "Entwickelt Konzept und Stil des Interieurs und erstellt 3D-Visualisierungen. Wählt Materialien, Möbel und Leuchten aus und erstellt die Spezifikationen, nach denen das Team arbeitet."
     },
     {
      "h": "Olena",
-     "p": "Planerin — Grundrisse, Ausführungspläne und Spezifikationen."
+     "role": "Planerin",
+     "p": "Erstellt Grundrisse und Ausführungspläne: Wände, Elektrik, Sanitär und Beleuchtung. Bereitet Spezifikationen für das Team vor und prüft, ob die Arbeiten vor Ort dem Projekt entsprechen."
     },
     {
      "h": "Roman",
-     "p": "KI-Entwickler — Website, Anfragen, Assistenten und Automatisierung."
+     "role": "KI-Entwickler",
+     "p": "Website, Anfragen, Assistenten und Automatisierung."
     }
    ]
   },

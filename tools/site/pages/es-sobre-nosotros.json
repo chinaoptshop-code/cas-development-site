@@ -71,23 +71,28 @@
    "items": [
     {
      "h": "Mykhailo",
-     "p": "Fundador y CEO: dirige cada proyecto desde la primera reunión hasta la entrega."
+     "role": "Fundador y CEO",
+     "p": "Dirige cada proyecto desde la primera reunión hasta la entrega. Acuerda con el cliente el presupuesto, los plazos y las decisiones clave, y responde del resultado."
     },
     {
      "h": "Serzh",
-     "p": "Jefe de proyecto: calendario, cuadrillas, compras e informes periódicos."
+     "role": "Jefe de proyecto",
+     "p": "Prepara el presupuesto y el calendario de obra, organiza las cuadrillas y la compra de materiales. Controla los plazos en obra y envía al cliente reportes fotográficos periódicos."
     },
     {
      "h": "Alisa",
-     "p": "Diseñadora de interiores: concepto, estilo, visualizaciones 3D y materiales."
+     "role": "Diseñadora de interiores",
+     "p": "Desarrolla el concepto y el estilo del interior y prepara visualizaciones 3D. Selecciona materiales, muebles e iluminación y redacta las especificaciones con las que trabaja la cuadrilla."
     },
     {
      "h": "Olena",
-     "p": "Proyectista: distribuciones, planos de ejecución y mediciones."
+     "role": "Proyectista",
+     "p": "Elabora distribuciones y planos de ejecución: tabiques, electricidad, fontanería e iluminación. Prepara las mediciones para la cuadrilla y comprueba que la obra siga el proyecto."
     },
     {
      "h": "Roman",
-     "p": "Desarrollador de IA: web, solicitudes, asistentes y automatización."
+     "role": "Desarrollador de IA",
+     "p": "Web, solicitudes, asistentes y automatización."
     }
    ]
   },

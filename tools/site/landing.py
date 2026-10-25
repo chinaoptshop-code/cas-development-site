@@ -175,12 +175,13 @@ def section_html(lang, x):
     t, k = L[lang], x['t']
     h2 = f'  <h2>{e(x["h2"])}</h2>' if x.get('h2') else ''
     sid = f' id="{x["id"]}"' if x.get('id') else ''
-    if k == 'cards':  # картки: заголовок (посилання), ціна, опис, пункти
+    if k == 'cards':  # картки: заголовок (посилання), ціна, роль (картки команди), опис, пункти
         cards = []
         for c in x['items']:
             ttl = f'<a href="{c["href"]}">{e(c["h"])}</a>' if c.get('href') else e(c['h'])
             cards.append('<div class="card">' + f'<h3>{ttl}</h3>'
                          + (f'<p style="color:var(--ac)">{e(c["price"])}</p>' if c.get('price') else '')
+                         + (f'<p style="color:var(--ac);font-size:var(--fs-small);letter-spacing:.12em;text-transform:uppercase">{e(c["role"])}</p>' if c.get('role') else '')
                          + (f'<p>{e(c["p"])}</p>' if c.get('p') else '')
                          + ('<ul>' + ''.join(f'<li>{e(i)}</li>' for i in c['li']) + '</ul>' if c.get('li') else '')
                          + (f'<p style="margin-top:10px"><a href="{c["href"]}">{e(c["more"])} →</a></p>' if c.get('more') and c.get('href') else '')
