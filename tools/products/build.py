@@ -126,13 +126,23 @@ def main():
     items = sorted(d['items'], key=lambda i: (not i.get('img'), order.get(i['prio'], 3), -(min_price(d, i) or 0)))  # без фото — у кінці
     grid = ''.join(card(d, i) for i in items[:FIRST])  # решту карток app.js дорендерює частинами; кожен товар має свою сторінку
     # ItemList — лише картки, які є в HTML (швидкий перший рендер); решта товарів — у категоріях і sitemap
-    ld = {'@context': 'https://schema.org', '@type': 'ItemList', 'name': 'Оздоба — каталог меблів, світла й декору',
-          'numberOfItems': len(items[:FIRST]),
-          'itemListElement': [{'@type': 'ListItem', 'position': n + 1, 'name': i['name'], 'url': f'https://cas-develop.com/ozdoba/{i["slug"]}'}
-                              for n, i in enumerate(items[:FIRST])]}
+    ld = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'ItemList', 'name': 'Оздоба — каталог меблів, світла й декору',
+         'numberOfItems': len(items[:FIRST]),
+         'itemListElement': [{'@type': 'ListItem', 'position': n + 1, 'name': i['name'], 'url': f'https://cas-develop.com/ozdoba/{i["slug"]}'}
+                             for n, i in enumerate(items[:FIRST])]},
+        {'@type': 'BreadcrumbList', 'itemListElement': [
+            {'@type': 'ListItem', 'position': 1, 'name': 'Головна', 'item': 'https://cas-develop.com/'},
+            {'@type': 'ListItem', 'position': 2, 'name': 'Оздоба', 'item': 'https://cas-develop.com/ozdoba'}]}]}
     ver = lambda p: hashlib.sha1(open(p, 'rb').read()).hexdigest()[:8]
     s = open(PAGE, encoding='utf-8').read()
     s = re.sub(r'<!--ozd:grid-->.*?<!--/ozd:grid-->', lambda m: '<!--ozd:grid-->' + grid + '<!--/ozd:grid-->', s, count=1, flags=re.S)
+    # FAQPage — з блоку «Питання та відповіді» самої сторінки (<details><summary>питання</summary><p>відповідь</p>)
+    qa = [(html.unescape(re.sub(r'<[^>]+>', '', q)).strip(), html.unescape(re.sub(r'<[^>]+>', '', a)).strip())
+          for q, a in re.findall(r'<details><summary>(.*?)</summary>\s*<p>(.*?)</p>', s, re.S)]
+    if qa:
+        ld['@graph'].append({'@type': 'FAQPage', 'mainEntity': [
+            {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in qa]})
     s = re.sub(r'<!--ozd:ld-->.*?<!--/ozd:ld-->', lambda m: '<!--ozd:ld--><script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script><!--/ozd:ld-->', s, count=1, flags=re.S)
     s = re.sub(r'/assets/ozdoba/catalog\.json\?v=\w+', '/assets/ozdoba/catalog.json?v=' + ver(CAT), s)
     s = re.sub(r'/assets/ozdoba/app\.js\?v=\w+', '/assets/ozdoba/app.js?v=' + ver(APP), s)
@@ -239,10 +249,10 @@ def product_page(d, i, shell, items, title):
     crumbs = [('Головна', f'{SITE}/'), ('Оздоба', f'{SITE}/ozdoba')]
     if cslug: crumbs.append((i['cat'], f'{SITE}/ozdoba/kategoriia/{cslug}'))
     crumbs.append((i['name'], u))
-    # Product — лише для товарів з ціною (Google вимагає offers/review); без ціни — тільки BreadcrumbList.
+    # Product — лише для товарів з ціною й фото (Google вимагає offers/review та image); інакше — тільки BreadcrumbList.
     # shippingDetails і hasMerchantReturnPolicy не додаємо: підтверджених умов доставки й повернення немає.
     graph = []
-    if offer:
+    if offer and images:
         graph.append({'@type': 'Product', 'name': i['name'], 'description': i['desc'], 'sku': f'OZD-{i["id"]}',
                       'category': i['sub'].replace(' / ', ' > '), 'url': u,
                       **({'image': images if len(images) > 1 else images[0]} if images else {}),
@@ -422,7 +432,7 @@ def category_pages(d):
             {'@type': 'CollectionPage', 'name': h1, 'url': u, 'description': desc},
             {'@type': 'FAQPage', 'mainEntity': [
                 {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': plain(a)}} for q, a in cx['faq']]},
-            {'@type': 'ItemList', 'numberOfItems': len(items), 'itemListElement': [
+            {'@type': 'ItemList', 'name': h1, 'numberOfItems': len(items), 'itemListElement': [
                 {'@type': 'ListItem', 'position': n + 1, 'name': x['name'], 'url': f'https://cas-develop.com/ozdoba/{x["slug"]}'} for n, x in enumerate(items)]},
             {'@type': 'BreadcrumbList', 'itemListElement': [
                 {'@type': 'ListItem', 'position': 1, 'name': 'Головна', 'item': 'https://cas-develop.com/'},

@@ -15,3 +15,4 @@ python3 tools/blog/build.py
 python3 tools/site/chrome.py
 python3 tools/site/chrome.py --check
 python3 tools/site/i18n.py --check
+python3 tools/site/seo.py --quiet || echo "::warning::SEO-перевірка (tools/site/seo.py) знайшла помилки — деплой не зупиняємо"

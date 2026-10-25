@@ -2,7 +2,7 @@
  "slug": "services",
  "lang": "fr",
  "service": "Tous les services",
- "title": "Services — design, rénovation, construction, ameublement | CAS Development",
+ "title": "Services à Kyiv : design, rénovation, construction | CAS Development",
  "description": "Services de CAS Development : design dès $30/m², rénovation dès $550/m², bureaux dès $350/m², construction dès $600/m², ameublement dès $250/m².",
  "h1": "Services du studio : de l’idée à l’espace achevé",
  "lead": "Confiez-nous le cycle complet ou une seule étape. Chaque service s’appuie sur la même équipe d’architectes, de designers, d’ingénieurs et d’artisans salariés.",
@@ -117,6 +117,66 @@
    "t": "rel",
    "h2": "Autres services",
    "items": [
+    [
+     "/fr/architecture-paysagere",
+     "Architecture paysagère"
+    ],
+    [
+     "/fr/base-de-loisirs-cle-en-main",
+     "Conception de base de loisirs"
+    ],
+    [
+     "/fr/calculateur-renovation",
+     "Calculateur du coût de rénovation"
+    ],
+    [
+     "/fr/conception-maison",
+     "Conception de maison individuelle"
+    ],
+    [
+     "/fr/design-appartement",
+     "Design d’intérieur d’appartement"
+    ],
+    [
+     "/fr/design-restaurant-cafe",
+     "Design de restaurants et cafés"
+    ],
+    [
+     "/fr/designer-interieur",
+     "Services de designer d’intérieur"
+    ],
+    [
+     "/fr/equipe-renovation",
+     "Équipe de rénovation"
+    ],
+    [
+     "/fr/equipement-cle-en-main",
+     "Équipement de projets clé en main"
+    ],
+    [
+     "/fr/renovation-appartement-neuf",
+     "Rénovation d’appartement neuf"
+    ],
+    [
+     "/fr/renovation-bureaux",
+     "Rénovation de bureaux clé en main"
+    ],
+    [
+     "/fr/renovation-cuisine",
+     "Rénovation de cuisine"
+    ],
+    [
+     "/fr/renovation-locaux-commerciaux",
+     "Rénovation de locaux commerciaux"
+    ],
+    [
+     "/fr/renovation-maison-cle-en-main",
+     "Rénovation de maison clé en main"
+    ],
+    [
+     "/fr/renovation-salle-de-bain",
+     "Rénovation de salle de bain"
+    ],
     [
      "/fr/a-propos",
      "Le studio"
