@@ -145,13 +145,13 @@
  {
   "lang": "uk",
   "slug": "remont-komertsiinoho-prymishchennia-etapy",
-  "title": "Ремонт комерційного приміщення: магазин, салон, кафе",
+  "title": "Ремонт комерційного приміщення під ключ: магазин, салон, офіс — етапи й бюджет",
   "keyword": "ремонт комерційних приміщень київ",
   "service": [
    "/remont-komertsiinykh-prymishchen-kyiv",
    "Ремонт комерційних приміщень"
   ],
-  "status": "todo"
+  "status": "draft"
  },
  {
   "lang": "ru",
@@ -394,5 +394,126 @@
    "Дизайн интерьера"
   ],
   "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "yak-vidkryty-kafe-restoran-pid-kliuch",
+  "title": "Як відкрити кафе чи ресторан під ключ: від концепції до запуску",
+  "keyword": "відкрити кафе під ключ київ",
+  "service": [
+   "/biznes-pid-kliuch-kyiv",
+   "Бізнес під ключ"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "ru",
+  "slug": "kak-otkryt-kafe-restoran-pod-klyuch",
+  "title": "Как открыть кафе или ресторан под ключ: от концепции до запуска",
+  "keyword": "открыть кафе под ключ киев",
+  "service": [
+   "/ru/biznes-pod-klyuch-kiev",
+   "Бизнес под ключ"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "uk",
+  "slug": "komplektatsiia-restoranu-hotelyu-z-kytaiu",
+  "title": "Комплектація ресторану, кафе чи готелю з Китаю: меблі, світло, посуд — як замовити",
+  "keyword": "комплектація ресторану з китаю",
+  "service": [
+   "/komplektatsiia-pid-kliuch-kyiv",
+   "Комплектація під ключ"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "ru",
+  "slug": "komplektatsiya-restorana-otelya-iz-kitaya",
+  "title": "Комплектация ресторана, кафе или отеля из Китая: мебель, свет, посуда — как заказать",
+  "keyword": "комплектация ресторана из китая",
+  "service": [
+   "/ru/komplektatsiya-pod-klyuch-kiev",
+   "Комплектация под ключ"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "ru",
+  "slug": "remont-kommercheskogo-pomeshcheniya-etapy",
+  "title": "Ремонт коммерческого помещения под ключ: магазин, салон, офис — этапы и бюджет",
+  "keyword": "ремонт коммерческих помещений киев",
+  "service": [
+   "/ru/remont-kommercheskih-pomeshcheniy-kiev",
+   "Ремонт коммерческих помещений"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "uk",
+  "slug": "salon-krasy-pid-kliuch",
+  "title": "Салон краси під ключ: дизайн, ремонт, обладнання",
+  "keyword": "салон краси під ключ",
+  "service": [
+   "/biznes-pid-kliuch-kyiv",
+   "Бізнес під ключ"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "ru",
+  "slug": "salon-krasoty-pod-klyuch",
+  "title": "Салон красоты под ключ: дизайн, ремонт, оборудование",
+  "keyword": "салон красоты под ключ",
+  "service": [
+   "/ru/biznes-pod-klyuch-kiev",
+   "Бизнес под ключ"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "uk",
+  "slug": "mebliuvannia-kvartyry-pid-orendu-cheklist",
+  "title": "Меблювання квартири під здачу в оренду: чекліст і бюджет",
+  "keyword": "меблювання квартири під оренду",
+  "service": [
+   "/mebliuvannia-kvartyry-kyiv",
+   "Меблювання квартири під ключ"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "ru",
+  "slug": "meblirovka-kvartiry-pod-arendu-cheklist",
+  "title": "Меблировка квартиры под сдачу в аренду: чек-лист и бюджет",
+  "keyword": "меблировка квартиры под аренду",
+  "service": [
+   "/ru/meblirovka-kvartiry-kiev",
+   "Меблировка квартиры под ключ"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "uk",
+  "slug": "budynok-pid-kliuch-chy-korobka",
+  "title": "Будинок під ключ чи коробка: що вигідніше замовити",
+  "keyword": "будинок під ключ чи коробка",
+  "service": [
+   "/budivnytstvo-budynkiv-kyiv",
+   "Будівництво будинків"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "ru",
+  "slug": "dom-pod-klyuch-ili-korobka",
+  "title": "Дом под ключ или коробка: что выгоднее заказать",
+  "keyword": "дом под ключ или коробка",
+  "service": [
+   "/ru/stroitelstvo-domov-kiev",
+   "Строительство домов"
+  ],
+  "status": "draft"
  }
 ]
