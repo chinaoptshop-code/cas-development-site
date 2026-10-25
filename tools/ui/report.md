@@ -18,7 +18,7 @@
 | сторінка | тип | HTML КБ | gzip КБ | CSS КБ | JS КБ | розмірів шрифту | тегів |
 |---|---|---|---|---|---|---|---|
 | portfolio.html | main | 252.4 | 42.3 | 48.4 | 43.0 | 26 | 1745 |
-| index.html | main | 156.8 | 36.1 | 51.2 | 45.7 | 25 | 631 |
+| index.html | main | 156.8 | 36.2 | 51.2 | 45.7 | 25 | 631 |
 | contact.html | main | 125.3 | 32.3 | 56.5 | 45.7 | 22 | 330 |
 | services.html | main | 118.9 | 29.7 | 45.2 | 39.6 | 20 | 444 |
 | about.html | main | 118.8 | 30.7 | 48.8 | 39.6 | 21 | 389 |
@@ -313,7 +313,7 @@
 | ru/remont-kvartiry-zhk-greenville-na-pecherske.html | land | 51.4 | 14.1 | 13.7 | 7.0 | 6 | 389 |
 | blog/dyzain-malenkoi-kvartyry-zberihannia.html | land | 51.3 | 14.9 | 14.6 | 7.0 | 6 | 298 |
 | remont-kvartyry-zhk-greenville-na-pechersku.html | land | 51.3 | 14.0 | 13.7 | 7.0 | 6 | 389 |
-| dyzain-remont-kvartyry-pechersk.html | land | 51.2 | 14.2 | 13.7 | 7.0 | 6 | 408 |
+| dyzain-remont-kvartyry-pechersk.html | land | 51.2 | 14.1 | 13.7 | 7.0 | 6 | 408 |
 | ru/dizayn-interera-kiev.html | land | 51.2 | 13.9 | 13.7 | 7.0 | 6 | 393 |
 | ru/dizayn-remont-kvartiry-pechersk.html | land | 51.2 | 14.2 | 13.7 | 7.0 | 6 | 408 |
 | blog/komplektatsiia-kvartyry-pid-kliuch-poriadok-i-biudzhet.html | land | 51.1 | 14.6 | 14.6 | 7.0 | 6 | 284 |
@@ -464,7 +464,7 @@
 | ar/furnishing.html | land | 43.7 | 12.3 | 13.7 | 7.0 | 6 | 337 |
 | de/gewerberaeume-renovierung.html | land | 43.6 | 12.1 | 13.7 | 7.0 | 6 | 376 |
 | en/commercial-renovation.html | land | 43.6 | 12.0 | 13.7 | 7.0 | 6 | 387 |
-| en/renovation-cost-calculator.html | land | 43.6 | 12.1 | 14.3 | 7.9 | 6 | 352 |
+| en/renovation-cost-calculator.html | land | 43.6 | 12.0 | 14.3 | 7.9 | 6 | 352 |
 | fr/renovation-locaux-commerciaux.html | land | 43.6 | 12.0 | 13.7 | 7.0 | 6 | 371 |
 | pl/kalkulator-remontu.html | land | 43.6 | 12.3 | 14.3 | 8.0 | 6 | 352 |
 | pl/remont-domu.html | land | 43.6 | 12.3 | 13.7 | 7.0 | 6 | 381 |
@@ -504,7 +504,7 @@
 | fr/renovation-cle-en-main.html | land | 42.7 | 12.1 | 13.7 | 7.0 | 6 | 351 |
 | zh/renovation-calculator.html | land | 42.7 | 12.5 | 14.3 | 7.9 | 6 | 345 |
 | de/kuechenrenovierung.html | land | 42.6 | 12.1 | 13.7 | 7.0 | 6 | 367 |
-| de/umsetzung-designprojekt.html | land | 42.6 | 12.3 | 13.7 | 7.0 | 6 | 353 |
+| de/umsetzung-designprojekt.html | land | 42.6 | 12.2 | 13.7 | 7.0 | 6 | 353 |
 | de/wohnungsdesign.html | land | 42.6 | 11.8 | 13.7 | 7.0 | 6 | 360 |
 | en/apartment-interior-design.html | land | 42.6 | 11.7 | 13.7 | 7.0 | 6 | 369 |
 | en/design-implementation.html | land | 42.6 | 12.1 | 13.7 | 7.0 | 6 | 361 |
