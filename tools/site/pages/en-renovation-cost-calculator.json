@@ -1,0 +1,180 @@
+{
+ "slug": "renovation-cost-calculator",
+ "lang": "en",
+ "service": "Renovation cost calculator",
+ "title": "Renovation cost calculator — price per m² in Kyiv | CAS Development",
+ "description": "Online cost calculator for apartment and office renovation and house construction in Kyiv: renovation from $550/m², design from $30/m², furnishing from $250/m².",
+ "h1": "Renovation cost calculator",
+ "price": "renovation from $550 / m² · turnkey house from $1 100 / m²",
+ "lead": "Estimate the approximate cost of renovating an apartment or office or building a house at our base rates. Add a design project and furnishing — and send us the result: after measuring we will prepare an exact estimate.",
+ "calc": true,
+ "cards": [
+  [
+   "Renovation",
+   [
+    "turnkey apartment — from $550/m²",
+    "office — from $350/m²",
+    "estimate guaranteed within ±5% when CAS renovates"
+   ]
+  ],
+  [
+   "House",
+   [
+    "shell — from $600/m²",
+    "turnkey with finishing — from $1 100/m²",
+    "design and estimate before the start"
+   ]
+  ],
+  [
+   "Design and furniture",
+   [
+    "design project — from $30/m², minimum $2 500",
+    "furnishing and procurement — from $250/m²",
+    "furniture and lighting direct from China"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Why “from” and not an exact price",
+   [
+    "The final cost depends on the condition of the property, the scope of works and the materials. The calculator shows the lower limit at our base rates. We fix the exact amount in the estimate after measuring and design — and if we do the renovation, the total stays within ±5% of the estimate."
+   ]
+  ]
+ ],
+ "gallery": [],
+ "steps": [
+  [
+   "Calculation",
+   "Use the calculator or call us."
+  ],
+  [
+   "Survey",
+   "We visit the property."
+  ],
+  [
+   "Estimate",
+   "A detailed list of works and materials."
+  ],
+  [
+   "Contract",
+   "Price and schedule are fixed."
+  ],
+  [
+   "Start",
+   "Our own crew, reports at every stage."
+  ]
+ ],
+ "faq": [
+  [
+   "How much does it cost to renovate a 60 m² apartment in Kyiv?",
+   "At the base rate — from $33 000 (60 m² × $550). We give the exact amount after measuring and preparing the estimate."
+  ],
+  [
+   "Are materials included in the price?",
+   "The turnkey rate covers works and materials per the estimate; furniture and decor are calculated separately — from $250 per m²."
+  ],
+  [
+   "Can the price go up during the renovation?",
+   "If we do the renovation, the total stays within ±5% of the approved estimate."
+  ],
+  [
+   "How much does a 150 m² turnkey house cost?",
+   "At the base rate — from $165 000 (150 m² × $1 100). The exact amount comes after the design."
+  ]
+ ],
+ "rel": [
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/new-build-renovation",
+   "New-build renovation"
+  ],
+  [
+   "/en/kitchen-renovation",
+   "Kitchen renovation"
+  ],
+  [
+   "/en/bathroom-renovation",
+   "Bathroom renovation"
+  ],
+  [
+   "/en/house-renovation",
+   "House renovation"
+  ],
+  [
+   "/en/office-renovation",
+   "Office renovation"
+  ],
+  [
+   "/en/commercial-renovation",
+   "Commercial renovation"
+  ],
+  [
+   "/en/business-fit-out",
+   "Turnkey business premises"
+  ],
+  [
+   "/en/renovation-crew",
+   "Renovation crew"
+  ],
+  [
+   "/en/interior-design",
+   "Interior design"
+  ],
+  [
+   "/en/apartment-interior-design",
+   "Apartment interior design"
+  ],
+  [
+   "/en/interior-designer",
+   "Interior designer"
+  ],
+  [
+   "/en/design-implementation",
+   "Design implementation"
+  ],
+  [
+   "/en/restaurant-design",
+   "Restaurant & café design"
+  ],
+  [
+   "/en/landscape-design",
+   "Landscape design"
+  ],
+  [
+   "/en/house-construction",
+   "House construction"
+  ],
+  [
+   "/en/house-design",
+   "House design"
+  ],
+  [
+   "/en/resort-design",
+   "Holiday resort design"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Turnkey furnishing"
+  ],
+  [
+   "/en/turnkey-procurement",
+   "Turnkey procurement"
+  ],
+  [
+   "/en/faq",
+   "FAQ"
+  ],
+  [
+   "/en/contact",
+   "Contact"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

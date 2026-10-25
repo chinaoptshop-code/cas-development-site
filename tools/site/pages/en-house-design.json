@@ -1,0 +1,208 @@
+{
+ "slug": "house-design",
+ "lang": "en",
+ "service": "Private house design",
+ "title": "Private house architecture and interior design in Kyiv",
+ "description": "Architectural design and interior design of a private house: floor plans, facades, 3D, working drawings. Design from $30/m², turnkey construction from $1 100/m².",
+ "h1": "Private house design",
+ "price": "design from $30 / m² · turnkey construction from $1 100 / m²",
+ "lead": "A house thought through from the facade to the sockets: architecture, floor plans for your family, interior and landscaping — one team from the first sketch to the keys.",
+ "cards": [
+  [
+   "Architecture",
+   [
+    "sketch and massing",
+    "floor plans",
+    "facades and materials",
+    "fitting the house to the plot"
+   ]
+  ],
+  [
+   "Interior",
+   [
+    "design of every room",
+    "3D visualisations",
+    "lighting, furniture, materials",
+    "specifications"
+   ]
+  ],
+  [
+   "Construction",
+   [
+    "estimate and works schedule",
+    "construction with turnkey finishing",
+    "furnishing from China",
+    "author supervision"
+   ]
+  ]
+ ],
+ "about": [],
+ "gallery": [
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1kHF6cjS291puf-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1C16Cd6bvENPGL-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1g-E1m6cFJ9kvH-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1pF5ohNHdSnme0-900.webp",
+   "A-Frame House"
+  ]
+ ],
+ "steps": [
+  [
+   "Introduction",
+   "Plot, family, wishes, budget."
+  ],
+  [
+   "Sketch",
+   "We propose massing and floor plans and refine them to your wishes."
+  ],
+  [
+   "Design and 3D",
+   "Facades, interiors, visualisations — you see the house before construction starts."
+  ],
+  [
+   "Working drawings",
+   "Documentation that lets builders work without guesswork."
+  ],
+  [
+   "Construction",
+   "If you wish, we build turnkey — from $1 100 per m²."
+  ]
+ ],
+ "faq": [
+  [
+   "How much does a house design cost?",
+   "Design from $30 per m², minimum project budget $2 500. We give the exact price after getting to know the plot and the brief."
+  ],
+  [
+   "How much does a turnkey house cost?",
+   "Construction with turnkey finishing — from $1 100 per m². Furniture and furnishing are calculated separately; we can bring them directly from China."
+  ],
+  [
+   "Do you also do the interior and landscaping?",
+   "Yes — architecture, interior and landscaping in one project."
+  ],
+  [
+   "Where do you work?",
+   "Kyiv and the region, across Ukraine, in Europe and worldwide."
+  ]
+ ],
+ "rel": [
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/new-build-renovation",
+   "New-build renovation"
+  ],
+  [
+   "/en/kitchen-renovation",
+   "Kitchen renovation"
+  ],
+  [
+   "/en/bathroom-renovation",
+   "Bathroom renovation"
+  ],
+  [
+   "/en/house-renovation",
+   "House renovation"
+  ],
+  [
+   "/en/office-renovation",
+   "Office renovation"
+  ],
+  [
+   "/en/commercial-renovation",
+   "Commercial renovation"
+  ],
+  [
+   "/en/business-fit-out",
+   "Turnkey business premises"
+  ],
+  [
+   "/en/renovation-crew",
+   "Renovation crew"
+  ],
+  [
+   "/en/interior-design",
+   "Interior design"
+  ],
+  [
+   "/en/apartment-interior-design",
+   "Apartment interior design"
+  ],
+  [
+   "/en/interior-designer",
+   "Interior designer"
+  ],
+  [
+   "/en/design-implementation",
+   "Design implementation"
+  ],
+  [
+   "/en/restaurant-design",
+   "Restaurant & café design"
+  ],
+  [
+   "/en/landscape-design",
+   "Landscape design"
+  ],
+  [
+   "/en/house-construction",
+   "House construction"
+  ],
+  [
+   "/en/resort-design",
+   "Holiday resort design"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Turnkey furnishing"
+  ],
+  [
+   "/en/turnkey-procurement",
+   "Turnkey procurement"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Cost calculator"
+  ],
+  [
+   "/en/faq",
+   "FAQ"
+  ],
+  [
+   "/en/contact",
+   "Contact"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

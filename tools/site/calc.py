@@ -13,11 +13,33 @@ T = {
                furn='Меблировка и комплектация (от $250/м²)', res='Ориентировочно от', note='Это нижняя граница по нашим базовым ставкам. Точную сумму называем после замера и сметы; если ремонт делаем мы, итог не выходит за ±5% от сметы.',
                send='Получить точную смету', msg='Расчёт из калькулятора'),
 }
+# нові мови: ті самі ставки й логіка, перекладені підписи (d/f — рядки розрахунку, frm — «від», m2 — одиниця)
+RATES.update({
+    'en': [('remont', 'Turnkey apartment renovation', 550), ('office', 'Office renovation', 350),
+           ('house', 'House construction (shell)', 600), ('housekey', 'Turnkey house with finishing', 1100)],
+    'pl': [('remont', 'Remont mieszkania pod klucz', 550), ('office', 'Remont biura', 350),
+           ('house', 'Budowa domu (stan surowy)', 600), ('housekey', 'Dom pod klucz z wykończeniem', 1100)],
+    'de': [('remont', 'Wohnungsrenovierung schlüsselfertig', 550), ('office', 'Büroumbau', 350),
+           ('house', 'Hausbau (Rohbau)', 600), ('housekey', 'Haus schlüsselfertig mit Ausbau', 1100)],
+})
+T.update({
+    'en': dict(h='Cost calculator', kind='What you need', area='Area, m²', design='Interior design project (from $30/m², minimum $2 500)',
+               furn='Furnishing and procurement (from $250/m²)', res='Approximately from', note='This is the lower limit at our base rates. We give the exact amount after measuring and preparing the estimate; if we do the renovation, the total stays within ±5% of the estimate.',
+               send='Get an exact estimate', msg='Calculator result', d='Design project', f='Furnishing', frm='from', m2='m²'),
+    'pl': dict(h='Kalkulator kosztów', kind='Czego potrzebujesz', area='Powierzchnia, m²', design='Projekt wnętrza (od $30/m², minimum $2 500)',
+               furn='Umeblowanie i kompletacja (od $250/m²)', res='Orientacyjnie od', note='To dolna granica według naszych stawek bazowych. Dokładną kwotę podajemy po pomiarze i kosztorysie; jeśli remont robimy my, wynik nie wychodzi poza ±5% kosztorysu.',
+               send='Poproś o dokładny kosztorys', msg='Wynik z kalkulatora', d='Projekt wnętrza', f='Umeblowanie', frm='od', m2='m²'),
+    'de': dict(h='Kostenrechner', kind='Was Sie brauchen', area='Fläche, m²', design='Innenarchitektur-Projekt (ab $30/m², mindestens $2 500)',
+               furn='Einrichtung und Ausstattung (ab $250/m²)', res='Ungefähr ab', note='Das ist die Untergrenze nach unseren Basissätzen. Die genaue Summe nennen wir nach Aufmaß und Kostenvoranschlag; renovieren wir selbst, bleibt die Endsumme innerhalb von ±5 % des Kostenvoranschlags.',
+               send='Genauen Kostenvoranschlag anfordern', msg='Ergebnis aus dem Rechner', d='Designprojekt', f='Einrichtung', frm='ab', m2='m²'),
+})
+for _l, _t in (('uk', ('Дизайн-проєкт', 'Меблювання', 'від')), ('ru', ('Дизайн-проект', 'Меблировка', 'от'))):
+    T[_l].update(d=_t[0], f=_t[1], frm=_t[2], m2='м²')
 
 
 def block(lang):
     t = T[lang]
-    opts = ''.join(f'<option value="{r}" data-k="{k}">{n} — от ${r:,}/м²</option>'.replace(',', ' ').replace('от $', 'від $' if lang == 'uk' else 'от $')
+    opts = ''.join(f'<option value="{r}" data-k="{k}">{n} — {t["frm"]} ${r:,}/{t["m2"]}</option>'.replace(',', ' ')
                    for k, n, r in RATES[lang])
     return f'''<section id="calc"><div class="w">
   <h2>{t["h"]}</h2>
@@ -32,9 +54,9 @@ def block(lang):
   </div>
 <script>(function(){{var $=function(i){{return document.getElementById(i)}},f=function(n){{return '$'+Math.round(n).toLocaleString('uk-UA').replace(/\\u00a0|,/g,' ')}};
 function calc(){{var a=Math.max(0,+$('cArea').value||0),o=$('cKind').selectedOptions[0],r=+o.value,rows=[[o.text.split(' — ')[0],r*a]];
-if($('cDesign').checked)rows.push(['{"Дизайн-проєкт" if lang == "uk" else "Дизайн-проект"}',Math.max(30*a,2500)]);
-if($('cFurn').checked)rows.push(['{"Меблювання" if lang == "uk" else "Меблировка"}',250*a]);
+if($('cDesign').checked)rows.push(['{t["d"]}',Math.max(30*a,2500)]);
+if($('cFurn').checked)rows.push(['{t["f"]}',250*a]);
 var s=0;rows.forEach(function(x){{s+=x[1]}});$('cSum').textContent=a?f(s):'—';$('cRows').textContent=a?rows.map(function(x){{return x[0]+': '+f(x[1])}}).join(' · '):'';return{{a:a,t:$('cRows').textContent,s:f(s)}}}}
 ['cKind','cArea','cDesign','cFurn'].forEach(function(i){{$(i).addEventListener('input',calc);$(i).addEventListener('change',calc)}});calc();
-$('cSend').addEventListener('click',function(){{var c=calc(),ar=$('oArea'),m=$('oMsg');if(ar&&c.a)ar.value=c.a;if(m&&!m.value)m.value='{t["msg"]}: '+c.t+' = {"від" if lang == "uk" else "от"} '+c.s}});}})();</script>
+$('cSend').addEventListener('click',function(){{var c=calc(),ar=$('oArea'),m=$('oMsg');if(ar&&c.a)ar.value=c.a;if(m&&!m.value)m.value='{t["msg"]}: '+c.t+' = {t["frm"]} '+c.s}});}})();</script>
 </div></section>'''
