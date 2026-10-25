@@ -29,6 +29,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 1
  },
  {
@@ -59,6 +60,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -89,6 +91,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -119,6 +122,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -149,6 +153,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -179,6 +184,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -209,6 +215,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -239,6 +246,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -269,6 +277,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -299,6 +308,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -329,6 +339,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -359,6 +370,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -389,6 +401,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -421,6 +434,7 @@
    "$52 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -451,6 +465,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -481,6 +496,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -515,6 +531,7 @@
    "$90 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -548,6 +565,7 @@
    "$90 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -584,6 +602,7 @@
    "$6 300  "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -616,6 +635,7 @@
    "$7 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -648,6 +668,7 @@
    "$2 700"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -680,6 +701,7 @@
    "$3 600 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -712,6 +734,7 @@
    "$38 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -748,6 +771,7 @@
    "$9 000  "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -778,6 +802,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -811,6 +836,7 @@
    "$330 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -844,6 +870,7 @@
    "$17 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -874,6 +901,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -907,6 +935,7 @@
    "$17 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -939,6 +968,7 @@
    "$15 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -975,6 +1005,7 @@
    "$82 500  "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1009,6 +1040,7 @@
    "$90 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1041,6 +1073,7 @@
    "$55 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1075,6 +1108,7 @@
    "$76 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1107,6 +1141,7 @@
    "$70 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1137,6 +1172,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1170,6 +1206,7 @@
    "$3 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1202,6 +1239,7 @@
    "$3 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1235,6 +1273,7 @@
    "$33 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1272,6 +1311,7 @@
    "$55 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1307,6 +1347,7 @@
    "$82 500  "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1342,6 +1383,7 @@
    "$49 500  "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1374,6 +1416,7 @@
    "$3 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1407,6 +1450,7 @@
    "$44 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1439,6 +1483,7 @@
    "$3 600"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1471,6 +1516,7 @@
    "$3 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1501,6 +1547,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1533,6 +1580,7 @@
    "$38 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1563,6 +1611,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1595,6 +1644,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 2
  },
  {
@@ -1625,6 +1675,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1655,6 +1706,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1685,6 +1737,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1715,6 +1768,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1745,6 +1799,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1775,6 +1830,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1805,6 +1861,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1835,6 +1892,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1865,6 +1923,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1895,6 +1954,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1925,6 +1985,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1955,12 +2016,13 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "dyzain-interieru-kyiv.html",
   "kind": "land",
-  "html_kb": 48.5,
+  "html_kb": 48.6,
   "gzip_kb": 13.2,
   "css_kb": 13.5,
   "js_kb": 7.0,
@@ -1985,6 +2047,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2015,6 +2078,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2045,6 +2109,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2075,6 +2140,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2105,6 +2171,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2135,6 +2202,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2165,6 +2233,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2195,6 +2264,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2225,6 +2295,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2255,6 +2326,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2285,6 +2357,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2315,6 +2388,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2345,6 +2419,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2375,6 +2450,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2405,6 +2481,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2435,6 +2512,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2465,6 +2543,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2495,6 +2574,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2525,6 +2605,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2555,6 +2636,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2585,6 +2667,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2615,6 +2698,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2645,6 +2729,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2675,6 +2760,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2705,6 +2791,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2735,6 +2822,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2765,6 +2853,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2795,6 +2884,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2825,6 +2915,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2855,6 +2946,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2885,6 +2977,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2915,6 +3008,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2945,6 +3039,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2975,6 +3070,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3005,6 +3101,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3035,6 +3132,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3065,6 +3163,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3095,6 +3194,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3127,6 +3227,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 1
  },
  {
@@ -3157,6 +3258,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3187,6 +3289,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3220,6 +3323,7 @@
    "$33 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3250,6 +3354,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3280,6 +3385,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3310,6 +3416,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3340,6 +3447,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3370,6 +3478,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3400,6 +3509,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3430,6 +3540,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3460,6 +3571,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3490,6 +3602,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3520,6 +3633,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3550,6 +3664,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3580,6 +3695,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3610,6 +3726,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3640,6 +3757,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3670,6 +3788,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3700,6 +3819,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3730,6 +3850,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3760,6 +3881,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3790,6 +3912,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3820,6 +3943,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3850,6 +3974,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3880,6 +4005,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3910,6 +4036,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3940,6 +4067,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -3970,6 +4098,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4000,6 +4129,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4030,6 +4160,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4060,6 +4191,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4090,6 +4222,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4120,6 +4253,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4150,6 +4284,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4180,6 +4315,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4210,6 +4346,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4240,6 +4377,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4270,6 +4408,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4300,6 +4439,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4330,6 +4470,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4360,6 +4501,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4390,6 +4532,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4420,6 +4563,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4450,6 +4594,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4480,6 +4625,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4510,6 +4656,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4540,6 +4687,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4570,6 +4718,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4600,6 +4749,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4630,6 +4780,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4660,6 +4811,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4690,6 +4842,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4720,6 +4873,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4750,6 +4904,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4780,6 +4935,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4810,6 +4966,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4840,6 +4997,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4870,6 +5028,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4900,6 +5059,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4930,6 +5090,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4960,6 +5121,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4990,6 +5152,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5020,6 +5183,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5050,6 +5214,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5080,6 +5245,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5110,6 +5276,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5140,6 +5307,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5170,6 +5338,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5200,6 +5369,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5230,6 +5400,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5260,6 +5431,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5290,6 +5462,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5320,6 +5493,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5350,6 +5524,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5380,6 +5555,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5410,6 +5586,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5440,6 +5617,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5470,6 +5648,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5500,6 +5679,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5530,6 +5710,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5560,6 +5741,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5590,6 +5772,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5620,6 +5803,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5650,6 +5834,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5680,6 +5865,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5710,6 +5896,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5740,6 +5927,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5770,6 +5958,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5800,6 +5989,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5830,6 +6020,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5860,6 +6051,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5890,6 +6082,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5920,6 +6113,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5950,6 +6144,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5980,6 +6175,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6010,6 +6206,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6040,6 +6237,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6070,6 +6268,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6100,6 +6299,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6130,6 +6330,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6160,6 +6361,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6190,6 +6392,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6220,6 +6423,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6250,6 +6454,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6280,6 +6485,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6310,6 +6516,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6340,6 +6547,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6370,6 +6578,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6400,6 +6609,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6430,6 +6640,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6460,6 +6671,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6490,6 +6702,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6520,6 +6733,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6550,6 +6764,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6580,6 +6795,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6610,6 +6826,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6640,6 +6857,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6670,6 +6888,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6700,6 +6919,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6730,6 +6950,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6760,6 +6981,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6790,6 +7012,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6820,6 +7043,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6850,6 +7074,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6880,6 +7105,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6910,6 +7136,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6940,6 +7167,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6970,6 +7198,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7000,6 +7229,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7030,6 +7260,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7060,6 +7291,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7090,6 +7322,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7120,6 +7353,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7150,6 +7384,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7180,6 +7415,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7210,6 +7446,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7240,6 +7477,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7270,6 +7508,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7300,6 +7539,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7330,6 +7570,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7360,6 +7601,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7390,6 +7632,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7420,6 +7663,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7450,6 +7694,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7480,6 +7725,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7510,6 +7756,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7540,6 +7787,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7570,6 +7818,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7600,6 +7849,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7630,6 +7880,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7660,6 +7911,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7690,6 +7942,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7720,6 +7973,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7750,6 +8004,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7780,6 +8035,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7810,6 +8066,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7840,6 +8097,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7870,6 +8128,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7900,6 +8159,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7930,6 +8190,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7960,6 +8221,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7990,6 +8252,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8020,6 +8283,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8050,6 +8314,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8080,6 +8345,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8110,6 +8376,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8140,6 +8407,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8170,6 +8438,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8200,6 +8469,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8230,6 +8500,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8260,6 +8531,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8290,6 +8562,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8320,6 +8593,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8350,6 +8624,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8380,6 +8655,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8410,6 +8686,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8440,6 +8717,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8470,6 +8748,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8500,6 +8779,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8530,6 +8810,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8560,6 +8841,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8590,6 +8872,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8620,6 +8903,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8650,6 +8934,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8680,6 +8965,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8710,6 +8996,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8740,6 +9027,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8770,6 +9058,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8800,6 +9089,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8830,6 +9120,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8860,6 +9151,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8890,6 +9182,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8920,6 +9213,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8950,6 +9244,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8980,6 +9275,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9010,6 +9306,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9040,6 +9337,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9070,6 +9368,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9100,6 +9399,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9130,6 +9430,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9160,6 +9461,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9190,6 +9492,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9220,6 +9523,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9250,6 +9554,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9280,6 +9585,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9310,6 +9616,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9340,6 +9647,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9370,6 +9678,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9400,6 +9709,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9430,6 +9740,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9460,6 +9771,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9490,6 +9802,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9520,6 +9833,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9550,6 +9864,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9580,6 +9895,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9610,6 +9926,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9640,6 +9957,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9670,6 +9988,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9700,6 +10019,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9730,6 +10050,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9760,6 +10081,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9790,6 +10112,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9820,6 +10143,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9850,6 +10174,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9880,6 +10205,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9910,6 +10236,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9940,6 +10267,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9970,6 +10298,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10000,6 +10329,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10030,6 +10360,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10060,6 +10391,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10090,6 +10422,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10120,6 +10453,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10150,6 +10484,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10180,6 +10515,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10210,6 +10546,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10240,6 +10577,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10270,6 +10608,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10300,6 +10639,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10330,6 +10670,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10360,6 +10701,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10390,6 +10732,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10420,6 +10763,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10450,6 +10794,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10480,6 +10825,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10510,6 +10856,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10540,6 +10887,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10570,6 +10918,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10600,6 +10949,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10630,6 +10980,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10660,6 +11011,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10690,6 +11042,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10720,6 +11073,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10750,6 +11104,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10780,17 +11135,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "portfolio.html",
   "kind": "main",
-  "html_kb": 250.3,
-  "gzip_kb": 41.9,
-  "css_kb": 48.2,
+  "html_kb": 251.5,
+  "gzip_kb": 42.0,
+  "css_kb": 48.4,
   "js_kb": 43.0,
   "font_sizes": 26,
-  "tags": 1713,
+  "tags": 1733,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -10812,6 +11168,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 1
  },
  {
@@ -10842,403 +11199,14 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "proekty/a-frame-house.html",
   "kind": "land",
-  "html_kb": 23.7,
-  "gzip_kb": 5.8,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 267,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/diamond.html",
-  "kind": "land",
-  "html_kb": 33.4,
-  "gzip_kb": 6.5,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 307,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/dolls-salon.html",
-  "kind": "land",
-  "html_kb": 22.1,
-  "gzip_kb": 5.7,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 265,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/dubai-villa.html",
-  "kind": "land",
-  "html_kb": 32.0,
-  "gzip_kb": 6.6,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 323,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/edelweiss.html",
-  "kind": "land",
-  "html_kb": 36.5,
-  "gzip_kb": 6.7,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 321,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/hoda-estate.html",
-  "kind": "land",
-  "html_kb": 33.8,
-  "gzip_kb": 6.8,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 329,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/hodos-villa.html",
-  "kind": "land",
-  "html_kb": 41.0,
-  "gzip_kb": 7.7,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 371,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/house-150.html",
-  "kind": "land",
-  "html_kb": 22.3,
-  "gzip_kb": 5.7,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 263,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/kitana-beach.html",
-  "kind": "land",
-  "html_kb": 43.8,
-  "gzip_kb": 8.2,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 385,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/linden-penthouse.html",
-  "kind": "land",
-  "html_kb": 49.4,
-  "gzip_kb": 8.9,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 411,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/monpark.html",
-  "kind": "land",
-  "html_kb": 23.8,
-  "gzip_kb": 5.9,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 275,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/office-chicago.html",
-  "kind": "land",
-  "html_kb": 22.4,
-  "gzip_kb": 5.7,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 263,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/petrivtsi-house.html",
-  "kind": "land",
-  "html_kb": 58.6,
-  "gzip_kb": 9.6,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 449,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/pidgirland.html",
-  "kind": "land",
-  "html_kb": 46.0,
-  "gzip_kb": 8.4,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 389,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/smart-villa.html",
-  "kind": "land",
-  "html_kb": 22.6,
-  "gzip_kb": 5.8,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 265,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/tetris-hall.html",
-  "kind": "land",
-  "html_kb": 26.0,
-  "gzip_kb": 6.1,
+  "html_kb": 25.2,
+  "gzip_kb": 6.2,
   "css_kb": 2.0,
   "js_kb": 0.9,
   "font_sizes": 0,
@@ -11258,17 +11226,423 @@
   "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/diamond.html",
+  "kind": "land",
+  "html_kb": 34.8,
+  "gzip_kb": 6.9,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 325,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/dolls-salon.html",
+  "kind": "land",
+  "html_kb": 23.1,
+  "gzip_kb": 6.0,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 276,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/dubai-villa.html",
+  "kind": "land",
+  "html_kb": 33.3,
+  "gzip_kb": 7.0,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 340,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/edelweiss.html",
+  "kind": "land",
+  "html_kb": 37.9,
+  "gzip_kb": 7.2,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 339,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/hoda-estate.html",
+  "kind": "land",
+  "html_kb": 35.6,
+  "gzip_kb": 7.3,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 354,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/hodos-villa.html",
+  "kind": "land",
+  "html_kb": 42.7,
+  "gzip_kb": 8.4,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 396,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/house-150.html",
+  "kind": "land",
+  "html_kb": 23.8,
+  "gzip_kb": 6.2,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 284,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/kitana-beach.html",
+  "kind": "land",
+  "html_kb": 44.8,
+  "gzip_kb": 8.5,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 396,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/linden-penthouse.html",
+  "kind": "land",
+  "html_kb": 51.1,
+  "gzip_kb": 9.4,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 436,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/monpark.html",
+  "kind": "land",
+  "html_kb": 24.8,
+  "gzip_kb": 6.2,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 286,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/office-chicago.html",
+  "kind": "land",
+  "html_kb": 23.6,
+  "gzip_kb": 6.1,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 278,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/petrivtsi-house.html",
+  "kind": "land",
+  "html_kb": 57.5,
+  "gzip_kb": 10.1,
+  "css_kb": 2.0,
+  "js_kb": 1.0,
+  "font_sizes": 0,
+  "tags": 474,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/pidgirland.html",
+  "kind": "land",
+  "html_kb": 47.7,
+  "gzip_kb": 8.9,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 414,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/smart-villa.html",
+  "kind": "land",
+  "html_kb": 24.0,
+  "gzip_kb": 6.3,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 286,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/tetris-hall.html",
+  "kind": "land",
+  "html_kb": 27.4,
+  "gzip_kb": 6.5,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 299,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "proekty/usa-house.html",
   "kind": "land",
-  "html_kb": 28.1,
-  "gzip_kb": 6.2,
+  "html_kb": 29.4,
+  "gzip_kb": 6.6,
   "css_kb": 2.0,
   "js_kb": 0.9,
   "font_sizes": 0,
-  "tags": 295,
+  "tags": 314,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -11284,17 +11658,18 @@
   "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "proekty/yablu-rest.html",
   "kind": "land",
-  "html_kb": 22.3,
-  "gzip_kb": 5.7,
+  "html_kb": 23.4,
+  "gzip_kb": 6.0,
   "css_kb": 2.0,
   "js_kb": 0.9,
   "font_sizes": 0,
-  "tags": 259,
+  "tags": 272,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -11310,17 +11685,18 @@
   "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "proekty/yacht-restaurant.html",
   "kind": "land",
-  "html_kb": 26.4,
-  "gzip_kb": 6.2,
+  "html_kb": 27.5,
+  "gzip_kb": 6.5,
   "css_kb": 2.0,
   "js_kb": 0.9,
   "font_sizes": 0,
-  "tags": 285,
+  "tags": 296,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -11336,17 +11712,18 @@
   "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "proekty/yacht-vip.html",
   "kind": "land",
-  "html_kb": 35.5,
-  "gzip_kb": 6.7,
+  "html_kb": 36.9,
+  "gzip_kb": 7.1,
   "css_kb": 2.0,
   "js_kb": 0.9,
   "font_sizes": 0,
-  "tags": 319,
+  "tags": 335,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -11362,6 +11739,7 @@
   "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11392,6 +11770,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11422,6 +11801,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11452,6 +11832,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11482,6 +11863,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11512,6 +11894,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11542,6 +11925,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11572,6 +11956,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11602,6 +11987,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11632,6 +12018,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11662,6 +12049,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11692,6 +12080,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11722,6 +12111,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11754,6 +12144,7 @@
    "$52 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11784,12 +12175,13 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/dizayn-interera-kiev.html",
   "kind": "land",
-  "html_kb": 49.7,
+  "html_kb": 49.8,
   "gzip_kb": 13.6,
   "css_kb": 13.7,
   "js_kb": 7.0,
@@ -11814,6 +12206,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11846,6 +12239,7 @@
    "$3 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11876,6 +12270,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11906,6 +12301,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11936,6 +12332,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11969,6 +12366,7 @@
    "$33 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11999,6 +12397,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12029,6 +12428,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12059,6 +12459,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12089,6 +12490,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12119,6 +12521,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12149,6 +12552,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12179,6 +12583,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12209,6 +12614,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12239,6 +12645,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12269,6 +12676,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12299,6 +12707,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12329,6 +12738,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12359,6 +12769,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12389,6 +12800,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12419,6 +12831,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12449,6 +12862,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12479,6 +12893,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12510,6 +12925,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12542,6 +12958,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 1
  },
  {
@@ -12572,6 +12989,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12602,6 +13020,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12632,6 +13051,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12662,6 +13082,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12692,6 +13113,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12722,6 +13144,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12752,6 +13175,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12782,6 +13206,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12812,6 +13237,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12842,6 +13268,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12872,6 +13299,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  }
 ]

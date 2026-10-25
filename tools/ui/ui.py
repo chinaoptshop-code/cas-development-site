@@ -14,6 +14,7 @@ SKIP = {'privacy.html', 'terms.html', '404.html'}  # сторонні/служб
 
 # Підтверджені Михайлом цифри (план Dell v2 §1). Усе інше на сторінках — підозріле.
 PRICES_OK = {'$30', '$350', '$550', '$250', '$600', '$1 100', '$1100', '$50', '$2 500', '$2500', '$500', '$5 000', '$10 000', '$20 000'}  # $500 — мін. замовлення Оздоби; $5k/$10k/$20k — пороги знижки за обсягом Оздоби (Михайло 25.10.2026)
+EST_RATES = {30, 550, 350, 250, 600, 1100}  # ставки з CLAUDE.md для data-est (дизайн, ремонт, офіс, меблювання, коробка, під ключ)
 FACT_BAD = [r'\b158\+', r'\b200\+ проєкт', r'\b214\+', r'2 роки гарант', r'3 роки гарант', r'гарантія 2 роки', r'гарантія 3 роки']
 
 BUDGET = {  # ліміти (без стиснення, бо brotli на сервері); MAIN — тимчасово м'якші до Ф3
@@ -46,7 +47,10 @@ def analyse(rel):
     css = ''.join(re.findall(r'<style[^>]*>(.*?)</style>', s, re.S))
     js = ''.join(m for m in re.findall(r'<script(?![^>]*application/ld\+json)[^>]*>(.*?)</script>', s, re.S))
     body = re.sub(r'<(script|style)[^>]*>.*?</\1>', '', s, flags=re.S)
-    text = re.sub(r'<[^>]+>', ' ', body)
+    # орієнтири «площа × базова ставка» (картка «Коротко про проєкт»): перевіряємо розрахунок, а не список цін
+    est = re.findall(r'<b data-est="(\d+)x(\d+)"[^>]*>від \$([\d ]+)</b>', body)
+    est_bad = [f'{a}x{r}=${v}' for a, r, v in est if int(r) not in EST_RATES or int(v.replace(' ', '')) != (max(int(a) * 30, 2500) if r == '30' else int(a) * int(r))]
+    text = re.sub(r'<[^>]+>', ' ', re.sub(r'<b data-est="[^"]*"[^>]*>[^<]*</b>', ' ', body))
     imgs = [i for i in re.findall(r'<img\b[^>]*>', s) if not re.search(r'id="(lb-img|lbi|plb-img|sdlb-img)"', i)]
     r = {
         'page': rel, 'kind': k,
@@ -71,6 +75,7 @@ def analyse(rel):
         'bg2': sorted(set(re.findall(r'--bg2:\s*(#[0-9a-fA-F]{3,6})', css))),
         'prices_bad': sorted(set(p for p in re.findall(r'\$\s?\d[\d ]*', text) if p.strip().rstrip() not in PRICES_OK and not p.startswith('$1 ') and '/' not in p)),
         'facts_bad': [p for p in FACT_BAD if re.search(p, text)],
+        'est_bad': est_bad,
         'webhook_copies': s.count('webhook/contact-form'),
     }
     return r
@@ -98,6 +103,7 @@ def scan():
     issue('Більше одного fetchpriority=high', [r['page'] for r in rows if r['fetchpriority_high'] > 1])
     issue('Osocor у тексті', [r['page'] for r in rows if r['osocor']])
     issue('Непідтверджені ціни', [f"{r['page']}{r['prices_bad']}" for r in rows if r['prices_bad']])
+    issue('Невірний орієнтир бюджету (data-est)', [f"{r['page']}{r['est_bad']}" for r in rows if r['est_bad']])
     issue('Застарілі факти', [f"{r['page']}{r['facts_bad']}" for r in rows if r['facts_bad']])
     mu = Counter(v for r in rows for v in r['mu']); bg2 = Counter(v for r in rows for v in r['bg2'])
     lines += ['', '## Токени', '', f'- `--mu`: {dict(mu)}', f'- `--bg2`: {dict(bg2)}',
@@ -122,6 +128,7 @@ def budget(report_only=False):
         if r['h1_animated']: bad.append(f'{p}: H1 анімується')
         if r['fetchpriority_high'] > 1: bad.append(f'{p}: fetchpriority=high > 1')
         if r['osocor']: bad.append(f'{p}: Osocor')
+        if r['est_bad']: bad.append(f'{p}: невірний орієнтир бюджету {r["est_bad"]}')
         if r['h1_count'] != 1: bad.append(f'{p}: H1 = {r["h1_count"]}')
         if not r['canonical']: bad.append(f'{p}: без canonical')
         if '<!--chrome:h-->' not in open(os.path.join(ROOT, p), encoding='utf-8').read(): bad.append(f'{p}: без єдиної шапки (tools/site/chrome.py)')
