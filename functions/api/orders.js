@@ -2,6 +2,14 @@
 // Ціни перераховуються на сервері з каталогу (/assets/ozdoba/catalog.json), щоб їх не можна було підмінити.
 import { STATUSES, bad, currentClient, json, partnerCode, readJSON, str, volumePct } from '../_lib.js';
 import { notifyNew } from '../_alerts.js';
+import { limited } from '../_rate.js';
+
+const ORDERS_PER_HOUR = 10; // замовлень з одного IP за годину
+const PROMO_PER_HOUR = 20;  // замовлень з кодом партнера — як ліміт /api/promo/check, щоб коди не перебирали через замовлення
+
+// клієнту — лише його поля замовлення; внутрішні (crm_note, assignee, reaction_min, source…) не віддаємо
+const OWN = ['id', 'number', 'kind', 'created_at', 'updated_at', 'status', 'total', 'on_request', 'promo', 'discount', 'discount_pct',
+  'delivery', 'payment', 'company', 'comment', 'manager_note', 'paid', 'name', 'phone'];
 
 const r10 = n => Math.round(n / 10) * 10;
 
@@ -27,17 +35,20 @@ async function nextNumber(env) {
 export async function onRequestGet({ request, env }) {
   const c = await currentClient(request, env);
   if (!c) return bad('Потрібно увійти', 401);
-  const { results } = await env.DB.prepare('SELECT * FROM orders WHERE client_id = ? ORDER BY id DESC LIMIT 100').bind(c.id).all();
-  return json({ orders: results.map(o => ({ ...o, items: JSON.parse(o.items), status_label: STATUSES[o.status] || o.status })) });
+  const { results } = await env.DB.prepare("SELECT * FROM orders WHERE client_id = ? AND kind != 'lead' ORDER BY id DESC LIMIT 100").bind(c.id).all();
+  return json({ orders: results.map(o => ({ ...Object.fromEntries(OWN.map(k => [k, o[k]])), items: JSON.parse(o.items || '[]'), status_label: STATUSES[o.status] || o.status })) });
 }
 
 export async function onRequestPost({ request, env, waitUntil }) {
   let d;
   try { d = await readJSON(request); } catch { return bad('Некоректні дані'); }
   const c = await currentClient(request, env);
-  const phone = String(d.phone || c?.phone || '').replace(/[^\d+]/g, '');
+  const phone = String(d.phone || c?.phone || '').replace(/[^\d+]/g, '').slice(0, 16);
   if (phone.replace(/\D/g, '').length < 9) return bad('Вкажіть телефон');
   if (!Array.isArray(d.cart) || !d.cart.length || d.cart.length > 200) return bad('Кошик порожній');
+  if (await limited(env, request, 'orders', ORDERS_PER_HOUR)) return bad('Забагато замовлень з цієї мережі. Спробуйте пізніше або напишіть менеджеру.', 429);
+  // перебір кодів партнерів через замовлення (відповідь показує знижку) — той самий ліміт, що й /api/promo/check
+  if (d.promo && await limited(env, request, 'promo-order', PROMO_PER_HOUR)) return bad('Забагато спроб коду партнера. Спробуйте через годину.', 429);
 
   const cat = await (await fetch(new URL('/assets/ozdoba/catalog.json', request.url))).json();
   const byId = new Map(cat.items.map(i => [i.id, i]));

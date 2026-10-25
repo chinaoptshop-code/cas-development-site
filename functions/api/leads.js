@@ -3,8 +3,9 @@
 // без імені — «Без імені» (форма «лише номер», Михайло 25.10.2026).
 // Нова заявка → миттєве сповіщення адмінам у Telegram з кнопкою «Взяв у роботу» (functions/_alerts.js).
 // З заголовком x-lead-key = LEAD_INGEST_KEY (n8n, інтеграції) — без ліміту; без ключа — до 5 заявок на годину з IP.
-import { bad, clientIp, hexOf, json, nextLeadNumber, readJSON, same, sha256, str } from '../_lib.js';
+import { bad, hexOf, json, nextLeadNumber, readJSON, same, sha256, str } from '../_lib.js';
 import { notifyNew } from '../_alerts.js';
+import { ipKey } from '../_rate.js';
 
 export async function onRequestPost({ request, env, waitUntil }) {
   let d;
@@ -12,11 +13,14 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const key = request.headers.get('x-lead-key') || '';
   const trusted = !!env.LEAD_INGEST_KEY && same(key, env.LEAD_INGEST_KEY);
   if (key && !trusted) return bad('Невірний ключ', 403);
-  if (d.website) return json({ ok: true }); // honeypot
+  // антиспам без капчі: приховане поле (hp / website) заповнює лише бот; t_ms — мс від відкриття сторінки до відправки
+  // (assets/lead-form.v1.js). Людина не встигає за 1,5 с; поле необовʼязкове — старі версії скрипта його не шлють.
+  // Бот отримує «успіх», але заявка не зберігається й сповіщення немає.
+  if (!trusted && (d.website || d.hp || (d.t_ms != null && Number(d.t_ms) >= 0 && Number(d.t_ms) < 1500))) return json({ ok: true });
   const phone = String(d.phone || '').replace(/[^\d+]/g, '').slice(0, 16);
   if (phone.replace(/\D/g, '').length < 9) return bad('Вкажіть телефон');
   if (!trusted) {
-    const ip = hexOf(await sha256('lead|' + clientIp(request))), now = Math.floor(Date.now() / 1000);
+    const ip = hexOf(await sha256('lead|' + ipKey(request))), now = Math.floor(Date.now() / 1000);
     await env.DB.prepare('DELETE FROM lead_checks WHERE created_at < ?').bind(now - 3600).run();
     const row = await env.DB.prepare('SELECT COUNT(*) AS n FROM lead_checks WHERE ip_hash = ?').bind(ip).first();
     if ((row?.n || 0) >= 5) return bad('Забагато заявок, спробуйте пізніше', 429);

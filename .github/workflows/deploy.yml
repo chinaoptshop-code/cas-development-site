@@ -10,6 +10,10 @@ concurrency:
   group: deploy-main
   cancel-in-progress: false
 
+# GITHUB_TOKEN лише читає репозиторій: деплой іде токеном Cloudflare, у репозиторій нічого не пише
+permissions:
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,6 +21,8 @@ jobs:
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       # Сторінки з JSON (адмінка /kabinet/admin, tools/**/*.json) збираються тут же, перед викладкою — сайт завжди
       # відповідає джерелам, навіть якщо коміт "[rebuild]" (rebuild.yml) ще не зʼявився. Помилка в JSON зупиняє деплой:
@@ -57,7 +63,7 @@ jobs:
           fi
           if [ -n "$ID" ] && sed -i "s/__D1_ID__/$ID/" wrangler.toml && npx wrangler@3 d1 migrations apply cas-shop --remote; then
             echo "D1 cas-shop: $ID"
-            for K in TELEGRAM_BOT_TOKEN TELEGRAM_BOT_USERNAME GOOGLE_CLIENT_ID ADMIN_TG_IDS ADMIN_EMAILS GITHUB_CONTENT_TOKEN LEAD_INGEST_KEY; do
+            for K in TELEGRAM_BOT_TOKEN TELEGRAM_BOT_USERNAME GOOGLE_CLIENT_ID ADMIN_TG_IDS ADMIN_EMAILS GITHUB_CONTENT_TOKEN LEAD_INGEST_KEY SESSION_SECRET; do
               V="${!K}"; [ -n "$V" ] && printf '%s' "$V" | npx wrangler@3 pages secret put "$K" --project-name=cas-development-site >/dev/null 2>&1 && echo "secret $K ok"
             done
           else
@@ -75,6 +81,7 @@ jobs:
           ADMIN_EMAILS: ${{ secrets.SHOP_ADMIN_EMAILS }}
           GITHUB_CONTENT_TOKEN: ${{ secrets.SHOP_GITHUB_CONTENT_TOKEN }}   # редактор контенту в /kabinet/admin (tools/admin/README.md)
           LEAD_INGEST_KEY: ${{ secrets.SHOP_LEAD_INGEST_KEY }}             # ключ для POST /api/leads з n8n і /api/admin/lead-sla (lead-sla.yml)
+          SESSION_SECRET: ${{ secrets.SHOP_SESSION_SECRET }}               # необовʼязково: ключ підпису сесій (інакше — випадковий у D1); зміна = вихід усіх
 
       - name: 📏 UI budget report (tools/ui/ui.py)
         run: python3 tools/ui/ui.py budget --report

@@ -48,13 +48,18 @@ async function secret(env) {
 }
 
 const COOKIE = 'cas_s';
-const DAYS = 30;
+const DAYS = 30;       // клієнт
+const ADMIN_DAYS = 7;  // адмін: коротша сесія — менше шкоди від викраденої cookie
 
-export async function sessionCookie(env, clientId) {
-  const exp = Math.floor(Date.now() / 1000) + DAYS * 86400;
+// Сесія без стану: cas_s = <id>.<exp>.<HMAC>. Нова cookie на кожен вхід (фіксація сесії неможлива — до входу cookie немає).
+// c — клієнт (обʼєкт з D1) або id; для адмінів (isAdmin) — 7 днів.
+export async function sessionCookie(env, c) {
+  const clientId = typeof c === 'object' ? c.id : c;
+  const days = typeof c === 'object' && isAdmin(env, c) ? ADMIN_DAYS : DAYS;
+  const exp = Math.floor(Date.now() / 1000) + days * 86400;
   const body = `${clientId}.${exp}`;
   const sig = await hmac(enc.encode(await secret(env)), body);
-  return `${COOKIE}=${body}.${sig}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${DAYS * 86400}`;
+  return `${COOKIE}=${body}.${sig}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${days * 86400}`;
 }
 
 export const clearCookie = `${COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0`;
@@ -65,7 +70,10 @@ export async function currentClient(request, env) {
   const [, id, exp, sig] = m;
   if (+exp < Date.now() / 1000) return null;
   if (!same(sig, await hmac(enc.encode(await secret(env)), `${id}.${exp}`))) return null;
-  return env.DB.prepare('SELECT * FROM clients WHERE id = ?').bind(+id).first();
+  const c = await env.DB.prepare('SELECT * FROM clients WHERE id = ?').bind(+id).first();
+  // адмінська сесія довша за 7 днів (видана до 0007 або як клієнтська до призначення адміном) — увійти заново
+  if (c && isAdmin(env, c) && +exp - Date.now() / 1000 > ADMIN_DAYS * 86400 + 300) return null;
+  return c;
 }
 
 export function isAdmin(env, c) {

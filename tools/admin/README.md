@@ -176,3 +176,19 @@ Bot API, `ALERTS_TEST_CLOCK=1` — дозволяє підміняти час п
   `.github/workflows/deploy.yml` перед викладкою і в `rebuild.yml` (комітить згенероване назад з «[rebuild]»).
 - Секрети: `SHOP_GITHUB_CONTENT_TOKEN` → `GITHUB_CONTENT_TOKEN`, `SHOP_LEAD_INGEST_KEY` → `LEAD_INGEST_KEY`
   (потрібен для нагадувань і звіту — розділ 8; той самий секрет читає `.github/workflows/lead-sla.yml`). Без токена редактор вимкнений, решта працює.
+
+## 10. Безпека (аудит 25.10.2026)
+
+- **Усі `/api/*`** проходять `functions/api/_middleware.js`: зміни (POST/PATCH/DELETE) — лише з нашого Origin
+  (cas-develop.com / той самий хост), не `Sec-Fetch-Site: cross-site`, тіло — лише `application/json` (інакше 403/415);
+  тіло до 64 КБ (редактор — до 31 МБ); відповіді з `nosniff`, `X-Frame-Options: DENY`, CSP `default-src 'none'`, без CORS.
+- **Сесія** `cas_s`: HttpOnly, Secure, SameSite=Lax, підпис HMAC; клієнт — 30 днів, **адмін — 7 днів** (старіші адмінські
+  cookie не приймаються — увійти заново). Секрет підпису — `SHOP_SESSION_SECRET` (необовʼязково; його зміна = вихід усіх).
+- **Ліміти** (`functions/_rate.js`, таблиця `rate_hits`, міграція 0007; IPv6 — за /64): заявки 5/год з IP, замовлення 10/год,
+  перевірка коду партнера 20/год (і окремо 20/год замовлень з кодом), вхід Telegram/Google 30/год, вхід за номером 5/год.
+- **Антиспам форми** без капчі: приховане поле `hp` і `t_ms` (заявка швидше 1,5 с після відкриття сторінки — бот);
+  бот бачить «успіх», заявка не зберігається.
+- **Заголовки сторінок** — `_headers` (CSP з переліком реальних джерел; для `/kabinet*` — ще `'unsafe-eval'` для віджета
+  Telegram; для `/kabinet/admin*` — `frame-ancestors 'none'`, `no-referrer`). Нове зовнішнє джерело (скрипт, iframe,
+  API) — спершу додати в CSP у `_headers`, інакше браузер його заблокує.
+- CSV-експорт CRM екранує формули (`=`, `+`, `-`, `@`); клієнт у `/api/orders` бачить лише свої поля (без `crm_note`).

@@ -1,9 +1,20 @@
+# Заголовки Cloudflare Pages для статичних файлів (відповіді /api/* — functions/api/_middleware.js).
+# Однакові заголовки з кількох правил Cloudflare зливає через кому; для CSP це означає «діють обидві політики» —
+# так /kabinet/admin* отримує додаткові обмеження поверх загальної.
+# CSP — перелік джерел, які сайт реально використовує (аудит безпеки 25.10.2026):
+#   script: свої + inline (багато inline-скриптів і обробників — поки неминуче), Clarity, Telegram (віджет входу,
+#           Mini App), Google Identity Services (вхід через Google);
+#   connect: свої API, n8n (форма заявки), Clarity, Google GIS;  frame: Google Maps (контакти), вхід Telegram/Google, YouTube;
+#   img: будь-які https (фото проєктів, аватарки Telegram/Google, raw.githubusercontent в адмінці), data:, blob: (прев'ю фото).
+# frame-ancestors тут немає навмисно: /ozdoba відкривається як Telegram Mini App у web.telegram.org (iframe);
+# решту сторінок від фреймів захищає X-Frame-Options: SAMEORIGIN.
 /*
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), hid=(), midi=(), browsing-topics=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.clarity.ms https://scripts.clarity.ms https://telegram.org https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://n8n.china-opt-shop.pp.ua https://*.clarity.ms https://c.bing.com https://accounts.google.com; frame-src 'self' https://maps.google.com https://www.google.com https://oauth.telegram.org https://accounts.google.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'
 
 /ozdoba
   ! X-Frame-Options
@@ -29,6 +40,14 @@
 /styleguide/*
   X-Robots-Tag: noindex, nofollow
 
+# кабінет і адмінка: віджет входу Telegram (telegram-widget.js) розбирає data-onauth через eval — 'unsafe-eval' лише тут
 /kabinet*
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
+  ! Content-Security-Policy
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.clarity.ms https://scripts.clarity.ms https://telegram.org https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://n8n.china-opt-shop.pp.ua https://*.clarity.ms https://c.bing.com https://accounts.google.com; frame-src 'self' https://maps.google.com https://www.google.com https://oauth.telegram.org https://accounts.google.com https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'
+
+# адмінка: без фреймів узагалі, без referrer, жодних форм назовні
+/kabinet/admin*
+  Content-Security-Policy: frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'
+  Referrer-Policy: no-referrer

@@ -16,7 +16,13 @@ function csv(rows) {
   const cols = [['number', 'Номер'], ['kind', 'Тип'], ['created_at', 'Створено'], ['status', 'Статус'], ['name', 'Клієнт'], ['phone', 'Телефон'],
     ['email', 'Email'], ['service', 'Послуга / товари'], ['amount', 'Сума'], ['currency', 'Валюта'], ['assignee', 'Відповідальний'],
     ['next_contact', 'Наступний контакт'], ['reaction_min', 'Реакція, хв'], ['source', 'Джерело'], ['crm_note', 'Нотатки'], ['comment', 'Коментар клієнта'], ['payment', 'Оплата'], ['delivery', 'Доставка']];
-  const cell = v => { const s = v == null ? '' : String(v); return /[";\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+  // CSV-інʼєкція: текст з публічної форми, що починається з = + - @ (або табуляції), Excel/Таблиці виконали б як формулу —
+  // додаємо апостроф (числа на кшталт суми лишаються числами)
+  const cell = v => {
+    let s = v == null ? '' : String(v);
+    if (typeof v !== 'number' && /^[=+\-@\t\r]/.test(s)) s = "'" + s;
+    return /[";\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  };
   const lines = [cols.map(c => c[1]).join(';')];
   for (const r of rows) lines.push(cols.map(([k]) => cell(
     k === 'status' ? statusLabel(r.status) : k === 'kind' ? (r.kind === 'lead' ? 'Заявка' : 'Замовлення')

@@ -51,6 +51,7 @@
   var t = T[lang] || T.uk;
   var UA = lang === 'uk' || lang === 'ru';
   var q = new URLSearchParams(location.search);
+  var T0 = Date.now(); // антиспам: сервер відкидає заявки, надіслані швидше ніж за 1,5 с після відкриття сторінки
   var CSS = '.lq{display:block;margin:22px 0 0;max-width:540px}.lq-l{display:block;margin:0 0 8px;font-size:var(--fs-small,.8125rem);color:var(--mu,#8a837c)}'
     + '.lq-r{display:flex;gap:8px;flex-wrap:wrap}.lq-r input{flex:1 1 160px;min-width:0;width:auto;box-sizing:border-box;min-height:48px;padding:12px 14px;font:inherit;font-size:16px;color:var(--tx,#ede8df);background:var(--bg2,rgba(255,255,255,.04));border:1px solid var(--ln,rgba(191,145,72,.35));border-radius:8px}'
     + '.lq-b{flex:0 0 auto;min-height:48px;padding:12px 22px;border:1px solid var(--ac,#bf9148);border-radius:999px;background:var(--ac,#bf9148);color:#140f08;font-family:inherit;font-size:var(--fs-small,.8125rem);font-weight:600;line-height:1.2;cursor:pointer;white-space:nowrap}.lq-b:disabled{opacity:.6;cursor:wait}'
@@ -112,14 +113,25 @@
     };
     var miss = function () { if (--left === 0) { clearTimeout(timer); fail(); } };
     var timer = setTimeout(fail, 12000);
+    data.t_ms = Date.now() - T0;
     var body = JSON.stringify(data);
     [API, HOOK].forEach(function (url) {
       fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, credentials: url === API ? 'same-origin' : 'omit' })
         .then(function (r) { if (r.ok) ok(); else miss(); }, miss);
     });
   }
+  // приховане поле-пастка: людина його не бачить і не заповнює, боти, що заповнюють усе, — так
+  function trap(form) {
+    if (form.querySelector('input[name="hp"]')) return;
+    var hp = document.createElement('input');
+    hp.type = 'text'; hp.name = 'hp'; hp.tabIndex = -1; hp.autocomplete = 'off'; hp.setAttribute('aria-hidden', 'true');
+    hp.style.cssText = 'position:absolute;left:-9999px;top:auto;width:1px;height:1px;opacity:0;pointer-events:none';
+    form.appendChild(hp);
+  }
   function base(form) {
+    var hp = form.querySelector('input[name="hp"]');
     return {
+      hp: hp && hp.value ? hp.value.slice(0, 100) : undefined,
       service: form.dataset.service || '', source: form.dataset.source || location.host + location.pathname,
       lang: lang, page: location.href,
       utm_source: q.get('utm_source') || '', utm_medium: q.get('utm_medium') || '', utm_campaign: q.get('utm_campaign') || ''
@@ -132,6 +144,7 @@
   var $ = function (id) { return document.getElementById(id); };
   var val = function (id) { var el = $(id); return el ? el.value.trim() : ''; };
   if (form) {
+    trap(form);
     var err0 = $('oErr'), ok0 = $('oOk'), ph0 = $('oPhone'), btn0 = $('oBtn');
     // сторінки без розмітки leadform.py (кабінет, динамічні): імʼя «необовʼязково», коментар згорнуто, кнопка й примітка
     if (!form.hasAttribute('data-lf')) {
@@ -191,6 +204,7 @@
   /* ---------- 2. швидка заявка в один рядок form.lq ---------- */
   Array.prototype.forEach.call(document.querySelectorAll('form.lq'), function (f) {
     var inp = f.querySelector('input[type="tel"]'), err = f.querySelector('.lq-e'), btn = f.querySelector('button[type="submit"]');
+    trap(f);
     mask(inp);
     if (inp) inp.setAttribute('aria-required', 'true');
     f.addEventListener('submit', function (e) {
