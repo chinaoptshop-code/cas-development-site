@@ -1,0 +1,157 @@
+{
+ "slug": "budowa-domow",
+ "lang": "pl",
+ "service": "Budowa domów",
+ "title": "Budowa domów pod klucz pod Kijowem — od $600/m² | CAS Development",
+ "description": "Domy jednorodzinne w Kijowie i okolicach: projekt, fundamenty, stan surowy, dach, wnętrza i ogród. Od $600/m², pod klucz od $1 100/m².",
+ "h1": "Budowa domów pod klucz w Kijowie i okolicach",
+ "price": "stan surowy od $600 / m² · pod klucz z wykończeniem od $1 100 / m²",
+ "lead": "Budujemy domy jednorodzinne i rezydencje podmiejskie — od projektu i fundamentów po wykończenie wnętrz, meble i zagospodarowanie działki. Podejmujemy się też przebudów i rozbudów.",
+ "guarantees": true,
+ "cards": [
+  [
+   "Projekt",
+   [
+    "projekt architektoniczny i układ",
+    "elewacje i wizualizacje 3D",
+    "konstrukcja i instalacje",
+    "kosztorys i harmonogram budowy"
+   ]
+  ],
+  [
+   "Budowa",
+   [
+    "fundamenty i stan surowy",
+    "dach, okna, elewacja",
+    "instalacje",
+    "przebudowa i rozbudowa"
+   ]
+  ],
+  [
+   "Pod klucz",
+   [
+    "wykończenie wnętrz",
+    "meble i oświetlenie z Chin",
+    "projekt ogrodu",
+    "nadzór autorski i techniczny"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Dom od projektu do kluczy",
+   [
+    "Dom to najdroższy zakup w życiu, dlatego zaczynamy od projektu i kosztorysu: z góry wiesz, ile będzie kosztował i jak będzie wyglądał w środku i na zewnątrz. W trakcie budowy dostajesz raporty zdjęciowe.",
+    "Budujemy domy parterowe i piętrowe, wille, domy typu A-frame i ośrodki wypoczynkowe. Po stanie surowym zajmujemy się wykończeniem, meblami z Chin i działką — bez szukania nowych wykonawców."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1F4OovwNYQPfoF-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/1Us4FZpRlnEsqf-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/1g-E1m6cFJ9kvH-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1pF5ohNHdSnme0-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1FiLI9kKE-C87h-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1hXV_Pz6_GfnXe-900.webp",
+   "Pidgirland"
+  ]
+ ],
+ "steps": [
+  [
+   "Działka i potrzeby",
+   "Oglądamy działkę, omawiamy rodzinę, metraż i budżet."
+  ],
+  [
+   "Projekt",
+   "Architektura, układ, elewacje i 3D."
+  ],
+  [
+   "Kosztorys i umowa",
+   "Cena i terminy według etapów; jeśli buduje CAS, wynik w granicach ±5%."
+  ],
+  [
+   "Budowa",
+   "Od fundamentów po dach, z regularnymi raportami."
+  ],
+  [
+   "Wykończenie i odbiór",
+   "Wnętrza, meble, ogród — przekazujemy gotowy dom."
+  ]
+ ],
+ "faq": [
+  [
+   "Ile kosztuje budowa domu pod Kijowem?",
+   "Budowa od $600 za m², pod klucz z wykończeniem od $1 100 za m². Dokładny koszt zależy od projektu, materiałów i działki."
+  ],
+  [
+   "Czy projektujecie też dom?",
+   "Tak, architektura i wnętrze w jednym projekcie. Projekt od $30 za m², minimum $2 500."
+  ],
+  [
+   "Czy budujecie według cudzego projektu?",
+   "Tak, analizujemy projekt i przygotowujemy kosztorys."
+  ],
+  [
+   "Czy przebudowujecie stare domy?",
+   "Tak: przebudowy, rozbudowy, wymiana instalacji i pełne wykończenie."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/projektowanie-wnetrz",
+   "Projektowanie wnętrz"
+  ],
+  [
+   "/pl/realizacja-projektu",
+   "Realizacja projektu wnętrza"
+  ],
+  [
+   "/pl/remont-pod-klucz",
+   "Remont pod klucz"
+  ],
+  [
+   "/pl/umeblowanie-pod-klucz",
+   "Umeblowanie pod klucz"
+  ],
+  [
+   "/pl/biznes-pod-klucz",
+   "Lokale biznesowe pod klucz"
+  ],
+  [
+   "/pl/faq",
+   "FAQ"
+  ],
+  [
+   "/pl/kontakt",
+   "Kontakt"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

@@ -1,0 +1,94 @@
+{
+ "slug": "kontakt",
+ "lang": "pl",
+ "kind": "contact",
+ "service": "Kontakt",
+ "title": "Kontakt — CAS Development, Kijów (Ukraina)",
+ "description": "Kontakt z CAS Development: +380 97 866 77 55 (telefon, WhatsApp, Telegram, Viber), ul. Antonowycza 44, Kijów. Bezpłatna konsultacja.",
+ "h1": "Porozmawiajmy o Twojej przestrzeni",
+ "lead": "Opowiedz o swoim obiekcie, a zaproponujemy rozwiązanie dopasowane do stylu i budżetu. Konsultacja jest bezpłatna; w formularzu wymagany jest tylko telefon.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "facts": false,
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Jak się z nami skontaktować",
+   "items": [
+    {
+     "h": "Biuro",
+     "p": "ul. Antonowycza 44, Kijów, Ukraina"
+    },
+    {
+     "h": "Telefon",
+     "price": "+380 97 866 77 55",
+     "p": "Ten sam numer działa w WhatsApp, Telegramie i Viberze.",
+     "href": "tel:+380978667755",
+     "more": "Zadzwoń"
+    },
+    {
+     "h": "Komunikatory",
+     "p": "Napisz o dowolnej porze — odpowiadamy wkrótce.",
+     "li": [
+      "Telegram: t.me/+380978667755",
+      "WhatsApp: wa.me/380978667755",
+      "Viber: +380 97 866 77 55"
+     ]
+    },
+    {
+     "h": "Instagram",
+     "p": "Projekty i prace w toku: @cas_development",
+     "href": "https://www.instagram.com/cas_development/",
+     "more": "Otwórz Instagram"
+    }
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Chcesz poznać budżet z góry?",
+   "p": [
+    "Projekt od $30/m², remont od $550/m², biura od $350/m², budowa od $600/m², umeblowanie od $250/m². Ostateczną kwotę podaje kosztorys po konsultacji."
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Inne usługi",
+   "items": [
+    [
+     "/pl/uslugi",
+     "Wszystkie usługi"
+    ],
+    [
+     "/pl/projektowanie-wnetrz",
+     "Projektowanie wnętrz"
+    ],
+    [
+     "/pl/realizacja-projektu",
+     "Realizacja projektu wnętrza"
+    ],
+    [
+     "/pl/remont-pod-klucz",
+     "Remont pod klucz"
+    ],
+    [
+     "/pl/budowa-domow",
+     "Budowa domów"
+    ],
+    [
+     "/pl/umeblowanie-pod-klucz",
+     "Umeblowanie pod klucz"
+    ],
+    [
+     "/pl/biznes-pod-klucz",
+     "Lokale biznesowe pod klucz"
+    ],
+    [
+     "/pl/faq",
+     "FAQ"
+    ]
+   ]
+  }
+ ]
+}

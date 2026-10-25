@@ -1,0 +1,139 @@
+{
+ "slug": "leistungen",
+ "lang": "de",
+ "service": "Alle Leistungen",
+ "title": "Leistungen — Design, Renovierung, Bau, Einrichtung | CAS Development",
+ "description": "Leistungen von CAS Development: Design ab $30/m², Renovierung ab $550/m², Büros ab $350/m², Hausbau ab $600/m², Einrichtung ab $250/m².",
+ "h1": "Leistungen des Studios: von der Idee zum fertigen Raum",
+ "lead": "Beauftragen Sie das Komplettpaket oder eine einzelne Phase. Hinter jeder Leistung steht dasselbe Team aus Architekten, Designern, Ingenieuren und eigenen Handwerkern.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "items": [
+    {
+     "h": "Innenarchitektur",
+     "href": "/de/innenarchitektur",
+     "price": "ab $30 / m² · Mindestprojekt $2 500",
+     "li": [
+      "Konzept und Moodboard",
+      "3D-Visualisierungen aller Räume",
+      "Ausführungspläne und Spezifikationen",
+      "künstlerische Bauleitung"
+     ],
+     "more": "Mehr erfahren"
+    },
+    {
+     "h": "Umsetzung von Designprojekten",
+     "href": "/de/umsetzung-designprojekt",
+     "price": "Renovierung ab $550 / m² · Einrichtung ab $250 / m²",
+     "li": [
+      "Prüfung der Pläne",
+      "Kostenvoranschlag vor Baubeginn",
+      "Ausführung exakt nach Plan",
+      "Einkauf und Einrichtung"
+     ],
+     "more": "Mehr erfahren"
+    },
+    {
+     "h": "Schlüsselfertige Renovierung",
+     "href": "/de/renovierung-schluesselfertig",
+     "price": "Wohnungen und Häuser ab $550 / m² · Büros ab $350 / m²",
+     "li": [
+      "Abbruch und Rohbauarbeiten",
+      "Elektrik, Sanitär, Lüftung",
+      "Ausbau: Fliesen, Böden, Decken, Malerarbeiten",
+      "Übergabe mit 12 Monaten Gewährleistung"
+     ],
+     "more": "Mehr erfahren"
+    },
+    {
+     "h": "Hausbau",
+     "href": "/de/hausbau",
+     "price": "Rohbau ab $600 / m² · schlüsselfertig mit Ausbau ab $1 100 / m²",
+     "li": [
+      "Architekturplanung und Fassaden",
+      "Fundament, Wände, Dach",
+      "Haustechnik",
+      "Innenausbau und Gartengestaltung"
+     ],
+     "more": "Mehr erfahren"
+    },
+    {
+     "h": "Schlüsselfertige Einrichtung",
+     "href": "/de/einrichtung-schluesselfertig",
+     "price": "ab $250 / m²",
+     "li": [
+      "Möbel nach Maß und aus China",
+      "Licht und Haushaltsgeräte",
+      "Textilien und Deko",
+      "Lieferung, Montage und Styling"
+     ],
+     "more": "Mehr erfahren"
+    },
+    {
+     "h": "Gewerberäume schlüsselfertig",
+     "href": "/de/gewerbe-schluesselfertig",
+     "price": "Design ab $30 / m² · Ausstattung ab $500",
+     "li": [
+      "Cafés und Restaurants",
+      "Beauty-Salons und Läden",
+      "Büros und kleine Hotels",
+      "Ausstattung aus China ab $500"
+     ],
+     "more": "Mehr erfahren"
+    }
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "So arbeiten wir",
+   "items": [
+    [
+     "Briefing",
+     "Vor-Ort-Termin oder Videocall: Objekt, Stil, Budget, Zeitplan."
+    ],
+    [
+     "Design",
+     "Konzept, 3D und vollständiger Plansatz, im Detail abgestimmt."
+    ],
+    [
+     "Umsetzung",
+     "Arbeiten unter Aufsicht, Einkauf nach Spezifikation, Fotoberichte."
+    ],
+    [
+     "Übergabe",
+     "Möbel, Licht und Deko am Platz; Abnahmeprotokoll und 12 Monate Gewährleistung."
+    ]
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "rel",
+   "h2": "Weitere Leistungen",
+   "items": [
+    [
+     "/de/ueber-uns",
+     "Über das Studio"
+    ],
+    [
+     "/de/faq",
+     "FAQ"
+    ],
+    [
+     "/de/kontakt",
+     "Kontakt"
+    ],
+    [
+     "/portfolio",
+     "Portfolio (UA)"
+    ]
+   ]
+  }
+ ]
+}

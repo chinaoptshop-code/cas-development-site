@@ -1,0 +1,94 @@
+{
+ "slug": "kontakt",
+ "lang": "de",
+ "kind": "contact",
+ "service": "Kontakt",
+ "title": "Kontakt — CAS Development, Kyjiw (Ukraine)",
+ "description": "Kontakt zu CAS Development: +380 97 866 77 55 (Telefon, WhatsApp, Telegram, Viber), Antonowytscha-Str. 44, Kyjiw. Kostenlose Beratung.",
+ "h1": "Sprechen wir über Ihren Raum",
+ "lead": "Erzählen Sie uns von Ihrem Objekt — wir schlagen eine Lösung passend zu Stil und Budget vor. Die Beratung ist kostenlos; im Formular ist nur die Telefonnummer Pflicht.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "facts": false,
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "So erreichen Sie uns",
+   "items": [
+    {
+     "h": "Büro",
+     "p": "Antonowytscha-Str. 44, Kyjiw, Ukraine"
+    },
+    {
+     "h": "Telefon",
+     "price": "+380 97 866 77 55",
+     "p": "Dieselbe Nummer funktioniert in WhatsApp, Telegram und Viber.",
+     "href": "tel:+380978667755",
+     "more": "Anrufen"
+    },
+    {
+     "h": "Messenger",
+     "p": "Schreiben Sie uns jederzeit — wir antworten in Kürze.",
+     "li": [
+      "Telegram: t.me/+380978667755",
+      "WhatsApp: wa.me/380978667755",
+      "Viber: +380 97 866 77 55"
+     ]
+    },
+    {
+     "h": "Instagram",
+     "p": "Projekte und laufende Arbeiten: @cas_development",
+     "href": "https://www.instagram.com/cas_development/",
+     "more": "Instagram öffnen"
+    }
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Möchten Sie das Budget vorab kennen?",
+   "p": [
+    "Design ab $30/m², Renovierung ab $550/m², Büros ab $350/m², Hausbau ab $600/m², Einrichtung ab $250/m². Die endgültige Summe nennt der Kostenvoranschlag nach der Beratung."
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Weitere Leistungen",
+   "items": [
+    [
+     "/de/leistungen",
+     "Alle Leistungen"
+    ],
+    [
+     "/de/innenarchitektur",
+     "Innenarchitektur"
+    ],
+    [
+     "/de/umsetzung-designprojekt",
+     "Umsetzung von Designprojekten"
+    ],
+    [
+     "/de/renovierung-schluesselfertig",
+     "Schlüsselfertige Renovierung"
+    ],
+    [
+     "/de/hausbau",
+     "Hausbau"
+    ],
+    [
+     "/de/einrichtung-schluesselfertig",
+     "Schlüsselfertige Einrichtung"
+    ],
+    [
+     "/de/gewerbe-schluesselfertig",
+     "Gewerberäume schlüsselfertig"
+    ],
+    [
+     "/de/faq",
+     "FAQ"
+    ]
+   ]
+  }
+ ]
+}

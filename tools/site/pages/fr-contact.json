@@ -1,0 +1,94 @@
+{
+ "slug": "contact",
+ "lang": "fr",
+ "kind": "contact",
+ "service": "Contact",
+ "title": "Contact — CAS Development, Kyiv (Ukraine)",
+ "description": "Contactez CAS Development : +380 97 866 77 55 (téléphone, WhatsApp, Telegram, Viber), 44 rue Antonovytcha, Kyiv. Consultation gratuite.",
+ "h1": "Parlons de votre espace",
+ "lead": "Présentez-nous votre bien : nous proposerons une solution adaptée à votre style et à votre budget. La consultation est gratuite ; seul le téléphone est obligatoire dans le formulaire.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "facts": false,
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Nous joindre",
+   "items": [
+    {
+     "h": "Bureau",
+     "p": "44, rue Antonovytcha, Kyiv, Ukraine"
+    },
+    {
+     "h": "Téléphone",
+     "price": "+380 97 866 77 55",
+     "p": "Le même numéro fonctionne sur WhatsApp, Telegram et Viber.",
+     "href": "tel:+380978667755",
+     "more": "Appeler"
+    },
+    {
+     "h": "Messageries",
+     "p": "Écrivez-nous à tout moment — nous répondons rapidement.",
+     "li": [
+      "Telegram: t.me/+380978667755",
+      "WhatsApp: wa.me/380978667755",
+      "Viber: +380 97 866 77 55"
+     ]
+    },
+    {
+     "h": "Instagram",
+     "p": "Projets et chantiers en cours : @cas_development",
+     "href": "https://www.instagram.com/cas_development/",
+     "more": "Ouvrir Instagram"
+    }
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Envie de connaître le budget à l’avance ?",
+   "p": [
+    "Design dès $30/m², rénovation dès $550/m², bureaux dès $350/m², construction dès $600/m², ameublement dès $250/m². Le montant final figure dans le devis après la consultation."
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Autres services",
+   "items": [
+    [
+     "/fr/services",
+     "Tous les services"
+    ],
+    [
+     "/fr/architecture-interieur",
+     "Architecture d’intérieur"
+    ],
+    [
+     "/fr/realisation-projet",
+     "Réalisation de projet de design"
+    ],
+    [
+     "/fr/renovation-cle-en-main",
+     "Rénovation clé en main"
+    ],
+    [
+     "/fr/construction-maison",
+     "Construction de maisons"
+    ],
+    [
+     "/fr/ameublement-cle-en-main",
+     "Ameublement clé en main"
+    ],
+    [
+     "/fr/commerce-cle-en-main",
+     "Locaux professionnels clé en main"
+    ],
+    [
+     "/fr/faq",
+     "FAQ"
+    ]
+   ]
+  }
+ ]
+}

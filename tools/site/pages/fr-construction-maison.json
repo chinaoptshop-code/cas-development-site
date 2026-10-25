@@ -1,0 +1,157 @@
+{
+ "slug": "construction-maison",
+ "lang": "fr",
+ "service": "Construction de maisons",
+ "title": "Construction de maisons clé en main près de Kyiv — dès $600/m² | CAS Development",
+ "description": "Maisons individuelles à Kyiv et dans sa région : conception, fondations, gros œuvre, toiture, intérieurs et jardin. Dès $600/m², clé en main dès $1 100/m².",
+ "h1": "Construction de maisons clé en main à Kyiv et dans sa région",
+ "price": "gros œuvre dès $600 / m² · clé en main avec finitions dès $1 100 / m²",
+ "lead": "Nous construisons maisons individuelles, cottages et résidences de campagne — de la conception et des fondations jusqu’aux finitions intérieures, au mobilier et à l’aménagement du terrain. Nous prenons aussi en charge rénovations lourdes et extensions.",
+ "guarantees": true,
+ "cards": [
+  [
+   "Conception",
+   [
+    "projet architectural et plans",
+    "façades et visualisations 3D",
+    "structure et réseaux",
+    "devis et planning de chantier"
+   ]
+  ],
+  [
+   "Construction",
+   [
+    "fondations et gros œuvre",
+    "toiture, menuiseries, façade",
+    "réseaux techniques",
+    "réhabilitation et extensions"
+   ]
+  ],
+  [
+   "Clé en main",
+   [
+    "finitions intérieures",
+    "mobilier et luminaires de Chine",
+    "aménagement paysager",
+    "suivi architectural et technique"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Une maison, du projet aux clés",
+   [
+    "Une maison est l’achat le plus important d’une vie : nous commençons donc par le projet et le devis. Vous savez à l’avance combien elle coûtera et à quoi elle ressemblera, dedans comme dehors. Pendant le chantier, vous recevez des reportages photo.",
+    "Nous construisons des maisons de plain-pied et à étage, des villas, des maisons A-frame et des complexes de loisirs. Après le gros œuvre, nous assurons les finitions, le mobilier de Chine et le terrain — sans chercher de nouveaux prestataires."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1F4OovwNYQPfoF-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/1Us4FZpRlnEsqf-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/1g-E1m6cFJ9kvH-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1pF5ohNHdSnme0-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1FiLI9kKE-C87h-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1hXV_Pz6_GfnXe-900.webp",
+   "Pidgirland"
+  ]
+ ],
+ "steps": [
+  [
+   "Terrain et besoins",
+   "Visite du terrain, famille, surface et budget."
+  ],
+  [
+   "Conception",
+   "Architecture, plans, façades et 3D."
+  ],
+  [
+   "Devis et contrat",
+   "Prix et délais par étapes ; si CAS construit, le total reste à ±5 %."
+  ],
+  [
+   "Construction",
+   "Des fondations à la toiture, avec comptes rendus réguliers."
+  ],
+  [
+   "Finitions et livraison",
+   "Intérieurs, mobilier, jardin — nous livrons une maison finie."
+  ]
+ ],
+ "faq": [
+  [
+   "Combien coûte une maison près de Kyiv ?",
+   "Construction dès $600 par m², clé en main avec finitions dès $1 100 par m². Le coût exact dépend du projet, des matériaux et du terrain."
+  ],
+  [
+   "Concevez-vous aussi la maison ?",
+   "Oui, architecture et intérieur dans un même projet. Design dès $30 par m², projet minimum $2 500."
+  ],
+  [
+   "Construisez-vous sur les plans d’un autre ?",
+   "Oui, nous analysons le projet et établissons un devis."
+  ],
+  [
+   "Rénovez-vous des maisons anciennes ?",
+   "Oui : réhabilitation, extensions, remplacement des réseaux et finitions complètes."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/architecture-interieur",
+   "Architecture d’intérieur"
+  ],
+  [
+   "/fr/realisation-projet",
+   "Réalisation de projet de design"
+  ],
+  [
+   "/fr/renovation-cle-en-main",
+   "Rénovation clé en main"
+  ],
+  [
+   "/fr/ameublement-cle-en-main",
+   "Ameublement clé en main"
+  ],
+  [
+   "/fr/commerce-cle-en-main",
+   "Locaux professionnels clé en main"
+  ],
+  [
+   "/fr/faq",
+   "FAQ"
+  ],
+  [
+   "/fr/contact",
+   "Contact"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

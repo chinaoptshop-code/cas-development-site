@@ -1,0 +1,162 @@
+{
+ "slug": "index",
+ "lang": "fr",
+ "service": "Tous les services",
+ "title": "CAS Development — architecture d’intérieur, rénovation et construction à Kyiv",
+ "description": "Studio à Kyiv depuis 2016 : architecture d’intérieur dès $30/m², rénovation clé en main dès $550/m², construction, mobilier direct usine de Chine. 150+ projets.",
+ "h1": "Architecture d’intérieur, rénovation et construction clé en main — depuis Kyiv, pour des clients du monde entier",
+ "price": "design dès $30 / m² · rénovation dès $550 / m² · construction dès $600 / m²",
+ "lead": "CAS Development est un studio d’architecture et d’architecture d’intérieur fondé à Kyiv en 2016. Plus de 150 projets réalisés : appartements, maisons, villas, restaurants, salons et bureaux. Une seule équipe vous accompagne du premier croquis à la remise des clés — et source le mobilier directement auprès d’usines en Chine.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Nos services",
+   "items": [
+    {
+     "h": "Architecture d’intérieur",
+     "href": "/fr/architecture-interieur",
+     "price": "dès $30 / m² · projet minimum $2 500",
+     "p": "Plans d’aménagement, visualisations 3D, plans d’exécution et descriptifs que tout entrepreneur peut suivre.",
+     "more": "En savoir plus"
+    },
+    {
+     "h": "Réalisation de projet de design",
+     "href": "/fr/realisation-projet",
+     "price": "rénovation dès $550 / m² · ameublement dès $250 / m²",
+     "p": "Nous réalisons votre projet — le nôtre ou celui d’un autre designer — fidèlement aux visualisations.",
+     "more": "En savoir plus"
+    },
+    {
+     "h": "Rénovation clé en main",
+     "href": "/fr/renovation-cle-en-main",
+     "price": "logements dès $550 / m² · bureaux dès $350 / m²",
+     "p": "Cycle complet avec nos propres équipes : gros œuvre, second œuvre, réseaux, matériaux, nettoyage.",
+     "more": "En savoir plus"
+    },
+    {
+     "h": "Construction de maisons",
+     "href": "/fr/construction-maison",
+     "price": "gros œuvre dès $600 / m² · clé en main avec finitions dès $1 100 / m²",
+     "p": "Maisons individuelles des fondations et de la toiture jusqu’aux intérieurs et au jardin.",
+     "more": "En savoir plus"
+    },
+    {
+     "h": "Ameublement clé en main",
+     "href": "/fr/ameublement-cle-en-main",
+     "price": "dès $250 / m²",
+     "p": "Mobilier, luminaires, textiles et décoration selon le projet — livrés, montés et mis en scène.",
+     "more": "En savoir plus"
+    },
+    {
+     "h": "Locaux professionnels clé en main",
+     "href": "/fr/commerce-cle-en-main",
+     "price": "design dès $30 / m² · équipement dès $500",
+     "p": "Cafés, restaurants, salons, boutiques et bureaux : conception, travaux, équipement et ouverture par une seule équipe.",
+     "more": "En savoir plus"
+    }
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Pourquoi nos clients choisissent CAS",
+   "p": [
+    "Conception, travaux et approvisionnement sont gérés par une seule entreprise : pas de temps morts entre corps de métier ni de querelles de responsabilité. Le devis est établi avant le démarrage et, si notre équipe réalise les travaux, le coût final reste à ±5 %.",
+    "Nous travaillons avec des clients en Ukraine, en Europe et au-delà : nous avons conçu des maisons et des villas pour les États-Unis et les Émirats. Toute la conception peut se faire en ligne, et les plans sont prêts pour votre entrepreneur local.",
+    "Mobilier, luminaires et matériaux viennent directement de fabricants en Chine : plus de qualité pour le même budget qu’en magasin."
+   ]
+  },
+  {
+   "t": "gallery",
+   "h2": "Projets choisis",
+   "items": [
+    [
+     "img/p/18V9n96tOhjKjh-900.webp",
+     "USA House · États-Unis"
+    ],
+    [
+     "img/p/1uBxYPk7W36Rp0-900.webp",
+     "Dubai Villa · Émirats"
+    ],
+    [
+     "img/p/1MslU7S5X8gIEp-900.webp",
+     "Linden Penthouse · Kyiv"
+    ],
+    [
+     "img/p/1Grj8_m7MJwsbE-900.webp",
+     "Hodos Villa · Kyiv"
+    ],
+    [
+     "img/p/18ej1fH-11uoyr-900.webp",
+     "Yacht Restaurant"
+    ],
+    [
+     "img/p/1A9yy4nI-gf9h3-900.webp",
+     "Kitana Beach · complexe hôtelier"
+    ],
+    [
+     "img/p/1FRa0FI6iMHK5L-900.webp",
+     "Hoda Estate · Carpates"
+    ],
+    [
+     "img/p/1xqY1KZo2JY5xq-900.webp",
+     "Tetris Hall · Kyiv"
+    ]
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "Notre méthode",
+   "items": [
+    [
+     "Brief",
+     "Rendez-vous ou visio sur le bien, votre mode de vie, le budget et les délais."
+    ],
+    [
+     "Projet de design",
+     "Variantes d’aménagement, visualisations 3D et dossier de plans complet."
+    ],
+    [
+     "Devis et contrat",
+     "Prix, délais et échéances de paiement fixés avant le démarrage."
+    ],
+    [
+     "Travaux et achats",
+     "Nos équipes, achats, reportages photo réguliers."
+    ],
+    [
+     "Livraison",
+     "Mobilier installé, espace mis en scène, garantie de 12 mois."
+    ]
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "faq",
+   "h2": "Questions et réponses",
+   "items": [
+    [
+     "Combien coûte l’architecture d’intérieur ?",
+     "À partir de $30 par m², avec un budget minimum de projet de $2 500. Le prix exact est confirmé après le brief."
+    ],
+    [
+     "Concevez-vous des logements hors d’Ukraine ?",
+     "Oui. La conception peut se faire entièrement en ligne ; plans et descriptifs sont prêts pour votre entrepreneur local."
+    ],
+    [
+     "Construisez-vous aussi ?",
+     "Oui. Rénovation d’appartements et de maisons dès $550 par m², bureaux dès $350 par m², construction dès $600 par m², clé en main avec finitions dès $1 100 par m²."
+    ],
+    [
+     "Comment vous contacter ?",
+     "Par WhatsApp, Telegram, Viber ou via le formulaire ci-dessous — nous répondons rapidement."
+    ]
+   ]
+  }
+ ]
+}

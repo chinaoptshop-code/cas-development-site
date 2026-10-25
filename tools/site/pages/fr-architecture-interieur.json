@@ -1,0 +1,161 @@
+{
+ "slug": "architecture-interieur",
+ "lang": "fr",
+ "service": "Architecture d’intérieur",
+ "title": "Studio d’architecture d’intérieur à Kyiv — dès $30/m² | CAS Development",
+ "description": "Architecture d’intérieur pour appartements, maisons et locaux : plans, 3D, plans d’exécution, descriptifs. Dès $30/m², en ligne pour les clients à l’étranger.",
+ "h1": "Architecture d’intérieur — à Kyiv et en ligne dans le monde entier",
+ "price": "dès $30 / m² · projet minimum $2 500",
+ "lead": "CAS Development conçoit les intérieurs d’appartements, de maisons et d’espaces commerciaux. Nous concevons pour que l’intérieur soit réalisable dans le budget — et nous le réalisons nous-mêmes si vous le souhaitez.",
+ "cards": [
+  [
+   "Résidentiel",
+   [
+    "appartements et penthouses",
+    "maisons et villas",
+    "appartements locatifs",
+    "pièces isolées"
+   ]
+  ],
+  [
+   "Commercial",
+   [
+    "bureaux",
+    "restaurants, cafés, bars",
+    "salons de beauté",
+    "hôtels et complexes de loisirs"
+   ]
+  ],
+  [
+   "Contenu du projet",
+   [
+    "aménagement et zonage",
+    "visualisations 3D",
+    "plans d’exécution",
+    "descriptifs et devis"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Un studio qui pense à la réalisation",
+   [
+    "Une belle image n’est que la moitié du travail. Nous concevons avec les prix réels des matériaux, des travaux et du mobilier, pour que l’intérieur en 3D tienne dans le budget. Les plans sont faits pour les artisans : emplacement des prises, tracé de l’éclairage, choix du carrelage et position des joints.",
+    "Nous travaillons dans différents styles — minimalisme contemporain, néoclassique, loft, scandinave, japandi — et notre portfolio compte des penthouses, maisons, villas, restaurants et bureaux à Kyiv et à l’étranger.",
+    "Pour les clients hors d’Ukraine, tout peut se faire en ligne : vous envoyez plans, cotes et photos ou une vidéo, et recevez un dossier complet pour votre entrepreneur local."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1MslU7S5X8gIEp-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1YQyhjEui9fb6v-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1HMtnMX7Fgpwg5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/18ej1fH-11uoyr-900.webp",
+   "Yacht Restaurant"
+  ],
+  [
+   "img/p/1OGn3TXnLkQenE-900.webp",
+   "Yacht Restaurant"
+  ]
+ ],
+ "steps": [
+  [
+   "Brief",
+   "Nous faisons connaissance : style, habitudes, budget."
+  ],
+  [
+   "Aménagement",
+   "Plusieurs variantes d’aménagement au choix."
+  ],
+  [
+   "Visualisations 3D",
+   "Chaque pièce en 3D, avec retouches."
+  ],
+  [
+   "Plans",
+   "Dossier complet pour les artisans."
+  ],
+  [
+   "Réalisation",
+   "En option — travaux, mobilier et suivi de chantier."
+  ]
+ ],
+ "faq": [
+  [
+   "Combien coûte l’architecture d’intérieur ?",
+   "À partir de $30 par m², avec un budget minimum de projet de $2 500."
+  ],
+  [
+   "Que comprend le projet ?",
+   "Plans d’aménagement, visualisations 3D, plans d’exécution (électricité, plomberie, plafonds, sols), descriptifs des matériaux et du mobilier et devis."
+  ],
+  [
+   "Combien de temps faut-il ?",
+   "Cela dépend de la surface et du nombre de retouches ; le délai est fixé au contrat."
+  ],
+  [
+   "Travaillez-vous à distance ?",
+   "Oui, nous concevons en ligne des biens situés dans d’autres villes et pays."
+  ],
+  [
+   "Réalisez-vous aussi le projet ?",
+   "Oui : rénovation dès $550 par m², achat des matériaux, du mobilier et de la décoration. Si notre équipe réalise les travaux, le devis est tenu à ±5 %."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/realisation-projet",
+   "Réalisation de projet de design"
+  ],
+  [
+   "/fr/renovation-cle-en-main",
+   "Rénovation clé en main"
+  ],
+  [
+   "/fr/construction-maison",
+   "Construction de maisons"
+  ],
+  [
+   "/fr/ameublement-cle-en-main",
+   "Ameublement clé en main"
+  ],
+  [
+   "/fr/commerce-cle-en-main",
+   "Locaux professionnels clé en main"
+  ],
+  [
+   "/fr/faq",
+   "FAQ"
+  ],
+  [
+   "/fr/contact",
+   "Contact"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

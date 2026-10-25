@@ -1,0 +1,161 @@
+{
+ "slug": "projektowanie-wnetrz",
+ "lang": "pl",
+ "service": "Projektowanie wnętrz",
+ "title": "Studio projektowania wnętrz w Kijowie — od $30/m² | CAS Development",
+ "description": "Projekty wnętrz mieszkań, domów i lokali: układ, 3D, rysunki wykonawcze, zestawienia. Od $30/m², online dla klientów z innych krajów.",
+ "h1": "Projektowanie wnętrz — w Kijowie i online na całym świecie",
+ "price": "od $30 / m² · minimalny projekt $2 500",
+ "lead": "CAS Development projektuje wnętrza mieszkań, domów i przestrzeni komercyjnych. Projektujemy tak, by wnętrze dało się zrealizować w budżecie — a jeśli chcesz, realizujemy je sami.",
+ "cards": [
+  [
+   "Wnętrza mieszkalne",
+   [
+    "mieszkania i penthouse’y",
+    "domy i wille",
+    "apartamenty na wynajem",
+    "pojedyncze pomieszczenia"
+   ]
+  ],
+  [
+   "Wnętrza komercyjne",
+   [
+    "biura",
+    "restauracje, kawiarnie, bary",
+    "salony urody",
+    "hotele i ośrodki wypoczynkowe"
+   ]
+  ],
+  [
+   "Zakres projektu",
+   [
+    "układ i strefowanie",
+    "wizualizacje 3D",
+    "rysunki wykonawcze",
+    "zestawienia i kosztorys"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Studio, które myśli o realizacji",
+   [
+    "Ładny obrazek to tylko połowa pracy. Projektujemy z uwzględnieniem realnych cen materiałów, robocizny i mebli, więc wnętrze z 3D mieści się w budżecie. Rysunki przygotowujemy dla wykonawców: gdzie gniazdka, jak biegnie światło, jaka płytka i gdzie fuga.",
+    "Pracujemy w różnych stylach — nowoczesny minimalizm, neoklasyka, loft, styl skandynawski, japandi — a w portfolio mamy penthouse’y, domy, wille, restauracje i biura w Kijowie i za granicą.",
+    "Dla klientów spoza Ukrainy cały proces może przebiegać online: przesyłasz rzuty, wymiary i zdjęcia lub film, a otrzymujesz komplet dokumentacji dla lokalnego wykonawcy."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1MslU7S5X8gIEp-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1YQyhjEui9fb6v-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1HMtnMX7Fgpwg5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/18ej1fH-11uoyr-900.webp",
+   "Yacht Restaurant"
+  ],
+  [
+   "img/p/1OGn3TXnLkQenE-900.webp",
+   "Yacht Restaurant"
+  ]
+ ],
+ "steps": [
+  [
+   "Brief",
+   "Poznajemy się i omawiamy styl, nawyki i budżet."
+  ],
+  [
+   "Układ",
+   "Kilka wariantów aranżacji do wyboru."
+  ],
+  [
+   "Wizualizacje 3D",
+   "Każde pomieszczenie w 3D, z poprawkami."
+  ],
+  [
+   "Rysunki",
+   "Pełna dokumentacja dla wykonawców."
+  ],
+  [
+   "Realizacja",
+   "Opcjonalnie — remont, meble i nadzór autorski."
+  ]
+ ],
+ "faq": [
+  [
+   "Ile kosztuje projekt wnętrza?",
+   "Od $30 za m², minimalny budżet projektu to $2 500."
+  ],
+  [
+   "Co obejmuje projekt?",
+   "Układ, wizualizacje 3D, rysunki wykonawcze (elektryka, hydraulika, sufity, podłogi), zestawienia materiałów i mebli oraz kosztorys."
+  ],
+  [
+   "Ile to trwa?",
+   "Zależy od powierzchni i liczby poprawek; termin zapisujemy w umowie."
+  ],
+  [
+   "Czy pracujecie zdalnie?",
+   "Tak, projektujemy online obiekty w innych miastach i krajach."
+  ],
+  [
+   "Czy realizujecie projekt?",
+   "Tak: remont od $550 za m², zakup materiałów, mebli i dekoracji. Jeśli remont robi nasz zespół, kosztorys trzymamy w granicach ±5%."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/realizacja-projektu",
+   "Realizacja projektu wnętrza"
+  ],
+  [
+   "/pl/remont-pod-klucz",
+   "Remont pod klucz"
+  ],
+  [
+   "/pl/budowa-domow",
+   "Budowa domów"
+  ],
+  [
+   "/pl/umeblowanie-pod-klucz",
+   "Umeblowanie pod klucz"
+  ],
+  [
+   "/pl/biznes-pod-klucz",
+   "Lokale biznesowe pod klucz"
+  ],
+  [
+   "/pl/faq",
+   "FAQ"
+  ],
+  [
+   "/pl/kontakt",
+   "Kontakt"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

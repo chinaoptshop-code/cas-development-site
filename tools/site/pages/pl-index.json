@@ -1,0 +1,162 @@
+{
+ "slug": "index",
+ "lang": "pl",
+ "service": "Wszystkie usługi",
+ "title": "CAS Development — projektowanie wnętrz, remonty i budowa w Kijowie",
+ "description": "Studio w Kijowie od 2016 r.: projekt wnętrza od $30/m², remont pod klucz od $550/m², budowa domów, meble prosto z fabryk w Chinach. 150+ projektów.",
+ "h1": "Projektowanie wnętrz, remonty i budowa pod klucz — z Kijowa dla klientów z całego świata",
+ "price": "projekt od $30 / m² · remont od $550 / m² · budowa od $600 / m²",
+ "lead": "CAS Development to studio projektowania wnętrz i architektury założone w Kijowie w 2016 roku. Ponad 150 zrealizowanych projektów: mieszkania, domy, wille, restauracje, salony i biura. Jeden zespół prowadzi Cię od pierwszego szkicu do przekazania kluczy — i sprowadza meble bezpośrednio z fabryk w Chinach.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Czym się zajmujemy",
+   "items": [
+    {
+     "h": "Projektowanie wnętrz",
+     "href": "/pl/projektowanie-wnetrz",
+     "price": "od $30 / m² · minimalny projekt $2 500",
+     "p": "Układ funkcjonalny, wizualizacje 3D, rysunki wykonawcze i zestawienia, z których skorzysta każdy wykonawca.",
+     "more": "Więcej"
+    },
+    {
+     "h": "Realizacja projektu wnętrza",
+     "href": "/pl/realizacja-projektu",
+     "price": "remont od $550 / m² · umeblowanie od $250 / m²",
+     "p": "Realizujemy Twój projekt — nasz lub innego projektanta — dokładnie jak na wizualizacjach.",
+     "more": "Więcej"
+    },
+    {
+     "h": "Remont pod klucz",
+     "href": "/pl/remont-pod-klucz",
+     "price": "mieszkania i domy od $550 / m² · biura od $350 / m²",
+     "p": "Pełny cykl z własnymi ekipami: prace surowe i wykończeniowe, instalacje, materiały, sprzątanie.",
+     "more": "Więcej"
+    },
+    {
+     "h": "Budowa domów",
+     "href": "/pl/budowa-domow",
+     "price": "stan surowy od $600 / m² · pod klucz z wykończeniem od $1 100 / m²",
+     "p": "Domy jednorodzinne od fundamentów i dachu po wnętrza i ogród.",
+     "more": "Więcej"
+    },
+    {
+     "h": "Umeblowanie pod klucz",
+     "href": "/pl/umeblowanie-pod-klucz",
+     "price": "od $250 / m²",
+     "p": "Meble, oświetlenie, tekstylia i dekoracje według projektu — z dostawą, montażem i stylizacją.",
+     "more": "Więcej"
+    },
+    {
+     "h": "Lokale biznesowe pod klucz",
+     "href": "/pl/biznes-pod-klucz",
+     "price": "projekt od $30 / m² · wyposażenie od $500",
+     "p": "Kawiarnie, restauracje, salony, sklepy i biura: projekt, remont, wyposażenie i otwarcie w jednych rękach.",
+     "more": "Więcej"
+    }
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Dlaczego klienci wybierają CAS",
+   "p": [
+    "Projekt, prace i dostawy prowadzi jedna firma, więc nie ma przestojów między wykonawcami ani sporów o odpowiedzialność. Kosztorys powstaje przed startem, a jeśli remont wykonuje nasz zespół, końcowy koszt mieści się w ±5%.",
+    "Pracujemy z klientami na Ukrainie, w Europie i dalej — projektowaliśmy domy i wille dla USA i ZEA. Cały proces projektowy może odbywać się online, a rysunki są gotowe dla lokalnego wykonawcy.",
+    "Meble, oświetlenie i materiały sprowadzamy bezpośrednio od producentów w Chinach: lepsza jakość za ten sam budżet niż w sprzedaży detalicznej."
+   ]
+  },
+  {
+   "t": "gallery",
+   "h2": "Wybrane projekty",
+   "items": [
+    [
+     "img/p/18V9n96tOhjKjh-900.webp",
+     "USA House · USA"
+    ],
+    [
+     "img/p/1uBxYPk7W36Rp0-900.webp",
+     "Dubai Villa · ZEA"
+    ],
+    [
+     "img/p/1MslU7S5X8gIEp-900.webp",
+     "Linden Penthouse · Kijów"
+    ],
+    [
+     "img/p/1Grj8_m7MJwsbE-900.webp",
+     "Hodos Villa · Kijów"
+    ],
+    [
+     "img/p/18ej1fH-11uoyr-900.webp",
+     "Yacht Restaurant"
+    ],
+    [
+     "img/p/1A9yy4nI-gf9h3-900.webp",
+     "Kitana Beach · kurort"
+    ],
+    [
+     "img/p/1FRa0FI6iMHK5L-900.webp",
+     "Hoda Estate · Karpaty"
+    ],
+    [
+     "img/p/1xqY1KZo2JY5xq-900.webp",
+     "Tetris Hall · Kijów"
+    ]
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "Jak pracujemy",
+   "items": [
+    [
+     "Brief",
+     "Spotkanie lub wideorozmowa o obiekcie, stylu życia, budżecie i terminach."
+    ],
+    [
+     "Projekt",
+     "Warianty układu, wizualizacje 3D i komplet rysunków."
+    ],
+    [
+     "Kosztorys i umowa",
+     "Cena, terminy i etapy płatności ustalone przed startem."
+    ],
+    [
+     "Remont i dostawy",
+     "Własne ekipy, zakupy, regularne raporty zdjęciowe."
+    ],
+    [
+     "Odbiór",
+     "Meble zamontowane, wnętrze ostylizowane, 12 miesięcy gwarancji."
+    ]
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "faq",
+   "h2": "Pytania i odpowiedzi",
+   "items": [
+    [
+     "Ile kosztuje projekt wnętrza?",
+     "Od $30 za m², minimalny budżet projektu to $2 500. Dokładną cenę potwierdzamy po briefie."
+    ],
+    [
+     "Czy projektujecie domy poza Ukrainą?",
+     "Tak. Projekt może powstać w całości online, a rysunki i zestawienia są gotowe dla lokalnego wykonawcy."
+    ],
+    [
+     "Czy też budujecie?",
+     "Tak. Remont mieszkań i domów od $550 za m², biura od $350 za m², budowa od $600 za m², pod klucz z wykończeniem od $1 100 za m²."
+    ],
+    [
+     "Jak się skontaktować?",
+     "Przez WhatsApp, Telegram, Viber lub formularz poniżej — odpowiadamy wkrótce."
+    ]
+   ]
+  }
+ ]
+}

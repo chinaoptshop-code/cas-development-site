@@ -170,5 +170,5 @@ html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{le
 [dir=rtl] .card ul{padding-left:0;padding-right:18px}
 [dir=rtl] summary::after{float:left}
 [dir=rtl] .scf summary::after{float:none}
-[dir=rtl] a[href^="tel:"]{unicode-bidi:isolate;direction:ltr}
+[dir=rtl] a[href^="tel:"],[dir=rtl] .sch-logo{unicode-bidi:isolate;direction:ltr}
 @media(min-width:1080px){[dir=rtl] .sch-act{margin-right:0}}
