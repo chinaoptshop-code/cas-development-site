@@ -456,7 +456,7 @@
  {
   "page": "blog/avtorskyi-nahliad-navishcho.html",
   "kind": "land",
-  "html_kb": 50.7,
+  "html_kb": 50.8,
   "gzip_kb": 14.7,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -653,7 +653,7 @@
  {
   "page": "blog/dyzain-restoranu-z-choho-pochaty.html",
   "kind": "land",
-  "html_kb": 50.5,
+  "html_kb": 50.6,
   "gzip_kb": 14.8,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -816,7 +816,7 @@
  {
   "page": "blog/komplektatsiia-kvartyry-pid-kliuch-poriadok-i-biudzhet.html",
   "kind": "land",
-  "html_kb": 50.2,
+  "html_kb": 50.3,
   "gzip_kb": 14.4,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -1112,7 +1112,7 @@
  {
   "page": "blog/remont-vannoi-kimnaty-pid-kliuch-etapy.html",
   "kind": "land",
-  "html_kb": 45.9,
+  "html_kb": 46.0,
   "gzip_kb": 13.5,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -1175,7 +1175,7 @@
  {
   "page": "blog/shcho-vkhodyt-u-dyzain-proekt-interieru.html",
   "kind": "land",
-  "html_kb": 51.0,
+  "html_kb": 51.1,
   "gzip_kb": 14.7,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -1207,8 +1207,8 @@
  {
   "page": "blog/shcho-vkhodyt-u-remont-pid-kliuch.html",
   "kind": "land",
-  "html_kb": 48.2,
-  "gzip_kb": 13.8,
+  "html_kb": 48.3,
+  "gzip_kb": 13.9,
   "css_kb": 14.6,
   "js_kb": 7.0,
   "font_sizes": 6,
@@ -1347,7 +1347,7 @@
  {
   "page": "blog/suchasnyi-minimalizm-teplyi-interier.html",
   "kind": "land",
-  "html_kb": 50.9,
+  "html_kb": 51.0,
   "gzip_kb": 14.7,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -1506,7 +1506,7 @@
  {
   "page": "blog/yak-vybraty-remontnu-bryhadu.html",
   "kind": "land",
-  "html_kb": 50.9,
+  "html_kb": 51.0,
   "gzip_kb": 14.8,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -1931,7 +1931,7 @@
   "page": "dyzain-interieru-kvartyry-kyiv.html",
   "kind": "land",
   "html_kb": 46.2,
-  "gzip_kb": 12.6,
+  "gzip_kb": 12.7,
   "css_kb": 13.4,
   "js_kb": 7.0,
   "font_sizes": 6,
@@ -11367,7 +11367,7 @@
  {
   "page": "pytannya.html",
   "kind": "land",
-  "html_kb": 48.4,
+  "html_kb": 48.6,
   "gzip_kb": 12.5,
   "css_kb": 13.7,
   "js_kb": 7.0,
