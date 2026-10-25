@@ -19,14 +19,24 @@
   var $ = function (id) { return document.getElementById(id); };
   var val = function (id) { var el = $(id); return el ? el.value.trim() : ''; };
   var q = new URLSearchParams(location.search);
+  // доступність: помилка — role=alert і привʼязана до поля телефону; успіх — role=status, отримує фокус
+  var err0 = $('oErr'), ok0 = $('oOk'), ph0 = $('oPhone');
+  if (err0 && !err0.getAttribute('role')) err0.setAttribute('role', 'alert');
+  if (ok0) { if (!ok0.getAttribute('role')) ok0.setAttribute('role', 'status'); if (!ok0.hasAttribute('tabindex')) ok0.setAttribute('tabindex', '-1'); }
+  if (ph0 && err0) {
+    var db = (ph0.getAttribute('aria-describedby') || '').split(' ').filter(Boolean);
+    if (db.indexOf('oErr') < 0) { db.push('oErr'); ph0.setAttribute('aria-describedby', db.join(' ')); }
+    ph0.setAttribute('aria-required', 'true');
+  }
+  var invalid = function (on) { if (ph0) { if (on) ph0.setAttribute('aria-invalid', 'true'); else ph0.removeAttribute('aria-invalid'); } };
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var err = $('oErr'), btn = $('oBtn');
     var d = val('oPhone').replace(/[^\d+]/g, '').replace(/^\+/, '');
     if (/^0\d{9}$/.test(d)) d = '38' + d;
-    if (!/^380\d{9}$/.test(d) && !/^\d{10,15}$/.test(d)) { if (err) err.textContent = t.phone; return; }
-    if (err) err.textContent = '';
+    if (!/^380\d{9}$/.test(d) && !/^\d{10,15}$/.test(d)) { if (err) err.textContent = t.phone; invalid(true); if (ph0) ph0.focus(); return; }
+    if (err) err.textContent = ''; invalid(false);
     if (btn) { btn.disabled = true; btn.textContent = t.sending; }
     var data = {
       name: val('oName'), phone: '+' + d, area: val('oArea'), message: val('oMsg'),
@@ -49,7 +59,7 @@
       if (!r.ok) return fail();
       done = true;
       form.style.display = 'none';
-      var ok = $('oOk'); if (ok) ok.style.display = 'block';
+      var ok = $('oOk'); if (ok) { ok.style.display = 'block'; try { ok.focus({ preventScroll: false }); } catch (x) { ok.focus(); } }
     }).catch(function () { clearTimeout(timer); fail(); });
   });
 })();

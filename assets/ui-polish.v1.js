@@ -18,7 +18,7 @@ function a11y(){
  btnify(d.getElementById('lb-next'),'Наступне фото');
  btnify(d.getElementById('sdlb-close'),'Закрити');
  $$('.hamburger').forEach(function(h){btnify(h,'Меню')});
- $$('.sp-card[onclick]').forEach(function(c){btnify(c);syncExp(c,c,'exp')});
+ $$('.sp-card[onclick]').forEach(function(c){var b=c.querySelector('.sp-tog');if(b)syncExp(b,c,'exp');else{btnify(c);syncExp(c,c,'exp')}});
  $$('.ps-tog').forEach(function(b){var p=b.parentElement;if(p)syncExp(b,p,'exp')});
  var hb=d.getElementById('hbgBtn'),nsb=d.getElementById('nsb');
  if(hb&&nsb){hb.setAttribute('aria-controls','nsb');syncExp(hb,nsb,'open');

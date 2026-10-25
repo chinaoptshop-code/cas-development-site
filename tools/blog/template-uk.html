@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};function g(){t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);}if(l.readyState==="complete")setTimeout(g,1500);else c.addEventListener("load",function(){setTimeout(g,1500)});})(window,document,"clarity","script","z19wl000eu");</script>
+<script>(function(w,d,i){w.clarity=w.clarity||function(){(w.clarity.q=w.clarity.q||[]).push(arguments)};var E=["scroll","pointerdown","keydown","touchstart"],o={passive:true},done=0;function g(){if(done)return;done=1;E.forEach(function(e){w.removeEventListener(e,g,o)});var t=d.createElement("script");t.async=1;t.src="https://www.clarity.ms/tag/"+i;d.head.appendChild(t)}E.forEach(function(e){w.addEventListener(e,g,o)});function l(){setTimeout(function(){w.requestIdleCallback?requestIdleCallback(g,{timeout:4000}):g()},4000)}d.readyState==="complete"?l():w.addEventListener("load",l)})(window,document,"z19wl000eu");</script>
 <title>Скільки коштує ремонт квартири в новобудові в Києві у 2026 році | CAS Development</title>
 <meta name="description" content="Ціна ремонту квартири в новобудові в Києві: з чого складається кошторис, що впливає на суму, скільки триває і як не вийти за бюджет. Ремонт під ключ від $550/м².">
 <link rel="canonical" href="https://cas-develop.com/blog/skilky-koshtuie-remont-v-novobudovi-kyiv">
@@ -195,7 +195,7 @@ function a11y(){
  btnify(d.getElementById('lb-next'),'Наступне фото');
  btnify(d.getElementById('sdlb-close'),'Закрити');
  $$('.hamburger').forEach(function(h){btnify(h,'Меню')});
- $$('.sp-card[onclick]').forEach(function(c){btnify(c);syncExp(c,c,'exp')});
+ $$('.sp-card[onclick]').forEach(function(c){var b=c.querySelector('.sp-tog');if(b)syncExp(b,c,'exp');else{btnify(c);syncExp(c,c,'exp')}});
  $$('.ps-tog').forEach(function(b){var p=b.parentElement;if(p)syncExp(b,p,'exp')});
  var hb=d.getElementById('hbgBtn'),nsb=d.getElementById('nsb');
  if(hb&&nsb){hb.setAttribute('aria-controls','nsb');syncExp(hb,nsb,'open');

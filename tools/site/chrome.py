@@ -6,7 +6,8 @@
   python3 tools/site/chrome.py --check    # лише перевірка: де шапка/футер застарілі (код 1)
 
 Розмітка шапки — між <!--chrome:h--> і <!--/chrome:h-->, футера — між <!--chrome:f--> і <!--/chrome:f-->.
-Стилі — /assets/site-chrome.v1.css, бургер — /assets/site-chrome.v1.js. Генератори (landing.py, blog/build.py,
+Стилі — /assets/site-chrome.v1.css, бургер і діалоги (лайтбокси, шторки) — /assets/site-chrome.v1.js; спільні файли
+підключаються з ?v=<хеш вмісту> (versions()), Microsoft Clarity — відкладено (clarity()). Генератори (landing.py, blog/build.py,
 products/build.py, shop/pages.py, gen-landing.py) викликають apply() перед записом сторінки, тож руками
 шапку/футер не правимо — лише тут.
 
@@ -17,8 +18,28 @@ import glob, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 B = 'https://cas-develop.com'
-CSS_TAG = '<link rel="stylesheet" href="/assets/site-chrome.v1.css">'
-JS_TAG = '<script src="/assets/site-chrome.v1.js" defer></script>'
+
+
+def _ver(path, _c={}):
+    """Версія спільного файлу для ?v= (у /assets/* кеш на рік, immutable): перші 8 символів sha1 вмісту."""
+    if path not in _c:
+        import hashlib
+        _c[path] = hashlib.sha1(open(os.path.join(ROOT, path.lstrip('/')), 'rb').read()).hexdigest()[:8]
+    return _c[path]
+
+
+# спільні файли, які підключають сторінки: після зміни файлу всі сторінки отримують новий ?v=
+SHARED = ('/assets/site-chrome.v1.css', '/assets/site-chrome.v1.js', '/assets/lead-form.v1.js', '/assets/ui-polish.v1.js', '/assets/proekt.v1.css')
+SHARED_RX = re.compile(r'(' + '|'.join(re.escape(x) for x in SHARED) + r')(?:\?v=\w+)?(?=")')
+
+
+def versions(s):
+    return SHARED_RX.sub(lambda m: m.group(1) + '?v=' + _ver(m.group(1)), s)
+
+
+CSS_TAG = f'<link rel="stylesheet" href="/assets/site-chrome.v1.css?v={_ver("/assets/site-chrome.v1.css")}">'
+JS_TAG = f'<script src="/assets/site-chrome.v1.js?v={_ver("/assets/site-chrome.v1.js")}" defer></script>'
+
 PHONE, PHONE_TXT = '+380978667755', '+380 97 866 77 55'
 # сторінки, яких не чіпаємо: сторонні юридичні шаблони англійською (власна шапка з H1), верифікація Google
 SKIP = {'privacy.html', 'terms.html'}
@@ -340,6 +361,23 @@ def mbar_logos(s):
     return s[:k] + blk + s[e:]
 
 
+# Microsoft Clarity: вантажимо після першої взаємодії (scroll/pointerdown/keydown/touchstart) або, якщо її нема,
+# через 4 с після load у requestIdleCallback — не заважає LCP/TBT. Будь-яку стару вставку замінюємо на цю.
+CLARITY_ID = 'z19wl000eu'
+CLARITY = ('<script>(function(w,d,i){w.clarity=w.clarity||function(){(w.clarity.q=w.clarity.q||[]).push(arguments)};'
+           'var E=["scroll","pointerdown","keydown","touchstart"],o={passive:true},done=0;'
+           'function g(){if(done)return;done=1;E.forEach(function(e){w.removeEventListener(e,g,o)});'
+           'var t=d.createElement("script");t.async=1;t.src="https://www.clarity.ms/tag/"+i;d.head.appendChild(t)}'
+           'E.forEach(function(e){w.addEventListener(e,g,o)});'
+           'function l(){setTimeout(function(){w.requestIdleCallback?requestIdleCallback(g,{timeout:4000}):g()},4000)}'
+           'd.readyState==="complete"?l():w.addEventListener("load",l)})(window,document,"' + CLARITY_ID + '");</script>')
+CLARITY_RX = re.compile(r'<script>\(function\([^<]*?clarity[^<]*?</script>')
+
+
+def clarity(s):
+    return CLARITY_RX.sub(lambda m: CLARITY, s)
+
+
 def apply(s, rel):
     """Ставить єдину шапку/футер у HTML сторінки `rel` (шлях від кореня сайту). Ідемпотентно."""
     rel = rel.replace(os.sep, '/')
@@ -408,7 +446,9 @@ def apply(s, rel):
     s = fix_js(s)
     s = re.sub(r'(<style[^>]*>)(.*?)</style>', lambda m: m.group(1) + _nocursor(m.group(2)) + '</style>', s, flags=re.S)
     s = mbar_logos(s)
+    s = clarity(s)
     s = skip_and_main(s, lang)
+    s = versions(s)
     # підключення стилів і скрипта
     if CSS_TAG not in s:
         s = s.replace('</head>', CSS_TAG + '\n</head>', 1)

@@ -98,7 +98,7 @@ def build(p):
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Service", "name": p["service"], "serviceType": p["service_type"],
          "areaServed": [{"@type": "City", "name": "Київ"}, {"@type": "AdministrativeArea", "name": "Київська область"}],
-         "provider": {"@id": BASE + "#business"},
+         "provider": {"@type": "Organization", "@id": BASE + "#business", "name": "CAS Development", "url": BASE, "logo": BASE + "apple-touch-icon.png"},
          "offers": {"@type": "Offer", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification",
                     "price": p["price_num"], "priceCurrency": "USD", "unitText": "м²", "valueAddedTaxIncluded": False}}},
         {"@type": "BreadcrumbList", "itemListElement": [

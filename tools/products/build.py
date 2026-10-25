@@ -17,6 +17,7 @@ LASTMOD = time.strftime('%Y-%m-%d', time.localtime(os.path.getmtime(os.path.join
 CAT = os.path.join(ROOT, 'assets/ozdoba/catalog.json')
 APP = os.path.join(ROOT, 'assets/ozdoba/app.js')
 PAGE = os.path.join(ROOT, 'ozdoba.html')
+FIRST = 24  # скільки карток віддаємо в HTML /ozdoba; решту app.js дорендерює частинами (TBT)
 S = '<svg viewBox="0 0 100 80" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">{}</svg>'
 e = lambda s: html.escape(str(s), quote=True)
 
@@ -53,7 +54,7 @@ def price_html(d, i):
 def card(d, i):
     frm = 'від ' if i.get('ss') else ''
     sw = ''.join(f'<i style="background:{c[1]}"></i>' for c in d['colorsets'][i['cs']][:5])
-    heart = (f'<button class="heart" data-fav="{i["id"]}" onclick="event.stopPropagation();toggleFav({i["id"]})" aria-label="В обране">'
+    heart = (f'<button type="button" class="heart" data-fav="{i["id"]}" onclick="event.stopPropagation();toggleFav({i["id"]})" aria-label="В обране" aria-pressed="false">'
              '<svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.7A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.3C19 15.4 12 20 12 20z"/></svg></button>')
     return (f'<article class="card" onclick="openItem({i["id"]})"><div class="tile{" ph" if i.get("img") else ""}">{pic(d, i)}{heart}</div>'
             f'<div class="body"><div class="sub">{e(i["sub"])}</div><a class="nm" href="/ozdoba/{i["slug"]}" onclick="if(window.openItem)event.preventDefault()" style="color:inherit;text-decoration:none">{e(i["name"])}</a>'
@@ -74,12 +75,12 @@ def main():
                 raise SystemExit(f'немає фото {b}-800.webp для товару {i["id"]}')
     order = {'A': 0, 'B': 1, 'C': 2}
     items = sorted(d['items'], key=lambda i: (order.get(i['prio'], 3), -(min_price(d, i) or 0)))
-    grid = ''.join(card(d, i) for i in items[:32])  # решту карток домальовує app.js; кожен товар має свою сторінку
-    # ItemList — лише картки, які є в HTML (бюджет ozdoba.html ≤120 КБ); решта товарів — у категоріях і sitemap
+    grid = ''.join(card(d, i) for i in items[:FIRST])  # решту карток app.js дорендерює частинами; кожен товар має свою сторінку
+    # ItemList — лише картки, які є в HTML (швидкий перший рендер); решта товарів — у категоріях і sitemap
     ld = {'@context': 'https://schema.org', '@type': 'ItemList', 'name': 'Оздоба — каталог меблів, світла й декору',
-          'numberOfItems': len(items[:32]),
+          'numberOfItems': len(items[:FIRST]),
           'itemListElement': [{'@type': 'ListItem', 'position': n + 1, 'name': i['name'], 'url': f'https://cas-develop.com/ozdoba/{i["slug"]}'}
-                              for n, i in enumerate(items[:32])]}
+                              for n, i in enumerate(items[:FIRST])]}
     ver = lambda p: hashlib.sha1(open(p, 'rb').read()).hexdigest()[:8]
     s = open(PAGE, encoding='utf-8').read()
     s = re.sub(r'<!--ozd:grid-->.*?<!--/ozd:grid-->', lambda m: '<!--ozd:grid-->' + grid + '<!--/ozd:grid-->', s, count=1, flags=re.S)
@@ -102,6 +103,8 @@ VENUE = {'apt': 'квартира', 'resto': 'ресторан і бар', 'hote
 
 
 SITE = 'https://cas-develop.com'
+# мінімальний вузол організації (повні дані LocalBusiness — на головній, той самий @id)
+ORG = {'@type': 'Organization', '@id': f'{SITE}/#business', 'name': 'CAS Development', 'url': f'{SITE}/', 'logo': f'{SITE}/apple-touch-icon.png'}
 T_FULL, T_SHORT = ' — купити в Києві | Оздоба CAS', ' — купити в Києві'
 
 
@@ -166,13 +169,13 @@ def product_page(d, i, shell, items, title):
                   key=lambda x: (x['sub'] != i['sub'], po.get(x.get('prio'), 3), abs(x['id'] - i['id'])))
     rel = same[:6]
     cslug = CATS[i['cat']][0] if i['cat'] in CATS else None
-    rel_html = ''.join(re.sub(r'<button class="heart".*?</button>', '', card(d, x), flags=re.S)
+    rel_html = ''.join(re.sub(r'<button[^>]*class="heart".*?</button>', '', card(d, x), flags=re.S)
                        .replace(f'onclick="openItem({x["id"]})"', f'onclick="location.href=\'/ozdoba/{x["slug"]}\'"') for x in rel)
-    images = [f'{SITE}/{b}-800.webp' for b in [img] + list(i.get('imgs') or []) if b] or [f'{SITE}/img/og-cas.jpg']
+    images = [f'{SITE}/{b}-800.webp' for b in [img] + list(i.get('imgs') or []) if b]  # без фото — без image (не og-cas.jpg)
     offer = None
     if mp is not None:  # offers лише з ціною; під замовлення → PreOrder; розміри → діапазон цін
         offer = {'@type': 'Offer', 'price': mp, 'priceCurrency': 'UAH', 'availability': 'https://schema.org/PreOrder',
-                 'itemCondition': 'https://schema.org/NewCondition', 'url': u, 'seller': {'@id': f'{SITE}/#business'}}
+                 'itemCondition': 'https://schema.org/NewCondition', 'url': u, 'seller': ORG}
         if sizes and len(sizes) > 1:
             hi = r10(i['price'] * max(k for _, k in sizes))
             if hi > mp:
@@ -181,13 +184,17 @@ def product_page(d, i, shell, items, title):
     crumbs = [('Головна', f'{SITE}/'), ('Оздоба', f'{SITE}/ozdoba')]
     if cslug: crumbs.append((i['cat'], f'{SITE}/ozdoba/kategoriia/{cslug}'))
     crumbs.append((i['name'], u))
-    ld = {'@context': 'https://schema.org', '@graph': [
-        {'@type': 'Product', 'name': i['name'], 'description': i['desc'], 'sku': f'OZD-{i["id"]}',
-         'category': i['sub'].replace(' / ', ' > '), 'url': u, 'image': images if len(images) > 1 else images[0],
-         'brand': {'@type': 'Brand', 'name': 'Оздоба CAS'},
-         **({'offers': offer} if offer else {})},
-        {'@type': 'BreadcrumbList', 'itemListElement': [
-            {'@type': 'ListItem', 'position': n + 1, 'name': nm, 'item': it} for n, (nm, it) in enumerate(crumbs)]}]}
+    # Product — лише для товарів з ціною (Google вимагає offers/review); без ціни — тільки BreadcrumbList.
+    # shippingDetails і hasMerchantReturnPolicy не додаємо: підтверджених умов доставки й повернення немає.
+    graph = []
+    if offer:
+        graph.append({'@type': 'Product', 'name': i['name'], 'description': i['desc'], 'sku': f'OZD-{i["id"]}',
+                      'category': i['sub'].replace(' / ', ' > '), 'url': u,
+                      **({'image': images if len(images) > 1 else images[0]} if images else {}),
+                      'brand': {'@type': 'Brand', 'name': 'Оздоба CAS'}, 'offers': offer})
+    graph.append({'@type': 'BreadcrumbList', 'itemListElement': [
+        {'@type': 'ListItem', 'position': n + 1, 'name': nm, 'item': it} for n, (nm, it) in enumerate(crumbs)]})
+    ld = {'@context': 'https://schema.org', '@graph': graph}
     desc = product_desc(d, i)
     body = f'''<div class="w">
   <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / {f'<a href="/ozdoba/kategoriia/{CATS[i["cat"]][0]}">{e(i["cat"])}</a> / ' if i["cat"] in CATS else ''}{e(i["name"])}</div>
@@ -209,12 +216,12 @@ def product_page(d, i, shell, items, title):
   <h2>Запитати ціну й наявність</h2>
   <form id="of" class="pp-form" data-form="ozdoba-product" data-service="Оздоба — {e(i["name"])}" data-source="cas-develop.com/ozdoba/{i["slug"]}" novalidate>
     <div class="field"><label for="oName">Імʼя</label><input id="oName" autocomplete="name"></div>
-    <div class="field"><label for="oPhone">Телефон *</label><input id="oPhone" type="tel" autocomplete="tel" placeholder="097 123 45 67"><div class="err" id="oErr" style="color:#e07a6a;font-size:var(--fs-small);margin-top:6px"></div></div>
+    <div class="field"><label for="oPhone">Телефон *</label><input id="oPhone" aria-describedby="oErr" type="tel" autocomplete="tel" placeholder="097 123 45 67"><div class="err" id="oErr" role="alert" style="color:#e07a6a;font-size:var(--fs-small);margin-top:6px"></div></div>
     <div class="field"><label for="oArea">Кількість</label><input id="oArea" inputmode="numeric" placeholder="напр. 6"></div>
     <div class="field"><label for="oMsg">Коментар</label><input id="oMsg" placeholder="Колір, розмір, обʼєкт, терміни"></div>
     <button class="btn" id="oBtn" type="submit">Надіслати запит</button>
   </form>
-  <div class="ok" id="oOk" style="display:none"><h3>Запит отримано</h3><p style="color:var(--muted)">Менеджер звʼяжеться з вами в робочий час.</p></div>
+  <div class="ok" id="oOk" role="status" tabindex="-1" style="display:none"><h3>Запит отримано</h3><p style="color:var(--muted)">Менеджер звʼяжеться з вами в робочий час.</p></div>
 </section>
 {f'<section class="ozd-sec"><h2>Схожі товари</h2><div class="grid pp-rel">{rel_html}</div><p class="pp-more">{f'<a class="btn ghost" href="/ozdoba/kategoriia/{cslug}">Уся категорія «{e(i["cat"])}»</a>' if cslug else ''}<a class="btn ghost" href="/ozdoba">Увесь каталог Оздоби</a></p></section>' if rel else ''}
 '''
@@ -342,7 +349,7 @@ def category_pages(d):
         if not items: continue
         cx = catx[cat]
         u = f'https://cas-develop.com/ozdoba/kategoriia/{slug}'
-        cards = ''.join(re.sub(r'<button class="heart".*?</button>', '', card(d, x), flags=re.S)
+        cards = ''.join(re.sub(r'<button[^>]*class="heart".*?</button>', '', card(d, x), flags=re.S)
                         .replace(f'onclick="openItem({x["id"]})"', f'onclick="location.href=\'/ozdoba/{x["slug"]}\'"') for x in items)
         near = [c for c in cx.get('related', []) if c in present]
         rest = [c for c in CATS if c != cat and c in present and c not in near]

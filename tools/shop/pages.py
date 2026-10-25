@@ -58,10 +58,10 @@ addEventListener('DOMContentLoaded', function () {
     box.innerHTML = '<div class="acc-grid"><div class="acc-box acc-prof">' + (c.photo ? '<img src="' + esc(c.photo) + '" width="56" height="56" alt="" loading="lazy">' : '') +
       '<b>' + esc(c.name || 'Клієнт') + '</b><small>' + esc(c.provider === 'telegram' ? (c.username ? '@' + c.username : 'Telegram') : c.provider === 'phone' ? c.phone : c.email) + '</small>' +
       '<form id="pf" style="clear:both;padding-top:12px">' +
-      '<div class="field"><label>Імʼя</label><input name="name" value="' + esc(c.name) + '"></div>' +
-      '<div class="field"><label>Телефон</label><input name="phone" type="tel" value="' + esc(c.phone) + '" placeholder="+380…"></div>' +
-      '<div class="field"><label>Місто й відділення Нової Пошти</label><input name="city" value="' + esc(c.city) + '"></div>' +
-      '<div class="field"><label>Компанія й ЄДРПОУ (для рахунку)</label><input name="company" value="' + esc(c.company) + '"></div>' +
+      '<div class="field"><label for="pf-name">Імʼя</label><input id="pf-name" name="name" value="' + esc(c.name) + '"></div>' +
+      '<div class="field"><label for="pf-phone">Телефон</label><input id="pf-phone" name="phone" type="tel" value="' + esc(c.phone) + '" placeholder="+380…"></div>' +
+      '<div class="field"><label for="pf-city">Місто й відділення Нової Пошти</label><input id="pf-city" name="city" value="' + esc(c.city) + '"></div>' +
+      '<div class="field"><label for="pf-company">Компанія й ЄДРПОУ (для рахунку)</label><input id="pf-company" name="company" value="' + esc(c.company) + '"></div>' +
       '<div class="row"><button class="btn" type="submit">Зберегти</button><button class="btn ghost" type="button" id="lo">Вийти</button>' +
       (c.admin ? '<a class="btn ghost" href="/kabinet/admin">Облік замовлень</a>' : '') + '</div><p class="acc-wait" id="pfm"></p></form></div>' +
       '<div><h2 style="font-size:var(--fs-h3);margin:0 0 12px">Мої замовлення</h2><div id="ol"><p class="acc-wait">Завантажуємо…</p></div>' +

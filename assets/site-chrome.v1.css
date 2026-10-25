@@ -128,3 +128,10 @@ html.tg .sch-nav,html.tg .sch-lang,html.tg .sch-tel,html.tg .sch-cta,html.tg .sc
 @media(prefers-reduced-motion:reduce){.sch *,.scf *{transition:none!important}}
 
 .mbar img{width:32px;height:32px;flex:none}
+/* кнопки замість div/span у лайтбоксах і стрічках фото (a11y): без браузерних стилів кнопки */
+button#lb-close,button.lb-arr,button#sdlb-close,button.proj-row-thumb,button.strip-item,button.sp-tog{-webkit-appearance:none;appearance:none;border:0;margin:0;font-family:inherit;color:inherit;text-align:inherit;cursor:pointer}
+button#lb-close,button.lb-arr,button#sdlb-close,button.strip-item,button.sp-tog{background:none}
+button#lb-close,button.lb-arr,button#sdlb-close{color:#fff}
+button.proj-row-thumb,button.strip-item{display:block;padding:0;font-size:inherit;line-height:inherit}
+button.sp-tog{padding:0;font:inherit;letter-spacing:inherit;text-transform:inherit}
+.proj-row-scroll:focus-visible,.strip:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}

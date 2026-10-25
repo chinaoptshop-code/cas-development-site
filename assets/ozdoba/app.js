@@ -88,7 +88,7 @@ function setTab(t){
     document.getElementById('view'+k[0].toUpperCase()+k.slice(1)).hidden = (k!==t);
     document.getElementById('tab'+k[0].toUpperCase()+k.slice(1)).setAttribute('aria-pressed', k===t);
   });
-  render();
+  render(); syncMore();
 }
 
 function toggleSearch(){
@@ -104,7 +104,7 @@ function cardHTML(i){
   const s=SS(i), from = s ? 'від ' : '';
   return `<article class="card" onclick="openItem(${i.id})">
     <div class="tile${i.img?' ph':''}">${pic(i)}
-      <button class="heart ${fav.has(i.id)?'on':''}" data-fav="${i.id}" onclick="event.stopPropagation();toggleFav(${i.id})" aria-label="В обране">
+      <button type="button" class="heart ${fav.has(i.id)?'on':''}" data-fav="${i.id}" onclick="event.stopPropagation();toggleFav(${i.id})" aria-label="В обране" aria-pressed="${fav.has(i.id)}">
         <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.7A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.3C19 15.4 12 20 12 20z"/></svg></button>
     </div>
     <div class="body">
@@ -114,18 +114,53 @@ function cardHTML(i){
       <div class="pr">${i.price==null?'Ціна за запитом':`${from}${money(minP(i))} <small>/ ${i.unit}</small>`}</div>
     </div></article>`;
 }
-function renderGrid(){
+/* Сітка рендериться частинами по CHUNK карток: перші 24 вже є в HTML (tools/products/build.py), решту
+   дорендерюємо, коли користувач підходить до кінця сітки (IntersectionObserver, у простої — requestIdleCallback),
+   або кнопкою «Показати ще». Так головний потік не блокується відмальовуванням усіх 235 карток. */
+const CHUNK = 24;
+let LIST = [], shown = 0, moreIO = null;
+function gridList(){
   let list = pool();
   if(cat!=='Усе') list = list.filter(i=>i.cat===cat);
   if(query) list = list.filter(i=>(i.name+' '+i.sub+' '+i.en+' '+i.desc).toLowerCase().includes(query));
   const s=document.getElementById('sort').value;
   const ord={A:0,B:1,C:2};
-  list=[...list].sort((a,b)=>
+  return [...list].sort((a,b)=>
     s==='asc'? (minP(a)??1e12)-(minP(b)??1e12) : s==='desc'? (minP(b)??-1)-(minP(a)??-1) :
     s==='az'?  a.name.localeCompare(b.name,'uk') : (ord[a.prio]-ord[b.prio])||((minP(b)??0)-(minP(a)??0)));
-  document.getElementById('cnt').textContent = list.length ? `${list.length} позицій` : '';
-  document.getElementById('grid').innerHTML = list.length ? list.map(cardHTML).join('')
-    : `<div class="empty" style="grid-column:1/-1">Нічого не знайшли. Спробуйте інше слово або зніміть фільтр приміщення.</div>`;
+}
+function renderGrid(){
+  LIST = gridList(); shown = 0;
+  document.getElementById('cnt').textContent = LIST.length ? `${LIST.length} позицій` : '';
+  const g=document.getElementById('grid');
+  if(!LIST.length){ g.innerHTML=`<div class="empty" style="grid-column:1/-1">Нічого не знайшли. Спробуйте інше слово або зніміть фільтр приміщення.</div>`; syncMore(); return; }
+  g.innerHTML=''; showMore();
+}
+function showMore(){
+  const next=LIST.slice(shown, shown+CHUNK);
+  if(next.length) document.getElementById('grid').insertAdjacentHTML('beforeend', next.map(cardHTML).join(''));
+  shown+=next.length; syncMore();
+}
+let moreQ=0;
+function queueMore(){ // наступна порція — у вільний час браузера
+  if(moreQ||shown>=LIST.length) return; moreQ=1;
+  const go=()=>{ moreQ=0; showMore(); };
+  window.requestIdleCallback ? requestIdleCallback(go,{timeout:600}) : setTimeout(go,60);
+}
+function syncMore(){
+  const b=document.getElementById('more'); if(!b) return;
+  const left=LIST.length-shown;
+  b.hidden = left<=0 || tab!=='catalog';
+  b.textContent = `Показати ще ${Math.min(left,CHUNK)} з ${left}`;
+  if(!moreIO && 'IntersectionObserver' in window){
+    moreIO=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)) queueMore(); },{rootMargin:'0px 0px 900px 0px'});
+    moreIO.observe(b);
+  }
+  if(moreIO && !b.hidden){ moreIO.unobserve(b); moreIO.observe(b); } // повторна перевірка після нової порції
+}
+function syncHearts(id){
+  document.querySelectorAll(id==null?'[data-fav]':`[data-fav="${id}"]`).forEach(b=>{
+    const on=fav.has(+b.dataset.fav); b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); });
 }
 function renderFav(){
   const list = IT.filter(i=>fav.has(i.id));
@@ -134,7 +169,7 @@ function renderFav(){
 }
 function toggleFav(id){
   fav.has(id) ? fav.delete(id) : fav.add(id);
-  haptic(); syncBadges(); renderGrid(); renderFav();
+  haptic(); syncBadges(); syncHearts(id); if(tab==='fav') renderFav();
   toast(fav.has(id) ? 'Додано в обране' : 'Прибрано з обраного');
 }
 
@@ -146,7 +181,7 @@ function renderBundles(){
   const list = venue==='all' ? BU : BU.filter(b=>b.venue===venue);
   document.getElementById('blist').innerHTML = list.length ? list.map(b=>{
     const t=bundleTotal(b), d=Math.round(t*.92);
-    return `<article class="bcard" onclick="openBundle('${b.id}')">
+    return `<article class="bcard" role="button" tabindex="0" aria-label="${esc(b.name)}" onclick="openBundle('${b.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBundle('${b.id}')}">
       <div class="art">${ART[b.art]||''}</div>
       <div class="info"><h3>${b.name}</h3><div class="note">${b.note}</div>
         <div class="pr">${money(d)} <s>${money(t)}</s></div></div></article>`;
@@ -160,8 +195,8 @@ function renderBundle(id){
   const b=BU.find(x=>x.id===id);
   const t=bundleTotal(b,bq), d=Math.round(t*.92);
   const n0=b.rows.filter((r,n)=>bq[n]>0).length;
-  document.getElementById('bundleBody').innerHTML = `
-    <div class="sh-head"><h2>${b.name}</h2><button class="x" onclick="closeAll()">✕</button></div>
+  paint('bundleBody', `
+    <div class="sh-head"><h2>${b.name}</h2><button type="button" class="x" onclick="closeAll()" aria-label="Закрити">✕</button></div>
     <p class="desc">${b.note} Кількості — орієнтовні, міняйте під свій обʼєкт: позиція з нулем у комплект не піде.</p>
     ${b.rows.map((r,n)=>{ const i=byId(r.id); return `
       <div class="ci">
@@ -169,12 +204,12 @@ function renderBundle(id){
         <div class="info"><b>${i.name}</b><em>${money(price(i,0,defS(i)))} / ${i.unit}</em></div>
         <div class="right">
           <span class="s">${money(price(i,0,defS(i))*(bq[n]||0))}</span>
-          <div class="qty sm"><button onclick="bqSet('${id}',${n},-1)">−</button><span>${bq[n]||0}</span><button onclick="bqSet('${id}',${n},1)">+</button></div>
+          <div class="qty sm"><button type="button" onclick="bqSet('${id}',${n},-1)" aria-label="Менше: ${esc(i.name)}">−</button><span aria-live="polite">${bq[n]||0}</span><button type="button" onclick="bqSet('${id}',${n},1)" aria-label="Більше: ${esc(i.name)}">+</button></div>
         </div></div>`; }).join('')}
     <div class="sum"><span>${n0} позицій, без знижки</span><span>${money(t)}</span></div>
     <div class="sum disc"><span>Знижка за комплект, 8%</span><span>−${money(t-d)}</span></div>
     <div class="sum total"><span>Разом</span><span>${money(d)}</span></div>
-    <button class="btn" onclick="addBundle('${id}')">Додати комплект у кошик</button>`;
+    <button class="btn" onclick="addBundle('${id}')">Додати комплект у кошик</button>`);
 }
 function bqSet(id,n,dd){ bq[n]=Math.max(0,(bq[n]||0)+dd); renderBundle(id); }
 function addBundle(id){
@@ -194,8 +229,8 @@ function openItem(id){ cur=byId(id); if(!cur) return; curC=0; curS=defS(cur); cu
 function renderItem(){
   const i=cur, cs=CS(i), s=SS(i);
   const p=price(i,curC,curS), part=Math.ceil(p*curQ/4);
-  document.getElementById('itemBody').innerHTML = `
-    <div class="sh-head"><h2>${i.name}</h2><button class="x" onclick="closeAll()">✕</button></div>
+  paint('itemBody', `
+    <div class="sh-head"><h2>${i.name}</h2><button type="button" class="x" onclick="closeAll()" aria-label="Закрити">✕</button></div>
     <div class="it-grid"><div class="it-media">
     ${gallery(i, cs[curC][1])}
     </div><div class="it-info">
@@ -209,23 +244,23 @@ function renderItem(){
     <div class="opts">${s.map((x,n)=>`<button class="opt" aria-pressed="${n===curS}" onclick="setS(${n})">${x[0]}${i.price==null?'':`<small>${money(price(i,curC,n))}</small>`}</button>`).join('')}</div>` : ''}
 
     <p class="lbl">Кількість</p>
-    <div class="qty"><button onclick="setQ(-1)">−</button><span>${curQ}</span><button onclick="setQ(1)">+</button></div>
+    <div class="qty"><button type="button" onclick="setQ(-1)" aria-label="Менше">−</button><span aria-live="polite">${curQ}</span><button type="button" onclick="setQ(1)" aria-label="Більше">+</button></div>
 
     ${p==null?`<div class="priceline"><span class="big">Ціна за запитом</span></div><p class="hint">Додайте в кошик — менеджер назве ціну й строк разом з рештою позицій.</p>`
     :`<div class="priceline"><span class="big">${money(p*curQ)}</span>${curQ>1?`<span class="per">${money(p)} × ${curQ}</span>`:''}</div>
     <p class="hint">Або ${money(part)} × 4 платежі без переплати</p>`}
     <div class="btn2">
-      <button class="btn ghost" style="flex:0 0 56px" onclick="toggleFav(${i.id});renderItem()" aria-label="В обране">${fav.has(i.id)?'♥':'♡'}</button>
+      <button type="button" class="btn ghost" style="flex:0 0 56px" onclick="toggleFav(${i.id});renderItem()" aria-label="В обране" aria-pressed="${fav.has(i.id)}">${fav.has(i.id)?'♥':'♡'}</button>
       <button class="btn" style="flex:1" onclick="addToCart()">Додати в кошик</button>
     </div>
     ${i.specs&&i.specs.length?`<p class="lbl" style="margin-top:20px">Характеристики</p><dl class="specs">${i.specs.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`:''}
     <button class="share" onclick="shareItem()">Поділитися позицією</button>
-    </div></div>`;
+    </div></div>`);
 }
 function gallery(i, col){
   const all = i.img ? [i.img, ...(i.imgs||[])] : [];
   if (!all.length) return `<div class="hero-art"><span style="color:${vis(col)};display:contents">${pic(i,true)}</span></div>`;
-  return `<div class="hero-art ph${all.length>1?' multi':''}" id="gal">${all.map(b=>`<figure>${pic(i,true,b)}</figure>`).join('')}</div>`
+  return `<div class="hero-art ph${all.length>1?' multi':''}" id="gal" tabindex="0" role="region" aria-label="Фото товару">${all.map(b=>`<figure>${pic(i,true,b)}</figure>`).join('')}</div>`
     + (all.length>1 ? `<div class="dots">${all.map((b,n)=>`<button aria-label="Фото ${n+1}" onclick="galGo(${n})"></button>`).join('')}</div>` : '');
 }
 function galGo(n){ const g=document.getElementById('gal'); if(g) g.scrollTo({left:g.clientWidth*n,behavior:'smooth'}); }
@@ -268,22 +303,22 @@ function openCart(){ renderCart(); open('sheetCart'); }
 function renderCart(){
   const el=document.getElementById('cartBody');
   if(!cart.length){
-    el.innerHTML=`<div class="sh-head"><h2>Кошик</h2><button class="x" onclick="closeAll()">✕</button></div>
+    paint('cartBody', `<div class="sh-head"><h2>Кошик</h2><button type="button" class="x" onclick="closeAll()" aria-label="Закрити">✕</button></div>
       <div class="empty">Порожньо. Оберіть позиції в каталозі або візьміть готовий комплект під ваш тип приміщення.</div>
-      <button class="btn ghost" onclick="closeAll();setTab('bundles')">Дивитись комплекти</button>`;
+      <button class="btn ghost" onclick="closeAll();setTab('bundles')">Дивитись комплекти</button>`);
     return;
   }
-  el.innerHTML=`
-    <div class="sh-head"><h2>Кошик</h2><button class="x" onclick="closeAll()">✕</button></div>
+  paint('cartBody', `
+    <div class="sh-head"><h2>Кошик</h2><button type="button" class="x" onclick="closeAll()" aria-label="Закрити">✕</button></div>
     ${cart.map((c,n)=>{ const i=byId(c.id), s=SS(i);
       return `<div class="ci">
         <div class="art${i.img?' ph':''}"><span style="color:${vis(CS(i)[c.ci][1])};display:contents">${pic(i)}</span></div>
         <div class="info"><b>${i.name}</b><em>${CS(i)[c.ci][0]}${s?' · '+s[c.si][0]:''} · ${money(price(i,c.ci,c.si))}/${i.unit}</em>
-          <div class="qty sm" style="margin-top:6px"><button onclick="cq(${n},-1)">−</button><span>${c.qty}</span><button onclick="cq(${n},1)">+</button></div></div>
+          <div class="qty sm" style="margin-top:6px"><button type="button" onclick="cq(${n},-1)" aria-label="Менше: ${esc(i.name)}">−</button><span aria-live="polite">${c.qty}</span><button type="button" onclick="cq(${n},1)" aria-label="Більше: ${esc(i.name)}">+</button></div></div>
         <div class="right"><span class="s">${money(lineSum(c))}</span><button class="rm" onclick="rm(${n})">Прибрати</button></div>
       </div>`; }).join('')}
     <div class="promo">
-      <input id="promoIn" placeholder="Промокод" value="${promo?promo.code:''}">
+      <input id="promoIn" placeholder="Промокод" aria-label="Промокод" value="${promo?promo.code:''}">
       <button onclick="applyPromo()">Застосувати</button>
     </div>
     <div class="sum"><span>Товари, ${count()} шт</span><span>${money(goods())}</span></div>
@@ -294,7 +329,7 @@ function renderCart(){
     ${belowMin()?`<p class="note-honest" style="color:var(--glow)">Мінімальне замовлення — від ${money(MIN_ORDER)} (≈ $500): ми комплектуємо обʼєкти й не продаємо поштучно. Додайте позиції або візьміть готовий комплект.</p>
     <button class="btn ghost" onclick="closeAll();setTab('bundles')">Дивитись комплекти</button>`
     :`<button class="btn" onclick="openPay()">Оформити замовлення</button>`}
-    <button class="btn ghost" onclick="copyEstimate()">Скопіювати кошторис</button>`;
+    <button class="btn ghost" onclick="copyEstimate()">Скопіювати кошторис</button>`);
 }
 function cq(n,d){ cart[n].qty+=d; if(cart[n].qty<1) cart.splice(n,1); haptic(); syncBadges(); renderCart(); }
 function rm(n){ cart.splice(n,1); haptic(); syncBadges(); renderCart(); }
@@ -324,12 +359,12 @@ function renderPay(){
   const g=grand(), part=Math.ceil(g/4);
   const u=tg&&tg.initDataUnsafe&&tg.initDataUnsafe.user;
   const nm=esc(acct&&acct.name||(u?[u.first_name,u.last_name].filter(Boolean).join(' '):''));
-  document.getElementById('payBody').innerHTML=`
-    <div class="sh-head"><h2>Оформлення заявки</h2><button class="x" onclick="closeAll()">✕</button></div>
-    <div class="field"><label>Ім'я та прізвище</label><input id="fName" value="${nm}" placeholder="Ваше імʼя та прізвище"></div>
-    <div class="field"><label>Телефон</label><input id="fPhone" type="tel" inputmode="tel" placeholder="+380 __ ___ __ __" value="${esc(acct&&acct.phone||'')}"></div>
-    <div class="field"><label>Місто і відділення Нової Пошти</label><input id="fNp" placeholder="Київ, відділення №12" value="${esc(acct&&acct.city||'')}"></div>
-    ${payMethod==='invoice'?`<div class="field"><label>Назва компанії та ЄДРПОУ</label><input id="fEdr" placeholder="ТОВ «Приклад», 12345678" value="${esc(acct&&acct.company||'')}"></div>`:''}
+  paint('payBody', `
+    <div class="sh-head"><h2>Оформлення заявки</h2><button type="button" class="x" onclick="closeAll()" aria-label="Закрити">✕</button></div>
+    <div class="field"><label for="fName">Ім'я та прізвище</label><input id="fName" autocomplete="name" value="${nm}" placeholder="Ваше імʼя та прізвище"></div>
+    <div class="field"><label for="fPhone">Телефон</label><input id="fPhone" autocomplete="tel" type="tel" inputmode="tel" placeholder="+380 __ ___ __ __" value="${esc(acct&&acct.phone||'')}"></div>
+    <div class="field"><label for="fNp">Місто і відділення Нової Пошти</label><input id="fNp" placeholder="Київ, відділення №12" value="${esc(acct&&acct.city||'')}"></div>
+    ${payMethod==='invoice'?`<div class="field"><label for="fEdr">Назва компанії та ЄДРПОУ</label><input id="fEdr" placeholder="ТОВ «Приклад», 12345678" value="${esc(acct&&acct.company||'')}"></div>`:''}
 
     <p class="lbl" style="margin-top:18px">Як вам зручніше оплатити</p>
     <button class="pay" aria-pressed="${payMethod==='card'}" onclick="setPay('card')"><span class="dot"></span>
@@ -345,7 +380,7 @@ function renderPay(){
     <div class="sum total"><span>Орієнтовна сума</span><span>${money(g)}</span></div>
     <button class="btn" id="sendBtn" onclick="pay()">Надіслати заявку</button>
     <p class="note-honest">Це заявка, а не оплата: гроші зараз не списуються. Менеджер зателефонує, підтвердить наявність,
-      ціну й строк поставки і надішле рахунок або посилання на оплату.</p>`;
+      ціну й строк поставки і надішле рахунок або посилання на оплату.</p>`);
 }
 function setPay(m){ payMethod=m; renderPay(); }
 async function pay(){
@@ -392,6 +427,14 @@ async function pay(){
 function reset(){ cart=[]; promo=null; syncBadges(); closeAll(); render(); }
 
 /* ===================== службове ===================== */
+/* перемальовування вмісту шторки без втрати фокусу (кнопки −/+, колір, розмір, спосіб оплати) */
+const FOCS='a[href],button:not([disabled]),input,select,textarea,[tabindex]:not([tabindex="-1"])';
+function paint(id, html){
+  const box=document.getElementById(id), a=document.activeElement;
+  const idx = box && a && box.contains(a) ? [...box.querySelectorAll(FOCS)].indexOf(a) : -1;
+  box.innerHTML=html;
+  if(idx>=0){ const f=box.querySelectorAll(FOCS); const t=f[Math.min(idx,f.length-1)]; if(t) t.focus({preventScroll:true}); }
+}
 function open(id){ document.getElementById('scrim').classList.add('open');
   document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
 function close(id){ document.getElementById(id).classList.remove('open'); }
@@ -419,10 +462,14 @@ function boot(d){ account();
   try{ JSON.parse(localStorage.getItem('ozd-cart')||'[]').forEach(c=>{ if(byId(c.id)) cart.push(c); });
        JSON.parse(localStorage.getItem('ozd-fav')||'[]').forEach(id=>{ if(byId(id)) fav.add(id); }); }catch(e){}
   renderVenues(); renderChips();
-  // картки каталогу вже є в HTML (tools/products/build.py) — не перемальовуємо їх без потреби
+  // перші картки каталогу вже є в HTML (tools/products/build.py) — не перемальовуємо їх, лише дорендерюємо решту
   const g=document.getElementById('grid');
-  if(g.querySelectorAll('.card').length===IT.length){ g.querySelectorAll('[data-fav]').forEach(b=>b.classList.toggle('on',fav.has(+b.dataset.fav)));
-    document.getElementById('tabCatalog').setAttribute('aria-pressed','true'); }
+  const pre=[...g.querySelectorAll('.card [data-fav]')].map(b=>+b.dataset.fav);
+  LIST=gridList();
+  if(pre.length && pre.every((id,n)=>LIST[n]&&LIST[n].id===id)){
+    shown=pre.length; syncHearts(); syncMore();
+    document.getElementById('tabCatalog').setAttribute('aria-pressed','true');
+  }
   else setTab('catalog');
   syncBadges();
   const m=location.hash.match(/^#p-(\d+)$/); if(m) openItem(+m[1]);

@@ -38,6 +38,8 @@ FACTS = {
     'uk': [('150+', 'реалізованих проєктів'), ('2016', 'працюємо з цього року'), ('12 міс.', 'гарантія на роботи'), ('Китай', 'меблі й матеріали напряму')],
     'ru': [('150+', 'реализованных проектов'), ('2016', 'работаем с этого года'), ('12 мес.', 'гарантия на работы'), ('Китай', 'мебель и материалы напрямую')],
 }
+# мінімальний вузол організації замість голого посилання на #business (повні дані LocalBusiness — на головній, той самий @id)
+ORG = {'@type': 'Organization', '@id': B + '#business', 'name': 'CAS Development', 'url': B, 'logo': B + 'apple-touch-icon.png'}
 e = lambda s: html.escape(s, quote=False)
 a = lambda s: html.escape(s, quote=True)
 
@@ -134,7 +136,7 @@ def ld(p):
         return json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False)
     g = [{'@type': 'Service', 'name': p['service'], 'serviceType': p['service'],
           'areaServed': [{'@type': 'City', 'name': t['city']}, {'@type': 'AdministrativeArea', 'name': t['region']}],
-          'provider': {'@id': B + '#business'}, 'url': u},
+          'provider': ORG, 'url': u},
          {'@type': 'BreadcrumbList', 'itemListElement': [
              {'@type': 'ListItem', 'position': 1, 'name': t['home'], 'item': B.rstrip('/') + t['home_url']},
              {'@type': 'ListItem', 'position': 2, 'name': t['svc'], 'item': B.rstrip('/') + t['svc_url']},

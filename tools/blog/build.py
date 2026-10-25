@@ -221,7 +221,7 @@ def build_article(a, arts):
         s = s.replace('<link rel="canonical"', alts + '<link rel="canonical"', 1)
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Article", "headline": a['title'], "description": a['description'], "datePublished": a['date'], "dateModified": a.get('modified', a['date']),
-         "author": {"@type": "Organization", "name": "CAS Development", "url": B}, "publisher": {"@id": B + "#business"},
+         "author": {"@type": "Organization", "name": "CAS Development", "url": B}, "publisher": {"@type": "Organization", "@id": B + "#business", "name": "CAS Development", "url": B, "logo": B + "apple-touch-icon.png"},
          "image": og_url, "mainEntityOfPage": url, "inLanguage": lang},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": t['home'], "item": B + t['home_url'].lstrip('/')},

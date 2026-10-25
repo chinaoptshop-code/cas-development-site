@@ -32,6 +32,9 @@ def wrap(tag):
             a = avif(u)
             if not a: return None
             parts.append(' '.join([a] + d))
+        # srcset лише з x-дескрипторами (напр. "x-400.webp 2x"): src — це кандидат 1x, у <source> його теж треба дати
+        if all(len(p.split()) > 1 and p.split()[1].endswith('x') for p in parts) and not any(p.split()[1] == '1x' for p in parts):
+            parts.insert(0, avif(src.group(1)))
         av = ', '.join(parts)
     else:
         av = avif(src.group(1))
