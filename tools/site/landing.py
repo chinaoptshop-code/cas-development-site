@@ -12,7 +12,10 @@
    "cards": [["Заголовок", ["пункт", ...]], ...], "about": [["h2", ["абзац", ...]], ...],
    "gallery": [["img/p/<id>-900.webp", "Назва проєкту", "alt (необовʼязково)"], ...], "steps": [["Крок", "опис"], ...],
    "faq": [["питання", "відповідь"], ...], "rel": [["/url", "назва"], ...], "extra": "<html після hero>",
-   "guarantees": true (необовʼязково — блок «Гарантії» після «Як працюємо»; для лендингів ремонту/під ключ)}
+   "guarantees": true (необовʼязково — блок «Гарантії» після «Як працюємо»; для лендингів ремонту/під ключ),
+   "parent": ["/url", "назва"] (необовʼязково — проміжна ланка хлібних крихт замість «Послуги», напр. хаб ЖК),
+   "budget": {"area": 100, "h2": "...", "p": "..."} (необовʼязково — орієнтир «площа × ставка» з data-est після about),
+   "near": ["h2", [["/url", "назва"], ...]] (необовʼязково — блок посилань перед «Інші послуги»)}
 Сторінка частих питань (/pytannya): замість cards/steps/faq — "groups": [{"id": "ceny", "h2": "...",
    "faq": [[q, a], ...], "links": [["/url", "назва"], ...]}, ...]; price необовʼязковий.
 Після збірки запустіть tools/blog/build.py (блоки «Статті по темі» і sitemap).
@@ -207,6 +210,33 @@ def section_html(lang, x):
     raise ValueError(f'невідома секція {k}')
 
 
+# орієнтир бюджету «площа × базова ставка» (як картка кейсу в /styleguide/): ui.py перевіряє data-est
+BUDGET = {
+    'uk': dict(pre='від', rows=[('Ремонт під ключ', 550), ('Дизайн-проєкт інтерʼєру', 30), ('Меблювання й комплектація', 250)],
+               note='Орієнтир за базовими ставками студії (дизайн — мінімум $2 500); точна сума — після заміру й кошторису. '
+                    'Якщо ремонт робить CAS, підсумок не відхиляється від кошторису більше ніж на ±5%.'),
+    'ru': dict(pre='от', rows=[('Ремонт под ключ', 550), ('Дизайн-проект интерьера', 30), ('Меблировка и комплектация', 250)],
+               note='Ориентир по базовым ставкам студии (дизайн — минимум $2 500); точная сумма — после замера и сметы. '
+                    'Если ремонт делает CAS, итог не отклоняется от сметы больше чем на ±5%.'),
+}
+
+
+def money(n):
+    return '$' + f'{n:,}'.replace(',', ' ')
+
+
+def budget_html(lang, b):
+    d, ar = BUDGET[lang], int(b['area'])
+    li = []
+    for name, r in d['rows']:
+        v = max(ar * r, 2500) if r == 30 else ar * r
+        li.append(f'<li>{e(name)} · <span style="white-space:nowrap">{ar} м² × {money(r)}/м²</span> — '
+                  f'<b data-est="{ar}x{r}" style="color:var(--ac);white-space:nowrap">{d["pre"]} {money(v)}</b></li>')
+    return ('<section><div class="w txt">' + f'<h2>{e(b["h2"])}</h2>' + (f'<p>{e(b["p"])}</p>' if b.get('p') else '')
+            + '<div class="card" style="margin:0"><ul style="list-style:none;padding:0;margin:0 0 6px">' + ''.join(li) + '</ul>'
+            + f'<p style="margin:0"><small>{e(d["note"])}</small></p></div></div></section>\n')
+
+
 def hero_html(p):
     t = L[p['lang']]
     if p.get('slug') == 'index':
@@ -214,7 +244,8 @@ def hero_html(p):
     elif p.get('groups') or p.get('sections'):
         crumbs = f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / {e(p["h1"])}</div>\n'
     else:
-        crumbs = f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / <a href="{t["svc_url"]}">{t["svc"]}</a> / {e(p["h1"])}</div>\n'
+        mid = p.get('parent') or [t['svc_url'], t['svc']]
+        crumbs = f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / <a href="{mid[0]}">{e(mid[1])}</a> / {e(p["h1"])}</div>\n'
     btn2 = p.get('btn2') or ['tel:+380978667755', '+380 97 866 77 55']
     return [crumbs, '<div class="w hero">', f'  <h1>{e(p["h1"])}</h1>'] + ([f'  <div class="price">{e(p["price"])}</div>'] if p.get('price') else []) + [f'  <p>{e(p["lead"])}</p>',
             '  <div class="btns">',
@@ -244,6 +275,8 @@ def main_html(p):
           '</div></section>\n']
     for h, ps in p.get('about', []):
         o.append(f'<section><div class="w txt"><h2>{e(h)}</h2>' + ''.join(f'<p>{e(x)}</p>' for x in ps) + '</div></section>\n')
+    if p.get('budget'):
+        o.append(budget_html(p['lang'], p['budget']))
     if p.get('gallery'):
         o += gallery_html(p['lang'], p['gallery'])
     o += ['<section><div class="w">', f'  <h2>{t["steps"]}</h2>',
@@ -251,7 +284,10 @@ def main_html(p):
           '</div></section>\n'] + ([guarantees_html(p['lang'])] if p.get('guarantees') else []) + [
           '<section><div class="w">', f'  <h2>{t["faq"]}</h2>',
           '  ' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(x)}</p></details>' for q, x in p['faq']),
-          '</div></section>\n',
+          '</div></section>\n'] + ([
+          '<section><div class="w">', f'  <h2>{e(p["near"][0])}</h2>',
+          '  <div class="rel">' + ''.join(f'<a href="{u}">{e(n)}</a>' for u, n in p['near'][1]) + '</div>',
+          '</div></section>\n'] if p.get('near') else []) + [
           '<section><div class="w">', f'  <h2>{t["rel"]}</h2>',
           '  <div class="rel">' + ''.join(f'<a href="{u}">{e(n)}</a>' for u, n in p['rel']) + '</div>',
           '</div></section>\n']
@@ -275,7 +311,7 @@ def ld(p):
         g = [{'@type': 'Service', 'name': p['service'], 'serviceType': p['service'], 'areaServed': area_served(lang), 'provider': ORG, 'url': u},
              {'@type': 'BreadcrumbList', 'itemListElement': [
                  {'@type': 'ListItem', 'position': 1, 'name': t['home'], 'item': home},
-                 {'@type': 'ListItem', 'position': 2, 'name': t['svc'], 'item': B.rstrip('/') + t['svc_url']},
+                 {'@type': 'ListItem', 'position': 2, 'name': (p.get('parent') or [0, t['svc']])[1], 'item': B.rstrip('/') + (p.get('parent') or [t['svc_url']])[0]},
                  {'@type': 'ListItem', 'position': 3, 'name': p['h1'], 'item': u}]}, page]
     qa = faqs(p)
     if qa:

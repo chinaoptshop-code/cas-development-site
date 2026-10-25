@@ -48,7 +48,7 @@ def analyse(rel):
     js = ''.join(m for m in re.findall(r'<script(?![^>]*application/ld\+json)[^>]*>(.*?)</script>', s, re.S))
     body = re.sub(r'<(script|style)[^>]*>.*?</\1>', '', s, flags=re.S)
     # орієнтири «площа × базова ставка» (картка «Коротко про проєкт»): перевіряємо розрахунок, а не список цін
-    est = re.findall(r'<b data-est="(\d+)x(\d+)"[^>]*>від \$([\d ]+)</b>', body)
+    est = re.findall(r'<b data-est="(\d+)x(\d+)"[^>]*>(?:від|от) \$([\d ]+)</b>', body)
     est_bad = [f'{a}x{r}=${v}' for a, r, v in est if int(r) not in EST_RATES or int(v.replace(' ', '')) != (max(int(a) * 30, 2500) if r == '30' else int(a) * int(r))]
     text = re.sub(r'<[^>]+>', ' ', re.sub(r'<b data-est="[^"]*"[^>]*>[^<]*</b>', ' ', body))
     imgs = [i for i in re.findall(r'<img\b[^>]*>', s) if not re.search(r'id="(lb-img|lbi|plb-img|sdlb-img)"', i)]

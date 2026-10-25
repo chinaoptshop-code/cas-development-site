@@ -66,7 +66,8 @@ T = {
         svc='Усі послуги студії', svc_label='Послуги студії',
         groups=[
             ('Ремонт', [('/remont-kvartyr-kyiv', 'Ремонт квартир'), ('/remont-pid-klyuch-kyiv', 'Ремонт під ключ'),
-                        ('/remont-novobudovy-kyiv', 'Ремонт у новобудові'), ('/remontna-bryhada-kyiv', 'Ремонтна бригада'),
+                        ('/remont-novobudovy-kyiv', 'Ремонт у новобудові'), ('/remont-kvartyr-zhk-kyiv', 'Ремонт у ЖК Києва'),
+                        ('/remontna-bryhada-kyiv', 'Ремонтна бригада'),
                         ('/remont-vannoi-kimnaty-kyiv', 'Ремонт ванної'), ('/remont-kukhni-kyiv', 'Ремонт кухні'),
                         ('/remont-ofisu-pid-klyuch-kyiv', 'Ремонт офісу'), ('/remont-komertsiinykh-prymishchen-kyiv', 'Комерційні приміщення'),
                         ('/biznes-pid-kliuch-kyiv', 'Бізнес під ключ')]),
@@ -90,7 +91,8 @@ T = {
         svc='Все услуги студии', svc_label='Услуги студии',
         groups=[
             ('Ремонт', [('/ru/remont-kvartir-kiev', 'Ремонт квартир'), ('/ru/remont-pod-klyuch-kiev', 'Ремонт под ключ'),
-                        ('/ru/remont-v-novostroyke-kiev', 'Ремонт в новостройке'), ('/ru/remontnaya-brigada-kiev', 'Ремонтная бригада'),
+                        ('/ru/remont-v-novostroyke-kiev', 'Ремонт в новостройке'), ('/ru/remont-kvartir-zhk-kiev', 'Ремонт в ЖК Киева'),
+                        ('/ru/remontnaya-brigada-kiev', 'Ремонтная бригада'),
                         ('/ru/remont-vannoy-kiev', 'Ремонт ванной'), ('/ru/remont-kuhni-kiev', 'Ремонт кухни'),
                         ('/ru/remont-ofisa-kiev', 'Ремонт офиса'), ('/ru/remont-kommercheskih-pomeshcheniy-kiev', 'Коммерческие помещения'),
                         ('/ru/biznes-pod-klyuch-kiev', 'Бизнес под ключ')]),
