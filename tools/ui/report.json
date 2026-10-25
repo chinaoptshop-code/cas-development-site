@@ -2,12 +2,12 @@
  {
   "page": "about.html",
   "kind": "main",
-  "html_kb": 122.6,
-  "gzip_kb": 31.8,
+  "html_kb": 89.5,
+  "gzip_kb": 21.9,
   "css_kb": 48.7,
-  "js_kb": 39.7,
+  "js_kb": 7.1,
   "font_sizes": 22,
-  "tags": 398,
+  "tags": 392,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -30,7 +30,7 @@
   "prices_bad": [],
   "facts_bad": [],
   "est_bad": [],
-  "webhook_copies": 1
+  "webhook_copies": 0
  },
  {
   "page": "ar/about.html",
@@ -2306,12 +2306,12 @@
  {
   "page": "contact.html",
   "kind": "main",
-  "html_kb": 133.0,
-  "gzip_kb": 34.5,
-  "css_kb": 58.0,
-  "js_kb": 45.8,
-  "font_sizes": 24,
-  "tags": 355,
+  "html_kb": 90.6,
+  "gzip_kb": 21.8,
+  "css_kb": 55.7,
+  "js_kb": 7.1,
+  "font_sizes": 23,
+  "tags": 336,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -2334,7 +2334,7 @@
   "prices_bad": [],
   "facts_bad": [],
   "est_bad": [],
-  "webhook_copies": 2
+  "webhook_copies": 0
  },
  {
   "page": "de/badsanierung.html",
@@ -6136,10 +6136,10 @@
  {
   "page": "index.html",
   "kind": "main",
-  "html_kb": 164.8,
-  "gzip_kb": 38.3,
+  "html_kb": 133.0,
+  "gzip_kb": 28.8,
   "css_kb": 53.7,
-  "js_kb": 46.3,
+  "js_kb": 14.5,
   "font_sizes": 27,
   "tags": 657,
   "img_no_size": 0,
@@ -6164,7 +6164,7 @@
   "prices_bad": [],
   "facts_bad": [],
   "est_bad": [],
-  "webhook_copies": 1
+  "webhook_copies": 0
  },
  {
   "page": "kabinet.html",
@@ -17738,10 +17738,10 @@
  {
   "page": "portfolio.html",
   "kind": "main",
-  "html_kb": 256.8,
-  "gzip_kb": 43.5,
+  "html_kb": 225.6,
+  "gzip_kb": 34.1,
   "css_kb": 48.4,
-  "js_kb": 43.0,
+  "js_kb": 11.9,
   "font_sizes": 26,
   "tags": 1754,
   "img_no_size": 0,
@@ -17766,7 +17766,7 @@
   "prices_bad": [],
   "facts_bad": [],
   "est_bad": [],
-  "webhook_copies": 1
+  "webhook_copies": 0
  },
  {
   "page": "proektuvannia-budynku-kyiv.html",
@@ -21294,12 +21294,12 @@
  {
   "page": "services.html",
   "kind": "main",
-  "html_kb": 120.7,
-  "gzip_kb": 30.3,
+  "html_kb": 87.6,
+  "gzip_kb": 21.3,
   "css_kb": 45.1,
-  "js_kb": 39.7,
+  "js_kb": 7.1,
   "font_sizes": 21,
-  "tags": 452,
+  "tags": 446,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -21322,7 +21322,7 @@
   "prices_bad": [],
   "facts_bad": [],
   "est_bad": [],
-  "webhook_copies": 1
+  "webhook_copies": 0
  },
  {
   "page": "zh/about.html",
