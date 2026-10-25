@@ -26,7 +26,7 @@ body{padding-top:var(--sch-h)}
 .sch-nav a:hover::after,.sch-nav a[aria-current]::after{transform:scaleX(1)}
 .sch-act{flex:none;display:flex;align-items:center;gap:10px;margin-left:auto}
 .sch-tools{display:flex;align-items:center;gap:8px}
-.sch-lang{display:none;align-items:center;font-size:.75rem;font-weight:600;letter-spacing:.14em}
+.sch-lang{display:flex;align-items:center;font-size:.75rem;font-weight:600;letter-spacing:.14em}
 .sch-lang a,.sch-lang span{display:inline-flex;align-items:center;justify-content:center;min-width:34px;min-height:40px;padding:0 4px;text-decoration:none}
 .sch-lang a{color:var(--c-mu)}.sch-lang a:hover{color:var(--c-tx)}
 .sch-lang span{color:var(--c-ac)}
@@ -172,3 +172,7 @@ html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{le
 [dir=rtl] .scf summary::after{float:none}
 [dir=rtl] a[href^="tel:"],[dir=rtl] .sch-logo{unicode-bidi:isolate;direction:ltr}
 @media(min-width:1080px){[dir=rtl] .sch-act{margin-right:0}}
+
+/* мова на телефоні: компактна кнопка «UA ▾» поруч із бургером */
+@media(max-width:639px){.sch-ld>summary{border:1px solid var(--c-ln);padding:0 10px;margin-inline-end:4px}.sch-ld-m{position:fixed;top:64px;inset-inline-end:12px;max-height:calc(100vh - 80px);overflow:auto}}
+@media(max-width:399px){.sch--tools .sch-lang{display:none}}
