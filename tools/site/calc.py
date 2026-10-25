@@ -33,6 +33,30 @@ T.update({
                furn='Einrichtung und Ausstattung (ab $250/m²)', res='Ungefähr ab', note='Das ist die Untergrenze nach unseren Basissätzen. Die genaue Summe nennen wir nach Aufmaß und Kostenvoranschlag; renovieren wir selbst, bleibt die Endsumme innerhalb von ±5 % des Kostenvoranschlags.',
                send='Genauen Kostenvoranschlag anfordern', msg='Ergebnis aus dem Rechner', d='Designprojekt', f='Einrichtung', frm='ab', m2='m²'),
 })
+RATES.update({
+    'es': [('remont', 'Reforma de piso llave en mano', 550), ('office', 'Reforma de oficina', 350),
+           ('house', 'Construcción de casa (estructura)', 600), ('housekey', 'Casa llave en mano con acabados', 1100)],
+    'fr': [('remont', 'Rénovation d’appartement clé en main', 550), ('office', 'Rénovation de bureau', 350),
+           ('house', 'Construction de maison (gros œuvre)', 600), ('housekey', 'Maison clé en main avec finitions', 1100)],
+    'zh': [('remont', '公寓交钥匙装修', 550), ('office', '办公室装修', 350),
+           ('house', '住宅建造（主体结构）', 600), ('housekey', '含精装的交钥匙住宅', 1100)],
+    'ar': [('remont', 'تجديد شقة بنظام تسليم المفتاح', 550), ('office', 'تجديد مكتب', 350),
+           ('house', 'بناء منزل (هيكل)', 600), ('housekey', 'منزل متكامل مع التشطيب', 1100)],
+})
+T.update({
+    'es': dict(h='Calculadora de costes', kind='Qué necesita', area='Superficie, m²', design='Proyecto de diseño de interiores (desde $30/m², mínimo $2 500)',
+               furn='Amueblamiento y equipamiento (desde $250/m²)', res='Aproximadamente desde', note='Es el límite inferior según nuestras tarifas base. El importe exacto lo damos tras la medición y el presupuesto; si la obra la hacemos nosotros, el total no sale del ±5% del presupuesto.',
+               send='Pedir presupuesto exacto', msg='Cálculo de la calculadora', d='Proyecto de diseño', f='Amueblamiento', frm='desde', m2='m²'),
+    'fr': dict(h='Calculateur de coût', kind='Votre besoin', area='Surface, m²', design='Projet de design intérieur (dès $30/m², minimum $2 500)',
+               furn='Ameublement et équipement (dès $250/m²)', res='À partir d’environ', note='C’est la borne basse selon nos tarifs de base. Le montant exact est donné après métré et devis ; si nous réalisons les travaux, le total ne sort pas de ±5 % du devis.',
+               send='Obtenir un devis précis', msg='Calcul du calculateur', d='Projet de design', f='Ameublement', frm='dès', m2='m²'),
+    'zh': dict(h='费用计算器', kind='您的需求', area='面积（m²）', design='室内设计方案（$30/m² 起，最低 $2 500）',
+               furn='家具与配套（$250/m² 起）', res='预估起价', note='这是按我们基础单价计算的下限。准确金额在测量并出具预算后确定；若由我们施工，最终费用与预算偏差不超过 ±5%。',
+               send='获取准确预算', msg='计算器估算结果', d='设计方案', f='家具配套', frm='起价', m2='m²'),
+    'ar': dict(h='حاسبة التكلفة', kind='ما تحتاجه', area='المساحة، م²', design='مشروع التصميم الداخلي (من $30/م²، بحد أدنى $2 500)',
+               furn='التأثيث والتجهيز (من $250/م²)', res='تقريبًا من', note='هذا هو الحد الأدنى وفق أسعارنا الأساسية. نحدد المبلغ الدقيق بعد القياس وتقدير التكلفة؛ وإذا نفّذنا الأعمال لا يخرج الإجمالي عن ±5% من التقدير.',
+               send='احصل على تقدير دقيق', msg='حساب من الحاسبة', d='مشروع التصميم', f='التأثيث', frm='من', m2='م²'),
+})
 for _l, _t in (('uk', ('Дизайн-проєкт', 'Меблювання', 'від')), ('ru', ('Дизайн-проект', 'Меблировка', 'от'))):
     T[_l].update(d=_t[0], f=_t[1], frm=_t[2], m2='м²')
 
