@@ -223,7 +223,8 @@ def hero_images():
 
 def collect():
     files, skipped = [], []
-    for d in ("img", "img/p"):
+    for d in ("img", "img/p", "img/uploads"):  # img/uploads — фото з адмінки (/kabinet/admin → Медіа, Блог)
+        if not os.path.isdir(os.path.join(ROOT, d)): continue
         for f in sorted(os.listdir(os.path.join(ROOT, d))):
             p = f"{d}/{f}"
             full = os.path.join(ROOT, p)

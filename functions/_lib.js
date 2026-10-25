@@ -2,9 +2,17 @@
 // Секрети середовища: TELEGRAM_BOT_TOKEN (бот для входу), GOOGLE_CLIENT_ID, SESSION_SECRET (необовʼязково —
 // інакше генерується й зберігається в D1), ADMIN_TG_IDS / ADMIN_EMAILS (через кому), LEAD_WEBHOOK (n8n).
 
+// Воронка CRM (migrations/0004_crm.sql). Порядок ключів = порядок колонок канбану в /kabinet/admin.
 export const STATUSES = {
-  new: 'Нове', confirmed: 'Підтверджено', awaiting_payment: 'Очікує оплату', paid: 'Оплачено',
-  ordered: 'Замовлено на фабриці', shipping: 'У дорозі', delivered: 'Доставлено', cancelled: 'Скасовано',
+  new: 'Нове', in_work: 'В роботі', quote_sent: 'КП надіслано', paid: 'Оплачено',
+  production: 'У виробництві', shipping: 'В дорозі', delivered: 'Доставлено', cancelled: 'Скасовано',
+};
+// старі статуси (до 0004) — лише для підписів, нові замовлення їх не отримують
+export const LEGACY_STATUSES = { confirmed: 'Підтверджено', awaiting_payment: 'Очікує оплату', ordered: 'Замовлено на фабриці' };
+export const statusLabel = s => STATUSES[s] || LEGACY_STATUSES[s] || s;
+export const requireAdmin = async (request, env) => {
+  const c = await currentClient(request, env);
+  return isAdmin(env, c) ? c : null;
 };
 
 export const json = (data, status = 200, headers = {}) =>
@@ -127,4 +135,13 @@ export async function partnerCode(env, v) {
   const code = normCode(v);
   if (!code) return null;
   return env.DB.prepare('SELECT code, name, discount FROM partner_codes WHERE code = ? AND active = 1').bind(code).first();
+}
+
+// Номер заявки CRM (orders.kind = 'lead'): LD-РРММ-0001
+export async function nextLeadNumber(env) {
+  const d = new Date();
+  const pre = `LD-${String(d.getUTCFullYear()).slice(2)}${String(d.getUTCMonth() + 1).padStart(2, '0')}-`;
+  const row = await env.DB.prepare('SELECT number FROM orders WHERE number LIKE ? ORDER BY id DESC LIMIT 1').bind(pre + '%').first();
+  const n = row ? parseInt(row.number.slice(pre.length), 10) || 0 : 0;
+  return pre + String(n + 1).padStart(4, '0');
 }
