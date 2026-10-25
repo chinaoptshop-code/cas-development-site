@@ -45,7 +45,7 @@ def analyse(rel):
     s = open(os.path.join(ROOT, rel), encoding='utf-8').read()
     k = kind(rel, s)
     css = ''.join(re.findall(r'<style[^>]*>(.*?)</style>', s, re.S))
-    js = ''.join(m for m in re.findall(r'<script(?![^>]*application/ld\+json)[^>]*>(.*?)</script>', s, re.S))
+    js = ''.join(m for m in re.findall(r'<script(?![^>]*(?:application/ld\+json|speculationrules))[^>]*>(.*?)</script>', s, re.S))
     body = re.sub(r'<(script|style)[^>]*>.*?</\1>', '', s, flags=re.S).replace(' ', ' ')  # nbsp у цінах — chrome.nbsp_prices
     # орієнтири «площа × базова ставка» (картка «Коротко про проєкт»): перевіряємо розрахунок, а не список цін
     est = re.findall(r'<b data-est="(\d+)x(\d+)"[^>]*>(?:від|от) \$([\d ]+)</b>', body)

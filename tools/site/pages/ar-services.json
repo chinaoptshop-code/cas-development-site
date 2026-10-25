@@ -118,6 +118,66 @@
    "h2": "خدمات أخرى",
    "items": [
     [
+     "/ar/apartment-design",
+     "التصميم الداخلي للشقق"
+    ],
+    [
+     "/ar/bathroom-renovation",
+     "تجديد الحمّام"
+    ],
+    [
+     "/ar/commercial-renovation",
+     "تجديد المساحات التجارية"
+    ],
+    [
+     "/ar/house-design",
+     "تصميم المنزل الخاص"
+    ],
+    [
+     "/ar/house-renovation",
+     "تجديد المنزل بنظام تسليم المفتاح"
+    ],
+    [
+     "/ar/interior-designer",
+     "خدمات المصمم الداخلي"
+    ],
+    [
+     "/ar/kitchen-renovation",
+     "تجديد المطبخ"
+    ],
+    [
+     "/ar/landscape-design",
+     "تنسيق الحدائق"
+    ],
+    [
+     "/ar/new-build-renovation",
+     "تشطيب شقة في مبنى جديد"
+    ],
+    [
+     "/ar/office-renovation",
+     "تجديد المكاتب بنظام تسليم المفتاح"
+    ],
+    [
+     "/ar/renovation-calculator",
+     "حاسبة تكلفة التجديد"
+    ],
+    [
+     "/ar/renovation-crew",
+     "فريق التجديد"
+    ],
+    [
+     "/ar/resort-turnkey",
+     "تصميم المنتجعات السياحية"
+    ],
+    [
+     "/ar/restaurant-design",
+     "تصميم المطاعم والمقاهي"
+    ],
+    [
+     "/ar/turnkey-procurement",
+     "تجهيز المشاريع بنظام تسليم المفتاح"
+    ],
+    [
      "/ar/about",
      "عن الاستوديو"
     ],

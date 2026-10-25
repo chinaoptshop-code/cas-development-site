@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+# API кабінету й форм — не сторінки
+Disallow: /api/
 
 Sitemap: https://cas-develop.com/sitemap.xml

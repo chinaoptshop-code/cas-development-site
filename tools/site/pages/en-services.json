@@ -2,7 +2,7 @@
  "slug": "services",
  "lang": "en",
  "service": "All services",
- "title": "Services — design, renovation, construction, furnishing | CAS Development",
+ "title": "Services in Kyiv: design, renovation, construction | CAS Development",
  "description": "CAS Development services: interior design from $30/m², renovation from $550/m², offices from $350/m², construction from $600/m², furnishing from $250/m².",
  "h1": "Studio services: from idea to finished space",
  "lead": "Order the full cycle or a single stage. Every service is backed by one team of architects, designers, engineers and our own renovation crews.",
@@ -117,6 +117,18 @@
    "t": "rel",
    "h2": "Other services",
    "items": [
+    [
+     "/en/general-contractor-kyiv",
+     "General contracting"
+    ],
+    [
+     "/en/hotel-design-fit-out",
+     "Hotel design and fit-out"
+    ],
+    [
+     "/en/restaurant-fit-out",
+     "Restaurant and café fit-out"
+    ],
     [
      "/en/new-build-renovation",
      "New-build renovation"

@@ -395,7 +395,7 @@ def check(p):
         m = m.strip().rstrip(',.')
         if m not in ok and not re.fullmatch(r'\$\d{2,3}[ ,.]\d{3}', m):  # розрахунок площа × ставка
             errs.append('ціна ' + m)
-    if len(p['description']) > 165: errs.append('description > 165')
+    if len(p['description']) > 160: errs.append('description > 160')
     if p['lang'] not in L: errs.append('мова без словника: ' + p['lang'])
     for g in p.get('gallery', []) + [i for x in p.get('sections', []) if x['t'] == 'gallery' for i in x['items']]:
         src = g[0]

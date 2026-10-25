@@ -370,10 +370,14 @@ def build_index(lang, items, langs):
         s = s.replace('<link rel="canonical"', i18n.alt_links({l: blog_path(l) for l in langs}) + '<link rel="canonical"', 1)
     s = s.replace('<link rel="canonical"', f'<meta property="og:title" content="{t["blog_title"]} | CAS Development">\n<meta property="og:description" content="{t["blog_desc"]}">\n<meta property="og:url" content="{url}">\n<link rel="canonical"', 1)
     pre = blog_path(lang) + '/'
-    ld = {"@context": "https://schema.org", "@type": "Blog", "name": t.get('blog_name') or f"{t['blog']} CAS Development", "url": url,
-          "inLanguage": i18n.meta(lang)['hreflang'],
-          "blogPost": [{"@type": "BlogPosting", "headline": x['title'], "url": B + pre.lstrip('/') + x['slug'], "datePublished": x['date']} for x in items]}
-    s = re.sub(r'<script type="application/ld\+json">.*?</script>', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>', s, count=1, flags=re.S)
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "Blog", "name": t.get('blog_name') or f"{t['blog']} CAS Development", "url": url,
+         "inLanguage": i18n.meta(lang)['hreflang'],
+         "blogPost": [{"@type": "BlogPosting", "headline": x['title'], "url": B + pre.lstrip('/') + x['slug'], "datePublished": x['date']} for x in items]},
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": t['home'], "item": B + t['home_url'].lstrip('/')},
+            {"@type": "ListItem", "position": 2, "name": t['blog'], "item": url}]}]}
+    s = re.sub(r'<script type="application/ld\+json">.*?</script>', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False, separators=(',', ':')) + '</script>', s, count=1, flags=re.S)
     s = re.sub(r'<div class="w crumbs">.*?</div>', f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / {t["blog"]}</div>', s, count=1, flags=re.S)
     s = re.sub(r'<div class="w hero"><h1>.*?</div>', f'<div class="w hero"><h1>{t["blog_h1"]}</h1><p>{t["blog_lead"]}</p></div>', s, count=1, flags=re.S)
     cards = ''.join(f'<a href="{pre}{x["slug"]}"><h2>{esc(x["title"])}</h2><p>{esc(x["description"])}</p></a>' for x in items)

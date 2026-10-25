@@ -2,7 +2,7 @@
  "slug": "servicios",
  "lang": "es",
  "service": "Todos los servicios",
- "title": "Servicios — diseño, reformas, construcción y amueblamiento | CAS Development",
+ "title": "Servicios en Kiev: diseño, reformas, construcción, muebles | CAS Development",
  "description": "Servicios de CAS Development: diseño desde $30/m², reformas desde $550/m², oficinas desde $350/m², construcción desde $600/m², amueblamiento desde $250/m².",
  "h1": "Servicios del estudio: de la idea al espacio terminado",
  "lead": "Contrate el ciclo completo o una sola etapa. Detrás de cada servicio hay un mismo equipo de arquitectos, diseñadores, ingenieros y cuadrillas propias.",
@@ -117,6 +117,66 @@
    "t": "rel",
    "h2": "Otros servicios",
    "items": [
+    [
+     "/es/calculadora-reforma",
+     "Calculadora del coste de reforma"
+    ],
+    [
+     "/es/complejo-turistico-llave-en-mano",
+     "Proyecto de complejo turístico"
+    ],
+    [
+     "/es/disenador-interiores",
+     "Servicios de diseñador de interiores"
+    ],
+    [
+     "/es/diseno-interiores-piso",
+     "Diseño de interiores de pisos"
+    ],
+    [
+     "/es/diseno-restaurantes-cafeterias",
+     "Diseño de restaurantes y cafeterías"
+    ],
+    [
+     "/es/equipamiento-llave-en-mano",
+     "Equipamiento de proyectos llave en mano"
+    ],
+    [
+     "/es/equipo-de-reformas",
+     "Equipo de reformas"
+    ],
+    [
+     "/es/paisajismo",
+     "Paisajismo"
+    ],
+    [
+     "/es/proyecto-de-casa",
+     "Proyecto de casa unifamiliar"
+    ],
+    [
+     "/es/reforma-bano",
+     "Reforma de baño"
+    ],
+    [
+     "/es/reforma-casa-llave-en-mano",
+     "Reforma de casa llave en mano"
+    ],
+    [
+     "/es/reforma-cocina",
+     "Reforma de cocina"
+    ],
+    [
+     "/es/reforma-locales-comerciales",
+     "Reforma de locales comerciales"
+    ],
+    [
+     "/es/reforma-obra-nueva",
+     "Reforma de piso de obra nueva"
+    ],
+    [
+     "/es/reforma-oficinas",
+     "Reforma de oficinas llave en mano"
+    ],
     [
      "/es/sobre-nosotros",
      "Sobre el estudio"

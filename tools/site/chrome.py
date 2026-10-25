@@ -14,7 +14,7 @@ products/build.py, shop/pages.py, gen-landing.py) викликають apply() �
 Мова сторінки — з <html lang>, перемикач мови веде на hreflang-пару (якщо є) або на головну мови.
 Іконки Оздоби/кабінету (пошук, обране, #accLink, кошик) зберігаються в слоті .sch-tools — їх обслуговує app.js.
 """
-import glob, os, re, sys
+import glob, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 B = 'https://cas-develop.com'
@@ -471,6 +471,50 @@ def clarity(s):
     return CLARITY_RX.sub(lambda m: CLARITY, s)
 
 
+# Миттєві переходи: Speculation Rules — prefetch внутрішньої сторінки при наведенні/натисканні (eagerness moderate:
+# ~200 мс hover на десктопі, pointerdown на телефоні). Без prerender: він виконує JS (аналітика) і важчий для телефонів.
+# Кабінет, API, URL з ?параметрами і посилання з target/download/data-no-prefetch — не чіпаємо.
+# Браузери без підтримки (Safari, Firefox) ігнорують. Разом з @view-transition у site-chrome.v1.css перехід — без «білого кадру».
+_SPEC_WHERE = {'and': [
+    {'href_matches': '/*'},
+    {'not': {'href_matches': ['/kabinet*', '/api/*', '/*\\?*']}},
+    {'not': {'selector_matches': '[target],[download],[data-no-prefetch]'}}]}
+SPEC = ('<script type="speculationrules">'
+        + json.dumps({'prefetch': [{'where': _SPEC_WHERE, 'eagerness': 'moderate'}]}, separators=(',', ':'))
+        + '</script>')
+SPEC_RX = re.compile(r'<script type="speculationrules">.*?</script>\n?', re.S)
+# LCP-фото (img з fetchpriority="high"): preload у <head>, щоб браузер почав вантажити його разом зі шрифтами,
+# не чекаючи розбору інлайн-стилів. Атрибути (srcset/sizes) — ті самі, що в <img>, тож подвійного завантаження немає.
+LCP_RX = re.compile(r'<link rel="preload" as="image" data-lcp[^>]*>\n?')
+
+
+def _attr(tag, name):
+    m = re.search(r'\s' + name + r'="([^"]*)"', tag)
+    return m.group(1) if m else None
+
+
+def head_extras(s):
+    """Speculation Rules і preload LCP-фото одразу після <meta name="viewport"> (ідемпотентно)."""
+    i = s.find('</head>')
+    if i < 0:
+        return s
+    head, body = s[:i], s[i:]
+    head = LCP_RX.sub('', SPEC_RX.sub('', head))
+    add = SPEC + '\n'
+    vis = re.sub(r'<script\b.*?</script>|<template\b.*?</template>|<noscript\b.*?</noscript>', '', body, flags=re.S)
+    m = re.search(r'<img\b[^>]*\bfetchpriority="high"[^>]*>', vis)
+    if m and _attr(m.group(0), 'src') and '${' not in m.group(0):
+        t = m.group(0)
+        link = f'<link rel="preload" as="image" data-lcp href="{_attr(t, "src")}"'
+        if _attr(t, 'srcset'):
+            link += f' imagesrcset="{_attr(t, "srcset")}"' + (f' imagesizes="{_attr(t, "sizes")}"' if _attr(t, 'sizes') else '')
+        add += link + '>\n'
+    vp = re.search(r'<meta name="viewport"[^>]*>\n', head) or re.search(r'<head\b[^>]*>\n', head)
+    if not vp:
+        return s
+    return head[:vp.end()] + add + head[vp.end():] + body
+
+
 def apply(s, rel):
     """Ставить єдину шапку/футер у HTML сторінки `rel` (шлях від кореня сайту). Ідемпотентно."""
     rel = rel.replace(os.sep, '/')
@@ -551,6 +595,10 @@ def apply(s, rel):
     s = fonts_block(s)
     s = nbsp_prices(s, lang)
     s = i18n.fonts(s, lang)  # preload: кирилиця лише для uk/ru, латиниця — en/es/…, zh/ar — без preload
+    if not rel.startswith('kabinet'):  # кабінет і адмінка — застосунок за логіном: без prefetch/prerender
+        s = head_extras(s)  # Speculation Rules (миттєві переходи) і preload LCP-фото
+    else:
+        s = LCP_RX.sub('', SPEC_RX.sub('', s))
     # підключення стилів і скрипта
     if CSS_TAG not in s:
         s = s.replace('</head>', CSS_TAG + '\n</head>', 1)

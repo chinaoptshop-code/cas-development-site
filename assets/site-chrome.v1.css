@@ -238,3 +238,23 @@ html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{le
 @media print{.mo-rv{opacity:1!important;translate:none!important}.mq-btn{display:none}}
 /* суми й діапазони без переносу (chrome.nbsp_prices) */
 .nw{white-space:nowrap}
+/* ── Переходи між сторінками (View Transitions, cross-document): шапка, логотип і нижня панель звʼязку (.mbar)
+   стоять на місці (власні view-transition-name), уміст сторінки (<main> і футер — знімок вʼюпорту root) мʼяко змінюється: стара сторінка
+   згасає, нова зʼявляється з невеликим зсувом угору. Знімок root — лише видима частина, тож перехід зі скроленої
+   сторінки не «їде». Chrome/Edge 126+, Safari 18.2+; Firefox і старі браузери — звичайний перехід без анімації.
+   prefers-reduced-motion: reduce — переходи вимкнено повністю (@view-transition лише для no-preference). */
+@media (prefers-reduced-motion:no-preference){
+@view-transition{navigation:auto}
+.sch{view-transition-name:vt-head}
+.sch-in>.sch-logo{view-transition-name:vt-logo}
+.mbar{view-transition-name:vt-bar}
+/* відкрите мобільне меню не «перетікає» в шапку нової сторінки — тоді вся сторінка просто згасає */
+.sch:has(.sch-burger[aria-expanded="true"]),.sch:has(.sch-burger[aria-expanded="true"]) .sch-in>.sch-logo{view-transition-name:none}
+::view-transition-group(vt-head),::view-transition-group(vt-logo),::view-transition-group(vt-bar){animation-duration:0s}
+::view-transition-old(vt-head),::view-transition-new(vt-head),::view-transition-old(vt-logo),::view-transition-new(vt-logo),::view-transition-old(vt-bar),::view-transition-new(vt-bar){animation:none}
+::view-transition-old(vt-head),::view-transition-old(vt-logo),::view-transition-old(vt-bar){display:none}
+::view-transition-old(root){animation:vt-out .16s ease-out both}
+::view-transition-new(root){animation:vt-in .32s cubic-bezier(.2,.7,.2,1) both}
+@keyframes vt-out{to{opacity:0}}
+@keyframes vt-in{from{opacity:0;transform:translateY(12px)}}
+}
