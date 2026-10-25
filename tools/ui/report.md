@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 606 (MAIN 5, LAND 361, інші 240). HTML разом 31677 КБ, з них інлайн CSS 12104 КБ і JS 4378 КБ.
+Сторінок: 610 (MAIN 5, LAND 361, інші 244). HTML разом 31880 КБ, з них інлайн CSS 12226 КБ і JS 4403 КБ.
 
 ## Проблеми
 
@@ -9,8 +9,8 @@
 
 ## Токени
 
-- `--mu`: {'#6A6153': 5, '#938c84': 586, '#87807C': 1}
-- `--bg2`: {'#100e0c': 586, '#EDEBE4': 5}
+- `--mu`: {'#6A6153': 5, '#938c84': 590, '#87807C': 1}
+- `--bg2`: {'#100e0c': 590, '#EDEBE4': 5}
 - Копій адреси вебхука форми: 6 на 5 сторінках
 
 ## Сторінки
@@ -282,11 +282,11 @@
 | heneralnyi-pidriadnyk-kyiv.html | land | 54.2 | 14.6 | 13.7 | 7.0 | 6 | 418 |
 | ru/generalnyy-podryadchik-kiev.html | land | 54.1 | 14.7 | 13.7 | 7.0 | 6 | 418 |
 | blog/budynok-pid-kliuch-chy-korobka.html | land | 54.0 | 15.5 | 14.6 | 7.0 | 6 | 310 |
-| kabinet.html | other | 54.0 | 15.3 | 30.6 | 11.3 | 13 | 200 |
 | remont-premium-klasu-kyiv.html | land | 54.0 | 14.7 | 13.7 | 7.0 | 6 | 420 |
 | ru/remont-premium-klassa-kiev.html | land | 53.9 | 14.7 | 13.7 | 7.0 | 6 | 420 |
 | dyzain-interieru-budynku-kyiv.html | land | 53.3 | 14.5 | 13.7 | 7.0 | 6 | 422 |
 | ru/dizayn-interera-doma-kiev.html | land | 53.1 | 14.5 | 13.7 | 7.0 | 6 | 422 |
+| kabinet/proekty.html | other | 52.7 | 14.7 | 30.6 | 7.2 | 13 | 253 |
 | blog/shcho-vkhodyt-u-dyzain-proekt-interieru.html | land | 52.4 | 15.0 | 14.6 | 7.0 | 6 | 295 |
 | ru/remont-kvartir-zhk-kiev.html | land | 52.4 | 14.1 | 13.7 | 7.0 | 6 | 442 |
 | remont-kvartyr-zhk-kyiv.html | land | 52.3 | 14.1 | 13.7 | 7.0 | 6 | 442 |
@@ -314,10 +314,14 @@
 | blog/dyzain-malenkoi-kvartyry-zberihannia.html | land | 51.3 | 14.9 | 14.6 | 7.0 | 6 | 298 |
 | remont-kvartyry-zhk-greenville-na-pechersku.html | land | 51.3 | 14.0 | 13.7 | 7.0 | 6 | 389 |
 | dyzain-remont-kvartyry-pechersk.html | land | 51.2 | 14.1 | 13.7 | 7.0 | 6 | 408 |
+| kabinet/profil.html | other | 51.2 | 14.2 | 30.6 | 7.2 | 13 | 233 |
+| kabinet/zamovlennia.html | other | 51.2 | 14.2 | 30.6 | 7.2 | 13 | 233 |
 | ru/dizayn-interera-kiev.html | land | 51.2 | 13.9 | 13.7 | 7.0 | 6 | 393 |
 | ru/dizayn-remont-kvartiry-pechersk.html | land | 51.2 | 14.2 | 13.7 | 7.0 | 6 | 408 |
 | blog/komplektatsiia-kvartyry-pid-kliuch-poriadok-i-biudzhet.html | land | 51.1 | 14.6 | 14.6 | 7.0 | 6 | 284 |
 | blog/yak-vybraty-dyzainera-interieru.html | land | 51.1 | 14.7 | 14.6 | 7.0 | 6 | 304 |
+| kabinet.html | other | 51.1 | 14.2 | 30.6 | 7.2 | 13 | 232 |
+| kabinet/obrane.html | other | 51.1 | 14.2 | 30.6 | 7.2 | 13 | 233 |
 | komplektatsiia-pid-kliuch-kyiv.html | land | 51.0 | 13.8 | 13.7 | 7.0 | 6 | 370 |
 | remont-kvartyry-zhk-edeldorf-hills.html | land | 51.0 | 14.0 | 13.7 | 7.0 | 6 | 389 |
 | remont-kvartyry-zhk-linden-luxury-residences.html | land | 51.0 | 14.0 | 13.7 | 7.0 | 6 | 389 |

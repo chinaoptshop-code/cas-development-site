@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Сторінки кабінету: /kabinet (клієнт) і /kabinet/admin (менеджер). Шапка й стилі — з ozdoba.html.
+"""Сторінки кабінету: /kabinet, /kabinet/{zamovlennia,obrane,proekty,profil} (клієнт, tools/shop/kabinet_v2.py)
+і /kabinet/admin (менеджер). Шапка й стилі — з ozdoba.html.
 
   python3 tools/shop/pages.py
 """
@@ -37,57 +38,7 @@ CSS = """
 table.adm{width:100%;border-collapse:collapse;font-size:var(--fs-small)}table.adm td,table.adm th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
 """
 
-CLIENT = """<main class="acc">
-  <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / Кабінет</div>
-  <h1>Кабінет клієнта</h1>
-  <p class="lead">Ваші замовлення з Оздоби, статуси й дані для доставки. Вхід — через Telegram, Google або номер телефону, без паролів.</p>
-  <div id="acc"></div>
-</main>
-<script src="/assets/account.v1.js?v=__ACCV__" defer></script>
-<script>
-addEventListener('DOMContentLoaded', function () {
-  var A = CASAccount, box = document.getElementById('acc');
-  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
-  var money = function (n) { return n == null ? 'за запитом' : new Intl.NumberFormat('uk-UA').format(n) + ' ₴'; };
-  function guest() {
-    box.innerHTML = '<div class="acc-box"><h2>Увійти</h2><div id="login"></div></div>';
-    A.login(document.getElementById('login'), render);
-  }
-  function render(c) {
-    if (!c) return guest();
-    box.innerHTML = '<div class="acc-grid"><div class="acc-box acc-prof">' + (c.photo ? '<img src="' + esc(c.photo) + '" width="56" height="56" alt="" loading="lazy">' : '') +
-      '<b>' + esc(c.name || 'Клієнт') + '</b><small>' + esc(c.provider === 'telegram' ? (c.username ? '@' + c.username : 'Telegram') : c.provider === 'phone' ? c.phone : c.email) + '</small>' +
-      '<form id="pf" style="clear:both;padding-top:12px">' +
-      '<div class="field"><label for="pf-name">Імʼя</label><input id="pf-name" name="name" value="' + esc(c.name) + '"></div>' +
-      '<div class="field"><label for="pf-phone">Телефон</label><input id="pf-phone" name="phone" type="tel" value="' + esc(c.phone) + '" placeholder="+380…"></div>' +
-      '<div class="field"><label for="pf-city">Місто й відділення Нової Пошти</label><input id="pf-city" name="city" value="' + esc(c.city) + '"></div>' +
-      '<div class="field"><label for="pf-company">Компанія й ЄДРПОУ (для рахунку)</label><input id="pf-company" name="company" value="' + esc(c.company) + '"></div>' +
-      '<div class="row"><button class="btn" type="submit">Зберегти</button><button class="btn ghost" type="button" id="lo">Вийти</button>' +
-      (c.admin ? '<a class="btn ghost" href="/kabinet/admin">Облік замовлень</a>' : '') + '</div><p class="acc-wait" id="pfm"></p></form></div>' +
-      '<div><h2 style="font-size:var(--fs-h3);margin:0 0 12px">Мої замовлення</h2><div id="ol"><p class="acc-wait">Завантажуємо…</p></div>' +
-      '<p style="margin-top:16px"><a class="btn" href="/ozdoba">До каталогу</a></p></div></div>';
-    document.getElementById('lo').onclick = function () { A.logout().then(function () { render(null); }); };
-    document.getElementById('pf').onsubmit = function (e) {
-      e.preventDefault(); var f = e.target, m = document.getElementById('pfm');
-      A.api('/api/me', { method: 'PATCH', body: { name: f.name.value, phone: f.phone.value, city: f.city.value, company: f.company.value } })
-        .then(function () { m.textContent = 'Збережено'; }, function (er) { m.textContent = er.message; });
-    };
-    A.api('/api/orders').then(function (d) {
-      var ol = document.getElementById('ol');
-      if (!d.orders.length) { ol.innerHTML = '<p class="acc-wait">Замовлень ще немає. Додайте товари в кошик в Оздобі й оформіть заявку — вона з’явиться тут.</p>'; return; }
-      ol.innerHTML = d.orders.map(function (o) {
-        return '<div class="ord"><div class="ord-h"><b>' + esc(o.number) + '</b><span class="st">' + esc(o.status_label) + '</span><small style="color:var(--muted)">' + esc(o.created_at) + '</small></div><ul>' +
-          o.items.map(function (i) { return '<li>' + esc(i.name) + ' — ' + esc(i.color) + (i.size ? ', ' + esc(i.size) : '') + ' — ' + i.qty + ' ' + esc(i.unit) + ' × ' + money(i.price) + '</li>'; }).join('') +
-          '</ul>' + (o.discount ? '<p class="acc-wait">Знижка −' + o.discount_pct + '%: −' + money(o.discount) + '</p>' : '') +
-          '<div class="tot">Разом: ' + money(o.total) + (o.on_request ? ' + ' + o.on_request + ' поз. за запитом' : '') + '</div>' +
-          (o.manager_note ? '<p class="acc-wait">Менеджер: ' + esc(o.manager_note) + '</p>' : '') + '</div>';
-      }).join('');
-    });
-  }
-  A.me().then(render);
-});
-</script>
-"""
+# Клієнтські сторінки кабінету (v2, вкладки з окремими URL) — tools/shop/kabinet_v2.py.
 
 ADMIN = """<main class="acc">
   <div class="crumbs"><a href="/kabinet">Кабінет</a> / Облік</div>
@@ -198,5 +149,6 @@ def page(s, title, body, path):
 
 if __name__ == '__main__':
     sh = shell()
-    page(sh, 'Кабінет клієнта', CLIENT, 'kabinet')
+    import kabinet_v2
+    kabinet_v2.build(sh, page)
     page(sh, 'Облік замовлень', ADMIN, 'kabinet/admin')
