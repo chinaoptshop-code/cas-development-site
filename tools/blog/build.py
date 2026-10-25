@@ -32,7 +32,7 @@ import chrome  # єдина шапка/футер (tools/site/chrome.py)
 ART = os.path.join(ROOT, 'tools/blog/articles')
 B = 'https://cas-develop.com/'
 TPL_UK = 'tools/blog/template-uk.html'  # заморожена копія статті-шаблону (стаття сама збирається з JSON)
-PRICES_OK = ['$30', '$350', '$550', '$250', '$600', '$1 100', '$1100', '$50', '$2 500', '$2500']
+PRICES_OK = ['$30', '$350', '$550', '$250', '$600', '$1 100', '$1100', '$50', '$2 500', '$2500', '$500']  # $500 — мін. замовлення Оздоби
 MONTHS = {'uk': ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'],
           'ru': ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']}
 L = {
@@ -214,7 +214,9 @@ def build_article(a, arts):
     s = re.sub(r'<meta property="og:image" content="[^"]*">', f'<meta property="og:image" content="{og_url}">', s, count=1)
     s = re.sub(r'<meta name="twitter:image" content="[^"]*">', f'<meta name="twitter:image" content="{og_url}">', s, count=1)
     s = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*">\s*', '', s)
-    pair = next((p for p in arts if p['slug'] == a.get('pair')), None)
+    # пара за "pair" цієї статті або зворотна (пару вказано лише в статті іншою мовою)
+    pair = (next((p for p in arts if p['slug'] == a.get('pair') and p['lang'] != lang), None)
+            or next((p for p in arts if p.get('pair') == a['slug'] and p['lang'] != lang), None))
     if pair:
         uk_u, ru_u = (url, url_of(pair)) if lang == 'uk' else (url_of(pair), url)
         alts = f'<link rel="alternate" hreflang="uk" href="{uk_u}">\n<link rel="alternate" hreflang="ru" href="{ru_u}">\n<link rel="alternate" hreflang="x-default" href="{uk_u}">\n'
