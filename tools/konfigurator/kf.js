@@ -65,7 +65,9 @@
   // ── WebGL ─────────────────────────────────────────────────────────────
   var cv = $('#kfCv'), stage = $('#kfStage'), poster = $('#kfPoster');
   var gl = null, prog, U = {}, NT = 0, texCache = {}, room = {}, prevTex, ready = false, aniso;
-  try { gl = cv.getContext('webgl', { antialias: false, premultipliedAlpha: false, alpha: false, preserveDrawingBuffer: false }); } catch (e) {}
+  // WebGL створюємо не при завантаженні, а при першій взаємодії (boot() нижче): до того сцена = фото-постер,
+  // тож перший екран легкий (без компіляції шейдерів і розпакування масок на старті — TBT на слабких телефонах)
+  function getGL() { try { gl = cv.getContext('webgl', { antialias: false, premultipliedAlpha: false, alpha: false, preserveDrawingBuffer: false }); } catch (e) {} }
 
   var VS = 'attribute vec2 p;varying vec2 vUv;void main(){vUv=vec2(p.x*.5+.5,.5-p.y*.5);gl_Position=vec4(p,0.,1.);}';
   function fs(nt) {
@@ -590,19 +592,32 @@
     var r0 = st.room; readHash(); if (st.room !== r0) { var r1 = st.room; st.room = r0; setRoom(r1); } else change(function () {}, null);
   });
   if (location.hash === '#zayavka') setTimeout(openForm, 300);
-  if (gl) { try { initGL(); } catch (e) { gl = null; if (W.console) console.warn(e); } }
-  if (!gl) { stage.classList.add('kf-nogl'); var ng = $('#kfNoGl'); if (ng) { ng.textContent = TX.nogl; ng.hidden = false; } }
   layout();
-  loadRoom(st.room).then(function (o) {
-    room[st.room] = o;
-    if (!gl) { showPoster(); return; }
-    return ensureTex().then(function () {
-      ready = true; anim.eve = st.eve; layout(); draw();
-      stage.classList.add('kf-ready');
-      if (Object.keys(st.sel[st.room]).length) reveal(0.5, 0.5);
-      // фоном — інші кімнати й текстури стилів (коли браузер вільний)
-      var idle = W.requestIdleCallback || function (f) { return setTimeout(f, 1500); };
-      idle(function () { ROOMS.forEach(function (r) { if (r !== st.room) loadRoom(r).then(function (x) { room[r] = x; }); }); });
-    });
-  }).catch(function (e) { if (W.console) console.warn(e); });
+  var booted = false;
+  function boot() {
+    if (booted) return; booted = true;
+    BOOT_EV.forEach(function (e) { W.removeEventListener(e, onEv, true); });
+    getGL();
+    if (gl) { try { initGL(); } catch (e) { gl = null; if (W.console) console.warn(e); } }
+    if (!gl) { stage.classList.add('kf-nogl'); var ng = $('#kfNoGl'); if (ng) { ng.textContent = TX.nogl; ng.hidden = false; } }
+    roomCache = {}; room = {};  // кімнати, відкриті до старту WebGL, — заново з текстурами
+    layout();
+    loadRoom(st.room).then(function (o) {
+      room[st.room] = o;
+      if (!gl) { showPoster(); return; }
+      return ensureTex().then(function () {
+        ready = true; anim.eve = st.eve; layout(); draw();
+        stage.classList.add('kf-ready');
+        if (Object.keys(st.sel[st.room]).length) reveal(0.5, 0.5);
+        // фоном — інші кімнати й текстури стилів (коли браузер вільний)
+        var idle = W.requestIdleCallback || function (f) { return setTimeout(f, 1500); };
+        idle(function () { ROOMS.forEach(function (r) { if (r !== st.room) loadRoom(r).then(function (x) { room[r] = x; }); }); });
+      });
+    }).catch(function (e) { if (W.console) console.warn(e); });
+  }
+  var BOOT_EV = ['pointerdown', 'touchstart', 'keydown', 'wheel', 'scroll', 'focusin'];
+  function onEv(e) { if (e.type === 'scroll' && e.target !== d) return; boot(); }  // скрол стрічок свотчів (div) — не взаємодія
+  // з посилання з обраними матеріалами (#…) або не в стартовій кімнаті — одразу; інакше — з першим дотиком/скролом/клавішею
+  if (Object.keys(st.sel[st.room]).length || st.room !== 'living' || st.eve) boot();
+  else BOOT_EV.forEach(function (e) { W.addEventListener(e, onEv, { capture: true, passive: true }); });
 })();

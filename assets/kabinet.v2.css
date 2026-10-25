@@ -27,7 +27,7 @@
   .kb-tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;margin:0;border:0;border-top:1px solid var(--line);
     background:rgba(16,14,12,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
     padding:6px 4px calc(6px + env(safe-area-inset-bottom));gap:0;overflow:visible}
-  .kb-tabs a{flex:1 1 0;flex-direction:column;gap:3px;padding:6px 2px;border:0;margin:0;font-size:11px;min-width:0;border-radius:12px}
+  .kb-tabs a{flex:1 1 0;flex-direction:column;gap:3px;padding:6px 2px;border:0;margin:0;font-size:12px;min-width:0;border-radius:12px}
   .kb-tabs a span{overflow:hidden;text-overflow:ellipsis;max-width:100%}
   .kb-tabs svg{width:22px;height:22px}
   .kb-tabs a[aria-current=page]{background:rgba(191,145,72,.12);color:var(--glow)}
@@ -44,7 +44,7 @@
 .kb-card .kb-ch{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .kb-card .kb-ch h2{font-size:clamp(1.3rem,1.1rem + .6vw,1.6rem)}
 .kb-card.glow{background:radial-gradient(120% 140% at 100% 0,rgba(191,145,72,.16),transparent 55%),var(--surface)}
-.kb-eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);font-weight:700}
+.kb-eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);font-weight:700}
 .kb-big{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:clamp(2rem,1.6rem + 1.4vw,2.8rem);line-height:1;color:var(--glow)}
 
 /* поява карток */
@@ -111,7 +111,7 @@ a.kb-chip:hover{border-color:var(--brass)}
 .kb-prod .tx{padding:10px 12px 12px;display:grid;gap:4px;flex:1}
 .kb-prod .tx b{font-weight:600;font-size:var(--fs-small);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .kb-prod .tx span{color:var(--glow);font-size:var(--fs-small);font-weight:700}
-.kb-prod .tx small{font-size:11px}
+.kb-prod .tx small{font-size:12px}
 .kb-prod .x{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:rgba(8,7,9,.8);color:var(--glow);display:grid;place-items:center;cursor:pointer}
 .kb-prod .x svg{width:16px;height:16px;fill:var(--brass);stroke:var(--brass);stroke-width:1.8}
 .kb-thumbs{display:flex;gap:8px}
@@ -127,7 +127,7 @@ a.kb-chip:hover{border-color:var(--brass)}
 .kb-kit .ic{width:58px;height:46px;color:var(--brass);flex:none}
 .kb-kit .ic svg{width:100%;height:100%}
 .kb-kit b{display:block;font-size:var(--fs-small);line-height:1.3}
-.kb-kit small{font-size:11px}
+.kb-kit small{font-size:12px}
 
 /* менеджер */
 .kb-msg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}

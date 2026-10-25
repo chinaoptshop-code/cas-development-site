@@ -589,6 +589,8 @@ def apply(s, rel):
     s = fix_js(s)
     s = re.sub(r'(<style[^>]*>)(.*?)</style>', lambda m: m.group(1) + _nocursor(m.group(2)) + '</style>', s, flags=re.S)
     s = mbar_logos(s)
+    s = viewport(s)
+    s = mfix_min(s)
     s = clarity(s)
     s = skip_and_main(s, lang)
     s = versions(s)
@@ -609,6 +611,26 @@ def apply(s, rel):
     if JS_TAG not in s:
         s = s.replace('</body>', JS_TAG + '\n</body>', 1)
     return s
+
+
+# Один viewport на всі сторінки: viewport-fit=cover — сторінка на весь екран iPhone (Dynamic Island, home indicator,
+# альбомна орієнтація); відступи від вирізів дають env(safe-area-inset-*) у /assets/site-chrome.v1.css (шапка, футер,
+# нижня панель .mbar, шторки, лайтбокси, body padding-inline). Масштабування не забороняємо (доступність).
+VIEWPORT = '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
+VIEWPORT_RX = re.compile(r'<meta name="viewport" content="width=device-width,\s*initial-scale=1(?:\.0)?(?:,\s*viewport-fit=cover)?">')
+
+
+def viewport(s):
+    return VIEWPORT_RX.sub(VIEWPORT, s, count=1)
+
+
+MFIX_RX = re.compile(r'(<style id="m-fix">)(.*?)(</style>)', re.S)
+
+
+def mfix_min(s):
+    """Блок <style id="m-fix"> (нижня панель .mbar, однаковий на всіх сторінках): без CSS-коментарів і відступів —
+    ~150 байт менше на кожній сторінці (бюджет HTML у tools/ui/ui.py). Ідемпотентно."""
+    return MFIX_RX.sub(lambda m: m.group(1) + re.sub(r'\n[ \t]+', '\n', re.sub(r'[ \t]*/\*.*?\*/\n?', '', m.group(2), flags=re.S)) + m.group(3), s, count=1)
 
 
 def pages():

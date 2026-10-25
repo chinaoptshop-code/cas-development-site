@@ -1,24 +1,25 @@
-/* Шрифти latin-ext (pl: ą ć ę ł ń ś ź ż …): основні підмножини cyrillic/latin — інлайн <style id="cas-fonts"> (chrome.FONTS_CSS);
-   ці файли браузер вантажить лише для сторінок із такими літерами (unicode-range), uk/ru їх не тягнуть. OFL, /fonts/OFL-*.txt */
+/* Шапка, футер, Motion, пристрої, компактні блоки — UI-kit CAS. Опис і правила — /styleguide/ (noindex) і tools/site/chrome.py;
+   коментарі тут короткі: файл блокує рендер, кожен КБ — це FCP на мобільному */
+/* Шрифти latin-ext */
 @font-face{font-family:"Manrope";font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/manrope-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20B3, U+20B5-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20B3, U+20B5-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}@font-face{font-family:"Cormorant Garamond";font-style:italic;font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20B3, U+20B5-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
-/* Єдина шапка (.sch) і футер (.scf) сайту — UI-kit CAS. Розмітку генерує tools/site/chrome.py. */
-:root{--sch-h:64px}
+/* Єдина шапка */
+:root{--sch-h:calc(64px + env(safe-area-inset-top,0px));--ease-out:cubic-bezier(.2,.7,.2,1)}
 html{scroll-padding-top:calc(var(--sch-h) + 12px)}
 body{padding-top:var(--sch-h)}
 .sch,.scf{--c-bg:#080709;--c-bg2:#100e0c;--c-tx:#EDE8DF;--c-mu:#938c84;--c-ac:#BF9148;--c-ln:rgba(191,145,72,.2);--c-fs:var(--fs-small,.8125rem);
   font-family:"Manrope","Manrope Fallback",system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-align:left}
 .sch *,.sch *::before,.sch *::after,.scf *,.scf *::before,.scf *::after{box-sizing:border-box}
 
-/* ── «Перейти до змісту» (видиме при фокусі) ── */
+/* ── «Перейти до змісту» */
 .skip{position:fixed;left:12px;top:-80px;z-index:1000;padding:12px 18px;background:#BF9148;color:#14120f;font:600 .875rem/1.2 "Manrope","Manrope Fallback",system-ui,sans-serif;text-decoration:none;transition:top .15s}
 .skip:focus{top:10px;outline:2px solid #EDE8DF;outline-offset:2px}
 
 /* ── шапка ── */
-.sch{position:fixed;top:0;left:0;right:0;z-index:800;display:block;height:var(--sch-h);margin:0;padding:0;
+.sch{position:fixed;top:0;left:0;right:0;z-index:800;display:block;box-sizing:border-box;height:var(--sch-h);margin:0;padding:env(safe-area-inset-top,0px) 0 0;
   background:none;border-bottom:1px solid var(--c-ln);color:var(--c-tx)}
-/* фон з розмиттям — на псевдоелементі: backdrop-filter на самій шапці зробив би її блоком-контейнером для fixed-меню */
+/* фон з розмиттям */
 .sch::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(8,7,9,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);pointer-events:none}
-.sch-in{max-width:1280px;height:100%;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:12px}
+.sch-in{max-width:1280px;height:100%;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:12px}
 .sch-logo{flex:none;display:inline-flex;align-items:center;min-height:44px;font-family:"Cormorant Garamond","Cormorant Fallback",Georgia,serif;font-size:1.15rem;font-weight:400;line-height:1;letter-spacing:.14em;
   text-transform:uppercase;white-space:nowrap;color:var(--c-tx);text-decoration:none}
 .sch-logo em{font-style:normal;color:var(--c-ac)}
@@ -45,7 +46,7 @@ body{padding-top:var(--sch-h)}
 .sch-burger[aria-expanded="true"] .sch-b2{opacity:0}
 .sch-burger[aria-expanded="true"] .sch-b3{transform:translateY(-5px) rotate(-45deg)}
 .sch a:focus-visible,.sch button:focus-visible,.scf a:focus-visible,.scf summary:focus-visible{outline:2px solid var(--c-ac);outline-offset:2px}
-/* іконки Оздоби/кабінету (.ico — стилі сторінки Оздоби); зона дотику ≥44px */
+/* іконки Оздоби/кабінету */
 .sch-tools .ico{flex:none;position:relative}
 .sch-tools .ico::before{content:"";position:absolute;inset:-5px}
 @media(max-width:479px){
@@ -57,7 +58,7 @@ body{padding-top:var(--sch-h)}
 @media(max-width:359px){.sch--tools .sch-logo{font-size:.8rem;letter-spacing:.03em}.sch--tools .sch-tools .ico{width:34px;height:34px}.sch--tools .sch-act{gap:6px}}
 @media(min-width:640px){.sch-lang{display:flex}.sch-cta{display:inline-flex}}
 @media(min-width:1080px){
-  .sch-in{padding:0 28px;gap:20px}
+  .sch-in{padding:0 max(28px,env(safe-area-inset-right,0px)) 0 max(28px,env(safe-area-inset-left,0px));gap:20px}
   .sch-nav{display:flex;align-items:center;gap:24px;margin:0 auto}
   .sch-act{margin-left:0}
   .sch-burger{display:none}
@@ -65,10 +66,10 @@ body{padding-top:var(--sch-h)}
 @media(min-width:1080px) and (max-width:1239px){.sch--tools .sch-nav{gap:16px}.sch--tools .sch-nav a{letter-spacing:.12em}.sch--tools .sch-lang{display:none}}
 @media(min-width:1380px){.sch:not(.sch--tools) .sch-tel{display:inline-flex}}
 
-/* ── повноекранне меню (мобільний/планшет) ── */
+/* ── повноекранне меню */
 .sch-menu{position:fixed;top:var(--sch-h);left:0;right:0;bottom:0;z-index:801;overflow-y:auto;overscroll-behavior:contain;background:var(--c-bg);border-top:1px solid var(--c-ln)}
 .sch-menu[hidden]{display:none!important}
-.sch-menu-in{max-width:640px;min-height:100%;margin:0 auto;padding:12px 20px calc(32px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:26px}
+.sch-menu-in{max-width:640px;min-height:100%;margin:0 auto;padding:12px max(20px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:26px}
 .sch-mnav{display:flex;flex-direction:column}
 .sch-mnav a{display:flex;align-items:center;min-height:56px;padding:6px 0;border-bottom:1px solid var(--c-ln);font-family:"Cormorant Garamond","Cormorant Fallback",Georgia,serif;
   font-size:clamp(1.75rem,1.5rem + 1.2vw,2.25rem);font-weight:300;line-height:1.1;color:var(--c-tx);text-decoration:none}
@@ -91,7 +92,7 @@ html.sch-lock .mbar{display:none!important}
 /* ── футер ── */
 .scf{position:static;display:block;margin:0;padding:48px 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--c-ln);background:var(--c-bg);
   color:var(--c-mu);font-size:var(--fs-body,1rem);line-height:1.6}
-.scf-in{max-width:1280px;margin:0 auto;padding:0 16px}
+.scf-in{max-width:1280px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
 .scf-top{display:grid;grid-template-columns:1fr;gap:28px}
 .scf-brand p{max-width:38ch;margin:14px 0 0;font-size:.875rem;color:var(--c-mu)}
 .scf-col b{display:block;margin:0 0 10px;font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c-ac)}
@@ -115,27 +116,27 @@ html.sch-lock .mbar{display:none!important}
 @media(min-width:760px){
   .scf-top{grid-template-columns:1.3fr 1fr 1.2fr;gap:40px}
   .scf-svc-g{grid-template-columns:repeat(4,1fr)}
-  .scf-in{padding:0 28px}
+  .scf-in{padding:0 max(28px,env(safe-area-inset-right,0px)) 0 max(28px,env(safe-area-inset-left,0px))}
 }
 /* зони дотику ≥44px на мобільному */
 .crumbs a{display:inline-flex;align-items:center;min-height:32px;padding:0 4px}
-/* FAQ і «Склад комплекту»: уся висота рядка натискна (відступи на summary, а не на details), вигляд без змін */
+/* FAQ і «Склад комплекту» */
 main details:not([class*="sch"])>summary{padding-block:12px;margin-block:-12px}
-@media(max-width:767px){
+@media(max-width:767px),(pointer:coarse){
   .crumbs a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:0 6px}
   .card h3 a,.card p>a:only-child{display:inline-flex;align-items:center;min-height:44px}
   .scf-svc-g a{display:flex;align-items:center;min-height:44px;padding:0}
   .sch-lang a,.sch-lang span{min-height:44px}
 }
-/* старі правила m-fix (footer a{font-size:…!important}) не мають зменшувати контакти */
+/* старі правила m-fix */
 @media(max-width:767px){.scf .scf-tel{font-size:1.125rem!important}.scf .scf-msg a{font-size:.875rem!important}.scf .scf-brand .sch-logo{font-size:1.15rem!important}}
-/* Telegram Mini App: лише логотип та іконки Оздоби */
+/* Telegram Mini App */
 html.tg .sch-nav,html.tg .sch-lang,html.tg .sch-tel,html.tg .sch-cta,html.tg .sch-burger,html.tg .sch-menu,html.tg .scf{display:none!important}
 @media print{.sch,.sch-menu,.scf-svc{display:none!important}body{padding-top:0}}
 @media(prefers-reduced-motion:reduce){.sch *,.scf *{transition:none!important}}
 
 .mbar img{width:32px;height:32px;flex:none}
-/* кнопки замість div/span у лайтбоксах і стрічках фото (a11y): без браузерних стилів кнопки */
+/* кнопки замість div/span у лайтбоксах і стрічках фото */
 button#lb-close,button.lb-arr,button#sdlb-close,button.proj-row-thumb,button.strip-item,button.sp-tog{-webkit-appearance:none;appearance:none;border:0;margin:0;font-family:inherit;color:inherit;text-align:inherit;cursor:pointer}
 button#lb-close,button.lb-arr,button#sdlb-close,button.strip-item,button.sp-tog{background:none}
 button#lb-close,button.lb-arr,button#sdlb-close{color:#fff}
@@ -143,7 +144,7 @@ button.proj-row-thumb,button.strip-item{display:block;padding:0;font-size:inheri
 button.sp-tog{padding:0;font:inherit;letter-spacing:inherit;text-transform:inherit}
 .proj-row-scroll:focus-visible,.strip:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
 
-/* ── перемикач мов у шапці: компактний список (details), вміщує 9+ мов ── */
+/* ── перемикач мов у шапці */
 .sch .sch-ld{position:relative;margin:0;padding:0;border:0}
 .sch-ld>summary{list-style:none;display:inline-flex;align-items:center;gap:6px;min-width:44px;min-height:44px;padding:0 6px;cursor:pointer;color:var(--c-ac);font-size:.75rem;font-weight:600;letter-spacing:.14em}
 .sch-ld>summary::-webkit-details-marker{display:none}
@@ -158,7 +159,7 @@ button.sp-tog{padding:0;font:inherit;letter-spacing:inherit;text-transform:inher
 .sch-ld-on b{color:var(--c-ac)}
 .sch-mlang{flex-wrap:wrap}
 
-/* ── китайська й арабська: системні шрифти (власних CJK/арабських немає, Google Fonts заборонені) ── */
+/* ── китайська й арабська */
 html:lang(zh) body,html:lang(zh) body *{font-family:"Manrope","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC","WenQuanYi Micro Hei",sans-serif!important}
 html:lang(zh) :is(h1,h2,h3,.price,.facts b){font-family:"Cormorant Garamond","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif!important;font-weight:400}
 html:lang(zh) .sch-nav a,html:lang(zh) .sch-cta{letter-spacing:.06em}
@@ -167,7 +168,7 @@ html:lang(ar) :is(h1,h2,h3){font-weight:600;line-height:1.35}
 html:lang(ar) body{line-height:1.8}
 html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{letter-spacing:0}
 
-/* ── RTL (ar): дзеркальна шапка, футер і блоки UI-kit ── */
+/* ── RTL */
 [dir=rtl] .sch,[dir=rtl] .scf{text-align:right}
 [dir=rtl] .skip{left:auto;right:12px}
 [dir=rtl] .sch-act{margin-left:0;margin-right:auto}
@@ -180,40 +181,35 @@ html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{le
 [dir=rtl] a[href^="tel:"],[dir=rtl] .sch-logo{unicode-bidi:isolate;direction:ltr}
 @media(min-width:1080px){[dir=rtl] .sch-act{margin-right:0}}
 
-/* мова на телефоні: компактна кнопка «UA ▾» поруч із бургером */
-@media(max-width:639px){.sch-ld>summary{border:1px solid var(--c-ln);padding:0 10px;margin-inline-end:4px}.sch-ld-m{position:fixed;top:64px;inset-inline-end:12px;max-height:calc(100vh - 80px);overflow:auto}}
+/* мова на телефоні */
+@media(max-width:639px){.sch-ld>summary{border:1px solid var(--c-ln);padding:0 10px;margin-inline-end:4px}.sch-ld-m{position:fixed;top:var(--sch-h);inset-inline-end:max(12px,env(safe-area-inset-right,0px));max-height:calc(100vh - var(--sch-h) - 16px);max-height:calc(100dvh - var(--sch-h) - 16px);overflow:auto;overscroll-behavior:contain}}
 @media(max-width:399px){.sch--tools .sch-lang{display:none}}
 
-/* ══ Motion (UI-kit): поява блоків, hover карток і кнопок, лічильники, акордеон, стрічки-marquee ══
-   JS — розділ «Motion» у /assets/site-chrome.v1.js; каталог і правила — /styleguide/#motion.
-   Правила: H1 і перше фото не анімуємо; рух — лише transform/opacity; prefers-reduced-motion: reduce — без руху.
-   Клас html.mo ставить JS (крім /ozdoba і /kabinet — там власні інтерфейси). */
-.mo-rv{opacity:0;translate:0 18px}
-.mo-rv.mo-in{opacity:1;translate:none;transition:opacity .55s ease,translate .55s cubic-bezier(.2,.7,.2,1);transition-delay:var(--mo-d,0ms)}
+/* ══ Motion */
+.mo-rv{opacity:0;translate:0 22px}
+.mo-rv.mo-in{opacity:1;translate:none;transition:opacity .6s var(--ease-out),translate .7s var(--ease-out);transition-delay:var(--mo-d,0ms)}
 .mo-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 .mo-cnt{font-variant-numeric:tabular-nums}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){
-  .mo main :is(.grid>div.card,.cards>a,.ab-guar>div,.geo-item){transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
-  .mo main :is(.grid>div.card,.cards>a,.ab-guar>div):hover{transform:translateY(-3px);border-color:var(--ac,#BF9148);box-shadow:0 14px 32px -20px rgba(0,0,0,.85)}
+  .mo main :is(.grid>div.card,.cards>a,.ab-guar>div,.geo-item){transition:transform .45s var(--ease-out),border-color .4s ease,box-shadow .45s var(--ease-out)}
+  .mo main :is(.grid>div.card,.cards>a,.ab-guar>div):hover{transform:translateY(-4px);border-color:var(--ac,#BF9148);box-shadow:0 18px 40px -22px rgba(0,0,0,.9)}
   .mo main .geo-item:hover{transform:translateY(-2px)}
-  .mo main .gal figure{transition:border-color .3s ease}.mo main .gal figure:hover{border-color:var(--ac,#BF9148)}
-  .mo main a.btn{transition:background-color .25s ease,color .25s ease,border-color .25s ease,transform .2s ease,filter .25s ease}
+  .mo main .gal figure{transition:border-color .4s ease}.mo main .gal figure:hover{border-color:var(--ac,#BF9148)}
+  .mo main a.btn{transition:background-color .35s ease,color .35s ease,border-color .35s ease,transform .4s var(--ease-out),filter .35s ease}
   .mo main a.btn:hover{transform:translateY(-1px)}
   .mo main a.btn:not(.main):hover{background-color:rgba(191,145,72,.12)}
   .mo main a.btn.main:hover{filter:brightness(1.08)}
   .mo main a.btn:active{transform:scale(.98)}
   .mo main .rel a{transition:color .2s ease,border-color .2s ease,background-color .2s ease}
   .mo main .rel a:hover{background-color:rgba(191,145,72,.08)}
-  .mo main ol.steps>li{transition:border-color .3s ease}.mo main ol.steps>li:hover{border-bottom-color:var(--ac,#BF9148)}
+  .mo main ol.steps>li{transition:border-color .4s ease}.mo main ol.steps>li:hover{border-bottom-color:var(--ac,#BF9148)}
   .mo main summary{transition:color .2s ease}.mo main summary:hover{color:var(--ac,#BF9148)}
 }
 .btn:disabled,.btn[aria-disabled=true]{opacity:.5;cursor:not-allowed;transform:none!important;filter:none!important}
-@media(prefers-reduced-motion:no-preference){.mo main details[open]>:not(summary){animation:mo-acc .35s ease both}}
+@media(prefers-reduced-motion:no-preference){.mo main details[open]>:not(summary){animation:mo-acc .45s var(--ease-out) both}}
 @keyframes mo-acc{from{opacity:0;translate:0 -6px}to{opacity:1;translate:none}}
 
-/* Стрічка (marquee): ряд, що сам повільно прокручується. Розкладка — одна лінія вже з першого кадру
-   (і без JS, і при reduced motion — тоді звичайний горизонтальний скрол), тож зсуву макета немає.
-   JS дублює вміст (aria-hidden) і рухає .mq-track через transform; пауза — hover, фокус, дотик, кнопка, поза екраном. */
+/* Стрічка */
 :is([data-marquee],.rel:has(>a:nth-child(7)):not(:has(>a[href^="#"])),.rel.arts:has(>a:nth-child(4)),.abg){display:flex;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
 :is([data-marquee],.rel,.abg)::-webkit-scrollbar{display:none}
 :is(.rel:has(>a:nth-child(7)),.rel.arts:has(>a:nth-child(4)),.rel[data-marquee])>a{flex:none;white-space:nowrap}
@@ -221,11 +217,11 @@ html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{le
 @media(max-width:767px){.abg>.abg-i{flex-basis:44%}}
 .mq-on{position:relative;overflow:hidden!important;scroll-snap-type:none!important}
 .mq-vp{overflow:hidden;height:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent)}
-.mq-track{display:flex;width:max-content;height:100%;animation:mq-x var(--mq-dur,60s) linear infinite}
+.mq-track{display:flex;width:max-content;height:100%;animation:mq-x var(--mq-dur,60s) linear infinite;will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .mq-g{display:flex;flex:none;height:100%;gap:var(--mq-gap,10px);padding-inline-end:var(--mq-gap,10px)}
 .mq-g>*{scroll-snap-align:none!important}
-@keyframes mq-x{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes mq-x-rtl{from{transform:translateX(0)}to{transform:translateX(50%)}}
+@keyframes mq-x{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@keyframes mq-x-rtl{from{transform:translate3d(0,0,0)}to{transform:translate3d(50%,0,0)}}
 [dir=rtl] .mq-track{animation-name:mq-x-rtl}
 .mq-on:hover .mq-track,.mq-on:focus-within .mq-track,.mq-on.mq-touch .mq-track,.mq-on.mq-paused .mq-track,.mq-on.mq-off .mq-track{animation-play-state:paused}
 .mq-on.ui-nudge>*{animation:none!important;translate:none!important}
@@ -236,25 +232,104 @@ html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{le
 .ui-sc:has(>.mq-on)>:is(.ui-fade,.ui-cnt,.strip-nav,.prs-nav){display:none!important}
 @media(prefers-reduced-motion:reduce){.mq-track{animation:none!important}.mo-rv{opacity:1!important;translate:none!important}}
 @media print{.mo-rv{opacity:1!important;translate:none!important}.mq-btn{display:none}}
-/* суми й діапазони без переносу (chrome.nbsp_prices) */
+/* суми й діапазони без переносу */
 .nw{white-space:nowrap}
-/* ── Переходи між сторінками (View Transitions, cross-document): шапка, логотип і нижня панель звʼязку (.mbar)
-   стоять на місці (власні view-transition-name), уміст сторінки (<main> і футер — знімок вʼюпорту root) мʼяко змінюється: стара сторінка
-   згасає, нова зʼявляється з невеликим зсувом угору. Знімок root — лише видима частина, тож перехід зі скроленої
-   сторінки не «їде». Chrome/Edge 126+, Safari 18.2+; Firefox і старі браузери — звичайний перехід без анімації.
-   prefers-reduced-motion: reduce — переходи вимкнено повністю (@view-transition лише для no-preference). */
+/* ── Переходи між сторінками */
 @media (prefers-reduced-motion:no-preference){
 @view-transition{navigation:auto}
 .sch{view-transition-name:vt-head}
 .sch-in>.sch-logo{view-transition-name:vt-logo}
 .mbar{view-transition-name:vt-bar}
-/* відкрите мобільне меню не «перетікає» в шапку нової сторінки — тоді вся сторінка просто згасає */
+/* відкрите мобільне меню не «перетікає» в шапку нової сторінки */
 .sch:has(.sch-burger[aria-expanded="true"]),.sch:has(.sch-burger[aria-expanded="true"]) .sch-in>.sch-logo{view-transition-name:none}
 ::view-transition-group(vt-head),::view-transition-group(vt-logo),::view-transition-group(vt-bar){animation-duration:0s}
 ::view-transition-old(vt-head),::view-transition-new(vt-head),::view-transition-old(vt-logo),::view-transition-new(vt-logo),::view-transition-old(vt-bar),::view-transition-new(vt-bar){animation:none}
 ::view-transition-old(vt-head),::view-transition-old(vt-logo),::view-transition-old(vt-bar){display:none}
-::view-transition-old(root){animation:vt-out .16s ease-out both}
-::view-transition-new(root){animation:vt-in .32s cubic-bezier(.2,.7,.2,1) both}
+::view-transition-old(root){animation:vt-out .2s ease-out both}
+::view-transition-new(root){animation:vt-in .45s var(--ease-out) .05s both}
 @keyframes vt-out{to{opacity:0}}
-@keyframes vt-in{from{opacity:0;transform:translateY(12px)}}
+@keyframes vt-in{from{opacity:0;transform:translate3d(0,10px,0)}}
 }
+
+/* ══ Пристрої */
+body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+/* нижня панель звʼязку */
+@media(max-width:767px){
+  .mbar{padding-left:max(10px,env(safe-area-inset-left,0px))!important;padding-right:max(10px,env(safe-area-inset-right,0px))!important;
+    transition:transform .5s var(--ease-out),opacity .4s ease}
+  html.mb-hide .mbar,html.mb-kbd .mbar{transform:translate3d(0,calc(100% + 2px),0);opacity:0;pointer-events:none}
+  .mbar a{min-width:0;padding:0 6px;overflow:hidden;white-space:nowrap}
+  .mbar img{width:26px!important;height:26px!important}
+}
+@media(max-width:379px){.mbar{gap:6px!important}.mbar a{gap:5px!important}.mbar img{width:24px!important;height:24px!important}}
+/* найвужчі */
+@media(max-width:359px){.mbar a:not(.mb-call){font-size:0!important;gap:0!important}.mbar a:not(.mb-call) img{width:28px!important;height:28px!important}}
+/* шапка на телефоні */
+@media(max-width:767px){
+  .sch{transition:transform .5s var(--ease-out)}
+  html.sch-hide .sch{transform:translate3d(0,-100%,0)}
+}
+@media(prefers-reduced-motion:reduce){.mbar,.sch{transition:none!important}}
+
+/* «стрибаючий» екран Safari */
+@supports(height:1dvh){
+  .sheet{max-height:90dvh}
+  #lb-img,#plb-img,#plb-wrap{max-height:82dvh}
+  .lb img{max-height:90dvh}
+  .kb-lb{max-height:92dvh}.kb-lb img{max-height:86dvh}
+  @media(min-width:900px){.sheet{max-height:88dvh}}
+}
+/* шторки Оздоби */
+.sheet{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+
+
+/* ── Компактні блоки */
+.cmp-cut>.cmp-x{display:none!important}
+.cmp-more{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:48px;margin:14px 0 0;padding:0 18px;border:1px solid rgba(191,145,72,.35);border-radius:0;
+  background:none;color:var(--ac,#BF9148);font:600 .75rem/1.2 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.cmp-more::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .4s var(--ease-out)}
+.cmp-more[aria-expanded="true"]::after{transform:translateY(2px) rotate(225deg)}
+.cmp-more:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
+@media(hover:hover){.cmp-more:hover{background:rgba(191,145,72,.08)}}
+.cmp-in{animation:cmp-in .55s var(--ease-out) both}
+@keyframes cmp-in{from{opacity:0;translate:0 10px}}
+@media(prefers-reduced-motion:reduce){.cmp-in{animation:none}}
+@media print{.cmp-cut>.cmp-x{display:revert!important}.cmp-more{display:none}}
+
+/* ── Motion */
+.rv{translate:0 20px}
+.rv.rv-in{transition:opacity .5s var(--ease-out),translate .5s var(--ease-out)}
+.ui-img{transition:opacity .5s var(--ease-out)!important}
+@media(hover:hover){.gal img,.pg img{transition:transform .7s var(--ease-out)}.gal figure:hover img,.pg a:hover img,.pg a:focus-visible img{transform:scale(1.04)}}
+#lb,#plb,#sdlb,.lb{transition:opacity .35s ease,visibility 0s linear .35s}
+#lb.open,#plb.open,#sdlb.open,.lb.on{transition:opacity .35s ease}
+#lb #lb-img,#plb #plb-wrap,#sdlb img,.lb img{transition:scale .45s var(--ease-out),opacity .25s}
+.xp{transition:grid-template-rows .5s var(--ease-out),opacity .4s ease,margin .5s var(--ease-out)!important}
+summary::after{transition:transform .4s var(--ease-out)}
+@supports (interpolate-size:allow-keywords){details::details-content{transition:block-size .45s var(--ease-out),content-visibility .45s allow-discrete}}
+@media(prefers-reduced-motion:reduce){.rv{translate:none}}
+/* лайтбокси */
+#lb-close,#plb-close,#sdlb-close{top:max(16px,calc(env(safe-area-inset-top,0px) + 8px));right:max(20px,calc(env(safe-area-inset-right,0px) + 8px))}
+#lb-next{right:env(safe-area-inset-right,0px)}#lb-prev{left:env(safe-area-inset-left,0px)}
+/* портфоліо */
+.pf-filter-wrap{transition:top .5s var(--ease-out)}
+html.sch-hide .pf-filter-wrap{top:0!important}
+/* галереї на телефоні */
+@media(max-width:599px){main .gal,main .pg{grid-template-columns:1fr 1fr;gap:6px}main .gal figcaption{padding:8px 10px}}
+/* зони дотику ≥44px на телефоні */
+.mq-btn{font-size:12px}.mq-btn::before{content:"";position:absolute;inset:-6px}
+@media(max-width:767px),(pointer:coarse){
+  .scf-langs a{min-width:44px;justify-content:center}
+  main :is(.spc-cta,.ps-tog,.sph>button){position:relative}
+  main :is(.spc-cta,.ps-tog,.sph>button)::after{content:"";position:absolute;inset:-14px -4px}
+  main .rel>a{min-height:44px;display:inline-flex;align-items:center}
+  main nav.chips .chip{min-height:40px}
+  main .tile .cas-fav::after{content:"";position:absolute;inset:-5px}
+  main .sv-toggle,main .hbtns .btn,main .hbtns button{min-height:44px}
+  main .pf-filter .filt{min-height:44px;display:inline-flex!important;align-items:center}
+  main .sp-name>button{padding-block:10px!important;margin-block:-10px!important}
+  main :is(.proj-row-name>a,.proj-row-meta a,.ab-strip-link,.dv a,.kb .kmore){position:relative}
+  main :is(.proj-row-name>a,.proj-row-meta a,.ab-strip-link,.dv a,.kb .kmore)::after{content:"";position:absolute;inset:-12px -4px}
+}
+/* головна */
+@media(max-width:1199px),(max-height:620px){.hyr{display:none!important}}

@@ -153,11 +153,11 @@
     var io = new IntersectionObserver(function (es) {
       var batch = es.filter(function (e) { return e.isIntersecting; }).map(function (e) { return e.target; });
       batch.sort(function (a, b) { var p = a.getBoundingClientRect(), q = b.getBoundingClientRect(); return p.top - q.top || p.left - q.left; });
-      batch.forEach(function (el, i) { io.unobserve(el); show(el, Math.min(i, 6) * 70); });
+      batch.forEach(function (el, i) { io.unobserve(el); show(el, Math.min(i, 5) * 80); });
     }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
     function show(el, delay) {
       el.style.setProperty('--mo-d', delay + 'ms'); el.classList.add('mo-in');
-      setTimeout(function () { el.classList.remove('mo-rv', 'mo-in'); el.style.removeProperty('--mo-d'); }, 700 + delay);
+      setTimeout(function () { el.classList.remove('mo-rv', 'mo-in'); el.style.removeProperty('--mo-d'); }, 950 + delay);
     }
     list.forEach(function (el) { el.classList.add('mo-rv'); io.observe(el); });
     W.addEventListener('beforeprint', function () { list.forEach(function (el) { el.classList.remove('mo-rv'); }); });
@@ -194,12 +194,12 @@
         var sr = d.createElement('span'), v = d.createElement('span');
         sr.className = 'mo-sr'; sr.textContent = t; v.className = 'mo-cnt'; v.setAttribute('aria-hidden', 'true');
         el.appendChild(sr); el.appendChild(v);
-        var t0 = null, dur = 1300;
+        var t0 = null, dur = 1600;
         function fmt(x) { return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, sep || ''); }
         (function step(ts) {
           if (t0 === null) t0 = ts;
           var p = Math.min((ts - t0) / dur, 1);
-          v.textContent = m[1] + fmt(Math.round(n * (1 - Math.pow(1 - p, 3)))) + m[3];
+          v.textContent = m[1] + fmt(Math.round(n * (1 - Math.pow(1 - p, 4)))) + m[3];
           if (p < 1) requestAnimationFrame(step); else el.textContent = t;
         })(performance.now());
       }, { threshold: 0.6 });
@@ -255,7 +255,6 @@
     var speed = parseFloat(host.getAttribute('data-marquee-speed')) || (host.querySelector('img') ? 32 : 38);
     function dur() { host.style.setProperty('--mq-dur', Math.max(12, Math.round(g1.getBoundingClientRect().width / speed)) + 's'); }
     dur();
-    if (d.fonts && d.fonts.ready) d.fonts.ready.then(dur);
     host.classList.add('mq-on');
     st.vp = vp; st.btn = b; st.g1 = g1; host._mq = st;
   }
@@ -272,8 +271,9 @@
     if (!hosts.length) hosts = $$('[data-marquee],.strip,.abg', main); // браузер без :has()
     hosts.forEach(function (host) {
       // стрічку збираємо, лише коли ряд підходить до екрана (не навантажуємо завантаження сторінки)
-      if (IO) { var lz = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { lz.disconnect(); mqOn(host); } }, { rootMargin: '300px 0px' }); lz.observe(host); }
-      else mqOn(host);
+      // після завантаження шрифтів: ширина ряду (і тривалість циклу) не зміниться посеред руху — без «смикання»
+      var go = function () { if (IO) { var lz = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { lz.disconnect(); mqOn(host); } }, { rootMargin: '300px 0px' }); lz.observe(host); } else mqOn(host); };
+      if (d.fonts && d.fonts.status !== 'loaded' && d.fonts.ready) d.fonts.ready.then(go); else go();
       var tt;
       host.addEventListener('touchstart', function () { clearTimeout(tt); host.classList.add('mq-touch'); }, { passive: true });
       host.addEventListener('touchend', function () { clearTimeout(tt); tt = setTimeout(function () { host.classList.remove('mq-touch'); }, 2500); }, { passive: true });
@@ -300,11 +300,101 @@
       dt.style.overflow = 'hidden'; dt.style.boxSizing = 'border-box';
       if (opening) { dt.open = true; end = dt.offsetHeight; }
       else end = s.offsetHeight + ['paddingTop', 'paddingBottom', 'borderTopWidth', 'borderBottomWidth'].reduce(function (a, k) { return a + (parseFloat(cs[k]) || 0); }, 0);
-      var an = dt.animate({ height: [start + 'px', end + 'px'] }, { duration: 300, easing: 'ease' });
+      var an = dt.animate({ height: [start + 'px', end + 'px'] }, { duration: 450, easing: 'cubic-bezier(.2,.7,.2,1)' });
       dt._mo = an;
       an.onfinish = an.oncancel = function () { if (!opening) dt.open = false; dt.style.overflow = ''; dt.style.boxSizing = ''; dt._mo = null; };
     });
   }
 
   [marquee, reveal, counters, accordion].forEach(function (f) { try { f(); } catch (e) {} });
+})();
+// ── Пристрої: шапка й нижня панель (.mbar) ховаються при прокрутці вниз і повертаються при прокрутці вгору (телефон ≤767px);
+// панель ховається й коли відкрита клавіатура (фокус у полі форми). Стилі — розділ «Пристрої» у site-chrome.v1.css.
+(function () {
+  var d = document, W = window, h = d.documentElement;
+  if (!W.matchMedia) return;
+  var mob = W.matchMedia('(max-width:767px)');
+  var app = /^\/(?:ozdoba|kabinet|konfigurator)(?:[\/.]|$)/.test(location.pathname); // власні інтерфейси: шапку не ховаємо
+  var y0 = W.pageYOffset || 0, acc = 0, raf = 0, hid = false;
+  function busy() { // відкрите меню, список мов або діалог — нічого не ховаємо
+    return h.classList.contains('sch-lock') || !!d.querySelector('.sch-ld[open],#lb.open,#plb.open,#sdlb.open,.lb.on,.sheet.open,dialog[open]');
+  }
+  function set(hide) {
+    if (hide === hid) return; hid = hide;
+    h.classList.toggle('mb-hide', hide);
+    if (!app) h.classList.toggle('sch-hide', hide);
+  }
+  function tick() {
+    raf = 0;
+    if (!mob.matches) { set(false); return; }
+    var y = W.pageYOffset || 0, dy = y - y0, vh = W.innerHeight || 700;
+    y0 = y;
+    if (y < 80 || busy()) { acc = 0; set(false); return; }
+    if (y + vh >= (d.documentElement.scrollHeight || 0) - 120) { acc = 0; set(false); return; } // кінець сторінки — контакти видно
+    acc = (dy > 0) === (acc > 0) ? acc + dy : dy; // накопичуємо рух в одному напрямку (без «тремтіння» від інерції)
+    if (acc > 24 && y > vh * 0.5) set(true);
+    else if (acc < -36) set(false);
+  }
+  W.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+  var on = function () { if (!mob.matches) set(false); };
+  mob.addEventListener ? mob.addEventListener('change', on) : mob.addListener(on);
+  // фокус у текстовому полі на телефоні = відкрита клавіатура: панель звʼязку не перекриває поле
+  var TXT = /^(?:text|tel|email|search|url|number|password|date|datetime-local|month|time|week)$/;
+  function isField(el) { return el && (el.tagName === 'TEXTAREA' || el.tagName === 'SELECT' || (el.tagName === 'INPUT' && TXT.test(el.type || 'text')) || el.isContentEditable); }
+  d.addEventListener('focusin', function (e) { if (isField(e.target)) h.classList.add('mb-kbd'); });
+  d.addEventListener('focusout', function () { setTimeout(function () { if (!isField(d.activeElement)) h.classList.remove('mb-kbd'); }, 60); });
+  // якір (#zayavka тощо): після переходу шапка й панель видимі
+  W.addEventListener('hashchange', function () { acc = 0; set(false); });
+})();
+// ── Компактні блоки: довгі списки на телефоні згорнуті до N пунктів + кнопка «Показати ще» (плавне розкриття).
+// Розмітка: data-compact="6" на контейнері (діти — пункти); також автоматично для списків з COMPACT нижче.
+// Без JS і на ширших екранах — усе видно. Приклад — /styleguide/#compact.
+(function () {
+  var d = document, W = window, h = d.documentElement;
+  if (!W.matchMedia || !('classList' in h)) return;
+  var LG = (h.lang || 'uk').slice(0, 2);
+  var TX = ({ uk: ['Показати ще', 'Згорнути'], ru: ['Показать ещё', 'Свернуть'], en: ['Show more', 'Show less'], es: ['Ver más', 'Ver menos'],
+              zh: ['显示更多', '收起'], pl: ['Pokaż więcej', 'Zwiń'], de: ['Mehr anzeigen', 'Weniger'], fr: ['Voir plus', 'Réduire'], ar: ['عرض المزيد', 'عرض أقل'] })[LG] || ['Show more', 'Show less'];
+  var mq = W.matchMedia('(max-width:767px)');
+  // автоматично (лише телефон): довгі сітки/списки, що займають кілька екранів
+  // фото проєкту (.pg — 20–30 фото на всю ширину), галереї лендингів (.gal), довгі сітки карток (.grid — напр. ЖК за районами)
+  var COMPACT = [['main .pg', 6], ['main .gal', 4], ['main .grid', 6]];
+  var hosts = [];
+  [].forEach.call(d.querySelectorAll('[data-compact]'), function (el) { hosts.push([el, parseInt(el.getAttribute('data-compact'), 10) || 6, el.hasAttribute('data-compact-all')]); });
+  COMPACT.forEach(function (c) { [].forEach.call(d.querySelectorAll(c[0]), function (el) { if (!el.hasAttribute('data-compact')) hosts.push([el, c[1], false]); }); });
+  if (!hosts.length) return;
+  var n = 0;
+  function build(host, keep, all) {
+    var items = [].filter.call(host.children, function (c) { return c.nodeType === 1 && !/^(SCRIPT|STYLE|TEMPLATE|BUTTON)$/.test(c.tagName) && !c.classList.contains('cmp-more'); });
+    if (items.length <= keep + 2) return null; // ховати 1–2 пункти немає сенсу
+    var extra = items.slice(keep);
+    var id = host.id || ('cmp' + (++n)); host.id = id;
+    var b = d.createElement('button');
+    b.type = 'button'; b.className = 'cmp-more'; b.setAttribute('aria-controls', id); b.setAttribute('aria-expanded', 'false');
+    b.textContent = TX[0] + ' (' + extra.length + ')';
+    host.parentNode.insertBefore(b, host.nextSibling);
+    var st = { host: host, extra: extra, btn: b, open: false };
+    function apply() {
+      var cut = (all || mq.matches) && !st.open;
+      host.classList.toggle('cmp-cut', cut);
+      extra.forEach(function (it) { it.classList.toggle('cmp-x', cut); });
+      b.hidden = !(all || mq.matches);
+    }
+    b.addEventListener('click', function () {
+      st.open = !st.open;
+      b.setAttribute('aria-expanded', st.open ? 'true' : 'false');
+      b.textContent = st.open ? TX[1] : TX[0] + ' (' + extra.length + ')';
+      apply();
+      if (st.open) {
+        extra.forEach(function (it, i) { it.classList.remove('cmp-in'); void it.offsetWidth; it.style.animationDelay = Math.min(i, 8) * 40 + 'ms'; it.classList.add('cmp-in'); });
+        var f = extra[0] && extra[0].querySelector('a,button,summary,[tabindex]'); if (f && d.activeElement === b) f.focus({ preventScroll: true });
+      } else if (host.getBoundingClientRect().top < 0) host.scrollIntoView({ block: 'start' });
+    });
+    st.apply = apply; apply();
+    return st;
+  }
+  var list = hosts.map(function (x) { try { return build(x[0], x[1], x[2]); } catch (e) { return null; } }).filter(Boolean);
+  var on = function () { list.forEach(function (s) { s.apply(); }); };
+  mq.addEventListener ? mq.addEventListener('change', on) : mq.addListener(on);
+  W.addEventListener('beforeprint', function () { list.forEach(function (s) { s.host.classList.remove('cmp-cut'); }); });
 })();

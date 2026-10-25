@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/kabinet*","/api/*","/*\\?*"]}},{"not":{"selector_matches":"[target],[download],[data-no-prefetch]"}}]},"eagerness":"moderate"}]}</script>
 <title>Styleguide CAS</title>
 <meta name="robots" content="noindex, nofollow">
@@ -60,24 +60,21 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac)}
 <!--m-fix--><style id="m-fix">
 .mbar{display:none}
 @media(max-width:767px){
-  body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
-  .mbar{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;top:auto;height:auto;width:auto;z-index:9990;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(14,13,12,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid rgba(191,145,72,.25)}
-  .mbar a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:46px;border-radius:12px;font:600 var(--fs-small)/1 "Manrope","Manrope Fallback",system-ui,sans-serif;text-decoration:none;color:#f3eee6;border:1px solid rgba(191,145,72,.35)}
-  .mbar a.mb-call{background:#bf9148;color:#14120f;border-color:#bf9148}
-  .mbar svg{width:18px;height:18px;flex:none}
-  .mbar img{width:32px;height:32px;flex:none}
-  /* читабельний дрібний текст */
-  .slab,.sp-card-hint,.spc-time,.spc-cta,.pc-item-label,.lbl,.sl,.qf-sub,.proj-cover-loc,.sv-more-tag,.sv-toggle,.mob-ct-lbl,.fl,.fc,.ab-l,.cr-label,.sec-s,label,footer a{font-size:var(--fs-small)!important}
-  /* зручні для пальця кнопки */
-  .hbg-btn,.lang-cycle,.nsb-close,.qf-close,.strip-nav{min-width:44px!important;min-height:44px!important;display:inline-flex!important;align-items:center;justify-content:center}
-  .hbg-btn{flex-direction:column}
-  .calc-tab,.ps-tog,.splink,.spc-cta{min-height:40px!important;display:inline-flex!important;align-items:center}
-  footer .fs{display:flex;flex-wrap:wrap;gap:4px 18px}
-  footer .fs a{display:inline-flex;align-items:center;min-height:44px}
-  /* контакти: плитки замість горизонтальної прокрутки */
-  .mob-contacts{display:grid!important;grid-template-columns:repeat(3,1fr);overflow:visible!important;padding:14px 16px 6px!important}
-  .mob-ct-btn{min-width:0!important}
-  .mob-ct-lbl{white-space:normal!important;text-align:center;line-height:1.25}
+body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+.mbar{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;top:auto;height:auto;width:auto;z-index:9990;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(14,13,12,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid rgba(191,145,72,.25)}
+.mbar a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:46px;border-radius:12px;font:600 var(--fs-small)/1 "Manrope","Manrope Fallback",system-ui,sans-serif;text-decoration:none;color:#f3eee6;border:1px solid rgba(191,145,72,.35)}
+.mbar a.mb-call{background:#bf9148;color:#14120f;border-color:#bf9148}
+.mbar svg{width:18px;height:18px;flex:none}
+.mbar img{width:32px;height:32px;flex:none}
+.slab,.sp-card-hint,.spc-time,.spc-cta,.pc-item-label,.lbl,.sl,.qf-sub,.proj-cover-loc,.sv-more-tag,.sv-toggle,.mob-ct-lbl,.fl,.fc,.ab-l,.cr-label,.sec-s,label,footer a{font-size:var(--fs-small)!important}
+.hbg-btn,.lang-cycle,.nsb-close,.qf-close,.strip-nav{min-width:44px!important;min-height:44px!important;display:inline-flex!important;align-items:center;justify-content:center}
+.hbg-btn{flex-direction:column}
+.calc-tab,.ps-tog,.splink,.spc-cta{min-height:40px!important;display:inline-flex!important;align-items:center}
+footer .fs{display:flex;flex-wrap:wrap;gap:4px 18px}
+footer .fs a{display:inline-flex;align-items:center;min-height:44px}
+.mob-contacts{display:grid!important;grid-template-columns:repeat(3,1fr);overflow:visible!important;padding:14px 16px 6px!important}
+.mob-ct-btn{min-width:0!important}
+.mob-ct-lbl{white-space:normal!important;text-align:center;line-height:1.25}
 }
 </style>
 <style>
@@ -175,7 +172,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--ac)}
 .sg-demo .sg-tbl{display:block;overflow-x:auto}
 code{font-size:.92em}
 .hero p{max-width:640px;max-inline-size:640px}.sg-note,.sg-meta p{max-width:720px;max-inline-size:720px}</style>
-<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=3a176088">
+<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=ae77553d">
 </head>
 <body>
 <!--chrome:skip--><a class="skip" href="#main">Перейти до змісту</a><!--/chrome:skip-->
@@ -211,6 +208,7 @@ code{font-size:.92em}
 <li><a href="#gallery">Галерея проєктів</a></li>
 <li><a href="#marquee">Стрічки (marquee)</a></li>
 <li><a href="#rel">Посилання на послуги</a></li>
+<li><a href="#compact">Компактні блоки</a></li>
 <li><a href="#zhk">Блоки ЖК</a></li>
 <li><a href="#blog">Блоки блогу</a></li>
 <li><a href="#ozdoba">Картка товару Оздоби</a></li>
@@ -304,6 +302,15 @@ code{font-size:.92em}
 <div class="sg-demo"><div class="rel"><a href="/remont-kvartyr-kyiv">Ремонт квартир</a><a href="/dyzain-interieru-kyiv">Дизайн інтерʼєру</a><a href="/budivnytstvo-budynkiv-kyiv">Будівництво будинків</a></div></div></div>
 </section>
 
+<section id="compact"><h2>Компактні блоки (телефон)</h2>
+<p class="sg-note">Щоб довгі списки не заважали на телефоні: згортаємо, а не прибираємо. Без JS видно все, на ширших екранах — розгорнуто. Стилі й JS — розділи «Компактні блоки» в <code>/assets/site-chrome.v1.*</code>.</p>
+<div class="sg-c"><div class="sg-meta"><code>[data-compact="N"]</code> → кнопка <code>.cmp-more</code><p>Контейнер, у якого прямі діти — пункти: на телефоні (&lt;768px) видно перші N, решта — за кнопкою «Показати ще (k)» з плавною появою по черзі; «Згорнути» повертає до початку блоку. Автоматично: фото проєкту <code>.pg</code> (6), галереї лендингів <code>.gal</code> (4), сітки карток <code>.grid</code> (6, напр. ЖК за районами). Згортаємо, лише якщо ховається від 3 пунктів. <code>data-compact-all</code> — згортати й на десктопі (як у демо).</p></div>
+<div class="sg-demo"><div class="grid" data-compact="2" data-compact-all><div class="card"><h3>ЖК Taryan Towers</h3><p>Печерськ · преміум</p></div><div class="card"><h3>ЖК TRIIINITY</h3><p>Печерськ · преміум</p></div><div class="card"><h3>ЖК Новопечерські Липки</h3><p>Печерськ · бізнес/преміум</p></div><div class="card"><h3>ЖК Edeldorf Hills</h3><p>Печерськ · преміум</p></div><div class="card"><h3>ЖК Respublika</h3><p>Голосіїв · бізнес</p></div></div></div></div>
+<div class="sg-c"><div class="sg-meta"><code>details &gt; summary</code><p>FAQ, «Склад комплекту», футер «Усі послуги студії» (на телефоні згорнуто, від 760px — відкрито), мовне меню <code>details.sch-ld</code> — згорнуті за замовчуванням.</p></div></div>
+<div class="sg-c"><div class="sg-meta">Стрічки замість стовпчиків<p>Ряди пігулок «Інші послуги» (від 7), «Статті по темі» (від 4), фото-стрічки — один рядок з горизонтальним рухом (див. «Стрічки»), а не 20+ рядків пігулок. На телефоні галереї <code>.gal</code>/<code>.pg</code> — у 2 колонки.</p></div></div>
+<div class="sg-c"><div class="sg-meta">Плаваючі елементи<p>Шапка й нижня панель <code>.mbar</code> на телефоні ховаються при прокрутці вниз і зʼявляються при прокрутці вгору, на початку й у кінці сторінки (<code>html.sch-hide</code>, <code>html.mb-hide</code>); панель ховається й коли відкрита клавіатура (<code>html.mb-kbd</code>). У /ozdoba, кабінеті й конфігураторі шапка не ховається (там у ній кошик та інструменти).</p></div></div>
+</section>
+
 <section id="zhk"><h2>Блоки ЖК</h2>
 <div class="sg-c"><div class="sg-meta">Хаб <code>/remont-kvartyr-zhk-kyiv</code>: <code>.grid &gt; div.card</code> з посиланням<p>Картка ЖК: назва-посилання, клас і площі, адреса, забудовник, «Детальніше →». Лише факти з відкритих джерел ЖК; ціни — базові ставки студії.</p></div>
 <div class="sg-demo"><div class="grid"><div class="card"><h3><a href="/remont-kvartyry-zhk-taryan-towers">ЖК Taryan Towers</a></h3><p>Клас: преміум, <span class="nw">62–87</span> м² і більші. Адреса: вул. Іоанна Павла II, 12. Забудовник — Taryan Group.</p><p style="margin-top:10px"><a href="/remont-kvartyry-zhk-taryan-towers">Детальніше →</a></p></div><div class="card"><h3><a href="/remont-kvartyry-zhk-triiinity">ЖК TRIIINITY</a></h3><p>Клас: преміум, <span class="nw">53–125</span> м². Адреса: вул. Василя Тютюнника, 39/2. Забудовник — Seven Hills.</p><p style="margin-top:10px"><a href="/remont-kvartyry-zhk-triiinity">Детальніше →</a></p></div></div></div></div>
@@ -329,7 +336,7 @@ code{font-size:.92em}
 </section>
 
 <section id="mbar"><h2>Нижня панель (mbar)</h2>
-<div class="sg-c"><div class="sg-meta"><code>.mbar</code> (блок <code>&lt;!--m-fix--&gt;</code>)<p>На телефонах (&lt;768px) — фіксована панель «Подзвонити / Telegram / WhatsApp»; тіло отримує відступ знизу. Одна на сторінку, вже є в шаблонах; тут — статична копія.</p></div>
+<div class="sg-c"><div class="sg-meta"><code>.mbar</code> (блок <code>&lt;!--m-fix--&gt;</code>)<p>На телефонах (&lt;768px) — фіксована панель «Подзвонити / Telegram / WhatsApp»; тіло отримує відступ знизу, панель — відступ від home indicator і вирізів (<code>env(safe-area-inset-*)</code>; <code>viewport-fit=cover</code> на всіх сторінках ставить chrome.py). Ховається при прокрутці вниз і коли відкрита клавіатура, повертається при прокрутці вгору. До 359px (Z Fold зовнішній) у месенджерів лише логотипи. Одна на сторінку, вже є в шаблонах; тут — статична копія.</p></div>
 <div class="sg-demo"><div class="sg-mbar"><a class="mb-call" href="tel:+380978667755"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>Подзвонити</a><a href="https://t.me/+380978667755" target="_blank" rel="noopener"><img src="/assets/brand/telegram.svg" width="32" height="32" alt="" decoding="async" loading="lazy">Telegram</a><a href="https://wa.me/380978667755" target="_blank" rel="noopener"><img src="/assets/brand/whatsapp.svg" width="32" height="32" alt="" decoding="async" loading="lazy">WhatsApp</a></div></div></div>
 </section>
 
@@ -342,12 +349,13 @@ code{font-size:.92em}
 
 <section id="motion"><h2>Анімації</h2>
 <p class="sg-note">Одна система на весь сайт: блок <code>ui-polish</code> у сторінках (поява секцій і карток <code>.rv</code>, лайтбокси, підказки для горизонтальних рядів) + розділ «Motion» у <code>/assets/site-chrome.v1.css</code> і <code>.js</code> (усе нижче). Нові ефекти додаємо туди, а не в сторінки. Правила: H1 і перше фото не анімуємо; те, що видно при завантаженні, не ховаємо; рух — лише <code>transform</code>/<code>opacity</code>; <code>prefers-reduced-motion: reduce</code> — усе статичне; ніякого автопрокруту сторінки.</p>
-<div class="sg-c"><div class="sg-meta"><code>[data-reveal]</code> → <code>.mo-rv</code> / <code>.mo-in</code><p>Поява знизу (18px, 0.55s) при скролі, сусіди — по черзі з кроком 70 мс. Автоматично — для <code>ol.steps&gt;li</code>, <code>.facts&gt;div</code>, <code>.cards&gt;a</code>, блоків «Про нас» і статті блогу; для нового блоку — атрибут <code>data-reveal</code>.</p></div>
-<div class="sg-demo"><div class="grid sg-rv-demo"><div class="card" data-reveal><h3>Перша</h3><p>зʼявляється першою</p></div><div class="card" data-reveal><h3>Друга</h3><p>+70 мс</p></div><div class="card" data-reveal><h3>Третя</h3><p>+140 мс</p></div></div><p style="margin-top:12px"><button class="btn" type="button" onclick="sgReplay()">Повторити анімацію</button></p></div></div>
-<div class="sg-c"><div class="sg-meta"><code>[data-count]</code> · <code>.facts b</code> · <code>.ab-facts b</code> → <code>.mo-cnt</code><p>Лічильник від нуля (1.3 с, ease-out), коли блок на 60% у кадрі. Скрінрідер одразу чує справжнє значення (<code>.mo-sr</code>). Роки й числа до 10 не рахуються. <code>data-count="150"</code> — явне число, якщо в тексті є інші цифри.</p></div>
+<div class="sg-c"><div class="sg-meta"><code>[data-reveal]</code> → <code>.mo-rv</code> / <code>.mo-in</code><p>Поява знизу (22px; opacity 0.6 с, зсув 0.7 с, <code>cubic-bezier(.2,.7,.2,1)</code> — токен <code>--ease-out</code>) при скролі, сусіди — по черзі з кроком 80 мс. Автоматично — для <code>ol.steps&gt;li</code>, <code>.facts&gt;div</code>, <code>.cards&gt;a</code>, блоків «Про нас» і статті блогу; для нового блоку — атрибут <code>data-reveal</code>.</p></div>
+<div class="sg-demo"><div class="grid sg-rv-demo"><div class="card" data-reveal><h3>Перша</h3><p>зʼявляється першою</p></div><div class="card" data-reveal><h3>Друга</h3><p>+80 мс</p></div><div class="card" data-reveal><h3>Третя</h3><p>+160 мс</p></div></div><p style="margin-top:12px"><button class="btn" type="button" onclick="sgReplay()">Повторити анімацію</button></p></div></div>
+<div class="sg-c"><div class="sg-meta"><code>[data-count]</code> · <code>.facts b</code> · <code>.ab-facts b</code> → <code>.mo-cnt</code><p>Лічильник від нуля (1.6 с, ease-out quart), коли блок на 60% у кадрі. Скрінрідер одразу чує справжнє значення (<code>.mo-sr</code>). Роки й числа до 10 не рахуються. <code>data-count="150"</code> — явне число, якщо в тексті є інші цифри.</p></div>
 <div class="sg-demo"><div class="facts sg-cnt-demo"><div><b data-count="150">150+</b><span>реалізованих проєктів</span></div><div><b>12 міс.</b><span>гарантія на роботи</span></div><div><b>2016</b><span>рік — не рахується</span></div></div></div></div>
-<div class="sg-c"><div class="sg-meta">Hover карток і кнопок<p><code>.grid&gt;div.card</code>, <code>.cards&gt;a</code>, <code>.ab-guar&gt;div</code> — підйом на 3px, акцентна рамка й тінь; <code>.gal figure</code> — рамка + zoom фото; <code>.rel a</code> — підсвітка фону; <code>a.btn</code> — підйом на 1px; <code>summary</code> — колір. Лише на пристроях з мишею (<code>hover: hover</code>).</p></div>
+<div class="sg-c"><div class="sg-meta">Hover карток і кнопок<p><code>.grid&gt;div.card</code>, <code>.cards&gt;a</code>, <code>.ab-guar&gt;div</code> — підйом на 4px, акцентна рамка й тінь (0.45 с, <code>--ease-out</code>); <code>.gal figure</code> — рамка + zoom фото; <code>.rel a</code> — підсвітка фону; <code>a.btn</code> — підйом на 1px; <code>summary</code> — колір. Лише на пристроях з мишею (<code>hover: hover</code>).</p></div>
 <div class="sg-demo"><p class="sg-note" style="margin:0">Наведіть на картки в розділах вище.</p></div></div>
+<div class="sg-c"><div class="sg-meta">Тривалості й переходи<p>Усе рухоме — <span class="nw">400–700</span> мс з <code>--ease-out</code>: акордеон 0.45 с, лайтбокс 0.35/0.45 с, «Показати ще» 0.55 с, шапка й панель 0.5 с. Переходи між сторінками (View Transitions): стара сторінка згасає за 0.2 с, нова зʼявляється за 0.45 с зі зсувом 10px; шапка й панель стоять на місці. Стрічки рухаються через <code>translate3d</code> на окремому шарі (без мерехтіння в Safari) і стартують після завантаження шрифтів (тривалість циклу не змінюється посеред руху).</p></div></div>
 <div class="sg-c"><div class="sg-meta">Де анімація свідомо відсутня<p>Hero (H1, лід, перше фото — це LCP), шапка й мобільне меню (лише fade), форми (поява заважає вводу), /ozdoba і кабінет (власні інтерфейси), абзаци статей (текст читаємо одразу).</p></div></div>
 </section>
 
@@ -393,6 +401,6 @@ requestAnimationFrame(function(){requestAnimationFrame(function(){c.forEach(func
   <div class="scf-bot"><div class="scf-langs" role="group" aria-label="Мова"><span>Мова:</span><span class="scf-lang-on" aria-current="true" lang="uk">Українська</span><a href="/ru/" hreflang="ru" lang="ru">Русский</a><a href="/en/" hreflang="en" lang="en">English</a><a href="/es/" hreflang="es" lang="es">Español</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/pl/" hreflang="pl" lang="pl">Polski</a><a href="/de/" hreflang="de" lang="de">Deutsch</a><a href="/fr/" hreflang="fr" lang="fr">Français</a><a href="/ar/" hreflang="ar" lang="ar">العربية</a></div><a href="/konfidentsiinist">Політика конфіденційності</a><span>© 2026 CAS Development · Київ, Україна</span></div>
 </div>
 </footer><!--/chrome:f-->
-<script src="/assets/site-chrome.v1.js?v=713665db" defer></script>
+<script src="/assets/site-chrome.v1.js?v=c167e522" defer></script>
 </body>
 </html>
