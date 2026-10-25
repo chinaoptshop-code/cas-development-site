@@ -54,7 +54,10 @@
  },
  "design-apartment": {
   "uk": "/dyzain-interieru-kvartyry-kyiv",
-  "ru": "/ru/dizayn-kvartiry-kiev"
+  "ru": "/ru/dizayn-kvartiry-kiev",
+  "en": "/en/apartment-interior-design",
+  "pl": "/pl/projekt-wnetrza-mieszkania",
+  "de": "/de/wohnungsdesign"
  },
  "renovation": {
   "uk": "/remont-pid-klyuch-kyiv",
@@ -127,5 +130,103 @@
   "ru": "/ru/konfidentsialnost",
   "en": "/en/privacy-policy",
   "es": "/es/privacidad"
+ },
+ "kitchen": {
+  "uk": "/remont-kukhni-kyiv",
+  "ru": "/ru/remont-kuhni-kiev",
+  "en": "/en/kitchen-renovation",
+  "pl": "/pl/remont-kuchni",
+  "de": "/de/kuechenrenovierung"
+ },
+ "bathroom": {
+  "uk": "/remont-vannoi-kimnaty-kyiv",
+  "ru": "/ru/remont-vannoy-kiev",
+  "en": "/en/bathroom-renovation",
+  "pl": "/pl/remont-lazienki",
+  "de": "/de/badsanierung"
+ },
+ "newbuild": {
+  "uk": "/remont-novobudovy-kyiv",
+  "ru": "/ru/remont-v-novostroyke-kiev",
+  "en": "/en/new-build-renovation",
+  "pl": "/pl/remont-mieszkania-deweloperskiego",
+  "de": "/de/neubauwohnung-ausbau"
+ },
+ "office": {
+  "uk": "/remont-ofisu-pid-klyuch-kyiv",
+  "ru": "/ru/remont-ofisa-kiev",
+  "en": "/en/office-renovation",
+  "pl": "/pl/remont-biura",
+  "de": "/de/bueroumbau"
+ },
+ "commercial": {
+  "uk": "/remont-komertsiinykh-prymishchen-kyiv",
+  "ru": "/ru/remont-kommercheskih-pomeshcheniy-kiev",
+  "en": "/en/commercial-renovation",
+  "pl": "/pl/remont-lokali-uzytkowych",
+  "de": "/de/gewerberaeume-renovierung"
+ },
+ "crew": {
+  "uk": "/remontna-bryhada-kyiv",
+  "ru": "/ru/remontnaya-brigada-kiev",
+  "en": "/en/renovation-crew",
+  "pl": "/pl/ekipa-remontowa",
+  "de": "/de/handwerkerteam"
+ },
+ "procurement": {
+  "uk": "/komplektatsiia-pid-kliuch-kyiv",
+  "ru": "/ru/komplektatsiya-pod-klyuch-kiev",
+  "en": "/en/turnkey-procurement",
+  "pl": "/pl/kompletacja-wnetrz",
+  "de": "/de/objekteinrichtung"
+ },
+ "calculator": {
+  "uk": "/kalkuliator-remontu",
+  "ru": "/ru/kalkulyator-remonta",
+  "en": "/en/renovation-cost-calculator",
+  "pl": "/pl/kalkulator-remontu",
+  "de": "/de/renovierungskosten-rechner"
+ },
+ "landscape": {
+  "uk": "/landshaftnyi-dyzain-kyiv",
+  "ru": "/ru/landshaftnyy-dizayn-kiev",
+  "en": "/en/landscape-design",
+  "pl": "/pl/projektowanie-ogrodow",
+  "de": "/de/gartengestaltung"
+ },
+ "house-design": {
+  "uk": "/proektuvannia-budynku-kyiv",
+  "ru": "/ru/proektirovanie-doma-kiev",
+  "en": "/en/house-design",
+  "pl": "/pl/projekt-domu",
+  "de": "/de/hausplanung"
+ },
+ "house-renovation": {
+  "uk": "/remont-budynku-pid-klyuch-kyiv",
+  "ru": "/ru/remont-doma-kiev",
+  "en": "/en/house-renovation",
+  "pl": "/pl/remont-domu",
+  "de": "/de/haussanierung"
+ },
+ "restaurant": {
+  "uk": "/dyzain-restoranu-kafe-kyiv",
+  "ru": "/ru/dizayn-restorana-kafe-kiev",
+  "en": "/en/restaurant-design",
+  "pl": "/pl/projektowanie-restauracji",
+  "de": "/de/restaurantdesign"
+ },
+ "resort": {
+  "uk": "/baza-vidpochynku-pid-klyuch",
+  "ru": "/ru/baza-otdyha-pod-klyuch",
+  "en": "/en/resort-design",
+  "pl": "/pl/osrodek-wypoczynkowy-pod-klucz",
+  "de": "/de/ferienanlage-schluesselfertig"
+ },
+ "designer": {
+  "uk": "/dyzainer-interieru-kyiv",
+  "ru": "/ru/dizayner-interera-kiev",
+  "en": "/en/interior-designer",
+  "pl": "/pl/projektant-wnetrz",
+  "de": "/de/innenarchitekt"
  }
 }

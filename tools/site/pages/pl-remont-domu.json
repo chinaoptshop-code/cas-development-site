@@ -1,0 +1,213 @@
+{
+ "slug": "remont-domu",
+ "lang": "pl",
+ "service": "Remont domu pod klucz",
+ "title": "Remont domu pod klucz w Kijowie i okolicach — od $550/m²",
+ "description": "Remont domu pod klucz w Kijowie i okolicach od $550/m²: projekt, instalacje, wykończenie, meble. Kosztorys ±5%, jeśli remont robi CAS, regularne raporty zdjęciowe.",
+ "h1": "Remont domu pod klucz w Kijowie i okolicach",
+ "price": "od $550 / m²",
+ "lead": "Przejmujemy dom w stanie surowym lub do odświeżenia i oddajemy gotowy do zamieszkania: instalacje, wykończenie, meble, oświetlenie. Jeden zespół, jedna umowa, regularne raporty zdjęciowe.",
+ "guarantees": true,
+ "cards": [
+  [
+   "Projekt i kosztorys",
+   [
+    "pomiary i inwentaryzacja domu",
+    "projekt wnętrz i rysunki",
+    "kosztorys prac i materiałów",
+    "harmonogram etapów"
+   ]
+  ],
+  [
+   "Instalacje",
+   [
+    "elektryka i instalacje niskoprądowe",
+    "ogrzewanie, ogrzewanie podłogowe",
+    "woda i kanalizacja",
+    "wentylacja i klimatyzacja"
+   ]
+  ],
+  [
+   "Wykończenie i wyposażenie",
+   [
+    "ściany, sufity, podłogi",
+    "łazienki i kuchnia",
+    "meble i oświetlenie z Chin",
+    "sprzątanie i odbiór"
+   ]
+  ]
+ ],
+ "about": [],
+ "gallery": [
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1FiLI9kKE-C87h-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1hXV_Pz6_GfnXe-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1FRa0FI6iMHK5L-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/1f3m1_qf4mDosh-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "Wizyta na obiekcie",
+   "Oglądamy dom, oceniamy stan konstrukcji i instalacji."
+  ],
+  [
+   "Projekt",
+   "Przygotowujemy projekt wnętrz albo pracujemy według Twojego, robimy rysunki."
+  ],
+  [
+   "Kosztorys i umowa",
+   "Jeśli remont według naszego projektu robimy my, ustalamy kwotę i etapy: wynik nie odbiega od kosztorysu o więcej niż 5%."
+  ],
+  [
+   "Instalacje",
+   "Prowadzimy sieci przed wykończeniem — tak, żeby potem niczego nie kuć."
+  ],
+  [
+   "Wykończenie i meble",
+   "Prace wykończeniowe, równolegle kompletacja bezpośrednio z Chin. Regularne raporty zdjęciowe w Telegramie."
+  ],
+  [
+   "Odbiór",
+   "Sprzątanie, protokół odbioru, zobowiązania gwarancyjne zgodnie z umową."
+  ]
+ ],
+ "faq": [
+  [
+   "Ile kosztuje remont domu pod klucz?",
+   "Od $550 za m². Dokładna kwota zależy od stanu domu, instalacji i standardu wykończenia — zapisujemy ją w kosztorysie po oględzinach."
+  ],
+  [
+   "Czy pracujecie w obwodzie kijowskim?",
+   "Tak: Kijów i okolice — Irpień, Bucza, Browary, Boryspol, Obuchów i inne miejscowości. Pracujemy też w całej Ukrainie, w Europie i na świecie."
+  ],
+  [
+   "Czy kosztorys może wzrosnąć w trakcie remontu?",
+   "Jeśli remont według naszego projektu wykonujemy my, gwarantujemy, że wynik nie odbiegnie od zatwierdzonego kosztorysu o więcej niż 5%. Prace dodatkowe — tylko po Twojej pisemnej zgodzie."
+  ],
+  [
+   "Czy mogę śledzić remont bez przyjeżdżania?",
+   "Tak, regularnie wysyłamy raporty zdjęciowe w Telegramie."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-pod-klucz",
+   "Remont pod klucz"
+  ],
+  [
+   "/pl/remont-mieszkania-deweloperskiego",
+   "Remont mieszkania deweloperskiego"
+  ],
+  [
+   "/pl/remont-kuchni",
+   "Remont kuchni"
+  ],
+  [
+   "/pl/remont-lazienki",
+   "Remont łazienki"
+  ],
+  [
+   "/pl/remont-biura",
+   "Remont biura"
+  ],
+  [
+   "/pl/remont-lokali-uzytkowych",
+   "Remont lokali użytkowych"
+  ],
+  [
+   "/pl/biznes-pod-klucz",
+   "Lokale biznesowe pod klucz"
+  ],
+  [
+   "/pl/ekipa-remontowa",
+   "Ekipa remontowa"
+  ],
+  [
+   "/pl/projektowanie-wnetrz",
+   "Projektowanie wnętrz"
+  ],
+  [
+   "/pl/projekt-wnetrza-mieszkania",
+   "Projekt wnętrza mieszkania"
+  ],
+  [
+   "/pl/projektant-wnetrz",
+   "Projektant wnętrz"
+  ],
+  [
+   "/pl/realizacja-projektu",
+   "Realizacja projektu"
+  ],
+  [
+   "/pl/projektowanie-restauracji",
+   "Projektowanie restauracji i kawiarni"
+  ],
+  [
+   "/pl/projektowanie-ogrodow",
+   "Projektowanie ogrodów"
+  ],
+  [
+   "/pl/budowa-domow",
+   "Budowa domów"
+  ],
+  [
+   "/pl/projekt-domu",
+   "Projekt domu"
+  ],
+  [
+   "/pl/osrodek-wypoczynkowy-pod-klucz",
+   "Ośrodek wypoczynkowy pod klucz"
+  ],
+  [
+   "/pl/umeblowanie-pod-klucz",
+   "Umeblowanie pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów"
+  ],
+  [
+   "/pl/faq",
+   "FAQ"
+  ],
+  [
+   "/pl/kontakt",
+   "Kontakt"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

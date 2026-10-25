@@ -1,0 +1,224 @@
+{
+ "slug": "renovation-crew",
+ "lang": "en",
+ "service": "Renovation crew",
+ "title": "Renovation crew and renovation company in Kyiv | CAS",
+ "description": "Renovation crew and company in Kyiv: tilers, electricians and plumbers under a site manager, with a contract. Renovation from $550/m², estimate ±5% if CAS renovates.",
+ "h1": "Renovation crew in Kyiv",
+ "price": "renovation from $550 / m² · always under contract",
+ "lead": "Our own construction crew with a site manager: we carry out every type of renovation work — from demolition and electrics to tiling, painting and furniture assembly. We work under a contract and an estimate.",
+ "guarantees": true,
+ "cards": [
+  [
+   "Specialists",
+   [
+    "site manager and technical supervision",
+    "electricians and plumbers",
+    "tilers, plasterers, painters",
+    "furniture and ceiling fitters"
+   ]
+  ],
+  [
+   "Works",
+   [
+    "demolition and layout changes",
+    "electrics, plumbing, heating",
+    "screed, plaster, drywall",
+    "tiles, flooring, painting"
+   ]
+  ],
+  [
+   "Guarantees",
+   [
+    "contract and works schedule",
+    "estimate within ±5% when CAS renovates",
+    "regular photo reports",
+    "staged payments"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "A crew you do not need to babysit",
+   [
+    "The main problem with renovation crews is missed deadlines and a price that keeps growing. We work under a contract and a detailed estimate, and a site manager checks every stage. You get reports and pay for completed stages.",
+    "When needed, we bring in a designer and an engineer: drawings help the crew work precisely and without rework."
+   ]
+  ],
+  [
+   "A renovation company, not a random crew",
+   [
+    "Looking for a renovation crew, it is easy to end up with “handymen from an ad” with no contract and no warranty. CAS Development has been a renovation company since 2016: our own crews, site manager, estimator and material supply. 150+ completed projects and a 12-month warranty on works.",
+    "As a renovation company we are responsible for the whole site: from demolition to turnkey renovation and design implementation, and, if needed, turnkey furnishing with furniture and lighting."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1xqY1KZo2JY5xq-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/16fKqdFifd2emf-900.webp",
+   "Office Chicago"
+  ],
+  [
+   "img/p/13a8ks6jQlZ5LY-900.webp",
+   "Office Chicago"
+  ],
+  [
+   "img/p/1rX1eAn3-aYuHF-900.webp",
+   "Dolls Salon"
+  ],
+  [
+   "img/p/11-2l13BlD_4wv-900.webp",
+   "Dolls Salon"
+  ]
+ ],
+ "steps": [
+  [
+   "Survey",
+   "We visit the site and assess the scope."
+  ],
+  [
+   "Estimate",
+   "Works and materials itemised line by line."
+  ],
+  [
+   "Contract",
+   "Price, timeline and stages are fixed."
+  ],
+  [
+   "Works",
+   "The crew follows the schedule, the site manager checks quality."
+  ],
+  [
+   "Acceptance",
+   "Work is handed over stage by stage and signed off."
+  ]
+ ],
+ "faq": [
+  [
+   "What work does your crew do?",
+   "A full turnkey renovation or individual stages: demolition, electrics, plumbing, plastering, tiling, flooring, painting, ceilings, furniture assembly."
+  ],
+  [
+   "How much does a renovation crew cost?",
+   "Turnkey renovation from $550 per m². Individual works are priced after measuring; the price is fixed in the estimate, and if CAS renovates, the total stays within ±5%."
+  ],
+  [
+   "Do you sign a contract?",
+   "Always — with an estimate, schedule and payment stages."
+  ],
+  [
+   "Do you buy the materials yourselves?",
+   "We can purchase and deliver everything ourselves, including directly from China, or work with your materials."
+  ],
+  [
+   "Are you a crew or a renovation company?",
+   "A renovation company with our own crews: we work under a contract, with an estimate, a site manager and a 12-month warranty on works."
+  ],
+  [
+   "Do you renovate to someone else’s design project?",
+   "Yes. First we check the drawings and prepare an estimate, then carry out the renovation and, if you wish, purchase materials and furniture."
+  ]
+ ],
+ "rel": [
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/new-build-renovation",
+   "New-build renovation"
+  ],
+  [
+   "/en/kitchen-renovation",
+   "Kitchen renovation"
+  ],
+  [
+   "/en/bathroom-renovation",
+   "Bathroom renovation"
+  ],
+  [
+   "/en/house-renovation",
+   "House renovation"
+  ],
+  [
+   "/en/office-renovation",
+   "Office renovation"
+  ],
+  [
+   "/en/commercial-renovation",
+   "Commercial renovation"
+  ],
+  [
+   "/en/business-fit-out",
+   "Turnkey business premises"
+  ],
+  [
+   "/en/interior-design",
+   "Interior design"
+  ],
+  [
+   "/en/apartment-interior-design",
+   "Apartment interior design"
+  ],
+  [
+   "/en/interior-designer",
+   "Interior designer"
+  ],
+  [
+   "/en/design-implementation",
+   "Design implementation"
+  ],
+  [
+   "/en/restaurant-design",
+   "Restaurant & café design"
+  ],
+  [
+   "/en/landscape-design",
+   "Landscape design"
+  ],
+  [
+   "/en/house-construction",
+   "House construction"
+  ],
+  [
+   "/en/house-design",
+   "House design"
+  ],
+  [
+   "/en/resort-design",
+   "Holiday resort design"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Turnkey furnishing"
+  ],
+  [
+   "/en/turnkey-procurement",
+   "Turnkey procurement"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Cost calculator"
+  ],
+  [
+   "/en/faq",
+   "FAQ"
+  ],
+  [
+   "/en/contact",
+   "Contact"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

@@ -50,28 +50,39 @@
   ],
   "groups": [
    [
-    "Design",
-    [
-     [
-      "/en/interior-design",
-      "Interior design"
-     ],
-     [
-      "/en/design-implementation",
-      "Design implementation"
-     ]
-    ]
-   ],
-   [
-    "Build & renovate",
+    "Renovation",
     [
      [
       "/en/turnkey-renovation",
       "Turnkey renovation"
      ],
      [
-      "/en/house-construction",
-      "House construction"
+      "/en/new-build-renovation",
+      "New-build renovation"
+     ],
+     [
+      "/en/renovation-crew",
+      "Renovation crew"
+     ],
+     [
+      "/en/bathroom-renovation",
+      "Bathroom renovation"
+     ],
+     [
+      "/en/kitchen-renovation",
+      "Kitchen renovation"
+     ],
+     [
+      "/en/house-renovation",
+      "House renovation"
+     ],
+     [
+      "/en/office-renovation",
+      "Office renovation"
+     ],
+     [
+      "/en/commercial-renovation",
+      "Commercial renovation"
      ],
      [
       "/en/business-fit-out",
@@ -80,11 +91,65 @@
     ]
    ],
    [
-    "Furnishing",
+    "Design",
+    [
+     [
+      "/en/interior-design",
+      "Interior design"
+     ],
+     [
+      "/en/apartment-interior-design",
+      "Apartment interior design"
+     ],
+     [
+      "/en/interior-designer",
+      "Interior designer"
+     ],
+     [
+      "/en/design-implementation",
+      "Design implementation"
+     ],
+     [
+      "/en/restaurant-design",
+      "Restaurant & café design"
+     ],
+     [
+      "/en/landscape-design",
+      "Landscape design"
+     ]
+    ]
+   ],
+   [
+    "Houses",
+    [
+     [
+      "/en/house-construction",
+      "House construction"
+     ],
+     [
+      "/en/house-design",
+      "House design"
+     ],
+     [
+      "/en/resort-design",
+      "Holiday resort design"
+     ]
+    ]
+   ],
+   [
+    "Furnishing & tools",
     [
      [
       "/en/turnkey-furnishing",
       "Turnkey furnishing"
+     ],
+     [
+      "/en/turnkey-procurement",
+      "Turnkey procurement"
+     ],
+     [
+      "/en/renovation-cost-calculator",
+      "Cost calculator"
      ]
     ]
    ],

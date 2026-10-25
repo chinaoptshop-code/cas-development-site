@@ -1,0 +1,208 @@
+{
+ "slug": "hausplanung",
+ "lang": "de",
+ "service": "Planung eines Einfamilienhauses",
+ "title": "Hausplanung und Innenarchitektur in Kyjiw",
+ "description": "Architektur- und Innenarchitekturplanung für Ihr Haus: Grundrisse, Fassaden, 3D, Ausführungspläne. Design ab $30/m², schlüsselfertiger Bau ab $1 100/m².",
+ "h1": "Planung eines Einfamilienhauses",
+ "price": "Design ab $30 / m² · Bau schlüsselfertig ab $1 100 / m²",
+ "lead": "Ein Haus, durchdacht von der Fassade bis zur Steckdose: Architektur, Grundrisse für Ihre Familie, Interieur und Außenanlagen — ein Team vom ersten Entwurf bis zur Schlüsselübergabe.",
+ "cards": [
+  [
+   "Architektur",
+   [
+    "Entwurf und Baukörper",
+    "Grundrisse der Geschosse",
+    "Fassaden und Materialien",
+    "Einfügung ins Grundstück"
+   ]
+  ],
+  [
+   "Interieur",
+   [
+    "Design aller Räume",
+    "3D-Visualisierungen",
+    "Licht, Möbel, Materialien",
+    "Spezifikationen"
+   ]
+  ],
+  [
+   "Bau",
+   [
+    "Kostenvoranschlag und Zeitplan",
+    "Bau mit schlüsselfertigem Ausbau",
+    "Einrichtung aus China",
+    "Bauüberwachung durch die Planer"
+   ]
+  ]
+ ],
+ "about": [],
+ "gallery": [
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1kHF6cjS291puf-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1C16Cd6bvENPGL-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1g-E1m6cFJ9kvH-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1pF5ohNHdSnme0-900.webp",
+   "A-Frame House"
+  ]
+ ],
+ "steps": [
+  [
+   "Kennenlernen",
+   "Grundstück, Familie, Wünsche, Budget."
+  ],
+  [
+   "Entwurf",
+   "Wir schlagen Baukörper und Grundrisse vor und überarbeiten sie nach Ihren Wünschen."
+  ],
+  [
+   "Planung und 3D",
+   "Fassaden, Interieurs, Visualisierungen — Sie sehen das Haus vor Baubeginn."
+  ],
+  [
+   "Ausführungspläne",
+   "Unterlagen, nach denen die Bauleute ohne Rätselraten arbeiten."
+  ],
+  [
+   "Bau",
+   "Auf Wunsch bauen wir schlüsselfertig — ab $1 100 pro m²."
+  ]
+ ],
+ "faq": [
+  [
+   "Was kostet eine Hausplanung?",
+   "Design ab $30 pro m², Mindestbudget des Projekts $2 500. Den genauen Preis nennen wir, nachdem wir Grundstück und Aufgabe kennen."
+  ],
+  [
+   "Was kostet ein schlüsselfertiges Haus?",
+   "Bau mit schlüsselfertigem Ausbau — ab $1 100 pro m². Möbel und Ausstattung berechnen wir separat; wir können sie direkt aus China liefern."
+  ],
+  [
+   "Planen Sie auch Interieur und Außenanlagen?",
+   "Ja — Architektur, Interieur und Außenanlagen in einem Projekt."
+  ],
+  [
+   "Wo arbeiten Sie?",
+   "In Kyjiw und Umgebung, in der ganzen Ukraine, in Europa und weltweit."
+  ]
+ ],
+ "rel": [
+  [
+   "/de/renovierung-schluesselfertig",
+   "Schlüsselfertige Renovierung"
+  ],
+  [
+   "/de/neubauwohnung-ausbau",
+   "Ausbau von Neubauwohnungen"
+  ],
+  [
+   "/de/kuechenrenovierung",
+   "Küchenrenovierung"
+  ],
+  [
+   "/de/badsanierung",
+   "Badsanierung"
+  ],
+  [
+   "/de/haussanierung",
+   "Haussanierung"
+  ],
+  [
+   "/de/bueroumbau",
+   "Büroumbau"
+  ],
+  [
+   "/de/gewerberaeume-renovierung",
+   "Renovierung von Gewerberäumen"
+  ],
+  [
+   "/de/gewerbe-schluesselfertig",
+   "Gewerberäume schlüsselfertig"
+  ],
+  [
+   "/de/handwerkerteam",
+   "Handwerkerteam"
+  ],
+  [
+   "/de/innenarchitektur",
+   "Innenarchitektur"
+  ],
+  [
+   "/de/wohnungsdesign",
+   "Wohnungsdesign"
+  ],
+  [
+   "/de/innenarchitekt",
+   "Innenarchitekt"
+  ],
+  [
+   "/de/umsetzung-designprojekt",
+   "Umsetzung von Designprojekten"
+  ],
+  [
+   "/de/restaurantdesign",
+   "Restaurant- und Café-Design"
+  ],
+  [
+   "/de/gartengestaltung",
+   "Gartengestaltung"
+  ],
+  [
+   "/de/hausbau",
+   "Hausbau"
+  ],
+  [
+   "/de/ferienanlage-schluesselfertig",
+   "Ferienanlage schlüsselfertig"
+  ],
+  [
+   "/de/einrichtung-schluesselfertig",
+   "Schlüsselfertige Einrichtung"
+  ],
+  [
+   "/de/objekteinrichtung",
+   "Objekteinrichtung"
+  ],
+  [
+   "/de/renovierungskosten-rechner",
+   "Kostenrechner"
+  ],
+  [
+   "/de/faq",
+   "FAQ"
+  ],
+  [
+   "/de/kontakt",
+   "Kontakt"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

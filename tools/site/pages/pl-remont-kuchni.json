@@ -1,0 +1,208 @@
+{
+ "slug": "remont-kuchni",
+ "lang": "pl",
+ "service": "Remont kuchni pod klucz",
+ "title": "Remont kuchni pod klucz w Kijowie | CAS Development",
+ "description": "Remont kuchni pod klucz w Kijowie: układ, elektryka i hydraulika pod sprzęt, panel nad blatem, podłoga, meble na wymiar. Kosztorys ±5%, jeśli remont robi CAS.",
+ "h1": "Remont kuchni pod klucz w Kijowie",
+ "price": "kuchnia na wymiar · kosztorys ±5%, jeśli remont robi CAS",
+ "lead": "Kuchnia, w której wygodnie się gotuje: przemyślany układ, gniazdka tam, gdzie stoi sprzęt, dobre światło nad blatem i meble dopasowane do Twoich wymiarów. Od remontu po zamontowaną kuchnię — jeden zespół.",
+ "guarantees": true,
+ "cards": [
+  [
+   "Układ",
+   [
+    "trójkąt roboczy i wyspa",
+    "połączenie z salonem",
+    "gniazdka i przyłącza pod sprzęt",
+    "okap i wentylacja"
+   ]
+  ],
+  [
+   "Remont",
+   [
+    "elektryka i hydraulika",
+    "podłogi i ściany",
+    "panel nad blatem: płytki, spiek, szkło",
+    "oświetlenie: ogólne, robocze, dekoracyjne"
+   ]
+  ],
+  [
+   "Meble",
+   [
+    "kuchnia na wymiar",
+    "blaty: kamień, spiek",
+    "sprzęt AGD i zlewy",
+    "meble prosto z Chin"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Kuchnia przemyślana co do gniazdka",
+   [
+    "Najczęstszy błąd to remont, zanim ustali się, gdzie stanie sprzęt. My najpierw projektujemy kuchnię, a potem prowadzimy elektrykę i wodę dokładnie pod nią — dzięki temu nic nie trzeba kuć drugi raz."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1MslU7S5X8gIEp-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1YQyhjEui9fb6v-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "Brief",
+   "Jak gotujesz, jaki masz sprzęt, jaki budżet."
+  ],
+  [
+   "Projekt",
+   "Układ, 3D, rysunki mebli."
+  ],
+  [
+   "Kosztorys",
+   "Remont i meble w jednym zestawieniu; jeśli remont robi CAS, wynik mieści się w ±5%."
+  ],
+  [
+   "Remont",
+   "Własna ekipa przygotowuje pomieszczenie pod meble."
+  ],
+  [
+   "Montaż",
+   "Montujemy kuchnię i sprzęt, sprzątamy."
+  ]
+ ],
+ "faq": [
+  [
+   "Ile kosztuje remont kuchni pod klucz?",
+   "To zależy od metrażu, mebli i sprzętu. Dokładną kwotę podajemy po pomiarze i projekcie i zapisujemy w kosztorysie; jeśli remont wykonuje CAS, wynik mieści się w ±5%."
+  ],
+  [
+   "Czy robicie meble kuchenne?",
+   "Tak, na wymiar; część mebli i sprzętu możemy sprowadzić bezpośrednio z Chin."
+  ],
+  [
+   "Czy można połączyć kuchnię z salonem?",
+   "Tak, jeśli ściana nie jest nośna; sprawdzamy to i uzgadniamy zmianę układu."
+  ],
+  [
+   "Gdzie pracujecie?",
+   "Kijów i obwód kijowski, cała Ukraina, Europa i świat."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-pod-klucz",
+   "Remont pod klucz"
+  ],
+  [
+   "/pl/remont-mieszkania-deweloperskiego",
+   "Remont mieszkania deweloperskiego"
+  ],
+  [
+   "/pl/remont-lazienki",
+   "Remont łazienki"
+  ],
+  [
+   "/pl/remont-domu",
+   "Remont domu"
+  ],
+  [
+   "/pl/remont-biura",
+   "Remont biura"
+  ],
+  [
+   "/pl/remont-lokali-uzytkowych",
+   "Remont lokali użytkowych"
+  ],
+  [
+   "/pl/biznes-pod-klucz",
+   "Lokale biznesowe pod klucz"
+  ],
+  [
+   "/pl/ekipa-remontowa",
+   "Ekipa remontowa"
+  ],
+  [
+   "/pl/projektowanie-wnetrz",
+   "Projektowanie wnętrz"
+  ],
+  [
+   "/pl/projekt-wnetrza-mieszkania",
+   "Projekt wnętrza mieszkania"
+  ],
+  [
+   "/pl/projektant-wnetrz",
+   "Projektant wnętrz"
+  ],
+  [
+   "/pl/realizacja-projektu",
+   "Realizacja projektu"
+  ],
+  [
+   "/pl/projektowanie-restauracji",
+   "Projektowanie restauracji i kawiarni"
+  ],
+  [
+   "/pl/projektowanie-ogrodow",
+   "Projektowanie ogrodów"
+  ],
+  [
+   "/pl/budowa-domow",
+   "Budowa domów"
+  ],
+  [
+   "/pl/projekt-domu",
+   "Projekt domu"
+  ],
+  [
+   "/pl/osrodek-wypoczynkowy-pod-klucz",
+   "Ośrodek wypoczynkowy pod klucz"
+  ],
+  [
+   "/pl/umeblowanie-pod-klucz",
+   "Umeblowanie pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów"
+  ],
+  [
+   "/pl/faq",
+   "FAQ"
+  ],
+  [
+   "/pl/kontakt",
+   "Kontakt"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

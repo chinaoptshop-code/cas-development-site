@@ -1,0 +1,207 @@
+{
+ "slug": "projektowanie-ogrodow",
+ "lang": "pl",
+ "service": "Projektowanie ogrodów",
+ "title": "Projektowanie ogrodów i zagospodarowanie działki w Kijowie",
+ "description": "Projektowanie ogrodów w Kijowie i okolicach: projekt ogrodu i działki, ścieżki, tarasy, oświetlenie, zieleń. Projektujemy i urządzamy pod klucz.",
+ "h1": "Projektowanie ogrodów i zagospodarowanie działki",
+ "price": "projekt ogrodu · zagospodarowanie · oświetlenie zewnętrzne",
+ "lead": "Projektujemy i urządzamy ogrody oraz otoczenie domów: podział działki na strefy, ścieżki, tarasy, miejsca wypoczynku, oświetlenie i zieleń. Działka staje się przedłużeniem domu.",
+ "cards": [
+  [
+   "Projekt",
+   [
+    "plan zagospodarowania i strefy",
+    "wizualizacje 3D",
+    "plan nasadzeń i dobór roślin",
+    "schemat oświetlenia i nawadniania"
+   ]
+  ],
+  [
+   "Zagospodarowanie",
+   [
+    "ścieżki i nawierzchnie",
+    "tarasy i strefy wypoczynku",
+    "trawnik i nasadzenia",
+    "oświetlenie ogrodowe"
+   ]
+  ],
+  [
+   "Razem z domem",
+   [
+    "powiązanie z architekturą",
+    "basen i strefa grillowa",
+    "parking i wjazd",
+    "nadzór autorski"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Ogród zaplanowany razem z domem",
+   [
+    "Ogród wychodzi najlepiej, gdy planuje się go równocześnie z domem: okna wychodzą na właściwe widoki, taras stoi po dobrej stronie, a instalacji nie trzeba rozkopywać. Architekturę, wnętrza i ogród prowadzimy jednym zespołem."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1FiLI9kKE-C87h-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1hXV_Pz6_GfnXe-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1FRa0FI6iMHK5L-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/1f3m1_qf4mDosh-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/1kHF6cjS291puf-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1C16Cd6bvENPGL-900.webp",
+   "Smart Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "Oględziny działki",
+   "Oceniamy ukształtowanie terenu, glebę i istniejącą zieleń."
+  ],
+  [
+   "Koncepcja",
+   "Strefy i styl ogrodu."
+  ],
+  [
+   "Projekt i 3D",
+   "Pokazujemy działkę przed rozpoczęciem prac."
+  ],
+  [
+   "Kosztorys",
+   "Materiały, rośliny, prace."
+  ],
+  [
+   "Realizacja",
+   "Urządzamy działkę pod klucz."
+  ]
+ ],
+ "faq": [
+  [
+   "Ile kosztuje projekt ogrodu?",
+   "To zależy od wielkości działki i zakresu prac. Dokładną cenę podajemy po oględzinach."
+  ],
+  [
+   "Czy urządzacie ogród, a nie tylko go projektujecie?",
+   "Tak, projektujemy i realizujemy pod klucz."
+  ],
+  [
+   "Czy można to połączyć z budową domu?",
+   "Tak, ogród projektujemy razem z architekturą domu."
+  ],
+  [
+   "Gdzie pracujecie?",
+   "Kijów i obwód kijowski, cała Ukraina, Europa i świat."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-pod-klucz",
+   "Remont pod klucz"
+  ],
+  [
+   "/pl/remont-mieszkania-deweloperskiego",
+   "Remont mieszkania deweloperskiego"
+  ],
+  [
+   "/pl/remont-kuchni",
+   "Remont kuchni"
+  ],
+  [
+   "/pl/remont-lazienki",
+   "Remont łazienki"
+  ],
+  [
+   "/pl/remont-domu",
+   "Remont domu"
+  ],
+  [
+   "/pl/remont-biura",
+   "Remont biura"
+  ],
+  [
+   "/pl/remont-lokali-uzytkowych",
+   "Remont lokali użytkowych"
+  ],
+  [
+   "/pl/biznes-pod-klucz",
+   "Lokale biznesowe pod klucz"
+  ],
+  [
+   "/pl/ekipa-remontowa",
+   "Ekipa remontowa"
+  ],
+  [
+   "/pl/projektowanie-wnetrz",
+   "Projektowanie wnętrz"
+  ],
+  [
+   "/pl/projekt-wnetrza-mieszkania",
+   "Projekt wnętrza mieszkania"
+  ],
+  [
+   "/pl/projektant-wnetrz",
+   "Projektant wnętrz"
+  ],
+  [
+   "/pl/realizacja-projektu",
+   "Realizacja projektu"
+  ],
+  [
+   "/pl/projektowanie-restauracji",
+   "Projektowanie restauracji i kawiarni"
+  ],
+  [
+   "/pl/budowa-domow",
+   "Budowa domów"
+  ],
+  [
+   "/pl/projekt-domu",
+   "Projekt domu"
+  ],
+  [
+   "/pl/osrodek-wypoczynkowy-pod-klucz",
+   "Ośrodek wypoczynkowy pod klucz"
+  ],
+  [
+   "/pl/umeblowanie-pod-klucz",
+   "Umeblowanie pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów"
+  ],
+  [
+   "/pl/faq",
+   "FAQ"
+  ],
+  [
+   "/pl/kontakt",
+   "Kontakt"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

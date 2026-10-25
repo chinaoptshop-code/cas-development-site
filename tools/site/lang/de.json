@@ -50,28 +50,39 @@
   ],
   "groups": [
    [
-    "Design",
-    [
-     [
-      "/de/innenarchitektur",
-      "Innenarchitektur"
-     ],
-     [
-      "/de/umsetzung-designprojekt",
-      "Umsetzung von Designprojekten"
-     ]
-    ]
-   ],
-   [
-    "Bauen & Renovieren",
+    "Renovieren",
     [
      [
       "/de/renovierung-schluesselfertig",
       "Schlüsselfertige Renovierung"
      ],
      [
-      "/de/hausbau",
-      "Hausbau"
+      "/de/neubauwohnung-ausbau",
+      "Ausbau von Neubauwohnungen"
+     ],
+     [
+      "/de/handwerkerteam",
+      "Handwerkerteam"
+     ],
+     [
+      "/de/badsanierung",
+      "Badsanierung"
+     ],
+     [
+      "/de/kuechenrenovierung",
+      "Küchenrenovierung"
+     ],
+     [
+      "/de/haussanierung",
+      "Haussanierung"
+     ],
+     [
+      "/de/bueroumbau",
+      "Büroumbau"
+     ],
+     [
+      "/de/gewerberaeume-renovierung",
+      "Renovierung von Gewerberäumen"
      ],
      [
       "/de/gewerbe-schluesselfertig",
@@ -80,11 +91,65 @@
     ]
    ],
    [
-    "Einrichtung",
+    "Design",
+    [
+     [
+      "/de/innenarchitektur",
+      "Innenarchitektur"
+     ],
+     [
+      "/de/wohnungsdesign",
+      "Wohnungsdesign"
+     ],
+     [
+      "/de/innenarchitekt",
+      "Innenarchitekt"
+     ],
+     [
+      "/de/umsetzung-designprojekt",
+      "Umsetzung von Designprojekten"
+     ],
+     [
+      "/de/restaurantdesign",
+      "Restaurant- und Café-Design"
+     ],
+     [
+      "/de/gartengestaltung",
+      "Gartengestaltung"
+     ]
+    ]
+   ],
+   [
+    "Häuser",
+    [
+     [
+      "/de/hausbau",
+      "Hausbau"
+     ],
+     [
+      "/de/hausplanung",
+      "Hausplanung"
+     ],
+     [
+      "/de/ferienanlage-schluesselfertig",
+      "Ferienanlage schlüsselfertig"
+     ]
+    ]
+   ],
+   [
+    "Einrichtung & Tools",
     [
      [
       "/de/einrichtung-schluesselfertig",
       "Schlüsselfertige Einrichtung"
+     ],
+     [
+      "/de/objekteinrichtung",
+      "Objekteinrichtung"
+     ],
+     [
+      "/de/renovierungskosten-rechner",
+      "Kostenrechner"
      ]
     ]
    ],

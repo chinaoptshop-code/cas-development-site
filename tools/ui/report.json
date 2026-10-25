@@ -29,17 +29,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 1
  },
  {
   "page": "ar/about.html",
   "kind": "land",
-  "html_kb": 41.0,
-  "gzip_kb": 11.9,
+  "html_kb": 40.1,
+  "gzip_kb": 11.7,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 315,
+  "tags": 300,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -59,223 +60,14 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/apartment-design.html",
-  "kind": "land",
-  "html_kb": 44.2,
-  "gzip_kb": 12.0,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 350,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/bathroom-renovation.html",
-  "kind": "land",
-  "html_kb": 45.4,
-  "gzip_kb": 12.4,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 361,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ar/business-fit-out.html",
   "kind": "land",
-  "html_kb": 46.0,
-  "gzip_kb": 12.7,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 352,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/commercial-renovation.html",
-  "kind": "land",
   "html_kb": 45.0,
-  "gzip_kb": 12.3,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 366,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/contact.html",
-  "kind": "land",
-  "html_kb": 36.9,
-  "gzip_kb": 10.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 256,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 9,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/design-implementation.html",
-  "kind": "land",
-  "html_kb": 45.1,
-  "gzip_kb": 12.5,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 349,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/faq.html",
-  "kind": "land",
-  "html_kb": 43.0,
-  "gzip_kb": 11.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 302,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/furnishing.html",
-  "kind": "land",
-  "html_kb": 43.7,
-  "gzip_kb": 12.3,
+  "gzip_kb": 12.4,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
@@ -299,440 +91,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
-  "page": "ar/house-construction.html",
+  "page": "ar/contact.html",
   "kind": "land",
-  "html_kb": 44.8,
-  "gzip_kb": 12.4,
+  "html_kb": 35.9,
+  "gzip_kb": 10.4,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 355,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/house-design.html",
-  "kind": "land",
-  "html_kb": 43.9,
-  "gzip_kb": 11.9,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 346,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/house-renovation.html",
-  "kind": "land",
-  "html_kb": 45.6,
-  "gzip_kb": 12.3,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 366,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/index.html",
-  "kind": "land",
-  "html_kb": 45.3,
-  "gzip_kb": 12.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 363,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/interior-design.html",
-  "kind": "land",
-  "html_kb": 44.6,
-  "gzip_kb": 12.3,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 343,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/interior-designer.html",
-  "kind": "land",
-  "html_kb": 43.9,
-  "gzip_kb": 12.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 345,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/kitchen-renovation.html",
-  "kind": "land",
-  "html_kb": 44.8,
-  "gzip_kb": 12.3,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 360,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/landscape-design.html",
-  "kind": "land",
-  "html_kb": 43.1,
-  "gzip_kb": 11.9,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 344,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/new-build-renovation.html",
-  "kind": "land",
-  "html_kb": 45.1,
-  "gzip_kb": 12.3,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 361,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/office-renovation.html",
-  "kind": "land",
-  "html_kb": 46.1,
-  "gzip_kb": 12.5,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 363,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/renovation-calculator.html",
-  "kind": "land",
-  "html_kb": 45.1,
-  "gzip_kb": 12.4,
-  "css_kb": 14.3,
-  "js_kb": 8.0,
-  "font_sizes": 6,
-  "tags": 342,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [
-   "$165 000 ",
-   "$33 000 "
-  ],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/renovation-crew.html",
-  "kind": "land",
-  "html_kb": 46.6,
-  "gzip_kb": 12.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 372,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/resort-turnkey.html",
-  "kind": "land",
-  "html_kb": 43.5,
-  "gzip_kb": 11.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 340,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/restaurant-design.html",
-  "kind": "land",
-  "html_kb": 44.2,
-  "gzip_kb": 11.9,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 340,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/services.html",
-  "kind": "land",
-  "html_kb": 40.7,
-  "gzip_kb": 11.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 339,
+  "tags": 241,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -752,47 +122,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
-  "page": "ar/turnkey-procurement.html",
+  "page": "ar/design-implementation.html",
   "kind": "land",
-  "html_kb": 47.9,
-  "gzip_kb": 12.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 357,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "ar/turnkey-renovation.html",
-  "kind": "land",
-  "html_kb": 44.4,
+  "html_kb": 44.1,
   "gzip_kb": 12.3,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 349,
+  "tags": 334,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -812,17 +153,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
-  "page": "baza-vidpochynku-pid-klyuch.html",
+  "page": "ar/faq.html",
   "kind": "land",
-  "html_kb": 44.0,
-  "gzip_kb": 12.1,
-  "css_kb": 13.4,
+  "html_kb": 42.0,
+  "gzip_kb": 11.4,
+  "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 353,
+  "tags": 287,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -830,7 +172,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 10,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -842,6 +184,224 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/furnishing.html",
+  "kind": "land",
+  "html_kb": 42.7,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 322,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/house-construction.html",
+  "kind": "land",
+  "html_kb": 43.8,
+  "gzip_kb": 12.2,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 340,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/index.html",
+  "kind": "land",
+  "html_kb": 44.3,
+  "gzip_kb": 12.3,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 348,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/interior-design.html",
+  "kind": "land",
+  "html_kb": 43.6,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 328,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/services.html",
+  "kind": "land",
+  "html_kb": 39.7,
+  "gzip_kb": 11.4,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 324,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 9,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/turnkey-renovation.html",
+  "kind": "land",
+  "html_kb": 43.4,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 334,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "baza-vidpochynku-pid-klyuch.html",
+  "kind": "land",
+  "html_kb": 43.8,
+  "gzip_kb": 12.1,
+  "css_kb": 13.4,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 352,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -874,6 +434,7 @@
    "$52 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -904,6 +465,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -934,6 +496,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -968,6 +531,7 @@
    "$90 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1001,6 +565,7 @@
    "$90 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1037,6 +602,7 @@
    "$6 300  "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1069,6 +635,7 @@
    "$7 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1101,6 +668,7 @@
    "$2 700"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1133,6 +701,7 @@
    "$3 600 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1165,6 +734,7 @@
    "$38 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1201,6 +771,7 @@
    "$9 000  "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1231,6 +802,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1264,6 +836,7 @@
    "$330 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1297,6 +870,7 @@
    "$17 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1327,6 +901,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1360,6 +935,7 @@
    "$17 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1392,6 +968,7 @@
    "$15 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1428,6 +1005,7 @@
    "$82 500  "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1462,6 +1040,7 @@
    "$90 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1494,6 +1073,7 @@
    "$55 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1528,6 +1108,7 @@
    "$76 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1560,6 +1141,7 @@
    "$70 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1590,6 +1172,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1623,6 +1206,7 @@
    "$3 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1655,6 +1239,7 @@
    "$3 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1688,6 +1273,7 @@
    "$33 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1725,6 +1311,7 @@
    "$55 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1760,6 +1347,7 @@
    "$82 500  "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1795,6 +1383,7 @@
    "$49 500  "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1827,6 +1416,7 @@
    "$3 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1860,6 +1450,7 @@
    "$44 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1892,6 +1483,7 @@
    "$3 600"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1924,6 +1516,7 @@
    "$3 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1954,6 +1547,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -1986,6 +1580,7 @@
    "$38 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2016,6 +1611,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2048,317 +1644,80 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 2
  },
  {
+  "page": "de/badsanierung.html",
+  "kind": "land",
+  "html_kb": 42.5,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 364,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/bueroumbau.html",
+  "kind": "land",
+  "html_kb": 43.5,
+  "gzip_kb": 12.2,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 369,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "de/einrichtung-schluesselfertig.html",
-  "kind": "land",
-  "html_kb": 40.9,
-  "gzip_kb": 11.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 324,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "de/faq.html",
-  "kind": "land",
-  "html_kb": 40.2,
-  "gzip_kb": 11.2,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 289,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "de/gewerbe-schluesselfertig.html",
-  "kind": "land",
-  "html_kb": 42.1,
-  "gzip_kb": 12.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 339,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "de/hausbau.html",
-  "kind": "land",
-  "html_kb": 41.3,
-  "gzip_kb": 11.9,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 342,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "de/index.html",
-  "kind": "land",
-  "html_kb": 41.7,
-  "gzip_kb": 12.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 350,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "de/innenarchitektur.html",
-  "kind": "land",
-  "html_kb": 41.2,
-  "gzip_kb": 11.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 330,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "de/kontakt.html",
-  "kind": "land",
-  "html_kb": 34.9,
-  "gzip_kb": 10.2,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 243,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 9,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "de/leistungen.html",
-  "kind": "land",
-  "html_kb": 37.7,
-  "gzip_kb": 11.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 326,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 9,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "de/renovierung-schluesselfertig.html",
-  "kind": "land",
-  "html_kb": 41.2,
-  "gzip_kb": 11.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 336,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "de/ueber-uns.html",
-  "kind": "land",
-  "html_kb": 38.3,
-  "gzip_kb": 11.4,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 302,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 9,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "de/umsetzung-designprojekt.html",
   "kind": "land",
   "html_kb": 41.7,
   "gzip_kb": 12.0,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 336,
+  "tags": 341,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -2378,17 +1737,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
-  "page": "dyzain-interieru-kvartyry-kyiv.html",
+  "page": "de/faq.html",
   "kind": "land",
-  "html_kb": 46.8,
-  "gzip_kb": 12.7,
-  "css_kb": 13.4,
+  "html_kb": 41.0,
+  "gzip_kb": 11.4,
+  "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 368,
+  "tags": 306,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -2396,7 +1756,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 10,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -2408,6 +1768,723 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/ferienanlage-schluesselfertig.html",
+  "kind": "land",
+  "html_kb": 41.0,
+  "gzip_kb": 11.5,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 343,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/gartengestaltung.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.6,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 347,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/gewerbe-schluesselfertig.html",
+  "kind": "land",
+  "html_kb": 42.9,
+  "gzip_kb": 12.3,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 356,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/gewerberaeume-renovierung.html",
+  "kind": "land",
+  "html_kb": 42.9,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 372,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/handwerkerteam.html",
+  "kind": "land",
+  "html_kb": 43.8,
+  "gzip_kb": 12.4,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 375,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/hausbau.html",
+  "kind": "land",
+  "html_kb": 42.1,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 359,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/hausplanung.html",
+  "kind": "land",
+  "html_kb": 41.1,
+  "gzip_kb": 11.5,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 349,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/haussanierung.html",
+  "kind": "land",
+  "html_kb": 42.7,
+  "gzip_kb": 12.0,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 369,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/index.html",
+  "kind": "land",
+  "html_kb": 42.5,
+  "gzip_kb": 12.3,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 367,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitekt.html",
+  "kind": "land",
+  "html_kb": 41.5,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 348,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur.html",
+  "kind": "land",
+  "html_kb": 42.0,
+  "gzip_kb": 12.0,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 347,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/kontakt.html",
+  "kind": "land",
+  "html_kb": 35.7,
+  "gzip_kb": 10.4,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 260,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 9,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/kuechenrenovierung.html",
+  "kind": "land",
+  "html_kb": 42.0,
+  "gzip_kb": 12.0,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 363,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/leistungen.html",
+  "kind": "land",
+  "html_kb": 39.3,
+  "gzip_kb": 11.4,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 358,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 9,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/neubauwohnung-ausbau.html",
+  "kind": "land",
+  "html_kb": 42.4,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 364,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/objekteinrichtung.html",
+  "kind": "land",
+  "html_kb": 44.5,
+  "gzip_kb": 12.5,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 358,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/renovierung-schluesselfertig.html",
+  "kind": "land",
+  "html_kb": 42.1,
+  "gzip_kb": 12.0,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 353,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/renovierungskosten-rechner.html",
+  "kind": "land",
+  "html_kb": 42.8,
+  "gzip_kb": 12.2,
+  "css_kb": 14.3,
+  "js_kb": 8.0,
+  "font_sizes": 6,
+  "tags": 345,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$165 000 ",
+   "$33 000 "
+  ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/restaurantdesign.html",
+  "kind": "land",
+  "html_kb": 41.4,
+  "gzip_kb": 11.7,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 343,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/ueber-uns.html",
+  "kind": "land",
+  "html_kb": 39.1,
+  "gzip_kb": 11.6,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 319,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 9,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/umsetzung-designprojekt.html",
+  "kind": "land",
+  "html_kb": 42.6,
+  "gzip_kb": 12.2,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 353,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/wohnungsdesign.html",
+  "kind": "land",
+  "html_kb": 42.0,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 356,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "dyzain-interieru-kvartyry-kyiv.html",
+  "kind": "land",
+  "html_kb": 46.7,
+  "gzip_kb": 12.7,
+  "css_kb": 13.4,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 367,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -2438,14 +2515,263 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "dyzain-restoranu-kafe-kyiv.html",
   "kind": "land",
-  "html_kb": 44.9,
+  "html_kb": 44.7,
   "gzip_kb": 12.3,
   "css_kb": 13.4,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 352,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "dyzainer-interieru-kyiv.html",
+  "kind": "land",
+  "html_kb": 44.4,
+  "gzip_kb": 12.5,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 343,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/about.html",
+  "kind": "land",
+  "html_kb": 38.6,
+  "gzip_kb": 11.3,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 319,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 9,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/apartment-interior-design.html",
+  "kind": "land",
+  "html_kb": 41.6,
+  "gzip_kb": 11.5,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 356,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/bathroom-renovation.html",
+  "kind": "land",
+  "html_kb": 42.1,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 364,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/business-fit-out.html",
+  "kind": "land",
+  "html_kb": 42.5,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 356,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/commercial-renovation.html",
+  "kind": "land",
+  "html_kb": 42.3,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 372,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/contact.html",
+  "kind": "land",
+  "html_kb": 35.4,
+  "gzip_kb": 10.2,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 260,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 9,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-implementation.html",
+  "kind": "land",
+  "html_kb": 42.2,
+  "gzip_kb": 12.0,
+  "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
   "tags": 353,
@@ -2456,96 +2782,6 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "dyzainer-interieru-kyiv.html",
-  "kind": "land",
-  "html_kb": 44.6,
-  "gzip_kb": 12.5,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 344,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "en/about.html",
-  "kind": "land",
-  "html_kb": 37.7,
-  "gzip_kb": 11.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 302,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 9,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "en/business-fit-out.html",
-  "kind": "land",
-  "html_kb": 41.6,
-  "gzip_kb": 11.9,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 339,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
   "hreflang": 10,
   "canonical": true,
   "h1_count": 1,
@@ -2558,77 +2794,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "en/contact.html",
-  "kind": "land",
-  "html_kb": 34.6,
-  "gzip_kb": 10.0,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 243,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 9,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "en/design-implementation.html",
-  "kind": "land",
-  "html_kb": 41.4,
-  "gzip_kb": 11.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 336,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "en/faq.html",
   "kind": "land",
-  "html_kb": 39.6,
-  "gzip_kb": 10.9,
+  "html_kb": 40.4,
+  "gzip_kb": 11.1,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 289,
+  "tags": 306,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -2648,17 +2825,173 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "en/house-construction.html",
+  "kind": "land",
+  "html_kb": 42.0,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 359,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/house-design.html",
+  "kind": "land",
+  "html_kb": 40.7,
+  "gzip_kb": 11.3,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 349,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/house-renovation.html",
+  "kind": "land",
+  "html_kb": 42.3,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 369,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/index.html",
+  "kind": "land",
+  "html_kb": 42.1,
+  "gzip_kb": 12.0,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 367,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/interior-design.html",
+  "kind": "land",
+  "html_kb": 41.6,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 347,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/interior-designer.html",
   "kind": "land",
   "html_kb": 41.2,
   "gzip_kb": 11.6,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 342,
+  "tags": 348,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -2666,7 +2999,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 10,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -2678,17 +3011,80 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
-  "page": "en/index.html",
+  "page": "en/kitchen-renovation.html",
   "kind": "land",
-  "html_kb": 41.3,
+  "html_kb": 41.7,
+  "gzip_kb": 11.7,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 363,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/landscape-design.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.3,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 347,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/new-build-renovation.html",
+  "kind": "land",
+  "html_kb": 42.1,
   "gzip_kb": 11.8,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 350,
+  "tags": 364,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -2696,7 +3092,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 10,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -2708,17 +3104,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
-  "page": "en/interior-design.html",
+  "page": "en/office-renovation.html",
   "kind": "land",
-  "html_kb": 40.8,
-  "gzip_kb": 11.6,
+  "html_kb": 42.9,
+  "gzip_kb": 12.0,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 330,
+  "tags": 369,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -2726,7 +3123,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 10,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -2738,17 +3135,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "en/privacy-policy.html",
   "kind": "land",
-  "html_kb": 32.1,
-  "gzip_kb": 9.7,
+  "html_kb": 32.9,
+  "gzip_kb": 9.9,
   "css_kb": 13.6,
   "js_kb": 7.0,
   "font_sizes": 9,
-  "tags": 186,
+  "tags": 203,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -2768,17 +3166,145 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/renovation-cost-calculator.html",
+  "kind": "land",
+  "html_kb": 42.4,
+  "gzip_kb": 11.9,
+  "css_kb": 14.3,
+  "js_kb": 7.9,
+  "font_sizes": 6,
+  "tags": 345,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$165 000 ",
+   "$33 000 "
+  ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/renovation-crew.html",
+  "kind": "land",
+  "html_kb": 43.3,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 375,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/resort-design.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.3,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 343,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/restaurant-design.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.4,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 343,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "en/services.html",
   "kind": "land",
-  "html_kb": 37.4,
-  "gzip_kb": 10.9,
+  "html_kb": 39.1,
+  "gzip_kb": 11.1,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 326,
+  "tags": 358,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -2798,13 +3324,107 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "en/turnkey-furnishing.html",
   "kind": "land",
-  "html_kb": 40.5,
-  "gzip_kb": 11.5,
+  "html_kb": 41.3,
+  "gzip_kb": 11.7,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 341,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/turnkey-procurement.html",
+  "kind": "land",
+  "html_kb": 44.0,
+  "gzip_kb": 12.2,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 358,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/turnkey-renovation.html",
+  "kind": "land",
+  "html_kb": 41.6,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 353,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/amueblamiento-llave-en-mano.html",
+  "kind": "land",
+  "html_kb": 41.0,
+  "gzip_kb": 11.7,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
@@ -2828,13 +3448,107 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
-  "page": "en/turnkey-renovation.html",
+  "page": "es/construccion-de-casas.html",
   "kind": "land",
-  "html_kb": 40.8,
-  "gzip_kb": 11.6,
+  "html_kb": 41.7,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 342,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/contacto.html",
+  "kind": "land",
+  "html_kb": 35.0,
+  "gzip_kb": 10.2,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 243,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 9,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-interiores.html",
+  "kind": "land",
+  "html_kb": 41.4,
+  "gzip_kb": 11.7,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 330,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/ejecucion-proyecto-diseno.html",
+  "kind": "land",
+  "html_kb": 41.9,
+  "gzip_kb": 11.9,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
@@ -2858,13 +3572,45 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
-  "page": "es/amueblamiento-llave-en-mano.html",
+  "page": "es/index.html",
   "kind": "land",
-  "html_kb": 41.9,
-  "gzip_kb": 11.9,
+  "html_kb": 41.8,
+  "gzip_kb": 12.0,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 350,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/negocio-llave-en-mano.html",
+  "kind": "land",
+  "html_kb": 42.2,
+  "gzip_kb": 12.1,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
@@ -2888,440 +3634,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/calculadora-reforma.html",
-  "kind": "land",
-  "html_kb": 43.3,
-  "gzip_kb": 12.1,
-  "css_kb": 14.3,
-  "js_kb": 8.0,
-  "font_sizes": 6,
-  "tags": 344,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [
-   "$165 000 ",
-   "$33 000 "
-  ],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/complejo-turistico-llave-en-mano.html",
-  "kind": "land",
-  "html_kb": 41.6,
-  "gzip_kb": 11.5,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 342,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/construccion-de-casas.html",
-  "kind": "land",
-  "html_kb": 42.6,
-  "gzip_kb": 12.0,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 357,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/contacto.html",
-  "kind": "land",
-  "html_kb": 35.9,
-  "gzip_kb": 10.4,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 258,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 9,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/disenador-interiores.html",
-  "kind": "land",
-  "html_kb": 42.2,
-  "gzip_kb": 11.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 347,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/diseno-interiores-piso.html",
-  "kind": "land",
-  "html_kb": 42.4,
-  "gzip_kb": 11.7,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 352,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/diseno-interiores.html",
-  "kind": "land",
-  "html_kb": 42.3,
-  "gzip_kb": 11.9,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 345,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/diseno-restaurantes-cafeterias.html",
-  "kind": "land",
-  "html_kb": 42.2,
-  "gzip_kb": 11.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 342,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/ejecucion-proyecto-diseno.html",
-  "kind": "land",
-  "html_kb": 42.8,
-  "gzip_kb": 12.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 351,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/equipamiento-llave-en-mano.html",
-  "kind": "land",
-  "html_kb": 45.2,
-  "gzip_kb": 12.5,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 359,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/equipo-de-reformas.html",
-  "kind": "land",
-  "html_kb": 44.2,
-  "gzip_kb": 12.2,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 374,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/index.html",
-  "kind": "land",
-  "html_kb": 42.7,
-  "gzip_kb": 12.2,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 365,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/negocio-llave-en-mano.html",
-  "kind": "land",
-  "html_kb": 43.1,
-  "gzip_kb": 12.3,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 354,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/paisajismo.html",
-  "kind": "land",
-  "html_kb": 41.4,
-  "gzip_kb": 11.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 346,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "es/preguntas-frecuentes.html",
   "kind": "land",
-  "html_kb": 41.2,
-  "gzip_kb": 11.3,
+  "html_kb": 40.3,
+  "gzip_kb": 11.1,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 304,
+  "tags": 289,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -3341,17 +3665,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "es/privacidad.html",
   "kind": "land",
-  "html_kb": 33.5,
-  "gzip_kb": 10.2,
+  "html_kb": 32.6,
+  "gzip_kb": 9.9,
   "css_kb": 13.6,
   "js_kb": 7.0,
   "font_sizes": 9,
-  "tags": 201,
+  "tags": 186,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -3371,137 +3696,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/proyecto-de-casa.html",
-  "kind": "land",
-  "html_kb": 42.0,
-  "gzip_kb": 11.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 348,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/reforma-bano.html",
-  "kind": "land",
-  "html_kb": 43.0,
-  "gzip_kb": 12.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 363,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/reforma-casa-llave-en-mano.html",
-  "kind": "land",
-  "html_kb": 43.4,
-  "gzip_kb": 11.9,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 368,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/reforma-cocina.html",
-  "kind": "land",
-  "html_kb": 42.5,
-  "gzip_kb": 11.9,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 362,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "es/reforma-llave-en-mano.html",
   "kind": "land",
-  "html_kb": 42.1,
-  "gzip_kb": 11.9,
+  "html_kb": 41.2,
+  "gzip_kb": 11.7,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 351,
+  "tags": 336,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -3521,107 +3727,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/reforma-locales-comerciales.html",
-  "kind": "land",
-  "html_kb": 43.0,
-  "gzip_kb": 12.0,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 368,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/reforma-obra-nueva.html",
-  "kind": "land",
-  "html_kb": 43.0,
-  "gzip_kb": 12.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 363,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "es/reforma-oficinas.html",
-  "kind": "land",
-  "html_kb": 43.6,
-  "gzip_kb": 12.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 365,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "es/servicios.html",
   "kind": "land",
-  "html_kb": 38.9,
-  "gzip_kb": 11.2,
+  "html_kb": 37.9,
+  "gzip_kb": 11.0,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 341,
+  "tags": 326,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -3641,17 +3758,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "es/sobre-nosotros.html",
   "kind": "land",
-  "html_kb": 39.3,
-  "gzip_kb": 11.5,
+  "html_kb": 38.4,
+  "gzip_kb": 11.3,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 317,
+  "tags": 302,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -3671,17 +3789,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "fr/a-propos.html",
   "kind": "land",
-  "html_kb": 39.4,
-  "gzip_kb": 11.6,
+  "html_kb": 38.4,
+  "gzip_kb": 11.4,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 317,
+  "tags": 302,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -3701,13 +3820,76 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "fr/ameublement-cle-en-main.html",
   "kind": "land",
-  "html_kb": 42.0,
-  "gzip_kb": 12.0,
+  "html_kb": 41.0,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 324,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/architecture-interieur.html",
+  "kind": "land",
+  "html_kb": 41.4,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 330,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/commerce-cle-en-main.html",
+  "kind": "land",
+  "html_kb": 42.3,
+  "gzip_kb": 12.1,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
@@ -3731,286 +3913,14 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/architecture-interieur.html",
-  "kind": "land",
-  "html_kb": 42.4,
-  "gzip_kb": 12.0,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 345,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/architecture-paysagere.html",
-  "kind": "land",
-  "html_kb": 41.5,
-  "gzip_kb": 11.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 346,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/base-de-loisirs-cle-en-main.html",
-  "kind": "land",
-  "html_kb": 41.4,
-  "gzip_kb": 11.5,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 342,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/calculateur-renovation.html",
-  "kind": "land",
-  "html_kb": 43.3,
-  "gzip_kb": 12.1,
-  "css_kb": 14.3,
-  "js_kb": 7.9,
-  "font_sizes": 6,
-  "tags": 344,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [
-   "$165 000 ",
-   "$33 000 "
-  ],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/commerce-cle-en-main.html",
-  "kind": "land",
-  "html_kb": 43.3,
-  "gzip_kb": 12.4,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 354,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/conception-maison.html",
-  "kind": "land",
-  "html_kb": 41.9,
-  "gzip_kb": 11.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 348,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "fr/construction-maison.html",
   "kind": "land",
-  "html_kb": 42.7,
-  "gzip_kb": 12.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 357,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/contact.html",
-  "kind": "land",
-  "html_kb": 35.9,
-  "gzip_kb": 10.4,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 258,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 9,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/design-appartement.html",
-  "kind": "land",
-  "html_kb": 42.4,
-  "gzip_kb": 11.7,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 352,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/design-restaurant-cafe.html",
-  "kind": "land",
-  "html_kb": 42.2,
-  "gzip_kb": 11.7,
+  "html_kb": 41.8,
+  "gzip_kb": 11.9,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
@@ -4022,126 +3932,6 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/designer-interieur.html",
-  "kind": "land",
-  "html_kb": 42.3,
-  "gzip_kb": 11.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 347,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/equipe-renovation.html",
-  "kind": "land",
-  "html_kb": 44.5,
-  "gzip_kb": 12.4,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 374,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/equipement-cle-en-main.html",
-  "kind": "land",
-  "html_kb": 45.3,
-  "gzip_kb": 12.5,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 359,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/faq.html",
-  "kind": "land",
-  "html_kb": 41.1,
-  "gzip_kb": 11.4,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 304,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
   "hreflang": 10,
   "canonical": true,
   "h1_count": 1,
@@ -4154,287 +3944,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
-  "page": "fr/index.html",
+  "page": "fr/contact.html",
   "kind": "land",
-  "html_kb": 43.0,
-  "gzip_kb": 12.3,
+  "html_kb": 34.9,
+  "gzip_kb": 10.2,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 365,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/realisation-projet.html",
-  "kind": "land",
-  "html_kb": 42.8,
-  "gzip_kb": 12.2,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 351,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/renovation-appartement-neuf.html",
-  "kind": "land",
-  "html_kb": 43.0,
-  "gzip_kb": 12.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 363,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/renovation-bureaux.html",
-  "kind": "land",
-  "html_kb": 43.6,
-  "gzip_kb": 12.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 365,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/renovation-cle-en-main.html",
-  "kind": "land",
-  "html_kb": 42.2,
-  "gzip_kb": 12.0,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 351,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/renovation-cuisine.html",
-  "kind": "land",
-  "html_kb": 42.7,
-  "gzip_kb": 12.0,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 362,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/renovation-locaux-commerciaux.html",
-  "kind": "land",
-  "html_kb": 43.1,
-  "gzip_kb": 11.9,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 368,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/renovation-maison-cle-en-main.html",
-  "kind": "land",
-  "html_kb": 43.4,
-  "gzip_kb": 12.0,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 368,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/renovation-salle-de-bain.html",
-  "kind": "land",
-  "html_kb": 43.3,
-  "gzip_kb": 12.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 363,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "fr/services.html",
-  "kind": "land",
-  "html_kb": 38.9,
-  "gzip_kb": 11.3,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 341,
+  "tags": 243,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -4454,6 +3975,162 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/faq.html",
+  "kind": "land",
+  "html_kb": 40.2,
+  "gzip_kb": 11.2,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 289,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/index.html",
+  "kind": "land",
+  "html_kb": 42.1,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 350,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/realisation-projet.html",
+  "kind": "land",
+  "html_kb": 41.9,
+  "gzip_kb": 12.0,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 336,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/renovation-cle-en-main.html",
+  "kind": "land",
+  "html_kb": 41.3,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 336,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/services.html",
+  "kind": "land",
+  "html_kb": 37.9,
+  "gzip_kb": 11.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 326,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 9,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4486,6 +4163,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 1
  },
  {
@@ -4516,6 +4194,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4546,17 +4225,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "kalkuliator-remontu.html",
   "kind": "land",
-  "html_kb": 45.6,
+  "html_kb": 45.5,
   "gzip_kb": 12.7,
   "css_kb": 14.3,
   "js_kb": 8.0,
   "font_sizes": 6,
-  "tags": 336,
+  "tags": 335,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -4564,7 +4244,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -4579,17 +4259,18 @@
    "$33 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "komplektatsiia-pid-kliuch-kyiv.html",
   "kind": "land",
-  "html_kb": 49.5,
-  "gzip_kb": 13.5,
+  "html_kb": 49.3,
+  "gzip_kb": 13.4,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 353,
+  "tags": 352,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -4597,7 +4278,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -4609,6 +4290,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4639,17 +4321,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "landshaftnyi-dyzain-kyiv.html",
   "kind": "land",
-  "html_kb": 43.2,
+  "html_kb": 43.0,
   "gzip_kb": 12.1,
   "css_kb": 13.5,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 346,
+  "tags": 345,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -4657,7 +4340,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -4669,6 +4352,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4699,6 +4383,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4729,6 +4414,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4759,6 +4445,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4789,6 +4476,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4819,6 +4507,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4849,6 +4538,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4879,6 +4569,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4909,6 +4600,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4939,6 +4631,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4969,6 +4662,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -4999,6 +4693,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5029,6 +4724,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5059,6 +4755,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5089,6 +4786,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5119,6 +4817,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5149,6 +4848,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5179,6 +4879,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5209,6 +4910,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5239,6 +4941,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5269,6 +4972,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5299,6 +5003,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5329,6 +5034,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5359,6 +5065,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5389,6 +5096,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5419,6 +5127,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5449,6 +5158,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5479,6 +5189,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5509,6 +5220,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5539,6 +5251,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5569,6 +5282,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5599,6 +5313,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5629,6 +5344,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5659,6 +5375,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5689,6 +5406,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5719,6 +5437,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5749,6 +5468,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5779,6 +5499,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5809,6 +5530,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5839,6 +5561,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5869,6 +5592,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5899,6 +5623,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5929,6 +5654,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5959,6 +5685,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -5989,6 +5716,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6019,6 +5747,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6049,6 +5778,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6079,6 +5809,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6109,6 +5840,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6139,6 +5871,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6169,6 +5902,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6199,6 +5933,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6229,6 +5964,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6259,6 +5995,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6289,6 +6026,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6319,6 +6057,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6349,6 +6088,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6379,6 +6119,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6409,6 +6150,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6439,6 +6181,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6469,6 +6212,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6499,6 +6243,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6529,6 +6274,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6559,6 +6305,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6589,6 +6336,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6619,6 +6367,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6649,6 +6398,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6679,6 +6429,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6709,6 +6460,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6739,6 +6491,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6769,6 +6522,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6799,6 +6553,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6829,6 +6584,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6859,6 +6615,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6889,6 +6646,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6919,6 +6677,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6949,6 +6708,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -6979,6 +6739,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7009,6 +6770,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7039,6 +6801,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7069,6 +6832,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7099,6 +6863,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7129,6 +6894,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7159,6 +6925,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7189,6 +6956,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7219,6 +6987,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7249,6 +7018,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7279,6 +7049,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7309,6 +7080,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7339,6 +7111,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7369,6 +7142,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7399,6 +7173,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7429,6 +7204,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7459,6 +7235,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7489,6 +7266,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7519,6 +7297,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7549,6 +7328,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7579,6 +7359,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7609,6 +7390,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7639,6 +7421,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7669,6 +7452,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7699,6 +7483,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7729,6 +7514,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7759,6 +7545,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7789,6 +7576,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7819,6 +7607,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7849,6 +7638,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7879,6 +7669,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7909,6 +7700,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7939,6 +7731,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7969,6 +7762,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -7999,6 +7793,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8029,6 +7824,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8059,6 +7855,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8089,6 +7886,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8119,6 +7917,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8149,6 +7948,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8179,6 +7979,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8209,6 +8010,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8239,6 +8041,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8269,6 +8072,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8299,6 +8103,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8329,6 +8134,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8359,6 +8165,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8389,6 +8196,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8419,6 +8227,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8449,6 +8258,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8479,6 +8289,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8509,6 +8320,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8539,6 +8351,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8569,6 +8382,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8599,6 +8413,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8629,6 +8444,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8659,6 +8475,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8689,6 +8506,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8719,6 +8537,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8749,6 +8568,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8779,6 +8599,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8809,6 +8630,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8839,6 +8661,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8869,6 +8692,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8899,6 +8723,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8929,6 +8754,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8959,6 +8785,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -8989,6 +8816,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9019,6 +8847,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9049,6 +8878,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9079,6 +8909,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9109,6 +8940,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9139,6 +8971,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9169,6 +9002,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9199,6 +9033,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9229,6 +9064,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9259,6 +9095,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9289,6 +9126,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9319,6 +9157,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9349,6 +9188,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9379,6 +9219,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9409,6 +9250,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9439,6 +9281,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9469,6 +9312,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9499,6 +9343,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9529,6 +9374,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9559,6 +9405,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9589,6 +9436,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9619,6 +9467,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9649,6 +9498,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9679,6 +9529,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9709,6 +9560,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9739,6 +9591,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9769,6 +9622,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9799,6 +9653,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9829,6 +9684,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9859,6 +9715,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9889,6 +9746,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9919,6 +9777,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9949,6 +9808,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -9979,6 +9839,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10009,6 +9870,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10039,6 +9901,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10069,6 +9932,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10099,6 +9963,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10129,6 +9994,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10159,6 +10025,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10189,6 +10056,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10219,6 +10087,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10249,6 +10118,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10279,6 +10149,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10309,6 +10180,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10339,6 +10211,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10369,6 +10242,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10399,6 +10273,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10429,6 +10304,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10459,6 +10335,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10489,6 +10366,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10519,6 +10397,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10549,6 +10428,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10579,6 +10459,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10609,6 +10490,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10639,6 +10521,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10669,6 +10552,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10699,6 +10583,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10729,6 +10614,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10759,6 +10645,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10789,6 +10676,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10819,6 +10707,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10849,6 +10738,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10879,6 +10769,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10909,6 +10800,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10939,6 +10831,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10969,6 +10862,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -10999,6 +10893,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11029,6 +10924,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11059,6 +10955,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11089,6 +10986,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11119,6 +11017,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11149,6 +11048,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11179,6 +11079,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11209,6 +11110,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11239,6 +11141,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11269,6 +11172,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11299,6 +11203,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11329,6 +11234,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11359,6 +11265,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11389,6 +11296,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11419,6 +11327,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11449,6 +11358,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11479,6 +11389,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11509,6 +11420,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11539,6 +11451,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11569,6 +11482,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11599,6 +11513,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11629,6 +11544,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11659,6 +11575,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11689,6 +11606,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11719,6 +11637,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11749,6 +11668,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11779,6 +11699,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -11809,17 +11730,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "pl/biznes-pod-klucz.html",
   "kind": "land",
-  "html_kb": 41.6,
-  "gzip_kb": 12.2,
+  "html_kb": 42.5,
+  "gzip_kb": 12.4,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 339,
+  "tags": 356,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -11839,17 +11761,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "pl/budowa-domow.html",
   "kind": "land",
-  "html_kb": 41.0,
-  "gzip_kb": 11.9,
+  "html_kb": 41.9,
+  "gzip_kb": 12.1,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 342,
+  "tags": 359,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -11869,17 +11792,49 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/ekipa-remontowa.html",
+  "kind": "land",
+  "html_kb": 43.4,
+  "gzip_kb": 12.4,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 375,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "pl/faq.html",
   "kind": "land",
-  "html_kb": 39.4,
-  "gzip_kb": 11.2,
+  "html_kb": 40.3,
+  "gzip_kb": 11.4,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 289,
+  "tags": 306,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -11899,17 +11854,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "pl/index.html",
   "kind": "land",
-  "html_kb": 41.2,
-  "gzip_kb": 12.1,
+  "html_kb": 42.1,
+  "gzip_kb": 12.3,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 350,
+  "tags": 367,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -11929,17 +11885,83 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/kalkulator-remontu.html",
+  "kind": "land",
+  "html_kb": 42.4,
+  "gzip_kb": 12.2,
+  "css_kb": 14.3,
+  "js_kb": 8.0,
+  "font_sizes": 6,
+  "tags": 345,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$165 000 ",
+   "$33 000 "
+  ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/kompletacja-wnetrz.html",
+  "kind": "land",
+  "html_kb": 44.2,
+  "gzip_kb": 12.6,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 358,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "pl/kontakt.html",
   "kind": "land",
-  "html_kb": 34.7,
-  "gzip_kb": 10.2,
+  "html_kb": 35.6,
+  "gzip_kb": 10.5,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 243,
+  "tags": 260,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -11959,17 +11981,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "pl/o-studiu.html",
   "kind": "land",
-  "html_kb": 38.0,
-  "gzip_kb": 11.4,
+  "html_kb": 38.9,
+  "gzip_kb": 11.7,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 302,
+  "tags": 319,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -11989,17 +12012,204 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/osrodek-wypoczynkowy-pod-klucz.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.6,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 343,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projekt-domu.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.6,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 349,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projekt-wnetrza-mieszkania.html",
+  "kind": "land",
+  "html_kb": 41.9,
+  "gzip_kb": 11.8,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 356,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektant-wnetrz.html",
+  "kind": "land",
+  "html_kb": 41.3,
+  "gzip_kb": 11.9,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 348,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-ogrodow.html",
+  "kind": "land",
+  "html_kb": 40.7,
+  "gzip_kb": 11.6,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 347,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-restauracji.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.7,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 343,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "pl/projektowanie-wnetrz.html",
   "kind": "land",
-  "html_kb": 40.8,
-  "gzip_kb": 11.8,
+  "html_kb": 41.7,
+  "gzip_kb": 12.0,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 330,
+  "tags": 347,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -12019,17 +12229,266 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "pl/realizacja-projektu.html",
+  "kind": "land",
+  "html_kb": 42.2,
+  "gzip_kb": 12.3,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 353,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/remont-biura.html",
+  "kind": "land",
+  "html_kb": 43.1,
+  "gzip_kb": 12.3,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 369,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/remont-domu.html",
+  "kind": "land",
+  "html_kb": 42.5,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 369,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/remont-kuchni.html",
+  "kind": "land",
+  "html_kb": 41.7,
+  "gzip_kb": 12.0,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 363,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/remont-lazienki.html",
+  "kind": "land",
+  "html_kb": 42.3,
+  "gzip_kb": 12.2,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 364,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/remont-lokali-uzytkowych.html",
+  "kind": "land",
+  "html_kb": 42.5,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 372,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/remont-mieszkania-deweloperskiego.html",
+  "kind": "land",
+  "html_kb": 42.3,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 364,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 6,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/remont-pod-klucz.html",
+  "kind": "land",
+  "html_kb": 41.6,
+  "gzip_kb": 12.0,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 353,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/umeblowanie-pod-klucz.html",
   "kind": "land",
   "html_kb": 41.3,
   "gzip_kb": 12.0,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 336,
+  "tags": 341,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -12049,77 +12508,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "pl/remont-pod-klucz.html",
-  "kind": "land",
-  "html_kb": 40.7,
-  "gzip_kb": 11.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 336,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "pl/umeblowanie-pod-klucz.html",
-  "kind": "land",
-  "html_kb": 40.4,
-  "gzip_kb": 11.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 324,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "pl/uslugi.html",
   "kind": "land",
-  "html_kb": 37.4,
-  "gzip_kb": 11.1,
+  "html_kb": 39.2,
+  "gzip_kb": 11.4,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 326,
+  "tags": 358,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -12139,17 +12539,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "portfolio.html",
   "kind": "main",
-  "html_kb": 250.3,
-  "gzip_kb": 41.9,
-  "css_kb": 48.2,
+  "html_kb": 251.5,
+  "gzip_kb": 42.0,
+  "css_kb": 48.4,
   "js_kb": 43.0,
   "font_sizes": 26,
-  "tags": 1713,
+  "tags": 1733,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -12171,17 +12572,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 1
  },
  {
   "page": "proektuvannia-budynku-kyiv.html",
   "kind": "land",
-  "html_kb": 44.7,
+  "html_kb": 44.5,
   "gzip_kb": 12.2,
   "css_kb": 13.4,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 361,
+  "tags": 360,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -12189,7 +12591,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -12201,403 +12603,14 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "proekty/a-frame-house.html",
   "kind": "land",
-  "html_kb": 23.7,
-  "gzip_kb": 5.8,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 267,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/diamond.html",
-  "kind": "land",
-  "html_kb": 33.4,
-  "gzip_kb": 6.5,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 307,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/dolls-salon.html",
-  "kind": "land",
-  "html_kb": 22.1,
-  "gzip_kb": 5.7,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 265,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/dubai-villa.html",
-  "kind": "land",
-  "html_kb": 32.0,
-  "gzip_kb": 6.6,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 323,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/edelweiss.html",
-  "kind": "land",
-  "html_kb": 36.5,
-  "gzip_kb": 6.7,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 321,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/hoda-estate.html",
-  "kind": "land",
-  "html_kb": 33.8,
-  "gzip_kb": 6.8,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 329,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/hodos-villa.html",
-  "kind": "land",
-  "html_kb": 41.0,
-  "gzip_kb": 7.7,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 371,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/house-150.html",
-  "kind": "land",
-  "html_kb": 22.3,
-  "gzip_kb": 5.7,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 263,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/kitana-beach.html",
-  "kind": "land",
-  "html_kb": 43.8,
-  "gzip_kb": 8.2,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 385,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/linden-penthouse.html",
-  "kind": "land",
-  "html_kb": 49.4,
-  "gzip_kb": 8.9,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 411,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/monpark.html",
-  "kind": "land",
-  "html_kb": 23.8,
-  "gzip_kb": 5.9,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 275,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/office-chicago.html",
-  "kind": "land",
-  "html_kb": 22.4,
-  "gzip_kb": 5.7,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 263,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/petrivtsi-house.html",
-  "kind": "land",
-  "html_kb": 58.6,
-  "gzip_kb": 9.6,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 449,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/pidgirland.html",
-  "kind": "land",
-  "html_kb": 46.0,
-  "gzip_kb": 8.4,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 389,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/smart-villa.html",
-  "kind": "land",
-  "html_kb": 22.6,
-  "gzip_kb": 5.8,
-  "css_kb": 2.0,
-  "js_kb": 0.9,
-  "font_sizes": 0,
-  "tags": 265,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 1,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 0,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [],
-  "bg2": [],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "proekty/tetris-hall.html",
-  "kind": "land",
-  "html_kb": 26.0,
-  "gzip_kb": 6.1,
+  "html_kb": 25.2,
+  "gzip_kb": 6.2,
   "css_kb": 2.0,
   "js_kb": 0.9,
   "font_sizes": 0,
@@ -12617,17 +12630,423 @@
   "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/diamond.html",
+  "kind": "land",
+  "html_kb": 34.8,
+  "gzip_kb": 6.9,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 325,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/dolls-salon.html",
+  "kind": "land",
+  "html_kb": 23.1,
+  "gzip_kb": 6.0,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 276,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/dubai-villa.html",
+  "kind": "land",
+  "html_kb": 33.3,
+  "gzip_kb": 7.0,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 340,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/edelweiss.html",
+  "kind": "land",
+  "html_kb": 37.9,
+  "gzip_kb": 7.2,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 339,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/hoda-estate.html",
+  "kind": "land",
+  "html_kb": 35.6,
+  "gzip_kb": 7.3,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 354,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/hodos-villa.html",
+  "kind": "land",
+  "html_kb": 42.7,
+  "gzip_kb": 8.4,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 396,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/house-150.html",
+  "kind": "land",
+  "html_kb": 23.8,
+  "gzip_kb": 6.2,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 284,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/kitana-beach.html",
+  "kind": "land",
+  "html_kb": 44.8,
+  "gzip_kb": 8.5,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 396,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/linden-penthouse.html",
+  "kind": "land",
+  "html_kb": 51.1,
+  "gzip_kb": 9.4,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 436,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/monpark.html",
+  "kind": "land",
+  "html_kb": 24.8,
+  "gzip_kb": 6.2,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 286,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/office-chicago.html",
+  "kind": "land",
+  "html_kb": 23.6,
+  "gzip_kb": 6.1,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 278,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/petrivtsi-house.html",
+  "kind": "land",
+  "html_kb": 57.5,
+  "gzip_kb": 10.1,
+  "css_kb": 2.0,
+  "js_kb": 1.0,
+  "font_sizes": 0,
+  "tags": 474,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/pidgirland.html",
+  "kind": "land",
+  "html_kb": 47.7,
+  "gzip_kb": 8.9,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 414,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/smart-villa.html",
+  "kind": "land",
+  "html_kb": 24.0,
+  "gzip_kb": 6.3,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 286,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "proekty/tetris-hall.html",
+  "kind": "land",
+  "html_kb": 27.4,
+  "gzip_kb": 6.5,
+  "css_kb": 2.0,
+  "js_kb": 0.9,
+  "font_sizes": 0,
+  "tags": 299,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [],
+  "bg2": [],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "proekty/usa-house.html",
   "kind": "land",
-  "html_kb": 28.1,
-  "gzip_kb": 6.2,
+  "html_kb": 29.4,
+  "gzip_kb": 6.6,
   "css_kb": 2.0,
   "js_kb": 0.9,
   "font_sizes": 0,
-  "tags": 295,
+  "tags": 314,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -12643,17 +13062,18 @@
   "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "proekty/yablu-rest.html",
   "kind": "land",
-  "html_kb": 22.3,
-  "gzip_kb": 5.7,
+  "html_kb": 23.4,
+  "gzip_kb": 6.0,
   "css_kb": 2.0,
   "js_kb": 0.9,
   "font_sizes": 0,
-  "tags": 259,
+  "tags": 272,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -12669,17 +13089,18 @@
   "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "proekty/yacht-restaurant.html",
   "kind": "land",
-  "html_kb": 26.4,
-  "gzip_kb": 6.2,
+  "html_kb": 27.5,
+  "gzip_kb": 6.5,
   "css_kb": 2.0,
   "js_kb": 0.9,
   "font_sizes": 0,
-  "tags": 285,
+  "tags": 296,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -12695,17 +13116,18 @@
   "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "proekty/yacht-vip.html",
   "kind": "land",
-  "html_kb": 35.5,
-  "gzip_kb": 6.7,
+  "html_kb": 36.9,
+  "gzip_kb": 7.1,
   "css_kb": 2.0,
   "js_kb": 0.9,
   "font_sizes": 0,
-  "tags": 319,
+  "tags": 335,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -12721,6 +13143,7 @@
   "bg2": [],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12751,6 +13174,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12781,17 +13205,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "remont-budynku-pid-klyuch-kyiv.html",
   "kind": "land",
-  "html_kb": 47.8,
+  "html_kb": 47.5,
   "gzip_kb": 12.9,
   "css_kb": 13.4,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 381,
+  "tags": 380,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -12799,7 +13224,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -12811,17 +13236,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "remont-komertsiinykh-prymishchen-kyiv.html",
   "kind": "land",
-  "html_kb": 45.6,
+  "html_kb": 45.4,
   "gzip_kb": 12.6,
   "css_kb": 13.5,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 373,
+  "tags": 372,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -12829,7 +13255,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -12841,17 +13267,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "remont-kukhni-kyiv.html",
   "kind": "land",
-  "html_kb": 44.9,
+  "html_kb": 44.8,
   "gzip_kb": 12.5,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 362,
+  "tags": 361,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -12859,7 +13286,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -12871,6 +13298,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12901,17 +13329,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "remont-novobudovy-kyiv.html",
   "kind": "land",
-  "html_kb": 45.8,
+  "html_kb": 45.7,
   "gzip_kb": 12.7,
   "css_kb": 13.5,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 372,
+  "tags": 371,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -12919,7 +13348,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -12931,17 +13360,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "remont-ofisu-pid-klyuch-kyiv.html",
   "kind": "land",
-  "html_kb": 47.6,
+  "html_kb": 47.5,
   "gzip_kb": 13.0,
   "css_kb": 13.4,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 376,
+  "tags": 375,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -12949,7 +13379,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -12961,6 +13391,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -12991,17 +13422,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "remont-vannoi-kimnaty-kyiv.html",
   "kind": "land",
-  "html_kb": 46.1,
+  "html_kb": 45.9,
   "gzip_kb": 12.7,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 368,
+  "tags": 367,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13009,7 +13441,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13021,17 +13453,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "remontna-bryhada-kyiv.html",
   "kind": "land",
-  "html_kb": 47.9,
+  "html_kb": 47.8,
   "gzip_kb": 13.0,
   "css_kb": 13.5,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 382,
+  "tags": 381,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13039,7 +13472,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13051,17 +13484,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/baza-otdyha-pod-klyuch.html",
   "kind": "land",
-  "html_kb": 47.7,
+  "html_kb": 47.6,
   "gzip_kb": 13.0,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 354,
+  "tags": 353,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13069,7 +13503,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13081,6 +13515,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13113,6 +13548,7 @@
    "$52 500"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13143,6 +13579,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13173,17 +13610,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/dizayn-kvartiry-kiev.html",
   "kind": "land",
-  "html_kb": 46.5,
-  "gzip_kb": 13.0,
+  "html_kb": 46.4,
+  "gzip_kb": 12.9,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 358,
+  "tags": 357,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13191,7 +13629,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13205,17 +13643,18 @@
    "$3 000"
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/dizayn-restorana-kafe-kiev.html",
   "kind": "land",
-  "html_kb": 48.2,
+  "html_kb": 48.0,
   "gzip_kb": 13.2,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 354,
+  "tags": 353,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13223,7 +13662,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13235,17 +13674,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/dizayner-interera-kiev.html",
   "kind": "land",
-  "html_kb": 45.4,
+  "html_kb": 45.2,
   "gzip_kb": 12.8,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 344,
+  "tags": 343,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13253,7 +13693,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13265,6 +13705,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13295,17 +13736,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/kalkulyator-remonta.html",
   "kind": "land",
-  "html_kb": 45.4,
+  "html_kb": 45.3,
   "gzip_kb": 12.7,
   "css_kb": 14.3,
   "js_kb": 8.0,
   "font_sizes": 6,
-  "tags": 336,
+  "tags": 335,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13313,7 +13755,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13328,17 +13770,18 @@
    "$33 000 "
   ],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/komplektatsiya-pod-klyuch-kiev.html",
   "kind": "land",
-  "html_kb": 49.2,
+  "html_kb": 49.0,
   "gzip_kb": 13.4,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 352,
+  "tags": 351,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13346,7 +13789,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13358,6 +13801,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13388,17 +13832,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/landshaftnyy-dizayn-kiev.html",
   "kind": "land",
-  "html_kb": 43.5,
+  "html_kb": 43.4,
   "gzip_kb": 12.2,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 339,
+  "tags": 338,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13406,7 +13851,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13418,6 +13863,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13448,17 +13894,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/proektirovanie-doma-kiev.html",
   "kind": "land",
-  "html_kb": 45.5,
+  "html_kb": 45.3,
   "gzip_kb": 12.5,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 352,
+  "tags": 351,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13466,7 +13913,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13478,6 +13925,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13508,17 +13956,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/remont-doma-kiev.html",
   "kind": "land",
-  "html_kb": 45.6,
+  "html_kb": 45.4,
   "gzip_kb": 12.8,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 365,
+  "tags": 364,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13526,7 +13975,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13538,17 +13987,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/remont-kommercheskih-pomeshcheniy-kiev.html",
   "kind": "land",
-  "html_kb": 46.2,
+  "html_kb": 46.0,
   "gzip_kb": 12.7,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 368,
+  "tags": 367,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13556,7 +14006,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13568,17 +14018,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/remont-kuhni-kiev.html",
   "kind": "land",
-  "html_kb": 45.3,
+  "html_kb": 45.2,
   "gzip_kb": 12.8,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 354,
+  "tags": 353,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13586,7 +14037,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13598,6 +14049,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13628,17 +14080,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/remont-ofisa-kiev.html",
   "kind": "land",
-  "html_kb": 44.2,
+  "html_kb": 44.0,
   "gzip_kb": 12.5,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 354,
+  "tags": 353,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13646,7 +14099,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13658,6 +14111,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13688,17 +14142,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/remont-v-novostroyke-kiev.html",
   "kind": "land",
-  "html_kb": 46.5,
+  "html_kb": 46.4,
   "gzip_kb": 12.9,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 366,
+  "tags": 365,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13706,7 +14161,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13718,17 +14173,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/remont-vannoy-kiev.html",
   "kind": "land",
-  "html_kb": 46.2,
+  "html_kb": 46.0,
   "gzip_kb": 13.0,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 355,
+  "tags": 354,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13736,7 +14192,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13748,17 +14204,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "ru/remontnaya-brigada-kiev.html",
   "kind": "land",
-  "html_kb": 48.8,
+  "html_kb": 48.7,
   "gzip_kb": 13.3,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 379,
+  "tags": 378,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13766,7 +14223,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 7,
+  "hreflang": 6,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -13778,6 +14235,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13808,6 +14266,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13838,6 +14297,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13869,6 +14329,7 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
@@ -13901,17 +14362,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 1
  },
  {
   "page": "zh/about.html",
   "kind": "land",
-  "html_kb": 38.1,
-  "gzip_kb": 11.8,
+  "html_kb": 37.4,
+  "gzip_kb": 11.6,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 315,
+  "tags": 300,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -13931,223 +14393,14 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/apartment-design.html",
-  "kind": "land",
-  "html_kb": 40.8,
-  "gzip_kb": 11.9,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 350,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/bathroom-renovation.html",
-  "kind": "land",
-  "html_kb": 41.4,
-  "gzip_kb": 12.3,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 361,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
   "page": "zh/business-fit-out.html",
   "kind": "land",
-  "html_kb": 41.7,
-  "gzip_kb": 12.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 352,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/commercial-renovation.html",
-  "kind": "land",
-  "html_kb": 41.6,
-  "gzip_kb": 12.2,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 366,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/contact.html",
-  "kind": "land",
-  "html_kb": 35.2,
-  "gzip_kb": 10.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 256,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 9,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/design-implementation.html",
-  "kind": "land",
-  "html_kb": 41.2,
-  "gzip_kb": 12.3,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 349,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/faq.html",
-  "kind": "land",
-  "html_kb": 39.4,
-  "gzip_kb": 11.5,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 302,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/furnishing.html",
-  "kind": "land",
-  "html_kb": 40.5,
-  "gzip_kb": 12.2,
+  "html_kb": 40.9,
+  "gzip_kb": 12.4,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
@@ -14171,440 +14424,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
-  "page": "zh/house-construction.html",
+  "page": "zh/contact.html",
   "kind": "land",
-  "html_kb": 41.2,
-  "gzip_kb": 12.3,
+  "html_kb": 34.4,
+  "gzip_kb": 10.3,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 355,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/house-design.html",
-  "kind": "land",
-  "html_kb": 40.5,
-  "gzip_kb": 11.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 346,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/house-renovation.html",
-  "kind": "land",
-  "html_kb": 41.8,
-  "gzip_kb": 12.2,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 366,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/index.html",
-  "kind": "land",
-  "html_kb": 41.6,
-  "gzip_kb": 12.5,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 363,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/interior-design.html",
-  "kind": "land",
-  "html_kb": 41.1,
-  "gzip_kb": 12.3,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 343,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 10,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/interior-designer.html",
-  "kind": "land",
-  "html_kb": 40.7,
-  "gzip_kb": 12.1,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 345,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/kitchen-renovation.html",
-  "kind": "land",
-  "html_kb": 41.1,
-  "gzip_kb": 12.2,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 360,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/landscape-design.html",
-  "kind": "land",
-  "html_kb": 39.9,
-  "gzip_kb": 11.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 344,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/new-build-renovation.html",
-  "kind": "land",
-  "html_kb": 41.3,
-  "gzip_kb": 12.3,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 361,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/office-renovation.html",
-  "kind": "land",
-  "html_kb": 41.8,
-  "gzip_kb": 12.3,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 363,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/renovation-calculator.html",
-  "kind": "land",
-  "html_kb": 41.9,
-  "gzip_kb": 12.3,
-  "css_kb": 14.3,
-  "js_kb": 7.9,
-  "font_sizes": 6,
-  "tags": 342,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [
-   "$165 000 ",
-   "$33 000 "
-  ],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/renovation-crew.html",
-  "kind": "land",
-  "html_kb": 42.6,
-  "gzip_kb": 12.6,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 372,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/resort-turnkey.html",
-  "kind": "land",
-  "html_kb": 40.3,
-  "gzip_kb": 11.8,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 340,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/restaurant-design.html",
-  "kind": "land",
-  "html_kb": 40.6,
-  "gzip_kb": 11.9,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 340,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/services.html",
-  "kind": "land",
-  "html_kb": 37.8,
-  "gzip_kb": 11.5,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 339,
+  "tags": 241,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -14624,47 +14455,18 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  },
  {
-  "page": "zh/turnkey-procurement.html",
+  "page": "zh/design-implementation.html",
   "kind": "land",
-  "html_kb": 43.2,
-  "gzip_kb": 12.8,
+  "html_kb": 40.5,
+  "gzip_kb": 12.1,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 357,
-  "img_no_size": 0,
-  "img_no_alt": 0,
-  "fetchpriority_high": 0,
-  "onclick_nav": 0,
-  "h1_animated": false,
-  "google_fonts": false,
-  "clarity": true,
-  "hreflang": 7,
-  "canonical": true,
-  "h1_count": 1,
-  "osocor": false,
-  "mu": [
-   "#938c84"
-  ],
-  "bg2": [
-   "#100e0c"
-  ],
-  "prices_bad": [],
-  "facts_bad": [],
-  "webhook_copies": 0
- },
- {
-  "page": "zh/turnkey-renovation.html",
-  "kind": "land",
-  "html_kb": 40.9,
-  "gzip_kb": 12.2,
-  "css_kb": 13.7,
-  "js_kb": 7.0,
-  "font_sizes": 6,
-  "tags": 349,
+  "tags": 334,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -14684,6 +14486,224 @@
   ],
   "prices_bad": [],
   "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/faq.html",
+  "kind": "land",
+  "html_kb": 38.7,
+  "gzip_kb": 11.3,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 287,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/furnishing.html",
+  "kind": "land",
+  "html_kb": 39.7,
+  "gzip_kb": 11.9,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 322,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/house-construction.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 12.0,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 340,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/index.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 12.3,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 348,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/interior-design.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 12.1,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 328,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/services.html",
+  "kind": "land",
+  "html_kb": 37.0,
+  "gzip_kb": 11.3,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 324,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 9,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/turnkey-renovation.html",
+  "kind": "land",
+  "html_kb": 40.2,
+  "gzip_kb": 12.0,
+  "css_kb": 13.7,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 334,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 0,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 10,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
   "webhook_copies": 0
  }
 ]

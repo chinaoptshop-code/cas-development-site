@@ -50,28 +50,39 @@
   ],
   "groups": [
    [
-    "Projektowanie",
-    [
-     [
-      "/pl/projektowanie-wnetrz",
-      "Projektowanie wnętrz"
-     ],
-     [
-      "/pl/realizacja-projektu",
-      "Realizacja projektu"
-     ]
-    ]
-   ],
-   [
-    "Budowa i remont",
+    "Remont",
     [
      [
       "/pl/remont-pod-klucz",
       "Remont pod klucz"
      ],
      [
-      "/pl/budowa-domow",
-      "Budowa domów"
+      "/pl/remont-mieszkania-deweloperskiego",
+      "Remont mieszkania deweloperskiego"
+     ],
+     [
+      "/pl/ekipa-remontowa",
+      "Ekipa remontowa"
+     ],
+     [
+      "/pl/remont-lazienki",
+      "Remont łazienki"
+     ],
+     [
+      "/pl/remont-kuchni",
+      "Remont kuchni"
+     ],
+     [
+      "/pl/remont-domu",
+      "Remont domu"
+     ],
+     [
+      "/pl/remont-biura",
+      "Remont biura"
+     ],
+     [
+      "/pl/remont-lokali-uzytkowych",
+      "Remont lokali użytkowych"
      ],
      [
       "/pl/biznes-pod-klucz",
@@ -80,11 +91,65 @@
     ]
    ],
    [
-    "Wyposażenie",
+    "Projektowanie",
+    [
+     [
+      "/pl/projektowanie-wnetrz",
+      "Projektowanie wnętrz"
+     ],
+     [
+      "/pl/projekt-wnetrza-mieszkania",
+      "Projekt wnętrza mieszkania"
+     ],
+     [
+      "/pl/projektant-wnetrz",
+      "Projektant wnętrz"
+     ],
+     [
+      "/pl/realizacja-projektu",
+      "Realizacja projektu"
+     ],
+     [
+      "/pl/projektowanie-restauracji",
+      "Projektowanie restauracji i kawiarni"
+     ],
+     [
+      "/pl/projektowanie-ogrodow",
+      "Projektowanie ogrodów"
+     ]
+    ]
+   ],
+   [
+    "Domy",
+    [
+     [
+      "/pl/budowa-domow",
+      "Budowa domów"
+     ],
+     [
+      "/pl/projekt-domu",
+      "Projekt domu"
+     ],
+     [
+      "/pl/osrodek-wypoczynkowy-pod-klucz",
+      "Ośrodek wypoczynkowy pod klucz"
+     ]
+    ]
+   ],
+   [
+    "Wyposażenie i narzędzia",
     [
      [
       "/pl/umeblowanie-pod-klucz",
       "Umeblowanie pod klucz"
+     ],
+     [
+      "/pl/kompletacja-wnetrz",
+      "Kompletacja wnętrz pod klucz"
+     ],
+     [
+      "/pl/kalkulator-remontu",
+      "Kalkulator kosztów"
      ]
     ]
    ],
