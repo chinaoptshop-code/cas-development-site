@@ -157,6 +157,11 @@ input,select{font:inherit}
 .qty span{min-width:40px;text-align:center;font-weight:700}
 .qty.sm button{width:30px;height:30px;font-size:var(--fs-body)}
 .qty.sm span{min-width:30px;font-size:var(--fs-body)}
+.qty input{width:64px;height:40px;border:0!important;background:transparent;color:var(--cream);text-align:center;font:inherit;font-weight:700;-moz-appearance:textfield;appearance:textfield}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.qty.sm input{width:52px;height:30px;font-size:var(--fs-body)}
+.custom ul{margin:0;padding:0 0 0 18px;color:var(--cream);font-size:var(--fs-small);line-height:1.6;columns:2 180px;column-gap:20px}
+.custom li{break-inside:avoid}
 
 .priceline{display:flex;align-items:baseline;gap:10px;margin:18px 0 4px}
 .priceline .big{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h2);color:var(--glow);line-height:1.1}
@@ -500,5 +505,6 @@ function run(){[expanders,scrollers,reveal,imgFade].forEach(function(f){try{f()}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',run);else run();
 })();</script><!--/ui-polish-->
 <script src="/assets/site-chrome.v1.js?v=713665db" defer></script>
+<script src="/assets/account-fav.v1.js?v=22c1c3c0" defer></script>
 </body>
 </html>

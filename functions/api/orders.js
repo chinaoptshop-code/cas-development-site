@@ -37,10 +37,14 @@ export async function onRequestPost({ request, env }) {
   const cat = await (await fetch(new URL('/assets/ozdoba/catalog.json', request.url))).json();
   const byId = new Map(cat.items.map(i => [i.id, i]));
   const items = [];
+  // мінімум 10 шт (одиниць) кожної позиції — catalog.json min_qty (Михайло 25.10.2026); менше — 400 з поясненням
+  const minQty = Number(cat.min_qty) || 10;
   for (const l of d.cart) {
     const it = byId.get(Number(l.id));
-    const qty = Math.max(1, Math.min(10000, Number(l.qty) || 1));
     if (!it) continue;
+    const q = Math.floor(Number(l.qty));
+    if (!(q >= minQty)) return bad(`Мінімальна кількість — ${minQty} ${it.unit} кожної позиції: «${it.name}» (у кошику ${Number.isFinite(q) ? q : 0}). Поштучно не продаємо — збільште кількість або приберіть позицію.`);
+    const qty = Math.min(10000, q);
     const ci = Number(l.ci) || 0, si = Number(l.si) || 0;
     const ss = it.ss ? cat.sizesets[it.ss] : null;
     items.push({ id: it.id, name: it.name, color: (cat.colorsets[it.cs][ci] || cat.colorsets[it.cs][0])[0],
