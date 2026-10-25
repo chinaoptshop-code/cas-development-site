@@ -11,7 +11,7 @@
 import glob, html, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-SKIP = {'ru/o-nas.html', 'ru/uslugi.html', 'ru/kontakty.html'}
+SKIP = set()
 NO = re.compile(r'(?:^|/)(?:blog|proekty|ozdoba|kabinet|styleguide)(?:/|\.html$)')
 R, D = 'done', 'design'
 STATUS = {'uk': {R: 'Реалізовано', D: 'Дизайн-проєкт'}, 'ru': {R: 'Реализовано', D: 'Дизайн-проект'},

@@ -17,7 +17,7 @@
 import glob, html, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-SKIP = {'ru/o-nas.html', 'ru/uslugi.html', 'ru/kontakty.html', 'privacy.html', 'terms.html'}
+SKIP = {'privacy.html', 'terms.html'}
 NO_QUICK = re.compile(r'(?:^|/)(?:blog|ozdoba|kabinet|proekty|styleguide|konfigurator)(?:/|\.html$)'
                       r'|(?:^|/)(?:pytannya|voprosy|faq|preguntas-frecuentes)\.html$')  # FAQ — довгі сторінки (бюджет 60 КБ)
 
