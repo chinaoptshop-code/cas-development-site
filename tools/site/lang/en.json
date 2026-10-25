@@ -36,6 +36,10 @@
     "Portfolio (UA)"
    ],
    [
+    "/en/blog",
+    "Blog"
+   ],
+   [
     "/en/about",
     "About"
    ],
@@ -169,6 +173,10 @@
       "FAQ"
      ],
      [
+      "/en/blog",
+      "Blog: prices & guides"
+     ],
+     [
       "/en/contact",
       "Contact"
      ],
@@ -262,5 +270,34 @@
   "prev": "Previous photo",
   "next": "Next photo",
   "menu": "Menu"
+ },
+ "blog": {
+  "blog": "Blog",
+  "faq": "Questions and answers",
+  "more": "Read also",
+  "cta_h": "Let's estimate your project",
+  "cta_p": "Free consultation — tell us about your property and we will give you an indicative cost.",
+  "rel_h": "Related articles",
+  "blog_title": "Interior Design and Renovation Blog",
+  "blog_h1": "Interior design and renovation blog",
+  "blog_desc": "Guides from CAS Development, a Kyiv design and build studio: interior design and renovation costs, turnkey fit-outs, furniture sourcing from China.",
+  "blog_lead": "Plain-English guides on what design, renovation and furnishing cost, how the work is organised and what to check — for clients in Ukraine, Europe and worldwide.",
+  "blog_name": "CAS Development Blog",
+  "og_label": "BLOG",
+  "other_lang_mark": "(in Ukrainian)",
+  "months": [
+   "January",
+   "February",
+   "March",
+   "April",
+   "May",
+   "June",
+   "July",
+   "August",
+   "September",
+   "October",
+   "November",
+   "December"
+  ]
  }
 }

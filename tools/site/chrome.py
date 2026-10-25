@@ -149,7 +149,9 @@ def current(lang, path, href):
         return False
     if href == path:
         return True
-    sect = {'/blog': ('/blog/',), '/ru/blog': ('/ru/blog/',), '/portfolio': ('/proekty/',), '/ozdoba': ('/ozdoba/',)}
+    sect = {'/portfolio': ('/proekty/',), '/ozdoba': ('/ozdoba/',)}
+    if re.fullmatch(r'(?:/[a-z]{2})?/blog', href):  # блог будь-якою мовою: /blog, /ru/blog, /en/blog …
+        sect[href] = (href + '/',)
     return path.startswith(sect.get(href, ('\0',)))
 
 
@@ -395,11 +397,12 @@ def apply(s, rel):
     lang, path, alts = page_lang(s), rel_to_path(rel), alternates(s)
     if rel in [i18n.path_to_file(h) for h in HOME.values()]:
         alts.setdefault(lang, HOME[lang])
-    # стаття блогу без пари іншою мовою: перемикач uk/ru веде на блог тієї мови, а не на головну
-    if path.startswith('/ru/blog'):
-        alts.setdefault('uk', '/blog')
-    elif path == '/blog' or path.startswith('/blog/'):
-        alts.setdefault('ru', '/ru/blog')
+    # стаття блогу без перекладу якоюсь мовою: перемикач веде на блог тієї мови (якщо він є), а не на головну
+    if re.match(r'(?:/[a-z]{2})?/blog(?:/|$)', path):
+        for l in LANGS:
+            b = '/' + i18n.meta(l)['prefix'] + 'blog'
+            if i18n.exists(b):
+                alts.setdefault(l, b)
     # іконки Оздоби/кабінету
     tools = ''
     m = re.search(r'<div class="sch-tools">(.*?)</div><!--/sch-tools-->', s, re.S)

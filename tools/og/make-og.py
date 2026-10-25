@@ -173,7 +173,7 @@ def render(item, black, mask):
     # Брова: золота лінія + знак.
     ef = font(22, "Bold")
     ey = y - 58
-    label = "CAS DEVELOPMENT" + ("  ·  ПРОЄКТ" if item["kind"] == "proekty" else "  ·  БЛОГ")
+    label = "CAS DEVELOPMENT" + ("  ·  ПРОЄКТ" if item["kind"] == "proekty" else "  ·  " + item.get("label", "БЛОГ"))
 
     if sub:
         sub = sub[0].upper() + sub[1:]

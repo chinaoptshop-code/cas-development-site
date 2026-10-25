@@ -5,9 +5,11 @@
   python3 tools/blog/build.py --check    # лише перевірити JSON (схема, ціни, Osocor), нічого не писати
 
 Формат статті (tools/blog/articles/<slug>.json):
-  {"slug": "...", "lang": "uk"|"ru", "title": "...", "description": "...(до 160 симв.)", "lead": "...",
+  {"slug": "...", "lang": "uk"|"ru"|"en"|… (мова з tools/site/lang/<мова>.json, де є розділ "blog"), "title": "...", "description": "...(до 160 симв.)", "lead": "...",
    "date": "2026-10-22", "service": ["/remont-kvartyr-kyiv", "Ремонт квартир"],
-   "photo": "img/p/<id>-900.webp", "pair": "<slug іншою мовою>" (необовʼязково),
+   "photo": "img/p/<id>-900.webp", "pair": "<slug іншою мовою>" (необовʼязково; uk↔ru),
+   "translation_of": "<slug uk-статті>" (для en/pl/…: переклад цієї uk-статті; hreflang-група = uk + її ru-пара
+                     + усі статті з тим самим translation_of),
    "seo_title": "..." (необовʼязково, ≤60 симв.: іде в <title> як є замість title; H1 і решта — з title),
    "photo_alt": "опис hero-фото" (обовʼязково, якщо є photo; hero виводиться після lead, fetchpriority=high),
    "body": [["h2", "..."], ["p", "..."], ["ul", ["...", "..."]], ["ol", [...]],
@@ -15,9 +17,15 @@
             ["gallery", [["/img/p/<id>-900.webp", "alt"], ...]]  (2–3 фото в ряд; на мобільному 2)],
    фото в тексті: ~1 на 300–400 слів, ставити в кінці розділу h2, не два фото-вузли поспіль; без повторів у статті,
    у "p" і пунктах списків можна внутрішнє посилання: [анкор](/шлях-сторінки) — лише на наявну сторінку,
-   ru-статті → /ru/..., не більше одного на ту саму сторінку; у заголовках посилань немає
+   лише сторінки мови статті (uk → /..., ru → /ru/..., en → /en/...); виняток — сторінка іншою мовою з позначкою
+   в анкорі (blog.other_lang_mark, напр. «Ozdoba (in Ukrainian)»); не більше одного на ту саму сторінку; у заголовках посилань немає
    "faq": [["питання", "відповідь"], ...]}
 Ціни й факти — лише підтверджені (CLAUDE.md, розділ «Сайт: UI-kit і правила»).
+
+Мови: uk/ru — словники L нижче; нові мови — розділ "blog" у tools/site/lang/<мова>.json (ключі як у L['uk']
++ months, other_lang_mark, og_label, blog_name). Шляхи: /<prefix>blog/<slug>, індекс /<prefix>blog (prefix — з i18n.meta).
+Як додати мову (напр. pl): розділ "blog" у lang/pl.json, пункт меню /pl/blog у chrome.nav, статті pl-<…>.json
+з "lang": "pl" і "translation_of" → python3 tools/blog/build.py --check && python3 tools/blog/build.py && python3 tools/site/chrome.py.
 """
 import glob, html, importlib.util, json, os, re, sys
 
@@ -29,10 +37,12 @@ except ImportError:  # без PIL розміри не прочитати — --c
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, 'tools/site'))
 import chrome  # єдина шапка/футер (tools/site/chrome.py)
+import i18n  # мови сайту: префікси, hreflang, словники (tools/site/i18n.py)
 ART = os.path.join(ROOT, 'tools/blog/articles')
 B = 'https://cas-develop.com/'
 TPL_UK = 'tools/blog/template-uk.html'  # заморожена копія статті-шаблону (стаття сама збирається з JSON)
-PRICES_OK = ['$30', '$350', '$550', '$250', '$600', '$1 100', '$1100', '$50', '$2 500', '$2500', '$500']  # $500 — мін. замовлення Оздоби
+TPL_INDEX = 'blog.html'  # індекс uk — шаблон для індексів інших мов
+PRICES_OK = ['$30', '$350', '$550', '$250', '$600', '$1 100', '$1100', '$1,100', '$50', '$2 500', '$2500', '$2,500', '$500']  # $500 — мін. замовлення Оздоби
 MONTHS = {'uk': ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'],
           'ru': ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']}
 L = {
@@ -49,13 +59,30 @@ L = {
 }
 
 
+for _l in i18n.LANGS:  # нові мови — розділ "blog" у tools/site/lang/<мова>.json
+    _d = i18n.ui(_l)
+    if _l not in L and _d and _d.get('blog'):
+        L[_l] = dict(_d['blog'], home=_d['landing']['home'], home_url=_d['landing']['home_url'], blog_url='/' + i18n.meta(_l)['prefix'] + 'blog')
+        MONTHS[_l] = _d['blog']['months']
+# підписи нижньої панелі й лайтбокса в uk-шаблоні → словник form мови (як у landing.py)
+SHELL_UK = {'mbar': 'aria-label="Швидкий зв\'язок"', 'call': '</svg>Подзвонити</a>',
+            'close': "'Закрити'", 'prev': "'Попереднє фото'", 'next': "'Наступне фото'", 'menu': "'Меню'"}
+
+
+def prefix(lang): return i18n.meta(lang)['prefix']
+def blog_path(lang): return '/' + prefix(lang) + 'blog'
+def lang_of_href(href):
+    """Мова сторінки за префіксом шляху (/ru/…, /en/… ; решта — uk)."""
+    return next((l for l in i18n.LANGS if prefix(l) and href.startswith('/' + prefix(l))), 'uk')
+
+
 def rd(p): return open(os.path.join(ROOT, p), encoding='utf-8').read()
 def wr(p, s):
     if p.endswith('.html'): s = chrome.apply(s, p)  # єдина шапка/футер (мова — з <html lang>, пара — з hreflang)
     os.makedirs(os.path.dirname(os.path.join(ROOT, p)) or ROOT, exist_ok=True)
     open(os.path.join(ROOT, p), 'w', encoding='utf-8').write(s)
 def esc(s): return html.escape(s, quote=True)
-def path_of(a): return f"blog/{a['slug']}.html" if a['lang'] == 'uk' else f"ru/blog/{a['slug']}.html"
+def path_of(a): return f"{prefix(a['lang'])}blog/{a['slug']}.html"
 def url_of(a): return B + path_of(a)[:-5]
 def title_tag(t):
     """<title>: з брендом, якщо вміщається в 60 символів, інакше лише заголовок (бренд обрізався б у видачі)."""
@@ -77,15 +104,21 @@ def check(a):
     for k in ('slug', 'lang', 'title', 'description', 'lead', 'date', 'service', 'body', 'faq'):
         if k not in a: errs.append(f'немає поля {k}')
     if errs: return errs
-    if a['lang'] not in L: errs.append('lang має бути uk або ru')
+    if a['lang'] not in L: errs.append(f"lang {a['lang']}: немає словника блогу (L або розділ blog у tools/site/lang/<мова>.json)")
+    if a.get('translation_of'):
+        src = next((x for x in ARTS if x['slug'] == a['translation_of'] and x['lang'] == 'uk'), None)
+        if not src: errs.append(f"translation_of {a['translation_of']}: немає такої uk-статті в JSON")
+        elif a['lang'] in ('uk', 'ru'): errs.append('translation_of — лише для нових мов (uk/ru звʼязує pair)')
+        dup = [x['slug'] for x in ARTS if x is not a and x['lang'] == a['lang'] and x.get('translation_of') == a['translation_of']]
+        if dup: errs.append(f'той самий translation_of уже має {dup}')
     if not re.fullmatch(r'[a-z0-9-]+', a['slug']): errs.append('slug: лише a-z, 0-9, -')
     if len(a['description']) > 170: errs.append('description довший за 170 символів')
     if len(a.get('seo_title') or title_tag(a['title'])) > 60: errs.append('<title> довший за 60 символів — додати "seo_title" (≤60)')
     txt = json.dumps(a, ensure_ascii=False)
     if re.search(r'osocor|осокор|osokork', txt, re.I): errs.append('Osocor заборонено')
-    for p in re.findall(r'\$\s?\d[\d ]*\d|\$\d', txt):
-        p = p.strip()
-        if not any(p == ok or p.startswith(ok + ' ') for ok in PRICES_OK) and not re.fullmatch(r'\$\d{1,3}( \d{3})+', p):
+    for p in re.findall(r'\$\s?\d[\d ,]*\d|\$\d', txt):
+        p = p.strip().rstrip(',')
+        if not any(p == ok or p.startswith(ok + ' ') for ok in PRICES_OK) and not re.fullmatch(r'\$\d{1,3}(( \d{3})+|(,\d{3})+)', p):
             errs.append(f'ціна {p} — перевірити (дозволені лише підтверджені ставки або розрахунок із них)')
     words = sum(len(str(v).split()) for k, v, *_ in a['body'] if k not in PHOTO_KINDS for v in (v if isinstance(v, list) else [v]))
     if words < 450: errs.append(f'замало тексту: {words} слів (мінімум 450)')
@@ -168,7 +201,9 @@ def check_links(a):
                 p = href.strip('/')
                 if not (os.path.exists(os.path.join(ROOT, p + '.html')) or os.path.exists(os.path.join(ROOT, p, 'index.html'))):
                     errs.append(f'посилання {href}: сторінки немає')
-                if (a['lang'] == 'ru') != href.startswith('/ru/'): errs.append(f'посилання {href}: інша мова')
+                mark = L.get(a['lang'], {}).get('other_lang_mark')
+                if lang_of_href(href) != a['lang'] and not (mark and mark in anchor):
+                    errs.append(f'посилання {href}: інша мова' + (f' (або позначка «{mark}» в анкорі)' if mark else ''))
                 if href in seen: errs.append(f'посилання {href} повторюється')
                 seen.add(href)
     return errs
@@ -198,10 +233,46 @@ def ru_shell(s):
     return s
 
 
+def shell(s, lang):
+    """uk-шаблон (статті чи індексу) → мова сторінки: ru — ru_shell, нові мови — <html lang> і підписи з form."""
+    if lang == 'uk': return s
+    if lang == 'ru': return ru_shell(s)
+    f = i18n.ui(lang)['form']
+    s = i18n.html_attrs(s, lang)
+    for k, uk in SHELL_UK.items():
+        if uk not in s: continue
+        core = uk.split('="', 1)[1].rstrip('"') if '="' in uk else re.search(r"(?:>|')([^<>\"']+)(?:<|')", uk).group(1)
+        new = f[k].replace("'", '’') if uk.startswith("'") else esc(f[k])
+        s = s.replace(uk, uk.replace(core, new))
+    return s
+
+
+def group(a, arts):
+    """hreflang-група статті: {мова: стаття} — uk-оригінал, його ru-пара (pair) і переклади (translation_of)."""
+    uk = None
+    if a['lang'] == 'uk': uk = a
+    elif a.get('translation_of'): uk = next((x for x in arts if x['lang'] == 'uk' and x['slug'] == a['translation_of']), None)
+    elif a['lang'] == 'ru':
+        uk = (next((x for x in arts if x['lang'] == 'uk' and x['slug'] == a.get('pair')), None)
+              or next((x for x in arts if x['lang'] == 'uk' and x.get('pair') == a['slug']), None))
+    if not uk:
+        out = {a['lang']: a}
+        if a.get('pair'):
+            p = next((x for x in arts if x['slug'] == a['pair'] and x['lang'] != a['lang']), None)
+            if p: out[p['lang']] = p
+        return out
+    out = {'uk': uk}
+    ru = (next((x for x in arts if x['lang'] == 'ru' and x['slug'] == uk.get('pair')), None)
+          or next((x for x in arts if x['lang'] == 'ru' and x.get('pair') == uk['slug']), None))
+    if ru: out['ru'] = ru
+    for x in arts:
+        if x.get('translation_of') == uk['slug'] and x['lang'] not in out: out[x['lang']] = x
+    return out
+
+
 def build_article(a, arts):
     lang, t = a['lang'], L[a['lang']]
-    s = rd(TPL_UK)
-    if lang == 'ru': s = ru_shell(s)
+    s = shell(rd(TPL_UK), lang)
     url = url_of(a)
     og = f"img/og/{a['slug']}.jpg"
     og_url = B + og if os.path.exists(os.path.join(ROOT, og)) else B + 'img/og-cas.jpg'
@@ -214,22 +285,19 @@ def build_article(a, arts):
     s = re.sub(r'<meta property="og:image" content="[^"]*">', f'<meta property="og:image" content="{og_url}">', s, count=1)
     s = re.sub(r'<meta name="twitter:image" content="[^"]*">', f'<meta name="twitter:image" content="{og_url}">', s, count=1)
     s = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*">\s*', '', s)
-    # пара за "pair" цієї статті або зворотна (пару вказано лише в статті іншою мовою)
-    pair = (next((p for p in arts if p['slug'] == a.get('pair') and p['lang'] != lang), None)
-            or next((p for p in arts if p.get('pair') == a['slug'] and p['lang'] != lang), None))
-    if pair:
-        uk_u, ru_u = (url, url_of(pair)) if lang == 'uk' else (url_of(pair), url)
-        alts = f'<link rel="alternate" hreflang="uk" href="{uk_u}">\n<link rel="alternate" hreflang="ru" href="{ru_u}">\n<link rel="alternate" hreflang="x-default" href="{uk_u}">\n'
-        s = s.replace('<link rel="canonical"', alts + '<link rel="canonical"', 1)
+    # hreflang: uk-оригінал + ru-пара (pair) + переклади (translation_of); x-default — uk
+    g = group(a, arts)
+    if len(g) > 1:
+        s = s.replace('<link rel="canonical"', i18n.alt_links({l: '/' + path_of(x)[:-5] for l, x in g.items()}) + '<link rel="canonical"', 1)
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Article", "headline": a['title'], "description": a['description'], "datePublished": a['date'], "dateModified": a.get('modified', a['date']),
          "author": {"@type": "Organization", "name": "CAS Development", "url": B}, "publisher": {"@type": "Organization", "@id": B + "#business", "name": "CAS Development", "url": B, "logo": B + "apple-touch-icon.png"},
-         "image": og_url, "mainEntityOfPage": url, "inLanguage": lang},
+         "image": og_url, "mainEntityOfPage": url, "inLanguage": i18n.meta(lang)['hreflang']},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": t['home'], "item": B + t['home_url'].lstrip('/')},
             {"@type": "ListItem", "position": 2, "name": t['blog'], "item": B + t['blog_url'].lstrip('/')},
             {"@type": "ListItem", "position": 3, "name": a['title'], "item": url}]},
-        {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in a['faq']]}]}
+        {"@type": "FAQPage", "inLanguage": i18n.meta(lang)['hreflang'], "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in a['faq']]}]}
     s = re.sub(r'<script type="application/ld\+json">.*?</script>', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>', s, count=1, flags=re.S)
     s = re.sub(r'<div class="w crumbs">.*?</div>',
                f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / <a href="{t["blog_url"]}">{t["blog"]}</a> / {esc(a["title"])}</div>', s, count=1, flags=re.S)
@@ -272,35 +340,36 @@ def legacy_uk():
     return sorted(out, key=lambda x: x['date'], reverse=True)
 
 
-def build_index(lang, items):
+def build_index(lang, items, langs):
+    """Індекс блогу мови; langs — мови, у яких є індекс (для hreflang)."""
     t = L[lang]
-    s = rd('blog.html')
-    if lang == 'ru': s = ru_shell(s)
+    s = shell(rd(TPL_INDEX), lang)
     url = B + t['blog_url'].lstrip('/')
     s = re.sub(r'<title>.*?</title>', f'<title>{esc(title_tag(t["blog_title"]))}</title>', s, count=1, flags=re.S)
     s = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{t["blog_desc"]}">', s, count=1)
     s = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{url}">', s, count=1)
     s = re.sub(r'<meta property="og:(title|description|url)" content="[^"]*">\s*', '', s)
     s = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*">\s*', '', s)
-    alts = f'<link rel="alternate" hreflang="uk" href="{B}blog">\n<link rel="alternate" hreflang="ru" href="{B}ru/blog">\n<link rel="alternate" hreflang="x-default" href="{B}blog">\n'
-    s = s.replace('<link rel="canonical"', alts + '<link rel="canonical"', 1)
+    if len(langs) > 1:
+        s = s.replace('<link rel="canonical"', i18n.alt_links({l: blog_path(l) for l in langs}) + '<link rel="canonical"', 1)
     s = s.replace('<link rel="canonical"', f'<meta property="og:title" content="{t["blog_title"]} | CAS Development">\n<meta property="og:description" content="{t["blog_desc"]}">\n<meta property="og:url" content="{url}">\n<link rel="canonical"', 1)
-    ld = {"@context": "https://schema.org", "@type": "Blog", "name": f"{t['blog']} CAS Development", "url": url, "inLanguage": lang,
-          "blogPost": [{"@type": "BlogPosting", "headline": x['title'], "url": B + ('blog/' if lang == 'uk' else 'ru/blog/') + x['slug'], "datePublished": x['date']} for x in items]}
+    pre = blog_path(lang) + '/'
+    ld = {"@context": "https://schema.org", "@type": "Blog", "name": t.get('blog_name') or f"{t['blog']} CAS Development", "url": url,
+          "inLanguage": i18n.meta(lang)['hreflang'],
+          "blogPost": [{"@type": "BlogPosting", "headline": x['title'], "url": B + pre.lstrip('/') + x['slug'], "datePublished": x['date']} for x in items]}
     s = re.sub(r'<script type="application/ld\+json">.*?</script>', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>', s, count=1, flags=re.S)
     s = re.sub(r'<div class="w crumbs">.*?</div>', f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / {t["blog"]}</div>', s, count=1, flags=re.S)
     s = re.sub(r'<div class="w hero"><h1>.*?</div>', f'<div class="w hero"><h1>{t["blog_h1"]}</h1><p>{t["blog_lead"]}</p></div>', s, count=1, flags=re.S)
-    pre = '/blog/' if lang == 'uk' else '/ru/blog/'
     cards = ''.join(f'<a href="{pre}{x["slug"]}"><h2>{esc(x["title"])}</h2><p>{esc(x["description"])}</p></a>' for x in items)
     s = re.sub(r'<div class="cards">.*?</div></div></section>', f'<div class="cards">{cards}</div></div></section>', s, count=1, flags=re.S)
-    wr('blog.html' if lang == 'uk' else 'ru/blog.html', s)
+    wr(prefix(lang) + 'blog.html', s)
 
 
 def related_blocks(items_by_lang):
     """Блок «Статті по темі» на сторінках послуг (між маркерами <!--cas:articles-->)."""
     by_svc = {}
     for lang, items in items_by_lang.items():
-        pre = '/blog/' if lang == 'uk' else '/ru/blog/'
+        pre = blog_path(lang) + '/'
         for x in items:
             u = x['service'][0]
             if u: by_svc.setdefault(u, []).append((lang, pre + x['slug'], x['title']))
@@ -309,7 +378,8 @@ def related_blocks(items_by_lang):
         f = u.lstrip('/') + '.html'
         if not os.path.exists(os.path.join(ROOT, f)): continue
         s = rd(f)
-        lang = 'ru' if f.startswith('ru/') else 'uk'
+        lang = lang_of_href(u)
+        if lang not in L: continue
         mine = [x for x in lst if x[0] == lang][:6]
         if not mine: continue
         block = (f'<!--cas:articles--><section><div class="w"><h2>{L[lang]["rel_h"]}</h2><div class="rel arts">'
@@ -317,7 +387,9 @@ def related_blocks(items_by_lang):
         if '<!--cas:articles-->' in s:
             s = re.sub(r'<!--cas:articles-->.*?<!--/cas:articles-->\n?', block, s, count=1, flags=re.S)
         else:
-            anchor = re.search(r'<section><div class="w">\s*<h2>(Інші послуги|Другие услуги)</h2>', s) or re.search(r'<section id="zayavka">', s)
+            rel = ['Інші послуги', 'Другие услуги'] + [(i18n.ui(l) or {}).get('landing', {}).get('rel', '') for l in i18n.LANGS]
+            anchor = (re.search(r'<section><div class="w">\s*<h2>(' + '|'.join(re.escape(x) for x in rel if x) + r')</h2>', s)
+                      or re.search(r'<section id="zayavka">', s))
             if not anchor: continue
             s = s[:anchor.start()] + block + s[anchor.start():]
         wr(f, s); n += 1
@@ -334,14 +406,15 @@ def og_images(arts):
     for a in arts:
         out = os.path.join(ROOT, f"img/og/{a['slug']}.jpg")
         if os.path.exists(out) or not a.get('photo'): continue
-        img = m.render({'kind': 'blog', 'slug': a['slug'], 'title': a['title'], 'photo': a['photo']}, black, mask)
+        img = m.render({'kind': 'blog', 'slug': a['slug'], 'title': a['title'], 'photo': a['photo'],
+                        'label': L[a['lang']].get('og_label', 'БЛОГ')}, black, mask)
         m.save(img, m.Path(out) if hasattr(m, 'Path') else __import__('pathlib').Path(out))
         print('OG', a['slug'])
 
 
-def sitemap(arts):
+def sitemap(arts, langs):
     s = rd('sitemap.xml'); add = ''
-    urls = [url_of(a) for a in arts] + [B + 'ru/blog']
+    urls = [B + blog_path(l).lstrip('/') for l in langs] + [url_of(a) for a in arts]
     for u in urls:
         if f'<loc>{u}</loc>' not in s:
             add += f'  <url><loc>{u}</loc><lastmod>{max(a["date"] for a in arts)}</lastmod></url>\n'
@@ -349,8 +422,12 @@ def sitemap(arts):
     return add.count('<url>')
 
 
+ARTS = []  # усі статті (для check: translation_of)
+
+
 def main():
     arts = load()
+    ARTS[:] = arts
     bad = {a['_file']: check(a) for a in arts}
     bad = {k: v for k, v in bad.items() if v}
     if bad:
@@ -359,14 +436,16 @@ def main():
     if '--check' in sys.argv:
         print(f'OK: {len(arts)} статей'); return
     og_images(arts)
+    by = {l: sorted([a for a in arts if a['lang'] == l] + (legacy_uk() if l == 'uk' else []), key=lambda x: x['date'], reverse=True)
+          for l in i18n.LANGS if l in L}
+    by = {l: v for l, v in by.items() if v}
+    # спершу індекси: перемикач мов статті без перекладу веде на індекс блогу тієї мови (chrome.apply)
+    for l, items in by.items(): build_index(l, items, list(by))
     for a in arts: build_article(a, arts)
-    uk = sorted([a for a in arts if a['lang'] == 'uk'] + legacy_uk(), key=lambda x: x['date'], reverse=True)
-    ru = sorted([a for a in arts if a['lang'] == 'ru'], key=lambda x: x['date'], reverse=True)
-    build_index('uk', uk)
-    if ru: build_index('ru', ru)
-    n = related_blocks({'uk': uk, 'ru': ru})
-    m = sitemap(arts)
-    print(f'Готово: {len(arts)} статей із JSON, індекс uk {len(uk)}, ru {len(ru)}, блоків «по темі» {n}, нових URL у sitemap {m}')
+    n = related_blocks(by)
+    m = sitemap(arts, list(by))
+    print(f'Готово: {len(arts)} статей із JSON, індекси ' + ', '.join(f'{l} {len(v)}' for l, v in by.items())
+          + f', блоків «по темі» {n}, нових URL у sitemap {m}')
 
 
 if __name__ == '__main__':
