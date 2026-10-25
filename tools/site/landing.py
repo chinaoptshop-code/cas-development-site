@@ -15,7 +15,9 @@
    "guarantees": true (необовʼязково — блок «Гарантії» після «Як працюємо»; для лендингів ремонту/під ключ),
    "parent": ["/url", "назва"] (необовʼязково — проміжна ланка хлібних крихт замість «Послуги», напр. хаб ЖК),
    "budget": {"area": 100, "h2": "...", "p": "..."} (необовʼязково — орієнтир «площа × ставка» з data-est після about),
-   "near": ["h2", [["/url", "назва"], ...]] (необовʼязково — блок посилань перед «Інші послуги»)}
+   "near": ["h2", [["/url", "назва"], ...]] (необовʼязково — блок посилань перед «Інші послуги»),
+   "cluster": ["h2", "вступ", [["/url", "анкор"], ...]] (необовʼязково — сусідні інтенти кластера запитів, tools/site/keywords.json)}
+У абзацах "about" і відповідях "faq" можна ставити посилання: [анкор](/url).
 Сторінка частих питань (/pytannya): замість cards/steps/faq — "groups": [{"id": "ceny", "h2": "...",
    "faq": [[q, a], ...], "links": [["/url", "назва"], ...]}, ...]; price необовʼязковий.
 Після збірки запустіть tools/blog/build.py (блоки «Статті по темі» і sitemap).
@@ -122,6 +124,10 @@ def area_served(lang):
 ORG = {'@type': 'Organization', '@id': B + '#business', 'name': 'CAS Development', 'url': B, 'logo': B + 'apple-touch-icon.png'}
 e = lambda s: html.escape(s, quote=False)
 a = lambda s: html.escape(s, quote=True)
+# посилання в тексті абзаців «about» і відповідей FAQ: [анкор](/url) → <a href="/url">анкор</a> (у JSON-LD — лише анкор)
+MDLINK = re.compile(r'\[([^\]]+)\]\((/[^)\s]*)\)')
+rich = lambda s: MDLINK.sub(lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', e(s))
+plain = lambda s: MDLINK.sub(r'\1', s)
 
 
 def url(lang, slug):
@@ -150,7 +156,7 @@ def groups_html(p):
          '</div></section>\n']
     for g in p['groups']:
         o += [f'<section id="{g["id"]}"><div class="w">', f'  <h2>{e(g["h2"])}</h2>',
-              '  ' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(x)}</p></details>' for q, x in g['faq'])]
+              '  ' + ''.join(f'<details><summary>{e(q)}</summary><p>{rich(x)}</p></details>' for q, x in g['faq'])]
         if g.get('links'):
             o.append('  <div class="rel" style="margin-top:18px">' + ''.join(f'<a href="{u}">{e(n)}</a>' for u, n in g['links']) + '</div>')
         o.append('</div></section>\n')
@@ -237,6 +243,13 @@ def budget_html(lang, b):
             + f'<p style="margin:0"><small>{e(d["note"])}</small></p></div></div></section>\n')
 
 
+def cluster_html(c):
+    """Блок «схожі запити» (кластер інтентів): [h2, вступ, [[url, анкор], ...]] — різні анкори на сусідні сторінки кластера."""
+    h, intro, links = c
+    return ('<section><div class="w txt">' + f'<h2>{e(h)}</h2>' + (f'<p>{rich(intro)}</p>' if intro else '')
+            + '<div class="rel">' + ''.join(f'<a href="{u}">{e(n)}</a>' for u, n in links) + '</div></div></section>\n')
+
+
 def hero_html(p):
     t = L[p['lang']]
     if p.get('slug') == 'index':
@@ -274,7 +287,7 @@ def main_html(p):
           '  <div class="grid">' + ''.join(f'<div class="card"><h3>{e(h)}</h3><ul>' + ''.join(f'<li>{e(i)}</li>' for i in li) + '</ul></div>' for h, li in p['cards']) + '</div>',
           '</div></section>\n']
     for h, ps in p.get('about', []):
-        o.append(f'<section><div class="w txt"><h2>{e(h)}</h2>' + ''.join(f'<p>{e(x)}</p>' for x in ps) + '</div></section>\n')
+        o.append(f'<section><div class="w txt"><h2>{e(h)}</h2>' + ''.join(f'<p>{rich(x)}</p>' for x in ps) + '</div></section>\n')
     if p.get('budget'):
         o.append(budget_html(p['lang'], p['budget']))
     if p.get('gallery'):
@@ -283,11 +296,11 @@ def main_html(p):
           '  <ol class="steps">' + ''.join(f'<li><div><b>{e(b)}</b><span>{e(s)}</span></div></li>' for b, s in p['steps']) + '</ol>',
           '</div></section>\n'] + ([guarantees_html(p['lang'])] if p.get('guarantees') else []) + [
           '<section><div class="w">', f'  <h2>{t["faq"]}</h2>',
-          '  ' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(x)}</p></details>' for q, x in p['faq']),
+          '  ' + ''.join(f'<details><summary>{e(q)}</summary><p>{rich(x)}</p></details>' for q, x in p['faq']),
           '</div></section>\n'] + ([
           '<section><div class="w">', f'  <h2>{e(p["near"][0])}</h2>',
           '  <div class="rel">' + ''.join(f'<a href="{u}">{e(n)}</a>' for u, n in p['near'][1]) + '</div>',
-          '</div></section>\n'] if p.get('near') else []) + [
+          '</div></section>\n'] if p.get('near') else []) + ([cluster_html(p['cluster'])] if p.get('cluster') else []) + [
           '<section><div class="w">', f'  <h2>{t["rel"]}</h2>',
           '  <div class="rel">' + ''.join(f'<a href="{u}">{e(n)}</a>' for u, n in p['rel']) + '</div>',
           '</div></section>\n']
@@ -315,7 +328,7 @@ def ld(p):
                  {'@type': 'ListItem', 'position': 3, 'name': p['h1'], 'item': u}]}, page]
     qa = faqs(p)
     if qa:
-        f = {'@type': 'FAQPage', 'inLanguage': hl, 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': x}} for q, x in qa]}
+        f = {'@type': 'FAQPage', 'inLanguage': hl, 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': plain(x)}} for q, x in qa]}
         if p.get('groups'):
             f.update({'@id': u + '#faq', 'url': u, 'name': p['h1']})
         g.append(f)
