@@ -8,9 +8,11 @@
 для catalog.json та app.js (кеш браузера оновиться одразу після деплою).
 Фото товарів додає tools/products/photo.py.
 """
-import hashlib, html, json, os, re, time
+import hashlib, html, json, os, re, sys, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(ROOT, 'tools/site'))
+import chrome  # єдина шапка/футер (tools/site/chrome.py)
 LASTMOD = time.strftime('%Y-%m-%d', time.localtime(os.path.getmtime(os.path.join(ROOT, 'assets/ozdoba/catalog.json'))))  # для sitemap
 CAT = os.path.join(ROOT, 'assets/ozdoba/catalog.json')
 APP = os.path.join(ROOT, 'assets/ozdoba/app.js')
@@ -85,7 +87,7 @@ def main():
     s = re.sub(r'/assets/ozdoba/catalog\.json\?v=\w+', '/assets/ozdoba/catalog.json?v=' + ver(CAT), s)
     s = re.sub(r'/assets/ozdoba/app\.js\?v=\w+', '/assets/ozdoba/app.js?v=' + ver(APP), s)
     s = re.sub(r'<span class="cnt" id="cnt">[^<]*</span>', f'<span class="cnt" id="cnt">{len(items)} позицій</span>', s, count=1)
-    open(PAGE, 'w', encoding='utf-8').write(s)
+    open(PAGE, 'w', encoding='utf-8').write(chrome.apply(s, 'ozdoba.html'))
     pages = product_pages(d)
     cats = category_pages(d)
     photos = sum(1 for i in d['items'] if i.get('img'))
@@ -232,7 +234,7 @@ def product_page(d, i, shell, items, title):
         cart_svg = re.search(r'aria-label="Кошик">(<svg.*?</svg>)', hdr.group(0), flags=re.S).group(1)
         acc = re.search(r'<a class="ico" id="accLink".*?</a>', hdr.group(0), flags=re.S)
         s = s.replace(hdr.group(0), (acc.group(0) + '\n  ' if acc else '') + f'<a class="ico" href="/ozdoba" aria-label="Кошик">{cart_svg}</a>')
-    a, b = s.index('<div class="searchwrap"'), s.index('<footer>')
+    a, b = s.index('<div class="searchwrap"'), s.index('<!--chrome:f-->')
     s = s[:a] + body + '\n' + s[b:]
     a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
     s = s[:a] + '<script src="/assets/lead-form.v1.js" defer></script>\n' + s[b:]
@@ -274,7 +276,7 @@ def product_pages(d):
     titles = product_titles(d['items'])
     for i in d['items']:
         f = os.path.join(ROOT, 'ozdoba', i['slug'] + '.html'); keep.add(f)
-        open(f, 'w', encoding='utf-8').write(product_page(d, i, shell, d['items'], titles[i['id']]))
+        open(f, 'w', encoding='utf-8').write(chrome.apply(product_page(d, i, shell, d['items'], titles[i['id']]), 'ozdoba/' + i['slug'] + '.html'))
     for f in os.listdir(os.path.join(ROOT, 'ozdoba')):  # прибрати сторінки видалених товарів
         p = os.path.join(ROOT, 'ozdoba', f)
         if p not in keep and f.endswith('.html'): os.remove(p)
@@ -382,11 +384,11 @@ def category_pages(d):
         if hdr:
             cart_svg = re.search(r'aria-label="Кошик">(<svg.*?</svg>)', hdr.group(0), flags=re.S).group(1)
             s = s.replace(hdr.group(0), f'<a class="ico" href="/ozdoba" aria-label="Кошик">{cart_svg}</a>')
-        a, b = s.index('<div class="searchwrap"'), s.index('<footer>')
+        a, b = s.index('<div class="searchwrap"'), s.index('<!--chrome:f-->')
         s = s[:a] + body + '\n' + s[b:]
         a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
         s = s[:a] + s[b:]
-        open(os.path.join(ROOT, 'ozdoba/kategoriia', slug + '.html'), 'w', encoding='utf-8').write(s)
+        open(os.path.join(ROOT, 'ozdoba/kategoriia', slug + '.html'), 'w', encoding='utf-8').write(chrome.apply(s, f'ozdoba/kategoriia/{slug}.html'))
         out.append(u)
     sm = os.path.join(ROOT, 'sitemap.xml'); t = open(sm, encoding='utf-8').read()
     t = re.sub(r'  <url><loc>https://cas-develop\.com/ozdoba/kategoriia/[^<]+</loc>.*?</url>\n', '', t)

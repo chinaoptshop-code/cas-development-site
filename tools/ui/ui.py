@@ -124,6 +124,7 @@ def budget(report_only=False):
         if r['osocor']: bad.append(f'{p}: Osocor')
         if r['h1_count'] != 1: bad.append(f'{p}: H1 = {r["h1_count"]}')
         if not r['canonical']: bad.append(f'{p}: без canonical')
+        if '<!--chrome:h-->' not in open(os.path.join(ROOT, p), encoding='utf-8').read(): bad.append(f'{p}: без єдиної шапки (tools/site/chrome.py)')
     print('\n'.join(bad) if bad else 'Бюджет: OK')
     return 0 if (report_only or not bad) else 1
 

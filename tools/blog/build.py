@@ -18,6 +18,8 @@
 import glob, html, importlib.util, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(ROOT, 'tools/site'))
+import chrome  # єдина шапка/футер (tools/site/chrome.py)
 ART = os.path.join(ROOT, 'tools/blog/articles')
 B = 'https://cas-develop.com/'
 TPL_UK = 'tools/blog/template-uk.html'  # заморожена копія статті-шаблону (стаття сама збирається з JSON)
@@ -40,6 +42,7 @@ L = {
 
 def rd(p): return open(os.path.join(ROOT, p), encoding='utf-8').read()
 def wr(p, s):
+    if p.endswith('.html'): s = chrome.apply(s, p)  # єдина шапка/футер (мова — з <html lang>, пара — з hreflang)
     os.makedirs(os.path.dirname(os.path.join(ROOT, p)) or ROOT, exist_ok=True)
     open(os.path.join(ROOT, p), 'w', encoding='utf-8').write(s)
 def esc(s): return html.escape(s, quote=True)
@@ -122,9 +125,7 @@ def render_body(body):
 def ru_shell(s):
     """Перетворює український шаблон статті на російський (шапка, футер, панель, мова)."""
     ru = rd('ru/remont-kvartir-kiev.html')
-    s = s.replace('<html lang="uk">', '<html lang="ru">')
-    s = s[:s.index('<header>')] + ru[ru.index('<header>'):ru.index('</header>') + 9] + s[s.index('</header>') + 9:]
-    s = s[:s.index('<footer>')] + ru[ru.index('<footer>'):ru.index('</footer>') + 9] + s[s.index('</footer>') + 9:]
+    s = s.replace('<html lang="uk">', '<html lang="ru">')  # шапку й футер мовою сторінки ставить chrome.apply у wr()
     mb_ru = ru[ru.index('<!--m-fix--><div class="mbar"'):ru.index('</div>', ru.index('<!--m-fix--><div class="mbar"')) + 6]
     i = s.index('<!--m-fix--><div class="mbar"'); s = s[:i] + mb_ru + s[s.index('</div>', i) + 6:]
     return s

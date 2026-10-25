@@ -5,9 +5,12 @@
 Ціни й факти — лише підтверджені Михайлом (150+, 2016, ±5% якщо ремонт робить CAS, ціни сайту).
 """
 import json, re, html
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'tools/site'))
+import chrome  # єдина шапка/футер (tools/site/chrome.py)
 TPL = (ROOT / "remont-ofisu-pid-klyuch-kyiv.html").read_text(encoding="utf-8")
 BASE = "https://cas-develop.com/"
 
@@ -120,7 +123,7 @@ def build(p):
     s = s.replace("<label for=\"oArea\">Площа офісу, м²</label>", "<label for=\"oArea\">Площа, м²</label>")
     s = s.replace("service:'Ремонт офісу під ключ'", f"service:'{p['service']}'")
     s = s.replace("source:'cas-develop.com/remont-ofisu-pid-klyuch-kyiv'", f"source:'cas-develop.com/{p['slug']}'")
-    assert "офіс" not in re.sub(r"<script.*?</script>", "", s.split("<main>")[1], flags=re.S).lower().replace("офіс:", ""), p["slug"]
+    assert "офіс" not in re.sub(r"<script.*?</script>", "", s.split("<main>")[1].split("</main>")[0], flags=re.S).lower().replace("офіс:", ""), p["slug"]
     return s
 
 
@@ -141,6 +144,6 @@ def add_lines():
 
 if __name__ == "__main__":
     for p in PAGES:
-        (ROOT / f"{p['slug']}.html").write_text(build(p), encoding="utf-8")
+        (ROOT / f"{p['slug']}.html").write_text(chrome.apply(build(p), f"{p['slug']}.html"), encoding="utf-8")
         print("✓", p["slug"])
     add_lines()

@@ -4,8 +4,8 @@
   python3 tools/site/landing.py            # зібрати всі сторінки
   python3 tools/site/landing.py slug ...   # лише вказані (slug без ru/)
 
-Шаблон: uk — remont-kukhni-kyiv.html, ru — ru/remont-kvartir-kiev.html. Шапка, стилі, форма,
-футер і скрипти беруться з шаблону; замінюються мета, JSON-LD і контент <main>.
+Шаблон: uk — remont-kukhni-kyiv.html, ru — ru/remont-kvartir-kiev.html. Стилі, форма і скрипти беруться
+з шаблону, шапку й футер ставить tools/site/chrome.py; замінюються мета, JSON-LD і контент <main>.
 Формат JSON:
   {"slug": "mebliuvannia-kvartyry-kyiv", "lang": "uk", "pair": "<slug іншою мовою>",
    "title": "...", "description": "...", "h1": "...", "price": "...", "lead": "...", "service": "...",
@@ -19,6 +19,9 @@
 import glob, html, json, os, re, sys
 
 from PIL import Image
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import chrome  # єдина шапка/футер (tools/site/chrome.py)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 B = 'https://cas-develop.com/'
@@ -164,12 +167,8 @@ def build(p):
     s = re.sub(r'<main>\n.*?(<section id="zayavka">)', lambda m: '<main>\n' + main_html(p) + m.group(1), s, count=1, flags=re.S)
     s = re.sub(r'data-service="[^"]*"', f'data-service="{a(p["service"])}"', s, count=1)
     s = re.sub(r'data-source="[^"]*"', f'data-source="cas-develop.com/{"ru/" if lang == "ru" else ""}{slug}"', s, count=1)
-    # посилання на іншу мову у футері
-    s = re.sub(r' · <a href="/[^"]*" hreflang="(?:uk|ru)" lang="(?:uk|ru)">[^<]*</a>', '', s)
-    if p.get('pair'):
-        other = 'ru' if lang == 'uk' else 'uk'
-        href = ('/ru/' if other == 'ru' else '/') + p['pair']
-        s = s.replace('@cas_development</a></div>', f'@cas_development</a> · <a href="{href}" hreflang="{other}" lang="{other}">{L[lang]["other"]}</a></div>', 1)
+    # шапка й футер: мова, перемикач на пару (hreflang) і посилання — з chrome.py
+    s = chrome.apply(s, path(lang, slug))
     open(os.path.join(ROOT, path(lang, slug)), 'w', encoding='utf-8').write(s)
     return path(lang, slug)
 
@@ -187,8 +186,7 @@ def link_pair(p):
     s = re.sub(r'<link rel="alternate" hreflang[^>]*>\n', '', s)
     s = s.replace('<meta name="twitter:card"', f'<link rel="alternate" hreflang="uk" href="{uk_u}">\n<link rel="alternate" hreflang="ru" href="{ru_u}">\n'
                   f'<link rel="alternate" hreflang="x-default" href="{uk_u}">\n<meta name="twitter:card"', 1)
-    href = ('/ru/' if p['lang'] == 'ru' else '/') + p['slug']
-    s = s.replace('@cas_development</a></div>', f'@cas_development</a> · <a href="{href}" hreflang="{p["lang"]}" lang="{p["lang"]}">{L[other]["other"]}</a></div>', 1)
+    s = chrome.apply(s, path(other, p['pair']))  # перемикач мови в шапці/футері — на нову пару
     open(f, 'w', encoding='utf-8').write(s)
 
 

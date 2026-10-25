@@ -3,9 +3,11 @@
 
   python3 tools/shop/pages.py
 """
-import hashlib, os, re
+import hashlib, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(ROOT, 'tools/site'))
+import chrome  # єдина шапка/футер (tools/site/chrome.py)
 
 CSS = """
 .acc{max-width:1100px;margin:0 auto;padding:0 16px 40px}
@@ -159,14 +161,14 @@ def shell():
 def page(s, title, body, path):
     s = re.sub(r'<title>.*?</title>', f'<title>{title} | CAS Development</title>', s, count=1)
     s = re.sub(r'(<link rel="canonical" href=")[^"]*', lambda m: m.group(1) + 'https://cas-develop.com/' + path, s, count=1)
-    a, b = s.index('<div class="searchwrap"'), s.index('<footer>')
+    a, b = s.index('<div class="searchwrap"'), s.index('<!--chrome:f-->')
     ver = hashlib.sha256(open(os.path.join(ROOT, 'assets', 'account.v1.js'), 'rb').read()).hexdigest()[:8]
     s = s[:a] + body.replace('__ACCV__', ver) + '\n' + s[b:]
     a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
     s = s[:a] + s[b:]
     f = os.path.join(ROOT, path + '.html')
     os.makedirs(os.path.dirname(f), exist_ok=True)
-    open(f, 'w', encoding='utf-8').write(s)
+    open(f, 'w', encoding='utf-8').write(chrome.apply(s, path + '.html'))
     print('✓', path)
 
 

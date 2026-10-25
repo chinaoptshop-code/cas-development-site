@@ -1,0 +1,128 @@
+/* Єдина шапка (.sch) і футер (.scf) сайту — UI-kit CAS. Розмітку генерує tools/site/chrome.py. */
+:root{--sch-h:64px}
+html{scroll-padding-top:calc(var(--sch-h) + 12px)}
+body{padding-top:var(--sch-h)}
+.sch,.scf{--c-bg:#080709;--c-bg2:#100e0c;--c-tx:#EDE8DF;--c-mu:#938c84;--c-ac:#BF9148;--c-ln:rgba(191,145,72,.2);--c-fs:var(--fs-small,.8125rem);
+  font-family:"Manrope","Manrope Fallback",system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-align:left}
+.sch *,.sch *::before,.sch *::after,.scf *,.scf *::before,.scf *::after{box-sizing:border-box}
+
+/* ── «Перейти до змісту» (видиме при фокусі) ── */
+.skip{position:fixed;left:12px;top:-80px;z-index:1000;padding:12px 18px;background:#BF9148;color:#14120f;font:600 .875rem/1.2 "Manrope","Manrope Fallback",system-ui,sans-serif;text-decoration:none;transition:top .15s}
+.skip:focus{top:10px;outline:2px solid #EDE8DF;outline-offset:2px}
+
+/* ── шапка ── */
+.sch{position:fixed;top:0;left:0;right:0;z-index:800;display:block;height:var(--sch-h);margin:0;padding:0;
+  background:none;border-bottom:1px solid var(--c-ln);color:var(--c-tx)}
+/* фон з розмиттям — на псевдоелементі: backdrop-filter на самій шапці зробив би її блоком-контейнером для fixed-меню */
+.sch::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(8,7,9,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);pointer-events:none}
+.sch-in{max-width:1280px;height:100%;margin:0 auto;padding:0 16px;display:flex;align-items:center;gap:12px}
+.sch-logo{flex:none;display:inline-flex;align-items:center;min-height:44px;font-family:"Cormorant Garamond","Cormorant Fallback",Georgia,serif;font-size:1.15rem;font-weight:400;line-height:1;letter-spacing:.14em;
+  text-transform:uppercase;white-space:nowrap;color:var(--c-tx);text-decoration:none}
+.sch-logo em{font-style:normal;color:var(--c-ac)}
+.sch-nav{display:none}
+.sch-nav a{position:relative;padding:10px 0;font-size:.75rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;color:var(--c-mu);text-decoration:none;transition:color .2s}
+.sch-nav a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:1px;background:var(--c-ac);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.sch-nav a:hover,.sch-nav a[aria-current]{color:var(--c-tx)}
+.sch-nav a:hover::after,.sch-nav a[aria-current]::after{transform:scaleX(1)}
+.sch-act{flex:none;display:flex;align-items:center;gap:10px;margin-left:auto}
+.sch-tools{display:flex;align-items:center;gap:8px}
+.sch-lang{display:none;align-items:center;font-size:.75rem;font-weight:600;letter-spacing:.14em}
+.sch-lang a,.sch-lang span{display:inline-flex;align-items:center;justify-content:center;min-width:34px;min-height:40px;padding:0 4px;text-decoration:none}
+.sch-lang a{color:var(--c-mu)}.sch-lang a:hover{color:var(--c-tx)}
+.sch-lang span{color:var(--c-ac)}
+.sch-tel{display:none;align-items:center;gap:8px;min-height:40px;font-size:.8125rem;font-weight:600;letter-spacing:.04em;white-space:nowrap;color:var(--c-tx);text-decoration:none}
+.sch-tel svg,.sch-mtel svg{width:16px;height:16px;flex:none;fill:var(--c-ac)}
+.sch-cta{display:none;align-items:center;justify-content:center;min-height:40px;padding:0 18px;border:1px solid var(--c-ac);border-radius:0;background:none;
+  font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:var(--c-ac);text-decoration:none;transition:background .2s,color .2s}
+.sch-cta:hover{background:var(--c-ac);color:#14120f}
+.sch-burger{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin:0 -8px 0 0;padding:0;border:0;border-radius:0;background:none;color:var(--c-tx);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.sch-burger svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;overflow:visible}
+.sch-burger path{transform-box:fill-box;transform-origin:center;transition:transform .25s,opacity .2s}
+.sch-burger[aria-expanded="true"] .sch-b1{transform:translateY(5px) rotate(45deg)}
+.sch-burger[aria-expanded="true"] .sch-b2{opacity:0}
+.sch-burger[aria-expanded="true"] .sch-b3{transform:translateY(-5px) rotate(-45deg)}
+.sch a:focus-visible,.sch button:focus-visible,.scf a:focus-visible,.scf summary:focus-visible{outline:2px solid var(--c-ac);outline-offset:2px}
+/* іконки Оздоби/кабінету (.ico — стилі сторінки Оздоби); зона дотику ≥44px */
+.sch-tools .ico{flex:none;position:relative}
+.sch-tools .ico::before{content:"";position:absolute;inset:-5px}
+@media(max-width:479px){
+  .sch--tools .sch-logo{font-size:1rem;letter-spacing:.08em}
+  .sch--tools .sch-tools{gap:6px}
+  .sch--tools .sch-tools .ico{width:36px;height:36px}
+  .sch--tools .sch-tools button[onclick*="'fav'"]{display:none}
+}
+@media(max-width:359px){.sch--tools .sch-logo{font-size:.8rem;letter-spacing:.03em}.sch--tools .sch-tools .ico{width:34px;height:34px}.sch--tools .sch-act{gap:6px}}
+@media(min-width:640px){.sch-lang{display:flex}.sch-cta{display:inline-flex}}
+@media(min-width:1080px){
+  .sch-in{padding:0 28px;gap:20px}
+  .sch-nav{display:flex;align-items:center;gap:24px;margin:0 auto}
+  .sch-act{margin-left:0}
+  .sch-burger{display:none}
+}
+@media(min-width:1080px) and (max-width:1239px){.sch--tools .sch-nav{gap:16px}.sch--tools .sch-nav a{letter-spacing:.12em}.sch--tools .sch-lang{display:none}}
+@media(min-width:1380px){.sch:not(.sch--tools) .sch-tel{display:inline-flex}}
+
+/* ── повноекранне меню (мобільний/планшет) ── */
+.sch-menu{position:fixed;top:var(--sch-h);left:0;right:0;bottom:0;z-index:801;overflow-y:auto;overscroll-behavior:contain;background:var(--c-bg);border-top:1px solid var(--c-ln)}
+.sch-menu[hidden]{display:none!important}
+.sch-menu-in{max-width:640px;min-height:100%;margin:0 auto;padding:12px 20px calc(32px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:26px}
+.sch-mnav{display:flex;flex-direction:column}
+.sch-mnav a{display:flex;align-items:center;min-height:56px;padding:6px 0;border-bottom:1px solid var(--c-ln);font-family:"Cormorant Garamond","Cormorant Fallback",Georgia,serif;
+  font-size:clamp(1.75rem,1.5rem + 1.2vw,2.25rem);font-weight:300;line-height:1.1;color:var(--c-tx);text-decoration:none}
+.sch-mnav a[aria-current]{color:var(--c-ac)}
+.sch-mlang{display:flex;gap:8px}
+.sch-mlang a,.sch-mlang span{display:inline-flex;align-items:center;justify-content:center;min-width:56px;min-height:44px;padding:0 14px;border:1px solid var(--c-ln);
+  font-size:.8125rem;font-weight:600;letter-spacing:.14em;text-decoration:none;color:var(--c-mu)}
+.sch-mlang span{border-color:var(--c-ac);color:var(--c-ac)}
+.sch-mcta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.sch-mcta .sch-cta{display:inline-flex;min-height:48px;padding:0 28px;background:var(--c-ac);color:#14120f}
+.sch-mtel{display:inline-flex;align-items:center;gap:10px;min-height:48px;font-size:1.0625rem;font-weight:600;color:var(--c-tx);text-decoration:none}
+.sch-mmsg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sch-mmsg a,.scf-msg a{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 12px;border:1px solid var(--c-ln);border-radius:12px;
+  font-size:.875rem;color:var(--c-tx);text-decoration:none}
+.sch-mmsg img,.scf-msg img{flex:none;width:20px;height:20px;object-fit:contain}
+html.sch-lock,html.sch-lock body{overflow:hidden}
+html.sch-lock .mbar{display:none!important}
+@media(min-width:1080px){.sch-menu{display:none!important}}
+
+/* ── футер ── */
+.scf{position:static;display:block;margin:0;padding:48px 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--c-ln);background:var(--c-bg);
+  color:var(--c-mu);font-size:var(--fs-body,1rem);line-height:1.6}
+.scf-in{max-width:1280px;margin:0 auto;padding:0 16px}
+.scf-top{display:grid;grid-template-columns:1fr;gap:28px}
+.scf-brand p{max-width:38ch;margin:14px 0 0;font-size:.875rem;color:var(--c-mu)}
+.scf-col b{display:block;margin:0 0 10px;font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c-ac)}
+.scf address{font-style:normal;color:var(--c-tx)}
+.scf-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.125rem;font-weight:600;color:var(--c-tx);text-decoration:none}
+.scf-msg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.scf .scf-svc{position:static;margin:32px 0 0;padding:16px 0 0;border:0;border-top:1px solid var(--c-ln)}
+.scf .scf-svc summary{display:flex;align-items:center;justify-content:center;min-height:44px;list-style:none;cursor:pointer;
+  font-size:.75rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--c-ac);float:none}
+.scf .scf-svc summary::-webkit-details-marker{display:none}
+.scf .scf-svc summary::after{content:"+"!important;display:inline!important;float:none;margin-left:10px;letter-spacing:0;font-size:1rem;color:var(--c-ac);transform:none!important}
+.scf .scf-svc[open] summary::after{content:"−"!important}
+.scf-svc-g{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px;max-width:1040px;margin:16px auto 0}
+.scf-svc-g b{display:block;margin-bottom:6px;font-size:.8125rem;font-weight:600;color:var(--c-ac)}
+.scf-svc-g a{display:block;padding:5px 0;font-size:.8125rem;color:var(--c-mu);text-decoration:none}
+.scf-svc-g a:hover,.scf-bot a:hover{color:var(--c-tx)}
+.scf-bot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 24px;margin-top:24px;padding-top:16px;border-top:1px solid var(--c-ln);font-size:.8125rem}
+.scf-langs{display:flex;flex-wrap:wrap;align-items:center;gap:0 14px}
+.scf-bot a{display:inline-flex;align-items:center;min-height:44px;color:var(--c-mu);text-decoration:none}
+.scf-lang-on{color:var(--c-tx)}
+@media(min-width:760px){
+  .scf-top{grid-template-columns:1.3fr 1fr 1.2fr;gap:40px}
+  .scf-svc-g{grid-template-columns:repeat(4,1fr)}
+  .scf-in{padding:0 28px}
+}
+/* зони дотику ≥44px на мобільному */
+@media(max-width:767px){
+  .crumbs a{display:inline-flex;align-items:center;min-height:44px}
+  .scf-svc-g a{display:flex;align-items:center;min-height:44px;padding:0}
+  .sch-lang a,.sch-lang span{min-height:44px}
+}
+/* старі правила m-fix (footer a{font-size:…!important}) не мають зменшувати контакти */
+@media(max-width:767px){.scf .scf-tel{font-size:1.125rem!important}.scf .scf-msg a{font-size:.875rem!important}.scf .scf-brand .sch-logo{font-size:1.15rem!important}}
+/* Telegram Mini App: лише логотип та іконки Оздоби */
+html.tg .sch-nav,html.tg .sch-lang,html.tg .sch-tel,html.tg .sch-cta,html.tg .sch-burger,html.tg .sch-menu,html.tg .scf{display:none!important}
+@media print{.sch,.sch-menu,.scf-svc{display:none!important}body{padding-top:0}}
+@media(prefers-reduced-motion:reduce){.sch *,.scf *{transition:none!important}}

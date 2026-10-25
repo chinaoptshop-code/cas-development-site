@@ -20,20 +20,9 @@
 :root{--bg:#080709;--bg2:#100e0c;--sf:#181620;--tx:#EDE8DF;--mu:#938c84;--ac:#BF9148;--bd:rgba(237,232,223,.08);--D:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;--M:"Manrope","Manrope Fallback",system-ui,sans-serif}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:16px}
-body{background:var(--bg);color:var(--tx);font-family:var(--M);overflow-x:hidden;cursor:none}
-@media(hover:none),(-moz-touch-enabled:1),(pointer:coarse){#cr,#crf{display:none!important}body{cursor:auto!important}input,textarea,select,button{cursor:auto!important}}
-#cr,#crf{position:fixed;pointer-events:none;z-index:9999;border-radius:50%}
-#cr{width:6px;height:6px;background:var(--ac);transform:translate(-50%,-50%)}
-#crf{width:28px;height:28px;border:1px solid rgba(191,145,72,.4);transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease,transform .15s}
+body{background:var(--bg);color:var(--tx);font-family:var(--M);overflow-x:hidden}
+@media(hover:none),(-moz-touch-enabled:1),(pointer:coarse){body{cursor:auto!important}input,textarea,select,button{cursor:auto!important}}
 body::before{content:'';position:fixed;inset:0;opacity:.25;pointer-events:none;z-index:8000;background-image:url(/img/grain.webp)}
-nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:22px 52px;background:rgba(8,7,9,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(237,232,223,.06)}
-.logo{font-family:var(--D);font-size:1.15rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--tx);cursor:pointer;text-decoration:none}
-.logo em{font-style:normal;color:var(--ac)}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-family:var(--M);font-size:var(--fs-small);font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:color .25s;cursor:pointer;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--ac);transition:width .3s}
-.nav-links a:hover,.nav-links a.on{color:var(--tx)}
-.nav-links a:hover::after,.nav-links a.on::after{width:100%}
 .page{}
 @keyframes pgIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .lbl{font-family:var(--M);font-size:var(--fs-small);letter-spacing:.26em;text-transform:uppercase;color:var(--ac);display:flex;align-items:center;gap:12px;margin-bottom:18px}
@@ -49,7 +38,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:cen
 .btn:hover{color:var(--bg)}.btn:hover::before{transform:scaleX(1)}
 .btn>*{position:relative;z-index:1}
 .btn-g{border-color:rgba(237,232,223,.15);color:var(--mu)}.btn-g::before{background:rgba(237,232,223,.07)}.btn-g:hover{color:var(--tx)}
-footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
 .fl{font-family:var(--D);font-size:var(--fs-lead);letter-spacing:.1em;font-weight:300}
 .fc{font-family:var(--M);font-size:var(--fs-small);color:var(--mu)}
 .fs{display:flex;gap:20px}
@@ -196,7 +184,6 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 .au{animation:fadeUp .72s ease both}
 .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.45s}.d5{animation-delay:.6s}
 @media(max-width:960px){
-  nav{padding:16px 22px}.nav-links{display:none}
   .hero{padding:0 22px 52px}.h1{font-size:var(--fs-h1)}.hstats{flex-wrap:wrap;gap:24px}
   .strip{height:140px!important}
   .ph{padding:70px 22px 36px}.ph-num{display:none}
@@ -213,9 +200,7 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
   .fr{grid-template-columns:1fr}
   .svc-prev{padding:52px 22px}.sp-grid{grid-template-columns:1fr}
   .proj-covers{padding:0 22px 52px}.pc-grid{grid-template-columns:1fr 1fr}
-  footer{padding:26px 22px}
 }
-.lang-sw{display:flex;gap:4px;align-items:center;margin-left:20px}
 #lb{cursor:auto;position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:rgba(0,0,0,.96);z-index:2147483647;display:none;flex-direction:column;align-items:center;justify-content:center}
 #lb.open{display:flex}
 #lb-img{max-width:96vw;max-height:86vh;object-fit:contain;transition:opacity .2s;pointer-events:none}
@@ -279,15 +264,11 @@ footer{border-top:1px solid var(--bd);padding:32px 52px;display:flex;justify-con
 .qr-lbl{font-family:var(--M);font-size:var(--fs-small);letter-spacing:.14em;color:var(--mu);margin-top:8px;text-transform:uppercase}
 @media(max-width:960px){
   .calc-body{grid-template-columns:1fr}
-  .lang-sw{margin-left:12px}
   .calc-wrap{padding:40px 22px}
   .world-map-wrap{margin:0 22px}
 }
 body.light{--bg:#F5F2ED;--bg2:#EDEBE4;--sf:#E4E0D7;--tx:#1C1814;--mu:#6A6153;--ac:#805B21;--bd:rgba(28,24,20,.1)}
 body.light::before{opacity:.04}
-body.light nav{background:rgba(245,242,237,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(28,24,20,.07)}
-body.light .nav-links a{color:var(--mu)}
-body.light .nav-links a:hover,body.light .nav-links a.on{color:var(--tx)}
 body.light .hbg{opacity:.65;filter:saturate(.68) brightness(.88)}
 body.light .hgrad{background:linear-gradient(135deg,rgba(245,242,237,.82) 0%,rgba(245,242,237,.22) 52%,rgba(245,242,237,.62) 100%)}
 body.light .hghost{color:rgba(28,24,20,.025)}
@@ -302,10 +283,6 @@ body.light #wsvg .land,body.light #wsvg path{fill:rgba(154,110,40,.12);stroke:rg
 body.light .about-img::after{border-color:rgba(154,110,40,.2)}
 body.light .fi,body.light .ft,body.light .fsel{border-bottom-color:rgba(28,24,20,.15);color:var(--tx)}
 body.light .fi::placeholder,body.light .ft::placeholder{color:var(--mu)}
-.theme-btn{background:none;border:1px solid rgba(237,232,223,.22);color:var(--mu);font-size:.9rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;margin-left:10px;flex-shrink:0;padding:0;line-height:1}
-.theme-btn:hover{border-color:var(--ac);color:var(--ac)}
-.lang-cycle{background:none;border:1px solid rgba(237,232,223,.22);color:var(--tx);font-family:var(--M);font-size:var(--fs-small);letter-spacing:.18em;padding:5px 14px;cursor:pointer;transition:all .2s;min-width:52px;text-align:center}
-.lang-cycle:hover{border-color:var(--ac);color:var(--ac)}
 .msg-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--bd)}
 .mi-wa{background:rgba(37,211,102,.15);color:#25D166;border-color:rgba(37,211,102,.3)!important}
 .mi-vb{background:rgba(123,81,157,.15);color:#9B6ABD;border-color:rgba(123,81,157,.3)!important}
@@ -315,28 +292,9 @@ body.light .fi::placeholder,body.light .ft::placeholder{color:var(--mu)}
 .area-val{font-family:var(--D);font-size:var(--fs-h3);color:var(--ac);font-weight:300}
 .slider-wrap{position:relative;padding-top:6px}
 #areaBubble{position:absolute;top:-22px;background:var(--sf);border:1px solid var(--ac);color:var(--ac);font-family:var(--M);font-size:var(--fs-small);padding:2px 7px;pointer-events:none;transform:translateX(-50%);white-space:nowrap;transition:left .05s}
-.hbg-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;flex-shrink:0}
-.hbg-btn span{display:block;width:22px;height:1.5px;background:var(--tx);transition:all .25s}
-.nsb{position:fixed!important;top:0!important;right:0!important;width:280px;height:100vh;background:var(--bg2);border-left:1px solid var(--bd);z-index:99999!important;display:flex;flex-direction:column;padding:28px 24px;transform:translateX(110%);transition:transform .3s ease;visibility:hidden}
-.nsb.open{transform:translateX(0)!important;visibility:visible}
-.nsb-ov{display:none;position:fixed!important;inset:0;background:rgba(0,0,0,.55);z-index:99998!important;backdrop-filter:blur(2px)}
-.nsb-ov.active{display:block}
-.nsb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
-.nsb-logo{font-family:var(--M);font-size:var(--fs-small);letter-spacing:.22em;color:var(--ac)}
-.nsb-close{background:none;border:none;color:var(--mu);font-size:1.1rem;cursor:pointer;padding:4px}
-.nsb-close:hover{color:var(--tx)}
-.nsb-nav{display:flex;flex-direction:column;flex:1}
-.nsb-nav a{padding:14px 0;font-family:var(--M);font-size:var(--fs-small);letter-spacing:.14em;text-transform:uppercase;color:var(--mu);cursor:pointer;border-bottom:1px solid var(--bd);transition:color .2s}
-.nsb-nav a:hover{color:var(--ac)}
 body.light .map-grat{display:none!important}
 .ph-reveal{color:var(--mu);cursor:pointer;font-family:var(--M);font-size:var(--fs-small);letter-spacing:.04em;border-bottom:1px dashed var(--mu);transition:color .2s,border-color .2s;padding-bottom:1px}
 .ph-reveal:hover{color:var(--ac);border-color:var(--ac)}
-@media (min-width:768px){
-  .nsb,.nsb-ov,.hbg-btn{display:none!important}
-  nav .nav-links{display:flex!important}
-  nav .lang-sw{display:flex!important}
-  .lang-cycle{display:flex!important}
-}
 @media(min-width:768px){
   .pf-grid .pi:nth-child(1){grid-column:1/8;grid-row:span 2}
   .pf-grid .pi:nth-child(2),.pf-grid .pi:nth-child(3){grid-column:8/13}
@@ -353,10 +311,6 @@ body.light .map-grat{display:none!important}
   .filt{font-size:var(--fs-small)!important;padding:10px 10px!important;letter-spacing:.08em!important;scroll-snap-align:start}
   
   .pf-grid{grid-template-columns:1fr 1fr!important;grid-auto-rows:190px!important;padding:0 12px 48px!important;gap:4px!important}
-  nav .lang-sw{display:flex!important}
-  .lang-cycle{background:none!important;border:none!important;box-shadow:none!important;outline:none!important;color:var(--ac)!important;font-family:var(--M)!important;font-size:var(--fs-small)!important;font-weight:700!important;letter-spacing:.14em!important;padding:4px 8px!important}
-  .hbg-btn{display:flex!important;margin-left:auto}
-  .theme-btn{font-size:.9rem!important;padding:4px 8px!important}
   
   .hero{padding:0 20px 30px!important;min-height:100svh}
   .h1{font-size:var(--fs-h1)!important;margin-bottom:24px!important;line-height:1.1!important}
@@ -565,9 +519,10 @@ a.filt{text-decoration:none;display:inline-block}</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://cas-develop.com/"}, {"@type": "ListItem", "position": 2, "name": "Портфоліо", "item": "https://cas-develop.com/portfolio"}]}</script>
 <meta name="twitter:card" content="summary_large_image">
 <!--ui-polish--><script>document.documentElement.classList.add('js')</script><style id="ui-polish">body{--ui-field:#6C655D}body.light{--ui-field:#877C67}body{--ui-ring:var(--ac,var(--brass,var(--gold,#BF9148)));--ui-ph:var(--mu,var(--muted,#8a837c))}::placeholder{color:var(--ui-ph)!important;opacity:1!important}input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=submit]):not([type=button]):not([type=hidden]):not(:focus),textarea:not(:focus),select:not(:focus){border-color:var(--ui-field)!important}body.light #quickForm{--tx:#EDE8DF;--mu:#938c84;--ac:#BF9148;--ui-field:#6C655D;--ui-ph:#938c84;--ui-ring:#BF9148}body.light #lb,body.light #plb,body.light #sdlb{--ui-ring:#BF9148}body.light .strip-nav{color:#EDE8DF}body.light .hdesc{color:var(--mu)!important}body.light .pf-fnav{background:rgba(245,242,237,.92)}body.light #lb,body.light #plb,body.light #sdlb{--ac:#BF9148}body.light [style*="background:var(--ac"],body.light .sv-card:hover .sv-toggle,body.light .spc-cta:hover,body.light .pcarousel-nav button:hover,body.light .proj-row-btn:hover,body.light .pf-view-btn.on,body.light .hbtns .btn{color:#FBF8F3!important}:focus:not(:focus-visible){outline:none}:focus-visible{outline:2px solid var(--ui-ring)!important;outline-offset:3px!important}input:focus-visible,textarea:focus-visible,select:focus-visible{outline-offset:1px!important}input[type=range]:focus-visible{outline-offset:6px!important}.proj-row-head:focus-within .proj-row-btn{opacity:1;transform:none}:where(button,input,select,textarea){font-family:inherit}:root{--fs-h1:clamp(2.25rem,1.5rem + 3.4vw,4.5rem);--fs-h2:clamp(1.75rem,1.4rem + 1.6vw,2.75rem);--fs-h3:clamp(1.25rem,1.12rem + .55vw,1.625rem);--fs-lead:clamp(1.125rem,1.07rem + .3vw,1.3125rem);--fs-body:clamp(1rem,.98rem + .1vw,1.0625rem);--fs-small:clamp(.75rem,.73rem + .1vw,.8125rem);--lh-body:1.6;--lh-head:1.15}:where(p){line-height:var(--lh-body);max-inline-size:70ch}:where(h1,h2,h3){line-height:var(--lh-head)}.prod-soon-sub{text-align:center;max-width:100%;padding:0 10px}html:not(.js) .reveal{opacity:1!important;transform:none!important}html .reveal{transition-duration:.4s}.rv{opacity:0;translate:0 16px}.rv.rv-in{opacity:1;translate:none;transition:opacity .4s ease,translate .4s ease}.ui-img:not(.ui-img-in){opacity:0!important}.ui-img{transition:opacity .4s ease!important}@media (hover:hover){.gal figure,.pg a{overflow:hidden}.gal img,.pg img{transition:transform .5s ease}.gal figure:hover img,.pg a:hover img,.pg a:focus-visible img{transform:scale(1.05)}}#lb,#plb,#sdlb,.lb{display:flex!important;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .25s ease,visibility 0s linear .25s}#lb.open,#plb.open,#sdlb.open,.lb.on{visibility:visible;opacity:1;pointer-events:auto;transition:opacity .25s ease}#lb #lb-img,#plb #plb-wrap,#sdlb img,.lb img{scale:.96;transition:scale .3s ease,opacity .2s}#lb.open #lb-img,#plb.open #plb-wrap,#sdlb.open img,.lb.on img{scale:1}.xp{display:grid!important;grid-template-rows:0fr;max-height:none!important;transition:grid-template-rows .35s ease,opacity .3s ease,margin .35s ease!important}.xp>.xp-in{min-height:0;overflow:hidden}.sv-card.exp .sv-more.xp,.sv-card:focus-within .sv-more.xp,.sp-card.exp .sp-card-detail.xp,.proc-step.exp .ps-more.xp{grid-template-rows:1fr}@media (hover:hover){.sv-card:hover .sv-more.xp{grid-template-rows:1fr}}.nsb{transition:transform .3s ease,visibility 0s linear .3s!important}.nsb.open{transition:transform .3s ease,visibility 0s!important}.nsb-ov.active{animation:ui-fade .3s ease}@keyframes ui-fade{from{opacity:0}to{opacity:1}}summary::after{display:inline-block;transition:transform .25s ease}details[open]>summary::after{content:'+'!important;transform:rotate(45deg)}@supports (interpolate-size:allow-keywords){:root{interpolate-size:allow-keywords}details::details-content{block-size:0;overflow:hidden;transition:block-size .3s ease,content-visibility .3s allow-discrete}details[open]::details-content{block-size:auto}}.ui-sc{position:relative}.ui-fade{position:absolute;top:0;bottom:0;width:48px;pointer-events:none;z-index:4;opacity:0;transition:opacity .25s ease}.ui-fade-l{left:0;background:linear-gradient(to right,var(--bg,#080709),transparent)}.ui-fade-r{right:0;background:linear-gradient(to left,var(--bg,#080709),transparent)}.ui-ov:not(.ui-start)>.ui-fade-l,.ui-ov:not(.ui-end)>.ui-fade-r{opacity:.9}.ui-cnt{position:absolute;right:14px;bottom:18px;z-index:11;pointer-events:none;font-family:var(--M,"Manrope","Manrope Fallback",sans-serif);font-size:var(--fs-small,.75rem);letter-spacing:.12em;color:#EDE8DF;background:rgba(8,7,9,.72);padding:3px 9px;border-radius:999px;opacity:0;transition:opacity .25s ease}.ui-ov>.ui-cnt{opacity:1}.ui-sc .prs-nav{opacity:.6}.ui-sc:hover .prs-nav,.ui-sc .prs-nav:focus-visible{opacity:1}@media (hover:none){.ui-sc .prs-nav{opacity:.9}}.ui-start .prs-nav-l,.ui-start .strip-nav-l,.ui-start .pf-fnav-l,.ui-end .prs-nav-r,.ui-end .strip-nav-r,.ui-end .pf-fnav-r{opacity:0!important;pointer-events:none}.ui-nudge>*{animation:ui-nudge 1.4s ease-in-out 1}.ui-hint:not(.ui-used) .prs-nav-r,.ui-hint:not(.ui-used) .strip-nav-r,.ui-hint:not(.ui-used) .pf-fnav-r,.ui-hint:not(.ui-used)>.ui-cnt{animation:ui-pulse 1.8s ease-in-out 3}.ui-sc:hover .ui-nudge>*,.ui-sc:focus-within .ui-nudge>*,.ui-sc.ui-touch .ui-nudge>*,.ui-sc:hover *,.ui-sc:focus-within *,.ui-sc.ui-touch *{animation-play-state:paused!important}@keyframes ui-nudge{0%,100%{translate:0}40%{translate:-36px 0}}@keyframes ui-pulse{0%,100%{translate:0;opacity:1}50%{translate:-5px 0;opacity:.75}}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}html{scroll-behavior:auto!important}.reveal,.rv,.au{opacity:1!important;transform:none!important;translate:none!important}.ui-img{opacity:1!important}}a.filt{text-decoration:none;display:inline-block}</style><!--/ui-polish-->
+<link rel="stylesheet" href="/assets/site-chrome.v1.css">
 </head>
 <body>
-<div id="cr"></div><div id="crf"></div>
+<!--chrome:skip--><a class="skip" href="#main">Перейти до змісту</a><!--/chrome:skip-->
 <div id="lb">
   <span id="lb-close" onclick="lbClose()">✕</span>
   <div class="lb-arr" id="lb-prev" onclick="lbNav(-1)">‹</div>
@@ -576,39 +531,22 @@ a.filt{text-decoration:none;display:inline-block}</style>
   <div id="lb-info"></div>
 </div>
 
-<nav>
-  <a class="logo" href="/">CAS<em>.</em>Development</a>
-  <ul class="nav-links">
-    <li><a id="n-services" href="/services" data-i18n="nav_services">Послуги</a></li>
-    <li><a id="n-portfolio" href="/portfolio" data-i18n="nav_portfolio" class="on">Портфоліо</a><a id="n-blog" href="/blog">Блог</a></li>
-    <li><a id="n-about" href="/about" data-i18n="nav_about">Про нас</a></li>
-    <li><a href="/ozdoba" id="n-shop">Продукти</a></li>
-    <li><a id="n-contact" href="/contact" data-i18n="nav_contacts">Контакти</a></li>
-  </ul>
-  <div class="lang-sw">
-    <button class="lang-cycle" id="langCycle" onclick="cycleLang()">UA</button>
-  </div>
-  <button class="hbg-btn" id="hbgBtn" onclick="toggleNav()" aria-label="Меню"><span></span><span></span><span></span></button>
-<button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Світла / темна тема">☀️</button>
-</nav>
-<div class="nsb" id="nsb">
-  <div class="nsb-head"><span class="nsb-logo">CAS DEVELOPMENT</span><button class="nsb-close" onclick="closeNav()" aria-label="Закрити меню">✕</button></div>
-  <nav class="nsb-nav">
-    <a id="nsn-home" href="/" onclick="closeNav()">Головна</a>
-    <a id="nsn-sv" href="/services" onclick="closeNav()">Послуги</a>
-    <a id="nsn-pf" href="/portfolio" onclick="closeNav()">Портфоліо</a><a id="nsn-bl" href="/blog" onclick="closeNav()">Блог</a>
-    <a id="nsn-ab" href="/about" onclick="closeNav()">Про нас</a>
-    <a id="nsn-shop" href="/ozdoba" onclick="closeNav()">Продукти</a>
-    <a id="nsn-ct" href="/contact" onclick="closeNav()">Контакти</a>
-  </nav>
-  <div style="margin-top:auto;padding-top:24px">
-    <button id="nsbLang" onclick="cycleLang()" style="background:none;border:1px solid var(--bd);color:var(--ac);font-family:var(--M);font-size:var(--fs-small);letter-spacing:.18em;padding:6px 16px;cursor:pointer">UA</button>
-  </div>
+<!--chrome:h--><header class="sch" id="top">
+<div class="sch-in">
+  <a class="sch-logo" href="/" aria-label="CAS Development — на головну">CAS<em>.</em>Development</a>
+  <nav class="sch-nav" aria-label="Головне меню"><a href="/services">Послуги</a><a href="/portfolio" aria-current="page">Портфоліо</a><a href="/ozdoba">Оздоба</a><a href="/blog">Блог</a><a href="/about">Про студію</a><a href="/contact">Контакти</a></nav>
+  <div class="sch-act"><div class="sch-lang" role="group" aria-label="Мова сайту"><span class="sch-lang-on" aria-current="true" lang="uk">UA</span><a href="/ru/" hreflang="ru" lang="ru">RU</a></div><a class="sch-tel" href="tel:+380978667755"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg><span>+380 97 866 77 55</span></a><a class="sch-cta" href="/contact#cForm">Заявка</a><button class="sch-burger" type="button" aria-expanded="false" aria-controls="sch-menu" aria-label="Відкрити меню" data-open="Відкрити меню" data-close="Закрити меню"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="sch-b1" d="M4 7h16"/><path class="sch-b2" d="M4 12h16"/><path class="sch-b3" d="M4 17h16"/></svg></button></div>
 </div>
-<div class="nsb-ov" id="nsbOv" onclick="closeNav()"></div>
+<div class="sch-menu" id="sch-menu" role="dialog" aria-modal="true" aria-label="Меню" hidden><div class="sch-menu-in">
+  <nav class="sch-mnav" aria-label="Головне меню"><a href="/services">Послуги</a><a href="/portfolio" aria-current="page">Портфоліо</a><a href="/ozdoba">Оздоба</a><a href="/blog">Блог</a><a href="/about">Про студію</a><a href="/contact">Контакти</a></nav>
+  <div class="sch-mlang" role="group" aria-label="Мова сайту"><span class="sch-lang-on" aria-current="true" lang="uk">UA</span><a href="/ru/" hreflang="ru" lang="ru">RU</a></div>
+  <div class="sch-mcta"><a class="sch-cta" href="/contact#cForm">Заявка</a><a class="sch-mtel" href="tel:+380978667755"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>+380 97 866 77 55</a></div>
+  <div class="sch-mmsg"><a href="https://t.me/+380978667755" target="_blank" rel="noopener"><img src="/assets/brand/telegram.svg" width="22" height="22" alt="" loading="lazy" decoding="async">Telegram</a><a href="viber://chat?number=%2B380978667755" target="_blank" rel="noopener"><img src="/assets/brand/viber.svg" width="22" height="22" alt="" loading="lazy" decoding="async">Viber</a><a href="https://wa.me/380978667755" target="_blank" rel="noopener"><img src="/assets/brand/whatsapp.svg" width="22" height="22" alt="" loading="lazy" decoding="async">WhatsApp</a><a href="https://www.instagram.com/cas_development/" target="_blank" rel="noopener"><img src="/assets/brand/instagram-96.png" width="22" height="22" alt="" loading="lazy" decoding="async">Instagram</a></div>
+</div></div>
+</header><!--/chrome:h-->
 
 <!-- HOME -->
-<main>
+<main id="main">
 <div id="p-portfolio">
   <section class="ph"><img decoding="async" fetchpriority="high" class="sbg" src="/img/p/1ZRiEBBWt3pzrB-bg480.webp" loading="eager" alt="" width="480" height="240"><div class="ph-inner"><div class="lbl" id="lbl-pf">Наші роботи</div><h1 class="ph-title" id="port-pg-title">Кожен проєкт — <em>окрема</em> історія</h1></div><span class="ph-num">03</span></section>
   
@@ -1540,15 +1478,6 @@ a.filt{text-decoration:none;display:inline-block}</style>
 </main>
 <script>
 
-/* ═══ CURSOR ═══ */
-const cr=document.getElementById('cr'),crf=document.getElementById('crf');
-let mx=0,my=0,fx=0,fy=0;
-let crRun=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cr.style.left=mx+'px';cr.style.top=my+'px';if(!crRun){crRun=1;requestAnimationFrame(crLoop)}});
-function crLoop(){fx+=(mx-fx)*.11;fy+=(my-fy)*.11;crf.style.left=fx+'px';crf.style.top=fy+'px';if(Math.abs(mx-fx)+Math.abs(my-fy)>.5)requestAnimationFrame(crLoop);else crRun=0}
-document.querySelectorAll('a,button,.pi,.sp-card,.strip-item,.proj-cover').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cr.style.transform='translate(-50%,-50%) scale(2)';crf.style.transform='translate(-50%,-50%) scale(1.5)';crf.style.borderColor='rgba(191,145,72,.7)'});
-  el.addEventListener('mouseleave',()=>{cr.style.transform='translate(-50%,-50%) scale(1)';crf.style.transform='translate(-50%,-50%) scale(1)';crf.style.borderColor='rgba(191,145,72,.4)'});
-});
 /* ═══ LIGHTBOX ═══ */
 let lbImgs=[],lbIdx=0;
 
@@ -1595,12 +1524,6 @@ document.getElementById('lb').addEventListener('click',function(e){if(e.target==
     if(Math.abs(dx)>44)lbNav(dx>0?-1:1);
   },{passive:true});
 })();
-/* ═══ THEME ═══ */
-function toggleTheme(){const light=document.body.classList.toggle('light');document.getElementById('themeBtn').textContent=light?'\u{1F319}':'\u2600\uFE0F';localStorage.setItem('cas-theme',light?'light':'dark');}
-(function(){if(localStorage.getItem('cas-theme')==='light'){document.body.classList.add('light');const b=document.getElementById('themeBtn');if(b)b.textContent='\u{1F319}';}})();
-/* ═══ MOBILE NAV ═══ */
-function toggleNav(){const sb=document.getElementById('nsb'),ov=document.getElementById('nsbOv');sb.classList.toggle('open');ov.classList.toggle('active');}
-function closeNav(){document.getElementById('nsb')?.classList.remove('open');document.getElementById('nsbOv')?.classList.remove('active');}
 /* ═══ ABOUT TRANSLATIONS (via querySelectorAll) ═══ */
 const AB={
   uk:{lead:'CAS Development \u2014 \u0441\u0442\u0443\u0434\u0456\u044f, \u0434\u0435 \u0430\u0440\u0445\u0456\u0442\u0435\u043a\u0442\u0443\u0440\u0430 \u0437\u0443\u0441\u0442\u0440\u0456\u0447\u0430\u0454\u0442\u044c\u0441\u044f \u0437 \u0434\u0435\u0442\u0430\u043b\u043b\u044e.',b:['\u041c\u0438 \u0437\u0430\u0439\u043c\u0430\u0454\u043c\u043e\u0441\u044f \u0434\u0438\u0437\u0430\u0439\u043d\u043e\u043c \u0456\u043d\u0442\u0435\u0440\u2019\u0454\u0440\u0456\u0432 \u0456 \u0440\u0435\u043c\u043e\u043d\u0442\u043e\u043c \u043f\u0456\u0434 \u043a\u043b\u044e\u0447 \u2014 \u0432\u0456\u0434 \u043a\u043e\u043c\u043f\u0430\u043a\u0442\u043d\u0438\u0445 \u043a\u0432\u0430\u0440\u0442\u0438\u0440 \u0434\u043e \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u043d\u0438\u0445 \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u0438\u0445 \u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0446\u0456\u0439. \u0417\u0430 \u043f\u043e\u043d\u0430\u0434 10 \u0440\u043e\u043a\u0456\u0432 \u0440\u043e\u0431\u043e\u0442\u0438 \u0440\u0435\u0430\u043b\u0456\u0437\u0443\u0432\u0430\u043b\u0438 \u043f\u043e\u043d\u0430\u0434 150 \u043f\u0440\u043e\u0454\u043a\u0442\u0456\u0432.','\u041d\u0430\u0448 \u043f\u0456\u0434\u0445\u0456\u0434 \u2014 \u043d\u0435 \u043a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438 \u0442\u0440\u0435\u043d\u0434\u0438, \u0430 \u0433\u043b\u0438\u0431\u043e\u043a\u043e \u0437\u0440\u043e\u0437\u0443\u043c\u0456\u0442\u0438 \u0432\u0430\u0441 \u0456 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043f\u0440\u043e\u0441\u0442\u0456\u0440, \u0449\u043e \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u0454 \u0432\u0430\u0448 \u0441\u043f\u043e\u0441\u0456\u0431 \u0436\u0438\u0442\u0442\u044f.','\u041f\u0430\u0440\u0430\u043b\u0435\u043b\u044c\u043d\u043e \u043c\u0438 \u0440\u043e\u0437\u0432\u0438\u0432\u0430\u0454\u043c\u043e \u0432\u043b\u0430\u0441\u043d\u0438\u0439 \u043d\u0430\u043f\u0440\u044f\u043c \u043c\u0435\u0431\u043b\u044e\u0432\u0430\u043d\u043d\u044f \u0447\u0435\u0440\u0435\u0437 \u043f\u0440\u044f\u043c\u0438\u0439 \u0456\u043c\u043f\u043e\u0440\u0442 \u0437 \u041a\u0438\u0442\u0430\u044e: <strong>China Opt Shop</strong>.','\u041a\u043e\u043c\u0430\u043d\u0434\u0430 CAS Development \u2014 \u0430\u0440\u0445\u0456\u0442\u0435\u043a\u0442\u043e\u0440\u0438, \u0434\u0438\u0437\u0430\u0439\u043d\u0435\u0440\u0438, \u0442\u0435\u0445\u043d\u0456\u0447\u043d\u0456 \u043d\u0430\u0433\u043b\u044f\u0434\u0430\u0447\u0456 \u0442\u0430 \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u0438 \u043f\u0440\u043e\u0454\u043a\u0442\u0456\u0432.'],vn:['\u041c\u0456\u043d\u0456\u043c\u0430\u043b\u0456\u0437\u043c','\u042f\u043a\u0456\u0441\u0442\u044c','\u041f\u0440\u043e\u0437\u043e\u0440\u0456\u0441\u0442\u044c','\u041e\u0441\u043e\u0431\u0438\u0441\u0442\u0456\u0441\u0442\u044c'],vd:['\u041f\u0440\u0438\u0431\u0438\u0440\u0430\u0454\u043c\u043e \u0437\u0430\u0439\u0432\u0435 \u2014 \u0437\u0430\u043b\u0438\u0448\u0430\u0454\u043c\u043e \u0441\u0443\u0442\u044c.','\u041c\u0430\u0442\u0435\u0440\u0456\u0430\u043b\u0438, \u0440\u0456\u0448\u0435\u043d\u043d\u044f, \u0432\u0438\u043a\u043e\u043d\u0430\u0432\u0446\u0456 \u2014 \u0442\u0456\u043b\u044c\u043a\u0438 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0435\u043d\u0456 \u0440\u043e\u043a\u0430\u043c\u0438.','\u0429\u043e\u0434\u0435\u043d\u043d\u0456 \u0444\u043e\u0442\u043e-\u0437\u0432\u0456\u0442\u0438. \u041a\u043e\u0448\u0442\u043e\u0440\u0438\u0441 \u0431\u0435\u0437 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0438\u0445 \u0441\u0442\u0430\u0442\u0435\u0439.','\u0416\u043e\u0434\u043d\u0438\u0445 \u0448\u0430\u0431\u043b\u043e\u043d\u0456\u0432. \u041a\u043e\u0436\u0435\u043d \u043f\u0440\u043e\u0454\u043a\u0442 \u2014 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u043e\u0457 \u043b\u044e\u0434\u0438\u043d\u0438.'],badge:'\u0417\u0430\u0441\u043d\u043e\u0432\u0430\u043d\u0430 \u0432 \u041a\u0438\u0454\u0432\u0456'}};
@@ -1652,7 +1575,7 @@ function cycleLang(){location.href='/en/';}
 function setLang(l){
   curLang=l;
   const disp=LANG_DISPLAY[l]||l.toUpperCase();
-  document.getElementById('langCycle').textContent=disp;
+  const lc=document.getElementById('langCycle');if(lc)lc.textContent=disp;
   const nb=document.getElementById('nsbLang');if(nb)nb.textContent=disp;
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(I18N[l]&&I18N[l][k])el.textContent=I18N[l][k];});
   const t=I18N_ID[l]||{};Object.keys(t).forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=t[id];});
@@ -1948,18 +1871,23 @@ filtAndPhoto=function(projId,idx){
 function prvPrs(btn){var inner=btn.nextElementSibling;if(inner)inner.scrollBy({left:-inner.offsetWidth*.8,behavior:'smooth'});}
 function nxtPrs(btn){var inner=btn.previousElementSibling;if(inner)inner.scrollBy({left:inner.offsetWidth*.8,behavior:'smooth'});}
 </script>
-
-<div class="seo-links" role="navigation" aria-label="Послуги студії">
-<style>.seo-links{display:block;position:static!important;width:100%;box-sizing:border-box;padding:32px 22px 26px;border-top:1px solid rgba(191,145,72,.18)}.seo-links summary{display:block;outline:none;cursor:pointer;font-size:var(--fs-small);letter-spacing:.22em;text-transform:uppercase;color:var(--ac,#BF9148);text-align:center}.seo-links summary::-webkit-details-marker{display:none}.seo-links summary::after{content:" +"!important;letter-spacing:0;transform:none!important;display:inline!important}.seo-links details[open] summary::after{content:" −"!important}.sl-g{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px;margin:20px auto 0;max-width:920px;text-align:left}.sl-g b{display:block;font-size:var(--fs-small);color:var(--ac,#BF9148);font-weight:600;margin-bottom:8px}.sl-g a{display:block;color:inherit;opacity:.75;text-decoration:none;font-size:var(--fs-small);padding:4px 0}.sl-g a:hover{opacity:1}@media(min-width:760px){.sl-g{grid-template-columns:repeat(4,1fr)}}</style>
-<details><summary>Усі послуги студії</summary><div class="sl-g"><div><b>Ремонт</b><a href="/remont-kvartyr-kyiv">Ремонт квартир</a><a href="/remont-pid-klyuch-kyiv">Ремонт під ключ</a><a href="/remont-novobudovy-kyiv">Ремонт у новобудові</a><a href="/remontna-bryhada-kyiv">Ремонтна бригада</a><a href="/remont-vannoi-kimnaty-kyiv">Ремонт ванної</a><a href="/remont-kukhni-kyiv">Ремонт кухні</a><a href="/remont-ofisu-pid-klyuch-kyiv">Ремонт офісу</a><a href="/remont-komertsiinykh-prymishchen-kyiv">Комерційні приміщення</a></div><div><b>Дизайн</b><a href="/dyzain-interieru-kyiv">Дизайн інтерʼєру</a><a href="/dyzain-interieru-kvartyry-kyiv">Дизайн квартири</a><a href="/dyzainer-interieru-kyiv">Дизайнер інтерʼєру</a><a href="/dyzain-restoranu-kafe-kyiv">Дизайн ресторану й кафе</a><a href="/landshaftnyi-dyzain-kyiv">Ландшафтний дизайн</a></div><div><b>Будинки</b><a href="/budivnytstvo-budynkiv-kyiv">Будівництво будинків</a><a href="/proektuvannia-budynku-kyiv">Проєктування будинку</a><a href="/remont-budynku-pid-klyuch-kyiv">Ремонт будинку</a><a href="/baza-vidpochynku-pid-klyuch">База відпочинку</a></div><div><b>Меблі й корисне</b><a href="/mebliuvannia-kvartyry-kyiv">Меблювання під ключ</a><a href="/ozdoba">Оздоба — меблі з Китаю</a><a href="/kalkuliator-remontu">Калькулятор вартості</a><a href="/pytannya">Часті питання</a><a href="/blog">Блог: ціни й поради</a><a href="/ru/" hreflang="ru" lang="ru">На русском</a></div></div></details>
-<script>if(matchMedia('(min-width:760px)').matches)document.currentScript.previousElementSibling.open=true</script>
+<!--chrome:f--><footer class="scf">
+<div class="scf-in">
+  <div class="scf-top">
+    <div class="scf-brand"><a class="sch-logo" href="/" aria-label="CAS Development — на головну">CAS<em>.</em>Development</a><p>Студія дизайну інтерʼєру, ремонту й будівництва під ключ. Київ, з 2016 року.</p></div>
+    <div class="scf-col"><b>Контакти</b><address>вул. Антоновича, 44, Київ</address><a class="scf-tel" href="tel:+380978667755">+380 97 866 77 55</a></div>
+    <div class="scf-col"><b>Месенджери</b><div class="scf-msg"><a href="https://t.me/+380978667755" target="_blank" rel="noopener"><img src="/assets/brand/telegram.svg" width="20" height="20" alt="" loading="lazy" decoding="async">Telegram</a><a href="viber://chat?number=%2B380978667755" target="_blank" rel="noopener"><img src="/assets/brand/viber.svg" width="20" height="20" alt="" loading="lazy" decoding="async">Viber</a><a href="https://wa.me/380978667755" target="_blank" rel="noopener"><img src="/assets/brand/whatsapp.svg" width="20" height="20" alt="" loading="lazy" decoding="async">WhatsApp</a><a href="https://www.instagram.com/cas_development/" target="_blank" rel="noopener"><img src="/assets/brand/instagram-96.png" width="20" height="20" alt="" loading="lazy" decoding="async">Instagram</a></div></div>
+  </div>
+  <details class="scf-svc"><summary>Усі послуги студії</summary><nav class="scf-svc-g" aria-label="Послуги студії"><div><b>Ремонт</b><a href="/remont-kvartyr-kyiv">Ремонт квартир</a><a href="/remont-pid-klyuch-kyiv">Ремонт під ключ</a><a href="/remont-novobudovy-kyiv">Ремонт у новобудові</a><a href="/remontna-bryhada-kyiv">Ремонтна бригада</a><a href="/remont-vannoi-kimnaty-kyiv">Ремонт ванної</a><a href="/remont-kukhni-kyiv">Ремонт кухні</a><a href="/remont-ofisu-pid-klyuch-kyiv">Ремонт офісу</a><a href="/remont-komertsiinykh-prymishchen-kyiv">Комерційні приміщення</a></div><div><b>Дизайн</b><a href="/dyzain-interieru-kyiv">Дизайн інтерʼєру</a><a href="/dyzain-interieru-kvartyry-kyiv">Дизайн квартири</a><a href="/dyzainer-interieru-kyiv">Дизайнер інтерʼєру</a><a href="/realizatsiia-dyzain-proektu-kyiv">Реалізація дизайн-проєкту</a><a href="/dyzain-restoranu-kafe-kyiv">Дизайн ресторану й кафе</a><a href="/landshaftnyi-dyzain-kyiv">Ландшафтний дизайн</a></div><div><b>Будинки</b><a href="/budivnytstvo-budynkiv-kyiv">Будівництво будинків</a><a href="/proektuvannia-budynku-kyiv">Проєктування будинку</a><a href="/remont-budynku-pid-klyuch-kyiv">Ремонт будинку</a><a href="/baza-vidpochynku-pid-klyuch">База відпочинку</a></div><div><b>Меблі й корисне</b><a href="/mebliuvannia-kvartyry-kyiv">Меблювання під ключ</a><a href="/komplektatsiia-pid-kliuch-kyiv">Комплектація під ключ</a><a href="/ozdoba">Оздоба — меблі з Китаю</a><a href="/kalkuliator-remontu">Калькулятор вартості</a><a href="/pytannya">Часті питання</a><a href="/blog">Блог: ціни й поради</a></div></nav></details>
+  <div class="scf-bot"><div class="scf-langs" role="group" aria-label="Мова"><span>Мова:</span><span class="scf-lang-on" aria-current="true" lang="uk">Українська</span><a href="/ru/" hreflang="ru" lang="ru">Русский</a><a href="/en/" hreflang="en" lang="en">English</a><a href="/es/" hreflang="es" lang="es">Español</a></div><a href="/konfidentsiinist">Політика конфіденційності</a><span>© 2026 CAS Development · Київ, Україна</span></div>
 </div>
-<footer><span class="fl">CAS Development</span><span class="fc">© 2026 CAS Development · Київ, Україна</span><div class="fs"><a href="https://www.instagram.com/cas_development/" target="_blank">Instagram</a><a href="https://t.me/+380978667755" target="_blank">Telegram</a><a href="https://wa.me/380978667755" target="_blank">WhatsApp</a><a href="/en/" hreflang="en" lang="en">English</a></div><div data-pp-link style="text-align:center;font-size:12px;opacity:.75;padding:10px 16px 0"><a href="/konfidentsiinist" style="color:inherit">Політика конфіденційності</a></div></footer>
+</footer><!--/chrome:f-->
 <!--m-fix--><div class="mbar" role="navigation" aria-label="Швидкий зв'язок">
 <a class="mb-call" href="tel:+380978667755"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>Подзвонити</a>
 <a href="https://t.me/+380978667755" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.8 19c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.6 13 1.9 11.5c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg>Telegram</a>
 <a href="https://wa.me/380978667755" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.2.6.4.1.1.1.8-.1 1.4z"/></svg>WhatsApp</a>
 </div>
 <!--ui-polish--><script src="/assets/ui-polish.v1.js" defer></script><!--/ui-polish-->
+<script src="/assets/site-chrome.v1.js" defer></script>
 </body>
 </html>
