@@ -65,6 +65,8 @@ def shell():
     s = s.replace('</style>\n<!--ozd:ld-->', CSS + '</style>\n<!--ozd:ld-->', 1)
     s = re.sub(r'<!--ozd:ld-->.*?<!--/ozd:ld-->', '', s, count=1, flags=re.S)
     s = re.sub(r'<link rel="preload" id="ozd-data"[^>]*>\n', '', s)
+    s = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n?', '', s)  # hreflang /ozdoba ↔ /en/ozdoba — не для кабінету
+    s = re.sub(r'<meta name="ozd-kp"[^>]*>\n?', '', s)  # адреса скрипта КП — лише для /ozdoba
     s = s.replace(' aria-current="page"', '')  # у кабінеті немає активного пункту меню
     s = s.replace('<meta name="twitter:card"', '<meta name="robots" content="noindex, nofollow">\n<meta name="twitter:card"', 1)
     hdr = re.search(r'<button class="ico" id="btnSearch".*?<span class="badge" id="cartBadge" hidden>0</span></button>', s, flags=re.S)
