@@ -325,6 +325,21 @@ def skip_and_main(s, lang):
     return s
 
 
+MBAR_IMG = {'https://t.me/': ('telegram', 'Telegram'), 'https://wa.me/': ('whatsapp', 'WhatsApp')}
+
+
+def mbar_logos(s):
+    """Нижня панель зв'язку (.mbar): оригінальні кольорові логотипи з /assets/brand/ замість однокольорових SVG."""
+    k = s.find('<div class="mbar"')
+    if k < 0: return s
+    e = s.find('</div>', k)
+    blk = s[k:e]
+    for pre, (name, label) in MBAR_IMG.items():
+        blk = re.sub(r'(<a href="' + re.escape(pre) + r'[^"]*"[^>]*>)\s*<svg\b.*?</svg>',
+                     lambda m: m.group(1) + f'<img src="/assets/brand/{name}.svg" width="32" height="32" alt="" decoding="async">', blk, flags=re.S)
+    return s[:k] + blk + s[e:]
+
+
 def apply(s, rel):
     """Ставить єдину шапку/футер у HTML сторінки `rel` (шлях від кореня сайту). Ідемпотентно."""
     rel = rel.replace(os.sep, '/')
@@ -392,6 +407,7 @@ def apply(s, rel):
     s = re.sub(r'(<style[^>]*>)(.*?)</style>', _st, s, flags=re.S)
     s = fix_js(s)
     s = re.sub(r'(<style[^>]*>)(.*?)</style>', lambda m: m.group(1) + _nocursor(m.group(2)) + '</style>', s, flags=re.S)
+    s = mbar_logos(s)
     s = skip_and_main(s, lang)
     # підключення стилів і скрипта
     if CSS_TAG not in s:

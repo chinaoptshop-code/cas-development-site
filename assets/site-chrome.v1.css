@@ -126,3 +126,5 @@ html.sch-lock .mbar{display:none!important}
 html.tg .sch-nav,html.tg .sch-lang,html.tg .sch-tel,html.tg .sch-cta,html.tg .sch-burger,html.tg .sch-menu,html.tg .scf{display:none!important}
 @media print{.sch,.sch-menu,.scf-svc{display:none!important}body{padding-top:0}}
 @media(prefers-reduced-motion:reduce){.sch *,.scf *{transition:none!important}}
+
+.mbar img{width:32px;height:32px;flex:none}
