@@ -1,0 +1,208 @@
+{
+ "slug": "projekt-domu",
+ "lang": "pl",
+ "service": "Projekt domu jednorodzinnego",
+ "title": "Projekt i aranżacja domu jednorodzinnego w Kijowie",
+ "description": "Projekt architektoniczny i projekt wnętrz domu: rzuty, elewacje, 3D, rysunki wykonawcze. Projekt od $30/m², budowa pod klucz od $1 100/m².",
+ "h1": "Projekt domu jednorodzinnego",
+ "price": "projekt od $30 / m² · budowa pod klucz od $1 100 / m²",
+ "lead": "Dom przemyślany od elewacji po gniazdka: architektura, układ pod Twoją rodzinę, wnętrza i ogród — jeden zespół od szkicu do kluczy.",
+ "cards": [
+  [
+   "Architektura",
+   [
+    "szkic i bryła",
+    "rzuty kondygnacji",
+    "elewacje i materiały",
+    "dopasowanie do działki"
+   ]
+  ],
+  [
+   "Wnętrza",
+   [
+    "projekt wszystkich pomieszczeń",
+    "wizualizacje 3D",
+    "oświetlenie, meble, materiały",
+    "specyfikacje"
+   ]
+  ],
+  [
+   "Budowa",
+   [
+    "kosztorys i harmonogram",
+    "budowa z wykończeniem pod klucz",
+    "wyposażenie z Chin",
+    "nadzór autorski"
+   ]
+  ]
+ ],
+ "about": [],
+ "gallery": [
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1kHF6cjS291puf-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1C16Cd6bvENPGL-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1g-E1m6cFJ9kvH-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1pF5ohNHdSnme0-900.webp",
+   "A-Frame House"
+  ]
+ ],
+ "steps": [
+  [
+   "Poznanie",
+   "Działka, skład rodziny, oczekiwania, budżet."
+  ],
+  [
+   "Szkic",
+   "Proponujemy bryłę i układ i dopracowujemy je według Twoich uwag."
+  ],
+  [
+   "Projekt i 3D",
+   "Elewacje, wnętrza, wizualizacje — widzisz dom przed rozpoczęciem budowy."
+  ],
+  [
+   "Rysunki wykonawcze",
+   "Dokumentacja, według której wykonawcy pracują bez zgadywania."
+  ],
+  [
+   "Budowa",
+   "Na życzenie budujemy pod klucz — od $1 100 za m²."
+  ]
+ ],
+ "faq": [
+  [
+   "Ile kosztuje projekt domu?",
+   "Projekt od $30 za m², minimalny budżet projektu — $2 500. Dokładną cenę podajemy po poznaniu działki i zadania."
+  ],
+  [
+   "Ile kosztuje budowa domu pod klucz?",
+   "Budowa z wykończeniem pod klucz — od $1 100 za m². Meble i wyposażenie liczymy osobno, możemy je sprowadzić bezpośrednio z Chin."
+  ],
+  [
+   "Czy projektujecie też wnętrza i ogród?",
+   "Tak — architektura, wnętrza i zagospodarowanie działki w jednym projekcie."
+  ],
+  [
+   "Gdzie pracujecie?",
+   "Kijów i obwód kijowski, cała Ukraina, Europa i świat."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-pod-klucz",
+   "Remont pod klucz"
+  ],
+  [
+   "/pl/remont-mieszkania-deweloperskiego",
+   "Remont mieszkania deweloperskiego"
+  ],
+  [
+   "/pl/remont-kuchni",
+   "Remont kuchni"
+  ],
+  [
+   "/pl/remont-lazienki",
+   "Remont łazienki"
+  ],
+  [
+   "/pl/remont-domu",
+   "Remont domu"
+  ],
+  [
+   "/pl/remont-biura",
+   "Remont biura"
+  ],
+  [
+   "/pl/remont-lokali-uzytkowych",
+   "Remont lokali użytkowych"
+  ],
+  [
+   "/pl/biznes-pod-klucz",
+   "Lokale biznesowe pod klucz"
+  ],
+  [
+   "/pl/ekipa-remontowa",
+   "Ekipa remontowa"
+  ],
+  [
+   "/pl/projektowanie-wnetrz",
+   "Projektowanie wnętrz"
+  ],
+  [
+   "/pl/projekt-wnetrza-mieszkania",
+   "Projekt wnętrza mieszkania"
+  ],
+  [
+   "/pl/projektant-wnetrz",
+   "Projektant wnętrz"
+  ],
+  [
+   "/pl/realizacja-projektu",
+   "Realizacja projektu"
+  ],
+  [
+   "/pl/projektowanie-restauracji",
+   "Projektowanie restauracji i kawiarni"
+  ],
+  [
+   "/pl/projektowanie-ogrodow",
+   "Projektowanie ogrodów"
+  ],
+  [
+   "/pl/budowa-domow",
+   "Budowa domów"
+  ],
+  [
+   "/pl/osrodek-wypoczynkowy-pod-klucz",
+   "Ośrodek wypoczynkowy pod klucz"
+  ],
+  [
+   "/pl/umeblowanie-pod-klucz",
+   "Umeblowanie pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów"
+  ],
+  [
+   "/pl/faq",
+   "FAQ"
+  ],
+  [
+   "/pl/kontakt",
+   "Kontakt"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

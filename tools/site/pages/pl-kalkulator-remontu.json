@@ -1,0 +1,180 @@
+{
+ "slug": "kalkulator-remontu",
+ "lang": "pl",
+ "service": "Kalkulator kosztów remontu",
+ "title": "Kalkulator remontu — cena za m² w Kijowie | CAS Development",
+ "description": "Kalkulator online kosztów remontu mieszkania i biura oraz budowy domu w Kijowie: remont od $550/m², projekt od $30/m², umeblowanie od $250/m².",
+ "h1": "Kalkulator kosztów remontu",
+ "price": "remont od $550 / m² · dom pod klucz od $1 100 / m²",
+ "lead": "Policz orientacyjny koszt remontu mieszkania, biura lub budowy domu według naszych stawek bazowych. Dodaj projekt i umeblowanie — i wyślij nam wynik: po pomiarze przygotujemy dokładny kosztorys.",
+ "calc": true,
+ "cards": [
+  [
+   "Remont",
+   [
+    "mieszkanie pod klucz — od $550/m²",
+    "biuro — od $350/m²",
+    "kosztorys z gwarancją ±5%, jeśli remont robi CAS"
+   ]
+  ],
+  [
+   "Dom",
+   [
+    "stan surowy — od $600/m²",
+    "pod klucz z wykończeniem — od $1 100/m²",
+    "projekt i kosztorys przed startem"
+   ]
+  ],
+  [
+   "Projekt i meble",
+   [
+    "projekt wnętrza — od $30/m², minimum $2 500",
+    "umeblowanie i kompletacja — od $250/m²",
+    "meble i oświetlenie prosto z Chin"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Dlaczego „od”, a nie dokładna cena",
+   [
+    "Ostateczny koszt zależy od stanu obiektu, zakresu prac i materiałów. Kalkulator pokazuje dolną granicę według naszych stawek bazowych. Dokładną kwotę zapisujemy w kosztorysie po pomiarze i projekcie — a jeśli remont robimy my, wynik nie wychodzi poza ±5% kosztorysu."
+   ]
+  ]
+ ],
+ "gallery": [],
+ "steps": [
+  [
+   "Wyliczenie",
+   "Kalkulator albo telefon."
+  ],
+  [
+   "Pomiar",
+   "Przyjeżdżamy na obiekt."
+  ],
+  [
+   "Kosztorys",
+   "Szczegółowa lista prac i materiałów."
+  ],
+  [
+   "Umowa",
+   "Ustalamy cenę i harmonogram."
+  ],
+  [
+   "Start",
+   "Własna ekipa, raporty na każdym etapie."
+  ]
+ ],
+ "faq": [
+  [
+   "Ile kosztuje remont mieszkania 60 m² w Kijowie?",
+   "Według stawki bazowej — od $33 000 (60 m² × $550). Dokładną kwotę podajemy po pomiarze i kosztorysie."
+  ],
+  [
+   "Czy materiały są wliczone w cenę?",
+   "Stawka pod klucz obejmuje prace i materiały według kosztorysu; meble i dekor liczymy osobno — od $250 za m²."
+  ],
+  [
+   "Czy cena może wzrosnąć w trakcie remontu?",
+   "Jeśli remont robimy my, wynik nie wychodzi poza ±5% zatwierdzonego kosztorysu."
+  ],
+  [
+   "Ile kosztuje dom 150 m² pod klucz?",
+   "Według stawki bazowej — od $165 000 (150 m² × $1 100). Dokładna kwota — po projekcie."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-pod-klucz",
+   "Remont pod klucz"
+  ],
+  [
+   "/pl/remont-mieszkania-deweloperskiego",
+   "Remont mieszkania deweloperskiego"
+  ],
+  [
+   "/pl/remont-kuchni",
+   "Remont kuchni"
+  ],
+  [
+   "/pl/remont-lazienki",
+   "Remont łazienki"
+  ],
+  [
+   "/pl/remont-domu",
+   "Remont domu"
+  ],
+  [
+   "/pl/remont-biura",
+   "Remont biura"
+  ],
+  [
+   "/pl/remont-lokali-uzytkowych",
+   "Remont lokali użytkowych"
+  ],
+  [
+   "/pl/biznes-pod-klucz",
+   "Lokale biznesowe pod klucz"
+  ],
+  [
+   "/pl/ekipa-remontowa",
+   "Ekipa remontowa"
+  ],
+  [
+   "/pl/projektowanie-wnetrz",
+   "Projektowanie wnętrz"
+  ],
+  [
+   "/pl/projekt-wnetrza-mieszkania",
+   "Projekt wnętrza mieszkania"
+  ],
+  [
+   "/pl/projektant-wnetrz",
+   "Projektant wnętrz"
+  ],
+  [
+   "/pl/realizacja-projektu",
+   "Realizacja projektu"
+  ],
+  [
+   "/pl/projektowanie-restauracji",
+   "Projektowanie restauracji i kawiarni"
+  ],
+  [
+   "/pl/projektowanie-ogrodow",
+   "Projektowanie ogrodów"
+  ],
+  [
+   "/pl/budowa-domow",
+   "Budowa domów"
+  ],
+  [
+   "/pl/projekt-domu",
+   "Projekt domu"
+  ],
+  [
+   "/pl/osrodek-wypoczynkowy-pod-klucz",
+   "Ośrodek wypoczynkowy pod klucz"
+  ],
+  [
+   "/pl/umeblowanie-pod-klucz",
+   "Umeblowanie pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/faq",
+   "FAQ"
+  ],
+  [
+   "/pl/kontakt",
+   "Kontakt"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

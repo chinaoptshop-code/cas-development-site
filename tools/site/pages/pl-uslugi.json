@@ -118,6 +118,66 @@
    "h2": "Inne usługi",
    "items": [
     [
+     "/pl/remont-mieszkania-deweloperskiego",
+     "Remont mieszkania deweloperskiego"
+    ],
+    [
+     "/pl/remont-kuchni",
+     "Remont kuchni"
+    ],
+    [
+     "/pl/remont-lazienki",
+     "Remont łazienki"
+    ],
+    [
+     "/pl/remont-domu",
+     "Remont domu"
+    ],
+    [
+     "/pl/remont-biura",
+     "Remont biura"
+    ],
+    [
+     "/pl/remont-lokali-uzytkowych",
+     "Remont lokali użytkowych"
+    ],
+    [
+     "/pl/ekipa-remontowa",
+     "Ekipa remontowa"
+    ],
+    [
+     "/pl/projekt-wnetrza-mieszkania",
+     "Projekt wnętrza mieszkania"
+    ],
+    [
+     "/pl/projektant-wnetrz",
+     "Projektant wnętrz"
+    ],
+    [
+     "/pl/projektowanie-restauracji",
+     "Projektowanie restauracji i kawiarni"
+    ],
+    [
+     "/pl/projektowanie-ogrodow",
+     "Projektowanie ogrodów"
+    ],
+    [
+     "/pl/projekt-domu",
+     "Projekt domu"
+    ],
+    [
+     "/pl/osrodek-wypoczynkowy-pod-klucz",
+     "Ośrodek wypoczynkowy pod klucz"
+    ],
+    [
+     "/pl/kompletacja-wnetrz",
+     "Kompletacja wnętrz pod klucz"
+    ],
+    [
+     "/pl/kalkulator-remontu",
+     "Kalkulator kosztów"
+    ],
+    [
      "/pl/o-studiu",
      "O studiu"
     ],

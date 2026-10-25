@@ -1,0 +1,180 @@
+{
+ "slug": "renovierungskosten-rechner",
+ "lang": "de",
+ "service": "Renovierungskosten-Rechner",
+ "title": "Renovierungskosten-Rechner — Preis pro m² in Kyjiw | CAS Development",
+ "description": "Online-Rechner für die Kosten von Wohnungs- und Bürorenovierung und Hausbau in Kyjiw: Renovierung ab $550/m², Design ab $30/m², Einrichtung ab $250/m².",
+ "h1": "Renovierungskosten-Rechner",
+ "price": "Renovierung ab $550 / m² · Haus schlüsselfertig ab $1 100 / m²",
+ "lead": "Berechnen Sie die ungefähren Kosten für die Renovierung einer Wohnung oder eines Büros oder den Bau eines Hauses zu unseren Basissätzen. Fügen Sie Designprojekt und Einrichtung hinzu — und senden Sie uns das Ergebnis: Nach dem Aufmaß erstellen wir einen genauen Kostenvoranschlag.",
+ "calc": true,
+ "cards": [
+  [
+   "Renovierung",
+   [
+    "Wohnung schlüsselfertig — ab $550/m²",
+    "Büro — ab $350/m²",
+    "Kostenvoranschlag garantiert ±5 %, wenn CAS renoviert"
+   ]
+  ],
+  [
+   "Haus",
+   [
+    "Rohbau — ab $600/m²",
+    "schlüsselfertig mit Ausbau — ab $1 100/m²",
+    "Planung und Kostenvoranschlag vor Baubeginn"
+   ]
+  ],
+  [
+   "Design und Möbel",
+   [
+    "Designprojekt — ab $30/m², mindestens $2 500",
+    "Einrichtung und Ausstattung — ab $250/m²",
+    "Möbel und Leuchten direkt aus China"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Warum „ab“ und kein genauer Preis",
+   [
+    "Die endgültigen Kosten hängen vom Zustand des Objekts, dem Arbeitsumfang und den Materialien ab. Der Rechner zeigt die Untergrenze nach unseren Basissätzen. Die genaue Summe legen wir nach Aufmaß und Planung im Kostenvoranschlag fest — und renovieren wir selbst, bleibt die Endsumme innerhalb von ±5 % des Kostenvoranschlags."
+   ]
+  ]
+ ],
+ "gallery": [],
+ "steps": [
+  [
+   "Berechnung",
+   "Mit dem Rechner oder per Anruf."
+  ],
+  [
+   "Aufmaß",
+   "Wir kommen zum Objekt."
+  ],
+  [
+   "Kostenvoranschlag",
+   "Detaillierte Liste von Arbeiten und Material."
+  ],
+  [
+   "Vertrag",
+   "Preis und Zeitplan werden festgelegt."
+  ],
+  [
+   "Start",
+   "Eigenes Team, Berichte in jeder Phase."
+  ]
+ ],
+ "faq": [
+  [
+   "Was kostet die Renovierung einer 60-m²-Wohnung in Kyjiw?",
+   "Zum Basissatz — ab $33 000 (60 m² × $550). Die genaue Summe nennen wir nach Aufmaß und Kostenvoranschlag."
+  ],
+  [
+   "Sind Materialien im Preis enthalten?",
+   "Der Schlüsselfertig-Satz umfasst Arbeiten und Material laut Kostenvoranschlag; Möbel und Dekor werden separat berechnet — ab $250 pro m²."
+  ],
+  [
+   "Kann der Preis während der Renovierung steigen?",
+   "Renovieren wir selbst, bleibt die Endsumme innerhalb von ±5 % des genehmigten Kostenvoranschlags."
+  ],
+  [
+   "Was kostet ein 150-m²-Haus schlüsselfertig?",
+   "Zum Basissatz — ab $165 000 (150 m² × $1 100). Die genaue Summe nach der Planung."
+  ]
+ ],
+ "rel": [
+  [
+   "/de/renovierung-schluesselfertig",
+   "Schlüsselfertige Renovierung"
+  ],
+  [
+   "/de/neubauwohnung-ausbau",
+   "Ausbau von Neubauwohnungen"
+  ],
+  [
+   "/de/kuechenrenovierung",
+   "Küchenrenovierung"
+  ],
+  [
+   "/de/badsanierung",
+   "Badsanierung"
+  ],
+  [
+   "/de/haussanierung",
+   "Haussanierung"
+  ],
+  [
+   "/de/bueroumbau",
+   "Büroumbau"
+  ],
+  [
+   "/de/gewerberaeume-renovierung",
+   "Renovierung von Gewerberäumen"
+  ],
+  [
+   "/de/gewerbe-schluesselfertig",
+   "Gewerberäume schlüsselfertig"
+  ],
+  [
+   "/de/handwerkerteam",
+   "Handwerkerteam"
+  ],
+  [
+   "/de/innenarchitektur",
+   "Innenarchitektur"
+  ],
+  [
+   "/de/wohnungsdesign",
+   "Wohnungsdesign"
+  ],
+  [
+   "/de/innenarchitekt",
+   "Innenarchitekt"
+  ],
+  [
+   "/de/umsetzung-designprojekt",
+   "Umsetzung von Designprojekten"
+  ],
+  [
+   "/de/restaurantdesign",
+   "Restaurant- und Café-Design"
+  ],
+  [
+   "/de/gartengestaltung",
+   "Gartengestaltung"
+  ],
+  [
+   "/de/hausbau",
+   "Hausbau"
+  ],
+  [
+   "/de/hausplanung",
+   "Hausplanung"
+  ],
+  [
+   "/de/ferienanlage-schluesselfertig",
+   "Ferienanlage schlüsselfertig"
+  ],
+  [
+   "/de/einrichtung-schluesselfertig",
+   "Schlüsselfertige Einrichtung"
+  ],
+  [
+   "/de/objekteinrichtung",
+   "Objekteinrichtung"
+  ],
+  [
+   "/de/faq",
+   "FAQ"
+  ],
+  [
+   "/de/kontakt",
+   "Kontakt"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

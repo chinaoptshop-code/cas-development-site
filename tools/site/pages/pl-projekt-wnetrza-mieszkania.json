@@ -1,0 +1,216 @@
+{
+ "slug": "projekt-wnetrza-mieszkania",
+ "lang": "pl",
+ "service": "Projekt wnętrza mieszkania",
+ "title": "Projekt wnętrza mieszkania w Kijowie — od $30/m²",
+ "description": "Projekt wnętrza mieszkania w Kijowie od $30/m², minimum $2 500: układ, 3D, rysunki, dobór materiałów. Realizujemy sami — kosztorys ±5%, jeśli remont robi CAS.",
+ "h1": "Projekt wnętrza mieszkania w Kijowie",
+ "price": "od $30 / m²",
+ "lead": "Projekt, według którego mieszkanie powstaje bez niespodzianek: przemyślany układ, 3D każdego pokoju, rysunki dla ekipy i specyfikacja materiałów. Minimalny budżet projektu — $2 500.",
+ "cards": [
+  [
+   "Układ",
+   [
+    "pomiary i inwentaryzacja",
+    "warianty układu",
+    "ustawienie mebli",
+    "schematy oświetlenia i gniazdek"
+   ]
+  ],
+  [
+   "Wizualizacja",
+   [
+    "styl i koncepcja",
+    "wizualizacje 3D pomieszczeń",
+    "dobór kolorów i faktur",
+    "poprawki do akceptacji"
+   ]
+  ],
+  [
+   "Rysunki i materiały",
+   [
+    "rysunki wykonawcze dla ekipy",
+    "specyfikacja materiałów",
+    "dobór mebli i oświetlenia",
+    "kosztorys remontu"
+   ]
+  ]
+ ],
+ "about": [],
+ "gallery": [
+  [
+   "img/p/1MslU7S5X8gIEp-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1YQyhjEui9fb6v-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1xqY1KZo2JY5xq-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1iGcqtsUqLNWbB-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1rfuCVdOfWwhML-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1HMtnMX7Fgpwg5-900.webp",
+   "Edelweiss"
+  ]
+ ],
+ "steps": [
+  [
+   "Poznanie i pomiary",
+   "Oglądamy mieszkanie i rozmawiamy o tym, jak żyjesz: kto i ile osób będzie tu mieszkać, co jest dla Ciebie ważne."
+  ],
+  [
+   "Układ",
+   "Proponujemy warianty ustawienia — wybierasz jeden, dopracowujemy go."
+  ],
+  [
+   "3D i styl",
+   "Pokazujemy, jak będzie wyglądał każdy pokój, wprowadzamy poprawki do akceptacji."
+  ],
+  [
+   "Rysunki wykonawcze",
+   "Rysunki i specyfikacje, według których ekipa pracuje bez zgadywania."
+  ],
+  [
+   "Kosztorys",
+   "Wyceniamy remont według projektu. Jeśli remont robimy my — wynik mieści się w ±5% kosztorysu."
+  ],
+  [
+   "Realizacja",
+   "Na życzenie przejmujemy remont i kompletację meblami prosto z Chin."
+  ]
+ ],
+ "faq": [
+  [
+   "Ile kosztuje projekt wnętrza mieszkania w Kijowie?",
+   "Od $30 za m², minimalny budżet projektu — $2 500. Dokładną kwotę podajemy po zapoznaniu się z mieszkaniem."
+  ],
+  [
+   "Co obejmuje projekt wnętrza?",
+   "Pomiary, warianty układu, wizualizacje 3D, rysunki wykonawcze, specyfikację materiałów i mebli, kosztorys remontu."
+  ],
+  [
+   "Czy możecie wykonać remont według projektu?",
+   "Tak, własnym zespołem. Jeśli remont według naszego projektu wykonujemy my, gwarantujemy, że wynik nie odbiegnie od kosztorysu o więcej niż 5%."
+  ],
+  [
+   "Czy pracujecie z mieszkaniami deweloperskimi?",
+   "Tak — zarówno z mieszkaniami od dewelopera, jak i z rynku wtórnego do generalnego remontu."
+  ],
+  [
+   "Gdzie pracujecie?",
+   "Kijów i obwód kijowski, cała Ukraina, Europa i świat."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-pod-klucz",
+   "Remont pod klucz"
+  ],
+  [
+   "/pl/remont-mieszkania-deweloperskiego",
+   "Remont mieszkania deweloperskiego"
+  ],
+  [
+   "/pl/remont-kuchni",
+   "Remont kuchni"
+  ],
+  [
+   "/pl/remont-lazienki",
+   "Remont łazienki"
+  ],
+  [
+   "/pl/remont-domu",
+   "Remont domu"
+  ],
+  [
+   "/pl/remont-biura",
+   "Remont biura"
+  ],
+  [
+   "/pl/remont-lokali-uzytkowych",
+   "Remont lokali użytkowych"
+  ],
+  [
+   "/pl/biznes-pod-klucz",
+   "Lokale biznesowe pod klucz"
+  ],
+  [
+   "/pl/ekipa-remontowa",
+   "Ekipa remontowa"
+  ],
+  [
+   "/pl/projektowanie-wnetrz",
+   "Projektowanie wnętrz"
+  ],
+  [
+   "/pl/projektant-wnetrz",
+   "Projektant wnętrz"
+  ],
+  [
+   "/pl/realizacja-projektu",
+   "Realizacja projektu"
+  ],
+  [
+   "/pl/projektowanie-restauracji",
+   "Projektowanie restauracji i kawiarni"
+  ],
+  [
+   "/pl/projektowanie-ogrodow",
+   "Projektowanie ogrodów"
+  ],
+  [
+   "/pl/budowa-domow",
+   "Budowa domów"
+  ],
+  [
+   "/pl/projekt-domu",
+   "Projekt domu"
+  ],
+  [
+   "/pl/osrodek-wypoczynkowy-pod-klucz",
+   "Ośrodek wypoczynkowy pod klucz"
+  ],
+  [
+   "/pl/umeblowanie-pod-klucz",
+   "Umeblowanie pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów"
+  ],
+  [
+   "/pl/faq",
+   "FAQ"
+  ],
+  [
+   "/pl/kontakt",
+   "Kontakt"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}
