@@ -191,8 +191,8 @@ function toggleFav(id){
 
 /* ===================== комплекти ===================== */
 /* Мінімум 10 шт кожної позиції стосується і комплектів. Комплект — специфікація під обʼєкт: ціна = сума позицій × кількість
-   за специфікацією (без тихого «доведення» до 10). Якщо в комплекті є позиції менше 10 шт, у кошик його не додати як є:
-   у шторці комплекту такі позиції треба довести до 10 (+) або прибрати (−) — або надіслати запит розрахунку. */
+   за специфікацією (без тихого «доведення» до 10). Комплект, у якому є позиції менше 10 шт, у кошик не додається
+   і кількості в ньому не редагуються — лише «Запит розрахунку» (рішення Михайла 25.10.2026). */
 function bundleTotal(b, qty){
   return b.rows.reduce((s,r,n)=>{ const q = qty ? (qty[n] ?? r.q) : r.q; return s + (price(byId(r.id),-1,defS(byId(r.id)))||0)*q; },0);
 }
@@ -208,7 +208,7 @@ function renderBundles(){
     return `<article class="bcard${b.premium?' prem':''}" role="button" tabindex="0" aria-label="${esc(b.name)}" onclick="openBundle('${b.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBundle('${b.id}')}">
       <div class="art${b.premium?' kcol':''}">${b.premium?kitPics(b):(ART[b.art]||'')}</div>
       <div class="info"><h3>${b.name}</h3><div class="note">${b.note}</div>
-        <div class="pr">${money(t)}</div>${kitOk(b)?'':`<div class="note">Є позиції менше ${MINQ()} шт — доведіть до ${MINQ()} або запитайте розрахунок</div>`}</div></article>`;
+        <div class="pr">${money(t)}</div>${kitOk(b)?'':`<div class="note">Є позиції менше ${MINQ()} шт — лише запит розрахунку</div>`}</div></article>`;
   }).join('') : `<div class="empty">Для цього типу приміщення готового комплекту ще немає. Зберіть з каталогу — або напишіть нам, порахуємо під ваш обʼєкт.</div>`;
 }
 function openBundle(id){
@@ -217,25 +217,26 @@ function openBundle(id){
 }
 function renderBundle(id){
   const b=BU.find(x=>x.id===id);
-  const t=bundleTotal(b,bq), vp=volPct(t), low=lowRows();
+  const t=bundleTotal(b,bq), vp=volPct(t), low=lowRows(), req=!kitOk(b);
   const n0=b.rows.filter((r,n)=>bq[n]>0).length;
   paint('bundleBody', `
     <div class="sh-head"><h2>${b.name}</h2><button type="button" class="x" onclick="closeAll()" aria-label="Закрити">✕</button></div>
-    <p class="desc">${b.note} Кількості — орієнтовні, міняйте під свій обʼєкт: позиція з нулем у комплект не піде. Мінімум — ${MINQ()} шт (одиниць) кожної позиції.</p>
+    <p class="desc">${b.note} ${req?`Кількості — за специфікацією; у комплекті є позиції менше ${MINQ()} шт, тому його рахуємо лише за запитом.`:'Кількості — орієнтовні, міняйте під свій обʼєкт: позиція з нулем у комплект не піде.'} Мінімум — ${MINQ()} шт (одиниць) кожної позиції.</p>
     ${b.rows.map((r,n)=>{ const i=byId(r.id), q=bq[n]||0; return `
       <div class="ci">
         <div class="art${i.img?' ph':''}">${pic(i)}</div>
         <div class="info"><b>${i.name}</b><em>${money(price(i,-1,defS(i)))} / ${i.unit}${q>0&&q<MINQ()?` · <span style="color:var(--glow)">менше мінімуму ${MINQ()}</span>`:''}</em></div>
         <div class="right">
           <span class="s">${i.price==null?money(null):money(price(i,-1,defS(i))*q)}</span>
-          <div class="qty sm"><button type="button" onclick="bqSet('${id}',${n},-1)" aria-label="Менше: ${esc(i.name)}">−</button><span aria-live="polite">${q}</span><button type="button" onclick="bqSet('${id}',${n},1)" aria-label="Більше: ${esc(i.name)}">+</button></div>
+          ${req?`<div class="qty sm"><span>${q} ${i.unit}</span></div>`:`<div class="qty sm"><button type="button" onclick="bqSet('${id}',${n},-1)" aria-label="Менше: ${esc(i.name)}">−</button><span aria-live="polite">${q}</span><button type="button" onclick="bqSet('${id}',${n},1)" aria-label="Більше: ${esc(i.name)}">+</button></div>`}
         </div></div>`; }).join('')}
     <div class="sum total"><span>Разом, ${poz(n0)}</span><span>${money(t)}</span></div>
     ${vp?`<div class="sum disc"><span>Знижка за обсягом −${vp}% у кошику</span><span>−${money(Math.round(t*vp/100))}</span></div>`:''}
     <p class="note-honest">Ціна — сума позицій каталогу. ${VOLTXT} — рахується в кошику на всю суму товарів. Поставка з Китаю <span class="nw">30–60</span>\u00a0днів; ${SHIPTXT.toLowerCase()} Рахунок для ФОП і ТОВ; рахунки для компаній з ЄС — у процесі підключення.${b.premium?' Точну суму під ваш обʼєкт менеджер підтвердить після заявки.':''}</p>
-    ${low?`<p class="note-honest" style="color:var(--glow)">Позицій менше ${MINQ()} шт: ${low}. Доведіть їх до ${MINQ()} («+») або приберіть («−»), щоб додати комплект у кошик, — або надішліть запит розрахунку: підберемо партію під кілька обʼєктів.</p>`:''}
+    ${req?`<p class="note-honest" style="color:var(--glow)">У комплекті є позиції менше ${MINQ()} шт — у кошик його не додати. Надішліть запит розрахунку: менеджер порахує комплект під ваш обʼєкт.</p>
+    <a class="btn" style="text-decoration:none" href="/ozdoba/komplekty?kit=${b.id}#zayavka">Запит розрахунку</a>`:`
     <button class="btn" onclick="addBundle('${id}')"${low?' disabled aria-disabled="true"':''}>${b.premium?'Додати весь комплект у кошик':'Додати комплект у кошик'}</button>
-    <a class="btn ghost" style="text-decoration:none" href="/ozdoba/komplekty?kit=${b.id}#zayavka">Запит розрахунку під мій обʼєкт</a>`);
+    <a class="btn ghost" style="text-decoration:none" href="/ozdoba/komplekty?kit=${b.id}#zayavka">Запит розрахунку під мій обʼєкт</a>`}`);
 }
 /* кількість у комплекті: 0 або ≥ мінімуму; з позиції менше 10 «+» веде до 10, «−» — до 0 */
 function bqSet(id,n,dd){ const c=bq[n]||0; let q;
@@ -244,6 +245,7 @@ function bqSet(id,n,dd){ const c=bq[n]||0; let q;
   bq[n]=q; renderBundle(id); }
 function addBundle(id){
   const b=BU.find(x=>x.id===id); let added=0;
+  if(!kitOk(b)){ toast('Цей комплект — лише за запитом розрахунку'); return; }
   if(lowRows()){ toast(`Мінімум — ${MINQ()} шт кожної позиції`); return; }
   b.rows.forEach((r,n)=>{ const q=bq[n]||0; if(!q) return;
     const i=byId(r.id), si=defS(i);
@@ -254,10 +256,10 @@ function addBundle(id){
   haptic('success'); closeAll(); syncBadges(); toast(b.premium?`Комплект «${b.name}» у кошику: ${poz(added)}`:`Комплект додано: ${poz(added)}`);
 }
 /* «Додати весь комплект у кошик» із секції /ozdoba і з /ozdoba/komplekty (#kit-k1) — кількості за замовчуванням;
-   якщо в комплекті є позиції менше 10 шт — відкриваємо шторку комплекту, де їх можна довести до 10 */
+   якщо в комплекті є позиції менше 10 шт — відкриваємо шторку комплекту з кнопкою «Запит розрахунку» */
 function addKit(id){
   const b=BU.find(x=>x.id===id); if(!b) return;
-  if(!kitOk(b)){ openBundle(id); toast(`У комплекті є позиції менше ${MINQ()} шт — доведіть до ${MINQ()} або приберіть`); return; }
+  if(!kitOk(b)){ openBundle(id); toast(`У комплекті є позиції менше ${MINQ()} шт — лише запит розрахунку`); return; }
   bq={}; b.rows.forEach((r,n)=>bq[n]=r.q); addBundle(id); openCart();
 }
 
@@ -452,7 +454,7 @@ function renderPay(){
 
     <p class="lbl" style="margin-top:18px">Як вам зручніше оплатити</p>
     <button class="pay" aria-pressed="${payMethod==='card'}" onclick="setPay('card')"><span class="dot"></span>
-      <span><b>Карткою онлайн</b><small>Посилання на оплату надішле менеджер після підтвердження наявності.</small></span></button>
+      <span><b>Карткою (посилання від менеджера)</b><small>Посилання на оплату надішле менеджер після підтвердження наявності.</small></span></button>
     <button class="pay" aria-pressed="${payMethod==='invoice'}" onclick="setPay('invoice')"><span class="dot"></span>
       <span><b>Рахунок для ФОП або ТОВ</b><small>Безготівковий розрахунок з ПДВ, закривні документи. Відвантаження після зарахування.</small></span></button>
 
@@ -470,7 +472,7 @@ async function pay(){
   if(cart.some(c=>c.qty<MINQ())){ toast(`Мінімум — ${MINQ()} шт кожної позиції`); return; }
   if(!nm||ph.replace(/\D/g,'').length<9){ toast('Вкажіть імʼя і телефон — інакше ми не зможемо звʼязатися'); return; }
   const g=grand(), ord='OZD-'+Date.now().toString().slice(-7);
-  const PM={cod:'при отриманні',parts:'частинами',invoice:'рахунок ФОП/ТОВ',card:'карткою онлайн'};
+  const PM={invoice:'рахунок ФОП/ТОВ',card:'карткою (посилання від менеджера)'};
   const lines=cart.map(c=>{ const i=byId(c.id), s=SS(i);
     return `• ${i.name} — ${col(i,c.ci)[0]}${s?', '+s[c.si][0]:''} — ${c.qty} ${i.unit} × ${money(price(i,c.ci,c.si))} = ${money(lineSum(c))}`; });
   const message=[`Замовлення ${ord} з Оздоби`,...lines,

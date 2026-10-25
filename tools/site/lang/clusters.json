@@ -129,7 +129,12 @@
   "uk": "/konfidentsiinist",
   "ru": "/ru/konfidentsialnost",
   "en": "/en/privacy-policy",
-  "es": "/es/privacidad"
+  "es": "/es/privacidad",
+  "zh": "/zh/privacy",
+  "pl": "/pl/polityka-prywatnosci",
+  "de": "/de/datenschutz",
+  "fr": "/fr/confidentialite",
+  "ar": "/ar/privacy"
  },
  "kitchen": {
   "uk": "/remont-kukhni-kyiv",
