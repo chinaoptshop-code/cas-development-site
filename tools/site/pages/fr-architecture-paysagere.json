@@ -1,0 +1,207 @@
+{
+ "slug": "architecture-paysagere",
+ "lang": "fr",
+ "service": "Architecture paysagère",
+ "title": "Architecture paysagère et aménagement de terrain à Kyiv",
+ "description": "Paysagisme à Kyiv et sa région : projet de jardin et de terrain, allées, terrasses, éclairage, plantations. Conception et réalisation clé en main, avec la maison.",
+ "h1": "Architecture paysagère et aménagement de terrain",
+ "price": "projet et réalisation clé en main · prix après visite du terrain",
+ "lead": "Nous concevons et aménageons jardins et abords de maisons : zonage du terrain, allées, terrasses, espaces détente, éclairage et plantations. Le terrain devient le prolongement de la maison.",
+ "cards": [
+  [
+   "Projet",
+   [
+    "plan de masse et zonage",
+    "visualisations 3D",
+    "plan de plantation et choix des végétaux",
+    "schéma d’éclairage et d’arrosage"
+   ]
+  ],
+  [
+   "Aménagement",
+   [
+    "allées et dallages",
+    "terrasses et espaces détente",
+    "gazon et plantations",
+    "éclairage extérieur"
+   ]
+  ],
+  [
+   "Avec la maison",
+   [
+    "intégration à l’architecture",
+    "piscine et coin barbecue",
+    "stationnement et accès",
+    "suivi de chantier par l’auteur"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Un jardin pensé avec la maison",
+   [
+    "Le paysage est réussi quand il est planifié en même temps que la maison : les fenêtres donnent sur les bonnes vues, la terrasse est du bon côté et les réseaux n’ont pas à être recreusés. Nous menons architecture, intérieur et paysage avec une seule équipe."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1FiLI9kKE-C87h-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1hXV_Pz6_GfnXe-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1FRa0FI6iMHK5L-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/1f3m1_qf4mDosh-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/1kHF6cjS291puf-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1C16Cd6bvENPGL-900.webp",
+   "Smart Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "Visite du terrain",
+   "Relief, sol et végétation existante."
+  ],
+  [
+   "Concept",
+   "Zonage et style du jardin."
+  ],
+  [
+   "Projet et 3D",
+   "Nous vous montrons le terrain avant les travaux."
+  ],
+  [
+   "Devis",
+   "Matériaux, végétaux, travaux."
+  ],
+  [
+   "Réalisation",
+   "Aménagement du terrain clé en main."
+  ]
+ ],
+ "faq": [
+  [
+   "Combien coûte l’architecture paysagère ?",
+   "Cela dépend de la surface, du relief et du programme du jardin. Le coût exact est donné après visite du terrain et fixé dans le devis."
+  ],
+  [
+   "Réalisez-vous aussi l’aménagement, pas seulement le projet ?",
+   "Oui, nous concevons et réalisons clé en main."
+  ],
+  [
+   "Peut-on le combiner avec la construction de la maison ?",
+   "Oui, le paysage est conçu avec l’architecture de la maison."
+  ],
+  [
+   "Où intervenez-vous ?",
+   "Kyiv et sa région, toute l’Ukraine, l’Europe et le monde."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/renovation-cuisine",
+   "Rénovation de cuisine"
+  ],
+  [
+   "/fr/renovation-salle-de-bain",
+   "Rénovation de salle de bain"
+  ],
+  [
+   "/fr/renovation-appartement-neuf",
+   "Rénovation d’appartement neuf"
+  ],
+  [
+   "/fr/renovation-maison-cle-en-main",
+   "Rénovation de maison"
+  ],
+  [
+   "/fr/renovation-bureaux",
+   "Rénovation de bureaux"
+  ],
+  [
+   "/fr/renovation-locaux-commerciaux",
+   "Rénovation de locaux commerciaux"
+  ],
+  [
+   "/fr/equipe-renovation",
+   "Équipe de rénovation"
+  ],
+  [
+   "/fr/equipement-cle-en-main",
+   "Équipement clé en main"
+  ],
+  [
+   "/fr/calculateur-renovation",
+   "Calculateur de coût"
+  ],
+  [
+   "/fr/designer-interieur",
+   "Designer d’intérieur"
+  ],
+  [
+   "/fr/design-appartement",
+   "Design d’intérieur d’appartement"
+  ],
+  [
+   "/fr/design-restaurant-cafe",
+   "Design de restaurants et cafés"
+  ],
+  [
+   "/fr/conception-maison",
+   "Conception de maison"
+  ],
+  [
+   "/fr/base-de-loisirs-cle-en-main",
+   "Base de loisirs clé en main"
+  ],
+  [
+   "/fr/architecture-interieur",
+   "Architecture d’intérieur"
+  ],
+  [
+   "/fr/realisation-projet",
+   "Réalisation de projet de design"
+  ],
+  [
+   "/fr/renovation-cle-en-main",
+   "Rénovation clé en main"
+  ],
+  [
+   "/fr/construction-maison",
+   "Construction de maisons"
+  ],
+  [
+   "/fr/ameublement-cle-en-main",
+   "Ameublement clé en main"
+  ],
+  [
+   "/fr/commerce-cle-en-main",
+   "Locaux professionnels clé en main"
+  ],
+  [
+   "/fr/faq",
+   "FAQ"
+  ],
+  [
+   "/fr/contact",
+   "Contact"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

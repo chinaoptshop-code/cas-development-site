@@ -59,6 +59,26 @@
      [
       "/es/ejecucion-proyecto-diseno",
       "Ejecución del proyecto"
+     ],
+     [
+      "/es/disenador-interiores",
+      "Diseñador de interiores"
+     ],
+     [
+      "/es/diseno-interiores-piso",
+      "Diseño de interiores de pisos"
+     ],
+     [
+      "/es/diseno-restaurantes-cafeterias",
+      "Diseño de restaurantes y cafeterías"
+     ],
+     [
+      "/es/proyecto-de-casa",
+      "Proyecto de casa"
+     ],
+     [
+      "/es/paisajismo",
+      "Paisajismo"
      ]
     ]
    ],
@@ -76,6 +96,38 @@
      [
       "/es/negocio-llave-en-mano",
       "Locales comerciales llave en mano"
+     ],
+     [
+      "/es/reforma-cocina",
+      "Reforma de cocina"
+     ],
+     [
+      "/es/reforma-bano",
+      "Reforma de baño"
+     ],
+     [
+      "/es/reforma-obra-nueva",
+      "Reforma de piso de obra nueva"
+     ],
+     [
+      "/es/reforma-casa-llave-en-mano",
+      "Reforma de casa"
+     ],
+     [
+      "/es/reforma-oficinas",
+      "Reforma de oficinas"
+     ],
+     [
+      "/es/reforma-locales-comerciales",
+      "Reforma de locales comerciales"
+     ],
+     [
+      "/es/equipo-de-reformas",
+      "Equipo de reformas"
+     ],
+     [
+      "/es/complejo-turistico-llave-en-mano",
+      "Complejo turístico llave en mano"
      ]
     ]
    ],
@@ -85,6 +137,10 @@
      [
       "/es/amueblamiento-llave-en-mano",
       "Amueblamiento llave en mano"
+     ],
+     [
+      "/es/equipamiento-llave-en-mano",
+      "Equipamiento llave en mano"
      ]
     ]
    ],
@@ -94,6 +150,10 @@
      [
       "/es/servicios",
       "Todos los servicios"
+     ],
+     [
+      "/es/calculadora-reforma",
+      "Calculadora de costes"
      ],
      [
       "/es/sobre-nosotros",

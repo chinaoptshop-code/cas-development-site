@@ -1,0 +1,216 @@
+{
+ "slug": "commercial-renovation",
+ "lang": "zh",
+ "service": "商业空间装修",
+ "title": "基辅商业空间装修：门店、沙龙 | CAS Development",
+ "description": "基辅商业空间设计与交钥匙装修：门店、美容沙龙、咖啡馆、餐厅、办公室。办公室 $350/m² 起，设计 $30/m² 起。",
+ "h1": "基辅商业空间装修",
+ "price": "办公室 $350 / m² 起 · 设计 $30 / m² 起",
+ "lead": "我们为企业提供设计与交钥匙装修：门店、展厅、美容沙龙、咖啡馆、餐厅、办公室。我们深知停业一天就是一天的损失，因此严格按进度施工并锁定预算。",
+ "cards": [
+  [
+   "空间类型",
+   [
+    "门店与展厅",
+    "美容沙龙",
+    "咖啡馆、餐厅、酒吧",
+    "办公室与联合办公"
+   ]
+  ],
+  [
+   "施工内容",
+   [
+    "空间设计与品牌形象",
+    "机电、通风、照明",
+    "耐磨材料饰面",
+    "招牌与入口门头"
+   ]
+  ],
+  [
+   "配套",
+   [
+    "商业及吧台设备",
+    "中国直采家具",
+    "照明",
+    "软装饰品"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "为业务服务的空间",
+   [
+    "商业空间要能促进销售：醒目的入口、清晰的动线、照亮商品的灯光、便于员工工作的布局。我们围绕这些目标进行设计，并采用耐磨材料施工，让空间长久如新。"
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1rX1eAn3-aYuHF-900.webp",
+   "Dolls Salon"
+  ],
+  [
+   "img/p/11-2l13BlD_4wv-900.webp",
+   "Dolls Salon"
+  ],
+  [
+   "img/p/16fKqdFifd2emf-900.webp",
+   "Office Chicago"
+  ],
+  [
+   "img/p/13a8ks6jQlZ5LY-900.webp",
+   "Office Chicago"
+  ],
+  [
+   "img/p/1jKOiN3xyCjZCL-900.webp",
+   "Monpark"
+  ],
+  [
+   "img/p/12HcLhMA1BYGfJ-900.webp",
+   "Monpark"
+  ],
+  [
+   "img/p/18ej1fH-11uoyr-900.webp",
+   "Yacht Restaurant"
+  ],
+  [
+   "img/p/1OGn3TXnLkQenE-900.webp",
+   "Yacht Restaurant"
+  ]
+ ],
+ "steps": [
+  [
+   "需求沟通",
+   "业态、客流与员工动线、开业时间。"
+  ],
+  [
+   "设计",
+   "平面布局、3D 效果图、施工图。"
+  ],
+  [
+   "预算与进度",
+   "锁定预算与交付日期；由 CAS 施工时最终费用偏差不超过 ±5%。"
+  ],
+  [
+   "施工",
+   "按计划施工，必要时安排夜班。"
+  ],
+  [
+   "开业",
+   "完成配套，交付可营业的空间。"
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "商业空间装修费用是多少？",
+   "办公室每平方米 $350 起，设计每平方米 $30 起。门店、沙龙及餐饮场所在需求沟通和现场勘察后报价。"
+  ],
+  [
+   "能在开业日期前完工吗？",
+   "可以，进度与交付日期写入合同。"
+  ],
+  [
+   "你们负责店铺设计吗？",
+   "负责，从概念到施工图和配套。"
+  ],
+  [
+   "服务范围在哪里？",
+   "基辅及基辅州、乌克兰全境、欧洲及全球。"
+  ]
+ ],
+ "rel": [
+  [
+   "/zh/kitchen-renovation",
+   "厨房装修"
+  ],
+  [
+   "/zh/bathroom-renovation",
+   "卫生间装修"
+  ],
+  [
+   "/zh/new-build-renovation",
+   "新房装修"
+  ],
+  [
+   "/zh/house-renovation",
+   "别墅装修"
+  ],
+  [
+   "/zh/office-renovation",
+   "办公室装修"
+  ],
+  [
+   "/zh/renovation-crew",
+   "装修施工队"
+  ],
+  [
+   "/zh/turnkey-procurement",
+   "项目整体配套"
+  ],
+  [
+   "/zh/renovation-calculator",
+   "装修费用计算器"
+  ],
+  [
+   "/zh/interior-designer",
+   "室内设计师"
+  ],
+  [
+   "/zh/apartment-design",
+   "公寓室内设计"
+  ],
+  [
+   "/zh/restaurant-design",
+   "餐厅咖啡馆设计"
+  ],
+  [
+   "/zh/house-design",
+   "住宅设计"
+  ],
+  [
+   "/zh/landscape-design",
+   "景观设计"
+  ],
+  [
+   "/zh/resort-turnkey",
+   "度假基地交钥匙"
+  ],
+  [
+   "/zh/interior-design",
+   "室内设计"
+  ],
+  [
+   "/zh/design-implementation",
+   "设计方案落地"
+  ],
+  [
+   "/zh/turnkey-renovation",
+   "交钥匙装修"
+  ],
+  [
+   "/zh/house-construction",
+   "住宅建造"
+  ],
+  [
+   "/zh/furnishing",
+   "家具软装交钥匙"
+  ],
+  [
+   "/zh/business-fit-out",
+   "商业空间交钥匙"
+  ],
+  [
+   "/zh/faq",
+   "常见问题"
+  ],
+  [
+   "/zh/contact",
+   "联系我们"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

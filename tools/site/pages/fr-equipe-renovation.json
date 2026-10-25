@@ -1,0 +1,224 @@
+{
+ "slug": "equipe-renovation",
+ "lang": "fr",
+ "service": "Équipe de rénovation",
+ "title": "Équipe et entreprise de rénovation à Kyiv | CAS Development",
+ "description": "Entreprise de rénovation à Kyiv avec ses équipes : carreleurs, électriciens, plombiers, chef de chantier, contrat. Dès $550/m², ±5 % si CAS réalise.",
+ "h1": "Équipe de rénovation à Kyiv",
+ "price": "rénovation dès $550 / m² · sous contrat",
+ "lead": "Notre propre équipe de chantier avec chef de chantier : tous travaux de rénovation, de la dépose et l’électricité au carrelage, à la peinture et au montage des meubles. Nous travaillons sous contrat et sur devis.",
+ "cards": [
+  [
+   "Spécialistes",
+   [
+    "chef de chantier et contrôle technique",
+    "électriciens et plombiers",
+    "carreleurs, plâtriers, peintres",
+    "monteurs de meubles et de plafonds"
+   ]
+  ],
+  [
+   "Travaux",
+   [
+    "démolition et réaménagement",
+    "électricité, plomberie, chauffage",
+    "chape, enduits, plaques de plâtre",
+    "carrelage, sols, peinture"
+   ]
+  ],
+  [
+   "Garanties",
+   [
+    "contrat et planning des travaux",
+    "devis à ±5 % si CAS réalise les travaux",
+    "rapports photo et vidéo",
+    "paiement par étapes"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Une équipe qu’il n’est pas nécessaire de surveiller",
+   [
+    "Le principal problème des équipes de rénovation : des délais non tenus et un prix qui grimpe en cours de chantier. Nous travaillons sous contrat avec un devis détaillé, et le chef de chantier contrôle chaque étape. Vous recevez des rapports et payez les étapes réalisées.",
+    "Au besoin, nous faisons intervenir designer et concepteur : les plans permettent à l’équipe de travailler avec précision et sans reprises."
+   ]
+  ],
+  [
+   "Une entreprise de rénovation, pas une équipe de passage",
+   [
+    "En cherchant une équipe, on tombe facilement sur des « artisans d’annonce » sans contrat ni garantie. CAS Development est une entreprise de rénovation depuis 2016 : équipes propres, chef de chantier, métreur et approvisionnement en matériaux. Plus de 150 projets réalisés, 12 mois de garantie sur les travaux.",
+    "En tant qu’entreprise, nous répondons de tout le chantier : de la dépose à la rénovation clé en main et à la réalisation du projet de design, et si besoin, à l’équipement clé en main en mobilier et luminaires."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1xqY1KZo2JY5xq-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/16fKqdFifd2emf-900.webp",
+   "Office Chicago"
+  ],
+  [
+   "img/p/13a8ks6jQlZ5LY-900.webp",
+   "Office Chicago"
+  ],
+  [
+   "img/p/1rX1eAn3-aYuHF-900.webp",
+   "Dolls Salon"
+  ],
+  [
+   "img/p/11-2l13BlD_4wv-900.webp",
+   "Dolls Salon"
+  ]
+ ],
+ "steps": [
+  [
+   "Métré",
+   "Visite du chantier et évaluation du volume de travaux."
+  ],
+  [
+   "Devis",
+   "Travaux et matériaux détaillés poste par poste."
+  ],
+  [
+   "Contrat",
+   "Prix, délais et étapes fixés."
+  ],
+  [
+   "Travaux",
+   "L’équipe suit le planning, le chef de chantier contrôle la qualité."
+  ],
+  [
+   "Réception",
+   "Livraison par étapes et procès-verbal signé."
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "Quels travaux réalise votre équipe ?",
+   "Rénovation complète clé en main ou étapes séparées : dépose, électricité, plomberie, enduits, carrelage, sols, peinture, plafonds, montage de meubles."
+  ],
+  [
+   "Combien coûtent les services d’une équipe de rénovation ?",
+   "La rénovation clé en main dès $550 par m². Les travaux séparés sont chiffrés après métré ; le prix est fixé dans le devis et, si CAS réalise les travaux, le total reste à ±5 %."
+  ],
+  [
+   "Signez-vous un contrat ?",
+   "Oui, toujours : avec devis, planning et étapes de paiement."
+  ],
+  [
+   "Achetez-vous les matériaux ?",
+   "Nous pouvons tout acheter et livrer nous-mêmes, y compris en direct de Chine, ou travailler avec vos matériaux."
+  ],
+  [
+   "Êtes-vous une équipe ou une entreprise ?",
+   "Une entreprise de rénovation avec ses propres équipes : contrat, devis, chef de chantier et 12 mois de garantie sur les travaux."
+  ],
+  [
+   "Réalisez-vous le projet de design d’un autre studio ?",
+   "Oui. Nous vérifions d’abord les plans et chiffrons le devis, puis réalisons les travaux et, si vous le souhaitez, achetons matériaux et mobilier."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/renovation-cuisine",
+   "Rénovation de cuisine"
+  ],
+  [
+   "/fr/renovation-salle-de-bain",
+   "Rénovation de salle de bain"
+  ],
+  [
+   "/fr/renovation-appartement-neuf",
+   "Rénovation d’appartement neuf"
+  ],
+  [
+   "/fr/renovation-maison-cle-en-main",
+   "Rénovation de maison"
+  ],
+  [
+   "/fr/renovation-bureaux",
+   "Rénovation de bureaux"
+  ],
+  [
+   "/fr/renovation-locaux-commerciaux",
+   "Rénovation de locaux commerciaux"
+  ],
+  [
+   "/fr/equipement-cle-en-main",
+   "Équipement clé en main"
+  ],
+  [
+   "/fr/calculateur-renovation",
+   "Calculateur de coût"
+  ],
+  [
+   "/fr/designer-interieur",
+   "Designer d’intérieur"
+  ],
+  [
+   "/fr/design-appartement",
+   "Design d’intérieur d’appartement"
+  ],
+  [
+   "/fr/design-restaurant-cafe",
+   "Design de restaurants et cafés"
+  ],
+  [
+   "/fr/conception-maison",
+   "Conception de maison"
+  ],
+  [
+   "/fr/architecture-paysagere",
+   "Architecture paysagère"
+  ],
+  [
+   "/fr/base-de-loisirs-cle-en-main",
+   "Base de loisirs clé en main"
+  ],
+  [
+   "/fr/architecture-interieur",
+   "Architecture d’intérieur"
+  ],
+  [
+   "/fr/realisation-projet",
+   "Réalisation de projet de design"
+  ],
+  [
+   "/fr/renovation-cle-en-main",
+   "Rénovation clé en main"
+  ],
+  [
+   "/fr/construction-maison",
+   "Construction de maisons"
+  ],
+  [
+   "/fr/ameublement-cle-en-main",
+   "Ameublement clé en main"
+  ],
+  [
+   "/fr/commerce-cle-en-main",
+   "Locaux professionnels clé en main"
+  ],
+  [
+   "/fr/faq",
+   "FAQ"
+  ],
+  [
+   "/fr/contact",
+   "Contact"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

@@ -59,6 +59,26 @@
      [
       "/zh/design-implementation",
       "设计方案落地"
+     ],
+     [
+      "/zh/interior-designer",
+      "室内设计师"
+     ],
+     [
+      "/zh/apartment-design",
+      "公寓室内设计"
+     ],
+     [
+      "/zh/restaurant-design",
+      "餐厅咖啡馆设计"
+     ],
+     [
+      "/zh/house-design",
+      "住宅设计"
+     ],
+     [
+      "/zh/landscape-design",
+      "景观设计"
      ]
     ]
    ],
@@ -76,6 +96,38 @@
      [
       "/zh/business-fit-out",
       "商业空间交钥匙"
+     ],
+     [
+      "/zh/kitchen-renovation",
+      "厨房装修"
+     ],
+     [
+      "/zh/bathroom-renovation",
+      "卫生间装修"
+     ],
+     [
+      "/zh/new-build-renovation",
+      "新房装修"
+     ],
+     [
+      "/zh/house-renovation",
+      "别墅装修"
+     ],
+     [
+      "/zh/office-renovation",
+      "办公室装修"
+     ],
+     [
+      "/zh/commercial-renovation",
+      "商业空间装修"
+     ],
+     [
+      "/zh/renovation-crew",
+      "装修施工队"
+     ],
+     [
+      "/zh/resort-turnkey",
+      "度假基地交钥匙"
      ]
     ]
    ],
@@ -85,6 +137,10 @@
      [
       "/zh/furnishing",
       "家具软装交钥匙"
+     ],
+     [
+      "/zh/turnkey-procurement",
+      "项目整体配套"
      ]
     ]
    ],
@@ -94,6 +150,10 @@
      [
       "/zh/services",
       "全部服务"
+     ],
+     [
+      "/zh/renovation-calculator",
+      "装修费用计算器"
      ],
      [
       "/zh/about",

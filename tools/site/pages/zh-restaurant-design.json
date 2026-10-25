@@ -1,0 +1,199 @@
+{
+ "slug": "restaurant-design",
+ "lang": "zh",
+ "service": "餐厅与咖啡馆设计",
+ "title": "基辅餐厅、咖啡馆与酒吧设计 —— $30/m² 起",
+ "description": "基辅餐厅、咖啡馆或酒吧设计方案，每平方米 $30 起：大堂与后厨分区、3D 效果图、施工图、中国直采家具，可交钥匙落地。",
+ "h1": "基辅餐厅、咖啡馆与酒吧设计",
+ "price": "$30 / m² 起",
+ "lead": "让顾客愿意再来的餐饮空间：方便顾客与员工的布局、氛围、灯光，以及经得起日常高强度使用的材料。装修前即可在 3D 中看到您的店面。项目最低预算 $2 500。",
+ "cards": [
+  [
+   "概念与布局",
+   [
+    "餐厅概念与风格",
+    "大堂、吧台与后厨分区",
+    "座位布置与员工动线",
+    "灯光与电气图"
+   ]
+  ],
+  [
+   "3D 效果图",
+   [
+    "大堂、吧台、入口 3D",
+    "色彩与材质搭配",
+    "按需设计门头与招牌",
+    "修改至确认"
+   ]
+  ],
+  [
+   "施工图与配套",
+   [
+    "供施工队使用的施工图",
+    "材料清单",
+    "中国直采家具与灯具",
+    "装修预算"
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/18ej1fH-11uoyr-900.webp",
+   "Yacht Restaurant"
+  ],
+  [
+   "img/p/1OGn3TXnLkQenE-900.webp",
+   "Yacht Restaurant"
+  ],
+  [
+   "img/p/1jKOiN3xyCjZCL-900.webp",
+   "Monpark"
+  ],
+  [
+   "img/p/12HcLhMA1BYGfJ-900.webp",
+   "Monpark"
+  ],
+  [
+   "img/p/1GqqKXz4Ax1_cM-900.webp",
+   "Yablu Rest"
+  ],
+  [
+   "img/p/16Do4G_08hSZtl-900.webp",
+   "Yablu Rest"
+  ]
+ ],
+ "steps": [
+  [
+   "需求沟通",
+   "业态、菜系、座位数、预算与开业时间。"
+  ],
+  [
+   "平面布局",
+   "合理布置大堂、吧台和后厨，让顾客舒适、员工高效。"
+  ],
+  [
+   "概念与 3D",
+   "展示店面效果，修改至确认。"
+  ],
+  [
+   "施工图",
+   "为施工方和供应商出具施工图和清单。"
+  ],
+  [
+   "落地",
+   "如您需要，我们承接施工，并从中国直采家具和灯具完成配套。"
+  ]
+ ],
+ "faq": [
+  [
+   "餐厅或咖啡馆设计方案多少钱？",
+   "每平方米 $30 起，项目最低预算 $2 500。需求沟通并勘察场地后给出准确金额。"
+  ],
+  [
+   "餐厅设计方案包含哪些内容？",
+   "概念、大堂、吧台与后厨布局、3D 效果图、施工图、材料与家具清单、装修预算。"
+  ],
+  [
+   "可以负责装修和配套吗？",
+   "可以，由我们自己的团队完成。家具、灯具和软装可从中国直接采购。若由我们施工，最终费用与预算偏差不超过 ±5%。"
+  ],
+  [
+   "只在基辅服务吗？",
+   "我们服务基辅及基辅州、乌克兰全境、欧洲及全球；设计方案也可远程完成。"
+  ]
+ ],
+ "rel": [
+  [
+   "/zh/kitchen-renovation",
+   "厨房装修"
+  ],
+  [
+   "/zh/bathroom-renovation",
+   "卫生间装修"
+  ],
+  [
+   "/zh/new-build-renovation",
+   "新房装修"
+  ],
+  [
+   "/zh/house-renovation",
+   "别墅装修"
+  ],
+  [
+   "/zh/office-renovation",
+   "办公室装修"
+  ],
+  [
+   "/zh/commercial-renovation",
+   "商业空间装修"
+  ],
+  [
+   "/zh/renovation-crew",
+   "装修施工队"
+  ],
+  [
+   "/zh/turnkey-procurement",
+   "项目整体配套"
+  ],
+  [
+   "/zh/renovation-calculator",
+   "装修费用计算器"
+  ],
+  [
+   "/zh/interior-designer",
+   "室内设计师"
+  ],
+  [
+   "/zh/apartment-design",
+   "公寓室内设计"
+  ],
+  [
+   "/zh/house-design",
+   "住宅设计"
+  ],
+  [
+   "/zh/landscape-design",
+   "景观设计"
+  ],
+  [
+   "/zh/resort-turnkey",
+   "度假基地交钥匙"
+  ],
+  [
+   "/zh/interior-design",
+   "室内设计"
+  ],
+  [
+   "/zh/design-implementation",
+   "设计方案落地"
+  ],
+  [
+   "/zh/turnkey-renovation",
+   "交钥匙装修"
+  ],
+  [
+   "/zh/house-construction",
+   "住宅建造"
+  ],
+  [
+   "/zh/furnishing",
+   "家具软装交钥匙"
+  ],
+  [
+   "/zh/business-fit-out",
+   "商业空间交钥匙"
+  ],
+  [
+   "/zh/faq",
+   "常见问题"
+  ],
+  [
+   "/zh/contact",
+   "联系我们"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

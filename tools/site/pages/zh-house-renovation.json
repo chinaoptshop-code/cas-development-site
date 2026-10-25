@@ -1,0 +1,212 @@
+{
+ "slug": "house-renovation",
+ "lang": "zh",
+ "service": "住宅交钥匙装修",
+ "title": "基辅住宅交钥匙装修 —— $550/m² 起 | CAS Development",
+ "description": "基辅及基辅州私人住宅交钥匙装修，每平方米 $550 起：方案、机电、饰面、家具。由 CAS 施工时预算偏差不超过 ±5%，定期照片汇报。",
+ "h1": "基辅及基辅州住宅交钥匙装修",
+ "price": "$550 / m² 起",
+ "lead": "无论是主体完工的房子还是旧装修，我们都能交付可直接入住的住宅：机电、饰面、家具、照明。一个团队、一份合同、定期照片汇报。",
+ "cards": [
+  [
+   "方案与预算",
+   [
+    "测量与房屋检测",
+    "设计方案与施工图",
+    "工程与材料预算",
+    "阶段进度计划"
+   ]
+  ],
+  [
+   "机电系统",
+   [
+    "强电与弱电",
+    "采暖、地暖",
+    "给水与排水",
+    "通风与空调"
+   ]
+  ],
+  [
+   "饰面与配套",
+   [
+    "墙面、吊顶、地面",
+    "卫生间与厨房",
+    "中国直采家具与灯具",
+    "保洁与交付"
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1FiLI9kKE-C87h-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1hXV_Pz6_GfnXe-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1FRa0FI6iMHK5L-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/1f3m1_qf4mDosh-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "上门勘察",
+   "检查房屋，记录结构与机电现状。"
+  ],
+  [
+   "方案设计",
+   "提供设计方案或按您的方案施工，出具施工图。"
+  ],
+  [
+   "预算与合同",
+   "若按我方方案由我方施工，锁定金额与阶段：最终费用与预算偏差不超过 5%。"
+  ],
+  [
+   "机电施工",
+   "饰面前完成管线敷设，避免后期开凿。"
+  ],
+  [
+   "饰面与家具",
+   "精装施工，同步从中国直采配套。通过 Telegram 定期照片汇报。"
+  ],
+  [
+   "交付",
+   "保洁、竣工验收单、按合同提供质保。"
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "住宅交钥匙装修费用是多少？",
+   "每平方米 $550 起。具体金额取决于房屋现状、机电系统和装修档次，勘察后写入预算。"
+  ],
+  [
+   "在基辅州施工吗？",
+   "是的：基辅及基辅州——伊尔平、布查、布罗瓦里、鲍里斯波尔、奥布希夫等地。同时服务乌克兰全境、欧洲及全球。"
+  ],
+  [
+   "施工中预算会增加吗？",
+   "若按我方方案由我方施工，我们保证最终费用与确认的预算偏差不超过 5%。追加工程须经您书面同意。"
+  ],
+  [
+   "不到现场能了解进度吗？",
+   "可以，我们通过 Telegram 或 WhatsApp 定期发送照片汇报。"
+  ]
+ ],
+ "rel": [
+  [
+   "/zh/kitchen-renovation",
+   "厨房装修"
+  ],
+  [
+   "/zh/bathroom-renovation",
+   "卫生间装修"
+  ],
+  [
+   "/zh/new-build-renovation",
+   "新房装修"
+  ],
+  [
+   "/zh/office-renovation",
+   "办公室装修"
+  ],
+  [
+   "/zh/commercial-renovation",
+   "商业空间装修"
+  ],
+  [
+   "/zh/renovation-crew",
+   "装修施工队"
+  ],
+  [
+   "/zh/turnkey-procurement",
+   "项目整体配套"
+  ],
+  [
+   "/zh/renovation-calculator",
+   "装修费用计算器"
+  ],
+  [
+   "/zh/interior-designer",
+   "室内设计师"
+  ],
+  [
+   "/zh/apartment-design",
+   "公寓室内设计"
+  ],
+  [
+   "/zh/restaurant-design",
+   "餐厅咖啡馆设计"
+  ],
+  [
+   "/zh/house-design",
+   "住宅设计"
+  ],
+  [
+   "/zh/landscape-design",
+   "景观设计"
+  ],
+  [
+   "/zh/resort-turnkey",
+   "度假基地交钥匙"
+  ],
+  [
+   "/zh/interior-design",
+   "室内设计"
+  ],
+  [
+   "/zh/design-implementation",
+   "设计方案落地"
+  ],
+  [
+   "/zh/turnkey-renovation",
+   "交钥匙装修"
+  ],
+  [
+   "/zh/house-construction",
+   "住宅建造"
+  ],
+  [
+   "/zh/furnishing",
+   "家具软装交钥匙"
+  ],
+  [
+   "/zh/business-fit-out",
+   "商业空间交钥匙"
+  ],
+  [
+   "/zh/faq",
+   "常见问题"
+  ],
+  [
+   "/zh/contact",
+   "联系我们"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

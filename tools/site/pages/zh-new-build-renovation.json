@@ -1,0 +1,209 @@
+{
+ "slug": "new-build-renovation",
+ "lang": "zh",
+ "service": "新房装修",
+ "title": "基辅新房装修 —— $550/m² 起 | CAS Development",
+ "description": "基辅新建公寓交钥匙装修：从毛坯到家具。设计、施工、中国直采配套。每平方米 $550 起，由 CAS 施工时预算偏差不超过 ±5%。",
+ "h1": "新建公寓装修",
+ "price": "$550 / m² 起 · 从毛坯到家具",
+ "lead": "刚拿到毛坯新房的钥匙？我们全部负责：设计方案、格局改造、水电暖通、饰面、家具与电器——交付即可入住的公寓。",
+ "cards": [
+  [
+   "前期准备",
+   [
+    "设计方案与平面布局",
+    "由 CAS 施工时预算偏差不超过 ±5%",
+    "格局改造审批",
+    "施工进度计划"
+   ]
+  ],
+  [
+   "施工内容",
+   [
+    "找平、抹灰、石膏板",
+    "强电与给排水布置",
+    "地暖、空调",
+    "瓷砖、地板、涂料"
+   ]
+  ],
+  [
+   "入住配套",
+   [
+    "定制橱柜与衣柜",
+    "中国直采家具与灯具",
+    "电器安装",
+    "保洁"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "新房装修的要点",
+   [
+    "开发商交付的公寓最好一开始就按自己的需求规划：移动隔墙，规划插座、照明、收纳和空调。因此新房装修从设计方案开始——施工队无需返工，您也能提前看到效果。",
+    "我们可以在交房前完成设计与预算，避免浪费数月时间。家具和灯具可在施工期间同步从中国直接下单。"
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1xqY1KZo2JY5xq-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1iGcqtsUqLNWbB-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1rfuCVdOfWwhML-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1MslU7S5X8gIEp-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1YQyhjEui9fb6v-900.webp",
+   "Linden Penthouse"
+  ]
+ ],
+ "steps": [
+  [
+   "验房",
+   "检查开发商交付状态并测量。"
+  ],
+  [
+   "方案设计",
+   "平面布局、3D 效果图、施工图。"
+  ],
+  [
+   "预算与合同",
+   "锁定价格与工期。"
+  ],
+  [
+   "施工",
+   "基础与饰面施工，定期汇报。"
+  ],
+  [
+   "家具与交付",
+   "完成配套，交付钥匙。"
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "新房装修费用是多少？",
+   "交钥匙装修每平方米 $550 起。验房并完成方案后给出准确金额；由 CAS 施工时最终价格与预算偏差不超过 ±5%。"
+  ],
+  [
+   "楼盘交付前可以开始吗？",
+   "可以先根据户型图完成设计方案和预算，拿到钥匙后即可开工。"
+  ],
+  [
+   "能协助家具配置吗？",
+   "可以：定制橱柜和衣柜，家具和灯具从中国直接采购。"
+  ],
+  [
+   "在哪些楼盘施工？",
+   "基辅及基辅州的各类新建楼盘；同时服务乌克兰全境、欧洲及全球。"
+  ]
+ ],
+ "rel": [
+  [
+   "/zh/kitchen-renovation",
+   "厨房装修"
+  ],
+  [
+   "/zh/bathroom-renovation",
+   "卫生间装修"
+  ],
+  [
+   "/zh/house-renovation",
+   "别墅装修"
+  ],
+  [
+   "/zh/office-renovation",
+   "办公室装修"
+  ],
+  [
+   "/zh/commercial-renovation",
+   "商业空间装修"
+  ],
+  [
+   "/zh/renovation-crew",
+   "装修施工队"
+  ],
+  [
+   "/zh/turnkey-procurement",
+   "项目整体配套"
+  ],
+  [
+   "/zh/renovation-calculator",
+   "装修费用计算器"
+  ],
+  [
+   "/zh/interior-designer",
+   "室内设计师"
+  ],
+  [
+   "/zh/apartment-design",
+   "公寓室内设计"
+  ],
+  [
+   "/zh/restaurant-design",
+   "餐厅咖啡馆设计"
+  ],
+  [
+   "/zh/house-design",
+   "住宅设计"
+  ],
+  [
+   "/zh/landscape-design",
+   "景观设计"
+  ],
+  [
+   "/zh/resort-turnkey",
+   "度假基地交钥匙"
+  ],
+  [
+   "/zh/interior-design",
+   "室内设计"
+  ],
+  [
+   "/zh/design-implementation",
+   "设计方案落地"
+  ],
+  [
+   "/zh/turnkey-renovation",
+   "交钥匙装修"
+  ],
+  [
+   "/zh/house-construction",
+   "住宅建造"
+  ],
+  [
+   "/zh/furnishing",
+   "家具软装交钥匙"
+  ],
+  [
+   "/zh/business-fit-out",
+   "商业空间交钥匙"
+  ],
+  [
+   "/zh/faq",
+   "常见问题"
+  ],
+  [
+   "/zh/contact",
+   "联系我们"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

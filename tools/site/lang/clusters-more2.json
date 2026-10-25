@@ -1,0 +1,123 @@
+{
+ "_": "Кластери гілки i18n/more-2 (es/fr/zh/ar). i18n.py зливає clusters-*.json з clusters.json за ключем або спільним шляхом.",
+ "kitchen": {
+  "uk": "/remont-kukhni-kyiv",
+  "ru": "/ru/remont-kuhni-kiev",
+  "es": "/es/reforma-cocina",
+  "fr": "/fr/renovation-cuisine",
+  "zh": "/zh/kitchen-renovation",
+  "ar": "/ar/kitchen-renovation"
+ },
+ "bathroom": {
+  "uk": "/remont-vannoi-kimnaty-kyiv",
+  "ru": "/ru/remont-vannoy-kiev",
+  "es": "/es/reforma-bano",
+  "fr": "/fr/renovation-salle-de-bain",
+  "zh": "/zh/bathroom-renovation",
+  "ar": "/ar/bathroom-renovation"
+ },
+ "newbuild": {
+  "uk": "/remont-novobudovy-kyiv",
+  "ru": "/ru/remont-v-novostroyke-kiev",
+  "es": "/es/reforma-obra-nueva",
+  "fr": "/fr/renovation-appartement-neuf",
+  "zh": "/zh/new-build-renovation",
+  "ar": "/ar/new-build-renovation"
+ },
+ "house-renovation": {
+  "uk": "/remont-budynku-pid-klyuch-kyiv",
+  "ru": "/ru/remont-doma-kiev",
+  "es": "/es/reforma-casa-llave-en-mano",
+  "fr": "/fr/renovation-maison-cle-en-main",
+  "zh": "/zh/house-renovation",
+  "ar": "/ar/house-renovation"
+ },
+ "office": {
+  "uk": "/remont-ofisu-pid-klyuch-kyiv",
+  "ru": "/ru/remont-ofisa-kiev",
+  "es": "/es/reforma-oficinas",
+  "fr": "/fr/renovation-bureaux",
+  "zh": "/zh/office-renovation",
+  "ar": "/ar/office-renovation"
+ },
+ "commercial": {
+  "uk": "/remont-komertsiinykh-prymishchen-kyiv",
+  "ru": "/ru/remont-kommercheskih-pomeshcheniy-kiev",
+  "es": "/es/reforma-locales-comerciales",
+  "fr": "/fr/renovation-locaux-commerciaux",
+  "zh": "/zh/commercial-renovation",
+  "ar": "/ar/commercial-renovation"
+ },
+ "crew": {
+  "uk": "/remontna-bryhada-kyiv",
+  "ru": "/ru/remontnaya-brigada-kiev",
+  "es": "/es/equipo-de-reformas",
+  "fr": "/fr/equipe-renovation",
+  "zh": "/zh/renovation-crew",
+  "ar": "/ar/renovation-crew"
+ },
+ "procurement": {
+  "uk": "/komplektatsiia-pid-kliuch-kyiv",
+  "ru": "/ru/komplektatsiya-pod-klyuch-kiev",
+  "es": "/es/equipamiento-llave-en-mano",
+  "fr": "/fr/equipement-cle-en-main",
+  "zh": "/zh/turnkey-procurement",
+  "ar": "/ar/turnkey-procurement"
+ },
+ "calculator": {
+  "uk": "/kalkuliator-remontu",
+  "ru": "/ru/kalkulyator-remonta",
+  "es": "/es/calculadora-reforma",
+  "fr": "/fr/calculateur-renovation",
+  "zh": "/zh/renovation-calculator",
+  "ar": "/ar/renovation-calculator"
+ },
+ "designer": {
+  "uk": "/dyzainer-interieru-kyiv",
+  "ru": "/ru/dizayner-interera-kiev",
+  "es": "/es/disenador-interiores",
+  "fr": "/fr/designer-interieur",
+  "zh": "/zh/interior-designer",
+  "ar": "/ar/interior-designer"
+ },
+ "design-apartment": {
+  "uk": "/dyzain-interieru-kvartyry-kyiv",
+  "ru": "/ru/dizayn-kvartiry-kiev",
+  "es": "/es/diseno-interiores-piso",
+  "fr": "/fr/design-appartement",
+  "zh": "/zh/apartment-design",
+  "ar": "/ar/apartment-design"
+ },
+ "restaurant": {
+  "uk": "/dyzain-restoranu-kafe-kyiv",
+  "ru": "/ru/dizayn-restorana-kafe-kiev",
+  "es": "/es/diseno-restaurantes-cafeterias",
+  "fr": "/fr/design-restaurant-cafe",
+  "zh": "/zh/restaurant-design",
+  "ar": "/ar/restaurant-design"
+ },
+ "house-design": {
+  "uk": "/proektuvannia-budynku-kyiv",
+  "ru": "/ru/proektirovanie-doma-kiev",
+  "es": "/es/proyecto-de-casa",
+  "fr": "/fr/conception-maison",
+  "zh": "/zh/house-design",
+  "ar": "/ar/house-design"
+ },
+ "landscape": {
+  "uk": "/landshaftnyi-dyzain-kyiv",
+  "ru": "/ru/landshaftnyy-dizayn-kiev",
+  "es": "/es/paisajismo",
+  "fr": "/fr/architecture-paysagere",
+  "zh": "/zh/landscape-design",
+  "ar": "/ar/landscape-design"
+ },
+ "resort": {
+  "uk": "/baza-vidpochynku-pid-klyuch",
+  "ru": "/ru/baza-otdyha-pod-klyuch",
+  "es": "/es/complejo-turistico-llave-en-mano",
+  "fr": "/fr/base-de-loisirs-cle-en-main",
+  "zh": "/zh/resort-turnkey",
+  "ar": "/ar/resort-turnkey"
+ }
+}

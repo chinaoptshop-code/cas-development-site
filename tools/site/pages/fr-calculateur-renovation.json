@@ -1,0 +1,179 @@
+{
+ "slug": "calculateur-renovation",
+ "lang": "fr",
+ "service": "Calculateur du coût de rénovation",
+ "title": "Calculateur de rénovation à Kyiv — prix au m² en ligne",
+ "description": "Calculateur en ligne : rénovation d’appartement ou de bureau, construction de maison à Kyiv. Rénovation dès $550/m², design dès $30/m², mobilier dès $250/m².",
+ "h1": "Calculateur du coût de rénovation à Kyiv",
+ "price": "rénovation dès $550 / m² · maison clé en main dès $1 100 / m²",
+ "lead": "Estimez le coût indicatif d’une rénovation d’appartement ou de bureau, ou de la construction d’une maison, selon nos tarifs de base. Ajoutez le projet de design et l’ameublement, puis envoyez-nous le calcul : après métré, nous préparerons un devis précis.",
+ "calc": true,
+ "cards": [
+  [
+   "Rénovation",
+   [
+    "appartement clé en main — dès $550/m²",
+    "bureau — dès $350/m²",
+    "devis à ±5 % si CAS réalise les travaux"
+   ]
+  ],
+  [
+   "Maison",
+   [
+    "gros œuvre — dès $600/m²",
+    "clé en main avec finitions — dès $1 100/m²",
+    "projet et devis avant le démarrage"
+   ]
+  ],
+  [
+   "Design et mobilier",
+   [
+    "projet de design — dès $30/m², minimum $2 500",
+    "ameublement et équipement — dès $250/m²",
+    "paysagisme — prix après visite du terrain"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Pourquoi « dès » et pas un prix exact",
+   [
+    "Le coût final dépend de l’état du bien, du volume de travaux et des matériaux. Le calculateur affiche la borne basse selon nos tarifs de base. Le montant exact est fixé dans le devis après métré et projet ; et si nous réalisons les travaux, le total ne sort pas de ±5 % du devis."
+   ]
+  ]
+ ],
+ "steps": [
+  [
+   "Calcul",
+   "Calculateur ou appel."
+  ],
+  [
+   "Métré",
+   "Nous nous déplaçons sur place."
+  ],
+  [
+   "Devis",
+   "Liste détaillée des travaux et matériaux."
+  ],
+  [
+   "Contrat",
+   "Prix et planning fixés."
+  ],
+  [
+   "Démarrage",
+   "Notre propre équipe, rapports à chaque étape."
+  ]
+ ],
+ "faq": [
+  [
+   "Combien coûte la rénovation d’un appartement de 60 m² à Kyiv ?",
+   "Au tarif de base, dès $33 000 (60 m² × $550). Le montant exact est donné après métré et devis."
+  ],
+  [
+   "Les matériaux sont-ils compris ?",
+   "Le tarif clé en main comprend travaux et matériaux selon devis ; mobilier et décoration sont chiffrés à part, dès $250 par m²."
+  ],
+  [
+   "Le prix peut-il augmenter en cours de travaux ?",
+   "Si nous réalisons les travaux, le total ne sort pas de ±5 % du devis validé."
+  ],
+  [
+   "Combien coûte une maison de 150 m² clé en main ?",
+   "Au tarif de base, dès $165 000 (150 m² × $1 100). Le montant exact après le projet."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/renovation-cuisine",
+   "Rénovation de cuisine"
+  ],
+  [
+   "/fr/renovation-salle-de-bain",
+   "Rénovation de salle de bain"
+  ],
+  [
+   "/fr/renovation-appartement-neuf",
+   "Rénovation d’appartement neuf"
+  ],
+  [
+   "/fr/renovation-maison-cle-en-main",
+   "Rénovation de maison"
+  ],
+  [
+   "/fr/renovation-bureaux",
+   "Rénovation de bureaux"
+  ],
+  [
+   "/fr/renovation-locaux-commerciaux",
+   "Rénovation de locaux commerciaux"
+  ],
+  [
+   "/fr/equipe-renovation",
+   "Équipe de rénovation"
+  ],
+  [
+   "/fr/equipement-cle-en-main",
+   "Équipement clé en main"
+  ],
+  [
+   "/fr/designer-interieur",
+   "Designer d’intérieur"
+  ],
+  [
+   "/fr/design-appartement",
+   "Design d’intérieur d’appartement"
+  ],
+  [
+   "/fr/design-restaurant-cafe",
+   "Design de restaurants et cafés"
+  ],
+  [
+   "/fr/conception-maison",
+   "Conception de maison"
+  ],
+  [
+   "/fr/architecture-paysagere",
+   "Architecture paysagère"
+  ],
+  [
+   "/fr/base-de-loisirs-cle-en-main",
+   "Base de loisirs clé en main"
+  ],
+  [
+   "/fr/architecture-interieur",
+   "Architecture d’intérieur"
+  ],
+  [
+   "/fr/realisation-projet",
+   "Réalisation de projet de design"
+  ],
+  [
+   "/fr/renovation-cle-en-main",
+   "Rénovation clé en main"
+  ],
+  [
+   "/fr/construction-maison",
+   "Construction de maisons"
+  ],
+  [
+   "/fr/ameublement-cle-en-main",
+   "Ameublement clé en main"
+  ],
+  [
+   "/fr/commerce-cle-en-main",
+   "Locaux professionnels clé en main"
+  ],
+  [
+   "/fr/faq",
+   "FAQ"
+  ],
+  [
+   "/fr/contact",
+   "Contact"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

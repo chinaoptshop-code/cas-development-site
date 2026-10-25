@@ -1,0 +1,211 @@
+{
+ "slug": "design-appartement",
+ "lang": "fr",
+ "service": "Design d’intérieur d’appartement",
+ "title": "Design d’intérieur d’appartement à Kyiv — dès $30/m²",
+ "description": "Projet de design d’appartement à Kyiv dès $30/m², minimum $2 500 : agencement, 3D, plans d’exécution, matériaux. Devis à ±5 % si nous réalisons les travaux.",
+ "h1": "Design d’intérieur d’appartement à Kyiv",
+ "price": "dès $30 / m²",
+ "lead": "Un projet qui permet de réaliser l’appartement sans mauvaises surprises : agencement réfléchi, 3D de chaque pièce, plans pour l’équipe et spécification des matériaux. Budget minimum du projet : $2 500.",
+ "cards": [
+  [
+   "Agencement",
+   [
+    "métrés et relevé de l’existant",
+    "variantes d’aménagement",
+    "implantation du mobilier",
+    "schémas d’éclairage et de prises"
+   ]
+  ],
+  [
+   "Visualisation",
+   [
+    "style et concept",
+    "visualisations 3D des pièces",
+    "choix des couleurs et textures",
+    "modifications jusqu’à validation"
+   ]
+  ],
+  [
+   "Plans et matériaux",
+   [
+    "plans d’exécution pour l’équipe",
+    "spécification des matériaux",
+    "choix du mobilier et des luminaires",
+    "devis de rénovation"
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1MslU7S5X8gIEp-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1YQyhjEui9fb6v-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1xqY1KZo2JY5xq-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1iGcqtsUqLNWbB-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1rfuCVdOfWwhML-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1HMtnMX7Fgpwg5-900.webp",
+   "Edelweiss"
+  ]
+ ],
+ "steps": [
+  [
+   "Rencontre et métrés",
+   "Nous visitons l’appartement et parlons de votre mode de vie : qui y vivra, ce qui compte pour vous."
+  ],
+  [
+   "Aménagement",
+   "Nous proposons des variantes ; vous en choisissez une, nous l’affinons."
+  ],
+  [
+   "3D et style",
+   "Nous montrons chaque pièce et apportons des modifications jusqu’à validation."
+  ],
+  [
+   "Plans d’exécution",
+   "Plans et spécifications grâce auxquels l’équipe travaille sans approximations."
+  ],
+  [
+   "Devis",
+   "Nous chiffrons la rénovation selon le projet. Si nous réalisons les travaux, le total reste à ±5 % du devis."
+  ],
+  [
+   "Réalisation",
+   "Si vous le souhaitez, nous prenons en charge les travaux et l’équipement en mobilier en direct de Chine."
+  ]
+ ],
+ "faq": [
+  [
+   "Combien coûte un projet de design d’appartement à Kyiv ?",
+   "Dès $30 par m², budget minimum du projet $2 500. Le montant exact est donné après la visite de l’appartement."
+  ],
+  [
+   "Que comprend le projet de design ?",
+   "Métrés, variantes d’aménagement, visualisations 3D, plans d’exécution, spécification des matériaux et du mobilier, devis de rénovation."
+  ],
+  [
+   "Pouvez-vous réaliser les travaux selon le projet ?",
+   "Oui, avec notre propre équipe. Si nous réalisons les travaux selon notre projet, nous garantissons que le total ne s’écartera pas du devis de plus de 5 %."
+  ],
+  [
+   "Travaillez-vous dans le neuf ?",
+   "Oui — appartements neufs livrés par le promoteur comme logements anciens à rénover entièrement."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/renovation-cuisine",
+   "Rénovation de cuisine"
+  ],
+  [
+   "/fr/renovation-salle-de-bain",
+   "Rénovation de salle de bain"
+  ],
+  [
+   "/fr/renovation-appartement-neuf",
+   "Rénovation d’appartement neuf"
+  ],
+  [
+   "/fr/renovation-maison-cle-en-main",
+   "Rénovation de maison"
+  ],
+  [
+   "/fr/renovation-bureaux",
+   "Rénovation de bureaux"
+  ],
+  [
+   "/fr/renovation-locaux-commerciaux",
+   "Rénovation de locaux commerciaux"
+  ],
+  [
+   "/fr/equipe-renovation",
+   "Équipe de rénovation"
+  ],
+  [
+   "/fr/equipement-cle-en-main",
+   "Équipement clé en main"
+  ],
+  [
+   "/fr/calculateur-renovation",
+   "Calculateur de coût"
+  ],
+  [
+   "/fr/designer-interieur",
+   "Designer d’intérieur"
+  ],
+  [
+   "/fr/design-restaurant-cafe",
+   "Design de restaurants et cafés"
+  ],
+  [
+   "/fr/conception-maison",
+   "Conception de maison"
+  ],
+  [
+   "/fr/architecture-paysagere",
+   "Architecture paysagère"
+  ],
+  [
+   "/fr/base-de-loisirs-cle-en-main",
+   "Base de loisirs clé en main"
+  ],
+  [
+   "/fr/architecture-interieur",
+   "Architecture d’intérieur"
+  ],
+  [
+   "/fr/realisation-projet",
+   "Réalisation de projet de design"
+  ],
+  [
+   "/fr/renovation-cle-en-main",
+   "Rénovation clé en main"
+  ],
+  [
+   "/fr/construction-maison",
+   "Construction de maisons"
+  ],
+  [
+   "/fr/ameublement-cle-en-main",
+   "Ameublement clé en main"
+  ],
+  [
+   "/fr/commerce-cle-en-main",
+   "Locaux professionnels clé en main"
+  ],
+  [
+   "/fr/faq",
+   "FAQ"
+  ],
+  [
+   "/fr/contact",
+   "Contact"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

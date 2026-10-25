@@ -8,7 +8,7 @@
   1. tools/site/lang/it.json — копія en.json з перекладом (chrome — меню/футер, landing — підписи блоків,
      form — форма заявки й нижня панель, meta — код, назва, html lang, dir, шрифти);
   2. додати "it" у LANGS нижче (порядок = порядок у перемикачі мов);
-  3. сторінки — tools/site/pages/it-<slug>.json (формат — у landing.py), шляхи — у clusters.json;
+  3. сторінки — tools/site/pages/it-<slug>.json (формат — у landing.py), шляхи — у clusters.json (або окремий clusters-<назва>.json — зливається з ним);
   4. python3 tools/site/landing.py → tools/blog/build.py → tools/products/build.py → tools/shop/pages.py → tools/site/chrome.py.
 uk і ru мають свої словники в chrome.py/landing.py (історично); нові мови — лише JSON.
 
@@ -86,8 +86,22 @@ def lang_of_hreflang(h):
 
 
 def clusters(_c={}):
+    """clusters.json + додаткові tools/site/lang/clusters-*.json (напр. від паралельних гілок перекладу).
+    Кластер з додаткового файлу зливається з тим, що має той самий ключ або спільний шлях (напр. той самий uk)."""
     if 'c' not in _c:
-        _c['c'] = json.load(open(os.path.join(HERE, 'lang', 'clusters.json'), encoding='utf-8'))
+        import glob
+        c = json.load(open(os.path.join(HERE, 'lang', 'clusters.json'), encoding='utf-8'))
+        for f in sorted(glob.glob(os.path.join(HERE, 'lang', 'clusters-*.json'))):
+            for cid, m in json.load(open(f, encoding='utf-8')).items():
+                if cid.startswith('_'):
+                    continue
+                same = cid if cid in c else next((k for k, v in c.items() if not k.startswith('_')
+                                                  and set(v.values()) & set(m.values())), None)
+                if same:
+                    c[same].update({l: p for l, p in m.items() if l not in c[same]})
+                else:
+                    c[cid] = dict(m)
+        _c['c'] = c
     return _c['c']
 
 

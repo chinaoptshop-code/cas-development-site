@@ -1,0 +1,207 @@
+{
+ "slug": "house-design",
+ "lang": "zh",
+ "service": "私人住宅设计",
+ "title": "基辅私人住宅建筑与室内设计 | CAS Development",
+ "description": "私人住宅建筑方案与室内设计：平面、立面、3D 效果图、施工图。设计 $30/m² 起，交钥匙建造 $1 100/m² 起。",
+ "h1": "私人住宅建筑与室内设计",
+ "price": "设计 $30 / m² 起 · 交钥匙建造 $1 100 / m² 起",
+ "lead": "从立面到插座都经过精心设计的住宅：建筑、适合您家庭的户型、室内与庭院景观——从草图到交钥匙由同一团队负责。",
+ "cards": [
+  [
+   "建筑",
+   [
+    "草图与体量方案",
+    "各层平面布局",
+    "立面与材料",
+    "与地块的结合"
+   ]
+  ],
+  [
+   "室内",
+   [
+    "所有空间的设计",
+    "3D 效果图",
+    "灯光、家具、材料",
+    "材料清单"
+   ]
+  ],
+  [
+   "建造",
+   [
+    "预算与施工进度",
+    "含精装的交钥匙建造",
+    "中国直采配套",
+    "设计监理"
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1kHF6cjS291puf-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1C16Cd6bvENPGL-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1g-E1m6cFJ9kvH-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1pF5ohNHdSnme0-900.webp",
+   "A-Frame House"
+  ]
+ ],
+ "steps": [
+  [
+   "初次沟通",
+   "地块情况、家庭成员、需求与预算。"
+  ],
+  [
+   "草图",
+   "提出体量与平面方案，并按您的意见调整。"
+  ],
+  [
+   "方案与 3D",
+   "立面、室内、效果图——开工前即可看到房子。"
+  ],
+  [
+   "施工图",
+   "完整图纸，施工方按图施工、无需猜测。"
+  ],
+  [
+   "建造",
+   "如您需要，我们承接交钥匙建造，每平方米 $1 100 起。"
+  ]
+ ],
+ "faq": [
+  [
+   "住宅设计方案多少钱？",
+   "设计每平方米 $30 起，项目最低预算 $2 500。了解地块和需求后给出准确费用。"
+  ],
+  [
+   "交钥匙建房多少钱？",
+   "含精装的交钥匙建造每平方米 $1 100 起。家具与配套另计，可从中国直接采购。"
+  ],
+  [
+   "你们也做室内和庭院吗？",
+   "做——建筑、室内和庭院景观在同一个项目中完成。"
+  ],
+  [
+   "服务范围在哪里？",
+   "基辅及基辅州、乌克兰全境、欧洲及全球；也可为其他国家的住宅出具设计方案。"
+  ]
+ ],
+ "rel": [
+  [
+   "/zh/kitchen-renovation",
+   "厨房装修"
+  ],
+  [
+   "/zh/bathroom-renovation",
+   "卫生间装修"
+  ],
+  [
+   "/zh/new-build-renovation",
+   "新房装修"
+  ],
+  [
+   "/zh/house-renovation",
+   "别墅装修"
+  ],
+  [
+   "/zh/office-renovation",
+   "办公室装修"
+  ],
+  [
+   "/zh/commercial-renovation",
+   "商业空间装修"
+  ],
+  [
+   "/zh/renovation-crew",
+   "装修施工队"
+  ],
+  [
+   "/zh/turnkey-procurement",
+   "项目整体配套"
+  ],
+  [
+   "/zh/renovation-calculator",
+   "装修费用计算器"
+  ],
+  [
+   "/zh/interior-designer",
+   "室内设计师"
+  ],
+  [
+   "/zh/apartment-design",
+   "公寓室内设计"
+  ],
+  [
+   "/zh/restaurant-design",
+   "餐厅咖啡馆设计"
+  ],
+  [
+   "/zh/landscape-design",
+   "景观设计"
+  ],
+  [
+   "/zh/resort-turnkey",
+   "度假基地交钥匙"
+  ],
+  [
+   "/zh/interior-design",
+   "室内设计"
+  ],
+  [
+   "/zh/design-implementation",
+   "设计方案落地"
+  ],
+  [
+   "/zh/turnkey-renovation",
+   "交钥匙装修"
+  ],
+  [
+   "/zh/house-construction",
+   "住宅建造"
+  ],
+  [
+   "/zh/furnishing",
+   "家具软装交钥匙"
+  ],
+  [
+   "/zh/business-fit-out",
+   "商业空间交钥匙"
+  ],
+  [
+   "/zh/faq",
+   "常见问题"
+  ],
+  [
+   "/zh/contact",
+   "联系我们"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

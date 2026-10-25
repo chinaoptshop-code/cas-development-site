@@ -59,6 +59,26 @@
      [
       "/fr/realisation-projet",
       "Réalisation de projet"
+     ],
+     [
+      "/fr/designer-interieur",
+      "Designer d’intérieur"
+     ],
+     [
+      "/fr/design-appartement",
+      "Design d’intérieur d’appartement"
+     ],
+     [
+      "/fr/design-restaurant-cafe",
+      "Design de restaurants et cafés"
+     ],
+     [
+      "/fr/conception-maison",
+      "Conception de maison"
+     ],
+     [
+      "/fr/architecture-paysagere",
+      "Architecture paysagère"
      ]
     ]
    ],
@@ -76,6 +96,38 @@
      [
       "/fr/commerce-cle-en-main",
       "Locaux professionnels clé en main"
+     ],
+     [
+      "/fr/renovation-cuisine",
+      "Rénovation de cuisine"
+     ],
+     [
+      "/fr/renovation-salle-de-bain",
+      "Rénovation de salle de bain"
+     ],
+     [
+      "/fr/renovation-appartement-neuf",
+      "Rénovation d’appartement neuf"
+     ],
+     [
+      "/fr/renovation-maison-cle-en-main",
+      "Rénovation de maison"
+     ],
+     [
+      "/fr/renovation-bureaux",
+      "Rénovation de bureaux"
+     ],
+     [
+      "/fr/renovation-locaux-commerciaux",
+      "Rénovation de locaux commerciaux"
+     ],
+     [
+      "/fr/equipe-renovation",
+      "Équipe de rénovation"
+     ],
+     [
+      "/fr/base-de-loisirs-cle-en-main",
+      "Base de loisirs clé en main"
      ]
     ]
    ],
@@ -85,6 +137,10 @@
      [
       "/fr/ameublement-cle-en-main",
       "Ameublement clé en main"
+     ],
+     [
+      "/fr/equipement-cle-en-main",
+      "Équipement clé en main"
      ]
     ]
    ],
@@ -94,6 +150,10 @@
      [
       "/fr/services",
       "Tous les services"
+     ],
+     [
+      "/fr/calculateur-renovation",
+      "Calculateur de coût"
      ],
      [
       "/fr/a-propos",

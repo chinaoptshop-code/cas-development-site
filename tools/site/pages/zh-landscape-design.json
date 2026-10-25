@@ -1,0 +1,207 @@
+{
+ "slug": "landscape-design",
+ "lang": "zh",
+ "service": "景观设计",
+ "title": "基辅景观设计与庭院营造 | CAS Development",
+ "description": "基辅及基辅州景观设计：花园与庭院方案、步道、露台、照明与绿化。与住宅一体化设计，交钥匙施工落地。",
+ "h1": "景观设计与庭院营造",
+ "price": "设计与施工交钥匙 · 现场勘察后报价",
+ "lead": "我们设计并营造花园和住宅周边环境：地块功能分区、步道、露台、休闲区、照明与绿化，让庭院成为住宅的延伸。",
+ "cards": [
+  [
+   "设计方案",
+   [
+    "总平面与功能分区",
+    "3D 效果图",
+    "种植图与植物选配",
+    "照明与灌溉图"
+   ]
+  ],
+  [
+   "景观施工",
+   [
+    "步道与铺装",
+    "露台与休闲区",
+    "草坪与绿化",
+    "室外照明"
+   ]
+  ],
+  [
+   "与住宅一体",
+   [
+    "与建筑风格衔接",
+    "泳池与烧烤区",
+    "停车位与入户道路",
+    "设计监理"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "与住宅同步规划的花园",
+   [
+    "景观与住宅同步规划效果最好：窗户朝向理想的景致，露台位于合适的一侧，管线也不必重新开挖。建筑、室内与景观由同一团队负责。"
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1FiLI9kKE-C87h-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1hXV_Pz6_GfnXe-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1FRa0FI6iMHK5L-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/1f3m1_qf4mDosh-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/1kHF6cjS291puf-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1C16Cd6bvENPGL-900.webp",
+   "Smart Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "现场勘察",
+   "评估地形、土壤与现有植被。"
+  ],
+  [
+   "概念",
+   "花园分区与风格。"
+  ],
+  [
+   "方案与 3D",
+   "开工前展示庭院效果。"
+  ],
+  [
+   "预算",
+   "材料、植物与施工。"
+  ],
+  [
+   "施工落地",
+   "交钥匙完成庭院营造。"
+  ]
+ ],
+ "faq": [
+  [
+   "景观设计多少钱？",
+   "取决于面积、地形和花园功能需求。现场勘察后给出准确费用并写入预算。"
+  ],
+  [
+   "你们也负责施工，而不只是设计吗？",
+   "是的，我们提供设计与施工交钥匙服务。"
+  ],
+  [
+   "可以与建房一起做吗？",
+   "可以，景观与住宅建筑一并设计。"
+  ],
+  [
+   "服务范围在哪里？",
+   "基辅及基辅州、乌克兰全境、欧洲及全球。"
+  ]
+ ],
+ "rel": [
+  [
+   "/zh/kitchen-renovation",
+   "厨房装修"
+  ],
+  [
+   "/zh/bathroom-renovation",
+   "卫生间装修"
+  ],
+  [
+   "/zh/new-build-renovation",
+   "新房装修"
+  ],
+  [
+   "/zh/house-renovation",
+   "别墅装修"
+  ],
+  [
+   "/zh/office-renovation",
+   "办公室装修"
+  ],
+  [
+   "/zh/commercial-renovation",
+   "商业空间装修"
+  ],
+  [
+   "/zh/renovation-crew",
+   "装修施工队"
+  ],
+  [
+   "/zh/turnkey-procurement",
+   "项目整体配套"
+  ],
+  [
+   "/zh/renovation-calculator",
+   "装修费用计算器"
+  ],
+  [
+   "/zh/interior-designer",
+   "室内设计师"
+  ],
+  [
+   "/zh/apartment-design",
+   "公寓室内设计"
+  ],
+  [
+   "/zh/restaurant-design",
+   "餐厅咖啡馆设计"
+  ],
+  [
+   "/zh/house-design",
+   "住宅设计"
+  ],
+  [
+   "/zh/resort-turnkey",
+   "度假基地交钥匙"
+  ],
+  [
+   "/zh/interior-design",
+   "室内设计"
+  ],
+  [
+   "/zh/design-implementation",
+   "设计方案落地"
+  ],
+  [
+   "/zh/turnkey-renovation",
+   "交钥匙装修"
+  ],
+  [
+   "/zh/house-construction",
+   "住宅建造"
+  ],
+  [
+   "/zh/furnishing",
+   "家具软装交钥匙"
+  ],
+  [
+   "/zh/business-fit-out",
+   "商业空间交钥匙"
+  ],
+  [
+   "/zh/faq",
+   "常见问题"
+  ],
+  [
+   "/zh/contact",
+   "联系我们"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

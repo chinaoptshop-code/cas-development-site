@@ -59,6 +59,26 @@
      [
       "/ar/design-implementation",
       "تنفيذ التصميم"
+     ],
+     [
+      "/ar/interior-designer",
+      "مصمم داخلي"
+     ],
+     [
+      "/ar/apartment-design",
+      "تصميم الشقق الداخلي"
+     ],
+     [
+      "/ar/restaurant-design",
+      "تصميم المطاعم والمقاهي"
+     ],
+     [
+      "/ar/house-design",
+      "تصميم المنازل"
+     ],
+     [
+      "/ar/landscape-design",
+      "تنسيق الحدائق"
      ]
     ]
    ],
@@ -76,6 +96,38 @@
      [
       "/ar/business-fit-out",
       "تجهيز المحلات التجارية"
+     ],
+     [
+      "/ar/kitchen-renovation",
+      "تجديد المطبخ"
+     ],
+     [
+      "/ar/bathroom-renovation",
+      "تجديد الحمّام"
+     ],
+     [
+      "/ar/new-build-renovation",
+      "تشطيب شقق المباني الجديدة"
+     ],
+     [
+      "/ar/house-renovation",
+      "تجديد المنازل"
+     ],
+     [
+      "/ar/office-renovation",
+      "تجديد المكاتب"
+     ],
+     [
+      "/ar/commercial-renovation",
+      "تجديد المحلات التجارية"
+     ],
+     [
+      "/ar/renovation-crew",
+      "فريق التجديد"
+     ],
+     [
+      "/ar/resort-turnkey",
+      "منتجع بنظام تسليم المفتاح"
      ]
     ]
    ],
@@ -85,6 +137,10 @@
      [
       "/ar/furnishing",
       "تأثيث متكامل"
+     ],
+     [
+      "/ar/turnkey-procurement",
+      "تجهيز المشاريع المتكامل"
      ]
     ]
    ],
@@ -94,6 +150,10 @@
      [
       "/ar/services",
       "جميع الخدمات"
+     ],
+     [
+      "/ar/renovation-calculator",
+      "حاسبة التكلفة"
      ],
      [
       "/ar/about",

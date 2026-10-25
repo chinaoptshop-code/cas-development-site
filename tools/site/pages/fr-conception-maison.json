@@ -1,0 +1,207 @@
+{
+ "slug": "conception-maison",
+ "lang": "fr",
+ "service": "Conception de maison individuelle",
+ "title": "Conception et design de maison individuelle à Kyiv",
+ "description": "Projet architectural et design intérieur de maison : plans, façades, 3D, plans d’exécution. Design dès $30/m², construction clé en main dès $1 100/m².",
+ "h1": "Conception et design de maison individuelle",
+ "price": "design dès $30 / m² · construction clé en main dès $1 100 / m²",
+ "lead": "Une maison pensée de la façade aux prises : architecture, plans adaptés à votre famille, intérieur et aménagement du terrain — une seule équipe de l’esquisse aux clés.",
+ "cards": [
+  [
+   "Architecture",
+   [
+    "esquisse et volumétrie",
+    "plans des niveaux",
+    "façades et matériaux",
+    "implantation sur le terrain"
+   ]
+  ],
+  [
+   "Intérieur",
+   [
+    "design de toutes les pièces",
+    "visualisations 3D",
+    "éclairage, mobilier, matériaux",
+    "spécifications"
+   ]
+  ],
+  [
+   "Construction",
+   [
+    "devis et planning des travaux",
+    "construction avec finitions clé en main",
+    "équipement en provenance de Chine",
+    "suivi de chantier par l’auteur"
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1kHF6cjS291puf-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1C16Cd6bvENPGL-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1g-E1m6cFJ9kvH-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1pF5ohNHdSnme0-900.webp",
+   "A-Frame House"
+  ]
+ ],
+ "steps": [
+  [
+   "Rencontre",
+   "Terrain, composition de la famille, souhaits, budget."
+  ],
+  [
+   "Esquisse",
+   "Volumétrie et plans proposés, puis ajustés selon vos souhaits."
+  ],
+  [
+   "Projet et 3D",
+   "Façades, intérieurs, visualisations : vous voyez la maison avant le début du chantier."
+  ],
+  [
+   "Plans d’exécution",
+   "Un dossier qui permet aux constructeurs de travailler sans approximations."
+  ],
+  [
+   "Construction",
+   "Si vous le souhaitez, nous construisons clé en main dès $1 100 par m²."
+  ]
+ ],
+ "faq": [
+  [
+   "Combien coûte le projet d’une maison ?",
+   "Le design dès $30 par m², budget minimum du projet $2 500. Le coût exact est donné après étude du terrain et du besoin."
+  ],
+  [
+   "Combien coûte une maison clé en main ?",
+   "La construction avec finitions clé en main dès $1 100 par m². Mobilier et équipement sont chiffrés à part ; ils peuvent venir directement de Chine."
+  ],
+  [
+   "Faites-vous l’intérieur et l’aménagement extérieur ?",
+   "Oui — architecture, intérieur et aménagement du terrain dans un même projet."
+  ],
+  [
+   "Où intervenez-vous ?",
+   "Kyiv et sa région, toute l’Ukraine, l’Europe et le monde ; le projet peut aussi être réalisé pour une maison dans un autre pays."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/renovation-cuisine",
+   "Rénovation de cuisine"
+  ],
+  [
+   "/fr/renovation-salle-de-bain",
+   "Rénovation de salle de bain"
+  ],
+  [
+   "/fr/renovation-appartement-neuf",
+   "Rénovation d’appartement neuf"
+  ],
+  [
+   "/fr/renovation-maison-cle-en-main",
+   "Rénovation de maison"
+  ],
+  [
+   "/fr/renovation-bureaux",
+   "Rénovation de bureaux"
+  ],
+  [
+   "/fr/renovation-locaux-commerciaux",
+   "Rénovation de locaux commerciaux"
+  ],
+  [
+   "/fr/equipe-renovation",
+   "Équipe de rénovation"
+  ],
+  [
+   "/fr/equipement-cle-en-main",
+   "Équipement clé en main"
+  ],
+  [
+   "/fr/calculateur-renovation",
+   "Calculateur de coût"
+  ],
+  [
+   "/fr/designer-interieur",
+   "Designer d’intérieur"
+  ],
+  [
+   "/fr/design-appartement",
+   "Design d’intérieur d’appartement"
+  ],
+  [
+   "/fr/design-restaurant-cafe",
+   "Design de restaurants et cafés"
+  ],
+  [
+   "/fr/architecture-paysagere",
+   "Architecture paysagère"
+  ],
+  [
+   "/fr/base-de-loisirs-cle-en-main",
+   "Base de loisirs clé en main"
+  ],
+  [
+   "/fr/architecture-interieur",
+   "Architecture d’intérieur"
+  ],
+  [
+   "/fr/realisation-projet",
+   "Réalisation de projet de design"
+  ],
+  [
+   "/fr/renovation-cle-en-main",
+   "Rénovation clé en main"
+  ],
+  [
+   "/fr/construction-maison",
+   "Construction de maisons"
+  ],
+  [
+   "/fr/ameublement-cle-en-main",
+   "Ameublement clé en main"
+  ],
+  [
+   "/fr/commerce-cle-en-main",
+   "Locaux professionnels clé en main"
+  ],
+  [
+   "/fr/faq",
+   "FAQ"
+  ],
+  [
+   "/fr/contact",
+   "Contact"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

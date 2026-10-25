@@ -1,0 +1,207 @@
+{
+ "slug": "proyecto-de-casa",
+ "lang": "es",
+ "service": "Proyecto de casa unifamiliar",
+ "title": "Proyecto y diseño de casa unifamiliar en Kiev",
+ "description": "Proyecto arquitectónico e interiorismo de casas: distribución, fachadas, 3D y planos de ejecución. Diseño desde $30/m², construcción llave en mano desde $1 100/m².",
+ "h1": "Proyecto y diseño de casa unifamiliar",
+ "price": "diseño desde $30 / m² · construcción llave en mano desde $1 100 / m²",
+ "lead": "Una casa pensada de la fachada a los enchufes: arquitectura, distribución para su familia, interiorismo y urbanización de la parcela; un solo equipo del boceto a las llaves.",
+ "cards": [
+  [
+   "Arquitectura",
+   [
+    "boceto y volumetría",
+    "distribución de plantas",
+    "fachadas y materiales",
+    "implantación en la parcela"
+   ]
+  ],
+  [
+   "Interiorismo",
+   [
+    "diseño de todas las estancias",
+    "visualizaciones 3D",
+    "iluminación, muebles, materiales",
+    "especificaciones"
+   ]
+  ],
+  [
+   "Construcción",
+   [
+    "presupuesto y calendario de obra",
+    "construcción con acabados llave en mano",
+    "equipamiento desde China",
+    "dirección de diseño"
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1kHF6cjS291puf-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1C16Cd6bvENPGL-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1g-E1m6cFJ9kvH-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1pF5ohNHdSnme0-900.webp",
+   "A-Frame House"
+  ]
+ ],
+ "steps": [
+  [
+   "Primer encuentro",
+   "Parcela, composición de la familia, deseos y presupuesto."
+  ],
+  [
+   "Boceto",
+   "Proponemos volumetría y distribución y las ajustamos a sus deseos."
+  ],
+  [
+   "Proyecto y 3D",
+   "Fachadas, interiores, visualizaciones: ve la casa antes de empezar a construir."
+  ],
+  [
+   "Planos de ejecución",
+   "Documentación con la que los constructores trabajan sin conjeturas."
+  ],
+  [
+   "Construcción",
+   "Si lo desea, construimos llave en mano desde $1 100 por m²."
+  ]
+ ],
+ "faq": [
+  [
+   "¿Cuánto cuesta el proyecto de una casa?",
+   "El diseño, desde $30 por m², con un presupuesto mínimo de proyecto de $2 500. El coste exacto lo damos tras conocer la parcela y la tarea."
+  ],
+  [
+   "¿Cuánto cuesta construir una casa llave en mano?",
+   "La construcción con acabados llave en mano, desde $1 100 por m². Muebles y equipamiento se calculan aparte; podemos traerlos directamente de China."
+  ],
+  [
+   "¿Hacen también el interiorismo y la urbanización?",
+   "Sí: arquitectura, interiorismo y urbanización de la parcela en un mismo proyecto."
+  ],
+  [
+   "¿Dónde trabajan?",
+   "En Kiev y su región, en toda Ucrania, en Europa y en el mundo; el proyecto puede hacerse también para una casa en otro país."
+  ]
+ ],
+ "rel": [
+  [
+   "/es/reforma-cocina",
+   "Reforma de cocina"
+  ],
+  [
+   "/es/reforma-bano",
+   "Reforma de baño"
+  ],
+  [
+   "/es/reforma-obra-nueva",
+   "Reforma de piso de obra nueva"
+  ],
+  [
+   "/es/reforma-casa-llave-en-mano",
+   "Reforma de casa"
+  ],
+  [
+   "/es/reforma-oficinas",
+   "Reforma de oficinas"
+  ],
+  [
+   "/es/reforma-locales-comerciales",
+   "Reforma de locales comerciales"
+  ],
+  [
+   "/es/equipo-de-reformas",
+   "Equipo de reformas"
+  ],
+  [
+   "/es/equipamiento-llave-en-mano",
+   "Equipamiento llave en mano"
+  ],
+  [
+   "/es/calculadora-reforma",
+   "Calculadora de costes"
+  ],
+  [
+   "/es/disenador-interiores",
+   "Diseñador de interiores"
+  ],
+  [
+   "/es/diseno-interiores-piso",
+   "Diseño de interiores de pisos"
+  ],
+  [
+   "/es/diseno-restaurantes-cafeterias",
+   "Diseño de restaurantes y cafeterías"
+  ],
+  [
+   "/es/paisajismo",
+   "Paisajismo"
+  ],
+  [
+   "/es/complejo-turistico-llave-en-mano",
+   "Complejo turístico llave en mano"
+  ],
+  [
+   "/es/diseno-interiores",
+   "Diseño de interiores"
+  ],
+  [
+   "/es/ejecucion-proyecto-diseno",
+   "Ejecución del proyecto de diseño"
+  ],
+  [
+   "/es/reforma-llave-en-mano",
+   "Reforma llave en mano"
+  ],
+  [
+   "/es/construccion-de-casas",
+   "Construcción de casas"
+  ],
+  [
+   "/es/amueblamiento-llave-en-mano",
+   "Amueblamiento llave en mano"
+  ],
+  [
+   "/es/negocio-llave-en-mano",
+   "Locales comerciales llave en mano"
+  ],
+  [
+   "/es/preguntas-frecuentes",
+   "Preguntas frecuentes"
+  ],
+  [
+   "/es/contacto",
+   "Contacto"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

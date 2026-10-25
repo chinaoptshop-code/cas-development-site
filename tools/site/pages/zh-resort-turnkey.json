@@ -1,0 +1,199 @@
+{
+ "slug": "resort-turnkey",
+ "lang": "zh",
+ "service": "度假基地规划设计",
+ "title": "度假基地交钥匙：规划设计与建造 | CAS Development",
+ "description": "度假基地交钥匙服务：概念、总平面、小木屋、餐厅与 SPA 建筑设计、室内设计及施工建造。服务基辅、乌克兰及欧洲。",
+ "h1": "度假基地交钥匙规划设计",
+ "price": "概念 · 总平面 · 小木屋 · 餐厅 · SPA",
+ "lead": "从构想到迎来第一位客人：项目概念、地块总平面、小木屋（A 字形、模块化）、餐厅、SPA 区、沙滩与景观。我们负责设计、建造与配套。",
+ "cards": [
+  [
+   "概念与总平面",
+   [
+    "定位与功能配置",
+    "总平面与功能分区",
+    "客人与员工动线",
+    "分期开业计划"
+   ]
+  ],
+  [
+   "建筑与室内",
+   [
+    "A 字形与模块化小木屋",
+    "餐厅、SPA、前台",
+    "3D 效果图",
+    "施工图"
+   ]
+  ],
+  [
+   "落地实施",
+   [
+    "预算与进度",
+    "交钥匙建造",
+    "中国直采家具配套",
+    "设计监理"
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1A9yy4nI-gf9h3-900.webp",
+   "Kitana Beach"
+  ],
+  [
+   "img/p/1XdhtH1mjWRTli-900.webp",
+   "Kitana Beach"
+  ],
+  [
+   "img/p/1g-E1m6cFJ9kvH-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1pF5ohNHdSnme0-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1GqqKXz4Ax1_cM-900.webp",
+   "Yablu Rest"
+  ],
+  [
+   "img/p/16Do4G_08hSZtl-900.webp",
+   "Yablu Rest"
+  ]
+ ],
+ "steps": [
+  [
+   "需求与地块",
+   "定位、接待人数、季节性、预算；现场勘察地块。"
+  ],
+  [
+   "概念",
+   "各功能如何布局：小木屋、餐厅、SPA、沙滩、停车场。"
+  ],
+  [
+   "建筑与 3D",
+   "开工前展示整体及每栋建筑效果。"
+  ],
+  [
+   "施工文件",
+   "为承包商出具施工图和清单。"
+  ],
+  [
+   "建造与开业",
+   "建造、配套，做好迎客准备。"
+  ]
+ ],
+ "faq": [
+  [
+   "度假基地设计包含哪些内容？",
+   "概念、总平面、小木屋及公共建筑的建筑设计、室内设计、3D 效果图、施工图与预算。"
+  ],
+  [
+   "规划设计费用是多少？",
+   "取决于面积和功能配置。室内设计每平方米 $30 起；整个项目的准确费用在需求沟通后给出。"
+  ],
+  [
+   "你们承接交钥匙建造吗？",
+   "承接，由我们自己的团队完成——从设计到中国直采家具配套。"
+  ],
+  [
+   "服务范围在哪里？",
+   "基辅及基辅州、乌克兰全境、欧洲及全球。"
+  ]
+ ],
+ "rel": [
+  [
+   "/zh/kitchen-renovation",
+   "厨房装修"
+  ],
+  [
+   "/zh/bathroom-renovation",
+   "卫生间装修"
+  ],
+  [
+   "/zh/new-build-renovation",
+   "新房装修"
+  ],
+  [
+   "/zh/house-renovation",
+   "别墅装修"
+  ],
+  [
+   "/zh/office-renovation",
+   "办公室装修"
+  ],
+  [
+   "/zh/commercial-renovation",
+   "商业空间装修"
+  ],
+  [
+   "/zh/renovation-crew",
+   "装修施工队"
+  ],
+  [
+   "/zh/turnkey-procurement",
+   "项目整体配套"
+  ],
+  [
+   "/zh/renovation-calculator",
+   "装修费用计算器"
+  ],
+  [
+   "/zh/interior-designer",
+   "室内设计师"
+  ],
+  [
+   "/zh/apartment-design",
+   "公寓室内设计"
+  ],
+  [
+   "/zh/restaurant-design",
+   "餐厅咖啡馆设计"
+  ],
+  [
+   "/zh/house-design",
+   "住宅设计"
+  ],
+  [
+   "/zh/landscape-design",
+   "景观设计"
+  ],
+  [
+   "/zh/interior-design",
+   "室内设计"
+  ],
+  [
+   "/zh/design-implementation",
+   "设计方案落地"
+  ],
+  [
+   "/zh/turnkey-renovation",
+   "交钥匙装修"
+  ],
+  [
+   "/zh/house-construction",
+   "住宅建造"
+  ],
+  [
+   "/zh/furnishing",
+   "家具软装交钥匙"
+  ],
+  [
+   "/zh/business-fit-out",
+   "商业空间交钥匙"
+  ],
+  [
+   "/zh/faq",
+   "常见问题"
+  ],
+  [
+   "/zh/contact",
+   "联系我们"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

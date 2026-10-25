@@ -1,0 +1,211 @@
+{
+ "slug": "apartment-design",
+ "lang": "zh",
+ "service": "公寓室内设计",
+ "title": "基辅公寓室内设计 —— $30/m² 起 | CAS Development",
+ "description": "基辅公寓设计方案，每平方米 $30 起，最低 $2 500：平面布局、3D 效果图、施工图、选材。若由我们施工，装修预算偏差不超过 ±5%。",
+ "h1": "基辅公寓室内设计",
+ "price": "$30 / m² 起",
+ "lead": "一套让公寓装修不出意外的方案：合理的平面布局、每个房间的 3D 效果图、供施工队使用的施工图和材料清单。项目最低预算 $2 500。",
+ "cards": [
+  [
+   "平面布局",
+   [
+    "测量与现状图",
+    "多个布局方案",
+    "家具摆放",
+    "灯光与插座图"
+   ]
+  ],
+  [
+   "效果呈现",
+   [
+    "风格与概念",
+    "各空间 3D 效果图",
+    "色彩与材质搭配",
+    "修改至确认"
+   ]
+  ],
+  [
+   "施工图与材料",
+   [
+    "供施工队使用的施工图",
+    "材料清单",
+    "家具与灯具选型",
+    "装修预算"
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1MslU7S5X8gIEp-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1YQyhjEui9fb6v-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1xqY1KZo2JY5xq-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1iGcqtsUqLNWbB-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1rfuCVdOfWwhML-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1HMtnMX7Fgpwg5-900.webp",
+   "Edelweiss"
+  ]
+ ],
+ "steps": [
+  [
+   "沟通与测量",
+   "查看公寓，了解您的生活方式：谁住、几口人、什么最重要。"
+  ],
+  [
+   "平面布局",
+   "提供多个布局方案，您选定一个后深化。"
+  ],
+  [
+   "3D 与风格",
+   "展示每个房间的效果，修改至确认。"
+  ],
+  [
+   "施工图",
+   "出具施工图和清单，施工队按图施工、不靠猜测。"
+  ],
+  [
+   "预算",
+   "按方案核算装修费用。若由我们施工，最终费用与预算偏差不超过 ±5%。"
+  ],
+  [
+   "落地",
+   "如您需要，我们承接施工，并从中国直采家具完成配套。"
+  ]
+ ],
+ "faq": [
+  [
+   "基辅公寓设计方案多少钱？",
+   "每平方米 $30 起，项目最低预算 $2 500。了解公寓情况后给出准确金额。"
+  ],
+  [
+   "设计方案包含哪些内容？",
+   "测量、布局方案、3D 效果图、施工图、材料与家具清单、装修预算。"
+  ],
+  [
+   "可以按方案施工吗？",
+   "可以，由我们自己的团队施工。若按我方方案由我方施工，我们保证装修最终费用与预算偏差不超过 5%。"
+  ],
+  [
+   "承接新房吗？",
+   "承接——开发商交付的新房，以及需要全面翻新的二手房均可。"
+  ]
+ ],
+ "rel": [
+  [
+   "/zh/kitchen-renovation",
+   "厨房装修"
+  ],
+  [
+   "/zh/bathroom-renovation",
+   "卫生间装修"
+  ],
+  [
+   "/zh/new-build-renovation",
+   "新房装修"
+  ],
+  [
+   "/zh/house-renovation",
+   "别墅装修"
+  ],
+  [
+   "/zh/office-renovation",
+   "办公室装修"
+  ],
+  [
+   "/zh/commercial-renovation",
+   "商业空间装修"
+  ],
+  [
+   "/zh/renovation-crew",
+   "装修施工队"
+  ],
+  [
+   "/zh/turnkey-procurement",
+   "项目整体配套"
+  ],
+  [
+   "/zh/renovation-calculator",
+   "装修费用计算器"
+  ],
+  [
+   "/zh/interior-designer",
+   "室内设计师"
+  ],
+  [
+   "/zh/restaurant-design",
+   "餐厅咖啡馆设计"
+  ],
+  [
+   "/zh/house-design",
+   "住宅设计"
+  ],
+  [
+   "/zh/landscape-design",
+   "景观设计"
+  ],
+  [
+   "/zh/resort-turnkey",
+   "度假基地交钥匙"
+  ],
+  [
+   "/zh/interior-design",
+   "室内设计"
+  ],
+  [
+   "/zh/design-implementation",
+   "设计方案落地"
+  ],
+  [
+   "/zh/turnkey-renovation",
+   "交钥匙装修"
+  ],
+  [
+   "/zh/house-construction",
+   "住宅建造"
+  ],
+  [
+   "/zh/furnishing",
+   "家具软装交钥匙"
+  ],
+  [
+   "/zh/business-fit-out",
+   "商业空间交钥匙"
+  ],
+  [
+   "/zh/faq",
+   "常见问题"
+  ],
+  [
+   "/zh/contact",
+   "联系我们"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}
