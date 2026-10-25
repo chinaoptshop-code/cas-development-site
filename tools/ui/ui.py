@@ -36,6 +36,8 @@ def pages():
 def kind(rel, s):
     if rel in MAIN:
         return 'main'
+    if rel.endswith('blog.html'):  # індекси блогу ростуть зі статтями — бюджет списку, не лендингу
+        return 'other'
     if 'class="w crumbs"' in s or 'class="w hero' in s:
         return 'land'
     return 'other'
