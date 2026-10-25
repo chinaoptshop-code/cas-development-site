@@ -11,6 +11,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools/site'))
 import chrome  # єдина шапка/футер (tools/site/chrome.py)
+import leadform  # noqa: E402  легка заявка (tools/site/leadform.py)
+
+
+def _chrome_apply(s, rel):
+    """Форма заявки (обовʼязковий лише телефон) + єдина шапка/футер."""
+    return chrome.apply(leadform.apply(s, rel), rel)
+
 TPL = (ROOT / "remont-ofisu-pid-klyuch-kyiv.html").read_text(encoding="utf-8")
 BASE = "https://cas-develop.com/"
 
@@ -144,6 +151,6 @@ def add_lines():
 
 if __name__ == "__main__":
     for p in PAGES:
-        (ROOT / f"{p['slug']}.html").write_text(chrome.apply(build(p), f"{p['slug']}.html"), encoding="utf-8")
+        (ROOT / f"{p['slug']}.html").write_text(_chrome_apply(build(p), f"{p['slug']}.html"), encoding="utf-8")
         print("✓", p["slug"])
     add_lines()

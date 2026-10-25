@@ -9,6 +9,13 @@ import hashlib, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, 'tools/site'))
 import chrome  # єдина шапка/футер (tools/site/chrome.py)
+import leadform  # noqa: E402  легка заявка (tools/site/leadform.py)
+
+
+def _chrome_apply(s, rel):
+    """Форма заявки (обовʼязковий лише телефон) + єдина шапка/футер."""
+    return chrome.apply(leadform.apply(s, rel), rel)
+
 
 CSS = """
 .acc{max-width:1100px;margin:0 auto;padding:0 16px 40px}
@@ -81,7 +88,7 @@ def page(s, title, body, path):
     s = s[:a] + s[b:]
     f = os.path.join(ROOT, path + '.html')
     os.makedirs(os.path.dirname(f), exist_ok=True)
-    open(f, 'w', encoding='utf-8').write(chrome.apply(s, path + '.html'))
+    open(f, 'w', encoding='utf-8').write(_chrome_apply(s, path + '.html'))
     print('✓', path)
 
 

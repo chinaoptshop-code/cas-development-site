@@ -29,6 +29,8 @@ from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import chrome  # єдина шапка/футер (tools/site/chrome.py)
 import i18n  # мови, словники, hreflang-кластери (tools/site/i18n.py)
+import captions  # підписи галерей «обʼєкт · статус» (tools/site/captions.py)
+import leadform  # легка заявка: лише телефон, швидка заявка в hero (tools/site/leadform.py)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 B = 'https://cas-develop.com/'
@@ -74,9 +76,9 @@ for _l in i18n.LANGS:
         TPL[_l] = TPL['uk']
 # рядки uk-шаблону, які перекладаються для нових мов
 FORM_UK = {
-    'form_h2': '<h2>Розрахувати проєкт</h2>', 'name': '>Імʼя<', 'phone': '>Телефон *<', 'area': '>Площа, м²<', 'msg': '>Коментар<',
-    'ph_phone': 'placeholder="097 123 45 67"', 'ph_area': 'placeholder="напр. 200"', 'ph_msg': 'placeholder="Що за обʼєкт, де, бажані терміни"',
-    'send': '>Надіслати заявку<', 'ok_h': '>Заявку отримано<', 'ok_p': '>Звʼяжемося найближчим часом.<',
+    'form_h2': '<h2>Розрахувати проєкт</h2>', 'name': '>Імʼя (необовʼязково)<', 'phone': '>Телефон *<', 'area': '>Площа, м²<', 'msg': '>Коментар<',
+    'ph_phone': 'placeholder="+380 97 123 45 67"', 'ph_area': 'placeholder="напр. 200"', 'ph_msg': 'placeholder="Що за обʼєкт, де, бажані терміни"',
+    'send': '>Передзвоніть мені<', 'ok_h': '>Заявку отримано<', 'ok_p': '>Звʼяжемося найближчим часом.<',
     'mbar': 'aria-label="Швидкий зв\'язок"', 'call': '</svg>Подзвонити</a>',
     'close': "'Закрити'", 'prev': "'Попереднє фото'", 'next': "'Наступне фото'", 'menu': "'Меню'",
 }
@@ -337,7 +339,7 @@ def ld(p):
 
 def build(p):
     lang, slug = p['lang'], p['slug']
-    s = open(os.path.join(ROOT, TPL[lang]), encoding='utf-8').read()
+    s = leadform.QUICK_RX.sub('', open(os.path.join(ROOT, TPL[lang]), encoding='utf-8').read())  # швидку заявку ставить leadform
     u = url(lang, slug)
     if lang not in ('uk', 'ru'):
         s = translate_tpl(i18n.html_attrs(s, lang), lang)
@@ -368,6 +370,8 @@ def build(p):
     s = re.sub(r'data-service="[^"]*"', f'data-service="{a(p["service"])}"', s, count=1)
     src = 'cas-develop.com/' + i18n.meta(lang)['prefix'] + ('' if slug == 'index' else slug)
     s = re.sub(r'data-source="[^"]*"', f'data-source="{src}"', s, count=1)
+    s = leadform.apply(s, path(lang, slug))  # форма: обовʼязковий лише телефон; швидка заявка біля першого CTA
+    s = captions.apply(s, path(lang, slug))
     # шапка й футер: мова, перемикач на пару (hreflang) і посилання — з chrome.py
     s = chrome.apply(s, path(lang, slug))
     os.makedirs(os.path.dirname(os.path.join(ROOT, path(lang, slug))), exist_ok=True)

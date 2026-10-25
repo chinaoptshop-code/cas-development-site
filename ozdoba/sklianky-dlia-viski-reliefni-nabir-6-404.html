@@ -425,12 +425,14 @@ html.tg .crumbs{display:none}
 </div>
 <section class="ozd-sec" id="zayavka">
   <h2>Запитати ціну й наявність</h2>
-  <form id="of" class="pp-form" data-form="ozdoba-product" data-service="Оздоба — Склянки для віскі рельєфні, набір 6" data-source="cas-develop.com/ozdoba/sklianky-dlia-viski-reliefni-nabir-6-404" novalidate>
-    <div class="field"><label for="oName">Імʼя</label><input id="oName" autocomplete="name"></div>
-    <div class="field"><label for="oPhone">Телефон *</label><input id="oPhone" aria-describedby="oErr" type="tel" autocomplete="tel" placeholder="097 123 45 67"><div class="err" id="oErr" role="alert" style="color:#e07a6a;font-size:var(--fs-small);margin-top:6px"></div></div>
-    <div class="field"><label for="oArea">Кількість (від 10)</label><input id="oArea" inputmode="numeric" placeholder="напр. 24"></div>
-    <div class="field"><label for="oMsg">Коментар</label><input id="oMsg" placeholder="Колір, розмір, обʼєкт"></div>
-    <button class="btn" id="oBtn" type="submit">Надіслати запит</button>
+  <form id="of" class="pp-form" data-form="ozdoba-product" data-service="Оздоба — Склянки для віскі рельєфні, набір 6" data-source="cas-develop.com/ozdoba/sklianky-dlia-viski-reliefni-nabir-6-404" novalidate data-lf="2">
+    <div class="field"><label for="oPhone">Телефон *</label><input id="oPhone" placeholder="+380 97 123 45 67" inputmode="tel" aria-describedby="oErr" type="tel" autocomplete="tel"><div class="err" id="oErr" role="alert" style="color:#e07a6a;font-size:var(--fs-small);margin-top:6px"></div></div>
+    <div class="field"><label for="oName">Імʼя (необовʼязково)</label><input id="oName" autocomplete="name"></div>
+    <details class="o-more"><summary>Додати коментар</summary>
+      <div class="field"><label for="oArea">Кількість (від 10)</label><input id="oArea" inputmode="numeric" placeholder="напр. 24"></div>
+      <div class="field"><label for="oMsg">Коментар</label><input id="oMsg" placeholder="Колір, розмір, обʼєкт"></div>
+    </details>
+    <button class="btn" id="oBtn" type="submit">Передзвоніть мені</button><p class="o-note">Перетелефонуємо найближчим часом. Консультація по телефону — безкоштовна.</p>
   </form>
   <div class="ok" id="oOk" role="status" tabindex="-1" style="display:none"><h3>Запит отримано</h3><p style="color:var(--muted)">Менеджер звʼяжеться з вами в робочий час.</p></div>
 </section>
@@ -449,7 +451,7 @@ html.tg .crumbs{display:none}
 </div>
 </footer><!--/chrome:f-->
 
-<script src="/assets/lead-form.v1.js?v=ffe6d409" defer></script>
+<script src="/assets/lead-form.v1.js?v=43a5115e" defer></script>
 <!--ui-polish--><script>(function(){
 var d=document,W=window,RM=W.matchMedia&&W.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function $$(s,r){return Array.prototype.slice.call((r||d).querySelectorAll(s))}
