@@ -8,6 +8,13 @@
   python3 tools/products/photo.py 12 фото.jpg --crop 0.1,0,0.9,0.8       # спершу обрізати (частки ширини/висоти: x0,y0,x1,y1)
   python3 tools/products/photo.py 12 дзеркало.jpg --fill-holes           # дзеркала, скло: не робити «дірку» всередині рами
   python3 tools/products/photo.py 12 подушка.jpg --flood                 # білий предмет на білому тлі: заливка тла від країв
+  python3 tools/products/photo.py 12 крісло.jpg --solid 100              # прибрати напівпрозорі «привиди» у вирізці (поріг альфи 0–255)
+  python3 tools/products/photo.py 12 стенд.jpg --expo --crop 0.1,0.2,0.9,0.8   # власне фото з виставки в Гуанчжоу → галерея
+
+--expo — реальне фото (без вирізання фону) з виставки/шоурумів у Гуанчжоу: квадратний кадр (центр або --crop),
+файли img/products/<id>-expo-<хеш>-400/-800.webp, лише в галерею (imgs); на сторінці товару build.py показує їх
+окремим блоком «Фото з виставки в Гуанчжоу», у JSON-LD Product не додає (це той самий тип товару, не обовʼязково та сама модель).
+Не додавайте фото з людьми, номерами телефонів, бейджами чи логотипами.
 
 PNG/WebP, що вже має прозорий фон (напр. з PDF-каталогу), береться як є — фон не вирізається вдруге.
 --no-build — не запускати build.py (коли додаєте фото пачкою; збірку запустіть наприкінці).
@@ -105,9 +112,15 @@ def square(im):
     return bg
 
 
-def save(im, item_id, raw):
+def center_square(im):
+    """Реальне фото: квадратний кадр по центру (без прозорих полів)."""
+    W, H = im.size; s = min(W, H)
+    return im.crop(((W - s) // 2, (H - s) // 2, (W - s) // 2 + s, (H - s) // 2 + s))
+
+
+def save(im, item_id, raw, tag=''):
     os.makedirs(OUT, exist_ok=True)
-    base = f'img/products/{item_id}-{hashlib.sha1(raw).hexdigest()[:6]}'
+    base = f'img/products/{item_id}-{tag}{hashlib.sha1(raw).hexdigest()[:6]}'
     for s in SIZES:
         im.resize((s, s), Image.LANCZOS).save(os.path.join(ROOT, f'{base}-{s}.webp'), 'WEBP', quality=82, method=6)
     return base
@@ -123,6 +136,8 @@ def main():
     ap.add_argument('--crop', help='обрізати перед обробкою: x0,y0,x1,y1 у частках (0–1)')
     ap.add_argument('--fill-holes', action='store_true', help='не вирізати внутрішні ділянки (дзеркала, скло)')
     ap.add_argument('--flood', action='store_true', help='світле однотонне тло прибрати заливкою від країв (білий предмет на білому)')
+    ap.add_argument('--solid', type=int, help='поріг альфи 1–255: пікселі вирізки нижче — прозорі, вище — суцільні (прибирає «привидів»)')
+    ap.add_argument('--expo', action='store_true', help='власне фото з виставки в Гуанчжоу: без вирізання, квадратний кадр, лише в галерею')
     ap.add_argument('--no-build', action='store_true', help='не запускати build.py після додавання')
     a = ap.parse_args()
     d = json.load(open(CAT, encoding='utf-8'))
@@ -136,13 +151,20 @@ def main():
         for src in a.src:
             im, raw = load(src)
             if a.crop: im = crop(im, a.crop); raw += a.crop.encode()
+            if a.expo:
+                bases.append(save(center_square(im.convert('RGB')), a.id, raw, 'expo-'))
+                print('✓', src, '→', bases[-1]); continue
             if a.keep_bg: im = im.convert('RGB')
             elif precut(im): im = im.convert('RGBA')
             elif a.flood: im = flood(im)
             else: im = cutout(im, a.fill_holes)
+            if a.solid and im.mode == 'RGBA':
+                im.putalpha(im.getchannel('A').point(lambda v: 255 if v >= a.solid else 0))
             bases.append(save(square(im), a.id, raw))
             print('✓', src, '→', bases[-1])
-        if a.add or item.get('img'):
+        if a.expo:
+            item['imgs'] = list(item.get('imgs') or []) + bases
+        elif a.add or item.get('img'):
             if not a.add: item['img'], bases = bases[0], bases[1:]
             item['imgs'] = list(item.get('imgs') or []) + bases
         else:

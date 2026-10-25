@@ -211,13 +211,25 @@ def slugify(name, iid):
     return '-'.join(s.split('-')[:6]) + f'-{iid}'
 
 
+def expo_imgs(i):
+    """Додаткові фото, зняті на виставці й у шоурумах Гуанчжоу (photo.py --expo): база шляху містить «-expo-»."""
+    return [b for b in (i.get('imgs') or []) if '-expo-' in b]
+
+
 def product_page(d, i, shell, items, title):
     u = f'https://cas-develop.com/ozdoba/{i["slug"]}'
     mp = min_price(d, i)
     img = i.get('img')
     hero = (f'<img src="/{img}-800.webp" width="800" height="800" alt="{e(i["name"])}" fetchpriority="high">' if img
             else S.format(d['art'].get(i['art'], '')))
-    gal = ''.join(f'<img src="/{b}-400.webp" width="400" height="400" alt="{e(i["name"])} — фото {n + 2}" loading="lazy">' for n, b in enumerate(i.get('imgs') or []))
+    ex = expo_imgs(i)
+    shots = [b for b in (i.get('imgs') or []) if b not in ex]
+    gal = ''.join(f'<img src="/{b}-400.webp" width="400" height="400" alt="{e(i["name"])} — фото {n + 2}" loading="lazy">' for n, b in enumerate(shots))
+    # власні фото з виставки й шоурумів у Гуанчжоу (photo.py --expo): реальні кадри окремим блоком із підписом
+    expo = ''.join(f'<img src="/{b}-800.webp" width="800" height="800" alt="{e(i["name"])} — фото з виставки в Гуанчжоу{f" {n + 1}" if len(ex) > 1 else ""}" loading="lazy" decoding="async">'
+                   for n, b in enumerate(ex))
+    expo_html = (f'<figure class="pp-expo"><div class="pp-expo-g{" one" if len(ex) == 1 else ""}">{expo}</div>'
+                 f'<figcaption>Фото з виставки в Гуанчжоу: знімали самі, коли відбирали фабрики. Колір, матеріал і розмір — під ваш проєкт.</figcaption></figure>') if ex else ''
     colors = d['colorsets'][i['cs']]
     sizes = d['sizesets'].get(i['ss']) if i.get('ss') else None
     specs = list(i.get('specs') or [])
@@ -236,7 +248,7 @@ def product_page(d, i, shell, items, title):
     cslug = CATS[i['cat']][0] if i['cat'] in CATS else None
     rel_html = ''.join(re.sub(r'<button[^>]*class="heart".*?</button>', '', card(d, x), flags=re.S)
                        .replace(f'onclick="openItem({x["id"]})"', f'onclick="location.href=\'/ozdoba/{x["slug"]}\'"') for x in rel)
-    images = [f'{SITE}/{b}-800.webp' for b in [img] + list(i.get('imgs') or []) if b]  # без фото — без image (не og-cas.jpg)
+    images = [f'{SITE}/{b}-800.webp' for b in [img] + shots if b]  # без фото — без image (не og-cas.jpg); фото з виставки — не в Product
     offer = None
     if mp is not None:  # offers лише з ціною; під замовлення → PreOrder; розміри → діапазон цін
         offer = {'@type': 'Offer', 'price': mp, 'priceCurrency': 'UAH', 'availability': 'https://schema.org/PreOrder',
@@ -264,7 +276,7 @@ def product_page(d, i, shell, items, title):
     body = f'''<div class="w">
   <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / {f'<a href="/ozdoba/kategoriia/{CATS[i["cat"]][0]}">{e(i["cat"])}</a> / ' if i["cat"] in CATS else ''}{e(i["name"])}</div>
   <article class="pp">
-    <div class="pp-media"><div class="hero-art{" ph" if img else ""} pp-hero">{hero}</div>{f'<div class="pp-gal">{gal}</div>' if gal else ''}</div>
+    <div class="pp-media"><div class="hero-art{" ph" if img else ""} pp-hero">{hero}</div>{f'<div class="pp-gal">{gal}</div>' if gal else ''}{expo_html}</div>
     <div class="pp-info">
       <p class="sub">{e(i["sub"])}</p>
       <h1>{e(i["name"])}</h1>
@@ -323,6 +335,11 @@ PP_CSS = """
 .pp-hero img{padding:7%}
 .pp-gal{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
 .pp-gal img{width:100%;height:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:6%}
+.pp-expo{margin:14px 0 0}
+.pp-expo-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pp-expo-g.one{grid-template-columns:minmax(0,1fr)}
+.pp-expo-g img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--line);border-radius:10px;display:block}
+.pp-expo figcaption{color:var(--muted);font-size:var(--fs-small);margin-top:8px}
 .pp-info .sub{color:var(--muted);font-size:var(--fs-small);margin:0 0 6px}
 .pp-info h1{font-size:clamp(2rem,1.5rem + 2vw,3rem);line-height:1.08;margin:0 0 12px}
 .pp-price{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h2);color:var(--glow);margin:0 0 10px}

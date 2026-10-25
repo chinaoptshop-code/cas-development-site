@@ -287,6 +287,9 @@ html.tg .crumbs{display:none}
 .hero-art.ph{background:radial-gradient(70% 70% at 50% 45%,#2b251e 0%,#17140f 65%,#100e0c 100%);padding:0;aspect-ratio:1/1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .hero-art.ph::-webkit-scrollbar{display:none}
 .hero-art.ph figure{flex:0 0 100%;margin:0;scroll-snap-align:center;padding:7%}
+.hero-art.ph figure.expo{padding:0;position:relative}
+.hero-art.ph figure.expo img{object-fit:cover;filter:none}
+.hero-art.ph figure.expo figcaption{position:absolute;left:10px;bottom:10px;background:rgba(16,14,12,.78);color:#f3ece2;font-size:var(--fs-small);padding:4px 10px;border-radius:999px}
 .dots{display:flex;gap:6px;justify-content:center;margin:-4px 0 12px}
 .dots button{width:8px;height:8px;border-radius:50%;background:var(--line);padding:0}
 .specs{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0 0 6px;font-size:var(--fs-small)}
@@ -355,6 +358,11 @@ html.tg .crumbs{display:none}
 .pp-hero img{padding:7%}
 .pp-gal{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
 .pp-gal img{width:100%;height:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:6%}
+.pp-expo{margin:14px 0 0}
+.pp-expo-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pp-expo-g.one{grid-template-columns:minmax(0,1fr)}
+.pp-expo-g img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--line);border-radius:10px;display:block}
+.pp-expo figcaption{color:var(--muted);font-size:var(--fs-small);margin-top:8px}
 .pp-info .sub{color:var(--muted);font-size:var(--fs-small);margin:0 0 6px}
 .pp-info h1{font-size:clamp(2rem,1.5rem + 2vw,3rem);line-height:1.08;margin:0 0 12px}
 .pp-price{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h2);color:var(--glow);margin:0 0 10px}
@@ -402,7 +410,7 @@ html.tg .crumbs{display:none}
 <div class="w">
   <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / <a href="/ozdoba/kategoriia/terasa-i-sad">Тераса й сад</a> / Крісло вуличне з мотузкою, чорне, з подушкою</div>
   <article class="pp">
-    <div class="pp-media"><div class="hero-art ph pp-hero"><img src="/img/products/545-765f94-800.webp" width="800" height="800" alt="Крісло вуличне з мотузкою, чорне, з подушкою" fetchpriority="high"></div></div>
+    <div class="pp-media"><div class="hero-art ph pp-hero"><img src="/img/products/545-765f94-800.webp" width="800" height="800" alt="Крісло вуличне з мотузкою, чорне, з подушкою" fetchpriority="high"></div><figure class="pp-expo"><div class="pp-expo-g one"><img src="/img/products/545-expo-82d5b4-800.webp" width="800" height="800" alt="Крісло вуличне з мотузкою, чорне, з подушкою — фото з виставки в Гуанчжоу" loading="lazy" decoding="async"></div><figcaption>Фото з виставки в Гуанчжоу: знімали самі, коли відбирали фабрики. Колір, матеріал і розмір — під ваш проєкт.</figcaption></figure></div>
     <div class="pp-info">
       <p class="sub">Тераса й сад / вуличні крісла</p>
       <h1>Крісло вуличне з мотузкою, чорне, з подушкою</h1>
