@@ -1,0 +1,201 @@
+{
+ "_": "Словник мови: meta — код/назва/атрибути, chrome — шапка й футер (tools/site/chrome.py), landing — підписи блоків лендингів, form — форма заявки й нижня панель (tools/site/landing.py).",
+ "meta": {
+  "code": "DE",
+  "name": "Deutsch",
+  "html": "de",
+  "hreflang": "de",
+  "dir": "ltr",
+  "prefix": "de/",
+  "fonts": "latin"
+ },
+ "chrome": {
+  "nav_label": "Hauptmenü",
+  "menu": "Menü",
+  "skip": "Zum Inhalt springen",
+  "menu_open": "Menü öffnen",
+  "menu_close": "Menü schließen",
+  "lang_label": "Sprache der Website",
+  "cta": "Angebot anfragen",
+  "home_label": "CAS Development — Startseite",
+  "tagline": "Studio für Innenarchitektur, Renovierung und schlüsselfertiges Bauen. Kyjiw, Ukraine — seit 2016.",
+  "contacts": "Kontakt",
+  "address": "Antonowytscha-Str. 44, Kyjiw, Ukraine",
+  "msg": "Messenger",
+  "lang": "Sprache",
+  "copy": "© 2026 CAS Development · Kyjiw, Ukraine",
+  "svc": "Alle Leistungen",
+  "svc_label": "Leistungen des Studios",
+  "nav": [
+   [
+    "/de/leistungen",
+    "Leistungen"
+   ],
+   [
+    "/portfolio",
+    "Portfolio (UA)"
+   ],
+   [
+    "/de/ueber-uns",
+    "Über uns"
+   ],
+   [
+    "/de/faq",
+    "FAQ"
+   ],
+   [
+    "/de/kontakt",
+    "Kontakt"
+   ]
+  ],
+  "groups": [
+   [
+    "Design",
+    [
+     [
+      "/de/innenarchitektur",
+      "Innenarchitektur"
+     ],
+     [
+      "/de/umsetzung-designprojekt",
+      "Umsetzung von Designprojekten"
+     ]
+    ]
+   ],
+   [
+    "Bauen & Renovieren",
+    [
+     [
+      "/de/renovierung-schluesselfertig",
+      "Schlüsselfertige Renovierung"
+     ],
+     [
+      "/de/hausbau",
+      "Hausbau"
+     ],
+     [
+      "/de/gewerbe-schluesselfertig",
+      "Gewerberäume schlüsselfertig"
+     ]
+    ]
+   ],
+   [
+    "Einrichtung",
+    [
+     [
+      "/de/einrichtung-schluesselfertig",
+      "Schlüsselfertige Einrichtung"
+     ]
+    ]
+   ],
+   [
+    "Studio",
+    [
+     [
+      "/de/leistungen",
+      "Alle Leistungen"
+     ],
+     [
+      "/de/ueber-uns",
+      "Über das Studio"
+     ],
+     [
+      "/de/faq",
+      "FAQ"
+     ],
+     [
+      "/de/kontakt",
+      "Kontakt"
+     ],
+     [
+      "/portfolio",
+      "Portfolio (auf Ukrainisch)"
+     ]
+    ]
+   ]
+  ],
+  "cta_href": "/de/kontakt",
+  "privacy": [
+   "/en/privacy-policy",
+   "Datenschutz (EN)"
+  ]
+ },
+ "landing": {
+  "home": "Startseite",
+  "svc": "Leistungen",
+  "inc": "Leistungsumfang",
+  "proj": "Unsere Projekte",
+  "steps": "So arbeiten wir",
+  "faq": "Fragen und Antworten",
+  "rel": "Weitere Leistungen",
+  "alt": " — ein Projekt von CAS Development",
+  "city": "Kyjiw",
+  "region": "Oblast Kyjiw",
+  "country": "Ukraine",
+  "europe": "Europa",
+  "other": "",
+  "cta": "Angebot anfragen",
+  "all_portfolio": "Gesamtes Portfolio (auf Ukrainisch)",
+  "sections": "Themen",
+  "facts": [
+   [
+    "150+",
+    "realisierte Projekte"
+   ],
+   [
+    "2016",
+    "gegründet"
+   ],
+   [
+    "12 Mon.",
+    "Gewährleistung auf Arbeiten"
+   ],
+   [
+    "China",
+    "Möbel und Materialien direkt ab Werk"
+   ]
+  ],
+  "guar": [
+   "Garantien",
+   [
+    [
+     "12 Monate Gewährleistung",
+     "Übergabe mit Abnahmeprotokoll; auf alle ausgeführten Arbeiten gewähren wir 12 Monate Gewährleistung."
+    ],
+    [
+     "Kostenvoranschlag ±5 %, wenn CAS baut",
+     "Den Kostenvoranschlag erstellen wir vor Baubeginn. Führt unser Team die Arbeiten aus, weicht die Endsumme um höchstens ±5 % ab."
+    ],
+    [
+     "Vertrag und Zahlung in Etappen",
+     "Preis, Termine und Zahlungsetappen werden vor Beginn vertraglich festgelegt."
+    ],
+    [
+     "Fotoberichte",
+     "Wir schicken Fotos von der Baustelle per Telegram oder WhatsApp — Sie sehen den Fortschritt, ohne anzureisen."
+    ]
+   ]
+  ],
+  "home_url": "/de/",
+  "svc_url": "/de/leistungen"
+ },
+ "form": {
+  "form_h2": "Erzählen Sie uns von Ihrem Projekt",
+  "name": "Name",
+  "phone": "Telefon / WhatsApp *",
+  "area": "Fläche, m²",
+  "msg": "Nachricht",
+  "ph_phone": "+49 151 23456789",
+  "ph_area": "z. B. 120",
+  "ph_msg": "Objektart, Standort, gewünschter Zeitrahmen",
+  "send": "Anfrage senden",
+  "ok_h": "Anfrage erhalten",
+  "ok_p": "Wir melden uns in Kürze bei Ihnen.",
+  "mbar": "Schnellkontakt",
+  "call": "Anrufen",
+  "close": "Schließen",
+  "prev": "Vorheriges Foto",
+  "next": "Nächstes Foto",
+  "menu": "Menü"
+ }
+}

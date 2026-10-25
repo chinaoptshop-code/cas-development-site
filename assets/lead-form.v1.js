@@ -12,7 +12,17 @@
     en: { phone: 'Please enter a valid phone number with country code', sending: 'Sending…', again: 'Send again',
           fail: 'We could not send your request. Please message or call +380 97 866 77 55 (Telegram, WhatsApp, Viber).' },
     es: { phone: 'Introduzca un número válido con el prefijo del país', sending: 'Enviando…', again: 'Enviar de nuevo',
-          fail: 'No pudimos enviar su solicitud. Escríbanos o llame al +380 97 866 77 55 (Telegram, WhatsApp, Viber).' }
+          fail: 'No pudimos enviar su solicitud. Escríbanos o llame al +380 97 866 77 55 (Telegram, WhatsApp, Viber).' },
+    zh: { phone: '请输入带国家区号的有效电话号码', sending: '正在提交…', again: '重新提交',
+          fail: '提交失败。请通过 Telegram、WhatsApp 或 Viber 联系我们，或致电 +380 97 866 77 55。' },
+    pl: { phone: 'Podaj poprawny numer z kierunkowym kraju', sending: 'Wysyłamy…', again: 'Wyślij ponownie',
+          fail: 'Nie udało się wysłać zapytania. Napisz lub zadzwoń: +380 97 866 77 55 (Telegram, WhatsApp, Viber).' },
+    de: { phone: 'Bitte geben Sie eine gültige Nummer mit Ländervorwahl ein', sending: 'Wird gesendet…', again: 'Erneut senden',
+          fail: 'Die Anfrage konnte nicht gesendet werden. Schreiben oder rufen Sie uns an: +380 97 866 77 55 (Telegram, WhatsApp, Viber).' },
+    fr: { phone: 'Saisissez un numéro valide avec l’indicatif du pays', sending: 'Envoi…', again: 'Renvoyer',
+          fail: 'La demande n’a pas pu être envoyée. Écrivez-nous ou appelez le +380 97 866 77 55 (Telegram, WhatsApp, Viber).' },
+    ar: { phone: 'يرجى إدخال رقم صحيح مع رمز الدولة', sending: 'جارٍ الإرسال…', again: 'إعادة الإرسال',
+          fail: 'تعذّر إرسال الطلب. راسلنا أو اتصل على ‎+380 97 866 77 55 (Telegram وWhatsApp وViber).' }
   };
   var lang = (document.documentElement.lang || 'uk').slice(0, 2);
   var t = T[lang] || T.uk;

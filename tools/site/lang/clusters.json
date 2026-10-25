@@ -1,0 +1,131 @@
+{
+ "_": "Одна сторінка різними мовами. hreflang ставить tools/site/i18n.py лише для наявних файлів; x-default = uk.",
+ "home": {
+  "uk": "/",
+  "ru": "/ru/",
+  "en": "/en/",
+  "es": "/es/",
+  "zh": "/zh/",
+  "pl": "/pl/",
+  "de": "/de/",
+  "fr": "/fr/",
+  "ar": "/ar/"
+ },
+ "services": {
+  "uk": "/services",
+  "en": "/en/services",
+  "es": "/es/servicios",
+  "zh": "/zh/services",
+  "pl": "/pl/uslugi",
+  "de": "/de/leistungen",
+  "fr": "/fr/services",
+  "ar": "/ar/services"
+ },
+ "about": {
+  "uk": "/about",
+  "en": "/en/about",
+  "es": "/es/sobre-nosotros",
+  "zh": "/zh/about",
+  "pl": "/pl/o-studiu",
+  "de": "/de/ueber-uns",
+  "fr": "/fr/a-propos",
+  "ar": "/ar/about"
+ },
+ "contact": {
+  "uk": "/contact",
+  "en": "/en/contact",
+  "es": "/es/contacto",
+  "zh": "/zh/contact",
+  "pl": "/pl/kontakt",
+  "de": "/de/kontakt",
+  "fr": "/fr/contact",
+  "ar": "/ar/contact"
+ },
+ "design": {
+  "uk": "/dyzain-interieru-kyiv",
+  "ru": "/ru/dizayn-interera-kiev",
+  "en": "/en/interior-design",
+  "es": "/es/diseno-interiores",
+  "zh": "/zh/interior-design",
+  "pl": "/pl/projektowanie-wnetrz",
+  "de": "/de/innenarchitektur",
+  "fr": "/fr/architecture-interieur",
+  "ar": "/ar/interior-design"
+ },
+ "design-apartment": {
+  "uk": "/dyzain-interieru-kvartyry-kyiv",
+  "ru": "/ru/dizayn-kvartiry-kiev"
+ },
+ "renovation": {
+  "uk": "/remont-pid-klyuch-kyiv",
+  "ru": "/ru/remont-pod-klyuch-kiev",
+  "en": "/en/turnkey-renovation",
+  "es": "/es/reforma-llave-en-mano",
+  "zh": "/zh/turnkey-renovation",
+  "pl": "/pl/remont-pod-klucz",
+  "de": "/de/renovierung-schluesselfertig",
+  "fr": "/fr/renovation-cle-en-main",
+  "ar": "/ar/turnkey-renovation"
+ },
+ "construction": {
+  "uk": "/budivnytstvo-budynkiv-kyiv",
+  "ru": "/ru/stroitelstvo-domov-kiev",
+  "en": "/en/house-construction",
+  "es": "/es/construccion-de-casas",
+  "zh": "/zh/house-construction",
+  "pl": "/pl/budowa-domow",
+  "de": "/de/hausbau",
+  "fr": "/fr/construction-maison",
+  "ar": "/ar/house-construction"
+ },
+ "furnishing": {
+  "uk": "/mebliuvannia-kvartyry-kyiv",
+  "ru": "/ru/meblirovka-kvartiry-kiev",
+  "en": "/en/turnkey-furnishing",
+  "es": "/es/amueblamiento-llave-en-mano",
+  "zh": "/zh/furnishing",
+  "pl": "/pl/umeblowanie-pod-klucz",
+  "de": "/de/einrichtung-schluesselfertig",
+  "fr": "/fr/ameublement-cle-en-main",
+  "ar": "/ar/furnishing"
+ },
+ "implementation": {
+  "uk": "/realizatsiia-dyzain-proektu-kyiv",
+  "ru": "/ru/realizatsiya-dizayn-proekta-kiev",
+  "en": "/en/design-implementation",
+  "es": "/es/ejecucion-proyecto-diseno",
+  "zh": "/zh/design-implementation",
+  "pl": "/pl/realizacja-projektu",
+  "de": "/de/umsetzung-designprojekt",
+  "fr": "/fr/realisation-projet",
+  "ar": "/ar/design-implementation"
+ },
+ "business": {
+  "uk": "/biznes-pid-kliuch-kyiv",
+  "ru": "/ru/biznes-pod-klyuch-kiev",
+  "en": "/en/business-fit-out",
+  "es": "/es/negocio-llave-en-mano",
+  "zh": "/zh/business-fit-out",
+  "pl": "/pl/biznes-pod-klucz",
+  "de": "/de/gewerbe-schluesselfertig",
+  "fr": "/fr/commerce-cle-en-main",
+  "ar": "/ar/business-fit-out"
+ },
+ "faq": {
+  "uk": "/pytannya",
+  "ru": "/ru/voprosy",
+  "en": "/en/faq",
+  "es": "/es/preguntas-frecuentes",
+  "zh": "/zh/faq",
+  "pl": "/pl/faq",
+  "de": "/de/faq",
+  "fr": "/fr/faq",
+  "ar": "/ar/faq"
+ },
+ "privacy": {
+  "uk": "/konfidentsiinist",
+  "ru": "/ru/konfidentsialnost",
+  "en": "/en/privacy-policy",
+  "es": "/es/privacidad"
+ }
+}

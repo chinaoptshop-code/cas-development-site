@@ -1,0 +1,139 @@
+{
+ "slug": "servicios",
+ "lang": "es",
+ "service": "Todos los servicios",
+ "title": "Servicios — diseño, reformas, construcción y amueblamiento | CAS Development",
+ "description": "Servicios de CAS Development: diseño desde $30/m², reformas desde $550/m², oficinas desde $350/m², construcción desde $600/m², amueblamiento desde $250/m².",
+ "h1": "Servicios del estudio: de la idea al espacio terminado",
+ "lead": "Contrate el ciclo completo o una sola etapa. Detrás de cada servicio hay un mismo equipo de arquitectos, diseñadores, ingenieros y cuadrillas propias.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "items": [
+    {
+     "h": "Diseño de interiores",
+     "href": "/es/diseno-interiores",
+     "price": "desde $30 / m² · proyecto mínimo $2 500",
+     "li": [
+      "concepto y moodboard",
+      "visualizaciones 3D de cada estancia",
+      "planos de ejecución y mediciones",
+      "dirección de diseño en obra"
+     ],
+     "more": "Ver más"
+    },
+    {
+     "h": "Ejecución del proyecto de diseño",
+     "href": "/es/ejecucion-proyecto-diseno",
+     "price": "reforma desde $550 / m² · amueblamiento desde $250 / m²",
+     "li": [
+      "revisión de los planos",
+      "presupuesto antes de empezar",
+      "obra fiel a los planos",
+      "compras y amueblamiento"
+     ],
+     "more": "Ver más"
+    },
+    {
+     "h": "Reforma llave en mano",
+     "href": "/es/reforma-llave-en-mano",
+     "price": "viviendas desde $550 / m² · oficinas desde $350 / m²",
+     "li": [
+      "demoliciones y obra gruesa",
+      "electricidad, fontanería, ventilación",
+      "acabados: azulejos, suelos, techos, pintura",
+      "entrega con 12 meses de garantía"
+     ],
+     "more": "Ver más"
+    },
+    {
+     "h": "Construcción de casas",
+     "href": "/es/construccion-de-casas",
+     "price": "estructura desde $600 / m² · llave en mano desde $1 100 / m²",
+     "li": [
+      "proyecto arquitectónico y fachadas",
+      "cimentación, muros, cubierta",
+      "instalaciones",
+      "acabados interiores y jardín"
+     ],
+     "more": "Ver más"
+    },
+    {
+     "h": "Amueblamiento llave en mano",
+     "href": "/es/amueblamiento-llave-en-mano",
+     "price": "desde $250 / m²",
+     "li": [
+      "muebles a medida y de China",
+      "iluminación y electrodomésticos",
+      "textiles y decoración",
+      "entrega, montaje y estilismo"
+     ],
+     "more": "Ver más"
+    },
+    {
+     "h": "Locales comerciales llave en mano",
+     "href": "/es/negocio-llave-en-mano",
+     "price": "diseño desde $30 / m² · equipamiento desde $500",
+     "li": [
+      "cafeterías y restaurantes",
+      "salones de belleza y tiendas",
+      "oficinas y pequeños hoteles",
+      "equipamiento de China desde $500"
+     ],
+     "more": "Ver más"
+    }
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "Cómo trabajamos",
+   "items": [
+    [
+     "Briefing",
+     "Visita o videollamada: inmueble, estilo, presupuesto, plazos."
+    ],
+    [
+     "Diseño",
+     "Concepto, 3D y juego completo de planos, acordados al detalle."
+    ],
+    [
+     "Ejecución",
+     "Obras supervisadas, compras según mediciones, informes fotográficos."
+    ],
+    [
+     "Entrega",
+     "Muebles, luz y decoración en su sitio; acta de entrega y 12 meses de garantía."
+    ]
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "rel",
+   "h2": "Otros servicios",
+   "items": [
+    [
+     "/es/sobre-nosotros",
+     "Sobre el estudio"
+    ],
+    [
+     "/es/preguntas-frecuentes",
+     "Preguntas frecuentes"
+    ],
+    [
+     "/es/contacto",
+     "Contacto"
+    ],
+    [
+     "/portfolio",
+     "Portafolio (UA)"
+    ]
+   ]
+  }
+ ]
+}

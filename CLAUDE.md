@@ -26,6 +26,10 @@
   поштучно не продаємо, поставка з Китаю 30–60 днів — підтверджено Михайлом 25.10.2026).
 - Блог: статті — JSON у `tools/blog/articles/`, збирає `python3 tools/blog/build.py` (спершу `--check`).
   Правила й порядок — `tools/blog/WRITE.md`, беклог тем — `tools/blog/topics.json`. Публікація — лише після ОК Михайла.
+- Мови сайту (uk основна, ru, en, es, zh; закладено pl, de, fr, ar з RTL): реєстр і hreflang-кластери — `tools/site/i18n.py`
+  і `tools/site/lang/` (`<мова>.json` — меню/футер/підписи/форма, `clusters.json` — одна сторінка різними мовами, x-default = uk).
+  Сторінки нових мов (головна, послуги, про, контакти, лендинги) — `tools/site/pages/<мова>-<slug>.json` через landing.py;
+  перевірка взаємності hreflang — `python3 tools/site/i18n.py --check`. Як додати мову — у docstring `tools/site/i18n.py`.
 - Нові лендинги послуг — JSON у `tools/site/pages/`, збирає `python3 tools/site/landing.py` (шаблон, hreflang, sitemap, JSON-LD);
   потім `python3 tools/blog/build.py` для блоків «Статті по темі».
 - Оздоба (/ozdoba, «Продукти»): товари, ціни й характеристики — `assets/ozdoba/catalog.json`; фото з вирізаним фоном —

@@ -1,0 +1,201 @@
+{
+ "_": "Словник мови: meta — код/назва/атрибути, chrome — шапка й футер (tools/site/chrome.py), landing — підписи блоків лендингів, form — форма заявки й нижня панель (tools/site/landing.py).",
+ "meta": {
+  "code": "FR",
+  "name": "Français",
+  "html": "fr",
+  "hreflang": "fr",
+  "dir": "ltr",
+  "prefix": "fr/",
+  "fonts": "latin"
+ },
+ "chrome": {
+  "nav_label": "Menu principal",
+  "menu": "Menu",
+  "skip": "Aller au contenu",
+  "menu_open": "Ouvrir le menu",
+  "menu_close": "Fermer le menu",
+  "lang_label": "Langue du site",
+  "cta": "Demander un devis",
+  "home_label": "CAS Development — accueil",
+  "tagline": "Studio d’architecture d’intérieur, de rénovation et de construction clé en main. Kyiv, Ukraine — depuis 2016.",
+  "contacts": "Contact",
+  "address": "44, rue Antonovytcha, Kyiv, Ukraine",
+  "msg": "Messageries",
+  "lang": "Langue",
+  "copy": "© 2026 CAS Development · Kyiv, Ukraine",
+  "svc": "Tous les services",
+  "svc_label": "Services du studio",
+  "nav": [
+   [
+    "/fr/services",
+    "Services"
+   ],
+   [
+    "/portfolio",
+    "Portfolio (UA)"
+   ],
+   [
+    "/fr/a-propos",
+    "Le studio"
+   ],
+   [
+    "/fr/faq",
+    "FAQ"
+   ],
+   [
+    "/fr/contact",
+    "Contact"
+   ]
+  ],
+  "groups": [
+   [
+    "Design",
+    [
+     [
+      "/fr/architecture-interieur",
+      "Architecture d’intérieur"
+     ],
+     [
+      "/fr/realisation-projet",
+      "Réalisation de projet"
+     ]
+    ]
+   ],
+   [
+    "Travaux",
+    [
+     [
+      "/fr/renovation-cle-en-main",
+      "Rénovation clé en main"
+     ],
+     [
+      "/fr/construction-maison",
+      "Construction de maisons"
+     ],
+     [
+      "/fr/commerce-cle-en-main",
+      "Locaux professionnels clé en main"
+     ]
+    ]
+   ],
+   [
+    "Ameublement",
+    [
+     [
+      "/fr/ameublement-cle-en-main",
+      "Ameublement clé en main"
+     ]
+    ]
+   ],
+   [
+    "Studio",
+    [
+     [
+      "/fr/services",
+      "Tous les services"
+     ],
+     [
+      "/fr/a-propos",
+      "Le studio"
+     ],
+     [
+      "/fr/faq",
+      "FAQ"
+     ],
+     [
+      "/fr/contact",
+      "Contact"
+     ],
+     [
+      "/portfolio",
+      "Portfolio (en ukrainien)"
+     ]
+    ]
+   ]
+  ],
+  "cta_href": "/fr/contact",
+  "privacy": [
+   "/en/privacy-policy",
+   "Confidentialité (EN)"
+  ]
+ },
+ "landing": {
+  "home": "Accueil",
+  "svc": "Services",
+  "inc": "Ce qui est inclus",
+  "proj": "Nos projets",
+  "steps": "Notre méthode",
+  "faq": "Questions et réponses",
+  "rel": "Autres services",
+  "alt": " — projet CAS Development",
+  "city": "Kyiv",
+  "region": "Oblast de Kyiv",
+  "country": "Ukraine",
+  "europe": "Europe",
+  "other": "",
+  "cta": "Demander un devis",
+  "all_portfolio": "Portfolio complet (en ukrainien)",
+  "sections": "Rubriques",
+  "facts": [
+   [
+    "150+",
+    "projets réalisés"
+   ],
+   [
+    "2016",
+    "année de création"
+   ],
+   [
+    "12 mois",
+    "de garantie sur les travaux"
+   ],
+   [
+    "Chine",
+    "mobilier et matériaux en direct usine"
+   ]
+  ],
+  "guar": [
+   "Garanties",
+   [
+    [
+     "Garantie de 12 mois sur les travaux",
+     "Nous livrons le chantier avec un procès-verbal de réception ; tous les travaux réalisés sont garantis 12 mois."
+    ],
+    [
+     "Devis à ±5 % si CAS réalise les travaux",
+     "Le devis est établi avant le démarrage. Si notre équipe réalise la rénovation, le coût final ne s’en écarte pas de plus de ±5 %."
+    ],
+    [
+     "Contrat et paiement par étapes",
+     "Prix, délais et échéances de paiement sont fixés au contrat avant le début des travaux."
+    ],
+    [
+     "Reportages photo",
+     "Nous envoyons des photos du chantier via Telegram ou WhatsApp : vous suivez l’avancement sans vous déplacer."
+    ]
+   ]
+  ],
+  "home_url": "/fr/",
+  "svc_url": "/fr/services"
+ },
+ "form": {
+  "form_h2": "Parlez-nous de votre projet",
+  "name": "Nom",
+  "phone": "Téléphone / WhatsApp *",
+  "area": "Surface, m²",
+  "msg": "Message",
+  "ph_phone": "+33 6 12 34 56 78",
+  "ph_area": "ex. 120",
+  "ph_msg": "Type de bien, lieu, délais souhaités",
+  "send": "Envoyer la demande",
+  "ok_h": "Demande reçue",
+  "ok_p": "Nous vous recontactons très prochainement.",
+  "mbar": "Contact rapide",
+  "call": "Appeler",
+  "close": "Fermer",
+  "prev": "Photo précédente",
+  "next": "Photo suivante",
+  "menu": "Menu"
+ }
+}

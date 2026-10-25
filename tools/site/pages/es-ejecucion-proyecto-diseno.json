@@ -1,0 +1,149 @@
+{
+ "slug": "ejecucion-proyecto-diseno",
+ "lang": "es",
+ "service": "Ejecución de proyecto de diseño llave en mano",
+ "title": "Ejecución de su proyecto de diseño llave en mano en Kiev | CAS Development",
+ "description": "Ejecutamos su proyecto de diseño llave en mano en Kiev: obra desde $550/m², materiales, muebles y decoración, supervisión. Presupuesto ±5% si la obra es de CAS.",
+ "h1": "Ejecución llave en mano de su proyecto de diseño",
+ "price": "reforma desde $550 / m² · amueblamiento desde $250 / m²",
+ "lead": "Ya tiene un proyecto de diseño, nuestro o de otro diseñador. Lo ejecutamos por completo: revisamos los planos, calculamos el presupuesto, hacemos la obra y compramos materiales, muebles e iluminación. Obtiene el interior de las visualizaciones, no algo «parecido».",
+ "guarantees": true,
+ "cards": [
+  [
+   "Revisión del proyecto",
+   [
+    "comprobación de planos y mediciones",
+    "detalles que faltan",
+    "medición y cotejo con la obra",
+    "presupuesto antes de empezar"
+   ]
+  ],
+  [
+   "Obra según proyecto",
+   [
+    "cuadrillas propias con jefe de obra",
+    "instalaciones: electricidad, fontanería, ventilación",
+    "acabados fieles a los planos",
+    "informes fotográficos periódicos"
+   ]
+  ],
+  [
+   "Compras y equipamiento",
+   [
+    "materiales según mediciones o equivalentes",
+    "muebles a medida y de China",
+    "iluminación, sanitarios, textiles, decoración",
+    "entrega, montaje y estilismo final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Un solo contratista en lugar de diez",
+   [
+    "Un proyecto de diseño suele «romperse» en la obra: la cuadrilla simplifica detalles, el proveedor cambia piezas y los muebles no caben en los huecos. Asumimos la ejecución completa, desde la obra gruesa hasta los muebles colocados y las cortinas colgadas, y respondemos del resultado como un solo equipo.",
+    "Trabajamos con proyectos de otros diseñadores: si lo desea, coordinamos las soluciones con el autor y, si no hay dirección de diseño contratada, nuestro arquitecto vela por que cada detalle coincida con los planos. Cualquier cambio se acuerda con usted por escrito."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1xqY1KZo2JY5xq-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1HMtnMX7Fgpwg5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ]
+ ],
+ "steps": [
+  [
+   "Revisión",
+   "Comprobamos planos, mediciones y el inmueble."
+  ],
+  [
+   "Presupuesto y calendario",
+   "Obras, materiales, muebles: por partidas y fechas."
+  ],
+  [
+   "Obra",
+   "Obra gruesa, instalaciones y acabados según planos."
+  ],
+  [
+   "Compras",
+   "Materiales, muebles, luz y decoración según mediciones."
+  ],
+  [
+   "Entrega",
+   "Muebles montados, estilismo, 12 meses de garantía."
+  ]
+ ],
+ "faq": [
+  [
+   "¿Ejecutan proyectos de otros diseñadores?",
+   "Sí. Primero revisamos planos y mediciones, completamos los detalles que faltan y calculamos el presupuesto."
+  ],
+  [
+   "¿Cuánto cuesta la ejecución?",
+   "Reforma desde $550 por m², oficinas desde $350 por m², amueblamiento desde $250 por m². Si la obra la hace CAS, el total queda dentro del ±5% del presupuesto."
+  ],
+  [
+   "¿Se pueden sustituir piezas caras?",
+   "Sí, proponemos equivalentes, también muebles, iluminación y materiales directos de fábricas en China. Cada cambio se acuerda por escrito."
+  ],
+  [
+   "¿Qué garantía dan?",
+   "12 meses en las obras realizadas."
+  ]
+ ],
+ "rel": [
+  [
+   "/es/diseno-interiores",
+   "Diseño de interiores"
+  ],
+  [
+   "/es/reforma-llave-en-mano",
+   "Reforma llave en mano"
+  ],
+  [
+   "/es/construccion-de-casas",
+   "Construcción de casas"
+  ],
+  [
+   "/es/amueblamiento-llave-en-mano",
+   "Amueblamiento llave en mano"
+  ],
+  [
+   "/es/negocio-llave-en-mano",
+   "Locales comerciales llave en mano"
+  ],
+  [
+   "/es/preguntas-frecuentes",
+   "Preguntas frecuentes"
+  ],
+  [
+   "/es/contacto",
+   "Contacto"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

@@ -1,0 +1,162 @@
+{
+ "slug": "index",
+ "lang": "en",
+ "service": "All services",
+ "title": "CAS Development — interior design, renovation and construction in Kyiv",
+ "description": "Kyiv studio since 2016: interior design from $30/m², turnkey renovation from $550/m², house construction, furnishing direct from China. 150+ projects.",
+ "h1": "Interior design, renovation and turnkey construction — from Kyiv to clients worldwide",
+ "price": "design from $30 / m² · renovation from $550 / m² · construction from $600 / m²",
+ "lead": "CAS Development is an interior design and architecture studio founded in Kyiv in 2016. 150+ completed projects: apartments, private houses, villas, restaurants, salons and offices. One team takes you from the first sketch to handing over the keys — and sources furniture directly from factories in China.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "What we do",
+   "items": [
+    {
+     "h": "Interior design",
+     "href": "/en/interior-design",
+     "price": "from $30 / m² · minimum project $2 500",
+     "p": "Layouts, 3D visualisations, working drawings and specifications that any contractor can build from.",
+     "more": "Learn more"
+    },
+    {
+     "h": "Design implementation",
+     "href": "/en/design-implementation",
+     "price": "renovation from $550 / m² · furnishing from $250 / m²",
+     "p": "We build your design project — ours or another designer’s — exactly as in the visualisations.",
+     "more": "Learn more"
+    },
+    {
+     "h": "Turnkey renovation",
+     "href": "/en/turnkey-renovation",
+     "price": "apartments and houses from $550 / m² · offices from $350 / m²",
+     "p": "Full cycle with our own crews: rough and finishing works, engineering, materials, clean-up.",
+     "more": "Learn more"
+    },
+    {
+     "h": "House construction",
+     "href": "/en/house-construction",
+     "price": "shell from $600 / m² · turnkey with finishing from $1 100 / m²",
+     "p": "Private houses and cottages from foundation and roof to interiors and landscaping.",
+     "more": "Learn more"
+    },
+    {
+     "h": "Turnkey furnishing",
+     "href": "/en/turnkey-furnishing",
+     "price": "from $250 / m²",
+     "p": "Furniture, lighting, textiles and decor selected to the design and delivered, assembled and styled.",
+     "more": "Learn more"
+    },
+    {
+     "h": "Turnkey business premises",
+     "href": "/en/business-fit-out",
+     "price": "design from $30 / m² · furnishing from $500",
+     "p": "Cafés, restaurants, salons, shops and offices: design, fit-out, furnishing and launch in one pair of hands.",
+     "more": "Learn more"
+    }
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Why clients choose CAS",
+   "p": [
+    "Design, renovation and supply are run by one company, so there are no gaps between contractors and no arguments about who is responsible. The estimate is prepared before work starts — and if our team does the renovation, the final cost stays within ±5% of it.",
+    "We work with clients in Ukraine, Europe and further afield: houses and villas have been designed for the USA and the UAE. The whole design process can run online, and the drawings are detailed enough for your local contractor.",
+    "Furniture, lighting and materials are sourced directly from manufacturers in China, which gives better quality for the same budget than retail."
+   ]
+  },
+  {
+   "t": "gallery",
+   "h2": "Selected projects",
+   "items": [
+    [
+     "img/p/18V9n96tOhjKjh-900.webp",
+     "USA House · USA"
+    ],
+    [
+     "img/p/1uBxYPk7W36Rp0-900.webp",
+     "Dubai Villa · UAE"
+    ],
+    [
+     "img/p/1MslU7S5X8gIEp-900.webp",
+     "Linden Penthouse · Kyiv"
+    ],
+    [
+     "img/p/1Grj8_m7MJwsbE-900.webp",
+     "Hodos Villa · Kyiv"
+    ],
+    [
+     "img/p/18ej1fH-11uoyr-900.webp",
+     "Yacht Restaurant"
+    ],
+    [
+     "img/p/1A9yy4nI-gf9h3-900.webp",
+     "Kitana Beach · resort"
+    ],
+    [
+     "img/p/1FRa0FI6iMHK5L-900.webp",
+     "Hoda Estate · Carpathians"
+    ],
+    [
+     "img/p/1xqY1KZo2JY5xq-900.webp",
+     "Tetris Hall · Kyiv"
+    ]
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "How we work",
+   "items": [
+    [
+     "Brief",
+     "A meeting or video call about the property, your lifestyle, budget and timeline."
+    ],
+    [
+     "Design project",
+     "Layout options, 3D visualisations and a full set of drawings."
+    ],
+    [
+     "Estimate and contract",
+     "Price, timeline and payment stages fixed before work begins."
+    ],
+    [
+     "Renovation and supply",
+     "Our crews, material purchasing, regular photo reports."
+    ],
+    [
+     "Handover",
+     "Furniture installed, space styled, 12-month warranty on works."
+    ]
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "faq",
+   "h2": "Questions and answers",
+   "items": [
+    [
+     "How much does interior design cost?",
+     "From $30 per m², with a minimum project budget of $2 500. We confirm the exact price after the brief."
+    ],
+    [
+     "Can you design a home outside Ukraine?",
+     "Yes. The design can be done fully online, and the drawings and specifications are ready for your local contractor."
+    ],
+    [
+     "Do you also build?",
+     "Yes. Renovation of apartments and houses from $550 per m², offices from $350 per m², house construction from $600 per m², turnkey with finishing from $1 100 per m²."
+    ],
+    [
+     "How do we get in touch?",
+     "Via WhatsApp, Telegram, Viber or the form below — we reply shortly."
+    ]
+   ]
+  }
+ ]
+}

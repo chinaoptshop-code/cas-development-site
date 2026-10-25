@@ -1,0 +1,94 @@
+{
+ "slug": "contacto",
+ "lang": "es",
+ "kind": "contact",
+ "service": "Contacto",
+ "title": "Contacto — CAS Development, Kiev (Ucrania)",
+ "description": "Contacte con CAS Development: +380 97 866 77 55 (teléfono, WhatsApp, Telegram, Viber), calle Antonovycha 44, Kiev. Consulta gratuita.",
+ "h1": "Hablemos de su espacio",
+ "lead": "Cuéntenos sobre su inmueble y le propondremos una solución acorde a su estilo y presupuesto. La consulta es gratuita; en el formulario solo el teléfono es obligatorio.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "facts": false,
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Cómo contactarnos",
+   "items": [
+    {
+     "h": "Oficina",
+     "p": "Calle Antonovycha 44, Kiev, Ucrania"
+    },
+    {
+     "h": "Teléfono",
+     "price": "+380 97 866 77 55",
+     "p": "El mismo número funciona en WhatsApp, Telegram y Viber.",
+     "href": "tel:+380978667755",
+     "more": "Llamar"
+    },
+    {
+     "h": "Mensajería",
+     "p": "Escríbanos cuando quiera: respondemos en breve.",
+     "li": [
+      "Telegram: t.me/+380978667755",
+      "WhatsApp: wa.me/380978667755",
+      "Viber: +380 97 866 77 55"
+     ]
+    },
+    {
+     "h": "Instagram",
+     "p": "Proyectos y obras en curso: @cas_development",
+     "href": "https://www.instagram.com/cas_development/",
+     "more": "Abrir Instagram"
+    }
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "¿Quiere conocer el presupuesto de antemano?",
+   "p": [
+    "Diseño desde $30/m², reforma desde $550/m², oficinas desde $350/m², construcción desde $600/m², amueblamiento desde $250/m². La cifra final llega con el presupuesto tras la consulta."
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Otros servicios",
+   "items": [
+    [
+     "/es/servicios",
+     "Todos los servicios"
+    ],
+    [
+     "/es/diseno-interiores",
+     "Diseño de interiores"
+    ],
+    [
+     "/es/ejecucion-proyecto-diseno",
+     "Ejecución del proyecto de diseño"
+    ],
+    [
+     "/es/reforma-llave-en-mano",
+     "Reforma llave en mano"
+    ],
+    [
+     "/es/construccion-de-casas",
+     "Construcción de casas"
+    ],
+    [
+     "/es/amueblamiento-llave-en-mano",
+     "Amueblamiento llave en mano"
+    ],
+    [
+     "/es/negocio-llave-en-mano",
+     "Locales comerciales llave en mano"
+    ],
+    [
+     "/es/preguntas-frecuentes",
+     "Preguntas frecuentes"
+    ]
+   ]
+  }
+ ]
+}

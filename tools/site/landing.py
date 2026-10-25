@@ -23,6 +23,7 @@ from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import chrome  # єдина шапка/футер (tools/site/chrome.py)
+import i18n  # мови, словники, hreflang-кластери (tools/site/i18n.py)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 B = 'https://cas-develop.com/'
@@ -30,10 +31,12 @@ TPL = {'uk': 'remont-kukhni-kyiv.html', 'ru': 'ru/remont-kvartir-kiev.html'}
 L = {
     'uk': dict(home='Головна', home_url='/', svc='Послуги', svc_url='/services', inc='Що входить', proj='Наші проєкти',
                steps='Як працюємо', faq='Питання та відповіді', rel='Інші послуги', alt=' — проєкт CAS Development',
-               city='Київ', region='Київська область', country='Україна', europe='Європа', other='На русском'),
+               city='Київ', region='Київська область', country='Україна', europe='Європа', other='На русском',
+               cta='Отримати кошторис', all_portfolio='Усе портфоліо', sections='Розділи'),
     'ru': dict(home='Главная', home_url='/ru/', svc='Услуги', svc_url='/ru/', inc='Что входит', proj='Наши проекты',
                steps='Как мы работаем', faq='Вопросы и ответы', rel='Другие услуги', alt=' — проект CAS Development',
-               city='Киев', region='Киевская область', country='Украина', europe='Европа', other='Українською'),
+               city='Киев', region='Киевская область', country='Украина', europe='Европа', other='Українською',
+               cta='Получить смету', all_portfolio='Всё портфолио', sections='Разделы'),
 }
 FACTS = {
     'uk': [('150+', 'реалізованих проєктів'), ('2016', 'працюємо з цього року'), ('12 міс.', 'гарантія на роботи'), ('Китай', 'меблі й матеріали напряму')],
@@ -53,6 +56,48 @@ GUAR = {
         ('Договор и оплата по этапам', 'Цену, сроки и этапы оплаты фиксируем в договоре до начала работ.'),
         ('Фотоотчёты', 'Присылаем фото с объекта в Telegram — видно, как идёт ремонт, без поездок.')]),
 }
+
+
+# нові мови: підписи блоків, факти й гарантії — з tools/site/lang/<мова>.json ("landing"), шаблон — uk з перекладом
+# рядків форми й нижньої панелі ("form": ключ → текст, див. FORM_UK)
+for _l in i18n.LANGS:
+    _d = i18n.ui(_l)
+    if _l not in L and _d:
+        L[_l] = _d['landing']
+        FACTS[_l] = [tuple(x) for x in _d['landing']['facts']]
+        GUAR[_l] = (_d['landing']['guar'][0], [tuple(x) for x in _d['landing']['guar'][1]])
+        TPL[_l] = TPL['uk']
+# рядки uk-шаблону, які перекладаються для нових мов
+FORM_UK = {
+    'form_h2': '<h2>Розрахувати проєкт</h2>', 'name': '>Імʼя<', 'phone': '>Телефон *<', 'area': '>Площа, м²<', 'msg': '>Коментар<',
+    'ph_phone': 'placeholder="097 123 45 67"', 'ph_area': 'placeholder="напр. 200"', 'ph_msg': 'placeholder="Що за обʼєкт, де, бажані терміни"',
+    'send': '>Надіслати заявку<', 'ok_h': '>Заявку отримано<', 'ok_p': '>Звʼяжемося найближчим часом.<',
+    'mbar': 'aria-label="Швидкий зв\'язок"', 'call': '</svg>Подзвонити</a>',
+    'close': "'Закрити'", 'prev': "'Попереднє фото'", 'next': "'Наступне фото'", 'menu': "'Меню'",
+}
+
+
+def translate_tpl(s, lang):
+    f = i18n.ui(lang)['form']
+    for k, uk in FORM_UK.items():
+        assert uk in s, f'шаблон: нема рядка {uk}'
+        core = _core(uk)
+        if uk.startswith("'"):
+            new = f[k].replace("'", '’')
+        elif uk.startswith(('placeholder', 'aria')):
+            new = a(f[k])
+        else:
+            new = e(f[k])
+        s = s.replace(uk, uk.replace(core, new))
+    return s
+
+
+def _core(uk):
+    """Текстова частина рядка шаблону (без тегів/лапок)."""
+    if '="' in uk:
+        return uk.split('="', 1)[1].rstrip('"')
+    m = re.search(r'(?:>|\')([^<>"\']+)(?:<|\')', uk)
+    return m.group(1)
 
 
 def guarantees_html(lang):
@@ -77,11 +122,11 @@ a = lambda s: html.escape(s, quote=True)
 
 
 def url(lang, slug):
-    return B + ('ru/' if lang == 'ru' else '') + slug
+    return B + i18n.meta(lang)['prefix'] + ('' if slug == 'index' else slug)
 
 
 def path(lang, slug):
-    return ('ru/' if lang == 'ru' else '') + slug + '.html'
+    return i18n.meta(lang)['prefix'] + slug + '.html'
 
 
 def title_tag(t):
@@ -90,13 +135,14 @@ def title_tag(t):
 
 
 def faqs(p):
-    """Усі пари питання-відповідь: з "faq" або з груп "groups" (сторінка частих питань)."""
-    return p.get('faq') or [qa for g in p.get('groups', []) for qa in g['faq']]
+    """Усі пари питання-відповідь: з "faq", з груп "groups" (сторінка частих питань) або з секцій типу faq."""
+    return (p.get('faq') or [qa for g in p.get('groups', []) for qa in g['faq']]
+            or [qa for x in p.get('sections', []) if x['t'] == 'faq' for qa in x['items']])
 
 
 def groups_html(p):
     t = L[p['lang']]
-    o = ['<section><div class="w">', f'  <h2>{"Розділи" if p["lang"] == "uk" else "Разделы"}</h2>',
+    o = ['<section><div class="w">', f'  <h2>{t["sections"]}</h2>',
          '  <div class="rel">' + ''.join(f'<a href="#{g["id"]}">{e(g["h2"])}</a>' for g in p['groups']) + '</div>',
          '</div></section>\n']
     for g in p['groups']:
@@ -112,16 +158,74 @@ def groups_html(p):
     return o
 
 
+def gallery_html(lang, items, h2=None, more=True):
+    t = L[lang]
+    figs = []
+    for g in items:
+        src, cap = g[0], g[1]
+        alt = g[2] if len(g) > 2 else cap + t['alt']  # 3-й елемент — змістовний alt
+        w, h = Image.open(os.path.join(ROOT, src)).size
+        figs.append(f'<figure><img src="/{src}" loading="lazy" decoding="async" width="{w}" height="{h}" alt="{a(alt)}"><figcaption>{e(cap)}</figcaption></figure>')
+    return ['<section><div class="w">', f'  <h2>{e(h2 or t["proj"])}</h2>', '  <div class="gal">' + ''.join(figs) + '</div>'] + (
+        [f'  <p style="margin-top:18px"><a class="btn" href="/portfolio" hreflang="uk">{t["all_portfolio"]}</a></p>'] if more else []) + ['</div></section>\n']
+
+
+def section_html(lang, x):
+    """Секції сторінок без шаблону послуги (головна, послуги, про студію, контакти) — лише блоки UI-kit."""
+    t, k = L[lang], x['t']
+    h2 = f'  <h2>{e(x["h2"])}</h2>' if x.get('h2') else ''
+    sid = f' id="{x["id"]}"' if x.get('id') else ''
+    if k == 'cards':  # картки: заголовок (посилання), ціна, опис, пункти
+        cards = []
+        for c in x['items']:
+            ttl = f'<a href="{c["href"]}">{e(c["h"])}</a>' if c.get('href') else e(c['h'])
+            cards.append('<div class="card">' + f'<h3>{ttl}</h3>'
+                         + (f'<p style="color:var(--ac)">{e(c["price"])}</p>' if c.get('price') else '')
+                         + (f'<p>{e(c["p"])}</p>' if c.get('p') else '')
+                         + ('<ul>' + ''.join(f'<li>{e(i)}</li>' for i in c['li']) + '</ul>' if c.get('li') else '')
+                         + (f'<p style="margin-top:10px"><a href="{c["href"]}">{e(c["more"])} →</a></p>' if c.get('more') and c.get('href') else '')
+                         + '</div>')
+        return [f'<section{sid}><div class="w">', h2, '  <div class="grid">' + ''.join(cards) + '</div>', '</div></section>\n']
+    if k == 'text':
+        return [f'<section{sid}><div class="w txt">{h2.strip()}' + ''.join(f'<p>{e(p)}</p>' for p in x['p']) + '</div></section>\n']
+    if k == 'steps':
+        return [f'<section{sid}><div class="w">', h2,
+                '  <ol class="steps">' + ''.join(f'<li><div><b>{e(b)}</b><span>{e(s)}</span></div></li>' for b, s in x['items']) + '</ol>',
+                '</div></section>\n']
+    if k == 'guarantees':
+        return [guarantees_html(lang)]
+    if k == 'gallery':
+        return gallery_html(lang, x['items'], x.get('h2'), x.get('more', True))
+    if k == 'faq':
+        return [f'<section{sid}><div class="w">', h2,
+                '  ' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(v)}</p></details>' for q, v in x['items']), '</div></section>\n']
+    if k == 'rel':
+        return [f'<section{sid}><div class="w">', h2,
+                '  <div class="rel">' + ''.join(f'<a href="{u}"' + (' hreflang="uk"' if u in ('/portfolio',) else '') + f'>{e(n)}</a>' for u, n in x['items']) + '</div>',
+                '</div></section>\n']
+    raise ValueError(f'невідома секція {k}')
+
+
+def hero_html(p):
+    t = L[p['lang']]
+    if p.get('slug') == 'index':
+        crumbs = ''
+    elif p.get('groups') or p.get('sections'):
+        crumbs = f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / {e(p["h1"])}</div>\n'
+    else:
+        crumbs = f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / <a href="{t["svc_url"]}">{t["svc"]}</a> / {e(p["h1"])}</div>\n'
+    btn2 = p.get('btn2') or ['tel:+380978667755', '+380 97 866 77 55']
+    return [crumbs, '<div class="w hero">', f'  <h1>{e(p["h1"])}</h1>'] + ([f'  <div class="price">{e(p["price"])}</div>'] if p.get('price') else []) + [f'  <p>{e(p["lead"])}</p>',
+            '  <div class="btns">',
+            f'    <a class="btn main" href="#zayavka">{e(p.get("cta") or t["cta"])}</a>',
+            f'    <a class="btn" href="{btn2[0]}">{e(btn2[1])}</a>', '  </div>'] + (
+            ['  <div class="facts">' + ''.join(f'<div><b>{e(b)}</b><span>{e(s)}</span></div>' for b, s in p.get('facts', FACTS[p['lang']])) + '</div>']
+            if p.get('facts', True) else []) + ['</div>\n']
+
+
 def main_html(p):
     t = L[p['lang']]
-    crumb = '' if p.get('groups') else f' / <a href="{t["svc_url"]}">{t["svc"]}</a>'
-    o = [f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a>{crumb} / {e(p["h1"])}</div>\n',
-         '<div class="w hero">', f'  <h1>{e(p["h1"])}</h1>'] + ([f'  <div class="price">{e(p["price"])}</div>'] if p.get('price') else []) + [f'  <p>{e(p["lead"])}</p>',
-         '  <div class="btns">',
-         f'    <a class="btn main" href="#zayavka">{"Отримати кошторис" if p["lang"] == "uk" else "Получить смету"}</a>',
-         '    <a class="btn" href="tel:+380978667755">+380 97 866 77 55</a>', '  </div>',
-         '  <div class="facts">' + ''.join(f'<div><b>{e(b)}</b><span>{e(s)}</span></div>' for b, s in p.get('facts', FACTS[p['lang']])) + '</div>',
-         '</div>\n']
+    o = hero_html(p)
     if p.get('calc'):
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
         import calc
@@ -130,21 +234,17 @@ def main_html(p):
         o.append(p['extra'] + '\n')
     if p.get('groups'):
         return '\n'.join(o + groups_html(p))
+    if p.get('sections'):
+        for x in p['sections']:
+            o += section_html(p['lang'], x)
+        return '\n'.join(o)
     o += ['<section><div class="w">', f'  <h2>{t["inc"]}</h2>',
           '  <div class="grid">' + ''.join(f'<div class="card"><h3>{e(h)}</h3><ul>' + ''.join(f'<li>{e(i)}</li>' for i in li) + '</ul></div>' for h, li in p['cards']) + '</div>',
           '</div></section>\n']
     for h, ps in p.get('about', []):
         o.append(f'<section><div class="w txt"><h2>{e(h)}</h2>' + ''.join(f'<p>{e(x)}</p>' for x in ps) + '</div></section>\n')
     if p.get('gallery'):
-        figs = []
-        for g in p['gallery']:
-            src, cap = g[0], g[1]
-            alt = g[2] if len(g) > 2 else cap + t['alt']  # 3-й елемент — змістовний alt
-            w, h = Image.open(os.path.join(ROOT, src)).size
-            figs.append(f'<figure><img src="/{src}" loading="lazy" decoding="async" width="{w}" height="{h}" alt="{a(alt)}"><figcaption>{e(cap)}</figcaption></figure>')
-        o += ['<section><div class="w">', f'  <h2>{t["proj"]}</h2>', '  <div class="gal">' + ''.join(figs) + '</div>',
-              f'  <p style="margin-top:18px"><a class="btn" href="/portfolio">{"Усе портфоліо" if p["lang"] == "uk" else "Всё портфолио"}</a></p>',
-              '</div></section>\n']
+        o += gallery_html(p['lang'], p['gallery'])
     o += ['<section><div class="w">', f'  <h2>{t["steps"]}</h2>',
           '  <ol class="steps">' + ''.join(f'<li><div><b>{e(b)}</b><span>{e(s)}</span></div></li>' for b, s in p['steps']) + '</ol>',
           '</div></section>\n'] + ([guarantees_html(p['lang'])] if p.get('guarantees') else []) + [
@@ -158,22 +258,30 @@ def main_html(p):
 
 
 def ld(p):
-    t, u = L[p['lang']], url(p['lang'], p['slug'])
-    if p.get('groups'):
+    lang = p['lang']
+    t, u, hl = L[lang], url(lang, p['slug']), i18n.meta(lang)['hreflang']
+    home = B.rstrip('/') + t['home_url']
+    page = {'@type': {'about': 'AboutPage', 'contact': 'ContactPage'}.get(p.get('kind'), 'WebPage'), '@id': u + '#page', 'url': u,
+            'name': p['title'], 'inLanguage': hl, 'isPartOf': {'@type': 'WebSite', '@id': B + '#site', 'url': B, 'name': 'CAS Development'}}
+    if p.get('slug') == 'index':
+        page['about'] = ORG
+        g = [page]
+    elif p.get('groups') or p.get('sections'):
         g = [{'@type': 'BreadcrumbList', 'itemListElement': [
-                 {'@type': 'ListItem', 'position': 1, 'name': t['home'], 'item': B.rstrip('/') + t['home_url']},
-                 {'@type': 'ListItem', 'position': 2, 'name': p['h1'], 'item': u}]},
-             {'@type': 'FAQPage', '@id': u + '#faq', 'url': u, 'name': p['h1'], 'inLanguage': p['lang'],
-              'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': x}} for q, x in faqs(p)]}]
-        return json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False)
-    g = [{'@type': 'Service', 'name': p['service'], 'serviceType': p['service'],
-          'areaServed': area_served(p['lang']),
-          'provider': ORG, 'url': u},
-         {'@type': 'BreadcrumbList', 'itemListElement': [
-             {'@type': 'ListItem', 'position': 1, 'name': t['home'], 'item': B.rstrip('/') + t['home_url']},
-             {'@type': 'ListItem', 'position': 2, 'name': t['svc'], 'item': B.rstrip('/') + t['svc_url']},
-             {'@type': 'ListItem', 'position': 3, 'name': p['h1'], 'item': u}]},
-         {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': x}} for q, x in p['faq']]}]
+                 {'@type': 'ListItem', 'position': 1, 'name': t['home'], 'item': home},
+                 {'@type': 'ListItem', 'position': 2, 'name': p['h1'], 'item': u}]}, page]
+    else:
+        g = [{'@type': 'Service', 'name': p['service'], 'serviceType': p['service'], 'areaServed': area_served(lang), 'provider': ORG, 'url': u},
+             {'@type': 'BreadcrumbList', 'itemListElement': [
+                 {'@type': 'ListItem', 'position': 1, 'name': t['home'], 'item': home},
+                 {'@type': 'ListItem', 'position': 2, 'name': t['svc'], 'item': B.rstrip('/') + t['svc_url']},
+                 {'@type': 'ListItem', 'position': 3, 'name': p['h1'], 'item': u}]}, page]
+    qa = faqs(p)
+    if qa:
+        f = {'@type': 'FAQPage', 'inLanguage': hl, 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': x}} for q, x in qa]}
+        if p.get('groups'):
+            f.update({'@id': u + '#faq', 'url': u, 'name': p['h1']})
+        g.append(f)
     return json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False)
 
 
@@ -181,6 +289,8 @@ def build(p):
     lang, slug = p['lang'], p['slug']
     s = open(os.path.join(ROOT, TPL[lang]), encoding='utf-8').read()
     u = url(lang, slug)
+    if lang not in ('uk', 'ru'):
+        s = translate_tpl(i18n.html_attrs(s, lang), lang)
     if '.hero h1+p{' not in s:  # лід без ціни під H1 не має «злипатися» з заголовком
         s = s.replace('.hero p{color:var(--mu);max-width:60ch;margin:0 0 28px}', '.hero p{color:var(--mu);max-width:60ch;margin:0 0 28px}\n.hero h1+p{margin-top:14px}', 1)
     s = re.sub(r'<title>.*?</title>', f'<title>{e(title_tag(p["title"]))}</title>', s, count=1)
@@ -191,26 +301,34 @@ def build(p):
         s = re.sub(r'(<meta property="og:image" content=")[^"]*', lambda m: m.group(1) + B + p['og'], s, count=1)
     s = re.sub(r'(<link rel="canonical" href=")[^"]*', lambda m: m.group(1) + u, s, count=1)
     s = re.sub(r'<link rel="alternate" hreflang[^>]*>\n', '', s)
-    if p.get('pair'):
-        other = 'ru' if lang == 'uk' else 'uk'
+    members = i18n.cluster_of(u.replace(B.rstrip('/'), '') or '/')
+    if members is not None:  # сторінка з кластера (усі мови) — hreflang з tools/site/lang/clusters.json
+        members[lang] = u.replace(B.rstrip('/'), '') or '/'
+        s = i18n.set_alternates(s, members)
+    elif p.get('pair'):
         uk_u, ru_u = (u, url('ru', p['pair'])) if lang == 'uk' else (url('uk', p['pair']), u)
         alt = (f'<link rel="alternate" hreflang="uk" href="{uk_u}">\n<link rel="alternate" hreflang="ru" href="{ru_u}">\n'
                f'<link rel="alternate" hreflang="x-default" href="{uk_u}">\n')
         s = s.replace('<meta name="twitter:card"', alt + '<meta name="twitter:card"', 1)
-    s = re.sub(r'(<script type="application/ld\+json">\n?).*?(\n?</script>)', lambda m: m.group(1) + ld(p) + m.group(2), s, count=1, flags=re.S)
+    s = re.sub(r'(<script type="application/ld\+json">\n?).*?(\n?</script>)', lambda m: m.group(1) + ld(p).replace('</', '<\\/') + m.group(2), s, count=1, flags=re.S)
     s, n = re.subn(r'(<main\b[^>]*>)\n.*?(<section id="zayavka">)', lambda m: m.group(1) + '\n' + main_html(p) + m.group(2), s, count=1, flags=re.S)
     assert n == 1, f'{slug}: не знайдено <main>…<section id="zayavka"> у шаблоні'
+    if p.get('form_h2'):
+        s = re.sub(r'(<section id="zayavka"><div class="w">\s*<h2>)[^<]*', lambda m: m.group(1) + e(p['form_h2']), s, count=1)
     s = re.sub(r'data-service="[^"]*"', f'data-service="{a(p["service"])}"', s, count=1)
-    s = re.sub(r'data-source="[^"]*"', f'data-source="cas-develop.com/{"ru/" if lang == "ru" else ""}{slug}"', s, count=1)
+    src = 'cas-develop.com/' + i18n.meta(lang)['prefix'] + ('' if slug == 'index' else slug)
+    s = re.sub(r'data-source="[^"]*"', f'data-source="{src}"', s, count=1)
     # шапка й футер: мова, перемикач на пару (hreflang) і посилання — з chrome.py
     s = chrome.apply(s, path(lang, slug))
+    os.makedirs(os.path.dirname(os.path.join(ROOT, path(lang, slug))), exist_ok=True)
     open(os.path.join(ROOT, path(lang, slug)), 'w', encoding='utf-8').write(s)
     return path(lang, slug)
 
 
 def link_pair(p):
     """Додає hreflang і посилання на мову на парну сторінку, якщо її збирали не цим скриптом."""
-    if not p.get('pair'): return
+    if not p.get('pair') or i18n.cluster_of(url(p['lang'], p['slug']).replace(B.rstrip('/'), '') or '/') is not None:
+        return  # сторінки кластерів синхронізує i18n.sync()
     other = 'ru' if p['lang'] == 'uk' else 'uk'
     f = os.path.join(ROOT, path(other, p['pair']))
     if not os.path.exists(f): return
@@ -235,27 +353,39 @@ def check(p):
     errs = []
     txt = json.dumps(p, ensure_ascii=False)
     if re.search(r'osocor|осокор|osokork', txt, re.I): errs.append('Osocor')
-    ok = {'$30', '$350', '$550', '$250', '$600', '$1 100', '$50', '$2 500', '$500'}  # $500 — мін. замовлення Оздоби
-    for m in re.findall(r'\$\s?\d[\d ]*\d|\$\d', txt):
-        if m.strip() not in ok and not re.fullmatch(r'\$\d{2,3} \d{3}', m.strip()):  # розрахунок площа × ставка
+    ok = {'$30', '$350', '$550', '$250', '$600', '$1 100', '$1,100', '$50', '$2 500', '$2,500', '$500'}  # $500 — мін. замовлення Оздоби
+    for m in re.findall(r'\$\s?\d[\d ,.]*\d|\$\d', txt):
+        m = m.strip().rstrip(',.')
+        if m not in ok and not re.fullmatch(r'\$\d{2,3}[ ,.]\d{3}', m):  # розрахунок площа × ставка
             errs.append('ціна ' + m)
     if len(p['description']) > 165: errs.append('description > 165')
-    for g in p.get('gallery', []):
+    if p['lang'] not in L: errs.append('мова без словника: ' + p['lang'])
+    for g in p.get('gallery', []) + [i for x in p.get('sections', []) if x['t'] == 'gallery' for i in x['items']]:
         src = g[0]
         if not os.path.exists(os.path.join(ROOT, src)): errs.append('нема ' + src)
+    for h in re.findall(r'"(/[a-z0-9/-]*)"', txt):  # внутрішні посилання — на наявні сторінки
+        if not h.startswith(('/img/', '/assets/', '/fonts/')) and not i18n.exists(h) and h not in PENDING:
+            errs.append('посилання на неіснуючу сторінку ' + h)
     return errs
+
+
+PENDING = set()  # сторінки, що збираються в цьому ж запуску (посилання між новими сторінками)
 
 
 if __name__ == '__main__':
     only = set(sys.argv[1:])
     bad, built = 0, []
-    for f in sorted(glob.glob(os.path.join(ROOT, 'tools/site/pages/*.json'))):
-        p = json.load(open(f, encoding='utf-8'))
+    allp = [json.load(open(f, encoding='utf-8')) for f in sorted(glob.glob(os.path.join(ROOT, 'tools/site/pages/*.json')))]
+    PENDING.update('/' + i18n.meta(p['lang'])['prefix'] + ('' if p['slug'] == 'index' else p['slug']) for p in allp)
+    # головні сторінки мов — першими (перемикач мов показує лише мови з наявною головною)
+    allp.sort(key=lambda p: p['slug'] != 'index')
+    for p in allp:
         if only and p['slug'] not in only: continue
         errs = check(p)
         if errs:
-            bad = 1; print('❌', f, errs); continue
+            bad = 1; print('❌', p['lang'], p['slug'], errs); continue
         print('✓', build(p)); link_pair(p); built.append(url(p['lang'], p['slug']))
+    i18n.sync()  # повні hreflang-кластери і перемикач мов на всіх сторінках кластерів (у т.ч. ручних)
     import datetime
     sitemap(built, datetime.date.today().isoformat())
     sys.exit(bad)

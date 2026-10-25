@@ -1,0 +1,145 @@
+{
+ "slug": "preguntas-frecuentes",
+ "lang": "es",
+ "service": "Preguntas frecuentes",
+ "title": "Preguntas frecuentes: precios, plazos, garantía | CAS Development",
+ "description": "Respuestas a preguntas habituales: precios de diseño y reformas, etapas, garantía de 12 meses, presupuesto ±5% si la obra es de CAS, muebles de China y Ozdoba.",
+ "h1": "Preguntas frecuentes sobre diseño, reformas y amueblamiento",
+ "lead": "Las preguntas que más nos hacen: precios, etapas, garantía, proyecto de diseño y muebles de China. ¿No encuentra la suya? Deje una solicitud al final de la página y le responderemos personalmente.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "groups": [
+  {
+   "id": "precios",
+   "h2": "Precios y pago",
+   "faq": [
+    [
+     "¿Cuánto cuesta el proyecto de diseño de un piso?",
+     "Desde $30 por m², con un presupuesto mínimo de proyecto de $2 500."
+    ],
+    [
+     "¿Cuánto cuesta una reforma llave en mano?",
+     "Desde $550 por m² en pisos y casas, desde $350 por m² en oficinas. El importe exacto se fija en el presupuesto antes de empezar."
+    ],
+    [
+     "¿Y la construcción o el amueblamiento?",
+     "Construcción desde $600 por m², casa llave en mano con acabados desde $1 100 por m², amueblamiento llave en mano desde $250 por m²."
+    ]
+   ],
+   "links": [
+    [
+     "/es/reforma-llave-en-mano",
+     "Reforma llave en mano"
+    ],
+    [
+     "/es/diseno-interiores",
+     "Diseño de interiores"
+    ]
+   ]
+  },
+  {
+   "id": "garantia",
+   "h2": "Garantía y fiabilidad",
+   "faq": [
+    [
+     "¿Qué garantía tienen las obras?",
+     "12 meses."
+    ],
+    [
+     "¿Puede subir el coste durante la obra?",
+     "Si CAS Development ejecuta la reforma según nuestro proyecto, el total no se desvía del presupuesto aprobado más de un ±5%."
+    ],
+    [
+     "¿Cuántos proyectos han realizado?",
+     "Más de 150 desde 2016."
+    ]
+   ],
+   "links": [
+    [
+     "/es/sobre-nosotros",
+     "Sobre el estudio"
+    ]
+   ]
+  },
+  {
+   "id": "distancia",
+   "h2": "Trabajar desde el extranjero",
+   "faq": [
+    [
+     "¿Pueden trabajar conmigo si no estoy en Ucrania?",
+     "Sí. El briefing, las presentaciones y las aprobaciones se hacen en línea, y los planos quedan listos para un constructor local."
+    ],
+    [
+     "¿Cuál es la forma más fácil de contactar?",
+     "WhatsApp, Telegram o Viber en el +380 97 866 77 55, o el formulario al final de la página."
+    ]
+   ],
+   "links": [
+    [
+     "/es/contacto",
+     "Contacto"
+    ]
+   ]
+  },
+  {
+   "id": "ozdoba",
+   "h2": "Muebles de China y Ozdoba",
+   "faq": [
+    [
+     "¿Cómo se encargan muebles de China?",
+     "Acordamos muestras, colores y precio con transporte; la fábrica produce, revisamos la calidad y organizamos la entrega, que tarda 30–60 días."
+    ],
+    [
+     "¿Puedo comprar una sola pieza en Ozdoba?",
+     "No vendemos piezas sueltas. El pedido mínimo es de $500 y en él se pueden combinar artículos distintos."
+    ]
+   ],
+   "links": [
+    [
+     "/es/amueblamiento-llave-en-mano",
+     "Amueblamiento llave en mano"
+    ],
+    [
+     "/es/negocio-llave-en-mano",
+     "Locales comerciales llave en mano"
+    ]
+   ]
+  }
+ ],
+ "rel": [
+  [
+   "/es/servicios",
+   "Todos los servicios"
+  ],
+  [
+   "/es/diseno-interiores",
+   "Diseño de interiores"
+  ],
+  [
+   "/es/ejecucion-proyecto-diseno",
+   "Ejecución del proyecto de diseño"
+  ],
+  [
+   "/es/reforma-llave-en-mano",
+   "Reforma llave en mano"
+  ],
+  [
+   "/es/construccion-de-casas",
+   "Construcción de casas"
+  ],
+  [
+   "/es/amueblamiento-llave-en-mano",
+   "Amueblamiento llave en mano"
+  ],
+  [
+   "/es/negocio-llave-en-mano",
+   "Locales comerciales llave en mano"
+  ],
+  [
+   "/es/contacto",
+   "Contacto"
+  ]
+ ]
+}

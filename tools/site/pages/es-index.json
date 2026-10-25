@@ -1,0 +1,162 @@
+{
+ "slug": "index",
+ "lang": "es",
+ "service": "Todos los servicios",
+ "title": "CAS Development — interiorismo, reformas y construcción en Kiev",
+ "description": "Estudio en Kiev desde 2016: diseño de interiores desde $30/m², reforma llave en mano desde $550/m², construcción de casas, muebles directos de China.",
+ "h1": "Interiorismo, reformas y construcción llave en mano — desde Kiev para clientes de todo el mundo",
+ "price": "diseño desde $30 / m² · reforma desde $550 / m² · construcción desde $600 / m²",
+ "lead": "CAS Development es un estudio de interiorismo y arquitectura fundado en Kiev en 2016. Más de 150 proyectos realizados: pisos, casas, villas, restaurantes, salones y oficinas. Un solo equipo le acompaña desde el primer boceto hasta la entrega de llaves, y trae el mobiliario directamente de fábricas en China.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Qué hacemos",
+   "items": [
+    {
+     "h": "Diseño de interiores",
+     "href": "/es/diseno-interiores",
+     "price": "desde $30 / m² · proyecto mínimo $2 500",
+     "p": "Distribución, visualizaciones 3D, planos de ejecución y mediciones con los que puede trabajar cualquier constructor.",
+     "more": "Ver más"
+    },
+    {
+     "h": "Ejecución del proyecto de diseño",
+     "href": "/es/ejecucion-proyecto-diseno",
+     "price": "reforma desde $550 / m² · amueblamiento desde $250 / m²",
+     "p": "Ejecutamos su proyecto — nuestro o de otro diseñador — tal como en las visualizaciones.",
+     "more": "Ver más"
+    },
+    {
+     "h": "Reforma llave en mano",
+     "href": "/es/reforma-llave-en-mano",
+     "price": "viviendas desde $550 / m² · oficinas desde $350 / m²",
+     "p": "Ciclo completo con cuadrillas propias: obra gruesa, acabados, instalaciones, materiales y limpieza.",
+     "more": "Ver más"
+    },
+    {
+     "h": "Construcción de casas",
+     "href": "/es/construccion-de-casas",
+     "price": "estructura desde $600 / m² · llave en mano desde $1 100 / m²",
+     "p": "Casas y chalés desde la cimentación y la cubierta hasta los interiores y el jardín.",
+     "more": "Ver más"
+    },
+    {
+     "h": "Amueblamiento llave en mano",
+     "href": "/es/amueblamiento-llave-en-mano",
+     "price": "desde $250 / m²",
+     "p": "Muebles, iluminación, textiles y decoración según el proyecto: entrega, montaje y estilismo final.",
+     "more": "Ver más"
+    },
+    {
+     "h": "Locales comerciales llave en mano",
+     "href": "/es/negocio-llave-en-mano",
+     "price": "diseño desde $30 / m² · equipamiento desde $500",
+     "p": "Cafeterías, restaurantes, salones, tiendas y oficinas: diseño, obra, equipamiento y apertura en unas solas manos.",
+     "more": "Ver más"
+    }
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Por qué nos eligen",
+   "p": [
+    "Diseño, obra y suministro los gestiona una sola empresa: sin tiempos muertos entre gremios ni discusiones sobre responsabilidades. El presupuesto se cierra antes de empezar y, si la reforma la hace nuestro equipo, el coste final no se desvía más de un ±5%.",
+    "Trabajamos con clientes en Ucrania, Europa y otros países: hemos diseñado casas y villas para EE. UU. y los Emiratos. Todo el proceso de diseño puede hacerse en línea y los planos están listos para su constructor local.",
+    "Muebles, iluminación y materiales llegan directamente de fabricantes en China: más calidad por el mismo presupuesto que en la venta minorista."
+   ]
+  },
+  {
+   "t": "gallery",
+   "h2": "Proyectos destacados",
+   "items": [
+    [
+     "img/p/18V9n96tOhjKjh-900.webp",
+     "USA House · EE. UU."
+    ],
+    [
+     "img/p/1uBxYPk7W36Rp0-900.webp",
+     "Dubai Villa · EAU"
+    ],
+    [
+     "img/p/1MslU7S5X8gIEp-900.webp",
+     "Linden Penthouse · Kiev"
+    ],
+    [
+     "img/p/1Grj8_m7MJwsbE-900.webp",
+     "Hodos Villa · Kiev"
+    ],
+    [
+     "img/p/18ej1fH-11uoyr-900.webp",
+     "Yacht Restaurant"
+    ],
+    [
+     "img/p/1A9yy4nI-gf9h3-900.webp",
+     "Kitana Beach · complejo turístico"
+    ],
+    [
+     "img/p/1FRa0FI6iMHK5L-900.webp",
+     "Hoda Estate · Cárpatos"
+    ],
+    [
+     "img/p/1xqY1KZo2JY5xq-900.webp",
+     "Tetris Hall · Kiev"
+    ]
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "Cómo trabajamos",
+   "items": [
+    [
+     "Briefing",
+     "Reunión o videollamada sobre el inmueble, su forma de vivir, presupuesto y plazos."
+    ],
+    [
+     "Proyecto de diseño",
+     "Opciones de distribución, visualizaciones 3D y juego completo de planos."
+    ],
+    [
+     "Presupuesto y contrato",
+     "Precio, plazos y etapas de pago fijados antes de empezar."
+    ],
+    [
+     "Obra y suministro",
+     "Cuadrillas propias, compras, informes fotográficos periódicos."
+    ],
+    [
+     "Entrega",
+     "Muebles montados, espacio decorado, 12 meses de garantía en las obras."
+    ]
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "faq",
+   "h2": "Preguntas y respuestas",
+   "items": [
+    [
+     "¿Cuánto cuesta el diseño de interiores?",
+     "Desde $30 por m², con un presupuesto mínimo de proyecto de $2 500. El precio exacto se confirma tras el briefing."
+    ],
+    [
+     "¿Diseñan viviendas fuera de Ucrania?",
+     "Sí. El diseño puede hacerse íntegramente en línea y los planos y mediciones quedan listos para su constructor local."
+    ],
+    [
+     "¿También construyen?",
+     "Sí. Reformas de pisos y casas desde $550 por m², oficinas desde $350 por m², construcción desde $600 por m² y llave en mano con acabados desde $1 100 por m²."
+    ],
+    [
+     "¿Cómo contactamos?",
+     "Por WhatsApp, Telegram, Viber o el formulario de abajo; respondemos en breve."
+    ]
+   ]
+  }
+ ]
+}

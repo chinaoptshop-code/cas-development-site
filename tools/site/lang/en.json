@@ -1,0 +1,201 @@
+{
+ "_": "Словник мови: meta — код/назва/атрибути, chrome — шапка й футер (tools/site/chrome.py), landing — підписи блоків лендингів, form — форма заявки й нижня панель (tools/site/landing.py).",
+ "meta": {
+  "code": "EN",
+  "name": "English",
+  "html": "en",
+  "hreflang": "en",
+  "dir": "ltr",
+  "prefix": "en/",
+  "fonts": "latin"
+ },
+ "chrome": {
+  "nav_label": "Main menu",
+  "menu": "Menu",
+  "skip": "Skip to content",
+  "menu_open": "Open menu",
+  "menu_close": "Close menu",
+  "lang_label": "Site language",
+  "cta": "Get a quote",
+  "home_label": "CAS Development — home",
+  "tagline": "Interior design, renovation and turnkey construction studio. Kyiv, Ukraine — since 2016.",
+  "contacts": "Contacts",
+  "address": "44 Antonovycha St., Kyiv, Ukraine",
+  "msg": "Messengers",
+  "lang": "Language",
+  "copy": "© 2026 CAS Development · Kyiv, Ukraine",
+  "svc": "All studio services",
+  "svc_label": "Studio services",
+  "nav": [
+   [
+    "/en/services",
+    "Services"
+   ],
+   [
+    "/portfolio",
+    "Portfolio (UA)"
+   ],
+   [
+    "/en/about",
+    "About"
+   ],
+   [
+    "/en/faq",
+    "FAQ"
+   ],
+   [
+    "/en/contact",
+    "Contact"
+   ]
+  ],
+  "groups": [
+   [
+    "Design",
+    [
+     [
+      "/en/interior-design",
+      "Interior design"
+     ],
+     [
+      "/en/design-implementation",
+      "Design implementation"
+     ]
+    ]
+   ],
+   [
+    "Build & renovate",
+    [
+     [
+      "/en/turnkey-renovation",
+      "Turnkey renovation"
+     ],
+     [
+      "/en/house-construction",
+      "House construction"
+     ],
+     [
+      "/en/business-fit-out",
+      "Turnkey business premises"
+     ]
+    ]
+   ],
+   [
+    "Furnishing",
+    [
+     [
+      "/en/turnkey-furnishing",
+      "Turnkey furnishing"
+     ]
+    ]
+   ],
+   [
+    "Studio",
+    [
+     [
+      "/en/services",
+      "All services"
+     ],
+     [
+      "/en/about",
+      "About the studio"
+     ],
+     [
+      "/en/faq",
+      "FAQ"
+     ],
+     [
+      "/en/contact",
+      "Contact"
+     ],
+     [
+      "/portfolio",
+      "Portfolio (in Ukrainian)"
+     ]
+    ]
+   ]
+  ],
+  "cta_href": "/en/contact",
+  "privacy": [
+   "/en/privacy-policy",
+   "Privacy policy"
+  ]
+ },
+ "landing": {
+  "home": "Home",
+  "svc": "Services",
+  "inc": "What's included",
+  "proj": "Our projects",
+  "steps": "How we work",
+  "faq": "Questions and answers",
+  "rel": "Other services",
+  "alt": " — a CAS Development project",
+  "city": "Kyiv",
+  "region": "Kyiv Oblast",
+  "country": "Ukraine",
+  "europe": "Europe",
+  "other": "",
+  "cta": "Get a quote",
+  "all_portfolio": "Full portfolio (in Ukrainian)",
+  "sections": "Sections",
+  "facts": [
+   [
+    "150+",
+    "completed projects"
+   ],
+   [
+    "2016",
+    "in business since"
+   ],
+   [
+    "12 mo.",
+    "warranty on works"
+   ],
+   [
+    "China",
+    "direct furniture and materials sourcing"
+   ]
+  ],
+  "guar": [
+   "Guarantees",
+   [
+    [
+     "12-month warranty on works",
+     "We hand over the property with a signed acceptance certificate; all completed works carry a 12-month warranty."
+    ],
+    [
+     "Estimate within ±5% when CAS builds",
+     "We prepare the estimate before work starts. If our own team carries out the renovation, the final cost stays within ±5% of it."
+    ],
+    [
+     "Contract and staged payments",
+     "Price, timeline and payment stages are fixed in the contract before work begins."
+    ],
+    [
+     "Photo reports",
+     "We send photos from site via Telegram or WhatsApp, so you can follow progress without travelling."
+    ]
+   ]
+  ],
+  "home_url": "/en/",
+  "svc_url": "/en/services"
+ },
+ "form": {
+  "form_h2": "Tell us about your project",
+  "name": "Name",
+  "phone": "Phone / WhatsApp *",
+  "area": "Area, m²",
+  "msg": "Comment",
+  "ph_phone": "+44 7700 900123",
+  "ph_area": "e.g. 120",
+  "ph_msg": "Property type, location, preferred timeline",
+  "send": "Send request",
+  "ok_h": "Request received",
+  "ok_p": "We will get back to you shortly.",
+  "mbar": "Quick contact",
+  "call": "Call",
+  "close": "Close",
+  "prev": "Previous photo",
+  "next": "Next photo",
+  "menu": "Menu"
+ }
+}

@@ -1,0 +1,161 @@
+{
+ "slug": "diseno-interiores",
+ "lang": "es",
+ "service": "Diseño de interiores",
+ "title": "Estudio de diseño de interiores en Kiev — desde $30/m² | CAS Development",
+ "description": "Diseño de interiores de pisos, casas y locales: distribución, 3D, planos de ejecución y mediciones. Desde $30/m², en línea para clientes de otros países.",
+ "h1": "Diseño de interiores — en Kiev y en línea para todo el mundo",
+ "price": "desde $30 / m² · proyecto mínimo $2 500",
+ "lead": "CAS Development diseña interiores de pisos, casas y espacios comerciales. Proyectamos para que el interior pueda ejecutarse dentro del presupuesto, y si lo desea, lo ejecutamos nosotros.",
+ "cards": [
+  [
+   "Interiores residenciales",
+   [
+    "pisos y áticos",
+    "casas y villas",
+    "apartamentos de alquiler",
+    "estancias sueltas"
+   ]
+  ],
+  [
+   "Interiores comerciales",
+   [
+    "oficinas",
+    "restaurantes, cafeterías, bares",
+    "salones de belleza",
+    "hoteles y complejos turísticos"
+   ]
+  ],
+  [
+   "Qué incluye el proyecto",
+   [
+    "distribución y zonificación",
+    "visualizaciones 3D",
+    "planos de ejecución",
+    "mediciones y presupuesto"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Un estudio que piensa en la ejecución",
+   [
+    "Una imagen bonita es solo la mitad del trabajo. Diseñamos con precios reales de materiales, obra y mobiliario, para que el interior del 3D quepa en el presupuesto. Los planos están pensados para la obra: dónde van los enchufes, cómo va la iluminación, qué azulejo y dónde la junta.",
+    "Trabajamos en distintos estilos — minimalismo actual, neoclásico, loft, nórdico, japandi — y en nuestro portafolio hay áticos, casas, villas, restaurantes y oficinas en Kiev y en el extranjero.",
+    "Para clientes fuera de Ucrania todo el proceso puede ser en línea: usted envía planos, medidas y fotos o un vídeo, y recibe un juego completo de documentos para su constructor local."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1MslU7S5X8gIEp-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1YQyhjEui9fb6v-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1HMtnMX7Fgpwg5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/18ej1fH-11uoyr-900.webp",
+   "Yacht Restaurant"
+  ],
+  [
+   "img/p/1OGn3TXnLkQenE-900.webp",
+   "Yacht Restaurant"
+  ]
+ ],
+ "steps": [
+  [
+   "Briefing",
+   "Nos conocemos y hablamos de estilo, hábitos y presupuesto."
+  ],
+  [
+   "Distribución",
+   "Varias opciones de distribución para elegir."
+  ],
+  [
+   "Visualizaciones 3D",
+   "Cada estancia en 3D, con revisiones."
+  ],
+  [
+   "Planos",
+   "Documentación completa para la obra."
+  ],
+  [
+   "Ejecución",
+   "Si lo desea: obra, muebles y dirección de diseño."
+  ]
+ ],
+ "faq": [
+  [
+   "¿Cuánto cuesta el diseño de interiores?",
+   "Desde $30 por m², con un presupuesto mínimo de proyecto de $2 500."
+  ],
+  [
+   "¿Qué incluye el proyecto de diseño?",
+   "Distribución, visualizaciones 3D, planos de ejecución (electricidad, fontanería, techos, suelos), mediciones de materiales y muebles y presupuesto."
+  ],
+  [
+   "¿Cuánto tarda?",
+   "Depende de la superficie y de las revisiones; el plazo se fija en el contrato."
+  ],
+  [
+   "¿Trabajan a distancia?",
+   "Sí, diseñamos en línea inmuebles en otras ciudades y países."
+  ],
+  [
+   "¿También ejecutan el proyecto?",
+   "Sí: reforma desde $550 por m², compra de materiales, muebles y decoración. Si la obra la hace nuestro equipo, el presupuesto se mantiene dentro del ±5%."
+  ]
+ ],
+ "rel": [
+  [
+   "/es/ejecucion-proyecto-diseno",
+   "Ejecución del proyecto de diseño"
+  ],
+  [
+   "/es/reforma-llave-en-mano",
+   "Reforma llave en mano"
+  ],
+  [
+   "/es/construccion-de-casas",
+   "Construcción de casas"
+  ],
+  [
+   "/es/amueblamiento-llave-en-mano",
+   "Amueblamiento llave en mano"
+  ],
+  [
+   "/es/negocio-llave-en-mano",
+   "Locales comerciales llave en mano"
+  ],
+  [
+   "/es/preguntas-frecuentes",
+   "Preguntas frecuentes"
+  ],
+  [
+   "/es/contacto",
+   "Contacto"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

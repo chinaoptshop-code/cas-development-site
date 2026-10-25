@@ -1,0 +1,145 @@
+{
+ "slug": "faq",
+ "lang": "en",
+ "service": "FAQ",
+ "title": "FAQ: prices, timelines, warranty, design | CAS Development",
+ "description": "Answers to common questions: design and renovation prices, stages, 12-month warranty, ±5% estimate when CAS renovates, furniture from China and Ozdoba.",
+ "h1": "Frequently asked questions about design, renovation and furnishing",
+ "lead": "The questions clients ask most often — about prices, stages, warranty, the design project and furniture from China. Didn’t find yours? Leave a request at the bottom of the page and we will answer personally.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "groups": [
+  {
+   "id": "prices",
+   "h2": "Prices and payment",
+   "faq": [
+    [
+     "How much does an apartment design project cost?",
+     "From $30 per m², with a minimum project budget of $2 500."
+    ],
+    [
+     "How much does turnkey renovation cost?",
+     "From $550 per m² for apartments and houses, from $350 per m² for offices. The exact amount is fixed in the estimate before the start."
+    ],
+    [
+     "And construction or furnishing?",
+     "Construction from $600 per m², a turnkey house with finishing from $1 100 per m², turnkey furnishing from $250 per m²."
+    ]
+   ],
+   "links": [
+    [
+     "/en/turnkey-renovation",
+     "Turnkey renovation"
+    ],
+    [
+     "/en/interior-design",
+     "Interior design"
+    ]
+   ]
+  },
+  {
+   "id": "warranty",
+   "h2": "Warranty and reliability",
+   "faq": [
+    [
+     "What is the warranty on works?",
+     "12 months."
+    ],
+    [
+     "Can the renovation cost grow during the process?",
+     "If CAS Development carries out the renovation to our project, the total does not deviate from the approved estimate by more than ±5%."
+    ],
+    [
+     "How many projects have you completed?",
+     "150+ projects since 2016."
+    ]
+   ],
+   "links": [
+    [
+     "/en/about",
+     "About the studio"
+    ]
+   ]
+  },
+  {
+   "id": "remote",
+   "h2": "Working from abroad",
+   "faq": [
+    [
+     "Can you work with me if I am not in Ukraine?",
+     "Yes. The brief, presentations and approvals run online, and the drawings are ready for a local contractor."
+    ],
+    [
+     "What is the easiest way to contact you?",
+     "WhatsApp, Telegram or Viber at +380 97 866 77 55, or the form at the bottom of the page."
+    ]
+   ],
+   "links": [
+    [
+     "/en/contact",
+     "Contact"
+    ]
+   ]
+  },
+  {
+   "id": "ozdoba",
+   "h2": "Furniture from China and Ozdoba",
+   "faq": [
+    [
+     "How does ordering furniture from China work?",
+     "We agree samples, colours and price with delivery; the factory produces, we check quality and arrange delivery. Delivery takes 30–60 days."
+    ],
+    [
+     "Can I buy a single item from Ozdoba?",
+     "We do not sell single pieces. The minimum order is $500, and different items can be combined in it."
+    ]
+   ],
+   "links": [
+    [
+     "/en/turnkey-furnishing",
+     "Turnkey furnishing"
+    ],
+    [
+     "/en/business-fit-out",
+     "Turnkey business premises"
+    ]
+   ]
+  }
+ ],
+ "rel": [
+  [
+   "/en/services",
+   "All services"
+  ],
+  [
+   "/en/interior-design",
+   "Interior design"
+  ],
+  [
+   "/en/design-implementation",
+   "Design implementation"
+  ],
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/house-construction",
+   "House construction"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Turnkey furnishing"
+  ],
+  [
+   "/en/business-fit-out",
+   "Turnkey business premises"
+  ],
+  [
+   "/en/contact",
+   "Contact"
+  ]
+ ]
+}

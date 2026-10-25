@@ -1,0 +1,201 @@
+{
+ "_": "Словник мови: meta — код/назва/атрибути, chrome — шапка й футер (tools/site/chrome.py), landing — підписи блоків лендингів, form — форма заявки й нижня панель (tools/site/landing.py).",
+ "meta": {
+  "code": "ES",
+  "name": "Español",
+  "html": "es",
+  "hreflang": "es",
+  "dir": "ltr",
+  "prefix": "es/",
+  "fonts": "latin"
+ },
+ "chrome": {
+  "nav_label": "Menú principal",
+  "menu": "Menú",
+  "skip": "Saltar al contenido",
+  "menu_open": "Abrir menú",
+  "menu_close": "Cerrar menú",
+  "lang_label": "Idioma del sitio",
+  "cta": "Pedir presupuesto",
+  "home_label": "CAS Development — inicio",
+  "tagline": "Estudio de interiorismo, reformas y construcción llave en mano. Kiev, Ucrania, desde 2016.",
+  "contacts": "Contacto",
+  "address": "Calle Antonovycha 44, Kiev, Ucrania",
+  "msg": "Mensajería",
+  "lang": "Idioma",
+  "copy": "© 2026 CAS Development · Kiev, Ucrania",
+  "svc": "Todos los servicios",
+  "svc_label": "Servicios del estudio",
+  "nav": [
+   [
+    "/es/servicios",
+    "Servicios"
+   ],
+   [
+    "/portfolio",
+    "Portafolio (UA)"
+   ],
+   [
+    "/es/sobre-nosotros",
+    "Estudio"
+   ],
+   [
+    "/es/preguntas-frecuentes",
+    "Preguntas"
+   ],
+   [
+    "/es/contacto",
+    "Contacto"
+   ]
+  ],
+  "groups": [
+   [
+    "Diseño",
+    [
+     [
+      "/es/diseno-interiores",
+      "Diseño de interiores"
+     ],
+     [
+      "/es/ejecucion-proyecto-diseno",
+      "Ejecución del proyecto"
+     ]
+    ]
+   ],
+   [
+    "Obras",
+    [
+     [
+      "/es/reforma-llave-en-mano",
+      "Reforma llave en mano"
+     ],
+     [
+      "/es/construccion-de-casas",
+      "Construcción de casas"
+     ],
+     [
+      "/es/negocio-llave-en-mano",
+      "Locales comerciales llave en mano"
+     ]
+    ]
+   ],
+   [
+    "Amueblamiento",
+    [
+     [
+      "/es/amueblamiento-llave-en-mano",
+      "Amueblamiento llave en mano"
+     ]
+    ]
+   ],
+   [
+    "Estudio",
+    [
+     [
+      "/es/servicios",
+      "Todos los servicios"
+     ],
+     [
+      "/es/sobre-nosotros",
+      "Sobre el estudio"
+     ],
+     [
+      "/es/preguntas-frecuentes",
+      "Preguntas frecuentes"
+     ],
+     [
+      "/es/contacto",
+      "Contacto"
+     ],
+     [
+      "/portfolio",
+      "Portafolio (en ucraniano)"
+     ]
+    ]
+   ]
+  ],
+  "cta_href": "/es/contacto",
+  "privacy": [
+   "/es/privacidad",
+   "Política de privacidad"
+  ]
+ },
+ "landing": {
+  "home": "Inicio",
+  "svc": "Servicios",
+  "inc": "Qué incluye",
+  "proj": "Nuestros proyectos",
+  "steps": "Cómo trabajamos",
+  "faq": "Preguntas y respuestas",
+  "rel": "Otros servicios",
+  "alt": " — proyecto de CAS Development",
+  "city": "Kiev",
+  "region": "Óblast de Kiev",
+  "country": "Ucrania",
+  "europe": "Europa",
+  "other": "",
+  "cta": "Pedir presupuesto",
+  "all_portfolio": "Portafolio completo (en ucraniano)",
+  "sections": "Secciones",
+  "facts": [
+   [
+    "150+",
+    "proyectos realizados"
+   ],
+   [
+    "2016",
+    "año de fundación"
+   ],
+   [
+    "12 meses",
+    "de garantía en las obras"
+   ],
+   [
+    "China",
+    "muebles y materiales directos de fábrica"
+   ]
+  ],
+  "guar": [
+   "Garantías",
+   [
+    [
+     "Garantía de 12 meses en las obras",
+     "Entregamos la obra con acta firmada; todos los trabajos realizados tienen 12 meses de garantía."
+    ],
+    [
+     "Presupuesto ±5% si la obra la hace CAS",
+     "Elaboramos el presupuesto antes de empezar. Si la reforma la ejecuta nuestro equipo, el coste final no se desvía más de un ±5%."
+    ],
+    [
+     "Contrato y pago por etapas",
+     "Precio, plazos y etapas de pago quedan fijados en el contrato antes de empezar."
+    ],
+    [
+     "Informes fotográficos",
+     "Enviamos fotos de la obra por Telegram o WhatsApp: ve el avance sin desplazarse."
+    ]
+   ]
+  ],
+  "home_url": "/es/",
+  "svc_url": "/es/servicios"
+ },
+ "form": {
+  "form_h2": "Cuéntenos su proyecto",
+  "name": "Nombre",
+  "phone": "Teléfono / WhatsApp *",
+  "area": "Superficie, m²",
+  "msg": "Comentario",
+  "ph_phone": "+34 612 345 678",
+  "ph_area": "p. ej. 120",
+  "ph_msg": "Tipo de inmueble, ubicación, plazos deseados",
+  "send": "Enviar solicitud",
+  "ok_h": "Solicitud recibida",
+  "ok_p": "Nos pondremos en contacto con usted en breve.",
+  "mbar": "Contacto rápido",
+  "call": "Llamar",
+  "close": "Cerrar",
+  "prev": "Foto anterior",
+  "next": "Foto siguiente",
+  "menu": "Menú"
+ }
+}
