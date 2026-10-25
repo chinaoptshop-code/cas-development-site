@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 604 (MAIN 5, LAND 359, інші 240). HTML разом 31609 КБ, з них інлайн CSS 12083 КБ і JS 4377 КБ.
+Сторінок: 606 (MAIN 5, LAND 361, інші 240). HTML разом 31677 КБ, з них інлайн CSS 12104 КБ і JS 4378 КБ.
 
 ## Проблеми
 
@@ -9,8 +9,8 @@
 
 ## Токени
 
-- `--mu`: {'#6A6153': 5, '#938c84': 584, '#87807C': 1}
-- `--bg2`: {'#100e0c': 584, '#EDEBE4': 5}
+- `--mu`: {'#6A6153': 5, '#938c84': 586, '#87807C': 1}
+- `--bg2`: {'#100e0c': 586, '#EDEBE4': 5}
 - Копій адреси вебхука форми: 6 на 5 сторінках
 
 ## Сторінки
@@ -18,7 +18,7 @@
 | сторінка | тип | HTML КБ | gzip КБ | CSS КБ | JS КБ | розмірів шрифту | тегів |
 |---|---|---|---|---|---|---|---|
 | portfolio.html | main | 252.4 | 42.3 | 48.4 | 43.0 | 26 | 1745 |
-| index.html | main | 156.8 | 36.2 | 51.2 | 45.7 | 25 | 631 |
+| index.html | main | 158.9 | 36.8 | 52.1 | 45.7 | 25 | 640 |
 | contact.html | main | 125.3 | 32.3 | 56.5 | 45.7 | 22 | 330 |
 | services.html | main | 118.9 | 29.7 | 45.2 | 39.6 | 20 | 444 |
 | about.html | main | 118.8 | 30.7 | 48.8 | 39.6 | 21 | 389 |
@@ -331,6 +331,7 @@
 | ru/remont-kvartiry-zhk-taryan-towers.html | land | 50.8 | 14.0 | 13.7 | 7.0 | 6 | 389 |
 | ru/remont-restorana-kafe-kiev.html | land | 50.8 | 14.0 | 13.7 | 7.0 | 6 | 398 |
 | budynok-pid-kliuch-koncha-zaspa.html | land | 50.7 | 13.9 | 13.7 | 7.0 | 6 | 401 |
+| dyzain-interieru-kyiv.html | land | 50.7 | 13.7 | 13.5 | 7.0 | 6 | 402 |
 | pytannya.html | land | 50.7 | 13.0 | 13.7 | 7.0 | 6 | 347 |
 | remont-kvartyry-zhk-taryan-towers.html | land | 50.7 | 14.0 | 13.7 | 7.0 | 6 | 389 |
 | ru/remont-kvartiry-zhk-maxima-residence.html | land | 50.7 | 13.9 | 13.7 | 7.0 | 6 | 389 |
@@ -362,7 +363,6 @@
 | ru/remont-kvartiry-zhk-novyy-avtograf.html | land | 50.1 | 13.8 | 13.7 | 7.0 | 6 | 387 |
 | ru/remont-kvartiry-zhk-senat.html | land | 50.1 | 13.9 | 13.7 | 7.0 | 6 | 387 |
 | ru/remont-kvartiry-zhk-unit-home.html | land | 50.1 | 13.8 | 13.7 | 7.0 | 6 | 387 |
-| dyzain-interieru-kyiv.html | land | 50.0 | 13.5 | 13.5 | 7.0 | 6 | 394 |
 | remont-kvartyry-zhk-senat.html | land | 50.0 | 13.9 | 13.7 | 7.0 | 6 | 387 |
 | ru/remont-kvartiry-zhk-montreal-house.html | land | 50.0 | 13.8 | 13.7 | 7.0 | 6 | 387 |
 | rekonstruktsiia-budynku-kyiv.html | land | 49.9 | 13.7 | 13.7 | 7.0 | 6 | 392 |
@@ -611,6 +611,8 @@
 | proekty/dubai-villa.html | land | 34.2 | 7.3 | 2.0 | 0.9 | 0 | 352 |
 | es/privacidad.html | land | 33.5 | 10.2 | 13.6 | 7.0 | 9 | 201 |
 | en/privacy-policy.html | land | 33.0 | 10.0 | 13.6 | 7.0 | 9 | 206 |
+| konfigurator.html | land | 32.8 | 9.6 | 9.9 | 0.6 | 5 | 314 |
+| ru/konfigurator.html | land | 32.7 | 9.6 | 9.9 | 0.6 | 5 | 314 |
 | proekty/usa-house.html | land | 30.3 | 6.8 | 2.0 | 0.9 | 0 | 326 |
 | proekty/yacht-restaurant.html | land | 28.4 | 6.7 | 2.0 | 0.9 | 0 | 308 |
 | proekty/tetris-hall.html | land | 28.3 | 6.8 | 2.0 | 0.9 | 0 | 311 |
