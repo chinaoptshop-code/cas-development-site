@@ -1,0 +1,124 @@
+/* CAS — конфігуратор інтерʼєру. Джерело: tools/konfigurator/kf.css → assets/konfigurator/kf.css (page.py) */
+.kf-stage{position:relative;height:calc(100svh - var(--sch-h,64px));min-height:580px;max-height:1080px;overflow:hidden;background:#0b0a0b;isolation:isolate;touch-action:pan-y}
+.kf-stage.kf-pan{touch-action:pan-y}
+#kfPoster,#kfCv{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+#kfCv{opacity:0;transition:opacity .6s ease}
+.kf-ready #kfCv{opacity:1}
+.kf-shade{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,7,9,.62) 0,rgba(8,7,9,.18) 26%,rgba(8,7,9,0) 46%,rgba(8,7,9,0) 70%,rgba(8,7,9,.55) 100%)}
+.kf-head{position:absolute;left:clamp(16px,3vw,40px);top:clamp(16px,3vh,36px);z-index:3;max-width:min(520px,calc(100% - 460px));pointer-events:none}
+.kf-eyebrow{display:block;font-size:var(--fs-small);letter-spacing:.18em;text-transform:uppercase;color:var(--ac);margin-bottom:10px;font-weight:600}
+.kf-head h1{font-size:clamp(2.1rem,1.3rem + 2.6vw,3.9rem);text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.kf-head p{margin:12px 0 0;color:#e6dfd4;max-width:44ch;text-shadow:0 1px 12px rgba(0,0,0,.6);font-size:var(--fs-body)}
+.kf-bar{position:absolute;left:clamp(16px,3vw,40px);bottom:clamp(16px,3vh,32px);z-index:3;display:flex;flex-wrap:wrap;gap:10px;align-items:center;max-width:calc(100% - 460px)}
+.kf-glass{background:rgba(16,14,12,.58);-webkit-backdrop-filter:blur(18px) saturate(1.25);backdrop-filter:blur(18px) saturate(1.25);border:1px solid rgba(191,145,72,.24);box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.kf-rooms{display:inline-flex;padding:4px;border-radius:999px;gap:2px}
+.kf-rooms button,.kf-tool{font:600 var(--fs-small)/1 "Manrope","Manrope Fallback",system-ui,sans-serif;color:var(--tx);background:none;border:0;cursor:pointer;min-height:40px;padding:0 16px;border-radius:999px;transition:background .25s,color .25s}
+.kf-rooms button[aria-pressed=true]{background:var(--ac);color:#140f08}
+.kf-rooms button:not([aria-pressed=true]):hover{background:rgba(255,255,255,.08)}
+.kf-tools{display:inline-flex;gap:6px;padding:4px;border-radius:999px}
+.kf-tool{display:inline-flex;align-items:center;gap:8px;padding:0 14px}
+.kf-tool svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.kf-tool:hover{background:rgba(255,255,255,.08)}
+.kf-tool[aria-pressed=true]{background:rgba(191,145,72,.22);color:#f3e5cc}
+/* панель матеріалів */
+.kf-panel{position:absolute;z-index:5;right:clamp(12px,2vw,28px);top:clamp(12px,2.4vh,28px);bottom:clamp(12px,2.4vh,28px);width:min(392px,36vw);border-radius:22px;display:flex;flex-direction:column;overflow:hidden}
+.kf-scroll{overflow:auto;overscroll-behavior:contain;padding:18px 18px 20px;scrollbar-width:thin;scrollbar-color:rgba(191,145,72,.35) transparent}
+.kf-grab{display:none}
+.kf-lbl{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 0 10px;font-size:var(--fs-small);letter-spacing:.14em;text-transform:uppercase;color:var(--mu);font-weight:600}
+.kf-lbl b{letter-spacing:0;text-transform:none;color:var(--tx);font-weight:600;font-size:var(--fs-small);text-align:right}
+.kf-zones{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.kf-zones button{position:relative;font:500 13px/1 "Manrope","Manrope Fallback",system-ui,sans-serif;color:#cfc7bb;background:rgba(255,255,255,.03);border:1px solid rgba(191,145,72,.24);border-radius:999px;min-height:36px;padding:0 13px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.kf-zones button:hover{border-color:var(--ac);color:var(--tx)}
+.kf-zones button[aria-selected=true]{background:var(--ac);border-color:var(--ac);color:#140f08;font-weight:600}
+.kf-zones i{position:absolute;top:3px;right:5px;width:6px;height:6px;border-radius:50%;background:var(--ac)}
+.kf-zones button[aria-selected=true] i{background:#140f08}
+.kf-sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px 2px;margin-bottom:22px}
+.sw{display:grid;justify-items:center;align-content:start;gap:7px;background:none;border:0;padding:6px 2px;color:var(--mu);cursor:pointer;font:500 11.5px/1.25 "Manrope","Manrope Fallback",system-ui,sans-serif;border-radius:12px}
+.sw-i{width:52px;height:52px;border-radius:50%;background-color:#2a2622;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 3px 10px rgba(0,0,0,.4);transition:transform .35s cubic-bezier(.2,.9,.25,1.25),box-shadow .3s}
+.sw-n{text-align:center;max-width:76px;overflow-wrap:anywhere}
+.sw:hover .sw-i{transform:translateY(-2px) scale(1.07)}
+.sw[aria-pressed=true]{color:var(--tx)}
+.sw[aria-pressed=true] .sw-i{transform:scale(1.04);box-shadow:0 0 0 2px #16130f,0 0 0 3.5px var(--ac),0 8px 20px rgba(0,0,0,.5);animation:kf-pop .45s cubic-bezier(.2,.9,.25,1.3)}
+@keyframes kf-pop{0%{transform:scale(.86)}100%{transform:scale(1.04)}}
+.kf-h3{font:600 var(--fs-small)/1.3 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin:0 0 10px}
+.kf-ps{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:22px}
+.ps{text-align:left;background:rgba(255,255,255,.03);border:1px solid rgba(191,145,72,.2);border-radius:14px;padding:10px 11px 11px;color:var(--tx);cursor:pointer;display:grid;gap:4px;font-family:inherit;transition:border-color .2s,background .2s,transform .25s}
+.ps:hover{border-color:var(--ac);transform:translateY(-1px)}
+.ps[aria-pressed=true]{border-color:var(--ac);background:rgba(191,145,72,.14)}
+.ps b{font:400 1.2rem/1.1 'Cormorant Garamond','Cormorant Fallback',Georgia,serif}
+.ps small{font-size:11.5px;line-height:1.35;color:var(--mu)}
+.ps-d{display:flex;margin-bottom:4px}
+.ps-d span{width:18px;height:18px;border-radius:50%;box-shadow:0 0 0 1.5px #1a1612;margin-right:-4px}
+.kf-sum{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:0;font-size:13px}
+.kf-sum li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid rgba(191,145,72,.14)}
+.kf-sum span{color:var(--mu)}
+.kf-sum b{font-weight:600;text-align:right}
+.kf-cta{width:100%;text-align:center;font-size:var(--fs-body);padding:15px 22px}
+.kf-reset{background:none;border:0;color:var(--mu);font:500 var(--fs-small) "Manrope","Manrope Fallback",system-ui,sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:10px 0 0;display:block;margin:0 auto}
+.kf-note{font-size:12px;color:var(--mu);margin:12px 0 0;line-height:1.5}
+/* до/після */
+.kf-split{position:absolute;top:0;bottom:0;left:50%;width:44px;margin-left:-22px;z-index:4;background:none;border:0;padding:0;cursor:ew-resize;touch-action:none}
+.kf-split::before{content:'';position:absolute;top:0;bottom:0;left:21px;width:2px;background:rgba(255,255,255,.85);box-shadow:0 0 12px rgba(0,0,0,.5)}
+.kf-split span{position:absolute;top:50%;left:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:rgba(16,14,12,.7);border:1.5px solid #fff;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.kf-split span::before,.kf-split span::after{content:'';position:absolute;top:50%;width:7px;height:7px;border:solid #fff;border-width:0 0 1.5px 1.5px;margin-top:-4px}
+.kf-split span::before{left:12px;transform:rotate(45deg)}.kf-split span::after{right:12px;transform:rotate(-135deg)}
+.kf-split em,.kf-split strong{position:absolute;top:calc(50% + 34px);font:600 11px/1 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-style:normal;padding:5px 8px;border-radius:999px;background:rgba(16,14,12,.6);white-space:nowrap}
+.kf-split em{right:30px}.kf-split strong{left:30px}
+.kf-tip{position:absolute;left:0;top:0;z-index:4;pointer-events:none;padding:6px 11px;border-radius:999px;font-size:12.5px;font-weight:600;color:var(--tx)}
+.kf-toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;z-index:9995;padding:12px 18px;border-radius:999px;font-size:var(--fs-small);font-weight:600;pointer-events:none;transition:opacity .3s,transform .3s}
+.kf-toast.on{opacity:1;transform:translate(-50%,0)}
+.kf-busy::after{content:'';position:absolute;left:0;top:0;height:2px;width:30%;z-index:6;background:linear-gradient(90deg,transparent,var(--ac),transparent);animation:kf-load 1s linear infinite}
+@keyframes kf-load{from{transform:translateX(-100%)}to{transform:translateX(400%)}}
+.kf-nogl-msg{position:absolute;z-index:3;left:16px;right:16px;bottom:90px;max-width:460px;padding:12px 14px;border-radius:14px;font-size:13px}
+.kf-hint{display:none}
+/* форма-діалог */
+.kf-dlg{border:1px solid var(--ln);background:var(--bg2);color:var(--tx);padding:0;width:min(560px,calc(100vw - 24px));max-height:calc(100svh - 24px);border-radius:20px;overflow:auto}
+.kf-dlg::backdrop{background:rgba(5,4,5,.7);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.kf-dlg[open]{animation:kf-in .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes kf-in{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.kf-dlg-in{padding:22px 22px 24px;display:grid;gap:14px}
+.kf-dlg h2{font-size:var(--fs-h3);margin:0}
+.kf-dlg-x{position:absolute;right:10px;top:10px;width:44px;height:44px;border-radius:50%;border:1px solid var(--ln);background:rgba(16,14,12,.7);color:var(--tx);font-size:22px;line-height:1;cursor:pointer;z-index:2}
+.kf-prev{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-bottom:1px solid var(--ln)}
+.kf-dlg form{max-width:none}
+.kf-dlg .ok{max-width:none}
+.kf-dlg textarea{min-height:120px;font-size:13px;line-height:1.5}
+.kf-dlg-sub{margin:-6px 0 0;color:var(--ac);font-size:var(--fs-small);font-weight:600}
+/* сторінка під конфігуратором */
+.kf-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+a.card{text-decoration:none;display:block;transition:border-color .25s,transform .25s}
+a.card:hover{border-color:var(--ac);transform:translateY(-2px)}
+.card .kf-more{display:inline-block;margin-top:12px;color:var(--ac);font-weight:600;font-size:var(--fs-small)}
+@media (max-width:1080px){.kf-head{max-width:min(420px,calc(100% - 420px))}.kf-tool span{display:none}.kf-tool{padding:0 12px}}
+@media (max-width:860px){
+  .kf-stage{height:calc(100svh - var(--sch-h,64px));min-height:540px;max-height:none}
+  .kf-head{max-width:none;right:16px;top:14px}
+  .kf-head h1{font-size:clamp(1.9rem,1.2rem + 3.4vw,2.6rem)}
+  .kf-head p{font-size:14px;margin-top:8px}
+  .kf-eyebrow{margin-bottom:6px;font-size:11px}
+  .kf-bar{display:contents}
+  .kf-rooms{position:absolute;z-index:3;left:12px;bottom:calc(var(--peek,186px) + 12px)}
+  .kf-tools{position:absolute;z-index:3;right:12px;bottom:calc(var(--peek,186px) + 12px);flex-direction:column;border-radius:24px}
+  .kf-rooms button{padding:0 12px}
+  .kf-tool{min-width:42px;min-height:42px;justify-content:center;padding:0}
+  .kf-head p{font-size:13.5px;max-width:34ch}
+  .kf-panel{position:fixed;left:0;right:0;bottom:0;top:auto;width:auto;max-height:82svh;border-radius:22px 22px 0 0;border-bottom:0;
+    transform:translateY(calc(100% - var(--peek,186px) - env(safe-area-inset-bottom)));transition:transform .45s cubic-bezier(.2,.8,.2,1);z-index:9980;padding-bottom:env(safe-area-inset-bottom)}
+  .kf-panel.kf-full{transform:none}
+  .kf-panel.kf-away{transform:translateY(105%)}
+  .kf-grab{display:flex;justify-content:center;align-items:center;width:100%;height:30px;background:none;border:0;cursor:grab;flex:none;touch-action:none;padding:0}
+  .kf-grab span{width:42px;height:4px;border-radius:4px;background:rgba(237,232,223,.4)}
+  .kf-scroll{padding:0 14px 18px}
+  .kf-lbl{margin-bottom:8px}
+  .kf-zones{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -14px 6px;padding:0 14px 4px;scroll-snap-type:x proximity}
+  .kf-zones::-webkit-scrollbar,.kf-sw::-webkit-scrollbar{display:none}
+  .kf-zones button{flex:none;scroll-snap-align:start}
+  .kf-sw{display:flex;overflow-x:auto;gap:0;margin:0 -14px 18px;padding:0 10px;scrollbar-width:none;scroll-snap-type:x proximity}
+  .sw{flex:none;width:72px;scroll-snap-align:start}
+  .sw-i{width:48px;height:48px}
+  .sw-n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:68px}
+  .kf-hint{display:block;position:absolute;z-index:3;left:50%;top:52%;transform:translate(-50%,-50%);padding:8px 14px;white-space:nowrap;border-radius:999px;font-size:12.5px;font-weight:600;pointer-events:none;opacity:.95;transition:opacity .4s}
+  .kf-panned .kf-hint,.kf-nogl .kf-hint{opacity:0}
+}
+@media (max-width:420px){.kf-tool{min-width:38px;padding:0 9px}.kf-rooms button{padding:0 10px;font-size:12px}}
+@media (prefers-reduced-motion:reduce){.kf-panel,#kfCv,.sw-i,.ps,a.card{transition:none!important}.kf-busy::after,.sw[aria-pressed=true] .sw-i,.kf-dlg[open]{animation:none!important}}

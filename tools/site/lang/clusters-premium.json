@@ -1,0 +1,50 @@
+{
+ "_": "Кластери гілки seo/premium-commercial: преміум- і комерційні лендинги (генпідряд, преміум, готелі, ресторани, нагляд, реконструкція, Печерськ, передмістя).",
+ "general-contractor": {
+  "uk": "/heneralnyi-pidriadnyk-kyiv",
+  "ru": "/ru/generalnyy-podryadchik-kiev",
+  "en": "/en/general-contractor-kyiv"
+ },
+ "premium-design": {
+  "uk": "/dyzain-interieru-premium-kyiv",
+  "ru": "/ru/dizayn-interera-premium-kiev"
+ },
+ "premium-renovation": {
+  "uk": "/remont-premium-klasu-kyiv",
+  "ru": "/ru/remont-premium-klassa-kiev"
+ },
+ "house-interior": {
+  "uk": "/dyzain-interieru-budynku-kyiv",
+  "ru": "/ru/dizayn-interera-doma-kiev"
+ },
+ "office-design": {
+  "uk": "/dyzain-ofisu-kyiv",
+  "ru": "/ru/dizayn-ofisa-kiev"
+ },
+ "hotel": {
+  "uk": "/dyzain-hotelu-kyiv",
+  "ru": "/ru/dizayn-gostinitsy-kiev",
+  "en": "/en/hotel-design-fit-out"
+ },
+ "restaurant-fit-out": {
+  "uk": "/remont-restoranu-kafe-kyiv",
+  "ru": "/ru/remont-restorana-kafe-kiev",
+  "en": "/en/restaurant-fit-out"
+ },
+ "supervision": {
+  "uk": "/avtorskyi-i-tekhnichnyi-nahliad-kyiv",
+  "ru": "/ru/avtorskiy-i-tehnicheskiy-nadzor-kiev"
+ },
+ "reconstruction": {
+  "uk": "/rekonstruktsiia-budynku-kyiv",
+  "ru": "/ru/rekonstruktsiya-doma-kiev"
+ },
+ "pechersk": {
+  "uk": "/dyzain-remont-kvartyry-pechersk",
+  "ru": "/ru/dizayn-remont-kvartiry-pechersk"
+ },
+ "suburbs": {
+  "uk": "/budynok-pid-kliuch-koncha-zaspa",
+  "ru": "/ru/dom-pod-klyuch-koncha-zaspa"
+ }
+}
