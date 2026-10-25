@@ -303,7 +303,11 @@ function renderItem(){
 function gallery(i, col){
   const all = i.img ? [i.img, ...(i.imgs||[])] : [];
   if (!all.length) return `<div class="hero-art"><span style="color:${vis(col)};display:contents">${pic(i,true)}</span></div>`;
-  return `<div class="hero-art ph${all.length>1?' multi':''}" id="gal" tabindex="0" role="region" aria-label="Фото товару">${all.map(b=>`<figure>${pic(i,true,b)}</figure>`).join('')}</div>`
+  /* власні фото з виставки в Гуанчжоу (photo.py --expo, «-expo-» у шляху) — реальний кадр на всю площу з підписом */
+  const fig = b => /-expo-/.test(b)
+    ? `<figure class="expo"><img src="/${b}-800.webp" width="800" height="800" alt="${esc(i.name)} — фото з виставки в Гуанчжоу" loading="lazy" decoding="async"><figcaption>Фото з виставки в Гуанчжоу</figcaption></figure>`
+    : `<figure>${pic(i,true,b)}</figure>`;
+  return `<div class="hero-art ph${all.length>1?' multi':''}" id="gal" tabindex="0" role="region" aria-label="Фото товару">${all.map(fig).join('')}</div>`
     + (all.length>1 ? `<div class="dots">${all.map((b,n)=>`<button aria-label="Фото ${n+1}" onclick="galGo(${n})"></button>`).join('')}</div>` : '');
 }
 function galGo(n){ const g=document.getElementById('gal'); if(g) g.scrollTo({left:g.clientWidth*n,behavior:'smooth'}); }
