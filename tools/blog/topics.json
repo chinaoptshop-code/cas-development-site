@@ -52,7 +52,7 @@
    "/ru/remont-kvartir-kiev",
    "Ремонт квартир"
   ],
-  "status": "todo"
+  "status": "published"
  },
  {
   "lang": "uk",
@@ -63,7 +63,7 @@
    "/remont-kukhni-kyiv",
    "Ремонт кухні"
   ],
-  "status": "todo"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -129,7 +129,7 @@
    "/dyzain-interieru-kyiv",
    "Дизайн інтерʼєру"
   ],
-  "status": "todo"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -195,7 +195,7 @@
    "/remont-kvartyr-kyiv",
    "Ремонт квартир"
   ],
-  "status": "todo"
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -645,6 +645,50 @@
   "service": [
    "/ru/dizayn-interera-kiev",
    "Дизайн интерьера"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "chernovoy-i-chistovoy-remont-raznitsa",
+  "title": "Черновой и чистовой ремонт: в чём разница",
+  "keyword": "черновой ремонт квартиры",
+  "service": [
+   "/ru/remont-kvartir-kiev",
+   "Ремонт квартир"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "dizayn-interera-s-chego-nachat",
+  "title": "Дизайн интерьера: с чего начать, если вы ещё не знаете стиль",
+  "keyword": "дизайн интерьера киев",
+  "service": [
+   "/ru/dizayn-interera-kiev",
+   "Дизайн интерьера"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "remont-kuhni-pod-klyuch-s-chego-nachat",
+  "title": "Ремонт кухни под ключ: с чего начать и как спланировать",
+  "keyword": "ремонт кухни киев",
+  "service": [
+   "/ru/remont-kuhni-kiev",
+   "Ремонт кухни"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "skilky-koshtuie-remont-vannoi-kyiv",
+  "title": "Скільки коштує ремонт ванної в Києві і від чого залежить ціна",
+  "keyword": "ремонт ванної київ ціна",
+  "service": [
+   "/remont-vannoi-kimnaty-kyiv",
+   "Ремонт ванної кімнати"
   ],
   "status": "published"
  }
