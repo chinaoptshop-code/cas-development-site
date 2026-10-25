@@ -39,6 +39,8 @@
 - Оздоба (/ozdoba, «Продукти»): товари, ціни й характеристики — `assets/ozdoba/catalog.json`; фото з вирізаним фоном —
   `python3 tools/products/photo.py <id> <файл|url>`; після правок — `python3 tools/products/build.py` (оновлює /ozdoba, сторінки товарів /ozdoba/<slug> і sitemap).
 
+- Адмінка /kabinet/admin (CMS + CRM): інструкція — `tools/admin/README.md`; зберігає JSON/HTML комітом у GitHub (секрет `SHOP_GITHUB_CONTENT_TOKEN`).
+  Деплой сам збирає сайт `tools/build-all.sh` (landing → products → shop → blog → chrome → i18n); `rebuild.yml` комітить згенероване з `[rebuild]`.
 - Зображення: AVIF-копії робить `tools/img/build.py` (нові фото в img/ — запустити його); `<picture>` з AVIF підставляє
   деплой (`tools/img/picture.py`), у репозиторії HTML лишається з простими `<img>` .webp.
 

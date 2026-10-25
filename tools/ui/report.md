@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 610 (MAIN 5, LAND 361, інші 244). HTML разом 31880 КБ, з них інлайн CSS 12226 КБ і JS 4403 КБ.
+Сторінок: 610 (MAIN 5, LAND 361, інші 244). HTML разом 31872 КБ, з них інлайн CSS 12226 КБ і JS 4395 КБ.
 
 ## Проблеми
 
@@ -263,7 +263,6 @@
 | ozdoba/elektrokamin-3d-z-parovym-polumiam-100-59.html | other | 58.5 | 15.8 | 29.7 | 7.2 | 13 | 315 |
 | proekty/petrivtsi-house.html | land | 58.4 | 10.3 | 2.0 | 1.0 | 0 | 486 |
 | ozdoba/biokamin-liniinyi-vbudovanyi-120-sm-58.html | other | 58.3 | 15.7 | 29.7 | 7.2 | 13 | 315 |
-| kabinet/admin.html | other | 58.0 | 16.2 | 30.6 | 15.5 | 13 | 199 |
 | blog/interier-pryvatnoho-budynku-premium-etapy.html | land | 57.2 | 16.7 | 14.6 | 7.0 | 6 | 305 |
 | blog/dyzain-interieru-onlain-budynok-za-kordonom.html | land | 57.1 | 16.5 | 14.6 | 7.0 | 6 | 314 |
 | blog/dyzain-i-remont-penthausa-pid-kliuch.html | land | 56.9 | 16.6 | 14.6 | 7.0 | 6 | 314 |
@@ -369,6 +368,7 @@
 | ru/remont-kvartiry-zhk-unit-home.html | land | 50.1 | 13.8 | 13.7 | 7.0 | 6 | 387 |
 | remont-kvartyry-zhk-senat.html | land | 50.0 | 13.9 | 13.7 | 7.0 | 6 | 387 |
 | ru/remont-kvartiry-zhk-montreal-house.html | land | 50.0 | 13.8 | 13.7 | 7.0 | 6 | 387 |
+| kabinet/admin.html | other | 49.9 | 13.8 | 30.6 | 7.2 | 13 | 200 |
 | rekonstruktsiia-budynku-kyiv.html | land | 49.9 | 13.7 | 13.7 | 7.0 | 6 | 392 |
 | remont-kvartyry-zhk-life-story.html | land | 49.9 | 13.8 | 13.7 | 7.0 | 6 | 387 |
 | remont-kvartyry-zhk-montreal-house.html | land | 49.9 | 13.8 | 13.7 | 7.0 | 6 | 387 |
