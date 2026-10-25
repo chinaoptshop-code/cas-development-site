@@ -405,12 +405,14 @@ table.adm{width:100%;border-collapse:collapse;font-size:var(--fs-small)}table.ad
       <h2 id="kb-lead-h">Обговорити проєкт</h2>
       <p>Дизайн інтерʼєру, ремонт під ключ, будівництво чи комплектація ресторану, готелю або офісу. Залиште номер — менеджер передзвонить і розкаже, з чого почати. Консультація по телефону — безкоштовна.</p>
     </div>
-    <form id="of" class="kb-form" data-form="kabinet" data-service="Кабінет" data-source="kabinet" novalidate>
-      <div class="field"><label for="oName">Імʼя</label><input id="oName" autocomplete="name"></div>
-      <div class="field"><label for="oPhone">Телефон *</label><input id="oPhone" type="tel" autocomplete="tel" placeholder="097 123 45 67" aria-describedby="oErr"><div class="err" id="oErr" role="alert"></div></div>
-      <div class="field"><label for="oArea">Площа, м²</label><input id="oArea" inputmode="numeric" placeholder="напр. 120"></div>
-      <div class="field"><label for="oMsg">Що плануєте</label><input id="oMsg" placeholder="Обʼєкт, послуга, терміни"></div>
-      <button class="btn" id="oBtn" type="submit">Обговорити проєкт</button>
+    <form id="of" class="kb-form" data-form="kabinet" data-service="Кабінет" data-source="kabinet" novalidate data-lf="2">
+      <div class="field"><label for="oPhone">Телефон *</label><input id="oPhone" placeholder="+380 97 123 45 67" inputmode="tel" type="tel" autocomplete="tel" aria-describedby="oErr"><div class="err" id="oErr" role="alert"></div></div>
+      <div class="field"><label for="oName">Імʼя (необовʼязково)</label><input id="oName" autocomplete="name"></div>
+      <details class="o-more"><summary>Додати коментар</summary>
+        <div class="field"><label for="oArea">Площа, м²</label><input id="oArea" inputmode="numeric" placeholder="напр. 120"></div>
+        <div class="field"><label for="oMsg">Що плануєте</label><input id="oMsg" placeholder="Обʼєкт, послуга, терміни"></div>
+      </details>
+      <button class="btn" id="oBtn" type="submit">Передзвоніть мені</button><p class="o-note">Перетелефонуємо найближчим часом. Консультація по телефону — безкоштовна.</p>
     </form>
     <div class="kb-ok" id="oOk" role="status" tabindex="-1">Дякуємо! Менеджер звʼяжеться з вами найближчим часом.</div>
   </section>
@@ -418,7 +420,7 @@ table.adm{width:100%;border-collapse:collapse;font-size:var(--fs-small)}table.ad
 <div class="kb-toast" id="kb-toast" role="status" aria-live="polite"></div>
 <script src="/assets/account.v1.js?v=07fe1277" defer></script>
 <script src="/assets/kabinet.v2.js?v=38dc0db6" defer></script>
-<script src="/assets/lead-form.v1.js?v=ffe6d409" defer></script>
+<script src="/assets/lead-form.v1.js?v=43a5115e" defer></script>
 
 <!--chrome:f--><footer class="scf">
 <div class="scf-in">

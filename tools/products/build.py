@@ -13,6 +13,13 @@ import hashlib, html, json, os, re, sys, time
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, 'tools/site'))
 import chrome  # єдина шапка/футер (tools/site/chrome.py)
+import leadform  # noqa: E402  легка заявка (tools/site/leadform.py)
+
+
+def _chrome_apply(s, rel):
+    """Форма заявки (обовʼязковий лише телефон) + єдина шапка/футер."""
+    return chrome.apply(leadform.apply(s, rel), rel)
+
 LASTMOD = time.strftime('%Y-%m-%d', time.localtime(os.path.getmtime(os.path.join(ROOT, 'assets/ozdoba/catalog.json'))))  # для sitemap
 CAT = os.path.join(ROOT, 'assets/ozdoba/catalog.json')
 APP = os.path.join(ROOT, 'assets/ozdoba/app.js')
@@ -148,7 +155,7 @@ def main():
     s = re.sub(r'/assets/ozdoba/app\.js\?v=\w+', '/assets/ozdoba/app.js?v=' + ver(APP), s)
     s = re.sub(r'<span class="cnt" id="cnt">[^<]*</span>', f'<span class="cnt" id="cnt">{plural(len(items))}</span>', s, count=1)
     s = re.sub(r'<!--ozd:kits-->.*?<!--/ozd:kits-->', lambda m: '<!--ozd:kits-->' + kits_cards(d) + '<!--/ozd:kits-->', s, count=1, flags=re.S)
-    open(PAGE, 'w', encoding='utf-8').write(with_fav(chrome.apply(s, 'ozdoba.html')))
+    open(PAGE, 'w', encoding='utf-8').write(with_fav(_chrome_apply(s, 'ozdoba.html')))
     pages = product_pages(d)
     cats = category_pages(d)
     nk = kits_page(d)
@@ -354,7 +361,7 @@ def product_pages(d):
     titles = product_titles(d['items'])
     for i in d['items']:
         f = os.path.join(ROOT, 'ozdoba', i['slug'] + '.html'); keep.add(f)
-        open(f, 'w', encoding='utf-8').write(with_fav(chrome.apply(product_page(d, i, shell, d['items'], titles[i['id']]), 'ozdoba/' + i['slug'] + '.html')))
+        open(f, 'w', encoding='utf-8').write(with_fav(_chrome_apply(product_page(d, i, shell, d['items'], titles[i['id']]), 'ozdoba/' + i['slug'] + '.html')))
     for f in os.listdir(os.path.join(ROOT, 'ozdoba')):  # прибрати сторінки видалених товарів
         p = os.path.join(ROOT, 'ozdoba', f)
         if p not in keep and f.endswith('.html') and f != 'komplekty.html': os.remove(p)
@@ -466,7 +473,7 @@ def category_pages(d):
         s = s[:a] + body + '\n' + s[b:]
         a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
         s = s[:a] + s[b:]
-        open(os.path.join(ROOT, 'ozdoba/kategoriia', slug + '.html'), 'w', encoding='utf-8').write(with_fav(chrome.apply(s, f'ozdoba/kategoriia/{slug}.html')))
+        open(os.path.join(ROOT, 'ozdoba/kategoriia', slug + '.html'), 'w', encoding='utf-8').write(with_fav(_chrome_apply(s, f'ozdoba/kategoriia/{slug}.html')))
         out.append(u)
     sm = os.path.join(ROOT, 'sitemap.xml'); t = open(sm, encoding='utf-8').read()
     t = re.sub(r'  <url><loc>https://cas-develop\.com/ozdoba/kategoriia/[^<]+</loc>.*?</url>\n', '', t)
@@ -653,7 +660,7 @@ def kits_page(d):
     a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
     s = s[:a] + '<script src="/assets/lead-form.v1.js" defer></script>\n' + s[b:]
     s = s.replace('aria-current="page">Оздоба</a>', 'aria-current="true">Оздоба</a>')
-    open(os.path.join(ROOT, 'ozdoba', 'komplekty.html'), 'w', encoding='utf-8').write(chrome.apply(s, 'ozdoba/komplekty.html'))
+    open(os.path.join(ROOT, 'ozdoba', 'komplekty.html'), 'w', encoding='utf-8').write(_chrome_apply(s, 'ozdoba/komplekty.html'))
     sm = os.path.join(ROOT, 'sitemap.xml'); t = open(sm, encoding='utf-8').read()
     t = re.sub(r'  <url><loc>https://cas-develop\.com/ozdoba/komplekty</loc>.*?</url>\n', '', t)
     open(sm, 'w', encoding='utf-8').write(t.replace('</urlset>', f'  <url><loc>{u}</loc><lastmod>{LASTMOD}</lastmod></url>\n</urlset>'))

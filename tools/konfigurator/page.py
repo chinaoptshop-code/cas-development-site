@@ -6,7 +6,7 @@
   python3 tools/konfigurator/page.py       # свотчі, assets/konfigurator/app.js + kf.css, konfigurator.html, ru/konfigurator.html
 
 Матеріали, кімнати, стилі — config.json; логіка сцени й інтерфейсу — kf.js; стилі — kf.css.
-Сторінки проходять chrome.apply() (шапка/футер) і hreflang з tools/site/lang/clusters-konfigurator.json.
+Сторінки проходять chrome.apply() (шапка/футер, форма — leadform.apply()) і hreflang з tools/site/lang/clusters-konfigurator.json.
 Спільні файли підключаються з ?v=<хеш вмісту> (у /assets/* кеш на рік).
 """
 import hashlib, html, json, os, re, sys
@@ -18,6 +18,13 @@ ROOT = os.path.dirname(os.path.dirname(HERE))
 OUT = os.path.join(ROOT, 'assets', 'konfigurator')
 sys.path.insert(0, os.path.join(ROOT, 'tools', 'site'))
 import chrome, i18n  # noqa: E402
+import leadform  # noqa: E402  легка заявка (tools/site/leadform.py)
+
+
+def _chrome_apply(s, rel):
+    """Форма заявки (обовʼязковий лише телефон) + єдина шапка/футер."""
+    return chrome.apply(leadform.apply(s, rel), rel)
+
 
 CFG = json.load(open(os.path.join(HERE, 'config.json'), encoding='utf-8'))
 SCENE = json.load(open(os.path.join(HERE, 'scene.json'), encoding='utf-8'))
@@ -314,7 +321,7 @@ def main():
     for lang, t in T.items():
         s = page(lang, v)
         s = i18n.set_alternates(s, members)
-        s = chrome.apply(s, t['file'])
+        s = _chrome_apply(s, t['file'])
         p = os.path.join(ROOT, t['file'])
         os.makedirs(os.path.dirname(p), exist_ok=True)
         open(p, 'w', encoding='utf-8').write(s)

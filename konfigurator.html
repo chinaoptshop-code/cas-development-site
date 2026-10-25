@@ -95,11 +95,13 @@
     <h2 id="kfDlgT">Проєкт у цьому стилі</h2>
     <p class="kf-dlg-sub" id="kfDlgStyle"></p>
     <p style="margin:0;color:var(--mu);font-size:var(--fs-small)">Залиште телефон — дизайнер звʼяжеться, обговорить вашу добірку й підбере реальні зразки. Консультація по телефону безкоштовна.</p>
-    <form id="of" data-form="landing" data-service="Конфігуратор інтерʼєру" data-source="cas-develop.com/konfigurator" novalidate>
-      <div><label for="oName">Імʼя</label><input id="oName" autocomplete="name"></div>
-      <div><label for="oPhone">Телефон *</label><input id="oPhone" aria-describedby="oErr" type="tel" autocomplete="tel" placeholder="097 123 45 67"><div class="err" id="oErr" role="alert"></div></div>
-      <div><label for="oMsg">Ваш вибір і побажання</label><textarea id="oMsg" rows="6"></textarea></div>
-      <button class="btn main" id="oBtn" type="submit">Надіслати заявку</button>
+    <form id="of" data-form="landing" data-service="Конфігуратор інтерʼєру" data-source="cas-develop.com/konfigurator" novalidate data-lf="2">
+      <div><label for="oPhone">Телефон *</label><input id="oPhone" placeholder="+380 97 123 45 67" inputmode="tel" aria-describedby="oErr" type="tel" autocomplete="tel"><div class="err" id="oErr" role="alert"></div></div>
+      <div><label for="oName">Імʼя (необовʼязково)</label><input id="oName" autocomplete="name"></div>
+      <details class="o-more"><summary>Додати коментар</summary>
+        <div><label for="oMsg">Ваш вибір і побажання</label><textarea id="oMsg" rows="6"></textarea></div>
+      </details>
+      <button class="btn main" id="oBtn" type="submit">Передзвоніть мені</button><p class="o-note">Перетелефонуємо найближчим часом. Консультація по телефону — безкоштовна.</p>
     </form>
     <div class="ok" id="oOk" role="status" tabindex="-1"><h3 style="font-size:var(--fs-h3);margin-bottom:8px">Заявку отримано</h3><p style="color:var(--mu);margin:0">Звʼяжемося найближчим часом і обговоримо проєкт у вашому стилі.</p></div>
   </div>
@@ -117,7 +119,7 @@
   <div class="scf-bot"><div class="scf-langs" role="group" aria-label="Мова"><span>Мова:</span><span class="scf-lang-on" aria-current="true" lang="uk">Українська</span><a href="/ru/konfigurator" hreflang="ru" lang="ru">Русский</a><a href="/en/" hreflang="en" lang="en">English</a><a href="/es/" hreflang="es" lang="es">Español</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/pl/" hreflang="pl" lang="pl">Polski</a><a href="/de/" hreflang="de" lang="de">Deutsch</a><a href="/fr/" hreflang="fr" lang="fr">Français</a><a href="/ar/" hreflang="ar" lang="ar">العربية</a></div><a href="/konfidentsiinist">Політика конфіденційності</a><span>© 2026 CAS Development · Київ, Україна</span></div>
 </div>
 </footer><!--/chrome:f-->
-<script src="/assets/lead-form.v1.js?v=ffe6d409" defer></script>
+<script src="/assets/lead-form.v1.js?v=43a5115e" defer></script>
 <script src="/assets/konfigurator/app.js?v=a7eb4a51" defer></script>
 <script src="/assets/site-chrome.v1.js?v=713665db" defer></script>
 </body>

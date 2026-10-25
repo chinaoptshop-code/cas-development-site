@@ -454,6 +454,31 @@ def mbar_logos(s):
     return s[:k] + blk + s[e:]
 
 
+# «Залишити номер» у нижній панелі (.mbar): веде на найближчу форму сторінки (#zayavka / швидка заявка #lead) або на
+# сторінку із заявкою мовою сторінки; /assets/lead-form.v1.js прокручує до поля телефону й ставить у нього фокус.
+# Telegram і WhatsApp у панелі з кнопкою — лише логотипи (підпис лишається для читачів екрана).
+MB_LEAD_CSS = ('<style id="mb-lead">@media(max-width:767px){.mbar[data-lead]{grid-template-columns:1fr 1.3fr 48px 48px}.mbar[data-lead] a:not([class]){font-size:0;gap:0}'
+               '.mbar .mb-lead{background:#bf914829;color:#f3d7a6;border-color:#bf9148;text-align:center;line-height:1.1}}</style>')
+MB_LEAD_RX = re.compile(r'<style id="mb-lead">.*?</style>|<a class="mb-lead"[^>]*>.*?</a>\n?')
+
+
+def mbar_lead(s, lang, rel=''):
+    """Кнопка «Залишити номер» у .mbar (ідемпотентно). Індекси блогу — без неї: сторінки на межі бюджету 60 КБ (ui.py)."""
+    import leadform  # тексти легкої заявки (tools/site/leadform.py)
+    s = MB_LEAD_RX.sub('', s).replace('<div class="mbar" data-lead ', '<div class="mbar" ')
+    k = s.find('<!--m-fix--><div class="mbar"')
+    if k < 0 or 'class="mb-call"' not in s[k:] or re.search(r'(?:^|/)blog\.html$', rel):
+        return s
+    if 'id="zayavka"' in s: href = '#zayavka'
+    elif 'id="lead"' in s: href = '#lead'
+    else: href = T[lang]['cta_href']
+    lab = leadform.T.get(lang, leadform.T['uk'])['mb']
+    blk = s[k:].replace('<div class="mbar"', '<div class="mbar" data-lead', 1)
+    e = blk.find('</a>', blk.find('class="mb-call"')) + 4
+    blk = blk[:e] + f'\n<a class="mb-lead" href="{href}">{lab}</a>' + blk[e:]
+    return s[:k] + MB_LEAD_CSS + blk
+
+
 # Microsoft Clarity: вантажимо після першої взаємодії (scroll/pointerdown/keydown/touchstart) або, якщо її нема,
 # через 4 с після load у requestIdleCallback — не заважає LCP/TBT. Будь-яку стару вставку замінюємо на цю.
 CLARITY_ID = 'z19wl000eu'
@@ -589,6 +614,7 @@ def apply(s, rel):
     s = fix_js(s)
     s = re.sub(r'(<style[^>]*>)(.*?)</style>', lambda m: m.group(1) + _nocursor(m.group(2)) + '</style>', s, flags=re.S)
     s = mbar_logos(s)
+    s = mbar_lead(s, lang, rel)
     s = clarity(s)
     s = skip_and_main(s, lang)
     s = versions(s)

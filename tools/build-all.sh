@@ -12,6 +12,8 @@ python3 tools/products/build.py
 python3 tools/shop/pages.py
 python3 tools/blog/build.py --check
 python3 tools/blog/build.py
+python3 tools/site/leadform.py  # форми заявки: обовʼязковий лише телефон, швидка заявка (ручні сторінки теж)
+python3 tools/site/captions.py  # підписи галерей: обʼєкт, що робили, статус
 python3 tools/site/chrome.py
 python3 tools/site/chrome.py --check
 python3 tools/site/i18n.py --check

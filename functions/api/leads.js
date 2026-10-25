@@ -1,5 +1,6 @@
 // Прийом заявки в CRM (orders.kind = 'lead'). Формат — як у форми сайту (/assets/lead-form.v1.js → n8n):
-// {name, phone, area, message, service, source, form, lang, page, utm_*}.
+// {name, phone, area, message, service, source, form, lang, page, utm_*}. Обовʼязковий лише телефон (мін. 9 цифр);
+// без імені — «Без імені» (форма «лише номер», Михайло 25.10.2026).
 // З заголовком x-lead-key = LEAD_INGEST_KEY (n8n, інтеграції) — без ліміту; без ключа — до 5 заявок на годину з IP.
 import { bad, clientIp, hexOf, json, nextLeadNumber, readJSON, same, sha256, str } from '../_lib.js';
 
@@ -27,7 +28,7 @@ export async function onRequestPost({ request, env }) {
   const number = await nextLeadNumber(env);
   const r = await env.DB.prepare(`INSERT INTO orders (number, kind, name, phone, items, service, source, comment, status)
       VALUES (?, 'lead', ?, ?, '[]', ?, ?, ?, 'new')`)
-    .bind(number, str(d.name, 120), phone, str(d.service, 200), str(d.source || d.page, 200), comment).run();
+    .bind(number, str(d.name, 120) || 'Без імені', phone, str(d.service, 200), str(d.source || d.page, 200), comment).run();
   await env.DB.prepare("INSERT INTO order_events (order_id, status, author) VALUES (?, 'new', ?)").bind(r.meta.last_row_id, str(d.form, 40) || 'site').run();
   return json({ ok: true, number });
 }

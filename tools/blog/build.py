@@ -37,6 +37,13 @@ except ImportError:  # без PIL розміри не прочитати — --c
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, 'tools/site'))
 import chrome  # єдина шапка/футер (tools/site/chrome.py)
+import leadform  # noqa: E402  легка заявка (tools/site/leadform.py)
+
+
+def _chrome_apply(s, rel):
+    """Форма заявки (обовʼязковий лише телефон) + єдина шапка/футер."""
+    return chrome.apply(leadform.apply(s, rel), rel)
+
 import i18n  # мови сайту: префікси, hreflang, словники (tools/site/i18n.py)
 ART = os.path.join(ROOT, 'tools/blog/articles')
 B = 'https://cas-develop.com/'
@@ -78,7 +85,7 @@ def lang_of_href(href):
 
 def rd(p): return open(os.path.join(ROOT, p), encoding='utf-8').read()
 def wr(p, s):
-    if p.endswith('.html'): s = chrome.apply(s, p)  # єдина шапка/футер (мова — з <html lang>, пара — з hreflang)
+    if p.endswith('.html'): s = _chrome_apply(s, p)  # єдина шапка/футер (мова — з <html lang>, пара — з hreflang)
     os.makedirs(os.path.dirname(os.path.join(ROOT, p)) or ROOT, exist_ok=True)
     open(os.path.join(ROOT, p), 'w', encoding='utf-8').write(s)
 def esc(s): return html.escape(s, quote=True)

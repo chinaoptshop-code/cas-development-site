@@ -447,8 +447,8 @@ function renderPay(){
   const nm=esc(acct&&acct.name||(u?[u.first_name,u.last_name].filter(Boolean).join(' '):''));
   paint('payBody', `
     <div class="sh-head"><h2>Оформлення заявки</h2><button type="button" class="x" onclick="closeAll()" aria-label="Закрити">✕</button></div>
-    <div class="field"><label for="fName">Ім'я та прізвище</label><input id="fName" autocomplete="name" value="${nm}" placeholder="Ваше імʼя та прізвище"></div>
-    <div class="field"><label for="fPhone">Телефон</label><input id="fPhone" autocomplete="tel" type="tel" inputmode="tel" placeholder="+380 __ ___ __ __" value="${esc(acct&&acct.phone||'')}"></div>
+    <div class="field"><label for="fPhone">Телефон *</label><input id="fPhone" autocomplete="tel" type="tel" inputmode="tel" placeholder="+380 __ ___ __ __" value="${esc(acct&&acct.phone||'')}"></div>
+    <div class="field"><label for="fName">Імʼя (необовʼязково)</label><input id="fName" autocomplete="name" value="${nm}"></div>
     <div class="field"><label for="fNp">Місто і відділення Нової Пошти</label><input id="fNp" placeholder="Київ, відділення №12" value="${esc(acct&&acct.city||'')}"></div>
     ${payMethod==='invoice'?`<div class="field"><label for="fEdr">Назва компанії та ЄДРПОУ</label><input id="fEdr" placeholder="ТОВ «Приклад», 12345678" value="${esc(acct&&acct.company||'')}"></div>`:''}
 
@@ -474,7 +474,7 @@ async function pay(){
   const nm=v('fName'), ph=v('fPhone'), np=v('fNp'), edr=v('fEdr');
   if(!cart.length){ toast('Кошик порожній — додайте товари з каталогу'); return; }
   if(cart.some(c=>c.qty<MINQ())){ toast(`Мінімум — ${MINQ()} шт кожної позиції`); return; }
-  if(!nm||ph.replace(/\D/g,'').length<9){ toast('Вкажіть імʼя і телефон — інакше ми не зможемо звʼязатися'); return; }
+  if(ph.replace(/\D/g,'').length<9){ toast('Вкажіть номер телефону (щонайменше 9 цифр) — ми передзвонимо'); const f=document.getElementById('fPhone'); if(f) f.focus(); return; }
   const g=grand(), ord='OZD-'+Date.now().toString().slice(-7);
   const PM={invoice:'рахунок ФОП/ТОВ',card:'карткою (посилання від менеджера)',cash:'готівкою (UAH / USD / EUR)',usdt:'USDT (криптовалюта)'};
   const lines=cart.map(c=>{ const i=byId(c.id), s=SS(i);
@@ -498,7 +498,7 @@ async function pay(){
   if(!ok) try{
     const r=await fetch('https://n8n.china-opt-shop.pp.ua/webhook/contact-form',{method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({name:nm,phone:ph,service:'Оздоба — комплектація',area:'',message,source:'cas-develop.com/ozdoba',form:'ozdoba-cart',lang:'uk',page:location.pathname})});
+      body:JSON.stringify({name:nm||'Без імені',phone:ph,service:'Оздоба — комплектація',area:'',message,source:'cas-develop.com/ozdoba',form:'ozdoba-cart',lang:'uk',page:location.pathname})});
     ok=r.ok;
   }catch(e){ ok=false; }
   if(!ok){
@@ -514,6 +514,7 @@ async function pay(){
       <div class="priceline" style="justify-content:center"><span class="big">${money(g)}</span></div></div>
     ${acct?'<a class="btn" style="text-decoration:none" href="/kabinet">Мої замовлення</a>':''}
     <button class="btn ghost" onclick="reset()">До каталогу</button>`;
+  try{ if(window.clarity){ clarity('set','lead_form','ozdoba-cart'); clarity('event','lead_submit'); } }catch(e){}
   haptic('success');
 }
 function reset(){ cart=[]; promo=null; promoErr=''; syncBadges(); closeAll(); render(); }
