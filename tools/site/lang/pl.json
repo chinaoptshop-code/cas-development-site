@@ -36,6 +36,10 @@
     "Portfolio (UA)"
    ],
    [
+    "/pl/blog",
+    "Blog"
+   ],
+   [
     "/pl/o-studiu",
     "O studiu"
    ],
@@ -169,6 +173,10 @@
       "FAQ"
      ],
      [
+      "/pl/blog",
+      "Blog: ceny i poradniki"
+     ],
+     [
       "/pl/kontakt",
       "Kontakt"
      ],
@@ -262,5 +270,34 @@
   "prev": "Poprzednie zdjęcie",
   "next": "Następne zdjęcie",
   "menu": "Menu"
+ },
+ "blog": {
+  "blog": "Blog",
+  "faq": "Pytania i odpowiedzi",
+  "more": "Czytaj także",
+  "cta_h": "Wycenimy Twój projekt",
+  "cta_p": "Bezpłatna konsultacja — opowiedz nam o obiekcie, a podamy orientacyjny koszt.",
+  "rel_h": "Artykuły na ten temat",
+  "blog_title": "Blog o projektowaniu wnętrz i remontach",
+  "blog_h1": "Blog o projektowaniu wnętrz i remontach",
+  "blog_desc": "Poradniki CAS Development, studia projektowo-wykonawczego z Kijowa: koszt projektu wnętrz i remontu, realizacje pod klucz, meble z Chin.",
+  "blog_lead": "Prosto wyjaśniamy, ile kosztuje projekt, remont i wyposażenie wnętrz, jak przebiega praca i na co zwrócić uwagę — dla klientów z Ukrainy, Polski i całej Europy.",
+  "blog_name": "Blog CAS Development",
+  "og_label": "BLOG",
+  "other_lang_mark": "(po ukraińsku)",
+  "months": [
+   "stycznia",
+   "lutego",
+   "marca",
+   "kwietnia",
+   "maja",
+   "czerwca",
+   "lipca",
+   "sierpnia",
+   "września",
+   "października",
+   "listopada",
+   "grudnia"
+  ]
  }
 }
