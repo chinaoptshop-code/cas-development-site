@@ -27,14 +27,17 @@ export async function onRequestPatch({ request, env }) {
   const o = await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(Number(d.id)).first();
   if (!o) return bad('Замовлення не знайдено', 404);
   const status = d.status && STATUSES[d.status] ? d.status : o.status;
-  let items = JSON.parse(o.items), total = o.total;
+  let items = JSON.parse(o.items), total = o.total, discount = o.discount || 0;
   if (Array.isArray(d.prices)) { // менеджер проставляє ціну позиціям «за запитом»: [{index, price}]
+    const sum = () => items.reduce((s, i) => s + (i.price || 0) * i.qty, 0);
+    const ship = Math.max(0, (o.total || 0) - (sum() - discount)); // доставка, порахована при оформленні
     for (const p of d.prices) if (items[p.index] && Number(p.price) >= 0) items[p.index].price = Math.round(Number(p.price));
-    total = items.reduce((s, i) => s + (i.price || 0) * i.qty, 0);
+    discount = Math.round(sum() * (o.discount_pct || 0) / 100); // відсоток знижки замовлення лишається тим самим
+    total = sum() - discount + ship;
   }
   const onReq = items.filter(i => i.price == null).length;
-  await env.DB.prepare(`UPDATE orders SET status = ?, manager_note = ?, items = ?, total = ?, on_request = ?, paid = ?, updated_at = datetime('now') WHERE id = ?`)
-    .bind(status, str(d.manager_note, 2000) ?? o.manager_note, JSON.stringify(items), total, onReq, status === 'paid' ? 1 : o.paid, o.id).run();
+  await env.DB.prepare(`UPDATE orders SET status = ?, manager_note = ?, items = ?, total = ?, discount = ?, on_request = ?, paid = ?, updated_at = datetime('now') WHERE id = ?`)
+    .bind(status, str(d.manager_note, 2000) ?? o.manager_note, JSON.stringify(items), total, discount, onReq, status === 'paid' ? 1 : o.paid, o.id).run();
   if (status !== o.status || d.note) await env.DB.prepare('INSERT INTO order_events (order_id, status, note, author) VALUES (?, ?, ?, ?)')
     .bind(o.id, status, str(d.note, 1000), a.name || a.email || `#${a.id}`).run();
   return json({ ok: true });

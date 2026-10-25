@@ -113,3 +113,18 @@ export const botSignature = async (env, token, phone, tgId) => hmac(await sha256
 export const PL_COOKIE = 'cas_pl';
 export const plCookie = (v, maxAge) => `${PL_COOKIE}=${v}; Path=/api/auth/phone; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`;
 export const readCookie = (request, name) => (request.headers.get('cookie') || '').match(new RegExp(`(?:^|;\\s*)${name}=([^;]*)`))?.[1] || null;
+
+// ===== Знижки Оздоби =====
+// Знижка за обсягом: пороги з catalog.json volume_discounts [[сума товарів, грн, %], …] — ті самі рахує кошик (assets/ozdoba/app.js).
+export const volumePct = (cat, goods) => (cat.volume_discounts || []).reduce((p, [t, pc]) => (goods >= t ? Math.max(p, pc) : p), 0);
+// Особистий код партнера: верхній регістр, літери (лат./кир.), цифри й дефіс, 3–32 символи.
+export const normCode = v => {
+  const s = String(v == null ? '' : v).trim().toUpperCase().replace(/\s+/g, '');
+  return /^[A-ZА-ЯІЇЄҐ0-9][A-ZА-ЯІЇЄҐ0-9-]{2,31}$/.test(s) ? s : null;
+};
+// Активний код партнера з D1 або null.
+export async function partnerCode(env, v) {
+  const code = normCode(v);
+  if (!code) return null;
+  return env.DB.prepare('SELECT code, name, discount FROM partner_codes WHERE code = ? AND active = 1').bind(code).first();
+}

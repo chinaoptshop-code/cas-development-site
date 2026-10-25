@@ -1,6 +1,6 @@
 // Замовлення клієнта: GET — мої замовлення; POST — нове замовлення з кошика Оздоби.
 // Ціни перераховуються на сервері з каталогу (/assets/ozdoba/catalog.json), щоб їх не можна було підмінити.
-import { STATUSES, bad, currentClient, json, readJSON, str } from '../_lib.js';
+import { STATUSES, bad, currentClient, json, partnerCode, readJSON, str, volumePct } from '../_lib.js';
 
 const r10 = n => Math.round(n / 10) * 10;
 
@@ -47,10 +47,14 @@ export async function onRequestPost({ request, env }) {
       size: ss ? (ss[si] || ss[0])[0] : null, qty, unit: it.unit, price: linePrice(cat, it, ci, si) });
   }
   if (!items.length) return bad('Позицій не знайдено в каталозі');
-  const PROMO = { 'ОЗДОБА10': 10, 'КОМПЛЕКТ': 8, 'ДИЗАЙНЕР': 15 };
-  const promo = PROMO[String(d.promo || '').toUpperCase()] ? String(d.promo).toUpperCase() : null;
+  // знижка: за обсягом (catalog.json volume_discounts) або особистий код партнера (D1 partner_codes) — не сумуються, діє більша
   const goods = items.reduce((s, i) => s + (i.price || 0) * i.qty, 0);
-  const disc = promo ? Math.round(goods * PROMO[promo] / 100) : 0;
+  const partner = d.promo ? await partnerCode(env, d.promo) : null;
+  const promo = partner ? partner.code : null;
+  const vol = volumePct(cat, goods);
+  const pct = Math.max(vol, partner ? partner.discount : 0);
+  const byPartner = !!partner && partner.discount > vol;
+  const disc = Math.round(goods * pct / 100);
   const ship = goods - disc > 20000 || goods === 0 ? 0 : 450;
   const total = goods - disc + ship;
   const onReq = items.filter(i => i.price == null).length;
@@ -59,9 +63,10 @@ export async function onRequestPost({ request, env }) {
   const name = str(d.name, 120) || c?.name || null;
   const payment = ['card', 'parts', 'invoice', 'cod'].includes(d.payment) ? d.payment : 'card';
 
-  const res = await env.DB.prepare(`INSERT INTO orders (number, client_id, name, phone, items, total, on_request, promo, delivery, payment, company, comment)
-      VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`)
-    .bind(number, c?.id || null, name, phone, JSON.stringify(items), total, onReq, promo, str(d.delivery, 200), payment, str(d.company, 200), str(d.comment, 1000)).run();
+  const res = await env.DB.prepare(`INSERT INTO orders (number, client_id, name, phone, items, total, on_request, promo, discount, discount_pct, delivery, payment, company, comment)
+      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`)
+    .bind(number, c?.id || null, name, phone, JSON.stringify(items), total, onReq, promo, disc, pct, str(d.delivery, 200), payment, str(d.company, 200), str(d.comment, 1000)).run();
+  if (promo) await env.DB.prepare('UPDATE partner_codes SET uses = uses + 1 WHERE code = ?').bind(promo).run();
   await env.DB.prepare("INSERT INTO order_events (order_id, status, author) VALUES (?, 'new', 'client')").bind(res.meta.last_row_id).run();
   if (c) await env.DB.prepare('UPDATE clients SET phone = COALESCE(phone, ?), city = COALESCE(city, ?), company = COALESCE(company, ?) WHERE id = ?')
     .bind(phone, str(d.delivery, 200), str(d.company, 200), c.id).run();
@@ -70,7 +75,10 @@ export async function onRequestPost({ request, env }) {
   const money = n => n == null ? 'за запитом' : new Intl.NumberFormat('uk-UA').format(n) + ' ₴';
   const message = [`Замовлення ${number} з Оздоби${c ? ` · клієнт #${c.id} (${c.provider})` : ''}`,
     ...items.map(i => `• ${i.name} — ${i.color}${i.size ? ', ' + i.size : ''} — ${i.qty} ${i.unit} × ${money(i.price)}`),
-    promo ? `Промокод ${promo}: −${money(disc)}` : null, `Доставка: ${ship ? money(ship) : 'безкоштовно'}`,
+    `Товари: ${money(goods)}`,
+    pct ? `${byPartner ? `Знижка партнера ${promo}` : 'Знижка за обсягом'} −${pct}%: −${money(disc)}` : null,
+    promo ? `Код партнера: ${promo}${partner.name ? ` (${partner.name})` : ''}, −${partner.discount}%${byPartner ? '' : ' — не застосовано, діє більша знижка за обсягом'}` : null,
+    `Доставка: ${ship ? money(ship) : 'безкоштовно'}`,
     `РАЗОМ (орієнтовно): ${money(total)}${onReq ? ` + ${onReq} поз. за запитом` : ''}`, `Оплата: ${payment}`,
     d.delivery ? `Доставка: ${d.delivery}` : null, d.company ? `Компанія: ${d.company}` : null].filter(Boolean).join('\n');
   try {
@@ -80,5 +88,5 @@ export async function onRequestPost({ request, env }) {
     });
   } catch (e) { /* замовлення вже збережене — сповіщення не критичне */ }
 
-  return json({ ok: true, number, total, on_request: onReq });
+  return json({ ok: true, number, goods, discount: disc, discount_pct: pct, promo, shipping: ship, total, on_request: onReq });
 }

@@ -407,8 +407,9 @@ def category_pages(d):
 
 
 # ===================== комплекти під обʼєкт: секція на /ozdoba і сторінка /ozdoba/komplekty =====================
-# Комплект = bundles[] з "premium": true у catalog.json. Ціна = сума (ціна позиції за замовчуванням × кількість), без знижок —
-# так само рахує app.js (bundleTotal). «Додати весь комплект у кошик» на /ozdoba/komplekty веде на /ozdoba#kit-<id> (app.js додає позиції).
+# Комплект = bundles[] з "premium": true у catalog.json. Ціна = сума (ціна позиції за замовчуванням × кількість) —
+# так само рахує app.js (bundleTotal). Окремої знижки на комплект немає: діє загальна знижка за обсягом (volume_discounts),
+# яку кошик (app.js) і сервер (functions/api/orders.js) рахують від суми товарів. «Додати весь комплект у кошик» на /ozdoba/komplekty веде на /ozdoba#kit-<id> (app.js додає позиції).
 KITS_URL = f'{SITE}/ozdoba/komplekty'
 
 
@@ -419,6 +420,17 @@ def item_price(d, i):
     k = 1
     if ss: k = ss[next((n for n, x in enumerate(ss) if x[1] == 1), 0)][1]
     return r10(i['price'] * k * (1 + d['colorsets'][i['cs']][0][2]))
+
+
+def vol_pct(d, total):
+    """Знижка за обсягом, % — catalog.json volume_discounts [[поріг, грн, %], …] (як volPct в app.js і volumePct на сервері)."""
+    return max([pc for t, pc in d.get('volume_discounts', []) if total >= t], default=0)
+
+
+def vol_text(d):
+    """«Знижка за обсягом: від $5 000 — 3%, …» (курс ≈ 46 ₴/$, як у підписах цін Оздоби)."""
+    usd = lambda n: '$' + f'{round(n / 46 / 100) * 100:,}'.replace(',', ' ')
+    return 'Знижка за обсягом: ' + ', '.join(f'від {usd(t)} — {pc}%' for t, pc in d.get('volume_discounts', []))
 
 
 def kits(d):
@@ -439,8 +451,10 @@ def kit_collage(rows):
         f'<img src="/{i["img"]}-400.webp" width="400" height="400" alt="{e(i["name"])}" loading="lazy" decoding="async">' for i in pics) + '</div>'
 
 
-def kit_total(total, onreq):
-    return money(total) + (f' <small>+ {onreq} поз. за запитом</small>' if onreq else '')
+def kit_total(total, onreq, d=None):
+    vp = vol_pct(d, total) if d else 0
+    return (money(total) + (f' <small>+ {onreq} поз. за запитом</small>' if onreq else '')
+            + (f' <small>· зі знижкою за обсягом −{vp}%: {money(total - int(total * vp / 100 + 0.5))}</small>' if vp else ''))
 
 
 def kits_cards(d):
@@ -448,7 +462,7 @@ def kits_cards(d):
     out = []
     for b, rows, total, onreq in kits(d):
         out.append(f'<article class="kit" id="kit-{b["id"]}">{kit_collage(rows)}<div class="kb"><h3>{e(b["name"])}</h3>'
-                   f'<p class="knote">{e(b["note"])}</p><p class="ksum">{len(rows)} позицій · <b>{kit_total(total, onreq)}</b></p>'
+                   f'<p class="knote">{e(b["note"])}</p><p class="ksum">{len(rows)} позицій · <b>{kit_total(total, onreq, d)}</b></p>'
                    f'<div class="kbtn"><button type="button" class="btn" onclick="window.addKit&amp;&amp;addKit(\'{b["id"]}\')">Додати весь комплект у кошик</button>'
                    f'<a class="btn ghost" href="/ozdoba/komplekty?kit={b["id"]}#zayavka">Запит розрахунку під мій обʼєкт</a></div>'
                    f'<a class="kmore" href="/ozdoba/komplekty#k-{b["id"]}">Склад комплекту</a></div></article>')
@@ -458,7 +472,8 @@ def kits_cards(d):
 KITS_TITLE = 'Комплектація ресторану, готелю й офісу з Китаю під ключ'
 KITS_DESC = 'Готові комплекти меблів, світла й сантехніки з Китаю для ресторану, готелю, офісу й пентхауса: склад, ціни в гривнях, поставка 30–60 днів.'
 KITS_FAQ = [
-    ('Як порахована ціна комплекту?', 'Це сума позицій каталогу Оздоби: ціна кожної позиції × кількість, без знижок. Ціни орієнтовні — остаточну вартість, наявність і строк менеджер підтверджує після заявки.'),
+    ('Як порахована ціна комплекту?', 'Це сума позицій каталогу Оздоби: ціна кожної позиції × кількість. Знижка за обсягом рахується в кошику від усієї суми товарів. Ціни орієнтовні — остаточну вартість, наявність і строк менеджер підтверджує після заявки.'),
+    ('Чи є знижка на комплект?', 'Так, діє знижка за обсягом на всю суму товарів, включно з комплектами: від $5 000 (≈ 230 000 ₴) — 3%, від $10 000 (≈ 460 000 ₴) — 5%, від $20 000 (≈ 920 000 ₴) — 7%. Кошик рахує її автоматично. Дизайнерам і архітекторам даємо особистий код партнера — знижки не сумуються, діє більша.'),
     ('Можна змінити склад або кількості?', 'Так. Комплект — це стартова специфікація: у кошику міняйте кількості, прибирайте позиції чи додавайте інші з каталогу. Під креслення або дизайн-проєкт порахуємо комплектацію саме вашого обʼєкта.'),
     ('Скільки чекати поставку?', 'Поставка з Китаю — 30–60 днів. Замовлення краще робити паралельно з ремонтом, щоб меблі й світло приїхали до фінішу робіт. Мінімальне замовлення — $500 (≈ 23 000 ₴), поштучно не продаємо.'),
     ('Працюєте з компаніями?', 'Так, виставляємо рахунок для ФОП і ТОВ із закривними документами. Для готелів, ресторанів і офісів можемо взяти обʼєкт повністю — від дизайну й ремонту до розстановки меблів.'),
@@ -473,7 +488,7 @@ def kit_section(d, b, rows, total, onreq):
     note = f' (без {onreq} поз. за запитом)' if onreq else ''
     return (f'<section class="ozd-sec kitp" id="k-{b["id"]}">\n  <h2>{e(b["name"])}</h2>\n'
             f'  <div class="kitp-top">{kit_collage(rows)}<div><p class="knote">{e(b["note"])}</p>\n'
-            f'  <p class="ksum">{len(rows)} позицій · разом <b>{kit_total(total, onreq)}</b></p>\n'
+            f'  <p class="ksum">{len(rows)} позицій · разом <b>{kit_total(total, onreq, d)}</b></p>\n'
             f'  <div class="kbtn"><a class="btn" href="/ozdoba#kit-{b["id"]}">Додати весь комплект у кошик</a>'
             f'<a class="btn ghost" href="?kit={b["id"]}#zayavka">Запит розрахунку під мій обʼєкт</a></div></div></div>\n'
             f'  <details class="ktbl"><summary>Склад комплекту: {len(rows)} позицій</summary><div class="tscroll"><table>'
@@ -485,7 +500,8 @@ KITS_BODY = '''<div class="w">
   <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / Комплекти під обʼєкт</div>
   <div class="ozd-hero"><h1>Комплектація ресторану, готелю й офісу <em>під ключ</em></h1>
   <p>Готові комплекти з каталогу Оздоби під конкретний обʼєкт: ресторанний зал і тераса, лобі й номери готелю, офіс, салон краси, вітальня й спальня в приватному інтерʼєрі. Кожен комплект — стартова специфікація з цінами в гривнях: беріть як є, міняйте кількості або замовляйте розрахунок під свої креслення.</p>
-  <ul class="pts"><li>{n} комплектів від {lo}</li><li>Ціна = сума позицій, без знижок</li><li>Поставка 30–60 днів</li><li>Рахунок для ФОП і ТОВ</li><li>Мін. замовлення $500</li></ul></div>
+  <ul class="pts"><li>{n} комплектів від {lo}</li><li>Ціна = сума позицій</li><li>Знижка за обсягом до 7%</li><li>Поставка 30–60 днів</li><li>Рахунок для ФОП і ТОВ</li><li>Мін. замовлення $500</li></ul>
+  <p class="vol">{vol}.</p></div>
 </div>
 {sections}
 <section class="ozd-sec ozd-intro"><h2>Як працює комплектація обʼєкта</h2>
@@ -525,7 +541,7 @@ def kits_page(d):
             {'@type': 'ListItem', 'position': 2, 'name': 'Оздоба', 'item': f'{SITE}/ozdoba'},
             {'@type': 'ListItem', 'position': 3, 'name': 'Комплекти під обʼєкт', 'item': u}]}]}
     body = KITS_BODY.format(
-        n=len(ks), lo=money(min(t for _, _, t, _ in ks)),
+        n=len(ks), lo=money(min(t for _, _, t, _ in ks)), vol=vol_text(d),
         sections='\n'.join(kit_section(d, *k) for k in ks),
         faq=''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in KITS_FAQ),
         names=json.dumps({b['id']: b['name'] for b, *_ in ks}, ensure_ascii=False))
