@@ -1,0 +1,79 @@
+name: 🔁 Rebuild pages from JSON
+
+# Після змін JSON-джерел (адмінка /kabinet/admin, Claude, руками) перезбирає HTML генераторами й комітить результат у main
+# комітом "[rebuild] …". Деплой (deploy.yml) сам запускає ті самі генератори перед викладкою, тож сайт свіжий навіть до
+# цього коміту; rebuild лише тримає HTML у репозиторії синхронним із JSON.
+# Захист від циклу: коміт від GITHUB_TOKEN не запускає workflow-и (правило GitHub) + пропуск комітів з "[rebuild]".
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/**/*.json'
+      - 'assets/ozdoba/catalog.json'
+      - 'img/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write   # gh workflow run deploy.yml після коміту
+
+concurrency:
+  group: rebuild-main
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    if: ${{ !contains(github.event.head_commit.message, '[rebuild]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 50
+
+      - name: 🐍 Python + Pillow
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet 'pillow>=11.2' numpy
+
+      - name: 🖼️ AVIF і стиснення для нових фото (tools/img/build.py)
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE" 2>/dev/null \
+             || git diff --name-only "$BEFORE" "$GITHUB_SHA" -- img | grep -qE '\.(webp|jpe?g|png)$'; then
+            # build.py вважає AVIF актуальним, якщо він новіший за WebP (mtime); після checkout час файлів випадковий —
+            # «освіжаємо» наявні AVIF, щоб кодувались лише нові фото. --no-webp: WebP з адмінки вже стиснуті.
+            find img -name '*.avif' -exec touch {} +
+            python tools/img/build.py --no-webp
+            git checkout -- tools/img/report.md 2>/dev/null || true
+          else
+            echo "Нових фото немає"
+          fi
+
+      - name: 🏗️ Генератори (landing → products → shop → blog → chrome)
+        run: bash tools/build-all.sh
+
+      - name: 💾 Коміт згенерованого
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "cas-rebuild[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "Нічого не змінилось — коміту немає"; exit 0; fi
+          git diff --cached --stat | tail -n 5
+          git commit -q -m "[rebuild] сторінки з JSON після ${GITHUB_SHA::7}"
+          for i in 1 2 3; do
+            if git push origin HEAD:main; then
+              # push від GITHUB_TOKEN не запускає deploy.yml — викликаємо його явно (workflow_dispatch дозволений),
+              # щоб на сайт потрапили й AVIF-копії нових фото з цього коміту
+              gh workflow run deploy.yml --ref main || echo "::warning::Не вдалося запустити деплой — він пройде з наступним push"
+              exit 0
+            fi
+            git fetch -q origin main
+            # новіший push запустить власний rebuild — за конфлікту просто поступаємось йому
+            git rebase -q origin/main || { git rebase --abort; echo "::notice::Конфлікт з новішим комітом — перезбере наступний rebuild"; exit 0; }
+          done
+          echo "::warning::Не вдалося запушити rebuild"; exit 1

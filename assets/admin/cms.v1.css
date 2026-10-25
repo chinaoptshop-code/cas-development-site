@@ -1,0 +1,77 @@
+/* /kabinet/admin — CRM і редактор контенту (assets/admin/cms.v1.js). Лише для адмінки, на сайт не впливає. */
+.acc{max-width:1280px}
+.adm-tabs{display:flex;gap:4px 18px;border-bottom:1px solid var(--line);margin:6px 0 16px;overflow-x:auto;scrollbar-width:thin}
+.adm-tabs button{padding:8px 0 10px;color:var(--muted);font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;background:none;border-top:0;border-left:0;border-right:0;cursor:pointer;font:inherit;font-weight:600}
+.adm-tabs button[aria-pressed=true]{color:var(--cream);border-bottom-color:var(--brass)}
+.adm-in,.adm select,.adm textarea,.adm input:not([type=checkbox]):not([type=radio]):not([type=file]){background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 11px;color:var(--cream);font:inherit;font-size:var(--fs-small);max-width:100%}
+.adm textarea{width:100%;min-height:80px;resize:vertical;line-height:1.5}
+.adm textarea.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;min-height:420px;white-space:pre;tab-size:2}
+.adm .btn{display:inline-block;width:auto;padding:9px 16px;margin:0;font-size:var(--fs-small);text-decoration:none;cursor:pointer}
+.adm .btn.sm{padding:5px 10px}
+.adm .btn.danger{border-color:#e07a6a;color:#e07a6a;background:none}
+.adm .row{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
+.adm .tb{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;margin:0 0 14px}
+.adm .grow{flex:1;min-width:180px}
+.adm .muted,.adm small{color:var(--muted)}
+.adm .err{color:#e07a6a}
+.adm .ok{color:var(--ok)}
+.adm .note{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 16px;color:var(--muted);font-size:var(--fs-small);margin:0 0 14px;max-width:none}
+.adm .note b{color:var(--cream)}
+.adm table.adm{width:100%;border-collapse:collapse;font-size:var(--fs-small)}
+.adm table.adm td,.adm table.adm th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+.adm table.adm tr.clk{cursor:pointer}.adm table.adm tr.clk:hover td{background:var(--surface-2)}
+.adm .tscroll{overflow-x:auto}
+.adm .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 8px;font-size:12px;color:var(--muted);white-space:nowrap}
+.adm .pill.on{border-color:var(--brass);color:var(--glow)}
+.adm .pill.warn{border-color:#e07a6a;color:#e07a6a}
+.adm .thumb{width:48px;height:48px;object-fit:contain;border-radius:8px;background:var(--surface-2)}
+/* форми */
+.adm .form{display:grid;gap:12px;max-width:none}
+@media(min-width:800px){.adm .form.two{grid-template-columns:1fr 1fr}.adm .form .full{grid-column:1/-1}}
+.adm label.f{display:flex;flex-direction:column;gap:5px;font-size:var(--fs-small);color:var(--muted)}
+.adm label.f>span{color:var(--cream);font-weight:600}
+.adm .chk{display:inline-flex;gap:6px;align-items:center;font-size:var(--fs-small);margin-right:12px}
+.adm .stick{position:sticky;bottom:0;background:var(--ink);border-top:1px solid var(--line);padding:12px 0;margin-top:16px;z-index:5}
+.adm .photos{display:flex;flex-wrap:wrap;gap:10px}
+.adm .photos figure{margin:0;position:relative;width:110px}
+.adm .photos img{width:110px;height:110px;object-fit:contain;border-radius:10px;background:var(--surface-2);display:block}
+.adm .photos figcaption{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap}
+/* JSON-редактор */
+.je{font-size:var(--fs-small)}
+.je-o,.je-a{border-left:2px solid var(--line);padding-left:10px;margin:4px 0;display:grid;gap:6px}
+.je-k{display:grid;grid-template-columns:minmax(90px,160px) 1fr auto;gap:8px;align-items:start}
+.je-k>b{color:var(--glow);font-weight:600;word-break:break-all;padding-top:8px}
+.je-i{display:grid;grid-template-columns:28px 1fr auto;gap:6px;align-items:start}
+.je-i>i{color:var(--muted);font-style:normal;padding-top:8px;text-align:right}
+.je-tools{display:flex;gap:2px}
+.je-tools button,.je-add{background:none;border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:2px 7px;cursor:pointer;font:inherit;font-size:12px}
+.je-tools button:hover,.je-add:hover{color:var(--cream);border-color:var(--brass)}
+.je input,.je textarea{width:100%}
+.je textarea{min-height:44px}
+/* CRM */
+.kn{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,1fr);gap:10px;overflow-x:auto;padding-bottom:10px}
+.kn-col{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;min-height:200px;display:flex;flex-direction:column;gap:8px}
+.kn-col.over{border-color:var(--brass)}
+.kn-col h3{font-size:var(--fs-small);margin:0 0 4px;display:flex;justify-content:space-between;color:var(--cream);font-family:inherit}
+.kn-card{background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 10px;cursor:grab;font-size:var(--fs-small);display:grid;gap:3px}
+.kn-card b{font-size:13px}
+.kn-card .due{color:#e07a6a}
+.adm dialog{background:var(--surface);color:var(--cream);border:1px solid var(--line);border-radius:16px;padding:20px;width:min(720px,calc(100vw - 32px));max-height:calc(100vh - 40px)}
+.adm dialog::backdrop{background:rgba(0,0,0,.6)}
+.adm dialog h2{font-size:var(--fs-h3);margin:0 0 12px}
+.adm .ev{list-style:none;padding:0;margin:8px 0 0;font-size:12px;color:var(--muted)}
+.adm .ev li{border-bottom:1px solid var(--line);padding:4px 0}
+/* HTML-редактор */
+.adm iframe.pv{width:100%;height:70vh;border:1px solid var(--line);border-radius:12px;background:#fff}
+.adm .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.adm .seg button{background:none;border:0;color:var(--muted);padding:7px 14px;cursor:pointer;font:inherit;font-size:var(--fs-small)}
+.adm .seg button[aria-pressed=true]{background:var(--brass);color:#0d0b09}
+/* медіа */
+.adm .drop{border:2px dashed var(--line);border-radius:14px;padding:26px;text-align:center;color:var(--muted);cursor:pointer}
+.adm .drop.over{border-color:var(--brass);color:var(--cream)}
+.adm .media{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:14px}
+.adm .media figure{margin:0;border:1px solid var(--line);border-radius:12px;padding:8px;background:var(--surface)}
+.adm .media img{width:100%;height:140px;object-fit:cover;border-radius:8px;display:block}
+.adm .media figcaption{font-size:12px;word-break:break-all;margin-top:6px;display:grid;gap:6px}
+.adm-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--surface-2);border:1px solid var(--brass);color:var(--cream);border-radius:12px;padding:12px 18px;z-index:100;max-width:calc(100vw - 32px);font-size:var(--fs-small);box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.adm-toast.err{border-color:#e07a6a}
