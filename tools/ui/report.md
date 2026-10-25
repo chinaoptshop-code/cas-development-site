@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 713 (MAIN 5, LAND 365, інші 343). HTML разом 40544 КБ, з них інлайн CSS 16585 КБ і JS 5113 КБ.
+Сторінок: 713 (MAIN 5, LAND 365, інші 343). HTML разом 40373 КБ, з них інлайн CSS 16582 КБ і JS 4946 КБ.
 
 ## Проблеми
 
@@ -11,19 +11,19 @@
 
 - `--mu`: {'#6A6153': 5, '#938c84': 693}
 - `--bg2`: {'#100e0c': 693, '#EDEBE4': 5}
-- Копій адреси вебхука форми: 6 на 5 сторінках
+- Копій адреси вебхука форми: 0 на 0 сторінках
 
 ## Сторінки
 
 | сторінка | тип | HTML КБ | gzip КБ | CSS КБ | JS КБ | розмірів шрифту | тегів |
 |---|---|---|---|---|---|---|---|
-| portfolio.html | main | 256.8 | 43.5 | 48.4 | 43.0 | 26 | 1754 |
-| index.html | main | 164.8 | 38.3 | 53.7 | 46.3 | 27 | 657 |
-| contact.html | main | 133.1 | 34.5 | 58.0 | 45.8 | 24 | 355 |
-| about.html | main | 122.6 | 31.8 | 48.7 | 39.7 | 22 | 398 |
-| services.html | main | 120.7 | 30.3 | 45.1 | 39.7 | 21 | 452 |
+| portfolio.html | main | 225.6 | 34.1 | 48.4 | 11.9 | 26 | 1754 |
+| index.html | main | 133.0 | 28.8 | 53.7 | 14.5 | 27 | 657 |
 | ozdoba/komplekty.html | other | 118.7 | 28.5 | 32.5 | 7.9 | 14 | 1516 |
-| ozdoba.html | other | 108.2 | 24.8 | 30.2 | 7.2 | 13 | 739 |
+| ozdoba.html | other | 108.1 | 24.8 | 30.2 | 7.2 | 13 | 739 |
+| contact.html | main | 90.6 | 21.8 | 55.7 | 7.1 | 23 | 336 |
+| about.html | main | 89.5 | 21.9 | 48.7 | 7.1 | 22 | 392 |
+| services.html | main | 87.6 | 21.3 | 45.1 | 7.1 | 21 | 446 |
 | ozdoba/stilets-krislo-obidnii-bukle-z-pidlokitnykamy-74.html | other | 66.0 | 17.5 | 32.5 | 7.2 | 14 | 326 |
 | ozdoba/krislo-launzh-vulychne-z-tyku-z-541.html | other | 65.6 | 17.4 | 32.5 | 7.2 | 14 | 327 |
 | ozdoba/dyvan-modulnyi-miakyi-2-sektsii-60.html | other | 65.4 | 17.4 | 32.5 | 7.2 | 14 | 328 |
