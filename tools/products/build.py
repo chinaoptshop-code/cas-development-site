@@ -16,6 +16,7 @@ import chrome  # єдина шапка/футер (tools/site/chrome.py)
 LASTMOD = time.strftime('%Y-%m-%d', time.localtime(os.path.getmtime(os.path.join(ROOT, 'assets/ozdoba/catalog.json'))))  # для sitemap
 CAT = os.path.join(ROOT, 'assets/ozdoba/catalog.json')
 APP = os.path.join(ROOT, 'assets/ozdoba/app.js')
+FAV = os.path.join(ROOT, 'assets/account-fav.v1.js')  # «серце» (обране) з синхронізацією з кабінетом клієнта
 PAGE = os.path.join(ROOT, 'ozdoba.html')
 FIRST = 24  # скільки карток віддаємо в HTML /ozdoba; решту app.js дорендерює частинами (TBT)
 S = '<svg viewBox="0 0 100 80" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">{}</svg>'
@@ -23,6 +24,15 @@ e = lambda s: html.escape(str(s), quote=True)
 
 
 def r10(n): return round(n / 10) * 10
+
+
+def with_fav(s):
+    """Підключає assets/account-fav.v1.js перед </body> (після app.js — він обгортає window.toggleFav); ?v= — хеш файлу."""
+    s = re.sub(r'<script src="/assets/account-fav\.v1\.js\?v=\w+" defer></script>\n?', '', s)
+    if not os.path.exists(FAV): return s
+    v = hashlib.sha1(open(FAV, 'rb').read()).hexdigest()[:8]
+    i = s.rindex('</body>')
+    return s[:i] + f'<script src="/assets/account-fav.v1.js?v={v}" defer></script>\n' + s[i:]
 
 
 MINQ = 10  # мінімум 10 шт (одиниць) кожної позиції — catalog.json min_qty (Михайло 25.10.2026)
@@ -92,7 +102,7 @@ def main():
     s = re.sub(r'/assets/ozdoba/app\.js\?v=\w+', '/assets/ozdoba/app.js?v=' + ver(APP), s)
     s = re.sub(r'<span class="cnt" id="cnt">[^<]*</span>', f'<span class="cnt" id="cnt">{len(items)} позицій</span>', s, count=1)
     s = re.sub(r'<!--ozd:kits-->.*?<!--/ozd:kits-->', lambda m: '<!--ozd:kits-->' + kits_cards(d) + '<!--/ozd:kits-->', s, count=1, flags=re.S)
-    open(PAGE, 'w', encoding='utf-8').write(chrome.apply(s, 'ozdoba.html'))
+    open(PAGE, 'w', encoding='utf-8').write(with_fav(chrome.apply(s, 'ozdoba.html')))
     pages = product_pages(d)
     cats = category_pages(d)
     nk = kits_page(d)
@@ -298,7 +308,7 @@ def product_pages(d):
     titles = product_titles(d['items'])
     for i in d['items']:
         f = os.path.join(ROOT, 'ozdoba', i['slug'] + '.html'); keep.add(f)
-        open(f, 'w', encoding='utf-8').write(chrome.apply(product_page(d, i, shell, d['items'], titles[i['id']]), 'ozdoba/' + i['slug'] + '.html'))
+        open(f, 'w', encoding='utf-8').write(with_fav(chrome.apply(product_page(d, i, shell, d['items'], titles[i['id']]), 'ozdoba/' + i['slug'] + '.html')))
     for f in os.listdir(os.path.join(ROOT, 'ozdoba')):  # прибрати сторінки видалених товарів
         p = os.path.join(ROOT, 'ozdoba', f)
         if p not in keep and f.endswith('.html') and f != 'komplekty.html': os.remove(p)
@@ -410,7 +420,7 @@ def category_pages(d):
         s = s[:a] + body + '\n' + s[b:]
         a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
         s = s[:a] + s[b:]
-        open(os.path.join(ROOT, 'ozdoba/kategoriia', slug + '.html'), 'w', encoding='utf-8').write(chrome.apply(s, f'ozdoba/kategoriia/{slug}.html'))
+        open(os.path.join(ROOT, 'ozdoba/kategoriia', slug + '.html'), 'w', encoding='utf-8').write(with_fav(chrome.apply(s, f'ozdoba/kategoriia/{slug}.html')))
         out.append(u)
     sm = os.path.join(ROOT, 'sitemap.xml'); t = open(sm, encoding='utf-8').read()
     t = re.sub(r'  <url><loc>https://cas-develop\.com/ozdoba/kategoriia/[^<]+</loc>.*?</url>\n', '', t)
