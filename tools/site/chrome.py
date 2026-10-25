@@ -161,8 +161,8 @@ T = {
                                  ('/pytannya', 'Часті питання'), ('/blog', 'Блог: ціни й поради')]),
         ]),
     'ru': dict(
-        nav=[('/ru/', 'Услуги'), ('/portfolio', 'Портфолио'), ('/ozdoba', 'Оздоба'), ('/ru/blog', 'Блог'),
-             ('/about', 'О студии'), ('/contact', 'Контакты')],
+        nav=[('/ru/uslugi', 'Услуги'), ('/portfolio', 'Портфолио'), ('/ozdoba', 'Оздоба'), ('/ru/blog', 'Блог'),
+             ('/ru/o-nas', 'О студии'), ('/ru/kontakty', 'Контакты')],
         nav_label='Главное меню', menu='Меню', skip='Перейти к содержанию', menu_open='Открыть меню', menu_close='Закрыть меню', lang_label='Язык сайта',
         cta='Заявка', cta_href='/ru/#zayavka', home_label='CAS Development — на главную',
         tagline='Студия дизайна интерьера, ремонта и строительства под ключ. Киев, с 2016 года.',
@@ -183,7 +183,8 @@ T = {
                       ('/ru/remont-doma-kiev', 'Ремонт дома'), ('/ru/baza-otdyha-pod-klyuch', 'База отдыха'), ('/ru/rekonstruktsiya-doma-kiev', 'Реконструкция дома'), ('/ru/dom-pod-klyuch-koncha-zaspa', 'Дом в Конча-Заспе')]),
             ('Мебель и полезное', [('/ru/meblirovka-kvartiry-kiev', 'Меблировка под ключ'), ('/ru/komplektatsiya-pod-klyuch-kiev', 'Комплектация под ключ'),
                                    ('/ozdoba', 'Оздоба — мебель из Китая'), ('/ru/kalkulyator-remonta', 'Калькулятор стоимости'),
-                                   ('/ru/voprosy', 'Частые вопросы'), ('/ru/blog', 'Блог: цены и советы')]),
+                                   ('/ru/voprosy', 'Частые вопросы'), ('/ru/blog', 'Блог: цены и советы'),
+                                   ('/ru/o-nas', 'О студии'), ('/ru/kontakty', 'Контакты')]),
         ]),
 }
 for _l in LANGS:  # нові мови — словник chrome з tools/site/lang/<мова>.json

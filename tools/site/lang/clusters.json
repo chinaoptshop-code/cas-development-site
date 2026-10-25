@@ -13,6 +13,7 @@
  },
  "services": {
   "uk": "/services",
+  "ru": "/ru/uslugi",
   "en": "/en/services",
   "es": "/es/servicios",
   "zh": "/zh/services",
@@ -23,6 +24,7 @@
  },
  "about": {
   "uk": "/about",
+  "ru": "/ru/o-nas",
   "en": "/en/about",
   "es": "/es/sobre-nosotros",
   "zh": "/zh/about",
@@ -33,6 +35,7 @@
  },
  "contact": {
   "uk": "/contact",
+  "ru": "/ru/kontakty",
   "en": "/en/contact",
   "es": "/es/contacto",
   "zh": "/zh/contact",
