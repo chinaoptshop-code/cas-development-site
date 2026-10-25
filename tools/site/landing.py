@@ -166,7 +166,8 @@ def build(p):
                f'<link rel="alternate" hreflang="x-default" href="{uk_u}">\n')
         s = s.replace('<meta name="twitter:card"', alt + '<meta name="twitter:card"', 1)
     s = re.sub(r'(<script type="application/ld\+json">\n?).*?(\n?</script>)', lambda m: m.group(1) + ld(p) + m.group(2), s, count=1, flags=re.S)
-    s = re.sub(r'<main>\n.*?(<section id="zayavka">)', lambda m: '<main>\n' + main_html(p) + m.group(1), s, count=1, flags=re.S)
+    s, n = re.subn(r'(<main\b[^>]*>)\n.*?(<section id="zayavka">)', lambda m: m.group(1) + '\n' + main_html(p) + m.group(2), s, count=1, flags=re.S)
+    assert n == 1, f'{slug}: не знайдено <main>…<section id="zayavka"> у шаблоні'
     s = re.sub(r'data-service="[^"]*"', f'data-service="{a(p["service"])}"', s, count=1)
     s = re.sub(r'data-source="[^"]*"', f'data-source="cas-develop.com/{"ru/" if lang == "ru" else ""}{slug}"', s, count=1)
     # шапка й футер: мова, перемикач на пару (hreflang) і посилання — з chrome.py
