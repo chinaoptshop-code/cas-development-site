@@ -388,6 +388,11 @@ def apply(s, rel):
     lang, path, alts = page_lang(s), rel_to_path(rel), alternates(s)
     if rel in ('index.html', 'ru/index.html', 'en/index.html', 'es/index.html'):
         alts.setdefault(lang, HOME[lang])
+    # стаття блогу без пари іншою мовою: перемикач uk/ru веде на блог тієї мови, а не на головну
+    if path.startswith('/ru/blog'):
+        alts.setdefault('uk', '/blog')
+    elif path == '/blog' or path.startswith('/blog/'):
+        alts.setdefault('ru', '/ru/blog')
     # іконки Оздоби/кабінету
     tools = ''
     m = re.search(r'<div class="sch-tools">(.*?)</div><!--/sch-tools-->', s, re.S)

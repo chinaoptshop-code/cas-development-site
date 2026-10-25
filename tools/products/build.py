@@ -136,7 +136,7 @@ def product_desc(d, i):
     """meta description товару ≤160: ціна, опис (обрізаний по словах), доставка, мін. замовлення."""
     mp = min_price(d, i)
     head = f'Ціна {"від " if i.get("ss") else ""}{money(mp)} за {i["unit"]}. ' if mp is not None else 'Ціна за запитом. '
-    tail = ' Доставка по Україні, мін. замовлення від $500.'
+    tail = ' Доставка по Україні, мін. замовлення $500.'
     room = 160 - len(head) - len(tail)
     body = i['desc'].strip()
     if len(body) > room:
@@ -374,7 +374,7 @@ def category_pages(d):
 </div>
 <main class="grid">{cards}</main>
 <section class="ozd-sec ozd-intro"><h2>{e(cat)} під замовлення: що входить і для кого</h2>{intro}</section>
-<section class="ozd-sec"><h2>Як замовити</h2><p style="color:var(--muted);max-width:70ch">Додайте позиції в кошик у <a href="/ozdoba" style="color:var(--brass)">каталозі Оздоби</a> або надішліть список і креслення — менеджер підтвердить ціну, наявність і строк поставки. Мінімальне замовлення — від $500 (≈ 23 000 ₴), позиції з різних категорій можна поєднувати. Комплектація квартири під ключ — <a href="/mebliuvannia-kvartyry-kyiv" style="color:var(--brass)">від $250 за м²</a>, обʼєкта — <a href="/komplektatsiia-pid-kliuch-kyiv" style="color:var(--brass)">комплектація під ключ</a>.</p></section>
+<section class="ozd-sec"><h2>Як замовити</h2><p style="color:var(--muted);max-width:70ch">Додайте позиції в кошик у <a href="/ozdoba" style="color:var(--brass)">каталозі Оздоби</a> або надішліть список і креслення — менеджер підтвердить ціну, наявність і строк поставки. Мінімальне замовлення — $500 (≈ 23 000 ₴), позиції з різних категорій можна поєднувати. Комплектація квартири під ключ — <a href="/mebliuvannia-kvartyry-kyiv" style="color:var(--brass)">від $250 за м²</a>, обʼєкта — <a href="/komplektatsiia-pid-kliuch-kyiv" style="color:var(--brass)">комплектація під ключ</a>.</p></section>
 <section class="ozd-sec"><h2>Питання та відповіді</h2>{faq}</section>
 <section class="ozd-sec"><h2>Сусідні категорії</h2><div class="rel">{other}</div></section>
 '''

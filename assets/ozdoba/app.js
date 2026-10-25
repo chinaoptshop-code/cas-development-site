@@ -326,7 +326,7 @@ function renderCart(){
     <div class="sum"><span>Доставка по Україні</span><span>${ship()?money(ship()):'безкоштовно'}</span></div>
     ${onReq()?`<div class="sum"><span>Позицій за запитом: ${onReq()}</span><span>ціну назве менеджер</span></div>`:''}
     <div class="sum total"><span>${onReq()?'Сума відомих позицій':'До сплати'}</span><span>${money(grand())}</span></div>
-    ${belowMin()?`<p class="note-honest" style="color:var(--glow)">Мінімальне замовлення — від ${money(MIN_ORDER)} (≈ $500): ми комплектуємо обʼєкти й не продаємо поштучно. Додайте позиції або візьміть готовий комплект.</p>
+    ${belowMin()?`<p class="note-honest" style="color:var(--glow)">Мінімальне замовлення — ${money(MIN_ORDER)} (≈ $500): ми комплектуємо обʼєкти й не продаємо поштучно. Додайте позиції або візьміть готовий комплект.</p>
     <button class="btn ghost" onclick="closeAll();setTab('bundles')">Дивитись комплекти</button>`
     :`<button class="btn" onclick="openPay()">Оформити замовлення</button>`}
     <button class="btn ghost" onclick="copyEstimate()">Скопіювати кошторис</button>`);
@@ -354,7 +354,7 @@ function copyEstimate(){
 }
 
 /* ===================== оплата ===================== */
-function openPay(){ if(belowMin()){ toast('Мінімальне замовлення — від '+money(MIN_ORDER)); return; } renderPay(); close('sheetCart'); setTimeout(()=>open('sheetPay'),130); }
+function openPay(){ if(belowMin()){ toast('Мінімальне замовлення — '+money(MIN_ORDER)); return; } renderPay(); close('sheetCart'); setTimeout(()=>open('sheetPay'),130); }
 function renderPay(){
   const g=grand(), part=Math.ceil(g/4);
   const u=tg&&tg.initDataUnsafe&&tg.initDataUnsafe.user;
