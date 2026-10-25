@@ -9,13 +9,22 @@
    "date": "2026-10-22", "service": ["/remont-kvartyr-kyiv", "Ремонт квартир"],
    "photo": "img/p/<id>-900.webp", "pair": "<slug іншою мовою>" (необовʼязково),
    "seo_title": "..." (необовʼязково, ≤60 симв.: іде в <title> як є замість title; H1 і решта — з title),
-   "body": [["h2", "..."], ["p", "..."], ["ul", ["...", "..."]], ["ol", [...]]],
+   "photo_alt": "опис hero-фото" (обовʼязково, якщо є photo; hero виводиться після lead, fetchpriority=high),
+   "body": [["h2", "..."], ["p", "..."], ["ul", ["...", "..."]], ["ol", [...]],
+            ["img", "/img/p/<id>-900.webp", "alt", "підпис (необовʼязково)"],
+            ["gallery", [["/img/p/<id>-900.webp", "alt"], ...]]  (2–3 фото в ряд; на мобільному 2)],
+   фото в тексті: ~1 на 300–400 слів, ставити в кінці розділу h2, не два фото-вузли поспіль; без повторів у статті,
    у "p" і пунктах списків можна внутрішнє посилання: [анкор](/шлях-сторінки) — лише на наявну сторінку,
    ru-статті → /ru/..., не більше одного на ту саму сторінку; у заголовках посилань немає
    "faq": [["питання", "відповідь"], ...]}
 Ціни й факти — лише підтверджені (CLAUDE.md, розділ «Сайт: UI-kit і правила»).
 """
 import glob, html, importlib.util, json, os, re, sys
+
+try:
+    from PIL import Image
+except ImportError:  # без PIL розміри не прочитати — --check про це скаже
+    Image = None
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ART = os.path.join(ROOT, 'tools/blog/articles')
@@ -75,9 +84,11 @@ def check(a):
         p = p.strip()
         if not any(p == ok or p.startswith(ok + ' ') for ok in PRICES_OK) and not re.fullmatch(r'\$\d{1,3}( \d{3})+', p):
             errs.append(f'ціна {p} — перевірити (дозволені лише підтверджені ставки або розрахунок із них)')
-    words = sum(len(str(v).split()) for _, v in a['body'] for v in (v if isinstance(v, list) else [v]))
+    words = sum(len(str(v).split()) for k, v, *_ in a['body'] if k not in PHOTO_KINDS for v in (v if isinstance(v, list) else [v]))
     if words < 450: errs.append(f'замало тексту: {words} слів (мінімум 450)')
     if a.get('photo') and not os.path.exists(os.path.join(ROOT, a['photo'])): errs.append(f"фото {a['photo']} не знайдено")
+    if a.get('photo') and not (a.get('photo_alt') or '').strip(): errs.append('немає photo_alt для hero-фото')
+    errs += check_photos(a)
     errs += check_links(a)
     return errs
 
@@ -95,9 +106,59 @@ def inline(s):
     return LINK.sub(lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', esc(s))
 
 
+PHOTO_KINDS = ('img', 'gallery')
+
+
+def photos_of(node):
+    """[(src, alt, caption)] вузла img/gallery."""
+    kind, *rest = node
+    if kind == 'img': return [(rest[0], rest[1] if len(rest) > 1 else '', rest[2] if len(rest) > 2 else '')]
+    if kind == 'gallery': return [(x[0], x[1] if len(x) > 1 else '', x[2] if len(x) > 2 else '') for x in (rest[0] if rest else [])]
+    return []
+
+
+def check_photos(a):
+    errs, seen, prev = [], set(), None
+    if a.get('photo'): seen.add('/' + a['photo'].lstrip('/'))
+    if Image is None and any(k in PHOTO_KINDS for k, *_ in a['body']): errs.append('немає PIL (pip install pillow) — розміри фото не прочитати')
+    for i, node in enumerate(a['body']):
+        kind = node[0]
+        if kind not in PHOTO_KINDS: prev = kind; continue
+        if prev in PHOTO_KINDS: errs.append(f'два фото-вузли поспіль (body[{i}]) — між ними має бути текст')
+        if i == 0: errs.append('фото на початку body — спершу текст розділу')
+        prev = kind
+        ph = photos_of(node)
+        if kind == 'gallery' and not 2 <= len(ph) <= 3: errs.append(f'gallery body[{i}]: має бути 2–3 фото, а не {len(ph)}')
+        for src, alt, _ in ph:
+            if not re.fullmatch(r'/img/[\w/.-]+\.webp', src or ''): errs.append(f'фото {src}: шлях має бути /img/….webp'); continue
+            if not os.path.exists(os.path.join(ROOT, src.lstrip('/'))): errs.append(f'фото {src} не знайдено')
+            if not alt.strip(): errs.append(f'фото {src}: порожній alt')
+            if src in seen: errs.append(f'фото {src} повторюється в статті')
+            seen.add(src)
+    return errs
+
+
+def img_tag(src, alt, sizes, hero=False):
+    """<img> з width/height із файлу, srcset із -400 копії, lazy (hero — eager + fetchpriority=high)."""
+    w, h = Image.open(os.path.join(ROOT, src.lstrip('/'))).size
+    small = re.sub(r'-(900|800)\.webp$', '-400.webp', src)
+    srcset = ''
+    if small != src and os.path.exists(os.path.join(ROOT, small.lstrip('/'))):
+        srcset = f' srcset="{small} 400w, {src} {w}w" sizes="{sizes}"'
+    load = ' fetchpriority="high"' if hero else ' loading="lazy"'
+    return f'<img src="{src}"{srcset} width="{w}" height="{h}" alt="{esc(alt)}"{load} decoding="async">'
+
+
+def fig(src, alt, cap='', sizes='(max-width:800px) 100vw, 760px', cls='af', hero=False):
+    cut = ' cut' if '/img/products/' in src else ''
+    return (f'<figure class="{cls}{cut}">' + img_tag(src, alt, sizes, hero)
+            + (f'<figcaption>{esc(cap)}</figcaption>' if cap else '') + '</figure>')
+
+
 def check_links(a):
     errs, seen = [], set()
-    for kind, val in a['body']:
+    for kind, val, *_ in a['body']:
+        if kind in PHOTO_KINDS: continue
         for v in (val if isinstance(val, list) else [val]):
             if kind in ('h2', 'h3') and '](' in v: errs.append(f'посилання в заголовку: {v[:40]}')
             for anchor, href in LINK.findall(v):
@@ -112,8 +173,14 @@ def check_links(a):
 
 def render_body(body):
     out = []
-    for kind, val in body:
-        if kind in ('h2', 'h3'): out.append(f'<{kind}>{esc(val)}</{kind}>')
+    for node in body:
+        kind, val = node[0], node[1]
+        if kind == 'img':
+            (src, alt, cap), = photos_of(node); out.append(fig(src, alt, cap))
+        elif kind == 'gallery':
+            ph = photos_of(node)
+            out.append(f'<div class="ag ag{len(ph)}">' + ''.join(fig(src, alt, cap, '(max-width:560px) 50vw, 250px', 'agf') for src, alt, cap in ph) + '</div>')
+        elif kind in ('h2', 'h3'): out.append(f'<{kind}>{esc(val)}</{kind}>')
         elif kind == 'p': out.append(f'<p>{inline(val)}</p>')
         elif kind in ('ul', 'ol'): out.append(f'<{kind}>' + ''.join(f'<li>{inline(x)}</li>' for x in val) + f'</{kind}>')
     return '\n'.join(out)
@@ -173,6 +240,7 @@ def build_article(a, arts):
   <h1 style="font-size:var(--fs-h1)">{esc(a["title"])}</h1>
   <p class="date">CAS Development · <time datetime="{a["date"]}">{fmt_date(a["date"], lang)}</time></p>
   <p style="font-size:19px">{esc(a["lead"])}</p>
+  {fig('/' + a['photo'].lstrip('/'), a.get('photo_alt') or a['title'], hero=True) if a.get('photo') else ''}
   {render_body(a["body"])}
   <h2>{t["faq"]}</h2>
   {''.join(f'<details><summary>{esc(q)}</summary><p>{esc(ans)}</p></details>' for q, ans in a["faq"])}
