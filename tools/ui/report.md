@@ -281,7 +281,7 @@
 | kabinet.html | other | 53.1 | 15.1 | 30.6 | 11.3 | 13 | 189 |
 | blog/shcho-vkhodyt-u-dyzain-proekt-interieru.html | land | 51.7 | 14.8 | 14.6 | 7.0 | 6 | 284 |
 | blog/avtorskyi-nahliad-navishcho.html | land | 51.4 | 14.8 | 14.6 | 7.0 | 6 | 293 |
-| blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html | land | 51.4 | 14.5 | 14.6 | 7.0 | 6 | 276 |
+| blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html | land | 51.4 | 14.6 | 14.6 | 7.0 | 6 | 276 |
 | blog/mebli-z-kytaiu-dlia-interieru.html | land | 51.3 | 14.6 | 14.6 | 7.0 | 6 | 299 |
 | ru/remont-kvartir-zhk-kiev.html | land | 51.3 | 13.9 | 13.7 | 7.0 | 6 | 428 |
 | blog/etapy-remontu-kvartyry-pid-kliuch.html | land | 51.2 | 14.8 | 14.6 | 7.0 | 6 | 295 |
@@ -435,7 +435,7 @@
 | ar/furnishing.html | land | 43.7 | 12.3 | 13.7 | 7.0 | 6 | 337 |
 | landshaftnyi-dyzain-kyiv.html | land | 43.7 | 12.1 | 13.5 | 7.0 | 6 | 350 |
 | de/gewerberaeume-renovierung.html | land | 43.6 | 12.1 | 13.7 | 7.0 | 6 | 376 |
-| en/renovation-cost-calculator.html | land | 43.6 | 12.1 | 14.3 | 7.9 | 6 | 352 |
+| en/renovation-cost-calculator.html | land | 43.6 | 12.0 | 14.3 | 7.9 | 6 | 352 |
 | fr/renovation-locaux-commerciaux.html | land | 43.6 | 12.0 | 13.7 | 7.0 | 6 | 371 |
 | pl/kalkulator-remontu.html | land | 43.6 | 12.3 | 14.3 | 8.0 | 6 | 352 |
 | pl/remont-domu.html | land | 43.6 | 12.3 | 13.7 | 7.0 | 6 | 381 |
@@ -475,7 +475,7 @@
 | proekty/hodos-villa.html | land | 42.7 | 8.4 | 2.0 | 0.9 | 0 | 397 |
 | zh/renovation-calculator.html | land | 42.7 | 12.5 | 14.3 | 7.9 | 6 | 345 |
 | de/kuechenrenovierung.html | land | 42.6 | 12.1 | 13.7 | 7.0 | 6 | 367 |
-| de/umsetzung-designprojekt.html | land | 42.6 | 12.3 | 13.7 | 7.0 | 6 | 353 |
+| de/umsetzung-designprojekt.html | land | 42.6 | 12.2 | 13.7 | 7.0 | 6 | 353 |
 | de/wohnungsdesign.html | land | 42.6 | 11.8 | 13.7 | 7.0 | 6 | 360 |
 | en/apartment-interior-design.html | land | 42.6 | 11.7 | 13.7 | 7.0 | 6 | 369 |
 | en/design-implementation.html | land | 42.6 | 12.1 | 13.7 | 7.0 | 6 | 361 |
@@ -576,7 +576,7 @@
 | proekty/hoda-estate.html | land | 35.6 | 7.3 | 2.0 | 0.9 | 0 | 355 |
 | en/contact.html | land | 35.5 | 10.3 | 13.7 | 7.0 | 6 | 263 |
 | konfidentsiinist.html | land | 35.3 | 10.7 | 13.6 | 7.0 | 9 | 203 |
-| ru/konfidentsialnost.html | land | 35.3 | 10.8 | 13.6 | 7.0 | 9 | 203 |
+| ru/konfidentsialnost.html | land | 35.3 | 10.7 | 13.6 | 7.0 | 9 | 203 |
 | zh/contact.html | land | 35.2 | 10.6 | 13.7 | 7.0 | 6 | 256 |
 | proekty/diamond.html | land | 34.9 | 6.9 | 2.0 | 0.9 | 0 | 326 |
 | es/privacidad.html | land | 33.5 | 10.2 | 13.6 | 7.0 | 9 | 201 |

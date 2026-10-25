@@ -176,3 +176,56 @@ html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{le
 /* мова на телефоні: компактна кнопка «UA ▾» поруч із бургером */
 @media(max-width:639px){.sch-ld>summary{border:1px solid var(--c-ln);padding:0 10px;margin-inline-end:4px}.sch-ld-m{position:fixed;top:64px;inset-inline-end:12px;max-height:calc(100vh - 80px);overflow:auto}}
 @media(max-width:399px){.sch--tools .sch-lang{display:none}}
+
+/* ══ Motion (UI-kit): поява блоків, hover карток і кнопок, лічильники, акордеон, стрічки-marquee ══
+   JS — розділ «Motion» у /assets/site-chrome.v1.js; каталог і правила — /styleguide/#motion.
+   Правила: H1 і перше фото не анімуємо; рух — лише transform/opacity; prefers-reduced-motion: reduce — без руху.
+   Клас html.mo ставить JS (крім /ozdoba і /kabinet — там власні інтерфейси). */
+.mo-rv{opacity:0;translate:0 18px}
+.mo-rv.mo-in{opacity:1;translate:none;transition:opacity .55s ease,translate .55s cubic-bezier(.2,.7,.2,1);transition-delay:var(--mo-d,0ms)}
+.mo-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.mo-cnt{font-variant-numeric:tabular-nums}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .mo main :is(.grid>div.card,.cards>a,.ab-guar>div,.geo-item){transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+  .mo main :is(.grid>div.card,.cards>a,.ab-guar>div):hover{transform:translateY(-3px);border-color:var(--ac,#BF9148);box-shadow:0 14px 32px -20px rgba(0,0,0,.85)}
+  .mo main .geo-item:hover{transform:translateY(-2px)}
+  .mo main .gal figure{transition:border-color .3s ease}.mo main .gal figure:hover{border-color:var(--ac,#BF9148)}
+  .mo main a.btn{transition:background-color .25s ease,color .25s ease,border-color .25s ease,transform .2s ease,filter .25s ease}
+  .mo main a.btn:hover{transform:translateY(-1px)}
+  .mo main a.btn:not(.main):hover{background-color:rgba(191,145,72,.12)}
+  .mo main a.btn.main:hover{filter:brightness(1.08)}
+  .mo main a.btn:active{transform:scale(.98)}
+  .mo main .rel a{transition:color .2s ease,border-color .2s ease,background-color .2s ease}
+  .mo main .rel a:hover{background-color:rgba(191,145,72,.08)}
+  .mo main ol.steps>li{transition:border-color .3s ease}.mo main ol.steps>li:hover{border-bottom-color:var(--ac,#BF9148)}
+  .mo main summary{transition:color .2s ease}.mo main summary:hover{color:var(--ac,#BF9148)}
+}
+.btn:disabled,.btn[aria-disabled=true]{opacity:.5;cursor:not-allowed;transform:none!important;filter:none!important}
+@media(prefers-reduced-motion:no-preference){.mo main details[open]>:not(summary){animation:mo-acc .35s ease both}}
+@keyframes mo-acc{from{opacity:0;translate:0 -6px}to{opacity:1;translate:none}}
+
+/* Стрічка (marquee): ряд, що сам повільно прокручується. Розкладка — одна лінія вже з першого кадру
+   (і без JS, і при reduced motion — тоді звичайний горизонтальний скрол), тож зсуву макета немає.
+   JS дублює вміст (aria-hidden) і рухає .mq-track через transform; пауза — hover, фокус, дотик, кнопка, поза екраном. */
+:is([data-marquee],.rel:has(>a:nth-child(7)):not(:has(>a[href^="#"])),.rel.arts:has(>a:nth-child(4)),.abg){display:flex;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+:is([data-marquee],.rel,.abg)::-webkit-scrollbar{display:none}
+:is(.rel:has(>a:nth-child(7)),.rel.arts:has(>a:nth-child(4)),.rel[data-marquee])>a{flex:none;white-space:nowrap}
+.abg{gap:6px}.abg>.abg-i{flex:0 0 clamp(150px,23.5%,300px);display:block}
+@media(max-width:767px){.abg>.abg-i{flex-basis:44%}}
+.mq-on{position:relative;overflow:hidden!important;scroll-snap-type:none!important}
+.mq-vp{overflow:hidden;height:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent)}
+.mq-track{display:flex;width:max-content;height:100%;animation:mq-x var(--mq-dur,60s) linear infinite}
+.mq-g{display:flex;flex:none;height:100%;gap:var(--mq-gap,10px);padding-inline-end:var(--mq-gap,10px)}
+.mq-g>*{scroll-snap-align:none!important}
+@keyframes mq-x{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes mq-x-rtl{from{transform:translateX(0)}to{transform:translateX(50%)}}
+[dir=rtl] .mq-track{animation-name:mq-x-rtl}
+.mq-on:hover .mq-track,.mq-on:focus-within .mq-track,.mq-on.mq-touch .mq-track,.mq-on.mq-paused .mq-track,.mq-on.mq-off .mq-track{animation-play-state:paused}
+.mq-on.ui-nudge>*{animation:none!important;translate:none!important}
+.mq-btn{position:absolute;top:8px;inset-inline-end:8px;z-index:5;width:32px;height:32px;padding:0;border-radius:50%;border:1px solid rgba(191,145,72,.55);background:rgba(8,7,9,.8);color:#EDE8DF;font:700 11px/1 "Manrope","Manrope Fallback",system-ui,sans-serif;cursor:pointer;display:grid;place-items:center;opacity:.6;transition:opacity .2s ease}
+.mq-on:hover>.mq-btn,.mq-btn:focus-visible,.mq-paused>.mq-btn{opacity:1}
+.rel.mq-on{padding-inline-end:44px}
+.rel.mq-on>.mq-btn{top:50%;margin-top:-16px;inset-inline-end:0}
+.ui-sc:has(>.mq-on)>:is(.ui-fade,.ui-cnt,.strip-nav,.prs-nav){display:none!important}
+@media(prefers-reduced-motion:reduce){.mq-track{animation:none!important}.mo-rv{opacity:1!important;translate:none!important}}
+@media print{.mo-rv{opacity:1!important;translate:none!important}.mq-btn{display:none}}
