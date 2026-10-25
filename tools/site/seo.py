@@ -24,7 +24,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 B = 'https://cas-develop.com'
 SKIP_FILES = {'privacy.html', 'terms.html'}  # сторонні юридичні шаблони (noindex)
 # політики конфіденційності: посилання лише з футера/форм, хлібні крихти не потрібні
-LEGAL = {'konfidentsiinist.html', 'ru/konfidentsialnost.html', 'en/privacy-policy.html', 'es/privacidad.html'}
+LEGAL = {'konfidentsiinist.html', 'ru/konfidentsialnost.html', 'en/privacy-policy.html', 'es/privacidad.html',
+         'pl/polityka-prywatnosci.html', 'de/datenschutz.html', 'fr/confidentialite.html', 'zh/privacy.html', 'ar/privacy.html'}
 CJK = ('zh', 'ar')
 
 ERR, WARN = [], []
@@ -241,5 +242,73 @@ def main():
     sys.exit(1 if ERR or (strict and WARN) else 0)
 
 
+def _norm(s):
+    s = html.unescape(s).lower().replace('ʼ', '').replace("'", '').replace('’', '').replace('ї', 'є').replace('ё', 'е')
+    return re.sub(r'\s+', ' ', s)
+
+
+def _stems(q):
+    out = []
+    for w in re.findall(r'[\w$²–-]+', _norm(q)):
+        for p in w.split('-'):
+            if len(p) >= 3 or re.match(r'[\d$]', p):
+                out.append(p[:max(3, min(5, len(p) - 2))] if p.isalpha() else p)
+    return out
+
+
+def _has(text, q):
+    t = _norm(text)
+    return all(re.search(r'(?<![\w])' + re.escape(st), t) for st in _stems(q))
+
+
+def keywords_report():
+    """Карта запитів tools/site/keywords.json: головний запит — у title, H1, першому абзаці <main>; супутні — у <main>.
+    Також: чи веде на сторінку хоча б одне посилання з анкором, що містить її головний запит (з інших сторінок)."""
+    km = json.load(open(os.path.join(ROOT, 'tools/site/keywords.json'), encoding='utf-8'))['pages']
+    allhtml = {}
+    for rel in pages():
+        allhtml[url_of(rel)] = open(os.path.join(ROOT, rel), encoding='utf-8').read()
+    anchors = collections.defaultdict(list)  # url -> [(from, anchor)]
+    for u, s in allhtml.items():
+        body = re.sub(r'<!--chrome:h-->.*?<!--/chrome:h-->|<!--chrome:f-->.*?<!--/chrome:f-->', '', s.split('</head>', 1)[-1], flags=re.S)
+        for href, a in re.findall(r'<a\b[^>]*href="(?:' + re.escape(B) + r')?(/[^"#?]*)"[^>]*>(.*?)</a>', body, re.S):
+            href = href.rstrip('/') or '/'
+            if href != (u.rstrip('/') or '/'):
+                anchors[href].append((u, text(a)))
+    bad = 0
+    print('| URL | мова | головний запит | title | H1 | 1-й абзац | супутні в тексті | анкори з запитом |')
+    print('|---|---|---|---|---|---|---|---|')
+    for e in km:
+        for lang in ('uk', 'ru'):
+            u = e.get(lang)
+            if not u or lang not in e['main']:
+                continue
+            s = allhtml.get(u.rstrip('/') if u != '/ru/' else '/ru/') or allhtml.get(u)
+            if s is None:
+                print(f'| {u} | {lang} | — | файлу немає | | | | |')
+                continue
+            q = e['main'][lang]
+            head = s.split('</head>')[0]
+            t = text((re.search(r'<title>(.*?)</title>', head, re.S) or [0, ''])[1] if '<title>' in head else '')
+            mh = re.search(r'<h1\b[^>]*>(.*?)</h1>', s, re.S)
+            h1 = text(mh.group(1)) if mh else ''
+            mm = re.search(r'<main\b.*?</main>', s, re.S)
+            main = re.sub(r'<script\b.*?</script>|<style\b.*?</style>|<form\b.*?</form>', '', mm.group(0) if mm else s, flags=re.S)
+            ps = [text(p) for p in re.findall(r'<p\b[^>]*>(.*?)</p>', main, re.S)]
+            first = next((p for p in ps if len(p) >= 60), '')
+            sub = e.get('sub', {}).get(lang, [])
+            miss = [k for k in sub if not _has(text(main), k)]
+            anc = sum(1 for _, a in anchors[u.rstrip('/') or '/'] if _has(a, q.replace(' Київ', '').replace(' Киев', '')))
+            ok = lambda b: '✓' if b else '✗'
+            row = [_has(t, q), _has(h1, q), _has(first, q)]
+            bad += row.count(False) + len(miss)
+            print(f'| {u} | {lang} | {q} | {ok(row[0])} | {ok(row[1])} | {ok(row[2])} | {len(sub) - len(miss)}/{len(sub)}'
+                  f'{" (немає: " + ", ".join(miss) + ")" if miss else ""} | {anc} |')
+    print(f'\nПропусків: {bad}')
+
+
 if __name__ == '__main__':
-    main()
+    if '--keywords' in sys.argv:
+        keywords_report()
+    else:
+        main()
