@@ -88,11 +88,13 @@ def main():
     s = re.sub(r'/assets/ozdoba/catalog\.json\?v=\w+', '/assets/ozdoba/catalog.json?v=' + ver(CAT), s)
     s = re.sub(r'/assets/ozdoba/app\.js\?v=\w+', '/assets/ozdoba/app.js?v=' + ver(APP), s)
     s = re.sub(r'<span class="cnt" id="cnt">[^<]*</span>', f'<span class="cnt" id="cnt">{len(items)} позицій</span>', s, count=1)
+    s = re.sub(r'<!--ozd:kits-->.*?<!--/ozd:kits-->', lambda m: '<!--ozd:kits-->' + kits_cards(d) + '<!--/ozd:kits-->', s, count=1, flags=re.S)
     open(PAGE, 'w', encoding='utf-8').write(chrome.apply(s, 'ozdoba.html'))
     pages = product_pages(d)
     cats = category_pages(d)
+    nk = kits_page(d)
     photos = sum(1 for i in d['items'] if i.get('img'))
-    print(f'Оздоба: {len(items)} товарів, з фото {photos}, сторінок товарів {pages}, категорій {cats}, версія каталогу {ver(CAT)}')
+    print(f'Оздоба: {len(items)} товарів, з фото {photos}, сторінок товарів {pages}, категорій {cats}, комплектів під обʼєкт {nk}, версія каталогу {ver(CAT)}')
 
 
 
@@ -286,7 +288,7 @@ def product_pages(d):
         open(f, 'w', encoding='utf-8').write(chrome.apply(product_page(d, i, shell, d['items'], titles[i['id']]), 'ozdoba/' + i['slug'] + '.html'))
     for f in os.listdir(os.path.join(ROOT, 'ozdoba')):  # прибрати сторінки видалених товарів
         p = os.path.join(ROOT, 'ozdoba', f)
-        if p not in keep and f.endswith('.html'): os.remove(p)
+        if p not in keep and f.endswith('.html') and f != 'komplekty.html': os.remove(p)
     sm = os.path.join(ROOT, 'sitemap.xml'); s = open(sm, encoding='utf-8').read()
     s = re.sub(r'  <url><loc>https://cas-develop\.com/ozdoba/[^<]+</loc>.*?</url>\n', '', s)
     add = ''.join(f'  <url><loc>https://cas-develop.com/ozdoba/{i["slug"]}</loc><lastmod>{LASTMOD}</lastmod></url>\n' for i in d['items'])
@@ -402,6 +404,155 @@ def category_pages(d):
     t = t.replace('</urlset>', ''.join(f'  <url><loc>{x}</loc><lastmod>{LASTMOD}</lastmod></url>\n' for x in out) + '</urlset>')
     open(sm, 'w', encoding='utf-8').write(t)
     return len(out)
+
+
+# ===================== комплекти під обʼєкт: секція на /ozdoba і сторінка /ozdoba/komplekty =====================
+# Комплект = bundles[] з "premium": true у catalog.json. Ціна = сума (ціна позиції за замовчуванням × кількість), без знижок —
+# так само рахує app.js (bundleTotal). «Додати весь комплект у кошик» на /ozdoba/komplekty веде на /ozdoba#kit-<id> (app.js додає позиції).
+KITS_URL = f'{SITE}/ozdoba/komplekty'
+
+
+def item_price(d, i):
+    """Ціна позиції як у app.js price(i, 0, defS(i)): розмір за замовчуванням (множник 1) і перший колір."""
+    if i.get('price') is None: return None
+    ss = d['sizesets'].get(i['ss']) if i.get('ss') else None
+    k = 1
+    if ss: k = ss[next((n for n, x in enumerate(ss) if x[1] == 1), 0)][1]
+    return r10(i['price'] * k * (1 + d['colorsets'][i['cs']][0][2]))
+
+
+def kits(d):
+    by = {i['id']: i for i in d['items']}
+    out = []
+    for b in d.get('bundles', []):
+        if not b.get('premium'): continue
+        rows = [(by[r['id']], r['q']) for r in b['rows']]
+        total = sum((item_price(d, i) or 0) * q for i, q in rows)
+        onreq = sum(1 for i, q in rows if item_price(d, i) is None)
+        out.append((b, rows, total, onreq))
+    return out
+
+
+def kit_collage(rows):
+    pics = [i for i, q in rows if i.get('img')][:4]
+    return '<div class="kcol">' + ''.join(
+        f'<img src="/{i["img"]}-400.webp" width="400" height="400" alt="{e(i["name"])}" loading="lazy" decoding="async">' for i in pics) + '</div>'
+
+
+def kit_total(total, onreq):
+    return money(total) + (f' <small>+ {onreq} поз. за запитом</small>' if onreq else '')
+
+
+def kits_cards(d):
+    """Картки комплектів для секції «Комплекти під обʼєкт» на /ozdoba."""
+    out = []
+    for b, rows, total, onreq in kits(d):
+        out.append(f'<article class="kit" id="kit-{b["id"]}">{kit_collage(rows)}<div class="kb"><h3>{e(b["name"])}</h3>'
+                   f'<p class="knote">{e(b["note"])}</p><p class="ksum">{len(rows)} позицій · <b>{kit_total(total, onreq)}</b></p>'
+                   f'<div class="kbtn"><button type="button" class="btn" onclick="window.addKit&amp;&amp;addKit(\'{b["id"]}\')">Додати весь комплект у кошик</button>'
+                   f'<a class="btn ghost" href="/ozdoba/komplekty?kit={b["id"]}#zayavka">Запит розрахунку під мій обʼєкт</a></div>'
+                   f'<a class="kmore" href="/ozdoba/komplekty#k-{b["id"]}">Склад комплекту</a></div></article>')
+    return ''.join(out)
+
+
+KITS_TITLE = 'Комплектація ресторану, готелю й офісу з Китаю під ключ'
+KITS_DESC = 'Готові комплекти меблів, світла й сантехніки з Китаю для ресторану, готелю, офісу й пентхауса: склад, ціни в гривнях, поставка 30–60 днів.'
+KITS_FAQ = [
+    ('Як порахована ціна комплекту?', 'Це сума позицій каталогу Оздоби: ціна кожної позиції × кількість, без знижок. Ціни орієнтовні — остаточну вартість, наявність і строк менеджер підтверджує після заявки.'),
+    ('Можна змінити склад або кількості?', 'Так. Комплект — це стартова специфікація: у кошику міняйте кількості, прибирайте позиції чи додавайте інші з каталогу. Під креслення або дизайн-проєкт порахуємо комплектацію саме вашого обʼєкта.'),
+    ('Скільки чекати поставку?', 'Поставка з Китаю — 30–60 днів. Замовлення краще робити паралельно з ремонтом, щоб меблі й світло приїхали до фінішу робіт. Мінімальне замовлення — $500 (≈ 23 000 ₴), поштучно не продаємо.'),
+    ('Працюєте з компаніями?', 'Так, виставляємо рахунок для ФОП і ТОВ із закривними документами. Для готелів, ресторанів і офісів можемо взяти обʼєкт повністю — від дизайну й ремонту до розстановки меблів.'),
+]
+
+
+def kit_section(d, b, rows, total, onreq):
+    def line(i, q):
+        p = item_price(d, i)
+        return (f'<tr><td><a href="/ozdoba/{i["slug"]}">{e(i["name"])}</a></td><td>{q} {e(i["unit"])}</td>'
+                f'<td>{money(p) if p is not None else "за запитом"}</td><td>{money(p * q) if p is not None else "—"}</td></tr>')
+    note = f' (без {onreq} поз. за запитом)' if onreq else ''
+    return (f'<section class="ozd-sec kitp" id="k-{b["id"]}">\n  <h2>{e(b["name"])}</h2>\n'
+            f'  <div class="kitp-top">{kit_collage(rows)}<div><p class="knote">{e(b["note"])}</p>\n'
+            f'  <p class="ksum">{len(rows)} позицій · разом <b>{kit_total(total, onreq)}</b></p>\n'
+            f'  <div class="kbtn"><a class="btn" href="/ozdoba#kit-{b["id"]}">Додати весь комплект у кошик</a>'
+            f'<a class="btn ghost" href="?kit={b["id"]}#zayavka">Запит розрахунку під мій обʼєкт</a></div></div></div>\n'
+            f'  <details class="ktbl"><summary>Склад комплекту: {len(rows)} позицій</summary><div class="tscroll"><table>'
+            f'<thead><tr><th>Позиція</th><th>К-сть</th><th>Ціна</th><th>Сума</th></tr></thead><tbody>{"".join(line(i, q) for i, q in rows)}</tbody>'
+            f'<tfoot><tr><td colspan="3">Разом{note}</td><td>{money(total)}</td></tr></tfoot></table></div></details>\n</section>')
+
+
+KITS_BODY = '''<div class="w">
+  <div class="crumbs"><a href="/">Головна</a> / <a href="/ozdoba">Оздоба</a> / Комплекти під обʼєкт</div>
+  <div class="ozd-hero"><h1>Комплектація ресторану, готелю й офісу <em>під ключ</em></h1>
+  <p>Готові комплекти з каталогу Оздоби під конкретний обʼєкт: ресторанний зал і тераса, лобі й номери готелю, офіс, салон краси, вітальня й спальня в приватному інтерʼєрі. Кожен комплект — стартова специфікація з цінами в гривнях: беріть як є, міняйте кількості або замовляйте розрахунок під свої креслення.</p>
+  <ul class="pts"><li>{n} комплектів від {lo}</li><li>Ціна = сума позицій, без знижок</li><li>Поставка 30–60 днів</li><li>Рахунок для ФОП і ТОВ</li><li>Мін. замовлення $500</li></ul></div>
+</div>
+{sections}
+<section class="ozd-sec ozd-intro"><h2>Як працює комплектація обʼєкта</h2>
+  <p>Комплект — це не «набір з коробки», а перелік позицій, який ми уточнюємо під ваш обʼєкт: кількість посадкових місць, номерів чи робочих місць, кольори, розміри й оздоблення. Після заявки менеджер підтверджує ціни, наявність і строк поставки, а за потреби погоджуємо зразки тканин і оздоблень до замовлення.</p>
+  <p>Якщо обʼєкт ще на стадії ремонту, вигідно вести все разом: <a href="/komplektatsiia-pid-kliuch-kyiv">комплектація під ключ</a> з однією специфікацією або <a href="/biznes-pid-kliuch-kyiv">бізнес під ключ</a> — від дизайну й ремонту до розстановки меблів. Для закладів харчування — <a href="/dyzain-restoranu-kafe-kyiv">дизайн ресторану й кафе</a>.</p></section>
+<section class="ozd-sec"><h2>Питання та відповіді</h2>{faq}</section>
+<section class="ozd-sec" id="zayavka">
+  <h2>Запит розрахунку під мій обʼєкт</h2>
+  <p style="color:var(--muted);max-width:70ch">Напишіть, який у вас обʼєкт і скільки місць, номерів чи метрів, — порахуємо комплектацію під ваш проєкт і назвемо строк поставки.</p>
+  <form id="of" class="pp-form" data-form="ozdoba-kit" data-service="Оздоба — комплект під обʼєкт" data-source="cas-develop.com/ozdoba/komplekty" novalidate>
+    <div class="field"><label for="oName">Імʼя</label><input id="oName" autocomplete="name"></div>
+    <div class="field"><label for="oPhone">Телефон *</label><input id="oPhone" aria-describedby="oErr" type="tel" autocomplete="tel" placeholder="097 123 45 67"><div class="err" id="oErr" role="alert" style="color:#e07a6a;font-size:var(--fs-small);margin-top:6px"></div></div>
+    <div class="field"><label for="oArea">Площа, місця або номери</label><input id="oArea" placeholder="напр. 120 м² або 40 місць"></div>
+    <div class="field"><label for="oMsg">Обʼєкт і комплект</label><input id="oMsg" placeholder="Ресторан, готель, офіс; місто; бажаний строк"></div>
+    <button class="btn" id="oBtn" type="submit">Надіслати запит</button>
+  </form>
+  <div class="ok" id="oOk" role="status" tabindex="-1" style="display:none"><h3>Запит отримано</h3><p style="color:var(--muted)">Менеджер звʼяжеться з вами в робочий час.</p></div>
+</section>
+<script>(function(){{var k=new URLSearchParams(location.search).get('kit'),m={names},f=document.getElementById('oMsg');if(k&&m[k]&&f&&!f.value)f.value='Комплект «'+m[k]+'»: ';}})();</script>
+'''
+
+
+def kits_page(d):
+    ks = kits(d)
+    if not ks: return 0
+    shell = open(PAGE, encoding='utf-8').read()
+    shell = shell.replace('</style>\n<!--ozd:ld-->', PP_CSS + '</style>\n<!--ozd:ld-->', 1)
+    u = KITS_URL
+    ld = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'CollectionPage', 'name': KITS_TITLE, 'url': u, 'description': KITS_DESC},
+        {'@type': 'ItemList', 'name': 'Комплекти під обʼєкт — Оздоба', 'numberOfItems': len(ks), 'itemListElement': [
+            {'@type': 'ListItem', 'position': n + 1, 'name': b['name'], 'url': f'{u}#k-{b["id"]}', 'description': b['note']} for n, (b, *_) in enumerate(ks)]},
+        {'@type': 'FAQPage', 'mainEntity': [
+            {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in KITS_FAQ]},
+        {'@type': 'BreadcrumbList', 'itemListElement': [
+            {'@type': 'ListItem', 'position': 1, 'name': 'Головна', 'item': f'{SITE}/'},
+            {'@type': 'ListItem', 'position': 2, 'name': 'Оздоба', 'item': f'{SITE}/ozdoba'},
+            {'@type': 'ListItem', 'position': 3, 'name': 'Комплекти під обʼєкт', 'item': u}]}]}
+    body = KITS_BODY.format(
+        n=len(ks), lo=money(min(t for _, _, t, _ in ks)),
+        sections='\n'.join(kit_section(d, *k) for k in ks),
+        faq=''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in KITS_FAQ),
+        names=json.dumps({b['id']: b['name'] for b, *_ in ks}, ensure_ascii=False))
+    s = shell
+    s = re.sub(r'<title>.*?</title>', f'<title>{e(KITS_TITLE)}</title>', s, count=1)
+    s = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m.group(1) + e(KITS_DESC), s, count=1)
+    s = re.sub(r'(<link rel="canonical" href=")[^"]*', lambda m: m.group(1) + u, s, count=1)
+    s = re.sub(r'(<meta property="og:title" content=")[^"]*', lambda m: m.group(1) + e(KITS_TITLE), s, count=1)
+    s = re.sub(r'(<meta property="og:description" content=")[^"]*', lambda m: m.group(1) + e(KITS_DESC), s, count=1)
+    s = re.sub(r'(<meta property="og:url" content=")[^"]*', lambda m: m.group(1) + u, s, count=1)
+    s = re.sub(r'<link rel="preload" id="ozd-data"[^>]*>\n', '', s)
+    s = re.sub(r'<!--ozd:ld-->.*?<!--/ozd:ld-->', lambda m: '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>', s, count=1, flags=re.S)
+    hdr = re.search(r'<button class="ico" id="btnSearch".*?<span class="badge" id="cartBadge" hidden>0</span></button>', s, flags=re.S)
+    if hdr:
+        cart_svg = re.search(r'aria-label="Кошик">(<svg.*?</svg>)', hdr.group(0), flags=re.S).group(1)
+        acc = re.search(r'<a class="ico" id="accLink".*?</a>', hdr.group(0), flags=re.S)
+        s = s.replace(hdr.group(0), (acc.group(0) + '\n  ' if acc else '') + f'<a class="ico" href="/ozdoba" aria-label="Кошик">{cart_svg}</a>')
+    a, b = s.index('<div class="searchwrap"'), s.index('<!--chrome:f-->')
+    s = s[:a] + body + '\n' + s[b:]
+    a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
+    s = s[:a] + '<script src="/assets/lead-form.v1.js" defer></script>\n' + s[b:]
+    s = s.replace('aria-current="page">Оздоба</a>', 'aria-current="true">Оздоба</a>')
+    open(os.path.join(ROOT, 'ozdoba', 'komplekty.html'), 'w', encoding='utf-8').write(chrome.apply(s, 'ozdoba/komplekty.html'))
+    sm = os.path.join(ROOT, 'sitemap.xml'); t = open(sm, encoding='utf-8').read()
+    t = re.sub(r'  <url><loc>https://cas-develop\.com/ozdoba/komplekty</loc>.*?</url>\n', '', t)
+    open(sm, 'w', encoding='utf-8').write(t.replace('</urlset>', f'  <url><loc>{u}</loc><lastmod>{LASTMOD}</lastmod></url>\n</urlset>'))
+    return len(ks)
 
 
 if __name__ == '__main__':

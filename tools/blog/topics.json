@@ -515,5 +515,137 @@
    "Строительство домов"
   ],
   "status": "draft"
+ },
+ {
+  "lang": "uk",
+  "slug": "dyzain-i-remont-penthausa-pid-kliuch",
+  "title": "Дизайн і ремонт пентхауса під ключ: що важливо врахувати",
+  "keyword": "дизайн і ремонт пентхауса під ключ",
+  "service": [
+   "/dyzain-interieru-kyiv",
+   "Дизайн інтерʼєру"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "ru",
+  "slug": "dizayn-i-remont-penthausa-pod-klyuch",
+  "title": "Дизайн и ремонт пентхауса под ключ: что важно учесть",
+  "keyword": "дизайн и ремонт пентхауса под ключ",
+  "service": [
+   "/ru/dizayn-interera-kiev",
+   "Дизайн интерьера"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "uk",
+  "slug": "interier-pryvatnoho-budynku-premium-etapy",
+  "title": "Інтерʼєр приватного будинку преміум-класу: етапи від проєкту до меблів",
+  "keyword": "інтерʼєр приватного будинку преміум",
+  "service": [
+   "/realizatsiia-dyzain-proektu-kyiv",
+   "Реалізація дизайн-проєкту"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "ru",
+  "slug": "interer-chastnogo-doma-premium-etapy",
+  "title": "Интерьер частного дома премиум-класса: этапы от проекта до мебели",
+  "keyword": "интерьер частного дома премиум",
+  "service": [
+   "/ru/realizatsiya-dizayn-proekta-kiev",
+   "Реализация дизайн-проекта"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "uk",
+  "slug": "premialnyi-interier-yak-ne-pereplatyty",
+  "title": "Як не переплатити за преміальний інтерʼєр: де економити, а де ні",
+  "keyword": "як не переплатити за преміальний інтерʼєр",
+  "service": [
+   "/komplektatsiia-pid-kliuch-kyiv",
+   "Комплектація під ключ"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "ru",
+  "slug": "premialnyy-interer-kak-ne-pereplatit",
+  "title": "Как не переплатить за премиальный интерьер: где экономить, а где нет",
+  "keyword": "как не переплатить за премиальный интерьер",
+  "service": [
+   "/ru/komplektatsiya-pod-klyuch-kiev",
+   "Комплектация под ключ"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "uk",
+  "slug": "komplektatsiia-hotelyu-apart-hotelyu-pid-kliuch",
+  "title": "Комплектація готелю чи апарт-готелю під ключ: номери, лобі, санвузли",
+  "keyword": "комплектація готелю під ключ",
+  "service": [
+   "/biznes-pid-kliuch-kyiv",
+   "Бізнес під ключ"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "ru",
+  "slug": "komplektatsiya-otelya-apart-otelya-pod-klyuch",
+  "title": "Комплектация отеля или апарт-отеля под ключ: номера, лобби, санузлы",
+  "keyword": "комплектация отеля под ключ",
+  "service": [
+   "/ru/biznes-pod-klyuch-kiev",
+   "Бизнес под ключ"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "uk",
+  "slug": "dyzain-interieru-onlain-budynok-za-kordonom",
+  "title": "Дизайн інтерʼєру онлайн для будинку за кордоном: Європа, ОАЕ, США",
+  "keyword": "дизайн інтерʼєру онлайн за кордоном",
+  "service": [
+   "/dyzain-interieru-kyiv",
+   "Дизайн інтерʼєру"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "ru",
+  "slug": "dizayn-interera-onlayn-dom-za-granitsey",
+  "title": "Дизайн интерьера онлайн для дома за границей: Европа, ОАЭ, США",
+  "keyword": "дизайн интерьера онлайн за границей",
+  "service": [
+   "/ru/dizayn-interera-kiev",
+   "Дизайн интерьера"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "uk",
+  "slug": "kamin-shpon-latun-materialy-premium-interieru",
+  "title": "Натуральний камінь, шпон, латунь: матеріали преміум-інтерʼєру",
+  "keyword": "матеріали преміум-інтерʼєру",
+  "service": [
+   "/dyzain-interieru-kyiv",
+   "Дизайн інтерʼєру"
+  ],
+  "status": "draft"
+ },
+ {
+  "lang": "ru",
+  "slug": "kamen-shpon-latun-materialy-premium-interera",
+  "title": "Натуральный камень, шпон, латунь: материалы премиум-интерьера",
+  "keyword": "материалы премиум-интерьера",
+  "service": [
+   "/ru/dizayn-interera-kiev",
+   "Дизайн интерьера"
+  ],
+  "status": "draft"
  }
 ]

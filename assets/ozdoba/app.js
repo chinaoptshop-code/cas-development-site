@@ -177,14 +177,19 @@ function toggleFav(id){
 function bundleTotal(b, qty){
   return b.rows.reduce((s,r,n)=>{ const q = qty ? (qty[n] ?? r.q) : r.q; return s + price(byId(r.id),0,defS(byId(r.id)))*q; },0);
 }
+/* комплекти під обʼєкт (premium) — без знижки: ціна = сума позицій × кількість */
+const bPct = b => b.premium ? 0 : 8;
+const bNet = (b,t) => Math.round(t*(100-bPct(b))/100);
+function kitPics(b){ return b.rows.map(r=>byId(r.id)).filter(i=>i&&i.img).slice(0,4)
+  .map(i=>`<img src="/${i.img}-400.webp" width="400" height="400" alt="${esc(i.name)}" loading="lazy" decoding="async">`).join(''); }
 function renderBundles(){
   const list = venue==='all' ? BU : BU.filter(b=>b.venue===venue);
   document.getElementById('blist').innerHTML = list.length ? list.map(b=>{
-    const t=bundleTotal(b), d=Math.round(t*.92);
-    return `<article class="bcard" role="button" tabindex="0" aria-label="${esc(b.name)}" onclick="openBundle('${b.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBundle('${b.id}')}">
-      <div class="art">${ART[b.art]||''}</div>
+    const t=bundleTotal(b), d=bNet(b,t);
+    return `<article class="bcard${b.premium?' prem':''}" role="button" tabindex="0" aria-label="${esc(b.name)}" onclick="openBundle('${b.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openBundle('${b.id}')}">
+      <div class="art${b.premium?' kcol':''}">${b.premium?kitPics(b):(ART[b.art]||'')}</div>
       <div class="info"><h3>${b.name}</h3><div class="note">${b.note}</div>
-        <div class="pr">${money(d)} <s>${money(t)}</s></div></div></article>`;
+        <div class="pr">${money(d)}${d<t?` <s>${money(t)}</s>`:''}</div></div></article>`;
   }).join('') : `<div class="empty">Для цього типу приміщення готового комплекту ще немає. Зберіть з каталогу — або напишіть нам, порахуємо під ваш обʼєкт.</div>`;
 }
 function openBundle(id){
@@ -193,7 +198,7 @@ function openBundle(id){
 }
 function renderBundle(id){
   const b=BU.find(x=>x.id===id);
-  const t=bundleTotal(b,bq), d=Math.round(t*.92);
+  const t=bundleTotal(b,bq), d=bNet(b,t), pc=bPct(b);
   const n0=b.rows.filter((r,n)=>bq[n]>0).length;
   paint('bundleBody', `
     <div class="sh-head"><h2>${b.name}</h2><button type="button" class="x" onclick="closeAll()" aria-label="Закрити">✕</button></div>
@@ -203,13 +208,15 @@ function renderBundle(id){
         <div class="art${i.img?' ph':''}">${pic(i)}</div>
         <div class="info"><b>${i.name}</b><em>${money(price(i,0,defS(i)))} / ${i.unit}</em></div>
         <div class="right">
-          <span class="s">${money(price(i,0,defS(i))*(bq[n]||0))}</span>
+          <span class="s">${i.price==null?money(null):money(price(i,0,defS(i))*(bq[n]||0))}</span>
           <div class="qty sm"><button type="button" onclick="bqSet('${id}',${n},-1)" aria-label="Менше: ${esc(i.name)}">−</button><span aria-live="polite">${bq[n]||0}</span><button type="button" onclick="bqSet('${id}',${n},1)" aria-label="Більше: ${esc(i.name)}">+</button></div>
         </div></div>`; }).join('')}
-    <div class="sum"><span>${n0} позицій, без знижки</span><span>${money(t)}</span></div>
-    <div class="sum disc"><span>Знижка за комплект, 8%</span><span>−${money(t-d)}</span></div>
-    <div class="sum total"><span>Разом</span><span>${money(d)}</span></div>
-    <button class="btn" onclick="addBundle('${id}')">Додати комплект у кошик</button>`);
+    ${pc?`<div class="sum"><span>${n0} позицій, без знижки</span><span>${money(t)}</span></div>
+    <div class="sum disc"><span>Знижка за комплект, ${pc}%</span><span>−${money(t-d)}</span></div>`:''}
+    <div class="sum total"><span>Разом${pc?'':`, ${n0} позицій`}</span><span>${money(d)}</span></div>
+    ${b.premium?`<p class="note-honest">Ціна — сума позицій каталогу, без знижок. Поставка з Китаю 30–60 днів, рахунок для ФОП і ТОВ. Точну суму під ваш обʼєкт менеджер підтвердить після заявки.</p>`:''}
+    <button class="btn" onclick="addBundle('${id}')">${b.premium?'Додати весь комплект у кошик':'Додати комплект у кошик'}</button>
+    ${b.premium?`<a class="btn ghost" style="text-decoration:none" href="/ozdoba/komplekty?kit=${b.id}#zayavka">Запит розрахунку під мій обʼєкт</a>`:''}`);
 }
 function bqSet(id,n,dd){ bq[n]=Math.max(0,(bq[n]||0)+dd); renderBundle(id); }
 function addBundle(id){
@@ -220,8 +227,13 @@ function addBundle(id){
     ex ? ex.qty+=q : cart.push({id:i.id,ci:0,si,qty:q}); added++;
   });
   if(!added){ toast('Усі позиції на нулі — нічого додавати'); return; }
-  promo={code:'КОМПЛЕКТ',pct:8};
-  haptic('success'); closeAll(); syncBadges(); toast(`Комплект додано: ${added} позицій, знижка 8%`);
+  if(!b.premium) promo={code:'КОМПЛЕКТ',pct:8};
+  haptic('success'); closeAll(); syncBadges(); toast(b.premium?`Комплект «${b.name}» у кошику: ${added} позицій`:`Комплект додано: ${added} позицій, знижка 8%`);
+}
+/* «Додати весь комплект у кошик» із секції /ozdoba і з /ozdoba/komplekty (#kit-k1) — кількості за замовчуванням */
+function addKit(id){
+  const b=BU.find(x=>x.id===id); if(!b) return;
+  bq={}; b.rows.forEach((r,n)=>bq[n]=r.q); addBundle(id); openCart();
 }
 
 /* ===================== картка товару ===================== */
@@ -473,6 +485,8 @@ function boot(d){ account();
   else setTab('catalog');
   syncBadges();
   const m=location.hash.match(/^#p-(\d+)$/); if(m) openItem(+m[1]);
+  const k=location.hash.match(/^#kit-(k\d+)$/);
+  if(k){ try{history.replaceState(null,'',location.pathname+location.search);}catch(e){} addKit(k[1]); }
 }
 fetch(document.getElementById('ozd-data').href).then(r=>r.json()).then(boot)
   .catch(()=>{ const c=document.getElementById('cnt'); if(c) c.textContent='Каталог не завантажився — оновіть сторінку'; });
