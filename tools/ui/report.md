@@ -1,16 +1,16 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 347 (MAIN 5, LAND 103, інші 239). HTML разом 18573 КБ, з них інлайн CSS 8053 КБ і JS 2567 КБ.
+Сторінок: 348 (MAIN 5, LAND 104, інші 239). HTML разом 18619 КБ, з них інлайн CSS 8067 КБ і JS 2574 КБ.
 
 ## Проблеми
 
 - **Навігація через onclick** (1): portfolio.html(20)
-- **Непідтверджені ціни** (33): biznes-pid-kliuch-kyiv.html['$52 500'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'], blog/dyzain-restoranu-z-choho-pochaty.html['$3 600 '], blog/etapy-remontu-kvartyry-pid-kliuch.html['$38 500'], blog/komplektatsiia-kvartyry-pid-kliuch-poriadok-i-biudzhet.html['$12 500', '$17 500'], blog/mebli-z-kytaiu-dlia-interieru.html['$12 500', '$17 500'], blog/mebliuvannia-kvartyry-pid-orendu-cheklist.html['$10 000', '$15 000'], blog/realizatsiia-dyzain-proektu-yak-ne-vtratyty-zadum.html['$55 000 '], blog/remont-komertsiinoho-prymishchennia-etapy.html['$6 000', '$70 000', '$76 000 '], blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html['$70 000 '] …
+- **Непідтверджені ціни** (34): biznes-pid-kliuch-kyiv.html['$52 500'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'], blog/dyzain-restoranu-z-choho-pochaty.html['$3 600 '], blog/etapy-remontu-kvartyry-pid-kliuch.html['$38 500'], blog/komplektatsiia-kvartyry-pid-kliuch-poriadok-i-biudzhet.html['$12 500', '$17 500'], blog/mebli-z-kytaiu-dlia-interieru.html['$12 500', '$17 500'], blog/mebliuvannia-kvartyry-pid-orendu-cheklist.html['$10 000', '$15 000'], blog/proekt-budynku-shcho-vkhodyt.html['$165 000', '$4 500', '$90 000 '], blog/realizatsiia-dyzain-proektu-yak-ne-vtratyty-zadum.html['$55 000 '], blog/remont-komertsiinoho-prymishchennia-etapy.html['$6 000', '$70 000', '$76 000 '] …
 
 ## Токени
 
-- `--mu`: {'#6A6153': 5, '#938c84': 327, '#87807C': 1}
-- `--bg2`: {'#100e0c': 327, '#EDEBE4': 5}
+- `--mu`: {'#6A6153': 5, '#938c84': 328, '#87807C': 1}
+- `--bg2`: {'#100e0c': 328, '#EDEBE4': 5}
 - Копій адреси вебхука форми: 6 на 5 сторінках
 
 ## Сторінки
@@ -21,7 +21,7 @@
 | index.html | main | 151.9 | 35.1 | 51.2 | 45.6 | 25 | 583 |
 | contact.html | main | 122.4 | 31.8 | 56.5 | 45.7 | 22 | 278 |
 | about.html | main | 115.3 | 29.7 | 48.2 | 39.6 | 20 | 333 |
-| services.html | main | 114.8 | 28.8 | 45.2 | 39.6 | 20 | 381 |
+| services.html | main | 114.7 | 28.8 | 45.2 | 39.6 | 20 | 381 |
 | ozdoba.html | other | 82.9 | 18.7 | 26.2 | 7.2 | 11 | 672 |
 | proekty/petrivtsi-house.html | land | 57.5 | 9.2 | 2.0 | 0.9 | 0 | 418 |
 | ozdoba/dushova-stiika-z-termostatom-brashovane-zoloto-433.html | other | 57.1 | 15.0 | 27.7 | 7.2 | 12 | 303 |
@@ -264,29 +264,29 @@
 | service-detail.html | other | 53.2 | 16.0 | 14.2 | 29.8 | 7 | 143 |
 | blog/remont-komertsiinoho-prymishchennia-etapy.html | land | 52.6 | 15.1 | 14.6 | 7.0 | 6 | 270 |
 | blog/mebliuvannia-kvartyry-pid-orendu-cheklist.html | land | 52.5 | 15.0 | 14.6 | 7.0 | 6 | 275 |
-| blog/salon-krasy-pid-kliuch.html | land | 52.5 | 15.4 | 14.6 | 7.0 | 6 | 261 |
+| blog/salon-krasy-pid-kliuch.html | land | 52.4 | 15.4 | 14.6 | 7.0 | 6 | 261 |
 | blog/budynok-pid-kliuch-chy-korobka.html | land | 51.6 | 14.7 | 14.6 | 7.0 | 6 | 265 |
 | biznes-pid-kliuch-kyiv.html | land | 51.3 | 14.0 | 13.7 | 7.0 | 6 | 355 |
 | ru/biznes-pod-klyuch-kiev.html | land | 51.3 | 14.0 | 13.7 | 7.0 | 6 | 355 |
 | kabinet/admin.html | other | 51.1 | 14.6 | 28.6 | 12.7 | 12 | 156 |
-| blog/etapy-remontu-kvartyry-pid-kliuch.html | land | 50.0 | 14.5 | 14.6 | 7.0 | 6 | 263 |
+| ru/blog.html | land | 50.5 | 12.9 | 13.9 | 7.0 | 6 | 239 |
+| blog.html | land | 50.3 | 12.9 | 13.9 | 7.0 | 6 | 239 |
+| blog/etapy-remontu-kvartyry-pid-kliuch.html | land | 49.9 | 14.5 | 14.6 | 7.0 | 6 | 263 |
 | blog/shcho-vkhodyt-u-dyzain-proekt-interieru.html | land | 49.9 | 14.4 | 14.6 | 7.0 | 6 | 250 |
-| ru/blog.html | land | 49.9 | 12.8 | 13.9 | 7.0 | 6 | 236 |
 | blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html | land | 49.8 | 14.2 | 14.6 | 7.0 | 6 | 267 |
-| blog/suchasnyi-minimalizm-teplyi-interier.html | land | 49.8 | 14.4 | 14.6 | 7.0 | 6 | 253 |
-| blog/yak-vybraty-remontnu-bryhadu.html | land | 49.8 | 14.4 | 14.6 | 7.0 | 6 | 254 |
 | kabinet.html | other | 49.8 | 14.3 | 28.6 | 11.1 | 12 | 157 |
-| blog.html | land | 49.7 | 12.8 | 13.9 | 7.0 | 6 | 236 |
-| blog/mebli-z-kytaiu-dlia-interieru.html | land | 49.7 | 14.2 | 14.6 | 7.0 | 6 | 265 |
-| blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html | land | 49.7 | 14.1 | 14.6 | 7.0 | 6 | 242 |
-| blog/avtorskyi-nahliad-navishcho.html | land | 49.6 | 14.4 | 14.6 | 7.0 | 6 | 259 |
+| blog/suchasnyi-minimalizm-teplyi-interier.html | land | 49.7 | 14.4 | 14.6 | 7.0 | 6 | 253 |
+| blog/yak-vybraty-remontnu-bryhadu.html | land | 49.7 | 14.4 | 14.6 | 7.0 | 6 | 254 |
+| blog/mebli-z-kytaiu-dlia-interieru.html | land | 49.6 | 14.2 | 14.6 | 7.0 | 6 | 265 |
 | blog/skilky-koshtuie-dyzain-proekt-kvartyry-kyiv.html | land | 49.6 | 14.1 | 14.6 | 7.0 | 6 | 261 |
+| blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html | land | 49.6 | 14.1 | 14.6 | 7.0 | 6 | 242 |
+| blog/avtorskyi-nahliad-navishcho.html | land | 49.5 | 14.4 | 14.6 | 7.0 | 6 | 259 |
 | blog/dyzain-restoranu-z-choho-pochaty.html | land | 49.4 | 14.5 | 14.6 | 7.0 | 6 | 255 |
-| blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | land | 49.4 | 14.4 | 14.6 | 7.0 | 6 | 259 |
-| blog/dyzain-malenkoi-kvartyry-zberihannia.html | land | 49.3 | 14.3 | 14.6 | 7.0 | 6 | 255 |
-| blog/skilky-koshtuie-remont-budynku-pid-kliuch.html | land | 49.3 | 14.2 | 14.6 | 7.0 | 6 | 262 |
-| blog/yak-splanuvaty-bazu-vidpochynku.html | land | 49.2 | 14.3 | 14.6 | 7.0 | 6 | 257 |
-| blog/yak-vybraty-dyzainera-interieru.html | land | 49.1 | 14.2 | 14.6 | 7.0 | 6 | 261 |
+| blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | land | 49.3 | 14.3 | 14.6 | 7.0 | 6 | 259 |
+| blog/dyzain-malenkoi-kvartyry-zberihannia.html | land | 49.2 | 14.3 | 14.6 | 7.0 | 6 | 255 |
+| blog/skilky-koshtuie-remont-budynku-pid-kliuch.html | land | 49.2 | 14.2 | 14.6 | 7.0 | 6 | 262 |
+| blog/yak-splanuvaty-bazu-vidpochynku.html | land | 49.1 | 14.3 | 14.6 | 7.0 | 6 | 257 |
+| blog/yak-vybraty-dyzainera-interieru.html | land | 49.1 | 14.1 | 14.6 | 7.0 | 6 | 261 |
 | blog/komplektatsiia-kvartyry-pid-kliuch-poriadok-i-biudzhet.html | land | 49.0 | 14.1 | 14.6 | 7.0 | 6 | 241 |
 | proekty/linden-penthouse.html | land | 48.3 | 8.5 | 2.0 | 0.9 | 0 | 380 |
 | blog/realizatsiia-dyzain-proektu-yak-ne-vtratyty-zadum.html | land | 48.1 | 13.9 | 14.6 | 7.0 | 6 | 231 |
@@ -306,15 +306,16 @@
 | remont-kvartyr-kyiv.html | land | 45.9 | 12.9 | 13.5 | 7.0 | 6 | 340 |
 | remont-ofisu-pid-klyuch-kyiv.html | land | 45.9 | 12.7 | 13.4 | 7.0 | 6 | 341 |
 | ru/dizayn-restorana-kafe-kiev.html | land | 45.9 | 12.8 | 13.7 | 7.0 | 6 | 319 |
+| blog/proekt-budynku-shcho-vkhodyt.html | land | 45.6 | 13.3 | 14.6 | 7.0 | 6 | 232 |
 | pytannya.html | land | 45.5 | 12.0 | 13.7 | 7.0 | 6 | 288 |
 | ru/baza-otdyha-pod-klyuch.html | land | 45.5 | 12.6 | 13.7 | 7.0 | 6 | 319 |
 | ru/voprosy.html | land | 45.3 | 12.1 | 13.7 | 7.0 | 6 | 288 |
-| blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html | land | 45.2 | 13.3 | 14.6 | 7.0 | 6 | 249 |
 | dyzain-interieru-kvartyry-kyiv.html | land | 45.2 | 12.4 | 13.4 | 7.0 | 6 | 335 |
+| blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html | land | 45.1 | 13.3 | 14.6 | 7.0 | 6 | 249 |
 | ru/stroitelstvo-domov-kiev.html | land | 45.1 | 12.6 | 13.7 | 7.0 | 6 | 325 |
 | ru/dizayn-kvartiry-kiev.html | land | 44.9 | 12.7 | 13.7 | 7.0 | 6 | 325 |
-| blog/remont-vannoi-kimnaty-pid-kliuch-etapy.html | land | 44.8 | 13.2 | 14.6 | 7.0 | 6 | 239 |
 | proekty/pidgirland.html | land | 44.8 | 8.0 | 2.0 | 0.9 | 0 | 358 |
+| blog/remont-vannoi-kimnaty-pid-kliuch-etapy.html | land | 44.7 | 13.2 | 14.6 | 7.0 | 6 | 239 |
 | ru/remont-v-novostroyke-kiev.html | land | 44.7 | 12.6 | 13.7 | 7.0 | 6 | 331 |
 | ru/remont-pod-klyuch-kiev.html | land | 44.5 | 12.6 | 13.7 | 7.0 | 6 | 331 |
 | remont-vannoi-kimnaty-kyiv.html | land | 44.3 | 12.4 | 13.7 | 7.0 | 6 | 333 |
@@ -322,10 +323,10 @@
 | budivnytstvo-budynkiv-kyiv.html | land | 44.1 | 12.2 | 13.5 | 7.0 | 6 | 327 |
 | remont-novobudovy-kyiv.html | land | 44.0 | 12.3 | 13.5 | 7.0 | 6 | 337 |
 | ru/remont-vannoy-kiev.html | land | 44.0 | 12.6 | 13.7 | 7.0 | 6 | 320 |
+| ru/proektirovanie-doma-kiev.html | land | 43.8 | 12.2 | 13.7 | 7.0 | 6 | 317 |
 | ru/remont-doma-kiev.html | land | 43.8 | 12.5 | 13.7 | 7.0 | 6 | 330 |
 | remont-komertsiinykh-prymishchen-kyiv.html | land | 43.7 | 12.2 | 13.5 | 7.0 | 6 | 338 |
 | remont-pid-klyuch-kyiv.html | land | 43.6 | 12.3 | 13.5 | 7.0 | 6 | 333 |
-| ru/proektirovanie-doma-kiev.html | land | 43.5 | 12.1 | 13.7 | 7.0 | 6 | 312 |
 | kalkuliator-remontu.html | land | 43.4 | 12.3 | 14.3 | 8.0 | 6 | 301 |
 | remont-kukhni-kyiv.html | land | 43.2 | 12.2 | 13.7 | 7.0 | 6 | 327 |
 | ru/dizayner-interera-kiev.html | land | 43.2 | 12.4 | 13.7 | 7.0 | 6 | 309 |
@@ -333,7 +334,7 @@
 | ru/remont-kuhni-kiev.html | land | 43.2 | 12.4 | 13.7 | 7.0 | 6 | 319 |
 | dyzain-restoranu-kafe-kyiv.html | land | 43.1 | 12.0 | 13.4 | 7.0 | 6 | 318 |
 | ru/index.html | land | 43.0 | 11.9 | 13.7 | 7.0 | 6 | 311 |
-| proektuvannia-budynku-kyiv.html | land | 42.7 | 11.7 | 13.4 | 7.0 | 6 | 321 |
+| proektuvannia-budynku-kyiv.html | land | 42.9 | 11.8 | 13.4 | 7.0 | 6 | 326 |
 | proekty/kitana-beach.html | land | 42.6 | 7.7 | 2.0 | 0.9 | 0 | 354 |
 | ru/remont-ofisa-kiev.html | land | 42.5 | 12.2 | 13.7 | 7.0 | 6 | 319 |
 | dyzainer-interieru-kyiv.html | land | 42.4 | 12.1 | 13.7 | 7.0 | 6 | 309 |

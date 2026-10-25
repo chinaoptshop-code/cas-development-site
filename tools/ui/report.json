@@ -96,12 +96,12 @@
  {
   "page": "blog.html",
   "kind": "land",
-  "html_kb": 49.7,
-  "gzip_kb": 12.8,
+  "html_kb": 50.3,
+  "gzip_kb": 12.9,
   "css_kb": 13.9,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 236,
+  "tags": 239,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -126,7 +126,7 @@
  {
   "page": "blog/avtorskyi-nahliad-navishcho.html",
   "kind": "land",
-  "html_kb": 49.6,
+  "html_kb": 49.5,
   "gzip_kb": 14.4,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -156,7 +156,7 @@
  {
   "page": "blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html",
   "kind": "land",
-  "html_kb": 45.2,
+  "html_kb": 45.1,
   "gzip_kb": 13.3,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -223,7 +223,7 @@
  {
   "page": "blog/dyzain-malenkoi-kvartyry-zberihannia.html",
   "kind": "land",
-  "html_kb": 49.3,
+  "html_kb": 49.2,
   "gzip_kb": 14.3,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -287,7 +287,7 @@
  {
   "page": "blog/etapy-remontu-kvartyry-pid-kliuch.html",
   "kind": "land",
-  "html_kb": 50.0,
+  "html_kb": 49.9,
   "gzip_kb": 14.5,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -382,7 +382,7 @@
  {
   "page": "blog/mebli-z-kytaiu-dlia-interieru.html",
   "kind": "land",
-  "html_kb": 49.7,
+  "html_kb": 49.6,
   "gzip_kb": 14.2,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -441,6 +441,40 @@
   "prices_bad": [
    "$10 000",
    "$15 000"
+  ],
+  "facts_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/proekt-budynku-shcho-vkhodyt.html",
+  "kind": "land",
+  "html_kb": 45.6,
+  "gzip_kb": 13.3,
+  "css_kb": 14.6,
+  "js_kb": 7.0,
+  "font_sizes": 6,
+  "tags": 232,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$165 000",
+   "$4 500",
+   "$90 000 "
   ],
   "facts_bad": [],
   "webhook_copies": 0
@@ -514,8 +548,8 @@
  {
   "page": "blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html",
   "kind": "land",
-  "html_kb": 49.4,
-  "gzip_kb": 14.4,
+  "html_kb": 49.3,
+  "gzip_kb": 14.3,
   "css_kb": 14.6,
   "js_kb": 7.0,
   "font_sizes": 6,
@@ -546,7 +580,7 @@
  {
   "page": "blog/remont-vannoi-kimnaty-pid-kliuch-etapy.html",
   "kind": "land",
-  "html_kb": 44.8,
+  "html_kb": 44.7,
   "gzip_kb": 13.2,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -576,7 +610,7 @@
  {
   "page": "blog/salon-krasy-pid-kliuch.html",
   "kind": "land",
-  "html_kb": 52.5,
+  "html_kb": 52.4,
   "gzip_kb": 15.4,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -711,7 +745,7 @@
  {
   "page": "blog/skilky-koshtuie-remont-budynku-pid-kliuch.html",
   "kind": "land",
-  "html_kb": 49.3,
+  "html_kb": 49.2,
   "gzip_kb": 14.2,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -781,7 +815,7 @@
  {
   "page": "blog/suchasnyi-minimalizm-teplyi-interier.html",
   "kind": "land",
-  "html_kb": 49.8,
+  "html_kb": 49.7,
   "gzip_kb": 14.4,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -813,7 +847,7 @@
  {
   "page": "blog/yak-splanuvaty-bazu-vidpochynku.html",
   "kind": "land",
-  "html_kb": 49.2,
+  "html_kb": 49.1,
   "gzip_kb": 14.3,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -878,7 +912,7 @@
  {
   "page": "blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html",
   "kind": "land",
-  "html_kb": 49.7,
+  "html_kb": 49.6,
   "gzip_kb": 14.1,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -911,7 +945,7 @@
   "page": "blog/yak-vybraty-dyzainera-interieru.html",
   "kind": "land",
   "html_kb": 49.1,
-  "gzip_kb": 14.2,
+  "gzip_kb": 14.1,
   "css_kb": 14.6,
   "js_kb": 7.0,
   "font_sizes": 6,
@@ -940,7 +974,7 @@
  {
   "page": "blog/yak-vybraty-remontnu-bryhadu.html",
   "kind": "land",
-  "html_kb": 49.8,
+  "html_kb": 49.7,
   "gzip_kb": 14.4,
   "css_kb": 14.6,
   "js_kb": 7.0,
@@ -8703,12 +8737,12 @@
  {
   "page": "proektuvannia-budynku-kyiv.html",
   "kind": "land",
-  "html_kb": 42.7,
-  "gzip_kb": 11.7,
+  "html_kb": 42.9,
+  "gzip_kb": 11.8,
   "css_kb": 13.4,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 321,
+  "tags": 326,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -9645,12 +9679,12 @@
  {
   "page": "ru/blog.html",
   "kind": "land",
-  "html_kb": 49.9,
-  "gzip_kb": 12.8,
+  "html_kb": 50.5,
+  "gzip_kb": 12.9,
   "css_kb": 13.9,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 236,
+  "tags": 239,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -9982,12 +10016,12 @@
  {
   "page": "ru/proektirovanie-doma-kiev.html",
   "kind": "land",
-  "html_kb": 43.5,
-  "gzip_kb": 12.1,
+  "html_kb": 43.8,
+  "gzip_kb": 12.2,
   "css_kb": 13.7,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 312,
+  "tags": 317,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -10403,7 +10437,7 @@
  {
   "page": "services.html",
   "kind": "main",
-  "html_kb": 114.8,
+  "html_kb": 114.7,
   "gzip_kb": 28.8,
   "css_kb": 45.2,
   "js_kb": 39.6,
