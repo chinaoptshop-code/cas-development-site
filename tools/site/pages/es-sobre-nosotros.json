@@ -1,0 +1,132 @@
+{
+ "slug": "sobre-nosotros",
+ "lang": "es",
+ "kind": "about",
+ "service": "Sobre el estudio",
+ "title": "Sobre CAS Development — estudio de diseño y obra en Kiev",
+ "description": "CAS Development: estudio de diseño, reformas y construcción fundado en Kiev en 2016. Más de 150 proyectos en Ucrania y el extranjero, garantía de 12 meses.",
+ "h1": "Creamos espacios con vida",
+ "lead": "CAS Development es un estudio donde la arquitectura se encuentra con el detalle. Fundado en Kiev en 2016, diseña interiores, reforma y construye llave en mano: desde pisos compactos hasta casas, restaurantes y oficinas.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "text",
+   "h2": "Nuestro enfoque",
+   "p": [
+    "Desde 2016 hemos realizado más de 150 proyectos en Ucrania y en el extranjero. No copiamos tendencias: primero entendemos cómo vive o trabaja usted y después creamos el espacio a partir de ello.",
+    "Cada proyecto empieza con un briefing y una reunión personal y termina con la entrega del inmueble; supervisamos el trabajo en todas las etapas.",
+    "Muebles y materiales llegan directamente de China a través de nuestra línea Ozdoba: pedido mínimo desde $500, entrega en 30–60 días."
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Lo que valoramos",
+   "items": [
+    {
+     "h": "Minimalismo",
+     "p": "Quitamos lo superfluo y dejamos lo esencial. Cada detalle tiene su lugar."
+    },
+    {
+     "h": "Calidad",
+     "p": "Materiales, soluciones y profesionales probados durante años."
+    },
+    {
+     "h": "Transparencia",
+     "p": "Informes fotográficos periódicos y un presupuesto sin partidas ocultas."
+    },
+    {
+     "h": "Personalidad",
+     "p": "Sin plantillas: cada proyecto refleja a una persona concreta."
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Dónde trabajamos",
+   "items": [
+    {
+     "h": "Kiev",
+     "p": "Sede del estudio: pisos, casas y locales comerciales con visita a obra."
+    },
+    {
+     "h": "Ucrania",
+     "p": "Diseño, reformas, construcción y amueblamiento en todo el país."
+    },
+    {
+     "h": "Europa",
+     "p": "Proyectos de diseño y amueblamiento para clientes en países europeos."
+    },
+    {
+     "h": "Todo el mundo",
+     "p": "Diseño en línea y seguimiento de proyectos en EE. UU. y otros países."
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Las personas detrás de su proyecto",
+   "items": [
+    {
+     "h": "Mykhailo",
+     "p": "Fundador y CEO: dirige cada proyecto desde la primera reunión hasta la entrega."
+    },
+    {
+     "h": "Serzh",
+     "p": "Jefe de proyecto: calendario, cuadrillas, compras e informes periódicos."
+    },
+    {
+     "h": "Alisa",
+     "p": "Diseñadora de interiores: concepto, estilo, visualizaciones 3D y materiales."
+    },
+    {
+     "h": "Olena",
+     "p": "Proyectista: distribuciones, planos de ejecución y mediciones."
+    },
+    {
+     "h": "Roman",
+     "p": "Desarrollador de IA: web, solicitudes, asistentes y automatización."
+    }
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "rel",
+   "h2": "Otros servicios",
+   "items": [
+    [
+     "/es/servicios",
+     "Todos los servicios"
+    ],
+    [
+     "/es/diseno-interiores",
+     "Diseño de interiores"
+    ],
+    [
+     "/es/ejecucion-proyecto-diseno",
+     "Ejecución del proyecto de diseño"
+    ],
+    [
+     "/es/reforma-llave-en-mano",
+     "Reforma llave en mano"
+    ],
+    [
+     "/es/construccion-de-casas",
+     "Construcción de casas"
+    ],
+    [
+     "/es/amueblamiento-llave-en-mano",
+     "Amueblamiento llave en mano"
+    ],
+    [
+     "/es/negocio-llave-en-mano",
+     "Locales comerciales llave en mano"
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,94 @@
+{
+ "slug": "contact",
+ "lang": "zh",
+ "kind": "contact",
+ "service": "联系我们",
+ "title": "联系 CAS Development —— 乌克兰基辅",
+ "description": "联系 CAS Development：+380 97 866 77 55（电话、WhatsApp、Telegram、Viber），乌克兰基辅 Antonovycha 街 44 号。免费咨询。",
+ "h1": "欢迎洽谈合作",
+ "lead": "请介绍您的项目，我们将根据风格与预算提出方案。咨询免费；表单中仅电话为必填项。",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "facts": false,
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "联系方式",
+   "items": [
+    {
+     "h": "办公室",
+     "p": "乌克兰基辅 Antonovycha 街 44 号"
+    },
+    {
+     "h": "电话",
+     "price": "+380 97 866 77 55",
+     "p": "同一号码可通过 WhatsApp、Telegram 和 Viber 联系。",
+     "href": "tel:+380978667755",
+     "more": "致电"
+    },
+    {
+     "h": "即时通讯",
+     "p": "欢迎随时留言，我们会尽快回复。",
+     "li": [
+      "Telegram: t.me/+380978667755",
+      "WhatsApp: wa.me/380978667755",
+      "Viber: +380 97 866 77 55"
+     ]
+    },
+    {
+     "h": "Instagram",
+     "p": "项目案例与施工进展：@cas_development",
+     "href": "https://www.instagram.com/cas_development/",
+     "more": "打开 Instagram"
+    }
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "希望提前了解预算？",
+   "p": [
+    "设计 $30/m² 起，装修 $550/m² 起，办公室 $350/m² 起，建造 $600/m² 起，家具软装 $250/m² 起。最终金额以咨询后出具的预算为准。"
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "其他服务",
+   "items": [
+    [
+     "/zh/services",
+     "全部服务"
+    ],
+    [
+     "/zh/interior-design",
+     "室内设计"
+    ],
+    [
+     "/zh/design-implementation",
+     "设计方案落地"
+    ],
+    [
+     "/zh/turnkey-renovation",
+     "交钥匙装修"
+    ],
+    [
+     "/zh/house-construction",
+     "住宅建造"
+    ],
+    [
+     "/zh/furnishing",
+     "家具软装交钥匙"
+    ],
+    [
+     "/zh/business-fit-out",
+     "商业空间交钥匙"
+    ],
+    [
+     "/zh/faq",
+     "常见问题"
+    ]
+   ]
+  }
+ ]
+}

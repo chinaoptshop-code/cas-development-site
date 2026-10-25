@@ -1,0 +1,149 @@
+{
+ "slug": "realisation-projet",
+ "lang": "fr",
+ "service": "Réalisation de projet de design clé en main",
+ "title": "Réalisation de votre projet de design à Kyiv | CAS Development",
+ "description": "Nous réalisons votre projet de design clé en main à Kyiv : rénovation dès $550/m², matériaux, mobilier, décoration, suivi. Devis à ±5 % si CAS fait les travaux.",
+ "h1": "Réalisation clé en main de votre projet de design",
+ "price": "rénovation dès $550 / m² · ameublement dès $250 / m²",
+ "lead": "Vous avez déjà un projet de design — le nôtre ou celui d’un autre designer. Nous le réalisons entièrement : vérification des plans, devis, travaux, achat des matériaux, du mobilier et des luminaires. Vous obtenez l’intérieur des visualisations, pas quelque chose « d’à peu près ressemblant ».",
+ "guarantees": true,
+ "cards": [
+  [
+   "Audit du projet",
+   [
+    "vérification des plans et descriptifs",
+    "détails manquants",
+    "relevé et comparaison avec le site",
+    "devis avant démarrage"
+   ]
+  ],
+  [
+   "Travaux selon le projet",
+   [
+    "nos équipes avec conducteur de travaux",
+    "réseaux : électricité, plomberie, ventilation",
+    "finitions fidèles aux plans",
+    "reportages photo réguliers"
+   ]
+  ],
+  [
+   "Achats et équipement",
+   [
+    "matériaux selon descriptif ou équivalents",
+    "mobilier sur mesure et de Chine",
+    "luminaires, sanitaires, textiles, décoration",
+    "livraison, pose et mise en scène"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Un seul prestataire au lieu de dix",
+   [
+    "Un projet de design « se casse » le plus souvent pendant les travaux : l’équipe simplifie les détails, le fournisseur remplace des articles et les meubles n’entrent pas dans les niches. Nous prenons en charge la réalisation complète — du gros œuvre aux meubles installés et rideaux posés — et répondons du résultat en une seule équipe.",
+    "Nous travaillons aussi avec les projets d’autres designers : si vous le souhaitez, nous coordonnons les solutions avec l’auteur ; sans suivi de l’auteur, notre architecte veille à la conformité de chaque détail. Toute modification est validée par écrit avec vous."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1xqY1KZo2JY5xq-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1HMtnMX7Fgpwg5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ]
+ ],
+ "steps": [
+  [
+   "Audit",
+   "Vérification des plans, descriptifs et du site."
+  ],
+  [
+   "Devis et planning",
+   "Travaux, matériaux, mobilier — par poste et par date."
+  ],
+  [
+   "Travaux",
+   "Gros œuvre, réseaux et finitions selon les plans."
+  ],
+  [
+   "Achats",
+   "Matériaux, mobilier, luminaires et décoration selon le descriptif."
+  ],
+  [
+   "Livraison",
+   "Pose du mobilier, mise en scène, garantie de 12 mois."
+  ]
+ ],
+ "faq": [
+  [
+   "Réalisez-vous les projets d’autres designers ?",
+   "Oui. Nous auditons d’abord plans et descriptifs, complétons les détails manquants et chiffrons le devis."
+  ],
+  [
+   "Combien coûte la réalisation ?",
+   "Rénovation dès $550 par m², bureaux dès $350 par m², ameublement dès $250 par m². Si CAS réalise les travaux, le total reste à ±5 % du devis."
+  ],
+  [
+   "Peut-on remplacer des articles coûteux ?",
+   "Oui, nous proposons des équivalents, notamment mobilier, luminaires et matériaux direct usine en Chine. Chaque remplacement est validé par écrit."
+  ],
+  [
+   "Quelle garantie ?",
+   "12 mois sur les travaux réalisés."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/architecture-interieur",
+   "Architecture d’intérieur"
+  ],
+  [
+   "/fr/renovation-cle-en-main",
+   "Rénovation clé en main"
+  ],
+  [
+   "/fr/construction-maison",
+   "Construction de maisons"
+  ],
+  [
+   "/fr/ameublement-cle-en-main",
+   "Ameublement clé en main"
+  ],
+  [
+   "/fr/commerce-cle-en-main",
+   "Locaux professionnels clé en main"
+  ],
+  [
+   "/fr/faq",
+   "FAQ"
+  ],
+  [
+   "/fr/contact",
+   "Contact"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

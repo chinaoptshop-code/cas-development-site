@@ -1,0 +1,139 @@
+{
+ "slug": "uslugi",
+ "lang": "pl",
+ "service": "Wszystkie usługi",
+ "title": "Usługi — projekt, remont, budowa, umeblowanie | CAS Development",
+ "description": "Usługi CAS Development: projekt od $30/m², remont od $550/m², biura od $350/m², budowa od $600/m², umeblowanie od $250/m².",
+ "h1": "Usługi studia: od pomysłu do gotowego wnętrza",
+ "lead": "Zamów pełny cykl albo pojedynczy etap. Za każdą usługą stoi ten sam zespół architektów, projektantów, inżynierów i własnych ekip remontowych.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "items": [
+    {
+     "h": "Projektowanie wnętrz",
+     "href": "/pl/projektowanie-wnetrz",
+     "price": "od $30 / m² · minimalny projekt $2 500",
+     "li": [
+      "koncepcja i moodboard",
+      "wizualizacje 3D każdego pomieszczenia",
+      "rysunki wykonawcze i zestawienia",
+      "nadzór autorski na budowie"
+     ],
+     "more": "Więcej"
+    },
+    {
+     "h": "Realizacja projektu wnętrza",
+     "href": "/pl/realizacja-projektu",
+     "price": "remont od $550 / m² · umeblowanie od $250 / m²",
+     "li": [
+      "audyt rysunków",
+      "kosztorys przed startem",
+      "prace zgodnie z rysunkami",
+      "zakupy i umeblowanie"
+     ],
+     "more": "Więcej"
+    },
+    {
+     "h": "Remont pod klucz",
+     "href": "/pl/remont-pod-klucz",
+     "price": "mieszkania i domy od $550 / m² · biura od $350 / m²",
+     "li": [
+      "rozbiórki i prace surowe",
+      "elektryka, hydraulika, wentylacja",
+      "wykończenie: płytki, podłogi, sufity, malowanie",
+      "odbiór z 12-miesięczną gwarancją"
+     ],
+     "more": "Więcej"
+    },
+    {
+     "h": "Budowa domów",
+     "href": "/pl/budowa-domow",
+     "price": "stan surowy od $600 / m² · pod klucz z wykończeniem od $1 100 / m²",
+     "li": [
+      "projekt architektoniczny i elewacje",
+      "fundamenty, ściany, dach",
+      "instalacje",
+      "wykończenie wnętrz i ogród"
+     ],
+     "more": "Więcej"
+    },
+    {
+     "h": "Umeblowanie pod klucz",
+     "href": "/pl/umeblowanie-pod-klucz",
+     "price": "od $250 / m²",
+     "li": [
+      "meble na wymiar i z Chin",
+      "oświetlenie i AGD",
+      "tekstylia i dekoracje",
+      "dostawa, montaż i stylizacja"
+     ],
+     "more": "Więcej"
+    },
+    {
+     "h": "Lokale biznesowe pod klucz",
+     "href": "/pl/biznes-pod-klucz",
+     "price": "projekt od $30 / m² · wyposażenie od $500",
+     "li": [
+      "kawiarnie i restauracje",
+      "salony urody i sklepy",
+      "biura i małe hotele",
+      "wyposażenie z Chin od $500"
+     ],
+     "more": "Więcej"
+    }
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "Jak pracujemy",
+   "items": [
+    [
+     "Brief",
+     "Wizyta lub wideorozmowa: obiekt, styl, budżet, terminy."
+    ],
+    [
+     "Projekt",
+     "Koncepcja, 3D i komplet rysunków uzgodnionych w szczegółach."
+    ],
+    [
+     "Realizacja",
+     "Prace pod nadzorem, zakupy według zestawień, raporty zdjęciowe."
+    ],
+    [
+     "Odbiór",
+     "Meble, światło i dekoracje na miejscu; protokół odbioru i 12 miesięcy gwarancji."
+    ]
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "rel",
+   "h2": "Inne usługi",
+   "items": [
+    [
+     "/pl/o-studiu",
+     "O studiu"
+    ],
+    [
+     "/pl/faq",
+     "FAQ"
+    ],
+    [
+     "/pl/kontakt",
+     "Kontakt"
+    ],
+    [
+     "/portfolio",
+     "Portfolio (UA)"
+    ]
+   ]
+  }
+ ]
+}

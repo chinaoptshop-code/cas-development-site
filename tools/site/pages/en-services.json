@@ -1,0 +1,139 @@
+{
+ "slug": "services",
+ "lang": "en",
+ "service": "All services",
+ "title": "Services — design, renovation, construction, furnishing | CAS Development",
+ "description": "CAS Development services: interior design from $30/m², renovation from $550/m², offices from $350/m², construction from $600/m², furnishing from $250/m².",
+ "h1": "Studio services: from idea to finished space",
+ "lead": "Order the full cycle or a single stage. Every service is backed by one team of architects, designers, engineers and our own renovation crews.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "items": [
+    {
+     "h": "Interior design",
+     "href": "/en/interior-design",
+     "price": "from $30 / m² · minimum project $2 500",
+     "li": [
+      "concept and mood board",
+      "3D visualisations of every room",
+      "working drawings and specifications",
+      "author supervision on site"
+     ],
+     "more": "Learn more"
+    },
+    {
+     "h": "Design implementation",
+     "href": "/en/design-implementation",
+     "price": "renovation from $550 / m² · furnishing from $250 / m²",
+     "li": [
+      "audit of the drawings",
+      "estimate before work starts",
+      "renovation exactly to the drawings",
+      "purchasing and furnishing"
+     ],
+     "more": "Learn more"
+    },
+    {
+     "h": "Turnkey renovation",
+     "href": "/en/turnkey-renovation",
+     "price": "apartments and houses from $550 / m² · offices from $350 / m²",
+     "li": [
+      "demolition and rough works",
+      "electrics, plumbing, ventilation",
+      "finishing: tiles, floors, ceilings, painting",
+      "handover with a 12-month warranty"
+     ],
+     "more": "Learn more"
+    },
+    {
+     "h": "House construction",
+     "href": "/en/house-construction",
+     "price": "shell from $600 / m² · turnkey with finishing from $1 100 / m²",
+     "li": [
+      "architectural design and facades",
+      "foundation, walls, roof",
+      "engineering networks",
+      "interior finishing and landscaping"
+     ],
+     "more": "Learn more"
+    },
+    {
+     "h": "Turnkey furnishing",
+     "href": "/en/turnkey-furnishing",
+     "price": "from $250 / m²",
+     "li": [
+      "furniture made to measure and from China",
+      "lighting and appliances",
+      "textiles and decor",
+      "delivery, assembly and styling"
+     ],
+     "more": "Learn more"
+    },
+    {
+     "h": "Turnkey business premises",
+     "href": "/en/business-fit-out",
+     "price": "design from $30 / m² · furnishing from $500",
+     "li": [
+      "cafés and restaurants",
+      "beauty salons and shops",
+      "offices and mini-hotels",
+      "furnishing from China from $500"
+     ],
+     "more": "Learn more"
+    }
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "How we work",
+   "items": [
+    [
+     "Brief",
+     "On-site visit or video call: property, style, budget, timeline."
+    ],
+    [
+     "Design",
+     "Concept, 3D and a complete set of drawings, agreed in detail."
+    ],
+    [
+     "Implementation",
+     "Works under supervision, purchasing to the specification, photo reports."
+    ],
+    [
+     "Handover",
+     "Furniture, lighting and decor in place; acceptance certificate and 12-month warranty."
+    ]
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "rel",
+   "h2": "Other services",
+   "items": [
+    [
+     "/en/about",
+     "About the studio"
+    ],
+    [
+     "/en/faq",
+     "FAQ"
+    ],
+    [
+     "/en/contact",
+     "Contact"
+    ],
+    [
+     "/portfolio",
+     "Portfolio (UA)"
+    ]
+   ]
+  }
+ ]
+}

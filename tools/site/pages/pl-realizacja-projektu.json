@@ -1,0 +1,149 @@
+{
+ "slug": "realizacja-projektu",
+ "lang": "pl",
+ "service": "Realizacja projektu wnętrza pod klucz",
+ "title": "Realizacja projektu wnętrza pod klucz w Kijowie | CAS Development",
+ "description": "Realizujemy Twój projekt wnętrza pod klucz w Kijowie: remont od $550/m², materiały, meble i dekoracje, nadzór. Kosztorys ±5%, jeśli remont robi CAS.",
+ "h1": "Realizacja projektu wnętrza pod klucz",
+ "price": "remont od $550 / m² · umeblowanie od $250 / m²",
+ "lead": "Masz już projekt wnętrza — nasz lub innego projektanta. Realizujemy go w całości: sprawdzamy rysunki, liczymy kosztorys, robimy remont, kupujemy materiały, meble i oświetlenie. Dostajesz wnętrze jak z wizualizacji, a nie „mniej więcej podobne”.",
+ "guarantees": true,
+ "cards": [
+  [
+   "Audyt projektu",
+   [
+    "sprawdzenie rysunków i zestawień",
+    "brakujące detale",
+    "pomiar i porównanie z obiektem",
+    "kosztorys przed startem"
+   ]
+  ],
+  [
+   "Remont według projektu",
+   [
+    "własne ekipy pod kierownikiem budowy",
+    "instalacje: elektryka, hydraulika, wentylacja",
+    "wykończenie dokładnie według rysunków",
+    "regularne raporty zdjęciowe"
+   ]
+  ],
+  [
+   "Zakupy i wyposażenie",
+   [
+    "materiały według zestawienia lub odpowiedniki",
+    "meble na wymiar i z Chin",
+    "oświetlenie, armatura, tekstylia, dekoracje",
+    "dostawa, montaż i stylizacja"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Jeden wykonawca zamiast dziesięciu",
+   [
+    "Projekt najczęściej „psuje się” na etapie remontu: ekipa upraszcza detale, dostawca zmienia produkty, a meble nie mieszczą się we wnękach. Bierzemy realizację pod klucz — od prac surowych po ustawione meble i powieszone zasłony — i odpowiadamy za efekt jako jeden zespół.",
+    "Pracujemy też z projektami innych projektantów: na życzenie uzgadniamy rozwiązania z autorem, a jeśli nadzór autorski nie jest zamówiony, nasz architekt pilnuje zgodności z rysunkami. Wszelkie zmiany uzgadniamy z Tobą na piśmie."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1xqY1KZo2JY5xq-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1HMtnMX7Fgpwg5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1OR5i7-rm1k0MU-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1NVeaQcV2TZSN5-900.webp",
+   "Petrivtsi House"
+  ]
+ ],
+ "steps": [
+  [
+   "Audyt",
+   "Sprawdzamy rysunki, zestawienia i obiekt."
+  ],
+  [
+   "Kosztorys i harmonogram",
+   "Prace, materiały, meble — pozycjami i terminami."
+  ],
+  [
+   "Remont",
+   "Prace surowe, instalacje i wykończenie według rysunków."
+  ],
+  [
+   "Zakupy",
+   "Materiały, meble, oświetlenie i dekoracje według zestawienia."
+  ],
+  [
+   "Odbiór",
+   "Montaż mebli, stylizacja, 12 miesięcy gwarancji."
+  ]
+ ],
+ "faq": [
+  [
+   "Czy realizujecie projekty innych projektantów?",
+   "Tak. Najpierw robimy audyt rysunków i zestawień, uzupełniamy brakujące detale i liczymy kosztorys."
+  ],
+  [
+   "Ile kosztuje realizacja?",
+   "Remont od $550 za m², biura od $350 za m², umeblowanie od $250 za m². Jeśli remont robi CAS, wynik mieści się w ±5% kosztorysu."
+  ],
+  [
+   "Czy można zastąpić drogie pozycje?",
+   "Tak, proponujemy równoważne odpowiedniki, w tym meble, oświetlenie i materiały prosto z fabryk w Chinach. Każdą zamianę uzgadniamy na piśmie."
+  ],
+  [
+   "Jaka jest gwarancja?",
+   "12 miesięcy na wykonane prace."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/projektowanie-wnetrz",
+   "Projektowanie wnętrz"
+  ],
+  [
+   "/pl/remont-pod-klucz",
+   "Remont pod klucz"
+  ],
+  [
+   "/pl/budowa-domow",
+   "Budowa domów"
+  ],
+  [
+   "/pl/umeblowanie-pod-klucz",
+   "Umeblowanie pod klucz"
+  ],
+  [
+   "/pl/biznes-pod-klucz",
+   "Lokale biznesowe pod klucz"
+  ],
+  [
+   "/pl/faq",
+   "FAQ"
+  ],
+  [
+   "/pl/kontakt",
+   "Kontakt"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

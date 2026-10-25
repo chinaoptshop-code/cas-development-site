@@ -135,3 +135,40 @@ button#lb-close,button.lb-arr,button#sdlb-close{color:#fff}
 button.proj-row-thumb,button.strip-item{display:block;padding:0;font-size:inherit;line-height:inherit}
 button.sp-tog{padding:0;font:inherit;letter-spacing:inherit;text-transform:inherit}
 .proj-row-scroll:focus-visible,.strip:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
+
+/* ── перемикач мов у шапці: компактний список (details), вміщує 9+ мов ── */
+.sch .sch-ld{position:relative;margin:0;padding:0;border:0}
+.sch-ld>summary{list-style:none;display:inline-flex;align-items:center;gap:6px;min-width:44px;min-height:44px;padding:0 6px;cursor:pointer;color:var(--c-ac);font-size:.75rem;font-weight:600;letter-spacing:.14em}
+.sch-ld>summary::-webkit-details-marker{display:none}
+.sch-ld>summary::after{content:"";float:none;width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg)}
+.sch-ld[open]>summary::after{content:"";transform:translateY(1px) rotate(225deg)}
+.sch-ld>summary:focus-visible{outline:2px solid var(--c-ac);outline-offset:2px}
+.sch-ld-m{position:absolute;top:100%;inset-inline-end:0;z-index:2;min-width:190px;display:flex;flex-direction:column;padding:6px;background:var(--c-bg2);border:1px solid var(--c-ln);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.sch-lang .sch-ld-m a,.sch-lang .sch-ld-m span{justify-content:flex-start;gap:12px;min-height:40px;padding:0 12px;letter-spacing:.02em;font-weight:500;color:var(--c-tx)}
+.sch-lang .sch-ld-m a:hover{background:rgba(191,145,72,.1)}
+.sch-ld-m b{min-width:24px;font-weight:600;letter-spacing:.12em;color:var(--c-mu)}
+.sch-lang .sch-ld-m .sch-ld-on{color:var(--c-ac)}
+.sch-ld-on b{color:var(--c-ac)}
+.sch-mlang{flex-wrap:wrap}
+
+/* ── китайська й арабська: системні шрифти (власних CJK/арабських немає, Google Fonts заборонені) ── */
+html:lang(zh) body,html:lang(zh) body *{font-family:"Manrope","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC","WenQuanYi Micro Hei",sans-serif!important}
+html:lang(zh) :is(h1,h2,h3,.price,.facts b){font-family:"Cormorant Garamond","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif!important;font-weight:400}
+html:lang(zh) .sch-nav a,html:lang(zh) .sch-cta{letter-spacing:.06em}
+html:lang(ar) body,html:lang(ar) body *{font-family:"Noto Naskh Arabic","Geeza Pro","Segoe UI",Tahoma,sans-serif!important}
+html:lang(ar) :is(h1,h2,h3){font-weight:600;line-height:1.35}
+html:lang(ar) body{line-height:1.8}
+html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{letter-spacing:0}
+
+/* ── RTL (ar): дзеркальна шапка, футер і блоки UI-kit ── */
+[dir=rtl] .sch,[dir=rtl] .scf{text-align:right}
+[dir=rtl] .skip{left:auto;right:12px}
+[dir=rtl] .sch-act{margin-left:0;margin-right:auto}
+[dir=rtl] .sch-burger{margin:0 0 0 -8px}
+[dir=rtl] .sch-nav a::after{transform-origin:right}
+[dir=rtl] .scf .scf-svc summary::after{margin-left:0;margin-right:10px}
+[dir=rtl] .card ul{padding-left:0;padding-right:18px}
+[dir=rtl] summary::after{float:left}
+[dir=rtl] .scf summary::after{float:none}
+[dir=rtl] a[href^="tel:"],[dir=rtl] .sch-logo{unicode-bidi:isolate;direction:ltr}
+@media(min-width:1080px){[dir=rtl] .sch-act{margin-right:0}}

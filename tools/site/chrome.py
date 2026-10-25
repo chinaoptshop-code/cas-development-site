@@ -44,11 +44,12 @@ PHONE, PHONE_TXT = '+380978667755', '+380 97 866 77 55'
 # сторінки, яких не чіпаємо: сторонні юридичні шаблони англійською (власна шапка з H1), верифікація Google
 SKIP = {'privacy.html', 'terms.html'}
 
-HOME = {'uk': '/', 'ru': '/ru/', 'en': '/en/', 'es': '/es/'}
-LANG_CODE = {'uk': 'UA', 'ru': 'RU', 'en': 'EN', 'es': 'ES'}
-LANG_NAME = {'uk': 'Українська', 'ru': 'Русский', 'en': 'English', 'es': 'Español'}
-# у шапці: для uk/ru — UA/RU, для en/es — EN/ES/UA
-SWITCH = {'uk': ['uk', 'ru'], 'ru': ['uk', 'ru'], 'en': ['en', 'es', 'uk'], 'es': ['en', 'es', 'uk']}
+import i18n  # реєстр мов, hreflang-кластери (tools/site/i18n.py)
+
+LANGS = i18n.LANGS
+HOME = {l: i18n.home(l) for l in LANGS}
+LANG_CODE = {l: i18n.meta(l)['code'] for l in LANGS}
+LANG_NAME = {l: i18n.meta(l)['name'] for l in LANGS}
 MSG = [('telegram', 'Telegram', 'https://t.me/+380978667755'), ('viber', 'Viber', 'viber://chat?number=%2B380978667755'),
        ('whatsapp', 'WhatsApp', 'https://wa.me/380978667755'), ('instagram', 'Instagram', 'https://www.instagram.com/cas_development/')]
 BRAND_IMG = {'instagram': '/assets/brand/instagram-96.png'}  # решта — /assets/brand/<name>.svg
@@ -102,27 +103,17 @@ T = {
                                    ('/ozdoba', 'Оздоба — мебель из Китая'), ('/ru/kalkulyator-remonta', 'Калькулятор стоимости'),
                                    ('/ru/voprosy', 'Частые вопросы'), ('/ru/blog', 'Блог: цены и советы')]),
         ]),
-    'en': dict(
-        nav=[('/en/interior-design', 'Services'), ('/portfolio', 'Portfolio'), ('/en/', 'Studio'), ('/en/#contact', 'Contact')],
-        nav_label='Main menu', menu='Menu', skip='Skip to content', menu_open='Open menu', menu_close='Close menu', lang_label='Site language',
-        cta='Request', cta_href='/en/#contact', home_label='CAS Development — home',
-        tagline='Interior design, renovation and turnkey construction studio. Kyiv, since 2016.',
-        contacts='Contacts', address='44 Antonovycha St., Kyiv, Ukraine', msg='Messengers', lang='Language',
-        privacy=('/en/privacy-policy', 'Privacy policy'), copy='© 2026 CAS Development · Kyiv, Ukraine',
-        svc='All studio services', svc_label='Studio services',
-        groups=[('Studio', [('/en/', 'CAS Development in English'), ('/en/interior-design', 'Online interior design'),
-                            ('/portfolio', 'Portfolio'), ('/es/', 'En español'), ('/services', 'All services (Ukrainian)')])]),
-    'es': dict(
-        nav=[('/es/diseno-interiores', 'Servicios'), ('/portfolio', 'Portafolio'), ('/es/', 'Estudio'), ('/es/#contact', 'Contacto')],
-        nav_label='Menú principal', menu='Menú', skip='Saltar al contenido', menu_open='Abrir menú', menu_close='Cerrar menú', lang_label='Idioma del sitio',
-        cta='Solicitud', cta_href='/es/#contact', home_label='CAS Development — inicio',
-        tagline='Estudio de diseño de interiores, reformas y construcción llave en mano. Kiev, desde 2016.',
-        contacts='Contacto', address='calle Antonovycha 44, Kiev, Ucrania', msg='Mensajería', lang='Idioma',
-        privacy=('/es/privacidad', 'Política de privacidad'), copy='© 2026 CAS Development · Kiev, Ucrania',
-        svc='Todos los servicios', svc_label='Servicios del estudio',
-        groups=[('Estudio', [('/es/', 'CAS Development en español'), ('/es/diseno-interiores', 'Diseño de interiores online'),
-                             ('/portfolio', 'Portafolio'), ('/en/', 'In English'), ('/services', 'Todos los servicios (ucraniano)')])]),
 }
+for _l in LANGS:  # нові мови — словник chrome з tools/site/lang/<мова>.json
+    if _l not in T and i18n.ui(_l):
+        _c = dict(i18n.ui(_l)['chrome'])
+        _c['privacy'] = tuple(_c['privacy'])
+        T[_l] = _c
+
+
+def _live(links):
+    """Лише посилання на наявні сторінки (зовнішні й #якорі — як є)."""
+    return [(h, n) for h, n in links if not h.startswith('/') or h.startswith('/#') or i18n.exists(h)]
 
 LOGO = '<a class="sch-logo" href="{home}" aria-label="{label}">CAS<em>.</em>Development</a>'
 BURGER = '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="sch-b1" d="M4 7h16"/><path class="sch-b2" d="M4 12h16"/><path class="sch-b3" d="M4 17h16"/></svg>'
@@ -146,14 +137,15 @@ def page_lang(s):
 def alternates(s):
     head = s.split('</head>')[0]
     out = {}
-    for m in re.finditer(r'<link rel="alternate" hreflang="([a-z]{2})" href="([^"]+)"', head):
-        out[m.group(1)] = m.group(2).replace(B, '') or '/'
+    for m in re.finditer(r'<link rel="alternate" hreflang="([a-zA-Z-]+)" href="([^"]+)"', head):
+        if m.group(1) != 'x-default':
+            out[i18n.lang_of_hreflang(m.group(1))] = m.group(2).replace(B, '') or '/'
     return out
 
 
 def current(lang, path, href):
     """Чи пункт меню — поточний розділ."""
-    if href in ('/ru/', '/en/', '/es/'):  # пункт, що веде на головну мови, не підсвічуємо
+    if href in HOME.values():  # пункт, що веде на головну мови, не підсвічуємо
         return False
     if href == path:
         return True
@@ -161,20 +153,35 @@ def current(lang, path, href):
     return path.startswith(sect.get(href, ('\0',)))
 
 
-def lang_links(lang, alts, cls, current_lang=True, langs=None):
+def lang_links(lang, alts, cls):
+    """Усі мови сайту (з наявною головною): посилання на hreflang-пару, інакше — на головну мови."""
     out = []
-    for l in langs or SWITCH[lang]:
+    for l in i18n.enabled():
+        label = LANG_CODE[l] if cls == 'sch-lang' else LANG_NAME[l]
         if l == lang:
-            out.append(f'<span class="{cls}-on" aria-current="true" lang="{l}">{LANG_CODE[l] if cls == "sch-lang" else LANG_NAME[l]}</span>')
+            out.append(f'<span class="{cls}-on" aria-current="true" lang="{i18n.meta(l)["html"]}">{label}</span>')
         else:
-            href = alts.get(l, HOME[l])
-            out.append(f'<a href="{href}" hreflang="{l}" lang="{l}">{LANG_CODE[l] if cls == "sch-lang" else LANG_NAME[l]}</a>')
+            out.append(f'<a href="{alts.get(l, HOME[l])}" hreflang="{i18n.meta(l)["hreflang"]}" lang="{i18n.meta(l)["html"]}">{label}</a>')
     return ''.join(out)
+
+
+def lang_menu(lang, alts, label):
+    """Перемикач у шапці: компактний список (details) — вміщує скільки завгодно мов."""
+    items = []
+    for l in i18n.enabled():
+        m = i18n.meta(l)
+        inner = f'<b>{m["code"]}</b>{m["name"]}'
+        if l == lang:
+            items.append(f'<span class="sch-ld-on" aria-current="true" lang="{m["html"]}">{inner}</span>')
+        else:
+            items.append(f'<a href="{alts.get(l, HOME[l])}" hreflang="{m["hreflang"]}" lang="{m["html"]}">{inner}</a>')
+    return (f'<details class="sch-ld"><summary aria-label="{label}: {LANG_NAME[lang]}">{LANG_CODE[lang]}</summary>'
+            f'<div class="sch-ld-m">{"".join(items)}</div></details>')
 
 
 def header(lang, path, alts, tools='', cta_href=None):
     t = T[lang]
-    items = ''.join(f'<a href="{h}"' + (' aria-current="page"' if current(lang, path, h) else '') + f'>{n}</a>' for h, n in t['nav'])
+    items = ''.join(f'<a href="{h}"' + (' aria-current="page"' if current(lang, path, h) else '') + f'>{n}</a>' for h, n in _live(t['nav']))
     cta = cta_href or t['cta_href']
     tools_html = f'<div class="sch-tools">{tools}</div><!--/sch-tools-->' if tools.strip() else ''
     msg = ''.join(f'<a href="{u}" target="_blank" rel="noopener"><img src="{BRAND_IMG.get(k, f'/assets/brand/{k}.svg')}" width="22" height="22" alt="" loading="lazy" decoding="async">{n}</a>'
@@ -185,7 +192,7 @@ def header(lang, path, alts, tools='', cta_href=None):
         f'  {LOGO.format(home=HOME[lang], label=t["home_label"])}\n'
         f'  <nav class="sch-nav" aria-label="{t["nav_label"]}">{items}</nav>\n'
         f'  <div class="sch-act">{tools_html}'
-        f'<div class="sch-lang" role="group" aria-label="{t["lang_label"]}">{lang_links(lang, alts, "sch-lang")}</div>'
+        f'<div class="sch-lang" role="group" aria-label="{t["lang_label"]}">{lang_menu(lang, alts, t["lang_label"])}</div>'
         f'<a class="sch-tel" href="tel:{PHONE}">{PHONE_SVG}<span>{PHONE_TXT}</span></a>'
         f'<a class="sch-cta" href="{cta}">{t["cta"]}</a>'
         f'<button class="sch-burger" type="button" aria-expanded="false" aria-controls="sch-menu" aria-label="{t["menu_open"]}"'
@@ -205,8 +212,8 @@ def footer(lang, alts):
     t = T[lang]
     msg = ''.join(f'<a href="{u}" target="_blank" rel="noopener"><img src="{BRAND_IMG.get(k, f'/assets/brand/{k}.svg')}" width="20" height="20" alt="" loading="lazy" decoding="async">{n}</a>'
                   for k, n, u in MSG)
-    groups = ''.join(f'<div><b>{g}</b>' + ''.join(f'<a href="{h}">{n}</a>' for h, n in links) + '</div>' for g, links in t['groups'])
-    langs = lang_links(lang, alts, 'scf-lang', langs=['uk', 'ru', 'en', 'es'])
+    groups = ''.join(f'<div><b>{g}</b>' + ''.join(f'<a href="{h}">{n}</a>' for h, n in links) + '</div>' for g, links in [(g, _live(x)) for g, x in t['groups']] if links)
+    langs = lang_links(lang, alts, 'scf-lang')
     return (
         '<!--chrome:f--><footer class="scf">\n'
         '<div class="scf-in">\n'
@@ -386,7 +393,7 @@ def apply(s, rel):
     if os.path.basename(rel) in SKIP and '/' not in rel or rel.startswith('google'):
         return s
     lang, path, alts = page_lang(s), rel_to_path(rel), alternates(s)
-    if rel in ('index.html', 'ru/index.html', 'en/index.html', 'es/index.html'):
+    if rel in [i18n.path_to_file(h) for h in HOME.values()]:
         alts.setdefault(lang, HOME[lang])
     # стаття блогу без пари іншою мовою: перемикач uk/ru веде на блог тієї мови, а не на головну
     if path.startswith('/ru/blog'):
@@ -456,6 +463,7 @@ def apply(s, rel):
     s = clarity(s)
     s = skip_and_main(s, lang)
     s = versions(s)
+    s = i18n.fonts(s, lang)  # preload: кирилиця лише для uk/ru, латиниця — en/es/…, zh/ar — без preload
     # підключення стилів і скрипта
     if CSS_TAG not in s:
         s = s.replace('</head>', CSS_TAG + '\n</head>', 1)

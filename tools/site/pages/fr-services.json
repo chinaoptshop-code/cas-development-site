@@ -1,0 +1,139 @@
+{
+ "slug": "services",
+ "lang": "fr",
+ "service": "Tous les services",
+ "title": "Services — design, rénovation, construction, ameublement | CAS Development",
+ "description": "Services de CAS Development : design dès $30/m², rénovation dès $550/m², bureaux dès $350/m², construction dès $600/m², ameublement dès $250/m².",
+ "h1": "Services du studio : de l’idée à l’espace achevé",
+ "lead": "Confiez-nous le cycle complet ou une seule étape. Chaque service s’appuie sur la même équipe d’architectes, de designers, d’ingénieurs et d’artisans salariés.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "items": [
+    {
+     "h": "Architecture d’intérieur",
+     "href": "/fr/architecture-interieur",
+     "price": "dès $30 / m² · projet minimum $2 500",
+     "li": [
+      "concept et planche de tendances",
+      "visualisations 3D de chaque pièce",
+      "plans d’exécution et descriptifs",
+      "suivi de chantier par le designer"
+     ],
+     "more": "En savoir plus"
+    },
+    {
+     "h": "Réalisation de projet de design",
+     "href": "/fr/realisation-projet",
+     "price": "rénovation dès $550 / m² · ameublement dès $250 / m²",
+     "li": [
+      "audit des plans",
+      "devis avant démarrage",
+      "travaux fidèles aux plans",
+      "achats et ameublement"
+     ],
+     "more": "En savoir plus"
+    },
+    {
+     "h": "Rénovation clé en main",
+     "href": "/fr/renovation-cle-en-main",
+     "price": "logements dès $550 / m² · bureaux dès $350 / m²",
+     "li": [
+      "démolition et gros œuvre",
+      "électricité, plomberie, ventilation",
+      "finitions : carrelage, sols, plafonds, peinture",
+      "livraison avec garantie de 12 mois"
+     ],
+     "more": "En savoir plus"
+    },
+    {
+     "h": "Construction de maisons",
+     "href": "/fr/construction-maison",
+     "price": "gros œuvre dès $600 / m² · clé en main avec finitions dès $1 100 / m²",
+     "li": [
+      "conception architecturale et façades",
+      "fondations, murs, toiture",
+      "réseaux techniques",
+      "finitions intérieures et jardin"
+     ],
+     "more": "En savoir plus"
+    },
+    {
+     "h": "Ameublement clé en main",
+     "href": "/fr/ameublement-cle-en-main",
+     "price": "dès $250 / m²",
+     "li": [
+      "mobilier sur mesure et de Chine",
+      "luminaires et électroménager",
+      "textiles et décoration",
+      "livraison, montage et mise en scène"
+     ],
+     "more": "En savoir plus"
+    },
+    {
+     "h": "Locaux professionnels clé en main",
+     "href": "/fr/commerce-cle-en-main",
+     "price": "design dès $30 / m² · équipement dès $500",
+     "li": [
+      "cafés et restaurants",
+      "salons de beauté et boutiques",
+      "bureaux et petits hôtels",
+      "équipement de Chine dès $500"
+     ],
+     "more": "En savoir plus"
+    }
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "Notre méthode",
+   "items": [
+    [
+     "Brief",
+     "Visite ou visio : bien, style, budget, délais."
+    ],
+    [
+     "Conception",
+     "Concept, 3D et dossier de plans complet, validés dans le détail."
+    ],
+    [
+     "Réalisation",
+     "Travaux suivis, achats selon les descriptifs, reportages photo."
+    ],
+    [
+     "Livraison",
+     "Mobilier, lumière et décoration en place ; procès-verbal de réception et garantie de 12 mois."
+    ]
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "rel",
+   "h2": "Autres services",
+   "items": [
+    [
+     "/fr/a-propos",
+     "Le studio"
+    ],
+    [
+     "/fr/faq",
+     "FAQ"
+    ],
+    [
+     "/fr/contact",
+     "Contact"
+    ],
+    [
+     "/portfolio",
+     "Portfolio (UA)"
+    ]
+   ]
+  }
+ ]
+}

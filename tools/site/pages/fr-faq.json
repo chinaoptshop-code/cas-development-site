@@ -1,0 +1,145 @@
+{
+ "slug": "faq",
+ "lang": "fr",
+ "service": "FAQ",
+ "title": "FAQ : prix, délais, garantie, design | CAS Development",
+ "description": "FAQ : prix du design et de la rénovation, étapes, garantie de 12 mois, devis à ±5 % si CAS fait les travaux, mobilier de Chine et Ozdoba.",
+ "h1": "Questions fréquentes sur le design, la rénovation et l’ameublement",
+ "lead": "Les questions que nos clients posent le plus souvent — prix, étapes, garantie, projet de design et mobilier de Chine. Vous ne trouvez pas la vôtre ? Laissez une demande en bas de page, nous vous répondrons personnellement.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "groups": [
+  {
+   "id": "prix",
+   "h2": "Prix et paiement",
+   "faq": [
+    [
+     "Combien coûte le projet de design d’un appartement ?",
+     "À partir de $30 par m², avec un budget minimum de projet de $2 500."
+    ],
+    [
+     "Combien coûte une rénovation clé en main ?",
+     "À partir de $550 par m² pour les logements, de $350 par m² pour les bureaux. Le montant exact est fixé dans le devis avant le démarrage."
+    ],
+    [
+     "Et la construction ou l’ameublement ?",
+     "Construction dès $600 par m², maison clé en main avec finitions dès $1 100 par m², ameublement clé en main dès $250 par m²."
+    ]
+   ],
+   "links": [
+    [
+     "/fr/renovation-cle-en-main",
+     "Rénovation clé en main"
+    ],
+    [
+     "/fr/architecture-interieur",
+     "Architecture d’intérieur"
+    ]
+   ]
+  },
+  {
+   "id": "garantie",
+   "h2": "Garantie et fiabilité",
+   "faq": [
+    [
+     "Quelle garantie sur les travaux ?",
+     "12 mois."
+    ],
+    [
+     "Le coût peut-il augmenter en cours de travaux ?",
+     "Si CAS Development réalise la rénovation selon notre projet, le total ne s’écarte pas du devis validé de plus de ±5 %."
+    ],
+    [
+     "Combien de projets avez-vous réalisés ?",
+     "Plus de 150 depuis 2016."
+    ]
+   ],
+   "links": [
+    [
+     "/fr/a-propos",
+     "Le studio"
+    ]
+   ]
+  },
+  {
+   "id": "distance",
+   "h2": "Travailler depuis l’étranger",
+   "faq": [
+    [
+     "Pouvons-nous collaborer si je ne suis pas en Ukraine ?",
+     "Oui. Brief, présentations et validations se font en ligne, et les plans sont prêts pour un entrepreneur local."
+    ],
+    [
+     "Quel est le moyen le plus simple de vous joindre ?",
+     "WhatsApp, Telegram ou Viber au +380 97 866 77 55, ou le formulaire en bas de page."
+    ]
+   ],
+   "links": [
+    [
+     "/fr/contact",
+     "Contact"
+    ]
+   ]
+  },
+  {
+   "id": "ozdoba",
+   "h2": "Mobilier de Chine et Ozdoba",
+   "faq": [
+    [
+     "Comment se passe une commande de mobilier en Chine ?",
+     "Nous validons échantillons, couleurs et prix livraison comprise ; l’usine fabrique, nous contrôlons la qualité et organisons le transport, qui prend 30 à 60 jours."
+    ],
+    [
+     "Puis-je acheter un seul article chez Ozdoba ?",
+     "Nous ne vendons pas à l’unité. La commande minimale est de $500 et peut combiner différents articles."
+    ]
+   ],
+   "links": [
+    [
+     "/fr/ameublement-cle-en-main",
+     "Ameublement clé en main"
+    ],
+    [
+     "/fr/commerce-cle-en-main",
+     "Locaux professionnels clé en main"
+    ]
+   ]
+  }
+ ],
+ "rel": [
+  [
+   "/fr/services",
+   "Tous les services"
+  ],
+  [
+   "/fr/architecture-interieur",
+   "Architecture d’intérieur"
+  ],
+  [
+   "/fr/realisation-projet",
+   "Réalisation de projet de design"
+  ],
+  [
+   "/fr/renovation-cle-en-main",
+   "Rénovation clé en main"
+  ],
+  [
+   "/fr/construction-maison",
+   "Construction de maisons"
+  ],
+  [
+   "/fr/ameublement-cle-en-main",
+   "Ameublement clé en main"
+  ],
+  [
+   "/fr/commerce-cle-en-main",
+   "Locaux professionnels clé en main"
+  ],
+  [
+   "/fr/contact",
+   "Contact"
+  ]
+ ]
+}

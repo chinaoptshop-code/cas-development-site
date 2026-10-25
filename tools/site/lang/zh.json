@@ -1,0 +1,201 @@
+{
+ "_": "Словник мови: meta — код/назва/атрибути, chrome — шапка й футер (tools/site/chrome.py), landing — підписи блоків лендингів, form — форма заявки й нижня панель (tools/site/landing.py).",
+ "meta": {
+  "code": "ZH",
+  "name": "中文",
+  "html": "zh-Hans",
+  "hreflang": "zh-Hans",
+  "dir": "ltr",
+  "prefix": "zh/",
+  "fonts": "none"
+ },
+ "chrome": {
+  "nav_label": "主菜单",
+  "menu": "菜单",
+  "skip": "跳到正文",
+  "menu_open": "打开菜单",
+  "menu_close": "关闭菜单",
+  "lang_label": "网站语言",
+  "cta": "获取报价",
+  "home_label": "CAS Development — 首页",
+  "tagline": "室内设计、装修与交钥匙建造工作室。乌克兰基辅，成立于 2016 年。",
+  "contacts": "联系方式",
+  "address": "乌克兰基辅 Antonovycha 街 44 号",
+  "msg": "即时通讯",
+  "lang": "语言",
+  "copy": "© 2026 CAS Development · 乌克兰基辅",
+  "svc": "全部服务",
+  "svc_label": "工作室服务",
+  "nav": [
+   [
+    "/zh/services",
+    "服务"
+   ],
+   [
+    "/portfolio",
+    "作品集（乌克兰语）"
+   ],
+   [
+    "/zh/about",
+    "关于我们"
+   ],
+   [
+    "/zh/faq",
+    "常见问题"
+   ],
+   [
+    "/zh/contact",
+    "联系我们"
+   ]
+  ],
+  "groups": [
+   [
+    "设计",
+    [
+     [
+      "/zh/interior-design",
+      "室内设计"
+     ],
+     [
+      "/zh/design-implementation",
+      "设计方案落地"
+     ]
+    ]
+   ],
+   [
+    "施工",
+    [
+     [
+      "/zh/turnkey-renovation",
+      "交钥匙装修"
+     ],
+     [
+      "/zh/house-construction",
+      "住宅建造"
+     ],
+     [
+      "/zh/business-fit-out",
+      "商业空间交钥匙"
+     ]
+    ]
+   ],
+   [
+    "家具配置",
+    [
+     [
+      "/zh/furnishing",
+      "家具软装交钥匙"
+     ]
+    ]
+   ],
+   [
+    "工作室",
+    [
+     [
+      "/zh/services",
+      "全部服务"
+     ],
+     [
+      "/zh/about",
+      "关于我们"
+     ],
+     [
+      "/zh/faq",
+      "常见问题"
+     ],
+     [
+      "/zh/contact",
+      "联系我们"
+     ],
+     [
+      "/portfolio",
+      "作品集（乌克兰语）"
+     ]
+    ]
+   ]
+  ],
+  "cta_href": "/zh/contact",
+  "privacy": [
+   "/en/privacy-policy",
+   "隐私政策（英文）"
+  ]
+ },
+ "landing": {
+  "home": "首页",
+  "svc": "服务",
+  "inc": "服务内容",
+  "proj": "项目案例",
+  "steps": "合作流程",
+  "faq": "常见问题",
+  "rel": "其他服务",
+  "alt": " — CAS Development 项目",
+  "city": "基辅",
+  "region": "基辅州",
+  "country": "乌克兰",
+  "europe": "欧洲",
+  "other": "",
+  "cta": "获取报价",
+  "all_portfolio": "全部作品（乌克兰语）",
+  "sections": "目录",
+  "facts": [
+   [
+    "150+",
+    "已完成项目"
+   ],
+   [
+    "2016",
+    "成立年份"
+   ],
+   [
+    "12 个月",
+    "施工质保"
+   ],
+   [
+    "±5%",
+    "预算偏差（由 CAS 施工时）"
+   ]
+  ],
+  "guar": [
+   "合作保障",
+   [
+    [
+     "施工质保 12 个月",
+     "项目以签署验收单的方式交付；所有已完成工程享有 12 个月质保。"
+    ],
+    [
+     "由 CAS 施工时预算偏差不超过 ±5%",
+     "开工前出具预算。若由我方团队施工，最终费用与预算的偏差不超过 ±5%。"
+    ],
+    [
+     "合同约定，分阶段付款",
+     "价格、工期和付款节点均在开工前写入合同。"
+    ],
+    [
+     "现场照片汇报",
+     "通过 Telegram 或 WhatsApp 发送现场照片，无需到场即可掌握进度。"
+    ]
+   ]
+  ],
+  "home_url": "/zh/",
+  "svc_url": "/zh/services"
+ },
+ "form": {
+  "form_h2": "提交项目需求",
+  "name": "姓名",
+  "phone": "电话 / WhatsApp *",
+  "area": "面积（平方米）",
+  "msg": "项目说明",
+  "ph_phone": "+86 138 0013 8000",
+  "ph_area": "例如 120",
+  "ph_msg": "项目类型、所在地、期望工期",
+  "send": "提交",
+  "ok_h": "已收到您的需求",
+  "ok_p": "我们会尽快与您联系。",
+  "mbar": "快速联系",
+  "call": "致电",
+  "close": "关闭",
+  "prev": "上一张",
+  "next": "下一张",
+  "menu": "菜单"
+ }
+}

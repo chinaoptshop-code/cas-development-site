@@ -1,0 +1,132 @@
+{
+ "slug": "about",
+ "lang": "en",
+ "kind": "about",
+ "service": "About the studio",
+ "title": "About CAS Development — design and build studio in Kyiv",
+ "description": "CAS Development: design, renovation and construction studio founded in Kyiv in 2016. 150+ projects in Ukraine and abroad, 12-month warranty.",
+ "h1": "We create spaces that live",
+ "lead": "CAS Development is a studio where architecture meets detail. Founded in Kyiv in 2016, it designs interiors, renovates and builds turnkey — from compact apartments to private houses, restaurants and offices.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "text",
+   "h2": "Our approach",
+   "p": [
+    "Since 2016 we have completed more than 150 projects in Ukraine and abroad. We do not copy trends: first we understand how you live or work, and then we create the space around that.",
+    "Every project starts with a brief and a personal meeting and ends with the handover of the property; we supervise the work at every stage.",
+    "Furniture and materials come directly from China through our own Ozdoba line: minimum order from $500, delivery 30–60 days."
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "What we value",
+   "items": [
+    {
+     "h": "Minimalism",
+     "p": "We remove the unnecessary and keep the essence. Every detail has its place."
+    },
+    {
+     "h": "Quality",
+     "p": "Materials, solutions and contractors proven over the years."
+    },
+    {
+     "h": "Transparency",
+     "p": "Regular photo reports and an estimate without hidden items."
+    },
+    {
+     "h": "Individuality",
+     "p": "No templates: every project reflects a particular person."
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Where we work",
+   "items": [
+    {
+     "h": "Kyiv",
+     "p": "The studio’s home base: apartments, houses and commercial spaces with site visits."
+    },
+    {
+     "h": "Ukraine",
+     "p": "Design, renovation, construction and furnishing across the country."
+    },
+    {
+     "h": "Europe",
+     "p": "Design projects and furnishing for clients in European countries."
+    },
+    {
+     "h": "Worldwide",
+     "p": "Online design and project support in the USA and other countries."
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "The people behind your project",
+   "items": [
+    {
+     "h": "Mykhailo",
+     "p": "Founder and CEO — leads every project from the first meeting to handover."
+    },
+    {
+     "h": "Serzh",
+     "p": "Project manager — schedule, crews, purchasing and regular reports."
+    },
+    {
+     "h": "Alisa",
+     "p": "Interior designer — concept, style, 3D visualisations and materials."
+    },
+    {
+     "h": "Olena",
+     "p": "Design engineer — layouts, working drawings and specifications."
+    },
+    {
+     "h": "Roman",
+     "p": "AI developer — website, requests, assistants and automation."
+    }
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "rel",
+   "h2": "Other services",
+   "items": [
+    [
+     "/en/services",
+     "All services"
+    ],
+    [
+     "/en/interior-design",
+     "Interior design"
+    ],
+    [
+     "/en/design-implementation",
+     "Design implementation"
+    ],
+    [
+     "/en/turnkey-renovation",
+     "Turnkey renovation"
+    ],
+    [
+     "/en/house-construction",
+     "House construction"
+    ],
+    [
+     "/en/turnkey-furnishing",
+     "Turnkey furnishing"
+    ],
+    [
+     "/en/business-fit-out",
+     "Turnkey business premises"
+    ]
+   ]
+  }
+ ]
+}

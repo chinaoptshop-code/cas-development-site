@@ -1,0 +1,132 @@
+{
+ "slug": "ueber-uns",
+ "lang": "de",
+ "kind": "about",
+ "service": "Über das Studio",
+ "title": "Über CAS Development — Design- und Baustudio in Kyjiw",
+ "description": "CAS Development: Studio für Design, Renovierung und Bau, 2016 in Kyjiw gegründet. Über 150 Projekte in der Ukraine und im Ausland, 12 Monate Gewährleistung.",
+ "h1": "Wir gestalten Räume, die leben",
+ "lead": "CAS Development ist ein Studio, in dem Architektur auf Detail trifft. 2016 in Kyjiw gegründet, plant es Innenräume, renoviert und baut schlüsselfertig — von kompakten Wohnungen bis zu Häusern, Restaurants und Büros.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "text",
+   "h2": "Unser Ansatz",
+   "p": [
+    "Seit 2016 haben wir über 150 Projekte in der Ukraine und im Ausland realisiert. Wir kopieren keine Trends: Zuerst verstehen wir, wie Sie leben oder arbeiten, dann gestalten wir den Raum danach.",
+    "Jedes Projekt beginnt mit einem Briefing und einem persönlichen Treffen und endet mit der Übergabe; in jeder Phase begleiten wir die Ausführung.",
+    "Möbel und Materialien beziehen wir direkt aus China über unsere Linie Ozdoba: Mindestbestellung ab $500, Lieferzeit 30–60 Tage."
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Was uns wichtig ist",
+   "items": [
+    {
+     "h": "Minimalismus",
+     "p": "Wir entfernen Überflüssiges und bewahren das Wesentliche. Jedes Detail hat seinen Platz."
+    },
+    {
+     "h": "Qualität",
+     "p": "Materialien, Lösungen und Handwerker, die sich über Jahre bewährt haben."
+    },
+    {
+     "h": "Transparenz",
+     "p": "Regelmäßige Fotoberichte und ein Kostenvoranschlag ohne versteckte Posten."
+    },
+    {
+     "h": "Individualität",
+     "p": "Keine Schablonen: Jedes Projekt spiegelt einen bestimmten Menschen wider."
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Wo wir arbeiten",
+   "items": [
+    {
+     "h": "Kyjiw",
+     "p": "Sitz des Studios: Wohnungen, Häuser und Gewerbeflächen mit Vor-Ort-Terminen."
+    },
+    {
+     "h": "Ukraine",
+     "p": "Design, Renovierung, Bau und Einrichtung im ganzen Land."
+    },
+    {
+     "h": "Europa",
+     "p": "Designprojekte und Einrichtung für Kunden in europäischen Ländern."
+    },
+    {
+     "h": "Weltweit",
+     "p": "Online-Design und Projektbegleitung in den USA und anderen Ländern."
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Die Menschen hinter Ihrem Projekt",
+   "items": [
+    {
+     "h": "Mykhailo",
+     "p": "Gründer und CEO — leitet jedes Projekt vom ersten Treffen bis zur Übergabe."
+    },
+    {
+     "h": "Serzh",
+     "p": "Projektmanager — Zeitplan, Teams, Einkauf und regelmäßige Berichte."
+    },
+    {
+     "h": "Alisa",
+     "p": "Innenarchitektin — Konzept, Stil, 3D-Visualisierungen und Materialien."
+    },
+    {
+     "h": "Olena",
+     "p": "Planerin — Grundrisse, Ausführungspläne und Spezifikationen."
+    },
+    {
+     "h": "Roman",
+     "p": "KI-Entwickler — Website, Anfragen, Assistenten und Automatisierung."
+    }
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "rel",
+   "h2": "Weitere Leistungen",
+   "items": [
+    [
+     "/de/leistungen",
+     "Alle Leistungen"
+    ],
+    [
+     "/de/innenarchitektur",
+     "Innenarchitektur"
+    ],
+    [
+     "/de/umsetzung-designprojekt",
+     "Umsetzung von Designprojekten"
+    ],
+    [
+     "/de/renovierung-schluesselfertig",
+     "Schlüsselfertige Renovierung"
+    ],
+    [
+     "/de/hausbau",
+     "Hausbau"
+    ],
+    [
+     "/de/einrichtung-schluesselfertig",
+     "Schlüsselfertige Einrichtung"
+    ],
+    [
+     "/de/gewerbe-schluesselfertig",
+     "Gewerberäume schlüsselfertig"
+    ]
+   ]
+  }
+ ]
+}

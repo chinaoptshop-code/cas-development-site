@@ -1,0 +1,201 @@
+{
+ "_": "Словник мови: meta — код/назва/атрибути, chrome — шапка й футер (tools/site/chrome.py), landing — підписи блоків лендингів, form — форма заявки й нижня панель (tools/site/landing.py).",
+ "meta": {
+  "code": "PL",
+  "name": "Polski",
+  "html": "pl",
+  "hreflang": "pl",
+  "dir": "ltr",
+  "prefix": "pl/",
+  "fonts": "latin"
+ },
+ "chrome": {
+  "nav_label": "Menu główne",
+  "menu": "Menu",
+  "skip": "Przejdź do treści",
+  "menu_open": "Otwórz menu",
+  "menu_close": "Zamknij menu",
+  "lang_label": "Język strony",
+  "cta": "Wycena",
+  "home_label": "CAS Development — strona główna",
+  "tagline": "Studio projektowania wnętrz, remontów i budowy pod klucz. Kijów, Ukraina — od 2016 roku.",
+  "contacts": "Kontakt",
+  "address": "ul. Antonowycza 44, Kijów, Ukraina",
+  "msg": "Komunikatory",
+  "lang": "Język",
+  "copy": "© 2026 CAS Development · Kijów, Ukraina",
+  "svc": "Wszystkie usługi studia",
+  "svc_label": "Usługi studia",
+  "nav": [
+   [
+    "/pl/uslugi",
+    "Usługi"
+   ],
+   [
+    "/portfolio",
+    "Portfolio (UA)"
+   ],
+   [
+    "/pl/o-studiu",
+    "O studiu"
+   ],
+   [
+    "/pl/faq",
+    "FAQ"
+   ],
+   [
+    "/pl/kontakt",
+    "Kontakt"
+   ]
+  ],
+  "groups": [
+   [
+    "Projektowanie",
+    [
+     [
+      "/pl/projektowanie-wnetrz",
+      "Projektowanie wnętrz"
+     ],
+     [
+      "/pl/realizacja-projektu",
+      "Realizacja projektu"
+     ]
+    ]
+   ],
+   [
+    "Budowa i remont",
+    [
+     [
+      "/pl/remont-pod-klucz",
+      "Remont pod klucz"
+     ],
+     [
+      "/pl/budowa-domow",
+      "Budowa domów"
+     ],
+     [
+      "/pl/biznes-pod-klucz",
+      "Lokale biznesowe pod klucz"
+     ]
+    ]
+   ],
+   [
+    "Wyposażenie",
+    [
+     [
+      "/pl/umeblowanie-pod-klucz",
+      "Umeblowanie pod klucz"
+     ]
+    ]
+   ],
+   [
+    "Studio",
+    [
+     [
+      "/pl/uslugi",
+      "Wszystkie usługi"
+     ],
+     [
+      "/pl/o-studiu",
+      "O studiu"
+     ],
+     [
+      "/pl/faq",
+      "FAQ"
+     ],
+     [
+      "/pl/kontakt",
+      "Kontakt"
+     ],
+     [
+      "/portfolio",
+      "Portfolio (po ukraińsku)"
+     ]
+    ]
+   ]
+  ],
+  "cta_href": "/pl/kontakt",
+  "privacy": [
+   "/en/privacy-policy",
+   "Polityka prywatności (EN)"
+  ]
+ },
+ "landing": {
+  "home": "Strona główna",
+  "svc": "Usługi",
+  "inc": "Co obejmuje usługa",
+  "proj": "Nasze projekty",
+  "steps": "Jak pracujemy",
+  "faq": "Pytania i odpowiedzi",
+  "rel": "Inne usługi",
+  "alt": " — projekt CAS Development",
+  "city": "Kijów",
+  "region": "obwód kijowski",
+  "country": "Ukraina",
+  "europe": "Europa",
+  "other": "",
+  "cta": "Poproś o wycenę",
+  "all_portfolio": "Całe portfolio (po ukraińsku)",
+  "sections": "Działy",
+  "facts": [
+   [
+    "150+",
+    "zrealizowanych projektów"
+   ],
+   [
+    "2016",
+    "działamy od"
+   ],
+   [
+    "12 mies.",
+    "gwarancji na prace"
+   ],
+   [
+    "Chiny",
+    "meble i materiały bezpośrednio z fabryk"
+   ]
+  ],
+  "guar": [
+   "Gwarancje",
+   [
+    [
+     "12 miesięcy gwarancji na prace",
+     "Obiekt oddajemy z protokołem odbioru; na wykonane prace udzielamy 12 miesięcy gwarancji."
+    ],
+    [
+     "Kosztorys ±5%, jeśli remont robi CAS",
+     "Kosztorys przygotowujemy przed startem prac. Jeśli remont wykonuje nasz zespół, końcowa kwota nie odbiega od niego o więcej niż ±5%."
+    ],
+    [
+     "Umowa i płatności etapami",
+     "Cenę, terminy i etapy płatności zapisujemy w umowie przed rozpoczęciem prac."
+    ],
+    [
+     "Raporty zdjęciowe",
+     "Wysyłamy zdjęcia z budowy przez Telegram lub WhatsApp — widzisz postęp bez dojazdów."
+    ]
+   ]
+  ],
+  "home_url": "/pl/",
+  "svc_url": "/pl/uslugi"
+ },
+ "form": {
+  "form_h2": "Opowiedz o swoim projekcie",
+  "name": "Imię",
+  "phone": "Telefon / WhatsApp *",
+  "area": "Powierzchnia, m²",
+  "msg": "Komentarz",
+  "ph_phone": "+48 512 345 678",
+  "ph_area": "np. 120",
+  "ph_msg": "Rodzaj obiektu, lokalizacja, oczekiwane terminy",
+  "send": "Wyślij zapytanie",
+  "ok_h": "Zapytanie wysłane",
+  "ok_p": "Odezwiemy się wkrótce.",
+  "mbar": "Szybki kontakt",
+  "call": "Zadzwoń",
+  "close": "Zamknij",
+  "prev": "Poprzednie zdjęcie",
+  "next": "Następne zdjęcie",
+  "menu": "Menu"
+ }
+}

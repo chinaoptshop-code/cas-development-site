@@ -1,0 +1,162 @@
+{
+ "slug": "index",
+ "lang": "de",
+ "service": "Alle Leistungen",
+ "title": "CAS Development — Innenarchitektur, Renovierung und Bau in Kyjiw",
+ "description": "Studio in Kyjiw seit 2016: Innenarchitektur ab $30/m², schlüsselfertige Renovierung ab $550/m², Hausbau, Möbel direkt ab Werk in China. 150+ Projekte.",
+ "h1": "Innenarchitektur, Renovierung und schlüsselfertiges Bauen — aus Kyjiw für Kunden weltweit",
+ "price": "Design ab $30 / m² · Renovierung ab $550 / m² · Bau ab $600 / m²",
+ "lead": "CAS Development ist ein Studio für Innenarchitektur und Architektur, 2016 in Kyjiw gegründet. Über 150 realisierte Projekte: Wohnungen, Einfamilienhäuser, Villen, Restaurants, Salons und Büros. Ein Team begleitet Sie von der ersten Skizze bis zur Schlüsselübergabe — und bezieht Möbel direkt von Herstellern in China.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Was wir machen",
+   "items": [
+    {
+     "h": "Innenarchitektur",
+     "href": "/de/innenarchitektur",
+     "price": "ab $30 / m² · Mindestprojekt $2 500",
+     "p": "Grundrisse, 3D-Visualisierungen, Ausführungspläne und Spezifikationen, nach denen jeder Handwerker bauen kann.",
+     "more": "Mehr erfahren"
+    },
+    {
+     "h": "Umsetzung von Designprojekten",
+     "href": "/de/umsetzung-designprojekt",
+     "price": "Renovierung ab $550 / m² · Einrichtung ab $250 / m²",
+     "p": "Wir setzen Ihr Designprojekt um — unseres oder das eines anderen Designers — genau wie in den Visualisierungen.",
+     "more": "Mehr erfahren"
+    },
+    {
+     "h": "Schlüsselfertige Renovierung",
+     "href": "/de/renovierung-schluesselfertig",
+     "price": "Wohnungen und Häuser ab $550 / m² · Büros ab $350 / m²",
+     "p": "Komplettpaket mit eigenen Teams: Rohbau- und Ausbauarbeiten, Haustechnik, Material, Endreinigung.",
+     "more": "Mehr erfahren"
+    },
+    {
+     "h": "Hausbau",
+     "href": "/de/hausbau",
+     "price": "Rohbau ab $600 / m² · schlüsselfertig mit Ausbau ab $1 100 / m²",
+     "p": "Einfamilienhäuser vom Fundament und Dach bis zu Innenausbau und Garten.",
+     "more": "Mehr erfahren"
+    },
+    {
+     "h": "Schlüsselfertige Einrichtung",
+     "href": "/de/einrichtung-schluesselfertig",
+     "price": "ab $250 / m²",
+     "p": "Möbel, Licht, Textilien und Deko passend zum Entwurf — geliefert, montiert und gestylt.",
+     "more": "Mehr erfahren"
+    },
+    {
+     "h": "Gewerberäume schlüsselfertig",
+     "href": "/de/gewerbe-schluesselfertig",
+     "price": "Design ab $30 / m² · Ausstattung ab $500",
+     "p": "Cafés, Restaurants, Salons, Läden und Büros: Planung, Ausbau, Ausstattung und Eröffnung aus einer Hand.",
+     "more": "Mehr erfahren"
+    }
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Warum Kunden CAS wählen",
+   "p": [
+    "Planung, Ausführung und Beschaffung liegen bei einem Unternehmen: keine Leerlaufzeiten zwischen Gewerken, keine Diskussion über Zuständigkeiten. Der Kostenvoranschlag steht vor Baubeginn — und wenn unser Team renoviert, bleibt die Endsumme innerhalb von ±5 %.",
+    "Wir arbeiten mit Kunden in der Ukraine, in Europa und darüber hinaus — Häuser und Villen haben wir für die USA und die VAE geplant. Der gesamte Designprozess kann online laufen; die Pläne sind für Ihren Handwerker vor Ort ausgearbeitet.",
+    "Möbel, Leuchten und Materialien beziehen wir direkt von Herstellern in China: mehr Qualität für dasselbe Budget als im Einzelhandel."
+   ]
+  },
+  {
+   "t": "gallery",
+   "h2": "Ausgewählte Projekte",
+   "items": [
+    [
+     "img/p/18V9n96tOhjKjh-900.webp",
+     "USA House · USA"
+    ],
+    [
+     "img/p/1uBxYPk7W36Rp0-900.webp",
+     "Dubai Villa · VAE"
+    ],
+    [
+     "img/p/1MslU7S5X8gIEp-900.webp",
+     "Linden Penthouse · Kyjiw"
+    ],
+    [
+     "img/p/1Grj8_m7MJwsbE-900.webp",
+     "Hodos Villa · Kyjiw"
+    ],
+    [
+     "img/p/18ej1fH-11uoyr-900.webp",
+     "Yacht Restaurant"
+    ],
+    [
+     "img/p/1A9yy4nI-gf9h3-900.webp",
+     "Kitana Beach · Resort"
+    ],
+    [
+     "img/p/1FRa0FI6iMHK5L-900.webp",
+     "Hoda Estate · Karpaten"
+    ],
+    [
+     "img/p/1xqY1KZo2JY5xq-900.webp",
+     "Tetris Hall · Kyjiw"
+    ]
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "So arbeiten wir",
+   "items": [
+    [
+     "Briefing",
+     "Treffen oder Videocall zu Objekt, Lebensstil, Budget und Zeitplan."
+    ],
+    [
+     "Designprojekt",
+     "Grundrissvarianten, 3D-Visualisierungen und ein vollständiger Plansatz."
+    ],
+    [
+     "Kostenvoranschlag und Vertrag",
+     "Preis, Termine und Zahlungsetappen vor Beginn festgelegt."
+    ],
+    [
+     "Ausführung und Beschaffung",
+     "Eigene Teams, Einkauf, regelmäßige Fotoberichte."
+    ],
+    [
+     "Übergabe",
+     "Möbel montiert, Räume gestylt, 12 Monate Gewährleistung."
+    ]
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "faq",
+   "h2": "Fragen und Antworten",
+   "items": [
+    [
+     "Was kostet Innenarchitektur?",
+     "Ab $30 pro m², das Mindestbudget eines Projekts beträgt $2 500. Den genauen Preis bestätigen wir nach dem Briefing."
+    ],
+    [
+     "Planen Sie auch Objekte außerhalb der Ukraine?",
+     "Ja. Das Design kann vollständig online entstehen; Pläne und Spezifikationen sind für Ihren Handwerker vor Ort bereit."
+    ],
+    [
+     "Bauen Sie auch?",
+     "Ja. Renovierung von Wohnungen und Häusern ab $550 pro m², Büros ab $350 pro m², Hausbau ab $600 pro m², schlüsselfertig mit Ausbau ab $1 100 pro m²."
+    ],
+    [
+     "Wie erreichen wir Sie?",
+     "Per WhatsApp, Telegram, Viber oder über das Formular unten — wir antworten in Kürze."
+    ]
+   ]
+  }
+ ]
+}

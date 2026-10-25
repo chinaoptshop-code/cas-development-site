@@ -1,0 +1,145 @@
+{
+ "slug": "faq",
+ "lang": "pl",
+ "service": "FAQ",
+ "title": "FAQ: ceny, terminy, gwarancja, projekt | CAS Development",
+ "description": "Odpowiedzi na częste pytania: ceny projektu i remontu, etapy, 12 miesięcy gwarancji, kosztorys ±5%, jeśli remont robi CAS, meble z Chin i Ozdoba.",
+ "h1": "Częste pytania o projekt, remont i umeblowanie",
+ "lead": "Pytania, które klienci zadają najczęściej — o ceny, etapy, gwarancję, projekt i meble z Chin. Nie ma Twojego? Zostaw zgłoszenie na dole strony, odpowiemy osobiście.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "groups": [
+  {
+   "id": "ceny",
+   "h2": "Ceny i płatności",
+   "faq": [
+    [
+     "Ile kosztuje projekt mieszkania?",
+     "Od $30 za m², minimalny budżet projektu to $2 500."
+    ],
+    [
+     "Ile kosztuje remont pod klucz?",
+     "Od $550 za m² w mieszkaniach i domach, od $350 za m² w biurach. Dokładną kwotę ustalamy w kosztorysie przed startem."
+    ],
+    [
+     "A budowa lub umeblowanie?",
+     "Budowa od $600 za m², dom pod klucz z wykończeniem od $1 100 za m², umeblowanie pod klucz od $250 za m²."
+    ]
+   ],
+   "links": [
+    [
+     "/pl/remont-pod-klucz",
+     "Remont pod klucz"
+    ],
+    [
+     "/pl/projektowanie-wnetrz",
+     "Projektowanie wnętrz"
+    ]
+   ]
+  },
+  {
+   "id": "gwarancja",
+   "h2": "Gwarancja i rzetelność",
+   "faq": [
+    [
+     "Jaka jest gwarancja na prace?",
+     "12 miesięcy."
+    ],
+    [
+     "Czy koszt remontu może wzrosnąć?",
+     "Jeśli remont według naszego projektu wykonuje CAS Development, wynik nie odbiega od zatwierdzonego kosztorysu o więcej niż ±5%."
+    ],
+    [
+     "Ile projektów zrealizowaliście?",
+     "Ponad 150 od 2016 roku."
+    ]
+   ],
+   "links": [
+    [
+     "/pl/o-studiu",
+     "O studiu"
+    ]
+   ]
+  },
+  {
+   "id": "zdalnie",
+   "h2": "Współpraca z zagranicy",
+   "faq": [
+    [
+     "Czy możemy współpracować, jeśli nie jestem na Ukrainie?",
+     "Tak. Brief, prezentacje i akceptacje odbywają się online, a rysunki są gotowe dla lokalnego wykonawcy."
+    ],
+    [
+     "Jak najłatwiej się skontaktować?",
+     "WhatsApp, Telegram lub Viber pod numerem +380 97 866 77 55 albo formularz na dole strony."
+    ]
+   ],
+   "links": [
+    [
+     "/pl/kontakt",
+     "Kontakt"
+    ]
+   ]
+  },
+  {
+   "id": "ozdoba",
+   "h2": "Meble z Chin i Ozdoba",
+   "faq": [
+    [
+     "Jak wygląda zamówienie mebli z Chin?",
+     "Uzgadniamy próbki, kolory i cenę z dostawą; fabryka produkuje, sprawdzamy jakość i organizujemy transport, który trwa 30–60 dni."
+    ],
+    [
+     "Czy mogę kupić w Ozdobie jedną rzecz?",
+     "Nie sprzedajemy pojedynczych sztuk. Minimalne zamówienie to $500 i można w nim łączyć różne pozycje."
+    ]
+   ],
+   "links": [
+    [
+     "/pl/umeblowanie-pod-klucz",
+     "Umeblowanie pod klucz"
+    ],
+    [
+     "/pl/biznes-pod-klucz",
+     "Lokale biznesowe pod klucz"
+    ]
+   ]
+  }
+ ],
+ "rel": [
+  [
+   "/pl/uslugi",
+   "Wszystkie usługi"
+  ],
+  [
+   "/pl/projektowanie-wnetrz",
+   "Projektowanie wnętrz"
+  ],
+  [
+   "/pl/realizacja-projektu",
+   "Realizacja projektu wnętrza"
+  ],
+  [
+   "/pl/remont-pod-klucz",
+   "Remont pod klucz"
+  ],
+  [
+   "/pl/budowa-domow",
+   "Budowa domów"
+  ],
+  [
+   "/pl/umeblowanie-pod-klucz",
+   "Umeblowanie pod klucz"
+  ],
+  [
+   "/pl/biznes-pod-klucz",
+   "Lokale biznesowe pod klucz"
+  ],
+  [
+   "/pl/kontakt",
+   "Kontakt"
+  ]
+ ]
+}

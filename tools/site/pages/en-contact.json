@@ -1,0 +1,94 @@
+{
+ "slug": "contact",
+ "lang": "en",
+ "kind": "contact",
+ "service": "Contact",
+ "title": "Contact CAS Development — Kyiv, Ukraine",
+ "description": "Contact CAS Development: +380 97 866 77 55 (phone, WhatsApp, Telegram, Viber), 44 Antonovycha St., Kyiv. Free consultation.",
+ "h1": "Let’s talk about your space",
+ "lead": "Tell us about your property and we will suggest a solution for your style and budget. The consultation is free; only a phone number is required in the form.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "facts": false,
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "How to reach us",
+   "items": [
+    {
+     "h": "Office",
+     "p": "44 Antonovycha St., Kyiv, Ukraine"
+    },
+    {
+     "h": "Phone",
+     "price": "+380 97 866 77 55",
+     "p": "The same number works in WhatsApp, Telegram and Viber.",
+     "href": "tel:+380978667755",
+     "more": "Call"
+    },
+    {
+     "h": "Messengers",
+     "p": "Write to us at any time — we reply shortly.",
+     "li": [
+      "Telegram: t.me/+380978667755",
+      "WhatsApp: wa.me/380978667755",
+      "Viber: +380 97 866 77 55"
+     ]
+    },
+    {
+     "h": "Instagram",
+     "p": "Projects and work in progress: @cas_development",
+     "href": "https://www.instagram.com/cas_development/",
+     "more": "Open Instagram"
+    }
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Want to know the budget in advance?",
+   "p": [
+    "Design from $30/m², renovation from $550/m², offices from $350/m², construction from $600/m², furnishing from $250/m². The final figure comes with the estimate after the consultation."
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Other services",
+   "items": [
+    [
+     "/en/services",
+     "All services"
+    ],
+    [
+     "/en/interior-design",
+     "Interior design"
+    ],
+    [
+     "/en/design-implementation",
+     "Design implementation"
+    ],
+    [
+     "/en/turnkey-renovation",
+     "Turnkey renovation"
+    ],
+    [
+     "/en/house-construction",
+     "House construction"
+    ],
+    [
+     "/en/turnkey-furnishing",
+     "Turnkey furnishing"
+    ],
+    [
+     "/en/business-fit-out",
+     "Turnkey business premises"
+    ],
+    [
+     "/en/faq",
+     "FAQ"
+    ]
+   ]
+  }
+ ]
+}

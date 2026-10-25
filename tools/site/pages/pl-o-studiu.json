@@ -1,0 +1,132 @@
+{
+ "slug": "o-studiu",
+ "lang": "pl",
+ "kind": "about",
+ "service": "O studiu",
+ "title": "O CAS Development — studio projektowe i wykonawcze w Kijowie",
+ "description": "CAS Development: studio projektowania, remontów i budowy założone w Kijowie w 2016 r. Ponad 150 projektów na Ukrainie i za granicą, 12 miesięcy gwarancji.",
+ "h1": "Tworzymy przestrzenie, które żyją",
+ "lead": "CAS Development to studio, w którym architektura spotyka się z detalem. Założone w Kijowie w 2016 roku, projektuje wnętrza, remontuje i buduje pod klucz — od kompaktowych mieszkań po domy, restauracje i biura.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "sections": [
+  {
+   "t": "text",
+   "h2": "Nasze podejście",
+   "p": [
+    "Od 2016 roku zrealizowaliśmy ponad 150 projektów na Ukrainie i za granicą. Nie kopiujemy trendów: najpierw rozumiemy, jak żyjesz lub pracujesz, a potem tworzymy wokół tego przestrzeń.",
+    "Każdy projekt zaczyna się od briefu i osobistego spotkania, a kończy przekazaniem obiektu; na każdym etapie prowadzimy nadzór.",
+    "Meble i materiały sprowadzamy bezpośrednio z Chin przez naszą linię Ozdoba: minimalne zamówienie od $500, dostawa 30–60 dni."
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Co jest dla nas ważne",
+   "items": [
+    {
+     "h": "Minimalizm",
+     "p": "Usuwamy zbędne i zostawiamy istotę. Każdy detal ma swoje miejsce."
+    },
+    {
+     "h": "Jakość",
+     "p": "Materiały, rozwiązania i wykonawcy sprawdzeni latami."
+    },
+    {
+     "h": "Przejrzystość",
+     "p": "Regularne raporty zdjęciowe i kosztorys bez ukrytych pozycji."
+    },
+    {
+     "h": "Indywidualność",
+     "p": "Żadnych szablonów: każdy projekt odzwierciedla konkretnego człowieka."
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Gdzie pracujemy",
+   "items": [
+    {
+     "h": "Kijów",
+     "p": "Baza studia: mieszkania, domy i lokale komercyjne z wizytą na miejscu."
+    },
+    {
+     "h": "Ukraina",
+     "p": "Projekty, remonty, budowa i wyposażenie w całym kraju."
+    },
+    {
+     "h": "Europa",
+     "p": "Projekty wnętrz i wyposażenie dla klientów w krajach europejskich."
+    },
+    {
+     "h": "Świat",
+     "p": "Projektowanie online i prowadzenie projektów w USA i innych krajach."
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Ludzie, którzy prowadzą Twój projekt",
+   "items": [
+    {
+     "h": "Mykhailo",
+     "p": "Założyciel i CEO — prowadzi każdy projekt od pierwszego spotkania do odbioru."
+    },
+    {
+     "h": "Serzh",
+     "p": "Kierownik projektu — harmonogram, ekipy, zakupy i regularne raporty."
+    },
+    {
+     "h": "Alisa",
+     "p": "Projektantka wnętrz — koncepcja, styl, wizualizacje 3D i materiały."
+    },
+    {
+     "h": "Olena",
+     "p": "Projektantka — układy, rysunki wykonawcze i zestawienia."
+    },
+    {
+     "h": "Roman",
+     "p": "Programista AI — strona, zgłoszenia, asystenci i automatyzacja."
+    }
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "rel",
+   "h2": "Inne usługi",
+   "items": [
+    [
+     "/pl/uslugi",
+     "Wszystkie usługi"
+    ],
+    [
+     "/pl/projektowanie-wnetrz",
+     "Projektowanie wnętrz"
+    ],
+    [
+     "/pl/realizacja-projektu",
+     "Realizacja projektu wnętrza"
+    ],
+    [
+     "/pl/remont-pod-klucz",
+     "Remont pod klucz"
+    ],
+    [
+     "/pl/budowa-domow",
+     "Budowa domów"
+    ],
+    [
+     "/pl/umeblowanie-pod-klucz",
+     "Umeblowanie pod klucz"
+    ],
+    [
+     "/pl/biznes-pod-klucz",
+     "Lokale biznesowe pod klucz"
+    ]
+   ]
+  }
+ ]
+}

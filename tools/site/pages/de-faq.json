@@ -1,0 +1,145 @@
+{
+ "slug": "faq",
+ "lang": "de",
+ "service": "FAQ",
+ "title": "FAQ: Preise, Termine, Gewährleistung, Design | CAS Development",
+ "description": "Antworten auf häufige Fragen: Preise für Design und Renovierung, Ablauf, 12 Monate Gewährleistung, Kosten ±5 %, wenn CAS renoviert, Möbel aus China und Ozdoba.",
+ "h1": "Häufige Fragen zu Design, Renovierung und Einrichtung",
+ "lead": "Die Fragen, die Kunden am häufigsten stellen — zu Preisen, Ablauf, Gewährleistung, Designprojekt und Möbeln aus China. Ihre Frage ist nicht dabei? Schreiben Sie uns über das Formular unten, wir antworten persönlich.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "groups": [
+  {
+   "id": "preise",
+   "h2": "Preise und Zahlung",
+   "faq": [
+    [
+     "Was kostet ein Designprojekt für eine Wohnung?",
+     "Ab $30 pro m², das Mindestbudget eines Projekts beträgt $2 500."
+    ],
+    [
+     "Was kostet eine schlüsselfertige Renovierung?",
+     "Ab $550 pro m² für Wohnungen und Häuser, ab $350 pro m² für Büros. Die genaue Summe steht vor Beginn im Kostenvoranschlag."
+    ],
+    [
+     "Und Hausbau oder Einrichtung?",
+     "Hausbau ab $600 pro m², schlüsselfertiges Haus mit Ausbau ab $1 100 pro m², schlüsselfertige Einrichtung ab $250 pro m²."
+    ]
+   ],
+   "links": [
+    [
+     "/de/renovierung-schluesselfertig",
+     "Schlüsselfertige Renovierung"
+    ],
+    [
+     "/de/innenarchitektur",
+     "Innenarchitektur"
+    ]
+   ]
+  },
+  {
+   "id": "gewaehrleistung",
+   "h2": "Gewährleistung und Verlässlichkeit",
+   "faq": [
+    [
+     "Welche Gewährleistung gibt es auf Arbeiten?",
+     "12 Monate."
+    ],
+    [
+     "Können die Kosten während der Renovierung steigen?",
+     "Führt CAS Development die Renovierung nach unserem Projekt aus, weicht die Summe um höchstens ±5 % vom freigegebenen Kostenvoranschlag ab."
+    ],
+    [
+     "Wie viele Projekte haben Sie realisiert?",
+     "Über 150 seit 2016."
+    ]
+   ],
+   "links": [
+    [
+     "/de/ueber-uns",
+     "Über das Studio"
+    ]
+   ]
+  },
+  {
+   "id": "ausland",
+   "h2": "Zusammenarbeit aus dem Ausland",
+   "faq": [
+    [
+     "Können wir zusammenarbeiten, wenn ich nicht in der Ukraine bin?",
+     "Ja. Briefing, Präsentationen und Freigaben laufen online, die Pläne sind für einen Handwerker vor Ort ausgearbeitet."
+    ],
+    [
+     "Wie erreiche ich Sie am einfachsten?",
+     "WhatsApp, Telegram oder Viber unter +380 97 866 77 55 oder das Formular unten auf der Seite."
+    ]
+   ],
+   "links": [
+    [
+     "/de/kontakt",
+     "Kontakt"
+    ]
+   ]
+  },
+  {
+   "id": "ozdoba",
+   "h2": "Möbel aus China und Ozdoba",
+   "faq": [
+    [
+     "Wie läuft eine Möbelbestellung aus China?",
+     "Wir stimmen Muster, Farben und Preis inklusive Lieferung ab; der Hersteller produziert, wir prüfen die Qualität und organisieren den Transport, der 30–60 Tage dauert."
+    ],
+    [
+     "Kann ich bei Ozdoba ein einzelnes Stück kaufen?",
+     "Einzelstücke verkaufen wir nicht. Die Mindestbestellung beträgt $500, verschiedene Positionen lassen sich kombinieren."
+    ]
+   ],
+   "links": [
+    [
+     "/de/einrichtung-schluesselfertig",
+     "Schlüsselfertige Einrichtung"
+    ],
+    [
+     "/de/gewerbe-schluesselfertig",
+     "Gewerberäume schlüsselfertig"
+    ]
+   ]
+  }
+ ],
+ "rel": [
+  [
+   "/de/leistungen",
+   "Alle Leistungen"
+  ],
+  [
+   "/de/innenarchitektur",
+   "Innenarchitektur"
+  ],
+  [
+   "/de/umsetzung-designprojekt",
+   "Umsetzung von Designprojekten"
+  ],
+  [
+   "/de/renovierung-schluesselfertig",
+   "Schlüsselfertige Renovierung"
+  ],
+  [
+   "/de/hausbau",
+   "Hausbau"
+  ],
+  [
+   "/de/einrichtung-schluesselfertig",
+   "Schlüsselfertige Einrichtung"
+  ],
+  [
+   "/de/gewerbe-schluesselfertig",
+   "Gewerberäume schlüsselfertig"
+  ],
+  [
+   "/de/kontakt",
+   "Kontakt"
+  ]
+ ]
+}

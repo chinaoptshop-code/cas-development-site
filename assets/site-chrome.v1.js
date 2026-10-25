@@ -42,7 +42,9 @@
   // Esc закриває, після закриття фокус повертається туди, звідки відкрили. Alt великого фото — з мініатюри.
   var LG = (h.lang || 'uk').slice(0, 2);
   var TX = ({ uk: { close: 'Закрити', photo: 'Перегляд фото' }, ru: { close: 'Закрыть', photo: 'Просмотр фото' },
-              en: { close: 'Close', photo: 'Photo viewer' }, es: { close: 'Cerrar', photo: 'Visor de fotos' } })[LG] ||
+              en: { close: 'Close', photo: 'Photo viewer' }, es: { close: 'Cerrar', photo: 'Visor de fotos' },
+              zh: { close: '关闭', photo: '查看照片' }, pl: { close: 'Zamknij', photo: 'Podgląd zdjęcia' }, de: { close: 'Schließen', photo: 'Fotoansicht' },
+              fr: { close: 'Fermer', photo: 'Visionneuse de photos' }, ar: { close: 'إغلاق', photo: 'عارض الصور' } })[LG] ||
            { close: 'Закрити', photo: 'Перегляд фото' };
   var FOC = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
   var CLOSE = '[data-close],.x,#lb-close,#plb-close,#sdlb-close,button[aria-label="' + TX.close + '"]';
@@ -113,4 +115,11 @@
   // «Усі послуги студії»: на десктопі відкрито, на мобільному згорнуто
   var svc = d.querySelector('.scf-svc');
   if (svc && window.matchMedia && window.matchMedia('(min-width:760px)').matches) svc.open = true;
+})();
+// Перемикач мов у шапці (details.sch-ld): закривається кліком поза ним, Esc і після вибору мови
+(function () {
+  var d = document, ld = d.querySelector('.sch-ld');
+  if (!ld) return;
+  d.addEventListener('click', function (e) { if (ld.open && !ld.contains(e.target)) ld.open = false; });
+  d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && ld.open) { ld.open = false; ld.querySelector('summary').focus(); } });
 })();

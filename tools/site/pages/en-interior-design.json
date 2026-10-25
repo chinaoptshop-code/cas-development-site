@@ -1,0 +1,161 @@
+{
+ "slug": "interior-design",
+ "lang": "en",
+ "service": "Interior design",
+ "title": "Interior design studio in Kyiv — from $30/m² | CAS Development",
+ "description": "Interior design for apartments, houses and commercial spaces: layouts, 3D, working drawings, specifications. From $30/m², online for clients abroad.",
+ "h1": "Interior design — in Kyiv and online worldwide",
+ "price": "from $30 / m² · minimum project $2 500",
+ "lead": "CAS Development designs interiors for apartments, private houses and commercial spaces. We design so that the interior can be built within budget — and we build it ourselves if you wish.",
+ "cards": [
+  [
+   "Residential interiors",
+   [
+    "apartments and penthouses",
+    "private houses and villas",
+    "apartments for rent",
+    "individual rooms"
+   ]
+  ],
+  [
+   "Commercial interiors",
+   [
+    "offices",
+    "restaurants, cafés, bars",
+    "beauty salons",
+    "hotels and resorts"
+   ]
+  ],
+  [
+   "What the project includes",
+   [
+    "layout and zoning",
+    "3D visualisations",
+    "working drawings",
+    "specifications and estimate"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "A design studio that thinks about implementation",
+   [
+    "A beautiful picture is only half the job. We design with real prices for materials, works and furniture in mind, so the interior from the 3D fits the budget. The drawings are made for builders: where the sockets go, how the lighting runs, which tile and where the joint is.",
+    "We work in different styles — modern minimalism, neoclassical, loft, Scandinavian, Japandi — and our portfolio includes penthouses, private houses, villas, restaurants and offices in Kyiv and abroad.",
+    "For clients outside Ukraine the whole process can run online: you send plans, measurements and photos or a video walkthrough, and receive a full set of documents your local contractor can follow."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1MslU7S5X8gIEp-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1YQyhjEui9fb6v-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1Grj8_m7MJwsbE-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1Xdb_M0v9MyKsV-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1HMtnMX7Fgpwg5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/18ej1fH-11uoyr-900.webp",
+   "Yacht Restaurant"
+  ],
+  [
+   "img/p/1OGn3TXnLkQenE-900.webp",
+   "Yacht Restaurant"
+  ]
+ ],
+ "steps": [
+  [
+   "Brief",
+   "We get to know you and discuss style, habits and budget."
+  ],
+  [
+   "Layout",
+   "Several furniture layout options to choose from."
+  ],
+  [
+   "3D visualisations",
+   "Every room shown in 3D, with revisions."
+  ],
+  [
+   "Drawings",
+   "A complete documentation package for the builders."
+  ],
+  [
+   "Implementation",
+   "Optionally — renovation, furniture and author supervision."
+  ]
+ ],
+ "faq": [
+  [
+   "How much does interior design cost?",
+   "From $30 per m², with a minimum project budget of $2 500."
+  ],
+  [
+   "What does a design project include?",
+   "Layouts, 3D visualisations, working drawings (electrics, plumbing, ceilings, floors), material and furniture specifications and an estimate."
+  ],
+  [
+   "How long does it take?",
+   "It depends on the area and number of revisions; the timeline is fixed in the contract."
+  ],
+  [
+   "Do you work remotely?",
+   "Yes, we design properties in other cities and countries online."
+  ],
+  [
+   "Do you implement the project as well?",
+   "Yes: renovation from $550 per m², purchasing of materials, furniture and decor. If our team does the renovation, the estimate is kept within ±5%."
+  ]
+ ],
+ "rel": [
+  [
+   "/en/design-implementation",
+   "Design implementation"
+  ],
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/house-construction",
+   "House construction"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Turnkey furnishing"
+  ],
+  [
+   "/en/business-fit-out",
+   "Turnkey business premises"
+  ],
+  [
+   "/en/faq",
+   "FAQ"
+  ],
+  [
+   "/en/contact",
+   "Contact"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}
