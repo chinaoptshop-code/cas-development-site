@@ -99,6 +99,7 @@ html.sch-lock .mbar{display:none!important}
 .scf address{font-style:normal;color:var(--c-tx)}
 .scf-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.125rem;font-weight:600;color:var(--c-tx);text-decoration:none}
 .scf-msg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.scf-soc{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.scf-soc a{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border:1px solid var(--c-ln);border-radius:12px}.scf-soc a:hover{border-color:var(--c-ac)}.scf-soc img{width:22px;height:22px;object-fit:contain}
 .scf .scf-svc{position:static;margin:32px 0 0;padding:16px 0 0;border:0;border-top:1px solid var(--c-ln)}
 .scf .scf-svc summary{display:flex;align-items:center;justify-content:center;min-height:44px;list-style:none;cursor:pointer;
   font-size:.75rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--c-ac);float:none}

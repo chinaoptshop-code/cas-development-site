@@ -15,6 +15,8 @@ python3 tools/blog/build.py
 python3 tools/site/leadform.py  # форми заявки: обовʼязковий лише телефон, швидка заявка (ручні сторінки теж)
 python3 tools/site/captions.py  # підписи галерей: обʼєкт, що робили, статус
 python3 tools/site/casmap.py    # карти: «Карта проєктів» у /portfolio, офіс у /contact (лендинги контактів — через landing.py)
+python3 tools/site/quiz.py      # квіз-калькулятор перед формою заявки (головні uk/ru/en, ремонт, будівництво)
+python3 tools/site/media.py     # тури 360° Kuula, відео YouTube, канал у sameAs — з tools/site/media.json
 python3 tools/site/chrome.py
 python3 tools/site/chrome.py --check
 python3 tools/site/i18n.py --check

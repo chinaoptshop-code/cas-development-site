@@ -1,0 +1,17 @@
+/* Віртуальний тур 360° (Kuula) і відео YouTube — постер + кнопка, iframe лише по кліку (/assets/media.v1.js, /styleguide/#media). */
+.lt3,.lyt{position:relative;display:block;overflow:hidden;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:10px;background:#000;color:#EDE8DF;text-decoration:none;aspect-ratio:16/9}
+.lt3 img,.lyt img{display:block;width:100%;height:100%;object-fit:cover;opacity:.82;transition:opacity .25s,transform .5s}
+.lt3:hover img,.lyt:hover img,.lt3:focus-visible img,.lyt:focus-visible img{opacity:1;transform:scale(1.03)}
+.lt3-b,.lyt-b{position:absolute;left:50%;top:50%;translate:-50% -50%;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:999px;background:var(--ac,#BF9148);color:#140f08;font-size:var(--fs-small,.8125rem);font-weight:600;line-height:1.2;white-space:nowrap;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.lyt-b{padding:0;width:68px;justify-content:center;font-size:22px}
+.lt3-c,.lyt-c{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 10px;background:linear-gradient(transparent,rgba(0,0,0,.72));font-size:var(--fs-small,.8125rem);line-height:1.4}
+.lyt-on{aspect-ratio:16/9}
+.lyt-on iframe,.lt3-f iframe{display:block;width:100%;height:100%;border:0}
+.lt3-d{width:min(1200px,96vw);height:min(80vh,720px);max-width:none;max-height:none;padding:0;border:1px solid var(--ac,#BF9148);border-radius:10px;background:#000;overflow:hidden}
+.lt3-d::backdrop{background:rgba(8,7,9,.85)}
+.lt3-f{width:100%;height:100%}
+.lt3-x{position:absolute;top:8px;right:8px;z-index:2;width:44px;height:44px;border:1px solid rgba(237,232,223,.4);border-radius:50%;background:rgba(8,7,9,.72);color:#EDE8DF;font-size:18px;cursor:pointer}
+.lt3-demo{margin:0;padding:24px;color:#EDE8DF}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.vgrid figure{margin:0}.vgrid figcaption{padding:8px 0 0;font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84)}
+@media (prefers-reduced-motion:reduce){.lt3 img,.lyt img{transition:none}}
