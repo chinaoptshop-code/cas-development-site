@@ -118,7 +118,7 @@ html.sch-lock .mbar{display:none!important}
   color:var(--c-mu);font-size:var(--fs-body,1rem);line-height:1.6}
 .scf-in{max-width:1280px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
 .scf-top{display:grid;grid-template-columns:1fr;gap:28px}
-.scf-brand p{max-width:23.2em;margin:14px 0 0;font-size:.875rem;color:var(--c-mu)}
+.scf-brand p{max-width:21.7em;margin:14px 0 0;font-size:.875rem;color:var(--c-mu)}
 .scf-col b{display:block;margin:0 0 10px;font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c-ac)}
 .scf address{font-style:normal;color:var(--c-tx)}
 .scf-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.125rem;font-weight:600;color:var(--c-tx);text-decoration:none}
