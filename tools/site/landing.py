@@ -380,8 +380,8 @@ def build(p):
     # шапка й футер: мова, перемикач на пару (hreflang) і посилання — з chrome.py
     if any(x['t'] == 'map' for x in p.get('sections', [])):
         s = casmap.assets(s)
-    s = chrome.apply(s, path(lang, slug))
     s = page_assets(s, p.get('assets', []))
+    s = chrome.apply(s, path(lang, slug))
     os.makedirs(os.path.dirname(os.path.join(ROOT, path(lang, slug))), exist_ok=True)
     open(os.path.join(ROOT, path(lang, slug)), 'w', encoding='utf-8').write(s)
     return path(lang, slug)
@@ -389,15 +389,14 @@ def build(p):
 
 def page_assets(s, files):
     """Власні стилі/скрипти сторінки ("assets": ["assets/x.v1.css", "assets/x.v1.js"]) — з ?v=хеш, бо /assets/* кешується назавжди.
-    CSS — перед </head>, JS — defer перед </body>. Лише файли з assets/ (перевіряє check())."""
+    Ставимо перед <link rel="canonical"> (JS — defer): там їх не переставляють leadform.py і chrome.py, що дописують своє перед </head>.
+    Лише файли з assets/ (перевіряє check())."""
     import hashlib
+    tags = ''
     for f in files:
         v = hashlib.sha256(open(os.path.join(ROOT, f), 'rb').read()).hexdigest()[:8]
-        if f.endswith('.css'):
-            s = s.replace('</head>', f'<link rel="stylesheet" href="/{f}?v={v}">\n</head>', 1)
-        else:
-            s = s.replace('</body>', f'<script src="/{f}?v={v}" defer></script>\n</body>', 1)
-    return s
+        tags += (f'<link rel="stylesheet" href="/{f}?v={v}">\n' if f.endswith('.css') else f'<script src="/{f}?v={v}" defer></script>\n')
+    return s.replace('<link rel="canonical"', tags + '<link rel="canonical"', 1) if tags else s
 
 
 def link_pair(p):
