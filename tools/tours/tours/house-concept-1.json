@@ -1,0 +1,101 @@
+{
+ "slug": "house-concept-1",
+ "title": "Приватний будинок — концепт 1",
+ "description": "360-рендери приватного будинку, варіант 1.",
+ "hidden": true,
+ "source": "kuula:7bjKW",
+ "start": "s01",
+ "scenes": [
+  {
+   "id": "s01",
+   "name": "Точка 1",
+   "image": "/img/tury/house-concept-1/s01.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s02",
+   "name": "Точка 2",
+   "image": "/img/tury/house-concept-1/s02.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s03",
+   "name": "Точка 3",
+   "image": "/img/tury/house-concept-1/s03.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s04",
+   "name": "Точка 4",
+   "image": "/img/tury/house-concept-1/s04.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s05",
+   "name": "Точка 5",
+   "image": "/img/tury/house-concept-1/s05.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s06",
+   "name": "Точка 6",
+   "image": "/img/tury/house-concept-1/s06.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s07",
+   "name": "Точка 7",
+   "image": "/img/tury/house-concept-1/s07.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s08",
+   "name": "Точка 8",
+   "image": "/img/tury/house-concept-1/s08.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s09",
+   "name": "Точка 9",
+   "image": "/img/tury/house-concept-1/s09.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s10",
+   "name": "Точка 10",
+   "image": "/img/tury/house-concept-1/s10.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s11",
+   "name": "Точка 11",
+   "image": "/img/tury/house-concept-1/s11.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s12",
+   "name": "Точка 12",
+   "image": "/img/tury/house-concept-1/s12.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s13",
+   "name": "Точка 13",
+   "image": "/img/tury/house-concept-1/s13.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  }
+ ]
+}

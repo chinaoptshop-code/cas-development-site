@@ -1,0 +1,59 @@
+{
+ "slug": "apartment-37",
+ "title": "Квартира 37 м²",
+ "description": "360-тур квартири 37 м².",
+ "hidden": true,
+ "source": "kuula:7cgv8",
+ "start": "s01",
+ "scenes": [
+  {
+   "id": "s01",
+   "name": "Хол 36",
+   "image": "/img/tury/apartment-37/s01.jpg",
+   "yaw": 176.8,
+   "hotspots": []
+  },
+  {
+   "id": "s02",
+   "name": "Хол 36 (2)",
+   "image": "/img/tury/apartment-37/s02.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s03",
+   "name": "Ванна 36",
+   "image": "/img/tury/apartment-37/s03.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s04",
+   "name": "Ванна 36 (2)",
+   "image": "/img/tury/apartment-37/s04.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s05",
+   "name": "Кухня 36",
+   "image": "/img/tury/apartment-37/s05.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s06",
+   "name": "Кухня 36 (2)",
+   "image": "/img/tury/apartment-37/s06.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s07",
+   "name": "Спальня 36",
+   "image": "/img/tury/apartment-37/s07.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  }
+ ]
+}

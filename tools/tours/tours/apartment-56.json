@@ -1,0 +1,66 @@
+{
+ "slug": "apartment-56",
+ "title": "Квартира 56 м²",
+ "description": "360-тур квартири 56 м².",
+ "hidden": true,
+ "source": "kuula:7bXLt",
+ "start": "s01",
+ "scenes": [
+  {
+   "id": "s01",
+   "name": "Точка 1",
+   "image": "/img/tury/apartment-56/s01.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s02",
+   "name": "Точка 2",
+   "image": "/img/tury/apartment-56/s02.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s03",
+   "name": "Точка 3",
+   "image": "/img/tury/apartment-56/s03.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s04",
+   "name": "Точка 4",
+   "image": "/img/tury/apartment-56/s04.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s05",
+   "name": "Точка 5",
+   "image": "/img/tury/apartment-56/s05.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s06",
+   "name": "Точка 6",
+   "image": "/img/tury/apartment-56/s06.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s07",
+   "name": "Точка 7",
+   "image": "/img/tury/apartment-56/s07.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s08",
+   "name": "Точка 8",
+   "image": "/img/tury/apartment-56/s08.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  }
+ ]
+}

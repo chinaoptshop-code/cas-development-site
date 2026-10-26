@@ -1,0 +1,522 @@
+{
+ "slug": "edelweiss",
+ "title": "Edelweiss — квартира 108 м²",
+ "description": "360-тур реалізованої квартири Edelweiss, 108 м²: хол, вітальня, кухня, спальні.",
+ "hidden": true,
+ "source": "kuula:7ZLxZ",
+ "start": "s01",
+ "scenes": [
+  {
+   "id": "s01",
+   "name": "Хол",
+   "image": "/img/tury/edelweiss/s01.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s02",
+     "yaw": -0.0,
+     "pitch": -23.1
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "name": "Хол 2",
+   "image": "/img/tury/edelweiss/s02.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s01",
+     "yaw": -179.5,
+     "pitch": -22.8
+    },
+    {
+     "to": "s03",
+     "yaw": 89.7,
+     "pitch": -24.3
+    },
+    {
+     "to": "s16",
+     "yaw": 104.4,
+     "pitch": -13.7
+    },
+    {
+     "to": "s18",
+     "yaw": 98.8,
+     "pitch": -6.7
+    },
+    {
+     "to": "s17",
+     "yaw": 95.2,
+     "pitch": -0.9
+    },
+    {
+     "to": "s13",
+     "yaw": 87.7,
+     "pitch": -3.8
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "name": "Хол 3",
+   "image": "/img/tury/edelweiss/s03.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s04",
+     "yaw": 68.0,
+     "pitch": -34.1
+    },
+    {
+     "to": "s02",
+     "yaw": -89.8,
+     "pitch": -28.8
+    },
+    {
+     "to": "s16",
+     "yaw": -121.9,
+     "pitch": -9.6
+    },
+    {
+     "to": "s18",
+     "yaw": 122.6,
+     "pitch": -9.5
+    },
+    {
+     "to": "s17",
+     "yaw": 99.9,
+     "pitch": -5.7
+    },
+    {
+     "to": "s13",
+     "yaw": 86.0,
+     "pitch": -4.3
+    },
+    {
+     "to": "s10",
+     "yaw": 57.5,
+     "pitch": -3.7
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "name": "Хол 4",
+   "image": "/img/tury/edelweiss/s04.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s05",
+     "yaw": 117.7,
+     "pitch": -26.4
+    },
+    {
+     "to": "s08",
+     "yaw": 23.3,
+     "pitch": -32.0
+    },
+    {
+     "to": "s07",
+     "yaw": 61.2,
+     "pitch": -23.0
+    },
+    {
+     "to": "s10",
+     "yaw": 138.7,
+     "pitch": -5.9
+    },
+    {
+     "to": "s13",
+     "yaw": -158.6,
+     "pitch": -9.7
+    },
+    {
+     "to": "s17",
+     "yaw": -112.1,
+     "pitch": -12.8
+    },
+    {
+     "to": "s18",
+     "yaw": -46.9,
+     "pitch": -8.6
+    },
+    {
+     "to": "s16",
+     "yaw": -24.5,
+     "pitch": -6.2
+    },
+    {
+     "to": "s03",
+     "yaw": -21.2,
+     "pitch": -31.7
+    },
+    {
+     "to": "s08",
+     "yaw": 12.8,
+     "pitch": -19.3
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "name": "Кухня",
+   "image": "/img/tury/edelweiss/s05.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s17",
+     "yaw": 9.9,
+     "pitch": -5.1
+    },
+    {
+     "to": "s10",
+     "yaw": -17.7,
+     "pitch": -10.5
+    },
+    {
+     "to": "s13",
+     "yaw": -7.1,
+     "pitch": -4.8
+    },
+    {
+     "to": "s04",
+     "yaw": 17.0,
+     "pitch": -28.2
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "name": "Кухня 6",
+   "image": "/img/tury/edelweiss/s06.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s10",
+     "yaw": 81.1,
+     "pitch": -4.4
+    },
+    {
+     "to": "s13",
+     "yaw": 111.8,
+     "pitch": -4.7
+    },
+    {
+     "to": "s17",
+     "yaw": 130.5,
+     "pitch": -3.0
+    },
+    {
+     "to": "s04",
+     "yaw": 103.3,
+     "pitch": -35.3
+    },
+    {
+     "to": "s07",
+     "yaw": 30.4,
+     "pitch": -31.4
+    },
+    {
+     "to": "s08",
+     "yaw": -89.2,
+     "pitch": -35.6
+    },
+    {
+     "to": "s09",
+     "yaw": -35.9,
+     "pitch": -12.3
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "name": "Кухня 3",
+   "image": "/img/tury/edelweiss/s07.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s18",
+     "yaw": 178.9,
+     "pitch": -6.2
+    },
+    {
+     "to": "s17",
+     "yaw": 154.0,
+     "pitch": -4.9
+    },
+    {
+     "to": "s13",
+     "yaw": 137.7,
+     "pitch": -5.4
+    },
+    {
+     "to": "s10",
+     "yaw": 115.8,
+     "pitch": -5.5
+    },
+    {
+     "to": "s04",
+     "yaw": 150.3,
+     "pitch": -25.8
+    },
+    {
+     "to": "s06",
+     "yaw": -149.9,
+     "pitch": -33.5
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "name": "Кухня 4",
+   "image": "/img/tury/edelweiss/s08.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s09",
+     "yaw": -0.3,
+     "pitch": -15.2
+    },
+    {
+     "to": "s06",
+     "yaw": 88.5,
+     "pitch": -38.1
+    },
+    {
+     "to": "s04",
+     "yaw": 98.4,
+     "pitch": -19.9
+    },
+    {
+     "to": "s07",
+     "yaw": 61.3,
+     "pitch": -18.8
+    },
+    {
+     "to": "s10",
+     "yaw": 84.2,
+     "pitch": -2.6
+    },
+    {
+     "to": "s13",
+     "yaw": 102.5,
+     "pitch": -2.2
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "name": "Кухня 5",
+   "image": "/img/tury/edelweiss/s09.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s08",
+     "yaw": 179.7,
+     "pitch": -16.9
+    },
+    {
+     "to": "s06",
+     "yaw": 152.2,
+     "pitch": -21.0
+    },
+    {
+     "to": "s07",
+     "yaw": 100.3,
+     "pitch": -20.6
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "name": "Спальня 2",
+   "image": "/img/tury/edelweiss/s10.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s04",
+     "yaw": -92.1,
+     "pitch": -13.8
+    },
+    {
+     "to": "s11",
+     "yaw": 56.2,
+     "pitch": -31.8
+    },
+    {
+     "to": "s12",
+     "yaw": 6.7,
+     "pitch": -22.8
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "name": "Спальня",
+   "image": "/img/tury/edelweiss/s11.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s04",
+     "yaw": 55.7,
+     "pitch": -2.0
+    },
+    {
+     "to": "s10",
+     "yaw": 53.6,
+     "pitch": -30.0
+    },
+    {
+     "to": "s12",
+     "yaw": 129.7,
+     "pitch": -22.5
+    }
+   ]
+  },
+  {
+   "id": "s12",
+   "name": "Спальня 3",
+   "image": "/img/tury/edelweiss/s12.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s04",
+     "yaw": 112.1,
+     "pitch": -5.2
+    },
+    {
+     "to": "s10",
+     "yaw": 101.7,
+     "pitch": -27.3
+    },
+    {
+     "to": "s11",
+     "yaw": 47.2,
+     "pitch": -39.4
+    }
+   ]
+  },
+  {
+   "id": "s13",
+   "name": "Точка 13",
+   "image": "/img/tury/edelweiss/s13.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s14",
+     "yaw": 122.2,
+     "pitch": -41.1
+    },
+    {
+     "to": "s15",
+     "yaw": 155.4,
+     "pitch": -21.7
+    },
+    {
+     "to": "s04",
+     "yaw": -92.7,
+     "pitch": -9.7
+    }
+   ]
+  },
+  {
+   "id": "s14",
+   "name": "Точка 14",
+   "image": "/img/tury/edelweiss/s14.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s15",
+     "yaw": 81.5,
+     "pitch": -28.8
+    },
+    {
+     "to": "s13",
+     "yaw": -151.1,
+     "pitch": -51.0
+    },
+    {
+     "to": "s04",
+     "yaw": -157.0,
+     "pitch": -8.9
+    }
+   ]
+  },
+  {
+   "id": "s15",
+   "name": "Точка 15",
+   "image": "/img/tury/edelweiss/s15.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s14",
+     "yaw": 4.0,
+     "pitch": -59.4
+    },
+    {
+     "to": "s13",
+     "yaw": -25.5,
+     "pitch": -33.4
+    },
+    {
+     "to": "s04",
+     "yaw": -37.9,
+     "pitch": -3.4
+    }
+   ]
+  },
+  {
+   "id": "s16",
+   "name": "Пральня",
+   "image": "/img/tury/edelweiss/s16.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s04",
+     "yaw": -61.9,
+     "pitch": -16.4
+    }
+   ]
+  },
+  {
+   "id": "s17",
+   "name": "Ванна",
+   "image": "/img/tury/edelweiss/s17.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s04",
+     "yaw": -94.3,
+     "pitch": -14.8
+    }
+   ]
+  },
+  {
+   "id": "s18",
+   "name": "Ванна 2",
+   "image": "/img/tury/edelweiss/s18.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s04",
+     "yaw": -86.7,
+     "pitch": -11.0
+    }
+   ]
+  },
+  {
+   "id": "s19",
+   "name": "Ванна 3",
+   "image": "/img/tury/edelweiss/s19.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s04",
+     "yaw": -30.4,
+     "pitch": -14.8
+    }
+   ]
+  }
+ ]
+}

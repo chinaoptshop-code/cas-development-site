@@ -1,0 +1,80 @@
+{
+ "slug": "yablunytsia-estate",
+ "title": "Садиба в Яблуниці",
+ "description": "360-тур садиби в Карпатах, Яблуниця.",
+ "hidden": true,
+ "source": "kuula:7JxXG",
+ "start": "s01",
+ "scenes": [
+  {
+   "id": "s01",
+   "name": "Точка 1",
+   "image": "/img/tury/yablunytsia-estate/s01.jpg",
+   "yaw": 6.7,
+   "hotspots": []
+  },
+  {
+   "id": "s02",
+   "name": "Точка 2",
+   "image": "/img/tury/yablunytsia-estate/s02.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s03",
+   "name": "Точка 3",
+   "image": "/img/tury/yablunytsia-estate/s03.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s04",
+   "name": "Точка 4",
+   "image": "/img/tury/yablunytsia-estate/s04.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s05",
+   "name": "Точка 5",
+   "image": "/img/tury/yablunytsia-estate/s05.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s06",
+   "name": "Точка 6",
+   "image": "/img/tury/yablunytsia-estate/s06.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s07",
+   "name": "Точка 7",
+   "image": "/img/tury/yablunytsia-estate/s07.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s08",
+   "name": "Точка 8",
+   "image": "/img/tury/yablunytsia-estate/s08.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s09",
+   "name": "Точка 9",
+   "image": "/img/tury/yablunytsia-estate/s09.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s10",
+   "name": "Точка 10",
+   "image": "/img/tury/yablunytsia-estate/s10.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  }
+ ]
+}
