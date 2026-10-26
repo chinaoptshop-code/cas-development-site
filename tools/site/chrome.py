@@ -153,7 +153,7 @@ T = {
         nav=[('/services', 'Послуги'), ('/portfolio', 'Портфоліо'), ('/ozdoba', 'Оздоба'), ('/blog', 'Блог'),
              ('/about', 'Про студію'), ('/contact', 'Контакти')],
         nav_label='Головне меню', menu='Меню', skip='Перейти до змісту', menu_open='Відкрити меню', menu_close='Закрити меню', lang_label='Мова сайту',
-        cta='Заявка', cta_href='/contact#cForm', home_label='CAS Development — на головну',
+        cta='Заявка', cta_href='/contact#cForm', home_label='CAS Development — на головну', kab='Кабінет', kab_full='Кабінет клієнта',
         tagline='Студія дизайну інтерʼєру, ремонту й будівництва під ключ. Київ, з 2016 року.',
         contacts='Контакти', address='вул. Антоновича, 44, Київ', msg='Месенджери', lang='Мова',
         privacy=('/konfidentsiinist', 'Політика конфіденційності'), copy='© 2026 CAS Development · Київ, Україна',
@@ -178,7 +178,7 @@ T = {
         nav=[('/ru/uslugi', 'Услуги'), ('/portfolio', 'Портфолио'), ('/ozdoba', 'Оздоба'), ('/ru/blog', 'Блог'),
              ('/ru/o-nas', 'О студии'), ('/ru/kontakty', 'Контакты')],
         nav_label='Главное меню', menu='Меню', skip='Перейти к содержанию', menu_open='Открыть меню', menu_close='Закрыть меню', lang_label='Язык сайта',
-        cta='Заявка', cta_href='/ru/#zayavka', home_label='CAS Development — на главную',
+        cta='Заявка', cta_href='/ru/#zayavka', home_label='CAS Development — на главную', kab='Кабинет', kab_full='Кабинет клиента',
         tagline='Студия дизайна интерьера, ремонта и строительства под ключ. Киев, с 2016 года.',
         contacts='Контакты', address='ул. Антоновича, 44, Киев', msg='Мессенджеры', lang='Язык',
         privacy=('/ru/konfidentsialnost', 'Политика конфиденциальности'), copy='© 2026 CAS Development · Киев, Украина',
@@ -213,6 +213,8 @@ def _live(links):
 
 LOGO = '<a class="sch-logo" href="{home}" aria-label="{label}">CAS<em>.</em>Development</a>'
 BURGER = '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="sch-b1" d="M4 7h16"/><path class="sch-b2" d="M4 12h16"/><path class="sch-b3" d="M4 17h16"/></svg>'
+# іконки кабінету й калькулятора — CSS-маски (.sch-kab, .sch-mkab, .sch-mcalc у site-chrome.v1.css), не інлайн-SVG: бюджет HTML лендингів
+KAB_HREF = '/kabinet'  # кабінет клієнта є лише українською — з усіх мов ведемо сюди
 PHONE_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1'
              '-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>')
 
@@ -283,19 +285,27 @@ def header(lang, path, alts, tools='', cta_href=None):
     cta = cta_href or t['cta_href']
     tools_html = f'<div class="sch-tools">{tools}</div><!--/sch-tools-->' if tools.strip() else ''
     msg = ''.join(f'<a class="bi bi-{k}" href="{u}" target="_blank" rel="noopener">{n}</a>' for k, n, u in MSG)  # іконки — CSS (.bi-*)
+    kab_cur = ' aria-current="page"' if path == KAB_HREF or path.startswith(KAB_HREF + '/') else ''
+    kab = f'<a class="sch-kab" href="{KAB_HREF}" title="{t["kab_full"]}"{kab_cur}><span>{t["kab"]}</span></a>'
+    # швидкі кнопки мобільного меню: кабінет і калькулятор вартості (якщо сторінка калькулятора цією мовою є)
+    calc = next(((h, n) for _, links in t['groups'] for h, n in _live(links) if re.search(r'kalk|calc', h)), None)
+    quick = f'<a class="sch-mkab" href="{KAB_HREF}"{kab_cur}>{t["kab_full"]}</a>'
+    if calc:
+        quick += f'<a class="sch-mcalc" href="{calc[0]}"' + (' aria-current="page"' if calc[0] == path else '') + f'>{calc[1]}</a>'
     return (
         f'<!--chrome:h--><header class="sch{" sch--tools" if tools_html else ""}" id="top">\n'
         '<div class="sch-in">\n'
         f'  {LOGO.format(home=HOME[lang], label=t["home_label"])}\n'
         f'  <nav class="sch-nav" aria-label="{t["nav_label"]}">{items}</nav>\n'
         f'  <div class="sch-act">{tools_html}'
-        f'<div class="sch-lang" role="group" aria-label="{t["lang_label"]}">{lang_menu(lang, alts, t["lang_label"])}</div>'
+        f'<div class="sch-lang" role="group" aria-label="{t["lang_label"]}">{lang_menu(lang, alts, t["lang_label"])}</div>{kab}'
         f'<a class="sch-tel" href="tel:{PHONE}">{PHONE_SVG}<span>{PHONE_TXT}</span></a>'
         f'<a class="sch-cta" href="{cta}">{t["cta"]}</a>'
         f'<button class="sch-burger" type="button" aria-expanded="false" aria-controls="sch-menu" aria-label="{t["menu_open"]}"'
         f' data-open="{t["menu_open"]}" data-close="{t["menu_close"]}">{BURGER}</button></div>\n'
         '</div>\n'
         f'<div class="sch-menu" id="sch-menu" role="dialog" aria-modal="true" aria-label="{t["menu"]}" hidden><div class="sch-menu-in">\n'
+        f'  <div class="sch-mq">{quick}</div>\n'
         f'  <nav class="sch-mnav" aria-label="{t["nav_label"]}">{items}</nav>\n'
         f'  <div class="sch-mlang" role="group" aria-label="{t["lang_label"]}">{lang_links(lang, alts, "sch-lang")}</div>\n'
         f'  <div class="sch-mcta"><a class="sch-cta" href="{cta}">{t["cta"]}</a><a class="sch-mtel" href="tel:{PHONE}">{PHONE_SVG}{PHONE_TXT}</a></div>\n'
@@ -544,9 +554,21 @@ def head_extras(s):
     m = re.search(r'<img\b[^>]*\bfetchpriority="high"[^>]*>', vis)
     if m and _attr(m.group(0), 'src') and '${' not in m.group(0):
         t = m.group(0)
+        # <picture><source media="…"> перед фото (окремий кадр для телефона): preload кожного джерела зі своїм media,
+        # а <img> — лише поза цими media, щоб телефон не тягнув зайве десктопне фото
+        pic = vis.rfind('<picture>', 0, m.start())
+        srcs = re.findall(r'<source\b[^>]*>', vis[pic:m.start()]) if pic >= 0 and '</picture>' not in vis[pic:m.start()] else []
+        medias = []
+        for src in srcs:
+            if _attr(src, 'media') and _attr(src, 'srcset') and not _attr(src, 'type'):
+                medias.append(_attr(src, 'media'))
+                add += (f'<link rel="preload" as="image" data-lcp imagesrcset="{_attr(src, "srcset")}"'
+                        + (f' imagesizes="{_attr(src, "sizes")}"' if _attr(src, 'sizes') else '') + f' media="{_attr(src, "media")}">\n')
         link = f'<link rel="preload" as="image" data-lcp href="{_attr(t, "src")}"'
         if _attr(t, 'srcset'):
             link += f' imagesrcset="{_attr(t, "srcset")}"' + (f' imagesizes="{_attr(t, "sizes")}"' if _attr(t, 'sizes') else '')
+        if len(medias) == 1:
+            link += f' media="not all and {medias[0]}"'
         add += link + '>\n'
     vp = re.search(r'<meta name="viewport"[^>]*>\n', head) or re.search(r'<head\b[^>]*>\n', head)
     if not vp:

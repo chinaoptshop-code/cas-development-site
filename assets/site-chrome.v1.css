@@ -17,9 +17,9 @@ body{padding-top:var(--sch-h)}
 /* ── шапка ── */
 .sch{position:fixed;top:0;left:0;right:0;z-index:800;display:block;box-sizing:border-box;height:var(--sch-h);margin:0;padding:env(safe-area-inset-top,0px) 0 0;
   background:none;border-bottom:1px solid var(--c-ln);color:var(--c-tx)}
-/* фон з розмиттям */
-.sch::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(8,7,9,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);pointer-events:none}
-.sch-in{max-width:1280px;height:100%;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:12px}
+/* фон непрозорий: текст сторінки не просвічує крізь шапку при прокрутці */
+.sch::before{content:"";position:absolute;inset:0;z-index:-1;background:#080709;pointer-events:none}
+.sch-in{max-width:1360px;height:100%;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:12px}
 .sch-logo{flex:none;display:inline-flex;align-items:center;min-height:44px;font-family:"Cormorant Garamond","Cormorant Fallback",Georgia,serif;font-size:1.15rem;font-weight:400;line-height:1;letter-spacing:.14em;
   text-transform:uppercase;white-space:nowrap;color:var(--c-tx);text-decoration:none}
 .sch-logo em{font-style:normal;color:var(--c-ac)}
@@ -46,6 +46,19 @@ body{padding-top:var(--sch-h)}
 .sch-burger[aria-expanded="true"] .sch-b2{opacity:0}
 .sch-burger[aria-expanded="true"] .sch-b3{transform:translateY(-5px) rotate(-45deg)}
 .sch a:focus-visible,.sch button:focus-visible,.scf a:focus-visible,.scf summary:focus-visible{outline:2px solid var(--c-ac);outline-offset:2px}
+/* кабінет клієнта: іконка (телефон) / іконка + підпис */
+.sch-kab{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding:0 4px;color:var(--c-tx);text-decoration:none;
+  font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;transition:color .2s}
+.sch-kab::after,.sch-mq a::before{content:"";order:-1;width:20px;height:20px;flex:none;background:var(--c-ac);
+  -webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+.sch-kab,.sch-mkab{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6'/%3E%3C/svg%3E")}
+.sch-mcalc{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round'%3E%3Crect x='5' y='3' width='14' height='18' rx='2'/%3E%3Cpath d='M8 7h8M8 11.5h.01M12 11.5h.01M16 11.5h.01M8 15h.01M12 15h.01M16 15h.01M8 18h.01M12 18h.01M16 18h.01'/%3E%3C/svg%3E")}
+.sch-kab:hover,.sch-kab[aria-current]{color:var(--c-ac)}
+.sch-kab span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(min-width:800px) and (max-width:1079px),(min-width:1680px){.sch:not(.sch--tools) .sch-kab span{position:static;width:auto;height:auto;overflow:visible;clip-path:none}}
+@media(min-width:1680px){.sch-in{max-width:1440px}}
+@media(min-width:1240px) and (max-width:1379px),(min-width:1440px){html:is(:lang(uk),:lang(ru)) .sch:not(.sch--tools) .sch-kab span{position:static;width:auto;height:auto;overflow:visible;clip-path:none}}
+.sch-tools #accLink{display:none!important}
 /* іконки Оздоби/кабінету */
 .sch-tools .ico{flex:none;position:relative}
 .sch-tools .ico::before{content:"";position:absolute;inset:-5px}
@@ -55,6 +68,9 @@ body{padding-top:var(--sch-h)}
   .sch--tools .sch-tools .ico{width:36px;height:36px}
   .sch--tools .sch-tools button[onclick*="'fav'"]{display:none}
 }
+@media(max-width:479px){.sch-act{gap:4px}}
+@media(max-width:389px){.sch:not(.sch--tools) .sch-logo{font-size:1rem;letter-spacing:.08em}}
+@media(max-width:359px){.sch .sch-logo{font-size:.82rem!important;letter-spacing:.03em!important}.sch-ld>summary{padding:0 6px}}
 @media(max-width:359px){.sch--tools .sch-logo{font-size:.8rem;letter-spacing:.03em}.sch--tools .sch-tools .ico{width:34px;height:34px}.sch--tools .sch-act{gap:6px}}
 @media(min-width:640px){.sch-lang{display:flex}.sch-cta{display:inline-flex}}
 @media(min-width:1080px){
@@ -63,13 +79,21 @@ body{padding-top:var(--sch-h)}
   .sch-act{margin-left:0}
   .sch-burger{display:none}
 }
-@media(min-width:1080px) and (max-width:1239px){.sch--tools .sch-nav{gap:16px}.sch--tools .sch-nav a{letter-spacing:.12em}.sch--tools .sch-lang{display:none}}
+@media(min-width:1080px) and (max-width:1239px){.sch--tools .sch-nav{gap:16px}.sch--tools .sch-nav a{letter-spacing:.12em}.sch--tools .sch-lang{display:none}
+  .sch-in{gap:14px}.sch-nav{gap:14px}.sch-nav a{letter-spacing:.08em}.sch-act{gap:6px}.sch-cta{padding:0 12px;letter-spacing:.1em}}
+@media(min-width:1240px) and (max-width:1379px){.sch--tools .sch-nav{gap:14px}.sch--tools .sch-nav a{letter-spacing:.08em}.sch--tools .sch-act{gap:6px}}
 @media(min-width:1380px){.sch:not(.sch--tools) .sch-tel{display:inline-flex}}
 
 /* ── повноекранне меню */
 .sch-menu{position:fixed;top:var(--sch-h);left:0;right:0;bottom:0;z-index:801;overflow-y:auto;overscroll-behavior:contain;background:var(--c-bg);border-top:1px solid var(--c-ln)}
 .sch-menu[hidden]{display:none!important}
 .sch-menu-in{max-width:640px;min-height:100%;margin:0 auto;padding:12px max(20px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:26px}
+.sch-mq{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sch-mq a{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 12px;border:1px solid var(--c-ac);color:var(--c-tx);
+  font-size:.875rem;font-weight:600;line-height:1.2;text-align:center;text-decoration:none}
+.sch-mq a:only-child{grid-column:1/-1}
+.sch-mq a.sch-mkab{background:rgba(191,145,72,.12)}
+.sch-mq a[aria-current]{color:var(--c-ac)}
 .sch-mnav{display:flex;flex-direction:column}
 .sch-mnav a{display:flex;align-items:center;min-height:56px;padding:6px 0;border-bottom:1px solid var(--c-ln);font-family:"Cormorant Garamond","Cormorant Fallback",Georgia,serif;
   font-size:clamp(1.75rem,1.5rem + 1.2vw,2.25rem);font-weight:300;line-height:1.1;color:var(--c-tx);text-decoration:none}
@@ -184,7 +208,9 @@ html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{le
 
 /* мова на телефоні */
 @media(max-width:639px){.sch-ld>summary{border:1px solid var(--c-ln);padding:0 10px;margin-inline-end:4px}.sch-ld-m{position:fixed;top:var(--sch-h);inset-inline-end:max(12px,env(safe-area-inset-right,0px));max-height:calc(100vh - var(--sch-h) - 16px);max-height:calc(100dvh - var(--sch-h) - 16px);overflow:auto;overscroll-behavior:contain}}
-@media(max-width:399px){.sch--tools .sch-lang{display:none}}
+@media(max-width:1079px){.sch--tools .sch-lang{display:none}}
+@media(min-width:1080px) and (max-width:1239px){.sch--tools .sch-cta{display:none}}
+@media(max-width:379px){.sch--tools .sch-kab{min-width:36px;padding:0;position:relative}.sch--tools .sch-kab::before{content:"";position:absolute;inset:-4px}}
 
 /* ══ Motion */
 .mo-rv{opacity:0;translate:0 22px}
@@ -331,6 +357,13 @@ html.sch-hide .pf-filter-wrap{top:0!important}
   main .sp-name>button{padding-block:10px!important;margin-block:-10px!important}
   main :is(.proj-row-name>a,.proj-row-meta a,.ab-strip-link,.dv a,.kb .kmore){position:relative}
   main :is(.proj-row-name>a,.proj-row-meta a,.ab-strip-link,.dv a,.kb .kmore)::after{content:"";position:absolute;inset:-12px -4px}
+  main figcaption a{display:inline-block;padding-block:12px;margin-block:-12px}
 }
 /* головна */
 @media(max-width:1199px),(max-height:620px){.hyr{display:none!important}}
+/* ── Посилання без власного стилю: у тон сайту замість браузерного синього/фіолетового (visited — той самий колір).
+   :where() — нульова специфічність: будь-який стиль сторінки (кнопки, картки, меню) важить більше */
+:where(a){color:inherit}
+:where(main a:not([class]):not(:has(img,svg,picture))){color:#D4AE6E;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em;text-decoration-color:rgba(212,174,110,.5);transition:color .2s,text-decoration-color .2s}
+:where(main a:not([class]):not(:has(img,svg,picture))):hover{color:#EDE8DF;text-decoration-color:currentColor}
+:where(main a:not([class])):focus-visible{outline:2px solid #BF9148;outline-offset:2px;border-radius:2px}

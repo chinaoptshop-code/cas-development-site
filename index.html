@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/kabinet*","/api/*","/*\\?*"]}},{"not":{"selector_matches":"[target],[download],[data-no-prefetch]"}}]},"eagerness":"moderate"}]}</script>
-<link rel="preload" as="image" data-lcp href="/img/1lW6SF-extZy-1200.webp" imagesrcset="/img/1lW6SF-extZy-800.webp 800w, /img/1lW6SF-extZy-1200.webp 1200w, /img/1lW6SF-extZy-1920.webp 1600w" imagesizes="100vw">
+<link rel="preload" as="image" data-lcp imagesrcset="/img/hero-hodos-villa-m720.webp 720w, /img/hero-hodos-villa-m1080.webp 1080w" imagesizes="60vh" media="(max-width:767px) and (orientation:portrait)">
+<link rel="preload" as="image" data-lcp href="/img/hero-hodos-villa-1280.webp" imagesrcset="/img/hero-hodos-villa-1280.webp 1280w, /img/hero-hodos-villa-1920.webp 1920w" imagesizes="100vw" media="not all and (max-width:767px) and (orientation:portrait)">
 <script>(function(w,d,i){w.clarity=w.clarity||function(){(w.clarity.q=w.clarity.q||[]).push(arguments)};var E=["scroll","pointerdown","keydown","touchstart"],o={passive:true},done=0;function g(){if(done)return;done=1;E.forEach(function(e){w.removeEventListener(e,g,o)});var t=d.createElement("script");t.async=1;t.src="https://www.clarity.ms/tag/"+i;d.head.appendChild(t)}E.forEach(function(e){w.addEventListener(e,g,o)});function l(){setTimeout(function(){w.requestIdleCallback?requestIdleCallback(g,{timeout:4000}):g()},4000)}d.readyState==="complete"?l():w.addEventListener("load",l)})(window,document,"z19wl000eu");</script>
 <title>Дизайн-студія інтерʼєру й ремонт під ключ у Києві — CAS</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -71,21 +72,29 @@ body::before{content:'';position:fixed;inset:0;opacity:.25;pointer-events:none;z
 .strip-item:hover .slab{opacity:1}
 /* ─── HERO ─── */
 .hero{min-height:100vh;min-height:calc(100svh - var(--sch-h,64px));display:flex;flex-direction:column;justify-content:flex-end;padding:0 52px 68px;position:relative;overflow:hidden}
-.hbg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.50;filter:saturate(.65) brightness(.78);z-index:0}
-.hgrad{position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,7,9,.82) 0%,rgba(8,7,9,.28) 52%,rgba(8,7,9,.52) 100%);z-index:1}
-.hvl{position:absolute;top:0;right:160px;width:1px;height:100vh;background:linear-gradient(to bottom,transparent,var(--bd),transparent);z-index:2}
+.hbg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;z-index:0}
+.hgrad{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,7,9,.88) 0%,rgba(8,7,9,.74) 30%,rgba(8,7,9,.3) 52%,rgba(8,7,9,0) 70%),linear-gradient(0deg,rgba(8,7,9,.7) 0%,rgba(8,7,9,0) 34%),linear-gradient(180deg,rgba(8,7,9,.35) 0%,rgba(8,7,9,0) 16%);z-index:1}
+.hvl,.hero .hyr{display:none}
 .hghost{position:absolute;font-family:var(--D);font-size:clamp(180px,27vw,360px);font-weight:300;color:rgba(237,232,223,.02);top:50%;left:-8px;transform:translateY(-54%);pointer-events:none;z-index:2;line-height:1}
 .hyr{position:absolute;top:50%;right:50px;color:var(--mu);font-family:var(--M);font-size:var(--fs-small);letter-spacing:.28em;text-transform:uppercase;writing-mode:vertical-rl;transform:translateY(-50%);z-index:3}
 .hi{position:relative;z-index:3}
-.h1{font-family:var(--D);font-size:var(--fs-h1);font-weight:300;line-height:1.1;letter-spacing:-.01em;margin-bottom:48px}
+.h1{font-family:var(--D);font-size:var(--fs-h1);font-weight:300;line-height:1.1;letter-spacing:-.01em;margin-bottom:32px;color:#F5F0E8;text-shadow:0 2px 24px rgba(8,7,9,.45)}
 .h1 em{font-style:italic;color:var(--ac)}
-.hrow{display:flex;justify-content:space-between;align-items:flex-end;gap:36px}
-.hdesc{max-width:310px;font-family:var(--M);font-size:var(--fs-body);line-height:1.65;color:var(--mu);font-weight:300}
-.hbtns{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.hrow{display:flex;flex-direction:column;align-items:flex-start;gap:26px}
+.hdesc{max-width:440px;font-family:var(--M);font-size:var(--fs-body);line-height:1.65;color:rgba(245,240,232,.86);font-weight:400;text-shadow:0 1px 12px rgba(8,7,9,.5)}
+.hbtns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hbtns .btn{min-height:48px;background:var(--ac);border-color:var(--ac);color:#140f08;font-weight:700}.hbtns .btn::before{background:#d4a95f}.hbtns .btn:hover{color:#140f08}
+.hbtns .btn-g{background:rgba(245,240,232,.92);border-color:rgba(245,240,232,.92);color:#140f08;font-weight:600}.hbtns .btn-g::before{background:#fff}.hbtns .btn-g:hover{color:#140f08}
+.hero .lq-l,.hero .o-note{color:rgba(245,240,232,.78)}.hero .lq-r input{background:rgba(8,7,9,.6)}
 .hstats{display:flex;gap:40px;margin-top:48px;padding-top:36px;border-top:1px solid var(--bd)}
 .sn{font-family:var(--D);font-size:var(--fs-h2);font-weight:300;line-height:1.1}
 .sn em{font-style:normal;color:var(--ac)}
-.sl{font-family:var(--M);font-size:var(--fs-small);letter-spacing:.22em;text-transform:uppercase;color:var(--mu);margin-top:5px}
+.sl{font-family:var(--M);font-size:var(--fs-small);letter-spacing:.22em;text-transform:uppercase;color:var(--mu);margin-top:5px}.hero .sl{color:rgba(245,240,232,.72)}.hero .lbl{color:#D9B676;text-shadow:0 1px 10px rgba(8,7,9,.8)}
+/* телефон і планшет: текст на всю ширину — фото видно над текстом, під текстом щільне затемнення */
+@media(max-width:1079px){
+  .hgrad{background:linear-gradient(180deg,rgba(8,7,9,.35) 0,rgba(8,7,9,0) 90px)}
+  .hi::before{content:"";position:absolute;z-index:-1;left:-52px;right:-52px;top:-120px;bottom:-68px;background:linear-gradient(180deg,rgba(8,7,9,0) 0,rgba(8,7,9,.8) 105px,rgba(8,7,9,.86) 170px,rgba(8,7,9,.9) 100%);pointer-events:none}
+}
 .sind{position:absolute;bottom:68px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--mu);font-family:var(--M);font-size:var(--fs-small);letter-spacing:.28em;text-transform:uppercase;z-index:3}
 .sbar{width:1px;height:40px;background:linear-gradient(to bottom,var(--ac),transparent);animation:sb 1.6s ease infinite}
 @keyframes sb{0%,100%{opacity:.2;transform:scaleY(.4);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
@@ -397,14 +406,13 @@ body.light .map-grat{display:none!important}
   .lbl{font-size:var(--fs-small)!important;letter-spacing:.18em!important;margin-bottom:14px!important;gap:8px!important}
   .lbl::before{width:20px!important}
   .hrow{flex-direction:column!important;align-items:flex-start!important;gap:16px!important}
-  .hdesc{max-width:100%!important;font-size:var(--fs-body)!important;line-height:1.65!important;color:rgba(237,232,223,.8)!important}
+  .hdesc{max-width:100%!important;font-size:var(--fs-body)!important;line-height:1.6!important;color:rgba(245,240,232,.88)!important}
   .hbtns{flex-direction:row!important;flex-wrap:wrap!important;gap:10px!important;align-items:center!important}
   .hbtns .btn,.hbtns .btn-g{font-size:var(--fs-small)!important;padding:10px 16px!important;letter-spacing:.1em!important}
 
   /* PRIMARY BUTTON — filled on mobile */
   .hbtns .btn{background:var(--ac)!important;color:#080709!important;border-color:var(--ac)!important;font-weight:700!important}
-  .hbtns .btn-g{background:none!important;color:var(--tx)!important;border-color:rgba(237,232,223,.3)!important;opacity:.7}
-  .hbtns .btn-g:hover{opacity:1}
+  .hbtns .btn-g{background:rgba(245,240,232,.92)!important;color:#140f08!important;border-color:rgba(245,240,232,.92)!important}
 
   .hstats{display:grid!important;grid-template-columns:1fr 1fr!important;gap:20px 16px!important;margin-top:28px!important;padding-top:22px!important}
   .sn{font-size:var(--fs-h2)!important}
@@ -465,8 +473,9 @@ body.light .map-grat{display:none!important}
 /* EXTRA SMALL (< 480px) */
 @media (max-width:480px){
   .h1{font-size:var(--fs-h1)!important}
-  .hbtns{flex-direction:column!important;align-items:stretch!important;width:100%!important}
-  .hbtns .btn,.hbtns .btn-g{width:100%!important;text-align:center!important;justify-content:center!important}
+  .hbtns{display:grid!important;grid-template-columns:1fr 1fr!important;width:100%!important;gap:8px!important}
+  .hbtns .btn,.hbtns .btn-g{width:100%!important;min-height:48px!important;padding:8px 10px!important;letter-spacing:.06em!important;text-align:center!important;justify-content:center!important}
+  .hbtns .btn>span+span{display:none}
   .port-grid{grid-template-columns:1fr!important}
   .proc-grid{grid-template-columns:1fr!important}
   .ps-grid{grid-template-columns:1fr!important}
@@ -631,7 +640,7 @@ footer .fs a{display:inline-flex;align-items:center;min-height:44px}
 </style>
 <!--ui-polish--><script>document.documentElement.classList.add('js')</script><style id="ui-polish">body{--ui-field:#6C655D}body.light{--ui-field:#877C67}body{--ui-ring:var(--ac,var(--brass,var(--gold,#BF9148)));--ui-ph:var(--mu,var(--muted,#8a837c))}::placeholder{color:var(--ui-ph)!important;opacity:1!important}input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=submit]):not([type=button]):not([type=hidden]):not(:focus),textarea:not(:focus),select:not(:focus){border-color:var(--ui-field)!important}body.light #quickForm{--tx:#EDE8DF;--mu:#938c84;--ac:#BF9148;--ui-field:#6C655D;--ui-ph:#938c84;--ui-ring:#BF9148}body.light #lb,body.light #plb,body.light #sdlb{--ui-ring:#BF9148}body.light .strip-nav{color:#EDE8DF}body.light .hdesc{color:var(--mu)!important}body.light .pf-fnav{background:rgba(245,242,237,.92)}body.light #lb,body.light #plb,body.light #sdlb{--ac:#BF9148}body.light [style*="background:var(--ac"],body.light .sv-card:hover .sv-toggle,body.light .spc-cta:hover,body.light .pcarousel-nav button:hover,body.light .proj-row-btn:hover,body.light .pf-view-btn.on,body.light .hbtns .btn{color:#FBF8F3!important}:focus:not(:focus-visible){outline:none}:focus-visible{outline:2px solid var(--ui-ring)!important;outline-offset:3px!important}input:focus-visible,textarea:focus-visible,select:focus-visible{outline-offset:1px!important}input[type=range]:focus-visible{outline-offset:6px!important}.proj-row-head:focus-within .proj-row-btn{opacity:1;transform:none}:where(button,input,select,textarea){font-family:inherit}:root{--fs-h1:clamp(2.25rem,1.5rem + 3.4vw,4.5rem);--fs-h2:clamp(1.75rem,1.4rem + 1.6vw,2.75rem);--fs-h3:clamp(1.25rem,1.12rem + .55vw,1.625rem);--fs-lead:clamp(1.125rem,1.07rem + .3vw,1.3125rem);--fs-body:clamp(1rem,.98rem + .1vw,1.0625rem);--fs-small:clamp(.75rem,.73rem + .1vw,.8125rem);--lh-body:1.6;--lh-head:1.15}:where(p){line-height:var(--lh-body);max-inline-size:70ch}:where(h1,h2,h3){line-height:var(--lh-head)}.prod-soon-sub{text-align:center;max-width:100%;padding:0 10px}html:not(.js) .reveal{opacity:1!important;transform:none!important}html .reveal{transition-duration:.4s}.rv{opacity:0;translate:0 16px}.rv.rv-in{opacity:1;translate:none;transition:opacity .4s ease,translate .4s ease}.ui-img:not(.ui-img-in){opacity:0!important}.ui-img{transition:opacity .4s ease!important}@media (hover:hover){.gal figure,.pg a{overflow:hidden}.gal img,.pg img{transition:transform .5s ease}.gal figure:hover img,.pg a:hover img,.pg a:focus-visible img{transform:scale(1.05)}}#lb,#plb,#sdlb,.lb{display:flex!important;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .25s ease,visibility 0s linear .25s}#lb.open,#plb.open,#sdlb.open,.lb.on{visibility:visible;opacity:1;pointer-events:auto;transition:opacity .25s ease}#lb #lb-img,#plb #plb-wrap,#sdlb img,.lb img{scale:.96;transition:scale .3s ease,opacity .2s}#lb.open #lb-img,#plb.open #plb-wrap,#sdlb.open img,.lb.on img{scale:1}.xp{display:grid!important;grid-template-rows:0fr;max-height:none!important;transition:grid-template-rows .35s ease,opacity .3s ease,margin .35s ease!important}.xp>.xp-in{min-height:0;overflow:hidden}.sv-card.exp .sv-more.xp,.sv-card:focus-within .sv-more.xp,.sp-card.exp .sp-card-detail.xp,.proc-step.exp .ps-more.xp{grid-template-rows:1fr}@media (hover:hover){.sv-card:hover .sv-more.xp{grid-template-rows:1fr}}.nsb{transition:transform .3s ease,visibility 0s linear .3s!important}.nsb.open{transition:transform .3s ease,visibility 0s!important}.nsb-ov.active{animation:ui-fade .3s ease}@keyframes ui-fade{from{opacity:0}to{opacity:1}}summary::after{display:inline-block;transition:transform .25s ease}details[open]>summary::after{content:'+'!important;transform:rotate(45deg)}@supports (interpolate-size:allow-keywords){:root{interpolate-size:allow-keywords}details::details-content{block-size:0;overflow:hidden;transition:block-size .3s ease,content-visibility .3s allow-discrete}details[open]::details-content{block-size:auto}}.ui-sc{position:relative}.ui-fade{position:absolute;top:0;bottom:0;width:48px;pointer-events:none;z-index:4;opacity:0;transition:opacity .25s ease}.ui-fade-l{left:0;background:linear-gradient(to right,var(--bg,#080709),transparent)}.ui-fade-r{right:0;background:linear-gradient(to left,var(--bg,#080709),transparent)}.ui-ov:not(.ui-start)>.ui-fade-l,.ui-ov:not(.ui-end)>.ui-fade-r{opacity:.9}.ui-cnt{position:absolute;right:14px;bottom:18px;z-index:11;pointer-events:none;font-family:var(--M,"Manrope","Manrope Fallback",sans-serif);font-size:var(--fs-small,.75rem);letter-spacing:.12em;color:#EDE8DF;background:rgba(8,7,9,.72);padding:3px 9px;border-radius:999px;opacity:0;transition:opacity .25s ease}.ui-ov>.ui-cnt{opacity:1}.ui-sc .prs-nav{opacity:.6}.ui-sc:hover .prs-nav,.ui-sc .prs-nav:focus-visible{opacity:1}@media (hover:none){.ui-sc .prs-nav{opacity:.9}}.ui-start .prs-nav-l,.ui-start .strip-nav-l,.ui-start .pf-fnav-l,.ui-end .prs-nav-r,.ui-end .strip-nav-r,.ui-end .pf-fnav-r{opacity:0!important;pointer-events:none}.ui-nudge>*{animation:ui-nudge 1.4s ease-in-out 1}.ui-hint:not(.ui-used) .prs-nav-r,.ui-hint:not(.ui-used) .strip-nav-r,.ui-hint:not(.ui-used) .pf-fnav-r,.ui-hint:not(.ui-used)>.ui-cnt{animation:ui-pulse 1.8s ease-in-out 3}.ui-sc:hover .ui-nudge>*,.ui-sc:focus-within .ui-nudge>*,.ui-sc.ui-touch .ui-nudge>*,.ui-sc:hover *,.ui-sc:focus-within *,.ui-sc.ui-touch *{animation-play-state:paused!important}@keyframes ui-nudge{0%,100%{translate:0}40%{translate:-36px 0}}@keyframes ui-pulse{0%,100%{translate:0;opacity:1}50%{translate:-5px 0;opacity:.75}}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;animation-delay:0s!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}html{scroll-behavior:auto!important}.reveal,.rv,.au{opacity:1!important;transform:none!important;translate:none!important}.ui-img{opacity:1!important}}</style><!--/ui-polish-->
 <style id="lead-ui">.lq{display:block;margin:22px 0 0;max-width:540px}.lq-l{display:block;margin:0 0 8px;font-size:var(--fs-small,.8125rem);color:var(--mu,#8a837c)}.lq-r{display:flex;gap:8px;flex-wrap:wrap}.lq-r input{flex:1 1 160px;min-width:0;width:auto;box-sizing:border-box;min-height:48px;padding:12px 14px;font:inherit;font-size:16px;color:var(--tx,#ede8df);background:var(--bg2,rgba(255,255,255,.04));border:1px solid var(--ln,rgba(191,145,72,.35));border-radius:8px}.lq-b{flex:0 0 auto;min-height:48px;padding:12px 22px;border:1px solid var(--ac,#bf9148);border-radius:999px;background:var(--ac,#bf9148);color:#140f08;font-family:inherit;font-size:var(--fs-small,.8125rem);font-weight:600;line-height:1.2;cursor:pointer;white-space:nowrap}.lq-b:disabled{opacity:.6;cursor:wait}.lq-e{color:#e07a6a;font-size:var(--fs-small,.8125rem);margin-top:6px}.lq-e:empty{display:none}.lq .o-note{margin:8px 0 0}.o-note{color:var(--mu,#8a837c);font-size:var(--fs-small,.8125rem);line-height:1.5;margin:4px 0 0;max-width:52ch}.lq-ok{margin:22px 0 0;max-width:540px;padding:14px 18px;border:1px solid var(--ac,#bf9148);border-radius:8px;color:var(--tx,#ede8df)}details.o-more>summary{cursor:pointer;display:inline-block;list-style:none;padding:6px 0;color:var(--ac,#bf9148);font-size:var(--fs-small,.8125rem);font-weight:600}details.o-more>summary::-webkit-details-marker{display:none}details.o-more>summary::after,details.o-more[open]>summary::after{content:none!important;display:none!important}details.o-more>summary::before{content:"+ "}details.o-more[open]>summary::before{content:"− "}details.o-more>*+*{margin-top:12px}</style>
-<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=6d848e8c">
+<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=f8450197">
 </head>
 <body>
 <!--chrome:skip--><a class="skip" href="#main">Перейти до змісту</a><!--/chrome:skip-->
@@ -647,9 +656,10 @@ footer .fs a{display:inline-flex;align-items:center;min-height:44px}
 <div class="sch-in">
   <a class="sch-logo" href="/" aria-label="CAS Development — на головну">CAS<em>.</em>Development</a>
   <nav class="sch-nav" aria-label="Головне меню"><a href="/services">Послуги</a><a href="/portfolio">Портфоліо</a><a href="/ozdoba">Оздоба</a><a href="/blog">Блог</a><a href="/about">Про студію</a><a href="/contact">Контакти</a></nav>
-  <div class="sch-act"><div class="sch-lang" role="group" aria-label="Мова сайту"><details class="sch-ld"><summary aria-label="Мова сайту: Українська">UA</summary><div class="sch-ld-m"><span class="sch-ld-on" aria-current="true" lang="uk"><b>UA</b>Українська</span><a href="/ru/" hreflang="ru" lang="ru"><b>RU</b>Русский</a><a href="/en/" hreflang="en" lang="en"><b>EN</b>English</a><a href="/es/" hreflang="es" lang="es"><b>ES</b>Español</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans"><b>ZH</b>中文</a><a href="/pl/" hreflang="pl" lang="pl"><b>PL</b>Polski</a><a href="/de/" hreflang="de" lang="de"><b>DE</b>Deutsch</a><a href="/fr/" hreflang="fr" lang="fr"><b>FR</b>Français</a><a href="/ar/" hreflang="ar" lang="ar"><b>AR</b>العربية</a></div></details></div><a class="sch-tel" href="tel:+380978667755"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg><span>+380 97 866 77 55</span></a><a class="sch-cta" href="/contact#cForm">Заявка</a><button class="sch-burger" type="button" aria-expanded="false" aria-controls="sch-menu" aria-label="Відкрити меню" data-open="Відкрити меню" data-close="Закрити меню"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="sch-b1" d="M4 7h16"/><path class="sch-b2" d="M4 12h16"/><path class="sch-b3" d="M4 17h16"/></svg></button></div>
+  <div class="sch-act"><div class="sch-lang" role="group" aria-label="Мова сайту"><details class="sch-ld"><summary aria-label="Мова сайту: Українська">UA</summary><div class="sch-ld-m"><span class="sch-ld-on" aria-current="true" lang="uk"><b>UA</b>Українська</span><a href="/ru/" hreflang="ru" lang="ru"><b>RU</b>Русский</a><a href="/en/" hreflang="en" lang="en"><b>EN</b>English</a><a href="/es/" hreflang="es" lang="es"><b>ES</b>Español</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans"><b>ZH</b>中文</a><a href="/pl/" hreflang="pl" lang="pl"><b>PL</b>Polski</a><a href="/de/" hreflang="de" lang="de"><b>DE</b>Deutsch</a><a href="/fr/" hreflang="fr" lang="fr"><b>FR</b>Français</a><a href="/ar/" hreflang="ar" lang="ar"><b>AR</b>العربية</a></div></details></div><a class="sch-kab" href="/kabinet" title="Кабінет клієнта"><span>Кабінет</span></a><a class="sch-tel" href="tel:+380978667755"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg><span>+380 97 866 77 55</span></a><a class="sch-cta" href="/contact#cForm">Заявка</a><button class="sch-burger" type="button" aria-expanded="false" aria-controls="sch-menu" aria-label="Відкрити меню" data-open="Відкрити меню" data-close="Закрити меню"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="sch-b1" d="M4 7h16"/><path class="sch-b2" d="M4 12h16"/><path class="sch-b3" d="M4 17h16"/></svg></button></div>
 </div>
 <div class="sch-menu" id="sch-menu" role="dialog" aria-modal="true" aria-label="Меню" hidden><div class="sch-menu-in">
+  <div class="sch-mq"><a class="sch-mkab" href="/kabinet">Кабінет клієнта</a><a class="sch-mcalc" href="/kalkuliator-remontu">Калькулятор вартості</a></div>
   <nav class="sch-mnav" aria-label="Головне меню"><a href="/services">Послуги</a><a href="/portfolio">Портфоліо</a><a href="/ozdoba">Оздоба</a><a href="/blog">Блог</a><a href="/about">Про студію</a><a href="/contact">Контакти</a></nav>
   <div class="sch-mlang" role="group" aria-label="Мова сайту"><span class="sch-lang-on" aria-current="true" lang="uk">UA</span><a href="/ru/" hreflang="ru" lang="ru">RU</a><a href="/en/" hreflang="en" lang="en">EN</a><a href="/es/" hreflang="es" lang="es">ES</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">ZH</a><a href="/pl/" hreflang="pl" lang="pl">PL</a><a href="/de/" hreflang="de" lang="de">DE</a><a href="/fr/" hreflang="fr" lang="fr">FR</a><a href="/ar/" hreflang="ar" lang="ar">AR</a></div>
   <div class="sch-mcta"><a class="sch-cta" href="/contact#cForm">Заявка</a><a class="sch-mtel" href="tel:+380978667755"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>+380 97 866 77 55</a></div>
@@ -661,14 +671,14 @@ footer .fs a{display:inline-flex;align-items:center;min-height:44px}
 <main id="main">
 <div id="p-home">
   <section class="hero">
-    <img class="hbg" src="/img/1lW6SF-extZy-1200.webp" srcset="/img/1lW6SF-extZy-800.webp 800w, /img/1lW6SF-extZy-1200.webp 1200w, /img/1lW6SF-extZy-1920.webp 1600w" sizes="100vw" fetchpriority="high" loading="eager" decoding="async" alt="Інтерʼєр, спроєктований CAS Development" width="1200" height="1500">
+    <picture><source media="(max-width:767px) and (orientation:portrait)" srcset="/img/hero-hodos-villa-m720.webp 720w, /img/hero-hodos-villa-m1080.webp 1080w" sizes="60vh" width="1080" height="1800"><img class="hbg" src="/img/hero-hodos-villa-1280.webp" srcset="/img/hero-hodos-villa-1280.webp 1280w, /img/hero-hodos-villa-1920.webp 1920w" sizes="100vw" fetchpriority="high" loading="eager" decoding="async" alt="Світла їдальня з мармуровим столом, блакитними кріслами й кришталевою люстрою — дизайн-проєкт Hodos Villa від CAS Development, Київ" width="1920" height="1200"></picture>
     <div class="hgrad"></div><div class="hvl"></div>
     <div class="hghost">CAS</div><span class="hyr" id="hero-since">Київ · з 2016 року</span>
     <div class="hi">
       <p class="lbl au d1" id="hero-lbl">Студія дизайну та архітектури</p>
       <h1 class="h1" id="hero-h1">Дизайн інтерʼєру<br>та ремонт <em>під ключ</em><br>у Києві</h1>
       <div class="hrow">
-        <p class="hdesc au d3" id="hero-desc">Дизайн інтерʼєру та ремонт під ключ у Києві: перетворюємо порожні кімнати на живі простори — через дизайн, деталь та діалог з кожним клієнтом.</p>
+        <p class="hdesc au d3" id="hero-desc">Дизайн інтерʼєру та ремонт під ключ у Києві: від першого ескізу до ключів — одна команда, власні бригади й діалог з кожним клієнтом.</p>
         <div class="hbtns au d4">
           <button class="btn btn-pulse" id="heroCta" onclick="openQuickForm(true)" aria-controls="quickForm"><span id="h-btn-p">Розпочати проєкт</span><span>→</span></button>
           <a class="btn btn-g" href="/portfolio" style="text-decoration:none"><span id="h-btn-s">Переглянути роботи</span><span>→</span></a>
@@ -1066,7 +1076,7 @@ function imgFade(){
 function run(){[expanders,scrollers,reveal,imgFade].forEach(function(f){try{f()}catch(e){}})}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',run);else run();
 })();</script><!--/ui-polish-->
-<script src="/assets/lead-form.v1.js?v=2d7eb799" defer></script>
+<script src="/assets/lead-form.v1.js?v=b5f35e0d" defer></script>
 <script src="/assets/site-chrome.v1.js?v=0b8bf2b8" defer></script>
 </body>
 </html>

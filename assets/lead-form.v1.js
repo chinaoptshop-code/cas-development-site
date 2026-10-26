@@ -125,7 +125,8 @@
     if (form.querySelector('input[name="hp"]')) return;
     var hp = document.createElement('input');
     hp.type = 'text'; hp.name = 'hp'; hp.tabIndex = -1; hp.autocomplete = 'off'; hp.setAttribute('aria-hidden', 'true');
-    hp.style.cssText = 'position:absolute;left:-9999px;top:auto;width:1px;height:1px;opacity:0;pointer-events:none';
+    // не left:-9999px: на RTL-сторінках (ar) це давало горизонтальну прокрутку на 10 000 px
+    hp.style.cssText = 'position:absolute;width:1px;height:1px;margin:0;padding:0;border:0;overflow:hidden;clip-path:inset(50%);opacity:0;pointer-events:none';
     form.appendChild(hp);
   }
   function base(form) {
