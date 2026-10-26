@@ -392,7 +392,7 @@ PP_CSS = """
 .pp-custom ul{margin:0 0 10px;padding:0 0 0 18px;line-height:1.6;columns:2 200px;column-gap:24px}
 .pp-custom li{break-inside:avoid}
 .pp-custom p{color:var(--muted);font-size:var(--fs-small);margin:0}
-.ozd-intro p{color:var(--muted);max-width:70ch;margin:0 0 12px}
+.ozd-intro p{color:var(--muted);max-width:42.7em;margin:0 0 12px}
 .ozd-intro a,.ozd-sec details a{color:var(--brass)}
 """
 

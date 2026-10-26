@@ -92,7 +92,12 @@
 
   // вхід → зливаємо локальне й серверне обране (сервер — джерело для інших пристроїв)
   function merge() {
-    req('GET', '/api/account/favorites').then(function (d) {
+    // спершу /api/me (гостю — 200 і client:null): без входу не питаємо /api/account/favorites,
+    // інакше 401 падає в консоль на кожній сторінці Оздоби (Lighthouse: Best Practices)
+    fetch('/api/me', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (me) {
+      if (!me || !me.client) { authed = false; throw new Error('guest'); }
+      return req('GET', '/api/account/favorites');
+    }).then(function (d) {
       var srv = (d.ids || []).map(Number), loc = get();
       var miss = loc.filter(function (id) { return srv.indexOf(id) < 0; });
       var all = srv.concat(miss);

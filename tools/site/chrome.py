@@ -275,7 +275,7 @@ def lang_menu(lang, alts, label):
             items.append(f'<span class="sch-ld-on" aria-current="true" lang="{m["html"]}">{inner}</span>')
         else:
             items.append(f'<a href="{alts.get(l, HOME[l])}" hreflang="{m["hreflang"]}" lang="{m["html"]}">{inner}</a>')
-    return (f'<details class="sch-ld"><summary aria-label="{label}: {LANG_NAME[lang]}">{LANG_CODE[lang]}</summary>'
+    return (f'<details class="sch-ld"><summary aria-label="{LANG_CODE[lang]} — {label}: {LANG_NAME[lang]}">{LANG_CODE[lang]}</summary>'
             f'<div class="sch-ld-m">{"".join(items)}</div></details>')
 
 
