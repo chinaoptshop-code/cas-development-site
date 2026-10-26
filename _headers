@@ -19,6 +19,9 @@
 /ozdoba
   ! X-Frame-Options
 
+/tury/*
+  ! X-Frame-Options
+
 /portfolio
   Cache-Control: public, max-age=0, must-revalidate
 
