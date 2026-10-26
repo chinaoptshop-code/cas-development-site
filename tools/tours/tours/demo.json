@@ -1,0 +1,35 @@
+{
+ "slug": "demo",
+ "title": "Демо-тур (тестові панорами)",
+ "description": "Тестовий 3D-тур для перевірки переглядача.",
+ "start": "1-hotel-room",
+ "scenes": [
+  {
+   "id": "1-hotel-room",
+   "name": "Номер готелю",
+   "image": "/img/tury/demo/1-hotel-room.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "2-studio",
+     "yaw": 0,
+     "pitch": -15
+    }
+   ]
+  },
+  {
+   "id": "2-studio",
+   "name": "Студія",
+   "image": "/img/tury/demo/2-studio.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "1-hotel-room",
+     "yaw": 180,
+     "pitch": -15
+    }
+   ]
+  }
+ ],
+ "hidden": true
+}
