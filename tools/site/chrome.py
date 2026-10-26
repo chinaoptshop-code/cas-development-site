@@ -279,6 +279,10 @@ def lang_menu(lang, alts, label):
             f'<div class="sch-ld-m">{"".join(items)}</div></details>')
 
 
+CALC_SHORT = {'uk': 'Калькулятор', 'ru': 'Калькулятор', 'en': 'Calculator', 'es': 'Calculadora', 'pl': 'Kalkulator',
+              'fr': 'Calculateur', 'de': 'Rechner', 'zh': '计算器', 'ar': 'الحاسبة'}
+
+
 def header(lang, path, alts, tools='', cta_href=None):
     t = T[lang]
     items = ''.join(f'<a href="{h}"' + (' aria-current="page"' if current(lang, path, h) else '') + f'>{n}</a>' for h, n in _live(t['nav']))
@@ -290,13 +294,21 @@ def header(lang, path, alts, tools='', cta_href=None):
     # швидкі кнопки мобільного меню: кабінет і калькулятор вартості (якщо сторінка калькулятора цією мовою є)
     calc = next(((h, n) for _, links in t['groups'] for h, n in _live(links) if re.search(r'kalk|calc', h)), None)
     quick = f'<a class="sch-mkab" href="{KAB_HREF}"{kab_cur}>{t["kab_full"]}</a>'
+    # калькулятор — і в десктопному меню (Михайло 26.10.2026), коротким підписом після «Оздоби»
+    nav_items = items
+    if calc and lang in ('uk', 'ru'):  # у довших мовах меню вже на межі ширини шапки
+        cl = CALC_SHORT.get(lang, calc[1])
+        ca = f'<a href="{calc[0]}"' + (' aria-current="page"' if calc[0] == path else '') + f'>{cl}</a>'
+        k = nav_items.find('>', nav_items.find('href="/ozdoba'))
+        k = nav_items.find('</a>', k) + 4 if k > 0 else len(nav_items)
+        nav_items = nav_items[:k] + ca + nav_items[k:]
     if calc:
         quick += f'<a class="sch-mcalc" href="{calc[0]}"' + (' aria-current="page"' if calc[0] == path else '') + f'>{calc[1]}</a>'
     return (
         f'<!--chrome:h--><header class="sch{" sch--tools" if tools_html else ""}" id="top">\n'
         '<div class="sch-in">\n'
         f'  {LOGO.format(home=HOME[lang], label=t["home_label"])}\n'
-        f'  <nav class="sch-nav" aria-label="{t["nav_label"]}">{items}</nav>\n'
+        f'  <nav class="sch-nav" aria-label="{t["nav_label"]}">{nav_items}</nav>\n'
         f'  <div class="sch-act">{tools_html}'
         f'<div class="sch-lang" role="group" aria-label="{t["lang_label"]}">{lang_menu(lang, alts, t["lang_label"])}</div>{kab}'
         f'<a class="sch-tel" href="tel:{PHONE}">{PHONE_SVG}<span>{PHONE_TXT}</span></a>'
