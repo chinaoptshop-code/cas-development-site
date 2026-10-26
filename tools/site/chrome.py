@@ -562,6 +562,8 @@ def apply(s, rel):
     rel = rel.replace(os.sep, '/')
     if os.path.basename(rel) in SKIP and '/' not in rel or rel.startswith('google'):
         return s
+    if rel.startswith('tury/'):  # повноекранні 3D-тури — без шапки/футера
+        return s
     lang, path, alts = page_lang(s), rel_to_path(rel), alternates(s)
     if rel in [i18n.path_to_file(h) for h in HOME.values()]:
         alts.setdefault(lang, HOME[lang])
