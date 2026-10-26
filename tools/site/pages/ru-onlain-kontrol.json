@@ -1,0 +1,169 @@
+{
+ "slug": "onlain-kontrol",
+ "lang": "ru",
+ "pair": "onlain-kontrol",
+ "service": "Онлайн-контроль объекта",
+ "title": "Онлайн-контроль ремонта: фотоотчёты, этапы, камера 24/7",
+ "description": "Онлайн-контроль объекта в кабинете клиента CAS: этапы с прогрессом, фотоотчёты раз в 1–2 недели, акты, график платежей. Камера 24/7 — за доп. оплату.",
+ "h1": "Онлайн-контроль ремонта и строительства",
+ "lead": "Ваш объект — в кабинете клиента: этапы работ со статусами и процентом готовности, фотоотчёты раз в 1–2 недели, договор, смета и акты этапов, график платежей. За доп. оплату ставим на объект камеру 24/7.",
+ "cta": "Подключить онлайн-контроль",
+ "facts": [
+  [
+   "1–2 недели",
+   "фотоотчёты с объекта"
+  ],
+  [
+   "24/7",
+   "камера — за доп. оплату"
+  ],
+  [
+   "36 мес.",
+   "гарантия на работы"
+  ],
+  [
+   "150+",
+   "проектов с 2016 года"
+  ]
+ ],
+ "cards": [
+  [
+   "Этапы и прогресс",
+   [
+    "этапы из договора: демонтаж, черновые, чистовые, мебель",
+    "статус каждого этапа: запланировано, в работе, приёмка, выполнено",
+    "процент готовности этапа и объекта в целом",
+    "следующий шаг и дата"
+   ]
+  ],
+  [
+   "Фотоотчёты раз в 1–2 недели",
+   [
+    "фото с объекта с датой и комментарием прораба",
+    "привязка отчёта к этапу — видно, что сделано",
+    "все отчёты в одной ленте, без поиска в мессенджерах",
+    "фото открываются на весь экран"
+   ]
+  ],
+  [
+   "Документы и акты",
+   [
+    "договор подряда и смета",
+    "акты выполненных работ по каждому этапу",
+    "счета на оплату",
+    "всё в одном месте, на любом устройстве"
+   ]
+  ],
+  [
+   "График платежей",
+   [
+    "платежи по этапам из договора",
+    "статус: запланировано, к оплате, оплачено",
+    "схема под клиента: 50/50, 50/30/20, 50/40/10, разбивка",
+    "старт работ — от 10% аванса"
+   ]
+  ],
+  [
+   "Камера 24/7 — за доп. оплату",
+   [
+    "камера на объекте, трансляция в кабинете или приложении",
+    "смотрите объект в любой момент, без поездок",
+    "ссылку на трансляцию видите только вы",
+    "стоимость — по запросу, зависит от объекта"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Зачем онлайн-контроль",
+   [
+    "Ремонт и строительство длятся недели и месяцы, а клиент часто живёт в другом городе или стране. Онлайн-контроль убирает необходимость ездить на объект и переспрашивать: этапы, фото, документы и оплаты видны в [кабинете клиента](/kabinet).",
+    "Данные в кабинет вносит ваш менеджер: обновляет прогресс этапов, добавляет фотоотчёты раз в 1–2 недели, акты и счета. Сроки работ фиксируем в договоре — от 2 недель, в зависимости от объёма.",
+    "Камеру 24/7 ставим на объект за доп. оплату: если камера подключена, трансляция открывается прямо из кабинета. Ссылку видите только вы."
+   ]
+  ]
+ ],
+ "steps": [
+  [
+   "Договор",
+   "Фиксируем этапы, сроки и схему оплаты — по ним строится график в кабинете."
+  ],
+  [
+   "Вход в кабинет",
+   "Входите через Telegram, Google или номер телефона — без паролей."
+  ],
+  [
+   "Этапы и платежи",
+   "Менеджер вносит этапы из договора, график платежей и документы."
+  ],
+  [
+   "Фотоотчёты",
+   "Раз в 1–2 недели — фото с объекта с комментарием, привязанные к этапу."
+  ],
+  [
+   "Камера 24/7",
+   "По желанию и за доп. оплату — камера на объекте с трансляцией в кабинете."
+  ],
+  [
+   "Сдача объекта",
+   "Акты этапов в кабинете; на работы — гарантия 36 месяцев."
+  ]
+ ],
+ "faq": [
+  [
+   "Сколько стоит онлайн-контроль?",
+   "Этапы, фотоотчёты раз в 1–2 недели, документы и график платежей в кабинете — часть работы CAS над вашим объектом. Камера 24/7 — за доп. оплату, стоимость по запросу: зависит от объекта и оборудования."
+  ],
+  [
+   "Как часто появляются фотоотчёты?",
+   "Раз в 1–2 недели. Каждый отчёт — фото с объекта, дата и комментарий; отчёт привязан к этапу работ."
+  ],
+  [
+   "Кто ещё видит мой объект?",
+   "Только вы и менеджеры CAS. Кабинет открывается после входа через Telegram, Google или номер телефона; ссылку на камеру видите только вы."
+  ],
+  [
+   "Как работает камера 24/7?",
+   "Устанавливаем камеру на объекте и настраиваем трансляцию. Если она на YouTube с доступом по ссылке — смотрите прямо в кабинете; если в облаке камеры — кабинет открывает её сайт или приложение в новой вкладке."
+  ],
+  [
+   "Что, если у меня другая схема оплаты?",
+   "График в кабинете строится из вашего договора: 50/50, 50/30/20, 50/40/10, разбивка платежей — старт от 10% аванса."
+  ],
+  [
+   "Можно подключить контроль, если ремонт уже идёт?",
+   "Да, если работы выполняет CAS: менеджер внесёт этапы, документы и платежи, а фотоотчёты начнут появляться с ближайшей недели. Технадзор за другим подрядчиком — условия и стоимость индивидуально."
+  ]
+ ],
+ "rel": [
+  [
+   "/ru/remont-kvartir-kiev",
+   "Ремонт квартир"
+  ],
+  [
+   "/ru/remont-pod-klyuch-kiev",
+   "Ремонт под ключ"
+  ],
+  [
+   "/ru/stroitelstvo-domov-kiev",
+   "Строительство домов"
+  ],
+  [
+   "/ru/remont-ofisa-kiev",
+   "Ремонт офиса"
+  ],
+  [
+   "/ru/avtorskiy-i-tehnicheskiy-nadzor-kiev",
+   "Авторский и технический надзор"
+  ],
+  [
+   "/ru/generalnyy-podryadchik-kiev",
+   "Генеральный подрядчик"
+  ]
+ ],
+ "extra": "<section><div class=\"w\"><h2>Демо кабинета: так выглядит ваш объект онлайн</h2><p class=\"okd-intro\">Данные вымышленные — это «Демо-объект». Настоящий объект видите только вы, после входа в кабинет через Telegram, Google или номер телефона.</p><div class=\"okd\"><div class=\"okd-bar\" aria-hidden=\"true\"><span class=\"okd-dots\"><i></i><i></i><i></i></span><span class=\"okd-url\">cas-develop.com/kabinet/obiekt</span><span class=\"okd-badge\">ДЕМО</span></div><div class=\"okd-head\"><p class=\"okd-eb\">Ремонт · 86 м²</p><h3>Демо-объект: квартира</h3><div class=\"okd-top\"><div class=\"okd-big\"><small>Общая готовность</small>54%</div><div class=\"okd-chips\"><span><b>2/5</b> этапов выполнено</span><span><b>6</b> фотоотчётов</span><span>последний: <b>12 окт.</b></span><span>камера: <b>есть</b></span></div></div><div class=\"okd-pb\"><i style=\"width:54%\"></i></div></div><div class=\"okd-tabs\" role=\"tablist\" aria-label=\"Демо-объект: квартира\"><button type=\"button\" role=\"tab\" id=\"okd-t0\" aria-controls=\"okd-p0\" aria-selected=\"true\">Этапы</button><button type=\"button\" role=\"tab\" id=\"okd-t1\" aria-controls=\"okd-p1\" aria-selected=\"false\">Фотоотчёты</button><button type=\"button\" role=\"tab\" id=\"okd-t2\" aria-controls=\"okd-p2\" aria-selected=\"false\">Документы</button><button type=\"button\" role=\"tab\" id=\"okd-t3\" aria-controls=\"okd-p3\" aria-selected=\"false\">Платежи</button><button type=\"button\" role=\"tab\" id=\"okd-t4\" aria-controls=\"okd-p4\" aria-selected=\"false\">Камера 24/7</button></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p0\" aria-labelledby=\"okd-t0\"><ol class=\"okd-ul\"><li class=\"done\"><span class=\"okd-d\" aria-hidden=\"true\">✓</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Демонтаж и подготовка</b><span class=\"okd-s ok\">Выполнено</span></div><div class=\"okd-pb\"><i style=\"width:100%\"></i></div><div class=\"okd-m\"><span>2 – 13 сен. · 100%</span><span>Акт этапа 1 (PDF)</span></div></div></li><li class=\"done\"><span class=\"okd-d\" aria-hidden=\"true\">✓</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Электрика и сантехника</b><span class=\"okd-s ok\">Выполнено</span></div><div class=\"okd-pb\"><i style=\"width:100%\"></i></div><div class=\"okd-m\"><span>16 сен. – 4 окт. · 100%</span><span>Акт этапа 2 (PDF)</span></div></div></li><li class=\"cur\"><span class=\"okd-d\" aria-hidden=\"true\">3</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Стяжка, штукатурка, выравнивание</b><span class=\"okd-s on\">В работе</span></div><div class=\"okd-pb\"><i style=\"width:70%\"></i></div><div class=\"okd-m\"><span>7 – 31 окт. · 70%</span></div></div></li><li class=\"\"><span class=\"okd-d\" aria-hidden=\"true\">4</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Чистовые работы</b><span class=\"okd-s \">Запланировано</span></div><div class=\"okd-pb\"><i style=\"width:0%\"></i></div><div class=\"okd-m\"><span>ноябрь · 0%</span></div></div></li><li class=\"\"><span class=\"okd-d\" aria-hidden=\"true\">5</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Мебель, техника и декор</b><span class=\"okd-s \">Запланировано</span></div><div class=\"okd-pb\"><i style=\"width:0%\"></i></div><div class=\"okd-m\"><span>декабрь · 0%</span></div></div></li></ol></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p1\" aria-labelledby=\"okd-t1\"><ol class=\"okd-feed\"><li><div class=\"okd-fd\"><b>12 окт.</b><small>2026</small></div><div class=\"okd-fb\"><div class=\"okd-sh\"><b>Неделя 6: стяжка и штукатурка</b><span class=\"okd-s\">Стяжка, штукатурка</span></div><p>Залили стяжку в гостиной и спальне, штукатурка — 70%. Следующий фотоотчёт — через неделю.</p><div class=\"okd-gal\"><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Фото с объекта (иллюстрация)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M60 104 L40 120 M80 104 L80 120 M100 104 L120 120\" opacity=\".8\"/><rect x=\"70\" y=\"56\" width=\"20\" height=\"30\" opacity=\".6\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Фото с объекта (иллюстрация)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M68 60h24M68 70h24M68 80h24M68 90h24\" opacity=\".8\"/><path d=\"M14 52 L14 104 M24 55 L24 101\" opacity=\".6\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Фото с объекта (иллюстрация)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><rect x=\"70\" y=\"56\" width=\"20\" height=\"26\"/><path d=\"M80 56v26M70 69h20\"/><path d=\"M8 110 L40 98\" opacity=\".7\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Фото с объекта (иллюстрация)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M80 30 v8\"/><path d=\"M72 38 h16 l-4 8 h-8z\"/><path d=\"M80 52 v4 M70 50 l-3 3 M90 50 l3 3\" opacity=\".7\"/></svg></div></div></div></li><li><div class=\"okd-fd\"><b>4 окт.</b><small>2026</small></div><div class=\"okd-fb\"><div class=\"okd-sh\"><b>Неделя 5: приёмка электрики</b><span class=\"okd-s\">Электрика и сантехника</span></div><p>Проверили линии и щиток, подписали акт этапа 2.</p><div class=\"okd-gal\"><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Фото с объекта (иллюстрация)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M80 30 v8\"/><path d=\"M72 38 h16 l-4 8 h-8z\"/><path d=\"M80 52 v4 M70 50 l-3 3 M90 50 l3 3\" opacity=\".7\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Фото с объекта (иллюстрация)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M110 60 h30 v30 h-20\" /><circle cx=\"120\" cy=\"90\" r=\"4\"/><path d=\"M20 70 h22 v24\" opacity=\".8\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Фото с объекта (иллюстрация)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M68 60h24M68 70h24M68 80h24M68 90h24\" opacity=\".8\"/><path d=\"M14 52 L14 104 M24 55 L24 101\" opacity=\".6\"/></svg></div></div></div></li><li><div class=\"okd-fd\"><b>20 сен.</b><small>2026</small></div><div class=\"okd-fb\"><div class=\"okd-sh\"><b>Неделя 3: разводка сантехники</b><span class=\"okd-s\">Электрика и сантехника</span></div><p>Новые трубы в ванной и на кухне, опрессовка — без замечаний.</p><div class=\"okd-gal\"><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Фото с объекта (иллюстрация)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M110 60 h30 v30 h-20\" /><circle cx=\"120\" cy=\"90\" r=\"4\"/><path d=\"M20 70 h22 v24\" opacity=\".8\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Фото с объекта (иллюстрация)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M110 52 L150 40 M110 64 L150 54 M110 76 L150 68 M110 88 L150 82 M122 49 V100 M136 45 V104\" opacity=\".75\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Фото с объекта (иллюстрация)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M110 60 h30 v30 h-20\" /><circle cx=\"120\" cy=\"90\" r=\"4\"/><path d=\"M20 70 h22 v24\" opacity=\".8\"/></svg></div></div></div></li></ol></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p2\" aria-labelledby=\"okd-t2\"><ul class=\"okd-docs\"><li><i>DOC</i><span><b>Договор подряда</b><small>этапы, сроки и схема оплаты</small></span></li><li><i>EST</i><span><b>Смета</b><small>работы и черновые материалы</small></span></li><li><i>ACT</i><span><b>Акт этапа 1</b><small>Демонтаж и подготовка</small></span></li><li><i>ACT</i><span><b>Акт этапа 2</b><small>Электрика и сантехника</small></span></li><li><i>INV</i><span><b>Счёт на 2-й платёж</b><small>после черновых работ</small></span></li></ul></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p3\" aria-labelledby=\"okd-t3\"><div class=\"okd-tbl\"><table><thead><tr><th>Платёж</th><th>Этап</th><th class=\"n\">Доля</th><th>Статус</th></tr></thead><tbody><tr><td><b>Аванс</b></td><td>Старт работ</td><td class=\"n\">50%</td><td><span class=\"okd-s ok\">Оплачено</span></td></tr><tr><td><b>После черновых работ</b></td><td>Стяжка, штукатурка</td><td class=\"n\">30%</td><td><span class=\"okd-s on\">К оплате</span></td></tr><tr><td><b>После завершения</b></td><td>Мебель и декор</td><td class=\"n\">20%</td><td><span class=\"okd-s \">Запланировано</span></td></tr></tbody></table></div><p class=\"okd-note\">Пример схемы 50/30/20. Схему оплаты подбираем под клиента: 50/50, 50/30/20, 50/40/10 или разбивка платежей, старт — от 10% аванса. В кабинете — ваш график из договора.</p></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p4\" aria-labelledby=\"okd-t4\"><div class=\"okd-cam\"><svg viewBox=\"0 0 320 180\" role=\"img\" aria-label=\"Иллюстрация кадра с камеры на объекте\" fill=\"none\" stroke=\"#BF9148\" stroke-width=\"1.4\" stroke-linecap=\"round\"><rect width=\"320\" height=\"180\" fill=\"#0d0b09\" stroke=\"none\"/><path d=\"M0 40 L110 70 L110 150 L0 180 M320 40 L210 70 L210 150 L320 180 M110 70 H210 M110 150 H210\" opacity=\".5\"/><rect x=\"130\" y=\"84\" width=\"60\" height=\"46\" opacity=\".7\"/><path d=\"M160 84 V130 M130 107 H190\" opacity=\".5\"/><path d=\"M40 150 l20 -40 l20 40 z M230 140 h50 v-24 h-50 z\" opacity=\".55\"/></svg><span class=\"okd-live\">LIVE</span><span class=\"okd-time\" data-okd-time>12:00:00</span></div><p class=\"okd-note\">Камера на объекте — за доп. оплату, стоимость по запросу. Трансляцию видите только вы: в кабинете или в приложении камеры.</p></div></div><div class=\"okd-cta\"><a class=\"btn main\" href=\"#zayavka\">Подключить онлайн-контроль</a><a class=\"btn\" href=\"/kabinet\">Войти в кабинет</a></div></div></section>",
+ "assets": [
+  "assets/onlain-kontrol.v1.css",
+  "assets/onlain-kontrol.v1.js"
+ ]
+}

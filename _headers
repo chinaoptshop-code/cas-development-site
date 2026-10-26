@@ -42,6 +42,8 @@
   X-Robots-Tag: noindex, nofollow
 
 # кабінет і адмінка: віджет входу Telegram (telegram-widget.js) розбирає data-onauth через eval — 'unsafe-eval' лише тут
+# камера 24/7 у /kabinet/obiekt: вбудовуємо лише YouTube (www.youtube-nocookie.com — уже у frame-src), кадр камери — <img> (img-src https:);
+# хмари камер (Ezviz, Hik-Connect, Imou…) — лише посиланням у новій вкладці, тому frame-src/media-src навмисно не розширені
 /kabinet*
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store

@@ -198,6 +198,10 @@
  ],
  "rel": [
   [
+   "/ru/onlain-kontrol",
+   "Онлайн-контроль объекта"
+  ],
+  [
    "/ru/remont-kvartir-kiev",
    "Ремонт квартир"
   ],
@@ -212,15 +216,14 @@
   [
    "/ru/remontnaya-brigada-kiev",
    "Ремонтная бригада"
-  ],
-  [
-   "/ru/komplektatsiya-pod-klyuch-kiev",
-   "Комплектация под ключ"
   ]
  ],
  "prices": {
   "h2": "Сколько стоит ремонт квартиры 40, 65, 80 и 120 м²",
   "p": "Ориентир по базовым ставкам. Точную сумму даёт [калькулятор](/ru/kalkulyator-remonta) и смета.",
-  "rows": ["repair", "furnish"]
+  "rows": [
+   "repair",
+   "furnish"
+  ]
  }
 }

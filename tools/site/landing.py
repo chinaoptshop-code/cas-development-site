@@ -20,7 +20,9 @@
    у "sections" — також {"t": "prices", ...}, {"t": "packages"}, {"t": "guarantees", "more": false}.
 Ручні сторінки: блоки між <!--cas:guarantees-->, <!--cas:prices-->, <!--cas:packages--> оновлює sync_manual().
    "near": ["h2", [["/url", "назва"], ...]] (необовʼязково — блок посилань перед «Інші послуги»),
-   "cluster": ["h2", "вступ", [["/url", "анкор"], ...]] (необовʼязково — сусідні інтенти кластера запитів, tools/site/keywords.json)}
+   "cluster": ["h2", "вступ", [["/url", "анкор"], ...]] (необовʼязково — сусідні інтенти кластера запитів, tools/site/keywords.json),
+   "facts": [["36 міс.", "гарантія"], ...] (необовʼязково — свої факти в hero замість типових),
+   "assets": ["assets/<файл>.css", "assets/<файл>.js"] (необовʼязково — стилі/скрипт інтерактивного блоку з "extra", напр. демо /onlain-kontrol)}
 У абзацах "about" і відповідях "faq" можна ставити посилання: [анкор](/url).
 Сторінка частих питань (/pytannya): замість cards/steps/faq — "groups": [{"id": "ceny", "h2": "...",
    "faq": [[q, a], ...], "links": [["/url", "назва"], ...]}, ...]; price необовʼязковий.
@@ -505,10 +507,23 @@ def build(p):
     # шапка й футер: мова, перемикач на пару (hreflang) і посилання — з chrome.py
     if any(x['t'] == 'map' for x in p.get('sections', [])):
         s = casmap.assets(s)
+    s = page_assets(s, p.get('assets', []))
     s = chrome.apply(s, path(lang, slug))
     os.makedirs(os.path.dirname(os.path.join(ROOT, path(lang, slug))), exist_ok=True)
     open(os.path.join(ROOT, path(lang, slug)), 'w', encoding='utf-8').write(s)
     return path(lang, slug)
+
+
+def page_assets(s, files):
+    """Власні стилі/скрипти сторінки ("assets": ["assets/x.v1.css", "assets/x.v1.js"]) — з ?v=хеш, бо /assets/* кешується назавжди.
+    Ставимо перед <link rel="canonical"> (JS — defer): там їх не переставляють leadform.py і chrome.py, що дописують своє перед </head>.
+    Лише файли з assets/ (перевіряє check())."""
+    import hashlib
+    tags = ''
+    for f in files:
+        v = hashlib.sha256(open(os.path.join(ROOT, f), 'rb').read()).hexdigest()[:8]
+        tags += (f'<link rel="stylesheet" href="/{f}?v={v}">\n' if f.endswith('.css') else f'<script src="/{f}?v={v}" defer></script>\n')
+    return s.replace('<link rel="canonical"', tags + '<link rel="canonical"', 1) if tags else s
 
 
 def link_pair(p):
@@ -546,6 +561,8 @@ def check(p):
         if m not in ok and not re.fullmatch(r'\$\d{2,3}[ ,.]\d{3}', m):  # розрахунок площа × ставка
             errs.append('ціна ' + m)
     if len(p['description']) > 160: errs.append('description > 160')
+    for f in p.get('assets', []):
+        if not re.fullmatch(r'assets/[a-z0-9.-]+\.(css|js)', f) or not os.path.exists(os.path.join(ROOT, f)): errs.append('assets: ' + f)
     if p['lang'] not in L: errs.append('мова без словника: ' + p['lang'])
     for g in p.get('gallery', []) + [i for x in p.get('sections', []) if x['t'] == 'gallery' for i in x['items']]:
         src = g[0]
