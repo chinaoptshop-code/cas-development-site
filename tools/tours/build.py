@@ -141,6 +141,8 @@ def pages():
                          f'loading="lazy" width="640" height="320"><span>{html.escape(t["title"])}</span>'
                          f'<small>{len(t["scenes"])} кімн.</small></a>')
     idx = INDEX.format(site=SITE, cards='\n'.join(cards) or '<p>Тури скоро зʼявляться.</p>')
+    if not cards:  # поки немає відкритих турів — сторінка-заглушка не індексується
+        idx = idx.replace('<head>', '<head>\n<meta name="robots" content="noindex">', 1)
     try:  # єдина шапка/футер сайту (tools/site/chrome.py)
         sys.path.insert(0, str(ROOT / 'tools/site')); import chrome
         idx = chrome.apply(idx, 'tury.html')

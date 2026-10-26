@@ -5,8 +5,8 @@
   python3 tools/site/quiz.py --check    # лише перевірка (код 1, якщо щось не оновлено)
 
 Блок — між <!--quiz--> і <!--/quiz-->, одразу перед формою заявки (<section id="zayavka">; на головній — перед
-«Обговоримо ваш проєкт?»). У HTML — лише заголовок і порожня заготовка .qz[data-quiz] (бюджет лендингу 64 КБ):
-кроки, CSS (/assets/quiz.v1.css) і розрахунок будує /assets/quiz.v1.js ліниво, коли блок наближається до екрана.
+«Обговоримо ваш проєкт?»). У HTML — лише <script src="/assets/quiz.v1.js" data-quiz-obj data-quiz-svc defer> (бюджет лендингу 64 КБ):
+секцію з заголовком ставить сам скрипт перед тегом, кроки й CSS (/assets/quiz.v1.css) — ліниво, коли блок близько до екрана.
 Окремої відправки в квізу немає: телефон і відповіді йдуть через спільну form#of (/assets/lead-form.v1.js), тож на сторінці
 лишається одна форма заявки. Тому блок ставимо лише на сторінки з form#of. Ставки орієнтира — лише з CLAUDE.md (див. quiz.v1.js).
 Генератори (landing.py) квізу не знають: build-all.sh запускає цей скрипт після них, перед chrome.py.
@@ -48,12 +48,9 @@ e = lambda s: html.escape(s, quote=True)
 
 
 def block(lang, obj, svc):
-    t = T[lang]
-    data = (f' data-obj="{obj}"' if obj else '') + (f' data-svc="{svc}"' if svc else '')
-    return ('\n<!--quiz--><section class="qz-s" id="kalkulyator" aria-labelledby="qzH"><div class="w qz-w">\n'
-            f'  <h2 class="qz-h" id="qzH">{e(t["h"])}</h2><p class="qz-lead">{e(t["p"])}</p>\n'
-            f'  <div class="qz" data-quiz{data} data-css="/assets/quiz.v1.css"><p class="qz-lead">{e(t["ns"])}</p></div>\n'
-            '</div></section><script src="/assets/quiz.v1.js" defer></script><!--/quiz-->')
+    """Лише тег скрипта: секцію (заголовок, лід, заготовку .qz) вставляє сам quiz.v1.js перед цим тегом —
+    у HTML лендингу ~0,1 КБ замість ~0,9 КБ (бюджет 64 КБ). Тексти — у словнику L у quiz.v1.js (uk, ru, en)."""
+    return f'\n<!--quiz--><script src="/assets/quiz.v1.js" data-quiz-obj="{obj}" data-quiz-svc="{svc}" defer></script><!--/quiz-->'
 
 
 def apply(s, rel):

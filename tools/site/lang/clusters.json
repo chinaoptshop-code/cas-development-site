@@ -236,5 +236,10 @@
   "en": "/en/interior-designer",
   "pl": "/pl/projektant-wnetrz",
   "de": "/de/innenarchitekt"
+ },
+ "contract": {
+  "uk": "/dogovir-garantiya-oplata",
+  "ru": "/ru/dogovor-garantiya-oplata",
+  "en": "/en/contract-warranty-payment"
  }
 }

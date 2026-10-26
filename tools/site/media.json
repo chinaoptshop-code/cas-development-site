@@ -1,23 +1,6 @@
 {
- "_doc": "Медіа сайту — збирає python3 tools/site/media.py (крок tools/build-all.sh). Порожнє значення = блоку немає. Соцмережі (youtube_channel, kuula_profile) — у футері (chrome.py), у sameAs JSON-LD і на /contact. tours — публічні тури Kuula (id колекції: https://kuula.co/share/collection/<id>; cover — uuid першої панорами для постера files.kuula.io/<cover>/01-cover.jpg). tour360 — тур на сторінці /proekty/<slug>: https://kuula.co/share/... або власний /tury/<slug> (tools/tours, вставляється як /tury/<slug>?embed=1). tour_pages — блок «Віртуальні тури 360°» з турами без проєкту. videos — YouTube (id з 11 символів, title — як на каналі, без вигаданих описів); video_pages — блок «Відео з обʼєктів». extra — додаткові тури/відео на окремих сторінках, де назва явно збігається. Джерела: kuula.co/profile/CASDevelopment і youtube.com/@cas_development (Михайло 26.10.2026).",
+ "_doc": "Медіа сайту — збирає python3 tools/site/media.py (крок tools/build-all.sh). Порожнє значення = блоку немає. tour360 — slug власного туру (tools/tours/tours/<slug>.json, переглядач /tury/<slug>; див. tools/tours/README.md) для сторінки /proekty/<ключ>; прихований тур (\"hidden\": true) на сайті не показується. youtube_channel — канал CAS: футер (chrome.py), sameAs JSON-LD, /contact. videos — YouTube (id з 11 символів, title — як на каналі, без вигаданих описів); video_pages — блок «Відео з обʼєктів». extra — відео на окремих сторінках, де назва явно збігається. Джерело: youtube.com/@cas_development (Михайло 26.10.2026).",
  "youtube_channel": "https://www.youtube.com/@cas_development",
- "kuula_profile": "https://kuula.co/profile/CASDevelopment",
- "tours": [
-  {"id": "7DlpP", "name": "UNIT HOME 48m2", "cover": "6892-5ea9-cbbc-3103"},
-  {"id": "716lf", "name": "DELMAR 80m2", "cover": "6849-5008-2f54-2171"},
-  {"id": "71bXQ", "name": "HOODA ESTATE", "cover": "6836-e9ee-2209-e537", "project": "hoda-estate"},
-  {"id": "71qz2", "name": "TG 61 KV 45m2 Dibrova park", "cover": "6824-688e-00a1-7159"},
-  {"id": "7b2Rz", "name": "RENDER DEV HOUSE 4", "cover": "67e3-ddbb-c682-3119"},
-  {"id": "7bjKW", "name": "RENDER DEV HOUSE 1", "cover": "67db-3b8e-b08f-b812"},
-  {"id": "7bXLt", "name": "Shalimova 56m2", "cover": "67ac-e242-c10a-5181"},
-  {"id": "7ZPZ8", "name": "UNIT HOME 45m2 FINAL", "cover": "6704-eac0-c0f3-7197"},
-  {"id": "7ZmNY", "name": "EVO_HOUSE_SHOWROOM", "cover": "66f3-c253-96dc-4385"},
-  {"id": "7ZLxZ", "name": "EDELVEISS 108m2 FINAL", "cover": "66f2-d780-64d3-b689", "project": "edelweiss"},
-  {"id": "7cgv8", "name": "Vyrlytsa 37m2", "cover": "6622-4817-491f-d435"},
-  {"id": "7XfVl", "name": "Triangle House", "cover": "6543-a753-a96f-0310"},
-  {"id": "7JxXG", "name": "Charlton Estate Yablunitsa", "cover": "64e7-2974-c062-4875"}
- ],
- "tour_pages": ["portfolio.html"],
  "videos": [
   {"id": "hg1s435QeXM", "title": "360 UNIT HOME 48m2 2"},
   {"id": "EOlgpebO-qE", "title": "TETRIS HALL 2 07.07.2025"},
@@ -31,16 +14,16 @@
  "video_pages": ["portfolio.html", "index.html"],
  "extra": {
   "proekty/tetris-hall.html": {"videos": [{"id": "EOlgpebO-qE", "title": "TETRIS HALL 2 07.07.2025"}]},
-  "remont-kvartyry-zhk-unit-home.html": {"tours": ["7DlpP", "7ZPZ8"], "videos": [{"id": "hg1s435QeXM", "title": "360 UNIT HOME 48m2 2"}, {"id": "gvRu-L0Pe6Y", "title": "360 VIDEO UNIT HOME 48m2 INT 05.08.2025"}]},
-  "ru/remont-kvartiry-zhk-unit-home.html": {"tours": ["7DlpP", "7ZPZ8"], "videos": [{"id": "hg1s435QeXM", "title": "360 UNIT HOME 48m2 2"}, {"id": "gvRu-L0Pe6Y", "title": "360 VIDEO UNIT HOME 48m2 INT 05.08.2025"}]}
+  "remont-kvartyry-zhk-unit-home.html": {"videos": [{"id": "hg1s435QeXM", "title": "360 UNIT HOME 48m2 2"}, {"id": "gvRu-L0Pe6Y", "title": "360 VIDEO UNIT HOME 48m2 INT 05.08.2025"}]},
+  "ru/remont-kvartiry-zhk-unit-home.html": {"videos": [{"id": "hg1s435QeXM", "title": "360 UNIT HOME 48m2 2"}, {"id": "gvRu-L0Pe6Y", "title": "360 VIDEO UNIT HOME 48m2 INT 05.08.2025"}]}
  },
  "tour360": {
   "a-frame-house": "",
   "diamond": "",
   "dolls-salon": "",
   "dubai-villa": "",
-  "edelweiss": "https://kuula.co/share/collection/7ZLxZ",
-  "hoda-estate": "https://kuula.co/share/collection/71bXQ",
+  "edelweiss": "",
+  "hoda-estate": "",
   "hodos-villa": "",
   "house-150": "",
   "kitana-beach": "",

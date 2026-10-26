@@ -1,4 +1,4 @@
-/* Віртуальний тур 360° (Kuula) і відео YouTube — постер + кнопка, iframe лише по кліку (/assets/media.v1.js, /styleguide/#media). */
+/* Віртуальний тур 360° (власний переглядач /tury, tools/tours) і відео YouTube — постер + кнопка, iframe лише по кліку (/assets/media.v1.js, /styleguide/#media). */
 .lt3,.lyt{position:relative;display:block;overflow:hidden;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:10px;background:#000;color:#EDE8DF;text-decoration:none;aspect-ratio:16/9}
 .lt3 img,.lyt img{display:block;width:100%;height:100%;object-fit:cover;opacity:.82;transition:opacity .25s,transform .5s}
 .lt3:hover img,.lyt:hover img,.lt3:focus-visible img,.lyt:focus-visible img{opacity:1;transform:scale(1.03)}

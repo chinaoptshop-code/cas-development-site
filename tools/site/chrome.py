@@ -133,9 +133,10 @@ LANG_CODE = {l: i18n.meta(l)['code'] for l in LANGS}
 LANG_NAME = {l: i18n.meta(l)['name'] for l in LANGS}
 MSG = [('telegram', 'Telegram', 'https://t.me/+380978667755'), ('viber', 'Viber', 'viber://chat?number=%2B380978667755'),
        ('whatsapp', 'WhatsApp', 'https://wa.me/380978667755'), ('instagram', 'Instagram', 'https://www.instagram.com/cas_development/')]
+# іконки месенджерів і соцмереж у шапці/футері — фоном через CSS (.bi-<name> у /assets/site-chrome.v1.css), без <img> у HTML
 BRAND_IMG = {'instagram': '/assets/brand/instagram-96.png'}  # решта — /assets/brand/<name>.svg
-# соцмережі у футері (іконки-посилання з aria-label): Instagram + YouTube і Kuula з tools/site/media.json
-# (youtube_channel, kuula_profile; порожнє — посилання немає). media.py ставить їх і в sameAs JSON-LD та на /contact.
+# соцмережі у футері (іконки-посилання з aria-label): Instagram + YouTube з tools/site/media.json
+# (youtube_channel; порожнє — посилання немає). media.py ставить канал і в sameAs JSON-LD та на /contact.
 try:
     _MEDIA = json.load(open(os.path.join(ROOT, 'tools/site/media.json'), encoding='utf-8'))
 except (OSError, ValueError):
@@ -143,8 +144,7 @@ except (OSError, ValueError):
 SOCIAL = [('instagram', 'Instagram', 'https://www.instagram.com/cas_development/')]
 if re.match(r'^https://www\.youtube\.com/(@[\w.\-]+|channel/UC[\w-]{22})$', _MEDIA.get('youtube_channel') or ''):
     SOCIAL.append(('youtube', 'YouTube', _MEDIA['youtube_channel']))
-if re.match(r'^https://kuula\.co/profile/[\w.\-]+$', _MEDIA.get('kuula_profile') or ''):
-    SOCIAL.append(('kuula', 'Kuula — 360°', _MEDIA['kuula_profile']))
+SOCIAL_K = {x[0] for x in SOCIAL}
 SOC_LABEL = {'uk': 'Соцмережі', 'ru': 'Соцсети', 'en': 'Social media', 'es': 'Redes sociales', 'zh': '社交媒体', 'pl': 'Media społecznościowe',
              'de': 'Soziale Medien', 'fr': 'Réseaux sociaux', 'ar': 'التواصل الاجتماعي'}
 
@@ -172,7 +172,7 @@ T = {
                          ('/remont-budynku-pid-klyuch-kyiv', 'Ремонт будинку'), ('/baza-vidpochynku-pid-klyuch', 'База відпочинку'), ('/rekonstruktsiia-budynku-kyiv', 'Реконструкція будинку'), ('/budynok-pid-kliuch-koncha-zaspa', 'Будинок у Конча-Заспі')]),
             ('Меблі й корисне', [('/mebliuvannia-kvartyry-kyiv', 'Меблювання під ключ'), ('/komplektatsiia-pid-kliuch-kyiv', 'Комплектація під ключ'),
                                  ('/ozdoba', 'Оздоба — меблі з Китаю'), ('/kalkuliator-remontu', 'Калькулятор вартості'),
-                                 ('/pytannya', 'Часті питання'), ('/blog', 'Блог: ціни й поради')]),
+                                 ('/pytannya', 'Часті питання'), ('/dogovir-garantiya-oplata', 'Договір, гарантія, оплата'), ('/blog', 'Блог: ціни й поради')]),
         ]),
     'ru': dict(
         nav=[('/ru/uslugi', 'Услуги'), ('/portfolio', 'Портфолио'), ('/ozdoba', 'Оздоба'), ('/ru/blog', 'Блог'),
@@ -197,7 +197,7 @@ T = {
                       ('/ru/remont-doma-kiev', 'Ремонт дома'), ('/ru/baza-otdyha-pod-klyuch', 'База отдыха'), ('/ru/rekonstruktsiya-doma-kiev', 'Реконструкция дома'), ('/ru/dom-pod-klyuch-koncha-zaspa', 'Дом в Конча-Заспе')]),
             ('Мебель и полезное', [('/ru/meblirovka-kvartiry-kiev', 'Меблировка под ключ'), ('/ru/komplektatsiya-pod-klyuch-kiev', 'Комплектация под ключ'),
                                    ('/ozdoba', 'Оздоба — мебель из Китая'), ('/ru/kalkulyator-remonta', 'Калькулятор стоимости'),
-                                   ('/ru/voprosy', 'Частые вопросы'), ('/ru/blog', 'Блог: цены и советы')]),
+                                   ('/ru/voprosy', 'Частые вопросы'), ('/ru/dogovor-garantiya-oplata', 'Договор, гарантия, оплата'), ('/ru/blog', 'Блог: цены и советы')]),
         ]),
 }
 for _l in LANGS:  # нові мови — словник chrome з tools/site/lang/<мова>.json
@@ -282,8 +282,7 @@ def header(lang, path, alts, tools='', cta_href=None):
     items = ''.join(f'<a href="{h}"' + (' aria-current="page"' if current(lang, path, h) else '') + f'>{n}</a>' for h, n in _live(t['nav']))
     cta = cta_href or t['cta_href']
     tools_html = f'<div class="sch-tools">{tools}</div><!--/sch-tools-->' if tools.strip() else ''
-    msg = ''.join(f'<a href="{u}" target="_blank" rel="noopener"><img src="{BRAND_IMG.get(k, f'/assets/brand/{k}.svg')}" width="22" height="22" alt="" loading="lazy" decoding="async">{n}</a>'
-                  for k, n, u in MSG)
+    msg = ''.join(f'<a class="bi bi-{k}" href="{u}" target="_blank" rel="noopener">{n}</a>' for k, n, u in MSG)  # іконки — CSS (.bi-*)
     return (
         f'<!--chrome:h--><header class="sch{" sch--tools" if tools_html else ""}" id="top">\n'
         '<div class="sch-in">\n'
@@ -308,11 +307,9 @@ def header(lang, path, alts, tools='', cta_href=None):
 
 def footer(lang, alts):
     t = T[lang]
-    msg = ''.join(f'<a href="{u}" target="_blank" rel="noopener"><img src="{BRAND_IMG.get(k, f'/assets/brand/{k}.svg')}" width="20" height="20" alt="" loading="lazy" decoding="async">{n}</a>'
-                  for k, n, u in MSG if k not in dict((x[0], 1) for x in SOCIAL))
+    msg = ''.join(f'<a class="bi bi-{k}" href="{u}" target="_blank" rel="noopener">{n}</a>' for k, n, u in MSG if k not in SOCIAL_K)
     soc_l = t.get('soc') or SOC_LABEL.get(lang, SOC_LABEL['en'])
-    soc = ''.join(f'<a href="{u}" target="_blank" rel="noopener" aria-label="{n}"><img src="{BRAND_IMG.get(k, f'/assets/brand/{k}.svg')}" width="22" height="22" alt="" loading="lazy" decoding="async"></a>'
-                  for k, n, u in SOCIAL)
+    soc = ''.join(f'<a class="bi bi-{k}" href="{u}" target="_blank" rel="noopener" aria-label="{n}"></a>' for k, n, u in SOCIAL)
     groups = ''.join(f'<div><b>{g}</b>' + ''.join(f'<a href="{h}">{n}</a>' for h, n in links) + '</div>' for g, links in [(g, _live(x)) for g, x in t['groups']] if links)
     langs = lang_links(lang, alts, 'scf-lang')
     return (

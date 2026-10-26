@@ -3,7 +3,7 @@
  "lang": "fr",
  "service": "FAQ",
  "title": "FAQ : prix, délais, garantie — CAS Development, Kyiv",
- "description": "FAQ : prix du design et de la rénovation, étapes, garantie de 12 mois, devis à ±5 % si CAS fait les travaux, mobilier de Chine et Ozdoba.",
+ "description": "FAQ : prix du design et de la rénovation, étapes, garantie de 36 mois, devis à ±5 % si CAS fait les travaux, mobilier de Chine et Ozdoba.",
  "h1": "Questions fréquentes sur le design, la rénovation et l’ameublement",
  "lead": "Les questions que nos clients posent le plus souvent — prix, étapes, garantie, projet de design et mobilier de Chine. Vous ne trouvez pas la vôtre ? Laissez une demande en bas de page, nous vous répondrons personnellement.",
  "btn2": [
@@ -38,6 +38,10 @@
     [
      "Facturez-vous les entreprises ?",
      "Oui, les entreprises enregistrées en Ukraine, avec documents de clôture. Facturation pour les entreprises de l’UE : en cours de mise en place."
+    ],
+    [
+     "Comment payer la rénovation ou la construction ?",
+     "Nous adaptons l’échéancier au client et le fixons au contrat : 50/50, 50/30/20, 50/40/10 ou par étapes ; démarrage avec un acompte dès 10 %."
     ]
    ],
    "links": [
@@ -57,7 +61,7 @@
    "faq": [
     [
      "Quelle garantie sur les travaux ?",
-     "12 mois."
+     "36 mois."
     ],
     [
      "Le coût peut-il augmenter en cours de travaux ?",
@@ -66,6 +70,10 @@
     [
      "Combien de projets avez-vous réalisés ?",
      "Plus de 150 depuis 2016."
+    ],
+    [
+     "Qui réalise les travaux : votre équipe ou des sous-traitants ?",
+     "Nos propres équipes : trois équipes salariées de CAS, selon la complexité et le type de travaux."
     ]
    ],
    "links": [

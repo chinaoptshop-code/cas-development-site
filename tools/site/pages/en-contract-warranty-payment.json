@@ -1,0 +1,100 @@
+{
+ "slug": "contract-warranty-payment",
+ "lang": "en",
+ "service": "Contract, warranty, payment (sample contract)",
+ "title": "Renovation contract, warranty and payment — CAS, Kyiv",
+ "description": "Renovation and construction contract with CAS: estimate, timeline, stage acceptance, 36-month warranty, payment 50/50, 50/30/20, 50/40/10 or from a 10% advance.",
+ "h1": "Renovation contract, warranty and payment",
+ "lead": "How a renovation or construction contract with CAS Development works: what it covers, how we hand over each stage, what the warranty is and how you can pay. We will send a sample contract on request.",
+ "cta": "Get a sample contract",
+ "form_h2": "Get a sample contract",
+ "facts": [
+  ["36 mo.", "warranty on works"],
+  ["±5%", "estimate, when CAS renovates"],
+  ["from 10%", "advance to start"],
+  ["3 crews", "in-house, salaried"]
+ ],
+ "sections": [
+  {
+   "t": "text",
+   "h2": "A works contract is the basis of every renovation",
+   "p": [
+    "We sign renovation and construction as a works contract under Chapter 61 of the Civil Code of Ukraine: the contractor carries out the work to the client’s brief, and the client accepts and pays for the result. Everything that matters to you — scope, price, timeline and warranty — goes into the contract and its annexes before work starts.",
+    "The most common problem with renovation contracts is a vague scope: “renovate the apartment” with no list of works. That is why our contract comes with an itemised estimate of works and materials and, for renovation to a design project, the drawings."
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "What the CAS contract covers",
+   "items": [
+    ["Subject of the contract", "Property, address, list and volume of works; the design project or drawings as an annex."],
+    ["Estimate", "Works and materials item by item. If CAS carries out the renovation, the total stays within ±5% of the estimate."],
+    ["Timeline", "Start date, stage schedule and handover date. Timelines start from 2 weeks, depending on the scope."],
+    ["Payment terms", "The schedule you chose: 50/50, 50/30/20, 50/40/10 or split by stages; you start with an advance from 10%."],
+    ["Stage acceptance", "Each stage is handed over with a signed completion certificate, so you see what is done and what you pay for."],
+    ["Reporting", "Photo reports every 1–2 weeks; for an extra fee, an online camera on site 24/7."],
+    ["Warranty", "36 months on completed works from the date of the final certificate; how defects are fixed during the warranty is set out in the contract."],
+    ["Liability", "What happens if deadlines or payments are missed, and how disputes are resolved."],
+    ["Force majeure", "Circumstances beyond the parties’ control (including martial law and power outages) and how they shift deadlines."],
+    ["Termination", "Conditions and procedure: settlement for works actually completed and accepted."]
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Payment schedules that suit you",
+   "items": [
+    {"h": "50/50", "p": "Half at the start, half after handover with the completion certificate."},
+    {"h": "50/30/20", "p": "Start, an intermediate stage and the final payment after acceptance."},
+    {"h": "50/40/10", "p": "A small final payment stays until the handover certificate is signed."},
+    {"h": "Split by stages", "p": "Pay for each stage separately; start with an advance from 10%."}
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Ways to pay",
+   "items": [
+    {"h": "Invoice", "p": "For companies registered in Ukraine, with closing documents. Invoicing for EU companies is being set up."},
+    {"h": "Card", "p": "Payment by bank card."},
+    {"h": "Cash", "p": "Cash by arrangement."}
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Who does the work",
+   "items": [
+    {"h": "Our own crews, not subcontractors", "p": "Renovation is carried out by three in-house salaried CAS crews for different levels of complexity and types of work, with a site manager checking every stage."},
+    {"h": "Online control", "p": "Photo reports from site every 1–2 weeks; for an extra fee, a 24/7 online camera so you can see the site at any time."},
+    {"h": "Estimate within ±5%", "p": "The estimate guarantee applies only when CAS carries out the renovation: then the total stays within ±5% of it."}
+   ]
+  },
+  {
+   "t": "guarantees",
+   "more": false
+  },
+  {
+   "t": "faq",
+   "h2": "Questions and answers",
+   "items": [
+    ["Can I see the contract before signing?", "Yes. Leave a request and we will send a sample contract; for your property we prepare a contract with an estimate and schedule."],
+    ["What is the warranty on renovation?", "36 months on completed works from the date of the final certificate."],
+    ["How can I pay?", "On the schedule you choose: 50/50, 50/30/20, 50/40/10 or split by stages; you start with an advance from 10%. By invoice (for companies registered in Ukraine), card or cash."],
+    ["Can the total grow during the renovation?", "If CAS carries out the renovation, the total stays within ±5% of the approved estimate."],
+    ["Who works on site?", "Our own crews: three in-house salaried CAS crews for different complexity and types of work, no subcontracting."],
+    ["How do I follow the works from abroad?", "Photo reports every 1–2 weeks and, for an extra fee, an online camera on site 24/7."],
+    ["How long does a renovation take?", "The timeline is fixed in the contract and starts from 2 weeks, depending on the scope."]
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Useful pages",
+   "items": [
+    ["/en/turnkey-renovation", "Turnkey renovation"],
+    ["/en/house-construction", "House construction"],
+    ["/en/renovation-crew", "Renovation crew"],
+    ["/en/renovation-cost-calculator", "Renovation cost calculator"],
+    ["/en/faq", "FAQ"],
+    ["/en/contact", "Contact"]
+   ]
+  }
+ ]
+}

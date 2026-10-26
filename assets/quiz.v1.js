@@ -10,7 +10,8 @@
 (function () {
   var d = document, lang = (d.documentElement.lang || 'uk').slice(0, 2).toLowerCase();
   var L = {
-    uk: { step: 'Крок {n} з {t}', next: 'Далі', back: 'Назад', again: 'Змінити відповіді',
+    uk: { h: 'Порахуйте орієнтовну вартість', p: '4 короткі питання — і ви побачите орієнтир «від» за базовими ставками студії. Наприкінці залиште телефон: передзвонимо й уточнимо розрахунок.',
+      step: 'Крок {n} з {t}', next: 'Далі', back: 'Назад', again: 'Змінити відповіді',
       q: ['Що за обʼєкт?', 'Яка послуга потрібна?', 'Яка площа?', 'Коли плануєте почати?'],
       obj: { kv: 'Квартира', dim: 'Будинок', kom: 'Комерція', of: 'Офіс' },
       svc: { dyz: 'Дизайн-проєкт', rem: 'Ремонт', bud: 'Будівництво', meb: 'Меблювання', kl: 'Під ключ' },
@@ -26,7 +27,8 @@
       empty: 'Вкажіть номер телефону — ми передзвонимо.', bad: 'Перевірте номер: потрібно щонайменше 9 цифр, напр. 097 123 45 67.',
       fail: 'Не вдалося надіслати. Подзвоніть або напишіть: +380 97 866 77 55.', ok: 'Дякуємо! Перетелефонуємо найближчим часом і уточнимо розрахунок.',
       demo: 'Демо: заявку не надіслано.' },
-    ru: { step: 'Шаг {n} из {t}', next: 'Далее', back: 'Назад', again: 'Изменить ответы',
+    ru: { h: 'Рассчитайте ориентировочную стоимость', p: '4 коротких вопроса — и вы увидите ориентир «от» по базовым ставкам студии. В конце оставьте телефон: перезвоним и уточним расчёт.',
+      step: 'Шаг {n} из {t}', next: 'Далее', back: 'Назад', again: 'Изменить ответы',
       q: ['Какой объект?', 'Какая услуга нужна?', 'Какая площадь?', 'Когда планируете начать?'],
       obj: { kv: 'Квартира', dim: 'Дом', kom: 'Коммерция', of: 'Офис' },
       svc: { dyz: 'Дизайн-проект', rem: 'Ремонт', bud: 'Строительство', meb: 'Меблировка', kl: 'Под ключ' },
@@ -42,7 +44,8 @@
       empty: 'Укажите номер телефона — мы перезвоним.', bad: 'Проверьте номер: нужно не меньше 9 цифр, напр. 097 123 45 67.',
       fail: 'Не удалось отправить. Позвоните или напишите: +380 97 866 77 55.', ok: 'Спасибо! Перезвоним в ближайшее время и уточним расчёт.',
       demo: 'Демо: заявка не отправлена.' },
-    en: { step: 'Step {n} of {t}', next: 'Next', back: 'Back', again: 'Change answers',
+    en: { h: 'Get a quick cost estimate', p: 'Four short questions and you will see a “from” figure based on the studio’s base rates. Leave your phone number at the end and we will call you to refine it.',
+      step: 'Step {n} of {t}', next: 'Next', back: 'Back', again: 'Change answers',
       q: ['What is the property?', 'Which service do you need?', 'What is the area?', 'When do you plan to start?'],
       obj: { kv: 'Apartment', dim: 'House', kom: 'Commercial', of: 'Office' },
       svc: { dyz: 'Design project', rem: 'Renovation', bud: 'Construction', meb: 'Furnishing', kl: 'Turnkey' },
@@ -252,11 +255,23 @@
     go(0);
   }
 
+  var me = d.currentScript, CSS = me && me.src ? me.src.replace(/quiz\.v1\.js(\?v=(\w+))?.*$/, 'quiz.v1.css') : '';
+  /* <script src="/assets/quiz.v1.js" data-quiz-obj="kv" data-quiz-svc="rem" defer> (tools/site/quiz.py) — секція квізу перед самим тегом:
+     заголовок і заготовку будує JS (бюджет HTML лендингу 64 КБ), кроки — ліниво. */
+  function mount() {
+    if (!me || !me.hasAttribute('data-quiz-obj') || !me.parentNode) return;
+    var sec = el('section', 'qz-s'), w = el('div', 'w qz-w'), h = el('h2', 'qz-h', t.h), box = el('div', 'qz');
+    sec.id = 'kalkulyator'; h.id = 'qzH'; sec.setAttribute('aria-labelledby', 'qzH');
+    box.setAttribute('data-quiz', ''); box.dataset.obj = me.getAttribute('data-quiz-obj'); box.dataset.svc = me.getAttribute('data-quiz-svc') || '';
+    w.appendChild(h); w.appendChild(el('p', 'qz-lead', t.p)); w.appendChild(box); sec.appendChild(w);
+    me.parentNode.insertBefore(sec, me);
+  }
   function css(root) {
-    var href = root.dataset.css; if (!href || d.querySelector('link[data-qz]')) return;
+    var href = root.dataset.css || CSS; if (!href || d.querySelector('link[data-qz]')) return;
     var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = href; l.setAttribute('data-qz', ''); d.head.appendChild(l);
   }
   function init() {
+    mount();
     var left = [].slice.call(d.querySelectorAll('[data-quiz]')); if (!left.length) return;
     var start = function (r) { css(r); build(r); };
     // ліниво: коли блок ближче ніж 600 px до екрана (IntersectionObserver + запасна перевірка на scroll/resize)

@@ -18,7 +18,7 @@
     paid: 'Оплату отримано, дякуємо! Передаємо замовлення у виробництво.',
     production: 'Замовлення виготовляється на фабриці.',
     shipping: 'Замовлення в дорозі — поставка з Китаю 30–60 днів від підтвердження.',
-    delivered: 'Замовлення доставлено. Гарантія — 12 місяців.',
+    delivered: 'Замовлення доставлено. Гарантія — 36 місяців.',
     cancelled: 'Замовлення скасовано. Якщо це помилка — напишіть менеджеру.'
   };
 
@@ -177,14 +177,14 @@
     var perks = [
       [IC.box, 'Статуси замовлень', 'Від «Нове» до «Доставлено», орієнтовна дата поставки й друк замовлення.'],
       [IC.heart, 'Обране на всіх пристроях', 'Зберігайте товари Оздоби й повертайтесь до них з телефону чи компʼютера.'],
-      [IC.plan, 'Ваш проєкт онлайн', 'Етапи, фотозвіти раз на 1–2 тижні, договір, кошторис і рахунки в одному місці.'],
+      [IC.plan, 'Ваш обʼєкт онлайн', 'Етапи, фотозвіти раз на 1–2 тижні, акти, графік платежів і камера 24/7 (за доп. оплату). <a href="/onlain-kontrol">Демо →</a>'],
       [IC.shield, 'Без паролів', 'Вхід через Telegram, Google або номер телефону.']
     ];
     paint('<div class="kb-guest"><section class="kb-card glow kb-in"><p class="kb-eyebrow">Особистий кабінет</p><h2>Усе про ваші замовлення й проєкти — в одному місці</h2>' +
       '<ul class="kb-perks">' + perks.map(function (p) { return '<li>' + svg(p[0]) + '<div><b>' + p[1] + '</b><span>' + p[2] + '</span></div></li>'; }).join('') + '</ul></section>' +
       '<section class="kb-card kb-in" aria-labelledby="kb-login-h"><h2 id="kb-login-h">Увійти</h2><div id="kb-login"></div></section></div>');
     A.login(document.getElementById('kb-login'), function () { location.reload(); });
-    var lead = document.getElementById('kb-lead'); if (lead) lead.hidden = false;
+    var lead = document.getElementById('kb-lead'); if (lead && TAB !== 'object') lead.hidden = false; // заявка на камеру — лише для обʼєкта клієнта
   }
 
   /* ---------- огляд ---------- */
@@ -233,7 +233,7 @@
         (comp.pct < 100 ? '<p class="muted" style="font-size:var(--fs-small)">Заповнений профіль — швидше оформлення й рахунок без уточнень.</p>' : '') + '</section>';
       // проєкти
       var pj = PR.filter(function (p) { return p.status === 'active'; })[0] || PR[0];
-      h += '<section class="kb-card s2 kb-in" aria-labelledby="kb-w-pr"><div class="kb-ch"><h2 id="kb-w-pr">Проєкт</h2><a class="lnk" href="/kabinet/proekty">' + (pj ? 'Відкрити →' : 'Детальніше →') + '</a></div>';
+      h += '<section class="kb-card s2 kb-in" aria-labelledby="kb-w-pr"><div class="kb-ch"><h2 id="kb-w-pr">Проєкт</h2><a class="lnk" href="' + (pj ? '/kabinet/obiekt?p=' + pj.id : '/kabinet/proekty') + '">' + (pj ? 'Онлайн-контроль →' : 'Детальніше →') + '</a></div>';
       if (pj) h += '<p><b>' + esc(pj.title) + '</b></p>' + bar(pj.progress) + '<p class="muted" style="font-size:var(--fs-small)">Готовність ' + pj.progress + '%' + (pj.next_step ? ' · Далі: ' + esc(pj.next_step) : '') + '</p>';
       else h += '<p class="muted">Дизайн, ремонт чи будівництво з CAS — етапи, фотозвіти раз на 1–2 тижні й документи будуть тут.</p><a class="btn ghost" href="/kabinet/proekty#kb-lead">Обговорити проєкт</a>';
       h += '</section>';
@@ -397,7 +397,7 @@
         var svc = [['/dyzain-interieru-kyiv', 'Дизайн інтерʼєру', 'від $30/м²'], ['/remont-kvartyr-kyiv', 'Ремонт квартири', 'від $550/м²'],
           ['/budivnytstvo-budynkiv-kyiv', 'Будівництво будинку', 'від $600/м²'], ['/remont-ofisu-pid-klyuch-kyiv', 'Ремонт офісу', 'від $350/м²'],
           ['/dyzain-restoranu-kafe-kyiv', 'Ресторан і кафе', 'під ключ'], ['/dyzain-hotelu-kyiv', 'Готель', 'під ключ']];
-        paint(empty(IC.plan, 'Тут житиме ваш проєкт', 'Коли ми почнемо дизайн, ремонт чи будівництво, тут зʼявляться етапи з прогресом, фотозвіти з обʼєкта раз на 1–2 тижні, договір, кошторис і рахунки. 150+ проєктів з 2016 року, гарантія 12 місяців.',
+        paint(empty(IC.plan, 'Тут житиме ваш проєкт', 'Коли ми почнемо дизайн, ремонт чи будівництво, тут зʼявляться етапи з прогресом, фотозвіти з обʼєкта раз на 1–2 тижні, договір, кошторис і рахунки. 150+ проєктів з 2016 року, гарантія 36 місяців.',
           '<a class="btn" href="#kb-lead">Обговорити проєкт</a><div class="kb-services">' + svc.map(function (s) { return '<a href="' + s[0] + '">' + s[1] + '<span>' + s[2] + '</span></a>'; }).join('') + '</div>' +
           '<p class="muted" style="font-size:12px">Ремонт від $550/м² — роботи й чорнові матеріали; чистові матеріали, меблі й техніка — окремо, за кошторисом.</p>') +
           (d.documents && d.documents.length ? '<section class="kb-card kb-in" style="margin-top:16px"><h2>Документи</h2>' + docs(d.documents) + '</section>' : ''));
@@ -409,7 +409,8 @@
         h += '<section class="kb-card glow kb-in"><div class="kb-ch"><div><p class="kb-eyebrow">' + esc(SERV[p.service] || 'Проєкт') + (p.area ? ' · ' + esc(p.area) + ' м²' : '') + '</p><h2>' + esc(p.title) + '</h2>' +
           (p.address ? '<small class="muted">' + esc(p.address) + '</small>' : '') + '</div><span class="kb-st' + (p.status === 'done' ? ' ok' : '') + '">' + ({ active: 'Триває', paused: 'На паузі', done: 'Завершено' }[p.status] || '') + '</span></div>' +
           '<div class="row" style="justify-content:space-between"><span>Загальна готовність</span><b class="kb-big" style="font-size:2rem">' + p.progress + '%</b></div>' + bar(p.progress) +
-          (p.next_step ? '<div class="kb-next">' + svg(IC.flag) + '<div><p class="kb-eyebrow">Наступний крок' + (p.next_date ? ' · ' + esc(dfmt(p.next_date, { day: 'numeric', month: 'long' })) : '') + '</p><p>' + esc(p.next_step) + '</p></div></div>' : '') +
+          '<div class="row"><a class="btn sm" href="/kabinet/obiekt?p=' + p.id + '">Онлайн-контроль: етапи, платежі, камера →</a></div>' +
+          (p.next_step ?'<div class="kb-next">' + svg(IC.flag) + '<div><p class="kb-eyebrow">Наступний крок' + (p.next_date ? ' · ' + esc(dfmt(p.next_date, { day: 'numeric', month: 'long' })) : '') + '</p><p>' + esc(p.next_step) + '</p></div></div>' : '') +
           (p.stages.length ? '<h3>Етапи</h3><div class="kb-stages">' + p.stages.map(function (s, i) {
             var pc = Math.max(0, Math.min(100, s.progress || 0));
             return '<div class="kb-stage' + (pc >= 100 ? ' done' : '') + '"><div class="kb-stage-h"><b>' + (i + 1) + '. ' + esc(s.name) + (i === stIdx ? ' <span class="kb-st" style="padding:1px 8px;font-size:11px">зараз</span>' : '') + '</b><span class="muted">' +
@@ -447,6 +448,172 @@
         if (dlg.showModal) dlg.showModal(); else window.open(b.getAttribute('data-lb'), '_blank', 'noopener');
       };
     });
+  }
+
+  /* ---------- мій обʼєкт: онлайн-контроль (/kabinet/obiekt) ---------- */
+  // Дані — /api/account/projects (лише проєкти цього клієнта). Етапи зі статусами, стрічка фотозвітів, акти етапів,
+  // графік платежів (рядки з бази — схема в кожного своя), камера 24/7: YouTube — вбудовано (youtube-nocookie, є в CSP),
+  // кадр .jpg — картинкою, інша хмара камери — посиланням у новій вкладці. Немає камери — заявка (form#of, data-service="camera").
+  var STS = { planned: 'Заплановано', in_progress: 'В роботі', review: 'Приймання', done: 'Виконано', paused: 'Пауза' };
+  var PAYS = { planned: 'Заплановано', due: 'До оплати', paid: 'Оплачено' };
+  var CUR = { USD: '$', EUR: '€', UAH: '₴' };
+  var cash = function (n, c) { return n == null ? '' : (c === 'UAH' ? fmt(n) + ' ₴' : (CUR[c] || '$') + fmt(n)); };
+  var YT = /^https:\/\/www\.youtube-nocookie\.com\/embed\/[\w-]{11}\?[\w=&]*$/;
+  var plural = function (n, one, few, many) { var a = n % 10, b = n % 100; return a === 1 && b !== 11 ? one : a >= 2 && a <= 4 && (b < 12 || b > 14) ? few : many; };
+  function stBadgeS(s) { return '<span class="kb-ss ' + esc(s.status) + '">' + esc(STS[s.status] || s.status_label || '') + '</span>'; }
+  function camCard(p) {
+    var cam = p.camera, h = '<section class="kb-card kb-cam s6 kb-in" aria-labelledby="kb-cam-h"><div class="kb-ch"><div><p class="kb-eyebrow">Онлайн-контроль</p><h2 id="kb-cam-h">Камера 24/7</h2></div>';
+    if (!cam || !safeUrl(cam.url)) {
+      return h + '<span class="kb-st">за доп. оплату</span></div><div class="kb-cam-off">' + svg(IC.camera) + '<div><p><b>Підключити камеру на обʼєкті</b></p>' +
+        '<p class="muted" style="font-size:var(--fs-small)">Встановимо камеру й налаштуємо трансляцію — дивіться обʼєкт у будь-який момент, без поїздок. Фотозвіти раз на 1–2 тижні йдуть як і раніше. Вартість — за запитом.</p></div></div>' +
+        '<div class="row"><a class="btn" href="#kb-lead" data-cam-lead>Підключити камеру 24/7</a></div></section>';
+    }
+    h += '<span class="kb-st ok"><i class="kb-live" aria-hidden="true"></i>підключено</span></div>';
+    if (cam.kind === 'youtube' && YT.test(cam.embed || '')) {
+      h += '<div class="kb-cam-v"><button type="button" class="kb-cam-play" data-yt="' + esc(cam.embed) + '">' + svg('<path d="M8 5.5v13l11-6.5z"/>') + '<span>Увімкнути трансляцію</span></button></div>';
+    } else if (cam.kind === 'snapshot') {
+      h += '<div class="kb-cam-v"><img src="' + esc(cam.url) + '" width="1280" height="720" alt="Кадр з камери на обʼєкті" loading="lazy" referrerpolicy="no-referrer" data-snap></div>' +
+        '<div class="row"><button type="button" class="btn ghost sm" data-snap-r>Оновити кадр</button><small class="muted" data-snap-t></small></div>';
+    } else {
+      h += '<p class="muted" style="font-size:var(--fs-small)">Трансляція відкривається в застосунку чи на сайті камери' + (cam.host ? ' (<b>' + esc(cam.host) + '</b>)' : '') + ' — у новій вкладці.</p>';
+    }
+    h += '<div class="row"><a class="btn' + (cam.kind === 'link' ? '' : ' ghost sm') + '" href="' + esc(cam.url) + '" target="_blank" rel="noopener noreferrer">' + (cam.kind === 'link' ? 'Відкрити камеру' : 'Відкрити в новій вкладці') + ' ↗</a></div>';
+    if (cam.note) h += '<div class="kb-note">' + esc(cam.note) + '</div>';
+    return h + '<p class="muted" style="font-size:12px">Посилання на камеру бачите лише ви. Не пересилайте його стороннім.</p></section>';
+  }
+  function payBlock(p) {
+    var L = p.payments || [];
+    var h = '<section class="kb-card s6 kb-in" aria-labelledby="kb-pay-h"><div class="kb-ch"><h2 id="kb-pay-h">Графік платежів</h2><small class="muted">за договором</small></div>';
+    if (!L.length) return h + '<p class="muted">Графік платежів по етапах зʼявиться тут після підписання договору. Схему оплати підбираємо під клієнта: 50/50, 50/30/20, 50/40/10 або розбивка платежів — старт від 10% авансу.</p></section>';
+    var st = {}; (p.stages || []).forEach(function (s) { st[s.id] = s.name; });
+    var tot = {}, paid = {};
+    L.forEach(function (x) { if (x.amount == null) return; var c = x.currency || 'USD'; tot[c] = (tot[c] || 0) + x.amount; if (x.status === 'paid') paid[c] = (paid[c] || 0) + x.amount; });
+    var cs = Object.keys(tot), nPaid = L.filter(function (x) { return x.status === 'paid'; }).length;
+    var pctAll = cs.length === 1 && tot[cs[0]] ? Math.round((paid[cs[0]] || 0) / tot[cs[0]] * 100) : Math.round(nPaid / L.length * 100);
+    h += '<div class="row" style="justify-content:space-between"><span>Оплачено ' + nPaid + ' з ' + L.length + (cs.length ? ': <b>' + cs.map(function (c) { return cash(paid[c] || 0, c) + ' з ' + cash(tot[c], c); }).join(' · ') + '</b>' : '') + '</span><b>' + pctAll + '%</b></div>' + bar(pctAll);
+    h += '<div class="kb-scroll"><table class="kb-items kb-pay"><thead><tr><th>Платіж</th><th class="hm">Етап</th><th class="n">Частка</th><th class="n">Сума</th><th class="hm">Дата</th><th>Статус</th></tr></thead><tbody>' + L.map(function (x) {
+      var d = x.status === 'paid' ? x.paid_date : x.due_date;
+      return '<tr class="' + esc(x.status) + '"><td><b>' + esc(x.title) + '</b>' + (x.note ? '<small class="muted" style="display:block">' + esc(x.note) + '</small>' : '') +
+        '<small class="muted so" style="display:block">' + esc([st[x.stage_id], d && dfmt(d, { day: 'numeric', month: 'short' })].filter(Boolean).join(' · ')) + '</small></td>' +
+        '<td class="hm">' + esc(st[x.stage_id] || '—') + '</td><td class="n">' + (x.pct != null ? esc(x.pct) + '%' : '—') + '</td><td class="n">' + (x.amount != null ? cash(x.amount, x.currency) : '—') + '</td>' +
+        '<td class="hm">' + (d ? esc(dfmt(d, { day: 'numeric', month: 'short', year: 'numeric' })) : '—') + '</td><td><span class="kb-ps ' + esc(x.status) + '">' + esc(PAYS[x.status] || x.status) + '</span></td></tr>';
+    }).join('') + '</tbody></table></div>';
+    return h + '<p class="muted" style="font-size:12px">Рахунки й акти до платежів — у документах. Питання щодо оплати — менеджеру.</p></section>';
+  }
+  function feed(p, stageId) {
+    var st = {}; (p.stages || []).forEach(function (s) { st[s.id] = s.name; });
+    var R = (p.reports || []).filter(function (r) { return !stageId || r.stage_id === stageId; });
+    if (!R.length) return '<p class="muted">' + (stageId ? 'Для цього етапу фотозвітів ще немає.' : 'Перший фотозвіт зʼявиться після старту робіт на обʼєкті — далі раз на 1–2 тижні.') + '</p>';
+    return '<ol class="kb-feed">' + R.map(function (r) {
+      var ph = (r.photos || []).map(safeUrl).filter(Boolean), cap = (r.title || 'Фотозвіт') + ' · ' + dfmt(r.date);
+      return '<li><div class="kb-feed-d"><b>' + esc(dfmt(r.date, { day: 'numeric', month: 'short' })) + '</b><small>' + esc(dfmt(r.date, { year: 'numeric' })) + '</small></div><div class="kb-feed-b">' +
+        '<div class="kb-rep-h"><b>' + esc(r.title || 'Фотозвіт') + '</b>' + (st[r.stage_id] ? '<span class="kb-tag">' + esc(st[r.stage_id]) + '</span>' : '') + '</div>' +
+        (r.note ? '<p class="muted" style="font-size:var(--fs-small);margin-bottom:8px;white-space:pre-line">' + esc(r.note) + '</p>' : '') +
+        (ph.length ? '<div class="kb-gal">' + ph.map(function (u, k) { return '<button type="button" data-lb="' + esc(u) + '" data-cap="' + esc(cap) + '"><img src="' + esc(u) + '" width="320" height="240" alt="' + esc(cap + ', фото ' + (k + 1)) + '" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button>'; }).join('') + '</div>' : '') +
+        '</div></li>';
+    }).join('') + '</ol>';
+  }
+  function objectTab(c) {
+    var lead = document.getElementById('kb-lead');
+    api('/api/account/projects').then(function (d) {
+      var P = d.projects || [];
+      if (!P.length) {
+        return paint(empty(IC.camera, 'Онлайн-контроль зʼявиться зі стартом робіт', 'Коли ми почнемо ремонт чи будівництво, тут будуть етапи з прогресом і статусами, фотозвіти раз на 1–2 тижні, акти етапів і графік платежів. За доп. оплату — камера 24/7 на обʼєкті.',
+          '<div class="row" style="justify-content:center"><a class="btn" href="/onlain-kontrol">Як це працює — демо</a><a class="btn ghost" href="/kabinet/proekty#kb-lead">Обговорити проєкт</a></div>'));
+      }
+      var want = +new URLSearchParams(location.search).get('p');
+      var p = P.filter(function (x) { return x.id === want; })[0] || P.filter(function (x) { return x.status === 'active'; })[0] || P[0];
+      var stages = p.stages || [], R = p.reports || [];
+      var cur = stages.filter(function (s) { return s.status === 'in_progress' || s.status === 'review'; })[0] || stages.filter(function (s) { return s.status !== 'done'; })[0];
+      var nDone = stages.filter(function (s) { return s.status === 'done'; }).length, last = R[0];
+      var acts = (p.documents || []).filter(function (x) { return x.kind === 'act'; });
+      var st = {}; stages.forEach(function (s) { st[s.id] = s.name; });
+      var withRep = stages.filter(function (s) { return s.id && R.some(function (r) { return r.stage_id === s.id; }); });
+      var h = '';
+      if (P.length > 1) h += '<nav class="kb-filter kb-in" aria-label="Обʼєкти">' + P.map(function (x) { return '<a class="kb-objsw" href="/kabinet/obiekt?p=' + x.id + '"' + (x.id === p.id ? ' aria-current="page"' : '') + '>' + esc(x.title) + '</a>'; }).join('') + '</nav>';
+      h += '<div class="kb-grid">';
+      // шапка обʼєкта
+      h += '<section class="kb-card glow s6 kb-in"><div class="kb-ch"><div><p class="kb-eyebrow">' + esc(SERV[p.service] || 'Проєкт') + (p.area ? ' · ' + esc(p.area) + ' м²' : '') + '</p><h2>' + esc(p.title) + '</h2>' +
+        (p.address ? '<small class="muted">' + esc(p.address) + '</small>' : '') + '</div><span class="kb-st' + (p.status === 'done' ? ' ok' : '') + '">' + ({ active: 'Триває', paused: 'На паузі', done: 'Завершено' }[p.status] || '') + '</span></div>' +
+        '<div class="kb-obj-top"><div><span class="muted" style="font-size:var(--fs-small)">Загальна готовність</span><b class="kb-big" style="display:block">' + p.progress + '%</b></div>' +
+        '<div class="kb-stats"><span class="kb-chip"><b>' + nDone + '/' + stages.length + '</b> етапів виконано</span><a class="kb-chip" href="#kb-feed-h"><b>' + R.length + '</b> ' + plural(R.length, 'фотозвіт', 'фотозвіти', 'фотозвітів') + '</a>' +
+        (last ? '<span class="kb-chip">останній: <b>' + esc(dfmt(last.date, { day: 'numeric', month: 'short' })) + '</b></span>' : '') + '<a class="kb-chip" href="#kb-cam-h">камера: <b>' + (p.camera ? 'є' : 'немає') + '</b></a></div></div>' + bar(p.progress) +
+        (cur ? '<p style="font-size:var(--fs-small)">Зараз: <b>' + esc(cur.name) + '</b> · ' + (cur.progress || 0) + '%</p>' : '') +
+        (p.next_step ? '<div class="kb-next">' + svg(IC.flag) + '<div><p class="kb-eyebrow">Наступний крок' + (p.next_date ? ' · ' + esc(dfmt(p.next_date, { day: 'numeric', month: 'long' })) : '') + '</p><p>' + esc(p.next_step) + '</p></div></div>' : '') + '</section>';
+      // етапи
+      h += '<section class="kb-card s6 kb-in" aria-labelledby="kb-stg-h"><div class="kb-ch"><h2 id="kb-stg-h">Етапи робіт</h2><small class="muted">строки — за договором</small></div>';
+      if (stages.length) {
+        h += '<ol class="kb-steps">' + stages.map(function (s, i) {
+          var pc = Math.max(0, Math.min(100, s.progress || 0));
+          var nRep = R.filter(function (r) { return s.id && r.stage_id === s.id; }).length;
+          var sActs = acts.filter(function (x) { return s.id && x.stage_id === s.id; });
+          var dates = [s.start && dfmt(s.start, { day: 'numeric', month: 'short' }), s.end && dfmt(s.end, { day: 'numeric', month: 'short', year: 'numeric' })].filter(Boolean).join(' – ');
+          return '<li class="' + esc(s.status) + (s === cur ? ' cur' : '') + '"' + (s === cur ? ' aria-current="step"' : '') + '><span class="d" aria-hidden="true">' + (s.status === 'done' ? '' : i + 1) + '</span><div class="kb-step-b">' +
+            '<div class="kb-stage-h"><b>' + esc(s.name) + '</b>' + stBadgeS(s) + '</div>' +
+            '<div class="row" style="gap:10px;flex-wrap:nowrap"><div style="flex:1">' + bar(pc) + '</div><small class="muted" style="white-space:nowrap">' + pc + '%</small></div>' +
+            '<div class="kb-step-m">' + (dates ? '<span>' + esc(dates) + '</span>' : '') + (nRep ? '<button type="button" class="lnk" data-stg="' + esc(s.id) + '">' + nRep + ' ' + plural(nRep, 'фотозвіт', 'фотозвіти', 'фотозвітів') + ' →</button>' : '') +
+            sActs.map(function (a) { var u = safeUrl(a.url); return u ? '<a class="lnk" href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + svg(IC.doc) + esc(a.title) + '</a>' : ''; }).join('') + '</div>' +
+            (s.note ? '<small class="muted">' + esc(s.note) + '</small>' : '') + '</div></li>';
+        }).join('') + '</ol>';
+      } else h += '<p class="muted">Етапи зʼявляться після підписання договору.</p>';
+      h += '</section>';
+      h += camCard(p);
+      // фотозвіти
+      h += '<section class="kb-card s4 kb-in" aria-labelledby="kb-feed-h"><div class="kb-ch"><h2 id="kb-feed-h">Фотозвіти</h2><small class="muted">раз на 1–2 тижні</small></div>' +
+        (withRep.length ? '<div class="kb-filter" role="group" aria-label="Фотозвіти етапу"><button type="button" data-fs="" aria-pressed="true">Усі</button>' +
+          withRep.map(function (s) { return '<button type="button" data-fs="' + esc(s.id) + '" aria-pressed="false">' + esc(s.name) + '</button>'; }).join('') + '</div>' : '') +
+        '<div id="kb-feed">' + feed(p, '') + '</div></section>';
+      // документи
+      var other = (p.documents || []).filter(function (x) { return x.kind !== 'act'; });
+      h += '<section class="kb-card s2 kb-in" aria-labelledby="kb-doc-h"><h2 id="kb-doc-h">Документи</h2>' +
+        (acts.length ? '<h3>Акти етапів</h3>' + docs(acts.map(function (a) { return st[a.stage_id] ? Object.assign({}, a, { title: a.title + ' · ' + st[a.stage_id] }) : a; })) : '') +
+        (other.length ? (acts.length ? '<h3>Договір, кошторис, рахунки</h3>' : '') + docs(other) : '') +
+        (!acts.length && !other.length ? '<p class="muted">Договір, кошторис, рахунки й акти етапів зʼявляться тут.</p>' : '') +
+        '<div class="kb-note">Гарантія на роботи — 36 місяців.</div></section>';
+      h += payBlock(p);
+      h += managerCard('s6', p.manager);
+      paint(h + '</div>');
+      document.title = p.title + ' — онлайн-контроль | CAS Development';
+      lightbox();
+      // заявка на камеру — лише якщо камери ще немає
+      if (lead) {
+        lead.hidden = !!p.camera;
+        var nm = document.getElementById('oName'), ph = document.getElementById('oPhone'), msg = document.getElementById('oMsg');
+        if (nm && !nm.value) nm.value = c.name || '';
+        if (ph && !ph.value) ph.value = c.phone || '';
+        if (msg && !msg.value) msg.value = p.title + (p.address ? ', ' + p.address : '');
+      }
+      box.querySelectorAll('[data-cam-lead]').forEach(function (a) {
+        a.onclick = function (e) {
+          if (!lead) return; e.preventDefault(); lead.hidden = false; lead.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          var t = document.getElementById('oPhone'); if (t) setTimeout(function () { t.focus({ preventScroll: true }); }, 400);
+        };
+      });
+      // YouTube вмикаємо лише по кліку: жодних запитів до Google, доки клієнт сам не відкриє трансляцію
+      box.querySelectorAll('[data-yt]').forEach(function (b) {
+        b.onclick = function () {
+          var src = b.getAttribute('data-yt'); if (!YT.test(src)) return;
+          var f = document.createElement('iframe');
+          f.src = src; f.title = 'Камера на обʼєкті — трансляція'; f.width = 1280; f.height = 720;
+          f.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen'); f.setAttribute('allowfullscreen', '');
+          f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+          b.replaceWith(f);
+        };
+      });
+      var snap = box.querySelector('[data-snap]'), sr = box.querySelector('[data-snap-r]');
+      if (snap && sr) sr.onclick = function () {
+        var u = p.camera.url; snap.src = u + (u.indexOf('?') < 0 ? '?' : '&') + '_t=' + Date.now();
+        var t = box.querySelector('[data-snap-t]'); if (t) t.textContent = 'Оновлено о ' + new Date().toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' });
+      };
+      // фільтр стрічки за етапом
+      var fb = document.getElementById('kb-feed');
+      function showStage(id) {
+        fb.innerHTML = feed(p, id); lightbox();
+        box.querySelectorAll('[data-fs]').forEach(function (x) { x.setAttribute('aria-pressed', String(x.getAttribute('data-fs') === id)); });
+      }
+      box.querySelectorAll('[data-fs]').forEach(function (b) { b.onclick = function () { showStage(b.getAttribute('data-fs')); }; });
+      box.querySelectorAll('[data-stg]').forEach(function (b) { b.onclick = function () { showStage(b.getAttribute('data-stg')); document.getElementById('kb-feed-h').scrollIntoView({ behavior: 'smooth', block: 'start' }); }; });
+    }, function (e) { paint('<p class="acc-err">' + esc(e.message) + '</p>'); });
   }
 
   /* ---------- профіль ---------- */
@@ -620,6 +787,7 @@
       if (TAB === 'orders') orders(c);
       else if (TAB === 'fav') fav(c);
       else if (TAB === 'projects') projects(c);
+      else if (TAB === 'object') objectTab(c);
       else if (TAB === 'profile') profile(c);
       else overview(c);
     });
