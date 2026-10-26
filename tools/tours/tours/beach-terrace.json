@@ -2,7 +2,7 @@
  "slug": "beach-terrace",
  "title": "Пляжна тераса",
  "description": "360-тур пляжної тераси.",
- "hidden": true,
+ "hidden": false,
  "start": "img-0743",
  "scenes": [
   {
@@ -265,5 +265,8 @@
     }
    ]
   }
- ]
+ ],
+ "kind": "Пляжна тераса",
+ "place": "",
+ "order": 5
 }

@@ -2,7 +2,7 @@
  "slug": "beach-pier",
  "title": "Пляж і причал",
  "description": "360-тур пляжу й причалу.",
- "hidden": true,
+ "hidden": false,
  "start": "img-20250512-164906-944",
  "scenes": [
   {
@@ -265,5 +265,8 @@
     }
    ]
   }
- ]
+ ],
+ "kind": "Пляж і причал",
+ "place": "Київ",
+ "order": 4
 }

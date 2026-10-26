@@ -97,7 +97,7 @@ VIEW = '''<!doctype html>
   </a-entity>
 </a-scene>
 <div class="ui">
-  <a class="brand" href="/tury" target="_top">CAS · 3D-тури</a>
+  <a class="brand" href="/tury" target="_top">CAS · 3D</a>
   <div class="title" id="title"></div>
   <button class="btn" id="menuBtn" aria-label="Кімнати">☰ Кімнати</button>
 </div>
@@ -111,17 +111,31 @@ VIEW = '''<!doctype html>
 INDEX = '''<!doctype html>
 <html lang="uk"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>3D-тури обʼєктів — CAS Development</title>
-<meta name="description" content="Віртуальні 3D-тури реалізованих обʼєктів CAS Development: пройдіться кімнатами на телефоні, ноутбуці або у VR-окулярах.">
+<title>3D-тури обʼєктів — віртуальні прогулянки | CAS Development</title>
+<meta name="description" content="Віртуальні 3D-тури обʼєктів CAS Development: пройдіться кімнатами на телефоні, ноутбуці або у VR-окулярах. 360° фото, переходи між кімнатами.">
 <link rel="canonical" href="{site}/tury">
+<meta property="og:title" content="3D-тури обʼєктів — CAS Development">
+<meta property="og:image" content="{site}{og}">
 <link rel="icon" href="/favicon.svg">
 <link rel="stylesheet" href="/assets/tours/tour.v1.css">
 </head><body class="list">
-<main class="wrap">
-<h1>3D-тури обʼєктів</h1>
-<p class="lead">Пройдіться нашими обʼєктами так, ніби ви всередині: на телефоні — повертайте його, на ноутбуці — тягніть мишкою, у VR-окулярах — натисніть VR. Переходи між кімнатами — кнопками на фото.</p>
-<div class="grid">{cards}</div>
-<p class="cta">Хочете 3D-тур свого обʼєкта або дизайн-проєкт? <a href="/contact">Напишіть нам</a> · <a href="tel:+380978667755">+380 97 866 77 55</a></p>
+<main class="tl">
+<section class="tl-hero">
+<p class="tl-eye">Портфоліо · 360°</p>
+<h1>Пройдіться нашими <em>обʼєктами</em></h1>
+<p class="tl-lead">Віртуальні тури реальних інтерʼєрів і будинків. Відкрийте тур і рухайтесь між кімнатами стрілками на фото — так, ніби ви всередині.</p>
+<ul class="tl-how">
+<li><b>Телефон</b><span>Повертайте телефон або ведіть пальцем</span></li>
+<li><b>Ноутбук</b><span>Тягніть мишкою, клік по стрілці — наступна кімната</span></li>
+<li><b>VR-окуляри</b><span>Кнопка VR у турі — і ви в обʼєкті</span></li>
+</ul>
+</section>
+<section class="tl-grid">{cards}</section>
+<section class="tl-cta">
+<h2>Хочете 3D-тур <em>свого</em> обʼєкта?</h2>
+<p>Знімемо 360° і зберемо тур для продажу, оренди чи портфоліо — або зробимо дизайн-проєкт, який можна буде так само обійти.</p>
+<div class="tl-btns"><a class="tl-btn" href="/contact">Залишити заявку</a><a class="tl-btn ghost" href="tel:+380978667755">+380 97 866 77 55</a></div>
+</section>
 </main>
 </body></html>
 '''
@@ -140,10 +154,15 @@ def pages():
                                                             slug=t['slug'], thumb=thumb, data=data,
                                                             robots='\n<meta name="robots" content="noindex">' if t.get('hidden') else ''), encoding='utf-8')
         if not t.get('hidden'):
-            cards.append(f'<a class="card" href="/tury/{t["slug"]}"><img src="{thumb}" alt="{html.escape(t["title"])} — 3D-тур" '
-                         f'loading="lazy" width="640" height="320"><span>{html.escape(t["title"])}</span>'
-                         f'<small>{len(t["scenes"])} кімн.</small></a>')
-    idx = INDEX.format(site=SITE, cards='\n'.join(cards) or '<p>Тури скоро зʼявляться.</p>')
+            meta = ' · '.join(x for x in (t.get('kind'), t.get('place'), f"{len(t['scenes'])} точ.") if x)
+            cards.append((t.get('order', 99), f'<a class="tl-card" href="/tury/{t["slug"]}" style="--pano:url({thumb})">'
+                         f'<span class="tl-img"><img src="{thumb}" alt="{html.escape(t["title"])} — 3D-тур 360°" loading="lazy" width="640" height="320"></span>'
+                         f'<span class="tl-badge">360°</span><span class="tl-body"><span class="tl-meta">{html.escape(meta)}</span>'
+                         f'<span class="tl-name">{html.escape(t["title"])}</span><span class="tl-go">Відкрити тур →</span></span></a>', thumb))
+    cards.sort(key=lambda c: c[0])
+    og = cards[0][2] if cards else '/img/og/default.jpg'
+    cards = [c[1] for c in cards]
+    idx = INDEX.format(site=SITE, og=og, cards='\n'.join(cards) or '<p class="tl-lead">Тури скоро зʼявляться.</p>')
     if not cards:  # поки немає відкритих турів — сторінка-заглушка не індексується
         idx = idx.replace('<head>', '<head>\n<meta name="robots" content="noindex">', 1)
     try:  # єдина шапка/футер сайту (tools/site/chrome.py)
