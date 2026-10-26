@@ -1,0 +1,62 @@
+/* CAS map — блок «Карта» UI-kit (/styleguide/#map). Розмітка: tools/site/casmap.py, логіка: /assets/cas-map.v1.js */
+.cmap{scroll-margin-top:84px;position:relative;overflow:hidden;background:#0d0c0b;border:1px solid rgba(191,145,72,.3);border-radius:4px;aspect-ratio:16/10;isolation:isolate;color:#ede8df}
+.cmap[data-cas-map=office]{aspect-ratio:4/3;max-height:520px;width:100%}
+.cmap-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity .6s ease}
+.cmap-ready .cmap-poster{opacity:0;pointer-events:none}
+.cmap .cmap-cv{position:absolute;inset:0;width:100%;height:100%}
+.cmap-go{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:2;min-height:44px;padding:10px 20px;border:1px solid #bf9148;border-radius:999px;background:rgba(13,12,11,.82);color:#ede8df;font:600 var(--fs-small,.8125rem)/1 var(--M,"Manrope","Manrope Fallback",sans-serif);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(4px)}
+.cmap-go:hover,.cmap-go:focus-visible{background:#bf9148;color:#0d0c0b}
+.cmap-go[hidden],.cmap-fly[hidden]{display:none}
+.cmap-loading::after{content:"";position:absolute;left:50%;top:50%;width:28px;height:28px;margin:-14px 0 0 -14px;border:2px solid rgba(191,145,72,.3);border-top-color:#bf9148;border-radius:50%;animation:cmap-spin .9s linear infinite;z-index:3}
+@keyframes cmap-spin{to{transform:rotate(360deg)}}
+.cmap-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.cmap-acts a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border:1px solid rgba(191,145,72,.55);border-radius:2px;color:var(--tx,#ede8df);text-decoration:none;font-family:var(--M,"Manrope","Manrope Fallback",sans-serif);font-size:var(--fs-small,.8125rem);letter-spacing:.12em;text-transform:uppercase}
+.cmap-acts a.main{background:#bf9148;border-color:#bf9148;color:#0d0c0b}
+.cmap-acts a:hover,.cmap-acts a:focus-visible{border-color:#bf9148;color:#bf9148}
+.cmap-acts a.main:hover,.cmap-acts a.main:focus-visible{background:#d2a35a;color:#0d0c0b}
+/* Карта проєктів + список поруч */
+.pmap{max-width:1180px;margin:0 auto;padding:64px 22px 24px}
+.pmap-h{margin:0 0 10px}
+.pmap-sub{color:var(--mu,#938c84);margin:0 0 24px}
+.pmap-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.pmap .cmap{aspect-ratio:1/1}
+.cmap-list{list-style:none;margin:0;padding:0;border:1px solid var(--bd,rgba(191,145,72,.18));border-radius:4px}
+.cmap-list li{display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--bd,rgba(191,145,72,.14))}
+.cmap-list li:last-child{border-bottom:0}
+.cmap-list li.on{background:rgba(191,145,72,.1)}
+.cmap-list a{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;padding:10px 4px 10px 14px;min-height:44px;color:var(--tx,#ede8df);text-decoration:none}
+.cmap-list a b{font-weight:600}
+.cmap-list a span{font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84);letter-spacing:.04em}
+.cmap-list a:hover b,.cmap-list a:focus-visible b{color:var(--ac,#bf9148)}
+.cmap-fly{flex:none;width:44px;height:44px;margin-right:4px;display:inline-grid;place-items:center;border:0;border-radius:50%;background:transparent;color:var(--ac,#bf9148);cursor:pointer}
+.cmap-fly:hover,.cmap-fly:focus-visible{background:rgba(191,145,72,.14)}
+.cmap-fly svg{width:20px;height:20px}
+.pmap-note{font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84);margin:12px 0 0}
+@media (min-width:900px){.pmap-grid{grid-template-columns:minmax(0,1fr) 320px}.pmap .cmap{aspect-ratio:16/10}.pmap .cmap-list{height:0;min-height:100%;overflow:auto}}
+/* Маркер офісу */
+.cmap-pin{position:relative;width:46px;height:46px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#bf9148;box-shadow:0 0 0 6px rgba(191,145,72,.25),0 6px 18px rgba(0,0,0,.5);display:grid;place-items:center;cursor:pointer;margin-bottom:8px}
+.cmap-pin b{transform:rotate(45deg);font:700 12px/1 var(--M,"Manrope","Manrope Fallback",sans-serif);letter-spacing:.08em;color:#0d0c0b}
+/* Попап і контроли MapLibre у темі сайту (селектори .cmap … сильніші за ліниво підвантажений vendor CSS) */
+.cmap .maplibregl-popup-content{background:#14110e;color:#ede8df;border:1px solid rgba(191,145,72,.45);border-radius:4px;padding:0;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.55)}
+.cmap .maplibregl-popup-anchor-bottom .maplibregl-popup-tip,.cmap .maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip,.cmap .maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip{border-top-color:#bf9148}
+.cmap .maplibregl-popup-anchor-top .maplibregl-popup-tip,.cmap .maplibregl-popup-anchor-top-left .maplibregl-popup-tip,.cmap .maplibregl-popup-anchor-top-right .maplibregl-popup-tip{border-bottom-color:#bf9148}
+.cmap .maplibregl-popup-anchor-left .maplibregl-popup-tip{border-right-color:#bf9148}
+.cmap .maplibregl-popup-anchor-right .maplibregl-popup-tip{border-left-color:#bf9148}
+.cmap .maplibregl-popup-close-button{width:32px;height:32px;font-size:20px;color:#ede8df;background:rgba(13,12,11,.7);border-radius:0 0 0 4px;z-index:1}
+.cmap-card{display:flex;flex-direction:column;font-family:var(--M,"Manrope","Manrope Fallback",sans-serif)}
+.cmap-card img{display:block;width:100%;height:120px;object-fit:cover}
+.cmap-card-t{display:flex;flex-direction:column;gap:4px;padding:12px 14px 14px}
+.cmap-card-t b{font-family:var(--C,"Cormorant Garamond",serif);font-size:20px;font-weight:600;line-height:1.15}
+.cmap-card-o .cmap-card-t{padding-right:36px}
+.cmap-place{font-size:12px;color:#a99f90;letter-spacing:.04em}
+.cmap-card-t a{margin-top:6px;color:#bf9148;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+.cmap-card-t a:hover,.cmap-card-t a:focus-visible{text-decoration:underline}
+.cmap-st{align-self:flex-start;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border:1px solid rgba(191,145,72,.5);border-radius:999px;color:#cbb48a}
+.cmap-st.ok{background:#bf9148;border-color:#bf9148;color:#0d0c0b}
+.cmap .maplibregl-ctrl-group,.cmap .maplibregl-ctrl-group:not(:empty){background:#14110e;border:1px solid rgba(191,145,72,.35);box-shadow:none}
+.cmap .maplibregl-ctrl-group button{width:36px;height:36px}
+.cmap .maplibregl-ctrl-group button+button{border-top-color:rgba(191,145,72,.25)}
+.cmap .maplibregl-ctrl-group button .maplibregl-ctrl-icon{filter:invert(.92) sepia(.35)}
+.cmap .maplibregl-ctrl.maplibregl-ctrl-attrib,.cmap .maplibregl-ctrl-attrib.maplibregl-compact-show,.cmap .maplibregl-ctrl-attrib.maplibregl-compact{background:rgba(13,12,11,.8);color:#a99f90;font-size:11px}.cmap .maplibregl-ctrl.maplibregl-ctrl-attrib a{color:#cbb48a}.cmap .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button{filter:invert(.9);background-color:transparent}
+.cmap .maplibregl-cooperative-gesture-screen{font-family:var(--M,"Manrope","Manrope Fallback",sans-serif);background:rgba(13,12,11,.6);color:#ede8df}
+@media (prefers-reduced-motion:reduce){.cmap-poster{transition:none}.cmap-loading::after{animation-duration:2.4s}}

@@ -31,6 +31,7 @@ import chrome  # єдина шапка/футер (tools/site/chrome.py)
 import i18n  # мови, словники, hreflang-кластери (tools/site/i18n.py)
 import captions  # підписи галерей «обʼєкт · статус» (tools/site/captions.py)
 import leadform  # легка заявка: лише телефон, швидка заявка в hero (tools/site/leadform.py)
+import casmap  # карти: офіс у контактах, «Карта проєктів» (tools/site/casmap.py)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 B = 'https://cas-develop.com/'
@@ -211,6 +212,8 @@ def section_html(lang, x):
     if k == 'faq':
         return [f'<section{sid}><div class="w">', h2,
                 '  ' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(v)}</p></details>' for q, v in x['items']), '</div></section>\n']
+    if k == 'map':  # карта офісу (tools/site/casmap.py): постер + MapLibre по кліку, «Маршрут» і Google Maps
+        return [casmap.office_html(lang, x.get('h2'))]
     if k == 'rel':
         return [f'<section{sid}><div class="w">', h2,
                 '  <div class="rel">' + ''.join(f'<a href="{u}"' + (' hreflang="uk"' if u in ('/portfolio',) else '') + f'>{e(n)}</a>' for u, n in x['items']) + '</div>',
@@ -373,6 +376,8 @@ def build(p):
     s = leadform.apply(s, path(lang, slug))  # форма: обовʼязковий лише телефон; швидка заявка біля першого CTA
     s = captions.apply(s, path(lang, slug))
     # шапка й футер: мова, перемикач на пару (hreflang) і посилання — з chrome.py
+    if any(x['t'] == 'map' for x in p.get('sections', [])):
+        s = casmap.assets(s)
     s = chrome.apply(s, path(lang, slug))
     os.makedirs(os.path.dirname(os.path.join(ROOT, path(lang, slug))), exist_ok=True)
     open(os.path.join(ROOT, path(lang, slug)), 'w', encoding='utf-8').write(s)
