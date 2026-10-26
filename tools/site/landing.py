@@ -72,8 +72,8 @@ GUAR = {
         ('Фотоотчёты и камера 24/7', 'Раз в 1–2 недели — фото с объекта в Telegram; за доп. оплату — онлайн-камера на объекте 24/7.')]),
 }
 # посилання з блоку «Гарантії» на сторінку «Договір, гарантія, оплата» (сторінка є лише uk/ru/en)
-GUAR_MORE = {'uk': ('/dogovir-garantiya-oplata', 'Договір, гарантія й оплата — докладно'),
-             'ru': ('/ru/dogovor-garantiya-oplata', 'Договор, гарантия и оплата — подробно'),
+GUAR_MORE = {'uk': ('/dogovir-garantiya-oplata', 'Договір на ремонт, гарантія й оплата — докладно'),
+             'ru': ('/ru/dogovor-garantiya-oplata', 'Договор на ремонт, гарантия и оплата — подробно'),
              'en': ('/en/contract-warranty-payment', 'Contract, warranty and payment — details')}
 
 
@@ -136,24 +136,22 @@ PRICE_ROWS = {'design': 30, 'repair': 550, 'furnish': 250}
 PRICES = {
     'uk': dict(pre='від', area='Площа', unit='м²', rows={'design': 'Дизайн-проєкт · від $30/м², мін. $2 500', 'repair': 'Ремонт під ключ · від $550/м²',
                'furnish': 'Меблювання · від $250/м²'},
-               note='Орієнтовно, «від»; точно — за кошторисом після заміру. Ремонт від $550/м² — роботи й чорнові матеріали; чистові матеріали, меблі й техніка — окремо. '
-                    'Дизайн-проєкт — мінімум $2 500, тому для 40–80 м² це $2 500.'),
+               note='Орієнтовно, «від»; точно — за кошторисом після заміру. Ремонт від $550/м² — роботи й чорнові матеріали; чистові матеріали, меблі й техніка — окремо.', design=' Дизайн-проєкт — мінімум $2 500, тому для 40–80 м² це $2 500.'),
     'ru': dict(pre='от', area='Площадь', unit='м²', rows={'design': 'Дизайн-проект · от $30/м², мин. $2 500', 'repair': 'Ремонт под ключ · от $550/м²',
                'furnish': 'Меблировка · от $250/м²'},
-               note='Ориентировочно, «от»; точно — по смете после замера. Ремонт от $550/м² — работы и черновые материалы; чистовые материалы, мебель и техника — отдельно. '
-                    'Дизайн-проект — минимум $2 500, поэтому для 40–80 м² это $2 500.'),
-    'en': dict(pre='from', area='Area', unit='m²', rows={'design': 'Design project · from $30/m², min. $2,500', 'repair': 'Turnkey renovation · from $550/m²',
+               note='Ориентировочно, «от»; точно — по смете после замера. Ремонт от $550/м² — работы и черновые материалы; чистовые материалы, мебель и техника — отдельно.', design=' Дизайн-проект — минимум $2 500, поэтому для 40–80 м² это $2 500.'),
+    'en': dict(pre='from', area='Area', unit='m²', rows={'design': 'Design project · from $30/m², min. $2 500', 'repair': 'Turnkey renovation · from $550/m²',
                'furnish': 'Furnishing · from $250/m²'},
                note='Indicative “from” prices; the exact figure comes from the estimate after the site survey. Renovation from $550/m² covers labour and rough materials; '
-                    'finishing materials, furniture and appliances are extra. The design project minimum is $2,500, so for 40–80 m² it is $2,500.'),
+                    'finishing materials, furniture and appliances are extra.', design=' The design project minimum is $2 500, so for 40–80 m² it is $2 500.'),
 }
 PRICE_CSS = ('<style>.ptab{overflow-x:auto;margin:0 0 10px}.ptab table{width:100%;border-collapse:collapse;font-size:var(--fs-small);min-width:520px}'
-             '.ptab th,.ptab td{padding:10px 8px;border-bottom:1px solid var(--ln,rgba(191,145,72,.18));text-align:right;white-space:nowrap}'
-             '.ptab th:first-child,.ptab td:first-child{text-align:left;white-space:normal}.ptab thead th{color:var(--mu);font-weight:500}</style>')
+             '.ptab th,.ptab td{padding:10px 8px;border-bottom:1px solid var(--ln);text-align:right;white-space:nowrap}'
+             '.ptab :is(th,td):first-child{text-align:left;white-space:normal}.ptab th{color:var(--mu);font-weight:500}</style>')
 
 
 def money(n, lang='uk'):
-    return '$' + (f'{n:,}' if lang == 'en' else f'{n:,}'.replace(',', ' '))
+    return '$' + f'{n:,}'.replace(',', ' ')  # як у цінах сайту ($2 500) — ui.py читає саме так
 
 
 def prices_html(lang, x):
@@ -167,7 +165,7 @@ def prices_html(lang, x):
             f'<td><b data-est="{ar}x{r}">{d["pre"]} {money(max(ar * r, 2500) if r == 30 else ar * r, lang)}</b></td>' for ar in AREAS) + '</tr>'
     return ('<!--cas:prices--><section><div class="w txt">' + PRICE_CSS + f'<h2>{e(x["h2"])}</h2>' + (f'<p>{rich(x["p"])}</p>' if x.get('p') else '')
             + f'<div class="ptab"><table><thead>{head}</thead><tbody>{body}</tbody></table></div>'
-            + f'<p><small>{e(d["note"])}</small></p></div></section><!--/cas:prices-->\n')
+            + f'<p><small>{e(d["note"] + (d["design"] if "design" in x.get("rows", PRICE_ROWS) else ""))}</small></p></div></section><!--/cas:prices-->\n')
 
 
 # Пакети дизайн-проєкту — пропозиція на затвердження Михайлом (26.10.2026): ціна лише в базового (від $30/м², мін. $2 500),
@@ -187,7 +185,7 @@ PACKAGES = {
                                                     'авторский надзор на объекте', 'согласование изменений с бригадой во время ремонта'])]),
     'en': ('Design project packages', 'We tailor the scope to the task. Three typical packages, from a layout plan to full support with designer supervision:', [
         ('Layout', 'priced by estimate', ['measured survey plan', 'layout options to choose from', 'furniture arrangement plan', 'wall construction and demolition plan']),
-        ('Standard', 'from $30/m², min. $2,500', ['everything in Layout', '3D visualisations of every room', 'working drawings: electrics, plumbing, ceilings, floors',
+        ('Standard', 'from $30/m², min. $2 500', ['everything in Layout', '3D visualisations of every room', 'working drawings: electrics, plumbing, ceilings, floors',
                                                'material and furniture specifications']),
         ('Full, with designer supervision', 'priced by estimate', ['everything in Standard', 'procurement: selecting and ordering furniture, lighting, decor',
                                                                    'designer supervision on site', 'coordinating changes with the crew during renovation'])]),
