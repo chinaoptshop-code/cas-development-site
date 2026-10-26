@@ -81,6 +81,8 @@ def main():
         n = apply(s, rel)
         if n != s:
             n = chrome.versions(n)
+        if n != s and n.replace('\u00a0', ' ') == s.replace('\u00a0', ' '):
+            n = s  # відрізняється лише нерозривними пробілами (їх ставить chrome.nbsp_prices) — не чіпаємо
         if n != s:
             bad.append(rel)
             if not check:

@@ -46,6 +46,8 @@
 .qz-er:empty{display:none}
 .qz-ok{padding:18px;border:1px solid var(--ac,#BF9148);border-radius:10px}
 .qz-ok[hidden]{display:none}
+.qz-nv[hidden],.qz-hd[hidden],.qz-st[hidden]{display:none}
+.qz.qz-done{min-height:0}
 body.light .qz-nx,body.light .qz-send{color:#FBF8F3}
 @media (max-width:520px){.qz{padding:16px}.qz-os{grid-template-columns:1fr 1fr}.qz-o{padding:10px 12px;font-size:.9375rem}.qz-o span::before{margin-right:8px}}
 @media (prefers-reduced-motion:reduce){.qz-bar i,.qz-o{transition:none}}

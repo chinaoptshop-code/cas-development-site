@@ -5,7 +5,7 @@
   python3 tools/site/media.py --check    # лише перевірка: код 1, якщо щось не оновлено або конфіг невірний
 
 Компоненти UI-kit — /styleguide/#media; поведінка — /assets/media.v1.js, стилі — /assets/media.v1.css:
-  • tour360[slug] = "https://kuula.co/share/…" → на /proekty/<slug> секція «Віртуальний тур 360°» перед «Фото проєкту»
+  • tour360[slug] = "https://kuula.co/share/…" або "/tury/<slug>" (власний переглядач, tools/tours/README.md) → на /proekty/<slug> секція «Віртуальний тур 360°» перед «Фото проєкту»
     (постер — перше фото галереї + кнопка; iframe kuula.co — лише по кліку, у модальному вікні). Порожній URL — секції немає.
   • tours (без "project") → блок «Віртуальні тури 360°» на tour_pages + посилання на профіль Kuula.
   • videos → блок «Відео з обʼєктів» (lite-embed: постер i.ytimg.com, iframe youtube-nocookie.com лише по кліку) на video_pages;
@@ -19,7 +19,7 @@ import html, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CFG = os.path.join(ROOT, 'tools/site/media.json')
-KUULA = re.compile(r'^https://kuula\.co/share/[A-Za-z0-9_\-/]+(\?[A-Za-z0-9_\-=&.%]*)?$')
+KUULA = re.compile(r'^https://kuula\.co/share/[A-Za-z0-9_\-/]+(\?[A-Za-z0-9_\-=&.%]*)?$|^/tury/[a-z0-9-]+$')  # Kuula або власний тур (tools/tours)
 KUULA_ID = re.compile(r'^[A-Za-z0-9]{5,8}$')
 KUULA_PROF = re.compile(r'^https://kuula\.co/profile/[A-Za-z0-9_.\-]+$')
 UUID = re.compile(r'^[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}$')
@@ -53,7 +53,9 @@ def load():
     errs = []
     for slug, url in (c.get('tour360') or {}).items():
         if url and not KUULA.match(url):
-            errs.append(f'tour360.{slug}: не схоже на https://kuula.co/share/… — {url!r}')
+            errs.append(f'tour360.{slug}: потрібно https://kuula.co/share/… або /tury/<slug> — {url!r}')
+        if url.startswith('/tury/') and not os.path.exists(os.path.join(ROOT, url.lstrip('/') + '.html')):
+            errs.append(f'tour360.{slug}: немає сторінки {url}.html (python3 tools/tours/build.py pages)')
         if not os.path.exists(os.path.join(ROOT, 'proekty', slug + '.html')):
             errs.append(f'tour360.{slug}: немає сторінки proekty/{slug}.html')
     ids = set()
@@ -88,7 +90,7 @@ def h1_name(s):
 def tour_card(url, title, src, w, h, t):
     return (f'<a class="lt3" href="{e(url)}" data-kuula data-title="{e(title)}" target="_blank" rel="noopener">'
             f'<img src="{e(src)}" width="{w}" height="{h}" loading="lazy" decoding="async" alt="{e(title)}">'
-            f'<span class="lt3-b"><span aria-hidden="true">360°</span>{e(t["tour_btn"])}</span><span class="lt3-c">{e(title)}</span></a>')
+            f'<span class="lt3-b">{e(t["tour_btn"])}</span><span class="lt3-c">{e(title)}</span></a>')
 
 
 def project_tour(s, url, lang):
@@ -216,6 +218,8 @@ if __name__ == '__main__':
         n = apply(s, rel, c)
         if n != s:
             n = chrome.versions(n)
+        if n != s and n.replace('\u00a0', ' ') == s.replace('\u00a0', ' '):
+            n = s  # відрізняється лише нерозривними пробілами (їх ставить chrome.nbsp_prices) — не чіпаємо
         if n != s:
             bad.append(rel)
             if not check:

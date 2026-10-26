@@ -191,7 +191,7 @@
       cur = i;
       steps.forEach(function (s, k) { s.hidden = k !== i; });
       if (i === TOTAL) render();
-      prog.textContent = i < TOTAL ? t.step.replace('{n}', i + 1).replace('{t}', TOTAL) : t.est;
+      prog.textContent = t.step.replace('{n}', Math.min(i + 1, TOTAL)).replace('{t}', TOTAL);
       fill.style.width = Math.round((i + (i < TOTAL ? 0 : 1)) / TOTAL * 100) + '%';
       bb.hidden = i === 0; nx.hidden = i === TOTAL; bb.textContent = i === TOTAL ? t.again : t.back;
       navState();
@@ -231,7 +231,7 @@
       }
       function onLead(ev) {
         if (done || !ev.detail || ev.detail.form !== 'quiz') return; done = true; restore();
-        steps.forEach(function (s) { s.hidden = true; }); nav.hidden = true; head.hidden = true;
+        steps.forEach(function (s) { s.hidden = true; }); nav.hidden = true; head.hidden = true; root.classList.add('qz-done');
         ok.hidden = false; try { ok.focus({ preventScroll: true }); } catch (x) { ok.focus(); }
       }
       d.addEventListener('cas:lead', onLead);

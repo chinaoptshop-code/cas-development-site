@@ -1,9 +1,11 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 724 (MAIN 5, LAND 373, інші 346). HTML разом 41569 КБ, з них інлайн CSS 16774 КБ і JS 5020 КБ.
+Сторінок: 726 (MAIN 5, LAND 373, інші 348). HTML разом 41583 КБ, з них інлайн CSS 16774 КБ і JS 5020 КБ.
 
 ## Проблеми
 
+- **Без Clarity** (2): tury.html, tury/demo.html
+- **H1 ≠ 1** (1): tury/demo.html(0)
 - **Навігація через onclick** (1): portfolio.html(20)
 - **Непідтверджені ціни** (49): ar/renovation-calculator.html['$165 000 ', '$33 000 '], biznes-pid-kliuch-kyiv.html['$52 500'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/chornovyi-i-chystovyi-remont-riznytsia.html['$38 500 '], blog/dyzain-i-remont-penthausa-pid-kliuch.html['$115 500  ', '$174 300', '$52 500  ', '$6 300', '$6 300  '], blog/dyzain-interieru-onlain-budynok-za-kordonom.html['$7 500'], blog/dyzain-interieru-z-choho-pochaty.html['$3 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'], blog/dyzain-restoranu-z-choho-pochaty.html['$3 600 '], blog/etapy-remontu-kvartyry-pid-kliuch.html['$38 500'], blog/interier-pryvatnoho-budynku-premium-etapy.html['$165 000  ', '$249 000', '$75 000  ', '$9 000', '$9 000  '] …
 
@@ -741,3 +743,5 @@
 | proekty/office-chicago.html | land | 29.2 | 7.1 | 2.3 | 0.9 | 1 | 303 |
 | proekty/yablu-rest.html | land | 28.6 | 7.0 | 2.3 | 0.9 | 1 | 296 |
 | proekty/dolls-salon.html | land | 27.7 | 6.9 | 2.3 | 0.9 | 1 | 298 |
+| tury.html | other | 11.5 | 3.5 | 0.0 | 0.0 | 0 | 186 |
+| tury/demo.html | other | 2.9 | 1.3 | 0.0 | 0.5 | 0 | 30 |

@@ -1,6 +1,7 @@
 /* CAS Development — «легкі» вбудовування (UI-kit /styleguide/#media; розмітку ставить tools/site/media.py з tools/site/media.json).
-   1) Віртуальний тур 360° (Kuula): <a class="lt3" href="https://kuula.co/share/…" data-kuula>постер + кнопка</a> —
-      по кліку модальне вікно <dialog> з iframe kuula.co (до кліку нічого з kuula.co не вантажиться). Без JS — звичайне посилання.
+   1) Віртуальний тур 360°: <a class="lt3" href="https://kuula.co/share/…" | href="/tury/<slug>" data-kuula>постер + кнопка</a> —
+      по кліку модальне вікно <dialog> з iframe: kuula.co або власний переглядач /tury/<slug>?embed=1 (tools/tours).
+      До кліку нічого не вантажиться. Без JS — звичайне посилання.
    2) Відео YouTube: <a class="lyt" href="https://www.youtube.com/watch?v=ID" data-yt="ID">постер i.ytimg.com + кнопка</a> —
       по кліку iframe youtube-nocookie.com на місці постера. Без JS — посилання на YouTube.
    data-demo — режим для /styleguide/: iframe не вантажимо. CSS — /assets/media.v1.css (підключається поруч). */
@@ -10,14 +11,15 @@
     ru: { close: 'Закрыть', tour: 'Виртуальный тур 360°', demo: 'Демо: здесь откроется тур Kuula / видео YouTube.' },
     en: { close: 'Close', tour: 'Virtual 360° tour', demo: 'Demo: a Kuula tour / YouTube video opens here.' } };
   var t = T[lang] || T.en;
-  var KUULA = /^https:\/\/kuula\.co\/share\/[A-Za-z0-9_\-\/]+(\?[A-Za-z0-9_\-=&.%]*)?$/, YT = /^[A-Za-z0-9_-]{11}$/;
+  var KUULA = /^https:\/\/kuula\.co\/share\/[A-Za-z0-9_\-\/]+(\?[A-Za-z0-9_\-=&.%]*)?$/, OWN = /^\/tury\/[a-z0-9-]+$/, YT = /^[A-Za-z0-9_-]{11}$/;
   function clarity(ev) { try { if (window.clarity) window.clarity('event', ev); } catch (x) {} }
 
   var dlg, frame, back;
   function closeDlg() { if (!dlg) return; if (dlg.open) dlg.close(); }
   function openTour(a) {
     var url = a.getAttribute('href');
-    if (!KUULA.test(url) && !a.hasAttribute('data-demo')) return false;
+    var own = OWN.test(url);
+    if (!KUULA.test(url) && !own && !a.hasAttribute('data-demo')) return false;
     if (!dlg) {
       dlg = d.createElement('dialog'); dlg.className = 'lt3-d';
       var x = d.createElement('button'); x.type = 'button'; x.className = 'lt3-x'; x.setAttribute('aria-label', t.close); x.textContent = '✕';
@@ -33,7 +35,7 @@
     if (a.hasAttribute('data-demo')) { var p = d.createElement('p'); p.className = 'lt3-demo'; p.textContent = t.demo; frame.appendChild(p); }
     else {
       var f = d.createElement('iframe');
-      f.src = url + (url.indexOf('?') < 0 ? '?' : '&') + 'fs=1&vr=1&thumbs=1&info=0&logo=0';
+      f.src = own ? url + '?embed=1' : url + (url.indexOf('?') < 0 ? '?' : '&') + 'fs=1&vr=1&thumbs=1&info=0&logo=0';
       f.title = title; f.allow = 'xr-spatial-tracking; gyroscope; accelerometer; fullscreen'; f.allowFullscreen = true;
       f.setAttribute('loading', 'lazy'); f.referrerPolicy = 'strict-origin-when-cross-origin';
       frame.appendChild(f);
