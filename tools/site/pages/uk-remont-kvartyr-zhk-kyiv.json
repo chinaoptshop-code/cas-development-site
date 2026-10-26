@@ -289,7 +289,7 @@
    ],
    [
     "/remontna-bryhada-kyiv",
-    "своя ремонтна бригада з прорабом"
+    "ремонтна бригада CAS з прорабом"
    ],
    [
     "/remont-kukhni-kyiv",
@@ -298,6 +298,14 @@
    [
     "/remont-vannoi-kimnaty-kyiv",
     "ремонт ванної кімнати"
+   ],
+   [
+    "/kapitalnyi-remont-kvartyry-kyiv",
+    "капітальний ремонт і євроремонт квартири"
+   ],
+   [
+    "/vartist-remontu-kvartyry-kyiv",
+    "вартість ремонту квартири за м²"
    ]
   ]
  ]
