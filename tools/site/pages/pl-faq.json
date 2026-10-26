@@ -3,7 +3,7 @@
  "lang": "pl",
  "service": "FAQ",
  "title": "FAQ: ceny, terminy, gwarancja — CAS Development, Kijów",
- "description": "Odpowiedzi na częste pytania: ceny projektu i remontu, etapy, 12 miesięcy gwarancji, kosztorys ±5%, jeśli remont robi CAS, meble z Chin i Ozdoba.",
+ "description": "Odpowiedzi na częste pytania: ceny projektu i remontu, etapy, 36 miesięcy gwarancji, kosztorys ±5%, jeśli remont robi CAS, meble z Chin i Ozdoba.",
  "h1": "Częste pytania o projekt, remont i umeblowanie",
  "lead": "Pytania, które klienci zadają najczęściej — o ceny, etapy, gwarancję, projekt i meble z Chin. Nie ma Twojego? Zostaw zgłoszenie na dole strony, odpowiemy osobiście.",
  "btn2": [
@@ -38,6 +38,10 @@
     [
      "Czy wystawiacie faktury firmom?",
      "Tak, firmom zarejestrowanym na Ukrainie, z dokumentami rozliczeniowymi. Faktury dla firm z UE — w trakcie uruchamiania."
+    ],
+    [
+     "Jak można zapłacić za remont lub budowę?",
+     "Harmonogram płatności dopasowujemy do klienta i zapisujemy w umowie: 50/50, 50/30/20, 50/40/10 lub w ratach za etapy; start od 10% zaliczki."
     ]
    ],
    "links": [
@@ -57,7 +61,7 @@
    "faq": [
     [
      "Jaka jest gwarancja na prace?",
-     "12 miesięcy."
+     "36 miesięcy."
     ],
     [
      "Czy koszt remontu może wzrosnąć?",
@@ -66,6 +70,10 @@
     [
      "Ile projektów zrealizowaliście?",
      "Ponad 150 od 2016 roku."
+    ],
+    [
+     "Kto wykonuje prace — własna ekipa czy podwykonawcy?",
+     "Własna ekipa: trzy etatowe ekipy CAS do prac o różnym stopniu trudności i rodzaju."
     ]
    ],
    "links": [

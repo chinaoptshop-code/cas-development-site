@@ -157,5 +157,10 @@
  "btn2": [
   "https://wa.me/380978667755",
   "WhatsApp"
- ]
+ ],
+ "packages": true,
+ "prices": {
+  "h2": "Design, renovation and furnishing for 40, 65, 80 and 120 m²",
+  "p": "A design project is only part of the budget. Here is the lower bound at the studio’s base rates for typical areas, if you also order renovation and furnishing."
+ }
 }

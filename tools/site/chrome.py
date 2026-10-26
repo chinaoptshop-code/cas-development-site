@@ -159,7 +159,7 @@ T = {
                          ('/remont-budynku-pid-klyuch-kyiv', 'Ремонт будинку'), ('/baza-vidpochynku-pid-klyuch', 'База відпочинку'), ('/rekonstruktsiia-budynku-kyiv', 'Реконструкція будинку'), ('/budynok-pid-kliuch-koncha-zaspa', 'Будинок у Конча-Заспі')]),
             ('Меблі й корисне', [('/mebliuvannia-kvartyry-kyiv', 'Меблювання під ключ'), ('/komplektatsiia-pid-kliuch-kyiv', 'Комплектація під ключ'),
                                  ('/ozdoba', 'Оздоба — меблі з Китаю'), ('/kalkuliator-remontu', 'Калькулятор вартості'),
-                                 ('/pytannya', 'Часті питання'), ('/blog', 'Блог: ціни й поради')]),
+                                 ('/pytannya', 'Часті питання'), ('/dogovir-garantiya-oplata', 'Договір, гарантія, оплата'), ('/blog', 'Блог: ціни й поради')]),
         ]),
     'ru': dict(
         nav=[('/ru/uslugi', 'Услуги'), ('/portfolio', 'Портфолио'), ('/ozdoba', 'Оздоба'), ('/ru/blog', 'Блог'),
@@ -184,7 +184,7 @@ T = {
                       ('/ru/remont-doma-kiev', 'Ремонт дома'), ('/ru/baza-otdyha-pod-klyuch', 'База отдыха'), ('/ru/rekonstruktsiya-doma-kiev', 'Реконструкция дома'), ('/ru/dom-pod-klyuch-koncha-zaspa', 'Дом в Конча-Заспе')]),
             ('Мебель и полезное', [('/ru/meblirovka-kvartiry-kiev', 'Меблировка под ключ'), ('/ru/komplektatsiya-pod-klyuch-kiev', 'Комплектация под ключ'),
                                    ('/ozdoba', 'Оздоба — мебель из Китая'), ('/ru/kalkulyator-remonta', 'Калькулятор стоимости'),
-                                   ('/ru/voprosy', 'Частые вопросы'), ('/ru/blog', 'Блог: цены и советы')]),
+                                   ('/ru/voprosy', 'Частые вопросы'), ('/ru/dogovor-garantiya-oplata', 'Договор, гарантия, оплата'), ('/ru/blog', 'Блог: цены и советы')]),
         ]),
 }
 for _l in LANGS:  # нові мови — словник chrome з tools/site/lang/<мова>.json
