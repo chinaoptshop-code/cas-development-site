@@ -1,9 +1,11 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 736 (MAIN 5, LAND 385, інші 346). HTML разом 41848 КБ, з них інлайн CSS 16957 КБ і JS 5104 КБ.
+Сторінок: 738 (MAIN 5, LAND 385, інші 348). HTML разом 41855 КБ, з них інлайн CSS 16957 КБ і JS 5104 КБ.
 
 ## Проблеми
 
+- **Без Clarity** (2): tury.html, tury/demo.html
+- **H1 ≠ 1** (1): tury/demo.html(0)
 - **Навігація через onclick** (1): portfolio.html(20)
 - **Непідтверджені ціни** (49): ar/renovation-calculator.html['$165 000 ', '$33 000 '], biznes-pid-kliuch-kyiv.html['$52 500'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/chornovyi-i-chystovyi-remont-riznytsia.html['$38 500 '], blog/dyzain-i-remont-penthausa-pid-kliuch.html['$115 500  ', '$174 300', '$52 500  ', '$6 300', '$6 300  '], blog/dyzain-interieru-onlain-budynok-za-kordonom.html['$7 500'], blog/dyzain-interieru-z-choho-pochaty.html['$3 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'], blog/dyzain-restoranu-z-choho-pochaty.html['$3 600 '], blog/etapy-remontu-kvartyry-pid-kliuch.html['$38 500'], blog/interier-pryvatnoho-budynku-premium-etapy.html['$165 000  ', '$249 000', '$75 000  ', '$9 000', '$9 000  '] …
 
@@ -28,13 +30,11 @@
 | services.html | main | 88.8 | 21.5 | 45.1 | 7.1 | 21 | 456 |
 | en/ozdoba.html | other | 87.9 | 21.0 | 30.8 | 7.2 | 13 | 620 |
 | ozdoba/stilets-krislo-obidnii-bukle-z-pidlokitnykamy-74.html | other | 66.0 | 17.5 | 32.5 | 7.2 | 14 | 326 |
-| ru/stroitelstvo-domov-kiev.html | land | 65.7 | 17.4 | 15.3 | 7.0 | 9 | 508 |
 | ozdoba/krislo-launzh-vulychne-z-tyku-z-541.html | other | 65.6 | 17.4 | 32.5 | 7.2 | 14 | 327 |
 | ozdoba/dyvan-modulnyi-miakyi-2-sektsii-60.html | other | 65.4 | 17.4 | 32.5 | 7.2 | 14 | 328 |
 | ozdoba/komplekt-vulychnykh-mebliv-aliuminiievyi-5-predmetiv-542.html | other | 65.4 | 17.3 | 32.5 | 7.2 | 14 | 323 |
 | ozdoba/liniina-modulna-pidvisna-systema-3-sektsii-2.html | other | 65.4 | 17.4 | 32.5 | 7.2 | 14 | 330 |
 | ozdoba/pidvis-reikovyi-derevianyi-tsylindr-120-sm-1.html | other | 65.4 | 17.5 | 32.5 | 7.2 | 14 | 330 |
-| budivnytstvo-budynkiv-kyiv.html | land | 65.3 | 17.2 | 15.1 | 7.0 | 9 | 510 |
 | ozdoba/lampa-nastilna-akumuliatorna-latun-14.html | other | 65.3 | 17.4 | 32.5 | 7.2 | 14 | 325 |
 | ozdoba/biokamin-avtomatychnyi-vbudovanyi-120-sm-511.html | other | 65.2 | 17.3 | 32.5 | 7.2 | 14 | 326 |
 | ozdoba/elektrokamin-nastinnyi-liniinyi-z-pultom-127-501.html | other | 65.2 | 17.3 | 32.5 | 7.2 | 14 | 326 |
@@ -362,8 +362,10 @@
 | ozdoba/skulptura-povitriani-kuli-na-marmurovii-osnovi-163.html | other | 62.7 | 17.0 | 32.5 | 7.2 | 14 | 317 |
 | ru/stoimost-stroitelstva-doma-kiev.html | land | 62.7 | 17.2 | 15.3 | 7.0 | 9 | 461 |
 | ozdoba/dekoratyvna-arka-keramichna-bilyi-krapchastyi-164.html | other | 62.6 | 17.0 | 32.5 | 7.2 | 14 | 316 |
-| ru/stoimost-remonta-kvartiry-kiev.html | land | 61.8 | 17.0 | 15.9 | 8.0 | 9 | 454 |
-| vartist-remontu-kvartyry-kyiv.html | land | 61.8 | 17.1 | 15.9 | 8.0 | 9 | 454 |
+| ru/stroitelstvo-domov-kiev.html | land | 62.1 | 16.8 | 15.3 | 7.0 | 9 | 495 |
+| ru/stoimost-remonta-kvartiry-kiev.html | land | 62.0 | 17.1 | 15.9 | 8.0 | 9 | 456 |
+| vartist-remontu-kvartyry-kyiv.html | land | 62.0 | 17.1 | 15.9 | 8.0 | 9 | 456 |
+| budivnytstvo-budynkiv-kyiv.html | land | 61.6 | 16.5 | 15.1 | 7.0 | 9 | 497 |
 | kapitalnyi-remont-kvartyry-kyiv.html | land | 61.1 | 16.7 | 15.3 | 7.0 | 9 | 448 |
 | ru/kapitalnyy-remont-kvartiry-kiev.html | land | 61.0 | 16.7 | 15.3 | 7.0 | 9 | 448 |
 | dyzain-interieru-premium-kyiv.html | land | 60.8 | 16.7 | 15.3 | 7.0 | 9 | 464 |
@@ -381,7 +383,7 @@
 | dyzain-interieru-budynku-kyiv.html | land | 58.8 | 16.1 | 15.3 | 7.0 | 9 | 460 |
 | ru/dizayn-interera-doma-kiev.html | land | 58.7 | 16.1 | 15.3 | 7.0 | 9 | 460 |
 | blog/interier-pryvatnoho-budynku-premium-etapy.html | land | 58.3 | 17.1 | 14.6 | 7.0 | 7 | 313 |
-| ru/meblirovka-kvartiry-kiev.html | land | 58.3 | 15.7 | 15.3 | 7.0 | 9 | 417 |
+| ru/meblirovka-kvartiry-kiev.html | land | 58.3 | 15.7 | 15.3 | 7.0 | 9 | 418 |
 | blog/dyzain-interieru-onlain-budynok-za-kordonom.html | land | 58.0 | 16.8 | 14.6 | 7.0 | 7 | 319 |
 | blog/komplektatsiia-hotelyu-apart-hotelyu-pid-kliuch.html | land | 58.0 | 17.0 | 14.6 | 7.0 | 7 | 312 |
 | pytannya.html | land | 57.9 | 14.5 | 13.7 | 7.0 | 7 | 377 |
@@ -394,7 +396,7 @@
 | ru/remont-kvartir-kiev.html | land | 57.2 | 15.5 | 15.3 | 7.0 | 9 | 433 |
 | blog/komplektatsiia-restoranu-hotelyu-z-kytaiu.html | land | 57.1 | 16.4 | 14.6 | 7.0 | 7 | 323 |
 | dyzain-hotelu-kyiv.html | land | 57.1 | 15.9 | 15.3 | 7.0 | 9 | 441 |
-| mebliuvannia-kvartyry-kyiv.html | land | 57.1 | 15.3 | 15.3 | 7.0 | 9 | 415 |
+| mebliuvannia-kvartyry-kyiv.html | land | 57.1 | 15.4 | 15.3 | 7.0 | 9 | 416 |
 | ru/dizayn-gostinitsy-kiev.html | land | 57.1 | 15.9 | 15.3 | 7.0 | 9 | 441 |
 | ru/realizatsiya-dizayn-proekta-kiev.html | land | 57.0 | 15.4 | 15.3 | 7.0 | 9 | 421 |
 | ru/komplektatsiya-pod-klyuch-kiev.html | land | 56.9 | 15.3 | 15.3 | 7.0 | 9 | 406 |
@@ -753,3 +755,5 @@
 | proekty/office-chicago.html | land | 28.7 | 7.0 | 2.3 | 0.9 | 1 | 298 |
 | proekty/yablu-rest.html | land | 28.2 | 6.9 | 2.3 | 0.9 | 1 | 291 |
 | proekty/dolls-salon.html | land | 27.2 | 6.8 | 2.3 | 0.9 | 1 | 293 |
+| tury.html | other | 11.0 | 3.4 | 0.0 | 0.0 | 0 | 181 |
+| tury/demo.html | other | 2.9 | 1.3 | 0.0 | 0.5 | 0 | 30 |
