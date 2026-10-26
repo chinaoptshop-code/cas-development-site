@@ -112,7 +112,7 @@ INDEX = '''<!doctype html>
 <html lang="uk"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>3D-тури обʼєктів — віртуальні прогулянки | CAS Development</title>
-<meta name="description" content="Віртуальні 3D-тури обʼєктів CAS Development: пройдіться кімнатами на телефоні, ноутбуці або у VR-окулярах. 360° фото, переходи між кімнатами.">
+<meta name="description" content="3D-тури CAS Development: реалізовані інтерʼєри й 360-візуалізації дизайн-проєктів. Дивіться на телефоні, ноутбуці або у VR-окулярах.">
 <link rel="canonical" href="{site}/tury">
 <meta property="og:title" content="3D-тури обʼєктів — CAS Development">
 <meta property="og:image" content="{site}{og}">
@@ -123,7 +123,7 @@ INDEX = '''<!doctype html>
 <section class="tl-hero">
 <p class="tl-eye">Портфоліо · 360°</p>
 <h1>Пройдіться нашими <em>обʼєктами</em></h1>
-<p class="tl-lead">Віртуальні тури реальних інтерʼєрів і будинків. Відкрийте тур і рухайтесь між кімнатами стрілками на фото — так, ніби ви всередині.</p>
+<p class="tl-lead">360° тури реалізованих інтерʼєрів і 360-візуалізації наших дизайн-проєктів і концептів — тип кожного туру підписаний на картці. Відкрийте тур і рухайтесь між кімнатами стрілками на фото — так, ніби ви всередині.</p>
 <ul class="tl-how">
 <li><b>Телефон</b><span>Повертайте телефон або ведіть пальцем</span></li>
 <li><b>Ноутбук</b><span>Тягніть мишкою, клік по стрілці — наступна кімната</span></li>
@@ -143,7 +143,7 @@ INDEX = '''<!doctype html>
 
 def pages():
     OUT.mkdir(exist_ok=True)
-    cards = []
+    cards, open_slugs = [], []
     for f in sorted(DATA.glob('*.json')):
         t = json.loads(f.read_text(encoding='utf-8'))
         start = next(s for s in t['scenes'] if s['id'] == t['start'])
@@ -154,6 +154,7 @@ def pages():
                                                             slug=t['slug'], thumb=thumb, data=data,
                                                             robots='\n<meta name="robots" content="noindex">' if t.get('hidden') else ''), encoding='utf-8')
         if not t.get('hidden'):
+            open_slugs.append(t['slug'])
             meta = ' · '.join(x for x in (t.get('kind'), t.get('place'), f"{len(t['scenes'])} точ.") if x)
             cards.append((t.get('order', 99), f'<a class="tl-card" href="/tury/{t["slug"]}" style="--pano:url({thumb})">'
                          f'<span class="tl-img"><img src="{thumb}" alt="{html.escape(t["title"])} — 3D-тур 360°" loading="lazy" width="640" height="320"></span>'
@@ -171,7 +172,21 @@ def pages():
     except Exception as e:
         print('chrome.apply пропущено:', e)
     (ROOT / 'tury.html').write_text(idx, encoding='utf-8')
+    sitemap(['/tury'] * bool(cards) + [f'/tury/{s}' for s in open_slugs])
     print(f'Сторінки: /tury + {len(cards)} турів')
+
+
+def sitemap(paths):
+    """sitemap.xml: /tury і відкриті тури — додати, приховані (noindex) — прибрати."""
+    sm = ROOT / 'sitemap.xml'; s = sm.read_text(encoding='utf-8')
+    want = {SITE + p for p in paths}
+    n = re.sub(r'  <url><loc>' + re.escape(SITE) + r'/tury(?:/[a-z0-9-]+)?</loc>.*?</url>\n',
+               lambda m: m.group(0) if re.search(r'<loc>([^<]+)</loc>', m.group(0)).group(1) in want else '', s)
+    day = __import__('datetime').date.today().isoformat()
+    add = ''.join(f'  <url><loc>{u}</loc><lastmod>{day}</lastmod></url>\n' for u in sorted(want) if f'<loc>{u}</loc>' not in n)
+    n = n.replace('</urlset>', add + '</urlset>')
+    if n != s:
+        sm.write_text(n, encoding='utf-8')
 
 
 if __name__ == '__main__':

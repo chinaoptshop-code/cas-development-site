@@ -1,8 +1,8 @@
 {
  "slug": "hoda-estate",
- "title": "Hoda Estate — будинок у Карпатах",
- "description": "360-тур будинку Hoda Estate у Карпатах.",
- "hidden": true,
+ "title": "Hoda Estate — дизайн-проєкт будинку в Карпатах",
+ "description": "360-візуалізації дизайн-проєкту інтерʼєру будинку Hoda Estate у Карпатах: вітальня з кухнею, спальні, ванні, сауна.",
+ "hidden": false,
  "source": "kuula:71bXQ",
  "start": "s01",
  "scenes": [
@@ -208,5 +208,8 @@
     }
    ]
   }
- ]
+ ],
+ "kind": "Дизайн-проєкт · 360-візуалізація",
+ "place": "Карпати",
+ "order": 3
 }

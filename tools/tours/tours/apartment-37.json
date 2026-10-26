@@ -1,8 +1,8 @@
 {
  "slug": "apartment-37",
- "title": "Квартира 37 м²",
- "description": "360-тур квартири 37 м².",
- "hidden": true,
+ "title": "Квартира 37 м² — дизайн-проєкт",
+ "description": "360-візуалізації дизайн-проєкту квартири 37 м².",
+ "hidden": false,
  "source": "kuula:7cgv8",
  "start": "s01",
  "scenes": [
@@ -55,5 +55,7 @@
    "yaw": 0.0,
    "hotspots": []
   }
- ]
+ ],
+ "kind": "Дизайн-проєкт · 360-візуалізація",
+ "order": 9
 }

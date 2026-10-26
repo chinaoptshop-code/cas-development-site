@@ -28,6 +28,8 @@ PROJECTS = [
     ('linden-penthouse', 'Linden Penthouse', 'Київ', (30.5320, 50.4470), 11, '/img/p/1MslU7S5X8gIEp-400.webp'),
     ('hodos-villa', 'Hodos Villa', 'Київ', (30.5050, 50.4580), 11, '/img/p/1Grj8_m7MJwsbE-400.webp'),
     ('office-chicago', 'Office Chicago', 'ЖК Chicago, Київ', (30.5160, 50.4380), 11, '/img/p/16fKqdFifd2emf-400.webp'),
+    # Tetris Hall — квартира в ЖК Tetris Hall (Київ; відео каналу «TETRIS HALL 2») — 27.10.2026; Dolls Salon — місто не підтверджене, без точки
+    ('tetris-hall', 'Tetris Hall', 'Київ', (30.5240, 50.4660), 11, '/img/p/1xqY1KZo2JY5xq-400.webp'),
     ('petrivtsi-house', 'Petrivtsi House', 'Петрівці, Київська обл.', (30.4400, 50.6100), 10, '/img/p/1NVeaQcV2TZSN5-400.webp'),
     ('pidgirland', 'Pidgirland', 'Київська обл.', (30.3000, 50.3000), 8, '/img/p/1FiLI9kKE-C87h-400.webp'),
     ('hoda-estate', 'Hoda Estate', 'Карпати', (24.4000, 48.4000), 7, '/img/p/1FRa0FI6iMHK5L-400.webp'),
