@@ -1,8 +1,8 @@
 {
  "slug": "apartment-56",
- "title": "Квартира 56 м²",
- "description": "360-тур квартири 56 м².",
- "hidden": true,
+ "title": "Квартира 56 м² — дизайн-проєкт",
+ "description": "360-візуалізації дизайн-проєкту квартири 56 м².",
+ "hidden": false,
  "source": "kuula:7bXLt",
  "start": "s01",
  "scenes": [
@@ -62,5 +62,7 @@
    "yaw": 0.0,
    "hotspots": []
   }
- ]
+ ],
+ "kind": "Дизайн-проєкт · 360-візуалізація",
+ "order": 7
 }
