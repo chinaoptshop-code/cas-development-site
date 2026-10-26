@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Пляжна тераса — 3D-тур | CAS Development</title>
+<meta name="description" content="360-тур пляжної тераси.">
+<link rel="canonical" href="https://cas-develop.com/tury/beach-terrace">
+<meta property="og:title" content="Пляжна тераса — 3D-тур CAS Development">
+<meta property="og:description" content="360-тур пляжної тераси.">
+<meta property="og:image" content="https://cas-develop.com/img/tury/beach-terrace/img-0743-thumb.jpg">
+<link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="/assets/tours/tour.v1.css">
+<script src="/assets/tours/aframe.min.js"></script>
+</head><body>
+<script type="application/json" id="tour-data">{"slug": "beach-terrace", "title": "Пляжна тераса", "description": "360-тур пляжної тераси.", "hidden": false, "start": "img-0743", "scenes": [{"id": "img-0743", "name": "Точка 1", "image": "/img/tury/beach-terrace/img-0743.jpg", "yaw": 0, "hotspots": [{"to": "img-0747", "yaw": 0, "pitch": -15}]}, {"id": "img-0747", "name": "Точка 2", "image": "/img/tury/beach-terrace/img-0747.jpg", "yaw": 0, "hotspots": [{"to": "img-0751", "yaw": 0, "pitch": -15}, {"to": "img-0743", "yaw": 180, "pitch": -15}]}, {"id": "img-0751", "name": "Точка 3", "image": "/img/tury/beach-terrace/img-0751.jpg", "yaw": 0, "hotspots": [{"to": "img-0755", "yaw": 0, "pitch": -15}, {"to": "img-0747", "yaw": 180, "pitch": -15}]}, {"id": "img-0755", "name": "Точка 4", "image": "/img/tury/beach-terrace/img-0755.jpg", "yaw": 0, "hotspots": [{"to": "img-0759", "yaw": 0, "pitch": -15}, {"to": "img-0751", "yaw": 180, "pitch": -15}]}, {"id": "img-0759", "name": "Точка 5", "image": "/img/tury/beach-terrace/img-0759.jpg", "yaw": 0, "hotspots": [{"to": "img-0763", "yaw": 0, "pitch": -15}, {"to": "img-0755", "yaw": 180, "pitch": -15}]}, {"id": "img-0763", "name": "Точка 6", "image": "/img/tury/beach-terrace/img-0763.jpg", "yaw": 0, "hotspots": [{"to": "img-0767", "yaw": 0, "pitch": -15}, {"to": "img-0759", "yaw": 180, "pitch": -15}]}, {"id": "img-0767", "name": "Точка 7", "image": "/img/tury/beach-terrace/img-0767.jpg", "yaw": 0, "hotspots": [{"to": "img-0771", "yaw": 0, "pitch": -15}, {"to": "img-0763", "yaw": 180, "pitch": -15}]}, {"id": "img-0771", "name": "Точка 8", "image": "/img/tury/beach-terrace/img-0771.jpg", "yaw": 0, "hotspots": [{"to": "img-0775", "yaw": 0, "pitch": -15}, {"to": "img-0767", "yaw": 180, "pitch": -15}]}, {"id": "img-0775", "name": "Точка 9", "image": "/img/tury/beach-terrace/img-0775.jpg", "yaw": 0, "hotspots": [{"to": "img-0779", "yaw": 0, "pitch": -15}, {"to": "img-0771", "yaw": 180, "pitch": -15}]}, {"id": "img-0779", "name": "Точка 10", "image": "/img/tury/beach-terrace/img-0779.jpg", "yaw": 0, "hotspots": [{"to": "img-0783", "yaw": 0, "pitch": -15}, {"to": "img-0775", "yaw": 180, "pitch": -15}]}, {"id": "img-0783", "name": "Точка 11", "image": "/img/tury/beach-terrace/img-0783.jpg", "yaw": 0, "hotspots": [{"to": "img-0787", "yaw": 0, "pitch": -15}, {"to": "img-0779", "yaw": 180, "pitch": -15}]}, {"id": "img-0787", "name": "Точка 12", "image": "/img/tury/beach-terrace/img-0787.jpg", "yaw": 0, "hotspots": [{"to": "img-0791", "yaw": 0, "pitch": -15}, {"to": "img-0783", "yaw": 180, "pitch": -15}]}, {"id": "img-0791", "name": "Точка 13", "image": "/img/tury/beach-terrace/img-0791.jpg", "yaw": 0, "hotspots": [{"to": "img-0795", "yaw": 0, "pitch": -15}, {"to": "img-0787", "yaw": 180, "pitch": -15}]}, {"id": "img-0795", "name": "Точка 14", "image": "/img/tury/beach-terrace/img-0795.jpg", "yaw": 0, "hotspots": [{"to": "img-0799", "yaw": 0, "pitch": -15}, {"to": "img-0791", "yaw": 180, "pitch": -15}]}, {"id": "img-0799", "name": "Точка 15", "image": "/img/tury/beach-terrace/img-0799.jpg", "yaw": 0, "hotspots": [{"to": "img-0795", "yaw": 180, "pitch": -15}]}], "kind": "Пляжна тераса", "place": "", "order": 5}</script>
+<a-scene id="scene" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .spot, .sky-hit" vr-mode-ui="enabled: true" loading-screen="dotsColor:#c8a96a; backgroundColor:#111" renderer="colorManagement:true" xr-mode-ui="enabled: true">
+  <a-assets timeout="20000"></a-assets>
+  <a-sky id="sky" rotation="0 -90 0"></a-sky>
+  <a-entity id="spots" follow-cam></a-entity>
+  <a-entity id="rig">
+    <a-camera id="cam" camera="userHeight: 0" position="0 0 0" look-controls="reverseMouseDrag:true; magicWindowTrackingEnabled:true" wasd-controls="enabled:false">
+      <a-cursor id="cursor" fuse="false" raycaster="objects:.spot" material="color:#fff; shader:flat" visible="false"></a-cursor>
+    </a-camera>
+    <a-entity laser-controls="hand: right" raycaster="objects:.spot; far: 30"></a-entity>
+    <a-entity laser-controls="hand: left" raycaster="objects:.spot; far: 30"></a-entity>
+  </a-entity>
+</a-scene>
+<div class="ui">
+  <a class="brand" href="/tury" target="_top">CAS · 3D</a>
+  <div class="title" id="title"></div>
+  <button class="btn" id="menuBtn" aria-label="Кімнати">☰ Кімнати</button>
+</div>
+<nav class="rooms" id="rooms" hidden></nav>
+<div class="hint" id="hint">Тягніть, щоб роздивитись · стрілки — перехід · VR — окуляри</div>
+<div class="edit" id="edit" hidden></div>
+<script src="/assets/tours/tour.v1.js"></script>
+</body></html>

@@ -1,0 +1,38 @@
+{
+ "slug": "office",
+ "title": "Офіс",
+ "description": "360-тур офісу.",
+ "hidden": true,
+ "start": "img-20260312-123840-141",
+ "scenes": [
+  {
+   "id": "img-20260312-123840-141",
+   "name": "Точка 1",
+   "image": "/img/tury/office/img-20260312-123840-141.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "img-20260312-123843-434",
+     "yaw": 0,
+     "pitch": -15
+    }
+   ]
+  },
+  {
+   "id": "img-20260312-123843-434",
+   "name": "Точка 2",
+   "image": "/img/tury/office/img-20260312-123843-434.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "img-20260312-123840-141",
+     "yaw": 180,
+     "pitch": -15
+    }
+   ]
+  }
+ ],
+ "kind": "Офіс",
+ "place": "Київ",
+ "order": 8
+}

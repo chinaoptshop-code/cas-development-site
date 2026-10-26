@@ -1,38 +1,85 @@
-/* CAS 3D-тури */
-html,body{margin:0;height:100%;background:#111;color:#fff;font:15px/1.4 Montserrat,system-ui,-apple-system,"Segoe UI",sans-serif}
+/* CAS 3D-тури — у стилі сайту: фон #080709, текст #EDE8DF, акцент #BF9148, Cormorant Garamond + Manrope */
+@font-face{font-family:Manrope;font-weight:200 800;font-display:swap;src:url(/fonts/manrope-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Manrope;font-weight:200 800;font-display:swap;src:url(/fonts/manrope-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:'Cormorant Garamond';font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Cormorant Garamond';font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+:root{--t-bg:#080709;--t-sf:#181620;--t-tx:#EDE8DF;--t-mu:#938c84;--t-ac:#BF9148;--t-D:'Cormorant Garamond',Georgia,serif;--t-M:Manrope,system-ui,sans-serif}
+
+/* ── переглядач ── */
+html,body{margin:0;height:100%;background:var(--t-bg);color:var(--t-tx);font:15px/1.45 var(--t-M)}
 a-scene{transition:opacity .25s}
 body.fading a-scene{opacity:.15}
-.ui{position:fixed;top:0;left:0;right:0;display:flex;gap:12px;align-items:center;padding:12px 16px;
-  background:linear-gradient(#000a,#0000);z-index:10;pointer-events:none}
+.ui{position:fixed;top:0;left:0;right:0;display:flex;gap:14px;align-items:center;padding:14px 18px;
+  background:linear-gradient(rgba(8,7,9,.82),rgba(8,7,9,0));z-index:10;pointer-events:none}
 .ui>*{pointer-events:auto}
-.brand{color:#c8a96a;text-decoration:none;font-weight:700;letter-spacing:.04em;white-space:nowrap}
-.title{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;opacity:.9}
-.btn{background:#000a;color:#fff;border:1px solid #fff5;border-radius:20px;padding:8px 14px;font:inherit;cursor:pointer}
-.btn:hover{border-color:#c8a96a}
-.rooms{position:fixed;top:58px;right:12px;max-height:calc(100% - 140px);overflow:auto;z-index:11;
-  background:#000d;border-radius:12px;padding:8px;display:grid;gap:8px;width:220px}
+.brand{color:var(--t-tx);text-decoration:none;font-family:var(--t-D);font-size:20px;letter-spacing:.06em;white-space:nowrap}
+.brand{text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.brand::first-letter{color:var(--t-ac)}
+.title{text-shadow:0 1px 6px rgba(0,0,0,.7);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--t-ac)}
+.btn{background:rgba(8,7,9,.6);color:var(--t-tx);border:1px solid rgba(191,145,72,.45);padding:8px 16px;font:12px var(--t-M);
+  letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.btn:hover{background:var(--t-ac);color:#140f08}
+.rooms{position:fixed;top:62px;right:14px;max-height:calc(100% - 150px);overflow:auto;z-index:11;
+  background:rgba(16,14,12,.94);border:1px solid rgba(237,232,223,.08);padding:8px;display:grid;gap:6px;width:240px}
 .rooms[hidden]{display:none}
-.rooms a{display:flex;gap:8px;align-items:center;color:#fff;text-decoration:none;border-radius:8px;padding:4px}
-.rooms a.on,.rooms a:hover{background:#c8a96a33}
-.rooms img{width:72px;height:36px;object-fit:cover;border-radius:4px}
-.hint{position:fixed;bottom:76px;left:50%;transform:translateX(-50%);background:#000b;padding:8px 14px;border-radius:20px;
-  font-size:13px;z-index:10;transition:opacity .6s;text-align:center;max-width:90%}
+.rooms a{display:flex;gap:10px;align-items:center;color:var(--t-tx);text-decoration:none;padding:5px;font-size:13px}
+.rooms a.on,.rooms a:hover{background:rgba(191,145,72,.14)}
+.rooms a.on span{color:var(--t-ac)}
+.rooms img{width:76px;height:38px;object-fit:cover}
+.hint{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(8,7,9,.75);padding:9px 16px;
+  font-size:12px;letter-spacing:.06em;z-index:10;transition:opacity .6s;text-align:center;max-width:90%;border:1px solid rgba(237,232,223,.08)}
 .hint.gone{opacity:0;pointer-events:none}
 body.embed .brand{display:none}
-.edit{position:fixed;left:12px;bottom:12px;z-index:12;background:#000e;border:1px solid #c8a96a;border-radius:12px;
-  padding:12px;display:grid;gap:8px;max-width:320px;font-size:13px}
+.edit{position:fixed;left:14px;bottom:14px;z-index:12;background:rgba(16,14,12,.96);border:1px solid var(--t-ac);
+  padding:14px;display:grid;gap:8px;max-width:330px;font-size:13px}
 .edit[hidden]{display:none}
-.edit select,.edit input,.edit button{font:inherit;padding:6px;border-radius:6px;border:1px solid #555;background:#222;color:#fff}
+.edit select,.edit input,.edit button{font:inherit;padding:7px;border:1px solid rgba(237,232,223,.15);background:var(--t-sf);color:var(--t-tx)}
 .edit button{cursor:pointer}
-.edit button:hover{border-color:#c8a96a}
-/* список турів */
-body.list{background:#f6f3ee;color:#1d1d1b}
-.wrap{max-width:1100px;margin:0 auto;padding:40px 20px}
-.wrap h1{font-size:34px;margin:0 0 12px}
-.lead{max-width:720px;color:#555}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin:28px 0}
-.card{display:grid;text-decoration:none;color:inherit;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px #0001}
-.card img{width:100%;height:auto;aspect-ratio:2/1;object-fit:cover}
-.card span{padding:12px 14px 2px;font-weight:600}
-.card small{padding:0 14px 14px;color:#777}
-.cta a{color:#9a7b3c}
+.edit button:hover{border-color:var(--t-ac)}
+
+/* ── список турів /tury (під шапкою й футером сайту) ── */
+body.list{height:auto;background:var(--t-bg)}
+.tl{max-width:1240px;margin:0 auto;padding:110px 28px 40px}
+.tl-eye{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--t-ac);margin:0 0 18px}
+.tl h1,.tl h2{font-family:var(--t-D);font-weight:300;color:var(--t-tx);line-height:1.08;margin:0}
+.tl h1{font-size:clamp(40px,6vw,76px)}
+.tl h2{font-size:clamp(30px,4vw,48px)}
+.tl em{font-style:italic;color:var(--t-ac)}
+.tl-lead{max-width:640px;color:var(--t-mu);font-size:16px;line-height:1.7;margin:22px 0 0}
+.tl-how{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(237,232,223,.08)}
+.tl-how li{padding:20px 22px 0 0;display:grid;gap:6px}
+.tl-how b{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--t-ac);font-weight:600}
+.tl-how span{color:var(--t-mu);font-size:14px}
+.tl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:4px;margin:64px 0 0}
+.tl-card{position:relative;display:block;aspect-ratio:2/1;overflow:hidden;background:var(--t-sf);color:var(--t-tx);text-decoration:none}
+.tl-img{position:absolute;inset:0;background-image:var(--pano);background-size:200% 100%;background-repeat:repeat-x;background-position:0 50%}
+.tl-img img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .5s}
+.tl-card:hover .tl-img img{opacity:0}
+.tl-card:hover .tl-img{animation:tl-pan 14s linear infinite}
+@keyframes tl-pan{to{background-position:200% 50%}}
+.tl-card::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(8,7,9,.88));pointer-events:none}
+.tl-badge{position:absolute;top:14px;left:14px;z-index:2;font-size:10px;letter-spacing:.18em;padding:3px 9px;border:1px solid rgba(191,145,72,.6);color:var(--t-ac);background:rgba(8,7,9,.55)}
+.tl-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:18px 20px;display:grid;gap:4px}
+.tl-meta{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--t-ac)}
+.tl-name{font-family:var(--t-D);font-size:28px;font-weight:300;line-height:1.1}
+.tl-go{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--t-tx);opacity:0;transform:translateY(6px);transition:all .3s}
+.tl-card:hover .tl-go{opacity:1;transform:none}
+.tl-cta{margin:90px 0 30px;padding:56px 0 0;border-top:1px solid rgba(237,232,223,.08);display:grid;gap:18px;max-width:720px}
+.tl-cta p{color:var(--t-mu);line-height:1.7;margin:0}
+.tl-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.tl-btn{font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:14px 26px;text-decoration:none;background:var(--t-ac);color:#140f08;border:1px solid var(--t-ac);transition:all .2s}
+.tl-btn:hover{background:transparent;color:var(--t-ac)}
+.tl-btn.ghost{background:transparent;color:var(--t-tx);border-color:rgba(237,232,223,.25)}
+.tl-btn.ghost:hover{border-color:var(--t-ac);color:var(--t-ac)}
+@media(max-width:760px){.tl{padding:90px 18px 30px}.tl-card{aspect-ratio:16/10}.tl-name{font-size:24px}.tl-how{grid-template-columns:1fr}.tl-grid{grid-template-columns:1fr}.tl-go{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.tl-card:hover .tl-img{animation:none}.tl-card:hover .tl-img img{opacity:1}}
+.edit{max-height:calc(100% - 90px);overflow:auto}
+.edit hr{border:0;border-top:1px solid rgba(237,232,223,.12);margin:4px 0;width:100%}
+.edit .row{display:flex;gap:6px}.edit .row button{flex:1}
+.edit .chk{display:flex;gap:8px;align-items:center}
+.edit .hs{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.edit .hs li{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.edit .hs button{padding:2px 8px}
+.edit .mu{color:var(--t-mu)}
+.edit .pri{background:var(--t-ac);color:#140f08;border-color:var(--t-ac)}
+.edit button:disabled{opacity:.35;cursor:default}

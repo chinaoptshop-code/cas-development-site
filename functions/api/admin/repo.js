@@ -75,6 +75,21 @@ export async function onRequestGet({ request, env }) {
 function validJSON(path, text) {
   let d;
   try { d = JSON.parse(text); } catch (e) { return `${path}: некоректний JSON (${e.message})`; }
+  const tm = path.match(/^tools\/tours\/tours\/([a-z0-9-]+)\.json$/);
+  if (tm) { // 3D-тур: структура, щоб редактор не зламав сторінку
+    if (!d || d.slug !== tm[1]) return `${path}: slug не збігається з іменем файлу`;
+    if (typeof d.title !== 'string' || !d.title.trim()) return `${path}: порожня назва туру`;
+    if (!Array.isArray(d.scenes) || !d.scenes.length) return `${path}: немає кімнат`;
+    const ids = new Set(d.scenes.map(s => s && s.id));
+    if (ids.size !== d.scenes.length) return `${path}: id кімнат повторюються`;
+    if (!ids.has(d.start)) return `${path}: стартова кімната не існує`;
+    for (const s of d.scenes) {
+      if (typeof s.name !== 'string' || !s.name.trim()) return `${path}: кімната ${s.id} без назви`;
+      if (typeof s.image !== 'string' || !s.image.startsWith(`/img/tury/${tm[1]}/`)) return `${path}: кімната ${s.id} — фото поза /img/tury/${tm[1]}/`;
+      for (const h of s.hotspots || [])
+        if (!ids.has(h.to) || typeof h.yaw !== 'number' || typeof h.pitch !== 'number') return `${path}: кімната ${s.id} — некоректна стрілка`;
+    }
+  }
   if (path === 'assets/ozdoba/catalog.json' || path === 'tools/products/archive.json') {
     if (!d || !Array.isArray(d.items)) return `${path}: немає списку items`;
     const ids = new Set();

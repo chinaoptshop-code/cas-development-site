@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Шоурум будинку — 3D-тур | CAS Development</title>
+<meta name="description" content="360-тур шоуруму будинку.">
+<link rel="canonical" href="https://cas-develop.com/tury/house-showroom">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Шоурум будинку — 3D-тур CAS Development">
+<meta property="og:description" content="360-тур шоуруму будинку.">
+<meta property="og:image" content="https://cas-develop.com/img/tury/house-showroom/s01-thumb.jpg">
+<link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="/assets/tours/tour.v1.css">
+<script src="/assets/tours/aframe.min.js"></script>
+</head><body>
+<script type="application/json" id="tour-data">{"slug": "house-showroom", "title": "Шоурум будинку", "description": "360-тур шоуруму будинку.", "hidden": true, "source": "kuula:7ZmNY", "start": "s01", "scenes": [{"id": "s01", "name": "Точка 1", "image": "/img/tury/house-showroom/s01.jpg", "yaw": 0.0, "hotspots": [{"to": "s02", "yaw": 7.7, "pitch": 0.3}, {"to": "s08", "yaw": 74.5, "pitch": 3.7}]}, {"id": "s02", "name": "Точка 2", "image": "/img/tury/house-showroom/s02.jpg", "yaw": 0.0, "hotspots": [{"to": "s01", "yaw": 89.4, "pitch": -1.5}, {"to": "s08", "yaw": 71.6, "pitch": 1.9}, {"to": "s03", "yaw": -14.2, "pitch": -6.3}, {"to": "s04", "yaw": -6.6, "pitch": -0.3}]}, {"id": "s03", "name": "Точка 3", "image": "/img/tury/house-showroom/s03.jpg", "yaw": 0.0, "hotspots": [{"to": "s02", "yaw": 169.3, "pitch": -1.9}, {"to": "s07", "yaw": 83.0, "pitch": -2.6}, {"to": "s04", "yaw": 11.1, "pitch": -7.0}]}, {"id": "s04", "name": "Точка 4", "image": "/img/tury/house-showroom/s04.jpg", "yaw": 0.0, "hotspots": [{"to": "s03", "yaw": 172.8, "pitch": -10.3}, {"to": "s02", "yaw": 177.4, "pitch": -0.3}, {"to": "s07", "yaw": 135.6, "pitch": -0.4}, {"to": "s05", "yaw": 84.5, "pitch": -5.9}]}, {"id": "s05", "name": "Точка 5", "image": "/img/tury/house-showroom/s05.jpg", "yaw": 0.0, "hotspots": [{"to": "s04", "yaw": 169.8, "pitch": -5.2}]}, {"id": "s06", "name": "Точка 6", "image": "/img/tury/house-showroom/s06.jpg", "yaw": 0.0, "hotspots": []}, {"id": "s07", "name": "Точка 7", "image": "/img/tury/house-showroom/s07.jpg", "yaw": 0.0, "hotspots": [{"to": "s04", "yaw": -29.6, "pitch": -7.8}, {"to": "s03", "yaw": -79.5, "pitch": -15.6}, {"to": "s02", "yaw": -138.1, "pitch": -10.7}, {"to": "s08", "yaw": 120.7, "pitch": -6.3}, {"to": "s05", "yaw": 36.8, "pitch": -6.2}, {"to": "s10", "yaw": 95.8, "pitch": -3.3}]}, {"id": "s08", "name": "Точка 8", "image": "/img/tury/house-showroom/s08.jpg", "yaw": 0.0, "hotspots": [{"to": "s02", "yaw": -99.5, "pitch": -7.9}, {"to": "s01", "yaw": -178.0, "pitch": -33.4}, {"to": "s07", "yaw": -32.8, "pitch": -8.3}, {"to": "s10", "yaw": 58.5, "pitch": -12.8}]}, {"id": "s09", "name": "Точка 9", "image": "/img/tury/house-showroom/s09.jpg", "yaw": 0.0, "hotspots": [{"to": "s03", "yaw": -102.9, "pitch": -7.3}, {"to": "s07", "yaw": -135.0, "pitch": -12.2}, {"to": "s04", "yaw": -64.1, "pitch": -7.7}, {"to": "s05", "yaw": -9.1, "pitch": -22.4}]}, {"id": "s10", "name": "Точка 10", "image": "/img/tury/house-showroom/s10.jpg", "yaw": 0.0, "hotspots": [{"to": "s07", "yaw": 1.8, "pitch": -6.8}, {"to": "s08", "yaw": -58.5, "pitch": -9.8}, {"to": "s01", "yaw": -73.3, "pitch": -10.7}, {"to": "s02", "yaw": -32.3, "pitch": -5.0}, {"to": "s05", "yaw": 82.9, "pitch": -7.3}]}]}</script>
+<a-scene id="scene" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .spot, .sky-hit" vr-mode-ui="enabled: true" loading-screen="dotsColor:#c8a96a; backgroundColor:#111" renderer="colorManagement:true" xr-mode-ui="enabled: true">
+  <a-assets timeout="20000"></a-assets>
+  <a-sky id="sky" rotation="0 -90 0"></a-sky>
+  <a-entity id="spots" follow-cam></a-entity>
+  <a-entity id="rig">
+    <a-camera id="cam" camera="userHeight: 0" position="0 0 0" look-controls="reverseMouseDrag:true; magicWindowTrackingEnabled:true" wasd-controls="enabled:false">
+      <a-cursor id="cursor" fuse="false" raycaster="objects:.spot" material="color:#fff; shader:flat" visible="false"></a-cursor>
+    </a-camera>
+    <a-entity laser-controls="hand: right" raycaster="objects:.spot; far: 30"></a-entity>
+    <a-entity laser-controls="hand: left" raycaster="objects:.spot; far: 30"></a-entity>
+  </a-entity>
+</a-scene>
+<div class="ui">
+  <a class="brand" href="/tury" target="_top">CAS · 3D</a>
+  <div class="title" id="title"></div>
+  <button class="btn" id="menuBtn" aria-label="Кімнати">☰ Кімнати</button>
+</div>
+<nav class="rooms" id="rooms" hidden></nav>
+<div class="hint" id="hint">Тягніть, щоб роздивитись · стрілки — перехід · VR — окуляри</div>
+<div class="edit" id="edit" hidden></div>
+<script src="/assets/tours/tour.v1.js"></script>
+</body></html>

@@ -1,0 +1,254 @@
+{
+ "slug": "house-showroom",
+ "title": "Шоурум будинку",
+ "description": "360-тур шоуруму будинку.",
+ "hidden": true,
+ "source": "kuula:7ZmNY",
+ "start": "s01",
+ "scenes": [
+  {
+   "id": "s01",
+   "name": "Точка 1",
+   "image": "/img/tury/house-showroom/s01.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s02",
+     "yaw": 7.7,
+     "pitch": 0.3
+    },
+    {
+     "to": "s08",
+     "yaw": 74.5,
+     "pitch": 3.7
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "name": "Точка 2",
+   "image": "/img/tury/house-showroom/s02.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s01",
+     "yaw": 89.4,
+     "pitch": -1.5
+    },
+    {
+     "to": "s08",
+     "yaw": 71.6,
+     "pitch": 1.9
+    },
+    {
+     "to": "s03",
+     "yaw": -14.2,
+     "pitch": -6.3
+    },
+    {
+     "to": "s04",
+     "yaw": -6.6,
+     "pitch": -0.3
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "name": "Точка 3",
+   "image": "/img/tury/house-showroom/s03.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s02",
+     "yaw": 169.3,
+     "pitch": -1.9
+    },
+    {
+     "to": "s07",
+     "yaw": 83.0,
+     "pitch": -2.6
+    },
+    {
+     "to": "s04",
+     "yaw": 11.1,
+     "pitch": -7.0
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "name": "Точка 4",
+   "image": "/img/tury/house-showroom/s04.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s03",
+     "yaw": 172.8,
+     "pitch": -10.3
+    },
+    {
+     "to": "s02",
+     "yaw": 177.4,
+     "pitch": -0.3
+    },
+    {
+     "to": "s07",
+     "yaw": 135.6,
+     "pitch": -0.4
+    },
+    {
+     "to": "s05",
+     "yaw": 84.5,
+     "pitch": -5.9
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "name": "Точка 5",
+   "image": "/img/tury/house-showroom/s05.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s04",
+     "yaw": 169.8,
+     "pitch": -5.2
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "name": "Точка 6",
+   "image": "/img/tury/house-showroom/s06.jpg",
+   "yaw": 0.0,
+   "hotspots": []
+  },
+  {
+   "id": "s07",
+   "name": "Точка 7",
+   "image": "/img/tury/house-showroom/s07.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s04",
+     "yaw": -29.6,
+     "pitch": -7.8
+    },
+    {
+     "to": "s03",
+     "yaw": -79.5,
+     "pitch": -15.6
+    },
+    {
+     "to": "s02",
+     "yaw": -138.1,
+     "pitch": -10.7
+    },
+    {
+     "to": "s08",
+     "yaw": 120.7,
+     "pitch": -6.3
+    },
+    {
+     "to": "s05",
+     "yaw": 36.8,
+     "pitch": -6.2
+    },
+    {
+     "to": "s10",
+     "yaw": 95.8,
+     "pitch": -3.3
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "name": "Точка 8",
+   "image": "/img/tury/house-showroom/s08.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s02",
+     "yaw": -99.5,
+     "pitch": -7.9
+    },
+    {
+     "to": "s01",
+     "yaw": -178.0,
+     "pitch": -33.4
+    },
+    {
+     "to": "s07",
+     "yaw": -32.8,
+     "pitch": -8.3
+    },
+    {
+     "to": "s10",
+     "yaw": 58.5,
+     "pitch": -12.8
+    }
+   ]
+  },
+  {
+   "id": "s09",
+   "name": "Точка 9",
+   "image": "/img/tury/house-showroom/s09.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s03",
+     "yaw": -102.9,
+     "pitch": -7.3
+    },
+    {
+     "to": "s07",
+     "yaw": -135.0,
+     "pitch": -12.2
+    },
+    {
+     "to": "s04",
+     "yaw": -64.1,
+     "pitch": -7.7
+    },
+    {
+     "to": "s05",
+     "yaw": -9.1,
+     "pitch": -22.4
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "name": "Точка 10",
+   "image": "/img/tury/house-showroom/s10.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s07",
+     "yaw": 1.8,
+     "pitch": -6.8
+    },
+    {
+     "to": "s08",
+     "yaw": -58.5,
+     "pitch": -9.8
+    },
+    {
+     "to": "s01",
+     "yaw": -73.3,
+     "pitch": -10.7
+    },
+    {
+     "to": "s02",
+     "yaw": -32.3,
+     "pitch": -5.0
+    },
+    {
+     "to": "s05",
+     "yaw": 82.9,
+     "pitch": -7.3
+    }
+   ]
+  }
+ ]
+}

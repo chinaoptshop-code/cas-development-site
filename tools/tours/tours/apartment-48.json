@@ -1,0 +1,214 @@
+{
+ "slug": "apartment-48",
+ "title": "Квартира 48 м²",
+ "description": "360-тур квартири 48 м² у Києві.",
+ "hidden": true,
+ "source": "kuula:7DlpP",
+ "start": "s01",
+ "scenes": [
+  {
+   "id": "s01",
+   "name": "Точка 1",
+   "image": "/img/tury/apartment-48/s01.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s03",
+     "yaw": 94.5,
+     "pitch": -26.4
+    },
+    {
+     "to": "s02",
+     "yaw": -52.6,
+     "pitch": -41.0
+    },
+    {
+     "to": "s04",
+     "yaw": 52.6,
+     "pitch": -24.3
+    }
+   ]
+  },
+  {
+   "id": "s02",
+   "name": "Точка 2",
+   "image": "/img/tury/apartment-48/s02.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s03",
+     "yaw": 98.5,
+     "pitch": -22.1
+    },
+    {
+     "to": "s01",
+     "yaw": 114.2,
+     "pitch": -36.3
+    }
+   ]
+  },
+  {
+   "id": "s03",
+   "name": "Точка 3",
+   "image": "/img/tury/apartment-48/s03.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s02",
+     "yaw": -8.1,
+     "pitch": -17.8
+    },
+    {
+     "to": "s01",
+     "yaw": -22.0,
+     "pitch": -27.3
+    },
+    {
+     "to": "s04",
+     "yaw": 56.1,
+     "pitch": -32.2
+    },
+    {
+     "to": "s06",
+     "yaw": 32.5,
+     "pitch": -20.3
+    },
+    {
+     "to": "s05",
+     "yaw": 70.3,
+     "pitch": -16.2
+    }
+   ]
+  },
+  {
+   "id": "s04",
+   "name": "Точка 4",
+   "image": "/img/tury/apartment-48/s04.jpg",
+   "yaw": 0.0,
+   "hotspots": [
+    {
+     "to": "s05",
+     "yaw": 102.0,
+     "pitch": -32.1
+    },
+    {
+     "to": "s06",
+     "yaw": 8.8,
+     "pitch": -33.0
+    },
+    {
+     "to": "s07",
+     "yaw": 8.0,
+     "pitch": -22.2
+    },
+    {
+     "to": "s03",
+     "yaw": -90.9,
+     "pitch": -30.2
+    },
+    {
+     "to": "s01",
+     "yaw": -47.1,
+     "pitch": -22.6
+    }
+   ]
+  },
+  {
+   "id": "s05",
+   "name": "Точка 5",
+   "image": "/img/tury/apartment-48/s05.jpg",
+   "yaw": 111.4,
+   "hotspots": [
+    {
+     "to": "s04",
+     "yaw": -84.3,
+     "pitch": -25.7
+    },
+    {
+     "to": "s01",
+     "yaw": -64.1,
+     "pitch": -14.3
+    },
+    {
+     "to": "s03",
+     "yaw": -84.6,
+     "pitch": -15.7
+    },
+    {
+     "to": "s06",
+     "yaw": -50.0,
+     "pitch": -25.0
+    }
+   ]
+  },
+  {
+   "id": "s06",
+   "name": "Точка 6",
+   "image": "/img/tury/apartment-48/s06.jpg",
+   "yaw": -8.7,
+   "hotspots": [
+    {
+     "to": "s07",
+     "yaw": 59.5,
+     "pitch": -37.8
+    },
+    {
+     "to": "s08",
+     "yaw": 138.7,
+     "pitch": -29.4
+    },
+    {
+     "to": "s04",
+     "yaw": -118.7,
+     "pitch": -25.4
+    }
+   ]
+  },
+  {
+   "id": "s07",
+   "name": "Точка 7",
+   "image": "/img/tury/apartment-48/s07.jpg",
+   "yaw": 243.7,
+   "hotspots": [
+    {
+     "to": "s04",
+     "yaw": -139.7,
+     "pitch": -20.4
+    },
+    {
+     "to": "s06",
+     "yaw": -138.9,
+     "pitch": -45.3
+    },
+    {
+     "to": "s08",
+     "yaw": 165.7,
+     "pitch": -23.1
+    }
+   ]
+  },
+  {
+   "id": "s08",
+   "name": "Точка 8",
+   "image": "/img/tury/apartment-48/s08.jpg",
+   "yaw": 142.9,
+   "hotspots": [
+    {
+     "to": "s07",
+     "yaw": -29.7,
+     "pitch": -20.1
+    },
+    {
+     "to": "s06",
+     "yaw": -66.1,
+     "pitch": -24.0
+    },
+    {
+     "to": "s03",
+     "yaw": -79.8,
+     "pitch": -12.5
+    }
+   ]
+  }
+ ]
+}

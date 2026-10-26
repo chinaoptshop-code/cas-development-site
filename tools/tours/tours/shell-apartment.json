@@ -1,0 +1,92 @@
+{
+ "slug": "shell-apartment",
+ "title": "Квартира до ремонту",
+ "description": "Квартира в бетоні перед ремонтом — 360-тур.",
+ "hidden": false,
+ "start": "img-20250527-175949-764",
+ "scenes": [
+  {
+   "id": "img-20250527-175949-764",
+   "name": "Точка 1",
+   "image": "/img/tury/shell-apartment/img-20250527-175949-764.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "img-20250527-180126-526",
+     "yaw": 0,
+     "pitch": -15
+    }
+   ]
+  },
+  {
+   "id": "img-20250527-180126-526",
+   "name": "Точка 2",
+   "image": "/img/tury/shell-apartment/img-20250527-180126-526.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "img-20250527-180152-397",
+     "yaw": 0,
+     "pitch": -15
+    },
+    {
+     "to": "img-20250527-175949-764",
+     "yaw": 180,
+     "pitch": -15
+    }
+   ]
+  },
+  {
+   "id": "img-20250527-180152-397",
+   "name": "Точка 3",
+   "image": "/img/tury/shell-apartment/img-20250527-180152-397.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "img-20250527-180313-383",
+     "yaw": 0,
+     "pitch": -15
+    },
+    {
+     "to": "img-20250527-180126-526",
+     "yaw": 180,
+     "pitch": -15
+    }
+   ]
+  },
+  {
+   "id": "img-20250527-180313-383",
+   "name": "Точка 4",
+   "image": "/img/tury/shell-apartment/img-20250527-180313-383.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "img-20250527-180403-411",
+     "yaw": 0,
+     "pitch": -15
+    },
+    {
+     "to": "img-20250527-180152-397",
+     "yaw": 180,
+     "pitch": -15
+    }
+   ]
+  },
+  {
+   "id": "img-20250527-180403-411",
+   "name": "Точка 5",
+   "image": "/img/tury/shell-apartment/img-20250527-180403-411.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "img-20250527-180313-383",
+     "yaw": 180,
+     "pitch": -15
+    }
+   ]
+  }
+ ],
+ "kind": "Квартира до ремонту",
+ "place": "Київ",
+ "order": 7
+}

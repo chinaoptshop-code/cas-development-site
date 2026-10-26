@@ -1,0 +1,74 @@
+{
+ "slug": "carpathian-site-aerial",
+ "title": "Ділянка в Карпатах з висоти",
+ "description": "Панорами ділянки з дрона.",
+ "hidden": false,
+ "start": "dji-fly-20260402-171958-0072-1775200975054-pano",
+ "scenes": [
+  {
+   "id": "dji-fly-20260402-171958-0072-1775200975054-pano",
+   "name": "Точка 1",
+   "image": "/img/tury/carpathian-site-aerial/dji-fly-20260402-171958-0072-1775200975054-pano.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "dji-fly-20260402-172122-0073-1775201001912-pano",
+     "yaw": 0,
+     "pitch": -15
+    }
+   ]
+  },
+  {
+   "id": "dji-fly-20260402-172122-0073-1775201001912-pano",
+   "name": "Точка 2",
+   "image": "/img/tury/carpathian-site-aerial/dji-fly-20260402-172122-0073-1775201001912-pano.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "dji-fly-20260402-172250-0074-1775201010977-pano",
+     "yaw": 0,
+     "pitch": -15
+    },
+    {
+     "to": "dji-fly-20260402-171958-0072-1775200975054-pano",
+     "yaw": 180,
+     "pitch": -15
+    }
+   ]
+  },
+  {
+   "id": "dji-fly-20260402-172250-0074-1775201010977-pano",
+   "name": "Точка 3",
+   "image": "/img/tury/carpathian-site-aerial/dji-fly-20260402-172250-0074-1775201010977-pano.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "dji-fly-20260402-172740-0084-1775201063367-pano",
+     "yaw": 0,
+     "pitch": -15
+    },
+    {
+     "to": "dji-fly-20260402-172122-0073-1775201001912-pano",
+     "yaw": 180,
+     "pitch": -15
+    }
+   ]
+  },
+  {
+   "id": "dji-fly-20260402-172740-0084-1775201063367-pano",
+   "name": "Точка 4",
+   "image": "/img/tury/carpathian-site-aerial/dji-fly-20260402-172740-0084-1775201063367-pano.jpg",
+   "yaw": 0,
+   "hotspots": [
+    {
+     "to": "dji-fly-20260402-172250-0074-1775201010977-pano",
+     "yaw": 180,
+     "pitch": -15
+    }
+   ]
+  }
+ ],
+ "kind": "Ділянка з дрона",
+ "place": "Карпати",
+ "order": 6
+}
