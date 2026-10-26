@@ -272,8 +272,6 @@
 | ozdoba/tumba-prylizhkova-bila-2-shukhliady-67.html | other | 64.1 | 17.2 | 32.5 | 7.2 | 14 | 320 |
 | ozdoba/unitaz-rozumnyi-pidlohovyi-chornyi-matovyi-156.html | other | 64.1 | 17.2 | 32.5 | 7.2 | 14 | 321 |
 | ozdoba/vizok-barnyi-na-kolesakh-zolotyi-3-422.html | other | 64.1 | 17.3 | 32.5 | 7.2 | 14 | 322 |
-| ru/stoimost-remonta-kvartiry-kiev.html | land | 64.1 | 17.9 | 16.2 | 8.0 | 9 | 496 |
-| vartist-remontu-kvartyry-kyiv.html | land | 64.1 | 17.9 | 16.2 | 8.0 | 9 | 496 |
 | ozdoba/doshka-serviruvalna-z-akatsii-z-zholobkom-407.html | other | 64.0 | 17.3 | 32.5 | 7.2 | 14 | 320 |
 | ozdoba/dozator-dlia-myla-z-pidstavkoiu-35.html | other | 64.0 | 17.2 | 32.5 | 7.2 | 14 | 322 |
 | ozdoba/hodynnyk-nastinnyi-bilyi-z-obiemnymy-tsyframy-165.html | other | 64.0 | 17.2 | 32.5 | 7.2 | 14 | 319 |
@@ -302,8 +300,10 @@
 | ozdoba/tarilka-obidnia-portselianova-bila-27-sm-409.html | other | 64.0 | 17.3 | 32.5 | 7.2 | 14 | 322 |
 | ozdoba/upor-dvernyi-pidlohovyi-chornyi-z-humoiu-438.html | other | 64.0 | 17.2 | 32.5 | 7.2 | 14 | 320 |
 | ozdoba/vidro-dlia-lodu-z-kryshkoiu-nerzhaviiucha-406.html | other | 64.0 | 17.2 | 32.5 | 7.2 | 14 | 321 |
+| ru/stoimost-remonta-kvartiry-kiev.html | land | 64.0 | 17.9 | 16.2 | 8.0 | 9 | 495 |
 | ru/stroitelstvo-domov-kiev.html | land | 64.0 | 17.4 | 15.3 | 7.0 | 9 | 519 |
 | vartist-budivnytstva-budynku-kyiv.html | land | 64.0 | 17.5 | 15.3 | 7.0 | 9 | 467 |
+| vartist-remontu-kvartyry-kyiv.html | land | 64.0 | 17.9 | 16.2 | 8.0 | 9 | 495 |
 | ozdoba/derevo-shtuchne-v-kashpo-180-sm-51.html | other | 63.9 | 17.3 | 32.5 | 7.2 | 14 | 320 |
 | ozdoba/dveri-vkhidni-stalevi-hrafit-320.html | other | 63.9 | 17.2 | 32.5 | 7.2 | 14 | 317 |
 | ozdoba/dzerkalo-khvyliaste-kruhle-v-zolotii-rami-564.html | other | 63.9 | 17.2 | 32.5 | 7.2 | 14 | 320 |
