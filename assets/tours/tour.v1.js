@@ -103,26 +103,62 @@ AFRAME.registerComponent('follow-cam', {
   function renderEdit() {
     const box = $('edit'); box.hidden = false;
     const opts = T.scenes.filter(s => s.id !== cur.id).map(s => `<option value="${s.id}">${s.name}</option>`).join('');
-    box.innerHTML = `<b>Редагування: ${cur.name}</b>
-      <label>Перехід у <select id="eTo">${opts}</select></label>
-      <small>Клік по фото — додати стрілку в це місце. Shift + клік по стрілці — видалити.</small>
-      <label>Назва кімнати <input id="eName" value="${cur.name}"></label>
+    const hs = (cur.hotspots || []).map((h, i) => `<li>→ ${label(h.to)} <button data-del="${i}" title="Видалити">✕</button></li>`).join('') || '<li class="mu">ще немає</li>';
+    const idx = T.scenes.indexOf(cur);
+    box.innerHTML = `<b>Редагування туру</b>
+      <label>Назва туру <input id="eTitle" value="${T.title.replace(/"/g, '&quot;')}"></label>
+      <label class="chk"><input type="checkbox" id="eHidden" ${T.hidden ? 'checked' : ''}> Прихований (лише за посиланням)</label>
+      <hr><b>Кімната ${idx + 1} з ${T.scenes.length}</b>
+      <label>Назва кімнати <input id="eName" value="${cur.name.replace(/"/g, '&quot;')}"></label>
+      <div class="row"><button id="eUp" ${idx ? '' : 'disabled'}>▲ Вище</button><button id="eDown" ${idx < T.scenes.length - 1 ? '' : 'disabled'}>▼ Нижче</button></div>
       <button id="eYaw">Цей напрям — стартовий для кімнати</button>
-      <button id="eStart">Цю кімнату — першою в турі</button>
-      <button id="eCopy">Скопіювати JSON туру</button><span id="eMsg"></span>`;
-    $('eName').onchange = e => { cur.name = e.target.value; go(cur.id); };
+      <button id="eStart">${T.start === cur.id ? '✓ Перша кімната й обкладинка' : 'Зробити першою й обкладинкою'}</button>
+      <label>Нова стрілка веде в <select id="eTo">${opts}</select></label>
+      <small>Клік по фото — поставити стрілку туди, де двері.</small>
+      <ul class="hs">${hs}</ul>
+      <hr><div class="row"><button id="eSave" class="pri">Зберегти на сайт</button><button id="eDl">JSON</button></div>
+      <span id="eMsg"></span>`;
+    $('eTitle').onchange = e => { T.title = e.target.value.trim() || T.title; $('title').textContent = `${T.title} · ${cur.name}`; };
+    $('eHidden').onchange = e => { T.hidden = e.target.checked; msg(T.hidden ? 'тур прихований' : 'тур буде в списку /tury'); };
+    $('eName').onchange = e => { cur.name = e.target.value.trim() || cur.name; reload(); };
+    const move = d => { const i = T.scenes.indexOf(cur), j = i + d; [T.scenes[i], T.scenes[j]] = [T.scenes[j], T.scenes[i]]; rebuildRooms(); renderEdit(); };
+    $('eUp').onclick = () => move(-1); $('eDown').onclick = () => move(1);
     $('eYaw').onclick = () => { const r = cam.object3D.rotation, rr = rig.object3D.rotation;
       cur.yaw = +(-((r.y + rr.y) / D2R)).toFixed(1); msg(`стартовий напрям: ${cur.yaw}°`); };
-    $('eStart').onclick = () => { T.start = cur.id; msg('стартова кімната змінена'); };
-    $('eCopy').onclick = async () => { await navigator.clipboard.writeText(JSON.stringify(T, null, 1)); msg('скопійовано — вставте в tools/tours/tours/' + T.slug + '.json'); };
+    $('eStart').onclick = () => { T.start = cur.id; renderEdit(); msg('перша кімната й обкладинка змінені'); };
+    box.querySelectorAll('[data-del]').forEach(b => b.onclick = () => { cur.hotspots.splice(+b.dataset.del, 1); reload(); });
+    $('eDl').onclick = () => { const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([JSON.stringify(T, null, 1)], { type: 'application/json' })); a.download = T.slug + '.json'; a.click(); };
+    $('eSave').onclick = save;
   }
-  function msg(t) { const m = $('eMsg'); if (m) m.textContent = ' ✓ ' + t; }
+  function reload() { const id = cur.id; cur = null; busy = false; go(id); }
+  function rebuildRooms() {
+    rooms.innerHTML = T.scenes.map(s =>
+      `<a href="?scene=${s.id}" data-id="${s.id}"><img src="${s.image.replace('.jpg', '-thumb.jpg')}" alt="" loading="lazy"><span>${s.name}</span></a>`).join('');
+  }
+  // збереження через адмінку сайту (/api/admin/repo): коміт у GitHub → перезбірка й деплой за 2–4 хв
+  async function save() {
+    const path = `tools/tours/tours/${T.slug}.json`, api = '/api/admin/repo';
+    msg('зберігаю…');
+    try {
+      const cur0 = await fetch(`${api}?op=file&path=${encodeURIComponent(path)}`, { credentials: 'same-origin' });
+      if (cur0.status === 403) return msg('потрібен вхід адміністратора: /kabinet/admin, потім оновіть сторінку');
+      const f = await cur0.json().catch(() => null); if (!f) return msg('адмінка недоступна тут — збережіть кнопкою JSON');
+      if (!cur0.ok) return msg(f.error || 'помилка');
+      const r = await fetch(api, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ op: 'save', message: `3D-тур ${T.slug}: правки з редактора`, expect: { [path]: f.sha || null },
+          files: [{ path, content: JSON.stringify(T, null, 1) + '\n' }] }) });
+      const d = await r.json().catch(() => ({}));
+      msg(r.ok ? 'збережено ✓ — на сайті за 2–4 хв' : (d.error || `помилка ${r.status}`));
+    } catch (e) { msg('немає звʼязку: ' + e.message); }
+  }
+  function msg(t) { const m = $('eMsg'); if (m) m.textContent = t; }
   if (EDIT) {
     sky.addEventListener('click', ev => {
       const p = ev.detail.intersection && ev.detail.intersection.point; if (!p) return;
       const c = new AFRAME.THREE.Vector3(); sceneEl.camera.getWorldPosition(c);
       const a = angles({ x: p.x - c.x, y: p.y - c.y, z: p.z - c.z }); (cur.hotspots = cur.hotspots || []).push({ to: $('eTo').value, yaw: a.yaw, pitch: Math.max(-60, Math.min(60, a.pitch)) });
-      const id = cur.id; cur = null; busy = false; go(id);
+      reload();
     });
     spots.addEventListener('click', ev => {
       const c = ev.target.closest && ev.target.closest('.spot'); if (!c || !shiftDown) return;

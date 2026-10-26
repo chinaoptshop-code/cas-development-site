@@ -23,6 +23,7 @@ export function allowedPath(p) {
   if (p === 'assets/ozdoba/catalog.json' || p === 'tools/products/archive.json' || p === 'tools/blog/topics.json') return 'json';
   if (new RegExp(`^tools/blog/(articles|drafts)/${SEG}\\.json$`).test(p)) return 'json';
   if (new RegExp(`^tools/site/(pages|lang)/${SEG}\\.json$`).test(p)) return 'json';
+  if (/^tools\/tours\/tours\/[a-z0-9-]+\.json$/.test(p)) return 'json'; // 3D-тури: редактор /tury/<slug>?edit=1
   if (/^img\//.test(p) && IMG_EXT.test(p) && !/^img\/lqip\.json$/.test(p)) return 'image';
   // ручні HTML-сторінки: корінь, proekty/ і мовні папки (згенеровані відсіює generatedHtml)
   if (new RegExp(`^(proekty/|(ru|en|es|zh|pl|de|fr|ar)/)?${SEG}\\.html$`).test(p) && !/^(404|google[0-9a-f]+)\.html$/.test(p)) return 'html';

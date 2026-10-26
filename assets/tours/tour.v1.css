@@ -73,3 +73,13 @@ body.list{height:auto;background:var(--t-bg)}
 .tl-btn.ghost:hover{border-color:var(--t-ac);color:var(--t-ac)}
 @media(max-width:760px){.tl{padding:90px 18px 30px}.tl-card{aspect-ratio:16/10}.tl-name{font-size:24px}.tl-how{grid-template-columns:1fr}.tl-grid{grid-template-columns:1fr}.tl-go{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.tl-card:hover .tl-img{animation:none}.tl-card:hover .tl-img img{opacity:1}}
+.edit{max-height:calc(100% - 90px);overflow:auto}
+.edit hr{border:0;border-top:1px solid rgba(237,232,223,.12);margin:4px 0;width:100%}
+.edit .row{display:flex;gap:6px}.edit .row button{flex:1}
+.edit .chk{display:flex;gap:8px;align-items:center}
+.edit .hs{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.edit .hs li{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.edit .hs button{padding:2px 8px}
+.edit .mu{color:var(--t-mu)}
+.edit .pri{background:var(--t-ac);color:#140f08;border-color:var(--t-ac)}
+.edit button:disabled{opacity:.35;cursor:default}
