@@ -203,11 +203,19 @@
    ],
    [
     "/ru/remontnaya-brigada-kiev",
-    "своя ремонтная бригада с прорабом"
+    "ремонтная бригада CAS с прорабом"
    ],
    [
     "/ru/remont-kuhni-kiev",
     "ремонт кухни с мебелью"
+   ],
+   [
+    "/ru/kapitalnyy-remont-kvartiry-kiev",
+    "капитальный ремонт и евроремонт квартиры"
+   ],
+   [
+    "/ru/stoimost-remonta-kvartiry-kiev",
+    "стоимость ремонта квартиры за м²"
    ]
   ]
  ]
