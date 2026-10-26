@@ -3,7 +3,7 @@
  "lang": "en",
  "service": "FAQ",
  "title": "FAQ: prices, timelines, warranty — CAS Development, Kyiv",
- "description": "Answers to common questions: design and renovation prices, stages, 12-month warranty, ±5% estimate when CAS renovates, furniture from China and Ozdoba.",
+ "description": "Answers to common questions: design and renovation prices, stages, 36-month warranty, ±5% estimate when CAS renovates, furniture from China and Ozdoba.",
  "h1": "Frequently asked questions about design, renovation and furnishing",
  "lead": "The questions clients ask most often — about prices, stages, warranty, the design project and furniture from China. Didn’t find yours? Leave a request at the bottom of the page and we will answer personally.",
  "btn2": [
@@ -38,6 +38,10 @@
     [
      "Can you invoice a company?",
      "Yes, we invoice companies registered in Ukraine and provide closing documents. Invoicing for EU companies — being set up."
+    ],
+    [
+     "How can I pay for a renovation or construction?",
+     "We tailor the payment schedule to you and fix it in the contract: 50/50, 50/30/20, 50/40/10 or split by stages; you start with an advance from 10%. Payment by invoice (for companies registered in Ukraine), card or cash. More on the [contract, warranty and payment](/en/contract-warranty-payment) page."
     ]
    ],
    "links": [
@@ -57,7 +61,7 @@
    "faq": [
     [
      "What is the warranty on works?",
-     "12 months."
+     "36 months."
     ],
     [
      "Can the renovation cost grow during the process?",
@@ -66,9 +70,21 @@
     [
      "How many projects have you completed?",
      "150+ projects since 2016."
+    ],
+    [
+     "Who does the work — your own crew or subcontractors?",
+     "Our own: three in-house salaried crews for different levels of complexity and types of work, with a site manager checking every stage."
+    ],
+    [
+     "Can I follow the works online?",
+     "Yes. We send photo reports every 1–2 weeks, and for an extra fee we install an online camera on site 24/7."
     ]
    ],
    "links": [
+    [
+     "/en/contract-warranty-payment",
+     "Contract, warranty, payment"
+    ],
     [
      "/en/about",
      "About the studio"

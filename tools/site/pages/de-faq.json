@@ -3,7 +3,7 @@
  "lang": "de",
  "service": "FAQ",
  "title": "FAQ: Preise, Termine, Gewährleistung — CAS, Kiew",
- "description": "Antworten auf häufige Fragen: Preise für Design und Renovierung, Ablauf, 12 Monate Gewährleistung, Kosten ±5 %, wenn CAS renoviert, Möbel aus China und Ozdoba.",
+ "description": "Antworten auf häufige Fragen: Preise für Design und Renovierung, Ablauf, 36 Monate Gewährleistung, Kosten ±5 %, wenn CAS renoviert, Möbel aus China und Ozdoba.",
  "h1": "Häufige Fragen zu Design, Renovierung und Einrichtung",
  "lead": "Die Fragen, die Kunden am häufigsten stellen — zu Preisen, Ablauf, Gewährleistung, Designprojekt und Möbeln aus China. Ihre Frage ist nicht dabei? Schreiben Sie uns über das Formular unten, wir antworten persönlich.",
  "btn2": [
@@ -38,6 +38,10 @@
     [
      "Stellen Sie Rechnungen an Firmen?",
      "Ja, an in der Ukraine registrierte Firmen, mit Abschlussdokumenten. Rechnungen für Firmen aus der EU — in Kürze."
+    ],
+    [
+     "Wie bezahle ich Renovierung oder Bau?",
+     "Den Zahlungsplan passen wir an Sie an und halten ihn im Vertrag fest: 50/50, 50/30/20, 50/40/10 oder in Etappen; Start ab 10 % Anzahlung."
     ]
    ],
    "links": [
@@ -57,7 +61,7 @@
    "faq": [
     [
      "Welche Gewährleistung gibt es auf Arbeiten?",
-     "12 Monate."
+     "36 Monate."
     ],
     [
      "Können die Kosten während der Renovierung steigen?",
@@ -66,6 +70,10 @@
     [
      "Wie viele Projekte haben Sie realisiert?",
      "Über 150 seit 2016."
+    ],
+    [
+     "Wer führt die Arbeiten aus — eigenes Team oder Subunternehmer?",
+     "Eigene Teams: drei fest angestellte CAS-Teams für unterschiedliche Schwierigkeitsgrade und Gewerke."
     ]
    ],
    "links": [

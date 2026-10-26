@@ -15,6 +15,10 @@
    "guarantees": true (необовʼязково — блок «Гарантії» після «Як працюємо»; для лендингів ремонту/під ключ),
    "parent": ["/url", "назва"] (необовʼязково — проміжна ланка хлібних крихт замість «Послуги», напр. хаб ЖК),
    "budget": {"area": 100, "h2": "...", "p": "..."} (необовʼязково — орієнтир «площа × ставка» з data-est після about),
+   "prices": {"h2": "...", "p": "...", "rows": ["design", "repair", "furnish"]} (необовʼязково — таблиця 40/65/80/120 м² × ставка «від»),
+   "packages": true (необовʼязково — три пакети дизайн-проєкту, PACKAGES; uk/ru/en),
+   у "sections" — також {"t": "prices", ...}, {"t": "packages"}, {"t": "guarantees", "more": false}.
+Ручні сторінки: блоки між <!--cas:guarantees-->, <!--cas:prices-->, <!--cas:packages--> оновлює sync_manual().
    "near": ["h2", [["/url", "назва"], ...]] (необовʼязково — блок посилань перед «Інші послуги»),
    "cluster": ["h2", "вступ", [["/url", "анкор"], ...]] (необовʼязково — сусідні інтенти кластера запитів, tools/site/keywords.json)}
 У абзацах "about" і відповідях "faq" можна ставити посилання: [анкор](/url).
@@ -47,23 +51,30 @@ L = {
                cta='Получить смету', all_portfolio='Всё портфолио', sections='Разделы'),
 }
 FACTS = {
-    'uk': [('150+', 'проєктів'), ('10+ років', 'досвіду, з 2016 року'), ('12 міс.', 'гарантія на роботи'), ('Китай', 'меблі й матеріали напряму')],
-    'ru': [('150+', 'проектов'), ('10+ лет', 'опыта, с 2016 года'), ('12 мес.', 'гарантия на работы'), ('Китай', 'мебель и материалы напрямую')],
+    'uk': [('150+', 'проєктів'), ('10+ років', 'досвіду, з 2016 року'), ('36 міс.', 'гарантія на роботи'), ('Китай', 'меблі й матеріали напряму')],
+    'ru': [('150+', 'проектов'), ('10+ лет', 'опыта, с 2016 года'), ('36 мес.', 'гарантия на работы'), ('Китай', 'мебель и материалы напрямую')],
 }
-# Блок «Гарантії» (UI-kit: картки .grid/.card). «Оплата етапами» — факт сайту (договір з етапами оплати);
-# фотозвіти раз на 1–2 тижні — підтверджено Михайлом 25.10.2026. Ручні сторінки вставляють той самий блок між маркерами.
+# Блок «Гарантії» (UI-kit: картки .grid/.card). Гарантія 36 міс., три власні штатні бригади, схеми оплати під клієнта
+# і камера 24/7 за доп. оплату — Михайло 26.10.2026; фотозвіти раз на 1–2 тижні — Михайло 25.10.2026.
+# Ручні сторінки тримають той самий блок між маркерами — його оновлює sync_manual() під час збірки.
 GUAR = {
     'uk': ('Гарантії', [
-        ('Гарантія 12 місяців на роботи', 'Здаємо обʼєкт з актом; на виконані роботи діє гарантія 12 місяців.'),
+        ('Гарантія 36 місяців на роботи', 'Здаємо обʼєкт з актом; на виконані роботи діє гарантія 36 місяців.'),
         ('Кошторис ±5%, якщо ремонт робить CAS', 'Кошторис складаємо до старту робіт. Якщо ремонт виконує наша команда, підсумок не відхиляється від нього більше ніж на ±5%.'),
-        ('Договір і оплата етапами', 'Ціну, терміни й етапи оплати фіксуємо в договорі до початку робіт.'),
-        ('Фотозвіти раз на 1–2 тижні', 'Раз на 1–2 тижні надсилаємо фото з обʼєкта в Telegram — видно, як іде ремонт, без поїздок.')]),
+        ('Три власні штатні бригади', 'Працюють наші штатні працівники, а не субпідряд: три бригади під різну складність і тип робіт.'),
+        ('Договір і оплата під вас', 'Ціну, строки й графік платежів фіксуємо в договорі: 50/50, 50/30/20, 50/40/10 або розбивка на етапи; старт — від 10% авансу.'),
+        ('Фотозвіти й камера 24/7', 'Раз на 1–2 тижні — фото з обʼєкта в Telegram; за доп. оплату — онлайн-камера на обʼєкті 24/7.')]),
     'ru': ('Гарантии', [
-        ('Гарантия 12 месяцев на работы', 'Сдаём объект с актом; на выполненные работы действует гарантия 12 месяцев.'),
+        ('Гарантия 36 месяцев на работы', 'Сдаём объект с актом; на выполненные работы действует гарантия 36 месяцев.'),
         ('Смета ±5%, если ремонт делает CAS', 'Смету составляем до старта работ. Если ремонт выполняет наша команда, итог не отклоняется от неё больше чем на ±5%.'),
-        ('Договор и оплата по этапам', 'Цену, сроки и этапы оплаты фиксируем в договоре до начала работ.'),
-        ('Фотоотчёты раз в 1–2 недели', 'Раз в 1–2 недели присылаем фото с объекта в Telegram — видно, как идёт ремонт, без поездок.')]),
+        ('Три собственные штатные бригады', 'Работают наши штатные сотрудники, а не субподряд: три бригады под разную сложность и тип работ.'),
+        ('Договор и оплата под вас', 'Цену, сроки и график платежей фиксируем в договоре: 50/50, 50/30/20, 50/40/10 или разбивка на этапы; старт — от 10% аванса.'),
+        ('Фотоотчёты и камера 24/7', 'Раз в 1–2 недели — фото с объекта в Telegram; за доп. оплату — онлайн-камера на объекте 24/7.')]),
 }
+# посилання з блоку «Гарантії» на сторінку «Договір, гарантія, оплата» (сторінка є лише uk/ru/en)
+GUAR_MORE = {'uk': ('/dogovir-garantiya-oplata', 'Договір, гарантія й оплата — докладно'),
+             'ru': ('/ru/dogovor-garantiya-oplata', 'Договор, гарантия и оплата — подробно'),
+             'en': ('/en/contract-warranty-payment', 'Contract, warranty and payment — details')}
 
 
 # нові мови: підписи блоків, факти й гарантії — з tools/site/lang/<мова>.json ("landing"), шаблон — uk з перекладом
@@ -108,12 +119,126 @@ def _core(uk):
     return m.group(1)
 
 
-def guarantees_html(lang):
+def guarantees_html(lang, more=True):
     h, items = GUAR[lang]
+    m = GUAR_MORE.get(lang) if more else None
     return ('<!--cas:guarantees--><section><div class="w">\n'
             f'  <h2>{h}</h2>\n'
             '  <div class="grid">' + ''.join(f'<div class="card"><h3>{e(t)}</h3><p>{e(x)}</p></div>' for t, x in items) + '</div>\n'
-            '</div></section><!--/cas:guarantees-->\n')
+            + (f'  <p style="margin-top:18px"><a href="{m[0]}">{e(m[1])} →</a></p>\n' if m else '')
+            + '</div></section><!--/cas:guarantees-->\n')
+
+
+# Типові площі × базові ставки «від» (CLAUDE.md): дизайн $30/м² (мін. $2 500), ремонт $550/м² (роботи + чорнові),
+# меблювання $250/м². Комірки — <b data-est> (ui.py перевіряє розрахунок). UI-kit: /styleguide/ «Таблиця цін для типових площ».
+AREAS = (40, 65, 80, 120)
+PRICE_ROWS = {'design': 30, 'repair': 550, 'furnish': 250}
+PRICES = {
+    'uk': dict(pre='від', area='Площа', unit='м²', rows={'design': 'Дизайн-проєкт · від $30/м², мін. $2 500', 'repair': 'Ремонт під ключ · від $550/м²',
+               'furnish': 'Меблювання · від $250/м²'},
+               note='Орієнтовно, «від»; точно — за кошторисом після заміру. Ремонт від $550/м² — роботи й чорнові матеріали; чистові матеріали, меблі й техніка — окремо. '
+                    'Дизайн-проєкт — мінімум $2 500, тому для 40–80 м² це $2 500.'),
+    'ru': dict(pre='от', area='Площадь', unit='м²', rows={'design': 'Дизайн-проект · от $30/м², мин. $2 500', 'repair': 'Ремонт под ключ · от $550/м²',
+               'furnish': 'Меблировка · от $250/м²'},
+               note='Ориентировочно, «от»; точно — по смете после замера. Ремонт от $550/м² — работы и черновые материалы; чистовые материалы, мебель и техника — отдельно. '
+                    'Дизайн-проект — минимум $2 500, поэтому для 40–80 м² это $2 500.'),
+    'en': dict(pre='from', area='Area', unit='m²', rows={'design': 'Design project · from $30/m², min. $2,500', 'repair': 'Turnkey renovation · from $550/m²',
+               'furnish': 'Furnishing · from $250/m²'},
+               note='Indicative “from” prices; the exact figure comes from the estimate after the site survey. Renovation from $550/m² covers labour and rough materials; '
+                    'finishing materials, furniture and appliances are extra. The design project minimum is $2,500, so for 40–80 m² it is $2,500.'),
+}
+PRICE_CSS = ('<style>.ptab{overflow-x:auto;margin:0 0 10px}.ptab table{width:100%;border-collapse:collapse;font-size:var(--fs-small);min-width:520px}'
+             '.ptab th,.ptab td{padding:10px 8px;border-bottom:1px solid var(--ln,rgba(191,145,72,.18));text-align:right;white-space:nowrap}'
+             '.ptab th:first-child,.ptab td:first-child{text-align:left;white-space:normal}.ptab thead th{color:var(--mu);font-weight:500}</style>')
+
+
+def money(n, lang='uk'):
+    return '$' + (f'{n:,}' if lang == 'en' else f'{n:,}'.replace(',', ' '))
+
+
+def prices_html(lang, x):
+    """Таблиця «типові площі × ставка від»: x = {"h2", "p" (необовʼязково), "rows": ["design", "repair", "furnish"]}."""
+    d = PRICES[lang]
+    head = f'<tr><th>{e(d["area"])}</th>' + ''.join(f'<th>{a_} {d["unit"]}</th>' for a_ in AREAS) + '</tr>'
+    body = ''
+    for k in x.get('rows', list(PRICE_ROWS)):
+        r = PRICE_ROWS[k]
+        body += f'<tr><td>{e(d["rows"][k])}</td>' + ''.join(
+            f'<td><b data-est="{ar}x{r}">{d["pre"]} {money(max(ar * r, 2500) if r == 30 else ar * r, lang)}</b></td>' for ar in AREAS) + '</tr>'
+    return ('<!--cas:prices--><section><div class="w txt">' + PRICE_CSS + f'<h2>{e(x["h2"])}</h2>' + (f'<p>{rich(x["p"])}</p>' if x.get('p') else '')
+            + f'<div class="ptab"><table><thead>{head}</thead><tbody>{body}</tbody></table></div>'
+            + f'<p><small>{e(d["note"])}</small></p></div></section><!--/cas:prices-->\n')
+
+
+# Пакети дизайн-проєкту — пропозиція на затвердження Михайлом (26.10.2026): ціна лише в базового (від $30/м², мін. $2 500),
+# інші — за кошторисом. UI-kit: картки .grid/.card з ціною (/styleguide/ «Картки»).
+PACKAGES = {
+    'uk': ('Пакети дизайн-проєкту', 'Склад проєкту підбираємо під задачу. Три типові пакети — від планування до повного супроводу з авторським наглядом:', [
+        ('Планувальний', 'за кошторисом', ['обмірний план приміщення', 'варіанти планування на вибір', 'план розстановки меблів', 'план монтажу й демонтажу стін']),
+        ('Базовий', 'від $30/м², мін. $2 500', ['усе з планувального', '3D-візуалізації всіх приміщень', 'робочі креслення: електрика, сантехніка, стелі, підлоги',
+                                             'специфікації матеріалів і меблів']),
+        ('Повний з авторським наглядом', 'за кошторисом', ['усе з базового', 'комплектація: підбір і замовлення меблів, світла, декору',
+                                                          'авторський нагляд на обʼєкті', 'узгодження змін з бригадою під час ремонту'])]),
+    'ru': ('Пакеты дизайн-проекта', 'Состав проекта подбираем под задачу. Три типовых пакета — от планировки до полного сопровождения с авторским надзором:', [
+        ('Планировочный', 'по смете', ['обмерный план помещения', 'варианты планировки на выбор', 'план расстановки мебели', 'план монтажа и демонтажа стен']),
+        ('Базовый', 'от $30/м², мин. $2 500', ['всё из планировочного', '3D-визуализации всех помещений', 'рабочие чертежи: электрика, сантехника, потолки, полы',
+                                            'спецификации материалов и мебели']),
+        ('Полный с авторским надзором', 'по смете', ['всё из базового', 'комплектация: подбор и заказ мебели, света, декора',
+                                                    'авторский надзор на объекте', 'согласование изменений с бригадой во время ремонта'])]),
+    'en': ('Design project packages', 'We tailor the scope to the task. Three typical packages, from a layout plan to full support with designer supervision:', [
+        ('Layout', 'priced by estimate', ['measured survey plan', 'layout options to choose from', 'furniture arrangement plan', 'wall construction and demolition plan']),
+        ('Standard', 'from $30/m², min. $2,500', ['everything in Layout', '3D visualisations of every room', 'working drawings: electrics, plumbing, ceilings, floors',
+                                               'material and furniture specifications']),
+        ('Full, with designer supervision', 'priced by estimate', ['everything in Standard', 'procurement: selecting and ordering furniture, lighting, decor',
+                                                                   'designer supervision on site', 'coordinating changes with the crew during renovation'])]),
+}
+
+
+def packages_html(lang):
+    h, intro, items = PACKAGES[lang]
+    return ('<!--cas:packages--><section><div class="w">\n' f'  <h2>{e(h)}</h2>\n' f'  <p style="color:var(--mu);max-width:62ch;margin:0 0 22px">{e(intro)}</p>\n'
+            '  <div class="grid">' + ''.join(f'<div class="card"><h3>{e(t)}</h3><p style="color:var(--ac)">{e(pr)}</p><ul>' + ''.join(f'<li>{e(i)}</li>' for i in li) + '</ul></div>'
+                                             for t, pr, li in items) + '</div>\n'
+            '</div></section><!--/cas:packages-->\n')
+
+
+def _prices_cfg(block):
+    """Конфіг таблиці цін з уже вставленого блоку ручної сторінки: h2, вступ (з посиланнями) і рядки."""
+    h2 = html.unescape(re.search(r'<h2>(.*?)</h2>', block).group(1))
+    p = re.search(r'</h2><p>(.*?)</p><div class="ptab">', block)
+    p = MDLINK_BACK(html.unescape(p.group(1))) if p else ''
+    rates = {int(r) for r in re.findall(r'data-est="\d+x(\d+)"', block)}
+    return {'h2': h2, 'p': p, 'rows': [k for k, r in PRICE_ROWS.items() if r in rates]}
+
+
+MDLINK_BACK = lambda s: re.sub(r'<a href="(/[^"]*)">(.*?)</a>', r'[\2](\1)', s)
+
+
+def sync_manual(generated):
+    """Ручні сторінки (не з pages/*.json): оновлює блоки між маркерами з тих самих джерел, що й лендинги —
+    «Гарантії» (стандартна розмітка .grid), «Таблиця цін» і «Пакети дизайну». Мова — з <html lang>."""
+    langs = {i18n.meta(l)['hreflang'].split('-')[0]: l for l in GUAR}
+    out = []
+    for f in sorted(glob.glob(os.path.join(ROOT, '*.html')) + glob.glob(os.path.join(ROOT, '*/*.html'))):
+        rel = os.path.relpath(f, ROOT)
+        if rel.startswith(('tools/', '.claude', 'blog/', 'styleguide/')) or '/blog/' in rel or rel in generated:
+            continue
+        s = open(f, encoding='utf-8').read()
+        if '<!--cas:' not in s:
+            continue
+        m = re.search(r'<html[^>]*\blang="([a-z]+)', s)
+        lang = langs.get(m.group(1) if m else 'uk', 'uk')
+        n = re.sub(r'<!--cas:guarantees--><section><div class="w">\n.*?<!--/cas:guarantees-->\n?', lambda x: guarantees_html(lang), s, flags=re.S)
+        if lang in PACKAGES:
+            n = re.sub(r'<!--cas:packages-->.*?<!--/cas:packages-->\n?', lambda x: packages_html(lang), n, flags=re.S)
+        if lang in PRICES:  # заголовок і вступ — з наявного блоку, рядки — за ставками в data-est
+            n = re.sub(r'<!--cas:prices-->.*?<!--/cas:prices-->\n?', lambda x: prices_html(lang, _prices_cfg(x.group(0))), n, flags=re.S)
+        if n != s:
+            n = chrome.apply(n, rel)  # шапка/футер і типографіка (нерозривні пробіли) — як після chrome.py
+            if n != s:
+                open(f, 'w', encoding='utf-8').write(n)
+                out.append(rel)
+    return out
 
 
 def area_served(lang):
@@ -206,7 +331,11 @@ def section_html(lang, x):
                 '  <ol class="steps">' + ''.join(f'<li><div><b>{e(b)}</b><span>{e(s)}</span></div></li>' for b, s in x['items']) + '</ol>',
                 '</div></section>\n']
     if k == 'guarantees':
-        return [guarantees_html(lang)]
+        return [guarantees_html(lang, x.get('more', True))]
+    if k == 'prices':
+        return [prices_html(lang, x)]
+    if k == 'packages':
+        return [packages_html(lang)]
     if k == 'gallery':
         return gallery_html(lang, x['items'], x.get('h2'), x.get('more', True))
     if k == 'faq':
@@ -230,10 +359,6 @@ BUDGET = {
                note='Ремонт от $550/м² — работы и черновые материалы; чистовые материалы и техника — отдельно, по смете. Ориентир по базовым ставкам студии (дизайн — минимум $2 500); точная сумма — после замера и сметы. '
                     'Если ремонт делает CAS, итог не отклоняется от сметы больше чем на ±5%.'),
 }
-
-
-def money(n):
-    return '$' + f'{n:,}'.replace(',', ' ')
 
 
 def budget_html(lang, b):
@@ -293,8 +418,12 @@ def main_html(p):
           '</div></section>\n']
     for h, ps in p.get('about', []):
         o.append(f'<section><div class="w txt"><h2>{e(h)}</h2>' + ''.join(f'<p>{rich(x)}</p>' for x in ps) + '</div></section>\n')
+    if p.get('packages'):
+        o.append(packages_html(p['lang']))
     if p.get('budget'):
         o.append(budget_html(p['lang'], p['budget']))
+    if p.get('prices'):
+        o.append(prices_html(p['lang'], p['prices']))
     if p.get('gallery'):
         o += gallery_html(p['lang'], p['gallery'])
     o += ['<section><div class="w">', f'  <h2>{t["steps"]}</h2>',
@@ -445,6 +574,9 @@ if __name__ == '__main__':
         if errs:
             bad = 1; print('❌', p['lang'], p['slug'], errs); continue
         print('✓', build(p)); link_pair(p); built.append(url(p['lang'], p['slug']))
+    if not only:  # ручні сторінки: блоки «Гарантії», «Таблиця цін», «Пакети дизайну» між маркерами
+        for r in sync_manual({path(p['lang'], p['slug']) for p in allp}):
+            print('↻', r)
     i18n.sync()  # повні hreflang-кластери і перемикач мов на всіх сторінках кластерів (у т.ч. ручних)
     import datetime
     sitemap(built, datetime.date.today().isoformat())
