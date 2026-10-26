@@ -4,7 +4,7 @@
 # CSP — перелік джерел, які сайт реально використовує (аудит безпеки 25.10.2026):
 #   script: свої + inline (багато inline-скриптів і обробників — поки неминуче), Clarity, Telegram (віджет входу,
 #           Mini App), Google Identity Services (вхід через Google);
-#   connect: свої API, n8n (форма заявки), Clarity, Google GIS;  frame: Google Maps (контакти), вхід Telegram/Google, YouTube;
+#   connect: свої API, n8n (форма заявки), Clarity, Google GIS;  frame: Google Maps (контакти), вхід Telegram/Google, YouTube (lite-embed youtube-nocookie; tools/site/media.py);
 #   img: будь-які https (фото проєктів, аватарки Telegram/Google, raw.githubusercontent в адмінці), data:, blob: (прев'ю фото).
 # frame-ancestors тут немає навмисно: /ozdoba відкривається як Telegram Mini App у web.telegram.org (iframe);
 # решту сторінок від фреймів захищає X-Frame-Options: SAMEORIGIN.
