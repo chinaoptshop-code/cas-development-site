@@ -58,6 +58,7 @@
   "(українською)": "(in Ukrainian)",
   "Ціна за 1 {u}": "Price per 1 {u}", "Від {m} {u}": "From {m} {u}", "Поставка": "Lead time",
   "Колір і фактура": "Colour and texture", "Як на фото": "As in the photo", "як на фото": "as in the photo", "під замовлення": "made to order",
+  "Колір — як у назві й на фото. Інший колір — під замовлення, уточнить менеджер": "Colour is as named and shown in the photo. Another colour is made to order — the manager will confirm",
   "Інші кольори — виготовлення під замовлення": "Other colours are made to order", ", ціна може відрізнятися": ", the price may differ",
   "Розмір": "Size", "Кількість": "Quantity", "мінімум {m} {u}": "minimum {m} {u}",
   "Менше на {m}": "{m} fewer", "Кількість, {u} (мінімум {m})": "Quantity, {u} (minimum {m})", "Більше на {m}": "{m} more",

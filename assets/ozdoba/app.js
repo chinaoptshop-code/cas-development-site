@@ -45,6 +45,14 @@ const CS = i => DATA.colorsets[i.cs];
 /* колір позиції: -1 — «як на фото» (базове виконання, без доплати); 0… — інший колір під замовлення (catalog.json colorsets) */
 const ASIS = ['Як на фото', '#C9A86A', 0];
 const col = (i, ci) => ci == null || ci < 0 ? ASIS : (CS(i)[ci] || CS(i)[0]);
+/* колір, зафіксований у назві («…, чорний», «біла матова», «латунь», «горіх»; en — «black», «brass»): палітра категорії (colorsets)
+   описує категорію, а не цей товар, тому для таких позицій кружечків не показуємо — лише «як на фото» (QA Dell OZ-5).
+   Власний список кольорів товару (поле colors у catalog.json) показуємо завжди; палітра категорії — лише коли кольору в назві немає. */
+const COLW = /^(чорн|біл|сір|беж|золот|латун|бронз|хром|мідн|срібн|нікел|графіт|антрацит|коричн|горіх|дуб|ясен|венге|тік|тик|бук|бамбук|молочн|крем|слонов|пісочн|теракот|олив|зелен|син|блакит|червон|бордо|рожев|жовт|оранж|фіолет|бузк|димчаст|прозор|натуральн|нержав|стал)/;
+const COLE = /^(black|white|grey|gray|beige|gold|golden|brass|bronze|chrome|copper|silver|nickel|graphite|anthracite|brown|walnut|oak|ash|wenge|teak|beech|bamboo|milky|cream|ivory|sand|terracotta|olive|green|blue|red|burgundy|pink|yellow|orange|purple|lilac|smoked|smoky|clear|transparent|natural|stainless|steel)$/;
+const namedColor = i => String(i.name).toLowerCase().split(/[^а-яіїєґ'ʼ-]+/).some(w => COLW.test(w) && !/^букле/.test(w))
+  || String(i.en||'').toLowerCase().split(/[^a-z-]+/).some(w => COLE.test(w));
+const colorsOf = i => i.colors || (namedColor(i) ? [] : CS(i));
 const SS = i => i.ss ? DATA.sizesets[i.ss] : null;
 /* розмір у назві товару («…, 100 см», «Ø70», «200×300») — той, що відкривається за замовчуванням і показується на картці */
 const nz = t => String(t).toLowerCase().replace(/x/g,'×').replace(/[\sØø⌀]|см/g,'');  // ø — бо після toLowerCase «Ø40 см» стає «ø40»
@@ -292,7 +300,7 @@ function openItem(id){ cur=byId(id); if(!cur) return; curC=-1; curS=defS(cur); c
   const sh=document.getElementById('sheetItem'); sh.scrollTop=0; const g=document.getElementById('gal'); if(g) g.scrollLeft=0;  // нова позиція — з початку (назва й фото)
   open('sheetItem'); try{history.replaceState(null,'','#p-'+id);}catch(e){} }
 function renderItem(){
-  const i=cur, cs=CS(i), s=SS(i);
+  const i=cur, cs=colorsOf(i), s=SS(i);
   const p=price(i,curC,curS);
   paint('itemBody', `
     <div class="sh-head"><h2>${nm(i)}</h2><button type="button" class="x" onclick="closeAll()" aria-label="${t('Закрити')}">✕</button></div>
@@ -304,7 +312,7 @@ function renderItem(){
 
     <p class="lbl">${t('Колір і фактура')} <b>${colN(col(i,curC)[0])}</b></p>
     <div class="swatches"><button class="swatch asis" aria-pressed="${curC<0}" aria-label="${t('Як на фото')}" onclick="setC(-1)">${t('як на фото')}</button>${cs.map((c,n)=>`<button class="swatch" style="background:${c[1]}" aria-pressed="${n===curC}" title="${colN(c[0])} — ${t('під замовлення')}" aria-label="${colN(c[0])} — ${t('під замовлення')}" onclick="setC(${n})"></button>`).join('')}</div>
-    <p class="hint" style="margin-top:-8px">${t('Інші кольори — виготовлення під замовлення')}${cs.some(c=>c[2]>0)?t(', ціна може відрізнятися'):''}.</p>
+    <p class="hint" style="margin-top:-8px">${cs.length?t('Інші кольори — виготовлення під замовлення')+(cs.some(c=>c[2]>0)?t(', ціна може відрізнятися'):''):t('Колір — як у назві й на фото. Інший колір — під замовлення, уточнить менеджер')}.</p>
 
     ${s ? `<p class="lbl">${t('Розмір')} <b>${sizeN(s[curS][0])}</b></p>
     <div class="opts">${s.map((x,n)=>`<button class="opt" aria-pressed="${n===curS}" onclick="setS(${n})">${sizeN(x[0])}${i.price==null?'':`<small>${money(price(i,curC,n))}</small>`}</button>`).join('')}</div>` : ''}

@@ -58,6 +58,7 @@
   "(українською)": "(po ukraińsku)",
   "Ціна за 1 {u}": "Cena za 1 {u}", "Від {m} {u}": "Od {m} {u}", "Поставка": "Dostawa",
   "Колір і фактура": "Kolor i faktura", "Як на фото": "Jak na zdjęciu", "як на фото": "jak na zdjęciu", "під замовлення": "na zamówienie",
+  "Колір — як у назві й на фото. Інший колір — під замовлення, уточнить менеджер": "Kolor — jak w nazwie i na zdjęciu. Inny kolor — na zamówienie, potwierdzi menedżer",
   "Інші кольори — виготовлення під замовлення": "Inne kolory — produkcja na zamówienie", ", ціна може відрізнятися": ", cena może się różnić",
   "Розмір": "Wymiar", "Кількість": "Ilość", "мінімум {m} {u}": "minimum {m} {u}",
   "Менше на {m}": "Mniej o {m}", "Кількість, {u} (мінімум {m})": "Ilość, {u} (minimum {m})", "Більше на {m}": "Więcej o {m}",
