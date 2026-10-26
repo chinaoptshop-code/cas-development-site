@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Квартира — реалізований інтерʼєр — 3D-тур | CAS Development</title>
+<meta name="description" content="360-тур готової квартири.">
+<link rel="canonical" href="https://cas-develop.com/tury/apartment-2025">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Квартира — реалізований інтерʼєр — 3D-тур CAS Development">
+<meta property="og:description" content="360-тур готової квартири.">
+<meta property="og:image" content="https://cas-develop.com/img/tury/apartment-2025/img-20250805-212439-783-thumb.jpg">
+<link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="/assets/tours/tour.v1.css">
+<script src="/assets/tours/aframe.min.js"></script>
+</head><body>
+<script type="application/json" id="tour-data">{"slug": "apartment-2025", "title": "Квартира — реалізований інтерʼєр", "description": "360-тур готової квартири.", "hidden": true, "start": "img-20250805-212439-783", "scenes": [{"id": "img-20250805-212439-783", "name": "Точка 1", "image": "/img/tury/apartment-2025/img-20250805-212439-783.jpg", "yaw": 0, "hotspots": [{"to": "img-20250805-212448-860", "yaw": 0, "pitch": -15}]}, {"id": "img-20250805-212448-860", "name": "Точка 2", "image": "/img/tury/apartment-2025/img-20250805-212448-860.jpg", "yaw": 0, "hotspots": [{"to": "img-20250805-212457-387", "yaw": 0, "pitch": -15}, {"to": "img-20250805-212439-783", "yaw": 180, "pitch": -15}]}, {"id": "img-20250805-212457-387", "name": "Точка 3", "image": "/img/tury/apartment-2025/img-20250805-212457-387.jpg", "yaw": 0, "hotspots": [{"to": "img-20250805-212507-996", "yaw": 0, "pitch": -15}, {"to": "img-20250805-212448-860", "yaw": 180, "pitch": -15}]}, {"id": "img-20250805-212507-996", "name": "Точка 4", "image": "/img/tury/apartment-2025/img-20250805-212507-996.jpg", "yaw": 0, "hotspots": [{"to": "img-20250805-212518-522", "yaw": 0, "pitch": -15}, {"to": "img-20250805-212457-387", "yaw": 180, "pitch": -15}]}, {"id": "img-20250805-212518-522", "name": "Точка 5", "image": "/img/tury/apartment-2025/img-20250805-212518-522.jpg", "yaw": 0, "hotspots": [{"to": "img-20250805-212525-929", "yaw": 0, "pitch": -15}, {"to": "img-20250805-212507-996", "yaw": 180, "pitch": -15}]}, {"id": "img-20250805-212525-929", "name": "Точка 6", "image": "/img/tury/apartment-2025/img-20250805-212525-929.jpg", "yaw": 0, "hotspots": [{"to": "img-20250805-212534-316", "yaw": 0, "pitch": -15}, {"to": "img-20250805-212518-522", "yaw": 180, "pitch": -15}]}, {"id": "img-20250805-212534-316", "name": "Точка 7", "image": "/img/tury/apartment-2025/img-20250805-212534-316.jpg", "yaw": 0, "hotspots": [{"to": "img-20250805-212601-658", "yaw": 0, "pitch": -15}, {"to": "img-20250805-212525-929", "yaw": 180, "pitch": -15}]}, {"id": "img-20250805-212601-658", "name": "Точка 8", "image": "/img/tury/apartment-2025/img-20250805-212601-658.jpg", "yaw": 0, "hotspots": [{"to": "img-20250805-212534-316", "yaw": 180, "pitch": -15}]}]}</script>
+<a-scene id="scene" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .spot, .sky-hit" vr-mode-ui="enabled: true" loading-screen="dotsColor:#c8a96a; backgroundColor:#111" renderer="colorManagement:true" xr-mode-ui="enabled: true">
+  <a-assets timeout="20000"></a-assets>
+  <a-sky id="sky" rotation="0 -90 0"></a-sky>
+  <a-entity id="spots" follow-cam></a-entity>
+  <a-entity id="rig">
+    <a-camera id="cam" camera="userHeight: 0" position="0 0 0" look-controls="reverseMouseDrag:true; magicWindowTrackingEnabled:true" wasd-controls="enabled:false">
+      <a-cursor id="cursor" fuse="false" raycaster="objects:.spot" material="color:#fff; shader:flat" visible="false"></a-cursor>
+    </a-camera>
+    <a-entity laser-controls="hand: right" raycaster="objects:.spot; far: 30"></a-entity>
+    <a-entity laser-controls="hand: left" raycaster="objects:.spot; far: 30"></a-entity>
+  </a-entity>
+</a-scene>
+<div class="ui">
+  <a class="brand" href="/tury" target="_top">CAS · 3D-тури</a>
+  <div class="title" id="title"></div>
+  <button class="btn" id="menuBtn" aria-label="Кімнати">☰ Кімнати</button>
+</div>
+<nav class="rooms" id="rooms" hidden></nav>
+<div class="hint" id="hint">Тягніть, щоб роздивитись · стрілки — перехід · VR — окуляри</div>
+<div class="edit" id="edit" hidden></div>
+<script src="/assets/tours/tour.v1.js"></script>
+</body></html>

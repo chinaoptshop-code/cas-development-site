@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """3D-тури CAS: тека 360-фото → тур на сайті (/tury/<slug>).
 
-  python3 tools/tours/build.py new <тека-з-фото> <slug> "Назва туру" [--desc "Опис"]
+  python3 tools/tours/build.py new <тека-з-фото> <slug> "Назва туру" [--desc "Опис"] [--max 15]
+      Новий тур завжди прихований ("hidden": true) — відкрити після ОК Михайла.
       Стискає фото (equirect 2:1) у img/tury/<slug>/ (4096 px — працює на будь-якому телефоні й у VR),
       створює tools/tours/tours/<slug>.json: сцени за іменами файлів, переходи «далі / назад» між сусідніми.
   python3 tools/tours/build.py pages
@@ -23,17 +24,17 @@ MAXW = 4096
 
 
 def resize(src: Path, dst: Path):
+    """Стиснення до 4096 px БЕЗ метаданих (EXIF/GPS 360-камер видає адресу обʼєкта)."""
     dst.parent.mkdir(parents=True, exist_ok=True)
-    if shutil.which('sips'):
-        subprocess.run(['sips', '-s', 'format', 'jpeg', '-s', 'formatOptions', '82', '--resampleWidth', str(MAXW),
-                        str(src), '--out', str(dst)], check=True, capture_output=True)
-        # прев'ю для списку турів і для вибору кімнат
-        subprocess.run(['sips', '-s', 'format', 'jpeg', '-s', 'formatOptions', '70', '--resampleWidth', '640',
-                        str(dst), '--out', str(dst.with_name(dst.stem + '-thumb.jpg'))], check=True, capture_output=True)
+    ff = shutil.which('ffmpeg') or '/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg'
+    if Path(ff).exists():
+        for w, q, out in ((MAXW, '4', dst), (640, '6', dst.with_name(dst.stem + '-thumb.jpg'))):
+            subprocess.run([ff, '-loglevel', 'error', '-y', '-i', str(src), '-vf', f'scale={w}:-2:flags=lanczos',
+                            '-map_metadata', '-1', '-q:v', q, str(out)], check=True)
     else:
         from PIL import Image
         im = Image.open(src).convert('RGB')
-        im.thumbnail((MAXW, MAXW // 2)); im.save(dst, quality=82)  # без EXIF/GPS
+        im.thumbnail((MAXW, MAXW // 2)); im.save(dst, quality=82)  # Pillow не переносить EXIF, якщо не передати
         im.thumbnail((640, 320)); im.save(dst.with_name(dst.stem + '-thumb.jpg'), quality=70)
 
 
@@ -42,8 +43,10 @@ def slugify(s):
     return s or 'scene'
 
 
-def new(folder, slug, title, desc=''):
+def new(folder, slug, title, desc='', maxn=0, names=None):
     files = sorted(p for p in Path(folder).iterdir() if p.suffix.lower() in ('.jpg', '.jpeg', '.png', '.webp', '.heic'))
+    if maxn and len(files) > maxn:
+        files = [files[round(i * (len(files) - 1) / (maxn - 1))] for i in range(maxn)]
     if not files:
         raise SystemExit(f'У {folder} немає фото')
     scenes = []
@@ -52,7 +55,7 @@ def new(folder, slug, title, desc=''):
         if any(s['id'] == sid for s in scenes):
             sid = f'{sid}-{i}'
         resize(f, IMG / slug / f'{sid}.jpg')
-        scenes.append({'id': sid, 'name': re.sub(r'[_-]+', ' ', f.stem).strip().capitalize(),
+        scenes.append({'id': sid, 'name': (names or 'Точка {n}').format(n=i + 1) if names or re.match(r'(?i)img|dji|pano|\d', f.stem) else re.sub(r'[_-]+', ' ', f.stem).strip().capitalize(),
                        'image': f'/img/tury/{slug}/{sid}.jpg', 'yaw': 0, 'hotspots': []})
     for i, s in enumerate(scenes):  # чернетка переходів: далі — попереду, назад — позаду
         if i + 1 < len(scenes):
@@ -60,7 +63,7 @@ def new(folder, slug, title, desc=''):
         if i > 0:
             s['hotspots'].append({'to': scenes[i - 1]['id'], 'yaw': 180, 'pitch': -15})
     DATA.mkdir(parents=True, exist_ok=True)
-    (DATA / f'{slug}.json').write_text(json.dumps({'slug': slug, 'title': title, 'description': desc,
+    (DATA / f'{slug}.json').write_text(json.dumps({'slug': slug, 'title': title, 'description': desc, 'hidden': True,
                                                    'start': scenes[0]['id'], 'scenes': scenes},
                                                   ensure_ascii=False, indent=1), encoding='utf-8')
     print(f'Тур {slug}: {len(scenes)} сцен → tools/tours/tours/{slug}.json')
@@ -159,5 +162,5 @@ if __name__ == '__main__':
     if a[0] == 'pages':
         pages()
     else:
-        desc = a[a.index('--desc') + 1] if '--desc' in a else ''
-        new(a[1], a[2], a[3], desc)
+        opt = lambda k, d='': a[a.index(k) + 1] if k in a else d
+        new(a[1], a[2], a[3], opt('--desc'), int(opt('--max', 0)))
