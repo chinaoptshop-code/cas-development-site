@@ -27,7 +27,7 @@ def pages():
     out = []
     for f in sorted(glob.glob(os.path.join(ROOT, '*.html')) + glob.glob(os.path.join(ROOT, '*/*.html'))):
         rel = os.path.relpath(f, ROOT)
-        if rel.startswith(('google', 'tools/', 'styleguide/')) or rel in SKIP:
+        if rel.startswith(('google', 'tools/', 'styleguide/', 'tury/')) or rel in SKIP:
             continue
         out.append(rel)
     return out

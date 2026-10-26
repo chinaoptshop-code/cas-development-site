@@ -9,6 +9,7 @@ LOG="${TMPDIR:-/tmp}/cas-landing.log"
 python3 tools/site/landing.py > "$LOG" || { cat "$LOG"; exit 1; }
 tail -n 2 "$LOG"
 python3 tools/products/build.py
+python3 tools/tours/build.py pages
 python3 tools/shop/pages.py
 python3 tools/blog/build.py --check
 python3 tools/blog/build.py
