@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 # API кабінету й форм — не сторінки
 Disallow: /api/
+# кабінет клієнта й адмінка — особисті сторінки (ще й noindex у заголовках)
+Disallow: /kabinet
 
 Sitemap: https://cas-develop.com/sitemap.xml

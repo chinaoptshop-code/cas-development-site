@@ -47,7 +47,7 @@
 | ozdoba/liustra-hilka-z-plafonamy-z-dymchastoho-112.html | other | 65.0 | 17.2 | 32.5 | 7.2 | 14 | 325 |
 | ozdoba/myika-podviina-z-nerzhaviiuchoi-stali-ruchna-516.html | other | 65.0 | 17.3 | 32.5 | 7.2 | 14 | 320 |
 | ozdoba/pich-kamin-chavunna-na-drovakh-klasychna-503.html | other | 65.0 | 17.3 | 32.5 | 7.2 | 14 | 324 |
-| ozdoba/pidvis-z-tkanynnym-tsylindrychnym-abazhurom-3.html | other | 65.0 | 17.3 | 32.5 | 7.2 | 14 | 326 |
+| ozdoba/pidvis-z-tkanynnym-tsylindrychnym-abazhurom-3.html | other | 65.0 | 17.4 | 32.5 | 7.2 | 14 | 326 |
 | ozdoba/stil-obidnii-kruhlyi-marmur-z-obertovym-73.html | other | 65.0 | 17.2 | 32.5 | 7.2 | 14 | 322 |
 | ozdoba/zmishuvach-kukhonnyi-profesiinyi-z-pruzhynoiu-brashovane-519.html | other | 65.0 | 17.2 | 32.5 | 7.2 | 14 | 323 |
 | ozdoba/dveri-mizhkimnatni-shponovani-z-horyzontalnymy-frezamy-533.html | other | 64.9 | 17.2 | 32.5 | 7.2 | 14 | 323 |
@@ -64,7 +64,7 @@
 | ozdoba/topka-kaminna-chavunna-vbudovana-frontalne-sklo-505.html | other | 64.9 | 17.2 | 32.5 | 7.2 | 14 | 324 |
 | ozdoba/vohnyshche-hazove-kruhle-z-korten-stali-508.html | other | 64.9 | 17.3 | 32.5 | 7.2 | 14 | 324 |
 | ozdoba/bra-tuba-latun-z-ryflenym-sklom-5.html | other | 64.8 | 17.4 | 32.5 | 7.2 | 14 | 326 |
-| ozdoba/dveri-mizhkimnatni-filenchasti-temnyi-horikh-540.html | other | 64.8 | 17.2 | 32.5 | 7.2 | 14 | 323 |
+| ozdoba/dveri-mizhkimnatni-filenchasti-temnyi-horikh-540.html | other | 64.8 | 17.3 | 32.5 | 7.2 | 14 | 323 |
 | ozdoba/dveri-vkhidni-pivot-z-reikovym-oblytsiuvanniam-539.html | other | 64.8 | 17.2 | 32.5 | 7.2 | 14 | 322 |
 | ozdoba/lampa-nastilna-z-marmurovoiu-kolonoiu-i-118.html | other | 64.8 | 17.1 | 32.5 | 7.2 | 14 | 322 |
 | ozdoba/liustra-liniina-latunna-zi-sklianymy-dyskamy-584.html | other | 64.8 | 17.2 | 32.5 | 7.2 | 14 | 324 |
@@ -124,7 +124,7 @@
 | ozdoba/stilets-napivbarnyi-miakyi-horikh-i-svitla-105.html | other | 64.6 | 17.3 | 32.5 | 7.2 | 14 | 319 |
 | ozdoba/stilets-obidnii-z-ekoshkiry-chorni-nizhky-574.html | other | 64.6 | 17.2 | 32.5 | 7.2 | 14 | 320 |
 | ozdoba/torsher-kolona-zi-svitlovym-tsylindrom-17.html | other | 64.6 | 17.3 | 32.5 | 7.2 | 14 | 327 |
-| ozdoba/tumba-z-marmuru-calacatta-viola-4-589.html | other | 64.6 | 17.2 | 32.5 | 7.2 | 14 | 322 |
+| ozdoba/tumba-z-marmuru-calacatta-viola-4-589.html | other | 64.6 | 17.3 | 32.5 | 7.2 | 14 | 322 |
 | ozdoba/vytiazhka-ostrivna-z-nerzhaviiuchoi-stali-104.html | other | 64.6 | 17.3 | 32.5 | 7.2 | 14 | 320 |
 | ozdoba/zamok-elektronnyi-hotelnyi-z-rfid-kartkoiu-538.html | other | 64.6 | 17.2 | 32.5 | 7.2 | 14 | 320 |
 | ozdoba/zmishuvach-kukhonnyi-latunnyi-matove-zoloto-h-103.html | other | 64.6 | 17.1 | 32.5 | 7.2 | 14 | 320 |
@@ -388,7 +388,7 @@
 | ru/meblirovka-kvartiry-kiev.html | land | 57.1 | 15.4 | 15.3 | 7.0 | 9 | 408 |
 | ru/komplektatsiya-pod-klyuch-kiev.html | land | 56.9 | 15.3 | 15.3 | 7.0 | 9 | 406 |
 | ru/realizatsiya-dizayn-proekta-kiev.html | land | 56.9 | 15.4 | 15.3 | 7.0 | 9 | 420 |
-| ru/remont-kvartir-zhk-kiev.html | land | 56.7 | 15.4 | 15.3 | 7.0 | 9 | 471 |
+| ru/remont-kvartir-zhk-kiev.html | land | 56.7 | 15.5 | 15.3 | 7.0 | 9 | 471 |
 | blog/yak-vidkryty-kafe-restoran-pid-kliuch.html | land | 56.6 | 16.5 | 14.6 | 7.0 | 7 | 312 |
 | proekty/linden-penthouse.html | land | 56.6 | 10.5 | 2.3 | 0.9 | 1 | 454 |
 | ru/dizayn-remont-kvartiry-pechersk.html | land | 56.6 | 15.5 | 15.3 | 7.0 | 9 | 446 |
@@ -611,7 +611,7 @@
 | es/diseno-interiores-piso.html | land | 45.7 | 12.4 | 15.3 | 7.0 | 9 | 367 |
 | fr/construction-maison.html | land | 45.7 | 12.8 | 15.3 | 7.0 | 9 | 369 |
 | fr/design-appartement.html | land | 45.7 | 12.4 | 15.3 | 7.0 | 9 | 367 |
-| pl/realizacja-projektu.html | land | 45.7 | 13.1 | 15.3 | 7.0 | 9 | 379 |
+| pl/realizacja-projektu.html | land | 45.7 | 13.2 | 15.3 | 7.0 | 9 | 379 |
 | de/renovierung-schluesselfertig.html | land | 45.6 | 12.8 | 15.3 | 7.0 | 9 | 367 |
 | de/umsetzung-designprojekt.html | land | 45.6 | 13.0 | 15.3 | 7.0 | 9 | 368 |
 | de/wohnungsdesign.html | land | 45.6 | 12.6 | 15.3 | 7.0 | 9 | 372 |

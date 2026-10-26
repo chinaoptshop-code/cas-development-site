@@ -24,7 +24,7 @@ export async function onRequestGet({ request, env }) {
   await env.DB.prepare("UPDATE clients SET last_login = datetime('now') WHERE id = ?").bind(req.client_id).run();
   const c = await env.DB.prepare('SELECT * FROM clients WHERE id = ?').bind(req.client_id).first();
   const h = new Headers({ 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' });
-  h.append('set-cookie', await sessionCookie(env, c.id));
+  h.append('set-cookie', await sessionCookie(env, c));
   h.append('set-cookie', plCookie('', 0));
   return new Response(JSON.stringify({ status: 'ok', client: publicClient(c, env) }), { headers: h });
 }
