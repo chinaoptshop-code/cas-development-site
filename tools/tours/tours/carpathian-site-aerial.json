@@ -2,7 +2,7 @@
  "slug": "carpathian-site-aerial",
  "title": "Ділянка в Карпатах з висоти",
  "description": "Панорами ділянки з дрона.",
- "hidden": false,
+ "hidden": true,
  "start": "dji-fly-20260402-171958-0072-1775200975054-pano",
  "scenes": [
   {

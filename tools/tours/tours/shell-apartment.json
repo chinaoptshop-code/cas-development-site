@@ -2,7 +2,7 @@
  "slug": "shell-apartment",
  "title": "Квартира до ремонту",
  "description": "Квартира в бетоні перед ремонтом — 360-тур.",
- "hidden": false,
+ "hidden": true,
  "start": "img-20250527-175949-764",
  "scenes": [
   {

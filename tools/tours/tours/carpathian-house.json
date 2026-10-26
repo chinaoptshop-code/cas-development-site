@@ -2,7 +2,7 @@
  "slug": "carpathian-house",
  "title": "Деревʼяний будинок у Карпатах",
  "description": "360-тур деревʼяного будинку в Карпатах.",
- "hidden": false,
+ "hidden": true,
  "start": "img-20251127-130201-210",
  "scenes": [
   {
