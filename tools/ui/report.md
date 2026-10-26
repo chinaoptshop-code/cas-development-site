@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 724 (MAIN 5, LAND 373, інші 346). HTML разом 41160 КБ, з них інлайн CSS 16774 КБ і JS 5020 КБ.
+Сторінок: 724 (MAIN 5, LAND 373, інші 346). HTML разом 41178 КБ, з них інлайн CSS 16774 КБ і JS 5020 КБ.
 
 ## Проблеми
 
@@ -17,12 +17,12 @@
 
 | сторінка | тип | HTML КБ | gzip КБ | CSS КБ | JS КБ | розмірів шрифту | тегів |
 |---|---|---|---|---|---|---|---|
-| portfolio.html | main | 225.6 | 34.1 | 48.4 | 11.9 | 26 | 1754 |
+| portfolio.html | main | 232.7 | 35.4 | 48.4 | 11.9 | 26 | 1841 |
 | index.html | main | 133.0 | 28.8 | 53.7 | 14.5 | 27 | 657 |
 | ozdoba/komplekty.html | other | 118.7 | 28.5 | 32.5 | 7.9 | 14 | 1516 |
 | ozdoba/prais.html | other | 114.1 | 27.6 | 6.0 | 1.1 | 9 | 3014 |
 | ozdoba.html | other | 109.2 | 25.1 | 30.2 | 7.2 | 13 | 750 |
-| contact.html | main | 90.6 | 21.8 | 55.7 | 7.1 | 23 | 336 |
+| contact.html | main | 91.3 | 22.0 | 55.7 | 7.1 | 23 | 342 |
 | about.html | main | 89.5 | 21.9 | 48.7 | 7.1 | 22 | 392 |
 | pl/ozdoba.html | other | 88.9 | 21.8 | 30.8 | 7.2 | 13 | 620 |
 | services.html | main | 88.1 | 21.4 | 45.1 | 7.1 | 21 | 450 |
@@ -690,6 +690,7 @@
 | zh/furnishing.html | land | 43.3 | 12.8 | 15.3 | 7.0 | 9 | 350 |
 | zh/landscape-design.html | land | 43.3 | 12.6 | 15.3 | 7.0 | 9 | 359 |
 | proekty/edelweiss.html | land | 43.1 | 8.1 | 2.3 | 0.9 | 1 | 357 |
+| ru/kontakty.html | land | 43.1 | 12.4 | 15.3 | 7.0 | 9 | 303 |
 | fr/services.html | land | 42.9 | 12.1 | 15.3 | 7.0 | 9 | 369 |
 | es/servicios.html | land | 42.8 | 12.0 | 15.3 | 7.0 | 9 | 371 |
 | es/preguntas-frecuentes.html | land | 42.7 | 11.7 | 13.7 | 7.0 | 7 | 315 |
@@ -706,22 +707,21 @@
 | en/about.html | land | 42.0 | 12.1 | 15.3 | 7.0 | 9 | 343 |
 | pl/faq.html | land | 42.0 | 12.0 | 13.7 | 7.0 | 7 | 323 |
 | proekty/yacht-vip.html | land | 42.0 | 8.1 | 2.3 | 0.9 | 1 | 354 |
-| ru/kontakty.html | land | 41.8 | 12.1 | 15.3 | 7.0 | 9 | 292 |
 | zh/services.html | land | 41.6 | 12.3 | 15.3 | 7.0 | 9 | 370 |
 | zh/about.html | land | 41.3 | 12.7 | 15.3 | 7.0 | 9 | 333 |
+| ar/contact.html | land | 41.2 | 11.7 | 15.3 | 7.0 | 9 | 280 |
 | proekty/hoda-estate.html | land | 41.0 | 8.3 | 2.3 | 0.9 | 1 | 373 |
 | zh/faq.html | land | 40.8 | 11.9 | 13.7 | 7.0 | 7 | 313 |
+| fr/contact.html | land | 40.1 | 11.5 | 15.3 | 7.0 | 9 | 282 |
 | proekty/diamond.html | land | 40.1 | 7.9 | 2.3 | 0.9 | 1 | 343 |
-| ar/contact.html | land | 39.8 | 11.3 | 15.3 | 7.0 | 9 | 269 |
-| es/contacto.html | land | 38.8 | 11.1 | 15.3 | 7.0 | 9 | 271 |
-| fr/contact.html | land | 38.8 | 11.1 | 15.3 | 7.0 | 9 | 271 |
-| pl/kontakt.html | land | 38.8 | 11.2 | 15.3 | 7.0 | 9 | 279 |
-| de/kontakt.html | land | 38.7 | 11.1 | 15.3 | 7.0 | 9 | 273 |
+| es/contacto.html | land | 40.0 | 11.5 | 15.3 | 7.0 | 9 | 282 |
+| pl/kontakt.html | land | 40.0 | 11.6 | 15.3 | 7.0 | 9 | 290 |
+| de/kontakt.html | land | 39.9 | 11.5 | 15.3 | 7.0 | 9 | 284 |
+| en/contact.html | land | 39.7 | 11.3 | 15.3 | 7.0 | 9 | 290 |
+| zh/contact.html | land | 39.2 | 11.7 | 15.3 | 7.0 | 9 | 280 |
 | proekty/dubai-villa.html | land | 38.7 | 8.1 | 2.3 | 0.9 | 1 | 359 |
 | konfidentsiinist.html | land | 38.6 | 11.7 | 13.6 | 7.0 | 10 | 222 |
 | ru/konfidentsialnost.html | land | 38.6 | 11.7 | 13.6 | 7.0 | 10 | 222 |
-| en/contact.html | land | 38.5 | 11.0 | 15.3 | 7.0 | 9 | 279 |
-| zh/contact.html | land | 38.0 | 11.3 | 15.3 | 7.0 | 9 | 269 |
 | ar/privacy.html | land | 37.0 | 11.1 | 13.6 | 7.0 | 10 | 209 |
 | fr/confidentialite.html | land | 35.9 | 10.8 | 13.6 | 7.0 | 10 | 209 |
 | pl/polityka-prywatnosci.html | land | 35.5 | 10.9 | 13.6 | 7.0 | 10 | 217 |

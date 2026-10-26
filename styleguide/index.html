@@ -172,6 +172,7 @@ footer .fs a{display:inline-flex;align-items:center;min-height:44px}
 .sg-demo .sg-tbl{display:block;overflow-x:auto}
 code{font-size:.92em}
 .hero p{max-width:640px;max-inline-size:640px}.sg-note,.sg-meta p{max-width:720px;max-inline-size:720px}</style>
+<link rel="stylesheet" href="/assets/cas-map.v1.css?v=1a565e86">
 <link rel="stylesheet" href="/assets/site-chrome.v1.css?v=ae77553d">
 </head>
 <body>
@@ -206,6 +207,7 @@ code{font-size:.92em}
 <li><a href="#case">Картка кейсу</a></li>
 <li><a href="#budget">Орієнтир бюджету</a></li>
 <li><a href="#gallery">Галерея проєктів</a></li>
+<li><a href="#map">Карта (офіс, проєкти)</a></li>
 <li><a href="#marquee">Стрічки (marquee)</a></li>
 <li><a href="#rel">Посилання на послуги</a></li>
 <li><a href="#compact">Компактні блоки</a></li>
@@ -281,6 +283,11 @@ code{font-size:.92em}
 <section id="gallery"><h2>Галерея проєктів</h2>
 <div class="sg-c"><div class="sg-meta"><code>.gal &gt; figure</code><p>Сітка фото з підписом-назвою проєкту на лендингах (landing.py, <code>"gallery"</code>). Фото — <code>loading="lazy"</code>, width/height і змістовний alt. Hover — легкий zoom фото й акцентна рамка.</p></div>
 <div class="sg-demo"><div class="gal"><figure><img src="/img/p/1MslU7S5X8gIEp-900.webp" loading="lazy" decoding="async" width="900" height="1125" alt="Linden Penthouse — інтерʼєр квартири, проєкт CAS Development"><figcaption>Linden Penthouse</figcaption></figure><figure><img src="/img/p/1DL1BY7Tg6L5B5-900.webp" loading="lazy" decoding="async" width="900" height="450" alt="Edelweiss — інтерʼєр квартири, проєкт CAS Development"><figcaption>Edelweiss</figcaption></figure><figure><img src="/img/p/1iGcqtsUqLNWbB-900.webp" loading="lazy" decoding="async" width="900" height="1125" alt="Diamond — інтерʼєр квартири, проєкт CAS Development"><figcaption>Diamond</figcaption></figure></div></div></div>
+</section>
+
+<section id="map"><h2>Карта (офіс, проєкти)</h2>
+<div class="sg-c"><div class="sg-meta"><code>.cmap[data-cas-map]</code><p>Власна карта: MapLibre GL JS 5.24.0 (BSD-3, <code>/assets/vendor/</code>) + векторні тайли OpenFreeMap (без ключа, атрибуція © OpenMapTiles © OpenStreetMap). Розмітка — <code>tools/site/casmap.py</code> (лендинги — секція <code>{"t": "map"}</code>), стилі <code>/assets/cas-map.v1.css</code>, логіка <code>/assets/cas-map.v1.js</code>. Бібліотека вантажиться ліниво: <code>data-load="click"</code> (офіс) або <code>"visible"</code> («Карта проєктів» внизу /portfolio). Без JS/WebGL — постер <code>img/map/*.webp</code> і звичайні посилання; prefers-reduced-motion — без flyTo. Точки проєктів — лише центр міста/регіону.</p></div>
+<div class="sg-demo"><div class="cmap" data-cas-map="office" data-load="click" data-lang="uk" data-ll="30.5131241,50.4335971" data-z="16" data-title="CAS Development" data-addr="Київ, вул. Антоновича, 44" data-route="https://www.google.com/maps/dir/?api=1&amp;destination=50.4335971%2C30.5131241" data-route-t="Маршрут →"><img class="cmap-poster" src="/img/map/office-800.webp" srcset="/img/map/office-800.webp 800w, /img/map/office-1280.webp 1280w" sizes="(max-width:767px) 100vw, 700px" width="800" height="500" loading="lazy" decoding="async" alt="Карта: офіс CAS Development — Київ, вул. Антоновича, 44"><button type="button" class="cmap-go" hidden>Інтерактивна карта</button></div><div class="cmap-acts"><a class="main" href="https://www.google.com/maps/dir/?api=1&amp;destination=50.4335971%2C30.5131241" target="_blank" rel="noopener">Маршрут</a><a href="https://maps.google.com/?cid=15015666645432112566" target="_blank" rel="noopener">Відкрити в Google Maps</a></div></div></div>
 </section>
 
 <section id="marquee"><h2>Стрічки (marquee)</h2>
@@ -402,5 +409,6 @@ requestAnimationFrame(function(){requestAnimationFrame(function(){c.forEach(func
 </div>
 </footer><!--/chrome:f-->
 <script src="/assets/site-chrome.v1.js?v=c167e522" defer></script>
+<script src="/assets/cas-map.v1.js?v=b6563f75" defer></script>
 </body>
 </html>
