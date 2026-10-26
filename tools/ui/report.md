@@ -499,15 +499,15 @@
 | dyzainer-interieru-kyiv.html | land | 53.4 | 14.8 | 15.3 | 7.0 | 9 | 413 |
 | blog/shcho-vkhodyt-u-dyzain-proekt-interieru.html | land | 53.3 | 15.5 | 14.6 | 7.0 | 7 | 301 |
 | blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html | land | 53.3 | 15.2 | 14.6 | 7.0 | 7 | 300 |
-| ru/dogovor-garantiya-oplata.html | land | 53.3 | 14.7 | 15.3 | 7.0 | 9 | 398 |
+| ru/dogovor-garantiya-oplata.html | land | 53.3 | 14.7 | 15.3 | 7.0 | 9 | 395 |
 | ru/index.html | land | 53.3 | 14.5 | 15.3 | 7.0 | 9 | 419 |
 | remont-komertsiinykh-prymishchen-kyiv.html | land | 53.2 | 14.6 | 15.1 | 7.0 | 9 | 433 |
 | blog/avtorskyi-nahliad-navishcho.html | land | 53.1 | 15.5 | 14.6 | 7.0 | 7 | 312 |
 | blog/etapy-remontu-kvartyry-pid-kliuch.html | land | 53.1 | 15.5 | 14.6 | 7.0 | 7 | 315 |
+| dogovir-garantiya-oplata.html | land | 53.1 | 14.6 | 15.3 | 7.0 | 9 | 395 |
 | blog/mebli-z-kytaiu-dlia-interieru.html | land | 53.0 | 15.3 | 14.6 | 7.0 | 7 | 316 |
 | blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | land | 53.0 | 15.4 | 14.6 | 7.0 | 7 | 312 |
 | blog/skilky-koshtuie-dyzain-proekt-kvartyry-kyiv.html | land | 53.0 | 15.2 | 14.6 | 7.0 | 7 | 314 |
-| dogovir-garantiya-oplata.html | land | 53.0 | 14.6 | 15.3 | 7.0 | 9 | 398 |
 | blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html | land | 52.9 | 15.2 | 14.6 | 7.0 | 7 | 318 |
 | blog/suchasnyi-minimalizm-teplyi-interier.html | land | 52.9 | 15.5 | 14.6 | 7.0 | 7 | 302 |
 | blog/yak-vybraty-remontnu-bryhadu.html | land | 52.9 | 15.5 | 14.6 | 7.0 | 7 | 306 |
@@ -618,7 +618,7 @@
 | es/reforma-locales-comerciales.html | land | 46.6 | 12.9 | 15.3 | 7.0 | 9 | 386 |
 | ar/landscape-design.html | land | 46.5 | 12.7 | 15.3 | 7.0 | 9 | 358 |
 | de/badsanierung.html | land | 46.5 | 13.2 | 15.3 | 7.0 | 9 | 382 |
-| en/contract-warranty-payment.html | land | 46.5 | 13.1 | 15.3 | 7.0 | 9 | 391 |
+| en/contract-warranty-payment.html | land | 46.5 | 13.1 | 15.3 | 7.0 | 9 | 388 |
 | en/renovation-cost-calculator.html | land | 46.5 | 12.9 | 15.9 | 7.9 | 9 | 367 |
 | de/haussanierung.html | land | 46.4 | 13.0 | 15.3 | 7.0 | 9 | 390 |
 | en/design-implementation.html | land | 46.4 | 13.2 | 15.3 | 7.0 | 9 | 389 |

@@ -53,9 +53,7 @@
    "t": "cards",
    "h2": "Ways to pay",
    "items": [
-    {"h": "Invoice", "p": "For companies registered in Ukraine, with closing documents. Invoicing for EU companies is being set up."},
-    {"h": "Card", "p": "Payment by bank card."},
-    {"h": "Cash", "p": "Cash by arrangement."}
+    {"h": "Invoice", "p": "For companies registered in Ukraine, with closing documents. Invoicing for EU companies is being set up."}, {"h": "Other methods", "p": "Other payment methods are agreed in the contract."}
    ]
   },
   {
@@ -77,7 +75,7 @@
    "items": [
     ["Can I see the contract before signing?", "Yes. Leave a request and we will send a sample contract; for your property we prepare a contract with an estimate and schedule."],
     ["What is the warranty on renovation?", "36 months on completed works from the day they are accepted under the final certificate. For construction and reconstruction, the warranty on the building follows Article 884 of the Civil Code of Ukraine and the contract."],
-    ["How can I pay?", "On the schedule you choose: 50/50, 50/30/20, 50/40/10 or split by stages; you start with an advance from 10%. By invoice (for companies registered in Ukraine), card or cash."],
+    ["How can I pay?", "On the schedule you choose: 50/50, 50/30/20, 50/40/10 or split by stages; you start with an advance from 10%. By invoice (for companies registered in Ukraine) or another method agreed in the contract."],
     ["Can the total grow during the renovation?", "If CAS carries out the renovation, the total stays within ±5% of the approved estimate."],
     ["Who works on site?", "Three in-house salaried CAS crews for different complexity and types of work; custom kitchens and wardrobes are made by our staff and partners."],
     ["How do I follow the works from abroad?", "Photo reports every 1–2 weeks and, for an extra fee, an online camera on site 24/7."],
