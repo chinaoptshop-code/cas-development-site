@@ -16,7 +16,9 @@
    "parent": ["/url", "назва"] (необовʼязково — проміжна ланка хлібних крихт замість «Послуги», напр. хаб ЖК),
    "budget": {"area": 100, "h2": "...", "p": "..."} (необовʼязково — орієнтир «площа × ставка» з data-est після about),
    "near": ["h2", [["/url", "назва"], ...]] (необовʼязково — блок посилань перед «Інші послуги»),
-   "cluster": ["h2", "вступ", [["/url", "анкор"], ...]] (необовʼязково — сусідні інтенти кластера запитів, tools/site/keywords.json)}
+   "cluster": ["h2", "вступ", [["/url", "анкор"], ...]] (необовʼязково — сусідні інтенти кластера запитів, tools/site/keywords.json),
+   "facts": [["36 міс.", "гарантія"], ...] (необовʼязково — свої факти в hero замість типових),
+   "assets": ["assets/<файл>.css", "assets/<файл>.js"] (необовʼязково — стилі/скрипт інтерактивного блоку з "extra", напр. демо /onlain-kontrol)}
 У абзацах "about" і відповідях "faq" можна ставити посилання: [анкор](/url).
 Сторінка частих питань (/pytannya): замість cards/steps/faq — "groups": [{"id": "ceny", "h2": "...",
    "faq": [[q, a], ...], "links": [["/url", "назва"], ...]}, ...]; price необовʼязковий.
@@ -379,9 +381,23 @@ def build(p):
     if any(x['t'] == 'map' for x in p.get('sections', [])):
         s = casmap.assets(s)
     s = chrome.apply(s, path(lang, slug))
+    s = page_assets(s, p.get('assets', []))
     os.makedirs(os.path.dirname(os.path.join(ROOT, path(lang, slug))), exist_ok=True)
     open(os.path.join(ROOT, path(lang, slug)), 'w', encoding='utf-8').write(s)
     return path(lang, slug)
+
+
+def page_assets(s, files):
+    """Власні стилі/скрипти сторінки ("assets": ["assets/x.v1.css", "assets/x.v1.js"]) — з ?v=хеш, бо /assets/* кешується назавжди.
+    CSS — перед </head>, JS — defer перед </body>. Лише файли з assets/ (перевіряє check())."""
+    import hashlib
+    for f in files:
+        v = hashlib.sha256(open(os.path.join(ROOT, f), 'rb').read()).hexdigest()[:8]
+        if f.endswith('.css'):
+            s = s.replace('</head>', f'<link rel="stylesheet" href="/{f}?v={v}">\n</head>', 1)
+        else:
+            s = s.replace('</body>', f'<script src="/{f}?v={v}" defer></script>\n</body>', 1)
+    return s
 
 
 def link_pair(p):
@@ -419,6 +435,8 @@ def check(p):
         if m not in ok and not re.fullmatch(r'\$\d{2,3}[ ,.]\d{3}', m):  # розрахунок площа × ставка
             errs.append('ціна ' + m)
     if len(p['description']) > 160: errs.append('description > 160')
+    for f in p.get('assets', []):
+        if not re.fullmatch(r'assets/[a-z0-9.-]+\.(css|js)', f) or not os.path.exists(os.path.join(ROOT, f)): errs.append('assets: ' + f)
     if p['lang'] not in L: errs.append('мова без словника: ' + p['lang'])
     for g in p.get('gallery', []) + [i for x in p.get('sections', []) if x['t'] == 'gallery' for i in x['items']]:
         src = g[0]
