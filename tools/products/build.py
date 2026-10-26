@@ -17,7 +17,7 @@ import i18n  # noqa: E402  hreflang-кластер /ozdoba ↔ /en/ozdoba ↔ /p
 import leadform  # noqa: E402  легка заявка (tools/site/leadform.py)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import intl  # noqa: E402  /en/ozdoba, /pl/ozdoba і словники assets/ozdoba/i18n.<мова>.json (tools/products/intl.py)
-import pricelist  # noqa: E402  PDF-прайс /ozdoba/prais (tools/products/pricelist.py)
+import pricelist, feed  # noqa: E402  PDF-прайс /ozdoba/prais (tools/products/pricelist.py)
 
 
 def _chrome_apply(s, rel):
@@ -167,6 +167,7 @@ def main():
     nk = kits_page(d)
     nl, no_tr = intl.build(sys.modules[__name__])
     npr, kb = pricelist.build(sys.modules[__name__])
+    nf = feed.build(sys.modules[__name__])   # /ozdoba/feed.xml — Google Merchant / Pinterest / Meta (tools/products/feed.py)
     photos = sum(1 for i in d['items'] if i.get('img'))
     print(f'Оздоба: {len(items)} товарів, з фото {photos}, сторінок товарів {pages}, категорій {cats}, комплектів під обʼєкт {nk}, версія каталогу {ver(CAT)}')
     print(f'Оздоба en/pl: {nl} сторінки' + (f', без перекладу назви: {no_tr} товарів (беремо поле en)' if no_tr else '') + f'; прайс /ozdoba/prais: {npr} позицій, {kb} КБ')
