@@ -1,22 +1,15 @@
 {
  "slug": "triangle-house",
- "title": "Triangle House",
- "description": "360-тур будинку Triangle House.",
- "hidden": true,
+ "title": "Triangle House — концепт інтерʼєру",
+ "description": "360-візуалізації концепту інтерʼєру будинку Triangle House: вітальня з кухнею, спальні, ванна.",
+ "hidden": false,
  "source": "kuula:7XfVl",
  "start": "s01",
  "scenes": [
   {
    "id": "s01",
-   "name": "Ванна 2",
-   "image": "/img/tury/triangle-house/s01.jpg",
-   "yaw": 0.0,
-   "hotspots": []
-  },
-  {
-   "id": "s02",
    "name": "Ванна",
-   "image": "/img/tury/triangle-house/s02.jpg",
+   "image": "/img/tury/triangle-house/s01.jpg",
    "yaw": 0.0,
    "hotspots": []
   },
@@ -55,5 +48,7 @@
    "yaw": 0.0,
    "hotspots": []
   }
- ]
+ ],
+ "kind": "Концепт · 360-візуалізація",
+ "order": 4
 }

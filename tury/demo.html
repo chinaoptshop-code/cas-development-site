@@ -2,14 +2,15 @@
 <html lang="uk"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Демо-тур (тестові панорами) — 3D-тур | CAS Development</title>
-<meta name="description" content="Тестовий 3D-тур для перевірки переглядача.">
+<meta name="description" content="Тестовий 3D-тур для перевірки переглядача. Тур 360° від CAS Development: телефон, ноутбук або VR-окуляри.">
 <link rel="canonical" href="https://cas-develop.com/tury/demo">
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Демо-тур (тестові панорами) — 3D-тур CAS Development">
-<meta property="og:description" content="Тестовий 3D-тур для перевірки переглядача.">
+<meta property="og:description" content="Тестовий 3D-тур для перевірки переглядача. Тур 360° від CAS Development: телефон, ноутбук або VR-окуляри.">
 <meta property="og:image" content="https://cas-develop.com/img/tury/demo/1-hotel-room-thumb.jpg">
 <link rel="icon" href="/favicon.svg">
 <link rel="stylesheet" href="/assets/tours/tour.v1.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://cas-develop.com/"}, {"@type": "ListItem", "position": 2, "name": "3D-тури", "item": "https://cas-develop.com/tury"}, {"@type": "ListItem", "position": 3, "name": "Демо-тур (тестові панорами)", "item": "https://cas-develop.com/tury/demo"}]}</script>
 <script src="/assets/tours/aframe.min.js"></script>
 </head><body>
 <script type="application/json" id="tour-data">{"slug": "demo", "title": "Демо-тур (тестові панорами)", "description": "Тестовий 3D-тур для перевірки переглядача.", "start": "1-hotel-room", "scenes": [{"id": "1-hotel-room", "name": "Номер готелю", "image": "/img/tury/demo/1-hotel-room.jpg", "yaw": 0, "hotspots": [{"to": "2-studio", "yaw": 0, "pitch": -15}]}, {"id": "2-studio", "name": "Студія", "image": "/img/tury/demo/2-studio.jpg", "yaw": 0, "hotspots": [{"to": "1-hotel-room", "yaw": 180, "pitch": -15}]}], "hidden": true}</script>
@@ -27,7 +28,7 @@
 </a-scene>
 <div class="ui">
   <a class="brand" href="/tury" target="_top">CAS · 3D</a>
-  <div class="title" id="title"></div>
+  <h1 class="title" id="title" style="margin:0;font-weight:inherit">Демо-тур (тестові панорами)</h1>
   <button class="btn" id="menuBtn" aria-label="Кімнати">☰ Кімнати</button>
 </div>
 <nav class="rooms" id="rooms" hidden></nav>

@@ -871,5 +871,125 @@
   ],
   "status": "todo",
   "note": "SEO-аудит 25.10.2026: комерційний запит, сегмент від $5 000"
+ },
+ {
+  "lang": "uk",
+  "slug": "skilky-koshtuie-remont-ofisu-kyiv-2026",
+  "title": "Скільки коштує ремонт офісу в Києві у 2026: з чого складається ціна за м²",
+  "keyword": "скільки коштує ремонт офісу",
+  "service": [
+   "/vartist-remontu-ofisu-kyiv",
+   "Вартість ремонту офісу"
+  ],
+  "status": "published",
+  "note": "Офісна ніша 26.10.2026: Михайло попросив написати й опублікувати 5 статей про офіси (uk+ru)"
+ },
+ {
+  "lang": "ru",
+  "slug": "skolko-stoit-remont-ofisa-kiev-2026",
+  "title": "Сколько стоит ремонт офиса в Киеве в 2026: из чего складывается цена за м²",
+  "keyword": "сколько стоит ремонт офиса",
+  "service": [
+   "/ru/stoimost-remonta-ofisa-kiev",
+   "Стоимость ремонта офиса"
+  ],
+  "status": "published",
+  "note": "Офісна ніша 26.10.2026: Михайло попросив написати й опублікувати 5 статей про офіси (uk+ru)"
+ },
+ {
+  "lang": "uk",
+  "slug": "open-space-chy-kabinety-planuvannia-ofisu",
+  "title": "Open space чи кабінети: планування офісу під команду",
+  "keyword": "open space чи кабінети",
+  "service": [
+   "/dyzain-ofisu-open-space-kyiv",
+   "Дизайн офісу open space"
+  ],
+  "status": "published",
+  "note": "Офісна ніша 26.10.2026: Михайло попросив написати й опублікувати 5 статей про офіси (uk+ru)"
+ },
+ {
+  "lang": "ru",
+  "slug": "open-space-ili-kabinety-planirovka-ofisa",
+  "title": "Open space или кабинеты: планировка офиса под команду",
+  "keyword": "open space или кабинеты",
+  "service": [
+   "/ru/dizayn-ofisa-open-space-kiev",
+   "Дизайн офиса open space"
+  ],
+  "status": "published",
+  "note": "Офісна ніша 26.10.2026: Михайло попросив написати й опублікувати 5 статей про офіси (uk+ru)"
+ },
+ {
+  "lang": "uk",
+  "slug": "ofis-u-biznes-tsentri-shcho-uzghodyty-pered-remontom",
+  "title": "Офіс у бізнес-центрі: що узгоджувати з орендодавцем перед ремонтом",
+  "keyword": "ремонт офісу в бізнес-центрі",
+  "service": [
+   "/remont-ofisu-pid-klyuch-kyiv",
+   "Ремонт офісу під ключ"
+  ],
+  "status": "published",
+  "note": "Офісна ніша 26.10.2026: Михайло попросив написати й опублікувати 5 статей про офіси (uk+ru)"
+ },
+ {
+  "lang": "ru",
+  "slug": "ofis-v-biznes-tsentre-chto-soglasovat-pered-remontom",
+  "title": "Офис в бизнес-центре: что согласовать с арендодателем перед ремонтом",
+  "keyword": "ремонт офиса в бизнес-центре",
+  "service": [
+   "/ru/remont-ofisa-kiev",
+   "Ремонт офиса под ключ"
+  ],
+  "status": "published",
+  "note": "Офісна ніша 26.10.2026: Михайло попросив написати й опублікувати 5 статей про офіси (uk+ru)"
+ },
+ {
+  "lang": "uk",
+  "slug": "mebli-dlia-ofisu-z-kytaiu-biudzhet-i-stroky",
+  "title": "Меблі для офісу з Китаю: як порахувати бюджет і строки",
+  "keyword": "меблі для офісу з Китаю",
+  "service": [
+   "/komplektatsiia-pid-kliuch-kyiv",
+   "Комплектація під ключ"
+  ],
+  "status": "published",
+  "note": "Офісна ніша 26.10.2026: Михайло попросив написати й опублікувати 5 статей про офіси (uk+ru)"
+ },
+ {
+  "lang": "ru",
+  "slug": "mebel-dlya-ofisa-iz-kitaya-byudzhet-i-sroki",
+  "title": "Мебель для офиса из Китая: как посчитать бюджет и сроки",
+  "keyword": "мебель для офиса из Китая",
+  "service": [
+   "/ru/komplektatsiya-pod-klyuch-kiev",
+   "Комплектация под ключ"
+  ],
+  "status": "published",
+  "note": "Офісна ніша 26.10.2026: Михайло попросив написати й опублікувати 5 статей про офіси (uk+ru)"
+ },
+ {
+  "lang": "uk",
+  "slug": "dyzain-ofisu-z-choho-pochaty",
+  "title": "Дизайн офісу: з чого почати — бриф, планування і бюджет",
+  "keyword": "дизайн офісу з чого почати",
+  "service": [
+   "/dyzain-ofisu-kyiv",
+   "Дизайн офісу"
+  ],
+  "status": "published",
+  "note": "Офісна ніша 26.10.2026: Михайло попросив написати й опублікувати 5 статей про офіси (uk+ru)"
+ },
+ {
+  "lang": "ru",
+  "slug": "dizayn-ofisa-s-chego-nachat",
+  "title": "Дизайн офиса: с чего начать — бриф, планировка и бюджет",
+  "keyword": "дизайн офиса с чего начать",
+  "service": [
+   "/ru/dizayn-ofisa-kiev",
+   "Дизайн офиса"
+  ],
+  "status": "published",
+  "note": "Офісна ніша 26.10.2026: Михайло попросив написати й опублікувати 5 статей про офіси (uk+ru)"
  }
 ]
