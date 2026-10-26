@@ -73,7 +73,7 @@ def new(folder, slug, title, desc='', maxn=0, names=None):
 VIEW = '''<!doctype html>
 <html lang="uk"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>{title} — 3D-тур | CAS Development</title>
+<title>{ttag}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{site}/tury/{slug}">{robots}
 <meta property="og:title" content="{title} — 3D-тур CAS Development">
@@ -81,6 +81,7 @@ VIEW = '''<!doctype html>
 <meta property="og:image" content="{site}{thumb}">
 <link rel="icon" href="/favicon.svg">
 <link rel="stylesheet" href="/assets/tours/tour.v1.css">
+<script type="application/ld+json">{crumbs}</script>
 <script src="/assets/tours/aframe.min.js"></script>
 </head><body>
 <script type="application/json" id="tour-data">{data}</script>
@@ -98,7 +99,7 @@ VIEW = '''<!doctype html>
 </a-scene>
 <div class="ui">
   <a class="brand" href="/tury" target="_top">CAS · 3D</a>
-  <div class="title" id="title"></div>
+  <h1 class="title" id="title" style="margin:0;font-weight:inherit">{title}</h1>
   <button class="btn" id="menuBtn" aria-label="Кімнати">☰ Кімнати</button>
 </div>
 <nav class="rooms" id="rooms" hidden></nav>
@@ -114,6 +115,7 @@ INDEX = '''<!doctype html>
 <title>3D-тури обʼєктів — віртуальні прогулянки | CAS Development</title>
 <meta name="description" content="3D-тури CAS Development: реалізовані інтерʼєри й 360-візуалізації дизайн-проєктів. Дивіться на телефоні, ноутбуці або у VR-окулярах.">
 <link rel="canonical" href="{site}/tury">
+<script type="application/ld+json">{crumbs}</script>
 <meta property="og:title" content="3D-тури обʼєктів — CAS Development">
 <meta property="og:image" content="{site}{og}">
 <link rel="icon" href="/favicon.svg">
@@ -141,6 +143,13 @@ INDEX = '''<!doctype html>
 '''
 
 
+def _crumbs(items):
+    """JSON-LD BreadcrumbList (для seo.py: на всіх внутрішніх сторінках)."""
+    return json.dumps({'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+        {'@type': 'ListItem', 'position': i, 'name': n, 'item': SITE + u} for i, (n, u) in enumerate(items, 1)]},
+        ensure_ascii=False).replace('</', '<\\/')
+
+
 def pages():
     OUT.mkdir(exist_ok=True)
     cards, open_slugs = [], []
@@ -148,9 +157,16 @@ def pages():
         t = json.loads(f.read_text(encoding='utf-8'))
         start = next(s for s in t['scenes'] if s['id'] == t['start'])
         thumb = start['image'].replace('.jpg', '-thumb.jpg')
-        desc = html.escape(t.get('description') or f"Віртуальний 3D-тур «{t['title']}» від CAS Development.")
+        d = t.get('description') or f"Віртуальний 3D-тур «{t['title']}» від CAS Development."
+        for tail in (' Тур 360° від CAS Development: телефон, ноутбук або VR-окуляри.', ' Тур 360° від CAS Development.'):
+            if len(d) < 70 and len(d + tail) <= 160:
+                d += tail
+        desc = html.escape(d)
+        ttag = html.escape(next(c for c in (f"{t['title']} — 3D-тур | CAS Development", f"{t['title']} | CAS Development",
+                                             f"{t['title']} — 3D-тур", t['title']) if len(c) <= 60 or c == t['title']))
+        crumbs = _crumbs([('Головна', '/'), ('3D-тури', '/tury'), (t['title'], f"/tury/{t['slug']}")])
         data = json.dumps(t, ensure_ascii=False).replace('</', '<\\/')
-        (OUT / f"{t['slug']}.html").write_text(VIEW.format(title=html.escape(t['title']), desc=desc, site=SITE,
+        (OUT / f"{t['slug']}.html").write_text(VIEW.format(title=html.escape(t['title']), ttag=ttag, crumbs=crumbs, desc=desc, site=SITE,
                                                             slug=t['slug'], thumb=thumb, data=data,
                                                             robots='\n<meta name="robots" content="noindex">' if t.get('hidden') else ''), encoding='utf-8')
         if not t.get('hidden'):
@@ -163,7 +179,7 @@ def pages():
     cards.sort(key=lambda c: c[0])
     og = cards[0][2] if cards else '/img/og/default.jpg'
     cards = [c[1] for c in cards]
-    idx = INDEX.format(site=SITE, og=og, cards='\n'.join(cards) or '<p class="tl-lead">Тури скоро зʼявляться.</p>')
+    idx = INDEX.format(site=SITE, og=og, crumbs=_crumbs([('Головна', '/'), ('3D-тури', '/tury')]), cards='\n'.join(cards) or '<p class="tl-lead">Тури скоро зʼявляться.</p>')
     if not cards:  # поки немає відкритих турів — сторінка-заглушка не індексується
         idx = idx.replace('<head>', '<head>\n<meta name="robots" content="noindex">', 1)
     try:  # єдина шапка/футер сайту (tools/site/chrome.py)
