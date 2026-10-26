@@ -47,10 +47,11 @@ const ASIS = ['Як на фото', '#C9A86A', 0];
 const col = (i, ci) => ci == null || ci < 0 ? ASIS : (CS(i)[ci] || CS(i)[0]);
 const SS = i => i.ss ? DATA.sizesets[i.ss] : null;
 /* розмір у назві товару («…, 100 см», «Ø70», «200×300») — той, що відкривається за замовчуванням і показується на картці */
-const nz = t => String(t).toLowerCase().replace(/x/g,'×').replace(/[\sØ⌀]|см/g,'');
+const nz = t => String(t).toLowerCase().replace(/x/g,'×').replace(/[\sØø⌀]|см/g,'');  // ø — бо після toLowerCase «Ø40 см» стає «ø40»
 const nameS = i => { const s = SS(i); if(!s) return -1; const nm = nz(i.name);
   return s.findIndex(x => new RegExp('(^|[^\\d×.])' + nz(x[0]).replace(/[.]/g,'\\.') + '($|[^\\d×.])').test(nm)); };
-const defS = i => { const s = SS(i); if(!s) return 0; const k = nameS(i); if(k>=0) return k; const n = s.findIndex(x=>x[1]===1); return n<0?0:n; };
+/* розмір за замовчуванням: із назви; інакше — найдешевший, бо картка показує «від <найменша ціна>» і шторка має відкриватись саме з нею */
+const defS = i => { const s = SS(i); if(!s) return 0; const k = nameS(i); if(k>=0) return k; let n=0; s.forEach((x,j)=>{ if(x[1]<s[n][1]) n=j; }); return n; };
 const r10 = n => Math.round(n/10)*10;
 /* українська множина: 1 позиція, 2 позиції, 5 позицій */
 const plural = (n, one, few, many) => { const a=n%10, b=n%100; return a===1&&b!==11 ? one : a>=2&&a<=4&&(b<12||b>14) ? few : many; };

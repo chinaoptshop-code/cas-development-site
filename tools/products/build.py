@@ -47,7 +47,7 @@ def plural(n, one='позиція', few='позиції', many='позицій')
 
 
 def _nz(t):
-    return re.sub(r'[\sØ⌀]|см', '', str(t).lower().replace('x', '×'))
+    return re.sub(r'[\sØø⌀]|см', '', str(t).lower().replace('x', '×'))  # ø — бо після lower() «Ø40 см» стає «ø40»
 
 
 def name_size(d, i):
@@ -61,11 +61,11 @@ def name_size(d, i):
 
 
 def def_size(d, i):
-    """Розмір за замовчуванням (defS в app.js): з назви, інакше множник 1."""
+    """Розмір за замовчуванням (defS в app.js): з назви, інакше найдешевший — щоб збігався з «від <ціна>» на картці."""
     ss = d['sizesets'].get(i['ss']) if i.get('ss') else None
     if not ss: return 0
     k = name_size(d, i)
-    return k if k >= 0 else next((n for n, x in enumerate(ss) if x[1] == 1), 0)
+    return k if k >= 0 else min(range(len(ss)), key=lambda n: ss[n][1])
 
 
 def is_from(d, i):
@@ -521,7 +521,7 @@ KITS_URL = f'{SITE}/ozdoba/komplekty'
 
 
 def item_price(d, i):
-    """Ціна позиції як у app.js price(i, -1, defS(i)): розмір за замовчуванням (з назви або множник 1), колір «як на фото»."""
+    """Ціна позиції як у app.js price(i, -1, defS(i)): розмір за замовчуванням (з назви або найдешевший), колір «як на фото»."""
     if i.get('price') is None: return None
     ss = d['sizesets'].get(i['ss']) if i.get('ss') else None
     k = ss[def_size(d, i)][1] if ss else 1
