@@ -1,21 +1,77 @@
 {
- "_doc": "Медіа сайту — збирає python3 tools/site/media.py (крок tools/build-all.sh). Порожнє значення = блоку немає. tour360 — slug власного туру (tools/tours/tours/<slug>.json, переглядач /tury/<slug>; див. tools/tours/README.md) для сторінки /proekty/<ключ>; прихований тур (\"hidden\": true) на сайті не показується. youtube_channel — канал CAS: футер (chrome.py), sameAs JSON-LD, /contact. videos — YouTube (id з 11 символів, title — як на каналі, без вигаданих описів); video_pages — блок «Відео з обʼєктів». extra — відео на окремих сторінках, де назва явно збігається. Джерело: youtube.com/@cas_development (Михайло 26.10.2026).",
+ "_doc": "Медіа сайту — збирає python3 tools/site/media.py (крок tools/build-all.sh). Порожнє значення = блоку немає. tour360 — slug власного туру (tools/tours/tours/<slug>.json, переглядач /tury/<slug>; див. tools/tours/README.md) для сторінки /proekty/<ключ>; прихований тур (\"hidden\": true) на сайті не показується. youtube_channel — канал CAS: футер (chrome.py), sameAs JSON-LD, /contact. videos — YouTube (id з 11 символів, title — коротка назва обʼєкта з назви відео на каналі (без технічних дат), без вигаданих описів); video_pages — блок «Відео з обʼєктів». extra — відео на окремих сторінках, де назва явно збігається. Джерело: youtube.com/@cas_development (Михайло 26.10.2026).",
  "youtube_channel": "https://www.youtube.com/@cas_development",
  "videos": [
-  {"id": "hg1s435QeXM", "title": "360 UNIT HOME 48m2 2"},
-  {"id": "EOlgpebO-qE", "title": "TETRIS HALL 2 07.07.2025"},
-  {"id": "MHpvViYJHFc", "title": "360 VIDEO 11 DREAMS TOWNHOUSES 09.09.2025"},
-  {"id": "c0DSc4bkKaU", "title": "11 DREAMS 360 05.07.25 3"},
-  {"id": "4qYVBq59R70", "title": "Unit City 45m2 09.07.2025"},
-  {"id": "_XOdUIruPtg", "title": "360 Elio Showroom 2"},
-  {"id": "f6I547n4Big", "title": "360 CHALET 1 Floor 19.11.2025"},
-  {"id": "heCgFlt0g3s", "title": "TG 61 KV 45m2 Dibrova park VID"}
+  {
+   "id": "hg1s435QeXM",
+   "title": "Unit Home · 48 м² · 360°"
+  },
+  {
+   "id": "EOlgpebO-qE",
+   "title": "Tetris Hall"
+  },
+  {
+   "id": "MHpvViYJHFc",
+   "title": "11 Dreams · таунхауси · 360°"
+  },
+  {
+   "id": "c0DSc4bkKaU",
+   "title": "11 Dreams · 360°"
+  },
+  {
+   "id": "4qYVBq59R70",
+   "title": "Unit City · 45 м²"
+  },
+  {
+   "id": "_XOdUIruPtg",
+   "title": "Elio Showroom · 360°"
+  },
+  {
+   "id": "f6I547n4Big",
+   "title": "Chalet · 360°"
+  },
+  {
+   "id": "heCgFlt0g3s",
+   "title": "Dibrova Park · 45 м²"
+  }
  ],
- "video_pages": ["portfolio.html", "index.html"],
+ "video_pages": [
+  "portfolio.html",
+  "index.html"
+ ],
  "extra": {
-  "proekty/tetris-hall.html": {"videos": [{"id": "EOlgpebO-qE", "title": "TETRIS HALL 2 07.07.2025"}]},
-  "remont-kvartyry-zhk-unit-home.html": {"videos": [{"id": "hg1s435QeXM", "title": "360 UNIT HOME 48m2 2"}, {"id": "gvRu-L0Pe6Y", "title": "360 VIDEO UNIT HOME 48m2 INT 05.08.2025"}]},
-  "ru/remont-kvartiry-zhk-unit-home.html": {"videos": [{"id": "hg1s435QeXM", "title": "360 UNIT HOME 48m2 2"}, {"id": "gvRu-L0Pe6Y", "title": "360 VIDEO UNIT HOME 48m2 INT 05.08.2025"}]}
+  "proekty/tetris-hall.html": {
+   "videos": [
+    {
+     "id": "EOlgpebO-qE",
+     "title": "Tetris Hall"
+    }
+   ]
+  },
+  "remont-kvartyry-zhk-unit-home.html": {
+   "videos": [
+    {
+     "id": "hg1s435QeXM",
+     "title": "Unit Home · 48 м² · 360°"
+    },
+    {
+     "id": "gvRu-L0Pe6Y",
+     "title": "Unit Home · 48 м² · інтер'єр · 360°"
+    }
+   ]
+  },
+  "ru/remont-kvartiry-zhk-unit-home.html": {
+   "videos": [
+    {
+     "id": "hg1s435QeXM",
+     "title": "Unit Home · 48 м² · 360°"
+    },
+    {
+     "id": "gvRu-L0Pe6Y",
+     "title": "Unit Home · 48 м² · інтер'єр · 360°"
+    }
+   ]
+  }
  },
  "tour360": {
   "a-frame-house": "",

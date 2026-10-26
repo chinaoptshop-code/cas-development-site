@@ -6291,8 +6291,8 @@
  {
   "page": "index.html",
   "kind": "main",
-  "html_kb": 139.6,
-  "gzip_kb": 30.2,
+  "html_kb": 139.5,
+  "gzip_kb": 30.1,
   "css_kb": 53.7,
   "js_kb": 14.5,
   "font_sizes": 27,
@@ -18172,7 +18172,7 @@
  {
   "page": "portfolio.html",
   "kind": "main",
-  "html_kb": 237.1,
+  "html_kb": 237.0,
   "gzip_kb": 36.3,
   "css_kb": 48.4,
   "js_kb": 11.9,
@@ -18641,7 +18641,7 @@
  {
   "page": "proekty/tetris-hall.html",
   "kind": "land",
-  "html_kb": 32.9,
+  "html_kb": 32.8,
   "gzip_kb": 7.9,
   "css_kb": 2.3,
   "js_kb": 0.9,
@@ -19582,7 +19582,7 @@
  {
   "page": "remont-kvartyry-zhk-unit-home.html",
   "kind": "land",
-  "html_kb": 56.0,
+  "html_kb": 56.1,
   "gzip_kb": 15.6,
   "css_kb": 15.3,
   "js_kb": 7.0,
@@ -21666,7 +21666,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-unit-home.html",
   "kind": "land",
-  "html_kb": 56.1,
+  "html_kb": 56.2,
   "gzip_kb": 15.6,
   "css_kb": 15.3,
   "js_kb": 7.0,

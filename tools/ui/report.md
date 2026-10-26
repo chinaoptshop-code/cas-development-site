@@ -18,8 +18,8 @@
 
 | сторінка | тип | HTML КБ | gzip КБ | CSS КБ | JS КБ | розмірів шрифту | тегів |
 |---|---|---|---|---|---|---|---|
-| portfolio.html | main | 237.1 | 36.3 | 48.4 | 11.9 | 26 | 1884 |
-| index.html | main | 139.6 | 30.2 | 53.7 | 14.5 | 27 | 719 |
+| portfolio.html | main | 237.0 | 36.3 | 48.4 | 11.9 | 26 | 1884 |
+| index.html | main | 139.5 | 30.1 | 53.7 | 14.5 | 27 | 719 |
 | ozdoba/komplekty.html | other | 118.4 | 28.5 | 32.5 | 7.9 | 14 | 1511 |
 | ozdoba/prais.html | other | 113.8 | 27.6 | 6.0 | 1.1 | 9 | 3009 |
 | ozdoba.html | other | 108.9 | 25.1 | 30.2 | 7.2 | 13 | 745 |
@@ -415,11 +415,11 @@
 | budynok-pid-kliuch-koncha-zaspa.html | land | 56.3 | 15.4 | 15.3 | 7.0 | 9 | 438 |
 | proekty/linden-penthouse.html | land | 56.3 | 10.6 | 2.3 | 0.9 | 1 | 449 |
 | remontna-bryhada-kyiv.html | land | 56.2 | 15.1 | 15.1 | 7.0 | 9 | 436 |
+| ru/remont-kvartiry-zhk-unit-home.html | land | 56.2 | 15.6 | 15.3 | 7.0 | 9 | 424 |
 | ru/remont-restorana-kafe-kiev.html | land | 56.2 | 15.5 | 15.3 | 7.0 | 9 | 436 |
+| remont-kvartyry-zhk-unit-home.html | land | 56.1 | 15.6 | 15.3 | 7.0 | 9 | 424 |
 | remont-restoranu-kafe-kyiv.html | land | 56.1 | 15.5 | 15.3 | 7.0 | 9 | 436 |
 | ru/remont-kvartiry-zhk-novopecherskie-lipki.html | land | 56.1 | 15.4 | 15.3 | 7.0 | 9 | 408 |
-| ru/remont-kvartiry-zhk-unit-home.html | land | 56.1 | 15.6 | 15.3 | 7.0 | 9 | 424 |
-| remont-kvartyry-zhk-unit-home.html | land | 56.0 | 15.6 | 15.3 | 7.0 | 9 | 424 |
 | ru/dizayn-ofisa-kiev.html | land | 56.0 | 15.6 | 15.3 | 7.0 | 9 | 431 |
 | ru/dom-pod-klyuch-koncha-zaspa.html | land | 56.0 | 15.4 | 15.3 | 7.0 | 9 | 438 |
 | dyzain-ofisu-kyiv.html | land | 55.9 | 15.6 | 15.3 | 7.0 | 9 | 431 |
@@ -751,7 +751,7 @@
 | zh/privacy.html | land | 34.1 | 11.0 | 13.6 | 7.0 | 10 | 201 |
 | konfigurator.html | land | 33.1 | 9.8 | 9.9 | 0.6 | 5 | 313 |
 | ru/konfigurator.html | land | 33.1 | 9.8 | 9.9 | 0.6 | 5 | 313 |
-| proekty/tetris-hall.html | land | 32.9 | 7.9 | 2.3 | 0.9 | 1 | 325 |
+| proekty/tetris-hall.html | land | 32.8 | 7.9 | 2.3 | 0.9 | 1 | 325 |
 | proekty/yacht-restaurant.html | land | 31.6 | 7.5 | 2.3 | 0.9 | 1 | 309 |
 | proekty/a-frame-house.html | land | 30.2 | 7.3 | 2.3 | 0.9 | 1 | 297 |
 | proekty/monpark.html | land | 28.6 | 7.2 | 2.3 | 0.9 | 1 | 299 |
