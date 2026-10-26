@@ -243,7 +243,7 @@ function renderBundles(){
 }
 function openBundle(id){
   const b=BU.find(x=>x.id===id); bq={}; b.rows.forEach((r,n)=>bq[n]=r.q);
-  renderBundle(id); open('sheetBundle');
+  renderBundle(id); open('sheetBundle', true);
 }
 function renderBundle(id){
   const b=BU.find(x=>x.id===id);
@@ -297,8 +297,7 @@ function addKit(id){
 
 /* ===================== картка товару ===================== */
 function openItem(id){ cur=byId(id); if(!cur) return; curC=-1; curS=defS(cur); curQ=MINQ(); renderItem();
-  const sh=document.getElementById('sheetItem'); sh.scrollTop=0; const g=document.getElementById('gal'); if(g) g.scrollLeft=0;  // нова позиція — з початку (назва й фото)
-  open('sheetItem'); try{history.replaceState(null,'','#p-'+id);}catch(e){} }
+  open('sheetItem', true); try{history.replaceState(null,'','#p-'+id);}catch(e){} }
 function renderItem(){
   const i=cur, cs=colorsOf(i), s=SS(i);
   const p=price(i,curC,curS);
@@ -567,7 +566,15 @@ function paint(id, html){
   box.innerHTML=html;
   if(idx>=0){ const f=box.querySelectorAll(FOCS); const t=f[Math.min(idx,f.length-1)]; if(t) t.focus({preventScroll:true}); }
 }
-function open(id){ document.getElementById('scrim').classList.add('open');
+/* нова позиція/комплект — з початку (назва й фото), а не з прокрутки попереднього товару (QA Dell OZ-6):
+   скидаємо scrollTop самої шторки (вона і є прокручуваний контейнер, .sheet{overflow-y:auto}) і всіх прокручених блоків
+   у ній (галерея #gal, таблиці) одразу після рендера і ще раз у наступному кадрі — коли контент уже в розкладці
+   й анімація появи лише починається. Шторки кошика й оплати лишаються на своїй прокрутці. */
+function rewind(id){ const sh=document.getElementById(id); if(!sh) return;
+  const go=()=>{ sh.scrollTop=0; sh.querySelectorAll('*').forEach(e=>{ if(e.scrollTop) e.scrollTop=0; if(e.scrollLeft) e.scrollLeft=0; }); };
+  go(); requestAnimationFrame(go); }
+function open(id, top){ document.getElementById('scrim').classList.add('open');
+  if(top) rewind(id);
   document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
 function close(id){ document.getElementById(id).classList.remove('open'); }
 function closeAll(){ ['sheetItem','sheetBundle','sheetCart','sheetPay'].forEach(close);
