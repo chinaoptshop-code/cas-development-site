@@ -47,7 +47,7 @@ def plural(n, one='позиція', few='позиції', many='позицій')
 
 
 def _nz(t):
-    return re.sub(r'[\sØ⌀]|см', '', str(t).lower().replace('x', '×'))
+    return re.sub(r'[\sØø⌀]|см', '', str(t).lower().replace('x', '×'))  # ø — бо після lower() «Ø40 см» стає «ø40»
 
 
 def name_size(d, i):
@@ -60,12 +60,28 @@ def name_size(d, i):
     return -1
 
 
+# колір у назві товару — як namedColor()/colorsOf() в app.js: палітра категорії лише там, де кольору в назві немає (QA Dell OZ-5)
+COLW = re.compile(r'^(чорн|біл|сір|беж|золот|латун|бронз|хром|мідн|срібн|нікел|графіт|антрацит|коричн|горіх|дуб|ясен|венге|тік|тик|бук|бамбук|молочн|крем|слонов|пісочн|теракот|олив|зелен|син|блакит|червон|бордо|рожев|жовт|оранж|фіолет|бузк|димчаст|прозор|натуральн|нержав|стал)')
+COLE = re.compile(r'^(black|white|grey|gray|beige|gold|golden|brass|bronze|chrome|copper|silver|nickel|graphite|anthracite|brown|walnut|oak|ash|wenge|teak|beech|bamboo|milky|cream|ivory|sand|terracotta|olive|green|blue|red|burgundy|pink|yellow|orange|purple|lilac|smoked|smoky|clear|transparent|natural|stainless|steel)$')
+
+
+def named_color(i):
+    uk = re.split(r"[^а-яіїєґ'ʼ-]+", i['name'].lower())
+    en = re.split(r'[^a-z-]+', (i.get('en') or '').lower())
+    return any(COLW.match(w) and not w.startswith('букле') for w in uk) or any(COLE.match(w) for w in en)
+
+
+def colors_of(d, i):
+    """Кольори для показу: власний список товару (colors), інакше палітра категорії — лише якщо кольору в назві немає."""
+    return i.get('colors') or ([] if named_color(i) else d['colorsets'][i['cs']])
+
+
 def def_size(d, i):
-    """Розмір за замовчуванням (defS в app.js): з назви, інакше множник 1."""
+    """Розмір за замовчуванням (defS в app.js): з назви, інакше найдешевший — щоб збігався з «від <ціна>» на картці."""
     ss = d['sizesets'].get(i['ss']) if i.get('ss') else None
     if not ss: return 0
     k = name_size(d, i)
-    return k if k >= 0 else next((n for n, x in enumerate(ss) if x[1] == 1), 0)
+    return k if k >= 0 else min(range(len(ss)), key=lambda n: ss[n][1])
 
 
 def is_from(d, i):
@@ -246,10 +262,11 @@ def product_page(d, i, shell, items, title):
                    for n, b in enumerate(ex))
     expo_html = (f'<figure class="pp-expo"><div class="pp-expo-g{" one" if len(ex) == 1 else ""}">{expo}</div>'
                  f'<figcaption>Фото з виставки в Гуанчжоу: знімали самі, коли відбирали фабрики. Колір, матеріал і розмір — під ваш проєкт.</figcaption></figure>') if ex else ''
-    colors = d['colorsets'][i['cs']]
+    colors = colors_of(d, i)
     sizes = d['sizesets'].get(i['ss']) if i.get('ss') else None
     specs = list(i.get('specs') or [])
-    rows = [('Категорія', i['sub']), ('Колір', 'як на фото; під замовлення також: ' + ', '.join(c[0] for c in colors))]
+    rows = [('Категорія', i['sub']), ('Колір', 'як на фото; під замовлення також: ' + ', '.join(c[0] for c in colors) if colors
+                                       else 'як у назві й на фото; інший колір — під замовлення, уточнює менеджер')]
     if sizes: rows.append(('Розміри', ', '.join(s[0] for s in sizes)))
     mq = d.get('min_qty', MINQ)
     rows += [(k, v) for k, v in specs] + [('Одиниця', i['unit']), ('Мінімальна кількість', f'{mq} {i["unit"]} (менше не можна)'), ('Поставка', '30–60 днів, виготовлення під замовлення'), ('Доставка й митні платежі', 'розраховуємо індивідуально залежно від обсягу замовлення'), ('Підходить для', ', '.join(VENUE[v] for v in i['vn'] if v in VENUE))]
@@ -521,7 +538,7 @@ KITS_URL = f'{SITE}/ozdoba/komplekty'
 
 
 def item_price(d, i):
-    """Ціна позиції як у app.js price(i, -1, defS(i)): розмір за замовчуванням (з назви або множник 1), колір «як на фото»."""
+    """Ціна позиції як у app.js price(i, -1, defS(i)): розмір за замовчуванням (з назви або найдешевший), колір «як на фото»."""
     if i.get('price') is None: return None
     ss = d['sizesets'].get(i['ss']) if i.get('ss') else None
     k = ss[def_size(d, i)][1] if ss else 1
