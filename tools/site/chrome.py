@@ -30,7 +30,7 @@ def _ver(path, _c={}):
 
 # спільні файли, які підключають сторінки: після зміни файлу всі сторінки отримують новий ?v=
 SHARED = ('/assets/site-chrome.v1.css', '/assets/site-chrome.v1.js', '/assets/lead-form.v1.js', '/assets/ui-polish.v1.js', '/assets/proekt.v1.css',
-          '/assets/cas-map.v1.css', '/assets/cas-map.v1.js')
+          '/assets/cas-map.v1.css', '/assets/cas-map.v1.js', '/assets/quiz.v1.js', '/assets/quiz.v1.css', '/assets/media.v1.js', '/assets/media.v1.css')
 SHARED_RX = re.compile(r'(' + '|'.join(re.escape(x) for x in SHARED) + r')(?:\?v=\w+)?(?=")')
 
 
@@ -133,7 +133,20 @@ LANG_CODE = {l: i18n.meta(l)['code'] for l in LANGS}
 LANG_NAME = {l: i18n.meta(l)['name'] for l in LANGS}
 MSG = [('telegram', 'Telegram', 'https://t.me/+380978667755'), ('viber', 'Viber', 'viber://chat?number=%2B380978667755'),
        ('whatsapp', 'WhatsApp', 'https://wa.me/380978667755'), ('instagram', 'Instagram', 'https://www.instagram.com/cas_development/')]
+# іконки месенджерів і соцмереж у шапці/футері — фоном через CSS (.bi-<name> у /assets/site-chrome.v1.css), без <img> у HTML
 BRAND_IMG = {'instagram': '/assets/brand/instagram-96.png'}  # решта — /assets/brand/<name>.svg
+# соцмережі у футері (іконки-посилання з aria-label): Instagram + YouTube з tools/site/media.json
+# (youtube_channel; порожнє — посилання немає). media.py ставить канал і в sameAs JSON-LD та на /contact.
+try:
+    _MEDIA = json.load(open(os.path.join(ROOT, 'tools/site/media.json'), encoding='utf-8'))
+except (OSError, ValueError):
+    _MEDIA = {}
+SOCIAL = [('instagram', 'Instagram', 'https://www.instagram.com/cas_development/')]
+if re.match(r'^https://www\.youtube\.com/(@[\w.\-]+|channel/UC[\w-]{22})$', _MEDIA.get('youtube_channel') or ''):
+    SOCIAL.append(('youtube', 'YouTube', _MEDIA['youtube_channel']))
+SOCIAL_K = {x[0] for x in SOCIAL}
+SOC_LABEL = {'uk': 'Соцмережі', 'ru': 'Соцсети', 'en': 'Social media', 'es': 'Redes sociales', 'zh': '社交媒体', 'pl': 'Media społecznościowe',
+             'de': 'Soziale Medien', 'fr': 'Réseaux sociaux', 'ar': 'التواصل الاجتماعي'}
 
 T = {
     'uk': dict(
@@ -200,9 +213,7 @@ def _live(links):
 
 LOGO = '<a class="sch-logo" href="{home}" aria-label="{label}">CAS<em>.</em>Development</a>'
 BURGER = '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="sch-b1" d="M4 7h16"/><path class="sch-b2" d="M4 12h16"/><path class="sch-b3" d="M4 17h16"/></svg>'
-USER_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>'
-CALC_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11.5h.01M12 11.5h.01M16 11.5h.01'
-            'M8 15h.01M12 15h.01M16 15h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>')
+# іконки кабінету й калькулятора — CSS-маски (.sch-kab, .sch-mkab, .sch-mcalc у site-chrome.v1.css), не інлайн-SVG: бюджет HTML лендингів
 KAB_HREF = '/kabinet'  # кабінет клієнта є лише українською — з усіх мов ведемо сюди
 PHONE_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1'
              '-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>')
@@ -273,15 +284,14 @@ def header(lang, path, alts, tools='', cta_href=None):
     items = ''.join(f'<a href="{h}"' + (' aria-current="page"' if current(lang, path, h) else '') + f'>{n}</a>' for h, n in _live(t['nav']))
     cta = cta_href or t['cta_href']
     tools_html = f'<div class="sch-tools">{tools}</div><!--/sch-tools-->' if tools.strip() else ''
-    msg = ''.join(f'<a href="{u}" target="_blank" rel="noopener"><img src="{BRAND_IMG.get(k, f'/assets/brand/{k}.svg')}" width="22" height="22" alt="" loading="lazy" decoding="async">{n}</a>'
-                  for k, n, u in MSG)
+    msg = ''.join(f'<a class="bi bi-{k}" href="{u}" target="_blank" rel="noopener">{n}</a>' for k, n, u in MSG)  # іконки — CSS (.bi-*)
     kab_cur = ' aria-current="page"' if path == KAB_HREF or path.startswith(KAB_HREF + '/') else ''
-    kab = f'<a class="sch-kab" href="{KAB_HREF}" title="{t["kab_full"]}"{kab_cur}>{USER_SVG}<span>{t["kab"]}</span></a>'
+    kab = f'<a class="sch-kab" href="{KAB_HREF}" title="{t["kab_full"]}"{kab_cur}><span>{t["kab"]}</span></a>'
     # швидкі кнопки мобільного меню: кабінет і калькулятор вартості (якщо сторінка калькулятора цією мовою є)
     calc = next(((h, n) for _, links in t['groups'] for h, n in _live(links) if re.search(r'kalk|calc', h)), None)
-    quick = f'<a class="sch-mkab" href="{KAB_HREF}"{kab_cur}>{USER_SVG}{t["kab_full"]}</a>'
+    quick = f'<a class="sch-mkab" href="{KAB_HREF}"{kab_cur}>{t["kab_full"]}</a>'
     if calc:
-        quick += f'<a href="{calc[0]}"' + (' aria-current="page"' if calc[0] == path else '') + f'>{CALC_SVG}{calc[1]}</a>'
+        quick += f'<a class="sch-mcalc" href="{calc[0]}"' + (' aria-current="page"' if calc[0] == path else '') + f'>{calc[1]}</a>'
     return (
         f'<!--chrome:h--><header class="sch{" sch--tools" if tools_html else ""}" id="top">\n'
         '<div class="sch-in">\n'
@@ -307,8 +317,9 @@ def header(lang, path, alts, tools='', cta_href=None):
 
 def footer(lang, alts):
     t = T[lang]
-    msg = ''.join(f'<a href="{u}" target="_blank" rel="noopener"><img src="{BRAND_IMG.get(k, f'/assets/brand/{k}.svg')}" width="20" height="20" alt="" loading="lazy" decoding="async">{n}</a>'
-                  for k, n, u in MSG)
+    msg = ''.join(f'<a class="bi bi-{k}" href="{u}" target="_blank" rel="noopener">{n}</a>' for k, n, u in MSG if k not in SOCIAL_K)
+    soc_l = t.get('soc') or SOC_LABEL.get(lang, SOC_LABEL['en'])
+    soc = ''.join(f'<a class="bi bi-{k}" href="{u}" target="_blank" rel="noopener" aria-label="{n}"></a>' for k, n, u in SOCIAL)
     groups = ''.join(f'<div><b>{g}</b>' + ''.join(f'<a href="{h}">{n}</a>' for h, n in links) + '</div>' for g, links in [(g, _live(x)) for g, x in t['groups']] if links)
     langs = lang_links(lang, alts, 'scf-lang')
     return (
@@ -317,7 +328,7 @@ def footer(lang, alts):
         '  <div class="scf-top">\n'
         f'    <div class="scf-brand">{LOGO.format(home=HOME[lang], label=t["home_label"])}<p>{t["tagline"]}</p></div>\n'
         f'    <div class="scf-col"><b>{t["contacts"]}</b><address>{t["address"]}</address><a class="scf-tel" href="tel:{PHONE}">{PHONE_TXT}</a></div>\n'
-        f'    <div class="scf-col"><b>{t["msg"]}</b><div class="scf-msg">{msg}</div></div>\n'
+        f'    <div class="scf-col"><b>{t["msg"]}</b><div class="scf-msg">{msg}</div><div class="scf-soc" role="group" aria-label="{soc_l}">{soc}</div></div>\n'
         '  </div>\n'
         f'  <details class="scf-svc"><summary>{t["svc"]}</summary><nav class="scf-svc-g" aria-label="{t["svc_label"]}">{groups}</nav></details>\n'
         f'  <div class="scf-bot"><div class="scf-langs" role="group" aria-label="{t["lang"]}"><span>{t["lang"]}:</span>{langs}</div>'
