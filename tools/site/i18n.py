@@ -140,16 +140,25 @@ def set_alternates(s, members):
     return head + sep + rest
 
 
-FONT_PRELOAD = '<link rel="preload" href="/fonts/{f}" as="font" type="font/woff2" crossorigin>\n'
-FONT_RX = re.compile(r'<link rel="preload" href="/fonts/[\w.-]+\.woff2" as="font" type="font/woff2" crossorigin>\n?')
+# без type="font/woff2": woff2 підтримують усі браузери з preload; −18 Б на рядок (бюджет HTML 64 КБ у ui.py)
+FONT_PRELOAD = '<link rel="preload" href="/fonts/{f}" as="font" crossorigin>\n'
+FONT_RX = re.compile(r'<link rel="preload" href="/fonts/[\w.-]+\.woff2" as="font"(?: type="font/woff2")? crossorigin>\n?')
 
 
 def fonts(s, lang):
     """Preload шрифтів за мовою: кирилиця (uk/ru), латиниця (en/es/pl/de/fr), жодного (zh/ar — системні шрифти)."""
     kind = meta(lang).get('fonts', 'latin')
-    if kind == 'cyrillic' or not FONT_RX.search(s):
+    if not FONT_RX.search(s):
         return s
     want = {'latin': ['manrope-latin.woff2', 'cormorant-latin.woff2']}.get(kind, [])
+    if kind == 'cyrillic':
+        # пробіли, цифри й розділові знаки — у латинських файлах (unicode-range), тож вони потрібні кожній uk/ru-сторінці;
+        # без preload вони приходять пізніше за кирилицю — текст перебудовується двічі (CLS 0,2–0,6 на /portfolio, аудит 26.10.2026).
+        # Курсив кирилиці — лише якщо він є в H1 (<em>): інакше перенесення рядка H1 після підвантаження зсуває всю сторінку.
+        want = ['manrope-cyrillic.woff2', 'cormorant-cyrillic.woff2', 'manrope-latin.woff2', 'cormorant-latin.woff2']
+        h1 = re.search(r'<h1\b.*?</h1>', s, re.S)
+        if h1 and '<em' in h1.group(0):
+            want.append('cormorant-italic-cyrillic.woff2')
     first = FONT_RX.search(s).start()
     s = FONT_RX.sub('', s)
     return s[:first] + ''.join(FONT_PRELOAD.format(f=f) for f in want) + s[first:]

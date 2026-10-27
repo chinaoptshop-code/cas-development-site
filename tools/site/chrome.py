@@ -58,8 +58,10 @@ _LATX = ('U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D0
 
 
 def _face(fam, style, wght, f, rng):
-    return (f'@font-face{{font-family:"{fam}";font-style:{style};font-weight:{wght};font-display:swap;'
-            f'src:url(/fonts/{f}.woff2) format("woff2");unicode-range:{rng}}}')
+    # без format("woff2") і font-style:normal (значення за замовчуванням): −160 Б на кожній сторінці (бюджет HTML 64 КБ у ui.py)
+    st = '' if style == 'normal' else f'font-style:{style};'
+    return (f'@font-face{{font-family:"{fam}";{st}font-weight:{wght};font-display:swap;'
+            f'src:url(/fonts/{f}.woff2);unicode-range:{rng}}}')
 
 
 FONTS_CSS = ''.join(
@@ -275,7 +277,7 @@ def lang_menu(lang, alts, label):
             items.append(f'<span class="sch-ld-on" aria-current="true" lang="{m["html"]}">{inner}</span>')
         else:
             items.append(f'<a href="{alts.get(l, HOME[l])}" hreflang="{m["hreflang"]}" lang="{m["html"]}">{inner}</a>')
-    return (f'<details class="sch-ld"><summary aria-label="{label}: {LANG_NAME[lang]}">{LANG_CODE[lang]}</summary>'
+    return (f'<details class="sch-ld"><summary aria-label="{LANG_CODE[lang]} — {label}: {LANG_NAME[lang]}">{LANG_CODE[lang]}</summary>'
             f'<div class="sch-ld-m">{"".join(items)}</div></details>')
 
 
