@@ -140,8 +140,9 @@ def set_alternates(s, members):
     return head + sep + rest
 
 
-FONT_PRELOAD = '<link rel="preload" href="/fonts/{f}" as="font" type="font/woff2" crossorigin>\n'
-FONT_RX = re.compile(r'<link rel="preload" href="/fonts/[\w.-]+\.woff2" as="font" type="font/woff2" crossorigin>\n?')
+# без type="font/woff2": woff2 підтримують усі браузери з preload; −18 Б на рядок (бюджет HTML 64 КБ у ui.py)
+FONT_PRELOAD = '<link rel="preload" href="/fonts/{f}" as="font" crossorigin>\n'
+FONT_RX = re.compile(r'<link rel="preload" href="/fonts/[\w.-]+\.woff2" as="font"(?: type="font/woff2")? crossorigin>\n?')
 
 
 def fonts(s, lang):
