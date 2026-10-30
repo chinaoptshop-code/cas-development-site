@@ -991,5 +991,17 @@
   ],
   "status": "published",
   "note": "Офісна ніша 26.10.2026: Михайло попросив написати й опублікувати 5 статей про офіси (uk+ru)"
+ },
+ {
+  "lang": "uk",
+  "slug": "ofis-pid-kliuch-u-biznes-tsentri",
+  "title": "Офіс під ключ у бізнес-центрі: узгодження, інженерія й меблі з Китаю",
+  "keyword": "офіс під ключ бізнес-центр київ",
+  "service": [
+   "/biznes-pid-kliuch-kyiv",
+   "Бізнес під ключ"
+  ],
+  "pair": "ofis-pod-klyuch-v-biznes-tsentre",
+  "status": "published"
  }
 ]
