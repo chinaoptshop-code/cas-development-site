@@ -991,5 +991,17 @@
   ],
   "status": "published",
   "note": "Офісна ніша 26.10.2026: Михайло попросив написати й опублікувати 5 статей про офіси (uk+ru)"
+ },
+ {
+  "lang": "uk",
+  "slug": "osvitlennia-ofisu-robochi-zony",
+  "title": "Освітлення офісу: трекові системи, розсіяне світло й робочі зони",
+  "keyword": "освітлення офісу",
+  "service": [
+   "/dyzain-ofisu-kyiv",
+   "Дизайн офісу"
+  ],
+  "pair": "osveshchenie-ofisa-rabochie-zony",
+  "status": "published"
  }
 ]
