@@ -776,4 +776,4 @@
 | proekty/office-chicago.html | land | 28.7 | 7.2 | 2.1 | 0.9 | 1 | 301 |
 | proekty/yablu-rest.html | land | 28.1 | 7.0 | 2.1 | 0.9 | 1 | 294 |
 | proekty/dolls-salon.html | land | 27.2 | 7.0 | 2.1 | 0.9 | 1 | 296 |
-| tury.html | other | 19.0 | 4.6 | 0.0 | 0.0 | 0 | 288 |
+| tury.html | other | 19.1 | 4.7 | 0.0 | 0.0 | 0 | 288 |

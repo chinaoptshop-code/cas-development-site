@@ -80,7 +80,7 @@ VIEW = '''<!doctype html>
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="{site}{thumb}">
 <link rel="icon" href="/favicon.svg">
-<link rel="stylesheet" href="/assets/tours/tour.v1.css">
+<link rel="stylesheet" href="/assets/tours/tour.v1.css?v={vcss}">
 <script type="application/ld+json">{crumbs}</script>
 <script src="/assets/tours/aframe.min.js"></script>
 </head><body>
@@ -107,7 +107,7 @@ VIEW = '''<!doctype html>
 <div class="tzoom" role="group" aria-label="Масштаб"><button class="ib" id="zoomIn" aria-label="Наблизити">+</button><button class="ib" id="zoomOut" aria-label="Віддалити">−</button></div>
 <div class="hint" id="hint">Тягніть, щоб роздивитись · коліщатко або два пальці — масштаб · стрілки — перехід</div>
 <div class="edit" id="edit" hidden></div>
-<script src="/assets/tours/tour.v1.js"></script>
+<script src="/assets/tours/tour.v1.js?v={vjs}"></script>
 </body></html>
 '''
 
@@ -121,7 +121,7 @@ INDEX = '''<!doctype html>
 <meta property="og:title" content="3D-тури обʼєктів — CAS Development">
 <meta property="og:image" content="{site}{og}">
 <link rel="icon" href="/favicon.svg">
-<link rel="stylesheet" href="/assets/tours/tour.v1.css">
+<link rel="stylesheet" href="/assets/tours/tour.v1.css?v={vcss}">
 </head><body class="list">
 <main class="tl">
 <section class="tl-hero">
@@ -152,6 +152,10 @@ def _crumbs(items):
         ensure_ascii=False).replace('</', '<\\/')
 
 
+def _ver(rel):  # хеш файлу для ?v= — /assets кешується на рік (immutable)
+    import hashlib
+    return hashlib.md5((ROOT / rel).read_bytes()).hexdigest()[:8]
+
 def pages():
     OUT.mkdir(exist_ok=True)
     cards, open_slugs = [], []
@@ -168,7 +172,7 @@ def pages():
                                              f"{t['title']} — 3D-тур", t['title']) if len(c) <= 60 or c == t['title']))
         crumbs = _crumbs([('Головна', '/'), ('3D-тури', '/tury'), (t['title'], f"/tury/{t['slug']}")])
         data = json.dumps(t, ensure_ascii=False).replace('</', '<\\/')
-        (OUT / f"{t['slug']}.html").write_text(VIEW.format(title=html.escape(t['title']), ttag=ttag, crumbs=crumbs, desc=desc, site=SITE,
+        (OUT / f"{t['slug']}.html").write_text(VIEW.format(vcss=_ver("assets/tours/tour.v1.css"), vjs=_ver("assets/tours/tour.v1.js"), title=html.escape(t['title']), ttag=ttag, crumbs=crumbs, desc=desc, site=SITE,
                                                             slug=t['slug'], thumb=thumb, data=data,
                                                             robots='\n<meta name="robots" content="noindex">' if t.get('hidden') else ''), encoding='utf-8')
         if not t.get('hidden'):
@@ -181,7 +185,7 @@ def pages():
     cards.sort(key=lambda c: c[0])
     og = cards[0][2] if cards else '/img/og/default.jpg'
     cards = [c[1] for c in cards]
-    idx = INDEX.format(site=SITE, og=og, crumbs=_crumbs([('Головна', '/'), ('3D-тури', '/tury')]), cards='\n'.join(cards) or '<p class="tl-lead">Тури скоро зʼявляться.</p>')
+    idx = INDEX.format(vcss=_ver("assets/tours/tour.v1.css"), vjs=_ver("assets/tours/tour.v1.js"), site=SITE, og=og, crumbs=_crumbs([('Головна', '/'), ('3D-тури', '/tury')]), cards='\n'.join(cards) or '<p class="tl-lead">Тури скоро зʼявляться.</p>')
     if not cards:  # поки немає відкритих турів — сторінка-заглушка не індексується
         idx = idx.replace('<head>', '<head>\n<meta name="robots" content="noindex">', 1)
     try:  # єдина шапка/футер сайту (tools/site/chrome.py)
