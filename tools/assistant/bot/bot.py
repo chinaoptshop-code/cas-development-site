@@ -7,6 +7,8 @@
 
 Змінні (див. bot/README.md): ASSISTANT_BOT_TOKEN, ASSISTANT_CHAT_ID, ASSISTANT_MEMORY_DIR,
 ASSISTANT_REPO, CLAUDE_BIN, CLAUDE_MODEL, CLAUDE_ALLOWED_TOOLS, CLAUDE_MAX_TURNS.
+Локальний режим без Claude (ліміт/підписка/вхід): bot/local_mode.py, змінні ASSISTANT_LOCAL_MODEL, ASSISTANT_OLLAMA_URL,
+ASSISTANT_CLAUDE_RETRY_MIN, ASSISTANT_STATE_DIR; команда /local on|off|auto.
 """
 import json, os, re, subprocess, sys, tempfile, time, urllib.request, urllib.parse, datetime, pathlib, shutil, uuid
 
@@ -34,6 +36,13 @@ MEMORY_SYNC = REPO / "tools/assistant/bin/memory-sync.sh"   # дзеркало �
 INBOX = MEMORY / "inbox-files"
 API = f"https://api.telegram.org/bot{TOKEN}/"
 LOG = lambda *a: print(datetime.datetime.now().strftime("%H:%M:%S"), *a, flush=True)
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import local_mode  # noqa: E402  локальний режим, коли Claude недоступний
+ROUTER = local_mode.Router()
+
+
+class ClaudeUnavailable(Exception):
+    """Claude не відповів через ліміт, підписку, вхід, таймаут чи відсутній бінарник — працюємо локально."""
 
 
 def api(method, **params):
@@ -205,7 +214,10 @@ def run_claude(prompt, session, resume, tools=ALLOWED, turns=None, _final=False)
     cmd = [CLAUDE, "-p", "--model", MODEL, "--max-turns", str(turns or MAX_TURNS), "--allowedTools", tools, "--output-format", "text"]
     cmd += ["--resume", session] if resume else ["--session-id", session]
     cmd.append(prompt)
-    r = subprocess.run(cmd, cwd=REPO, capture_output=True, text=True, timeout=900)
+    try:
+        r = subprocess.run(cmd, cwd=REPO, capture_output=True, text=True, timeout=900)
+    except (FileNotFoundError, subprocess.TimeoutExpired, OSError) as e:
+        claude_down(local_mode.unavailable_reason(None, exc=e))
     out = (r.stdout or "").strip()
     if "Reached max turns" in out and not _final:
         # 20.10: задача про шпон вичерпала кроки на пошуках і віддала «Error: Reached max turns» замість відповіді.
@@ -214,9 +226,36 @@ def run_claude(prompt, session, resume, tools=ALLOWED, turns=None, _final=False)
         return run_claude("Ліміт кроків вичерпано. Нічого більше не шукай і не відкривай — дай підсумкову відповідь "
                           "з того, що вже знайшов, у потрібному форматі; чого не встиг — так і напиши.",
                           session, True, tools, 4, True)
-    if r.returncode != 0 and not out:
-        out = f"⚠️ Claude завершився з кодом {r.returncode}: {(r.stderr or '')[-800:]}"
+    reason = local_mode.unavailable_reason(r.returncode, out, r.stderr)
+    if reason:
+        claude_down(reason)
+    if ROUTER.success():
+        LOG("Claude знову доступний")
+        send_text(local_mode.BACK_MSG)
     return out
+
+
+def claude_down(reason):
+    """Ліміт/вхід/таймаут: перемикач у локальний режим (одне повідомлення Михайлу при вході) і виняток."""
+    LOG("Claude недоступний:", reason)
+    if ROUTER.failure(reason):
+        try:
+            send_text(local_mode.ENTER_MSG)
+        except Exception as e:
+            LOG("не вдалося повідомити про локальний режим:", e)
+    raise ClaudeUnavailable(reason)
+
+
+def deliver_local(r):
+    """Відповідь локального режиму (local_mode.Reply): текст, кнопки, файли."""
+    send_text(r.text or "✅ Зроблено.", markup=r.markup)
+    for f in r.files:
+        if os.path.isfile(f):
+            send_file(f, pathlib.Path(f).name)
+    LOG("← (локально)", (r.text or "")[:80])
+    remember("Помічник", r.text)
+    if MEMORY_SYNC.exists():
+        subprocess.Popen([str(MEMORY_SYNC)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
 
 
 def handle(msg, state):
@@ -224,7 +263,13 @@ def handle(msg, state):
     if text.startswith("/start"):
         send_text("Привіт, Михайле! Я на зв'язку. Пиши текстом або голосовим. Команди: /new — почати нову розмову, /status."); return
     if text.startswith("/status"):
-        send_text(f"Працюю. Модель: {MODEL}. Пам'ять: {MEMORY}. Розмова від {state.get('day') or 'ще не починалась'}."); return
+        send_text(f"Працюю. Модель: {MODEL}. Режим: {ROUTER.describe()}. Пам'ять: {MEMORY}. "
+                  f"Розмова від {state.get('day') or 'ще не починалась'}."); return
+    if text.startswith("/local"):
+        arg = (text.split() + [""])[1].lower()
+        if arg in ("on", "off", "auto"):
+            ROUTER.set_manual(arg)
+        send_text(f"Режим: {ROUTER.describe()}.\n/local on — завжди локально, /local off — завжди Claude, /local auto — автоматично."); return
     if text.startswith("/new"):
         state["day"] = ""; state.pop("sid", None); send_text("Нова розмова. Пам'ять збережена, контекст чату очищено."); return
     kind, content = describe(msg)
@@ -261,10 +306,17 @@ def handle(msg, state):
     remember("Михайло", content if kind == "текст" else f"[{kind}] {content}")
     api("sendChatAction", chat_id=OWNER, action="typing")
     timed_out = False
-    try:
-        out = run_claude(build_prompt(kind, content, msg.get("caption", ""), fresh), state["sid"], not fresh)
-    except subprocess.TimeoutExpired:
-        out, timed_out = "⚠️ Не встиг за 15 хвилин. Спробуй ще раз або розбий запит.", True
+    out = None
+    if ROUTER.use_claude():
+        try:
+            out = run_claude(build_prompt(kind, content, msg.get("caption", ""), fresh), state["sid"], not fresh)
+        except ClaudeUnavailable as e:
+            if ROUTER.mode() == "claude":                    # /local off — без локального режиму, лише чесна помилка
+                send_text(f"⚠️ Claude недоступний: {e}. Локальний режим вимкнено (/local off); /local auto — увімкнути."); return
+    if out is None:                                          # локальний режим: інтенти без LLM, решта — Ollama
+        state.pop("sid", None)                               # після повернення Claude — нова розмова з контекстом діалогу
+        deliver_local(local_mode.handle(kind, content, msg.get("caption", "")))
+        return
     state["day"] = today
     # Михайлу голосом — коли він сам говорив голосом або попросив («голосом», «озвуч»), без ліміту довжини
     # «моїм голосом» / «запиши Сержу голосом» — це про чужі голосові, а не прохання відповісти голосом тобі
@@ -704,7 +756,7 @@ def answer_cq(cq, text):
     """Відповідь на натискання кнопки. 25.10: Telegram повертає 400, якщо натискання старше ~15 с (бот був зайнятий) —
     це не привід губити саму дію (ОК по статті губився тричі)."""
     try:
-        answer_cq(cq, text)
+        api("answerCallbackQuery", callback_query_id=cq.get("id"), text=text)
     except Exception as e:
         LOG("answerCallbackQuery:", e)
 
@@ -734,6 +786,15 @@ def on_button(cq, state):
         blog_button(n, cq, state); return
     if act in ("allow", "deny"):
         client_button(act, n, cq, state); return
+    if act == "mail":                                      # лист із локального режиму: надсилається ЛИШЕ тут, після кнопки
+        r = local_mode.mail_button(n)
+        answer_cq(cq, r.text[:190])
+        try:
+            api("editMessageReplyMarkup", chat_id=OWNER, message_id=cq.get("message", {}).get("message_id"),
+                reply_markup=json.dumps({"inline_keyboard": []}))
+        except Exception as e:
+            LOG("editMessageReplyMarkup:", e)
+        send_text(r.text, markup=r.markup); return
     t = state.get("tasks", {}).get(n)
     if act in ("send", "edit", "drop"):
         draft_button(act, t, cq, state); return
@@ -802,9 +863,15 @@ PDF: запиши Markdown у ~/.assistant/tmp, запусти tools/assistant/b
         out = client_answer(prompt)
     else:
         try:
+            if not ROUTER.use_claude():
+                raise ClaudeUnavailable(ROUTER.describe())
             out = run_claude(prompt, t["sid"], False, tools, 65)
-        except subprocess.TimeoutExpired:
-            out = "⚠️ Не встиг за 15 хвилин. Розбийте задачу на менші частини."
+        except ClaudeUnavailable:                          # локальна модель → лише чернетка Михайлу, не одразу в групу
+            ans = local_mode.ollama_chat(t["text"], system_extra="Відповідь побачить команда. Не розкривай особисте "
+                                         "Михайла, суми договорів, ціни підрядників і постачальників.")
+            out = "===ВІДПОВІДЬ===\n" + (f"(локальна модель — перевір уважніше)\n{ans}" if ans else
+                  f"⚠️ Claude недоступний, локальна модель теж. Задачу №{t['n']} треба виконати пізніше.") + "\n===КІНЕЦЬ==="
+            t.pop("own", None)
     if t.get("own"):                                       # задача самого Михайла — одразу в групу
         deliver(f"✅ Задача №{t['n']}\n\n" + out, t["chat"], t["mid"])
         t["status"] = "done"; mark(t, "виконано"); return
@@ -905,8 +972,8 @@ def revise_task(t, kind, content, state):
                                 + "\n\nПравки Михайла (" + how + "). Поверни нову повну відповідь.")
         else:
             out = run_claude(prompt, t["sid"], True, GROUP_ALLOWED)
-    except subprocess.TimeoutExpired:
-        out = t["draft"]; send_text("⚠️ Не встиг переробити за 15 хвилин — лишаю попередню чернетку.")
+    except (ClaudeUnavailable, subprocess.TimeoutExpired):
+        out = t["draft"]; send_text("⚠️ Claude недоступний — лишаю попередню чернетку; правки зроби сам або пізніше.")
     show_draft(t, out)
 
 
@@ -926,6 +993,11 @@ def main():
             updates = api("getUpdates", offset=state["offset"], timeout=50, allowed_updates='["message","callback_query"]')
         except Exception as e:
             LOG("getUpdates:", e); time.sleep(5); continue
+        try:                                               # нагадування з часом (локальний режим): «нагадай через 30 хв …»
+            for txt in local_mode.due_reminders():
+                send_text("🔔 Нагадування: " + txt)
+        except Exception as e:
+            LOG("нагадування:", e)
         for u in updates:
             state["offset"] = u["update_id"] + 1
             msg = u.get("message") or {}
