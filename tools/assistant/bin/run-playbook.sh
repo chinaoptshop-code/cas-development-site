@@ -2,6 +2,7 @@
 # Запустити сценарій помічника локально (Mac mini) і надіслати результат у Telegram.
 #   run-playbook.sh morning | evening | weekly | gym
 # Використовується launchd-задачами (див. bot/README.md). Потрібні ті самі змінні, що й для bot.py.
+# Якщо Claude недоступний (ліміт, підписка, вхід) — брифінг без LLM: bot/local_briefing.py (розділ «Локальний режим» у bot/README.md).
 set -euo pipefail
 name="${1:?morning|evening|weekly|gym}"
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"; REPO="$(cd "$DIR/../.." && pwd)"
@@ -15,7 +16,20 @@ if [ -n "${DRY:-}" ]; then
   prompt="$prompt Це ПРОБНИЙ запуск: файли памʼяті НЕ змінюй (лише читай), у Журнал нічого не дописуй."
   ALLOWED="Read,Glob,Grep,Bash(tools/assistant/bin/brief-data.sh*),Bash(ls*),Bash(cat*),Bash(date*)"
 fi
-out="$("$CLAUDE" -p --model "$MODEL" --max-turns "${CLAUDE_MAX_TURNS:-25}" --allowedTools "$ALLOWED" --output-format text "$prompt")"
+# Claude через роутер локального режиму (bot/local_mode.py): ліміт/вхід/таймаут/немає claude → код 10,
+# тоді брифінг шаблоном без Claude (bot/local_briefing.py). Стан роутера — ~/.assistant-state/router.json.
+NOTIFY="--notify"
+# Пробний запуск не чіпає справжній стан роутера (інакше перевірка з CLAUDE_BIN=/usr/bin/false перемкнула б бота)
+[ -n "${DRY:-}" ] && { NOTIFY=""; ASSISTANT_STATE_DIR="$(mktemp -d)"; export ASSISTANT_STATE_DIR; }
+rc=0
+out="$(python3 "$DIR/bot/local_mode.py" claude-run $NOTIFY -- "$CLAUDE" -p --model "$MODEL" --max-turns "${CLAUDE_MAX_TURNS:-25}" --allowedTools "$ALLOWED" --output-format text "$prompt")" || rc=$?
+if [ "$rc" -ne 0 ]; then
+  echo "Claude недоступний (код $rc) — локальний брифінг $name" >&2
+  if [ -n "${DRY:-}" ]; then python3 "$DIR/bot/local_briefing.py" "$name"; exit 0; fi
+  python3 "$DIR/bot/local_briefing.py" "$name" --send >/dev/null || echo "локальний брифінг не надіслано" >&2
+  "$DIR/bin/memory-sync.sh" >/dev/null 2>&1 || true
+  exit 0
+fi
 reply="$(printf '%s\n' "$out" | grep -v '^SEND_FILE:' | tail -c 3000)"
 # Telegram не малює Markdown: **жирний** → <b>, # заголовок → <b>, `код` → <code>, решту екрануємо і шлемо як HTML
 html="$(printf '%s' "$reply" | python3 -c '
