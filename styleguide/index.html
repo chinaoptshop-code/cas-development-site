@@ -175,7 +175,7 @@ footer .fs a{display:inline-flex;align-items:center;min-height:44px}
 code{font-size:.92em}
 .hero p{max-width:640px;max-inline-size:640px}.sg-note,.sg-meta p{max-width:720px;max-inline-size:720px}</style>
 <link rel="stylesheet" href="/assets/cas-map.v1.css?v=1a565e86">
-<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=858f6cda">
+<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=31318898">
 </head>
 <body>
 <!--chrome:skip--><a class="skip" href="#main">Перейти до змісту</a><!--/chrome:skip-->
@@ -370,6 +370,9 @@ code{font-size:.92em}
 <div class="sg-demo"><form onsubmit="event.preventDefault();this.querySelector('.err').textContent='Демо: заявку не надіслано'" novalidate>
 <div><label for="sgName">Імʼя</label><input id="sgName" autocomplete="name"></div><div><label for="sgPhone">Телефон *</label><input id="sgPhone" type="tel" placeholder="097 123 45 67" aria-describedby="sgErr"><div class="err" id="sgErr" role="alert"></div></div>
 <div class="btns"><button class="btn main" type="submit">Надіслати заявку</button><button class="btn main" type="button" disabled>Надсилаємо…</button></div></form></div></div>
+<div class="sg-c"><div class="sg-meta"><code>&lt;div class="lq-slot" data-form="quick-…"&gt;</code> → <code>form.lq</code><p>Компактне «Номер → передзвонимо» після цін, портфоліо, на сторінках проєктів і в статтях. У HTML — лише порожнє місце (ставить <code>tools/site/leadform.py</code>), форму будує <code>/assets/lead-form.v1.js</code>: підпис, телефон (type/inputmode/autocomplete=tel), кнопка «дієслово + результат», вигода <code>.o-note</code>, месенджери <code>.lq-alt</code>, факти <code>.lq-tr</code>. Без поп-апів. Стан відправки — <code>.lf-busy</code>, успіх — <code>.lq-ok.lf-ok-in</code>.</p></div>
+<div class="sg-demo"><div class="lq-slot" data-built="1"><form class="lq" onsubmit="event.preventDefault()" novalidate><label class="lq-l" for="sgLq">Потрібна цифра для вашої площі? Залиште номер — передзвонимо й порахуємо</label><div class="lq-r"><input id="sgLq" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 97 123 45 67"><button class="lq-b" type="submit">Отримати розрахунок</button></div><p class="o-note">Передзвонимо й порахуємо орієнтовну вартість. Консультація по телефону — безкоштовна.</p><p class="lq-alt">Або напишіть: <a href="https://t.me/+380978667755">Telegram</a> · <a href="viber://chat?number=%2B380978667755">Viber</a> · <a href="https://wa.me/380978667755">WhatsApp</a></p><p class="lq-tr">150+ проєктів з 2016 · гарантія 36 міс. · власні бригади · Google 4,8★</p></form></div>
+<p><button class="lq-b lf-busy" type="button" disabled>Надсилаємо…</button></p><div class="lq-ok lf-ok-in" role="status">Дякуємо! Перетелефонуємо найближчим часом.</div></div></div>
 </section>
 
 <section id="quiz"><h2>Квіз-калькулятор</h2>

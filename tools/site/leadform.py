@@ -1,18 +1,30 @@
 #!/usr/bin/env python3
 """Легка заявка на всіх сторінках: обовʼязковий лише телефон, імʼя — «необовʼязково», коментар згорнуто.
 
-  python3 tools/site/leadform.py            # оновити всі сторінки з формою form#of
+  python3 tools/site/leadform.py            # оновити всі сторінки (форми, швидкі заявки, місця для «номер → передзвонимо»)
   python3 tools/site/leadform.py file ...   # лише вказані файли (шляхи від кореня сайту)
   python3 tools/site/leadform.py --check    # лише перевірка (код 1, якщо щось не оновлено)
 
 Що робить apply() (ідемпотентно; генератори — landing.py — викликають її перед chrome.apply()):
-  • form#of: поле телефону — першим, з підказкою +380 і inputmode=tel; «Імʼя (необовʼязково)»; площа й коментар —
-    у згорнутому <details class="o-more"> «Додати коментар»; кнопка «Передзвоніть мені»; під нею примітка .o-note
-    (факти CLAUDE.md: передзвонимо найближчим часом, консультація по телефону безкоштовна — без обіцянок «за 15 хвилин»).
+  • form#of: поле телефону — першим, type=tel, inputmode=tel, autocomplete=tel, підказка +380; «Імʼя (необовʼязково)»;
+    площа й коментар — у згорнутому <details class="o-more"> «Додати коментар»; кнопка «дієслово + результат»
+    («Отримати розрахунок»); під нею вигода в один рядок .o-note (факти CLAUDE.md: передзвонимо й порахуємо орієнтовну
+    вартість, консультація по телефону безкоштовна — без «безкоштовного заміру» і «за 15 хвилин»), альтернатива
+    «Або напишіть: Telegram · Viber · WhatsApp» (.lq-alt) і рядок довіри .lq-tr (150+ проєктів з 2016, гарантія 36 міс.,
+    власні бригади, Google 4,8★ — лише ці факти). Обидва рядки — між <!--lqx--> і <!--/lqx-->.
   • Швидка заявка в один рядок (form.lq, між <!--lq--> і <!--/lq-->) — у hero лендингів послуг одразу після кнопок
-    (.w.hero .btns); стилі — <style id="lead-ui"> у <head> (той самий CSS вставляє /assets/lead-form.v1.js, якщо його нема).
-Надсилання, перевірку номера, маску і подію Clarity `lead_submit` робить спільний /assets/lead-form.v1.js.
-Сторінки інших агентів (SKIP) не чіпаємо; блог, Оздобу, кабінет і сторінки проєктів — лише форма, без швидкої заявки.
+    (.w.hero .btns), з рядком месенджерів.
+  • Місця для компактного «Номер → передзвонимо» (<div class="lq-slot" data-form="…">; саму форму будує
+    /assets/lead-form.v1.js — у HTML лише ~60 байтів, бо лендинги на межі бюджету 64 КБ):
+      quick-prices — після таблиці цін лендингу (<!--/cas:prices-->), quick-portfolio — після галереї «Наші проєкти»
+      лендингу й блоку «Наші проєкти» на головній, quick-project — «Хочу так само» на сторінках /proekty/*,
+      quick-blog-mid і quick-blog-end — у статтях блогу (у середині й у блоці CTA наприкінці), quick-services —
+      /services після карток послуг, quick-portfolio — /portfolio після списку проєктів (.lq-wide — місця поза
+      контейнером .w). data-form відрізняє місце в Clarity (lead_form) і в CRM (source …#місце).
+  • Стилі — у /assets/site-chrome.v1.css (розділ «Легка заявка»); старий інлайн <style id="lead-ui"> прибираємо.
+Надсилання, перевірку номера, маску, стани «надсилаємо…/дякуємо» і події Clarity (`lead_submit`, `lead_start`, `lead_msg`)
+робить спільний /assets/lead-form.v1.js. Без поп-апів і exit-intent.
+Сторінки інших агентів (SKIP) не чіпаємо; блог, Оздобу, кабінет і сторінки проєктів — без швидкої заявки в hero.
 """
 import glob, html, os, re, sys
 
@@ -22,46 +34,50 @@ NO_QUICK = re.compile(r'(?:^|/)(?:blog|ozdoba|kabinet|proekty|styleguide|konfigu
                       r'|(?:^|/)(?:pytannya|voprosy|faq|preguntas-frecuentes)\.html$')  # FAQ — довгі сторінки (бюджет 60 КБ)
 
 T = {
-    'uk': dict(name='Імʼя (необовʼязково)', phone='Телефон *', ph='+380 97 123 45 67', more='Додати коментар', send='Передзвоніть мені',
-               note='Перетелефонуємо найближчим часом. Консультація по телефону — безкоштовна.',
+    'uk': dict(name='Імʼя (необовʼязково)', phone='Телефон *', ph='+380 97 123 45 67', more='Додати коментар', send='Отримати розрахунок',
+               note='Передзвонимо й порахуємо орієнтовну вартість. Консультація по телефону — безкоштовна.',
+               alt='Або напишіть:', tr='150+ проєктів з 2016 · гарантія 36 міс. · власні бригади · Google\u00a04,8★',
                q='Залиште номер — ми передзвонимо', ok='Дякуємо! Перетелефонуємо найближчим часом.', mb='Залишити номер'),
-    'ru': dict(name='Имя (необязательно)', phone='Телефон *', ph='+380 97 123 45 67', more='Добавить комментарий', send='Перезвоните мне',
-               note='Перезвоним в ближайшее время. Консультация по телефону — бесплатная.',
+    'ru': dict(name='Имя (необязательно)', phone='Телефон *', ph='+380 97 123 45 67', more='Добавить комментарий', send='Получить расчёт',
+               note='Перезвоним и посчитаем ориентировочную стоимость. Консультация по телефону — бесплатная.',
+               alt='Или напишите:', tr='150+ проектов с 2016 · гарантия 36 мес. · собственные бригады · Google\u00a04,8★',
                q='Оставьте номер — мы перезвоним', ok='Спасибо! Перезвоним в ближайшее время.', mb='Оставить номер'),
-    'en': dict(name='Name (optional)', more='Add a comment', send='Call me back',
-               note='We will call you back shortly. Phone consultation is free.',
+    'en': dict(name='Name (optional)', more='Add a comment', send='Get an estimate',
+               note='We will call you back with a rough cost estimate. Phone consultation is free.',
+               alt='Or message us:', tr='150+ projects since 2016 · 36-month warranty · in-house crews · Google\u00a04.8★',
                q='Leave your number — we will call you back', ok='Thank you! We will call you back shortly.', mb='Leave number'),
-    'es': dict(name='Nombre (opcional)', more='Añadir un comentario', send='Llámenme',
-               note='Le llamaremos en breve. La consulta por teléfono es gratuita.',
+    'es': dict(name='Nombre (opcional)', more='Añadir un comentario', send='Recibir presupuesto',
+               note='Le llamamos y le damos un coste orientativo. La consulta por teléfono es gratuita.',
+               alt='O escríbanos:', tr='150+ proyectos desde 2016 · garantía de 36 meses · equipos propios · Google\u00a04,8★',
                q='Deje su número y le llamamos', ok='¡Gracias! Le llamaremos en breve.', mb='Dejar número'),
-    'zh': dict(name='姓名（选填）', more='添加备注', send='请回电给我',
-               note='我们会尽快给您回电。电话咨询免费。', q='留下电话，我们给您回电', ok='谢谢！我们会尽快给您回电。', mb='留下电话'),
-    'pl': dict(name='Imię (opcjonalnie)', more='Dodaj komentarz', send='Oddzwońcie do mnie',
-               note='Oddzwonimy wkrótce. Konsultacja telefoniczna jest bezpłatna.',
+    'zh': dict(name='姓名（选填）', more='添加备注', send='获取估价',
+               note='我们会回电并估算大致费用。电话咨询免费。', alt='或发消息：', tr='自2016年起150+个项目 · 36个月保修 · 自有施工队 · Google\u00a04.8★',
+               q='留下电话，我们给您回电', ok='谢谢！我们会尽快给您回电。', mb='留下电话'),
+    'pl': dict(name='Imię (opcjonalnie)', more='Dodaj komentarz', send='Otrzymaj wycenę',
+               note='Oddzwonimy i podamy orientacyjny koszt. Konsultacja telefoniczna jest bezpłatna.',
+               alt='Lub napisz:', tr='150+ projektów od 2016 · gwarancja 36 mies. · własne ekipy · Google\u00a04,8★',
                q='Zostaw numer — oddzwonimy', ok='Dziękujemy! Oddzwonimy wkrótce.', mb='Zostaw numer'),
-    'de': dict(name='Name (optional)', more='Kommentar hinzufügen', send='Rückruf anfordern',
-               note='Wir rufen Sie in Kürze zurück. Die telefonische Beratung ist kostenlos.',
+    'de': dict(name='Name (optional)', more='Kommentar hinzufügen', send='Schätzung erhalten',
+               note='Wir rufen zurück und nennen die ungefähren Kosten. Die telefonische Beratung ist kostenlos.',
+               alt='Oder schreiben Sie:', tr='150+ Projekte seit 2016 · 36 Monate Garantie · eigene Teams · Google\u00a04,8★',
                q='Nummer hinterlassen — wir rufen zurück', ok='Danke! Wir rufen Sie in Kürze zurück.', mb='Rückruf'),
-    'fr': dict(name='Nom (facultatif)', more='Ajouter un commentaire', send='Rappelez-moi',
-               note='Nous vous rappelons rapidement. La consultation par téléphone est gratuite.',
+    'fr': dict(name='Nom (facultatif)', more='Ajouter un commentaire', send='Recevoir une estimation',
+               note='Nous vous rappelons avec une estimation indicative. La consultation par téléphone est gratuite.',
+               alt='Ou écrivez-nous :', tr='150+ projets depuis 2016 · garantie 36 mois · équipes internes · Google\u00a04,8★',
                q='Laissez votre numéro, nous vous rappelons', ok='Merci ! Nous vous rappelons rapidement.', mb='Être rappelé'),
-    'ar': dict(name='الاسم (اختياري)', more='إضافة تعليق', send='اتصلوا بي',
-               note='سنعاود الاتصال بك قريبًا. الاستشارة الهاتفية مجانية.', q='اترك رقمك وسنتصل بك', ok='شكرًا! سنعاود الاتصال بك قريبًا.', mb='اترك رقمك'),
+    'ar': dict(name='الاسم (اختياري)', more='إضافة تعليق', send='احصل على تقدير',
+               note='سنتصل بك ونقدّم تقديرًا تقريبيًا للتكلفة. الاستشارة الهاتفية مجانية.',
+               alt='أو راسلنا:', tr='+150 مشروعًا منذ 2016 · ضمان 36 شهرًا · فرق عمل خاصة بنا · Google\u00a04.8★',
+               q='اترك رقمك وسنتصل بك', ok='شكرًا! سنعاود الاتصال بك قريبًا.', mb='اترك رقمك'),
 }
+# месенджери — ті самі, що в шапці й нижній панелі (tools/site/chrome.py, MSG)
+MSG = (('Telegram', 'https://t.me/+380978667755'), ('Viber', 'viber://chat?number=%2B380978667755'), ('WhatsApp', 'https://wa.me/380978667755'))
 
-# той самий CSS, що й у /assets/lead-form.v1.js (CSS там — запасний для сторінок без цього блоку)
-CSS = ('.lq{display:block;margin:22px 0 0;max-width:540px}.lq-l{display:block;margin:0 0 8px;font-size:var(--fs-small,.8125rem);color:var(--mu,#8a837c)}'
-       '.lq-r{display:flex;gap:8px;flex-wrap:wrap}.lq-r input{flex:1 1 160px;min-width:0;width:auto;box-sizing:border-box;min-height:48px;padding:12px 14px;font:inherit;font-size:16px;color:var(--tx,#ede8df);background:var(--bg2,rgba(255,255,255,.04));border:1px solid var(--ln,rgba(191,145,72,.35));border-radius:8px}'
-       '.lq-b{flex:0 0 auto;min-height:48px;padding:12px 22px;border:1px solid var(--ac,#bf9148);border-radius:999px;background:var(--ac,#bf9148);color:#140f08;font-family:inherit;font-size:var(--fs-small,.8125rem);font-weight:600;line-height:1.2;cursor:pointer;white-space:nowrap}.lq-b:disabled{opacity:.6;cursor:wait}'
-       '.lq-e{color:#e07a6a;font-size:var(--fs-small,.8125rem);margin-top:6px}.lq-e:empty{display:none}.lq .o-note{margin:8px 0 0}'
-       '.o-note{color:var(--mu,#8a837c);font-size:var(--fs-small,.8125rem);line-height:1.5;margin:4px 0 0;max-width:29.6em}'
-       '.lq-ok{margin:22px 0 0;max-width:540px;padding:14px 18px;border:1px solid var(--ac,#bf9148);border-radius:8px;color:var(--tx,#ede8df)}'
-       'details.o-more>summary{cursor:pointer;display:inline-block;list-style:none;padding:6px 0;color:var(--ac,#bf9148);font-size:var(--fs-small,.8125rem);font-weight:600}'
-       'details.o-more>summary::-webkit-details-marker{display:none}details.o-more>summary::after,details.o-more[open]>summary::after{content:none!important;display:none!important}'
-       'details.o-more>summary::before{content:"+ "}details.o-more[open]>summary::before{content:"− "}details.o-more>*+*{margin-top:12px}')
-STYLE = f'<style id="lead-ui">{CSS}</style>'
-STYLE_RX = re.compile(r'<style id="lead-ui">.*?</style>\n?', re.S)
+STYLE_RX = re.compile(r'<style id="lead-ui">.*?</style>\n?', re.S)  # старий інлайн-CSS: тепер у /assets/site-chrome.v1.css
 QUICK_RX = re.compile(r'\n?[ \t]*<!--lq-->.*?<!--/lq-->', re.S)
+X_RX = re.compile(r'<!--lqx-->.*?<!--/lqx-->', re.S)
+SLOT_RX = re.compile(r'<div class="lq-slot[^"]*"[^>]*></div>')
+SCRIPT = '<script src="/assets/lead-form.v1.js" defer></script>'
 
 e = lambda s: html.escape(s, quote=False)
 a = lambda s: html.escape(s, quote=True)
@@ -69,12 +85,22 @@ a = lambda s: html.escape(s, quote=True)
 
 def _keep(old, new):
     """Не перезаписувати текст, який відрізняється лише нерозривними пробілами (їх ставить chrome.nbsp_prices)."""
-    return old if old.replace('\u00a0', ' ') == new.replace('\u00a0', ' ') else new
+    return old if old.replace(' ', ' ') == new.replace(' ', ' ') else new
 
 
 def lang_of(s):
     m = re.search(r'<html[^>]*\blang="([a-zA-Z]{2})', s)
     return (m.group(1).lower() if m else 'uk') if (m and m.group(1).lower() in T) else 'uk'
+
+
+def extras(lang, trust=True):
+    """Рядок «Або напишіть: Telegram · Viber · WhatsApp» і (для повної форми) рядок довіри."""
+    t = T[lang]
+    links = ' · '.join(f'<a href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '') + f'>{n}</a>' for n, u in MSG)
+    x = f'<p class="lq-alt">{e(t["alt"])} {links}</p>'
+    if trust:
+        x += f'<p class="lq-tr">{e(t["tr"])}</p>'
+    return f'<!--lqx-->{x}<!--/lqx-->'
 
 
 def _wrapper(s, pos, lo, hi):
@@ -93,6 +119,16 @@ def _wrapper(s, pos, lo, hi):
         if depth == 0:
             return start, start + m.end()
     return None
+
+
+def _close(s, start, tag='div'):
+    """Кінець елемента <tag>, що починається в позиції start (індекс одразу після закривального тега) або -1."""
+    depth = 0
+    for m in re.finditer(r'<(/?)' + tag + r'\b[^>]*>', s[start:]):
+        depth += -1 if m.group(1) else 1
+        if depth == 0:
+            return start + m.end()
+    return -1
 
 
 def _field(s, fid, lo, hi):
@@ -117,10 +153,12 @@ def upgrade_form(s, lang):
     f = re.sub(r'(<label[^>]*\bfor="oName"[^>]*>)([^<]*)(</label>)', lambda x: x.group(1) + _keep(x.group(2), e(t['name'])) + x.group(3), f, count=1)
     if t.get('phone'):
         f = re.sub(r'(<label[^>]*\bfor="oPhone"[^>]*>)([^<]*)(</label>)', lambda x: x.group(1) + _keep(x.group(2), e(t['phone'])) + x.group(3), f, count=1)
-    # поле телефону: inputmode, підказка +380 (uk/ru), без placeholder «Імʼя» у полі імені
+    # поле телефону: type=tel + inputmode=tel (цифрова клавіатура на iPhone), autocomplete=tel (підставляє номер), підказка +380 (uk/ru)
     def ph(x):
         tg = x.group(0)
         if 'inputmode=' not in tg: tg = tg.replace(' id="oPhone"', ' id="oPhone" inputmode="tel"', 1)
+        if not re.search(r'\stype=', tg): tg = tg.replace(' id="oPhone"', ' id="oPhone" type="tel"', 1)
+        if 'autocomplete=' not in tg: tg = tg.replace(' id="oPhone"', ' id="oPhone" autocomplete="tel"', 1)
         if t.get('ph'):
             tg = re.sub(r'\splaceholder="[^"]*"', '', tg)
             tg = tg.replace(' id="oPhone"', f' id="oPhone" placeholder="{a(t["ph"])}"', 1)
@@ -157,12 +195,17 @@ def upgrade_form(s, lang):
     else:
         s = s[:lo] + re.sub(r'(<details class="o-more"><summary>)([^<]*)', lambda x: x.group(1) + _keep(x.group(2), e(t['more'])), s[lo:hi], count=1) + s[hi:]
         hi = s.find('</form>', lo)
-    # примітка під кнопкою
+    # вигода під кнопкою, месенджери як альтернатива й рядок довіри
     f = s[lo:hi]
+    old = X_RX.search(f)
+    f = X_RX.sub('', f)
     if 'class="o-note"' in f:
         f = re.sub(r'(<p class="o-note">)([^<]*)', lambda x: x.group(1) + _keep(x.group(2), e(t['note'])), f, count=1)
     else:
         f = re.sub(r'(<button[^>]*\bid="oBtn"[^>]*>.*?</button>)', lambda x: x.group(1) + f'<p class="o-note">{e(t["note"])}</p>', f, count=1, flags=re.S)
+    x = extras(lang)
+    if old: x = _keep(old.group(0), x).replace('Google ', 'Google\u00a0')
+    f = re.sub(r'(<p class="o-note">[^<]*</p>)', lambda m: m.group(1) + x, f, count=1)
     return s[:lo] + f + s[hi:]
 
 
@@ -172,7 +215,7 @@ def quick_html(lang, service, source, form='quick-hero', idp='lq'):
             f'<label class="lq-l" for="{idp}P">{e(t["q"])}</label>'
             f'<div class="lq-r"><input id="{idp}P" type="tel" inputmode="tel" autocomplete="tel" placeholder="{a(t.get("ph", "+380 97 123 45 67"))}" aria-describedby="{idp}E">'
             f'<button class="lq-b" type="submit">{e(t["send"])}</button></div>'
-            f'<div class="lq-e" id="{idp}E" role="alert"></div><p class="o-note">{e(t["note"])}</p></form>'
+            f'<div class="lq-e" id="{idp}E" role="alert"></div><p class="o-note">{e(t["note"])}</p>{extras(lang, trust=False)}</form>'
             f'<div class="lq-ok" role="status" tabindex="-1" hidden>{e(t["ok"])}</div><!--/lq-->')
 
 
@@ -200,27 +243,80 @@ def add_quick(s, lang):
     return s[:end] + q + s[end:]
 
 
-def style(s, need):
-    s = STYLE_RX.sub('', s)
-    if need:  # перед стилями шапки (chrome.py тримає їх останніми в <head>)
-        k = s.find('<link rel="stylesheet" href="/assets/site-chrome.v1.css')
-        h = s.find('</head>')
-        k = k if 0 <= k < h else h
-        s = s[:k] + STYLE + '\n' + s[k:]
+def _slot(form, service='', wide=False):  # wide — поза контейнером .w: власні поля й ширина (див. site-chrome.v1.css)
+    return f'<div class="lq-slot{" lq-wide" if wide else ""}" data-form="{form}"' + (f' data-service="{a(service)}"' if service else '') + '></div>'
+
+
+def add_slots(s, rel):
+    """Місця для компактного «Номер → передзвонимо» (форму будує /assets/lead-form.v1.js). Ідемпотентно."""
+    s = SLOT_RX.sub('', s)
+    ins = []  # (позиція, html)
+    if '<!--lq-->' in s:  # лендинг послуги: після таблиці цін і після галереї «Наші проєкти»
+        k = s.find('<!--/cas:prices-->')
+        j = s.rfind('</div></section>', 0, k) if k > 0 else -1
+        if j > 0 and s.find('<!--cas:prices-->') < j:
+            ins.append((j, _slot('quick-prices')))
+        g = s.find('<div class="gal">')
+        ge = _close(s, g) if g > 0 else -1
+        if ge > 0:
+            ins.append((ge, _slot('quick-portfolio')))
+    if re.match(r'(?:[a-z]{2}/)?proekty/[^/]+\.html$', rel):  # сторінка проєкту: «Хочу так само» в «Замовити схожий проєкт»
+        g = s.find('<div class="pg"')
+        k = s.find('<section><div class="w">', g) if g > 0 else -1
+        j = s.find('</div></section>', k) if k > 0 else -1
+        h1 = re.search(r'<h1[^>]*>(.*?)</h1>', s, re.S)
+        name = re.sub(r'<[^>]+>', '', h1.group(1)).strip() if h1 else ''
+        if j > 0:
+            ins.append((j, _slot('quick-project', ('Схожий проєкт: ' + html.unescape(name))[:100] if name else '')))
+    if re.search(r'(?:^|/)blog/[^/]+\.html$', rel) and '<div class="cta">' in s:  # стаття: м'який CTA в середині й у кінці
+        art = s.find('<article')
+        cta = s.find('<div class="cta">', art)
+        if art >= 0 and cta > art:
+            h2 = [art + m.start() for m in re.finditer(r'<h2[\s>]', s[art:cta])]
+            if len(h2) >= 4:
+                ins.append((h2[len(h2) // 2], _slot('quick-blog-mid')))
+            p = s.find('</p>', cta)
+            if 0 < p < _close(s, cta):
+                ins.append((p + 4, _slot('quick-blog-end')))
+    if '<div class="sv-grid">' in s:  # /services: після карток послуг
+        g = s.find('<div class="sv-grid">')
+        ge = _close(s, g)
+        if ge > 0:
+            ins.append((ge, _slot('quick-services', wide=True)))
+    if 'id="pfRows"' in s:  # /portfolio: після списку проєктів, перед картою
+        k = s.find('<!--cas:map-->')  # блок карти перезбирає casmap.py — ставимо перед його маркером
+        if k < 0: k = s.find('<section class="pmap"')
+        if k > 0:
+            ins.append((k, _slot('quick-portfolio', wide=True)))
+    if '<section class="proj-covers">' in s:  # головна: після блоку «Наші проєкти»
+        k = s.find('<section class="proj-covers">')
+        j = s.find('</section>', k)
+        if j > 0:
+            ins.append((j, _slot('quick-portfolio')))
+    for pos, x in sorted(ins, reverse=True):
+        s = s[:pos] + x + s[pos:]
+    if ins and 'lead-form.v1.js' not in s:
+        k = s.rfind('</body>')
+        if k > 0:
+            s = s[:k] + SCRIPT + '\n' + s[k:]
     return s
 
 
 def apply(s, rel):
     rel = rel.replace(os.sep, '/')
-    if rel in SKIP or 'id="of"' not in s and '<!--lq-->' not in s:
+    if rel in SKIP:
         return s
-    lang = lang_of(s)
-    s = upgrade_form(s, lang)
-    if not NO_QUICK.search(rel):
-        s = add_quick(s, lang)
-    else:
-        s = QUICK_RX.sub('', s)
-    return style(s, 'class="lq"' in s)
+    s = STYLE_RX.sub('', s)
+    if 'id="of"' in s or '<!--lq-->' in s:
+        lang = lang_of(s)
+        s = upgrade_form(s, lang)
+        if not NO_QUICK.search(rel):
+            s = add_quick(s, lang)
+        else:
+            s = QUICK_RX.sub('', s)
+    if not rel.startswith(('kabinet', 'ozdoba', 'styleguide', 'tury')):
+        s = add_slots(s, rel)
+    return s
 
 
 def pages():
