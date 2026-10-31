@@ -970,12 +970,12 @@
  {
   "page": "blog.html",
   "kind": "other",
-  "html_kb": 65.3,
-  "gzip_kb": 16.6,
+  "html_kb": 68.0,
+  "gzip_kb": 17.4,
   "css_kb": 13.5,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 343,
+  "tags": 355,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -1034,7 +1034,7 @@
  {
   "page": "blog/avtorskyi-nahliad-navishcho.html",
   "kind": "land",
-  "html_kb": 53.0,
+  "html_kb": 53.1,
   "gzip_kb": 15.5,
   "css_kb": 14.4,
   "js_kb": 7.0,
@@ -1135,7 +1135,7 @@
   "page": "blog/chornovyi-i-chystovyi-remont-riznytsia.html",
   "kind": "land",
   "html_kb": 53.5,
-  "gzip_kb": 15.5,
+  "gzip_kb": 15.4,
   "css_kb": 14.4,
   "js_kb": 7.0,
   "font_sizes": 7,
@@ -1205,7 +1205,7 @@
   "page": "blog/dyzain-interieru-onlain-budynok-za-kordonom.html",
   "kind": "land",
   "html_kb": 58.0,
-  "gzip_kb": 17.0,
+  "gzip_kb": 16.9,
   "css_kb": 14.4,
   "js_kb": 7.0,
   "font_sizes": 7,
@@ -1336,7 +1336,7 @@
  {
   "page": "blog/dyzain-restoranu-z-choho-pochaty.html",
   "kind": "land",
-  "html_kb": 52.6,
+  "html_kb": 52.7,
   "gzip_kb": 15.5,
   "css_kb": 14.4,
   "js_kb": 7.0,
@@ -1361,6 +1361,39 @@
   ],
   "prices_bad": [
    "$3 600 "
+  ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/elitnyi-remont-kvartyry-biudzhet.html",
+  "kind": "land",
+  "html_kb": 50.8,
+  "gzip_kb": 14.8,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 7,
+  "tags": 288,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$82 500 "
   ],
   "facts_bad": [],
   "est_bad": [],
@@ -1394,6 +1427,39 @@
   ],
   "prices_bad": [
    "$38 500"
+  ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/henpidriadnyk-chy-okremi-bryhady.html",
+  "kind": "land",
+  "html_kb": 52.1,
+  "gzip_kb": 15.2,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 7,
+  "tags": 291,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$70 000 "
   ],
   "facts_bad": [],
   "est_bad": [],
@@ -1504,7 +1570,7 @@
  {
   "page": "blog/komplektatsiia-kvartyry-pid-kliuch-poriadok-i-biudzhet.html",
   "kind": "land",
-  "html_kb": 52.1,
+  "html_kb": 52.2,
   "gzip_kb": 15.2,
   "css_kb": 14.4,
   "js_kb": 7.0,
@@ -1562,6 +1628,39 @@
    "#100e0c"
   ],
   "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/koshtorys-na-remont-yak-chytaty.html",
+  "kind": "land",
+  "html_kb": 51.2,
+  "gzip_kb": 14.8,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 7,
+  "tags": 296,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$44 000 "
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -1703,7 +1802,7 @@
  {
   "page": "blog/ofis-u-biznes-tsentri-shcho-uzghodyty-pered-remontom.html",
   "kind": "land",
-  "html_kb": 51.1,
+  "html_kb": 51.0,
   "gzip_kb": 14.7,
   "css_kb": 14.4,
   "js_kb": 7.0,
@@ -2130,6 +2229,44 @@
   "webhook_copies": 0
  },
  {
+  "page": "blog/skilky-koshtuie-dyzain-interieru-kyiv.html",
+  "kind": "land",
+  "html_kb": 52.2,
+  "gzip_kb": 15.0,
+  "css_kb": 14.4,
+  "js_kb": 7.0,
+  "font_sizes": 7,
+  "tags": 293,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$2 400",
+   "$240",
+   "$3 600",
+   "$480",
+   "$5 400",
+   "$720"
+  ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "blog/skilky-koshtuie-dyzain-proekt-kvartyry-kyiv.html",
   "kind": "land",
   "html_kb": 53.0,
@@ -2206,7 +2343,7 @@
  {
   "page": "blog/skilky-koshtuie-remont-ofisu-kyiv-2026.html",
   "kind": "land",
-  "html_kb": 50.8,
+  "html_kb": 50.9,
   "gzip_kb": 14.7,
   "css_kb": 14.4,
   "js_kb": 7.0,
@@ -2242,7 +2379,7 @@
  {
   "page": "blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html",
   "kind": "land",
-  "html_kb": 52.9,
+  "html_kb": 52.8,
   "gzip_kb": 15.2,
   "css_kb": 14.4,
   "js_kb": 7.0,
@@ -2278,7 +2415,7 @@
  {
   "page": "blog/skilky-koshtuie-remont-vannoi-kyiv.html",
   "kind": "land",
-  "html_kb": 50.6,
+  "html_kb": 50.5,
   "gzip_kb": 14.5,
   "css_kb": 14.4,
   "js_kb": 7.0,
@@ -6553,12 +6690,12 @@
  {
   "page": "heneralnyi-pidriadnyk-kyiv.html",
   "kind": "land",
-  "html_kb": 60.4,
-  "gzip_kb": 16.6,
+  "html_kb": 60.7,
+  "gzip_kb": 16.7,
   "css_kb": 15.1,
   "js_kb": 7.0,
   "font_sizes": 9,
-  "tags": 468,
+  "tags": 473,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -19255,12 +19392,12 @@
  {
   "page": "remont-kvartyr-kyiv.html",
   "kind": "land",
-  "html_kb": 59.0,
+  "html_kb": 59.2,
   "gzip_kb": 16.4,
   "css_kb": 15.2,
   "js_kb": 7.0,
   "font_sizes": 9,
-  "tags": 492,
+  "tags": 493,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -19999,12 +20136,12 @@
  {
   "page": "remont-premium-klasu-kyiv.html",
   "kind": "land",
-  "html_kb": 60.1,
+  "html_kb": 60.4,
   "gzip_kb": 16.7,
   "css_kb": 15.1,
   "js_kb": 7.0,
   "font_sizes": 9,
-  "tags": 468,
+  "tags": 473,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -20218,12 +20355,12 @@
  {
   "page": "ru/blog.html",
   "kind": "other",
-  "html_kb": 64.2,
-  "gzip_kb": 16.1,
+  "html_kb": 65.5,
+  "gzip_kb": 16.5,
   "css_kb": 13.5,
   "js_kb": 7.0,
   "font_sizes": 6,
-  "tags": 337,
+  "tags": 343,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -21370,12 +21507,12 @@
  {
   "page": "ru/remont-kvartir-kiev.html",
   "kind": "land",
-  "html_kb": 60.0,
-  "gzip_kb": 16.6,
+  "html_kb": 60.1,
+  "gzip_kb": 16.7,
   "css_kb": 15.5,
   "js_kb": 7.0,
   "font_sizes": 9,
-  "tags": 490,
+  "tags": 491,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
