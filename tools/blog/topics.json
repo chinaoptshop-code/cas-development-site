@@ -250,7 +250,8 @@
    "/ru/remont-kvartir-kiev",
    "Ремонт квартир"
   ],
-  "status": "todo"
+  "pair": "koshtorys-na-remont-yak-chytaty",
+  "status": "published"
  },
  {
   "lang": "uk",
@@ -261,7 +262,8 @@
    "/remont-kvartyr-kyiv",
    "Ремонт квартир"
   ],
-  "status": "todo"
+  "pair": "kak-sostavit-smetu-na-remont",
+  "status": "published"
  },
  {
   "lang": "ru",
@@ -701,7 +703,8 @@
    "/dyzain-interieru-kyiv",
    "Дизайн інтерʼєру"
   ],
-  "status": "todo",
+  "pair": "skolko-stoit-dizayn-interera-kiev",
+  "status": "published",
   "note": "SEO-аудит 25.10.2026: комерційний запит, сегмент від $5 000"
  },
  {
@@ -713,7 +716,8 @@
    "/ru/dizayn-interera-kiev",
    "Дизайн интерьера"
   ],
-  "status": "todo",
+  "pair": "skilky-koshtuie-dyzain-interieru-kyiv",
+  "status": "published",
   "note": "SEO-аудит 25.10.2026: комерційний запит, сегмент від $5 000"
  },
  {
@@ -725,7 +729,7 @@
    "/remont-premium-klasu-kyiv",
    "Ремонт преміум-класу"
   ],
-  "status": "todo",
+  "status": "published",
   "note": "SEO-аудит 25.10.2026: комерційний запит, сегмент від $5 000"
  },
  {
@@ -773,7 +777,8 @@
    "/heneralnyi-pidriadnyk-kyiv",
    "Генеральний підрядник"
   ],
-  "status": "todo",
+  "pair": "genpodryadchik-ili-otdelnye-brigady",
+  "status": "published",
   "note": "SEO-аудит 25.10.2026: комерційний запит, сегмент від $5 000"
  },
  {

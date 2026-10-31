@@ -49,7 +49,7 @@ ART = os.path.join(ROOT, 'tools/blog/articles')
 B = 'https://cas-develop.com/'
 TPL_UK = 'tools/blog/template-uk.html'  # заморожена копія статті-шаблону (стаття сама збирається з JSON)
 TPL_INDEX = 'blog.html'  # індекс uk — шаблон для індексів інших мов
-PRICES_OK = ['$30', '$350', '$550', '$250', '$600', '$1 100', '$1100', '$1,100', '$50', '$2 500', '$2500', '$2,500', '$500']  # $500 — мін. замовлення Оздоби
+PRICES_OK = ['$30', '$350', '$550', '$250', '$600', '$1 100', '$1100', '$1,100', '$50', '$2 500', '$2500', '$2,500', '$500', '$6', '$45', '$12']  # $500 — мін. замовлення Оздоби; $6/$45 — пакети дизайну, $12 — архпроєкт будинку (як PRICES_OK у tools/ui/ui.py)
 MONTHS = {'uk': ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'],
           'ru': ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']}
 L = {
@@ -123,8 +123,14 @@ def check(a):
     if len(a.get('seo_title') or title_tag(a['title'])) > 60: errs.append('<title> довший за 60 символів — додати "seo_title" (≤60)')
     txt = json.dumps(a, ensure_ascii=False)
     if re.search(r'osocor|осокор|osokork', txt, re.I): errs.append('Osocor заборонено')
+    calc = set()  # розрахунок «N × $ставка = $сума»: сума дозволена, якщо ставка підтверджена й множення правильне
+    for n, rate, res in re.findall(r'(\d+)\s*(?:м²|m²)?\s*×\s*(\$\d[\d ]*?\d?)(?:/м²|/m²)?\s*=\s*(\$\d[\d ,]*\d|\$\d)', txt):
+        r, v = int(re.sub(r'\D', '', rate)), int(re.sub(r'\D', '', res))
+        if rate.strip() in PRICES_OK and int(n) * r == v: calc.add(res.strip())
+        else: errs.append(f'розрахунок {n} × {rate.strip()} = {res} — неправильний або ставка не підтверджена')
     for p in re.findall(r'\$\s?\d[\d ,]*\d|\$\d', txt):
         p = p.strip().rstrip(',')
+        if p in calc: continue
         if not any(p == ok or p.startswith(ok + ' ') for ok in PRICES_OK) and not re.fullmatch(r'\$\d{1,3}(( \d{3})+|(,\d{3})+)', p):
             errs.append(f'ціна {p} — перевірити (дозволені лише підтверджені ставки або розрахунок із них)')
     words = sum(len(str(v).split()) for k, v, *_ in a['body'] if k not in PHOTO_KINDS for v in (v if isinstance(v, list) else [v]))
