@@ -259,13 +259,13 @@ AFRAME.registerComponent('tour-zoom', {
   function msg(t) { const m = $('eMsg'); if (m) m.textContent = t; }
   if (EDIT) {
     sky.addEventListener('click', ev => {
-      const p = ev.detail.intersection && ev.detail.intersection.point; if (!p) return;
+      const p = ev.detail.intersection && ev.detail.intersection.point; if (!p || !cur || busy) return;  // подвійний клік: друга подія приходить, поки кімната перезавантажується
       const c = new AFRAME.THREE.Vector3(); sceneEl.camera.getWorldPosition(c);
       const a = angles({ x: p.x - c.x, y: p.y - c.y, z: p.z - c.z }); (cur.hotspots = cur.hotspots || []).push({ to: $('eTo').value, yaw: a.yaw, pitch: Math.max(-60, Math.min(60, a.pitch)) });
       reload();
     });
     spots.addEventListener('click', ev => {
-      const c = ev.target.closest && ev.target.closest('.spot'); if (!c || !shiftDown) return;
+      const c = ev.target.closest && ev.target.closest('.spot'); if (!c || !shiftDown || !cur) return;
       cur.hotspots.splice(+c.dataset.i, 1); const id = cur.id; cur = null; go(id);
     }, true);
   }
