@@ -1027,5 +1027,29 @@
   ],
   "pair": "ofis-pod-klyuch-v-biznes-tsentre",
   "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "akustika-open-space-bez-glukhikh-peregorodok",
+  "title": "Акустика в open space: как сделать тихо без глухих перегородок",
+  "keyword": "акустика open space",
+  "service": [
+   "/ru/dizayn-ofisa-kiev",
+   "Дизайн офиса"
+  ],
+  "pair": "akustyka-open-space-bez-hluhykh-peregorodok",
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "akustyka-open-space-bez-hluhykh-peregorodok",
+  "title": "Акустика в open space: як зробити тихо без глухих перегородок",
+  "keyword": "акустика open space",
+  "service": [
+   "/dyzain-ofisu-kyiv",
+   "Дизайн офісу"
+  ],
+  "pair": "akustika-open-space-bez-glukhikh-peregorodok",
+  "status": "published"
  }
 ]
