@@ -369,6 +369,21 @@ def legacy_uk():
     return sorted(out, key=lambda x: x['date'], reverse=True)
 
 
+# блок «Послуги студії» на індексі блогу (uk/ru): посилання на головні комерційні лендинги
+HUB_SVC = {
+    'uk': ('Послуги студії', [
+        ('/dyzain-interieru-kyiv', 'дизайн інтерʼєру в Києві від $30/м²'), ('/remont-kvartyr-kyiv', 'ремонт квартир під ключ'),
+        ('/remont-premium-klasu-kyiv', 'ремонт преміум-класу'), ('/budivnytstvo-budynkiv-kyiv', 'будівництво будинків під ключ'),
+        ('/remont-ofisu-pid-klyuch-kyiv', 'ремонт офісу під ключ'), ('/heneralnyi-pidriadnyk-kyiv', 'генеральний підрядник'),
+        ('/vartist-remontu-kvartyry-kyiv', 'вартість ремонту квартири'), ('/kalkuliator-remontu', 'калькулятор ремонту')]),
+    'ru': ('Услуги студии', [
+        ('/ru/dizayn-interera-kiev', 'дизайн интерьера в Киеве от $30/м²'), ('/ru/remont-kvartir-kiev', 'ремонт квартир под ключ'),
+        ('/ru/remont-premium-klassa-kiev', 'ремонт премиум-класса'), ('/ru/stroitelstvo-domov-kiev', 'строительство домов под ключ'),
+        ('/ru/remont-ofisa-kiev', 'ремонт офиса под ключ'), ('/ru/generalnyy-podryadchik-kiev', 'генеральный подрядчик'),
+        ('/ru/stoimost-remonta-kvartiry-kiev', 'стоимость ремонта квартиры'), ('/ru/kalkulyator-remonta', 'калькулятор ремонта')]),
+}
+
+
 def build_index(lang, items, langs):
     """Індекс блогу мови; langs — мови, у яких є індекс (для hreflang)."""
     t = L[lang]
@@ -395,6 +410,13 @@ def build_index(lang, items, langs):
     s = re.sub(r'<div class="w hero"><h1>.*?</div>', f'<div class="w hero"><h1>{t["blog_h1"]}</h1><p>{t["blog_lead"]}</p></div>', s, count=1, flags=re.S)
     cards = ''.join(f'<a href="{pre}{x["slug"]}"><h2>{esc(x["title"])}</h2><p>{esc(x["description"])}</p></a>' for x in items)
     s = re.sub(r'<div class="cards">.*?</div></div></section>', f'<div class="cards">{cards}</div></div></section>', s, count=1, flags=re.S)
+    # хаб блогу → лендинги послуг (перелінковка: анкори з ключами); шаблон — сам uk-індекс, тож спершу прибираємо старий блок
+    s = re.sub(r'<!--blog:svc-->.*?<!--/blog:svc-->', '', s, flags=re.S)
+    if HUB_SVC.get(lang):
+        h, links = HUB_SVC[lang]
+        blk = (f'<!--blog:svc--><section><div class="w"><h2>{esc(h)}</h2><p>'
+               + ' · '.join(f'<a href="{u}">{esc(a)}</a>' for u, a in links) + '</p></div></section><!--/blog:svc-->')
+        s = s.replace(f'<div class="cards">{cards}</div></div></section>', f'<div class="cards">{cards}</div></div></section>' + blk, 1)
     wr(prefix(lang) + 'blog.html', s)
 
 

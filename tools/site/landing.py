@@ -256,6 +256,10 @@ def area_served(lang):
 
 # мінімальний вузол організації замість голого посилання на #business (повні дані LocalBusiness — на головній, той самий @id)
 ORG = {'@type': 'Organization', '@id': B + '#business', 'name': 'CAS Development', 'url': B, 'logo': B + 'apple-touch-icon.png'}
+# профілі бренду для головних сторінок мов (Knowledge Graph): Instagram, Google Maps (cid), YouTube — Kuula не додаємо;
+# YouTube media.py підставляє з tools/site/media.json (youtube_channel)
+SAME_AS = ['https://www.instagram.com/cas_development/', 'https://maps.google.com/?cid=15015666645432112566',
+           'https://www.youtube.com/@cas_development']
 e = lambda s: html.escape(s, quote=False)
 a = lambda s: html.escape(s, quote=True)
 # посилання в тексті абзаців «about» і відповідей FAQ: [анкор](/url) → <a href="/url">анкор</a> (у JSON-LD — лише анкор)
@@ -454,7 +458,7 @@ def ld(p):
     page = {'@type': {'about': 'AboutPage', 'contact': 'ContactPage'}.get(p.get('kind'), 'WebPage'), '@id': u + '#page', 'url': u,
             'name': p['title'], 'inLanguage': hl, 'isPartOf': {'@type': 'WebSite', '@id': B + '#site', 'url': B, 'name': 'CAS Development'}}
     if p.get('slug') == 'index':
-        page['about'] = ORG
+        page['about'] = dict(ORG, telephone='+380978667755', sameAs=SAME_AS)
         g = [page]
     elif p.get('groups') or p.get('sections'):
         g = [{'@type': 'BreadcrumbList', 'itemListElement': [
@@ -487,8 +491,9 @@ def build(p):
     for k, v in (('name="description"', p['description']), ('property="og:title"', p['title']),
                  ('property="og:description"', p['description']), ('property="og:url"', u)):
         s = re.sub(r'(<meta ' + k + r' content=")[^"]*', lambda m: m.group(1) + a(v), s, count=1)
-    if p.get('og'):
-        s = re.sub(r'(<meta property="og:image" content=")[^"]*', lambda m: m.group(1) + B + p['og'], s, count=1)
+    # og:image — завжди явно (шаблон remont-kukhni-kyiv.html має власну картку): "og" з JSON, картка лендингу або загальна
+    og = p.get('og') or og_card(lang, slug, p['h1'], first_photo(p)) or 'img/og-cas.jpg'
+    s = re.sub(r'(<meta property="og:image" content=")[^"]*', lambda m: m.group(1) + B + og.lstrip('/'), s, count=1)
     s = re.sub(r'(<link rel="canonical" href=")[^"]*', lambda m: m.group(1) + u, s, count=1)
     s = re.sub(r'<link rel="alternate" hreflang[^>]*>\n', '', s)
     members = i18n.cluster_of(u.replace(B.rstrip('/'), '') or '/')
@@ -518,6 +523,73 @@ def build(p):
     os.makedirs(os.path.dirname(os.path.join(ROOT, path(lang, slug))), exist_ok=True)
     open(os.path.join(ROOT, path(lang, slug)), 'w', encoding='utf-8').write(s)
     return path(lang, slug)
+
+
+# Open Graph-картки лендингів uk/ru: img/og/svc-[ru-]<slug>.jpg (1200×630, фото з галереї сторінки + H1, генератор tools/og/make-og.py).
+# Картку робимо один раз (якщо файлу немає) — збірка детермінована; без фото лишається загальна img/og-cas.jpg.
+OG_LABEL = {'uk': 'ПОСЛУГИ', 'ru': 'УСЛУГИ'}
+OG_MAX = 80 * 1024
+_MKOG = {}
+
+
+def first_photo(p):
+    items = p.get('gallery') or [i for x in p.get('sections', []) if x['t'] == 'gallery' for i in x['items']]
+    return items[0][0].lstrip('/') if items else None
+
+
+def og_card(lang, slug, title, photo):
+    """Шлях img/og/svc-…jpg (створює файл, якщо його ще немає) або None."""
+    if lang not in OG_LABEL or not photo or not os.path.exists(os.path.join(ROOT, photo)):
+        return None
+    rel = f'img/og/svc-{"ru-" if lang == "ru" else ""}{slug}.jpg'
+    out = os.path.join(ROOT, rel)
+    if not os.path.exists(out):
+        if 'm' not in _MKOG:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location('mkog', os.path.join(ROOT, 'tools/og/make-og.py'))
+            m = importlib.util.module_from_spec(spec)
+            try:
+                spec.loader.exec_module(m)
+            except Exception as ex:  # немає шрифту/Pillow — лишаємо загальну картинку
+                print('OG пропущено:', ex)
+                return None
+            m.MAX_BYTES = OG_MAX
+            _MKOG['m'], _MKOG['ov'] = m, m.overlay()
+        m = _MKOG['m']
+        img = m.render({'kind': 'landing', 'slug': slug, 'title': title, 'photo': photo, 'label': OG_LABEL[lang]}, *_MKOG['ov'])
+        os.makedirs(os.path.dirname(out), exist_ok=True)
+        m.save(img, m.Path(out))
+        print('OG', rel)
+    return rel
+
+
+def og_manual(generated):
+    """Ручні лендинги uk/ru (зі Service у JSON-LD) із загальною og-cas.jpg → власна OG-картка з першого фото /img/p/ і H1."""
+    out = []
+    for f in sorted(glob.glob(os.path.join(ROOT, '*.html')) + glob.glob(os.path.join(ROOT, 'ru/*.html'))):
+        rel = os.path.relpath(f, ROOT)
+        if rel in generated:
+            continue
+        s = open(f, encoding='utf-8').read()
+        head = s.split('</head>')[0]
+        if 'img/og-cas.jpg' not in head or 'noindex' in head or '"Service"' not in head:
+            continue
+        mm = re.search(r'<main\b.*?</main>', s, re.S)
+        ph = re.search(r'src="/(img/p/[\w-]+?)(?:-\d+)?\.webp"', mm.group(0) if mm else '')
+        h1 = re.search(r'<h1\b[^>]*>(.*?)</h1>', s, re.S)
+        if not ph or not h1:
+            continue
+        photo = ph.group(1) + '-900.webp'
+        if not os.path.exists(os.path.join(ROOT, photo)):
+            continue
+        title = html.unescape(re.sub(r'<[^>]+>', '', h1.group(1))).strip()
+        og = og_card('ru' if rel.startswith('ru/') else 'uk', os.path.basename(rel)[:-5], title, photo)
+        if og:
+            n = s.replace('content="https://cas-develop.com/img/og-cas.jpg"', f'content="{B}{og}"', 1)
+            if n != s:
+                open(f, 'w', encoding='utf-8').write(n)
+                out.append(rel)
+    return out
 
 
 def page_assets(s, files):
@@ -599,6 +671,8 @@ if __name__ == '__main__':
     if not only:  # ручні сторінки: блоки «Гарантії», «Таблиця цін», «Пакети дизайну» між маркерами
         for r in sync_manual({path(p['lang'], p['slug']) for p in allp}):
             print('↻', r)
+        for r in og_manual({path(p['lang'], p['slug']) for p in allp}):
+            print('OG ↻', r)
     i18n.sync()  # повні hreflang-кластери і перемикач мов на всіх сторінках кластерів (у т.ч. ручних)
     import datetime
     sitemap(built, datetime.date.today().isoformat())
