@@ -29,10 +29,12 @@
 <div class="ui">
   <a class="brand" href="/tury" target="_top">CAS · 3D</a>
   <h1 class="title" id="title" style="margin:0;font-weight:inherit">Ділянка в Карпатах з висоти</h1>
-  <button class="btn" id="menuBtn" aria-label="Кімнати">☰ Кімнати</button>
+  <button class="btn" id="menuBtn" aria-label="Кімнати" aria-controls="rooms" aria-expanded="false">☰ Кімнати</button>
 </div>
-<nav class="rooms" id="rooms" hidden></nav>
-<div class="hint" id="hint">Тягніть, щоб роздивитись · стрілки — перехід · VR — окуляри</div>
+<nav class="rooms" id="rooms" aria-label="Кімнати туру" hidden></nav>
+<div class="tnav" id="nav"><button class="ib" id="prevBtn" aria-label="Попередня кімната">‹</button><span class="cnt" id="cnt" aria-live="polite"></span><button class="ib" id="nextBtn" aria-label="Наступна кімната">›</button></div>
+<div class="tzoom" role="group" aria-label="Масштаб"><button class="ib" id="zoomIn" aria-label="Наблизити">+</button><button class="ib" id="zoomOut" aria-label="Віддалити">−</button></div>
+<div class="hint" id="hint">Тягніть, щоб роздивитись · коліщатко або два пальці — масштаб · стрілки — перехід</div>
 <div class="edit" id="edit" hidden></div>
 <script src="/assets/tours/tour.v1.js"></script>
 </body></html>

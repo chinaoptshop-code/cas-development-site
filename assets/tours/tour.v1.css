@@ -23,13 +23,27 @@ body.fading a-scene{opacity:.15}
   background:rgba(16,14,12,.94);border:1px solid rgba(237,232,223,.08);padding:8px;display:grid;gap:6px;width:240px}
 .rooms[hidden]{display:none}
 .rooms a{display:flex;gap:10px;align-items:center;color:var(--t-tx);text-decoration:none;padding:5px;font-size:13px}
-.rooms a.on,.rooms a:hover{background:rgba(191,145,72,.14)}
-.rooms a.on span{color:var(--t-ac)}
+.rooms a{border-left:2px solid transparent}
+.rooms a:hover{background:rgba(191,145,72,.1)}
+.rooms a.on{background:rgba(191,145,72,.2);border-left-color:var(--t-ac)}
+.rooms a.on span{color:var(--t-ac);font-weight:600}
 .rooms img{width:76px;height:38px;object-fit:cover}
-.hint{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(8,7,9,.75);padding:9px 16px;
-  font-size:12px;letter-spacing:.06em;z-index:10;transition:opacity .6s;text-align:center;max-width:90%;border:1px solid rgba(237,232,223,.08)}
+.hint{position:fixed;top:66px;left:50%;transform:translateX(-50%);background:rgba(8,7,9,.75);padding:9px 16px;
+  font-size:12px;letter-spacing:.06em;z-index:10;transition:opacity .6s;text-align:center;max-width:calc(100% - 40px);box-sizing:border-box;border:1px solid rgba(237,232,223,.08)}
 .hint.gone{opacity:0;pointer-events:none}
 body.embed .brand{display:none}
+a-scene canvas{touch-action:none}
+/* попередня/наступна кімната (знизу ліворуч) і масштаб + − (праворуч, над кнопкою VR) */
+.tnav,.tzoom{position:fixed;z-index:10;display:flex;align-items:center;gap:6px}
+.tnav{left:14px;bottom:max(14px,env(safe-area-inset-bottom))}
+.tzoom{right:14px;bottom:calc(max(14px,env(safe-area-inset-bottom)) + 76px);flex-direction:column}
+.tnav[hidden]{display:none}
+.ib{width:44px;height:44px;padding:0;display:grid;place-items:center;background:rgba(8,7,9,.62);color:var(--t-tx);
+  border:1px solid rgba(191,145,72,.45);font:400 24px/1 var(--t-M);cursor:pointer;transition:background .2s,color .2s;-webkit-tap-highlight-color:transparent}
+.ib:hover{background:var(--t-ac);color:#140f08}
+.ib:focus-visible,.btn:focus-visible,.rooms a:focus-visible{outline:2px solid var(--t-ac);outline-offset:2px}
+.cnt{min-width:46px;text-align:center;font-size:12px;letter-spacing:.1em;color:var(--t-tx);text-shadow:0 1px 4px rgba(0,0,0,.8)}
+body.vr .tnav,body.vr .tzoom,body.editing .tnav{display:none}
 .edit{position:fixed;left:14px;bottom:14px;z-index:12;background:rgba(16,14,12,.96);border:1px solid var(--t-ac);
   padding:14px;display:grid;gap:8px;max-width:330px;font-size:13px}
 .edit[hidden]{display:none}

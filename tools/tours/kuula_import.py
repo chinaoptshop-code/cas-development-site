@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import build  # resize(), DATA, IMG, pages()
 
 UA = {'User-Agent': 'Mozilla/5.0'}
-ROOMS = [(r'hall|corridor|hallway|entr', 'Хол'), (r'living|lounge|gostin', 'Вітальня'), (r'kitchen', 'Кухня'),
+ROOMS = [(r'hal+way|hall|corridor|entr', 'Хол'), (r'work', 'Кабінет'), (r'banya|sauna', 'Лазня'), (r'technical', 'Технічне'), (r'living|lounge|gostin', 'Вітальня'), (r'kitchen', 'Кухня'),
          (r'dining', 'Їдальня'), (r'master|bed', 'Спальня'), (r'kid|child|nurs', 'Дитяча'), (r'bath|shower', 'Ванна'),
          (r'\bwc\b|toilet|restroom', 'Санвузол'), (r'dress|wardrobe|closet', 'Гардеробна'), (r'office|cabinet|study', 'Кабінет'),
          (r'terr|balcon|loggia', 'Тераса'), (r'stair', 'Сходи'), (r'pool', 'Басейн'), (r'spa|sauna', 'СПА'),
@@ -28,19 +28,21 @@ def get(url):
 
 
 def room_name(desc, i):
+    # без номерів: «Hall 360_01» давало «Хол 36»; кімнати однієї назви нумеруються по порядку в main()
     d = (desc or '').lower()
-    num = re.search(r'(\d{1,2})', d)
     for rx, ua in ROOMS:
         if re.search(rx, d):
-            return f'{ua} {int(num.group(1))}' if num and int(num.group(1)) > 1 else ua
+            return ua
     return f'Точка {i + 1}'
 
 
 def angles(v):
-    # Kuula: y — вгору; напрям «вперед» (центр панорами) — +z, праворуч — +x (перевірено на Edelweiss: стрілки на дверях)
+    # Kuula: y — вгору; центр панорами (yaw 0) — +x, праворуч (yaw +90) — +z.
+    # Перевірено контрольними кадрами 31.10.2026 (Edelweiss, Hoda, квартири 45/48/80): стрілки на дверях і проходах.
+    # Раніше було atan2(x, z) — дзеркально й зі зсувом 90°: yaw_нов = 90 − yaw_стар.
     x, y, z = v['x'], v['y'], v['z']
     r = math.sqrt(x * x + y * y + z * z) or 1
-    return round(math.degrees(math.atan2(x, z)), 1), round(math.degrees(math.asin(max(-1, min(1, y / r)))), 1)
+    return round(math.degrees(math.atan2(z, x)), 1), round(math.degrees(math.asin(max(-1, min(1, y / r)))), 1)
 
 
 def main(cid, slug, title, desc=''):
@@ -63,7 +65,7 @@ def main(cid, slug, title, desc=''):
         n = room_name(p.get('description'), i)
         names[n] = names.get(n, 0) + 1
         if names[n] > 1:
-            n = f'{n} ({names[n]})'
+            n = f'{n} {names[n]}'
         addons = ph.get('addons') or p.get('addons') or '[]'
         addons = json.loads(addons) if isinstance(addons, str) else addons
         hs = []
@@ -71,9 +73,9 @@ def main(cid, slug, title, desc=''):
             act = a.get('action') or {}
             to = ids.get(((act.get('post') or {}).get('id')))
             pos = ((a.get('pos') or {}).get('start'))
-            if act.get('type') == 1 and to and pos:
+            if act.get('type') == 1 and to and pos and to != sid and all(h['to'] != to for h in hs):  # без петель і дублів
                 yaw, pitch = angles(pos)
-                hs.append({'to': to, 'yaw': yaw, 'pitch': max(-60, min(60, pitch))})
+                hs.append({'to': to, 'yaw': yaw, 'pitch': max(-40, min(60, pitch))})  # нижче −40° стрілку не видно
         heading = (ph.get('options') or {}).get('heading') or 0
         scenes.append({'id': sid, 'name': n, 'image': f'/img/tury/{slug}/{sid}.jpg',
                        'yaw': round(math.degrees(heading) - 90, 1) if heading else 0, 'hotspots': hs})

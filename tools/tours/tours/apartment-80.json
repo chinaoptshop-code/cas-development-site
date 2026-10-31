@@ -8,242 +8,237 @@
  "scenes": [
   {
    "id": "s01",
-   "name": "Точка 1",
+   "name": "Хол",
    "image": "/img/tury/apartment-80/s01.jpg",
    "yaw": 179.4,
    "hotspots": [
     {
      "to": "s02",
-     "yaw": -145.3,
+     "yaw": -124.7,
      "pitch": -23.4
     },
     {
      "to": "s03",
-     "yaw": -93.1,
+     "yaw": -176.9,
      "pitch": -16.9
     },
     {
      "to": "s04",
-     "yaw": -97.6,
+     "yaw": -172.4,
      "pitch": -10.0
     },
     {
      "to": "s09",
-     "yaw": -92.0,
+     "yaw": -178.0,
      "pitch": -5.5
     }
    ]
   },
   {
    "id": "s02",
-   "name": "Точка 2",
+   "name": "Ванна",
    "image": "/img/tury/apartment-80/s02.jpg",
    "yaw": 268.8,
    "hotspots": [
     {
      "to": "s01",
-     "yaw": 4.8,
+     "yaw": 85.2,
      "pitch": -17.3
     }
    ]
   },
   {
    "id": "s03",
-   "name": "Точка 3",
+   "name": "Вітальня",
    "image": "/img/tury/apartment-80/s03.jpg",
    "yaw": 221.2,
    "hotspots": [
     {
      "to": "s01",
-     "yaw": 89.3,
+     "yaw": 0.7,
      "pitch": -15.8
     },
     {
-     "to": "s01",
-     "yaw": 96.7,
-     "pitch": -5.9
-    },
-    {
      "to": "s06",
-     "yaw": 146.0,
+     "yaw": -56.0,
      "pitch": -22.5
     },
     {
      "to": "s05",
-     "yaw": -162.4,
+     "yaw": -107.6,
      "pitch": -29.4
     },
     {
      "to": "s08",
-     "yaw": -176.7,
+     "yaw": -93.3,
      "pitch": -4.9
     },
     {
      "to": "s04",
-     "yaw": -103.2,
+     "yaw": -166.8,
      "pitch": -22.7
     },
     {
      "to": "s07",
-     "yaw": -149.8,
+     "yaw": -120.2,
      "pitch": -3.2
     }
    ]
   },
   {
    "id": "s04",
-   "name": "Точка 4",
+   "name": "Вітальня 2",
    "image": "/img/tury/apartment-80/s04.jpg",
    "yaw": 0.0,
    "hotspots": [
     {
      "to": "s03",
-     "yaw": 78.8,
+     "yaw": 11.2,
      "pitch": -25.3
     },
     {
      "to": "s01",
-     "yaw": 83.6,
+     "yaw": 6.4,
      "pitch": -10.2
     },
     {
      "to": "s06",
-     "yaw": 109.6,
+     "yaw": -19.6,
      "pitch": -13.1
     },
     {
      "to": "s09",
-     "yaw": -78.0,
+     "yaw": 168.0,
      "pitch": -28.2
     }
    ]
   },
   {
    "id": "s05",
-   "name": "Точка 5",
+   "name": "Їдальня",
    "image": "/img/tury/apartment-80/s05.jpg",
    "yaw": 0.0,
    "hotspots": [
     {
      "to": "s06",
-     "yaw": 95.1,
+     "yaw": -5.1,
      "pitch": -33.2
     },
     {
      "to": "s08",
-     "yaw": 155.6,
+     "yaw": -65.6,
      "pitch": -17.2
     },
     {
      "to": "s07",
-     "yaw": -100.4,
+     "yaw": -169.6,
      "pitch": -8.4
     },
     {
      "to": "s03",
-     "yaw": 8.8,
+     "yaw": 81.2,
      "pitch": -30.0
     },
     {
      "to": "s01",
-     "yaw": 53.6,
+     "yaw": 36.4,
      "pitch": -16.9
     },
     {
      "to": "s04",
-     "yaw": -49.3,
+     "yaw": 139.3,
      "pitch": -25.2
     }
    ]
   },
   {
    "id": "s06",
-   "name": "Точка 6",
+   "name": "Кухня",
    "image": "/img/tury/apartment-80/s06.jpg",
    "yaw": 140.2,
    "hotspots": [
     {
      "to": "s03",
-     "yaw": -30.2,
+     "yaw": 120.2,
      "pitch": -22.9
     },
     {
      "to": "s04",
-     "yaw": -69.7,
+     "yaw": 159.7,
      "pitch": -17.5
     },
     {
      "to": "s07",
-     "yaw": -97.0,
+     "yaw": -173.0,
      "pitch": -5.1
     },
     {
      "to": "s08",
-     "yaw": -116.5,
+     "yaw": -153.5,
      "pitch": -8.4
     },
     {
      "to": "s01",
-     "yaw": 28.2,
+     "yaw": 61.8,
      "pitch": -19.0
     }
    ]
   },
   {
    "id": "s07",
-   "name": "Точка 7",
+   "name": "Спальня",
    "image": "/img/tury/apartment-80/s07.jpg",
    "yaw": 268.7,
    "hotspots": [
     {
      "to": "s05",
-     "yaw": 88.4,
+     "yaw": 1.6,
      "pitch": -14.2
     },
     {
      "to": "s09",
-     "yaw": -120.5,
+     "yaw": -149.5,
      "pitch": -19.4
     }
    ]
   },
   {
    "id": "s08",
-   "name": "Точка 8",
+   "name": "Гардеробна",
    "image": "/img/tury/apartment-80/s08.jpg",
    "yaw": 0.0,
    "hotspots": [
     {
      "to": "s05",
-     "yaw": -15.3,
+     "yaw": 105.3,
      "pitch": -11.0
     }
    ]
   },
   {
    "id": "s09",
-   "name": "Точка 9",
+   "name": "Тераса",
    "image": "/img/tury/apartment-80/s09.jpg",
    "yaw": 249.6,
    "hotspots": [
     {
      "to": "s07",
-     "yaw": 170.6,
+     "yaw": -80.6,
      "pitch": -13.7
     },
     {
      "to": "s04",
-     "yaw": 87.3,
+     "yaw": 2.7,
      "pitch": -31.4
     },
     {
      "to": "s03",
-     "yaw": 80.5,
+     "yaw": 9.5,
      "pitch": -15.8
     },
     {
      "to": "s01",
-     "yaw": 83.3,
+     "yaw": 6.7,
      "pitch": -8.5
     }
    ]

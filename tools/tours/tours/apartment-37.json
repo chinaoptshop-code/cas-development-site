@@ -8,49 +8,49 @@
  "scenes": [
   {
    "id": "s01",
-   "name": "Хол 36",
+   "name": "Хол",
    "image": "/img/tury/apartment-37/s01.jpg",
    "yaw": 176.8,
    "hotspots": []
   },
   {
    "id": "s02",
-   "name": "Хол 36 (2)",
+   "name": "Хол 2",
    "image": "/img/tury/apartment-37/s02.jpg",
    "yaw": 0.0,
    "hotspots": []
   },
   {
    "id": "s03",
-   "name": "Ванна 36",
+   "name": "Ванна",
    "image": "/img/tury/apartment-37/s03.jpg",
    "yaw": 0.0,
    "hotspots": []
   },
   {
    "id": "s04",
-   "name": "Ванна 36 (2)",
+   "name": "Ванна 2",
    "image": "/img/tury/apartment-37/s04.jpg",
    "yaw": 0.0,
    "hotspots": []
   },
   {
    "id": "s05",
-   "name": "Кухня 36",
+   "name": "Кухня",
    "image": "/img/tury/apartment-37/s05.jpg",
    "yaw": 0.0,
    "hotspots": []
   },
   {
    "id": "s06",
-   "name": "Кухня 36 (2)",
+   "name": "Вітальня",
    "image": "/img/tury/apartment-37/s06.jpg",
    "yaw": 0.0,
    "hotspots": []
   },
   {
    "id": "s07",
-   "name": "Спальня 36",
+   "name": "Спальня",
    "image": "/img/tury/apartment-37/s07.jpg",
    "yaw": 0.0,
    "hotspots": []
