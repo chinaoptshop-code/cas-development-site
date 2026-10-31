@@ -226,7 +226,7 @@ details.o-more>summary::before{content:"+ "}details.o-more[open]>summary::before
 .lq-alt a{display:inline-block;padding:4px 2px;color:var(--ac,#bf9148);font-weight:600;text-decoration:none}.lq-alt a:hover{text-decoration:underline}
 .lq-tr{color:var(--tx,#ede8df);opacity:.78}
 :is(.lq,#of) :is(.o-note,.lq-alt,.lq-tr,.lq-l){font-size:var(--fs-small,.8125rem);line-height:1.5}:is(.lq,#of) :is(.lq-alt,.lq-tr){margin:6px 0 0}.lq .o-note{margin:8px 0 0}.lq :is(.o-note,.lq-alt){color:var(--mu,#8a837c)}
-.lq-slot:empty{display:none}.lq-slot{margin:28px 0 0}.lq-slot .lq{margin:0;max-width:620px;padding:18px 20px;border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:12px;background:rgba(191,145,72,.05)}
+.lq-slot:empty{margin:0;padding:0}.lq-slot{margin:28px 0 0}.lq-slot .lq{margin:0;max-width:620px;padding:18px 20px;border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:12px;background:rgba(191,145,72,.05)}
 .lq-slot .lq-ok{margin:0}.cta .lq-slot{margin:0 0 16px}.cta .lq-slot .lq{padding:0;border:0;background:none}
 .lq-wide{max-width:1180px;padding:0 22px;margin:40px auto 0;box-sizing:border-box}
 /* мікровзаємодія кнопки й стани «надсилаємо…/дякуємо» */

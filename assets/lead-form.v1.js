@@ -3,7 +3,7 @@
       поля #oPhone (обовʼязкове), #oName, #oArea, #oMsg (необовʼязкові), #oErr, #oBtn, блок успіху #oOk.
    2) Швидка заявка в один рядок form.lq (телефон + кнопка; ті самі data-service/data-source/data-form), успіх — .lq-ok після форми.
    3) Місця <div class="lq-slot" data-form="quick-prices|quick-portfolio|quick-project|quick-blog-mid|…"> — компактне
-      «Номер → передзвонимо» (form.lq) будує цей скрипт; data-source = джерело сторінки + «#місце» (для CRM і аналітики).
+      «Номер → передзвонимо» (form.lq) будує цей скрипт — ліниво, за ~1,5 екрана до місця; data-source = джерело сторінки + «#місце» (для CRM і аналітики).
    Розмітку й тексти ставить tools/site/leadform.py; стилі — /assets/site-chrome.v1.css («Легка заявка»);
    сторінки без розмітки leadform.py (кабінет, динамічні) скрипт дооформлює сам.
    Мова повідомлень — з <html lang>. Надсилаємо в /api/leads (CRM + Telegram) і в n8n; успіх — лише після 2xx хоча б від одного;
@@ -84,7 +84,7 @@
           sending: 'جارٍ الإرسال…', again: 'إعادة الإرسال', name: 'الاسم (اختياري)', more: 'إضافة تعليق', send: 'احصل على تقدير',
           note: 'سنتصل بك ونقدّم تقديرًا تقريبيًا للتكلفة. الاستشارة الهاتفية مجانية.', ok: 'شكرًا! سنعاود الاتصال بك قريبًا.',
           fail: 'تعذّر إرسال الطلب. راسلنا أو اتصل على ‎+380 97 866 77 55 (Telegram وWhatsApp وViber).',
-          alt: 'أو راسلنا:', tr: '+150 مشروعًا منذ 2016 · ضمان 36 شهرًا · فرق عمل خاصة بنا · Google\u00a04.8★',
+          alt: 'أو راسلنا:', tr: '+150 مشروعًا منذ 2016 · ضمان 36 شهرًا · فرق عمل خاصة بنا · \u2066Google\u00a04.8★\u2069',
           q: 'اترك رقمك وسنتصل بك', like: 'أريد مثل هذا' }
   };
   var lang = (document.documentElement.lang || 'uk').slice(0, 2).toLowerCase();
@@ -208,7 +208,12 @@
   var hero = document.querySelector('form.lq');
   var ref = form || hero;
   var srcBase = (ref && ref.dataset.source) || (location.host + location.pathname);
-  Array.prototype.forEach.call(document.querySelectorAll('.lq-slot:not([data-built])'), function (slot, i) {
+  var slots = [].slice.call(document.querySelectorAll('.lq-slot:not([data-built])'));
+  // форму будуємо, коли місце за ~1,5 екрана від видимої області: на завантаженні сторінки — нуль роботи (TBT), а вставка
+  // далеко під екраном не зсуває видимий вміст (CLS = 0). Без IntersectionObserver — одразу.
+  function build(slot) {
+    if (slot.hasAttribute('data-built')) return;
+    var i = slots.indexOf(slot);
     slot.setAttribute('data-built', '1');
     var name = slot.getAttribute('data-form') || 'quick-slot', place = name.replace(/^quick-/, '');
     var key = 's_' + place.replace(/-(mid|end)$/, '');
@@ -230,7 +235,17 @@
     if (!end) { f.appendChild(el('p', 'o-note', t.note)); f.appendChild(extras(true)); }
     var ok = el('div', 'lq-ok', t.ok); ok.setAttribute('role', 'status'); ok.setAttribute('tabindex', '-1'); ok.hidden = true;
     slot.appendChild(f); slot.appendChild(ok);
-  });
+    wire(f);
+  }
+  function buildAll() { slots.forEach(build); }
+  if (slots.length) {
+    if ('IntersectionObserver' in window) {
+      var sio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { sio.unobserve(e.target); build(e.target); } });
+      }, { rootMargin: '150% 0px 150% 0px' });
+      slots.forEach(function (s) { sio.observe(s); });
+    } else buildAll();
+  }
 
   /* ---------- 1. повна форма form#of ---------- */
   if (form) {
@@ -293,7 +308,10 @@
   }
 
   /* ---------- 2. швидка заявка в один рядок form.lq ---------- */
-  Array.prototype.forEach.call(document.querySelectorAll('form.lq'), function (f) {
+  Array.prototype.forEach.call(document.querySelectorAll('form.lq'), wire);
+  function wire(f) {
+    if (f.dataset.lfWired) return;
+    f.dataset.lfWired = '1';
     var inp = f.querySelector('input[type="tel"]'), err = f.querySelector('.lq-e'), btn = f.querySelector('button[type="submit"]');
     trap(f);
     mask(inp, function () { return f.dataset.form || 'quick'; });
@@ -319,13 +337,14 @@
         if (err) err.textContent = t.fail;
       });
     });
-  });
+  }
 
   /* ---------- 3. «Залишити номер» (нижня панель) і кнопки-якорі #zayavka / #lead: прокрутка й фокус на телефоні ---------- */
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a.mb-lead, a[href="#zayavka"], a[href="#lead"]');
     if (!a) return;
     var vis = function (x) { return !!x && x.offsetParent !== null && getComputedStyle(x).visibility !== 'hidden'; };
+    if (!document.querySelector('form.lq') && !$('oPhone')) buildAll(); // місця .lq-slot ще не зібрані (далеко від екрана)
     var lq = document.querySelector('form.lq input[type="tel"]');
     var target = a.getAttribute('href') === '#lead' && vis(lq) ? lq : (vis($('oPhone')) ? $('oPhone') : null);
     if (!target && vis(lq)) target = lq;
