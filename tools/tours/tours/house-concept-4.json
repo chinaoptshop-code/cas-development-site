@@ -8,248 +8,228 @@
  "scenes": [
   {
    "id": "s01",
-   "name": "Точка 1",
+   "name": "Хол",
    "image": "/img/tury/house-concept-4/s01.jpg",
    "yaw": 0.0,
    "hotspots": [
     {
      "to": "s02",
-     "yaw": 92.1,
+     "yaw": -2.1,
      "pitch": -39.6
     },
     {
      "to": "s06",
-     "yaw": 91.2,
+     "yaw": -1.2,
      "pitch": -11.6
     }
    ]
   },
   {
    "id": "s02",
-   "name": "Точка 2",
+   "name": "Коридор",
    "image": "/img/tury/house-concept-4/s02.jpg",
    "yaw": 92.2,
    "hotspots": [
     {
      "to": "s01",
-     "yaw": -90.1,
+     "yaw": -179.9,
      "pitch": -35.6
     },
     {
      "to": "s03",
-     "yaw": -15.7,
+     "yaw": 105.7,
      "pitch": -22.4
     },
     {
      "to": "s11",
-     "yaw": -160.9,
+     "yaw": -109.1,
      "pitch": -19.7
     },
     {
      "to": "s10",
-     "yaw": -170.3,
+     "yaw": -99.7,
      "pitch": -12.9
     },
     {
      "to": "s06",
-     "yaw": 92.2,
+     "yaw": -2.2,
      "pitch": -28.3
     },
     {
      "to": "s07",
-     "yaw": 164.7,
+     "yaw": -74.7,
      "pitch": -5.9
     },
     {
      "to": "s08",
-     "yaw": 176.8,
+     "yaw": -86.8,
      "pitch": -6.2
     }
    ]
   },
   {
    "id": "s03",
-   "name": "Точка 3",
+   "name": "Кухня",
    "image": "/img/tury/house-concept-4/s03.jpg",
    "yaw": 0.0,
    "hotspots": [
     {
      "to": "s02",
-     "yaw": 159.3,
+     "yaw": -69.3,
      "pitch": -17.5
     },
     {
      "to": "s04",
-     "yaw": 128.3,
+     "yaw": -38.3,
      "pitch": -21.0
     },
     {
      "to": "s05",
-     "yaw": 89.4,
+     "yaw": 0.6,
      "pitch": -20.0
     },
     {
      "to": "s06",
-     "yaw": 151.7,
+     "yaw": -61.7,
      "pitch": -5.0
     }
    ]
   },
   {
    "id": "s04",
-   "name": "Точка 4",
+   "name": "Вітальня",
    "image": "/img/tury/house-concept-4/s04.jpg",
    "yaw": 0.0,
    "hotspots": [
     {
      "to": "s03",
-     "yaw": -56.1,
+     "yaw": 146.1,
      "pitch": -29.5
     },
     {
      "to": "s05",
-     "yaw": 38.2,
+     "yaw": 51.8,
      "pitch": -30.3
     },
     {
      "to": "s02",
-     "yaw": -170.3,
+     "yaw": -99.7,
      "pitch": -32.4
     },
     {
      "to": "s01",
-     "yaw": -143.1,
+     "yaw": -126.9,
      "pitch": -27.3
-    },
-    {
-     "to": "s11",
-     "yaw": -163.3,
-     "pitch": -5.1
-    },
-    {
-     "to": "s10",
-     "yaw": -169.6,
-     "pitch": -5.1
-    },
-    {
-     "to": "s08",
-     "yaw": -177.8,
-     "pitch": -5.1
-    },
-    {
-     "to": "s06",
-     "yaw": 175.2,
-     "pitch": -4.9
     }
    ]
   },
   {
    "id": "s05",
-   "name": "Точка 5",
+   "name": "Вітальня 2",
    "image": "/img/tury/house-concept-4/s05.jpg",
    "yaw": 208.8,
    "hotspots": [
     {
      "to": "s03",
-     "yaw": -80.5,
+     "yaw": 170.5,
      "pitch": -17.6
     },
     {
      "to": "s04",
-     "yaw": -120.5,
+     "yaw": -149.5,
      "pitch": -35.3
     },
     {
      "to": "s01",
-     "yaw": -128.9,
+     "yaw": -141.1,
      "pitch": -13.9
     },
     {
      "to": "s02",
-     "yaw": -141.3,
+     "yaw": -128.7,
      "pitch": -20.6
     }
    ]
   },
   {
    "id": "s06",
-   "name": "Точка 6",
+   "name": "Спальня",
    "image": "/img/tury/house-concept-4/s06.jpg",
    "yaw": 270.0,
    "hotspots": [
     {
      "to": "s02",
-     "yaw": -87.2,
+     "yaw": 177.2,
      "pitch": -11.2
     },
     {
      "to": "s09",
-     "yaw": -101.6,
+     "yaw": -168.4,
      "pitch": -15.3
     }
    ]
   },
   {
    "id": "s07",
-   "name": "Точка 7",
+   "name": "Спальня 2",
    "image": "/img/tury/house-concept-4/s07.jpg",
    "yaw": 0.0,
    "hotspots": [
     {
      "to": "s02",
-     "yaw": -84.7,
+     "yaw": 174.7,
      "pitch": -8.6
     }
    ]
   },
   {
    "id": "s08",
-   "name": "Точка 8",
+   "name": "Ванна",
    "image": "/img/tury/house-concept-4/s08.jpg",
    "yaw": 0.0,
    "hotspots": [
     {
      "to": "s02",
-     "yaw": -3.0,
+     "yaw": 93.0,
      "pitch": -13.1
     }
    ]
   },
   {
    "id": "s09",
-   "name": "Точка 9",
+   "name": "Ванна 2",
    "image": "/img/tury/house-concept-4/s09.jpg",
    "yaw": 0.0,
    "hotspots": [
     {
      "to": "s06",
-     "yaw": 3.5,
+     "yaw": 86.5,
      "pitch": -21.6
     }
    ]
   },
   {
    "id": "s10",
-   "name": "Точка 10",
+   "name": "Дитяча",
    "image": "/img/tury/house-concept-4/s10.jpg",
    "yaw": 0.0,
    "hotspots": [
     {
      "to": "s02",
-     "yaw": 74.4,
+     "yaw": 15.6,
      "pitch": -10.8
     }
    ]
   },
   {
    "id": "s11",
-   "name": "Точка 11",
+   "name": "Гардеробна",
    "image": "/img/tury/house-concept-4/s11.jpg",
    "yaw": 0.0,
    "hotspots": [
     {
      "to": "s02",
-     "yaw": 98.4,
+     "yaw": -8.4,
      "pitch": -12.8
     }
    ]

@@ -29,7 +29,7 @@
   },
   {
    "id": "s05",
-   "name": "Хол 2",
+   "name": "Хол, 2 поверх",
    "image": "/img/tury/triangle-house/s05.jpg",
    "yaw": 0.0,
    "hotspots": []
@@ -43,7 +43,7 @@
   },
   {
    "id": "s07",
-   "name": "Хол (2)",
+   "name": "Хол 2",
    "image": "/img/tury/triangle-house/s07.jpg",
    "yaw": 0.0,
    "hotspots": []

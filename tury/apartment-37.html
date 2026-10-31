@@ -12,7 +12,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://cas-develop.com/"}, {"@type": "ListItem", "position": 2, "name": "3D-тури", "item": "https://cas-develop.com/tury"}, {"@type": "ListItem", "position": 3, "name": "Квартира 37 м² — дизайн-проєкт", "item": "https://cas-develop.com/tury/apartment-37"}]}</script>
 <script src="/assets/tours/aframe.min.js"></script>
 </head><body>
-<script type="application/json" id="tour-data">{"slug": "apartment-37", "title": "Квартира 37 м² — дизайн-проєкт", "description": "360-візуалізації дизайн-проєкту квартири 37 м².", "hidden": false, "source": "kuula:7cgv8", "start": "s01", "scenes": [{"id": "s01", "name": "Хол 36", "image": "/img/tury/apartment-37/s01.jpg", "yaw": 176.8, "hotspots": []}, {"id": "s02", "name": "Хол 36 (2)", "image": "/img/tury/apartment-37/s02.jpg", "yaw": 0.0, "hotspots": []}, {"id": "s03", "name": "Ванна 36", "image": "/img/tury/apartment-37/s03.jpg", "yaw": 0.0, "hotspots": []}, {"id": "s04", "name": "Ванна 36 (2)", "image": "/img/tury/apartment-37/s04.jpg", "yaw": 0.0, "hotspots": []}, {"id": "s05", "name": "Кухня 36", "image": "/img/tury/apartment-37/s05.jpg", "yaw": 0.0, "hotspots": []}, {"id": "s06", "name": "Кухня 36 (2)", "image": "/img/tury/apartment-37/s06.jpg", "yaw": 0.0, "hotspots": []}, {"id": "s07", "name": "Спальня 36", "image": "/img/tury/apartment-37/s07.jpg", "yaw": 0.0, "hotspots": []}], "kind": "Дизайн-проєкт · 360-візуалізація", "order": 9}</script>
+<script type="application/json" id="tour-data">{"slug": "apartment-37", "title": "Квартира 37 м² — дизайн-проєкт", "description": "360-візуалізації дизайн-проєкту квартири 37 м².", "hidden": false, "source": "kuula:7cgv8", "start": "s01", "scenes": [{"id": "s01", "name": "Хол", "image": "/img/tury/apartment-37/s01.jpg", "yaw": 176.8, "hotspots": []}, {"id": "s02", "name": "Хол 2", "image": "/img/tury/apartment-37/s02.jpg", "yaw": 0.0, "hotspots": []}, {"id": "s03", "name": "Ванна", "image": "/img/tury/apartment-37/s03.jpg", "yaw": 0.0, "hotspots": []}, {"id": "s04", "name": "Ванна 2", "image": "/img/tury/apartment-37/s04.jpg", "yaw": 0.0, "hotspots": []}, {"id": "s05", "name": "Кухня", "image": "/img/tury/apartment-37/s05.jpg", "yaw": 0.0, "hotspots": []}, {"id": "s06", "name": "Вітальня", "image": "/img/tury/apartment-37/s06.jpg", "yaw": 0.0, "hotspots": []}, {"id": "s07", "name": "Спальня", "image": "/img/tury/apartment-37/s07.jpg", "yaw": 0.0, "hotspots": []}], "kind": "Дизайн-проєкт · 360-візуалізація", "order": 9}</script>
 <a-scene id="scene" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .spot, .sky-hit" vr-mode-ui="enabled: true" loading-screen="dotsColor:#c8a96a; backgroundColor:#111" renderer="colorManagement:true" xr-mode-ui="enabled: true">
   <a-assets timeout="20000"></a-assets>
   <a-sky id="sky" rotation="0 -90 0"></a-sky>
@@ -28,10 +28,12 @@
 <div class="ui">
   <a class="brand" href="/tury" target="_top">CAS · 3D</a>
   <h1 class="title" id="title" style="margin:0;font-weight:inherit">Квартира 37 м² — дизайн-проєкт</h1>
-  <button class="btn" id="menuBtn" aria-label="Кімнати">☰ Кімнати</button>
+  <button class="btn" id="menuBtn" aria-label="Кімнати" aria-controls="rooms" aria-expanded="false">☰ Кімнати</button>
 </div>
-<nav class="rooms" id="rooms" hidden></nav>
-<div class="hint" id="hint">Тягніть, щоб роздивитись · стрілки — перехід · VR — окуляри</div>
+<nav class="rooms" id="rooms" aria-label="Кімнати туру" hidden></nav>
+<div class="tnav" id="nav"><button class="ib" id="prevBtn" aria-label="Попередня кімната">‹</button><span class="cnt" id="cnt" aria-live="polite"></span><button class="ib" id="nextBtn" aria-label="Наступна кімната">›</button></div>
+<div class="tzoom" role="group" aria-label="Масштаб"><button class="ib" id="zoomIn" aria-label="Наблизити">+</button><button class="ib" id="zoomOut" aria-label="Віддалити">−</button></div>
+<div class="hint" id="hint">Тягніть, щоб роздивитись · коліщатко або два пальці — масштаб · стрілки — перехід</div>
 <div class="edit" id="edit" hidden></div>
 <script src="/assets/tours/tour.v1.js"></script>
 </body></html>
