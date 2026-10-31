@@ -1003,5 +1003,17 @@
   ],
   "pair": "henpidriadnyk-chy-okremi-bryhady",
   "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "osvitlennia-ofisu-robochi-zony",
+  "title": "Освітлення офісу: трекові системи, розсіяне світло й робочі зони",
+  "keyword": "освітлення офісу",
+  "service": [
+   "/dyzain-ofisu-kyiv",
+   "Дизайн офісу"
+  ],
+  "pair": "osveshchenie-ofisa-rabochie-zony",
+  "status": "published"
  }
 ]
