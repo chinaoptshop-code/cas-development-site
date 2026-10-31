@@ -11,6 +11,8 @@
     Сам переглядач — tools/tours (не чіпаємо). Порожній slug — секції немає.
   • videos → блок «Відео з обʼєктів» (lite-embed: постер i.ytimg.com, iframe youtube-nocookie.com лише по кліку) на video_pages;
     extra[сторінка] = {"videos": [...]} — на окремих сторінках, де назва явно збігається.
+    Відео з "uploaded" (дата з публічного RSS youtube.com/feeds/videos.xml?channel_id=…) дістають JSON-LD VideoObject
+    усередині блоку; без дати VideoObject не ставимо (Google вимагає uploadDate, вигадувати не можна).
   • youtube_channel → "sameAs" JSON-LD Organization (усі сторінки, де він є) і рядок на /contact; іконку у футері ставить chrome.py.
 Блоки — між <!--tour360-->, <!--yt-->, <!--soc--> і відповідними <!--/…-->. CSP (_headers): frame-src 'self'
 https://www.youtube-nocookie.com, img-src https: (i.ytimg.com).
@@ -115,7 +117,20 @@ def video_block(videos, lang, chan):
     return (f'\n<!--yt--><section id="video" style="{SEC}"><div style="max-width:1080px;margin:0 auto">\n'
             f'  <h2 style="{H2}">{e(t["vid"])}</h2><p style="{LEAD}">{e(t["vid_p"])}</p>\n'
             f'  <div class="vgrid">{"".join(items)}</div>{more}\n'
-            f'</div></section>{ASSETS}<!--/yt-->')
+            f'</div></section>{video_ld(videos, lang)}{ASSETS}<!--/yt-->')
+
+
+def video_ld(videos, lang):
+    """JSON-LD VideoObject — лише для відео з датою публікації "uploaded" (з публічного RSS каналу), без вигаданих дат."""
+    t = T[lang]
+    g = [{'@type': 'VideoObject', 'name': v.get('title') or 'CAS Development', 'description': f'{v.get("title") or "CAS Development"}. {t["vid_p"]}',
+          'thumbnailUrl': f'https://i.ytimg.com/vi/{v["id"]}/hqdefault.jpg', 'uploadDate': v['uploaded'],
+          'embedUrl': f'https://www.youtube.com/embed/{v["id"]}', 'url': f'https://www.youtube.com/watch?v={v["id"]}'}
+         for v in videos if re.fullmatch(r'\d{4}-\d\d-\d\dT[\d:]+(?:Z|[+-]\d\d:\d\d)', v.get('uploaded') or '')]
+    if not g:
+        return ''
+    d = json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False).replace('</', '<\\/')
+    return f'<script type="application/ld+json">{d}</script>'
 
 
 def insert(s, blk, marks):
