@@ -1,18 +1,18 @@
 /* CAS — «Будинок з нуля» / «Ремонт з нуля»: збірка ізометричної SVG-сцени за прокруткою. UI-kit: /styleguide/#build-anim.
-   Розмітку (section.ba з текстом етапів, слот заявки) ставить tools/site/buildanim.py; цей файл:
-   1) коли блок за ~1,5 екрана — вантажить CSS (data-css), малює сцену кодом (без картинок і бібліотек) і вмикає режим «закріплена сцена + доріжка прокрутки»;
+   Розмітку (section.bz з текстом етапів, слот заявки) ставить tools/site/buildanim.py; цей файл:
+   1) коли блок за ~3 екрани — вантажить CSS (data-css), малює сцену кодом (без картинок і бібліотек) і вмикає режим «закріплена сцена + доріжка прокрутки»;
    2) прокрутка → прогрес 0…N етапів; шари сцени зʼявляються плавно (opacity/translate, згладжування rAF), підпис і степер — за активним етапом;
    3) prefers-reduced-motion — без доріжки й руху: статичні кадри, перемикання кнопками степера;
    4) клавіатура: «Пропустити анімацію», кнопки етапів (Tab, стрілки ←/→, Home/End). CTA — спільний /assets/lead-form.v1.js (.lq-slot → data-source «#build-anim»).
    Слухач прокрутки працює лише поки блок у кадрі. На LCP не впливає: усе — нижче першого екрана й після завантаження. */
 (function () {
-  var d = document, W = window, S = d.currentScript;
+  var d = document, W = window;
   if (W.__casBA) return; W.__casBA = 1;
-  var secs = [].slice.call(d.querySelectorAll('section.ba[data-ba]'));
+  var secs = [].slice.call(d.querySelectorAll('section.bz[data-bz]'));
   if (!secs.length) return;
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var lang = (d.documentElement.lang || 'uk').slice(0, 2);
-  // описи етапів для сторінок, де через бюджет HTML у розмітці лише назви (data-ba-d); той самий текст, що в tools/site/buildanim.py
+  // описи етапів для сторінок, де через бюджет HTML у розмітці лише назви (data-bz-d); той самий текст, що в tools/site/buildanim.py
   var D = {
     uk: { house: ['Геодезист Микола знімає рельєф і виносить осі будинку.', 'Прораб і власна бригада армують і бетонують основу.', 'Газоблок, цегла, каркас чи брус — за обраною технологією.', 'Бригада робить перекриття між поверхами й над другим.', 'Крокви, утеплення й покрівля; хід робіт знімаємо з дрона.', 'Ставимо вікна й вхідні двері — коробка закрита від погоди.', 'Утеплення й оздоблення фасаду, водостоки, відмостка.', 'Інженерія, оздоблення, меблі від наших меблярів — і світло у вікнах.'],
           flat: ['Владислав робить 3D-замір, прораб складає план робіт.', 'Зводимо стіни за планувальним рішенням дизайн-проєкту.', 'Розводимо кабелі й труби до кожної точки за проєктом.', 'Вирівнюємо підлогу й стіни під чистове оздоблення.', 'Плитка, фарба, підлога — за матеріалами з проєкту.', 'Ставимо двері, вікна, світильники, розетки й вимикачі.', 'Меблярі Сергій, Андрій і Олег монтують кухню й шафи.', 'Прибирання, перевірка, ключі — і гарантія 36 місяців.'] },
@@ -33,7 +33,7 @@
     var o = '';
     function p(id, w, h, fills, d, st) {
       ['l', 'r'].forEach(function (f, i) {
-        o += '<pattern id="ba-' + id + '-' + f + '" width="' + w + '" height="' + h + '" patternUnits="userSpaceOnUse" patternTransform="skewY(' + (f === 'l' ? 30 : -30) + ')">' +
+        o += '<pattern id="bz-' + id + '-' + f + '" width="' + w + '" height="' + h + '" patternUnits="userSpaceOnUse" patternTransform="skewY(' + (f === 'l' ? 30 : -30) + ')">' +
           '<rect width="' + w + '" height="' + h + '" fill="' + fills[i] + '"/><path d="' + d + '" stroke="' + st + '" stroke-width=".6" fill="none"/></pattern>';
       });
     }
@@ -210,34 +210,34 @@
   function el(tag, cls, html) { var e = d.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
 
   function enhance(sec) {
-    if (sec.hasAttribute('data-ba-on')) return;
-    sec.setAttribute('data-ba-on', '');
-    var scene = sec.getAttribute('data-ba') === 'flat' ? 'flat' : 'house';
-    var ol = sec.querySelector('ol.ba-st'); if (!ol) return;
+    if (sec.hasAttribute('data-bz-on')) return;
+    sec.setAttribute('data-bz-on', '');
+    var scene = sec.getAttribute('data-bz') === 'flat' ? 'flat' : 'house';
+    var ol = sec.querySelector('ol.bz-st'); if (!ol) return;
     var lis = [].slice.call(ol.children), n = lis.length;
     var desc = (D[lang] || D.uk)[scene];
     lis.forEach(function (li, i) {
       li.classList.remove('mo-rv', 'mo-in'); li.style.removeProperty('--mo-d');
       if (!li.querySelector('span') && desc[i]) { var sp = el('span'); sp.textContent = desc[i]; (li.querySelector('div') || li).appendChild(sp); }
-      li.id = li.id || ('ba-s' + i);
+      li.id = li.id || ('bz-s' + i);
     });
     ol.classList.remove('steps');
     bb = [1e9, 1e9, -1e9, -1e9];
     var sc = scene === 'flat' ? flat() : house();
     var body = sc.c.map(function (ch) {
       var m = ch[2] || '';
-      return ch[0] < 0 ? ch[1] : '<g class="ba-l" data-l="' + ch[0] + '"' + (m ? ' data-m="' + m + '"' : '') + '>' + ch[1] + '</g>';
+      return ch[0] < 0 ? ch[1] : '<g class="bz-l" data-l="' + ch[0] + '"' + (m ? ' data-m="' + m + '"' : '') + '>' + ch[1] + '</g>';
     }).join('');
     sc.dyn(1); // габарити з урахуванням повної висоти стін
     var pad = 14, vb = [bb[0] - pad, bb[1] - pad - 24, bb[2] - bb[0] + pad * 2, bb[3] - bb[1] + pad * 2 + 24].map(function (v) { return v.toFixed(0); }).join(' ');
     var h2 = sec.querySelector('h2');
-    var fig = el('div', 'ba-fig');
+    var fig = el('div', 'bz-fig');
     fig.innerHTML = '<svg viewBox="' + vb + '" role="img" aria-label="' + (t.fig + (h2 ? h2.textContent : '')).replace(/"/g, '') + '" focusable="false" preserveAspectRatio="xMidYMid meet">' +
-      '<defs><linearGradient id="ba-gw-' + scene + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2a8"/><stop offset="1" stop-color="#e2a24f"/></linearGradient>' +
-      '<radialGradient id="ba-rg-' + scene + '"><stop offset="0" stop-color="#f6c978" stop-opacity=".55"/><stop offset="1" stop-color="#f6c978" stop-opacity="0"/></radialGradient>' + (scene === 'house' ? pats() : '') + '</defs>' + body + '</svg>';
+      '<defs><linearGradient id="bz-gw-' + scene + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2a8"/><stop offset="1" stop-color="#e2a24f"/></linearGradient>' +
+      '<radialGradient id="bz-rg-' + scene + '"><stop offset="0" stop-color="#f6c978" stop-opacity=".55"/><stop offset="1" stop-color="#f6c978" stop-opacity="0"/></radialGradient>' + (scene === 'house' ? pats() : '') + '</defs>' + body + '</svg>';
     var svg = fig.firstChild;
     // конфігуратор матеріалу стін (лише будинок): газоблок / цегла / каркас / брус — стіни й фасад змінюють вигляд
-    var mats = null, mat = sec.getAttribute('data-ba-m');
+    var mats = null, mat = sec.getAttribute('data-bz-m');
     function setMat(m, user) {
       mat = MATS.indexOf(m) < 0 ? 'block' : m;
       MATS.forEach(function (x) { svg.classList.toggle('m-' + x, x === mat); });
@@ -245,25 +245,25 @@
       if (user) cl('build_anim_mat', mat);
     }
     if (scene === 'house') {
-      mats = el('div', 'ba-mats'); mats.setAttribute('role', 'group'); mats.setAttribute('aria-label', t.mat);
+      mats = el('div', 'bz-mats'); mats.setAttribute('role', 'group'); mats.setAttribute('aria-label', t.mat);
       mats.innerHTML = '<span aria-hidden="true">' + t.mat + ':</span>' + MATS.map(function (m, i) { return '<button type="button" data-m="' + m + '" aria-pressed="false">' + t.m[i] + '</button>'; }).join('');
       mats.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('button[data-m]'); if (b) setMat(b.getAttribute('data-m'), 1); });
     }
     setMat(mat);
-    svg.style.setProperty('--gw', 'url(#ba-gw-' + scene + ')'); svg.style.setProperty('--rg', 'url(#ba-rg-' + scene + ')');
-    var layers = [].map.call(svg.querySelectorAll('g.ba-l'), function (g) {
+    svg.style.setProperty('--gw', 'url(#bz-gw-' + scene + ')'); svg.style.setProperty('--rg', 'url(#bz-rg-' + scene + ')');
+    var layers = [].map.call(svg.querySelectorAll('g.bz-l'), function (g) {
       var m = g.getAttribute('data-m') || '';
       return { g: g, i: +g.getAttribute('data-l'), m: m.charAt(0), x: m.charAt(0) === 'x' ? +m.slice(1) : -1, k: -1 };
     });
     var ghost = svg.querySelector('.ghost');
 
-    var run = el('div', 'ba-run'), pin = el('div', 'ba-pin'), side = el('div', 'ba-side');
-    var skip = el('a', 'ba-skip'); skip.href = '#ba-cta'; skip.textContent = t.skip;
-    var ct = el('p', 'ba-ct'); ct.setAttribute('aria-hidden', 'true');
-    var bar = el('div', 'ba-bar', '<i></i>'), bi = bar.firstChild;
-    var nav = el('div', 'ba-nav'); nav.setAttribute('role', 'group'); nav.setAttribute('aria-label', t.nav);
+    var run = el('div', 'bz-run'), pin = el('div', 'bz-pin'), side = el('div', 'bz-side');
+    var skip = el('a', 'bz-skip'); skip.href = '#bz-cta'; skip.textContent = t.skip;
+    var ct = el('p', 'bz-ct'); ct.setAttribute('aria-hidden', 'true');
+    var bar = el('div', 'bz-bar', '<i></i>'), bi = bar.firstChild;
+    var nav = el('div', 'bz-nav'); nav.setAttribute('role', 'group'); nav.setAttribute('aria-label', t.nav);
     var btns = lis.map(function (li, i) {
-      var b = el('button', 'ba-b'); b.type = 'button';
+      var b = el('button', 'bz-b'); b.type = 'button';
       b.innerHTML = '<span>' + (i + 1) + '</span>';
       b.setAttribute('aria-label', t.st + ' ' + (i + 1) + ': ' + (li.querySelector('b') || li).textContent);
       b.setAttribute('aria-controls', li.id);
@@ -277,8 +277,8 @@
       if (j < 0 || j >= n) return;
       e.preventDefault(); btns[j].focus(); go(j);
     });
-    var cta = sec.querySelector('.ba-cta'), ch3 = cta && cta.querySelector('h3');
-    var goA = el('a', 'ba-go'); goA.href = '#ba-cta'; goA.textContent = (ch3 ? ch3.textContent : '') + ' →'; goA.tabIndex = -1;
+    var cta = sec.querySelector('.bz-cta'), ch3 = cta && cta.querySelector('h3');
+    var goA = el('a', 'bz-go'); goA.href = '#bz-cta'; goA.textContent = (ch3 ? ch3.textContent : '') + ' →'; goA.tabIndex = -1;
     goA.addEventListener('click', function () { // після переходу до якоря — фокус на телефон у слоті заявки
       cl('build_anim_cta');
       setTimeout(function () { var i = cta.querySelector('input[type="tel"]'); if (i) try { i.focus({ preventScroll: true }); } catch (e) { i.focus(); } }, rm ? 0 : 700);
@@ -288,7 +288,7 @@
     run.appendChild(pin);
     cta.parentNode.insertBefore(run, cta);
     run.style.setProperty('--n', n);
-    sec.classList.add('ba-on');
+    sec.classList.add('bz-on');
 
     var dynG = svg.querySelector('g.walls'), dynK = -1;
     var cur = 0, act = -1, raf = 0, top0 = 0, live = false, rm = !!(MQ && MQ.matches), man = 0;
@@ -306,8 +306,8 @@
       if (ghost) ghost.style.opacity = (0.55 * (1 - clamp(s / n))).toFixed(3);
       svg.classList.toggle('fin', s >= sc.finAt + 0.7);
       var end = s >= n - 0.35;
-      if (end !== sec.classList.contains('ba-end')) {
-        sec.classList.toggle('ba-end', end); goA.tabIndex = end || rm ? 0 : -1;
+      if (end !== sec.classList.contains('bz-end')) {
+        sec.classList.toggle('bz-end', end); goA.tabIndex = end || rm ? 0 : -1;
         if (end && !rm && !sec.__baSeen) { sec.__baSeen = 1; cl('build_anim_end'); }
       }
       bi.style.transform = 'scaleX(' + clamp(s / n).toFixed(4) + ')';
@@ -342,7 +342,7 @@
     }
     function mode() {
       rm = !!(MQ && MQ.matches);
-      sec.classList.toggle('ba-rm', rm);
+      sec.classList.toggle('bz-rm', rm);
       if (rm) { if (!man) man = n - 0.001; cur = man; render(cur); } else { cur = target(); render(cur); }
       measure();
     }
@@ -371,12 +371,13 @@
     mode();
   }
 
-  /* ---------- ліниве завантаження: CSS → сцена, за ~1,5 екрана до блоку ---------- */
+  /* ---------- ліниве завантаження: CSS → сцена, за ~3 екрани до блоку ---------- */
   var cssP = null;
   function css() {
     if (!cssP) cssP = new Promise(function (res) {
-      var href = (S && S.getAttribute('data-css')) || '/assets/build-anim.v1.css';
-      if (d.querySelector('link[href="' + href + '"]')) return res();
+      var s0 = d.querySelector('section.bz[data-css]'), href = (s0 && s0.getAttribute('data-css')) || '/assets/build-anim.v1.css';
+      var l0 = d.querySelector('link[href="' + href + '"]');
+      if (l0) { if (l0.sheet) return res(); l0.addEventListener('load', res); l0.addEventListener('error', res); return; }
       var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = href;
       l.onload = l.onerror = function () { res(); };
       d.head.appendChild(l);
@@ -393,10 +394,14 @@
       o.observe(sec);
     });
   }
-  if ('IntersectionObserver' in W) {
+  // нуль роботи на завантаженні (TBT/LCP): спостерігач вмикається лише після першої прокрутки сторінки
+  function arm() {
+    W.removeEventListener('scroll', arm);
+    if (!('IntersectionObserver' in W)) return secs.forEach(start);
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); start(e.target); } });
-    }, { rootMargin: '150% 0px 150% 0px' });
+    }, { rootMargin: '300% 0px 300% 0px' });
     secs.forEach(function (s) { io.observe(s); });
-  } else secs.forEach(start);
+  }
+  if ((W.pageYOffset || 0) > 0 || W.__casBAs) arm(); else W.addEventListener('scroll', arm, { passive: true });
 })();

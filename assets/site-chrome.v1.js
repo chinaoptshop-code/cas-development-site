@@ -399,6 +399,20 @@
   W.addEventListener('beforeprint', function () { list.forEach(function (s) { s.host.classList.remove('cmp-cut'); }); });
 })();
 
+/* «Будинок з нуля» (section.bz[data-js]; префікс bz — .ba зайнятий слайдером «до/після»): скрипт сцени вантажимо лише після першої прокрутки сторінки (0 байтів на завантаженні) */
+(function () {
+  var W = window, s = document.querySelector('section.bz[data-js]');
+  if (!s) return;
+  function go() {
+    W.removeEventListener('scroll', go);
+    W.__casBAs = 1;
+    var j = document.createElement('script'); j.src = s.getAttribute('data-js'); j.async = true; document.head.appendChild(j);
+    var c = s.getAttribute('data-css'); // стилі — одразу разом зі скриптом, щоб сцена була готова задовго до блоку
+    if (c) { var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = c; document.head.appendChild(l); }
+  }
+  if ((W.pageYOffset || 0) > 0) go(); else W.addEventListener('scroll', go, { passive: true });
+})();
+
 /* Портфоліо: тип переходу між сторінками (cross-document View Transitions, Chrome 125+; інші браузери — звичайний перехід).
    /portfolio → /proekty/<slug> — «pf-in», назад — «pf-out», проєкт → проєкт — «pf-next». Анімації — у site-chrome.v1.css. */
 (function () {

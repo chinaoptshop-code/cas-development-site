@@ -4,12 +4,12 @@
   python3 tools/site/buildanim.py            # поставити/оновити блок на сторінках PAGES (ідемпотентно)
   python3 tools/site/buildanim.py --check    # лише перевірка (код 1, якщо щось не оновлено)
 
-Блок — між <!--ba--> і <!--/ba-->: <section class="ba" id="build-anim"> зі справжнім текстом етапів (<ol class="steps">,
+Блок — між <!--ba--> і <!--/ba-->: <section class="bz" id="build-anim"> зі справжнім текстом етапів (<ol class="steps">,
 SEO й читачі екрана; без JS це звичайний список «Етапи» з UI-kit) + слот швидкої заявки .lq-slot data-form="quick-build-anim"
-(спільний /assets/lead-form.v1.js → data-source «<сторінка>#build-anim») + <script src="/assets/build-anim.v1.js" defer>.
-Скрипт ліниво (за ~1,5 екрана до блоку) вантажить /assets/build-anim.v1.css, малює ізометричну SVG-сцену кодом
+(спільний /assets/lead-form.v1.js → data-source «<сторінка>#build-anim») ; сам скрипт (data-js) вантажить /assets/site-chrome.v1.js лише після першої прокрутки — на завантаженні 0 байтів і 0 мс.
+Скрипт (і CSS) вантажить site-chrome.v1.js після першої прокрутки; за ~3 екрани до блоку скрипт малює ізометричну SVG-сцену кодом
 (без картинок і бібліотек) і веде її за прокруткою; prefers-reduced-motion — статичні кадри зі степером.
-Сцени: house — будинок (8 етапів), flat — ремонт квартири (8 етапів); data-ba-c — компактна версія (головна).
+Сцени: house — будинок (8 етапів), flat — ремонт квартири (8 етапів); data-bz-c — компактна версія (головна).
 
 Бюджет лендингу 64 КБ (tools/ui/ui.py): якщо повний текст не вміщується із запасом, на сторінку йдуть лише назви етапів,
 а описи підставляє скрипт (той самий текст — словник D у build-anim.v1.js; тримати синхронно з T нижче).
@@ -150,17 +150,17 @@ def block(lang, scene, compact, tier=0, mat=''):
     t = T[lang][scene]
     li = ''.join((f'<li><div><b>{e(a)}</b><span>{e(b)}</span></div></li>' if tier == 0 else f'<li><b>{e(a)}</b></li>') for a, b in t['st'])
     more = f' <a href="{BUILD[lang]}">{e(t["more"])} →</a>' if compact and t['more'] else ''
-    c = ' data-ba-c' if compact else ''
-    f = (' data-ba-d' if tier else '') + (f' data-ba-m="{mat}"' if mat else '')  # data-ba-d: описи підставляє скрипт
-    lead = f'<p class="ba-p">{e(t["p"])}{more}</p>' if tier < 2 else ''
+    c = ' data-bz-c' if compact else ''
+    f = (' data-bz-d' if tier else '') + (f' data-bz-m="{mat}"' if mat else '')  # data-bz-d: описи підставляє скрипт
+    lead = f'<p class="bz-p">{e(t["p"])}{more}</p>' if tier < 2 else ''
     svc = f' data-service="{e(t["more"])}"' if compact and t['more'] else ''  # головна: заявка — про будинок, а не «Консультація (головна)»
-    team = f'<p class="ba-team">{e(t["team"])} <a href="{ABOUT[lang]}">{e(t["about"])}</a></p>' if tier < 2 else ''
-    return (f'\n<!--ba--><section class="ba" id="build-anim" data-ba="{scene}"{c}{f} aria-labelledby="ba-h"><div class="w">'
-            f'<h2 id="ba-h">{e(t["hc"] if compact else t["h"])}</h2>{lead}'
-            f'<ol class="steps ba-st">{li}</ol>'
-            f'<div class="ba-cta" id="ba-cta"><h3>{e(t["cta"])}</h3>'
+    team = f'<p class="bz-team">{e(t["team"])} <a href="{ABOUT[lang]}">{e(t["about"])}</a></p>' if tier < 2 else ''
+    return (f'\n<!--ba--><section class="bz" id="build-anim" data-bz="{scene}"{c}{f} aria-labelledby="bz-h" data-js="/assets/build-anim.v1.js" data-css="/assets/build-anim.v1.css"><div class="w">'
+            f'<h2 id="bz-h">{e(t["hc"] if compact else t["h"])}</h2>{lead}'
+            f'<ol class="steps bz-st">{li}</ol>'
+            f'<div class="bz-cta" id="bz-cta"><h3>{e(t["cta"])}</h3>'
             f'<div class="lq-slot" data-form="quick-build-anim"{svc}></div>{team}</div>'
-            f'</div></section><script src="/assets/build-anim.v1.js" data-css="/assets/build-anim.v1.css" defer></script><!--/ba-->')
+            f'</div></section><!--/ba-->')
 
 
 # де ставимо: перед «Як працюємо», інакше перед «Гарантіями», квізом чи формою; на головній — перед «Наші проєкти»
@@ -213,7 +213,7 @@ def main():
         print('\n'.join(bad) if bad else 'Будинок з нуля: OK')
         sys.exit(1 if bad else 0)
     got = {r: open(os.path.join(ROOT, r), encoding='utf-8').read() for r in PAGES if os.path.exists(os.path.join(ROOT, r))}
-    short = [r for r, s in got.items() if 'data-ba-d' in s]
+    short = [r for r, s in got.items() if 'data-bz-d' in s]
     none = [r for r, s in got.items() if '<!--ba-->' not in s]
     print(f'Будинок з нуля: оновлено {len(bad)} з {len(PAGES)} сторінок'
           + (f'; коротко (бюджет HTML): {", ".join(short)}' if short else '') + (f'; без блоку (бюджет): {", ".join(none)}' if none else ''))
