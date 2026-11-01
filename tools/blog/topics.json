@@ -862,7 +862,7 @@
    "/rekonstruktsiia-budynku-kyiv",
    "Реконструкція будинку"
   ],
-  "status": "todo",
+  "status": "published",
   "note": "SEO-аудит 25.10.2026: комерційний запит, сегмент від $5 000"
  },
  {
@@ -1055,6 +1055,215 @@
    "Дизайн офісу"
   ],
   "pair": "akustika-open-space-bez-glukhikh-peregorodok",
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "brif-dlya-dizaynera-interera",
+  "title": "Бриф для дизайнера интерьера: что подготовить к первой встрече",
+  "keyword": "бриф для дизайнера интерьера",
+  "service": [
+   "/ru/dizayner-interera-kiev",
+   "Дизайнер интерьера"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "bryf-dlia-dyzainera-interieru",
+  "title": "Бриф для дизайнера інтерʼєру: що підготувати до першої зустрічі",
+  "keyword": "бриф для дизайнера інтерʼєру",
+  "service": [
+   "/dyzainer-interieru-kyiv",
+   "Дизайнер інтерʼєру"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "kapitalnyi-chy-kosmetychnyi-remont-shcho-obraty",
+  "title": "Капітальний чи косметичний ремонт: що обрати для вашої квартири",
+  "keyword": "капітальний чи косметичний ремонт",
+  "service": [
+   "/kapitalnyi-remont-kvartyry-kyiv",
+   "Капітальний ремонт квартири"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "kapitalnyy-ili-kosmeticheskiy-remont-chto-vybrat",
+  "title": "Капитальный или косметический ремонт: что выбрать для вашей квартиры",
+  "keyword": "капитальный или косметический ремонт",
+  "service": [
+   "/ru/kapitalnyy-remont-kvartiry-kiev",
+   "Капитальный ремонт квартиры"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "karkas-gazoblok-ili-brus-iz-chego-stroit-dom",
+  "title": "Каркас, газоблок или брус: из чего строить дом в 2026 году",
+  "keyword": "из чего строить дом: каркас, газоблок или брус",
+  "service": [
+   "/ru/stroitelstvo-domov-kiev",
+   "Строительство домов"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "karkas-hazoblok-chy-brus-z-choho-buduvaty-budynok",
+  "title": "Каркас, газоблок чи брус: з чого будувати будинок у 2026 році",
+  "keyword": "з чого будувати будинок: каркас, газоблок чи брус",
+  "service": [
+   "/budivnytstvo-budynkiv-kyiv",
+   "Будівництво будинків"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "komplektatsiia-interieru-samostiino-chy-z-komplektatorom",
+  "title": "Комплектація інтерʼєру: самостійно чи з комплектатором і як заощадити",
+  "keyword": "комплектація інтерʼєру",
+  "service": [
+   "/komplektatsiia-pid-kliuch-kyiv",
+   "Комплектація під ключ"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "komplektatsiya-interera-samostoyatelno-ili-s-komplektatorom",
+  "title": "Комплектация интерьера: самостоятельно или с комплектатором и как сэкономить",
+  "keyword": "комплектация интерьера",
+  "service": [
+   "/ru/komplektatsiya-pod-klyuch-kiev",
+   "Комплектация под ключ"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "oplata-remonta-chastyami-skhemy-platezhey",
+  "title": "Оплата ремонта частями: схемы платежей и как они защищают обе стороны",
+  "keyword": "оплата ремонта частями",
+  "service": [
+   "/ru/dogovor-garantiya-oplata",
+   "Договор, гарантия и оплата"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "oplata-remontu-chastynamy-skhemy-platezhiv",
+  "title": "Оплата ремонту частинами: схеми платежів і як вони захищають обидві сторони",
+  "keyword": "оплата ремонту частинами",
+  "service": [
+   "/dogovir-garantiya-oplata",
+   "Договір, гарантія й оплата"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "planirovochnoe-reshenie-kogda-dostatochno",
+  "title": "Планировочное решение: когда его достаточно, а когда нужен полный дизайн-проект",
+  "keyword": "планировочное решение квартиры",
+  "service": [
+   "/ru/dizayn-kvartiry-kiev",
+   "Дизайн-проект квартиры"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "planuvalne-rishennia-koly-dostatno",
+  "title": "Планувальне рішення: коли його достатньо, а коли потрібен повний дизайн-проєкт",
+  "keyword": "планувальне рішення квартири",
+  "service": [
+   "/dyzain-interieru-kvartyry-kyiv",
+   "Дизайн-проєкт квартири"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "rekonstruktsiya-ili-novyy-dom-chto-vygodnee",
+  "title": "Реконструкция старого дома или новый: что выгоднее",
+  "keyword": "реконструкция дома или новый",
+  "service": [
+   "/ru/rekonstruktsiya-doma-kiev",
+   "Реконструкция дома"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "remont-u-peredmisti-kyieva-shcho-vrakhuvaty",
+  "title": "Ремонт у передмісті Києва: Ірпінь, Буча, Бровари — що врахувати",
+  "keyword": "ремонт у передмісті києва ірпінь буча",
+  "service": [
+   "/remont-pid-klyuch-kyiv",
+   "Ремонт під ключ"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "remont-v-prigorode-kieva-chto-uchest",
+  "title": "Ремонт в пригороде Киева: Ирпень, Буча, Бровары — что учесть",
+  "keyword": "ремонт в пригороде киева ирпень буча",
+  "service": [
+   "/ru/remont-pod-klyuch-kiev",
+   "Ремонт под ключ"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "skilky-tryvaie-remont-kvartyry-v-novobudovi",
+  "title": "Скільки триває ремонт квартири в новобудові: від чого залежать строки",
+  "keyword": "скільки триває ремонт квартири в новобудові",
+  "service": [
+   "/remont-novobudovy-kyiv",
+   "Ремонт у новобудові"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "skolko-dlitsya-remont-kvartiry-v-novostroyke",
+  "title": "Сколько длится ремонт квартиры в новостройке: от чего зависят сроки",
+  "keyword": "сколько длится ремонт квартиры в новостройке",
+  "service": [
+   "/ru/remont-v-novostroyke-kiev",
+   "Ремонт в новостройке"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "tehnicheskiy-nadzor-za-remontom-kogda-nuzhen",
+  "title": "Технический надзор за ремонтом квартиры: когда нужен и что он проверяет",
+  "keyword": "технический надзор за ремонтом квартиры",
+  "service": [
+   "/ru/avtorskiy-i-tehnicheskiy-nadzor-kiev",
+   "Авторский и технический надзор"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "tekhnichnyi-nahliad-za-remontom-koly-potriben",
+  "title": "Технічний нагляд за ремонтом квартири: коли потрібен і що він перевіряє",
+  "keyword": "технічний нагляд за ремонтом квартири",
+  "service": [
+   "/avtorskyi-i-tekhnichnyi-nahliad-kyiv",
+   "Авторський і технічний нагляд"
+  ],
   "status": "published"
  }
 ]

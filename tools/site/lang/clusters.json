@@ -241,5 +241,129 @@
   "uk": "/dogovir-garantiya-oplata",
   "ru": "/ru/dogovor-garantiya-oplata",
   "en": "/en/contract-warranty-payment"
+ },
+ "geo-irpin": {
+  "uk": "/dyzain-i-remont-irpin",
+  "ru": "/ru/dizayn-i-remont-irpen"
+ },
+ "geo-bucha": {
+  "uk": "/dyzain-i-remont-bucha",
+  "ru": "/ru/dizayn-i-remont-bucha"
+ },
+ "geo-hostomel": {
+  "uk": "/dyzain-i-remont-hostomel",
+  "ru": "/ru/dizayn-i-remont-gostomel"
+ },
+ "geo-vyshneve": {
+  "uk": "/dyzain-i-remont-vyshneve",
+  "ru": "/ru/dizayn-i-remont-vishnevoe"
+ },
+ "geo-boiarka": {
+  "uk": "/dyzain-i-remont-boiarka",
+  "ru": "/ru/dizayn-i-remont-boyarka"
+ },
+ "geo-brovary": {
+  "uk": "/dyzain-i-remont-brovary",
+  "ru": "/ru/dizayn-i-remont-brovary"
+ },
+ "geo-boryspil": {
+  "uk": "/dyzain-i-remont-boryspil",
+  "ru": "/ru/dizayn-i-remont-borispol"
+ },
+ "geo-vyshhorod": {
+  "uk": "/dyzain-i-remont-vyshhorod",
+  "ru": "/ru/dizayn-i-remont-vyshgorod"
+ },
+ "geo-obukhiv": {
+  "uk": "/dyzain-i-remont-obukhiv",
+  "ru": "/ru/dizayn-i-remont-obuhov"
+ },
+ "geo-vasylkiv": {
+  "uk": "/dyzain-i-remont-vasylkiv",
+  "ru": "/ru/dizayn-i-remont-vasilkov"
+ },
+ "geo-fastiv": {
+  "uk": "/dyzain-i-remont-fastiv",
+  "ru": "/ru/dizayn-i-remont-fastov"
+ },
+ "geo-bila-tserkva": {
+  "uk": "/dyzain-i-remont-bila-tserkva",
+  "ru": "/ru/dizayn-i-remont-belaya-tserkov"
+ },
+ "geo-lviv": {
+  "uk": "/dyzain-i-remont-lviv",
+  "ru": "/ru/dizayn-i-remont-lvov"
+ },
+ "geo-odesa": {
+  "uk": "/dyzain-i-remont-odesa",
+  "ru": "/ru/dizayn-i-remont-odessa"
+ },
+ "geo-dnipro": {
+  "uk": "/dyzain-i-remont-dnipro",
+  "ru": "/ru/dizayn-i-remont-dnepr"
+ },
+ "geo-vinnytsia": {
+  "uk": "/dyzain-i-remont-vinnytsia",
+  "ru": "/ru/dizayn-i-remont-vinnitsa"
+ },
+ "geo-zhytomyr": {
+  "uk": "/dyzain-i-remont-zhytomyr",
+  "ru": "/ru/dizayn-i-remont-zhitomir"
+ },
+ "geo-chernihiv": {
+  "uk": "/dyzain-i-remont-chernihiv",
+  "ru": "/ru/dizayn-i-remont-chernigov"
+ },
+ "geo-cherkasy": {
+  "uk": "/dyzain-i-remont-cherkasy",
+  "ru": "/ru/dizayn-i-remont-cherkassy"
+ },
+ "geo-poltava": {
+  "uk": "/dyzain-i-remont-poltava",
+  "ru": "/ru/dizayn-i-remont-poltava"
+ },
+ "geo-ivano-frankivsk": {
+  "uk": "/dyzain-i-remont-ivano-frankivsk",
+  "ru": "/ru/dizayn-i-remont-ivano-frankovsk"
+ },
+ "geo-ternopil": {
+  "uk": "/dyzain-i-remont-ternopil",
+  "ru": "/ru/dizayn-i-remont-ternopol"
+ },
+ "geo-uzhhorod": {
+  "uk": "/dyzain-i-remont-uzhhorod",
+  "ru": "/ru/dizayn-i-remont-uzhgorod"
+ },
+ "geo-rivne": {
+  "uk": "/dyzain-i-remont-rivne",
+  "ru": "/ru/dizayn-i-remont-rovno"
+ },
+ "geo-lutsk": {
+  "uk": "/dyzain-i-remont-lutsk",
+  "ru": "/ru/dizayn-i-remont-lutsk"
+ },
+ "geo-khmelnytskyi": {
+  "uk": "/dyzain-i-remont-khmelnytskyi",
+  "ru": "/ru/dizayn-i-remont-hmelnitskiy"
+ },
+ "geo-chernivtsi": {
+  "uk": "/dyzain-i-remont-chernivtsi",
+  "ru": "/ru/dizayn-i-remont-chernovtsy"
+ },
+ "geo-kropyvnytskyi": {
+  "uk": "/dyzain-i-remont-kropyvnytskyi",
+  "ru": "/ru/dizayn-i-remont-kropivnitskiy"
+ },
+ "geo-kyiv-oblast": {
+  "uk": "/dyzain-i-remont-kyivska-oblast",
+  "ru": "/ru/dizayn-i-remont-kievskaya-oblast"
+ },
+ "geo-ukraine": {
+  "uk": "/dyzain-i-remont-ukraina",
+  "ru": "/ru/dizayn-i-remont-ukraina"
+ },
+ "geo-europe": {
+  "uk": "/remont-i-budivnytstvo-yevropa",
+  "ru": "/ru/remont-i-stroitelstvo-evropa"
  }
 }
