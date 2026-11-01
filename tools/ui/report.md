@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 759 (MAIN 5, LAND 406, інші 348). HTML разом 43088 КБ, з них інлайн CSS 16712 КБ і JS 5258 КБ.
+Сторінок: 759 (MAIN 5, LAND 406, інші 348). HTML разом 43098 КБ, з них інлайн CSS 16712 КБ і JS 5258 КБ.
 
 ## Проблеми
 
@@ -23,7 +23,7 @@
 | ozdoba/komplekty.html | other | 119.2 | 28.7 | 32.4 | 7.9 | 14 | 1525 |
 | ozdoba/prais.html | other | 114.1 | 27.7 | 5.8 | 1.1 | 9 | 3017 |
 | ozdoba.html | other | 109.3 | 25.2 | 30.1 | 7.2 | 13 | 754 |
-| about.html | main | 90.3 | 22.3 | 48.8 | 7.1 | 22 | 400 |
+| about.html | main | 97.4 | 23.4 | 48.8 | 7.1 | 22 | 455 |
 | services.html | main | 90.3 | 21.8 | 45.8 | 7.1 | 22 | 472 |
 | contact.html | main | 90.2 | 21.8 | 54.2 | 7.1 | 22 | 348 |
 | pl/ozdoba.html | other | 88.5 | 21.9 | 30.7 | 7.2 | 13 | 619 |
@@ -240,7 +240,7 @@
 | ozdoba/rushnykosushka-elektrychna-drabynka-bila-152.html | other | 64.6 | 17.3 | 32.4 | 7.2 | 14 | 328 |
 | ozdoba/shezlonh-hoidalka-z-tekstylenom-548.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 325 |
 | ozdoba/stelazh-loft-z-chornym-metalevym-karkasom-91.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 328 |
-| ozdoba/stelia-reikova-aliuminiieva-u-profil-terakota-313.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 325 |
+| ozdoba/stelia-reikova-aliuminiieva-u-profil-terakota-313.html | other | 64.6 | 17.3 | 32.4 | 7.2 | 14 | 325 |
 | ozdoba/stil-perehovornyi-z-kabel-kanalom-bilyi-96.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 327 |
 | ozdoba/svitylnyk-dlia-skhodiv-vbudovanyi-kruhlyi-134.html | other | 64.6 | 17.3 | 32.4 | 7.2 | 14 | 325 |
 | ozdoba/svitylnyk-fasadnyi-tsylindr-svitlo-vhoru-vnyz-126.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 328 |
@@ -499,6 +499,7 @@
 | blog/avtorskyi-nahliad-navishcho.html | land | 53.2 | 15.6 | 14.4 | 7.0 | 7 | 316 |
 | blog/mebli-z-kytaiu-dlia-interieru.html | land | 53.2 | 15.3 | 14.4 | 7.0 | 7 | 320 |
 | proektuvannia-budynku-kyiv.html | land | 53.2 | 14.5 | 13.3 | 7.0 | 7 | 439 |
+| ru/o-nas.html | land | 53.2 | 15.1 | 13.6 | 7.0 | 7 | 476 |
 | avtorskyi-i-tekhnichnyi-nahliad-kyiv.html | land | 53.1 | 14.7 | 13.6 | 7.0 | 7 | 414 |
 | blog/etapy-remontu-kvartyry-pid-kliuch.html | land | 53.1 | 15.6 | 14.4 | 7.0 | 7 | 319 |
 | blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | land | 53.1 | 15.5 | 14.4 | 7.0 | 7 | 316 |
@@ -531,7 +532,6 @@
 | remont-kukhni-kyiv.html | land | 51.7 | 14.4 | 13.6 | 7.0 | 7 | 435 |
 | blog/koshtorys-na-remont-yak-chytaty.html | land | 51.4 | 14.9 | 14.4 | 7.0 | 7 | 298 |
 | ru/modulnyy-dom-kiev.html | land | 51.4 | 14.6 | 13.6 | 7.0 | 7 | 401 |
-| ru/o-nas.html | land | 51.4 | 14.7 | 13.6 | 7.0 | 7 | 452 |
 | blog/ofis-u-biznes-tsentri-shcho-uzghodyty-pered-remontom.html | land | 51.2 | 14.7 | 14.4 | 7.0 | 7 | 297 |
 | blog/realizatsiia-dyzain-proektu-yak-ne-vtratyty-zadum.html | land | 51.2 | 14.9 | 14.4 | 7.0 | 7 | 285 |
 | dyzain-restoranu-kafe-kyiv.html | land | 51.2 | 14.0 | 13.3 | 7.0 | 7 | 419 |
@@ -726,6 +726,7 @@
 | zh/interior-design.html | land | 42.7 | 12.8 | 13.6 | 7.0 | 7 | 364 |
 | zh/interior-designer.html | land | 42.7 | 12.7 | 13.6 | 7.0 | 7 | 370 |
 | zh/restaurant-design.html | land | 42.7 | 12.6 | 13.6 | 7.0 | 7 | 364 |
+| en/about.html | land | 42.5 | 12.4 | 13.6 | 7.0 | 7 | 380 |
 | zh/resort-turnkey.html | land | 42.5 | 12.5 | 13.6 | 7.0 | 7 | 364 |
 | ru/kontakty.html | land | 42.4 | 12.4 | 13.6 | 7.0 | 7 | 316 |
 | zh/house-design.html | land | 42.4 | 12.5 | 13.6 | 7.0 | 7 | 370 |
@@ -743,7 +744,6 @@
 | de/leistungen.html | land | 41.3 | 12.0 | 13.6 | 7.0 | 7 | 382 |
 | pl/o-studiu.html | land | 41.3 | 12.5 | 13.6 | 7.0 | 7 | 353 |
 | de/ueber-uns.html | land | 41.2 | 12.3 | 13.6 | 7.0 | 7 | 346 |
-| en/about.html | land | 41.2 | 12.1 | 13.6 | 7.0 | 7 | 356 |
 | zh/services.html | land | 40.5 | 12.3 | 13.6 | 7.0 | 7 | 380 |
 | proekty/diamond.html | land | 40.3 | 8.1 | 2.1 | 0.9 | 1 | 347 |
 | zh/about.html | land | 40.2 | 12.6 | 13.6 | 7.0 | 7 | 343 |

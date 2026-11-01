@@ -395,3 +395,9 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 :where(main a:not([class]):not(:has(img,svg,picture))){color:#D4AE6E;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em;text-decoration-color:rgba(212,174,110,.5);transition:color .2s,text-decoration-color .2s}
 :where(main a:not([class]):not(:has(img,svg,picture))):hover{color:#EDE8DF;text-decoration-color:currentColor}
 :where(main a:not([class])):focus-visible{outline:2px solid #BF9148;outline-offset:2px;border-radius:2px}
+/* ── Тап-зони ≥44px (аудит Playwright 402/1440, 01.11.2026): видимий розмір не змінюємо, розширюємо зону натискання ── */
+.lq-alt a{position:relative}.lq-alt a::after{content:"";position:absolute;inset:-9px -3px}
+:is(#of,.lq) :is(input:not([type=checkbox]):not([type=radio]):not([name=hp]),select){min-height:44px}
+:is(#of,.lq) .o-more>summary{min-height:44px;display:flex;align-items:center}
+.pcarousel-nav>button{min-width:44px;min-height:44px}
+.dv>a{display:inline-block;padding:10px 0;margin:-10px 0}
