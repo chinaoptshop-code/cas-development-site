@@ -21,6 +21,10 @@
 Ручні сторінки: блоки між <!--cas:guarantees-->, <!--cas:prices-->, <!--cas:packages--> оновлює sync_manual().
    "near": ["h2", [["/url", "назва"], ...]] (необовʼязково — блок посилань перед «Інші послуги»),
    "cluster": ["h2", "вступ", [["/url", "анкор"], ...]] (необовʼязково — сусідні інтенти кластера запитів, tools/site/keywords.json),
+   "geo": "kyiv" | "ua" | "hubs" (необовʼязково — блок «Працюємо в Києві та області / по Україні» з посиланнями на міста, GEO),
+   "places": ["h2", "вступ", [{"h", "href", "p"}, ...]] (необовʼязково — картки міст з посиланнями, хаби географії),
+   "area": [{"@type": "City", "name": "..."}, ...] (необовʼязково — areaServed послуги замість типового Київ/область/Україна/Європа),
+   "guarantees": "no5" — блок «Гарантії» без пункту ±5% (регіони поза Київщиною),
    "facts": [["36 міс.", "гарантія"], ...] (необовʼязково — свої факти в hero замість типових),
    "assets": ["assets/<файл>.css", "assets/<файл>.js"] (необовʼязково — стилі/скрипт інтерактивного блоку з "extra", напр. демо /onlain-kontrol)}
 У абзацах "about" і відповідях "faq" можна ставити посилання: [анкор](/url).
@@ -121,8 +125,11 @@ def _core(uk):
     return m.group(1)
 
 
-def guarantees_html(lang, more=True):
+def guarantees_html(lang, more=True, no5=False):
+    """no5 — без пункту «Кошторис ±5%» (регіони поза Києвом і областю: ±5% обіцяємо лише в Києві й області)."""
     h, items = GUAR[lang]
+    if no5:
+        items = [x for x in items if '±5%' not in x[0]]
     m = GUAR_MORE.get(lang) if more else None
     return ('<!--cas:guarantees--><section><div class="w">\n'
             f'  <h2>{h}</h2>\n'
@@ -237,6 +244,8 @@ def sync_manual(generated):
         n = re.sub(r'<!--cas:guarantees--><section><div class="w">\n.*?<!--/cas:guarantees-->\n?', lambda x: guarantees_html(lang), s, flags=re.S)
         if lang in PACKAGES:
             n = re.sub(r'<!--cas:packages-->.*?<!--/cas:packages-->\n?', lambda x: packages_html(lang), n, flags=re.S)
+        if lang in GEO:  # блок «Географія» (посилання на сторінки міст)
+            n = re.sub(r'<!--cas:geo:(kyiv|ua|hubs)-->.*?<!--/cas:geo-->\n?', lambda x: geo_html(lang, x.group(1)), n, flags=re.S)
         if lang in PRICES:  # заголовок і вступ — з наявного блоку, рядки — за ставками в data-est
             n = re.sub(r'<!--cas:prices-->.*?<!--/cas:prices-->\n?', lambda x: prices_html(lang, _prices_cfg(x.group(0))), n, flags=re.S)
         if n != s:
@@ -383,6 +392,63 @@ def budget_html(lang, b):
             + f'<p style="margin:0"><small>{e(d["note"])}</small></p></div></div></section>\n')
 
 
+def places_html(x):
+    """Картки міст/регіонів з посиланнями (хаби географії): ["h2", "вступ", [{"h", "href", "p"}, ...]] — UI-kit .grid/.card."""
+    h, intro, items = x
+    return ('<section><div class="w">' + f'<h2>{e(h)}</h2>' + (f'<p style="color:var(--mu);max-width:62ch;margin:0 0 22px">{rich(intro)}</p>' if intro else '')
+            + '<div class="grid">' + ''.join(f'<div class="card"><h3><a href="{c["href"]}">{e(c["h"])}</a></h3><p>{e(c["p"])}</p></div>' for c in items)
+            + '</div></div></section>\n')
+
+
+# Блок «Географія» на головних сторінках послуг: "geo": "kyiv" (ремонт/будівництво — Київ і область) або "ua" (дизайн,
+# комплектація — по Україні). Ручні сторінки тримають блок між <!--cas:geo:kyiv--> / <!--cas:geo:ua--> і <!--/cas:geo--> (sync_manual).
+# Ремонт і будівництво власними бригадами — у всіх областях і в Європі (Михайло 01.11.2026); ±5% — лише Київ і область.
+GEO_KYIV = [('irpin', 'Ірпінь', 'irpen', 'Ирпень'), ('bucha', 'Буча', 'bucha', 'Буча'), ('hostomel', 'Гостомель', 'gostomel', 'Гостомель'),
+            ('vyshneve', 'Вишневе', 'vishnevoe', 'Вишнёвое'), ('boiarka', 'Боярка', 'boyarka', 'Боярка'), ('brovary', 'Бровари', 'brovary', 'Бровары'),
+            ('boryspil', 'Бориспіль', 'borispol', 'Борисполь'), ('vyshhorod', 'Вишгород', 'vyshgorod', 'Вышгород'), ('obukhiv', 'Обухів', 'obuhov', 'Обухов'),
+            ('vasylkiv', 'Васильків', 'vasilkov', 'Васильков'), ('fastiv', 'Фастів', 'fastov', 'Фастов'), ('bila-tserkva', 'Біла Церква', 'belaya-tserkov', 'Белая Церковь')]
+GEO_UA = [('lviv', 'Львів', 'lvov', 'Львов'), ('odesa', 'Одеса', 'odessa', 'Одесса'), ('dnipro', 'Дніпро', 'dnepr', 'Днепр'),
+          ('vinnytsia', 'Вінниця', 'vinnitsa', 'Винница'), ('zhytomyr', 'Житомир', 'zhitomir', 'Житомир'), ('chernihiv', 'Чернігів', 'chernigov', 'Чернигов'),
+          ('cherkasy', 'Черкаси', 'cherkassy', 'Черкассы'), ('poltava', 'Полтава', 'poltava', 'Полтава'), ('ivano-frankivsk', 'Івано-Франківськ', 'ivano-frankovsk', 'Ивано-Франковск'),
+          ('ternopil', 'Тернопіль', 'ternopol', 'Тернополь'), ('uzhhorod', 'Ужгород', 'uzhgorod', 'Ужгород'), ('rivne', 'Рівне', 'rovno', 'Ровно'),
+          ('lutsk', 'Луцьк', 'lutsk', 'Луцк'), ('khmelnytskyi', 'Хмельницький', 'hmelnitskiy', 'Хмельницкий'), ('chernivtsi', 'Чернівці', 'chernovtsy', 'Черновцы'),
+          ('kropyvnytskyi', 'Кропивницький', 'kropivnitskiy', 'Кропивницкий')]
+GEO_HUB = {'uk': {'kyiv': ('/dyzain-i-remont-kyivska-oblast', 'Київська область — усі міста'), 'ua': ('/dyzain-i-remont-ukraina', 'Дизайн і ремонт по Україні'),
+                  'eu': ('/remont-i-budivnytstvo-yevropa', 'Ремонт і будівництво в Європі')},
+           'ru': {'kyiv': ('/ru/dizayn-i-remont-kievskaya-oblast', 'Киевская область — все города'), 'ua': ('/ru/dizayn-i-remont-ukraina', 'Дизайн и ремонт по Украине'),
+                  'eu': ('/ru/remont-i-stroitelstvo-evropa', 'Ремонт и строительство в Европе')}}
+GEO = {
+    'uk': {'kyiv': ('Працюємо в Києві та області', 'Ремонт, будівництво й дизайн ведемо в Києві та містах Київщини власними штатними бригадами, '
+                    'а в інших областях і в Європі — за домовленістю. Окремі сторінки — про житло й логістику кожного міста:'),
+           'ua': ('Працюємо в Києві, області й по Україні', 'Дизайн-проєкт робимо в Києві та області, а для інших міст — дистанційно або з виїздом; '
+                  'ремонт і будівництво беремо й в обласних центрах — умови й вартість виїзду індивідуально. Сторінки міст:'),
+           'hubs': ('Де будуємо', '')},
+    'ru': {'kyiv': ('Работаем в Киеве и области', 'Ремонт, строительство и дизайн ведём в Киеве и городах Киевщины собственными штатными бригадами, '
+                    'а в других областях и в Европе — по договорённости. Отдельные страницы — о жилье и логистике каждого города:'),
+           'ua': ('Работаем в Киеве, области и по Украине', 'Дизайн-проект делаем в Киеве и области, а для других городов — дистанционно или с выездом; '
+                  'ремонт и строительство берём и в областных центрах — условия и стоимость выезда индивидуально. Страницы городов:'),
+           'hubs': ('Где строим', '')},
+}
+
+
+def geo_links(lang, kind):
+    """Посилання блоку «Географія»: хаб, міста (Київщина або обласні центри), інші хаби."""
+    i = 2 if lang == 'ru' else 0
+    pre = '/ru/dizayn-i-remont-' if lang == 'ru' else '/dyzain-i-remont-'
+    hubs = GEO_HUB[lang]
+    if kind == 'hubs':  # компактний варіант (сторінки на межі бюджету HTML): лише три хаби
+        return [hubs['kyiv'], hubs['ua'], hubs['eu']]
+    cities = GEO_KYIV if kind == 'kyiv' else GEO_UA
+    other = 'ua' if kind == 'kyiv' else 'kyiv'
+    return [hubs[kind]] + [(pre + c[i], c[i + 1]) for c in cities] + [hubs[other], hubs['eu']]
+
+
+def geo_html(lang, kind):
+    h, intro = GEO[lang][kind]
+    return (f'<!--cas:geo:{kind}--><section><div class="w txt"><h2>{e(h)}</h2>' + (f'<p>{e(intro)}</p>' if intro else '') + '<div class="rel">'
+            + ''.join(f'<a href="{u}">{e(n)}</a>' for u, n in geo_links(lang, kind)) + '</div></div></section><!--/cas:geo-->\n')
+
+
 def cluster_html(c):
     """Блок «схожі запити» (кластер інтентів): [h2, вступ, [[url, анкор], ...]] — різні анкори на сусідні сторінки кластера."""
     h, intro, links = c
@@ -423,9 +489,12 @@ def main_html(p):
         for x in p['sections']:
             o += section_html(p['lang'], x)
         return '\n'.join(o)
-    o += ['<section><div class="w">', f'  <h2>{t["inc"]}</h2>',
-          '  <div class="grid">' + ''.join(f'<div class="card"><h3>{e(h)}</h3><ul>' + ''.join(f'<li>{e(i)}</li>' for i in li) + '</ul></div>' for h, li in p['cards']) + '</div>',
-          '</div></section>\n']
+    if p.get('cards'):  # регіональні сторінки — без типових карток (унікальний зміст, tools/site/pages/*-dyzain-i-remont-*)
+        o += ['<section><div class="w">', f'  <h2>{t["inc"]}</h2>',
+              '  <div class="grid">' + ''.join(f'<div class="card"><h3>{e(h)}</h3><ul>' + ''.join(f'<li>{e(i)}</li>' for i in li) + '</ul></div>' for h, li in p['cards']) + '</div>',
+              '</div></section>\n']
+    if p.get('places'):
+        o.append(places_html(p['places']))
     for h, ps in p.get('about', []):
         o.append(f'<section><div class="w txt"><h2>{e(h)}</h2>' + ''.join(f'<p>{rich(x)}</p>' for x in ps) + '</div></section>\n')
     if p.get('packages'):
@@ -436,12 +505,12 @@ def main_html(p):
         o.append(prices_html(p['lang'], p['prices']))
     if p.get('gallery'):
         o += gallery_html(p['lang'], p['gallery'])
-    o += ['<section><div class="w">', f'  <h2>{t["steps"]}</h2>',
+    o += (['<section><div class="w">', f'  <h2>{t["steps"]}</h2>',
           '  <ol class="steps">' + ''.join(f'<li><div><b>{e(b)}</b><span>{e(s)}</span></div></li>' for b, s in p['steps']) + '</ol>',
-          '</div></section>\n'] + ([guarantees_html(p['lang'])] if p.get('guarantees') else []) + [
+          '</div></section>\n'] if p.get('steps') else []) + ([guarantees_html(p['lang'], no5=p['guarantees'] == 'no5')] if p.get('guarantees') else []) + [
           '<section><div class="w">', f'  <h2>{t["faq"]}</h2>',
           '  ' + ''.join(f'<details><summary>{e(q)}</summary><p>{rich(x)}</p></details>' for q, x in p['faq']),
-          '</div></section>\n'] + ([
+          '</div></section>\n'] + ([geo_html(p['lang'], p['geo'])] if p.get('geo') else []) + ([
           '<section><div class="w">', f'  <h2>{e(p["near"][0])}</h2>',
           '  <div class="rel">' + ''.join(f'<a href="{u}">{e(n)}</a>' for u, n in p['near'][1]) + '</div>',
           '</div></section>\n'] if p.get('near') else []) + ([cluster_html(p['cluster'])] if p.get('cluster') else []) + [
@@ -465,7 +534,7 @@ def ld(p):
                  {'@type': 'ListItem', 'position': 1, 'name': t['home'], 'item': home},
                  {'@type': 'ListItem', 'position': 2, 'name': p['h1'], 'item': u}]}, page]
     else:
-        g = [{'@type': 'Service', 'name': p['service'], 'serviceType': p['service'], 'areaServed': area_served(lang), 'provider': ORG, 'url': u},
+        g = [{'@type': 'Service', 'name': p['service'], 'serviceType': p['service'], 'areaServed': p.get('area') or area_served(lang), 'provider': ORG, 'url': u},
              {'@type': 'BreadcrumbList', 'itemListElement': [
                  {'@type': 'ListItem', 'position': 1, 'name': t['home'], 'item': home},
                  {'@type': 'ListItem', 'position': 2, 'name': (p.get('parent') or [0, t['svc']])[1], 'item': B.rstrip('/') + (p.get('parent') or [t['svc_url']])[0]},
@@ -633,7 +702,8 @@ def check(p):
     txt = json.dumps(p, ensure_ascii=False)
     if re.search(r'osocor|осокор|osokork', txt, re.I): errs.append('Osocor')
     ok = {'$30', '$350', '$550', '$250', '$600', '$1 100', '$1,100', '$50', '$2 500', '$2,500', '$500',
-          '$5 000', '$5,000', '$12', '$6', '$45'}  # $6/$45 — пакети дизайну (ринкова практика, Михайло делегував 27.10.2026)  # $500 — мін. замовлення Оздоби; $5 000 — поріг знижки за обсягом 3% (Михайло 25.10.2026);
+          '$5 000', '$5,000', '$12', '$6', '$45',
+          '$850', '$900', '$1 700', '$1,700', '$18', '$400', '$4 000', '$4,000'}  # Європа: +50% до київських (Михайло 01.11.2026)  # $6/$45 — пакети дизайну (ринкова практика, Михайло делегував 27.10.2026)  # $500 — мін. замовлення Оздоби; $5 000 — поріг знижки за обсягом 3% (Михайло 25.10.2026);
     # $12 — архітектурний проєкт будинку від $12/м² за ринковою практикою (Михайло 26.10.2026, дослідження ринку)
     for m in re.findall(r'\$\s?\d[\d ,.]*\d|\$\d', txt):
         m = m.strip().rstrip(',.')
