@@ -184,30 +184,30 @@ def prices_html(lang, x):
 # (Михайло делегував 27.10.2026); мінімум $2 500 для всіх пакетів — Михайло 31.10.2026. Склад — з попередніх карток пакетів.
 # Кожен пункт — (текст, рівень): 0 — у всіх пакетах, 1 — з базового, 2 — лише в повному. Телефон: свайп-картки (scroll-snap).
 PACKAGES = {
-    'uk': dict(h='Пакети дизайн-проєкту: порівняння', intro='Склад проєкту підбираємо під задачу. Три типові пакети — від планування до повного супроводу з авторським наглядом:',
+    'uk': dict(h='Пакети дизайн-проєкту: порівняння',
                pk=[('Планувальний', 'від $6/м²'), ('Базовий дизайн-проєкт', 'від $30/м²'), ('Повний з авторським наглядом', 'від $45/м²')],
-               items=[('обмірний план приміщення', 0), ('2–3 варіанти планування на вибір', 0), ('план розстановки меблів', 0), ('експлікація приміщень з площами', 0),
-                      ('3D-візуалізації всіх приміщень', 1), ('робочі креслення: стіни, електрика, сантехніка, стелі, підлоги, розкладка плитки', 1),
-                      ('специфікації матеріалів і меблів', 1), ('розгортки всіх стін і креслення меблів на замовлення', 2),
-                      ('авторський нагляд під час ремонту — виїзди за графіком у договорі', 2), ('підбір меблів, світла й декору', 2)],
+               items=[('обмірний план приміщення', 0), ('2–3 варіанти планування', 0), ('план розстановки меблів', 0), ('експлікація приміщень', 0),
+                      ('3D-візуалізації всіх приміщень', 1), ('робочі креслення для ремонту', 1),
+                      ('специфікації матеріалів і меблів', 1), ('розгортки стін, креслення меблів', 2),
+                      ('авторський нагляд під час ремонту', 2), ('підбір меблів, світла й декору', 2)],
                min='мін. $2 500', no='не входить', cta='Обговорити пакет', hint='Гортайте, щоб порівняти →',
-               note='Мінімальна вартість дизайн-проєкту — $2 500 для будь-якого пакета. Ціни «від»; точну суму й склад фіксуємо в договорі. Закупівля й доставка меблів — окремо (комплектація).'),
-    'ru': dict(h='Пакеты дизайн-проекта: сравнение', intro='Состав проекта подбираем под задачу. Три типовых пакета — от планировки до полного сопровождения с авторским надзором:',
+               note='Мінімум — $2 500 для будь-якого пакета; точну суму й склад фіксуємо в договорі. Закупівля меблів — окремо (комплектація).'),
+    'ru': dict(h='Пакеты дизайн-проекта: сравнение',
                pk=[('Планировочный', 'от $6/м²'), ('Базовый дизайн-проект', 'от $30/м²'), ('Полный с авторским надзором', 'от $45/м²')],
-               items=[('обмерный план помещения', 0), ('2–3 варианта планировки на выбор', 0), ('план расстановки мебели', 0), ('экспликация помещений с площадями', 0),
-                      ('3D-визуализации всех помещений', 1), ('рабочие чертежи: стены, электрика, сантехника, потолки, полы, раскладка плитки', 1),
-                      ('спецификации материалов и мебели', 1), ('развёртки всех стен и чертежи мебели на заказ', 2),
-                      ('авторский надзор во время ремонта — выезды по графику в договоре', 2), ('подбор мебели, света и декора', 2)],
+               items=[('обмерный план помещения', 0), ('2–3 варианта планировки', 0), ('план расстановки мебели', 0), ('экспликация помещений', 0),
+                      ('3D-визуализации всех помещений', 1), ('рабочие чертежи для ремонта', 1),
+                      ('спецификации материалов и мебели', 1), ('развёртки стен, чертежи мебели', 2),
+                      ('авторский надзор во время ремонта', 2), ('подбор мебели, света и декора', 2)],
                min='мин. $2 500', no='не входит', cta='Обсудить пакет', hint='Листайте, чтобы сравнить →',
-               note='Минимальная стоимость дизайн-проекта — $2 500 для любого пакета. Цены «от»; точную сумму и состав фиксируем в договоре. Закупка и доставка мебели — отдельно (комплектация).'),
-    'en': dict(h='Design project packages compared', intro='We tailor the scope to the task. Three typical packages, from a layout plan to full support with designer supervision:',
+               note='Минимум — $2 500 для любого пакета; точную сумму и состав фиксируем в договоре. Закупка мебели — отдельно (комплектация).'),
+    'en': dict(h='Design project packages compared',
                pk=[('Layout', 'from $6/m²'), ('Standard design project', 'from $30/m²'), ('Full, with designer supervision', 'from $45/m²')],
-               items=[('measured survey plan', 0), ('2–3 layout options to choose from', 0), ('furniture arrangement plan', 0), ('room schedule with areas', 0),
-                      ('3D visualisations of every room', 1), ('working drawings: walls, electrics, plumbing, ceilings, floors, tile layout', 1),
-                      ('material and furniture specifications', 1), ('elevations of all walls and drawings of custom furniture', 2),
-                      ('designer supervision during renovation, with site visits scheduled in the contract', 2), ('selection of furniture, lighting and decor', 2)],
+               items=[('measured survey plan', 0), ('2–3 layout options', 0), ('furniture arrangement plan', 0), ('room schedule', 0),
+                      ('3D visualisations of every room', 1), ('working drawings for the renovation', 1),
+                      ('material and furniture specifications', 1), ('wall elevations, furniture drawings', 2),
+                      ('designer supervision during renovation', 2), ('selection of furniture, lighting and decor', 2)],
                min='min. $2 500', no='not included', cta='Discuss this package', hint='Swipe to compare →',
-               note='The minimum design project fee is $2 500 for any package. Prices are “from”; the exact fee and scope are fixed in the contract. Furniture purchasing and delivery are separate (procurement).'),
+               note='Minimum $2 500 for any package; the exact fee and scope are fixed in the contract. Furniture purchasing is separate (procurement).'),
 }
 
 
@@ -215,11 +215,13 @@ def packages_html(lang):
     d = PACKAGES[lang]
     cards = ''
     for i, (name, price) in enumerate(d['pk']):
-        li = ''.join(f'<li>{e(t)}</li>' if lvl <= i else f'<li class="pk-no"><span class="mo-sr">{e(d["no"])}: </span>{e(t)}</li>' for t, lvl in d['items'])
-        cards += (f'<div class="card pk-c"><h3>{e(name)}</h3><p class="pk-p">{e(price)} · {e(d["min"])}</p><ul class="pk-l">{li}</ul>'
-                  f'<a class="btn{" main" if i == 1 else ""}" href="#zayavka">{e(d["cta"])}</a></div>')
-    return ('<!--cas:packages--><section><div class="w">\n' f'  <h2>{e(d["h"])}</h2>\n' f'  <p class="pk-in">{e(d["intro"])}</p>\n'
-            f'  <p class="pk-h" aria-hidden="true">{e(d["hint"])}</p><div class="pk">{cards}</div>\n'
+        yes = ''.join(f'<li>{e(t)}</li>' for t, lvl in d['items'] if lvl <= i)
+        no = ''.join(f'<li>{e(t)}</li>' for t, lvl in d['items'] if lvl > i)  # «не входить» — окремим списком з aria-label (бюджет HTML)
+        cards += (f'<div class="card pk-c"><h3>{e(name)}</h3><p class="pk-p">{e(price)} · {e(d["min"])}</p><ul class="pk-l">{yes}</ul>'
+                  + (f'<ul class="pk-l pk-x" aria-label="{e(d["no"])}">{no}</ul>' if no else '')
+                  + f'<a class="btn{" main" if i == 1 else ""}" href="#zayavka">{e(d["cta"])}</a></div>')
+    return ('<!--cas:packages--><section><div class="w">\n' f'  <h2>{e(d["h"])}</h2>\n' + (f'  <p class="pk-in">{e(d["intro"])}</p>\n' if d.get('intro') else '')
+            + f'  <p class="pk-h" aria-hidden="true">{e(d["hint"])}</p><div class="pk">{cards}</div>\n'
             f'  <p class="pk-m"><small>{e(d["note"])}</small></p>\n'
             '</div></section><!--/cas:packages-->\n')
 

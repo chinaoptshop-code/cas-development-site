@@ -328,6 +328,8 @@ def targets():
 
 def apply(s, lang, kind):
     slot = f'<div class="gd-slot" data-pdf="{pdf_url(lang)}"></div>\n'
+    if slot in s and len(SLOT_RX.findall(s)) == 1:
+        return s  # уже стоїть (інші генератори могли вставити свої блоки поруч — місце не рухаємо)
     s = SLOT_RX.sub('', s)
     if kind == 'landing':
         k = s.find('<section id="zayavka">')
