@@ -398,3 +398,23 @@
   mq.addEventListener ? mq.addEventListener('change', on) : mq.addListener(on);
   W.addEventListener('beforeprint', function () { list.forEach(function (s) { s.host.classList.remove('cmp-cut'); }); });
 })();
+
+/* Портфоліо: тип переходу між сторінками (cross-document View Transitions, Chrome 125+; інші браузери — звичайний перехід).
+   /portfolio → /proekty/<slug> — «pf-in», назад — «pf-out», проєкт → проєкт — «pf-next». Анімації — у site-chrome.v1.css. */
+(function () {
+  var W = window;
+  if (!('onpagereveal' in W)) return;
+  function k(u) {
+    var p = new URL(u).pathname.replace(/\.html$/, '').replace(/^\/[a-z]{2}(?=\/)/, '');
+    return /^\/proekty\/[^/]+$/.test(p) ? 'p' : /^\/portfolio\/?$/.test(p) ? 'l' : '';
+  }
+  W.addEventListener('pagereveal', function (e) {
+    var vt = e.viewTransition, a = W.navigation && W.navigation.activation;
+    if (!vt || !vt.types || !a || !a.from || !a.entry) return;
+    try {
+      var f = k(a.from.url), t = k(a.entry.url);
+      var ty = f === 'l' && t === 'p' ? 'pf-in' : f === 'p' && t === 'l' ? 'pf-out' : f === 'p' && t === 'p' ? 'pf-next' : '';
+      if (ty) vt.types.add(ty);
+    } catch (x) { }
+  });
+})();

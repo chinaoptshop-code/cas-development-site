@@ -304,6 +304,21 @@ details.o-more>summary::before{content:"+ "}details.o-more[open]>summary::before
 ::view-transition-new(root){animation:vt-in .45s var(--ease-out) .05s both}
 @keyframes vt-out{to{opacity:0}}
 @keyframes vt-in{from{opacity:0;transform:translate3d(0,10px,0)}}
+/* портфоліо: до проєкту — «наближення», назад до списку — «віддалення», між проєктами — зсув убік (тип ставить site-chrome.v1.js, Chrome 125+) */
+html:active-view-transition-type(pf-in)::view-transition-new(root){animation:vt-zi .5s var(--ease-out) both}
+html:active-view-transition-type(pf-out)::view-transition-new(root){animation:vt-zo .5s var(--ease-out) both}
+html:active-view-transition-type(pf-next)::view-transition-old(root){animation:vt-l .25s ease-in both}
+html:active-view-transition-type(pf-next)::view-transition-new(root){animation:vt-r .45s var(--ease-out) .05s both}
+@keyframes vt-zi{from{opacity:0;transform:scale(.97)}}
+@keyframes vt-zo{from{opacity:0;transform:scale(1.025)}}
+@keyframes vt-l{to{opacity:0;transform:translate3d(-24px,0,0)}}
+@keyframes vt-r{from{opacity:0;transform:translate3d(28px,0,0)}}
+/* статті блогу: смужка прогресу читання — лише CSS (scroll-driven animations), без JS; без підтримки — просто немає */
+@supports (animation-timeline:scroll()){
+.hero>article::before{content:"";position:fixed;top:0;left:0;right:0;z-index:850;height:2px;background:var(--ac,#BF9148);transform-origin:0 50%;transform:scaleX(0);
+  pointer-events:none;animation:rd-prog linear both;animation-timeline:scroll(root)}
+@keyframes rd-prog{to{transform:scaleX(1)}}
+}
 }
 
 /* ══ Пристрої */

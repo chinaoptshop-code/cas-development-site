@@ -7,7 +7,6 @@
 - **Без Clarity** (1): tury.html
 - **Навігація через onclick** (1): portfolio.html(20)
 - **Непідтверджені ціни** (69): ar/renovation-calculator.html['$165 000 ', '$33 000 '], biznes-pid-kliuch-kyiv.html['$52 500'], blog/akustyka-open-space-bez-hluhykh-peregorodok.html['$35 000 '], blog/bryf-dlia-dyzainera-interieru.html['$44 000'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/chornovyi-i-chystovyi-remont-riznytsia.html['$38 500 '], blog/dyzain-i-remont-penthausa-pid-kliuch.html['$115 500  ', '$174 300', '$52 500  ', '$6 300', '$6 300  '], blog/dyzain-interieru-onlain-budynok-za-kordonom.html['$7 500'], blog/dyzain-interieru-z-choho-pochaty.html['$3 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'], blog/dyzain-ofisu-z-choho-pochaty.html['$6 000 '] …
-- **Класи поза /styleguide/ (warning, `ui.py classes`)** (5): .ba, .ba-cta, .ba-p, .ba-st, .ba-team
 
 ## Токени
 
@@ -34,7 +33,7 @@
 | ozdoba/stilets-krislo-obidnii-bukle-z-pidlokitnykamy-74.html | other | 66.7 | 17.8 | 32.4 | 7.2 | 14 | 339 |
 | ozdoba/krislo-launzh-vulychne-z-tyku-z-541.html | other | 66.3 | 17.7 | 32.4 | 7.2 | 14 | 340 |
 | ozdoba/dyvan-modulnyi-miakyi-2-sektsii-60.html | other | 66.1 | 17.7 | 32.4 | 7.2 | 14 | 341 |
-| ozdoba/komplekt-vulychnykh-mebliv-aliuminiievyi-5-predmetiv-542.html | other | 66.1 | 17.6 | 32.4 | 7.2 | 14 | 336 |
+| ozdoba/komplekt-vulychnykh-mebliv-aliuminiievyi-5-predmetiv-542.html | other | 66.1 | 17.7 | 32.4 | 7.2 | 14 | 336 |
 | ozdoba/liniina-modulna-pidvisna-systema-3-sektsii-2.html | other | 66.1 | 17.7 | 32.4 | 7.2 | 14 | 343 |
 | ozdoba/pidvis-reikovyi-derevianyi-tsylindr-120-sm-1.html | other | 66.1 | 17.8 | 32.4 | 7.2 | 14 | 343 |
 | ozdoba/lampa-nastilna-akumuliatorna-latun-14.html | other | 66.0 | 17.7 | 32.4 | 7.2 | 14 | 338 |
@@ -451,7 +450,7 @@
 | blog/salon-krasy-pid-kliuch.html | land | 55.9 | 16.5 | 14.4 | 7.0 | 7 | 321 |
 | ru/remont-kvartiry-zhk-novopecherskie-lipki.html | land | 55.9 | 15.4 | 13.6 | 7.0 | 7 | 430 |
 | karkasnyi-budynok-pid-kliuch-kyiv.html | land | 55.8 | 15.7 | 13.6 | 7.0 | 7 | 451 |
-| remont-budynku-pid-klyuch-kyiv.html | land | 55.6 | 15.0 | 13.2 | 7.0 | 7 | 470 |
+| remont-budynku-pid-klyuch-kyiv.html | land | 55.6 | 15.1 | 13.2 | 7.0 | 7 | 470 |
 | remont-kvartyry-zhk-novopecherski-lypky.html | land | 55.6 | 15.4 | 13.6 | 7.0 | 7 | 430 |
 | blog/budynok-pid-kliuch-chy-korobka.html | land | 55.4 | 16.1 | 14.4 | 7.0 | 7 | 326 |
 | ru/karkasnyy-dom-pod-klyuch-kiev.html | land | 55.4 | 15.6 | 13.6 | 7.0 | 7 | 451 |
@@ -494,7 +493,7 @@
 | remont-kvartyry-zhk-rusaniv-residence.html | land | 54.2 | 15.2 | 13.6 | 7.0 | 7 | 429 |
 | ru/remont-kvartiry-zhk-novyy-avtograf.html | land | 54.2 | 15.1 | 13.6 | 7.0 | 7 | 429 |
 | ru/remont-kvartiry-zhk-respublika.html | land | 54.2 | 15.1 | 13.6 | 7.0 | 7 | 429 |
-| ru/remont-kvartiry-zhk-a136-highlight-tower.html | land | 54.1 | 15.1 | 13.6 | 7.0 | 7 | 430 |
+| ru/remont-kvartiry-zhk-a136-highlight-tower.html | land | 54.1 | 15.2 | 13.6 | 7.0 | 7 | 430 |
 | ru/remont-kvartiry-zhk-montreal-house.html | land | 54.1 | 15.1 | 13.6 | 7.0 | 7 | 431 |
 | ru/remont-kvartiry-zhk-senat.html | land | 54.1 | 15.2 | 13.6 | 7.0 | 7 | 429 |
 | blog/chornovyi-i-chystovyi-remont-riznytsia.html | land | 54.0 | 15.7 | 14.4 | 7.0 | 7 | 318 |
@@ -546,7 +545,7 @@
 | blog/dyzain-interieru-z-choho-pochaty.html | land | 52.4 | 15.4 | 14.4 | 7.0 | 7 | 302 |
 | blog/akustyka-open-space-bez-hluhykh-peregorodok.html | land | 52.3 | 15.4 | 14.4 | 7.0 | 7 | 290 |
 | kabinet/admin.html | other | 52.3 | 14.5 | 32.5 | 7.2 | 14 | 208 |
-| ru/remont-kuhni-kiev.html | land | 52.3 | 14.7 | 13.6 | 7.0 | 7 | 430 |
+| ru/remont-kuhni-kiev.html | land | 52.3 | 14.8 | 13.6 | 7.0 | 7 | 430 |
 | remont-kukhni-kyiv.html | land | 51.9 | 14.5 | 13.6 | 7.0 | 7 | 439 |
 | blog/koshtorys-na-remont-yak-chytaty.html | land | 51.7 | 15.0 | 14.4 | 7.0 | 7 | 303 |
 | ru/remont-i-stroitelstvo-evropa.html | land | 51.6 | 14.5 | 13.6 | 7.0 | 7 | 411 |
@@ -656,7 +655,7 @@
 | en/office-renovation.html | land | 47.3 | 13.1 | 13.6 | 7.0 | 7 | 421 |
 | es/equipamiento-llave-en-mano.html | land | 47.3 | 13.0 | 13.6 | 7.0 | 7 | 386 |
 | fr/equipe-renovation.html | land | 47.2 | 13.1 | 13.6 | 7.0 | 7 | 401 |
-| pl/kompletacja-wnetrz.html | land | 47.2 | 13.5 | 13.6 | 7.0 | 7 | 398 |
+| pl/kompletacja-wnetrz.html | land | 47.2 | 13.6 | 13.6 | 7.0 | 7 | 398 |
 | ar/house-construction.html | land | 47.1 | 13.1 | 13.6 | 7.0 | 7 | 379 |
 | en/renovation-crew.html | land | 47.0 | 13.0 | 13.6 | 7.0 | 7 | 420 |
 | en/hotel-design-fit-out.html | land | 46.9 | 13.7 | 13.6 | 7.0 | 7 | 427 |
@@ -709,7 +708,7 @@
 | fr/index.html | land | 45.4 | 13.1 | 13.6 | 7.0 | 7 | 389 |
 | de/neubauwohnung-ausbau.html | land | 45.3 | 12.9 | 13.6 | 7.0 | 7 | 392 |
 | fr/commerce-cle-en-main.html | land | 45.3 | 13.0 | 13.6 | 7.0 | 7 | 378 |
-| pl/kalkulator-remontu.html | land | 45.3 | 12.9 | 14.2 | 8.0 | 7 | 375 |
+| pl/kalkulator-remontu.html | land | 45.3 | 13.0 | 14.2 | 8.0 | 7 | 375 |
 | pl/remont-mieszkania-deweloperskiego.html | land | 45.3 | 13.0 | 13.6 | 7.0 | 7 | 399 |
 | zh/turnkey-procurement.html | land | 45.3 | 13.4 | 13.6 | 7.0 | 7 | 384 |
 | en/apartment-interior-design.html | land | 45.2 | 12.5 | 13.6 | 7.0 | 7 | 402 |

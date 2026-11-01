@@ -175,7 +175,7 @@ footer .fs a{display:inline-flex;align-items:center;min-height:44px}
 code{font-size:.92em}
 .hero p{max-width:640px;max-inline-size:640px}.sg-note,.sg-meta p{max-width:720px;max-inline-size:720px}</style>
 <link rel="stylesheet" href="/assets/cas-map.v1.css?v=1a565e86">
-<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=82ee8205">
+<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=78d89665">
 </head>
 <body>
 <!--chrome:skip--><a class="skip" href="#main">Перейти до змісту</a><!--/chrome:skip-->
@@ -225,6 +225,7 @@ code{font-size:.92em}
 <li><a href="#trust">Бейджі довіри</a></li>
 <li><a href="#quiz">Квіз-калькулятор</a></li>
 <li><a href="#media">Тур 360° і відео</a></li>
+<li><a href="#build-anim-sg">Будинок з нуля (scroll-анімація)</a></li>
 <li><a href="#motion">Анімації</a></li>
 <li><a href="#states">Стани hover / focus / disabled</a></li>
 <li><a href="#chrome">Шапка і футер</a></li>
@@ -268,6 +269,7 @@ code{font-size:.92em}
 <section id="buttons"><h2>Кнопки і стани</h2>
 <div class="sg-c"><div class="sg-meta"><code>a.btn.main</code> · <code>a.btn</code><p>Головна дія (заявка, кошторис) — <code>.btn.main</code>, одна на екран; другорядна (телефон, портфоліо) — <code>.btn</code>. Ряд кнопок — <code>.btns</code>. Hover: підйом на 1px і підсвітка; натискання — легке стискання.</p></div>
 <div class="sg-demo"><div class="btns"><a class="btn main" href="#buttons">Отримати кошторис</a><a class="btn" href="#buttons">+380 97 866 77 55</a></div>
+<p class="sg-note" style="margin:14px 0 6px">Перший екран лендингу (над компактною формою «Залиште номер»): лише вторинна <code>a.btn</code> «Подзвонити» → <code>tel:+380978667755</code> — головна дія там сама форма (Михайло 01.11.2026; ставить <code>tools/site/leadform.py</code>, тексти інших мов — <code>landing.call</code> у <code>tools/site/lang/*.json</code>).</p><div class="btns"><a class="btn" href="tel:+380978667755">Подзвонити</a></div>
 <div class="btns" style="margin-top:14px"><a class="btn main sg-hover" href="#buttons">hover (імітація)</a><a class="btn sg-focus" href="#buttons">focus-visible (імітація)</a><button class="btn" type="button" disabled>disabled</button><a class="btn" href="#buttons" aria-disabled="true">aria-disabled</a></div></div></div>
 </section>
 
@@ -425,6 +427,11 @@ code{font-size:.92em}
 <div class="sg-demo"><div class="vgrid"><figure><a class="lt3" href="/tury" data-tour data-demo data-title="Віртуальний тур 360° — демо"><img src="/img/p/1nLXvH7oBWQqht-900.webp" width="900" height="675" loading="lazy" decoding="async" alt="Демо постера туру 360°"><span class="lt3-b">Відкрити тур 360°</span><span class="lt3-c">Назва туру</span></a></figure><figure><a class="lyt" href="https://www.youtube.com/@cas_development" data-yt="" data-demo aria-label="Відтворити відео: демо"><img src="/img/p/1nLXvH7oBWQqht-900.webp" width="900" height="675" loading="lazy" decoding="async" alt="Демо постера відео"><span class="lyt-b" aria-hidden="true">▶</span></a><figcaption>Назва відео — як на каналі</figcaption></figure></div></div></div>
 </section>
 
+<section id="build-anim-sg"><h2>Будинок з нуля (scroll-анімація)</h2>
+<div class="sg-c"><div class="sg-meta"><code>section.ba[data-ba]</code> + <code>/assets/build-anim.v1.js</code> (CSS <code>/assets/build-anim.v1.css</code> — ліниво, за ~1,5 екрана)<p>Розмітку ставить <code>tools/site/buildanim.py</code> (у <code>build-all.sh</code>): справжній текст 8 етапів у <code>ol.steps</code> (SEO; без JS — звичайні «Етапи»), CTA — слот <code>.lq-slot data-form="quick-build-anim"</code> спільного <code>lead-form.v1.js</code> (у CRM — <code>…#build-anim</code>). Скрипт малює ізометричну SVG-сцену кодом (без картинок і бібліотек), закріплює її й веде за прокруткою: ділянка й геодезія → фундамент → стіни → перекриття → дах → вікна → фасад → інтерʼєр і світло. Сцени: <code>data-ba="house"</code> (будівництво, головні — компактно <code>data-ba-c</code>) і <code>data-ba="flat"</code> (ремонт квартири: 3D-замір → … → здача й гарантія). <code>data-ba-m</code> — стартовий матеріал стін (block / brick / frame / brus), перемикач «Стіни» — у блоці. <code>data-ba-d</code> — сторінка на межі бюджету 64 КБ: в HTML лише назви етапів, описи підставляє скрипт.</p><p>Доступність: кнопки етапів (Tab, ←/→, Home/End, <code>aria-current="step"</code>), «Пропустити анімацію» (перше Tab) → CTA; <code>prefers-reduced-motion</code> — без закріплення й руху, статичні кадри зі степером. Опис етапу — у зарезервованому місці (CLS 0). На телефоні — сцена згори, під нею активний етап, степер не перекриває нижня панель. Clarity: <code>build_anim_end</code>, <code>build_anim_cta</code>, <code>build_anim_mat</code>.</p></div>
+<div class="sg-demo" style="padding:0"><section class="ba" id="build-anim" data-ba="house" data-ba-c aria-labelledby="ba-h"><div class="w"><h2 id="ba-h">Будинок з нуля — за 8 кроків</h2><p class="ba-p">Прокручуйте — і будинок збереться так само, як на ділянці. Фотозвіти з обʼєкта — раз на <span class="nw">1–2</span> тижні. <a href="/budivnytstvo-budynkiv-kyiv">Будівництво будинків →</a></p><ol class="steps ba-st"><li><div><b>Ділянка й геодезія</b><span>Геодезист Микола знімає рельєф і виносить осі будинку.</span></div></li><li><div><b>Фундамент</b><span>Прораб і власна бригада армують і бетонують основу.</span></div></li><li><div><b>Стіни й каркас</b><span>Газоблок, цегла, каркас чи брус — за обраною технологією.</span></div></li><li><div><b>Перекриття</b><span>Бригада робить перекриття між поверхами й над другим.</span></div></li><li><div><b>Дах</b><span>Крокви, утеплення й покрівля; хід робіт знімаємо з дрона.</span></div></li><li><div><b>Вікна й двері</b><span>Ставимо вікна й вхідні двері — коробка закрита від погоди.</span></div></li><li><div><b>Фасад</b><span>Утеплення й оздоблення фасаду, водостоки, відмостка.</span></div></li><li><div><b>Інтерʼєр і світло</b><span>Інженерія, оздоблення, меблі від наших меблярів — і світло у вікнах.</span></div></li></ol><div class="ba-cta" id="ba-cta"><h3>Порахувати мій будинок</h3><div class="lq-slot" data-form="quick-build-anim" data-service="Будівництво будинків"></div><p class="ba-team">Хто ці люди — на сторінці <a href="/about">Про нас</a></p></div></div></section><script src="/assets/build-anim.v1.js?v=a9b307ae" data-css="/assets/build-anim.v1.css?v=5943b014" defer></script></div></div>
+</section>
+
 <section id="motion"><h2>Анімації</h2>
 <p class="sg-note">Одна система на весь сайт: блок <code>ui-polish</code> у сторінках (поява секцій і карток <code>.rv</code>, лайтбокси, підказки для горизонтальних рядів) + розділ «Motion» у <code>/assets/site-chrome.v1.css</code> і <code>.js</code> (усе нижче). Нові ефекти додаємо туди, а не в сторінки. Правила: H1 і перше фото не анімуємо; те, що видно при завантаженні, не ховаємо; рух — лише <code>transform</code>/<code>opacity</code>; <code>prefers-reduced-motion: reduce</code> — усе статичне; ніякого автопрокруту сторінки.</p>
 <div class="sg-c"><div class="sg-meta"><code>[data-reveal]</code> → <code>.mo-rv</code> / <code>.mo-in</code><p>Поява знизу (16px; opacity 0.35 с, зсув 0.4 с, <code>cubic-bezier(.2,.7,.2,1)</code> — токен <code>--ease-out</code>) при скролі, сусіди — по черзі з кроком 80 мс. Автоматично — для <code>ol.steps&gt;li</code>, <code>.facts&gt;div</code>, <code>.cards&gt;a</code>, блоків «Про нас» і статті блогу; для нового блоку — атрибут <code>data-reveal</code>.</p></div>
@@ -435,6 +442,7 @@ code{font-size:.92em}
 <div class="sg-demo"><p class="sg-note" style="margin:0">Наведіть на картки в розділах вище.</p></div></div>
 <div class="sg-c"><div class="sg-meta">Тривалості й переходи<p>Поява блоків — <span class="nw">350–400</span> мс; решта переходів — до 0.55 с, усе з <code>--ease-out</code>: акордеон 0.45 с, лайтбокс 0.35/0.45 с, «Показати ще» 0.55 с, шапка й панель 0.5 с. Переходи між сторінками (View Transitions): стара сторінка згасає за 0.2 с, нова зʼявляється за 0.45 с зі зсувом 10px; шапка й панель стоять на місці. Стрічки рухаються через <code>translate3d</code> на окремому шарі (без мерехтіння в Safari) і стартують після завантаження шрифтів (тривалість циклу не змінюється посеред руху).</p></div></div>
 <div class="sg-c"><div class="sg-meta">Де анімація свідомо відсутня<p>Hero (H1, лід, перше фото — це LCP), шапка й мобільне меню (лише fade), форми (поява заважає вводу), /ozdoba і кабінет (власні інтерфейси), абзаци статей (текст читаємо одразу).</p></div></div>
+<div class="sg-c" id="vt-pf"><div class="sg-meta">Переходи портфоліо і прогрес читання<p>View Transitions між сторінками: <code>/portfolio</code> → <code>/proekty/…</code> — «наближення» (тип <code>pf-in</code>), назад — «віддалення» (<code>pf-out</code>), проєкт → проєкт — зсув убік (<code>pf-next</code>); тип ставить <code>site-chrome.v1.js</code> (подія <code>pagereveal</code>, Chrome 125+), анімації — <code>site-chrome.v1.css</code>. Анімується весь кадр сторінки (root), окремо H1 і перше фото — ні. Статті блогу: смужка прогресу читання вгорі (<code>.hero&gt;article::before</code>) — лише CSS, <code>animation-timeline: scroll(root)</code>, 0 байтів JS; без підтримки або з <code>prefers-reduced-motion</code> — немає.</p></div><div class="sg-demo"><p class="sg-note" style="margin:0">Перевірка: відкрийте <a href="/portfolio">/portfolio</a> → будь-який проєкт у Chrome; або будь-яку статтю <a href="/blog">блогу</a>.</p></div></div>
 </section>
 
 <section id="states"><h2>Стани hover / focus / disabled</h2>
@@ -480,7 +488,7 @@ requestAnimationFrame(function(){requestAnimationFrame(function(){c.forEach(func
 </div>
 </footer><!--/chrome:f-->
 <link rel="stylesheet" href="/assets/media.v1.css?v=b2206304"><script src="/assets/media.v1.js?v=11148792" defer></script><script src="/assets/quiz.v1.js?v=24a156cd" defer></script>
-<script src="/assets/site-chrome.v1.js?v=0b8bf2b8" defer></script>
+<script src="/assets/site-chrome.v1.js?v=29337942" defer></script>
 <script src="/assets/cas-map.v1.js?v=b6563f75" defer></script>
 </body>
 </html>

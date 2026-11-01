@@ -76,7 +76,8 @@ MSG = (('Telegram', 'https://t.me/+380978667755'), ('Viber', 'viber://chat?numbe
 STYLE_RX = re.compile(r'<style id="lead-ui">.*?</style>\n?', re.S)  # старий інлайн-CSS: тепер у /assets/site-chrome.v1.css
 QUICK_RX = re.compile(r'\n?[ \t]*<!--lq-->.*?<!--/lq-->', re.S)
 X_RX = re.compile(r'<!--lqx-->.*?<!--/lqx-->', re.S)
-SLOT_RX = re.compile(r'<div class="lq-slot[^"]*"[^>]*></div>')
+# слоти, які ставить цей скрипт; quick-build-anim — у блоці «Будинок з нуля» (tools/site/buildanim.py), його не чіпаємо
+SLOT_RX = re.compile(r'<div class="lq-slot[^"]*"(?![^>]*data-form="quick-build-anim")[^>]*></div>')
 SCRIPT = '<script src="/assets/lead-form.v1.js" defer></script>'
 
 e = lambda s: html.escape(s, quote=False)
