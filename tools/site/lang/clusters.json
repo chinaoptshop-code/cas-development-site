@@ -365,5 +365,9 @@
  "geo-europe": {
   "uk": "/remont-i-budivnytstvo-yevropa",
   "ru": "/ru/remont-i-stroitelstvo-evropa"
+ },
+ "case-monpark": {
+  "uk": "/proekty/monpark-povnyi-proekt",
+  "ru": "/ru/proekty/monpark-polnyy-proekt"
  }
 }
