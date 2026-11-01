@@ -10,7 +10,10 @@
 
 ## Сайт: UI-kit і правила (з 22.10.2026)
 
-- Код сайту в `main` викладає лише хмарна сесія; інші сесії дають гілки або файли через Drive.
+- Код сайту в `main` викладають хмарна сесія і Mac mini (JARVIS) — будь-які зміни сайту й статті (Михайло 01.11.2026). Dell і інші сесії дають гілки або файли через Drive.
+  Перед кожним пушем у `main`: `git pull --no-rebase origin main`, `bash tools/build-all.sh`, `python3 tools/site/chrome.py --check`, `python3 tools/site/i18n.py --check`,
+  `python3 tools/ui/ui.py budget`, `python3 tools/site/seo.py`, `python3 tools/blog/build.py --check`, `node tools/tests/run.mjs` — лише якщо все OK. Без force-push і rebase спільної історії;
+  зміни functions/ і migrations/ — тільки з тестами `tools/tests/`. Ціни й факти — лише з цього файлу.
 - Перед комітом: `python3 tools/ui/ui.py scan` (звіт `tools/ui/report.md`) і `python3 tools/ui/ui.py budget`.
 - Каталог компонентів — `/styleguide/` (noindex). Нові сторінки — лише з цих блоків.
 - Шрифти — тільки власні з `/fonts/` (Cormorant Garamond + Manrope), без Google Fonts.
