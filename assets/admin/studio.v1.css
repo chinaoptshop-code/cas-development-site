@@ -39,6 +39,7 @@ body.adm-manager{--cmd:var(--brass);--cmd-2:var(--glow)}
 .st-grid{display:grid;gap:12px}
 @media(min-width:980px){.st-grid{grid-template-columns:repeat(3,1fr)}.st-grid .s2{grid-column:span 2}.st-grid .s3{grid-column:1/-1}}
 .st-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0}
+.st-inv textarea{margin:8px 0;min-height:70px;font-size:16px}
 .st-card h3{font-size:var(--fs-body);margin:0 0 10px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-family:inherit}
 .st-card h3 small{color:var(--muted);font-weight:400;font-size:12px}
 .fn{display:grid;gap:4px}

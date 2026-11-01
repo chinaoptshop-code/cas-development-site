@@ -80,10 +80,12 @@
     return K().api('/api/admin/staff').then(function (d) {
       var R = d.roles, roleOpt = function (v) { return d.assignable.map(function (k) { return '<option value="' + k + '"' + (k === v ? ' selected' : '') + '>' + esc(R[k].label) + '</option>'; }).join(''); };
       var PL = d.perms;
+      var inv = INVITE; INVITE = null;
       L.innerHTML = '<div class="st-head"><h2>Персонал і доступ</h2></div>' +
+        (inv ? '<div class="note st-inv" role="status"><b>' + esc(inv.name) + ' — додано.</b> Надішліть йому повідомлення:<textarea readonly rows="3" data-inv>' + esc(inv.text) + '</textarea><button type="button" class="btn sm" data-copy>Скопіювати</button></div>' : '') +
         '<details class="st-card add"' + (d.staff.length < 2 ? ' open' : '') + '><summary><b>+ Додати працівника</b></summary>' +
         '<form class="form two" data-add novalidate><label class="f"><span>Імʼя</span><input name="name" required placeholder="Олег Петренко" autocomplete="off"></label>' +
-        '<label class="f"><span>Роль</span><select name="role">' + roleOpt('foreman') + '</select></label>' +
+        '<label class="f"><span>Роль</span><select name="role">' + roleOpt(d.staff.some(function (s) { return s.role !== 'owner'; }) ? 'foreman' : 'manager') + '</select></label>' +
         '<label class="f"><span>Telegram id <small>(цифри; бот @userinfobot)</small></span><input name="tg" inputmode="numeric" placeholder="123456789"></label>' +
         '<label class="f"><span>або пошта Google</span><input name="email" type="email" inputmode="email" placeholder="name@gmail.com"></label>' +
         '<label class="f"><span>або телефон</span><input name="phone" type="tel" inputmode="tel" placeholder="+380 97 123 45 67"></label>' +
@@ -105,6 +107,7 @@
         '<div class="tscroll"><table class="adm perm-t"><thead><tr><th>Право</th>' + Object.keys(R).map(function (k) { return '<th>' + esc(R[k].label) + '</th>'; }).join('') + '</tr></thead><tbody>' +
         Object.keys(PL).map(function (p) { return '<tr><td>' + esc(PL[p]) + '<br><small><code>' + esc(p) + '</code></small></td>' + Object.keys(R).map(function (k) { return '<td class="c">' + (R[k].perms.indexOf(p) >= 0 ? '<span class="yes" aria-label="так">●</span>' : '<span class="no" aria-label="ні">·</span>') + '</td>'; }).join('') + '</tr>'; }).join('') +
         '</tbody></table></div>';
+      var cp = $('[data-copy]', L); if (cp) cp.onclick = function () { var t = $('[data-inv]', L); t.select(); (navigator.clipboard ? navigator.clipboard.writeText(t.value) : Promise.reject()).then(function () { K().toast('Скопійовано'); }, function () { document.execCommand && document.execCommand('copy'); }); };
       var f = $('[data-add]', L);
       f.onsubmit = function (e) {
         e.preventDefault();
@@ -112,7 +115,10 @@
         var err = !b.name ? 'Вкажіть імʼя' : !b.tg && !b.email && !b.phone ? 'Вкажіть Telegram id, пошту або телефон' : b.tg && !/^\d{1,20}$/.test(b.tg) ? 'Telegram id — лише цифри' : '';
         if (err) { $('[data-e]', f).textContent = err; return; }
         var btn = $('button[type=submit]', f); btn.disabled = true;
-        K().api('/api/admin/staff', { method: 'POST', body: b }).then(function (r) { K().toast(r.linked ? 'Додано — акаунт уже є, доступ діє з наступного входу' : 'Додано — працівник отримає доступ при першому вході'); staff(L); },
+        K().api('/api/admin/staff', { method: 'POST', body: b }).then(function (r) {
+          var how = b.tg ? 'через Telegram' : b.email ? 'через Google (' + b.email + ')' : 'за номером ' + b.phone + ' (через бота)';
+          INVITE = { name: b.name, text: 'Вітаю! Вам відкрито робочий кабінет CAS Development (' + (R[b.role] ? R[b.role].label.toLowerCase() : b.role) + '). Зайдіть на https://cas-develop.com/kabinet/team і увійдіть ' + how + ' — задачі, обʼєкти й сповіщення будуть там.' };
+          K().toast(r.linked ? 'Додано — акаунт уже є, доступ діє з наступного входу' : 'Додано — працівник отримає доступ при першому вході'); staff(L); },
           function (er) { btn.disabled = false; $('[data-e]', f).textContent = er.message; });
       };
       var patch = function (id, body, msg) { return K().api('/api/admin/staff', { method: 'PATCH', body: Object.assign({ id: id }, body) }).then(function () { K().toast(msg); staff(L); }, function (e) { K().toast(e.message, true); staff(L); }); };
@@ -129,6 +135,7 @@
     });
   }
 
+  var INVITE = null; // текст-запрошення для щойно доданого працівника (показуємо один раз)
   // ===================== Аудит =====================
   var ACT = {
     'lead.create': 'Нова заявка', 'lead.update': 'Зміна заявки', 'order.update': 'Зміна замовлення', 'crm.export': 'Експорт CSV',
