@@ -5,7 +5,7 @@
   python3 tools/site/captions.py --check    # лише перевірка (код 1, якщо щось не оновлено)
 
 Перша фотографія кожного проєкту в галереї отримує підпис «<назва-посилання> — обʼєкт · статус», наступні — лише назву.
-Статус «Реалізовано» — тільки Tetris Hall, Dolls Salon, Office Chicago (CLAUDE.md); решта — «Дизайн-проєкт».
+Статус «Реалізовано» — Tetris Hall, Dolls Salon, Office Chicago, Monpark (CLAUDE.md); решта — «Дизайн-проєкт».
 Ідемпотентно; landing.py викликає apply() під час збірки, build-all.sh — для ручних сторінок.
 """
 import glob, html, os, re, sys
@@ -27,7 +27,7 @@ P = {
     'Petrivtsi House': ('petrivtsi-house', 'будинок 320 м², Петрівці: архітектура й інтерʼєр', 'дом 320 м², Петровцы: архитектура и интерьер', 'house, 320 m², Petrivtsi: architecture and interior', D),
     'Hodos Villa': ('hodos-villa', 'вілла 500 м², Київ', 'вилла 500 м², Киев', 'villa, 500 m², Kyiv', D),
     'Yacht Restaurant': ('yacht-restaurant', 'ресторан: концепція, зал і бар', 'ресторан: концепция, зал и бар', 'restaurant: concept, dining room and bar', D),
-    'Monpark': ('monpark', 'ресторан із терасою й павільйоном', 'ресторан с террасой и павильоном', 'restaurant with a terrace and pavilion', D),
+    'Monpark': ('monpark', 'ресторан із терасою й павільйоном', 'ресторан с террасой и павильоном', 'restaurant with a terrace and pavilion', R),
     'Pidgirland': ('pidgirland', 'будинок 260 м², Київська обл.', 'дом 260 м², Киевская обл.', 'house, 260 m², Kyiv region', D),
     'A-Frame House': ('a-frame-house', 'будинок A-frame: архітектура й інтерʼєр', 'дом A-frame: архитектура и интерьер', 'A-frame house: architecture and interior', D),
     'Yablu Rest': ('yablu-rest', 'рецепція, відпочинок і конференц-зал', 'рецепция, отдых и конференц-зал', 'reception, lounge and conference hall', D),
