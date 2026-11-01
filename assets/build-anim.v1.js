@@ -383,7 +383,16 @@
     });
     return cssP;
   }
-  function start(sec) { css().then(function () { enhance(sec); }); }
+  // CLS = 0: блок перебудовується лише поза кадром. Якщо сторінка відкрилась одразу на ньому (якір, відновлення прокрутки),
+  // людина бачить звичайний список етапів, а сцена зʼявиться, щойно блок вийде з кадру (вище/нижче — скрол-якоріння тримає екран).
+  function inView(sec) { var r = sec.getBoundingClientRect(); return r.top < (W.innerHeight || 0) && r.bottom > 0; }
+  function start(sec) {
+    css().then(function () {
+      if (!inView(sec) || !('IntersectionObserver' in W)) return enhance(sec);
+      var o = new IntersectionObserver(function (es) { if (!es[es.length - 1].isIntersecting) { o.disconnect(); enhance(sec); } });
+      o.observe(sec);
+    });
+  }
   if ('IntersectionObserver' in W) {
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); start(e.target); } });
