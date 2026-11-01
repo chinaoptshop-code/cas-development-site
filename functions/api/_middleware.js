@@ -9,11 +9,12 @@
 // Сервер-сервер виклики (Telegram → /api/tg/webhook, GitHub Actions → /api/admin/lead-sla, n8n → /api/leads з ключем)
 // не мають Origin/Sec-Fetch-Site і шлють JSON — їх перевірка не зачіпає; там свої секрети в заголовках.
 //
-// Розмір тіла: Content-Length понад 64 КБ → 413 (окрім /api/admin/repo — фото до 30 МБ, ліміти в functions/_gh.js).
+// Розмір тіла: Content-Length понад 64 КБ → 413 (окрім /api/admin/repo — фото до 30 МБ, ліміти в functions/_gh.js;
+// /api/team/upload — фото з обʼєкта до 1,5 МБ у base64).
 // Відповіді API: nosniff, заборона фреймів, CSP default-src 'none', no-store — JSON не може стати сторінкою.
 
 const OWN = ['https://cas-develop.com', 'https://www.cas-develop.com'];
-const BIG = { '/api/admin/repo': 31 * 1024 * 1024 };
+const BIG = { '/api/admin/repo': 31 * 1024 * 1024, '/api/team/upload': 2.3 * 1024 * 1024 };
 const MAX = 64 * 1024;
 const SAFE = new Set(['GET', 'HEAD', 'OPTIONS']);
 

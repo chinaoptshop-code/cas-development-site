@@ -172,6 +172,10 @@
     return h;
   }
 
+  // після входу — у свій інтерфейс: працівник → /kabinet/team або /kabinet/admin (c.home з /api/me), клієнт — лишається тут
+  function goHome() {
+    A.me(true).then(function (c) { if (c && c.home && c.home !== '/kabinet' && TAB === 'overview') location.href = c.home; else location.reload(); }, function () { location.reload(); });
+  }
   /* ---------- гість ---------- */
   function guest() {
     var perks = [
@@ -183,7 +187,7 @@
     paint('<div class="kb-guest"><section class="kb-card glow kb-in"><p class="kb-eyebrow">Особистий кабінет</p><h2>Усе про ваші замовлення й проєкти — в одному місці</h2>' +
       '<ul class="kb-perks">' + perks.map(function (p) { return '<li>' + svg(p[0]) + '<div><b>' + p[1] + '</b><span>' + p[2] + '</span></div></li>'; }).join('') + '</ul></section>' +
       '<section class="kb-card kb-in" aria-labelledby="kb-login-h"><h2 id="kb-login-h">Увійти</h2><div id="kb-login"></div></section></div>');
-    A.login(document.getElementById('kb-login'), function () { location.reload(); });
+    A.login(document.getElementById('kb-login'), goHome);
     var lead = document.getElementById('kb-lead'); if (lead && TAB !== 'object') lead.hidden = false; // заявка на камеру — лише для обʼєкта клієнта
   }
 
@@ -215,7 +219,7 @@
         '<p>' + (since ? 'З нами з ' + dfmt(since, { month: 'long', year: 'numeric' }) + ' · ' : '') + esc(c.provider === 'telegram' ? (c.username ? '@' + c.username : 'Telegram') : c.provider === 'phone' ? (c.phone || '') : (c.email || '')) + '</p>' +
         '<div class="kb-stats"><a class="kb-chip" href="/kabinet/zamovlennia"><b>' + act.length + '</b> активн' + (act.length === 1 ? 'е' : 'их') + ' замовлен' + (act.length === 1 ? 'ня' : 'ь') + '</a>' +
         '<a class="kb-chip" href="/kabinet/obrane"><b>' + F.length + '</b> в обраному</a><a class="kb-chip" href="/kabinet/proekty"><b>' + PR.length + '</b> проєкт' + (PR.length === 1 ? '' : PR.length > 1 && PR.length < 5 ? 'и' : 'ів') + '</a></div></div>' +
-        (c.admin ? '<a class="btn ghost sm" href="/kabinet/admin">Облік замовлень</a>' : '') + '</div></section>';
+        (c.staff ? '<a class="btn ghost sm" href="' + esc(c.staff.home) + '">' + (c.staff.home === '/kabinet/admin' ? 'Майстер-панель' : 'Кабінет працівника') + '</a>' : c.admin ? '<a class="btn ghost sm" href="/kabinet/admin">Облік замовлень</a>' : '') + '</div></section>';
       // замовлення
       var o = act[0] || O[0];
       h += '<section class="kb-card s3 kb-in" aria-labelledby="kb-w-o"><div class="kb-ch"><h2 id="kb-w-o">Замовлення</h2><a class="lnk" href="/kabinet/zamovlennia">Усі →</a></div>';

@@ -1,6 +1,7 @@
 // Помічники кабінету клієнта v2 (functions/api/account/*, functions/api/admin/projects.js).
 // Таблиці — migrations/0005_account.sql; працюють і до її застосування (порожні дані замість помилки).
-import { bad, currentClient, isAdmin, json, readJSON } from './_lib.js';
+import { bad, currentClient, json, readJSON } from './_lib.js';
+import { need } from './_roles.js';
 
 // Етапи замовлення в кабінеті. Ключі — orders.status воронки 0004_crm.sql; старі статуси 0001 зводимо до них.
 export const STAGES = [
@@ -28,11 +29,12 @@ export async function client(request, env) {
   return { c };
 }
 
-export async function admin(request, env) {
+// Працівник з одним із прав perm (functions/_roles.js): {c, x} або {error}
+export async function admin(request, env, perm) {
   const r = await client(request, env);
   if (r.error) return r;
-  if (!isAdmin(env, r.c)) return { error: bad('Немає доступу', 403) };
-  return r;
+  const { x, error } = await need(request, env, perm);
+  return error ? { error } : { c: r.c, x };
 }
 
 export async function body(request, max = 16 * 1024) {
