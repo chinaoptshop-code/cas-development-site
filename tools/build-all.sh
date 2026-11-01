@@ -18,6 +18,7 @@ python3 tools/site/captions.py  # підписи галерей: обʼєкт, �
 python3 tools/site/casmap.py    # карти: «Карта проєктів» у /portfolio, офіс у /contact (лендинги контактів — через landing.py)
 python3 tools/site/quiz.py      # квіз-калькулятор перед формою заявки (головні uk/ru/en, ремонт, будівництво)
 python3 tools/site/media.py     # тур 360° (/tury/<slug>) на сторінках проєктів, відео YouTube, канал у sameAs — з tools/site/media.json
+python3 tools/site/buildanim.py # «Будинок з нуля» / «Ремонт з нуля» — scroll-анімація збірки (будівництво, ремонт квартир, головні)
 python3 tools/site/chrome.py
 python3 tools/site/chrome.py --check
 python3 tools/site/i18n.py --check

@@ -13,6 +13,8 @@ SEO й читачі екрана; без JS це звичайний список
 
 Бюджет лендингу 64 КБ (tools/ui/ui.py): якщо повний текст не вміщується із запасом, на сторінку йдуть лише назви етапів,
 а описи підставляє скрипт (той самий текст — словник D у build-anim.v1.js; тримати синхронно з T нижче).
+На ручних сторінках будівництва (budivnytstvo-budynkiv-kyiv, ru/stroitelstvo-domov-kiev) блок замінив розділ «Як працюємо»
+(01.11.2026, бюджет 64 КБ): там блок стоїть перед «Гарантіями». Сторінки «Вартість …» без блоку — не вміщуються в бюджет.
 Факти — лише з CLAUDE.md (команда з /about, гарантія 36 міс., фотозвіти раз на 1–2 тижні), без цін.
 Генератори (landing.py) блоку не знають: build-all.sh запускає цей скрипт після них, перед chrome.py.
 """
@@ -162,7 +164,7 @@ def block(lang, scene, compact, tier=0, mat=''):
 
 
 # де ставимо: перед «Як працюємо», інакше перед «Гарантіями», квізом чи формою; на головній — перед «Наші проєкти»
-HOW = re.compile(r'<section><div class="w">\s*<h2>(?:Як працюємо|Как работаем|How we work)</h2>')
+HOW = re.compile(r'<section><div class="w">\s*<h2>(?:Як працюємо|Как (?:мы )?работаем|How we work)</h2>')
 ANCHORS = ('<!--cas:guarantees-->', '<!--quiz-->', '<section id="zayavka"')
 HOME = ('<section class="proj-covers"', '<section class="pcarousel"')
 
@@ -200,10 +202,9 @@ def main():
             continue
         s = open(p, encoding='utf-8').read()
         n = apply(s, rel)
-        if n != s:
-            n = chrome.versions(n)
-        if n != s and n.replace(' ', ' ') == s.replace(' ', ' '):
-            n = s  # відрізняється лише нерозривними пробілами (їх ставить chrome.nbsp_prices) — не чіпаємо
+        if n != s:  # та сама типографіка, що ставить chrome.py (нерозривні пробіли, <span class="nw">), і ?v= файлів
+            m = re.search(r'<html[^>]*\blang="([a-z]{2})', n)
+            n = chrome.versions(chrome.nbsp_prices(n, m.group(1) if m else None))
         if n != s:
             bad.append(rel)
             if not check:

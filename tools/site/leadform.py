@@ -13,7 +13,7 @@
     «Або напишіть: Telegram · Viber · WhatsApp» (.lq-alt) і рядок довіри .lq-tr (150+ проєктів з 2016, гарантія 36 міс.,
     власні бригади, Google 4,8★ — лише ці факти). Обидва рядки — між <!--lqx--> і <!--/lqx-->.
   • Швидка заявка в один рядок (form.lq, між <!--lq--> і <!--/lq-->) — у hero лендингів послуг одразу після кнопок
-    (.w.hero .btns), з рядком месенджерів.
+    (.w.hero .btns), з рядком месенджерів; стандартна кнопка «Отримати кошторис» над нею стає «Подзвонити» (tel:, вторинна).
   • Місця для компактного «Номер → передзвонимо» (<div class="lq-slot" data-form="…">; саму форму будує
     /assets/lead-form.v1.js — у HTML лише ~60 байтів, бо лендинги на межі бюджету 64 КБ):
       quick-prices — після таблиці цін лендингу (<!--/cas:prices-->), quick-portfolio — після галереї «Наші проєкти»
@@ -219,6 +219,39 @@ def quick_html(lang, service, source, form='quick-hero', idp='lq'):
             f'<div class="lq-ok" role="status" tabindex="-1" hidden>{e(t["ok"])}</div><!--/lq-->')
 
 
+TEL = 'tel:+380978667755'
+CALL_UK = {'uk': ('Подзвонити', 'Отримати кошторис'), 'ru': ('Позвонить', 'Получить смету')}
+
+
+def _call(lang):
+    """(«Подзвонити», стандартний CTA «Отримати кошторис») мовою сторінки: uk/ru — тут, інші — tools/site/lang/<мова>.json (landing)."""
+    if lang in CALL_UK:
+        return CALL_UK[lang]
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import i18n
+        t = i18n.ui(lang)['landing']
+        return t['call'], t['cta']
+    except Exception:
+        return None
+
+
+def call_btns(b, lang):
+    """Перший екран лендингу (Михайло 01.11.2026): кнопка «Отримати кошторис» над компактною формою → «Подзвонити» (tel:)
+    у стилі вторинної кнопки; дубль із номером телефону (та сама дія) прибираємо. Свої CTA сторінок (напр. «Отримати зразок
+    договору») не чіпаємо. Ідемпотентно."""
+    c = _call(lang)
+    if not c:
+        return b
+    call, cta = c
+    # пробіли в CTA могли стати нерозривними (chrome.nbsp_prices)
+    rx = re.compile(r'<a class="btn main" href="#zayavka">' + r'[  ]'.join(re.escape(w) for w in e(cta).split(' ')) + '</a>')
+    if not rx.search(b):
+        return b
+    b = re.sub(r'\n?[ \t]*<a class="btn" href="' + re.escape(TEL) + r'">[^<]*</a>', '', b)
+    return rx.sub(lambda m: f'<a class="btn" href="{TEL}">{e(call)}</a>', b, 1)
+
+
 def add_quick(s, lang):
     """Швидка заявка в hero лендингу — одразу після першого рядка кнопок (.w.hero .btns)."""
     old = QUICK_RX.search(s)
@@ -232,6 +265,9 @@ def add_quick(s, lang):
     if not hero or b < 0 or b > hero[1]:
         return s
     end = s.find('</div>', b)
+    btns = call_btns(s[b:end], lang)
+    s = s[:b] + btns + s[end:]
+    end = b + len(btns)
     sv = (re.search(r'data-service="([^"]*)"', m.group(0)) or [None, ''])[1]
     src = (re.search(r'data-source="([^"]*)"', m.group(0)) or [None, ''])[1]
     sv = html.unescape(sv)
