@@ -1,25 +1,25 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 833 (MAIN 5, LAND 478, інші 350). HTML разом 47073 КБ, з них інлайн CSS 17764 КБ і JS 5777 КБ.
+Сторінок: 834 (MAIN 5, LAND 479, інші 350). HTML разом 47137 КБ, з них інлайн CSS 17779 КБ і JS 5784 КБ.
 
 ## Проблеми
 
 - **Без Clarity** (1): tury.html
 - **Навігація через onclick** (1): portfolio.html(20)
 - **Непідтверджені ціни** (69): ar/renovation-calculator.html['$165 000 ', '$33 000 '], biznes-pid-kliuch-kyiv.html['$52 500'], blog/akustyka-open-space-bez-hluhykh-peregorodok.html['$35 000 '], blog/bryf-dlia-dyzainera-interieru.html['$44 000'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/chornovyi-i-chystovyi-remont-riznytsia.html['$38 500 '], blog/dyzain-i-remont-penthausa-pid-kliuch.html['$115 500  ', '$174 300', '$52 500  ', '$6 300', '$6 300  '], blog/dyzain-interieru-onlain-budynok-za-kordonom.html['$7 500'], blog/dyzain-interieru-z-choho-pochaty.html['$3 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'], blog/dyzain-ofisu-z-choho-pochaty.html['$6 000 '] …
-- **Класи поза /styleguide/ (warning, `ui.py classes`)** (5): .acc-box, .row, .tm-page, .tm-sheet, .tm-toast
+- **Класи поза /styleguide/ (warning, `ui.py classes`)** (8): .acc-box, .cover, .dw, .row, .rz, .tm-page, .tm-sheet, .tm-toast
 
 ## Токени
 
-- `--mu`: {'#6A6153': 5, '#938c84': 812}
-- `--bg2`: {'#100e0c': 812, '#EDEBE4': 5}
+- `--mu`: {'#6A6153': 5, '#938c84': 813}
+- `--bg2`: {'#100e0c': 813, '#EDEBE4': 5}
 - Копій адреси вебхука форми: 0 на 0 сторінках
 
 ## Сторінки
 
 | сторінка | тип | HTML КБ | gzip КБ | CSS КБ | JS КБ | розмірів шрифту | тегів |
 |---|---|---|---|---|---|---|---|
-| portfolio.html | main | 255.1 | 37.1 | 48.2 | 11.9 | 26 | 1911 |
+| portfolio.html | main | 255.3 | 37.2 | 48.2 | 11.9 | 26 | 1912 |
 | index.html | main | 144.6 | 31.2 | 53.2 | 14.9 | 26 | 739 |
 | ozdoba/komplekty.html | other | 119.5 | 28.8 | 32.4 | 7.9 | 14 | 1530 |
 | ozdoba/prais.html | other | 114.4 | 27.8 | 5.8 | 1.1 | 9 | 3022 |
@@ -370,6 +370,7 @@
 | blog/rekonstruktsiia-chy-novyi-budynok.html | land | 63.0 | 18.1 | 14.4 | 7.0 | 7 | 352 |
 | blog/tekhnichnyi-nahliad-za-remontom-koly-potriben.html | land | 63.0 | 18.3 | 14.4 | 7.0 | 7 | 358 |
 | ru/stoimost-stroitelstva-doma-kiev.html | land | 63.0 | 17.4 | 13.6 | 7.0 | 7 | 484 |
+| proekty/monpark-povnyi-proekt.html | land | 62.9 | 15.5 | 14.4 | 7.7 | 8 | 506 |
 | blog/skilky-tryvaie-remont-kvartyry-v-novobudovi.html | land | 62.8 | 18.1 | 14.4 | 7.0 | 7 | 348 |
 | blog/komplektatsiia-interieru-samostiino-chy-z-komplektatorom.html | land | 62.5 | 18.3 | 14.4 | 7.0 | 7 | 358 |
 | blog/planuvalne-rishennia-koly-dostatno.html | land | 62.5 | 18.1 | 14.4 | 7.0 | 7 | 341 |
@@ -478,10 +479,10 @@
 | remont-kvartyry-zhk-bulvar-fontaniv.html | land | 54.6 | 15.2 | 13.6 | 7.0 | 7 | 432 |
 | remont-kvartyry-zhk-maxima-residence.html | land | 54.6 | 15.1 | 13.6 | 7.0 | 7 | 431 |
 | ru/remont-kvartiry-zhk-nordica-residence.html | land | 54.6 | 15.2 | 13.6 | 7.0 | 7 | 431 |
+| ru/dizayn-restorana-kafe-kiev.html | land | 54.5 | 14.9 | 13.6 | 7.0 | 7 | 423 |
 | ru/remont-kvartiry-zhk-rusaniv-residence.html | land | 54.5 | 15.3 | 13.6 | 7.0 | 7 | 430 |
 | remont-kvartyry-zhk-hvardiiskyi.html | land | 54.4 | 15.2 | 13.6 | 7.0 | 7 | 431 |
 | remont-kvartyry-zhk-nordica-residence.html | land | 54.4 | 15.2 | 13.6 | 7.0 | 7 | 431 |
-| ru/dizayn-restorana-kafe-kiev.html | land | 54.4 | 14.9 | 13.6 | 7.0 | 7 | 422 |
 | ru/remont-kvartiry-zhk-gvardeyskiy.html | land | 54.4 | 15.2 | 13.6 | 7.0 | 7 | 431 |
 | proekty/pidgirland.html | land | 54.3 | 10.3 | 2.1 | 0.9 | 1 | 442 |
 | remont-kvartyry-zhk-rusaniv-residence.html | land | 54.3 | 15.3 | 13.6 | 7.0 | 7 | 430 |
@@ -845,7 +846,7 @@
 | proekty/tetris-hall.html | land | 33.6 | 8.1 | 2.1 | 0.9 | 1 | 339 |
 | proekty/yacht-restaurant.html | land | 32.4 | 7.7 | 2.1 | 0.9 | 1 | 323 |
 | proekty/a-frame-house.html | land | 31.0 | 7.5 | 2.1 | 0.9 | 1 | 311 |
-| proekty/monpark.html | land | 29.4 | 7.4 | 2.1 | 0.9 | 1 | 313 |
+| proekty/monpark.html | land | 30.0 | 7.6 | 2.1 | 0.9 | 1 | 319 |
 | proekty/office-chicago.html | land | 29.2 | 7.3 | 2.1 | 0.9 | 1 | 307 |
 | proekty/smart-villa.html | land | 29.2 | 7.5 | 2.1 | 0.9 | 1 | 314 |
 | proekty/house-150.html | land | 29.1 | 7.4 | 2.1 | 0.9 | 1 | 312 |
