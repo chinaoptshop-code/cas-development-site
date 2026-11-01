@@ -1,21 +1,23 @@
-// Особисті коди партнерів (дизайнери, архітектори) для менеджера: GET — список; POST — створити; PATCH — вимкнути/увімкнути, змінити знижку чи імʼя.
-import { bad, currentClient, isAdmin, json, normCode, readJSON, str } from '../../_lib.js';
+// Особисті коди партнерів (дизайнери, архітектори) — право partners.manage (functions/_roles.js):
+// GET — список; POST — створити; PATCH — вимкнути/увімкнути, змінити знижку чи імʼя. Зміни — в audit_log.
+import { bad, json, normCode, readJSON, str } from '../../_lib.js';
+import { audit, need } from '../../_roles.js';
 
 const TR = Object.fromEntries([...'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя'].map((c, n) => [c,
   ['A','B','V','H','G','D','E','IE','ZH','Z','Y','I','I','I','K','L','M','N','O','P','R','S','T','U','F','KH','TS','CH','SH','SHCH','','IU','IA'][n]]));
 const latin = s => [...String(s || '').toLowerCase()].map(c => TR[c] ?? c).join('').toUpperCase().replace(/[^A-Z0-9]+/g, '');
 const pct = v => Math.max(1, Math.min(30, Math.round(Number(v)) || 10));
 
-const admin = async (request, env) => isAdmin(env, await currentClient(request, env));
-
 export async function onRequestGet({ request, env }) {
-  if (!await admin(request, env)) return bad('Немає доступу', 403);
+  const { error } = await need(request, env, 'partners.manage');
+  if (error) return error;
   const { results } = await env.DB.prepare('SELECT * FROM partner_codes ORDER BY active DESC, created_at DESC LIMIT 500').all();
   return json({ codes: results });
 }
 
 export async function onRequestPost({ request, env }) {
-  if (!await admin(request, env)) return bad('Немає доступу', 403);
+  const { x, error } = await need(request, env, 'partners.manage');
+  if (error) return error;
   let d;
   try { d = await readJSON(request, 4096); } catch { return bad('Некоректні дані'); }
   const name = str(d.name, 120);
@@ -31,17 +33,20 @@ export async function onRequestPost({ request, env }) {
   }
   if (await env.DB.prepare('SELECT 1 FROM partner_codes WHERE code = ?').bind(code).first()) return bad('Такий код уже є', 409);
   await env.DB.prepare('INSERT INTO partner_codes (code, name, discount, active) VALUES (?, ?, ?, 1)').bind(code, name, pct(d.discount ?? 10)).run();
-  return json({ ok: true, code: await env.DB.prepare('SELECT * FROM partner_codes WHERE code = ?').bind(code).first() });
+  const row = await env.DB.prepare('SELECT * FROM partner_codes WHERE code = ?').bind(code).first();
+  await audit(env, request, x, 'partner.create', 'partner_codes', code, null, row);
+  return json({ ok: true, code: row });
 }
 
 export async function onRequestPatch({ request, env }) {
-  if (!await admin(request, env)) return bad('Немає доступу', 403);
+  const { x, error } = await need(request, env, 'partners.manage');
+  if (error) return error;
   let d;
   try { d = await readJSON(request, 4096); } catch { return bad('Некоректні дані'); }
   const p = await env.DB.prepare('SELECT * FROM partner_codes WHERE code = ?').bind(normCode(d.code)).first();
   if (!p) return bad('Код не знайдено', 404);
-  await env.DB.prepare('UPDATE partner_codes SET active = ?, discount = ?, name = ? WHERE code = ?')
-    .bind(d.active == null ? p.active : (d.active ? 1 : 0), d.discount == null ? p.discount : pct(d.discount),
-      d.name == null ? p.name : str(d.name, 120), p.code).run();
+  const n = { active: d.active == null ? p.active : (d.active ? 1 : 0), discount: d.discount == null ? p.discount : pct(d.discount), name: d.name == null ? p.name : str(d.name, 120) };
+  await env.DB.prepare('UPDATE partner_codes SET active = ?, discount = ?, name = ? WHERE code = ?').bind(n.active, n.discount, n.name, p.code).run();
+  await audit(env, request, x, 'partner.update', 'partner_codes', p.code, { active: p.active, discount: p.discount, name: p.name }, n);
   return json({ ok: true });
 }

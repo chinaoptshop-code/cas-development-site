@@ -2,8 +2,9 @@
 // GET  ?op=status | list&dir= | pages | file&path= | history | commit&sha=
 // POST {op:'save', message, files:[{path, content, encoding}], deletes:[path], expect:{path: sha|null}}
 // POST {op:'revert', sha}
-// Кожен запит — лише для адміна (сесія на сервері); токен GitHub — секрет GITHUB_CONTENT_TOKEN, клієнту не віддається.
-import { bad, json, requireAdmin } from '../../_lib.js';
+// Кожен запит — лише для працівника з правом cms.edit (functions/_roles.js; сесія на сервері); токен GitHub — секрет GITHUB_CONTENT_TOKEN, клієнту не віддається.
+import { bad, json } from '../../_lib.js';
+import { audit, need } from '../../_roles.js';
 import { GhError, LIMITS, allowedPath, b64Size, generatedHtml, gh, htmlFrame } from '../../_gh.js';
 
 const NO_TOKEN = { error: 'Потрібен токен GitHub: додайте секрет SHOP_GITHUB_CONTENT_TOKEN (інструкція — tools/admin/README.md). Без нього редагування сайту вимкнене, CRM працює.', code: 'no_token' };
@@ -15,7 +16,8 @@ const HTML_DIRS = ['', 'proekty', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'ar'
 const fail = e => e instanceof GhError ? bad(e.message, e.status) : bad('Помилка сервера: ' + (e && e.message || e), 500);
 
 export async function onRequestGet({ request, env }) {
-  if (!await requireAdmin(request, env)) return bad('Немає доступу', 403);
+  const { error } = await need(request, env, 'cms.edit');
+  if (error) return error;
   const u = new URL(request.url), op = u.searchParams.get('op') || 'status';
   const g = gh(env);
   if (!g) return op === 'status' ? json({ token: false, message: NO_TOKEN.error }) : json(NO_TOKEN, 503);
@@ -126,8 +128,9 @@ const IMG_MAGIC = b64 => {
 const cleanMsg = s => String(s || '').replace(/\[(rebuild|skip ci|ci skip)\]/gi, '').replace(/[\r\n]+/g, ' ').trim().slice(0, 160);
 
 export async function onRequestPost({ request, env }) {
-  const admin = await requireAdmin(request, env);
-  if (!admin) return bad('Немає доступу', 403);
+  const { x, error } = await need(request, env, 'cms.edit');
+  if (error) return error;
+  const admin = x.client;
   const g = gh(env);
   if (!g) return json(NO_TOKEN, 503);
   const len = +request.headers.get('content-length') || 0;
@@ -194,6 +197,7 @@ export async function onRequestPost({ request, env }) {
         files: files.map(f => ({ path: f.path, content: f.content, encoding: f.encoding === 'base64' ? 'base64' : 'utf-8' })),
         deletes,
       });
+      if (!r.unchanged) await audit(env, request, x, 'cms.save', 'repo', r.sha, null, { message: msg, files: files.map(f => f.path), deletes });
       return json({ ok: true, commit: r.sha, unchanged: !!r.unchanged });
     }
 
@@ -218,6 +222,7 @@ export async function onRequestPost({ request, env }) {
       for (const p of touched) (before[p] ? put.push({ path: p, sha: before[p] }) : del.push(p));
       const first = c.commit.message.split('\n')[0].slice(0, 120);
       const r = await g.commit({ message: `Адмінка: відкат «${first}»\n\nВідкочено коміт ${sha.slice(0, 7)} через /kabinet/admin (${who}).`, author, parent: head, files: put, deletes: del });
+      await audit(env, request, x, 'cms.revert', 'repo', r.sha, { commit: sha }, { files: touched });
       return json({ ok: true, commit: r.sha });
     }
     return bad('Невідома дія');

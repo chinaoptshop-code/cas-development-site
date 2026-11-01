@@ -1,0 +1,157 @@
+/* CAS Development — кабінет працівника /kabinet/team (assets/team.v1.js). Mobile-first, окрема «польова» світла тема:
+   читається на сонці на обʼєкті, великі кнопки (≥ 44 px), поля 16 px (iPhone не збільшує сторінку), нижня панель вкладок.
+   Вигляд навмисно відрізняється від кабінету клієнта (темний з латунню) і майстер-панелі власника (графіт зі сталевим акцентом). */
+main.tm-page{--tm-bg:#f2efe7;--tm-card:#fffdf8;--tm-ink:#17140f;--tm-mut:#5f584c;--tm-line:#ddd6c7;--tm-acc:#d9480f;--tm-acc-2:#b83c0b;--tm-ok:#2b8a3e;--tm-warn:#c92a2a;
+  max-width:none;margin:0;padding:12px 16px calc(96px + env(safe-area-inset-bottom));background:var(--tm-bg);color:var(--tm-ink);min-height:70vh}
+main.tm-page>*{max-width:760px;margin-left:auto;margin-right:auto}
+main.tm-page .crumbs,main.tm-page .crumbs a{color:var(--tm-mut)}
+main.tm-page h1{font-family:Manrope,system-ui,sans-serif;font-weight:800;font-size:clamp(1.4rem,1.2rem + 1vw,1.9rem);letter-spacing:-.01em;margin:4px auto 12px;color:var(--tm-ink)}
+.tm-page .muted{color:var(--tm-mut)}.tm-page .err{color:var(--tm-warn);font-weight:600}
+.tm-page .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tm-page .acc-wait{color:var(--tm-mut)}
+.tm-page a{color:var(--tm-acc-2)}
+.tm-page svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* привітання */
+.tm-hello{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 16px;align-items:flex-end;margin:0 0 14px}
+.tm-hello h2{font-family:Manrope,system-ui,sans-serif;font-size:1.35rem;font-weight:800;margin:2px 0 6px}
+.tm-hello p{margin:0}
+.tm-role{display:inline-block;background:var(--tm-ink);color:#fff;border-radius:999px;padding:3px 10px;font-size:13px;font-weight:700}
+.tm-link{font-weight:700;font-size:14px;margin-left:6px}
+.tm-chips{display:flex;gap:8px;flex-wrap:wrap}
+.tm-chips span{background:var(--tm-card);border:1px solid var(--tm-line);border-radius:12px;padding:8px 12px;font-size:14px}
+.tm-chips em{font-style:normal;color:var(--tm-warn);font-weight:700}
+
+/* вкладки: зверху на десктопі, знизу на телефоні */
+.tm-nav{display:flex;gap:6px;margin:0 0 14px;background:var(--tm-card);border:1px solid var(--tm-line);border-radius:16px;padding:6px}
+.tm-nav a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border-radius:12px;color:var(--tm-mut);text-decoration:none;font-weight:700;font-size:14px;position:relative}
+.tm-nav a[aria-current=page]{background:var(--tm-ink);color:#fff}
+.tm-nav a i{font-style:normal;background:var(--tm-acc);color:#fff;border-radius:999px;font-size:11px;min-width:18px;height:18px;line-height:18px;text-align:center;padding:0 5px}
+.tm-nav a:focus-visible,.tm-btn:focus-visible,.tm-page summary:focus-visible{outline:3px solid var(--tm-acc);outline-offset:2px}
+@media(max-width:700px){
+  .tm-nav{position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));z-index:70;margin:0;box-shadow:0 8px 30px rgba(0,0,0,.18)}
+  .tm-nav a{flex-direction:column;gap:2px;font-size:11px;min-height:52px}
+  .tm-nav a i{position:absolute;top:4px;right:calc(50% - 22px)}
+}
+
+/* картки */
+.tm-card,.tm-obj,.tm-lead{background:var(--tm-card);border:1px solid var(--tm-line);border-radius:18px;padding:16px;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+.tm-card+.tm-card,.tm-obj+.tm-obj{margin-top:12px}
+.tm-card h2,.tm-card h3,.tm-obj h3{font-family:Manrope,system-ui,sans-serif;margin:0 0 6px;font-size:1.1rem;font-weight:800}
+.tm-empty{text-align:center;padding:28px 16px}.tm-empty .big{font-size:40px;margin:0}
+.tm-login{max-width:520px}
+
+/* кнопки */
+.tm-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 16px;border-radius:12px;border:2px solid var(--tm-acc);background:var(--tm-acc);color:#fff;
+  font:700 15px/1.2 Manrope,system-ui,sans-serif;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .12s,background .15s}
+.tm-btn:active{transform:scale(.97)}
+.tm-btn:hover{background:var(--tm-acc-2);border-color:var(--tm-acc-2);color:#fff}
+.tm-btn.ghost{background:transparent;color:var(--tm-ink);border-color:var(--tm-line)}
+.tm-btn.ghost:hover{border-color:var(--tm-ink);background:transparent;color:var(--tm-ink)}
+.tm-btn.warn{background:#fff;color:var(--tm-warn);border-color:var(--tm-warn)}
+.tm-btn.warn:hover{background:var(--tm-warn);color:#fff}
+.tm-btn.big{width:100%;min-height:52px;font-size:16px}
+.tm-btn.sm{min-height:44px;padding:6px 12px;font-size:13px}
+.tm-btn[disabled]{opacity:.55;cursor:default}
+.tm-row,.tm-actions,.tm-contacts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tm-actions .tm-btn{flex:1 1 140px}
+.tm-contacts .tm-btn{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* задачі на сьогодні */
+.tm-tasks,.tm-leads,.tm-pick,.tm-perms{list-style:none;margin:0;padding:0}
+.tm-task{display:flex;gap:12px;background:var(--tm-card);border:1px solid var(--tm-line);border-left:5px solid var(--tm-ink);border-radius:16px;padding:14px}
+.tm-task+.tm-task,.tm-lead+.tm-lead{margin-top:10px}
+.tm-task.urgent{border-left-color:var(--tm-warn)}
+.tm-ic{width:40px;height:40px;border-radius:12px;background:var(--tm-bg);display:grid;place-items:center;flex:none}
+.tm-task.urgent .tm-ic{background:#fde8e8;color:var(--tm-warn)}
+.tm-tx{min-width:0;flex:1;display:flex;flex-direction:column;gap:2px}
+.tm-tx small{color:var(--tm-mut);font-size:13px}
+.tm-tx b{font-size:16px;line-height:1.3}
+.tm-tx .muted{display:flex;gap:4px;align-items:center;font-size:14px}
+.tm-tx .muted svg{width:16px;height:16px}
+
+/* обʼєкти */
+.tm-obj header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.tm-obj header p{margin:0;font-size:14px}
+.tm-pct{--p:0;width:56px;height:56px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:radial-gradient(closest-side,var(--tm-card) 76%,transparent 78% 100%),conic-gradient(var(--tm-ok) calc(var(--p) * 1%),var(--tm-line) 0)}
+.tm-pct b{font-size:13px}
+.tm-now,.tm-next{margin:10px 0 0;font-size:15px}
+.tm-now{background:var(--tm-bg);border-radius:10px;padding:8px 10px}
+.tm-issues{margin-top:10px;border:1px solid #f1c0c0;background:#fff5f5;border-radius:12px;padding:6px 10px}
+.tm-issues p{margin:4px 0;font-size:14px}
+.tm-more{margin-top:12px;border-top:1px dashed var(--tm-line);padding-top:8px}
+.tm-more summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+.tm-stages{list-style:none;margin:6px 0 10px;padding:0}
+.tm-stages li{position:relative;display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border-radius:10px;overflow:hidden;font-size:14px}
+.tm-stages li+li{margin-top:4px}
+.tm-stages li i{position:absolute;left:0;bottom:0;height:3px;width:var(--w);background:var(--tm-acc)}
+.tm-stages li.st-done{color:var(--tm-mut)}.tm-stages li.st-done i{background:var(--tm-ok)}
+.tm-stages li.st-active,.tm-stages li.st-review{background:var(--tm-bg);font-weight:700}
+.tm-reps>div+div{margin-top:8px}
+.tm-ph{display:flex;gap:6px;overflow-x:auto;margin-top:4px}
+.tm-ph img{width:88px;height:66px;object-fit:cover;border-radius:8px;display:block}
+.tm-obj.flash{animation:tmFlash 1.2s ease-out}
+@keyframes tmFlash{0%{box-shadow:0 0 0 4px var(--tm-acc)}100%{box-shadow:0 0 0 0 transparent}}
+
+/* заявки */
+.tm-lead-h{display:flex;justify-content:space-between;gap:8px}
+.tm-lead p{margin:6px 0 0}
+.tm-cm{font-size:14px}
+.tm-sel select{min-height:44px;border-radius:12px;border:2px solid var(--tm-line);background:#fff;color:var(--tm-ink);font:600 16px Manrope,system-ui,sans-serif;padding:6px 10px}
+.tm-perms li{padding:6px 0;border-bottom:1px solid var(--tm-line);font-size:14px}
+
+/* нижня шторка */
+dialog.tm-sheet{border:0;padding:0 16px calc(20px + env(safe-area-inset-bottom));margin:auto auto 0;width:100%;max-width:640px;max-height:92vh;border-radius:22px 22px 0 0;
+  background:var(--tm-card,#fffdf8);color:#17140f;box-shadow:0 -10px 40px rgba(0,0,0,.25)}
+dialog.tm-sheet[open]{animation:tmUp .22s cubic-bezier(.2,.8,.2,1)}
+dialog.tm-sheet::backdrop{background:rgba(10,8,6,.5)}
+@keyframes tmUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.tm-sh-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:16px 0 8px;position:sticky;top:0;background:inherit;z-index:1}
+.tm-sh-h h3{margin:2px 0 0;font:800 1.15rem Manrope,system-ui,sans-serif}
+.tm-sh-h small{color:#5f584c}
+.tm-x{min-width:44px;min-height:44px;border-radius:50%;border:1px solid #ddd6c7;background:#fff;font-size:18px;cursor:pointer;color:#17140f}
+.tm-sheet .muted{color:#5f584c}.tm-sheet .err{color:#c92a2a;font-weight:600}
+.tm-pick li{display:flex;gap:8px;margin-top:8px}
+.tm-pick .tm-btn:not(.sm){flex:1;justify-content:space-between;text-align:left}
+.tm-pick .tm-btn small{font-weight:500;opacity:.85}
+.tm-form{display:flex;flex-direction:column;gap:12px}
+.tm-photo{display:block;border:2px dashed #d9480f;border-radius:16px;background:#fff7f2;cursor:pointer;text-align:center;padding:18px 12px;color:#b83c0b}
+.tm-photo input{position:absolute;opacity:0;width:1px;height:1px}
+.tm-photo span{display:flex;flex-direction:column;align-items:center;gap:4px}
+.tm-photo svg{width:32px;height:32px}
+.tm-photo small{color:#5f584c}
+.tm-photo:focus-within{outline:3px solid #d9480f;outline-offset:2px}
+.tm-prev{display:flex;flex-wrap:wrap;gap:8px}
+.tm-prev:empty{display:none}
+.tm-prev figure{position:relative;margin:0;width:84px;height:84px}
+.tm-prev img{width:84px;height:84px;object-fit:cover;border-radius:10px;display:block}
+.tm-prev figure.up img{opacity:.55}.tm-prev figure.err img{outline:3px solid #c92a2a}
+.tm-prev button{position:absolute;top:-8px;right:-8px;width:32px;height:32px;border-radius:50%;border:0;background:#17140f;color:#fff;cursor:pointer}
+.tm-prev em{position:absolute;inset:auto 4px 4px auto;background:#c92a2a;color:#fff;border-radius:6px;padding:0 6px;font-style:normal;font-weight:800}
+.tm-prev .spin{position:absolute;inset:0;margin:auto;width:26px;height:26px;border-radius:50%;border:3px solid rgba(255,255,255,.6);border-top-color:#d9480f;animation:tmSpin .8s linear infinite}
+@keyframes tmSpin{to{transform:rotate(360deg)}}
+.tm-f{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:14px}
+.tm-f select,.tm-f textarea{font:500 16px/1.4 Manrope,system-ui,sans-serif;border:2px solid #ddd6c7;border-radius:12px;padding:10px 12px;background:#fff;color:#17140f;min-height:44px}
+.tm-f textarea{resize:vertical}
+.tm-f select:focus,.tm-f textarea:focus{border-color:#d9480f;outline:none}
+
+/* тост */
+.tm-toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:90;
+  background:#17140f;color:#fff;padding:12px 16px;border-radius:14px;font-weight:600;font-size:15px;max-width:min(92vw,520px);transition:opacity .2s,transform .2s}
+.tm-toast.on{opacity:1;transform:translate(-50%,0)}
+.tm-toast.err{background:#c92a2a}
+@media(min-width:701px){.tm-toast{bottom:24px}}
+
+/* скелетон і поява */
+.tm-skel i{display:block;height:84px;border-radius:16px;margin-bottom:10px;background:linear-gradient(100deg,#ebe6da 30%,#f8f5ee 50%,#ebe6da 70%);background-size:300% 100%;animation:tmSk 1.3s linear infinite}
+.tm-skel i.h{height:56px;width:60%}
+@keyframes tmSk{from{background-position:100% 0}to{background-position:0 0}}
+.tm-task,.tm-obj{animation:tmIn .35s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 45ms)}
+@keyframes tmIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.18s}
+@media(prefers-reduced-motion:reduce){
+  .tm-task,.tm-obj,.tm-obj.flash,dialog.tm-sheet[open],.tm-skel i,.tm-prev .spin{animation:none}
+  .tm-btn,.tm-toast{transition:none}
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
+}
