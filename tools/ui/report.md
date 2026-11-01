@@ -20,7 +20,7 @@
 | сторінка | тип | HTML КБ | gzip КБ | CSS КБ | JS КБ | розмірів шрифту | тегів |
 |---|---|---|---|---|---|---|---|
 | portfolio.html | main | 259.8 | 37.4 | 48.2 | 11.9 | 26 | 1921 |
-| index.html | main | 154.7 | 34.2 | 53.2 | 14.9 | 26 | 836 |
+| index.html | main | 154.7 | 34.3 | 53.2 | 14.9 | 26 | 836 |
 | ozdoba/komplekty.html | other | 119.6 | 28.8 | 32.4 | 7.9 | 14 | 1531 |
 | ozdoba/prais.html | other | 114.4 | 27.8 | 5.8 | 1.1 | 9 | 3023 |
 | about.html | main | 111.0 | 26.7 | 49.2 | 7.1 | 22 | 518 |
@@ -414,8 +414,8 @@
 | blog/kamin-shpon-latun-materialy-premium-interieru.html | article | 60.4 | 17.9 | 14.4 | 7.0 | 7 | 322 |
 | karkasnyi-budynok-pid-kliuch-kyiv.html | land | 60.4 | 17.4 | 13.6 | 7.0 | 7 | 504 |
 | remont-premium-klasu-kyiv.html | land | 60.0 | 16.7 | 13.6 | 7.0 | 7 | 489 |
+| ru/index.html | land | 60.0 | 17.0 | 13.6 | 7.0 | 7 | 532 |
 | ru/karkasnyy-dom-pod-klyuch-kiev.html | land | 60.0 | 17.4 | 13.6 | 7.0 | 7 | 504 |
-| ru/index.html | land | 59.9 | 17.0 | 13.6 | 7.0 | 7 | 532 |
 | ru/remont-pod-klyuch-kiev.html | land | 59.9 | 16.0 | 13.6 | 7.0 | 7 | 483 |
 | ru/remont-premium-klassa-kiev.html | land | 59.8 | 16.6 | 13.6 | 7.0 | 7 | 484 |
 | dyzain-ofisu-kyiv.html | land | 59.6 | 16.8 | 13.6 | 7.0 | 7 | 487 |
@@ -431,7 +431,7 @@
 | blog/dyzain-interieru-onlain-budynok-za-kordonom.html | article | 58.6 | 17.1 | 14.4 | 7.0 | 7 | 330 |
 | blog/komplektatsiia-hotelyu-apart-hotelyu-pid-kliuch.html | article | 58.5 | 17.3 | 14.4 | 7.0 | 7 | 323 |
 | blog/dyzain-i-remont-penthausa-pid-kliuch.html | article | 58.4 | 17.3 | 14.4 | 7.0 | 7 | 332 |
-| ru/modulnyy-dom-kiev.html | land | 58.3 | 17.1 | 13.6 | 7.0 | 7 | 501 |
+| ru/modulnyy-dom-kiev.html | land | 58.4 | 17.2 | 13.6 | 7.0 | 7 | 501 |
 | budynok-pid-kliuch-koncha-zaspa.html | land | 58.2 | 16.2 | 13.6 | 7.0 | 7 | 494 |
 | ru/dizayn-ofisa-open-space-kiev.html | land | 58.1 | 16.2 | 13.6 | 7.0 | 7 | 476 |
 | blog/premialnyi-interier-yak-ne-pereplatyty.html | article | 58.0 | 17.2 | 14.4 | 7.0 | 7 | 333 |
@@ -602,7 +602,7 @@
 | blog/dyzain-ofisu-z-choho-pochaty.html | article | 50.1 | 14.7 | 14.4 | 7.0 | 7 | 307 |
 | dyzain-i-remont-irpin.html | land | 50.1 | 14.3 | 13.6 | 7.0 | 7 | 350 |
 | ar/renovation-crew.html | land | 49.8 | 13.4 | 13.6 | 7.0 | 7 | 399 |
-| en/index.html | land | 49.7 | 14.7 | 13.6 | 7.0 | 7 | 499 |
+| en/index.html | land | 49.8 | 14.8 | 13.6 | 7.0 | 7 | 499 |
 | ar/office-renovation.html | land | 49.4 | 13.3 | 13.6 | 7.0 | 7 | 390 |
 | en/interior-design.html | land | 49.2 | 13.7 | 13.9 | 7.0 | 7 | 498 |
 | ru/dizayn-i-remont-bucha.html | land | 49.2 | 14.2 | 13.6 | 7.0 | 7 | 349 |
