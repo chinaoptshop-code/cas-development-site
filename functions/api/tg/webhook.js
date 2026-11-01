@@ -1,11 +1,11 @@
 // Вебхук бота сайту (TELEGRAM_BOT_TOKEN). Ставить його POST /api/admin/lead-sla (ensureWebhook у functions/_alerts.js).
 // Telegram підписує кожен запит заголовком X-Telegram-Bot-Api-Secret-Token (= webhookSecret, виводиться з токена бота).
-//  • callback_query «take:<id>» — кнопка «✅ Взяв у роботу» в сповіщенні про заявку; приймаємо лише від ADMIN_TG_IDS;
+//  • callback_query «take:<id>» — кнопка «✅ Взяв у роботу» в сповіщенні про заявку; приймаємо лише від ADMIN_TG_IDS / OWNER_TG_ID (вимкнених працівників — ні, functions/_alerts.js alertIds);
 //  • повідомлення — вхід на сайт за номером (протокол tools/shop/PHONE_LOGIN.md): /start login_<token> → кнопка
 //    «📱 Поділитися номером» → contact → та сама перевірка, що й POST /api/auth/phone/confirm (викликаємо її напряму).
 // Відповідаємо Telegram завжди 200 (інакше він повторює апдейт), помилки — лише в лог.
 import { bad, botSignature, json, readJSON, same } from '../../_lib.js';
-import { adminIds, adminName, fmtMin, takeLead, tg, webhookSecret } from '../../_alerts.js';
+import { alertIds, adminName, fmtMin, staffIdByTg, takeLead, tg, webhookSecret } from '../../_alerts.js';
 import { onRequestPost as confirmPhone } from '../auth/phone/confirm.js';
 
 const LOGIN_TTL = 600;
@@ -27,10 +27,10 @@ export async function onRequestPost({ request, env }) {
 async function onCallback(env, cq) {
   const answer = (text, alert = false) => tg(env, 'answerCallbackQuery', { callback_query_id: cq.id, text, show_alert: alert });
   const from = cq.from || {};
-  if (!adminIds(env).includes(String(from.id))) return answer('Немає доступу', true);
+  if (!(await alertIds(env)).includes(String(from.id))) return answer('Немає доступу', true);
   const m = /^take:(\d{1,12})$/.exec(String(cq.data || ''));
   if (!m) return answer('');
-  const r = await takeLead(env, Number(m[1]), await adminName(env, from), 'Telegram');
+  const r = await takeLead(env, Number(m[1]), await adminName(env, from), 'Telegram', new Date(), await staffIdByTg(env, from.id));
   if (r.error) return answer('Заявку не знайдено', true);
   if (r.already) return answer(`Уже взяв ${r.o.assignee || 'інший менеджер'}${r.o.reaction_min != null ? ` (за ${fmtMin(r.o.reaction_min)})` : ''}`, true);
   return answer(`Заявка ваша. Час реакції — ${fmtMin(r.min)}`);
@@ -71,6 +71,6 @@ async function onMessage(request, env, msg) {
     return say(reply, { reply_markup: { remove_keyboard: true } });
   }
 
-  if (/^\/start\b/.test(text) && adminIds(env).includes(String(from.id)))
+  if (/^\/start\b/.test(text) && (await alertIds(env)).includes(String(from.id)))
     return say('Готово: сюди приходитимуть нові заявки з сайту й замовлення Оздоби, нагадування й щоденний звіт.');
 }

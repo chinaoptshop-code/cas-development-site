@@ -1,9 +1,22 @@
-// Профіль клієнта: GET — хто увійшов; PATCH — телефон, імʼя, доставка, реквізити компанії.
+// Профіль клієнта: GET — хто увійшов (+ роль працівника й «дім» — куди вести після входу); PATCH — телефон, імʼя, доставка, реквізити компанії.
+// client.staff = {role, role_label, perms, home, panel} — лише для активного працівника (functions/_roles.js); клієнту — null.
+// client.admin лишається для сумісності зі старими сторінками: true = доступ до /kabinet/admin (panel.admin).
 import { bad, currentClient, json, publicClient, readJSON, str } from '../_lib.js';
+import { ROLES, staffCtx } from '../_roles.js';
+
+async function view(request, env) {
+  const x = await staffCtx(request, env);
+  if (!x.client) return null;
+  const c = publicClient(x.client, env);
+  c.admin = x.can('panel.admin');
+  c.home = x.role ? ROLES[x.role].home : '/kabinet';
+  c.staff = x.role ? { id: x.staffId, name: x.name, role: x.role, role_label: ROLES[x.role].label, perms: [...x.perms], home: c.home, panel: x.can('panel.admin'), owner: x.owner } : null;
+  if (x.deactivated) c.staff_disabled = true;
+  return c;
+}
 
 export async function onRequestGet({ request, env }) {
-  const c = await currentClient(request, env);
-  return json({ client: publicClient(c, env) });
+  return json({ client: await view(request, env) });
 }
 
 export async function onRequestPatch({ request, env }) {

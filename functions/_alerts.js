@@ -12,7 +12,21 @@ export const MAX_REMINDERS = 2;
 const REPORT_AT = [20, 45];       // щоденний звіт о 20:45 за Києвом
 const QUIET = [22, 8];            // тиша 22:00–08:00: нагадування чекають до 08:00 (нові заявки — завжди)
 
-export const adminIds = env => [...new Set((env.ADMIN_TG_IDS || '').split(',').map(s => s.trim()).filter(s => /^\d{1,20}$/.test(s)))];
+const ids = v => (v || '').split(',').map(s => s.trim()).filter(s => /^\d{1,20}$/.test(s));
+// Адресати «усього» (нові заявки, SLA, звіт): ADMIN_TG_IDS як і раніше + власник (OWNER_TG_ID), мінус вимкнені працівники
+// (staff.active = 0, migrations/0010). Працівники без ADMIN_TG_IDS отримують лише призначене їм — notifyStaff.
+export const adminIds = env => [...new Set([...ids(env.OWNER_TG_ID), ...ids(env.ADMIN_TG_IDS)])];
+export async function alertIds(env) {
+  const all = adminIds(env);
+  if (!all.length || !env.DB) return all;
+  try {
+    const { results } = await env.DB.prepare(`SELECT s.tg_id, c.provider, c.provider_id, c.tg_id AS ctg FROM staff s LEFT JOIN clients c ON c.id = s.client_id
+        WHERE s.active = 0`).all();
+    const off = new Set(results.flatMap(r => [r.tg_id, r.provider === 'telegram' ? r.provider_id : null, r.ctg]).filter(Boolean).map(String));
+    const owner = new Set(ids(env.OWNER_TG_ID));
+    return all.filter(id => owner.has(id) || !off.has(id));
+  } catch { return all; } // до 0010 — як раніше
+}
 const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const cut = (s, n) => { s = String(s || '').trim(); return s.length > n ? s.slice(0, n - 1) + '…' : s; };
 
@@ -91,7 +105,7 @@ export const leadKeyboard = id => ({ inline_keyboard: [
 
 async function sendAll(env, orderId, kind, text, keyboard) {
   let sent = 0;
-  for (const chat of adminIds(env)) {
+  for (const chat of await alertIds(env)) {
     const m = await tg(env, 'sendMessage', { chat_id: chat, text, parse_mode: 'HTML', link_preview_options: { is_disabled: true }, reply_markup: keyboard });
     if (!m) continue;
     sent++;
@@ -103,7 +117,7 @@ async function sendAll(env, orderId, kind, text, keyboard) {
 // Нова заявка / замовлення → кожному адміну. x — сирі дані форми (page, form, message, area, utm_*).
 export async function notifyNew(env, orderId, x = {}) {
   try {
-    if (!env.TELEGRAM_BOT_TOKEN || !adminIds(env).length) return 0;
+    if (!env.TELEGRAM_BOT_TOKEN || !(await alertIds(env)).length) return 0;
     const o = await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(orderId).first();
     return o ? await sendAll(env, o.id, 'new', leadText(o, x), leadKeyboard(o.id)) : 0;
   } catch (e) {
@@ -114,7 +128,7 @@ export async function notifyNew(env, orderId, x = {}) {
 
 // «Взяв у роботу»: статус in_work (якщо був «Нове»), відповідальний, час реакції; редагує повідомлення в усіх адмінів.
 // Повторне натискання / інший адмін → { already: true }.
-export async function takeLead(env, id, who, via = 'Telegram', now = new Date()) {
+export async function takeLead(env, id, who, via = 'Telegram', now = new Date(), staffId = null) {
   const o = await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(id).first();
   if (!o) return { error: 'not_found' };
   if (o.taken_at) return { already: true, o };
@@ -123,6 +137,9 @@ export async function takeLead(env, id, who, via = 'Telegram', now = new Date())
       status = CASE WHEN status = 'new' THEN 'in_work' ELSE status END, updated_at = datetime('now') WHERE id = ? AND taken_at IS NULL`)
     .bind(sqlTime(now), min, who, id).run();
   if (!u.meta.changes) return { already: true, o: await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(id).first() };
+  if (staffId) { // відповідальний-працівник (0010): хто взяв, якщо ще нікого не призначено
+    try { await env.DB.prepare('UPDATE orders SET assignee_staff_id = COALESCE(assignee_staff_id, ?) WHERE id = ?').bind(staffId, id).run(); } catch { /* до 0010 */ }
+  }
   if (o.status === 'new') await env.DB.prepare("INSERT INTO order_events (order_id, status, note, author) VALUES (?, 'in_work', ?, ?)")
     .bind(id, `Взяв у роботу (${via}) за ${fmtMin(min)}`, who).run();
   const n = await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(id).first();
@@ -144,6 +161,15 @@ async function markTaken(env, o, who, min) {
 export async function adminName(env, from) {
   const c = await env.DB.prepare("SELECT name FROM clients WHERE provider = 'telegram' AND provider_id = ?").bind(String(from.id)).first();
   return (c && c.name) || [from.first_name, from.last_name].filter(Boolean).join(' ') || (from.username ? '@' + from.username : `id ${from.id}`);
+}
+
+// Активний працівник за Telegram id (запрошення tg_id або акаунт входу) — для «Взяв у роботу»
+export async function staffIdByTg(env, tgId) {
+  try {
+    const r = await env.DB.prepare(`SELECT s.id FROM staff s LEFT JOIN clients c ON c.id = s.client_id WHERE s.active = 1
+        AND (s.tg_id = ?1 OR (c.provider = 'telegram' AND c.provider_id = ?1) OR c.tg_id = ?1) ORDER BY s.id LIMIT 1`).bind(String(tgId)).first();
+    return r ? r.id : null;
+  } catch { return null; }
 }
 
 // ===== SLA: нагадування про невзяті заявки =====
@@ -227,3 +253,27 @@ export async function ensureWebhook(env, origin, force = false) {
   const ok = await tg(env, 'setWebhook', { url, secret_token: await webhookSecret(env), allowed_updates: ['message', 'callback_query'] });
   return { webhook: ok ? 'set' : 'error', previous: info.url ? 'replaced' : 'none' };
 }
+
+// ===== Працівникам (migrations/0010) =====
+// Лише про призначене йому: нова заявка/обʼєкт на ньому. Вимкненим і без Telegram — нічого.
+export async function notifyStaff(env, staffId, text, keyboard) {
+  try {
+    if (!env.TELEGRAM_BOT_TOKEN || !staffId) return 0;
+    const s = await env.DB.prepare('SELECT s.*, c.provider, c.provider_id, c.tg_id AS ctg FROM staff s LEFT JOIN clients c ON c.id = s.client_id WHERE s.id = ?').bind(staffId).first();
+    if (!s || !s.active) return 0;
+    const chat = [s.tg_id, s.provider === 'telegram' ? s.provider_id : null, s.ctg].find(v => v && /^\d{1,20}$/.test(String(v)));
+    if (!chat) return 0;
+    const m = await tg(env, 'sendMessage', { chat_id: String(chat), text, parse_mode: 'HTML', link_preview_options: { is_disabled: true }, reply_markup: keyboard });
+    return m ? 1 : 0;
+  } catch (e) { console.log('notifyStaff', e && e.message); return 0; }
+}
+// Власнику й менеджерам (адресати «усього»): проблема на обʼєкті, етап виконано
+export async function notifyTeam(env, text, url = 'https://cas-develop.com/kabinet/admin#studio') {
+  try {
+    let n = 0;
+    for (const chat of await alertIds(env)) if (await tg(env, 'sendMessage', { chat_id: chat, text, parse_mode: 'HTML', link_preview_options: { is_disabled: true },
+      reply_markup: { inline_keyboard: [[{ text: '📋 Відкрити', url }]] } })) n++;
+    return n;
+  } catch (e) { console.log('notifyTeam', e && e.message); return 0; }
+}
+export const escHtml = esc;
