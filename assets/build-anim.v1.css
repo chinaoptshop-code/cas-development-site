@@ -1,164 +1,277 @@
-/* CAS — «Будинок з нуля» / «Ремонт з нуля» (UI-kit /styleguide/#build-anim). Вантажить /assets/build-anim.v1.js ліниво.
+/* CAS — «Будинок з нуля» / «Ремонт з нуля» v2 (UI-kit /styleguide/#build-anim-sg). Вантажить /assets/build-anim.v1.js ліниво.
    Без JS блок — звичайний список «Етапи» (ol.steps зі стилів сторінки). Токени — з site-chrome (--ac, --tx, --mu, --ln, --bg2, --ease-out). */
-.bz{--bz-per:56svh;--bz-bot:0px}
-.bz[data-bz-c]{--bz-per:34svh;padding:56px 0 64px;border-top:1px solid var(--ln,rgba(191,145,72,.18))}
+.bz{--bz-per:40svh;--bz-bot:0px}
+.bz[data-bz-c]{--bz-per:26svh;padding:56px 0 64px;border-top:1px solid var(--ln,rgba(191,145,72,.18))}
 /* головна: власна сітка (у шаблоні головної немає .w лендингів) */
 .bz[data-bz-c]>.w{max-width:1180px;margin:0 auto;padding:0 22px;box-sizing:border-box}
 .bz[data-bz-c] h2{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:var(--fs-h2,2.25rem);line-height:1.15;margin:0 0 10px}
-.bz[data-bz-c] .bz-p{color:var(--mu,#938c84);margin:0;max-width:40em}
+.bz[data-bz-c] .bz-p{color:var(--mu,#938c84);margin:0;max-width:44em}
 .bz-p a{color:var(--ac,#BF9148);white-space:nowrap}
-.bz-run{position:relative;height:calc(var(--n,8) * var(--bz-per) + 100svh - var(--sch-h,64px) - var(--bz-bot));margin-top:8px}
-.bz-pin{position:sticky;top:var(--sch-h,64px);height:calc(100svh - var(--sch-h,64px) - var(--bz-bot));box-sizing:border-box;padding:16px 0;
-  display:grid;grid-template-columns:minmax(0,1.55fr) minmax(260px,1fr);gap:clamp(20px,3.5vw,56px);align-items:center}
+.bz-run{position:relative;height:calc(var(--n,19) * var(--bz-per) + 100svh - var(--sch-h,64px) - var(--bz-bot));margin-top:8px}
+.bz-pin{position:sticky;top:var(--sch-h,64px);height:calc(100svh - var(--sch-h,64px) - var(--bz-bot));box-sizing:border-box;padding:14px 0;
+  display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:clamp(18px,3vw,48px);align-items:center}
 .bz-fig{position:relative;height:100%;min-height:0;display:flex;align-items:center;justify-content:center;
   background:radial-gradient(58% 52% at 50% 58%,rgba(191,145,72,.08),transparent 72%)}
 .bz-fig svg{display:block;width:100%;height:100%;max-height:100%;overflow:visible;transition:transform .7s var(--ease-out)}
-/* конфігуратор матеріалу стін */
-.bz-mats{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84)}
-.bz-mats span{margin-right:4px}
-.bz-mats button{min-height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.22));background:transparent;color:var(--tx,#EDE8DF);
+/* технологія стін — над сценою */
+.bz-mats{position:absolute;left:0;top:4px;z-index:2;display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84);max-width:100%}
+.bz-mats span{margin-right:2px}
+.bz-mats button{min-height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.22));background:rgba(16,14,12,.72);color:var(--tx,#EDE8DF);
   font:500 12px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;letter-spacing:.02em;cursor:pointer;transition:background .3s,border-color .3s,color .3s}
-.bz-mats button[aria-pressed="true"]{border-color:var(--ac,#BF9148);color:var(--ac,#BF9148);background:rgba(191,145,72,.1)}
-.bz-mats button:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
+.bz-mats button[aria-pressed="true"]{border-color:var(--ac,#BF9148);color:var(--ac,#BF9148);background:rgba(191,145,72,.14)}
+.bz-mats button:focus-visible,.bz-pie button:focus-visible,.bz-ctl button:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
 @media(hover:hover){.bz-mats button:hover{border-color:var(--ac,#BF9148)}}
-.bz-side{display:flex;flex-direction:column;gap:14px;min-width:0}
-.bz-ct{margin:0;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;color:var(--mu,#938c84);font-size:var(--fs-h3,1.4rem);line-height:1;letter-spacing:.04em}
-.bz-ct b{font-weight:300;color:var(--ac,#BF9148);font-size:1.9em;margin-right:.08em}
-/* опис активного етапу — у зарезервованому місці під списком (absolute): перемикання етапів не зсуває макет (CLS = 0) */
-.bz-st{list-style:none;margin:0;padding:0 0 calc(4.5em + 18px);display:grid;gap:0;position:relative}
-.bz-st li{padding:7px 0 7px 16px;border-left:1px solid var(--ln,rgba(191,145,72,.22));color:var(--mu,#938c84);transition:color .4s var(--ease-out),border-color .4s var(--ease-out)}
-.bz-st li>div{display:grid}
-.bz-st b{display:block;font-weight:500;line-height:1.35}
-.bz-st span{position:absolute;left:0;right:0;top:calc(100% - 4.5em - 4px);display:block;line-height:1.5;color:var(--tx,#EDE8DF);opacity:0;transform:translateY(6px);
-  pointer-events:none;transition:opacity .35s var(--ease-out),transform .45s var(--ease-out)}
-.bz-st li.is-on{border-left:2px solid var(--ac,#BF9148);padding-left:15px;color:var(--tx,#EDE8DF)}
-.bz-st li.is-on span{opacity:.86;transform:none;pointer-events:auto}
-.bz-st li.is-done{color:#c2b9ad}
-.bz-st li.is-done b::after{content:" ✓";color:var(--ac,#BF9148);font-weight:400}
-.bz-bar{height:2px;background:var(--ln,rgba(191,145,72,.22));overflow:hidden;border-radius:2px}
+.bz-side{position:relative;display:flex;flex-direction:column;gap:12px;min-width:0}
+.bz-hd{display:flex;align-items:center;gap:14px}
+.bz-ct{margin:0;flex:none;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;color:var(--mu,#938c84);font-size:var(--fs-h3,1.4rem);line-height:1;letter-spacing:.04em}
+.bz-ct b{font-weight:300;color:var(--ac,#BF9148);font-size:1.7em;margin-right:.08em}
+.bz-bar{flex:1;height:2px;background:var(--ln,rgba(191,145,72,.22));overflow:hidden;border-radius:2px}
 .bz-bar i{display:block;height:100%;background:var(--ac,#BF9148);transform-origin:0 50%;transform:scaleX(0)}
-.bz-nav{display:flex;flex-wrap:wrap;gap:6px}
-.bz-b{width:40px;height:40px;border-radius:50%;border:1px solid var(--ln,rgba(191,145,72,.22));background:transparent;color:var(--mu,#938c84);
-  font:500 13px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;padding:0;transition:background .3s,color .3s,border-color .3s,transform .3s var(--ease-out)}
+/* етапи: усі в одній клітинці сітки — висота = найдовший етап (перемикання не зсуває макет, CLS 0) */
+.bz-st.bz-on-l{list-style:none;margin:0;padding:0;display:grid}
+.bz-on-l li{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .35s var(--ease-out),transform .45s var(--ease-out),visibility 0s .45s}
+.bz-on-l li.is-on{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.bz-on-l li>div{display:grid;gap:6px}
+.bz-on-l b{display:block;font-weight:500;font-size:1.125rem;line-height:1.3;color:var(--tx,#EDE8DF)}
+.bz-on-l span{display:block;line-height:1.55;color:#c9c1b6;font-size:.9375rem}
+/* пиріг шарів */
+.bz-pie{position:relative;box-sizing:border-box;visibility:hidden;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:12px;padding:12px 14px;background:rgba(16,14,12,.5)}
+.bz-pie.is-on{visibility:visible}
+.bz-pt{margin:0 0 6px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font-size:.875rem}
+.bz-pt b{font-weight:600;color:var(--tx,#EDE8DF)}
+.bz-pt span,.bz-pe{color:var(--mu,#938c84);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase}
+.bz-pe{margin:2px 0}
+.bz-pie ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.bz-pie ul button{width:100%;display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:10px;min-height:26px;padding:2px 8px 2px 2px;border:0;border-radius:6px;
+  background:transparent;color:#c9c1b6;font:500 .8125rem/1.25 'Manrope','Manrope Fallback',system-ui,sans-serif;text-align:left;cursor:pointer;transition:background .25s,color .25s}
+.bz-pie ul button i{display:block;height:14px;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25);transition:transform .3s var(--ease-out)}
+.bz-pie ul button em{font-style:normal;color:var(--mu,#938c84);font-size:.75rem;white-space:nowrap}
+.bz-pie ul button[aria-pressed="true"]{background:rgba(191,145,72,.12);color:var(--tx,#EDE8DF)}
+.bz-pie ul button[aria-pressed="true"] i{transform:scaleX(1.12) translateX(2px)}
+.bz-pie ul button[aria-pressed="true"] em{color:var(--ac,#BF9148)}
+@media(hover:hover){.bz-pie ul button:hover{background:rgba(191,145,72,.08);color:var(--tx,#EDE8DF)}}
+.bz-pd{margin:6px 0 0;min-height:2.6em;font-size:.8125rem;line-height:1.35;color:var(--tx,#EDE8DF)}
+.bz-px{display:none}
+/* «вибух» шарів: при появі пирога шари розʼїжджаються з купи */
+.bz-pie.is-x li{animation:bz-x .55s var(--ease-out) both;animation-delay:calc(var(--i,0) * 45ms)}
+@keyframes bz-x{from{opacity:.2;transform:translateY(calc(var(--i,0) * -26px))}to{opacity:1;transform:none}}
+/* керування: ← етапи → */
+.bz-ctl{display:flex;align-items:center;gap:6px}
+.bz-nav{display:flex;flex-wrap:wrap;gap:4px;flex:1;min-width:0}
+.bz-b,.bz-pv,.bz-nx{width:28px;height:28px;border-radius:50%;border:1px solid var(--ln,rgba(191,145,72,.22));background:transparent;color:var(--mu,#938c84);
+  font:500 11px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;padding:0;transition:background .3s,color .3s,border-color .3s,transform .3s var(--ease-out)}
+.bz-pv,.bz-nx{width:36px;height:36px;font-size:15px;flex:none;color:var(--tx,#EDE8DF)}
+.bz-pv:disabled,.bz-nx:disabled{opacity:.35;cursor:default}
 .bz-b.is-done{color:var(--ac,#BF9148);border-color:rgba(191,145,72,.55)}
 .bz-b[aria-current]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#080709}
-.bz-b:focus-visible,.bz-go:focus-visible,.bz-skip:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:3px}
-@media(hover:hover){.bz-b:hover{border-color:var(--ac,#BF9148);color:var(--tx,#EDE8DF);transform:translateY(-1px)}.bz-b[aria-current]:hover{color:#080709}}
+.bz-pb{display:none}
+.bz-go:focus-visible,.bz-skip:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:3px}
+@media(hover:hover){.bz-b:hover,.bz-pv:not(:disabled):hover,.bz-nx:not(:disabled):hover{border-color:var(--ac,#BF9148);color:var(--tx,#EDE8DF);transform:translateY(-1px)}.bz-b[aria-current]:hover{color:#080709}}
 .bz-go{align-self:flex-start;display:inline-flex;align-items:center;gap:.5em;min-height:46px;padding:0 22px;border-radius:999px;background:var(--ac,#BF9148);color:#080709;
   font-weight:600;text-decoration:none;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .45s var(--ease-out),transform .45s var(--ease-out),translate .35s var(--ease-out),visibility 0s .45s}
 .bz-end .bz-go{opacity:1;visibility:visible;transform:none;transition-delay:0s}
 @media(hover:hover){.bz-go:hover{filter:brightness(1.08)}}
-.bz-skip{position:absolute;left:0;top:8px;z-index:2;padding:8px 14px;border-radius:999px;background:var(--bg2,#100e0c);color:var(--tx,#EDE8DF);border:1px solid var(--ac,#BF9148);
+.bz-skip{position:absolute;left:0;top:8px;z-index:3;padding:8px 14px;border-radius:999px;background:var(--bg2,#100e0c);color:var(--tx,#EDE8DF);border:1px solid var(--ac,#BF9148);
   font-size:var(--fs-small,.8125rem);text-decoration:none;transform:translateY(-200%);opacity:0}
 .bz-skip:focus{transform:none;opacity:1}
 .bz-cta{margin-top:28px;padding:clamp(20px,3vw,32px);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:14px;background:var(--bg2,#100e0c);scroll-margin-top:calc(var(--sch-h,64px) + 16px)}
 .bz-cta h3{margin:0 0 6px;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:var(--fs-h3,1.5rem);line-height:1.15}
 .bz-team{margin:14px 0 0;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem)}
 .bz-team a{color:var(--ac,#BF9148)}
-/* телефон: сцена згори, під нею — лише активний етап; нижня панель .mbar (64px) не перекриває степер */
+/* факти (лічильники з site-chrome: data-count) */
+.bz-facts{display:flex;flex-wrap:wrap;gap:6px 28px;margin:0 0 16px;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem)}
+.bz-facts b{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:1.9rem;line-height:1;color:var(--ac,#BF9148);margin-right:4px;font-variant-numeric:tabular-nums}
+@media(max-height:780px) and (min-width:768px){.bz-pie ul button{min-height:22px}.bz-pd{min-height:2.4em}.bz-on-l span{font-size:.875rem}.bz-side{gap:9px}}
+/* телефон: сцена згори, під нею активний етап і ← → ; пиріг — за кнопкою поверх сцени; нижня панель .mbar (64px) не перекриває керування */
 @media(max-width:767px){
-  .bz{--bz-bot:calc(64px + env(safe-area-inset-bottom,0px));--bz-per:50svh}
-  .bz[data-bz-c]{--bz-per:32svh}
-  .bz-pin{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;align-content:center;gap:12px;padding:8px 0 10px;align-items:stretch}
-  .bz-fig{height:auto}
-  .bz-fig svg{height:auto;max-height:calc(100svh - var(--sch-h,64px) - var(--bz-bot) - 310px)}
-  .bz-mats{gap:5px}.bz-mats button{min-height:32px;padding:0 10px}
-  .bz-side{gap:10px}
+  .bz{--bz-bot:calc(64px + env(safe-area-inset-bottom,0px));--bz-per:36svh}
+  .bz[data-bz-c]{--bz-per:24svh}
+  .bz-pin{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:8px;padding:6px 0 8px;align-items:stretch}
+  .bz-fig{height:auto;padding-top:38px}
+  .bz-mats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:5px;top:0;right:0}
+  .bz-mats::-webkit-scrollbar{display:none}
+  .bz-mats span{display:none}
+  .bz-mats button{min-height:30px;padding:0 10px;flex:none}
+  .bz-side{gap:8px}
   .bz-ct{font-size:1.05rem}
-  .bz-st li{grid-area:1/1;opacity:0;pointer-events:none;transition:opacity .35s var(--ease-out),transform .45s var(--ease-out);transform:translateY(6px);border-left-width:2px;padding-left:12px}
-  .bz-st li.is-on{opacity:1;pointer-events:auto;transform:none;padding-left:12px}
-  .bz-st{padding-bottom:0}
-  .bz-st span,.bz-st li.is-on span{position:static;opacity:1;transform:none;margin-top:3px;font-size:.9375rem;color:var(--mu,#938c84)}
-  .bz-st li.is-done b::after{content:none}
-  .bz-nav{gap:5px;justify-content:space-between;flex-wrap:nowrap}
-  .bz-b{width:38px;height:38px;flex:none}
-  .bz-go{min-height:44px;padding:0 18px}
+  .bz-on-l b{font-size:1rem}
+  .bz-on-l span{font-size:.875rem;line-height:1.45;color:var(--mu,#938c84)}
+  .bz-nav{display:none}
+  .bz-ctl{justify-content:space-between}
+  .bz-pv,.bz-nx{width:44px;height:44px}
+  .bz-pb{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--ac,#BF9148);background:transparent;color:var(--ac,#BF9148);
+    font:600 13px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;visibility:hidden}
+  .bz-pb.is-on{visibility:visible}
+  .bz-pb[aria-expanded="true"]{background:var(--ac,#BF9148);color:#080709}
+  .bz-fig>.bz-pie{position:absolute;left:0;right:0;top:38px;bottom:0;z-index:3;overflow:auto;overscroll-behavior:contain;background:rgba(16,14,12,.96);display:none}
+  .bz-fig.pie-open>.bz-pie.is-on{display:block}
+  .bz-fig>.bz-pie .bz-px{display:block;position:absolute;right:6px;top:6px;width:36px;height:36px;border-radius:50%;border:1px solid var(--ln,rgba(191,145,72,.3));background:transparent;color:var(--tx,#EDE8DF);font-size:20px;line-height:1;cursor:pointer}
+  .bz-pt{padding-right:40px}
+  .bz-pie ul button{min-height:30px}
+  .bz-go{position:absolute;right:0;bottom:calc(100% + 8px);min-height:44px;padding:0 18px;z-index:2}
 }
-@media(max-width:767px) and (max-height:700px){.bz-st span,.bz-st li.is-on span{font-size:.875rem}.bz-ct{display:none}}
+@media(max-width:767px) and (max-height:700px){.bz-on-l span{font-size:.8125rem}.bz-ct{display:none}}
 /* без руху: статичні кадри, перемикання степером */
 .bz-rm .bz-run{height:auto}
 .bz-rm .bz-pin{position:relative;top:auto;height:auto}
-.bz-rm .bz-fig{height:min(62vh,540px)}
+.bz-rm .bz-fig{height:min(62vh,560px)}
 .bz-rm .bz-go{opacity:1;visibility:visible;transform:none}
-.bz-rm *{transition:none!important}
-@media(max-width:767px){.bz-rm .bz-fig{height:min(48vh,380px)}.bz-rm .bz-pin{grid-template-rows:auto auto}}
-@media print{.bz-fig,.bz-nav,.bz-bar,.bz-go,.bz-skip,.bz-ct{display:none!important}.bz-run,.bz-pin{height:auto!important;position:static!important;display:block}
-  .bz-st{padding:0}.bz-st li{opacity:1!important;transform:none!important}.bz-st span{position:static!important;opacity:1!important;transform:none!important}}
+.bz-rm *,.bz-rm *::before{transition:none!important;animation:none!important}
+@media(max-width:767px){.bz-rm .bz-fig{height:min(56vh,440px)}.bz-rm .bz-pin{grid-template-rows:auto auto}.bz-rm .bz-go{position:static;align-self:flex-start}}
+@media print{.bz-fig,.bz-ctl,.bz-bar,.bz-go,.bz-skip,.bz-ct,.bz-pie{display:none!important}.bz-run,.bz-pin{height:auto!important;position:static!important;display:block}
+  .bz-on-l{display:block!important}.bz-on-l li{opacity:1!important;visibility:visible!important;transform:none!important;margin:0 0 8px}}
 
-/* ── SVG-сцена (aria-hidden деталі; підпис — у role="img") */
+/* ── SVG-сцена (деталі — aria-hidden у role="img") */
 .bz-fig text{font:500 9px 'Manrope','Manrope Fallback',system-ui,sans-serif;fill:var(--mu,#938c84);letter-spacing:.06em}
-.bz-fig polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bz-fig polyline,.bz-fig path.dra{fill:none;stroke-linecap:round;stroke-linejoin:round}
 .bz-fig polygon,.bz-fig path{stroke-linejoin:round}
-.bz-l{will-change:opacity}
-.ghost{transition:opacity .3s}
-.gh{fill:none;stroke:#BF9148;stroke-width:.8;stroke-dasharray:3 3}
-.gr{fill:#0f0d0b;stroke:rgba(191,145,72,.22);stroke-width:.8}
-.gd{stroke:rgba(191,145,72,.07);stroke-width:.6}
-.lawn{fill:#1b2418}
-.pave{fill:#3a3530}
-.pool,.glo{fill:var(--rg)}
-.ax{stroke:#BF9148;stroke-width:.8;stroke-dasharray:6 4;opacity:.75}
-.stk{stroke:#e2cfae;stroke-width:1.5}
-.flg{fill:#BF9148}
-.tri{stroke:#a59d93;stroke-width:1.1}
-.tri-h.t{fill:#d3ccc2}.tri-h.r{fill:#6f6a64}.tri-h.l{fill:#8f8880}
-.dim{stroke:#938c84;stroke-width:.7}
-.fd.t{fill:#4a4540}.fd.r{fill:#2e2a26}.fd.l{fill:#3a3632}
-.w{stroke:rgba(8,7,9,.35);stroke-width:.5}
-.w.t{fill:#c4bbae}.w.r{fill:#6e675f}.w.l{fill:#857d73}.w.ir{fill:#262320}.w.il{fill:#302c28}
-.fin .w.ir{fill:#5a4a38}.fin .w.il{fill:#6b5843}
-/* матеріал стін: під час будівництва — кладка/каркас, після «Фасаду» — оздоблення за технологією */
-.m-block .w.l{fill:url(#bz-block-l)}.m-block .w.r{fill:url(#bz-block-r)}
-.m-brick .w.l,.m-brick .fa.l{fill:url(#bz-brick-l)}.m-brick .w.r,.m-brick .fa.r{fill:url(#bz-brick-r)}
-.m-brus .w.l,.m-brus .fa.l{fill:url(#bz-wood-l)}.m-brus .w.r,.m-brus .fa.r{fill:url(#bz-wood-r)}
-.m-frame .w.l{fill:#b6976b}.m-frame .w.r{fill:#9a7f58}.m-frame .w.t{fill:#d2b98f}
-.m-frame .fa.l{fill:url(#bz-board-l)}.m-frame .fa.r{fill:url(#bz-board-r)}
-.m-brick .w.t{fill:#a8664b}.m-brus .w.t{fill:#a8774c}
-.m-brus .wd,.m-brick .wd{fill:#3a383d}
-.sl.t{fill:#5b554e}.sl.r{fill:#a39c92}.sl.l{fill:#b2aba0}
-.fa.r{fill:#cbc2b4}.fa.l{fill:#e2dacd}
-.pl.r{fill:#2b2826}.pl.l{fill:#34302d}
-.wd{fill:#7a5034}
-.gut{stroke:#2a2a2e;stroke-width:1.6}
-.gl{fill:#1a242b;stroke:#0c0b0a;stroke-width:.8}.gl.r{fill:#151d23}.gl.gd-l{fill:#5d7a8b;stroke:#e3dbcd;stroke-width:1.2}
-.dr{fill:#5b3b25;stroke:#0c0b0a;stroke-width:.8}
-.mu{stroke:#0c0b0a;stroke-width:1}
-.glw{fill:var(--gw);opacity:.92}
-.lamp{fill:#ffe2a8}
-.gb{fill:#a39a8e}
-.rf.b{fill:#2c2b2f}.rf.f{fill:#3a383d}
-.ch.t{fill:#4a4540}.ch.r{fill:#2e2a26}.ch.l{fill:#3a3632}
-.rk{stroke:#BF9148;stroke-width:1.2}
-.tk{stroke:#4a3a2a;stroke-width:2.2}
-.cr{fill:#2d3b28}.cr2{fill:#3d4f35}
+.bz-fig .bz-l{will-change:opacity}
+.bz-fig .ghost{transition:opacity .3s}
+.bz-fig .gh{fill:none;stroke:#BF9148;stroke-width:.8;stroke-dasharray:3 3}
+/* рентген на «Інженерних мережах»: зовнішні стіни, фасад і дах — напівпрозорі */
+.bz-fig .ow>*{transition:opacity .45s var(--ease-out)}
+.bz-fig .xr .ow>*{opacity:.14}
+.bz-fig .xr .net{filter:drop-shadow(0 0 2px rgba(255,214,140,.55))}
+/* ділянка й ґрунт */
+.bz-fig .gr,.bz-fig .bf{fill:#151210;stroke:rgba(191,145,72,.22);stroke-width:.6}
+.bz-fig .bf{stroke:none}
+.bz-fig .gd{stroke:rgba(191,145,72,.07);stroke-width:.6}
+.bz-fig .so.r{fill:#33281f}.bz-fig .so.l{fill:#3e3127}
+.bz-fig .st{stroke:rgba(0,0,0,.35);stroke-width:.8;stroke-dasharray:4 3}
+.bz-fig .pf{fill:#221c17}.bz-fig .pi.r{fill:#4a3b2f}.bz-fig .pi.l{fill:#574638}
+.bz-fig .heap{fill:#5a4a3b}.bz-fig .heap2{fill:#46392d}
+.bz-fig .geo{fill:#e6e2da;opacity:.85}
+.bz-fig .sand{fill:#c9a86a}
+.bz-fig .grv{fill:#7e7a74}
+.bz-fig .prep{fill:#b3ada4}
+.bz-fig .hyd{fill:#1f1d1b}.bz-fig .hsm{stroke:#4a4540;stroke-width:.6}
+.bz-fig .xps{fill:#8fb3c9}.bz-fig .xg{stroke:rgba(255,255,255,.4);stroke-width:.5}
+.bz-fig .xpe.t{fill:#a9c6d8}.bz-fig .xpe.r{fill:#7397ae}.bz-fig .xpe.l{fill:#83a8bf}.bz-fig .xpe.ir{fill:#6d8ea3}.bz-fig .xpe.il{fill:#7a9cb2}
+.bz-fig .xpsv.r{fill:#7397ae}.bz-fig .xpsv.l{fill:#83a8bf}.bz-fig .xpsv.t{fill:#a9c6d8}
+.bz-fig .bit.r{fill:#1a1917}.bz-fig .bit.l{fill:#22201d}
+.bz-fig .rb{stroke:#c9773f;stroke-width:.55}
+.bz-fig .vy{stroke:#c9773f;stroke-width:1.1}
+.bz-fig .fw.t{fill:#b58a52}.bz-fig .fw.r{fill:#7a5634}.bz-fig .fw.l{fill:#8f6640}
+.bz-fig .fd{stroke:rgba(8,7,9,.25);stroke-width:.4}.bz-fig .fd.t{fill:#8a857e}.bz-fig .fd.r{fill:#5f5a54}.bz-fig .fd.l{fill:#6f6a63}.bz-fig .fd.ir{fill:#55504a}.bz-fig .fd.il{fill:#615c56}
+.bz-fig .loop{stroke:#e0705a;stroke-width:1.1}
+.bz-fig .cw{stroke:#6f9fc4;stroke-width:1.4}.bz-fig .hw{stroke:#e0705a;stroke-width:1.4}.bz-fig .sw{stroke:#9a958e;stroke-width:2.4}
+.bz-fig .lawn{fill:#1d2a1a}
+.bz-fig .pave{fill:#4a443d}
+.bz-fig .ax{stroke:#BF9148;stroke-width:.8;stroke-dasharray:6 4;opacity:.75}
+.bz-fig .stk{stroke:#e2cfae;stroke-width:1.4}
+.bz-fig .obn{stroke:#a87b4c;stroke-width:3}
+.bz-fig .str{stroke:#f3ead8;stroke-width:.5}
+.bz-fig .tri{stroke:#a59d93;stroke-width:1.1}
+.bz-fig .tri-h.t{fill:#d3ccc2}.bz-fig .tri-h.r{fill:#6f6a64}.bz-fig .tri-h.l{fill:#8f8880}
+.bz-fig .dim{stroke:#938c84;stroke-width:.7}
+/* стіни за технологією (візерунки — у <defs> скрипта) */
+.bz-fig .wb,.bz-fig .wk,.bz-fig .wr,.bz-fig .blt,.bz-fig .lnt,.bz-fig .stud,.bz-fig .hdr,.bz-fig .pla,.bz-fig .mlt,.bz-fig .le{stroke:rgba(8,7,9,.3);stroke-width:.4}
+.bz-fig .wb.l{fill:url(#bz-block-l)}.bz-fig .wb.r{fill:url(#bz-block-r)}.bz-fig .wb.t{fill:#d4cdc1}.bz-fig .wb.ir{fill:#47423c}.bz-fig .wb.il{fill:#544e47}
+.bz-fig .wk.l{fill:url(#bz-brick-l)}.bz-fig .wk.r{fill:url(#bz-brick-r)}.bz-fig .wk.t{fill:#a8664b}.bz-fig .wk.ir{fill:#4a2a1e}.bz-fig .wk.il{fill:#5a3324}
+.bz-fig .wr.l{fill:url(#bz-wood-l)}.bz-fig .wr.r{fill:url(#bz-wood-r)}.bz-fig .wr.t{fill:#c79a62}.bz-fig .wr.ir{fill:#6b4a2c}.bz-fig .wr.il{fill:#7a5634}
+.bz-fig .le.t{fill:#d2a86e}.bz-fig .le.r{fill:#8f6236}.bz-fig .le.l{fill:#a3723f}
+.bz-fig .lnt.l,.bz-fig .lnt.r{fill:#8f8a83}
+.bz-fig .blt.t{fill:#a8a39b}.bz-fig .blt.r{fill:#6f6a64}.bz-fig .blt.l{fill:#827d76}.bz-fig .blt.ir{fill:#3f3b37}.bz-fig .blt.il{fill:#4a4540}
+.bz-fig .pla.t,.bz-fig .stud.t,.bz-fig .mlt.t{fill:#d6ae78}.bz-fig .pla.r,.bz-fig .stud.r,.bz-fig .mlt.r{fill:#93693c}.bz-fig .pla.l,.bz-fig .stud.l,.bz-fig .mlt.l{fill:#b0814b}.bz-fig .pla.ir{fill:#7a5634}.bz-fig .pla.il{fill:#8f6640}
+.bz-fig .hdr.t{fill:#c99d63}.bz-fig .hdr.r{fill:#7d5732}.bz-fig .hdr.l{fill:#9a6c3e}
+.bz-fig .pin{fill:#c9773f}
+.bz-fig .osb.l{fill:url(#bz-osb-l)}.bz-fig .osb.r{fill:url(#bz-osb-r)}
+.bz-fig .wool.l{fill:url(#bz-wool-l)}.bz-fig .wool.r{fill:url(#bz-wool-r)}
+.bz-fig .vb{fill:rgba(160,190,210,.38)}
+.bz-fig .gkl.r{fill:#cfc8bc}.bz-fig .gkl.l{fill:#ddd6ca}
+.bz-fig .sub{fill:#6f6a63}.bz-fig .dk{fill:#8f6236}.bz-fig .dkl{stroke:rgba(0,0,0,.3);stroke-width:.6}
+.bz-fig .scr{fill:#86807a}
+.bz-fig .flw{fill:#8b6440}.bz-fig .flwl{stroke:rgba(0,0,0,.18);stroke-width:.5}
+.bz-fig .plw.r{fill:#bdb5a9}.bz-fig .plw.l{fill:#cbc4b8}
+.bz-fig .lz.r{fill:rgba(225,170,95,.32)}.bz-fig .lz.l{fill:rgba(225,170,95,.26)}
+.bz-fig .el{stroke:#e8b75a;stroke-width:1.2}
+.bz-fig .pan.t{fill:#d9d3c9}.bz-fig .pan.r{fill:#8f8880}.bz-fig .pan.l{fill:#b9b1a5}
+.bz-fig .blr.t,.bz-fig .rad.t{fill:#f2eee7}.bz-fig .blr.r,.bz-fig .rad.r{fill:#b9b0a2}.bz-fig .blr.l,.bz-fig .rad.l{fill:#d8d1c5}
+.bz-fig .col.t{fill:#c4705f}.bz-fig .col.r{fill:#7d4538}.bz-fig .col.l{fill:#9a5546}
+.bz-fig .duct.t,.bz-fig .rec.t{fill:#d0d5d8}.bz-fig .duct.r,.bz-fig .rec.r{fill:#8e959a}.bz-fig .duct.l,.bz-fig .rec.l{fill:#aab1b6}
+.bz-fig .sl{stroke:rgba(8,7,9,.25);stroke-width:.4}.bz-fig .sl.t{fill:#8f8a82}.bz-fig .sl.r{fill:#a39c92}.bz-fig .sl.l{fill:#b2aba0}.bz-fig .slj{stroke:rgba(0,0,0,.28);stroke-width:.6}
+.bz-fig .jst.t,.bz-fig .wsl.t{fill:#c79a62}.bz-fig .jst.r,.bz-fig .wsl.r{fill:#8f6236}.bz-fig .jst.l,.bz-fig .wsl.l{fill:#a3723f}.bz-fig .jsl{stroke:rgba(60,35,10,.5);stroke-width:.6}
+.bz-fig .bme{fill:#6b4a2c}
+/* фасад */
+.bz-fig .ins.l{fill:url(#bz-wool-l)}.bz-fig .ins.r{fill:url(#bz-wool-r)}
+.bz-fig .rnd.r{fill:#cbc2b4}.bz-fig .rnd.l{fill:#e2dacd}
+.bz-fig .plt.r{fill:#3a3632}.bz-fig .plt.l{fill:#46413c}
+.bz-fig .fbr.l{fill:url(#bz-brickf-l)}.bz-fig .fbr.r{fill:url(#bz-brickf-r)}
+.bz-fig .mb.l{fill:url(#bz-mb-l)}.bz-fig .mb.r{fill:url(#bz-mb-r)}
+.bz-fig .bat{stroke:#8f6236;stroke-width:1.6}
+.bz-fig .clad.l{fill:url(#bz-board-l)}.bz-fig .clad.r{fill:url(#bz-board-r)}
+/* вікна */
+.bz-fig .gl{fill:#1a242b;stroke:#0c0b0a;stroke-width:.8}.bz-fig .gl.r{fill:#151d23}.bz-fig .gl.gd-l{fill:#5d7a8b;stroke:#e3dbcd;stroke-width:1.2}
+.bz-fig .fr{stroke:#e8e2d6;stroke-width:1}
+.bz-fig .dr{fill:#5b3b25;stroke:#0c0b0a;stroke-width:.8}
+.bz-fig .mu{stroke:#e8e2d6;stroke-width:.9}
+.bz-fig .tape{fill:#7aa6c2}
+.bz-fig .oks{fill:#c79a62;stroke:rgba(8,7,9,.3);stroke-width:.4}
+.bz-fig .glw{fill:var(--gw);opacity:.92}
+/* дах */
+.bz-fig .raf{stroke:#b9874f;stroke-width:1.5}.bz-fig .rdg{stroke:#b9874f;stroke-width:2.4}
+.bz-fig .sup{fill:#e8b75a}
+.bz-fig .mem{fill:rgba(207,216,221,.6);stroke:rgba(255,255,255,.35);stroke-width:.5}
+.bz-fig .cb{stroke:#8f6236;stroke-width:1.4}.bz-fig .bttn{stroke:#c08f55;stroke-width:1}
+.bz-fig .rf.b{fill:#2c2b2f}.bz-fig .rf.f{fill:#3a383d}
+.bz-fig .tl{stroke:rgba(0,0,0,.55);stroke-width:.9}.bz-fig .sm{stroke:rgba(255,255,255,.14);stroke-width:.9}
+.bz-fig .rk,.bz-fig .rdg2{stroke:#1f1e22;stroke-width:2.2}
+.bz-fig .vent.t{fill:#5a565f}.bz-fig .vent.r{fill:#2a282d}.bz-fig .vent.l{fill:#3a3840}
+.bz-fig .gut{stroke:#26252a;stroke-width:1.7}
+/* техніка, дрон, ганок, сад */
+.bz-fig .trk.t{fill:#d6d0c6}.bz-fig .trk.r{fill:#8f8880}.bz-fig .trk.l{fill:#aaa298}.bz-fig .trc.t{fill:#e0b56e}.bz-fig .trc.r{fill:#9a7438}.bz-fig .trc.l{fill:#BF9148}
+.bz-fig .boom{stroke:#e8b75a;stroke-width:2.2}.bz-fig .hose{stroke:#26252a;stroke-width:1.6}
+.bz-fig .dra{stroke:#2b2a2e;stroke-width:1.4}.bz-fig .drb{fill:#e8e2d6}.bz-fig .drr{fill:rgba(232,226,214,.4)}
+.bz-fig .drn{animation:bz-hov 2.6s ease-in-out infinite alternate}
+@keyframes bz-hov{to{transform:translateY(-4px)}}
+.bz-fig .post.t{fill:#d6ae78}.bz-fig .post.r{fill:#93693c}.bz-fig .post.l{fill:#b0814b}.bz-fig .jack.t{fill:#f0c46a}.bz-fig .jack.r{fill:#a5782c}.bz-fig .jack.l{fill:#c99a42}
+.bz-fig .arr{stroke:#BF9148;stroke-width:1.3}
+.bz-fig .tk{stroke:#4a3a2a;stroke-width:2.2}
+.bz-fig .cr{fill:#2d3b28}.bz-fig .cr2{fill:#3d4f35}
+.bz-fig .lp{stroke:#2b2a2e;stroke-width:1.4}.bz-fig .lpg,.bz-fig .pool,.bz-fig .glo{fill:var(--rg)}
+.bz-fig .bulb{fill:#ffe2a8}
+.bz-fig .seal .sl1{fill:#BF9148}.bz-fig .seal .sl2{fill:none;stroke:#080709;stroke-width:.8;stroke-dasharray:2 2}
+.bz-fig .seal .sl3{font:300 20px 'Cormorant Garamond','Cormorant Fallback',Georgia,serif;fill:#080709;text-anchor:middle;letter-spacing:0}
+.bz-fig .seal .sl4{font:600 5.6px 'Manrope','Manrope Fallback',system-ui,sans-serif;fill:#080709;text-anchor:middle;text-transform:uppercase;letter-spacing:.12em}
+/* інтерʼєр */
+.bz-fig .kw.t,.bz-fig .kb.t{fill:#ece6dc}.bz-fig .kw.r,.bz-fig .kb.r{fill:#b9b0a2}.bz-fig .kw.l,.bz-fig .kb.l{fill:#d2cabd}
+.bz-fig .ct.t{fill:#3a383d}.bz-fig .ct.r{fill:#222125}.bz-fig .ct.l{fill:#2c2b2f}
+.bz-fig .wrd.t{fill:#8b6440}.bz-fig .wrd.r{fill:#5e432b}.bz-fig .wrd.l{fill:#74533a}
+.bz-fig .bed.t{fill:#e3dbcd}.bz-fig .bed.r{fill:#9a9285}.bz-fig .bed.l{fill:#bdb5a8}
+.bz-fig .sf.t{fill:#76726a}.bz-fig .sf.r{fill:#4c4944}.bz-fig .sf.l{fill:#5f5c56}
+.bz-fig .tb.t{fill:#6b4a30}.bz-fig .tb.r{fill:#4a3322}.bz-fig .tb.l{fill:#5b3f2a}
+.bz-fig .lg{stroke:#2c2b2f;stroke-width:1.5}
 /* квартира */
-.cut{stroke:rgba(191,145,72,.4);stroke-width:.6}
-.cut.t{fill:#3d3832}.cut.r{fill:#2a2622}.cut.l{fill:#332f2a}
-.flr{fill:#45403a}
-.sky{fill:#1b2530}
-.cw.l{fill:#5f5952}.cw.r{fill:#514b45}
-.el{stroke:#d9a64e;stroke-width:1.2}
-.sb{fill:#2a2622;stroke:#d9a64e;stroke-width:.6}
-.pc{stroke:#6f9fc4;stroke-width:1.5}.ph{stroke:#c4705f;stroke-width:1.5}
-.scr{fill:#77716a}
-.pls.l{fill:#a69f95}.pls.r{fill:#958e84}
-.pqf{fill:#8b6440}.pq,.pqb{stroke:rgba(0,0,0,.2);stroke-width:.6}
-.tlf{fill:#c9c6c0}.tw{fill:#d9d6d0}.tg{stroke:rgba(0,0,0,.14);stroke-width:.5}
-.pt.l{fill:#e3dbcd}.pt.r{fill:#d3cabb}
-.pw{stroke:rgba(8,7,9,.35);stroke-width:.5}.pw.t{fill:#c4bbae}.pw.r{fill:#7a736a}.pw.l{fill:#857d73}
-.fin .pw.r{fill:#d3cabb}.fin .pw.l{fill:#e3dbcd}.fin .pw.t{fill:#f0ebe2}
-.rug{fill:#5a4636}
-.cab{stroke:#938c84;stroke-width:.8}.lmp{fill:#BF9148}
-.kw.t,.kb.t{fill:#ece6dc}.kw.r,.kb.r{fill:#b9b0a2}.kw.l,.kb.l{fill:#d2cabd}
-.ct.t{fill:#3a383d}.ct.r{fill:#222125}.ct.l{fill:#2c2b2f}
-.wr.t{fill:#8b6440}.wr.r{fill:#5e432b}.wr.l{fill:#74533a}
-.vn.t{fill:#ece6dc}.vn.r{fill:#b9b0a2}.vn.l{fill:#d2cabd}
-.mir{fill:#93a6b0;opacity:.85}
-.glp{fill:rgba(180,210,230,.16);stroke:rgba(220,235,245,.55);stroke-width:.8}
-.lg{stroke:#2c2b2f;stroke-width:1.5}
-.tb.t{fill:#6b4a30}.tb.r{fill:#4a3322}.tb.l{fill:#5b3f2a}
-.sf.t{fill:#76726a}.sf.r{fill:#4c4944}.sf.l{fill:#5f5c56}
-.bulb{fill:#ffe2a8}
-.pot.t{fill:#c9c2b8}.pot.r{fill:#8f8880}.pot.l{fill:#a9a196}
-.lz{stroke:#BF9148;stroke-width:.6;stroke-dasharray:2 3;opacity:.6}
-.dot{fill:#f3d7a6}
+.bz-fig .cut{stroke:rgba(191,145,72,.4);stroke-width:.6}
+.bz-fig .cut.t{fill:#3d3832}.bz-fig .cut.r{fill:#2a2622}.bz-fig .cut.l{fill:#332f2a}
+.bz-fig .flr{fill:#45403a}
+.bz-fig .sky{fill:#1b2530}
+.bz-fig .cw.l{fill:#5f5952}.bz-fig .cw.r{fill:#514b45}
+.bz-fig .old{fill:#6b5d4c;opacity:.9}.bz-fig .oldl{stroke:rgba(0,0,0,.35);stroke-width:.7}
+.bz-fig .oldw.t{fill:#a59a8b}.bz-fig .oldw.r{fill:#6c6458}.bz-fig .oldw.l{fill:#857b6d}
+.bz-fig .bag.t{fill:#e6e0d4}.bz-fig .bag.r{fill:#a49c90}.bz-fig .bag.l{fill:#c6beb1}
+.bz-fig .sb{fill:#2a2622;stroke:#e8b75a;stroke-width:.6}
+.bz-fig .pc{stroke:#6f9fc4;stroke-width:1.5}.bz-fig .ph{stroke:#c4705f;stroke-width:1.5}.bz-fig .swp{stroke:#9a958e;stroke-width:2.2}
+.bz-fig .dmp{stroke:#6b8c6e;stroke-width:1.8}
+.bz-fig .mk{stroke:#e8e2d6;stroke-width:.9}
+.bz-fig .hyw{fill:rgba(93,143,181,.8)}
+.bz-fig .pls.l{fill:#a69f95}.bz-fig .pls.r{fill:#958e84}
+.bz-fig .pqf{fill:#8b6440}.bz-fig .pq{stroke:rgba(0,0,0,.2);stroke-width:.6}
+.bz-fig .skr{stroke:#e3dbcd;stroke-width:1.6}
+.bz-fig .tlf{fill:#c9c6c0}.bz-fig .tw{fill:#d9d6d0}.bz-fig .tw.r{fill:#cfccc5}.bz-fig .tg{stroke:rgba(0,0,0,.14);stroke-width:.5}.bz-fig .drain{fill:#7d7a75}
+.bz-fig .pt.l{fill:#e3dbcd}.bz-fig .pt.r{fill:#d3cabb}
+.bz-fig .pw{stroke:rgba(8,7,9,.35);stroke-width:.5}.bz-fig .pw.t{fill:#d4cdc1}.bz-fig .pw.r{fill:url(#bz-block-r)}.bz-fig .pw.l{fill:#9e978c}
+.bz-fig .p-pl .pw.r{fill:#958e84}.bz-fig .p-pl .pw.l{fill:#a69f95}
+.bz-fig .p-pt .pw.r{fill:#d3cabb}.bz-fig .p-pt .pw.l{fill:#e3dbcd}.bz-fig .p-pt .pw.t{fill:#f0ebe2}
+.bz-fig .arc{fill:#e8e2d6}
+.bz-fig .blk.t{fill:#ece7dd}.bz-fig .blk.r{fill:#cfc8bc}.bz-fig .blk.l{fill:#ddd7cc}
+.bz-fig .led{stroke:#ffe2a8;stroke-width:1.4;filter:drop-shadow(0 0 3px rgba(255,214,140,.8))}
+.bz-fig .rug{fill:#5a4636}
+.bz-fig .cab{stroke:#938c84;stroke-width:.8}.bz-fig .lmp{fill:#BF9148}
+.bz-fig .vn.t{fill:#ece6dc}.bz-fig .vn.r{fill:#b9b0a2}.bz-fig .vn.l{fill:#d2cabd}
+.bz-fig .mir{fill:#93a6b0;opacity:.85}
+.bz-fig .glp{fill:rgba(180,210,230,.16);stroke:rgba(220,235,245,.55);stroke-width:.8}
+.bz-fig .pot.t{fill:#c9c2b8}.bz-fig .pot.r{fill:#8f8880}.bz-fig .pot.l{fill:#a9a196}
+.bz-fig .lzr{stroke:#BF9148;stroke-width:.6;stroke-dasharray:2 3;opacity:.7}
+.bz-fig .dot{fill:#f3d7a6}
+@media(prefers-reduced-motion:reduce){.bz-fig .drn{animation:none}.bz-pie.is-x li{animation:none}}

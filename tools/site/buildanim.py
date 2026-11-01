@@ -60,105 +60,51 @@ MAT = {'karkasnyi-budynok-pid-kliuch-kyiv.html': 'frame', 'ru/karkasnyy-dom-pod-
 ABOUT = {'uk': '/about', 'ru': '/ru/o-nas', 'en': '/en/about'}
 BUILD = {'uk': '/budivnytstvo-budynkiv-kyiv', 'ru': '/ru/stroitelstvo-domov-kiev', 'en': '/en/house-construction'}
 
-# (назва, опис) — опис починається з того, хто робить етап (команда — на /about)
-T = {
-    'uk': {
-        'house': dict(
-            h='Будинок з нуля: 8 етапів', hc='Будинок з нуля — за 8 кроків',
-            p='Прокручуйте — і будинок збереться так само, як на ділянці. Фотозвіти з обʼєкта — раз на 1–2 тижні.',
-            cta='Порахувати мій будинок', team='Хто ці люди — на сторінці', about='Про нас', more='Будівництво будинків',
-            st=[('Ділянка й геодезія', 'Геодезист Микола знімає рельєф і виносить осі будинку.'),
-                ('Фундамент', 'Прораб і власна бригада армують і бетонують основу.'),
-                ('Стіни й каркас', 'Газоблок, цегла, каркас чи брус — за обраною технологією.'),
-                ('Перекриття', 'Бригада робить перекриття між поверхами й над другим.'),
-                ('Дах', 'Крокви, утеплення й покрівля; хід робіт знімаємо з дрона.'),
-                ('Вікна й двері', 'Ставимо вікна й вхідні двері — коробка закрита від погоди.'),
-                ('Фасад', 'Утеплення й оздоблення фасаду, водостоки, відмостка.'),
-                ('Інтерʼєр і світло', 'Інженерія, оздоблення, меблі від наших меблярів — і світло у вікнах.')]),
-        'flat': dict(
-            h='Ремонт з нуля: 8 етапів', hc='Ремонт з нуля — за 8 кроків',
-            p='Прокручуйте — і квартира пройде шлях від бетону до ключів. Фотозвіти з обʼєкта — раз на 1–2 тижні.',
-            cta='Порахувати мій ремонт', team='Хто ці люди — на сторінці', about='Про нас', more='',
-            st=[('Обміри й 3D-замір', 'Владислав робить 3D-замір, прораб складає план робіт.'),
-                ('Перегородки', 'Зводимо стіни за планувальним рішенням дизайн-проєкту.'),
-                ('Електрика й сантехніка', 'Розводимо кабелі й труби до кожної точки за проєктом.'),
-                ('Стяжка й штукатурка', 'Вирівнюємо підлогу й стіни під чистове оздоблення.'),
-                ('Оздоблення', 'Плитка, фарба, підлога — за матеріалами з проєкту.'),
-                ('Двері й світло', 'Ставимо двері, вікна, світильники, розетки й вимикачі.'),
-                ('Меблі на замовлення', 'Меблярі Сергій, Андрій і Олег монтують кухню й шафи.'),
-                ('Здача й гарантія', 'Прибирання, перевірка, ключі — і гарантія 36 місяців.')]),
-    },
-    'ru': {
-        'house': dict(
-            h='Дом с нуля: 8 этапов', hc='Дом с нуля — за 8 шагов',
-            p='Прокручивайте — и дом соберётся так же, как на участке. Фотоотчёты с объекта — раз в 1–2 недели.',
-            cta='Рассчитать мой дом', team='Кто эти люди — на странице', about='О нас', more='Строительство домов',
-            st=[('Участок и геодезия', 'Геодезист Николай снимает рельеф и выносит оси дома.'),
-                ('Фундамент', 'Прораб и собственная бригада армируют и бетонируют основание.'),
-                ('Стены и каркас', 'Газоблок, кирпич, каркас или брус — по выбранной технологии.'),
-                ('Перекрытия', 'Бригада делает перекрытия между этажами и над вторым.'),
-                ('Крыша', 'Стропила, утепление и кровля; ход работ снимаем с дрона.'),
-                ('Окна и двери', 'Ставим окна и входные двери — коробка закрыта от погоды.'),
-                ('Фасад', 'Утепление и отделка фасада, водостоки, отмостка.'),
-                ('Интерьер и свет', 'Инженерия, отделка, мебель от наших мебельщиков — и свет в окнах.')]),
-        'flat': dict(
-            h='Ремонт с нуля: 8 этапов', hc='Ремонт с нуля — за 8 шагов',
-            p='Прокручивайте — и квартира пройдёт путь от бетона до ключей. Фотоотчёты с объекта — раз в 1–2 недели.',
-            cta='Рассчитать мой ремонт', team='Кто эти люди — на странице', about='О нас', more='',
-            st=[('Обмеры и 3D-замер', 'Владислав делает 3D-замер, прораб составляет план работ.'),
-                ('Перегородки', 'Возводим стены по планировочному решению дизайн-проекта.'),
-                ('Электрика и сантехника', 'Разводим кабели и трубы к каждой точке по проекту.'),
-                ('Стяжка и штукатурка', 'Выравниваем пол и стены под чистовую отделку.'),
-                ('Отделка', 'Плитка, краска, пол — по материалам из проекта.'),
-                ('Двери и свет', 'Ставим двери, окна, светильники, розетки и выключатели.'),
-                ('Мебель на заказ', 'Мебельщики Сергей, Андрей и Олег монтируют кухню и шкафы.'),
-                ('Сдача и гарантия', 'Уборка, проверка, ключи — и гарантия 36 месяцев.')]),
-    },
-    'en': {
-        'house': dict(
-            h='A house from scratch: 8 stages', hc='A house from scratch in 8 steps',
-            p='Scroll and the house comes together the way it does on site. Photo reports from the site every 1–2 weeks.',
-            cta='Estimate my house', team='Meet the people behind each stage on the', about='About page', more='House construction',
-            st=[('Plot and survey', 'Our surveyor Mykola maps the terrain and sets out the house axes.'),
-                ('Foundation', 'The site manager and our own crew reinforce and pour the base.'),
-                ('Walls and frame', 'Aerated block, brick, timber frame or beam — per the chosen method.'),
-                ('Floor slabs', 'The crew builds the slabs between and above the floors.'),
-                ('Roof', 'Rafters, insulation and roofing; we film progress by drone.'),
-                ('Windows and doors', 'Windows and the entrance door go in — the shell is weathertight.'),
-                ('Facade', 'Insulation and facade finish, gutters and the perimeter path.'),
-                ('Interior and light', 'Services, finishes, furniture by our joiners — and the lights come on.')]),
-        'flat': dict(
-            h='A renovation from scratch: 8 stages', hc='A renovation from scratch in 8 steps',
-            p='Scroll and the apartment goes from bare concrete to keys. Photo reports from the site every 1–2 weeks.',
-            cta='Estimate my renovation', team='Meet the people behind each stage on the', about='About page', more='',
-            st=[('Survey and 3D scan', 'Vladyslav makes a 3D scan, the site manager draws up the work plan.'),
-                ('Partitions', 'We build the walls to the layout from the design project.'),
-                ('Wiring and plumbing', 'Cables and pipes are run to every point in the project.'),
-                ('Screed and plaster', 'Floors and walls are levelled for the finishing coat.'),
-                ('Finishes', 'Tiles, paint and flooring — the materials from the project.'),
-                ('Doors and lighting', 'Doors, windows, light fittings, sockets and switches go in.'),
-                ('Custom furniture', 'Our joiners Serhii, Andrii and Oleh install the kitchen and wardrobes.'),
-                ('Handover and warranty', 'Cleaning, inspection, keys — and a 36-month warranty.')]),
-    },
-}
+# тексти етапів, матеріалів і «пирогів» шарів — tools/site/buildanim_data.py (єдине джерело для HTML і JSON скрипта)
+import buildanim_data as BD  # noqa: E402
+FACTS = {'uk': [('150', '150+', 'проєктів з 2016'), ('10', '10+', 'років досвіду'), ('36', '36 міс.', 'гарантія')],
+         'ru': [('150', '150+', 'проектов с 2016'), ('10', '10+', 'лет опыта'), ('36', '36 мес.', 'гарантия')],
+         'en': [('150', '150+', 'projects since 2016'), ('10', '10+', 'years of experience'), ('36', '36 mo.', 'warranty')]}
+JSON_OUT = 'assets/build-anim.v1.{}.json'  # дані для скрипта сцени: усі матеріали, етапи, пироги (вантажиться разом зі скриптом)
+
+
+def stages(lang, scene, mat=''):
+    t = BD.T[lang][scene]
+    seq = BD.FLAT if scene == 'flat' else BD.MATS[mat or 'block']
+    return [t['st'][k] for k in seq]
+
+
+def data_json(lang):
+    import json
+    t = BD.T[lang]
+    pie = {k: [v[0], BD.PIE_O[k], [list(x) for x in v[1]]] for k, v in t['pie'].items()}
+    d = dict(ui=t['ui'], mats=BD.MATS, flat=BD.FLAT, pieAt=BD.PIE_AT, pie=pie,
+             st={'house': {k: list(v) for k, v in t['house']['st'].items()}, 'flat': {k: list(v) for k, v in t['flat']['st'].items()}})
+    return json.dumps(d, ensure_ascii=False, separators=(',', ':'), sort_keys=True) + '\n'
+
+
 RX = re.compile(r'\n?<!--ba-->.*?<!--/ba-->', re.S)
 e = lambda s: html.escape(s, quote=True)
 
 
 def block(lang, scene, compact, tier=0, mat=''):
-    """tier 0 — повний текст; 1 — лише назви етапів (описи — зі скрипта); 2 — ще й без вступу та рядка про команду."""
-    t = T[lang][scene]
-    li = ''.join((f'<li><div><b>{e(a)}</b><span>{e(b)}</span></div></li>' if tier == 0 else f'<li><b>{e(a)}</b></li>') for a, b in t['st'])
+    """tier 0 — повний текст; 1 — лише назви етапів (описи — зі скрипта); 2 — ще й без вступу, фактів і рядка про команду;
+    3 — без списку етапів (список будує скрипт із JSON) — лише для сторінок на самій межі бюджету."""
+    t = BD.T[lang][scene]
+    st = stages(lang, scene, mat)
+    li = ''.join((f'<li><div><b>{e(a)}</b><span>{e(b)}</span></div></li>' if tier == 0 else f'<li>{e(a)}</li>') for a, b in st)
     more = f' <a href="{BUILD[lang]}">{e(t["more"])} →</a>' if compact and t['more'] else ''
     c = ' data-bz-c' if compact else ''
-    f = (' data-bz-d' if tier else '') + (f' data-bz-m="{mat}"' if mat else '')  # data-bz-d: описи підставляє скрипт
+    f = f' data-bz-m="{mat}"' if mat else ''  # описи й решту матеріалів підставляє скрипт (JSON)
     lead = f'<p class="bz-p">{e(t["p"])}{more}</p>' if tier < 2 else ''
     svc = f' data-service="{e(t["more"])}"' if compact and t['more'] else ''  # головна: заявка — про будинок, а не «Консультація (головна)»
     team = f'<p class="bz-team">{e(t["team"])} <a href="{ABOUT[lang]}">{e(t["about"])}</a></p>' if tier < 2 else ''
+    # факти з CLAUDE.md — лічильники site-chrome.v1.js (data-count): рахуються від нуля, коли блок у кадрі
+    facts = ('<p class="bz-facts">' + ''.join(f'<span><b data-count="{n}">{e(v)}</b> {e(x)}</span>' for n, v, x in FACTS[lang]) + '</p>') if tier < 1 else ''
     return (f'\n<!--ba--><section class="bz" id="build-anim" data-bz="{scene}"{c}{f} aria-labelledby="bz-h" data-js="/assets/build-anim.v1.js" data-css="/assets/build-anim.v1.css"><div class="w">'
             f'<h2 id="bz-h">{e(t["hc"] if compact else t["h"])}</h2>{lead}'
-            f'<ol class="steps bz-st">{li}</ol>'
-            f'<div class="bz-cta" id="bz-cta"><h3>{e(t["cta"])}</h3>'
+            + (f'<ol class="steps bz-st">{li}</ol>' if tier < 3 else '') +
+            f'<div class="bz-cta">{facts}<h3>{e(t["cta"])}</h3>'
             f'<div class="lq-slot" data-form="quick-build-anim"{svc}></div>{team}</div>'
             f'</div></section><!--/ba-->')
 
@@ -175,7 +121,7 @@ def apply(s, rel):
         return s
     scene, compact = PAGES[rel]
     m = re.search(r'<html[^>]*\blang="([a-z]{2})', s)
-    lang = m.group(1) if m and m.group(1) in T else 'uk'
+    lang = m.group(1) if m and m.group(1) in BD.T else 'uk'
     k = next((s.find(a) for a in HOME if s.find(a) >= 0), -1) if compact else -1
     if k < 0:
         mh = HOW.search(s)
@@ -185,17 +131,34 @@ def apply(s, rel):
     # бюджет HTML за типом сторінки (tools/ui/ui.py): повний текст — лише із запасом RESERVE, далі — коротші варіанти;
     # не вміщується навіть найкоротший — блок не ставимо (скрипт друкує, де саме)
     limit = ui.BUDGET['html_kb'][ui.kind(rel, s)] * 1024
-    for tier in (0, 1, 2):
+    for tier in (0, 1, 2, 3):
         b = block(lang, scene, compact, tier, MAT.get(rel, ''))
-        if len(s.encode()) + len(b.encode()) + 40 <= limit - (RESERVE if tier == 0 else 0):  # +40 — ?v= від chrome.versions
+        if len(s.encode()) + len(b.encode()) + 30 <= limit - (RESERVE if tier == 0 else 0):  # +40 — ?v= від chrome.versions
             return s[:k].rstrip('\n') + b + '\n' + s[k:]
     return s
 
 
 def main():
-    import chrome
+    import json
     check = '--check' in sys.argv
     bad = []
+    for lang in BD.T:  # дані для скрипта сцени
+        p = os.path.join(ROOT, JSON_OUT.format(lang))
+        j = data_json(lang)
+        if not os.path.exists(p) or open(p, encoding='utf-8').read() != j:
+            bad.append(JSON_OUT.format(lang))
+            if not check:
+                open(p, 'w', encoding='utf-8').write(j)
+    # версії JSON (?v=) — у скрипті сцени (рядок /*ver*/): атрибут у кожній сторінці коштував би байтів бюджету 64 КБ
+    import chrome
+    js = os.path.join(ROOT, 'assets/build-anim.v1.js')
+    src = open(js, encoding='utf-8').read()
+    ver = 'var VER = ' + json.dumps({l: chrome._ver('/' + JSON_OUT.format(l)) for l in sorted(BD.T)}, separators=(',', ':')) + '; /*ver*/'
+    new = re.sub(r'var VER = \{[^\n]*?\}; /\*ver\*/', lambda m: ver, src)
+    if new != src:
+        bad.append('assets/build-anim.v1.js')
+        if not check:
+            open(js, 'w', encoding='utf-8').write(new)
     for rel in PAGES:
         p = os.path.join(ROOT, rel)
         if not os.path.exists(p):
@@ -213,7 +176,7 @@ def main():
         print('\n'.join(bad) if bad else 'Будинок з нуля: OK')
         sys.exit(1 if bad else 0)
     got = {r: open(os.path.join(ROOT, r), encoding='utf-8').read() for r in PAGES if os.path.exists(os.path.join(ROOT, r))}
-    short = [r for r, s in got.items() if 'data-bz-d' in s]
+    short = [r + ('' if '<ol class="steps bz-st">' in s.split('<!--ba-->')[1] else ' (без списку)') for r, s in got.items() if '<!--ba-->' in s and '</span></div></li>' not in s]
     none = [r for r, s in got.items() if '<!--ba-->' not in s]
     print(f'Будинок з нуля: оновлено {len(bad)} з {len(PAGES)} сторінок'
           + (f'; коротко (бюджет HTML): {", ".join(short)}' if short else '') + (f'; без блоку (бюджет): {", ".join(none)}' if none else ''))
