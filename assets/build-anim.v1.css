@@ -23,7 +23,7 @@
 @media(hover:hover){.bz-mats button:hover{border-color:var(--ac,#BF9148)}}
 .bz-side{position:relative;display:flex;flex-direction:column;gap:12px;min-width:0}
 .bz-hd{display:flex;align-items:center;gap:14px}
-.bz-ct{margin:0;flex:none;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;color:var(--mu,#938c84);font-size:var(--fs-h3,1.4rem);line-height:1;letter-spacing:.04em}
+.bz-ct{margin:0;flex:none;min-width:4.2em;font-variant-numeric:tabular-nums;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;color:var(--mu,#938c84);font-size:var(--fs-h3,1.4rem);line-height:1;letter-spacing:.04em}
 .bz-ct b{font-weight:300;color:var(--ac,#BF9148);font-size:1.7em;margin-right:.08em}
 .bz-bar{flex:1;height:2px;background:var(--ln,rgba(191,145,72,.22));overflow:hidden;border-radius:2px}
 .bz-bar i{display:block;height:100%;background:var(--ac,#BF9148);transform-origin:0 50%;transform:scaleX(0)}
@@ -154,7 +154,7 @@
 .bz-fig .fw.t{fill:#b58a52}.bz-fig .fw.r{fill:#7a5634}.bz-fig .fw.l{fill:#8f6640}
 .bz-fig .fd{stroke:rgba(8,7,9,.25);stroke-width:.4}.bz-fig .fd.t{fill:#8a857e}.bz-fig .fd.r{fill:#5f5a54}.bz-fig .fd.l{fill:#6f6a63}.bz-fig .fd.ir{fill:#55504a}.bz-fig .fd.il{fill:#615c56}
 .bz-fig .loop{stroke:#e0705a;stroke-width:1.1}
-.bz-fig .cw{stroke:#6f9fc4;stroke-width:1.4}.bz-fig .hw{stroke:#e0705a;stroke-width:1.4}.bz-fig .sw{stroke:#9a958e;stroke-width:2.4}
+.bz-fig .cwp{stroke:#6f9fc4;stroke-width:1.4}.bz-fig .hw{stroke:#e0705a;stroke-width:1.4}.bz-fig .sw{stroke:#9a958e;stroke-width:2.4}
 .bz-fig .lawn{fill:#1d2a1a}
 .bz-fig .pave{fill:#4a443d}
 .bz-fig .ax{stroke:#BF9148;stroke-width:.8;stroke-dasharray:6 4;opacity:.75}
@@ -195,7 +195,7 @@
 /* фасад */
 .bz-fig .ins.l{fill:url(#bz-wool-l)}.bz-fig .ins.r{fill:url(#bz-wool-r)}
 .bz-fig .rnd.r{fill:#cbc2b4}.bz-fig .rnd.l{fill:#e2dacd}
-.bz-fig .plt.r{fill:#3a3632}.bz-fig .plt.l{fill:#46413c}
+.bz-fig .plt.t{fill:#55504a}.bz-fig .plt.r{fill:#3a3632}.bz-fig .plt.l{fill:#46413c}
 .bz-fig .fbr.l{fill:url(#bz-brickf-l)}.bz-fig .fbr.r{fill:url(#bz-brickf-r)}
 .bz-fig .mb.l{fill:url(#bz-mb-l)}.bz-fig .mb.r{fill:url(#bz-mb-r)}
 .bz-fig .bat{stroke:#8f6236;stroke-width:1.6}

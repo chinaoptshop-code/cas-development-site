@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
-"""«Будинок з нуля» / «Ремонт з нуля» — scroll-анімація збірки (UI-kit /styleguide/#build-anim).
+"""«Будинок з нуля» / «Ремонт з нуля» v2 — scroll-анімація технології будівництва й ремонту (UI-kit /styleguide/#build-anim-sg).
 
-  python3 tools/site/buildanim.py            # поставити/оновити блок на сторінках PAGES (ідемпотентно)
+  python3 tools/site/buildanim.py            # поставити/оновити блок на сторінках PAGES і JSON для скрипта (ідемпотентно)
   python3 tools/site/buildanim.py --check    # лише перевірка (код 1, якщо щось не оновлено)
 
-Блок — між <!--ba--> і <!--/ba-->: <section class="bz" id="build-anim"> зі справжнім текстом етапів (<ol class="steps">,
-SEO й читачі екрана; без JS це звичайний список «Етапи» з UI-kit) + слот швидкої заявки .lq-slot data-form="quick-build-anim"
-(спільний /assets/lead-form.v1.js → data-source «<сторінка>#build-anim») ; сам скрипт (data-js) вантажить /assets/site-chrome.v1.js лише після першої прокрутки — на завантаженні 0 байтів і 0 мс.
-Скрипт (і CSS) вантажить site-chrome.v1.js після першої прокрутки; за ~3 екрани до блоку скрипт малює ізометричну SVG-сцену кодом
+Тексти етапів, технологій стін і «пирогів» шарів — tools/site/buildanim_data.py (єдине джерело). Цей скрипт робить:
+1) блок між <!--ba--> і <!--/ba-->: <section class="bz" id="build-anim"> зі справжнім текстом етапів стартової технології (<ol class="steps">,
+   SEO й читачі екрана; без JS це звичайний список «Етапи» з UI-kit) + факти-лічильники + слот швидкої заявки .lq-slot data-form="quick-build-anim"
+   (спільний /assets/lead-form.v1.js → data-source «<сторінка>#build-anim»);
+2) /assets/build-anim.v1.<мова>.json — усі технології, етапи й пироги для скрипта; їхні версії (?v=) — у рядку VER скрипта assets/build-anim.v1.js.
+Скрипт (і CSS) вантажить site-chrome.v1.js після першої прокрутки; за ~3 екрани до блоку скрипт бере JSON і малює ізометричну SVG-сцену кодом
 (без картинок і бібліотек) і веде її за прокруткою; prefers-reduced-motion — статичні кадри зі степером.
-Сцени: house — будинок (8 етапів), flat — ремонт квартири (8 етапів); data-bz-c — компактна версія (головна).
+Сцени: house — будинок (19 етапів для кожної технології: block / brick / frame / brus), flat — ремонт квартири (13 етапів); data-bz-c — компактна версія (головна).
 
-Бюджет лендингу 64 КБ (tools/ui/ui.py): якщо повний текст не вміщується із запасом, на сторінку йдуть лише назви етапів,
-а описи підставляє скрипт (той самий текст — словник D у build-anim.v1.js; тримати синхронно з T нижче).
-На ручних сторінках будівництва (budivnytstvo-budynkiv-kyiv, ru/stroitelstvo-domov-kiev) блок замінив розділ «Як працюємо»
-(01.11.2026, бюджет 64 КБ): там блок стоїть перед «Гарантіями». Сторінки «Вартість …» без блоку — не вміщуються в бюджет.
-Факти — лише з CLAUDE.md (команда з /about, гарантія 36 міс., фотозвіти раз на 1–2 тижні), без цін.
+Бюджет лендингу 64 КБ (tools/ui/ui.py): повний текст — лише із запасом RESERVE; далі tier 1 — лише назви етапів, tier 2 — ще й без вступу/команди,
+tier 3 — без списку (список будує скрипт із JSON). Не вміщується й так — блок не ставимо (скрипт друкує, де саме).
+На ручних сторінках будівництва (budivnytstvo-budynkiv-kyiv, ru/stroitelstvo-domov-kiev) блок замінив розділ «Як працюємо» (01.11.2026, бюджет 64 КБ).
+Факти — лише з CLAUDE.md (команда з /about, гарантія 36 міс., фотозвіти раз на 1–2 тижні, 150+ проєктів, 10+ років), без цін і строків.
 Генератори (landing.py) блоку не знають: build-all.sh запускає цей скрипт після них, перед chrome.py.
 """
 import html, os, re, sys
@@ -178,7 +179,7 @@ def main():
     got = {r: open(os.path.join(ROOT, r), encoding='utf-8').read() for r in PAGES if os.path.exists(os.path.join(ROOT, r))}
     short = [r + ('' if '<ol class="steps bz-st">' in s.split('<!--ba-->')[1] else ' (без списку)') for r, s in got.items() if '<!--ba-->' in s and '</span></div></li>' not in s]
     none = [r for r, s in got.items() if '<!--ba-->' not in s]
-    print(f'Будинок з нуля: оновлено {len(bad)} з {len(PAGES)} сторінок'
+    print(f'Будинок з нуля: оновлено {len([b for b in bad if b in PAGES])} з {len(PAGES)} сторінок'
           + (f'; коротко (бюджет HTML): {", ".join(short)}' if short else '') + (f'; без блоку (бюджет): {", ".join(none)}' if none else ''))
 
 

@@ -306,7 +306,25 @@
     });
   }
 
-  [marquee, reveal, counters, accordion].forEach(function (f) { try { f(); } catch (e) {} });
+  // 5. «Магнітні» головні кнопки: лише миша (hover + pointer: fine), без prefers-reduced-motion. Кнопка злегка тягнеться за курсором
+  // (CSS translate — не зсуває макет, CLS 0). Автоматично — a.btn.main, a.btn-pulse, кнопка відправки форми заявки; для іншого — data-magnet.
+  var MG = '[data-magnet],a.btn.main,a.btn-pulse,form#of button[type="submit"],.lq-slot button[type="submit"]';
+  function magnet() {
+    if (RM || !W.matchMedia || !W.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var cur = null;
+    function off() { if (cur) { cur.style.translate = ''; var c = cur; setTimeout(function () { if (c !== cur) c.classList.remove('mo-mg'); }, 350); cur = null; } }
+    d.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var b = e.target.closest && e.target.closest(MG);
+      if (b !== cur) { off(); if (b) { cur = b; b.classList.add('mo-mg'); } }
+      if (!b) return;
+      var r = b.getBoundingClientRect();
+      b.style.translate = ((e.clientX - r.left - r.width / 2) * 0.16).toFixed(1) + 'px ' + ((e.clientY - r.top - r.height / 2) * 0.28).toFixed(1) + 'px';
+    }, { passive: true });
+    d.addEventListener('pointerleave', off);
+  }
+
+  [marquee, reveal, counters, accordion, magnet].forEach(function (f) { try { f(); } catch (e) {} });
 })();
 // ── Пристрої: шапка й нижня панель (.mbar) ховаються при прокрутці вниз і повертаються при прокрутці вгору (телефон ≤767px);
 // панель ховається й коли відкрита клавіатура (фокус у полі форми). Стилі — розділ «Пристрої» у site-chrome.v1.css.
