@@ -4,6 +4,8 @@
   python3 tools/ui/ui.py scan            # аудит усіх сторінок → tools/ui/report.md
   python3 tools/ui/ui.py budget          # перевірка бюджету; код виходу 1, якщо є порушення
   python3 tools/ui/ui.py budget --report # те саме, але завжди код 0 (режим звіту для CI)
+  python3 tools/ui/ui.py classes         # warning: класи на сторінках, яких немає в /styleguide/ (і в базовому списку)
+  python3 tools/ui/ui.py classes --update-baseline   # прийняти поточні класи як відомі (після додавання в styleguide)
 """
 import glob, gzip, json, os, re, sys
 from collections import Counter
@@ -83,6 +85,58 @@ def analyse(rel):
     return r
 
 
+# ── Класи поза каталогом /styleguide/ ──
+# Відомі класи = ті, що є в styleguide (атрибути class і згадки `.клас` у <code>), плюс базовий список
+# tools/ui/classes-baseline.json — усе, що вже було на сайті до запуску перевірки (01.11.2026). Новий клас на сторінці,
+# якого немає ні там, ні там, — warning: спершу додайте компонент у styleguide (або --update-baseline, якщо це не компонент).
+BASELINE = os.path.join(ROOT, 'tools/ui/classes-baseline.json')
+CLASS_RX = re.compile(r'\bclass="([^"]*)"')
+
+
+def _classes(s):
+    s = re.sub(r'<(script|style)[^>]*>.*?</\1>', '', s, flags=re.S)
+    return {c for m in CLASS_RX.findall(s) for c in m.split() if re.match(r'^[A-Za-z_][\w-]*$', c)}
+
+
+def styleguide_classes():
+    s = open(os.path.join(ROOT, 'styleguide/index.html'), encoding='utf-8').read()
+    found = _classes(s)
+    for code in re.findall(r'<code>(.*?)</code>', s, re.S):
+        found |= set(re.findall(r'\.([A-Za-z_][\w-]*)', code.replace('&gt;', '>')))
+    return found
+
+
+def class_usage():
+    use = {}
+    for p in pages():
+        for c in _classes(open(os.path.join(ROOT, p), encoding='utf-8').read()):
+            use.setdefault(c, []).append(p)
+    return use
+
+
+def classes(update=False):
+    use, sg = class_usage(), styleguide_classes()
+    base = set(json.load(open(BASELINE))) if os.path.exists(BASELINE) else set()
+    unknown = sorted(c for c in use if c not in sg)
+    if update or not os.path.exists(BASELINE):
+        json.dump(unknown, open(BASELINE, 'w'), ensure_ascii=False, indent=0)
+        print(f'Базовий список класів оновлено: {len(unknown)} класів поза styleguide ({os.path.relpath(BASELINE, ROOT)})')
+        return []
+    new = [c for c in unknown if c not in base]
+    for c in new:
+        pg = use[c]
+        print(f'warning: клас .{c} немає в /styleguide/ — {len(pg)} стор.: ' + ', '.join(pg[:4]) + (' …' if len(pg) > 4 else ''))
+    if not new:
+        print(f'Класи: OK (у styleguide {len(sg & set(use))} з {len(use)}, решта — базовий список)')
+    return new
+
+
+def classes_quiet():
+    use, sg = class_usage(), styleguide_classes()
+    base = set(json.load(open(BASELINE))) if os.path.exists(BASELINE) else set(use)
+    return sorted(c for c in use if c not in sg and c not in base)
+
+
 def scan():
     rows = [analyse(p) for p in pages()]
     by = Counter(r['kind'] for r in rows)
@@ -107,6 +161,10 @@ def scan():
     issue('Непідтверджені ціни', [f"{r['page']}{r['prices_bad']}" for r in rows if r['prices_bad']])
     issue('Невірний орієнтир бюджету (data-est)', [f"{r['page']}{r['est_bad']}" for r in rows if r['est_bad']])
     issue('Застарілі факти', [f"{r['page']}{r['facts_bad']}" for r in rows if r['facts_bad']])
+    try:
+        issue('Класи поза /styleguide/ (warning, `ui.py classes`)', [f'.{c}' for c in classes_quiet()])
+    except Exception as e:  # перевірка класів не має ламати звіт
+        lines.append(f'- класи: перевірку пропущено ({e})')
     mu = Counter(v for r in rows for v in r['mu']); bg2 = Counter(v for r in rows for v in r['bg2'])
     lines += ['', '## Токени', '', f'- `--mu`: {dict(mu)}', f'- `--bg2`: {dict(bg2)}',
               f'- Копій адреси вебхука форми: {agg("webhook_copies")} на {sum(1 for r in rows if r["webhook_copies"])} сторінках', '',
@@ -142,6 +200,8 @@ if __name__ == '__main__':
     cmd = sys.argv[1] if len(sys.argv) > 1 else 'scan'
     if cmd == 'scan':
         scan()
+    elif cmd == 'classes':
+        classes('--update-baseline' in sys.argv)
     elif cmd == 'budget':
         sys.exit(budget('--report' in sys.argv))
     else:

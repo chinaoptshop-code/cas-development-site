@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 821 (MAIN 5, LAND 468, інші 348). HTML разом 46317 КБ, з них інлайн CSS 17555 КБ і JS 5692 КБ.
+Сторінок: 821 (MAIN 5, LAND 468, інші 348). HTML разом 46326 КБ, з них інлайн CSS 17555 КБ і JS 5692 КБ.
 
 ## Проблеми
 
@@ -23,7 +23,7 @@
 | ozdoba/komplekty.html | other | 119.5 | 28.8 | 32.4 | 7.9 | 14 | 1530 |
 | ozdoba/prais.html | other | 114.4 | 27.8 | 5.8 | 1.1 | 9 | 3022 |
 | ozdoba.html | other | 109.6 | 25.3 | 30.1 | 7.2 | 13 | 759 |
-| about.html | main | 90.6 | 22.4 | 48.8 | 7.1 | 22 | 405 |
+| about.html | main | 97.7 | 23.5 | 48.8 | 7.1 | 22 | 460 |
 | services.html | main | 90.6 | 21.9 | 45.8 | 7.1 | 22 | 477 |
 | contact.html | main | 90.5 | 21.9 | 54.2 | 7.1 | 22 | 353 |
 | pl/ozdoba.html | other | 88.5 | 21.9 | 30.7 | 7.2 | 13 | 619 |
@@ -56,7 +56,7 @@
 | ozdoba/dveri-rozsuvni-aliuminiievi-z-ryflenym-sklom-536.html | other | 65.6 | 17.5 | 32.4 | 7.2 | 14 | 335 |
 | ozdoba/dyvan-kutovyi-modulnyi-molochnyi-61.html | other | 65.6 | 17.6 | 32.4 | 7.2 | 14 | 340 |
 | ozdoba/elektrokamin-3d-z-parovym-polumiam-100-59.html | other | 65.6 | 17.6 | 32.4 | 7.2 | 14 | 339 |
-| ozdoba/komplekt-postilnoi-bilyzny-hotelnyi-bavovna-satyn-524.html | other | 65.6 | 17.5 | 32.4 | 7.2 | 14 | 337 |
+| ozdoba/komplekt-postilnoi-bilyzny-hotelnyi-bavovna-satyn-524.html | other | 65.6 | 17.6 | 32.4 | 7.2 | 14 | 337 |
 | ozdoba/krislo-karver-miake-bukle-z-pidlokitnykamy-19.html | other | 65.6 | 17.7 | 32.4 | 7.2 | 14 | 340 |
 | ozdoba/krislo-kruhle-launzh-u-shkiri-z-602.html | other | 65.6 | 17.7 | 32.4 | 7.2 | 14 | 336 |
 | ozdoba/pidstavka-dlia-bahazhu-hotelna-skladana-horikh-601.html | other | 65.6 | 17.6 | 32.4 | 7.2 | 14 | 334 |
@@ -504,6 +504,7 @@
 | ru/remont-vannoy-kiev.html | land | 53.6 | 14.9 | 13.6 | 7.0 | 7 | 432 |
 | blog/avtorskyi-nahliad-navishcho.html | land | 53.5 | 15.7 | 14.4 | 7.0 | 7 | 321 |
 | proektuvannia-budynku-kyiv.html | land | 53.5 | 14.5 | 13.3 | 7.0 | 7 | 444 |
+| ru/o-nas.html | land | 53.5 | 15.2 | 13.6 | 7.0 | 7 | 481 |
 | avtorskyi-i-tekhnichnyi-nahliad-kyiv.html | land | 53.4 | 14.8 | 13.6 | 7.0 | 7 | 419 |
 | blog/etapy-remontu-kvartyry-pid-kliuch.html | land | 53.4 | 15.6 | 14.4 | 7.0 | 7 | 324 |
 | blog/mebli-z-kytaiu-dlia-interieru.html | land | 53.4 | 15.4 | 14.4 | 7.0 | 7 | 325 |
@@ -534,7 +535,6 @@
 | modulnyi-budynok-kyiv.html | land | 52.0 | 14.7 | 13.6 | 7.0 | 7 | 406 |
 | remont-kukhni-kyiv.html | land | 52.0 | 14.5 | 13.6 | 7.0 | 7 | 440 |
 | ru/modulnyy-dom-kiev.html | land | 51.7 | 14.7 | 13.6 | 7.0 | 7 | 406 |
-| ru/o-nas.html | land | 51.7 | 14.8 | 13.6 | 7.0 | 7 | 457 |
 | blog/koshtorys-na-remont-yak-chytaty.html | land | 51.6 | 15.0 | 14.4 | 7.0 | 7 | 303 |
 | ru/remont-i-stroitelstvo-evropa.html | land | 51.6 | 14.5 | 13.6 | 7.0 | 7 | 412 |
 | blog/ofis-u-biznes-tsentri-shcho-uzghodyty-pered-remontom.html | land | 51.5 | 14.8 | 14.4 | 7.0 | 7 | 302 |
@@ -568,8 +568,8 @@
 | blog/dyzain-ofisu-z-choho-pochaty.html | land | 50.0 | 14.7 | 14.4 | 7.0 | 7 | 306 |
 | ar/renovation-crew.html | land | 49.8 | 13.4 | 13.6 | 7.0 | 7 | 399 |
 | ar/office-renovation.html | land | 49.4 | 13.3 | 13.6 | 7.0 | 7 | 390 |
-| dyzain-i-remont-bucha.html | land | 49.2 | 14.1 | 13.6 | 7.0 | 7 | 349 |
 | ru/dizayn-i-remont-bucha.html | land | 49.2 | 14.1 | 13.6 | 7.0 | 7 | 349 |
+| dyzain-i-remont-bucha.html | land | 49.1 | 14.1 | 13.6 | 7.0 | 7 | 349 |
 | en/general-contractor-kyiv.html | land | 49.1 | 13.9 | 13.6 | 7.0 | 7 | 449 |
 | ru/dizayn-i-remont-lvov.html | land | 49.1 | 14.0 | 13.6 | 7.0 | 7 | 341 |
 | blog/proekt-budynku-shcho-vkhodyt.html | land | 49.0 | 14.3 | 14.4 | 7.0 | 7 | 291 |
@@ -582,44 +582,42 @@
 | ru/dizayn-i-remont-odessa.html | land | 48.6 | 14.0 | 13.6 | 7.0 | 7 | 340 |
 | ar/house-renovation.html | land | 48.5 | 13.0 | 13.6 | 7.0 | 7 | 393 |
 | dyzain-i-remont-odesa.html | land | 48.5 | 14.0 | 13.6 | 7.0 | 7 | 340 |
-| ru/dizayn-i-remont-ivano-frankovsk.html | land | 48.5 | 13.7 | 13.6 | 7.0 | 7 | 342 |
 | ar/business-fit-out.html | land | 48.4 | 13.4 | 13.6 | 7.0 | 7 | 378 |
 | ar/new-build-renovation.html | land | 48.4 | 13.2 | 13.6 | 7.0 | 7 | 388 |
-| dyzain-i-remont-brovary.html | land | 48.4 | 13.9 | 13.6 | 7.0 | 7 | 344 |
 | dyzain-i-remont-ivano-frankivsk.html | land | 48.4 | 13.7 | 13.6 | 7.0 | 7 | 342 |
 | proekty/hodos-villa.html | land | 48.4 | 9.8 | 2.1 | 0.9 | 1 | 424 |
 | ru/dizayn-i-remont-borispol.html | land | 48.4 | 13.9 | 13.6 | 7.0 | 7 | 344 |
 | ru/dizayn-i-remont-brovary.html | land | 48.4 | 13.9 | 13.6 | 7.0 | 7 | 344 |
+| ru/dizayn-i-remont-ivano-frankovsk.html | land | 48.4 | 13.7 | 13.6 | 7.0 | 7 | 342 |
 | blog/remont-vannoi-kimnaty-pid-kliuch-etapy.html | land | 48.3 | 14.3 | 14.4 | 7.0 | 7 | 300 |
-| dyzain-i-remont-boryspil.html | land | 48.3 | 13.9 | 13.6 | 7.0 | 7 | 344 |
+| dyzain-i-remont-brovary.html | land | 48.3 | 13.9 | 13.6 | 7.0 | 7 | 344 |
 | en/interior-design.html | land | 48.3 | 13.7 | 13.9 | 7.0 | 7 | 471 |
 | ru/dizayn-i-remont-belaya-tserkov.html | land | 48.3 | 13.8 | 13.6 | 7.0 | 7 | 345 |
 | ru/dizayn-i-remont-dnepr.html | land | 48.3 | 13.8 | 13.6 | 7.0 | 7 | 342 |
-| ru/dizayn-i-remont-vasilkov.html | land | 48.3 | 13.8 | 13.6 | 7.0 | 7 | 345 |
 | ar/index.html | land | 48.2 | 13.4 | 13.6 | 7.0 | 7 | 387 |
 | ar/renovation-calculator.html | land | 48.2 | 13.1 | 14.2 | 8.0 | 7 | 365 |
-| dyzain-i-remont-bila-tserkva.html | land | 48.2 | 13.8 | 13.6 | 7.0 | 7 | 345 |
+| dyzain-i-remont-boryspil.html | land | 48.2 | 13.9 | 13.6 | 7.0 | 7 | 344 |
 | dyzain-i-remont-dnipro.html | land | 48.2 | 13.8 | 13.6 | 7.0 | 7 | 342 |
 | dyzain-i-remont-vyshhorod.html | land | 48.2 | 13.8 | 13.6 | 7.0 | 7 | 343 |
-| dyzain-i-remont-vyshneve.html | land | 48.2 | 13.8 | 13.6 | 7.0 | 7 | 344 |
-| ru/dizayn-i-remont-chernigov.html | land | 48.2 | 13.8 | 13.6 | 7.0 | 7 | 343 |
-| ru/dizayn-i-remont-kropivnitskiy.html | land | 48.2 | 13.8 | 13.6 | 7.0 | 7 | 341 |
-| ru/dizayn-i-remont-obuhov.html | land | 48.2 | 13.8 | 13.6 | 7.0 | 7 | 343 |
-| ru/dizayn-i-remont-uzhgorod.html | land | 48.2 | 13.7 | 13.6 | 7.0 | 7 | 341 |
+| ru/dizayn-i-remont-vasilkov.html | land | 48.2 | 13.8 | 13.6 | 7.0 | 7 | 345 |
 | ru/dizayn-i-remont-vishnevoe.html | land | 48.2 | 13.8 | 13.6 | 7.0 | 7 | 344 |
 | ar/commercial-renovation.html | land | 48.1 | 13.1 | 13.6 | 7.0 | 7 | 393 |
+| dyzain-i-remont-bila-tserkva.html | land | 48.1 | 13.8 | 13.6 | 7.0 | 7 | 345 |
 | dyzain-i-remont-cherkasy.html | land | 48.1 | 13.7 | 13.6 | 7.0 | 7 | 341 |
-| dyzain-i-remont-chernihiv.html | land | 48.1 | 13.7 | 13.6 | 7.0 | 7 | 343 |
 | dyzain-i-remont-kropyvnytskyi.html | land | 48.1 | 13.7 | 13.6 | 7.0 | 7 | 341 |
 | dyzain-i-remont-obukhiv.html | land | 48.1 | 13.8 | 13.6 | 7.0 | 7 | 343 |
-| dyzain-i-remont-uzhhorod.html | land | 48.1 | 13.7 | 13.6 | 7.0 | 7 | 341 |
+| dyzain-i-remont-uzhhorod.html | land | 48.1 | 13.8 | 13.6 | 7.0 | 7 | 341 |
 | dyzain-i-remont-vasylkiv.html | land | 48.1 | 13.8 | 13.6 | 7.0 | 7 | 345 |
+| dyzain-i-remont-vyshneve.html | land | 48.1 | 13.8 | 13.6 | 7.0 | 7 | 344 |
 | ru/dizayn-i-remont-cherkassy.html | land | 48.1 | 13.8 | 13.6 | 7.0 | 7 | 341 |
+| ru/dizayn-i-remont-chernigov.html | land | 48.1 | 13.8 | 13.6 | 7.0 | 7 | 343 |
+| ru/dizayn-i-remont-kropivnitskiy.html | land | 48.1 | 13.8 | 13.6 | 7.0 | 7 | 341 |
+| ru/dizayn-i-remont-obuhov.html | land | 48.1 | 13.8 | 13.6 | 7.0 | 7 | 343 |
 | ru/dizayn-i-remont-ternopol.html | land | 48.1 | 13.8 | 13.6 | 7.0 | 7 | 342 |
+| ru/dizayn-i-remont-uzhgorod.html | land | 48.1 | 13.8 | 13.6 | 7.0 | 7 | 341 |
 | ru/dizayn-i-remont-vyshgorod.html | land | 48.1 | 13.8 | 13.6 | 7.0 | 7 | 343 |
-| dyzain-i-remont-boiarka.html | land | 48.0 | 13.8 | 13.6 | 7.0 | 7 | 343 |
+| dyzain-i-remont-chernihiv.html | land | 48.0 | 13.7 | 13.6 | 7.0 | 7 | 343 |
 | dyzain-i-remont-chernivtsi.html | land | 48.0 | 13.7 | 13.6 | 7.0 | 7 | 340 |
-| dyzain-i-remont-fastiv.html | land | 48.0 | 13.7 | 13.6 | 7.0 | 7 | 345 |
 | dyzain-i-remont-khmelnytskyi.html | land | 48.0 | 13.7 | 13.6 | 7.0 | 7 | 343 |
 | dyzain-i-remont-rivne.html | land | 48.0 | 13.7 | 13.6 | 7.0 | 7 | 342 |
 | dyzain-i-remont-vinnytsia.html | land | 48.0 | 13.7 | 13.6 | 7.0 | 7 | 340 |
@@ -628,6 +626,8 @@
 | ru/dizayn-i-remont-hmelnitskiy.html | land | 48.0 | 13.7 | 13.6 | 7.0 | 7 | 343 |
 | ru/dizayn-i-remont-rovno.html | land | 48.0 | 13.8 | 13.6 | 7.0 | 7 | 342 |
 | ru/dizayn-i-remont-vinnitsa.html | land | 48.0 | 13.8 | 13.6 | 7.0 | 7 | 340 |
+| dyzain-i-remont-boiarka.html | land | 47.9 | 13.8 | 13.6 | 7.0 | 7 | 343 |
+| dyzain-i-remont-fastiv.html | land | 47.9 | 13.7 | 13.6 | 7.0 | 7 | 345 |
 | dyzain-i-remont-poltava.html | land | 47.9 | 13.7 | 13.6 | 7.0 | 7 | 341 |
 | dyzain-i-remont-ternopil.html | land | 47.9 | 13.7 | 13.6 | 7.0 | 7 | 342 |
 | dyzain-i-remont-zhytomyr.html | land | 47.9 | 13.7 | 13.6 | 7.0 | 7 | 342 |
@@ -789,6 +789,7 @@
 | zh/interior-design.html | land | 42.7 | 12.8 | 13.6 | 7.0 | 7 | 364 |
 | zh/interior-designer.html | land | 42.7 | 12.7 | 13.6 | 7.0 | 7 | 370 |
 | zh/restaurant-design.html | land | 42.7 | 12.6 | 13.6 | 7.0 | 7 | 364 |
+| en/about.html | land | 42.5 | 12.4 | 13.6 | 7.0 | 7 | 380 |
 | proekty/yacht-vip.html | land | 42.5 | 8.4 | 2.1 | 0.9 | 1 | 363 |
 | zh/resort-turnkey.html | land | 42.5 | 12.5 | 13.6 | 7.0 | 7 | 364 |
 | proekty/hoda-estate.html | land | 42.4 | 8.9 | 2.1 | 0.9 | 1 | 394 |
@@ -805,7 +806,6 @@
 | de/leistungen.html | land | 41.3 | 12.0 | 13.6 | 7.0 | 7 | 382 |
 | pl/o-studiu.html | land | 41.3 | 12.5 | 13.6 | 7.0 | 7 | 353 |
 | de/ueber-uns.html | land | 41.2 | 12.3 | 13.6 | 7.0 | 7 | 346 |
-| en/about.html | land | 41.2 | 12.1 | 13.6 | 7.0 | 7 | 356 |
 | proekty/diamond.html | land | 40.6 | 8.2 | 2.1 | 0.9 | 1 | 352 |
 | zh/services.html | land | 40.5 | 12.3 | 13.6 | 7.0 | 7 | 380 |
 | zh/about.html | land | 40.2 | 12.6 | 13.6 | 7.0 | 7 | 343 |

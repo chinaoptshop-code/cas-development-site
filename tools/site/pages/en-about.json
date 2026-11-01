@@ -97,6 +97,37 @@
    ]
   },
   {
+   "t": "cards",
+   "h2": "Our in-house crew",
+   "items": [
+    {
+     "h": "Site managers",
+     "role": "Oleh, Volodymyr, Serhii, Oleksandr, Mykhailo",
+     "p": "Run the crews on site: sequence and quality of work, sign-off of every stage."
+    },
+    {
+     "h": "Furniture makers",
+     "role": "Serhii, Andrii, Oleh",
+     "p": "Build and install kitchens, wardrobes and custom furniture from the project drawings."
+    },
+    {
+     "h": "Land surveyor",
+     "role": "Mykola",
+     "p": "Site surveys, setting out and level control during construction."
+    },
+    {
+     "h": "3D measurement",
+     "role": "Vladyslav",
+     "p": "3D measurement of spaces and as-built drawings — an accurate base for design and estimates."
+    },
+    {
+     "h": "Drone filming",
+     "role": "Mykhailo",
+     "p": "Drone photo and video of plots, facades and construction progress for client reports."
+    }
+   ]
+  },
+  {
    "t": "guarantees"
   },
   {
