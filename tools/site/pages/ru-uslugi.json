@@ -147,6 +147,18 @@
     [
      "/ru/stoimost-dizayna-interera-kiev",
      "Стоимость дизайна интерьера"
+    ],
+    [
+     "/ru/dizayn-i-remont-penthausa-kiev",
+     "Дизайн и ремонт пентхауса"
+    ],
+    [
+     "/ru/dizayn-interera-neoklassika-kiev",
+     "Дизайн интерьера: неоклассика"
+    ],
+    [
+     "/ru/dizayn-i-remont-magazina-shouruma-kiev",
+     "Дизайн и ремонт магазина и шоурума"
     ]
    ]
   },
@@ -225,6 +237,18 @@
     [
      "/ru/chernovoy-remont-kvartiry-kiev",
      "Черновой ремонт квартиры"
+    ],
+    [
+     "/ru/pereplanirovka-kvartiry-kiev",
+     "Перепланировка квартиры"
+    ],
+    [
+     "/ru/remont-taunhausa-kiev",
+     "Ремонт таунхауса"
+    ],
+    [
+     "/ru/obustroystvo-ofisa-pod-klyuch-kiev",
+     "Обустройство офиса под ключ (fit-out)"
     ]
    ]
   },
@@ -283,6 +307,10 @@
     [
      "/ru/kuhni-i-shkafy-na-zakaz-kiev",
      "Кухни и шкафы на заказ"
+    ],
+    [
+     "/ru/dom-iz-gazobloka-pod-klyuch-kiev",
+     "Дом из газоблока под ключ"
     ]
    ]
   },

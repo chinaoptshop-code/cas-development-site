@@ -559,6 +559,9 @@ def ld(p):
     home = B.rstrip('/') + t['home_url']
     page = {'@type': {'about': 'AboutPage', 'contact': 'ContactPage'}.get(p.get('kind'), 'WebPage'), '@id': u + '#page', 'url': u,
             'name': p['title'], 'inLanguage': hl, 'isPartOf': {'@type': 'WebSite', '@id': B + '#site', 'url': B, 'name': 'CAS Development'}}
+    if p.get('kind') == 'about':  # сутність студії — та сама, що на головній (@id), для Knowledge Graph і відповідей ШІ
+        page['mainEntity'] = dict(ORG, telephone='+380978667755', sameAs=SAME_AS, foundingDate='2016',
+                                  foundingLocation={'@type': 'Place', 'name': t['city']}, areaServed=area_served(lang))
     if p.get('slug') == 'index':
         page['about'] = dict(ORG, telephone='+380978667755', sameAs=SAME_AS)
         g = [page]
