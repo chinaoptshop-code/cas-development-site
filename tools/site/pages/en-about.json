@@ -6,7 +6,7 @@
  "title": "About CAS Development — design and build studio in Kyiv",
  "description": "CAS Development: design, renovation and construction studio founded in Kyiv in 2016. 150+ projects in Ukraine and abroad, 36-month warranty.",
  "h1": "We create spaces that live",
- "lead": "CAS Development is a studio where architecture meets detail. Founded in Kyiv in 2016, it designs interiors, renovates and builds turnkey — from compact apartments to private houses, restaurants and offices.",
+ "lead": "CAS Development is an interior design, renovation and construction studio founded in Kyiv in 2016. It designs interiors, renovates and builds turnkey — from compact apartments to private houses, restaurants and offices.",
  "btn2": [
   "https://wa.me/380978667755",
   "WhatsApp"
@@ -129,6 +129,45 @@
   },
   {
    "t": "guarantees"
+  },
+  {
+   "t": "faq",
+   "id": "faq",
+   "h2": "CAS Development in brief: frequently asked questions",
+   "items": [
+    [
+     "What is CAS Development?",
+     "CAS Development is an interior design, renovation and construction studio based in Kyiv, Ukraine, founded in 2016. It handles design projects, apartment and house renovation, house construction, office and commercial fit-outs, and furniture procurement directly from China."
+    ],
+    [
+     "Who founded CAS Development?",
+     "The studio was founded in Kyiv in 2016 by Mykhailo, its founder and CEO."
+    ],
+    [
+     "Where does CAS Development work?",
+     "The office is at 44 Antonovycha St, Kyiv. The studio works in Kyiv and the Kyiv region, takes renovation and construction projects in all regions of Ukraine and in Europe, and has had projects in Bali, Spain, the USA, France, Germany, Poland and Turkey."
+    ],
+    [
+     "How much do CAS Development services cost?",
+     "Design projects start at $30/m² (minimum $2 500), turnkey renovation at $550/m² (labour and rough materials), office renovation at $350/m², furnishing at $250/m², and houses at $600/m² for the shell or $1 100/m² turnkey. In Europe prices are about 50% higher. The exact figure is set in the estimate after a site survey."
+    ],
+    [
+     "How many projects has CAS Development completed?",
+     "More than 150 projects since 2016: apartments, private houses, restaurants, offices, salons, hotels and resorts. Completed examples include the Tetris Hall apartment, the Monpark restaurant in central Kyiv, the Dolls Salon beauty salon and an office in the Chicago residential complex."
+    ],
+    [
+     "Does CAS Development use subcontractors?",
+     "No. Renovation is carried out by three in-house salaried crews matched to different complexity levels and types of work."
+    ],
+    [
+     "What warranty does CAS Development give?",
+     "A 36-month warranty on completed works. When CAS does the renovation, the final cost stays within ±5% of the estimate; price, timeline and payment schedule are fixed in the contract."
+    ],
+    [
+     "How do I start a project with CAS Development?",
+     "Call +380 97 866 77 55 or message on Telegram — phone consultations are free. Next come the brief, a paid site survey, the estimate and the contract."
+    ]
+   ]
   },
   {
    "t": "rel",
