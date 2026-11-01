@@ -43,7 +43,7 @@
   Заявки й замовлення → D1 + миттєве сповіщення адмінам у Telegram (кнопка «Взяв у роботу», SLA 15 хв, звіт о 20:45) —
   `functions/_alerts.js`, розділ «Сповіщення про заявки» в `tools/admin/README.md`.
   Деплой сам збирає сайт `tools/build-all.sh` (landing → products → shop → blog → chrome → i18n); `rebuild.yml` комітить згенероване з `[rebuild]`.
-- «Будинок з нуля» / «Ремонт з нуля» (scroll-анімація збірки, префікс класів `bz`, `.ba` — слайдер «до/після»): `tools/site/buildanim.py`
+- «Будинок з нуля» / «Ремонт з нуля» (scroll-анімація збірки, префікс класів `bz`, `.ba` — слайдер «до/після»): тексти етапів і пироги шарів — `tools/site/buildanim_data.py`, генератор `tools/site/buildanim.py`
   (сторінки — `PAGES`, у build-all), `assets/build-anim.v1.{js,css}` (вантажить site-chrome.v1.js після першої прокрутки), UI-kit — `/styleguide/#build-anim-sg`.
 - Карти (/portfolio «Карта проєктів», карта офісу в контактах усіх мов): `tools/site/casmap.py` (точки — лише центр міста/регіону, без адрес клієнтів),
   MapLibre GL JS self-hosted у `assets/vendor/`, тайли OpenFreeMap без ключа; постери `img/map/` — `python3 tools/site/casmap.py --posters`.
