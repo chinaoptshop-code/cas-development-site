@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Сторінки кабінету: /kabinet, /kabinet/{zamovlennia,obrane,proekty,profil} (клієнт, tools/shop/kabinet_v2.py)
-і /kabinet/admin (менеджер). Шапка й стилі — з ozdoba.html.
+/kabinet/admin (майстер-панель власника / робоча панель менеджера), /kabinet/team (кабінет працівника)
+і /kabinet/zaboroneno (403). Шапка й стилі — з ozdoba.html.
 
   python3 tools/shop/pages.py
 """
@@ -55,8 +56,36 @@ ADMIN = """<main class="acc">
   <div id="adm"><p class="acc-wait">Перевіряємо доступ…</p></div>
 </main>
 <link rel="stylesheet" href="/assets/admin/cms.v1.css?v=__CMSCSS__">
+<link rel="stylesheet" href="/assets/admin/studio.v1.css?v=__STCSS__">
 <script src="/assets/account.v1.js?v=__ACCV__" defer></script>
+<script src="/assets/admin/studio.v1.js?v=__STJS__" defer></script>
 <script src="/assets/admin/cms.v1.js?v=__CMSJS__" defer></script>
+"""
+
+# Кабінет працівника /kabinet/team (прораб, мебляр, геодезист, 3D, дрон, дизайнер, менеджер, бухгалтер) — assets/team.v1.{js,css}.
+# Mobile-first, власна «польова» світла тема (читається на сонці на обʼєкті). Доступ — functions/kabinet/_middleware.js + /api/team/*.
+TEAM = """<main class="acc tm-page">
+  <div class="crumbs"><a href="/kabinet">Кабінет</a> / Команда</div>
+  <h1>Кабінет працівника</h1>
+  <div id="tm" aria-live="polite"><p class="acc-wait">Перевіряємо доступ…</p></div>
+  <dialog id="tmSheet" class="tm-sheet" aria-label="Дія на обʼєкті"></dialog>
+  <div id="tm-toast" class="tm-toast" role="status" aria-live="polite"></div>
+</main>
+<link rel="stylesheet" href="/assets/team.v1.css?v=__TMCSS__">
+<script src="/assets/account.v1.js?v=__ACCV__" defer></script>
+<script src="/assets/team.v1.js?v=__TMJS__" defer></script>
+"""
+
+# 403 «не ваш інтерфейс»: віддає functions/kabinet/_middleware.js зі статусом 403. Без JS — лише посилання за роллю.
+DENIED = """<main class="acc">
+  <div class="crumbs"><a href="/kabinet">Кабінет</a> / Немає доступу</div>
+  <h1>Цей розділ — не для вашого акаунта</h1>
+  <section class="acc-box">
+    <p>Ви увійшли, але цей інтерфейс відкритий іншій ролі. Кабінет клієнта бачить лише свої замовлення й обʼєкти, кабінет працівника — призначені задачі, майстер-панель — власник і менеджери.</p>
+    <p class="row"><a class="btn" href="/kabinet">Мій кабінет</a> <a class="btn ghost" href="/kabinet/team">Кабінет працівника</a></p>
+    <p class="acc-wait">Якщо доступ потрібен для роботи — напишіть власнику студії: він додасть вас у «Персонал» з потрібною роллю.</p>
+  </section>
+</main>
 """
 
 
@@ -85,6 +114,9 @@ def page(s, title, body, path):
     body = body.replace('__ACCV__', h('assets', 'account.v1.js'))
     if '__CMSJS__' in body:
         body = body.replace('__CMSJS__', h('assets', 'admin', 'cms.v1.js')).replace('__CMSCSS__', h('assets', 'admin', 'cms.v1.css'))
+        body = body.replace('__STJS__', h('assets', 'admin', 'studio.v1.js')).replace('__STCSS__', h('assets', 'admin', 'studio.v1.css'))
+    if '__TMJS__' in body:
+        body = body.replace('__TMJS__', h('assets', 'team.v1.js')).replace('__TMCSS__', h('assets', 'team.v1.css'))
     s = s[:a] + body + '\n' + s[b:]
     a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
     s = s[:a] + s[b:]
@@ -99,3 +131,5 @@ if __name__ == '__main__':
     import kabinet_v2
     kabinet_v2.build(sh, page)
     page(sh, 'Облік замовлень', ADMIN, 'kabinet/admin')
+    page(sh, 'Кабінет працівника', TEAM, 'kabinet/team')
+    page(sh, 'Немає доступу', DENIED, 'kabinet/zaboroneno')
