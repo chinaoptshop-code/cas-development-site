@@ -20,7 +20,7 @@ e = html.escape
 
 OFFICE = dict(lat=50.4335971, lng=30.5131241, z=16, cid='https://maps.google.com/?cid=15015666645432112566')
 ROUTE = f'https://www.google.com/maps/dir/?api=1&amp;destination={OFFICE["lat"]}%2C{OFFICE["lng"]}'
-REALIZED = {'tetris-hall', 'dolls-salon', 'office-chicago'}
+REALIZED = {'tetris-hall', 'dolls-salon', 'office-chicago', 'monpark'}
 
 # slug, назва, місце (як на сторінці проєкту), [lng, lat] — центр міста/регіону (у Києві — розведені на ~1 км, щоб кластер розкривався),
 # zoom для flyTo (місто — 11, регіон — 7, країна — 4), фото для попапу
