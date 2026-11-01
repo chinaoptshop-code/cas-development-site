@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""«Будинок з нуля» / «Ремонт з нуля» v2 — scroll-анімація технології будівництва й ремонту (UI-kit /styleguide/#build-anim-sg).
+"""«Будинок з нуля» v2 / «Ремонт з нуля» v3 — scroll-анімація технології будівництва й ремонту (UI-kit /styleguide/#build-anim-sg).
 
   python3 tools/site/buildanim.py            # поставити/оновити блок на сторінках PAGES і JSON для скрипта (ідемпотентно)
   python3 tools/site/buildanim.py --check    # лише перевірка (код 1, якщо щось не оновлено)
@@ -11,7 +11,8 @@
 2) /assets/build-anim.v1.<мова>.json — усі технології, етапи й пироги для скрипта; їхні версії (?v=) — у рядку VER скрипта assets/build-anim.v1.js.
 Скрипт (і CSS) вантажить site-chrome.v1.js після першої прокрутки; за ~3 екрани до блоку скрипт бере JSON і малює ізометричну SVG-сцену кодом
 (без картинок і бібліотек) і веде її за прокруткою; prefers-reduced-motion — статичні кадри зі степером.
-Сцени: house — будинок (19 етапів для кожної технології: block / brick / frame / brus), flat — ремонт квартири (13 етапів); data-bz-c — компактна версія (головна).
+Сцени: house — будинок (19 етапів для кожної технології: block / brick / frame / brus), flat — ремонт квартири ≈86 м² (19 етапів; data-bz-v="old" —
+старт із варіанта «Вторинка з демонтажем», інакше «Новобудова з нуля»; рентген мереж); data-bz-c — компактна версія (головна, перемикач «Будинок / Квартира»).
 
 Бюджет лендингу 64 КБ (tools/ui/ui.py): повний текст — лише із запасом RESERVE; далі tier 1 — лише назви етапів, tier 2 — ще й без вступу/команди,
 tier 3 — без списку (список будує скрипт із JSON). Не вміщується й так — блок не ставимо (скрипт друкує, де саме).
@@ -58,6 +59,8 @@ PAGES = {
 MAT = {'karkasnyi-budynok-pid-kliuch-kyiv.html': 'frame', 'ru/karkasnyy-dom-pod-klyuch-kiev.html': 'frame',
        'modulnyi-budynok-kyiv.html': 'frame', 'ru/modulnyy-dom-kiev.html': 'frame',
        'budynok-z-brusa-kyiv.html': 'brus', 'ru/dom-iz-brusa-kiev.html': 'brus'}
+# стартовий варіант сцени «квартира»: вторинка з демонтажем — на сторінках капітального ремонту, інакше новобудова з нуля
+VAR = {'kapitalnyi-remont-kvartyry-kyiv.html': 'old', 'ru/kapitalnyy-remont-kvartiry-kiev.html': 'old'}
 ABOUT = {'uk': '/about', 'ru': '/ru/o-nas', 'en': '/en/about'}
 BUILD = {'uk': '/budivnytstvo-budynkiv-kyiv', 'ru': '/ru/stroitelstvo-domov-kiev', 'en': '/en/house-construction'}
 
@@ -69,17 +72,20 @@ FACTS = {'uk': [('150', '150+', 'проєктів з 2016'), ('10', '10+', 'ро
 JSON_OUT = 'assets/build-anim.v1.{}.json'  # дані для скрипта сцени: усі матеріали, етапи, пироги (вантажиться разом зі скриптом)
 
 
-def stages(lang, scene, mat=''):
+def stages(lang, scene, mat='', var='new'):
     t = BD.T[lang][scene]
-    seq = BD.FLAT if scene == 'flat' else BD.MATS[mat or 'block']
-    return [t['st'][k] for k in seq]
+    if scene == 'flat':  # варіант квартири: тексти з суфіксом _n (новобудова) / _o (вторинка), якщо відрізняються
+        suf = '_n' if var == 'new' else '_o'
+        return [t['st'].get(k + suf, t['st'][k]) for k in BD.FLAT]
+    return [t['st'][k] for k in BD.MATS[mat or 'block']]
 
 
 def data_json(lang):
     import json
     t = BD.T[lang]
     pie = {k: [v[0], BD.PIE_O[k], [list(x) for x in v[1]]] for k, v in t['pie'].items()}
-    d = dict(ui=t['ui'], mats=BD.MATS, flat=BD.FLAT, pieAt=BD.PIE_AT, pie=pie,
+    d = dict(ui=t['ui'], mats=BD.MATS, flat=BD.FLAT, fv=BD.FLAT_V, pieAt=BD.PIE_AT, pie=pie,
+             cta={k: t[k]['cta'] for k in ('house', 'flat')}, svc={'house': t['house']['more'], 'flat': t['flat']['svc']},
              st={'house': {k: list(v) for k, v in t['house']['st'].items()}, 'flat': {k: list(v) for k, v in t['flat']['st'].items()}})
     return json.dumps(d, ensure_ascii=False, separators=(',', ':'), sort_keys=True) + '\n'
 
@@ -88,15 +94,16 @@ RX = re.compile(r'\n?<!--ba-->.*?<!--/ba-->', re.S)
 e = lambda s: html.escape(s, quote=True)
 
 
-def block(lang, scene, compact, tier=0, mat=''):
+def block(lang, scene, compact, tier=0, mat='', var='new'):
     """tier 0 — повний текст; 1 — лише назви етапів (описи — зі скрипта); 2 — ще й без вступу, фактів і рядка про команду;
     3 — без списку етапів (список будує скрипт із JSON) — лише для сторінок на самій межі бюджету."""
     t = BD.T[lang][scene]
-    st = stages(lang, scene, mat)
+    st = stages(lang, scene, mat, var)
     li = ''.join((f'<li><div><b>{e(a)}</b><span>{e(b)}</span></div></li>' if tier == 0 else f'<li>{e(a)}</li>') for a, b in st)
     more = f' <a href="{BUILD[lang]}">{e(t["more"])} →</a>' if compact and t['more'] else ''
     c = ' data-bz-c' if compact else ''
     f = f' data-bz-m="{mat}"' if mat else ''  # описи й решту матеріалів підставляє скрипт (JSON)
+    f += ' data-bz-v="old"' if scene == 'flat' and var == 'old' else ''
     lead = f'<p class="bz-p">{e(t["p"])}{more}</p>' if tier < 2 else ''
     svc = f' data-service="{e(t["more"])}"' if compact and t['more'] else ''  # головна: заявка — про будинок, а не «Консультація (головна)»
     team = f'<p class="bz-team">{e(t["team"])} <a href="{ABOUT[lang]}">{e(t["about"])}</a></p>' if tier < 2 else ''
@@ -133,7 +140,7 @@ def apply(s, rel):
     # не вміщується навіть найкоротший — блок не ставимо (скрипт друкує, де саме)
     limit = ui.BUDGET['html_kb'][ui.kind(rel, s)] * 1024
     for tier in (0, 1, 2, 3):
-        b = block(lang, scene, compact, tier, MAT.get(rel, ''))
+        b = block(lang, scene, compact, tier, MAT.get(rel, ''), VAR.get(rel, 'new'))
         if len(s.encode()) + len(b.encode()) + 30 <= limit - (RESERVE if tier == 0 else 0):  # +40 — ?v= від chrome.versions
             return s[:k].rstrip('\n') + b + '\n' + s[k:]
     return s

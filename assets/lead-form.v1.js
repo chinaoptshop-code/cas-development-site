@@ -370,7 +370,8 @@
       var label = btn ? btn.textContent : '';
       busy(btn, true, t.sending);
       var data = base(f);
-      data.name = NONAME; data.phone = '+' + d; data.area = ''; data.message = ''; data.form = f.dataset.form || 'quick';
+      data.name = NONAME; data.phone = '+' + d; data.area = ''; data.form = f.dataset.form || 'quick';
+      var cm = f.closest && f.closest('[data-msg]'); data.message = cm ? cm.getAttribute('data-msg').slice(0, 300) : ''; // конфігурація з блоку (напр. «Будинок з нуля»: технологія / тип / стиль / площа)
       post(data, function () {
         busy(btn, false, label);
         var ok = f.nextElementSibling && f.nextElementSibling.classList.contains('lq-ok') ? f.nextElementSibling : null;

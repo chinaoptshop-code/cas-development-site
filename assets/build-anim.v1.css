@@ -15,7 +15,9 @@
 .bz-fig svg{display:block;width:100%;height:100%;max-height:100%;overflow:visible;transition:transform .7s var(--ease-out)}
 /* технологія стін — над сценою */
 .bz-mats{position:absolute;left:0;top:4px;z-index:2;display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84);max-width:100%}
-.bz-mats span{margin-right:2px}
+.bz-g{display:inline-flex;align-items:center;gap:6px;flex:none}
+.bz-g+.bz-g{margin-left:8px;padding-left:10px;border-left:1px solid var(--ln,rgba(191,145,72,.22))}
+.bz-gl{margin-right:2px}
 .bz-mats button{min-height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.22));background:rgba(16,14,12,.72);color:var(--tx,#EDE8DF);
   font:500 12px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;letter-spacing:.02em;cursor:pointer;transition:background .3s,border-color .3s,color .3s}
 .bz-mats button[aria-pressed="true"]{border-color:var(--ac,#BF9148);color:var(--ac,#BF9148);background:rgba(191,145,72,.14)}
@@ -90,7 +92,9 @@
   .bz-fig{height:auto;padding-top:38px}
   .bz-mats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:5px;top:0;right:0}
   .bz-mats::-webkit-scrollbar{display:none}
-  .bz-mats span{display:none}
+  .bz-gl{display:none}
+  .bz-g{gap:5px}
+  .bz-g+.bz-g{margin-left:4px;padding-left:6px}
   .bz-mats button{min-height:30px;padding:0 10px;flex:none}
   .bz-side{gap:8px}
   .bz-ct{font-size:1.05rem}
@@ -275,3 +279,99 @@
 .bz-fig .lzr{stroke:#BF9148;stroke-width:.6;stroke-dasharray:2 3;opacity:.7}
 .bz-fig .dot{fill:#f3d7a6}
 @media(prefers-reduced-motion:reduce){.bz-fig .drn{animation:none}.bz-pie.is-x li{animation:none}}
+
+/* ── «Ремонт з нуля» v3: рентген мереж (кнопка, легенда), варіанти квартири */
+.bz-xb{flex:none;min-height:32px;padding:0 12px;border-radius:999px;border:1px solid rgba(127,211,217,.5);background:transparent;color:#bfe9ec;
+  font:600 12px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;transition:background .3s,color .3s,opacity .3s}
+.bz-xb[aria-pressed="true"]{background:#7fd3d9;border-color:#7fd3d9;color:#080709}
+.bz-xb:disabled{opacity:.35;cursor:default}
+.bz-xb[hidden],.bz-lg[hidden]{display:none!important}
+.bz-xb:focus-visible,.bz-lg button:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
+.bz-lg{position:absolute;left:0;right:0;bottom:2px;z-index:2;display:none;flex-wrap:wrap;gap:4px;pointer-events:none}
+.bz-xr .bz-lg{display:flex}
+.bz-lg button{pointer-events:auto;display:inline-flex;align-items:center;gap:6px;min-height:26px;padding:0 9px;border-radius:999px;border:1px solid rgba(127,211,217,.28);
+  background:rgba(16,14,12,.82);color:var(--tx,#EDE8DF);font:500 11px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer}
+.bz-lg button i{width:14px;height:3px;border-radius:2px}
+.bz-lg button[aria-pressed="true"]{border-color:#7fd3d9;background:rgba(127,211,217,.16)}
+@media(max-width:767px){.bz-xb{min-height:36px;padding:0 12px}.bz-lg{top:38px;bottom:auto}.bz-lg button{min-height:28px;font-size:10.5px;padding:0 7px}}
+
+/* сцена квартири v3 */
+.bz-fig .bz-sc{transition:opacity .45s var(--ease-out)}
+.bz-fig .xrf .bz-sc{opacity:.2}
+.bz-fig .xrf .net{filter:drop-shadow(0 0 2px rgba(255,255,255,.35))}
+.bz-fig svg[data-hl] .net>*{opacity:.1}
+.bz-fig svg[data-hl="el"] .n-el>*,.bz-fig svg[data-hl="lv"] .n-lv>*,.bz-fig svg[data-hl="cw"] .n-cw>*,.bz-fig svg[data-hl="hw"] .n-hw>*,
+.bz-fig svg[data-hl="sw"] .n-sw>*,.bz-fig svg[data-hl="uf"] .n-uf>*,.bz-fig svg[data-hl="ac"] .n-ac>*{opacity:1}
+.bz-fig .n-el .nl{stroke:#e8b75a;stroke-width:1.2}
+.bz-fig .n-lv .nl{stroke:#b08be0;stroke-width:1.1;stroke-dasharray:3 2}
+.bz-fig .n-cw .nl{stroke:#6fa8dc;stroke-width:1.5}
+.bz-fig .n-hw .nl{stroke:#e0705a;stroke-width:1.5}
+.bz-fig .n-sw .nl{stroke:#a8a39b;stroke-width:2.6}
+.bz-fig .n-uf .nl{stroke:#f0a04b;stroke-width:.9}
+.bz-fig .n-ac .nl{stroke:#7fd3d9;stroke-width:1.2}
+.bz-fig .nd{stroke:#7fd3d9;stroke-width:4;opacity:.55}
+.bz-fig .slp{font-size:6.5px;fill:#e8e2d6;text-anchor:middle}
+.bz-fig .jbx{fill:#2a2622;stroke:#e8b75a;stroke-width:.7}
+.bz-fig .acx{fill:#0c0b0a;stroke:#7fd3d9;stroke-width:.8}
+.bz-fig .jb.r{fill:#4a4540}.bz-fig .jb.l{fill:#433e39}.bz-fig .jb.t{fill:#5a544d}
+.bz-fig .owf{fill:#6b4a2f}.bz-fig .owm{stroke:#8f6a45;stroke-width:1.6}
+.bz-fig polyline.tape{stroke:#7aa6c2;stroke-width:2.2}
+.bz-fig .oks.r,.bz-fig .oks.l{fill:#e9e3d8;stroke:none}.bz-fig .oks.t{fill:#f2ede4;stroke:none}
+.bz-fig .shp.l{fill:#cfc9bf}.bz-fig .shp.r{fill:#c2bbb0}
+.bz-fig .pta.l{fill:#a4b39c}.bz-fig .pta.r{fill:#93a48b}
+.bz-fig .tw.l{fill:#d9d6d0}
+.bz-fig .hyw.l,.bz-fig .hyw.r{fill:rgba(93,143,181,.9)}
+.bz-fig .hy2,.bz-fig .hy2.l,.bz-fig .hy2.r{fill:rgba(70,120,170,.88)}
+.bz-fig .oldt{fill:#7b8a8f}
+.bz-fig .rado.t{fill:#8a817a}.bz-fig .rado.r{fill:#5f5852}.bz-fig .rado.l{fill:#6f6862}.bz-fig .rib{stroke:#4a443f;stroke-width:1}
+.bz-fig .rst.t{fill:#8a4f2c}.bz-fig .rst.r{fill:#5f3520}.bz-fig .rst.l{fill:#70402a}
+.bz-fig .lzg{stroke:#7be08a;stroke-width:.9;opacity:.85}
+.bz-fig .prm{fill:rgba(170,190,200,.16)}
+.bz-fig .rib2{stroke:rgba(0,0,0,.18);stroke-width:.7}
+.bz-fig .pln{stroke:#BF9148;stroke-width:1;stroke-dasharray:4 2.5}
+.bz-fig .plf{stroke:#e8e2d6;stroke-width:.7;stroke-dasharray:2 2;opacity:.7}
+.bz-fig .rl{font:600 7.5px 'Manrope','Manrope Fallback',system-ui,sans-serif;fill:#ecd6aa;text-anchor:middle;letter-spacing:.03em}
+.bz-fig .ra{font:500 6.5px 'Manrope','Manrope Fallback',system-ui,sans-serif;fill:#BF9148;text-anchor:middle}
+.bz-fig .dt{text-anchor:middle}
+.bz-fig .rl.rs{font-size:6px}.bz-fig .ra.rs{font-size:5.5px}
+.f-new .pw.l,.f-old .pw.l{fill:#bdb6aa}.f-new .pw.r,.f-old .pw.r{fill:#aaa296}
+.bz-fig .rw{stroke:rgba(8,7,9,.22);stroke-width:.5}
+.bz-fig .prf{stroke:#aeb6bb;stroke-width:1.1}
+.bz-fig .gk{stroke:rgba(8,7,9,.25);stroke-width:.4}.bz-fig .gk.t{fill:#e4ded3}.bz-fig .gk.l{fill:#d6cfc3}.bz-fig .gk.r{fill:#c8c1b5}
+.p-pt .gk.t{fill:#f0ebe2}
+.bz-fig .ext{stroke:rgba(191,145,72,.4);stroke-width:.6}.bz-fig .ext.t{fill:#3d3832}.bz-fig .ext.r{fill:#2a2622}.bz-fig .ext.l{fill:#332f2a}
+.bz-fig .shf.t,.bz-fig .dh.t{fill:#e9e3d8}.bz-fig .shf.r,.bz-fig .dh.r{fill:#cfc8bc}.bz-fig .shf.l,.bz-fig .dh.l{fill:#d6cfc3}
+.bz-fig .dh{stroke:rgba(8,7,9,.35);stroke-width:.5}
+.bz-fig .twb.t{fill:#e2dfd9}.bz-fig .twb.r{fill:#cfccc5}.bz-fig .twb.l{fill:#d9d6d0}
+.bz-fig .inst.t{fill:#9aa3a8}.bz-fig .inst.r{fill:#6f777c}.bz-fig .inst.l{fill:#848c91}.bz-fig .tnk{fill:#5d8fb5}
+.bz-fig .colb.t{fill:#e7e2da}.bz-fig .colb.r{fill:#b9b3a8}.bz-fig .colb.l{fill:#cfc9be}.bz-fig .vlv{stroke:#c4705f;stroke-width:1.4}
+.bz-fig .brk{fill:#2a2622}.bz-fig .rcd{fill:#e0705a}
+.bz-fig .mbx.t{fill:#d9d3c9}.bz-fig .mbx.r{fill:#8f8880}.bz-fig .mbx.l{fill:#b9b1a5}
+.bz-fig .tp{stroke:#7fd3d9;stroke-width:2}.bz-fig .clr{fill:none;stroke:#7fd3d9;stroke-width:1.2}
+.bz-fig .fib{stroke:rgba(230,225,215,.35);stroke-width:.5}
+.bz-fig .tlb{fill:#e2dfd9}
+.bz-fig .crs{stroke:#e0705a;stroke-width:.7}
+.bz-fig .tgg{stroke:rgba(255,255,255,.5);stroke-width:.45}
+.bz-fig .ulay{fill:#6b8c6e}
+.bz-fig .sill.t{fill:#f2ede4}.bz-fig .sill.r{fill:#cfc8bc}.bz-fig .sill.l{fill:#ddd6ca}
+.bz-fig .cgr{stroke:rgba(174,182,187,.4);stroke-width:.6;stroke-dasharray:3 3}.bz-fig .cgr2{stroke:#aeb6bb;stroke-width:1}
+.bz-fig .de.t{fill:#3a3633}.bz-fig .de.r{fill:#1f1d1b}.bz-fig .de.l{fill:#2f2c2a}
+.bz-fig .kc.t{fill:#ece6dc}.bz-fig .kc.r{fill:#b9b0a2}.bz-fig .kc.l{fill:#d2cabd}
+.bz-fig .hdl{stroke:#2c2b2f;stroke-width:1.2}
+.bz-fig .tvu.t,.bz-fig .dsk.t,.bz-fig .ns.t{fill:#c9a86a}.bz-fig .tvu.r,.bz-fig .dsk.r,.bz-fig .ns.r{fill:#8f6236}.bz-fig .tvu.l,.bz-fig .dsk.l,.bz-fig .ns.l{fill:#a3723f}
+.bz-fig .wro.t{fill:#a07a52}.bz-fig .wro.r{fill:#6f533c}.bz-fig .wro.l{fill:#8a6a4e}.bz-fig .shl{stroke:#e8e2d6;stroke-width:.8}
+.bz-fig .tub.t,.bz-fig .wcb.t,.bz-fig .acu.t{fill:#f4f1ec}.bz-fig .tub.r,.bz-fig .wcb.r,.bz-fig .acu.r{fill:#c9c4bc}.bz-fig .tub.l,.bz-fig .wcb.l,.bz-fig .acu.l{fill:#ddd8d0}
+.bz-fig .tubi{fill:#bcd3df}.bz-fig .bwl{fill:#f4f1ec}
+.bz-fig .snk{fill:#9aa3a8}.bz-fig .tap{stroke:#d6d0c6;stroke-width:1.3}.bz-fig .hob{fill:#1a1917}
+.bz-fig .eve{fill:rgba(6,10,26,.3)}
+.bz-fig .led2{stroke:#ffd38a;stroke-width:2.2;filter:drop-shadow(0 0 4px rgba(255,200,120,.9))}
+.p-eve .gl.gd-l{fill:#1b2a44}
+.bz-fig .rug2{fill:#6b5a48}
+.bz-fig .pil{fill:#f4f1ec}.bz-fig .bld{fill:#8a9a8a}.bz-fig .bld2{fill:#c4705f}
+.bz-fig .hb.t{fill:#76726a}.bz-fig .hb.r{fill:#4c4944}.bz-fig .hb.l{fill:#5f5c56}
+.bz-fig .chr.t{fill:#4a484d}.bz-fig .chr.r{fill:#2c2b2f}.bz-fig .chr.l{fill:#3a383d}
+.bz-fig .art{fill:#BF9148}.bz-fig .art2{fill:#5d7a8b}
+.bz-fig .spk{fill:#fff6dc;animation:bz-tw 1.4s ease-in-out infinite alternate}
+@keyframes bz-tw{from{opacity:.25}to{opacity:1}}
+.bz-fig .pcl{fill:#f3d7a6;opacity:.75}
+@media(prefers-reduced-motion:reduce){.bz-fig .spk{animation:none}}
