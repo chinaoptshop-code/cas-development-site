@@ -20,8 +20,8 @@ EST_RATES = {30, 550, 350, 250, 600, 1100}  # ставки з CLAUDE.md для d
 FACT_BAD = [r'\b158\+', r'\b200\+ проєкт', r'\b214\+', r'2 роки гарант', r'3 роки гарант', r'гарантія 2 роки', r'гарантія 3 роки']
 
 BUDGET = {  # ліміти (без стиснення, бо brotli на сервері); MAIN — тимчасово м'якші до Ф3
-    'html_kb': {'land': 64, 'main': 260, 'other': 120},
-    'inline_js_kb': {'land': 8, 'main': 90, 'other': 40},
+    'html_kb': {'land': 64, 'article': 80, 'main': 260, 'other': 120},  # article — лонгріди блогу 1500–2200 слів (той самий шаблон, що й land)
+    'inline_js_kb': {'land': 8, 'article': 8, 'main': 90, 'other': 40},
 }
 
 
@@ -40,6 +40,8 @@ def kind(rel, s):
         return 'main'
     if rel.endswith('blog.html'):  # індекси блогу ростуть зі статтями — бюджет списку, не лендингу
         return 'other'
+    if rel.startswith('blog/'):  # стаття блогу: шаблон лендингу + довгий текст — окремий ліміт HTML, JS як у land
+        return 'article'
     if 'class="w crumbs"' in s or 'class="w hero' in s:
         return 'land'
     return 'other'

@@ -80,7 +80,7 @@
   "lang": "uk",
   "slug": "hazoblok-chy-keramika-dlia-budynku",
   "title": "Газоблок чи кераміка: з чого будувати будинок",
-  "keyword": "будівництво будинку з газоблоку",
+  "keyword": "газоблок чи керамічний блок",
   "service": [
    "/budivnytstvo-budynkiv-kyiv",
    "Будівництво будинків"
@@ -1263,6 +1263,116 @@
   "service": [
    "/avtorskyi-i-tekhnichnyi-nahliad-kyiv",
    "Авторський і технічний нагляд"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "tekhnolohiia-budivnytstva-budynku-z-hazobloku-pokrokovo",
+  "title": "Технологія будівництва будинку з газоблоку покроково: що контролювати на кожному етапі",
+  "keyword": "технологія будівництва будинку з газоблоку",
+  "service": [
+   "/budivnytstvo-budynkiv-kyiv",
+   "Будівництво будинків"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "tehnologiya-stroitelstva-doma-iz-gazobloka-poshagovo",
+  "title": "Технология строительства дома из газоблока пошагово: что контролировать на каждом этапе",
+  "keyword": "технология строительства дома из газоблока",
+  "service": [
+   "/ru/stroitelstvo-domov-kiev",
+   "Строительство домов"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "pyrih-stiny-pidlohy-i-pokrivli-pryvatnoho-budynku",
+  "title": "Пиріг стіни, підлоги й покрівлі приватного будинку: шари, типові товщини, помилки",
+  "keyword": "пиріг стіни будинку",
+  "service": [
+   "/proektuvannia-budynku-kyiv",
+   "Проєктування будинку"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "pirog-steny-pola-i-krovli-chastnogo-doma",
+  "title": "Пирог стены, пола и кровли частного дома: слои, типичные толщины, ошибки",
+  "keyword": "пирог стены дома",
+  "service": [
+   "/ru/proektirovanie-doma-kiev",
+   "Проектирование дома"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "dohovir-na-dyzain-proekt-interieru-shcho-pereviryty",
+  "title": "Договір на дизайн-проєкт інтерʼєру: як перевірити студію в Києві, портфоліо і червоні прапорці",
+  "keyword": "договір на дизайн-проєкт інтерʼєру",
+  "service": [
+   "/dyzain-interieru-kvartyry-kyiv",
+   "Дизайн-проєкт квартири"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "dogovor-na-dizayn-proekt-interera-chto-proverit",
+  "title": "Договор на дизайн-проект интерьера: как проверить студию в Киеве, портфолио и красные флаги",
+  "keyword": "договор на дизайн-проект интерьера",
+  "service": [
+   "/ru/dizayn-kvartiry-kiev",
+   "Дизайн-проект квартиры"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit",
+  "title": "Інженерні мережі в квартирі під ключ: електрика, сантехніка, вентиляція, тепла підлога",
+  "keyword": "інженерні мережі в квартирі",
+  "service": [
+   "/remont-pid-klyuch-kyiv",
+   "Ремонт під ключ"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "inzhenernye-seti-v-kvartire-pod-klyuch-poryadok-rabot",
+  "title": "Инженерные сети в квартире под ключ: электрика, сантехника, вентиляция, тёплый пол",
+  "keyword": "инженерные сети в квартире",
+  "service": [
+   "/ru/remont-pod-klyuch-kiev",
+   "Ремонт под ключ"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "remont-i-budivnytstvo-v-yevropi-z-ukrainskoiu-komandoiu",
+  "title": "Ремонт і будівництво в Європі з українською командою: ціни, логістика, нагляд",
+  "keyword": "ремонт і будівництво в Європі",
+  "service": [
+   "/remont-i-budivnytstvo-yevropa",
+   "Ремонт і будівництво в Європі"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "remont-i-stroitelstvo-v-evrope-s-ukrainskoy-komandoy",
+  "title": "Ремонт и строительство в Европе с украинской командой: цены, логистика, надзор",
+  "keyword": "ремонт и строительство в Европе",
+  "service": [
+   "/ru/remont-i-stroitelstvo-evropa",
+   "Ремонт и строительство в Европе"
   ],
   "status": "published"
  }
