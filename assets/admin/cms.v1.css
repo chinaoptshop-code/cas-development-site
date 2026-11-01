@@ -75,3 +75,60 @@
 .adm .media figcaption{font-size:12px;word-break:break-all;margin-top:6px;display:grid;gap:6px}
 .adm-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--surface-2);border:1px solid var(--brass);color:var(--cream);border-radius:12px;padding:12px 18px;z-index:100;max-width:calc(100vw - 32px);font-size:var(--fs-small);box-shadow:0 8px 30px rgba(0,0,0,.5)}
 .adm-toast.err{border-color:#e07a6a}
+/* CRM: джерело, SLA, швидкі дії, фільтри (assets/admin/cms.v1.js, RENDER.crm) */
+.adm [hidden]{display:none!important}
+.adm .row.sp{justify-content:space-between;flex-wrap:nowrap}
+.adm .x{background:none;border:0;color:var(--muted);font-size:20px;min-width:44px;min-height:44px;cursor:pointer}
+.crm-more{flex-basis:100%}
+.crm-more>summary{cursor:pointer;color:var(--muted);font-size:var(--fs-small);padding:6px 0;list-style:none;display:inline-block}
+.crm-more>summary::-webkit-details-marker{display:none}
+.crm-more>summary::before{content:'▸ ';color:var(--brass)}
+.crm-more[open]>summary::before{content:'▾ '}
+.crm-more>.tb{margin:6px 0 0}
+.crm-sum{margin:-4px 0 10px;font-size:var(--fs-small)}
+.adm .pill.src{border-color:rgba(191,145,72,.45);color:var(--cream);max-width:100%;overflow:hidden;text-overflow:ellipsis;justify-self:start}
+.kn-card.fresh{border-color:var(--brass);box-shadow:inset 3px 0 0 var(--brass)}
+.kn-card:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.sla{font-size:12px;font-weight:700;color:var(--glow)}
+.sla.over{color:#ff8f7d}
+.qa{display:inline-flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.qa a{display:inline-grid;place-items:center;min-width:36px;height:32px;padding:0 8px;border:1px solid var(--line);border-radius:9px;color:var(--cream);text-decoration:none;font-size:12px;font-weight:700}
+.qa a:hover,.qa a:focus-visible{border-color:var(--brass);color:var(--glow)}
+.adm .stick-d{position:sticky;bottom:-20px;background:var(--surface);padding:10px 0;z-index:2}
+/* Аналітика */
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:0 0 18px}
+.kpi>div{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--surface);display:grid;gap:2px}
+.kpi b{font-family:"Cormorant Garamond","Cormorant Fallback",Georgia,serif;font-size:34px;font-weight:500;line-height:1.1;color:var(--glow)}
+.kpi b.err{color:#ff8f7d}
+.kpi span{font-size:var(--fs-small);color:var(--cream)}
+.kpi em{font-style:normal;font-weight:700}
+.kpi small{font-size:12px}
+.st-h{font-family:inherit;font-size:var(--fs-body);font-weight:700;margin:18px 0 8px}
+.st-t td:nth-child(n+2),.st-t th:nth-child(n+2){text-align:right;white-space:nowrap}
+.bars{display:flex;align-items:flex-end;gap:3px;height:140px;border-bottom:1px solid var(--line);padding-top:6px}
+.bars span{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
+.bars i{display:block;width:100%;max-width:28px;background:var(--brass);border-radius:4px 4px 0 0;min-height:2px}
+.bars small{font-size:10px;margin-top:3px}
+/* Телефон (Михайло — з iPhone): поля 16px (iOS не зумить), тап-зони ≥44px, діалог на весь екран, канбан зі снапом */
+@media (max-width:700px){
+  .acc{padding-left:12px;padding-right:12px}
+  .adm-tabs{position:sticky;top:0;z-index:20;background:var(--ink);margin:0 -12px 12px;padding:0 12px;gap:4px 16px;scrollbar-width:none}
+  .adm-tabs::-webkit-scrollbar{display:none}
+  .adm-tabs button{min-height:44px}
+  .adm select,.adm textarea,.adm input:not([type=checkbox]):not([type=radio]):not([type=file]){font-size:16px;min-height:44px}
+  .adm .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .adm .seg button{min-height:44px}
+  .adm .chk{min-height:44px}
+  .adm .grow{flex-basis:100%;min-width:0}
+  .crm-more>.tb>select,.crm-more>.tb>.row{flex:1 1 46%}
+  .kn{grid-auto-columns:86vw;scroll-snap-type:x mandatory;margin:0 -12px;padding:0 12px 10px}
+  .kn-col{scroll-snap-align:start}
+  .crm-list{display:grid;gap:10px}
+  .crm-list .kn-card{cursor:pointer;padding:12px}
+  .crm-st{margin-top:6px}.crm-st select{width:100%}
+  .qa a{min-width:44px;height:44px;font-size:14px}
+  .adm dialog{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;border-radius:0;border:0;padding:16px 14px max(16px,env(safe-area-inset-bottom))}
+  .adm .stick-d{bottom:-16px}
+  .adm table.adm td,.adm table.adm th{padding:10px 6px}
+  .kpi b{font-size:28px}
+}

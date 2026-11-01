@@ -215,7 +215,9 @@
       $('[data-save]', L).onclick = function () {
         if (mode === 'raw' && $('[data-je]', ed).textContent) return toast('Спершу виправте помилку JSON', true);
         var err = opts.validate && opts.validate(data);
-        if (err) return toast(err, true);
+        if (err) { st.textContent = err; st.className = 'err'; return toast(err, true); }
+        st.className = 'muted';
+        if (!confirmIssues(lintText(strings(data)).concat(data && typeof data === 'object' && !Array.isArray(data) && ('title' in data || 'description' in data) ? seoIssues(data.title, data.description) : []))) return;
         var e = {}; e[path] = f.sha;
         var btn = this; btn.disabled = true;
         repo.save((val('[data-msg]', L) || 'правка ' + path.split('/').pop()), [{ path: path, content: stringifyLike(f.content, data) }], [], e)
@@ -225,9 +227,41 @@
     });
   }
 
+  // ===================== перевірка тексту перед комітом =====================
+  // Підтверджені ціни й факти — CLAUDE.md (дублюються в tools/ui/ui.py PRICES_OK). Попередження не блокують збереження:
+  // показуємо список і питаємо «зберегти попри це?». Помилки (порожній заголовок, битий JSON) — блокують.
+  var PRICES_OK = ['$30', '$350', '$550', '$250', '$600', '$1 100', '$1100', '$50', '$2 500', '$2500', '$500', '$5 000', '$10 000', '$20 000', '$12', '$6', '$45'];
+  var FACTS_BAD = [[/безкоштовн\S* (замір|виїзд)|бесплатн\S* (замер|выезд)|free (measur|site visit)/i, '«безкоштовний замір/виїзд» не обіцяємо — замір платний'],
+    [/osocor|осокор|osokork/i, 'Osocor/Osokorky на сайті не показуємо'],
+    [/гаранті\S* (12 міс|1 рік|2 роки|3 роки)|(12|24) міс\S* гаранті/i, 'гарантія — 36 міс.'],
+    [/\b(158|200|214)\+ проєкт/i, 'кількість проєктів — «150+»'],
+    [/реалізован\S*[^.]{0,40}дуба|дуба[^.]{0,40}реалізован/i, 'вілла в Дубаї — дизайн-проєкт, не «реалізовано»'],
+    [/http:\/\//, 'посилання http:// — краще https://'],
+    [/(Lorem ipsum|TODO|XXX)/, 'чернетковий текст (Lorem / TODO)']];
+  function lintText(text) {
+    var out = [], t = String(text || '').replace(/\u00a0/g, ' ');
+    var bad = (t.match(/\$\s?\d[\d ]*\d|\$\d/g) || []).map(function (x) { return x.trim(); })
+      .filter(function (x, i, a) { return a.indexOf(x) === i && PRICES_OK.indexOf(x) < 0 && !/^\$1 /.test(x); });
+    if (bad.length) out.push('ціни, яких немає в підтверджених: ' + bad.slice(0, 8).join(', ') + ' — перевірте (приклади розрахунку в статтях — ок)');
+    FACTS_BAD.forEach(function (f) { if (f[0].test(t)) out.push(f[1]); });
+    return out;
+  }
+  function seoIssues(title, desc) {
+    var out = [];
+    if (title != null && title.length > 70) out.push('title ' + title.length + ' симв. — Google обріже після ~60–65');
+    if (desc != null && desc && (desc.length < 70 || desc.length > 165)) out.push('description ' + desc.length + ' симв. — краще 70–160');
+    return out;
+  }
+  // true — можна зберігати
+  function confirmIssues(list) {
+    if (!list.length) return true;
+    return confirm('Перед збереженням перевірте:\n\n• ' + list.join('\n• ') + '\n\nЗберегти попри це?');
+  }
+  var strings = function (o) { var a = []; (function w(x) { if (typeof x === 'string') a.push(x); else if (x && typeof x === 'object') Object.keys(x).forEach(function (k) { w(x[k]); }); })(o); return a.join('\n'); };
+
   // ===================== вкладки =====================
   var TABS = [
-    ['crm', 'CRM'], ['orders', 'Замовлення Оздоби'], ['clients', 'Клієнти'], ['projects', 'Проєкти клієнтів'], ['codes', 'Коди партнерів'],
+    ['crm', 'CRM'], ['stats', 'Аналітика'], ['orders', 'Замовлення Оздоби'], ['clients', 'Клієнти'], ['projects', 'Проєкти клієнтів'], ['codes', 'Коди партнерів'],
     ['products', 'Товари'], ['blog', 'Блог'], ['landings', 'Лендинги'], ['lang', 'Меню й футер'], ['pages', 'Сторінки'], ['media', 'Медіа'], ['history', 'Історія'],
   ];
   var RENDER = {};
@@ -244,71 +278,172 @@
       var L = document.createElement('div'); view.appendChild(L);
       Promise.resolve(RENDER[t](L)).catch(function (e) { L.innerHTML = '<p class="err">' + esc(e.message) + '</p>'; });
     }
-    $$('.adm-tabs button', box).forEach(function (b) { b.onclick = function () { open(b.dataset.t); }; });
+    $$('.adm-tabs button', box).forEach(function (b) { b.onclick = function () { open(b.dataset.t); b.scrollIntoView({ block: 'nearest', inline: 'center' }); }; });
+    addEventListener('hashchange', function () { open(location.hash.slice(1)); }); // переходи з «Аналітики» в CRM з фільтром
     open(location.hash.slice(1) || 'crm');
   }
 
   // ---------- CRM ----------
+  // Джерело заявки: місце форми — частина source після «#» (assets/lead-form.v1.js), основна форма сторінки — «form»,
+  // внесені вручну — «manual», Оздоба — «order» (functions/api/admin/crm.js, placeOf).
+  var PLACES = [['form', 'Форма сторінки'], ['#prices', 'Після цін (#prices)'], ['#portfolio', 'Після портфоліо (#portfolio)'],
+    ['#project', 'Сторінка проєкту (#project)'], ['#services', 'Послуги (#services)'], ['#blog-mid', 'Стаття, середина (#blog-mid)'],
+    ['#blog-end', 'Стаття, кінець (#blog-end)'], ['manual', 'Вручну / дзвінок'], ['order', 'Замовлення Оздоби']];
+  var placeLabel = function (k) { var p = PLACES.find(function (x) { return x[0] === k; }); return p ? p[1].replace(/ \(#.*\)$/, '') : k; };
+  var SLA = 15; // хв, як SLA_MIN у functions/_alerts.js
+  var utc = function (s) { return new Date(String(s || '').replace(' ', 'T') + 'Z'); };
+  // created_at у D1 — UTC; показуємо за київським часом
+  var when = function (s, full) {
+    var d = utc(s); if (isNaN(d)) return esc(s || '');
+    var o = { timeZone: 'Europe/Kyiv', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' };
+    if (full) o.year = 'numeric';
+    return d.toLocaleString('uk-UA', o).replace(',', '');
+  };
+  var kyivDate = function (d) { return new Date(d).toLocaleDateString('sv-SE', { timeZone: 'Europe/Kyiv' }); };
+  var digits = function (p) { return String(p || '').replace(/\D/g, ''); };
+  // швидкі дії: дзвінок, Telegram, Viber, WhatsApp (номер з заявки)
+  function quick(r) {
+    var d = digits(r.phone);
+    if (d.length < 9) return '';
+    return '<span class="qa" data-qa>' +
+      '<a href="tel:+' + d + '" aria-label="Подзвонити ' + esc(r.phone) + '" title="Подзвонити">📞</a>' +
+      '<a href="https://t.me/+' + d + '" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">TG</a>' +
+      '<a href="viber://chat?number=%2B' + d + '" aria-label="Viber" title="Viber">Vb</a>' +
+      '<a href="https://wa.me/' + d + '" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">WA</a></span>';
+  }
+  // SLA: нова заявка без «Взяв у роботу» — скільки лишилось до 15 хв або наскільки прострочено (оновлюється щохвилини)
+  function slaText(created) {
+    var m = Math.floor((Date.now() - utc(created)) / 60000), left = SLA - m;
+    if (left > 0) return { cls: 'sla', t: '⏳ ' + left + ' хв до SLA' };
+    var over = -left;
+    return { cls: 'sla over', t: '⚠ без відповіді ' + (over + SLA < 60 ? (over + SLA) + ' хв' : Math.floor((over + SLA) / 60) + ' год ' + ((over + SLA) % 60) + ' хв') };
+  }
+  function slaBadge(r) {
+    if (r.kind !== 'lead' || r.status !== 'new' || r.taken_at) return '';
+    if (Date.now() - utc(r.created_at) > 7 * 86400000) return '';
+    var s = slaText(r.created_at);
+    return '<span class="' + s.cls + '" data-sla="' + esc(r.created_at) + '">' + s.t + '</span>';
+  }
+  function tickSla(root) {
+    var t = setInterval(function () {
+      if (!document.contains(root)) { clearInterval(t); return; }
+      $$('[data-sla]', root).forEach(function (el) { var s = slaText(el.dataset.sla); el.className = s.cls; el.textContent = s.t; });
+    }, 30000);
+  }
+
   RENDER.crm = function (L) {
-    var S = { view: localStorage.getItem('crmView') || 'kanban', kind: '', status: '', assignee: '', due: false, q: '' }, ST = {}, rows = [], AS = [];
-    L.innerHTML = '<div class="tb">' +
-      '<span class="seg"><button data-v="kanban">Канбан</button><button data-v="table">Таблиця</button></span>' +
+    var saved = {}; try { saved = JSON.parse(localStorage.getItem('crmFilters') || '{}') || {}; } catch (e) { /* noop */ }
+    var preset = null; try { preset = JSON.parse(sessionStorage.getItem('crmPreset') || 'null'); sessionStorage.removeItem('crmPreset'); } catch (e) { /* noop */ }
+    var narrow = window.matchMedia && matchMedia('(max-width: 700px)').matches;
+    var S = Object.assign({ view: localStorage.getItem('crmView') || (narrow ? 'table' : 'kanban'), kind: '', status: '', assignee: '', due: false, q: '', place: '', period: '', from: '', to: '' }, saved, preset || {}), ST = {}, rows = [], AS = [];
+    L.innerHTML = '<div class="tb crm-tb">' +
+      '<span class="seg"><button type="button" data-v="kanban">Канбан</button><button type="button" data-v="table">' + (narrow ? 'Список' : 'Таблиця') + '</button></span>' +
+      '<input class="grow" data-f="q" type="search" enterkeyhint="search" placeholder="Пошук: номер, телефон, імʼя, сторінка, нотатки" aria-label="Пошук">' +
+      '<button class="btn" type="button" data-new>+ Заявка</button><a class="btn ghost" data-csv href="#" download>CSV</a>' +
+      '<details class="crm-more"' + (narrow ? '' : ' open') + '><summary>Фільтри <span data-fc></span></summary><div class="tb">' +
       '<select data-f="kind" aria-label="Тип"><option value="">Замовлення й заявки</option><option value="order">Лише замовлення</option><option value="lead">Лише заявки</option></select>' +
       '<select data-f="status" aria-label="Статус"><option value="">Усі статуси</option><option value="open">Відкриті</option></select>' +
+      '<select data-f="place" aria-label="Джерело"><option value="">Усі джерела</option>' + PLACES.map(function (p) { return '<option value="' + p[0] + '">' + p[1] + '</option>'; }).join('') + '</select>' +
+      '<select data-f="period" aria-label="Період"><option value="">За весь час</option><option value="today">Сьогодні</option><option value="7">7 днів</option><option value="30">30 днів</option><option value="custom">Свої дати…</option></select>' +
+      '<span class="row" data-dates hidden><input type="date" data-f="from" aria-label="Від"><span>—</span><input type="date" data-f="to" aria-label="До"></span>' +
       '<select data-f="assignee" aria-label="Відповідальний"><option value="">Усі відповідальні</option></select>' +
       '<label class="chk"><input type="checkbox" data-f="due"> звʼязатися сьогодні</label>' +
-      '<input class="grow" data-f="q" placeholder="Пошук: номер, телефон, імʼя, нотатки">' +
-      '<button class="btn" data-new>+ Заявка</button><a class="btn ghost" data-csv href="#">CSV</a></div><div data-list></div>' +
-      '<dialog data-dlg></dialog><datalist id="crmAs"></datalist>';
+      '<button class="btn ghost sm" type="button" data-reset>Скинути</button></div></details></div>' +
+      '<p class="muted crm-sum" data-sum aria-live="polite"></p><div data-list></div>' +
+      '<dialog data-dlg aria-label="Заявка"></dialog><datalist id="crmAs"></datalist>';
     var list = $('[data-list]', L), dlg = $('[data-dlg]', L);
-    function qs(csv) {
-      return '/api/admin/crm?kind=' + S.kind + '&status=' + S.status + '&assignee=' + encodeURIComponent(S.assignee) + '&due=' + (S.due ? 1 : '') + '&q=' + encodeURIComponent(S.q) + (csv ? '&format=csv' : '');
+    // період → from/to (дати за Києвом)
+    function range() {
+      if (S.period === 'custom') return { from: S.from, to: S.to };
+      if (!S.period) return { from: '', to: '' };
+      var t = kyivDate(Date.now());
+      if (S.period === 'today') return { from: t, to: t };
+      return { from: kyivDate(Date.now() - (+S.period - 1) * 86400000), to: t };
     }
-    function segs() { $$('[data-v]', L).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.v === S.view); }); $('[data-csv]', L).href = qs(true); }
+    function qs(csv) {
+      var r = range();
+      return '/api/admin/crm?kind=' + S.kind + '&status=' + S.status + '&assignee=' + encodeURIComponent(S.assignee) + '&due=' + (S.due ? 1 : '') +
+        '&place=' + encodeURIComponent(S.place) + '&from=' + r.from + '&to=' + r.to + '&q=' + encodeURIComponent(S.q) + (csv ? '&format=csv' : '');
+    }
+    function segs() {
+      $$('[data-v]', L).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.v === S.view); });
+      $('[data-csv]', L).href = qs(true);
+      $('[data-dates]', L).hidden = S.period !== 'custom';
+      var n = ['kind', 'status', 'assignee', 'place', 'period'].filter(function (k) { return S[k]; }).length + (S.due ? 1 : 0);
+      $('[data-fc]', L).textContent = n ? '· ' + n : '';
+      try { localStorage.setItem('crmFilters', JSON.stringify({ kind: S.kind, status: S.status, assignee: S.assignee, due: S.due, place: S.place, period: S.period, from: S.from, to: S.to })); } catch (e) { /* noop */ }
+    }
     $$('[data-v]', L).forEach(function (b) { b.onclick = function () { S.view = b.dataset.v; try { localStorage.setItem('crmView', S.view); } catch (e) { /* noop */ } segs(); draw(); }; });
     $$('[data-f]', L).forEach(function (el) {
       var k = el.dataset.f;
+      if (el.type === 'checkbox') el.checked = !!S[k]; else el.value = S[k] || '';
       el[k === 'q' ? 'oninput' : 'onchange'] = (k === 'q' ? debounce : function (f) { return f; })(function () { S[k] = el.type === 'checkbox' ? el.checked : el.value; segs(); load(); });
     });
+    $('[data-reset]', L).onclick = function () {
+      ['kind', 'status', 'assignee', 'place', 'period', 'from', 'to', 'q'].forEach(function (k) { S[k] = ''; }); S.due = false;
+      $$('[data-f]', L).forEach(function (el) { if (el.type === 'checkbox') el.checked = false; else el.value = ''; });
+      segs(); load();
+    };
     $('[data-new]', L).onclick = function () { edit(null); };
     var isDue = function (r) { return r.next_contact && r.next_contact <= today() && r.status !== 'delivered' && r.status !== 'cancelled'; };
     var label = function (r) { return r.name || r.phone || r.email || '—'; };
     var what = function (r) { return r.service || (r.items || []).map(function (i) { return i.name + ' × ' + i.qty; }).join(', '); };
     // час реакції (functions/_alerts.js): скільки хвилин від заявки до «Взяв у роботу» (Telegram або перший статус ≠ «Нове»)
     var mins = function (n) { return n < 60 ? n + ' хв' : Math.floor(n / 60) + ' год' + (n % 60 ? ' ' + (n % 60) + ' хв' : ''); };
-    var react = function (r) { return r.reaction_min != null ? '<small class="' + (r.reaction_min > 15 ? 'due' : '') + '" title="Час реакції">⏱ ' + mins(r.reaction_min) + '</small>' : ''; };
+    var react = function (r) { return r.reaction_min != null ? '<small class="' + (r.reaction_min > SLA ? 'due' : '') + '" title="Час реакції">⏱ ' + mins(r.reaction_min) + '</small>' : ''; };
+    var src = function (r) { return r.place ? '<span class="pill src" title="' + esc(r.source || '') + '">' + esc(placeLabel(r.place)) + (r.page && r.page !== '/' ? ' · ' + esc(r.page.length > 34 ? r.page.slice(0, 33) + '…' : r.page) : '') + '</span>' : ''; };
     function load() {
+      list.setAttribute('aria-busy', 'true');
       return api(qs()).then(function (d) {
         ST = d.statuses; rows = d.rows; AS = d.assignees;
         var fs = $('[data-f=status]', L);
-        if (fs.options.length < 3) Object.keys(ST).forEach(function (k) { fs.add(new Option(ST[k], k)); });
-        var fa = $('[data-f=assignee]', L), cur = fa.value;
+        if (fs.options.length < 3) { Object.keys(ST).forEach(function (k) { fs.add(new Option(ST[k], k)); }); fs.value = S.status; }
+        var fa = $('[data-f=assignee]', L), cur = S.assignee;
         fa.length = 1; AS.forEach(function (a) { fa.add(new Option(a, a)); }); fa.value = cur;
         $('#crmAs').innerHTML = AS.map(function (a) { return '<option value="' + esc(a) + '">'; }).join('');
+        var waiting = rows.filter(function (r) { return r.kind === 'lead' && r.status === 'new' && !r.taken_at; }).length;
+        $('[data-sum]', L).innerHTML = rows.length + (rows.length >= 1000 ? '+ (показано перші 1000 — звузьте фільтр)' : '') + ' запис(ів)' + (waiting ? ' · <b class="err">нових без відповіді: ' + waiting + '</b>' : '');
         draw();
-      });
+      }).then(function () { list.removeAttribute('aria-busy'); }, function (e) { list.removeAttribute('aria-busy'); list.innerHTML = '<p class="err">' + esc(e.message) + ' <button class="btn ghost sm" type="button" data-retry>Повторити</button></p>'; $('[data-retry]', list).onclick = load; });
     }
     function card(r) {
-      return '<div class="kn-card" draggable="true" data-id="' + r.id + '"><span class="row" style="justify-content:space-between"><b>' + esc(r.number) + '</b><span class="pill' + (r.kind === 'lead' ? '' : ' on') + '">' + (r.kind === 'lead' ? 'заявка' : 'замовлення') + '</span></span>' +
+      return '<div class="kn-card' + (r.kind === 'lead' && r.status === 'new' && !r.taken_at ? ' fresh' : '') + '" draggable="true" data-id="' + r.id + '" tabindex="0" role="button" aria-label="' + esc(r.number + ' ' + label(r)) + '">' +
+        '<span class="row sp"><b>' + esc(r.number) + '</b><small>' + when(r.created_at) + '</small></span>' +
         '<span>' + esc(label(r)) + (r.phone && r.name ? ' · ' + esc(r.phone) : '') + '</span>' +
-        (what(r) ? '<small>' + esc(what(r).slice(0, 90)) + '</small>' : '') +
+        (what(r) ? '<small>' + esc(what(r).slice(0, 90)) + '</small>' : '') + src(r) +
         '<span>' + ((r.amount != null || r.total != null) ? '<b>' + money(r.amount != null ? r.amount : r.total, r.currency) + '</b> ' : '') + (r.assignee ? '· ' + esc(r.assignee) : '') + '</span>' +
-        (r.next_contact ? '<small class="' + (isDue(r) ? 'due' : '') + '">↻ ' + esc(r.next_contact) + '</small>' : '') + react(r) + '</div>';
+        (r.next_contact ? '<small class="' + (isDue(r) ? 'due' : '') + '">↻ ' + esc(r.next_contact) + '</small>' : '') + react(r) + slaBadge(r) + quick(r) + '</div>';
     }
+    function bindCards(root) {
+      $$('.kn-card', root).forEach(function (c) {
+        c.onclick = function (e) { if (e.target.closest('[data-qa],select')) return; edit(+c.dataset.id); };
+        c.onkeydown = function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target === c) { e.preventDefault(); edit(+c.dataset.id); } };
+        c.ondragstart = function (e) { e.dataTransfer.setData('text/plain', c.dataset.id); };
+      });
+    }
+    function stSelect(r) { return '<select data-st aria-label="Статус ' + esc(r.number) + '">' + Object.keys(ST).map(function (k) { return '<option value="' + k + '"' + (k === r.status ? ' selected' : '') + '>' + ST[k] + '</option>'; }).join('') + '</select>'; }
     function draw() {
-      if (!rows.length) { list.innerHTML = '<p class="muted">Записів немає. Нові замовлення з Оздоби зʼявляються тут автоматично; заявки — з форм сайту (див. README) або кнопкою «+ Заявка».</p>'; return; }
+      if (!rows.length) { list.innerHTML = '<p class="muted">Записів немає' + (S.place || S.period || S.status || S.kind || S.q || S.due || S.assignee ? ' за цими фільтрами. <button class="btn ghost sm" type="button" data-clr>Скинути фільтри</button>' : '. Нові замовлення з Оздоби зʼявляються тут автоматично; заявки — з форм сайту або кнопкою «+ Заявка».') + '</p>'; var c = $('[data-clr]', list); if (c) c.onclick = function () { $('[data-reset]', L).click(); }; return; }
+      if (S.view === 'table' && narrow) { // телефон: список карток зі статусом — без горизонтальної прокрутки
+        list.innerHTML = '<div class="crm-list">' + rows.map(function (r) { return card(r).replace(/<\/div>$/, '<div class="crm-st">' + stSelect(r) + '</div></div>'); }).join('') + '</div>';
+        bindCards(list);
+        $$('[data-st]', list).forEach(function (s) { s.onchange = function () { patch({ id: +s.closest('.kn-card').dataset.id, status: s.value }); }; });
+        tickSla(list);
+        return;
+      }
       if (S.view === 'table') {
-        list.innerHTML = '<div class="tscroll"><table class="adm"><tr><th>Номер</th><th>Дата</th><th>Клієнт</th><th>Що</th><th>Сума</th><th>Статус</th><th>Відповідальний</th><th>Реакція</th><th>Контакт</th></tr>' + rows.map(function (r) {
-          return '<tr class="clk" data-id="' + r.id + '"><td><b>' + esc(r.number) + '</b><br><small>' + (r.kind === 'lead' ? 'заявка' : 'замовлення') + '</small></td><td><small>' + esc(r.created_at) + '</small></td>' +
-            '<td>' + esc(label(r)) + '<br><small>' + esc(r.phone) + ' ' + esc(r.email) + '</small></td><td><small>' + esc(what(r).slice(0, 120)) + '</small></td>' +
+        list.innerHTML = '<div class="tscroll"><table class="adm"><thead><tr><th>Номер</th><th>Дата</th><th>Клієнт</th><th>Що</th><th>Джерело</th><th>Сума</th><th>Статус</th><th>Відповідальний</th><th>Реакція / SLA</th><th>Контакт</th></tr></thead><tbody>' + rows.map(function (r) {
+          return '<tr class="clk" data-id="' + r.id + '"><td><b>' + esc(r.number) + '</b><br><small>' + (r.kind === 'lead' ? 'заявка' : 'замовлення') + '</small></td><td><small>' + when(r.created_at) + '</small></td>' +
+            '<td>' + esc(label(r)) + '<br><small>' + esc(r.phone) + ' ' + esc(r.email) + '</small>' + quick(r) + '</td><td><small>' + esc(what(r).slice(0, 120)) + '</small></td><td>' + src(r) + '</td>' +
             '<td>' + (r.amount != null || r.total != null ? money(r.amount != null ? r.amount : r.total, r.currency) : '') + '</td>' +
-            '<td><select data-st aria-label="Статус">' + Object.keys(ST).map(function (k) { return '<option value="' + k + '"' + (k === r.status ? ' selected' : '') + '>' + ST[k] + '</option>'; }).join('') + '</select></td>' +
-            '<td>' + esc(r.assignee) + '</td><td>' + react(r) + '</td><td class="' + (isDue(r) ? 'err' : '') + '">' + esc(r.next_contact) + '</td></tr>';
-        }).join('') + '</table></div>';
+            '<td>' + stSelect(r) + '</td>' +
+            '<td>' + esc(r.assignee) + '</td><td>' + react(r) + slaBadge(r) + '</td><td class="' + (isDue(r) ? 'err' : '') + '">' + esc(r.next_contact) + '</td></tr>';
+        }).join('') + '</tbody></table></div>';
         $$('tr.clk', list).forEach(function (tr) {
-          tr.onclick = function (e) { if (e.target.tagName !== 'SELECT' && e.target.tagName !== 'OPTION') edit(+tr.dataset.id); };
+          tr.onclick = function (e) { if (e.target.closest('select,[data-qa]')) return; edit(+tr.dataset.id); };
           $('[data-st]', tr).onchange = function () { patch({ id: +tr.dataset.id, status: this.value }); };
         });
+        tickSla(list);
         return;
       }
       var cols = S.status && ST[S.status] ? [S.status] : Object.keys(ST);
@@ -317,54 +452,109 @@
         var sum = rs.reduce(function (s, r) { return s + ((r.currency || 'UAH') === 'UAH' ? (r.amount != null ? r.amount : r.total || 0) : 0); }, 0);
         return '<section class="kn-col" data-col="' + k + '"><h3><span>' + ST[k] + ' · ' + rs.length + '</span><small>' + (sum ? money(sum) : '') + '</small></h3>' + rs.map(card).join('') + '</section>';
       }).join('') + '</div>';
-      $$('.kn-card', list).forEach(function (c) {
-        c.onclick = function () { edit(+c.dataset.id); };
-        c.ondragstart = function (e) { e.dataTransfer.setData('text/plain', c.dataset.id); };
-      });
+      bindCards(list);
       $$('.kn-col', list).forEach(function (col) {
         col.ondragover = function (e) { e.preventDefault(); col.classList.add('over'); };
         col.ondragleave = function () { col.classList.remove('over'); };
         col.ondrop = function (e) { e.preventDefault(); col.classList.remove('over'); var id = +e.dataTransfer.getData('text/plain'); if (id) patch({ id: id, status: col.dataset.col }); };
       });
+      tickSla(list);
     }
-    function patch(body) { return api('/api/admin/crm', { method: 'PATCH', body: body }).then(load, function (e) { toast(e.message, true); }); }
+    function patch(body) { return api('/api/admin/crm', { method: 'PATCH', body: body }).then(function () { toast('Збережено'); return load(); }, function (e) { toast(e.message, true); load(); }); }
     function edit(id) {
       var r = id ? rows.find(function (x) { return x.id === id; }) : { kind: 'lead', status: 'new', currency: 'UAH' };
+      if (!r) return;
       var f = function (k) { return esc(r[k] == null ? '' : r[k]); };
-      dlg.innerHTML = '<form method="dialog" class="form two"><h2 class="full">' + (id ? esc(r.number) + ' · ' + (r.kind === 'lead' ? 'заявка' : 'замовлення') : 'Нова заявка') + '</h2>' +
-        (id ? '<p class="full muted">' + esc(r.created_at) + (r.source ? ' · ' + esc(r.source) : '') + (r.username ? ' · @' + esc(r.username) : '') +
-          (r.reaction_min != null ? ' · час реакції: ' + mins(r.reaction_min) : '') + '</p>' +
+      var site = r.page ? 'https://cas-develop.com' + r.page : '';
+      dlg.innerHTML = '<form method="dialog" class="form two" novalidate><div class="full row sp"><h2>' + (id ? esc(r.number) + ' · ' + (r.kind === 'lead' ? 'заявка' : 'замовлення') : 'Нова заявка') + '</h2><button class="x" type="submit" value="cancel" formnovalidate aria-label="Закрити">✕</button></div>' +
+        (id ? '<p class="full muted">' + when(r.created_at, true) + ' (Київ)' + (r.username ? ' · @' + esc(r.username) : '') +
+          (r.reaction_min != null ? ' · час реакції: ' + mins(r.reaction_min) : '') + ' ' + slaBadge(r) + '</p>' +
+          (r.phone ? '<p class="full"><b>' + esc(r.phone) + '</b> ' + quick(r) + '</p>' : '') +
+          (r.place ? '<p class="full muted">Джерело: ' + src(r) + (site ? ' <a href="' + esc(site) + '" target="_blank" rel="noopener">відкрити сторінку ↗</a>' : '') + (r.form ? ' · форма ' + esc(r.form) : '') + (r.lang ? ' · ' + esc(r.lang) : '') + (r.utm ? ' · UTM ' + esc(r.utm) : '') + '</p>' : '') +
           (what(r) ? '<p class="full">' + esc(what(r)) + '</p>' : '') + (r.comment ? '<p class="full muted" style="white-space:pre-wrap">' + esc(r.comment) + '</p>' : '') +
           (r.kind === 'order' ? '<p class="full muted">Сума замовлення: ' + money(r.total) + (r.on_request ? ' + ' + r.on_request + ' поз. за запитом' : '') + ' · оплата: ' + esc(r.payment) + (r.delivery ? ' · ' + esc(r.delivery) : '') + '</p>' : '')
-          : '<label class="f"><span>Імʼя</span><input name="name"></label><label class="f"><span>Телефон</span><input name="phone" type="tel"></label>' +
-          '<label class="f"><span>Email</span><input name="email" type="email"></label><label class="f"><span>Джерело</span><input name="source" placeholder="дзвінок, Instagram, рекомендація"></label>' +
+          : '<label class="f"><span>Імʼя</span><input name="name" autocomplete="off"></label><label class="f"><span>Телефон</span><input name="phone" type="tel" inputmode="tel" placeholder="+380 97 123 45 67"></label>' +
+          '<label class="f"><span>Email</span><input name="email" type="email" inputmode="email"></label><label class="f"><span>Джерело</span><input name="source" placeholder="дзвінок, Instagram, рекомендація"></label>' +
           '<label class="f full"><span>Послуга / що потрібно</span><input name="service"></label><label class="f full"><span>Коментар</span><textarea name="comment"></textarea></label>') +
         '<label class="f"><span>Статус</span><select name="status">' + Object.keys(ST).map(function (k) { return '<option value="' + k + '"' + (k === r.status ? ' selected' : '') + '>' + ST[k] + '</option>'; }).join('') + '</select></label>' +
         '<label class="f"><span>Відповідальний</span><input name="assignee" list="crmAs" value="' + f('assignee') + '"></label>' +
-        '<label class="f"><span>Сума угоди</span><span class="row"><input name="amount" type="number" min="0" step="1" class="grow" value="' + f('amount') + '" placeholder="' + (r.total != null ? r.total : '') + '">' +
-        '<select name="currency">' + ['UAH', 'USD', 'EUR'].map(function (c) { return '<option' + (c === (r.currency || 'UAH') ? ' selected' : '') + '>' + c + '</option>'; }).join('') + '</select></span></label>' +
+        '<label class="f"><span>Сума угоди</span><span class="row"><input name="amount" type="number" inputmode="numeric" min="0" step="1" class="grow" value="' + f('amount') + '" placeholder="' + (r.total != null ? r.total : '') + '">' +
+        '<select name="currency" aria-label="Валюта">' + ['UAH', 'USD', 'EUR'].map(function (c) { return '<option' + (c === (r.currency || 'UAH') ? ' selected' : '') + '>' + c + '</option>'; }).join('') + '</select></span></label>' +
         '<label class="f"><span>Наступний контакт</span><input name="next_contact" type="date" value="' + f('next_contact') + '"></label>' +
         '<label class="f full"><span>Нотатки (бачать лише менеджери)</span><textarea name="crm_note">' + f('crm_note') + '</textarea></label>' +
         (r.kind === 'order' ? '<label class="f full"><span>Нотатка для клієнта (видно в його кабінеті)</span><input name="manager_note" value="' + f('manager_note') + '"></label>' : '') +
         (id ? '<label class="f full"><span>Коментар до зміни (в історію)</span><input name="note"></label>' : '') +
-        '<div class="full row"><button class="btn" value="save">Зберегти</button><button class="btn ghost" value="cancel" formnovalidate>Закрити</button><span class="err" data-e></span></div>' +
+        '<div class="full row stick-d"><button class="btn" type="submit" value="save">Зберегти</button><button class="btn ghost" type="submit" value="cancel" formnovalidate>Закрити</button><span class="err" data-e role="alert"></span></div>' +
         (id ? '<ul class="ev full" data-ev><li>Історія…</li></ul>' : '') + '</form>';
       var form = $('form', dlg);
       form.onsubmit = function (e) {
         if (e.submitter && e.submitter.value === 'cancel') return;
         e.preventDefault();
         var b = {}; new FormData(form).forEach(function (v, k) { b[k] = v; });
+        // перевірка до запиту — зрозуміле повідомлення замість помилки сервера
+        var err = '';
+        if (!id && !b.name.trim() && !b.phone.trim() && !b.email.trim()) err = 'Вкажіть хоча б імʼя, телефон або email';
+        else if (b.phone && digits(b.phone).length < 9) err = 'Телефон: щонайменше 9 цифр, напр. +380 97 123 45 67';
+        else if (b.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(b.email.trim())) err = 'Перевірте email';
+        else if (b.amount !== '' && b.amount != null && !(+b.amount >= 0)) err = 'Сума — додатне число';
+        if (err) { $('[data-e]', dlg).textContent = err; return; }
+        var sv = $('button[value=save]', form); sv.disabled = true; sv.textContent = 'Зберігаємо…';
         var p = id ? api('/api/admin/crm', { method: 'PATCH', body: Object.assign({ id: id }, b) })
           : api('/api/admin/crm', { method: 'POST', body: b }).then(function (d) { if (b.status !== 'new') return api('/api/admin/crm', { method: 'PATCH', body: { id: d.id, status: b.status } }); });
-        p.then(function () { dlg.close(); load(); }, function (er) { $('[data-e]', dlg).textContent = er.message; });
+        p.then(function () { dlg.close(); toast('Збережено'); load(); }, function (er) { sv.disabled = false; sv.textContent = 'Зберегти'; $('[data-e]', dlg).textContent = er.message; });
       };
       if (id) api('/api/admin/crm?events=' + id).then(function (d) {
-        $('[data-ev]', dlg).innerHTML = d.events.map(function (e) { return '<li>' + esc(e.created_at) + ' — ' + esc(e.label) + (e.note ? ': ' + esc(e.note) : '') + ' <small>(' + esc(e.author) + ')</small></li>'; }).join('') || '<li>Подій немає</li>';
-      });
+        $('[data-ev]', dlg).innerHTML = d.events.map(function (e) { return '<li>' + when(e.created_at, true) + ' — ' + esc(e.label) + (e.note ? ': ' + esc(e.note) : '') + ' <small>(' + esc(e.author) + ')</small></li>'; }).join('') || '<li>Подій немає</li>';
+      }, function () { var ev = $('[data-ev]', dlg); if (ev) ev.innerHTML = '<li>Історію не вдалося завантажити</li>'; });
       dlg.showModal();
     }
     segs();
     return load();
+  };
+
+  // ---------- Аналітика: заявки за 7/30/90 днів по джерелах, сторінках, днях (GET /api/admin/crm?stats=1) ----------
+  RENDER.stats = function (L) {
+    var days = +(localStorage.getItem('statsDays') || 7);
+    var pct = function (a, b) { return b ? Math.round(a * 100 / b) + '%' : '—'; };
+    function go(place) {
+      var pr = days === 90 ? { period: 'custom', from: kyivDate(Date.now() - 89 * 86400000), to: kyivDate(Date.now()) } : { period: String(days) };
+      try { sessionStorage.setItem('crmPreset', JSON.stringify(Object.assign({ place: place, status: '', kind: '', q: '', due: false, assignee: '' }, pr))); } catch (e) { /* noop */ }
+      location.hash = 'crm';
+    }
+    function table(title, rows, keyName, labelFn, link) {
+      if (!rows.length) return '';
+      return '<h3 class="st-h">' + title + '</h3><div class="tscroll"><table class="adm st-t"><thead><tr><th>' + keyName + '</th><th>Заявок</th><th>Взято</th><th>КП</th><th>Оплачено</th><th title="Частка заявок, що дійшли до КП">→ КП</th><th title="Частка заявок, що дійшли до оплати">→ оплата</th></tr></thead><tbody>' +
+        rows.map(function (g) {
+          return '<tr' + (link ? ' class="clk" data-place="' + esc(g.key) + '"' : '') + '><td>' + labelFn(g.key) + '</td><td><b>' + g.n + '</b></td><td>' + g.taken + '</td><td>' + g.quote + '</td><td>' + g.paid + '</td><td>' + pct(g.quote, g.n) + '</td><td>' + pct(g.paid, g.n) + '</td></tr>';
+        }).join('') + '</tbody></table></div>';
+    }
+    function draw() {
+      L.innerHTML = '<div class="tb"><span class="seg">' + [7, 30, 90].map(function (n) { return '<button type="button" data-d="' + n + '" aria-pressed="' + (n === days) + '">' + n + ' днів</button>'; }).join('') + '</span><span class="muted" data-per></span></div><div data-st><p class="muted">Завантаження…</p></div>';
+      $$('[data-d]', L).forEach(function (b) { b.onclick = function () { days = +b.dataset.d; try { localStorage.setItem('statsDays', days); } catch (e) { /* noop */ } draw(); }; });
+      api('/api/admin/crm?stats=1&days=' + days).then(function (s) {
+        $('[data-per]', L).textContent = s.from.split('-').reverse().join('.') + ' — ' + s.to.split('-').reverse().join('.');
+        var max = Math.max.apply(null, s.by_day.map(function (d) { return d.n; }).concat(1));
+        var diff = s.previous ? Math.round((s.total - s.previous) * 100 / s.previous) : null;
+        var f = s.funnel || { n: 0, taken: 0, quote: 0, paid: 0 };
+        $('[data-st]', L).innerHTML =
+          '<div class="kpi">' +
+          '<div><b>' + s.total + '</b><span>заявок і замовлень' + (diff != null ? ' <em class="' + (diff >= 0 ? 'ok' : 'err') + '">' + (diff >= 0 ? '+' : '') + diff + '%</em>' : '') + '</span><small>заявок ' + s.leads + ' · Оздоба ' + s.orders + ' · попередні ' + days + ' дн.: ' + s.previous + '</small></div>' +
+          '<div><b class="' + (s.open_new ? 'err' : '') + '">' + s.open_new + '</b><span>у статусі «Нове»</span><small>' + (s.open_new ? 'потребують реакції' : 'усі розібрані') + '</small></div>' +
+          '<div><b>' + (s.reaction.avg != null ? mins0(s.reaction.avg) : '—') + '</b><span>середній час реакції</span><small>у межах ' + s.reaction.sla + ' хв: ' + pct(s.reaction.within, s.reaction.n) + ' (' + s.reaction.within + ' з ' + s.reaction.n + ')</small></div>' +
+          '<div><b>' + pct(f.quote, f.n) + '</b><span>дійшли до КП</span><small>оплачено: ' + pct(f.paid, f.n) + ' (' + f.paid + ')</small></div></div>' +
+          '<h3 class="st-h">По днях</h3><div class="bars" role="img" aria-label="Заявки по днях">' + s.by_day.map(function (d) {
+            return '<span title="' + d.date.split('-').reverse().join('.') + ': ' + d.n + '"><i style="height:' + Math.round(d.n * 100 / max) + '%"></i><small>' + (days <= 30 ? d.date.slice(8) : '') + '</small></span>';
+          }).join('') + '</div>' +
+          table('По джерелах (місце форми)', s.by_place, 'Джерело', function (k) { return esc(placeLabel(k)) + (/^#/.test(k) ? ' <small>' + esc(k) + '</small>' : ''); }, true) +
+          table('По сторінках', s.by_page, 'Сторінка', function (k) { return '<a href="https://cas-develop.com' + esc(k) + '" target="_blank" rel="noopener">' + esc(k) + '</a>'; }) +
+          table('По формах', s.by_form, 'Форма', esc) + table('По мовах', s.by_lang, 'Мова', esc) +
+          '<p class="muted"><small>«Конверсія» тут — частка заявок, що дійшли до КП / оплати у воронці CRM (відвідування сторінок рахує Clarity, не адмінка). ' +
+          'Місце форми — з адреси, яку пише форма: «#prices», «#portfolio» тощо. Форма, мова й UTM — для заявок після застосування міграції 0009. Клік по рядку джерела відкриває ці заявки в CRM.</small></p>';
+        $$('tr[data-place]', L).forEach(function (tr) { tr.onclick = function () { go(tr.dataset.place); }; });
+      }, function (e) { $('[data-st]', L).innerHTML = '<p class="err">' + esc(e.message) + '</p>'; });
+    }
+    var mins0 = function (n) { return n < 60 ? n + ' хв' : Math.floor(n / 60) + ' год ' + (n % 60) + ' хв'; };
+    draw();
   };
 
   // ---------- Замовлення Оздоби (ціни «за запитом», статус, нотатка клієнту) ----------
@@ -918,6 +1108,7 @@
       function save(publish) {
         var o = collect(), errs = articleErrors(o, publish);
         if (errs.length) return toast((publish ? 'Для публікації потрібно: ' : 'Потрібно: ') + errs.join(', '), true);
+        if (publish && !confirmIssues(lintText(strings(o)))) return;
         var name = path ? path.split('/').pop() : fileName(o);
         var target = (publish ? AD : DD) + '/' + name, files = [{ path: target, content: stringifyLike(f.content || '', o) }], dels = [], expect = {};
         expect[target] = target === path ? f.sha : null;
@@ -1103,6 +1294,10 @@
         if (unesc((src.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '') !== t) out = out.replace(/<title>[\s\S]*?<\/title>/, function () { return '<title>' + escT(t) + '</title>'; });
         if (desc !== dsc) out = out.replace(/<meta name="description" content="[^"]*">/, function () { return '<meta name="description" content="' + escA(dsc) + '">'; });
         if (out === src) return toast('Змін немає');
+        if (!/<h1\b/i.test(main) && /<h1\b/i.test(m[2])) return toast('На сторінці зник заголовок H1 — поверніть його (вкладка «Код HTML»)', true);
+        if ((main.match(/<h1\b/gi) || []).length > 1) return toast('На сторінці має бути один H1', true);
+        if (/<img\b(?![^>]*\balt=)[^>]*>/i.test(main)) return toast('У кожного фото має бути alt (опис) — додайте у «Код HTML»', true);
+        if (!confirmIssues(lintText(main.replace(/<[^>]+>/g, ' ')).concat(seoIssues(t, dsc)))) return;
         var e = {}; e[path] = f.sha;
         repo.save(val('[data-msg]', L) || 'текст сторінки ' + path, [{ path: path, content: out }], [], e).then(function () { htmlEdit(L, path); });
       };
