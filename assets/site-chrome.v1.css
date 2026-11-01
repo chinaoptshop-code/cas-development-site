@@ -441,3 +441,15 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 :is(#of,.lq) .o-more>summary{min-height:44px;display:flex;align-items:center}
 .pcarousel-nav>button{min-width:44px;min-height:44px}
 .dv>a{display:inline-block;padding:10px 0;margin:-10px 0}
+/* ══ «Будинок / Ремонт з нуля» (section.bz) — статичний стан до збірки сцени; тут, а не в build-anim.v1.css (вантажиться після першої прокрутки), щоб висота блоку в кадрі не стрибала (CLS). Головна (data-bz-c) — власна сітка ── */
+.bz[data-bz-c]{padding:56px 0 64px;border-top:1px solid var(--ln,rgba(191,145,72,.18))}
+.bz[data-bz-c]>.w{max-width:1180px;margin:0 auto;padding:0 22px;box-sizing:border-box}
+.bz[data-bz-c] h2{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:var(--fs-h2,2.25rem);line-height:1.15;margin:0 0 10px}
+.bz[data-bz-c] .bz-p{color:var(--mu,#938c84);margin:0;max-width:44em}
+.bz-p a{color:var(--ac,#BF9148);white-space:nowrap}
+.bz-cta{margin-top:28px;padding:clamp(20px,3vw,32px);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:14px;background:var(--bg2,#100e0c);scroll-margin-top:calc(var(--sch-h,64px) + 16px)}
+.bz-cta h3{margin:0 0 6px;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:var(--fs-h3,1.5rem);line-height:1.15}
+.bz-team{margin:14px 0 0;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem)}
+.bz-team a{color:var(--ac,#BF9148)}
+.bz-facts{display:flex;flex-wrap:wrap;gap:6px 28px;margin:0 0 16px;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem)}
+.bz-facts b{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:1.9rem;line-height:1;color:var(--ac,#BF9148);margin-right:4px;font-variant-numeric:tabular-nums}

@@ -581,7 +581,7 @@ def ld(p):
         if p.get('groups'):
             f.update({'@id': u + '#faq', 'url': u, 'name': p['h1']})
         g.append(f)
-    return json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False)
+    return json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False, separators=(',', ':'))  # компактно: байти бюджету 64 КБ
 
 
 def build(p):

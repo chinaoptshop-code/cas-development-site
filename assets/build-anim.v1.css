@@ -1,12 +1,8 @@
 /* CAS — «Будинок з нуля» / «Ремонт з нуля» v2 (UI-kit /styleguide/#build-anim-sg). Вантажить /assets/build-anim.v1.js ліниво.
    Без JS блок — звичайний список «Етапи» (ol.steps зі стилів сторінки). Токени — з site-chrome (--ac, --tx, --mu, --ln, --bg2, --ease-out). */
 .bz{--bz-per:40svh;--bz-bot:0px}
-.bz[data-bz-c]{--bz-per:26svh;padding:56px 0 64px;border-top:1px solid var(--ln,rgba(191,145,72,.18))}
-/* головна: власна сітка (у шаблоні головної немає .w лендингів) */
-.bz[data-bz-c]>.w{max-width:1180px;margin:0 auto;padding:0 22px;box-sizing:border-box}
-.bz[data-bz-c] h2{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:var(--fs-h2,2.25rem);line-height:1.15;margin:0 0 10px}
-.bz[data-bz-c] .bz-p{color:var(--mu,#938c84);margin:0;max-width:44em}
-.bz-p a{color:var(--ac,#BF9148);white-space:nowrap}
+.bz[data-bz-c]{--bz-per:26svh}
+/* статичний стан блоку (до збірки сцени: заголовок, вступ, CTA, факти) — у site-chrome.v1.css: цей файл вантажиться після першої прокрутки й не має змінювати висоту блоку в кадрі (CLS) */
 .bz-run{position:relative;height:calc(var(--n,19) * var(--bz-per) + 100svh - var(--sch-h,64px) - var(--bz-bot));margin-top:8px}
 .bz-pin{position:sticky;top:var(--sch-h,64px);height:calc(100svh - var(--sch-h,64px) - var(--bz-bot));box-sizing:border-box;padding:14px 0;
   display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:clamp(18px,3vw,48px);align-items:center}
@@ -76,13 +72,6 @@
 .bz-skip{position:absolute;left:0;top:8px;z-index:3;padding:8px 14px;border-radius:999px;background:var(--bg2,#100e0c);color:var(--tx,#EDE8DF);border:1px solid var(--ac,#BF9148);
   font-size:var(--fs-small,.8125rem);text-decoration:none;transform:translateY(-200%);opacity:0}
 .bz-skip:focus{transform:none;opacity:1}
-.bz-cta{margin-top:28px;padding:clamp(20px,3vw,32px);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:14px;background:var(--bg2,#100e0c);scroll-margin-top:calc(var(--sch-h,64px) + 16px)}
-.bz-cta h3{margin:0 0 6px;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:var(--fs-h3,1.5rem);line-height:1.15}
-.bz-team{margin:14px 0 0;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem)}
-.bz-team a{color:var(--ac,#BF9148)}
-/* факти (лічильники з site-chrome: data-count) */
-.bz-facts{display:flex;flex-wrap:wrap;gap:6px 28px;margin:0 0 16px;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem)}
-.bz-facts b{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:1.9rem;line-height:1;color:var(--ac,#BF9148);margin-right:4px;font-variant-numeric:tabular-nums}
 @media(max-height:780px) and (min-width:768px){.bz-pie ul button{min-height:22px}.bz-pd{min-height:2.4em}.bz-on-l span{font-size:.875rem}.bz-side{gap:9px}}
 /* телефон: сцена згори, під нею активний етап і ← → ; пиріг — за кнопкою поверх сцени; нижня панель .mbar (64px) не перекриває керування */
 @media(max-width:767px){
