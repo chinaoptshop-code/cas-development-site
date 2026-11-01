@@ -210,7 +210,7 @@
   var ref = form || hero;
   var srcBase = (ref && ref.dataset.source) || (location.host + location.pathname);
   var slots = [].slice.call(document.querySelectorAll('.lq-slot:not([data-built])'));
-  // форму будуємо, коли місце за ~1,5 екрана від видимої області: на завантаженні сторінки — нуль роботи (TBT), а вставка
+  // форму будуємо, коли місце за ~3 екрани від видимої області (висоту до збірки резервує site-chrome.v1.css): на завантаженні сторінки — нуль роботи (TBT), а вставка
   // далеко під екраном не зсуває видимий вміст (CLS = 0). Без IntersectionObserver — одразу.
   function build(slot) {
     if (slot.hasAttribute('data-built')) return;
@@ -243,7 +243,7 @@
     if ('IntersectionObserver' in window) {
       var sio = new IntersectionObserver(function (es) {
         es.forEach(function (e) { if (e.isIntersecting) { sio.unobserve(e.target); build(e.target); } });
-      }, { rootMargin: '150% 0px 150% 0px' });
+      }, { rootMargin: '300% 0px 300% 0px' });
       slots.forEach(function (s) { sio.observe(s); });
     } else buildAll();
   }

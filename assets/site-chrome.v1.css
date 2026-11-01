@@ -228,9 +228,9 @@ details.o-more>summary::before{content:"+ "}details.o-more[open]>summary::before
 :is(.lq,#of) :is(.o-note,.lq-alt,.lq-tr,.lq-l){font-size:var(--fs-small,.8125rem);line-height:1.5}:is(.lq,#of) :is(.lq-alt,.lq-tr){margin:6px 0 0}.lq .o-note{margin:8px 0 0}.lq :is(.o-note,.lq-alt){color:var(--mu,#8a837c)}
 .lq-slot:empty{margin:0;padding:0}.lq-slot{margin:28px 0 0}.lq-slot .lq{margin:0;max-width:620px;padding:18px 20px;border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:12px;background:rgba(191,145,72,.05)}
 .lq-slot .lq-ok{margin:0}.cta .lq-slot{margin:0 0 16px}.cta .lq-slot .lq{padding:0;border:0;background:none}
-/* місце швидкої заявки до ліниво зібраної форми (lead-form.v1.js будує її за ~1,5 екрана): резерв висоти — без стрибка вмісту при швидкій прокрутці (CLS). Значення — мінімальні виміряні висоти форм (360–1440 px) */
+/* місце швидкої заявки до ліниво зібраної форми (lead-form.v1.js будує її за ~3 екрани): резерв висоти — без стрибка вмісту при швидкій прокрутці (CLS). Значення — мінімальні виміряні висоти форм (360–1440 px) */
 .js .lq-slot[data-form]:empty{margin-top:28px;min-height:250px}.js .lq-slot[data-form$="-end"]:empty{margin-top:0;min-height:130px}
-@media(min-width:768px){.js .lq-slot[data-form]:empty{min-height:200px}.js .lq-slot[data-form$="-end"]:empty{min-height:78px}}
+@media(min-width:768px){.js .lq-slot[data-form]:empty{min-height:200px}html[lang=en].js .lq-slot[data-form]:empty{min-height:236px}html[lang=en].js .lq-slot[data-form$="-end"]:empty{min-height:78px}.js .lq-slot[data-form$="-end"]:empty{min-height:78px}}
 .lq-wide{max-width:1180px;padding:0 22px;margin:40px auto 0;box-sizing:border-box}
 /* мікровзаємодія кнопки й стани «надсилаємо…/дякуємо» */
 .lq-b,#oBtn{transition:transform .15s ease,filter .2s ease,opacity .2s ease}

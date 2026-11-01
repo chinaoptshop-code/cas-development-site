@@ -954,6 +954,9 @@
   function enhance(sec, data) {
     if (sec.hasAttribute('data-bz-on')) return;
     sec.setAttribute('data-bz-on', '');
+    // блок вище екрана (швидка прокрутка): після збірки він виросте на кілька екранів — тримаємо видимий вміст на місці самі,
+    // якщо скрол-якоріння браузера не спрацює (Safari без overflow-anchor, анімовані reveal-вузли), інакше CLS до 1.0
+    var above = sec.getBoundingClientRect().bottom <= 0, nxt = sec.nextElementSibling, nxt0 = above && nxt ? nxt.getBoundingClientRect().top : 0;
     var ui = data.ui, scene = sec.getAttribute('data-bz') === 'flat' ? 'flat' : 'house';
     var ol = sec.querySelector('ol.bz-st'), cta = sec.querySelector('.bz-cta'); if (!cta) return;
     if (!ol) { ol = el('ol', 'bz-st'); cta.parentNode.insertBefore(ol, cta); } // сторінка на межі бюджету: список — лише з JSON
@@ -1318,6 +1321,7 @@
     placeCfg();
     render(0.6);
     mode();
+    if (above && nxt) { var dy = nxt.getBoundingClientRect().top - nxt0; if (Math.abs(dy) > 1) W.scrollBy(0, dy); }
   }
 
   /* ---------- ліниве завантаження: CSS + JSON → сцена, за ~3 екрани до блоку ---------- */
