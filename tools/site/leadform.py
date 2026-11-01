@@ -24,6 +24,7 @@
   • Стилі — у /assets/site-chrome.v1.css (розділ «Легка заявка»); старий інлайн <style id="lead-ui"> прибираємо.
 Надсилання, перевірку номера, маску, стани «надсилаємо…/дякуємо» і події Clarity (`lead_submit`, `lead_start`, `lead_msg`)
 робить спільний /assets/lead-form.v1.js. Без поп-апів і exit-intent.
+Форму з data-lf="keep" (власна форма сторінки, landing.py "form_html") не переписуємо.
 Сторінки інших агентів (SKIP) не чіпаємо; блог, Оздобу, кабінет і сторінки проєктів — без швидкої заявки в hero.
 """
 import glob, html, os, re, sys
@@ -344,7 +345,9 @@ def apply(s, rel):
     if rel in SKIP:
         return s
     s = STYLE_RX.sub('', s)
-    if 'id="of"' in s or '<!--lq-->' in s:
+    if 'data-lf="keep"' in s:  # власна форма сторінки (landing.py "form_html", напр. реферальна): не переписуємо, без швидкої заявки
+        s = QUICK_RX.sub('', s)
+    elif 'id="of"' in s or '<!--lq-->' in s:
         lang = lang_of(s)
         s = upgrade_form(s, lang)
         if not NO_QUICK.search(rel):

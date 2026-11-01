@@ -14,6 +14,7 @@ python3 tools/shop/pages.py
 python3 tools/blog/build.py --check
 python3 tools/blog/build.py
 python3 tools/site/leadform.py  # форми заявки: обовʼязковий лише телефон, швидка заявка (ручні сторінки теж)
+python3 tools/guide/build.py    # лід-магніт «Гід з цінами» (PDF): місця .gd-slot на сторінках вартості, калькуляторі й у статтях про ціни
 python3 tools/site/captions.py  # підписи галерей: обʼєкт, що робили, статус
 python3 tools/site/casmap.py    # карти: «Карта проєктів» у /portfolio, офіс у /contact (лендинги контактів — через landing.py)
 python3 tools/site/quiz.py      # квіз-калькулятор перед формою заявки (головні uk/ru/en, ремонт, будівництво)

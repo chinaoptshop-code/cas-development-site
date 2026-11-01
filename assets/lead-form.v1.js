@@ -4,6 +4,7 @@
    2) Швидка заявка в один рядок form.lq (телефон + кнопка; ті самі data-service/data-source/data-form), успіх — .lq-ok після форми.
    3) Місця <div class="lq-slot" data-form="quick-prices|quick-portfolio|quick-project|quick-blog-mid|…"> — компактне
       «Номер → передзвонимо» (form.lq) будує цей скрипт — ліниво, за ~1,5 екрана до місця; data-source = джерело сторінки + «#місце» (для CRM і аналітики).
+   4) Лід-магніт <div class="gd-slot" data-pdf="…"> (tools/guide/build.py) — «Гід з цінами»: телефон → після 2xx кнопка «Завантажити гід».
    Розмітку й тексти ставить tools/site/leadform.py; стилі — /assets/site-chrome.v1.css («Легка заявка»);
    сторінки без розмітки leadform.py (кабінет, динамічні) скрипт дооформлює сам.
    Мова повідомлень — з <html lang>. Надсилаємо в /api/leads (CRM + Telegram) і в n8n; успіх — лише після 2xx хоча б від одного;
@@ -245,6 +246,51 @@
       }, { rootMargin: '150% 0px 150% 0px' });
       slots.forEach(function (s) { sio.observe(s); });
     } else buildAll();
+  }
+
+  /* ---------- 0б. лід-магніт «Гід з цінами» (PDF): <div class="gd-slot" data-pdf="/assets/guide/…pdf?v=…"> ставить tools/guide/build.py.
+     Та сама швидка заявка (лише телефон, data-form="guide", source …#guide); після 2xx — кнопка «Завантажити гід».
+     Без поп-апів; блок будуємо ліниво, як і .lq-slot. */
+  var G = {
+    uk: { h: 'Гід з цінами на ремонт і дизайн 2026', p: 'PDF: ставки «від» для Києва і Європи, що входить у ремонт від $550/м², пакети дизайну, будинок, етапи, схеми оплати й чекліст прийому ремонту.',
+          l: 'Залиште номер — і завантажте гід одразу', b: 'Отримати гід', ok: 'Готово! Гід можна завантажити:', dl: 'Завантажити гід', m: 'Менеджер також надішле його в Telegram/Viber.' },
+    ru: { h: 'Гид по ценам на ремонт и дизайн 2026', p: 'PDF: ставки «от» для Киева и Европы, что входит в ремонт от $550/м², пакеты дизайна, дом, этапы, схемы оплаты и чек-лист приёмки ремонта.',
+          l: 'Оставьте номер — и скачайте гид сразу', b: 'Получить гид', ok: 'Готово! Гид можно скачать:', dl: 'Скачать гид', m: 'Менеджер также отправит его в Telegram/Viber.' }
+  };
+  var gslots = [].slice.call(document.querySelectorAll('.gd-slot:not([data-built])'));
+  function buildGuide(slot) {
+    if (slot.hasAttribute('data-built')) return;
+    slot.setAttribute('data-built', '1');
+    var g = G[lang] || G.uk, id = 'gd' + gslots.indexOf(slot), pdf = slot.getAttribute('data-pdf') || '';
+    var box = el('div', 'gd');
+    box.appendChild(el('p', 'gd-h', g.h)); box.appendChild(el('p', 'gd-p', g.p));
+    var f = el('form', 'lq'); f.noValidate = true;
+    f.setAttribute('data-form', 'guide'); f.setAttribute('data-service', 'Гід з цінами');
+    f.setAttribute('data-source', srcBase.replace(/#.*$/, '') + '#guide');
+    var lb = el('label', 'lq-l', g.l); lb.htmlFor = id + 'P';
+    var row = el('div', 'lq-r'), inp = el('input');
+    inp.id = id + 'P'; inp.type = 'tel'; inp.setAttribute('inputmode', 'tel'); inp.setAttribute('autocomplete', 'tel');
+    inp.placeholder = '+380 97 123 45 67'; inp.setAttribute('aria-describedby', id + 'E');
+    var b = el('button', 'lq-b', g.b); b.type = 'submit';
+    row.appendChild(inp); row.appendChild(b);
+    var er = el('div', 'lq-e'); er.id = id + 'E'; er.setAttribute('role', 'alert');
+    f.appendChild(lb); f.appendChild(row); f.appendChild(er);
+    var ok = el('div', 'lq-ok gd-ok'); ok.setAttribute('role', 'status'); ok.setAttribute('tabindex', '-1'); ok.hidden = true;
+    ok.appendChild(el('span', '', g.ok + ' '));
+    var a = el('a', 'btn main gd-dl', g.dl); a.href = pdf; a.setAttribute('download', ''); a.target = '_blank'; a.rel = 'noopener';
+    a.addEventListener('click', function () { clarity('guide_download', lang, 'guide_lang'); });
+    ok.appendChild(a); ok.appendChild(el('p', 'gd-m', g.m));
+    box.appendChild(f); box.appendChild(ok);
+    slot.appendChild(box);
+    wire(f);
+  }
+  if (gslots.length) {
+    if ('IntersectionObserver' in window) {
+      var gio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { gio.unobserve(e.target); buildGuide(e.target); } });
+      }, { rootMargin: '150% 0px 150% 0px' });
+      gslots.forEach(function (s) { gio.observe(s); });
+    } else gslots.forEach(buildGuide);
   }
 
   /* ---------- 1. повна форма form#of ---------- */

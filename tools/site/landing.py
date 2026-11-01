@@ -17,7 +17,9 @@
    "budget": {"area": 100, "h2": "...", "p": "..."} (необовʼязково — орієнтир «площа × ставка» з data-est після about),
    "prices": {"h2": "...", "p": "...", "rows": ["design", "repair", "furnish"]} (необовʼязково — таблиця 40/65/80/120 м² × ставка «від»),
    "packages": true (необовʼязково — три пакети дизайн-проєкту, PACKAGES; uk/ru/en),
-   у "sections" — також {"t": "prices", ...}, {"t": "packages"}, {"t": "guarantees", "more": false}.
+   у "sections" — також {"t": "prices", ...}, {"t": "packages"}, {"t": "guarantees", "more": false},
+   {"t": "ba", "h2", "items": [{"before", "after", "alt_before", "alt_after", "caption"}]} (слайдер «до / після», ba_html),
+   "form_html": "<form id=of data-lf=keep …>…<div class=ok id=oOk>…</p></div>" (необовʼязково — власна форма, напр. реферальна).
 Ручні сторінки: блоки між <!--cas:guarantees-->, <!--cas:prices-->, <!--cas:packages--> оновлює sync_manual().
    "near": ["h2", [["/url", "назва"], ...]] (необовʼязково — блок посилань перед «Інші послуги»),
    "cluster": ["h2", "вступ", [["/url", "анкор"], ...]] (необовʼязково — сусідні інтенти кластера запитів, tools/site/keywords.json),
@@ -177,41 +179,50 @@ def prices_html(lang, x):
             + f'<p><small>{e(d["note"] + (d["design"] if "design" in x.get("rows", PRICE_ROWS) else ""))}</small></p></div></section><!--/cas:prices-->\n')
 
 
-# Пакети дизайн-проєкту. Базовий — від $30/м², мін. $2 500 (Михайло); планувальний від $6/м² і повний від $45/м² —
-# ринкова практика Києва 2026 (Михайло делегував 27.10.2026). UI-kit: картки .grid/.card з ціною (/styleguide/ «Картки»).
+# Пакети дизайн-проєкту — порівняння (UI-kit: /styleguide/ «Порівняння пакетів дизайну»; стилі .pk — /assets/site-chrome.v1.css).
+# Базовий — від $30/м², мін. $2 500 (Михайло); планувальний від $6/м² і повний від $45/м² — ринкова практика Києва 2026
+# (Михайло делегував 27.10.2026); мінімум $2 500 для всіх пакетів — Михайло 31.10.2026. Склад — з попередніх карток пакетів.
+# Кожен пункт — (текст, рівень): 0 — у всіх пакетах, 1 — з базового, 2 — лише в повному. Телефон: свайп-картки (scroll-snap).
 PACKAGES = {
-    'uk': ('Пакети дизайн-проєкту', 'Склад проєкту підбираємо під задачу. Три типові пакети — від планування до повного супроводу з авторським наглядом:', [
-        ('Планувальний', 'від $6/м²', ['обмірний план приміщення', '2–3 варіанти планування на вибір', 'план розстановки меблів', 'експлікація приміщень з площами']),
-        ('Базовий', 'від $30/м², мін. $2 500', ['усе з планувального', '3D-візуалізації всіх приміщень',
-                                             'робочі креслення: демонтаж і монтаж стін, електрика, сантехніка, стелі, підлоги, розкладка плитки',
-                                             'специфікації матеріалів і меблів']),
-        ('Повний з авторським наглядом', 'від $45/м²', ['усе з базового', 'розгортки всіх стін і креслення меблів на замовлення',
-                                                       'авторський нагляд під час ремонту — виїзди за графіком у договорі',
-                                                       'підбір меблів, світла й декору; закупівля й доставка — окремо (комплектація)'])]),
-    'ru': ('Пакеты дизайн-проекта', 'Состав проекта подбираем под задачу. Три типовых пакета — от планировки до полного сопровождения с авторским надзором:', [
-        ('Планировочный', 'от $6/м²', ['обмерный план помещения', '2–3 варианта планировки на выбор', 'план расстановки мебели', 'экспликация помещений с площадями']),
-        ('Базовый', 'от $30/м², мин. $2 500', ['всё из планировочного', '3D-визуализации всех помещений',
-                                            'рабочие чертежи: демонтаж и монтаж стен, электрика, сантехника, потолки, полы, раскладка плитки',
-                                            'спецификации материалов и мебели']),
-        ('Полный с авторским надзором', 'от $45/м²', ['всё из базового', 'развёртки всех стен и чертежи мебели на заказ',
-                                                     'авторский надзор во время ремонта — выезды по графику в договоре',
-                                                     'подбор мебели, света и декора; закупка и доставка — отдельно (комплектация)'])]),
-    'en': ('Design project packages', 'We tailor the scope to the task. Three typical packages, from a layout plan to full support with designer supervision:', [
-        ('Layout', 'from $6/m²', ['measured survey plan', '2–3 layout options to choose from', 'furniture arrangement plan', 'room schedule with areas']),
-        ('Standard', 'from $30/m², min. $2 500', ['everything in Layout', '3D visualisations of every room',
-                                               'working drawings: wall demolition and construction, electrics, plumbing, ceilings, floors, tile layout',
-                                               'material and furniture specifications']),
-        ('Full, with designer supervision', 'from $45/m²', ['everything in Standard', 'elevations of all walls and drawings of custom furniture',
-                                                            'designer supervision during renovation, with site visits scheduled in the contract',
-                                                            'selection of furniture, lighting and decor; purchasing and delivery are separate (procurement)'])]),
+    'uk': dict(h='Пакети дизайн-проєкту: порівняння',
+               pk=[('Планувальний', 'від $6/м²'), ('Базовий дизайн-проєкт', 'від $30/м²'), ('Повний з авторським наглядом', 'від $45/м²')],
+               items=[('обмірний план приміщення', 0), ('2–3 варіанти планування', 0), ('план розстановки меблів', 0), ('експлікація приміщень', 0),
+                      ('3D-візуалізації всіх приміщень', 1), ('робочі креслення для ремонту', 1),
+                      ('специфікації матеріалів і меблів', 1), ('розгортки стін, креслення меблів', 2),
+                      ('авторський нагляд під час ремонту', 2), ('підбір меблів, світла й декору', 2)],
+               min='мін. $2 500', no='не входить', cta='Обговорити пакет', hint='Гортайте, щоб порівняти →',
+               note='Мінімум — $2 500 для будь-якого пакета; точну суму й склад фіксуємо в договорі. Закупівля меблів — окремо (комплектація).'),
+    'ru': dict(h='Пакеты дизайн-проекта: сравнение',
+               pk=[('Планировочный', 'от $6/м²'), ('Базовый дизайн-проект', 'от $30/м²'), ('Полный с авторским надзором', 'от $45/м²')],
+               items=[('обмерный план помещения', 0), ('2–3 варианта планировки', 0), ('план расстановки мебели', 0), ('экспликация помещений', 0),
+                      ('3D-визуализации всех помещений', 1), ('рабочие чертежи для ремонта', 1),
+                      ('спецификации материалов и мебели', 1), ('развёртки стен, чертежи мебели', 2),
+                      ('авторский надзор во время ремонта', 2), ('подбор мебели, света и декора', 2)],
+               min='мин. $2 500', no='не входит', cta='Обсудить пакет', hint='Листайте, чтобы сравнить →',
+               note='Минимум — $2 500 для любого пакета; точную сумму и состав фиксируем в договоре. Закупка мебели — отдельно (комплектация).'),
+    'en': dict(h='Design project packages compared',
+               pk=[('Layout', 'from $6/m²'), ('Standard design project', 'from $30/m²'), ('Full, with designer supervision', 'from $45/m²')],
+               items=[('measured survey plan', 0), ('2–3 layout options', 0), ('furniture arrangement plan', 0), ('room schedule', 0),
+                      ('3D visualisations of every room', 1), ('working drawings for the renovation', 1),
+                      ('material and furniture specifications', 1), ('wall elevations, furniture drawings', 2),
+                      ('designer supervision during renovation', 2), ('selection of furniture, lighting and decor', 2)],
+               min='min. $2 500', no='not included', cta='Discuss this package', hint='Swipe to compare →',
+               note='Minimum $2 500 for any package; the exact fee and scope are fixed in the contract. Furniture purchasing is separate (procurement).'),
 }
 
 
 def packages_html(lang):
-    h, intro, items = PACKAGES[lang]
-    return ('<!--cas:packages--><section><div class="w">\n' f'  <h2>{e(h)}</h2>\n' f'  <p style="color:var(--mu);max-width:62ch;margin:0 0 22px">{e(intro)}</p>\n'
-            '  <div class="grid">' + ''.join(f'<div class="card"><h3>{e(t)}</h3><p style="color:var(--ac)">{e(pr)}</p><ul>' + ''.join(f'<li>{e(i)}</li>' for i in li) + '</ul></div>'
-                                             for t, pr, li in items) + '</div>\n'
+    d = PACKAGES[lang]
+    cards = ''
+    for i, (name, price) in enumerate(d['pk']):
+        yes = ''.join(f'<li>{e(t)}</li>' for t, lvl in d['items'] if lvl <= i)
+        no = ''.join(f'<li>{e(t)}</li>' for t, lvl in d['items'] if lvl > i)  # «не входить» — окремим списком з aria-label (бюджет HTML)
+        cards += (f'<div class="card pk-c"><h3>{e(name)}</h3><p class="pk-p">{e(price)} · {e(d["min"])}</p><ul class="pk-l">{yes}</ul>'
+                  + (f'<ul class="pk-l pk-x" aria-label="{e(d["no"])}">{no}</ul>' if no else '')
+                  + f'<a class="btn{" main" if i == 1 else ""}" href="#zayavka">{e(d["cta"])}</a></div>')
+    return ('<!--cas:packages--><section><div class="w">\n' f'  <h2>{e(d["h"])}</h2>\n' + (f'  <p class="pk-in">{e(d["intro"])}</p>\n' if d.get('intro') else '')
+            + f'  <p class="pk-h" aria-hidden="true">{e(d["hint"])}</p><div class="pk">{cards}</div>\n'
+            f'  <p class="pk-m"><small>{e(d["note"])}</small></p>\n'
             '</div></section><!--/cas:packages-->\n')
 
 
@@ -362,11 +373,33 @@ def section_html(lang, x):
                 '  ' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(v)}</p></details>' for q, v in x['items']), '</div></section>\n']
     if k == 'map':  # карта офісу (tools/site/casmap.py): постер + MapLibre по кліку, «Маршрут» і Google Maps
         return [casmap.office_html(lang, x.get('h2'))]
+    if k == 'ba':  # «до / після» (/assets/ba.v1.js + .css; підключає build()): лише реальні фото одного обʼєкта
+        return [ba_html(lang, x)]
     if k == 'rel':
         return [f'<section{sid}><div class="w">', h2,
                 '  <div class="rel">' + ''.join(f'<a href="{u}"' + (' hreflang="uk"' if u in ('/portfolio',) else '') + f'>{e(n)}</a>' for u, n in x['items']) + '</div>',
                 '</div></section>\n']
     raise ValueError(f'невідома секція {k}')
+
+
+# Компонент «до / після» (UI-kit: /styleguide/#ba). Секція {"t": "ba", "h2": "...", "items": [{"before": "img/...webp",
+# "after": "img/...webp", "alt_before": "...", "alt_after": "...", "caption": "..."}]} — обидва фото одного ракурсу й розміру.
+# Фото «до» не вигадуємо: лише справжні знімки обʼєкта. Без JS видно розріз 50/50; JS — /assets/ba.v1.js (pointer, ←/→, aria).
+BA = {'uk': ('До', 'Після', 'Порівняти до і після'), 'ru': ('До', 'После', 'Сравнить до и после')}
+
+
+def ba_html(lang, x):
+    t0, t1, lab = BA.get(lang, ('Before', 'After', 'Compare before and after'))
+    o = '<section><div class="w">' + (f'<h2>{e(x["h2"])}</h2>' if x.get('h2') else '')
+    for it in x['items']:
+        w, h = Image.open(os.path.join(ROOT, it['after'])).size
+        o += (f'<figure class="ba-w"><div class="ba" style="aspect-ratio:{w}/{h}">'
+              f'<img src="/{it["after"]}" loading="lazy" decoding="async" width="{w}" height="{h}" alt="{a(it.get("alt_after", t1))}">'
+              f'<div class="ba-b"><img src="/{it["before"]}" loading="lazy" decoding="async" width="{w}" height="{h}" alt="{a(it.get("alt_before", t0))}"></div>'
+              f'<span class="ba-t ba-t0" aria-hidden="true">{e(t0)}</span><span class="ba-t ba-t1" aria-hidden="true">{e(t1)}</span>'
+              f'<div class="ba-h" role="slider" tabindex="0" aria-label="{a(lab)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div></div>'
+              + (f'<figcaption>{e(it["caption"])}</figcaption>' if it.get('caption') else '') + '</figure>')
+    return o + '</div></section>\n'
 
 
 # орієнтир бюджету «площа × базова ставка» (як картка кейсу в /styleguide/): ui.py перевіряє data-est
@@ -582,6 +615,11 @@ def build(p):
     s = re.sub(r'data-service="[^"]*"', f'data-service="{a(p["service"])}"', s, count=1)
     src = 'cas-develop.com/' + i18n.meta(lang)['prefix'] + ('' if slug == 'index' else slug)
     s = re.sub(r'data-source="[^"]*"', f'data-source="{src}"', s, count=1)
+    if p.get('form_html'):  # власна форма замість типової (/referalna-prohrama): з data-lf="keep" — leadform.py її не переписує
+        s, n = re.subn(r'<form\b[^>]*\bid="of".*?<div class="ok" id="oOk".*?</p></div>', lambda m: p['form_html'], s, count=1, flags=re.S)
+        assert n == 1, f'{slug}: не знайдено form#of і #oOk у шаблоні'
+    if any(x['t'] == 'ba' for x in p.get('sections', [])):
+        p.setdefault('assets', []).extend(f for f in ('assets/ba.v1.css', 'assets/ba.v1.js') if f not in p.get('assets', []))
     s = leadform.apply(s, path(lang, slug))  # форма: обовʼязковий лише телефон; швидка заявка біля першого CTA
     s = captions.apply(s, path(lang, slug))
     # шапка й футер: мова, перемикач на пару (hreflang) і посилання — з chrome.py

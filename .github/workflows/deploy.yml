@@ -63,7 +63,7 @@ jobs:
           fi
           if [ -n "$ID" ] && sed -i "s/__D1_ID__/$ID/" wrangler.toml && npx wrangler@3 d1 migrations apply cas-shop --remote; then
             echo "D1 cas-shop: $ID"
-            for K in TELEGRAM_BOT_TOKEN TELEGRAM_BOT_USERNAME GOOGLE_CLIENT_ID ADMIN_TG_IDS ADMIN_EMAILS GITHUB_CONTENT_TOKEN LEAD_INGEST_KEY SESSION_SECRET; do
+            for K in TELEGRAM_BOT_TOKEN TELEGRAM_BOT_USERNAME GOOGLE_CLIENT_ID ADMIN_TG_IDS ADMIN_EMAILS OWNER_TG_ID OWNER_EMAIL GITHUB_CONTENT_TOKEN LEAD_INGEST_KEY SESSION_SECRET; do
               V="${!K}"; [ -n "$V" ] && printf '%s' "$V" | npx wrangler@3 pages secret put "$K" --project-name=cas-development-site >/dev/null 2>&1 && echo "secret $K ok"
             done
           else
@@ -79,6 +79,8 @@ jobs:
           GOOGLE_CLIENT_ID: ${{ secrets.SHOP_GOOGLE_CLIENT_ID }}
           ADMIN_TG_IDS: ${{ secrets.SHOP_ADMIN_TG_IDS }}
           ADMIN_EMAILS: ${{ secrets.SHOP_ADMIN_EMAILS }}
+          OWNER_TG_ID: ${{ secrets.SHOP_OWNER_TG_ID }}                     # власник (майстер-панель); не задано — перший з ADMIN_TG_IDS
+          OWNER_EMAIL: ${{ secrets.SHOP_OWNER_EMAIL }}                     # або пошта Google власника
           GITHUB_CONTENT_TOKEN: ${{ secrets.SHOP_GITHUB_CONTENT_TOKEN }}   # редактор контенту в /kabinet/admin (tools/admin/README.md)
           LEAD_INGEST_KEY: ${{ secrets.SHOP_LEAD_INGEST_KEY }}             # ключ для POST /api/leads з n8n і /api/admin/lead-sla (lead-sla.yml)
           SESSION_SECRET: ${{ secrets.SHOP_SESSION_SECRET }}               # необовʼязково: ключ підпису сесій (інакше — випадковий у D1); зміна = вихід усіх

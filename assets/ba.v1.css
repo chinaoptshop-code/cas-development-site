@@ -1,0 +1,13 @@
+/* CAS — слайдер «до / після» (/assets/ba.v1.js, /styleguide/#ba). Ліва частина — «до», права — «після». */
+.ba-w{margin:0 0 22px}.ba-w figcaption{margin-top:8px;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem)}
+.ba{--p:50%;position:relative;overflow:hidden;border-radius:12px;background:var(--bg2,#100e0c);direction:ltr;touch-action:pan-y;cursor:ew-resize;-webkit-user-select:none;user-select:none}
+.ba img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-b{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.ba-h{position:absolute;top:0;bottom:0;left:var(--p);width:44px;margin-left:-22px;display:grid;place-items:center;cursor:ew-resize;outline:0}
+.ba-h::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:#EDE8DF;box-shadow:0 0 0 1px rgba(8,7,9,.35)}
+.ba-h::after{content:"\2039\00a0\203A";position:relative;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--ac,#BF9148);color:#140f08;font:700 18px/1 var(--M,"Manrope",sans-serif);box-shadow:0 4px 16px rgba(8,7,9,.45)}
+.ba-h:focus-visible::after{outline:2px solid #EDE8DF;outline-offset:3px}
+.ba-t{position:absolute;top:12px;padding:3px 10px;border-radius:999px;background:rgba(8,7,9,.72);color:#EDE8DF;font-size:var(--fs-small,.75rem);letter-spacing:.12em;text-transform:uppercase;pointer-events:none}
+.ba-t0{left:12px}.ba-t1{right:12px}
+.ba-anim .ba-b{transition:clip-path .25s ease}.ba-anim .ba-h{transition:left .25s ease}
+@media(prefers-reduced-motion:reduce){.ba-b,.ba-h{transition:none!important}}

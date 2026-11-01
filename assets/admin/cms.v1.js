@@ -4,7 +4,11 @@
    Інструкція для власника — tools/admin/README.md. */
 (function () {
   'use strict';
-  var A, box, REPO = null;
+  var A, box, REPO = null, ME = null; // ME — працівник з /api/me: {role, perms, owner, panel}
+  var can = function (p) { return !!(ME && ME.perms && ME.perms.indexOf(p) >= 0); };
+  var reduced = function () { return window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches; };
+  // плавна зміна вмісту (View Transitions), без анімації — якщо браузер не вміє або «менше руху»
+  var transition = function (fn) { if (document.startViewTransition && !reduced()) document.startViewTransition(fn); else fn(); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var money = function (n, cur) { return n == null ? 'за запитом' : new Intl.NumberFormat('uk-UA').format(n) + ' ' + ({ USD: '$', EUR: '€' }[cur] || '₴'); };
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
@@ -260,28 +264,51 @@
   var strings = function (o) { var a = []; (function w(x) { if (typeof x === 'string') a.push(x); else if (x && typeof x === 'object') Object.keys(x).forEach(function (k) { w(x[k]); }); })(o); return a.join('\n'); };
 
   // ===================== вкладки =====================
+  // [ключ, підпис, права (досить одного)] — вкладки без права не показуємо (сервер однаково перевіряє кожен запит).
+  // Вкладки майстер-панелі власника (Студія, Персонал, Аудит) додає assets/admin/studio.v1.js через window.CASStudio.
   var TABS = [
-    ['crm', 'CRM'], ['stats', 'Аналітика'], ['orders', 'Замовлення Оздоби'], ['clients', 'Клієнти'], ['projects', 'Проєкти клієнтів'], ['codes', 'Коди партнерів'],
-    ['products', 'Товари'], ['blog', 'Блог'], ['landings', 'Лендинги'], ['lang', 'Меню й футер'], ['pages', 'Сторінки'], ['media', 'Медіа'], ['history', 'Історія'],
+    ['crm', 'CRM', ['leads.view_all', 'orders.view']], ['stats', 'Аналітика', ['leads.view_all']], ['orders', 'Замовлення Оздоби', ['orders.view']],
+    ['clients', 'Клієнти', ['clients.view']], ['projects', 'Обʼєкти', ['projects.view_all']], ['codes', 'Коди партнерів', ['partners.manage']],
+    ['products', 'Товари', ['cms.edit']], ['blog', 'Блог', ['cms.edit']], ['landings', 'Лендинги', ['cms.edit']], ['lang', 'Меню й футер', ['cms.edit']],
+    ['pages', 'Сторінки', ['cms.edit']], ['media', 'Медіа', ['cms.edit']], ['history', 'Історія', ['cms.edit']],
   ];
   var RENDER = {};
 
   function start() {
+    var ext = window.CASStudio;
+    if (ext && ext.tabs) ext.tabs.slice().reverse().forEach(function (t) { TABS.unshift([t.key, t.label, t.perms]); RENDER[t.key] = t.render; });
+    var tabs = TABS.filter(function (t) { return !t[2] || t[2].some(can); });
+    var first = tabs[0] ? tabs[0][0] : 'crm';
     box.className = 'adm';
-    box.innerHTML = '<nav class="adm-tabs" aria-label="Розділи адмінки">' + TABS.map(function (t) { return '<button type="button" data-t="' + t[0] + '" aria-pressed="false">' + t[1] + '</button>'; }).join('') + '</nav><div id="admView"></div>';
+    document.body.classList.add(ME && ME.owner ? 'adm-owner' : 'adm-manager');
+    var h1 = document.querySelector('main.acc h1');
+    if (h1) h1.textContent = ME && ME.owner ? 'Майстер-панель студії' : 'Робоча панель: CRM і сайт';
+    box.innerHTML = '<div class="adm-who"><span class="adm-badge">' + esc(ME ? ME.role_label : '') + '</span> <b>' + esc(ME ? ME.name : '') + '</b>' +
+      (ME && !ME.owner ? ' · <a href="/kabinet/team">Мій кабінет працівника</a>' : ' · <a href="/kabinet/team">Вигляд працівника</a>') +
+      ' · <button type="button" class="lnk" data-out-all>Вийти на всіх пристроях</button></div>' +
+      '<nav class="adm-tabs" aria-label="Розділи панелі">' + tabs.map(function (t) { return '<button type="button" data-t="' + t[0] + '" aria-pressed="false">' + t[1] + '</button>'; }).join('') + '</nav><div id="admView"></div>';
+    $('[data-out-all]', box).onclick = function () {
+      if (!confirm('Вийти з усіх пристроїв (телефон, ноутбук…)? Доведеться увійти заново.')) return;
+      A.api('/api/auth/logout', { method: 'POST', body: { all: true } }).then(function () { location.href = '/kabinet'; });
+    };
     var view = $('#admView');
     function open(t) {
-      if (!RENDER[t]) t = 'crm';
+      if (!RENDER[t] || !tabs.some(function (x) { return x[0] === t; })) t = first;
       $$('.adm-tabs button', box).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.t === t); });
       try { history.replaceState(null, '', '#' + t); } catch (e) { /* noop */ }
-      view.innerHTML = '';
-      var L = document.createElement('div'); view.appendChild(L);
-      Promise.resolve(RENDER[t](L)).catch(function (e) { L.innerHTML = '<p class="err">' + esc(e.message) + '</p>'; });
+      transition(function () {
+        view.innerHTML = '';
+        var L = document.createElement('div'); L.className = 'adm-view'; view.appendChild(L);
+        Promise.resolve(RENDER[t](L)).catch(function (e) { L.innerHTML = '<p class="err">' + esc(e.message) + '</p>'; });
+      });
     }
     $$('.adm-tabs button', box).forEach(function (b) { b.onclick = function () { open(b.dataset.t); b.scrollIntoView({ block: 'nearest', inline: 'center' }); }; });
     addEventListener('hashchange', function () { open(location.hash.slice(1)); }); // переходи з «Аналітики» в CRM з фільтром
-    open(location.hash.slice(1) || 'crm');
+    open(location.hash.slice(1) || first);
   }
+  // для studio.v1.js: спільні помічники
+  window.CASAdminKit = { esc: esc, money: money, toast: toast, api: function (p, o) { return api(p, o); }, can: can, transition: transition, reduced: reduced,
+    openClient: function (id) { if (window.CASStudio && window.CASStudio.clientCard) window.CASStudio.clientCard(id); } };
 
   // ---------- CRM ----------
   // Джерело заявки: місце форми — частина source після «#» (assets/lead-form.v1.js), основна форма сторінки — «form»,
@@ -335,9 +362,12 @@
     var saved = {}; try { saved = JSON.parse(localStorage.getItem('crmFilters') || '{}') || {}; } catch (e) { /* noop */ }
     var preset = null; try { preset = JSON.parse(sessionStorage.getItem('crmPreset') || 'null'); sessionStorage.removeItem('crmPreset'); } catch (e) { /* noop */ }
     var narrow = window.matchMedia && matchMedia('(max-width: 700px)').matches;
-    var S = Object.assign({ view: localStorage.getItem('crmView') || (narrow ? 'table' : 'kanban'), kind: '', status: '', assignee: '', due: false, q: '', place: '', period: '', from: '', to: '' }, saved, preset || {}), ST = {}, rows = [], AS = [];
+    var S = Object.assign({ view: localStorage.getItem('crmView') || (narrow ? 'table' : 'kanban'), board: can('leads.view_all') ? 'lead' : 'order', kind: '', status: '', assignee: '', staff: '', city: '', min: '', max: '', overdue: false, due: false, q: '', place: '', period: '', from: '', to: '' }, saved, preset || {}), ST = {}, LST = {}, OST = {}, rows = [], AS = [], STAFF = [];
+    if (!can('leads.view_all')) S.board = 'order'; if (!can('orders.view')) S.board = 'lead';
+    var stOf = function (r) { return r.kind === 'lead' ? LST : OST; };
     L.innerHTML = '<div class="tb crm-tb">' +
       '<span class="seg"><button type="button" data-v="kanban">Канбан</button><button type="button" data-v="table">' + (narrow ? 'Список' : 'Таблиця') + '</button></span>' +
+      (can('leads.view_all') && can('orders.view') ? '<span class="seg" data-boards><button type="button" data-b="lead">Заявки студії</button><button type="button" data-b="order">Оздоба</button></span>' : '') +
       '<input class="grow" data-f="q" type="search" enterkeyhint="search" placeholder="Пошук: номер, телефон, імʼя, сторінка, нотатки" aria-label="Пошук">' +
       '<button class="btn" type="button" data-new>+ Заявка</button><a class="btn ghost" data-csv href="#" download>CSV</a>' +
       '<details class="crm-more"' + (narrow ? '' : ' open') + '><summary>Фільтри <span data-fc></span></summary><div class="tb">' +
@@ -346,7 +376,11 @@
       '<select data-f="place" aria-label="Джерело"><option value="">Усі джерела</option>' + PLACES.map(function (p) { return '<option value="' + p[0] + '">' + p[1] + '</option>'; }).join('') + '</select>' +
       '<select data-f="period" aria-label="Період"><option value="">За весь час</option><option value="today">Сьогодні</option><option value="7">7 днів</option><option value="30">30 днів</option><option value="custom">Свої дати…</option></select>' +
       '<span class="row" data-dates hidden><input type="date" data-f="from" aria-label="Від"><span>—</span><input type="date" data-f="to" aria-label="До"></span>' +
-      '<select data-f="assignee" aria-label="Відповідальний"><option value="">Усі відповідальні</option></select>' +
+      '<select data-f="assignee" aria-label="Відповідальний (текст)"' + (can('staff.view') ? ' hidden' : '') + '><option value="">Усі відповідальні</option></select>' +
+      '<select data-f="staff" aria-label="Працівник"' + (can('staff.view') ? '' : ' hidden') + '><option value="">Усі працівники</option><option value="none">Не призначено</option></select>' +
+      '<input data-f="city" type="search" placeholder="Область / місто" aria-label="Область або місто" class="w-city">' +
+      (can('finance.view') ? '<span class="row"><input data-f="min" type="number" inputmode="numeric" min="0" placeholder="Сума від" aria-label="Сума від" class="w-num"><input data-f="max" type="number" inputmode="numeric" min="0" placeholder="до" aria-label="Сума до" class="w-num"></span>' : '') +
+      '<label class="chk"><input type="checkbox" data-f="overdue"> прострочені</label>' +
       '<label class="chk"><input type="checkbox" data-f="due"> звʼязатися сьогодні</label>' +
       '<button class="btn ghost sm" type="button" data-reset>Скинути</button></div></details></div>' +
       '<p class="muted crm-sum" data-sum aria-live="polite"></p><div data-list></div>' +
@@ -363,29 +397,36 @@
     function qs(csv) {
       var r = range();
       return '/api/admin/crm?kind=' + S.kind + '&status=' + S.status + '&assignee=' + encodeURIComponent(S.assignee) + '&due=' + (S.due ? 1 : '') +
+        '&staff=' + encodeURIComponent(S.staff) + '&city=' + encodeURIComponent(S.city) + '&min=' + encodeURIComponent(S.min) + '&max=' + encodeURIComponent(S.max) + '&overdue=' + (S.overdue ? 1 : '') +
         '&place=' + encodeURIComponent(S.place) + '&from=' + r.from + '&to=' + r.to + '&q=' + encodeURIComponent(S.q) + (csv ? '&format=csv' : '');
     }
     function segs() {
       $$('[data-v]', L).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.v === S.view); });
-      $('[data-csv]', L).href = qs(true);
+      $$('[data-b]', L).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.b === S.board); });
+      var bs = $('[data-boards]', L); if (bs) bs.hidden = S.view !== 'kanban';
+      $('[data-csv]', L).href = qs(true); $('[data-csv]', L).hidden = !can('export');
       $('[data-dates]', L).hidden = S.period !== 'custom';
-      var n = ['kind', 'status', 'assignee', 'place', 'period'].filter(function (k) { return S[k]; }).length + (S.due ? 1 : 0);
+      var n = ['kind', 'status', 'assignee', 'staff', 'city', 'min', 'max', 'place', 'period'].filter(function (k) { return S[k]; }).length + (S.due ? 1 : 0) + (S.overdue ? 1 : 0);
       $('[data-fc]', L).textContent = n ? '· ' + n : '';
-      try { localStorage.setItem('crmFilters', JSON.stringify({ kind: S.kind, status: S.status, assignee: S.assignee, due: S.due, place: S.place, period: S.period, from: S.from, to: S.to })); } catch (e) { /* noop */ }
+      try { localStorage.setItem('crmFilters', JSON.stringify({ board: S.board, kind: S.kind, status: S.status, assignee: S.assignee, staff: S.staff, city: S.city, min: S.min, max: S.max, overdue: S.overdue, due: S.due, place: S.place, period: S.period, from: S.from, to: S.to })); } catch (e) { /* noop */ }
     }
-    $$('[data-v]', L).forEach(function (b) { b.onclick = function () { S.view = b.dataset.v; try { localStorage.setItem('crmView', S.view); } catch (e) { /* noop */ } segs(); draw(); }; });
+    $$('[data-v]', L).forEach(function (b) { b.onclick = function () { S.view = b.dataset.v; try { localStorage.setItem('crmView', S.view); } catch (e) { /* noop */ } segs(); transition(draw); }; });
+    $$('[data-b]', L).forEach(function (b) { b.onclick = function () { S.board = b.dataset.b; segs(); transition(draw); }; });
     $$('[data-f]', L).forEach(function (el) {
       var k = el.dataset.f;
       if (el.type === 'checkbox') el.checked = !!S[k]; else el.value = S[k] || '';
-      el[k === 'q' ? 'oninput' : 'onchange'] = (k === 'q' ? debounce : function (f) { return f; })(function () { S[k] = el.type === 'checkbox' ? el.checked : el.value; segs(); load(); });
+      el[k === 'q' || k === 'city' || k === 'min' || k === 'max' ? 'oninput' : 'onchange'] = (k === 'q' || k === 'city' || k === 'min' || k === 'max' ? debounce : function (f) { return f; })(function () { S[k] = el.type === 'checkbox' ? el.checked : el.value; segs(); load(); });
     });
     $('[data-reset]', L).onclick = function () {
-      ['kind', 'status', 'assignee', 'place', 'period', 'from', 'to', 'q'].forEach(function (k) { S[k] = ''; }); S.due = false;
+      ['kind', 'status', 'assignee', 'staff', 'city', 'min', 'max', 'place', 'period', 'from', 'to', 'q'].forEach(function (k) { S[k] = ''; }); S.due = false; S.overdue = false;
       $$('[data-f]', L).forEach(function (el) { if (el.type === 'checkbox') el.checked = false; else el.value = ''; });
       segs(); load();
     };
     $('[data-new]', L).onclick = function () { edit(null); };
-    var isDue = function (r) { return r.next_contact && r.next_contact <= today() && r.status !== 'delivered' && r.status !== 'cancelled'; };
+    $('[data-new]', L).hidden = !can('leads.edit');
+    var CLOSED = ['delivered', 'cancelled', 'warranty'];
+    var isDue = function (r) { return r.next_contact && r.next_contact <= today() && CLOSED.indexOf(r.status) < 0; };
+    var amountOf = function (r) { return r.amount != null ? r.amount : r.total; };
     var label = function (r) { return r.name || r.phone || r.email || '—'; };
     var what = function (r) { return r.service || (r.items || []).map(function (i) { return i.name + ' × ' + i.qty; }).join(', '); };
     // час реакції (functions/_alerts.js): скільки хвилин від заявки до «Взяв у роботу» (Telegram або перший статус ≠ «Нове»)
@@ -394,10 +435,17 @@
     var src = function (r) { return r.place ? '<span class="pill src" title="' + esc(r.source || '') + '">' + esc(placeLabel(r.place)) + (r.page && r.page !== '/' ? ' · ' + esc(r.page.length > 34 ? r.page.slice(0, 33) + '…' : r.page) : '') + '</span>' : ''; };
     function load() {
       list.setAttribute('aria-busy', 'true');
+      if (!rows.length) list.innerHTML = '<div class="skel-kn" aria-hidden="true">' + '<i></i>'.repeat(narrow ? 3 : 6) + '</div>';
       return api(qs()).then(function (d) {
-        ST = d.statuses; rows = d.rows; AS = d.assignees;
+        ST = d.statuses; LST = d.lead_statuses || ST; OST = d.order_statuses || ST; rows = d.rows; AS = d.assignees; STAFF = d.staff || [];
         var fs = $('[data-f=status]', L);
-        if (fs.options.length < 3) { Object.keys(ST).forEach(function (k) { fs.add(new Option(ST[k], k)); }); fs.value = S.status; }
+        if (fs.options.length < 3) {
+          var g1 = document.createElement('optgroup'); g1.label = 'Заявки студії'; Object.keys(LST).forEach(function (k) { g1.appendChild(new Option(LST[k], k)); });
+          var g2 = document.createElement('optgroup'); g2.label = 'Оздоба'; Object.keys(OST).forEach(function (k) { if (!LST[k]) g2.appendChild(new Option(OST[k], k)); });
+          fs.appendChild(g1); fs.appendChild(g2); fs.value = S.status;
+        }
+        var fst = $('[data-f=staff]', L);
+        if (fst.options.length < 3) { STAFF.forEach(function (x) { fst.add(new Option(x.name, x.id)); }); fst.value = S.staff; }
         var fa = $('[data-f=assignee]', L), cur = S.assignee;
         fa.length = 1; AS.forEach(function (a) { fa.add(new Option(a, a)); }); fa.value = cur;
         $('#crmAs').innerHTML = AS.map(function (a) { return '<option value="' + esc(a) + '">'; }).join('');
@@ -411,17 +459,54 @@
         '<span class="row sp"><b>' + esc(r.number) + '</b><small>' + when(r.created_at) + '</small></span>' +
         '<span>' + esc(label(r)) + (r.phone && r.name ? ' · ' + esc(r.phone) : '') + '</span>' +
         (what(r) ? '<small>' + esc(what(r).slice(0, 90)) + '</small>' : '') + src(r) +
-        '<span>' + ((r.amount != null || r.total != null) ? '<b>' + money(r.amount != null ? r.amount : r.total, r.currency) + '</b> ' : '') + (r.assignee ? '· ' + esc(r.assignee) : '') + '</span>' +
+        '<span>' + (amountOf(r) != null ? '<b>' + money(amountOf(r), r.currency) + '</b> ' : '') + ((r.assignee_name || r.assignee) ? '<span class="who">· ' + esc(r.assignee_name || r.assignee) + '</span>' : '') + (r.city ? ' <small>· ' + esc(r.city) + '</small>' : '') + '</span>' +
         (r.next_contact ? '<small class="' + (isDue(r) ? 'due' : '') + '">↻ ' + esc(r.next_contact) + '</small>' : '') + react(r) + slaBadge(r) + quick(r) + '</div>';
     }
     function bindCards(root) {
       $$('.kn-card', root).forEach(function (c) {
         c.onclick = function (e) { if (e.target.closest('[data-qa],select')) return; edit(+c.dataset.id); };
-        c.onkeydown = function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target === c) { e.preventDefault(); edit(+c.dataset.id); } };
-        c.ondragstart = function (e) { e.dataTransfer.setData('text/plain', c.dataset.id); };
+        c.onkeydown = function (e) {
+          if ((e.key === 'Enter' || e.key === ' ') && e.target === c) { e.preventDefault(); edit(+c.dataset.id); return; }
+          // клавіатура: Alt/Shift + ← / → — перемістити картку на сусідню стадію
+          if ((e.altKey || e.shiftKey) && (e.key === 'ArrowRight' || e.key === 'ArrowLeft') && c.closest('.kn')) {
+            e.preventDefault();
+            var r = rows.find(function (x) { return x.id === +c.dataset.id; }), keys = Object.keys(stOf(r)), i = keys.indexOf(r.status) + (e.key === 'ArrowRight' ? 1 : -1);
+            if (i >= 0 && i < keys.length) move(r.id, keys[i], true);
+          }
+        };
+        c.ondragstart = function (e) { e.dataTransfer.setData('text/plain', c.dataset.id); e.dataTransfer.effectAllowed = 'move'; c.classList.add('drag'); };
+        c.ondragend = function () { c.classList.remove('drag'); };
       });
     }
-    function stSelect(r) { return '<select data-st aria-label="Статус ' + esc(r.number) + '">' + Object.keys(ST).map(function (k) { return '<option value="' + k + '"' + (k === r.status ? ' selected' : '') + '>' + ST[k] + '</option>'; }).join('') + '</select>'; }
+    function stSelect(r) { var T = stOf(r); return '<select data-st aria-label="Статус ' + esc(r.number) + '"' + (can(r.kind === 'lead' ? 'leads.edit' : 'orders.edit') ? '' : ' disabled') + '>' + Object.keys(T).map(function (k) { return '<option value="' + k + '"' + (k === r.status ? ' selected' : '') + '>' + T[k] + '</option>'; }).join('') + '</select>'; }
+    // Оптимістичне переміщення: картка одразу на новій стадії (FLIP-анімація), сервер підтверджує; помилка — повертаємо назад.
+    function flip(fn) {
+      if (reduced() || S.view !== 'kanban') { fn(); return; }
+      var before = {}; $$('.kn-card', list).forEach(function (c) { before[c.dataset.id] = c.getBoundingClientRect(); });
+      fn();
+      $$('.kn-card', list).forEach(function (c) {
+        var b = before[c.dataset.id]; if (!b) { c.animate([{ opacity: 0, transform: 'scale(.96)' }, { opacity: 1, transform: 'none' }], { duration: 220, easing: 'ease-out' }); return; }
+        var a = c.getBoundingClientRect(), dx = b.left - a.left, dy = b.top - a.top;
+        if (dx || dy) c.animate([{ transform: 'translate(' + dx + 'px,' + dy + 'px)' }, { transform: 'none' }], { duration: 280, easing: 'cubic-bezier(.2,.8,.2,1)' });
+      });
+    }
+    function move(id, status, keyFocus) {
+      var r = rows.find(function (x) { return x.id === id; });
+      if (!r || r.status === status) return;
+      if (!can(r.kind === 'lead' ? 'leads.edit' : 'orders.edit')) { toast('Немає права змінювати цей запис', true); return; }
+      var prev = r.status;
+      flip(function () { r.status = status; draw(); });
+      var live = $('[data-live]', L); if (live) live.textContent = r.number + ': ' + stOf(r)[status];
+      if (keyFocus) { var c = $('.kn-card[data-id="' + id + '"]', list); if (c) c.focus(); }
+      return api('/api/admin/crm', { method: 'PATCH', body: { id: id, status: status } }).then(function () {
+        toast(r.number + ' → ' + stOf(r)[status]);
+        var c2 = $('.kn-card[data-id="' + id + '"]', list); if (c2 && !reduced()) c2.animate([{ boxShadow: '0 0 0 3px var(--brass)' }, { boxShadow: '0 0 0 0 transparent' }], { duration: 700 });
+      }, function (e) {
+        flip(function () { r.status = prev; draw(); }); // відкат
+        toast('Не збережено: ' + e.message, true);
+        if (keyFocus) { var c3 = $('.kn-card[data-id="' + id + '"]', list); if (c3) c3.focus(); }
+      });
+    }
     function draw() {
       if (!rows.length) { list.innerHTML = '<p class="muted">Записів немає' + (S.place || S.period || S.status || S.kind || S.q || S.due || S.assignee ? ' за цими фільтрами. <button class="btn ghost sm" type="button" data-clr>Скинути фільтри</button>' : '. Нові замовлення з Оздоби зʼявляються тут автоматично; заявки — з форм сайту або кнопкою «+ Заявка».') + '</p>'; var c = $('[data-clr]', list); if (c) c.onclick = function () { $('[data-reset]', L).click(); }; return; }
       if (S.view === 'table' && narrow) { // телефон: список карток зі статусом — без горизонтальної прокрутки
@@ -435,9 +520,9 @@
         list.innerHTML = '<div class="tscroll"><table class="adm"><thead><tr><th>Номер</th><th>Дата</th><th>Клієнт</th><th>Що</th><th>Джерело</th><th>Сума</th><th>Статус</th><th>Відповідальний</th><th>Реакція / SLA</th><th>Контакт</th></tr></thead><tbody>' + rows.map(function (r) {
           return '<tr class="clk" data-id="' + r.id + '"><td><b>' + esc(r.number) + '</b><br><small>' + (r.kind === 'lead' ? 'заявка' : 'замовлення') + '</small></td><td><small>' + when(r.created_at) + '</small></td>' +
             '<td>' + esc(label(r)) + '<br><small>' + esc(r.phone) + ' ' + esc(r.email) + '</small>' + quick(r) + '</td><td><small>' + esc(what(r).slice(0, 120)) + '</small></td><td>' + src(r) + '</td>' +
-            '<td>' + (r.amount != null || r.total != null ? money(r.amount != null ? r.amount : r.total, r.currency) : '') + '</td>' +
+            '<td>' + (amountOf(r) != null ? money(amountOf(r), r.currency) : '') + '</td>' +
             '<td>' + stSelect(r) + '</td>' +
-            '<td>' + esc(r.assignee) + '</td><td>' + react(r) + slaBadge(r) + '</td><td class="' + (isDue(r) ? 'err' : '') + '">' + esc(r.next_contact) + '</td></tr>';
+            '<td>' + esc(r.assignee_name || r.assignee) + '</td><td>' + react(r) + slaBadge(r) + '</td><td class="' + (isDue(r) ? 'err' : '') + '">' + esc(r.next_contact) + '</td></tr>';
         }).join('') + '</tbody></table></div>';
         $$('tr.clk', list).forEach(function (tr) {
           tr.onclick = function (e) { if (e.target.closest('select,[data-qa]')) return; edit(+tr.dataset.id); };
@@ -446,21 +531,24 @@
         tickSla(list);
         return;
       }
-      var cols = S.status && ST[S.status] ? [S.status] : Object.keys(ST);
-      list.innerHTML = '<div class="kn">' + cols.map(function (k) {
-        var rs = rows.filter(function (r) { return r.status === k || (!ST[r.status] && k === 'new'); });
-        var sum = rs.reduce(function (s, r) { return s + ((r.currency || 'UAH') === 'UAH' ? (r.amount != null ? r.amount : r.total || 0) : 0); }, 0);
-        return '<section class="kn-col" data-col="' + k + '"><h3><span>' + ST[k] + ' · ' + rs.length + '</span><small>' + (sum ? money(sum) : '') + '</small></h3>' + rs.map(card).join('') + '</section>';
+      var BT = S.board === 'order' ? OST : LST, br = rows.filter(function (r) { return r.kind === S.board; });
+      var cols = S.status && BT[S.status] ? [S.status] : Object.keys(BT);
+      list.innerHTML = '<p class="kn-help muted">Перетягніть картку або виберіть її й натисніть <kbd>Alt</kbd>+<kbd>←</kbd>/<kbd>→</kbd>, щоб змінити стадію.</p><p class="sr" data-live aria-live="polite"></p>' +
+        '<div class="kn kn-' + S.board + '">' + cols.map(function (k) {
+        var rs = br.filter(function (r) { return r.status === k || (!BT[r.status] && k === 'new'); });
+        var sum = rs.reduce(function (s, r) { return s + ((r.currency || 'UAH') === 'UAH' ? (amountOf(r) || 0) : 0); }, 0);
+        return '<section class="kn-col" data-col="' + k + '" aria-label="' + esc(BT[k]) + '"><h3><span>' + BT[k] + ' · ' + rs.length + '</span><small>' + (sum ? money(sum) : '') + '</small></h3>' + (rs.length ? rs.map(card).join('') : '<p class="kn-empty">—</p>') + '</section>';
       }).join('') + '</div>';
       bindCards(list);
       $$('.kn-col', list).forEach(function (col) {
         col.ondragover = function (e) { e.preventDefault(); col.classList.add('over'); };
-        col.ondragleave = function () { col.classList.remove('over'); };
-        col.ondrop = function (e) { e.preventDefault(); col.classList.remove('over'); var id = +e.dataTransfer.getData('text/plain'); if (id) patch({ id: id, status: col.dataset.col }); };
+        col.ondragleave = function (e) { if (!col.contains(e.relatedTarget)) col.classList.remove('over'); };
+        col.ondrop = function (e) { e.preventDefault(); col.classList.remove('over'); var id = +e.dataTransfer.getData('text/plain'); if (id) move(id, col.dataset.col); };
       });
       tickSla(list);
     }
     function patch(body) { return api('/api/admin/crm', { method: 'PATCH', body: body }).then(function () { toast('Збережено'); return load(); }, function (e) { toast(e.message, true); load(); }); }
+    window.addEventListener('keydown', function onK(e) { if (!document.contains(L)) { window.removeEventListener('keydown', onK); return; } if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); $('[data-f=q]', L).focus(); } });
     function edit(id) {
       var r = id ? rows.find(function (x) { return x.id === id; }) : { kind: 'lead', status: 'new', currency: 'UAH' };
       if (!r) return;
@@ -476,10 +564,14 @@
           : '<label class="f"><span>Імʼя</span><input name="name" autocomplete="off"></label><label class="f"><span>Телефон</span><input name="phone" type="tel" inputmode="tel" placeholder="+380 97 123 45 67"></label>' +
           '<label class="f"><span>Email</span><input name="email" type="email" inputmode="email"></label><label class="f"><span>Джерело</span><input name="source" placeholder="дзвінок, Instagram, рекомендація"></label>' +
           '<label class="f full"><span>Послуга / що потрібно</span><input name="service"></label><label class="f full"><span>Коментар</span><textarea name="comment"></textarea></label>') +
-        '<label class="f"><span>Статус</span><select name="status">' + Object.keys(ST).map(function (k) { return '<option value="' + k + '"' + (k === r.status ? ' selected' : '') + '>' + ST[k] + '</option>'; }).join('') + '</select></label>' +
-        '<label class="f"><span>Відповідальний</span><input name="assignee" list="crmAs" value="' + f('assignee') + '"></label>' +
-        '<label class="f"><span>Сума угоди</span><span class="row"><input name="amount" type="number" inputmode="numeric" min="0" step="1" class="grow" value="' + f('amount') + '" placeholder="' + (r.total != null ? r.total : '') + '">' +
-        '<select name="currency" aria-label="Валюта">' + ['UAH', 'USD', 'EUR'].map(function (c) { return '<option' + (c === (r.currency || 'UAH') ? ' selected' : '') + '>' + c + '</option>'; }).join('') + '</select></span></label>' +
+        '<label class="f"><span>Стадія</span><select name="status">' + Object.keys(stOf(r)).map(function (k) { return '<option value="' + k + '"' + (k === r.status ? ' selected' : '') + '>' + stOf(r)[k] + '</option>'; }).join('') + '</select></label>' +
+        (can('leads.assign') ? (STAFF.length ? '<label class="f"><span>Відповідальний</span><select name="assignee_staff_id"><option value="">— не призначено —</option>' +
+          STAFF.map(function (x) { return '<option value="' + x.id + '"' + (x.id === r.assignee_staff_id ? ' selected' : '') + '>' + esc(x.name) + '</option>'; }).join('') + '</select></label>'
+          : '<label class="f"><span>Відповідальний</span><input name="assignee" list="crmAs" value="' + f('assignee') + '"></label>') : '') +
+        (can('finance.view') ? '<label class="f"><span>Сума угоди</span><span class="row"><input name="amount" type="number" inputmode="numeric" min="0" step="1" class="grow" value="' + f('amount') + '" placeholder="' + (r.total != null ? r.total : '') + '"' + (can('finance.edit') ? '' : ' disabled') + '>' +
+        '<select name="currency" aria-label="Валюта"' + (can('finance.edit') ? '' : ' disabled') + '>' + ['UAH', 'USD', 'EUR'].map(function (c) { return '<option' + (c === (r.currency || 'UAH') ? ' selected' : '') + '>' + c + '</option>'; }).join('') + '</select></span></label>' : '') +
+        '<label class="f"><span>Область / місто</span><input name="city" value="' + f('city') + '" placeholder="Київ, Львівська обл."></label>' +
+        (id && r.client_id && can('clients.view') ? '<p class="f"><button type="button" class="btn ghost sm" data-client="' + r.client_id + '">Картка клієнта →</button></p>' : '') +
         '<label class="f"><span>Наступний контакт</span><input name="next_contact" type="date" value="' + f('next_contact') + '"></label>' +
         '<label class="f full"><span>Нотатки (бачать лише менеджери)</span><textarea name="crm_note">' + f('crm_note') + '</textarea></label>' +
         (r.kind === 'order' ? '<label class="f full"><span>Нотатка для клієнта (видно в його кабінеті)</span><input name="manager_note" value="' + f('manager_note') + '"></label>' : '') +
@@ -487,10 +579,13 @@
         '<div class="full row stick-d"><button class="btn" type="submit" value="save">Зберегти</button><button class="btn ghost" type="submit" value="cancel" formnovalidate>Закрити</button><span class="err" data-e role="alert"></span></div>' +
         (id ? '<ul class="ev full" data-ev><li>Історія…</li></ul>' : '') + '</form>';
       var form = $('form', dlg);
+      var cb = $('[data-client]', dlg); if (cb) cb.onclick = function () { dlg.close(); window.CASAdminKit.openClient(+cb.dataset.client); };
       form.onsubmit = function (e) {
         if (e.submitter && e.submitter.value === 'cancel') return;
         e.preventDefault();
         var b = {}; new FormData(form).forEach(function (v, k) { b[k] = v; });
+        if ('assignee_staff_id' in b) b.assignee_staff_id = b.assignee_staff_id ? +b.assignee_staff_id : null;
+        if (id) Object.keys(b).forEach(function (k) { if (k !== 'note' && String(b[k] == null ? '' : b[k]) === String(r[k] == null ? '' : r[k])) delete b[k]; }); // лише змінене
         // перевірка до запиту — зрозуміле повідомлення замість помилки сервера
         var err = '';
         if (!id && !b.name.trim() && !b.phone.trim() && !b.email.trim()) err = 'Вкажіть хоча б імʼя, телефон або email';
@@ -590,12 +685,13 @@
 
   // ---------- Клієнти ----------
   RENDER.clients = function (L) {
-    L.innerHTML = '<div class="tb"><input class="grow" data-q placeholder="Пошук: імʼя, телефон, email"></div><div data-l></div>';
+    L.innerHTML = '<div class="tb"><input class="grow" data-q type="search" placeholder="Пошук: імʼя, телефон, email"></div><p class="muted">Натисніть на клієнта — картка з усією історією: заявки, замовлення, обʼєкти, платежі, документи.</p><div data-l></div>';
     function load() {
       return api('/api/admin/clients?q=' + encodeURIComponent($('[data-q]', L).value)).then(function (d) {
         $('[data-l]', L).innerHTML = '<div class="tscroll"><table class="adm"><tr><th>#</th><th>Клієнт</th><th>Контакти</th><th>Замовлень</th><th>Сума</th><th>Створено</th></tr>' + d.clients.map(function (x) {
-          return '<tr><td>' + x.id + '</td><td>' + esc(x.name) + '<br><small>' + esc(x.provider) + (x.username ? ' @' + esc(x.username) : '') + '</small></td><td>' + esc(x.phone) + '<br>' + esc(x.email) + '<br><small>' + esc(x.city) + ' ' + esc(x.company) + '</small></td><td>' + x.orders + '</td><td>' + money(x.total) + '</td><td><small>' + esc(x.created_at) + '</small></td></tr>';
+          return '<tr class="clk" data-cid="' + x.id + '" tabindex="0"><td>' + x.id + '</td><td>' + esc(x.name) + '<br><small>' + esc(x.provider) + (x.username ? ' @' + esc(x.username) : '') + '</small></td><td>' + esc(x.phone) + '<br>' + esc(x.email) + '<br><small>' + esc(x.city) + ' ' + esc(x.company) + '</small></td><td>' + x.orders + '</td><td>' + (x.total != null ? money(x.total) : '—') + '</td><td><small>' + esc(x.created_at) + '</small></td></tr>';
         }).join('') + '</table></div>';
+        $$('tr[data-cid]', L).forEach(function (tr) { tr.onclick = tr.onkeydown = function (e) { if (e.type === 'keydown' && e.key !== 'Enter') return; window.CASAdminKit.openClient(+tr.dataset.cid); }; });
       });
     }
     $('[data-q]', L).oninput = debounce(load);
@@ -665,8 +761,12 @@
       '<label class="f full"><span>Камера 24/7 — посилання (за доп. оплату; порожньо — клієнт бачить «Підключити камеру»)</span><input name="camera_url" type="url" inputmode="url" placeholder="https://youtube.com/live/… або посилання хмари камери (Ezviz, Hik-Connect, Imou…)" value="' + esc(p.camera_url || '') + '"' + (d.online === false ? ' disabled' : '') + '>' +
       '<small class="muted">YouTube-трансляція (доступ «за посиланням») вбудовується в кабінет; пряме посилання на кадр .jpg — показується картинкою; інше — кнопкою «Відкрити камеру» в новій вкладці. Лише https, без логіна й пароля в адресі. Бачить тільки цей клієнт.</small></label>' +
       '<label class="f full"><span>Підказка до камери (бачить клієнт)</span><input name="camera_note" maxlength="300" placeholder="Напр.: вхід у застосунок Ezviz — за вашим номером телефону" value="' + esc(p.camera_note || '') + '"' + (d.online === false ? ' disabled' : '') + '></label>' +
+      (can('finance.view') ? '<label class="f"><span>Сума договору</span><span class="row"><input name="contract_amount" type="number" min="0" step="1" class="grow" value="' + esc(p.contract_amount == null ? '' : p.contract_amount) + '"' + (can('finance.edit') ? '' : ' disabled') + '>' +
+        '<select name="contract_currency" aria-label="Валюта"' + (can('finance.edit') ? '' : ' disabled') + '>' + ['USD', 'UAH', 'EUR'].map(function (c) { return '<option' + (c === (p.contract_currency || 'USD') ? ' selected' : '') + '>' + c + '</option>'; }).join('') + '</select></span></label>' : '') +
+      '<fieldset class="f full team-fs" data-team><legend>Команда обʼєкта (бачать обʼєкт у своєму кабінеті /kabinet/team)</legend><p class="muted">Завантаження…</p></fieldset>' +
       '<div class="f full"><span>Етапи: статус і прогрес <small data-pr></small></span><div data-st></div></div></form>' +
       '<div class="row" style="margin:10px 0 24px"><button class="btn" data-save>Зберегти проєкт</button></div>' +
+      ((d.issues || []).some(function (i) { return i.project_id === id; }) ? '<h3>Проблеми на обʼєкті (бачить лише команда)</h3><div data-iss></div>' : '') +
       '<h3>Фотозвіти</h3><div data-rep></div>' +
       '<form class="form two" data-rf style="margin-top:10px"><label class="f"><span>Дата</span><input name="date" type="date" value="' + today() + '"></label><label class="f"><span>Заголовок</span><input name="title" placeholder="Тиждень 5: стяжка й електрика"></label>' +
       '<label class="f"><span>Етап</span><select name="stage_id">' + stOpt('') + '</select></label>' +
@@ -698,9 +798,37 @@
     drawStages();
     $('[data-back]', L).onclick = back;
     var fail = function (e) { toast(e.message, true); };
+    // команда: відповідальний + виконавці з задачею (project_staff); працівник отримує Telegram і бачить обʼєкт у /kabinet/team
+    var team = (p.team || []).map(function (t) { return { id: t.staff_id, task: t.task || '' }; }), lead = p.assignee_staff_id || '', STF = [];
+    function drawTeam() {
+      var fs = $('[data-team]', L); if (!fs) return;
+      var opts = function (v) { return '<option value="">— оберіть —</option>' + STF.map(function (x) { return '<option value="' + x.id + '"' + (String(x.id) === String(v) ? ' selected' : '') + '>' + esc(x.name) + ' · ' + esc(x.role_label) + '</option>'; }).join(''); };
+      fs.innerHTML = '<legend>Команда обʼєкта (бачать обʼєкт у своєму кабінеті /kabinet/team)</legend>' +
+        '<label class="f"><span>Відповідальний</span><select data-lead>' + opts(lead) + '</select></label>' +
+        team.map(function (t, i) { return '<div class="row"><select data-tm="' + i + '" aria-label="Виконавець">' + opts(t.id) + '</select><input data-tt="' + i + '" value="' + esc(t.task) + '" placeholder="Задача: чорнові роботи, замір 3D, зйомка з дрона" class="grow"><button type="button" class="je-add" data-tx="' + i + '" aria-label="Прибрати">✕</button></div>'; }).join('') +
+        '<button type="button" class="je-add" data-ta>+ виконавець</button>';
+      $('[data-lead]', fs).onchange = function () { lead = this.value; };
+      $$('[data-tm]', fs).forEach(function (x) { x.onchange = function () { team[+x.dataset.tm].id = +x.value || null; }; });
+      $$('[data-tt]', fs).forEach(function (x) { x.oninput = function () { team[+x.dataset.tt].task = x.value; }; });
+      $$('[data-tx]', fs).forEach(function (x) { x.onclick = function () { team.splice(+x.dataset.tx, 1); drawTeam(); }; });
+      $('[data-ta]', fs).onclick = function () { team.push({ id: null, task: '' }); drawTeam(); };
+    }
+    if (can('staff.view')) api('/api/admin/staff').then(function (r) { STF = r.staff.filter(function (x) { return x.active; }); drawTeam(); }, function () { var fs = $('[data-team]', L); if (fs) fs.hidden = true; });
+    else { var tfs = $('[data-team]', L); if (tfs) tfs.hidden = true; }
+    var iss = $('[data-iss]', L);
+    if (iss) {
+      iss.innerHTML = d.issues.filter(function (i) { return i.project_id === id; }).map(function (i) {
+        return '<div class="ord issue' + (i.status === 'open' ? ' open' : '') + '"><div class="ord-h"><b>' + esc(i.created_at.slice(0, 16)) + ' · ' + esc(i.staff_name || '') + '</b>' +
+          (i.status === 'open' ? '<button class="btn ghost sm" data-ir="' + i.id + '">Вирішено</button>' : '<span class="pill">вирішено</span>') + '</div><p style="white-space:pre-wrap">' + esc(i.note) + '</p>' +
+          '<div class="row">' + (i.photos || []).map(function (u) { return '<a href="' + esc(u) + '" target="_blank" rel="noopener"><img src="' + esc(u) + '" alt="" width="96" height="72" loading="lazy" style="width:96px;height:72px;object-fit:cover;border-radius:8px"></a>'; }).join('') + '</div></div>';
+      }).join('');
+      $$('[data-ir]', iss).forEach(function (b) { b.onclick = function () { api(PAPI, { method: 'PATCH', body: { type: 'issue', id: +b.dataset.ir, status: 'resolved' } }).then(function () { toast('Позначено вирішеним'); reload(); }, function (e) { toast(e.message, true); }); }; });
+    }
     $('[data-save]', L).onclick = function () {
       var b = { type: 'project', id: id, stages: stages.filter(function (s) { return String(s.name || '').trim(); }) };
       new FormData($('[data-f]', L)).forEach(function (v, k) { b[k] = v; });
+      if (STF.length) { b.assignee_staff_id = lead ? +lead : null; b.staff = team.filter(function (t) { return t.id; }); }
+      if (!can('finance.edit')) { delete b.contract_amount; delete b.contract_currency; }
       api(PAPI, { method: 'PATCH', body: b }).then(function () { toast('Проєкт збережено'); reload(); }, fail);
     };
     $('[data-del]', L).onclick = function () {
@@ -1381,7 +1509,13 @@
     if (!A || !box) return;
     A.me().then(function (c) {
       if (!c) { box.innerHTML = '<div class="acc-box"><h2>Увійдіть як менеджер</h2><div id="login"></div></div>'; A.login(document.getElementById('login'), function () { location.reload(); }); return; }
-      if (!c.admin) { box.innerHTML = '<p class="acc-err">Немає доступу. Попросіть адміністратора додати ваш Telegram або пошту.</p>'; return; }
+      if (!c.admin) {
+        box.innerHTML = '<div class="acc-box"><h2>Ця панель — для власника й менеджерів студії</h2><p class="acc-wait">' +
+          (c.staff ? 'Ваш робочий кабінет — <a href="' + esc(c.staff.home) + '">' + esc(c.staff.home) + '</a>.' : c.staff_disabled ? 'Доступ працівника вимкнено. Звʼяжіться з власником студії.' : 'Ваш кабінет клієнта — <a href="/kabinet">/kabinet</a>.') + '</p></div>';
+        return;
+      }
+      ME = c.staff || { role: 'manager', role_label: 'Менеджер', perms: [], owner: false, name: c.name };
+      ME.name = ME.name || c.name;
       start();
     });
   });
