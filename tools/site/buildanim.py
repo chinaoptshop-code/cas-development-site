@@ -8,7 +8,7 @@
 1) блок між <!--ba--> і <!--/ba-->: <section class="bz" id="build-anim"> зі справжнім текстом етапів стартової технології (<ol class="steps">,
    SEO й читачі екрана; без JS це звичайний список «Етапи» з UI-kit) + факти-лічильники + слот швидкої заявки .lq-slot data-form="quick-build-anim"
    (спільний /assets/lead-form.v1.js → data-source «<сторінка>#build-anim»);
-2) /assets/build-anim.v1.<мова>.json — усі технології, етапи й пироги для скрипта; їхні версії (?v=) — у рядку VER скрипта assets/build-anim.v1.js.
+2) /assets/build-anim.v1.<мова>.<сцена>.json — технології, етапи й пироги сцени для скрипта; їхні версії (?v=) — у рядку VER скрипта assets/build-anim.v1.js.
 Скрипт (і CSS) вантажить site-chrome.v1.js після першої прокрутки; за ~3 екрани до блоку скрипт бере JSON і малює ізометричну SVG-сцену кодом
 (без картинок і бібліотек) і веде її за прокруткою; prefers-reduced-motion — статичні кадри зі степером.
 Сцени: house — будинок (19 етапів для кожної технології: block / brick / frame / brus), flat — ремонт квартири ≈86 м² (19 етапів; data-bz-v="old" —
@@ -60,6 +60,8 @@ MAT = {'karkasnyi-budynok-pid-kliuch-kyiv.html': 'frame', 'ru/karkasnyy-dom-pod-
        'modulnyi-budynok-kyiv.html': 'frame', 'ru/modulnyy-dom-kiev.html': 'frame',
        'budynok-z-brusa-kyiv.html': 'brus', 'ru/dom-iz-brusa-kiev.html': 'brus'}
 # стартовий варіант сцени «квартира»: вторинка з демонтажем — на сторінках капітального ремонту, інакше новобудова з нуля
+# стартова конфігурація будинку (тип, стиль, площа), якщо відрізняється від BD.HOUSE_DEF: модульний — одноповерховий мінімалізм
+CFG = {'modulnyi-budynok-kyiv.html': dict(t='one', s='minimal', a=80), 'ru/modulnyy-dom-kiev.html': dict(t='one', s='minimal', a=80)}
 VAR = {'kapitalnyi-remont-kvartyry-kyiv.html': 'old', 'ru/kapitalnyy-remont-kvartiry-kiev.html': 'old'}
 ABOUT = {'uk': '/about', 'ru': '/ru/o-nas', 'en': '/en/about'}
 BUILD = {'uk': '/budivnytstvo-budynkiv-kyiv', 'ru': '/ru/stroitelstvo-domov-kiev', 'en': '/en/house-construction'}
@@ -69,24 +71,39 @@ import buildanim_data as BD  # noqa: E402
 FACTS = {'uk': [('150', '150+', 'проєктів з 2016'), ('10', '10+', 'років досвіду'), ('36', '36 міс.', 'гарантія')],
          'ru': [('150', '150+', 'проектов с 2016'), ('10', '10+', 'лет опыта'), ('36', '36 мес.', 'гарантия')],
          'en': [('150', '150+', 'projects since 2016'), ('10', '10+', 'years of experience'), ('36', '36 mo.', 'warranty')]}
-JSON_OUT = 'assets/build-anim.v1.{}.json'  # дані для скрипта сцени: усі матеріали, етапи, пироги (вантажиться разом зі скриптом)
+JSON_OUT = 'assets/build-anim.v1.{}.{}.json'  # дані для скрипта: окремо мова × сцена (house / flat) — сторінка тягне лише свою сцену (бюджет ≤ 60 КБ gzip)
+SCENES = ('house', 'flat')
 
 
-def stages(lang, scene, mat='', var='new'):
+def stages(lang, scene, mat='', var='new', cfg=None):
     t = BD.T[lang][scene]
     if scene == 'flat':  # варіант квартири: тексти з суфіксом _n (новобудова) / _o (вторинка), якщо відрізняються
         suf = '_n' if var == 'new' else '_o'
         return [t['st'].get(k + suf, t['st'][k]) for k in BD.FLAT]
-    return [t['st'][k] for k in BD.MATS[mat or 'block']]
+    c = dict(BD.HOUSE_DEF, **(cfg or {}))  # будинок: тексти етапів — з урахуванням конфігурації (тип, стиль), як у скрипті
+    tags = BD.house_tags(mat or 'block', c['t'], c['s'])
+    sto = BD.T[lang].get('sto', {})
+
+    def pick(k):
+        for g in tags:
+            if k in sto.get(g, {}):
+                return sto[g][k]
+        return t['st'][k]
+    return [pick(k) for k in BD.MATS[mat or 'block']]
 
 
-def data_json(lang):
+def data_json(lang, scene):
+    """Дані однієї сцени: спільні ui, cta/svc + етапи, пироги й параметри цієї сцени (головна дотягує другу сцену при перемиканні)."""
     import json
     t = BD.T[lang]
-    pie = {k: [v[0], BD.PIE_O[k], [list(x) for x in v[1]]] for k, v in t['pie'].items()}
-    d = dict(ui=t['ui'], mats=BD.MATS, flat=BD.FLAT, fv=BD.FLAT_V, pieAt=BD.PIE_AT, pie=pie,
-             cta={k: t[k]['cta'] for k in ('house', 'flat')}, svc={'house': t['house']['more'], 'flat': t['flat']['svc']},
-             st={'house': {k: list(v) for k, v in t['house']['st'].items()}, 'flat': {k: list(v) for k, v in t['flat']['st'].items()}})
+    used = set(v for v in BD.PIE_AT['flat'].values()) if scene == 'flat' else set(k for k in t['pie'] if not k.startswith('f_'))
+    pie = {k: [v[0], BD.PIE_O[k], [list(x) for x in v[1]]] for k, v in t['pie'].items() if k in used}
+    d = dict(ui=t['ui'], pieAt={scene: BD.PIE_AT[scene]}, pie=pie, st={scene: {k: list(v) for k, v in t[scene]['st'].items()}},
+             cta={k: t[k]['cta'] for k in SCENES}, svc={'house': t['house']['more'], 'flat': t['flat']['svc']})
+    if scene == 'flat':
+        d.update(flat=BD.FLAT, fv=BD.FLAT_V)
+    else:
+        d.update(mats=BD.MATS, hs=BD.HOUSE_STY, hdef=BD.HOUSE_DEF, sto=t.get('sto', {}))
     return json.dumps(d, ensure_ascii=False, separators=(',', ':'), sort_keys=True) + '\n'
 
 
@@ -94,16 +111,17 @@ RX = re.compile(r'\n?<!--ba-->.*?<!--/ba-->', re.S)
 e = lambda s: html.escape(s, quote=True)
 
 
-def block(lang, scene, compact, tier=0, mat='', var='new'):
+def block(lang, scene, compact, tier=0, mat='', var='new', cfg=None):
     """tier 0 — повний текст; 1 — лише назви етапів (описи — зі скрипта); 2 — ще й без вступу, фактів і рядка про команду;
     3 — без списку етапів (список будує скрипт із JSON) — лише для сторінок на самій межі бюджету."""
     t = BD.T[lang][scene]
-    st = stages(lang, scene, mat, var)
+    st = stages(lang, scene, mat, var, cfg)
     li = ''.join((f'<li><div><b>{e(a)}</b><span>{e(b)}</span></div></li>' if tier == 0 else f'<li>{e(a)}</li>') for a, b in st)
     more = f' <a href="{BUILD[lang]}">{e(t["more"])} →</a>' if compact and t['more'] else ''
     c = ' data-bz-c' if compact else ''
     f = f' data-bz-m="{mat}"' if mat else ''  # описи й решту матеріалів підставляє скрипт (JSON)
     f += ' data-bz-v="old"' if scene == 'flat' and var == 'old' else ''
+    f += ' data-bz-cfg="{t},{s},{a}"'.format(**cfg) if scene == 'house' and cfg else ''
     lead = f'<p class="bz-p">{e(t["p"])}{more}</p>' if tier < 2 else ''
     svc = f' data-service="{e(t["more"])}"' if compact and t['more'] else ''  # головна: заявка — про будинок, а не «Консультація (головна)»
     team = f'<p class="bz-team">{e(t["team"])} <a href="{ABOUT[lang]}">{e(t["about"])}</a></p>' if tier < 2 else ''
@@ -140,7 +158,7 @@ def apply(s, rel):
     # не вміщується навіть найкоротший — блок не ставимо (скрипт друкує, де саме)
     limit = ui.BUDGET['html_kb'][ui.kind(rel, s)] * 1024
     for tier in (0, 1, 2, 3):
-        b = block(lang, scene, compact, tier, MAT.get(rel, ''), VAR.get(rel, 'new'))
+        b = block(lang, scene, compact, tier, MAT.get(rel, ''), VAR.get(rel, 'new'), CFG.get(rel))
         if len(s.encode()) + len(b.encode()) + 30 <= limit - (RESERVE if tier == 0 else 0):  # +40 — ?v= від chrome.versions
             return s[:k].rstrip('\n') + b + '\n' + s[k:]
     return s
@@ -151,17 +169,18 @@ def main():
     check = '--check' in sys.argv
     bad = []
     for lang in BD.T:  # дані для скрипта сцени
-        p = os.path.join(ROOT, JSON_OUT.format(lang))
-        j = data_json(lang)
-        if not os.path.exists(p) or open(p, encoding='utf-8').read() != j:
-            bad.append(JSON_OUT.format(lang))
-            if not check:
-                open(p, 'w', encoding='utf-8').write(j)
+        for sc in SCENES:
+            p = os.path.join(ROOT, JSON_OUT.format(lang, sc))
+            j = data_json(lang, sc)
+            if not os.path.exists(p) or open(p, encoding='utf-8').read() != j:
+                bad.append(JSON_OUT.format(lang, sc))
+                if not check:
+                    open(p, 'w', encoding='utf-8').write(j)
     # версії JSON (?v=) — у скрипті сцени (рядок /*ver*/): атрибут у кожній сторінці коштував би байтів бюджету 64 КБ
     import chrome
     js = os.path.join(ROOT, 'assets/build-anim.v1.js')
     src = open(js, encoding='utf-8').read()
-    ver = 'var VER = ' + json.dumps({l: chrome._ver('/' + JSON_OUT.format(l)) for l in sorted(BD.T)}, separators=(',', ':')) + '; /*ver*/'
+    ver = 'var VER = ' + json.dumps({l + '.' + sc: chrome._ver('/' + JSON_OUT.format(l, sc)) for l in sorted(BD.T) for sc in SCENES}, separators=(',', ':'), sort_keys=True) + '; /*ver*/'
     new = re.sub(r'var VER = \{[^\n]*?\}; /\*ver\*/', lambda m: ver, src)
     if new != src:
         bad.append('assets/build-anim.v1.js')

@@ -45,7 +45,7 @@ T['uk'] = dict(
     house=dict(
         h='Будинок з нуля: технологія за 19 етапів', hc='Будинок з нуля — 19 етапів технології',
         p='Прокручуйте — і будинок збереться так, як на ділянці: від геодезії до ключів. Перемикайте технологію стін і натискайте на шари, щоб побачити пиріг. Фотозвіти — раз на 1–2 тижні.',
-        cta='Порахувати мій будинок', team='Хто ці люди — на сторінці', about='Про нас', more='Будівництво будинків',
+        cta='Порахувати такий будинок', team='Хто ці люди — на сторінці', about='Про нас', more='Будівництво будинків',
         st=dict(
             geo=('Геодезія й винесення осей', 'Геодезист Микола знімає рельєф ділянки, виносить осі будинку в натуру й ставить обноску — від неї міряємо все далі.'),
             pit=('Котлован', 'Знімаємо родючий шар і копаємо котлован під плиту на глибину з проєкту; ґрунт — у відвал, частина піде на зворотну засипку.'),
@@ -141,7 +141,7 @@ T['ru'] = dict(
     house=dict(
         h='Дом с нуля: технология за 19 этапов', hc='Дом с нуля — 19 этапов технологии',
         p='Прокручивайте — и дом соберётся так, как на участке: от геодезии до ключей. Переключайте технологию стен и нажимайте на слои, чтобы увидеть пирог. Фотоотчёты — раз в 1–2 недели.',
-        cta='Рассчитать мой дом', team='Кто эти люди — на странице', about='О нас', more='Строительство домов',
+        cta='Рассчитать такой дом', team='Кто эти люди — на странице', about='О нас', more='Строительство домов',
         st=dict(
             geo=('Геодезия и вынос осей', 'Геодезист Николай снимает рельеф участка, выносит оси дома в натуру и ставит обноску — от неё меряем всё дальше.'),
             pit=('Котлован', 'Снимаем плодородный слой и копаем котлован под плиту на глубину из проекта; грунт — в отвал, часть уйдёт на обратную засыпку.'),
@@ -237,7 +237,7 @@ T['en'] = dict(
     house=dict(
         h='A house from scratch: the method in 19 stages', hc='A house from scratch — 19 construction stages',
         p='Scroll and the house comes together the way it does on site, from survey to keys. Switch the wall method and tap the layers to see each build-up. Photo reports every 1–2 weeks.',
-        cta='Estimate my house', team='Meet the people behind each stage on the', about='About page', more='House construction',
+        cta='Estimate this house', team='Meet the people behind each stage on the', about='About page', more='House construction',
         st=dict(
             geo=('Survey and setting out', 'Our surveyor Mykola maps the terrain, sets out the house axes on the ground and builds batter boards that every later measurement starts from.'),
             pit=('Excavation', 'We strip the topsoil and dig the pit for the slab to the design depth; the spoil is stockpiled, part of it goes back as backfill.'),
@@ -498,4 +498,228 @@ T['en']['pie'].update(
                               ('Plaster', '10–30 mm', 'Gypsum, to guide beads'), ('Primer', '—', 'Bond to the substrate'), ('Wall', '—', 'Concrete, brick or aerated block')]),
     f_ceil=('Ceiling build-up', [('Paint', '2 coats', 'Over finish filler'), ('Plasterboard', '2×12.5 mm', 'Staggered joints: no cracks'), ('Metal grid', '27–60 mm', 'On direct hangers'),
                                  ('Ducts and cables', '—', 'Ventilation, AC, lighting'), ('Floor slab', '—', 'Concrete')]),
+)
+
+# ═════════════════════════════════════════════ «Будинок з нуля» v3: конфігуратор (технологія × тип × стиль × площа + гараж/навіс/тераса)
+# Стиль задає форму даху, ухил, звис, фасадну систему й вікна: r — дах (gable / hip / flat / af — A-frame), p — ухил °, o — звис, м,
+# f — фасад (r — штукатурка / облицювальна цегла, c — вентфасад з облицюванням), w — вікно [ширина, низ, верх від підлоги], м.
+# Геометрію за цими параметрами будує assets/build-anim.v1.js (house); сумісність комбінацій — там само (hfix), підказки — ui.cfg.h.
+HOUSE_STY = {
+    'minimal': dict(r='flat', p=0, o=0, f='r', w=[2.2, 0.1, 2.5]), 'barn': dict(r='gable', p=42, o=0.06, f='c', w=[1.1, 0.3, 2.45]),
+    'scandi': dict(r='gable', p=35, o=0.5, f='c', w=[1.4, 0.85, 2.35]), 'classic': dict(r='hip', p=30, o=0.55, f='r', w=[1.0, 0.7, 2.4]),
+    'chalet': dict(r='gable', p=22, o=1.1, f='c', w=[1.6, 0.85, 2.3]), 'aframe': dict(r='af', p=60, o=0.25, f='c', w=[0, 0, 0]),
+}
+HOUSE_DEF = dict(t='two', s='scandi', a=160)  # стартова конфігурація (сторінки можуть мати свою — buildanim.CFG)
+# етап → пиріг для нових комбінацій (підстановку робить скрипт: вентфасад, плоска покрівля, тераса, горищне перекриття)
+for _k, _v in {'w_block_v': 'h', 'w_brick_v': 'h', 'roof_flat': 'v', 'roof_ter': 'v', 'slab_c': 'v'}.items():
+    PIE_O[_k] = _v
+
+
+def house_tags(mat, t, s, ter=0):
+    """Ті самі теги, що hder().tags у скрипті: порядок = пріоритет текстових замін етапів (T[мова]['sto'][тег][етап])."""
+    y = HOUSE_STY[s]
+    af = y['r'] == 'af'
+    ty = 'attic' if af else t
+    fs = 'w' if mat == 'brus' else ('rnd' if y['f'] == 'r' else 'c') if mat == 'frame' else ('clad' if y['f'] == 'c' else 'r')
+    return [x for x in ['ter' if ter and y['r'] == 'flat' else '', 'af' if af else '', ('flat_' + ty) if y['r'] == 'flat' else '', 'flat' if y['r'] == 'flat' else '',
+                        ty if ty in ('one', 'attic') else '', 'hip' if y['r'] == 'hip' else '', fs if fs in ('clad', 'rnd') else ''] if x]
+
+
+T['uk']['ui']['cfg'] = dict(
+    t='Тип', s='Стиль', a='Площа', x='Опції', done='Готово', tn=dict(one='1 поверх', attic='Мансарда', two='2 поверхи'),
+    fl=dict(one='1 поверх', attic='1 поверх + мансарда', two='2 поверхи', af='A-frame з антресоллю'),
+    sn=dict(minimal='Мінімалізм', barn='Барнхаус', scandi='Скандинавський', classic='Класика', chalet='Шале', aframe='A-frame'),
+    xn=dict(g='Гараж', c='Навіс', r='Тераса на даху'), m2='м²', gar='гараж', car='навіс', ter='тераса',
+    price='Орієнтир: будівництво від $600/м², під ключ від $1 100/м²',
+    h=dict(af='A-frame будуємо каркасним — технологію змінено на «Каркас»', af2='A-frame — лише каркас: стиль змінено на «Скандинавський»',
+           af3='До A-frame гараж і тераса не прибудовуються — опцію вимкнено', af4='A-frame — до 160 м²: площу змінено', af5='A-frame — один поверх з антресоллю: стиль змінено',
+           br='Плоский дах на брусі не робимо (усадка зрубу) — змінено технологію або стиль', at='Мансарда потребує скатного даху — змінено тип або стиль',
+           ter='Тераса на даху — лише з плоскою покрівлею: стиль змінено на «Мінімалізм»', ter2='Тераса — лише на плоскій покрівлі: опцію вимкнено',
+           two='2 поверхи — від 120 м²: змінено площу або тип', one='1 поверх — до 220 м²: змінено площу або тип'),
+)
+T['uk']['sto'] = dict(
+    one=dict(slab=('Перекриття над поверхом', 'Плита або балки стелі за КР: зверху — утеплення горища або основа плоскої покрівлі. Хід робіт Михайло знімає з дрона.'),
+             b_w2=('Мауерлат на шпильках', 'Одноповерховий будинок: по армопоясу й перекриттю — шпильки, гідроізоляція й мауерлат, на який спиратимуться крокви.'),
+             k_w2=('Пояс і мауерлат', 'Пояс під покрівлю по перекриттю, мауерлат на шпильках по гідроізоляції; під облицювання лишаємо гнучкі звʼязки.'),
+             f_w2=('Верхня обвʼязка й стельові балки', 'Одноповерховий каркас: подвійна верхня обвʼязка, стельові балки з кроком під утеплювач — на них спираються крокви.'),
+             r_w2=('Верхній вінець', 'Верхній вінець до проєктної висоти — опора для крокв; балки стелі врізаємо із запасом на усадку.'),
+             roof=('Покрівля й холодне горище', 'Покриття по обрешітці, водостоки по периметру; горище холодне й провітрюване — утеплення лежить на перекритті.')),
+    attic=dict(b_w2=('Мансарда: стінки, армопояс, мауерлат', 'Мансардні стінки близько 1 м з газоблоку, зверху — армопояс зі шпильками й мауерлат. Дах крутіший: під мансарду потрібна висота.'),
+               k_w2=('Мансардні стінки й мауерлат', 'Кладка мансардних стінок близько 1 м, пояс під покрівлю й мауерлат на шпильках по гідроізоляції.'),
+               f_w2=('Каркас мансардних стінок', 'Стійки мансардних стінок на перекритті, верхня обвʼязка — опора для крокв; утеплення мансарди йде по кроквах.'),
+               r_w2=('Мансардні вінці', 'Кілька вінців мансардних стінок і верхній вінець під крокви — із запасом на усадку.'),
+               roof=('Утеплення мансарди й покрівля', 'Між кроквами — мінвата, знизу — пароізоляція: мансарда — житловий поверх. Мансардні вікна — в площині даху, з окладами.')),
+    flat=dict(rafters=('Плоска покрівля: плита й парапет', 'Плита покрівлі за КР, парапет по периметру, ухилоутворення до водоприймальних лійок — вода не стоїть на даху.'),
+              roof=('Покрівельний пиріг і мембрана', 'Пароізоляція, утеплення, ПВХ-мембрана з заведенням на парапет, капельник по парапету й лійки з обігрівом.')),
+    ter=dict(roof=('Експлуатована покрівля: тераса', 'Інверсійний пиріг: мембрана, XPS і геотекстиль, плитка на регульованих опорах; скляне огородження й вихід на дах.')),
+    hip=dict(rafters=('Вальмова кроквяна система', 'Чотири схили: кутові крокви, нарожники й коротші крокви біля вальм; далі мембрана, контробрешітка й обрешітка.'),
+             roof=('Утеплення й черепиця', 'Черепиця по обрешітці, водостоки по периметру; між кроквами — мінвата, знизу — пароізоляція. Михайло знімає дах з дрона.')),
+    af=dict(f_studs=('A-рами', 'Трикутні рами з сухого струганого або клеєного бруса з кроком 1–1,2 м: вони одночасно стіни й дах.'),
+            f_osb=('ОСБ по рамах і антресоль', 'ОСБ-3 по рамах дає жорсткість; балки антресолі спираються на рами, під ними — простір на всю висоту.'),
+            f_w2=('Каркас фронтонів', 'Стійки й ригелі фронтонів під великі вікна; задній фронтон — глухіший, з утепленням.'),
+            rafters=('Мембрана й вентзазор', 'Супердифузійна мембрана по ОСБ, контробрешітка дає вентзазор від карниза до коника, обрешітка — під покрівлю.'),
+            roof=('Покрівля майже до землі', 'Фальц або гнучка черепиця по обрешітці; між рамами — мінвата, зсередини — пароізоляція з проклеєними швами.'),
+            win=('Скляний фронтон', 'Склопакети у фронтоні на теплому монтажі: стрічки ззовні й зсередини, піна в шві; двері — по центру.'),
+            f_ins=('Утеплення схилів', 'Мінвата між рамами без щілин, зсередини — пароізоляція: схили A-frame працюють і як стіни, і як дах.'),
+            fac_f=('Фронтон: облицювання', 'Навколо скла — контррейка й облицювання: планкен або фіброцемент по вентзазору.')),
+    clad=dict(fac_b=('Вентфасад: утеплення й облицювання', 'Мінвата на дюбелях, вітрозахисна мембрана, контррейка дає вентзазор, далі облицювання: дошка, планкен або фіброцемент — за стилем.'),
+              fac_k=('Вентфасад по цегляній стіні', 'Мінвата на дюбелях, вітрозахисна мембрана, контррейка (вентзазор) і облицювання: дошка, планкен або фіброцемент — за стилем.')),
+    rnd=dict(fac_f=('Фасад: штукатурна система', 'Мембрана, плити під штукатурку на каркасі, армувальний шар із сіткою й декоративна штукатурка — каркас «під штукатурку».')),
+)
+T['uk']['pie'].update(
+    w_block_v=('Газоблок і вентфасад', [('Облицювання', '18–25 мм', 'Дошка, планкен або фіброцемент'), ('Вентзазор', '25–50 мм', 'Контррейка: волога виходить'),
+                                        ('Вітрозахисна мембрана', '—', 'Паропроникна'), ('Мінвата', '100 мм', 'На дюбелях-«парасольках»'),
+                                        ('Газоблок', '300–375 мм', 'D400–D500 на клей'), ('Штукатурка', '10–15 мм', 'Гіпсова по маяках')]),
+    w_brick_v=('Цегла й вентфасад', [('Облицювання', '18–25 мм', 'Дошка, планкен або фіброцемент'), ('Вентзазор', '25–50 мм', 'Контррейка'),
+                                     ('Вітрозахисна мембрана', '—', 'Паропроникна'), ('Мінвата', '100 мм', 'На дюбелях'),
+                                     ('Несуча цегла', '380 мм', 'Кладка в 1,5 цегли'), ('Штукатурка', '15–20 мм', 'Цементно-вапняна або гіпсова')]),
+    roof_flat=('Плоска покрівля', [('ПВХ-мембрана', '1,5 мм', 'Заведення на парапет, лійки з обігрівом'), ('Утеплення', '150–200 мм', 'PIR або мінвата в 2 шари'),
+                                   ('Ухилоутворення', '20–150 мм', 'Клин до лійок'), ('Пароізоляція', '—', 'Наплавна, з проклеєними швами'),
+                                   ('Плита покрівлі', '200–220 мм', 'Моноліт або пустотна — за КР')]),
+    roof_ter=('Експлуатована покрівля', [('Плитка на опорах', '20–40 мм', 'Регульовані опори, вода йде під плиткою'), ('Геотекстиль', '—', 'Розділовий шар'),
+                                         ('XPS', '150–200 мм', 'Інверсійна схема: утеплення над мембраною'), ('Мембрана', '2 шари', 'Наплавна або ПВХ'),
+                                         ('Ухилоутворення', '20–150 мм', 'Клин до лійок'), ('Плита покрівлі', '200–220 мм', 'Розрахунок на навантаження тераси')]),
+    slab_c=('Перекриття під холодним горищем', [('Мінвата', '200–250 мм', 'Тепло лишається в будинку'), ('Пароізоляція', '—', 'Під утеплювачем'),
+                                               ('Плита або балки', '200–220 мм', 'За КР'), ('Стеля', '—', 'Шпаклівка, гіпсокартон або натяжна')]),
+)
+
+T['ru']['ui']['cfg'] = dict(
+    t='Тип', s='Стиль', a='Площадь', x='Опции', done='Готово', tn=dict(one='1 этаж', attic='Мансарда', two='2 этажа'),
+    fl=dict(one='1 этаж', attic='1 этаж + мансарда', two='2 этажа', af='A-frame с антресолью'),
+    sn=dict(minimal='Минимализм', barn='Барнхаус', scandi='Скандинавский', classic='Классика', chalet='Шале', aframe='A-frame'),
+    xn=dict(g='Гараж', c='Навес', r='Терраса на крыше'), m2='м²', gar='гараж', car='навес', ter='терраса',
+    price='Ориентир: строительство от $600/м², под ключ от $1 100/м²',
+    h=dict(af='A-frame строим каркасным — технология изменена на «Каркас»', af2='A-frame — только каркас: стиль изменён на «Скандинавский»',
+           af3='К A-frame гараж и терраса не пристраиваются — опция выключена', af4='A-frame — до 160 м²: площадь изменена', af5='A-frame — один этаж с антресолью: стиль изменён',
+           br='Плоскую крышу на брусе не делаем (усадка сруба) — изменена технология или стиль', at='Мансарде нужна скатная крыша — изменён тип или стиль',
+           ter='Терраса на крыше — только с плоской кровлей: стиль изменён на «Минимализм»', ter2='Терраса — только на плоской кровле: опция выключена',
+           two='2 этажа — от 120 м²: изменена площадь или тип', one='1 этаж — до 220 м²: изменена площадь или тип'),
+)
+T['ru']['sto'] = dict(
+    one=dict(slab=('Перекрытие над этажом', 'Плита или балки потолка по КР: сверху — утепление чердака или основание плоской кровли. Ход работ Михаил снимает с дрона.'),
+             b_w2=('Мауэрлат на шпильках', 'Одноэтажный дом: по армопоясу и перекрытию — шпильки, гидроизоляция и мауэрлат, на который обопрутся стропила.'),
+             k_w2=('Пояс и мауэрлат', 'Пояс под кровлю по перекрытию, мауэрлат на шпильках по гидроизоляции; под облицовку оставляем гибкие связи.'),
+             f_w2=('Верхняя обвязка и потолочные балки', 'Одноэтажный каркас: двойная верхняя обвязка, потолочные балки с шагом под утеплитель — на них опираются стропила.'),
+             r_w2=('Верхний венец', 'Верхний венец до проектной высоты — опора для стропил; балки потолка врезаем с запасом на усадку.'),
+             roof=('Кровля и холодный чердак', 'Покрытие по обрешётке, водостоки по периметру; чердак холодный и проветриваемый — утепление лежит на перекрытии.')),
+    attic=dict(b_w2=('Мансарда: стенки, армопояс, мауэрлат', 'Мансардные стенки около 1 м из газоблока, сверху — армопояс со шпильками и мауэрлат. Крыша круче: мансарде нужна высота.'),
+               k_w2=('Мансардные стенки и мауэрлат', 'Кладка мансардных стенок около 1 м, пояс под кровлю и мауэрлат на шпильках по гидроизоляции.'),
+               f_w2=('Каркас мансардных стенок', 'Стойки мансардных стенок на перекрытии, верхняя обвязка — опора для стропил; утепление мансарды идёт по стропилам.'),
+               r_w2=('Мансардные венцы', 'Несколько венцов мансардных стенок и верхний венец под стропила — с запасом на усадку.'),
+               roof=('Утепление мансарды и кровля', 'Между стропилами — минвата, снизу — пароизоляция: мансарда — жилой этаж. Мансардные окна — в плоскости крыши, с окладами.')),
+    flat=dict(rafters=('Плоская кровля: плита и парапет', 'Плита кровли по КР, парапет по периметру, уклонообразование к водоприёмным воронкам — вода не стоит на крыше.'),
+              roof=('Кровельный пирог и мембрана', 'Пароизоляция, утепление, ПВХ-мембрана с заведением на парапет, капельник по парапету и воронки с обогревом.')),
+    ter=dict(roof=('Эксплуатируемая кровля: терраса', 'Инверсионный пирог: мембрана, XPS и геотекстиль, плитка на регулируемых опорах; стеклянное ограждение и выход на крышу.')),
+    hip=dict(rafters=('Вальмовая стропильная система', 'Четыре ската: угловые стропила, нарожники и укороченные стропила у вальм; дальше мембрана, контробрешётка и обрешётка.'),
+             roof=('Утепление и черепица', 'Черепица по обрешётке, водостоки по периметру; между стропилами — минвата, снизу — пароизоляция. Михаил снимает крышу с дрона.')),
+    af=dict(f_studs=('A-рамы', 'Треугольные рамы из сухого строганого или клеёного бруса с шагом 1–1,2 м: они одновременно стены и крыша.'),
+            f_osb=('ОСБ по рамам и антресоль', 'ОСБ-3 по рамам даёт жёсткость; балки антресоли опираются на рамы, под ними — пространство на всю высоту.'),
+            f_w2=('Каркас фронтонов', 'Стойки и ригели фронтонов под большие окна; задний фронтон — более глухой, с утеплением.'),
+            rafters=('Мембрана и вентзазор', 'Супердиффузионная мембрана по ОСБ, контробрешётка даёт вентзазор от карниза до конька, обрешётка — под кровлю.'),
+            roof=('Кровля почти до земли', 'Фальц или гибкая черепица по обрешётке; между рамами — минвата, изнутри — пароизоляция с проклеенными швами.'),
+            win=('Стеклянный фронтон', 'Стеклопакеты во фронтоне на тёплом монтаже: ленты снаружи и изнутри, пена в шве; дверь — по центру.'),
+            f_ins=('Утепление скатов', 'Минвата между рамами без щелей, изнутри — пароизоляция: скаты A-frame работают и как стены, и как крыша.'),
+            fac_f=('Фронтон: облицовка', 'Вокруг стекла — контррейка и облицовка: планкен или фиброцемент по вентзазору.')),
+    clad=dict(fac_b=('Вентфасад: утепление и облицовка', 'Минвата на дюбелях, ветрозащитная мембрана, контррейка даёт вентзазор, дальше облицовка: доска, планкен или фиброцемент — по стилю.'),
+              fac_k=('Вентфасад по кирпичной стене', 'Минвата на дюбелях, ветрозащитная мембрана, контррейка (вентзазор) и облицовка: доска, планкен или фиброцемент — по стилю.')),
+    rnd=dict(fac_f=('Фасад: штукатурная система', 'Мембрана, плиты под штукатурку на каркасе, армирующий слой с сеткой и декоративная штукатурка — каркас «под штукатурку».')),
+)
+T['ru']['pie'].update(
+    w_block_v=('Газоблок и вентфасад', [('Облицовка', '18–25 мм', 'Доска, планкен или фиброцемент'), ('Вентзазор', '25–50 мм', 'Контррейка: влага выходит'),
+                                        ('Ветрозащитная мембрана', '—', 'Паропроницаемая'), ('Минвата', '100 мм', 'На дюбелях-«зонтиках»'),
+                                        ('Газоблок', '300–375 мм', 'D400–D500 на клей'), ('Штукатурка', '10–15 мм', 'Гипсовая по маякам')]),
+    w_brick_v=('Кирпич и вентфасад', [('Облицовка', '18–25 мм', 'Доска, планкен или фиброцемент'), ('Вентзазор', '25–50 мм', 'Контррейка'),
+                                      ('Ветрозащитная мембрана', '—', 'Паропроницаемая'), ('Минвата', '100 мм', 'На дюбелях'),
+                                      ('Несущий кирпич', '380 мм', 'Кладка в 1,5 кирпича'), ('Штукатурка', '15–20 мм', 'Цементно-известковая или гипсовая')]),
+    roof_flat=('Плоская кровля', [('ПВХ-мембрана', '1,5 мм', 'Заведение на парапет, воронки с обогревом'), ('Утепление', '150–200 мм', 'PIR или минвата в 2 слоя'),
+                                  ('Уклонообразование', '20–150 мм', 'Клин к воронкам'), ('Пароизоляция', '—', 'Наплавляемая, с проклеенными швами'),
+                                  ('Плита кровли', '200–220 мм', 'Монолит или пустотка — по КР')]),
+    roof_ter=('Эксплуатируемая кровля', [('Плитка на опорах', '20–40 мм', 'Регулируемые опоры, вода уходит под плиткой'), ('Геотекстиль', '—', 'Разделительный слой'),
+                                         ('XPS', '150–200 мм', 'Инверсионная схема: утепление над мембраной'), ('Мембрана', '2 слоя', 'Наплавляемая или ПВХ'),
+                                         ('Уклонообразование', '20–150 мм', 'Клин к воронкам'), ('Плита кровли', '200–220 мм', 'Расчёт на нагрузку террасы')]),
+    slab_c=('Перекрытие под холодным чердаком', [('Минвата', '200–250 мм', 'Тепло остаётся в доме'), ('Пароизоляция', '—', 'Под утеплителем'),
+                                                ('Плита или балки', '200–220 мм', 'По КР'), ('Потолок', '—', 'Шпаклёвка, гипсокартон или натяжной')]),
+)
+
+T['en']['ui']['cfg'] = dict(
+    t='Type', s='Style', a='Area', x='Options', done='Done', tn=dict(one='1 storey', attic='Attic', two='2 storeys'),
+    fl=dict(one='1 storey', attic='1 storey + attic', two='2 storeys', af='A-frame with a mezzanine'),
+    sn=dict(minimal='Minimalist', barn='Barnhouse', scandi='Scandinavian', classic='Classic', chalet='Chalet', aframe='A-frame'),
+    xn=dict(g='Garage', c='Carport', r='Roof terrace'), m2='m²', gar='garage', car='carport', ter='roof terrace',
+    price='Guide: construction from $600/m², turnkey from $1,100/m²',
+    h=dict(af='We build A-frames as timber frame: method switched to “Timber frame”', af2='A-frame is timber frame only: style switched to “Scandinavian”',
+           af3='No garage or roof terrace on an A-frame: option turned off', af4='A-frame up to 160 m²: area changed', af5='A-frame is one storey with a mezzanine: style changed',
+           br='No flat roofs on timber beam houses (log settling): method or style changed', at='An attic needs a pitched roof: type or style changed',
+           ter='A roof terrace needs a flat roof: style switched to “Minimalist”', ter2='Roof terrace only on a flat roof: option turned off',
+           two='2 storeys from 120 m²: area or type changed', one='1 storey up to 220 m²: area or type changed'),
+)
+T['en']['sto'] = dict(
+    one=dict(slab=('Ceiling slab', 'A slab or ceiling joists per the structural design, topped with loft insulation or forming the base of a flat roof. Mykhailo films progress by drone.'),
+             b_w2=('Wall plate on studs', 'A single-storey house: studs, damp-proofing and the wall plate go on the ring beam and slab to carry the rafters.'),
+             k_w2=('Ring beam and wall plate', 'A ring beam under the roof on the slab, the wall plate on studs over damp-proofing; flexible ties left for the facing brick.'),
+             f_w2=('Top plate and ceiling joists', 'A single-storey frame: double top plate and ceiling joists spaced for insulation; the rafters sit on them.'),
+             r_w2=('Top course', 'The top log course up to design height carries the rafters; ceiling beams are notched in with room for settling.'),
+             roof=('Roofing over a cold loft', 'Roofing on battens and gutters all round; the loft stays cold and ventilated, with insulation laid on the ceiling slab.')),
+    attic=dict(b_w2=('Attic knee walls and wall plate', 'Knee walls of about 1 m in aerated block, a ring beam with studs and the wall plate on top. The roof is steeper: an attic needs headroom.'),
+               k_w2=('Attic knee walls and wall plate', 'Knee walls of about 1 m, a ring beam under the roof and the wall plate on studs over damp-proofing.'),
+               f_w2=('Attic knee wall framing', 'Knee wall studs on the floor deck, a top plate for the rafters; the attic is insulated along the rafters.'),
+               r_w2=('Attic log courses', 'A few knee-wall courses and a top course for the rafters, with room for settling.'),
+               roof=('Attic insulation and roofing', 'Mineral wool between rafters, a vapour barrier below: the attic is a living floor. Roof windows sit in the roof plane with flashing kits.')),
+    flat=dict(rafters=('Flat roof: slab and parapet', 'A roof slab per the structural design, a parapet all round and falls to the roof outlets so water never sits on the roof.'),
+              roof=('Roof build-up and membrane', 'Vapour barrier, insulation, a PVC membrane turned up the parapet, a drip edge and heated outlets.')),
+    ter=dict(roof=('Usable roof: a terrace', 'An inverted build-up: membrane, XPS and geotextile, tiles on adjustable pedestals; glass railing and a roof access.')),
+    hip=dict(rafters=('Hip roof framing', 'Four slopes: hip rafters, jack rafters and shorter rafters at the hips, then membrane, counter battens and battens.'),
+             roof=('Insulation and roof tiles', 'Tiles on battens, gutters all round; mineral wool between the rafters with a vapour barrier below. Mykhailo films the roof by drone.')),
+    af=dict(f_studs=('A-frames', 'Triangular frames of dry planed or glulam timber at 1–1.2 m centres: they are walls and roof at once.'),
+            f_osb=('OSB on frames and a mezzanine', 'OSB-3 on the frames adds stiffness; mezzanine joists sit on the frames with full-height space below.'),
+            f_w2=('Gable framing', 'Studs and rails for big gable windows; the rear gable is more solid and insulated.'),
+            rafters=('Membrane and ventilation gap', 'A breathable membrane over the OSB, counter battens for a vented gap from eaves to ridge, then roof battens.'),
+            roof=('Roofing almost to the ground', 'Standing seam or shingles on battens; mineral wool between frames with a taped vapour barrier inside.'),
+            win=('Glass gable', 'Gable glazing with a warm installation: tapes outside and inside, foam in the joint; the door in the centre.'),
+            f_ins=('Insulating the slopes', 'Mineral wool between the frames without gaps and a vapour barrier inside: the A-frame slopes act as walls and roof.'),
+            fac_f=('Gable cladding', 'Around the glass: counter battens and cladding, boards or fibre cement on a vented gap.')),
+    clad=dict(fac_b=('Ventilated facade: insulation and cladding', 'Mineral wool on anchors, a wind membrane, counter battens for a vented gap and cladding: boards, slats or fibre cement to suit the style.'),
+              fac_k=('Ventilated facade on brick', 'Mineral wool on anchors, a wind membrane, counter battens (vented gap) and cladding: boards, slats or fibre cement to suit the style.')),
+    rnd=dict(fac_f=('Facade: render system', 'Membrane, render boards on the frame, a mesh-reinforced base coat and decorative render: a timber frame finished in render.')),
+)
+T['en']['pie'].update(
+    w_block_v=('Aerated block, ventilated facade', [('Cladding', '18–25 mm', 'Boards, slats or fibre cement'), ('Vented gap', '25–50 mm', 'Counter battens let moisture out'),
+                                                    ('Wind membrane', '—', 'Breathable'), ('Mineral wool', '100 mm', 'On insulation anchors'),
+                                                    ('Aerated block', '300–375 mm', 'D400–D500 on adhesive'), ('Plaster', '10–15 mm', 'Gypsum, to guide beads')]),
+    w_brick_v=('Brick, ventilated facade', [('Cladding', '18–25 mm', 'Boards, slats or fibre cement'), ('Vented gap', '25–50 mm', 'Counter battens'),
+                                            ('Wind membrane', '—', 'Breathable'), ('Mineral wool', '100 mm', 'On anchors'),
+                                            ('Load-bearing brick', '380 mm', '1.5-brick bond'), ('Plaster', '15–20 mm', 'Lime-cement or gypsum')]),
+    roof_flat=('Flat roof', [('PVC membrane', '1.5 mm', 'Turned up the parapet, heated outlets'), ('Insulation', '150–200 mm', 'PIR or mineral wool, 2 layers'),
+                             ('Falls', '20–150 mm', 'Tapered to the outlets'), ('Vapour barrier', '—', 'Torch-on, taped joints'),
+                             ('Roof slab', '200–220 mm', 'Cast or hollow-core, per design')]),
+    roof_ter=('Usable roof', [('Tiles on pedestals', '20–40 mm', 'Adjustable pedestals, water drains below'), ('Geotextile', '—', 'Separation layer'),
+                              ('XPS', '150–200 mm', 'Inverted roof: insulation above the membrane'), ('Membrane', '2 layers', 'Torch-on or PVC'),
+                              ('Falls', '20–150 mm', 'Tapered to the outlets'), ('Roof slab', '200–220 mm', 'Designed for terrace loads')]),
+    slab_c=('Ceiling under a cold loft', [('Mineral wool', '200–250 mm', 'Keeps the heat in the house'), ('Vapour barrier', '—', 'Under the insulation'),
+                                         ('Slab or joists', '200–220 mm', 'Per structural design'), ('Ceiling', '—', 'Filler, plasterboard or stretch')]),
+)
+
+T['uk']['sto'].update(
+    flat_one=dict(b_w2=('Випуски під парапет', 'Плоский дах: по армопоясу й плиті — випуски арматури під монолітний парапет і закладні для покрівлі. Мауерлат не потрібен.'),
+                  k_w2=('Пояс під парапет', 'Плоский дах: монолітний пояс по плиті з випусками під парапет; мауерлат не потрібен, під облицювання — гнучкі звʼязки.'),
+                  f_w2=('Обвʼязка й балки покрівлі', 'Каркас під плоский дах: подвійна верхня обвʼязка й балки покрівлі, по них — суцільний настил під ухилоутворення.')),
+    flat_two=dict(b_w2=('2 поверх і армопояс', 'Стіни 2 поверху за тією ж технологією, зверху — армопояс під плиту покрівлі: плоский дах без мауерлата.'),
+                  k_w2=('2 поверх і пояс під плиту', 'Кладка 2 поверху й монолітний пояс під плиту покрівлі; під облицювання лишаємо гнучкі звʼязки.'),
+                  f_w2=('Каркас 2 поверху', 'Стійки, обвʼязки й ОСБ 2 поверху; верхня обвʼязка — опора для балок плоскої покрівлі.')),
+)
+T['ru']['sto'].update(
+    flat_one=dict(b_w2=('Выпуски под парапет', 'Плоская крыша: по армопоясу и плите — выпуски арматуры под монолитный парапет и закладные для кровли. Мауэрлат не нужен.'),
+                  k_w2=('Пояс под парапет', 'Плоская крыша: монолитный пояс по плите с выпусками под парапет; мауэрлат не нужен, под облицовку — гибкие связи.'),
+                  f_w2=('Обвязка и балки кровли', 'Каркас под плоскую крышу: двойная верхняя обвязка и балки кровли, по ним — сплошной настил под уклонообразование.')),
+    flat_two=dict(b_w2=('2 этаж и армопояс', 'Стены 2 этажа по той же технологии, сверху — армопояс под плиту кровли: плоская крыша без мауэрлата.'),
+                  k_w2=('2 этаж и пояс под плиту', 'Кладка 2 этажа и монолитный пояс под плиту кровли; под облицовку оставляем гибкие связи.'),
+                  f_w2=('Каркас 2 этажа', 'Стойки, обвязки и ОСБ 2 этажа; верхняя обвязка — опора для балок плоской кровли.')),
+)
+T['en']['sto'].update(
+    flat_one=dict(b_w2=('Starter bars for the parapet', 'A flat roof: starter bars for a cast parapet and roof fixings go into the ring beam and slab. No wall plate is needed.'),
+                  k_w2=('Ring beam for the parapet', 'A flat roof: a cast ring beam on the slab with starter bars for the parapet; no wall plate, flexible ties for the facing brick.'),
+                  f_w2=('Top plate and roof joists', 'Framing for a flat roof: a double top plate and roof joists with solid decking for the falls.')),
+    flat_two=dict(b_w2=('Upper floor and ring beam', 'Upper-floor walls in the same method topped with a ring beam for the roof slab: a flat roof needs no wall plate.'),
+                  k_w2=('Upper floor and slab beam', 'Upper-floor brickwork and a cast ring beam for the roof slab; flexible ties left for the facing brick.'),
+                  f_w2=('Upper-floor framing', 'Studs, plates and OSB for the upper floor; the top plate carries the flat-roof joists.')),
 )

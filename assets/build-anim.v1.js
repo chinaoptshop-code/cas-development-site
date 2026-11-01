@@ -13,10 +13,10 @@
   if (W.__casBA) return; W.__casBA = 1;
   var secs = [].slice.call(d.querySelectorAll('section.bz[data-bz]'));
   if (!secs.length || !W.fetch || !W.Promise) return;
-  var VER = {"en":"ea1a780d","ru":"f6f0e97d","uk":"d881637c"}; /*ver*/
+  var VER = {"en.flat":"72e68dcb","en.house":"8f4442b3","ru.flat":"3a0da7af","ru.house":"d047addb","uk.flat":"4be1e913","uk.house":"8eae39f9"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
-  var lang = (d.documentElement.lang || 'uk').slice(0, 2); if (!VER[lang]) lang = 'uk';
+  var lang = (d.documentElement.lang || 'uk').slice(0, 2); if (!VER[lang + '.house']) lang = 'uk';
   var MATS = ['block', 'brick', 'frame', 'brus'];
   function cl(ev, v) { try { if (W.clarity) W.clarity('event', ev); if (v && W.clarity) W.clarity('set', ev, v); } catch (e) { } } // аналітика: кінець, CTA, матеріал, пиріг
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
@@ -81,12 +81,54 @@
     p('wool', 18, 9, ['#d8c46a', '#b9a552'], [['M0 8.7H18M17.7 0V9', 'rgba(90,70,10,.45)'], ['M2 3h4M9 5h5M3 7h3', 'rgba(120,95,20,.35)', 0.4]]);
     p('eps', 18, 9, ['#e9e6df', '#cdc9c1'], [['M0 8.7H18M17.7 0V9', 'rgba(8,7,9,.18)']]);
     p('mb', 30, 12, ['#dfe6ea', '#c3cdd3'], [['M3 6h8M17 6h8', 'rgba(60,90,120,.45)', 0.8]]);
+    p('boardv', 4.5, 400, ['#3b3a3c', '#2c2b2d'], [['M4.2 0V400', 'rgba(0,0,0,.55)']]); // барнхаус: вертикальна дошка
+    p('boardl', 400, 4.5, ['#d9d6cf', '#bdb9b1'], [['M0 4.2H400', 'rgba(60,55,50,.35)']]); // сканді: світла горизонтальна
+    p('stone', 18, 9, ['#8f8a83', '#76716b'], [['M0 4.5H7M10 4.5H18M0 9H18M5 0V4.5M13 0V4.5M2 4.5V9M9 4.5V9M15 4.5V9', 'rgba(30,28,26,.55)', 0.7]]); // шале: камінь по цоколю
     return o;
   }
 
+  /* ---------- конфігуратор будинку: стилі (форма даху, ухил, звис, фасадна система, вікна [ширина, низ, верх від підлоги]) ---------- */
+  var HS = {
+    minimal: { r: 'flat', p: 0, o: 0, f: 'r', w: [2.2, 0.1, 2.5] }, barn: { r: 'gable', p: 42, o: 0.06, f: 'c', w: [1.1, 0.3, 2.45] },
+    scandi: { r: 'gable', p: 35, o: 0.5, f: 'c', w: [1.4, 0.85, 2.35] }, classic: { r: 'hip', p: 30, o: 0.55, f: 'r', w: [1.0, 0.7, 2.4] },
+    chalet: { r: 'gable', p: 22, o: 1.1, f: 'c', w: [1.6, 0.85, 2.3] }, aframe: { r: 'af', p: 60, o: 0.25, f: 'c', w: [0, 0, 0] }
+  };
+  var STY = ['minimal', 'barn', 'scandi', 'classic', 'chalet', 'aframe'], TYP = ['one', 'attic', 'two'], SZ = [80, 120, 160, 220, 300];
+  // похідні параметри конфігурації (спільні для сцени, пирогів і текстів етапів)
+  function hder(C) {
+    var Y = HS[C.s] || HS.scandi, AF = Y.r === 'af', TY = AF ? 'attic' : C.t;
+    var FS = C.m === 'brus' ? 'w' : C.m === 'frame' ? (Y.f === 'r' ? 'rnd' : 'c') : Y.f === 'c' ? 'clad' : 'r';
+    var eff = AF ? 1.4 : TY === 'two' ? 2 : TY === 'attic' ? 1.6 : 1, fp = C.a / eff;
+    var D = Math.min(12, Math.max(6, Math.sqrt(fp / 1.45))), W = Math.min(22, Math.max(7, fp / D));
+    D = Math.round(D * 2) / 2; W = Math.round(W * 2) / 2;
+    return { Y: Y, RF: Y.r, AF: AF, FL: Y.r === 'flat', TY: TY, FS: FS, W: W, D: D, fl: TY === 'two' ? 2 : 1,
+      tags: [C.r && Y.r === 'flat' ? 'ter' : '', AF ? 'af' : '', Y.r === 'flat' ? 'flat_' + TY : '', Y.r === 'flat' ? 'flat' : '', TY === 'one' || TY === 'attic' ? TY : '', Y.r === 'hip' ? 'hip' : '', FS === 'clad' || FS === 'rnd' ? FS : ''].filter(Boolean) };
+  }
+  // сумісність: змінений параметр k має пріоритет, інший поступається (підказка — ключ ui.cfg.h)
+  function hfix(C, k) {
+    var hint = '', i, r;
+    var R = [
+      function () { if (C.s === 'aframe' && C.m !== 'frame') return k === 'm' ? ['s', 'scandi', 'af2'] : ['m', 'frame', 'af']; },
+      function () { if (C.s === 'aframe' && (C.g || C.r)) return k === 'g' || k === 'r' ? ['s', 'scandi', 'af3'] : [C.g ? 'g' : 'r', C.g ? '' : 0, 'af3']; },
+      function () { if (C.s === 'aframe' && C.a > 160) return k === 'a' ? ['s', 'scandi', 'af4'] : ['a', 160, 'af4']; },
+      function () { if (C.s === 'aframe' && C.t !== 'attic') return k === 't' ? ['s', 'scandi', 'af5'] : ['t', 'attic', '']; },
+      function () { if (C.s === 'minimal' && C.m === 'brus') return k === 'm' ? ['s', 'scandi', 'br'] : ['m', 'block', 'br']; },
+      function () { if (C.s === 'minimal' && C.t === 'attic') return k === 't' ? ['s', 'scandi', 'at'] : ['t', 'two', 'at']; },
+      function () { if (C.r && C.s !== 'minimal') return k === 'r' ? ['s', 'minimal', 'ter'] : ['r', 0, 'ter2']; },
+      function () { if (C.t === 'two' && C.a < 120) return k === 'a' ? ['t', C.s === 'minimal' ? 'one' : 'attic', 'two'] : ['a', 120, 'two']; },
+      function () { if (C.t === 'one' && C.a > 220) return k === 'a' ? ['t', 'two', 'one'] : ['a', 220, 'one']; }
+    ];
+    for (var n = 0; n < 6; n++) {
+      var ch = 0;
+      for (i = 0; i < R.length; i++) { r = R[i](); if (r) { C[r[0]] = r[1]; if (r[2]) hint = r[2]; ch = 1; } }
+      if (!ch) break;
+    }
+    return hint;
+  }
+
   /* ---------- сцена «будинок»: частини в порядку малювання (painter), кожна — етап (ключ + частка), режим, коли зникає ---------- */
-  function house(mat, S, ui) {
-    var L = [];
+  function house(C, S, ui) {
+    var mat = C.m, L = [], H = hder(C), Y = H.Y;
     function A(key, fr, v, o) { // key — етап; fr — частка етапу; v — svg або function(k) для «росту»; o: {m:'f'|'d'|'g', h:[ключ, частка], c:'клас'}
       var i = typeof key === 'number' ? key : S(key); if (i < 0 || !v) return;
       o = o || {};
@@ -95,20 +137,42 @@
     }
     function B(v, c) { L.push({ s: -9, v: v, m: 'f', e: -1, c: c || '' }); }
     var plate = mat === 'block' || mat === 'frame', brus = mat === 'brus', frame = mat === 'frame', brick = mat === 'brick';
+    var AF = H.AF, FL = H.FL, HIP = H.RF === 'hip', two = H.TY === 'two', attic = H.TY === 'attic', one = H.TY === 'one', CL = H.FS === 'clad' || H.FS === 'c';
     var Kk = {
       w1: { block: 'b_w1', brick: 'k_w1', frame: 'f_studs', brus: 'r_walls' }[mat], bl: { block: 'belt1', brick: 'k_belt', frame: 'f_osb', brus: 'r_slab' }[mat],
       sl: { block: 'slab', brick: 'slab', frame: 'f_osb', brus: 'r_slab' }[mat], w2: { block: 'b_w2', brick: 'k_w2', frame: 'f_w2', brus: 'r_w2' }[mat],
       raf: brus ? 'r_rafters' : 'rafters', win: brus ? 'r_win' : 'win', fac: { block: 'fac_b', brick: 'fac_k', frame: 'fac_f', brus: 'r_fin' }[mat],
       fd: plate ? 'pour' : 's_pour', scr: { block: 'screed', brick: 'screed', frame: 'f_fin', brus: 'r_fin' }[mat]
     };
-    var GX = 16, GY = 13, GZ = -1.2, X0 = 3, X1 = 13, Y0 = 3, Y1 = 10, T = frame ? 0.25 : 0.35;
-    var ZP = 0.25, ZB1 = 3.0, ZM = 3.25, ZF2 = 3.5, ZB2 = 5.75, ZT = 6.0, MZ = 6.15, RY = 6.5, RZ = 8.7, O = 0.5;
-    var tg = (RZ - MZ) / (RY - Y0), EZ = MZ - O * tg, zr = function (y) { return y < RY ? MZ + (y - Y0) * tg : MZ + (Y1 - y) * tg; };
-    var OY = [[4, 7, ZP + 0.85, ZP + 2.35], [8.4, 9.6, ZP, ZP + 2.25], [10.4, 12.2, ZP + 0.85, ZP + 2.35], [4, 6.2, ZF2 + 0.85, ZF2 + 2.1], [7.4, 12.2, ZF2 + 0.85, ZF2 + 2.1]];
-    var OX = [[4.2, 6.6, ZP + 0.85, ZP + 2.35], [4.8, 8.4, ZF2 + 0.85, ZF2 + 2.1]];
+    var gw = C.g ? 4.4 : 0, X0 = 3 + gw, X1 = X0 + H.W, Y0 = 3, Y1 = Y0 + H.D, GX = Math.max(X1 + 3, 20), GY = Math.max(Y1 + 3.5, 15), GZ = -1.2, T = frame ? 0.25 : 0.35;
+    var ZP = 0.25, ZB1 = 3.0, ZM = 3.25, ZF2 = 3.5, ZB2 = two ? 5.75 : attic ? ZF2 + 1.0 : ZF2, ZT = two ? 6.0 : attic ? ZB2 + 0.25 : ZF2;
+    var O = Y.o, pt = Math.tan((attic && !AF ? Math.max(Y.p, 40) : Y.p) * Math.PI / 180), RY = (Y0 + Y1) / 2, MZ = ZT + 0.15;
+    var RZ = FL ? MZ : MZ + (RY - Y0) * pt, tg = pt, EZ = MZ - O * tg;
+    if (AF) { EZ = ZP + 0.12; RZ = EZ + (RY - Y0 + O) * pt; MZ = EZ; }
+    var zr = function (y) { return y < RY ? MZ + (y - Y0) * tg : MZ + (Y1 - y) * tg; };
+    var cx = (X0 + X1) / 2, cy = (Y0 + Y1) / 2;
+    // вікна: фасад y = Y1 (OY, двері — п'ятий елемент), бічний фасад x = X1 (OX); осі — за довжиною фасаду
+    var OY = [], OX = [], GWN = [];
+    if (!AF) {
+      var n = Math.max(2, Math.round(H.W / (C.s === 'minimal' ? 3.4 : 2.7))); if (C.s === 'classic' && n % 2 === 0) n++; var sp = H.W / n, ww = Math.min(Y.w[0], sp - 0.6), di = C.s === 'classic' ? Math.floor(n / 2) : n > 2 ? 1 : 0;
+      [ZP].concat(two ? [ZF2] : []).forEach(function (z, f) {
+        var top = Math.min(z + Y.w[2], (f ? ZB2 : ZB1) - 0.3);
+        for (var i = 0; i < n; i++) {
+          var c = X0 + sp * (i + 0.5);
+          if (!f && i === di) OY.push([c - 0.6, c + 0.6, ZP, ZP + 2.25, 1]);
+          else OY.push([c - ww / 2, c + ww / 2, z + (f && C.s === 'minimal' ? 0.6 : Y.w[1]), top]);
+        }
+      });
+      var n2 = Math.max(1, Math.round(H.D / 3.4)), s2 = H.D / n2, w2 = Math.min(Y.w[0], 1.6, s2 - 0.6);
+      [ZP].concat(two ? [ZF2] : []).forEach(function (z, f) { for (var i = 0; i < n2; i++) { var c = Y0 + s2 * (i + 0.5); OX.push([c - w2 / 2, c + w2 / 2, z + Math.max(Y.w[1], C.s === 'minimal' ? 0.6 : 0), Math.min(z + Y.w[2], (f ? ZB2 : ZB1) - 0.3)]); } });
+      if (attic && RZ - MZ > 1.9) GWN.push([RY - 0.65, RY + 0.65, MZ + 0.15, MZ + Math.min(1.6, RZ - MZ - 0.6)]); // вікно у фронтоні мансарди
+    }
     var IX0 = X0 + T, IX1 = X1 - T, IY0 = Y0 + T, IY1 = Y1 - T, Sx0 = X0 - 0.3, Sx1 = X1 + 0.3, Sy0 = Y0 - 0.3, Sy1 = Y1 + 0.3;
     var WC = { block: 'wb', brick: 'wk', frame: 'wf', brus: 'wr' }[mat]; // клас стін за матеріалом
     var snap = { block: 0.25, brick: 0.25, frame: 0.25, brus: 0.2 }[mat];
+    var dc = (OY.filter(function (o) { return o[4]; })[0] || [cx - 0.6, cx + 0.6]), dX = (dc[0] + dc[1]) / 2; // вхід
+    var GA = C.g === 'g' ? [X0 - gw + 0.3, X0 - 0.12, Math.max(Y0, Y1 - 6.5), Y1, 3.0] : null; // гараж
+    var CP = C.g === 'c' ? [X0 - gw + 0.3, X0 - 0.15, Math.max(Y0, Y1 - 6), Y1 + 0.2] : null; // навіс
 
     /* ── ділянка-діорама: ґрунт у розрізі, сітка */
     var grid = '';
@@ -116,27 +180,27 @@
     for (g = 2; g < GY; g += 2) grid += pl('gd', [0, g, 0, GX, g, 0]);
     B(pg('so r', rx(GX, 0, GY, GZ, 0)) + pg('so l', ry(GY, 0, GX, GZ, 0)) + pl('st', [GX, 0, -0.3, GX, GY, -0.3, 0, GY, -0.3]) + pl('st', [GX, 0, -0.85, GX, GY, -0.85, 0, GY, -0.85]) +
       pg('gr', rz(0, 0, GX, 0, GY)) + grid);
-    B('<g class="ghost">' + box('gh', Sx0, Sx1, Sy0, Sy1, 0, ZP) + box('gh', X0, X1, Y0, Y1, ZP, ZT) +
-      pg('gh', [X0 - O, RY, RZ, X1 + O, RY, RZ, X1 + O, Y1 + O, EZ, X0 - O, Y1 + O, EZ]) + pg('gh', [X1 + O, Y0 - O, EZ, X1 + O, RY, RZ, X1 + O, Y1 + O, EZ]) + '</g>');
+    var ghr = AF ? pg('gh', [X0 - O, RY, RZ, X1 + O, RY, RZ, X1 + O, Y1 + O, EZ, X0 - O, Y1 + O, EZ]) + pg('gh', [X1 + O, Y0 - O, EZ, X1 + O, RY, RZ, X1 + O, Y1 + O, EZ]) :
+      FL ? box('gh', X0, X1, Y0, Y1, ZT, ZT + 0.6) : pg('gh', [X0 - O, RY, RZ, X1 + O, RY, RZ, X1 + O, Y1 + O, EZ, X0 - O, Y1 + O, EZ]) + pg('gh', [X1 + O, Y0 - O, EZ, X1 + O, RY, RZ, X1 + O, Y1 + O, EZ]);
+    B('<g class="ghost">' + box('gh', Sx0, Sx1, Sy0, Sy1, 0, ZP) + (AF ? '' : box('gh', X0, X1, Y0, Y1, ZP, ZT)) + ghr + (GA ? box('gh', GA[0], GA[1], GA[2], GA[3], 0, GA[4]) : '') + '</g>');
 
     /* ── котлован / траншеї і шари під фундаментом */
-    var PD = -0.8;
+    var PD = -0.8, PX0 = X0 - 1, PX1 = X1 + 1, PY0 = Y0 - 1, PY1 = Y1 + 1;
     if (plate) {
-      A('pit', 0, pg('pf', rz(PD, 2, 14, 2, 11)) + pg('pi r', rx(2, 2, 11, PD, 0)) + pg('pi l', ry(2, 2, 14, PD, 0)) + pl('st', [2, 2, -0.3, 2, 11, -0.3]) + pl('st', [2, 2, -0.3, 14, 2, -0.3]));
-      A('base', 0, pg('geo', rz(PD + 0.01, 2, 14, 2, 11)));
-      A('base', 0.3, pg('sand', rz(-0.5, 2.2, 13.8, 2.2, 10.8)));
-      A('base', 0.6, pg('grv', rz(-0.3, 2.3, 13.7, 2.3, 10.7)));
+      A('pit', 0, pg('pf', rz(PD, PX0, PX1, PY0, PY1)) + pg('pi r', rx(PX0, PY0, PY1, PD, 0)) + pg('pi l', ry(PY0, PX0, PX1, PD, 0)) + pl('st', [PX0, PY0, -0.3, PX0, PY1, -0.3]) + pl('st', [PX0, PY0, -0.3, PX1, PY0, -0.3]));
+      A('base', 0, pg('geo', rz(PD + 0.01, PX0, PX1, PY0, PY1)));
+      A('base', 0.3, pg('sand', rz(-0.5, X0 - 0.8, X1 + 0.8, Y0 - 0.8, Y1 + 0.8)));
+      A('base', 0.6, pg('grv', rz(-0.3, X0 - 0.7, X1 + 0.7, Y0 - 0.7, Y1 + 0.7)));
       if (!frame) {
-        var hs = ''; range(3, 13, 1).forEach(function (x) { hs += pl('hsm', [x, 2.45, -0.2, x, 10.55, -0.2]); });
-        A('hydro', 0, pg('prep', rz(-0.23, 2.4, 13.6, 2.4, 10.6)));
-        A('hydro', 0.35, pg('hyd', rz(-0.2, 2.45, 13.55, 2.45, 10.55)) + hs);
+        var hs = ''; range(X0, X1, 1).forEach(function (x) { hs += pl('hsm', [x, Y0 - 0.55, -0.2, x, Y1 + 0.55, -0.2]); });
+        A('hydro', 0, pg('prep', rz(-0.23, X0 - 0.6, X1 + 0.6, Y0 - 0.6, Y1 + 0.6)));
+        A('hydro', 0.35, pg('hyd', rz(-0.2, X0 - 0.55, X1 + 0.55, Y0 - 0.55, Y1 + 0.55)) + hs);
         var xg = ''; range(Sx0 + 1.2, Sx1 - 0.1, 1.2).forEach(function (x) { xg += pl('xg', [x, Sy0, -0.05, x, Sy1, -0.05]); }); range(Sy0 + 0.6, Sy1 - 0.1, 0.6).forEach(function (y) { xg += pl('xg', [Sx0, y, -0.05, Sx1, y, -0.05]); });
         A('hydro', 0.65, pg('xps', rz(-0.05, Sx0, Sx1, Sy0, Sy1)) + xg);
       } else { // УШП: XPS по дну, L-блоки по краях, труби теплої підлоги й вводи — до бетону
         A('ushp', 0, pg('xps', rz(-0.05, Sx0, Sx1, Sy0, Sy1)));
-        A('ushp', 0.35, pl('loop', zig(Sx0 + 0.6, Sx1 - 0.6, Sy0 + 0.6, Sy1 - 0.6, 0, 0.35)) + pl('cwp', [6, Sy0 + 0.5, 0, 6, Sy1 + 1.4, 0]) + pl('sw', [9.6, Sy0 + 1.2, 0, 9.6, Sy1 + 1.6, 0]));
+        A('ushp', 0.35, pl('loop', zig(Sx0 + 0.6, Sx1 - 0.6, Sy0 + 0.6, Sy1 - 0.6, 0, 0.35)) + pl('cwp', [X0 + 3, Sy0 + 0.5, 0, X0 + 3, Sy1 + 1.4, 0]) + pl('sw', [X0 + 6.6 < X1 ? X0 + 6.6 : cx, Sy0 + 1.2, 0, X0 + 6.6 < X1 ? X0 + 6.6 : cx, Sy1 + 1.6, 0]));
       }
-      // армування: дві сітки, випуски, опалубка (дальні дошки — до бетону, ближні — після)
       var m1 = '', m2 = '', vy = '';
       range(Sy0 + 0.15, Sy1 - 0.15, 0.4).forEach(function (y) { m1 += pl('rb', [Sx0 + 0.1, y, 0.02, Sx1 - 0.1, y, 0.02]); m2 += pl('rb', [Sx0 + 0.1, y, 0.19, Sx1 - 0.1, y, 0.19]); });
       range(Sx0 + 0.15, Sx1 - 0.15, 0.4).forEach(function (x) { m1 += pl('rb', [x, Sy0 + 0.1, 0.02, x, Sy1 - 0.1, 0.02]); m2 += pl('rb', [x, Sy0 + 0.1, 0.19, x, Sy1 - 0.1, 0.19]); });
@@ -146,14 +210,12 @@
       }
       var fwF = pg('fw r', rx(Sx0 - 0.04, Sy0, Sy1, -0.05, ZP + 0.08)) + pg('fw l', ry(Sy0 - 0.04, Sx0, Sx1, -0.05, ZP + 0.08));
       var fwN = box('fw', Sx1, Sx1 + 0.05, Sy0 - 0.04, Sy1 + 0.05, -0.05, ZP + 0.08) + box('fw', Sx0 - 0.04, Sx1, Sy1, Sy1 + 0.05, -0.05, ZP + 0.08);
-      if (frame) { // L-блоки XPS по краю УШП замість опалубки
-        var lb = ring('xpe', Sx0, Sx1, Sy0, Sy1, 0.2, -0.05, ZP, [], []);
-        A('ushp', 0, lb.i); A('ushp', 0.6, m2);
-      } else { A('rebar', 0, fwF, { h: [Kk.w1, 0] }); A('rebar', 0, m1); A('rebar', 0.35, m2); }
+      if (frame) { var lb = ring('xpe', Sx0, Sx1, Sy0, Sy1, 0.2, -0.05, ZP, [], []); A('ushp', 0, lb.i); A('ushp', 0.6, m2); }
+      else { A('rebar', 0, fwF, { h: [Kk.w1, 0] }); A('rebar', 0, m1); A('rebar', 0.35, m2); }
       A(Kk.fd, 0, function (k) { if (k <= 0) return ''; var z = -0.05 + (ZP + 0.05) * k; return frame ? pg('fd t', rz(Math.max(z, -0.04), Sx0 + 0.2, Sx1 - 0.2, Sy0 + 0.2, Sy1 - 0.2)) : box('fd', Sx0, Sx1, Sy0, Sy1, -0.05, Math.max(z, -0.04)); });
       if (frame) A('ushp', 0, lb.o); else { A('rebar', 0.65, vy, { h: [Kk.w1, 0.4] }); A('rebar', 0, fwN, { h: [Kk.w1, 0] }); }
-      A(Kk.w1, 0, ph('bf', [rz(0, 2, 14, 2, 11), rz(0, Sx0, Sx1, Sy0, Sy1)]));
-      B(ph('bf', [rz(0, 0, GX, 0, GY), rz(0, 0, 14, 0, 11)]) + pl('gd', [14, 0, 0, 14, 11, 0, 0, 11, 0])); // ґрунт перед котлованом закриває нижні шари
+      A(Kk.w1, 0, ph('bf', [rz(0, PX0, PX1, PY0, PY1), rz(0, Sx0, Sx1, Sy0, Sy1)]));
+      B(ph('bf', [rz(0, 0, GX, 0, GY), rz(0, 0, PX1, 0, PY1)]) + pl('gd', [PX1, 0, 0, PX1, PY1, 0, 0, PY1, 0])); // ґрунт перед котлованом закриває нижні шари
     } else { // стрічка: траншеї, подушка, опалубка, каркас, бетон, гідроізоляція й XPS по цоколю, засипка
       var R = [X0 - 0.55, X1 + 0.55, Y0 - 0.55, Y1 + 0.55], I = [X0 + 0.55, X1 - 0.55, Y0 + 0.55, Y1 - 0.55], SR = [X0 - 0.25, X1 + 0.25, Y0 - 0.25, Y1 + 0.25];
       A('trench', 0, ph('pf', [rz(0, R[0], R[1], R[2], R[3]), rz(0, I[0], I[1], I[2], I[3])]) + pg('pi r', rx(R[0], R[2], R[3], PD, 0)) + pg('pi l', ry(R[2], R[0], R[1], PD, 0)) +
@@ -180,11 +242,14 @@
       A('s_hydro', 0.7, ph('bf', [rz(0.005, R[0] - 0.05, R[1] + 0.05, R[2] - 0.05, R[3] + 0.05), rz(0.005, SR[0], SR[1] + 0.1, SR[2], SR[3] + 0.1)]) + ph('bf', [rz(0.005, X0 + 0.25, X1 - 0.25, Y0 + 0.25, Y1 - 0.25)]));
     }
     // екскаватор і відвал ґрунту
-    A(plate ? 'pit' : 'trench', 0, pg('heap', [0.4, 2.2, 0, 1.5, 0.6, 0, 1.9, 2, 0.9]) + pg('heap2', [0.4, 2.2, 0, 1.9, 2, 0.9, 1.9, 3.6, 0]), { h: [Kk.w1, 0.5] });
-    /* ── благоустрій на рівні землі: газон, відмостка, доріжка */
-    A('land', 0, ph('lawn', [rz(0.004, 0.1, GX - 0.1, 0.1, GY - 0.1), rz(0.004, X0 - 1.0, X1 + 1.0, Y0 - 1.0, Y1 + 1.0)]));
-    A('land', 0, ph('pave', [rz(0.02, X0 - 0.9, X1 + 0.9, Y0 - 0.9, Y1 + 0.9), rz(0.02, X0 - 0.2, X1 + 0.2, Y0 - 0.2, Y1 + 0.2)]) + pg('pave', rz(0.02, 8.2, 9.8, Y1 + 0.9, GY - 0.05)) + pg('pave', rz(0.02, 9.8, 14.5, 11.4, 12.4)));
-    A('land', 0.3, tree(1.1, 4.2, 1.2, 16), { m: 'd' }); // дерево за будинком — до стін (painter)
+    var hx0 = Math.max(0.4, X0 - 2.6);
+    A(plate ? 'pit' : 'trench', 0, pg('heap', [hx0, Y0 - 0.8, 0, hx0 + 1.1, Y0 - 2.4, 0, hx0 + 1.5, Y0 - 1, 0.9]) + pg('heap2', [hx0, Y0 - 0.8, 0, hx0 + 1.5, Y0 - 1, 0.9, hx0 + 1.5, Y0 + 0.6, 0]), { h: [Kk.w1, 0.5] });
+    /* ── благоустрій на рівні землі: газон, відмостка, доріжки */
+    A('land', 0, ph('lawn', [rz(0.004, 0.1, GX - 0.1, 0.1, GY - 0.1), rz(0.004, X0 - 1.0, X1 + 1.0, Y0 - 1.0, Y1 + 1.0)].concat(GA || CP ? [rz(0.004, X0 - gw + 0.1, X0 - 1.0, Y1 - 6.6 > Y0 - 1 ? Y1 - 6.6 : Y0 - 1, GY - 0.1)] : [])));
+    A('land', 0, ph('pave', [rz(0.02, X0 - 0.9, X1 + 0.9, Y0 - 0.9, Y1 + 0.9), rz(0.02, X0 - 0.2, X1 + 0.2, Y0 - 0.2, Y1 + 0.2)]) + pg('pave', rz(0.02, dX - 0.8, dX + 0.8, Y1 + 0.9, GY - 0.05)) +
+      (GA || CP ? pg('pave', rz(0.021, X0 - gw + 0.2, X0 - 1.0, Y1 + 0.2, GY - 0.05)) : pg('pave', rz(0.02, dX + 0.8, GX - 1.5, GY - 1.6, GY - 0.6))));
+    A('land', 0.3, tree(Math.max(1.1, X0 - gw - 1.4 > 0.8 ? X0 - gw - 1.4 : 1.1), Y0 + 1.2, 1.2, 16), { m: 'd' }); // дерево за будинком — до стін (painter)
+
     /* ── геодезія: осі, обноска з причалками, тахеометр, розміри */
     var ob = '', OB = [X0 - 1.4, X1 + 1.4, Y0 - 1.4, Y1 + 1.4];
     range(OB[0], OB[1], 2.4).concat([OB[1]]).forEach(function (x) { ob += pl('stk', [x, OB[2], 0, x, OB[2], 0.8]); });
@@ -198,8 +263,19 @@
     var ax = ''; [X0, X1].forEach(function (x) { ax += pl('ax', [x, 0.3, 0, x, GY - 0.3, 0]); }); [Y0, Y1].forEach(function (y) { ax += pl('ax', [0.3, y, 0, GX - 0.3, y, 0]); });
     A('geo', 0, ax, { h: [plate ? 'pit' : 'trench', 0.3] });
     A('geo', 0.3, ob + obN, { h: [Kk.fd, 0.9] });
-    A('geo', 0.5, pl('dim', [X0, 12.3, 0, X1, 12.3, 0]) + pl('dim', [X0, 12, 0, X0, 12.6, 0]) + pl('dim', [X1, 12, 0, X1, 12.6, 0]) + txt('dt', 7.3, 13.1, 0, 30, '10,0') +
-      pl('dim', [15.2, Y0, 0, 15.2, Y1, 0]) + pl('dim', [14.9, Y0, 0, 15.5, Y0, 0]) + pl('dim', [14.9, Y1, 0, 15.5, Y1, 0]) + txt('dt', 15.9, 6.1, 0, -30, '7,0'), { h: ['base', 0] });
+    var nm = function (v) { return (C.lang === 'en' ? v.toFixed(1) : v.toFixed(1).replace('.', ',')); };
+    A('geo', 0.5, pl('dim', [X0, GY - 0.7, 0, X1, GY - 0.7, 0]) + pl('dim', [X0, GY - 1, 0, X0, GY - 0.4, 0]) + pl('dim', [X1, GY - 1, 0, X1, GY - 0.4, 0]) + txt('dt', cx + 0.3, GY + 0.1, 0, 30, nm(H.W)) +
+      pl('dim', [GX - 0.8, Y0, 0, GX - 0.8, Y1, 0]) + pl('dim', [GX - 1.1, Y0, 0, GX - 0.5, Y0, 0]) + pl('dim', [GX - 1.1, Y1, 0, GX - 0.5, Y1, 0]) + txt('dt', GX - 0.1, cy - 0.4, 0, -30, nm(H.D)), { h: ['base', 0] });
+
+    /* ── гараж / навіс збоку (менший x — малюється перед будинком) */
+    if (GA) {
+      A(Kk.fd, 0.4, box('fd', GA[0] - 0.1, GA[1] + 0.05, GA[2] - 0.1, GA[3] + 0.1, -0.05, ZP), { m: 'd' });
+      A(Kk.w1, 0.5, frame ? box('osb', GA[0], GA[1], GA[2], GA[3], ZP, GA[4]) : box(WC, GA[0], GA[1], GA[2], GA[3], ZP, GA[4]), { m: 'd' });
+      A(Kk.sl, 0.5, box(frame || brus ? 'jst' : 'sl', GA[0] - 0.1, GA[1] + 0.05, GA[2] - 0.1, GA[3] + 0.1, GA[4], GA[4] + 0.22), { m: 'd' });
+      A(Kk.fac, 0.6, pg((CL ? 'clad' : brus ? 'lz' : brick && H.FS === 'r' ? 'fbr' : 'rnd') + ' l', ry(GA[3] + 0.11, GA[0] - 0.1, GA[1] + 0.05, ZP, GA[4])) + pg('mbr', rz(GA[4] + 0.23, GA[0] - 0.1, GA[1] + 0.05, GA[2] - 0.1, GA[3] + 0.1)));
+      var gd = (GA[0] + GA[1]) / 2, gdr = pg('gdr', ry(GA[3] + 0.12, gd - 1.3, gd + 1.3, ZP, ZP + 2.2)); range(ZP + 0.37, ZP + 2.1, 0.37).forEach(function (z) { gdr += pl('gdl', [gd - 1.3, GA[3] + 0.12, z, gd + 1.3, GA[3] + 0.12, z]); });
+      A(Kk.win, 0.5, gdr);
+    }
 
     /* ── 1 поверх: підлога, внутрішні грані, мережі, штукатурка, інтерʼєр */
     if (!plate) {
@@ -214,7 +290,7 @@
     var w1o = function (k) {
       var z = ZP + Math.round((WT1 - ZP) * k / snap) * snap; if (z <= ZP + 0.01) return '';
       var q = ring(WC, X0, X1, Y0, Y1, T, ZP, z, OY, OX).o;
-      if (!brus) OY.concat([]).forEach(function (o) { if (o[3] < ZB1 && z >= o[3] + 0.25) q += pg('lnt l', ry(Y1 + 0.005, o[0] - 0.25, o[1] + 0.25, o[3], o[3] + 0.25)); });
+      if (!brus) OY.forEach(function (o) { if (o[3] < ZB1 && z >= o[3] + 0.25) q += pg('lnt l', ry(Y1 + 0.005, o[0] - 0.25, o[1] + 0.25, o[3], o[3] + 0.25)); });
       if (!brus) OX.forEach(function (o) { if (o[3] < ZB1 && z >= o[3] + 0.25) q += pg('lnt r', rx(X1 + 0.005, o[0] - 0.25, o[1] + 0.25, o[3], o[3] + 0.25)); });
       if (brus) q += logEnds(ZP, z);
       return q;
@@ -254,7 +330,19 @@
       return s.sort(function (a, b) { return a[0] - b[0]; }).map(function (q) { return q[1]; }).join('');
     }
     var o1 = OY.filter(function (o) { return o[3] < ZB1; }), x1o = OX.filter(function (o) { return o[3] < ZB1; }), o2 = OY.filter(function (o) { return o[2] > ZF2; }), x2o = OX.filter(function (o) { return o[2] > ZF2; });
-    if (frame) {
+    // A-frame: схили до землі (afB — дальній, afF — ближній), рами з кроком 1,2 м
+    var afB = [X0 - O, Y0 - O, EZ, X1 + O, Y0 - O, EZ, X1 + O, RY, RZ, X0 - O, RY, RZ], afF = [X0 - O, Y1 + O, EZ, X1 + O, Y1 + O, EZ, X1 + O, RY, RZ, X0 - O, RY, RZ];
+    var afz = function (y) { return EZ + (y < RY ? y - (Y0 - O) : (Y1 + O) - y) * pt; };
+    if (AF) {
+      var bp0 = ring('pla', X0, X1, Y0, Y1, T, ZP, ZP + 0.15, [], []);
+      A('f_plate', 0, bp0.i + bp0.o);
+      var fr = ''; range(X0 + 0.1, X1 - 0.05, 1.2).concat([X1 - 0.1]).forEach(function (x) { fr += pl('afr', [x, Y0 - O + 0.2, EZ + 0.2 * pt, x, RY, RZ - 0.1, x, Y1 + O - 0.2, EZ + 0.2 * pt]) + pl('aft', [x, RY - (ZF2 + 1.1 - EZ) / pt * 0 - 1.6, ZF2 + 0.9, x, RY + 1.6, ZF2 + 0.9]); });
+      A('f_studs', 0, fr, { m: 'd' });
+      A('f_osb', 0, pg('osbs b', afB));
+      A('rafters', 0, pg('mem', afB));
+      A('roof', 0.35, pg('rf b', afB.map(function (v, i) { return i % 3 === 2 ? v + 0.1 : v; })));
+      A('f_ins', 0, pg('woolS', afB.map(function (v, i) { return i % 3 === 1 ? v + 0.2 * (v < RY ? 1 : -1) : i % 3 === 2 ? v + 0.05 : v; })));
+    } else if (frame) {
       var bp = ring('pla', X0, X1, Y0, Y1, T, ZP, ZP + 0.15, [], []);
       A('f_plate', 0, bp.i);
       A('f_ins', 0, pg('wool r', rx(IX0 - 0.05, IY0 - 0.05, IY1, ZP + 0.15, ZB1)) + pg('wool l', ry(IY0 - 0.05, IX0 - 0.05, IX1, ZP + 0.15, ZB1)));
@@ -268,21 +356,25 @@
       if (!brus) A(Kk.bl, 0, ring('blt', X0, X1, Y0, Y1, T, ZB1, ZM, [], []).i);
     }
     // мережі в стінах (до штукатурки), штукатурка, потім прилади на стінах
+    var ys = [Y0 + 1.4, Y0 + 3.2, Y0 + 5.4].filter(function (y) { return y < IY1 - 0.3; }), xs1 = [X0 + 2, X0 + 4.6, X0 + 7.2].filter(function (x) { return x < IX1 - 0.4; });
     var cab = pl('el', [IX0 + 0.01, IY0 + 0.2, ZP + 2.45, IX0 + 0.01, IY1 - 0.2, ZP + 2.45]) + pl('el', [IX0 + 0.2, IY0 + 0.01, ZP + 2.45, IX1 - 0.2, IY0 + 0.01, ZP + 2.45]);
-    [4.4, 6.2, 8.4].forEach(function (y) { cab += pl('el', [IX0 + 0.01, y, ZP + 2.45, IX0 + 0.01, y, ZP + 0.35]); });
-    [5, 7.6, 10.2].forEach(function (x) { cab += pl('el', [x, IY0 + 0.01, ZP + 2.45, x, IY0 + 0.01, ZP + (x > 7 ? 1.1 : 0.35)]); });
-    var pipes = pl('hw', [11.7, IY0 + 0.05, ZP + 1.3, 11.7, IY0 + 0.05, ZP + 0.5, 10.6, IY0 + 0.05, ZP + 0.5]) + pl('cwp', [11.95, IY0 + 0.05, ZP + 1.3, 11.95, IY0 + 0.05, ZP + 0.35, 6.2, IY0 + 0.05, ZP + 0.35, 6.2, IY0 + 0.05, ZP + 1.0]) +
-      pl('sw', [6.6, IY0 + 0.3, ZP + 0.05, 6.6, IY1 + 1.2, ZP + 0.05]);
+    ys.forEach(function (y) { cab += pl('el', [IX0 + 0.01, y, ZP + 2.45, IX0 + 0.01, y, ZP + 0.35]); });
+    xs1.forEach(function (x, i) { cab += pl('el', [x, IY0 + 0.01, ZP + 2.45, x, IY0 + 0.01, ZP + (i ? 1.1 : 0.35)]); });
+    var px = IX1 - 1.0, pipes = pl('hw', [px, IY0 + 0.05, ZP + 1.3, px, IY0 + 0.05, ZP + 0.5, px - 1.1, IY0 + 0.05, ZP + 0.5]) + pl('cwp', [px + 0.25, IY0 + 0.05, ZP + 1.3, px + 0.25, IY0 + 0.05, ZP + 0.35, X0 + 3.2, IY0 + 0.05, ZP + 0.35, X0 + 3.2, IY0 + 0.05, ZP + 1.0]) +
+      pl('sw', [X0 + 3.6, IY0 + 0.3, ZP + 0.05, X0 + 3.6, IY1 + 1.2, ZP + 0.05]);
     A('mep', 0, cab + (brus ? '' : pipes), { c: 'net' });
     if (!frame && !brus) A('screed', 0.5, pg('plw r', rx(IX0 + 0.02, IY0 + 0.02, IY1, ZP + 0.07, ZB1)) + pg('plw l', ry(IY0 + 0.02, IX0 + 0.02, IX1, ZP + 0.07, ZB1)));
     if (brus) A('r_fin', 0.3, pg('lz r', rx(IX0 + 0.01, IY0, IY1, ZP + 0.2, ZM)) + pg('lz l', ry(IY0 + 0.01, IX0, IX1, ZP + 0.2, ZM)));
-    var dev = box('pan', IX0, IX0 + 0.12, 4.2, 4.8, ZP + 1.3, ZP + 1.95) + box('blr', 11.4, 12.2, IY0, IY0 + 0.35, ZP + 1.3, ZP + 2.15) + box('col', 10.2, 11, IY0, IY0 + 0.15, ZP + 0.3, ZP + 0.8);
-    if (brus) dev = box('pan', IX0, IX0 + 0.12, 4.2, 4.8, ZP + 1.3, ZP + 1.95) + box('rad', 5, 6.6, IY0, IY0 + 0.1, ZP + 0.3, ZP + 0.8) + box('rad', 9, 10.6, IY0, IY0 + 0.1, ZP + 0.3, ZP + 0.8) + pl('cwp', [5, IY0 + 0.12, ZP + 0.25, 10.6, IY0 + 0.12, ZP + 0.25]);
+    var dev = box('pan', IX0, IX0 + 0.12, Y0 + 1.2, Y0 + 1.8, ZP + 1.3, ZP + 1.95) + box('blr', IX1 - 1.3, IX1 - 0.5, IY0, IY0 + 0.35, ZP + 1.3, ZP + 2.15) + box('col', IX1 - 2.5, IX1 - 1.7, IY0, IY0 + 0.15, ZP + 0.3, ZP + 0.8);
+    if (brus) dev = box('pan', IX0, IX0 + 0.12, Y0 + 1.2, Y0 + 1.8, ZP + 1.3, ZP + 1.95) + box('rad', X0 + 2, X0 + 3.6, IY0, IY0 + 0.1, ZP + 0.3, ZP + 0.8) + box('rad', IX1 - 2.6, IX1 - 1.0, IY0, IY0 + 0.1, ZP + 0.3, ZP + 0.8) + pl('cwp', [X0 + 2, IY0 + 0.12, ZP + 0.25, IX1 - 1.0, IY0 + 0.12, ZP + 0.25]);
     A('mep', 0.3, dev);
-    A('int', 0.3, box('kb', 8.2, 11.2, IY0, IY0 + 0.6, ZP + 0.1, ZP + 0.95) + box('ct', 8.15, 11.25, IY0, IY0 + 0.65, ZP + 0.95, ZP + 1.0) + box('kw', 8.2, 11.2, IY0, IY0 + 0.35, ZP + 1.55, ZP + 2.3) +
-      box('sf', 4.2, 6.6, 6.6, 7.4, ZP + 0.1, ZP + 0.45) + box('sf', 4.2, 6.6, 6.4, 6.6, ZP + 0.1, ZP + 0.85) + box('tb', 8.6, 10.4, 6, 7, ZP + 0.72, ZP + 0.78) + pl('lg', [8.8, 6.9, ZP + 0.1, 8.8, 6.9, ZP + 0.72]) + pl('lg', [10.2, 6.9, ZP + 0.1, 10.2, 6.9, ZP + 0.72]));
+    var kx1 = IX1 - 0.4, kx0 = Math.max(IX0 + 2.6, kx1 - 3.0), tx0 = Math.max(IX0 + 3.8, kx0 - 0.6);
+    A('int', 0.3, box('kb', kx0, kx1, IY0, IY0 + 0.6, ZP + 0.1, ZP + 0.95) + box('ct', kx0 - 0.05, kx1 + 0.05, IY0, IY0 + 0.65, ZP + 0.95, ZP + 1.0) + box('kw', kx0, kx1, IY0, IY0 + 0.35, ZP + 1.55, ZP + 2.3) +
+      box('sf', IX0 + 0.9, IX0 + 3.3, cy + 0.1, cy + 0.9, ZP + 0.1, ZP + 0.45) + box('sf', IX0 + 0.9, IX0 + 3.3, cy - 0.1, cy + 0.1, ZP + 0.1, ZP + 0.85) +
+      box('tb', tx0, tx0 + 1.8, cy - 0.5, cy + 0.5, ZP + 0.72, ZP + 0.78) + pl('lg', [tx0 + 0.2, cy + 0.4, ZP + 0.1, tx0 + 0.2, cy + 0.4, ZP + 0.72]) + pl('lg', [tx0 + 1.6, cy + 0.4, ZP + 0.1, tx0 + 1.6, cy + 0.4, ZP + 0.72]));
     // ближні стіни 1 поверху
-    if (frame) {
+    if (AF) { /* стін немає — рами й схили */ }
+    else if (frame) {
       A('f_plate', 0, bp.o);
       A('f_studs', 0, studs(ZP + 0.15, ZM - 0.15, 1, o1, x1o), { m: 'd', c: 'ow' });
       A('f_studs', 0.6, tp1.o, { m: 'd', c: 'ow' });
@@ -292,14 +384,17 @@
       A(Kk.w1, 0, function (k) { return w1o(k); }, { c: 'ow' });
       if (!brus) A(Kk.bl, 0, ring('blt', X0, X1, Y0, Y1, T, ZB1, ZM, [], []).o, { c: 'ow' });
     }
-    /* ── перекриття */
-    if (frame) A('f_osb', 0.5, box('jst', X0, X1, Y0, Y1, ZM - 0.15, ZF2) + (function () { var s = ''; range(X0 + 0.6, X1 - 0.3, 0.6).forEach(function (x) { s += pl('jsl', [x, Y0, ZF2, x, Y1, ZF2]); }); return s; })(), { m: 'd' });
+    /* ── перекриття (у A-frame — антресоль) */
+    if (AF) {
+      var my0 = Math.max(Y0, RY - 2.2), my1 = Math.min(Y1, RY + 2.2);
+      A('f_osb', 0.5, box('jst', X0 + 0.2, X0 + 0.2 + H.W * 0.55, my0, my1, ZF2 - 0.2, ZF2) + pl('glp', [X0 + 0.2 + H.W * 0.55, my0, ZF2, X0 + 0.2 + H.W * 0.55, my1, ZF2]), { m: 'd' });
+    } else if (frame) A('f_osb', 0.5, box('jst', X0, X1, Y0, Y1, ZM - 0.15, ZF2) + (function () { var s = ''; range(X0 + 0.6, X1 - 0.3, 0.6).forEach(function (x) { s += pl('jsl', [x, Y0, ZF2, x, Y1, ZF2]); }); return s; })(), { m: 'd' });
     else if (brus) A('r_slab', 0, box('wsl', X0, X1, Y0, Y1, ZM, ZF2) + (function () { var s = ''; range(X0 + 0.8, X1 - 0.4, 0.8).forEach(function (x) { s += pg('bme', ry(Y1 + 0.01, x - 0.1, x + 0.1, ZM + 0.02, ZF2 - 0.03)); }); return s; })(), { m: 'd' });
     else A('slab', 0, box('sl', X0, X1, Y0, Y1, ZM, ZF2) + (function () { var s = ''; range(X0 + 1.2, X1 - 0.2, 1.2).forEach(function (x) { s += pl('slj', [x, Y0, ZF2, x, Y1, ZF2]); }); return s; })(), { m: 'd' });
-    /* ── 2 поверх */
-    var w2s = Kk.w2;
-    if (!frame && !brus) { A('screed', 0, pg('scr', rz(ZF2 + 0.06, IX0, IX1, IY0, IY1))); }
-    A('int', 0, pg('flw', rz(ZF2 + 0.08, IX0, IX1, IY0, IY1)));
+    /* ── 2 поверх / мансардні стінки / мауерлат (1 поверх) */
+    var w2s = Kk.w2, up = !one && !AF;
+    if (up && !frame && !brus) { A('screed', 0, pg('scr', rz(ZF2 + 0.06, IX0, IX1, IY0, IY1))); }
+    if (up) A('int', 0, pg('flw', rz(ZF2 + 0.08, IX0, IX1, IY0, IY1)));
     var w2i = function (k) { var z = ZF2 + Math.round((ZB2 - ZF2) * k / snap) * snap; return z > ZF2 + 0.01 ? ring(WC, X0, X1, Y0, Y1, T, ZF2, z, OY, OX).i : ''; };
     var w2o = function (k) {
       var z = ZF2 + Math.round((ZB2 - ZF2) * k / snap) * snap; if (z <= ZF2 + 0.01) return '';
@@ -309,115 +404,196 @@
       if (brus) q += logEnds(ZF2, z);
       return q;
     };
-    if (frame) {
-      A('f_w2', 0, ring('pla', X0, X1, Y0, Y1, T, ZF2, ZF2 + 0.15, [], []).i);
-      A('f_ins', 0, pg('wool r', rx(IX0 - 0.05, IY0 - 0.05, IY1, ZF2 + 0.15, ZB2)) + pg('wool l', ry(IY0 - 0.05, IX0 - 0.05, IX1, ZF2 + 0.15, ZB2)));
-      A('f_w2', 0, studs(ZF2 + 0.15, ZT - 0.15, 0, o2, x2o), { m: 'd' });
-      A('f_ins', 0.6, pg('vb', rx(IX0 + 0.01, IY0, IY1, ZF2 + 0.15, ZT - 0.15)) + pg('vb', ry(IY0 + 0.01, IX0, IX1, ZF2 + 0.15, ZT - 0.15)));
-      A('f_fin', 0.4, pg('gkl r', rx(IX0 + 0.06, IY0 + 0.05, IY1, ZF2 + 0.15, ZT - 0.15)) + pg('gkl l', ry(IY0 + 0.06, IX0 + 0.05, IX1, ZF2 + 0.15, ZT - 0.15)));
+    if (up) {
+      if (frame) {
+        A('f_w2', 0, ring('pla', X0, X1, Y0, Y1, T, ZF2, ZF2 + 0.15, [], []).i);
+        A('f_ins', 0, pg('wool r', rx(IX0 - 0.05, IY0 - 0.05, IY1, ZF2 + 0.15, ZB2)) + pg('wool l', ry(IY0 - 0.05, IX0 - 0.05, IX1, ZF2 + 0.15, ZB2)));
+        A('f_w2', 0, studs(ZF2 + 0.15, ZT - 0.15, 0, o2, x2o), { m: 'd' });
+        A('f_ins', 0.6, pg('vb', rx(IX0 + 0.01, IY0, IY1, ZF2 + 0.15, ZT - 0.15)) + pg('vb', ry(IY0 + 0.01, IX0, IX1, ZF2 + 0.15, ZT - 0.15)));
+        A('f_fin', 0.4, pg('gkl r', rx(IX0 + 0.06, IY0 + 0.05, IY1, ZF2 + 0.15, ZT - 0.15)) + pg('gkl l', ry(IY0 + 0.06, IX0 + 0.05, IX1, ZF2 + 0.15, ZT - 0.15)));
+      } else {
+        A(w2s, 0, function (k) { return w2i(k); });
+        if (!brus) A(w2s, 0.75, ring('blt', X0, X1, Y0, Y1, T, ZB2, ZT, [], []).i);
+        else A(w2s, 0, function (k) { return k > 0.99 ? ring('wr', X0, X1, Y0, Y1, T, ZB2, ZT, [], []).i : ''; });
+      }
+      var cab2 = pl('el', [IX0 + 0.01, IY0 + 0.2, ZF2 + 2.2 * (two ? 1 : 0.4), IX0 + 0.01, IY1 - 0.2, ZF2 + 2.2 * (two ? 1 : 0.4)]) + pl('el', [IX0 + 0.2, IY0 + 0.01, ZF2 + 2.2 * (two ? 1 : 0.4), IX1 - 0.2, IY0 + 0.01, ZF2 + 2.2 * (two ? 1 : 0.4)]);
+      A('mep', 0, cab2, { c: 'net' });
+      if (!frame && !brus) A('screed', 0.5, pg('plw r', rx(IX0 + 0.02, IY0 + 0.02, IY1, ZF2 + 0.06, ZB2)) + pg('plw l', ry(IY0 + 0.02, IX0 + 0.02, IX1, ZF2 + 0.06, ZB2)));
+      if (brus) A('r_fin', 0.3, pg('lz r', rx(IX0 + 0.01, IY0, IY1, ZF2, ZT)) + pg('lz l', ry(IY0 + 0.01, IX0, IX1, ZF2, ZT)));
+      // вентиляція: рекуператор і повітроводи під стелею 2 поверху
+      if (two) A('mep', 0.45, box('duct', IX0 + 0.6, IX1 - 1.4, IY0, IY0 + 0.3, ZB2 - 0.45, ZB2 - 0.2) + box('rec', IX1 - 1.4, IX1 - 0.4, IY0, IY0 + 0.55, ZB2 - 0.75, ZB2 - 0.15) + box('duct', IX0 + 0.6, IX0 + 0.9, IY0, IY0 + 0.3, ZF2, ZB2 - 0.2), { c: 'net' });
+      A('int', 0.3, box('bed', IX0 + 1.3, IX0 + 3.5, cy - 1.2, cy + 1.0, ZF2 + 0.1, ZF2 + 0.5) + box('bed', IX0 + 1.3, IX0 + 1.45, cy - 1.2, cy + 1.0, ZF2 + 0.1, ZF2 + 1.0) + (two ? box('wrd', IX1 - 3.2, IX1 - 0.4, IY0, IY0 + 0.6, ZF2 + 0.1, ZF2 + 2.2) : ''));
+    } else if (!AF) A('mep', 0.45, box('rec', IX1 - 1.4, IX1 - 0.4, IY0, IY0 + 0.55, ZB1 - 0.75, ZB1 - 0.15), { c: 'net' });
+    if (AF) A('int', 0.3, box('bed', X0 + 0.6, X0 + 2.6, RY - 1.0, RY + 1.0, ZF2 + 0.02, ZF2 + 0.4));
+    if (AF) { /* ближні стіни — немає */ }
+    else if (frame) {
+      if (up) {
+        A('f_w2', 0, ring('pla', X0, X1, Y0, Y1, T, ZF2, ZF2 + 0.15, [], []).o, { c: 'ow' });
+        A('f_w2', 0, studs(ZF2 + 0.15, ZT - 0.15, 1, o2, x2o), { m: 'd', c: 'ow' });
+        A('f_w2', 0.5, skin('osb', X0, X1, Y0, Y1, 0.01, ZF2 - 0.25, ZT, o2, x2o), { c: 'ow' });
+      }
+      A('f_w2', 0.7, (up ? ring('pla', X0, X1, Y0, Y1, T, ZT - 0.15, ZT, [], []).o : '') + (FL ? '' : box('mlt', X0 + 0.02, X1 - 0.02, Y0 + 0.03, Y0 + 0.23, ZT, MZ) + box('mlt', X0 + 0.02, X1 - 0.02, Y1 - 0.23, Y1 - 0.03, ZT, MZ)), { c: 'ow', m: 'd' });
     } else {
-      A(w2s, 0, function (k) { return w2i(k); });
-      if (!brus) A(w2s, 0.75, ring('blt', X0, X1, Y0, Y1, T, ZB2, ZT, [], []).i);
-      else A(w2s, 0, function (k) { return k > 0.99 ? ring('wr', X0, X1, Y0, Y1, T, ZB2, ZT, [], []).i : ''; });
-    }
-    var cab2 = pl('el', [IX0 + 0.01, IY0 + 0.2, ZF2 + 2.2, IX0 + 0.01, IY1 - 0.2, ZF2 + 2.2]) + pl('el', [IX0 + 0.2, IY0 + 0.01, ZF2 + 2.2, IX1 - 0.2, IY0 + 0.01, ZF2 + 2.2]);
-    [5, 8].forEach(function (y) { cab2 += pl('el', [IX0 + 0.01, y, ZF2 + 2.2, IX0 + 0.01, y, ZF2 + 0.35]); });
-    A('mep', 0, cab2, { c: 'net' });
-    if (!frame && !brus) A('screed', 0.5, pg('plw r', rx(IX0 + 0.02, IY0 + 0.02, IY1, ZF2 + 0.06, ZB2)) + pg('plw l', ry(IY0 + 0.02, IX0 + 0.02, IX1, ZF2 + 0.06, ZB2)));
-    if (brus) A('r_fin', 0.3, pg('lz r', rx(IX0 + 0.01, IY0, IY1, ZF2, ZT)) + pg('lz l', ry(IY0 + 0.01, IX0, IX1, ZF2, ZT)));
-    // вентиляція: рекуператор і повітроводи під стелею 2 поверху, стояк — на дах
-    A('mep', 0.45, box('duct', IX0 + 0.6, IX1 - 1.4, IY0, IY0 + 0.3, ZB2 - 0.45, ZB2 - 0.2) + box('rec', IX1 - 1.4, IX1 - 0.4, IY0, IY0 + 0.55, ZB2 - 0.75, ZB2 - 0.15) + box('duct', IX0 + 0.6, IX0 + 0.9, IY0, IY0 + 0.3, ZF2, ZB2 - 0.2), { c: 'net' });
-    A('int', 0.3, box('bed', 4.6, 6.8, 5.2, 7.4, ZF2 + 0.1, ZF2 + 0.5) + box('bed', 4.6, 4.75, 5.2, 7.4, ZF2 + 0.1, ZF2 + 1.0) + box('wrd', 9.4, 12.2, IY0, IY0 + 0.6, ZF2 + 0.1, ZF2 + 2.2));
-    if (frame) {
-      A('f_w2', 0, ring('pla', X0, X1, Y0, Y1, T, ZF2, ZF2 + 0.15, [], []).o, { c: 'ow' });
-      A('f_w2', 0, studs(ZF2 + 0.15, ZT - 0.15, 1, o2, x2o), { m: 'd', c: 'ow' });
-      A('f_w2', 0.5, skin('osb', X0, X1, Y0, Y1, 0.01, ZF2 - 0.25, ZT, o2, x2o), { c: 'ow' });
-      A('f_w2', 0.7, ring('pla', X0, X1, Y0, Y1, T, ZT - 0.15, ZT, [], []).o + box('mlt', X0 + 0.02, X1 - 0.02, Y0 + 0.03, Y0 + 0.23, ZT, MZ) + box('mlt', X0 + 0.02, X1 - 0.02, Y1 - 0.23, Y1 - 0.03, ZT, MZ), { c: 'ow' });
-    } else {
-      A(w2s, 0, function (k) { return w2o(k); }, { c: 'ow' });
+      if (up) A(w2s, 0, function (k) { return w2o(k); }, { c: 'ow' });
       if (!brus) {
-        A(w2s, 0.75, ring('blt', X0, X1, Y0, Y1, T, ZB2, ZT, [], []).o + box('pin', X0 + 0.15, X1 - 0.15, Y0 + 0.12, Y0 + 0.14, ZT, ZT + 0.12), { c: 'ow' });
-        A(w2s, 0.9, box('mlt', X0 + 0.02, X1 - 0.02, Y0 + 0.03, Y0 + 0.23, ZT, MZ) + box('mlt', X0 + 0.02, X1 - 0.02, Y1 - 0.23, Y1 - 0.03, ZT, MZ), { m: 'd', c: 'ow' });
-      } else A(w2s, 0, function (k) { return k > 0.99 ? ring('wr', X0, X1, Y0, Y1, T, ZB2, ZT, [], []).o + logEnds(ZB2, ZT) : ''; }, { c: 'ow' });
+        if (up) A(w2s, 0.75, ring('blt', X0, X1, Y0, Y1, T, ZB2, ZT, [], []).o + (FL ? '' : box('pin', X0 + 0.15, X1 - 0.15, Y0 + 0.12, Y0 + 0.14, ZT, ZT + 0.12)), { c: 'ow' });
+        else if (!FL) A(w2s, 0.4, box('pin', X0 + 0.15, X1 - 0.15, Y0 + 0.12, Y0 + 0.14, ZT, ZT + 0.12), { c: 'ow' });
+        else { var pv = ''; range(X0 + 0.4, X1 - 0.2, 0.8).forEach(function (x) { pv += pl('vy', [x, Y1 - T / 2, ZT, x, Y1 - T / 2, ZT + 0.5]) + pl('vy', [x, Y0 + T / 2, ZT, x, Y0 + T / 2, ZT + 0.5]); }); range(Y0 + 0.4, Y1 - 0.2, 0.8).forEach(function (y) { pv += pl('vy', [X1 - T / 2, y, ZT, X1 - T / 2, y, ZT + 0.5]); }); A(w2s, 0.3, pv, { h: [Kk.raf, 0.3] }); } // випуски під парапет
+        if (!FL) A(w2s, 0.9, box('mlt', X0 + 0.02, X1 - 0.02, Y0 + 0.03, Y0 + 0.23, ZT, MZ) + box('mlt', X0 + 0.02, X1 - 0.02, Y1 - 0.23, Y1 - 0.03, ZT, MZ), { m: 'd', c: 'ow' });
+      } else A(w2s, 0, function (k) { return k > 0.99 ? (up ? ring('wr', X0, X1, Y0, Y1, T, ZB2, ZT, [], []).o + logEnds(ZB2, ZT) : ring('wr', X0, X1, Y0, Y1, T, ZF2, ZF2 + 0.15, [], []).o) : ''; }, { c: 'ow' });
     }
-    // фронтон (грань x = X1) — стіновий матеріал або ОСБ, потім фасад
+    // фронтон (грань x = X1) — стіновий матеріал або ОСБ, потім фасад (вальма й плоский дах — без фронтону)
     var gab = [X1, Y0, MZ, X1, Y1, MZ, X1, RY, RZ - 0.15];
-    A(Kk.raf, 0, pg((frame ? 'osb' : WC) + ' r', gab), { c: 'ow' });
+    if (!HIP && !FL && !AF) A(Kk.raf, 0, pg((frame ? 'osb' : WC) + ' r', gab), { c: 'ow' });
+    if (AF) { // каркас фронтону: стійки до схилів
+      var gs = ''; range(Y0 + 0.3, Y1 - 0.2, 0.6).forEach(function (y) { gs += box('stud', X1 - 0.12, X1, y - 0.05, y + 0.05, ZP + 0.15, Math.min(afz(y), RZ) - 0.15); });
+      A('f_w2', 0, gs, { m: 'd', c: 'ow' });
+    }
     /* ── вікна: склопакети, рами, стрічки теплого монтажу; світло у вікнах */
-    var wn = '', tp = '', gw = '', ok = '';
-    OY.forEach(function (o, i) {
-      if (i === 1) { wn += pg('dr', ry(Y1 + 0.01, o[0], o[1], o[2], o[3])) + pl('mu', [o[1] - 0.2, Y1 + 0.01, o[2] + 1.0, o[1] - 0.2, Y1 + 0.01, o[2] + 1.15]); }
-      else { wn += pg('gl', ry(Y1 + 0.01, o[0], o[1], o[2], o[3])) + pl('fr', [o[0], Y1 + 0.01, o[2], o[1], Y1 + 0.01, o[2], o[1], Y1 + 0.01, o[3], o[0], Y1 + 0.01, o[3], o[0], Y1 + 0.01, o[2]]); if (o[1] - o[0] > 2) wn += pl('mu', [(o[0] + o[1]) / 2, Y1 + 0.01, o[2], (o[0] + o[1]) / 2, Y1 + 0.01, o[3]]); gw += pg('glw', ry(Y1 + 0.02, o[0] + 0.08, o[1] - 0.08, o[2] + 0.08, o[3] - 0.08)); }
-      tp += ph('tape', [ry(Y1 + 0.015, o[0] - 0.1, o[1] + 0.1, o[2] - (i === 1 ? 0 : 0.1), o[3] + 0.1), ry(Y1 + 0.015, o[0], o[1], o[2], o[3])]);
-      ok += ph('oks', [ry(Y1 + 0.02, o[0] - 0.12, o[1] + 0.12, o[2] - (i === 1 ? 0 : 0.12), o[3] + 0.16), ry(Y1 + 0.02, o[0], o[1], o[2], o[3])]);
+    var wn = '', tp = '', gw2 = '', ok = '';
+    OY.forEach(function (o) {
+      if (o[4]) { wn += pg('dr', ry(Y1 + 0.01, o[0], o[1], o[2], o[3])) + pl('mu', [o[1] - 0.2, Y1 + 0.01, o[2] + 1.0, o[1] - 0.2, Y1 + 0.01, o[2] + 1.15]); }
+      else { wn += pg('gl', ry(Y1 + 0.01, o[0], o[1], o[2], o[3])) + pl('fr', [o[0], Y1 + 0.01, o[2], o[1], Y1 + 0.01, o[2], o[1], Y1 + 0.01, o[3], o[0], Y1 + 0.01, o[3], o[0], Y1 + 0.01, o[2]]) + (o[1] - o[0] > 1.5 ? pl('mu', [(o[0] + o[1]) / 2, Y1 + 0.01, o[2], (o[0] + o[1]) / 2, Y1 + 0.01, o[3]]) : ''); gw2 += pg('glw', ry(Y1 + 0.02, o[0] + 0.08, o[1] - 0.08, o[2] + 0.08, o[3] - 0.08)); }
+      tp += ph('tape', [ry(Y1 + 0.015, o[0] - 0.1, o[1] + 0.1, o[2] - (o[4] ? 0 : 0.1), o[3] + 0.1), ry(Y1 + 0.015, o[0], o[1], o[2], o[3])]);
+      ok += ph('oks', [ry(Y1 + 0.02, o[0] - 0.12, o[1] + 0.12, o[2] - (o[4] ? 0 : 0.12), o[3] + 0.16), ry(Y1 + 0.02, o[0], o[1], o[2], o[3])]);
     });
-    OX.forEach(function (o) {
+    OX.concat(GWN).forEach(function (o) {
       wn += pg('gl r', rx(X1 + 0.01, o[0], o[1], o[2], o[3])) + pl('fr', [X1 + 0.01, o[0], o[2], X1 + 0.01, o[1], o[2], X1 + 0.01, o[1], o[3], X1 + 0.01, o[0], o[3], X1 + 0.01, o[0], o[2]]) + pl('mu', [X1 + 0.01, (o[0] + o[1]) / 2, o[2], X1 + 0.01, (o[0] + o[1]) / 2, o[3]]);
-      gw += pg('glw', rx(X1 + 0.02, o[0] + 0.08, o[1] - 0.08, o[2] + 0.08, o[3] - 0.08));
+      gw2 += pg('glw', rx(X1 + 0.02, o[0] + 0.08, o[1] - 0.08, o[2] + 0.08, o[3] - 0.08));
       tp += ph('tape', [rx(X1 + 0.015, o[0] - 0.1, o[1] + 0.1, o[2] - 0.1, o[3] + 0.1), rx(X1 + 0.015, o[0], o[1], o[2], o[3])]);
       ok += ph('oks', [rx(X1 + 0.02, o[0] - 0.12, o[1] + 0.12, o[2] - 0.12, o[3] + 0.16), rx(X1 + 0.02, o[0], o[1], o[2], o[3])]);
     });
+    if (AF) { // скляний фронтон: рами, імпости, двері по центру
+      var gz = function (y) { return Math.min(afz(y), RZ) - 0.25; }, gp = [X1 + 0.02, Y0 + 0.5, ZP + 0.2, X1 + 0.02, Y1 - 0.5, ZP + 0.2, X1 + 0.02, Y1 - 0.5, gz(Y1 - 0.5), X1 + 0.02, RY, RZ - 0.45, X1 + 0.02, Y0 + 0.5, gz(Y0 + 0.5)];
+      wn = pg('gl r', gp); var mm = ''; range(Y0 + 0.5 + 1.0, Y1 - 0.5 - 0.1, 1.0).forEach(function (y) { mm += pl('mu', [X1 + 0.03, y, ZP + 0.2, X1 + 0.03, y, gz(y)]); });
+      wn += mm + pl('mu', [X1 + 0.03, Y0 + 0.5, ZF2 + 0.9, X1 + 0.03, Y1 - 0.5, ZF2 + 0.9]) + pg('dr', rx(X1 + 0.03, RY - 0.5, RY + 0.5, ZP + 0.2, ZP + 2.3));
+      gw2 = pg('glw', gp.map(function (v, i) { return i % 3 === 0 ? v + 0.01 : v; })); tp = pl('tape', gp.concat(gp.slice(0, 3)));
+    }
     if (brus) A('r_win', 0, ok, { c: 'ow' });
     A(Kk.win, brus ? 0.35 : 0, wn, { c: 'ow' });
     A(Kk.win, brus ? 0.6 : 0.4, tp, { c: 'ow', h: [Kk.fac, frame ? 0.45 : 0.1] });
-    /* ── фасад */
-    var D = { block: 0.12, brick: 0.2, frame: 0.1, brus: 0.005 }[mat], gt = [RY, RZ - 0.3];
-    if (mat === 'block') {
-      A('fac_b', 0, skin('ins', X0, X1, Y0, Y1, D, ZP + 0.3, MZ, OY, OX, gt) + pg('xpsv r', rx(X1 + D, Y0 - D, Y1 + D, ZP - 0.25, ZP + 0.3)) + pg('xpsv l', ry(Y1 + D, X0 - D, X1 + D, ZP - 0.25, ZP + 0.3)), { c: 'ow' });
-      A('fac_b', 0.5, skin('rnd', X0, X1, Y0, Y1, D + 0.01, ZP + 0.3, MZ, OY, OX, gt) + pg('plt r', rx(X1 + D + 0.01, Y0 - D, Y1 + D + 0.01, ZP - 0.25, ZP + 0.3)) + pg('plt l', ry(Y1 + D + 0.01, X0 - D, X1 + D + 0.01, ZP - 0.25, ZP + 0.3)), { c: 'ow' });
+    /* ── фасад: система за технологією й стилем (штукатурка, облицювальна цегла, вентфасад з облицюванням) */
+    var D = { block: 0.12, brick: 0.2, frame: 0.1, brus: 0.005 }[mat], gt = HIP || FL ? null : [RY, RZ - 0.3], fz1 = FL ? ZT + 0.6 : MZ;
+    if (AF) {
+      var gpo = [X1 + 0.06, Y0 - 0.05, ZP, X1 + 0.06, Y1 + 0.05, ZP, X1 + 0.06, Y1 + 0.05, afz(Y1), X1 + 0.06, RY, RZ - 0.15, X1 + 0.06, Y0 - 0.05, afz(Y0)];
+      A('fac_f', 0.45, '<path class="clad r" fill-rule="evenodd" d="M' + pp(gpo).replace(/ /g, 'L') + 'ZM' + pp(gp.map(function (v, i) { return i % 3 === 0 ? X1 + 0.06 : v; })).replace(/ /g, 'L') + 'Z"/>', { c: 'ow' });
+    } else if (brus) A('r_fin', 0, skin('lz', X0, X1, Y0, Y1, D, ZP, ZT, OY, OX), { c: 'ow' });
+    else if (H.FS === 'c' || H.FS === 'clad') { // вентфасад: утеплення (у каркаса — мембрана), контррейка, облицювання
+      if (frame) A('f_ins', 0.3, skin('mb', X0, X1, Y0, Y1, 0.04, ZP, fz1, OY, OX, gt), { c: 'ow' });
+      else A(Kk.fac, 0, skin(brick ? 'wool' : 'ins', X0, X1, Y0, Y1, 0.1, ZP + (brick ? 0 : 0.3), fz1, OY, OX, gt), { c: 'ow' });
+      var bt = '', vd = C.s === 'barn', ztop = FL ? ZT + 0.6 : ZT;
+      if (vd) { range(ZP + 0.4, ztop, 0.8).forEach(function (z) { bt += pl('bat', [X1 + 0.07, Y0, z, X1 + 0.07, Y1, z]) + pl('bat', [X0, Y1 + 0.07, z, X1, Y1 + 0.07, z]); }); }
+      else { range(Y0 + 0.2, Y1, 0.6).forEach(function (y) { bt += pl('bat', [X1 + 0.07, y, ZP, X1 + 0.07, y, ztop]); }); range(X0 + 0.2, X1, 0.6).forEach(function (x) { bt += pl('bat', [x, Y1 + 0.07, ZP, x, Y1 + 0.07, ztop]); }); }
+      A(Kk.fac, frame ? 0 : 0.3, bt, { c: 'ow' });
+      A(Kk.fac, 0.45, skin('clad', X0, X1, Y0, Y1, Math.max(D, 0.14), ZP, fz1, OY, OX, gt) + (plate && !frame ? '' : pg('plt r', rx(X1 + D, Y0 - D, Y1 + D, ZP - 0.25, ZP)) + pg('plt l', ry(Y1 + D, X0 - D, X1 + D, ZP - 0.25, ZP))), { c: 'ow' });
+      if (!plate || frame) {} else A(Kk.fac, 0.5, pg('xpsv r', rx(X1 + 0.15, Y0 - 0.15, Y1 + 0.15, ZP - 0.25, ZP + 0.05)) + pg('plt l', ry(Y1 + 0.15, X0 - 0.15, X1 + 0.15, ZP - 0.25, ZP + 0.05)) + pg('plt r', rx(X1 + 0.16, Y0 - 0.15, Y1 + 0.15, ZP - 0.25, ZP + 0.05)), { c: 'ow' });
+    } else if (frame) { // каркас під штукатурку: мембрана, плити, армувальний шар і штукатурка
+      A('f_ins', 0.3, skin('mb', X0, X1, Y0, Y1, 0.04, ZP, fz1, OY, OX, gt), { c: 'ow' });
+      A('fac_f', 0.45, skin('rnd', X0, X1, Y0, Y1, D, ZP, fz1, OY, OX, gt) + pg('plt r', rx(X1 + D, Y0 - D, Y1 + D, ZP - 0.25, ZP)) + pg('plt l', ry(Y1 + D, X0 - D, X1 + D, ZP - 0.25, ZP)), { c: 'ow' });
+    } else if (mat === 'block') {
+      A('fac_b', 0, skin('ins', X0, X1, Y0, Y1, D, ZP + 0.3, fz1, OY, OX, gt) + pg('xpsv r', rx(X1 + D, Y0 - D, Y1 + D, ZP - 0.25, ZP + 0.3)) + pg('xpsv l', ry(Y1 + D, X0 - D, X1 + D, ZP - 0.25, ZP + 0.3)), { c: 'ow' });
+      A('fac_b', 0.5, skin('rnd', X0, X1, Y0, Y1, D + 0.01, ZP + 0.3, fz1, OY, OX, gt) + pg('plt r', rx(X1 + D + 0.01, Y0 - D, Y1 + D + 0.01, ZP - 0.25, ZP + 0.3)) + pg('plt l', ry(Y1 + D + 0.01, X0 - D, X1 + D + 0.01, ZP - 0.25, ZP + 0.3)), { c: 'ow' });
     } else if (brick) {
-      A('fac_k', 0, skin('wool', X0, X1, Y0, Y1, 0.1, ZP, MZ, OY, OX, gt), { c: 'ow' });
-      A('fac_k', 0.45, skin('fbr', X0, X1, Y0, Y1, D, ZP - 0.1, MZ, OY, OX, gt), { c: 'ow' });
-    } else if (frame) {
-      A('f_ins', 0.3, skin('mb', X0, X1, Y0, Y1, 0.04, ZP, MZ, OY, OX, gt), { c: 'ow' });
-      var bt = ''; range(Y0 + 0.2, Y1, 0.6).forEach(function (y) { bt += pl('bat', [X1 + 0.07, y, ZP, X1 + 0.07, y, ZT]); }); range(X0 + 0.2, X1, 0.6).forEach(function (x) { bt += pl('bat', [x, Y1 + 0.07, ZP, x, Y1 + 0.07, ZT]); });
-      A('fac_f', 0, bt, { c: 'ow' });
-      A('fac_f', 0.45, skin('clad', X0, X1, Y0, Y1, D, ZP, MZ, OY, OX, gt) + pg('plt r', rx(X1 + D, Y0 - D, Y1 + D, ZP - 0.25, ZP)) + pg('plt l', ry(Y1 + D, X0 - D, X1 + D, ZP - 0.25, ZP)), { c: 'ow' });
-    } else A('r_fin', 0, skin('lz', X0, X1, Y0, Y1, D, ZP, ZT, OY, OX), { c: 'ow' });
+      A('fac_k', 0, skin('wool', X0, X1, Y0, Y1, 0.1, ZP, fz1, OY, OX, gt), { c: 'ow' });
+      A('fac_k', 0.45, skin('fbr', X0, X1, Y0, Y1, D, ZP - 0.1, fz1, OY, OX, gt), { c: 'ow' });
+    }
+    // стильові деталі фасаду: класика — карниз і обрамлення вікон; шале — камінь по цоколю; козирок над входом
+    var FD = brus ? 0.01 : CL || H.FS === 'c' ? Math.max(D, 0.14) : D;
+    if (C.s === 'classic' && !brus) {
+      var sur = ''; OY.forEach(function (o) { if (!o[4]) sur += ph('sur', [ry(Y1 + FD + 0.012, o[0] - 0.14, o[1] + 0.14, o[2] - 0.12, o[3] + 0.2), ry(Y1 + FD + 0.012, o[0], o[1], o[2], o[3])]); });
+      OX.forEach(function (o) { sur += ph('sur', [rx(X1 + FD + 0.012, o[0] - 0.14, o[1] + 0.14, o[2] - 0.12, o[3] + 0.2), rx(X1 + FD + 0.012, o[0], o[1], o[2], o[3])]); });
+      A(Kk.fac, 0.8, sur + ring('crn', X0 - FD - 0.12, X1 + FD + 0.12, Y0 - FD - 0.12, Y1 + FD + 0.12, 0.3, ZT - 0.05, ZT + 0.18, [], []).o + (two ? ring('crn', X0 - FD - 0.04, X1 + FD + 0.04, Y0 - FD - 0.04, Y1 + FD + 0.04, 0.2, ZF2 - 0.12, ZF2, [], []).o : ''), { c: 'ow' });
+    }
+    if (C.s === 'chalet') A(Kk.fac, 0.8, skin('stn', X0, X1, Y0, Y1, FD + 0.04, ZP - 0.25, ZP + 1.0, OY, OX), { c: 'ow' });
+    if (!AF) A(Kk.fac, 0.9, box('cnp', dc[0] - 0.4, dc[1] + 0.4, Y1 + FD, Y1 + FD + (C.s === 'minimal' ? 1.4 : 1.0), ZP + 2.45, ZP + 2.6) + (C.s === 'classic' ? box('col2', dc[0] - 0.3, dc[0] - 0.12, Y1 + FD + 0.75, Y1 + FD + 0.93, ZP, ZP + 2.45) + box('col2', dc[1] + 0.12, dc[1] + 0.3, Y1 + FD + 0.75, Y1 + FD + 0.93, ZP, ZP + 2.45) : ''), { m: 'd', c: 'ow' });
     // цоколь: оздоблення поверх XPS плити / стрічки (разом із фасадом)
-    var cx = plate ? Sx1 + (frame ? 0.02 : 0.01) : X1 + 0.35, cy = plate ? Sy1 + (frame ? 0.02 : 0.01) : Y1 + 0.35, c0 = plate ? Sx0 : X0 - 0.35, c1 = plate ? Sy0 : Y0 - 0.35;
-    if (frame || !plate) A(Kk.fac, 0.5, pg('plt r', rx(cx, c1, cy, -0.03, ZP)) + pg('plt l', ry(cy, c0, cx, -0.03, ZP)) + pg('plt t', rz(ZP, c0, cx, cy - 0.12, cy)) + pg('plt t', rz(ZP, cx - 0.12, cx, c1, cy)), { c: 'ow' });
-    // склопакети поверх фасаду (фасад має отвори) — світло інтерʼєру
-    A('int', 0.6, gw);
-    /* ── дах: крокви, мембрана, контробрешітка й обрешітка, покриття, водостоки */
-    var rb = '', rfr = '', xs = range(X0 - O + 0.1, X1 + O - 0.1, 0.6);
-    xs.forEach(function (x) { rb += pl('raf', [x, Y0 - O, EZ, x, RY, RZ]); rfr += pl('raf', [x, RY, RZ, x, Y1 + O, EZ]); });
-    var sup = ''; if (brus) xs.forEach(function (x) { sup += box('sup', x - 0.08, x + 0.08, Y1 - 0.32, Y1 - 0.08, ZT, ZT + 0.1); });
-    A(Kk.raf, 0, rb + pl('rdg', [X0 - O, RY, RZ, X1 + O, RY, RZ]) + rfr + sup, { m: 'd', c: 'ow' });
-    var back = [X0 - O, Y0 - O, EZ, X1 + O, Y0 - O, EZ, X1 + O, RY, RZ, X0 - O, RY, RZ], front = [X0 - O, Y1 + O, EZ, X1 + O, Y1 + O, EZ, X1 + O, RY, RZ, X0 - O, RY, RZ];
-    A(Kk.raf, 0.35, pg('mem', back) + pg('mem', front), { c: 'ow' });
-    var cbt = '';
-    xs.forEach(function (x) { cbt += pl('cb', [x, RY, RZ + 0.05, x, Y1 + O, EZ + 0.05]); });
-    range(0.08, 1, 0.12).forEach(function (u) { var y = RY + u * (Y1 + O - RY), z = RZ - u * (RZ - EZ) + 0.08; cbt += pl('bttn', [X0 - O, y, z, X1 + O, y, z]); });
-    A(Kk.raf, 0.65, cbt, { c: 'ow' });
-    var seam = mat === 'frame' || brus, prof = '';
-    if (seam) range(X0 - O + 0.5, X1 + O - 0.1, 0.5).forEach(function (x) { prof += pl('sm', [x, RY, RZ + 0.1, x, Y1 + O, EZ + 0.1]); });
-    else range(0.06, 1, 0.075).forEach(function (u) { var y = RY + u * (Y1 + O - RY), z = RZ - u * (RZ - EZ) + 0.1; prof += pl('tl', [X0 - O, y, z, X1 + O, y, z]); });
-    var vz = zr(3.7) + 0.12;
-    A('roof', 0.35, pg('rf b', back.map(function (v, i) { return i % 3 === 2 ? v + 0.1 : v; })) + box('vent', 4.0, 4.3, 3.55, 3.85, vz - 0.4, vz + 0.8) +
-      pg('rf f', front.map(function (v, i) { return i % 3 === 2 ? v + 0.1 : v; })) + prof +
-      pl('rk', [X1 + O, Y0 - O, EZ + 0.1, X1 + O, RY, RZ + 0.1, X1 + O, Y1 + O, EZ + 0.1]) + pl('rdg2', [X0 - O, RY, RZ + 0.16, X1 + O, RY, RZ + 0.16]), { m: 'd', c: 'ow' });
-    A('roof', 0.7, pl('gut', [X0 - O, Y1 + O + 0.08, EZ - 0.05, X1 + O, Y1 + O + 0.08, EZ - 0.05]) + pl('gut', [X1 + O - 0.15, Y1 + O + 0.08, EZ - 0.05, X1 + O - 0.15, Y1 + O + 0.08, 0.25]), { c: 'ow' });
-    /* ── передній план: техніка, дрон, ганок (брус), дерева, світло, гарантія */
-    if (plate && !frame) A('pour', 0, box('trk', 14.2, 15.8, 11.4, 12.6, 0, 0.9) + box('trc', 14.2, 14.9, 12.6, 13.2, 0, 1.2) + pl('boom', [15.2, 12, 1.2, 13.4, 9.4, 5.6, 9.8, 7.4, 4.2, 9.2, 7, 1.2]) + pl('hose', [9.2, 7, 1.2, 9.2, 7, 0.4]), { h: ['pour', 0.95] });
-    else if (plate) A('pour', 0, box('trk', 14.2, 15.8, 11.4, 12.6, 0, 0.9) + box('trc', 14.2, 14.9, 12.6, 13.2, 0, 1.2) + pl('boom', [15.2, 12, 1.2, 13.4, 9.4, 4.4, 9.8, 7.4, 2.8, 9.2, 7, 0.9]) + pl('hose', [9.2, 7, 0.9, 9.2, 7, 0.35]), { h: ['pour', 0.95] });
-    else A('s_pour', 0, box('trk', 14.2, 15.8, 11.4, 12.6, 0, 0.9) + box('trc', 14.2, 14.9, 12.6, 13.2, 0, 1.2) + pl('boom', [15.2, 12, 1.2, 14.2, 10.6, 2.6, 13.4, 10.4, 0.9]) + pl('hose', [13.4, 10.4, 0.9, 13.4, 10.3, 0.35]), { h: ['s_pour', 0.95] });
-    if (!frame && !brus) A('slab', 0, box('trk', 0.4, 2.4, 11.2, 12.4, 0, 0.9) + pl('boom', [1.4, 11.8, 1.0, 7.2, 6.6, 9.6]) + pl('hose', [7.2, 6.6, 9.6, 7.2, 6.6, 4.6]) + box('sl', 6.2, 8.2, 5.2, 8.2, 4.4, 4.62), { h: ['slab', 0.9] });
-    A('geo', 0, pl('tri', [14.4, 11.6, 0, 15, 11.9, 1.5, 15.6, 11.5, 0]) + pl('tri', [15, 11.9, 1.5, 15.2, 12.5, 0]) + box('tri-h', 14.8, 15.2, 11.7, 12.1, 1.5, 1.8), { h: ['base', 0] });
-    var drone = function () { var q = P(14.6, 1.6, 10.2).split(','), x = +q[0], y = +q[1]; return '<g class="drn"><path d="M' + (x - 13) + ' ' + y + 'h26M' + x + ' ' + (y - 5) + 'v10" class="dra"/><rect x="' + (x - 4) + '" y="' + (y - 2.5) + '" width="8" height="5" rx="1.5" class="drb"/>' +
+    var cx2 = plate ? Sx1 + (frame ? 0.02 : 0.01) : X1 + 0.35, cy2 = plate ? Sy1 + (frame ? 0.02 : 0.01) : Y1 + 0.35, c0 = plate ? Sx0 : X0 - 0.35, c1 = plate ? Sy0 : Y0 - 0.35;
+    if (frame || !plate) A(Kk.fac, 0.5, pg('plt r', rx(cx2, c1, cy2, -0.03, ZP)) + pg('plt l', ry(cy2, c0, cx2, -0.03, ZP)) + pg('plt t', rz(ZP, c0, cx2, cy2 - 0.12, cy2)) + pg('plt t', rz(ZP, cx2 - 0.12, cx2, c1, cy2)), { c: 'ow' });
+    // склопакети поверх фасаду (фасад має отвори) — світло інтерʼєру; вікно у фронтоні мансарди — поверх оздоблення фронтону
+    A('int', 0.6, gw2);
+    if (GWN.length) A(Kk.fac, 0.95, GWN.map(function (o) { return pg('gl r', rx(X1 + FD + 0.02, o[0], o[1], o[2], o[3])) + pl('fr', [X1 + FD + 0.02, o[0], o[2], X1 + FD + 0.02, o[1], o[2], X1 + FD + 0.02, o[1], o[3], X1 + FD + 0.02, o[0], o[3], X1 + FD + 0.02, o[0], o[2]]); }).join(''), { c: 'ow' });
+    /* ── дах */
+    var seam = { barn: 1, scandi: 1, aframe: 1 }[C.s] || (C.s !== 'classic' && C.s !== 'chalet' && (frame || brus)), prof = '';
+    if (FL) { // плоска покрівля: плита (2 пов.), парапет, ухилоутворення й утеплення, мембрана, лійки; тераса — плитка на опорах, скляне огородження, вихід на дах
+      var RB = ZT, pr = ring('par', X0 - FD, X1 + FD, Y0 - FD, Y1 + FD, 0.25, RB, RB + 0.6, [], []);
+      if (two) A(Kk.raf, 0, box(frame ? 'jst' : 'sl', X0, X1, Y0, Y1, ZB2 + 0.01, ZT), { m: 'd' });
+      A(Kk.raf, 0.3, pr.i);
+      A(Kk.raf, 0.55, pg('xps', rz(RB + 0.18, X0 - FD + 0.25, X1 + FD - 0.25, Y0 - FD + 0.25, Y1 + FD - 0.25)));
+      A(Kk.raf, 0.3, pr.o, { c: 'ow' });
+      A('roof', 0.35, pg('mbr', rz(RB + 0.3, X0 - FD + 0.25, X1 + FD - 0.25, Y0 - FD + 0.25, Y1 + FD - 0.25)) + circ('drn2', X0 + 1, Y0 + 1, RB + 0.31, 2.5) + circ('drn2', X1 - 1, Y0 + 1, RB + 0.31, 2.5) + ring('cap', X0 - FD - 0.04, X1 + FD + 0.04, Y0 - FD - 0.04, Y1 + FD + 0.04, 0.33, RB + 0.6, RB + 0.66, [], []).o, { c: 'ow' });
+      if (C.r) {
+        var dk = pg('deck', rz(RB + 0.42, X0 + 0.4, X1 - 0.4, Y0 + 0.4, Y1 - 0.4)); range(X0 + 0.55, X1 - 0.5, 0.15 * 4).forEach(function (x) { dk += pl('dkl2', [x, Y0 + 0.4, RB + 0.42, x, Y1 - 0.4, RB + 0.42]); });
+        A('roof', 0.6, dk + box(WC === 'wf' ? 'osb' : WC, X0 + 0.5, X0 + 2.9, Y0 + 0.5, Y0 + 2.9, RB + 0.3, RB + 2.6) + box('sl', X0 + 0.4, X0 + 3.0, Y0 + 0.4, Y0 + 3.0, RB + 2.6, RB + 2.8) + pg('dr', ry(Y0 + 2.91, X0 + 1.1, X0 + 2.0, RB + 0.42, RB + 2.4)), { m: 'd' });
+        A('roof', 0.75, pg('glp', rx(X1 + FD - 0.05, Y0 - FD + 0.3, Y1 + FD - 0.3, RB + 0.66, RB + 1.6)) + pg('glp', ry(Y1 + FD - 0.05, X0 - FD + 0.3, X1 + FD - 0.3, RB + 0.66, RB + 1.6)), { c: 'ow' });
+      }
+    } else if (AF) {
+      var rbA = ''; range(X0 - O + 0.1, X1 + O - 0.05, 0.6).forEach(function (x) { rbA += pl('cb', [x, RY, RZ + 0.05, x, Y1 + O, EZ + 0.05]); });
+      A('f_osb', 0.2, pg('osbs', afF), { c: 'ow' });
+      A('rafters', 0, pg('mem', afF) + rbA, { c: 'ow' });
+      range(X0 - O + 0.5, X1 + O - 0.1, 0.5).forEach(function (x) { prof += pl('sm', [x, RY, RZ + 0.1, x, Y1 + O, EZ + 0.1]); });
+      A('roof', 0.35, pg('rf f', afF.map(function (v, i) { return i % 3 === 2 ? v + 0.1 : v; })) + prof + pl('rk', [X1 + O, Y0 - O, EZ + 0.1, X1 + O, RY, RZ + 0.1, X1 + O, Y1 + O, EZ + 0.1]) + pl('rdg2', [X0 - O, RY, RZ + 0.16, X1 + O, RY, RZ + 0.16]), { m: 'd', c: 'ow' });
+    } else {
+      var hh = RY - Y0 + O, rb = '', rfr = '', xs = range(X0 - O + 0.1, X1 + O - 0.1, 0.6);
+      var back, front, side = null;
+      if (HIP) {
+        back = [X0 - O, Y0 - O, EZ, X1 + O, Y0 - O, EZ, X1 + O - hh, RY, RZ, X0 - O + hh, RY, RZ]; front = [X0 - O, Y1 + O, EZ, X1 + O, Y1 + O, EZ, X1 + O - hh, RY, RZ, X0 - O + hh, RY, RZ];
+        side = [X1 + O, Y0 - O, EZ, X1 + O, Y1 + O, EZ, X1 + O - hh, RY, RZ];
+        xs.forEach(function (x) { // крокви ближнього схилу й нарожники: коротші біля вальм
+          var a = Math.min(1, Math.min(x - (X0 - O), (X1 + O) - x) / hh), y = Y1 + O - a * hh, z = EZ + a * (RZ - EZ);
+          rfr += pl('raf', [x, Y1 + O, EZ, x, y, z]); rb += pl('raf', [x, Y0 - O, EZ, x, Y0 - O + a * hh, z]);
+        });
+        range(Y0 - O + 0.4, Y1 + O - 0.3, 0.6).forEach(function (y) { var a = Math.min(1, Math.min(y - (Y0 - O), (Y1 + O) - y) / hh); rfr += pl('raf', [X1 + O, y, EZ, X1 + O - a * hh, y, EZ + a * (RZ - EZ)]); });
+        rfr += pl('rdg', [X1 + O, Y1 + O, EZ, X1 + O - hh, RY, RZ]) + pl('rdg', [X1 + O, Y0 - O, EZ, X1 + O - hh, RY, RZ]) + pl('rdg', [X0 - O, Y1 + O, EZ, X0 - O + hh, RY, RZ]);
+      } else {
+        back = [X0 - O, Y0 - O, EZ, X1 + O, Y0 - O, EZ, X1 + O, RY, RZ, X0 - O, RY, RZ]; front = [X0 - O, Y1 + O, EZ, X1 + O, Y1 + O, EZ, X1 + O, RY, RZ, X0 - O, RY, RZ];
+        xs.forEach(function (x) { rb += pl('raf', [x, Y0 - O, EZ, x, RY, RZ]); rfr += pl('raf', [x, RY, RZ, x, Y1 + O, EZ]); });
+      }
+      var sup = ''; if (brus) xs.forEach(function (x) { sup += box('sup', x - 0.08, x + 0.08, Y1 - 0.32, Y1 - 0.08, ZT, ZT + 0.1); });
+      A(Kk.raf, 0, rb + pl('rdg', [X0 - O + (HIP ? hh : 0), RY, RZ, X1 + O - (HIP ? hh : 0), RY, RZ]) + rfr + sup, { m: 'd', c: 'ow' });
+      A(Kk.raf, 0.35, pg('mem', back) + pg('mem', front) + (side ? pg('mem', side) : ''), { c: 'ow' });
+      var cbt = '';
+      if (!HIP) xs.forEach(function (x) { cbt += pl('cb', [x, RY, RZ + 0.05, x, Y1 + O, EZ + 0.05]); });
+      range(0.08, 1, 0.12).forEach(function (u) { var y = Y1 + O - u * hh, z = EZ + u * (RZ - EZ) + 0.08, e = HIP ? u * hh : 0; cbt += pl('bttn', [X0 - O + e, y, z, X1 + O - e, y, z]); });
+      A(Kk.raf, 0.65, cbt, { c: 'ow' });
+      var lift = function (a) { return a.map(function (v, i) { return i % 3 === 2 ? v + 0.1 : v; }); };
+      if (seam) range(X0 - O + 0.5, X1 + O - 0.1, 0.5).forEach(function (x) { var a = HIP ? Math.min(1, Math.min(x - (X0 - O), (X1 + O) - x) / hh) : 1; prof += pl('sm', [x, Y1 + O - a * hh, EZ + a * (RZ - EZ) + 0.1, x, Y1 + O, EZ + 0.1]); });
+      else range(0.06, 1, 0.075).forEach(function (u) { var y = Y1 + O - u * hh, z = EZ + u * (RZ - EZ) + 0.1, e = HIP ? u * hh : 0; prof += pl('tl', [X0 - O + e, y, z, X1 + O - e, y, z]); if (HIP) prof += pl('tl', [X1 + O - u * hh, Y0 - O + u * hh, z, X1 + O - u * hh, Y1 + O - u * hh, z]); });
+      var vx = X0 + 1.0, vz = zr(Y0 + 0.7) + 0.12, rws = '';
+      if (attic) range(X0 + 1.4, X1 - 1.0, Math.max(2.6, H.W / 4)).forEach(function (x) { var u0 = 0.3, u1 = 0.55; rws += pg('gl', [x, Y1 + O - u0 * hh, EZ + u0 * (RZ - EZ) + 0.12, x + 0.8, Y1 + O - u0 * hh, EZ + u0 * (RZ - EZ) + 0.12, x + 0.8, Y1 + O - u1 * hh, EZ + u1 * (RZ - EZ) + 0.12, x, Y1 + O - u1 * hh, EZ + u1 * (RZ - EZ) + 0.12]); });
+      A('roof', 0.35, pg('rf b', lift(back)) + box('vent', vx, vx + 0.3, Y0 + 0.55, Y0 + 0.85, vz - 0.4, vz + 0.8) + pg('rf f', lift(front)) + (side ? pg('rf s', lift(side)) : '') + prof + rws +
+        (HIP ? '' : pl('rk', [X1 + O, Y0 - O, EZ + 0.1, X1 + O, RY, RZ + 0.1, X1 + O, Y1 + O, EZ + 0.1])) + pl('rdg2', [X0 - O + (HIP ? hh : 0), RY, RZ + 0.16, X1 + O - (HIP ? hh : 0), RY, RZ + 0.16]), { m: 'd', c: 'ow' });
+      if (O > 0.2) A('roof', 0.7, pl('gut', [X0 - O, Y1 + O + 0.08, EZ - 0.05, X1 + O, Y1 + O + 0.08, EZ - 0.05]) + pl('gut', [X1 + O - 0.15, Y1 + O + 0.08, EZ - 0.05, X1 + O - 0.15, Y1 + O + 0.08, 0.25]), { c: 'ow' });
+    }
+    // навіс для авто: стовпи й плоский дах
+    if (CP) A('roof', 0.5, box('post', CP[0], CP[0] + 0.15, CP[3] - 0.15, CP[3], ZP, 2.7) + box('post', CP[1] - 0.15, CP[1], CP[3] - 0.15, CP[3], ZP, 2.7) + box('post', CP[0], CP[0] + 0.15, CP[2], CP[2] + 0.15, ZP, 2.7) +
+      box('wsl', CP[0] - 0.2, CP[1] + 0.05, CP[2] - 0.2, CP[3] + 0.3, 2.7, 2.92), { m: 'd' });
+    /* ── передній план: техніка, дрон, ганок (брус), дерева, світло, людина для масштабу, гарантія */
+    var tk = [GX - 1.8, GX - 0.2, GY - 1.6, GY - 0.4];
+    var trk = box('trk', tk[0], tk[1], tk[2], tk[3], 0, 0.9) + box('trc', tk[0], tk[0] + 0.7, tk[3], tk[3] + 0.6, 0, 1.2);
+    if (plate && !frame) A('pour', 0, trk + pl('boom', [tk[0] + 1, tk[2] + 0.6, 1.2, cx + 4.4, cy + 2.9, 5.6, cx + 0.8, cy + 0.9, 4.2, cx + 0.2, cy + 0.5, 1.2]) + pl('hose', [cx + 0.2, cy + 0.5, 1.2, cx + 0.2, cy + 0.5, 0.4]), { h: ['pour', 0.95] });
+    else if (plate) A('pour', 0, trk + pl('boom', [tk[0] + 1, tk[2] + 0.6, 1.2, cx + 4.4, cy + 2.9, 4.4, cx + 0.8, cy + 0.9, 2.8, cx + 0.2, cy + 0.5, 0.9]) + pl('hose', [cx + 0.2, cy + 0.5, 0.9, cx + 0.2, cy + 0.5, 0.35]), { h: ['pour', 0.95] });
+    else A('s_pour', 0, trk + pl('boom', [tk[0] + 1, tk[2] + 0.6, 1.2, X1 + 1.2, Y1 + 0.6, 2.6, X1 + 0.4, Y1 + 0.4, 0.9]) + pl('hose', [X1 + 0.4, Y1 + 0.4, 0.9, X1 + 0.4, Y1 + 0.3, 0.35]), { h: ['s_pour', 0.95] });
+    if (!frame && !brus) A('slab', 0, box('trk', 0.4, 2.4, GY - 1.8, GY - 0.6, 0, 0.9) + pl('boom', [1.4, GY - 1.2, 1.0, cx + 0.2, cy, ZF2 + 6.1]) + pl('hose', [cx + 0.2, cy, ZF2 + 6.1, cx + 0.2, cy, ZF2 + 1.1]) + box('sl', cx - 0.8, cx + 1.2, cy - 1.3, cy + 1.7, ZF2 + 0.9, ZF2 + 1.12), { h: ['slab', 0.9] });
+    A('geo', 0, pl('tri', [GX - 1.6, GY - 1.4, 0, GX - 1.0, GY - 1.1, 1.5, GX - 0.4, GY - 1.5, 0]) + pl('tri', [GX - 1.0, GY - 1.1, 1.5, GX - 0.8, GY - 0.5, 0]) + box('tri-h', GX - 1.2, GX - 0.8, GY - 1.3, GY - 0.9, 1.5, 1.8), { h: ['base', 0] });
+    var drone = function () { var q = P(GX - 1.4, 1.6, RZ + 1.5).split(','), x = +q[0], y = +q[1]; return '<g class="drn"><path d="M' + (x - 13) + ' ' + y + 'h26M' + x + ' ' + (y - 5) + 'v10" class="dra"/><rect x="' + (x - 4) + '" y="' + (y - 2.5) + '" width="8" height="5" rx="1.5" class="drb"/>' +
       [[-13, 0], [13, 0], [0, -5], [0, 5]].map(function (q2) { return '<ellipse cx="' + (x + q2[0]) + '" cy="' + (y + q2[1]) + '" rx="5" ry="1.6" class="drr"/>'; }).join('') + '</g>'; };
     A(Kk.sl, 0.2, drone(), { h: [Kk.sl, 0.95] }); A('roof', 0.2, drone(), { h: ['roof', 0.98] });
-    if (brus) {
-      var por = box('post', 8.0, 8.16, Y1 + 1.2, Y1 + 1.36, 0.2, ZB1 - 0.15) + box('post', 10.0, 10.16, Y1 + 1.2, Y1 + 1.36, 0.2, ZB1 - 0.15) + box('jack', 7.98, 8.18, Y1 + 1.18, Y1 + 1.38, ZB1 - 0.15, ZB1) + box('jack', 9.98, 10.18, Y1 + 1.18, Y1 + 1.38, ZB1 - 0.15, ZB1) +
-        box('wsl', 7.6, 10.6, Y1, Y1 + 1.5, ZB1, ZB1 + 0.12);
+    if (brus && !AF) {
+      var pX = Math.min(X1 - 3.2, dX - 1.4);
+      var por = box('post', pX + 0.4, pX + 0.56, Y1 + 1.2, Y1 + 1.36, 0.2, ZB1 - 0.15) + box('post', pX + 2.4, pX + 2.56, Y1 + 1.2, Y1 + 1.36, 0.2, ZB1 - 0.15) + box('jack', pX + 0.38, pX + 0.58, Y1 + 1.18, Y1 + 1.38, ZB1 - 0.15, ZB1) + box('jack', pX + 2.38, pX + 2.58, Y1 + 1.18, Y1 + 1.38, ZB1 - 0.15, ZB1) +
+        box('wsl', pX, pX + 3.0, Y1, Y1 + 1.5, ZB1, ZB1 + 0.12);
       A('r_shrink', 0, por, { m: 'd' });
-      A('r_shrink', 0.3, pl('arr', [12.6, Y1 + 0.3, ZT - 0.3, 12.6, Y1 + 0.3, ZT - 1.2]) + pl('arr', [12.4, Y1 + 0.3, ZT - 0.95, 12.6, Y1 + 0.3, ZT - 1.2, 12.8, Y1 + 0.3, ZT - 0.95]) + txt('dt', 12.9, Y1 + 0.3, ZT - 0.8, 0, ui.shrink), { h: ['r_win', 0.5] });
+      A('r_shrink', 0.3, pl('arr', [X1 - 0.4, Y1 + 0.3, ZT - 0.3, X1 - 0.4, Y1 + 0.3, ZT - 1.2]) + pl('arr', [X1 - 0.6, Y1 + 0.3, ZT - 0.95, X1 - 0.4, Y1 + 0.3, ZT - 1.2, X1 - 0.2, Y1 + 0.3, ZT - 0.95]) + txt('dt', X1 - 0.1, Y1 + 0.3, ZT - 0.8, 0, ui.shrink), { h: ['r_win', 0.5] });
     }
-    A('land', 0.3, tree(1.4, 11.6, 1.4, 20) + tree(15, 1.4, 1.6, 22) + circ('cr2', 5, Y1 + 1.5, 0.35, 7) + circ('cr', 6.3, Y1 + 1.55, 0.35, 8) + circ('cr2', 11.6, Y1 + 1.5, 0.35, 7), { m: 'd' });
-    A('land', 0.6, pl('lp', [7.8, 12.2, 0, 7.8, 12.2, 1.1]) + circ('lpg', 7.8, 12.2, 1.15, 9) + circ('bulb', 7.8, 12.2, 1.15, 2) + pl('lp', [14.7, 12.4, 0, 14.7, 12.4, 1.1]) + circ('lpg', 14.7, 12.4, 1.15, 9) + circ('bulb', 14.7, 12.4, 1.15, 2));
-    A('done', 0, seal(15.4, 3.4, 9.6, ui), { m: 'd' });
-    return { parts: L, xr: S('mep'), th: [] };
+    A('land', 0.3, tree(1.4, GY - 1.4, 1.4, 20) + tree(GX - 1, 1.4, 1.6, 22) + circ('cr2', X0 + 2, Y1 + 1.5, 0.35, 7) + circ('cr', X0 + 3.3, Y1 + 1.55, 0.35, 8) + circ('cr2', X1 - 1.4, Y1 + 1.5, 0.35, 7), { m: 'd' });
+    A('land', 0.6, pl('lp', [dX - 1.2, GY - 0.8, 0, dX - 1.2, GY - 0.8, 1.1]) + circ('lpg', dX - 1.2, GY - 0.8, 1.15, 9) + circ('bulb', dX - 1.2, GY - 0.8, 1.15, 2) + pl('lp', [GX - 1.3, GY - 0.6, 0, GX - 1.3, GY - 0.6, 1.1]) + circ('lpg', GX - 1.3, GY - 0.6, 1.15, 9) + circ('bulb', GX - 1.3, GY - 0.6, 1.15, 2));
+    // людина 1,8 м біля входу — масштаб
+    var hp = P(dX + 1.1, Y1 + 1.6, 0).split(','), hq = P(dX + 1.1, Y1 + 1.6, 1.8).split(',');
+    B('<g class="man"><line x1="' + hp[0] + '" y1="' + hp[1] + '" x2="' + hq[0] + '" y2="' + (+hq[1] + 3.2) + '"/><circle cx="' + hq[0] + '" cy="' + (+hq[1] + 1.6) + '" r="1.7"/></g>');
+    A('done', 0, seal(GX - 0.6, Y0 + 0.4, RZ + 0.9, ui), { m: 'd' });
+    return { parts: L, xr: S('mep'), th: [], W: H.W, D: H.D };
   }
+
   function seal(x, y, z, ui) { // печатка «36 міс. гарантія»
     var q = P(x, y, z).split(','), a = +q[0], b = +q[1];
     bb[0] = Math.min(bb[0], a - 28); bb[1] = Math.min(bb[1], b - 28); bb[2] = Math.max(bb[2], a + 28); bb[3] = Math.max(bb[3], b + 28);
@@ -765,7 +941,10 @@
     w_brus: ['#d9a35c', '#b07d45', '#c9a86a', '#8f6236', '#6b8c6e'], f_wet: ['#d9d6d0', '#a9a39a', '#5d8fb5', '#86807a', '#3f6f95', '#c9c2b5', '#45403a'],
     f_floor: ['#c9c6c0', '#a9a39a', '#86807a', '#f0a04b', '#8fb3c9', '#6b8c6e', '#45403a'], f_wall: ['#e3dbcd', '#efe9df', '#d9d3c8', '#a69f95', '#c9c2b5', '#5f5952'],
     f_ceil: ['#efe9df', '#ddd6ca', '#9fb2bd', '#d9a64e', '#45403a'], f_part: ['#e3dbcd', '#ddd6ca', '#d8c46a', '#cfc8bc', '#6b8c6e'],
-    f_pq: ['#b58a5a', '#6b8c6e', '#c9c2b5', '#86807a', '#45403a'], f_net: ['#e8b75a', '#b08be0', '#6fa8dc', '#e0705a', '#a8a39b', '#f0a04b', '#7fd3d9']
+    f_pq: ['#b58a5a', '#6b8c6e', '#c9c2b5', '#86807a', '#45403a'], f_net: ['#e8b75a', '#b08be0', '#6fa8dc', '#e0705a', '#a8a39b', '#f0a04b', '#7fd3d9'],
+    w_block_v: ['#8a6a4e', '#2a2622', '#cfd8dd', '#d8c46a', '#bdb6aa', '#efe9df'], w_brick_v: ['#8a6a4e', '#2a2622', '#cfd8dd', '#d8c46a', '#9a4a30', '#efe9df'],
+    roof_flat: ['#4a4d52', '#d8c46a', '#9a948b', '#1f1d1b', '#8f8a82'], roof_ter: ['#a07a52', '#cfd8dd', '#8fb3c9', '#4a4d52', '#9a948b', '#8f8a82'],
+    slab_c: ['#d8c46a', '#9fb2bd', '#8f8a82', '#e3dbcd']
   };
 
   /* ---------- збірка блоку ---------- */
@@ -782,9 +961,30 @@
     if (!cta.id) cta.id = 'bz-cta' + (sx ? '-' + sx.slice(0, -1) : '');
     var mat = sec.getAttribute('data-bz-m'); if (MATS.indexOf(mat) < 0) mat = 'block';
     var fv = sec.getAttribute('data-bz-v') === 'old' ? 'old' : 'new', xr = false, cpt = sec.hasAttribute('data-bz-c'), hl = '';
+    if (data.hs) HS = data.hs;
+    // конфігурація будинку: технологія (m), тип (t), стиль (s), площа (a), гараж/навіс (g), тераса на даху (r); стартова — data-bz-cfg="тип,стиль,площа"
+    var hd0 = data.hdef || { t: 'two', s: 'scandi', a: 160 }, cf0 = (sec.getAttribute('data-bz-cfg') || '').split(',');
+    var C = { m: mat, t: cf0[0] || hd0.t, s: cf0[1] || hd0.s, a: +(cf0[2] || hd0.a), g: '', r: 0, lang: lang }, hint = '', cfgOpen = false;
+    hfix(C, 'm'); mat = C.m;
     var seq, n, lis = [], sc, svg, layers = [], ghost, act = -1, cur = 0, raf = 0, top0 = 0, live = false, rm = !!(MQ && MQ.matches), man = 0, pieKey = null, pieSel = 0;
     function S(k) { return seq.indexOf(k); }
-    function pieOf(k) { var a = data.pieAt[scene][k]; if (a && typeof a === 'object') a = a[mat]; return a && data.pie[a] ? a : null; }
+    function pieOf(k) {
+      var a = data.pieAt[scene][k]; if (a && typeof a === 'object') a = a[mat];
+      if (scene === 'house') { // пироги під конфігурацію: вентфасад, плоска покрівля / тераса, горищне перекриття, схили A-frame
+        var h = hder(C);
+        if (h.AF && (k === 'f_ins' || a === 'w_frame')) a = 'roof';
+        if (a === 'w_block' && h.FS === 'clad') a = 'w_block_v'; if (a === 'w_brick' && h.FS === 'clad') a = 'w_brick_v';
+        if (a === 'roof' && h.FL) a = C.r ? 'roof_ter' : 'roof_flat';
+        if (a === 'slab' && h.TY === 'one') a = h.FL ? null : 'slab_c';
+      }
+      return a && data.pie[a] ? a : null;
+    }
+    function stx(st, k, suf) { // текст етапу: квартира — варіант (_n / _o), будинок — заміни за конфігурацією (тип, дах, фасад)
+      if (scene === 'flat') return st[k + suf] || st[k];
+      var tg = hder(C).tags, o = data.sto || {};
+      for (var i = 0; i < tg.length; i++) if (o[tg[i]] && o[tg[i]][k]) return o[tg[i]][k];
+      return st[k];
+    }
     ol.classList.remove('steps'); ol.classList.add('bz-on-l');
 
     var run = el('div', 'bz-run'), pin = el('div', 'bz-pin'), side = el('div', 'bz-side'), fig = el('div', 'bz-fig');
@@ -835,18 +1035,77 @@
     }
     function chips() {
       mats.innerHTML = (cpt && ui.sc ? grp('', 's', ['house', 'flat'], scene, ui.sc) : '') +
-        (scene === 'house' ? grp(ui.mat, 'm', MATS, mat, ui.m) : ui.fl ? grp(ui.fl.v, 'v', data.fv || ['new', 'old'], fv, ui.fl) : '');
+        (scene === 'house' ? (ui.cfg ? '<button type="button" class="bz-cb" aria-expanded="' + cfgOpen + '" aria-controls="' + cfg.id + '"><span aria-hidden="true">⚙</span> ' + esc(summ()) + '</button>' : grp(ui.mat, 'm', MATS, mat, ui.m)) :
+          ui.fl ? grp(ui.fl.v, 'v', data.fv || ['new', 'old'], fv, ui.fl) : '');
+      cfgHtml();
+    }
+    // конфігуратор будинку: технологія, тип, опції, стиль, площа + підказка про сумісність і орієнтир цін (лише «від» з CLAUDE.md)
+    var cfg = el('div', 'bz-cfg'); cfg.id = 'bz-cfg' + sx; cfg.setAttribute('role', 'group'); cfg.setAttribute('aria-label', ui.mat || '');
+    var cap = el('p', 'bz-cap'); cap.setAttribute('aria-live', 'polite');
+    function flL(h) { var u = ui.cfg; return h.AF ? u.fl.af : u.fl[h.TY]; }
+    function summ() { var u = ui.cfg, h = hder(C); return ui.m[C.m] + ' · ' + (h.AF ? '' : u.tn[h.TY] + ' · ') + u.sn[C.s] + ' · ' + C.a + ' ' + u.m2; }
+    function cfgHtml() {
+      var u = ui.cfg; if (!u) return;
+      cfg.hidden = scene !== 'house'; cap.hidden = scene !== 'house';
+      if (scene !== 'house') return;
+      var h = hder(C), ex = ['g', 'c', 'r'].map(function (k) { var on = k === 'r' ? !!C.r : C.g === k; return '<button type="button" data-x="' + k + '" aria-pressed="' + on + '">' + esc(u.xn[k]) + '</button>'; }).join('');
+      var szn = {}; SZ.forEach(function (a) { szn[a] = a + ' ' + u.m2; });
+      cfg.innerHTML = '<div class="bz-cr">' + grp(ui.mat, 'm', MATS, C.m, ui.m) + '</div><div class="bz-cr">' + grp(u.t, 't', TYP, h.AF ? '' : h.TY, u.tn) +
+        '<span class="bz-g" role="group" aria-label="' + esc(u.x) + '"><span class="bz-gl" aria-hidden="true">' + esc(u.x) + '</span>' + ex + '</span></div>' +
+        '<div class="bz-cr">' + grp(u.s, 'c', STY, C.s, u.sn) + '</div><div class="bz-cr">' + grp(u.a, 'a', SZ, C.a, szn) + '</div>' +
+        '<p class="bz-hint" aria-live="polite">' + esc(hint && u.h[hint] ? u.h[hint] : '') + '</p><p class="bz-prc">' + esc(u.price) + '</p>' +
+        '<button type="button" class="bz-cx">' + esc(u.done) + '</button>';
+      var dm = function (v) { return lang === 'en' ? String(v) : String(v).replace('.', ','); };
+      cap.textContent = '≈ ' + C.a + ' ' + u.m2 + ' · ' + flL(h) + ' · ' + dm(h.W) + ' × ' + dm(h.D) + ' м'.replace('м', lang === 'en' ? 'm' : 'м') + (C.g ? ' · ' + (C.g === 'g' ? u.gar : u.car) : '') + (C.r ? ' · ' + u.ter : '');
+    }
+    function setCfgOpen(v) {
+      cfgOpen = v; fig.classList.toggle('cfg-open', v);
+      var b = mats.querySelector('.bz-cb'); if (b) b.setAttribute('aria-expanded', v ? 'true' : 'false');
+      if (v) { var f = cfg.querySelector('button[aria-pressed="true"]'); if (f) try { f.focus({ preventScroll: true }); } catch (x) { } } else if (b) try { b.focus({ preventScroll: true }); } catch (x) { }
+    }
+    cfg.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('button'); if (!b) return;
+      if (b.classList.contains('bz-cx')) { setCfgOpen(false); return; }
+      var k = '', v, at = '';
+      if (b.hasAttribute('data-m')) { k = 'm'; at = 'm'; v = b.getAttribute('data-m'); }
+      else if (b.hasAttribute('data-t')) { k = 't'; at = 't'; v = b.getAttribute('data-t'); }
+      else if (b.hasAttribute('data-c')) { k = 's'; at = 'c'; v = b.getAttribute('data-c'); }
+      else if (b.hasAttribute('data-a')) { k = 'a'; at = 'a'; v = +b.getAttribute('data-a'); }
+      else if (b.hasAttribute('data-x')) { at = 'x'; v = b.getAttribute('data-x'); if (v === 'r') { k = 'r'; v = C.r ? 0 : 1; } else { k = 'g'; v = C.g === v ? '' : v; } }
+      if (!k || C[k] === v) return;
+      var key = b.getAttribute('data-' + at);
+      C[k] = v; hint = hfix(C, k); mat = C.m; fade = 1;
+      build(); render(cur); placeCfg();
+      cl('build_anim_cfg', [C.m, C.t, C.s, C.a, C.g || '-', C.r ? 'ter' : '-'].join('|'));
+      var f = cfg.querySelector('button[data-' + at + '="' + key + '"]'); if (f) try { f.focus({ preventScroll: true }); } catch (x) { }
+    });
+    cfg.addEventListener('keydown', function (e) { if (e.key === 'Escape' && cfgOpen) setCfgOpen(false); });
+    function placeCfg() { // десктоп: панель над сценою, сцена — нижче (padding у межах fig, висота блоку та сама); телефон — панель за кнопкою поверх сцени
+      var mob = !!(MOB && MOB.matches), on = scene === 'house' && !!ui.cfg && !mob;
+      cfg.style.top = on && cpt ? (mats.offsetHeight + 8) + 'px' : '';
+      fig.style.paddingTop = on ? (cfg.offsetTop + cfg.offsetHeight + 4) + 'px' : '';
+      if (!mob && cfgOpen) setCfgOpen(false);
     }
     mats.addEventListener('click', function (e) {
       var b = e.target.closest && e.target.closest('button'); if (!b || b.getAttribute('aria-pressed') === 'true') return;
+      if (b.hasAttribute('data-m') && scene === 'house') { C.m = b.getAttribute('data-m'); hint = hfix(C, 'm'); mat = C.m; fade = 1; rebuild(); cl('build_anim_mat', mat); return; }
       if (b.hasAttribute('data-m')) setMat(b.getAttribute('data-m'), 1);
       else if (b.hasAttribute('data-v')) { fv = b.getAttribute('data-v'); rebuild(); cl('build_anim_var', fv); }
-      else if (b.hasAttribute('data-s')) { scene = b.getAttribute('data-s'); rebuild(); placePie(); cl('build_anim_scene', scene); }
+      else if (b.hasAttribute('data-s')) {
+        var ns = b.getAttribute('data-s');
+        W.__casBAd(ns).then(function (d2) { // друга сцена: дані дотягуємо й домішуємо
+          ['st', 'pieAt', 'pie'].forEach(function (k) { for (var q in d2[k]) data[k][q] = d2[k][q]; });
+          ['flat', 'fv', 'mats', 'hs', 'hdef', 'sto'].forEach(function (k) { if (d2[k] && !data[k]) data[k] = d2[k]; });
+          if (data.hs) HS = data.hs;
+          scene = ns; fade = 1; rebuild(); placePie(); placeCfg(); cl('build_anim_scene', scene);
+        }).catch(function () { });
+      }
+      else if (b.classList.contains('bz-cb')) { setCfgOpen(!cfgOpen); return; }
       var f = mats.querySelector('button[aria-pressed="true"]' + (b.hasAttribute('data-s') ? '[data-s]' : '')); if (f) try { f.focus({ preventScroll: true }); } catch (x) { }
     });
     function rebuild() { build(); render(cur); }
     side.appendChild(hd); side.appendChild(ol); side.appendChild(pie); side.appendChild(ctl); side.appendChild(goA);
-    fig.appendChild(mats); fig.appendChild(lg);
+    fig.appendChild(mats); fig.appendChild(cfg); fig.appendChild(cap); fig.appendChild(lg);
     pin.appendChild(skip); pin.appendChild(fig); pin.appendChild(side);
     run.appendChild(pin);
     cta.parentNode.insertBefore(run, cta);
@@ -899,11 +1158,12 @@
       pie.style.minHeight = mx ? mx + 'px' : '';
     }
 
+    var fade = 0;
     function build() { // текст етапів (JSON = той самий текст, що в HTML для стартового матеріалу), кнопки, сцена
       seq = scene === 'flat' ? data.flat : data.mats[mat]; n = seq.length;
       if (scene === 'flat') { SY = K * 0.6; ZK = K * 0.8; } else { SY = K * 0.5; ZK = K; } // квартира — трохи «згори»: низькі перегородки не ховають кімнати
       var st = data.st[scene], suf = fv === 'new' ? '_n' : '_o';
-      ol.innerHTML = seq.map(function (k, i) { var s = (scene === 'flat' && st[k + suf]) || st[k] || ['', '']; return '<li id="bz-s' + sx + i + '"><div><b>' + esc(s[0]) + '</b><span>' + esc(s[1]) + '</span></div></li>'; }).join('');
+      ol.innerHTML = seq.map(function (k, i) { var s = stx(st, k, suf) || ['', '']; return '<li id="bz-s' + sx + i + '"><div><b>' + esc(s[0]) + '</b><span>' + esc(s[1]) + '</span></div></li>'; }).join('');
       lis = [].slice.call(ol.children);
       nav.innerHTML = '';
       btns = lis.map(function (li, i) {
@@ -917,7 +1177,7 @@
       });
       run.style.setProperty('--n', n);
       bb = [1e9, 1e9, -1e9, -1e9];
-      sc = scene === 'flat' ? flat(S, ui, fv, lang) : house(mat, S, ui);
+      C.m = mat; sc = scene === 'flat' ? flat(S, ui, fv, lang) : house(C, S, ui);
       var body = '', nb = '';
       sc.parts.forEach(function (p, i) {
         var v = typeof p.v === 'function' ? '' : p.v;
@@ -927,12 +1187,20 @@
       });
       if (scene === 'flat') body = '<g class="bz-sc">' + body + '</g><g class="bz-nt">' + nb + '</g>'; else body += nb;
       var pad = 12, vb = [bb[0] - pad, bb[1] - pad - 30, bb[2] - bb[0] + pad * 2, bb[3] - bb[1] + pad * 2 + 30].map(function (v) { return v.toFixed(0); }).join(' ');
-      var h2 = sec.querySelector('h2'), old = fig.querySelector('svg');
-      var html = '<svg viewBox="' + vb + '" role="img" aria-label="' + esc(ui.fig + (h2 ? h2.textContent : '')) + '" focusable="false" preserveAspectRatio="xMidYMid meet" class="' + (scene === 'flat' ? 'f-' + fv : 'm-' + mat) + '">' +
+      var h2 = sec.querySelector('h2'), old = fig.querySelector('svg:not(.bz-out)');
+      var html = '<svg viewBox="' + vb + '" role="img" aria-label="' + esc(ui.fig + (h2 ? h2.textContent : '')) + '" focusable="false" preserveAspectRatio="xMidYMid meet" class="' + (scene === 'flat' ? 'f-' + fv : 'm-' + mat + ' st-' + C.s) + '">' +
         '<defs><linearGradient id="bz-gw-' + scene + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2a8"/><stop offset="1" stop-color="#e2a24f"/></linearGradient>' +
         '<radialGradient id="bz-rg-' + scene + '"><stop offset="0" stop-color="#f6c978" stop-opacity=".55"/><stop offset="1" stop-color="#f6c978" stop-opacity="0"/></radialGradient>' + pats() + '</defs>' + body + '</svg>';
       var tmp = el('div', '', html), nsvg = tmp.firstChild;
-      if (old) fig.replaceChild(nsvg, old); else fig.insertBefore(nsvg, fig.firstChild);
+      if (old && fade && !rm) { // перехід між конфігураціями: стара сцена гасне поверх нової (без зсуву макета — absolute у межах fig)
+        var fr = fig.getBoundingClientRect(), orc = old.getBoundingClientRect();
+        [].forEach.call(fig.querySelectorAll('svg.bz-out'), function (x) { x.parentNode.removeChild(x); });
+        old.classList.add('bz-out'); old.style.cssText = 'position:absolute;left:' + (orc.left - fr.left) + 'px;top:' + (orc.top - fr.top) + 'px;width:' + orc.width + 'px;height:' + orc.height + 'px;transform:none';
+        fig.insertBefore(nsvg, old); nsvg.classList.add('bz-in');
+        W.requestAnimationFrame(function () { old.style.opacity = '0'; });
+        setTimeout(function () { if (old.parentNode) old.parentNode.removeChild(old); nsvg.classList.remove('bz-in'); }, 520);
+      } else if (old) fig.replaceChild(nsvg, old); else fig.insertBefore(nsvg, fig.firstChild);
+      fade = 0;
       svg = nsvg;
       svg.style.setProperty('--gw', 'url(#bz-gw-' + scene + ')'); svg.style.setProperty('--rg', 'url(#bz-rg-' + scene + ')');
       var gs = svg.querySelectorAll('g.bz-l[data-i]');
@@ -954,7 +1222,9 @@
         if (sv && s2) { s2.setAttribute('data-service', sv); var f2 = s2.querySelector('form'); if (f2) f2.setAttribute('data-service', sv); }
       }
       var sl = cta.querySelector('.lq-slot'); if (!sl) return;
-      sl.setAttribute('data-msg', scene === 'flat' ? (ui.sc ? ui.sc.flat + ': ' : '') + (ui.fl ? ui.fl[fv] : fv) : (ui.sc ? ui.sc.house + ': ' : '') + ui.m[mat]);
+      var u = ui.cfg, h = hder(C);
+      sl.setAttribute('data-msg', scene === 'flat' ? (ui.sc ? ui.sc.flat + ': ' : '') + (ui.fl ? ui.fl[fv] : fv) :
+        (ui.sc ? ui.sc.house + ': ' : '') + (u ? [ui.m[C.m], flL(h), u.sn[C.s], '≈' + C.a + ' ' + u.m2].concat(C.g ? [C.g === 'g' ? u.gar : u.car] : [], C.r ? [u.ter] : []).join(' / ') : ui.m[mat]));
     }
     function setMat(m, user) {
       mat = m; build(); render(cur);
@@ -1022,16 +1292,16 @@
       measure();
     }
     W.addEventListener('scroll', function () { if (live && !rm) kick(); }, { passive: true });
-    W.addEventListener('resize', function () { measure(); }, { passive: true });
+    W.addEventListener('resize', function () { measure(); placeCfg(); }, { passive: true });
     if (MQ) { if (MQ.addEventListener) MQ.addEventListener('change', mode); else if (MQ.addListener) MQ.addListener(mode); }
-    if (MOB) { if (MOB.addEventListener) MOB.addEventListener('change', placePie); else if (MOB.addListener) MOB.addListener(placePie); }
+    if (MOB) { if (MOB.addEventListener) { MOB.addEventListener('change', placePie); MOB.addEventListener('change', placeCfg); } else if (MOB.addListener) { MOB.addListener(placePie); MOB.addListener(placeCfg); } }
     if ('IntersectionObserver' in W) {
       new IntersectionObserver(function (es) { live = es[0].isIntersecting; if (live) kick(); }).observe(run);
     } else live = true;
     // мікровзаємодії (лише миша, без prefers-reduced-motion): легкий нахил сцени за курсором і «магнітна» кнопка CTA
     if (W.matchMedia && W.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       fig.addEventListener('pointermove', function (e) {
-        if (rm || e.target.closest('.bz-mats,.bz-pie,.bz-lg')) return;
+        if (rm || e.target.closest('.bz-mats,.bz-pie,.bz-lg,.bz-cfg')) return;
         var r = fig.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
         svg.style.transform = 'perspective(1600px) rotateX(' + (-y * 5).toFixed(2) + 'deg) rotateY(' + (x * 7).toFixed(2) + 'deg)';
       });
@@ -1045,6 +1315,7 @@
     }
     build();
     placePie();
+    placeCfg();
     render(0.6);
     mode();
   }
@@ -1062,15 +1333,17 @@
     });
     return cssP;
   }
-  function data() {
-    if (!dataP) dataP = fetch('/assets/build-anim.v1.' + lang + '.json?v=' + VER[lang], { credentials: 'same-origin' }).then(function (r) { if (!r.ok) throw r; return r.json(); });
-    return dataP;
+  function data(sc) { // дані сцени (house / flat) — кожна сторінка тягне лише свою; головна дотягує другу при перемиканні
+    dataP = dataP || {};
+    if (!dataP[sc]) dataP[sc] = fetch('/assets/build-anim.v1.' + lang + '.' + sc + '.json?v=' + VER[lang + '.' + sc], { credentials: 'same-origin' }).then(function (r) { if (!r.ok) throw r; return r.json(); });
+    return dataP[sc];
   }
+  W.__casBAd = data;
   // CLS = 0: блок перебудовується лише поза кадром. Якщо сторінка відкрилась одразу на ньому (якір, відновлення прокрутки),
   // людина бачить звичайний список етапів, а сцена зʼявиться, щойно блок вийде з кадру (вище/нижче — скрол-якоріння тримає екран).
   function inView(sec) { var r = sec.getBoundingClientRect(); return r.top < (W.innerHeight || 0) && r.bottom > 0; }
   function start(sec) {
-    Promise.all([css(), data()]).then(function (r) {
+    Promise.all([css(), data(sec.getAttribute('data-bz') === 'flat' ? 'flat' : 'house')]).then(function (r) {
       var dt = r[1];
       if (!inView(sec) || !('IntersectionObserver' in W)) return enhance(sec, dt);
       var o = new IntersectionObserver(function (es) { if (!es[es.length - 1].isIntersecting) { o.disconnect(); enhance(sec, dt); } });

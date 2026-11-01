@@ -375,3 +375,65 @@
 @keyframes bz-tw{from{opacity:.25}to{opacity:1}}
 .bz-fig .pcl{fill:#f3d7a6;opacity:.75}
 @media(prefers-reduced-motion:reduce){.bz-fig .spk{animation:none}}
+
+/* ── «Будинок з нуля» v3: конфігуратор (технологія, тип, опції, стиль, площа), підпис масштабу */
+.bz-cfg{position:absolute;left:0;right:0;top:4px;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:6px;font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84)}
+.bz-cfg[hidden],.bz-cap[hidden]{display:none!important}
+.bz-cr{display:flex;flex-wrap:wrap;align-items:center;gap:6px 0}
+.bz-cfg button{min-height:30px;padding:0 9px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.22));background:rgba(16,14,12,.72);color:var(--tx,#EDE8DF);
+  font:500 12px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;letter-spacing:.02em;cursor:pointer;transition:background .3s,border-color .3s,color .3s}
+.bz-cfg button[aria-pressed="true"]{border-color:var(--ac,#BF9148);color:var(--ac,#BF9148);background:rgba(191,145,72,.14)}
+.bz-cfg button:focus-visible,.bz-cb:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
+@media(hover:hover){.bz-cfg button:hover{border-color:var(--ac,#BF9148)}}
+.bz-cfg .bz-gl{min-width:4.9em}
+.bz-cfg .bz-g{flex-wrap:wrap;flex:0 1 auto;gap:5px}
+.bz-cr .bz-g+.bz-g{margin-left:8px;padding-left:8px}
+.bz-cr{row-gap:5px}
+.bz-hint{margin:0;min-height:1.2em;color:#e9c98d;font-size:.75rem}
+.bz-prc{margin:0;color:var(--mu,#938c84);font-size:.6875rem;letter-spacing:.02em}
+.bz-cx,.bz-cb{display:none}
+.bz-cap{position:absolute;left:0;bottom:4px;z-index:1;margin:0;padding:4px 10px;border-radius:999px;background:rgba(16,14,12,.72);border:1px solid var(--ln,rgba(191,145,72,.22));
+  color:var(--tx,#EDE8DF);font:500 12px/1.3 'Manrope','Manrope Fallback',system-ui,sans-serif;font-variant-numeric:tabular-nums;pointer-events:none}
+.bz-fig svg.bz-out{transition:opacity .45s var(--ease-out);pointer-events:none;z-index:1}
+.bz-fig svg.bz-in{animation:bz-in .5s var(--ease-out) both}
+@keyframes bz-in{from{opacity:.25}to{opacity:1}}
+@media(max-width:767px){
+  .bz-cb{display:inline-flex;align-items:center;gap:6px;flex:none;min-height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--ac,#BF9148);background:rgba(16,14,12,.72);color:var(--ac,#BF9148);
+    font:600 12px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+  .bz-cb[aria-expanded="true"]{background:var(--ac,#BF9148);color:#080709}
+  .bz-cfg{display:none;top:38px;bottom:0;overflow:auto;overscroll-behavior:contain;padding:10px 10px 12px;box-sizing:border-box;background:rgba(16,14,12,.96);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:12px;z-index:4}
+  .bz-fig.cfg-open .bz-cfg{display:flex}
+  .bz-cfg .bz-gl{display:block;min-width:0;width:100%;margin:2px 0 0;color:var(--mu,#938c84);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase}
+  .bz-cfg .bz-g{flex-wrap:wrap}
+  .bz-cr .bz-g+.bz-g{margin-left:0;padding-left:0;border-left:0}
+  .bz-cfg button{min-height:34px}
+  .bz-cx{display:block;align-self:stretch;margin-top:4px;background:var(--ac,#BF9148)!important;color:#080709!important;border-color:var(--ac,#BF9148)!important;font-weight:600!important}
+  .bz-cap{font-size:11px;bottom:2px}
+}
+.bz-rm .bz-fig svg.bz-in{animation:none}
+
+/* сцена будинку v3: гараж, плоский дах і тераса, вальма, A-frame, стильові деталі */
+.bz-fig .man line{stroke:#d6d0c6;stroke-width:2.4;stroke-linecap:round}.bz-fig .man circle{fill:#d6d0c6}
+.bz-fig .osb.t{fill:#c9a96e}
+.bz-fig .osbs{fill:#c9a96e;stroke:rgba(60,40,10,.4);stroke-width:.5}.bz-fig .osbs.b{fill:#a88a55}
+.bz-fig .woolS{fill:#d8c46a;opacity:.85}
+.bz-fig .afr{stroke:#c99d63;stroke-width:2.2}.bz-fig .aft{stroke:#b0814b;stroke-width:1.4}
+.bz-fig .gdr{fill:#d6d0c6;stroke:#8f8880;stroke-width:.6}.bz-fig .gdl{stroke:rgba(0,0,0,.25);stroke-width:.6}
+.bz-fig .mbr{fill:#4a4d52}.bz-fig .drn2{fill:#1f1e22;stroke:#8f8880;stroke-width:.6}
+.bz-fig .par{stroke:rgba(8,7,9,.3);stroke-width:.4}.bz-fig .par.t{fill:#d4cdc1}.bz-fig .par.ir{fill:#8f877c}.bz-fig .par.il{fill:#a39b90}.bz-fig .par.r{fill:#b3ab9f}.bz-fig .par.l{fill:#c4bdb1}
+.bz-fig .cap.t{fill:#9aa3a8}.bz-fig .cap.r{fill:#6f777c}.bz-fig .cap.l{fill:#848c91}
+.bz-fig .deck{fill:#a07a52}.bz-fig .dkl2{stroke:rgba(40,25,10,.45);stroke-width:.7}
+.bz-fig .sur{fill:#f4efe6;stroke:rgba(0,0,0,.15);stroke-width:.4}
+.bz-fig .crn.t{fill:#f4efe6}.bz-fig .crn.r{fill:#d8d0c2}.bz-fig .crn.l{fill:#e6dfd3}
+.bz-fig .stn.l{fill:url(#bz-stone-l)}.bz-fig .stn.r{fill:url(#bz-stone-r)}
+.bz-fig .cnp.t{fill:#d6d0c6}.bz-fig .cnp.r{fill:#8f8880}.bz-fig .cnp.l{fill:#aaa298}
+.bz-fig .col2.t{fill:#f4efe6}.bz-fig .col2.r{fill:#cfc8bc}.bz-fig .col2.l{fill:#e6dfd3}
+.bz-fig .rf.s{fill:#46444a}
+/* стилі: кольори фасаду й покрівлі */
+.st-minimal .rnd.l{fill:#efede8}.st-minimal .rnd.r{fill:#d9d5ce}.st-minimal .fr,.st-minimal .mu{stroke:#2a2826}
+.st-classic .rnd.l{fill:#e6d6b8}.st-classic .rnd.r{fill:#cdbb9b}.st-classic .rf.f{fill:#8a4a32}.st-classic .rf.s{fill:#9c5a3f}.st-classic .rf.b{fill:#6e3a27}.st-classic .tl{stroke:rgba(40,10,0,.45)}
+.st-barn .clad.l{fill:url(#bz-boardv-l)}.st-barn .clad.r{fill:url(#bz-boardv-r)}.st-barn .rf.f{fill:#2a292c}.st-barn .rf.b{fill:#222125}.st-barn .fr,.st-barn .mu{stroke:#1a1917}
+.st-scandi .clad.l{fill:url(#bz-boardl-l)}.st-scandi .clad.r{fill:url(#bz-boardl-r)}.st-scandi .rf.f{fill:#2b2b2e}
+.st-chalet .clad.l{fill:url(#bz-wood-l)}.st-chalet .clad.r{fill:url(#bz-wood-r)}.st-chalet .rf.f{fill:#5a4232}.st-chalet .rf.b{fill:#46342a}
+.st-aframe .clad.l,.st-aframe .clad.r{fill:url(#bz-boardv-r)}.st-aframe .rf.f{fill:#2a292c}.st-aframe .rf.b{fill:#222125}
+@media(prefers-reduced-motion:reduce){.bz-fig svg.bz-in{animation:none}.bz-fig svg.bz-out{transition:none}}
