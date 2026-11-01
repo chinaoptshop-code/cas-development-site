@@ -1,9 +1,4 @@
 /* Квіз-калькулятор (/assets/quiz.v1.js, /styleguide/#quiz). Токени сторінки: --bg2 --tx --mu --ac --ln; власні шрифти сторінки. */
-.qz-s{padding:56px 0;border-top:1px solid var(--ln,rgba(191,145,72,.18))}
-.qz-w{max-width:1080px;margin:0 auto;padding:0 16px}
-.qz-h{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:var(--fs-h2,2rem);line-height:1.15;color:var(--tx,#EDE8DF);margin:0 0 10px}
-.qz-lead{color:var(--mu,#938c84);margin:0 0 22px;max-width:60ch}
-.qz{max-width:760px;min-height:360px;box-sizing:border-box;padding:22px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:12px;background:var(--bg2,rgba(255,255,255,.03));color:var(--tx,#EDE8DF)}
 .qz *{box-sizing:border-box}
 .qz-hd{margin:0 0 18px}
 .qz-pg{margin:0 0 8px;font-size:var(--fs-small,.8125rem);letter-spacing:.08em;text-transform:uppercase;color:var(--mu,#938c84)}

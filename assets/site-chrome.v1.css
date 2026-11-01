@@ -228,6 +228,9 @@ details.o-more>summary::before{content:"+ "}details.o-more[open]>summary::before
 :is(.lq,#of) :is(.o-note,.lq-alt,.lq-tr,.lq-l){font-size:var(--fs-small,.8125rem);line-height:1.5}:is(.lq,#of) :is(.lq-alt,.lq-tr){margin:6px 0 0}.lq .o-note{margin:8px 0 0}.lq :is(.o-note,.lq-alt){color:var(--mu,#8a837c)}
 .lq-slot:empty{margin:0;padding:0}.lq-slot{margin:28px 0 0}.lq-slot .lq{margin:0;max-width:620px;padding:18px 20px;border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:12px;background:rgba(191,145,72,.05)}
 .lq-slot .lq-ok{margin:0}.cta .lq-slot{margin:0 0 16px}.cta .lq-slot .lq{padding:0;border:0;background:none}
+/* місце швидкої заявки до ліниво зібраної форми (lead-form.v1.js будує її за ~1,5 екрана): резерв висоти — без стрибка вмісту при швидкій прокрутці (CLS). Значення — мінімальні виміряні висоти форм (360–1440 px) */
+.js .lq-slot[data-form]:empty{margin-top:28px;min-height:250px}.js .lq-slot[data-form$="-end"]:empty{margin-top:0;min-height:130px}
+@media(min-width:768px){.js .lq-slot[data-form]:empty{min-height:200px}.js .lq-slot[data-form$="-end"]:empty{min-height:78px}}
 .lq-wide{max-width:1180px;padding:0 22px;margin:40px auto 0;box-sizing:border-box}
 /* мікровзаємодія кнопки й стани «надсилаємо…/дякуємо» */
 .lq-b,#oBtn{transition:transform .15s ease,filter .2s ease,opacity .2s ease}
@@ -453,3 +456,9 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .bz-team a{color:var(--ac,#BF9148)}
 .bz-facts{display:flex;flex-wrap:wrap;gap:6px 28px;margin:0 0 16px;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem)}
 .bz-facts b{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:1.9rem;line-height:1;color:var(--ac,#BF9148);margin-right:4px;font-variant-numeric:tabular-nums}
+/* ══ Квіз (section.qz-s, ставить /assets/quiz.v1.js на DOMContentLoaded): каркас секції й висоту .qz резервуємо тут — quiz.v1.css вантажиться ліниво біля блоку (CLS) ── */
+.qz-s{padding:56px 0;border-top:1px solid var(--ln,rgba(191,145,72,.18))}
+.qz-w{max-width:1080px;margin:0 auto;padding:0 16px}
+.qz-h{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:var(--fs-h2,2rem);line-height:1.15;color:var(--tx,#EDE8DF);margin:0 0 10px}
+.qz-lead{color:var(--mu,#938c84);margin:0 0 22px;max-width:60ch}
+.qz{max-width:760px;min-height:360px;box-sizing:border-box;padding:22px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:12px;background:var(--bg2,rgba(255,255,255,.03));color:var(--tx,#EDE8DF)}
