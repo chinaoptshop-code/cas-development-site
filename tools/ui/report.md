@@ -212,7 +212,7 @@
 | ozdoba/stil-obidnii-rozkladnyi-keramichna-stilnytsia-72.html | other | 65.1 | 17.4 | 32.4 | 7.2 | 14 | 334 |
 | ozdoba/taburet-pen-z-masyvu-23.html | other | 65.1 | 17.6 | 32.4 | 7.2 | 14 | 340 |
 | ozdoba/torsher-arka-z-marmurovoiu-osnovoiu-khrom-116.html | other | 65.1 | 17.5 | 32.4 | 7.2 | 14 | 334 |
-| ozdoba/torsher-khvyliastyi-z-plafonom-hrybom-olyvkovyi-581.html | other | 65.1 | 17.5 | 32.4 | 7.2 | 14 | 334 |
+| ozdoba/torsher-khvyliastyi-z-plafonom-hrybom-olyvkovyi-581.html | other | 65.1 | 17.4 | 32.4 | 7.2 | 14 | 334 |
 | ozdoba/torsher-na-trynizhtsi-z-kruhlym-rozsiiuvachem-117.html | other | 65.1 | 17.5 | 32.4 | 7.2 | 14 | 335 |
 | ozdoba/zmishuvach-dlia-rakovyny-odnovazhilnyi-chornyi-matovyi-435.html | other | 65.1 | 17.4 | 32.4 | 7.2 | 14 | 335 |
 | ozdoba/3d-panel-rizblena-z-latunnymy-shpylkamy-39.html | other | 65.0 | 17.5 | 32.4 | 7.2 | 14 | 335 |
@@ -283,8 +283,8 @@
 | ozdoba/pled-viazanyi-bavovnianyi-siryi-melanzh-528.html | other | 64.8 | 17.4 | 32.4 | 7.2 | 14 | 332 |
 | ozdoba/pled-zi-shtuchnoho-khutra-kremovyi-527.html | other | 64.8 | 17.4 | 32.4 | 7.2 | 14 | 332 |
 | ozdoba/plytka-kabanchyk-bila-hliantseva-z-faskoiu-302.html | other | 64.8 | 17.4 | 32.4 | 7.2 | 14 | 332 |
-| ozdoba/plytka-nastinna-pastelna-z-khvyliastoiu-hlazur-303.html | other | 64.8 | 17.5 | 32.4 | 7.2 | 14 | 331 |
-| ozdoba/prozhektor-liniinyi-nastinnyi-wall-washer-127.html | other | 64.8 | 17.5 | 32.4 | 7.2 | 14 | 335 |
+| ozdoba/plytka-nastinna-pastelna-z-khvyliastoiu-hlazur-303.html | other | 64.8 | 17.4 | 32.4 | 7.2 | 14 | 331 |
+| ozdoba/prozhektor-liniinyi-nastinnyi-wall-washer-127.html | other | 64.8 | 17.4 | 32.4 | 7.2 | 14 | 335 |
 | ozdoba/ruchka-skoba-dlia-vkhidnykh-dverei-chorna-324.html | other | 64.8 | 17.4 | 32.4 | 7.2 | 14 | 332 |
 | ozdoba/shtory-blekaut-tiul-komplekt-45.html | other | 64.8 | 17.5 | 32.4 | 7.2 | 14 | 338 |
 | ozdoba/stilets-banketnyi-shtabelovanyi-bordo-414.html | other | 64.8 | 17.4 | 32.4 | 7.2 | 14 | 336 |
@@ -307,7 +307,7 @@
 | ozdoba/panel-mdf-ryflena-napivkruhla-horikh-308.html | other | 64.7 | 17.4 | 32.4 | 7.2 | 14 | 331 |
 | ozdoba/petlia-prykhovana-3d-rehulovana-chorna-323.html | other | 64.7 | 17.3 | 32.4 | 7.2 | 14 | 331 |
 | ozdoba/pled-flanelevyi-z-reliefnoiu-smuhoiu-molochnyi-170.html | other | 64.7 | 17.4 | 32.4 | 7.2 | 14 | 332 |
-| ozdoba/pokryvalo-stobane-kremove-169.html | other | 64.7 | 17.5 | 32.4 | 7.2 | 14 | 335 |
+| ozdoba/pokryvalo-stobane-kremove-169.html | other | 64.7 | 17.4 | 32.4 | 7.2 | 14 | 335 |
 | ozdoba/prozhektor-sadovyi-na-kilku-povorotnyi-129.html | other | 64.7 | 17.4 | 32.4 | 7.2 | 14 | 334 |
 | ozdoba/ruchka-dverna-na-kruhlii-rozettsi-chornyi-322.html | other | 64.7 | 17.3 | 32.4 | 7.2 | 14 | 331 |
 | ozdoba/shtory-oksamytovi-temno-syni-172.html | other | 64.7 | 17.5 | 32.4 | 7.2 | 14 | 332 |
@@ -321,7 +321,7 @@
 | ozdoba/dzerkalo-khvyliaste-kruhle-v-zolotii-rami-564.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 333 |
 | ozdoba/kashpo-keramichne-reliefne-40-sm-49.html | other | 64.6 | 17.5 | 32.4 | 7.2 | 14 | 336 |
 | ozdoba/kelykhy-dlia-vyna-nabir-6-54.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 337 |
-| ozdoba/komod-vysokyi-5-shukhliad-hrafit-84.html | other | 64.6 | 17.5 | 32.4 | 7.2 | 14 | 335 |
+| ozdoba/komod-vysokyi-5-shukhliad-hrafit-84.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 335 |
 | ozdoba/kylym-dzhutovyi-z-bakhromoiu-200-300-43.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 336 |
 | ozdoba/kylym-vovnianyi-petelnyi-200-300-44.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 337 |
 | ozdoba/led-strichka-cob-24-v-124.html | other | 64.6 | 17.5 | 32.4 | 7.2 | 14 | 335 |
@@ -329,7 +329,7 @@
 | ozdoba/pampasna-trava-sushena-puchok-50.html | other | 64.6 | 17.5 | 32.4 | 7.2 | 14 | 334 |
 | ozdoba/prybory-stolovi-nabir-24-56.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 334 |
 | ozdoba/puf-kvadratnyi-shkirianyi-77.html | other | 64.6 | 17.5 | 32.4 | 7.2 | 14 | 334 |
-| ozdoba/sklianky-dlia-viski-reliefni-nabir-6-404.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 338 |
+| ozdoba/sklianky-dlia-viski-reliefni-nabir-6-404.html | other | 64.6 | 17.3 | 32.4 | 7.2 | 14 | 338 |
 | ozdoba/stelazh-derev-ianyi-na-nizhkakh-5-418.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 333 |
 | ozdoba/stovpchyk-sadovyi-led-h-podibnyi-128.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 335 |
 | ozdoba/svichnyky-dlia-tonkykh-svichok-latun-nabir-559.html | other | 64.6 | 17.4 | 32.4 | 7.2 | 14 | 333 |
@@ -870,7 +870,7 @@
 | proekty/monpark.html | land | 30.0 | 7.6 | 2.1 | 0.9 | 1 | 320 |
 | proekty/office-chicago.html | land | 29.3 | 7.3 | 2.1 | 0.9 | 1 | 308 |
 | proekty/smart-villa.html | land | 29.3 | 7.5 | 2.1 | 0.9 | 1 | 315 |
-| proekty/house-150.html | land | 29.2 | 7.4 | 2.1 | 0.9 | 1 | 313 |
+| proekty/house-150.html | land | 29.2 | 7.5 | 2.1 | 0.9 | 1 | 313 |
 | proekty/yablu-rest.html | land | 28.7 | 7.2 | 2.1 | 0.9 | 1 | 301 |
 | proekty/dolls-salon.html | land | 27.7 | 7.2 | 2.1 | 0.9 | 1 | 303 |
 | tury.html | other | 19.4 | 4.8 | 0.0 | 0.0 | 0 | 294 |
