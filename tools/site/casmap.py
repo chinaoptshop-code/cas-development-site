@@ -30,6 +30,8 @@ PROJECTS = [
     ('office-chicago', 'Office Chicago', 'ЖК Chicago, Київ', (30.5160, 50.4380), 11, '/img/p/16fKqdFifd2emf-400.webp'),
     # Tetris Hall — квартира в ЖК Tetris Hall (Київ; відео каналу «TETRIS HALL 2») — 27.10.2026; Dolls Salon — місто не підтверджене, без точки
     ('tetris-hall', 'Tetris Hall', 'Київ', (30.5240, 50.4660), 11, '/img/p/1xqY1KZo2JY5xq-400.webp'),
+    # Monpark — ресторан у центрі Києва (Михайло 01.11.2026); точка — розведений центр, без адреси
+    ('monpark', 'Monpark', 'Київ, центр', (30.5190, 50.4410), 11, '/img/p/mpk-v01-600.webp'),
     ('petrivtsi-house', 'Petrivtsi House', 'Петрівці, Київська обл.', (30.4400, 50.6100), 10, '/img/p/1NVeaQcV2TZSN5-400.webp'),
     ('pidgirland', 'Pidgirland', 'Київська обл.', (30.3000, 50.3000), 8, '/img/p/1FiLI9kKE-C87h-400.webp'),
     ('hoda-estate', 'Hoda Estate', 'Карпати', (24.4000, 48.4000), 7, '/img/p/1FRa0FI6iMHK5L-400.webp'),
