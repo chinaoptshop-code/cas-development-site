@@ -503,13 +503,13 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x]))>.w{margin-inline:0;padding-inline:0;max-width:none}
 @media(min-width:760px){.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){grid-template-columns:repeat(3,minmax(0,1fr));column-gap:12px}}
 @media(min-width:1100px){.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){grid-template-columns:repeat(4,minmax(0,1fr))}}
-.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:auto;margin:0 0 10px!important;position:relative;padding:0!important;border:1px solid var(--ln,rgba(191,145,72,.22))!important;border-radius:14px;
+.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:auto;margin:0 0 10px!important;position:relative;border:1px solid var(--ln,rgba(191,145,72,.22))!important;border-radius:14px;
   background:var(--bg2,rgba(255,255,255,.03))!important;transition:border-color .3s ease,background-color .3s ease;min-width:0}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):is(.c-o,:has(>.c-o)){grid-column:1/-1!important}
 .js section:not([data-c=x],:has(>.w[data-c=x]))+:is([data-c=x]:not(.w),section:has(>.w[data-c=x])),.js :is(.hero,.crumbs)+:is([data-c=x]:not(.w),section:has(>.w[data-c=x])){margin-top:0!important}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x]))+:not([data-c=x],section:has(>.w[data-c=x]),script,style){margin-top:30px!important}
 .js .w[data-c=x]{margin:0;max-width:none;padding:16px 16px 18px}
-.js [data-c=x]:not(.w){padding:16px 16px 18px!important}
+.js section:has(>.w[data-c=x]){padding:0!important}.js [data-c=x]:not(.w){padding:16px 16px 18px!important;height:auto!important;aspect-ratio:auto!important}.js [data-c=x]:not(.w):not(.c-o){min-height:0!important}
 @media(hover:hover){.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):not(.c-o,:has(>.c-o)):hover{border-color:var(--ac,#BF9148)!important;background:rgba(191,145,72,.07)!important}}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):has(.ux-h:focus-visible){outline:2px solid var(--ac,#BF9148);outline-offset:3px}
 /* згорнута плитка: лише H2 (і ланцюжок обгорток до нього в ручних секціях) */
