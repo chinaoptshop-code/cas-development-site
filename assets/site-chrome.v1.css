@@ -496,24 +496,24 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 @keyframes ux-in{from{opacity:0;translate:0 8px}}
 @media print{.c-b{display:none}.js [data-c]{padding-bottom:0}}
 /* бейдж «Анімація реалізації»: будиночок «збирається» (стіни піднімаються, дах опускається); reduced-motion — статичний */
-:is(a[data-a],.sp-name[data-a],h2[data-a])::after,.bz-go::before{
+:where(a[data-a],.sp-name[data-a],h2[data-a])::after,.bz-go::before{
   --ux-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23BF9148' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.6 6.2V11h6.8V6.2M5 11V8.4h2V11'/%3E%3C/svg%3E");
   --ux-r:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23BF9148' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1.2 6.4 6 2l4.8 4.4'/%3E%3C/svg%3E");
   background:var(--ux-r) no-repeat 8px 50%/12px 12px,var(--ux-w) no-repeat 8px 50%/12px 12px;animation:ux-build 3.2s var(--ease-out) infinite}
-:is(a[data-a],.sp-name[data-a],h2[data-a])::after{content:var(--ux-a,"Build animation");display:inline-block;vertical-align:.18em;margin-inline-start:.6em;padding:3px 10px;padding-inline-start:26px;
+:where(a[data-a],.sp-name[data-a],h2[data-a])::after{content:var(--ux-a,"Build animation");display:inline-block;vertical-align:.18em;margin-inline-start:.6em;padding:3px 10px;padding-inline-start:26px;
   border:1px solid rgba(191,145,72,.5);border-radius:999px;font:600 10px/1.35 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ac,#BF9148);white-space:nowrap;text-decoration:none;text-indent:0}
 a[data-a=s]::after{content:var(--ux-as,"Interactive");vertical-align:.08em}
 a[data-a=i]::after{content:"";width:20px;height:16px;padding:0;margin-inline-start:6px;border:0;vertical-align:-.15em;background-position:50% 50%,50% 50%;animation-name:ux-build-c}
-:is(:lang(zh),:lang(ar)) :is(a[data-a],.sp-name[data-a],h2[data-a])::after{letter-spacing:0;font-size:11px}
+:is(:lang(zh),:lang(ar)) :where(a[data-a],.sp-name[data-a],h2[data-a])::after{letter-spacing:0;font-size:11px}
 @keyframes ux-build{0%{background-position:8px -14px,8px 22px}28%{background-position:8px -14px,8px 50%}52%,88%{background-position:8px 50%,8px 50%}100%{background-position:8px 50%,8px 50%;opacity:.35}}
 @keyframes ux-build-c{0%{background-position:50% -14px,50% 22px}28%{background-position:50% -14px,50% 50%}52%,88%{background-position:50% 50%,50% 50%}100%{background-position:50% 50%,50% 50%;opacity:.35}}
-[dir=rtl] :is(a[data-a]:not([data-a=i]),.sp-name[data-a],h2[data-a])::after{animation:none;background-position:calc(100% - 8px) 50%,calc(100% - 8px) 50%}
+[dir=rtl] :where(a[data-a]:not([data-a=i]),.sp-name[data-a],h2[data-a])::after{animation:none;background-position:calc(100% - 8px) 50%,calc(100% - 8px) 50%}
 /* кнопка-якір у hero сторінок з анімацією: «Дивитись, як ми будуємо» → #build-anim */
 .bz-go{display:inline-flex;align-items:center;gap:10px}
 .bz-go::before{content:"";flex:none;width:28px;height:28px;margin:-8px 0;margin-inline-start:-10px;box-sizing:border-box;border:1px solid rgba(191,145,72,.5);border-radius:50%;
   background-position:50% -14px,50% 22px;background-size:14px 14px,14px 14px;animation-name:ux-build-c}
-@media(prefers-reduced-motion:reduce){:is(a[data-a],.sp-name[data-a],h2[data-a])::after,.bz-go::before{animation:none!important;background-position:8px 50%,8px 50%}
+@media(prefers-reduced-motion:reduce){:where(a[data-a],.sp-name[data-a],h2[data-a])::after,.bz-go::before{animation:none!important;background-position:8px 50%,8px 50%}
   .bz-go::before,a[data-a=i]::after{background-position:50% 50%,50% 50%}.ic{animation:none}}
 /* плавна поява фото (blur-up): ui-polish ставить .ui-img лінивим фото до завантаження */
 .ui-img{transition:opacity .45s var(--ease-out),filter .45s var(--ease-out)!important}

@@ -682,6 +682,10 @@ def apply(s, rel):
     s = versions(s)
     s = fonts_block(s)
     s = nbsp_prices(s, lang)
+    if i18n.meta(lang).get('dir') == 'rtl':  # RTL: стрілка «далі» дивиться вліво (→ у тексті посилань — назад)
+        i = s.find('<body')
+        if i >= 0:
+            s = s[:i] + re.sub(r'(<script\b.*?</script>)|→', lambda m: m.group(1) or '←', s[i:], flags=re.S)
     s = i18n.fonts(s, lang)  # preload: кирилиця лише для uk/ru, латиниця — en/es/…, zh/ar — без preload
     if not rel.startswith('kabinet'):  # кабінет і адмінка — застосунок за логіном: без prefetch/prerender
         s = head_extras(s)  # Speculation Rules (миттєві переходи) і preload LCP-фото

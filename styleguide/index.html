@@ -176,7 +176,7 @@ code{font-size:.92em}
 .hero p{max-width:640px;max-inline-size:640px}.sg-note,.sg-meta p{max-width:720px;max-inline-size:720px}</style>
 <link rel="stylesheet" href="/assets/cas-map.v1.css?v=1a565e86">
 <link rel="stylesheet" href="/assets/ba.v1.css?v=0393468e">
-<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=1be538d5">
+<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=7b356d1a">
 </head>
 <body>
 <!--chrome:skip--><a class="skip" href="#main">Перейти до змісту</a><!--/chrome:skip-->
@@ -217,6 +217,7 @@ code{font-size:.92em}
 <li><a href="#marquee">Стрічки (marquee)</a></li>
 <li><a href="#rel">Посилання на послуги</a></li>
 <li><a href="#compact">Компактні блоки</a></li>
+<li><a href="#ux">Іконки, згортання, «Анімація реалізації»</a></li>
 <li><a href="#zhk">Блоки ЖК</a></li>
 <li><a href="#blog">Блоки блогу</a></li>
 <li><a href="#ozdoba">Картка товару Оздоби</a></li>
@@ -379,6 +380,23 @@ code{font-size:.92em}
 <div class="sg-c"><div class="sg-meta"><code>details &gt; summary</code><p>FAQ, «Склад комплекту», футер «Усі послуги студії» (на телефоні згорнуто, від 760px — відкрито), мовне меню <code>details.sch-ld</code> — згорнуті за замовчуванням.</p></div></div>
 <div class="sg-c"><div class="sg-meta">Стрічки замість стовпчиків<p>Ряди пігулок «Інші послуги» (від 7), «Статті по темі» (від 4), фото-стрічки — один рядок з горизонтальним рухом (див. «Стрічки»), а не 20+ рядків пігулок. На телефоні галереї <code>.gal</code>/<code>.pg</code> — у 2 колонки.</p></div></div>
 <div class="sg-c"><div class="sg-meta">Плаваючі елементи<p>Шапка й нижня панель <code>.mbar</code> на телефоні ховаються при прокрутці вниз і зʼявляються при прокрутці вгору, на початку й у кінці сторінки (<code>html.sch-hide</code>, <code>html.mb-hide</code>); панель ховається й коли відкрита клавіатура (<code>html.mb-kbd</code>). У /ozdoba, кабінеті й конфігураторі шапка не ховається (там у ній кошик та інструменти).</p></div></div>
+</section>
+
+<section id="ux"><h2>Менше стіни тексту: іконки, згортання, «Анімація реалізації»</h2>
+<p class="sg-note">Розмітку на сторінках ставить <code>tools/site/ux.py</code> (через <code>chrome.apply()</code> — усі генератори й ручні сторінки), руками атрибути не пишемо. Лише атрибути в кілька байтів (бюджет HTML 64 КБ); іконки й кнопки вставляє <code>/assets/site-chrome.v1.js</code> у місце, яке заздалегідь резервує CSS (<code>.js …</code>) — CLS 0. Без JS усе видно повністю. Тексти кнопок і бейджів — <code>UX</code> у ux.py (uk/ru) і <code>"ux"</code> у <code>tools/site/lang/&lt;мова&gt;.json</code>. Не чіпаємо H1, hero, ціни «від», таблиці цін, форми, «Коротко» й блок build-anim.</p>
+<div class="sg-c"><div class="sg-meta"><code>h2[data-i="ключ"]</code>, <code>.card &gt; h3[data-i]</code><p>Іконка теми з <code>/assets/icons.v1.svg</code> (Lucide, ISC; 56 символів, <code>&lt;svg class="ic" aria-hidden="true"&gt;&lt;use href="…?v=хеш#ключ"&gt;</code>). Мапа «тема → іконка» — <code>RULES</code> у ux.py для всіх мов (питання → fq, гарантії → gu, ціна → pr, строки → ti, команда → te, договір → do, камера → cm, тепла підлога → hf, електрика → el, сантехніка → pl, меблі → fu, ландшафт → la, офіс → of, ресторан → rs …), запасна — ромб <code>dm</code>. Колір — <code>var(--ac)</code>; у H2 — 0,86em зліва (RTL — справа), у картках — кругла плашка 42px, на hover заливається. Головні сторінки — без іконок (вага й LCP). Покриття — <code>python3 tools/site/ux.py --stats</code>.</p></div>
+<div class="sg-demo"><h2 data-i="gu" style="font-size:var(--fs-h2);margin:0 0 18px">Гарантії</h2>
+<div class="grid"><div class="card"><h3 data-i="ti">Строки в договорі</h3><p>Від 2 тижнів — фіксуємо в договорі.</p></div><div class="card"><h3 data-i="cm">Фотозвіти й камера 24/7</h3><p>Раз на <span class="nw">1–2</span> тижні; камера — за доп. оплату.</p></div><div class="card"><h3 data-i="te">Три власні бригади</h3><p>Штатні працівники, а не субпідряд.</p></div></div></div></div>
+<div class="sg-c"><div class="sg-meta"><code>[data-c="t|s|q|g|l"]</code> → <code>button.c-b[aria-expanded]</code><p>t — довгий текст (видно перший абзац, 4 рядки з затуханням), s — етапи (назви видно, описи — за кнопкою), q — FAQ (перші 5), g — сітка карток (перші 6), l — довгий список у статті (перші 5). Згорнуте — лише CSS під <code>.js</code>, текст лишається в DOM (SEO, JSON-LD). Кнопка — справжня <code>&lt;button&gt;</code> з <code>aria-controls</code>, Enter/Space; висота розгортається плавно (WAAPI), <code>prefers-reduced-motion</code> — миттєво; друк — усе розгорнуто.</p></div>
+<div class="sg-demo"><div data-c="t" style="max-width:62ch"><h3 style="margin:0 0 10px">Ремонт квартири без зайвих клопотів</h3><p>Найчастіше ремонт затягується і дорожчає через розрізнені підрядники: дизайнер окремо, бригада окремо, меблі — ще окремо. У нас усе робить одна команда за одним кошторисом, тож ціна й строки не «пливуть». Ви раз на <span class="nw">1–2</span> тижні отримуєте фотозвіти з обʼєкта, а за доп. оплату — онлайн-камеру 24/7.</p><p>Ціну фіксуємо до старту: після заміру й проєкту складаємо детальний кошторис; якщо ремонт робить CAS, підсумок не відхиляється від нього більше ніж на ±5%.</p><p>Здаємо обʼєкт з актом; на роботи діє гарантія 36 місяців.</p></div></div>
+<div class="sg-demo"><div data-c="s"><ol class="steps"><li><div><b>Замір і бриф</b><span>Виїжджаємо на обʼєкт, обговорюємо побажання, бюджет і терміни.</span></div></li><li><div><b>Дизайн і кошторис</b><span>Готуємо проєкт і детальний кошторис.</span></div></li><li><div><b>Договір і графік</b><span>Фіксуємо етапи, терміни й поетапну оплату.</span></div></li><li><div><b>Ремонт</b><span>Своя бригада, фотозвіти раз на <span class="nw">1–2</span> тижні.</span></div></li></ol></div></div></div>
+<div class="sg-c"><div class="sg-meta"><code>a[data-a]</code>, <code>a[data-a="s"]</code>, <code>a[data-a="i"]</code><p>Посилання на сторінки з анімацією «Будинок / Ремонт з нуля» (<code>PAGES</code> у <code>tools/site/buildanim.py</code>): у заголовках карток і на картках послуг головної/«Послуг» — повний бейдж «Анімація реалізації», у рядах «Інші послуги» — короткий «Інтерактив», у футері «Усі послуги студії» — лише іконка. Будиночок «збирається» (стіни піднімаються, дах опускається) — CSS, без JS; <code>prefers-reduced-motion</code> і RTL — статичний. Підпис — <code>--ux-a</code> / <code>--ux-as</code> за <code>:lang()</code>.</p></div>
+<div class="sg-demo"><div class="card" style="max-width:420px"><h3><a href="/remont-kvartyr-kyiv" data-a>Ремонт квартир</a></h3><p>від $550/м²</p></div>
+<div class="rel" style="margin-top:16px"><a href="/budivnytstvo-budynkiv-kyiv" data-a="s">Будівництво будинків</a><a href="/dyzain-interieru-kyiv">Дизайн інтерʼєру</a></div>
+<p style="margin-top:16px"><a href="/remont-pid-klyuch-kyiv" data-a="i">Ремонт під ключ</a> — так у футері</p></div></div>
+<div class="sg-c"><div class="sg-meta"><code>a.btn.bz-go[href="#build-anim"]</code><p>Кнопка-якір у hero сторінки з анімацією: «Дивитись, як ми будуємо / ремонтуємо» — звичайне посилання на <code>#build-anim</code> (скрипт сцени вантажиться з першою прокруткою). Ставить <code>tools/site/buildanim.py</code> з урахуванням бюджету HTML.</p></div>
+<div class="sg-demo"><div class="btns"><a class="btn" href="tel:+380978667755">Подзвонити</a><a class="btn bz-go" href="#build-anim">Дивитись, як ми ремонтуємо</a></div></div></div>
+<div class="sg-c"><div class="sg-meta">Поява фото (blur-up), hover карток, перенесення<p>Ліниві фото зʼявляються з розмиття (<code>.ui-img</code> — <code>/assets/ui-polish.v1.js</code>), рамка галереї поки що мерехтить. Картки на hover піднімаються з тінню (розділ Motion). Довгі слова: <code>hyphens:auto</code> за <code>lang</code> сторінки, посилання в тексті — <code>overflow-wrap:anywhere</code>; китайська — <code>line-break:strict</code>, без дефісів.</p></div></div>
 </section>
 
 <section id="zhk"><h2>Блоки ЖК</h2>
