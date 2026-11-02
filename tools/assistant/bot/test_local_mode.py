@@ -54,7 +54,7 @@ class Base(unittest.TestCase):
         self.mem, self.state = self.tmp / "memory", self.tmp / "state"
         self.mem.mkdir(); self.state.mkdir()
         self.env = {"ASSISTANT_MEMORY_DIR": str(self.mem), "ASSISTANT_STATE_DIR": str(self.state),
-                    "ASSISTANT_TMP": str(self.tmp / "tmp"), "ASSISTANT_OLLAMA_URL": "http://127.0.0.1:9",
+                    "ASSISTANT_TMP": str(self.tmp / "tmp"), "ASSISTANT_OLLAMA_URL": "http://127.0.0.1:9", "ASSISTANT_OLLAMA_FALLBACK_URLS": "",
                     "ASSISTANT_BRIEF_OLLAMA": "0", "ASSISTANT_TG_OUT": str(self.fake_tg()),
                     "ASSISTANT_CLAUDE_RETRY_MIN": "30"}
         self._old = {k: os.environ.get(k) for k in self.env}
@@ -229,6 +229,14 @@ class OllamaTests(Base):
         try:
             self.assertEqual(self.L.ollama_chat("привіт"), "Відповідь.")
             self.assertNotIn("think", o.requests[-1])
+        finally:
+            o.close()
+
+    def test_fallback_to_ssd_ollama(self):
+        o = FakeOllama("З SSD.")                     # основний :11434 мовчить (або без моделі) — відповідає запасний
+        os.environ["ASSISTANT_OLLAMA_FALLBACK_URLS"] = o.url
+        try:
+            self.assertEqual(self.L.ollama_chat("привіт"), "З SSD.")
         finally:
             o.close()
 
