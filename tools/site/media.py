@@ -160,7 +160,8 @@ def apply(s, rel, c, pub=None):
     m = re.match(r'proekty/([\w-]+)\.html$', rel)
     slug = (c.get('tour360') or {}).get(m.group(1), '') if m else ''
     if slug and slug in pub:
-        k = s.find('<section><div class="w">\n  <h2>Фото проєкту</h2>')
+        mk = re.search(r'<section><div class="w"(?: data-c="\w")?>\n  <h2(?: data-i="\w+")?>Фото проєкту</h2>', s)  # атрибути ux (tools/site/ux.py)
+        k = mk.start() if mk else -1
         blk = project_tour(s, slug, lang, bool(pub))
         s = s[:k].rstrip('\n') + blk + '\n' + s[k:] if k >= 0 else insert(s, blk, ('</main>',))
     vids = list(c.get('videos') or []) if rel in (c.get('video_pages') or []) else []

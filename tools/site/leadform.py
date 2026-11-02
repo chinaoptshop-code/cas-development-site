@@ -300,7 +300,8 @@ def add_slots(s, rel):
             ins.append((ge, _slot('quick-portfolio')))
     if re.match(r'(?:[a-z]{2}/)?proekty/[^/]+\.html$', rel):  # сторінка проєкту: «Хочу так само» в «Замовити схожий проєкт»
         g = s.find('<div class="pg"')
-        k = s.find('<section><div class="w">', g) if g > 0 else -1
+        mk = re.compile(r'<section><div class="w"(?: data-c="\w")?>').search(s, g) if g > 0 else None  # data-c — tools/site/ux.py
+        k = mk.start() if mk else -1
         j = s.find('</div></section>', k) if k > 0 else -1
         h1 = re.search(r'<h1[^>]*>(.*?)</h1>', s, re.S)
         name = re.sub(r'<[^>]+>', '', h1.group(1)).strip() if h1 else ''
