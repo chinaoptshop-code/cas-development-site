@@ -252,7 +252,8 @@ def apply(s, rel):
     part = strip(part)
     e = part.find('</main>')
     m, rest = (part[:e], part[e:]) if e >= 0 else (part, '')
-    m = _icons(m)
+    if not re.match(r'(?:[a-z]{2}/)?index\.html$', rel):  # головні — без іконок заголовків (вага й LCP головної)
+        m = _icons(m)
     m = _collapse(m)
     if re.match(r'(?:[a-z]{2}/)?blog/', rel):
         m = _article_lists(m)

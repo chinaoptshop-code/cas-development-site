@@ -426,6 +426,7 @@
   var LG = (h.lang || 'uk').slice(0, 2), T = UXT[LG] || UXT.en || ['Read more', 'Show less', 'All questions ({n})', 'Step details', 'Show more ({n})', 'Full list ({n})'];
   var RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function $$(s, r) { try { return [].slice.call((r || d).querySelectorAll(s)); } catch (e) { return []; } }
+  var n = 0, CS = $$('[data-c]'), PAD = CS.map(function (c) { return getComputedStyle(c).paddingInlineStart; }); // читання — до вставок
   // 1. іконки: <svg class="ic"><use href="спрайт#ключ"> першою дитиною заголовка
   $$('[data-i]').forEach(function (el) {
     if (!/^H[23]$/.test(el.tagName) || (el.firstElementChild && el.firstElementChild.classList.contains('ic'))) return;
@@ -436,8 +437,7 @@
   });
   // 2. згортання: t — довгий текст, s — описи етапів, q — FAQ (5), g — картки (6), l — список у статті (5)
   var HIDE = { q: ['details', 5], g: ['.grid>*', 6], l: ['li', 5] };
-  var n = 0;
-  $$('[data-c]').forEach(function (c) {
+  CS.forEach(function (c, ci) {
     var k = c.getAttribute('data-c'), cnt = 0, lab;
     if (HIDE[k]) {
       cnt = $$(HIDE[k][0], c).filter(function (x) { return k !== 'q' || x.parentNode === c || x.parentNode.parentNode === c; }).length - HIDE[k][1];
@@ -449,7 +449,7 @@
     var b = d.createElement('button');
     b.type = 'button'; b.className = 'c-b'; b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', id);
     b.textContent = lab(false);
-    var pad = getComputedStyle(c).paddingInlineStart; if (pad) b.style.insetInlineStart = pad;
+    if (PAD[ci]) b.style.insetInlineStart = PAD[ci];
     c.appendChild(b);
     b.addEventListener('click', function () {
       var open = !c.classList.contains('c-o'), h0 = c.offsetHeight;
