@@ -43,6 +43,12 @@ PAGES = {
     'en/index.html': ('', ''),
     'en/turnkey-renovation.html': ('kv', 'rem'),
     'en/house-construction.html': ('dim', 'bud'),
+    # es, zh, pl, de, fr, ar — тексти квізу в L у quiz.v1.js
+    'es/index.html': ('', ''), 'zh/index.html': ('', ''), 'pl/index.html': ('', ''), 'de/index.html': ('', ''), 'fr/index.html': ('', ''), 'ar/index.html': ('', ''),
+    'es/construccion-de-casas.html': ('dim', 'bud'), 'zh/house-construction.html': ('dim', 'bud'), 'pl/budowa-domow.html': ('dim', 'bud'),
+    'de/hausbau.html': ('dim', 'bud'), 'fr/construction-maison.html': ('dim', 'bud'), 'ar/house-construction.html': ('dim', 'bud'),
+    'es/reforma-llave-en-mano.html': ('kv', 'rem'), 'zh/turnkey-renovation.html': ('kv', 'rem'), 'pl/remont-pod-klucz.html': ('kv', 'rem'),
+    'de/renovierung-schluesselfertig.html': ('kv', 'rem'), 'fr/renovation-cle-en-main.html': ('kv', 'rem'), 'ar/turnkey-renovation.html': ('kv', 'rem'),
 }
 T = {
     'uk': dict(h='Порахуйте орієнтовну вартість', p='4 короткі питання — і ви побачите орієнтир «від» за базовими ставками студії. '
@@ -61,7 +67,7 @@ e = lambda s: html.escape(s, quote=True)
 
 def block(lang, obj, svc):
     """Лише тег скрипта: секцію (заголовок, лід, заготовку .qz) вставляє сам quiz.v1.js перед цим тегом —
-    у HTML лендингу ~0,1 КБ замість ~0,9 КБ (бюджет 64 КБ). Тексти — у словнику L у quiz.v1.js (uk, ru, en)."""
+    у HTML лендингу ~0,1 КБ замість ~0,9 КБ (бюджет 64 КБ). Тексти — у словнику L у quiz.v1.js (uk, ru, en, es, zh, pl, de, fr, ar)."""
     return f'\n<!--quiz--><script src="/assets/quiz.v1.js" data-quiz-obj="{obj}" data-quiz-svc="{svc}" defer></script><!--/quiz-->'
 
 

@@ -60,7 +60,109 @@
       tip: 'We will call you back shortly. Phone consultation is free.',
       empty: 'Please enter your phone number — we will call you back.', bad: 'Please check the number: at least 9 digits, with country code.',
       fail: 'We could not send it. Please call or message +380 97 866 77 55.', ok: 'Thank you! We will call you back shortly to refine the estimate.',
-      demo: 'Demo: nothing was sent.' }
+      demo: 'Demo: nothing was sent.' },
+    es: { h: 'Calcule un presupuesto orientativo', p: 'Cuatro preguntas breves y verá una cifra «desde» según las tarifas base del estudio. Al final deje su teléfono: le llamamos para afinar el cálculo.',
+      step: 'Paso {n} de {t}', next: 'Siguiente', back: 'Atrás', again: 'Cambiar respuestas',
+      q: ['¿Qué tipo de inmueble?', '¿Qué servicio necesita?', '¿Qué superficie?', '¿Cuándo quiere empezar?'],
+      obj: { kv: 'Piso', dim: 'Casa', kom: 'Local comercial', of: 'Oficina' },
+      svc: { dyz: 'Proyecto de diseño', rem: 'Reforma', bud: 'Construcción', meb: 'Amueblamiento', kl: 'Llave en mano' },
+      when: { now: 'Lo antes posible', m3: 'En 1–3 meses', m6: 'Dentro de 3–6 meses', calc: 'Aún calculo el presupuesto' },
+      area: 'Superficie, m²', m2: 'm²', est: 'Orientativo', from: 'desde', ind: 'Lo calculamos de forma individual',
+      line: { dyz: 'proyecto de diseño', rem: 'reforma', of: 'reforma de oficina', bud: 'construcción', meb: 'amueblamiento', kl: 'casa llave en mano' },
+      min: 'mín. $2 500',
+      note: { rem: 'Reforma desde $550/m²: mano de obra y materiales de obra gruesa; los acabados, muebles y electrodomésticos aparte, según presupuesto.',
+        of: 'Oficina desde $350/m²: mano de obra y materiales de obra gruesa.', kom: 'Para locales comerciales no hay tarifa fija: lo calculamos con presupuesto.' },
+      disc: 'Es una referencia según las tarifas base del estudio. El importe exacto se fija en el presupuesto tras la medición.',
+      phone: 'Teléfono para el cálculo *', ph: '+34 600 123 456', send: 'Recibir el cálculo', sending: 'Enviando…',
+      tip: 'Le llamamos en breve. La consulta telefónica es gratuita.',
+      empty: 'Indique su número de teléfono y le llamamos.', bad: 'Revise el número: al menos 9 cifras, con prefijo internacional.',
+      fail: 'No se pudo enviar. Llame o escriba al +380 97 866 77 55.', ok: '¡Gracias! Le llamamos en breve para afinar el cálculo.',
+      demo: 'Demo: no se ha enviado nada.' },
+    zh: { h: '估算参考费用', p: '回答 4 个简单问题，即可看到按工作室基础单价计算的“起价”。最后留下电话，我们回电细化估算。',
+      step: '第 {n} 步，共 {t} 步', next: '下一步', back: '返回', again: '修改答案',
+      q: ['什么类型的物业？', '需要什么服务？', '面积多大？', '计划何时开始？'],
+      obj: { kv: '公寓', dim: '住宅', kom: '商业空间', of: '办公室' },
+      svc: { dyz: '设计方案', rem: '装修', bud: '建造', meb: '家具配置', kl: '交钥匙' },
+      when: { now: '尽快', m3: '1–3 个月内', m6: '3–6 个月后', calc: '仍在规划预算' },
+      area: '面积，m²', m2: 'm²', est: '参考价', from: '起', ind: '单独核算',
+      line: { dyz: '设计方案', rem: '装修', of: '办公室装修', bud: '建造', meb: '家具配置', kl: '住宅交钥匙' },
+      min: '最低 $2,500',
+      note: { rem: '装修 $550/m² 起：含人工和基础材料；饰面材料、家具和电器另计，按预算。',
+        of: '办公室 $350/m² 起：含人工和基础材料。', kom: '商业空间没有统一单价，按预算核算。' },
+      disc: '这是按工作室基础单价的参考。确切金额在现场测量后的预算中确定。',
+      phone: '用于估算的电话 *', ph: '+86 138 0013 8000', send: '获取估算', sending: '发送中…',
+      tip: '我们会尽快回电。电话咨询免费。',
+      empty: '请填写电话号码，我们会回电。', bad: '请检查号码：至少 9 位数字，含国家区号。',
+      fail: '发送失败。请致电或发消息至 +380 97 866 77 55。', ok: '谢谢！我们会尽快回电并细化估算。',
+      demo: '演示：未发送任何内容。' },
+    pl: { h: 'Oblicz orientacyjny koszt', p: 'Cztery krótkie pytania i zobaczysz kwotę „od” według stawek bazowych studia. Na końcu zostaw telefon: oddzwonimy i doprecyzujemy wycenę.',
+      step: 'Krok {n} z {t}', next: 'Dalej', back: 'Wstecz', again: 'Zmień odpowiedzi',
+      q: ['Jaki to obiekt?', 'Jakiej usługi potrzebujesz?', 'Jaka powierzchnia?', 'Kiedy planujesz start?'],
+      obj: { kv: 'Mieszkanie', dim: 'Dom', kom: 'Lokal usługowy', of: 'Biuro' },
+      svc: { dyz: 'Projekt wnętrza', rem: 'Remont', bud: 'Budowa', meb: 'Umeblowanie', kl: 'Pod klucz' },
+      when: { now: 'Jak najszybciej', m3: 'W ciągu 1–3 miesięcy', m6: 'Za 3–6 miesięcy', calc: 'Na razie liczę budżet' },
+      area: 'Powierzchnia, m²', m2: 'm²', est: 'Orientacyjnie', from: 'od', ind: 'Wycenimy indywidualnie',
+      line: { dyz: 'projekt wnętrza', rem: 'remont', of: 'remont biura', bud: 'budowa', meb: 'umeblowanie', kl: 'dom pod klucz' },
+      min: 'min. $2 500',
+      note: { rem: 'Remont od $550/m² — robocizna i materiały budowlane; materiały wykończeniowe, meble i AGD osobno, według kosztorysu.',
+        of: 'Biuro od $350/m² — robocizna i materiały budowlane.', kom: 'Dla lokali usługowych nie ma stałej stawki — liczymy według kosztorysu.' },
+      disc: 'To orientacja według stawek bazowych studia. Dokładną kwotę ustalamy w kosztorysie po pomiarze.',
+      phone: 'Telefon do wyceny *', ph: '+48 512 345 678', send: 'Otrzymaj wycenę', sending: 'Wysyłamy…',
+      tip: 'Oddzwonimy wkrótce. Konsultacja telefoniczna jest bezpłatna.',
+      empty: 'Podaj numer telefonu — oddzwonimy.', bad: 'Sprawdź numer: co najmniej 9 cyfr, z numerem kierunkowym kraju.',
+      fail: 'Nie udało się wysłać. Zadzwoń lub napisz: +380 97 866 77 55.', ok: 'Dziękujemy! Oddzwonimy wkrótce i doprecyzujemy wycenę.',
+      demo: 'Demo: nic nie wysłano.' },
+    de: { h: 'Richtpreis berechnen', p: 'Vier kurze Fragen, und Sie sehen einen „ab“-Wert nach den Basissätzen des Studios. Hinterlassen Sie am Ende Ihre Telefonnummer: Wir rufen zurück und präzisieren die Kalkulation.',
+      step: 'Schritt {n} von {t}', next: 'Weiter', back: 'Zurück', again: 'Antworten ändern',
+      q: ['Um welches Objekt geht es?', 'Welche Leistung brauchen Sie?', 'Wie groß ist die Fläche?', 'Wann möchten Sie starten?'],
+      obj: { kv: 'Wohnung', dim: 'Haus', kom: 'Gewerbe', of: 'Büro' },
+      svc: { dyz: 'Designprojekt', rem: 'Sanierung', bud: 'Bau', meb: 'Einrichtung', kl: 'Schlüsselfertig' },
+      when: { now: 'So bald wie möglich', m3: 'In 1–3 Monaten', m6: 'In 3–6 Monaten', calc: 'Ich plane noch das Budget' },
+      area: 'Fläche, m²', m2: 'm²', est: 'Richtwert', from: 'ab', ind: 'Wir kalkulieren individuell',
+      line: { dyz: 'Designprojekt', rem: 'Sanierung', of: 'Büroumbau', bud: 'Bau', meb: 'Einrichtung', kl: 'Haus schlüsselfertig' },
+      min: 'mind. $2 500',
+      note: { rem: 'Sanierung ab $550/m² — Arbeit und Rohbaumaterial; Ausbaumaterialien, Möbel und Geräte separat, nach Kostenvoranschlag.',
+        of: 'Büro ab $350/m² — Arbeit und Rohbaumaterial.', kom: 'Für Gewerbeflächen gibt es keinen Pauschalsatz — wir kalkulieren nach Kostenvoranschlag.' },
+      disc: 'Das ist ein Richtwert nach den Basissätzen des Studios. Die genaue Summe steht im Kostenvoranschlag nach dem Aufmaß.',
+      phone: 'Telefon für die Kalkulation *', ph: '+49 151 23456789', send: 'Kalkulation erhalten', sending: 'Wird gesendet…',
+      tip: 'Wir rufen Sie in Kürze zurück. Die telefonische Beratung ist kostenlos.',
+      empty: 'Bitte geben Sie Ihre Telefonnummer an — wir rufen zurück.', bad: 'Bitte prüfen Sie die Nummer: mindestens 9 Ziffern, mit Ländervorwahl.',
+      fail: 'Senden fehlgeschlagen. Rufen Sie an oder schreiben Sie: +380 97 866 77 55.', ok: 'Danke! Wir rufen Sie in Kürze zurück und präzisieren die Kalkulation.',
+      demo: 'Demo: nichts gesendet.' },
+    fr: { h: 'Estimez le coût indicatif', p: 'Quatre questions courtes et vous verrez un montant « à partir de » selon les tarifs de base du studio. Laissez votre téléphone à la fin : nous vous rappelons pour affiner le chiffrage.',
+      step: 'Étape {n} sur {t}', next: 'Suivant', back: 'Retour', again: 'Modifier les réponses',
+      q: ['Quel type de bien ?', 'De quel service avez-vous besoin ?', 'Quelle surface ?', 'Quand souhaitez-vous commencer ?'],
+      obj: { kv: 'Appartement', dim: 'Maison', kom: 'Local commercial', of: 'Bureau' },
+      svc: { dyz: 'Projet de design', rem: 'Rénovation', bud: 'Construction', meb: 'Ameublement', kl: 'Clé en main' },
+      when: { now: 'Dès que possible', m3: 'D’ici 1 à 3 mois', m6: 'Dans 3 à 6 mois', calc: 'Je calcule encore le budget' },
+      area: 'Surface, m²', m2: 'm²', est: 'Estimation', from: 'à partir de', ind: 'Chiffrage sur mesure',
+      line: { dyz: 'projet de design', rem: 'rénovation', of: 'rénovation de bureaux', bud: 'construction', meb: 'ameublement', kl: 'maison clé en main' },
+      min: 'min. 2 500 $',
+      note: { rem: 'Rénovation à partir de 550 $/m² : main-d’œuvre et matériaux de gros œuvre ; finitions, mobilier et électroménager en sus, sur devis.',
+        of: 'Bureau à partir de 350 $/m² : main-d’œuvre et matériaux de gros œuvre.', kom: 'Pas de tarif forfaitaire pour les locaux commerciaux : chiffrage sur devis.' },
+      disc: 'C’est un repère selon les tarifs de base du studio. Le montant exact est fixé dans le devis après le relevé.',
+      phone: 'Téléphone pour le chiffrage *', ph: '+33 6 12 34 56 78', send: 'Recevoir le chiffrage', sending: 'Envoi…',
+      tip: 'Nous vous rappelons rapidement. La consultation téléphonique est gratuite.',
+      empty: 'Indiquez votre numéro de téléphone : nous vous rappelons.', bad: 'Vérifiez le numéro : au moins 9 chiffres, avec l’indicatif du pays.',
+      fail: 'Envoi impossible. Appelez ou écrivez au +380 97 866 77 55.', ok: 'Merci ! Nous vous rappelons rapidement pour affiner le chiffrage.',
+      demo: 'Démo : rien n’a été envoyé.' },
+    ar: { h: 'احسب التكلفة التقديرية', p: 'أربعة أسئلة قصيرة وسترى مبلغًا «يبدأ من» وفق الأسعار الأساسية للاستوديو. اترك رقم هاتفك في النهاية: سنتصل بك لتدقيق الحساب.',
+      step: 'الخطوة {n} من {t}', next: 'التالي', back: 'رجوع', again: 'تعديل الإجابات',
+      q: ['ما نوع العقار؟', 'ما الخدمة المطلوبة؟', 'ما المساحة؟', 'متى تخطط للبدء؟'],
+      obj: { kv: 'شقة', dim: 'منزل', kom: 'محل تجاري', of: 'مكتب' },
+      svc: { dyz: 'مشروع تصميم', rem: 'تجديد', bud: 'بناء', meb: 'تأثيث', kl: 'تسليم مفتاح' },
+      when: { now: 'في أقرب وقت', m3: 'خلال 1–3 أشهر', m6: 'بعد 3–6 أشهر', calc: 'ما زلت أحسب الميزانية' },
+      area: 'المساحة، م²', m2: 'م²', est: 'تقديريًا', from: 'من', ind: 'نحسبها بشكل فردي',
+      line: { dyz: 'مشروع تصميم', rem: 'تجديد', of: 'تجديد مكتب', bud: 'بناء', meb: 'تأثيث', kl: 'منزل تسليم مفتاح' },
+      min: 'حد أدنى $2,500',
+      note: { rem: 'التجديد من $550/م²: الأعمال والمواد الأساسية؛ ومواد التشطيب والأثاث والأجهزة منفصلة وفق المقايسة.',
+        of: 'المكتب من $350/م²: الأعمال والمواد الأساسية.', kom: 'لا يوجد سعر ثابت للمحلات التجارية: نحسبها وفق المقايسة.' },
+      disc: 'هذا مؤشر وفق الأسعار الأساسية للاستوديو. يُحدَّد المبلغ الدقيق في المقايسة بعد القياس.',
+      phone: 'الهاتف للحساب *', ph: '+971 50 123 4567', send: 'احصل على الحساب', sending: 'جارٍ الإرسال…',
+      tip: 'سنتصل بك قريبًا. الاستشارة الهاتفية مجانية.',
+      empty: 'أدخل رقم هاتفك وسنتصل بك.', bad: 'تحقق من الرقم: 9 أرقام على الأقل مع رمز الدولة.',
+      fail: 'تعذّر الإرسال. اتصل أو راسلنا: ‎+380 97 866 77 55.', ok: 'شكرًا! سنتصل بك قريبًا لتدقيق الحساب.',
+      demo: 'عرض تجريبي: لم يُرسل شيء.' }
   };
   var t = L[lang] || L.uk, U = L.uk;
   var UA = lang === 'uk' || lang === 'ru';
@@ -69,9 +171,10 @@
   var DEF_AREA = { kv: 70, dim: 150, kom: 120, of: 150 };
 
   function clarity(k, v) { try { if (window.clarity) { window.clarity('set', k, String(v)); window.clarity('event', k); } } catch (x) {} }
-  function money(n) {
-    var s = String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, lang === 'en' ? ',' : ' ');
-    return '$' + s;
+  var COMMA = lang === 'en' || lang === 'zh' || lang === 'ar';
+  function money(n) { // розряди: «,» — en, zh, ar; пробіл — решта; fr — «2 500 $»
+    var s = String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, COMMA ? ',' : ' ');
+    return lang === 'fr' ? s + ' $' : '$' + s;
   }
   // той самий розбір номера, що й у lead-form.v1.js (щоб невірний номер не «стрибав» до основної форми)
   function normPhone(v) {
@@ -87,19 +190,20 @@
   /* Розрахунок: [{k: рядок, v: сума|null, r: ставка}], нотатки. Лише ставки CLAUDE.md. */
   function estimate(o, s, a) {
     var lines = [], notes = [];
-    var dz = function () { lines.push({ k: 'dyz', v: Math.max(a * RATE.dyz, DMIN), r: '$30/' + t.m2 + ', ' + t.min }); };
+    var rt = function (n) { return money(n) + '/' + t.m2; };
+    var dz = function () { lines.push({ k: 'dyz', v: Math.max(a * RATE.dyz, DMIN), r: rt(30) + ', ' + t.min }); };
     var rm = function () {
       if (o === 'kom') { lines.push({ k: 'rem', v: null }); notes.push(t.note.kom); }
-      else if (o === 'of') { lines.push({ k: 'of', v: a * RATE.of, r: '$350/' + t.m2 }); notes.push(t.note.of); }
-      else { lines.push({ k: 'rem', v: a * RATE.rem, r: '$550/' + t.m2 }); notes.push(t.note.rem); }
+      else if (o === 'of') { lines.push({ k: 'of', v: a * RATE.of, r: rt(350) }); notes.push(t.note.of); }
+      else { lines.push({ k: 'rem', v: a * RATE.rem, r: rt(550) }); notes.push(t.note.rem); }
     };
-    var mb = function () { lines.push({ k: 'meb', v: a * RATE.meb, r: '$250/' + t.m2 }); };
+    var mb = function () { lines.push({ k: 'meb', v: a * RATE.meb, r: rt(250) }); };
     if (s === 'dyz') dz();
     else if (s === 'rem') rm();
     else if (s === 'meb') mb();
-    else if (s === 'bud') lines.push(o === 'dim' ? { k: 'bud', v: a * RATE.bud, r: '$600/' + t.m2 } : { k: 'bud', v: null });
+    else if (s === 'bud') lines.push(o === 'dim' ? { k: 'bud', v: a * RATE.bud, r: rt(600) } : { k: 'bud', v: null });
     else if (s === 'kl') {
-      if (o === 'dim') lines.push({ k: 'kl', v: a * RATE.kl, r: '$1' + (lang === 'en' ? ',' : ' ') + '100/' + t.m2 });
+      if (o === 'dim') lines.push({ k: 'kl', v: a * RATE.kl, r: rt(1100) });
       else { dz(); rm(); mb(); }
     }
     var sum = 0, known = 0, unknown = 0;
