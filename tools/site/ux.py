@@ -188,7 +188,7 @@ def _collapse_type(sid, cls, body):
         return 'g'
     if cls == 'w txt' and 'class="rel' not in body:
         txt = ''.join(re.findall(r'<(?:p|li)\b[^>]*>(.*?)</(?:p|li)>', body, re.S))
-        if len(plain(txt)) > 620 and len(re.findall(r'<p\b', body)) >= 1:
+        if len(plain(txt)) > 420 and len(re.findall(r'<p\b', body)) >= 1:
             return 't'
     return None
 

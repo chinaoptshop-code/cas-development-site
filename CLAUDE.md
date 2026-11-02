@@ -48,6 +48,11 @@
   Деплой сам збирає сайт `tools/build-all.sh` (landing → products → shop → blog → chrome → i18n); `rebuild.yml` комітить згенероване з `[rebuild]`.
 - «Будинок з нуля» / «Ремонт з нуля» (scroll-анімація збірки, префікс класів `bz`, `.ba` — слайдер «до/після»): тексти етапів і пироги шарів — `tools/site/buildanim_data.py`, генератор `tools/site/buildanim.py`
   (сторінки — `PAGES`, у build-all), `assets/build-anim.v1.{js,css}` (вантажить site-chrome.v1.js після першої прокрутки), UI-kit — `/styleguide/#build-anim-sg`.
+- Менше стіни тексту (`tools/site/ux.py`, викликає `chrome.apply()`): іконки до H2/карток (`data-i`, спрайт `/assets/icons.v1.svg`, Lucide ISC, мапа тем — `RULES`),
+  згортання довгих блоків (`data-c`: текст/етапи/FAQ/картки/списки статей; текст лишається в DOM), бейдж «Анімація реалізації» на посиланнях на `PAGES` з buildanim.py
+  і кнопка «Дивитись, як ми будуємо» в hero. Тексти — `ux` у `tools/site/lang/*.json` (uk/ru — у ux.py). Руками атрибути не писати; UI-kit — `/styleguide/#ux`.
+  Генератори, що шукають у сторінках точні рядки `<h2>`/`<div class="w">`, мають допускати ці атрибути (`ux.strip()` для шаблонів).
+  UI polish — один файл `/assets/ui-polish.v1.js` (не інлайн); стилі головної — `/assets/home.v1.css`.
 - Карти (/portfolio «Карта проєктів», карта офісу в контактах усіх мов): `tools/site/casmap.py` (точки — лише центр міста/регіону, без адрес клієнтів),
   MapLibre GL JS self-hosted у `assets/vendor/`, тайли OpenFreeMap без ключа; постери `img/map/` — `python3 tools/site/casmap.py --posters`.
 - Зображення: AVIF-копії робить `tools/img/build.py` (нові фото в img/ — запустити його); `<picture>` з AVIF підставляє
