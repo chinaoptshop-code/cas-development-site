@@ -464,7 +464,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .qz{max-width:760px;min-height:360px;box-sizing:border-box;padding:22px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:12px;background:var(--bg2,rgba(255,255,255,.03));color:var(--tx,#EDE8DF)}
 /* ══ Менше стіни тексту: іконки, згортання, бейдж «Анімація реалізації» (tools/site/ux.py, /assets/icons.v1.svg, /styleguide/#ux) ──
    Атрибути ставить ux.apply() (через chrome.py); місце під іконку й кнопку резервуємо лише під .js — без JS усе видно повністю, CLS 0. */
-/*ux:labels*/:root:lang(uk){--ux-a:"Анімація реалізації";--ux-as:"Інтерактив"}:root:lang(ru){--ux-a:"Анимация реализации";--ux-as:"Интерактив"}:root:lang(en){--ux-a:"Build animation";--ux-as:"Interactive"}:root:lang(es){--ux-a:"Animación de la obra";--ux-as:"Interactivo"}:root:lang(zh-Hans){--ux-a:"施工过程动画";--ux-as:"互动"}:root:lang(pl){--ux-a:"Animacja realizacji";--ux-as:"Interaktywne"}:root:lang(de){--ux-a:"Bauablauf als Animation";--ux-as:"Interaktiv"}:root:lang(fr){--ux-a:"Animation du chantier";--ux-as:"Interactif"}:root:lang(ar){--ux-a:"رسوم متحركة للتنفيذ";--ux-as:"تفاعلي"}/*/ux:labels*/
+/*ux:labels*/:root:lang(uk){--ux-a:"Анімація реалізації";--ux-as:"Інтерактив";--ux-tr:"150+ проєктів · 36 міс. гарантія · власні бригади"}:root:lang(ru){--ux-a:"Анимация реализации";--ux-as:"Интерактив";--ux-tr:"150+ проектов · 36 мес. гарантия · собственные бригады"}:root:lang(en){--ux-a:"Build animation";--ux-as:"Interactive";--ux-tr:"150+ projects · 36-month warranty · own crews"}:root:lang(es){--ux-a:"Animación de la obra";--ux-as:"Interactivo";--ux-tr:"150+ proyectos · 36 meses de garantía · equipos propios"}:root:lang(zh-Hans){--ux-a:"施工过程动画";--ux-as:"互动";--ux-tr:"150+ 项目 · 36 个月质保 · 自有施工队"}:root:lang(pl){--ux-a:"Animacja realizacji";--ux-as:"Interaktywne";--ux-tr:"150+ projektów · 36 mies. gwarancji · własne brygady"}:root:lang(de){--ux-a:"Bauablauf als Animation";--ux-as:"Interaktiv";--ux-tr:"150+ Projekte · 36 Mon. Gewährleistung · eigene Teams"}:root:lang(fr){--ux-a:"Animation du chantier";--ux-as:"Interactif";--ux-tr:"150+ projets · garantie 36 mois · équipes internes"}:root:lang(ar){--ux-a:"رسوم متحركة للتنفيذ";--ux-as:"تفاعلي";--ux-tr:"+150 مشروعًا · ضمان 36 شهرًا · فرق عمل خاصة بنا"}/*/ux:labels*/
 .ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none;overflow:visible}
 .js h2[data-i]{position:relative;padding-inline-start:1.32em}
 .js h2[data-i]>.ic{position:absolute;inset-inline-start:0;top:.14em;width:.86em;height:.86em;color:var(--ac,#BF9148);stroke-width:1.3}
@@ -475,7 +475,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 @media(prefers-reduced-motion:no-preference){.ic{animation:ux-ic .5s var(--ease-out) both}}
 @keyframes ux-ic{from{opacity:0;scale:.6}}
 /* згортання: t — довгий текст (перший абзац, 4 рядки), s — описи етапів, q — FAQ (5), g — картки (6), l — список у статті (5) */
-.js [data-c]{position:relative;padding-bottom:68px}
+.js [data-c]{position:relative;padding-bottom:68px}.js [data-c=x],.js [data-c=h],.js [data-c=k]{padding-bottom:0}
 .js [data-c=t]:not(.c-o)>p:first-of-type{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;line-clamp:4;overflow:hidden;
   -webkit-mask-image:linear-gradient(180deg,#000 45%,transparent);mask-image:linear-gradient(180deg,#000 45%,transparent)}
 .js [data-c=t]:not(.c-o)>p:first-of-type~:is(p,ul,ol,h3,h4,blockquote,dl){display:none}
@@ -495,6 +495,72 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 }
 @keyframes ux-in{from{opacity:0;translate:0 8px}}
 @media print{.c-b{display:none}.js [data-c]{padding-bottom:0}}
+/* ══ Легкі головні сторінки (tools/site/ux.py LIGHT, /styleguide/#light): секції-плитки [data-c=x], лід hero [data-c=h], «Порахувати», рядок довіри ──
+   Плитка — <section> (або її <div class="w">) з H2: згорнута показує іконку, назву і рядок «від $…» (data-xs); тап — розгортає на всю ширину.
+   Сітка — на контейнері секцій (main / #p-*), без обгорток: повноширинні блоки розтягуються назад на всю ширину (--uxp). Лише під .js — без JS усе відкрито. */
+.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){--uxp:max(16px,(100vw - 1048px)/2);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:10px;padding-inline:var(--uxp)}
+.js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x]))>*{grid-column:1/-1;margin-inline:calc(-1*var(--uxp));min-width:0}
+.js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x]))>.w{margin-inline:0;padding-inline:0;max-width:none}
+@media(min-width:760px){.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){grid-template-columns:repeat(3,minmax(0,1fr));column-gap:12px}}
+@media(min-width:1100px){.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){grid-template-columns:repeat(4,minmax(0,1fr))}}
+.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:auto;margin:0 0 10px!important;position:relative;padding:0!important;border:1px solid var(--ln,rgba(191,145,72,.22))!important;border-radius:14px;
+  background:var(--bg2,rgba(255,255,255,.03))!important;transition:border-color .3s ease,background-color .3s ease;min-width:0}
+.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):is(.c-o,:has(>.c-o)){grid-column:1/-1!important}
+.js section:not([data-c=x],:has(>.w[data-c=x]))+:is([data-c=x]:not(.w),section:has(>.w[data-c=x])),.js :is(.hero,.crumbs)+:is([data-c=x]:not(.w),section:has(>.w[data-c=x])){margin-top:0!important}
+.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x]))+:not([data-c=x],section:has(>.w[data-c=x]),script,style){margin-top:30px!important}
+.js .w[data-c=x]{margin:0;max-width:none;padding:16px 16px 18px}
+.js [data-c=x]:not(.w){padding:16px 16px 18px!important}
+@media(hover:hover){.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):not(.c-o,:has(>.c-o)):hover{border-color:var(--ac,#BF9148)!important;background:rgba(191,145,72,.07)!important}}
+.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):has(.ux-h:focus-visible){outline:2px solid var(--ac,#BF9148);outline-offset:3px}
+/* згорнута плитка: лише H2 (і ланцюжок обгорток до нього в ручних секціях) */
+.js .w[data-c=x]:not(.c-o)>:not(h2),.js [data-c=x]:not(.w):not(.c-o) :not(h2,h2 *,:has(h2)){display:none!important}
+.js [data-c=x]:not(.w):not(.c-o) :has(h2){display:block!important;position:static!important;padding:0!important;margin:0!important;border:0!important;min-height:0!important;max-width:none!important;background:none!important;transform:none!important}
+.js [data-c=x] h2{position:static!important;margin:0!important;padding:48px 0 0!important;font-size:clamp(1.18rem,1.02rem + .55vw,1.5rem)!important;line-height:1.2!important;text-align:start!important;letter-spacing:0!important}
+.js [data-c=x].c-o h2,.js [data-c=x]:has(.c-o) h2{margin-bottom:16px!important}
+.js [data-c=x] h2::before,.js [data-c=x] h2::after{content:none!important}
+.ux-h{display:block;width:100%;margin:0;padding:0 26px 0 0;border:0;background:none;color:inherit;font:inherit;line-height:inherit;letter-spacing:inherit;text-align:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+:dir(rtl) .ux-h,[dir=rtl] .ux-h{padding:0 0 0 26px}
+.ux-h:focus-visible{outline:none}
+.ux-h::before{content:"";position:absolute;inset:0;border-radius:inherit}
+.js [data-c=x]:not(.c-o) .ux-h{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.c-o .ux-h::before{bottom:auto;height:76px}
+.ux-h::after{content:"";position:absolute;top:28px;inset-inline-end:20px;width:8px;height:8px;border-right:1.5px solid var(--ac,#BF9148);border-bottom:1.5px solid var(--ac,#BF9148);rotate:45deg;transition:rotate .4s var(--ease-out,ease)}
+.ux-h[aria-expanded=true]::after{rotate:225deg;top:32px}
+.js [data-c=x] h2>.ux-h>.ic,.js [data-c=x] h2[data-i]>.ic{position:absolute!important;top:14px!important;inset-inline-start:14px!important;width:38px!important;height:38px!important;padding:9px;box-sizing:border-box;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:50%;
+  color:var(--ac,#BF9148);background:rgba(191,145,72,.06);stroke-width:1.5;transition:background-color .4s ease,color .4s ease,rotate .5s var(--ease-out,ease)}
+@media(hover:hover){.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):hover .ux-h>.ic{background:var(--ac,#BF9148);color:#140f08;rotate:-8deg}}
+.js [data-c=x][data-xs]:not(.c-o)::after{content:attr(data-xs);display:block;margin-top:6px;color:var(--ac,#BF9148);font:600 var(--fs-small,.8125rem)/1.3 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.04em}
+@media(prefers-reduced-motion:no-preference){.js .w[data-c=x].c-o>:not(h2){animation:ux-in .45s var(--ease-out,ease) both}}
+/* hero легкої сторінки: лід — один рядок (тап — увесь), «Подзвонити» + «Порахувати», рядок довіри замість фактів */
+.hero:has(>[data-c=h]){padding-top:28px;padding-bottom:36px}
+.hero:has(>[data-c=h]) .price{font-size:clamp(1.08rem,1rem + .5vw,1.4rem);margin:12px 0 6px}
+.hero:has(>[data-c=h]) .facts,.hero:has(>[data-c=h]) .btns :is(a[href*="wa.me"],.bz-go){display:none}
+.hero:has(>[data-c=h]) .btns{margin-top:18px}
+.hero:has(>[data-c=h]) .btns>.btn:first-child{background:var(--ac,#BF9148);color:#140f08}
+.hero:has(>[data-c=h]) .btns::after{content:var(--ux-tr);flex-basis:100%;margin-top:6px;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem);letter-spacing:.04em;line-height:1.5}
+.js .hero>[data-c=h]{position:relative;margin-bottom:0;cursor:pointer}
+.js .hero>[data-c=h]:not(.c-o){display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;line-clamp:1;overflow:hidden;padding-inline-end:22px}
+.js .hero>[data-c=h]::after{content:"";position:absolute;top:.55em;inset-inline-end:4px;width:7px;height:7px;border-right:1.5px solid var(--ac,#BF9148);border-bottom:1.5px solid var(--ac,#BF9148);rotate:45deg;transition:rotate .3s ease}
+.js .hero>[data-c=h].c-o::after{rotate:225deg;top:.75em}
+.js .hero>[data-c=h]:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:3px}
+@media print{.js :is(main,main>div[id^="p-"]){display:block!important;padding-inline:0!important}.js .hero>[data-c=h]{display:block!important}}
+.js [data-c=x] .lq-slot{display:none!important}
+.js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x])) .bz.bz{--bz-per:16svh}
+/* компактні картки [data-c=k] (не плитка: контакти, перелік послуг): назва + перший рядок, решта — за шевроном / тапом */
+.js [data-c=k]{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:760px){.js [data-c=k]{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}}
+.js [data-c=k]>.card{position:relative;padding:16px 14px 14px;border-radius:14px;min-width:0}
+.js [data-c=k]>.ux-kc{cursor:pointer}
+.js [data-c=k]>.card:not(.c-o)>:not(h3,p:first-of-type,.ux-k){display:none}
+.js [data-c=k]>.card>h3{font-size:clamp(1.08rem,1rem + .4vw,1.3rem);padding-inline-end:26px;overflow-wrap:anywhere}
+.js [data-c=k]>.card:not(.c-o)>p:first-of-type{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;font-size:var(--fs-small,.8125rem);overflow-wrap:anywhere}
+.js [data-c=k]>.card.c-o{grid-column:1/-1}
+@media(hover:hover){.js [data-c=k]>.ux-kc:not(.c-o):hover{border-color:var(--ac,#BF9148)}}
+.ux-k{position:absolute;top:8px;inset-inline-end:6px;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ux-k::after{content:"";position:absolute;top:15px;left:16px;width:8px;height:8px;border-right:1.5px solid var(--ac,#BF9148);border-bottom:1.5px solid var(--ac,#BF9148);rotate:45deg;transition:rotate .4s var(--ease-out,ease)}
+.ux-k[aria-expanded=true]::after{rotate:225deg;top:19px}
+.ux-k:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:0}
+@media(prefers-reduced-motion:no-preference){.js [data-c=k]>.card.c-o>:not(h3,p:first-of-type,.ux-k){animation:ux-in .45s var(--ease-out,ease) both}}
 /* бейдж «Анімація реалізації»: будиночок «збирається» (стіни піднімаються, дах опускається); reduced-motion — статичний */
 :where(a[data-a],.sp-name[data-a],h2[data-a])::after,.bz-go::before{
   --ux-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23BF9148' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.6 6.2V11h6.8V6.2M5 11V8.4h2V11'/%3E%3C/svg%3E");

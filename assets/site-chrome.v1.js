@@ -439,6 +439,9 @@
   var HIDE = { q: ['details', 5], g: ['.grid>*', 6], l: ['li', 5] };
   CS.forEach(function (c, ci) {
     var k = c.getAttribute('data-c'), cnt = 0, lab;
+    if (k === 'x') return tile(c);
+    if (k === 'h') return lead(c);
+    if (k === 'k') return cards(c);
     if (HIDE[k]) {
       cnt = $$(HIDE[k][0], c).filter(function (x) { return k !== 'q' || x.parentNode === c || x.parentNode.parentNode === c; }).length - HIDE[k][1];
       if (k === 'l') cnt = c.querySelectorAll(':scope>*>li').length - HIDE[k][1];
@@ -464,6 +467,61 @@
       if (!open) { var r = c.getBoundingClientRect(); if (r.top < 0) c.scrollIntoView({ block: 'start', behavior: RM ? 'auto' : 'smooth' }); }
     });
   });
+  // 3. легкі сторінки: плитка [data-c=x] — H2 стає кнопкою (aria-expanded), тап по плитці розгортає її на всю ширину сітки
+  function anim(el, h0) {
+    if (RM || !el.animate) return;
+    var h1 = el.offsetHeight; el.style.overflow = 'hidden';
+    var an = el.animate({ height: [h0 + 'px', h1 + 'px'] }, { duration: Math.min(650, 260 + Math.abs(h1 - h0) * 0.2), easing: 'cubic-bezier(.2,.7,.2,1)' });
+    an.onfinish = an.oncancel = function () { el.style.overflow = ''; };
+  }
+  function tile(c) {
+    var h2 = c.querySelector('h2');
+    if (!h2) { c.removeAttribute('data-c'); return; }
+    var id = c.id || ('ux-c' + (++n)); c.id = id;
+    var sec = c.tagName === 'SECTION' ? c : c.parentNode, b = d.createElement('button');
+    b.type = 'button'; b.className = 'ux-h'; b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', id);
+    while (h2.firstChild) b.appendChild(h2.firstChild);
+    h2.appendChild(b);
+    c.uxSet = function (open) {
+      if (open === c.classList.contains('c-o')) return;
+      var h0 = sec.offsetHeight;
+      c.classList.toggle('c-o', open); b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      anim(sec, h0);
+      var r = sec.getBoundingClientRect();
+      if (r.top < 0 || (open && r.top > W.innerHeight * 0.75)) sec.scrollIntoView({ block: 'start', behavior: RM ? 'auto' : 'smooth' });
+    };
+    b.addEventListener('click', function () { c.uxSet(!c.classList.contains('c-o')); });
+  }
+  // компактні картки [data-c=k]: назва + перший рядок; кнопка-шеврон (aria-expanded) або тап по картці — деталі
+  function cards(g) {
+    $$(':scope>.card', g).forEach(function (cd) {
+      var h3 = cd.querySelector('h3'); if (!h3 || cd.children.length < 3) return;
+      var id = cd.id || ('ux-k' + (++n)); cd.id = id;
+      var b = d.createElement('button');
+      b.type = 'button'; b.className = 'ux-k'; b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', id);
+      b.setAttribute('aria-label', T[0] + ': ' + h3.textContent.trim());
+      cd.appendChild(b); cd.classList.add('ux-kc');
+      var t = function () { var o = !cd.classList.contains('c-o'), h0 = cd.offsetHeight; cd.classList.toggle('c-o', o); b.setAttribute('aria-expanded', o ? 'true' : 'false'); anim(cd, h0); };
+      b.addEventListener('click', t);
+      cd.addEventListener('click', function (e) { if (!e.target.closest('a,button,input,select,textarea')) t(); });
+    });
+  }
+  // лід hero [data-c=h]: один рядок; тап / Enter / Space — увесь текст
+  function lead(c) {
+    c.setAttribute('role', 'button'); c.tabIndex = 0; c.setAttribute('aria-expanded', 'false');
+    var t = function (e) { if (e && e.target.closest && e.target.closest('a')) return; var o = !c.classList.contains('c-o'); c.classList.toggle('c-o', o); c.setAttribute('aria-expanded', o ? 'true' : 'false'); };
+    c.addEventListener('click', t);
+    c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); } });
+  }
+  // якір усередині згорнутої плитки (#faq, посилання «детальніше» тощо) — спершу розгорнути
+  function reveal(hash) {
+    var el = null; try { el = hash && hash.length > 1 && d.getElementById(decodeURIComponent(hash.slice(1))); } catch (e) { }
+    var c = el && el.closest && el.closest('[data-c=x]');
+    if (c && c.uxSet && !c.classList.contains('c-o')) c.uxSet(true);
+  }
+  d.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('a[href^="#"]'); if (a) reveal(a.getAttribute('href')); }, true);
+  W.addEventListener('hashchange', function () { reveal(location.hash); });
+  if (location.hash) reveal(location.hash);
   W.addEventListener('beforeprint', function () { $$('[data-c]').forEach(function (c) { c.classList.add('c-o'); }); });
 })();
 

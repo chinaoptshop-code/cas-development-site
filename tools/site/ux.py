@@ -35,10 +35,10 @@ CSS = 'assets/site-chrome.v1.css'
 UX = {
     'uk': dict(more='Читати далі', less='Згорнути', q='Усі питання ({n})', s='Детальніше про кожен етап', g='Показати ще ({n})',
                l='Весь список ({n})', a='Анімація реалізації', **{'as': 'Інтерактив'}, go_house='Дивитись, як ми будуємо',
-               go_flat='Дивитись, як ми ремонтуємо'),
+               go_flat='Дивитись, як ми ремонтуємо', calc='Порахувати', trust='150+ проєктів · 36 міс. гарантія · власні бригади'),
     'ru': dict(more='Читать дальше', less='Свернуть', q='Все вопросы ({n})', s='Подробнее о каждом этапе', g='Показать ещё ({n})',
                l='Весь список ({n})', a='Анимация реализации', **{'as': 'Интерактив'}, go_house='Смотреть, как мы строим',
-               go_flat='Смотреть, как мы ремонтируем'),
+               go_flat='Смотреть, как мы ремонтируем', calc='Рассчитать', trust='150+ проектов · 36 мес. гарантия · собственные бригады'),
 }
 for _l in i18n.LANGS:
     if _l not in UX and (i18n.ui(_l) or {}).get('ux'):
@@ -150,7 +150,129 @@ def _anim_urls():
 
 ANIM = _anim_urls()
 
-STRIP = [re.compile(r'\sdata-i="[a-z0-9]{2}"'), re.compile(r'\sdata-c="[tsqgl]"'), re.compile(r'\sdata-a(?:="[si]")?(?=[\s>])')]
+# ── «Легкі» головні сторінки (Михайло 02.11.2026: «на головних — лише назви, усі деталі — всередині, при натисканні») ──
+# Кластери (усі мови, tools/site/lang/clusters*.json) + окремі сторінки з їхніми перекладами. На цих сторінках:
+#   hero — H1, рядок ціни, лід згорнутий в один рядок (data-c="h", тап — розгорнути), кнопки «Подзвонити» + «Порахувати»
+#          (a.ux-calc → квіз / калькулятор сторінки / калькулятор мови / форма), рядок довіри (CSS --ux-tr), без .facts і WhatsApp;
+#   секції — плитки (data-c="x" на <div class="w">): іконка + назва (H2) + рядок «від $…» (data-xs); тап — розгортає на місці.
+#          Текст лишається в DOM (SEO, FAQPage). Не плитки: форма, калькулятор, квіз, гід, «Будинок з нуля», карта, контакти.
+LIGHT_CLUSTERS = ('home', 'services', 'about', 'contact', 'design', 'renovation', 'construction', 'calculator')
+LIGHT_EXTRA = ('/portfolio', '/remont-kvartyr-kyiv', '/ru/remont-kvartir-kiev', '/vartist-remontu-kvartyry-kyiv', '/ru/stoimost-remonta-kvartiry-kiev')
+# ручні uk-сторінки: класи секцій, що стають плитками (h2 — нащадок секції; атрибут — на самій <section>)
+LIGHT_CUSTOM = {
+    'index.html': ('section.kft', 'section.pcarousel', 'section.home-why', 'section#video'),
+    'services.html': ('div.sv-card', 'div.proc'),
+    'about.html': ('section.ab-sec', 'section.team'),
+    'contact.html': ('section.ct-calc',),
+    'portfolio.html': ('section#video', 'section.pmap'),
+}
+LIGHT_SKIP = ('ab-cta',)  # заклик з кнопками лишається на виду
+
+
+def _light_pages():
+    c = i18n.clusters()
+    paths = set()
+    for k in LIGHT_CLUSTERS:
+        paths |= set(c.get(k, {}).values())
+    for p in LIGHT_EXTRA:
+        paths |= set((i18n.cluster_of(p) or {}).values()) | {p}
+    return {i18n.path_to_file(p) for p in paths}
+
+
+LIGHT = _light_pages()
+CALC = {l: p for l, p in i18n.clusters().get('calculator', {}).items() if os.path.exists(os.path.join(ROOT, i18n.path_to_file(p)))}
+PRICE_RX = re.compile(r'(?:(?<![\w$])(?:від|от|from|desde|od|ab|à partir de|dès|من)\s+)\$\s?\d+(?:[\s,]\d{3})*(?:\s?/\s?(?:м²|m²|м2|م²|сотку))?'
+                      r'|\$\s?\d+(?:[\s,]\d{3})*(?:\s?/\s?(?:m²|㎡))?\s?起', re.I)
+CALC_RX = re.compile(r'\n?\s*<a class="btn ux-calc" href="[^"]*">[^<]*</a>')
+
+
+def _tile_ok(sid, body):
+    if re.search(r'zayavka|"calc"|kalkulyator', sid) or not re.match(r'\s*(?:<style>.*?</style>\s*)?<h2\b', body, re.S):
+        return False
+    return not re.search(r'<form\b|gd-slot|class="bz|data-quiz|class="lq"|href="tel:', body)
+
+
+def _summary(body):
+    """Рядок плитки: перша ціна «від $…» секції (не з FAQ і не та, що вже в назві)."""
+    h2 = re.search(r'<h2[^>]*>(.*?)</h2>', body, re.S)
+    if body.count('<details') >= 2 or '<table' in body or (h2 and (PRICE_RX.search(plain(h2.group(1))) or KOROTKO.search(plain(h2.group(1))))):
+        return ''
+    m = PRICE_RX.search(plain(body))
+    return html.escape(m.group(0).strip(), quote=True) if m else ''
+
+
+def _tile_h2(body):
+    """data-i на H2 плитки (на головних іконок заголовків немає — плиткам вони потрібні)."""
+    return re.sub(r'<h2((?:\s+id="[^"]*")?)>(.*?)</h2>', lambda x: f'<h2{x.group(1)} data-i="{icon(x.group(2))}">{x.group(2)}</h2>', body, count=1, flags=re.S)
+
+
+def _light_hero(m, rel, lang, full):
+    i = m.find('<div class="w hero">')
+    k = m.find('<div class="btns">', i)
+    if i < 0 or k < 0:
+        return m
+    hp = m[i:k]
+    hp = hp.replace('<p>', '<p data-c="h">', 1) if '<p>' in hp else hp
+    m = m[:i] + hp + m[k:]
+    k = m.find('<div class="btns">', i)
+    a = m.find('</a>', k)
+    if a < 0:
+        return m
+    if 'id="calc"' in full:
+        href = '#calc'
+    elif rel in _quiz_pages():
+        href = '#kalkulyator'
+    elif CALC.get(lang) and i18n.path_to_file(CALC[lang]) != rel:
+        href = CALC[lang]
+    else:
+        href = '#zayavka'
+    t = UX.get(lang, UX.get('en', UX['uk']))
+    btn = f'\n    <a class="btn ux-calc" href="{href}">{html.escape(t.get("calc", UX["uk"]["calc"]))}</a>'
+    return m[:a + 4] + btn + m[a + 4:]
+
+
+def _quiz_pages(_c={}):
+    if 'p' not in _c:
+        import quiz
+        _c['p'] = set(quiz.PAGES)
+    return _c['p']
+
+
+def _close(m, tag, k):
+    """Індекс кінця елемента <tag>, що відкривається на k (з урахуванням вкладених однойменних тегів)."""
+    depth = 0
+    for x in re.compile(r'<(/?)' + tag + r'\b[^>]*>').finditer(m, k):
+        depth += -1 if x.group(1) else 1
+        if depth == 0:
+            return x.end()
+    return -1
+
+
+def _light_custom(m, rel):
+    """Ручні uk-сторінки: елементи з LIGHT_CUSTOM ('section.клас', 'div.клас', 'section#id') — плитки (data-c на самому елементі)."""
+    for spec in LIGHT_CUSTOM.get(rel, ()):
+        tag, kind, name = re.match(r'(\w+)([.#])([\w-]+)', spec).groups()
+        attr = r'class="' + re.escape(name) + r'(?:\s[^"]*)?"' if kind == '.' else r'id="' + re.escape(name) + '"'
+        out, pos = [], 0
+        for x in re.finditer(r'<' + tag + r'\s(?=[^>]*\b' + attr + r')[^>]*>', m):
+            if x.start() < pos:
+                continue
+            e = _close(m, tag, x.start())
+            if e < 0:
+                continue
+            otag, body = x.group(0), m[x.end():e]
+            if 'data-c=' in otag or any(c in otag for c in LIGHT_SKIP) or '<form' in body or 'href="tel:' in body or '<h2' not in body:
+                continue
+            body = re.sub(r'<h2\b((?:(?!data-i=)[^>])*)>(.*?)</h2>', lambda y: f'<h2{y.group(1)} data-i="{icon(y.group(2))}">{y.group(2)}</h2>', body, count=1, flags=re.S)
+            sm = _summary(body)
+            out.append(m[pos:x.start()] + otag[:-1] + ' data-c="x"' + (f' data-xs="{sm}"' if sm else '') + '>' + body)
+            pos = e
+        m = ''.join(out) + m[pos:]
+    return m
+
+
+STRIP = [re.compile(r'\sdata-i="[a-z0-9]{2}"'), re.compile(r'\sdata-c="[tsqglxhk]"'), re.compile(r'\sdata-a(?:="[si]")?(?=[\s>])'),
+         re.compile(r'\sdata-xs="[^"]*"'), CALC_RX]
 UNWRAP = re.compile(r'<div data-c="l">(<(ul|ol)>.*?</\2>)</div>', re.S)
 
 H2_RX = re.compile(r'<h2((?:\s+id="[^"]*")?)>(.*?)</h2>', re.S)
@@ -193,10 +315,17 @@ def _collapse_type(sid, cls, body):
     return None
 
 
-def _collapse(m):
+def _collapse(m, light=False):
     def sec(x):
-        k = _collapse_type(x.group(2), x.group(3), x.group(5))
-        return x.group(1) + (f' data-c="{k}"' if k else '') + x.group(4) + x.group(5) + x.group(6)
+        body = x.group(5)
+        if light and _tile_ok(x.group(2), body):
+            sm = _summary(body)
+            return x.group(1) + ' data-c="x"' + (f' data-xs="{sm}"' if sm else '') + x.group(4) + _tile_h2(body) + x.group(6)
+        if light and body.count('<div class="card">') >= 2 and '<div class="grid">' in body:
+            # не плитка (контакти, перелік послуг без H2): картки — компактні (назва + перший рядок), тап — деталі
+            return x.group(1) + x.group(4) + body.replace('<div class="grid">', '<div class="grid" data-c="k">', 1) + x.group(6)
+        k = _collapse_type(x.group(2), x.group(3), body)
+        return x.group(1) + (f' data-c="{k}"' if k else '') + x.group(4) + body + x.group(6)
     m = SEC_RX.sub(sec, m)
     # ручні сторінки «Про студію» (uk/ru): довгий вступ і «Як ми працюємо»
     m = re.sub(r'<div class="about-txt">(?=(?:(?!</div>).)*?<p class="about-body"[^>]*>(?:(?!</div>).)*?<p class="about-body")',
@@ -254,7 +383,11 @@ def apply(s, rel):
     m, rest = (part[:e], part[e:]) if e >= 0 else (part, '')
     if not re.match(r'(?:[a-z]{2}/)?index\.html$', rel):  # головні — без іконок заголовків (вага й LCP головної)
         m = _icons(m)
-    m = _collapse(m)
+    light = rel in LIGHT
+    if light:
+        lm = re.search(r'<html[^>]*\blang="([a-z]{2})', s)
+        m = _light_custom(_light_hero(m, rel, lm.group(1) if lm else 'uk', s), rel)
+    m = _collapse(m, light)
     if re.match(r'(?:[a-z]{2}/)?blog/', rel):
         m = _article_lists(m)
     return s[:i] + _badges(m + rest) + s[j:]
@@ -277,7 +410,8 @@ def css_block():
     out = []
     for l in UX:
         code = i18n.meta(l)['html']
-        out.append(f':root:lang({code}){{--ux-a:{json.dumps(UX[l]["a"], ensure_ascii=False)};--ux-as:{json.dumps(UX[l]["as"], ensure_ascii=False)}}}')
+        tr = UX[l].get('trust') or UX['en'].get('trust', '')
+        out.append(f':root:lang({code}){{--ux-a:{json.dumps(UX[l]["a"], ensure_ascii=False)};--ux-as:{json.dumps(UX[l]["as"], ensure_ascii=False)};--ux-tr:{json.dumps(tr, ensure_ascii=False)}}}')
     return '/*ux:labels*/' + ''.join(out) + '/*/ux:labels*/'
 
 
