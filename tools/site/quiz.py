@@ -20,11 +20,13 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 PAGES = {
     'index.html': ('', ''),
     'remont-kvartyr-kyiv.html': ('kv', 'rem'),
+    'remont-pid-klyuch-kyiv.html': ('kv', 'rem'),
     'vartist-remontu-kvartyry-kyiv.html': ('kv', 'rem'),
     'budivnytstvo-budynkiv-kyiv.html': ('dim', 'bud'),
     'vartist-budivnytstva-budynku-kyiv.html': ('dim', 'bud'),
     'ru/index.html': ('', ''),
     'ru/remont-kvartir-kiev.html': ('kv', 'rem'),
+    'ru/remont-pod-klyuch-kiev.html': ('kv', 'rem'),
     'ru/stoimost-remonta-kvartiry-kiev.html': ('kv', 'rem'),
     'ru/stroitelstvo-domov-kiev.html': ('dim', 'bud'),
     'ru/stoimost-stroitelstva-doma-kiev.html': ('dim', 'bud'),

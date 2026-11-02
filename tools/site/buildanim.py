@@ -48,6 +48,8 @@ PAGES = {
     'remont-novobudovy-kyiv.html': ('flat', 0),
     'vartist-remontu-kvartyry-kyiv.html': ('flat', 0),
     'ru/remont-kvartir-kiev.html': ('flat', 0),
+    'ru/remont-pod-klyuch-kiev.html': ('flat', 0),
+    'ru/stoimost-remonta-kvartiry-kiev.html': ('flat', 0),
     'ru/kapitalnyy-remont-kvartiry-kiev.html': ('flat', 0),
     'en/turnkey-renovation.html': ('flat', 0),
     'index.html': ('house', 1),

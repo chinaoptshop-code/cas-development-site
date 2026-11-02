@@ -387,6 +387,7 @@ def apply(s, rel):
     if light:
         lm = re.search(r'<html[^>]*\blang="([a-z]{2})', s)
         m = _light_custom(_light_hero(m, rel, lm.group(1) if lm else 'uk', s), rel)
+        m = re.sub(r'(<!--cas:tldr-->(?:(?!<!--/cas:tldr-->).)*?)<p style="margin:0">', r'\1<p style="margin:0" data-c="h">', m, count=1, flags=re.S)
     m = _collapse(m, light)
     if re.match(r'(?:[a-z]{2}/)?blog/', rel):
         m = _article_lists(m)
