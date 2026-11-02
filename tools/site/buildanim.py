@@ -55,6 +55,16 @@ PAGES = {
     'index.html': ('house', 1),
     'ru/index.html': ('house', 1),
     'en/index.html': ('house', 1),
+    # es, zh, pl, de, fr, ar (тексти — tools/site/buildanim_i18n/<мова>.json): будівництво, ремонт під ключ, калькулятор, головна — компактно
+    'es/construccion-de-casas.html': ('house', 0), 'zh/house-construction.html': ('house', 0), 'pl/budowa-domow.html': ('house', 0),
+    'de/hausbau.html': ('house', 0), 'fr/construction-maison.html': ('house', 0), 'ar/house-construction.html': ('house', 0),
+    'es/reforma-llave-en-mano.html': ('flat', 0), 'zh/turnkey-renovation.html': ('flat', 0), 'pl/remont-pod-klucz.html': ('flat', 0),
+    'de/renovierung-schluesselfertig.html': ('flat', 0), 'fr/renovation-cle-en-main.html': ('flat', 0), 'ar/turnkey-renovation.html': ('flat', 0),
+    'kalkuliator-remontu.html': ('flat', 0), 'ru/kalkulyator-remonta.html': ('flat', 0), 'en/renovation-cost-calculator.html': ('flat', 0),
+    'es/calculadora-reforma.html': ('flat', 0), 'zh/renovation-calculator.html': ('flat', 0), 'pl/kalkulator-remontu.html': ('flat', 0),
+    'de/renovierungskosten-rechner.html': ('flat', 0), 'fr/calculateur-renovation.html': ('flat', 0), 'ar/renovation-calculator.html': ('flat', 0),
+    'es/index.html': ('house', 1), 'zh/index.html': ('house', 1), 'pl/index.html': ('house', 1),
+    'de/index.html': ('house', 1), 'fr/index.html': ('house', 1), 'ar/index.html': ('house', 1),
 }
 
 # стартовий матеріал стін у конфігураторі сцени «будинок» (block — газоблок за замовчуванням; brick, frame, brus)
@@ -65,14 +75,22 @@ MAT = {'karkasnyi-budynok-pid-kliuch-kyiv.html': 'frame', 'ru/karkasnyy-dom-pod-
 # стартова конфігурація будинку (тип, стиль, площа), якщо відрізняється від BD.HOUSE_DEF: модульний — одноповерховий мінімалізм
 CFG = {'modulnyi-budynok-kyiv.html': dict(t='one', s='minimal', a=80), 'ru/modulnyy-dom-kiev.html': dict(t='one', s='minimal', a=80)}
 VAR = {'kapitalnyi-remont-kvartyry-kyiv.html': 'old', 'ru/kapitalnyy-remont-kvartiry-kiev.html': 'old'}
-ABOUT = {'uk': '/about', 'ru': '/ru/o-nas', 'en': '/en/about'}
-BUILD = {'uk': '/budivnytstvo-budynkiv-kyiv', 'ru': '/ru/stroitelstvo-domov-kiev', 'en': '/en/house-construction'}
+ABOUT = {'uk': '/about', 'ru': '/ru/o-nas', 'en': '/en/about', 'es': '/es/sobre-nosotros', 'zh': '/zh/about', 'pl': '/pl/o-studiu',
+         'de': '/de/ueber-uns', 'fr': '/fr/a-propos', 'ar': '/ar/about'}
+BUILD = {'uk': '/budivnytstvo-budynkiv-kyiv', 'ru': '/ru/stroitelstvo-domov-kiev', 'en': '/en/house-construction', 'es': '/es/construccion-de-casas',
+         'zh': '/zh/house-construction', 'pl': '/pl/budowa-domow', 'de': '/de/hausbau', 'fr': '/fr/construction-maison', 'ar': '/ar/house-construction'}
 
 # тексти етапів, матеріалів і «пирогів» шарів — tools/site/buildanim_data.py (єдине джерело для HTML і JSON скрипта)
 import buildanim_data as BD  # noqa: E402
 FACTS = {'uk': [('150', '150+', 'проєктів з 2016'), ('10', '10+', 'років досвіду'), ('36', '36 міс.', 'гарантія')],
          'ru': [('150', '150+', 'проектов с 2016'), ('10', '10+', 'лет опыта'), ('36', '36 мес.', 'гарантия')],
-         'en': [('150', '150+', 'projects since 2016'), ('10', '10+', 'years of experience'), ('36', '36 mo.', 'warranty')]}
+         'en': [('150', '150+', 'projects since 2016'), ('10', '10+', 'years of experience'), ('36', '36 mo.', 'warranty')],
+         'es': [('150', '150+', 'proyectos desde 2016'), ('10', '10+', 'años de experiencia'), ('36', '36 meses', 'de garantía')],
+         'zh': [('150', '150+', '项目（自 2016 年）'), ('10', '10+', '年经验'), ('36', '36 个月', '质保')],
+         'pl': [('150', '150+', 'projektów od 2016'), ('10', '10+', 'lat doświadczenia'), ('36', '36 mies.', 'gwarancji')],
+         'de': [('150', '150+', 'Projekte seit 2016'), ('10', '10+', 'Jahre Erfahrung'), ('36', '36 Mon.', 'Gewährleistung')],
+         'fr': [('150', '150+', 'projets depuis 2016'), ('10', '10+', 'ans d’expérience'), ('36', '36 mois', 'de garantie')],
+         'ar': [('150', '+150', 'مشروعًا منذ 2016'), ('10', '+10', 'سنوات خبرة'), ('36', '36 شهرًا', 'ضمان')]}
 JSON_OUT = 'assets/build-anim.v1.{}.{}.json'  # дані для скрипта: окремо мова × сцена (house / flat) — сторінка тягне лише свою сцену (бюджет ≤ 60 КБ gzip)
 SCENES = ('house', 'flat')
 
@@ -138,7 +156,7 @@ def block(lang, scene, compact, tier=0, mat='', var='new', cfg=None):
 
 
 # де ставимо: перед «Як працюємо», інакше перед «Гарантіями», квізом чи формою; на головній — перед «Наші проєкти»
-HOW = re.compile(r'<section><div class="w"(?: data-c="\w")?>\s*<h2(?: data-i="\w+")?>(?:Як працюємо|Как (?:мы )?работаем|How we work)</h2>')
+HOW = re.compile(r'<section><div class="w"(?: data-c="\w")?>\s*<h2(?: data-i="\w+")?>(?:Як працюємо|Как (?:мы )?работаем|How we work|Cómo trabajamos|Jak pracujemy|So arbeiten wir|Wie wir arbeiten|Comment nous travaillons|Notre méthode|工作流程|合作流程|我们如何工作|كيف نعمل|طريقة عملنا)</h2>')
 ANCHORS = ('<!--cas:guarantees-->', '<!--quiz-->', '<section id="zayavka"')
 HOME = ('<section class="proj-covers"', '<section class="pcarousel"')
 

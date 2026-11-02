@@ -723,3 +723,45 @@ T['en']['sto'].update(
                   k_w2=('Upper floor and slab beam', 'Upper-floor brickwork and a cast ring beam for the roof slab; flexible ties left for the facing brick.'),
                   f_w2=('Upper-floor framing', 'Studs, plates and OSB for the upper floor; the top plate carries the flat-roof joists.')),
 )
+
+
+# ═════════════════════════════════════════════ es, zh, pl, de, fr, ar — переклади: tools/site/buildanim_i18n/<мова>.json
+# Формат — пласкі ключі за структурою T['en'] ("house.st.geo": [назва, опис], "pie.roof": [назва, [[шар, товщина, пояснення], ...]], "ui.m.block": "…").
+# Структура (ключі етапів, кількість шарів) — та сама, що в en: бракує або зайвий ключ — помилка збірки (переклад має бути повним).
+def _load_i18n():
+    import copy, json, os
+    d = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'buildanim_i18n')
+    if not os.path.isdir(d):
+        return
+
+    def flat(o, p=''):
+        if isinstance(o, dict):
+            for k, v in o.items():
+                yield from flat(v, p + '.' + k if p else k)
+        else:
+            yield p, o
+
+    def shape(v):
+        return [shape(x) for x in v] if isinstance(v, (list, tuple)) else 's'
+
+    def tup(v):  # JSON-масиви → кортежі, як у T['uk'] (buildanim.py робить із них list() для JSON скрипта)
+        return tuple(tup(x) for x in v) if isinstance(v, list) else v
+
+    en = dict(flat(T['en']))
+    for f in sorted(os.listdir(d)):
+        if not f.endswith('.json'):
+            continue
+        lang, tr = f[:-5], json.load(open(os.path.join(d, f), encoding='utf-8'))
+        miss, extra = set(en) - set(tr), set(tr) - set(en)
+        bad = [k for k in en if k in tr and shape(en[k]) != shape(tr[k])]
+        assert not (miss or extra or bad), f'buildanim_i18n/{f}: бракує {sorted(miss)[:5]}, зайві {sorted(extra)[:5]}, інша структура {bad[:5]}'
+        t = copy.deepcopy(T['en'])
+        for k, v in tr.items():
+            o, ks = t, k.split('.')
+            for x in ks[:-1]:
+                o = o[x]
+            o[ks[-1]] = tup(v)
+        T[lang] = t
+
+
+_load_i18n()

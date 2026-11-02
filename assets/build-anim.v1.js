@@ -13,7 +13,7 @@
   if (W.__casBA) return; W.__casBA = 1;
   var secs = [].slice.call(d.querySelectorAll('section.bz[data-bz]'));
   if (!secs.length || !W.fetch || !W.Promise) return;
-  var VER = {"en.flat":"72e68dcb","en.house":"8f4442b3","ru.flat":"3a0da7af","ru.house":"d047addb","uk.flat":"4be1e913","uk.house":"8eae39f9"}; /*ver*/
+  var VER = {"ar.flat":"46b56699","ar.house":"b9e1a415","de.flat":"13675997","de.house":"518a9a7d","en.flat":"72e68dcb","en.house":"8f4442b3","es.flat":"ddb675d6","es.house":"f522c1f0","fr.flat":"5e0de606","fr.house":"81f6c511","pl.flat":"8737eeeb","pl.house":"ca47929e","ru.flat":"3a0da7af","ru.house":"d047addb","uk.flat":"4be1e913","uk.house":"8eae39f9","zh.flat":"0ae41127","zh.house":"35503c4f"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
   var lang = (d.documentElement.lang || 'uk').slice(0, 2); if (!VER[lang + '.house']) lang = 'uk';
