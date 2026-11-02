@@ -98,7 +98,7 @@ def photo(s, rel, lang):
     if rel not in PHOTO:
         return s
     src, name, alt = PHOTO[rel]
-    m = re.search(r'<section><div class="w txt"><h2>.*?(?=</div></section>)', s, re.S)
+    m = re.search(r'<section><div class="w txt"(?: data-c="\w")?><h2(?: data-i="\w+")?>.*?(?=</div></section>)', s, re.S)
     if not m:
         return s
     from PIL import Image

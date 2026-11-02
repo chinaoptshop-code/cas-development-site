@@ -5,6 +5,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
+python3 tools/site/ux.py          # тексти кнопок згортання/бейджів і версія спрайту іконок у /assets/site-chrome.v1.{js,css} (до ?v= у сторінках)
 LOG="${TMPDIR:-/tmp}/cas-landing.log"
 python3 tools/site/landing.py > "$LOG" || { cat "$LOG"; exit 1; }
 tail -n 2 "$LOG"
@@ -24,5 +25,6 @@ python3 tools/site/buildanim.py # «Будинок з нуля» / «Ремон�
 python3 tools/site/llms.py      # /llms.txt і /llms-full.txt — опис студії для ШІ (факти з CLAUDE.md, сторінки з sitemap)
 python3 tools/site/chrome.py
 python3 tools/site/chrome.py --check
+python3 tools/site/ux.py --check
 python3 tools/site/i18n.py --check
 python3 tools/site/seo.py --quiet || echo "::warning::SEO-перевірка (tools/site/seo.py) знайшла помилки — деплой не зупиняємо"

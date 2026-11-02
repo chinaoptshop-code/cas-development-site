@@ -443,7 +443,7 @@ def related_blocks(items_by_lang):
             s = re.sub(r'<!--cas:articles-->.*?<!--/cas:articles-->\n?', block, s, count=1, flags=re.S)
         else:
             rel = ['Інші послуги', 'Другие услуги'] + [(i18n.ui(l) or {}).get('landing', {}).get('rel', '') for l in i18n.LANGS]
-            anchor = (re.search(r'<section><div class="w">\s*<h2>(' + '|'.join(re.escape(x) for x in rel if x) + r')</h2>', s)
+            anchor = (re.search(r'<section><div class="w"(?: data-c="\w")?>\s*<h2(?: data-i="\w+")?>(' + '|'.join(re.escape(x) for x in rel if x) + r')</h2>', s)
                       or re.search(r'<section id="zayavka">', s))
             if not anchor: continue
             s = s[:anchor.start()] + block + s[anchor.start():]

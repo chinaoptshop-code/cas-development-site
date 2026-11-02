@@ -676,6 +676,9 @@ def apply(s, rel):
     s = mfix_min(s)
     s = clarity(s)
     s = skip_and_main(s, lang)
+    s = ui_polish_ext(s)
+    import ux  # іконки заголовків, згортання довгих блоків, бейдж «Анімація реалізації» (tools/site/ux.py)
+    s = ux.apply(s, rel)
     s = versions(s)
     s = fonts_block(s)
     s = nbsp_prices(s, lang)
@@ -714,6 +717,19 @@ def mfix_min(s):
     """Блок <style id="m-fix"> (нижня панель .mbar, однаковий на всіх сторінках): без CSS-коментарів і відступів —
     ~150 байт менше на кожній сторінці (бюджет HTML у tools/ui/ui.py). Ідемпотентно."""
     return MFIX_RX.sub(lambda m: m.group(1) + re.sub(r'\n[ \t]+', '\n', re.sub(r'[ \t]*/\*.*?\*/\n?', '', m.group(2), flags=re.S)) + m.group(3), s, count=1)
+
+
+# UI polish (a11y лайтбоксів, розгортання, стрічки, reveal, поява фото): раніше — інлайн-копія ~6,4 КБ у кожній сторінці;
+# тепер один файл /assets/ui-polish.v1.js (defer, кеш на рік) — підписи кнопок він бере з <html lang>. Звільняє бюджет HTML 64 КБ.
+UIP_RX = re.compile(r'<script>(?:(?!</script>).)*?function btnify(?:(?!</script>).)*?function imgFade(?:(?!</script>).)*?</script>', re.S)
+UIP_TAG = '<script src="/assets/ui-polish.v1.js" defer></script>'
+
+
+def ui_polish_ext(s):
+    if not UIP_RX.search(s):
+        return s
+    has = '/assets/ui-polish.v1.js' in s
+    return UIP_RX.sub(lambda m: '' if has else UIP_TAG, s, count=1)
 
 
 def pages():

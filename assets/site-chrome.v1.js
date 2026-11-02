@@ -379,7 +379,7 @@
   var COMPACT = [['main .pg', 6], ['main .gal', 4], ['main .grid', 6]];
   var hosts = [];
   [].forEach.call(d.querySelectorAll('[data-compact]'), function (el) { hosts.push([el, parseInt(el.getAttribute('data-compact'), 10) || 6, el.hasAttribute('data-compact-all')]); });
-  COMPACT.forEach(function (c) { [].forEach.call(d.querySelectorAll(c[0]), function (el) { if (!el.hasAttribute('data-compact')) hosts.push([el, c[1], false]); }); });
+  COMPACT.forEach(function (c) { [].forEach.call(d.querySelectorAll(c[0]), function (el) { if (!el.hasAttribute('data-compact') && !el.closest('[data-c]')) hosts.push([el, c[1], false]); }); });
   if (!hosts.length) return;
   var n = 0;
   function build(host, keep, all) {
@@ -415,6 +415,56 @@
   var on = function () { list.forEach(function (s) { s.apply(); }); };
   mq.addEventListener ? mq.addEventListener('change', on) : mq.addListener(on);
   W.addEventListener('beforeprint', function () { list.forEach(function (s) { s.host.classList.remove('cmp-cut'); }); });
+})();
+
+/* ── Менше стіни тексту (tools/site/ux.py, /styleguide/#ux): іконки заголовків [data-i] і згортання [data-c].
+   Розмітку — атрибути — ставить ux.apply() через chrome.py; місце під іконку й кнопку резервує CSS (.js …), тож вставка тут не зсуває макет.
+   Згорнутий текст лишається в DOM (пошук, читачі екрана після розгортання), кнопка — <button aria-expanded aria-controls>, Enter/Space. */
+(function () {
+  /*ux:i18n*/var UXS = "/assets/icons.v1.svg?v=0ad217fd", UXT = {"uk":["Читати далі","Згорнути","Усі питання ({n})","Детальніше про кожен етап","Показати ще ({n})","Весь список ({n})"],"ru":["Читать дальше","Свернуть","Все вопросы ({n})","Подробнее о каждом этапе","Показать ещё ({n})","Весь список ({n})"],"en":["Read more","Show less","All questions ({n})","Details of each stage","Show more ({n})","Full list ({n})"],"es":["Leer más","Mostrar menos","Todas las preguntas ({n})","Detalles de cada etapa","Ver más ({n})","Lista completa ({n})"],"zh":["展开全文","收起","全部问题（{n}）","查看每个阶段详情","显示更多（{n}）","完整清单（{n}）"],"pl":["Czytaj dalej","Zwiń","Wszystkie pytania ({n})","Szczegóły każdego etapu","Pokaż więcej ({n})","Cała lista ({n})"],"de":["Weiterlesen","Weniger anzeigen","Alle Fragen ({n})","Details zu jeder Etappe","Mehr anzeigen ({n})","Ganze Liste ({n})"],"fr":["Lire la suite","Réduire","Toutes les questions ({n})","Détail de chaque étape","Voir plus ({n})","Liste complète ({n})"],"ar":["اقرأ المزيد","عرض أقل","كل الأسئلة ({n})","تفاصيل كل مرحلة","عرض المزيد ({n})","القائمة كاملة ({n})"]}; /*/ux:i18n*/
+  var d = document, W = window, h = d.documentElement, NS = 'http://www.w3.org/2000/svg';
+  var LG = (h.lang || 'uk').slice(0, 2), T = UXT[LG] || UXT.en || ['Read more', 'Show less', 'All questions ({n})', 'Step details', 'Show more ({n})', 'Full list ({n})'];
+  var RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function $$(s, r) { try { return [].slice.call((r || d).querySelectorAll(s)); } catch (e) { return []; } }
+  // 1. іконки: <svg class="ic"><use href="спрайт#ключ"> першою дитиною заголовка
+  $$('[data-i]').forEach(function (el) {
+    if (!/^H[23]$/.test(el.tagName) || (el.firstElementChild && el.firstElementChild.classList.contains('ic'))) return;
+    var s = d.createElementNS(NS, 'svg'), u = d.createElementNS(NS, 'use');
+    s.setAttribute('class', 'ic'); s.setAttribute('aria-hidden', 'true'); s.setAttribute('focusable', 'false');
+    u.setAttribute('href', UXS + '#' + el.getAttribute('data-i'));
+    s.appendChild(u); el.insertBefore(s, el.firstChild);
+  });
+  // 2. згортання: t — довгий текст, s — описи етапів, q — FAQ (5), g — картки (6), l — список у статті (5)
+  var HIDE = { q: ['details', 5], g: ['.grid>*', 6], l: ['li', 5] };
+  var n = 0;
+  $$('[data-c]').forEach(function (c) {
+    var k = c.getAttribute('data-c'), cnt = 0, lab;
+    if (HIDE[k]) {
+      cnt = $$(HIDE[k][0], c).filter(function (x) { return k !== 'q' || x.parentNode === c || x.parentNode.parentNode === c; }).length - HIDE[k][1];
+      if (k === 'l') cnt = c.querySelectorAll(':scope>*>li').length - HIDE[k][1];
+      if (cnt < 1) { c.removeAttribute('data-c'); return; }
+    }
+    lab = function (open) { return open ? T[1] : (k === 't' ? T[0] : k === 's' ? T[3] : T[{ q: 2, g: 4, l: 5 }[k]].replace('{n}', cnt)); };
+    var id = c.id || ('ux-c' + (++n)); c.id = id;
+    var b = d.createElement('button');
+    b.type = 'button'; b.className = 'c-b'; b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', id);
+    b.textContent = lab(false);
+    var pad = getComputedStyle(c).paddingInlineStart; if (pad) b.style.insetInlineStart = pad;
+    c.appendChild(b);
+    b.addEventListener('click', function () {
+      var open = !c.classList.contains('c-o'), h0 = c.offsetHeight;
+      c.classList.toggle('c-o', open);
+      b.setAttribute('aria-expanded', open ? 'true' : 'false'); b.textContent = lab(open);
+      if (!RM && c.animate) {
+        var h1 = c.offsetHeight;
+        c.style.overflow = 'hidden';
+        var an = c.animate({ height: [h0 + 'px', h1 + 'px'] }, { duration: Math.min(700, 280 + Math.abs(h1 - h0) * 0.25), easing: 'cubic-bezier(.2,.7,.2,1)' });
+        an.onfinish = an.oncancel = function () { c.style.overflow = ''; };
+      }
+      if (!open) { var r = c.getBoundingClientRect(); if (r.top < 0) c.scrollIntoView({ block: 'start', behavior: RM ? 'auto' : 'smooth' }); }
+    });
+  });
+  W.addEventListener('beforeprint', function () { $$('[data-c]').forEach(function (c) { c.classList.add('c-o'); }); });
 })();
 
 /* «Будинок з нуля» (section.bz[data-js]; префікс bz — .ba зайнятий слайдером «до/після»): скрипт сцени вантажимо лише після першої прокрутки сторінки (0 байтів на завантаженні) */

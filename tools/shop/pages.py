@@ -118,7 +118,7 @@ def page(s, title, body, path):
     if '__TMJS__' in body:
         body = body.replace('__TMJS__', h('assets', 'team.v1.js')).replace('__TMCSS__', h('assets', 'team.v1.css'))
     s = s[:a] + body + '\n' + s[b:]
-    a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
+    a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script')
     s = s[:a] + s[b:]
     f = os.path.join(ROOT, path + '.html')
     os.makedirs(os.path.dirname(f), exist_ok=True)

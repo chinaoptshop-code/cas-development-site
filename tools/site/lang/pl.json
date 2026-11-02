@@ -1,5 +1,5 @@
 {
- "_": "Словник мови: meta — код/назва/атрибути, chrome — шапка й футер (tools/site/chrome.py), landing — підписи блоків лендингів, form — форма заявки й нижня панель (tools/site/landing.py).",
+ "_": "Словник мови: meta — код/назва/атрибути, chrome — шапка й футер (tools/site/chrome.py), landing — підписи блоків лендингів, form — форма заявки й нижня панель (tools/site/landing.py); ux — кнопки згортання, бейдж анімації й кнопка в hero (tools/site/ux.py).",
  "meta": {
   "code": "PL",
   "name": "Polski",
@@ -314,5 +314,17 @@
    "listopada",
    "grudnia"
   ]
+ },
+ "ux": {
+  "more": "Czytaj dalej",
+  "less": "Zwiń",
+  "q": "Wszystkie pytania ({n})",
+  "s": "Szczegóły każdego etapu",
+  "g": "Pokaż więcej ({n})",
+  "l": "Cała lista ({n})",
+  "a": "Animacja realizacji",
+  "go_house": "Zobacz, jak budujemy",
+  "go_flat": "Zobacz, jak remontujemy",
+  "as": "Interaktywne"
  }
 }

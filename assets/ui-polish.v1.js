@@ -1,3 +1,4 @@
+/* UI polish (a11y кнопок-діалогів, розгортання, стрічки, reveal, поява фото). Раніше — інлайн-копія на кожній сторінці; тепер один файл (chrome.py ui_polish_ext), підписи — за <html lang>. */
 (function(){
 var d=document,W=window,RM=W.matchMedia&&W.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function $$(s,r){return Array.prototype.slice.call((r||d).querySelectorAll(s))}
@@ -13,11 +14,14 @@ function syncExp(el,target,cls){
  u();if(W.MutationObserver)new MutationObserver(u).observe(t,{attributes:true,attributeFilter:['class']});
 }
 function a11y(){
- btnify(d.getElementById('lb-close'),'Закрити');
- btnify(d.getElementById('lb-prev'),'Попереднє фото');
- btnify(d.getElementById('lb-next'),'Наступне фото');
- btnify(d.getElementById('sdlb-close'),'Закрити');
- $$('.hamburger').forEach(function(h){btnify(h,'Меню')});
+ var L=({uk:['Закрити','Попереднє фото','Наступне фото','Меню'],ru:['Закрыть','Предыдущее фото','Следующее фото','Меню'],en:['Close','Previous photo','Next photo','Menu'],
+  pl:['Zamknij','Poprzednie zdjęcie','Następne zdjęcie','Menu'],de:['Schließen','Vorheriges Foto','Nächstes Foto','Menü'],es:['Cerrar','Foto anterior','Foto siguiente','Menú'],
+  fr:['Fermer','Photo précédente','Photo suivante','Menu'],zh:['关闭','上一张','下一张','菜单'],ar:['إغلاق','الصورة السابقة','الصورة التالية','القائمة']})[(d.documentElement.lang||'uk').slice(0,2)]||['Close','Previous photo','Next photo','Menu'];
+ btnify(d.getElementById('lb-close'),L[0]);
+ btnify(d.getElementById('lb-prev'),L[1]);
+ btnify(d.getElementById('lb-next'),L[2]);
+ btnify(d.getElementById('sdlb-close'),L[0]);
+ $$('.hamburger').forEach(function(h){btnify(h,L[3])});
  $$('.sp-card[onclick]').forEach(function(c){var b=c.querySelector('.sp-tog');if(b)syncExp(b,c,'exp');else{btnify(c);syncExp(c,c,'exp')}});
  $$('.ps-tog').forEach(function(b){var p=b.parentElement;if(p)syncExp(b,p,'exp')});
  var hb=d.getElementById('hbgBtn'),nsb=d.getElementById('nsb');

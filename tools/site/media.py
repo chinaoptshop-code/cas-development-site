@@ -90,7 +90,7 @@ def h1_name(s):
 
 def project_tour(s, slug, lang, show_all):
     t = T[lang]
-    m = re.search(r'<h2>Фото проєкту</h2>.*?<img\b([^>]*)>', s, re.S) or re.search(r'<img\b([^>]*\bwidth="\d+"[^>]*)>', s)
+    m = re.search(r'<h2[^>]*>Фото проєкту</h2>.*?<img\b([^>]*)>', s, re.S) or re.search(r'<img\b([^>]*\bwidth="\d+"[^>]*)>', s)
     attrs = m.group(1) if m else ''
     g = lambda a, d: (re.search(r'\b' + a + r'="([^"]*)"', attrs) or [None, d])[1]
     src = re.sub(r'-400\.webp$', '-900.webp', g('src', '/img/map/office-800.webp'))

@@ -354,7 +354,7 @@ def product_page(d, i, shell, items, title):
         s = s.replace(hdr.group(0), (acc.group(0) + '\n  ' if acc else '') + f'<a class="ico" href="/ozdoba" aria-label="Кошик">{cart_svg}</a>')
     a, b = s.index('<div class="searchwrap"'), s.index('<!--chrome:f-->')
     s = s[:a] + body + '\n' + s[b:]
-    a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
+    a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script')
     s = s[:a] + '<script src="/assets/lead-form.v1.js" defer></script>\n' + s[b:]
     s = s.replace('aria-current="page">Оздоба</a>', 'aria-current="true">Оздоба</a>')
     return s
@@ -520,7 +520,7 @@ def category_pages(d):
             s = s.replace(hdr.group(0), f'<a class="ico" href="/ozdoba" aria-label="Кошик">{cart_svg}</a>')
         a, b = s.index('<div class="searchwrap"'), s.index('<!--chrome:f-->')
         s = s[:a] + body + '\n' + s[b:]
-        a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
+        a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script')
         s = s[:a] + s[b:]
         open(os.path.join(ROOT, 'ozdoba/kategoriia', slug + '.html'), 'w', encoding='utf-8').write(with_fav(_chrome_apply(s, f'ozdoba/kategoriia/{slug}.html')))
         out.append(u)
@@ -705,7 +705,7 @@ def kits_page(d):
         s = s.replace(hdr.group(0), (acc.group(0) + '\n  ' if acc else '') + f'<a class="ico" href="/ozdoba" aria-label="Кошик">{cart_svg}</a>')
     a, b = s.index('<div class="searchwrap"'), s.index('<!--chrome:f-->')
     s = s[:a] + body + '\n' + s[b:]
-    a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script>')
+    a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script')
     s = s[:a] + '<script src="/assets/lead-form.v1.js" defer></script>\n' + s[b:]
     s = s.replace('aria-current="page">Оздоба</a>', 'aria-current="true">Оздоба</a>')
     open(os.path.join(ROOT, 'ozdoba', 'komplekty.html'), 'w', encoding='utf-8').write(_chrome_apply(s, 'ozdoba/komplekty.html'))

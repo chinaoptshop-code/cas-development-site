@@ -136,13 +136,23 @@ def block(lang, scene, compact, tier=0, mat='', var='new', cfg=None):
 
 
 # де ставимо: перед «Як працюємо», інакше перед «Гарантіями», квізом чи формою; на головній — перед «Наші проєкти»
-HOW = re.compile(r'<section><div class="w">\s*<h2>(?:Як працюємо|Как (?:мы )?работаем|How we work)</h2>')
+HOW = re.compile(r'<section><div class="w"(?: data-c="\w")?>\s*<h2(?: data-i="\w+")?>(?:Як працюємо|Как (?:мы )?работаем|How we work)</h2>')
 ANCHORS = ('<!--cas:guarantees-->', '<!--quiz-->', '<section id="zayavka"')
 HOME = ('<section class="proj-covers"', '<section class="pcarousel"')
 
 
+GO_RX = re.compile(r'\n?\s*<a class="btn bz-go" href="#build-anim">[^<]*</a>')
+
+
+def go_btn(lang, scene):
+    """Кнопка-якір у hero «Дивитись, як ми будуємо / ремонтуємо» → #build-anim (тексти — tools/site/ux.py UX / lang/*.json "ux")."""
+    import ux
+    t = ux.UX.get(lang, ux.UX['en'])
+    return f'\n    <a class="btn bz-go" href="#build-anim">{e(t["go_" + scene])}</a>'
+
+
 def apply(s, rel):
-    s = RX.sub('', s)
+    s = GO_RX.sub('', RX.sub('', s))
     if rel not in PAGES:
         return s
     scene, compact = PAGES[rel]
@@ -157,10 +167,17 @@ def apply(s, rel):
     # бюджет HTML за типом сторінки (tools/ui/ui.py): повний текст — лише із запасом RESERVE, далі — коротші варіанти;
     # не вміщується навіть найкоротший — блок не ставимо (скрипт друкує, де саме)
     limit = ui.BUDGET['html_kb'][ui.kind(rel, s)] * 1024
+    # hero (не головна): кнопка «Дивитись, як ми будуємо» — після останньої кнопки першого .btns
+    go, gk = '', -1
+    if not compact:
+        mb = re.search(r'<div class="w hero">.*?<div class="btns">(.*?)\n?\s*</div>', s, re.S)
+        if mb:
+            go, gk = go_btn(lang, scene), mb.end(1)
     for tier in (0, 1, 2, 3):
         b = block(lang, scene, compact, tier, MAT.get(rel, ''), VAR.get(rel, 'new'), CFG.get(rel))
-        if len(s.encode()) + len(b.encode()) + 30 <= limit - (RESERVE if tier == 0 else 0):  # +40 — ?v= від chrome.versions
-            return s[:k].rstrip('\n') + b + '\n' + s[k:]
+        if len(s.encode()) + len(b.encode()) + len(go.encode()) + 30 <= limit - (RESERVE if tier == 0 else 0):  # +40 — ?v= від chrome.versions
+            s = s[:k].rstrip('\n') + b + '\n' + s[k:]
+            return s[:gk] + go + s[gk:] if go and gk < k else s
     return s
 
 

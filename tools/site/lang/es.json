@@ -1,5 +1,5 @@
 {
- "_": "Словник мови: meta — код/назва/атрибути, chrome — шапка й футер (tools/site/chrome.py), landing — підписи блоків лендингів, form — форма заявки й нижня панель (tools/site/landing.py).",
+ "_": "Словник мови: meta — код/назва/атрибути, chrome — шапка й футер (tools/site/chrome.py), landing — підписи блоків лендингів, form — форма заявки й нижня панель (tools/site/landing.py); ux — кнопки згортання, бейдж анімації й кнопка в hero (tools/site/ux.py).",
  "meta": {
   "code": "ES",
   "name": "Español",
@@ -264,5 +264,17 @@
   "prev": "Foto anterior",
   "next": "Foto siguiente",
   "menu": "Menú"
+ },
+ "ux": {
+  "more": "Leer más",
+  "less": "Mostrar menos",
+  "q": "Todas las preguntas ({n})",
+  "s": "Detalles de cada etapa",
+  "g": "Ver más ({n})",
+  "l": "Lista completa ({n})",
+  "a": "Animación de la obra",
+  "go_house": "Ver cómo construimos",
+  "go_flat": "Ver cómo reformamos",
+  "as": "Interactivo"
  }
 }

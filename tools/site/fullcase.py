@@ -163,7 +163,7 @@ def build(c, lang):
     s = re.sub(r'(<script type="application/ld\+json">\n?).*?(\n?</script>)', lambda m: m.group(1) + ld(c, lang).replace('</', '<\\/') + m.group(2), s, count=1, flags=re.S)
     s, nn = re.subn(r'(<main\b[^>]*>)\n.*?(<section id="zayavka">)', lambda m: m.group(1) + '\n' + main_html(c, lang) + m.group(2), s, count=1, flags=re.S)
     assert nn == 1
-    s = re.sub(r'(<section id="zayavka"><div class="w">\s*<h2>)[^<]*', lambda m: m.group(1) + e(t['form_h2']), s, count=1)
+    s = re.sub(r'(<section id="zayavka"><div class="w">\s*<h2(?: data-i="\w+")?>)[^<]*', lambda m: m.group(1) + e(t['form_h2']), s, count=1)
     s = re.sub(r'data-service="[^"]*"', f'data-service="{a(t["service"])}"', s, count=1)
     s = re.sub(r'data-source="[^"]*"', 'data-source="cas-develop.com/' + i18n.meta(lang)['prefix'] + t['slug'] + '#project"', s, count=1)
     s = leadform.apply(s, path(c, lang))

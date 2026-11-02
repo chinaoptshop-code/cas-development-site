@@ -44,6 +44,7 @@ import i18n  # мови, словники, hreflang-кластери (tools/site
 import captions  # підписи галерей «обʼєкт · статус» (tools/site/captions.py)
 import leadform  # легка заявка: лише телефон, швидка заявка в hero (tools/site/leadform.py)
 import casmap  # карти: офіс у контактах, «Карта проєктів» (tools/site/casmap.py)
+import ux  # іконки заголовків і згортання (tools/site/ux.py) — знімаємо з шаблону
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 B = 'https://cas-develop.com/'
@@ -107,6 +108,8 @@ FORM_UK = {
 def translate_tpl(s, lang):
     f = i18n.ui(lang)['form']
     for k, uk in FORM_UK.items():
+        if uk not in s and k in ('close', 'prev', 'next', 'menu'):  # підписи лайтбокса — тепер у /assets/ui-polish.v1.js (за мовою)
+            continue
         assert uk in s, f'шаблон: нема рядка {uk}'
         core = _core(uk)
         if uk.startswith("'"):
@@ -228,7 +231,7 @@ def packages_html(lang):
 
 def _prices_cfg(block):
     """Конфіг таблиці цін з уже вставленого блоку ручної сторінки: h2, вступ (з посиланнями) і рядки."""
-    h2 = html.unescape(re.search(r'<h2>(.*?)</h2>', block).group(1))
+    h2 = html.unescape(re.search(r'<h2[^>]*>(.*?)</h2>', block).group(1))
     p = re.search(r'</h2><p>(.*?)</p><div class="ptab">', block)
     p = MDLINK_BACK(html.unescape(p.group(1))) if p else ''
     rates = {int(r) for r in re.findall(r'data-est="\d+x(\d+)"', block)}
@@ -252,7 +255,7 @@ def sync_manual(generated):
             continue
         m = re.search(r'<html[^>]*\blang="([a-z]+)', s)
         lang = langs.get(m.group(1) if m else 'uk', 'uk')
-        n = re.sub(r'<!--cas:guarantees--><section><div class="w">\n.*?<!--/cas:guarantees-->\n?', lambda x: guarantees_html(lang), s, flags=re.S)
+        n = re.sub(r'<!--cas:guarantees--><section><div class="w"(?: data-c="\w")?>\n.*?<!--/cas:guarantees-->\n?', lambda x: guarantees_html(lang), s, flags=re.S)
         if lang in PACKAGES:
             n = re.sub(r'<!--cas:packages-->.*?<!--/cas:packages-->\n?', lambda x: packages_html(lang), n, flags=re.S)
         if lang in GEO:  # блок «Географія» (посилання на сторінки міст)
@@ -587,6 +590,7 @@ def ld(p):
 def build(p):
     lang, slug = p['lang'], p['slug']
     s = leadform.QUICK_RX.sub('', open(os.path.join(ROOT, TPL[lang]), encoding='utf-8').read())  # швидку заявку ставить leadform
+    s = ux.strip(s)  # іконки/згортання шаблону ставить chrome.apply() заново
     u = url(lang, slug)
     if lang not in ('uk', 'ru'):
         s = translate_tpl(i18n.html_attrs(s, lang), lang)
@@ -614,7 +618,7 @@ def build(p):
     s, n = re.subn(r'(<main\b[^>]*>)\n.*?(<section id="zayavka">)', lambda m: m.group(1) + '\n' + main_html(p) + m.group(2), s, count=1, flags=re.S)
     assert n == 1, f'{slug}: не знайдено <main>…<section id="zayavka"> у шаблоні'
     if p.get('form_h2'):
-        s = re.sub(r'(<section id="zayavka"><div class="w">\s*<h2>)[^<]*', lambda m: m.group(1) + e(p['form_h2']), s, count=1)
+        s = re.sub(r'(<section id="zayavka"><div class="w">\s*<h2(?: data-i="\w+")?>)[^<]*', lambda m: m.group(1) + e(p['form_h2']), s, count=1)
     s = re.sub(r'data-service="[^"]*"', f'data-service="{a(p["service"])}"', s, count=1)
     src = 'cas-develop.com/' + i18n.meta(lang)['prefix'] + ('' if slug == 'index' else slug)
     s = re.sub(r'data-source="[^"]*"', f'data-source="{src}"', s, count=1)
