@@ -24,8 +24,8 @@
     {
      "h": "室内设计",
      "href": "/zh/interior-design",
-     "img": "img/1SGDKLtQtxQg-600.webp",
-     "srcset": "/img/1SGDKLtQtxQg-r400.webp 400w, /img/1SGDKLtQtxQg-600.webp 600w",
+     "img": "img/svc-design-600.webp",
+     "srcset": "/img/svc-design-400.webp 400w, /img/svc-design-600.webp 600w",
      "price": "$30 / m² 起 · 项目最低 $2 500",
      "li": [
       "概念方案与情绪板",
@@ -38,13 +38,14 @@
        "/zh/interior-design",
        "了解详情 →"
       ]
-     ]
+     ],
+     "alt": "带木梁和全景窗的客餐厅效果图 — CAS Development 设计方案"
     },
     {
      "h": "设计方案落地",
      "href": "/zh/design-implementation",
-     "img": "img/1QEJ_y0yTWVL-600.webp",
-     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
+     "img": "img/svc-implementation-600.webp",
+     "srcset": "/img/svc-implementation-400.webp 400w, /img/svc-implementation-600.webp 600w",
      "price": "装修 $550 / m² 起 · 软装 $250 / m² 起",
      "li": [
       "图纸审核",
@@ -57,13 +58,14 @@
        "/zh/design-implementation",
        "了解详情 →"
       ]
-     ]
+     ],
+     "alt": "已落地的基辅 Office Chicago：开放办公区，工位之间设有绿植岛"
     },
     {
      "h": "交钥匙装修",
      "href": "/zh/turnkey-renovation",
-     "img": "img/197Bi23wSzVk-600.webp",
-     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
+     "img": "img/svc-renovation-600.webp",
+     "srcset": "/img/svc-renovation-400.webp 400w, /img/svc-renovation-600.webp 600w",
      "price": "住宅 $550 / m² 起 · 办公室 $350 / m² 起",
      "li": [
       "拆除与基础施工",
@@ -76,13 +78,14 @@
        "/zh/turnkey-renovation",
        "了解详情 →"
       ]
-     ]
+     ],
+     "alt": "带植物墙和深色护墙板的客厅 — CAS Development 完成装修的 Tetris Hall 公寓"
     },
     {
      "h": "住宅建造",
      "href": "/zh/house-construction",
-     "img": "img/1nqFOoTfr5BD-r600.webp",
-     "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w",
+     "img": "img/svc-construction-600.webp",
+     "srcset": "/img/svc-construction-400.webp 400w, /img/svc-construction-600.webp 600w",
      "price": "主体结构 $600 / m² 起 · 含装修交钥匙 $1 100 / m² 起",
      "li": [
       "建筑设计与立面",
@@ -95,13 +98,14 @@
        "/zh/house-construction",
        "了解详情 →"
       ]
-     ]
+     ],
+     "alt": "带车棚的单层住宅外立面 — House 150 项目"
     },
     {
      "h": "家具软装交钥匙",
      "href": "/zh/furnishing",
-     "img": "img/1BCMJKrx7QL5-600.webp",
-     "srcset": "/img/1BCMJKrx7QL5-r400.webp 400w, /img/1BCMJKrx7QL5-600.webp 600w",
+     "img": "img/svc-furnishing-600.webp",
+     "srcset": "/img/svc-furnishing-400.webp 400w, /img/svc-furnishing-600.webp 600w",
      "price": "$250 / m² 起",
      "li": [
       "定制家具与成品家具",
@@ -114,12 +118,13 @@
        "/zh/furnishing",
        "了解详情 →"
       ]
-     ]
+     ],
+     "alt": "嵌入式电器与木纹柜门的厨房 — 已落地的 Tetris Hall 公寓"
     },
     {
      "h": "商业空间交钥匙",
      "href": "/zh/business-fit-out",
-     "img": "img/p/mpk-v01-600.webp",
+     "img": "img/svc-commercial-600.webp",
      "price": "设计 $30 / m² 起 · 配置 $500 起",
      "li": [
       "咖啡馆与餐厅",
@@ -132,7 +137,9 @@
        "/zh/business-fit-out",
        "了解详情 →"
       ]
-     ]
+     ],
+     "srcset": "/img/svc-commercial-400.webp 400w, /img/svc-commercial-600.webp 600w",
+     "alt": "开业后的 Monpark 餐厅大厅 — CAS Development 落地项目"
     }
    ]
   },

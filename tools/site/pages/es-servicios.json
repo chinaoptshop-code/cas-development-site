@@ -24,8 +24,8 @@
     {
      "h": "Diseño de interiores",
      "href": "/es/diseno-interiores",
-     "img": "img/1SGDKLtQtxQg-600.webp",
-     "srcset": "/img/1SGDKLtQtxQg-r400.webp 400w, /img/1SGDKLtQtxQg-600.webp 600w",
+     "img": "img/svc-design-600.webp",
+     "srcset": "/img/svc-design-400.webp 400w, /img/svc-design-600.webp 600w",
      "price": "desde $30 / m² · proyecto mínimo $2 500",
      "li": [
       "concepto y moodboard",
@@ -38,13 +38,14 @@
        "/es/diseno-interiores",
        "Ver más →"
       ]
-     ]
+     ],
+     "alt": "Visualización de un salón-comedor con vigas de madera y ventanales panorámicos — proyecto de CAS Development"
     },
     {
      "h": "Ejecución del proyecto de diseño",
      "href": "/es/ejecucion-proyecto-diseno",
-     "img": "img/1QEJ_y0yTWVL-600.webp",
-     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
+     "img": "img/svc-implementation-600.webp",
+     "srcset": "/img/svc-implementation-400.webp 400w, /img/svc-implementation-600.webp 600w",
      "price": "reforma desde $550 / m² · amueblamiento desde $250 / m²",
      "li": [
       "revisión de los planos",
@@ -57,13 +58,14 @@
        "/es/ejecucion-proyecto-diseno",
        "Ver más →"
       ]
-     ]
+     ],
+     "alt": "Office Chicago en Kiev, ya ejecutada: espacio abierto con una isla de plantas vivas entre los puestos"
     },
     {
      "h": "Reforma llave en mano",
      "href": "/es/reforma-llave-en-mano",
-     "img": "img/197Bi23wSzVk-600.webp",
-     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
+     "img": "img/svc-renovation-600.webp",
+     "srcset": "/img/svc-renovation-400.webp 400w, /img/svc-renovation-600.webp 600w",
      "price": "viviendas desde $550 / m² · oficinas desde $350 / m²",
      "li": [
       "demoliciones y obra gruesa",
@@ -76,13 +78,14 @@
        "/es/reforma-llave-en-mano",
        "Ver más →"
       ]
-     ]
+     ],
+     "alt": "Salón con jardín vertical y paneles oscuros — piso Tetris Hall reformado por CAS Development"
     },
     {
      "h": "Construcción de casas",
      "href": "/es/construccion-de-casas",
-     "img": "img/1nqFOoTfr5BD-r600.webp",
-     "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w",
+     "img": "img/svc-construction-600.webp",
+     "srcset": "/img/svc-construction-400.webp 400w, /img/svc-construction-600.webp 600w",
      "price": "estructura desde $600 / m² · llave en mano desde $1 100 / m²",
      "li": [
       "proyecto arquitectónico y fachadas",
@@ -95,13 +98,14 @@
        "/es/construccion-de-casas",
        "Ver más →"
       ]
-     ]
+     ],
+     "alt": "Fachada de una casa de una planta con cochera — proyecto House 150"
     },
     {
      "h": "Amueblamiento llave en mano",
      "href": "/es/amueblamiento-llave-en-mano",
-     "img": "img/1BCMJKrx7QL5-600.webp",
-     "srcset": "/img/1BCMJKrx7QL5-r400.webp 400w, /img/1BCMJKrx7QL5-600.webp 600w",
+     "img": "img/svc-furnishing-600.webp",
+     "srcset": "/img/svc-furnishing-400.webp 400w, /img/svc-furnishing-600.webp 600w",
      "price": "desde $250 / m²",
      "li": [
       "muebles a medida y de China",
@@ -114,12 +118,13 @@
        "/es/amueblamiento-llave-en-mano",
        "Ver más →"
       ]
-     ]
+     ],
+     "alt": "Cocina con electrodomésticos integrados y frentes imitación madera — piso Tetris Hall ejecutado"
     },
     {
      "h": "Locales comerciales llave en mano",
      "href": "/es/negocio-llave-en-mano",
-     "img": "img/p/mpk-v01-600.webp",
+     "img": "img/svc-commercial-600.webp",
      "price": "diseño desde $30 / m² · equipamiento desde $500",
      "li": [
       "cafeterías y restaurantes",
@@ -132,7 +137,9 @@
        "/es/negocio-llave-en-mano",
        "Ver más →"
       ]
-     ]
+     ],
+     "srcset": "/img/svc-commercial-400.webp 400w, /img/svc-commercial-600.webp 600w",
+     "alt": "Sala del restaurante Monpark tras la apertura — ejecutado por CAS Development"
     }
    ]
   },

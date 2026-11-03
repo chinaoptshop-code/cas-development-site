@@ -113,8 +113,8 @@
     {
      "h": "Interior design",
      "href": "/en/interior-design",
-     "img": "img/1SGDKLtQtxQg-600.webp",
-     "srcset": "/img/1SGDKLtQtxQg-r400.webp 400w, /img/1SGDKLtQtxQg-600.webp 600w",
+     "img": "img/svc-design-600.webp",
+     "srcset": "/img/svc-design-400.webp 400w, /img/svc-design-600.webp 600w",
      "price": "from $30 / m² · minimum project $2 500",
      "p": "Layouts, 3D visualisations, working drawings and specifications that any contractor can build from.",
      "links": [
@@ -122,13 +122,14 @@
        "/en/interior-design",
        "Learn more →"
       ]
-     ]
+     ],
+     "alt": "Rendering of a living-dining room with timber beams and panoramic windows — CAS Development design project"
     },
     {
      "h": "Design implementation",
      "href": "/en/design-implementation",
-     "img": "img/1QEJ_y0yTWVL-600.webp",
-     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
+     "img": "img/svc-implementation-600.webp",
+     "srcset": "/img/svc-implementation-400.webp 400w, /img/svc-implementation-600.webp 600w",
      "price": "renovation from $550 / m² · furnishing from $250 / m²",
      "p": "We build your design project — ours or another designer’s — exactly as in the visualisations.",
      "links": [
@@ -136,13 +137,14 @@
        "/en/design-implementation",
        "Learn more →"
       ]
-     ]
+     ],
+     "alt": "Completed Office Chicago in Kyiv: open-plan workspace with a living-plant island between desks"
     },
     {
      "h": "Turnkey renovation",
      "href": "/en/turnkey-renovation",
-     "img": "img/197Bi23wSzVk-600.webp",
-     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
+     "img": "img/svc-renovation-600.webp",
+     "srcset": "/img/svc-renovation-400.webp 400w, /img/svc-renovation-600.webp 600w",
      "price": "apartments and houses from $550 / m² · offices from $350 / m²",
      "p": "Full cycle with our own crews: rough and finishing works, engineering, materials, clean-up.",
      "links": [
@@ -150,13 +152,14 @@
        "/en/turnkey-renovation",
        "Learn more →"
       ]
-     ]
+     ],
+     "alt": "Living room with a green wall and dark panels — Tetris Hall apartment renovated by CAS Development"
     },
     {
      "h": "House construction",
      "href": "/en/house-construction",
-     "img": "img/1nqFOoTfr5BD-r600.webp",
-     "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w",
+     "img": "img/svc-construction-600.webp",
+     "srcset": "/img/svc-construction-400.webp 400w, /img/svc-construction-600.webp 600w",
      "price": "shell from $600 / m² · turnkey with finishing from $1 100 / m²",
      "p": "Private houses and cottages from foundation and roof to interiors and landscaping.",
      "links": [
@@ -164,13 +167,14 @@
        "/en/house-construction",
        "Learn more →"
       ]
-     ]
+     ],
+     "alt": "Facade of a single-storey house with a carport — House 150 project"
     },
     {
      "h": "Turnkey furnishing",
      "href": "/en/turnkey-furnishing",
-     "img": "img/1BCMJKrx7QL5-600.webp",
-     "srcset": "/img/1BCMJKrx7QL5-r400.webp 400w, /img/1BCMJKrx7QL5-600.webp 600w",
+     "img": "img/svc-furnishing-600.webp",
+     "srcset": "/img/svc-furnishing-400.webp 400w, /img/svc-furnishing-600.webp 600w",
      "price": "from $250 / m²",
      "p": "Furniture, lighting, textiles and decor selected to the design and delivered, assembled and styled.",
      "links": [
@@ -178,12 +182,13 @@
        "/en/turnkey-furnishing",
        "Learn more →"
       ]
-     ]
+     ],
+     "alt": "Kitchen with built-in appliances and wood-look fronts — completed Tetris Hall apartment"
     },
     {
      "h": "Turnkey business premises",
      "href": "/en/business-fit-out",
-     "img": "img/p/mpk-v01-600.webp",
+     "img": "img/svc-commercial-600.webp",
      "price": "design from $30 / m² · furnishing from $500",
      "p": "Cafés, restaurants, salons, shops and offices: design, fit-out, furnishing and launch in one pair of hands.",
      "links": [
@@ -191,7 +196,9 @@
        "/en/business-fit-out",
        "Learn more →"
       ]
-     ]
+     ],
+     "srcset": "/img/svc-commercial-400.webp 400w, /img/svc-commercial-600.webp 600w",
+     "alt": "Monpark restaurant dining room after opening — delivered by CAS Development"
     }
    ]
   },

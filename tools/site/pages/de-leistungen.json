@@ -24,8 +24,8 @@
     {
      "h": "Innenarchitektur",
      "href": "/de/innenarchitektur",
-     "img": "img/1SGDKLtQtxQg-600.webp",
-     "srcset": "/img/1SGDKLtQtxQg-r400.webp 400w, /img/1SGDKLtQtxQg-600.webp 600w",
+     "img": "img/svc-design-600.webp",
+     "srcset": "/img/svc-design-400.webp 400w, /img/svc-design-600.webp 600w",
      "price": "ab $30 / m² · Mindestprojekt $2 500",
      "li": [
       "Konzept und Moodboard",
@@ -38,13 +38,14 @@
        "/de/innenarchitektur",
        "Mehr erfahren →"
       ]
-     ]
+     ],
+     "alt": "Visualisierung eines Wohn-Essbereichs mit Holzbalken und Panoramafenstern — Designprojekt von CAS Development"
     },
     {
      "h": "Umsetzung von Designprojekten",
      "href": "/de/umsetzung-designprojekt",
-     "img": "img/1QEJ_y0yTWVL-600.webp",
-     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
+     "img": "img/svc-implementation-600.webp",
+     "srcset": "/img/svc-implementation-400.webp 400w, /img/svc-implementation-600.webp 600w",
      "price": "Renovierung ab $550 / m² · Einrichtung ab $250 / m²",
      "li": [
       "Prüfung der Pläne",
@@ -57,13 +58,14 @@
        "/de/umsetzung-designprojekt",
        "Mehr erfahren →"
       ]
-     ]
+     ],
+     "alt": "Umgesetztes Büro Office Chicago in Kyjiw: Großraum mit einer Insel aus lebenden Pflanzen zwischen den Arbeitsplätzen"
     },
     {
      "h": "Schlüsselfertige Renovierung",
      "href": "/de/renovierung-schluesselfertig",
-     "img": "img/197Bi23wSzVk-600.webp",
-     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
+     "img": "img/svc-renovation-600.webp",
+     "srcset": "/img/svc-renovation-400.webp 400w, /img/svc-renovation-600.webp 600w",
      "price": "Wohnungen und Häuser ab $550 / m² · Büros ab $350 / m²",
      "li": [
       "Abbruch und Rohbauarbeiten",
@@ -76,13 +78,14 @@
        "/de/renovierung-schluesselfertig",
        "Mehr erfahren →"
       ]
-     ]
+     ],
+     "alt": "Wohnzimmer mit Pflanzenwand und dunklen Paneelen — Wohnung Tetris Hall nach der Renovierung durch CAS Development"
     },
     {
      "h": "Hausbau",
      "href": "/de/hausbau",
-     "img": "img/1nqFOoTfr5BD-r600.webp",
-     "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w",
+     "img": "img/svc-construction-600.webp",
+     "srcset": "/img/svc-construction-400.webp 400w, /img/svc-construction-600.webp 600w",
      "price": "Rohbau ab $600 / m² · schlüsselfertig mit Ausbau ab $1 100 / m²",
      "li": [
       "Architekturplanung und Fassaden",
@@ -95,13 +98,14 @@
        "/de/hausbau",
        "Mehr erfahren →"
       ]
-     ]
+     ],
+     "alt": "Fassade eines eingeschossigen Hauses mit Carport — Projekt House 150"
     },
     {
      "h": "Schlüsselfertige Einrichtung",
      "href": "/de/einrichtung-schluesselfertig",
-     "img": "img/1BCMJKrx7QL5-600.webp",
-     "srcset": "/img/1BCMJKrx7QL5-r400.webp 400w, /img/1BCMJKrx7QL5-600.webp 600w",
+     "img": "img/svc-furnishing-600.webp",
+     "srcset": "/img/svc-furnishing-400.webp 400w, /img/svc-furnishing-600.webp 600w",
      "price": "ab $250 / m²",
      "li": [
       "Möbel nach Maß und aus China",
@@ -114,12 +118,13 @@
        "/de/einrichtung-schluesselfertig",
        "Mehr erfahren →"
       ]
-     ]
+     ],
+     "alt": "Küche mit Einbaugeräten und Fronten in Holzoptik — umgesetzte Wohnung Tetris Hall"
     },
     {
      "h": "Gewerberäume schlüsselfertig",
      "href": "/de/gewerbe-schluesselfertig",
-     "img": "img/p/mpk-v01-600.webp",
+     "img": "img/svc-commercial-600.webp",
      "price": "Design ab $30 / m² · Ausstattung ab $500",
      "li": [
       "Cafés und Restaurants",
@@ -132,7 +137,9 @@
        "/de/gewerbe-schluesselfertig",
        "Mehr erfahren →"
       ]
-     ]
+     ],
+     "srcset": "/img/svc-commercial-400.webp 400w, /img/svc-commercial-600.webp 600w",
+     "alt": "Gastraum des Restaurants Monpark nach der Eröffnung — umgesetzt von CAS Development"
     }
    ]
   },
