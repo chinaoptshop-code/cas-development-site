@@ -35,20 +35,8 @@
      "label": "Yacht Restaurant"
     },
     {
-     "img": "img/1lovunAyUeQX-800.webp",
-     "srcset": "/img/1lovunAyUeQX-r400.webp 400w, /img/1lovunAyUeQX-r600.webp 600w, /img/1lovunAyUeQX-800.webp 800w",
-     "alt": "Yacht Restaurant — projet CAS Development",
-     "label": "Yacht Restaurant"
-    },
-    {
      "img": "img/1MslU7S5X8gI-800.webp",
      "srcset": "/img/1MslU7S5X8gI-r400.webp 400w, /img/1MslU7S5X8gI-r600.webp 600w, /img/1MslU7S5X8gI-800.webp 800w",
-     "alt": "Linden Penthouse — projet CAS Development",
-     "label": "Linden Penthouse"
-    },
-    {
-     "img": "img/1x1AqXqQMEpC-800.webp",
-     "srcset": "/img/1x1AqXqQMEpC-r400.webp 400w, /img/1x1AqXqQMEpC-r600.webp 600w, /img/1x1AqXqQMEpC-800.webp 800w",
      "alt": "Linden Penthouse — projet CAS Development",
      "label": "Linden Penthouse"
     },
@@ -59,10 +47,10 @@
      "label": "Hoda Estate"
     },
     {
-     "img": "img/1m9fVTTPjd6n-800.webp",
-     "srcset": "/img/1m9fVTTPjd6n-r400.webp 400w, /img/1m9fVTTPjd6n-r600.webp 600w, /img/1m9fVTTPjd6n-800.webp 800w",
-     "alt": "Hoda Estate — projet CAS Development",
-     "label": "Hoda Estate"
+     "img": "img/p/16fKqdFifd2emf-900.webp",
+     "srcset": "/img/p/16fKqdFifd2emf-400.webp 400w, /img/p/16fKqdFifd2emf-900.webp 900w",
+     "alt": "Office Chicago — projet CAS Development",
+     "label": "Office Chicago"
     },
     {
      "img": "img/1Xdje8N1V14_-800.webp",
@@ -71,14 +59,14 @@
      "label": "Petrivtsi House"
     },
     {
-     "img": "img/18V9n96tOhjK-800.webp",
-     "srcset": "/img/18V9n96tOhjK-r400.webp 400w, /img/18V9n96tOhjK-r600.webp 600w, /img/18V9n96tOhjK-800.webp 800w",
-     "alt": "USA House — projet CAS Development",
-     "label": "USA House"
+     "img": "img/p/1A9yy4nI-gf9h3-900.webp",
+     "srcset": "/img/p/1A9yy4nI-gf9h3-400.webp 400w, /img/p/1A9yy4nI-gf9h3-900.webp 900w",
+     "alt": "Kitana Beach — projet CAS Development",
+     "label": "Kitana Beach"
     },
     {
-     "img": "img/1JuZ-lq-D6Yu-800.webp",
-     "srcset": "/img/1JuZ-lq-D6Yu-r400.webp 400w, /img/1JuZ-lq-D6Yu-r600.webp 600w, /img/1JuZ-lq-D6Yu-800.webp 800w",
+     "img": "img/18V9n96tOhjK-800.webp",
+     "srcset": "/img/18V9n96tOhjK-r400.webp 400w, /img/18V9n96tOhjK-r600.webp 600w, /img/18V9n96tOhjK-800.webp 800w",
      "alt": "USA House — projet CAS Development",
      "label": "USA House"
     },
@@ -89,16 +77,40 @@
      "label": "Pidgirland"
     },
     {
-     "img": "img/18VXNYlwqxP5-800.webp",
-     "srcset": "/img/18VXNYlwqxP5-r400.webp 400w, /img/18VXNYlwqxP5-r600.webp 600w, /img/18VXNYlwqxP5-800.webp 800w",
-     "alt": "Pidgirland — projet CAS Development",
-     "label": "Pidgirland"
-    },
-    {
      "img": "img/1M13ysKRsQvn-800.webp",
      "srcset": "/img/1M13ysKRsQvn-r400.webp 400w, /img/1M13ysKRsQvn-r600.webp 600w, /img/1M13ysKRsQvn-800.webp 800w",
      "alt": "Hodos Villa — projet CAS Development",
      "label": "Hodos Villa"
+    },
+    {
+     "img": "img/1lovunAyUeQX-800.webp",
+     "srcset": "/img/1lovunAyUeQX-r400.webp 400w, /img/1lovunAyUeQX-r600.webp 600w, /img/1lovunAyUeQX-800.webp 800w",
+     "alt": "Yacht Restaurant — projet CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1x1AqXqQMEpC-800.webp",
+     "srcset": "/img/1x1AqXqQMEpC-r400.webp 400w, /img/1x1AqXqQMEpC-r600.webp 600w, /img/1x1AqXqQMEpC-800.webp 800w",
+     "alt": "Linden Penthouse — projet CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1m9fVTTPjd6n-800.webp",
+     "srcset": "/img/1m9fVTTPjd6n-r400.webp 400w, /img/1m9fVTTPjd6n-r600.webp 600w, /img/1m9fVTTPjd6n-800.webp 800w",
+     "alt": "Hoda Estate — projet CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1JuZ-lq-D6Yu-800.webp",
+     "srcset": "/img/1JuZ-lq-D6Yu-r400.webp 400w, /img/1JuZ-lq-D6Yu-r600.webp 600w, /img/1JuZ-lq-D6Yu-800.webp 800w",
+     "alt": "USA House — projet CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/18VXNYlwqxP5-800.webp",
+     "srcset": "/img/18VXNYlwqxP5-r400.webp 400w, /img/18VXNYlwqxP5-r600.webp 600w, /img/18VXNYlwqxP5-800.webp 800w",
+     "alt": "Pidgirland — projet CAS Development",
+     "label": "Pidgirland"
     }
    ]
   },

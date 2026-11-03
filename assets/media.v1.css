@@ -15,3 +15,5 @@
 .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
 .vgrid figure{margin:0}.vgrid figcaption{padding:8px 0 0;font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84)}
 @media (prefers-reduced-motion:reduce){.lt3 img,.lyt img{transition:none}}
+/* Телефон: «Відео з обʼєктів» — горизонтальна карусель зі scroll-snap замість стовпчика ~2000 px (QA 03.11.2026). Без JS; висота з aspect-ratio — без CLS */
+@media (max-width:767px){.vgrid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:84%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding-bottom:8px;scrollbar-width:thin}.vgrid figure{scroll-snap-align:start}}

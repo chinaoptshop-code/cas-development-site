@@ -1,12 +1,12 @@
 /* Спільне керування сцен (la-*): перемикач сцен nav.la-tab, сегменти, кадр, підпис, ← →, підсумок і CTA — «Ландшафт з нуля», «Ресторан з нуля»,
    «Будинок на воді», «Комплекс відпочинку», перемикач над «Будинок з нуля». Вантажить site-chrome.v1.js один раз разом зі сценами. UI-kit — /styleguide/#build-anim-sg */
 .la-tab{display:inline-flex;flex-wrap:wrap;max-width:100%;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:22px;padding:4px;margin:0 0 18px}
-.la-tab a{padding:8px 16px;border-radius:999px;text-decoration:none;font-size:var(--fs-small);min-height:36px;display:inline-flex;align-items:center}
+.la-tab a{padding:8px 16px;border-radius:999px;text-decoration:none;font-size:var(--fs-small);min-height:44px;display:inline-flex;align-items:center}
 .la-tab a[aria-current]{background:var(--ac,#BF9148);color:#140f08}
 .la-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .la-ctl{display:flex;flex-wrap:wrap;gap:10px 18px;margin:8px 0 14px}
 .la-seg{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.la-lab{font-size:var(--fs-small);color:var(--mu,#938c84);margin-inline-end:4px}
-.la-seg button{min-height:36px;min-width:40px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.3));background:none;color:inherit;font:inherit;font-size:var(--fs-small);cursor:pointer}
+.la-seg button{min-height:44px;min-width:44px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.3));background:none;color:inherit;font:inherit;font-size:var(--fs-small);cursor:pointer}
 .la-seg button[aria-pressed=true]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#140f08}
 .la-stick{position:sticky;top:68px;display:grid;gap:8px}
 .la-svg{display:block;width:100%;height:min(58vh,560px);background:radial-gradient(ellipse at 50% 30%,#1b1813,#0d0c0a);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:14px;outline-offset:3px}

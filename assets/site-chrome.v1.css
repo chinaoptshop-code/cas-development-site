@@ -271,7 +271,6 @@ article .gd-slot{margin:32px 0 0;padding:0}
 .mo-rv{opacity:0;translate:0 16px}
 .mo-rv.mo-in{opacity:1;translate:none;transition:opacity .35s var(--ease-out),translate .4s var(--ease-out);transition-delay:var(--mo-d,0ms)}
 .mo-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
-.mo-cnt{font-variant-numeric:tabular-nums}
 .mo-mg{transition:translate .35s var(--ease-out,cubic-bezier(.2,.7,.2,1)),background-color .3s,color .3s,border-color .3s,box-shadow .3s,filter .3s}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){
   .mo main :is(.grid>div.card,.cards>a,.ab-guar>div,.geo-item){transition:transform .45s var(--ease-out),border-color .4s ease,box-shadow .45s var(--ease-out)}

@@ -51,7 +51,7 @@ T = {
                 ('Deck over the water', 'A cantilever over the water, railings, a ladder into the water and loungers.'),
                 ('Evening', 'Lights in the house and on the deck, light paths and glints on the water.'),
                 ('Handover', 'We hand over the house with a certificate and show how to maintain the services, piles or pontoons.')],
-            price='Construction from $600/m² (shell), turnkey from $1 100/m². Piles or pontoons and services from the shore are priced per estimate.',
+            price='Construction from $600/m² (shell), turnkey from $1,100/m². Piles or pontoons and services from the shore are priced per estimate.',
             ui=dict(area='House size', unit='m²', fnd='Foundation', fnds=['Piles', 'Pontoons'], lvl='Level', lvls=['Shell', 'Turnkey'], xray='X-ray', xr=['Water', 'Drainage', 'Power'],
                     prev='Previous stage', next='Next stage', of='of', est='{l}, {n} m² from ${v} + foundation per estimate', calc='Estimate my house on the water',
                     msg='House on the water: {n} m², foundation: {f}, {l}. I would like an estimate.', svc='House on the water (configurator)')),

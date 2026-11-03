@@ -176,36 +176,8 @@
     W.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // 2. Лічильники: «150+», «36 міс.» рахуються від нуля, коли блок зʼявляється. Роки (2016) і малі числа не чіпаємо.
-  // Справжнє значення лишається для скрінрідерів (.mo-sr), цифри, що біжать, — aria-hidden.
-  var CN = '[data-count],.facts b,.ab-facts b';
-  function counters() {
-    if (RM || !IO) return;
-    $$(CN, main).forEach(function (el) {
-      if (el.children.length || seen(el)) return;
-      var t = el.textContent.trim(), m = /^(\D*?)(\d{1,3}(?:[\s  ]\d{3})+|\d+)(.*)$/.exec(t);
-      if (!m) return;
-      var n = parseInt(el.getAttribute('data-count') || m[2].replace(/\D/g, ''), 10);
-      if (!(n >= 10) || (/^\d{4}$/.test(m[2]) && n > 1900 && n < 2100)) return;
-      var sep = (/[\s  ]/.exec(m[2]) || [''])[0];
-      var io = new IntersectionObserver(function (es) {
-        if (!es[0].isIntersecting) return; io.disconnect();
-        el.textContent = '';
-        var sr = d.createElement('span'), v = d.createElement('span');
-        sr.className = 'mo-sr'; sr.textContent = t; v.className = 'mo-cnt'; v.setAttribute('aria-hidden', 'true');
-        el.appendChild(sr); el.appendChild(v);
-        var t0 = null, dur = 1600;
-        function fmt(x) { return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, sep || ''); }
-        (function step(ts) {
-          if (t0 === null) t0 = ts;
-          var p = Math.min((ts - t0) / dur, 1);
-          v.textContent = m[1] + fmt(Math.round(n * (1 - Math.pow(1 - p, 4)))) + m[3];
-          if (p < 1) requestAnimationFrame(step); else el.textContent = t;
-        })(performance.now());
-      }, { threshold: 0.6 });
-      io.observe(el);
-    });
-  }
+  // 2. Лічильники фактів (150+, 10+, 36 міс.) не анімуємо: count-up від нуля під час прокрутки показував хибні «12+ проєктів»,
+  // «3 міс. гарантія». У HTML — одразу фінальне значення (QA 03.11.2026).
 
   // 3. Стрічки (marquee): галерея фото на головній (.strip) і в «Про нас» (.abg), ряди посилань «Інші послуги» (.rel, від 7),
   // «Статті по темі» (.rel.arts, від 4) і будь-який [data-marquee]. Лише якщо вміст ширший за контейнер.
@@ -324,7 +296,7 @@
     d.addEventListener('pointerleave', off);
   }
 
-  [marquee, reveal, counters, accordion, magnet].forEach(function (f) { try { f(); } catch (e) {} });
+  [marquee, reveal, accordion, magnet].forEach(function (f) { try { f(); } catch (e) {} });
 })();
 // ── Пристрої: шапка й нижня панель (.mbar) ховаються при прокрутці вниз і повертаються при прокрутці вгору (телефон ≤767px);
 // панель ховається й коли відкрита клавіатура (фокус у полі форми). Стилі — розділ «Пристрої» у site-chrome.v1.css.
@@ -532,7 +504,7 @@
 (function () {
   var W = window, d = document, ss = d.querySelectorAll('section.bz[data-js]'); // кілька сцен на сторінці — кожна свій скрипт
   if (!ss.length) return;
-  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=0a699e09"; /*/sc:ui*/
+  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=8ad1bac2"; /*/sc:ui*/
   var on = 0;
   function css(h) { if (!h || d.querySelector('link[href="' + h + '"]')) return; var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = h; d.head.appendChild(l); }
   function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; d.head.appendChild(j); }

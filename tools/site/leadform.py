@@ -254,6 +254,17 @@ def call_btns(b, lang):
     return rx.sub(lambda m: f'<a class="btn" href="{TEL}">{e(call)}</a>', b, 1)
 
 
+def hero_call(s, lang):
+    """Лише кнопки першого екрана (.w.hero .btns): стандартний CTA → «Подзвонити» (call_btns). Ідемпотентно."""
+    h = s.find('<div class="w hero">')
+    b = s.find('<div class="btns">', h) if h >= 0 else -1
+    hero = _wrapper(s, h + len('<div class="w hero">'), h, len(s)) if b > 0 else None
+    if not hero or b > hero[1]:
+        return s
+    end = s.find('</div>', b)
+    return s[:b] + call_btns(s[b:end], lang) + s[end:]
+
+
 def add_quick(s, lang):
     """Швидка заявка в hero лендингу — одразу після першого рядка кнопок (.w.hero .btns)."""
     old = QUICK_RX.search(s)
@@ -348,6 +359,7 @@ def apply(s, rel):
     s = STYLE_RX.sub('', s)
     if 'data-lf="keep"' in s:  # власна форма сторінки (landing.py "form_html", напр. реферальна): не переписуємо, без швидкої заявки
         s = QUICK_RX.sub('', s)
+        s = hero_call(s, lang_of(s))  # але перша кнопка hero — «Подзвонити», як на інших мовах контактів (QA 03.11.2026)
     elif 'id="of"' in s or '<!--lq-->' in s:
         lang = lang_of(s)
         s = upgrade_form(s, lang)

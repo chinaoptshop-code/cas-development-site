@@ -23,7 +23,7 @@ RATES.update({
            ('house', 'Hausbau (Rohbau)', 600), ('housekey', 'Haus schlüsselfertig mit Ausbau', 1100)],
 })
 T.update({
-    'en': dict(h='Cost calculator', kind='What you need', area='Area, m²', design='Interior design project (from $30/m², minimum $2 500)',
+    'en': dict(h='Cost calculator', kind='What you need', area='Area, m²', design='Interior design project (from $30/m², minimum $2,500)',
                furn='Furnishing and procurement (from $250/m²)', res='Approximately from', note='This is the lower limit at our base rates. Apartment renovation from $550/m² covers works and rough materials; finishing materials, furniture and appliances are priced separately in the estimate. We give the exact amount after measuring and preparing the estimate; if we do the renovation, the total stays within ±5% of the estimate.',
                send='Get an exact estimate', msg='Calculator result', d='Design project', f='Furnishing', frm='from', m2='m²'),
     'pl': dict(h='Kalkulator kosztów', kind='Czego potrzebujesz', area='Powierzchnia, m²', design='Projekt wnętrza (od $30/m², minimum $2 500)',

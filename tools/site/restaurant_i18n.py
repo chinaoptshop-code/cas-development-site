@@ -61,7 +61,7 @@ T = {
                 ('Terrace', 'Decking board by board, planters, umbrellas and tables: a summer room in front of the windows.'),
                 ('Lighting: day → evening', 'Lighting scenes: a daytime room, evening pendants over the tables, lit bar, shopfronts and sign.'),
                 ('Guests', 'The venue opens: guests at tables and at the bar, waiters between the pass and the room.')],
-            price='Design from $30/m², minimum $2 500.', rest='Fit-out, kitchen equipment and furniture are priced per estimate.',
+            price='Design from $30/m², minimum $2,500.', rest='Fit-out, kitchen equipment and furniture are priced per estimate.',
             case='Example: Monpark, a restaurant in central Kyiv, designed and built by CAS →',
             teaser=('A restaurant from scratch: 14 stages', 'Ventilation, grease traps, kitchen wiring, bar, open kitchen and terrace: scroll and see how we build a venue.', 'See the restaurant →'),
             ui=dict(area='Size', unit='m²', style='Style', styles=['Modern', 'Loft', 'Classic'], xray='X-ray', xr=['Ventilation', 'Drainage', 'Wiring'],

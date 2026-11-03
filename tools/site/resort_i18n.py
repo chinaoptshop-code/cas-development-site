@@ -38,7 +38,7 @@ T = {
                     r_land='Landscape: {s} ares', r_est='Pool, pergola, beach bar, treatment plant, kitchen equipment', est='per estimate', total='Total from', plus='plus items per estimate',
                     note='Indicative, at base rates; the exact sum is in the estimate.', cta='Get an estimate for the complex', svc='Resort complex (site plan)',
                     msg='Complex: {n} cabins of {a} m², main building {r} m², site {s} ares, {l}. I would like an estimate.', open='Open object', step='Stage', of='of', tap='Tap an object on the plan'),
-            rates='Rates: construction from $600/m² (shell), turnkey from $1 100/m²; landscape design from $50 per are; interior design from $30/m²; furnishing from $250/m². Pool, pergola, beach bar, treatment plant and kitchen equipment — per estimate.',
+            rates='Rates: construction from $600/m² (shell), turnkey from $1,100/m²; landscape design from $50 per are; interior design from $30/m²; furnishing from $250/m². Pool, pergola, beach bar, treatment plant and kitchen equipment — per estimate.',
             teaser=('Resort complex: site plan and prices', 'Cabins, restaurant, pool, beach and service zone on one plan: tap an object to see the indicative cost.', 'Open the complex →'),
             tabs=['House', 'Apartment', 'Landscape', 'Resort']),
  'es': dict(h='Complejo turístico: plano interactivo', p='Elija número y tamaño de las cabañas, el edificio principal y el terreno. Toque un objeto: la cámara se acerca y verá cómo lo construimos, etapa a etapa.',

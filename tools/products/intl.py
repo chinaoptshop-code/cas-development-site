@@ -96,8 +96,9 @@ def dictionary(d, lang, nm, warn=True):
 
 
 # ---------------------------------------------------------------- сторінка
-def money(n):
-    return f'{round(n):,}'.replace(',', ' ') + ' ₴'
+def money(n, lang=''):
+    """Тисячі: en — кома (1,100 ₴), інші мови — нерозривний пробіл (1 100 ₴), як у текстах сайту."""
+    return f'{round(n):,}'.replace(',', ',' if lang == 'en' else ' ') + ' ₴'
 
 
 def card(d, i, lang, L, nm, b):
@@ -105,7 +106,7 @@ def card(d, i, lang, L, nm, b):
     name = item_name(i, lang, nm)
     mp = b.min_price(d, i)
     ui = L['ui']
-    pr = ui['Ціна за запитом'] if mp is None else (f'{ui["від"] + chr(160) if b.is_from(d, i) else ""}{money(mp)} <small>/ {e(L["units"].get(i["unit"], i["unit"]))}</small>')
+    pr = ui['Ціна за запитом'] if mp is None else (f'{ui["від"] + chr(160) if b.is_from(d, i) else ""}{money(mp, lang)} <small>/ {e(L["units"].get(i["unit"], i["unit"]))}</small>')
     img = i.get('img')
     pic = (f'<img src="/{img}-400.webp" srcset="/{img}-400.webp 400w, /{img}-800.webp 800w" sizes="(min-width:900px) 240px, 46vw" '
            f'width="400" height="400" alt="{e(name)}" loading="lazy" decoding="async">') if img else b.S.format(d['art'].get(i['art'], '<rect x="20" y="20" width="60" height="42" rx="5"/>'))

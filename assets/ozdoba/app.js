@@ -79,7 +79,9 @@ function price(i, ci=0, si=null){
 const minP = i => { if(i.price==null) return null; const s=SS(i); if(!s) return price(i,-1); if(nameS(i)>=0) return price(i,-1,nameS(i)); return r10(i.price*Math.min(...s.map(x=>x[1]))); };
 const fromP = i => SS(i) && nameS(i)<0;
 /* суми — з пробілом між тисячами для всіх мов (як у текстах сайту: «$2 500», «23 000 ₴») */
-const money = n => n==null ? t('за запитом') : new Intl.NumberFormat('uk-UA').format(Math.round(n)).replace(/\s/g,'\u00a0') + '\u00a0₴';
+// тисячі: en — кома (1,100), інші мови — нерозривний пробіл (1 100), як у текстах сайту
+const NUM = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, LANG === 'en' ? ',' : '\u00a0');
+const money = n => n==null ? t('за запитом') : NUM(n) + '\u00a0₴';
 
 /* світлішаємо темні кольори, щоб лінійна графіка лишалась читаною на темному тлі */
 function vis(hex){
@@ -372,7 +374,7 @@ const count = () => cart.reduce((s,c)=>s+c.qty,0);
    (functions/api/orders.js). Особистий код партнера з нею не сумується: діє більша. */
 const VOL = () => (DATA && DATA.volume_discounts) || [];
 const volPct = g => VOL().reduce((p,[t,pc]) => g>=t ? Math.max(p,pc) : p, 0);
-const usd = n => '$' + new Intl.NumberFormat('uk-UA').format(Math.round(n/46/100)*100).replace(/\s/g,'\u00a0');  // 230 000 ₴ ≈ $5 000
+const usd = n => '$' + NUM(Math.round(n/46/100)*100);  // 230 000 ₴ ≈ $5 000
 const VOLTXT_ = () => t('Знижка за обсягом') + ': ' + VOL().map(([th,pc])=>`${t('від')}\u00a0${usd(th)}\u00a0— ${pc}%`).join(', ');
 let VOLTXT = '';
 function disc(){ const g=goods(), v=volPct(g), p=promo?promo.pct:0;
