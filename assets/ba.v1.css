@@ -11,3 +11,4 @@
 .ba-t0{left:12px}.ba-t1{right:12px}
 .ba-anim .ba-b{transition:clip-path .25s ease}.ba-anim .ba-h{transition:left .25s ease}
 @media(prefers-reduced-motion:reduce){.ba-b,.ba-h{transition:none!important}}
+.ba-g{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:18px}.ba-g .ba-w{margin:0}

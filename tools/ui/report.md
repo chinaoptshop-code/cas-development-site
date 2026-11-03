@@ -1,12 +1,12 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 858 (MAIN 6, LAND 435, інші 350). HTML разом 44176 КБ, з них інлайн CSS 17929 КБ і JS 656 КБ.
+Сторінок: 858 (MAIN 6, LAND 435, інші 350). HTML разом 44174 КБ, з них інлайн CSS 17929 КБ і JS 656 КБ.
 
 ## Проблеми
 
 - **Без Clarity** (1): tury.html
 - **Непідтверджені ціни** (87): ar/renovation-calculator.html['$165 000 ', '$33 000 '], biznes-pid-kliuch-kyiv.html['$52 500'], blog/akustyka-open-space-bez-hluhykh-peregorodok.html['$35 000 ', '$35 000       '], blog/bryf-dlia-dyzainera-interieru.html['$44 000'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$165 000       ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/chornovyi-i-chystovyi-remont-riznytsia.html['$38 500', '$38 500 '], blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html['$2 400'], blog/dyzain-i-remont-penthausa-pid-kliuch.html['$115 500  ', '$174 300', '$52 500  ', '$6 300', '$6 300  ', '$6 300       '], blog/dyzain-interieru-onlain-budynok-za-kordonom.html['$7 500', '$7 500       '], blog/dyzain-interieru-z-choho-pochaty.html['$3 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'] …
-- **Класи поза /styleguide/ (warning, `ui.py classes`)** (25): .acc-box, .cover, .dw, .hx, .hx-bg, .la-pies, .la-pies-h, .la-price, .mo-sr, .row, .rp-list, .rp-rates …
+- **Класи поза /styleguide/ (warning, `ui.py classes`)** (26): .acc-box, .ba-g, .cover, .dw, .hx, .hx-bg, .la-pies, .la-pies-h, .la-price, .mo-sr, .row, .rp-list …
 
 ## Токени
 
@@ -37,7 +37,6 @@
 | ar/index.html | land | 63.2 | 16.6 | 13.6 | 0.6 | 7 | 633 |
 | remont-kvartyr-kyiv.html | land | 62.6 | 17.5 | 13.7 | 0.6 | 7 | 630 |
 | ru/remont-pod-klyuch-kiev.html | land | 62.0 | 17.3 | 13.6 | 0.6 | 7 | 580 |
-| remont-pid-klyuch-kyiv.html | land | 60.9 | 17.0 | 13.3 | 0.6 | 7 | 582 |
 | proekty/petrivtsi-house.html | land | 60.6 | 11.2 | 2.1 | 1.0 | 1 | 498 |
 | ozdoba/stilets-krislo-obidnii-bukle-z-pidlokitnykamy-74.html | other | 60.4 | 15.7 | 32.4 | 0.8 | 14 | 340 |
 | ru/stroitelstvo-domov-kiev.html | land | 60.3 | 16.3 | 13.6 | 0.6 | 7 | 561 |
@@ -297,6 +296,7 @@
 | ozdoba/tv-tumba-bila-z-horikhovym-korpusom-89.html | other | 58.5 | 15.3 | 32.4 | 0.8 | 14 | 332 |
 | ozdoba/unitaz-rozumnyi-pidlohovyi-chornyi-matovyi-156.html | other | 58.5 | 15.3 | 32.4 | 0.8 | 14 | 334 |
 | ozdoba/vizok-barnyi-na-kolesakh-zolotyi-3-422.html | other | 58.5 | 15.3 | 32.4 | 0.8 | 14 | 335 |
+| remont-pid-klyuch-kyiv.html | land | 58.5 | 15.5 | 13.3 | 0.6 | 7 | 554 |
 | es/index.html | land | 58.4 | 15.8 | 13.6 | 0.6 | 7 | 637 |
 | ozdoba/doshka-serviruvalna-z-akatsii-z-zholobkom-407.html | other | 58.4 | 15.3 | 32.4 | 0.8 | 14 | 333 |
 | ozdoba/dozator-dlia-myla-z-pidstavkoiu-35.html | other | 58.4 | 15.3 | 32.4 | 0.8 | 14 | 335 |
