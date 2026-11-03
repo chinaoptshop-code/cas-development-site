@@ -161,7 +161,6 @@ LIGHT_EXTRA = ('/portfolio', '/remont-kvartyr-kyiv', '/ru/remont-kvartir-kiev', 
 # ручні uk-сторінки: класи секцій, що стають плитками (h2 — нащадок секції; атрибут — на самій <section>)
 LIGHT_CUSTOM = {
     'index.html': ('section.kft', 'section.pcarousel', 'section.home-why', 'section#video'),
-    'services.html': ('div.sv-card', 'div.proc'),
     'about.html': ('section.ab-sec', 'section.team'),
     'portfolio.html': ('section#video', 'section.pmap'),
 }

@@ -10,13 +10,22 @@
   "https://wa.me/380978667755",
   "WhatsApp"
  ],
+ "kicker": "我们的服务",
+ "hero_img": {
+  "img": "img/1nqFOoTfr5BD-1400.webp",
+  "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w, /img/1nqFOoTfr5BD-r800.webp 800w, /img/1nqFOoTfr5BD-r1200.webp 1200w, /img/1nqFOoTfr5BD-1400.webp 1400w",
+  "alt": "CAS Development 在基辅的室内设计与交钥匙装修",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "cards",
+   "t": "svc",
    "items": [
     {
      "h": "室内设计",
      "href": "/zh/interior-design",
+     "img": "img/1SGDKLtQtxQg-600.webp",
+     "srcset": "/img/1SGDKLtQtxQg-r400.webp 400w, /img/1SGDKLtQtxQg-600.webp 600w",
      "price": "$30 / m² 起 · 项目最低 $2 500",
      "li": [
       "概念方案与情绪板",
@@ -24,11 +33,18 @@
       "施工图与材料清单",
       "施工现场设计监督"
      ],
-     "more": "了解详情"
+     "links": [
+      [
+       "/zh/interior-design",
+       "了解详情 →"
+      ]
+     ]
     },
     {
      "h": "设计方案落地",
      "href": "/zh/design-implementation",
+     "img": "img/1QEJ_y0yTWVL-600.webp",
+     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
      "price": "装修 $550 / m² 起 · 软装 $250 / m² 起",
      "li": [
       "图纸审核",
@@ -36,11 +52,18 @@
       "严格按图施工",
       "采购与软装配置"
      ],
-     "more": "了解详情"
+     "links": [
+      [
+       "/zh/design-implementation",
+       "了解详情 →"
+      ]
+     ]
     },
     {
      "h": "交钥匙装修",
      "href": "/zh/turnkey-renovation",
+     "img": "img/197Bi23wSzVk-600.webp",
+     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
      "price": "住宅 $550 / m² 起 · 办公室 $350 / m² 起",
      "li": [
       "拆除与基础施工",
@@ -48,11 +71,18 @@
       "精装修：瓷砖、地面、吊顶、涂装",
       "交付并提供 36 个月质保"
      ],
-     "more": "了解详情"
+     "links": [
+      [
+       "/zh/turnkey-renovation",
+       "了解详情 →"
+      ]
+     ]
     },
     {
      "h": "住宅建造",
      "href": "/zh/house-construction",
+     "img": "img/1nqFOoTfr5BD-r600.webp",
+     "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w",
      "price": "主体结构 $600 / m² 起 · 含装修交钥匙 $1 100 / m² 起",
      "li": [
       "建筑设计与立面",
@@ -60,11 +90,18 @@
       "机电管网",
       "室内装修与庭院景观"
      ],
-     "more": "了解详情"
+     "links": [
+      [
+       "/zh/house-construction",
+       "了解详情 →"
+      ]
+     ]
     },
     {
      "h": "家具软装交钥匙",
      "href": "/zh/furnishing",
+     "img": "img/1BCMJKrx7QL5-600.webp",
+     "srcset": "/img/1BCMJKrx7QL5-r400.webp 400w, /img/1BCMJKrx7QL5-600.webp 600w",
      "price": "$250 / m² 起",
      "li": [
       "定制家具与成品家具",
@@ -72,11 +109,17 @@
       "布艺与饰品",
       "运输、安装与陈设"
      ],
-     "more": "了解详情"
+     "links": [
+      [
+       "/zh/furnishing",
+       "了解详情 →"
+      ]
+     ]
     },
     {
      "h": "商业空间交钥匙",
      "href": "/zh/business-fit-out",
+     "img": "img/p/mpk-v01-600.webp",
      "price": "设计 $30 / m² 起 · 配置 $500 起",
      "li": [
       "咖啡馆与餐厅",
@@ -84,7 +127,12 @@
       "办公室与精品酒店",
       "整体配置 $500 起"
      ],
-     "more": "了解详情"
+     "links": [
+      [
+       "/zh/business-fit-out",
+       "了解详情 →"
+      ]
+     ]
     }
    ]
   },

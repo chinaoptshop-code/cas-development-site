@@ -10,13 +10,22 @@
   "https://wa.me/380978667755",
   "WhatsApp"
  ],
+ "kicker": "خدماتنا",
+ "hero_img": {
+  "img": "img/1nqFOoTfr5BD-1400.webp",
+  "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w, /img/1nqFOoTfr5BD-r800.webp 800w, /img/1nqFOoTfr5BD-r1200.webp 1200w, /img/1nqFOoTfr5BD-1400.webp 1400w",
+  "alt": "التصميم الداخلي والتشطيب المتكامل من CAS Development في كييف",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "cards",
+   "t": "svc",
    "items": [
     {
      "h": "التصميم الداخلي",
      "href": "/ar/interior-design",
+     "img": "img/1SGDKLtQtxQg-600.webp",
+     "srcset": "/img/1SGDKLtQtxQg-r400.webp 400w, /img/1SGDKLtQtxQg-600.webp 600w",
      "price": "من $30 / م² · الحد الأدنى للمشروع $2 500",
      "li": [
       "الفكرة ولوحة الإلهام",
@@ -24,11 +33,18 @@
       "مخططات تنفيذية وجداول مواصفات",
       "إشراف المصمم في الموقع"
      ],
-     "more": "اعرف المزيد"
+     "links": [
+      [
+       "/ar/interior-design",
+       "اعرف المزيد →"
+      ]
+     ]
     },
     {
      "h": "تنفيذ مشروع التصميم",
      "href": "/ar/design-implementation",
+     "img": "img/1QEJ_y0yTWVL-600.webp",
+     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
      "price": "التشطيب من $550 / م² · التأثيث من $250 / م²",
      "li": [
       "مراجعة المخططات",
@@ -36,11 +52,18 @@
       "تنفيذ مطابق للمخططات",
       "المشتريات والتأثيث"
      ],
-     "more": "اعرف المزيد"
+     "links": [
+      [
+       "/ar/design-implementation",
+       "اعرف المزيد →"
+      ]
+     ]
     },
     {
      "h": "تشطيب متكامل (تسليم مفتاح)",
      "href": "/ar/turnkey-renovation",
+     "img": "img/197Bi23wSzVk-600.webp",
+     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
      "price": "الشقق والمنازل من $550 / م² · المكاتب من $350 / م²",
      "li": [
       "الهدم والأعمال الإنشائية",
@@ -48,11 +71,18 @@
       "التشطيبات: البلاط والأرضيات والأسقف والدهان",
       "التسليم مع ضمان 36 شهرًا"
      ],
-     "more": "اعرف المزيد"
+     "links": [
+      [
+       "/ar/turnkey-renovation",
+       "اعرف المزيد →"
+      ]
+     ]
     },
     {
      "h": "بناء المنازل",
      "href": "/ar/house-construction",
+     "img": "img/1nqFOoTfr5BD-r600.webp",
+     "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w",
      "price": "الهيكل من $600 / م² · تسليم مفتاح مع التشطيب من $1 100 / م²",
      "li": [
       "التصميم المعماري والواجهات",
@@ -60,11 +90,18 @@
       "التمديدات الهندسية",
       "التشطيب الداخلي وتنسيق الحديقة"
      ],
-     "more": "اعرف المزيد"
+     "links": [
+      [
+       "/ar/house-construction",
+       "اعرف المزيد →"
+      ]
+     ]
     },
     {
      "h": "تأثيث متكامل",
      "href": "/ar/furnishing",
+     "img": "img/1BCMJKrx7QL5-600.webp",
+     "srcset": "/img/1BCMJKrx7QL5-r400.webp 400w, /img/1BCMJKrx7QL5-600.webp 600w",
      "price": "من $250 / م²",
      "li": [
       "أثاث حسب المقاس ومن الصين",
@@ -72,11 +109,17 @@
       "المفروشات والديكور",
       "التوريد والتركيب والتنسيق"
      ],
-     "more": "اعرف المزيد"
+     "links": [
+      [
+       "/ar/furnishing",
+       "اعرف المزيد →"
+      ]
+     ]
     },
     {
      "h": "تجهيز المحلات التجارية",
      "href": "/ar/business-fit-out",
+     "img": "img/p/mpk-v01-600.webp",
      "price": "التصميم من $30 / م² · التجهيز من $500",
      "li": [
       "المقاهي والمطاعم",
@@ -84,7 +127,12 @@
       "المكاتب والفنادق الصغيرة",
       "التجهيز من الصين بدءًا من $500"
      ],
-     "more": "اعرف المزيد"
+     "links": [
+      [
+       "/ar/business-fit-out",
+       "اعرف المزيد →"
+      ]
+     ]
     }
    ]
   },

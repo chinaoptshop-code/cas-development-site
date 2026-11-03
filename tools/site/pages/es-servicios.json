@@ -10,13 +10,22 @@
   "https://wa.me/380978667755",
   "WhatsApp"
  ],
+ "kicker": "Nuestros servicios",
+ "hero_img": {
+  "img": "img/1nqFOoTfr5BD-1400.webp",
+  "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w, /img/1nqFOoTfr5BD-r800.webp 800w, /img/1nqFOoTfr5BD-r1200.webp 1200w, /img/1nqFOoTfr5BD-1400.webp 1400w",
+  "alt": "Diseño de interiores y reforma llave en mano de CAS Development en Kiev",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "cards",
+   "t": "svc",
    "items": [
     {
      "h": "Diseño de interiores",
      "href": "/es/diseno-interiores",
+     "img": "img/1SGDKLtQtxQg-600.webp",
+     "srcset": "/img/1SGDKLtQtxQg-r400.webp 400w, /img/1SGDKLtQtxQg-600.webp 600w",
      "price": "desde $30 / m² · proyecto mínimo $2 500",
      "li": [
       "concepto y moodboard",
@@ -24,11 +33,18 @@
       "planos de ejecución y mediciones",
       "dirección de diseño en obra"
      ],
-     "more": "Ver más"
+     "links": [
+      [
+       "/es/diseno-interiores",
+       "Ver más →"
+      ]
+     ]
     },
     {
      "h": "Ejecución del proyecto de diseño",
      "href": "/es/ejecucion-proyecto-diseno",
+     "img": "img/1QEJ_y0yTWVL-600.webp",
+     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
      "price": "reforma desde $550 / m² · amueblamiento desde $250 / m²",
      "li": [
       "revisión de los planos",
@@ -36,11 +52,18 @@
       "obra fiel a los planos",
       "compras y amueblamiento"
      ],
-     "more": "Ver más"
+     "links": [
+      [
+       "/es/ejecucion-proyecto-diseno",
+       "Ver más →"
+      ]
+     ]
     },
     {
      "h": "Reforma llave en mano",
      "href": "/es/reforma-llave-en-mano",
+     "img": "img/197Bi23wSzVk-600.webp",
+     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
      "price": "viviendas desde $550 / m² · oficinas desde $350 / m²",
      "li": [
       "demoliciones y obra gruesa",
@@ -48,11 +71,18 @@
       "acabados: azulejos, suelos, techos, pintura",
       "entrega con 36 meses de garantía"
      ],
-     "more": "Ver más"
+     "links": [
+      [
+       "/es/reforma-llave-en-mano",
+       "Ver más →"
+      ]
+     ]
     },
     {
      "h": "Construcción de casas",
      "href": "/es/construccion-de-casas",
+     "img": "img/1nqFOoTfr5BD-r600.webp",
+     "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w",
      "price": "estructura desde $600 / m² · llave en mano desde $1 100 / m²",
      "li": [
       "proyecto arquitectónico y fachadas",
@@ -60,11 +90,18 @@
       "instalaciones",
       "acabados interiores y jardín"
      ],
-     "more": "Ver más"
+     "links": [
+      [
+       "/es/construccion-de-casas",
+       "Ver más →"
+      ]
+     ]
     },
     {
      "h": "Amueblamiento llave en mano",
      "href": "/es/amueblamiento-llave-en-mano",
+     "img": "img/1BCMJKrx7QL5-600.webp",
+     "srcset": "/img/1BCMJKrx7QL5-r400.webp 400w, /img/1BCMJKrx7QL5-600.webp 600w",
      "price": "desde $250 / m²",
      "li": [
       "muebles a medida y de China",
@@ -72,11 +109,17 @@
       "textiles y decoración",
       "entrega, montaje y estilismo"
      ],
-     "more": "Ver más"
+     "links": [
+      [
+       "/es/amueblamiento-llave-en-mano",
+       "Ver más →"
+      ]
+     ]
     },
     {
      "h": "Locales comerciales llave en mano",
      "href": "/es/negocio-llave-en-mano",
+     "img": "img/p/mpk-v01-600.webp",
      "price": "diseño desde $30 / m² · equipamiento desde $500",
      "li": [
       "cafeterías y restaurantes",
@@ -84,7 +127,12 @@
       "oficinas y pequeños hoteles",
       "equipamiento de China desde $500"
      ],
-     "more": "Ver más"
+     "links": [
+      [
+       "/es/negocio-llave-en-mano",
+       "Ver más →"
+      ]
+     ]
     }
    ]
   },
