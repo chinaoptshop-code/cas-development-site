@@ -35,7 +35,7 @@
 | blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html | article | 65.4 | 18.3 | 14.4 | 0.5 | 7 | 459 |
 | about.html | main | 64.5 | 17.3 | 13.6 | 0.5 | 7 | 602 |
 | ar/index.html | land | 63.0 | 16.5 | 13.6 | 0.5 | 7 | 633 |
-| remont-kvartyr-kyiv.html | land | 62.5 | 17.5 | 13.7 | 0.5 | 7 | 630 |
+| remont-kvartyr-kyiv.html | land | 62.5 | 17.4 | 13.7 | 0.5 | 7 | 630 |
 | ru/remont-pod-klyuch-kiev.html | land | 61.9 | 17.2 | 13.6 | 0.5 | 7 | 580 |
 | proekty/petrivtsi-house.html | land | 60.4 | 11.2 | 2.1 | 0.8 | 1 | 498 |
 | ozdoba/stilets-krislo-obidnii-bukle-z-pidlokitnykamy-74.html | other | 60.3 | 15.6 | 32.4 | 0.7 | 14 | 340 |
@@ -122,7 +122,7 @@
 | ru/remont-restorana-kafe-kiev.html | land | 59.0 | 16.6 | 13.6 | 3.3 | 7 | 545 |
 | blog/kapitalnyi-chy-kosmetychnyi-remont-shcho-obraty.html | article | 58.9 | 16.5 | 14.4 | 0.5 | 7 | 420 |
 | blog/komplektatsiia-interieru-samostiino-chy-z-komplektatorom.html | article | 58.9 | 16.8 | 14.4 | 0.5 | 7 | 426 |
-| ozdoba/bra-na-hnuchkii-opori-gooseneck-7.html | other | 58.9 | 15.5 | 32.4 | 0.7 | 14 | 341 |
+| ozdoba/bra-na-hnuchkii-opori-gooseneck-7.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 341 |
 | ozdoba/dveri-ambarni-z-masyvu-sosny-z-535.html | other | 58.9 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/dveri-rozsuvni-ambarni-z-reikoiu-siri-534.html | other | 58.9 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/dveri-rozsuvni-v-chornomu-profili-z-537.html | other | 58.9 | 15.2 | 32.4 | 0.7 | 14 | 335 |
@@ -132,7 +132,7 @@
 | ozdoba/led-profil-aliuminiievyi-z-rozsiiuvachem-2-11.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/liustra-kaskadna-zi-sklianykh-peliustok-smarahdova-111.html | other | 58.9 | 15.2 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/lizhko-miake-z-vysokym-uzholiv-iam-415.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 342 |
-| ozdoba/nabir-posudu-z-keramiky-temno-siryi-551.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 335 |
+| ozdoba/nabir-posudu-z-keramiky-temno-siryi-551.html | other | 58.9 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/pidvis-zi-skla-burshtynovoho-koloru-ryflenyi-582.html | other | 58.9 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/podushka-dekoratyvna-oksamytova-z-pomponamy-529.html | other | 58.9 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/shyna-mahnitna-trekova-1-m-10.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 338 |
@@ -409,7 +409,7 @@
 | dyzain-restoranu-kafe-kyiv.html | land | 56.3 | 15.5 | 13.3 | 3.3 | 7 | 519 |
 | ru/dizayner-interera-kiev.html | land | 56.0 | 14.7 | 13.6 | 0.5 | 7 | 489 |
 | ru/remont-ofisa-kiev.html | land | 55.9 | 15.0 | 13.6 | 0.5 | 7 | 496 |
-| dyzain-interieru-budynku-kyiv.html | land | 55.8 | 14.7 | 13.6 | 0.5 | 7 | 541 |
+| dyzain-interieru-budynku-kyiv.html | land | 55.8 | 14.6 | 13.6 | 0.5 | 7 | 541 |
 | remont-ofisu-pid-klyuch-kyiv.html | land | 55.8 | 14.9 | 13.2 | 0.5 | 7 | 504 |
 | zh/index.html | land | 55.8 | 16.2 | 13.6 | 0.5 | 7 | 635 |
 | ru/dizayn-interera-doma-kiev.html | land | 55.7 | 14.7 | 13.6 | 0.5 | 7 | 541 |
@@ -448,17 +448,17 @@
 | ru/stoimost-remonta-ofisa-kiev.html | land | 53.0 | 14.2 | 13.6 | 0.5 | 7 | 481 |
 | dyzain-interieru-kvartyry-kyiv.html | land | 52.9 | 13.4 | 13.2 | 0.5 | 7 | 510 |
 | landshaftnyi-dyzain-kyiv.html | land | 52.9 | 14.5 | 13.3 | 1.1 | 7 | 578 |
-| blog/remont-komertsiinoho-prymishchennia-etapy.html | article | 52.8 | 14.8 | 14.4 | 0.5 | 7 | 395 |
+| blog/remont-komertsiinoho-prymishchennia-etapy.html | article | 52.8 | 14.7 | 14.4 | 0.5 | 7 | 395 |
 | blog/mebliuvannia-kvartyry-pid-orendu-cheklist.html | article | 52.7 | 14.7 | 14.4 | 0.5 | 7 | 405 |
 | proekty/kitana-beach.html | land | 52.6 | 10.0 | 2.1 | 0.7 | 1 | 431 |
 | vartist-remontu-ofisu-kyiv.html | land | 52.6 | 14.2 | 13.6 | 0.5 | 7 | 481 |
 | modulnyi-budynok-kyiv.html | land | 52.5 | 14.9 | 13.6 | 0.5 | 7 | 502 |
 | ru/stoimost-dizayna-interera-kiev.html | land | 52.5 | 13.9 | 13.9 | 0.5 | 7 | 525 |
 | vartist-dyzainu-interieru-kyiv.html | land | 52.5 | 13.8 | 13.9 | 0.5 | 7 | 525 |
-| kalkuliator-remontu.html | land | 52.4 | 14.6 | 14.2 | 1.5 | 7 | 481 |
+| kalkuliator-remontu.html | land | 52.4 | 14.7 | 14.2 | 1.5 | 7 | 481 |
 | ru/kalkulyator-remonta.html | land | 52.3 | 14.7 | 14.2 | 1.4 | 7 | 481 |
 | blog/salon-krasy-pid-kliuch.html | article | 52.1 | 14.8 | 14.4 | 0.5 | 7 | 384 |
-| ru/modulnyy-dom-kiev.html | land | 52.1 | 15.0 | 13.6 | 0.5 | 7 | 502 |
+| ru/modulnyy-dom-kiev.html | land | 52.1 | 14.9 | 13.6 | 0.5 | 7 | 502 |
 | ru/dizayn-ofisa-open-space-kiev.html | land | 51.8 | 14.1 | 13.6 | 0.5 | 7 | 476 |
 | dyzain-ofisu-open-space-kyiv.html | land | 51.6 | 14.1 | 13.6 | 0.5 | 7 | 478 |
 | budynok-z-brusa-kyiv.html | land | 51.5 | 14.7 | 13.6 | 0.5 | 7 | 496 |
@@ -490,7 +490,7 @@
 | remontna-bryhada-kyiv.html | land | 50.0 | 13.0 | 13.3 | 0.5 | 7 | 460 |
 | blog/mebli-z-kytaiu-dlia-interieru.html | article | 49.9 | 13.9 | 14.4 | 0.5 | 7 | 393 |
 | ru/dizayn-i-remont-penthausa-kiev.html | land | 49.9 | 13.3 | 13.6 | 0.5 | 7 | 441 |
-| blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | article | 49.8 | 14.1 | 14.4 | 0.5 | 7 | 389 |
+| blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | article | 49.8 | 14.0 | 14.4 | 0.5 | 7 | 389 |
 | blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html | article | 49.8 | 13.9 | 14.4 | 0.5 | 7 | 396 |
 | blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html | article | 49.8 | 13.8 | 14.4 | 0.5 | 7 | 371 |
 | dyzain-i-remont-penthausa-kyiv.html | land | 49.8 | 13.3 | 13.6 | 0.5 | 7 | 441 |
@@ -583,7 +583,7 @@
 | blog/open-space-chy-kabinety-planuvannia-ofisu.html | article | 47.4 | 13.2 | 14.4 | 0.5 | 7 | 359 |
 | kabinet/profil.html | other | 47.4 | 12.7 | 32.5 | 0.7 | 14 | 247 |
 | kabinet/zamovlennia.html | other | 47.4 | 12.7 | 32.5 | 0.7 | 14 | 247 |
-| avtorskyi-i-tekhnichnyi-nahliad-kyiv.html | land | 47.3 | 12.8 | 13.6 | 0.5 | 7 | 424 |
+| avtorskyi-i-tekhnichnyi-nahliad-kyiv.html | land | 47.3 | 12.7 | 13.6 | 0.5 | 7 | 424 |
 | kabinet.html | other | 47.3 | 12.7 | 32.5 | 0.7 | 14 | 246 |
 | kabinet/obrane.html | other | 47.3 | 12.7 | 32.5 | 0.7 | 14 | 247 |
 | ru/remont-vannoy-kiev.html | land | 47.3 | 12.8 | 13.6 | 0.5 | 7 | 432 |
@@ -668,7 +668,7 @@
 | dyzain-i-remont-lviv.html | land | 42.5 | 11.9 | 13.6 | 0.5 | 7 | 341 |
 | proekty/yacht-vip.html | land | 42.5 | 8.4 | 2.1 | 0.7 | 1 | 364 |
 | proekty/hoda-estate.html | land | 42.4 | 8.8 | 2.1 | 0.7 | 1 | 395 |
-| dyzain-i-remont-hostomel.html | land | 42.3 | 11.8 | 13.6 | 0.5 | 7 | 345 |
+| dyzain-i-remont-hostomel.html | land | 42.3 | 11.7 | 13.6 | 0.5 | 7 | 345 |
 | ru/dizayn-i-remont-gostomel.html | land | 42.3 | 11.8 | 13.6 | 0.5 | 7 | 345 |
 | ru/dizayn-i-remont-odessa.html | land | 42.2 | 11.8 | 13.6 | 0.5 | 7 | 340 |
 | zh/restaurant-design.html | land | 42.2 | 12.9 | 13.6 | 2.3 | 7 | 450 |
