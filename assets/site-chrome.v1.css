@@ -609,3 +609,44 @@ main :is(p,li,figcaption) a:not(.btn){overflow-wrap:anywhere}
 :lang(ar) main :is(p,li,summary){hyphens:none}
 
 /*ux:tiles*/:is(.js .w[data-c=x]:not(.c-o):has(>h2[data-i=ac]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=ac]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=ar]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=ar]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=bw]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=bw]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=cm]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=cm]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=de]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=de]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=dm]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=dm]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=fq]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=fq]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=gp]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=gp]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=gu]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=gu]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=hh]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=hh]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=ho]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=ho]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=in]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=in]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=ky]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=ky]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=la]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=la]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=os]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=os]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=pr]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=pr]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=re]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=re]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=st]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=st]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=te]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=te]),.js .w[data-c=x]:not(.c-o):has(>h2[data-i=wy]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=wy]))::before{content:"";display:block;aspect-ratio:3/2;margin:-16px -16px 12px;background:var(--bg2,#100e0c) center/cover no-repeat}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=ac])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=ac])::before{background-image:url(/img/tiles/ac.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=ar])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=ar])::before{background-image:url(/img/tiles/ar.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=bw])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=bw])::before{background-image:url(/img/tiles/bw.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=cm])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=cm])::before{background-image:url(/img/tiles/cm.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=de])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=de])::before{background-image:url(/img/tiles/de.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=dm])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=dm])::before{background-image:url(/img/tiles/dm.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=fq])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=fq])::before{background-image:url(/img/tiles/fq.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=gp])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=gp])::before{background-image:url(/img/tiles/gp.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=gu])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=gu])::before{background-image:url(/img/tiles/gu.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=hh])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=hh])::before{background-image:url(/img/tiles/hh.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=ho])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=ho])::before{background-image:url(/img/tiles/ho.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=in])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=in])::before{background-image:url(/img/tiles/in.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=ky])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=ky])::before{background-image:url(/img/tiles/ky.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=la])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=la])::before{background-image:url(/img/tiles/la.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=os])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=os])::before{background-image:url(/img/tiles/os.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=pr])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=pr])::before{background-image:url(/img/tiles/pr.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=re])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=re])::before{background-image:url(/img/tiles/re.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=st])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=st])::before{background-image:url(/img/tiles/st.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=te])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=te])::before{background-image:url(/img/tiles/te.webp)}.js .w[data-c=x]:not(.c-o):has(>h2[data-i=wy])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=wy])::before{background-image:url(/img/tiles/wy.webp)}/*/ux:tiles*/
+/* ── Широкі екрани (Михайло 03.11.2026: «щоб усе читабельно було на різних девайсах»). Флюїдний масштаб:
+   до 1366 px — як було (корінь 16 px); далі корінь росте до ~19 px на 1920, ~22 px на 2560 (стеля 24 px) → усі rem/em
+   (шрифти --fs-*, меню, кнопки, форми) ростуть пропорційно. --cw — ширина контейнера: ~1200 на 1440, ~1490 на 1920, ~1870 на 2560.
+   Текст обмежують em (p — 40em), сітки й стрічки займають контейнер. Вищі специфічності — бо інлайн-стилі сторінок задають .w{max-width:1080px}. */
+@media(min-width:1367px){
+  html:root{font-size:clamp(16px,calc(.5025vw + 9.14px),24px);--cw:clamp(1080px,calc(60vw + 336px),2400px);--sch-h:calc(clamp(64px,4rem,92px) + env(safe-area-inset-top,0px))}
+  html body .w,html body .gd-slot,html body .lq-wide,html body .pmap,html body .bz[data-bz-c]>.w{max-width:var(--cw)}
+  html body .w,html body .lq-wide{padding-inline:clamp(16px,1.5rem,40px)}
+  html body .sch-in{max-width:max(1360px,calc(var(--cw) + 16rem));padding-inline:clamp(28px,2rem,48px)}
+  html body .scf-in{max-width:var(--cw)}
+  html body .scf-svc-g{max-width:calc(var(--cw) - 4rem)}
+  .sch-nav{gap:clamp(24px,1.6rem,40px)}
+  .sch-logo{font-size:1.25rem}
+  .sch-tel svg,.sch-mtel svg{width:1rem;height:1rem}
+  .sch-kab::after{width:1.25rem;height:1.25rem}
+  .sch-cta,.sch-tel,.sch-lang a,.sch-lang span{min-height:2.5rem}
+  .sch-cta{padding:0 1.15rem}
+  /* форми, квіз, гід, стаття — у rem замість px */
+  html body form{max-width:34rem}
+  html body .lq{max-width:36rem}html body .lq-slot .lq{max-width:40rem}
+  html body .qz,html body .gd{max-width:48rem}
+  html body article{max-width:48rem}
+  .lq-r input,html body input,html body select,html body textarea{font-size:max(16px,1rem)}
+  .lq-r input,.lq-b{min-height:3rem}
+  .lq-b{padding:.75rem 1.4rem}
+  html body .btn{padding:.8rem 1.4rem}
+  /* перший екран: ширша колонка тексту, вищий блок */
+  html body .hx .hero{min-height:min(76vh,46rem)}
+  html body .hero .kick{max-width:none}
+  html body .hero h1{max-width:20em}
+  /* стрічка фото: цілі кадри на всю ширину контейнера */
+  html body .xs-st{grid-auto-columns:calc((100% - 4 * 12px) / 5);gap:12px}
+  /* легкі сторінки (ux.py LIGHT): сітка плиток на ширину контейнера, самотня плитка — банер, а не екран-картинка */
+  html.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){--uxp:max(16px,(100vw - var(--cw))/2 + 1rem);column-gap:14px}
+  .js [data-c=x]::before{max-height:min(36vh,16rem);min-width:calc(100% + 32px)}
+  /* Оздоба (tools/products/build.py): каталог на ширину контейнера */
+  html body :is(.ozd-sec,.vhead,.venues,.tabs,.chips,.sortrow),html body #grid.grid{max-width:var(--cw)}
+}
+@media(min-width:1800px){html.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(min-width:1024px) and (max-width:1366px){html body .xs-st{grid-auto-columns:calc((100% - 3 * 10px) / 4)}}
+@media(min-width:2200px){html body .xs-st{grid-auto-columns:calc((100% - 5 * 14px) / 6);gap:14px}}
