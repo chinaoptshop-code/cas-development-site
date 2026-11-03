@@ -968,7 +968,7 @@
  {
   "page": "blog.html",
   "kind": "other",
-  "html_kb": 77.5,
+  "html_kb": 77.4,
   "gzip_kb": 19.7,
   "css_kb": 13.5,
   "js_kb": 0.6,
@@ -1608,7 +1608,7 @@
  {
   "page": "blog/inzheneriia-restoranu-ventyliatsiia-kanalizatsiia-elektryka.html",
   "kind": "article",
-  "html_kb": 45.8,
+  "html_kb": 45.6,
   "gzip_kb": 13.0,
   "css_kb": 14.4,
   "js_kb": 0.6,

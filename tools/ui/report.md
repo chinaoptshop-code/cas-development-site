@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 858 (MAIN 5, LAND 436, інші 350). HTML разом 44107 КБ, з них інлайн CSS 17929 КБ і JS 656 КБ.
+Сторінок: 858 (MAIN 5, LAND 436, інші 350). HTML разом 44106 КБ, з них інлайн CSS 17929 КБ і JS 656 КБ.
 
 ## Проблеми
 
@@ -25,7 +25,7 @@
 | index.html | main | 92.4 | 21.3 | 13.6 | 0.6 | 7 | 858 |
 | pl/ozdoba.html | other | 82.3 | 19.6 | 30.7 | 0.8 | 13 | 619 |
 | en/ozdoba.html | other | 81.4 | 18.9 | 30.7 | 0.8 | 13 | 620 |
-| blog.html | other | 77.5 | 19.7 | 13.5 | 0.6 | 6 | 428 |
+| blog.html | other | 77.4 | 19.7 | 13.5 | 0.6 | 6 | 428 |
 | ru/blog.html | other | 72.5 | 18.3 | 13.5 | 0.6 | 6 | 406 |
 | blog/tekhnolohiia-budivnytstva-budynku-z-hazobloku-pokrokovo.html | article | 69.8 | 19.8 | 14.4 | 0.6 | 7 | 505 |
 | blog/pyrih-stiny-pidlohy-i-pokrivli-pryvatnoho-budynku.html | article | 69.4 | 19.7 | 14.4 | 0.6 | 7 | 496 |
@@ -610,9 +610,9 @@
 | ru/remont-kuhni-kiev.html | land | 46.2 | 12.7 | 13.6 | 0.6 | 7 | 431 |
 | remont-kukhni-kyiv.html | land | 46.0 | 12.4 | 13.6 | 0.6 | 7 | 440 |
 | ru/remont-i-stroitelstvo-evropa.html | land | 45.9 | 12.5 | 13.6 | 0.6 | 7 | 417 |
-| blog/inzheneriia-restoranu-ventyliatsiia-kanalizatsiia-elektryka.html | article | 45.8 | 13.0 | 14.4 | 0.6 | 7 | 357 |
 | de/ueber-uns.html | land | 45.8 | 12.7 | 13.6 | 0.6 | 7 | 534 |
 | remont-i-budivnytstvo-yevropa.html | land | 45.7 | 12.5 | 13.6 | 0.6 | 7 | 417 |
+| blog/inzheneriia-restoranu-ventyliatsiia-kanalizatsiia-elektryka.html | article | 45.6 | 13.0 | 14.4 | 0.6 | 7 | 357 |
 | pl/o-studiu.html | land | 45.6 | 12.9 | 13.6 | 0.6 | 7 | 541 |
 | blog/budynok-na-vodi-pali-chy-pontony.html | article | 45.5 | 13.0 | 14.4 | 0.6 | 7 | 382 |
 | fr/calculateur-renovation.html | land | 45.5 | 13.0 | 14.2 | 1.6 | 7 | 463 |
