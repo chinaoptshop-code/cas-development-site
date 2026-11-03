@@ -1,0 +1,85 @@
+/* «Ресторан з нуля» (assets/restaurant-anim.v1.js, tools/site/restaurant.py). Керування — ті самі класи la-*, що й у «Ландшафт з нуля». UI-kit: /styleguide/#build-anim-sg */
+.la-tab{display:inline-flex;flex-wrap:wrap;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:999px;padding:4px;margin:0 0 18px}
+.la-tab a{padding:8px 16px;border-radius:999px;text-decoration:none;font-size:var(--fs-small);min-height:36px;display:inline-flex;align-items:center}
+.la-tab a[aria-current]{background:var(--ac,#BF9148);color:#140f08}
+.la-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.la-ctl{display:flex;flex-wrap:wrap;gap:10px 18px;margin:8px 0 14px}
+.la-seg{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.la-lab{font-size:var(--fs-small);color:var(--mu,#938c84);margin-inline-end:4px}
+.la-seg button{min-height:36px;min-width:40px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.3));background:none;color:inherit;font:inherit;font-size:var(--fs-small);cursor:pointer}
+.la-seg button[aria-pressed=true]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#140f08}
+.la-xr button.x0[aria-pressed=true]{background:#7fc8e8;border-color:#7fc8e8}.la-xr button.x1[aria-pressed=true]{background:#57c4b3;border-color:#57c4b3}.la-xr button.x2[aria-pressed=true]{background:#f0b44c;border-color:#f0b44c}
+.la-stick{position:sticky;top:68px;display:grid;gap:8px}
+.la-svg{display:block;width:100%;height:min(58vh,560px);background:radial-gradient(ellipse at 50% 30%,#1b1813,#0d0c0a);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:14px;outline-offset:3px}
+.la-cap{margin:0;min-height:4.6em}.la-cap b{display:block;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3)}.la-cap span{color:var(--mu,#938c84);font-size:var(--fs-small)}
+.la-nav{display:flex;align-items:center;gap:10px}.la-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--ac,#BF9148);background:none;color:inherit;font-size:20px;cursor:pointer}
+.la-cnt{font-size:var(--fs-small);color:var(--mu,#938c84);min-width:5em;text-align:center}
+.la-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.la-foot{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}.la-est{margin:0;color:var(--ac,#BF9148)}
+@media(max-width:767px){.la-svg{height:46vh}.la-stick{top:58px}.la-cap{min-height:5.6em}.la-ctl{gap:8px}}
+.rs-price{color:var(--ac,#BF9148);margin:18px 0 0}.rs-case{margin:8px 0 0}
+/* сцена */
+.rs-e{opacity:0;transition:opacity .45s ease,transform .45s ease}.rs-e.on{opacity:1}.rs-e.gone{opacity:0!important}
+.rs-e:not(.on){transform:translateY(-8px)}
+.rs-day{fill:#1f2730}.rs-night{fill:#07102a;opacity:0;pointer-events:none}
+.rs-ground{fill:#2c2a27}.rs-walk{fill:#3a3631}
+.rs-plan{fill:none;stroke:#f0e2b8;stroke-width:1;stroke-dasharray:5 4}
+.rs-tri{stroke:#d9c27a;stroke-width:1.2;fill:none}.rs-scan{fill:#f0c94b}
+.rs-ray{stroke:#ff5a4a;stroke-width:.8;fill:none;opacity:.25}
+.rs-slab.t{fill:#5d5a55}.rs-slab.r{fill:#45423e}.rs-slab.l{fill:#4f4c47}
+.rs-col.t{fill:#9a958d}.rs-col.r{fill:#7d7870}.rs-col.l{fill:#8b867e}
+.rs-wall{stroke:#6b665e;stroke-width:.4}.rs-wall.c0{fill:#8e887d}.rs-wall.c1{fill:#979185}
+.rs-pf{fill:#d8d0c0;opacity:0}
+.rs-edge{fill:none;stroke:#b5ad9f;stroke-width:1.2}
+.rs-par{fill:#6f6a62}.rs-par.r{fill:#5f5a53}
+.rs-glass{fill:url(#rs-gl);stroke:#cfe6f2;stroke-width:.5;transition:fill .8s}.rs-glass.r{opacity:.8}.rs-mul{stroke:#2a2a2a;stroke-width:1.4}
+.rs-band{fill:#2a2826}.rs-band.r{fill:#222}.rs-sign{fill:#3a342c;stroke:#BF9148;stroke-width:.6}.rs-signon{fill:#ffd98a;opacity:.9}
+.rs-duct.t{fill:#c9d3da}.rs-duct.r{fill:#9fabb4}.rs-duct.l{fill:#b4bfc7}.rs-fan.t{fill:#7c868d}.rs-fan.r{fill:#5c656b}.rs-fan.l{fill:#6a7379}
+.rs-dif{fill:#e7eef2;stroke:#7fc8e8;stroke-width:.6}.rs-dif2{stroke:#9fabb4;stroke-width:1}
+.rs-air{fill:#bfeaff}.rs-air.s{fill:#7fc8e8}
+.rs-sew{stroke:#57c4b3;stroke-width:3;fill:none;stroke-linecap:round}.rs-sew.s{stroke-width:2;stroke-dasharray:6 3}
+.rs-drain{fill:#1d3a36;stroke:#57c4b3}.rs-trap.t{fill:#57c4b3}.rs-trap.r{fill:#3c8f82}.rs-trap.l{fill:#47a597}.rs-hatch{fill:#2f3a38;stroke:#8fa}
+.rs-drop{fill:#d9fff6}
+.rs-panel.t{fill:#ddd}.rs-panel.r,.rs-panel.l{fill:#bbb}.rs-tray{stroke:#f0b44c;stroke-width:3;fill:none}.rs-cab{stroke:#f0b44c;stroke-width:1.4;fill:none;stroke-dasharray:6 3}.rs-cab.l{stroke-width:1}
+.rs-spark{fill:#fff3b0}.rs-amp{fill:#fff3b0}
+.rs-tile{stroke:#8b8f92;stroke-width:.4}.rs-tile.t0{fill:#c9cdd0}.rs-tile.t1{fill:#b7bcc0}
+.rs-plank{stroke:#5b4128;stroke-width:.3}.rs-plank.p0{fill:#b08a5e}.rs-plank.p1{fill:#a17c52}.rs-plank.p2{fill:#ba9468}
+.rs-fin{fill:#d8d2c6;stroke:#bdb5a6;stroke-width:.4}.rs-fin.l{fill:#cbc4b6}.rs-mold{fill:#a99f8e}
+.rs-slat{stroke:#8a6a46;stroke-width:1.6;opacity:.55}
+.rs-bar.t,.rs-bartop.t{fill:#3a2e24}.rs-bar.r,.rs-bar.l{fill:#5a4532}.rs-bartop.t{fill:#e9e4da}.rs-bartop.r,.rs-bartop.l{fill:#c9c2b4}
+.rs-barb.t{fill:#4b4038}.rs-barb.r,.rs-barb.l{fill:#3a312a}
+.rs-shelf{stroke:#c9a46a;stroke-width:1.4}.rs-btl{stroke-width:2.6;stroke-linecap:round}.rs-btl.b0{stroke:#5e8a4a}.rs-btl.b1{stroke:#c9a46a}.rs-btl.b2{stroke:#8a3a3a}.rs-btl.b3{stroke:#d8e6ee}
+.rs-leg{stroke:#2a2a2a;stroke-width:1.4}.rs-stool{fill:#BF9148}
+.rs-eq.t{fill:#d7dbde}.rs-eq.r{fill:#a9afb4}.rs-eq.l{fill:#bfc5c9}.rs-eq.st.t{fill:#3a3d40}
+.rs-hood.t{fill:#c9d3da}.rs-hood.r{fill:#97a2aa}.rs-hood.l{fill:#aeb8bf}
+.rs-isl.t{fill:#e3e6e8}.rs-isl.r,.rs-isl.l{fill:#9aa1a6}.rs-pass.t{fill:#e9e4da}.rs-pass.r,.rs-pass.l{fill:#6b5a48}.rs-lamp{stroke:#ffb347;stroke-width:2}
+.rs-steam{fill:#f2f2f2;opacity:0}
+.rs-chair.t{fill:#5a4532}.rs-chair.r,.rs-chair.l{fill:#3e2f22}.rs-chb.t,.rs-chb.r,.rs-chb.l{fill:#4a392a}
+.rs-tab.t{fill:#e2d6c0}.rs-tab.r,.rs-tab.l{fill:#a89a82}
+.rs-pend{stroke:#222;stroke-width:.8}.rs-shade{fill:#BF9148}
+.rs-deckb.t{fill:#3d2e22}.rs-deckb.r,.rs-deckb.l{fill:#2a2018}.rs-board{stroke:#5b4128;stroke-width:.3}.rs-board.b0{fill:#a07850}.rs-board.b1{fill:#93704a}
+.rs-pot.t{fill:#6b665e}.rs-pot.r,.rs-pot.l{fill:#55514a}.rs-bush{fill:#3f7a33;stroke:#2c5a24}
+.rs-pole{stroke:#ddd;stroke-width:1.2}.rs-can{fill:#efe6d4}.rs-can2{fill:#d8cbb2}
+.rs-umb{transform-box:fill-box;transform-origin:50% 100%;transition:transform .7s cubic-bezier(.2,.8,.3,1.2)}.rs-e:not(.on) .rs-umb{transform:scaleX(.1)}
+.rs-wire{stroke:#555;stroke-width:.6;fill:none}.rs-bulb{fill:#ffd98a}
+.rs-glow{fill:url(#rs-gw);opacity:0;transition:opacity 1s ease}
+.rs-man line{stroke-width:4.4;stroke-linecap:round}.rs-man circle{fill:#e8cfb4}
+.rs-man.g0 line{stroke:#c0504d}.rs-man.g1 line{stroke:#4f81bd}.rs-man.g2 line{stroke:#9bbb59}.rs-man.g3 line{stroke:#8064a2}.rs-man.w line{stroke:#111}
+/* стилі залу: 0 сучасний, 1 лофт, 2 класичний */
+.st1 .rs-fin{fill:url(#rs-brick)}.st1 .rs-plank.p0{fill:#5e4a3a}.st1 .rs-plank.p1{fill:#54412f}.st1 .rs-plank.p2{fill:#665141}.st1 .rs-shade{fill:#2a2a2a}.st1 .rs-tab.t{fill:#6b4f36}.st1 .rs-slat{stroke:#333;opacity:.8}
+.st2 .rs-fin{fill:#3f5a4a;stroke:#c9a46a}.st2 .rs-fin.l{fill:#36503f}.st2 .rs-mold{fill:#c9a46a}.st2 .rs-plank.p0{fill:#8a5a34}.st2 .rs-plank.p1{fill:#7a4e2c}.st2 .rs-plank.p2{fill:#94643c}.st2 .rs-chair.t{fill:#7a2f2f}.st2 .rs-tab.t{fill:#f4efe4}.st2 .rs-shade{fill:#e9d9a8}
+/* вечір */
+.rs-dusk .rs-glow{opacity:1}.rs-dusk .rs-glass{fill:#ffcf7a;fill-opacity:.32}.rs-dusk .rs-shade{fill:#ffe2a0}
+/* інженерія ховається під підлогою (каналізація) і стелею (вентиляція, електрика); рентген показує вибране */
+.rs-svg.rs-under .ux1,.rs-svg.rs-ceil .ux0,.rs-svg.rs-ceil .ux2{opacity:0!important}
+.rs-svg.xr0 .ux0.on,.rs-svg.xr1 .ux1.on,.rs-svg.xr2 .ux2.on{opacity:1!important;transform:none}
+.rs-svg:is(.xr0,.xr1,.xr2) :is(.rs-tile,.rs-plank,.rs-fin,.rs-slat,.rs-eq,.rs-isl,.rs-pass,.rs-chair,.rs-tab,.rs-bar){opacity:.35}
+@media (prefers-reduced-motion:no-preference){
+  .rs-e.on .rs-ray{animation:rs-ray 1.7s ease-in-out infinite}@keyframes rs-ray{0%,100%{opacity:.1}50%{opacity:.85}}
+  .rs-e.on .rs-pf{animation:rs-pf 1.4s ease-out 1 forwards}@keyframes rs-pf{0%{opacity:.9;transform:translate(0,0)}100%{opacity:0;transform:translate(6px,-14px)}}
+  .rs-e.on .rs-spark{animation:rs-sp 1.1s steps(2) infinite}@keyframes rs-sp{50%{opacity:.15}}
+  .rs-e.on .rs-steam{animation:rs-st 2.6s ease-out infinite}.rs-steam.d{animation-delay:1.3s!important}@keyframes rs-st{0%{opacity:.7;transform:translateY(0) scale(.6)}100%{opacity:0;transform:translateY(-26px) scale(1.6)}}
+  .rs-steam{transform-box:fill-box;transform-origin:50% 50%}
+  .rs-dusk .rs-bulb{animation:rs-bl 2.2s ease-in-out infinite alternate}@keyframes rs-bl{to{opacity:.55}}
+  .rs-e.on .rs-scan{animation:rs-ray .9s ease-in-out infinite}
+}
+@media (prefers-reduced-motion:reduce){.rs-e,.rs-glow,.rs-umb,.rs-glass{transition:none}}
