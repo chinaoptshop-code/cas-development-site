@@ -73,8 +73,8 @@
     // 3 проєкт на ділянці: пунктир зон
     var T0 = Lt.terr;
     add('top', poly('la-plan', rect(U(T0[0]), U(T0[1]), V(T0[2]), V(T0[3]), 0.03)), 2, 0.1, 9);
-    Lt.beds.forEach(function (b, n) { add('top', bedShape('la-plan', b, 0.03), 2, 0.3 + n * 0.1, 13); });
-    Lt.trees.forEach(function (p, n) { add('top', circ('la-plan', U(p[0]), V(p[1]), 0.03, 1.4), 2, 0.6 + n * 0.04, 11); });
+    Lt.beds.forEach(function (b, n) { add('top', bedShape('la-plan', b, 0.03), 2, 0.3 + n * 0.1, 7.7); }); // розмітка грядок — до бордюрів, далі не лишається на газоні
+    Lt.trees.forEach(function (p, n) { add('top', circ('la-plan', U(p[0]), V(p[1]), 0.03, 1.4), 2, 0.6 + n * 0.04, 10.2); }); // лунки дерев — до газону
     // 4 рельєф: горби зникають, стрілки ухилу
     for (i = 0; i < 18; i++) { var hx = U(((i * 37) % 97) / 100), hy = V(0.2 + ((i * 53) % 79) / 100); if (hy < Dp) add('ground', circ('la-lump', hx, hy, 0, 1 + (i % 3) * 0.5), -1, 0, 3 + (i % 9) / 10); }
     [[0.3, 0.22, 0.3, 0.4], [0.7, 0.22, 0.7, 0.4], [0.9, 0.5, 0.9, 0.8]].forEach(function (a, n) { add('top', line('la-slope', [U(a[0]), V(a[1]), 0.05, U(a[2]), V(a[3]), 0.05]), 3, 0.4 + n * 0.2, 5); });

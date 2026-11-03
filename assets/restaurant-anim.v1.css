@@ -12,7 +12,7 @@
 .rs-slab.t{fill:#5d5a55}.rs-slab.r{fill:#45423e}.rs-slab.l{fill:#4f4c47}
 .rs-col.t{fill:#9a958d}.rs-col.r{fill:#7d7870}.rs-col.l{fill:#8b867e}
 .rs-wall{stroke:#6b665e;stroke-width:.4}.rs-wall.c0{fill:#8e887d}.rs-wall.c1{fill:#979185}
-.rs-pf{fill:#d8d0c0;opacity:0}
+.rs-pf{fill:#d8d0c0;opacity:0}.rs-conc{fill:url(#rs-cc);pointer-events:none}.rs-conc.w{fill:url(#rs-wsh)}
 .rs-edge{fill:none;stroke:#b5ad9f;stroke-width:1.2}
 .rs-par{fill:#6f6a62}.rs-par.r{fill:#5f5a53}
 .rs-glass{fill:url(#rs-gl);stroke:#cfe6f2;stroke-width:.5;transition:fill .8s}.rs-glass.r{opacity:.8}.rs-mul{stroke:#2a2a2a;stroke-width:1.4}

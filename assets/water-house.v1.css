@@ -6,7 +6,7 @@
 .wh-e{opacity:0;transition:opacity .45s ease,transform .45s ease}.wh-e.on{opacity:1}.wh-e.gone{opacity:0!important}
 .wh-e:not(.on){transform:translateY(-8px)}
 .wh-day{fill:#1d2a33}.wh-night{fill:#06102a;opacity:0;pointer-events:none}
-.wh-bed{fill:#3b4a3a}.wh-water{fill:url(#wh-wg)}
+.wh-bed{fill:#3b4a3a}.wh-water{fill:url(#wh-wg)}.wh-ripple{fill:url(#wh-rp)}.wh-shade{fill:url(#wh-sh)}.wh-grain{fill:url(#wh-wd);pointer-events:none}
 .wh-glint{stroke:#e6f6ff;stroke-width:1.2;stroke-linecap:round;opacity:.15}
 .wh-shore.t{fill:#5b4a34}.wh-shore.r,.wh-shore.l{fill:#4a3b29}.wh-grass{fill:#4d7a34}
 .wh-trunk{stroke:#5b3c22;stroke-width:3;stroke-linecap:round}.wh-crown{fill:#3f6e2a}
@@ -38,7 +38,7 @@
 /* мережі ховаються під обшивкою й настилом; рентген показує вибране */
 .wh-svg.wh-closed .ux{opacity:0!important}
 .wh-svg.xr0 .ux0.on,.wh-svg.xr1 .ux1.on,.wh-svg.xr2 .ux2.on{opacity:1!important;transform:none}
-.wh-svg:is(.xr0,.xr1,.xr2) :is(.wh-board,.wh-clad,.wh-roof,.wh-roofb,.wh-gab,.wh-tdeck){opacity:.35}
+.wh-svg:is(.xr0,.xr1,.xr2) :is(.wh-board,.wh-grain,.wh-clad,.wh-roof,.wh-roofb,.wh-gab,.wh-tdeck){opacity:.35}
 @media (prefers-reduced-motion:no-preference){
   .wh-glint{animation:wh-gl 3.6s ease-in-out infinite}@keyframes wh-gl{0%,100%{opacity:.08}50%{opacity:.75}}
   .wh-e.on .wh-splash{animation:wh-sp 1s ease-out 1}@keyframes wh-sp{0%{opacity:.9;transform:scale(.3)}100%{opacity:0;transform:scale(1.8)}}

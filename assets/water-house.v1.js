@@ -45,6 +45,7 @@
     add('bed', poly('wh-bed', rect(-10, PW + 12, SH, PD + 12, -2.6)), -1, 0);
     add('water', poly('wh-water', rect(-10, PW + 12, SH, PD + 12, 0)), -1, 0);
     var gl = ''; for (i = 0; i < 34; i++) { var gx = -8 + rnd(i) * (PW + 18), gy = SH + 1 + rnd(i + 50) * (PD + 10); if (gx > -0.5 && gx < PW + 0.5 && gy > -0.5 && gy < PD + 1.5) continue; var a = P(gx, gy, 0), b = P(gx + 0.9, gy - 0.9, 0); gl += '<line class="wh-glint" style="animation-delay:' + (rnd(i + 9) * 4).toFixed(2) + 's" x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '"/>'; }
+    add('water', poly('wh-ripple', rect(-10, PW + 12, SH, PD + 12, 0)), -1, 0);
     add('water', '<g>' + gl + '</g>', -1, 0);
     add('shore', box('wh-shore', -10, PW + 12, SH - 10, SH, -2.6, 0.5) + poly('wh-grass', rect(-10, PW + 12, SH - 10, SH - 0.6, 0.52)), -1, 0);
     [[-6, SH - 3], [-2, SH - 6], [PW + 4, SH - 4], [PW + 8, SH - 7], [PW * 0.75, SH - 7]].forEach(function (t, k) { add('shore', line('wh-trunk', [t[0], t[1], 0.5, t[0], t[1], 2.6]) + circ('wh-crown', t[0], t[1], 3.4, 1.3), -1, 0, null, null, k); });
@@ -70,6 +71,7 @@
         add('pile', '<g class="wh-slide">' + box('wh-pont', p[0], p[1], p[2], p[3], 0, 0.45) + '</g>' + circ('wh-rip', (p[0] + p[1]) / 2, p[3], 0, 0.9), 1, o, null, null, p[0] + p[2]);
       });
     }
+    add('refl', poly('wh-shade', rect(0.6, PW + 1.4, 0.6, PD + 1.2, 0)), 2, 0.5); // мʼяка тінь платформи на воді
     // 3 обвʼязка: поздовжні й поперечні балки
     var bm = [];
     for (y = 0; y <= PD + 0.01; y += PD / Math.ceil(PD / 2.6)) bm.push(['y', y]);
@@ -78,6 +80,7 @@
     // 4 настил: дошка за дошкою
     for (x = 0, n = 0; x < PW - 0.01; x += 0.32, n++) add('plat', poly('wh-board b' + (n % 2), rect(x, Math.min(PW, x + 0.29), 0, PD, Z)) + wx('wh-edge', Math.min(PW, x + 0.29), PD - 0.01, PD, Z - 0.2, Z), 3, 0.05 + 0.9 * x / PW);
     add('plat', wy('wh-fascia', PD, 0, PW, Z - 0.3, Z) + wx('wh-fascia r', PW, 0, PD, Z - 0.3, Z), 3, 0.97);
+    add('plat', poly('wh-grain', rect(0, PW, 0, PD, Z)), 3, 0.97); // волокна дерева — ненавʼязливо, одним шаром поверх дошок
     // 5 місток до берега: опори, прогони, дошки
     add('plat', box('wh-beam', bx - 0.1, bx + 0.1, SH, 0, Z - 0.3, Z - 0.1) + box('wh-beam', bx + 1.3, bx + 1.5, SH, 0, Z - 0.3, Z - 0.1), 4, 0.1);
     for (y = SH, n = 0; y < 0; y += 0.3, n++) add('plat', poly('wh-board b' + (n % 2), rect(bx - 0.1, bx + 1.5, y, Math.min(0, y + 0.27), Z)), 4, 0.25 + 0.6 * (y - SH) / -SH);
@@ -152,6 +155,9 @@
     FULL = [Math.min.apply(0, xs) - 14, Math.min.apply(0, ys) - 14, Math.max.apply(0, xs) - Math.min.apply(0, xs) + 28, Math.max.apply(0, ys) - Math.min.apply(0, ys) + 28];
     FOC = [0, [0, 0, PW, PD, -2.6, Z], [0, 0, PW, PD, 0, Z], [0, 0, PW, PD, 0, Z], [bx - 3, SH - 2, bx + 3, 2, 0, Z + 1], [hx0, hy0, hx1, hy1, Z, zt], [hx0, hy0, hx1, hy1, Z, zr], 0, 0, [-1.5, hy1 - 1, PW, PD + 1, -0.6, Z + 1.5], 0, 0];
     svg.innerHTML = '<defs><linearGradient id="wh-wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f6f8f" stop-opacity=".78"/><stop offset="1" stop-color="#1b4a66" stop-opacity=".84"/></linearGradient>'
+      + '<pattern id="wh-wd" width="40" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(150)"><path d="M0 1.5h17M21 1.5h19M0 4.2h9M13 4.2h27" stroke="#3a2614" stroke-width=".5" stroke-opacity=".5"/></pattern>'
+      + '<pattern id="wh-rp" width="46" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(-30)"><path d="M2 8q6-4 12 0M24 18q7-4 14 0" stroke="#cfe8f5" stroke-width=".7" fill="none" stroke-opacity=".13"/></pattern>'
+      + '<radialGradient id="wh-sh"><stop offset=".55" stop-color="#06131c" stop-opacity=".45"/><stop offset="1" stop-color="#06131c" stop-opacity="0"/></radialGradient>'
       + '<radialGradient id="wh-gw"><stop offset="0" stop-color="#ffd98a" stop-opacity=".9"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient></defs>' + html;
     nodes = [].slice.call(svg.querySelectorAll('g.wh-e'));
     night = svg.querySelector('.wh-night');
