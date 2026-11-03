@@ -525,22 +525,66 @@
   W.addEventListener('beforeprint', function () { $$('[data-c]').forEach(function (c) { c.classList.add('c-o'); }); });
 })();
 
-/* «Будинок з нуля» (section.bz[data-js]; префікс bz — .ba зайнятий слайдером «до/після»): скрипт сцени вантажимо лише після першої прокрутки сторінки (0 байтів на завантаженні) */
+/* Сцени (section.bz[data-js]: «Будинок з нуля», «Ландшафт», «Комплекс», «Ресторан», «Будинок на воді»; префікс bz — .ba зайнятий слайдером «до/після»):
+   скрипти сцен і спільні стилі керування /assets/scene-ui.v1.css вантажимо лише після першої прокрутки (0 байтів на завантаженні).
+   Перемикач сцен nav.la-tab — на місці: клік підтягує блок сцени з її сторінки (fetch + DOMParser, той самий origin), ставить його замість
+   поточного, переносить перемикач і вантажить JS/CSS сцени; <a href> лишаються для SEO й без JS. Показані сцени живуть у пам'яті — повернення миттєве. */
 (function () {
-  var W = window, ss = document.querySelectorAll('section.bz[data-js]'); // кілька сцен на сторінці («Будинок з нуля», «Ландшафт», «Комплекс») — кожна свій скрипт
+  var W = window, d = document, ss = d.querySelectorAll('section.bz[data-js]'); // кілька сцен на сторінці — кожна свій скрипт
   if (!ss.length) return;
+  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=0a699e09"; /*/sc:ui*/
+  var on = 0;
+  function css(h) { if (!h || d.querySelector('link[href="' + h + '"]')) return; var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = h; d.head.appendChild(l); }
+  function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; d.head.appendChild(j); }
   function go() {
     W.removeEventListener('scroll', go);
+    if (on) return; on = 1;
     W.__casBAs = 1;
+    css(SCUI);
     var seen = {};
     [].forEach.call(ss, function (s) {
       var src = s.getAttribute('data-js'); if (seen[src]) return; seen[src] = 1;
-      var j = document.createElement('script'); j.src = src; j.async = true; document.head.appendChild(j);
-      var c = s.getAttribute('data-css'); // стилі — одразу разом зі скриптом, щоб сцена була готова задовго до блоку
-      if (c) { var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = c; document.head.appendChild(l); }
+      js(src);
+      css(s.getAttribute('data-css')); // стилі — одразу разом зі скриптом, щоб сцена була готова задовго до блоку
     });
   }
   if ((W.pageYOffset || 0) > 0) go(); else W.addEventListener('scroll', go, { passive: true });
+
+  var keep = {}; // url#id → блок сцени (живий: після повернення працює без повторного запуску)
+  function key(u) { return u.pathname.replace(/\.html$/, '').replace(/\/index$/, '/') + '#' + u.hash.slice(1); }
+  function load(u) {
+    var k = key(u);
+    if (keep[k]) return Promise.resolve(keep[k]);
+    return fetch(u.pathname, { credentials: 'same-origin' }).then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (t) {
+      var x = new DOMParser().parseFromString(t, 'text/html').getElementById(u.hash.slice(1));
+      if (!x || !x.matches('section.bz[data-js]')) throw 0;
+      x = d.importNode(x, true); x.setAttribute('data-sw', ''); x.__new = 1;
+      return (keep[k] = x);
+    });
+  }
+  d.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('nav.la-tab a');
+    if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || !W.fetch || !W.DOMParser || !W.Promise) return;
+    var nav = a.parentNode, sec = nav.closest('section'), u = new URL(a.href, location.href);
+    if (!sec || u.origin !== location.origin || !u.hash) return;
+    e.preventDefault();
+    if (a.hasAttribute('aria-current') || nav.getAttribute('aria-busy') === 'true') return;
+    var here = new URL(location.href); here.hash = sec.id;
+    if (!keep[key(here)]) keep[key(here)] = sec; // блок, з яким прийшла сторінка — для кнопки «назад» у перемикачі
+    if (u.pathname.replace(/\.html$/, '') === here.pathname.replace(/\.html$/, '') && !keep[key(u)]) { var own = d.getElementById(u.hash.slice(1)); if (own && own.matches('section.bz[data-js]')) keep[key(u)] = own; }
+    nav.setAttribute('aria-busy', 'true');
+    go();
+    load(u).then(function (x) {
+      var top = nav.getBoundingClientRect().top;
+      var old = x.querySelector('nav.la-tab'); if (old && old !== nav) old.remove();
+      var w = x.querySelector('.w') || x; w.insertBefore(nav, w.firstChild);
+      [].forEach.call(nav.querySelectorAll('a'), function (b) { if (b === a) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
+      if (x !== sec) { sec.parentNode.replaceChild(x, sec); x.classList.remove('la-sw'); void x.offsetWidth; x.classList.add('la-sw'); }
+      W.scrollBy({ top: nav.getBoundingClientRect().top - top, behavior: 'instant' }); // перемикач лишається на тому ж місці екрана
+      if (x.__new) { x.__new = 0; css(x.getAttribute('data-css')); js(x.getAttribute('data-js')); }
+      try { if (W.clarity) W.clarity('event', 'scene_tab'); } catch (er) { }
+    }).catch(function () { location.href = a.href; }).then(function () { nav.removeAttribute('aria-busy'); });
+  });
 })();
 
 /* Портфоліо: тип переходу між сторінками (cross-document View Transitions, Chrome 125+; інші браузери — звичайний перехід).

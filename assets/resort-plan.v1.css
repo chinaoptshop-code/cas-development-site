@@ -1,12 +1,6 @@
 /* «Комплекс відпочинку» (assets/resort-plan.v1.js, tools/site/resort.py). UI-kit: /styleguide/#build-anim-sg */
 .rp-list{margin:14px 0 0;padding-inline-start:20px;color:var(--mu,#938c84)}.rp-list b{color:var(--tx,#EDE8DF)}
 .rp-rates{color:var(--ac,#BF9148);font-size:var(--fs-small);margin:14px 0 0}
-.la-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.la-ctl{display:flex;flex-wrap:wrap;gap:10px 18px;margin:8px 0 14px}
-.la-seg{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.la-lab{font-size:var(--fs-small);color:var(--mu,#938c84);margin-inline-end:4px}
-.la-seg button{min-height:36px;min-width:40px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.3));background:none;color:inherit;font:inherit;font-size:var(--fs-small);cursor:pointer}
-.la-seg button[aria-pressed=true]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#140f08}
-.la-nav{display:flex;align-items:center;gap:10px}.la-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--ac,#BF9148);background:none;color:inherit;font-size:20px;cursor:pointer}
 .rp-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(260px,1fr);gap:16px;align-items:start}
 @media(max-width:900px){.rp-grid{grid-template-columns:1fr}}
 .rp-svg{display:block;width:100%;height:auto;aspect-ratio:10/7;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:14px;background:#2d4a26;touch-action:manipulation}

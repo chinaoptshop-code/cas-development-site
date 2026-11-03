@@ -36,6 +36,16 @@ for _uk in ('/dyzain-restoranu-kafe-kyiv', '/remont-restoranu-kafe-kyiv'):
 TEASE = {i18n.path_to_file(u): l for l, u in _cl('/services').items()}
 
 
+TAB = {'uk': 'Ресторан', 'ru': 'Ресторан', 'en': 'Restaurant', 'es': 'Restaurante', 'zh': '餐厅', 'pl': 'Restauracja', 'de': 'Restaurant',
+       'fr': 'Restaurant', 'ar': 'مطعم'}
+
+
+def tab_link(lang, cur=False):
+    """Посилання для перемикачів сцен (nav.la-tab; на головних — resort.tabs())."""
+    u = (DESIGN.get(lang) or DESIGN['uk']) + '#restaurant-anim'
+    return f'<a href="{u}"' + (' aria-current="page"' if cur else '') + f'>{e(TAB.get(lang, TAB["en"]))}</a>'
+
+
 def block(lang):
     import chrome
     t = T[lang]
