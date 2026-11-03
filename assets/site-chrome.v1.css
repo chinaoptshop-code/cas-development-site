@@ -506,6 +506,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:auto;margin:0 0 10px!important;position:relative;border:1px solid var(--ln,rgba(191,145,72,.22))!important;border-radius:14px;
   background:var(--bg2,rgba(255,255,255,.03))!important;transition:border-color .3s ease,background-color .3s ease;min-width:0}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):is(.c-o,:has(>.c-o)){grid-column:1/-1!important}
+.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):not(:is([data-c=x]:not(.w),section:has(>.w[data-c=x]))+:is([data-c=x]:not(.w),section:has(>.w[data-c=x]))):not(:has(+:is([data-c=x]:not(.w),section:has(>.w[data-c=x])))){grid-column:1/-1!important}
 .js section:not([data-c=x],:has(>.w[data-c=x]))+:is([data-c=x]:not(.w),section:has(>.w[data-c=x])),.js :is(.hero,.crumbs)+:is([data-c=x]:not(.w),section:has(>.w[data-c=x])){margin-top:0!important}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x]))+:not([data-c=x],section:has(>.w[data-c=x]),script,style){margin-top:30px!important}
 .js .w[data-c=x]{margin:0;max-width:none;padding:16px 16px 18px}
@@ -517,6 +518,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .js [data-c=x]:not(.w):not(.c-o) :has(h2){display:block!important;position:static!important;padding:0!important;margin:0!important;border:0!important;min-height:0!important;max-width:none!important;background:none!important;transform:none!important}
 .js [data-c=x] h2{position:static!important;margin:0!important;padding:48px 0 0!important;font-size:clamp(1.18rem,1.02rem + .55vw,1.5rem)!important;line-height:1.2!important;text-align:start!important;letter-spacing:0!important}
 .js [data-c=x].c-o h2,.js [data-c=x]:has(.c-o) h2{margin-bottom:16px!important}
+@media(max-width:479px){.js [data-c=x]:not(.c-o) h2{font-size:1.06rem!important;hyphens:auto;-webkit-hyphens:auto}}/* дві плитки в ряд на 360–402 px: довгі назви без розриву посеред слова (QA 03.11.2026) */
 .js [data-c=x] h2::before,.js [data-c=x] h2::after{content:none!important}
 .ux-h{display:block;width:100%;margin:0;padding:0 26px 0 0;border:0;background:none;color:inherit;font:inherit;line-height:inherit;letter-spacing:inherit;text-align:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
 :dir(rtl) .ux-h,[dir=rtl] .ux-h{padding:0 0 0 26px}
@@ -542,6 +544,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .js [data-c=h]:not(.c-o){display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;line-clamp:1;overflow:hidden;padding-inline-end:22px}
 .js [data-c=h]::after{content:"";position:absolute;top:.55em;inset-inline-end:4px;width:7px;height:7px;border-right:1.5px solid var(--ac,#BF9148);border-bottom:1.5px solid var(--ac,#BF9148);rotate:45deg;transition:rotate .3s ease}
 .js [data-c=h].c-o::after{rotate:225deg;top:.75em}
+.js [data-c=h]:not(.c-o)>.ux-dup{display:none}.js [data-c=h]:not(.c-o):has(>.ux-dup)::first-letter{text-transform:uppercase}
 .js [data-c=h]:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:3px}
 @media print{.js :is(main,main>div[id^="p-"]){display:block!important;padding-inline:0!important}.js [data-c=h]{display:block!important}}
 .js [data-c=x] .lq-slot{display:none!important}
@@ -582,7 +585,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
   color:var(--ac,#BF9148);white-space:nowrap;max-width:100%;text-decoration:none;text-indent:0}
 @media(max-width:479px){:where(a[data-a],.sp-name[data-a],h2[data-a])::after{white-space:normal}}
 a[data-a=s]::after{content:var(--ux-as,"Interactive");vertical-align:.08em}
-a[data-a=i]::after{content:"";width:20px;height:16px;padding:0;margin-inline-start:6px;border:0;vertical-align:-.15em;background-position:50% 50%,50% 50%;animation-name:ux-build-c}
+a[data-a=i]::after,[data-c=k] a[data-a]::after{content:"";width:20px;height:16px;padding:0;margin-inline-start:6px;border:0;vertical-align:-.15em;background-position:50% 50%,50% 50%;animation-name:ux-build-c}
 :is(:lang(zh),:lang(ar)) :where(a[data-a],.sp-name[data-a],h2[data-a])::after{letter-spacing:0;font-size:11px}
 @keyframes ux-build{0%{background-position:8px -14px,8px 22px}28%{background-position:8px -14px,8px 50%}52%,88%{background-position:8px 50%,8px 50%}100%{background-position:8px 50%,8px 50%;opacity:.35}}
 @keyframes ux-build-c{0%{background-position:50% -14px,50% 22px}28%{background-position:50% -14px,50% 50%}52%,88%{background-position:50% 50%,50% 50%}100%{background-position:50% 50%,50% 50%;opacity:.35}}

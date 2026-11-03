@@ -93,12 +93,16 @@ _NB_ONE_PL = re.compile(r'(?<![\w\u00a0-])([wzioauWZIOAU]) (?=\S)')  # pl: «w K
 _NB_TAG = re.compile(r'<(' + '|'.join(_NB_SKIP) + r')\b[^>]*>.*?</\1\s*>|<!--.*?-->|<[^>]*>', re.S | re.I)
 
 
+_NB_ARROW = re.compile(r' ([→←])(?=\s*$)')
+
+
 def _nb_text(t, lang=None):
     t = _NB_THOUS.sub(lambda m: m.group(1) + m.group(2).replace(' ', NB), t)
     t = _NB_TIMES.sub(lambda m: m.group(1) + NB + m.group(2) + ' ', t)
     t = _NB_PREP.sub(lambda m: m.group(1) + NB, t)
     t = _NB_UNIT.sub(lambda m: m.group(1) + NB + m.group(2), t)
     t = _NB_ONE.sub(lambda m: m.group(1) + NB, t)
+    t = _NB_ARROW.sub(NB + r'\1', t)  # «сторінка проєкту →»: стрілка не переноситься сама на новий рядок
     if lang == 'pl':
         t = _NB_ONE_PL.sub(lambda m: m.group(1) + NB, t)
     return t

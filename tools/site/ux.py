@@ -201,6 +201,23 @@ def _tile_h2(body):
     return re.sub(r'<h2((?:\s+id="[^"]*")?)>(.*?)</h2>', lambda x: f'<h2{x.group(1)} data-i="{icon(x.group(2))}">{x.group(2)}</h2>', body, count=1, flags=re.S)
 
 
+def _lead_dup(hp):
+    """Лід, що починається з тексту H1 («Вартість ремонту… в Києві: від $550…»): у згорнутому рядку
+    видно лише повтор заголовка. Повтор — у span.ux-dup (прихований, поки лід згорнутий; текст лишається в DOM)."""
+    if 'ux-dup' in hp:
+        return hp
+    h = re.search(r'<h1[^>]*>(.*?)</h1>', hp, re.S)
+    p = re.search(r'<p data-c="h">', hp)
+    if not h or not p:
+        return hp
+    t = re.sub(r'<[^>]+>', '', h.group(1)).strip()
+    k = p.end()
+    x = re.match(re.escape(t) + r'(?:\s+(?:в|у|in|at|bei|en|à|w)\s+(?:студії\s+|студии\s+)?CAS Development)?(?:\s*[:—–-]\s*|\s+—\s+|,\s+)', hp[k:], re.I)
+    if not t or not x:
+        return hp
+    return hp[:k] + f'<span class="ux-dup">{hp[k:k + x.end()]}</span>' + hp[k + x.end():]
+
+
 def _light_hero(m, rel, lang, full):
     i = m.find('<div class="w hero">')
     k = m.find('<div class="btns">', i)
@@ -208,6 +225,7 @@ def _light_hero(m, rel, lang, full):
         return m
     hp = m[i:k]
     hp = hp.replace('<p>', '<p data-c="h">', 1) if '<p>' in hp else hp
+    hp = _lead_dup(hp)
     m = m[:i] + hp + m[k:]
     k = m.find('<div class="btns">', i)
     a = m.find('</a>', k)

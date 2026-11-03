@@ -92,7 +92,7 @@ function reveal(){
   var sib=el.parentElement?Array.prototype.indexOf.call(el.parentElement.children,el)%4:0;
   el.style.transitionDelay=(sib*60)+'ms';el.classList.add('rv-in');
   setTimeout(function(){el.classList.remove('rv','rv-in');el.style.transitionDelay='';},700);
- })},{threshold:.08,rootMargin:'0px 0px -4% 0px'});
+ })},{threshold:0,rootMargin:'0px 0px -6% 0px'});/* threshold 0: високі секції (картки послуг ~3500px на телефоні) з'являються, щойно верх зайшов на екран, а не після 8% висоти (QA 03.11.2026) */
  list.forEach(function(el){io.observe(el)});
  setTimeout(function(){list.forEach(function(el){if(el.classList.contains('rv')&&!el.classList.contains('rv-in')){var b=el.getBoundingClientRect();if(b.top<vh&&b.bottom>0)el.classList.add('rv-in');}})},2500);
 }

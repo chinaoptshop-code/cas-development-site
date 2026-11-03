@@ -1,12 +1,12 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 858 (MAIN 5, LAND 436, інші 350). HTML разом 44106 КБ, з них інлайн CSS 17929 КБ і JS 656 КБ.
+Сторінок: 858 (MAIN 5, LAND 436, інші 350). HTML разом 44107 КБ, з них інлайн CSS 17929 КБ і JS 656 КБ.
 
 ## Проблеми
 
 - **Без Clarity** (1): tury.html
 - **Непідтверджені ціни** (71): ar/renovation-calculator.html['$165 000 ', '$33 000 '], biznes-pid-kliuch-kyiv.html['$52 500'], blog/akustyka-open-space-bez-hluhykh-peregorodok.html['$35 000 ', '$35 000       '], blog/bryf-dlia-dyzainera-interieru.html['$44 000'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$165 000       ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/chornovyi-i-chystovyi-remont-riznytsia.html['$38 500', '$38 500 '], blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html['$2 400'], blog/dyzain-i-remont-penthausa-pid-kliuch.html['$115 500  ', '$174 300', '$52 500  ', '$6 300', '$6 300  ', '$6 300       '], blog/dyzain-interieru-onlain-budynok-za-kordonom.html['$7 500', '$7 500       '], blog/dyzain-interieru-z-choho-pochaty.html['$3 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'] …
-- **Класи поза /styleguide/ (warning, `ui.py classes`)** (23): .acc-box, .cover, .dw, .hx, .hx-bg, .la-pies, .la-pies-h, .la-price, .row, .rp-list, .rp-rates, .rs-case …
+- **Класи поза /styleguide/ (warning, `ui.py classes`)** (24): .acc-box, .cover, .dw, .hx, .hx-bg, .la-pies, .la-pies-h, .la-price, .row, .rp-list, .rp-rates, .rs-case …
 
 ## Токени
 
@@ -22,7 +22,7 @@
 | ozdoba/prais.html | other | 114.4 | 27.8 | 5.8 | 1.1 | 9 | 3023 |
 | ozdoba/komplekty.html | other | 113.2 | 26.6 | 32.4 | 1.5 | 14 | 1531 |
 | ozdoba.html | other | 103.3 | 23.1 | 30.1 | 0.8 | 13 | 760 |
-| index.html | main | 92.4 | 21.3 | 13.6 | 0.6 | 7 | 858 |
+| index.html | main | 92.1 | 21.3 | 13.6 | 0.6 | 7 | 849 |
 | pl/ozdoba.html | other | 82.3 | 19.6 | 30.7 | 0.8 | 13 | 619 |
 | en/ozdoba.html | other | 81.4 | 18.9 | 30.7 | 0.8 | 13 | 620 |
 | blog.html | other | 77.4 | 19.7 | 13.5 | 0.6 | 6 | 428 |
@@ -33,22 +33,22 @@
 | blog/remont-i-budivnytstvo-v-yevropi-z-ukrainskoiu-komandoiu.html | article | 66.5 | 18.4 | 14.4 | 0.6 | 7 | 494 |
 | blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html | article | 65.6 | 18.4 | 14.4 | 0.6 | 7 | 459 |
 | about.html | main | 64.7 | 17.4 | 13.6 | 0.6 | 7 | 602 |
-| remont-kvartyr-kyiv.html | land | 62.6 | 17.5 | 13.7 | 0.6 | 7 | 629 |
+| remont-kvartyr-kyiv.html | land | 62.6 | 17.5 | 13.7 | 0.6 | 7 | 630 |
 | ar/index.html | land | 62.5 | 16.5 | 13.6 | 0.6 | 7 | 626 |
 | ru/remont-pod-klyuch-kiev.html | land | 62.0 | 17.3 | 13.6 | 0.6 | 7 | 580 |
 | remont-pid-klyuch-kyiv.html | land | 60.9 | 17.0 | 13.3 | 0.6 | 7 | 582 |
 | proekty/petrivtsi-house.html | land | 60.6 | 11.2 | 2.1 | 1.0 | 1 | 498 |
 | ozdoba/stilets-krislo-obidnii-bukle-z-pidlokitnykamy-74.html | other | 60.4 | 15.7 | 32.4 | 0.8 | 14 | 340 |
-| ru/stroitelstvo-domov-kiev.html | land | 60.3 | 16.3 | 13.6 | 0.6 | 7 | 560 |
+| ru/stroitelstvo-domov-kiev.html | land | 60.3 | 16.3 | 13.6 | 0.6 | 7 | 561 |
 | blog/karkas-hazoblok-chy-brus-z-choho-buduvaty-budynok.html | article | 60.1 | 17.1 | 14.4 | 0.6 | 7 | 471 |
-| budivnytstvo-budynkiv-kyiv.html | land | 60.0 | 16.1 | 13.3 | 0.6 | 7 | 565 |
+| budivnytstvo-budynkiv-kyiv.html | land | 60.1 | 16.1 | 13.3 | 0.6 | 7 | 566 |
 | ozdoba/krislo-launzh-vulychne-z-tyku-z-541.html | other | 60.0 | 15.6 | 32.4 | 0.8 | 14 | 341 |
 | blog/rekonstruktsiia-chy-novyi-budynok.html | article | 59.9 | 16.7 | 14.4 | 0.6 | 7 | 420 |
+| ru/stoimost-remonta-kvartiry-kiev.html | land | 59.9 | 16.7 | 14.5 | 1.6 | 7 | 547 |
 | ozdoba/dyvan-modulnyi-miakyi-2-sektsii-60.html | other | 59.8 | 15.6 | 32.4 | 0.8 | 14 | 342 |
 | ozdoba/komplekt-vulychnykh-mebliv-aliuminiievyi-5-predmetiv-542.html | other | 59.8 | 15.5 | 32.4 | 0.8 | 14 | 337 |
 | ozdoba/liniina-modulna-pidvisna-systema-3-sektsii-2.html | other | 59.8 | 15.6 | 32.4 | 0.8 | 14 | 344 |
 | ozdoba/pidvis-reikovyi-derevianyi-tsylindr-120-sm-1.html | other | 59.8 | 15.7 | 32.4 | 0.8 | 14 | 344 |
-| ru/stoimost-remonta-kvartiry-kiev.html | land | 59.8 | 16.7 | 14.5 | 1.6 | 7 | 546 |
 | ozdoba/lampa-nastilna-akumuliatorna-latun-14.html | other | 59.7 | 15.6 | 32.4 | 0.8 | 14 | 339 |
 | ozdoba/lizhko-hotelne-z-shyrokym-uzholiviam-i-576.html | other | 59.7 | 15.6 | 32.4 | 0.8 | 14 | 340 |
 | blog/tekhnichnyi-nahliad-za-remontom-koly-potriben.html | article | 59.6 | 17.0 | 14.4 | 0.6 | 7 | 422 |
@@ -102,7 +102,7 @@
 | ozdoba/pich-kamin-vysoka-tsylindrychna-panoramne-sklo-506.html | other | 59.2 | 15.4 | 32.4 | 0.8 | 14 | 337 |
 | ozdoba/plytka-z-travertynu-ukladannia-frantsuzkyi-vizerunok-565.html | other | 59.2 | 15.4 | 32.4 | 0.8 | 14 | 336 |
 | ozdoba/rakovyna-stilnytsia-pidvisna-zi-spechenoho-kameniu-590.html | other | 59.2 | 15.4 | 32.4 | 0.8 | 14 | 333 |
-| ozdoba/spot-trekovyi-povorotnyi-chornyi-9.html | other | 59.2 | 15.6 | 32.4 | 0.8 | 14 | 340 |
+| ozdoba/spot-trekovyi-povorotnyi-chornyi-9.html | other | 59.2 | 15.5 | 32.4 | 0.8 | 14 | 340 |
 | ozdoba/stil-vohnyshche-hazovyi-kruhlyi-zi-sklianym-509.html | other | 59.2 | 15.5 | 32.4 | 0.8 | 14 | 337 |
 | ozdoba/stil-zhurnalnyi-z-marmurovoiu-stilnytseiu-2-70.html | other | 59.2 | 15.5 | 32.4 | 0.8 | 14 | 338 |
 | ozdoba/torsher-arka-z-plafonom-kapeliukh-579.html | other | 59.2 | 15.5 | 32.4 | 0.8 | 14 | 339 |
@@ -365,10 +365,10 @@
 | ozdoba/nichnyk-led-ovalnyi-na-pidstavtsi-132.html | other | 58.0 | 15.2 | 32.4 | 0.8 | 14 | 331 |
 | ozdoba/tarilka-pidstavna-charger-55.html | other | 58.0 | 15.3 | 32.4 | 0.8 | 14 | 334 |
 | ru/dizayn-interera-kiev.html | land | 58.0 | 15.4 | 13.9 | 0.6 | 7 | 580 |
+| vartist-remontu-kvartyry-kyiv.html | land | 58.0 | 16.4 | 14.5 | 1.6 | 7 | 540 |
 | fr/index.html | land | 57.9 | 15.9 | 13.6 | 0.6 | 7 | 627 |
 | ozdoba/dekanter-sklianyi-dlia-vyna-53.html | other | 57.9 | 15.1 | 32.4 | 0.8 | 14 | 332 |
 | ozdoba/vaza-pidlohova-keramichna-spiral-bila-428.html | other | 57.9 | 15.2 | 32.4 | 0.8 | 14 | 334 |
-| vartist-remontu-kvartyry-kyiv.html | land | 57.9 | 16.4 | 14.5 | 1.6 | 7 | 539 |
 | ozdoba/koshyk-pletenyi-z-rotanhu-z-kryshkoiu-429.html | other | 57.8 | 15.2 | 32.4 | 0.8 | 14 | 334 |
 | ozdoba/svichnyk-sklianyi-52.html | other | 57.8 | 15.3 | 32.4 | 0.8 | 14 | 332 |
 | ozdoba/vaza-z-ryflenoho-dymchastoho-skla-427.html | other | 57.8 | 15.2 | 32.4 | 0.8 | 14 | 333 |
@@ -376,7 +376,7 @@
 | ozdoba/parasolia-konsolna-podviina-2-kupola-177.html | other | 57.7 | 15.4 | 32.4 | 0.8 | 14 | 333 |
 | ozdoba/servetka-lliana-57.html | other | 57.7 | 15.2 | 32.4 | 0.8 | 14 | 335 |
 | ozdoba/svitylnyk-vbudovanyi-hlybokyi-antyblikovyi-cob-122.html | other | 57.7 | 15.3 | 32.4 | 0.8 | 14 | 337 |
-| ru/remont-kvartir-kiev.html | land | 57.7 | 15.7 | 13.9 | 0.6 | 7 | 562 |
+| ru/remont-kvartir-kiev.html | land | 57.7 | 15.8 | 13.9 | 0.6 | 7 | 563 |
 | ozdoba/rakovyna-nakladna-z-marmuru-calacatta-viola-144.html | other | 57.6 | 15.2 | 32.4 | 0.8 | 14 | 332 |
 | ozdoba/rakovyna-piedestal-z-chervonoho-travertynu-monoblok-145.html | other | 57.6 | 15.2 | 32.4 | 0.8 | 14 | 331 |
 | ru/baza-otdyha-pod-klyuch.html | land | 57.6 | 15.8 | 13.6 | 3.5 | 7 | 511 |
@@ -405,7 +405,7 @@
 | en/index.html | land | 57.0 | 15.4 | 13.6 | 0.6 | 7 | 641 |
 | blog/bryf-dlia-dyzainera-interieru.html | article | 56.9 | 16.6 | 14.4 | 0.6 | 7 | 409 |
 | pl/index.html | land | 56.8 | 16.0 | 13.6 | 0.6 | 7 | 638 |
-| dyzain-restoranu-kafe-kyiv.html | land | 56.4 | 15.6 | 13.3 | 3.5 | 7 | 519 |
+| dyzain-restoranu-kafe-kyiv.html | land | 56.5 | 15.6 | 13.3 | 3.5 | 7 | 519 |
 | ru/dizayner-interera-kiev.html | land | 56.1 | 14.7 | 13.6 | 0.6 | 7 | 489 |
 | ru/remont-ofisa-kiev.html | land | 56.1 | 15.1 | 13.6 | 0.6 | 7 | 496 |
 | dyzain-interieru-budynku-kyiv.html | land | 56.0 | 14.7 | 13.6 | 0.6 | 7 | 541 |
@@ -422,9 +422,9 @@
 | ru/onlain-kontrol.html | land | 55.0 | 14.3 | 13.6 | 0.6 | 7 | 628 |
 | dyzain-interieru-premium-kyiv.html | land | 54.8 | 14.8 | 13.6 | 0.6 | 7 | 488 |
 | onlain-kontrol.html | land | 54.8 | 14.4 | 13.6 | 0.6 | 7 | 628 |
+| services.html | main | 54.8 | 14.9 | 13.6 | 0.6 | 7 | 558 |
 | komplektatsiia-pid-kliuch-kyiv.html | land | 54.7 | 14.1 | 13.6 | 0.6 | 7 | 462 |
 | ru/dizayn-interera-premium-kiev.html | land | 54.7 | 14.8 | 13.6 | 0.6 | 7 | 488 |
-| services.html | main | 54.7 | 14.9 | 13.6 | 0.6 | 7 | 557 |
 | blog/premialnyi-interier-yak-ne-pereplatyty.html | article | 54.6 | 15.6 | 14.4 | 0.6 | 7 | 405 |
 | ru/generalnyy-podryadchik-kiev.html | land | 54.6 | 14.7 | 13.6 | 0.6 | 7 | 492 |
 | heneralnyi-pidriadnyk-kyiv.html | land | 54.5 | 14.6 | 13.6 | 0.6 | 7 | 492 |
@@ -436,7 +436,7 @@
 | karkasnyi-budynok-pid-kliuch-kyiv.html | land | 54.3 | 15.3 | 13.6 | 0.6 | 7 | 505 |
 | blog/komplektatsiia-restoranu-hotelyu-z-kytaiu.html | article | 54.2 | 15.0 | 14.4 | 0.6 | 7 | 401 |
 | baza-vidpochynku-pid-klyuch.html | land | 54.1 | 14.9 | 13.3 | 3.6 | 7 | 506 |
-| remont-premium-klasu-kyiv.html | land | 53.9 | 14.5 | 13.6 | 0.6 | 7 | 489 |
+| remont-premium-klasu-kyiv.html | land | 53.9 | 14.6 | 13.6 | 0.6 | 7 | 489 |
 | ru/karkasnyy-dom-pod-klyuch-kiev.html | land | 53.9 | 15.3 | 13.6 | 0.6 | 7 | 505 |
 | ru/remont-premium-klassa-kiev.html | land | 53.7 | 14.5 | 13.6 | 0.6 | 7 | 484 |
 | dyzain-ofisu-kyiv.html | land | 53.5 | 14.7 | 13.6 | 0.6 | 7 | 487 |
@@ -460,7 +460,7 @@
 | ru/modulnyy-dom-kiev.html | land | 52.3 | 15.0 | 13.6 | 0.6 | 7 | 502 |
 | blog/salon-krasy-pid-kliuch.html | article | 52.2 | 14.8 | 14.4 | 0.6 | 7 | 384 |
 | ru/dizayn-ofisa-open-space-kiev.html | land | 52.0 | 14.1 | 13.6 | 0.6 | 7 | 476 |
-| dyzain-ofisu-open-space-kyiv.html | land | 51.8 | 14.1 | 13.6 | 0.6 | 7 | 478 |
+| dyzain-ofisu-open-space-kyiv.html | land | 51.8 | 14.2 | 13.6 | 0.6 | 7 | 478 |
 | ru/meblirovka-kvartiry-kiev.html | land | 51.7 | 13.6 | 13.6 | 0.6 | 7 | 436 |
 | ru/pereplanirovka-kvartiry-kiev.html | land | 51.7 | 13.7 | 13.6 | 0.6 | 7 | 482 |
 | budynok-z-brusa-kyiv.html | land | 51.6 | 14.7 | 13.6 | 0.6 | 7 | 496 |
@@ -479,9 +479,9 @@
 | ru/dizayn-remont-kvartiry-pechersk.html | land | 50.7 | 13.6 | 13.6 | 0.6 | 7 | 470 |
 | ru/remont-v-novostroyke-kiev.html | land | 50.7 | 13.1 | 13.6 | 0.6 | 7 | 452 |
 | dyzain-remont-kvartyry-pechersk.html | land | 50.6 | 13.6 | 13.6 | 0.6 | 7 | 470 |
-| remont-kvartyr-zhk-kyiv.html | land | 50.6 | 13.5 | 13.6 | 0.6 | 7 | 493 |
 | blog/osvitlennia-ofisu-robochi-zony.html | article | 50.5 | 14.4 | 14.4 | 0.6 | 7 | 365 |
 | mebliuvannia-kvartyry-kyiv.html | land | 50.5 | 13.3 | 13.6 | 0.6 | 7 | 434 |
+| remont-kvartyr-zhk-kyiv.html | land | 50.5 | 13.5 | 13.6 | 0.6 | 7 | 493 |
 | blog/chornovyi-i-chystovyi-remont-riznytsia.html | article | 50.4 | 14.2 | 14.4 | 0.6 | 7 | 381 |
 | blog/shcho-vkhodyt-u-dyzain-proekt-interieru.html | article | 50.3 | 14.2 | 14.4 | 0.6 | 7 | 378 |
 | blog/ofis-pid-kliuch-u-biznes-tsentri.html | article | 50.2 | 14.3 | 14.4 | 0.6 | 7 | 362 |
@@ -493,14 +493,14 @@
 | blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | article | 50.0 | 14.1 | 14.4 | 0.6 | 7 | 389 |
 | blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html | article | 50.0 | 14.0 | 14.4 | 0.6 | 7 | 396 |
 | blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html | article | 50.0 | 13.8 | 14.4 | 0.6 | 7 | 371 |
+| dyzain-i-remont-penthausa-kyiv.html | land | 50.0 | 13.3 | 13.6 | 0.6 | 7 | 441 |
 | ru/dom-pod-klyuch-koncha-zaspa.html | land | 50.0 | 13.3 | 13.6 | 0.6 | 7 | 464 |
 | ar/about.html | land | 49.9 | 13.3 | 13.6 | 0.6 | 7 | 527 |
 | blog/avtorskyi-nahliad-navishcho.html | article | 49.9 | 14.1 | 14.4 | 0.6 | 7 | 384 |
 | blog/skilky-koshtuie-remont-budynku-pid-kliuch.html | article | 49.9 | 14.0 | 14.4 | 0.6 | 7 | 396 |
 | blog/yak-vybraty-remontnu-bryhadu.html | article | 49.9 | 14.1 | 14.4 | 0.6 | 7 | 383 |
-| dyzain-i-remont-penthausa-kyiv.html | land | 49.9 | 13.3 | 13.6 | 0.6 | 7 | 441 |
 | kabinet/proekty.html | other | 49.9 | 13.6 | 32.5 | 0.8 | 14 | 275 |
-| ru/uslugi.html | land | 49.9 | 13.3 | 13.6 | 0.6 | 7 | 489 |
+| ru/uslugi.html | land | 49.9 | 13.4 | 13.6 | 0.6 | 7 | 490 |
 | kabinet/obiekt.html | other | 49.8 | 13.7 | 32.5 | 0.8 | 14 | 273 |
 | ru/remont-kvartiry-zhk-novopecherskie-lipki.html | land | 49.8 | 13.3 | 13.6 | 0.6 | 7 | 431 |
 | blog/dyzain-restoranu-z-choho-pochaty.html | article | 49.7 | 14.2 | 14.4 | 0.6 | 7 | 383 |
@@ -531,7 +531,7 @@
 | blog/henpidriadnyk-chy-okremi-bryhady.html | article | 48.8 | 13.6 | 14.4 | 0.6 | 7 | 356 |
 | dyzain-i-remont-ukraina.html | land | 48.8 | 13.1 | 13.6 | 0.6 | 7 | 487 |
 | remont-kvartyry-zhk-edeldorf-hills.html | land | 48.8 | 13.3 | 13.6 | 0.6 | 7 | 431 |
-| remont-kvartyry-zhk-linden-luxury-residences.html | land | 48.8 | 13.2 | 13.6 | 0.6 | 7 | 431 |
+| remont-kvartyry-zhk-linden-luxury-residences.html | land | 48.8 | 13.3 | 13.6 | 0.6 | 7 | 431 |
 | remont-kvartyry-zhk-triiinity.html | land | 48.8 | 13.3 | 13.6 | 0.6 | 7 | 433 |
 | ru/remont-kvartiry-zhk-edeldorf-hills.html | land | 48.8 | 13.2 | 13.6 | 0.6 | 7 | 431 |
 | ar/turnkey-renovation.html | land | 48.7 | 13.8 | 13.6 | 0.6 | 7 | 470 |
@@ -555,10 +555,10 @@
 | ar/house-construction.html | land | 48.3 | 13.6 | 13.6 | 0.6 | 7 | 486 |
 | remont-kvartyry-zhk-hvardiiskyi.html | land | 48.3 | 13.1 | 13.6 | 0.6 | 7 | 431 |
 | ru/remont-kvartiry-zhk-rusaniv-residence.html | land | 48.3 | 13.2 | 13.6 | 0.6 | 7 | 430 |
+| en/house-construction.html | land | 48.2 | 14.0 | 13.6 | 0.6 | 7 | 538 |
 | remont-kvartyry-zhk-nordica-residence.html | land | 48.2 | 13.1 | 13.6 | 0.6 | 7 | 431 |
 | remont-kvartyry-zhk-rusaniv-residence.html | land | 48.2 | 13.2 | 13.6 | 0.6 | 7 | 430 |
 | ru/remont-kvartiry-zhk-gvardeyskiy.html | land | 48.2 | 13.1 | 13.6 | 0.6 | 7 | 431 |
-| en/house-construction.html | land | 48.1 | 14.0 | 13.6 | 0.6 | 7 | 538 |
 | remont-kvartyry-zhk-respublika.html | land | 48.1 | 13.0 | 13.6 | 0.6 | 7 | 430 |
 | ru/remont-kvartiry-zhk-novyy-avtograf.html | land | 48.1 | 13.0 | 13.6 | 0.6 | 7 | 430 |
 | ru/remont-kvartiry-zhk-respublika.html | land | 48.1 | 13.0 | 13.6 | 0.6 | 7 | 430 |
@@ -567,7 +567,7 @@
 | blog/ofis-u-biznes-tsentri-shcho-uzghodyty-pered-remontom.html | article | 48.0 | 13.3 | 14.4 | 0.6 | 7 | 365 |
 | ru/remont-kvartiry-zhk-a136-highlight-tower.html | land | 48.0 | 13.1 | 13.6 | 0.6 | 7 | 431 |
 | ru/remont-kvartiry-zhk-montreal-house.html | land | 48.0 | 13.0 | 13.6 | 0.6 | 7 | 432 |
-| remont-kvartyry-zhk-a136-highlight-tower.html | land | 47.9 | 13.0 | 13.6 | 0.6 | 7 | 431 |
+| remont-kvartyry-zhk-a136-highlight-tower.html | land | 47.9 | 13.1 | 13.6 | 0.6 | 7 | 431 |
 | remont-kvartyry-zhk-novyi-avtohraf.html | land | 47.9 | 13.0 | 13.6 | 0.6 | 7 | 430 |
 | ru/obustroystvo-ofisa-pod-klyuch-kiev.html | land | 47.9 | 13.1 | 13.6 | 0.6 | 7 | 420 |
 | ru/remont-kvartiry-zhk-senat.html | land | 47.9 | 13.1 | 13.6 | 0.6 | 7 | 430 |
@@ -597,8 +597,8 @@
 | ru/dizayn-i-remont-magazina-shouruma-kiev.html | land | 47.0 | 12.8 | 13.6 | 0.6 | 7 | 419 |
 | blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html | article | 46.9 | 13.3 | 14.4 | 0.6 | 7 | 422 |
 | dogovir-garantiya-oplata.html | land | 46.9 | 12.5 | 13.6 | 0.6 | 7 | 418 |
+| dyzain-i-remont-mahazynu-shourumu-kyiv.html | land | 46.9 | 12.8 | 13.6 | 0.6 | 7 | 419 |
 | ar/landscape-design.html | land | 46.8 | 12.7 | 13.6 | 1.2 | 7 | 524 |
-| dyzain-i-remont-mahazynu-shourumu-kyiv.html | land | 46.8 | 12.8 | 13.6 | 0.6 | 7 | 419 |
 | en/restaurant-fit-out.html | land | 46.7 | 13.8 | 13.6 | 2.5 | 7 | 509 |
 | kabinet/zaboroneno.html | other | 46.6 | 12.7 | 32.5 | 0.8 | 14 | 212 |
 | fr/a-propos.html | land | 46.3 | 12.7 | 13.6 | 0.6 | 7 | 528 |
@@ -687,6 +687,7 @@
 | ru/dizayn-i-remont-vasilkov.html | land | 42.0 | 11.7 | 13.6 | 0.6 | 7 | 345 |
 | zh/house-construction.html | land | 42.0 | 13.2 | 13.6 | 0.6 | 7 | 488 |
 | ar/commercial-renovation.html | land | 41.9 | 11.0 | 13.6 | 0.6 | 7 | 393 |
+| ar/services.html | land | 41.9 | 11.3 | 13.6 | 0.6 | 7 | 410 |
 | dyzain-i-remont-bila-tserkva.html | land | 41.9 | 11.7 | 13.6 | 0.6 | 7 | 345 |
 | dyzain-i-remont-dnipro.html | land | 41.9 | 11.7 | 13.6 | 0.6 | 7 | 342 |
 | dyzain-i-remont-vasylkiv.html | land | 41.9 | 11.7 | 13.6 | 0.6 | 7 | 345 |
@@ -697,7 +698,6 @@
 | ru/dizayn-i-remont-obuhov.html | land | 41.9 | 11.7 | 13.6 | 0.6 | 7 | 343 |
 | ru/dizayn-i-remont-uzhgorod.html | land | 41.9 | 11.7 | 13.6 | 0.6 | 7 | 341 |
 | ru/dizayn-i-remont-vishnevoe.html | land | 41.9 | 11.8 | 13.6 | 0.6 | 7 | 344 |
-| ar/services.html | land | 41.8 | 11.3 | 13.6 | 0.6 | 7 | 409 |
 | dyzain-i-remont-cherkasy.html | land | 41.8 | 11.7 | 13.6 | 0.6 | 7 | 341 |
 | dyzain-i-remont-chernihiv.html | land | 41.8 | 11.7 | 13.6 | 0.6 | 7 | 343 |
 | dyzain-i-remont-kropyvnytskyi.html | land | 41.8 | 11.7 | 13.6 | 0.6 | 7 | 341 |
@@ -708,7 +708,7 @@
 | ru/dizayn-i-remont-vyshgorod.html | land | 41.8 | 11.7 | 13.6 | 0.6 | 7 | 343 |
 | zh/resort-turnkey.html | land | 41.8 | 12.7 | 13.6 | 2.5 | 7 | 440 |
 | zh/turnkey-renovation.html | land | 41.8 | 13.3 | 13.6 | 0.6 | 7 | 471 |
-| dyzain-i-remont-boiarka.html | land | 41.7 | 11.8 | 13.6 | 0.6 | 7 | 343 |
+| dyzain-i-remont-boiarka.html | land | 41.7 | 11.7 | 13.6 | 0.6 | 7 | 343 |
 | dyzain-i-remont-chernivtsi.html | land | 41.7 | 11.7 | 13.6 | 0.6 | 7 | 340 |
 | dyzain-i-remont-fastiv.html | land | 41.7 | 11.7 | 13.6 | 0.6 | 7 | 345 |
 | dyzain-i-remont-khmelnytskyi.html | land | 41.7 | 11.6 | 13.6 | 0.6 | 7 | 343 |
@@ -756,7 +756,7 @@
 | fr/renovation-salle-de-bain.html | land | 40.0 | 10.9 | 13.6 | 0.6 | 7 | 390 |
 | ar/house-design.html | land | 39.9 | 10.4 | 13.6 | 0.6 | 7 | 370 |
 | ar/interior-designer.html | land | 39.9 | 10.6 | 13.6 | 0.6 | 7 | 370 |
-| en/business-fit-out.html | land | 39.9 | 11.1 | 13.6 | 0.6 | 7 | 408 |
+| en/business-fit-out.html | land | 39.9 | 11.2 | 13.6 | 0.6 | 7 | 408 |
 | ru/referalnaya-programma.html | land | 39.8 | 10.8 | 13.6 | 0.6 | 7 | 336 |
 | ar/faq.html | land | 39.7 | 10.3 | 13.6 | 0.6 | 7 | 323 |
 | en/new-build-renovation.html | land | 39.7 | 10.7 | 13.6 | 0.6 | 7 | 408 |
@@ -772,31 +772,31 @@
 | pl/remont-lazienki.html | land | 39.5 | 11.2 | 13.6 | 0.6 | 7 | 404 |
 | de/gewerberaeume-renovierung.html | land | 39.4 | 10.8 | 13.6 | 0.6 | 7 | 400 |
 | es/reforma-locales-comerciales.html | land | 39.4 | 10.6 | 13.6 | 0.6 | 7 | 396 |
+| fr/services.html | land | 39.4 | 10.9 | 13.6 | 0.6 | 7 | 412 |
 | referalna-prohrama.html | land | 39.4 | 10.8 | 13.6 | 0.6 | 7 | 336 |
 | de/badsanierung.html | land | 39.3 | 10.9 | 13.6 | 0.6 | 7 | 392 |
 | en/contract-warranty-payment.html | land | 39.3 | 10.8 | 13.6 | 0.6 | 7 | 397 |
-| fr/services.html | land | 39.3 | 10.9 | 13.6 | 0.6 | 7 | 411 |
+| es/servicios.html | land | 39.3 | 10.8 | 13.6 | 0.6 | 7 | 413 |
 | proekty/dubai-villa.html | land | 39.3 | 8.4 | 2.1 | 0.9 | 1 | 369 |
 | de/haussanierung.html | land | 39.2 | 10.7 | 13.6 | 0.6 | 7 | 400 |
 | en/design-implementation.html | land | 39.2 | 10.9 | 13.6 | 0.6 | 7 | 399 |
 | en/kitchen-renovation.html | land | 39.2 | 10.7 | 13.6 | 0.6 | 7 | 412 |
-| es/servicios.html | land | 39.2 | 10.8 | 13.6 | 0.6 | 7 | 412 |
 | pl/remont-mieszkania-deweloperskiego.html | land | 39.2 | 11.0 | 13.6 | 0.6 | 7 | 399 |
 | de/neubauwohnung-ausbau.html | land | 39.1 | 10.9 | 13.6 | 0.6 | 7 | 392 |
 | fr/commerce-cle-en-main.html | land | 39.1 | 11.0 | 13.6 | 0.6 | 7 | 378 |
 | fr/renovation-cuisine.html | land | 39.1 | 10.6 | 13.6 | 0.6 | 7 | 389 |
 | en/apartment-interior-design.html | land | 39.0 | 10.4 | 13.6 | 0.6 | 7 | 402 |
-| en/services.html | land | 39.0 | 10.8 | 13.6 | 0.6 | 7 | 426 |
+| en/services.html | land | 39.0 | 10.8 | 13.6 | 0.6 | 7 | 427 |
 | pl/biznes-pod-klucz.html | land | 39.0 | 11.3 | 13.6 | 0.6 | 7 | 396 |
 | ru/kontakty.html | land | 39.0 | 11.0 | 13.6 | 0.6 | 7 | 347 |
 | zh/turnkey-procurement.html | land | 39.0 | 11.3 | 13.6 | 0.6 | 7 | 384 |
 | es/negocio-llave-en-mano.html | land | 38.9 | 10.9 | 13.6 | 0.6 | 7 | 381 |
 | zh/renovation-crew.html | land | 38.9 | 11.3 | 13.6 | 0.6 | 7 | 401 |
+| de/leistungen.html | land | 38.8 | 10.9 | 13.6 | 0.6 | 7 | 414 |
+| pl/uslugi.html | land | 38.8 | 11.0 | 13.6 | 0.6 | 7 | 421 |
 | de/gewerbe-schluesselfertig.html | land | 38.7 | 11.0 | 13.6 | 0.6 | 7 | 383 |
-| de/leistungen.html | land | 38.7 | 10.9 | 13.6 | 0.6 | 7 | 413 |
 | es/reforma-cocina.html | land | 38.7 | 10.6 | 13.6 | 0.6 | 7 | 390 |
 | fr/realisation-projet.html | land | 38.7 | 10.8 | 13.6 | 0.6 | 7 | 375 |
-| pl/uslugi.html | land | 38.7 | 11.0 | 13.6 | 0.6 | 7 | 420 |
 | es/ejecucion-proyecto-diseno.html | land | 38.6 | 10.7 | 13.6 | 0.6 | 7 | 377 |
 | pl/projekt-wnetrza-mieszkania.html | land | 38.6 | 10.6 | 13.6 | 0.6 | 7 | 393 |
 | pl/remont-kuchni.html | land | 38.6 | 10.9 | 13.6 | 0.6 | 7 | 403 |
@@ -820,7 +820,7 @@
 | en/turnkey-furnishing.html | land | 37.8 | 10.5 | 13.6 | 0.6 | 7 | 381 |
 | es/diseno-interiores.html | land | 37.8 | 10.4 | 13.6 | 0.6 | 7 | 367 |
 | fr/conception-maison.html | land | 37.8 | 10.1 | 13.6 | 0.6 | 7 | 372 |
-| zh/services.html | land | 37.8 | 11.2 | 13.6 | 0.6 | 7 | 411 |
+| zh/services.html | land | 37.8 | 11.2 | 13.6 | 0.6 | 7 | 412 |
 | en/faq.html | land | 37.7 | 10.0 | 13.6 | 0.6 | 7 | 340 |
 | en/house-design.html | land | 37.7 | 10.1 | 13.6 | 0.6 | 7 | 389 |
 | es/proyecto-de-casa.html | land | 37.7 | 10.1 | 13.6 | 0.6 | 7 | 372 |
