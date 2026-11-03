@@ -1,21 +1,5 @@
 /* «Ресторан з нуля» (assets/restaurant-anim.v1.js, tools/site/restaurant.py). Керування — ті самі класи la-*, що й у «Ландшафт з нуля». UI-kit: /styleguide/#build-anim-sg */
-.la-tab{display:inline-flex;flex-wrap:wrap;max-width:100%;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:22px;padding:4px;margin:0 0 18px}
-.la-tab a{padding:8px 16px;border-radius:999px;text-decoration:none;font-size:var(--fs-small);min-height:36px;display:inline-flex;align-items:center}
-.la-tab a[aria-current]{background:var(--ac,#BF9148);color:#140f08}
-.la-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.la-ctl{display:flex;flex-wrap:wrap;gap:10px 18px;margin:8px 0 14px}
-.la-seg{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.la-lab{font-size:var(--fs-small);color:var(--mu,#938c84);margin-inline-end:4px}
-.la-seg button{min-height:36px;min-width:40px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.3));background:none;color:inherit;font:inherit;font-size:var(--fs-small);cursor:pointer}
-.la-seg button[aria-pressed=true]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#140f08}
 .la-xr button.x0[aria-pressed=true]{background:#7fc8e8;border-color:#7fc8e8}.la-xr button.x1[aria-pressed=true]{background:#57c4b3;border-color:#57c4b3}.la-xr button.x2[aria-pressed=true]{background:#f0b44c;border-color:#f0b44c}
-.la-stick{position:sticky;top:68px;display:grid;gap:8px}
-.la-svg{display:block;width:100%;height:min(58vh,560px);background:radial-gradient(ellipse at 50% 30%,#1b1813,#0d0c0a);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:14px;outline-offset:3px}
-.la-cap{margin:0;min-height:4.6em}.la-cap b{display:block;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3)}.la-cap span{color:var(--mu,#938c84);font-size:var(--fs-small)}
-.la-nav{display:flex;align-items:center;gap:10px}.la-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--ac,#BF9148);background:none;color:inherit;font-size:20px;cursor:pointer}
-.la-cnt{font-size:var(--fs-small);color:var(--mu,#938c84);min-width:5em;text-align:center}
-.la-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.la-foot{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}.la-est{margin:0;color:var(--ac,#BF9148)}
-@media(max-width:767px){.la-svg{height:46vh}.la-stick{top:58px}.la-cap{min-height:5.6em}.la-ctl{gap:8px}}
 .rs-price{color:var(--ac,#BF9148);margin:18px 0 0}.rs-case{margin:8px 0 0}
 /* сцена */
 .rs-e{opacity:0;transition:opacity .45s ease,transform .45s ease}.rs-e.on{opacity:1}.rs-e.gone{opacity:0!important}

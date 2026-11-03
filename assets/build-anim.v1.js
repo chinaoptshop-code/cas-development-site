@@ -10,7 +10,8 @@
    CTA — спільний /assets/lead-form.v1.js (.lq-slot → data-source «#build-anim»). Слухач прокрутки працює лише поки блок у кадрі. На LCP не впливає. */
 (function () {
   var d = document, W = window;
-  if (W.__casBA) return; W.__casBA = 1;
+  if (W.__casBA) { if (typeof W.__casBA === 'function') [].forEach.call(d.querySelectorAll('section.bz[data-bz][data-sw]'), W.__casBA); return; } // скрипт уже працює: блок, показаний перемикачем сцен на місці, — запускаємо тут
+  W.__casBA = 1;
   var secs = [].slice.call(d.querySelectorAll('section.bz[data-bz]'));
   if (!secs.length || !W.fetch || !W.Promise) return;
   var VER = {"ar.flat":"46b56699","ar.house":"b9e1a415","de.flat":"13675997","de.house":"518a9a7d","en.flat":"72e68dcb","en.house":"8f4442b3","es.flat":"ddb675d6","es.house":"f522c1f0","fr.flat":"5e0de606","fr.house":"81f6c511","pl.flat":"8737eeeb","pl.house":"ca47929e","ru.flat":"3a0da7af","ru.house":"d047addb","uk.flat":"4be1e913","uk.house":"8eae39f9","zh.flat":"0ae41127","zh.house":"35503c4f"}; /*ver*/
@@ -1379,11 +1380,12 @@
   function start(sec) {
     Promise.all([css(), data(sec.getAttribute('data-bz') === 'flat' ? 'flat' : 'house')]).then(function (r) {
       var dt = r[1];
-      if (!inView(sec) || !('IntersectionObserver' in W)) return enhance(sec, dt);
+      if (!inView(sec) || sec.hasAttribute('data-sw') || !('IntersectionObserver' in W)) return enhance(sec, dt); // data-sw — перемикач сцен на місці
       var o = new IntersectionObserver(function (es) { if (!es[es.length - 1].isIntersecting) { o.disconnect(); enhance(sec, dt); } });
       o.observe(sec);
     }).catch(function () { }); // без даних — лишається звичайний список етапів
   }
+  W.__casBA = function (s) { if (!s.__bzs && secs.indexOf(s) < 0) { s.__bzs = 1; start(s); } };
   // нуль роботи на завантаженні (TBT/LCP): спостерігач вмикається лише після першої прокрутки сторінки
   function arm() {
     W.removeEventListener('scroll', arm);
