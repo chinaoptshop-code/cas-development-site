@@ -76,3 +76,4 @@
 .xs-ico{font-style:normal}
 .xs-cta h2[data-i]{display:inline-block;padding-inline-start:1.32em}
 .xs-ct{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
+.xs-sub{color:var(--mu);margin:-12px 0 20px}

@@ -11,36 +11,179 @@
   "https://wa.me/380978667755",
   "WhatsApp"
  ],
+ "kicker": "Über das Studio",
+ "hero_img": {
+  "img": "img/1lovunAyUeQX-1400.webp",
+  "srcset": "/img/1lovunAyUeQX-r400.webp 400w, /img/1lovunAyUeQX-r600.webp 600w, /img/1lovunAyUeQX-r800.webp 800w, /img/1lovunAyUeQX-r1200.webp 1200w, /img/1lovunAyUeQX-1400.webp 1400w",
+  "alt": "Yacht Restaurant — Restaurant-Innenarchitektur von CAS Development",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "text",
+   "t": "split",
+   "img": "img/18ej1fH-11uo-800.webp",
+   "srcset": "/img/18ej1fH-11uo-r400.webp 400w, /img/18ej1fH-11uo-r600.webp 600w, /img/18ej1fH-11uo-800.webp 800w",
+   "alt": "Yacht Restaurant — Restaurant-Innenarchitektur von CAS Development",
+   "badge": [
+    "2016",
+    "Gegründet in Kyjiw"
+   ],
    "h2": "Unser Ansatz",
    "p": [
     "Seit 2016 haben wir über 150 Projekte in der Ukraine und im Ausland realisiert. Wir kopieren keine Trends: Zuerst verstehen wir, wie Sie leben oder arbeiten, dann gestalten wir den Raum danach.",
     "Jedes Projekt beginnt mit einem Briefing und einem Treffen (vor Ort oder per Videocall) und endet mit der Übergabe; wenn wir die Renovierung ausführen, betreut derselbe Projektmanager die Baustelle.",
     "Möbel und Materialien beziehen wir direkt aus China über unsere Linie Ozdoba: Mindestbestellung ab $500, Lieferzeit 30–60 Tage."
+   ],
+   "vals": [
+    [
+     "Minimalismus",
+     "Wir entfernen Überflüssiges und bewahren das Wesentliche. Jedes Detail hat seinen Platz."
+    ],
+    [
+     "Qualität",
+     "Materialien, Lösungen und Handwerker, die sich über Jahre bewährt haben."
+    ],
+    [
+     "Transparenz",
+     "Fotoberichte alle 1–2 Wochen und ein Kostenvoranschlag ohne versteckte Posten."
+    ],
+    [
+     "Individualität",
+     "Keine Schablonen: Jedes Projekt spiegelt einen bestimmten Menschen wider."
+    ]
+   ]
+  },
+  {
+   "t": "strip",
+   "kicker": "Ein Beispiel unserer Arbeit",
+   "h2": "Petrivtsi House — Privathaus mit 320 m² in Petriwzi",
+   "p": "Innenarchitektur-Projekt: Schlafzimmer, Bäder, Ankleide, Arbeitszimmer und Waschraum.",
+   "items": [
+    {
+     "img": "img/1GKGW5SVI27I-600.webp",
+     "alt": "Petrivtsi House — Schlafzimmer",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/197Bi23wSzVk-600.webp",
+     "alt": "Petrivtsi House — Schlafzimmer, Details",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1A6d14UC4Yii-600.webp",
+     "alt": "Petrivtsi House — Bad mit freistehender Wanne",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1l8ggYd-Xu5P-600.webp",
+     "alt": "Petrivtsi House — WC",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1FwmotKdTE-d-600.webp",
+     "alt": "Petrivtsi House — Ankleide",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1BCMJKrx7QL5-600.webp",
+     "alt": "Petrivtsi House — Arbeitszimmer",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1gXiWvuON9L6-600.webp",
+     "alt": "Petrivtsi House — Waschraum",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/183DWyhu0rYa-600.webp",
+     "alt": "Petrivtsi House — Flur mit Lichtlinien",
+     "href": "/proekty/petrivtsi-house"
+    }
+   ],
+   "link": [
+    "/proekty/petrivtsi-house",
+    "Ganzes Projekt ansehen →"
+   ]
+  },
+  {
+   "t": "facts",
+   "h2": "CAS Development in Zahlen",
+   "items": [
+    [
+     "150+",
+     "Projekte"
+    ],
+    [
+     "10+ Jahre",
+     "Erfahrung, seit 2016"
+    ],
+    [
+     "36 Mon.",
+     "Garantie auf die Arbeiten"
+    ],
+    [
+     "±5%",
+     "Genauigkeit des Kostenvoranschlags, wenn wir renovieren"
+    ]
    ]
   },
   {
    "t": "cards",
-   "h2": "Was uns wichtig ist",
+   "h2": "CAS Development kurz",
    "items": [
     {
-     "h": "Minimalismus",
-     "p": "Wir entfernen Überflüssiges und bewahren das Wesentliche. Jedes Detail hat seinen Platz."
+     "h": "Wer wir sind",
+     "p": "Studio für Innenarchitektur, Renovierung, Bau und schlüsselfertige Ausstattung sowie Generalunternehmer. Gründer und CEO — Mykhailo; seit 2016 über 150 Projekte.",
+     "href": "/de/leistungen",
+     "more": "Alle Leistungen"
     },
     {
-     "h": "Qualität",
-     "p": "Materialien, Lösungen und Handwerker, die sich über Jahre bewährt haben."
+     "h": "Wo wir arbeiten",
+     "p": "Büro: Antonowytscha-Str. 44, Kyjiw. Kyjiw und Region; Renovierung und Bau in allen Regionen der Ukraine und in Europa.",
+     "href": "/de/kontakt",
+     "more": "Kontakt"
     },
     {
-     "h": "Transparenz",
-     "p": "Fotoberichte alle 1–2 Wochen und ein Kostenvoranschlag ohne versteckte Posten."
+     "h": "Was es kostet",
+     "p": "Designprojekt ab $30/m² (mind. $2 500), Renovierung ab $550/m², Büro ab $350/m², Haus schlüsselfertig ab $1 100/m².",
+     "href": "/de/renovierungskosten-rechner",
+     "more": "Rechner"
     },
     {
-     "h": "Individualität",
-     "p": "Keine Schablonen: Jedes Projekt spiegelt einen bestimmten Menschen wider."
+     "h": "Wer die Arbeit macht",
+     "p": "Drei eigene fest angestellte Teams statt Subunternehmer. 36 Monate Garantie; der Kostenvoranschlag hält ±5%, wenn CAS renoviert.",
+     "href": "/de/faq",
+     "more": "Häufige Fragen"
     }
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "steps",
+   "h2": "So arbeiten wir",
+   "items": [
+    [
+     "Briefing",
+     "Treffen oder Videocall zu Objekt, Lebensstil, Budget und Zeitplan."
+    ],
+    [
+     "Designprojekt",
+     "Grundrissvarianten, 3D-Visualisierungen und ein vollständiger Plansatz."
+    ],
+    [
+     "Kostenvoranschlag und Vertrag",
+     "Preis, Termine und Zahlungsetappen vor Beginn festgelegt."
+    ],
+    [
+     "Ausführung und Beschaffung",
+     "Eigene Teams, Einkauf, Fotoberichte alle 1–2 Wochen."
+    ],
+    [
+     "Übergabe",
+     "Möbel montiert, Räume gestylt, 36 Monate Gewährleistung."
+    ]
    ]
   },
   {
@@ -48,25 +191,29 @@
    "h2": "Wo wir arbeiten",
    "items": [
     {
+     "ico": "📍",
      "h": "Kyjiw",
      "p": "Sitz des Studios: Wohnungen, Häuser und Gewerbeflächen mit Vor-Ort-Terminen."
     },
     {
+     "ico": "🇺🇦",
      "h": "Ukraine",
      "p": "Design, Renovierung, Bau und Einrichtung im ganzen Land."
     },
     {
+     "ico": "🇪🇺",
      "h": "Europa",
      "p": "Projekte in Spanien, Frankreich, Deutschland und Polen: Design, Projektbegleitung und Einrichtung."
     },
     {
+     "ico": "🌍",
      "h": "Weltweit",
      "p": "Projekte auf Bali, in der Türkei (Kitana Beach, Bodrum) und den USA; Online-Design und Projektbegleitung."
     }
    ]
   },
   {
-   "t": "cards",
+   "t": "team",
    "h2": "Die Menschen hinter Ihrem Projekt",
    "items": [
     {
@@ -94,10 +241,143 @@
      "role": "KI-Entwickler",
      "p": "Website, Anfragen, Assistenten und Automatisierung."
     }
+   ],
+   "crew": {
+    "h3": "Unser eigenes Bauteam",
+    "p": "Fest angestellte Bauleiter, Möbeltischler und Fachleute, die an Ihrem Projekt arbeiten.",
+    "groups": [
+     {
+      "label": "Bauleiter",
+      "p": "",
+      "people": [
+       [
+        "Oleh",
+        ""
+       ],
+       [
+        "Volodymyr",
+        ""
+       ],
+       [
+        "Serhii",
+        ""
+       ],
+       [
+        "Oleksandr",
+        ""
+       ],
+       [
+        "Mykhailo",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Möbeltischler",
+      "p": "",
+      "people": [
+       [
+        "Serhii",
+        ""
+       ],
+       [
+        "Andrii",
+        ""
+       ],
+       [
+        "Oleh",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Vermessung",
+      "p": "",
+      "people": [
+       [
+        "Mykola",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "3D-Aufmaß",
+      "p": "",
+      "people": [
+       [
+        "Vladyslav",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Drohnenaufnahmen",
+      "p": "",
+      "people": [
+       [
+        "Mykhailo",
+        ""
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "t": "faq",
+   "h2": "CAS Development kurz: häufige Fragen",
+   "items": [
+    [
+     "Was ist CAS Development?",
+     "Ein Studio für Innenarchitektur, Renovierung und schlüsselfertigen Bau aus Kyjiw, gegründet 2016: Designprojekte, Renovierung von Wohnungen und Häusern, Hausbau, Büros und Gewerbeflächen sowie Möbel direkt aus Fabriken in China."
+    ],
+    [
+     "Wer hat CAS Development gegründet?",
+     "Das Studio wurde 2016 in Kyjiw von Mykhailo gegründet, seinem Gründer und CEO."
+    ],
+    [
+     "Wo arbeitet CAS Development?",
+     "Das Büro ist in der Antonowytscha-Str. 44 in Kyjiw. Wir arbeiten in Kyjiw und der Region, Renovierung und Bau übernehmen wir in allen Regionen der Ukraine und in Europa; Projekte gab und gibt es auf Bali, in Spanien, den USA, Frankreich, Deutschland, Polen und der Türkei."
+    ],
+    [
+     "Was kosten die Leistungen?",
+     "Designprojekt ab $30/m² (mindestens $2 500), schlüsselfertige Renovierung ab $550/m² (Arbeit und Rohbaumaterial), Büro ab $350/m², Einrichtung ab $250/m², Haus: Rohbau ab $600/m², schlüsselfertig ab $1 100/m². Die genaue Summe steht im Kostenvoranschlag nach dem Aufmaß."
+    ]
    ]
   },
   {
-   "t": "guarantees"
+   "t": "cta",
+   "h2": "Was Kunden sagen",
+   "score": "4,8",
+   "p": [
+    "Bewertungen von Menschen, mit denen wir bereits Projekte umgesetzt haben, finden Sie in unserem Google-Profil."
+   ],
+   "btns": [
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Bewertungen bei Google lesen",
+     1
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "h2": "Sprechen wir über Ihr Projekt",
+   "p": [
+    "Erzählen Sie uns von Ihrem Objekt — wir schlagen eine Lösung vor und kalkulieren ein Richtbudget. Die telefonische Beratung ist kostenlos."
+   ],
+   "btns": [
+    [
+     "/de/kontakt",
+     "Anfrage senden",
+     1
+    ],
+    [
+     "tel:+380978667755",
+     "+380 97 866 77 55"
+    ]
+   ],
+   "msgs": true
   },
   {
    "t": "rel",

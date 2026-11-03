@@ -130,7 +130,8 @@ def strip(x):
         body = img(c, None, '(max-width:767px) 60vw, 300px') + (f'<span>{e(c["label"])}</span>' if c.get('label') else '')
         it.append(f'<a href="{a(c["href"])}">{body}</a>' if c.get('href') else f'<figure>{body}</figure>')
     lab = f' aria-label="{a(x["label"])}"' if x.get('label') else ''
-    return wrap(x, head(x) + f'<div class="xs-st" tabindex="0" role="region"{lab}>' + ''.join(it) + '</div>', 'xs-strip')
+    lead = f'<p class="xs-sub">{rich(x["p"])}</p>' if x.get('p') else ''
+    return wrap(x, head(x) + lead + f'<div class="xs-st" tabindex="0" role="region"{lab}>' + ''.join(it) + '</div>', 'xs-strip')
 
 
 def split(x):
@@ -179,8 +180,8 @@ def team(x):
     if x.get('crew'):
         cr = x['crew']
         o += f'<h3 class="xs-crew-h">{e(cr["h3"])}</h3><p class="xs-crew-p">{e(cr["p"])}</p><div class="xs-crew">' + ''.join(
-            f'<div><p class="kick">{e(g["label"])}</p><p>{e(g["p"])}</p><ul>'
-            + ''.join(f'<li><b>{e(n)}</b> <span>{e(r)}</span></li>' for n, r in g['people']) + '</ul></div>' for g in cr['groups']) + '</div>'
+            f'<div><p class="kick">{e(g["label"])}</p>' + (f'<p>{e(g["p"])}</p>' if g.get('p') else '') + '<ul>'
+            + ''.join(f'<li><b>{e(n)}</b>' + (f' <span>{e(r)}</span>' if r else '') + '</li>' for n, r in g['people']) + '</ul></div>' for g in cr['groups']) + '</div>'
     return wrap(x, o, 'xs-team')
 
 

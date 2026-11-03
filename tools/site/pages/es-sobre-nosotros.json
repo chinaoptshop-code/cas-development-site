@@ -11,36 +11,179 @@
   "https://wa.me/380978667755",
   "WhatsApp"
  ],
+ "kicker": "Sobre el estudio",
+ "hero_img": {
+  "img": "img/1lovunAyUeQX-1400.webp",
+  "srcset": "/img/1lovunAyUeQX-r400.webp 400w, /img/1lovunAyUeQX-r600.webp 600w, /img/1lovunAyUeQX-r800.webp 800w, /img/1lovunAyUeQX-r1200.webp 1200w, /img/1lovunAyUeQX-1400.webp 1400w",
+  "alt": "Yacht Restaurant — diseño de interiores de restaurante de CAS Development",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "text",
+   "t": "split",
+   "img": "img/18ej1fH-11uo-800.webp",
+   "srcset": "/img/18ej1fH-11uo-r400.webp 400w, /img/18ej1fH-11uo-r600.webp 600w, /img/18ej1fH-11uo-800.webp 800w",
+   "alt": "Yacht Restaurant — diseño de interiores de restaurante de CAS Development",
+   "badge": [
+    "2016",
+    "Fundado en Kiev"
+   ],
    "h2": "Nuestro enfoque",
    "p": [
     "Desde 2016 hemos realizado más de 150 proyectos en Ucrania y en el extranjero. No copiamos tendencias: primero entendemos cómo vive o trabaja usted y después creamos el espacio a partir de ello.",
     "Cada proyecto empieza con un briefing y una reunión (presencial o por videollamada) y termina con la entrega del inmueble; cuando hacemos la obra, el mismo gestor sigue el proyecto en el sitio.",
     "Muebles y materiales llegan directamente de China a través de nuestra línea Ozdoba: pedido mínimo desde $500, entrega en 30–60 días."
+   ],
+   "vals": [
+    [
+     "Minimalismo",
+     "Quitamos lo superfluo y dejamos lo esencial. Cada detalle tiene su lugar."
+    ],
+    [
+     "Calidad",
+     "Materiales, soluciones y profesionales probados durante años."
+    ],
+    [
+     "Transparencia",
+     "Informes fotográficos cada 1–2 semanas y un presupuesto sin partidas ocultas."
+    ],
+    [
+     "Personalidad",
+     "Sin plantillas: cada proyecto refleja a una persona concreta."
+    ]
+   ]
+  },
+  {
+   "t": "strip",
+   "kicker": "Un ejemplo de nuestro trabajo",
+   "h2": "Petrivtsi House — casa privada de 320 m² en Petrivtsi",
+   "p": "Proyecto de diseño interior: dormitorios, baños, vestidor, despacho y lavandería.",
+   "items": [
+    {
+     "img": "img/1GKGW5SVI27I-600.webp",
+     "alt": "Petrivtsi House — dormitorio",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/197Bi23wSzVk-600.webp",
+     "alt": "Petrivtsi House — dormitorio, detalles",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1A6d14UC4Yii-600.webp",
+     "alt": "Petrivtsi House — baño con bañera exenta",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1l8ggYd-Xu5P-600.webp",
+     "alt": "Petrivtsi House — aseo",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1FwmotKdTE-d-600.webp",
+     "alt": "Petrivtsi House — vestidor",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1BCMJKrx7QL5-600.webp",
+     "alt": "Petrivtsi House — despacho",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1gXiWvuON9L6-600.webp",
+     "alt": "Petrivtsi House — lavandería",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/183DWyhu0rYa-600.webp",
+     "alt": "Petrivtsi House — pasillo con líneas de luz",
+     "href": "/proekty/petrivtsi-house"
+    }
+   ],
+   "link": [
+    "/proekty/petrivtsi-house",
+    "Ver el proyecto completo →"
+   ]
+  },
+  {
+   "t": "facts",
+   "h2": "CAS Development en cifras",
+   "items": [
+    [
+     "150+",
+     "proyectos"
+    ],
+    [
+     "10+ años",
+     "de experiencia, desde 2016"
+    ],
+    [
+     "36 meses",
+     "de garantía en los trabajos"
+    ],
+    [
+     "±5%",
+     "precisión del presupuesto si la reforma la hacemos nosotros"
+    ]
    ]
   },
   {
    "t": "cards",
-   "h2": "Lo que valoramos",
+   "h2": "CAS Development en breve",
    "items": [
     {
-     "h": "Minimalismo",
-     "p": "Quitamos lo superfluo y dejamos lo esencial. Cada detalle tiene su lugar."
+     "h": "Quiénes somos",
+     "p": "Estudio de diseño de interiores, reformas, construcción y equipamiento llave en mano, y contratista general. Fundador y CEO: Mykhailo; más de 150 proyectos desde 2016.",
+     "href": "/es/servicios",
+     "more": "Todos los servicios"
     },
     {
-     "h": "Calidad",
-     "p": "Materiales, soluciones y profesionales probados durante años."
+     "h": "Dónde trabajamos",
+     "p": "Oficina en la calle Antonovycha 44, Kiev. Kiev y su región; reformas y construcción en todas las regiones de Ucrania y en Europa.",
+     "href": "/es/contacto",
+     "more": "Contacto"
     },
     {
-     "h": "Transparencia",
-     "p": "Informes fotográficos cada 1–2 semanas y un presupuesto sin partidas ocultas."
+     "h": "Cuánto cuesta",
+     "p": "Proyecto de diseño desde $30/m² (mín. $2 500), reforma desde $550/m², oficina desde $350/m², casa llave en mano desde $1 100/m².",
+     "href": "/es/calculadora-reforma",
+     "more": "Calculadora"
     },
     {
-     "h": "Personalidad",
-     "p": "Sin plantillas: cada proyecto refleja a una persona concreta."
+     "h": "Quién hace el trabajo",
+     "p": "Tres cuadrillas propias de plantilla, sin subcontratas. Garantía de 36 meses; el presupuesto se mantiene en ±5% si la reforma la hace CAS.",
+     "href": "/es/preguntas-frecuentes",
+     "more": "Preguntas frecuentes"
     }
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "steps",
+   "h2": "Cómo trabajamos",
+   "items": [
+    [
+     "Briefing",
+     "Reunión o videollamada sobre el inmueble, su forma de vivir, presupuesto y plazos."
+    ],
+    [
+     "Proyecto de diseño",
+     "Opciones de distribución, visualizaciones 3D y juego completo de planos."
+    ],
+    [
+     "Presupuesto y contrato",
+     "Precio, plazos y etapas de pago fijados antes de empezar."
+    ],
+    [
+     "Obra y suministro",
+     "Cuadrillas propias, compras, informes fotográficos cada 1–2 semanas."
+    ],
+    [
+     "Entrega",
+     "Muebles montados, espacio decorado, 36 meses de garantía en las obras."
+    ]
    ]
   },
   {
@@ -48,25 +191,29 @@
    "h2": "Dónde trabajamos",
    "items": [
     {
+     "ico": "📍",
      "h": "Kiev",
      "p": "Sede del estudio: pisos, casas y locales comerciales con visita a obra."
     },
     {
+     "ico": "🇺🇦",
      "h": "Ucrania",
      "p": "Diseño, reformas, construcción y amueblamiento en todo el país."
     },
     {
+     "ico": "🇪🇺",
      "h": "Europa",
      "p": "Proyectos en España, Francia, Alemania y Polonia: diseño, seguimiento y amueblamiento."
     },
     {
+     "ico": "🌍",
      "h": "Todo el mundo",
      "p": "Proyectos en Bali, Turquía (Kitana Beach, Bodrum) y EE. UU.; diseño en línea y seguimiento."
     }
    ]
   },
   {
-   "t": "cards",
+   "t": "team",
    "h2": "Las personas detrás de su proyecto",
    "items": [
     {
@@ -94,10 +241,143 @@
      "role": "Desarrollador de IA",
      "p": "Web, solicitudes, asistentes y automatización."
     }
+   ],
+   "crew": {
+    "h3": "Nuestro equipo de obra",
+    "p": "Jefes de obra, ebanistas y especialistas de plantilla que trabajan en su proyecto.",
+    "groups": [
+     {
+      "label": "Jefes de obra",
+      "p": "",
+      "people": [
+       [
+        "Oleh",
+        ""
+       ],
+       [
+        "Volodymyr",
+        ""
+       ],
+       [
+        "Serhii",
+        ""
+       ],
+       [
+        "Oleksandr",
+        ""
+       ],
+       [
+        "Mykhailo",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Ebanistas",
+      "p": "",
+      "people": [
+       [
+        "Serhii",
+        ""
+       ],
+       [
+        "Andrii",
+        ""
+       ],
+       [
+        "Oleh",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Topografía",
+      "p": "",
+      "people": [
+       [
+        "Mykola",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Medición 3D",
+      "p": "",
+      "people": [
+       [
+        "Vladyslav",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Filmación con dron",
+      "p": "",
+      "people": [
+       [
+        "Mykhailo",
+        ""
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "t": "faq",
+   "h2": "CAS Development en breve: preguntas frecuentes",
+   "items": [
+    [
+     "¿Qué es CAS Development?",
+     "Un estudio de diseño de interiores, reformas y construcción llave en mano de Kiev, fundado en 2016: proyectos de diseño, reformas de pisos y casas, construcción, oficinas y locales comerciales, y amueblamiento directo de fábricas de China."
+    ],
+    [
+     "¿Quién fundó CAS Development?",
+     "El estudio lo fundó Mykhailo, su fundador y CEO, en Kiev en 2016."
+    ],
+    [
+     "¿Dónde trabaja CAS Development?",
+     "La oficina está en la calle Antonovycha 44, Kiev. Trabajamos en Kiev y su región, hacemos reformas y construcción en todas las regiones de Ucrania y en Europa; hemos tenido y tenemos proyectos en Bali, España, EE. UU., Francia, Alemania, Polonia y Turquía."
+    ],
+    [
+     "¿Cuánto cuestan los servicios?",
+     "Proyecto de diseño desde $30/m² (mínimo $2 500), reforma llave en mano desde $550/m² (mano de obra y materiales de obra gruesa), oficina desde $350/m², amueblamiento desde $250/m², casa: estructura desde $600/m², llave en mano desde $1 100/m². El importe exacto se fija en el presupuesto tras la medición."
+    ]
    ]
   },
   {
-   "t": "guarantees"
+   "t": "cta",
+   "h2": "Lo que dicen los clientes",
+   "score": "4,8",
+   "p": [
+    "Las opiniones de personas con las que ya hemos realizado proyectos están en nuestro perfil de Google."
+   ],
+   "btns": [
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Leer opiniones en Google",
+     1
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "h2": "Hablemos de su proyecto",
+   "p": [
+    "Cuéntenos sobre su inmueble: le propondremos una solución y calcularemos un presupuesto orientativo. La consulta telefónica es gratuita."
+   ],
+   "btns": [
+    [
+     "/es/contacto",
+     "Enviar solicitud",
+     1
+    ],
+    [
+     "tel:+380978667755",
+     "+380 97 866 77 55"
+    ]
+   ],
+   "msgs": true
   },
   {
    "t": "rel",

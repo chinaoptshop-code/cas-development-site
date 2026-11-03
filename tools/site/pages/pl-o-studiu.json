@@ -11,36 +11,179 @@
   "https://wa.me/380978667755",
   "WhatsApp"
  ],
+ "kicker": "O studiu",
+ "hero_img": {
+  "img": "img/1lovunAyUeQX-1400.webp",
+  "srcset": "/img/1lovunAyUeQX-r400.webp 400w, /img/1lovunAyUeQX-r600.webp 600w, /img/1lovunAyUeQX-r800.webp 800w, /img/1lovunAyUeQX-r1200.webp 1200w, /img/1lovunAyUeQX-1400.webp 1400w",
+  "alt": "Yacht Restaurant — projekt wnętrza restauracji od CAS Development",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "text",
+   "t": "split",
+   "img": "img/18ej1fH-11uo-800.webp",
+   "srcset": "/img/18ej1fH-11uo-r400.webp 400w, /img/18ej1fH-11uo-r600.webp 600w, /img/18ej1fH-11uo-800.webp 800w",
+   "alt": "Yacht Restaurant — projekt wnętrza restauracji od CAS Development",
+   "badge": [
+    "2016",
+    "Założone w Kijowie"
+   ],
    "h2": "Nasze podejście",
    "p": [
     "Od 2016 roku zrealizowaliśmy ponad 150 projektów na Ukrainie i za granicą. Nie kopiujemy trendów: najpierw rozumiemy, jak żyjesz lub pracujesz, a potem tworzymy wokół tego przestrzeń.",
     "Każdy projekt zaczyna się od briefu i spotkania (osobiście lub online), a kończy przekazaniem obiektu; gdy remont wykonujemy my, ten sam menedżer prowadzi projekt na budowie.",
     "Meble i materiały sprowadzamy bezpośrednio z Chin przez naszą linię Ozdoba: minimalne zamówienie od $500, dostawa 30–60 dni."
+   ],
+   "vals": [
+    [
+     "Minimalizm",
+     "Usuwamy zbędne i zostawiamy istotę. Każdy detal ma swoje miejsce."
+    ],
+    [
+     "Jakość",
+     "Materiały, rozwiązania i wykonawcy sprawdzeni latami."
+    ],
+    [
+     "Przejrzystość",
+     "Raporty zdjęciowe co 1–2 tygodnie i kosztorys bez ukrytych pozycji."
+    ],
+    [
+     "Indywidualność",
+     "Żadnych szablonów: każdy projekt odzwierciedla konkretnego człowieka."
+    ]
+   ]
+  },
+  {
+   "t": "strip",
+   "kicker": "Przykład naszej pracy",
+   "h2": "Petrivtsi House — dom prywatny 320 m² w Petriwcach",
+   "p": "Projekt wnętrza: sypialnie, łazienki, garderoba, gabinet i pralnia.",
+   "items": [
+    {
+     "img": "img/1GKGW5SVI27I-600.webp",
+     "alt": "Petrivtsi House — sypialnia",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/197Bi23wSzVk-600.webp",
+     "alt": "Petrivtsi House — sypialnia, detale",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1A6d14UC4Yii-600.webp",
+     "alt": "Petrivtsi House — łazienka z wolnostojącą wanną",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1l8ggYd-Xu5P-600.webp",
+     "alt": "Petrivtsi House — toaleta",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1FwmotKdTE-d-600.webp",
+     "alt": "Petrivtsi House — garderoba",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1BCMJKrx7QL5-600.webp",
+     "alt": "Petrivtsi House — gabinet",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1gXiWvuON9L6-600.webp",
+     "alt": "Petrivtsi House — pralnia",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/183DWyhu0rYa-600.webp",
+     "alt": "Petrivtsi House — korytarz z liniami światła",
+     "href": "/proekty/petrivtsi-house"
+    }
+   ],
+   "link": [
+    "/proekty/petrivtsi-house",
+    "Zobacz cały projekt →"
+   ]
+  },
+  {
+   "t": "facts",
+   "h2": "CAS Development w liczbach",
+   "items": [
+    [
+     "150+",
+     "projektów"
+    ],
+    [
+     "10+ lat",
+     "doświadczenia, od 2016 roku"
+    ],
+    [
+     "36 mies.",
+     "gwarancji na prace"
+    ],
+    [
+     "±5%",
+     "dokładność kosztorysu, gdy remont robimy my"
+    ]
    ]
   },
   {
    "t": "cards",
-   "h2": "Co jest dla nas ważne",
+   "h2": "CAS Development w skrócie",
    "items": [
     {
-     "h": "Minimalizm",
-     "p": "Usuwamy zbędne i zostawiamy istotę. Każdy detal ma swoje miejsce."
+     "h": "Kim jesteśmy",
+     "p": "Studio projektowania wnętrz, remontów, budowy i kompletacji pod klucz oraz generalny wykonawca. Założyciel i CEO — Mychajło; od 2016 roku ponad 150 projektów.",
+     "href": "/pl/uslugi",
+     "more": "Wszystkie usługi"
     },
     {
-     "h": "Jakość",
-     "p": "Materiały, rozwiązania i wykonawcy sprawdzeni latami."
+     "h": "Gdzie pracujemy",
+     "p": "Biuro: ul. Antonowycza 44, Kijów. Kijów i obwód; remonty i budowy we wszystkich obwodach Ukrainy i w Europie.",
+     "href": "/pl/kontakt",
+     "more": "Kontakt"
     },
     {
-     "h": "Przejrzystość",
-     "p": "Raporty zdjęciowe co 1–2 tygodnie i kosztorys bez ukrytych pozycji."
+     "h": "Ile to kosztuje",
+     "p": "Projekt wnętrza od $30/m² (min. $2 500), remont od $550/m², biuro od $350/m², dom pod klucz od $1 100/m².",
+     "href": "/pl/kalkulator-remontu",
+     "more": "Kalkulator"
     },
     {
-     "h": "Indywidualność",
-     "p": "Żadnych szablonów: każdy projekt odzwierciedla konkretnego człowieka."
+     "h": "Kto wykonuje prace",
+     "p": "Trzy własne etatowe ekipy, a nie podwykonawcy. Gwarancja 36 miesięcy; kosztorys ±5%, jeśli remont robi CAS.",
+     "href": "/pl/faq",
+     "more": "Częste pytania"
     }
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "steps",
+   "h2": "Jak pracujemy",
+   "items": [
+    [
+     "Brief",
+     "Spotkanie lub wideorozmowa o obiekcie, stylu życia, budżecie i terminach."
+    ],
+    [
+     "Projekt",
+     "Warianty układu, wizualizacje 3D i komplet rysunków."
+    ],
+    [
+     "Kosztorys i umowa",
+     "Cena, terminy i etapy płatności ustalone przed startem."
+    ],
+    [
+     "Remont i dostawy",
+     "Własne ekipy, zakupy, raporty zdjęciowe co 1–2 tygodnie."
+    ],
+    [
+     "Odbiór",
+     "Meble zamontowane, wnętrze ostylizowane, 36 miesięcy gwarancji."
+    ]
    ]
   },
   {
@@ -48,25 +191,29 @@
    "h2": "Gdzie pracujemy",
    "items": [
     {
+     "ico": "📍",
      "h": "Kijów",
      "p": "Baza studia: mieszkania, domy i lokale komercyjne z wizytą na miejscu."
     },
     {
+     "ico": "🇺🇦",
      "h": "Ukraina",
      "p": "Projekty, remonty, budowa i wyposażenie w całym kraju."
     },
     {
+     "ico": "🇪🇺",
      "h": "Europa",
      "p": "Projekty w Hiszpanii, Francji, Niemczech i Polsce: projektowanie, prowadzenie i wyposażenie."
     },
     {
+     "ico": "🌍",
      "h": "Świat",
      "p": "Projekty na Bali, w Turcji (Kitana Beach, Bodrum) i USA; projektowanie online i prowadzenie projektów."
     }
    ]
   },
   {
-   "t": "cards",
+   "t": "team",
    "h2": "Ludzie, którzy prowadzą Twój projekt",
    "items": [
     {
@@ -94,10 +241,143 @@
      "role": "Programista AI",
      "p": "Strona, zgłoszenia, asystenci i automatyzacja."
     }
+   ],
+   "crew": {
+    "h3": "Własny zespół wykonawczy",
+    "p": "Etatowi kierownicy robót, stolarze i specjaliści, którzy pracują przy Twoim projekcie.",
+    "groups": [
+     {
+      "label": "Kierownicy robót",
+      "p": "",
+      "people": [
+       [
+        "Ołeh",
+        ""
+       ],
+       [
+        "Wołodymyr",
+        ""
+       ],
+       [
+        "Serhij",
+        ""
+       ],
+       [
+        "Ołeksandr",
+        ""
+       ],
+       [
+        "Mychajło",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Stolarze",
+      "p": "",
+      "people": [
+       [
+        "Serhij",
+        ""
+       ],
+       [
+        "Andrij",
+        ""
+       ],
+       [
+        "Ołeh",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Geodezja",
+      "p": "",
+      "people": [
+       [
+        "Mykoła",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Pomiar 3D",
+      "p": "",
+      "people": [
+       [
+        "Władysław",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Zdjęcia z drona",
+      "p": "",
+      "people": [
+       [
+        "Mychajło",
+        ""
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "t": "faq",
+   "h2": "CAS Development w skrócie: częste pytania",
+   "items": [
+    [
+     "Czym jest CAS Development?",
+     "Studiem projektowania wnętrz, remontów i budowy pod klucz z Kijowa, założonym w 2016 roku: projekty wnętrz, remonty mieszkań i domów, budowa, biura i lokale usługowe oraz meble prosto z fabryk w Chinach."
+    ],
+    [
+     "Kto założył CAS Development?",
+     "Studio założył Mychajło — założyciel i CEO — w Kijowie w 2016 roku."
+    ],
+    [
+     "Gdzie pracuje CAS Development?",
+     "Biuro mieści się przy ul. Antonowycza 44 w Kijowie. Pracujemy w Kijowie i obwodzie, remonty i budowy realizujemy we wszystkich obwodach Ukrainy i w Europie; projekty były i są na Bali, w Hiszpanii, USA, Francji, Niemczech, Polsce i Turcji."
+    ],
+    [
+     "Ile kosztują usługi?",
+     "Projekt wnętrza od $30/m² (minimum $2 500), remont pod klucz od $550/m² (robocizna i materiały budowlane), biuro od $350/m², umeblowanie od $250/m², dom: stan surowy od $600/m², pod klucz od $1 100/m². Dokładną kwotę ustalamy w kosztorysie po pomiarze."
+    ]
    ]
   },
   {
-   "t": "guarantees"
+   "t": "cta",
+   "h2": "Co mówią klienci",
+   "score": "4,8",
+   "p": [
+    "Opinie osób, z którymi zrealizowaliśmy już projekty, zebrane są w naszym profilu Google."
+   ],
+   "btns": [
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Czytaj opinie w Google",
+     1
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "h2": "Porozmawiajmy o Twoim projekcie",
+   "p": [
+    "Opowiedz o obiekcie — zaproponujemy rozwiązanie i policzymy orientacyjny budżet. Konsultacja telefoniczna jest bezpłatna."
+   ],
+   "btns": [
+    [
+     "/pl/kontakt",
+     "Wyślij zapytanie",
+     1
+    ],
+    [
+     "tel:+380978667755",
+     "+380 97 866 77 55"
+    ]
+   ],
+   "msgs": true
   },
   {
    "t": "rel",

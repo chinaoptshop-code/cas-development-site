@@ -11,36 +11,179 @@
   "https://wa.me/380978667755",
   "WhatsApp"
  ],
+ "kicker": "About the studio",
+ "hero_img": {
+  "img": "img/1lovunAyUeQX-1400.webp",
+  "srcset": "/img/1lovunAyUeQX-r400.webp 400w, /img/1lovunAyUeQX-r600.webp 600w, /img/1lovunAyUeQX-r800.webp 800w, /img/1lovunAyUeQX-r1200.webp 1200w, /img/1lovunAyUeQX-1400.webp 1400w",
+  "alt": "Yacht Restaurant — restaurant interior design by CAS Development",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "text",
+   "t": "split",
+   "img": "img/18ej1fH-11uo-800.webp",
+   "srcset": "/img/18ej1fH-11uo-r400.webp 400w, /img/18ej1fH-11uo-r600.webp 600w, /img/18ej1fH-11uo-800.webp 800w",
+   "alt": "Yacht Restaurant — restaurant interior design by CAS Development",
+   "badge": [
+    "2016",
+    "Founded in Kyiv"
+   ],
    "h2": "Our approach",
    "p": [
     "Since 2016 we have completed more than 150 projects in Ukraine and abroad. We do not copy trends: first we understand how you live or work, and then we create the space around that.",
     "Every project starts with a brief and a meeting (in person or by video call) and ends with the handover of the property; when we do the renovation, the same manager runs the project on site.",
     "Furniture and materials come directly from China through our own Ozdoba line: minimum order from $500, delivery 30–60 days."
+   ],
+   "vals": [
+    [
+     "Minimalism",
+     "We remove the unnecessary and keep the essence. Every detail has its place."
+    ],
+    [
+     "Quality",
+     "Materials, solutions and contractors proven over the years."
+    ],
+    [
+     "Transparency",
+     "Photo reports every 1–2 weeks and an estimate without hidden items."
+    ],
+    [
+     "Individuality",
+     "No templates: every project reflects a particular person."
+    ]
+   ]
+  },
+  {
+   "t": "strip",
+   "kicker": "An example of our work",
+   "h2": "Petrivtsi House — a 320 m² private house in Petrivtsi",
+   "p": "Interior design project: bedrooms, bathrooms, dressing room, study and laundry.",
+   "items": [
+    {
+     "img": "img/1GKGW5SVI27I-600.webp",
+     "alt": "Petrivtsi House — bedroom",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/197Bi23wSzVk-600.webp",
+     "alt": "Petrivtsi House — bedroom, details",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1A6d14UC4Yii-600.webp",
+     "alt": "Petrivtsi House — bathroom with a freestanding bath",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1l8ggYd-Xu5P-600.webp",
+     "alt": "Petrivtsi House — washroom",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1FwmotKdTE-d-600.webp",
+     "alt": "Petrivtsi House — dressing room",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1BCMJKrx7QL5-600.webp",
+     "alt": "Petrivtsi House — study",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/1gXiWvuON9L6-600.webp",
+     "alt": "Petrivtsi House — laundry",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/183DWyhu0rYa-600.webp",
+     "alt": "Petrivtsi House — hallway with light lines",
+     "href": "/proekty/petrivtsi-house"
+    }
+   ],
+   "link": [
+    "/proekty/petrivtsi-house",
+    "See the whole project →"
+   ]
+  },
+  {
+   "t": "facts",
+   "h2": "CAS Development in numbers",
+   "items": [
+    [
+     "150+",
+     "projects"
+    ],
+    [
+     "10+ years",
+     "of experience, since 2016"
+    ],
+    [
+     "36 mo.",
+     "warranty on works"
+    ],
+    [
+     "±5%",
+     "estimate accuracy when we do the renovation"
+    ]
    ]
   },
   {
    "t": "cards",
-   "h2": "What we value",
+   "h2": "CAS Development in brief",
    "items": [
     {
-     "h": "Minimalism",
-     "p": "We remove the unnecessary and keep the essence. Every detail has its place."
+     "h": "Who we are",
+     "p": "An interior design, renovation, construction and turnkey furnishing studio and general contractor. Founder and CEO — Mykhailo; 150+ projects since 2016.",
+     "href": "/en/services",
+     "more": "All services"
     },
     {
-     "h": "Quality",
-     "p": "Materials, solutions and contractors proven over the years."
+     "h": "Where we work",
+     "p": "Office at 44 Antonovycha St., Kyiv. Kyiv and the region; renovation and construction in all regions of Ukraine and in Europe.",
+     "href": "/en/contact",
+     "more": "Contact"
     },
     {
-     "h": "Transparency",
-     "p": "Photo reports every 1–2 weeks and an estimate without hidden items."
+     "h": "What it costs",
+     "p": "Design project from $30/m² (min. $2 500), renovation from $550/m², offices from $350/m², turnkey house from $1 100/m².",
+     "href": "/en/renovation-cost-calculator",
+     "more": "Calculator"
     },
     {
-     "h": "Individuality",
-     "p": "No templates: every project reflects a particular person."
+     "h": "Who does the work",
+     "p": "Three in-house crews of our own staff, not subcontractors. 36-month warranty; the estimate holds within ±5% if CAS does the renovation.",
+     "href": "/en/contract-warranty-payment",
+     "more": "Contract and warranty"
     }
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "steps",
+   "h2": "How we work",
+   "items": [
+    [
+     "Brief",
+     "A meeting or video call about the property, your lifestyle, budget and timeline."
+    ],
+    [
+     "Design project",
+     "Layout options, 3D visualisations and a full set of drawings."
+    ],
+    [
+     "Estimate and contract",
+     "Price, timeline and payment stages fixed before work begins."
+    ],
+    [
+     "Renovation and supply",
+     "Our crews, material purchasing, photo reports every 1–2 weeks."
+    ],
+    [
+     "Handover",
+     "Furniture installed, space styled, 36-month warranty on works."
+    ]
    ]
   },
   {
@@ -48,25 +191,29 @@
    "h2": "Where we work",
    "items": [
     {
+     "ico": "📍",
      "h": "Kyiv",
      "p": "The studio’s home base: apartments, houses and commercial spaces with site visits."
     },
     {
+     "ico": "🇺🇦",
      "h": "Ukraine",
      "p": "Design, renovation, construction and furnishing across the country."
     },
     {
+     "ico": "🇪🇺",
      "h": "Europe",
      "p": "Projects in Spain, France, Germany and Poland: design, project support and furnishing."
     },
     {
+     "ico": "🌍",
      "h": "Worldwide",
      "p": "Projects in Bali, Turkey (Kitana Beach, Bodrum) and the USA; online design and project support."
     }
    ]
   },
   {
-   "t": "cards",
+   "t": "team",
    "h2": "The people behind your project",
    "items": [
     {
@@ -94,41 +241,87 @@
      "role": "AI developer",
      "p": "Website, requests, assistants and automation."
     }
-   ]
-  },
-  {
-   "t": "cards",
-   "h2": "Our in-house crew",
-   "items": [
-    {
-     "h": "Site managers",
-     "role": "Oleh, Volodymyr, Serhii, Oleksandr, Mykhailo",
-     "p": "Run the crews on site: sequence and quality of work, sign-off of every stage."
-    },
-    {
-     "h": "Furniture makers",
-     "role": "Serhii, Andrii, Oleh",
-     "p": "Build and install kitchens, wardrobes and custom furniture from the project drawings."
-    },
-    {
-     "h": "Land surveyor",
-     "role": "Mykola",
-     "p": "Site surveys, setting out and level control during construction."
-    },
-    {
-     "h": "3D measurement",
-     "role": "Vladyslav",
-     "p": "3D measurement of spaces and as-built drawings — an accurate base for design and estimates."
-    },
-    {
-     "h": "Drone filming",
-     "role": "Mykhailo",
-     "p": "Drone photo and video of plots, facades and construction progress for client reports."
-    }
-   ]
-  },
-  {
-   "t": "guarantees"
+   ],
+   "crew": {
+    "h3": "Our in-house crew",
+    "p": "Staff site managers, furniture makers and specialists who work on your project.",
+    "groups": [
+     {
+      "label": "Site managers",
+      "p": "Run the crews on site: sequence and quality of work, sign-off of every stage.",
+      "people": [
+       [
+        "Oleh",
+        ""
+       ],
+       [
+        "Volodymyr",
+        ""
+       ],
+       [
+        "Serhii",
+        ""
+       ],
+       [
+        "Oleksandr",
+        ""
+       ],
+       [
+        "Mykhailo",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Furniture makers",
+      "p": "Build and install kitchens, wardrobes and custom furniture from the project drawings.",
+      "people": [
+       [
+        "Serhii",
+        ""
+       ],
+       [
+        "Andrii",
+        ""
+       ],
+       [
+        "Oleh",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Land surveyor",
+      "p": "Site surveys, setting out and level control during construction.",
+      "people": [
+       [
+        "Mykola",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "3D measurement",
+      "p": "3D measurement of spaces and as-built drawings — an accurate base for design and estimates.",
+      "people": [
+       [
+        "Vladyslav",
+        ""
+       ]
+      ]
+     },
+     {
+      "label": "Drone filming",
+      "p": "Drone photo and video of plots, facades and construction progress for client reports.",
+      "people": [
+       [
+        "Mykhailo",
+        ""
+       ]
+      ]
+     }
+    ]
+   }
   },
   {
    "t": "faq",
@@ -168,6 +361,40 @@
      "Call +380 97 866 77 55 or message on Telegram — phone consultations are free. Next come the brief, a paid site survey, the estimate and the contract."
     ]
    ]
+  },
+  {
+   "t": "cta",
+   "h2": "What clients say",
+   "score": "4,8",
+   "p": [
+    "Reviews from people we have already completed projects with are collected in our Google profile."
+   ],
+   "btns": [
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Read reviews on Google",
+     1
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "h2": "Let’s discuss your project",
+   "p": [
+    "Tell us about your property — we will suggest a solution and estimate an indicative budget. The phone consultation is free."
+   ],
+   "btns": [
+    [
+     "/en/contact",
+     "Send a request",
+     1
+    ],
+    [
+     "tel:+380978667755",
+     "+380 97 866 77 55"
+    ]
+   ],
+   "msgs": true
   },
   {
    "t": "rel",
