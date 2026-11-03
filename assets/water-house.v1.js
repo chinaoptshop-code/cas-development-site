@@ -81,14 +81,23 @@
     // 5 місток до берега: опори, прогони, дошки
     add('plat', box('wh-beam', bx - 0.1, bx + 0.1, SH, 0, Z - 0.3, Z - 0.1) + box('wh-beam', bx + 1.3, bx + 1.5, SH, 0, Z - 0.3, Z - 0.1), 4, 0.1);
     for (y = SH, n = 0; y < 0; y += 0.3, n++) add('plat', poly('wh-board b' + (n % 2), rect(bx - 0.1, bx + 1.5, y, Math.min(0, y + 0.27), Z)), 4, 0.25 + 0.6 * (y - SH) / -SH);
-    add('plat', line('wh-rail', [bx - 0.1, SH, Z + 1, bx - 0.1, 0, Z + 1]) + line('wh-rail', [bx + 1.5, SH, Z + 1, bx + 1.5, 0, Z + 1]), 4, 0.9);
-    // 6 каркас: стійки одна за одною, обвʼязка зверху
-    var studs = [];
-    for (x = hx0; x <= hx1 + 0.01; x += hw / Math.round(hw / 0.9)) { studs.push([x, hy0]); studs.push([x, hy1]); }
-    for (y = hy0 + 0.9; y < hy1 - 0.1; y += 0.9) { studs.push([hx0, y]); studs.push([hx1, y]); }
-    studs.sort(function (a, b) { return (a[0] + a[1]) - (b[0] + b[1]); });
-    studs.forEach(function (s, k) { add('house', box('wh-stud', s[0] - 0.06, s[0] + 0.06, s[1] - 0.06, s[1] + 0.06, Z, zt), 5, 0.05 + 0.75 * k / studs.length); });
-    add('house', poly('wh-plate', rect(hx0, hx1, hy0, hy1, zt)), 5, 0.9);
+    var bp = ''; for (y = SH; y <= 0.01; y += -SH / 3) bp += line('wh-bal', [bx - 0.1, y, Z, bx - 0.1, y, Z + 1]) + line('wh-bal', [bx + 1.5, y, Z, bx + 1.5, y, Z + 1]);
+    add('plat', bp + line('wh-rail', [bx - 0.1, SH, Z + 1, bx - 0.1, 0, Z + 1]) + line('wh-rail', [bx + 1.5, SH, Z + 1, bx + 1.5, 0, Z + 1]), 4, 0.9);
+    // 6 каркас: нижня обвʼязка по периметру → стійки стін (подвійні біля прорізів, ригелі над вікнами) → верхня обвʼязка; без окремих «палиць»
+    var tb = 0.12, zs = Z + tb, zp = zt - tb, frm = [];
+    function sill(c, z0, z1, side) { return side === 'b' ? box(c, hx0, hx1, hy0 - 0.06, hy0 + 0.06, z0, z1) + box(c, hx0 - 0.06, hx0 + 0.06, hy0, hy1, z0, z1)
+      : box(c, hx1 - 0.06, hx1 + 0.06, hy0, hy1, z0, z1) + box(c, hx0, hx1 + 0.06, hy1 - 0.06, hy1 + 0.06, z0, z1); }
+    add('house', sill('wh-plt', Z, zs, 'b'), 5, 0.02);
+    add('house', sill('wh-plt', Z, zs, 'f'), 5, 0.06);
+    var nx = Math.max(2, Math.round(hw / 0.9)), ny = Math.max(2, Math.round(hd / 0.9));
+    for (i = 0; i <= nx; i++) { x = hx0 + hw * i / nx; frm.push([x, hy0]); frm.push([x, hy1]); }
+    for (i = 1; i < ny; i++) { y = hy0 + hd * i / ny; frm.push([hx0, y]); frm.push([hx1, y]); }
+    frm.sort(function (a, b) { return (a[0] + a[1]) - (b[0] + b[1]); });
+    frm.forEach(function (q, k) { add('house', box('wh-stud', q[0] - 0.07, q[0] + 0.07, q[1] - 0.07, q[1] + 0.07, zs, zp), 5, 0.08 + 0.37 * k / frm.length); });
+    // ригелі прорізів (на фасадах до води) — ті самі ділянки, що потім стануть склом
+    for (y = hy0, n = 0; y < hy1 - 0.01; y += 1.2, n++) { var y2 = Math.min(hy1, y + 1.2); if (y > hy0 + 0.6 && y2 < hy1 - 0.6 && n % 2) add('house', box('wh-plt', hx1 - 0.05, hx1 + 0.05, y, y2, zp - 0.5, zp - 0.4) + box('wh-plt', hx1 - 0.05, hx1 + 0.05, y, y2, Z + 0.5, Z + 0.6), 5, 0.58); }
+    for (x = hx0, n = 0; x < hx1 - 0.01; x += 1.2, n++) { var x2 = Math.min(hx1, x + 1.2); if (x > hx0 + 0.5 && x2 < hx1 - 0.5 && n % 4 !== 3) add('house', box('wh-plt', x, x2, hy1 - 0.05, hy1 + 0.05, zp - 0.5, zp - 0.4), 5, 0.62); }
+    add('house', sill('wh-plt', zp, zt, 'b') + sill('wh-plt', zp, zt, 'f'), 5, 0.48);
     // 7 покрівля: двосхилий дах листами (ближній схил — смугами), фронтон
     var ov = 0.5, rs = (hx1 - hx0 + 2 * ov) / Math.ceil((hx1 - hx0) / 1.2);
     add('house', poly('wh-gab', [hx1, hy0, zt, hx1, hy1, zt, hx1, yc, zr]), 6, 0.05);
@@ -127,8 +136,8 @@
     add('night', '<rect class="wh-night" x="-9999" y="-9999" width="19999" height="19999"/>', DUSK, 0.02);
     var lamps = []; for (x = 1; x < PW; x += 3) lamps.push([x, PD]); for (y = 2; y < PD; y += 3.5) lamps.push([-1.15, y]);
     lamps.forEach(function (q, k) {
-      var a = P(q[0], q[1] + 0.6, 0), b = P(q[0], q[1] + 0.6, -1.6);
-      add('glow', dot('wh-lamp', q[0], q[1], Z + 1.05, 2.2) + circ('wh-gl', q[0], q[1], Z + 1, 0.9) + '<line class="wh-streak" style="animation-delay:' + (k * 0.37).toFixed(2) + 's" x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '"/>', DUSK, 0.3 + 0.5 * k / lamps.length);
+      var a = P(q[0], q[1] + 0.6, 0), b = P(q[0], q[1] + 0.6, -1.6); // доріжка світла — лише від ближнього краю (за дальнім її закриває настил)
+      add('glow', dot('wh-lamp', q[0], q[1], Z + 1.05, 2.2) + circ('wh-gl', q[0], q[1], Z + 1, 0.9) + (q[0] < 0 ? '' : '<line class="wh-streak" style="animation-delay:' + (k * 0.37).toFixed(2) + 's" x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '"/>'), DUSK, 0.3 + 0.5 * k / lamps.length);
     });
     // 12 здача: господарі на терасі, човен на воді
     add('ppl', person('p0', hx0 + 2.5, ty0 + 0.6, Z) + person('p1', hx0 + 3.3, ty0 + 0.4, Z), 11, 0.2);

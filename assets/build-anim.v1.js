@@ -587,9 +587,9 @@
     }
     A('land', 0.3, tree(1.4, GY - 1.4, 1.4, 20) + tree(GX - 1, 1.4, 1.6, 22) + circ('cr2', X0 + 2, Y1 + 1.5, 0.35, 7) + circ('cr', X0 + 3.3, Y1 + 1.55, 0.35, 8) + circ('cr2', X1 - 1.4, Y1 + 1.5, 0.35, 7), { m: 'd' });
     A('land', 0.6, pl('lp', [dX - 1.2, GY - 0.8, 0, dX - 1.2, GY - 0.8, 1.1]) + circ('lpg', dX - 1.2, GY - 0.8, 1.15, 9) + circ('bulb', dX - 1.2, GY - 0.8, 1.15, 2) + pl('lp', [GX - 1.3, GY - 0.6, 0, GX - 1.3, GY - 0.6, 1.1]) + circ('lpg', GX - 1.3, GY - 0.6, 1.15, 9) + circ('bulb', GX - 1.3, GY - 0.6, 1.15, 2));
-    // людина 1,8 м біля входу — масштаб
+    // людина 1,8 м біля входу — масштаб; зʼявляється на благоустрої (раніше стояла перед фасадом на всіх етапах і читалась як артефакт)
     var hp = P(dX + 1.1, Y1 + 1.6, 0).split(','), hq = P(dX + 1.1, Y1 + 1.6, 1.8).split(',');
-    B('<g class="man"><line x1="' + hp[0] + '" y1="' + hp[1] + '" x2="' + hq[0] + '" y2="' + (+hq[1] + 3.2) + '"/><circle cx="' + hq[0] + '" cy="' + (+hq[1] + 1.6) + '" r="1.7"/></g>');
+    A('land', 0.8, '<g class="man"><line x1="' + hp[0] + '" y1="' + hp[1] + '" x2="' + hq[0] + '" y2="' + (+hq[1] + 3.2) + '"/><circle cx="' + hq[0] + '" cy="' + (+hq[1] + 1.6) + '" r="1.7"/></g>');
     A('done', 0, seal(GX - 0.6, Y0 + 0.4, RZ + 0.9, ui), { m: 'd' });
     return { parts: L, xr: S('mep'), th: [], W: H.W, D: H.D };
   }
@@ -1275,7 +1275,7 @@
         Ly.g.style.opacity = k;
         if (p.m === 'd') Ly.g.setAttribute('transform', k < 1 ? 'translate(0 ' + (-(1 - k) * 30).toFixed(1) + ')' : '');
       }
-      if (ghost) ghost.style.opacity = (0.5 * (1 - clamp(s / (n * 0.6)))).toFixed(3);
+      if (ghost) ghost.style.opacity = (0.35 * (1 - clamp(s / (n * 0.16)))).toFixed(3); // контур майбутнього обʼєму — лише на розмітці й котловані, далі не «висить» над будинком
       camera(s); sPrev = s;
       if (sc.xr >= 0) svg.classList.toggle('xr', s >= sc.xr + 0.08 && s < sc.xr + 1);
       sc.th.forEach(function (q) { svg.classList.toggle(q[0], q[1] >= 0 && s >= q[1]); });

@@ -390,6 +390,7 @@
   .bz-cb{display:inline-flex;align-items:center;gap:6px;flex:none;min-height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--ac,#BF9148);background:rgba(16,14,12,.72);color:var(--ac,#BF9148);
     font:600 12px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
   .bz-cb[aria-expanded="true"]{background:var(--ac,#BF9148);color:#080709}
+  .bz-mats{left:0;overflow:hidden}.bz-mats .bz-cb{display:block;flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;line-height:28px} /* ряд вміщується в ширину: «Будинок» не зсувається за край, довгий підсумок — з «…» */
   .bz-cfg{display:none;top:38px;bottom:0;overflow:auto;overscroll-behavior:contain;padding:10px 10px 12px;box-sizing:border-box;background:rgba(16,14,12,.96);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:12px;z-index:4}
   .bz-fig.cfg-open .bz-cfg{display:flex}
   .bz-cfg .bz-gl{display:block;min-width:0;width:100%;margin:2px 0 0;color:var(--mu,#938c84);font-size:.6875rem;letter-spacing:.08em;text-transform:uppercase}
