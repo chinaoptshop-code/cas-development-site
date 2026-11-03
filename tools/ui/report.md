@@ -630,7 +630,7 @@
 | fr/renovation-cle-en-main.html | land | 44.5 | 13.0 | 13.6 | 0.6 | 7 | 471 |
 | fr/construction-maison.html | land | 44.4 | 12.9 | 13.6 | 0.6 | 7 | 487 |
 | pl/kalkulator-remontu.html | land | 44.3 | 13.2 | 14.2 | 1.6 | 7 | 472 |
-| pl/projektowanie-restauracji.html | land | 44.3 | 12.9 | 13.6 | 2.6 | 7 | 465 |
+| pl/projektowanie-restauracji.html | land | 44.3 | 13.0 | 13.6 | 2.6 | 7 | 465 |
 | zh/about.html | land | 44.3 | 12.9 | 13.6 | 0.6 | 7 | 531 |
 | es/construccion-de-casas.html | land | 44.2 | 12.8 | 13.6 | 0.6 | 7 | 489 |
 | es/reforma-llave-en-mano.html | land | 44.2 | 12.9 | 13.6 | 0.6 | 7 | 473 |

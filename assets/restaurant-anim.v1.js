@@ -184,8 +184,8 @@
     els.sort(function (a, b) { return a.k - b.k; });
     var c = [P(0, 0, H + 1.6), P(Wd + 2.6, 0, 0), P(0, Dp + TD, 0), P(Wd, Dp + TD, 0), P(Wd + 2.6, Dp, 0)], xs = c.map(function (q) { return +q[0]; }), ys = c.map(function (q) { return +q[1]; });
     FULL = [Math.min.apply(0, xs) - 16, Math.min.apply(0, ys) - 16, Math.max.apply(0, xs) - Math.min.apply(0, xs) + 32, Math.max.apply(0, ys) - Math.min.apply(0, ys) + 32];
-    FOC = [0, 0, [0, Dp * 0.6, Wd, Dp + 1, 0, H], [0, 0, Wd, Dp, 3, H + 1.4], [kx0 - 2, 0, Wd + 2.6, ky1 + 2.5, 0, 1], [0, 0, Wd, Dp, 0.8, 3.4], 0, 0,
-      [0, by0 - 1, bx + 2, by1 + 1, 0, 2.6], [kx0 - 1, 0, kx1, ky1 + 1, 0, 2.9], 0, [tx0 - 0.5, Dp - 0.5, tx1 + 0.5, ty1 + 0.5, 0, 2.8], 0, 0];
+    FOC = [0, 0, [0, Dp * 0.6, Wd, Dp + 1, 0, H], [0, 0, Wd, Dp, 3, H + 1.4], [kx0 - 2.5, 0, Wd + 2.8, ky1 + 2.2, 0, 1.6], [0, 0, Wd, Dp, 0.8, 3.4], 0, 0,
+      [0, by0 - 1, bx + 2, by1 + 1, 0, 2.6], [kx0 - 1.2, 0, Wd, ky1 + 0.9, 0, H], 0, [tx0 - 0.5, Dp - 0.5, tx1 + 0.5, ty1 + 0.5, 0, 2.8], 0, 0];
     svg.innerHTML = '<defs><linearGradient id="rs-gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe6f2" stop-opacity=".34"/><stop offset="1" stop-color="#9cc3d6" stop-opacity=".16"/></linearGradient>'
       + '<radialGradient id="rs-gw"><stop offset="0" stop-color="#ffd98a" stop-opacity=".9"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient>'
       + '<pattern id="rs-brick" width="12" height="8" patternUnits="userSpaceOnUse"><rect width="12" height="8" fill="#8a4a32"/><path d="M0 4h12M6 0v4M0 4v4M12 4v4" stroke="#5e3020" stroke-width=".8"/></pattern></defs>' + html;
@@ -196,13 +196,15 @@
     apply(true);
   }
   var FOC = [];
-  function target(i) {
+  function target(i) { // кадр під фактичні пропорції сцени (402 — майже квадрат, 1440 — 2:1): обʼєкт етапу — по центру й цілий
     var f = FOC[i]; if (!f) return FULL;
-    var c = [P(f[0], f[1], f[5]), P(f[2], f[1], f[4]), P(f[0], f[3], f[4]), P(f[2], f[3], f[4]), P(f[2], f[1], f[5])], xs = c.map(function (q) { return +q[0]; }), ys = c.map(function (q) { return +q[1]; });
-    var w = Math.max.apply(0, xs) - Math.min.apply(0, xs) + 50, h = Math.max.apply(0, ys) - Math.min.apply(0, ys) + 50, ar = FULL[2] / FULL[3];
-    if (w / h < ar) w = h * ar; else h = w / ar; // пропорції повного кадру — без стрибків розміру
-    w = Math.min(w, FULL[2]); h = Math.min(h, FULL[3]);
-    return [(Math.min.apply(0, xs) + Math.max.apply(0, xs)) / 2 - w / 2, (Math.min.apply(0, ys) + Math.max.apply(0, ys)) / 2 - h / 2, w, h];
+    var c = [P(f[0], f[1], f[5]), P(f[2], f[1], f[4]), P(f[0], f[3], f[4]), P(f[2], f[3], f[4]), P(f[2], f[1], f[5]), P(f[0], f[3], f[5])], xs = c.map(function (q) { return +q[0]; }), ys = c.map(function (q) { return +q[1]; });
+    var ar = svg && svg.clientWidth && svg.clientHeight ? svg.clientWidth / svg.clientHeight : FULL[2] / FULL[3];
+    var x0 = Math.min.apply(0, xs), x1 = Math.max.apply(0, xs), y0 = Math.min.apply(0, ys), y1 = Math.max.apply(0, ys), pd = Math.max(x1 - x0, y1 - y0) * 0.07 + 10;
+    var w = x1 - x0 + pd * 2, h = y1 - y0 + pd * 2, fw = Math.max(FULL[2], FULL[3] * ar), fh = fw / ar;
+    if (w / h < ar) w = h * ar; else h = w / ar;
+    if (w > fw) { w = fw; h = fh; }
+    return [(x0 + x1 - w) / 2, (y0 + y1 - h) / 2, w, h];
   }
   function apply(force) {
     var p = prog;
@@ -294,6 +296,7 @@
     svg.setAttribute('tabindex', '0');
     prog = RM ? N - 0.001 : 0;
     build();
+    W.addEventListener('resize', function () { if (shown >= 0) { vbT = target(shown); if (RM) vb = vbT.slice(); if (!raf) tick(); } });
     if (!RM) { W.addEventListener('scroll', onScroll, { passive: true }); W.addEventListener('resize', onScroll); onScroll(); }
   }
   function css() {
