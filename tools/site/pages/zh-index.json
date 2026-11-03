@@ -11,52 +11,359 @@
   "https://wa.me/380978667755",
   "WhatsApp"
  ],
+ "kicker": "设计与建筑工作室 · 基辅 · 始于 2016 年",
+ "hero_img": {
+  "img": "img/hero-hodos-villa-1280.webp",
+  "srcset": "/img/hero-hodos-villa-1280.webp 1280w, /img/hero-hodos-villa-1920.webp 1920w",
+  "alt": "明亮的餐厅：大理石餐桌、蓝色扶手椅和水晶吊灯 — CAS Development 的 Hodos Villa 设计项目，基辅",
+  "sizes": "100vw",
+  "m": {
+   "srcset": "/img/hero-hodos-villa-m720.webp 720w, /img/hero-hodos-villa-m1080.webp 1080w",
+   "w": 1080,
+   "h": 1800
+  }
+ },
  "sections": [
   {
-   "t": "cards",
+   "t": "strip",
+   "label": "我们的项目照片",
+   "items": [
+    {
+     "img": "img/18ej1fH-11uo-800.webp",
+     "srcset": "/img/18ej1fH-11uo-r400.webp 400w, /img/18ej1fH-11uo-r600.webp 600w, /img/18ej1fH-11uo-800.webp 800w",
+     "alt": "Yacht Restaurant — CAS Development 项目",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1lovunAyUeQX-800.webp",
+     "srcset": "/img/1lovunAyUeQX-r400.webp 400w, /img/1lovunAyUeQX-r600.webp 600w, /img/1lovunAyUeQX-800.webp 800w",
+     "alt": "Yacht Restaurant — CAS Development 项目",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1MslU7S5X8gI-800.webp",
+     "srcset": "/img/1MslU7S5X8gI-r400.webp 400w, /img/1MslU7S5X8gI-r600.webp 600w, /img/1MslU7S5X8gI-800.webp 800w",
+     "alt": "Linden Penthouse — CAS Development 项目",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1x1AqXqQMEpC-800.webp",
+     "srcset": "/img/1x1AqXqQMEpC-r400.webp 400w, /img/1x1AqXqQMEpC-r600.webp 600w, /img/1x1AqXqQMEpC-800.webp 800w",
+     "alt": "Linden Penthouse — CAS Development 项目",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1f3m1_qf4mDo-800.webp",
+     "srcset": "/img/1f3m1_qf4mDo-r400.webp 400w, /img/1f3m1_qf4mDo-r600.webp 600w, /img/1f3m1_qf4mDo-800.webp 800w",
+     "alt": "Hoda Estate — CAS Development 项目",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1m9fVTTPjd6n-800.webp",
+     "srcset": "/img/1m9fVTTPjd6n-r400.webp 400w, /img/1m9fVTTPjd6n-r600.webp 600w, /img/1m9fVTTPjd6n-800.webp 800w",
+     "alt": "Hoda Estate — CAS Development 项目",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1Xdje8N1V14_-800.webp",
+     "srcset": "/img/1Xdje8N1V14_-r400.webp 400w, /img/1Xdje8N1V14_-r600.webp 600w, /img/1Xdje8N1V14_-800.webp 800w",
+     "alt": "Petrivtsi House — CAS Development 项目",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/18V9n96tOhjK-800.webp",
+     "srcset": "/img/18V9n96tOhjK-r400.webp 400w, /img/18V9n96tOhjK-r600.webp 600w, /img/18V9n96tOhjK-800.webp 800w",
+     "alt": "USA House — CAS Development 项目",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1JuZ-lq-D6Yu-800.webp",
+     "srcset": "/img/1JuZ-lq-D6Yu-r400.webp 400w, /img/1JuZ-lq-D6Yu-r600.webp 600w, /img/1JuZ-lq-D6Yu-800.webp 800w",
+     "alt": "USA House — CAS Development 项目",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1hXV_Pz6_Gfn-800.webp",
+     "srcset": "/img/1hXV_Pz6_Gfn-r400.webp 400w, /img/1hXV_Pz6_Gfn-r600.webp 600w, /img/1hXV_Pz6_Gfn-800.webp 800w",
+     "alt": "Pidgirland — CAS Development 项目",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/18VXNYlwqxP5-800.webp",
+     "srcset": "/img/18VXNYlwqxP5-r400.webp 400w, /img/18VXNYlwqxP5-r600.webp 600w, /img/18VXNYlwqxP5-800.webp 800w",
+     "alt": "Pidgirland — CAS Development 项目",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/1M13ysKRsQvn-800.webp",
+     "srcset": "/img/1M13ysKRsQvn-r400.webp 400w, /img/1M13ysKRsQvn-r600.webp 600w, /img/1M13ysKRsQvn-800.webp 800w",
+     "alt": "Hodos Villa — CAS Development 项目",
+     "label": "Hodos Villa"
+    }
+   ]
+  },
+  {
+   "t": "svc",
    "h2": "业务范围",
+   "more": [
+    "/zh/services",
+    "全部服务 →"
+   ],
    "items": [
     {
      "h": "室内设计",
      "href": "/zh/interior-design",
+     "img": "img/1SGDKLtQtxQg-600.webp",
+     "srcset": "/img/1SGDKLtQtxQg-r400.webp 400w, /img/1SGDKLtQtxQg-600.webp 600w",
      "price": "$30 / m² 起 · 项目最低 $2 500",
      "p": "平面布局、3D 效果图、施工图与材料清单，任何施工方均可据此施工。",
-     "more": "了解详情"
+     "links": [
+      [
+       "/zh/interior-design",
+       "了解详情 →"
+      ]
+     ]
     },
     {
      "h": "设计方案落地",
      "href": "/zh/design-implementation",
+     "img": "img/1QEJ_y0yTWVL-600.webp",
+     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
      "price": "装修 $550 / m² 起 · 软装 $250 / m² 起",
      "p": "按照您的设计方案（我方或其他设计师）施工，效果与效果图一致。",
-     "more": "了解详情"
+     "links": [
+      [
+       "/zh/design-implementation",
+       "了解详情 →"
+      ]
+     ]
     },
     {
      "h": "交钥匙装修",
      "href": "/zh/turnkey-renovation",
+     "img": "img/197Bi23wSzVk-600.webp",
+     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
      "price": "住宅 $550 / m² 起 · 办公室 $350 / m² 起",
      "p": "自有施工队全流程：基础施工、精装修、水电暖通、材料采购与清洁。",
-     "more": "了解详情"
+     "links": [
+      [
+       "/zh/turnkey-renovation",
+       "了解详情 →"
+      ]
+     ]
     },
     {
      "h": "住宅建造",
      "href": "/zh/house-construction",
+     "img": "img/1nqFOoTfr5BD-r600.webp",
+     "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w",
      "price": "主体结构 $600 / m² 起 · 含装修交钥匙 $1 100 / m² 起",
      "p": "私人住宅与别墅：从地基、屋面到室内装修与庭院景观。",
-     "more": "了解详情"
+     "links": [
+      [
+       "/zh/house-construction",
+       "了解详情 →"
+      ]
+     ]
     },
     {
      "h": "家具软装交钥匙",
      "href": "/zh/furnishing",
+     "img": "img/1BCMJKrx7QL5-600.webp",
+     "srcset": "/img/1BCMJKrx7QL5-r400.webp 400w, /img/1BCMJKrx7QL5-600.webp 600w",
      "price": "$250 / m² 起",
      "p": "按设计方案配置家具、灯具、布艺与饰品，负责运输、安装与最终陈设。",
-     "more": "了解详情"
+     "links": [
+      [
+       "/zh/furnishing",
+       "了解详情 →"
+      ]
+     ]
     },
     {
      "h": "商业空间交钥匙",
      "href": "/zh/business-fit-out",
+     "img": "img/p/mpk-v01-600.webp",
      "price": "设计 $30 / m² 起 · 配置 $500 起",
      "p": "咖啡馆、餐厅、美容沙龙、门店与办公室：设计、施工、配置与开业一站式完成。",
-     "more": "了解详情"
+     "links": [
+      [
+       "/zh/business-fit-out",
+       "了解详情 →"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "t": "covers",
+   "h2": "我们的项目",
+   "more": [
+    "/portfolio",
+    "全部项目 →"
+   ],
+   "items": [
+    {
+     "href": "/proekty/petrivtsi-house",
+     "img": "img/1lW6SF-extZy-600.webp",
+     "srcset": null,
+     "alt": "Petrivtsi House — CAS Development 项目",
+     "name": "Petrivtsi House",
+     "loc": "佩特里夫齐 · 320 m²"
+    },
+    {
+     "href": "/proekty/hoda-estate",
+     "img": "img/1HTdBNY-oY5p-600.webp",
+     "srcset": "/img/1HTdBNY-oY5p-r400.webp 400w, /img/1HTdBNY-oY5p-600.webp 600w",
+     "alt": "Hoda Estate — CAS Development 项目",
+     "name": "Hoda Estate",
+     "loc": "喀尔巴阡山 · 180 m²"
+    },
+    {
+     "href": "/proekty/usa-house",
+     "img": "img/13MS4aVn4wzD-600.webp",
+     "srcset": "/img/13MS4aVn4wzD-r400.webp 400w, /img/13MS4aVn4wzD-600.webp 600w",
+     "alt": "USA House — CAS Development 项目",
+     "name": "USA House",
+     "loc": "美国 · 420 m²"
+    },
+    {
+     "href": "/proekty/pidgirland",
+     "img": "img/1FiLI9kKE-C8-600.webp",
+     "srcset": "/img/1FiLI9kKE-C8-r400.webp 400w, /img/1FiLI9kKE-C8-600.webp 600w",
+     "alt": "Pidgirland — CAS Development 项目",
+     "name": "Pidgirland",
+     "loc": "基辅州 · 260 m²"
+    },
+    {
+     "href": "/proekty/hodos-villa",
+     "img": "img/1M13ysKRsQvn-600.webp",
+     "srcset": "/img/1M13ysKRsQvn-r400.webp 400w, /img/1M13ysKRsQvn-600.webp 600w",
+     "alt": "Hodos Villa — CAS Development 项目",
+     "name": "Hodos Villa",
+     "loc": "基辅 · 500 m²"
+    },
+    {
+     "href": "/proekty/linden-penthouse",
+     "img": "img/1e_eYgoeMFIr-600.webp",
+     "srcset": "/img/1e_eYgoeMFIr-r400.webp 400w, /img/1e_eYgoeMFIr-600.webp 600w",
+     "alt": "Linden Penthouse — CAS Development 项目",
+     "name": "Linden Penthouse",
+     "loc": "基辅 · 210 m²"
+    }
+   ]
+  },
+  {
+   "t": "split",
+   "img": "assets/konfigurator/teaser-600.webp",
+   "srcset": "/assets/konfigurator/teaser-600.webp 600w, /assets/konfigurator/teaser-1200.webp 1200w",
+   "sizes": "(max-width:860px) 100vw, 640px",
+   "alt": "同一客厅的四种风格：Japandi、Modern classic、Dark luxury、Warm minimal",
+   "href": "/konfigurator",
+   "kicker": "新功能 · 配置器",
+   "h2": "在真实室内中试用风格",
+   "p": [
+    "在我们的项目中更换墙面、地面、面料、石材和金属，效果立即可见。Japandi、Modern classic、Dark luxury 或 Warm minimal：选择您喜欢的风格，获得该风格的设计方案。"
+   ],
+   "btn": [
+    "/konfigurator",
+    "打开配置器 →"
+   ]
+  },
+  {
+   "t": "strip",
+   "h2": "我们的作品",
+   "items": [
+    {
+     "img": "img/18ej1fH-11uo-600.webp",
+     "srcset": "/img/18ej1fH-11uo-r400.webp 400w, /img/18ej1fH-11uo-600.webp 600w",
+     "alt": "Yacht Restaurant — CAS Development 项目",
+     "href": "/proekty/yacht-restaurant",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/18W9L5_nV9nd-600.webp",
+     "srcset": "/img/18W9L5_nV9nd-r400.webp 400w, /img/18W9L5_nV9nd-600.webp 600w",
+     "alt": "Yacht Restaurant — CAS Development 项目",
+     "href": "/proekty/yacht-restaurant",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1AaaZgBHrlYH-600.webp",
+     "srcset": "/img/1AaaZgBHrlYH-r400.webp 400w, /img/1AaaZgBHrlYH-600.webp 600w",
+     "alt": "Yacht Restaurant — CAS Development 项目",
+     "href": "/proekty/yacht-restaurant",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1YQyhjEui9fb-600.webp",
+     "srcset": "/img/1YQyhjEui9fb-r400.webp 400w, /img/1YQyhjEui9fb-600.webp 600w",
+     "alt": "Linden Penthouse — CAS Development 项目",
+     "href": "/proekty/linden-penthouse",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1x1AqXqQMEpC-600.webp",
+     "srcset": "/img/1x1AqXqQMEpC-r400.webp 400w, /img/1x1AqXqQMEpC-600.webp 600w",
+     "alt": "Linden Penthouse — CAS Development 项目",
+     "href": "/proekty/linden-penthouse",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1FRa0FI6iMHK-600.webp",
+     "srcset": "/img/1FRa0FI6iMHK-r400.webp 400w, /img/1FRa0FI6iMHK-600.webp 600w",
+     "alt": "Hoda Estate — CAS Development 项目",
+     "href": "/proekty/hoda-estate",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1HZT-E30rREI-600.webp",
+     "srcset": "/img/1HZT-E30rREI-r400.webp 400w, /img/1HZT-E30rREI-600.webp 600w",
+     "alt": "Hoda Estate — CAS Development 项目",
+     "href": "/proekty/hoda-estate",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1m9fVTTPjd6n-600.webp",
+     "srcset": "/img/1m9fVTTPjd6n-r400.webp 400w, /img/1m9fVTTPjd6n-600.webp 600w",
+     "alt": "Hoda Estate — CAS Development 项目",
+     "href": "/proekty/hoda-estate",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1OR5i7-rm1k0-600.webp",
+     "srcset": "/img/1OR5i7-rm1k0-r400.webp 400w, /img/1OR5i7-rm1k0-600.webp 600w",
+     "alt": "Petrivtsi House — CAS Development 项目",
+     "href": "/proekty/petrivtsi-house",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1szuqdURge8M-600.webp",
+     "srcset": "/img/1szuqdURge8M-r400.webp 400w, /img/1szuqdURge8M-600.webp 600w",
+     "alt": "Petrivtsi House — CAS Development 项目",
+     "href": "/proekty/petrivtsi-house",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/13MS4aVn4wzD-600.webp",
+     "srcset": "/img/13MS4aVn4wzD-r400.webp 400w, /img/13MS4aVn4wzD-600.webp 600w",
+     "alt": "USA House — CAS Development 项目",
+     "href": "/proekty/usa-house",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1m0zZfD8pTTz-600.webp",
+     "srcset": "/img/1m0zZfD8pTTz-r400.webp 400w, /img/1m0zZfD8pTTz-600.webp 600w",
+     "alt": "USA House — CAS Development 项目",
+     "href": "/proekty/usa-house",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1Y_dreM4mLMX-600.webp",
+     "srcset": "/img/1Y_dreM4mLMX-r400.webp 400w, /img/1Y_dreM4mLMX-600.webp 600w",
+     "alt": "USA House — CAS Development 项目",
+     "href": "/proekty/usa-house",
+     "label": "USA House"
     }
    ]
   },
@@ -67,44 +374,6 @@
     "设计、施工与供货由同一家公司负责，避免多家承包商之间的衔接空档与责任推诿。开工前出具预算；若由我方团队施工，最终费用与预算的偏差不超过 ±5%。",
     "我们服务乌克兰、欧洲及其他国家的客户，曾为美国和阿联酋的住宅与别墅完成设计。设计全过程可在线进行，图纸深度足以交由当地施工方执行。",
     "我们与中国家具、灯具和建材厂商长期直接合作，熟悉供应链与质量把控，可为乌克兰及欧洲项目提供可靠的配套供应。"
-   ]
-  },
-  {
-   "t": "gallery",
-   "h2": "精选项目",
-   "items": [
-    [
-     "img/p/18V9n96tOhjKjh-900.webp",
-     "USA House · 美国"
-    ],
-    [
-     "img/p/1uBxYPk7W36Rp0-900.webp",
-     "Dubai Villa · 阿联酋"
-    ],
-    [
-     "img/p/1MslU7S5X8gIEp-900.webp",
-     "Linden Penthouse · 基辅"
-    ],
-    [
-     "img/p/1Grj8_m7MJwsbE-900.webp",
-     "Hodos Villa · 基辅"
-    ],
-    [
-     "img/p/18ej1fH-11uoyr-900.webp",
-     "Yacht Restaurant"
-    ],
-    [
-     "img/p/1A9yy4nI-gf9h3-900.webp",
-     "Kitana Beach · 度假村（土耳其博德鲁姆）"
-    ],
-    [
-     "img/p/1FRa0FI6iMHK5L-900.webp",
-     "Hoda Estate · 喀尔巴阡山"
-    ],
-    [
-     "img/p/1xqY1KZo2JY5xq-900.webp",
-     "Tetris Hall · 基辅"
-    ]
    ]
   },
   {
@@ -155,6 +424,44 @@
     [
      "如何联系？",
      "可通过 WhatsApp、Telegram、Viber 或下方表单联系我们，我们会尽快回复。"
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "kicker": "客户评价",
+   "score": "4,8",
+   "p": [
+    "工作室在 Google 上的评分，来自与我们合作完成项目的客户评价。"
+   ],
+   "btns": [
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "在 Google 查看评价",
+     1
+    ],
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "留下评价"
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "cls": "home-next",
+   "h2": "聊聊您的项目？",
+   "p": [
+    "留下电话——我们会回电了解您的物业并建议下一步。电话咨询免费。"
+   ],
+   "btns": [
+    [
+     "#zayavka",
+     "留下电话",
+     1
+    ],
+    [
+     "/zh/renovation-calculator",
+     "估算费用"
     ]
    ]
   }

@@ -1,0 +1,1226 @@
+{
+ "slug": "index",
+ "lang": "uk",
+ "service": "Консультація (головна)",
+ "title": "Дизайн-студія інтерʼєру й ремонт під ключ у Києві — CAS",
+ "description": "Дизайн інтерʼєру від $30/м², ремонт і будівництво під ключ у Києві: квартири, будинки, офіси, ресторани. 150+ проєктів з 2016. Консультація безкоштовно.",
+ "h1": "Дизайн інтерʼєру та ремонт під ключ у Києві",
+ "lead": "Дизайн інтерʼєру та ремонт під ключ у Києві: від першого ескізу до ключів — одна команда, власні бригади й діалог з кожним клієнтом.",
+ "cta": "Розпочати проєкт",
+ "btn2": [
+  "/portfolio",
+  "Переглянути роботи"
+ ],
+ "facts": [
+  [
+   "150+",
+   "Проєктів з 2016 року"
+  ],
+  [
+   "10+",
+   "Років досвіду"
+  ],
+  [
+   "$30/м²",
+   "Дизайн від"
+  ]
+ ],
+ "kicker": "Студія дизайну та архітектури · Київ · з 2016 року",
+ "hero_img": {
+  "img": "img/hero-hodos-villa-1280.webp",
+  "srcset": "/img/hero-hodos-villa-1280.webp 1280w, /img/hero-hodos-villa-1920.webp 1920w",
+  "alt": "Світла їдальня з мармуровим столом, блакитними кріслами й кришталевою люстрою — дизайн-проєкт Hodos Villa від CAS Development, Київ",
+  "sizes": "100vw",
+  "m": {
+   "srcset": "/img/hero-hodos-villa-m720.webp 720w, /img/hero-hodos-villa-m1080.webp 1080w",
+   "w": 1080,
+   "h": 1800
+  }
+ },
+ "ld_raw": [
+  {
+   "@context": "https://schema.org",
+   "@graph": [
+    {
+     "@type": [
+      "HomeAndConstructionBusiness",
+      "GeneralContractor"
+     ],
+     "@id": "https://cas-develop.com/#business",
+     "name": "CAS Development",
+     "founder": {
+      "@type": "Person",
+      "name": "Михайло",
+      "jobTitle": "Засновник і CEO"
+     },
+     "foundingDate": "2016",
+     "description": "Студія дизайну інтерʼєру, ремонт, будівництво й генпідряд під ключ у Києві: квартири, будинки, офіси, ресторани, готелі; комплектація меблями з Китаю.",
+     "url": "https://cas-develop.com/",
+     "telephone": "+380978667755",
+     "priceRange": "$$$",
+     "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "вул. Антоновича, 44",
+      "addressLocality": "Київ",
+      "addressCountry": "UA"
+     },
+     "areaServed": [
+      {
+       "@type": "City",
+       "name": "Київ"
+      },
+      {
+       "@type": "AdministrativeArea",
+       "name": "Київська область"
+      },
+      {
+       "@type": "Place",
+       "name": "Печерськ, Київ"
+      },
+      {
+       "@type": "Place",
+       "name": "Липки, Київ"
+      },
+      {
+       "@type": "Place",
+       "name": "Конча-Заспа"
+      },
+      {
+       "@type": "Place",
+       "name": "Козин"
+      },
+      {
+       "@type": "Place",
+       "name": "Пуща-Водиця"
+      },
+      {
+       "@type": "Country",
+       "name": "Україна"
+      },
+      {
+       "@type": "Continent",
+       "name": "Європа"
+      }
+     ],
+     "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 50.4335971,
+      "longitude": 30.5131241
+     },
+     "hasMap": "https://maps.google.com/?cid=15015666645432112566",
+     "sameAs": [
+      "https://www.instagram.com/cas_development/",
+      "https://maps.google.com/?cid=15015666645432112566",
+      "https://www.youtube.com/@cas_development"
+     ],
+     "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Послуги",
+      "itemListElement": [
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Дизайн інтерʼєру"
+        },
+        "url": "https://cas-develop.com/dyzain-interieru-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 30,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Ремонт квартир під ключ"
+        },
+        "url": "https://cas-develop.com/remont-kvartyr-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 550,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Ремонт офісу під ключ"
+        },
+        "url": "https://cas-develop.com/remont-ofisu-pid-klyuch-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 350,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Будівництво будинків"
+        },
+        "url": "https://cas-develop.com/budivnytstvo-budynkiv-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 600,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Будинок під ключ з оздобленням"
+        },
+        "url": "https://cas-develop.com/budivnytstvo-budynkiv-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 1100,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Меблювання та комплектація квартири"
+        },
+        "url": "https://cas-develop.com/mebliuvannia-kvartyry-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 250,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Ландшафтний дизайн"
+        },
+        "url": "https://cas-develop.com/landshaftnyi-dyzain-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 50,
+         "priceCurrency": "USD",
+         "unitText": "сотка"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Комплектація меблями з Китаю"
+        },
+        "url": "https://cas-develop.com/ozdoba"
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Реалізація дизайн-проєкту під ключ"
+        },
+        "url": "https://cas-develop.com/realizatsiia-dyzain-proektu-kyiv"
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Комплектація обʼєкта під ключ"
+        },
+        "url": "https://cas-develop.com/komplektatsiia-pid-kliuch-kyiv"
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Ремонтна бригада"
+        },
+        "url": "https://cas-develop.com/remontna-bryhada-kyiv"
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Генеральний підряд"
+        },
+        "url": "https://cas-develop.com/heneralnyi-pidriadnyk-kyiv"
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Дизайн інтерʼєру преміум-класу"
+        },
+        "url": "https://cas-develop.com/dyzain-interieru-premium-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 30,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Ремонт преміум-класу"
+        },
+        "url": "https://cas-develop.com/remont-premium-klasu-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 550,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Дизайн інтерʼєру будинку"
+        },
+        "url": "https://cas-develop.com/dyzain-interieru-budynku-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 30,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Дизайн і ремонт офісу"
+        },
+        "url": "https://cas-develop.com/dyzain-ofisu-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 30,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Дизайн і ремонт готелю під ключ"
+        },
+        "url": "https://cas-develop.com/dyzain-hotelu-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 30,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Ремонт ресторану й кафе під ключ"
+        },
+        "url": "https://cas-develop.com/remont-restoranu-kafe-kyiv"
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Авторський і технічний нагляд"
+        },
+        "url": "https://cas-develop.com/avtorskyi-i-tekhnichnyi-nahliad-kyiv"
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Реконструкція будинку"
+        },
+        "url": "https://cas-develop.com/rekonstruktsiia-budynku-kyiv"
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Дизайн і ремонт пентхауса"
+        },
+        "url": "https://cas-develop.com/dyzain-i-remont-penthausa-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 30,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Дизайн інтерʼєру в стилі неокласика"
+        },
+        "url": "https://cas-develop.com/dyzain-interieru-neoklasyka-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 30,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Перепланування квартири: проєкт і ремонт"
+        },
+        "url": "https://cas-develop.com/pereplanuvannia-kvartyry-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 6,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Ремонт таунхауса під ключ"
+        },
+        "url": "https://cas-develop.com/remont-taunkhausa-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 550,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Будинок з газоблоку під ключ"
+        },
+        "url": "https://cas-develop.com/budynok-z-hazobloku-pid-kliuch-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 1100,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Облаштування офісу під ключ (fit-out)"
+        },
+        "url": "https://cas-develop.com/oblashtuvannia-ofisu-pid-kliuch-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 350,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Дизайн і ремонт магазину та шоуруму"
+        },
+        "url": "https://cas-develop.com/dyzain-i-remont-mahazynu-shourumu-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 30,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       },
+       {
+        "@type": "Offer",
+        "itemOffered": {
+         "@type": "Service",
+         "name": "Архітектурний проєкт будинку"
+        },
+        "url": "https://cas-develop.com/proektuvannia-budynku-kyiv",
+        "priceSpecification": {
+         "@type": "UnitPriceSpecification",
+         "price": 12,
+         "priceCurrency": "USD",
+         "unitText": "м²"
+        }
+       }
+      ]
+     },
+     "image": "https://cas-develop.com/img/og-cas.jpg",
+     "logo": "https://cas-develop.com/apple-touch-icon.png",
+     "knowsAbout": [
+      "дизайн інтерʼєру",
+      "ремонт під ключ",
+      "будівництво будинків",
+      "генеральний підряд",
+      "меблювання й комплектація",
+      "меблі з Китаю",
+      "ландшафтний дизайн",
+      "дизайн ресторанів і готелів",
+      "ремонт офісів",
+      "дизайн пентхаусів",
+      "дизайн інтерʼєру в стилі неокласика",
+      "перепланування квартир",
+      "облаштування офісів під ключ (fit-out)",
+      "будинки з газоблоку під ключ",
+      "каркасні й модульні будинки",
+      "ремонт таунхаусів",
+      "дизайн і ремонт магазинів і шоурумів",
+      "архітектурне проєктування будинків",
+      "авторський і технічний нагляд"
+     ],
+     "email": "china.opt.shop@gmail.com",
+     "slogan": "150+ проєктів з 2016 року: дизайн, ремонт і будівництво під ключ",
+     "alternateName": [
+      "CAS",
+      "CAS Development Studio"
+     ]
+    },
+    {
+     "@type": "WebSite",
+     "@id": "https://cas-develop.com/#website",
+     "url": "https://cas-develop.com/",
+     "name": "CAS Development",
+     "inLanguage": "uk",
+     "publisher": {
+      "@id": "https://cas-develop.com/#business"
+     }
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "t": "strip",
+   "label": "Фото наших проєктів",
+   "items": [
+    {
+     "img": "img/18ej1fH-11uo-800.webp",
+     "srcset": "/img/18ej1fH-11uo-r400.webp 400w, /img/18ej1fH-11uo-r600.webp 600w, /img/18ej1fH-11uo-800.webp 800w",
+     "alt": "Yacht Restaurant — проєкт CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1OGn3TXnLkQe-800.webp",
+     "srcset": "/img/1OGn3TXnLkQe-r400.webp 400w, /img/1OGn3TXnLkQe-r600.webp 600w, /img/1OGn3TXnLkQe-800.webp 800w",
+     "alt": "Yacht Restaurant — проєкт CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/18W9L5_nV9nd-800.webp",
+     "srcset": "/img/18W9L5_nV9nd-r400.webp 400w, /img/18W9L5_nV9nd-r600.webp 600w, /img/18W9L5_nV9nd-800.webp 800w",
+     "alt": "Yacht Restaurant — проєкт CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1lovunAyUeQX-800.webp",
+     "srcset": "/img/1lovunAyUeQX-r400.webp 400w, /img/1lovunAyUeQX-r600.webp 600w, /img/1lovunAyUeQX-800.webp 800w",
+     "alt": "Yacht Restaurant — проєкт CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1AaaZgBHrlYH-800.webp",
+     "srcset": "/img/1AaaZgBHrlYH-r400.webp 400w, /img/1AaaZgBHrlYH-r600.webp 600w, /img/1AaaZgBHrlYH-800.webp 800w",
+     "alt": "Yacht Restaurant — проєкт CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1BO7v9EOodBP-800.webp",
+     "srcset": "/img/1BO7v9EOodBP-r400.webp 400w, /img/1BO7v9EOodBP-r600.webp 600w, /img/1BO7v9EOodBP-800.webp 800w",
+     "alt": "Yacht Restaurant — проєкт CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1MslU7S5X8gI-800.webp",
+     "srcset": "/img/1MslU7S5X8gI-r400.webp 400w, /img/1MslU7S5X8gI-r600.webp 600w, /img/1MslU7S5X8gI-800.webp 800w",
+     "alt": "Linden Penthouse — проєкт CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1YQyhjEui9fb-800.webp",
+     "srcset": "/img/1YQyhjEui9fb-r400.webp 400w, /img/1YQyhjEui9fb-r600.webp 600w, /img/1YQyhjEui9fb-800.webp 800w",
+     "alt": "Linden Penthouse — проєкт CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1b9YTkSJVqBh-800.webp",
+     "srcset": "/img/1b9YTkSJVqBh-r400.webp 400w, /img/1b9YTkSJVqBh-r600.webp 600w, /img/1b9YTkSJVqBh-800.webp 800w",
+     "alt": "Linden Penthouse — проєкт CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1x1AqXqQMEpC-800.webp",
+     "srcset": "/img/1x1AqXqQMEpC-r400.webp 400w, /img/1x1AqXqQMEpC-r600.webp 600w, /img/1x1AqXqQMEpC-800.webp 800w",
+     "alt": "Linden Penthouse — проєкт CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1lE1pxDZXpKR-800.webp",
+     "srcset": "/img/1lE1pxDZXpKR-r400.webp 400w, /img/1lE1pxDZXpKR-r600.webp 600w, /img/1lE1pxDZXpKR-800.webp 800w",
+     "alt": "Linden Penthouse — проєкт CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1FRa0FI6iMHK-800.webp",
+     "srcset": "/img/1FRa0FI6iMHK-r400.webp 400w, /img/1FRa0FI6iMHK-r600.webp 600w, /img/1FRa0FI6iMHK-800.webp 800w",
+     "alt": "Hoda Estate — проєкт CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1f3m1_qf4mDo-800.webp",
+     "srcset": "/img/1f3m1_qf4mDo-r400.webp 400w, /img/1f3m1_qf4mDo-r600.webp 600w, /img/1f3m1_qf4mDo-800.webp 800w",
+     "alt": "Hoda Estate — проєкт CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1HZT-E30rREI-800.webp",
+     "srcset": "/img/1HZT-E30rREI-r400.webp 400w, /img/1HZT-E30rREI-r600.webp 600w, /img/1HZT-E30rREI-800.webp 800w",
+     "alt": "Hoda Estate — проєкт CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1iyezgpYu1pV-800.webp",
+     "srcset": "/img/1iyezgpYu1pV-r400.webp 400w, /img/1iyezgpYu1pV-r600.webp 600w, /img/1iyezgpYu1pV-800.webp 800w",
+     "alt": "Hoda Estate — проєкт CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1m9fVTTPjd6n-800.webp",
+     "srcset": "/img/1m9fVTTPjd6n-r400.webp 400w, /img/1m9fVTTPjd6n-r600.webp 600w, /img/1m9fVTTPjd6n-800.webp 800w",
+     "alt": "Hoda Estate — проєкт CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1NVeaQcV2TZS-800.webp",
+     "srcset": "/img/1NVeaQcV2TZS-r400.webp 400w, /img/1NVeaQcV2TZS-r600.webp 600w, /img/1NVeaQcV2TZS-800.webp 800w",
+     "alt": "Petrivtsi House — проєкт CAS Development",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1OR5i7-rm1k0-800.webp",
+     "srcset": "/img/1OR5i7-rm1k0-r400.webp 400w, /img/1OR5i7-rm1k0-r600.webp 600w, /img/1OR5i7-rm1k0-800.webp 800w",
+     "alt": "Petrivtsi House — проєкт CAS Development",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1Xdje8N1V14_-800.webp",
+     "srcset": "/img/1Xdje8N1V14_-r400.webp 400w, /img/1Xdje8N1V14_-r600.webp 600w, /img/1Xdje8N1V14_-800.webp 800w",
+     "alt": "Petrivtsi House — проєкт CAS Development",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1szuqdURge8M-800.webp",
+     "srcset": "/img/1szuqdURge8M-r400.webp 400w, /img/1szuqdURge8M-r600.webp 600w, /img/1szuqdURge8M-800.webp 800w",
+     "alt": "Petrivtsi House — проєкт CAS Development",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1jOeC33fekBM-800.webp",
+     "srcset": "/img/1jOeC33fekBM-r400.webp 400w, /img/1jOeC33fekBM-r600.webp 600w, /img/1jOeC33fekBM-800.webp 800w",
+     "alt": "Petrivtsi House — проєкт CAS Development",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/18V9n96tOhjK-800.webp",
+     "srcset": "/img/18V9n96tOhjK-r400.webp 400w, /img/18V9n96tOhjK-r600.webp 600w, /img/18V9n96tOhjK-800.webp 800w",
+     "alt": "USA House — проєкт CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1pYk5KBK_ne5-800.webp",
+     "srcset": "/img/1pYk5KBK_ne5-r400.webp 400w, /img/1pYk5KBK_ne5-r600.webp 600w, /img/1pYk5KBK_ne5-800.webp 800w",
+     "alt": "USA House — проєкт CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1vWmbYVTmViG-800.webp",
+     "srcset": "/img/1vWmbYVTmViG-r400.webp 400w, /img/1vWmbYVTmViG-r600.webp 600w, /img/1vWmbYVTmViG-800.webp 800w",
+     "alt": "USA House — проєкт CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1JuZ-lq-D6Yu-800.webp",
+     "srcset": "/img/1JuZ-lq-D6Yu-r400.webp 400w, /img/1JuZ-lq-D6Yu-r600.webp 600w, /img/1JuZ-lq-D6Yu-800.webp 800w",
+     "alt": "USA House — проєкт CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1L6z-fyorw1b-800.webp",
+     "srcset": "/img/1L6z-fyorw1b-r400.webp 400w, /img/1L6z-fyorw1b-r600.webp 600w, /img/1L6z-fyorw1b-800.webp 800w",
+     "alt": "USA House — проєкт CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1usAOI5R4L3x-800.webp",
+     "srcset": "/img/1usAOI5R4L3x-r400.webp 400w, /img/1usAOI5R4L3x-r600.webp 600w, /img/1usAOI5R4L3x-800.webp 800w",
+     "alt": "Pidgirland — проєкт CAS Development",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/1hXV_Pz6_Gfn-800.webp",
+     "srcset": "/img/1hXV_Pz6_Gfn-r400.webp 400w, /img/1hXV_Pz6_Gfn-r600.webp 600w, /img/1hXV_Pz6_Gfn-800.webp 800w",
+     "alt": "Pidgirland — проєкт CAS Development",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/1RCrrbyNJHQh-800.webp",
+     "srcset": "/img/1RCrrbyNJHQh-r400.webp 400w, /img/1RCrrbyNJHQh-r600.webp 600w, /img/1RCrrbyNJHQh-800.webp 800w",
+     "alt": "Pidgirland — проєкт CAS Development",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/17c2Uv-Omlrm-800.webp",
+     "srcset": "/img/17c2Uv-Omlrm-r400.webp 400w, /img/17c2Uv-Omlrm-r600.webp 600w, /img/17c2Uv-Omlrm-800.webp 800w",
+     "alt": "Pidgirland — проєкт CAS Development",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/18VXNYlwqxP5-800.webp",
+     "srcset": "/img/18VXNYlwqxP5-r400.webp 400w, /img/18VXNYlwqxP5-r600.webp 600w, /img/18VXNYlwqxP5-800.webp 800w",
+     "alt": "Pidgirland — проєкт CAS Development",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/1cRl7TrOdOCc-800.webp",
+     "srcset": "/img/1cRl7TrOdOCc-r400.webp 400w, /img/1cRl7TrOdOCc-r600.webp 600w, /img/1cRl7TrOdOCc-800.webp 800w",
+     "alt": "Hodos Villa — проєкт CAS Development",
+     "label": "Hodos Villa"
+    },
+    {
+     "img": "img/1BmrYo1JJhoD-800.webp",
+     "srcset": "/img/1BmrYo1JJhoD-r400.webp 400w, /img/1BmrYo1JJhoD-r600.webp 600w, /img/1BmrYo1JJhoD-800.webp 800w",
+     "alt": "Hodos Villa — проєкт CAS Development",
+     "label": "Hodos Villa"
+    },
+    {
+     "img": "img/1M13ysKRsQvn-800.webp",
+     "srcset": "/img/1M13ysKRsQvn-r400.webp 400w, /img/1M13ysKRsQvn-r600.webp 600w, /img/1M13ysKRsQvn-800.webp 800w",
+     "alt": "Hodos Villa — проєкт CAS Development",
+     "label": "Hodos Villa"
+    },
+    {
+     "img": "img/1sSM3fuz42KH-800.webp",
+     "srcset": "/img/1sSM3fuz42KH-r400.webp 400w, /img/1sSM3fuz42KH-r600.webp 600w, /img/1sSM3fuz42KH-800.webp 800w",
+     "alt": "Hodos Villa — проєкт CAS Development",
+     "label": "Hodos Villa"
+    }
+   ]
+  },
+  {
+   "t": "svc",
+   "h2": "Що ми робимо",
+   "more": [
+    "/services",
+    "Всі послуги →"
+   ],
+   "items": [
+    {
+     "h": "Дизайн інтерʼєру",
+     "img": "img/1QEJ_y0yTWVL-600.webp",
+     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
+     "price": "від $30 / м² · мін. проєкт $2 500",
+     "p": "Концепція, 3D-візуалізація, робочі креслення та авторський нагляд.",
+     "li": [
+      "Концепція та стиль-борд",
+      "3D-візуалізація всіх зон",
+      "Робочі креслення та специфікації",
+      "Авторський нагляд (окрема послуга)",
+      "Підбір матеріалів та постачальників"
+     ],
+     "tags": [
+      "Строк — у договорі"
+     ],
+     "links": [
+      [
+       "/services",
+       "Детальніше →"
+      ]
+     ]
+    },
+    {
+     "h": "Ремонт під ключ",
+     "img": "img/1b7sIT2y5gF3-600.webp",
+     "srcset": "/img/1b7sIT2y5gF3-r400.webp 400w, /img/1b7sIT2y5gF3-600.webp 600w",
+     "price": "від $550 / м²",
+     "p": "Повний цикл будівельних та оздоблювальних робіт з гарантією. Від $550/м² — роботи й чорнові матеріали; чистові — окремо, за кошторисом.",
+     "li": [
+      "Чорновий та чистовий ремонт",
+      "Електрика, сантехніка, вентиляція",
+      "Оздоблення та покладання підлоги",
+      "Встановлення дверей та вікон",
+      "Гарантія 36 місяців",
+      "Три власні штатні бригади"
+     ],
+     "tags": [
+      "Строк — у договорі"
+     ],
+     "links": [
+      [
+       "/services",
+       "Детальніше →"
+      ]
+     ]
+    },
+    {
+     "h": "Меблювання",
+     "img": "img/1dlTNZu4nrrb-600.webp",
+     "srcset": "/img/1dlTNZu4nrrb-r400.webp 400w, /img/1dlTNZu4nrrb-600.webp 600w",
+     "price": "від $250 / м²",
+     "p": "Меблі, світло й декор напряму з фабрик Китаю через каталог Оздоба.",
+     "li": [
+      "Комплектація з Китаю: від $500, мін. 10 шт позиції",
+      "3D-підбір та розстановка меблів",
+      "Супровід виробництва під замовлення",
+      "Доставка та збірка під ключ",
+      "Виготовлення під замовлення: колір, розмір, матеріал"
+     ],
+     "tags": [
+      "Строк — у договорі"
+     ],
+     "links": [
+      [
+       "/services",
+       "Детальніше →"
+      ]
+     ]
+    },
+    {
+     "h": "Будівництво",
+     "img": "img/197Bi23wSzVk-600.webp",
+     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
+     "price": "від $600 / м²",
+     "p": "Зведення та реконструкція будівель під ключ.",
+     "li": [
+      "Зведення будинків та комплексів",
+      "Архітектурне проєктування",
+      "Реконструкція та надбудова",
+      "Фундаменти та несучі конструкції",
+      "Контроль якості на кожному етапі"
+     ],
+     "tags": [
+      "Строк — у договорі"
+     ],
+     "links": [
+      [
+       "/services",
+       "Детальніше →"
+      ]
+     ]
+    },
+    {
+     "h": "Ландшафт",
+     "img": "img/1QEJ_y0yTWVL-600.webp",
+     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
+     "price": "від $50 / сотку",
+     "p": "Проєктування та облаштування садів і прилеглих територій.",
+     "li": [
+      "Планування та геопластика ділянки",
+      "Підбір рослин та озеленення",
+      "Система автоматичного поливу",
+      "Декоративне освітлення",
+      "Укладання доріжок та майданчиків"
+     ],
+     "tags": [
+      "Строк — у договорі"
+     ],
+     "links": [
+      [
+       "/services",
+       "Детальніше →"
+      ]
+     ]
+    }
+   ],
+   "note": "Для бізнесу: [ремонт офісу під ключ від $350/м²](/remont-ofisu-pid-klyuch-kyiv) · [дизайн офісу](/dyzain-ofisu-kyiv) · [меблі для офісу з Китаю](/ozdoba)"
+  },
+  {
+   "t": "covers",
+   "h2": "Наші проєкти",
+   "more": [
+    "/portfolio",
+    "Всі проєкти →"
+   ],
+   "items": [
+    {
+     "href": "/proekty/petrivtsi-house",
+     "img": "img/1lW6SF-extZy-600.webp",
+     "srcset": null,
+     "alt": "Petrivtsi House — проєкт CAS Development",
+     "name": "Petrivtsi House",
+     "loc": "Петрівці · 320 м²"
+    },
+    {
+     "href": "/proekty/hoda-estate",
+     "img": "img/1HTdBNY-oY5p-600.webp",
+     "srcset": "/img/1HTdBNY-oY5p-r400.webp 400w, /img/1HTdBNY-oY5p-600.webp 600w",
+     "alt": "Hoda Estate — проєкт CAS Development",
+     "name": "Hoda Estate",
+     "loc": "Карпати · 180 м²"
+    },
+    {
+     "href": "/proekty/usa-house",
+     "img": "img/13MS4aVn4wzD-600.webp",
+     "srcset": "/img/13MS4aVn4wzD-r400.webp 400w, /img/13MS4aVn4wzD-600.webp 600w",
+     "alt": "USA House — проєкт CAS Development",
+     "name": "USA House",
+     "loc": "США · 420 м²"
+    },
+    {
+     "href": "/proekty/pidgirland",
+     "img": "img/1FiLI9kKE-C8-600.webp",
+     "srcset": "/img/1FiLI9kKE-C8-r400.webp 400w, /img/1FiLI9kKE-C8-600.webp 600w",
+     "alt": "Pidgirland — проєкт CAS Development",
+     "name": "Pidgirland",
+     "loc": "Київська обл. · 260 м²"
+    },
+    {
+     "href": "/proekty/hodos-villa",
+     "img": "img/1M13ysKRsQvn-600.webp",
+     "srcset": "/img/1M13ysKRsQvn-r400.webp 400w, /img/1M13ysKRsQvn-600.webp 600w",
+     "alt": "Hodos Villa — проєкт CAS Development",
+     "name": "Hodos Villa",
+     "loc": "Київ · 500 м²"
+    },
+    {
+     "href": "/proekty/linden-penthouse",
+     "img": "img/1e_eYgoeMFIr-600.webp",
+     "srcset": "/img/1e_eYgoeMFIr-r400.webp 400w, /img/1e_eYgoeMFIr-600.webp 600w",
+     "alt": "Linden Penthouse — проєкт CAS Development",
+     "name": "Linden Penthouse",
+     "loc": "Київ · 210 м²"
+    }
+   ]
+  },
+  {
+   "t": "split",
+   "img": "assets/konfigurator/teaser-600.webp",
+   "srcset": "/assets/konfigurator/teaser-600.webp 600w, /assets/konfigurator/teaser-1200.webp 1200w",
+   "sizes": "(max-width:860px) 100vw, 640px",
+   "alt": "Одна вітальня в чотирьох стилях: Japandi, Modern classic, Dark luxury, Warm minimal",
+   "href": "/konfigurator",
+   "kicker": "Новинка · конфігуратор",
+   "h2": "Приміряйте стиль до реального інтерʼєру",
+   "p": [
+    "Змінюйте стіни, підлогу, тканини, камінь і метал у наших проєктах — результат видно одразу. Japandi, Modern classic, Dark luxury чи Warm minimal: оберіть свій і отримайте проєкт у цьому стилі."
+   ],
+   "btn": [
+    "/konfigurator",
+    "Відкрити конфігуратор →"
+   ]
+  },
+  {
+   "t": "strip",
+   "h2": "Наші роботи",
+   "items": [
+    {
+     "img": "img/18ej1fH-11uo-600.webp",
+     "srcset": "/img/18ej1fH-11uo-r400.webp 400w, /img/18ej1fH-11uo-600.webp 600w",
+     "alt": "Yacht Restaurant — проєкт CAS Development",
+     "href": "/proekty/yacht-restaurant",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1OGn3TXnLkQe-600.webp",
+     "srcset": "/img/1OGn3TXnLkQe-r400.webp 400w, /img/1OGn3TXnLkQe-600.webp 600w",
+     "alt": "Yacht Restaurant — проєкт CAS Development",
+     "href": "/proekty/yacht-restaurant",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/18W9L5_nV9nd-600.webp",
+     "srcset": "/img/18W9L5_nV9nd-r400.webp 400w, /img/18W9L5_nV9nd-600.webp 600w",
+     "alt": "Yacht Restaurant — проєкт CAS Development",
+     "href": "/proekty/yacht-restaurant",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1lovunAyUeQX-600.webp",
+     "srcset": "/img/1lovunAyUeQX-r400.webp 400w, /img/1lovunAyUeQX-600.webp 600w",
+     "alt": "Yacht Restaurant — проєкт CAS Development",
+     "href": "/proekty/yacht-restaurant",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1AaaZgBHrlYH-600.webp",
+     "srcset": "/img/1AaaZgBHrlYH-r400.webp 400w, /img/1AaaZgBHrlYH-600.webp 600w",
+     "alt": "Yacht Restaurant — проєкт CAS Development",
+     "href": "/proekty/yacht-restaurant",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1MslU7S5X8gI-600.webp",
+     "srcset": "/img/1MslU7S5X8gI-r400.webp 400w, /img/1MslU7S5X8gI-600.webp 600w",
+     "alt": "Linden Penthouse — проєкт CAS Development",
+     "href": "/proekty/linden-penthouse",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1YQyhjEui9fb-600.webp",
+     "srcset": "/img/1YQyhjEui9fb-r400.webp 400w, /img/1YQyhjEui9fb-600.webp 600w",
+     "alt": "Linden Penthouse — проєкт CAS Development",
+     "href": "/proekty/linden-penthouse",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1b9YTkSJVqBh-600.webp",
+     "srcset": "/img/1b9YTkSJVqBh-r400.webp 400w, /img/1b9YTkSJVqBh-600.webp 600w",
+     "alt": "Linden Penthouse — проєкт CAS Development",
+     "href": "/proekty/linden-penthouse",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1x1AqXqQMEpC-600.webp",
+     "srcset": "/img/1x1AqXqQMEpC-r400.webp 400w, /img/1x1AqXqQMEpC-600.webp 600w",
+     "alt": "Linden Penthouse — проєкт CAS Development",
+     "href": "/proekty/linden-penthouse",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1lE1pxDZXpKR-600.webp",
+     "srcset": "/img/1lE1pxDZXpKR-r400.webp 400w, /img/1lE1pxDZXpKR-600.webp 600w",
+     "alt": "Linden Penthouse — проєкт CAS Development",
+     "href": "/proekty/linden-penthouse",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1FRa0FI6iMHK-600.webp",
+     "srcset": "/img/1FRa0FI6iMHK-r400.webp 400w, /img/1FRa0FI6iMHK-600.webp 600w",
+     "alt": "Hoda Estate — проєкт CAS Development",
+     "href": "/proekty/hoda-estate",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1f3m1_qf4mDo-600.webp",
+     "srcset": "/img/1f3m1_qf4mDo-r400.webp 400w, /img/1f3m1_qf4mDo-600.webp 600w",
+     "alt": "Hoda Estate — проєкт CAS Development",
+     "href": "/proekty/hoda-estate",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1HZT-E30rREI-600.webp",
+     "srcset": "/img/1HZT-E30rREI-r400.webp 400w, /img/1HZT-E30rREI-600.webp 600w",
+     "alt": "Hoda Estate — проєкт CAS Development",
+     "href": "/proekty/hoda-estate",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1iyezgpYu1pV-600.webp",
+     "srcset": "/img/1iyezgpYu1pV-r400.webp 400w, /img/1iyezgpYu1pV-600.webp 600w",
+     "alt": "Hoda Estate — проєкт CAS Development",
+     "href": "/proekty/hoda-estate",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1m9fVTTPjd6n-600.webp",
+     "srcset": "/img/1m9fVTTPjd6n-r400.webp 400w, /img/1m9fVTTPjd6n-600.webp 600w",
+     "alt": "Hoda Estate — проєкт CAS Development",
+     "href": "/proekty/hoda-estate",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1NVeaQcV2TZS-600.webp",
+     "srcset": "/img/1NVeaQcV2TZS-r400.webp 400w, /img/1NVeaQcV2TZS-600.webp 600w",
+     "alt": "Petrivtsi House — проєкт CAS Development",
+     "href": "/proekty/petrivtsi-house",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1OR5i7-rm1k0-600.webp",
+     "srcset": "/img/1OR5i7-rm1k0-r400.webp 400w, /img/1OR5i7-rm1k0-600.webp 600w",
+     "alt": "Petrivtsi House — проєкт CAS Development",
+     "href": "/proekty/petrivtsi-house",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1Xdje8N1V14_-600.webp",
+     "srcset": "/img/1Xdje8N1V14_-r400.webp 400w, /img/1Xdje8N1V14_-600.webp 600w",
+     "alt": "Petrivtsi House — проєкт CAS Development",
+     "href": "/proekty/petrivtsi-house",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1szuqdURge8M-600.webp",
+     "srcset": "/img/1szuqdURge8M-r400.webp 400w, /img/1szuqdURge8M-600.webp 600w",
+     "alt": "Petrivtsi House — проєкт CAS Development",
+     "href": "/proekty/petrivtsi-house",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1jOeC33fekBM-600.webp",
+     "srcset": "/img/1jOeC33fekBM-r400.webp 400w, /img/1jOeC33fekBM-600.webp 600w",
+     "alt": "Petrivtsi House — проєкт CAS Development",
+     "href": "/proekty/petrivtsi-house",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/13MS4aVn4wzD-600.webp",
+     "srcset": "/img/13MS4aVn4wzD-r400.webp 400w, /img/13MS4aVn4wzD-600.webp 600w",
+     "alt": "USA House — проєкт CAS Development",
+     "href": "/proekty/usa-house",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1Sy7cfbfQLVJ-600.webp",
+     "srcset": "/img/1Sy7cfbfQLVJ-r400.webp 400w, /img/1Sy7cfbfQLVJ-600.webp 600w",
+     "alt": "USA House — проєкт CAS Development",
+     "href": "/proekty/usa-house",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1m0zZfD8pTTz-600.webp",
+     "srcset": "/img/1m0zZfD8pTTz-r400.webp 400w, /img/1m0zZfD8pTTz-600.webp 600w",
+     "alt": "USA House — проєкт CAS Development",
+     "href": "/proekty/usa-house",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1Q5nGl_-ytBh-600.webp",
+     "srcset": "/img/1Q5nGl_-ytBh-r400.webp 400w, /img/1Q5nGl_-ytBh-600.webp 600w",
+     "alt": "USA House — проєкт CAS Development",
+     "href": "/proekty/usa-house",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1Y_dreM4mLMX-600.webp",
+     "srcset": "/img/1Y_dreM4mLMX-r400.webp 400w, /img/1Y_dreM4mLMX-600.webp 600w",
+     "alt": "USA House — проєкт CAS Development",
+     "href": "/proekty/usa-house",
+     "label": "USA House"
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Чому CAS",
+   "items": [
+    {
+     "h": "Гарантія 36 місяців",
+     "p": "На виконані роботи — 36 місяців з дати акта здачі."
+    },
+    {
+     "h": "Три власні штатні бригади",
+     "p": "Своя бригада, а не субпідряд: три бригади під різну складність і тип робіт."
+    },
+    {
+     "h": "Кошторис ±5%",
+     "p": "Якщо ремонт робить CAS, підсумок не відхиляється від кошторису більше ніж на ±5%."
+    },
+    {
+     "h": "Оплата під вас",
+     "p": "Договір і схема платежів: 50/50, 50/30/20, 50/40/10 або етапами, старт — від 10% авансу."
+    }
+   ],
+   "link": [
+    "/dogovir-garantiya-oplata",
+    "Договір, гарантія й оплата — докладно →"
+   ]
+  },
+  {
+   "t": "steps",
+   "kicker": "Підхід",
+   "h2": "Як ми працюємо",
+   "items": [
+    [
+     "Знайомство й бриф",
+     "Зустріч і обмір обʼєкта: зʼясовуємо ваш спосіб життя, побажання та бюджет."
+    ],
+    [
+     "Дизайн-проєкт",
+     "Планування, 3D-візуалізації та робочі креслення для бригади."
+    ],
+    [
+     "Кошторис",
+     "Фіксуємо обсяг робіт і вартість. Якщо ремонт робимо ми, кошторис тримаємо в межах ±5%."
+    ],
+    [
+     "Ремонт і комплектація",
+     "Бригада, закупівлі, фотозвіти раз на 1–2 тижні та авторський нагляд."
+    ],
+    [
+     "Здача обʼєкта",
+     "Приймаємо роботи разом із вами й даємо гарантію 36 місяців."
+    ]
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "faq",
+   "h2": "Питання та відповіді",
+   "items": [
+    [
+     "Скільки коштує дизайн інтерʼєру?",
+     "Від $30 за м², мінімальний бюджет проєкту — $2 500. Точну ціну підтверджуємо після брифу."
+    ],
+    [
+     "Чи можете ви спроєктувати житло за межами України?",
+     "Так. Дизайн можна зробити повністю онлайн, а креслення й специфікації готові для вашого місцевого підрядника."
+    ],
+    [
+     "Ви також будуєте?",
+     "Так. Ремонт квартир і будинків — від $550 за м² (роботи й чорнові матеріали; чистові матеріали, меблі й техніка — окремо, за кошторисом), офіси — від $350 за м², будівництво будинку — від $600 за м², під ключ з оздобленням — від $1 100 за м²."
+    ],
+    [
+     "Як з вами звʼязатися?",
+     "Через Telegram, Viber, WhatsApp або форму нижче — відповімо найближчим часом."
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "kicker": "Відгуки клієнтів",
+   "score": "4,8",
+   "p": [
+    "Оцінка студії в Google за відгуками клієнтів, з якими ми вже реалізували проєкти."
+   ],
+   "btns": [
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Читати відгуки в Google",
+     1
+    ],
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Залишити відгук"
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "cls": "home-next",
+   "h2": "Обговоримо ваш проєкт?",
+   "p": [
+    "Залиште номер — передзвонимо, розпитаємо про обʼєкт і підкажемо наступний крок. Консультація по телефону — безкоштовна."
+   ],
+   "btns": [
+    [
+     "#zayavka",
+     "Залишити номер",
+     1
+    ],
+    [
+     "/kalkuliator-remontu",
+     "Порахувати вартість"
+    ]
+   ]
+  }
+ ]
+}

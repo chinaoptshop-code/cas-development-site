@@ -11,52 +11,359 @@
   "https://wa.me/380978667755",
   "WhatsApp"
  ],
+ "kicker": "Estudio de diseño y arquitectura · Kiev · desde 2016",
+ "hero_img": {
+  "img": "img/hero-hodos-villa-1280.webp",
+  "srcset": "/img/hero-hodos-villa-1280.webp 1280w, /img/hero-hodos-villa-1920.webp 1920w",
+  "alt": "Comedor luminoso con mesa de mármol, sillones azules y lámpara de cristal — proyecto Hodos Villa de CAS Development, Kiev",
+  "sizes": "100vw",
+  "m": {
+   "srcset": "/img/hero-hodos-villa-m720.webp 720w, /img/hero-hodos-villa-m1080.webp 1080w",
+   "w": 1080,
+   "h": 1800
+  }
+ },
  "sections": [
   {
-   "t": "cards",
+   "t": "strip",
+   "label": "Fotos de nuestros proyectos",
+   "items": [
+    {
+     "img": "img/18ej1fH-11uo-800.webp",
+     "srcset": "/img/18ej1fH-11uo-r400.webp 400w, /img/18ej1fH-11uo-r600.webp 600w, /img/18ej1fH-11uo-800.webp 800w",
+     "alt": "Yacht Restaurant — proyecto de CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1lovunAyUeQX-800.webp",
+     "srcset": "/img/1lovunAyUeQX-r400.webp 400w, /img/1lovunAyUeQX-r600.webp 600w, /img/1lovunAyUeQX-800.webp 800w",
+     "alt": "Yacht Restaurant — proyecto de CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1MslU7S5X8gI-800.webp",
+     "srcset": "/img/1MslU7S5X8gI-r400.webp 400w, /img/1MslU7S5X8gI-r600.webp 600w, /img/1MslU7S5X8gI-800.webp 800w",
+     "alt": "Linden Penthouse — proyecto de CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1x1AqXqQMEpC-800.webp",
+     "srcset": "/img/1x1AqXqQMEpC-r400.webp 400w, /img/1x1AqXqQMEpC-r600.webp 600w, /img/1x1AqXqQMEpC-800.webp 800w",
+     "alt": "Linden Penthouse — proyecto de CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1f3m1_qf4mDo-800.webp",
+     "srcset": "/img/1f3m1_qf4mDo-r400.webp 400w, /img/1f3m1_qf4mDo-r600.webp 600w, /img/1f3m1_qf4mDo-800.webp 800w",
+     "alt": "Hoda Estate — proyecto de CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1m9fVTTPjd6n-800.webp",
+     "srcset": "/img/1m9fVTTPjd6n-r400.webp 400w, /img/1m9fVTTPjd6n-r600.webp 600w, /img/1m9fVTTPjd6n-800.webp 800w",
+     "alt": "Hoda Estate — proyecto de CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1Xdje8N1V14_-800.webp",
+     "srcset": "/img/1Xdje8N1V14_-r400.webp 400w, /img/1Xdje8N1V14_-r600.webp 600w, /img/1Xdje8N1V14_-800.webp 800w",
+     "alt": "Petrivtsi House — proyecto de CAS Development",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/18V9n96tOhjK-800.webp",
+     "srcset": "/img/18V9n96tOhjK-r400.webp 400w, /img/18V9n96tOhjK-r600.webp 600w, /img/18V9n96tOhjK-800.webp 800w",
+     "alt": "USA House — proyecto de CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1JuZ-lq-D6Yu-800.webp",
+     "srcset": "/img/1JuZ-lq-D6Yu-r400.webp 400w, /img/1JuZ-lq-D6Yu-r600.webp 600w, /img/1JuZ-lq-D6Yu-800.webp 800w",
+     "alt": "USA House — proyecto de CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1hXV_Pz6_Gfn-800.webp",
+     "srcset": "/img/1hXV_Pz6_Gfn-r400.webp 400w, /img/1hXV_Pz6_Gfn-r600.webp 600w, /img/1hXV_Pz6_Gfn-800.webp 800w",
+     "alt": "Pidgirland — proyecto de CAS Development",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/18VXNYlwqxP5-800.webp",
+     "srcset": "/img/18VXNYlwqxP5-r400.webp 400w, /img/18VXNYlwqxP5-r600.webp 600w, /img/18VXNYlwqxP5-800.webp 800w",
+     "alt": "Pidgirland — proyecto de CAS Development",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/1M13ysKRsQvn-800.webp",
+     "srcset": "/img/1M13ysKRsQvn-r400.webp 400w, /img/1M13ysKRsQvn-r600.webp 600w, /img/1M13ysKRsQvn-800.webp 800w",
+     "alt": "Hodos Villa — proyecto de CAS Development",
+     "label": "Hodos Villa"
+    }
+   ]
+  },
+  {
+   "t": "svc",
    "h2": "Qué hacemos",
+   "more": [
+    "/es/servicios",
+    "Todos los servicios →"
+   ],
    "items": [
     {
      "h": "Diseño de interiores",
      "href": "/es/diseno-interiores",
+     "img": "img/1SGDKLtQtxQg-600.webp",
+     "srcset": "/img/1SGDKLtQtxQg-r400.webp 400w, /img/1SGDKLtQtxQg-600.webp 600w",
      "price": "desde $30 / m² · proyecto mínimo $2 500",
      "p": "Distribución, visualizaciones 3D, planos de ejecución y mediciones con los que puede trabajar cualquier constructor.",
-     "more": "Ver más"
+     "links": [
+      [
+       "/es/diseno-interiores",
+       "Ver más →"
+      ]
+     ]
     },
     {
      "h": "Ejecución del proyecto de diseño",
      "href": "/es/ejecucion-proyecto-diseno",
+     "img": "img/1QEJ_y0yTWVL-600.webp",
+     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
      "price": "reforma desde $550 / m² · amueblamiento desde $250 / m²",
      "p": "Ejecutamos su proyecto — nuestro o de otro diseñador — tal como en las visualizaciones.",
-     "more": "Ver más"
+     "links": [
+      [
+       "/es/ejecucion-proyecto-diseno",
+       "Ver más →"
+      ]
+     ]
     },
     {
      "h": "Reforma llave en mano",
      "href": "/es/reforma-llave-en-mano",
+     "img": "img/197Bi23wSzVk-600.webp",
+     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
      "price": "viviendas desde $550 / m² · oficinas desde $350 / m²",
      "p": "Ciclo completo con cuadrillas propias: obra gruesa, acabados, instalaciones, materiales y limpieza.",
-     "more": "Ver más"
+     "links": [
+      [
+       "/es/reforma-llave-en-mano",
+       "Ver más →"
+      ]
+     ]
     },
     {
      "h": "Construcción de casas",
      "href": "/es/construccion-de-casas",
+     "img": "img/1nqFOoTfr5BD-r600.webp",
+     "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w",
      "price": "estructura desde $600 / m² · llave en mano desde $1 100 / m²",
      "p": "Casas y chalés desde la cimentación y la cubierta hasta los interiores y el jardín.",
-     "more": "Ver más"
+     "links": [
+      [
+       "/es/construccion-de-casas",
+       "Ver más →"
+      ]
+     ]
     },
     {
      "h": "Amueblamiento llave en mano",
      "href": "/es/amueblamiento-llave-en-mano",
+     "img": "img/1BCMJKrx7QL5-600.webp",
+     "srcset": "/img/1BCMJKrx7QL5-r400.webp 400w, /img/1BCMJKrx7QL5-600.webp 600w",
      "price": "desde $250 / m²",
      "p": "Muebles, iluminación, textiles y decoración según el proyecto: entrega, montaje y estilismo final.",
-     "more": "Ver más"
+     "links": [
+      [
+       "/es/amueblamiento-llave-en-mano",
+       "Ver más →"
+      ]
+     ]
     },
     {
      "h": "Locales comerciales llave en mano",
      "href": "/es/negocio-llave-en-mano",
+     "img": "img/p/mpk-v01-600.webp",
      "price": "diseño desde $30 / m² · equipamiento desde $500",
      "p": "Cafeterías, restaurantes, salones, tiendas y oficinas: diseño, obra, equipamiento y apertura en unas solas manos.",
-     "more": "Ver más"
+     "links": [
+      [
+       "/es/negocio-llave-en-mano",
+       "Ver más →"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "t": "covers",
+   "h2": "Nuestros proyectos",
+   "more": [
+    "/portfolio",
+    "Todos los proyectos →"
+   ],
+   "items": [
+    {
+     "href": "/proekty/petrivtsi-house",
+     "img": "img/1lW6SF-extZy-600.webp",
+     "srcset": null,
+     "alt": "Petrivtsi House — proyecto de CAS Development",
+     "name": "Petrivtsi House",
+     "loc": "Petrivtsi · 320 m²"
+    },
+    {
+     "href": "/proekty/hoda-estate",
+     "img": "img/1HTdBNY-oY5p-600.webp",
+     "srcset": "/img/1HTdBNY-oY5p-r400.webp 400w, /img/1HTdBNY-oY5p-600.webp 600w",
+     "alt": "Hoda Estate — proyecto de CAS Development",
+     "name": "Hoda Estate",
+     "loc": "Cárpatos · 180 m²"
+    },
+    {
+     "href": "/proekty/usa-house",
+     "img": "img/13MS4aVn4wzD-600.webp",
+     "srcset": "/img/13MS4aVn4wzD-r400.webp 400w, /img/13MS4aVn4wzD-600.webp 600w",
+     "alt": "USA House — proyecto de CAS Development",
+     "name": "USA House",
+     "loc": "EE. UU. · 420 m²"
+    },
+    {
+     "href": "/proekty/pidgirland",
+     "img": "img/1FiLI9kKE-C8-600.webp",
+     "srcset": "/img/1FiLI9kKE-C8-r400.webp 400w, /img/1FiLI9kKE-C8-600.webp 600w",
+     "alt": "Pidgirland — proyecto de CAS Development",
+     "name": "Pidgirland",
+     "loc": "región de Kiev · 260 m²"
+    },
+    {
+     "href": "/proekty/hodos-villa",
+     "img": "img/1M13ysKRsQvn-600.webp",
+     "srcset": "/img/1M13ysKRsQvn-r400.webp 400w, /img/1M13ysKRsQvn-600.webp 600w",
+     "alt": "Hodos Villa — proyecto de CAS Development",
+     "name": "Hodos Villa",
+     "loc": "Kiev · 500 m²"
+    },
+    {
+     "href": "/proekty/linden-penthouse",
+     "img": "img/1e_eYgoeMFIr-600.webp",
+     "srcset": "/img/1e_eYgoeMFIr-r400.webp 400w, /img/1e_eYgoeMFIr-600.webp 600w",
+     "alt": "Linden Penthouse — proyecto de CAS Development",
+     "name": "Linden Penthouse",
+     "loc": "Kiev · 210 m²"
+    }
+   ]
+  },
+  {
+   "t": "split",
+   "img": "assets/konfigurator/teaser-600.webp",
+   "srcset": "/assets/konfigurator/teaser-600.webp 600w, /assets/konfigurator/teaser-1200.webp 1200w",
+   "sizes": "(max-width:860px) 100vw, 640px",
+   "alt": "Un salón en cuatro estilos: Japandi, Modern classic, Dark luxury, Warm minimal",
+   "href": "/konfigurator",
+   "kicker": "Novedad · configurador",
+   "h2": "Pruebe un estilo en un interior real",
+   "p": [
+    "Cambie paredes, suelos, tejidos, piedra y metal en nuestros proyectos y vea el resultado al instante. Japandi, Modern classic, Dark luxury o Warm minimal: elija el suyo y reciba un proyecto en ese estilo."
+   ],
+   "btn": [
+    "/konfigurator",
+    "Abrir el configurador →"
+   ]
+  },
+  {
+   "t": "strip",
+   "h2": "Nuestros trabajos",
+   "items": [
+    {
+     "img": "img/18ej1fH-11uo-600.webp",
+     "srcset": "/img/18ej1fH-11uo-r400.webp 400w, /img/18ej1fH-11uo-600.webp 600w",
+     "alt": "Yacht Restaurant — proyecto de CAS Development",
+     "href": "/proekty/yacht-restaurant",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/18W9L5_nV9nd-600.webp",
+     "srcset": "/img/18W9L5_nV9nd-r400.webp 400w, /img/18W9L5_nV9nd-600.webp 600w",
+     "alt": "Yacht Restaurant — proyecto de CAS Development",
+     "href": "/proekty/yacht-restaurant",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1AaaZgBHrlYH-600.webp",
+     "srcset": "/img/1AaaZgBHrlYH-r400.webp 400w, /img/1AaaZgBHrlYH-600.webp 600w",
+     "alt": "Yacht Restaurant — proyecto de CAS Development",
+     "href": "/proekty/yacht-restaurant",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1YQyhjEui9fb-600.webp",
+     "srcset": "/img/1YQyhjEui9fb-r400.webp 400w, /img/1YQyhjEui9fb-600.webp 600w",
+     "alt": "Linden Penthouse — proyecto de CAS Development",
+     "href": "/proekty/linden-penthouse",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1x1AqXqQMEpC-600.webp",
+     "srcset": "/img/1x1AqXqQMEpC-r400.webp 400w, /img/1x1AqXqQMEpC-600.webp 600w",
+     "alt": "Linden Penthouse — proyecto de CAS Development",
+     "href": "/proekty/linden-penthouse",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1FRa0FI6iMHK-600.webp",
+     "srcset": "/img/1FRa0FI6iMHK-r400.webp 400w, /img/1FRa0FI6iMHK-600.webp 600w",
+     "alt": "Hoda Estate — proyecto de CAS Development",
+     "href": "/proekty/hoda-estate",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1HZT-E30rREI-600.webp",
+     "srcset": "/img/1HZT-E30rREI-r400.webp 400w, /img/1HZT-E30rREI-600.webp 600w",
+     "alt": "Hoda Estate — proyecto de CAS Development",
+     "href": "/proekty/hoda-estate",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1m9fVTTPjd6n-600.webp",
+     "srcset": "/img/1m9fVTTPjd6n-r400.webp 400w, /img/1m9fVTTPjd6n-600.webp 600w",
+     "alt": "Hoda Estate — proyecto de CAS Development",
+     "href": "/proekty/hoda-estate",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1OR5i7-rm1k0-600.webp",
+     "srcset": "/img/1OR5i7-rm1k0-r400.webp 400w, /img/1OR5i7-rm1k0-600.webp 600w",
+     "alt": "Petrivtsi House — proyecto de CAS Development",
+     "href": "/proekty/petrivtsi-house",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1szuqdURge8M-600.webp",
+     "srcset": "/img/1szuqdURge8M-r400.webp 400w, /img/1szuqdURge8M-600.webp 600w",
+     "alt": "Petrivtsi House — proyecto de CAS Development",
+     "href": "/proekty/petrivtsi-house",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/13MS4aVn4wzD-600.webp",
+     "srcset": "/img/13MS4aVn4wzD-r400.webp 400w, /img/13MS4aVn4wzD-600.webp 600w",
+     "alt": "USA House — proyecto de CAS Development",
+     "href": "/proekty/usa-house",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1m0zZfD8pTTz-600.webp",
+     "srcset": "/img/1m0zZfD8pTTz-r400.webp 400w, /img/1m0zZfD8pTTz-600.webp 600w",
+     "alt": "USA House — proyecto de CAS Development",
+     "href": "/proekty/usa-house",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1Y_dreM4mLMX-600.webp",
+     "srcset": "/img/1Y_dreM4mLMX-r400.webp 400w, /img/1Y_dreM4mLMX-600.webp 600w",
+     "alt": "USA House — proyecto de CAS Development",
+     "href": "/proekty/usa-house",
+     "label": "USA House"
     }
    ]
   },
@@ -67,44 +374,6 @@
     "Diseño, obra y suministro los gestiona una sola empresa: sin tiempos muertos entre gremios ni discusiones sobre responsabilidades. El presupuesto se cierra antes de empezar y, si la reforma la hace nuestro equipo, el coste final no se desvía más de un ±5%.",
     "Trabajamos con clientes en Ucrania, Europa y otros países: hemos diseñado casas y villas para EE. UU. y los Emiratos. Todo el proceso de diseño puede hacerse en línea y los planos están listos para su constructor local.",
     "Muebles, iluminación y materiales llegan directamente de fabricantes en China y se fabrican bajo pedido: color, tamaño, material y acabado según su proyecto."
-   ]
-  },
-  {
-   "t": "gallery",
-   "h2": "Proyectos destacados",
-   "items": [
-    [
-     "img/p/18V9n96tOhjKjh-900.webp",
-     "USA House · EE. UU."
-    ],
-    [
-     "img/p/1uBxYPk7W36Rp0-900.webp",
-     "Dubai Villa · EAU"
-    ],
-    [
-     "img/p/1MslU7S5X8gIEp-900.webp",
-     "Linden Penthouse · Kiev"
-    ],
-    [
-     "img/p/1Grj8_m7MJwsbE-900.webp",
-     "Hodos Villa · Kiev"
-    ],
-    [
-     "img/p/18ej1fH-11uoyr-900.webp",
-     "Yacht Restaurant"
-    ],
-    [
-     "img/p/1A9yy4nI-gf9h3-900.webp",
-     "Kitana Beach · complejo turístico en Bodrum (Turquía)"
-    ],
-    [
-     "img/p/1FRa0FI6iMHK5L-900.webp",
-     "Hoda Estate · Cárpatos"
-    ],
-    [
-     "img/p/1xqY1KZo2JY5xq-900.webp",
-     "Tetris Hall · Kiev"
-    ]
    ]
   },
   {
@@ -155,6 +424,44 @@
     [
      "¿Cómo contactamos?",
      "Por WhatsApp, Telegram, Viber o el formulario de abajo; respondemos en breve."
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "kicker": "Opiniones de clientes",
+   "score": "4,8",
+   "p": [
+    "Valoración del estudio en Google según las opiniones de clientes con los que ya hemos realizado proyectos."
+   ],
+   "btns": [
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Leer opiniones en Google",
+     1
+    ],
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Dejar una opinión"
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "cls": "home-next",
+   "h2": "¿Hablamos de su proyecto?",
+   "p": [
+    "Deje su número: le llamamos, le preguntamos por el inmueble y le indicamos el siguiente paso. La consulta telefónica es gratuita."
+   ],
+   "btns": [
+    [
+     "#zayavka",
+     "Dejar mi número",
+     1
+    ],
+    [
+     "/es/calculadora-reforma",
+     "Calcular el coste"
     ]
    ]
   }

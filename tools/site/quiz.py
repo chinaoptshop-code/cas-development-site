@@ -79,7 +79,7 @@ def apply(s, rel):
         return s
     m = re.search(r'<html[^>]*\blang="([a-z]{2})', s)
     lang = m.group(1) if m and m.group(1) in T else 'uk'
-    for mark in ('<section id="zayavka"', '<section class="home-next"'):
+    for mark in ('<section class="home-next', '<section id="zayavka"'):  # головні: перед закликом «Обговоримо ваш проєкт?»
         k = s.find(mark)
         if k >= 0:
             return s[:k].rstrip('\n') + block(lang, *PAGES[rel]) + '\n' + s[k:]

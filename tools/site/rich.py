@@ -90,7 +90,7 @@ def link(x):
 
 
 def wrap(x, inner, cls):
-    c = ' '.join(filter(None, [cls, x.get('cls')]))
+    c = ' '.join(filter(None, [x.get('cls'), cls]))  # спершу власний клас: інструменти шукають '<section class="home-next"'
     sid = f' id="{x["id"]}"' if x.get('id') else ''
     return f'<section class="{c}"{sid}><div class="w">{inner}{link(x)}</div></section>\n'
 

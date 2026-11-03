@@ -158,7 +158,7 @@ def block(lang, scene, compact, tier=0, mat='', var='new', cfg=None):
 # де ставимо: перед «Як працюємо», інакше перед «Гарантіями», квізом чи формою; на головній — перед «Наші проєкти»
 HOW = re.compile(r'<section><div class="w"(?: data-c="\w")?>\s*<h2(?: data-i="\w+")?>(?:Як працюємо|Как (?:мы )?работаем|How we work|Cómo trabajamos|Jak pracujemy|So arbeiten wir|Wie wir arbeiten|Comment nous travaillons|Notre méthode|工作流程|合作流程|我们如何工作|كيف نعمل|طريقة عملنا)</h2>')
 ANCHORS = ('<!--cas:guarantees-->', '<!--quiz-->', '<section id="zayavka"')
-HOME = ('<section class="proj-covers"', '<section class="pcarousel"')
+HOME = ('<section class="proj-covers"', '<section class="pcarousel"', '<section class="xs-covers')
 
 
 GO_RX = re.compile(r'\n?\s*<a class="btn bz-go" href="#build-anim">[^<]*</a>')

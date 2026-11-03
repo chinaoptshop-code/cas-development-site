@@ -156,7 +156,7 @@ def apply(s, rel, c, pub=None):
     pub = public_tours() if pub is None else pub
     chan = c.get('youtube_channel') if YT_CH.match(c.get('youtube_channel') or '') else ''
     extra = (c.get('extra') or {}).get(rel, {})
-    tail = ('<!--quiz-->', '<section id="zayavka"', '<section class="home-next"', '</main>')
+    tail = ('<!--quiz-->', '<section class="home-next', '<section id="zayavka"', '</main>')
     m = re.match(r'proekty/([\w-]+)\.html$', rel)
     slug = (c.get('tour360') or {}).get(m.group(1), '') if m else ''
     if slug and slug in pub:
