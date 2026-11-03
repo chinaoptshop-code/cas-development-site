@@ -78,6 +78,8 @@ def btns(bs):
 
 def head(x, tag='h2'):
     k = f'<p class="kick">{e(x["kicker"])}</p>' if x.get('kicker') else ''
+    if x.get('h2_sr'):  # заголовок лише для скрінрідерів і порядку H1→H2→H3 (сітка карток без видимого H2)
+        return k + f'<{tag} class="mo-sr">{e(x["h2_sr"])}</{tag}>'
     if not x.get('h2'):
         return k
     h = f'<{tag}>{e(x["h2"])}</{tag}>'
@@ -105,7 +107,10 @@ def svc(x):
         o += f'<p class="xs-pr">{e(c["price"])}</p>' if c.get('price') else ''
         o += f'<p>{rich(c["p"])}</p>' if c.get('p') else ''
         o += '<ul>' + ''.join(f'<li>{rich(i)}</li>' for i in c['li']) + '</ul>' if c.get('li') else ''
-        if c.get('more') or c.get('tags'):
+        if c.get('tags') and not c.get('more'):
+            # лише теги — показуємо одразу: згортка з підписом «+» і одним тегом усередині виглядала як дві «+» (QA 03.11.2026)
+            o += '<p class="xs-tags">' + ''.join(f'<span>{e(t)}</span>' for t in c['tags']) + '</p>'
+        elif c.get('more') or c.get('tags'):
             o += (f'<details class="xs-more"><summary>{e(c.get("more_h") or "+")}</summary>'
                   + ('<ul>' + ''.join(f'<li>{rich(i)}</li>' for i in c.get('more', [])) + '</ul>' if c.get('more') else '')
                   + ('<p class="xs-tags">' + ''.join(f'<span>{e(t)}</span>' for t in c['tags']) + '</p>' if c.get('tags') else '')
