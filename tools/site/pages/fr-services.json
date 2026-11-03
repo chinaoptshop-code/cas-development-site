@@ -24,8 +24,8 @@
     {
      "h": "Architecture d’intérieur",
      "href": "/fr/architecture-interieur",
-     "img": "img/1SGDKLtQtxQg-600.webp",
-     "srcset": "/img/1SGDKLtQtxQg-r400.webp 400w, /img/1SGDKLtQtxQg-600.webp 600w",
+     "img": "img/svc-design-600.webp",
+     "srcset": "/img/svc-design-400.webp 400w, /img/svc-design-600.webp 600w",
      "price": "dès $30 / m² · projet minimum $2 500",
      "li": [
       "concept et planche de tendances",
@@ -38,13 +38,14 @@
        "/fr/architecture-interieur",
        "En savoir plus →"
       ]
-     ]
+     ],
+     "alt": "Rendu d’un séjour-salle à manger avec poutres en bois et baies panoramiques — projet CAS Development"
     },
     {
      "h": "Réalisation de projet de design",
      "href": "/fr/realisation-projet",
-     "img": "img/1QEJ_y0yTWVL-600.webp",
-     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
+     "img": "img/svc-implementation-600.webp",
+     "srcset": "/img/svc-implementation-400.webp 400w, /img/svc-implementation-600.webp 600w",
      "price": "rénovation dès $550 / m² · ameublement dès $250 / m²",
      "li": [
       "audit des plans",
@@ -57,13 +58,14 @@
        "/fr/realisation-projet",
        "En savoir plus →"
       ]
-     ]
+     ],
+     "alt": "Bureau Office Chicago réalisé à Kyiv : open space avec un îlot de plantes vivantes entre les postes"
     },
     {
      "h": "Rénovation clé en main",
      "href": "/fr/renovation-cle-en-main",
-     "img": "img/197Bi23wSzVk-600.webp",
-     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
+     "img": "img/svc-renovation-600.webp",
+     "srcset": "/img/svc-renovation-400.webp 400w, /img/svc-renovation-600.webp 600w",
      "price": "logements dès $550 / m² · bureaux dès $350 / m²",
      "li": [
       "démolition et gros œuvre",
@@ -76,13 +78,14 @@
        "/fr/renovation-cle-en-main",
        "En savoir plus →"
       ]
-     ]
+     ],
+     "alt": "Séjour avec mur végétal et panneaux sombres — appartement Tetris Hall rénové par CAS Development"
     },
     {
      "h": "Construction de maisons",
      "href": "/fr/construction-maison",
-     "img": "img/1nqFOoTfr5BD-r600.webp",
-     "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w",
+     "img": "img/svc-construction-600.webp",
+     "srcset": "/img/svc-construction-400.webp 400w, /img/svc-construction-600.webp 600w",
      "price": "gros œuvre dès $600 / m² · clé en main avec finitions dès $1 100 / m²",
      "li": [
       "conception architecturale et façades",
@@ -95,13 +98,14 @@
        "/fr/construction-maison",
        "En savoir plus →"
       ]
-     ]
+     ],
+     "alt": "Façade d’une maison de plain-pied avec carport — projet House 150"
     },
     {
      "h": "Ameublement clé en main",
      "href": "/fr/ameublement-cle-en-main",
-     "img": "img/1BCMJKrx7QL5-600.webp",
-     "srcset": "/img/1BCMJKrx7QL5-r400.webp 400w, /img/1BCMJKrx7QL5-600.webp 600w",
+     "img": "img/svc-furnishing-600.webp",
+     "srcset": "/img/svc-furnishing-400.webp 400w, /img/svc-furnishing-600.webp 600w",
      "price": "dès $250 / m²",
      "li": [
       "mobilier sur mesure et de Chine",
@@ -114,12 +118,13 @@
        "/fr/ameublement-cle-en-main",
        "En savoir plus →"
       ]
-     ]
+     ],
+     "alt": "Cuisine avec électroménager encastré et façades aspect bois — appartement Tetris Hall réalisé"
     },
     {
      "h": "Locaux professionnels clé en main",
      "href": "/fr/commerce-cle-en-main",
-     "img": "img/p/mpk-v01-600.webp",
+     "img": "img/svc-commercial-600.webp",
      "price": "design dès $30 / m² · équipement dès $500",
      "li": [
       "cafés et restaurants",
@@ -132,7 +137,9 @@
        "/fr/commerce-cle-en-main",
        "En savoir plus →"
       ]
-     ]
+     ],
+     "srcset": "/img/svc-commercial-400.webp 400w, /img/svc-commercial-600.webp 600w",
+     "alt": "Salle du restaurant Monpark après l’ouverture — réalisé par CAS Development"
     }
    ]
   },

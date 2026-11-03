@@ -24,8 +24,8 @@
     {
      "h": "Projektowanie wnętrz",
      "href": "/pl/projektowanie-wnetrz",
-     "img": "img/1SGDKLtQtxQg-600.webp",
-     "srcset": "/img/1SGDKLtQtxQg-r400.webp 400w, /img/1SGDKLtQtxQg-600.webp 600w",
+     "img": "img/svc-design-600.webp",
+     "srcset": "/img/svc-design-400.webp 400w, /img/svc-design-600.webp 600w",
      "price": "od $30 / m² · minimalny projekt $2 500",
      "li": [
       "koncepcja i moodboard",
@@ -38,13 +38,14 @@
        "/pl/projektowanie-wnetrz",
        "Więcej →"
       ]
-     ]
+     ],
+     "alt": "Wizualizacja salonu z jadalnią, drewnianymi belkami i panoramicznymi oknami — projekt CAS Development"
     },
     {
      "h": "Realizacja projektu wnętrza",
      "href": "/pl/realizacja-projektu",
-     "img": "img/1QEJ_y0yTWVL-600.webp",
-     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
+     "img": "img/svc-implementation-600.webp",
+     "srcset": "/img/svc-implementation-400.webp 400w, /img/svc-implementation-600.webp 600w",
      "price": "remont od $550 / m² · umeblowanie od $250 / m²",
      "li": [
       "audyt rysunków",
@@ -57,13 +58,14 @@
        "/pl/realizacja-projektu",
        "Więcej →"
       ]
-     ]
+     ],
+     "alt": "Zrealizowane biuro Office Chicago w Kijowie: open space z wyspą żywych roślin między biurkami"
     },
     {
      "h": "Remont pod klucz",
      "href": "/pl/remont-pod-klucz",
-     "img": "img/197Bi23wSzVk-600.webp",
-     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
+     "img": "img/svc-renovation-600.webp",
+     "srcset": "/img/svc-renovation-400.webp 400w, /img/svc-renovation-600.webp 600w",
      "price": "mieszkania i domy od $550 / m² · biura od $350 / m²",
      "li": [
       "rozbiórki i prace surowe",
@@ -76,13 +78,14 @@
        "/pl/remont-pod-klucz",
        "Więcej →"
       ]
-     ]
+     ],
+     "alt": "Salon ze ścianą roślinną i ciemnymi panelami — mieszkanie Tetris Hall po remoncie CAS Development"
     },
     {
      "h": "Budowa domów",
      "href": "/pl/budowa-domow",
-     "img": "img/1nqFOoTfr5BD-r600.webp",
-     "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w",
+     "img": "img/svc-construction-600.webp",
+     "srcset": "/img/svc-construction-400.webp 400w, /img/svc-construction-600.webp 600w",
      "price": "stan surowy od $600 / m² · pod klucz z wykończeniem od $1 100 / m²",
      "li": [
       "projekt architektoniczny i elewacje",
@@ -95,13 +98,14 @@
        "/pl/budowa-domow",
        "Więcej →"
       ]
-     ]
+     ],
+     "alt": "Elewacja domu parterowego z wiatą garażową — projekt House 150"
     },
     {
      "h": "Umeblowanie pod klucz",
      "href": "/pl/umeblowanie-pod-klucz",
-     "img": "img/1BCMJKrx7QL5-600.webp",
-     "srcset": "/img/1BCMJKrx7QL5-r400.webp 400w, /img/1BCMJKrx7QL5-600.webp 600w",
+     "img": "img/svc-furnishing-600.webp",
+     "srcset": "/img/svc-furnishing-400.webp 400w, /img/svc-furnishing-600.webp 600w",
      "price": "od $250 / m²",
      "li": [
       "meble na wymiar i z Chin",
@@ -114,12 +118,13 @@
        "/pl/umeblowanie-pod-klucz",
        "Więcej →"
       ]
-     ]
+     ],
+     "alt": "Kuchnia z zabudowanym AGD i frontami imitującymi drewno — zrealizowane mieszkanie Tetris Hall"
     },
     {
      "h": "Lokale biznesowe pod klucz",
      "href": "/pl/biznes-pod-klucz",
-     "img": "img/p/mpk-v01-600.webp",
+     "img": "img/svc-commercial-600.webp",
      "price": "projekt od $30 / m² · wyposażenie od $500",
      "li": [
       "kawiarnie i restauracje",
@@ -132,7 +137,9 @@
        "/pl/biznes-pod-klucz",
        "Więcej →"
       ]
-     ]
+     ],
+     "srcset": "/img/svc-commercial-400.webp 400w, /img/svc-commercial-600.webp 600w",
+     "alt": "Sala restauracji Monpark po otwarciu — realizacja CAS Development"
     }
    ]
   },

@@ -24,8 +24,8 @@
     {
      "h": "التصميم الداخلي",
      "href": "/ar/interior-design",
-     "img": "img/1SGDKLtQtxQg-600.webp",
-     "srcset": "/img/1SGDKLtQtxQg-r400.webp 400w, /img/1SGDKLtQtxQg-600.webp 600w",
+     "img": "img/svc-design-600.webp",
+     "srcset": "/img/svc-design-400.webp 400w, /img/svc-design-600.webp 600w",
      "price": "من $30 / م² · الحد الأدنى للمشروع $2 500",
      "li": [
       "الفكرة ولوحة الإلهام",
@@ -38,13 +38,14 @@
        "/ar/interior-design",
        "اعرف المزيد →"
       ]
-     ]
+     ],
+     "alt": "تصور ثلاثي الأبعاد لغرفة معيشة وطعام بعوارض خشبية ونوافذ بانورامية — مشروع تصميم من CAS Development"
     },
     {
      "h": "تنفيذ مشروع التصميم",
      "href": "/ar/design-implementation",
-     "img": "img/1QEJ_y0yTWVL-600.webp",
-     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
+     "img": "img/svc-implementation-600.webp",
+     "srcset": "/img/svc-implementation-400.webp 400w, /img/svc-implementation-600.webp 600w",
      "price": "التشطيب من $550 / م² · التأثيث من $250 / م²",
      "li": [
       "مراجعة المخططات",
@@ -57,13 +58,14 @@
        "/ar/design-implementation",
        "اعرف المزيد →"
       ]
-     ]
+     ],
+     "alt": "مكتب Office Chicago المنفَّذ في كييف: مساحة عمل مفتوحة مع جزيرة نباتات حية بين المكاتب"
     },
     {
      "h": "تشطيب متكامل (تسليم مفتاح)",
      "href": "/ar/turnkey-renovation",
-     "img": "img/197Bi23wSzVk-600.webp",
-     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
+     "img": "img/svc-renovation-600.webp",
+     "srcset": "/img/svc-renovation-400.webp 400w, /img/svc-renovation-600.webp 600w",
      "price": "الشقق والمنازل من $550 / م² · المكاتب من $350 / م²",
      "li": [
       "الهدم والأعمال الإنشائية",
@@ -76,13 +78,14 @@
        "/ar/turnkey-renovation",
        "اعرف المزيد →"
       ]
-     ]
+     ],
+     "alt": "غرفة معيشة بجدار نباتي وألواح داكنة — شقة Tetris Hall بعد تشطيبها من CAS Development"
     },
     {
      "h": "بناء المنازل",
      "href": "/ar/house-construction",
-     "img": "img/1nqFOoTfr5BD-r600.webp",
-     "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w",
+     "img": "img/svc-construction-600.webp",
+     "srcset": "/img/svc-construction-400.webp 400w, /img/svc-construction-600.webp 600w",
      "price": "الهيكل من $600 / م² · تسليم مفتاح مع التشطيب من $1 100 / م²",
      "li": [
       "التصميم المعماري والواجهات",
@@ -95,13 +98,14 @@
        "/ar/house-construction",
        "اعرف المزيد →"
       ]
-     ]
+     ],
+     "alt": "واجهة منزل من طابق واحد مع مظلة للسيارة — مشروع House 150"
     },
     {
      "h": "تأثيث متكامل",
      "href": "/ar/furnishing",
-     "img": "img/1BCMJKrx7QL5-600.webp",
-     "srcset": "/img/1BCMJKrx7QL5-r400.webp 400w, /img/1BCMJKrx7QL5-600.webp 600w",
+     "img": "img/svc-furnishing-600.webp",
+     "srcset": "/img/svc-furnishing-400.webp 400w, /img/svc-furnishing-600.webp 600w",
      "price": "من $250 / م²",
      "li": [
       "أثاث حسب المقاس ومن الصين",
@@ -114,12 +118,13 @@
        "/ar/furnishing",
        "اعرف المزيد →"
       ]
-     ]
+     ],
+     "alt": "مطبخ بأجهزة مدمجة وواجهات بمظهر الخشب — شقة Tetris Hall المنفَّذة"
     },
     {
      "h": "تجهيز المحلات التجارية",
      "href": "/ar/business-fit-out",
-     "img": "img/p/mpk-v01-600.webp",
+     "img": "img/svc-commercial-600.webp",
      "price": "التصميم من $30 / م² · التجهيز من $500",
      "li": [
       "المقاهي والمطاعم",
@@ -132,7 +137,9 @@
        "/ar/business-fit-out",
        "اعرف المزيد →"
       ]
-     ]
+     ],
+     "srcset": "/img/svc-commercial-400.webp 400w, /img/svc-commercial-600.webp 600w",
+     "alt": "صالة مطعم Monpark بعد الافتتاح — من تنفيذ CAS Development"
     }
    ]
   },

@@ -7,9 +7,9 @@
 "kicker" — рядок над H1. Будь-яка секція: "kicker" (рядок над H2), "link": ["/url", "текст →"] (посилання під секцією),
 "cls" — клас секції (напр. "home-next": перед нею media.py/quiz.py ставлять відео й квіз).
 Типи:
-  svc      — послуги: {"h2", "more": [url, текст], "items": [{"h", "href", "img", "srcset", "price", "p", "li": [...],
+  svc      — послуги: {"h2", "more": [url, текст], "items": [{"h", "href", "img", "srcset", "alt", "price", "p", "li": [...],
               "more_h": "Що входить", "more": [...], "tags": [...], "links": [[url, назва]], "all": ["Ще послуги (N)", [[url, назва]]]}],
-              "note": "текст з [посиланнями](/url)"}
+              "note": "текст з [посиланнями](/url)"}; фото картки — 16:10 (img/svc-<послуга>-{400,600}.webp), що показує саме цю послугу
   covers   — обкладинки проєктів: {"h2", "more": [url, текст], "items": [{"href", "img", "srcset", "name", "loc", "alt"}]}
   strip    — стрічка фото з прокруткою (scroll-snap): {"h2"?, "label" (aria), "items": [{"img", "srcset", "alt", "label", "href"}]}
   split    — фото + текст: {"img", "alt", "href"?, "badge": [число, підпис]?, "h2"?, "lead"?, "p": [...], "vals": [[h, p], ...]?, "btn": [url, текст]?}
@@ -100,7 +100,8 @@ def svc(x):
     cards = []
     for c in x['items']:
         ttl = f'<a href="{a(c["href"])}">{e(c["h"])}</a>' if c.get('href') else e(c['h'])
-        o = (img(c, '', '(max-width:767px) 92vw, 360px') if c.get('img') else '') + '<div class="xs-cb">' + f'<h3>{ttl}</h3>'
+        # alt — з "alt" картки (опис фото), інакше порожній
+        o = (img(c, None, '(max-width:767px) 92vw, 300px') if c.get('img') else '') + '<div class="xs-cb">' + f'<h3>{ttl}</h3>'
         o += f'<p class="xs-pr">{e(c["price"])}</p>' if c.get('price') else ''
         o += f'<p>{rich(c["p"])}</p>' if c.get('p') else ''
         o += '<ul>' + ''.join(f'<li>{rich(i)}</li>' for i in c['li']) + '</ul>' if c.get('li') else ''

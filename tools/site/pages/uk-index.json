@@ -733,8 +733,8 @@
    "items": [
     {
      "h": "Дизайн інтерʼєру",
-     "img": "img/1QEJ_y0yTWVL-600.webp",
-     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
+     "img": "img/svc-design-600.webp",
+     "srcset": "/img/svc-design-400.webp 400w, /img/svc-design-600.webp 600w",
      "price": "від $30 / м² · мін. проєкт $2 500",
      "p": "Концепція, 3D-візуалізація, робочі креслення та авторський нагляд.",
      "li": [
@@ -752,12 +752,13 @@
        "/services",
        "Детальніше →"
       ]
-     ]
+     ],
+     "alt": "Візуалізація вітальні-їдальні з деревʼяними балками й панорамними вікнами — дизайн-проєкт CAS Development"
     },
     {
      "h": "Ремонт під ключ",
-     "img": "img/1b7sIT2y5gF3-600.webp",
-     "srcset": "/img/1b7sIT2y5gF3-r400.webp 400w, /img/1b7sIT2y5gF3-600.webp 600w",
+     "img": "img/svc-renovation-600.webp",
+     "srcset": "/img/svc-renovation-400.webp 400w, /img/svc-renovation-600.webp 600w",
      "price": "від $550 / м²",
      "p": "Повний цикл будівельних та оздоблювальних робіт з гарантією. Від $550/м² — роботи й чорнові матеріали; чистові — окремо, за кошторисом.",
      "li": [
@@ -776,12 +777,13 @@
        "/services",
        "Детальніше →"
       ]
-     ]
+     ],
+     "alt": "Вітальня з фітостіною й темними панелями — квартира Tetris Hall після ремонту CAS Development"
     },
     {
      "h": "Меблювання",
-     "img": "img/1dlTNZu4nrrb-600.webp",
-     "srcset": "/img/1dlTNZu4nrrb-r400.webp 400w, /img/1dlTNZu4nrrb-600.webp 600w",
+     "img": "img/svc-furnishing-600.webp",
+     "srcset": "/img/svc-furnishing-400.webp 400w, /img/svc-furnishing-600.webp 600w",
      "price": "від $250 / м²",
      "p": "Меблі, світло й декор напряму з фабрик Китаю через каталог Оздоба.",
      "li": [
@@ -799,12 +801,13 @@
        "/services",
        "Детальніше →"
       ]
-     ]
+     ],
+     "alt": "Кухня з вбудованою технікою й фасадами під дерево — реалізована квартира Tetris Hall"
     },
     {
      "h": "Будівництво",
-     "img": "img/197Bi23wSzVk-600.webp",
-     "srcset": "/img/197Bi23wSzVk-r400.webp 400w, /img/197Bi23wSzVk-600.webp 600w",
+     "img": "img/svc-construction-600.webp",
+     "srcset": "/img/svc-construction-400.webp 400w, /img/svc-construction-600.webp 600w",
      "price": "від $600 / м²",
      "p": "Зведення та реконструкція будівель під ключ.",
      "li": [
@@ -822,12 +825,13 @@
        "/services",
        "Детальніше →"
       ]
-     ]
+     ],
+     "alt": "Фасад одноповерхового будинку з навісом для авто — проєкт House 150"
     },
     {
      "h": "Ландшафт",
-     "img": "img/1QEJ_y0yTWVL-600.webp",
-     "srcset": "/img/1QEJ_y0yTWVL-r400.webp 400w, /img/1QEJ_y0yTWVL-600.webp 600w",
+     "img": "img/svc-landscape-600.webp",
+     "srcset": "/img/svc-landscape-400.webp 400w, /img/svc-landscape-600.webp 600w",
      "price": "від $50 / сотку",
      "p": "Проєктування та облаштування садів і прилеглих територій.",
      "li": [
@@ -845,7 +849,8 @@
        "/services",
        "Детальніше →"
       ]
-     ]
+     ],
+     "alt": "Благоустрій ділянки: газон, туї вздовж паркану, лаунж-зона й барбекю — проєкт Smart Villa"
     }
    ],
    "note": "Для бізнесу: [ремонт офісу під ключ від $350/м²](/remont-ofisu-pid-klyuch-kyiv) · [дизайн офісу](/dyzain-ofisu-kyiv) · [меблі для офісу з Китаю](/ozdoba)"

@@ -14,9 +14,9 @@
 .xs-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 20px;flex-wrap:wrap;margin-bottom:24px}
 .xs-head h2{margin:0}.xs-head a{font-size:var(--fs-small);letter-spacing:.14em;text-transform:uppercase}
 /* послуги */
-.xs-sv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.xs-sv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
 .xs-c{border:1px solid var(--ln);background:var(--bg2);display:flex;flex-direction:column;min-width:0}
-.xs-c>img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.xs-c>picture{display:block}.xs-c>img,.xs-c>picture>img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}@media(max-width:767px){.xs-c>img,.xs-c>picture>img{aspect-ratio:16/9;max-height:220px}}
 .xs-cb{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
 .xs-cb h3{font-size:var(--fs-h3)}.xs-cb h3 a{text-decoration:none}
 .xs-pr{color:var(--ac);font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-size:1.2em;margin:0}
