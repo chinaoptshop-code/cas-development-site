@@ -30,7 +30,7 @@
 .qz-b:disabled{opacity:.5;cursor:not-allowed}
 .qz-send:disabled{cursor:wait}
 .qz-nv{display:flex;justify-content:space-between;gap:10px;margin:22px 0 0}
-.qz-nx{margin-left:auto}
+.qz-nx{margin-inline-start:auto}
 .qz-res .qz-q{font-size:var(--fs-h2,2rem);color:var(--ac,#BF9148)}
 .qz-ls{list-style:none;padding:0;margin:0 0 10px}
 .qz-ls li{padding:6px 0;border-bottom:1px solid var(--ln,rgba(191,145,72,.18))}
@@ -44,5 +44,5 @@
 .qz-nv[hidden],.qz-hd[hidden],.qz-st[hidden]{display:none}
 .qz.qz-done{min-height:0}
 body.light .qz-nx,body.light .qz-send{color:#FBF8F3}
-@media (max-width:520px){.qz{padding:16px}.qz-os{grid-template-columns:1fr 1fr}.qz-o{padding:10px 12px;font-size:.9375rem}.qz-o span::before{margin-right:8px}}
+@media (max-width:520px){.qz{padding:16px}.qz-os{grid-template-columns:1fr 1fr}.qz-o{padding:10px 12px;font-size:.9375rem}.qz-o span::before{margin-inline-end:8px}}
 @media (prefers-reduced-motion:reduce){.qz-bar i,.qz-o{transition:none}}

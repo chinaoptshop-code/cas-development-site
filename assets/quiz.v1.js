@@ -366,7 +366,7 @@
     if (!me || !me.hasAttribute('data-quiz-obj') || !me.parentNode) return;
     var sec = el('section', 'qz-s'), w = el('div', 'w qz-w'), h = el('h2', 'qz-h', t.h), box = el('div', 'qz');
     sec.id = 'kalkulyator'; h.id = 'qzH'; sec.setAttribute('aria-labelledby', 'qzH');
-    box.setAttribute('data-quiz', ''); box.dataset.obj = me.getAttribute('data-quiz-obj'); box.dataset.svc = me.getAttribute('data-quiz-svc') || '';
+    box.setAttribute('data-quiz', ''); box.dataset.obj = me.getAttribute('data-quiz-obj'); box.dataset.svc = me.getAttribute('data-quiz-svc') || ''; if (me.getAttribute('data-css')) box.dataset.css = me.getAttribute('data-css');
     w.appendChild(h); w.appendChild(el('p', 'qz-lead', t.p)); w.appendChild(box); sec.appendChild(w);
     me.parentNode.insertBefore(sec, me);
   }

@@ -68,7 +68,9 @@ e = lambda s: html.escape(s, quote=True)
 def block(lang, obj, svc):
     """Лише тег скрипта: секцію (заголовок, лід, заготовку .qz) вставляє сам quiz.v1.js перед цим тегом —
     у HTML лендингу ~0,1 КБ замість ~0,9 КБ (бюджет 64 КБ). Тексти — у словнику L у quiz.v1.js (uk, ru, en, es, zh, pl, de, fr, ar)."""
-    return f'\n<!--quiz--><script src="/assets/quiz.v1.js" data-quiz-obj="{obj}" data-quiz-svc="{svc}" defer></script><!--/quiz-->'
+    import chrome  # версія CSS у data-css: /assets/* кешується immutable, а скрипт сам CSS не версіонує
+    css = '/assets/quiz.v1.css?v=' + chrome._ver('/assets/quiz.v1.css')
+    return f'\n<!--quiz--><script src="/assets/quiz.v1.js" data-quiz-obj="{obj}" data-quiz-svc="{svc}" data-css="{css}" defer></script><!--/quiz-->'
 
 
 def apply(s, rel):
