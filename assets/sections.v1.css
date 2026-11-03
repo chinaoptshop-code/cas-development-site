@@ -9,7 +9,7 @@
 [dir=rtl] .hx::before{background:linear-gradient(270deg,rgba(8,7,9,.94) 0,rgba(8,7,9,.78) 46%,rgba(8,7,9,.38) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 34%)}
 .hx .hero{padding-top:88px;min-height:min(80vh,760px);display:flex;flex-direction:column;justify-content:flex-end}
 .hx .hero p{color:#d3ccc1}.hx .facts div{background:rgba(8,7,9,.82)}
-@media(max-width:767px){.hx .hero{min-height:0;padding-top:120px}.hx::before{background:linear-gradient(0deg,var(--bg) 8%,rgba(8,7,9,.72) 55%,rgba(8,7,9,.45) 100%)}}
+@media(max-width:767px){.hx .hero{min-height:0;padding-top:120px}.hx::before,[dir=rtl] .hx::before{background:linear-gradient(0deg,var(--bg) 8%,rgba(8,7,9,.8) 55%,rgba(8,7,9,.6) 100%)}}
 /* заголовок з посиланням праворуч */
 .xs-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 20px;flex-wrap:wrap;margin-bottom:24px}
 .xs-head h2{margin:0}.xs-head a{font-size:var(--fs-small);letter-spacing:.14em;text-transform:uppercase}

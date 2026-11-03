@@ -34,7 +34,7 @@
   "page": "ar/about.html",
   "kind": "land",
   "html_kb": 49.9,
-  "gzip_kb": 13.4,
+  "gzip_kb": 13.3,
   "css_kb": 13.6,
   "js_kb": 0.6,
   "font_sizes": 7,
@@ -5664,7 +5664,10 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$1",
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -5695,7 +5698,9 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -5769,7 +5774,7 @@
   "page": "en/business-fit-out.html",
   "kind": "land",
   "html_kb": 39.9,
-  "gzip_kb": 11.2,
+  "gzip_kb": 11.1,
   "css_kb": 13.6,
   "js_kb": 0.6,
   "font_sizes": 7,
@@ -5791,7 +5796,9 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -5923,7 +5930,7 @@
  {
   "page": "en/faq.html",
   "kind": "land",
-  "html_kb": 37.7,
+  "html_kb": 37.6,
   "gzip_kb": 10.0,
   "css_kb": 13.6,
   "js_kb": 0.6,
@@ -5946,7 +5953,10 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$1",
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -5977,7 +5987,10 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$1",
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -6008,7 +6021,9 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -6016,7 +6031,7 @@
  {
   "page": "en/house-construction.html",
   "kind": "land",
-  "html_kb": 48.2,
+  "html_kb": 48.1,
   "gzip_kb": 14.0,
   "css_kb": 13.6,
   "js_kb": 0.6,
@@ -6039,7 +6054,10 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$1",
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -6070,7 +6088,10 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$1",
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -6132,7 +6153,10 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$1",
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -6163,7 +6187,9 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -6194,7 +6220,9 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -6412,8 +6440,10 @@
    "#100e0c"
   ],
   "prices_bad": [
-   "$165 000 ",
-   "$33 000 "
+   "$1",
+   "$165",
+   "$2",
+   "$33"
   ],
   "facts_bad": [],
   "est_bad": [],
@@ -6507,7 +6537,9 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -6538,7 +6570,9 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -6569,7 +6603,10 @@
   "bg2": [
    "#100e0c"
   ],
-  "prices_bad": [],
+  "prices_bad": [
+   "$1",
+   "$2"
+  ],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0

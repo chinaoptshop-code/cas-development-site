@@ -5,7 +5,7 @@
 ## Проблеми
 
 - **Без Clarity** (1): tury.html
-- **Непідтверджені ціни** (71): ar/renovation-calculator.html['$165 000 ', '$33 000 '], biznes-pid-kliuch-kyiv.html['$52 500'], blog/akustyka-open-space-bez-hluhykh-peregorodok.html['$35 000 ', '$35 000       '], blog/bryf-dlia-dyzainera-interieru.html['$44 000'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$165 000       ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/chornovyi-i-chystovyi-remont-riznytsia.html['$38 500', '$38 500 '], blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html['$2 400'], blog/dyzain-i-remont-penthausa-pid-kliuch.html['$115 500  ', '$174 300', '$52 500  ', '$6 300', '$6 300  ', '$6 300       '], blog/dyzain-interieru-onlain-budynok-za-kordonom.html['$7 500', '$7 500       '], blog/dyzain-interieru-z-choho-pochaty.html['$3 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'] …
+- **Непідтверджені ціни** (85): ar/renovation-calculator.html['$165 000 ', '$33 000 '], biznes-pid-kliuch-kyiv.html['$52 500'], blog/akustyka-open-space-bez-hluhykh-peregorodok.html['$35 000 ', '$35 000       '], blog/bryf-dlia-dyzainera-interieru.html['$44 000'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$165 000       ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/chornovyi-i-chystovyi-remont-riznytsia.html['$38 500', '$38 500 '], blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html['$2 400'], blog/dyzain-i-remont-penthausa-pid-kliuch.html['$115 500  ', '$174 300', '$52 500  ', '$6 300', '$6 300  ', '$6 300       '], blog/dyzain-interieru-onlain-budynok-za-kordonom.html['$7 500', '$7 500       '], blog/dyzain-interieru-z-choho-pochaty.html['$3 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'] …
 - **Класи поза /styleguide/ (warning, `ui.py classes`)** (24): .acc-box, .cover, .dw, .hx, .hx-bg, .la-pies, .la-pies-h, .la-price, .row, .rp-list, .rp-rates, .rs-case …
 
 ## Токени
@@ -495,7 +495,7 @@
 | blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html | article | 50.0 | 13.8 | 14.4 | 0.6 | 7 | 371 |
 | dyzain-i-remont-penthausa-kyiv.html | land | 50.0 | 13.3 | 13.6 | 0.6 | 7 | 441 |
 | ru/dom-pod-klyuch-koncha-zaspa.html | land | 50.0 | 13.3 | 13.6 | 0.6 | 7 | 464 |
-| ar/about.html | land | 49.9 | 13.4 | 13.6 | 0.6 | 7 | 527 |
+| ar/about.html | land | 49.9 | 13.3 | 13.6 | 0.6 | 7 | 527 |
 | blog/avtorskyi-nahliad-navishcho.html | article | 49.9 | 14.1 | 14.4 | 0.6 | 7 | 384 |
 | blog/skilky-koshtuie-remont-budynku-pid-kliuch.html | article | 49.9 | 14.0 | 14.4 | 0.6 | 7 | 396 |
 | blog/yak-vybraty-remontnu-bryhadu.html | article | 49.9 | 14.1 | 14.4 | 0.6 | 7 | 383 |
@@ -555,10 +555,10 @@
 | ar/house-construction.html | land | 48.3 | 13.6 | 13.6 | 0.6 | 7 | 486 |
 | remont-kvartyry-zhk-hvardiiskyi.html | land | 48.3 | 13.1 | 13.6 | 0.6 | 7 | 431 |
 | ru/remont-kvartiry-zhk-rusaniv-residence.html | land | 48.3 | 13.2 | 13.6 | 0.6 | 7 | 430 |
-| en/house-construction.html | land | 48.2 | 14.0 | 13.6 | 0.6 | 7 | 538 |
 | remont-kvartyry-zhk-nordica-residence.html | land | 48.2 | 13.1 | 13.6 | 0.6 | 7 | 431 |
 | remont-kvartyry-zhk-rusaniv-residence.html | land | 48.2 | 13.2 | 13.6 | 0.6 | 7 | 430 |
 | ru/remont-kvartiry-zhk-gvardeyskiy.html | land | 48.2 | 13.1 | 13.6 | 0.6 | 7 | 431 |
+| en/house-construction.html | land | 48.1 | 14.0 | 13.6 | 0.6 | 7 | 538 |
 | remont-kvartyry-zhk-respublika.html | land | 48.1 | 13.0 | 13.6 | 0.6 | 7 | 430 |
 | ru/remont-kvartiry-zhk-novyy-avtograf.html | land | 48.1 | 13.0 | 13.6 | 0.6 | 7 | 430 |
 | ru/remont-kvartiry-zhk-respublika.html | land | 48.1 | 13.0 | 13.6 | 0.6 | 7 | 430 |
@@ -756,7 +756,7 @@
 | fr/renovation-salle-de-bain.html | land | 40.0 | 10.9 | 13.6 | 0.6 | 7 | 390 |
 | ar/house-design.html | land | 39.9 | 10.4 | 13.6 | 0.6 | 7 | 370 |
 | ar/interior-designer.html | land | 39.9 | 10.6 | 13.6 | 0.6 | 7 | 370 |
-| en/business-fit-out.html | land | 39.9 | 11.2 | 13.6 | 0.6 | 7 | 408 |
+| en/business-fit-out.html | land | 39.9 | 11.1 | 13.6 | 0.6 | 7 | 408 |
 | ru/referalnaya-programma.html | land | 39.8 | 10.8 | 13.6 | 0.6 | 7 | 336 |
 | ar/faq.html | land | 39.7 | 10.3 | 13.6 | 0.6 | 7 | 323 |
 | en/new-build-renovation.html | land | 39.7 | 10.7 | 13.6 | 0.6 | 7 | 408 |
@@ -821,10 +821,10 @@
 | es/diseno-interiores.html | land | 37.8 | 10.4 | 13.6 | 0.6 | 7 | 367 |
 | fr/conception-maison.html | land | 37.8 | 10.1 | 13.6 | 0.6 | 7 | 372 |
 | zh/services.html | land | 37.8 | 11.2 | 13.6 | 0.6 | 7 | 412 |
-| en/faq.html | land | 37.7 | 10.0 | 13.6 | 0.6 | 7 | 340 |
 | en/house-design.html | land | 37.7 | 10.1 | 13.6 | 0.6 | 7 | 389 |
 | es/proyecto-de-casa.html | land | 37.7 | 10.1 | 13.6 | 0.6 | 7 | 372 |
 | zh/new-build-renovation.html | land | 37.7 | 11.0 | 13.6 | 0.6 | 7 | 389 |
+| en/faq.html | land | 37.6 | 10.0 | 13.6 | 0.6 | 7 | 340 |
 | fr/ameublement-cle-en-main.html | land | 37.6 | 10.5 | 13.6 | 0.6 | 7 | 360 |
 | pl/projektant-wnetrz.html | land | 37.5 | 10.5 | 13.6 | 0.6 | 7 | 380 |
 | zh/business-fit-out.html | land | 37.5 | 11.2 | 13.6 | 0.6 | 7 | 380 |

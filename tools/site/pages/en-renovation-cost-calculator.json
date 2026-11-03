@@ -5,7 +5,7 @@
  "title": "Renovation cost calculator — price per m² in Kyiv | CAS Development",
  "description": "Online cost calculator for apartment and office renovation and house construction in Kyiv: renovation from $550/m², design from $30/m², furnishing from $250/m².",
  "h1": "Renovation cost calculator",
- "price": "renovation from $550 / m² · turnkey house from $1 100 / m²",
+ "price": "renovation from $550 / m² · turnkey house from $1,100 / m²",
  "lead": "Estimate the approximate cost of renovating an apartment or office or building a house at our base rates. Add a design project and furnishing — and send us the result: after measuring we will prepare an exact estimate.",
  "calc": true,
  "cards": [
@@ -21,14 +21,14 @@
    "House",
    [
     "shell — from $600/m²",
-    "turnkey with finishing — from $1 100/m²",
+    "turnkey with finishing — from $1,100/m²",
     "design and estimate before the start"
    ]
   ],
   [
    "Design and furniture",
    [
-    "design project — from $30/m², minimum $2 500",
+    "design project — from $30/m², minimum $2,500",
     "furnishing and procurement — from $250/m²",
     "furniture and lighting direct from China"
    ]
@@ -68,7 +68,7 @@
  "faq": [
   [
    "How much does it cost to renovate a 60 m² apartment in Kyiv?",
-   "At the base rate — from $33 000 (60 m² × $550). The price from $550/m² covers works and rough materials; finishing materials, furniture and appliances are priced separately in the estimate. We give the exact amount after measuring and preparing the estimate."
+   "At the base rate — from $33,000 (60 m² × $550). The price from $550/m² covers works and rough materials; finishing materials, furniture and appliances are priced separately in the estimate. We give the exact amount after measuring and preparing the estimate."
   ],
   [
    "Are materials included in the price?",
@@ -80,7 +80,7 @@
   ],
   [
    "How much does a 150 m² turnkey house cost?",
-   "At the base rate — from $165 000 (150 m² × $1 100). The exact amount comes after the design."
+   "At the base rate — from $165,000 (150 m² × $1,100). The exact amount comes after the design."
   ]
  ],
  "rel": [
