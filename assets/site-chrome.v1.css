@@ -505,7 +505,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:auto;margin:0 0 10px!important;position:relative;border:1px solid var(--ln,rgba(191,145,72,.22))!important;border-radius:14px;
   background:var(--bg2,rgba(255,255,255,.03))!important;transition:border-color .3s ease,background-color .3s ease;min-width:0}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):is(.c-o,:has(>.c-o)){grid-column:1/-1!important}
-.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):not(:is([data-c=x]:not(.w),section:has(>.w[data-c=x]))+:is([data-c=x]:not(.w),section:has(>.w[data-c=x]))):not(:has(+:is([data-c=x]:not(.w),section:has(>.w[data-c=x])))){grid-column:1/-1!important}
+.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):not(:is([data-c=x]:not(.w),section:has(>.w[data-c=x]))+:is([data-c=x]:not(.w),section:has(>.w[data-c=x]))):not(:has(+[data-c=x]:not(.w),+section>.w[data-c=x])){grid-column:1/-1!important}
 .js section:not([data-c=x],:has(>.w[data-c=x]))+:is([data-c=x]:not(.w),section:has(>.w[data-c=x])),.js :is(.hero,.crumbs)+:is([data-c=x]:not(.w),section:has(>.w[data-c=x])){margin-top:0!important}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x]))+:not([data-c=x],section:has(>.w[data-c=x]),script,style){margin-top:30px!important}
 .js .w[data-c=x]{margin:0;max-width:none;padding:16px 16px 18px}
@@ -644,9 +644,19 @@ main :is(p,li,figcaption) a:not(.btn){overflow-wrap:anywhere}
   /* легкі сторінки (ux.py LIGHT): сітка плиток на ширину контейнера, самотня плитка — банер, а не екран-картинка */
   html.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){--uxp:max(16px,(100vw - var(--cw))/2 + 1rem);column-gap:14px}
   .js [data-c=x]::before{max-height:min(36vh,16rem);min-width:calc(100% + 32px)}
+  /* сітки карток: мінімальна ширина в rem — колонок більше, але картки не дрібнішають разом із текстом */
+  html body .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}
+  html body .vgrid{grid-template-columns:repeat(auto-fill,minmax(17rem,1fr))}
   /* Оздоба (tools/products/build.py): каталог на ширину контейнера */
   html body :is(.ozd-sec,.vhead,.venues,.tabs,.chips,.sortrow),html body #grid.grid{max-width:var(--cw)}
 }
-@media(min-width:1800px){html.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){grid-template-columns:repeat(5,minmax(0,1fr))}}
 @media(min-width:1024px) and (max-width:1366px){html body .xs-st{grid-auto-columns:calc((100% - 3 * 10px) / 4)}}
 @media(min-width:2200px){html body .xs-st{grid-auto-columns:calc((100% - 5 * 14px) / 6);gap:14px}}
+/* LIGHT-сітка плиток (03.11.2026, блочність): main — 12 колонок, плитка — 12/N (N = 2 → 3 з 760 px → 4 з 1100 → 6 з 2200);
+   неповний останній ряд серії ділить ряд порівну: --s2/--s3/--s4/--s6 на секції ставить tools/site/ux.py (_spans) — без порожніх смуг
+   і дрібних одиноких плиток; самотня плитка — банер на всю ширину з невисокою ілюстрацією. */
+html.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){grid-template-columns:repeat(12,minmax(0,1fr))}
+html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s2,6)}
+@media(min-width:760px){html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s3,4)}.js [data-c=x]:not(.c-o)::before{max-height:min(36vh,16rem);min-width:calc(100% + 32px)}}
+@media(min-width:1100px){html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s4,3)}}
+@media(min-width:2200px){html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s6,2)}}

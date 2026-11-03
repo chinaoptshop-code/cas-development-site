@@ -114,7 +114,7 @@ def video_block(videos, lang, chan):
                      f'<img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="{e(ti)}">'
                      f'<span class="lyt-b" aria-hidden="true">▶</span></a><figcaption>{e(ti)}</figcaption></figure>')
     more = f'<p style="margin:18px 0 0"><a href="{e(chan)}" target="_blank" rel="noopener" style="color:var(--ac)">{e(t["chan"])}</a></p>' if chan else ''
-    return (f'\n<!--yt--><section id="video" style="{SEC}"><div style="max-width:1080px;margin:0 auto">\n'
+    return (f'\n<!--yt--><section id="video" style="{SEC}"><div style="max-width:var(--cw,1080px);margin:0 auto">\n'
             f'  <h2 style="{H2}">{e(t["vid"])}</h2><p style="{LEAD}">{e(t["vid_p"])}</p>\n'
             f'  <div class="vgrid">{"".join(items)}</div>{more}\n'
             f'</div></section>{video_ld(videos, lang)}{ASSETS}<!--/yt-->')
