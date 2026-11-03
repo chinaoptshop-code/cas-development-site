@@ -1,5 +1,5 @@
 /* «Ресторан з нуля» (assets/restaurant-anim.v1.js, tools/site/restaurant.py). Керування — ті самі класи la-*, що й у «Ландшафт з нуля». UI-kit: /styleguide/#build-anim-sg */
-.la-tab{display:inline-flex;flex-wrap:wrap;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:999px;padding:4px;margin:0 0 18px}
+.la-tab{display:inline-flex;flex-wrap:wrap;max-width:100%;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:22px;padding:4px;margin:0 0 18px}
 .la-tab a{padding:8px 16px;border-radius:999px;text-decoration:none;font-size:var(--fs-small);min-height:36px;display:inline-flex;align-items:center}
 .la-tab a[aria-current]{background:var(--ac,#BF9148);color:#140f08}
 .la-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}

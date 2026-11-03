@@ -427,6 +427,6 @@
 .st-aframe .clad.l,.st-aframe .clad.r{fill:url(#bz-boardv-r)}.st-aframe .rf.f{fill:#2a292c}.st-aframe .rf.b{fill:#222125}
 @media(prefers-reduced-motion:reduce){.bz-fig svg.bz-in{animation:none}.bz-fig svg.bz-out{transition:none}}
 /* перемикач «Будинок / Ландшафт» (tools/site/landanim.py) */
-.la-tab{display:inline-flex;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:999px;padding:4px;margin:0 0 18px}
+.la-tab{display:inline-flex;flex-wrap:wrap;max-width:100%;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:22px;padding:4px;margin:0 0 18px}
 .la-tab a{padding:8px 16px;border-radius:999px;text-decoration:none;font-size:var(--fs-small);min-height:36px;display:inline-flex;align-items:center}
 .la-tab a[aria-current]{background:var(--ac,#BF9148);color:#140f08}
