@@ -622,7 +622,7 @@
 | ru/kosmeticheskiy-remont-kvartiry-kiev.html | land | 45.1 | 12.3 | 13.6 | 0.6 | 7 | 396 |
 | fr/design-restaurant-cafe.html | land | 44.9 | 12.7 | 13.6 | 2.7 | 7 | 452 |
 | chornovyi-remont-kvartyry-kyiv.html | land | 44.8 | 12.2 | 13.6 | 0.6 | 7 | 395 |
-| de/renovierungskosten-rechner.html | land | 44.8 | 13.1 | 14.2 | 1.6 | 7 | 465 |
+| de/renovierungskosten-rechner.html | land | 44.8 | 13.0 | 14.2 | 1.6 | 7 | 465 |
 | kosmetychnyi-remont-kvartyry-kyiv.html | land | 44.8 | 12.3 | 13.6 | 0.6 | 7 | 396 |
 | ru/chernovoy-remont-kvartiry-kiev.html | land | 44.8 | 12.2 | 13.6 | 0.6 | 7 | 395 |
 | es/diseno-restaurantes-cafeterias.html | land | 44.7 | 12.5 | 13.6 | 2.7 | 7 | 452 |
