@@ -25,7 +25,7 @@ for a in "$@"; do case "$a" in --check) CHECK_ONLY=1;; --no-tg) NO_TG=1;; -h|--h
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 SSD="${CAS_SSD:-/Volumes/CAS-Mac}"
 DASH="${CAS_DASH:-http://127.0.0.1:8787}"
-export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:$PATH"  # як у remote-control/start-rc.sh: homebrew-claude новіший за ~/.local/bin
 OK=(); WARN=(); BAD=()
 ok()   { OK+=("$1");   printf '  \033[32m✓\033[0m %s\n' "$1"; }
 warn() { WARN+=("$1"); printf '  \033[33m!\033[0m %s\n' "$1"; }
@@ -122,6 +122,7 @@ hdr "6. Репозиторій сайту"
 if git -C "$REPO" rev-parse >/dev/null 2>&1; then
   BR=$(git -C "$REPO" branch --show-current)
   if [ -n "$(git -C "$REPO" status --porcelain)" ]; then warn "У $REPO є незакомічені зміни — pull не роблю"
+  elif [ "$CHECK_ONLY" = 1 ]; then ok "Репозиторій чистий ($BR), pull пропущено (--check)"
   else run git -C "$REPO" pull -q --no-rebase origin "$BR" && ok "git pull ($BR) — $(git -C "$REPO" log -1 --format='%h %s' | cut -c1-70)" || bad "git pull не вдався"; fi
 fi
 
@@ -129,7 +130,7 @@ fi
 hdr "7. Claude Code"
 if command -v claude >/dev/null; then
   ok "claude $(claude --version 2>/dev/null | head -1)"
-  pgrep -fq "claude.*remote-control" && ok "Remote Control працює" || warn "Remote Control не запущено: у теці проєкту — claude remote-control (або Claude desktop → Settings → Remote Control)"
+  { tmux has-session -t claude-rc 2>/dev/null || pgrep -fq "claude.*remote-control"; } && ok "Remote Control працює"  # процес RC перейменовує себе на «claude»; на Mac mini він у tmux claude-rc || warn "Remote Control не запущено: у теці проєкту — claude remote-control (або Claude desktop → Settings → Remote Control)"
 else bad "claude не знайдено (PATH: ~/.local/bin)"; fi
 
 # ---------- 8. Пульт ----------
