@@ -139,12 +139,12 @@ def block(lang):
 
 
 def tab(lang, active):
-    """Перемикач «Будинок / Ландшафт» над сценою на сторінці будівництва (посилання на сторінку ландшафту зі сценою)."""
+    """Перемикач «Будинок / Ландшафт / Будинок на воді» над сценою на сторінці будівництва (посилання на сторінку ландшафту зі сценою)."""
     import buildanim
     t = T[lang]['tab']
     return (f'<!--la:tab--><nav class="la-tab" aria-label="{e(t[0])} / {e(t[1])}"><a href="{buildanim.BUILD[lang]}#build-anim"'
             + (' aria-current="page"' if active == 'house' else '') + f'>{e(t[0])}</a><a href="{LAND[lang]}#build-anim"'
-            + (' aria-current="page"' if active == 'land' else '') + f'>{e(t[1])}</a></nav><!--/la:tab-->')
+            + (' aria-current="page"' if active == 'land' else '') + f'>{e(t[1])}</a>' + __import__('waterhouse').tab_link(lang) + '</nav><!--/la:tab-->')
 
 
 ANCHORS = ('<!--cas:guarantees-->', '<!--quiz-->', '<section id="zayavka"')

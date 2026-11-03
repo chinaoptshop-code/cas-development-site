@@ -25,6 +25,7 @@ python3 tools/site/buildanim.py # «Будинок з нуля» / «Ремон�
 python3 tools/site/landanim.py  # «Ландшафт з нуля» — сцена на сторінках ландшафтного дизайну + перемикач «Будинок / Ландшафт» на будівництві
 python3 tools/site/resort.py    # «Комплекс відпочинку» — генплан (база відпочинку, ресторан), тизер (послуги, будівництво), перемикач сцен на головних
 python3 tools/site/restaurant.py # «Ресторан з нуля» — сцена на сторінках дизайну/ремонту ресторанів, тизер на послугах
+python3 tools/site/waterhouse.py # «Будинок на воді» — сцена на сторінках бази відпочинку (посилання в перемикачах сцен дають landanim/resort)
 python3 tools/site/llms.py      # /llms.txt і /llms-full.txt — опис студії для ШІ (факти з CLAUDE.md, сторінки з sitemap)
 python3 tools/site/chrome.py
 python3 tools/site/chrome.py --check

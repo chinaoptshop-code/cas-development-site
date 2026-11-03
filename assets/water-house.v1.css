@@ -1,0 +1,67 @@
+/* «Будинок на воді» (assets/water-house.v1.js, tools/site/waterhouse.py). Керування — спільні класи la-*. UI-kit: /styleguide/#build-anim-sg */
+.la-tab{display:inline-flex;flex-wrap:wrap;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:999px;padding:4px;margin:0 0 18px}
+.la-tab a{padding:8px 16px;border-radius:999px;text-decoration:none;font-size:var(--fs-small);min-height:36px;display:inline-flex;align-items:center}
+.la-tab a[aria-current]{background:var(--ac,#BF9148);color:#140f08}
+.la-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.la-ctl{display:flex;flex-wrap:wrap;gap:10px 18px;margin:8px 0 14px}
+.la-seg{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.la-lab{font-size:var(--fs-small);color:var(--mu,#938c84);margin-inline-end:4px}
+.la-seg button{min-height:36px;min-width:40px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.3));background:none;color:inherit;font:inherit;font-size:var(--fs-small);cursor:pointer}
+.la-seg button[aria-pressed=true]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#140f08}
+.la-xr button.x0[aria-pressed=true]{background:#7fc8e8;border-color:#7fc8e8}.la-xr button.x1[aria-pressed=true]{background:#57c4b3;border-color:#57c4b3}.la-xr button.x2[aria-pressed=true]{background:#f0b44c;border-color:#f0b44c}
+.la-stick{position:sticky;top:68px;display:grid;gap:8px}
+.la-svg{display:block;width:100%;height:min(58vh,560px);background:radial-gradient(ellipse at 50% 30%,#1b1813,#0d0c0a);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:14px;outline-offset:3px}
+.la-cap{margin:0;min-height:4.6em}.la-cap b{display:block;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3)}.la-cap span{color:var(--mu,#938c84);font-size:var(--fs-small)}
+.la-nav{display:flex;align-items:center;gap:10px}.la-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--ac,#BF9148);background:none;color:inherit;font-size:20px;cursor:pointer}
+.la-cnt{font-size:var(--fs-small);color:var(--mu,#938c84);min-width:5em;text-align:center}
+.la-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.la-foot{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}.la-est{margin:0;color:var(--ac,#BF9148)}
+@media(max-width:767px){.la-svg{height:46vh}.la-stick{top:58px}.la-cap{min-height:5.6em}.la-ctl{gap:8px}}
+.rs-price{color:var(--ac,#BF9148);margin:18px 0 0}.rs-case{margin:8px 0 0}
+.wh-price{color:var(--ac,#BF9148);margin:18px 0 0}
+/* сцена */
+.wh-e{opacity:0;transition:opacity .45s ease,transform .45s ease}.wh-e.on{opacity:1}.wh-e.gone{opacity:0!important}
+.wh-e:not(.on){transform:translateY(-8px)}
+.wh-day{fill:#1d2a33}.wh-night{fill:#06102a;opacity:0;pointer-events:none}
+.wh-bed{fill:#3b4a3a}.wh-water{fill:url(#wh-wg)}
+.wh-glint{stroke:#e6f6ff;stroke-width:1.2;stroke-linecap:round;opacity:.15}
+.wh-shore.t{fill:#5b4a34}.wh-shore.r,.wh-shore.l{fill:#4a3b29}.wh-grass{fill:#4d7a34}
+.wh-trunk{stroke:#5b3c22;stroke-width:3;stroke-linecap:round}.wh-crown{fill:#3f6e2a}
+.wh-tri{stroke:#d9c27a;stroke-width:1.2;fill:none}.wh-dev{fill:#f0c94b}
+.wh-sound{fill:none;stroke:#bfe4ff;stroke-width:.8}.wh-sp{fill:#ffcf5a}
+.wh-plan{fill:none;stroke:#f0e2b8;stroke-width:1;stroke-dasharray:5 4}
+.wh-pile.t{fill:#8a6a46}.wh-pile.r{fill:#5e4630}.wh-pile.l{fill:#73573a}.wh-pile.u{opacity:.55}
+.wh-pont.t{fill:#c9cfd3}.wh-pont.r{fill:#8e979d}.wh-pont.l{fill:#a9b1b6}.wh-pont.u{opacity:.5}
+.wh-drv,.wh-slide{transition:transform .5s cubic-bezier(.5,0,.75,0)}.wh-e:not(.on) .wh-drv{transform:translateY(-46px)}.wh-e:not(.on) .wh-slide{transform:translate(40px,22px)}
+.wh-splash{fill:none;stroke:#e6f6ff;stroke-width:1.2;opacity:0}.wh-rip{fill:none;stroke:#bfe4ff;stroke-width:.7;opacity:0}
+.wh-beam.t{fill:#9b7a52}.wh-beam.r,.wh-beam.l{fill:#6b5236}
+.wh-board{stroke:#5b4128;stroke-width:.3}.wh-board.b0{fill:#b08a5e}.wh-board.b1{fill:#a17c52}.wh-edge{fill:#6b5236}.wh-fascia{fill:#5e4630}.wh-fascia.r{fill:#4e3a28}
+.wh-rail,.wh-bal{stroke:#d8d2c4;stroke-width:1.3;fill:none}.wh-bal{stroke-width:.8}.wh-lad{stroke:#cfd6dc;stroke-width:1.2;fill:none}
+.wh-stud.t{fill:#d8b98a}.wh-stud.r{fill:#b08a5e}.wh-stud.l{fill:#c4a070}.wh-plate{fill:none;stroke:#d8b98a;stroke-width:2}
+.wh-gab{fill:#4a4540}.wh-roofb{fill:#2c2a28;stroke:#1d1c1a;stroke-width:.4}.wh-roof{stroke:#1d1c1a;stroke-width:.5}.wh-roof.s0{fill:#3b3836}.wh-roof.s1{fill:#433f3c}
+.wh-refl{fill:#0e2533;opacity:.55}.wh-refl.d{fill:#3a2a1c}.wh-refl.w{fill:#ffcf7a;opacity:0;transition:opacity 1s}
+.wh-clad{fill:#8f7254;stroke:#6b5236;stroke-width:.4}.wh-clad.l{fill:#a1825f}.wh-clad.gw{fill:#9cc3d6;fill-opacity:.55;stroke:#2a2a2a;stroke-width:1.2;transition:fill .8s}
+.wh-mul{stroke:#2a2a2a;stroke-width:1.2}.wh-door{fill:#3a2e24;stroke:#BF9148;stroke-width:.6}
+.wh-tdeck.t{fill:#a17c52}.wh-tdeck.r,.wh-tdeck.l{fill:#6b5236}.wh-post.t,.wh-post.r,.wh-post.l{fill:#d8d2c4}
+.wh-lng.t{fill:#efe6d4}.wh-lng.r,.wh-lng.l{fill:#9b8a6c}.wh-lngb{fill:#e2d6c0}.wh-pot.t{fill:#6b665e}.wh-pot.r,.wh-pot.l{fill:#55514a}.wh-bush{fill:#3f7a33}
+.wh-tank.t{fill:#57c4b3}.wh-tank.r,.wh-tank.l{fill:#3c8f82}.wh-hatch{fill:#2f3a38;stroke:#8fa}.wh-polel{stroke:#8a7f70;stroke-width:2}
+.wh-pw{stroke:#5aa0d8;stroke-width:2.6;fill:none;stroke-linecap:round}.wh-ps{stroke:#57c4b3;stroke-width:2.6;fill:none;stroke-dasharray:7 3}.wh-pe{stroke:#f0b44c;stroke-width:1.6;fill:none;stroke-dasharray:8 3}
+.wh-box.t,.wh-box.r,.wh-box.l{fill:#ddd}.wh-fw{fill:#d6efff}.wh-fs{fill:#d9fff6}.wh-fe{fill:#fff3b0}
+.wh-man line{stroke-width:4.4;stroke-linecap:round}.wh-man circle{fill:#e8cfb4}.wh-man.p0 line{stroke:#c0504d}.wh-man.p1 line{stroke:#4f81bd}.wh-man.p2 line{stroke:#9bbb59}
+.wh-hull{fill:#d8d2c4;stroke:#6b5236}
+.wh-lamp{fill:#ffe2a0;opacity:.4}.wh-gl{fill:url(#wh-gw);opacity:0;transition:opacity 1s}.wh-streak{stroke:#ffd98a;stroke-width:3;stroke-linecap:round;opacity:0;transition:opacity 1s}
+/* вечір */
+.wh-dusk .wh-gl{opacity:.85}.wh-dusk .wh-clad.gw{fill:#ffcf7a;fill-opacity:.8}.wh-dusk .wh-lamp{opacity:1}.wh-dusk .wh-streak{opacity:.5}.wh-dusk .wh-refl.w{opacity:.22}.wh-dusk .wh-glint{stroke:#ffd98a}
+/* мережі ховаються під обшивкою й настилом; рентген показує вибране */
+.wh-svg.wh-closed .ux{opacity:0!important}
+.wh-svg.xr0 .ux0.on,.wh-svg.xr1 .ux1.on,.wh-svg.xr2 .ux2.on{opacity:1!important;transform:none}
+.wh-svg:is(.xr0,.xr1,.xr2) :is(.wh-board,.wh-clad,.wh-roof,.wh-roofb,.wh-gab,.wh-tdeck){opacity:.35}
+@media (prefers-reduced-motion:no-preference){
+  .wh-glint{animation:wh-gl 3.6s ease-in-out infinite}@keyframes wh-gl{0%,100%{opacity:.08}50%{opacity:.75}}
+  .wh-e.on .wh-splash{animation:wh-sp 1s ease-out 1}@keyframes wh-sp{0%{opacity:.9;transform:scale(.3)}100%{opacity:0;transform:scale(1.8)}}
+  .wh-e.on .wh-rip{animation:wh-rp 3.2s ease-out infinite}@keyframes wh-rp{0%{opacity:.7;transform:scale(.5)}100%{opacity:0;transform:scale(2.2)}}
+  .wh-splash,.wh-rip{transform-box:fill-box;transform-origin:50% 50%}
+  .wh-refl{animation:wh-wv 5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 0}@keyframes wh-wv{to{transform:skewX(3deg) scaleY(.96)}}
+  .wh-dusk .wh-streak{animation:wh-st 1.8s ease-in-out infinite alternate}@keyframes wh-st{to{opacity:.15}}
+  .wh-e.on .wh-sound{animation:wh-rp 2.4s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+}
+@media (prefers-reduced-motion:reduce){.wh-e,.wh-drv,.wh-slide,.wh-gl,.wh-streak,.wh-clad,.wh-refl.w{transition:none}}
