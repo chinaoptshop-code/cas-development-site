@@ -22,6 +22,7 @@ python3 tools/site/casmap.py    # карти: «Карта проєктів» у
 python3 tools/site/quiz.py      # квіз-калькулятор перед формою заявки (головні uk/ru/en, ремонт, будівництво)
 python3 tools/site/media.py     # тур 360° (/tury/<slug>) на сторінках проєктів, відео YouTube, канал у sameAs — з tools/site/media.json
 python3 tools/site/buildanim.py # «Будинок з нуля» / «Ремонт з нуля» — scroll-анімація збірки (будівництво, ремонт квартир, головні)
+python3 tools/site/landanim.py  # «Ландшафт з нуля» — сцена на сторінках ландшафтного дизайну + перемикач «Будинок / Ландшафт» на будівництві
 python3 tools/site/llms.py      # /llms.txt і /llms-full.txt — опис студії для ШІ (факти з CLAUDE.md, сторінки з sitemap)
 python3 tools/site/chrome.py
 python3 tools/site/chrome.py --check

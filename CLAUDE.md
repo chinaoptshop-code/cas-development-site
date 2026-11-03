@@ -52,6 +52,8 @@
   Деплой сам збирає сайт `tools/build-all.sh` (landing → products → shop → blog → chrome → i18n); `rebuild.yml` комітить згенероване з `[rebuild]`.
 - «Будинок з нуля» / «Ремонт з нуля» (scroll-анімація збірки, префікс класів `bz`, `.ba` — слайдер «до/після»): тексти етапів і пироги шарів — `tools/site/buildanim_data.py`, генератор `tools/site/buildanim.py`
   (сторінки — `PAGES`, у build-all), `assets/build-anim.v1.{js,css}` (вантажить site-chrome.v1.js після першої прокрутки), UI-kit — `/styleguide/#build-anim-sg`.
+  «Ландшафт з нуля» (16 етапів, 6/10/15/25 соток, стиль, рентген, 4 пироги, CTA з конфігурацією в форму): `tools/site/landanim.py` (+ `landanim_i18n.py`),
+  `assets/land-anim.v1.{js,css}`; сторінки ландшафтного дизайну всіх мов + перемикач «Будинок / Ландшафт» на будівництві.
 - Менше стіни тексту (`tools/site/ux.py`, викликає `chrome.apply()`): іконки до H2/карток (`data-i`, спрайт `/assets/icons.v1.svg`, Lucide ISC, мапа тем — `RULES`),
   згортання довгих блоків (`data-c`: текст/етапи/FAQ/картки/списки статей; текст лишається в DOM), бейдж «Анімація реалізації» на посиланнях на `PAGES` з buildanim.py
   і кнопка «Дивитись, як ми будуємо» в hero. Тексти — `ux` у `tools/site/lang/*.json` (uk/ru — у ux.py). Руками атрибути не писати; UI-kit — `/styleguide/#ux`.
