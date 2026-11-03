@@ -1,28 +1,12 @@
 /* «Будинок на воді» (assets/water-house.v1.js, tools/site/waterhouse.py). Керування — спільні класи la-*. UI-kit: /styleguide/#build-anim-sg */
-.la-tab{display:inline-flex;flex-wrap:wrap;max-width:100%;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:22px;padding:4px;margin:0 0 18px}
-.la-tab a{padding:8px 16px;border-radius:999px;text-decoration:none;font-size:var(--fs-small);min-height:36px;display:inline-flex;align-items:center}
-.la-tab a[aria-current]{background:var(--ac,#BF9148);color:#140f08}
-.la-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.la-ctl{display:flex;flex-wrap:wrap;gap:10px 18px;margin:8px 0 14px}
-.la-seg{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.la-lab{font-size:var(--fs-small);color:var(--mu,#938c84);margin-inline-end:4px}
-.la-seg button{min-height:36px;min-width:40px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.3));background:none;color:inherit;font:inherit;font-size:var(--fs-small);cursor:pointer}
-.la-seg button[aria-pressed=true]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#140f08}
 .la-xr button.x0[aria-pressed=true]{background:#7fc8e8;border-color:#7fc8e8}.la-xr button.x1[aria-pressed=true]{background:#57c4b3;border-color:#57c4b3}.la-xr button.x2[aria-pressed=true]{background:#f0b44c;border-color:#f0b44c}
-.la-stick{position:sticky;top:68px;display:grid;gap:8px}
-.la-svg{display:block;width:100%;height:min(58vh,560px);background:radial-gradient(ellipse at 50% 30%,#1b1813,#0d0c0a);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:14px;outline-offset:3px}
-.la-cap{margin:0;min-height:4.6em}.la-cap b{display:block;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3)}.la-cap span{color:var(--mu,#938c84);font-size:var(--fs-small)}
-.la-nav{display:flex;align-items:center;gap:10px}.la-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--ac,#BF9148);background:none;color:inherit;font-size:20px;cursor:pointer}
-.la-cnt{font-size:var(--fs-small);color:var(--mu,#938c84);min-width:5em;text-align:center}
-.la-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.la-foot{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}.la-est{margin:0;color:var(--ac,#BF9148)}
-@media(max-width:767px){.la-svg{height:46vh}.la-stick{top:58px}.la-cap{min-height:5.6em}.la-ctl{gap:8px}}
 .rs-price{color:var(--ac,#BF9148);margin:18px 0 0}.rs-case{margin:8px 0 0}
 .wh-price{color:var(--ac,#BF9148);margin:18px 0 0}
 /* сцена */
 .wh-e{opacity:0;transition:opacity .45s ease,transform .45s ease}.wh-e.on{opacity:1}.wh-e.gone{opacity:0!important}
 .wh-e:not(.on){transform:translateY(-8px)}
 .wh-day{fill:#1d2a33}.wh-night{fill:#06102a;opacity:0;pointer-events:none}
-.wh-bed{fill:#3b4a3a}.wh-water{fill:url(#wh-wg)}
+.wh-bed{fill:#3b4a3a}.wh-water{fill:url(#wh-wg)}.wh-ripple{fill:url(#wh-rp)}.wh-shade{fill:url(#wh-sh)}.wh-grain{fill:url(#wh-wd);pointer-events:none}
 .wh-glint{stroke:#e6f6ff;stroke-width:1.2;stroke-linecap:round;opacity:.15}
 .wh-shore.t{fill:#5b4a34}.wh-shore.r,.wh-shore.l{fill:#4a3b29}.wh-grass{fill:#4d7a34}
 .wh-trunk{stroke:#5b3c22;stroke-width:3;stroke-linecap:round}.wh-crown{fill:#3f6e2a}
@@ -54,7 +38,7 @@
 /* мережі ховаються під обшивкою й настилом; рентген показує вибране */
 .wh-svg.wh-closed .ux{opacity:0!important}
 .wh-svg.xr0 .ux0.on,.wh-svg.xr1 .ux1.on,.wh-svg.xr2 .ux2.on{opacity:1!important;transform:none}
-.wh-svg:is(.xr0,.xr1,.xr2) :is(.wh-board,.wh-clad,.wh-roof,.wh-roofb,.wh-gab,.wh-tdeck){opacity:.35}
+.wh-svg:is(.xr0,.xr1,.xr2) :is(.wh-board,.wh-grain,.wh-clad,.wh-roof,.wh-roofb,.wh-gab,.wh-tdeck){opacity:.35}
 @media (prefers-reduced-motion:no-preference){
   .wh-glint{animation:wh-gl 3.6s ease-in-out infinite}@keyframes wh-gl{0%,100%{opacity:.08}50%{opacity:.75}}
   .wh-e.on .wh-splash{animation:wh-sp 1s ease-out 1}@keyframes wh-sp{0%{opacity:.9;transform:scale(.3)}100%{opacity:0;transform:scale(1.8)}}

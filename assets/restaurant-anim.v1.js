@@ -61,6 +61,7 @@
     add('sky', '<g>' + rays + '</g>' + line('rs-tri', [cx - 0.4, cy, 0, cx, cy, 1.5, cx + 0.4, cy, 0]) + dot('rs-scan', cx, cy, 1.55, 4), 0, 0.2, 1.2);
     // 1 коробка: плита, колони, стіни ряд за рядом (пил з-під кельми)
     add('slab', box('rs-slab', 0, Wd, 0, Dp, -0.3, 0), 1, 0.02);
+    add('slab', poly('rs-conc', rect(0, Wd, 0, Dp, 0)), 1, 0.03); // фактура бетону — ненавʼязливо
     var cols = []; for (x = 6; x < Wd - 2; x += 6) for (y = 6; y < Dp - 2; y += 6) cols.push([x, y]);
     cols.forEach(function (c, k) { add('furn', box('rs-col', c[0] - 0.2, c[0] + 0.2, c[1] - 0.2, c[1] + 0.2, 0, H), 1, 0.1 + 0.2 * k / Math.max(1, cols.length), null, null, c[0] + c[1]); });
     var C = 7, ch = H / C;
@@ -69,6 +70,7 @@
       add('back', wx('rs-wall c' + (i % 2), 0, 0, Dp, z0, z1) + wy('rs-wall c' + (i % 2), 0, 0, Wd, z0, z1), 1, o);
       add('back', '<g class="rs-dust">' + dot('rs-pf', Wd * 0.3, 0, z1, 2) + dot('rs-pf', 0, Dp * 0.4, z1, 1.6) + dot('rs-pf', Wd * 0.7, 0, z1, 1.4) + '</g>', 1, o, 1 + (i + 1.5) / C);
     }
+    add('back', wx('rs-conc w', 0.01, 0, Dp, 0, H) + wy('rs-conc w', 0.01, 0, Wd, 0, H), 1, 0.92);
     add('front', poly('rs-edge', rect(0, Wd, 0, Dp, H)), 1, 0.95);
     // 2 фасад: парапет, вітрини секціями, вхід, місце під вивіску
     add('front', wy('rs-par', Dp, 0, door[0], 0, 0.6) + wy('rs-par', Dp, door[1], Wd, 0, 0.6) + wx('rs-par r', Wd, 0, Dp, 0, 0.6), 2, 0.05);
@@ -188,6 +190,8 @@
       [0, by0 - 1, bx + 2, by1 + 1, 0, 2.6], [kx0 - 1.2, 0, Wd, ky1 + 0.9, 0, H], 0, [tx0 - 0.5, Dp - 0.5, tx1 + 0.5, ty1 + 0.5, 0, 2.8], 0, 0];
     svg.innerHTML = '<defs><linearGradient id="rs-gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe6f2" stop-opacity=".34"/><stop offset="1" stop-color="#9cc3d6" stop-opacity=".16"/></linearGradient>'
       + '<radialGradient id="rs-gw"><stop offset="0" stop-color="#ffd98a" stop-opacity=".9"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient>'
+      + '<pattern id="rs-cc" width="9" height="7" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".5" fill="#fff" fill-opacity=".1"/><circle cx="6" cy="4.5" r=".6" fill="#000" fill-opacity=".14"/><circle cx="3.5" cy="5.5" r=".35" fill="#fff" fill-opacity=".08"/></pattern>'
+      + '<linearGradient id="rs-wsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient>'
       + '<pattern id="rs-brick" width="12" height="8" patternUnits="userSpaceOnUse"><rect width="12" height="8" fill="#8a4a32"/><path d="M0 4h12M6 0v4M0 4v4M12 4v4" stroke="#5e3020" stroke-width=".8"/></pattern></defs>' + html;
     nodes = [].slice.call(svg.querySelectorAll('g.rs-e'));
     night = svg.querySelector('.rs-night');
@@ -307,7 +311,7 @@
   }
   function inView() { var r = sec.getBoundingClientRect(); return r.top < (W.innerHeight || 0) && r.bottom > 0; }
   css().then(function () {
-    if (!inView() || !('IntersectionObserver' in W)) return enhance();
+    if (!inView() || sec.hasAttribute('data-sw') || !('IntersectionObserver' in W)) return enhance(); // data-sw — показана перемикачем сцен на місці: одразу
     var o = new IntersectionObserver(function (es) { if (!es[es.length - 1].isIntersecting) { o.disconnect(); enhance(); } });
     o.observe(sec);
   });

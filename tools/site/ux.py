@@ -27,6 +27,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import i18n  # noqa: E402
 
 SPRITE = '/assets/icons.v1.svg'
+SCUI = '/assets/scene-ui.v1.css'  # спільні стилі керування сцен (la-*), версію в site-chrome.v1.js дописує sync()
 JS = 'assets/site-chrome.v1.js'
 CSS = 'assets/site-chrome.v1.css'
 
@@ -426,6 +427,13 @@ def js_block():
             + json.dumps(t, ensure_ascii=False, separators=(',', ':')) + '; /*/ux:i18n*/')
 
 
+def sc_block():
+    """Версія спільних стилів керування сцен (/assets/scene-ui.v1.css) для завантажувача сцен у site-chrome.v1.js."""
+    import hashlib
+    v = hashlib.sha1(open(os.path.join(ROOT, SCUI.lstrip('/')), 'rb').read()).hexdigest()[:8]
+    return '/*sc:ui*/var SCUI = ' + json.dumps(SCUI + '?v=' + v) + '; /*/sc:ui*/'
+
+
 def css_block():
     out = []
     for l in UX:
@@ -473,7 +481,7 @@ def sync(check=False):
     if '/*ux:tiles*/' not in open(p, encoding='utf-8').read() and not check:
         open(p, 'a', encoding='utf-8').write('\n/*ux:tiles*//*/ux:tiles*/\n')
     for path, rx, new in ((JS, r'/\*ux:i18n\*/.*?/\*/ux:i18n\*/', js_block()), (CSS, r'/\*ux:labels\*/.*?/\*/ux:labels\*/', css_block()),
-                          (CSS, r'/\*ux:tiles\*/.*?/\*/ux:tiles\*/', tiles(check))):
+                          (CSS, r'/\*ux:tiles\*/.*?/\*/ux:tiles\*/', tiles(check)), (JS, r'/\*sc:ui\*/.*?/\*/sc:ui\*/', sc_block())):
         p = os.path.join(ROOT, path)
         src = open(p, encoding='utf-8').read()
         n = re.sub(rx, lambda m: new, src, count=1, flags=re.S)

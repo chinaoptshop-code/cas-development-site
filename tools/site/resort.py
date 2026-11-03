@@ -69,7 +69,7 @@ def tabs(lang):
     links = [('#build-anim', 1), (flat + '#build-anim', 0), (landanim.LAND.get(lang, landanim.LAND['uk']) + '#build-anim', 0), (resort_url(lang) + '#resort', 0)]
     return ('<!--rp:tabs--><nav class="la-tab" aria-label="' + e(' / '.join(names)) + '">'
             + ''.join(f'<a href="{u}"' + (' aria-current="true"' if cur else '') + f'>{e(n)}</a>' for (u, cur), n in zip(links, names))
-            + __import__('waterhouse').tab_link(lang) + '</nav><!--/rp:tabs-->')
+            + __import__('waterhouse').tab_link(lang) + __import__('restaurant').tab_link(lang) + '</nav><!--/rp:tabs-->')
 
 
 ANCHORS = ('<!--cas:guarantees-->', '<!--quiz-->', '<section id="zayavka"')

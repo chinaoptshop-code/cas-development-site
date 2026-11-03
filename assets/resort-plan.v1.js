@@ -211,7 +211,7 @@
   }
   function inView() { var r = sec.getBoundingClientRect(); return r.top < (W.innerHeight || 0) && r.bottom > 0; }
   css().then(function () {
-    if (!inView() || !('IntersectionObserver' in W)) return enhance();
+    if (!inView() || sec.hasAttribute('data-sw') || !('IntersectionObserver' in W)) return enhance(); // data-sw — показана перемикачем сцен на місці: одразу
     var o = new IntersectionObserver(function (es) { if (!es[es.length - 1].isIntersecting) { o.disconnect(); enhance(); } });
     o.observe(sec);
   });

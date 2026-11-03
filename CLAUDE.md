@@ -42,7 +42,7 @@
   потім `python3 tools/blog/build.py` для блоків «Статті по темі».
 - Головна, послуги, про студію, контакти й портфоліо (uk теж) — один шаблон: `tools/site/pages/<мова>-<slug>.json` + розширені секції `tools/site/rich.py`
   (hero з фото, svc, covers, strip, split, facts, cta, contacts, team, project, pmap; стилі `/assets/sections.v1.css`, UI-kit `/styleguide/#sections`).
-  Руками ці HTML не правити; порядок секцій однаковий для всіх мов. Скільки тексту збережено після змін — `python3 tools/site/parity.py <файл>` (≥98%).
+  Руками ці HTML не правити (ru-головна — теж шаблон з 03.11.2026, `ru-index.json`; у `tools/ui/ui.py` вона, як і uk, тип main); порядок секцій однаковий для всіх мов. Скільки тексту збережено після змін — `python3 tools/site/parity.py <файл>` (≥98%).
 - Оздоба (/ozdoba, «Продукти»): товари, ціни й характеристики — `assets/ozdoba/catalog.json`; фото з вирізаним фоном —
   `python3 tools/products/photo.py <id> <файл|url>`; після правок — `python3 tools/products/build.py` (оновлює /ozdoba, сторінки товарів /ozdoba/<slug> і sitemap).
 
@@ -61,6 +61,8 @@
   `tools/site/restaurant.py` (+ `restaurant_i18n.py`), `assets/restaurant-anim.v1.{js,css}`; сторінки дизайну й ремонту ресторанів усіх мов (перед «Комплексом»), тизер — послуги.
   «Будинок на воді» (12 етапів: палі/понтони, платформа, каркас, покрівля, мережі з берега — рентген, тераса над водою, вода з відблисками, вечір; 60/100/150 м²; ціна лише $600/$1 100 за м², палі/понтони — за кошторисом):
   `tools/site/waterhouse.py` (+ `waterhouse_i18n.py`), `assets/water-house.v1.{js,css}`; сцена — база відпочинку всіх мов, посилання — у перемикачах сцен будівництва й головних.
+  Перемикач сцен `nav.la-tab` (головні: Будинок / Квартира / Ландшафт / Комплекс / Будинок на воді / Ресторан — `resort.tabs()`) працює на місці: завантажувач сцен у `site-chrome.v1.js`
+  підтягує блок сцени з її сторінки й вантажить її JS/CSS (`data-sw` — сцена стартує одразу); `<a href>` — fallback. Спільні стилі керування `la-*` — лише `/assets/scene-ui.v1.css` (версію пише `ux.py`), у CSS сцен — тільки своє.
 - Менше стіни тексту (`tools/site/ux.py`, викликає `chrome.apply()`): іконки до H2/карток (`data-i`, спрайт `/assets/icons.v1.svg`, Lucide ISC, мапа тем — `RULES`),
   згортання довгих блоків (`data-c`: текст/етапи/FAQ/картки/списки статей; текст лишається в DOM), бейдж «Анімація реалізації» на посиланнях на `PAGES` з buildanim.py
   і кнопка «Дивитись, як ми будуємо» в hero. Тексти — `ux` у `tools/site/lang/*.json` (uk/ru — у ux.py). Руками атрибути не писати; UI-kit — `/styleguide/#ux`.

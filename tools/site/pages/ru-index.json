@@ -1,0 +1,893 @@
+{
+ "slug": "index",
+ "lang": "ru",
+ "service": "Все услуги",
+ "title": "Дизайн интерьера, ремонт и строительство под ключ в Киеве | CAS Development",
+ "description": "CAS Development — дизайн интерьера, ремонт и строительство под ключ в Киеве: дизайн от $30/м², ремонт от $550/м², дома от $600/м². Смета ±5%, если ремонт наш.",
+ "h1": "Дизайн интерьера, ремонт и строительство под ключ в Киеве",
+ "price": "дизайн от $30 / м² · ремонт от $550 / м² · строительство от $600 / м²",
+ "lead": "Дизайн интерьера и ремонт под ключ в Киеве: студия дизайна и архитектуры CAS Development с 2016 года проектирует и реализует интерьеры квартир, частных домов и коммерческих пространств в Киеве и области. Одна команда — от проекта до ключей: дизайн, своя бригада и мебель напрямую из Китая; если ремонт делает CAS, итог в пределах ±5% от сметы.",
+ "cta": "Начать проект",
+ "btn2": [
+  "/portfolio",
+  "Смотреть работы"
+ ],
+ "facts": [
+  [
+   "150+",
+   "проектов"
+  ],
+  [
+   "10+ лет",
+   "опыта, с 2016 года"
+  ],
+  [
+   "±5%",
+   "гарантия сметы, если ремонт наш"
+  ],
+  [
+   "Китай",
+   "мебель и материалы напрямую"
+  ]
+ ],
+ "kicker": "Студия дизайна и архитектуры · Киев · с 2016 года",
+ "hero_img": {
+  "img": "img/hero-hodos-villa-1280.webp",
+  "srcset": "/img/hero-hodos-villa-1280.webp 1280w, /img/hero-hodos-villa-1920.webp 1920w",
+  "alt": "Светлая столовая с мраморным столом, голубыми креслами и хрустальной люстрой — дизайн-проект Hodos Villa от CAS Development, Киев",
+  "sizes": "100vw",
+  "m": {
+   "srcset": "/img/hero-hodos-villa-m720.webp 720w, /img/hero-hodos-villa-m1080.webp 1080w",
+   "w": 1080,
+   "h": 1800
+  }
+ },
+ "og": "img/og/svc-ru-index.jpg",
+ "ld_raw": [
+  {
+   "@type": "WebPage",
+   "@id": "https://cas-develop.com/ru/#page",
+   "url": "https://cas-develop.com/ru/",
+   "name": "Дизайн интерьера, ремонт и строительство под ключ в Киеве",
+   "inLanguage": "ru",
+   "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://cas-develop.com/#site",
+    "url": "https://cas-develop.com/",
+    "name": "CAS Development"
+   },
+   "about": {
+    "@id": "https://cas-develop.com/#business"
+   }
+  },
+  {
+   "@type": "Service",
+   "name": "Дизайн, ремонт и строительство",
+   "serviceType": "Дизайн, ремонт и строительство",
+   "areaServed": [
+    {
+     "@type": "City",
+     "name": "Киев"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Киевская область"
+    },
+    {
+     "@type": "Country",
+     "name": "Украина"
+    },
+    {
+     "@type": "Continent",
+     "name": "Европа"
+    }
+   ],
+   "provider": {
+    "@type": "Organization",
+    "@id": "https://cas-develop.com/#business",
+    "name": "CAS Development",
+    "url": "https://cas-develop.com/",
+    "logo": "https://cas-develop.com/apple-touch-icon.png",
+    "telephone": "+380978667755",
+    "sameAs": [
+     "https://www.instagram.com/cas_development/",
+     "https://maps.google.com/?cid=15015666645432112566",
+     "https://www.youtube.com/@cas_development"
+    ]
+   },
+   "url": "https://cas-develop.com/ru/"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Сколько стоят услуги CAS Development?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Дизайн — от $30 за м² (минимальный проект $2 500), ремонт квартир и домов — от $550 за м² (работы и черновые материалы; чистовые материалы, мебель и техника — отдельно, по смете), офисы — от $350 за м² (работы и черновые материалы), строительство — от $600 за м², под ключ с отделкой — от $1 100 за м², меблировка — от $250 за м², ландшафтный дизайн — от $50 за сотку."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Где вы работаете?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Киев и вся Украина, Европа и мир — проекты на Бали, в Турции, Испании, США, Франции, Германии, Польше."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Есть ли гарантия сметы?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Да: если ремонт делаем мы, итоговая сумма не выходит за ±5% от сметы."
+     }
+    }
+   ],
+   "inLanguage": "ru"
+  }
+ ],
+ "sections": [
+  {
+   "t": "strip",
+   "label": "Фото наших проектов",
+   "items": [
+    {
+     "img": "img/18ej1fH-11uo-800.webp",
+     "srcset": "/img/18ej1fH-11uo-r400.webp 400w, /img/18ej1fH-11uo-r600.webp 600w, /img/18ej1fH-11uo-800.webp 800w",
+     "alt": "Yacht Restaurant — проект CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1OGn3TXnLkQe-800.webp",
+     "srcset": "/img/1OGn3TXnLkQe-r400.webp 400w, /img/1OGn3TXnLkQe-r600.webp 600w, /img/1OGn3TXnLkQe-800.webp 800w",
+     "alt": "Yacht Restaurant — проект CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/18W9L5_nV9nd-800.webp",
+     "srcset": "/img/18W9L5_nV9nd-r400.webp 400w, /img/18W9L5_nV9nd-r600.webp 600w, /img/18W9L5_nV9nd-800.webp 800w",
+     "alt": "Yacht Restaurant — проект CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1lovunAyUeQX-800.webp",
+     "srcset": "/img/1lovunAyUeQX-r400.webp 400w, /img/1lovunAyUeQX-r600.webp 600w, /img/1lovunAyUeQX-800.webp 800w",
+     "alt": "Yacht Restaurant — проект CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1AaaZgBHrlYH-800.webp",
+     "srcset": "/img/1AaaZgBHrlYH-r400.webp 400w, /img/1AaaZgBHrlYH-r600.webp 600w, /img/1AaaZgBHrlYH-800.webp 800w",
+     "alt": "Yacht Restaurant — проект CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1BO7v9EOodBP-800.webp",
+     "srcset": "/img/1BO7v9EOodBP-r400.webp 400w, /img/1BO7v9EOodBP-r600.webp 600w, /img/1BO7v9EOodBP-800.webp 800w",
+     "alt": "Yacht Restaurant — проект CAS Development",
+     "label": "Yacht Restaurant"
+    },
+    {
+     "img": "img/1MslU7S5X8gI-800.webp",
+     "srcset": "/img/1MslU7S5X8gI-r400.webp 400w, /img/1MslU7S5X8gI-r600.webp 600w, /img/1MslU7S5X8gI-800.webp 800w",
+     "alt": "Linden Penthouse — проект CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1YQyhjEui9fb-800.webp",
+     "srcset": "/img/1YQyhjEui9fb-r400.webp 400w, /img/1YQyhjEui9fb-r600.webp 600w, /img/1YQyhjEui9fb-800.webp 800w",
+     "alt": "Linden Penthouse — проект CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1b9YTkSJVqBh-800.webp",
+     "srcset": "/img/1b9YTkSJVqBh-r400.webp 400w, /img/1b9YTkSJVqBh-r600.webp 600w, /img/1b9YTkSJVqBh-800.webp 800w",
+     "alt": "Linden Penthouse — проект CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1x1AqXqQMEpC-800.webp",
+     "srcset": "/img/1x1AqXqQMEpC-r400.webp 400w, /img/1x1AqXqQMEpC-r600.webp 600w, /img/1x1AqXqQMEpC-800.webp 800w",
+     "alt": "Linden Penthouse — проект CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1lE1pxDZXpKR-800.webp",
+     "srcset": "/img/1lE1pxDZXpKR-r400.webp 400w, /img/1lE1pxDZXpKR-r600.webp 600w, /img/1lE1pxDZXpKR-800.webp 800w",
+     "alt": "Linden Penthouse — проект CAS Development",
+     "label": "Linden Penthouse"
+    },
+    {
+     "img": "img/1FRa0FI6iMHK-800.webp",
+     "srcset": "/img/1FRa0FI6iMHK-r400.webp 400w, /img/1FRa0FI6iMHK-r600.webp 600w, /img/1FRa0FI6iMHK-800.webp 800w",
+     "alt": "Hoda Estate — проект CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1f3m1_qf4mDo-800.webp",
+     "srcset": "/img/1f3m1_qf4mDo-r400.webp 400w, /img/1f3m1_qf4mDo-r600.webp 600w, /img/1f3m1_qf4mDo-800.webp 800w",
+     "alt": "Hoda Estate — проект CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1HZT-E30rREI-800.webp",
+     "srcset": "/img/1HZT-E30rREI-r400.webp 400w, /img/1HZT-E30rREI-r600.webp 600w, /img/1HZT-E30rREI-800.webp 800w",
+     "alt": "Hoda Estate — проект CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1iyezgpYu1pV-800.webp",
+     "srcset": "/img/1iyezgpYu1pV-r400.webp 400w, /img/1iyezgpYu1pV-r600.webp 600w, /img/1iyezgpYu1pV-800.webp 800w",
+     "alt": "Hoda Estate — проект CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1m9fVTTPjd6n-800.webp",
+     "srcset": "/img/1m9fVTTPjd6n-r400.webp 400w, /img/1m9fVTTPjd6n-r600.webp 600w, /img/1m9fVTTPjd6n-800.webp 800w",
+     "alt": "Hoda Estate — проект CAS Development",
+     "label": "Hoda Estate"
+    },
+    {
+     "img": "img/1NVeaQcV2TZS-800.webp",
+     "srcset": "/img/1NVeaQcV2TZS-r400.webp 400w, /img/1NVeaQcV2TZS-r600.webp 600w, /img/1NVeaQcV2TZS-800.webp 800w",
+     "alt": "Petrivtsi House — проект CAS Development",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1OR5i7-rm1k0-800.webp",
+     "srcset": "/img/1OR5i7-rm1k0-r400.webp 400w, /img/1OR5i7-rm1k0-r600.webp 600w, /img/1OR5i7-rm1k0-800.webp 800w",
+     "alt": "Petrivtsi House — проект CAS Development",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1Xdje8N1V14_-800.webp",
+     "srcset": "/img/1Xdje8N1V14_-r400.webp 400w, /img/1Xdje8N1V14_-r600.webp 600w, /img/1Xdje8N1V14_-800.webp 800w",
+     "alt": "Petrivtsi House — проект CAS Development",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1szuqdURge8M-800.webp",
+     "srcset": "/img/1szuqdURge8M-r400.webp 400w, /img/1szuqdURge8M-r600.webp 600w, /img/1szuqdURge8M-800.webp 800w",
+     "alt": "Petrivtsi House — проект CAS Development",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/1jOeC33fekBM-800.webp",
+     "srcset": "/img/1jOeC33fekBM-r400.webp 400w, /img/1jOeC33fekBM-r600.webp 600w, /img/1jOeC33fekBM-800.webp 800w",
+     "alt": "Petrivtsi House — проект CAS Development",
+     "label": "Petrivtsi House"
+    },
+    {
+     "img": "img/18V9n96tOhjK-800.webp",
+     "srcset": "/img/18V9n96tOhjK-r400.webp 400w, /img/18V9n96tOhjK-r600.webp 600w, /img/18V9n96tOhjK-800.webp 800w",
+     "alt": "USA House — проект CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1pYk5KBK_ne5-800.webp",
+     "srcset": "/img/1pYk5KBK_ne5-r400.webp 400w, /img/1pYk5KBK_ne5-r600.webp 600w, /img/1pYk5KBK_ne5-800.webp 800w",
+     "alt": "USA House — проект CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1vWmbYVTmViG-800.webp",
+     "srcset": "/img/1vWmbYVTmViG-r400.webp 400w, /img/1vWmbYVTmViG-r600.webp 600w, /img/1vWmbYVTmViG-800.webp 800w",
+     "alt": "USA House — проект CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1JuZ-lq-D6Yu-800.webp",
+     "srcset": "/img/1JuZ-lq-D6Yu-r400.webp 400w, /img/1JuZ-lq-D6Yu-r600.webp 600w, /img/1JuZ-lq-D6Yu-800.webp 800w",
+     "alt": "USA House — проект CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1L6z-fyorw1b-800.webp",
+     "srcset": "/img/1L6z-fyorw1b-r400.webp 400w, /img/1L6z-fyorw1b-r600.webp 600w, /img/1L6z-fyorw1b-800.webp 800w",
+     "alt": "USA House — проект CAS Development",
+     "label": "USA House"
+    },
+    {
+     "img": "img/1usAOI5R4L3x-800.webp",
+     "srcset": "/img/1usAOI5R4L3x-r400.webp 400w, /img/1usAOI5R4L3x-r600.webp 600w, /img/1usAOI5R4L3x-800.webp 800w",
+     "alt": "Pidgirland — проект CAS Development",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/1hXV_Pz6_Gfn-800.webp",
+     "srcset": "/img/1hXV_Pz6_Gfn-r400.webp 400w, /img/1hXV_Pz6_Gfn-r600.webp 600w, /img/1hXV_Pz6_Gfn-800.webp 800w",
+     "alt": "Pidgirland — проект CAS Development",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/1RCrrbyNJHQh-800.webp",
+     "srcset": "/img/1RCrrbyNJHQh-r400.webp 400w, /img/1RCrrbyNJHQh-r600.webp 600w, /img/1RCrrbyNJHQh-800.webp 800w",
+     "alt": "Pidgirland — проект CAS Development",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/17c2Uv-Omlrm-800.webp",
+     "srcset": "/img/17c2Uv-Omlrm-r400.webp 400w, /img/17c2Uv-Omlrm-r600.webp 600w, /img/17c2Uv-Omlrm-800.webp 800w",
+     "alt": "Pidgirland — проект CAS Development",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/18VXNYlwqxP5-800.webp",
+     "srcset": "/img/18VXNYlwqxP5-r400.webp 400w, /img/18VXNYlwqxP5-r600.webp 600w, /img/18VXNYlwqxP5-800.webp 800w",
+     "alt": "Pidgirland — проект CAS Development",
+     "label": "Pidgirland"
+    },
+    {
+     "img": "img/1cRl7TrOdOCc-800.webp",
+     "srcset": "/img/1cRl7TrOdOCc-r400.webp 400w, /img/1cRl7TrOdOCc-r600.webp 600w, /img/1cRl7TrOdOCc-800.webp 800w",
+     "alt": "Hodos Villa — проект CAS Development",
+     "label": "Hodos Villa"
+    },
+    {
+     "img": "img/1BmrYo1JJhoD-800.webp",
+     "srcset": "/img/1BmrYo1JJhoD-r400.webp 400w, /img/1BmrYo1JJhoD-r600.webp 600w, /img/1BmrYo1JJhoD-800.webp 800w",
+     "alt": "Hodos Villa — проект CAS Development",
+     "label": "Hodos Villa"
+    },
+    {
+     "img": "img/1M13ysKRsQvn-800.webp",
+     "srcset": "/img/1M13ysKRsQvn-r400.webp 400w, /img/1M13ysKRsQvn-r600.webp 600w, /img/1M13ysKRsQvn-800.webp 800w",
+     "alt": "Hodos Villa — проект CAS Development",
+     "label": "Hodos Villa"
+    },
+    {
+     "img": "img/1sSM3fuz42KH-800.webp",
+     "srcset": "/img/1sSM3fuz42KH-r400.webp 400w, /img/1sSM3fuz42KH-r600.webp 600w, /img/1sSM3fuz42KH-800.webp 800w",
+     "alt": "Hodos Villa — проект CAS Development",
+     "label": "Hodos Villa"
+    }
+   ]
+  },
+  {
+   "t": "svc",
+   "h2": "Что мы делаем",
+   "more": [
+    "/ru/uslugi",
+    "Все услуги →"
+   ],
+   "items": [
+    {
+     "h": "Дизайн интерьера",
+     "img": "img/svc-design-600.webp",
+     "srcset": "/img/svc-design-400.webp 400w, /img/svc-design-600.webp 600w",
+     "price": "от $30 / м² · мин. проект $2 500",
+     "p": "Концепция, 3D-визуализация, рабочие чертежи и авторский надзор.",
+     "li": [
+      "Концепция и стиль-борд",
+      "3D-визуализация всех зон",
+      "Рабочие чертежи и спецификации",
+      "Авторский надзор (отдельная услуга)",
+      "Подбор материалов и поставщиков"
+     ],
+     "tags": [
+      "Срок — в договоре"
+     ],
+     "links": [
+      [
+       "/ru/uslugi",
+       "Подробнее →"
+      ]
+     ],
+     "alt": "Визуализация гостиной-столовой с деревянными балками и панорамными окнами — дизайн-проект CAS Development"
+    },
+    {
+     "h": "Ремонт под ключ",
+     "img": "img/svc-renovation-600.webp",
+     "srcset": "/img/svc-renovation-400.webp 400w, /img/svc-renovation-600.webp 600w",
+     "price": "от $550 / м²",
+     "p": "Полный цикл строительных и отделочных работ с гарантией. От $550/м² — работы и черновые материалы; чистовые — отдельно, по смете.",
+     "li": [
+      "Черновой и чистовой ремонт",
+      "Электрика, сантехника, вентиляция",
+      "Отделка и укладка пола",
+      "Установка дверей и окон",
+      "Гарантия 36 месяцев",
+      "Три собственные штатные бригады"
+     ],
+     "tags": [
+      "Срок — в договоре"
+     ],
+     "links": [
+      [
+       "/ru/uslugi",
+       "Подробнее →"
+      ]
+     ],
+     "alt": "Гостиная с фитостеной и тёмными панелями — квартира Tetris Hall после ремонта CAS Development"
+    },
+    {
+     "h": "Меблировка",
+     "img": "img/svc-furnishing-600.webp",
+     "srcset": "/img/svc-furnishing-400.webp 400w, /img/svc-furnishing-600.webp 600w",
+     "price": "от $250 / м²",
+     "p": "Мебель, свет и декор напрямую с фабрик Китая через каталог Оздоба.",
+     "li": [
+      "Комплектация из Китая: от $500, мин. 10 шт позиции",
+      "3D-подбор и расстановка мебели",
+      "Сопровождение производства под заказ",
+      "Доставка и сборка под ключ",
+      "Изготовление под заказ: цвет, размер, материал"
+     ],
+     "tags": [
+      "Срок — в договоре"
+     ],
+     "links": [
+      [
+       "/ru/uslugi",
+       "Подробнее →"
+      ]
+     ],
+     "alt": "Кухня со встроенной техникой и фасадами под дерево — реализованная квартира Tetris Hall"
+    },
+    {
+     "h": "Строительство",
+     "img": "img/svc-construction-600.webp",
+     "srcset": "/img/svc-construction-400.webp 400w, /img/svc-construction-600.webp 600w",
+     "price": "от $600 / м²",
+     "p": "Возведение и реконструкция зданий под ключ.",
+     "li": [
+      "Строительство домов и комплексов",
+      "Архитектурное проектирование",
+      "Реконструкция и надстройка",
+      "Фундаменты и несущие конструкции",
+      "Контроль качества на каждом этапе"
+     ],
+     "tags": [
+      "Срок — в договоре"
+     ],
+     "links": [
+      [
+       "/ru/uslugi",
+       "Подробнее →"
+      ]
+     ],
+     "alt": "Фасад одноэтажного дома с навесом для авто — проект House 150"
+    },
+    {
+     "h": "Ландшафт",
+     "img": "img/svc-landscape-600.webp",
+     "srcset": "/img/svc-landscape-400.webp 400w, /img/svc-landscape-600.webp 600w",
+     "price": "от $50 / сотку",
+     "p": "Проектирование и обустройство садов и прилегающих территорий.",
+     "li": [
+      "Планировка и геопластика участка",
+      "Подбор растений и озеленение",
+      "Система автоматического полива",
+      "Декоративное освещение",
+      "Укладка дорожек и площадок"
+     ],
+     "tags": [
+      "Срок — в договоре"
+     ],
+     "links": [
+      [
+       "/ru/uslugi",
+       "Подробнее →"
+      ]
+     ],
+     "alt": "Благоустройство участка: газон, туи вдоль забора, лаунж-зона и барбекю — проект Smart Villa"
+    }
+   ],
+   "note": "Для бизнеса: [ремонт офиса под ключ от $350/м²](/ru/remont-ofisa-kiev) · [дизайн офиса](/ru/dizayn-ofisa-kiev) · [мебель для офиса из Китая](/ozdoba)"
+  },
+  {
+   "t": "cards",
+   "h2": "Что входит",
+   "items": [
+    {
+     "h": "Дизайн",
+     "li": [
+      "дизайн интерьера квартир и домов",
+      "архитектурное проектирование",
+      "коммерческие интерьеры",
+      "ландшафтный дизайн"
+     ]
+    },
+    {
+     "h": "Ремонт",
+     "li": [
+      "ремонт квартир под ключ",
+      "ремонт в новостройках",
+      "ремонт частных домов",
+      "ремонт офисов и коммерции"
+     ]
+    },
+    {
+     "h": "Строительство и комплектация",
+     "li": [
+      "строительство домов под ключ",
+      "реконструкция",
+      "мебель и свет из Китая",
+      "авторский надзор"
+     ]
+    }
+   ]
+  },
+  {
+   "t": "covers",
+   "h2": "Наши проекты",
+   "more": [
+    "/portfolio",
+    "Всё портфолио →"
+   ],
+   "items": [
+    {
+     "href": "/proekty/petrivtsi-house",
+     "img": "img/1lW6SF-extZy-600.webp",
+     "srcset": null,
+     "alt": "Petrivtsi House — проект CAS Development",
+     "name": "Petrivtsi House",
+     "loc": "Петровцы · 320 м²"
+    },
+    {
+     "href": "/proekty/hoda-estate",
+     "img": "img/1HTdBNY-oY5p-600.webp",
+     "srcset": "/img/1HTdBNY-oY5p-r400.webp 400w, /img/1HTdBNY-oY5p-600.webp 600w",
+     "alt": "Hoda Estate — проект CAS Development",
+     "name": "Hoda Estate",
+     "loc": "Карпаты · 180 м²"
+    },
+    {
+     "href": "/proekty/usa-house",
+     "img": "img/13MS4aVn4wzD-600.webp",
+     "srcset": "/img/13MS4aVn4wzD-r400.webp 400w, /img/13MS4aVn4wzD-600.webp 600w",
+     "alt": "USA House — проект CAS Development",
+     "name": "USA House",
+     "loc": "США · 420 м²"
+    },
+    {
+     "href": "/proekty/pidgirland",
+     "img": "img/1FiLI9kKE-C8-600.webp",
+     "srcset": "/img/1FiLI9kKE-C8-r400.webp 400w, /img/1FiLI9kKE-C8-600.webp 600w",
+     "alt": "Pidgirland — проект CAS Development",
+     "name": "Pidgirland",
+     "loc": "Киевская обл. · 260 м²"
+    },
+    {
+     "href": "/proekty/hodos-villa",
+     "img": "img/1M13ysKRsQvn-600.webp",
+     "srcset": "/img/1M13ysKRsQvn-r400.webp 400w, /img/1M13ysKRsQvn-600.webp 600w",
+     "alt": "Hodos Villa — проект CAS Development",
+     "name": "Hodos Villa",
+     "loc": "Киев · 500 м²"
+    },
+    {
+     "href": "/proekty/linden-penthouse",
+     "img": "img/1e_eYgoeMFIr-600.webp",
+     "srcset": "/img/1e_eYgoeMFIr-r400.webp 400w, /img/1e_eYgoeMFIr-600.webp 600w",
+     "alt": "Linden Penthouse — проект CAS Development",
+     "name": "Linden Penthouse",
+     "loc": "Киев · 210 м²"
+    }
+   ]
+  },
+  {
+   "t": "split",
+   "img": "assets/konfigurator/teaser-600.webp",
+   "srcset": "/assets/konfigurator/teaser-600.webp 600w, /assets/konfigurator/teaser-1200.webp 1200w",
+   "sizes": "(max-width:860px) 100vw, 640px",
+   "alt": "Одна гостиная в четырёх стилях: Japandi, Modern classic, Dark luxury, Warm minimal",
+   "href": "/ru/konfigurator",
+   "kicker": "Новинка · конфигуратор",
+   "h2": "Примерьте стиль к реальному интерьеру",
+   "p": [
+    "Меняйте стены, пол, ткани, камень и металл в наших проектах — результат виден сразу. Japandi, Modern classic, Dark luxury или Warm minimal: выберите свой и получите проект в этом стиле."
+   ],
+   "btn": [
+    "/ru/konfigurator",
+    "Открыть конфигуратор →"
+   ]
+  },
+  {
+   "t": "gallery",
+   "h2": "Наши работы",
+   "items": [
+    [
+     "img/p/1MslU7S5X8gIEp-900.webp",
+     "Linden Penthouse",
+     "Linden Penthouse — прихожая в деревянных панелях с реечной перегородкой, дизайн интерьера в Киеве, CAS Development"
+    ],
+    [
+     "img/p/1YQyhjEui9fb6v-900.webp",
+     "Linden Penthouse",
+     "Linden Penthouse — зеркало с подсветкой, два кожаных пуфа и стеклянный гардероб, дизайн интерьера в Киеве, CAS Development"
+    ],
+    [
+     "img/p/1NVeaQcV2TZSN5-900.webp",
+     "Petrivtsi House",
+     "Petrivtsi House — ванная с отдельностоящей ванной и душевой за стеклом, дизайн интерьера дома в Киеве, CAS Development"
+    ],
+    [
+     "img/p/1OR5i7-rm1k0MU-900.webp",
+     "Petrivtsi House",
+     "Petrivtsi House — ванная с двумя раковинами и овальной ванной у окна, дизайн интерьера дома в Киеве, CAS Development"
+    ],
+    [
+     "img/p/1xqY1KZo2JY5xq-900.webp",
+     "Tetris Hall",
+     "Tetris Hall — гостиная с зелёной стеной из растений и обеденным столом, ремонт квартиры под ключ в Киеве, CAS Development"
+    ],
+    [
+     "img/p/1bXytwftMuIHBN-900.webp",
+     "Tetris Hall",
+     "Tetris Hall — серый угловой диван и мраморный журнальный столик, ремонт квартиры под ключ в Киеве, CAS Development"
+    ],
+    [
+     "img/p/18ej1fH-11uoyr-900.webp",
+     "Yacht Restaurant",
+     "Yacht Restaurant — зал с арками из перфорированных панелей и ротанговыми стульями, дизайн ресторана в Киеве, CAS Development"
+    ],
+    [
+     "img/p/1OGn3TXnLkQenE-900.webp",
+     "Yacht Restaurant",
+     "Yacht Restaurant — плетёные светильники над диванами и столами со свечами, дизайн ресторана в Киеве, CAS Development"
+    ]
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Почему CAS",
+   "items": [
+    {
+     "h": "Гарантия 36 месяцев",
+     "p": "На выполненные работы — 36 месяцев с даты акта сдачи."
+    },
+    {
+     "h": "Три собственные штатные бригады",
+     "p": "Своя бригада, а не субподряд: три бригады под разную сложность и тип работ."
+    },
+    {
+     "h": "Смета ±5%",
+     "p": "Если ремонт делает CAS, итог не отклоняется от сметы больше чем на ±5%."
+    },
+    {
+     "h": "Оплата под вас",
+     "p": "Договор и схема платежей: 50/50, 50/30/20, 50/40/10 или поэтапно, старт — от 10% аванса."
+    }
+   ],
+   "link": [
+    "/ru/dogovor-garantiya-oplata",
+    "Договор, гарантия и оплата — подробно →"
+   ]
+  },
+  {
+   "t": "steps",
+   "kicker": "Подход",
+   "h2": "Как мы работаем",
+   "items": [
+    [
+     "Консультация",
+     "По телефону — бесплатно: обсуждаем задачу, бюджет и сроки."
+    ],
+    [
+     "Проект",
+     "Планировка, 3D, рабочие чертежи."
+    ],
+    [
+     "Смета и договор",
+     "Если ремонт делает CAS, итоговая сумма в пределах ±5% от сметы."
+    ],
+    [
+     "Реализация",
+     "Своя бригада, фотоотчёты раз в 1–2 недели."
+    ],
+    [
+     "Сдача",
+     "Мебель, уборка, ключи."
+    ]
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "faq",
+   "h2": "Вопросы и ответы",
+   "items": [
+    [
+     "Сколько стоят услуги CAS Development?",
+     "Дизайн — от $30 за м² (минимальный проект $2 500), ремонт квартир и домов — от $550 за м² (работы и черновые материалы; чистовые материалы, мебель и техника — отдельно, по смете), офисы — от $350 за м² (работы и черновые материалы), строительство — от $600 за м², под ключ с отделкой — от $1 100 за м²."
+    ],
+    [
+     "Где вы работаете?",
+     "Киев и вся Украина, Европа и мир — проекты на Бали, в Турции, Испании, США, Франции, Германии, Польше."
+    ],
+    [
+     "Есть ли гарантия сметы?",
+     "Да: если ремонт делаем мы, итоговая сумма не выходит за ±5% от сметы."
+    ],
+    [
+     "Где почитать отзывы клиентов?",
+     "В нашем профиле Google: [отзывы о CAS Development](https://maps.google.com/?cid=15015666645432112566). Там же можно оставить свой отзыв."
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "kicker": "Отзывы клиентов",
+   "score": "4,8",
+   "p": [
+    "Оценка студии в Google по отзывам клиентов, с которыми мы уже реализовали проекты."
+   ],
+   "btns": [
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Читать отзывы в Google",
+     1
+    ],
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Оставить отзыв"
+    ]
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Другие услуги",
+   "items": [
+    [
+     "/ru/remont-kvartir-kiev",
+     "Ремонт квартир"
+    ],
+    [
+     "/ru/generalnyy-podryadchik-kiev",
+     "Генеральный подрядчик"
+    ],
+    [
+     "/ru/remont-premium-klassa-kiev",
+     "Ремонт премиум-класса"
+    ],
+    [
+     "/ru/dizayn-interera-premium-kiev",
+     "Дизайн премиум-класса"
+    ],
+    [
+     "/ru/dizayn-interera-doma-kiev",
+     "Дизайн интерьера дома"
+    ],
+    [
+     "/ru/dizayn-ofisa-kiev",
+     "Дизайн офиса"
+    ],
+    [
+     "/ru/dizayn-gostinitsy-kiev",
+     "Дизайн и ремонт отеля"
+    ],
+    [
+     "/ru/remont-restorana-kafe-kiev",
+     "Ремонт ресторана и кафе"
+    ],
+    [
+     "/ru/avtorskiy-i-tehnicheskiy-nadzor-kiev",
+     "Авторский и технический надзор"
+    ],
+    [
+     "/ru/rekonstruktsiya-doma-kiev",
+     "Реконструкция дома"
+    ],
+    [
+     "/ru/dizayn-remont-kvartiry-pechersk",
+     "Квартира на Печерске"
+    ],
+    [
+     "/ru/dom-pod-klyuch-koncha-zaspa",
+     "Дом в Конча-Заспе, Козине"
+    ],
+    [
+     "/ru/remont-pod-klyuch-kiev",
+     "Ремонт под ключ"
+    ],
+    [
+     "/ru/remont-v-novostroyke-kiev",
+     "Ремонт в новостройке"
+    ],
+    [
+     "/ru/remontnaya-brigada-kiev",
+     "Ремонтная бригада"
+    ],
+    [
+     "/ru/remont-doma-kiev",
+     "Ремонт дома"
+    ],
+    [
+     "/ru/stroitelstvo-domov-kiev",
+     "Строительство домов"
+    ],
+    [
+     "/ru/proektirovanie-doma-kiev",
+     "Проектирование дома"
+    ],
+    [
+     "/ru/dizayn-interera-kiev",
+     "Дизайн интерьера"
+    ],
+    [
+     "/ru/dizayn-kvartiry-kiev",
+     "Дизайн квартиры"
+    ],
+    [
+     "/ru/remont-ofisa-kiev",
+     "Ремонт офиса"
+    ],
+    [
+     "/ru/remont-kommercheskih-pomeshcheniy-kiev",
+     "Коммерческие помещения"
+    ],
+    [
+     "/ru/biznes-pod-klyuch-kiev",
+     "Бизнес под ключ"
+    ],
+    [
+     "/ru/dizayn-restorana-kafe-kiev",
+     "Дизайн ресторана и кафе"
+    ],
+    [
+     "/ru/landshaftnyy-dizayn-kiev",
+     "Ландшафтный дизайн"
+    ],
+    [
+     "/ru/baza-otdyha-pod-klyuch",
+     "База отдыха под ключ"
+    ],
+    [
+     "/ru/kalkulyator-remonta",
+     "Калькулятор стоимости"
+    ],
+    [
+     "/ru/meblirovka-kvartiry-kiev",
+     "Меблировка под ключ"
+    ],
+    [
+     "/ru/dizayner-interera-kiev",
+     "Дизайнер интерьера"
+    ],
+    [
+     "/ru/remont-vannoy-kiev",
+     "Ремонт ванной"
+    ],
+    [
+     "/ru/remont-kuhni-kiev",
+     "Ремонт кухни"
+    ],
+    [
+     "/ru/voprosy",
+     "Частые вопросы"
+    ],
+    [
+     "/ru/realizatsiya-dizayn-proekta-kiev",
+     "Реализация дизайн-проекта"
+    ],
+    [
+     "/ru/komplektatsiya-pod-klyuch-kiev",
+     "Комплектация под ключ"
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "cls": "home-next",
+   "h2": "Обсудим ваш проект?",
+   "p": [
+    "Оставьте номер — перезвоним, расспросим об объекте и подскажем следующий шаг. Консультация по телефону — бесплатная."
+   ],
+   "btns": [
+    [
+     "#zayavka",
+     "Оставить номер",
+     1
+    ],
+    [
+     "/ru/kalkulyator-remonta",
+     "Рассчитать стоимость"
+    ]
+   ]
+  }
+ ]
+}
