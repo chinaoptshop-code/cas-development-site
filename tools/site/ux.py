@@ -330,7 +330,13 @@ def _collapse(m, light=False):
 
 
 def _article_lists(m):
-    """Стаття блогу: довгі чеклісти (від 8 пунктів) — перші 5 + «Весь список»."""
+    """Стаття блогу: розділи «легкого блогу» (tools/blog/light.py, <div class="bsc">) згорнуті до першого абзацу (data-c="t");
+    довгі чеклісти поза ними (від 8 пунктів) — перші 5 + «Весь список»."""
+    def bsc(x):
+        inner = x.group(1)
+        blocks = len(re.findall(r'<(?:p|ul|ol|figure|div class="ag)\b', inner))
+        return f'<div class="bsc" data-c="t">{inner}</div></section>' if blocks >= 2 and '<p>' in inner else x.group(0)
+    m = re.sub(r'<div class="bsc">(.*?)</div></section>', bsc, m, flags=re.S)
     return re.sub(r'(?<!<div data-c="l">)<(ul|ol)>((?:(?!</?(?:ul|ol)[ >]).)*?)</\1>',
                   lambda x: (f'<div data-c="l">{x.group(0)}</div>' if x.group(2).count('<li') >= 8 and '<a href' not in x.group(2)[:400] else x.group(0)),
                   m, flags=re.S)

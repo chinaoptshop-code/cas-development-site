@@ -33,6 +33,7 @@
   /kabinet/admin), що не сумуються зі знижкою за обсягом — діє більша — Михайло 25.10.2026).
 - Блог: статті — JSON у `tools/blog/articles/`, збирає `python3 tools/blog/build.py` (спершу `--check`).
   Правила й порядок — `tools/blog/WRITE.md`, беклог тем — `tools/blog/topics.json`. Публікація — лише після ОК Михайла.
+  Вигляд статті — «легкий блог» `tools/blog/light.py` («Коротко», зміст-плитки, розділи згорнуті до 3 рядків, чеклісти, пиріг шарів у технічних; `/styleguide/#blog-light`).
 - Мови сайту (uk основна, ru, en, es, zh; закладено pl, de, fr, ar з RTL): реєстр і hreflang-кластери — `tools/site/i18n.py`
   і `tools/site/lang/` (`<мова>.json` — меню/футер/підписи/форма, `clusters.json` — одна сторінка різними мовами, x-default = uk).
   Сторінки нових мов (головна, послуги, про, контакти, лендинги) — `tools/site/pages/<мова>-<slug>.json` через landing.py;

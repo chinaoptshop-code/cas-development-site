@@ -38,6 +38,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 sys.path.insert(0, os.path.join(ROOT, 'tools/site'))
 import chrome  # єдина шапка/футер (tools/site/chrome.py)
 import leadform  # noqa: E402  легка заявка (tools/site/leadform.py)
+sys.path.insert(0, os.path.join(ROOT, 'tools/blog'))
+import light  # noqa: E402  легкий блог: «Коротко», зміст-плитки, згорнуті розділи, пиріг шарів (tools/blog/light.py)
 
 
 def _chrome_apply(s, rel):
@@ -340,7 +342,7 @@ def build_article(a, arts):
   <p class="date">CAS Development · <time datetime="{a["date"]}">{fmt_date(a["date"], lang)}</time></p>
   <p style="font-size:19px">{esc(a["lead"])}</p>
   {fig('/' + a['photo'].lstrip('/'), a.get('photo_alt') or a['title'], hero=True) if a.get('photo') else ''}
-  {render_body(a["body"])}
+  {light.body(a, render_body, inline, chrome._ver('/assets/icons.v1.svg'))}
   <h2>{t["faq"]}</h2>
   {''.join(f'<details><summary>{esc(q)}</summary><p>{esc(ans)}</p></details>' for q, ans in a["faq"])}
   <div class="cta"><h2 style="margin-top:0">{t["cta_h"]}</h2><p style="margin:0 0 16px">{t["cta_p"]}</p>
@@ -348,6 +350,8 @@ def build_article(a, arts):
   <p style="margin:14px 0 0"><a href="{svc_url}">{esc(svc_label)} →</a></p></div>
   <h2>{t["more"]}</h2><ul>{links}</ul>
 '''
+    if light.CSS not in s:  # стилі легкого блогу (блокують рендер — без стрибків макета)
+        s = s.replace('<link rel="canonical"', f'<link rel="stylesheet" href="/{light.CSS}?v={chrome._ver("/" + light.CSS)}">\n<link rel="canonical"', 1)
     i = s.index('<article>') + 9; j = s.index('</article>')
     s = s[:i] + art + s[j:]
     wr(path_of(a), s)

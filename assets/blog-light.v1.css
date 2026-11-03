@@ -1,0 +1,31 @@
+/* Легкий блог (tools/blog/light.py): «Коротко», зміст-плитки, згорнуті розділи, чеклісти з іконками, пиріг шарів. UI-kit: /styleguide/#blog-light */
+.bk{border:1px solid var(--ln,rgba(191,145,72,.22));background:var(--bg2,#100e0c);padding:18px 20px;margin:28px 0}
+.bk-h{font-size:var(--fs-small);letter-spacing:.22em;text-transform:uppercase;color:var(--ac,#BF9148);margin:0 0 10px}
+.bk ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.bk li{display:flex;gap:10px;align-items:flex-start;margin:0}
+.bk .ic{width:20px;height:20px;flex:none;color:var(--ac,#BF9148);margin-top:2px;fill:none;stroke:currentColor;stroke-width:1.5}
+.bk a{color:var(--ac,#BF9148)}
+.btoc{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:8px;margin:0 0 32px}
+.btoc a{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--ln,rgba(191,145,72,.22));padding:12px 14px;text-decoration:none;min-height:44px;line-height:1.35;font-size:var(--fs-small)}
+.btoc a:hover,.btoc a:focus-visible{border-color:var(--ac,#BF9148)}
+.btoc b{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:1.25em;color:var(--ac,#BF9148);line-height:1}
+.bsec{scroll-margin-top:84px}
+/* згорнутий розділ: лише перший абзац, обрізаний до 3 рядків; решта (абзаци, списки, фото, пиріг) — по «Читати далі» */
+.js .bsc[data-c=t]:not(.c-o)>p:first-of-type{display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.js .bsc[data-c=t]:not(.c-o)>p:first-of-type~:is(figure,div,ol){display:none}
+ul.chk{list-style:none;padding-inline-start:0}
+ul.chk li{position:relative;padding-inline-start:30px;margin:0 0 8px}
+ul.chk li::before{content:'';position:absolute;inset-inline-start:0;top:.25em;width:18px;height:18px;border:1px solid var(--ac,#BF9148);border-radius:50%;
+  background:no-repeat center/12px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23BF9148' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E")}
+/* пиріг шарів: шари зверху вниз, товщина праворуч; поява шарів по черзі, коли блок у кадрі (без JS) */
+.bpie{margin:24px 0;border:1px solid var(--ln,rgba(191,145,72,.22));background:var(--bg2,#100e0c);padding:16px}
+.bpie figcaption{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-size:var(--fs-h3);margin:0 0 12px}
+.bpie figcaption small{font-family:inherit;font-size:var(--fs-small);color:var(--mu,#938c84);font-family:"Manrope","Manrope Fallback",system-ui,sans-serif}
+.bpie ol{list-style:none;margin:0;padding:0;display:grid;gap:3px}
+.bpie li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:9px 12px;border-inline-start:6px solid hsl(calc(32 + var(--i) * 9) 40% calc(58% - var(--i) * 4%));
+  background:rgba(191,145,72,calc(.14 - var(--i) * .012))}
+.bpie .bp-t{color:var(--ac,#BF9148);font-size:var(--fs-small);white-space:nowrap}
+.bpie .bp-n{grid-column:1/-1;color:var(--mu,#938c84);font-size:var(--fs-small)}
+@supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){
+  .bpie li{animation:bp-in linear both;animation-timeline:view();animation-range:entry 0% entry calc(40% + var(--i) * 6%)}
+  @keyframes bp-in{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}}}
