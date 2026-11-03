@@ -1,0 +1,47 @@
+/* «Комплекс відпочинку» (assets/resort-plan.v1.js, tools/site/resort.py). UI-kit: /styleguide/#build-anim-sg */
+.rp-list{margin:14px 0 0;padding-inline-start:20px;color:var(--mu,#938c84)}.rp-list b{color:var(--tx,#EDE8DF)}
+.rp-rates{color:var(--ac,#BF9148);font-size:var(--fs-small);margin:14px 0 0}
+.la-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.la-ctl{display:flex;flex-wrap:wrap;gap:10px 18px;margin:8px 0 14px}
+.la-seg{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.la-lab{font-size:var(--fs-small);color:var(--mu,#938c84);margin-inline-end:4px}
+.la-seg button{min-height:36px;min-width:40px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.3));background:none;color:inherit;font:inherit;font-size:var(--fs-small);cursor:pointer}
+.la-seg button[aria-pressed=true]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#140f08}
+.la-nav{display:flex;align-items:center;gap:10px}.la-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--ac,#BF9148);background:none;color:inherit;font-size:20px;cursor:pointer}
+.rp-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(260px,1fr);gap:16px;align-items:start}
+@media(max-width:900px){.rp-grid{grid-template-columns:1fr}}
+.rp-svg{display:block;width:100%;height:auto;aspect-ratio:10/7;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:14px;background:#2d4a26;touch-action:manipulation}
+.rp-cap{margin:10px 0 0;min-height:3em}.rp-cap b{display:block;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3)}.rp-cap span{color:var(--mu,#938c84);font-size:var(--fs-small)}
+.rp-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.rp-tools [hidden]{display:none}
+.rp-panel{border:1px solid var(--ln,rgba(191,145,72,.22));background:var(--bg2,#100e0c);padding:16px;border-radius:14px}
+.rp-ph{font-size:var(--fs-small);letter-spacing:.18em;text-transform:uppercase;color:var(--ac,#BF9148);margin:0 0 10px}
+.rp-panel dl{margin:0;display:grid;gap:6px}.rp-panel dl div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--ln,rgba(191,145,72,.18));padding-bottom:6px}
+.rp-panel dt{color:var(--mu,#938c84);font-size:var(--fs-small)}.rp-panel dd{margin:0;white-space:nowrap;font-weight:600}.rp-q dd{color:var(--ac,#BF9148);font-weight:400;font-size:var(--fs-small)}
+.rp-sum{margin:12px 0 4px}.rp-sum b{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-size:var(--fs-h3);color:var(--ac,#BF9148)}.rp-sum span,.rp-note{font-size:var(--fs-small);color:var(--mu,#938c84)}
+.rp-note{margin:0 0 4px}.rp-cta{display:block;text-align:center;margin-top:12px}
+.rp-teaser .btn{margin-top:6px}
+/* генплан */
+.rp-grass{fill:#3b5e2f}.rp-lake{fill:url(#rp-wt)}.rp-wave{fill:none;stroke:#bfe9ff;stroke-width:1.4;opacity:.5}
+.rp-sand{fill:#e3cf9e}.rp-path{fill:none;stroke:#cfc3a6;stroke-width:9;stroke-linecap:round;opacity:.9}
+.rp-tree{fill:#2f5a25}.rp-tree2{fill:#4f8a3a}
+.rp-o{cursor:pointer;outline:none}.rp-o:focus-visible>*:first-child,.rp-o:hover>*:first-child{filter:drop-shadow(0 0 6px #ffcf6b)}
+.rp-found,.rp-pad{fill:#a59d8e}.rp-post{fill:#6b4a2b}.rp-beam{fill:none;stroke:#8a6a46;stroke-width:1.6}
+.rp-roofa,.rp-roofb{fill:#5d4a3a}.rp-roofc{fill:#76604c}.rp-roofd{fill:#4a3b2e}
+.rp-deck{fill:#a07850}.rp-board{stroke:#7a5a3a;stroke-width:.8}.rp-win{fill:#ffd98a}.rp-lamp{fill:#fff3c4}.rp-glow{fill:url(#rp-gl);opacity:.85}
+.rp-shell{fill:#2a2622;stroke:#8a8172;stroke-width:2}.rp-duct{stroke:#5aa0d8;stroke-width:4;fill:none}.rp-pipe{stroke:#e0503c;stroke-width:3;fill:none}.rp-cable{stroke:#f0b44c;stroke-width:2;fill:none;stroke-dasharray:6 3}
+.rp-hall{fill:#c8b08a}.rp-table{fill:#6b4a2b}.rp-kitch{fill:#d9d7d0}.rp-steel{fill:#9aa3a8;stroke:#6b7378}.rp-umb{fill:#f2efe6;stroke:#bf9148}
+.rp-pst{fill:#5b3c22}.rp-bm{fill:#7a5233}.rp-lv{stroke:#c9a57a;stroke-width:2.2}
+.rp-counter{fill:none;stroke:#6b4a2b;stroke-width:5}.rp-canopy{fill:#d8c39a;opacity:.85}.rp-bulb{fill:#ffe9a8}
+.rp-dig{fill:#5b4630}.rp-shellp{fill:#8f8a80}.rp-wp{fill:#4e6b7a}.rp-lining{fill:#cfe7ef}.rp-tile{stroke:#9cc3cf;stroke-width:.6}.rp-water{fill:url(#rp-wt);opacity:.9}
+.rp-ripple{fill:none;stroke:#e6f8ff;stroke-width:1.2;opacity:.7}.rp-ulight{fill:#d9f6ff;opacity:.9}
+.rp-tb{fill:#3a3a3a;stroke:#777}.rp-boil{fill:#b04a3a}.rp-epanel{fill:#d1c46a}.rp-tank{fill:#5a7f8a;stroke:#9cc3cf}.rp-store{fill:#57534c}.rp-park{fill:#4a4a4a}.rp-stripe{stroke:#e8e8e8;stroke-width:1.4}.rp-car{fill:#c9c2b2}
+.rp-lounger{fill:#f2efe6;stroke:#b8ad95}.rp-firering{fill:#6b625a}.rp-fire{fill:#ff9b3d}.rp-tub{fill:#7a5a3a}.rp-tubw{fill:#7fd3ff}
+/* zoom і поетапне будівництво */
+.rp-p{transition:opacity .5s ease,transform .5s ease;transform-box:fill-box;transform-origin:50% 50%}
+.rp-p.rp-off{opacity:0;transform:scale(.85)}
+.rp-zoom .rp-o:not(.rp-act){opacity:.35}
+@media (prefers-reduced-motion:no-preference){
+  .rp-waves{animation:rp-w 5s linear infinite}@keyframes rp-w{to{transform:translateX(50px)}}
+  .rp-ripple{animation:rp-r 2.4s ease-in-out infinite alternate}@keyframes rp-r{to{transform:translateX(6px)}}
+  .rp-fire{animation:rp-f .8s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 50%}@keyframes rp-f{to{transform:scale(1.25)}}
+}
+@media (prefers-reduced-motion:reduce){.rp-p{transition:none}}
