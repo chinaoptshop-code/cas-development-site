@@ -62,6 +62,7 @@
   Секції — плитки `data-c="x"` (іконка + H2 + рядок «від $…» `data-xs`; тап — розгортає на місці, текст у DOM), картки без H2 — компактні `data-c="k"`,
   hero — лід в один рядок `data-c="h"`, «Подзвонити» + «Порахувати» (`a.ux-calc` → квіз / калькулятор), рядок довіри (`calc`/`trust` у `ux` lang/*.json);
   ручні uk-сторінки — `LIGHT_CUSTOM`. Форма, квіз, калькулятор, гід і «Будинок з нуля» лишаються на виду. UI-kit — `/styleguide/#light`.
+  Ілюстрації плиток — `tools/site/tiles/<ключ data-i>.webp` 480×320 ≤40 КБ (Mac mini, FLUX локально) → `python3 tools/site/ux.py` копіює в `/img/tiles/` і вмикає.
 - Карти (/portfolio «Карта проєктів», карта офісу в контактах усіх мов): `tools/site/casmap.py` (точки — лише центр міста/регіону, без адрес клієнтів),
   MapLibre GL JS self-hosted у `assets/vendor/`, тайли OpenFreeMap без ключа; постери `img/map/` — `python3 tools/site/casmap.py --posters`.
 - Зображення: AVIF-копії робить `tools/img/build.py` (нові фото в img/ — запустити його); `<picture>` з AVIF підставляє

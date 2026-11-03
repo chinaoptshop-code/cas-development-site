@@ -661,7 +661,7 @@
 | dyzain-i-remont-boryspil.html | land | 42.0 | 11.8 | 13.6 | 0.6 | 7 | 344 |
 | ru/dizayn-i-remont-belaya-tserkov.html | land | 42.0 | 11.7 | 13.6 | 0.6 | 7 | 345 |
 | ru/dizayn-i-remont-dnepr.html | land | 42.0 | 11.7 | 13.6 | 0.6 | 7 | 342 |
-| ru/dizayn-i-remont-vasilkov.html | land | 42.0 | 11.8 | 13.6 | 0.6 | 7 | 345 |
+| ru/dizayn-i-remont-vasilkov.html | land | 42.0 | 11.7 | 13.6 | 0.6 | 7 | 345 |
 | ar/commercial-renovation.html | land | 41.9 | 11.0 | 13.6 | 0.6 | 7 | 393 |
 | dyzain-i-remont-bila-tserkva.html | land | 41.9 | 11.7 | 13.6 | 0.6 | 7 | 345 |
 | dyzain-i-remont-dnipro.html | land | 41.9 | 11.7 | 13.6 | 0.6 | 7 | 342 |

@@ -417,9 +417,45 @@ def css_block():
     return '/*ux:labels*/' + ''.join(out) + '/*/ux:labels*/'
 
 
+# ── Слот ілюстрацій плиток (етап D): tools/site/tiles/<ключ>.webp, 480×320, ≤ 40 КБ (генерує Mac mini, FLUX локально).
+# Ключ — тема іконки H2 плитки (data-i: pr, gu, st, de, …; див. RULES). Збірка копіює файл у /img/tiles/ (tools/ не деплоїться)
+# і дописує в site-chrome.v1.css правило: згорнута плитка з <h2 data-i="ключ"> показує ілюстрацію над назвою.
+# Немає файлу — плитка як була. Невірний розмір/вага — пропускаємо з попередженням (`python3 tools/site/ux.py`).
+TILES_SRC, TILES_OUT, TILE_W, TILE_H, TILE_KB = 'tools/site/tiles', 'img/tiles', 480, 320, 40
+
+
+def tiles(check=False):
+    import glob, shutil
+    from PIL import Image
+    keys, warn = [], []
+    for f in sorted(glob.glob(os.path.join(ROOT, TILES_SRC, '*.webp'))):
+        key = os.path.basename(f)[:-5]
+        if not re.fullmatch(r'[a-z0-9]{2}', key):
+            warn.append(f'{key}: ключ — 2 символи теми іконки (data-i)'); continue
+        w, h = Image.open(f).size
+        kb = os.path.getsize(f) / 1024
+        if (w, h) != (TILE_W, TILE_H) or kb > TILE_KB:
+            warn.append(f'{key}: {w}×{h}, {kb:.0f} КБ — треба {TILE_W}×{TILE_H}, ≤ {TILE_KB} КБ'); continue
+        out = os.path.join(ROOT, TILES_OUT, key + '.webp')
+        if not check and (not os.path.exists(out) or open(out, 'rb').read() != open(f, 'rb').read()):
+            os.makedirs(os.path.dirname(out), exist_ok=True); shutil.copyfile(f, out)
+        keys.append(key)
+    for x in warn:
+        print('⚠ плитка', x)
+    rules = ''.join(f'.js .w[data-c=x]:not(.c-o):has(>h2[data-i={k}])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i={k}])::before{{background-image:url(/{TILES_OUT}/{k}.webp)}}' for k in keys)
+    base = (''
+            + (':is(' + ','.join(f'.js .w[data-c=x]:not(.c-o):has(>h2[data-i={k}]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i={k}])' for k in keys) + ')::before'
+               '{content:"";display:block;aspect-ratio:3/2;margin:-16px -16px 12px;background:var(--bg2,#100e0c) center/cover no-repeat}' if keys else ''))
+    return '/*ux:tiles*/' + (base + rules if keys else '') + '/*/ux:tiles*/'
+
+
 def sync(check=False):
     bad = []
-    for path, rx, new in ((JS, r'/\*ux:i18n\*/.*?/\*/ux:i18n\*/', js_block()), (CSS, r'/\*ux:labels\*/.*?/\*/ux:labels\*/', css_block())):
+    p = os.path.join(ROOT, CSS)
+    if '/*ux:tiles*/' not in open(p, encoding='utf-8').read() and not check:
+        open(p, 'a', encoding='utf-8').write('\n/*ux:tiles*//*/ux:tiles*/\n')
+    for path, rx, new in ((JS, r'/\*ux:i18n\*/.*?/\*/ux:i18n\*/', js_block()), (CSS, r'/\*ux:labels\*/.*?/\*/ux:labels\*/', css_block()),
+                          (CSS, r'/\*ux:tiles\*/.*?/\*/ux:tiles\*/', tiles(check))):
         p = os.path.join(ROOT, path)
         src = open(p, encoding='utf-8').read()
         n = re.sub(rx, lambda m: new, src, count=1, flags=re.S)
