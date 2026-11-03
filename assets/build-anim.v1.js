@@ -969,7 +969,7 @@
     var hd0 = data.hdef || { t: 'two', s: 'scandi', a: 160 }, cf0 = (sec.getAttribute('data-bz-cfg') || '').split(',');
     var C = { m: mat, t: cf0[0] || hd0.t, s: cf0[1] || hd0.s, a: +(cf0[2] || hd0.a), g: '', r: 0, lang: lang }, hint = '', cfgOpen = false;
     hfix(C, 'm'); mat = C.m;
-    var seq, n, lis = [], sc, svg, layers = [], ghost, act = -1, cur = 0, raf = 0, top0 = 0, live = false, rm = !!(MQ && MQ.matches), man = 0, pieKey = null, pieSel = 0;
+    var seq, n, lis = [], sc, svg, layers = [], ghost, cam, sky, stars, VB, pLast = 0, sPrev = 0, act = -1, cur = 0, raf = 0, top0 = 0, live = false, rm = !!(MQ && MQ.matches), man = 0, pieKey = null, pieSel = 0;
     function S(k) { return seq.indexOf(k); }
     function pieOf(k) {
       var a = data.pieAt[scene][k]; if (a && typeof a === 'object') a = a[mat];
@@ -1191,9 +1191,17 @@
       if (scene === 'flat') body = '<g class="bz-sc">' + body + '</g><g class="bz-nt">' + nb + '</g>'; else body += nb;
       var pad = 12, vb = [bb[0] - pad, bb[1] - pad - 30, bb[2] - bb[0] + pad * 2, bb[3] - bb[1] + pad * 2 + 30].map(function (v) { return v.toFixed(0); }).join(' ');
       var h2 = sec.querySelector('h2'), old = fig.querySelector('svg:not(.bz-out)');
+      VB = vb.split(' ').map(Number);
+      var skyH = '';
+      if (scene !== 'flat') { // небо: день → вечір за прокруткою (зорі на останньому етапі)
+        skyH = '<rect class="bz-sky" x="' + VB[0] + '" y="' + VB[1] + '" width="' + VB[2] + '" height="' + VB[3] + '" fill="url(#bz-sk-' + scene + ')"/><g class="bz-stars">';
+        for (var si = 0; si < 26; si++) { var rr = Math.sin(si * 91.7 + 7.3) * 4375.85, fx = rr - Math.floor(rr), ry2 = Math.sin(si * 37.1 + 1.9) * 9137.3, fy = ry2 - Math.floor(ry2); skyH += '<circle cx="' + (VB[0] + fx * VB[2]).toFixed(0) + '" cy="' + (VB[1] + fy * VB[3] * 0.35).toFixed(0) + '" r="' + (si % 3 ? 0.9 : 1.4) + '" style="animation-delay:' + (si % 7) * 0.4 + 's"/>'; }
+        skyH += '</g>';
+      }
       var html = '<svg viewBox="' + vb + '" role="img" aria-label="' + esc(ui.fig + (h2 ? h2.textContent : '')) + '" focusable="false" preserveAspectRatio="xMidYMid meet" class="' + (scene === 'flat' ? 'f-' + fv : 'm-' + mat + ' st-' + C.s) + '">' +
         '<defs><linearGradient id="bz-gw-' + scene + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2a8"/><stop offset="1" stop-color="#e2a24f"/></linearGradient>' +
-        '<radialGradient id="bz-rg-' + scene + '"><stop offset="0" stop-color="#f6c978" stop-opacity=".55"/><stop offset="1" stop-color="#f6c978" stop-opacity="0"/></radialGradient>' + pats() + '</defs>' + body + '</svg>';
+        '<radialGradient id="bz-rg-' + scene + '"><stop offset="0" stop-color="#f6c978" stop-opacity=".55"/><stop offset="1" stop-color="#f6c978" stop-opacity="0"/></radialGradient>' +
+        '<radialGradient id="bz-sk-' + scene + '" cx=".5" cy=".55" r=".6"><stop offset="0" stop-color="#8fb4d4" stop-opacity=".2"/><stop offset="1" stop-color="#8fb4d4" stop-opacity="0"/></radialGradient>' + pats() + '</defs>' + skyH + '<g class="bz-cam">' + body + '</g></svg>';
       var tmp = el('div', '', html), nsvg = tmp.firstChild;
       if (old && fade && !rm) { // перехід між конфігураціями: стара сцена гасне поверх нової (без зсуву макета — absolute у межах fig)
         var fr = fig.getBoundingClientRect(), orc = old.getBoundingClientRect();
@@ -1208,7 +1216,7 @@
       svg.style.setProperty('--gw', 'url(#bz-gw-' + scene + ')'); svg.style.setProperty('--rg', 'url(#bz-rg-' + scene + ')');
       var gs = svg.querySelectorAll('g.bz-l[data-i]');
       layers = [].map.call(gs, function (g) { var p = sc.parts[+g.getAttribute('data-i')]; return { g: g, p: p, k: -1 }; });
-      ghost = svg.querySelector('.ghost');
+      ghost = svg.querySelector('.ghost'); cam = svg.querySelector('g.bz-cam'); sky = svg.querySelector('.bz-sky'); stars = svg.querySelector('.bz-stars');
       act = -1; pieKey = undefined;
       chips();
       xb.hidden = lg.hidden = scene !== 'flat';
@@ -1234,6 +1242,26 @@
       if (user) cl('build_anim_mat', mat);
     }
 
+    // плавна камера: на старті — ближче до землі (фундамент, кладка), далі відʼїжджає до цілого будинку; s уже згладжений rAF
+    function camera(s) {
+      if (!cam || !VB) return;
+      var t = rm ? 1 : clamp(s / (n * 0.5)), z = 1 + 0.12 * (1 - t) * (1 - t), cx = VB[0] + VB[2] / 2, cy = VB[1] + VB[3] * (0.62 - 0.12 * t);
+      cam.setAttribute('transform', z > 1.001 ? 'translate(' + cx.toFixed(1) + ' ' + cy.toFixed(1) + ') scale(' + z.toFixed(4) + ') translate(' + (-cx).toFixed(1) + ' ' + (-cy).toFixed(1) + ')' : '');
+      if (sky) { var e = clamp((s - (n - 1.8)) / 1.4); sky.style.opacity = (1 - e).toFixed(3); stars.style.opacity = clamp((s - (n - 1)) / 0.8).toFixed(3); }
+    }
+    // частинки: пил при кладці рядів і появі деталей, іскри — на мережах; лише при прокрутці вперед і без reduced-motion
+    function puff(g, kind, row) {
+      if (rm || !cam || !g.firstChild) return;
+      var now = Date.now(); if (now - pLast < (row ? 70 : 140)) return; pLast = now;
+      var b; try { b = g.getBBox(); } catch (e) { return; } if (!b.width) return;
+      var cn = kind === 2 ? 'bz-sp' : 'bz-dp', h = '';
+      for (var i = 0; i < (row ? 5 : 7); i++) {
+        var x = b.x + b.width * (0.15 + 0.7 * Math.random()), y = row ? b.y + 2 : b.y + b.height * (0.2 + 0.5 * Math.random());
+        h += '<circle class="' + cn + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (1 + Math.random() * 1.6).toFixed(1) + '" style="--dx:' + ((Math.random() - 0.5) * 22).toFixed(1) + 'px;--dy:' + (-6 - Math.random() * 16).toFixed(1) + 'px;animation-delay:' + (i * 0.04).toFixed(2) + 's"/>';
+      }
+      var pg2 = d.createElementNS('http://www.w3.org/2000/svg', 'g'); pg2.setAttribute('class', 'bz-pf'); pg2.innerHTML = h; cam.appendChild(pg2);
+      setTimeout(function () { if (pg2.parentNode) pg2.parentNode.removeChild(pg2); }, 1300);
+    }
     function render(s) {
       for (var j = 0; j < layers.length; j++) {
         var Ly = layers[j], p = Ly.p, k = p.s < -1 ? 1 : clamp((s - p.s) / 0.25);
@@ -1241,12 +1269,14 @@
         k = Math.round(k * 100) / 100;
         if (p.e >= 0 && xr && p.n) k = p.s < -1 ? 1 : clamp((s - p.s) / 0.25); // рентген: прокладені мережі видно й під оздобленням
         if (k === Ly.k) continue;
-        Ly.k = k;
-        if (p.m === 'g') { var h = p.v(k); if (h !== Ly.h) { Ly.h = h; Ly.g.innerHTML = h; } continue; }
+        var was = Ly.k; Ly.k = k;
+        if (p.m === 'g') { var h = p.v(k); if (h !== Ly.h) { var grew = Ly.h != null && h.length > Ly.h.length; Ly.h = h; Ly.g.innerHTML = h; if (grew && s > sPrev) puff(Ly.g, 0, 1); } continue; }
+        if (was === 0 && k > 0 && s > sPrev) puff(Ly.g, p.n ? 2 : 0, 0);
         Ly.g.style.opacity = k;
         if (p.m === 'd') Ly.g.setAttribute('transform', k < 1 ? 'translate(0 ' + (-(1 - k) * 30).toFixed(1) + ')' : '');
       }
       if (ghost) ghost.style.opacity = (0.5 * (1 - clamp(s / (n * 0.6)))).toFixed(3);
+      camera(s); sPrev = s;
       if (sc.xr >= 0) svg.classList.toggle('xr', s >= sc.xr + 0.08 && s < sc.xr + 1);
       sc.th.forEach(function (q) { svg.classList.toggle(q[0], q[1] >= 0 && s >= q[1]); });
       var end = s >= n - 0.25;

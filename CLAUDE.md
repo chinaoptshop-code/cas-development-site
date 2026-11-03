@@ -51,7 +51,8 @@
   `functions/_alerts.js`, розділ «Сповіщення про заявки» в `tools/admin/README.md`.
   Деплой сам збирає сайт `tools/build-all.sh` (landing → products → shop → blog → chrome → i18n); `rebuild.yml` комітить згенероване з `[rebuild]`.
 - «Будинок з нуля» / «Ремонт з нуля» (scroll-анімація збірки, префікс класів `bz`, `.ba` — слайдер «до/після»): тексти етапів і пироги шарів — `tools/site/buildanim_data.py`, генератор `tools/site/buildanim.py`
-  (сторінки — `PAGES`, у build-all), `assets/build-anim.v1.{js,css}` (вантажить site-chrome.v1.js після першої прокрутки), UI-kit — `/styleguide/#build-anim-sg`.
+  (сторінки — `PAGES`, у build-all), `assets/build-anim.v1.{js,css}` (вантажить site-chrome.v1.js після першої прокрутки), UI-kit — `/styleguide/#build-anim-sg`;
+  мікроанімації v4: плавна камера (наїзд на старті → увесь будинок), небо день → вечір із зорями (будинок), частинки пилу при кладці рядів і появі деталей, іскри на мережах (`camera()`/`puff()`; reduced-motion — без них).
   «Ландшафт з нуля» (16 етапів, 6/10/15/25 соток, стиль, рентген, 4 пироги, CTA з конфігурацією в форму): `tools/site/landanim.py` (+ `landanim_i18n.py`),
   `assets/land-anim.v1.{js,css}`; сторінки ландшафтного дизайну всіх мов + перемикач «Будинок / Ландшафт» на будівництві.
   «Комплекс відпочинку» (генплан, zoom і поетапне будівництво обʼєкта, панель цін лише зі ставок вище × площа, решта — «за кошторисом»): `tools/site/resort.py`
