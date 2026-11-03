@@ -132,7 +132,7 @@
 .bz-fig .so.r{fill:#33281f}.bz-fig .so.l{fill:#3e3127}
 .bz-fig .st{stroke:rgba(0,0,0,.35);stroke-width:.8;stroke-dasharray:4 3}
 .bz-fig .pf{fill:#221c17}.bz-fig .pi.r{fill:#4a3b2f}.bz-fig .pi.l{fill:#574638}
-.bz-fig .heap{fill:#5a4a3b}.bz-fig .heap2{fill:#46392d}
+
 .bz-fig .geo{fill:#e6e2da;opacity:.85}
 .bz-fig .sand{fill:#c9a86a}
 .bz-fig .grv{fill:#7e7a74}
@@ -451,3 +451,8 @@
   .bz-cfg{gap:10px}.bz-cfg .bz-g,.bz-cfg .bz-cr{row-gap:10px}
   .bz-lg{row-gap:16px;top:44px}
 }
+/* реалізм: мʼяка тінь будинку на землі, відблиск і тінь схилів покрівлі, фактура бетону й ґрунту (візерунки — pats() у скрипті) */
+.bz-fig .csh{fill:url(#bz-csh);pointer-events:none}
+.bz-fig .rsh{fill:url(#bz-rsh);pointer-events:none}.bz-fig .rsh.s{opacity:.7}.bz-fig .rsh.f{opacity:.6}
+.bz-fig .conc{fill:url(#bz-cc);pointer-events:none}
+.bz-fig .soil{fill:url(#bz-so);pointer-events:none}.bz-fig .heap{fill:#6a5644}.bz-fig .heap2{fill:#54443a}.bz-fig .heap3{fill:#3f3329}

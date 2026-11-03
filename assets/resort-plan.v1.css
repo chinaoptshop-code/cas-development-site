@@ -39,3 +39,9 @@
   .rp-fire{animation:rp-f .8s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 50%}@keyframes rp-f{to{transform:scale(1.25)}}
 }
 @media (prefers-reduced-motion:reduce){.rp-p{transition:none}}
+/* реалізм: мʼякі тіні й фактури (візерунки — у <defs> скрипта) */
+.rp-sh{fill:url(#rp-shg);pointer-events:none}.rp-gtx{fill:url(#rp-gp);pointer-events:none}
+.rp-tlh{fill:url(#rp-th)}.rp-tlv{fill:url(#rp-tv)}.rp-wdx{fill:url(#rp-wg);pointer-events:none}
+.rp-cc{fill:url(#rp-cp);pointer-events:none}.rp-stx{fill:url(#rp-sp);pointer-events:none}
+.rp-wtx,.rp-lktx{fill:url(#rp-rp);pointer-events:none}
+.rp-zoom .rp-o:not(.rp-act) .rp-sh{opacity:.5}
