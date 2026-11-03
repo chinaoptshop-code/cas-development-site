@@ -20271,16 +20271,16 @@
  {
   "page": "portfolio.html",
   "kind": "main",
-  "html_kb": 260.0,
-  "gzip_kb": 37.5,
-  "css_kb": 48.2,
-  "js_kb": 11.9,
-  "font_sizes": 26,
-  "tags": 1921,
+  "html_kb": 219.3,
+  "gzip_kb": 27.3,
+  "css_kb": 13.6,
+  "js_kb": 0.6,
+  "font_sizes": 7,
+  "tags": 1886,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
-  "onclick_nav": 20,
+  "onclick_nav": 0,
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
@@ -20289,12 +20289,10 @@
   "h1_count": 1,
   "osocor": false,
   "mu": [
-   "#6A6153",
    "#938c84"
   ],
   "bg2": [
-   "#100e0c",
-   "#EDEBE4"
+   "#100e0c"
   ],
   "prices_bad": [],
   "facts_bad": [],

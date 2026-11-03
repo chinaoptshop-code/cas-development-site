@@ -668,6 +668,8 @@ def build(p):
     # шапка й футер: мова, перемикач на пару (hreflang) і посилання — з chrome.py
     if any(x['t'] == 'map' for x in p.get('sections', [])):
         s = casmap.assets(s)
+    elif any(x['t'] == 'pmap' for x in p.get('sections', [])):  # карта проєктів унизу сторінки — стилі не блокують рендер
+        s = casmap.assets(s, lazy=True)
     s = page_assets(s, p.get('assets', []))
     s = chrome.apply(s, path(lang, slug))
     os.makedirs(os.path.dirname(os.path.join(ROOT, path(lang, slug))), exist_ok=True)

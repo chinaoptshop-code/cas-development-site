@@ -77,3 +77,5 @@
 .xs-cta h2[data-i]{display:inline-block;padding-inline-start:1.32em}
 .xs-ct{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
 .xs-sub{color:var(--mu);margin:-12px 0 20px}
+.xs-proj .xs-head{margin-bottom:6px}.xs-proj .xs-head h2{margin:0}
+.xs-proj,.xs-strip,.xs-covers,.xs-team,.xs-svc{content-visibility:auto;contain-intrinsic-size:auto 640px}

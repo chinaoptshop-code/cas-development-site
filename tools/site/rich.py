@@ -56,9 +56,10 @@ def img(x, alt=None, sizes='(max-width:767px) 90vw, 400px', cls='', eager=False)
 def hero_bg(h):
     """Фото першого екрана (не анімуємо, одна fetchpriority="high")."""
     m = h.get('m')
-    src = (f'<source media="(max-width:767px) and (orientation:portrait)" srcset="{a(m["srcset"])}" sizes="100vw" width="{m["w"]}" height="{m["h"]}">'
+    src = (f'<source media="(max-width:767px) and (orientation:portrait)" srcset="{a(m["srcset"])}" sizes="60vw" width="{m["w"]}" height="{m["h"]}">'
            if m else '')
-    return f'<picture class="hx-bg">{src}{img(h, sizes=h.get("sizes") or "100vw", eager=True)}</picture>'
+    # телефон: фото під темним градієнтом — достатньо ~60vw (менше байтів до LCP)
+    return f'<picture class="hx-bg">{src}{img(h, sizes="(max-width:767px) 60vw, 100vw", eager=True)}</picture>'
 
 
 def msgs():
@@ -187,7 +188,8 @@ def team(x):
 
 def project(x):
     meta = (f'<p class="xs-meta"><span class="xs-stat">{e(x["status"])}</span>{e(x["meta"])} · <a href="{a(x["href"])}">{e(x["open"])}</a></p>')
-    o = f'<h2><a href="{a(x["href"])}">{e(x["h2"])}</a></h2>' + meta + ''.join(f'<p>{rich(p)}</p>' for p in x.get('p', []))
+    o = (f'<div class="xs-head"><h2><a href="{a(x["href"])}">{e(x["h2"])}</a></h2>'
+         + (f'<a href="{a(x["href"])}">{e(x["btn"])}</a>' if x.get('btn') else '') + '</div>' + meta + ''.join(f'<p>{rich(p)}</p>' for p in x.get('p', [])))
     o += (f'<div class="xs-st" tabindex="0" role="region" aria-label="{a(x["label"])}">'
           + ''.join(f'<a href="{a(x["href"])}">{img(c, None, "(max-width:767px) 60vw, 300px")}</a>' for c in x['items']) + '</div>')
     return wrap(x, o, 'xs-proj')

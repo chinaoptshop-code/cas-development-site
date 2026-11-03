@@ -1,25 +1,24 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 855 (MAIN 5, LAND 436, інші 350). HTML разом 43584 КБ, з них інлайн CSS 17921 КБ і JS 612 КБ.
+Сторінок: 855 (MAIN 5, LAND 436, інші 350). HTML разом 43544 КБ, з них інлайн CSS 17886 КБ і JS 600 КБ.
 
 ## Проблеми
 
 - **Без Clarity** (1): tury.html
-- **Навігація через onclick** (1): portfolio.html(20)
 - **Непідтверджені ціни** (71): ar/renovation-calculator.html['$165 000 ', '$33 000 '], biznes-pid-kliuch-kyiv.html['$52 500'], blog/akustyka-open-space-bez-hluhykh-peregorodok.html['$35 000 '], blog/bryf-dlia-dyzainera-interieru.html['$44 000'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/chornovyi-i-chystovyi-remont-riznytsia.html['$38 500 '], blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html['$2 400'], blog/dyzain-i-remont-penthausa-pid-kliuch.html['$115 500  ', '$174 300', '$52 500  ', '$6 300', '$6 300  '], blog/dyzain-interieru-onlain-budynok-za-kordonom.html['$7 500'], blog/dyzain-interieru-z-choho-pochaty.html['$3 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'] …
-- **Класи поза /styleguide/ (warning, `ui.py classes`)** (50): .acc-box, .cover, .dw, .hx, .hx-bg, .kick, .row, .rz, .tm-page, .tm-sheet, .tm-toast, .xs-all …
+- **Класи поза /styleguide/ (warning, `ui.py classes`)** (15): .acc-box, .cover, .dw, .hx, .hx-bg, .row, .rz, .tm-page, .tm-sheet, .tm-toast, .xs-all, .xs-ico …
 
 ## Токени
 
-- `--mu`: {'#938c84': 834, '#6A6153': 1}
-- `--bg2`: {'#100e0c': 834, '#EDEBE4': 1}
+- `--mu`: {'#938c84': 834}
+- `--bg2`: {'#100e0c': 834}
 - Копій адреси вебхука форми: 0 на 0 сторінках
 
 ## Сторінки
 
 | сторінка | тип | HTML КБ | gzip КБ | CSS КБ | JS КБ | розмірів шрифту | тегів |
 |---|---|---|---|---|---|---|---|
-| portfolio.html | main | 260.0 | 37.5 | 48.2 | 11.9 | 26 | 1921 |
+| portfolio.html | main | 219.3 | 27.3 | 13.6 | 0.6 | 7 | 1886 |
 | ozdoba/prais.html | other | 114.4 | 27.8 | 5.8 | 1.1 | 9 | 3023 |
 | ozdoba/komplekty.html | other | 113.2 | 26.6 | 32.4 | 1.5 | 14 | 1531 |
 | ozdoba.html | other | 103.3 | 23.1 | 30.1 | 0.8 | 13 | 760 |

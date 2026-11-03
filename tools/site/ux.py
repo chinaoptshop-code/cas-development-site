@@ -160,7 +160,6 @@ LIGHT_CLUSTERS = ('home', 'services', 'about', 'contact', 'design', 'renovation'
 LIGHT_EXTRA = ('/portfolio', '/remont-kvartyr-kyiv', '/ru/remont-kvartir-kiev', '/vartist-remontu-kvartyry-kyiv', '/ru/stoimost-remonta-kvartiry-kiev')
 # ручні uk-сторінки: класи секцій, що стають плитками (h2 — нащадок секції; атрибут — на самій <section>)
 LIGHT_CUSTOM = {
-    'portfolio.html': ('section#video', 'section.pmap'),
 }
 LIGHT_SKIP = ('ab-cta',)  # заклик з кнопками лишається на виду
 
