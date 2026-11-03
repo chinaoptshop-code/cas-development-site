@@ -12,47 +12,91 @@
   "WhatsApp"
  ],
  "facts": false,
+ "kicker": "Contact",
+ "hero_img": {
+  "img": "img/1FRa0FI6iMHK-1400.webp",
+  "srcset": "/img/1FRa0FI6iMHK-r400.webp 400w, /img/1FRa0FI6iMHK-r600.webp 600w, /img/1FRa0FI6iMHK-r800.webp 800w, /img/1FRa0FI6iMHK-r1200.webp 1200w, /img/1FRa0FI6iMHK-1400.webp 1400w",
+  "alt": "Maison Hoda Estate dans les Carpates — projet CAS Development",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "cards",
+   "t": "contacts",
    "h2": "Nous joindre",
-   "items": [
-    {
-     "h": "Bureau",
-     "p": "44, rue Antonovytcha, Kyiv, Ukraine"
-    },
-    {
-     "h": "Téléphone",
-     "price": "+380 97 866 77 55",
-     "p": "Le même numéro fonctionne sur WhatsApp, Telegram et Viber.",
-     "href": "tel:+380978667755",
-     "more": "Appeler"
-    },
-    {
-     "h": "Messageries",
-     "p": "Écrivez-nous à tout moment — nous répondons rapidement.",
-     "li": [
-      "Telegram: t.me/+380978667755",
-      "WhatsApp: wa.me/380978667755",
-      "Viber: +380 97 866 77 55"
-     ]
-    },
-    {
-     "h": "Instagram",
-     "p": "Projets et chantiers en cours : @cas_development",
-     "href": "https://www.instagram.com/cas_development/",
-     "more": "Ouvrir Instagram"
-    }
-   ]
+   "p": "Écrivez-nous à tout moment — nous répondons rapidement.",
+   "rows": [
+    [
+     "Bureau",
+     "44, rue Antonovytcha, Kyiv, Ukraine",
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Itinéraire"
+    ],
+    [
+     "Téléphone",
+     "+380 97 866 77 55",
+     "tel:+380978667755",
+     "Le même numéro sur Telegram, Viber et WhatsApp"
+    ],
+    [
+     "E-mail",
+     "china.opt.shop@gmail.com",
+     "mailto:china.opt.shop@gmail.com",
+     null
+    ],
+    [
+     "Instagram",
+     "@cas_development",
+     "https://www.instagram.com/cas_development/",
+     "Projets et chantiers en cours"
+    ],
+    [
+     "YouTube",
+     "@cas_development",
+     "https://www.youtube.com/@cas_development"
+    ]
+   ],
+   "msgs": true,
+   "msgs_h": "Messageries"
   },
   {
    "t": "map"
   },
   {
-   "t": "text",
+   "t": "cta",
    "h2": "Envie de connaître le budget à l’avance ?",
    "p": [
     "Design dès $30/m², rénovation dès $550/m², bureaux dès $350/m², construction dès $600/m², ameublement dès $250/m². Le montant final figure dans le devis après la consultation."
+   ],
+   "btns": [
+    [
+     "/fr/calculateur-renovation",
+     "Ouvrir le calculateur →"
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "h2": "Contrat, garantie, paiement",
+   "p": [
+    "Nous travaillons sous contrat, avec devis et procès-verbaux de réception par étape ; garantie de 36 mois sur les travaux ; paiement selon un échéancier adapté, démarrage dès 10 % d’acompte."
+   ],
+   "btns": [
+    [
+     "/fr/faq",
+     "Questions fréquentes →"
+    ]
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Où nous travaillons",
+   "p": [
+    "Le bureau de CAS Development se trouve au 44, rue Antonovytcha, Kyiv. Nous intervenons dans tout Kyiv et sa région ; rénovation et construction dans toutes les régions d’Ukraine et en Europe.",
+    "Depuis 2016, plus de 150 projets à Kyiv, dans toute l’Ukraine et à l’étranger : Espagne, France, Allemagne, Pologne, Turquie (Bodrum), États-Unis et Bali. La consultation téléphonique est gratuite ; le relevé sur place est payant, son coût dépend du bien."
+   ],
+   "link": [
+    "/fr/a-propos",
+    "Le studio et l’équipe →"
    ]
   },
   {

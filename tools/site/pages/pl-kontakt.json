@@ -12,47 +12,91 @@
   "WhatsApp"
  ],
  "facts": false,
+ "kicker": "Kontakt",
+ "hero_img": {
+  "img": "img/1FRa0FI6iMHK-1400.webp",
+  "srcset": "/img/1FRa0FI6iMHK-r400.webp 400w, /img/1FRa0FI6iMHK-r600.webp 600w, /img/1FRa0FI6iMHK-r800.webp 800w, /img/1FRa0FI6iMHK-r1200.webp 1200w, /img/1FRa0FI6iMHK-1400.webp 1400w",
+  "alt": "Dom Hoda Estate w Karpatach — projekt CAS Development",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "cards",
+   "t": "contacts",
    "h2": "Jak się z nami skontaktować",
-   "items": [
-    {
-     "h": "Biuro",
-     "p": "ul. Antonowycza 44, Kijów, Ukraina"
-    },
-    {
-     "h": "Telefon",
-     "price": "+380 97 866 77 55",
-     "p": "Ten sam numer działa w WhatsApp, Telegramie i Viberze.",
-     "href": "tel:+380978667755",
-     "more": "Zadzwoń"
-    },
-    {
-     "h": "Komunikatory",
-     "p": "Napisz o dowolnej porze — odpowiadamy wkrótce.",
-     "li": [
-      "Telegram: t.me/+380978667755",
-      "WhatsApp: wa.me/380978667755",
-      "Viber: +380 97 866 77 55"
-     ]
-    },
-    {
-     "h": "Instagram",
-     "p": "Projekty i prace w toku: @cas_development",
-     "href": "https://www.instagram.com/cas_development/",
-     "more": "Otwórz Instagram"
-    }
-   ]
+   "p": "Napisz o dowolnej porze — odpowiadamy wkrótce.",
+   "rows": [
+    [
+     "Biuro",
+     "ul. Antonowycza 44, Kijów, Ukraina",
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Trasa"
+    ],
+    [
+     "Telefon",
+     "+380 97 866 77 55",
+     "tel:+380978667755",
+     "Ten sam numer w Telegramie, Viberze i WhatsAppie"
+    ],
+    [
+     "E-mail",
+     "china.opt.shop@gmail.com",
+     "mailto:china.opt.shop@gmail.com",
+     null
+    ],
+    [
+     "Instagram",
+     "@cas_development",
+     "https://www.instagram.com/cas_development/",
+     "Projekty i prace w toku"
+    ],
+    [
+     "YouTube",
+     "@cas_development",
+     "https://www.youtube.com/@cas_development"
+    ]
+   ],
+   "msgs": true,
+   "msgs_h": "Komunikatory"
   },
   {
    "t": "map"
   },
   {
-   "t": "text",
+   "t": "cta",
    "h2": "Chcesz poznać budżet z góry?",
    "p": [
     "Projekt od $30/m², remont od $550/m², biura od $350/m², budowa od $600/m², umeblowanie od $250/m². Ostateczną kwotę podaje kosztorys po konsultacji."
+   ],
+   "btns": [
+    [
+     "/pl/kalkulator-remontu",
+     "Otwórz kalkulator →"
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "h2": "Umowa, gwarancja, płatności",
+   "p": [
+    "Pracujemy na podstawie umowy z kosztorysem i protokołami odbioru etapów; gwarancja na prace — 36 miesięcy; płatności według harmonogramu dopasowanego do Ciebie, start od 10% zaliczki."
+   ],
+   "btns": [
+    [
+     "/pl/faq",
+     "Częste pytania →"
+    ]
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Gdzie pracujemy",
+   "p": [
+    "Biuro CAS Development: ul. Antonowycza 44, Kijów. Pracujemy w całym Kijowie i obwodzie kijowskim; remonty i budowy realizujemy we wszystkich obwodach Ukrainy i w Europie.",
+    "Od 2016 roku — ponad 150 projektów w Kijowie, w całej Ukrainie i za granicą: w Hiszpanii, Francji, Niemczech, Polsce, Turcji (Bodrum), USA i na Bali. Konsultacja telefoniczna jest bezpłatna; pomiar na obiekcie jest płatny, a jego koszt zależy od obiektu."
+   ],
+   "link": [
+    "/pl/o-studiu",
+    "O studiu i zespole →"
    ]
   },
   {

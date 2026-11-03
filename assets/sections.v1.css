@@ -1,0 +1,78 @@
+/* Розширені секції лендингів (tools/site/rich.py) — головна, послуги, про студію, контакти й портфоліо всіх мов. UI-kit: /styleguide/#sections */
+.kick{font-size:var(--fs-small);letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin:0 0 12px}
+.xs-lnk{margin:22px 0 0}.xs-lnk a,.xs-links a,.xs-head a{color:var(--ac);text-decoration:none}
+.xs-lnk a:hover,.xs-links a:hover,.xs-head a:hover{text-decoration:underline}
+/* перший екран з фото */
+.hx{position:relative;isolation:isolate;overflow:hidden}
+.hx-bg,.hx-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hx::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,7,9,.94) 0,rgba(8,7,9,.78) 46%,rgba(8,7,9,.38) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 34%)}
+[dir=rtl] .hx::before{background:linear-gradient(270deg,rgba(8,7,9,.94) 0,rgba(8,7,9,.78) 46%,rgba(8,7,9,.38) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 34%)}
+.hx .hero{padding-top:88px;min-height:min(80vh,760px);display:flex;flex-direction:column;justify-content:flex-end}
+.hx .hero p{color:#d3ccc1}.hx .facts div{background:rgba(8,7,9,.82)}
+@media(max-width:767px){.hx .hero{min-height:0;padding-top:120px}.hx::before{background:linear-gradient(0deg,var(--bg) 8%,rgba(8,7,9,.72) 55%,rgba(8,7,9,.45) 100%)}}
+/* заголовок з посиланням праворуч */
+.xs-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 20px;flex-wrap:wrap;margin-bottom:24px}
+.xs-head h2{margin:0}.xs-head a{font-size:var(--fs-small);letter-spacing:.14em;text-transform:uppercase}
+/* послуги */
+.xs-sv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.xs-c{border:1px solid var(--ln);background:var(--bg2);display:flex;flex-direction:column;min-width:0}
+.xs-c>img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.xs-cb{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.xs-cb h3{font-size:var(--fs-h3)}.xs-cb h3 a{text-decoration:none}
+.xs-pr{color:var(--ac);font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-size:1.2em;margin:0}
+.xs-cb p,.xs-cb li{color:var(--mu);margin:0}.xs-cb ul{margin:0;padding-inline-start:18px}
+.xs-cb details{padding:10px 0 0;border-bottom:0;border-top:1px solid var(--ln)}.xs-cb details ul{margin-top:10px}
+.xs-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px!important}.xs-tags span{border:1px solid var(--ln);border-radius:999px;padding:4px 10px;font-size:var(--fs-small)}
+.xs-links{display:flex;flex-wrap:wrap;gap:6px 16px}.xs-cb .rel{margin-top:10px}.xs-cb .rel a{font-size:var(--fs-small);padding:8px 12px}
+.xs-note{text-align:center;color:var(--mu);margin:20px auto 0;max-width:none}
+/* обкладинки проєктів */
+.xs-cv{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(46%,260px),1fr));gap:12px}
+.xs-cv a{position:relative;display:block;text-decoration:none;overflow:hidden;border:1px solid var(--ln)}
+.xs-cv img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.xs-cv span{position:absolute;inset:auto 0 0;padding:48px 16px 14px;background:linear-gradient(rgba(8,7,9,0),rgba(8,7,9,.9))}
+.xs-cv b{display:block;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3);line-height:1.15}
+.xs-cv small{color:#cfc8bd;font-size:var(--fs-small)}
+/* стрічка фото */
+.xs-st{display:grid;grid-auto-flow:column;grid-auto-columns:min(66vw,280px);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding-bottom:10px;scrollbar-width:thin}
+.xs-st>*{scroll-snap-align:start;position:relative;margin:0;display:block;text-decoration:none}
+.xs-st img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:var(--bg2)}
+.xs-st span{position:absolute;inset:auto 0 0;padding:28px 12px 10px;font-size:var(--fs-small);background:linear-gradient(rgba(8,7,9,0),rgba(8,7,9,.85))}
+.xs-strip .w>.xs-st:first-child{margin-top:-8px}
+/* фото + текст */
+.xs-sp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:32px;align-items:center}
+.xs-pic{position:relative}.xs-pic img{display:block;width:100%;height:auto;border:1px solid var(--ln)}
+.xs-badge{position:absolute;inset-inline-start:16px;bottom:16px;margin:0;background:rgba(8,7,9,.88);border:1px solid var(--ln);padding:12px 16px}
+.xs-badge b{display:block;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3);color:var(--ac)}
+.xs-badge span{font-size:var(--fs-small);color:var(--mu)}
+.xs-tx p{color:var(--mu)}.xs-tx .xs-lead{color:var(--tx);font-size:var(--fs-lead)}.xs-tx .btns{margin-top:18px}
+.xs-vals{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px}
+.xs-vals div{border-top:1px solid var(--ln);padding-top:10px}.xs-vals b{display:block;margin-bottom:4px}.xs-vals span{color:var(--mu);font-size:var(--fs-small)}
+@media(max-width:767px){.xs-sp{grid-template-columns:1fr;gap:20px}}
+/* заклик, рейтинг, месенджери */
+.xs-cta{text-align:center}.xs-cta p{color:var(--mu);margin-inline:auto;max-width:46ch}.xs-cta .btns{justify-content:center;margin-top:20px}
+.xs-score{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-size:var(--fs-h1)!important;line-height:1.1;color:var(--tx)!important;margin:0 auto 8px!important}
+.xs-score span{color:var(--ac)}
+.xs-msg{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 0}.xs-cta .xs-msg{justify-content:center}
+.xs-msg a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid var(--ln);border-radius:999px;text-decoration:none;font-size:var(--fs-small)}
+.xs-msg a:hover{border-color:var(--ac)}
+/* контакти */
+.xs-ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1px;background:var(--ln);border:1px solid var(--ln)}
+.xs-ct>div{background:var(--bg);padding:18px;min-width:0}.xs-ct span{display:block;font-size:var(--fs-small);color:var(--mu);margin-bottom:4px}
+.xs-ct b{display:block;font-weight:600;overflow-wrap:anywhere}.xs-ct b a{text-decoration:none;border-bottom:1px solid var(--ln)}
+.xs-ct small{display:block;color:var(--mu);font-size:var(--fs-small);margin-top:4px}
+.xs-msg-h{margin:26px 0 0!important}.xs-contacts .xs-lead{color:var(--mu);max-width:46em;margin:0 0 22px}
+/* команда */
+.xs-tm .xs-av{display:inline-grid;place-items:center;width:44px;height:44px;border:1px solid var(--ac);border-radius:50%;color:var(--ac);font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-size:1.3em;margin-bottom:10px}
+.xs-role{color:var(--ac)!important;font-size:var(--fs-small)!important;letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px!important}
+.xs-crew-h{font-size:var(--fs-h3);margin:40px 0 6px}.xs-crew-p{color:var(--mu)}
+.xs-crew{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;margin-top:16px}
+.xs-crew>div{border:1px solid var(--ln);padding:18px;background:var(--bg2)}.xs-crew p{color:var(--mu);margin:0 0 10px}
+.xs-crew ul{list-style:none;margin:0;padding:0}.xs-crew li{padding:4px 0;border-top:1px solid var(--ln)}.xs-crew li span{color:var(--mu);font-size:var(--fs-small)}
+/* портфоліо */
+.xs-proj h2{margin-bottom:6px}.xs-proj h2 a{text-decoration:none}
+.xs-meta{color:var(--mu);font-size:var(--fs-small);margin:0 0 18px}.xs-meta a{color:var(--ac)}
+.xs-proj .xs-st img{aspect-ratio:3/4}
+.xs-stat{display:inline-block;border:1px solid var(--ac);color:var(--ac);border-radius:999px;padding:2px 10px;margin-inline-end:10px}
+.xs-ico{font-style:normal}
+.xs-cta h2[data-i]{display:inline-block;padding-inline-start:1.32em}
+.xs-ct{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}

@@ -1,18 +1,18 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 855 (MAIN 5, LAND 436, інші 350). HTML разом 43524 КБ, з них інлайн CSS 18026 КБ і JS 620 КБ.
+Сторінок: 855 (MAIN 5, LAND 436, інші 350). HTML разом 43500 КБ, з них інлайн CSS 17985 КБ і JS 620 КБ.
 
 ## Проблеми
 
 - **Без Clarity** (1): tury.html
 - **Навігація через onclick** (1): portfolio.html(20)
 - **Непідтверджені ціни** (71): ar/renovation-calculator.html['$165 000 ', '$33 000 '], biznes-pid-kliuch-kyiv.html['$52 500'], blog/akustyka-open-space-bez-hluhykh-peregorodok.html['$35 000 '], blog/bryf-dlia-dyzainera-interieru.html['$44 000'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/chornovyi-i-chystovyi-remont-riznytsia.html['$38 500 '], blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html['$2 400'], blog/dyzain-i-remont-penthausa-pid-kliuch.html['$115 500  ', '$174 300', '$52 500  ', '$6 300', '$6 300  '], blog/dyzain-interieru-onlain-budynok-za-kordonom.html['$7 500'], blog/dyzain-interieru-z-choho-pochaty.html['$3 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'] …
-- **Класи поза /styleguide/ (warning, `ui.py classes`)** (9): .ab-faq, .acc-box, .cover, .dw, .row, .rz, .tm-page, .tm-sheet, .tm-toast
+- **Класи поза /styleguide/ (warning, `ui.py classes`)** (19): .ab-faq, .acc-box, .cover, .dw, .hx, .hx-bg, .kick, .row, .rz, .tm-page, .tm-sheet, .tm-toast …
 
 ## Токени
 
-- `--mu`: {'#6A6153': 4, '#938c84': 834}
-- `--bg2`: {'#100e0c': 833, '#EDEBE4': 4}
+- `--mu`: {'#6A6153': 3, '#938c84': 834}
+- `--bg2`: {'#100e0c': 833, '#EDEBE4': 3}
 - Копій адреси вебхука форми: 0 на 0 сторінках
 
 ## Сторінки
@@ -26,7 +26,6 @@
 | about.html | main | 105.0 | 24.5 | 49.2 | 0.7 | 22 | 518 |
 | ozdoba.html | other | 103.3 | 23.1 | 30.1 | 0.8 | 13 | 760 |
 | services.html | main | 85.6 | 20.1 | 45.8 | 0.7 | 22 | 485 |
-| contact.html | main | 84.3 | 19.8 | 54.2 | 0.7 | 22 | 354 |
 | pl/ozdoba.html | other | 82.3 | 19.6 | 30.7 | 0.8 | 13 | 619 |
 | en/ozdoba.html | other | 81.4 | 18.9 | 30.7 | 0.8 | 13 | 620 |
 | blog.html | other | 75.2 | 19.2 | 13.5 | 0.6 | 6 | 418 |
@@ -704,6 +703,7 @@
 | ar/design-implementation.html | land | 41.2 | 11.2 | 13.6 | 0.6 | 7 | 373 |
 | en/office-renovation.html | land | 41.2 | 11.1 | 13.6 | 0.6 | 7 | 421 |
 | es/equipamiento-llave-en-mano.html | land | 41.1 | 11.0 | 13.6 | 0.6 | 7 | 386 |
+| contact.html | main | 41.0 | 11.6 | 13.6 | 0.6 | 7 | 346 |
 | fr/equipe-renovation.html | land | 41.0 | 11.1 | 13.6 | 0.6 | 7 | 401 |
 | pl/kompletacja-wnetrz.html | land | 41.0 | 11.5 | 13.6 | 0.6 | 7 | 398 |
 | en/renovation-crew.html | land | 40.9 | 11.0 | 13.6 | 0.6 | 7 | 420 |
@@ -758,6 +758,7 @@
 | fr/renovation-cuisine.html | land | 39.1 | 10.6 | 13.6 | 0.6 | 7 | 389 |
 | en/apartment-interior-design.html | land | 39.0 | 10.4 | 13.6 | 0.6 | 7 | 402 |
 | pl/biznes-pod-klucz.html | land | 39.0 | 11.3 | 13.6 | 0.6 | 7 | 396 |
+| ru/kontakty.html | land | 39.0 | 11.0 | 13.6 | 0.6 | 7 | 347 |
 | zh/turnkey-procurement.html | land | 39.0 | 11.3 | 13.6 | 0.6 | 7 | 384 |
 | es/negocio-llave-en-mano.html | land | 38.9 | 10.9 | 13.6 | 0.6 | 7 | 381 |
 | zh/renovation-crew.html | land | 38.9 | 11.3 | 13.6 | 0.6 | 7 | 401 |
@@ -823,7 +824,7 @@
 | pl/projektowanie-ogrodow.html | land | 37.0 | 10.3 | 13.6 | 0.6 | 7 | 378 |
 | zh/design-implementation.html | land | 37.0 | 11.0 | 13.6 | 0.6 | 7 | 375 |
 | de/gartengestaltung.html | land | 36.9 | 10.2 | 13.6 | 0.6 | 7 | 371 |
-| ru/kontakty.html | land | 36.7 | 10.4 | 13.6 | 0.6 | 7 | 323 |
+| ar/contact.html | land | 36.6 | 10.2 | 13.6 | 0.6 | 7 | 322 |
 | pl/faq.html | land | 36.6 | 10.3 | 13.6 | 0.6 | 7 | 333 |
 | zh/interior-design.html | land | 36.6 | 10.8 | 13.6 | 0.6 | 7 | 365 |
 | zh/apartment-design.html | land | 36.5 | 10.4 | 13.6 | 0.6 | 7 | 374 |
@@ -843,22 +844,21 @@
 | pl/uslugi.html | land | 35.4 | 10.1 | 13.6 | 0.6 | 7 | 390 |
 | zh/faq.html | land | 35.4 | 10.2 | 13.6 | 0.6 | 7 | 323 |
 | de/leistungen.html | land | 35.3 | 10.0 | 13.6 | 0.6 | 7 | 383 |
+| fr/contact.html | land | 35.2 | 9.9 | 13.6 | 0.6 | 7 | 324 |
 | proekty/usa-house.html | land | 35.2 | 7.9 | 2.1 | 0.9 | 1 | 343 |
+| es/contacto.html | land | 35.1 | 9.8 | 13.6 | 0.6 | 7 | 324 |
+| pl/kontakt.html | land | 35.0 | 10.0 | 13.6 | 0.6 | 7 | 332 |
 | zh/about.html | land | 35.0 | 10.8 | 13.6 | 0.6 | 7 | 344 |
+| en/contact.html | land | 34.9 | 9.7 | 13.6 | 0.6 | 7 | 334 |
+| de/kontakt.html | land | 34.8 | 9.8 | 13.6 | 0.6 | 7 | 325 |
 | zh/services.html | land | 34.5 | 10.3 | 13.6 | 0.6 | 7 | 381 |
 | ru/konfigurator.html | land | 34.3 | 10.2 | 9.7 | 0.6 | 5 | 332 |
 | konfigurator.html | land | 34.2 | 10.1 | 9.7 | 0.6 | 5 | 332 |
-| ar/contact.html | land | 34.0 | 9.6 | 13.6 | 0.6 | 7 | 289 |
+| zh/contact.html | land | 34.2 | 10.1 | 13.6 | 0.6 | 7 | 322 |
 | proekty/tetris-hall.html | land | 33.8 | 8.2 | 2.1 | 0.9 | 1 | 340 |
-| fr/contact.html | land | 32.8 | 9.3 | 13.6 | 0.6 | 7 | 291 |
-| es/contacto.html | land | 32.7 | 9.3 | 13.6 | 0.6 | 7 | 291 |
 | konfidentsiinist.html | land | 32.7 | 9.8 | 13.4 | 0.6 | 10 | 231 |
 | ru/konfidentsialnost.html | land | 32.7 | 9.8 | 13.4 | 0.6 | 10 | 231 |
-| pl/kontakt.html | land | 32.6 | 9.4 | 13.6 | 0.6 | 7 | 299 |
 | proekty/yacht-restaurant.html | land | 32.6 | 7.7 | 2.1 | 0.9 | 1 | 324 |
-| de/kontakt.html | land | 32.5 | 9.3 | 13.6 | 0.6 | 7 | 292 |
-| en/contact.html | land | 32.5 | 9.2 | 13.6 | 0.6 | 7 | 301 |
-| zh/contact.html | land | 31.9 | 9.5 | 13.6 | 0.6 | 7 | 289 |
 | proekty/a-frame-house.html | land | 31.1 | 7.5 | 2.1 | 0.9 | 1 | 312 |
 | ar/privacy.html | land | 30.4 | 9.0 | 13.4 | 0.6 | 10 | 208 |
 | proekty/monpark.html | land | 30.1 | 7.6 | 2.1 | 0.9 | 1 | 320 |

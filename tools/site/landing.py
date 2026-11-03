@@ -44,6 +44,7 @@ import i18n  # мови, словники, hreflang-кластери (tools/site
 import captions  # підписи галерей «обʼєкт · статус» (tools/site/captions.py)
 import leadform  # легка заявка: лише телефон, швидка заявка в hero (tools/site/leadform.py)
 import casmap  # карти: офіс у контактах, «Карта проєктів» (tools/site/casmap.py)
+import rich as richsec  # розширені секції: головна/послуги/про/контакти/портфоліо (tools/site/rich.py)
 import ux  # іконки заголовків і згортання (tools/site/ux.py) — знімаємо з шаблону
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -341,7 +342,26 @@ def gallery_html(lang, items, h2=None, more=True):
 
 
 def section_html(lang, x):
-    """Секції сторінок без шаблону послуги (головна, послуги, про студію, контакти) — лише блоки UI-kit."""
+    """Секції сторінок без шаблону послуги (головна, послуги, про студію, контакти) — лише блоки UI-kit.
+    Розширені типи (svc, covers, strip, split, facts, cta, contacts, team, project, pmap) — tools/site/rich.py;
+    "kicker" (рядок над H2), "link" (посилання під секцією) і "cls" (клас секції) — для будь-якого типу."""
+    if x['t'] in richsec.TYPES:
+        return richsec.render(lang, x)
+    o = _section_html(lang, x)
+    if x.get('kicker') or x.get('link') or x.get('cls'):
+        s = ''.join(o)
+        if x.get('kicker'):
+            s = s.replace('<h2', f'<p class="kick">{e(x["kicker"])}</p><h2', 1)
+        if x.get('link'):
+            k = s.rfind('</div></section>')
+            s = s[:k] + richsec.link(x) + s[k:]
+        if x.get('cls'):
+            s = s.replace('<section', f'<section class="{x["cls"]}"', 1)
+        o = [s]
+    return o
+
+
+def _section_html(lang, x):
     t, k = L[lang], x['t']
     h2 = f'  <h2>{e(x["h2"])}</h2>' if x.get('h2') else ''
     sid = f' id="{x["id"]}"' if x.get('id') else ''
@@ -349,6 +369,8 @@ def section_html(lang, x):
         cards = []
         for c in x['items']:
             ttl = f'<a href="{c["href"]}">{e(c["h"])}</a>' if c.get('href') else e(c['h'])
+            if c.get('ico'):
+                ttl = f'<span class="xs-ico" aria-hidden="true">{c["ico"]}</span> ' + ttl
             cards.append('<div class="card">' + f'<h3>{ttl}</h3>'
                          + (f'<p style="color:var(--ac)">{e(c["price"])}</p>' if c.get('price') else '')
                          + (f'<p style="color:var(--ac);font-size:var(--fs-small);letter-spacing:.12em;text-transform:uppercase">{e(c["role"])}</p>' if c.get('role') else '')
@@ -358,7 +380,7 @@ def section_html(lang, x):
                          + '</div>')
         return [f'<section{sid}><div class="w">', h2, '  <div class="grid">' + ''.join(cards) + '</div>', '</div></section>\n']
     if k == 'text':
-        return [f'<section{sid}><div class="w txt">{h2.strip()}' + ''.join(f'<p>{e(p)}</p>' for p in x['p']) + '</div></section>\n']
+        return [f'<section{sid}><div class="w txt">{h2.strip()}' + ''.join(f'<p>{rich(p)}</p>' for p in x['p']) + '</div></section>\n']
     if k == 'steps':
         return [f'<section{sid}><div class="w">', h2,
                 '  <ol class="steps">' + ''.join(f'<li><div><b>{e(b)}</b><span>{e(s)}</span></div></li>' for b, s in x['items']) + '</ol>',
@@ -373,7 +395,7 @@ def section_html(lang, x):
         return gallery_html(lang, x['items'], x.get('h2'), x.get('more', True))
     if k == 'faq':
         return [f'<section{sid}><div class="w">', h2,
-                '  ' + ''.join(f'<details><summary>{e(q)}</summary><p>{e(v)}</p></details>' for q, v in x['items']), '</div></section>\n']
+                '  ' + ''.join(f'<details><summary>{e(q)}</summary><p>{rich(v)}</p></details>' for q, v in x['items']), '</div></section>\n']
     if k == 'map':  # карта офісу (tools/site/casmap.py): постер + MapLibre по кліку, «Маршрут» і Google Maps
         return [casmap.office_html(lang, x.get('h2'))]
     if k == 'ba':  # «до / після» (/assets/ba.v1.js + .css; підключає build()): лише реальні фото одного обʼєкта
@@ -502,6 +524,15 @@ def hero_html(p):
         mid = p.get('parent') or [t['svc_url'], t['svc']]
         crumbs = f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / <a href="{mid[0]}">{e(mid[1])}</a> / {e(p["h1"])}</div>\n'
     btn2 = p.get('btn2') or ['tel:+380978667755', '+380 97 866 77 55']
+    if p.get('hero_img'):  # перший екран з фото (rich.hero_bg): .hx — фон, текст поверх
+        o = [crumbs, '<div class="hx">' + richsec.hero_bg(p['hero_img']), '<div class="w hero">']
+        o += ([f'  <p class="kick">{e(p["kicker"])}</p>'] if p.get('kicker') else []) + [f'  <h1>{e(p["h1"])}</h1>']
+        o += ([f'  <div class="price">{e(p["price"])}</div>'] if p.get('price') else []) + [f'  <p>{e(p["lead"])}</p>', '  <div class="btns">',
+              f'    <a class="btn main" href="{p.get("cta_href", "#zayavka")}">{e(p.get("cta") or t["cta"])}</a>',
+              f'    <a class="btn" href="{btn2[0]}">{e(btn2[1])}</a>', '  </div>']
+        o += (['  <div class="facts">' + ''.join(f'<div><b>{e(b)}</b><span>{e(s)}</span></div>' for b, s in p.get('facts', FACTS[p['lang']])) + '</div>']
+              if p.get('facts', True) else [])
+        return o + ['</div></div>\n']
     return [crumbs, '<div class="w hero">', f'  <h1>{e(p["h1"])}</h1>'] + ([f'  <div class="price">{e(p["price"])}</div>'] if p.get('price') else []) + [f'  <p>{e(p["lead"])}</p>',
             '  <div class="btns">',
             f'    <a class="btn main" href="#zayavka">{e(p.get("cta") or t["cta"])}</a>',
@@ -557,6 +588,9 @@ def main_html(p):
 
 
 def ld(p):
+    if p.get('ld_raw'):  # збережена розмітка ручної сторінки (головна, про, контакти, портфоліо): обʼєкти без "@context" — у @graph
+        g = [{k: v for k, v in o.items() if k != '@context'} for o in p['ld_raw']]
+        return json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False, separators=(',', ':'))
     lang = p['lang']
     t, u, hl = L[lang], url(lang, p['slug']), i18n.meta(lang)['hreflang']
     home = B.rstrip('/') + t['home_url']
@@ -625,6 +659,8 @@ def build(p):
     if p.get('form_html'):  # власна форма замість типової (/referalna-prohrama): з data-lf="keep" — leadform.py її не переписує
         s, n = re.subn(r'<form\b[^>]*\bid="of".*?<div class="ok" id="oOk".*?</p></div>', lambda m: p['form_html'], s, count=1, flags=re.S)
         assert n == 1, f'{slug}: не знайдено form#of і #oOk у шаблоні'
+    if richsec.used(p) and richsec.CSS not in p.get('assets', []):
+        p.setdefault('assets', []).insert(0, richsec.CSS)
     if any(x['t'] == 'ba' for x in p.get('sections', [])):
         p.setdefault('assets', []).extend(f for f in ('assets/ba.v1.css', 'assets/ba.v1.js') if f not in p.get('assets', []))
     s = leadform.apply(s, path(lang, slug))  # форма: обовʼязковий лише телефон; швидка заявка біля першого CTA

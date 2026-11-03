@@ -12,47 +12,91 @@
   "WhatsApp"
  ],
  "facts": false,
+ "kicker": "联系方式",
+ "hero_img": {
+  "img": "img/1FRa0FI6iMHK-1400.webp",
+  "srcset": "/img/1FRa0FI6iMHK-r400.webp 400w, /img/1FRa0FI6iMHK-r600.webp 600w, /img/1FRa0FI6iMHK-r800.webp 800w, /img/1FRa0FI6iMHK-r1200.webp 1200w, /img/1FRa0FI6iMHK-1400.webp 1400w",
+  "alt": "喀尔巴阡山的 Hoda Estate 住宅 — CAS Development 项目",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "cards",
+   "t": "contacts",
    "h2": "联系方式",
-   "items": [
-    {
-     "h": "办公室",
-     "p": "乌克兰基辅 Antonovycha 街 44 号"
-    },
-    {
-     "h": "电话",
-     "price": "+380 97 866 77 55",
-     "p": "同一号码可通过 WhatsApp、Telegram 和 Viber 联系。",
-     "href": "tel:+380978667755",
-     "more": "致电"
-    },
-    {
-     "h": "即时通讯",
-     "p": "欢迎随时留言，我们会尽快回复。",
-     "li": [
-      "Telegram: t.me/+380978667755",
-      "WhatsApp: wa.me/380978667755",
-      "Viber: +380 97 866 77 55"
-     ]
-    },
-    {
-     "h": "Instagram",
-     "p": "项目案例与施工进展：@cas_development",
-     "href": "https://www.instagram.com/cas_development/",
-     "more": "打开 Instagram"
-    }
-   ]
+   "p": "欢迎随时留言，我们会尽快回复。",
+   "rows": [
+    [
+     "办公室",
+     "乌克兰基辅 Antonovycha 街 44 号",
+     "https://maps.google.com/?cid=15015666645432112566",
+     "路线"
+    ],
+    [
+     "电话",
+     "+380 97 866 77 55",
+     "tel:+380978667755",
+     "同一号码可用于 Telegram、Viber 和 WhatsApp"
+    ],
+    [
+     "电子邮件",
+     "china.opt.shop@gmail.com",
+     "mailto:china.opt.shop@gmail.com",
+     null
+    ],
+    [
+     "Instagram",
+     "@cas_development",
+     "https://www.instagram.com/cas_development/",
+     "项目案例与施工进展"
+    ],
+    [
+     "YouTube",
+     "@cas_development",
+     "https://www.youtube.com/@cas_development"
+    ]
+   ],
+   "msgs": true,
+   "msgs_h": "即时通讯"
   },
   {
    "t": "map"
   },
   {
-   "t": "text",
+   "t": "cta",
    "h2": "希望提前了解预算？",
    "p": [
     "设计 $30/m² 起，装修 $550/m² 起，办公室 $350/m² 起，建造 $600/m² 起，家具软装 $250/m² 起。最终金额以咨询后出具的预算为准。"
+   ],
+   "btns": [
+    [
+     "/zh/renovation-calculator",
+     "打开计算器 →"
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "h2": "合同、保修与付款",
+   "p": [
+    "按合同施工，附预算和分阶段验收单；工程保修 36 个月；付款方案按您的需要安排，预付 10% 即可开工。"
+   ],
+   "btns": [
+    [
+     "/zh/faq",
+     "常见问题 →"
+    ]
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "我们的服务范围",
+   "p": [
+    "CAS Development 办公室位于基辅 Antonovycha 街 44 号。我们服务基辅全市及基辅州；装修和建造可承接乌克兰各州及欧洲项目。",
+    "自 2016 年以来，在基辅、乌克兰各地及海外完成 150 多个项目：西班牙、法国、德国、波兰、土耳其（博德鲁姆）、美国和巴厘岛。电话咨询免费；上门测量收费，费用视项目而定。"
+   ],
+   "link": [
+    "/zh/about",
+    "关于工作室与团队 →"
    ]
   },
   {

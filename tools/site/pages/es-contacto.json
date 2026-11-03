@@ -12,47 +12,91 @@
   "WhatsApp"
  ],
  "facts": false,
+ "kicker": "Contacto",
+ "hero_img": {
+  "img": "img/1FRa0FI6iMHK-1400.webp",
+  "srcset": "/img/1FRa0FI6iMHK-r400.webp 400w, /img/1FRa0FI6iMHK-r600.webp 600w, /img/1FRa0FI6iMHK-r800.webp 800w, /img/1FRa0FI6iMHK-r1200.webp 1200w, /img/1FRa0FI6iMHK-1400.webp 1400w",
+  "alt": "Casa Hoda Estate en los Cárpatos — proyecto de CAS Development",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "cards",
+   "t": "contacts",
    "h2": "Cómo contactarnos",
-   "items": [
-    {
-     "h": "Oficina",
-     "p": "Calle Antonovycha 44, Kiev, Ucrania"
-    },
-    {
-     "h": "Teléfono",
-     "price": "+380 97 866 77 55",
-     "p": "El mismo número funciona en WhatsApp, Telegram y Viber.",
-     "href": "tel:+380978667755",
-     "more": "Llamar"
-    },
-    {
-     "h": "Mensajería",
-     "p": "Escríbanos cuando quiera: respondemos en breve.",
-     "li": [
-      "Telegram: t.me/+380978667755",
-      "WhatsApp: wa.me/380978667755",
-      "Viber: +380 97 866 77 55"
-     ]
-    },
-    {
-     "h": "Instagram",
-     "p": "Proyectos y obras en curso: @cas_development",
-     "href": "https://www.instagram.com/cas_development/",
-     "more": "Abrir Instagram"
-    }
-   ]
+   "p": "Escríbanos cuando quiera: respondemos en breve.",
+   "rows": [
+    [
+     "Oficina",
+     "Calle Antonovycha 44, Kiev, Ucrania",
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Cómo llegar"
+    ],
+    [
+     "Teléfono",
+     "+380 97 866 77 55",
+     "tel:+380978667755",
+     "El mismo número en Telegram, Viber y WhatsApp"
+    ],
+    [
+     "Correo",
+     "china.opt.shop@gmail.com",
+     "mailto:china.opt.shop@gmail.com",
+     null
+    ],
+    [
+     "Instagram",
+     "@cas_development",
+     "https://www.instagram.com/cas_development/",
+     "Proyectos y obras en curso"
+    ],
+    [
+     "YouTube",
+     "@cas_development",
+     "https://www.youtube.com/@cas_development"
+    ]
+   ],
+   "msgs": true,
+   "msgs_h": "Mensajería"
   },
   {
    "t": "map"
   },
   {
-   "t": "text",
+   "t": "cta",
    "h2": "¿Quiere conocer el presupuesto de antemano?",
    "p": [
     "Diseño desde $30/m², reforma desde $550/m², oficinas desde $350/m², construcción desde $600/m², amueblamiento desde $250/m². La cifra final llega con el presupuesto tras la consulta."
+   ],
+   "btns": [
+    [
+     "/es/calculadora-reforma",
+     "Abrir la calculadora →"
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "h2": "Contrato, garantía, pago",
+   "p": [
+    "Trabajamos con contrato, presupuesto y actas de cada etapa; garantía de 36 meses en los trabajos; el pago sigue un calendario a su medida, desde un anticipo del 10%."
+   ],
+   "btns": [
+    [
+     "/es/preguntas-frecuentes",
+     "Preguntas frecuentes →"
+    ]
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Dónde trabajamos",
+   "p": [
+    "La oficina de CAS Development está en la calle Antonovycha 44, Kiev. Trabajamos en todo Kiev y su región; reformas y construcción en todas las regiones de Ucrania y en Europa.",
+    "Desde 2016, más de 150 proyectos en Kiev, en toda Ucrania y en el extranjero: España, Francia, Alemania, Polonia, Turquía (Bodrum), EE. UU. y Bali. La consulta telefónica es gratuita; la medición en obra es de pago y su coste depende del inmueble."
+   ],
+   "link": [
+    "/es/sobre-nosotros",
+    "Sobre el estudio y el equipo →"
    ]
   },
   {

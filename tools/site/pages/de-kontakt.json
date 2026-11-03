@@ -12,47 +12,91 @@
   "WhatsApp"
  ],
  "facts": false,
+ "kicker": "Kontakt",
+ "hero_img": {
+  "img": "img/1FRa0FI6iMHK-1400.webp",
+  "srcset": "/img/1FRa0FI6iMHK-r400.webp 400w, /img/1FRa0FI6iMHK-r600.webp 600w, /img/1FRa0FI6iMHK-r800.webp 800w, /img/1FRa0FI6iMHK-r1200.webp 1200w, /img/1FRa0FI6iMHK-1400.webp 1400w",
+  "alt": "Haus Hoda Estate in den Karpaten — Projekt von CAS Development",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "cards",
+   "t": "contacts",
    "h2": "So erreichen Sie uns",
-   "items": [
-    {
-     "h": "Büro",
-     "p": "Antonowytscha-Str. 44, Kyjiw, Ukraine"
-    },
-    {
-     "h": "Telefon",
-     "price": "+380 97 866 77 55",
-     "p": "Dieselbe Nummer funktioniert in WhatsApp, Telegram und Viber.",
-     "href": "tel:+380978667755",
-     "more": "Anrufen"
-    },
-    {
-     "h": "Messenger",
-     "p": "Schreiben Sie uns jederzeit — wir antworten in Kürze.",
-     "li": [
-      "Telegram: t.me/+380978667755",
-      "WhatsApp: wa.me/380978667755",
-      "Viber: +380 97 866 77 55"
-     ]
-    },
-    {
-     "h": "Instagram",
-     "p": "Projekte und laufende Arbeiten: @cas_development",
-     "href": "https://www.instagram.com/cas_development/",
-     "more": "Instagram öffnen"
-    }
-   ]
+   "p": "Schreiben Sie uns jederzeit — wir antworten in Kürze.",
+   "rows": [
+    [
+     "Büro",
+     "Antonowytscha-Str. 44, Kyjiw, Ukraine",
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Route"
+    ],
+    [
+     "Telefon",
+     "+380 97 866 77 55",
+     "tel:+380978667755",
+     "Dieselbe Nummer in Telegram, Viber und WhatsApp"
+    ],
+    [
+     "E-Mail",
+     "china.opt.shop@gmail.com",
+     "mailto:china.opt.shop@gmail.com",
+     null
+    ],
+    [
+     "Instagram",
+     "@cas_development",
+     "https://www.instagram.com/cas_development/",
+     "Projekte und laufende Arbeiten"
+    ],
+    [
+     "YouTube",
+     "@cas_development",
+     "https://www.youtube.com/@cas_development"
+    ]
+   ],
+   "msgs": true,
+   "msgs_h": "Messenger"
   },
   {
    "t": "map"
   },
   {
-   "t": "text",
+   "t": "cta",
    "h2": "Möchten Sie das Budget vorab kennen?",
    "p": [
     "Design ab $30/m², Renovierung ab $550/m², Büros ab $350/m², Hausbau ab $600/m², Einrichtung ab $250/m². Die endgültige Summe nennt der Kostenvoranschlag nach der Beratung."
+   ],
+   "btns": [
+    [
+     "/de/renovierungskosten-rechner",
+     "Rechner öffnen →"
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "h2": "Vertrag, Garantie, Zahlung",
+   "p": [
+    "Wir arbeiten mit Vertrag, Kostenvoranschlag und Abnahmeprotokollen je Etappe; Garantie auf die Arbeiten — 36 Monate; Zahlung nach einem Plan, der zu Ihnen passt, Start ab 10 % Anzahlung."
+   ],
+   "btns": [
+    [
+     "/de/faq",
+     "Häufige Fragen →"
+    ]
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Wo wir arbeiten",
+   "p": [
+    "Das Büro von CAS Development: Antonowytscha-Str. 44, Kyjiw. Wir arbeiten in ganz Kyjiw und der Region Kyjiw; Renovierung und Bau übernehmen wir in allen Regionen der Ukraine und in Europa.",
+    "Seit 2016 über 150 Projekte in Kyjiw, in der ganzen Ukraine und im Ausland: in Spanien, Frankreich, Deutschland, Polen, der Türkei (Bodrum), den USA und auf Bali. Die telefonische Beratung ist kostenlos; das Aufmaß vor Ort ist kostenpflichtig, der Preis hängt vom Objekt ab."
+   ],
+   "link": [
+    "/de/ueber-uns",
+    "Über das Studio und das Team →"
    ]
   },
   {

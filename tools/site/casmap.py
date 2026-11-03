@@ -138,12 +138,18 @@ def manual():
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import chrome  # шапка/футер, ?v= і нерозривні пробіли — щоб результат збігався з chrome.py --check
     out = {}
+    gen = lambda s: 'class="w hero' in s  # сторінку вже збирає landing.py (секції {"t": "pmap"} / {"t": "map"}) — не чіпаємо
     f = os.path.join(ROOT, 'portfolio.html'); s = open(f, encoding='utf-8').read()
-    s = block(s, 'map', projects_html(), r'</div><!-- /pfRowsWrap -->\n')
-    s = block(s, 'mapchip', '<a class="filt" href="#karta">Карта проєктів</a>', r'<button class="filt on" onclick="filt\(this,\'all\'\)">Всі проєкти</button>\n')
-    s = re.sub(r'<link rel="stylesheet" href="/assets/cas-map\.v1\.css[^"]*">\n', '', s)  # блокуючий варіант → неблокуючий
-    out['portfolio.html'] = chrome.apply(assets(s, lazy=True), 'portfolio.html')
+    if gen(s):
+        s = None
+    if s is not None:
+        s = block(s, 'map', projects_html(), r'</div><!-- /pfRowsWrap -->\n')
+        s = block(s, 'mapchip', '<a class="filt" href="#karta">Карта проєктів</a>', r'<button class="filt on" onclick="filt\(this,\'all\'\)">Всі проєкти</button>\n')
+        s = re.sub(r'<link rel="stylesheet" href="/assets/cas-map\.v1\.css[^"]*">\n', '', s)  # блокуючий варіант → неблокуючий
+        out['portfolio.html'] = chrome.apply(assets(s, lazy=True), 'portfolio.html')
     f = os.path.join(ROOT, 'contact.html'); s = open(f, encoding='utf-8').read()
+    if gen(s):
+        return out
     # стара вставка Google Maps (iframe: ~0,5 МБ стороннього JS і Google Fonts одразу при завантаженні) → власна карта з постером, що вантажиться по кліку
     s = re.sub(r'<div class="ct-map"[^>]*>\s*<iframe[^>]*></iframe>\s*</div>', '<div class="ct-map" style="margin-top:18px"><!--cas:map--><!--/cas:map--></div>', s)
     s = block(s, 'map', office_map('uk', '(max-width:767px) 100vw, 400px'), None)

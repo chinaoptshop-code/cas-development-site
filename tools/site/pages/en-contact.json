@@ -12,47 +12,91 @@
   "WhatsApp"
  ],
  "facts": false,
+ "kicker": "Contact",
+ "hero_img": {
+  "img": "img/1FRa0FI6iMHK-1400.webp",
+  "srcset": "/img/1FRa0FI6iMHK-r400.webp 400w, /img/1FRa0FI6iMHK-r600.webp 600w, /img/1FRa0FI6iMHK-r800.webp 800w, /img/1FRa0FI6iMHK-r1200.webp 1200w, /img/1FRa0FI6iMHK-1400.webp 1400w",
+  "alt": "Hoda Estate house in the Carpathians — a CAS Development project",
+  "sizes": "100vw"
+ },
  "sections": [
   {
-   "t": "cards",
+   "t": "contacts",
    "h2": "How to reach us",
-   "items": [
-    {
-     "h": "Office",
-     "p": "44 Antonovycha St., Kyiv, Ukraine"
-    },
-    {
-     "h": "Phone",
-     "price": "+380 97 866 77 55",
-     "p": "The same number works in WhatsApp, Telegram and Viber.",
-     "href": "tel:+380978667755",
-     "more": "Call"
-    },
-    {
-     "h": "Messengers",
-     "p": "Write to us at any time — we reply shortly.",
-     "li": [
-      "Telegram: t.me/+380978667755",
-      "WhatsApp: wa.me/380978667755",
-      "Viber: +380 97 866 77 55"
-     ]
-    },
-    {
-     "h": "Instagram",
-     "p": "Projects and work in progress: @cas_development",
-     "href": "https://www.instagram.com/cas_development/",
-     "more": "Open Instagram"
-    }
-   ]
+   "p": "Write to us at any time — we reply shortly.",
+   "rows": [
+    [
+     "Office",
+     "44 Antonovycha St., Kyiv, Ukraine",
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Directions"
+    ],
+    [
+     "Phone",
+     "+380 97 866 77 55",
+     "tel:+380978667755",
+     "The same number works in Telegram, Viber and WhatsApp"
+    ],
+    [
+     "Email",
+     "china.opt.shop@gmail.com",
+     "mailto:china.opt.shop@gmail.com",
+     null
+    ],
+    [
+     "Instagram",
+     "@cas_development",
+     "https://www.instagram.com/cas_development/",
+     "Projects and work in progress"
+    ],
+    [
+     "YouTube",
+     "@cas_development",
+     "https://www.youtube.com/@cas_development"
+    ]
+   ],
+   "msgs": true,
+   "msgs_h": "Messengers"
   },
   {
    "t": "map"
   },
   {
-   "t": "text",
+   "t": "cta",
    "h2": "Want to know the budget in advance?",
    "p": [
     "Design from $30/m², renovation from $550/m², offices from $350/m², construction from $600/m², furnishing from $250/m². The final figure comes with the estimate after the consultation."
+   ],
+   "btns": [
+    [
+     "/en/renovation-cost-calculator",
+     "Open the calculator →"
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "h2": "Contract, warranty, payment",
+   "p": [
+    "We work under a contract with an estimate and acceptance certificates for each stage; the warranty on works is 36 months; payment follows a schedule that suits you, starting from a 10% advance."
+   ],
+   "btns": [
+    [
+     "/en/contract-warranty-payment",
+     "How it works →"
+    ]
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Where we work",
+   "p": [
+    "The CAS Development office is at 44 Antonovycha St., Kyiv. We work across Kyiv and the Kyiv region; renovation and construction are available in all regions of Ukraine and in Europe.",
+    "Since 2016 — 150+ projects in Kyiv, across Ukraine and abroad: in Spain, France, Germany, Poland, Turkey (Bodrum), the USA and Bali. The phone consultation is free; the on-site measurement is paid, and its cost depends on the property."
+   ],
+   "link": [
+    "/en/about",
+    "About the studio and team →"
    ]
   },
   {

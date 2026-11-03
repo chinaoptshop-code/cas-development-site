@@ -163,7 +163,6 @@ LIGHT_CUSTOM = {
     'index.html': ('section.kft', 'section.pcarousel', 'section.home-why', 'section#video'),
     'services.html': ('div.sv-card', 'div.proc'),
     'about.html': ('section.ab-sec', 'section.team'),
-    'contact.html': ('section.ct-calc',),
     'portfolio.html': ('section#video', 'section.pmap'),
 }
 LIGHT_SKIP = ('ab-cta',)  # заклик з кнопками лишається на виду
