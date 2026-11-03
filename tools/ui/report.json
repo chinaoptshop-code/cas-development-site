@@ -904,12 +904,12 @@
  {
   "page": "baza-vidpochynku-pid-klyuch.html",
   "kind": "land",
-  "html_kb": 53.8,
-  "gzip_kb": 14.8,
+  "html_kb": 54.1,
+  "gzip_kb": 14.9,
   "css_kb": 13.3,
   "js_kb": 3.6,
   "font_sizes": 7,
-  "tags": 504,
+  "tags": 506,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -968,12 +968,12 @@
  {
   "page": "blog.html",
   "kind": "other",
-  "html_kb": 75.2,
-  "gzip_kb": 19.2,
+  "html_kb": 77.5,
+  "gzip_kb": 19.7,
   "css_kb": 13.5,
   "js_kb": 0.6,
   "font_sizes": 6,
-  "tags": 418,
+  "tags": 428,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -1126,6 +1126,37 @@
    "$165 000       ",
    "$90 000 "
   ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/budynok-na-vodi-pali-chy-pontony.html",
+  "kind": "article",
+  "html_kb": 45.5,
+  "gzip_kb": 13.0,
+  "css_kb": 14.4,
+  "js_kb": 0.6,
+  "font_sizes": 7,
+  "tags": 382,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -1406,7 +1437,7 @@
  {
   "page": "blog/dyzain-restoranu-z-choho-pochaty.html",
   "kind": "article",
-  "html_kb": 49.6,
+  "html_kb": 49.7,
   "gzip_kb": 14.2,
   "css_kb": 14.4,
   "js_kb": 0.6,
@@ -1473,7 +1504,7 @@
  {
   "page": "blog/etapy-remontu-kvartyry-pid-kliuch.html",
   "kind": "article",
-  "html_kb": 49.6,
+  "html_kb": 49.7,
   "gzip_kb": 14.2,
   "css_kb": 14.4,
   "js_kb": 0.6,
@@ -1575,9 +1606,40 @@
   "webhook_copies": 0
  },
  {
+  "page": "blog/inzheneriia-restoranu-ventyliatsiia-kanalizatsiia-elektryka.html",
+  "kind": "article",
+  "html_kb": 45.8,
+  "gzip_kb": 13.0,
+  "css_kb": 14.4,
+  "js_kb": 0.6,
+  "font_sizes": 7,
+  "tags": 357,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "blog/inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit.html",
   "kind": "article",
-  "html_kb": 67.0,
+  "html_kb": 67.1,
   "gzip_kb": 19.0,
   "css_kb": 14.4,
   "js_kb": 0.6,
@@ -1701,6 +1763,37 @@
    "$165 000",
    "$90 000"
   ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/kompleks-vidpochynku-pid-kliuch-z-choho-skladaietsia-koshtorys.html",
+  "kind": "article",
+  "html_kb": 45.2,
+  "gzip_kb": 12.8,
+  "css_kb": 14.4,
+  "js_kb": 0.6,
+  "font_sizes": 7,
+  "tags": 364,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 0,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -2009,8 +2102,8 @@
  {
   "page": "blog/ofis-u-biznes-tsentri-shcho-uzghodyty-pered-remontom.html",
   "kind": "article",
-  "html_kb": 47.9,
-  "gzip_kb": 13.2,
+  "html_kb": 48.0,
+  "gzip_kb": 13.3,
   "css_kb": 14.4,
   "js_kb": 0.6,
   "font_sizes": 7,
@@ -2071,7 +2164,7 @@
  {
   "page": "blog/oplata-remontu-chastynamy-skhemy-platezhiv.html",
   "kind": "article",
-  "html_kb": 57.2,
+  "html_kb": 57.3,
   "gzip_kb": 16.2,
   "css_kb": 14.4,
   "js_kb": 0.6,
@@ -5486,12 +5579,12 @@
  {
   "page": "dyzain-restoranu-kafe-kyiv.html",
   "kind": "land",
-  "html_kb": 56.2,
-  "gzip_kb": 15.4,
+  "html_kb": 56.4,
+  "gzip_kb": 15.6,
   "css_kb": 13.3,
   "js_kb": 3.5,
   "font_sizes": 7,
-  "tags": 518,
+  "tags": 519,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
