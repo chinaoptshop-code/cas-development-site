@@ -526,16 +526,14 @@ def mbar_lead(s, lang, rel=''):
     return s[:k] + MB_LEAD_CSS + blk
 
 
-# Microsoft Clarity: вантажимо після першої взаємодії (scroll/pointerdown/keydown/touchstart) або, якщо її нема,
-# через 4 с після load у requestIdleCallback — не заважає LCP/TBT. Будь-яку стару вставку замінюємо на цю.
+# Microsoft Clarity: вантажимо ЛИШЕ після першої дії відвідувача (scroll/pointerdown/keydown/touchstart), без таймера
+# (Михайло 03.11.2026) — не заважає LCP/TBT і не рахує ботів/відмови без дій. Будь-яку стару вставку замінюємо на цю.
 CLARITY_ID = 'z19wl000eu'
 CLARITY = ('<script>(function(w,d,i){w.clarity=w.clarity||function(){(w.clarity.q=w.clarity.q||[]).push(arguments)};'
            'var E=["scroll","pointerdown","keydown","touchstart"],o={passive:true},done=0;'
            'function g(){if(done)return;done=1;E.forEach(function(e){w.removeEventListener(e,g,o)});'
            'var t=d.createElement("script");t.async=1;t.src="https://www.clarity.ms/tag/"+i;d.head.appendChild(t)}'
-           'E.forEach(function(e){w.addEventListener(e,g,o)});'
-           'function l(){setTimeout(function(){w.requestIdleCallback?requestIdleCallback(g,{timeout:4000}):g()},4000)}'
-           'd.readyState==="complete"?l():w.addEventListener("load",l)})(window,document,"' + CLARITY_ID + '");</script>')
+           'E.forEach(function(e){w.addEventListener(e,g,o)})})(window,document,"' + CLARITY_ID + '");</script>')
 CLARITY_RX = re.compile(r'<script>\(function\([^<]*?clarity[^<]*?</script>')
 
 

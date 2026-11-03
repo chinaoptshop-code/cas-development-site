@@ -18,6 +18,7 @@
 - Каталог компонентів — `/styleguide/` (noindex). Нові сторінки — лише з цих блоків.
 - Шрифти — тільки власні з `/fonts/` (Cormorant Garamond + Manrope), без Google Fonts.
 - Форма заявки — спільний `/assets/lead-form.v1.js` з `data-service`/`data-source` на `form#of`; успіх лише після 2xx.
+- Microsoft Clarity — лише після першої дії відвідувача (scroll/pointerdown/keydown/touchstart), без таймера після load (Михайло 03.11.2026); сніпет — `CLARITY` у `tools/site/chrome.py` (+ `tools/blog/template-uk.html`), руками не вставляти.
 - H1 і перше фото не анімувати; одна `fetchpriority="high"` на сторінку; у кожного `<img>` — width/height і alt.
 - Навігація — лише `<a href>`. Osocor/Osokorky і Aqulla (інший бренд, Михайло 01.11.2026) на сайті не показувати.
 - Шапка й футер — одні на весь сайт: розмітка з `tools/site/chrome.py` (усі генератори викликають `chrome.apply()`;
