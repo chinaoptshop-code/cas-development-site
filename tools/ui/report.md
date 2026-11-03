@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 858 (MAIN 5, LAND 436, інші 350). HTML разом 44107 КБ, з них інлайн CSS 17929 КБ і JS 656 КБ.
+Сторінок: 858 (MAIN 6, LAND 435, інші 350). HTML разом 44131 КБ, з них інлайн CSS 17929 КБ і JS 656 КБ.
 
 ## Проблеми
 
@@ -25,6 +25,7 @@
 | index.html | main | 92.4 | 21.3 | 13.6 | 0.6 | 7 | 859 |
 | pl/ozdoba.html | other | 82.3 | 19.6 | 30.7 | 0.8 | 13 | 619 |
 | en/ozdoba.html | other | 81.4 | 18.9 | 30.7 | 0.8 | 13 | 620 |
+| ru/index.html | main | 78.8 | 19.6 | 13.6 | 0.6 | 7 | 838 |
 | blog.html | other | 77.4 | 19.7 | 13.5 | 0.6 | 6 | 428 |
 | ru/blog.html | other | 72.5 | 18.3 | 13.5 | 0.6 | 6 | 406 |
 | blog/tekhnolohiia-budivnytstva-budynku-z-hazobloku-pokrokovo.html | article | 69.8 | 19.8 | 14.4 | 0.6 | 7 | 505 |
@@ -429,7 +430,6 @@
 | ru/generalnyy-podryadchik-kiev.html | land | 54.6 | 14.7 | 13.6 | 0.6 | 7 | 492 |
 | heneralnyi-pidriadnyk-kyiv.html | land | 54.5 | 14.6 | 13.6 | 0.6 | 7 | 492 |
 | proekty/pidgirland.html | land | 54.5 | 10.3 | 2.1 | 0.9 | 1 | 443 |
-| ru/index.html | land | 54.5 | 15.1 | 13.6 | 0.6 | 7 | 540 |
 | ru/komplektatsiya-pod-klyuch-kiev.html | land | 54.5 | 14.0 | 13.6 | 0.6 | 7 | 459 |
 | ru/biznes-pod-klyuch-kiev.html | land | 54.4 | 14.4 | 13.6 | 0.6 | 7 | 465 |
 | biznes-pid-kliuch-kyiv.html | land | 54.3 | 14.5 | 13.6 | 0.6 | 7 | 466 |

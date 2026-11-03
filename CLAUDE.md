@@ -42,7 +42,7 @@
   потім `python3 tools/blog/build.py` для блоків «Статті по темі».
 - Головна, послуги, про студію, контакти й портфоліо (uk теж) — один шаблон: `tools/site/pages/<мова>-<slug>.json` + розширені секції `tools/site/rich.py`
   (hero з фото, svc, covers, strip, split, facts, cta, contacts, team, project, pmap; стилі `/assets/sections.v1.css`, UI-kit `/styleguide/#sections`).
-  Руками ці HTML не правити; порядок секцій однаковий для всіх мов. Скільки тексту збережено після змін — `python3 tools/site/parity.py <файл>` (≥98%).
+  Руками ці HTML не правити (ru-головна — теж шаблон з 03.11.2026, `ru-index.json`; у `tools/ui/ui.py` вона, як і uk, тип main); порядок секцій однаковий для всіх мов. Скільки тексту збережено після змін — `python3 tools/site/parity.py <файл>` (≥98%).
 - Оздоба (/ozdoba, «Продукти»): товари, ціни й характеристики — `assets/ozdoba/catalog.json`; фото з вирізаним фоном —
   `python3 tools/products/photo.py <id> <файл|url>`; після правок — `python3 tools/products/build.py` (оновлює /ozdoba, сторінки товарів /ozdoba/<slug> і sitemap).
 

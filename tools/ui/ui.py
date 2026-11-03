@@ -11,7 +11,7 @@ import glob, gzip, json, os, re, sys
 from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-MAIN = {'index.html', 'services.html', 'about.html', 'contact.html', 'portfolio.html'}
+MAIN = {'index.html', 'ru/index.html', 'services.html', 'about.html', 'contact.html', 'portfolio.html'}
 SKIP = {'privacy.html', 'terms.html', '404.html'}  # сторонні/службові шаблони
 
 # Підтверджені Михайлом цифри (план Dell v2 §1). Усе інше на сторінках — підозріле.
