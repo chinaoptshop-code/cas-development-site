@@ -80,7 +80,7 @@ const minP = i => { if(i.price==null) return null; const s=SS(i); if(!s) return 
 const fromP = i => SS(i) && nameS(i)<0;
 /* суми — з пробілом між тисячами для всіх мов (як у текстах сайту: «$2 500», «23 000 ₴») */
 // тисячі: en — кома (1,100), інші мови — нерозривний пробіл (1 100), як у текстах сайту
-const NUM = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, LANG === 'en' ? ',' : '\u00a0');
+const NUM = n => window.casNum(Math.round(n), LANG);  // формат мови — site-chrome.v1.js (en «1,100», інші «1 100»)
 const money = n => n==null ? t('за запитом') : NUM(n) + '\u00a0₴';
 
 /* світлішаємо темні кольори, щоб лінійна графіка лишалась читаною на темному тлі */

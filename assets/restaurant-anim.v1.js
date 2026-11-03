@@ -260,7 +260,7 @@
     });
     return g;
   }
-  function money(v) { return String(v).replace(/\B(?=(\d{3})+(?!\d))/g, /^(en|zh|ar)$/.test(d.documentElement.lang) ? ',' : ' '); }
+  function money(v) { return window.casNum(v); } // формат мови — site-chrome.v1.js
   function est() { return ui.est.replace('{n}', cfg.a).replace('{v}', money(Math.max(2500, cfg.a * 30))); }
   function enhance() {
     var list = sec.querySelector('ol.bz-st'), box0 = el('div', 'la-box'), ctr = el('div', 'la-ctl');

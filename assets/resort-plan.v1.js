@@ -12,7 +12,7 @@
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
   function el(t, c, h) { var e = d.createElement(t); if (c) e.className = c; if (h != null) e.innerHTML = h; return e; }
   function cl(ev, v) { try { if (W.clarity) { W.clarity('event', ev); if (v) W.clarity('set', ev, v); } } catch (e) { } }
-  function money(n) { var s = String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, /^(en|zh|ar)$/.test(lang) ? ',' : ' '); return lang === 'fr' ? s + ' $' : '$' + s; }
+  function money(n) { return window.casUsd(n, lang); } // формат мови — site-chrome.v1.js ($1 100; en — $1,100)
   function R(c, x, y, w, h, rx, st) { return '<rect class="' + c + '"' + (st != null ? ' data-s="' + st + '"' : '') + ' x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h.toFixed(1) + '"' + (rx ? ' rx="' + rx + '"' : '') + '/>'; }
   function C(c, x, y, r, st) { return '<circle class="' + c + '"' + (st != null ? ' data-s="' + st + '"' : '') + ' cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) + '"/>'; }
   function Pth(c, dd, st) { return '<path class="' + c + '"' + (st != null ? ' data-s="' + st + '"' : '') + ' d="' + dd + '"/>'; }

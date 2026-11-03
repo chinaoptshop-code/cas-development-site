@@ -171,11 +171,7 @@
   var DEF_AREA = { kv: 70, dim: 150, kom: 120, of: 150 };
 
   function clarity(k, v) { try { if (window.clarity) { window.clarity('set', k, String(v)); window.clarity('event', k); } } catch (x) {} }
-  var COMMA = lang === 'en' || lang === 'zh' || lang === 'ar';
-  function money(n) { // розряди: «,» — en, zh, ar; пробіл — решта; fr — «2 500 $»
-    var s = String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, COMMA ? ',' : ' ');
-    return lang === 'fr' ? s + ' $' : '$' + s;
-  }
+  function money(n) { return window.casUsd(n, lang); } // формат мови — site-chrome.v1.js ($2 500; en — $2,500)
   // той самий розбір номера, що й у lead-form.v1.js (щоб невірний номер не «стрибав» до основної форми)
   function normPhone(v) {
     var x = String(v || '').replace(/\D/g, '');

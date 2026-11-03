@@ -1,4 +1,15 @@
 /* Єдина шапка сайту: бургер і повноекранне меню (розмітка — tools/site/chrome.py). */
+/* Формат чисел мови сторінки — той самий, що в текстах сайту (tools/site/i18n.py: num, usd): тисячі — «,» лише en ($1,100),
+   інші мови — нерозривний пробіл ($1 100, 23 000 ₴); дріб — «.» en, «,» інші; $ — перед числом у всіх мовах.
+   Спільні для сцен, квізу, калькулятора й Оздоби: window.casNum(n, мова?, знаків?), window.casUsd(n, мова?). */
+(function (W) {
+  function lg(l) { return String(l || document.documentElement.lang || 'uk').slice(0, 2).toLowerCase(); }
+  W.casNum = function (n, l, dp) {
+    var en = lg(l) === 'en', p = (dp == null ? String(Math.round(+n * 1000) / 1000) : (+n).toFixed(dp)).split('.');
+    return p[0].replace(/\B(?=(\d{3})+(?!\d))/g, en ? ',' : '\u00a0') + (p[1] ? (en ? '.' : ',') + p[1] : '');
+  };
+  W.casUsd = function (n, l) { return '$' + W.casNum(Math.round(+n), l); };
+})(window);
 (function () {
   var d = document, h = d.documentElement;
   var btn = d.querySelector('.sch-burger'), menu = d.getElementById('sch-menu');

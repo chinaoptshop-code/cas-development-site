@@ -228,7 +228,7 @@
     });
     return g;
   }
-  function money(v) { return String(v).replace(/\B(?=(\d{3})+(?!\d))/g, /^(en|zh|ar)$/.test(d.documentElement.lang) ? ',' : ' '); }
+  function money(v) { return window.casNum(v); } // формат мови — site-chrome.v1.js
   function est() { return ui.est.replace('{n}', cfg.n).replace('{v}', money(cfg.n * 50)); }
   function enhance() {
     var w = sec.querySelector('.w'), list = sec.querySelector('ol.bz-st');

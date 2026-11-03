@@ -1,4 +1,5 @@
 """HTML-блок калькулятора вартості (вставляється як "extra" у сторінки калькулятора)."""
+import i18n  # формат чисел мови: i18n.usd (у JS — casUsd із site-chrome.v1.js)
 RATES = {  # підтверджені ставки, $/м² (CLAUDE.md)
     'uk': [('remont', 'Ремонт квартири під ключ', 550), ('office', 'Ремонт офісу', 350),
            ('house', 'Будівництво будинку (коробка)', 600), ('housekey', 'Будинок під ключ з оздобленням', 1100)],
@@ -63,7 +64,7 @@ for _l, _t in (('uk', ('Дизайн-проєкт', 'Меблювання', 'в�
 
 def block(lang):
     t = T[lang]
-    opts = ''.join(f'<option value="{r}" data-k="{k}">{n} — {t["frm"]} ${r:,}/{t["m2"]}</option>'.replace(',', ' ')
+    opts = ''.join(f'<option value="{r}" data-k="{k}">{n} — {t["frm"]} {i18n.usd(r, lang)}/{t["m2"]}</option>'
                    for k, n, r in RATES[lang])
     return f'''<section id="calc"><div class="w">
   <h2>{t["h"]}</h2>
@@ -76,11 +77,11 @@ def block(lang):
     <div class="sum" aria-live="polite"><span>{t["res"]}</span><b id="cSum">—</b><p id="cRows"></p><p>{t["note"]}</p></div>
     <p><a class="btn main" id="cSend" href="#zayavka">{t["send"]}</a></p>
   </div>
-<script>(function(){{var $=function(i){{return document.getElementById(i)}},f=function(n){{return '$'+Math.round(n).toLocaleString('uk-UA').replace(/\\u00a0|,/g,' ')}};
+<script>(function(){{var $=function(i){{return document.getElementById(i)}},f=function(n){{return casUsd(n)}};
 function calc(){{var a=Math.max(0,+$('cArea').value||0),o=$('cKind').selectedOptions[0],r=+o.value,rows=[[o.text.split(' — ')[0],r*a]];
 if($('cDesign').checked)rows.push(['{t["d"]}',Math.max(30*a,2500)]);
 if($('cFurn').checked)rows.push(['{t["f"]}',250*a]);
 var s=0;rows.forEach(function(x){{s+=x[1]}});$('cSum').textContent=a?f(s):'—';$('cRows').textContent=a?rows.map(function(x){{return x[0]+': '+f(x[1])}}).join(' · '):'';return{{a:a,t:$('cRows').textContent,s:f(s)}}}}
-['cKind','cArea','cDesign','cFurn'].forEach(function(i){{$(i).addEventListener('input',calc);$(i).addEventListener('change',calc)}});calc();
+['cKind','cArea','cDesign','cFurn'].forEach(function(i){{$(i).addEventListener('input',calc);$(i).addEventListener('change',calc)}});document.addEventListener('DOMContentLoaded',calc);
 $('cSend').addEventListener('click',function(){{var c=calc(),ar=$('oArea'),m=$('oMsg');if(ar&&c.a)ar.value=c.a;if(m&&!m.value)m.value='{t["msg"]}: '+c.t+' = {t["frm"]} '+c.s}});}})();</script>
 </div></section>'''

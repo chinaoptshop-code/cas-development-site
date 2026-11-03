@@ -166,7 +166,7 @@ PRICE_CSS = ('<style>.ptab{overflow-x:auto;margin:0 0 10px}.ptab table{width:100
 
 
 def money(n, lang='uk'):
-    return '$' + f'{n:,}'.replace(',', ' ')  # як у цінах сайту ($2 500) — ui.py читає саме так
+    return i18n.usd(n, lang)  # єдиний формат мови ($2 500; en — $2,500), ui.py читає data-est uk/ru
 
 
 def prices_html(lang, x):
@@ -210,8 +210,8 @@ PACKAGES = {
                       ('3D visualisations of every room', 1), ('working drawings for the renovation', 1),
                       ('material and furniture specifications', 1), ('wall elevations, furniture drawings', 2),
                       ('designer supervision during renovation', 2), ('selection of furniture, lighting and decor', 2)],
-               min='min. $2 500', no='not included', cta='Discuss this package', hint='Swipe to compare →',
-               note='Minimum $2 500 for any package; the exact fee and scope are fixed in the contract. Furniture purchasing is separate (procurement).'),
+               min='min. $2,500', no='not included', cta='Discuss this package', hint='Swipe to compare →',
+               note='Minimum $2,500 for any package; the exact fee and scope are fixed in the contract. Furniture purchasing is separate (procurement).'),
 }
 
 

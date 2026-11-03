@@ -107,7 +107,7 @@ T = {
                                                        ('Plots réglables', '—', 'Pente et niveau sans dalle béton'), ('Gravier', '100 mm', 'Base ferme et drainante'), ('Géotextile', '—', 'Contre les mauvaises herbes et le tassement')]),
                      bed=('Coupe d’un massif', [('Paillage d’écorce', '50–70 mm', 'Garde l’humidité, limite les herbes'), ('Terre fertile', '250–400 mm', 'Pour les racines des vivaces'), ('Drainage', '50–100 mm', 'Gravier ou billes d’argile en sol lourd'), ('Bordure', '—', 'Limite entre massif et pelouse')])),
             ui=dict(sot='Surface', unit='ares (100 m²)', style='Style du jardin', styles=['Moderne', 'Naturel', 'Régulier'], xray='Rayons X', xr=['Drainage', 'Arrosage', 'Câbles'],
-                    prev='Étape précédente', next='Étape suivante', of='sur', price='Architecture paysagère : dès 50 $ l’are (100 m²)', est='pour {n} ares — dès {v} $',
+                    prev='Étape précédente', next='Étape suivante', of='sur', price='Architecture paysagère : dès $50 l’are (100 m²)', est='pour {n} ares — dès {v} $',
                     calc='Chiffrer mon jardin', msg='Jardin : {n} ares, style {s}. Je souhaite un devis.', svc='Architecture paysagère (configurateur)', play='Voir toutes les étapes')),
  'ar': dict(h='تنسيق حديقة من الصفر — 16 مرحلة', p='مرّر لتتحول قطعة الأرض إلى حديقة: من المسح الطبوغرافي إلى إضاءة المساء. اختر المساحة والطراز، وفعّل الأشعة لترى التصريف والري والكابلات تحت العشب.',
             tab=('المنزل', 'الحديقة'), pies='طبقات الإنشاء',

@@ -30,6 +30,17 @@ BASE = {
 }
 
 
+# Формат чисел — один для текстів і скриптів кожної мови (JS-двійник — window.casNum / casUsd у /assets/site-chrome.v1.js):
+# тисячі — «,» лише en ($1,100), інші мови — нерозривний пробіл ($1 100, 23 000 ₴); дріб — «.» en, «,» інші; $ — перед числом у всіх мовах.
+def num(n, lang='uk', dp=0):
+    s = f'{n:,.{dp}f}' if dp else f'{round(n):,}'
+    return s if lang == 'en' else s.replace(',', '\u00a0').replace('.', ',')
+
+
+def usd(n, lang='uk'):
+    return '$' + num(n, lang)
+
+
 def _load(lang, _c={}):
     if lang not in _c:
         f = os.path.join(HERE, 'lang', lang + '.json')

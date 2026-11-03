@@ -437,3 +437,17 @@
   .bz-stars circle{animation:bz-tw 1.8s ease-in-out infinite alternate}
 }
 @media (prefers-reduced-motion:reduce){.bz-pf{display:none}}
+/* тап-зони ≥44 px: кнопки над сценою лишаються компактними, зону дотику розширює прозорий ::before (на 44 px за меншим виміром);
+   ряди, що переносяться, мають проміжок, щоб розширені зони сусідів не перекривались */
+.bz-mats button,.bz-cfg button,.bz-pie ul button,.bz-xb,.bz-lg button,.bz-pb,.bz-b,.bz-pv,.bz-nx{position:relative}
+.bz-mats button::before,.bz-cfg button::before,.bz-pie ul button::before,.bz-px::before,.bz-xb::before,.bz-lg button::before,.bz-pb::before,.bz-b::before,.bz-pv::before,.bz-nx::before{
+  content:'';position:absolute;inset:min(0px,calc(50% - 22px))}
+.bz-cfg{gap:14px}.bz-cfg .bz-g,.bz-cfg .bz-cr{row-gap:14px}
+.bz-lg{row-gap:18px}.bz-nav{row-gap:16px}
+@media(pointer:coarse){.bz-pie ul{gap:0}.bz-pie ul button{min-height:44px}.bz-nav{gap:16px 16px}}
+@media(max-width:767px){
+  .bz-mats{top:-7px;min-height:44px} /* ряд 44 px: кнопки 30 px на тому ж місці, зона дотику не обрізається overflow */
+  .bz-mats .bz-cb{min-height:44px;line-height:30px;border:7px solid transparent;border-width:7px 0;background-clip:padding-box;box-shadow:inset 0 0 0 1px var(--ac,#BF9148);padding:0 13px}
+  .bz-cfg{gap:10px}.bz-cfg .bz-g,.bz-cfg .bz-cr{row-gap:10px}
+  .bz-lg{row-gap:16px;top:44px}
+}

@@ -264,7 +264,7 @@
     var ax = ''; [X0, X1].forEach(function (x) { ax += pl('ax', [x, 0.3, 0, x, GY - 0.3, 0]); }); [Y0, Y1].forEach(function (y) { ax += pl('ax', [0.3, y, 0, GX - 0.3, y, 0]); });
     A('geo', 0, ax, { h: [plate ? 'pit' : 'trench', 0.3] });
     A('geo', 0.3, ob + obN, { h: [Kk.fd, 0.9] });
-    var nm = function (v) { return (C.lang === 'en' ? v.toFixed(1) : v.toFixed(1).replace('.', ',')); };
+    var nm = function (v) { return W.casNum(v, C.lang, 1); };
     A('geo', 0.5, pl('dim', [X0, GY - 0.7, 0, X1, GY - 0.7, 0]) + pl('dim', [X0, GY - 1, 0, X0, GY - 0.4, 0]) + pl('dim', [X1, GY - 1, 0, X1, GY - 0.4, 0]) + txt('dt', cx + 0.3, GY + 0.1, 0, 30, nm(H.W)) +
       pl('dim', [GX - 0.8, Y0, 0, GX - 0.8, Y1, 0]) + pl('dim', [GX - 1.1, Y0, 0, GX - 0.5, Y0, 0]) + pl('dim', [GX - 1.1, Y1, 0, GX - 0.5, Y1, 0]) + txt('dt', GX - 0.1, cy - 0.4, 0, -30, nm(H.D)), { h: ['base', 0] });
 
@@ -651,7 +651,7 @@
     function each(a, f) { a.forEach(function (r) { f.apply(null, r); }); }
     function grid(c, z, x0, x1, y0, y1, st, sy) { var s = ''; range(x0 + st, x1 - 0.05, st).forEach(function (x) { s += pl(c, [x, y0, z, x, y1, z]); }); range(y0 + (sy || st), y1 - 0.05, sy || st).forEach(function (y) { s += pl(c, [x0, y, z, x1, y, z]); }); return s; }
     function sock(X, Y, z, ax) { return pg('sb', ax ? ry(Y, X - 0.07, X + 0.07, z - 0.07, z + 0.07) : rx(X, Y - 0.07, Y + 0.07, z - 0.07, z + 0.07)); }
-    var num = function (v) { return lang === 'en' ? String(v) : String(v).replace('.', ','); };
+    var num = function (v) { return W.casNum(v, lang); };
 
     // ── геометрія: вікна в задніх стінах, перегородки (x0, x1, y0, y1, b — газоблок / g — гіпсокартон, прорізи)
     var WIN = [[1.0, 2.6], [3.2, 4.8], [6.6, 8.2], [9.9, 11.3]], WZ = [0.85, 2.55], WK = [5.0, 6.2], WKZ = [1.05, 2.45];
@@ -1059,7 +1059,7 @@
         '<div class="bz-cr">' + grp(u.s, 'c', STY, C.s, u.sn) + '</div><div class="bz-cr">' + grp(u.a, 'a', SZ, C.a, szn) + '</div>' +
         '<p class="bz-hint" aria-live="polite">' + esc(hint && u.h[hint] ? u.h[hint] : '') + '</p><p class="bz-prc">' + esc(u.price) + '</p>' +
         '<button type="button" class="bz-cx">' + esc(u.done) + '</button>';
-      var dm = function (v) { return lang === 'en' ? String(v) : String(v).replace('.', ','); };
+      var dm = function (v) { return W.casNum(v, lang); };
       cap.textContent = '≈ ' + C.a + ' ' + u.m2 + ' · ' + flL(h) + ' · ' + dm(h.W) + ' × ' + dm(h.D) + ' м'.replace('м', lang === 'en' ? 'm' : 'м') + (C.g ? ' · ' + (C.g === 'g' ? u.gar : u.car) : '') + (C.r ? ' · ' + u.ter : '');
     }
     function setCfgOpen(v) {
