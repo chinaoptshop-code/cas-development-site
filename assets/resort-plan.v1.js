@@ -139,14 +139,17 @@
     if (dn && !RM) raf = W.requestAnimationFrame(tween);
   }
   function cam(t) { vbT = t; if (RM) { vb = t.slice(); } if (!raf) tween(); }
-  function open(g) {
+  function open(g, auto) {
     var b = g.getBBox(), pad = 30, w = Math.max(b.width + pad * 2, 180), h = w * 0.7;
     if (b.height + pad * 2 > h) { h = b.height + pad * 2; w = h / 0.7; }
     if (w > 1000) { w = 1000; h = 700; } // не ширше генплану — без порожнечі за краєм
     focus = g; svg.classList.add('rp-zoom'); [].forEach.call(svg.querySelectorAll('.rp-o'), function (x) { x.classList.toggle('rp-act', x === g); });
     cam([Math.max(0, Math.min(1000 - w, b.x + b.width / 2 - w / 2)), Math.max(0, Math.min(700 - h, b.y + b.height / 2 - h / 2)), w, h]); // кадр — у межах генплану
     stage = 0; show(); back.hidden = false; nav.hidden = false;
-    if (!RM) { clearInterval(timer); timer = setInterval(function () { if (stage < steps().length - 1) { stage++; show(); } else clearInterval(timer); }, 950); }
+    clearInterval(timer);
+    if (auto) return; // автопрогравання (casAuto): етапи — його кроками, без фокуса й аналітики
+    tourEnd = false;
+    if (!RM) timer = setInterval(function () { if (stage < steps().length - 1) { stage++; show(); } else clearInterval(timer); }, 950);
     cl('rp_obj', g.getAttribute('data-o'));
     back.focus({ preventScroll: true });
   }
@@ -156,12 +159,12 @@
     [].forEach.call(focus.querySelectorAll('.rp-p'), function (p) { p.classList.toggle('rp-off', +p.getAttribute('data-s') > stage); });
     cap.innerHTML = '<b>' + esc(D.o[focus.getAttribute('data-o')]) + '</b><span>' + esc(U.step) + ' ' + (stage + 1) + ' ' + esc(U.of) + ' ' + st.length + ': ' + esc(st[stage] || '') + '</span>';
   }
-  function close() {
+  function close(auto) {
     clearInterval(timer);
     if (focus) [].forEach.call(focus.querySelectorAll('.rp-p'), function (p) { p.classList.remove('rp-off'); });
     var f = focus; focus = null; svg.classList.remove('rp-zoom'); [].forEach.call(svg.querySelectorAll('.rp-act'), function (x) { x.classList.remove('rp-act'); });
     cam([0, 0, 1000, 700]); back.hidden = true; nav.hidden = true; cap.innerHTML = '<span>' + esc(U.tap) + '</span>';
-    if (f) f.focus({ preventScroll: true });
+    if (f && !auto) f.focus({ preventScroll: true });
   }
   /* ціни */
   function price() {
@@ -181,7 +184,7 @@
     });
     return g;
   }
-  var back, nav;
+  var back, nav, tourI = -1, tourEnd = false;
   function enhance() {
     var w = sec.querySelector('.w'), list = sec.querySelector('.rp-list');
     var ctl = el('div', 'la-ctl rp-ctl'), upd = function () { if (focus) close(); layout(); price(); };
@@ -193,14 +196,14 @@
     var grid = el('div', 'rp-grid'), stage0 = el('div', 'rp-stage');
     svg = d.createElementNS(NS, 'svg'); svg.setAttribute('class', 'rp-svg'); svg.setAttribute('viewBox', '0 0 1000 700'); svg.setAttribute('aria-label', sec.querySelector('h2').textContent);
     cap = el('p', 'rp-cap', '<span>' + esc(U.tap) + '</span>'); cap.setAttribute('aria-live', 'polite');
-    back = el('button', 'btn rp-back', esc(U.back)); back.type = 'button'; back.hidden = true; back.addEventListener('click', close);
+    back = el('button', 'btn rp-back', esc(U.back)); back.type = 'button'; back.hidden = true; back.addEventListener('click', function () { close(); });
     nav = el('div', 'la-nav rp-nav'); nav.hidden = true;
     var rtl = d.documentElement.dir === 'rtl', pb = el('button', '', rtl ? '›' : '‹'), nb = el('button', '', rtl ? '‹' : '›');
     pb.type = nb.type = 'button'; pb.setAttribute('aria-label', U.step + ' −'); nb.setAttribute('aria-label', U.step + ' +');
     pb.addEventListener('click', function () { clearInterval(timer); if (stage > 0) { stage--; show(); } });
     nb.addEventListener('click', function () { clearInterval(timer); if (stage < steps().length - 1) { stage++; show(); } });
     nav.appendChild(pb); nav.appendChild(nb);
-    var tools = el('div', 'rp-tools'); tools.appendChild(back); tools.appendChild(nav);
+    var tools = el('div', 'rp-tools'), apw = el('div', 'la-nav rp-apw'); tools.appendChild(back); tools.appendChild(nav); tools.appendChild(apw);
     stage0.appendChild(svg); stage0.appendChild(cap); stage0.appendChild(tools);
     panel = el('div', 'rp-panel');
     var cta = el('a', 'btn main rp-cta', esc(U.cta)); cta.href = '#zayavka';
@@ -219,6 +222,15 @@
     sec.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && focus) close(); });
     sec.classList.add('rp-on');
     layout(); price();
+    // автопрогравання: сцена в кадрі й людина не чіпає — по черзі обʼєкти генплану з етапами будівництва, наприкінці — назад до генплану й «Ще раз»
+    if (W.casAuto) W.casAuto({ root: stage0, view: svg, host: apw, atEnd: function () { return tourEnd; },
+      restart: function () { tourI = -1; tourEnd = false; if (focus) close(1); },
+      step: function () {
+        var os = svg.querySelectorAll('.rp-o');
+        if (focus && stage < steps().length - 1) { stage++; show(); return true; }
+        if (tourI + 1 >= os.length) { if (focus) close(1); tourEnd = true; return false; }
+        tourI++; open(os[tourI], 1); return true;
+      } });
   }
   function css() {
     return new Promise(function (res) {

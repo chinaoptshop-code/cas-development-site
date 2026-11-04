@@ -1,7 +1,7 @@
 /* CAS — «Будинок з нуля» / «Ремонт з нуля» v2 (UI-kit /styleguide/#build-anim-sg). Вантажить /assets/build-anim.v1.js ліниво.
    Без JS блок — звичайний список «Етапи» (ol.steps зі стилів сторінки). Токени — з site-chrome (--ac, --tx, --mu, --ln, --bg2, --ease-out). */
-.bz{--bz-per:40svh;--bz-bot:0px}
-.bz[data-bz-c]{--bz-per:26svh}
+.bz{--bz-per:clamp(400px,50svh,560px);--bz-bot:0px}
+.bz[data-bz-c]{--bz-per:clamp(280px,34svh,400px)}
 /* статичний стан блоку (до збірки сцени: заголовок, вступ, CTA, факти) — у site-chrome.v1.css: цей файл вантажиться після першої прокрутки й не має змінювати висоту блоку в кадрі (CLS) */
 .bz-run{position:relative;height:calc(var(--n,19) * var(--bz-per) + 100svh - var(--sch-h,64px) - var(--bz-bot));margin-top:8px}
 .bz-pin{position:sticky;top:var(--sch-h,64px);height:calc(100svh - var(--sch-h,64px) - var(--bz-bot));box-sizing:border-box;padding:14px 0;
@@ -75,8 +75,8 @@
 @media(max-height:780px) and (min-width:768px){.bz-pie ul button{min-height:22px}.bz-pd{min-height:2.4em}.bz-on-l span{font-size:.875rem}.bz-side{gap:9px}}
 /* телефон: сцена згори, під нею активний етап і ← → ; пиріг — за кнопкою поверх сцени; нижня панель .mbar (64px) не перекриває керування */
 @media(max-width:767px){
-  .bz{--bz-bot:calc(64px + env(safe-area-inset-bottom,0px));--bz-per:36svh}
-  .bz[data-bz-c]{--bz-per:24svh}
+  .bz{--bz-bot:calc(64px + env(safe-area-inset-bottom,0px));--bz-per:clamp(320px,44svh,420px)}
+  .bz[data-bz-c]{--bz-per:clamp(260px,32svh,360px)}
   .bz-pin{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:8px;padding:6px 0 8px;align-items:stretch}
   .bz-fig{height:auto;padding-top:38px}
   .bz-mats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:5px;top:0;right:0}
@@ -456,3 +456,7 @@
 .bz-fig .rsh{fill:url(#bz-rsh);pointer-events:none}.bz-fig .rsh.s{opacity:.7}.bz-fig .rsh.f{opacity:.6}
 .bz-fig .conc{fill:url(#bz-cc);pointer-events:none}
 .bz-fig .soil{fill:url(#bz-so);pointer-events:none}.bz-fig .heap{fill:#6a5644}.bz-fig .heap2{fill:#54443a}.bz-fig .heap3{fill:#3f3329}
+
+/* автопрогравання (casAuto у site-chrome.v1.js): кнопка пауза / відтворення / ще раз — тап-зона 44 px */
+.bz-ap{width:44px;height:44px;flex:none;border-radius:50%;border:1px solid var(--ac,#BF9148);background:transparent;color:var(--ac,#BF9148);font-size:14px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.bz-ap:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}.bz-ap[data-st=end]{font-size:20px}
