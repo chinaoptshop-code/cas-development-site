@@ -13,7 +13,7 @@
   covers   — обкладинки проєктів: {"h2", "more": [url, текст], "items": [{"href", "img", "srcset", "name", "loc", "alt"}]}
   strip    — стрічка фото з прокруткою (scroll-snap): {"h2"?, "label" (aria), "items": [{"img", "srcset", "alt", "label", "href"}]}
   split    — фото + текст: {"img", "alt", "href"?, "badge": [число, підпис]?, "h2"?, "lead"?, "p": [...], "vals": [[h, p], ...]?, "btn": [url, текст]?}
-  facts    — цифри: {"h2", "items": [[значення, підпис], ...]}
+  facts    — цифри: {"h2", "items": [[значення, підпис], ...], "links": [[url, текст], ...]?} (блок довіри головних — "cls": "xs-trust")
   cta      — заклик: {"h2"?, "score"?, "p": [...], "btns": [[url, текст, "main"?], ...], "msgs": true?}
   contacts — контакти: {"h2", "p", "rows": [[мітка, текст, href, примітка?], ...], "msgs": true}
   team     — команда: {"h2", "items": [{"h", "role", "p"}], "crew": {"h3", "p", "groups": [{"label", "p", "people": [[імʼя, роль]]}]}}
@@ -158,7 +158,10 @@ def split(x):
 
 
 def facts(x):
-    return wrap(x, head(x) + '<div class="facts">' + ''.join(f'<div><b>{e(b)}</b><span>{e(s)}</span></div>' for b, s in x['items']) + '</div>', 'xs-facts')
+    # "links" — рядок посилань «Детальніше» під цифрами (блок довіри головних, cls "xs-trust": куди перенесено етапи, гарантії, FAQ, відгуки)
+    lk = ('<p class="xs-links">' + ''.join(f'<a href="{a(u)}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '') + f'>{e(n)} →</a>'
+                                           for u, n in x['links']) + '</p>') if x.get('links') else ''
+    return wrap(x, head(x) + '<div class="facts">' + ''.join(f'<div><b>{e(b)}</b><span>{e(s)}</span></div>' for b, s in x['items']) + '</div>' + lk, 'xs-facts')
 
 
 def cta(x):

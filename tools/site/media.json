@@ -40,8 +40,7 @@
   }
  ],
  "video_pages": [
-  "portfolio.html",
-  "index.html"
+  "portfolio.html"
  ],
  "extra": {
   "proekty/tetris-hall.html": {

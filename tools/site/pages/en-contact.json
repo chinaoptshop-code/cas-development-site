@@ -62,29 +62,19 @@
    "t": "map"
   },
   {
-   "t": "cta",
+   "t": "text",
    "h2": "Want to know the budget in advance?",
    "p": [
-    "Design from $30/m², renovation from $550/m², offices from $350/m², construction from $600/m², furnishing from $250/m². The final figure comes with the estimate after the consultation."
-   ],
-   "btns": [
-    [
-     "/en/renovation-cost-calculator",
-     "Open the calculator →"
-    ]
+    "Design from $30/m², renovation from $550/m², offices from $350/m², construction from $600/m², furnishing from $250/m². The final figure comes with the estimate after the consultation.",
+    "[Open the calculator →](/en/renovation-cost-calculator)"
    ]
   },
   {
-   "t": "cta",
+   "t": "text",
    "h2": "Contract, warranty, payment",
    "p": [
-    "We work under a contract with an estimate and acceptance certificates for each stage; the warranty on works is 36 months; payment follows a schedule that suits you, starting from a 10% advance."
-   ],
-   "btns": [
-    [
-     "/en/contract-warranty-payment",
-     "How it works →"
-    ]
+    "We work under a contract with an estimate and acceptance certificates for each stage; the warranty on works is 36 months; payment follows a schedule that suits you, starting from a 10% advance.",
+    "[How it works →](/en/contract-warranty-payment)"
    ]
   },
   {

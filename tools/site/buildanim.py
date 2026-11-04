@@ -146,7 +146,8 @@ def block(lang, scene, compact, tier=0, mat='', var='new', cfg=None):
     svc = f' data-service="{e(t["more"])}"' if compact and t['more'] else ''  # головна: заявка — про будинок, а не «Консультація (головна)»
     team = f'<p class="bz-team">{e(t["team"])} <a href="{ABOUT[lang]}">{e(t["about"])}</a></p>' if tier < 2 else ''
     # факти з CLAUDE.md — у HTML одразу фінальні значення (count-up прибрано: показував хибні проміжні «12+», «3 міс.»)
-    facts = ('<p class="bz-facts">' + ''.join(f'<span><b data-count="{n}">{e(v)}</b> {e(x)}</span>' for n, v, x in FACTS[lang]) + '</p>') if tier < 1 else ''
+    # головна (compact): цифри вже в блоці довіри під проєктами — у сцені не повторюємо (Михайло 04.11.2026, «ясність»)
+    facts = ('<p class="bz-facts">' + ''.join(f'<span><b data-count="{n}">{e(v)}</b> {e(x)}</span>' for n, v, x in FACTS[lang]) + '</p>') if tier < 1 and not compact else ''
     return (f'\n<!--ba--><section class="bz" id="build-anim" data-bz="{scene}"{c}{f} aria-labelledby="bz-h" data-js="/assets/build-anim.v1.js" data-css="/assets/build-anim.v1.css"><div class="w">'
             f'<h2 id="bz-h">{e(t["hc"] if compact else t["h"])}</h2>{lead}'
             + (f'<ol class="steps bz-st">{li}</ol>' if tier < 3 else '') +

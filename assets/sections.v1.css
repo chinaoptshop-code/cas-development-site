@@ -88,3 +88,6 @@
 @media(max-width:599px){.js .xs-sv{gap:10px}.js .xs-sv>.xs-c{flex:1 1 calc(50% - 5px)}.js .xs-sv .xs-cb{padding:12px 12px 14px;gap:6px}.js .xs-sv .xs-cb>p:not([class]){display:none}
   .js .xs-sv .xs-c>img,.js .xs-sv .xs-c>picture>img{aspect-ratio:4/3;max-height:none}.js .xs-sv .xs-cb h3{font-size:1.12rem;overflow-wrap:anywhere;hyphens:auto}
   .js .xs-sv .xs-pr{font-size:1rem}.js .xs-sv>.xs-c:last-child:nth-child(odd) img{aspect-ratio:16/7}}
+/* блок довіри головних (rich facts, cls xs-trust): 4 цифри одним рядком (2×2 на телефоні) + посилання «Детальніше» */
+.xs-trust .facts{margin-top:18px;grid-template-columns:repeat(2,minmax(0,1fr))}.xs-trust .facts div{padding:14px 16px}.xs-trust .xs-links{margin:16px 0 0;font-size:var(--fs-small)}
+@media(min-width:768px){.xs-trust .facts{grid-template-columns:repeat(4,minmax(0,1fr))}}

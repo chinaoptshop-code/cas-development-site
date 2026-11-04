@@ -62,29 +62,19 @@
    "t": "map"
   },
   {
-   "t": "cta",
+   "t": "text",
    "h2": "Envie de connaître le budget à l’avance ?",
    "p": [
-    "Design dès $30/m², rénovation dès $550/m², bureaux dès $350/m², construction dès $600/m², ameublement dès $250/m². Le montant final figure dans le devis après la consultation."
-   ],
-   "btns": [
-    [
-     "/fr/calculateur-renovation",
-     "Ouvrir le calculateur →"
-    ]
+    "Design dès $30/m², rénovation dès $550/m², bureaux dès $350/m², construction dès $600/m², ameublement dès $250/m². Le montant final figure dans le devis après la consultation.",
+    "[Ouvrir le calculateur →](/fr/calculateur-renovation)"
    ]
   },
   {
-   "t": "cta",
+   "t": "text",
    "h2": "Contrat, garantie, paiement",
    "p": [
-    "Nous travaillons sous contrat, avec devis et procès-verbaux de réception par étape ; garantie de 36 mois sur les travaux ; paiement selon un échéancier adapté, démarrage dès 10 % d’acompte."
-   ],
-   "btns": [
-    [
-     "/fr/faq",
-     "Questions fréquentes →"
-    ]
+    "Nous travaillons sous contrat, avec devis et procès-verbaux de réception par étape ; garantie de 36 mois sur les travaux ; paiement selon un échéancier adapté, démarrage dès 10 % d’acompte.",
+    "[Questions fréquentes →](/fr/faq)"
    ]
   },
   {

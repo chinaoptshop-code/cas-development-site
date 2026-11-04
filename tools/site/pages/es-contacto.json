@@ -62,29 +62,19 @@
    "t": "map"
   },
   {
-   "t": "cta",
+   "t": "text",
    "h2": "¿Quiere conocer el presupuesto de antemano?",
    "p": [
-    "Diseño desde $30/m², reforma desde $550/m², oficinas desde $350/m², construcción desde $600/m², amueblamiento desde $250/m². La cifra final llega con el presupuesto tras la consulta."
-   ],
-   "btns": [
-    [
-     "/es/calculadora-reforma",
-     "Abrir la calculadora →"
-    ]
+    "Diseño desde $30/m², reforma desde $550/m², oficinas desde $350/m², construcción desde $600/m², amueblamiento desde $250/m². La cifra final llega con el presupuesto tras la consulta.",
+    "[Abrir la calculadora →](/es/calculadora-reforma)"
    ]
   },
   {
-   "t": "cta",
+   "t": "text",
    "h2": "Contrato, garantía, pago",
    "p": [
-    "Trabajamos con contrato, presupuesto y actas de cada etapa; garantía de 36 meses en los trabajos; el pago sigue un calendario a su medida, desde un anticipo del 10%."
-   ],
-   "btns": [
-    [
-     "/es/preguntas-frecuentes",
-     "Preguntas frecuentes →"
-    ]
+    "Trabajamos con contrato, presupuesto y actas de cada etapa; garantía de 36 meses en los trabajos; el pago sigue un calendario a su medida, desde un anticipo del 10%.",
+    "[Preguntas frecuentes →](/es/preguntas-frecuentes)"
    ]
   },
   {
