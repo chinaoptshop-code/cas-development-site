@@ -345,8 +345,8 @@ ANSWER_RULE = ("Саму відповідь обгорни рядками ===В�
 # недоступний — локальною моделлю Ollama на Mac mini. Підписка Claude (claude -p) — лише для Михайла й команди.
 API_ENV = pathlib.Path.home() / "jarvis/projects/quiz/.env"
 CLIENT_MODEL = os.environ.get("ASSISTANT_CLIENT_MODEL", "claude-sonnet-5")
-# Локальні моделі по черзі: qwen3:8b на SSD (окремий сервер :11435), запас — qwen3:4b на внутрішньому диску (:11434)
-LOCAL_MODELS = [("http://127.0.0.1:11435", "qwen3:8b"), ("http://127.0.0.1:11434", os.environ.get("ASSISTANT_LOCAL_MODEL", "qwen3:4b"))]
+# Локальна модель: одна Ollama на :11434 (моделі на SSD, з 04.11), qwen3:8b — основна за бенчмарком docs/LOCAL-AI.md у ~/jarvis
+LOCAL_MODELS = [("http://127.0.0.1:11434", os.environ.get("ASSISTANT_LOCAL_MODEL", "qwen3:8b"))]
 
 
 def api_key():

@@ -671,8 +671,19 @@ def strip_think(s):
 
 
 def ollama_chat(text, history=None, system_extra="", timeout=None):
-    """Відповідь локальної моделі або None, якщо Ollama недоступна."""
-    url = os.environ.get("ASSISTANT_OLLAMA_URL", "http://127.0.0.1:11434").rstrip("/") + "/api/chat"
+    """Відповідь локальної моделі або None, якщо Ollama недоступна.
+    Адреси пробуємо по черзі: ASSISTANT_OLLAMA_URL (одна Ollama :11434, моделі на SSD — з 04.11), далі
+    ASSISTANT_OLLAMA_FALLBACK_URLS (типово порожньо; друга копія :11435 прибрана)."""
+    urls = [os.environ.get("ASSISTANT_OLLAMA_URL", "http://127.0.0.1:11434")]
+    urls += [u for u in os.environ.get("ASSISTANT_OLLAMA_FALLBACK_URLS", "").split(",") if u.strip()]
+    for u in dict.fromkeys(x.strip().rstrip("/") for x in urls):
+        ans = _ollama_chat_at(u + "/api/chat", text, history, system_extra, timeout)
+        if ans:
+            return ans
+    return None
+
+
+def _ollama_chat_at(url, text, history=None, system_extra="", timeout=None):
     model = os.environ.get("ASSISTANT_LOCAL_MODEL", "qwen3:8b")
     timeout = timeout or float(os.environ.get("ASSISTANT_OLLAMA_TIMEOUT", "120"))
     msgs = [{"role": "system", "content": SYSTEM + ("\n\n" + system_extra if system_extra else "")}]
