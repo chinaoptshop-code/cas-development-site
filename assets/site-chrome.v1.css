@@ -539,10 +539,14 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .hero:has(>[data-c=h]) .btns{margin-top:18px}
 .hero:has(>[data-c=h]) .btns>.btn:first-child{background:var(--ac,#BF9148);color:#140f08}
 .hero:has(>[data-c=h]) .btns::after{content:var(--ux-tr);flex-basis:100%;margin-top:6px;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem);letter-spacing:.04em;line-height:1.5}
-.js [data-c=h]{position:relative;margin-bottom:0;cursor:pointer}
-.js [data-c=h]:not(.c-o){display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;line-clamp:1;overflow:hidden;padding-inline-end:22px}
-.js [data-c=h]::after{content:"";position:absolute;top:.55em;inset-inline-end:4px;width:7px;height:7px;border-right:1.5px solid var(--ac,#BF9148);border-bottom:1.5px solid var(--ac,#BF9148);rotate:45deg;transition:rotate .3s ease}
-.js [data-c=h].c-o::after{rotate:225deg;top:.75em}
+.js [data-c=h]{position:relative;margin-bottom:0}.js [data-c=h][role]{cursor:pointer}
+/* мінімалістичний hero (Михайло 04.11.2026): H1 + перше речення ліду (решта — span.ux-rest, тап — увесь текст; без «…» і шеврона) + «Подзвонити» і «Порахувати»;
+   без eyebrow (.kick), третьої кнопки й форми (її більше не ставить tools/site/leadform.py) — заявка в липкій панелі й у формі внизу */
+.js [data-c=h]:not(.c-o)>.ux-rest{display:none}
+.hero:has(>[data-c=h])>.kick,.hero:has(>[data-c=h]) .btns>:nth-child(n+3){display:none}
+.js .card>[data-c=h]:not(.c-o){display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;padding-inline-end:22px}
+.js .card>[data-c=h]::after{content:"";position:absolute;top:.55em;inset-inline-end:4px;width:7px;height:7px;border-right:1.5px solid var(--ac,#BF9148);border-bottom:1.5px solid var(--ac,#BF9148);rotate:45deg;transition:rotate .3s ease}
+.js .card>[data-c=h].c-o::after{rotate:225deg;top:.75em}
 .js [data-c=h]:not(.c-o)>.ux-dup{display:none}.js [data-c=h]:not(.c-o):has(>.ux-dup)::first-letter{text-transform:uppercase}
 .js [data-c=h]:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:3px}
 @media print{.js :is(main,main>div[id^="p-"]){display:block!important;padding-inline:0!important}.js [data-c=h]{display:block!important}}

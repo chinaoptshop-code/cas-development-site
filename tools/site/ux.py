@@ -220,14 +220,12 @@ def _lead_dup(hp):
 
 
 TEL = 'tel:+380978667755'
-SENT_RX = re.compile(r'(?<=[.!?。！？])\s*(?=[A-ZА-ЯІЇЄҐÀ-ÝĄĆĘŁŃÓŚŹŻ¿¡«"\u4e00-\u9fff\u0600-\u06ff])')
+SENT_RX = re.compile(r'(?<=[.!?。！？])\s*(?=[0-9A-ZА-ЯІЇЄҐÀ-ÝĄĆĘŁŃÓŚŹŻ¿¡«"\u4e00-\u9fff\u0600-\u06ff])')
 
 
 def _lead_rest(hp):
     """Мінімалістичний hero (Михайло 04.11.2026): видно лише перше речення ліду (після повтору H1 — span.ux-dup);
     решта — у span.ux-rest (прихована, поки лід згорнутий; тап — увесь текст; у DOM лишається)."""
-    if 'ux-rest' in hp:
-        return hp
     p = re.search(r'<p data-c="h">(?:<span class="ux-dup">.*?</span>)?', hp, re.S)
     if not p:
         return hp
@@ -240,7 +238,7 @@ def _lead_rest(hp):
             continue
         if not body[k:].strip():
             break
-        return hp[:p.end()] + body[:k] + f'<span class="ux-rest"> {body[k:].lstrip()}</span>' + hp[end:]
+        return hp[:p.end()] + body[:k] + f'<span class="ux-rest">{body[k:]}</span>' + hp[end:]
     return hp
 
 
@@ -345,6 +343,7 @@ SPAN_RX = re.compile(r'\sstyle="(?:--s[2346]:\d+;?)+"')
 STRIP = [SPAN_RX, re.compile(r'\sdata-i="[a-z0-9]{2}"'), re.compile(r'\sdata-c="[tsqglxhk]"'), re.compile(r'\sdata-a(?:="[si]")?(?=[\s>])'),
          re.compile(r'\sdata-xs="[^"]*"'), CALC_RX]
 UNWRAP = re.compile(r'<div data-c="l">(<(ul|ol)>.*?</\2>)</div>', re.S)
+REST_RX = re.compile(r'<span class="ux-rest">(.*?)</span>(?=</p>)', re.S)  # друга частина ліду hero (_lead_rest)
 
 H2_RX = re.compile(r'<h2((?:\s+id="[^"]*")?)>(.*?)</h2>', re.S)
 H3_RX = re.compile(r'(<div class="card"><h3)>(.*?</h3>)', re.S)
@@ -492,6 +491,7 @@ def _badges(s):
 
 def strip(s):
     """Сторінка без атрибутів ux (для генераторів, що беруть живу сторінку за шаблон і шукають у ній точні рядки)."""
+    s = REST_RX.sub(r'\1', s)
     s = UNWRAP.sub(r'\1', s)  # спершу обгортки списків (STRIP зняв би з них data-c і лишив порожній <div>)
     for rx in STRIP:
         s = rx.sub('', s)

@@ -491,6 +491,7 @@
   }
   // лід hero [data-c=h]: один рядок; тап / Enter / Space — увесь текст
   function lead(c) {
+    if (!c.closest('.card') && !c.querySelector('.ux-rest,.ux-dup')) return; // лід з одного речення — нічого згортати
     c.setAttribute('role', 'button'); c.tabIndex = 0; c.setAttribute('aria-expanded', 'false');
     var t = function (e) { if (e && e.target.closest && e.target.closest('a')) return; var o = !c.classList.contains('c-o'); c.classList.toggle('c-o', o); c.setAttribute('aria-expanded', o ? 'true' : 'false'); };
     c.addEventListener('click', t);
