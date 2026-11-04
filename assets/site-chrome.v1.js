@@ -614,7 +614,7 @@
 (function () {
   var W = window, d = document, ss = d.querySelectorAll('section.bz[data-js]'); // кілька сцен на сторінці — кожна свій скрипт
   if (!ss.length) return;
-  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=8ad1bac2"; /*/sc:ui*/
+  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=d2ffd330"; /*/sc:ui*/
   var on = 0;
   function css(h) { if (!h || d.querySelector('link[href="' + h + '"]')) return; var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = h; d.head.appendChild(l); }
   function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; d.head.appendChild(j); }

@@ -551,7 +551,7 @@ def apply(s, rel):
     if OZD_RX.match(rel):
         m = _ozd(m)
     if rel in ABOUT:
-        m = m.replace('<div class="xs-tx"><p class="xs-lead">', '<div class="xs-tx" data-c="t"><p class="xs-lead">', 1)
+        m = re.sub(r'<div class="xs-tx">(?=(?:<h2[^>]*>.*?</h2>)?<p\b)', '<div class="xs-tx" data-c="t">', m, count=1, flags=re.S)
     if light:
         m = _spans(m)
     if re.match(r'(?:[a-z]{2}/)?blog/', rel):
