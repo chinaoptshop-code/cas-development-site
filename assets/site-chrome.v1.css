@@ -676,3 +676,8 @@ html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(
 @media(min-width:760px){html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s3,4)}.js [data-c=x]:not(.c-o)::before{max-height:min(36vh,16rem);min-width:calc(100% + 32px)}}
 @media(min-width:1100px){html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s4,3)}}
 @media(min-width:2200px){html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s6,2)}}
+/* критичні стилі перемикача сцен nav.la-tab — ті самі, що в /assets/scene-ui.v1.css (той вантажиться після першої прокрутки):
+   без переповнення на 360 px і без зсуву, коли scene-ui підвантажиться */
+.la-tab{display:inline-flex;flex-wrap:wrap;max-width:100%;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:22px;padding:4px;margin:0 0 18px}
+.la-tab a{padding:8px 16px;border-radius:999px;text-decoration:none;font-size:var(--fs-small);min-height:44px;display:inline-flex;align-items:center}
+.la-tab a[aria-current]{background:var(--ac,#BF9148);color:#140f08}

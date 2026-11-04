@@ -6,7 +6,7 @@
 
 - **Без Clarity** (1): tury.html
 - **Непідтверджені ціни** (87): ar/renovation-calculator.html['$165 000 ', '$33 000 '], biznes-pid-kliuch-kyiv.html['$52 500'], blog/akustyka-open-space-bez-hluhykh-peregorodok.html['$35 000 ', '$35 000       '], blog/bryf-dlia-dyzainera-interieru.html['$44 000'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$165 000       ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/chornovyi-i-chystovyi-remont-riznytsia.html['$38 500', '$38 500 '], blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html['$2 400'], blog/dyzain-i-remont-penthausa-pid-kliuch.html['$115 500  ', '$174 300', '$52 500  ', '$6 300', '$6 300  ', '$6 300       '], blog/dyzain-interieru-onlain-budynok-za-kordonom.html['$7 500', '$7 500       '], blog/dyzain-interieru-z-choho-pochaty.html['$3 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'] …
-- **Класи поза /styleguide/ (warning, `ui.py classes`)** (27): .acc-box, .ba-g, .cover, .dw, .hx, .hx-bg, .la-pies, .la-pies-h, .la-price, .mo-sr, .ozd-more, .row …
+- **Класи поза /styleguide/ (warning, `ui.py classes`)** (28): .acc-box, .ba-g, .cover, .dw, .hx, .hx-bg, .la-pies, .la-pies-h, .la-price, .mo-sr, .ozd-more, .row …
 
 ## Токени
 
@@ -21,7 +21,7 @@
 | portfolio.html | main | 257.4 | 30.0 | 13.6 | 0.5 | 7 | 1874 |
 | ozdoba/prais.html | other | 114.3 | 27.7 | 5.8 | 0.9 | 9 | 3023 |
 | ozdoba/komplekty.html | other | 113.2 | 26.6 | 32.4 | 1.4 | 14 | 1534 |
-| ozdoba.html | other | 103.2 | 23.0 | 30.1 | 0.7 | 13 | 763 |
+| ozdoba.html | other | 103.1 | 23.0 | 30.1 | 0.7 | 13 | 760 |
 | index.html | main | 91.0 | 20.9 | 13.6 | 0.5 | 7 | 845 |
 | pl/ozdoba.html | other | 82.2 | 19.6 | 30.7 | 0.7 | 13 | 622 |
 | en/ozdoba.html | other | 81.2 | 18.9 | 30.7 | 0.7 | 13 | 623 |
@@ -264,7 +264,7 @@
 | ozdoba/moldynh-poliuretanovyi-z-ornamentom-pid-zoloto-314.html | other | 58.4 | 15.2 | 32.4 | 0.7 | 14 | 330 |
 | ozdoba/mozaika-marmurova-ialynka-bila-300.html | other | 58.4 | 15.3 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/nabir-barmena-z-sheikerom-na-pidstavtsi-405.html | other | 58.4 | 15.3 | 32.4 | 0.7 | 14 | 335 |
-| ozdoba/parket-inzhenernyi-dub-frantsuzka-ialynka-temnyi-306.html | other | 58.4 | 15.1 | 32.4 | 0.7 | 14 | 332 |
+| ozdoba/parket-inzhenernyi-dub-frantsuzka-ialynka-temnyi-306.html | other | 58.4 | 15.2 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/parket-inzhenernyi-dub-ialynka-svitlyi-305.html | other | 58.4 | 15.2 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/pidvis-iaitse-z-opalovoho-skla-583.html | other | 58.4 | 15.3 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/pidvis-zi-sklianoiu-kuleiu-prozore-sklo-115.html | other | 58.4 | 15.2 | 32.4 | 0.7 | 14 | 335 |
@@ -472,7 +472,7 @@
 | blog/shcho-vkhodyt-u-dyzain-proekt-interieru.html | article | 50.0 | 14.1 | 14.4 | 0.5 | 7 | 378 |
 | ru/dom-iz-brusa-kiev.html | land | 50.0 | 14.5 | 13.6 | 0.5 | 7 | 485 |
 | blog/mebli-z-kytaiu-dlia-interieru.html | article | 49.8 | 13.9 | 14.4 | 0.5 | 7 | 393 |
-| blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | article | 49.8 | 14.1 | 14.4 | 0.5 | 7 | 389 |
+| blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | article | 49.8 | 14.0 | 14.4 | 0.5 | 7 | 389 |
 | blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html | article | 49.8 | 13.9 | 14.4 | 0.5 | 7 | 396 |
 | blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html | article | 49.8 | 13.8 | 14.4 | 0.5 | 7 | 371 |
 | ar/about.html | land | 49.7 | 13.2 | 13.6 | 0.5 | 7 | 514 |
@@ -527,7 +527,7 @@
 | dyzain-i-remont-kyivska-oblast.html | land | 47.9 | 13.0 | 13.6 | 0.5 | 7 | 463 |
 | ru/remont-doma-kiev.html | land | 47.9 | 12.8 | 13.6 | 0.5 | 7 | 457 |
 | ru/remont-kvartiry-zhk-greenville-na-pecherske.html | land | 47.9 | 13.0 | 13.6 | 0.5 | 7 | 420 |
-| ru/dizayn-interera-neoklassika-kiev.html | land | 47.8 | 12.7 | 13.6 | 0.5 | 7 | 449 |
+| ru/dizayn-interera-neoklassika-kiev.html | land | 47.8 | 12.6 | 13.6 | 0.5 | 7 | 449 |
 | dyzain-interieru-neoklasyka-kyiv.html | land | 47.7 | 12.7 | 13.6 | 0.5 | 7 | 449 |
 | remont-kvartyry-zhk-greenville-na-pechersku.html | land | 47.7 | 13.0 | 13.6 | 0.5 | 7 | 420 |
 | ru/dizayn-i-remont-ukraina.html | land | 47.7 | 12.9 | 13.6 | 0.5 | 7 | 476 |
@@ -701,7 +701,7 @@
 | dyzain-i-remont-uzhhorod.html | land | 40.6 | 11.5 | 13.6 | 0.5 | 7 | 330 |
 | dyzain-i-remont-vasylkiv.html | land | 40.6 | 11.6 | 13.6 | 0.5 | 7 | 334 |
 | dyzain-i-remont-vyshneve.html | land | 40.6 | 11.5 | 13.6 | 0.5 | 7 | 333 |
-| proekty/diamond.html | land | 40.6 | 8.2 | 2.1 | 0.7 | 1 | 353 |
+| proekty/diamond.html | land | 40.6 | 8.1 | 2.1 | 0.7 | 1 | 353 |
 | ru/dizayn-i-remont-cherkassy.html | land | 40.6 | 11.5 | 13.6 | 0.5 | 7 | 330 |
 | ru/dizayn-i-remont-kropivnitskiy.html | land | 40.6 | 11.5 | 13.6 | 0.5 | 7 | 330 |
 | ru/dizayn-i-remont-obuhov.html | land | 40.6 | 11.5 | 13.6 | 0.5 | 7 | 332 |
@@ -758,7 +758,7 @@
 | es/reforma-oficinas.html | land | 39.0 | 10.6 | 13.6 | 0.5 | 7 | 383 |
 | fr/renovation-bureaux.html | land | 39.0 | 10.6 | 13.6 | 0.5 | 7 | 381 |
 | fr/renovation-salle-de-bain.html | land | 39.0 | 10.7 | 13.6 | 0.5 | 7 | 379 |
-| en/business-fit-out.html | land | 38.9 | 11.0 | 13.6 | 0.5 | 7 | 397 |
+| en/business-fit-out.html | land | 38.9 | 10.9 | 13.6 | 0.5 | 7 | 397 |
 | ar/house-design.html | land | 38.8 | 10.3 | 13.6 | 0.5 | 7 | 358 |
 | ar/interior-designer.html | land | 38.8 | 10.5 | 13.6 | 0.5 | 7 | 358 |
 | fr/renovation-maison-cle-en-main.html | land | 38.7 | 10.5 | 13.6 | 0.5 | 7 | 384 |
@@ -775,7 +775,7 @@
 | de/gewerberaeume-renovierung.html | land | 38.4 | 10.6 | 13.6 | 0.5 | 7 | 389 |
 | es/reforma-locales-comerciales.html | land | 38.4 | 10.5 | 13.6 | 0.5 | 7 | 385 |
 | en/contract-warranty-payment.html | land | 38.3 | 10.6 | 13.6 | 0.5 | 7 | 387 |
-| en/kitchen-renovation.html | land | 38.3 | 10.6 | 13.6 | 0.5 | 7 | 401 |
+| en/kitchen-renovation.html | land | 38.3 | 10.5 | 13.6 | 0.5 | 7 | 401 |
 | fr/services.html | land | 38.3 | 10.7 | 13.6 | 0.5 | 7 | 401 |
 | de/badsanierung.html | land | 38.2 | 10.7 | 13.6 | 0.5 | 7 | 381 |
 | en/design-implementation.html | land | 38.2 | 10.8 | 13.6 | 0.5 | 7 | 388 |
@@ -808,7 +808,7 @@
 | es/preguntas-frecuentes.html | land | 37.4 | 10.0 | 13.6 | 0.5 | 7 | 328 |
 | de/umsetzung-designprojekt.html | land | 37.3 | 10.7 | 13.6 | 0.5 | 7 | 367 |
 | fr/faq.html | land | 37.3 | 10.0 | 13.6 | 0.5 | 7 | 327 |
-| pl/projektowanie-wnetrz.html | land | 37.3 | 10.9 | 13.6 | 0.5 | 7 | 373 |
+| pl/projektowanie-wnetrz.html | land | 37.3 | 10.8 | 13.6 | 0.5 | 7 | 373 |
 | es/diseno-interiores-piso.html | land | 37.2 | 10.0 | 13.6 | 0.5 | 7 | 365 |
 | fr/design-appartement.html | land | 37.2 | 10.0 | 13.6 | 0.5 | 7 | 365 |
 | zh/office-renovation.html | land | 37.2 | 10.9 | 13.6 | 0.5 | 7 | 381 |
@@ -869,7 +869,7 @@
 | proekty/office-chicago.html | land | 29.2 | 7.3 | 2.1 | 0.7 | 1 | 308 |
 | fr/confidentialite.html | land | 29.1 | 8.7 | 13.4 | 0.5 | 10 | 208 |
 | pl/polityka-prywatnosci.html | land | 28.7 | 8.8 | 13.4 | 0.5 | 10 | 216 |
-| de/datenschutz.html | land | 28.6 | 8.7 | 13.4 | 0.5 | 10 | 209 |
+| de/datenschutz.html | land | 28.6 | 8.6 | 13.4 | 0.5 | 10 | 209 |
 | es/privacidad.html | land | 28.6 | 8.6 | 13.4 | 0.5 | 10 | 208 |
 | proekty/yablu-rest.html | land | 28.6 | 7.1 | 2.1 | 0.7 | 1 | 301 |
 | en/privacy-policy.html | land | 28.2 | 8.4 | 13.4 | 0.5 | 10 | 217 |
