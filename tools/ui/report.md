@@ -585,10 +585,10 @@
 | kabinet.html | other | 47.3 | 12.7 | 32.5 | 0.7 | 14 | 246 |
 | kabinet/obrane.html | other | 47.3 | 12.7 | 32.5 | 0.7 | 14 | 247 |
 | remont-vannoi-kimnaty-kyiv.html | land | 47.3 | 12.6 | 13.6 | 0.5 | 7 | 441 |
-| ru/avtorskiy-i-tehnicheskiy-nadzor-kiev.html | land | 47.3 | 12.7 | 13.6 | 0.5 | 7 | 424 |
+| ru/avtorskiy-i-tehnicheskiy-nadzor-kiev.html | land | 47.3 | 12.6 | 13.6 | 0.5 | 7 | 424 |
 | remont-taunkhausa-kyiv.html | land | 47.2 | 12.7 | 13.6 | 0.5 | 7 | 420 |
 | ru/remont-taunhausa-kiev.html | land | 47.2 | 12.7 | 13.6 | 0.5 | 7 | 420 |
-| avtorskyi-i-tekhnichnyi-nahliad-kyiv.html | land | 47.1 | 12.7 | 13.6 | 0.5 | 7 | 424 |
+| avtorskyi-i-tekhnichnyi-nahliad-kyiv.html | land | 47.1 | 12.6 | 13.6 | 0.5 | 7 | 424 |
 | blog/remont-kukhni-pid-kliuch-z-choho-pochaty.html | article | 47.1 | 13.1 | 14.4 | 0.5 | 7 | 360 |
 | fr/a-propos.html | land | 47.1 | 12.7 | 13.6 | 0.5 | 7 | 526 |
 | es/sobre-nosotros.html | land | 47.0 | 12.6 | 13.6 | 0.5 | 7 | 531 |
@@ -656,7 +656,7 @@
 | en/interior-design.html | land | 43.2 | 11.7 | 13.9 | 0.5 | 7 | 499 |
 | es/paisajismo.html | land | 43.2 | 12.1 | 13.6 | 0.9 | 7 | 526 |
 | en/landscape-design.html | land | 43.1 | 12.0 | 13.6 | 0.9 | 7 | 541 |
-| pl/projektowanie-ogrodow.html | land | 43.1 | 12.5 | 13.6 | 0.9 | 7 | 534 |
+| pl/projektowanie-ogrodow.html | land | 43.1 | 12.4 | 13.6 | 0.9 | 7 | 534 |
 | ar/office-renovation.html | land | 43.0 | 11.2 | 13.6 | 0.5 | 7 | 390 |
 | de/gartengestaltung.html | land | 42.9 | 12.1 | 13.6 | 0.9 | 7 | 527 |
 | ru/dizayn-i-remont-bucha.html | land | 42.9 | 12.0 | 13.6 | 0.5 | 7 | 349 |
@@ -713,7 +713,7 @@
 | dyzain-i-remont-chernivtsi.html | land | 41.6 | 11.6 | 13.6 | 0.5 | 7 | 340 |
 | dyzain-i-remont-fastiv.html | land | 41.6 | 11.6 | 13.6 | 0.5 | 7 | 345 |
 | dyzain-i-remont-khmelnytskyi.html | land | 41.6 | 11.6 | 13.6 | 0.5 | 7 | 343 |
-| dyzain-i-remont-rivne.html | land | 41.6 | 11.7 | 13.6 | 0.5 | 7 | 342 |
+| dyzain-i-remont-rivne.html | land | 41.6 | 11.6 | 13.6 | 0.5 | 7 | 342 |
 | dyzain-i-remont-vinnytsia.html | land | 41.6 | 11.6 | 13.6 | 0.5 | 7 | 340 |
 | dyzain-i-remont-zhytomyr.html | land | 41.6 | 11.6 | 13.6 | 0.5 | 7 | 342 |
 | ru/dizayn-i-remont-chernovtsy.html | land | 41.6 | 11.6 | 13.6 | 0.5 | 7 | 340 |
@@ -808,7 +808,7 @@
 | es/diseno-interiores-piso.html | land | 38.1 | 10.1 | 13.6 | 0.5 | 7 | 376 |
 | fr/designer-interieur.html | land | 38.0 | 10.3 | 13.6 | 0.5 | 7 | 371 |
 | pl/blog.html | other | 38.0 | 10.4 | 13.5 | 0.5 | 6 | 270 |
-| zh/office-renovation.html | land | 38.0 | 11.1 | 13.6 | 0.5 | 7 | 392 |
+| zh/office-renovation.html | land | 38.0 | 11.0 | 13.6 | 0.5 | 7 | 392 |
 | de/wohnungsdesign.html | land | 37.9 | 10.3 | 13.6 | 0.5 | 7 | 380 |
 | es/disenador-interiores.html | land | 37.9 | 10.2 | 13.6 | 0.5 | 7 | 372 |
 | fr/architecture-interieur.html | land | 37.9 | 10.5 | 13.6 | 0.5 | 7 | 367 |

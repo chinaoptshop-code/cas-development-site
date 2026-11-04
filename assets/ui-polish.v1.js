@@ -105,6 +105,60 @@ function imgFade(){
   im.addEventListener('load',done,{once:true});im.addEventListener('error',done,{once:true});
  });
 }
-function run(){[expanders,scrollers,reveal,imgFade].forEach(function(f){try{f()}catch(e){}})}
+/* Стрічки фото (.xs-st — стрічка під hero й галереї проєктів, .vgrid — «Відео з обʼєктів» на телефоні, .strip): повільна автопрокрутка
+   ~25 px/с безшовним колом (копія кадрів — aria-hidden, без фокуса), лише в кадрі (IntersectionObserver) і на видимій вкладці; пауза при наведенні,
+   фокусі, тачі/колесі (9 с), кнопка ❚❚/▶ (44 px, aria-label); prefers-reduced-motion — статично. Висота блоку не змінюється (CLS 0). Михайло 03.11.2026. */
+function marquee(){
+ if(RM||!('IntersectionObserver' in W)||!W.requestAnimationFrame)return;
+ var L=({uk:['Пауза прокрутки фото','Прокручувати фото'],ru:['Пауза прокрутки фото','Прокручивать фото'],en:['Pause photo scrolling','Play photo scrolling'],
+  es:['Pausar desplazamiento de fotos','Reanudar desplazamiento de fotos'],zh:['暂停照片滚动','继续照片滚动'],pl:['Wstrzymaj przewijanie zdjęć','Wznów przewijanie zdjęć'],
+  de:['Foto-Lauf anhalten','Foto-Lauf starten'],fr:['Mettre le défilement en pause','Relancer le défilement'],ar:['إيقاف تمرير الصور','تشغيل تمرير الصور']})[(d.documentElement.lang||'uk').slice(0,2)]||['Pause','Play'];
+ var list=$$('.xs-st,.vgrid,.strip');if(!list.length)return;
+ var st=d.createElement('style');
+ st.textContent='.mq-bar{position:relative;height:0;z-index:3}.mq-ap{position:absolute;top:8px;inset-inline-end:8px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(191,145,72,.7);background:rgba(8,7,9,.62);color:#EDE8DF;font:600 13px/1 system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}.mq-ap:focus-visible{outline:2px solid #BF9148;outline-offset:2px}.mq-run{scroll-snap-type:none!important;scroll-behavior:auto!important}';
+ d.head.appendChild(st);
+ list.forEach(function(sc){
+  if(sc.__mq)return;sc.__mq=1;
+  var items=Array.prototype.filter.call(sc.children,function(c){return c.nodeType===1});
+  if(items.length<3)return;
+  var cl=[],half=0,pos=0,live=false,stop=false,hover=false,hold=0,raf=0,lt=0,tm=0,bar=null,btn=null,rtl=W.getComputedStyle(sc).direction==='rtl';
+  function noId(x){if(x.id)x.removeAttribute('id')}
+  function setup(){
+   if(cl.length)return true;
+   if(sc.scrollWidth<=sc.clientWidth+8)return false; // усе й так видно (напр. .vgrid на десктопі) — не крутимо
+   items.forEach(function(it){var c=it.cloneNode(true);c.setAttribute('aria-hidden','true');c.classList.add('mq-c');
+    noId(c);$$('[id]',c).forEach(noId);
+    $$('a,button,[tabindex]',c).concat(c.matches('a,button')?[c]:[]).forEach(function(x){x.setAttribute('tabindex','-1')});
+    $$('img',c).forEach(function(im){im.classList.remove('ui-img','ui-img-in')});
+    sc.appendChild(c);cl.push(c)});
+   bar=d.createElement('div');bar.className='mq-bar';btn=d.createElement('button');btn.type='button';btn.className='mq-ap';bar.appendChild(btn);
+   sc.parentNode.insertBefore(bar,sc);lab();
+   sc.classList.add('mq-run'); // без scroll-snap, поки стрічка рухається й на паузі: інакше на паузі кадр «відскакує» до краю
+   btn.addEventListener('click',function(){stop=!stop;lab();if(!stop){hold=0;sync()}go()});
+   return true;
+  }
+  function lab(){btn.setAttribute('aria-label',L[stop?1:0]);btn.title=L[stop?1:0];btn.innerHTML='<span aria-hidden="true">'+(stop?'▶':'❚❚')+'</span>';btn.setAttribute('aria-pressed',stop?'true':'false')}
+  function measure(){half=Math.abs(cl[0].offsetLeft-items[0].offsetLeft)}
+  function sync(){pos=Math.abs(sc.scrollLeft);measure();if(half&&pos>=half)pos-=half}
+  function act(){return live&&!stop&&!hover&&!d.hidden&&Date.now()>=hold}
+  function frame(ts){
+   raf=0;if(!act()){lt=0;return}
+   var dt=lt?Math.min(50,ts-lt):16;lt=ts;
+   pos+=dt*0.025;if(half&&pos>=half)pos-=half;
+   var r=W.devicePixelRatio||1,v=Math.round(pos*r)/r;sc.scrollLeft=rtl?-v:v;
+   raf=W.requestAnimationFrame(frame);
+  }
+  function go(){clearTimeout(tm);if(act()){if(!raf){sync();raf=W.requestAnimationFrame(frame)}}else if(live&&!stop&&!hover&&Date.now()<hold)tm=setTimeout(go,hold-Date.now()+50)}
+  function pause(ms){hold=Math.max(hold,Date.now()+ms);go()}
+  sc.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')hover=true});
+  sc.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse'){hover=false;pause(600)}});
+  ['touchstart','pointerdown','wheel'].forEach(function(n){sc.addEventListener(n,function(){pause(9000)},{passive:true})});
+  sc.addEventListener('focusin',function(){hover=true});sc.addEventListener('focusout',function(){hover=false;pause(600)});
+  d.addEventListener('visibilitychange',function(){go()});
+  W.addEventListener('resize',function(){if(cl.length){measure();go()}},{passive:true});
+  new IntersectionObserver(function(es){live=es[es.length-1].isIntersecting;if(live&&!setup())live=false;go()},{rootMargin:'0px 0px -10% 0px'}).observe(sc);
+ });
+}
+function run(){[expanders,scrollers,reveal,imgFade,marquee].forEach(function(f){try{f()}catch(e){}})}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',run);else run();
 })();
