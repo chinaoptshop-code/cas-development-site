@@ -18,6 +18,7 @@
 - Каталог компонентів — `/styleguide/` (noindex). Нові сторінки — лише з цих блоків.
 - Шрифти — тільки власні з `/fonts/` (Cormorant Garamond + Manrope), без Google Fonts.
 - Форма заявки — спільний `/assets/lead-form.v1.js` з `data-service`/`data-source` на `form#of`; успіх лише після 2xx.
+- Microsoft Clarity — лише після першої дії відвідувача (scroll/pointerdown/keydown/touchstart), без таймера після load (Михайло 03.11.2026); сніпет — `CLARITY` у `tools/site/chrome.py` (+ `tools/blog/template-uk.html`), руками не вставляти.
 - H1 і перше фото не анімувати; одна `fetchpriority="high"` на сторінку; у кожного `<img>` — width/height і alt.
 - Навігація — лише `<a href>`. Osocor/Osokorky і Aqulla (інший бренд, Михайло 01.11.2026) на сайті не показувати.
 - Шапка й футер — одні на весь сайт: розмітка з `tools/site/chrome.py` (усі генератори викликають `chrome.apply()`;
@@ -76,6 +77,7 @@
   Ілюстрації плиток — `tools/site/tiles/<ключ data-i>.webp` 480×320 ≤40 КБ (Mac mini, FLUX локально) → `python3 tools/site/ux.py` копіює в `/img/tiles/` і вмикає.
 - Карти (/portfolio «Карта проєктів», карта офісу в контактах усіх мов): `tools/site/casmap.py` (точки — лише центр міста/регіону, без адрес клієнтів),
   MapLibre GL JS self-hosted у `assets/vendor/`, тайли OpenFreeMap без ключа; постери `img/map/` — `python3 tools/site/casmap.py --posters`.
+- Широкі екрани (Михайло 03.11.2026): флюїдний масштаб — блок «Широкі екрани» в кінці `/assets/site-chrome.v1.css` (≥1367 px): `html{font-size:clamp(…)}` (16 px до 1366 → ~19 на 1920 → ~22 на 2560, стеля 24) і `--cw` — ширина контейнера (~1200/1490/1870 на 1440/1920/2560) для `.w`, шапки, футера, LIGHT-сітки, Оздоби. Нові розміри — у rem/em (не px), контейнери — `max-width:var(--cw)`, текст — ≤40em; перевірка — Playwright 360…2560/3840 без горизонтальної прокрутки. LIGHT-плитки — 12-колонкова сітка main (2/3/4/6 плиток у ряд з 0/760/1100/2200 px); неповний останній ряд серії ділить ряд порівну через `style="--s2/--s3/--s4/--s6"`, які ставить `ux.py` (`_spans`) — руками не писати.
 - Зображення: AVIF-копії робить `tools/img/build.py` (нові фото в img/ — запустити його); `<picture>` з AVIF підставляє
   деплой (`tools/img/picture.py`), у репозиторії HTML лишається з простими `<img>` .webp.
 

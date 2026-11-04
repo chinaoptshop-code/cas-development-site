@@ -285,7 +285,8 @@ def _light_custom(m, rel):
     return m
 
 
-STRIP = [re.compile(r'\sdata-i="[a-z0-9]{2}"'), re.compile(r'\sdata-c="[tsqglxhk]"'), re.compile(r'\sdata-a(?:="[si]")?(?=[\s>])'),
+SPAN_RX = re.compile(r'\sstyle="(?:--s[2346]:\d+;?)+"')
+STRIP = [SPAN_RX, re.compile(r'\sdata-i="[a-z0-9]{2}"'), re.compile(r'\sdata-c="[tsqglxhk]"'), re.compile(r'\sdata-a(?:="[si]")?(?=[\s>])'),
          re.compile(r'\sdata-xs="[^"]*"'), CALC_RX]
 UNWRAP = re.compile(r'<div data-c="l">(<(ul|ol)>.*?</\2>)</div>', re.S)
 
@@ -327,6 +328,60 @@ def _collapse_type(sid, cls, body):
         if len(plain(txt)) > 420 and len(re.findall(r'<p\b', body)) >= 1:
             return 't'
     return None
+
+
+# ── сітка плиток (03.11.2026, «блочність»): main — 12 колонок, плитка займає 12/N (N = 2 / 3 з 760 px / 4 з 1100 / 6 з 2200,
+# CSS — «LIGHT-сітка» в site-chrome.v1.css). Тут — неповний останній ряд кожної серії плиток: його плитки ділять ряд порівну
+# (style="--s2:12;--s4:6…" на секції-плитці), щоб не лишалось порожніх смуг і дрібних одиноких плиток.
+VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr'}
+TAG_RX = re.compile(r'<!--.*?-->|<(script|style)\b[^>]*>.*?</\1>|<(/?)([a-zA-Z][\w-]*)\b[^>]*?(/?)>', re.S)
+
+
+def _spans(m):
+    k = m.find('>', m.find('<main')) + 1
+    kids, depth = [], 0  # (позиція кінця відкривного тегу, тег, чи плитка)
+    for x in TAG_RX.finditer(m, k):
+        if x.group(1) or not x.group(3):
+            if x.group(1) and depth == 0:
+                kids.append((x.end(), x.group(1), None))  # script/style — прозорі для сітки
+            continue
+        tag = x.group(3).lower()
+        if x.group(2):
+            depth -= 1
+            if depth < 0:
+                break
+            continue
+        if depth == 0:
+            otag = x.group(0)
+            tile = tag in ('section', 'div') and ('data-c="x"' in otag or re.match(r'\s*<div class="w(?:\s[^"]*)?"[^>]*data-c="x"', m[x.end():]))
+            kids.append((x.start(), otag, bool(tile)))
+        if tag not in VOID and not x.group(4):
+            depth += 1
+    runs, cur = [], []
+    for pos, otag, tile in kids:
+        if tile is None:
+            continue
+        if tile:
+            cur.append((pos, otag))
+        elif cur:
+            runs.append(cur); cur = []
+    if cur:
+        runs.append(cur)
+    edits = []
+    for run in runs:
+        n = len(run)
+        for i, (pos, otag) in enumerate(run):
+            props = []
+            for cols in (2, 3, 4, 6):
+                full = n // cols * cols
+                r = n - full
+                if n > 1 and i >= full and r and 12 % r == 0 and 12 // r != 12 // cols:
+                    props.append(f'--s{cols}:{12 // r}')
+            if props and 'style=' not in otag:
+                edits.append((pos + len(otag) - 1, ' style="' + ';'.join(props) + '"'))
+    for at, ins in reversed(edits):
+        m = m[:at] + ins + m[at:]
+    return m
 
 
 def _collapse(m, light=False):
@@ -409,6 +464,8 @@ def apply(s, rel):
         m = _light_custom(_light_hero(m, rel, lm.group(1) if lm else 'uk', s), rel)
         m = re.sub(r'(<!--cas:tldr-->(?:(?!<!--/cas:tldr-->).)*?)<p style="margin:0">', r'\1<p style="margin:0" data-c="h">', m, count=1, flags=re.S)
     m = _collapse(m, light)
+    if light:
+        m = _spans(m)
     if re.match(r'(?:[a-z]{2}/)?blog/', rel):
         m = _article_lists(m)
     return s[:i] + _badges(m + rest) + s[j:]
