@@ -505,7 +505,7 @@
 | blog/suchasnyi-minimalizm-teplyi-interier.html | article | 49.6 | 14.1 | 14.4 | 0.5 | 7 | 379 |
 | blog/yak-vybraty-remontnu-bryhadu.html | article | 49.6 | 14.0 | 14.4 | 0.5 | 7 | 383 |
 | ru/remont-kvartiry-zhk-novopecherskie-lipki.html | land | 49.6 | 13.2 | 13.6 | 0.5 | 7 | 431 |
-| en/about.html | land | 49.4 | 13.4 | 13.6 | 0.5 | 7 | 559 |
+| en/about.html | land | 49.4 | 13.5 | 13.6 | 0.5 | 7 | 559 |
 | ru/dom-pod-klyuch-koncha-zaspa.html | land | 49.4 | 13.1 | 13.6 | 0.5 | 7 | 464 |
 | remont-kvartyry-zhk-novopecherski-lypky.html | land | 49.3 | 13.3 | 13.6 | 0.5 | 7 | 431 |
 | blog/yak-splanuvaty-bazu-vidpochynku.html | article | 49.2 | 13.9 | 14.4 | 0.5 | 7 | 386 |
@@ -656,7 +656,7 @@
 | en/interior-design.html | land | 43.2 | 11.7 | 13.9 | 0.5 | 7 | 499 |
 | es/paisajismo.html | land | 43.2 | 12.1 | 13.6 | 0.9 | 7 | 526 |
 | en/landscape-design.html | land | 43.1 | 12.0 | 13.6 | 0.9 | 7 | 541 |
-| pl/projektowanie-ogrodow.html | land | 43.1 | 12.4 | 13.6 | 0.9 | 7 | 534 |
+| pl/projektowanie-ogrodow.html | land | 43.1 | 12.5 | 13.6 | 0.9 | 7 | 534 |
 | ar/office-renovation.html | land | 43.0 | 11.2 | 13.6 | 0.5 | 7 | 390 |
 | de/gartengestaltung.html | land | 42.9 | 12.1 | 13.6 | 0.9 | 7 | 527 |
 | ru/dizayn-i-remont-bucha.html | land | 42.9 | 12.0 | 13.6 | 0.5 | 7 | 349 |
@@ -707,7 +707,7 @@
 | ru/dizayn-i-remont-cherkassy.html | land | 41.7 | 11.6 | 13.6 | 0.5 | 7 | 341 |
 | ru/dizayn-i-remont-fastov.html | land | 41.7 | 11.6 | 13.6 | 0.5 | 7 | 345 |
 | ru/dizayn-i-remont-ternopol.html | land | 41.7 | 11.7 | 13.6 | 0.5 | 7 | 342 |
-| ru/dizayn-i-remont-vyshgorod.html | land | 41.7 | 11.7 | 13.6 | 0.5 | 7 | 343 |
+| ru/dizayn-i-remont-vyshgorod.html | land | 41.7 | 11.6 | 13.6 | 0.5 | 7 | 343 |
 | zh/resort-turnkey.html | land | 41.7 | 12.7 | 13.6 | 2.4 | 7 | 440 |
 | dyzain-i-remont-boiarka.html | land | 41.6 | 11.7 | 13.6 | 0.5 | 7 | 343 |
 | dyzain-i-remont-chernivtsi.html | land | 41.6 | 11.6 | 13.6 | 0.5 | 7 | 340 |
@@ -801,14 +801,14 @@
 | pl/projekt-wnetrza-mieszkania.html | land | 38.5 | 10.6 | 13.6 | 0.5 | 7 | 393 |
 | pl/remont-kuchni.html | land | 38.5 | 10.9 | 13.6 | 0.5 | 7 | 403 |
 | pl/realizacja-projektu.html | land | 38.4 | 11.0 | 13.6 | 0.5 | 7 | 390 |
-| de/kuechenrenovierung.html | land | 38.3 | 10.7 | 13.6 | 0.5 | 7 | 391 |
+| de/kuechenrenovierung.html | land | 38.3 | 10.6 | 13.6 | 0.5 | 7 | 391 |
 | pl/projektowanie-wnetrz.html | land | 38.3 | 11.0 | 13.6 | 0.5 | 7 | 385 |
 | de/umsetzung-designprojekt.html | land | 38.2 | 10.8 | 13.6 | 0.5 | 7 | 378 |
 | fr/design-appartement.html | land | 38.2 | 10.2 | 13.6 | 0.5 | 7 | 376 |
 | es/diseno-interiores-piso.html | land | 38.1 | 10.1 | 13.6 | 0.5 | 7 | 376 |
 | fr/designer-interieur.html | land | 38.0 | 10.3 | 13.6 | 0.5 | 7 | 371 |
 | pl/blog.html | other | 38.0 | 10.4 | 13.5 | 0.5 | 6 | 270 |
-| zh/office-renovation.html | land | 38.0 | 11.0 | 13.6 | 0.5 | 7 | 392 |
+| zh/office-renovation.html | land | 38.0 | 11.1 | 13.6 | 0.5 | 7 | 392 |
 | de/wohnungsdesign.html | land | 37.9 | 10.3 | 13.6 | 0.5 | 7 | 380 |
 | es/disenador-interiores.html | land | 37.9 | 10.2 | 13.6 | 0.5 | 7 | 372 |
 | fr/architecture-interieur.html | land | 37.9 | 10.5 | 13.6 | 0.5 | 7 | 367 |
