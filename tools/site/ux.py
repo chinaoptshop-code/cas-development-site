@@ -179,6 +179,7 @@ LIGHT = _light_pages()
 # «Про студію» всіх мов: вступ (rich split, div.xs-tx) — видно лід у 3 рядки, решта абзаців і цінності — за «Читати далі» (data-c="t")
 ABOUT = {i18n.path_to_file(p) for p in i18n.clusters().get('about', {}).values()}
 CALC = {l: p for l, p in i18n.clusters().get('calculator', {}).items() if os.path.exists(os.path.join(ROOT, i18n.path_to_file(p)))}
+QUIZ_ALT = i18n.clusters().get('renovation', {})  # «Порахувати» без калькулятора мови — квіз ремонту під ключ
 PRICE_RX = re.compile(r'(?:(?<![\w$])(?:від|от|from|desde|od|ab|à partir de|dès|من)\s+)\$\s?\d+(?:[\s,]\d{3})*(?:\s?/\s?(?:м²|m²|м2|م²|сотку))?'
                       r'|\$\s?\d+(?:[\s,]\d{3})*(?:\s?/\s?(?:m²|㎡))?\s?起', re.I)
 CALC_RX = re.compile(r'\n?\s*<a class="btn ux-calc" href="[^"]*">[^<]*</a>')
@@ -294,6 +295,8 @@ def _light_hero(m, rel, lang, full):
         href = '#kalkulyator'
     elif CALC.get(lang) and i18n.path_to_file(CALC[lang]) != rel:
         href = CALC[lang]
+    elif QUIZ_ALT.get(lang) and i18n.path_to_file(QUIZ_ALT[lang]) in _quiz_pages() and i18n.path_to_file(QUIZ_ALT[lang]) != rel:
+        href = QUIZ_ALT[lang] + '#kalkulyator'  # мови без сторінки калькулятора: квіз на «Ремонт під ключ»
     else:
         href = '#zayavka'
     t = UX.get(lang, UX.get('en', UX['uk']))
@@ -556,6 +559,8 @@ def apply(s, rel):
         m = _spans(m)
     if re.match(r'(?:[a-z]{2}/)?blog/', rel):
         m = _article_lists(m)
+    if re.match(r'(?:[a-z]{2}/)?index\.html$', rel):  # головні: без бейджів «Анімація реалізації» — сцена вже на сторінці (Михайло 04.11.2026, «ясність»)
+        return s[:i] + m + rest + s[j:]
     return s[:i] + _badges(m + rest) + s[j:]
 
 

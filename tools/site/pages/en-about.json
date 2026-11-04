@@ -54,60 +54,6 @@
    ]
   },
   {
-   "t": "strip",
-   "kicker": "An example of our work",
-   "h2": "Petrivtsi House — a 320 m² private house in Petrivtsi",
-   "p": "Interior design project: living room with a fireplace, kitchen and dining area, bedrooms, bathrooms, dressing room, study and laundry.",
-   "items": [
-    {
-     "img": "img/p/1co4thni1Q8_1J-900.webp",
-     "srcset": "/img/p/1co4thni1Q8_1J-400.webp 400w, /img/p/1co4thni1Q8_1J-900.webp 900w",
-     "alt": "Living room with a fireplace — Petrivtsi House, a CAS Development project",
-     "href": "/proekty/petrivtsi-house"
-    },
-    {
-     "img": "img/p/1SGDKLtQtxQg-k-900.webp",
-     "srcset": "/img/p/1SGDKLtQtxQg-k-400.webp 400w, /img/p/1SGDKLtQtxQg-k-900.webp 900w",
-     "alt": "Dining room — Petrivtsi House, a CAS Development project",
-     "href": "/proekty/petrivtsi-house"
-    },
-    {
-     "img": "img/p/1nqFOoTfr5BDtv-900.webp",
-     "srcset": "/img/p/1nqFOoTfr5BDtv-400.webp 400w, /img/p/1nqFOoTfr5BDtv-900.webp 900w",
-     "alt": "Living room with a fireplace — Petrivtsi House, a CAS Development project",
-     "href": "/proekty/petrivtsi-house"
-    },
-    {
-     "img": "img/p/1p_MqveKjiZ1Y9-900.webp",
-     "srcset": "/img/p/1p_MqveKjiZ1Y9-400.webp 400w, /img/p/1p_MqveKjiZ1Y9-900.webp 900w",
-     "alt": "Living room with a fireplace — Petrivtsi House, a CAS Development project",
-     "href": "/proekty/petrivtsi-house"
-    },
-    {
-     "img": "img/p/1jbfw_MkM3Br25-900.webp",
-     "srcset": "/img/p/1jbfw_MkM3Br25-400.webp 400w, /img/p/1jbfw_MkM3Br25-900.webp 900w",
-     "alt": "Kitchen and dining area — Petrivtsi House, a CAS Development project",
-     "href": "/proekty/petrivtsi-house"
-    },
-    {
-     "img": "img/p/1x7SPmVpbqnuTE-900.webp",
-     "srcset": "/img/p/1x7SPmVpbqnuTE-400.webp 400w, /img/p/1x7SPmVpbqnuTE-900.webp 900w",
-     "alt": "Kitchen — Petrivtsi House, a CAS Development project",
-     "href": "/proekty/petrivtsi-house"
-    },
-    {
-     "img": "img/p/1c0MGdozaefvAa-900.webp",
-     "srcset": "/img/p/1c0MGdozaefvAa-400.webp 400w, /img/p/1c0MGdozaefvAa-900.webp 900w",
-     "alt": "Kitchen and dining area — Petrivtsi House, a CAS Development project",
-     "href": "/proekty/petrivtsi-house"
-    }
-   ],
-   "link": [
-    "/proekty/petrivtsi-house",
-    "See the whole project →"
-   ]
-  },
-  {
    "t": "facts",
    "h2": "CAS Development in numbers",
    "items": [
@@ -127,36 +73,6 @@
      "±5%",
      "estimate accuracy when we do the renovation"
     ]
-   ]
-  },
-  {
-   "t": "cards",
-   "h2": "CAS Development in brief",
-   "items": [
-    {
-     "h": "Who we are",
-     "p": "An interior design, renovation, construction and turnkey furnishing studio and general contractor. Founder and CEO — Mykhailo; 150+ projects since 2016.",
-     "href": "/en/services",
-     "more": "All services"
-    },
-    {
-     "h": "Where we work",
-     "p": "Office at 44 Antonovycha St., Kyiv. Kyiv and the region; renovation and construction in all regions of Ukraine and in Europe.",
-     "href": "/en/contact",
-     "more": "Contact"
-    },
-    {
-     "h": "What it costs",
-     "p": "Design project from $30/m² (min. $2,500), renovation from $550/m², offices from $350/m², turnkey house from $1,100/m².",
-     "href": "/en/renovation-cost-calculator",
-     "more": "Calculator"
-    },
-    {
-     "h": "Who does the work",
-     "p": "Three in-house crews of our own staff, not subcontractors. 36-month warranty; the estimate holds within ±5% if CAS does the renovation.",
-     "href": "/en/contract-warranty-payment",
-     "more": "Contract and warranty"
-    }
    ]
   },
   {
@@ -378,25 +294,6 @@
      1
     ]
    ]
-  },
-  {
-   "t": "cta",
-   "h2": "Let’s discuss your project",
-   "p": [
-    "Tell us about your property — we will suggest a solution and estimate an indicative budget. The phone consultation is free."
-   ],
-   "btns": [
-    [
-     "/en/contact",
-     "Send a request",
-     1
-    ],
-    [
-     "tel:+380978667755",
-     "+380 97 866 77 55"
-    ]
-   ],
-   "msgs": true
   },
   {
    "t": "rel",

@@ -62,29 +62,19 @@
    "t": "map"
   },
   {
-   "t": "cta",
+   "t": "text",
    "h2": "Möchten Sie das Budget vorab kennen?",
    "p": [
-    "Design ab $30/m², Renovierung ab $550/m², Büros ab $350/m², Hausbau ab $600/m², Einrichtung ab $250/m². Die endgültige Summe nennt der Kostenvoranschlag nach der Beratung."
-   ],
-   "btns": [
-    [
-     "/de/renovierungskosten-rechner",
-     "Rechner öffnen →"
-    ]
+    "Design ab $30/m², Renovierung ab $550/m², Büros ab $350/m², Hausbau ab $600/m², Einrichtung ab $250/m². Die endgültige Summe nennt der Kostenvoranschlag nach der Beratung.",
+    "[Rechner öffnen →](/de/renovierungskosten-rechner)"
    ]
   },
   {
-   "t": "cta",
+   "t": "text",
    "h2": "Vertrag, Garantie, Zahlung",
    "p": [
-    "Wir arbeiten mit Vertrag, Kostenvoranschlag und Abnahmeprotokollen je Etappe; Garantie auf die Arbeiten — 36 Monate; Zahlung nach einem Plan, der zu Ihnen passt, Start ab 10 % Anzahlung."
-   ],
-   "btns": [
-    [
-     "/de/faq",
-     "Häufige Fragen →"
-    ]
+    "Wir arbeiten mit Vertrag, Kostenvoranschlag und Abnahmeprotokollen je Etappe; Garantie auf die Arbeiten — 36 Monate; Zahlung nach einem Plan, der zu Ihnen passt, Start ab 10 % Anzahlung.",
+    "[Häufige Fragen →](/de/faq)"
    ]
   },
   {

@@ -273,214 +273,43 @@
    ]
   },
   {
-   "t": "split",
-   "img": "assets/konfigurator/teaser-600.webp",
-   "srcset": "/assets/konfigurator/teaser-600.webp 600w, /assets/konfigurator/teaser-1200.webp 1200w",
-   "sizes": "(max-width:860px) 100vw, 640px",
-   "alt": "One living room in four styles: Japandi, Modern classic, Dark luxury, Warm minimal",
-   "href": "/konfigurator",
-   "kicker": "New · configurator",
-   "h2": "Try a style on a real interior",
-   "p": [
-    "Change walls, floors, fabrics, stone and metal in our projects and see the result instantly. Japandi, Modern classic, Dark luxury or Warm minimal: choose yours and get a project in that style."
-   ],
-   "btn": [
-    "/konfigurator",
-    "Open the configurator →"
-   ]
-  },
-  {
-   "t": "strip",
-   "h2": "Our work",
-   "items": [
-    {
-     "img": "img/p/1oYoYf3AikpzS0-900.webp",
-     "srcset": "/img/p/1oYoYf3AikpzS0-400.webp 400w, /img/p/1oYoYf3AikpzS0-900.webp 900w",
-     "alt": "Lounge — Yacht Restaurant",
-     "href": "/proekty/yacht-restaurant",
-     "label": "Yacht Restaurant"
-    },
-    {
-     "img": "img/p/1dCBMYs58M2hfy-900.webp",
-     "srcset": "/img/p/1dCBMYs58M2hfy-400.webp 400w, /img/p/1dCBMYs58M2hfy-900.webp 900w",
-     "alt": "Restaurant dining hall — Yacht Restaurant",
-     "href": "/proekty/yacht-restaurant",
-     "label": "Yacht Restaurant"
-    },
-    {
-     "img": "img/p/1432efN35q6M6V-900.webp",
-     "srcset": "/img/p/1432efN35q6M6V-400.webp 400w, /img/p/1432efN35q6M6V-900.webp 900w",
-     "alt": "Restaurant dining hall — Yacht Restaurant",
-     "href": "/proekty/yacht-restaurant",
-     "label": "Yacht Restaurant"
-    },
-    {
-     "img": "img/p/1fFKUPdtKlwDtW-900.webp",
-     "srcset": "/img/p/1fFKUPdtKlwDtW-400.webp 400w, /img/p/1fFKUPdtKlwDtW-900.webp 900w",
-     "alt": "Living room — Linden Penthouse",
-     "href": "/proekty/linden-penthouse",
-     "label": "Linden Penthouse"
-    },
-    {
-     "img": "img/p/1iQklrtkJCKrmh-900.webp",
-     "srcset": "/img/p/1iQklrtkJCKrmh-400.webp 400w, /img/p/1iQklrtkJCKrmh-900.webp 900w",
-     "alt": "Living room — Linden Penthouse",
-     "href": "/proekty/linden-penthouse",
-     "label": "Linden Penthouse"
-    },
-    {
-     "img": "img/p/17-m1K-FeUWgxA-900.webp",
-     "srcset": "/img/p/17-m1K-FeUWgxA-400.webp 400w, /img/p/17-m1K-FeUWgxA-900.webp 900w",
-     "alt": "Kitchen-living room — Hoda Estate",
-     "href": "/proekty/hoda-estate",
-     "label": "Hoda Estate"
-    },
-    {
-     "img": "img/p/1ray7lK4zBxSdq-900.webp",
-     "srcset": "/img/p/1ray7lK4zBxSdq-400.webp 400w, /img/p/1ray7lK4zBxSdq-900.webp 900w",
-     "alt": "Kitchen and dining area — Hoda Estate",
-     "href": "/proekty/hoda-estate",
-     "label": "Hoda Estate"
-    },
-    {
-     "img": "img/p/1f3m1_qf4mDosh-900.webp",
-     "srcset": "/img/p/1f3m1_qf4mDosh-400.webp 400w, /img/p/1f3m1_qf4mDosh-900.webp 900w",
-     "alt": "Living room — Hoda Estate",
-     "href": "/proekty/hoda-estate",
-     "label": "Hoda Estate"
-    },
-    {
-     "img": "img/p/1SGDKLtQtxQg-k-900.webp",
-     "srcset": "/img/p/1SGDKLtQtxQg-k-400.webp 400w, /img/p/1SGDKLtQtxQg-k-900.webp 900w",
-     "alt": "Dining room — Petrivtsi House",
-     "href": "/proekty/petrivtsi-house",
-     "label": "Petrivtsi House"
-    },
-    {
-     "img": "img/p/1nqFOoTfr5BDtv-900.webp",
-     "srcset": "/img/p/1nqFOoTfr5BDtv-400.webp 400w, /img/p/1nqFOoTfr5BDtv-900.webp 900w",
-     "alt": "Living room with a fireplace — Petrivtsi House",
-     "href": "/proekty/petrivtsi-house",
-     "label": "Petrivtsi House"
-    },
-    {
-     "img": "img/p/18V9n96tOhjKjh-900.webp",
-     "srcset": "/img/p/18V9n96tOhjKjh-400.webp 400w, /img/p/18V9n96tOhjKjh-900.webp 900w",
-     "alt": "Living room — USA House",
-     "href": "/proekty/usa-house",
-     "label": "USA House"
-    },
-    {
-     "img": "img/p/1Ay_fJySA5Kzxg-900.webp",
-     "srcset": "/img/p/1Ay_fJySA5Kzxg-400.webp 400w, /img/p/1Ay_fJySA5Kzxg-900.webp 900w",
-     "alt": "Living room — USA House",
-     "href": "/proekty/usa-house",
-     "label": "USA House"
-    },
-    {
-     "img": "img/p/1L6z-fyorw1bnO-900.webp",
-     "srcset": "/img/p/1L6z-fyorw1bnO-400.webp 400w, /img/p/1L6z-fyorw1bnO-900.webp 900w",
-     "alt": "Kitchen — USA House",
-     "href": "/proekty/usa-house",
-     "label": "USA House"
-    }
-   ]
-  },
-  {
-   "t": "text",
+   "t": "facts",
+   "cls": "xs-trust",
    "h2": "Why clients choose CAS",
-   "p": [
-    "Design, renovation and supply are run by one company, so there are no gaps between contractors and no arguments about who is responsible. The estimate is prepared before work starts — and if our team does the renovation, the final cost stays within ±5% of it.",
-    "We work with clients in Ukraine, Europe and further afield: houses and villas have been designed for the USA and the UAE. The whole design process can run online, and the drawings are detailed enough for your local contractor.",
-    "Furniture, lighting and materials are sourced directly from manufacturers in China and made to order — colour, size, material and finish adapted to your project."
-   ]
-  },
-  {
-   "t": "steps",
-   "h2": "How we work",
    "items": [
     [
-     "Brief",
-     "A meeting or video call about the property, your lifestyle, budget and timeline."
+     "150+",
+     "projects since 2016"
     ],
     [
-     "Design project",
-     "Layout options, 3D visualisations and a full set of drawings."
+     "10+ years",
+     "of experience"
     ],
     [
-     "Estimate and contract",
-     "Price, timeline and payment stages fixed before work begins."
+     "36 mo.",
+     "warranty on works"
     ],
     [
-     "Renovation and supply",
-     "Our crews, material purchasing, photo reports every 1–2 weeks."
-    ],
-    [
-     "Handover",
-     "Furniture installed, space styled, 36-month warranty on works."
+     "3 crews",
+     "in-house, salaried"
     ]
-   ]
-  },
-  {
-   "t": "guarantees"
-  },
-  {
-   "t": "faq",
-   "h2": "Questions and answers",
-   "items": [
-    [
-     "How much does interior design cost?",
-     "From $30 per m², with a minimum project budget of $2,500. We confirm the exact price after the brief."
-    ],
-    [
-     "Can you design a home outside Ukraine?",
-     "Yes. The design can be done fully online, and the drawings and specifications are ready for your local contractor."
-    ],
-    [
-     "Do you also build?",
-     "Yes. Renovation of apartments and houses from $550 per m² (works and rough materials; finishing materials, furniture and appliances are separate, per the estimate), offices from $350 per m², house construction from $600 per m², turnkey with finishing from $1,100 per m²."
-    ],
-    [
-     "How do we get in touch?",
-     "Via WhatsApp, Telegram, Viber or the form below — we reply shortly."
-    ]
-   ]
-  },
-  {
-   "t": "cta",
-   "kicker": "Client reviews",
-   "score": "4,8",
-   "p": [
-    "The studio’s Google rating, based on reviews from clients we have already completed projects with."
    ],
-   "btns": [
+   "links": [
     [
-     "https://maps.google.com/?cid=15015666645432112566",
-     "Read reviews on Google",
-     1
+     "/en/about",
+     "How we work"
+    ],
+    [
+     "/en/contract-warranty-payment",
+     "Guarantees"
+    ],
+    [
+     "/en/faq",
+     "Questions and answers"
     ],
     [
      "https://maps.google.com/?cid=15015666645432112566",
-     "Leave a review"
-    ]
-   ]
-  },
-  {
-   "t": "cta",
-   "cls": "home-next",
-   "h2": "Shall we discuss your project?",
-   "p": [
-    "Leave your number — we will call back, ask about your property and suggest the next step. The phone consultation is free."
-   ],
-   "btns": [
-    [
-     "#zayavka",
-     "Leave your number",
-     1
-    ],
-    [
-     "/en/renovation-cost-calculator",
-     "Estimate the cost"
+     "Google reviews · 4.8★"
     ]
    ]
   }

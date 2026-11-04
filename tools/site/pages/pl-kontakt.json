@@ -62,29 +62,19 @@
    "t": "map"
   },
   {
-   "t": "cta",
+   "t": "text",
    "h2": "Chcesz poznać budżet z góry?",
    "p": [
-    "Projekt od $30/m², remont od $550/m², biura od $350/m², budowa od $600/m², umeblowanie od $250/m². Ostateczną kwotę podaje kosztorys po konsultacji."
-   ],
-   "btns": [
-    [
-     "/pl/kalkulator-remontu",
-     "Otwórz kalkulator →"
-    ]
+    "Projekt od $30/m², remont od $550/m², biura od $350/m², budowa od $600/m², umeblowanie od $250/m². Ostateczną kwotę podaje kosztorys po konsultacji.",
+    "[Otwórz kalkulator →](/pl/kalkulator-remontu)"
    ]
   },
   {
-   "t": "cta",
+   "t": "text",
    "h2": "Umowa, gwarancja, płatności",
    "p": [
-    "Pracujemy na podstawie umowy z kosztorysem i protokołami odbioru etapów; gwarancja na prace — 36 miesięcy; płatności według harmonogramu dopasowanego do Ciebie, start od 10% zaliczki."
-   ],
-   "btns": [
-    [
-     "/pl/faq",
-     "Częste pytania →"
-    ]
+    "Pracujemy na podstawie umowy z kosztorysem i protokołami odbioru etapów; gwarancja na prace — 36 miesięcy; płatności według harmonogramu dopasowanego do Ciebie, start od 10% zaliczki.",
+    "[Częste pytania →](/pl/faq)"
    ]
   },
   {

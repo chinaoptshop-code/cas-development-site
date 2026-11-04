@@ -18,13 +18,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # сторінка: (обʼєкт, послуга) за замовчуванням — kv/dim/kom/of, dyz/rem/bud/meb/kl ('' — без підказки)
 PAGES = {
-    'index.html': ('', ''),
     'remont-kvartyr-kyiv.html': ('kv', 'rem'),
     'remont-pid-klyuch-kyiv.html': ('kv', 'rem'),
     'vartist-remontu-kvartyry-kyiv.html': ('kv', 'rem'),
     'budivnytstvo-budynkiv-kyiv.html': ('dim', 'bud'),
     'vartist-budivnytstva-budynku-kyiv.html': ('dim', 'bud'),
-    'ru/index.html': ('', ''),
     'ru/remont-kvartir-kiev.html': ('kv', 'rem'),
     'ru/remont-pod-klyuch-kiev.html': ('kv', 'rem'),
     'ru/stoimost-remonta-kvartiry-kiev.html': ('kv', 'rem'),
@@ -40,11 +38,10 @@ PAGES = {
     'ru/dizayn-ofisa-kiev.html': ('of', 'dyz'),
     'ru/dizayn-ofisa-open-space-kiev.html': ('of', 'dyz'),
     'en/office-renovation.html': ('of', 'rem'),
-    'en/index.html': ('', ''),
     'en/turnkey-renovation.html': ('kv', 'rem'),
     'en/house-construction.html': ('dim', 'bud'),
+    # головні (9 мов) — без квізу (Михайло 04.11.2026, «ясність»): «Порахувати» в hero веде на калькулятор / квіз ремонту під ключ
     # es, zh, pl, de, fr, ar — тексти квізу в L у quiz.v1.js
-    'es/index.html': ('', ''), 'zh/index.html': ('', ''), 'pl/index.html': ('', ''), 'de/index.html': ('', ''), 'fr/index.html': ('', ''), 'ar/index.html': ('', ''),
     'es/construccion-de-casas.html': ('dim', 'bud'), 'zh/house-construction.html': ('dim', 'bud'), 'pl/budowa-domow.html': ('dim', 'bud'),
     'de/hausbau.html': ('dim', 'bud'), 'fr/construction-maison.html': ('dim', 'bud'), 'ar/house-construction.html': ('dim', 'bud'),
     'es/reforma-llave-en-mano.html': ('kv', 'rem'), 'zh/turnkey-renovation.html': ('kv', 'rem'), 'pl/remont-pod-klucz.html': ('kv', 'rem'),
