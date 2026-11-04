@@ -176,6 +176,8 @@ def _light_pages():
 
 
 LIGHT = _light_pages()
+# «Про студію» всіх мов: вступ (rich split, div.xs-tx) — видно лід у 3 рядки, решта абзаців і цінності — за «Читати далі» (data-c="t")
+ABOUT = {i18n.path_to_file(p) for p in i18n.clusters().get('about', {}).values()}
 CALC = {l: p for l, p in i18n.clusters().get('calculator', {}).items() if os.path.exists(os.path.join(ROOT, i18n.path_to_file(p)))}
 PRICE_RX = re.compile(r'(?:(?<![\w$])(?:від|от|from|desde|od|ab|à partir de|dès|من)\s+)\$\s?\d+(?:[\s,]\d{3})*(?:\s?/\s?(?:м²|m²|м2|م²|сотку))?'
                       r'|\$\s?\d+(?:[\s,]\d{3})*(?:\s?/\s?(?:m²|㎡))?\s?起', re.I)
@@ -341,7 +343,7 @@ def _light_custom(m, rel):
 
 SPAN_RX = re.compile(r'\sstyle="(?:--s[2346]:\d+;?)+"')
 STRIP = [SPAN_RX, re.compile(r'\sdata-i="[a-z0-9]{2}"'), re.compile(r'\sdata-c="[tsqglxhk]"'), re.compile(r'\sdata-a(?:="[si]")?(?=[\s>])'),
-         re.compile(r'\sdata-xs="[^"]*"'), CALC_RX]
+         re.compile(r'\sdata-xs="[^"]*"'), re.compile(r'\sdata-cn="\d+"'), CALC_RX]
 UNWRAP = re.compile(r'<div data-c="l">(<(ul|ol)>.*?</\2>)</div>', re.S)
 REST_RX = re.compile(r'<span class="ux-rest">(.*?)</span>(?=</p>)', re.S)  # друга частина ліду hero (_lead_rest)
 
@@ -500,6 +502,28 @@ def strip(s):
     return s
 
 
+OZD_RX = re.compile(r'[a-z]{2}/ozdoba\.html$')  # Оздоба інших мов (tools/products/intl.py); uk /ozdoba — розмітка в ozdoba.html (ux її не чіпає)
+
+
+def _ozd(m):
+    """Нижні інфоблоки Оздоби згорнуті: «Для бізнесу» (.b2b4) і «Як працює замовлення» (ol.steps4) — назви на виду, описи за кнопкою (s);
+    один довгий абзац (p.klead) — 3 рядки (t); FAQ — перші 3 питання (q, data-cn)."""
+    def sec(x):
+        o, body = x.group(1), x.group(2)
+        if 'data-c=' in o or 'id=' in o:
+            return x.group(0)
+        if 'class="b2b4"' in body or 'class="steps4"' in body:
+            k = ' data-c="s"'
+        elif len(re.findall(r'<details>', body)) >= 4:
+            k = ' data-c="q" data-cn="3"'
+        elif re.search(r'^\s*<h2[^>]*>.*?</h2>\s*<p class="klead">', body, re.S) and body.count('<p') == 1:
+            k = ' data-c="t"'
+        else:
+            return x.group(0)
+        return o[:-1] + k + '>' + body
+    return re.sub(r'(<section class="ozd-sec"[^>]*>)(.*?)(?=</section>)', sec, m, flags=re.S)
+
+
 def apply(s, rel):
     """Ідемпотентно: спершу знімає свої атрибути, потім ставить заново (джерело правди — цей файл)."""
     rel = rel.replace(os.sep, '/')
@@ -524,6 +548,10 @@ def apply(s, rel):
         m = _light_custom(m, rel)
         m = re.sub(r'(<!--cas:tldr-->(?:(?!<!--/cas:tldr-->).)*?)<p style="margin:0">', r'\1<p style="margin:0" data-c="h">', m, count=1, flags=re.S)
     m = _collapse(m, light)
+    if OZD_RX.match(rel):
+        m = _ozd(m)
+    if rel in ABOUT:
+        m = m.replace('<div class="xs-tx"><p class="xs-lead">', '<div class="xs-tx" data-c="t"><p class="xs-lead">', 1)
     if light:
         m = _spans(m)
     if re.match(r'(?:[a-z]{2}/)?blog/', rel):

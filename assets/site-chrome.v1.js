@@ -426,11 +426,15 @@
     if (k === 'h') return lead(c);
     if (k === 'k') return cards(c);
     if (HIDE[k]) {
-      cnt = $$(HIDE[k][0], c).filter(function (x) { return k !== 'q' || x.parentNode === c || x.parentNode.parentNode === c; }).length - HIDE[k][1];
+      var lim = +c.getAttribute('data-cn') || HIDE[k][1]; // data-cn — скільки лишити на виду (FAQ Оздоби — 3)
+      cnt = $$(HIDE[k][0], c).filter(function (x) { return k !== 'q' || x.parentNode === c || x.parentNode.parentNode === c; }).length - lim;
       if (k === 'l') cnt = c.querySelectorAll(':scope>*>li').length - HIDE[k][1];
       if (cnt < 1) { c.removeAttribute('data-c'); return; }
     }
-    lab = function (open) { return open ? T[1] : (k === 't' ? T[0] : k === 's' ? T[3] : T[{ q: 2, g: 4, l: 5 }[k]].replace('{n}', cnt)); };
+    if (k === 't' && !c.querySelector(':scope>p:first-of-type~:is(p,ul,ol,h3,h4,blockquote,dl,.xs-vals)')) { // один абзац, що й так вміщається (широкий екран): кнопка зайва
+      var p1 = c.querySelector(':scope>p'); if (p1 && p1.scrollHeight <= p1.clientHeight + 1 && c.getBoundingClientRect().top > (W.innerHeight || 0)) { c.removeAttribute('data-c'); return; }
+    }
+    lab = function (open) { return open ? T[1] : (k === 't' ? T[0] : k === 's' ? (c.querySelector('ol') ? T[3] : T[0]) : T[{ q: 2, g: 4, l: 5 }[k]].replace('{n}', cnt)); };
     var id = c.id || ('ux-c' + (++n)); c.id = id;
     var b = d.createElement('button');
     b.type = 'button'; b.className = 'c-b'; b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', id);

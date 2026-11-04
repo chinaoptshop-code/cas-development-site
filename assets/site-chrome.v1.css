@@ -479,6 +479,10 @@ html.sch-hide .pf-filter-wrap{top:0!important}
   -webkit-mask-image:linear-gradient(180deg,#000 45%,transparent);mask-image:linear-gradient(180deg,#000 45%,transparent)}
 .js [data-c=t]:not(.c-o)>p:first-of-type~:is(p,ul,ol,h3,h4,blockquote,dl){display:none}
 .js [data-c=s]:not(.c-o) :is(ol.steps,ol.ab-steps)>li>div>span{display:none}
+.js [data-c=s]:not(.c-o) :is(ol.steps4>li,.b2b4>div)>span{display:none}
+/* вступ «Про студію» (div.xs-tx) і інфоблоки Оздоби (section.ozd-sec): лід — 3 рядки, цінності xs-vals — теж за «Читати далі»; FAQ Оздоби — перші 3 (data-cn) */
+.js :is(.xs-tx,.ozd-sec)[data-c=t]:not(.c-o)>p:first-of-type{-webkit-line-clamp:3;line-clamp:3}.js .xs-tx[data-c=t]:not(.c-o)>.xs-vals{display:none}
+.js [data-c=q][data-cn="3"]:not(.c-o)>details:nth-of-type(n+4){display:none}
 .js [data-c=q]:not(.c-o)>details:nth-of-type(n+6),.js [data-c=g]:not(.c-o) .grid>:nth-child(n+7),.js [data-c=l]:not(.c-o)>*>li:nth-child(n+6){display:none}
 .js [data-c=l]:not(.c-o)>*>li:nth-child(5){-webkit-mask-image:linear-gradient(180deg,#000,transparent);mask-image:linear-gradient(180deg,#000,transparent)}
 .c-b{position:absolute;bottom:8px;inset-inline-start:0;display:inline-flex;align-items:center;gap:10px;min-height:44px;max-width:calc(100% - 32px);padding:0 20px;

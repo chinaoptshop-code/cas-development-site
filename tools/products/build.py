@@ -500,9 +500,9 @@ def category_pages(d):
   <details class="ozd-more"><summary>Умови замовлення</summary><ul class="pts"><li>{plural(len(items))}</li><li>Напряму з фабрик Китаю</li><li>Замовлення від $500</li><li>Від 10 шт кожної позиції</li><li>Під ваш проєкт</li><li>Рахунок для ФОП і ТОВ</li><li>Доставка й мито — розрахунок за обсягом</li></ul></details></div>
 </div>
 <main class="grid">{cards}</main>
-<section class="ozd-sec ozd-intro"><h2>{e(cat)} під замовлення: що входить і для кого</h2>{intro}</section>
-<section class="ozd-sec"><h2>Як замовити</h2><p style="color:var(--muted);max-width:70ch">Додайте позиції в кошик у <a href="/ozdoba" style="color:var(--brass)">каталозі Оздоби</a> або надішліть список і креслення — менеджер підтвердить ціну, наявність і строк поставки. Мінімальне замовлення — $500 (≈ 23 000 ₴) і від 10 шт (одиниць) кожної позиції; позиції з різних категорій можна поєднувати. Товари виготовляємо під замовлення — колір, розмір, матеріал і оздоблення змінюємо під ваш проєкт, поставка 30–60 днів. Комплектація квартири під ключ — <a href="/mebliuvannia-kvartyry-kyiv" style="color:var(--brass)">від $250 за м²</a>, обʼєкта — <a href="/komplektatsiia-pid-kliuch-kyiv" style="color:var(--brass)">комплектація під ключ</a>.</p></section>
-<section class="ozd-sec"><h2>Питання та відповіді</h2>{faq}</section>
+<section class="ozd-sec ozd-intro" data-c="t"><h2>{e(cat)} під замовлення: що входить і для кого</h2>{intro}</section>
+<section class="ozd-sec" data-c="t"><h2>Як замовити</h2><p style="color:var(--muted);max-width:70ch">Додайте позиції в кошик у <a href="/ozdoba" style="color:var(--brass)">каталозі Оздоби</a> або надішліть список і креслення — менеджер підтвердить ціну, наявність і строк поставки. Мінімальне замовлення — $500 (≈ 23 000 ₴) і від 10 шт (одиниць) кожної позиції; позиції з різних категорій можна поєднувати. Товари виготовляємо під замовлення — колір, розмір, матеріал і оздоблення змінюємо під ваш проєкт, поставка 30–60 днів. Комплектація квартири під ключ — <a href="/mebliuvannia-kvartyry-kyiv" style="color:var(--brass)">від $250 за м²</a>, обʼєкта — <a href="/komplektatsiia-pid-kliuch-kyiv" style="color:var(--brass)">комплектація під ключ</a>.</p></section>
+<section class="ozd-sec" data-c="q" data-cn="3"><h2>Питання та відповіді</h2>{faq}</section>
 <section class="ozd-sec"><h2>Сусідні категорії</h2><div class="rel">{other}</div></section>
 '''
         s = shell
@@ -650,10 +650,10 @@ KITS_BODY = '''<div class="w">
   <p class="vol">{vol}.</p></details></div>
 </div>
 {sections}
-<section class="ozd-sec ozd-intro"><h2>Як працює комплектація обʼєкта</h2>
+<section class="ozd-sec ozd-intro" data-c="t"><h2>Як працює комплектація обʼєкта</h2>
   <p>Комплект — це не «набір з коробки», а перелік позицій, який ми уточнюємо під ваш обʼєкт: кількість посадкових місць, номерів чи робочих місць, кольори, розміри й оздоблення. Після заявки менеджер підтверджує ціни, наявність і строк поставки, а за потреби погоджуємо зразки тканин і оздоблень до замовлення.</p>
   <p>Якщо обʼєкт ще на стадії ремонту, вигідно вести все разом: <a href="/komplektatsiia-pid-kliuch-kyiv">комплектація під ключ</a> з однією специфікацією або <a href="/biznes-pid-kliuch-kyiv">бізнес під ключ</a> — від дизайну й ремонту до розстановки меблів. Для закладів харчування — <a href="/dyzain-restoranu-kafe-kyiv">дизайн ресторану й кафе</a>.</p></section>
-<section class="ozd-sec"><h2>Питання та відповіді</h2>{faq}</section>
+<section class="ozd-sec" data-c="q" data-cn="3"><h2>Питання та відповіді</h2>{faq}</section>
 <section class="ozd-sec" id="zayavka">
   <h2>Запит розрахунку під мій обʼєкт</h2>
   <p style="color:var(--muted);max-width:70ch">Напишіть, який у вас обʼєкт і скільки місць, номерів чи метрів, — порахуємо комплектацію під ваш проєкт і назвемо строк поставки.</p>
