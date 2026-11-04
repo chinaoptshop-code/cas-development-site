@@ -219,6 +219,61 @@ def _lead_dup(hp):
     return hp[:k] + f'<span class="ux-dup">{hp[k:k + x.end()]}</span>' + hp[k + x.end():]
 
 
+TEL = 'tel:+380978667755'
+SENT_RX = re.compile(r'(?<=[.!?。！？])\s*(?=[A-ZА-ЯІЇЄҐÀ-ÝĄĆĘŁŃÓŚŹŻ¿¡«"\u4e00-\u9fff\u0600-\u06ff])')
+
+
+def _lead_rest(hp):
+    """Мінімалістичний hero (Михайло 04.11.2026): видно лише перше речення ліду (після повтору H1 — span.ux-dup);
+    решта — у span.ux-rest (прихована, поки лід згорнутий; тап — увесь текст; у DOM лишається)."""
+    if 'ux-rest' in hp:
+        return hp
+    p = re.search(r'<p data-c="h">(?:<span class="ux-dup">.*?</span>)?', hp, re.S)
+    if not p:
+        return hp
+    end = hp.find('</p>', p.end())
+    body = hp[p.end():end]
+    for x in SENT_RX.finditer(body):
+        k = x.start()
+        pre = body[:k]
+        if k < 12 or len(re.findall(r'<[a-z]', pre)) != len(re.findall(r'</', pre)):
+            continue
+        if not body[k:].strip():
+            break
+        return hp[:p.end()] + body[:k] + f'<span class="ux-rest"> {body[k:].lstrip()}</span>' + hp[end:]
+    return hp
+
+
+def _call_first(m, i, lang):
+    """Перша кнопка hero — «Подзвонити» (tel:); якщо її нема — додаємо, інші кнопки лишаються в DOM (CSS ховає з третьої)."""
+    k = m.find('<div class="btns">', i)
+    e = m.find('</div>', k)
+    if k < 0 or e < 0:
+        return m
+    b = m[k:e]
+    anchors = list(re.finditer(r'\n?[ \t]*<a\b[^>]*>.*?</a>', b, re.S))
+    if not anchors:
+        return m
+    tel = next((a for a in anchors if f'href="{TEL}"' in a.group(0) or 'href="tel:' in a.group(0)), None)
+    if tel is anchors[0]:
+        return m
+    if tel is None:
+        import leadform
+        c = leadform._call(lang)
+        if not c:
+            return m
+        x = f'\n    <a class="btn" href="{TEL}">{html.escape(c[0])}</a>'
+    else:
+        x = '\n    ' + tel.group(0).strip()
+        b = b[:tel.start()] + b[tel.end():]
+    j = anchors[0].start()
+    b = b[:j] + x + b[j:]
+    return m[:k] + b + m[e:]
+
+
+HERO_SKIP = re.compile(r'(?:[a-z]{2}/)?(?:blog|proekty)/')
+
+
 def _light_hero(m, rel, lang, full):
     i = m.find('<div class="w hero">')
     k = m.find('<div class="btns">', i)
@@ -226,8 +281,9 @@ def _light_hero(m, rel, lang, full):
         return m
     hp = m[i:k]
     hp = hp.replace('<p>', '<p data-c="h">', 1) if '<p>' in hp else hp
-    hp = _lead_dup(hp)
+    hp = _lead_rest(_lead_dup(hp))
     m = m[:i] + hp + m[k:]
+    m = _call_first(m, i, lang)
     k = m.find('<div class="btns">', i)
     a = m.find('</a>', k)
     if a < 0:
@@ -459,9 +515,11 @@ def apply(s, rel):
     if not re.match(r'(?:[a-z]{2}/)?index\.html$', rel):  # головні — без іконок заголовків (вага й LCP головної)
         m = _icons(m)
     light = rel in LIGHT
-    if light:
+    if light or not HERO_SKIP.match(rel):  # мінімалістичний hero — на всіх сторінках з .w.hero, крім статей і проєктів
         lm = re.search(r'<html[^>]*\blang="([a-z]{2})', s)
-        m = _light_custom(_light_hero(m, rel, lm.group(1) if lm else 'uk', s), rel)
+        m = _light_hero(m, rel, lm.group(1) if lm else 'uk', s)
+    if light:
+        m = _light_custom(m, rel)
         m = re.sub(r'(<!--cas:tldr-->(?:(?!<!--/cas:tldr-->).)*?)<p style="margin:0">', r'\1<p style="margin:0" data-c="h">', m, count=1, flags=re.S)
     m = _collapse(m, light)
     if light:
