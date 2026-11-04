@@ -71,7 +71,7 @@
 | ozdoba/dveri-mizhkimnatni-shponovani-z-horyzontalnymy-frezamy-533.html | other | 59.2 | 15.3 | 32.4 | 0.7 | 14 | 337 |
 | ozdoba/dveri-rozsuvni-aliuminiievi-z-ryflenym-sklom-536.html | other | 59.2 | 15.3 | 32.4 | 0.7 | 14 | 336 |
 | ozdoba/dyvan-kutovyi-modulnyi-molochnyi-61.html | other | 59.2 | 15.4 | 32.4 | 0.7 | 14 | 341 |
-| ozdoba/komplekt-postilnoi-bilyzny-hotelnyi-bavovna-satyn-524.html | other | 59.2 | 15.3 | 32.4 | 0.7 | 14 | 338 |
+| ozdoba/komplekt-postilnoi-bilyzny-hotelnyi-bavovna-satyn-524.html | other | 59.2 | 15.4 | 32.4 | 0.7 | 14 | 338 |
 | ozdoba/krislo-karver-miake-bukle-z-pidlokitnykamy-19.html | other | 59.2 | 15.5 | 32.4 | 0.7 | 14 | 341 |
 | ozdoba/krislo-kruhle-launzh-u-shkiri-z-602.html | other | 59.2 | 15.5 | 32.4 | 0.7 | 14 | 337 |
 | ozdoba/pidvis-pletenyi-z-rotanhu-4.html | other | 59.2 | 15.5 | 32.4 | 0.7 | 14 | 340 |
@@ -368,7 +368,7 @@
 | ozdoba/svichnyk-sklianyi-52.html | other | 57.7 | 15.2 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/vaza-pidlohova-keramichna-spiral-bila-428.html | other | 57.7 | 15.1 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/vaza-z-ryflenoho-dymchastoho-skla-427.html | other | 57.7 | 15.1 | 32.4 | 0.7 | 14 | 333 |
-| ru/dizayn-restorana-kafe-kiev.html | land | 57.7 | 16.0 | 13.6 | 3.3 | 7 | 507 |
+| ru/dizayn-restorana-kafe-kiev.html | land | 57.7 | 16.1 | 13.6 | 3.3 | 7 | 507 |
 | ozdoba/servetka-lliana-57.html | other | 57.6 | 15.1 | 32.4 | 0.7 | 14 | 335 |
 | remont-restoranu-kafe-kyiv.html | land | 57.6 | 16.3 | 13.6 | 3.3 | 7 | 534 |
 | ru/remont-restorana-kafe-kiev.html | land | 57.6 | 16.3 | 13.6 | 3.3 | 7 | 534 |
@@ -580,7 +580,7 @@
 | oblashtuvannia-ofisu-pid-kliuch-kyiv.html | land | 46.4 | 12.9 | 13.6 | 0.5 | 7 | 409 |
 | remont-kvartyry-zhk-montreal-house.html | land | 46.4 | 12.8 | 13.6 | 0.5 | 7 | 421 |
 | remont-kvartyry-zhk-senat.html | land | 46.4 | 12.9 | 13.6 | 0.5 | 7 | 419 |
-| ru/remont-kvartiry-zhk-life-story.html | land | 46.4 | 12.8 | 13.6 | 0.5 | 7 | 419 |
+| ru/remont-kvartiry-zhk-life-story.html | land | 46.4 | 12.9 | 13.6 | 0.5 | 7 | 419 |
 | de/index.html | land | 46.3 | 12.9 | 13.6 | 0.5 | 7 | 504 |
 | remont-kvartyry-zhk-life-story.html | land | 46.3 | 12.8 | 13.6 | 0.5 | 7 | 419 |
 | en/about.html | land | 46.2 | 12.7 | 13.6 | 0.5 | 7 | 504 |
@@ -662,7 +662,7 @@
 | ar/office-renovation.html | land | 42.1 | 11.1 | 13.6 | 0.5 | 7 | 379 |
 | zh/renovation-calculator.html | land | 41.9 | 13.2 | 14.2 | 1.4 | 7 | 451 |
 | en/general-contractor-kyiv.html | land | 41.8 | 11.6 | 13.6 | 0.5 | 7 | 438 |
-| zh/about.html | land | 41.8 | 12.7 | 13.6 | 0.5 | 7 | 474 |
+| zh/about.html | land | 41.8 | 12.6 | 13.6 | 0.5 | 7 | 474 |
 | dyzain-i-remont-bucha.html | land | 41.7 | 11.9 | 13.6 | 0.5 | 7 | 338 |
 | ru/dizayn-i-remont-bucha.html | land | 41.7 | 11.9 | 13.6 | 0.5 | 7 | 338 |
 | ar/bathroom-renovation.html | land | 41.6 | 11.0 | 13.6 | 0.5 | 7 | 377 |
