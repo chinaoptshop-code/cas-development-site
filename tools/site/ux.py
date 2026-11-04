@@ -157,7 +157,7 @@ ANIM = _anim_urls()
 #          (a.ux-calc → квіз / калькулятор сторінки / калькулятор мови / форма), рядок довіри (CSS --ux-tr), без .facts і WhatsApp;
 #   секції — плитки (data-c="x" на <div class="w">): іконка + назва (H2) + рядок «від $…» (data-xs); тап — розгортає на місці.
 #          Текст лишається в DOM (SEO, FAQPage). Не плитки: форма, калькулятор, квіз, гід, «Будинок з нуля», карта, контакти.
-LIGHT_CLUSTERS = ('home', 'services', 'about', 'contact', 'design', 'renovation', 'construction', 'calculator')
+LIGHT_CLUSTERS = ('home', 'services', 'about', 'contact', 'design', 'renovation', 'construction', 'calculator', 'landscape', 'resort', 'restaurant', 'office', 'furnishing')
 LIGHT_EXTRA = ('/portfolio', '/remont-kvartyr-kyiv', '/ru/remont-kvartir-kiev', '/vartist-remontu-kvartyry-kyiv', '/ru/stoimost-remonta-kvartiry-kiev')
 # ручні uk-сторінки: класи секцій, що стають плитками (h2 — нащадок секції; атрибут — на самій <section>)
 LIGHT_CUSTOM = {
@@ -451,6 +451,8 @@ def _collapse(m, light=False):
         k = _collapse_type(x.group(2), x.group(3), body)
         return x.group(1) + (f' data-c="{k}"' if k else '') + x.group(4) + body + x.group(6)
     m = SEC_RX.sub(sec, m)
+    if light:  # команда (rich.py team): імʼя й роль на виду, опис — за шевроном / тапом
+        m = m.replace('<div class="grid"><div class="card xs-tm">', '<div class="grid" data-c="k"><div class="card xs-tm">', 1)
     # ручні сторінки «Про студію» (uk/ru): довгий вступ і «Як ми працюємо»
     m = re.sub(r'<div class="about-txt">(?=(?:(?!</div>).)*?<p class="about-body"[^>]*>(?:(?!</div>).)*?<p class="about-body")',
                '<div class="about-txt" data-c="t">', m, count=1, flags=re.S)
@@ -584,9 +586,11 @@ def tiles(check=False):
     for x in warn:
         print('⚠ плитка', x)
     rules = ''.join(f'.js .w[data-c=x]:not(.c-o):has(>h2[data-i={k}])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i={k}])::before{{background-image:url(/{TILES_OUT}/{k}.webp)}}' for k in keys)
-    base = (''
-            + (':is(' + ','.join(f'.js .w[data-c=x]:not(.c-o):has(>h2[data-i={k}]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i={k}])' for k in keys) + ')::before'
-               '{content:"";display:block;aspect-ratio:3/2;margin:-16px -16px 12px;background:var(--bg2,#100e0c) center/cover no-repeat}' if keys else ''))
+    # усі плитки — з ілюстрацією (блочність 04.11.2026: плитка без картинки поруч із плитками з картинками ламала ряд);
+    # тема без власної ілюстрації — запасна «dm»
+    fb = 'dm' if 'dm' in keys else (keys[0] if keys else '')
+    base = (('.js .w[data-c=x]:not(.c-o):has(>h2[data-i])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i])::before'
+             f'{{content:"";display:block;aspect-ratio:3/2;margin:-16px -16px 12px;background:var(--bg2,#100e0c) url(/{TILES_OUT}/{fb}.webp) center/cover no-repeat}}') if keys else '')
     return '/*ux:tiles*/' + (base + rules if keys else '') + '/*/ux:tiles*/'
 
 
