@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 858 (MAIN 6, LAND 435, інші 350). HTML разом 43654 КБ, з них інлайн CSS 17929 КБ і JS 566 КБ.
+Сторінок: 858 (MAIN 6, LAND 435, інші 350). HTML разом 43659 КБ, з них інлайн CSS 17929 КБ і JS 566 КБ.
 
 ## Проблеми
 
@@ -27,7 +27,7 @@
 | en/ozdoba.html | other | 81.3 | 18.9 | 30.7 | 0.7 | 13 | 623 |
 | blog.html | other | 77.3 | 19.7 | 13.5 | 0.5 | 6 | 428 |
 | ru/index.html | main | 76.6 | 18.9 | 13.6 | 0.5 | 7 | 823 |
-| ru/blog.html | other | 72.3 | 18.2 | 13.5 | 0.5 | 6 | 406 |
+| ru/blog.html | other | 74.5 | 18.7 | 13.5 | 0.5 | 6 | 416 |
 | blog/tekhnolohiia-budivnytstva-budynku-z-hazobloku-pokrokovo.html | article | 69.6 | 19.7 | 14.4 | 0.5 | 7 | 505 |
 | blog/pyrih-stiny-pidlohy-i-pokrivli-pryvatnoho-budynku.html | article | 69.2 | 19.6 | 14.4 | 0.5 | 7 | 496 |
 | blog/inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit.html | article | 66.8 | 18.9 | 14.4 | 0.5 | 7 | 459 |
@@ -370,6 +370,7 @@
 | ozdoba/svichnyk-sklianyi-52.html | other | 57.7 | 15.2 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/vaza-pidlohova-keramichna-spiral-bila-428.html | other | 57.7 | 15.1 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/vaza-z-ryflenoho-dymchastoho-skla-427.html | other | 57.7 | 15.1 | 32.4 | 0.7 | 14 | 333 |
+| ru/dizayn-restorana-kafe-kiev.html | land | 57.7 | 16.0 | 13.6 | 3.3 | 7 | 507 |
 | ozdoba/servetka-lliana-57.html | other | 57.6 | 15.1 | 32.4 | 0.7 | 14 | 335 |
 | remont-restoranu-kafe-kyiv.html | land | 57.6 | 16.3 | 13.6 | 3.3 | 7 | 534 |
 | ru/remont-restorana-kafe-kiev.html | land | 57.6 | 16.3 | 13.6 | 3.3 | 7 | 534 |
@@ -378,7 +379,6 @@
 | ozdoba/svitylnyk-vbudovanyi-hlybokyi-antyblikovyi-cob-122.html | other | 57.5 | 15.2 | 32.4 | 0.7 | 14 | 337 |
 | fr/index.html | land | 57.4 | 15.8 | 13.6 | 0.5 | 7 | 623 |
 | ozdoba/rakovyna-nakladna-z-marmuru-calacatta-viola-144.html | other | 57.4 | 15.2 | 32.4 | 0.7 | 14 | 332 |
-| ru/dizayn-restorana-kafe-kiev.html | land | 57.4 | 16.0 | 13.6 | 3.3 | 7 | 506 |
 | ozdoba/perehorodka-skliana-v-aliuminiievomu-profili-z-319.html | other | 57.3 | 15.1 | 32.4 | 0.7 | 14 | 331 |
 | ozdoba/pidvis-liniinyi-nad-stolom-4-opalovi-114.html | other | 57.3 | 15.2 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/stiika-resepshn-pid-marmur-bilo-chorna-97.html | other | 57.3 | 15.2 | 32.4 | 0.7 | 14 | 332 |
@@ -399,10 +399,10 @@
 | ozdoba/dekoratyvna-arka-keramichna-bilyi-krapchastyi-164.html | other | 56.9 | 15.1 | 32.4 | 0.7 | 14 | 330 |
 | blog/bryf-dlia-dyzainera-interieru.html | article | 56.6 | 16.5 | 14.4 | 0.5 | 7 | 409 |
 | en/index.html | land | 56.6 | 15.4 | 13.6 | 0.5 | 7 | 637 |
+| ru/baza-otdyha-pod-klyuch.html | land | 56.5 | 15.5 | 13.6 | 3.4 | 7 | 502 |
 | pl/index.html | land | 56.3 | 15.9 | 13.6 | 0.5 | 7 | 634 |
 | remont-novobudovy-kyiv.html | land | 56.3 | 15.6 | 13.3 | 0.5 | 7 | 539 |
 | dyzain-interieru-kyiv.html | land | 56.2 | 14.6 | 13.7 | 0.5 | 7 | 577 |
-| ru/baza-otdyha-pod-klyuch.html | land | 56.2 | 15.4 | 13.6 | 3.4 | 7 | 500 |
 | ru/dizayn-interera-kiev.html | land | 56.0 | 14.7 | 13.9 | 0.5 | 7 | 567 |
 | pytannya.html | land | 55.8 | 13.3 | 13.6 | 0.5 | 7 | 408 |
 | ru/stoimost-stroitelstva-doma-kiev.html | land | 55.6 | 15.1 | 13.6 | 0.5 | 7 | 474 |
@@ -599,20 +599,20 @@
 | remont-taunkhausa-kyiv.html | land | 46.1 | 12.6 | 13.6 | 0.5 | 7 | 410 |
 | ru/remont-taunhausa-kiev.html | land | 46.1 | 12.6 | 13.6 | 0.5 | 7 | 410 |
 | avtorskyi-i-tekhnichnyi-nahliad-kyiv.html | land | 46.0 | 12.5 | 13.6 | 0.5 | 7 | 413 |
+| blog/inzheneriia-restoranu-ventyliatsiia-kanalizatsiia-elektryka.html | article | 46.0 | 13.0 | 14.4 | 0.5 | 7 | 360 |
 | kabinet/admin.html | other | 46.0 | 12.4 | 32.5 | 0.7 | 14 | 210 |
 | ar/landscape-design.html | land | 45.9 | 12.5 | 13.6 | 1.1 | 7 | 513 |
 | ru/dogovor-garantiya-oplata.html | land | 45.9 | 12.4 | 13.6 | 0.5 | 7 | 408 |
 | ru/remont-vannoy-kiev.html | land | 45.9 | 12.5 | 13.6 | 0.5 | 7 | 421 |
+| blog/budynok-na-vodi-pali-chy-pontony.html | article | 45.7 | 12.9 | 14.4 | 0.5 | 7 | 385 |
 | de/ueber-uns.html | land | 45.7 | 12.5 | 13.6 | 0.5 | 7 | 521 |
 | dogovir-garantiya-oplata.html | land | 45.7 | 12.3 | 13.6 | 0.5 | 7 | 408 |
 | ru/dizayn-i-remont-magazina-shouruma-kiev.html | land | 45.7 | 12.5 | 13.6 | 0.5 | 7 | 408 |
 | dyzain-i-remont-mahazynu-shourumu-kyiv.html | land | 45.6 | 12.5 | 13.6 | 0.5 | 7 | 408 |
+| blog/kompleks-vidpochynku-pid-kliuch-z-choho-skladaietsia-koshtorys.html | article | 45.5 | 12.8 | 14.4 | 0.5 | 7 | 367 |
 | pl/o-studiu.html | land | 45.5 | 12.8 | 13.6 | 0.5 | 7 | 528 |
 | en/restaurant-fit-out.html | land | 45.4 | 13.3 | 13.6 | 2.4 | 7 | 498 |
-| blog/budynok-na-vodi-pali-chy-pontony.html | article | 45.3 | 12.9 | 14.4 | 0.5 | 7 | 382 |
-| blog/inzheneriia-restoranu-ventyliatsiia-kanalizatsiia-elektryka.html | article | 45.3 | 12.9 | 14.4 | 0.5 | 7 | 357 |
 | blog/proekt-budynku-shcho-vkhodyt.html | article | 45.1 | 12.6 | 14.4 | 0.5 | 7 | 354 |
-| blog/kompleks-vidpochynku-pid-kliuch-z-choho-skladaietsia-koshtorys.html | article | 44.9 | 12.7 | 14.4 | 0.5 | 7 | 364 |
 | remont-kukhni-kyiv.html | land | 44.9 | 12.2 | 13.6 | 0.5 | 7 | 429 |
 | ru/remont-i-stroitelstvo-evropa.html | land | 44.6 | 12.3 | 13.6 | 0.5 | 7 | 406 |
 | fr/calculateur-renovation.html | land | 44.5 | 12.8 | 14.2 | 1.4 | 7 | 452 |
