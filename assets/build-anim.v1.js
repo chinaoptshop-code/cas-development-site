@@ -980,7 +980,7 @@
     var hd0 = data.hdef || { t: 'two', s: 'scandi', a: 160 }, cf0 = (sec.getAttribute('data-bz-cfg') || '').split(',');
     var C = { m: mat, t: cf0[0] || hd0.t, s: cf0[1] || hd0.s, a: +(cf0[2] || hd0.a), g: '', r: 0, lang: lang }, hint = '', cfgOpen = false;
     hfix(C, 'm'); mat = C.m;
-    var seq, n, lis = [], sc, svg, layers = [], ghost, cam, sky, stars, VB, pLast = 0, sPrev = 0, act = -1, cur = 0, raf = 0, top0 = 0, live = false, rm = !!(MQ && MQ.matches), man = 0, pieKey = null, pieSel = 0;
+    var seq, n, lis = [], sc, svg, layers = [], ghost, cam, sky, stars, VB, pLast = 0, sPrev = 0, act = -1, cur = 0, top0 = 0, rm = !!(MQ && MQ.matches), man = 0, pieKey = null, pieSel = 0;
     function S(k) { return seq.indexOf(k); }
     function pieOf(k) {
       var a = data.pieAt[scene][k]; if (a && typeof a === 'object') a = a[mat];
@@ -1315,18 +1315,13 @@
       var sp = span(); if (sp <= 0) return n;
       return 0.6 + clamp((top0 - run.getBoundingClientRect().top) / sp) * (n - 0.6);
     }
-    function tick() {
-      raf = 0;
-      var tg = target();
-      cur += (tg - cur) * 0.16;
-      if (Math.abs(tg - cur) < 0.004) cur = tg;
-      render(cur);
-      if (cur !== tg) raf = W.requestAnimationFrame(tick);
-    }
-    function kick() { if (!raf) raf = W.requestAnimationFrame(tick); }
+    // прокрутка → прогрес: casDrive (site-chrome.v1.js) — згладжування, ліміт швидкості, не більше етапу за «клацання» колеса, зсув автопрогравання
+    var drive = W.casDrive ? W.casDrive({ n: function () { return n; }, min: 0.6, raw: target, view: run, render: function (c) { cur = c; render(c); } }) : null;
+    function kick() { if (drive) drive.kick(); else { cur = target(); render(cur); } }
     function measure() { top0 = parseFloat(W.getComputedStyle(pin).top) || 0; kick(); }
     function go(i) {
       if (rm) { man = i + 0.85; cur = man; render(cur); return; }
+      if (drive) drive.reset();
       var r = run.getBoundingClientRect(), y = W.pageYOffset + r.top - top0 + span() * clamp((i + 0.85 - 0.6) / (n - 0.6));
       W.scrollTo({ top: Math.round(y), behavior: 'smooth' });
     }
@@ -1336,13 +1331,10 @@
       if (rm) { if (!man) man = n - 0.02; cur = man; render(cur); } else { cur = target(); render(cur); }
       measure();
     }
-    W.addEventListener('scroll', function () { if (live && !rm) kick(); }, { passive: true });
     W.addEventListener('resize', function () { measure(); placeCfg(); }, { passive: true });
     if (MQ) { if (MQ.addEventListener) MQ.addEventListener('change', mode); else if (MQ.addListener) MQ.addListener(mode); }
     if (MOB) { if (MOB.addEventListener) { MOB.addEventListener('change', placePie); MOB.addEventListener('change', placeCfg); } else if (MOB.addListener) { MOB.addListener(placePie); MOB.addListener(placeCfg); } }
-    if ('IntersectionObserver' in W) {
-      new IntersectionObserver(function (es) { live = es[0].isIntersecting; if (live) kick(); }).observe(run);
-    } else live = true;
+    if (drive && W.casAuto) W.casAuto({ root: run, view: fig, host: ctl, before: next, cls: 'bz-ap', step: function () { return !rm && drive.step(); }, restart: drive.restart, atEnd: drive.atEnd });
     // мікровзаємодії (лише миша, без prefers-reduced-motion): легкий нахил сцени за курсором і «магнітна» кнопка CTA
     if (W.matchMedia && W.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       fig.addEventListener('pointermove', function (e) {

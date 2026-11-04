@@ -505,7 +505,7 @@
 | blog/suchasnyi-minimalizm-teplyi-interier.html | article | 49.6 | 14.1 | 14.4 | 0.5 | 7 | 379 |
 | blog/yak-vybraty-remontnu-bryhadu.html | article | 49.6 | 14.0 | 14.4 | 0.5 | 7 | 383 |
 | ru/remont-kvartiry-zhk-novopecherskie-lipki.html | land | 49.6 | 13.2 | 13.6 | 0.5 | 7 | 431 |
-| en/about.html | land | 49.4 | 13.5 | 13.6 | 0.5 | 7 | 559 |
+| en/about.html | land | 49.4 | 13.4 | 13.6 | 0.5 | 7 | 559 |
 | ru/dom-pod-klyuch-koncha-zaspa.html | land | 49.4 | 13.1 | 13.6 | 0.5 | 7 | 464 |
 | remont-kvartyry-zhk-novopecherski-lypky.html | land | 49.3 | 13.3 | 13.6 | 0.5 | 7 | 431 |
 | blog/yak-splanuvaty-bazu-vidpochynku.html | article | 49.2 | 13.9 | 14.4 | 0.5 | 7 | 386 |
@@ -585,7 +585,7 @@
 | kabinet.html | other | 47.3 | 12.7 | 32.5 | 0.7 | 14 | 246 |
 | kabinet/obrane.html | other | 47.3 | 12.7 | 32.5 | 0.7 | 14 | 247 |
 | remont-vannoi-kimnaty-kyiv.html | land | 47.3 | 12.6 | 13.6 | 0.5 | 7 | 441 |
-| ru/avtorskiy-i-tehnicheskiy-nadzor-kiev.html | land | 47.3 | 12.6 | 13.6 | 0.5 | 7 | 424 |
+| ru/avtorskiy-i-tehnicheskiy-nadzor-kiev.html | land | 47.3 | 12.7 | 13.6 | 0.5 | 7 | 424 |
 | remont-taunkhausa-kyiv.html | land | 47.2 | 12.7 | 13.6 | 0.5 | 7 | 420 |
 | ru/remont-taunhausa-kiev.html | land | 47.2 | 12.7 | 13.6 | 0.5 | 7 | 420 |
 | avtorskyi-i-tekhnichnyi-nahliad-kyiv.html | land | 47.1 | 12.7 | 13.6 | 0.5 | 7 | 424 |
@@ -808,7 +808,7 @@
 | es/diseno-interiores-piso.html | land | 38.1 | 10.1 | 13.6 | 0.5 | 7 | 376 |
 | fr/designer-interieur.html | land | 38.0 | 10.3 | 13.6 | 0.5 | 7 | 371 |
 | pl/blog.html | other | 38.0 | 10.4 | 13.5 | 0.5 | 6 | 270 |
-| zh/office-renovation.html | land | 38.0 | 11.0 | 13.6 | 0.5 | 7 | 392 |
+| zh/office-renovation.html | land | 38.0 | 11.1 | 13.6 | 0.5 | 7 | 392 |
 | de/wohnungsdesign.html | land | 37.9 | 10.3 | 13.6 | 0.5 | 7 | 380 |
 | es/disenador-interiores.html | land | 37.9 | 10.2 | 13.6 | 0.5 | 7 | 372 |
 | fr/architecture-interieur.html | land | 37.9 | 10.5 | 13.6 | 0.5 | 7 | 367 |

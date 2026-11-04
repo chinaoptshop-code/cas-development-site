@@ -547,7 +547,8 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .js [data-c=h]:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:3px}
 @media print{.js :is(main,main>div[id^="p-"]){display:block!important;padding-inline:0!important}.js [data-c=h]{display:block!important}}
 .js [data-c=x] .lq-slot{display:none!important}
-.js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x])) .bz.bz{--bz-per:12svh}@media(min-width:768px){.js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x])) .bz.bz{--bz-per:16svh}}
+/* сцена на легких сторінках: компактніша доріжка, але ≥220–280 px на етап — одне «клацання» колеса не перескакує етап (Михайло 03.11.2026) */
+.js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x])) .bz.bz{--bz-per:clamp(220px,28svh,300px)}@media(min-width:768px){.js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x])) .bz.bz{--bz-per:clamp(280px,30svh,360px)}}
 /* компактні картки [data-c=k] (не плитка: контакти, перелік послуг): назва + перший рядок, решта — за шевроном / тапом */
 .js [data-c=k]{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 @media(min-width:760px){.js [data-c=k]{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}}
