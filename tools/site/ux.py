@@ -559,6 +559,8 @@ def apply(s, rel):
         m = _spans(m)
     if re.match(r'(?:[a-z]{2}/)?blog/', rel):
         m = _article_lists(m)
+    if re.match(r'(?:[a-z]{2}/)?index\.html$', rel):  # головні: без бейджів «Анімація реалізації» — сцена вже на сторінці (Михайло 04.11.2026, «ясність»)
+        return s[:i] + m + rest + s[j:]
     return s[:i] + _badges(m + rest) + s[j:]
 
 
