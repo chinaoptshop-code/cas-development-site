@@ -13,17 +13,17 @@
  ],
  "kicker": "关于工作室",
  "hero_img": {
-  "img": "img/1lovunAyUeQX-1400.webp",
-  "srcset": "/img/1lovunAyUeQX-r400.webp 400w, /img/1lovunAyUeQX-r600.webp 600w, /img/1lovunAyUeQX-r800.webp 800w, /img/1lovunAyUeQX-r1200.webp 1200w, /img/1lovunAyUeQX-1400.webp 1400w",
-  "alt": "Yacht Restaurant — CAS Development 餐厅室内设计",
+  "img": "img/1p_MqveKjiZ1-1400.webp",
+  "srcset": "/img/1p_MqveKjiZ1-r400.webp 400w, /img/1p_MqveKjiZ1-r600.webp 600w, /img/1p_MqveKjiZ1-r800.webp 800w, /img/1p_MqveKjiZ1-r1200.webp 1200w, /img/1p_MqveKjiZ1-1400.webp 1400w",
+  "alt": "带壁炉的客厅 — Petrivtsi House, CAS Development 项目",
   "sizes": "100vw"
  },
  "sections": [
   {
    "t": "split",
-   "img": "img/18ej1fH-11uo-800.webp",
-   "srcset": "/img/18ej1fH-11uo-r400.webp 400w, /img/18ej1fH-11uo-r600.webp 600w, /img/18ej1fH-11uo-800.webp 800w",
-   "alt": "Yacht Restaurant — CAS Development 餐厅室内设计",
+   "img": "img/p/1jS6hUJuy_cM08-900.webp",
+   "srcset": "/img/p/1jS6hUJuy_cM08-400.webp 400w, /img/p/1jS6hUJuy_cM08-900.webp 900w",
+   "alt": "带壁炉的客厅 — Hodos Villa, CAS Development 项目",
    "badge": [
     "2016",
     "创立于基辅"
@@ -57,46 +57,48 @@
    "t": "strip",
    "kicker": "作品示例",
    "h2": "Petrivtsi House — 佩特里夫齐 320 m² 私人住宅",
-   "p": "室内设计方案：卧室、浴室、衣帽间、书房和洗衣房。",
+   "p": "室内设计方案：带壁炉的客厅、厨房与餐厅、卧室、浴室、衣帽间、书房和洗衣房。",
    "items": [
     {
-     "img": "img/1GKGW5SVI27I-600.webp",
-     "alt": "Petrivtsi House — 卧室",
+     "img": "img/p/1co4thni1Q8_1J-900.webp",
+     "srcset": "/img/p/1co4thni1Q8_1J-400.webp 400w, /img/p/1co4thni1Q8_1J-900.webp 900w",
+     "alt": "带壁炉的客厅 — Petrivtsi House, CAS Development 项目",
      "href": "/proekty/petrivtsi-house"
     },
     {
-     "img": "img/197Bi23wSzVk-600.webp",
-     "alt": "Petrivtsi House — 卧室细节",
+     "img": "img/p/1SGDKLtQtxQg-k-900.webp",
+     "srcset": "/img/p/1SGDKLtQtxQg-k-400.webp 400w, /img/p/1SGDKLtQtxQg-k-900.webp 900w",
+     "alt": "餐厅 — Petrivtsi House, CAS Development 项目",
      "href": "/proekty/petrivtsi-house"
     },
     {
-     "img": "img/1A6d14UC4Yii-600.webp",
-     "alt": "Petrivtsi House — 带独立浴缸的浴室",
+     "img": "img/p/1nqFOoTfr5BDtv-900.webp",
+     "srcset": "/img/p/1nqFOoTfr5BDtv-400.webp 400w, /img/p/1nqFOoTfr5BDtv-900.webp 900w",
+     "alt": "带壁炉的客厅 — Petrivtsi House, CAS Development 项目",
      "href": "/proekty/petrivtsi-house"
     },
     {
-     "img": "img/1l8ggYd-Xu5P-600.webp",
-     "alt": "Petrivtsi House — 卫生间",
+     "img": "img/p/1p_MqveKjiZ1Y9-900.webp",
+     "srcset": "/img/p/1p_MqveKjiZ1Y9-400.webp 400w, /img/p/1p_MqveKjiZ1Y9-900.webp 900w",
+     "alt": "带壁炉的客厅 — Petrivtsi House, CAS Development 项目",
      "href": "/proekty/petrivtsi-house"
     },
     {
-     "img": "img/1FwmotKdTE-d-600.webp",
-     "alt": "Petrivtsi House — 衣帽间",
+     "img": "img/p/1jbfw_MkM3Br25-900.webp",
+     "srcset": "/img/p/1jbfw_MkM3Br25-400.webp 400w, /img/p/1jbfw_MkM3Br25-900.webp 900w",
+     "alt": "厨房与餐厅 — Petrivtsi House, CAS Development 项目",
      "href": "/proekty/petrivtsi-house"
     },
     {
-     "img": "img/1BCMJKrx7QL5-600.webp",
-     "alt": "Petrivtsi House — 书房",
+     "img": "img/p/1x7SPmVpbqnuTE-900.webp",
+     "srcset": "/img/p/1x7SPmVpbqnuTE-400.webp 400w, /img/p/1x7SPmVpbqnuTE-900.webp 900w",
+     "alt": "厨房 — Petrivtsi House, CAS Development 项目",
      "href": "/proekty/petrivtsi-house"
     },
     {
-     "img": "img/1gXiWvuON9L6-600.webp",
-     "alt": "Petrivtsi House — 洗衣房",
-     "href": "/proekty/petrivtsi-house"
-    },
-    {
-     "img": "img/183DWyhu0rYa-600.webp",
-     "alt": "Petrivtsi House — 带灯带的走廊",
+     "img": "img/p/1c0MGdozaefvAa-900.webp",
+     "srcset": "/img/p/1c0MGdozaefvAa-400.webp 400w, /img/p/1c0MGdozaefvAa-900.webp 900w",
+     "alt": "厨房与餐厅 — Petrivtsi House, CAS Development 项目",
      "href": "/proekty/petrivtsi-house"
     }
    ],

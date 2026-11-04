@@ -33,6 +33,9 @@ e = lambda s: html.escape(str(s), quote=True)
 ver = lambda p: hashlib.sha1(open(p, 'rb').read()).hexdigest()[:8]
 
 
+MORE = {'en': 'Order terms', 'pl': 'Warunki zamówienia'}
+
+
 def names():
     out = {}
     for line in open(os.path.join(HERE, 'lang/names.tsv'), encoding='utf-8'):
@@ -153,6 +156,9 @@ def page(d, lang, nm, b, shell):
             {'@type': 'ListItem', 'position': 2, 'name': 'Ozdoba', 'item': u}]}]}
     A = P['aria']
     tabs = P['tabs']
+    # мінімалістичний перший екран (Михайло 04.11.2026): H1 + перше речення; решта ліду, переваги й умови — у «Умови замовлення»
+    k = P['lead'].find('. ') + 1
+    lead1, lead2 = (P['lead'][:k], P['lead'][k:].strip()) if k > 0 else (P['lead'], '')
     body = f'''<div class="searchwrap" id="searchwrap">
   <input id="q" type="search" placeholder="{e(P["search"])}" oninput="onSearch()" aria-label="{e(A["q"])}">
 </div>
@@ -161,10 +167,11 @@ def page(d, lang, nm, b, shell):
   <div class="crumbs"><a href="/{lang}/">{e(P["crumbs"][0])}</a> / {e(P["crumbs"][1])}</div>
   <div class="ozd-hero">
     <h1>{P["h1"]}</h1>
-    <p>{e(P["lead"])}</p>
+    <p>{e(lead1)}</p>
+    <details class="ozd-more"><summary>{e(MORE.get(lang, MORE["en"]))}</summary>{f"<p>{e(lead2)}</p>" if lead2 else ""}
     <ul class="pts">{"".join(f"<li>{e(x)}</li>" for x in P["pts"])}</ul>
     <p class="vol">{e(P["vol"])}</p>
-    <p class="ozd-cur">{e(P["cur"])}</p>
+    <p class="ozd-cur">{e(P["cur"])}</p></details>
   </div>
 </div>
 

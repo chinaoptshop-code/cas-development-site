@@ -426,11 +426,15 @@
     if (k === 'h') return lead(c);
     if (k === 'k') return cards(c);
     if (HIDE[k]) {
-      cnt = $$(HIDE[k][0], c).filter(function (x) { return k !== 'q' || x.parentNode === c || x.parentNode.parentNode === c; }).length - HIDE[k][1];
+      var lim = +c.getAttribute('data-cn') || HIDE[k][1]; // data-cn — скільки лишити на виду (FAQ Оздоби — 3)
+      cnt = $$(HIDE[k][0], c).filter(function (x) { return k !== 'q' || x.parentNode === c || x.parentNode.parentNode === c; }).length - lim;
       if (k === 'l') cnt = c.querySelectorAll(':scope>*>li').length - HIDE[k][1];
       if (cnt < 1) { c.removeAttribute('data-c'); return; }
     }
-    lab = function (open) { return open ? T[1] : (k === 't' ? T[0] : k === 's' ? T[3] : T[{ q: 2, g: 4, l: 5 }[k]].replace('{n}', cnt)); };
+    if (k === 't' && !c.querySelector(':scope>p:first-of-type~:is(p,ul,ol,h3,h4,blockquote,dl,.xs-vals)')) { // один абзац, що й так вміщається (широкий екран): кнопка зайва
+      var p1 = c.querySelector(':scope>p'); if (p1 && p1.scrollHeight <= p1.clientHeight + 1 && c.getBoundingClientRect().top > (W.innerHeight || 0)) { c.removeAttribute('data-c'); return; }
+    }
+    lab = function (open) { return open ? T[1] : (k === 't' ? T[0] : k === 's' ? (c.querySelector('ol') ? T[3] : T[0]) : T[{ q: 2, g: 4, l: 5 }[k]].replace('{n}', cnt)); };
     var id = c.id || ('ux-c' + (++n)); c.id = id;
     var b = d.createElement('button');
     b.type = 'button'; b.className = 'c-b'; b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', id);
@@ -491,6 +495,7 @@
   }
   // лід hero [data-c=h]: один рядок; тап / Enter / Space — увесь текст
   function lead(c) {
+    if (!c.closest('.card') && !c.querySelector('.ux-rest,.ux-dup')) return; // лід з одного речення — нічого згортати
     c.setAttribute('role', 'button'); c.tabIndex = 0; c.setAttribute('aria-expanded', 'false');
     var t = function (e) { if (e && e.target.closest && e.target.closest('a')) return; var o = !c.classList.contains('c-o'); c.classList.toggle('c-o', o); c.setAttribute('aria-expanded', o ? 'true' : 'false'); };
     c.addEventListener('click', t);
@@ -508,6 +513,100 @@
   W.addEventListener('beforeprint', function () { $$('[data-c]').forEach(function (c) { c.classList.add('c-o'); }); });
 })();
 
+/* Сцени: спільне керування (Михайло 03.11.2026 — «менш чутливі до колеса» + «самі потрішки прокручуються»).
+   casDrive — прогрес sticky-сцени за прокруткою: ≥ ~50vh доріжки на етап (CSS сцен), згладжування (lerp) і обмеження швидкості
+   (не швидше за етап / 320 мс), не більше одного етапу за ~330 мс (одне «клацання» колеса — максимум один етап), дрібні дельти
+   трекпада (< 0.02 етапу) ігноруються; wheel не перехоплюємо — сторінка гортається як завжди. off — зсув від автопрогравання.
+   casAuto — автопрогравання: сцена в кадрі (IntersectionObserver), вкладка видима, людина не чіпає — крок раз на 3.5 с;
+   дія в сцені (колесо, клік, тач, клавіша) — пауза 9 с, прокрутка сторінки — 3 с; кнопка ❚❚/▶/↻ (44 px, aria-label; WCAG 2.2.2);
+   на останньому етапі — стоп і «Ще раз». prefers-reduced-motion — без автопрогравання й без кнопки. */
+(function () {
+  var W = window, d = document;
+  var RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var T = { uk: ['Пауза анімації', 'Відтворити анімацію', 'Ще раз'], ru: ['Пауза анимации', 'Воспроизвести анимацию', 'Ещё раз'],
+    en: ['Pause animation', 'Play animation', 'Replay'], es: ['Pausar animación', 'Reproducir animación', 'Repetir'], zh: ['暂停动画', '播放动画', '重播'],
+    pl: ['Wstrzymaj animację', 'Odtwórz animację', 'Jeszcze raz'], de: ['Animation anhalten', 'Animation abspielen', 'Nochmal'],
+    fr: ['Mettre l’animation en pause', 'Lire l’animation', 'Rejouer'], ar: ['إيقاف الحركة مؤقتًا', 'تشغيل الحركة', 'إعادة'] };
+  function now() { return Date.now(); }
+  function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+  // o: {n (число або функція), min (старт, напр. 0.6), raw() → прогрес за прокруткою в етапах або null, render(cur, act), view (елемент для IO)}
+  W.casDrive = function (o) {
+    var min = o.min || 0, cur = min, raw = null, off = 0, act = -1, tAct = 0, raf = 0, last = 0, live = false, snap = true;
+    function N() { return typeof o.n === 'function' ? o.n() : o.n; } // n може змінитися (інша технологія стін — інша кількість етапів)
+    function tgt() { return clamp((raw == null ? min : raw) + off, min, N() - 0.001); }
+    function read() {
+      var r = o.raw(); if (r == null) return;
+      if (raw == null || snap) { raw = r; return; }
+      var dr = r - raw; if (Math.abs(dr) < 0.02) return; // дрібні дельти трекпада
+      raw = r;
+      if (off) { var k = Math.min(Math.abs(off), Math.abs(dr) * 0.5); off -= off > 0 ? k : -k; } // зсув автопрогравання тане при прокрутці
+    }
+    function frame(ts) {
+      raf = 0; var t = now(), dt = Math.min(64, last ? t - last : 16); last = t;
+      read();
+      var g = tgt();
+      if (snap) { cur = g; snap = false; act = Math.floor(cur); tAct = t; o.render(cur, act); return; }
+      var step = (g - cur) * 0.16, cap = dt / 320; step = clamp(step, -cap, cap);
+      var c = cur + step;
+      if (Math.abs(g - c) < 0.003) c = g;
+      var a = Math.floor(c);
+      if (a !== act) {
+        if (t - tAct < 330) c = clamp(c, act, act + 0.999); // етап щойно змінився — тримаємо
+        else { a = clamp(a, act - 1, act + 1); c = clamp(c, a, a + 0.999); act = a; tAct = t; }
+      }
+      cur = c; o.render(cur, act);
+      if (cur !== g) raf = W.requestAnimationFrame(frame); else last = 0;
+    }
+    function kick() { if (!raf) raf = W.requestAnimationFrame(frame); }
+    W.addEventListener('scroll', function () { if (live) kick(); }, { passive: true });
+    W.addEventListener('resize', function () { kick(); }, { passive: true });
+    if (o.view && 'IntersectionObserver' in W) new IntersectionObserver(function (es) {
+      live = es[es.length - 1].isIntersecting;
+      if (!live) { off = 0; snap = true; } // поза кадром — без зсуву; на вході стрибаємо одразу в положення за прокруткою
+      kick();
+    }).observe(o.view); else live = true;
+    return {
+      kick: kick,
+      act: function () { return act; },
+      // крок автопрогравання: +1 етап без прокрутки сторінки (зсув off); false — уже останній
+      step: function () { var g = tgt(); if (Math.floor(g) >= N() - 1) return false; off += Math.floor(g) + 1.9 - g; kick(); return true; },
+      restart: function () { off = min - (raw == null ? min : raw); snap = true; kick(); },
+      reset: function () { off = 0; kick(); }, // перед go(): кнопки ←/→ ведуть прокруткою
+      atEnd: function () { return act >= N() - 1; }
+    };
+  };
+  // o: {root, view, host (куди кнопку), before?, cls?, step() → bool, restart(), atEnd()}
+  W.casAuto = function (o) {
+    if (RM || !o.root) return null;
+    var lang = (d.documentElement.lang || 'uk').slice(0, 2), t = T[lang] || T.en, user = false, ended = false, live = false, quiet = now() + 3000, lastStep = 0, iv = 0;
+    var b = d.createElement('button'); b.type = 'button'; b.className = 'sc-ap' + (o.cls ? ' ' + o.cls : '');
+    function lab() {
+      var k = ended ? 2 : user ? 1 : 0; b.setAttribute('aria-label', t[k]); b.title = t[k];
+      b.innerHTML = '<span aria-hidden="true">' + (ended ? '↻' : user ? '▶' : '❚❚') + '</span>'; b.setAttribute('data-st', ended ? 'end' : user ? 'off' : 'on');
+    }
+    lab();
+    if (o.host) o.host.insertBefore(b, o.before || null);
+    function poke(ms) { quiet = Math.max(quiet, now() + ms); }
+    ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach(function (e) { o.root.addEventListener(e, function () { poke(9000); }, { passive: true }); });
+    W.addEventListener('scroll', function () { if (live) poke(3000); }, { passive: true });
+    b.addEventListener('click', function () {
+      if (ended) { ended = false; user = false; o.restart(); } else user = !user;
+      quiet = now() + (user ? 0 : 900); lastStep = now(); lab();
+    });
+    function loop() {
+      if (ended && !o.atEnd()) { ended = false; lab(); }
+      if (!live || user || ended || d.hidden) return;
+      var t0 = now(); if (t0 < quiet || t0 - lastStep < 3500) return;
+      lastStep = t0;
+      if (!o.step()) { ended = true; lab(); }
+    }
+    function run(v) { live = v; clearInterval(iv); iv = 0; if (v) { poke(1500); iv = setInterval(loop, 250); } }
+    if ('IntersectionObserver' in W) new IntersectionObserver(function (es) { run(es[es.length - 1].intersectionRatio >= 0.5); }, { threshold: [0, 0.5, 1] }).observe(o.view || o.root);
+    d.addEventListener('visibilitychange', function () { if (!d.hidden) poke(1500); });
+    return { poke: poke, btn: b };
+  };
+})();
+
 /* Сцени (section.bz[data-js]: «Будинок з нуля», «Ландшафт», «Комплекс», «Ресторан», «Будинок на воді»; префікс bz — .ba зайнятий слайдером «до/після»):
    скрипти сцен і спільні стилі керування /assets/scene-ui.v1.css вантажимо лише після першої прокрутки (0 байтів на завантаженні).
    Перемикач сцен nav.la-tab — на місці: клік підтягує блок сцени з її сторінки (fetch + DOMParser, той самий origin), ставить його замість
@@ -515,7 +614,7 @@
 (function () {
   var W = window, d = document, ss = d.querySelectorAll('section.bz[data-js]'); // кілька сцен на сторінці — кожна свій скрипт
   if (!ss.length) return;
-  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=8ad1bac2"; /*/sc:ui*/
+  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=d2ffd330"; /*/sc:ui*/
   var on = 0;
   function css(h) { if (!h || d.querySelector('link[href="' + h + '"]')) return; var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = h; d.head.appendChild(l); }
   function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; d.head.appendChild(j); }

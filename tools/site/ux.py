@@ -157,7 +157,7 @@ ANIM = _anim_urls()
 #          (a.ux-calc → квіз / калькулятор сторінки / калькулятор мови / форма), рядок довіри (CSS --ux-tr), без .facts і WhatsApp;
 #   секції — плитки (data-c="x" на <div class="w">): іконка + назва (H2) + рядок «від $…» (data-xs); тап — розгортає на місці.
 #          Текст лишається в DOM (SEO, FAQPage). Не плитки: форма, калькулятор, квіз, гід, «Будинок з нуля», карта, контакти.
-LIGHT_CLUSTERS = ('home', 'services', 'about', 'contact', 'design', 'renovation', 'construction', 'calculator')
+LIGHT_CLUSTERS = ('home', 'services', 'about', 'contact', 'design', 'renovation', 'construction', 'calculator', 'landscape', 'resort', 'restaurant', 'office', 'furnishing')
 LIGHT_EXTRA = ('/portfolio', '/remont-kvartyr-kyiv', '/ru/remont-kvartir-kiev', '/vartist-remontu-kvartyry-kyiv', '/ru/stoimost-remonta-kvartiry-kiev')
 # ручні uk-сторінки: класи секцій, що стають плитками (h2 — нащадок секції; атрибут — на самій <section>)
 LIGHT_CUSTOM = {
@@ -176,6 +176,8 @@ def _light_pages():
 
 
 LIGHT = _light_pages()
+# «Про студію» всіх мов: вступ (rich split, div.xs-tx) — видно лід у 3 рядки, решта абзаців і цінності — за «Читати далі» (data-c="t")
+ABOUT = {i18n.path_to_file(p) for p in i18n.clusters().get('about', {}).values()}
 CALC = {l: p for l, p in i18n.clusters().get('calculator', {}).items() if os.path.exists(os.path.join(ROOT, i18n.path_to_file(p)))}
 PRICE_RX = re.compile(r'(?:(?<![\w$])(?:від|от|from|desde|od|ab|à partir de|dès|من)\s+)\$\s?\d+(?:[\s,]\d{3})*(?:\s?/\s?(?:м²|m²|м2|م²|сотку))?'
                       r'|\$\s?\d+(?:[\s,]\d{3})*(?:\s?/\s?(?:m²|㎡))?\s?起', re.I)
@@ -219,6 +221,59 @@ def _lead_dup(hp):
     return hp[:k] + f'<span class="ux-dup">{hp[k:k + x.end()]}</span>' + hp[k + x.end():]
 
 
+TEL = 'tel:+380978667755'
+SENT_RX = re.compile(r'(?<=[.!?。！？])\s*(?=[0-9A-ZА-ЯІЇЄҐÀ-ÝĄĆĘŁŃÓŚŹŻ¿¡«"\u4e00-\u9fff\u0600-\u06ff])')
+
+
+def _lead_rest(hp):
+    """Мінімалістичний hero (Михайло 04.11.2026): видно лише перше речення ліду (після повтору H1 — span.ux-dup);
+    решта — у span.ux-rest (прихована, поки лід згорнутий; тап — увесь текст; у DOM лишається)."""
+    p = re.search(r'<p data-c="h">(?:<span class="ux-dup">.*?</span>)?', hp, re.S)
+    if not p:
+        return hp
+    end = hp.find('</p>', p.end())
+    body = hp[p.end():end]
+    for x in SENT_RX.finditer(body):
+        k = x.start()
+        pre = body[:k]
+        if k < 12 or len(re.findall(r'<[a-z]', pre)) != len(re.findall(r'</', pre)):
+            continue
+        if not body[k:].strip():
+            break
+        return hp[:p.end()] + body[:k] + f'<span class="ux-rest">{body[k:]}</span>' + hp[end:]
+    return hp
+
+
+def _call_first(m, i, lang):
+    """Перша кнопка hero — «Подзвонити» (tel:); якщо її нема — додаємо, інші кнопки лишаються в DOM (CSS ховає з третьої)."""
+    k = m.find('<div class="btns">', i)
+    e = m.find('</div>', k)
+    if k < 0 or e < 0:
+        return m
+    b = m[k:e]
+    anchors = list(re.finditer(r'\n?[ \t]*<a\b[^>]*>.*?</a>', b, re.S))
+    if not anchors:
+        return m
+    tel = next((a for a in anchors if f'href="{TEL}"' in a.group(0) or 'href="tel:' in a.group(0)), None)
+    if tel is anchors[0]:
+        return m
+    if tel is None:
+        import leadform
+        c = leadform._call(lang)
+        if not c:
+            return m
+        x = f'\n    <a class="btn" href="{TEL}">{html.escape(c[0])}</a>'
+    else:
+        x = '\n    ' + tel.group(0).strip()
+        b = b[:tel.start()] + b[tel.end():]
+    j = anchors[0].start()
+    b = b[:j] + x + b[j:]
+    return m[:k] + b + m[e:]
+
+
+HERO_SKIP = re.compile(r'(?:[a-z]{2}/)?(?:blog|proekty)/')
+
+
 def _light_hero(m, rel, lang, full):
     i = m.find('<div class="w hero">')
     k = m.find('<div class="btns">', i)
@@ -226,8 +281,9 @@ def _light_hero(m, rel, lang, full):
         return m
     hp = m[i:k]
     hp = hp.replace('<p>', '<p data-c="h">', 1) if '<p>' in hp else hp
-    hp = _lead_dup(hp)
+    hp = _lead_rest(_lead_dup(hp))
     m = m[:i] + hp + m[k:]
+    m = _call_first(m, i, lang)
     k = m.find('<div class="btns">', i)
     a = m.find('</a>', k)
     if a < 0:
@@ -287,8 +343,9 @@ def _light_custom(m, rel):
 
 SPAN_RX = re.compile(r'\sstyle="(?:--s[2346]:\d+;?)+"')
 STRIP = [SPAN_RX, re.compile(r'\sdata-i="[a-z0-9]{2}"'), re.compile(r'\sdata-c="[tsqglxhk]"'), re.compile(r'\sdata-a(?:="[si]")?(?=[\s>])'),
-         re.compile(r'\sdata-xs="[^"]*"'), CALC_RX]
+         re.compile(r'\sdata-xs="[^"]*"'), re.compile(r'\sdata-cn="\d+"'), CALC_RX]
 UNWRAP = re.compile(r'<div data-c="l">(<(ul|ol)>.*?</\2>)</div>', re.S)
+REST_RX = re.compile(r'<span class="ux-rest">(.*?)</span>(?=</p>)', re.S)  # друга частина ліду hero (_lead_rest)
 
 H2_RX = re.compile(r'<h2((?:\s+id="[^"]*")?)>(.*?)</h2>', re.S)
 H3_RX = re.compile(r'(<div class="card"><h3)>(.*?</h3>)', re.S)
@@ -396,6 +453,8 @@ def _collapse(m, light=False):
         k = _collapse_type(x.group(2), x.group(3), body)
         return x.group(1) + (f' data-c="{k}"' if k else '') + x.group(4) + body + x.group(6)
     m = SEC_RX.sub(sec, m)
+    if light:  # команда (rich.py team): імʼя й роль на виду, опис — за шевроном / тапом
+        m = m.replace('<div class="grid"><div class="card xs-tm">', '<div class="grid" data-c="k"><div class="card xs-tm">', 1)
     # ручні сторінки «Про студію» (uk/ru): довгий вступ і «Як ми працюємо»
     m = re.sub(r'<div class="about-txt">(?=(?:(?!</div>).)*?<p class="about-body"[^>]*>(?:(?!</div>).)*?<p class="about-body")',
                '<div class="about-txt" data-c="t">', m, count=1, flags=re.S)
@@ -436,10 +495,33 @@ def _badges(s):
 
 def strip(s):
     """Сторінка без атрибутів ux (для генераторів, що беруть живу сторінку за шаблон і шукають у ній точні рядки)."""
+    s = REST_RX.sub(r'\1', s)
     s = UNWRAP.sub(r'\1', s)  # спершу обгортки списків (STRIP зняв би з них data-c і лишив порожній <div>)
     for rx in STRIP:
         s = rx.sub('', s)
     return s
+
+
+OZD_RX = re.compile(r'[a-z]{2}/ozdoba\.html$')  # Оздоба інших мов (tools/products/intl.py); uk /ozdoba — розмітка в ozdoba.html (ux її не чіпає)
+
+
+def _ozd(m):
+    """Нижні інфоблоки Оздоби згорнуті: «Для бізнесу» (.b2b4) і «Як працює замовлення» (ol.steps4) — назви на виду, описи за кнопкою (s);
+    один довгий абзац (p.klead) — 3 рядки (t); FAQ — перші 3 питання (q, data-cn)."""
+    def sec(x):
+        o, body = x.group(1), x.group(2)
+        if 'data-c=' in o or 'id=' in o:
+            return x.group(0)
+        if 'class="b2b4"' in body or 'class="steps4"' in body:
+            k = ' data-c="s"'
+        elif len(re.findall(r'<details>', body)) >= 4:
+            k = ' data-c="q" data-cn="3"'
+        elif re.search(r'^\s*<h2[^>]*>.*?</h2>\s*<p class="klead">', body, re.S) and body.count('<p') == 1:
+            k = ' data-c="t"'
+        else:
+            return x.group(0)
+        return o[:-1] + k + '>' + body
+    return re.sub(r'(<section class="ozd-sec"[^>]*>)(.*?)(?=</section>)', sec, m, flags=re.S)
 
 
 def apply(s, rel):
@@ -459,11 +541,17 @@ def apply(s, rel):
     if not re.match(r'(?:[a-z]{2}/)?index\.html$', rel):  # головні — без іконок заголовків (вага й LCP головної)
         m = _icons(m)
     light = rel in LIGHT
-    if light:
+    if light or not HERO_SKIP.match(rel):  # мінімалістичний hero — на всіх сторінках з .w.hero, крім статей і проєктів
         lm = re.search(r'<html[^>]*\blang="([a-z]{2})', s)
-        m = _light_custom(_light_hero(m, rel, lm.group(1) if lm else 'uk', s), rel)
+        m = _light_hero(m, rel, lm.group(1) if lm else 'uk', s)
+    if light:
+        m = _light_custom(m, rel)
         m = re.sub(r'(<!--cas:tldr-->(?:(?!<!--/cas:tldr-->).)*?)<p style="margin:0">', r'\1<p style="margin:0" data-c="h">', m, count=1, flags=re.S)
     m = _collapse(m, light)
+    if OZD_RX.match(rel):
+        m = _ozd(m)
+    if rel in ABOUT:
+        m = re.sub(r'<div class="xs-tx">(?=(?:<h2[^>]*>.*?</h2>)?<p\b)', '<div class="xs-tx" data-c="t">', m, count=1, flags=re.S)
     if light:
         m = _spans(m)
     if re.match(r'(?:[a-z]{2}/)?blog/', rel):
@@ -526,9 +614,11 @@ def tiles(check=False):
     for x in warn:
         print('⚠ плитка', x)
     rules = ''.join(f'.js .w[data-c=x]:not(.c-o):has(>h2[data-i={k}])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i={k}])::before{{background-image:url(/{TILES_OUT}/{k}.webp)}}' for k in keys)
-    base = (''
-            + (':is(' + ','.join(f'.js .w[data-c=x]:not(.c-o):has(>h2[data-i={k}]),.js [data-c=x]:not(.w,.c-o):has(>h2[data-i={k}])' for k in keys) + ')::before'
-               '{content:"";display:block;aspect-ratio:3/2;margin:-16px -16px 12px;background:var(--bg2,#100e0c) center/cover no-repeat}' if keys else ''))
+    # усі плитки — з ілюстрацією (блочність 04.11.2026: плитка без картинки поруч із плитками з картинками ламала ряд);
+    # тема без власної ілюстрації — запасна «dm»
+    fb = 'dm' if 'dm' in keys else (keys[0] if keys else '')
+    base = (('.js .w[data-c=x]:not(.c-o):has(>h2[data-i])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i])::before'
+             f'{{content:"";display:block;aspect-ratio:3/2;margin:-16px -16px 12px;background:var(--bg2,#100e0c) url(/{TILES_OUT}/{fb}.webp) center/cover no-repeat}}') if keys else '')
     return '/*ux:tiles*/' + (base + rules if keys else '') + '/*/ux:tiles*/'
 
 

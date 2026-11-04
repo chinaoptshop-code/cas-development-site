@@ -31,7 +31,7 @@ def _ver(path, _c={}):
 # спільні файли, які підключають сторінки: після зміни файлу всі сторінки отримують новий ?v=
 SHARED = ('/assets/site-chrome.v1.css', '/assets/site-chrome.v1.js', '/assets/lead-form.v1.js', '/assets/ui-polish.v1.js', '/assets/proekt.v1.css',
           '/assets/cas-map.v1.css', '/assets/cas-map.v1.js', '/assets/quiz.v1.js', '/assets/quiz.v1.css', '/assets/media.v1.js', '/assets/media.v1.css',
-          '/assets/build-anim.v1.js', '/assets/build-anim.v1.css', '/assets/home.v1.css')
+          '/assets/build-anim.v1.js', '/assets/build-anim.v1.css', '/assets/home.v1.css', '/assets/sections.v1.css')
 SHARED_RX = re.compile(r'(' + '|'.join(re.escape(x) for x in SHARED) + r')(?:\?v=\w+)?(?=")')
 
 

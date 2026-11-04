@@ -445,6 +445,12 @@
    "label": "Фото: Yacht Restaurant",
    "items": [
     {
+     "img": "img/p/1432efN35q6M6V-200.webp",
+     "srcset": "/img/p/1432efN35q6M6V-200.webp 200w, /img/p/1432efN35q6M6V-400.webp 400w",
+     "alt": "Зала ресторану — Yacht Restaurant, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
      "img": "img/p/18ej1fH-11uoyr-200.webp",
      "srcset": "/img/p/18ej1fH-11uoyr-200.webp 200w, /img/p/18ej1fH-11uoyr-400.webp 400w, /img/p/18ej1fH-11uoyr-600.webp 600w",
      "alt": "Yacht Restaurant — фото проєкту",
@@ -489,12 +495,6 @@
     {
      "img": "img/p/1dCBMYs58M2hfy-200.webp",
      "srcset": "/img/p/1dCBMYs58M2hfy-200.webp 200w, /img/p/1dCBMYs58M2hfy-400.webp 400w",
-     "alt": "Yacht Restaurant — фото проєкту",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/1432efN35q6M6V-200.webp",
-     "srcset": "/img/p/1432efN35q6M6V-200.webp 200w, /img/p/1432efN35q6M6V-400.webp 400w",
      "alt": "Yacht Restaurant — фото проєкту",
      "sizes": "(max-width:767px) 200px, 280px"
     },
@@ -571,6 +571,12 @@
    "btn": "Відкрити →",
    "label": "Фото: Linden Penthouse",
    "items": [
+    {
+     "img": "img/p/1rJCChE1lDiB_j-200.webp",
+     "srcset": "/img/p/1rJCChE1lDiB_j-200.webp 200w, /img/p/1rJCChE1lDiB_j-400.webp 400w",
+     "alt": "Вітальня — Linden Penthouse, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
     {
      "img": "img/p/1MslU7S5X8gIEp-200.webp",
      "srcset": "/img/p/1MslU7S5X8gIEp-200.webp 200w, /img/p/1MslU7S5X8gIEp-400.webp 400w",
@@ -682,12 +688,6 @@
     {
      "img": "img/p/1GKWyFLbcWTUNl-200.webp",
      "srcset": "/img/p/1GKWyFLbcWTUNl-200.webp 200w, /img/p/1GKWyFLbcWTUNl-400.webp 400w",
-     "alt": "Linden Penthouse — фото проєкту",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/1rJCChE1lDiB_j-200.webp",
-     "srcset": "/img/p/1rJCChE1lDiB_j-200.webp 200w, /img/p/1rJCChE1lDiB_j-400.webp 400w",
      "alt": "Linden Penthouse — фото проєкту",
      "sizes": "(max-width:767px) 200px, 280px"
     },
@@ -1071,6 +1071,12 @@
    "label": "Фото: Hoda Estate",
    "items": [
     {
+     "img": "img/p/1iBBOM6KWCT5qH-200.webp",
+     "srcset": "/img/p/1iBBOM6KWCT5qH-200.webp 200w, /img/p/1iBBOM6KWCT5qH-400.webp 400w",
+     "alt": "Вітальня — Hoda Estate, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
      "img": "img/p/1FRa0FI6iMHK5L-200.webp",
      "srcset": "/img/p/1FRa0FI6iMHK5L-200.webp 200w, /img/p/1FRa0FI6iMHK5L-400.webp 400w",
      "alt": "Hoda Estate — фото проєкту",
@@ -1245,12 +1251,6 @@
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
-     "img": "img/p/1iBBOM6KWCT5qH-200.webp",
-     "srcset": "/img/p/1iBBOM6KWCT5qH-200.webp 200w, /img/p/1iBBOM6KWCT5qH-400.webp 400w",
-     "alt": "Hoda Estate — фото проєкту",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
      "img": "img/p/1FyiKr_amieUqQ-200.webp",
      "srcset": "/img/p/1FyiKr_amieUqQ-200.webp 200w, /img/p/1FyiKr_amieUqQ-400.webp 400w",
      "alt": "Hoda Estate — фото проєкту",
@@ -1323,6 +1323,12 @@
    "btn": "Відкрити →",
    "label": "Фото: Petrivtsi House",
    "items": [
+    {
+     "img": "img/p/1co4thni1Q8_1J-200.webp",
+     "srcset": "/img/p/1co4thni1Q8_1J-200.webp 200w, /img/p/1co4thni1Q8_1J-400.webp 400w",
+     "alt": "Вітальня з каміном — Petrivtsi House, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
     {
      "img": "img/p/1NVeaQcV2TZSN5-200.webp",
      "srcset": "/img/p/1NVeaQcV2TZSN5-200.webp 200w, /img/p/1NVeaQcV2TZSN5-400.webp 400w, /img/p/1NVeaQcV2TZSN5-600.webp 600w",
@@ -1690,12 +1696,6 @@
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
-     "img": "img/p/1co4thni1Q8_1J-200.webp",
-     "srcset": "/img/p/1co4thni1Q8_1J-200.webp 200w, /img/p/1co4thni1Q8_1J-400.webp 400w",
-     "alt": "Petrivtsi House — фото проєкту",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
      "img": "img/p/1gwX4B45BcQ2Z--200.webp",
      "srcset": "/img/p/1gwX4B45BcQ2Z--200.webp 200w, /img/p/1gwX4B45BcQ2Z--400.webp 400w",
      "alt": "Petrivtsi House — фото проєкту",
@@ -1937,14 +1937,14 @@
    "label": "Фото: USA House",
    "items": [
     {
-     "img": "img/p/18V9n96tOhjKjh-200.webp",
-     "srcset": "/img/p/18V9n96tOhjKjh-200.webp 200w, /img/p/18V9n96tOhjKjh-400.webp 400w",
-     "alt": "Вітальня, USA House (США) — дизайн-проєкт CAS Development",
+     "img": "img/p/1pYk5KBK_ne5Dj-200.webp",
+     "srcset": "/img/p/1pYk5KBK_ne5Dj-200.webp 200w, /img/p/1pYk5KBK_ne5Dj-400.webp 400w",
+     "alt": "Вітальня — USA House, проєкт CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
-     "img": "img/p/1pYk5KBK_ne5Dj-200.webp",
-     "srcset": "/img/p/1pYk5KBK_ne5Dj-200.webp 200w, /img/p/1pYk5KBK_ne5Dj-400.webp 400w",
+     "img": "img/p/18V9n96tOhjKjh-200.webp",
+     "srcset": "/img/p/18V9n96tOhjKjh-200.webp 200w, /img/p/18V9n96tOhjKjh-400.webp 400w",
      "alt": "Вітальня, USA House (США) — дизайн-проєкт CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
@@ -2087,6 +2087,12 @@
    "btn": "Відкрити →",
    "label": "Фото: Pidgirland",
    "items": [
+    {
+     "img": "img/p/1xSbwYmzFkTN2A-200.webp",
+     "srcset": "/img/p/1xSbwYmzFkTN2A-200.webp 200w, /img/p/1xSbwYmzFkTN2A-400.webp 400w",
+     "alt": "Вітальня-їдальня — Pidgirland, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
     {
      "img": "img/p/1FiLI9kKE-C87h-200.webp",
      "srcset": "/img/p/1FiLI9kKE-C87h-200.webp 200w, /img/p/1FiLI9kKE-C87h-400.webp 400w, /img/p/1FiLI9kKE-C87h-600.webp 600w",
@@ -2246,12 +2252,6 @@
     {
      "img": "img/p/1JGuPkezNcqDa4-200.webp",
      "srcset": "/img/p/1JGuPkezNcqDa4-200.webp 200w, /img/p/1JGuPkezNcqDa4-400.webp 400w",
-     "alt": "Pidgirland — фото проєкту",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/1xSbwYmzFkTN2A-200.webp",
-     "srcset": "/img/p/1xSbwYmzFkTN2A-200.webp 200w, /img/p/1xSbwYmzFkTN2A-400.webp 400w",
      "alt": "Pidgirland — фото проєкту",
      "sizes": "(max-width:767px) 200px, 280px"
     },
@@ -2521,6 +2521,12 @@
    "label": "Фото: Hodos Villa",
    "items": [
     {
+     "img": "img/p/1xskjqBvCXgXuL-200.webp",
+     "srcset": "/img/p/1xskjqBvCXgXuL-200.webp 200w, /img/p/1xskjqBvCXgXuL-400.webp 400w",
+     "alt": "Їдальня — Hodos Villa, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
      "img": "img/p/1Grj8_m7MJwsbE-200.webp",
      "srcset": "/img/p/1Grj8_m7MJwsbE-200.webp 200w, /img/p/1Grj8_m7MJwsbE-400.webp 400w",
      "alt": "Вхід, Hodos Villa (Київ) — дизайн-проєкт CAS Development",
@@ -2553,12 +2559,6 @@
     {
      "img": "img/p/1-ZBmZr06YTHNc-200.webp",
      "srcset": "/img/p/1-ZBmZr06YTHNc-200.webp 200w, /img/p/1-ZBmZr06YTHNc-400.webp 400w",
-     "alt": "Вітальня, Hodos Villa (Київ) — дизайн-проєкт CAS Development",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/1xskjqBvCXgXuL-200.webp",
-     "srcset": "/img/p/1xskjqBvCXgXuL-200.webp 200w, /img/p/1xskjqBvCXgXuL-400.webp 400w",
      "alt": "Вітальня, Hodos Villa (Київ) — дизайн-проєкт CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
@@ -2900,6 +2900,12 @@
    "label": "Фото: Diamond",
    "items": [
     {
+     "img": "img/p/17c1WWHOs1rMHM-200.webp",
+     "srcset": "/img/p/17c1WWHOs1rMHM-200.webp 200w, /img/p/17c1WWHOs1rMHM-400.webp 400w",
+     "alt": "Вітальня — Diamond, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
      "img": "img/p/1iGcqtsUqLNWbB-200.webp",
      "srcset": "/img/p/1iGcqtsUqLNWbB-200.webp 200w, /img/p/1iGcqtsUqLNWbB-400.webp 400w",
      "alt": "Вітальня, Diamond (Квартира) — дизайн-проєкт CAS Development",
@@ -2932,12 +2938,6 @@
     {
      "img": "img/p/10NiUcZNhKMjmn-200.webp",
      "srcset": "/img/p/10NiUcZNhKMjmn-200.webp 200w, /img/p/10NiUcZNhKMjmn-400.webp 400w",
-     "alt": "Вітальня, Diamond (Квартира) — дизайн-проєкт CAS Development",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/17c1WWHOs1rMHM-200.webp",
-     "srcset": "/img/p/17c1WWHOs1rMHM-200.webp 200w, /img/p/17c1WWHOs1rMHM-400.webp 400w",
      "alt": "Вітальня, Diamond (Квартира) — дизайн-проєкт CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
@@ -3569,6 +3569,12 @@
    "label": "Фото: A-Frame House",
    "items": [
     {
+     "img": "img/p/1DhAA8_vK0zo3E-200.webp",
+     "srcset": "/img/p/1DhAA8_vK0zo3E-200.webp 200w, /img/p/1DhAA8_vK0zo3E-400.webp 400w",
+     "alt": "Інтерʼєр — A-Frame House, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
      "img": "img/p/1g-E1m6cFJ9kvH-200.webp",
      "srcset": "/img/p/1g-E1m6cFJ9kvH-200.webp 200w, /img/p/1g-E1m6cFJ9kvH-400.webp 400w",
      "alt": "A-Frame House (Архітектура) — дизайн-проєкт CAS Development",
@@ -3595,12 +3601,6 @@
     {
      "img": "img/p/1gB5Gm7pw3yuo--200.webp",
      "srcset": "/img/p/1gB5Gm7pw3yuo--200.webp 200w, /img/p/1gB5Gm7pw3yuo--400.webp 400w",
-     "alt": "A-Frame House (Архітектура) — дизайн-проєкт CAS Development",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/1DhAA8_vK0zo3E-200.webp",
-     "srcset": "/img/p/1DhAA8_vK0zo3E-200.webp 200w, /img/p/1DhAA8_vK0zo3E-400.webp 400w",
      "alt": "A-Frame House (Архітектура) — дизайн-проєкт CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
@@ -3642,6 +3642,12 @@
    "label": "Фото: Monpark",
    "items": [
     {
+     "img": "img/p/1HL1J3k6Vl1nD--200.webp",
+     "srcset": "/img/p/1HL1J3k6Vl1nD--200.webp 200w, /img/p/1HL1J3k6Vl1nD--400.webp 400w",
+     "alt": "Зала ресторану — Monpark, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
      "img": "img/p/1jKOiN3xyCjZCL-200.webp",
      "srcset": "/img/p/1jKOiN3xyCjZCL-200.webp 200w, /img/p/1jKOiN3xyCjZCL-400.webp 400w",
      "alt": "Monpark (Ресторан і тераса) — дизайн-проєкт CAS Development",
@@ -3668,12 +3674,6 @@
     {
      "img": "img/p/1fJUIA-kCmfblI-200.webp",
      "srcset": "/img/p/1fJUIA-kCmfblI-200.webp 200w, /img/p/1fJUIA-kCmfblI-400.webp 400w",
-     "alt": "Monpark (Ресторан і тераса) — дизайн-проєкт CAS Development",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/1HL1J3k6Vl1nD--200.webp",
-     "srcset": "/img/p/1HL1J3k6Vl1nD--200.webp 200w, /img/p/1HL1J3k6Vl1nD--400.webp 400w",
      "alt": "Monpark (Ресторан і тераса) — дизайн-проєкт CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
@@ -3739,6 +3739,12 @@
    "label": "Фото: Yablu Rest",
    "items": [
     {
+     "img": "img/p/1jjk3ERcqKTGqZ-200.webp",
+     "srcset": "/img/p/1jjk3ERcqKTGqZ-200.webp 200w, /img/p/1jjk3ERcqKTGqZ-400.webp 400w",
+     "alt": "Лаунж-зона — Yablu Rest, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
      "img": "img/p/1GqqKXz4Ax1_cM-200.webp",
      "srcset": "/img/p/1GqqKXz4Ax1_cM-200.webp 200w, /img/p/1GqqKXz4Ax1_cM-400.webp 400w",
      "alt": "Yablu Rest — фото проєкту",
@@ -3773,12 +3779,6 @@
      "srcset": "/img/p/1PYQ1NiQoorPDk-200.webp 200w, /img/p/1PYQ1NiQoorPDk-400.webp 400w",
      "alt": "Yablu Rest — фото проєкту",
      "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/1jjk3ERcqKTGqZ-200.webp",
-     "srcset": "/img/p/1jjk3ERcqKTGqZ-200.webp 200w, /img/p/1jjk3ERcqKTGqZ-400.webp 400w",
-     "alt": "Yablu Rest — фото проєкту",
-     "sizes": "(max-width:767px) 200px, 280px"
     }
    ]
   },
@@ -3793,6 +3793,12 @@
    "btn": "Відкрити →",
    "label": "Фото: Smart Villa",
    "items": [
+    {
+     "img": "img/p/1jLCsJh1mIO_wX-200.webp",
+     "srcset": "/img/p/1jLCsJh1mIO_wX-200.webp 200w, /img/p/1jLCsJh1mIO_wX-400.webp 400w",
+     "alt": "Фасад і басейн — Smart Villa, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
     {
      "img": "img/p/1kHF6cjS291puf-200.webp",
      "srcset": "/img/p/1kHF6cjS291puf-200.webp 200w, /img/p/1kHF6cjS291puf-400.webp 400w",
@@ -3820,12 +3826,6 @@
     {
      "img": "img/p/1BQqqJb_OqPOz7-200.webp",
      "srcset": "/img/p/1BQqqJb_OqPOz7-200.webp 200w, /img/p/1BQqqJb_OqPOz7-400.webp 400w",
-     "alt": "Smart Villa — фото проєкту",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/1jLCsJh1mIO_wX-200.webp",
-     "srcset": "/img/p/1jLCsJh1mIO_wX-200.webp 200w, /img/p/1jLCsJh1mIO_wX-400.webp 400w",
      "alt": "Smart Villa — фото проєкту",
      "sizes": "(max-width:767px) 200px, 280px"
     },
@@ -3922,6 +3922,12 @@
    "label": "Фото: Kitana Beach",
    "items": [
     {
+     "img": "img/p/1R7JHtKFpuMJSl-200.webp",
+     "srcset": "/img/p/1R7JHtKFpuMJSl-200.webp 200w, /img/p/1R7JHtKFpuMJSl-400.webp 400w",
+     "alt": "Бунгало над водою — Kitana Beach, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
      "img": "img/p/1A9yy4nI-gf9h3-200.webp",
      "srcset": "/img/p/1A9yy4nI-gf9h3-200.webp 200w, /img/p/1A9yy4nI-gf9h3-400.webp 400w",
      "alt": "Kitana Beach — фото проєкту",
@@ -3936,12 +3942,6 @@
     {
      "img": "img/p/1liDtgnsluGT4T-200.webp",
      "srcset": "/img/p/1liDtgnsluGT4T-200.webp 200w, /img/p/1liDtgnsluGT4T-400.webp 400w",
-     "alt": "Kitana Beach — фото проєкту",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/1R7JHtKFpuMJSl-200.webp",
-     "srcset": "/img/p/1R7JHtKFpuMJSl-200.webp 200w, /img/p/1R7JHtKFpuMJSl-400.webp 400w",
      "alt": "Kitana Beach — фото проєкту",
      "sizes": "(max-width:767px) 200px, 280px"
     },
@@ -4055,6 +4055,12 @@
    "label": "Фото: Dubai Villa",
    "items": [
     {
+     "img": "img/p/1IWgqOm6pY2p34-200.webp",
+     "srcset": "/img/p/1IWgqOm6pY2p34-200.webp 200w, /img/p/1IWgqOm6pY2p34-400.webp 400w",
+     "alt": "Фасад будинку — Dubai Villa, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
      "img": "img/p/1uBxYPk7W36Rp0-200.webp",
      "srcset": "/img/p/1uBxYPk7W36Rp0-200.webp 200w, /img/p/1uBxYPk7W36Rp0-400.webp 400w",
      "alt": "Dubai Villa — фото проєкту",
@@ -4093,12 +4099,6 @@
     {
      "img": "img/p/183Q79Kf8WqggB-200.webp",
      "srcset": "/img/p/183Q79Kf8WqggB-200.webp 200w, /img/p/183Q79Kf8WqggB-400.webp 400w",
-     "alt": "Dubai Villa — фото проєкту",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/1IWgqOm6pY2p34-200.webp",
-     "srcset": "/img/p/1IWgqOm6pY2p34-200.webp 200w, /img/p/1IWgqOm6pY2p34-400.webp 400w",
      "alt": "Dubai Villa — фото проєкту",
      "sizes": "(max-width:767px) 200px, 280px"
     },
@@ -4188,6 +4188,12 @@
    "label": "Фото: Tetris Hall",
    "items": [
     {
+     "img": "img/p/1nzb-w0NOCS1VA-200.webp",
+     "srcset": "/img/p/1nzb-w0NOCS1VA-200.webp 200w, /img/p/1nzb-w0NOCS1VA-400.webp 400w",
+     "alt": "Вітальня — Tetris Hall, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
      "img": "img/p/1xqY1KZo2JY5xq-200.webp",
      "srcset": "/img/p/1xqY1KZo2JY5xq-200.webp 200w, /img/p/1xqY1KZo2JY5xq-400.webp 400w",
      "alt": "Tetris Hall — фото проєкту",
@@ -4232,12 +4238,6 @@
     {
      "img": "img/p/15so-bNcSjdD1d-200.webp",
      "srcset": "/img/p/15so-bNcSjdD1d-200.webp 200w, /img/p/15so-bNcSjdD1d-400.webp 400w",
-     "alt": "Tetris Hall — фото проєкту",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/1nzb-w0NOCS1VA-200.webp",
-     "srcset": "/img/p/1nzb-w0NOCS1VA-200.webp 200w, /img/p/1nzb-w0NOCS1VA-400.webp 400w",
      "alt": "Tetris Hall — фото проєкту",
      "sizes": "(max-width:767px) 200px, 280px"
     },
@@ -4376,6 +4376,12 @@
    "label": "Фото: Office Chicago",
    "items": [
     {
+     "img": "img/p/11Hotk9uWWN_pE-200.webp",
+     "srcset": "/img/p/11Hotk9uWWN_pE-200.webp 200w, /img/p/11Hotk9uWWN_pE-400.webp 400w",
+     "alt": "Опенспейс офісу — Office Chicago, проєкт CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
      "img": "img/p/16fKqdFifd2emf-200.webp",
      "srcset": "/img/p/16fKqdFifd2emf-200.webp 200w, /img/p/16fKqdFifd2emf-400.webp 400w",
      "alt": "Office Chicago — фото проєкту",
@@ -4390,12 +4396,6 @@
     {
      "img": "img/p/172MXziiSXy2Bp-200.webp",
      "srcset": "/img/p/172MXziiSXy2Bp-200.webp 200w, /img/p/172MXziiSXy2Bp-400.webp 400w",
-     "alt": "Office Chicago — фото проєкту",
-     "sizes": "(max-width:767px) 200px, 280px"
-    },
-    {
-     "img": "img/p/11Hotk9uWWN_pE-200.webp",
-     "srcset": "/img/p/11Hotk9uWWN_pE-200.webp 200w, /img/p/11Hotk9uWWN_pE-400.webp 400w",
      "alt": "Office Chicago — фото проєкту",
      "sizes": "(max-width:767px) 200px, 280px"
     },

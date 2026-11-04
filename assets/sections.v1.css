@@ -79,3 +79,12 @@
 .xs-sub{color:var(--mu);margin:-12px 0 20px}
 .xs-proj .xs-head{margin-bottom:6px}.xs-proj .xs-head h2{margin:0}
 .xs-proj,.xs-strip,.xs-covers,.xs-team,.xs-svc{content-visibility:auto;contain-intrinsic-size:auto 640px}
+/* блочність (04.11.2026): картка послуги — фото, назва, ціна, суть в 1–3 рядки й «Детальніше →»; перелік і теги — на сторінці послуги (у DOM лишаються) */
+.js .xs-sv .xs-cb>:is(ul,.xs-tags,details.xs-more){display:none}
+.js .xs-sv .xs-cb>p:not([class]){display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.xs-cb .xs-links{margin-top:auto!important}
+/* сітка карток послуг — flex: ряд заповнюється без порожніх смуг (5 карток — 5 у ряд на 1440–1920, 3+2 на планшеті, 2+2+1 на телефоні) */
+.xs-sv{display:flex;flex-wrap:wrap}.xs-sv>.xs-c{flex:1 1 13rem}.xs-sv .xs-c>img,.xs-sv .xs-c>picture>img{max-height:12rem}
+@media(max-width:599px){.js .xs-sv{gap:10px}.js .xs-sv>.xs-c{flex:1 1 calc(50% - 5px)}.js .xs-sv .xs-cb{padding:12px 12px 14px;gap:6px}.js .xs-sv .xs-cb>p:not([class]){display:none}
+  .js .xs-sv .xs-c>img,.js .xs-sv .xs-c>picture>img{aspect-ratio:4/3;max-height:none}.js .xs-sv .xs-cb h3{font-size:1.12rem;overflow-wrap:anywhere;hyphens:auto}
+  .js .xs-sv .xs-pr{font-size:1rem}.js .xs-sv>.xs-c:last-child:nth-child(odd) img{aspect-ratio:16/7}}

@@ -222,6 +222,10 @@ def quick_html(lang, service, source, form='quick-hero', idp='lq'):
 
 
 TEL = 'tel:+380978667755'
+# Михайло 04.11.2026 («форма на головній займає 90% екрана»): без швидкої заявки в hero і без форм посеред лендингів —
+# лишається одна форма внизу (form#of) і липка нижня панель («Подзвонити / Залишити номер / месенджери»).
+QUICK_HERO = False  # форма «Залиште номер» у першому екрані
+MID_SLOTS = False   # quick-prices / quick-portfolio / quick-services посеред сторінок (статті блогу й /proekty/* — лишаються)
 CALL_UK = {'uk': ('Подзвонити', 'Отримати кошторис'), 'ru': ('Позвонить', 'Получить смету')}
 
 
@@ -281,6 +285,8 @@ def add_quick(s, lang):
     btns = call_btns(s[b:end], lang)
     s = s[:b] + btns + s[end:]
     end = b + len(btns)
+    if not QUICK_HERO:  # мінімалістичний hero (Михайло 04.11.2026): без форми в першому екрані — заявка в липкій панелі й у формі внизу
+        return s
     sv = (re.search(r'data-service="([^"]*)"', m.group(0)) or [None, ''])[1]
     src = (re.search(r'data-source="([^"]*)"', m.group(0)) or [None, ''])[1]
     sv = html.unescape(sv)
@@ -300,7 +306,7 @@ def add_slots(s, rel):
     """Місця для компактного «Номер → передзвонимо» (форму будує /assets/lead-form.v1.js). Ідемпотентно."""
     s = SLOT_RX.sub('', s)
     ins = []  # (позиція, html)
-    if '<!--lq-->' in s:  # лендинг послуги: після таблиці цін і після галереї «Наші проєкти»
+    if MID_SLOTS and '<!--lq-->' in s:  # лендинг послуги: після таблиці цін і після галереї «Наші проєкти»
         k = s.find('<!--/cas:prices-->')
         j = s.rfind('</div></section>', 0, k) if k > 0 else -1
         if j > 0 and s.find('<!--cas:prices-->') < j:
@@ -328,17 +334,17 @@ def add_slots(s, rel):
             p = s.find('</p>', cta)
             if 0 < p < _close(s, cta):
                 ins.append((p + 4, _slot('quick-blog-end')))
-    if '<div class="sv-grid">' in s:  # /services: після карток послуг
+    if MID_SLOTS and '<div class="sv-grid">' in s:  # /services: після карток послуг
         g = s.find('<div class="sv-grid">')
         ge = _close(s, g)
         if ge > 0:
             ins.append((ge, _slot('quick-services', wide=True)))
-    if 'id="pfRows"' in s:  # /portfolio: після списку проєктів, перед картою
+    if MID_SLOTS and 'id="pfRows"' in s:  # /portfolio: після списку проєктів, перед картою
         k = s.find('<!--cas:map-->')  # блок карти перезбирає casmap.py — ставимо перед його маркером
         if k < 0: k = s.find('<section class="pmap"')
         if k > 0:
             ins.append((k, _slot('quick-portfolio', wide=True)))
-    if '<section class="proj-covers">' in s:  # головна: після блоку «Наші проєкти»
+    if MID_SLOTS and '<section class="proj-covers">' in s:  # головна: після блоку «Наші проєкти»
         k = s.find('<section class="proj-covers">')
         j = s.find('</section>', k)
         if j > 0:

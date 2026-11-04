@@ -31,18 +31,18 @@ SKIP = re.compile(r"osocor", re.I)
 # Статті блогу не мають власних фото — беремо фото з послуги/проєкту за темою.
 BLOG_PHOTOS = {
     "avtorskyi-nahliad-navishcho": "img/p/1DL1BY7Tg6L5B5-900.webp",            # Edelweiss
-    "dyzain-malenkoi-kvartyry-zberihannia": "img/p/1YQyhjEui9fb6v-900.webp",   # /dyzain-interieru-kvartyry-kyiv
+    "dyzain-malenkoi-kvartyry-zberihannia": "img/p/1rJCChE1lDiB_j-900.webp",   # /dyzain-interieru-kvartyry-kyiv
     "dyzain-restoranu-z-choho-pochaty": "img/p/1OGn3TXnLkQenE-900.webp",       # /dyzain-restoranu-kafe-kyiv
     "etapy-remontu-kvartyry-pid-kliuch": "img/p/1bXytwftMuIHBN-900.webp",      # /remont-kvartyr-kyiv
-    "mebli-z-kytaiu-dlia-interieru": "img/p/1iGcqtsUqLNWbB-900.webp",          # Diamond
+    "mebli-z-kytaiu-dlia-interieru": "img/p/17c1WWHOs1rMHM-900.webp",          # Diamond
     "remont-ofisu-pid-kliuch-shcho-vrakhuvaty": "img/p/13a8ks6jQlZ5LY-900.webp",  # /remont-ofisu-pid-klyuch-kyiv
-    "shcho-vkhodyt-u-dyzain-proekt-interieru": "img/p/1MslU7S5X8gIEp-900.webp",   # Linden Penthouse
+    "shcho-vkhodyt-u-dyzain-proekt-interieru": "img/p/1fFKUPdtKlwDtW-900.webp",   # Linden Penthouse
     "skilky-koshtuie-dyzain-proekt-kvartyry-kyiv": "img/p/1_0wYN-6Q8LZFX-900.webp",  # Yacht VIP
     "skilky-koshtuie-remont-budynku-pid-kliuch": "img/p/1F4OovwNYQPfoF-900.webp",    # House 150 (фасад)
-    "skilky-koshtuie-remont-v-novobudovi-kyiv": "img/p/1xqY1KZo2JY5xq-900.webp",     # Tetris Hall
-    "suchasnyi-minimalizm-teplyi-interier": "img/p/1Grj8_m7MJwsbE-900.webp",         # Hodos Villa
-    "yak-splanuvaty-bazu-vidpochynku": "img/p/1XdhtH1mjWRTli-900.webp",              # /baza-vidpochynku-pid-klyuch
-    "yak-vybraty-dyzainera-interieru": "img/p/1jKOiN3xyCjZCL-900.webp",              # Monpark
+    "skilky-koshtuie-remont-v-novobudovi-kyiv": "img/p/1nzb-w0NOCS1VA-900.webp",     # Tetris Hall
+    "suchasnyi-minimalizm-teplyi-interier": "img/p/1MP_RPGiZ7XjIO-900.webp",         # Hodos Villa
+    "yak-splanuvaty-bazu-vidpochynku": "img/p/1R7JHtKFpuMJSl-900.webp",              # /baza-vidpochynku-pid-klyuch
+    "yak-vybraty-dyzainera-interieru": "img/p/1HL1J3k6Vl1nD--900.webp",              # Monpark
 }
 
 

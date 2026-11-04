@@ -7,7 +7,7 @@
   'use strict';
   var W = window, d = document, sec = d.querySelector('section.wh[data-wh]');
   if (!sec || sec.__wh) return; sec.__wh = 1;
-  var RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var drive = null, RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var ui = {}; try { ui = JSON.parse(sec.querySelector('script.wh-ui').textContent); } catch (e) { return; }
   var ST = [].map.call(sec.querySelectorAll('ol.bz-st > li'), function (li) { var b = li.querySelector('b'), s = li.querySelector('span'); return [b ? b.textContent : li.textContent, s ? s.textContent : '']; });
   var N = ST.length || 12, AR = [60, 100, 150], RATE = [600, 1100];
@@ -201,15 +201,15 @@
     svg.setAttribute('viewBox', vb.map(function (v) { return v.toFixed(1); }).join(' '));
     if (dn && !RM) raf = W.requestAnimationFrame(tick);
   }
-  function onScroll() {
-    if (!run) return;
-    var r = run.getBoundingClientRect(), vh = W.innerHeight, span = r.height - vh;
-    var p = span > 0 ? Math.max(0, Math.min(1, -r.top / span)) * N : 0;
-    if (Math.abs(p - prog) > 0.004) { prog = Math.min(N - 0.001, p); apply(); }
+  function raw() { // прогрес за прокруткою, етапи (згладжування, ліміт швидкості й «один етап за клацання» — casDrive у site-chrome.v1.js)
+    if (!run) return null;
+    var r = run.getBoundingClientRect(), span = r.height - W.innerHeight;
+    return span > 0 ? Math.max(0, Math.min(1, -r.top / span)) * N : 0;
   }
   function go(i) {
     i = Math.max(0, Math.min(N - 1, i));
     if (RM || !run) { prog = i + 0.999; apply(); return; }
+    if (drive) drive.reset();
     var r = run.getBoundingClientRect(), span = r.height - W.innerHeight;
     W.scrollTo({ top: W.pageYOffset + r.top + span * (i + 0.6) / N, behavior: 'smooth' });
   }
@@ -256,7 +256,7 @@
     });
     var foot = el('div', 'la-foot'); foot.appendChild(estEl); foot.appendChild(cta); stick.appendChild(foot);
     if (RM) { box0.appendChild(ctr); box0.appendChild(stick); }
-    else { run = el('div', 'la-run'); run.style.height = 'calc(100vh + ' + (N * 38) + 'vh)'; box0.appendChild(ctr); run.appendChild(stick); box0.appendChild(run); }
+    else { run = el('div', 'la-run'); run.style.height = 'calc(100vh + ' + N + ' * clamp(400px, 50vh, 560px))'; box0.appendChild(ctr); run.appendChild(stick); box0.appendChild(run); }
     list.parentNode.insertBefore(box0, list);
     list.classList.add('la-sr');
     sec.classList.add('la-on');
@@ -264,7 +264,11 @@
     svg.setAttribute('tabindex', '0');
     prog = RM ? N - 0.001 : 0;
     build();
-    if (!RM) { W.addEventListener('scroll', onScroll, { passive: true }); W.addEventListener('resize', onScroll); onScroll(); }
+    if (!RM && W.casDrive) {
+      drive = W.casDrive({ n: N, min: 0, raw: raw, view: run, render: function (c) { prog = c; apply(); } });
+      drive.kick();
+      if (W.casAuto) W.casAuto({ root: box0, view: svg, host: nav, step: drive.step, restart: drive.restart, atEnd: drive.atEnd });
+    }
   }
   function css() {
     return new Promise(function (res) {
@@ -272,10 +276,13 @@
       var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = href; l.onload = l.onerror = function () { res(); }; d.head.appendChild(l);
     });
   }
+  // блок вище екрана (швидка прокрутка, reduced-motion — він стискається): тримаємо видимий вміст на місці самі,
+  // якщо скрол-якоріння браузера не спрацює (низ сторінки, Safari без overflow-anchor), інакше CLS до 1.0
+  function keep() { var b0 = sec.getBoundingClientRect().bottom, up = b0 <= 0; enhance(); if (up) { var dy = sec.getBoundingClientRect().bottom - b0; if (Math.abs(dy) > 1) { var hs = d.documentElement.style; hs.scrollBehavior = 'auto'; W.scrollBy(0, dy); hs.scrollBehavior = ''; } } } // без smooth з CSS — інакше зсув видно
   function inView() { var r = sec.getBoundingClientRect(); return r.top < (W.innerHeight || 0) && r.bottom > 0; }
   css().then(function () {
-    if (!inView() || sec.hasAttribute('data-sw') || !('IntersectionObserver' in W)) return enhance(); // data-sw — показана перемикачем сцен на місці: одразу
-    var o = new IntersectionObserver(function (es) { if (!es[es.length - 1].isIntersecting) { o.disconnect(); enhance(); } });
+    if (!inView() || sec.hasAttribute('data-sw') || !('IntersectionObserver' in W)) return keep(); // data-sw — показана перемикачем сцен на місці: одразу
+    var o = new IntersectionObserver(function (es) { if (!es[es.length - 1].isIntersecting) { o.disconnect(); keep(); } });
     o.observe(sec);
   });
 })();
