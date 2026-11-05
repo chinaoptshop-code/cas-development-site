@@ -130,7 +130,7 @@
 | ozdoba/led-profil-aliuminiievyi-z-rozsiiuvachem-2-11.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/liustra-kaskadna-zi-sklianykh-peliustok-smarahdova-111.html | other | 58.9 | 15.2 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/lizhko-miake-z-vysokym-uzholiv-iam-415.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 342 |
-| ozdoba/nabir-posudu-z-keramiky-temno-siryi-551.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 335 |
+| ozdoba/nabir-posudu-z-keramiky-temno-siryi-551.html | other | 58.9 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/pidvis-zi-skla-burshtynovoho-koloru-ryflenyi-582.html | other | 58.9 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/podushka-dekoratyvna-oksamytova-z-pomponamy-529.html | other | 58.9 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/shyna-mahnitna-trekova-1-m-10.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 338 |
@@ -192,7 +192,7 @@
 | ozdoba/torsher-konsolnyi-z-chervonym-abazhurom-580.html | other | 58.7 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/torsher-na-sharnirnii-shtanzi-z-chornym-578.html | other | 58.7 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/torsher-z-konichnym-abazhurom-16.html | other | 58.7 | 15.4 | 32.4 | 0.7 | 14 | 340 |
-| ozdoba/tumba-pidvisna-pid-rakovynu-svitlyi-dub-146.html | other | 58.7 | 15.3 | 32.4 | 0.7 | 14 | 333 |
+| ozdoba/tumba-pidvisna-pid-rakovynu-svitlyi-dub-146.html | other | 58.7 | 15.2 | 32.4 | 0.7 | 14 | 333 |
 | ozdoba/unitaz-pidvisnyi-bezobidkovyi-matovi-kolory-591.html | other | 58.7 | 15.3 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/vanna-okremostoiacha-zi-shtuchnoho-kameniu-bila-139.html | other | 58.7 | 15.3 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/vytiazhka-nastinna-chorna-z-zolotystoiu-okantovkoiu-523.html | other | 58.7 | 15.2 | 32.4 | 0.7 | 14 | 334 |
@@ -420,7 +420,7 @@
 | onlain-kontrol.html | land | 53.7 | 14.1 | 13.3 | 0.5 | 6 | 622 |
 | blog/yak-vidkryty-kafe-restoran-pid-kliuch.html | article | 53.4 | 14.9 | 14.2 | 0.5 | 6 | 389 |
 | baza-vidpochynku-pid-klyuch.html | land | 53.2 | 14.7 | 13.0 | 3.5 | 6 | 499 |
-| blog/budynok-pid-kliuch-chy-korobka.html | article | 53.1 | 14.6 | 14.2 | 0.5 | 6 | 426 |
+| blog/budynok-pid-kliuch-chy-korobka.html | article | 53.1 | 14.7 | 14.2 | 0.5 | 6 | 426 |
 | karkasnyi-budynok-pid-kliuch-kyiv.html | land | 53.1 | 15.0 | 13.3 | 0.5 | 6 | 498 |
 | dyzain-interieru-premium-kyiv.html | land | 53.0 | 14.2 | 13.3 | 0.5 | 6 | 481 |
 | komplektatsiia-pid-kliuch-kyiv.html | land | 53.0 | 13.7 | 13.3 | 0.5 | 6 | 455 |
@@ -591,7 +591,7 @@
 | blog/inzheneriia-restoranu-ventyliatsiia-kanalizatsiia-elektryka.html | article | 46.1 | 12.9 | 14.2 | 0.5 | 6 | 364 |
 | kabinet/team.html | other | 46.1 | 12.4 | 32.5 | 0.7 | 14 | 211 |
 | remont-taunkhausa-kyiv.html | land | 46.1 | 12.5 | 13.3 | 0.5 | 6 | 414 |
-| ru/remont-taunhausa-kiev.html | land | 46.1 | 12.6 | 13.3 | 0.5 | 6 | 414 |
+| ru/remont-taunhausa-kiev.html | land | 46.1 | 12.5 | 13.3 | 0.5 | 6 | 414 |
 | ar/landscape-design.html | land | 46.0 | 12.5 | 13.3 | 1.1 | 6 | 517 |
 | avtorskyi-i-tekhnichnyi-nahliad-kyiv.html | land | 46.0 | 12.5 | 13.3 | 0.5 | 6 | 417 |
 | de/index.html | land | 46.0 | 12.8 | 13.3 | 0.5 | 6 | 494 |
@@ -811,7 +811,7 @@
 | zh/office-renovation.html | land | 37.3 | 10.9 | 13.3 | 0.5 | 6 | 385 |
 | de/faq.html | land | 37.1 | 10.0 | 13.3 | 0.5 | 6 | 333 |
 | de/wohnungsdesign.html | land | 37.1 | 10.1 | 13.3 | 0.5 | 6 | 373 |
-| en/turnkey-furnishing.html | land | 37.1 | 10.3 | 13.3 | 0.5 | 6 | 374 |
+| en/turnkey-furnishing.html | land | 37.1 | 10.4 | 13.3 | 0.5 | 6 | 374 |
 | es/disenador-interiores.html | land | 37.1 | 10.1 | 13.3 | 0.5 | 6 | 365 |
 | fr/designer-interieur.html | land | 37.1 | 10.1 | 13.3 | 0.5 | 6 | 364 |
 | zh/house-renovation.html | land | 37.1 | 10.7 | 13.3 | 0.5 | 6 | 390 |

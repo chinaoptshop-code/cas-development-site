@@ -212,11 +212,37 @@
   var slots = [].slice.call(document.querySelectorAll('.lq-slot:not([data-built])'));
   // форму будуємо, коли місце за ~3 екрани від видимої області (висоту до збірки резервує site-chrome.v1.css): на завантаженні сторінки — нуль роботи (TBT), а вставка
   // далеко під екраном не зсуває видимий вміст (CLS = 0). Без IntersectionObserver — одразу.
+  /* Одна форма на сторінку (Михайло 05.11.2026): якщо внизу є form#of (#zayavka), місце .lq-slot — не друга форма, а кнопка,
+     що переносить контекст (послугу, конфігурацію сцени) у єдину форму й прокручує до неї (скрол і фокус — обробник 3 нижче). */
+  var GO = { uk: ['Залишити номер', 'Порахувати мій будинок', 'Порахувати мою квартиру'], ru: ['Оставить номер', 'Рассчитать мой дом', 'Рассчитать мою квартиру'],
+    en: ['Leave your number', 'Estimate my house', 'Estimate my apartment'], es: ['Dejar mi número', 'Calcular mi casa', 'Calcular mi piso'],
+    zh: ['留下电话', '估算我的房子', '估算我的公寓'], pl: ['Zostaw numer', 'Wyceń mój dom', 'Wyceń moje mieszkanie'],
+    de: ['Nummer hinterlassen', 'Mein Haus berechnen', 'Meine Wohnung berechnen'], fr: ['Laisser mon numéro', 'Estimer ma maison', 'Estimer mon appartement'],
+    ar: ['اترك رقمك', 'احسب تكلفة منزلي', 'احسب تكلفة شقتي'] };
+  function goBtn(slot, name) {
+    var g = GO[lang] || GO.uk, sc = slot.closest('section.bz[data-bz]'), kind = sc ? (sc.getAttribute('data-bz') === 'flat' ? 2 : 1) : 0;
+    var a = el('a', 'btn main lq-go', g[kind]); a.href = '#zayavka'; a.setAttribute('data-form', name);
+    a.addEventListener('click', function () {
+      var svc = slot.getAttribute('data-service');
+      if (svc) form.setAttribute('data-service', svc);
+      var m = $('oMsg');
+      if (sc && m) {
+        var cb = sc.querySelector('.bz-cb'), cap = sc.querySelector('.bz-cap'), act = sc.querySelector('.bz-mats [aria-pressed="true"]');
+        var cfg = cb ? cb.textContent.replace(/^[\s\u2699]+/, '') : '';
+        if (cap && cap.textContent && !cap.hidden) cap.textContent.replace(/^≈\s*/, '').split(' · ').forEach(function (x) { if (x && cfg.indexOf(x) < 0 && !/^\d+\s*(?:м²|m²|م²)$/.test(x)) cfg += (cfg ? ' · ' : '') + x; }); // габарити, гараж/тераса — без повторів
+        if (!cfg && act) cfg = act.textContent;
+        m.value = g[kind] + (cfg ? ': ' + cfg.trim() : '');
+        var det = m.closest('details'); if (det) det.open = true;
+      }
+    });
+    slot.appendChild(a);
+  }
   function build(slot) {
     if (slot.hasAttribute('data-built')) return;
     var i = slots.indexOf(slot);
     slot.setAttribute('data-built', '1');
     var name = slot.getAttribute('data-form') || 'quick-slot', place = name.replace(/^quick-/, '');
+    if (form) { goBtn(slot, name); return; }
     var key = 's_' + place.replace(/-(mid|end)$/, '');
     var id = 'lqs' + i, f = el('form', 'lq');
     f.noValidate = true;
