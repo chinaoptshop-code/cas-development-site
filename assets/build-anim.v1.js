@@ -1379,7 +1379,7 @@
   W.__casBAd = data;
   // CLS = 0: блок перебудовується лише поза кадром. Якщо сторінка відкрилась одразу на ньому (якір, відновлення прокрутки),
   // людина бачить звичайний список етапів, а сцена зʼявиться, щойно блок вийде з кадру (вище/нижче — скрол-якоріння тримає екран).
-  function inView(sec) { var r = sec.getBoundingClientRect(); return r.top < (W.innerHeight || 0) && r.bottom > 0; }
+  function inView(sec) { var r = sec.getBoundingClientRect(); return r.top < 0 && r.bottom > 0; } // верх блоку в кадрі (блок щойно зʼявився знизу) — збираємо одразу: над ним нічого не зсувається
   function start(sec) {
     Promise.all([css(), data(sec.getAttribute('data-bz') === 'flat' ? 'flat' : 'house')]).then(function (r) {
       var dt = r[1];
