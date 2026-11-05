@@ -480,11 +480,11 @@
 | mebliuvannia-kvartyry-kyiv.html | land | 49.6 | 13.1 | 13.3 | 0.5 | 6 | 427 |
 | ru/remontnaya-brigada-kiev.html | land | 49.6 | 12.9 | 13.3 | 0.5 | 6 | 450 |
 | ru/remont-kvartiry-zhk-unit-home.html | land | 49.5 | 13.4 | 13.3 | 0.5 | 6 | 441 |
-| services.html | main | 49.5 | 13.2 | 13.3 | 0.5 | 6 | 506 |
 | remont-kvartyry-zhk-unit-home.html | land | 49.4 | 13.4 | 13.3 | 0.5 | 6 | 441 |
 | ru/dizayn-gostinitsy-kiev.html | land | 49.4 | 13.4 | 13.3 | 0.5 | 6 | 456 |
 | ru/proektirovanie-doma-kiev.html | land | 49.4 | 12.8 | 13.3 | 0.5 | 6 | 447 |
 | ru/remont-kvartir-zhk-kiev.html | land | 49.4 | 13.2 | 13.3 | 0.5 | 6 | 486 |
+| services.html | main | 49.4 | 13.2 | 13.3 | 0.5 | 6 | 503 |
 | blog/yak-splanuvaty-bazu-vidpochynku.html | article | 49.3 | 13.8 | 14.2 | 0.5 | 6 | 390 |
 | dyzain-hotelu-kyiv.html | land | 49.3 | 13.4 | 13.3 | 0.5 | 6 | 456 |
 | realizatsiia-dyzain-proektu-kyiv.html | land | 49.3 | 13.1 | 13.3 | 0.5 | 6 | 437 |

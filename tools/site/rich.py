@@ -115,11 +115,16 @@ def svc(x):
                   + ('<ul>' + ''.join(f'<li>{rich(i)}</li>' for i in c.get('more', [])) + '</ul>' if c.get('more') else '')
                   + ('<p class="xs-tags">' + ''.join(f'<span>{e(t)}</span>' for t in c['tags']) + '</p>' if c.get('tags') else '')
                   + '</details>')
-        if c.get('links'):
-            o += '<p class="xs-links">' + ''.join(f'<a href="{a(u)}">{e(n)}</a>' for u, n in c['links']) + '</p>'
-        if c.get('all'):
-            o += (f'<details class="xs-all"><summary>{e(c["all"][0])}</summary><div class="rel">'
-                  + ''.join(f'<a href="{a(u)}">{e(n)}</a>' for u, n in c['all'][1]) + '</div></details>')
+        links, al = list(c.get('links') or []), c.get('all')
+        if links and al:  # картка з «Ще послуги (N)»: додаткові посилання — теж у розгортанні, на картці лише назва, ціна й суть (мінімізація 05.11.2026)
+            ls = links + [x for x in al[1] if x[0] not in {u for u, _ in links}]
+            al = [re.sub(r'\d+', str(len(ls)), al[0], count=1), ls]
+            links = []
+        if links:
+            o += '<p class="xs-links">' + ''.join(f'<a href="{a(u)}">{e(n)}</a>' for u, n in links) + '</p>'
+        if al:
+            o += (f'<details class="xs-all"><summary>{e(al[0])}</summary><div class="rel">'
+                  + ''.join(f'<a href="{a(u)}">{e(n)}</a>' for u, n in al[1]) + '</div></details>')
         cards.append('<article class="xs-c">' + o + '</div></article>')
     note = f'<p class="xs-note">{rich(x["note"])}</p>' if x.get('note') else ''
     return wrap(x, head(x) + '<div class="xs-sv">' + ''.join(cards) + '</div>' + note, 'xs-svc')

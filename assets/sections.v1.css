@@ -133,3 +133,12 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .hx-home~.xs-trust .xs-links{justify-content:center;font-size:var(--fs-small);margin-top:10px}
 .hx-home~.xs-svc .xs-sv{align-items:stretch}.hx-home~.xs-trust .xs-links{max-width:none;margin-inline:auto}
 @media(max-width:767px){.hx-home~.bz .la-tab{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-bottom:12px}.hx-home~.bz .la-tab::-webkit-scrollbar{display:none}.hx-home~.bz .la-tab a{white-space:nowrap;flex:none}}
+/* «Про студію» (мінімізація 05.11.2026): виробнича команда — назва групи й імена (опис групи й ролі — у DOM, приховані), групи в 2 колонки;
+   команда офісу — без одинокої картки в останньому ряду */
+.js .xs-crew>div>p:not(.kick),.js .xs-crew li>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.js .xs-crew{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr));gap:10px}
+.js .xs-crew>div{padding:14px 16px}.js .xs-crew li{padding:4px 0;border:0}
+.js .xs-crew ul{margin:6px 0 0}
+.js .xs-team .grid>.card:last-child:nth-child(odd){grid-column:1/-1}
+@media(min-width:760px){.js .xs-team .grid>.card:last-child:nth-child(odd){grid-column:auto}}
+@media(max-width:759px){.js .xs-crew>div:last-child:nth-child(odd){grid-column:1/-1}}
