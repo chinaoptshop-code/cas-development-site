@@ -369,7 +369,7 @@
   var mq = W.matchMedia('(max-width:767px)');
   // автоматично (лише телефон): довгі сітки/списки, що займають кілька екранів
   // фото проєкту (.pg — 20–30 фото на всю ширину), галереї лендингів (.gal), довгі сітки карток (.grid — напр. ЖК за районами)
-  var COMPACT = [['main .pg', 6], ['main .gal', 4], ['main .grid', 6]];
+  var COMPACT = [['main .pg', 6], ['main .gal', 4], ['main .grid:not(#grid)', 6]]; // #grid — каталог Оздоби з власною «Показати ще» (QA5: дві кнопки й CLS)
   var hosts = [];
   [].forEach.call(d.querySelectorAll('[data-compact]'), function (el) { hosts.push([el, parseInt(el.getAttribute('data-compact'), 10) || 6, el.hasAttribute('data-compact-all')]); });
   COMPACT.forEach(function (c) { [].forEach.call(d.querySelectorAll(c[0]), function (el) { if (!el.hasAttribute('data-compact') && !el.closest('[data-c]')) hosts.push([el, c[1], false]); }); });
