@@ -448,7 +448,7 @@
 | vartist-remontu-ofisu-kyiv.html | land | 51.5 | 13.7 | 13.3 | 0.5 | 6 | 474 |
 | modulnyi-budynok-kyiv.html | land | 51.4 | 14.7 | 13.3 | 0.5 | 6 | 495 |
 | ru/kalkulyator-remonta.html | land | 51.4 | 14.5 | 13.9 | 1.4 | 6 | 474 |
-| ru/modulnyy-dom-kiev.html | land | 51.1 | 14.7 | 13.3 | 0.5 | 6 | 495 |
+| ru/modulnyy-dom-kiev.html | land | 51.1 | 14.8 | 13.3 | 0.5 | 6 | 495 |
 | ru/stoimost-dizayna-interera-kiev.html | land | 51.1 | 13.5 | 13.7 | 0.5 | 6 | 517 |
 | vartist-dyzainu-interieru-kyiv.html | land | 51.1 | 13.5 | 13.7 | 0.5 | 6 | 517 |
 | ru/dizayn-ofisa-open-space-kiev.html | land | 50.6 | 13.5 | 13.3 | 0.5 | 6 | 469 |
@@ -488,7 +488,7 @@
 | blog/yak-splanuvaty-bazu-vidpochynku.html | article | 49.3 | 13.8 | 14.2 | 0.5 | 6 | 390 |
 | dyzain-hotelu-kyiv.html | land | 49.3 | 13.4 | 13.3 | 0.5 | 6 | 456 |
 | realizatsiia-dyzain-proektu-kyiv.html | land | 49.3 | 13.1 | 13.3 | 0.5 | 6 | 437 |
-| remont-kvartyr-zhk-kyiv.html | land | 49.2 | 13.3 | 13.3 | 0.5 | 6 | 486 |
+| remont-kvartyr-zhk-kyiv.html | land | 49.2 | 13.2 | 13.3 | 0.5 | 6 | 486 |
 | ru/realizatsiya-dizayn-proekta-kiev.html | land | 49.2 | 13.0 | 13.3 | 0.5 | 6 | 436 |
 | proektuvannia-budynku-kyiv.html | land | 49.1 | 12.7 | 13.0 | 0.5 | 6 | 448 |
 | blog/dyzain-malenkoi-kvartyry-zberihannia.html | article | 49.0 | 14.0 | 14.2 | 0.5 | 6 | 381 |
@@ -531,7 +531,7 @@
 | en/house-construction.html | land | 47.6 | 13.9 | 13.3 | 0.5 | 6 | 531 |
 | ru/rekonstruktsiya-doma-kiev.html | land | 47.6 | 12.8 | 13.3 | 0.5 | 6 | 448 |
 | ru/remont-kvartiry-zhk-linden-luxury-residences.html | land | 47.6 | 13.0 | 13.3 | 0.5 | 6 | 424 |
-| ru/remont-kvartiry-zhk-triiinity.html | land | 47.6 | 13.1 | 13.3 | 0.5 | 6 | 426 |
+| ru/remont-kvartiry-zhk-triiinity.html | land | 47.6 | 13.0 | 13.3 | 0.5 | 6 | 426 |
 | blog/elitnyi-remont-kvartyry-biudzhet.html | article | 47.5 | 13.2 | 14.2 | 0.5 | 6 | 363 |
 | blog/open-space-chy-kabinety-planuvannia-ofisu.html | article | 47.5 | 13.2 | 14.2 | 0.5 | 6 | 363 |
 | dyzain-i-remont-ukraina.html | land | 47.5 | 12.9 | 13.3 | 0.5 | 6 | 480 |
@@ -554,7 +554,7 @@
 | blog/remont-kukhni-pid-kliuch-z-choho-pochaty.html | article | 47.2 | 13.0 | 14.2 | 0.5 | 6 | 364 |
 | remont-kvartyry-zhk-podil-hrad.html | land | 47.2 | 13.0 | 13.3 | 0.5 | 6 | 425 |
 | remont-kvartyry-zhk-taryan-towers.html | land | 47.2 | 13.0 | 13.3 | 0.5 | 6 | 425 |
-| remont-kvartyry-zhk-bulvar-fontaniv.html | land | 47.1 | 12.9 | 13.3 | 0.5 | 6 | 425 |
+| remont-kvartyry-zhk-bulvar-fontaniv.html | land | 47.1 | 12.8 | 13.3 | 0.5 | 6 | 425 |
 | remont-kvartyry-zhk-maxima-residence.html | land | 47.1 | 12.8 | 13.3 | 0.5 | 6 | 424 |
 | ru/dom-iz-gazobloka-pod-klyuch-kiev.html | land | 47.1 | 12.9 | 13.3 | 0.5 | 6 | 419 |
 | ru/remont-kvartiry-zhk-nordica-residence.html | land | 47.1 | 12.8 | 13.3 | 0.5 | 6 | 424 |
@@ -581,7 +581,7 @@
 | kabinet/zaboroneno.html | other | 46.4 | 12.6 | 32.5 | 0.7 | 14 | 212 |
 | oblashtuvannia-ofisu-pid-kliuch-kyiv.html | land | 46.4 | 12.8 | 13.3 | 0.5 | 6 | 413 |
 | remont-kvartyry-zhk-life-story.html | land | 46.4 | 12.8 | 13.3 | 0.5 | 6 | 423 |
-| remont-kvartyry-zhk-senat.html | land | 46.4 | 12.9 | 13.3 | 0.5 | 6 | 423 |
+| remont-kvartyry-zhk-senat.html | land | 46.4 | 12.8 | 13.3 | 0.5 | 6 | 423 |
 | ru/remont-kvartiry-zhk-life-story.html | land | 46.4 | 12.8 | 13.3 | 0.5 | 6 | 423 |
 | es/index.html | land | 46.3 | 12.6 | 13.3 | 0.5 | 6 | 493 |
 | blog/remont-vannoi-kimnaty-pid-kliuch-etapy.html | article | 46.2 | 13.0 | 14.2 | 0.5 | 6 | 415 |
@@ -811,7 +811,7 @@
 | zh/office-renovation.html | land | 37.3 | 10.9 | 13.3 | 0.5 | 6 | 385 |
 | de/faq.html | land | 37.1 | 10.0 | 13.3 | 0.5 | 6 | 333 |
 | de/wohnungsdesign.html | land | 37.1 | 10.1 | 13.3 | 0.5 | 6 | 373 |
-| en/turnkey-furnishing.html | land | 37.1 | 10.4 | 13.3 | 0.5 | 6 | 374 |
+| en/turnkey-furnishing.html | land | 37.1 | 10.3 | 13.3 | 0.5 | 6 | 374 |
 | es/disenador-interiores.html | land | 37.1 | 10.1 | 13.3 | 0.5 | 6 | 365 |
 | fr/designer-interieur.html | land | 37.1 | 10.1 | 13.3 | 0.5 | 6 | 364 |
 | zh/house-renovation.html | land | 37.1 | 10.7 | 13.3 | 0.5 | 6 | 390 |

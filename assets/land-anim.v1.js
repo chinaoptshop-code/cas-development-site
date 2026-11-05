@@ -262,7 +262,8 @@
     });
     var foot = el('div', 'la-foot'); foot.appendChild(estEl); foot.appendChild(cta);
     stick.appendChild(foot);
-    if (RM) { box0.appendChild(ctr); box0.appendChild(stick); }
+    var CMP = !RM && !!d.querySelector('.hx-home'); // головні: компактна сцена в межах екрана — без sticky-доріжки, етапи крокує casAuto і ←/→ (Михайло 05.11.2026)
+    if (RM || CMP) { box0.appendChild(ctr); box0.appendChild(stick); if (CMP) sec.classList.add('la-cmp'); }
     else { run = el('div', 'la-run'); run.style.height = 'calc(100vh + ' + N + ' * clamp(400px, 50vh, 560px))'; box0.appendChild(ctr); run.appendChild(stick); box0.appendChild(run); }
     list.parentNode.insertBefore(box0, list);
     list.classList.add('la-sr');
@@ -271,13 +272,15 @@
     svg.setAttribute('tabindex', '0');
     // пироги: кнопка поруч підсвічує відповідну зону в сцені
     [].forEach.call(sec.querySelectorAll('details.la-pie'), function (dt) { dt.addEventListener('toggle', function () { if (dt.open) cl('la_pie', dt.getAttribute('data-pie')); }); });
-    prog = RM ? N - 0.001 : 0;
+    prog = RM ? N - 0.001 : CMP ? 0.999 : 0;
     build();
-    if (!RM && W.casDrive) {
+    if (!RM && !CMP && W.casDrive) {
       drive = W.casDrive({ n: N, min: 0, raw: raw, view: run, render: function (c) { prog = c; apply(); } });
       drive.kick();
       if (W.casAuto) W.casAuto({ root: box0, view: svg, host: nav, step: drive.step, restart: drive.restart, atEnd: drive.atEnd });
     }
+    if (CMP && W.casAuto) W.casAuto({ root: box0, view: svg, host: nav, step: function () { if (shown >= N - 1) return false; go(shown + 1); return true; },
+      restart: function () { go(0); }, atEnd: function () { return shown >= N - 1; } });
   }
   function css() {
     return new Promise(function (res) {

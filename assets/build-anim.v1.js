@@ -17,6 +17,8 @@
   var VER = {"ar.flat":"1689188e","ar.house":"cae0ff2a","de.flat":"7dc08b9d","de.house":"23d62137","en.flat":"eb0db236","en.house":"13b27e1e","es.flat":"a7a3dd77","es.house":"3cf40c05","fr.flat":"bbc24298","fr.house":"11e85169","pl.flat":"ccedf374","pl.house":"477536e2","ru.flat":"458864cc","ru.house":"170f51c3","uk.flat":"8bfbad04","uk.house":"2d20aa37","zh.flat":"55e04f66","zh.house":"3dc0f262"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
+  // головні (.hx-home): компактна сцена в межах екрана — без довгої sticky-доріжки; етапи крокує автопрогравання (casAuto) і кнопки ←/→ (Михайло 05.11.2026)
+  var CMP = !!d.querySelector('.hx-home');
   var lang = (d.documentElement.lang || 'uk').slice(0, 2); if (!VER[lang + '.house']) lang = 'uk';
   var MATS = ['block', 'brick', 'frame', 'brus'];
   function cl(ev, v) { try { if (W.clarity) W.clarity('event', ev); if (v && W.clarity) W.clarity('set', ev, v); } catch (e) { } } // аналітика: кінець, CTA, матеріал, пиріг
@@ -1326,15 +1328,17 @@
       W.scrollTo({ top: Math.round(y), behavior: 'smooth' });
     }
     function mode() {
-      rm = !!(MQ && MQ.matches);
-      sec.classList.toggle('bz-rm', rm);
-      if (rm) { if (!man) man = n - 0.02; cur = man; render(cur); } else { cur = target(); render(cur); }
+      rm = !!(MQ && MQ.matches) || CMP;
+      sec.classList.toggle('bz-rm', rm && !CMP); sec.classList.toggle('bz-cmp', CMP);
+      if (rm) { if (!man) man = CMP ? 0.85 : n - 0.02; cur = man; render(cur); } else { cur = target(); render(cur); }
       measure();
     }
     W.addEventListener('resize', function () { measure(); placeCfg(); }, { passive: true });
     if (MQ) { if (MQ.addEventListener) MQ.addEventListener('change', mode); else if (MQ.addListener) MQ.addListener(mode); }
     if (MOB) { if (MOB.addEventListener) { MOB.addEventListener('change', placePie); MOB.addEventListener('change', placeCfg); } else if (MOB.addListener) { MOB.addListener(placePie); MOB.addListener(placeCfg); } }
-    if (drive && W.casAuto) W.casAuto({ root: run, view: fig, host: ctl, before: next, cls: 'bz-ap', step: function () { return !rm && drive.step(); }, restart: drive.restart, atEnd: drive.atEnd });
+    if (drive && W.casAuto && !CMP) W.casAuto({ root: run, view: fig, host: ctl, before: next, cls: 'bz-ap', step: function () { return !rm && drive.step(); }, restart: drive.restart, atEnd: drive.atEnd });
+    if (CMP && W.casAuto) W.casAuto({ root: run, view: fig, host: ctl, before: next, cls: 'bz-ap', // компактна: крок — go() без прокрутки сторінки
+      step: function () { var a = Math.floor(man); if (a >= n - 1) return false; go(a + 1); return true; }, restart: function () { go(0); }, atEnd: function () { return Math.floor(man) >= n - 1; } });
     // мікровзаємодії (лише миша, без prefers-reduced-motion): легкий нахил сцени за курсором і «магнітна» кнопка CTA
     if (W.matchMedia && W.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       fig.addEventListener('pointermove', function (e) {

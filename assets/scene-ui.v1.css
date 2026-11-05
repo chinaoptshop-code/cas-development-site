@@ -18,3 +18,6 @@
 @media(max-width:767px){.la-svg{height:46vh}.la-stick{top:58px}.la-cap{min-height:5.6em}.la-ctl{gap:8px}}
 .la-tab[aria-busy=true]{opacity:.65;pointer-events:none}.la-sw{animation:la-sw .35s ease-out both}@keyframes la-sw{from{opacity:.3}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.la-sw{animation:none}}
+/* головні: компактна сцена (la-cmp) — без sticky, висота ≈ екран (Михайло 05.11.2026) */
+.la-cmp .la-stick{position:relative;top:auto}.la-cmp .la-svg{max-height:min(56vh,520px)}
+.la-cmp .bz-p,.la-cmp .la-ctl,.rp-on .bz-p{display:none}
