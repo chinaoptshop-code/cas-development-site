@@ -506,9 +506,7 @@ def mbar_logos(s):
 # /assets/lead-form.v1.js прокручує до поля телефону й ставить фокус). Посилання панелі з усіма атрибутами лишаються як були.
 # Стилі — «Кнопка Зв'язатися» в site-chrome.v1.css (.mbar[data-one]; на ПК панелі немає — у шапці телефон і «Заявка»),
 # відкриття/закриття — site-chrome.v1.js. Ідемпотентно: згенеровані частини (кнопка, обгортка, Viber, «Залишити номер») знімаємо й ставимо заново.
-MB_ONE = dict(uk=("Зв'язатися", "Меню зв'язку"), ru=('Связаться', 'Меню связи'), en=('Contact', 'Contact options'),
-              es=('Contactar', 'Opciones de contacto'), zh=('联系我们', '联系方式'), pl=('Kontakt', 'Opcje kontaktu'),
-              de=('Kontakt', 'Kontaktoptionen'), fr=('Contact', 'Options de contact'), ar=('تواصل معنا', 'خيارات التواصل'))
+MB_ONE = dict(uk=("Зв'язатися",), ru=('Связаться',), en=('Contact',), es=('Contactar',), zh=('联系我们',), pl=('Kontakt',), de=('Kontakt',), fr=('Contact',), ar=('تواصل معنا',))
 VIBER = 'viber://chat?number=%2B380978667755'
 MB_LEAD_RX = re.compile(r'<style id="mb-lead">.*?</style>|<a class="mb-(?:lead|vb)"[^>]*>.*?</a>\n?|<button type="button" class="mb-tg"[^>]*>.*?</button>\n?|<div class="mb-menu"[^>]*>\n?|</div><!--/mb-menu-->\n?', re.S)
 
@@ -533,10 +531,11 @@ def mbar_lead(s, lang, rel=''):
     elif 'id="lead"' in s: href = '#lead'
     else: href = T[lang]['cta_href']
     lab = leadform.T.get(lang, leadform.T['uk'])['mb']
-    one, aria = MB_ONE.get(lang, MB_ONE['en'])
-    m = re.match(r'(<!--m-fix--><div class="mbar")[^>]*>\n?', blk)
+    one = MB_ONE.get(lang, MB_ONE['en'])[0]
+    m = re.match(r'(<!--m-fix--><div class="mbar")[^>]*>\n?', blk)  # aria-label панелі — «Швидкий зв'язок» мовою сторінки (landing.py FORM_UK шукає його в шаблоні)
     body = blk[m.end():].strip('\n')
     vb = '' if 'viber://' in body else f'<a class="mb-vb" href="{VIBER}" target="_blank" rel="noopener"><img src="/assets/brand/viber.svg" width="32" height="32" alt="" decoding="async">Viber</a>\n'
+    aria = ((i18n.ui(lang) or {}).get('form') or {}).get('mbar') or {'ru': 'Быстрая связь'}.get(lang, "Швидкий зв'язок")
     out = (f'{m.group(1)} data-one role="navigation" aria-label="{aria}">\n'
            f'<button type="button" class="mb-tg" aria-expanded="false" aria-controls="mb-menu">{one}</button>\n'
            f'<div class="mb-menu" id="mb-menu">\n{body}\n{vb}<a class="mb-lead" href="{href}">{lab}</a>\n</div><!--/mb-menu-->\n')
