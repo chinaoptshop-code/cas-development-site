@@ -123,9 +123,7 @@
       else if (!e.shiftKey && (i < 0 || i === f.length - 1)) { e.preventDefault(); f[0].focus(); }
     }
   });
-  // «Усі послуги студії»: на десктопі відкрито, на мобільному згорнуто
-  var svc = d.querySelector('.scf-svc');
-  if (svc && window.matchMedia && window.matchMedia('(min-width:760px)').matches) svc.open = true;
+  // «Усі послуги студії» — згорнуто на всіх сторінках і ширинах (Михайло 05.11.2026); посилання лишаються в DOM (SEO)
 })();
 // Перемикач мов у шапці (details.sch-ld): закривається кліком поза ним, Esc і після вибору мови
 (function () {

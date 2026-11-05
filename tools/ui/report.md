@@ -466,7 +466,7 @@
 | ru/dom-iz-brusa-kiev.html | land | 50.0 | 14.5 | 13.6 | 0.5 | 7 | 485 |
 | ru/meblirovka-kvartiry-kiev.html | land | 49.9 | 13.2 | 13.6 | 0.5 | 7 | 425 |
 | blog/mebli-z-kytaiu-dlia-interieru.html | article | 49.8 | 13.9 | 14.4 | 0.5 | 7 | 393 |
-| blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | article | 49.8 | 14.0 | 14.4 | 0.5 | 7 | 389 |
+| blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | article | 49.8 | 14.1 | 14.4 | 0.5 | 7 | 389 |
 | blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html | article | 49.8 | 13.9 | 14.4 | 0.5 | 7 | 396 |
 | blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html | article | 49.8 | 13.8 | 14.4 | 0.5 | 7 | 371 |
 | blog/avtorskyi-nahliad-navishcho.html | article | 49.7 | 14.0 | 14.4 | 0.5 | 7 | 384 |
@@ -662,7 +662,7 @@
 | ar/office-renovation.html | land | 42.1 | 11.1 | 13.6 | 0.5 | 7 | 379 |
 | zh/renovation-calculator.html | land | 41.9 | 13.2 | 14.2 | 1.4 | 7 | 451 |
 | en/general-contractor-kyiv.html | land | 41.8 | 11.6 | 13.6 | 0.5 | 7 | 438 |
-| zh/about.html | land | 41.8 | 12.7 | 13.6 | 0.5 | 7 | 474 |
+| zh/about.html | land | 41.8 | 12.6 | 13.6 | 0.5 | 7 | 474 |
 | dyzain-i-remont-bucha.html | land | 41.7 | 11.9 | 13.6 | 0.5 | 7 | 338 |
 | ru/dizayn-i-remont-bucha.html | land | 41.7 | 11.9 | 13.6 | 0.5 | 7 | 338 |
 | ar/bathroom-renovation.html | land | 41.6 | 11.0 | 13.6 | 0.5 | 7 | 377 |
@@ -700,7 +700,7 @@
 | dyzain-i-remont-uzhhorod.html | land | 40.6 | 11.5 | 13.6 | 0.5 | 7 | 330 |
 | dyzain-i-remont-vasylkiv.html | land | 40.6 | 11.6 | 13.6 | 0.5 | 7 | 334 |
 | dyzain-i-remont-vyshneve.html | land | 40.6 | 11.5 | 13.6 | 0.5 | 7 | 333 |
-| proekty/diamond.html | land | 40.6 | 8.2 | 2.1 | 0.7 | 1 | 353 |
+| proekty/diamond.html | land | 40.6 | 8.1 | 2.1 | 0.7 | 1 | 353 |
 | ru/dizayn-i-remont-cherkassy.html | land | 40.6 | 11.5 | 13.6 | 0.5 | 7 | 330 |
 | ru/dizayn-i-remont-kropivnitskiy.html | land | 40.6 | 11.5 | 13.6 | 0.5 | 7 | 330 |
 | ru/dizayn-i-remont-obuhov.html | land | 40.6 | 11.5 | 13.6 | 0.5 | 7 | 332 |
@@ -775,7 +775,7 @@
 | es/reforma-locales-comerciales.html | land | 38.4 | 10.5 | 13.6 | 0.5 | 7 | 385 |
 | ar/services.html | land | 38.3 | 10.4 | 13.6 | 0.5 | 7 | 360 |
 | en/contract-warranty-payment.html | land | 38.3 | 10.6 | 13.6 | 0.5 | 7 | 387 |
-| en/kitchen-renovation.html | land | 38.3 | 10.6 | 13.6 | 0.5 | 7 | 401 |
+| en/kitchen-renovation.html | land | 38.3 | 10.5 | 13.6 | 0.5 | 7 | 401 |
 | de/badsanierung.html | land | 38.2 | 10.7 | 13.6 | 0.5 | 7 | 381 |
 | en/design-implementation.html | land | 38.2 | 10.8 | 13.6 | 0.5 | 7 | 388 |
 | de/haussanierung.html | land | 38.1 | 10.5 | 13.6 | 0.5 | 7 | 389 |
