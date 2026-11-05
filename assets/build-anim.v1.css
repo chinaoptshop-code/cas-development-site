@@ -460,3 +460,6 @@
 /* автопрогравання (casAuto у site-chrome.v1.js): кнопка пауза / відтворення / ще раз — тап-зона 44 px */
 .bz-ap{width:44px;height:44px;flex:none;border-radius:50%;border:1px solid var(--ac,#BF9148);background:transparent;color:var(--ac,#BF9148);font-size:14px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
 .bz-ap:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}.bz-ap[data-st=end]{font-size:20px}
+
+/* RTL (ar): стрілки ← → не віддзеркалюються Unicode — «назад» праворуч має дивитись праворуч (QA5) */
+[dir=rtl] .bz-pv span,[dir=rtl] .bz-nx span{display:inline-block;transform:scaleX(-1)}
