@@ -292,9 +292,9 @@ article .gd-slot{margin:32px 0 0;padding:0}
 @keyframes mo-acc{from{opacity:0;translate:0 -6px}to{opacity:1;translate:none}}
 
 /* Стрічка */
-:is([data-marquee],.rel:has(>a:nth-child(7)):not(:has(>a[href^="#"])),.rel.arts:has(>a:nth-child(4)),.abg){display:flex;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+:is([data-marquee],.rel:has(>a:nth-child(7)):not(:has(>a[href^="#"]),.xs-all>.rel),.rel.arts:has(>a:nth-child(4)),.abg){display:flex;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
 :is([data-marquee],.rel,.abg)::-webkit-scrollbar{display:none}
-:is(.rel:has(>a:nth-child(7)),.rel.arts:has(>a:nth-child(4)),.rel[data-marquee])>a{flex:none;white-space:nowrap}
+:is(.rel:has(>a:nth-child(7)):not(.xs-all>.rel),.rel.arts:has(>a:nth-child(4)),.rel[data-marquee])>a{flex:none;white-space:nowrap}
 .abg{gap:6px}.abg>.abg-i{flex:0 0 clamp(150px,23.5%,300px);display:block}
 @media(max-width:767px){.abg>.abg-i{flex-basis:44%}}
 .mq-on{position:relative;overflow:hidden!important;scroll-snap-type:none!important}
