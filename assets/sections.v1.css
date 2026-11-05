@@ -10,6 +10,16 @@
 .hx .hero{padding-top:88px;min-height:min(80vh,760px);display:flex;flex-direction:column;justify-content:flex-end}
 .hx .hero p{color:#d3ccc1}.hx .facts div{background:rgba(8,7,9,.82)}
 @media(max-width:767px){.hx .hero{min-height:0;padding-top:120px}.hx::before,[dir=rtl] .hx::before{background:linear-gradient(0deg,var(--bg) 8%,rgba(8,7,9,.8) 55%,rgba(8,7,9,.6) 100%)}}
+/* hero головних (Михайло 05.11.2026): H1 «Будівництво, проєктування інтерʼєру та ремонт під ключ» + рядок «Київ · Україна · Worldwide»;
+   нижчий перший екран (≤ ~72vh), компактніший H1 на ПК (≤ 2 рядки, без «висячого» слова), без рядка довіри — стрічка фото одразу під ним */
+.hx-home .hero h1{text-wrap:balance}
+html body .hx.hx-home .hero{min-height:min(68vh,38rem);padding-bottom:20px}
+.hx-home .hero .btns::after{content:none!important}
+.hx-home .hero>.price{display:none}.js .hx-home .hero:has(>.price)>[data-c=h]{display:block}
+.hx-home .hero>[data-c=h]{letter-spacing:.08em;margin-top:14px}
+@media(min-width:768px){.hx-home .hero h1{font-size:clamp(2.2rem,1.2rem + 2.2vw,3.4rem);max-width:22em!important;line-height:1.12}}
+@media(max-width:767px){html body .hx.hx-home .hero{padding-top:96px}}
+main>.hx-home+section.xs-strip{padding-top:12px!important}
 /* заголовок з посиланням праворуч */
 .xs-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 20px;flex-wrap:wrap;margin-bottom:24px}
 .xs-head h2{margin:0}.xs-head a{font-size:var(--fs-small);letter-spacing:.14em;text-transform:uppercase}

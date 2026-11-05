@@ -109,9 +109,9 @@ FORM_UK = {
 
 def _lead_p(p):
     """Лід hero. "line" (головні, Михайло 05.11.2026: «Київ · Україна · Worldwide») — видимий рядок під H1,
-    увесь "lead" — у span.ux-rest (у DOM для SEO, тап — розгортає)."""
+    увесь "lead" — після нього; ux._lead_rest ховає його в span.ux-rest (у DOM для SEO, тап — розгортає)."""
     if p.get('line'):
-        return f'  <p>{e(p["line"])}<span class="ux-rest"> {e(p["lead"])}</span></p>'
+        return f'  <p><span class="ux-ln">{e(p["line"])}</span> {e(p["lead"])}</p>'
     return f'  <p>{e(p["lead"])}</p>'
 
 def translate_tpl(s, lang):
