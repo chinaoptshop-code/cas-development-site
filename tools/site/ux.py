@@ -347,8 +347,80 @@ def _light_custom(m, rel):
     return m
 
 
+# Самотня плитка-банер (серія з 1 плитки — на всю ширину ряду; Михайло 05.11.2026: «сюди краще наш рендер, гарний»):
+# замість FLUX-ілюстрації 480×320 — світлий рендер проєкту CAS (img/p/wide-<назва>-800/1200/1400|1600.webp + AVIF, tools/img/build.py),
+# object-position — головне (диван/зал) у кадрі; alt — мовою сторінки. Ключ — тема H2 плитки (data-i), решта тем — WIDE_FB.
+WIDE = {
+    'dm': ('studio', (800, 1200, 1600), '50% 55%'),
+    'os': ('living', (800, 1200, 1400), '35% 60%'),
+    'st': ('house', (800, 1200, 1400), '40% 60%'),
+    'nf': ('lounge', (800, 1200, 1400), '40% 60%'),
+    'fq': ('lounge', (800, 1200, 1400), '40% 60%'),
+    'gu': ('living', (800, 1200, 1400), '35% 60%'),
+    'pj': ('monpark', (800, 1200, 1600), '50% 55%'),
+}
+WIDE_FB = 'dm'
+WIDE_ALT = {
+    'studio': dict(uk='Кухня-їдальня з мармуровим столом і кришталевою люстрою — дизайн-проєкт Hodos Villa, CAS Development',
+                   ru='Кухня-столовая с мраморным столом и хрустальной люстрой — дизайн-проект Hodos Villa, CAS Development',
+                   en='Kitchen-dining room with a marble table and crystal chandelier — Hodos Villa design project by CAS Development',
+                   es='Cocina-comedor con mesa de mármol y lámpara de cristal — proyecto Hodos Villa de CAS Development',
+                   zh='大理石餐桌与水晶吊灯的厨房餐厅 —— CAS Development 的 Hodos Villa 设计项目',
+                   pl='Kuchnia z jadalnią, marmurowy stół i kryształowy żyrandol — projekt Hodos Villa, CAS Development',
+                   de='Wohnküche mit Marmortisch und Kristallleuchter — Projekt Hodos Villa von CAS Development',
+                   fr='Cuisine-salle à manger, table en marbre et lustre en cristal — projet Hodos Villa de CAS Development',
+                   ar='مطبخ وغرفة طعام بطاولة رخامية وثريا كريستالية — مشروع Hodos Villa من CAS Development'),
+    'living': dict(uk='Вітальня з каміном і великим диваном — заміський будинок у Петрівцях, CAS Development',
+                   ru='Гостиная с камином и большим диваном — загородный дом в Петровцах, CAS Development',
+                   en='Living room with a fireplace and a large sofa — country house in Petrivtsi by CAS Development',
+                   es='Salón con chimenea y gran sofá — casa en Petrivtsi de CAS Development',
+                   zh='带壁炉和大沙发的客厅 —— CAS Development 设计的 Petrivtsi 别墅',
+                   pl='Salon z kominkiem i dużą sofą — dom pod Kijowem (Petrivtsi), CAS Development',
+                   de='Wohnzimmer mit Kamin und großem Sofa — Landhaus in Petrivtsi von CAS Development',
+                   fr='Salon avec cheminée et grand canapé — maison à Petrivtsi par CAS Development',
+                   ar='غرفة معيشة بمدفأة وأريكة كبيرة — منزل في بيتريفتسي من CAS Development'),
+    'house': dict(uk='Вітальня зі сходами й каміном у приватному будинку — проєкт CAS Development',
+                  ru='Гостиная с лестницей и камином в частном доме — проект CAS Development',
+                  en='Living room with a staircase and fireplace in a private house — CAS Development project',
+                  es='Salón con escalera y chimenea en una casa privada — proyecto de CAS Development',
+                  zh='私人住宅中带楼梯和壁炉的客厅 —— CAS Development 项目',
+                  pl='Salon ze schodami i kominkiem w domu jednorodzinnym — projekt CAS Development',
+                  de='Wohnzimmer mit Treppe und Kamin in einem Privathaus — Projekt von CAS Development',
+                  fr='Salon avec escalier et cheminée dans une maison individuelle — projet CAS Development',
+                  ar='غرفة معيشة بدرج ومدفأة في منزل خاص — مشروع CAS Development'),
+    'lounge': dict(uk='Світла вітальня з диваном і торшером — інтерʼєр від CAS Development',
+                   ru='Светлая гостиная с диваном и торшером — интерьер от CAS Development',
+                   en='Bright living room with a sofa and floor lamp — interior by CAS Development',
+                   es='Salón luminoso con sofá y lámpara de pie — interiorismo de CAS Development',
+                   zh='带沙发和落地灯的明亮客厅 —— CAS Development 室内设计',
+                   pl='Jasny salon z sofą i lampą podłogową — wnętrze CAS Development',
+                   de='Helles Wohnzimmer mit Sofa und Stehleuchte — Interior von CAS Development',
+                   fr='Salon lumineux avec canapé et lampadaire — intérieur CAS Development',
+                   ar='غرفة معيشة مشرقة بأريكة ومصباح أرضي — تصميم CAS Development'),
+    'monpark': dict(uk='Тераса ресторану Monpark увечері, центр Києва — дизайн і реалізація CAS Development',
+                    ru='Терраса ресторана Monpark вечером, центр Киева — дизайн и реализация CAS Development',
+                    en='Monpark restaurant terrace in the evening, central Kyiv — designed and built by CAS Development',
+                    es='Terraza del restaurante Monpark al atardecer, centro de Kiev — diseño y obra de CAS Development',
+                    zh='基辅市中心 Monpark 餐厅的夜间露台 —— CAS Development 设计与施工',
+                    pl='Taras restauracji Monpark wieczorem, centrum Kijowa — projekt i realizacja CAS Development',
+                    de='Terrasse des Restaurants Monpark am Abend, Kyjiw-Zentrum — Design und Umsetzung CAS Development',
+                    fr='Terrasse du restaurant Monpark le soir, centre de Kyiv — conception et réalisation CAS Development',
+                    ar='شرفة مطعم Monpark مساءً، وسط كييف — تصميم وتنفيذ CAS Development'),
+}
+WB_RX = re.compile(r'<img class="ux-wb"[^>]*>')
+
+
+def _wide_img(body, lang):
+    h = re.search(r'<h2[^>]*\bdata-i="(\w+)"', body)
+    name, ws, pos = WIDE.get(h.group(1) if h else WIDE_FB, WIDE[WIDE_FB])
+    alt = WIDE_ALT[name].get(lang) or WIDE_ALT[name]['en']
+    srcset = ', '.join(f'/img/p/wide-{name}-{w}.webp {w}w' for w in ws)
+    return (f'<img class="ux-wb" src="/img/p/wide-{name}-{ws[1]}.webp" srcset="{srcset}" sizes="(min-width:1300px) 1300px, 100vw" '
+            f'loading="lazy" decoding="async" width="{ws[-1]}" height="{ws[-1] // 2}" alt="{html.escape(alt)}" style="object-position:{pos}">')
+
+
 SPAN_RX = re.compile(r'\sstyle="(?:--s[2346]:\d+;?)+"')
-STRIP = [SPAN_RX, re.compile(r'\sdata-i="[a-z0-9]{2}"'), re.compile(r'\sdata-c="[tsqglxhk]"'), re.compile(r'\sdata-a(?:="[si]")?(?=[\s>])'),
+STRIP = [WB_RX, SPAN_RX, re.compile(r'\sdata-i="[a-z0-9]{2}"'), re.compile(r'\sdata-c="[tsqglxhk]"'), re.compile(r'\sdata-a(?:="[si]")?(?=[\s>])'),
          re.compile(r'\sdata-xs="[^"]*"'), re.compile(r'\sdata-cn="\d+"'), CALC_RX]
 UNWRAP = re.compile(r'<div data-c="l">(<(ul|ol)>.*?</\2>)</div>', re.S)
 REST_RX = re.compile(r'<span class="ux-rest">(.*?)</span>(?=</p>)', re.S)  # друга частина ліду hero (_lead_rest)
@@ -400,7 +472,7 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
 TAG_RX = re.compile(r'<!--.*?-->|<(script|style)\b[^>]*>.*?</\1>|<(/?)([a-zA-Z][\w-]*)\b[^>]*?(/?)>', re.S)
 
 
-def _spans(m):
+def _spans(m, lang=''):
     k = m.find('>', m.find('<main')) + 1
     kids, depth = [], 0  # (позиція кінця відкривного тегу, тег, чи плитка)
     for x in TAG_RX.finditer(m, k):
@@ -433,6 +505,14 @@ def _spans(m):
     edits = []
     for run in runs:
         n = len(run)
+        if n == 1 and lang:  # самотня плитка — банер на всю ширину: рендер проєкту замість FLUX (WIDE)
+            pos, otag = run[0]
+            at = pos + len(otag)
+            if 'data-c="x"' not in otag:
+                w = re.compile(r'\s*<div class="w(?:\s[^"]*)?"[^>]*data-c="x"[^>]*>').match(m, at)
+                at = w.end() if w else -1
+            if at > 0:
+                edits.append((at, _wide_img(m[at:at + 4000], lang)))
         for i, (pos, otag) in enumerate(run):
             props = []
             for cols in (2, 3, 4, 6):
@@ -559,7 +639,7 @@ def apply(s, rel):
     if rel in ABOUT:
         m = re.sub(r'<div class="xs-tx">(?=(?:<h2[^>]*>.*?</h2>)?<p\b)', '<div class="xs-tx" data-c="t">', m, count=1, flags=re.S)
     if light:
-        m = _spans(m)
+        m = _spans(m, lm.group(1) if lm else 'uk')
     if re.match(r'(?:[a-z]{2}/)?blog/', rel):
         m = _article_lists(m)
     if re.match(r'(?:[a-z]{2}/)?index\.html$', rel):  # головні: без бейджів «Анімація реалізації» — сцена вже на сторінці (Михайло 04.11.2026, «ясність»)
