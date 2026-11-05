@@ -612,11 +612,11 @@
     return { parts: L, xr: S('mep'), th: [], W: H.W, D: H.D };
   }
 
-  function seal(x, y, z, ui) { // печатка «36 міс. гарантія»
+  function seal(x, y, z, ui) { // печатка «12 міс. гарантія»
     var q = P(x, y, z).split(','), a = +q[0], b = +q[1];
     bb[0] = Math.min(bb[0], a - 28); bb[1] = Math.min(bb[1], b - 28); bb[2] = Math.max(bb[2], a + 28); bb[3] = Math.max(bb[3], b + 28);
     return '<g class="seal"><circle cx="' + a + '" cy="' + b + '" r="27" class="sl1"/><circle cx="' + a + '" cy="' + b + '" r="22" class="sl2"/>' +
-      '<text x="' + a + '" y="' + (b + 1) + '" class="sl3">36</text><text x="' + a + '" y="' + (b + 11) + '" class="sl4">' + esc(ui.mo) + '</text><text x="' + a + '" y="' + (b - 12) + '" class="sl4">' + esc(ui.gar) + '</text></g>';
+      '<text x="' + a + '" y="' + (b + 1) + '" class="sl3">12</text><text x="' + a + '" y="' + (b + 11) + '" class="sl4">' + esc(ui.mo) + '</text><text x="' + a + '" y="' + (b - 12) + '" class="sl4">' + esc(ui.gar) + '</text></g>';
   }
 
   /* ---------- сцена «квартира» v3: ≈86 м² у «ляльковому» розрізі без стелі (задні зовнішні стіни — на всю висоту з вікнами, перегородки й передні стіни
