@@ -106,6 +106,14 @@ FORM_UK = {
 }
 
 
+
+def _lead_p(p):
+    """Лід hero. "line" (головні, Михайло 05.11.2026: «Київ · Україна · Worldwide») — видимий рядок під H1,
+    увесь "lead" — у span.ux-rest (у DOM для SEO, тап — розгортає)."""
+    if p.get('line'):
+        return f'  <p>{e(p["line"])}<span class="ux-rest"> {e(p["lead"])}</span></p>'
+    return f'  <p>{e(p["lead"])}</p>'
+
 def translate_tpl(s, lang):
     f = i18n.ui(lang)['form']
     for k, uk in FORM_UK.items():
@@ -525,9 +533,10 @@ def hero_html(p):
         crumbs = f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / <a href="{mid[0]}">{e(mid[1])}</a> / {e(p["h1"])}</div>\n'
     btn2 = p.get('btn2') or ['tel:+380978667755', '+380 97 866 77 55']
     if p.get('hero_img'):  # перший екран з фото (rich.hero_bg): .hx — фон, текст поверх
-        o = [crumbs, '<div class="hx">' + richsec.hero_bg(p['hero_img']), '<div class="w hero">']
+        hx = 'hx hx-home' if p['slug'] == 'index' else 'hx'  # головні: нижчий hero без рядка довіри (Михайло 05.11.2026)
+        o = [crumbs, f'<div class="{hx}">' + richsec.hero_bg(p['hero_img']), '<div class="w hero">']
         o += ([f'  <p class="kick">{e(p["kicker"])}</p>'] if p.get('kicker') else []) + [f'  <h1>{e(p["h1"])}</h1>']
-        o += ([f'  <div class="price">{e(p["price"])}</div>'] if p.get('price') else []) + [f'  <p>{e(p["lead"])}</p>', '  <div class="btns">',
+        o += ([f'  <div class="price">{e(p["price"])}</div>'] if p.get('price') else []) + [_lead_p(p), '  <div class="btns">',
               f'    <a class="btn main" href="{p.get("cta_href", "#zayavka")}">{e(p.get("cta") or t["cta"])}</a>',
               f'    <a class="btn" href="{btn2[0]}">{e(btn2[1])}</a>', '  </div>']
         o += (['  <div class="facts">' + ''.join(f'<div><b>{e(b)}</b><span>{e(s)}</span></div>' for b, s in p.get('facts', FACTS[p['lang']])) + '</div>']
