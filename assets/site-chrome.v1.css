@@ -517,7 +517,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 @media(hover:hover){.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):not(.c-o,:has(>.c-o)):hover{border-color:var(--ac,#BF9148)!important;background:rgba(191,145,72,.07)!important}}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):has(.ux-h:focus-visible){outline:2px solid var(--ac,#BF9148);outline-offset:3px}
 /* згорнута плитка: лише H2 (і ланцюжок обгорток до нього в ручних секціях) */
-.js .w[data-c=x]:not(.c-o)>:not(h2),.js [data-c=x]:not(.w):not(.c-o) :not(h2,h2 *,:has(h2)){display:none!important}
+.js .w[data-c=x]:not(.c-o)>:not(h2,.ux-wb),.js [data-c=x]:not(.w):not(.c-o) :not(h2,h2 *,:has(h2),.ux-wb){display:none!important}
 .js [data-c=x]:not(.w):not(.c-o) :has(h2){display:block!important;position:static!important;padding:0!important;margin:0!important;border:0!important;min-height:0!important;max-width:none!important;background:none!important;transform:none!important}
 .js [data-c=x] h2{position:static!important;margin:0!important;padding:48px 0 0!important;font-size:clamp(1.18rem,1.02rem + .55vw,1.5rem)!important;line-height:1.2!important;text-align:start!important;letter-spacing:0!important}
 .js [data-c=x].c-o h2,.js [data-c=x]:has(.c-o) h2{margin-bottom:16px!important}
@@ -684,6 +684,13 @@ html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(
 @media(min-width:760px){html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s3,4)}.js [data-c=x]:not(.c-o)::before{max-height:min(36vh,16rem);min-width:calc(100% + 32px)}}
 @media(min-width:1100px){html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s4,3)}}
 @media(min-width:2200px){html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s6,2)}}
+/* самотня плитка-банер (ux.py WIDE, Михайло 05.11.2026): рендер проєкту CAS замість FLUX-ілюстрації — компактна смуга 21:9 на ПК, 16:9 на телефоні;
+   звичайні плитки: ілюстрація 480×320 не розтягується вище своєї роздільності (contain, по центру) */
+.ux-wb{display:none}
+.js [data-c=x]:has(>.ux-wb)::before{content:none!important}
+.js [data-c=x]:not(.c-o)>.ux-wb{display:block!important;width:calc(100% + 32px);max-width:none;height:auto;aspect-ratio:16/9;object-fit:cover;margin:-16px -16px 12px}
+@media(min-width:760px){.js [data-c=x]:not(.c-o)>.ux-wb{aspect-ratio:21/9;max-height:26rem}}
+.js [data-c=x]::before{background-size:contain!important}
 /* критичні стилі перемикача сцен nav.la-tab — ті самі, що в /assets/scene-ui.v1.css (той вантажиться після першої прокрутки):
    без переповнення на 360 px і без зсуву, коли scene-ui підвантажиться */
 .la-tab{display:inline-flex;flex-wrap:wrap;max-width:100%;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:22px;padding:4px;margin:0 0 18px}
