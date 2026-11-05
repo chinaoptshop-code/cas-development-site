@@ -14,7 +14,7 @@
   W.__casBA = 1;
   var secs = [].slice.call(d.querySelectorAll('section.bz[data-bz]'));
   if (!secs.length || !W.fetch || !W.Promise) return;
-  var VER = {"ar.flat":"46b56699","ar.house":"b9e1a415","de.flat":"13675997","de.house":"518a9a7d","en.flat":"72e68dcb","en.house":"8f4442b3","es.flat":"ddb675d6","es.house":"f522c1f0","fr.flat":"5e0de606","fr.house":"81f6c511","pl.flat":"8737eeeb","pl.house":"ca47929e","ru.flat":"3a0da7af","ru.house":"d047addb","uk.flat":"4be1e913","uk.house":"8eae39f9","zh.flat":"0ae41127","zh.house":"35503c4f"}; /*ver*/
+  var VER = {"ar.flat":"c3aa0450","ar.house":"d1e82597","de.flat":"695d4f2e","de.house":"1a00392a","en.flat":"64c5e200","en.house":"108b4515","es.flat":"ee6fad57","es.house":"6b603f5c","fr.flat":"721bc366","fr.house":"c04f3f56","pl.flat":"439abdd8","pl.house":"3cd73d9e","ru.flat":"ebbbec9f","ru.house":"ab8b7739","uk.flat":"491d73b2","uk.house":"0a36f266","zh.flat":"0bd785b0","zh.house":"d1275599"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
   var lang = (d.documentElement.lang || 'uk').slice(0, 2); if (!VER[lang + '.house']) lang = 'uk';
@@ -121,8 +121,8 @@
       function () { if (C.s === 'minimal' && C.m === 'brus') return k === 'm' ? ['s', 'scandi', 'br'] : ['m', 'block', 'br']; },
       function () { if (C.s === 'minimal' && C.t === 'attic') return k === 't' ? ['s', 'scandi', 'at'] : ['t', 'two', 'at']; },
       function () { if (C.r && C.s !== 'minimal') return k === 'r' ? ['s', 'minimal', 'ter'] : ['r', 0, 'ter2']; },
-      function () { if (C.t === 'two' && C.a < 120) return k === 'a' ? ['t', C.s === 'minimal' ? 'one' : 'attic', 'two'] : ['a', 120, 'two']; },
-      function () { if (C.t === 'one' && C.a > 220) return k === 'a' ? ['t', 'two', 'one'] : ['a', 220, 'one']; }
+      function () { if (C.t === 'two' && C.a < 120) return k === 'a' ? ['t', C.s === 'minimal' ? 'one' : 'attic', 'two_a'] : ['a', 120, 'two_t']; },
+      function () { if (C.t === 'one' && C.a > 220) return k === 'a' ? ['t', 'two', 'one_a'] : ['a', 220, 'one_t']; }
     ];
     for (var n = 0; n < 6; n++) {
       var ch = 0;
@@ -1066,8 +1066,8 @@
       var szn = {}; SZ.forEach(function (a) { szn[a] = a + ' ' + u.m2; });
       cfg.innerHTML = '<div class="bz-cr">' + grp(ui.mat, 'm', MATS, C.m, ui.m) + '</div><div class="bz-cr">' + grp(u.t, 't', TYP, h.AF ? '' : h.TY, u.tn) +
         '<span class="bz-g" role="group" aria-label="' + esc(u.x) + '"><span class="bz-gl" aria-hidden="true">' + esc(u.x) + '</span>' + ex + '</span></div>' +
-        '<div class="bz-cr">' + grp(u.s, 'c', STY, C.s, u.sn) + '</div><div class="bz-cr">' + grp(u.a, 'a', SZ, C.a, szn) + '</div>' +
-        '<p class="bz-hint" aria-live="polite">' + esc(hint && u.h[hint] ? u.h[hint] : '') + '</p><p class="bz-prc">' + esc(u.price) + '</p>' +
+        '<div class="bz-cr">' + grp(u.s, 'y', STY, C.s, u.sn) + '</div><div class="bz-cr">' + grp(u.a, 'a', SZ, C.a, szn) + '</div>' +
+        '<p class="bz-hint" aria-live="polite">' + esc(hint ? u.h[hint] || u.h[hint.replace(/_[at]$/, '')] || '' : '') + '</p><p class="bz-prc">' + esc(u.price) + '</p>' +
         '<button type="button" class="bz-cx">' + esc(u.done) + '</button>';
       var dm = function (v) { return W.casNum(v, lang); };
       cap.textContent = '≈ ' + C.a + ' ' + u.m2 + ' · ' + flL(h) + ' · ' + dm(h.W) + ' × ' + dm(h.D) + ' м'.replace('м', lang === 'en' ? 'm' : 'м') + (C.g ? ' · ' + (C.g === 'g' ? u.gar : u.car) : '') + (C.r ? ' · ' + u.ter : '');
@@ -1083,7 +1083,7 @@
       var k = '', v, at = '';
       if (b.hasAttribute('data-m')) { k = 'm'; at = 'm'; v = b.getAttribute('data-m'); }
       else if (b.hasAttribute('data-t')) { k = 't'; at = 't'; v = b.getAttribute('data-t'); }
-      else if (b.hasAttribute('data-c')) { k = 's'; at = 'c'; v = b.getAttribute('data-c'); }
+      else if (b.hasAttribute('data-y')) { k = 's'; at = 'y'; v = b.getAttribute('data-y'); } // стиль: data-y, не data-c — той зайнятий згортанням ux.py
       else if (b.hasAttribute('data-a')) { k = 'a'; at = 'a'; v = +b.getAttribute('data-a'); }
       else if (b.hasAttribute('data-x')) { at = 'x'; v = b.getAttribute('data-x'); if (v === 'r') { k = 'r'; v = C.r ? 0 : 1; } else { k = 'g'; v = C.g === v ? '' : v; } }
       if (!k || C[k] === v) return;

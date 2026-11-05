@@ -535,7 +535,11 @@ T['uk']['ui']['cfg'] = dict(
            af3='До A-frame гараж і тераса не прибудовуються — опцію вимкнено', af4='A-frame — до 160 м²: площу змінено', af5='A-frame — один поверх з антресоллю: стиль змінено',
            br='Плоский дах на брусі не робимо (усадка зрубу) — змінено технологію або стиль', at='Мансарда потребує скатного даху — змінено тип або стиль',
            ter='Тераса на даху — лише з плоскою покрівлею: стиль змінено на «Мінімалізм»', ter2='Тераса — лише на плоскій покрівлі: опцію вимкнено',
-           two='2 поверхи — від 120 м²: змінено площу або тип', one='1 поверх — до 220 м²: змінено площу або тип'),
+           two='2 поверхи — від 120 м²: змінено площу або тип', one='1 поверх — до 220 м²: змінено площу або тип',
+           two_a='2 поверхи — від 120 м²: для цієї площі тип змінено',
+           two_t='2 поверхи — від 120 м²: площу змінено на 120 м²',
+           one_a='1 поверх — до 220 м²: тип змінено на «2 поверхи»',
+           one_t='1 поверх — до 220 м²: площу змінено на 220 м²'),
 )
 T['uk']['sto'] = dict(
     one=dict(slab=('Перекриття над поверхом', 'Плита або балки стелі за КР: зверху — утеплення горища або основа плоскої покрівлі. Хід робіт Михайло знімає з дрона.'),
@@ -593,7 +597,11 @@ T['ru']['ui']['cfg'] = dict(
            af3='К A-frame гараж и терраса не пристраиваются — опция выключена', af4='A-frame — до 160 м²: площадь изменена', af5='A-frame — один этаж с антресолью: стиль изменён',
            br='Плоскую крышу на брусе не делаем (усадка сруба) — изменена технология или стиль', at='Мансарде нужна скатная крыша — изменён тип или стиль',
            ter='Терраса на крыше — только с плоской кровлей: стиль изменён на «Минимализм»', ter2='Терраса — только на плоской кровле: опция выключена',
-           two='2 этажа — от 120 м²: изменена площадь или тип', one='1 этаж — до 220 м²: изменена площадь или тип'),
+           two='2 этажа — от 120 м²: изменена площадь или тип', one='1 этаж — до 220 м²: изменена площадь или тип',
+           two_a='2 этажа — от 120 м²: для этой площади тип изменён',
+           two_t='2 этажа — от 120 м²: площадь изменена на 120 м²',
+           one_a='1 этаж — до 220 м²: тип изменён на «2 этажа»',
+           one_t='1 этаж — до 220 м²: площадь изменена на 220 м²'),
 )
 T['ru']['sto'] = dict(
     one=dict(slab=('Перекрытие над этажом', 'Плита или балки потолка по КР: сверху — утепление чердака или основание плоской кровли. Ход работ Михаил снимает с дрона.'),
@@ -651,7 +659,11 @@ T['en']['ui']['cfg'] = dict(
            af3='No garage or roof terrace on an A-frame: option turned off', af4='A-frame up to 160 m²: area changed', af5='A-frame is one storey with a mezzanine: style changed',
            br='No flat roofs on timber beam houses (log settling): method or style changed', at='An attic needs a pitched roof: type or style changed',
            ter='A roof terrace needs a flat roof: style switched to “Minimalist”', ter2='Roof terrace only on a flat roof: option turned off',
-           two='2 storeys from 120 m²: area or type changed', one='1 storey up to 220 m²: area or type changed'),
+           two='2 storeys from 120 m²: area or type changed', one='1 storey up to 220 m²: area or type changed',
+           two_a='2 storeys from 120 m²: type changed for this area',
+           two_t='2 storeys from 120 m²: area set to 120 m²',
+           one_a='1 storey up to 220 m²: type changed to 2 storeys',
+           one_t='1 storey up to 220 m²: area set to 220 m²'),
 )
 T['en']['sto'] = dict(
     one=dict(slab=('Ceiling slab', 'A slab or ceiling joists per the structural design, topped with loft insulation or forming the base of a flat roof. Mykhailo films progress by drone.'),
