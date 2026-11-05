@@ -697,6 +697,8 @@ def apply(s, rel):
     s = ui_polish_ext(s)
     import ux  # іконки заголовків, згортання довгих блоків, бейдж «Анімація реалізації» (tools/site/ux.py)
     s = ux.apply(s, rel)
+    import sharp  # різкі фото: srcset з усіх ширин і sizes під реальний слот (tools/site/sharp.py)
+    s = sharp.apply(s, rel)
     s = versions(s)
     s = fonts_block(s)
     s = nbsp_prices(s, lang)

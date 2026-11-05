@@ -60,15 +60,15 @@
      "label": "Kitana Beach"
     },
     {
-     "img": "img/p/1pYk5KBK_ne5Dj-900.webp",
-     "srcset": "/img/p/1pYk5KBK_ne5Dj-400.webp 400w, /img/p/1pYk5KBK_ne5Dj-900.webp 900w",
+     "img": "img/p/1vWmbYVTmViGgW-900.webp",
+     "srcset": "/img/p/1vWmbYVTmViGgW-400.webp 400w, /img/p/1vWmbYVTmViGgW-900.webp 900w",
      "alt": "客厅 — USA House",
      "label": "USA House"
     },
     {
-     "img": "img/p/1xSbwYmzFkTN2A-900.webp",
-     "srcset": "/img/p/1xSbwYmzFkTN2A-400.webp 400w, /img/p/1xSbwYmzFkTN2A-900.webp 900w",
-     "alt": "客餐厅 — Pidgirland",
+     "img": "img/p/1ey5Jil8hIa-6r-900.webp",
+     "srcset": "/img/p/1ey5Jil8hIa-6r-400.webp 400w, /img/p/1ey5Jil8hIa-6r-900.webp 900w",
+     "alt": "客厅 — Pidgirland",
      "label": "Pidgirland"
     },
     {
@@ -94,12 +94,6 @@
      "srcset": "/img/p/1HZT-E30rREI7d-400.webp 400w, /img/p/1HZT-E30rREI7d-900.webp 900w",
      "alt": "客餐厅 — Hoda Estate",
      "label": "Hoda Estate"
-    },
-    {
-     "img": "img/p/1vWmbYVTmViGgW-900.webp",
-     "srcset": "/img/p/1vWmbYVTmViGgW-400.webp 400w, /img/p/1vWmbYVTmViGgW-900.webp 900w",
-     "alt": "客厅 — USA House",
-     "label": "USA House"
     },
     {
      "img": "img/p/1MP_RPGiZ7XjIO-900.webp",
@@ -241,17 +235,17 @@
     },
     {
      "href": "/proekty/usa-house",
-     "img": "img/p/1pYk5KBK_ne5Dj-900.webp",
-     "srcset": "/img/p/1pYk5KBK_ne5Dj-400.webp 400w, /img/p/1pYk5KBK_ne5Dj-900.webp 900w",
+     "img": "img/p/1vWmbYVTmViGgW-900.webp",
+     "srcset": "/img/p/1vWmbYVTmViGgW-400.webp 400w, /img/p/1vWmbYVTmViGgW-900.webp 900w",
      "alt": "客厅 — USA House, CAS Development 项目",
      "name": "USA House",
      "loc": "美国 · 420 m²"
     },
     {
      "href": "/proekty/pidgirland",
-     "img": "img/p/1xSbwYmzFkTN2A-900.webp",
-     "srcset": "/img/p/1xSbwYmzFkTN2A-400.webp 400w, /img/p/1xSbwYmzFkTN2A-900.webp 900w",
-     "alt": "客餐厅 — Pidgirland, CAS Development 项目",
+     "img": "img/p/1ey5Jil8hIa-6r-900.webp",
+     "srcset": "/img/p/1ey5Jil8hIa-6r-400.webp 400w, /img/p/1ey5Jil8hIa-6r-900.webp 900w",
+     "alt": "客厅 — Pidgirland, CAS Development 项目",
      "name": "Pidgirland",
      "loc": "基辅州 · 260 m²"
     },
