@@ -128,7 +128,7 @@
 | ozdoba/led-profil-aliuminiievyi-z-rozsiiuvachem-2-11.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/liustra-kaskadna-zi-sklianykh-peliustok-smarahdova-111.html | other | 58.9 | 15.2 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/lizhko-miake-z-vysokym-uzholiv-iam-415.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 342 |
-| ozdoba/nabir-posudu-z-keramiky-temno-siryi-551.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 335 |
+| ozdoba/nabir-posudu-z-keramiky-temno-siryi-551.html | other | 58.9 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/pidvis-zi-skla-burshtynovoho-koloru-ryflenyi-582.html | other | 58.9 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/podushka-dekoratyvna-oksamytova-z-pomponamy-529.html | other | 58.9 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/shyna-mahnitna-trekova-1-m-10.html | other | 58.9 | 15.4 | 32.4 | 0.7 | 14 | 338 |
@@ -192,7 +192,7 @@
 | ozdoba/torsher-konsolnyi-z-chervonym-abazhurom-580.html | other | 58.7 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/torsher-na-sharnirnii-shtanzi-z-chornym-578.html | other | 58.7 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/torsher-z-konichnym-abazhurom-16.html | other | 58.7 | 15.4 | 32.4 | 0.7 | 14 | 340 |
-| ozdoba/tumba-pidvisna-pid-rakovynu-svitlyi-dub-146.html | other | 58.7 | 15.3 | 32.4 | 0.7 | 14 | 333 |
+| ozdoba/tumba-pidvisna-pid-rakovynu-svitlyi-dub-146.html | other | 58.7 | 15.2 | 32.4 | 0.7 | 14 | 333 |
 | ozdoba/unitaz-pidvisnyi-bezobidkovyi-matovi-kolory-591.html | other | 58.7 | 15.3 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/vanna-okremostoiacha-zi-shtuchnoho-kameniu-bila-139.html | other | 58.7 | 15.3 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/vytiazhka-nastinna-chorna-z-zolotystoiu-okantovkoiu-523.html | other | 58.7 | 15.2 | 32.4 | 0.7 | 14 | 334 |
@@ -442,7 +442,7 @@
 | dyzain-interieru-kvartyry-kyiv.html | land | 51.8 | 13.3 | 13.2 | 0.5 | 7 | 499 |
 | ru/dizayn-ofisa-kiev.html | land | 51.7 | 13.9 | 13.6 | 0.5 | 7 | 468 |
 | ru/remont-premium-klassa-kiev.html | land | 51.7 | 13.8 | 13.6 | 0.5 | 7 | 473 |
-| ru/stoimost-remonta-ofisa-kiev.html | land | 51.7 | 14.0 | 13.6 | 0.5 | 7 | 470 |
+| ru/stoimost-remonta-ofisa-kiev.html | land | 51.7 | 14.1 | 13.6 | 0.5 | 7 | 470 |
 | kalkuliator-remontu.html | land | 51.4 | 14.5 | 14.2 | 1.5 | 7 | 470 |
 | ru/dizayn-kvartiry-kiev.html | land | 51.4 | 13.3 | 13.6 | 0.5 | 7 | 497 |
 | vartist-remontu-ofisu-kyiv.html | land | 51.4 | 13.8 | 13.6 | 0.5 | 7 | 470 |
@@ -454,7 +454,7 @@
 | ru/dizayn-ofisa-open-space-kiev.html | land | 50.5 | 13.6 | 13.6 | 0.5 | 7 | 465 |
 | blog/osvitlennia-ofisu-robochi-zony.html | article | 50.3 | 14.3 | 14.4 | 0.5 | 7 | 365 |
 | budynok-z-brusa-kyiv.html | land | 50.3 | 14.5 | 13.6 | 0.5 | 7 | 485 |
-| dyzain-ofisu-open-space-kyiv.html | land | 50.3 | 13.6 | 13.6 | 0.5 | 7 | 467 |
+| dyzain-ofisu-open-space-kyiv.html | land | 50.3 | 13.7 | 13.6 | 0.5 | 7 | 467 |
 | blog/chornovyi-i-chystovyi-remont-riznytsia.html | article | 50.2 | 14.2 | 14.4 | 0.5 | 7 | 381 |
 | remont-budynku-pid-klyuch-kyiv.html | land | 50.2 | 13.1 | 13.2 | 0.5 | 7 | 470 |
 | ru/pereplanirovka-kvartiry-kiev.html | land | 50.2 | 13.1 | 13.6 | 0.5 | 7 | 471 |
@@ -678,7 +678,7 @@
 | dyzain-i-remont-odesa.html | land | 41.0 | 11.7 | 13.6 | 0.5 | 7 | 329 |
 | zh/house-construction.html | land | 41.0 | 13.0 | 13.6 | 0.5 | 7 | 475 |
 | zh/resort-turnkey.html | land | 41.0 | 12.6 | 13.6 | 2.4 | 7 | 429 |
-| dyzain-i-remont-brovary.html | land | 40.9 | 11.7 | 13.6 | 0.5 | 7 | 333 |
+| dyzain-i-remont-brovary.html | land | 40.9 | 11.6 | 13.6 | 0.5 | 7 | 333 |
 | dyzain-i-remont-ivano-frankivsk.html | land | 40.9 | 11.5 | 13.6 | 0.5 | 7 | 331 |
 | ru/dizayn-i-remont-brovary.html | land | 40.9 | 11.6 | 13.6 | 0.5 | 7 | 333 |
 | ru/dizayn-i-remont-ivano-frankovsk.html | land | 40.9 | 11.5 | 13.6 | 0.5 | 7 | 331 |
@@ -730,10 +730,10 @@
 | dyzain-i-remont-poltava.html | land | 40.3 | 11.5 | 13.6 | 0.5 | 7 | 330 |
 | en/office-renovation.html | land | 40.2 | 11.0 | 13.6 | 0.5 | 7 | 410 |
 | ar/design-implementation.html | land | 40.1 | 11.0 | 13.6 | 0.5 | 7 | 362 |
-| dyzain-i-remont-lutsk.html | land | 40.1 | 11.3 | 13.6 | 0.5 | 7 | 330 |
+| dyzain-i-remont-lutsk.html | land | 40.1 | 11.4 | 13.6 | 0.5 | 7 | 330 |
 | en/turnkey-procurement.html | land | 40.1 | 10.8 | 13.6 | 0.5 | 7 | 395 |
 | ru/dizayn-i-remont-lutsk.html | land | 40.1 | 11.4 | 13.6 | 0.5 | 7 | 330 |
-| fr/equipe-renovation.html | land | 39.9 | 10.8 | 13.6 | 0.5 | 7 | 390 |
+| fr/equipe-renovation.html | land | 39.9 | 10.9 | 13.6 | 0.5 | 7 | 390 |
 | en/renovation-crew.html | land | 39.8 | 10.8 | 13.6 | 0.5 | 7 | 409 |
 | fr/equipement-cle-en-main.html | land | 39.8 | 10.7 | 13.6 | 0.5 | 7 | 373 |
 | ru/referalnaya-programma.html | land | 39.8 | 10.7 | 13.6 | 0.5 | 7 | 338 |

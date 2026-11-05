@@ -113,7 +113,7 @@ function marquee(){
  var L=({uk:['Пауза прокрутки фото','Прокручувати фото'],ru:['Пауза прокрутки фото','Прокручивать фото'],en:['Pause photo scrolling','Play photo scrolling'],
   es:['Pausar desplazamiento de fotos','Reanudar desplazamiento de fotos'],zh:['暂停照片滚动','继续照片滚动'],pl:['Wstrzymaj przewijanie zdjęć','Wznów przewijanie zdjęć'],
   de:['Foto-Lauf anhalten','Foto-Lauf starten'],fr:['Mettre le défilement en pause','Relancer le défilement'],ar:['إيقاف تمرير الصور','تشغيل تمرير الصور']})[(d.documentElement.lang||'uk').slice(0,2)]||['Pause','Play'];
- var list=$$('.xs-st,.vgrid,.strip');if(!list.length)return;
+ var list=$$('.xs-st,.vgrid,.strip,.xs-cv');if(!list.length)return;
  var st=d.createElement('style');
  st.textContent='.mq-bar{position:relative;height:0;z-index:3}.mq-ap{position:absolute;top:8px;inset-inline-end:8px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(191,145,72,.7);background:rgba(8,7,9,.62);color:#EDE8DF;font:600 13px/1 system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}.mq-ap:focus-visible{outline:2px solid #BF9148;outline-offset:2px}.mq-run{scroll-snap-type:none!important;scroll-behavior:auto!important}';
  d.head.appendChild(st);
@@ -159,6 +159,26 @@ function marquee(){
   new IntersectionObserver(function(es){live=es[es.length-1].isIntersecting;if(live&&!setup())live=false;go()},{rootMargin:'0px 0px -10% 0px'}).observe(sc);
  });
 }
-function run(){[expanders,scrollers,reveal,imgFade,marquee].forEach(function(f){try{f()}catch(e){}})}
+/* Карусель «Наші проєкти» на головних (.xs-cv, Михайло 05.11.2026): один ряд, scroll-snap, свайп/тачпад, кнопки ←/→ (44 px, aria-label)
+   під рядом; автопрокрутка — marquee() вище (пауза при наведенні/тачі, кнопка ❚❚/▶; reduced-motion — статично). Натискання стрілки — пауза 9 с. */
+function carousel(){
+ var L=({uk:['Попередні проєкти','Наступні проєкти'],ru:['Предыдущие проекты','Следующие проекты'],en:['Previous projects','Next projects'],es:['Proyectos anteriores','Proyectos siguientes'],
+  zh:['上一组项目','下一组项目'],pl:['Poprzednie projekty','Następne projekty'],de:['Vorherige Projekte','Nächste Projekte'],fr:['Projets précédents','Projets suivants'],ar:['المشاريع السابقة','المشاريع التالية']})[(d.documentElement.lang||'uk').slice(0,2)]||['Previous','Next'];
+ $$('.xs-cv').forEach(function(sc){
+  if(sc.__cv)return;sc.__cv=1;
+  var nav=d.createElement('div');nav.className='cv-nav';
+  [[-1,'←',L[0]],[1,'→',L[1]]].forEach(function(x){
+   var b=d.createElement('button');b.type='button';b.className='cv-b';b.setAttribute('aria-label',x[2]);b.title=x[2];b.innerHTML='<span aria-hidden="true">'+x[1]+'</span>';
+   b.addEventListener('click',function(){
+    try{sc.dispatchEvent(new Event('wheel'))}catch(e){} // marquee(): пауза 9 с
+    var it=sc.firstElementChild,step=it?it.getBoundingClientRect().width+12:sc.clientWidth*.8,rtl=W.getComputedStyle(sc).direction==='rtl';
+    sc.scrollBy({left:x[0]*step*(rtl?-1:1),behavior:RM?'auto':'smooth'});
+   });
+   nav.appendChild(b);
+  });
+  sc.parentNode.insertBefore(nav,sc.nextSibling);
+ });
+}
+function run(){[expanders,scrollers,reveal,imgFade,carousel,marquee].forEach(function(f){try{f()}catch(e){}})}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',run);else run();
 })();
