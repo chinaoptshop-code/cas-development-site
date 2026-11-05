@@ -14,7 +14,7 @@
   W.__casBA = 1;
   var secs = [].slice.call(d.querySelectorAll('section.bz[data-bz]'));
   if (!secs.length || !W.fetch || !W.Promise) return;
-  var VER = {"ar.flat":"46b56699","ar.house":"b9e1a415","de.flat":"13675997","de.house":"518a9a7d","en.flat":"72e68dcb","en.house":"8f4442b3","es.flat":"ddb675d6","es.house":"f522c1f0","fr.flat":"5e0de606","fr.house":"81f6c511","pl.flat":"8737eeeb","pl.house":"ca47929e","ru.flat":"3a0da7af","ru.house":"d047addb","uk.flat":"4be1e913","uk.house":"8eae39f9","zh.flat":"0ae41127","zh.house":"35503c4f"}; /*ver*/
+  var VER = {"ar.flat":"36260abd","ar.house":"77db6d9d","de.flat":"481759bd","de.house":"b65a0901","en.flat":"ba7ff64a","en.house":"534b1e41","es.flat":"21f6c464","es.house":"6bbd3a95","fr.flat":"2318ca64","fr.house":"9244579b","pl.flat":"87744a33","pl.house":"fe609f7d","ru.flat":"2e699b68","ru.house":"12c8a2d3","uk.flat":"9d3db7aa","uk.house":"99155cfc","zh.flat":"742cc8e3","zh.house":"61009b83"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
   var lang = (d.documentElement.lang || 'uk').slice(0, 2); if (!VER[lang + '.house']) lang = 'uk';
@@ -605,11 +605,11 @@
     return { parts: L, xr: S('mep'), th: [], W: H.W, D: H.D };
   }
 
-  function seal(x, y, z, ui) { // печатка «36 міс. гарантія»
+  function seal(x, y, z, ui) { // печатка «12 міс. гарантія»
     var q = P(x, y, z).split(','), a = +q[0], b = +q[1];
     bb[0] = Math.min(bb[0], a - 28); bb[1] = Math.min(bb[1], b - 28); bb[2] = Math.max(bb[2], a + 28); bb[3] = Math.max(bb[3], b + 28);
     return '<g class="seal"><circle cx="' + a + '" cy="' + b + '" r="27" class="sl1"/><circle cx="' + a + '" cy="' + b + '" r="22" class="sl2"/>' +
-      '<text x="' + a + '" y="' + (b + 1) + '" class="sl3">36</text><text x="' + a + '" y="' + (b + 11) + '" class="sl4">' + esc(ui.mo) + '</text><text x="' + a + '" y="' + (b - 12) + '" class="sl4">' + esc(ui.gar) + '</text></g>';
+      '<text x="' + a + '" y="' + (b + 1) + '" class="sl3">12</text><text x="' + a + '" y="' + (b + 11) + '" class="sl4">' + esc(ui.mo) + '</text><text x="' + a + '" y="' + (b - 12) + '" class="sl4">' + esc(ui.gar) + '</text></g>';
   }
 
   /* ---------- сцена «квартира» v3: ≈86 м² у «ляльковому» розрізі без стелі (задні зовнішні стіни — на всю висоту з вікнами, перегородки й передні стіни

@@ -20,9 +20,9 @@ FACTS_UK = [
     'Засновано: 2016 рік, Київ. Засновник і CEO — Михайло. Досвід — 10+ років, 150+ проєктів.',
     'Офіс: Україна, Київ, вул. Антоновича, 44. Телефон: +380 97 866 77 55 (також Telegram, Viber, WhatsApp). Email: china.opt.shop@gmail.com.',
     'Географія: Київ і Київська область; ремонт і будівництво — в усіх областях України і в Європі; проєкти були й є на Балі, в Іспанії, США, Франції, Німеччині, Польщі, Туреччині (Бодрум).',
-    'Виконання: три власні штатні бригади (не субпідряд) під різний рівень складності й типи робіт. Команда (сторінка /about): засновник і CEO Михайло, проєктний менеджер, дизайнер інтерʼєру, проєктувальник, '
+    'Виконання: своя команда штатних працівників (не субпідряд) під різний рівень складності й типи робіт. Команда (сторінка /about): засновник і CEO Михайло, проєктний менеджер, дизайнер інтерʼєру, проєктувальник, '
     'пʼять прорабів, меблярі, геодезист, спеціаліст 3D-заміру, зйомка з дрона.',
-    'Гарантія на роботи — 36 місяців. Кошторис ±5%, якщо ремонт виконує CAS. Строки — у договорі, від 2 тижнів.',
+    'Гарантія на роботи — 12 місяців. Кошторис ±5%, якщо ремонт виконує CAS. Строки — у договорі, від 2 тижнів.',
     'Оплата ремонту/будівництва: 50/50, 50/30/20, 50/40/10 або розбивка на етапи; старт від 10% авансу. Рахунок для ФОП і ТОВ.',
     'Контроль: фотозвіти раз на 1–2 тижні; онлайн-камера на обʼєкті 24/7 — за доплату.',
     'Консультація по телефону — безкоштовна; замір — платний, вартість індивідуально.',
@@ -61,7 +61,7 @@ EN_SUMMARY = [
     'CAS Development is an interior design, renovation, construction and furnishing studio founded in Kyiv, Ukraine, in 2016 (founder and CEO: Mykhailo); 150+ projects, 10+ years of experience.',
     'Services: interior design (apartments, houses, penthouses, offices, restaurants, hotels, shops and showrooms), turnkey renovation, house construction and architectural design, office fit-out, furniture procurement directly from China, landscape design, general contracting.',
     'Prices (from): design project $30/m² (min. $2,500); renovation $550/m² (labour + rough materials); office renovation $350/m²; furnishing $250/m²; house shell $600/m², turnkey house $1,100/m²; house architecture $12/m²; landscape design $50 per 100 m². Europe: about 50% higher (design from $45/m², renovation from $850/m²).',
-    'Delivery: three in-house salaried crews, 36-month warranty on works, estimate within ±5% when CAS does the renovation, photo reports every 1–2 weeks, flexible payment schedules from 10% advance.',
+    'Delivery: an in-house team of salaried staff, 12-month warranty on works, estimate within ±5% when CAS does the renovation, photo reports every 1–2 weeks, flexible payment schedules from 10% advance.',
     'Area served: Kyiv and Kyiv region, all regions of Ukraine, and Europe; projects also in Bali, Spain, USA, France, Germany, Poland and Turkey.',
     'Office: 44 Antonovycha St, Kyiv, Ukraine · +380 97 866 77 55 · https://cas-develop.com/en/',
 ]
@@ -103,7 +103,7 @@ def head_uk():
     o = ['# CAS Development', '',
          '> CAS Development — студія дизайну інтерʼєру, ремонту й будівництва під ключ, заснована 2016 року в Києві (Україна). '
          'Дизайн-проєкт від $30/м² (мінімум $2 500), ремонт від $550/м², будинок під ключ від $1 100/м². 150+ проєктів, '
-         'три власні штатні бригади, гарантія 36 місяців. Працює в Києві й області, по всій Україні та в Європі.', '',
+         'своя команда штатних працівників, гарантія 12 місяців. Працює в Києві й області, по всій Україні та в Європі.', '',
          'Сайт: https://cas-develop.com/ (українська — основна мова; також /ru/, /en/, /es/, /zh/, /pl/, /de/, /fr/, /ar/).', '',
          '## Факти']
     o += [f'- {x}' for x in FACTS_UK]
