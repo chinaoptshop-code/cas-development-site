@@ -114,3 +114,22 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 /* блок довіри головних (rich facts, cls xs-trust): 4 цифри одним рядком (2×2 на телефоні) + посилання «Детальніше» */
 .xs-trust .facts{margin-top:18px;grid-template-columns:repeat(2,minmax(0,1fr))}.xs-trust .facts div{padding:14px 16px}.xs-trust .xs-links{margin:16px 0 0;font-size:var(--fs-small)}
 @media(min-width:768px){.xs-trust .facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* головні (Михайло 05.11.2026, мінімізація): «Що ми робимо» — назва + ціна «від» (картка — посилання цілком; на телефоні — один ряд зі свайпом),
+   блок довіри — один рядок фактів + рядок посилань; стрічка фото нижча */
+.hx-home~.xs-svc .xs-c{position:relative}.hx-home~.xs-svc .xs-c h3 a::after{content:"";position:absolute;inset:0}
+.hx-home~.xs-svc .xs-cb>p:not([class]),.hx-home~.xs-svc .xs-cb>.xs-links{display:none!important}
+@media(max-width:767px){
+  .js .hx-home~.xs-svc .xs-sv{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}
+  .js .hx-home~.xs-svc .xs-sv::-webkit-scrollbar{display:none}
+  .js .hx-home~.xs-svc .xs-sv>.xs-c{flex:0 0 44%;scroll-snap-align:start}
+  .js .hx-home~.xs-svc .xs-sv .xs-c img{aspect-ratio:4/3!important;max-height:none}
+  .hx-home~.xs-strip .xs-st{grid-auto-columns:46%!important}
+}
+.hx-home~.xs-trust h2{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hx-home~.xs-trust .facts{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 0;border:0;margin:0;background:none}
+.hx-home~.xs-trust .facts>div{display:inline;padding:0;border:0!important;background:none}
+.hx-home~.xs-trust .facts>div+div::before{content:"·";margin:0 .6em;color:var(--mu)}
+.hx-home~.xs-trust .facts b{font-size:1.15rem;display:inline}.hx-home~.xs-trust .facts span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hx-home~.xs-trust .xs-links{justify-content:center;font-size:var(--fs-small);margin-top:10px}
+.hx-home~.xs-svc .xs-sv{align-items:stretch}.hx-home~.xs-trust .xs-links{max-width:none;margin-inline:auto}
+@media(max-width:767px){.hx-home~.bz .la-tab{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-bottom:12px}.hx-home~.bz .la-tab::-webkit-scrollbar{display:none}.hx-home~.bz .la-tab a{white-space:nowrap;flex:none}}
