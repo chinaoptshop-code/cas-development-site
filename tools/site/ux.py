@@ -234,6 +234,9 @@ def _lead_rest(hp):
         return hp
     end = hp.find('</p>', p.end())
     body = hp[p.end():end]
+    ln = re.match(r'<span class="ux-ln">.*?</span>', body, re.S)  # головні: видимий рядок «Київ · Україна · Worldwide», лід — увесь у ux-rest
+    if ln:
+        return hp[:p.end()] + body[:ln.end()] + f'<span class="ux-rest">{body[ln.end():]}</span>' + hp[end:]
     for x in SENT_RX.finditer(body):
         k = x.start()
         pre = body[:k]
