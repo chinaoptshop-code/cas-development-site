@@ -10,7 +10,7 @@
     площа й коментар — у згорнутому <details class="o-more"> «Додати коментар»; кнопка «дієслово + результат»
     («Отримати розрахунок»); під нею вигода в один рядок .o-note (факти CLAUDE.md: передзвонимо й порахуємо орієнтовну
     вартість, консультація по телефону безкоштовна — без «безкоштовного заміру» і «за 15 хвилин»), альтернатива
-    «Або напишіть: Telegram · Viber · WhatsApp» (.lq-alt) і рядок довіри .lq-tr (150+ проєктів з 2016, гарантія 36 міс.,
+    «Або напишіть: Telegram · Viber · WhatsApp» (.lq-alt) і рядок довіри .lq-tr (150+ проєктів з 2016, гарантія 12 міс.,
     власні бригади, Google 4,8★ — лише ці факти). Обидва рядки — між <!--lqx--> і <!--/lqx-->.
   • Швидка заявка в один рядок (form.lq, між <!--lq--> і <!--/lq-->) — у hero лендингів послуг одразу після кнопок
     (.w.hero .btns), з рядком месенджерів; стандартна кнопка «Отримати кошторис» над нею стає «Подзвонити» (tel:, вторинна).
@@ -37,38 +37,38 @@ NO_QUICK = re.compile(r'(?:^|/)(?:blog|ozdoba|kabinet|proekty|styleguide|konfigu
 T = {
     'uk': dict(name='Імʼя (необовʼязково)', phone='Телефон *', ph='+380 97 123 45 67', more='Додати коментар', send='Отримати розрахунок',
                note='Передзвонимо й порахуємо орієнтовну вартість. Консультація по телефону — безкоштовна.',
-               alt='Або напишіть:', tr='150+ проєктів з 2016 · гарантія 36 міс. · власні бригади · Google\u00a04,8★',
+               alt='Або напишіть:', tr='150+ проєктів з 2016 · гарантія 12 міс. · своя команда · Google\u00a04,8★',
                q='Залиште номер — ми передзвонимо', ok='Дякуємо! Перетелефонуємо найближчим часом.', mb='Залишити номер'),
     'ru': dict(name='Имя (необязательно)', phone='Телефон *', ph='+380 97 123 45 67', more='Добавить комментарий', send='Получить расчёт',
                note='Перезвоним и посчитаем ориентировочную стоимость. Консультация по телефону — бесплатная.',
-               alt='Или напишите:', tr='150+ проектов с 2016 · гарантия 36 мес. · собственные бригады · Google\u00a04,8★',
+               alt='Или напишите:', tr='150+ проектов с 2016 · гарантия 12 мес. · своя команда · Google\u00a04,8★',
                q='Оставьте номер — мы перезвоним', ok='Спасибо! Перезвоним в ближайшее время.', mb='Оставить номер'),
     'en': dict(name='Name (optional)', more='Add a comment', send='Get an estimate',
                note='We will call you back with a rough cost estimate. Phone consultation is free.',
-               alt='Or message us:', tr='150+ projects since 2016 · 36-month warranty · in-house crews · Google\u00a04.8★',
+               alt='Or message us:', tr='150+ projects since 2016 · 12-month warranty · in-house team · Google\u00a04.8★',
                q='Leave your number — we will call you back', ok='Thank you! We will call you back shortly.', mb='Leave number'),
     'es': dict(name='Nombre (opcional)', more='Añadir un comentario', send='Recibir presupuesto',
                note='Le llamamos y le damos un coste orientativo. La consulta por teléfono es gratuita.',
-               alt='O escríbanos:', tr='150+ proyectos desde 2016 · garantía de 36 meses · equipos propios · Google\u00a04,8★',
+               alt='O escríbanos:', tr='150+ proyectos desde 2016 · garantía de 12 meses · equipo propio · Google\u00a04,8★',
                q='Deje su número y le llamamos', ok='¡Gracias! Le llamaremos en breve.', mb='Dejar número'),
     'zh': dict(name='姓名（选填）', more='添加备注', send='获取估价',
-               note='我们会回电并估算大致费用。电话咨询免费。', alt='或发消息：', tr='自2016年起150+个项目 · 36个月保修 · 自有施工队 · Google\u00a04.8★',
+               note='我们会回电并估算大致费用。电话咨询免费。', alt='或发消息：', tr='自2016年起150+个项目 · 12个月保修 · 自有团队 · Google\u00a04.8★',
                q='留下电话，我们给您回电', ok='谢谢！我们会尽快给您回电。', mb='留下电话'),
     'pl': dict(name='Imię (opcjonalnie)', more='Dodaj komentarz', send='Otrzymaj wycenę',
                note='Oddzwonimy i podamy orientacyjny koszt. Konsultacja telefoniczna jest bezpłatna.',
-               alt='Lub napisz:', tr='150+ projektów od 2016 · gwarancja 36 mies. · własne ekipy · Google\u00a04,8★',
+               alt='Lub napisz:', tr='150+ projektów od 2016 · gwarancja 12 mies. · własny zespół · Google\u00a04,8★',
                q='Zostaw numer — oddzwonimy', ok='Dziękujemy! Oddzwonimy wkrótce.', mb='Zostaw numer'),
     'de': dict(name='Name (optional)', more='Kommentar hinzufügen', send='Schätzung erhalten',
                note='Wir rufen zurück und nennen die ungefähren Kosten. Die telefonische Beratung ist kostenlos.',
-               alt='Oder schreiben Sie:', tr='150+ Projekte seit 2016 · 36 Monate Garantie · eigene Teams · Google\u00a04,8★',
+               alt='Oder schreiben Sie:', tr='150+ Projekte seit 2016 · 12 Monate Garantie · eigenes Team · Google\u00a04,8★',
                q='Nummer hinterlassen — wir rufen zurück', ok='Danke! Wir rufen Sie in Kürze zurück.', mb='Rückruf'),
     'fr': dict(name='Nom (facultatif)', more='Ajouter un commentaire', send='Recevoir une estimation',
                note='Nous vous rappelons avec une estimation indicative. La consultation par téléphone est gratuite.',
-               alt='Ou écrivez-nous :', tr='150+ projets depuis 2016 · garantie 36 mois · équipes internes · Google\u00a04,8★',
+               alt='Ou écrivez-nous :', tr='150+ projets depuis 2016 · garantie 12 mois · équipe interne · Google\u00a04,8★',
                q='Laissez votre numéro, nous vous rappelons', ok='Merci ! Nous vous rappelons rapidement.', mb='Être rappelé'),
     'ar': dict(name='الاسم (اختياري)', more='إضافة تعليق', send='احصل على تقدير',
                note='سنتصل بك ونقدّم تقديرًا تقريبيًا للتكلفة. الاستشارة الهاتفية مجانية.',
-               alt='أو راسلنا:', tr='+150 مشروعًا منذ 2016 · ضمان 36 شهرًا · فرق عمل خاصة بنا · \u2066Google\u00a04.8★\u2069',
+               alt='أو راسلنا:', tr='+150 مشروعًا منذ 2016 · ضمان 12 شهرًا · فريقنا الخاص · \u2066Google\u00a04.8★\u2069',
                q='اترك رقمك وسنتصل بك', ok='شكرًا! سنعاود الاتصال بك قريبًا.', mb='اترك رقمك'),
 }
 # месенджери — ті самі, що в шапці й нижній панелі (tools/site/chrome.py, MSG)

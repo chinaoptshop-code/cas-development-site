@@ -210,7 +210,7 @@
     "d’expérience, depuis 2016"
    ],
    [
-    "36 mois",
+    "12 mois",
     "de garantie sur les travaux"
    ],
    [
@@ -222,16 +222,16 @@
    "Garanties",
    [
     [
-     "Garantie de 36 mois sur les travaux",
-     "Nous livrons le chantier avec un procès-verbal de réception ; tous les travaux réalisés sont garantis 36 mois."
+     "Garantie de 12 mois sur les travaux",
+     "Nous livrons le chantier avec un procès-verbal de réception ; tous les travaux réalisés sont garantis 12 mois."
     ],
     [
      "Devis à ±5 % si CAS réalise les travaux",
      "Le devis est établi avant le démarrage. Si notre équipe réalise la rénovation, le coût final ne s’en écarte pas de plus de ±5 %."
     ],
     [
-     "Trois équipes salariées en interne",
-     "Ce sont nos propres salariés qui travaillent, pas des sous-traitants : trois équipes selon la complexité et le type de travaux."
+     "Équipe interne salariée",
+     "Ce sont nos propres salariés qui travaillent, pas des sous-traitants, selon la complexité et le type de travaux."
     ],
     [
      "Contrat et paiement adaptés",
@@ -277,6 +277,6 @@
   "go_flat": "Voir comment nous rénovons",
   "as": "Interactif",
   "calc": "Calculer",
-  "trust": "150+ projets · garantie 36 mois · équipes internes"
+  "trust": "150+ projets · garantie 12 mois · équipe interne"
  }
 }
