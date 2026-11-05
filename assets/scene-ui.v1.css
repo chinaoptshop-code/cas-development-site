@@ -21,3 +21,9 @@
 /* головні: компактна сцена (la-cmp) — без sticky, висота ≈ екран (Михайло 05.11.2026) */
 .la-cmp .la-stick{position:relative;top:auto}.la-cmp .la-svg{max-height:min(56vh,520px)}
 .la-cmp .bz-p,.la-cmp .la-ctl,.rp-on .bz-p{display:none}
+/* підказка жестів компактної сцени (casGest у site-chrome.v1.js): один раз, зникає після першої дії */
+.sc-hint{margin:0;font-size:var(--fs-small,.8125rem);line-height:1.45;color:var(--mu,#938c84);transition:opacity .35s}
+.sc-hint::before{content:"↔ ";color:var(--ac,#BF9148)}
+.sc-hint.is-off{opacity:0}
+.la-cmp .la-svg{cursor:grab;user-select:none;-webkit-user-select:none}
+@media(prefers-reduced-motion:reduce){.sc-hint{transition:none}}

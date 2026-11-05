@@ -272,6 +272,7 @@
     }
     if (CMP && W.casAuto) W.casAuto({ root: box0, view: svg, host: nav, step: function () { if (shown >= N - 1) return false; go(shown + 1); return true; },
       restart: function () { go(0); }, atEnd: function () { return shown >= N - 1; } });
+    if (W.casGest && d.querySelector('.hx-home')) W.casGest({ root: box0, view: svg, go: go, cur: function () { return shown; }, n: N, hint: stick, before: nav }); // свайп/колесо/←→ + підказка (головні)
   }
   function css() {
     return new Promise(function (res) {

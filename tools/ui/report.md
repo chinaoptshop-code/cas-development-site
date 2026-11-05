@@ -561,7 +561,7 @@
 | blog/remont-kukhni-pid-kliuch-z-choho-pochaty.html | article | 47.2 | 13.0 | 14.2 | 0.5 | 6 | 364 |
 | remont-kvartyry-zhk-podil-hrad.html | land | 47.2 | 13.0 | 13.3 | 0.5 | 6 | 425 |
 | remont-kvartyry-zhk-taryan-towers.html | land | 47.2 | 13.0 | 13.3 | 0.5 | 6 | 425 |
-| remont-kvartyry-zhk-bulvar-fontaniv.html | land | 47.1 | 12.9 | 13.3 | 0.5 | 6 | 425 |
+| remont-kvartyry-zhk-bulvar-fontaniv.html | land | 47.1 | 12.8 | 13.3 | 0.5 | 6 | 425 |
 | remont-kvartyry-zhk-maxima-residence.html | land | 47.1 | 12.8 | 13.3 | 0.5 | 6 | 424 |
 | ru/dom-iz-gazobloka-pod-klyuch-kiev.html | land | 47.1 | 12.9 | 13.3 | 0.5 | 6 | 419 |
 | ru/remont-kvartiry-zhk-nordica-residence.html | land | 47.1 | 12.8 | 13.3 | 0.5 | 6 | 424 |

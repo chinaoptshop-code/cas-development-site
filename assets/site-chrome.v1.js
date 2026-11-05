@@ -615,6 +615,56 @@
     d.addEventListener('visibilitychange', function () { if (!d.hidden) poke(1500); });
     return { poke: poke, btn: b };
   };
+  /* casGest — компактні сцени головних (Михайло 05.11.2026: «як тут прокручувати анімацію?»): свайп / перетягування мишею ←/→ по сцені —
+     етап назад/вперед; колесо над сценою (сцена ≥ 70% у кадрі) — ±1 етап за жест (≥ 450 мс між кроками), на першому/останньому етапі
+     колесо не перехоплюємо — сторінка гортається; ←/→ при фокусі в блоці. Підказка мовою сторінки — один раз, зникає після першої дії
+     (localStorage, з try/catch). o: {root, view, go(i), cur() → етап, n() → кількість, hint (куди вставити підказку), before?} */
+  var HINT = { uk: 'Гортайте етапи: свайп, ← → або номер етапу · програється сама', ru: 'Листайте этапы: свайп, ← → или номер этапа · проигрывается сама',
+    en: 'Browse the stages: swipe, ← → or a stage number · plays by itself', es: 'Recorre las etapas: desliza, ← → o el número de etapa · se reproduce sola',
+    zh: '浏览阶段：滑动、← → 或点阶段编号 · 自动播放', pl: 'Przeglądaj etapy: przesuń, ← → lub numer etapu · odtwarza się sama',
+    de: 'Etappen durchblättern: wischen, ← → oder Etappennummer · läuft von selbst', fr: 'Parcourez les étapes : glissez, ← → ou numéro d’étape · se lit toute seule',
+    ar: 'تصفّح المراحل: اسحب أو ← → أو رقم المرحلة · تعمل تلقائيًا' };
+  function seen(v) { try { if (v) W.localStorage.setItem('casScHint', '1'); return W.localStorage.getItem('casScHint') === '1'; } catch (e) { return !!v; } }
+  W.casGest = function (o) {
+    if (!o || !o.root || !o.view) return null;
+    var lang = (d.documentElement.lang || 'uk').slice(0, 2), rtl = d.documentElement.dir === 'rtl', hint = null, x0 = 0, y0 = 0, pid = null, tW = 0, tStep = 0;
+    function n() { return typeof o.n === 'function' ? o.n() : o.n; }
+    function step(k) { var c = o.cur(), t = Math.max(0, Math.min(n() - 1, c + k)); if (t === c) return false; o.go(t); done(); return true; }
+    function done() { if (hint) { hint.classList.add('is-off'); var h = hint; hint = null; setTimeout(function () { if (h.parentNode) h.parentNode.removeChild(h); }, 400); } seen(1); }
+    if (o.hint && !seen()) {
+      hint = d.createElement('p'); hint.className = 'sc-hint'; hint.textContent = (HINT[lang] || HINT.en).split(RM ? ' · ' : '\u0000')[0]; // reduced-motion — без «програється сама»
+      o.hint.insertBefore(hint, o.before || null);
+    }
+    var v = o.view; v.style.touchAction = 'pan-y'; // вертикальний свайп — сторінка, горизонтальний — етапи
+    v.addEventListener('pointerdown', function (e) { if (e.button || (e.target.closest && e.target.closest('button,a,input,select,label'))) return; pid = e.pointerId; x0 = e.clientX; y0 = e.clientY; });
+    v.addEventListener('pointerup', function (e) {
+      if (pid !== e.pointerId) return; pid = null;
+      var dx = e.clientX - x0, dy = e.clientY - y0;
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+      step((dx < 0) !== rtl ? 1 : -1);
+    });
+    v.addEventListener('pointercancel', function () { pid = null; });
+    v.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    v.addEventListener('wheel', function (e) {
+      if (e.ctrlKey) return; // масштаб сторінки
+      var dl = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX * (rtl ? -1 : 1) : e.deltaY; if (!dl) return;
+      var r = v.getBoundingClientRect(), vis = (Math.min(r.bottom, W.innerHeight) - Math.max(r.top, 0)) / Math.max(1, r.height);
+      var c = o.cur(), k = dl > 0 ? 1 : -1;
+      if (vis < 0.7 || (k < 0 && c <= 0) || (k > 0 && c >= n() - 1)) return; // край — сторінка гортається як завжди
+      e.preventDefault();
+      var t = Date.now(), gap = t - tW; tW = t;
+      if (Math.abs(dl) < 4 && gap < 200) return; // інерційний хвіст трекпада
+      if (gap > 220 || t - tStep > 700) { if (t - tStep >= 450) { tStep = t; step(k); } }
+    }, { passive: false });
+    o.root.addEventListener('keydown', function (e) {
+      if (e.altKey || e.ctrlKey || e.metaKey || (e.target.closest && e.target.closest('input,select,textarea,.bz-nav'))) return;
+      var k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!k) return;
+      if (rtl) k = -k;
+      if (step(k)) e.preventDefault();
+    });
+    ['click', 'keydown'].forEach(function (t) { o.root.addEventListener(t, function (e) { if (e.target.closest && e.target.closest('button')) done(); }); });
+    return { done: done };
+  };
 })();
 
 /* Сцени (section.bz[data-js]: «Будинок з нуля», «Ландшафт», «Комплекс», «Ресторан», «Будинок на воді»; префікс bz — .ba зайнятий слайдером «до/після»):
@@ -624,7 +674,7 @@
 (function () {
   var W = window, d = document, ss = d.querySelectorAll('section.bz[data-js]'); // кілька сцен на сторінці — кожна свій скрипт
   if (!ss.length) return;
-  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=f7568705"; /*/sc:ui*/
+  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=aee99897"; /*/sc:ui*/
   var on = 0;
   function css(h) { if (!h || d.querySelector('link[href="' + h + '"]')) return; var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = h; d.head.appendChild(l); }
   function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; d.head.appendChild(j); }

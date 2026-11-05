@@ -19,6 +19,11 @@
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
   // головні (.hx-home): компактна сцена в межах екрана — без довгої sticky-доріжки; етапи крокує автопрогравання (casAuto) і кнопки ←/→ (Михайло 05.11.2026)
   var CMP = !!d.querySelector('.hx-home');
+  // «Налаштувати свій будинок →» під компактною сценою головної — повна сцена з конфігуратором на сторінці будівництва (tools/site/lang/clusters.json: construction)
+  var CFGL = { uk: ['/budivnytstvo-budynkiv-kyiv', 'Налаштувати свій будинок →'], ru: ['/ru/stroitelstvo-domov-kiev', 'Настроить свой дом →'],
+    en: ['/en/house-construction', 'Configure your house →'], es: ['/es/construccion-de-casas', 'Configura tu casa →'], zh: ['/zh/house-construction', '定制您的房子 →'],
+    pl: ['/pl/budowa-domow', 'Skonfiguruj swój dom →'], de: ['/de/hausbau', 'Eigenes Haus konfigurieren →'], fr: ['/fr/construction-maison', 'Configurer votre maison →'],
+    ar: ['/ar/house-construction', 'صمّم منزلك ←'] };
   var lang = (d.documentElement.lang || 'uk').slice(0, 2); if (!VER[lang + '.house']) lang = 'uk';
   var MATS = ['block', 'brick', 'frame', 'brus'];
   function cl(ev, v) { try { if (W.clarity) W.clarity('event', ev); if (v && W.clarity) W.clarity('set', ev, v); } catch (e) { } } // аналітика: кінець, CTA, матеріал, пиріг
@@ -1007,6 +1012,10 @@
     var skip = el('a', 'bz-skip'); skip.href = '#' + cta.id; skip.textContent = ui.skip;
     var hd = el('div', 'bz-hd'), ct = el('p', 'bz-ct'); ct.setAttribute('aria-hidden', 'true');
     var bar = el('div', 'bz-bar', '<i></i>'), bi = bar.firstChild; hd.appendChild(ct); hd.appendChild(bar);
+    bar.addEventListener('click', function (e) { // прогрес-лінія клікабельна: етап за позицією
+      var r = bar.getBoundingClientRect(), f = (e.clientX - r.left) / Math.max(1, r.width); if (d.documentElement.dir === 'rtl') f = 1 - f;
+      go(Math.max(0, Math.min(n - 1, Math.floor(f * n))));
+    });
     var ctl = el('div', 'bz-ctl'), nav = el('div', 'bz-nav'); nav.setAttribute('role', 'group'); nav.setAttribute('aria-label', ui.nav);
     var prev = el('button', 'bz-pv', '<span aria-hidden="true">←</span>'), next = el('button', 'bz-nx', '<span aria-hidden="true">→</span>');
     prev.type = next.type = 'button'; prev.setAttribute('aria-label', ui.prev); next.setAttribute('aria-label', ui.next);
@@ -1113,7 +1122,7 @@
           ['st', 'pieAt', 'pie'].forEach(function (k) { for (var q in d2[k]) data[k][q] = d2[k][q]; });
           ['flat', 'fv', 'mats', 'hs', 'hdef', 'sto'].forEach(function (k) { if (d2[k] && !data[k]) data[k] = d2[k]; });
           if (data.hs) HS = data.hs;
-          scene = ns; fade = 1; rebuild(); placePie(); placeCfg(); cl('build_anim_scene', scene);
+          scene = ns; fade = 1; rebuild(); placePie(); placeCfg(); cl('build_anim_scene', scene); if (sec.__cfgl) sec.__cfgl.hidden = scene !== 'house';
         }).catch(function () { });
       }
       else if (b.classList.contains('bz-cb')) { setCfgOpen(!cfgOpen); return; }
@@ -1339,6 +1348,12 @@
     if (drive && W.casAuto && !CMP) W.casAuto({ root: run, view: fig, host: ctl, before: next, cls: 'bz-ap', step: function () { return !rm && drive.step(); }, restart: drive.restart, atEnd: drive.atEnd });
     if (CMP && W.casAuto) W.casAuto({ root: run, view: fig, host: ctl, before: next, cls: 'bz-ap', // компактна: крок — go() без прокрутки сторінки
       step: function () { var a = Math.floor(man); if (a >= n - 1) return false; go(a + 1); return true; }, restart: function () { go(0); }, atEnd: function () { return Math.floor(man) >= n - 1; } });
+    // компактна (головні, Михайло 05.11.2026 «як тут прокручувати?»): свайп/перетягування/колесо по сцені, ←/→, підказка один раз; посилання на повну сцену з конфігуратором
+    if (CMP && W.casGest) W.casGest({ root: run, view: fig, go: go, cur: function () { return Math.floor(man); }, n: function () { return n; }, hint: side, before: ctl });
+    if (CMP && CFGL[lang]) {
+      var cfgl = el('a', 'bz-cfgl'); cfgl.href = CFGL[lang][0] + '#build-anim'; cfgl.textContent = CFGL[lang][1];
+      side.insertBefore(cfgl, goA); cfgl.hidden = scene !== 'house'; sec.__cfgl = cfgl;
+    }
     // мікровзаємодії (лише миша, без prefers-reduced-motion): легкий нахил сцени за курсором і «магнітна» кнопка CTA
     if (W.matchMedia && W.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       fig.addEventListener('pointermove', function (e) {

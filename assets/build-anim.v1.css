@@ -469,3 +469,18 @@
 
 /* RTL (ar): стрілки ← → не віддзеркалюються Unicode — «назад» праворуч має дивитись праворуч (QA5) */
 [dir=rtl] .bz-pv span,[dir=rtl] .bz-nx span{display:inline-block;transform:scaleX(-1)}
+/* компактна сцена головних (Михайло 05.11.2026 «як тут прокручувати?»): один блок керування одразу під текстом етапу —
+   ← [пауза] → (48 px) і під ним рядок номерів; без порожнечі між текстом і керуванням; прогрес-лінія клікабельна; посилання на повну сцену */
+.bz-bar{cursor:pointer;padding:6px 0;margin:-6px 0;background-clip:content-box;box-sizing:content-box}
+.bz-cmp .bz-pin{align-items:start}
+.bz-cmp .bz-side{justify-content:flex-start}
+.bz-cmp .bz-side>.bz-hd{order:1}.bz-cmp .bz-side>.bz-st{order:2}.bz-cmp .bz-side>.sc-hint{order:3}.bz-cmp .bz-side>.bz-ctl{order:4}
+.bz-cmp .bz-side>.bz-cfgl{order:5}.bz-cmp .bz-side>.bz-pie{order:6}.bz-cmp .bz-side>*{order:7}
+.bz-cmp .bz-ctl{flex-wrap:wrap;justify-content:flex-start;gap:12px 10px}
+.bz-cmp .bz-pv{order:1}.bz-cmp .bz-ap{order:2}.bz-cmp .bz-nx{order:3}.bz-cmp .bz-pb{order:4}.bz-cmp .bz-nav{order:5;flex:1 0 100%}
+.bz-cmp .bz-pv,.bz-cmp .bz-nx,.bz-cmp .bz-ap{width:48px;height:48px;font-size:18px}
+.bz-cmp .bz-fig{cursor:grab;user-select:none;-webkit-user-select:none}.bz-cmp .bz-fig:active{cursor:grabbing}
+.bz-cfgl{align-self:flex-start;color:var(--ac,#BF9148);text-decoration:none;font-weight:500;padding:10px 0;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center}
+.bz-cfgl[hidden]{display:none}
+@media(hover:hover){.bz-cfgl:hover{text-decoration:underline;text-underline-offset:4px}}
+@media(max-width:767px){.bz-cmp .bz-ctl{justify-content:center}.bz-cmp .bz-cfgl{align-self:center}}
