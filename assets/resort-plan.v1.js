@@ -198,7 +198,7 @@
     cap = el('p', 'rp-cap', '<span>' + esc(U.tap) + '</span>'); cap.setAttribute('aria-live', 'polite');
     back = el('button', 'btn rp-back', esc(U.back)); back.type = 'button'; back.hidden = true; back.addEventListener('click', function () { close(); });
     nav = el('div', 'la-nav rp-nav'); nav.hidden = true;
-    var rtl = d.documentElement.dir === 'rtl', pb = el('button', '', rtl ? '›' : '‹'), nb = el('button', '', rtl ? '‹' : '›');
+    var pb = el('button', '', '‹') /* RTL: Unicode сам віддзеркалює ‹ › (Bidi_Mirrored), тож символи ті самі, що в LTR */, nb = el('button', '', '›');
     pb.type = nb.type = 'button'; pb.setAttribute('aria-label', U.step + ' −'); nb.setAttribute('aria-label', U.step + ' +');
     pb.addEventListener('click', function () { clearInterval(timer); if (stage > 0) { stage--; show(); } });
     nb.addEventListener('click', function () { clearInterval(timer); if (stage < steps().length - 1) { stage++; show(); } });
