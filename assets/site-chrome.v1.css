@@ -483,6 +483,39 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .bz-team a{color:var(--ac,#BF9148)}
 .bz-facts{display:flex;flex-wrap:wrap;gap:6px 28px;margin:0 0 16px;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem)}
 .bz-facts b{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:1.9rem;line-height:1;color:var(--ac,#BF9148);margin-right:4px;font-variant-numeric:tabular-nums}
+.bz{--bz-per:clamp(400px,50svh,560px);--bz-bot:0px}.bz[data-bz-c]{--bz-per:clamp(280px,34svh,400px)}
+@media(max-width:767px){.bz{--bz-bot:calc(64px + env(safe-area-inset-bottom,0px));--bz-per:clamp(320px,44svh,420px)}.bz[data-bz-c]{--bz-per:clamp(260px,32svh,360px)}}
+/* статичний стан сцен «Ландшафт» / «Ресторан» / «Будинок на воді» / «Комплекс» (до збірки; тут, а не в CSS сцен, що вантажаться після першої прокрутки, — інакше висота блоку змінюється, CLS) */
+.la-pies{margin:22px 0 0}.la-pies-h{font-size:var(--fs-small);letter-spacing:.2em;text-transform:uppercase;color:var(--ac,#BF9148);margin:0 0 6px}.la-pie ol{margin:10px 0 0;padding-inline-start:20px;color:var(--mu,#938c84)}.la-pie li b{color:var(--tx,#EDE8DF)}.la-pie li span{color:var(--ac,#BF9148)}.la-price{color:var(--ac,#BF9148);margin:18px 0 0}.rs-price{color:var(--ac,#BF9148);margin:18px 0 0}.rs-case{margin:8px 0 0}.wh-price{color:var(--ac,#BF9148);margin:18px 0 0}.rp-list{margin:14px 0 0;padding-inline-start:20px;color:var(--mu,#938c84)}.rp-list b{color:var(--tx,#EDE8DF)}.rp-rates{color:var(--ac,#BF9148);font-size:var(--fs-small);margin:14px 0 0}
+/* ══ Резерв висоти сцен до збірки (CLS: швидка прокрутка, поки CSS/JS сцени ще вантажаться, — блок не змінює висоту, футер не стрибає; не покладаємось на scrollBy-компенсацію, яку iOS ігнорує під час інерційної прокрутки).
+   Статичний список займає місце зібраної сцени; після збірки (.bz-on / .la-on / .rp-on) він переїжджає в сцену або ховається. .bz-no — скрипт сцени не завантажився (резерв знято).
+   «Будинок/Ремонт з нуля» — точно: доріжка .bz-run (формула з build-anim.v1.css; її margin-top 8px поглинає сусідній відступ). Головні (CMP, .hx-home) — ≈ кадр + панель етапу,
+   вступ і «хто ці люди» сховані, як у зібраній сцені. «Ландшафт» / «Ресторан» / «Будинок на воді» — доріжка .la-run (100vh + етапи × clamp(400px,50vh,560px), як у їхніх JS) + панель налаштувань --lx.
+   «Комплекс» — кадр генплану 10:7 (2/3 ширини з 901 px) + панель. Зміниш висоту сцени в JS/CSS — зміни й тут (перевірка: CLS-тест зі швидкою прокруткою й затриманим CSS). */
+@media(prefers-reduced-motion:no-preference){
+  .js body:not(:has(.hx-home)) .bz[data-bz]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(var(--n,19) * var(--bz-per) + 100svh - var(--sch-h,64px) - var(--bz-bot));margin:0;overflow:hidden}
+  .js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(min(60vh,540px) + 15rem + 8px);margin:0;overflow:hidden}
+  .bz[data-la]{--ln:16}.bz[data-rs]{--ln:14}.bz[data-wh]{--ln:12}
+  .bz:is([data-la],[data-rs],[data-wh]){--lx:58px} /* --lx — панель налаштувань над доріжкою: 1 ряд ≈ 58 px, кожен перенос ряду ≈ +50 px */
+  .js body:not(:has(.hx-home)) .bz:is([data-la],[data-rs],[data-wh]):not(.la-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(100vh + var(--ln) * clamp(400px,50vh,560px) + var(--lx));margin:0;overflow:hidden}
+  .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list{display:flow-root}
+  .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{content:"";float:left;width:0;padding-top:calc((100% + 4px) * .4667 + 146px)}
+}
+@media(prefers-reduced-motion:no-preference) and (min-width:2200px){.js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 4px) * .4667 + 84px)}}
+@media(prefers-reduced-motion:no-preference) and (max-width:1099px){.bz:is([data-la],[data-rs]){--lx:112px}}
+@media(prefers-reduced-motion:no-preference) and (max-width:1399px){.bz[data-wh]{--lx:112px}}
+@media(prefers-reduced-motion:no-preference) and (min-width:768px) and (max-width:1099px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(min(60vh,540px) + 23rem + 8px)}}
+@media(prefers-reduced-motion:no-preference) and (max-width:900px){.js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 20px) * .7 + 671px)}}
+@media(prefers-reduced-motion:no-preference) and (max-width:767px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(min(42vh,350px) + 24.5rem + 8px)}
+  .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 20px) * .45 + 836px)}
+  .bz:is([data-la],[data-rs]){--lx:162px}.bz[data-wh]{--lx:162px}}
+@media(prefers-reduced-motion:no-preference) and (max-width:419px){.bz[data-wh]{--lx:214px}}
+@media(prefers-reduced-motion:no-preference) and (max-width:389px){.bz:is([data-la],[data-rs]):is(:lang(uk),:lang(ru),:lang(pl)){--lx:212px}} /* панель — мовозалежна: інші мови тут уміщуються в 3 ряди */
+@media(prefers-reduced-motion:no-preference) and (min-width:768px) and (max-width:1099px){.bz:is([data-la],[data-rs]):lang(zh){--lx:58px}}
+@media(prefers-reduced-motion:no-preference) and (max-width:389px){.bz[data-rs]:lang(es){--lx:212px}}@media(prefers-reduced-motion:no-preference) and (max-width:419px){.bz[data-la]:lang(ru){--lx:212px}}
+@media(prefers-reduced-motion:no-preference) and (max-width:339px){.bz[data-wh]{--lx:264px}}
+@media(prefers-reduced-motion:no-preference) and (max-width:419px){.bz[data-wh]:lang(zh){--lx:162px}}@media(prefers-reduced-motion:no-preference) and (min-width:1100px){.bz[data-wh]:is(:lang(zh),:lang(en),:lang(ar)){--lx:58px}}@media(prefers-reduced-motion:no-preference) and (min-width:390px) and (max-width:419px){.bz[data-wh]:lang(ar){--lx:162px}}
+.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-no) :is(.bz-p,.bz-team){display:none}.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-no) .bz-cta{padding:14px 18px;margin-top:12px}
 /* ══ Квіз (section.qz-s, ставить /assets/quiz.v1.js на DOMContentLoaded): каркас секції й висоту .qz резервуємо тут — quiz.v1.css вантажиться ліниво біля блоку (CLS) ── */
 .qz-s{padding:56px 0;border-top:1px solid var(--ln,rgba(191,145,72,.18))}
 .qz-w{max-width:1080px;margin:0 auto;padding:0 16px}
@@ -624,6 +657,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 @media(max-width:479px){:where(a[data-a],.sp-name[data-a],h2[data-a])::after{white-space:normal}}
 a[data-a=s]::after{content:var(--ux-as,"Interactive");vertical-align:.08em}
 a[data-a=i]::after,[data-c=k] a[data-a]::after{content:"";width:20px;height:16px;padding:0;margin-inline-start:6px;border:0;vertical-align:-.15em;background-position:50% 50%,50% 50%;animation-name:ux-build-c}
+@media(max-width:767px){.xs-all>.rel>a[data-a]::after{content:"";width:20px;height:16px;padding:0;margin-inline-start:6px;border:0;vertical-align:-.15em;background-position:50% 50%,50% 50%;animation-name:ux-build-c}} /* «Ще послуги» у вузьких картках (2 в ряд на телефоні): бейдж «Інтерактив» не вміщувався й обрізався — лише іконка */
 :is(:lang(zh),:lang(ar)) :where(a[data-a],.sp-name[data-a],h2[data-a])::after{letter-spacing:0;font-size:11px}
 @keyframes ux-build{0%{background-position:8px -14px,8px 22px}28%{background-position:8px -14px,8px 50%}52%,88%{background-position:8px 50%,8px 50%}100%{background-position:8px 50%,8px 50%;opacity:.35}}
 @keyframes ux-build-c{0%{background-position:50% -14px,50% 22px}28%{background-position:50% -14px,50% 50%}52%,88%{background-position:50% 50%,50% 50%}100%{background-position:50% 50%,50% 50%;opacity:.35}}

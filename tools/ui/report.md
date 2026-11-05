@@ -264,7 +264,7 @@
 | ozdoba/moldynh-poliuretanovyi-z-ornamentom-pid-zoloto-314.html | other | 58.4 | 15.2 | 32.4 | 0.7 | 14 | 330 |
 | ozdoba/mozaika-marmurova-ialynka-bila-300.html | other | 58.4 | 15.3 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/nabir-barmena-z-sheikerom-na-pidstavtsi-405.html | other | 58.4 | 15.3 | 32.4 | 0.7 | 14 | 335 |
-| ozdoba/parket-inzhenernyi-dub-frantsuzka-ialynka-temnyi-306.html | other | 58.4 | 15.2 | 32.4 | 0.7 | 14 | 332 |
+| ozdoba/parket-inzhenernyi-dub-frantsuzka-ialynka-temnyi-306.html | other | 58.4 | 15.1 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/parket-inzhenernyi-dub-ialynka-svitlyi-305.html | other | 58.4 | 15.2 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/pidvis-iaitse-z-opalovoho-skla-583.html | other | 58.4 | 15.3 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/pidvis-zi-sklianoiu-kuleiu-prozore-sklo-115.html | other | 58.4 | 15.2 | 32.4 | 0.7 | 14 | 335 |
@@ -537,7 +537,7 @@
 | en/house-construction.html | land | 47.6 | 13.9 | 13.3 | 0.5 | 6 | 531 |
 | ru/rekonstruktsiya-doma-kiev.html | land | 47.6 | 12.8 | 13.3 | 0.5 | 6 | 448 |
 | ru/remont-kvartiry-zhk-linden-luxury-residences.html | land | 47.6 | 13.0 | 13.3 | 0.5 | 6 | 424 |
-| ru/remont-kvartiry-zhk-triiinity.html | land | 47.6 | 13.1 | 13.3 | 0.5 | 6 | 426 |
+| ru/remont-kvartiry-zhk-triiinity.html | land | 47.6 | 13.0 | 13.3 | 0.5 | 6 | 426 |
 | blog/elitnyi-remont-kvartyry-biudzhet.html | article | 47.5 | 13.2 | 14.2 | 0.5 | 6 | 363 |
 | blog/open-space-chy-kabinety-planuvannia-ofisu.html | article | 47.5 | 13.2 | 14.2 | 0.5 | 6 | 363 |
 | dyzain-i-remont-ukraina.html | land | 47.5 | 12.9 | 13.3 | 0.5 | 6 | 480 |
@@ -587,7 +587,7 @@
 | kabinet/zaboroneno.html | other | 46.4 | 12.6 | 32.5 | 0.7 | 14 | 212 |
 | oblashtuvannia-ofisu-pid-kliuch-kyiv.html | land | 46.4 | 12.8 | 13.3 | 0.5 | 6 | 413 |
 | remont-kvartyry-zhk-life-story.html | land | 46.4 | 12.8 | 13.3 | 0.5 | 6 | 423 |
-| remont-kvartyry-zhk-senat.html | land | 46.4 | 12.8 | 13.3 | 0.5 | 6 | 423 |
+| remont-kvartyry-zhk-senat.html | land | 46.4 | 12.9 | 13.3 | 0.5 | 6 | 423 |
 | ru/remont-kvartiry-zhk-life-story.html | land | 46.4 | 12.8 | 13.3 | 0.5 | 6 | 423 |
 | blog/remont-vannoi-kimnaty-pid-kliuch-etapy.html | article | 46.2 | 13.0 | 14.2 | 0.5 | 6 | 415 |
 | remont-vannoi-kimnaty-kyiv.html | land | 46.2 | 12.4 | 13.3 | 0.5 | 6 | 434 |
@@ -708,7 +708,7 @@
 | dyzain-i-remont-cherkasy.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 334 |
 | dyzain-i-remont-chernihiv.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 336 |
 | dyzain-i-remont-chernivtsi.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 333 |
-| dyzain-i-remont-fastiv.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 338 |
+| dyzain-i-remont-fastiv.html | land | 40.6 | 11.4 | 13.3 | 0.5 | 6 | 338 |
 | dyzain-i-remont-rivne.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 335 |
 | dyzain-i-remont-uzhhorod.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 334 |
 | ru/dizayn-i-remont-cherkassy.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 334 |

@@ -1,7 +1,6 @@
 /* CAS — «Будинок з нуля» / «Ремонт з нуля» v2 (UI-kit /styleguide/#build-anim-sg). Вантажить /assets/build-anim.v1.js ліниво.
    Без JS блок — звичайний список «Етапи» (ol.steps зі стилів сторінки). Токени — з site-chrome (--ac, --tx, --mu, --ln, --bg2, --ease-out). */
-.bz{--bz-per:clamp(400px,50svh,560px);--bz-bot:0px}
-.bz[data-bz-c]{--bz-per:clamp(280px,34svh,400px)}
+/* --bz-per / --bz-bot (крок доріжки, нижня панель) — у site-chrome.v1.css: ними ж резервується висота блоку до збірки */
 /* статичний стан блоку (до збірки сцени: заголовок, вступ, CTA, факти) — у site-chrome.v1.css: цей файл вантажиться після першої прокрутки й не має змінювати висоту блоку в кадрі (CLS) */
 .bz-run{position:relative;height:calc(var(--n,19) * var(--bz-per) + 100svh - var(--sch-h,64px) - var(--bz-bot));margin-top:8px}
 .bz-pin{position:sticky;top:var(--sch-h,64px);height:calc(100svh - var(--sch-h,64px) - var(--bz-bot));box-sizing:border-box;padding:14px 0;
@@ -75,8 +74,6 @@
 @media(max-height:780px) and (min-width:768px){.bz-pie ul button{min-height:22px}.bz-pd{min-height:2.4em}.bz-on-l span{font-size:.875rem}.bz-side{gap:9px}}
 /* телефон: сцена згори, під нею активний етап і ← → ; пиріг — за кнопкою поверх сцени; нижня панель .mbar (64px) не перекриває керування */
 @media(max-width:767px){
-  .bz{--bz-bot:calc(64px + env(safe-area-inset-bottom,0px));--bz-per:clamp(320px,44svh,420px)}
-  .bz[data-bz-c]{--bz-per:clamp(260px,32svh,360px)}
   .bz-pin{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:8px;padding:6px 0 8px;align-items:stretch}
   .bz-fig{height:auto;padding-top:38px}
   .bz-mats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:5px;top:0;right:0}
@@ -484,3 +481,7 @@
 .bz-cfgl[hidden]{display:none}
 @media(hover:hover){.bz-cfgl:hover{text-decoration:underline;text-underline-offset:4px}}
 @media(max-width:767px){.bz-cmp .bz-ctl{justify-content:center}.bz-cmp .bz-cfgl{align-self:center}}
+/* телефон, компактна сцена головних: компактний ряд номерів етапів (підказка casGest згадує «номер етапу») — 2 ряди по 10, без горизонтальної прокрутки з 320 px;
+   кнопка ≥26×34 px (WCAG 2.5.8 — ≥24 px), проміжок рядів 10 px — розширені ::before-зони сусідніх рядів не перекриваються */
+@media(max-width:767px){.bz-cmp .bz-nav{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:10px 6px;margin-top:2px}
+  .bz-cmp .bz-b{width:auto;min-width:0;height:34px;border-radius:999px;font-size:.8125rem;padding:0}}

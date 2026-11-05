@@ -1,7 +1,5 @@
 /* «Будинок на воді» (assets/water-house.v1.js, tools/site/waterhouse.py). Керування — спільні класи la-*. UI-kit: /styleguide/#build-anim-sg */
 .la-xr button.x0[aria-pressed=true]{background:#7fc8e8;border-color:#7fc8e8}.la-xr button.x1[aria-pressed=true]{background:#57c4b3;border-color:#57c4b3}.la-xr button.x2[aria-pressed=true]{background:#f0b44c;border-color:#f0b44c}
-.rs-price{color:var(--ac,#BF9148);margin:18px 0 0}.rs-case{margin:8px 0 0}
-.wh-price{color:var(--ac,#BF9148);margin:18px 0 0}
 /* сцена */
 .wh-e{opacity:0;transition:opacity .45s ease,transform .45s ease}.wh-e.on{opacity:1}.wh-e.gone{opacity:0!important}
 .wh-e:not(.on){transform:translateY(-8px)}

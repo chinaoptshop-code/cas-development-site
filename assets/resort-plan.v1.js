@@ -237,8 +237,15 @@
   }
   function css() {
     return new Promise(function (res) {
-      var href = sec.getAttribute('data-css'); if (!href || d.querySelector('link[href="' + href + '"]')) return res();
-      var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = href; l.onload = l.onerror = function () { res(); }; d.head.appendChild(l);
+      // свій CSS і спільний scene-ui.v1.css: збираємо сцену лише після того, як обидва застосовано (site-chrome.v1.js міг уже додати <link>,
+      // але файл ще вантажиться — без очікування сцена будується без стилів, а потім стискається, і низ сторінки «стрибає», CLS до 1.0)
+      var href = sec.getAttribute('data-css'), ls = [], n, l = href && d.querySelector('link[href="' + href + '"]');
+      if (href && !l) { l = d.createElement('link'); l.rel = 'stylesheet'; l.href = href; d.head.appendChild(l); }
+      if (l) ls.push(l);
+      var u = d.querySelector('link[href^="/assets/scene-ui."]'); if (u) ls.push(u);
+      n = ls.length; if (!n) return res();
+      function one() { if (!--n) res(); }
+      ls.forEach(function (x) { if (x.sheet) return one(); var f = 0, k = function () { if (!f) { f = 1; one(); } }; x.addEventListener('load', k); x.addEventListener('error', k); setTimeout(k, 8000); });
     });
   }
   // блок вище екрана (швидка прокрутка, reduced-motion — він стискається): тримаємо видимий вміст на місці самі,

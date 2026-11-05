@@ -624,6 +624,12 @@
     zh: '浏览阶段：滑动、← → 或点阶段编号 · 自动播放', pl: 'Przeglądaj etapy: przesuń, ← → lub numer etapu · odtwarza się sama',
     de: 'Etappen durchblättern: wischen, ← → oder Etappennummer · läuft von selbst', fr: 'Parcourez les étapes : glissez, ← → ou numéro d’étape · se lit toute seule',
     ar: 'تصفّح المراحل: اسحب أو ← → أو رقم المرحلة · تعمل تلقائيًا' };
+  // сцени без ряду номерів етапів (Ландшафт, Ресторан, Будинок на воді, Комплекс — лише ← лічильник →) — підказка без «номера етапу»
+  var HINT0 = { uk: 'Гортайте етапи: свайп або ← → · програється сама', ru: 'Листайте этапы: свайп или ← → · проигрывается сама',
+    en: 'Browse the stages: swipe or ← → · plays by itself', es: 'Recorre las etapas: desliza o ← → · se reproduce sola',
+    zh: '浏览阶段：滑动或 ← → · 自动播放', pl: 'Przeglądaj etapy: przesuń lub ← → · odtwarza się sama',
+    de: 'Etappen durchblättern: wischen oder ← → · läuft von selbst', fr: 'Parcourez les étapes : glissez ou ← → · se lit toute seule',
+    ar: 'تصفّح المراحل: اسحب أو ← → · تعمل تلقائيًا' };
   function seen(v) { try { if (v) W.localStorage.setItem('casScHint', '1'); return W.localStorage.getItem('casScHint') === '1'; } catch (e) { return !!v; } }
   W.casGest = function (o) {
     if (!o || !o.root || !o.view) return null;
@@ -632,7 +638,7 @@
     function step(k) { var c = o.cur(), t = Math.max(0, Math.min(n() - 1, c + k)); if (t === c) return false; o.go(t); done(); return true; }
     function done() { if (hint) { hint.classList.add('is-off'); var h = hint; hint = null; setTimeout(function () { if (h.parentNode) h.parentNode.removeChild(h); }, 400); } seen(1); }
     if (o.hint && !seen()) {
-      hint = d.createElement('p'); hint.className = 'sc-hint'; hint.textContent = (HINT[lang] || HINT.en).split(RM ? ' · ' : '\u0000')[0]; // reduced-motion — без «програється сама»
+      hint = d.createElement('p'); hint.className = 'sc-hint'; var H = o.root.querySelector('.bz-nav') ? HINT : HINT0; hint.textContent = (H[lang] || H.en).split(RM ? ' · ' : '\u0000')[0]; // reduced-motion — без «програється сама»
       o.hint.insertBefore(hint, o.before || null);
     }
     var v = o.view; v.style.touchAction = 'pan-y'; // вертикальний свайп — сторінка, горизонтальний — етапи
@@ -677,7 +683,7 @@
   /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=aee99897"; /*/sc:ui*/
   var on = 0;
   function css(h) { if (!h || d.querySelector('link[href="' + h + '"]')) return; var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = h; d.head.appendChild(l); }
-  function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; d.head.appendChild(j); }
+  function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; j.onerror = function () { [].forEach.call(d.querySelectorAll('section.bz[data-js]'), function (x) { if (x.getAttribute('data-js') === s) x.classList.add('bz-no'); }); }; d.head.appendChild(j); } // скрипт сцени не завантажився — без резерву висоти
   function go() {
     W.removeEventListener('scroll', go);
     if (on) return; on = 1;

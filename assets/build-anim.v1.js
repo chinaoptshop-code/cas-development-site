@@ -1387,6 +1387,9 @@
       var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = href;
       l.onload = l.onerror = function () { res(); };
       d.head.appendChild(l);
+    }).then(function () { // і спільний scene-ui.v1.css (перемикач сцен, керування la-*): без нього компактна сцена головної збирається й потім змінює висоту
+      var u = d.querySelector('link[href^="/assets/scene-ui."]');
+      return u && !u.sheet ? new Promise(function (res) { var f = 0, k = function () { if (!f) { f = 1; res(); } }; u.addEventListener('load', k); u.addEventListener('error', k); setTimeout(k, 8000); }) : 0;
     });
     return cssP;
   }
@@ -1405,7 +1408,7 @@
       if (!inView(sec) || sec.hasAttribute('data-sw') || !('IntersectionObserver' in W)) return enhance(sec, dt); // data-sw — перемикач сцен на місці
       var o = new IntersectionObserver(function (es) { if (!es[es.length - 1].isIntersecting) { o.disconnect(); enhance(sec, dt); } });
       o.observe(sec);
-    }).catch(function () { }); // без даних — лишається звичайний список етапів
+    }).catch(function () { sec.classList.add('bz-no'); }); // без даних — лишається звичайний список етапів (bz-no знімає резерв висоти з site-chrome.v1.css)
   }
   W.__casBA = function (s) { if (!s.__bzs && secs.indexOf(s) < 0) { s.__bzs = 1; start(s); } };
   // нуль роботи на завантаженні (TBT/LCP): спостерігач вмикається лише після першої прокрутки сторінки

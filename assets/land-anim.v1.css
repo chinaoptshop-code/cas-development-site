@@ -1,7 +1,4 @@
 /* «Ландшафт з нуля» (assets/land-anim.v1.js, tools/site/landanim.py). UI-kit: /styleguide/#build-anim-sg */
-.la-pies{margin:22px 0 0}.la-pies-h{font-size:var(--fs-small);letter-spacing:.2em;text-transform:uppercase;color:var(--ac,#BF9148);margin:0 0 6px}
-.la-pie ol{margin:10px 0 0;padding-inline-start:20px;color:var(--mu,#938c84)}.la-pie li b{color:var(--tx,#EDE8DF)}.la-pie li span{color:var(--ac,#BF9148)}
-.la-price{color:var(--ac,#BF9148);margin:18px 0 0}
 .la-xr button.x0[aria-pressed=true]{background:#5aa0d8;border-color:#5aa0d8}.la-xr button.x1[aria-pressed=true]{background:#57c4b3;border-color:#57c4b3}.la-xr button.x2[aria-pressed=true]{background:#f0b44c;border-color:#f0b44c}
 /* сцена */
 .la-e{opacity:0;transition:opacity .45s ease,transform .45s ease}.la-e.on{opacity:1}.la-e.gone{opacity:0!important}
