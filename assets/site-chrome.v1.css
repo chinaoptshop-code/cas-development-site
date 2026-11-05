@@ -724,3 +724,7 @@ html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(
 .la-tab{display:inline-flex;flex-wrap:wrap;max-width:100%;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:22px;padding:4px;margin:0 0 18px}
 .la-tab a{padding:8px 16px;border-radius:999px;text-decoration:none;font-size:var(--fs-small);min-height:44px;display:inline-flex;align-items:center}
 .la-tab a[aria-current]{background:var(--ac,#BF9148);color:#140f08}
+/* Стрічки й каруселі фото без системного повзунка (Михайло 05.11.2026: «прибрати повзунок»): стрічка під hero, «Наші проєкти»,
+   відео, «Що ми робимо» на телефоні, галереї. Прокрутка свайпом, тачпадом, колесом зі Shift і клавішами лишається; кнопку паузи дає marquee() */
+html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.prs-inner,.pcarousel-track,.gal,.pc-grid){scrollbar-width:none;-ms-overflow-style:none}
+html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.prs-inner,.pcarousel-track,.gal,.pc-grid)::-webkit-scrollbar{display:none;width:0;height:0}
