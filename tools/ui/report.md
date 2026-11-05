@@ -466,7 +466,7 @@
 | ru/dom-iz-brusa-kiev.html | land | 50.0 | 14.5 | 13.6 | 0.5 | 7 | 485 |
 | ru/meblirovka-kvartiry-kiev.html | land | 49.9 | 13.2 | 13.6 | 0.5 | 7 | 425 |
 | blog/mebli-z-kytaiu-dlia-interieru.html | article | 49.8 | 13.9 | 14.4 | 0.5 | 7 | 393 |
-| blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | article | 49.8 | 14.1 | 14.4 | 0.5 | 7 | 389 |
+| blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html | article | 49.8 | 14.0 | 14.4 | 0.5 | 7 | 389 |
 | blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html | article | 49.8 | 13.9 | 14.4 | 0.5 | 7 | 396 |
 | blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html | article | 49.8 | 13.8 | 14.4 | 0.5 | 7 | 371 |
 | blog/avtorskyi-nahliad-navishcho.html | article | 49.7 | 14.0 | 14.4 | 0.5 | 7 | 384 |
@@ -519,7 +519,7 @@
 | ru/remont-doma-kiev.html | land | 47.9 | 12.8 | 13.6 | 0.5 | 7 | 457 |
 | ru/remont-kvartiry-zhk-greenville-na-pecherske.html | land | 47.9 | 13.0 | 13.6 | 0.5 | 7 | 420 |
 | ar/about.html | land | 47.8 | 12.8 | 13.6 | 0.5 | 7 | 470 |
-| ru/dizayn-interera-neoklassika-kiev.html | land | 47.8 | 12.6 | 13.6 | 0.5 | 7 | 449 |
+| ru/dizayn-interera-neoklassika-kiev.html | land | 47.8 | 12.7 | 13.6 | 0.5 | 7 | 449 |
 | dyzain-interieru-neoklasyka-kyiv.html | land | 47.7 | 12.7 | 13.6 | 0.5 | 7 | 449 |
 | remont-kvartyry-zhk-greenville-na-pechersku.html | land | 47.7 | 13.0 | 13.6 | 0.5 | 7 | 420 |
 | ru/dizayn-i-remont-ukraina.html | land | 47.7 | 12.9 | 13.6 | 0.5 | 7 | 476 |
@@ -662,7 +662,7 @@
 | ar/office-renovation.html | land | 42.1 | 11.1 | 13.6 | 0.5 | 7 | 379 |
 | zh/renovation-calculator.html | land | 41.9 | 13.2 | 14.2 | 1.4 | 7 | 451 |
 | en/general-contractor-kyiv.html | land | 41.8 | 11.6 | 13.6 | 0.5 | 7 | 438 |
-| zh/about.html | land | 41.8 | 12.6 | 13.6 | 0.5 | 7 | 474 |
+| zh/about.html | land | 41.8 | 12.7 | 13.6 | 0.5 | 7 | 474 |
 | dyzain-i-remont-bucha.html | land | 41.7 | 11.9 | 13.6 | 0.5 | 7 | 338 |
 | ru/dizayn-i-remont-bucha.html | land | 41.7 | 11.9 | 13.6 | 0.5 | 7 | 338 |
 | ar/bathroom-renovation.html | land | 41.6 | 11.0 | 13.6 | 0.5 | 7 | 377 |
@@ -869,7 +869,7 @@
 | proekty/office-chicago.html | land | 29.2 | 7.3 | 2.1 | 0.7 | 1 | 308 |
 | fr/confidentialite.html | land | 29.1 | 8.7 | 13.4 | 0.5 | 10 | 208 |
 | pl/polityka-prywatnosci.html | land | 28.7 | 8.8 | 13.4 | 0.5 | 10 | 216 |
-| de/datenschutz.html | land | 28.6 | 8.7 | 13.4 | 0.5 | 10 | 209 |
+| de/datenschutz.html | land | 28.6 | 8.6 | 13.4 | 0.5 | 10 | 209 |
 | es/privacidad.html | land | 28.6 | 8.6 | 13.4 | 0.5 | 10 | 208 |
 | proekty/yablu-rest.html | land | 28.6 | 7.1 | 2.1 | 0.7 | 1 | 301 |
 | en/privacy-policy.html | land | 28.2 | 8.4 | 13.4 | 0.5 | 10 | 217 |
