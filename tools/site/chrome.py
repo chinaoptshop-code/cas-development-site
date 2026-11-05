@@ -501,29 +501,46 @@ def mbar_logos(s):
     return s[:k] + blk + s[e:]
 
 
-# «Залишити номер» у нижній панелі (.mbar): веде на найближчу форму сторінки (#zayavka / швидка заявка #lead) або на
-# сторінку із заявкою мовою сторінки; /assets/lead-form.v1.js прокручує до поля телефону й ставить у нього фокус.
-# Telegram і WhatsApp у панелі з кнопкою — лише логотипи (підпис лишається для читачів екрана).
-MB_LEAD_CSS = ('<style id="mb-lead">@media(max-width:767px){.mbar[data-lead]{grid-template-columns:1fr 1.3fr 48px 48px}.mbar[data-lead] a:not([class]){font-size:0;gap:0}'
-               '.mbar .mb-lead{background:#bf914829;color:#f3d7a6;border-color:#bf9148;text-align:center;line-height:1.1}}</style>')
-MB_LEAD_RX = re.compile(r'<style id="mb-lead">.*?</style>|<a class="mb-lead"[^>]*>.*?</a>\n?')
+# Нижня панель → ОДНА компактна кнопка «Зв'язатися» в куті (Михайло 05.11.2026: «зменш "Залишити заявку" — до одного знизу»).
+# Тап відкриває невелике меню: Подзвонити (tel:), Telegram, WhatsApp, Viber, «Залишити номер» (до єдиної форми #zayavka;
+# /assets/lead-form.v1.js прокручує до поля телефону й ставить фокус). Посилання панелі з усіма атрибутами лишаються як були.
+# Стилі — «Кнопка Зв'язатися» в site-chrome.v1.css (.mbar[data-one]; на ПК панелі немає — у шапці телефон і «Заявка»),
+# відкриття/закриття — site-chrome.v1.js. Ідемпотентно: згенеровані частини (кнопка, обгортка, Viber, «Залишити номер») знімаємо й ставимо заново.
+MB_ONE = dict(uk=("Зв'язатися", "Меню зв'язку"), ru=('Связаться', 'Меню связи'), en=('Contact', 'Contact options'),
+              es=('Contactar', 'Opciones de contacto'), zh=('联系我们', '联系方式'), pl=('Kontakt', 'Opcje kontaktu'),
+              de=('Kontakt', 'Kontaktoptionen'), fr=('Contact', 'Options de contact'), ar=('تواصل معنا', 'خيارات التواصل'))
+VIBER = 'viber://chat?number=%2B380978667755'
+MB_LEAD_RX = re.compile(r'<style id="mb-lead">.*?</style>|<a class="mb-(?:lead|vb)"[^>]*>.*?</a>\n?|<button type="button" class="mb-tg"[^>]*>.*?</button>\n?|<div class="mb-menu"[^>]*>\n?|</div><!--/mb-menu-->\n?', re.S)
 
 
 def mbar_lead(s, lang, rel=''):
-    """Кнопка «Залишити номер» у .mbar (ідемпотентно). Індекси блогу — без неї: сторінки на межі бюджету 60 КБ (ui.py)."""
+    """Панель .mbar → кнопка «Зв'язатися» + меню (ідемпотентно)."""
     import leadform  # тексти легкої заявки (tools/site/leadform.py)
-    s = MB_LEAD_RX.sub('', s).replace('<div class="mbar" data-lead ', '<div class="mbar" ')
     k = s.find('<!--m-fix--><div class="mbar"')
-    if k < 0 or 'class="mb-call"' not in s[k:] or re.search(r'(?:^|/)blog\.html$', rel):
-        return s
+    if k < 0:
+        return MB_LEAD_RX.sub('', s)
+    e = s.find('</div>', s.find('>', k))
+    e2 = s.find('</div><!--/mb-menu-->', k)
+    if 0 <= e2 <= e:  # уже згенеровано: кінець панелі — після обгортки меню
+        e = s.find('</div>', e2 + len('</div><!--/mb-menu-->'))
+    head = s[:k]
+    blk = MB_LEAD_RX.sub('', s[k:e])
+    head = MB_LEAD_RX.sub('', head)
+    k = len(head)
+    if 'class="mb-call"' not in blk:
+        return head + blk + s[e:]
     if 'id="zayavka"' in s: href = '#zayavka'
     elif 'id="lead"' in s: href = '#lead'
     else: href = T[lang]['cta_href']
     lab = leadform.T.get(lang, leadform.T['uk'])['mb']
-    blk = s[k:].replace('<div class="mbar"', '<div class="mbar" data-lead', 1)
-    e = blk.find('</a>', blk.find('class="mb-call"')) + 4
-    blk = blk[:e] + f'\n<a class="mb-lead" href="{href}">{lab}</a>' + blk[e:]
-    return s[:k] + MB_LEAD_CSS + blk
+    one, aria = MB_ONE.get(lang, MB_ONE['en'])
+    m = re.match(r'(<!--m-fix--><div class="mbar")[^>]*>\n?', blk)
+    body = blk[m.end():].strip('\n')
+    vb = '' if 'viber://' in body else f'<a class="mb-vb" href="{VIBER}" target="_blank" rel="noopener"><img src="/assets/brand/viber.svg" width="32" height="32" alt="" decoding="async">Viber</a>\n'
+    out = (f'{m.group(1)} data-one role="navigation" aria-label="{aria}">\n'
+           f'<button type="button" class="mb-tg" aria-expanded="false" aria-controls="mb-menu">{one}</button>\n'
+           f'<div class="mb-menu" id="mb-menu">\n{body}\n{vb}<a class="mb-lead" href="{href}">{lab}</a>\n</div><!--/mb-menu-->\n')
+    return head + out + s[e:]
 
 
 # Microsoft Clarity: вантажимо ЛИШЕ після першої дії відвідувача (scroll/pointerdown/keydown/touchstart), без таймера

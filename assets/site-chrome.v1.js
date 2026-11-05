@@ -307,6 +307,18 @@
 
   [marquee, reveal, accordion, magnet].forEach(function (f) { try { f(); } catch (e) {} });
 })();
+// ── Кнопка «Зв'язатися» (.mbar[data-one], tools/site/chrome.py mbar_lead): тап — меню (Подзвонити, Telegram, WhatsApp, Viber, «Залишити номер»);
+// закривається повторним тапом, тапом поза меню, Esc і після вибору пункту. «Залишити номер» прокручує до форми — /assets/lead-form.v1.js.
+(function () {
+  var d = document, bar = d.querySelector('.mbar[data-one]');
+  if (!bar) return;
+  var tg = bar.querySelector('.mb-tg');
+  function set(v) { bar.classList.toggle('open', v); tg.setAttribute('aria-expanded', v ? 'true' : 'false'); }
+  tg.addEventListener('click', function () { set(!bar.classList.contains('open')); if (bar.classList.contains('open')) { var a = bar.querySelector('.mb-menu a'); if (a) try { a.focus({ preventScroll: true }); } catch (e) { } } });
+  bar.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('.mb-menu a')) set(false); });
+  d.addEventListener('click', function (e) { if (bar.classList.contains('open') && !bar.contains(e.target)) set(false); });
+  d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && bar.classList.contains('open')) { set(false); tg.focus(); } });
+})();
 // ── Пристрої: шапка й нижня панель (.mbar) ховаються при прокрутці вниз і повертаються при прокрутці вгору (телефон ≤767px);
 // панель ховається й коли відкрита клавіатура (фокус у полі форми). Стилі — розділ «Пристрої» у site-chrome.v1.css.
 (function () {
