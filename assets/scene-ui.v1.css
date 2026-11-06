@@ -8,14 +8,14 @@
 .la-seg{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.la-lab{font-size:var(--fs-small);color:var(--mu,#938c84);margin-inline-end:4px}
 .la-seg button{min-height:44px;min-width:44px;padding:0 12px;border-radius:999px;border:1px solid var(--ln,rgba(191,145,72,.3));background:none;color:inherit;font:inherit;font-size:var(--fs-small);cursor:pointer}
 .la-seg button[aria-pressed=true]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#140f08}
-.la-stick{position:sticky;top:68px;display:grid;gap:8px}
+.la-stick{position:sticky;top:calc(var(--sch-h,64px) + 4px);display:grid;gap:8px} /* під шапкою: її висота росте з флюїдним масштабом (--sch-h, site-chrome.v1.css «Широкі екрани») */
 .la-svg{display:block;width:100%;height:min(58vh,560px);background:radial-gradient(ellipse at 50% 30%,#1b1813,#0d0c0a);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:14px;outline-offset:3px}
 .la-cap{margin:0;min-height:4.6em}.la-cap b{display:block;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3)}.la-cap span{color:var(--mu,#938c84);font-size:var(--fs-small)}
 .la-nav{display:flex;align-items:center;gap:10px}.la-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--ac,#BF9148);background:none;color:inherit;font-size:20px;cursor:pointer}
 .la-cnt{font-size:var(--fs-small);color:var(--mu,#938c84);min-width:5em;text-align:center}
 .la-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .la-foot{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}.la-est{margin:0;color:var(--ac,#BF9148)}
-@media(max-width:767px){.la-svg{height:46vh}.la-stick{top:58px}.la-cap{min-height:5.6em}.la-ctl{gap:8px}}
+@media(max-width:767px){.la-svg{height:46vh}.la-stick{top:var(--sch-h,64px)}.la-cap{min-height:5.6em}.la-ctl{gap:8px}}
 .la-tab[aria-busy=true]{opacity:.65;pointer-events:none}.la-sw{animation:la-sw .35s ease-out both}@keyframes la-sw{from{opacity:.3}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.la-sw{animation:none}}
 /* головні: компактна сцена (la-cmp) — без sticky, висота ≈ екран (Михайло 05.11.2026) */

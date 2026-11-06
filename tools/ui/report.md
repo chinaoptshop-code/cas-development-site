@@ -458,7 +458,7 @@
 | en/index.html | land | 50.9 | 13.2 | 13.3 | 0.5 | 6 | 499 |
 | pl/index.html | land | 50.9 | 13.6 | 13.3 | 0.5 | 6 | 498 |
 | services.html | main | 50.7 | 13.3 | 13.3 | 0.5 | 6 | 503 |
-| ru/dizayn-ofisa-open-space-kiev.html | land | 50.6 | 13.5 | 13.3 | 0.5 | 6 | 469 |
+| ru/dizayn-ofisa-open-space-kiev.html | land | 50.6 | 13.6 | 13.3 | 0.5 | 6 | 469 |
 | blog/osvitlennia-ofisu-robochi-zony.html | article | 50.4 | 14.2 | 14.2 | 0.5 | 6 | 369 |
 | budynok-z-brusa-kyiv.html | land | 50.4 | 14.5 | 13.3 | 0.5 | 6 | 489 |
 | dyzain-ofisu-open-space-kyiv.html | land | 50.4 | 13.6 | 13.3 | 0.5 | 6 | 471 |
@@ -562,7 +562,7 @@
 | remont-kvartyry-zhk-podil-hrad.html | land | 47.2 | 13.0 | 13.3 | 0.5 | 6 | 425 |
 | remont-kvartyry-zhk-taryan-towers.html | land | 47.2 | 13.0 | 13.3 | 0.5 | 6 | 425 |
 | ru/uslugi.html | land | 47.2 | 12.4 | 13.3 | 0.5 | 6 | 440 |
-| remont-kvartyry-zhk-bulvar-fontaniv.html | land | 47.1 | 12.8 | 13.3 | 0.5 | 6 | 425 |
+| remont-kvartyry-zhk-bulvar-fontaniv.html | land | 47.1 | 12.9 | 13.3 | 0.5 | 6 | 425 |
 | remont-kvartyry-zhk-maxima-residence.html | land | 47.1 | 12.8 | 13.3 | 0.5 | 6 | 424 |
 | ru/dom-iz-gazobloka-pod-klyuch-kiev.html | land | 47.1 | 12.9 | 13.3 | 0.5 | 6 | 419 |
 | ru/remont-kvartiry-zhk-nordica-residence.html | land | 47.1 | 12.8 | 13.3 | 0.5 | 6 | 424 |
