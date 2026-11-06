@@ -2,7 +2,7 @@
  {
   "page": "about.html",
   "kind": "main",
-  "html_kb": 63.4,
+  "html_kb": 63.6,
   "gzip_kb": 17.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -33,7 +33,7 @@
  {
   "page": "ar/about.html",
   "kind": "land",
-  "html_kb": 48.9,
+  "html_kb": 49.1,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -780,8 +780,8 @@
  {
   "page": "ar/services.html",
   "kind": "land",
-  "html_kb": 40.4,
-  "gzip_kb": 10.6,
+  "html_kb": 40.6,
+  "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -3995,7 +3995,7 @@
  {
   "page": "de/leistungen.html",
   "kind": "land",
-  "html_kb": 37.9,
+  "html_kb": 38.1,
   "gzip_kb": 10.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4184,7 +4184,7 @@
  {
   "page": "de/ueber-uns.html",
   "kind": "land",
-  "html_kb": 44.5,
+  "html_kb": 44.7,
   "gzip_kb": 12.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5641,7 +5641,7 @@
  {
   "page": "en/about.html",
   "kind": "land",
-  "html_kb": 47.3,
+  "html_kb": 47.5,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6588,7 +6588,7 @@
  {
   "page": "en/services.html",
   "kind": "land",
-  "html_kb": 38.0,
+  "html_kb": 38.2,
   "gzip_kb": 10.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7493,7 +7493,7 @@
  {
   "page": "es/servicios.html",
   "kind": "land",
-  "html_kb": 38.4,
+  "html_kb": 38.6,
   "gzip_kb": 10.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7524,8 +7524,8 @@
  {
   "page": "es/sobre-nosotros.html",
   "kind": "land",
-  "html_kb": 44.8,
-  "gzip_kb": 12.4,
+  "html_kb": 45.0,
+  "gzip_kb": 12.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -7555,7 +7555,7 @@
  {
   "page": "fr/a-propos.html",
   "kind": "land",
-  "html_kb": 45.1,
+  "html_kb": 45.3,
   "gzip_kb": 12.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8364,7 +8364,7 @@
  {
   "page": "fr/services.html",
   "kind": "land",
-  "html_kb": 38.5,
+  "html_kb": 38.7,
   "gzip_kb": 10.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -19809,7 +19809,7 @@
  {
   "page": "pl/o-studiu.html",
   "kind": "land",
-  "html_kb": 44.3,
+  "html_kb": 44.5,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -20398,7 +20398,7 @@
  {
   "page": "pl/uslugi.html",
   "kind": "land",
-  "html_kb": 38.0,
+  "html_kb": 38.2,
   "gzip_kb": 10.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24262,7 +24262,7 @@
  {
   "page": "ru/o-nas.html",
   "kind": "land",
-  "html_kb": 55.9,
+  "html_kb": 56.1,
   "gzip_kb": 15.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25696,7 +25696,7 @@
  {
   "page": "ru/uslugi.html",
   "kind": "land",
-  "html_kb": 47.0,
+  "html_kb": 47.2,
   "gzip_kb": 12.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25758,7 +25758,7 @@
  {
   "page": "services.html",
   "kind": "main",
-  "html_kb": 50.5,
+  "html_kb": 50.7,
   "gzip_kb": 13.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25948,8 +25948,8 @@
  {
   "page": "zh/about.html",
   "kind": "land",
-  "html_kb": 42.9,
-  "gzip_kb": 12.8,
+  "html_kb": 43.1,
+  "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -26695,7 +26695,7 @@
  {
   "page": "zh/services.html",
   "kind": "land",
-  "html_kb": 37.1,
+  "html_kb": 37.3,
   "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
