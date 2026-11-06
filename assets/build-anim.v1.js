@@ -1348,8 +1348,10 @@
     if (drive && W.casAuto && !CMP) W.casAuto({ root: run, view: fig, host: ctl, before: next, cls: 'bz-ap', step: function () { return !rm && drive.step(); }, restart: drive.restart, atEnd: drive.atEnd });
     if (CMP && W.casAuto) W.casAuto({ root: run, view: fig, host: ctl, before: next, cls: 'bz-ap', // компактна: крок — go() без прокрутки сторінки
       step: function () { var a = Math.floor(man); if (a >= n - 1) return false; go(a + 1); return true; }, restart: function () { go(0); }, atEnd: function () { return Math.floor(man) >= n - 1; } });
-    // компактна (головні, Михайло 05.11.2026 «як тут прокручувати?»): свайп/перетягування/колесо по сцені, ←/→, підказка один раз; посилання на повну сцену з конфігуратором
-    if (CMP && W.casGest) W.casGest({ root: run, view: fig, go: go, cur: function () { return Math.floor(man); }, n: function () { return n; }, hint: side, before: ctl });
+    // жести (Михайло 05.11 «як тут прокручувати?», 06.11 «наводиш — прокручується; збоку — проклацувати»): колесо над кадром ±1 етап, клік/тап у лівій/правій
+    // чверті кадру, свайп, ←/→; компактна — ще й підказка один раз. Повна sticky: крок — go(), тобто плавна прокрутка до етапу (casDrive веде далі)
+    if (W.casGest) W.casGest({ root: run, view: fig, zone: function () { return fig.querySelector('svg:not(.bz-out)'); }, go: go,
+      cur: function () { return CMP ? Math.floor(man) : Math.max(0, act); }, n: function () { return n; }, hint: CMP ? side : null, before: ctl });
     if (CMP && CFGL[lang]) {
       var cfgl = el('a', 'bz-cfgl'); cfgl.href = CFGL[lang][0] + '#build-anim'; cfgl.textContent = CFGL[lang][1];
       side.insertBefore(cfgl, goA); cfgl.hidden = scene !== 'house'; sec.__cfgl = cfgl;

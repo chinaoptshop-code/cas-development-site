@@ -268,7 +268,7 @@
     list.parentNode.insertBefore(box0, list);
     list.classList.add('la-sr');
     sec.classList.add('la-on');
-    svg.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') go(shown + 1); if (e.key === 'ArrowLeft') go(shown - 1); });
+    svg.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); go(shown + ((e.key === 'ArrowRight') !== (d.documentElement.dir === 'rtl') ? 1 : -1)); } }); // preventDefault — casGest на блоці не робить другого кроку; RTL — дзеркально
     svg.setAttribute('tabindex', '0');
     // пироги: кнопка поруч підсвічує відповідну зону в сцені
     [].forEach.call(sec.querySelectorAll('details.la-pie'), function (dt) { dt.addEventListener('toggle', function () { if (dt.open) cl('la_pie', dt.getAttribute('data-pie')); }); });
@@ -281,7 +281,8 @@
     }
     if (CMP && W.casAuto) W.casAuto({ root: box0, view: svg, host: nav, step: function () { if (shown >= N - 1) return false; go(shown + 1); return true; },
       restart: function () { go(0); }, atEnd: function () { return shown >= N - 1; } });
-    if (W.casGest && d.querySelector('.hx-home')) W.casGest({ root: box0, view: svg, go: go, cur: function () { return shown; }, n: N, hint: stick, before: nav }); // свайп/колесо/←→ + підказка (головні)
+    // жести всіх сцен (головні й повні): колесо над кадром ±1 етап, клік/тап збоку, свайп, ←/→; підказка — лише на головних. Повна sticky: go() плавно прокручує до етапу
+    if (W.casGest) W.casGest({ root: box0, view: svg, go: go, cur: function () { return Math.max(0, shown); }, n: N, hint: d.querySelector('.hx-home') ? stick : null, before: nav });
   }
   function css() {
     return new Promise(function (res) {

@@ -231,8 +231,8 @@
         if (tourI + 1 >= os.length) { if (focus) close(1); tourEnd = true; return false; }
         tourI++; open(os[tourI], 1); return true;
       } });
-    // головні: свайп/колесо/←→ по відкритому обʼєкту — його етапи (без обʼєкта жести не перехоплюються)
-    if (W.casGest && d.querySelector('.hx-home')) W.casGest({ root: stage0, view: svg, go: function (i) { clearInterval(timer); stage = i; show(); },
+    // усі сторінки: колесо над кадром, клік збоку, свайп, ←/→ по відкритому обʼєкту — його етапи (без обʼєкта жести не перехоплюються)
+    if (W.casGest) W.casGest({ root: stage0, view: svg, go: function (i) { clearInterval(timer); stage = i; show(); },
       cur: function () { return focus ? stage : 0; }, n: function () { return focus ? steps().length : 1; } });
   }
   function css() {

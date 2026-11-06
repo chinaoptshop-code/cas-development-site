@@ -27,3 +27,8 @@
 .sc-hint.is-off{opacity:0}
 .la-cmp .la-svg{cursor:grab;user-select:none;-webkit-user-select:none}
 @media(prefers-reduced-motion:reduce){.sc-hint{transition:none}}
+/* клік збоку кадру (casGest): ліва/права чверть кадру — попередній/наступний етап; на миші — курсор-рука й ледь помітний шеврон біля краю (fixed, без зсуву макета) */
+[data-scz=p],[data-scz=n],.la-cmp .la-svg[data-scz=p],.la-cmp .la-svg[data-scz=n]{cursor:pointer}
+.sc-chev{position:fixed;z-index:30;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:rgba(13,12,10,.42);border:1px solid rgba(191,145,72,.35);color:var(--ac,#BF9148);font-size:26px;line-height:1;pointer-events:none;opacity:0;transition:opacity .18s}
+.sc-chev.is-on{opacity:.85}.sc-chev.is-dis{opacity:0}
+@media(prefers-reduced-motion:reduce){.sc-chev{transition:none}}

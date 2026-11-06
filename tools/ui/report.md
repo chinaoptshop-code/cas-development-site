@@ -264,7 +264,7 @@
 | ozdoba/moldynh-poliuretanovyi-z-ornamentom-pid-zoloto-314.html | other | 58.4 | 15.2 | 32.4 | 0.7 | 14 | 330 |
 | ozdoba/mozaika-marmurova-ialynka-bila-300.html | other | 58.4 | 15.3 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/nabir-barmena-z-sheikerom-na-pidstavtsi-405.html | other | 58.4 | 15.3 | 32.4 | 0.7 | 14 | 335 |
-| ozdoba/parket-inzhenernyi-dub-frantsuzka-ialynka-temnyi-306.html | other | 58.4 | 15.1 | 32.4 | 0.7 | 14 | 332 |
+| ozdoba/parket-inzhenernyi-dub-frantsuzka-ialynka-temnyi-306.html | other | 58.4 | 15.2 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/parket-inzhenernyi-dub-ialynka-svitlyi-305.html | other | 58.4 | 15.2 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/pidvis-iaitse-z-opalovoho-skla-583.html | other | 58.4 | 15.3 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/pidvis-zi-sklianoiu-kuleiu-prozore-sklo-115.html | other | 58.4 | 15.2 | 32.4 | 0.7 | 14 | 335 |
@@ -709,7 +709,7 @@
 | dyzain-i-remont-cherkasy.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 334 |
 | dyzain-i-remont-chernihiv.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 336 |
 | dyzain-i-remont-chernivtsi.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 333 |
-| dyzain-i-remont-fastiv.html | land | 40.6 | 11.4 | 13.3 | 0.5 | 6 | 338 |
+| dyzain-i-remont-fastiv.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 338 |
 | dyzain-i-remont-rivne.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 335 |
 | dyzain-i-remont-uzhhorod.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 334 |
 | ru/dizayn-i-remont-cherkassy.html | land | 40.6 | 11.5 | 13.3 | 0.5 | 6 | 334 |

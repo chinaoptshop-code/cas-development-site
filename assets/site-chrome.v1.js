@@ -615,55 +615,108 @@
     d.addEventListener('visibilitychange', function () { if (!d.hidden) poke(1500); });
     return { poke: poke, btn: b };
   };
-  /* casGest — компактні сцени головних (Михайло 05.11.2026: «як тут прокручувати анімацію?»): свайп / перетягування мишею ←/→ по сцені —
-     етап назад/вперед; колесо над сценою (сцена ≥ 70% у кадрі) — ±1 етап за жест (≥ 450 мс між кроками), на першому/останньому етапі
-     колесо не перехоплюємо — сторінка гортається; ←/→ при фокусі в блоці. Підказка мовою сторінки — один раз, зникає після першої дії
-     (localStorage, з try/catch). o: {root, view, go(i), cur() → етап, n() → кількість, hint (куди вставити підказку), before?} */
-  var HINT = { uk: 'Гортайте етапи: свайп, ← → або номер етапу · програється сама', ru: 'Листайте этапы: свайп, ← → или номер этапа · проигрывается сама',
-    en: 'Browse the stages: swipe, ← → or a stage number · plays by itself', es: 'Recorre las etapas: desliza, ← → o el número de etapa · se reproduce sola',
-    zh: '浏览阶段：滑动、← → 或点阶段编号 · 自动播放', pl: 'Przeglądaj etapy: przesuń, ← → lub numer etapu · odtwarza się sama',
-    de: 'Etappen durchblättern: wischen, ← → oder Etappennummer · läuft von selbst', fr: 'Parcourez les étapes : glissez, ← → ou numéro d’étape · se lit toute seule',
-    ar: 'تصفّح المراحل: اسحب أو ← → أو رقم المرحلة · تعمل تلقائيًا' };
-  // сцени без ряду номерів етапів (Ландшафт, Ресторан, Будинок на воді, Комплекс — лише ← лічильник →) — підказка без «номера етапу»
-  var HINT0 = { uk: 'Гортайте етапи: свайп або ← → · програється сама', ru: 'Листайте этапы: свайп или ← → · проигрывается сама',
-    en: 'Browse the stages: swipe or ← → · plays by itself', es: 'Recorre las etapas: desliza o ← → · se reproduce sola',
-    zh: '浏览阶段：滑动或 ← → · 自动播放', pl: 'Przeglądaj etapy: przesuń lub ← → · odtwarza się sama',
-    de: 'Etappen durchblättern: wischen oder ← → · läuft von selbst', fr: 'Parcourez les étapes : glissez ou ← → · se lit toute seule',
-    ar: 'تصفّح المراحل: اسحب أو ← → · تعمل تلقائيًا' };
+  /* casGest — керування сцен мишею й пальцем (Михайло 05.11 «як тут прокручувати анімацію?», 06.11 «коли наводиш — щоб прокручувалось; коли збоку — проклацувати»):
+     усі сцени — компактні на головних і повні sticky на сторінках послуг.
+     • колесо/трекпад, коли курсор над кадром сцени (o.zone — сам 3D/SVG-кадр; кадр ≥ 60% видимий) — ±1 етап за жест (≥ 450 мс між кроками;
+       інерцію трекпада ковтаємо, довга свідома прокрутка — ще етап раз на ≥ 1 с); на першому/останньому етапі колесо не перехоплюємо — сторінка гортається; поза кадром — теж сторінка.
+       Повна sticky-сцена: крок — o.go(i), що плавно прокручує сторінку до позиції етапу на доріжці (casDrive далі веде прогрес за прокруткою, тож
+       колесо над кадром і прокрутка поруч — один і той самий стан, без боротьби).
+     • клік / тап у лівій або правій чверті кадру (≥ 44 px; RTL — дзеркально) — попередній / наступний етап; на миші — курсор-рука й ледь помітний
+       шеврон ‹ › біля краю (reduced-motion — без анімації); кнопки, посилання, поля й панелі o.skip поверх кадру не чіпаємо; після перетягування — не клік.
+     • свайп / перетягування мишею ←/→ — етап назад/вперед; ←/→ при фокусі в блоці (o.root).
+     Підказка мовою сторінки — один раз (o.hint), зникає після першої дії (localStorage, з try/catch).
+     o: {root, view (де слухаємо), zone? (елемент або функція → кадр; за замовчуванням view), skip? (селектор панелей поверх кадру), go(i), cur() → етап,
+         n() → кількість, hint?, before?} */
+  var HINT = { uk: ['Етапи: наведіть і прокрутіть колесом або клацніть збоку · програється сама', 'Етапи: свайп або торкніться краю сцени · програється сама'],
+    ru: ['Этапы: наведите и прокрутите колесом или кликните сбоку · проигрывается сама', 'Этапы: свайп или коснитесь края сцены · проигрывается сама'],
+    en: ['Stages: hover and scroll the wheel, or click a side · plays by itself', 'Stages: swipe or tap a side of the scene · plays by itself'],
+    es: ['Etapas: pasa el cursor y gira la rueda, o haz clic en un lado · se reproduce sola', 'Etapas: desliza o toca un lado de la escena · se reproduce sola'],
+    zh: ['阶段：悬停并滚动滚轮，或点击两侧 · 自动播放', '阶段：滑动或轻点场景两侧 · 自动播放'],
+    pl: ['Etapy: najedź i przewiń kółkiem lub kliknij z boku · odtwarza się sama', 'Etapy: przesuń lub dotknij boku sceny · odtwarza się sama'],
+    de: ['Etappen: Maus darüber und Rad drehen oder seitlich klicken · läuft von selbst', 'Etappen: wischen oder seitlich tippen · läuft von selbst'],
+    fr: ['Étapes : survolez et tournez la molette, ou cliquez sur un côté · se lit toute seule', 'Étapes : glissez ou touchez un côté de la scène · se lit toute seule'],
+    ar: ['المراحل: مرّر المؤشر وأدر العجلة أو انقر على أحد الجانبين · تعمل تلقائيًا', 'المراحل: اسحب أو المس أحد جانبي المشهد · تعمل تلقائيًا'] };
+  var FINE = W.matchMedia && W.matchMedia('(hover: hover) and (pointer: fine)').matches, CTRL = 'button,a,input,select,textarea,label,summary,[role=button]';
   function seen(v) { try { if (v) W.localStorage.setItem('casScHint', '1'); return W.localStorage.getItem('casScHint') === '1'; } catch (e) { return !!v; } }
+  var chev = null; // один шеврон на сторінку (position:fixed у body — без зсуву макета)
+  function chv(r, side, y, dis) {
+    if (!chev) { chev = d.createElement('span'); chev.className = 'sc-chev'; chev.setAttribute('aria-hidden', 'true'); chev.dir = 'ltr'; d.body.appendChild(chev); }
+    if (!r) { chev.classList.remove('is-on'); return; }
+    chev.textContent = side < 0 ? '‹' : '›'; chev.classList.toggle('is-dis', !!dis);
+    chev.style.left = Math.round(side < 0 ? r.left + 10 : r.right - 54) + 'px';
+    chev.style.top = Math.round(Math.max(r.top + 8, Math.min(r.bottom - 52, y - 22))) + 'px';
+    chev.classList.add('is-on');
+  }
   W.casGest = function (o) {
     if (!o || !o.root || !o.view) return null;
-    var lang = (d.documentElement.lang || 'uk').slice(0, 2), rtl = d.documentElement.dir === 'rtl', hint = null, x0 = 0, y0 = 0, pid = null, tW = 0, tStep = 0;
+    var lang = (d.documentElement.lang || 'uk').slice(0, 2), rtl = d.documentElement.dir === 'rtl', hint = null, x0 = 0, y0 = 0, pid = null, moved = false;
+    var tW = 0, tStep = 0, tg = 0, pk = 0, v = o.view;
     function n() { return typeof o.n === 'function' ? o.n() : o.n; }
-    function step(k) { var c = o.cur(), t = Math.max(0, Math.min(n() - 1, c + k)); if (t === c) return false; o.go(t); done(); return true; }
+    function zone() { var z = typeof o.zone === 'function' ? o.zone() : o.zone; return z || v; }
+    // поточний етап: одразу після кроку беремо свою ціль (повна сцена ще доїжджає плавною прокруткою — інакше подвійний крок з того самого етапу)
+    function cur() { return Date.now() - tStep < 900 ? tg : o.cur(); }
+    function step(k) { var c = cur(), t = Math.max(0, Math.min(n() - 1, c + k)); if (t === c) return false; tg = t; tStep = Date.now(); o.go(t); done(); return true; }
     function done() { if (hint) { hint.classList.add('is-off'); var h = hint; hint = null; setTimeout(function () { if (h.parentNode) h.parentNode.removeChild(h); }, 400); } seen(1); }
     if (o.hint && !seen()) {
-      hint = d.createElement('p'); hint.className = 'sc-hint'; var H = o.root.querySelector('.bz-nav') ? HINT : HINT0; hint.textContent = (H[lang] || H.en).split(RM ? ' · ' : '\u0000')[0]; // reduced-motion — без «програється сама»
+      hint = d.createElement('p'); hint.className = 'sc-hint'; hint.textContent = (HINT[lang] || HINT.en)[FINE ? 0 : 1].split(RM ? ' · ' : '\u0000')[0]; // reduced-motion — без «програється сама»
       o.hint.insertBefore(hint, o.before || null);
     }
-    var v = o.view; v.style.touchAction = 'pan-y'; // вертикальний свайп — сторінка, горизонтальний — етапи
-    v.addEventListener('pointerdown', function (e) { if (e.button || (e.target.closest && e.target.closest('button,a,input,select,label'))) return; pid = e.pointerId; x0 = e.clientX; y0 = e.clientY; });
+    function off(t) { return !t || !t.closest || !!t.closest(CTRL) || !!(o.skip && t.closest(o.skip)); }
+    function inZone(t) { var z = zone(); return !!(t && (t === z || (z.contains && z.contains(t)))); }
+    // −1 / +1 — лівий/правий край кадру (у напрямку етапів: RTL — дзеркально), 0 — середина
+    function edge(e) {
+      var r = zone().getBoundingClientRect(), w = r.width, ew = Math.max(44, w * 0.25), x = e.clientX - r.left;
+      if (w < 120 || x < 0 || x > w || e.clientY < r.top || e.clientY > r.bottom) return [0, r];
+      var s = x < ew ? -1 : x > w - ew ? 1 : 0; return [s, r];
+    }
+    v.style.touchAction = 'pan-y'; // вертикальний свайп — сторінка, горизонтальний — етапи
+    v.addEventListener('pointerdown', function (e) { moved = false; if (e.button || off(e.target)) return; pid = e.pointerId; x0 = e.clientX; y0 = e.clientY; });
+    function hov(e) {
+      var z = zone(), s = 0, q = null;
+      if (n() > 1 && inZone(e.target) && !off(e.target)) { q = edge(e); s = q[0]; }
+      if (!s) { z.removeAttribute('data-scz'); chv(null); return; }
+      var k = rtl ? -s : s, c = cur(), dis = (k < 0 && c <= 0) || (k > 0 && c >= n() - 1);
+      z.setAttribute('data-scz', dis ? 'x' : s < 0 ? 'p' : 'n'); chv(q[1], s, e.clientY, dis);
+    }
+    v.addEventListener('pointermove', function (e) {
+      if (pid === e.pointerId && Math.abs(e.clientX - x0) + Math.abs(e.clientY - y0) > 10) moved = true;
+      if (e.pointerType === 'mouse') hov(e);
+    });
+    v.addEventListener('pointerleave', function () { zone().removeAttribute('data-scz'); chv(null); });
+    W.addEventListener('scroll', function () { if (chev && chev.classList.contains('is-on')) chv(null); }, { passive: true });
     v.addEventListener('pointerup', function (e) {
       if (pid !== e.pointerId) return; pid = null;
       var dx = e.clientX - x0, dy = e.clientY - y0;
       if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
       step((dx < 0) !== rtl ? 1 : -1);
     });
-    v.addEventListener('pointercancel', function () { pid = null; });
+    v.addEventListener('pointercancel', function () { pid = null; moved = true; });
     v.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    // клік збоку — у фазі захоплення: раніше за обробники обʼєктів у кадрі (Комплекс: клік по обʼєкту відкриває його)
+    v.addEventListener('click', function (e) {
+      if (moved) { moved = false; return; }
+      if (n() < 2 || off(e.target) || !inZone(e.target)) return;
+      var s = edge(e)[0]; if (!s) return;
+      e.stopPropagation(); e.preventDefault();
+      step(rtl ? -s : s);
+      if (FINE) hov(e); // оновити шеврон: на краю етапів — тьмяний
+    }, true);
     v.addEventListener('wheel', function (e) {
       if (e.ctrlKey) return; // масштаб сторінки
       var dl = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX * (rtl ? -1 : 1) : e.deltaY; if (!dl) return;
-      var r = v.getBoundingClientRect(), vis = (Math.min(r.bottom, W.innerHeight) - Math.max(r.top, 0)) / Math.max(1, r.height);
-      var c = o.cur(), k = dl > 0 ? 1 : -1;
-      if (vis < 0.7 || (k < 0 && c <= 0) || (k > 0 && c >= n() - 1)) return; // край — сторінка гортається як завжди
-      e.preventDefault();
-      var t = Date.now(), gap = t - tW; tW = t;
-      if (Math.abs(dl) < 4 && gap < 200) return; // інерційний хвіст трекпада
-      if (gap > 220 || t - tStep > 700) { if (t - tStep >= 450) { tStep = t; step(k); } }
+      if (n() < 2 || !inZone(e.target) || (o.skip && e.target.closest && e.target.closest(o.skip))) return; // панелі поверх кадру й поза ним — сторінка
+      var r = zone().getBoundingClientRect(), vis = (Math.min(r.bottom, W.innerHeight) - Math.max(r.top, 0)) / Math.max(1, Math.min(r.height, W.innerHeight));
+      var t = Date.now(), gap = t - tW, c = cur(), k = dl > 0 ? 1 : -1, ad = Math.abs(dl);
+      if (gap > 220) pk = 0; pk = Math.max(pk, ad); // новий жест: пік дельти — щоб відрізнити інерцію (дельти згасають) від довгої свідомої прокрутки
+      var tail = gap < 220 && t - tStep < 600; // той самий жест щойно зробив крок (до краю) — доковтуємо його хвіст, щоб сторінка не смикнулась
+      if (vis < 0.6 || (!tail && ((k < 0 && c <= 0) || (k > 0 && c >= n() - 1)))) { tW = t; return; } // край — сторінка гортається як завжди
+      e.preventDefault(); tW = t;
+      if (ad < 4 && gap < 200) return; // інерційний хвіст трекпада
+      // один жест — один етап; той самий безперервний жест робить ще крок лише через 1 с і лише якщо дельти не згасають (не інерція)
+      if (gap > 220 ? t - tStep >= 450 : (t - tStep > 1000 && ad >= pk * 0.5)) step(k);
     }, { passive: false });
     o.root.addEventListener('keydown', function (e) {
-      if (e.altKey || e.ctrlKey || e.metaKey || (e.target.closest && e.target.closest('input,select,textarea,.bz-nav'))) return;
+      if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || (e.target.closest && e.target.closest('input,select,textarea,.bz-nav'))) return;
       var k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!k) return;
       if (rtl) k = -k;
       if (step(k)) e.preventDefault();
@@ -680,7 +733,7 @@
 (function () {
   var W = window, d = document, ss = d.querySelectorAll('section.bz[data-js]'); // кілька сцен на сторінці — кожна свій скрипт
   if (!ss.length) return;
-  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=aee99897"; /*/sc:ui*/
+  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=eb57a618"; /*/sc:ui*/
   var on = 0;
   function css(h) { if (!h || d.querySelector('link[href="' + h + '"]')) return; var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = h; d.head.appendChild(l); }
   function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; j.onerror = function () { [].forEach.call(d.querySelectorAll('section.bz[data-js]'), function (x) { if (x.getAttribute('data-js') === s) x.classList.add('bz-no'); }); }; d.head.appendChild(j); } // скрипт сцени не завантажився — без резерву висоти
