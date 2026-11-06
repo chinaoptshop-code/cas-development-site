@@ -445,6 +445,23 @@ def _icons(m):
     return m
 
 
+H2I_RX = re.compile(r'<h2\b[^>]*?( data-i="[a-z0-9]+")[^>]*>')
+OPEN_RX = re.compile(r'<(?:section|div class="w(?:\s[^"]*)?")[^>]*>')
+
+
+def _h2_tiles_only(m):
+    """Іконка біля H2 — лише в плитках (контейнер з data-c="x": там вона ж ключ ілюстрації плитки); у звичайних заголовках секцій
+    іконок немає, і запасного ромба теж (Михайло 06.11.2026, unslop: «іконки над H2 — лише на плитках»). Іконки карток (h3) лишаються."""
+    out, pos = [], 0
+    for x in H2I_RX.finditer(m):
+        prev = list(OPEN_RX.finditer(m, 0, x.start()))
+        if prev and 'data-c="x"' in prev[-1].group(0):
+            continue
+        out.append(m[pos:x.start()] + x.group(0).replace(x.group(1), '', 1))
+        pos = x.end()
+    return ''.join(out) + m[pos:]
+
+
 def _collapse_type(sid, cls, body):
     if 'zayavka' in sid or re.search(r'data-est|<table|<form|gd-slot|class="price"|class="bz', body):
         return None
@@ -642,6 +659,7 @@ def apply(s, rel):
         m = _spans(m, lm.group(1) if lm else 'uk')
     if re.match(r'(?:[a-z]{2}/)?blog/', rel):
         m = _article_lists(m)
+    m = _h2_tiles_only(m)
     if re.match(r'(?:[a-z]{2}/)?index\.html$', rel):  # головні: без бейджів «Анімація реалізації» — сцена вже на сторінці (Михайло 04.11.2026, «ясність»)
         return s[:i] + m + rest + s[j:]
     return s[:i] + _badges(m + rest) + s[j:]

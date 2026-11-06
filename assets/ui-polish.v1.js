@@ -1,4 +1,4 @@
-/* UI polish (a11y кнопок-діалогів, розгортання, стрічки, reveal, поява фото). Раніше — інлайн-копія на кожній сторінці; тепер один файл (chrome.py ui_polish_ext), підписи — за <html lang>. */
+/* UI polish (a11y кнопок-діалогів, розгортання, стрічки, поява фото). Раніше — інлайн-копія на кожній сторінці; тепер один файл (chrome.py ui_polish_ext), підписи — за <html lang>. */
 (function(){
 var d=document,W=window,RM=W.matchMedia&&W.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function $$(s,r){return Array.prototype.slice.call((r||d).querySelectorAll(s))}
@@ -76,25 +76,6 @@ function scrollers(){
   })},{threshold:.6});
   io.observe(wr);
  });
-}
-function reveal(){
- if(!('IntersectionObserver' in W))return;
- var sel='main section,body>section,.svc-prev,.proj-covers,.pcarousel,.sv-card,.proc-step,.geo-item,.about-vis,.about-txt,.card,.gal figure,.pg a,details,.prod-card,.benefit,.how-step,.cat-tile,.proj-row,.calc-wrap,.ct-layout,article>*';
- var vh=W.innerHeight||800,list=[],seen=new WeakSet();
- $$(sel).forEach(function(el){
-  if(el.classList.contains('reveal')||el.querySelector('.reveal')||el.closest('.hero,.ph,#lb,#plb,nav,.nsb'))return;
-  list.push(el);
- });
- var io=new IntersectionObserver(function(es){es.forEach(function(e){
-  var el=e.target;
-  if(!seen.has(el)){seen.add(el);if(e.isIntersecting||e.boundingClientRect.top<vh*.92){io.unobserve(el);return;}el.classList.add('rv');return;}
-  if(!e.isIntersecting)return;io.unobserve(el);
-  var sib=el.parentElement?Array.prototype.indexOf.call(el.parentElement.children,el)%4:0;
-  el.style.transitionDelay=(sib*60)+'ms';el.classList.add('rv-in');
-  setTimeout(function(){el.classList.remove('rv','rv-in');el.style.transitionDelay='';},700);
- })},{threshold:0,rootMargin:'0px 0px -6% 0px'});/* threshold 0: високі секції (картки послуг ~3500px на телефоні) з'являються, щойно верх зайшов на екран, а не після 8% висоти (QA 03.11.2026) */
- list.forEach(function(el){io.observe(el)});
- setTimeout(function(){list.forEach(function(el){if(el.classList.contains('rv')&&!el.classList.contains('rv-in')){var b=el.getBoundingClientRect();if(b.top<vh&&b.bottom>0)el.classList.add('rv-in');}})},2500);
 }
 function imgFade(){
  if(RM)return;
@@ -179,6 +160,6 @@ function carousel(){
   sc.parentNode.insertBefore(nav,sc.nextSibling);
  });
 }
-function run(){[expanders,scrollers,reveal,imgFade,carousel,marquee].forEach(function(f){try{f()}catch(e){}})}
+function run(){[expanders,scrollers,imgFade,carousel,marquee].forEach(function(f){try{f()}catch(e){}})}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',run);else run();
 })();

@@ -141,4 +141,3 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .js .xs-team .grid>.card:last-child:nth-child(odd){grid-column:1/-1}
 @media(min-width:760px){.js .xs-team .grid>.card:last-child:nth-child(odd){grid-column:auto}}
 @media(max-width:759px){.js .xs-crew>div:last-child:nth-child(odd){grid-column:1/-1}}
-.hx-home~.xs-svc .xs-cb.rv{translate:none}/* посилання-картка (::after) не стрибає з reveal: translate робив .xs-cb блоком-контейнером (CLS) */

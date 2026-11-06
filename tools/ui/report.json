@@ -2,7 +2,7 @@
  {
   "page": "about.html",
   "kind": "main",
-  "html_kb": 63.4,
+  "html_kb": 63.3,
   "gzip_kb": 17.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -33,7 +33,7 @@
  {
   "page": "ar/about.html",
   "kind": "land",
-  "html_kb": 48.9,
+  "html_kb": 48.8,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -64,7 +64,7 @@
  {
   "page": "ar/apartment-design.html",
   "kind": "land",
-  "html_kb": 39.3,
+  "html_kb": 39.2,
   "gzip_kb": 10.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -95,7 +95,7 @@
  {
   "page": "ar/bathroom-renovation.html",
   "kind": "land",
-  "html_kb": 41.7,
+  "html_kb": 41.6,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -126,8 +126,8 @@
  {
   "page": "ar/business-fit-out.html",
   "kind": "land",
-  "html_kb": 41.1,
-  "gzip_kb": 11.1,
+  "html_kb": 41.0,
+  "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -157,7 +157,7 @@
  {
   "page": "ar/commercial-renovation.html",
   "kind": "land",
-  "html_kb": 40.8,
+  "html_kb": 40.7,
   "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -188,7 +188,7 @@
  {
   "page": "ar/contact.html",
   "kind": "land",
-  "html_kb": 35.6,
+  "html_kb": 35.5,
   "gzip_kb": 10.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -219,7 +219,7 @@
  {
   "page": "ar/design-implementation.html",
   "kind": "land",
-  "html_kb": 40.2,
+  "html_kb": 40.1,
   "gzip_kb": 10.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -250,7 +250,7 @@
  {
   "page": "ar/faq.html",
   "kind": "land",
-  "html_kb": 39.8,
+  "html_kb": 39.7,
   "gzip_kb": 10.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -467,7 +467,7 @@
  {
   "page": "ar/interior-designer.html",
   "kind": "land",
-  "html_kb": 38.9,
+  "html_kb": 38.8,
   "gzip_kb": 10.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -498,7 +498,7 @@
  {
   "page": "ar/kitchen-renovation.html",
   "kind": "land",
-  "html_kb": 40.6,
+  "html_kb": 40.5,
   "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -560,7 +560,7 @@
  {
   "page": "ar/new-build-renovation.html",
   "kind": "land",
-  "html_kb": 41.1,
+  "html_kb": 41.0,
   "gzip_kb": 10.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -591,7 +591,7 @@
  {
   "page": "ar/office-renovation.html",
   "kind": "land",
-  "html_kb": 42.2,
+  "html_kb": 42.1,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -622,7 +622,7 @@
  {
   "page": "ar/privacy.html",
   "kind": "land",
-  "html_kb": 30.4,
+  "html_kb": 30.3,
   "gzip_kb": 8.9,
   "css_kb": 13.2,
   "js_kb": 0.5,
@@ -687,7 +687,7 @@
  {
   "page": "ar/renovation-crew.html",
   "kind": "land",
-  "html_kb": 42.5,
+  "html_kb": 42.4,
   "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -718,7 +718,7 @@
  {
   "page": "ar/resort-turnkey.html",
   "kind": "land",
-  "html_kb": 47.2,
+  "html_kb": 47.1,
   "gzip_kb": 12.6,
   "css_kb": 13.3,
   "js_kb": 3.4,
@@ -749,7 +749,7 @@
  {
   "page": "ar/restaurant-design.html",
   "kind": "land",
-  "html_kb": 48.2,
+  "html_kb": 48.1,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 3.3,
@@ -780,7 +780,7 @@
  {
   "page": "ar/services.html",
   "kind": "land",
-  "html_kb": 40.6,
+  "html_kb": 40.5,
   "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -811,8 +811,8 @@
  {
   "page": "ar/turnkey-procurement.html",
   "kind": "land",
-  "html_kb": 42.5,
-  "gzip_kb": 11.0,
+  "html_kb": 42.4,
+  "gzip_kb": 10.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -873,8 +873,8 @@
  {
   "page": "avtorskyi-i-tekhnichnyi-nahliad-kyiv.html",
   "kind": "land",
-  "html_kb": 46.0,
-  "gzip_kb": 12.5,
+  "html_kb": 45.9,
+  "gzip_kb": 12.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -904,7 +904,7 @@
  {
   "page": "baza-vidpochynku-pid-klyuch.html",
   "kind": "land",
-  "html_kb": 53.2,
+  "html_kb": 53.1,
   "gzip_kb": 14.7,
   "css_kb": 13.0,
   "js_kb": 3.5,
@@ -935,7 +935,7 @@
  {
   "page": "biznes-pid-kliuch-kyiv.html",
   "kind": "land",
-  "html_kb": 52.9,
+  "html_kb": 52.8,
   "gzip_kb": 13.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -968,8 +968,8 @@
  {
   "page": "blog.html",
   "kind": "other",
-  "html_kb": 77.7,
-  "gzip_kb": 19.8,
+  "html_kb": 76.9,
+  "gzip_kb": 19.6,
   "css_kb": 13.5,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -999,7 +999,7 @@
  {
   "page": "blog/akustyka-open-space-bez-hluhykh-peregorodok.html",
   "kind": "article",
-  "html_kb": 48.6,
+  "html_kb": 48.5,
   "gzip_kb": 13.6,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1033,7 +1033,7 @@
  {
   "page": "blog/avtorskyi-nahliad-navishcho.html",
   "kind": "article",
-  "html_kb": 49.8,
+  "html_kb": 49.7,
   "gzip_kb": 14.0,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1064,7 +1064,7 @@
  {
   "page": "blog/bryf-dlia-dyzainera-interieru.html",
   "kind": "article",
-  "html_kb": 56.7,
+  "html_kb": 56.6,
   "gzip_kb": 16.4,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1097,8 +1097,8 @@
  {
   "page": "blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html",
   "kind": "article",
-  "html_kb": 46.8,
-  "gzip_kb": 13.2,
+  "html_kb": 46.7,
+  "gzip_kb": 13.1,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -1133,7 +1133,7 @@
  {
   "page": "blog/budynok-na-vodi-pali-chy-pontony.html",
   "kind": "article",
-  "html_kb": 45.8,
+  "html_kb": 45.7,
   "gzip_kb": 12.9,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1164,8 +1164,8 @@
  {
   "page": "blog/budynok-pid-kliuch-chy-korobka.html",
   "kind": "article",
-  "html_kb": 53.1,
-  "gzip_kb": 14.7,
+  "html_kb": 53.0,
+  "gzip_kb": 14.6,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -1198,7 +1198,7 @@
  {
   "page": "blog/chornovyi-i-chystovyi-remont-riznytsia.html",
   "kind": "article",
-  "html_kb": 50.3,
+  "html_kb": 50.2,
   "gzip_kb": 14.1,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1232,7 +1232,7 @@
  {
   "page": "blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html",
   "kind": "article",
-  "html_kb": 65.5,
+  "html_kb": 65.3,
   "gzip_kb": 18.2,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1265,7 +1265,7 @@
  {
   "page": "blog/dyzain-i-remont-penthausa-pid-kliuch.html",
   "kind": "article",
-  "html_kb": 55.0,
+  "html_kb": 54.8,
   "gzip_kb": 15.4,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1303,7 +1303,7 @@
  {
   "page": "blog/dyzain-interieru-onlain-budynok-za-kordonom.html",
   "kind": "article",
-  "html_kb": 55.5,
+  "html_kb": 55.4,
   "gzip_kb": 15.3,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1337,7 +1337,7 @@
  {
   "page": "blog/dyzain-interieru-z-choho-pochaty.html",
   "kind": "article",
-  "html_kb": 48.3,
+  "html_kb": 48.2,
   "gzip_kb": 13.6,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1370,8 +1370,8 @@
  {
   "page": "blog/dyzain-malenkoi-kvartyry-zberihannia.html",
   "kind": "article",
-  "html_kb": 49.0,
-  "gzip_kb": 14.0,
+  "html_kb": 48.9,
+  "gzip_kb": 13.9,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -1403,8 +1403,8 @@
  {
   "page": "blog/dyzain-ofisu-z-choho-pochaty.html",
   "kind": "article",
-  "html_kb": 46.1,
-  "gzip_kb": 13.0,
+  "html_kb": 46.0,
+  "gzip_kb": 12.9,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -1437,8 +1437,8 @@
  {
   "page": "blog/dyzain-restoranu-z-choho-pochaty.html",
   "kind": "article",
-  "html_kb": 49.6,
-  "gzip_kb": 14.1,
+  "html_kb": 49.5,
+  "gzip_kb": 14.0,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -1471,7 +1471,7 @@
  {
   "page": "blog/elitnyi-remont-kvartyry-biudzhet.html",
   "kind": "article",
-  "html_kb": 47.5,
+  "html_kb": 47.4,
   "gzip_kb": 13.2,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1504,7 +1504,7 @@
  {
   "page": "blog/etapy-remontu-kvartyry-pid-kliuch.html",
   "kind": "article",
-  "html_kb": 49.7,
+  "html_kb": 49.6,
   "gzip_kb": 14.1,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1538,7 +1538,7 @@
  {
   "page": "blog/henpidriadnyk-chy-okremi-bryhady.html",
   "kind": "article",
-  "html_kb": 48.7,
+  "html_kb": 48.6,
   "gzip_kb": 13.5,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1571,8 +1571,8 @@
  {
   "page": "blog/interier-pryvatnoho-budynku-premium-etapy.html",
   "kind": "article",
-  "html_kb": 55.3,
-  "gzip_kb": 15.6,
+  "html_kb": 55.2,
+  "gzip_kb": 15.5,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -1608,7 +1608,7 @@
  {
   "page": "blog/inzheneriia-restoranu-ventyliatsiia-kanalizatsiia-elektryka.html",
   "kind": "article",
-  "html_kb": 46.1,
+  "html_kb": 46.0,
   "gzip_kb": 12.9,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1639,7 +1639,7 @@
  {
   "page": "blog/inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit.html",
   "kind": "article",
-  "html_kb": 66.9,
+  "html_kb": 66.8,
   "gzip_kb": 18.8,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1672,8 +1672,8 @@
  {
   "page": "blog/kamin-shpon-latun-materialy-premium-interieru.html",
   "kind": "article",
-  "html_kb": 57.1,
-  "gzip_kb": 16.2,
+  "html_kb": 57.0,
+  "gzip_kb": 16.1,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -1703,7 +1703,7 @@
  {
   "page": "blog/kapitalnyi-chy-kosmetychnyi-remont-shcho-obraty.html",
   "kind": "article",
-  "html_kb": 58.9,
+  "html_kb": 58.8,
   "gzip_kb": 16.4,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1736,7 +1736,7 @@
  {
   "page": "blog/karkas-hazoblok-chy-brus-z-choho-buduvaty-budynok.html",
   "kind": "article",
-  "html_kb": 60.0,
+  "html_kb": 59.9,
   "gzip_kb": 16.9,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1770,7 +1770,7 @@
  {
   "page": "blog/kompleks-vidpochynku-pid-kliuch-z-choho-skladaietsia-koshtorys.html",
   "kind": "article",
-  "html_kb": 45.5,
+  "html_kb": 45.4,
   "gzip_kb": 12.7,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1801,8 +1801,8 @@
  {
   "page": "blog/komplektatsiia-hotelyu-apart-hotelyu-pid-kliuch.html",
   "kind": "article",
-  "html_kb": 55.6,
-  "gzip_kb": 15.6,
+  "html_kb": 55.4,
+  "gzip_kb": 15.5,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -1836,8 +1836,8 @@
  {
   "page": "blog/komplektatsiia-interieru-samostiino-chy-z-komplektatorom.html",
   "kind": "article",
-  "html_kb": 58.9,
-  "gzip_kb": 16.7,
+  "html_kb": 58.8,
+  "gzip_kb": 16.6,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -1869,8 +1869,8 @@
  {
   "page": "blog/komplektatsiia-kvartyry-pid-kliuch-poriadok-i-biudzhet.html",
   "kind": "article",
-  "html_kb": 49.0,
-  "gzip_kb": 13.6,
+  "html_kb": 48.9,
+  "gzip_kb": 13.5,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -1903,7 +1903,7 @@
  {
   "page": "blog/komplektatsiia-restoranu-hotelyu-z-kytaiu.html",
   "kind": "article",
-  "html_kb": 54.1,
+  "html_kb": 54.0,
   "gzip_kb": 14.8,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -1934,8 +1934,8 @@
  {
   "page": "blog/koshtorys-na-remont-yak-chytaty.html",
   "kind": "article",
-  "html_kb": 48.0,
-  "gzip_kb": 13.3,
+  "html_kb": 47.8,
+  "gzip_kb": 13.2,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -1967,8 +1967,8 @@
  {
   "page": "blog/mebli-dlia-ofisu-z-kytaiu-biudzhet-i-stroky.html",
   "kind": "article",
-  "html_kb": 47.3,
-  "gzip_kb": 13.1,
+  "html_kb": 47.2,
+  "gzip_kb": 13.0,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -2000,7 +2000,7 @@
  {
   "page": "blog/mebli-z-kytaiu-dlia-interieru.html",
   "kind": "article",
-  "html_kb": 49.8,
+  "html_kb": 49.7,
   "gzip_kb": 13.8,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2034,7 +2034,7 @@
  {
   "page": "blog/mebliuvannia-kvartyry-pid-orendu-cheklist.html",
   "kind": "article",
-  "html_kb": 52.8,
+  "html_kb": 52.6,
   "gzip_kb": 14.6,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2067,7 +2067,7 @@
  {
   "page": "blog/ofis-pid-kliuch-u-biznes-tsentri.html",
   "kind": "article",
-  "html_kb": 50.1,
+  "html_kb": 50.0,
   "gzip_kb": 14.1,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2102,7 +2102,7 @@
  {
   "page": "blog/ofis-u-biznes-tsentri-shcho-uzghodyty-pered-remontom.html",
   "kind": "article",
-  "html_kb": 47.9,
+  "html_kb": 47.8,
   "gzip_kb": 13.1,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2133,8 +2133,8 @@
  {
   "page": "blog/open-space-chy-kabinety-planuvannia-ofisu.html",
   "kind": "article",
-  "html_kb": 47.5,
-  "gzip_kb": 13.2,
+  "html_kb": 47.4,
+  "gzip_kb": 13.1,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -2164,8 +2164,8 @@
  {
   "page": "blog/oplata-remontu-chastynamy-skhemy-platezhiv.html",
   "kind": "article",
-  "html_kb": 57.1,
-  "gzip_kb": 16.1,
+  "html_kb": 57.0,
+  "gzip_kb": 16.0,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -2197,7 +2197,7 @@
  {
   "page": "blog/osvitlennia-ofisu-robochi-zony.html",
   "kind": "article",
-  "html_kb": 50.4,
+  "html_kb": 50.3,
   "gzip_kb": 14.2,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2228,7 +2228,7 @@
  {
   "page": "blog/planuvalne-rishennia-koly-dostatno.html",
   "kind": "article",
-  "html_kb": 59.1,
+  "html_kb": 59.0,
   "gzip_kb": 16.5,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2263,7 +2263,7 @@
  {
   "page": "blog/premialnyi-interier-yak-ne-pereplatyty.html",
   "kind": "article",
-  "html_kb": 54.5,
+  "html_kb": 54.4,
   "gzip_kb": 15.4,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2300,7 +2300,7 @@
  {
   "page": "blog/proekt-budynku-shcho-vkhodyt.html",
   "kind": "article",
-  "html_kb": 45.2,
+  "html_kb": 45.1,
   "gzip_kb": 12.6,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2335,7 +2335,7 @@
  {
   "page": "blog/pyrih-stiny-pidlohy-i-pokrivli-pryvatnoho-budynku.html",
   "kind": "article",
-  "html_kb": 69.3,
+  "html_kb": 69.2,
   "gzip_kb": 19.5,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2366,8 +2366,8 @@
  {
   "page": "blog/realizatsiia-dyzain-proektu-yak-ne-vtratyty-zadum.html",
   "kind": "article",
-  "html_kb": 48.8,
-  "gzip_kb": 13.7,
+  "html_kb": 48.7,
+  "gzip_kb": 13.6,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -2400,7 +2400,7 @@
  {
   "page": "blog/rekonstruktsiia-chy-novyi-budynok.html",
   "kind": "article",
-  "html_kb": 59.7,
+  "html_kb": 59.6,
   "gzip_kb": 16.6,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2434,8 +2434,8 @@
  {
   "page": "blog/remont-i-budivnytstvo-v-yevropi-z-ukrainskoiu-komandoiu.html",
   "kind": "article",
-  "html_kb": 66.5,
-  "gzip_kb": 18.3,
+  "html_kb": 66.3,
+  "gzip_kb": 18.2,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -2468,8 +2468,8 @@
  {
   "page": "blog/remont-komertsiinoho-prymishchennia-etapy.html",
   "kind": "article",
-  "html_kb": 52.9,
-  "gzip_kb": 14.7,
+  "html_kb": 52.8,
+  "gzip_kb": 14.6,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -2504,7 +2504,7 @@
  {
   "page": "blog/remont-kukhni-pid-kliuch-z-choho-pochaty.html",
   "kind": "article",
-  "html_kb": 47.2,
+  "html_kb": 47.1,
   "gzip_kb": 13.0,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2535,7 +2535,7 @@
  {
   "page": "blog/remont-ofisu-pid-kliuch-shcho-vrakhuvaty.html",
   "kind": "article",
-  "html_kb": 49.9,
+  "html_kb": 49.7,
   "gzip_kb": 14.0,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2569,8 +2569,8 @@
  {
   "page": "blog/remont-u-peredmisti-kyieva-shcho-vrakhuvaty.html",
   "kind": "article",
-  "html_kb": 59.1,
-  "gzip_kb": 16.8,
+  "html_kb": 58.9,
+  "gzip_kb": 16.7,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -2602,8 +2602,8 @@
  {
   "page": "blog/remont-vannoi-kimnaty-pid-kliuch-etapy.html",
   "kind": "article",
-  "html_kb": 46.2,
-  "gzip_kb": 13.0,
+  "html_kb": 46.0,
+  "gzip_kb": 12.9,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -2633,8 +2633,8 @@
  {
   "page": "blog/salon-krasy-pid-kliuch.html",
   "kind": "article",
-  "html_kb": 52.2,
-  "gzip_kb": 14.7,
+  "html_kb": 52.0,
+  "gzip_kb": 14.6,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -2667,7 +2667,7 @@
  {
   "page": "blog/shcho-vkhodyt-u-dyzain-proekt-interieru.html",
   "kind": "article",
-  "html_kb": 50.1,
+  "html_kb": 50.0,
   "gzip_kb": 14.0,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2701,8 +2701,8 @@
  {
   "page": "blog/shcho-vkhodyt-u-remont-pid-kliuch.html",
   "kind": "article",
-  "html_kb": 47.0,
-  "gzip_kb": 13.0,
+  "html_kb": 46.9,
+  "gzip_kb": 12.9,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -2735,7 +2735,7 @@
  {
   "page": "blog/skilky-koshtuie-dyzain-interieru-kyiv.html",
   "kind": "article",
-  "html_kb": 49.0,
+  "html_kb": 48.9,
   "gzip_kb": 13.5,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2773,7 +2773,7 @@
  {
   "page": "blog/skilky-koshtuie-dyzain-proekt-kvartyry-kyiv.html",
   "kind": "article",
-  "html_kb": 50.1,
+  "html_kb": 50.0,
   "gzip_kb": 13.8,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2813,7 +2813,7 @@
  {
   "page": "blog/skilky-koshtuie-remont-budynku-pid-kliuch.html",
   "kind": "article",
-  "html_kb": 49.8,
+  "html_kb": 49.7,
   "gzip_kb": 13.8,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2851,7 +2851,7 @@
  {
   "page": "blog/skilky-koshtuie-remont-ofisu-kyiv-2026.html",
   "kind": "article",
-  "html_kb": 47.7,
+  "html_kb": 47.6,
   "gzip_kb": 13.2,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2888,7 +2888,7 @@
  {
   "page": "blog/skilky-koshtuie-remont-v-novobudovi-kyiv.html",
   "kind": "article",
-  "html_kb": 49.8,
+  "html_kb": 49.7,
   "gzip_kb": 13.8,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2925,7 +2925,7 @@
  {
   "page": "blog/skilky-koshtuie-remont-vannoi-kyiv.html",
   "kind": "article",
-  "html_kb": 48.6,
+  "html_kb": 48.5,
   "gzip_kb": 13.3,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2956,7 +2956,7 @@
  {
   "page": "blog/skilky-tryvaie-remont-kvartyry-v-novobudovi.html",
   "kind": "article",
-  "html_kb": 59.3,
+  "html_kb": 59.1,
   "gzip_kb": 16.6,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2989,7 +2989,7 @@
  {
   "page": "blog/suchasnyi-minimalizm-teplyi-interier.html",
   "kind": "article",
-  "html_kb": 49.7,
+  "html_kb": 49.5,
   "gzip_kb": 14.0,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -3022,7 +3022,7 @@
  {
   "page": "blog/tekhnichnyi-nahliad-za-remontom-koly-potriben.html",
   "kind": "article",
-  "html_kb": 59.4,
+  "html_kb": 59.3,
   "gzip_kb": 16.8,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -3053,7 +3053,7 @@
  {
   "page": "blog/tekhnolohiia-budivnytstva-budynku-z-hazobloku-pokrokovo.html",
   "kind": "article",
-  "html_kb": 69.7,
+  "html_kb": 69.5,
   "gzip_kb": 19.6,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -3087,8 +3087,8 @@
  {
   "page": "blog/yak-splanuvaty-bazu-vidpochynku.html",
   "kind": "article",
-  "html_kb": 49.3,
-  "gzip_kb": 13.9,
+  "html_kb": 49.1,
+  "gzip_kb": 13.8,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -3121,7 +3121,7 @@
  {
   "page": "blog/yak-vidkryty-kafe-restoran-pid-kliuch.html",
   "kind": "article",
-  "html_kb": 53.4,
+  "html_kb": 53.2,
   "gzip_kb": 14.9,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -3154,7 +3154,7 @@
  {
   "page": "blog/yak-vybraty-dyzain-studiiu-kyiv-10-pytan.html",
   "kind": "article",
-  "html_kb": 49.9,
+  "html_kb": 49.8,
   "gzip_kb": 13.7,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -3187,8 +3187,8 @@
  {
   "page": "blog/yak-vybraty-dyzainera-interieru.html",
   "kind": "article",
-  "html_kb": 48.7,
-  "gzip_kb": 13.6,
+  "html_kb": 48.6,
+  "gzip_kb": 13.5,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -3218,8 +3218,8 @@
  {
   "page": "blog/yak-vybraty-remontnu-bryhadu.html",
   "kind": "article",
-  "html_kb": 49.7,
-  "gzip_kb": 14.0,
+  "html_kb": 49.6,
+  "gzip_kb": 13.9,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -3282,7 +3282,7 @@
  {
   "page": "budynok-pid-kliuch-koncha-zaspa.html",
   "kind": "land",
-  "html_kb": 55.4,
+  "html_kb": 55.3,
   "gzip_kb": 15.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3313,8 +3313,8 @@
  {
   "page": "budynok-z-brusa-kyiv.html",
   "kind": "land",
-  "html_kb": 50.4,
-  "gzip_kb": 14.5,
+  "html_kb": 50.3,
+  "gzip_kb": 14.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -3344,7 +3344,7 @@
  {
   "page": "budynok-z-hazobloku-pid-kliuch-kyiv.html",
   "kind": "land",
-  "html_kb": 47.3,
+  "html_kb": 47.2,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3375,7 +3375,7 @@
  {
   "page": "chornovyi-remont-kvartyry-kyiv.html",
   "kind": "land",
-  "html_kb": 43.4,
+  "html_kb": 43.3,
   "gzip_kb": 11.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3406,7 +3406,7 @@
  {
   "page": "contact.html",
   "kind": "main",
-  "html_kb": 40.9,
+  "html_kb": 40.8,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3437,7 +3437,7 @@
  {
   "page": "de/badsanierung.html",
   "kind": "land",
-  "html_kb": 38.3,
+  "html_kb": 38.2,
   "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3468,7 +3468,7 @@
  {
   "page": "de/bueroumbau.html",
   "kind": "land",
-  "html_kb": 39.2,
+  "html_kb": 39.1,
   "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3561,7 +3561,7 @@
  {
   "page": "de/faq.html",
   "kind": "land",
-  "html_kb": 37.1,
+  "html_kb": 37.0,
   "gzip_kb": 10.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3654,7 +3654,7 @@
  {
   "page": "de/gewerbe-schluesselfertig.html",
   "kind": "land",
-  "html_kb": 37.7,
+  "html_kb": 37.6,
   "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3685,7 +3685,7 @@
  {
   "page": "de/gewerberaeume-renovierung.html",
   "kind": "land",
-  "html_kb": 38.4,
+  "html_kb": 38.3,
   "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3716,7 +3716,7 @@
  {
   "page": "de/handwerkerteam.html",
   "kind": "land",
-  "html_kb": 39.4,
+  "html_kb": 39.3,
   "gzip_kb": 10.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3778,7 +3778,7 @@
  {
   "page": "de/hausplanung.html",
   "kind": "land",
-  "html_kb": 36.1,
+  "html_kb": 36.0,
   "gzip_kb": 9.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3809,7 +3809,7 @@
  {
   "page": "de/haussanierung.html",
   "kind": "land",
-  "html_kb": 38.2,
+  "html_kb": 38.1,
   "gzip_kb": 10.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3871,7 +3871,7 @@
  {
   "page": "de/innenarchitekt.html",
   "kind": "land",
-  "html_kb": 36.4,
+  "html_kb": 36.3,
   "gzip_kb": 10.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3964,7 +3964,7 @@
  {
   "page": "de/kuechenrenovierung.html",
   "kind": "land",
-  "html_kb": 37.5,
+  "html_kb": 37.4,
   "gzip_kb": 10.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3995,7 +3995,7 @@
  {
   "page": "de/leistungen.html",
   "kind": "land",
-  "html_kb": 38.1,
+  "html_kb": 38.0,
   "gzip_kb": 10.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4026,7 +4026,7 @@
  {
   "page": "de/neubauwohnung-ausbau.html",
   "kind": "land",
-  "html_kb": 38.1,
+  "html_kb": 38.0,
   "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4057,8 +4057,8 @@
  {
   "page": "de/objekteinrichtung.html",
   "kind": "land",
-  "html_kb": 39.1,
-  "gzip_kb": 10.7,
+  "html_kb": 39.0,
+  "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -4088,7 +4088,7 @@
  {
   "page": "de/renovierung-schluesselfertig.html",
   "kind": "land",
-  "html_kb": 43.1,
+  "html_kb": 43.0,
   "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4119,7 +4119,7 @@
  {
   "page": "de/renovierungskosten-rechner.html",
   "kind": "land",
-  "html_kb": 43.9,
+  "html_kb": 43.8,
   "gzip_kb": 12.8,
   "css_kb": 13.9,
   "js_kb": 1.4,
@@ -4215,8 +4215,8 @@
  {
   "page": "de/umsetzung-designprojekt.html",
   "kind": "land",
-  "html_kb": 37.3,
-  "gzip_kb": 10.7,
+  "html_kb": 37.2,
+  "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -4246,7 +4246,7 @@
  {
   "page": "de/wohnungsdesign.html",
   "kind": "land",
-  "html_kb": 37.1,
+  "html_kb": 37.0,
   "gzip_kb": 10.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4277,7 +4277,7 @@
  {
   "page": "dogovir-garantiya-oplata.html",
   "kind": "land",
-  "html_kb": 45.7,
+  "html_kb": 45.6,
   "gzip_kb": 12.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4308,7 +4308,7 @@
  {
   "page": "dyzain-hotelu-kyiv.html",
   "kind": "land",
-  "html_kb": 49.3,
+  "html_kb": 49.1,
   "gzip_kb": 13.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4339,8 +4339,8 @@
  {
   "page": "dyzain-i-remont-bila-tserkva.html",
   "kind": "land",
-  "html_kb": 40.7,
-  "gzip_kb": 11.5,
+  "html_kb": 40.5,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -4370,7 +4370,7 @@
  {
   "page": "dyzain-i-remont-boiarka.html",
   "kind": "land",
-  "html_kb": 40.5,
+  "html_kb": 40.4,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4401,7 +4401,7 @@
  {
   "page": "dyzain-i-remont-boryspil.html",
   "kind": "land",
-  "html_kb": 40.8,
+  "html_kb": 40.7,
   "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4432,7 +4432,7 @@
  {
   "page": "dyzain-i-remont-brovary.html",
   "kind": "land",
-  "html_kb": 41.0,
+  "html_kb": 40.8,
   "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4463,8 +4463,8 @@
  {
   "page": "dyzain-i-remont-bucha.html",
   "kind": "land",
-  "html_kb": 41.8,
-  "gzip_kb": 11.9,
+  "html_kb": 41.6,
+  "gzip_kb": 11.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -4494,8 +4494,8 @@
  {
   "page": "dyzain-i-remont-cherkasy.html",
   "kind": "land",
-  "html_kb": 40.6,
-  "gzip_kb": 11.5,
+  "html_kb": 40.5,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -4525,8 +4525,8 @@
  {
   "page": "dyzain-i-remont-chernihiv.html",
   "kind": "land",
-  "html_kb": 40.6,
-  "gzip_kb": 11.5,
+  "html_kb": 40.5,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -4556,8 +4556,8 @@
  {
   "page": "dyzain-i-remont-chernivtsi.html",
   "kind": "land",
-  "html_kb": 40.6,
-  "gzip_kb": 11.5,
+  "html_kb": 40.4,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -4587,7 +4587,7 @@
  {
   "page": "dyzain-i-remont-dnipro.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4618,8 +4618,8 @@
  {
   "page": "dyzain-i-remont-fastiv.html",
   "kind": "land",
-  "html_kb": 40.6,
-  "gzip_kb": 11.5,
+  "html_kb": 40.4,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -4649,7 +4649,7 @@
  {
   "page": "dyzain-i-remont-hostomel.html",
   "kind": "land",
-  "html_kb": 41.3,
+  "html_kb": 41.2,
   "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4680,7 +4680,7 @@
  {
   "page": "dyzain-i-remont-irpin.html",
   "kind": "land",
-  "html_kb": 42.7,
+  "html_kb": 42.6,
   "gzip_kb": 12.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4711,7 +4711,7 @@
  {
   "page": "dyzain-i-remont-ivano-frankivsk.html",
   "kind": "land",
-  "html_kb": 40.9,
+  "html_kb": 40.8,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4742,7 +4742,7 @@
  {
   "page": "dyzain-i-remont-khmelnytskyi.html",
   "kind": "land",
-  "html_kb": 40.5,
+  "html_kb": 40.4,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4773,8 +4773,8 @@
  {
   "page": "dyzain-i-remont-kropyvnytskyi.html",
   "kind": "land",
-  "html_kb": 40.7,
-  "gzip_kb": 11.5,
+  "html_kb": 40.5,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -4804,7 +4804,7 @@
  {
   "page": "dyzain-i-remont-kyivska-oblast.html",
   "kind": "land",
-  "html_kb": 47.9,
+  "html_kb": 47.7,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4835,7 +4835,7 @@
  {
   "page": "dyzain-i-remont-lutsk.html",
   "kind": "land",
-  "html_kb": 40.1,
+  "html_kb": 40.0,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4866,7 +4866,7 @@
  {
   "page": "dyzain-i-remont-lviv.html",
   "kind": "land",
-  "html_kb": 41.4,
+  "html_kb": 41.3,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4897,8 +4897,8 @@
  {
   "page": "dyzain-i-remont-mahazynu-shourumu-kyiv.html",
   "kind": "land",
-  "html_kb": 45.6,
-  "gzip_kb": 12.5,
+  "html_kb": 45.5,
+  "gzip_kb": 12.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -4928,7 +4928,7 @@
  {
   "page": "dyzain-i-remont-obukhiv.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4959,7 +4959,7 @@
  {
   "page": "dyzain-i-remont-odesa.html",
   "kind": "land",
-  "html_kb": 41.1,
+  "html_kb": 41.0,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4990,7 +4990,7 @@
  {
   "page": "dyzain-i-remont-penthausa-kyiv.html",
   "kind": "land",
-  "html_kb": 48.6,
+  "html_kb": 48.4,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5021,7 +5021,7 @@
  {
   "page": "dyzain-i-remont-poltava.html",
   "kind": "land",
-  "html_kb": 40.4,
+  "html_kb": 40.3,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5052,7 +5052,7 @@
  {
   "page": "dyzain-i-remont-rivne.html",
   "kind": "land",
-  "html_kb": 40.6,
+  "html_kb": 40.5,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5083,7 +5083,7 @@
  {
   "page": "dyzain-i-remont-ternopil.html",
   "kind": "land",
-  "html_kb": 40.4,
+  "html_kb": 40.3,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5114,8 +5114,8 @@
  {
   "page": "dyzain-i-remont-ukraina.html",
   "kind": "land",
-  "html_kb": 47.5,
-  "gzip_kb": 12.9,
+  "html_kb": 47.4,
+  "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -5145,8 +5145,8 @@
  {
   "page": "dyzain-i-remont-uzhhorod.html",
   "kind": "land",
-  "html_kb": 40.6,
-  "gzip_kb": 11.5,
+  "html_kb": 40.5,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -5176,7 +5176,7 @@
  {
   "page": "dyzain-i-remont-vasylkiv.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5207,8 +5207,8 @@
  {
   "page": "dyzain-i-remont-vinnytsia.html",
   "kind": "land",
-  "html_kb": 40.5,
-  "gzip_kb": 11.5,
+  "html_kb": 40.4,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -5238,7 +5238,7 @@
  {
   "page": "dyzain-i-remont-vyshhorod.html",
   "kind": "land",
-  "html_kb": 40.8,
+  "html_kb": 40.7,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5269,7 +5269,7 @@
  {
   "page": "dyzain-i-remont-vyshneve.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.5,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5300,7 +5300,7 @@
  {
   "page": "dyzain-i-remont-zhytomyr.html",
   "kind": "land",
-  "html_kb": 40.5,
+  "html_kb": 40.4,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5331,7 +5331,7 @@
  {
   "page": "dyzain-interieru-budynku-kyiv.html",
   "kind": "land",
-  "html_kb": 54.3,
+  "html_kb": 54.2,
   "gzip_kb": 14.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5362,7 +5362,7 @@
  {
   "page": "dyzain-interieru-kvartyry-kyiv.html",
   "kind": "land",
-  "html_kb": 51.9,
+  "html_kb": 51.8,
   "gzip_kb": 13.2,
   "css_kb": 13.0,
   "js_kb": 0.5,
@@ -5394,7 +5394,7 @@
   "page": "dyzain-interieru-kyiv.html",
   "kind": "land",
   "html_kb": 56.3,
-  "gzip_kb": 14.6,
+  "gzip_kb": 14.5,
   "css_kb": 13.4,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -5424,7 +5424,7 @@
  {
   "page": "dyzain-interieru-neoklasyka-kyiv.html",
   "kind": "land",
-  "html_kb": 47.8,
+  "html_kb": 47.7,
   "gzip_kb": 12.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5455,7 +5455,7 @@
  {
   "page": "dyzain-interieru-premium-kyiv.html",
   "kind": "land",
-  "html_kb": 53.0,
+  "html_kb": 52.8,
   "gzip_kb": 14.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5486,8 +5486,8 @@
  {
   "page": "dyzain-ofisu-kyiv.html",
   "kind": "land",
-  "html_kb": 52.2,
-  "gzip_kb": 14.1,
+  "html_kb": 52.0,
+  "gzip_kb": 14.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -5517,7 +5517,7 @@
  {
   "page": "dyzain-ofisu-open-space-kyiv.html",
   "kind": "land",
-  "html_kb": 50.4,
+  "html_kb": 50.2,
   "gzip_kb": 13.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5548,7 +5548,7 @@
  {
   "page": "dyzain-remont-kvartyry-pechersk.html",
   "kind": "land",
-  "html_kb": 48.8,
+  "html_kb": 48.6,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5610,8 +5610,8 @@
  {
   "page": "dyzainer-interieru-kyiv.html",
   "kind": "land",
-  "html_kb": 54.1,
-  "gzip_kb": 14.0,
+  "html_kb": 53.9,
+  "gzip_kb": 13.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -5641,7 +5641,7 @@
  {
   "page": "en/about.html",
   "kind": "land",
-  "html_kb": 47.3,
+  "html_kb": 47.2,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5708,8 +5708,8 @@
  {
   "page": "en/bathroom-renovation.html",
   "kind": "land",
-  "html_kb": 39.0,
-  "gzip_kb": 10.7,
+  "html_kb": 38.9,
+  "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -5739,8 +5739,8 @@
  {
   "page": "en/blog.html",
   "kind": "other",
-  "html_kb": 38.1,
-  "gzip_kb": 10.1,
+  "html_kb": 37.9,
+  "gzip_kb": 10.0,
   "css_kb": 13.5,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -5773,7 +5773,7 @@
  {
   "page": "en/business-fit-out.html",
   "kind": "land",
-  "html_kb": 38.9,
+  "html_kb": 38.8,
   "gzip_kb": 10.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5806,7 +5806,7 @@
  {
   "page": "en/commercial-renovation.html",
   "kind": "land",
-  "html_kb": 39.5,
+  "html_kb": 39.4,
   "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5868,7 +5868,7 @@
  {
   "page": "en/contract-warranty-payment.html",
   "kind": "land",
-  "html_kb": 38.4,
+  "html_kb": 38.3,
   "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5899,7 +5899,7 @@
  {
   "page": "en/design-implementation.html",
   "kind": "land",
-  "html_kb": 38.3,
+  "html_kb": 38.2,
   "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5931,7 +5931,7 @@
   "page": "en/faq.html",
   "kind": "land",
   "html_kb": 37.7,
-  "gzip_kb": 10.0,
+  "gzip_kb": 9.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -5964,7 +5964,7 @@
  {
   "page": "en/general-contractor-kyiv.html",
   "kind": "land",
-  "html_kb": 41.8,
+  "html_kb": 41.7,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5998,8 +5998,8 @@
  {
   "page": "en/hotel-design-fit-out.html",
   "kind": "land",
-  "html_kb": 39.6,
-  "gzip_kb": 11.4,
+  "html_kb": 39.5,
+  "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -6065,7 +6065,7 @@
  {
   "page": "en/house-design.html",
   "kind": "land",
-  "html_kb": 36.8,
+  "html_kb": 36.7,
   "gzip_kb": 9.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6099,8 +6099,8 @@
  {
   "page": "en/house-renovation.html",
   "kind": "land",
-  "html_kb": 39.2,
-  "gzip_kb": 10.6,
+  "html_kb": 39.1,
+  "gzip_kb": 10.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -6197,7 +6197,7 @@
  {
   "page": "en/interior-designer.html",
   "kind": "land",
-  "html_kb": 37.0,
+  "html_kb": 36.9,
   "gzip_kb": 10.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6230,7 +6230,7 @@
  {
   "page": "en/kitchen-renovation.html",
   "kind": "land",
-  "html_kb": 38.3,
+  "html_kb": 38.2,
   "gzip_kb": 10.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6292,7 +6292,7 @@
  {
   "page": "en/new-build-renovation.html",
   "kind": "land",
-  "html_kb": 38.7,
+  "html_kb": 38.6,
   "gzip_kb": 10.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6354,8 +6354,8 @@
  {
   "page": "en/ozdoba.html",
   "kind": "other",
-  "html_kb": 81.3,
-  "gzip_kb": 18.9,
+  "html_kb": 81.2,
+  "gzip_kb": 18.8,
   "css_kb": 30.7,
   "js_kb": 0.7,
   "font_sizes": 13,
@@ -6389,7 +6389,7 @@
  {
   "page": "en/privacy-policy.html",
   "kind": "land",
-  "html_kb": 28.3,
+  "html_kb": 28.2,
   "gzip_kb": 8.4,
   "css_kb": 13.2,
   "js_kb": 0.5,
@@ -6456,7 +6456,7 @@
  {
   "page": "en/renovation-crew.html",
   "kind": "land",
-  "html_kb": 39.9,
+  "html_kb": 39.8,
   "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6554,8 +6554,8 @@
  {
   "page": "en/restaurant-fit-out.html",
   "kind": "land",
-  "html_kb": 45.5,
-  "gzip_kb": 13.3,
+  "html_kb": 45.4,
+  "gzip_kb": 13.2,
   "css_kb": 13.3,
   "js_kb": 2.4,
   "font_sizes": 6,
@@ -6622,7 +6622,7 @@
  {
   "page": "en/turnkey-furnishing.html",
   "kind": "land",
-  "html_kb": 37.1,
+  "html_kb": 37.0,
   "gzip_kb": 10.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6653,7 +6653,7 @@
  {
   "page": "en/turnkey-procurement.html",
   "kind": "land",
-  "html_kb": 40.2,
+  "html_kb": 40.1,
   "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6873,7 +6873,7 @@
  {
   "page": "es/disenador-interiores.html",
   "kind": "land",
-  "html_kb": 37.1,
+  "html_kb": 37.0,
   "gzip_kb": 10.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6904,7 +6904,7 @@
  {
   "page": "es/diseno-interiores-piso.html",
   "kind": "land",
-  "html_kb": 37.3,
+  "html_kb": 37.2,
   "gzip_kb": 10.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6997,7 +6997,7 @@
  {
   "page": "es/ejecucion-proyecto-diseno.html",
   "kind": "land",
-  "html_kb": 37.6,
+  "html_kb": 37.5,
   "gzip_kb": 10.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7028,7 +7028,7 @@
  {
   "page": "es/equipamiento-llave-en-mano.html",
   "kind": "land",
-  "html_kb": 39.8,
+  "html_kb": 39.7,
   "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7059,8 +7059,8 @@
  {
   "page": "es/equipo-de-reformas.html",
   "kind": "land",
-  "html_kb": 39.7,
-  "gzip_kb": 10.8,
+  "html_kb": 39.6,
+  "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -7121,7 +7121,7 @@
  {
   "page": "es/negocio-llave-en-mano.html",
   "kind": "land",
-  "html_kb": 37.9,
+  "html_kb": 37.8,
   "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7183,8 +7183,8 @@
  {
   "page": "es/preguntas-frecuentes.html",
   "kind": "land",
-  "html_kb": 37.4,
-  "gzip_kb": 10.0,
+  "html_kb": 37.3,
+  "gzip_kb": 9.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -7214,8 +7214,8 @@
  {
   "page": "es/privacidad.html",
   "kind": "land",
-  "html_kb": 28.7,
-  "gzip_kb": 8.6,
+  "html_kb": 28.6,
+  "gzip_kb": 8.5,
   "css_kb": 13.2,
   "js_kb": 0.5,
   "font_sizes": 9,
@@ -7245,7 +7245,7 @@
  {
   "page": "es/proyecto-de-casa.html",
   "kind": "land",
-  "html_kb": 36.7,
+  "html_kb": 36.6,
   "gzip_kb": 9.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7276,7 +7276,7 @@
  {
   "page": "es/reforma-bano.html",
   "kind": "land",
-  "html_kb": 38.6,
+  "html_kb": 38.5,
   "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7307,7 +7307,7 @@
  {
   "page": "es/reforma-casa-llave-en-mano.html",
   "kind": "land",
-  "html_kb": 38.7,
+  "html_kb": 38.6,
   "gzip_kb": 10.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7338,8 +7338,8 @@
  {
   "page": "es/reforma-cocina.html",
   "kind": "land",
-  "html_kb": 37.8,
-  "gzip_kb": 10.4,
+  "html_kb": 37.7,
+  "gzip_kb": 10.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -7400,7 +7400,7 @@
  {
   "page": "es/reforma-locales-comerciales.html",
   "kind": "land",
-  "html_kb": 38.4,
+  "html_kb": 38.3,
   "gzip_kb": 10.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7431,7 +7431,7 @@
  {
   "page": "es/reforma-obra-nueva.html",
   "kind": "land",
-  "html_kb": 38.6,
+  "html_kb": 38.5,
   "gzip_kb": 10.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7679,7 +7679,7 @@
  {
   "page": "fr/base-de-loisirs-cle-en-main.html",
   "kind": "land",
-  "html_kb": 43.3,
+  "html_kb": 43.2,
   "gzip_kb": 12.2,
   "css_kb": 13.3,
   "js_kb": 2.7,
@@ -7710,7 +7710,7 @@
  {
   "page": "fr/calculateur-renovation.html",
   "kind": "land",
-  "html_kb": 44.6,
+  "html_kb": 44.5,
   "gzip_kb": 12.8,
   "css_kb": 13.9,
   "js_kb": 1.4,
@@ -7744,8 +7744,8 @@
  {
   "page": "fr/commerce-cle-en-main.html",
   "kind": "land",
-  "html_kb": 38.1,
-  "gzip_kb": 10.8,
+  "html_kb": 38.0,
+  "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -7775,8 +7775,8 @@
  {
   "page": "fr/conception-maison.html",
   "kind": "land",
-  "html_kb": 36.8,
-  "gzip_kb": 10.0,
+  "html_kb": 36.7,
+  "gzip_kb": 9.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -7806,7 +7806,7 @@
  {
   "page": "fr/confidentialite.html",
   "kind": "land",
-  "html_kb": 29.2,
+  "html_kb": 29.1,
   "gzip_kb": 8.7,
   "css_kb": 13.2,
   "js_kb": 0.5,
@@ -7899,7 +7899,7 @@
  {
   "page": "fr/design-appartement.html",
   "kind": "land",
-  "html_kb": 37.3,
+  "html_kb": 37.2,
   "gzip_kb": 10.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7961,7 +7961,7 @@
  {
   "page": "fr/designer-interieur.html",
   "kind": "land",
-  "html_kb": 37.1,
+  "html_kb": 37.0,
   "gzip_kb": 10.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7992,7 +7992,7 @@
  {
   "page": "fr/equipe-renovation.html",
   "kind": "land",
-  "html_kb": 40.0,
+  "html_kb": 39.9,
   "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8023,7 +8023,7 @@
  {
   "page": "fr/equipement-cle-en-main.html",
   "kind": "land",
-  "html_kb": 39.9,
+  "html_kb": 39.8,
   "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8054,8 +8054,8 @@
  {
   "page": "fr/faq.html",
   "kind": "land",
-  "html_kb": 37.4,
-  "gzip_kb": 10.0,
+  "html_kb": 37.3,
+  "gzip_kb": 9.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -8116,7 +8116,7 @@
  {
   "page": "fr/realisation-projet.html",
   "kind": "land",
-  "html_kb": 37.6,
+  "html_kb": 37.5,
   "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8147,8 +8147,8 @@
  {
   "page": "fr/renovation-appartement-neuf.html",
   "kind": "land",
-  "html_kb": 38.6,
-  "gzip_kb": 10.6,
+  "html_kb": 38.5,
+  "gzip_kb": 10.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -8240,7 +8240,7 @@
  {
   "page": "fr/renovation-cuisine.html",
   "kind": "land",
-  "html_kb": 38.1,
+  "html_kb": 38.0,
   "gzip_kb": 10.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8302,7 +8302,7 @@
  {
   "page": "fr/renovation-maison-cle-en-main.html",
   "kind": "land",
-  "html_kb": 38.7,
+  "html_kb": 38.6,
   "gzip_kb": 10.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8333,8 +8333,8 @@
  {
   "page": "fr/renovation-salle-de-bain.html",
   "kind": "land",
-  "html_kb": 39.0,
-  "gzip_kb": 10.7,
+  "html_kb": 38.9,
+  "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -8364,7 +8364,7 @@
  {
   "page": "fr/services.html",
   "kind": "land",
-  "html_kb": 38.7,
+  "html_kb": 38.6,
   "gzip_kb": 10.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8395,7 +8395,7 @@
  {
   "page": "heneralnyi-pidriadnyk-kyiv.html",
   "kind": "land",
-  "html_kb": 52.7,
+  "html_kb": 52.6,
   "gzip_kb": 14.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8770,8 +8770,8 @@
  {
   "page": "kapitalnyi-remont-kvartyry-kyiv.html",
   "kind": "land",
-  "html_kb": 61.8,
-  "gzip_kb": 17.3,
+  "html_kb": 61.6,
+  "gzip_kb": 17.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -8801,7 +8801,7 @@
  {
   "page": "karkasnyi-budynok-pid-kliuch-kyiv.html",
   "kind": "land",
-  "html_kb": 53.1,
+  "html_kb": 53.0,
   "gzip_kb": 15.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8832,8 +8832,8 @@
  {
   "page": "komplektatsiia-pid-kliuch-kyiv.html",
   "kind": "land",
-  "html_kb": 53.0,
-  "gzip_kb": 13.7,
+  "html_kb": 52.9,
+  "gzip_kb": 13.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -8863,7 +8863,7 @@
  {
   "page": "konfidentsiinist.html",
   "kind": "land",
-  "html_kb": 32.6,
+  "html_kb": 32.5,
   "gzip_kb": 9.7,
   "css_kb": 13.2,
   "js_kb": 0.5,
@@ -8925,7 +8925,7 @@
  {
   "page": "kosmetychnyi-remont-kvartyry-kyiv.html",
   "kind": "land",
-  "html_kb": 43.5,
+  "html_kb": 43.4,
   "gzip_kb": 12.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8956,8 +8956,8 @@
  {
   "page": "kukhni-i-shafy-na-zamovlennia-kyiv.html",
   "kind": "land",
-  "html_kb": 42.7,
-  "gzip_kb": 11.7,
+  "html_kb": 42.6,
+  "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -9049,7 +9049,7 @@
  {
   "page": "modulnyi-budynok-kyiv.html",
   "kind": "land",
-  "html_kb": 51.4,
+  "html_kb": 51.3,
   "gzip_kb": 14.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -9080,7 +9080,7 @@
  {
   "page": "oblashtuvannia-ofisu-pid-kliuch-kyiv.html",
   "kind": "land",
-  "html_kb": 46.4,
+  "html_kb": 46.3,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -9111,8 +9111,8 @@
  {
   "page": "onlain-kontrol.html",
   "kind": "land",
-  "html_kb": 53.7,
-  "gzip_kb": 14.1,
+  "html_kb": 53.6,
+  "gzip_kb": 14.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -9142,12 +9142,12 @@
  {
   "page": "ozdoba.html",
   "kind": "other",
-  "html_kb": 103.2,
-  "gzip_kb": 23.0,
+  "html_kb": 103.4,
+  "gzip_kb": 23.1,
   "css_kb": 30.1,
   "js_kb": 0.7,
   "font_sizes": 13,
-  "tags": 760,
+  "tags": 766,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -11220,7 +11220,7 @@
   "page": "ozdoba/kamin-kolona-prystinnyi-na-drovakh-stal-507.html",
   "kind": "other",
   "html_kb": 58.8,
-  "gzip_kb": 15.4,
+  "gzip_kb": 15.3,
   "css_kb": 32.4,
   "js_kb": 0.7,
   "font_sizes": 14,
@@ -19496,7 +19496,7 @@
  {
   "page": "pereplanuvannia-kvartyry-kyiv.html",
   "kind": "land",
-  "html_kb": 50.1,
+  "html_kb": 50.0,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -19527,7 +19527,7 @@
  {
   "page": "pl/biznes-pod-klucz.html",
   "kind": "land",
-  "html_kb": 38.0,
+  "html_kb": 37.9,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -19558,8 +19558,8 @@
  {
   "page": "pl/blog.html",
   "kind": "other",
-  "html_kb": 38.4,
-  "gzip_kb": 10.5,
+  "html_kb": 38.1,
+  "gzip_kb": 10.4,
   "css_kb": 13.5,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -19620,8 +19620,8 @@
  {
   "page": "pl/ekipa-remontowa.html",
   "kind": "land",
-  "html_kb": 39.3,
-  "gzip_kb": 11.1,
+  "html_kb": 39.2,
+  "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -19652,7 +19652,7 @@
   "page": "pl/faq.html",
   "kind": "land",
   "html_kb": 36.6,
-  "gzip_kb": 10.3,
+  "gzip_kb": 10.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -19713,7 +19713,7 @@
  {
   "page": "pl/kalkulator-remontu.html",
   "kind": "land",
-  "html_kb": 43.5,
+  "html_kb": 43.4,
   "gzip_kb": 12.9,
   "css_kb": 13.9,
   "js_kb": 1.4,
@@ -19747,7 +19747,7 @@
  {
   "page": "pl/kompletacja-wnetrz.html",
   "kind": "land",
-  "html_kb": 39.7,
+  "html_kb": 39.6,
   "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -19809,8 +19809,8 @@
  {
   "page": "pl/o-studiu.html",
   "kind": "land",
-  "html_kb": 44.3,
-  "gzip_kb": 12.9,
+  "html_kb": 44.2,
+  "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -19840,7 +19840,7 @@
  {
   "page": "pl/osrodek-wypoczynkowy-pod-klucz.html",
   "kind": "land",
-  "html_kb": 42.8,
+  "html_kb": 42.7,
   "gzip_kb": 12.4,
   "css_kb": 13.3,
   "js_kb": 2.5,
@@ -19871,7 +19871,7 @@
  {
   "page": "pl/ozdoba.html",
   "kind": "other",
-  "html_kb": 82.3,
+  "html_kb": 82.2,
   "gzip_kb": 19.6,
   "css_kb": 30.7,
   "js_kb": 0.7,
@@ -19902,8 +19902,8 @@
  {
   "page": "pl/polityka-prywatnosci.html",
   "kind": "land",
-  "html_kb": 28.8,
-  "gzip_kb": 8.8,
+  "html_kb": 28.7,
+  "gzip_kb": 8.7,
   "css_kb": 13.2,
   "js_kb": 0.5,
   "font_sizes": 9,
@@ -19933,7 +19933,7 @@
  {
   "page": "pl/projekt-domu.html",
   "kind": "land",
-  "html_kb": 36.2,
+  "html_kb": 36.1,
   "gzip_kb": 10.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -20119,8 +20119,8 @@
  {
   "page": "pl/realizacja-projektu.html",
   "kind": "land",
-  "html_kb": 37.5,
-  "gzip_kb": 10.9,
+  "html_kb": 37.4,
+  "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -20181,7 +20181,7 @@
  {
   "page": "pl/remont-domu.html",
   "kind": "land",
-  "html_kb": 38.6,
+  "html_kb": 38.5,
   "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -20212,7 +20212,7 @@
  {
   "page": "pl/remont-kuchni.html",
   "kind": "land",
-  "html_kb": 37.7,
+  "html_kb": 37.6,
   "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -20243,7 +20243,7 @@
  {
   "page": "pl/remont-lazienki.html",
   "kind": "land",
-  "html_kb": 38.6,
+  "html_kb": 38.5,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -20274,7 +20274,7 @@
  {
   "page": "pl/remont-lokali-uzytkowych.html",
   "kind": "land",
-  "html_kb": 38.6,
+  "html_kb": 38.5,
   "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -20305,7 +20305,7 @@
  {
   "page": "pl/remont-mieszkania-deweloperskiego.html",
   "kind": "land",
-  "html_kb": 38.2,
+  "html_kb": 38.1,
   "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -20398,7 +20398,7 @@
  {
   "page": "pl/uslugi.html",
   "kind": "land",
-  "html_kb": 38.2,
+  "html_kb": 38.1,
   "gzip_kb": 10.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -20429,7 +20429,7 @@
  {
   "page": "portfolio.html",
   "kind": "main",
-  "html_kb": 257.9,
+  "html_kb": 257.7,
   "gzip_kb": 30.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -20460,7 +20460,7 @@
  {
   "page": "proektuvannia-budynku-kyiv.html",
   "kind": "land",
-  "html_kb": 49.1,
+  "html_kb": 49.0,
   "gzip_kb": 12.7,
   "css_kb": 13.0,
   "js_kb": 0.5,
@@ -20491,7 +20491,7 @@
  {
   "page": "proekty/a-frame-house.html",
   "kind": "land",
-  "html_kb": 31.3,
+  "html_kb": 31.2,
   "gzip_kb": 7.4,
   "css_kb": 1.9,
   "js_kb": 0.7,
@@ -20545,7 +20545,7 @@
  {
   "page": "proekty/dolls-salon.html",
   "kind": "land",
-  "html_kb": 28.0,
+  "html_kb": 27.9,
   "gzip_kb": 7.1,
   "css_kb": 1.9,
   "js_kb": 0.7,
@@ -20572,7 +20572,7 @@
  {
   "page": "proekty/dubai-villa.html",
   "kind": "land",
-  "html_kb": 39.5,
+  "html_kb": 39.4,
   "gzip_kb": 8.2,
   "css_kb": 1.9,
   "js_kb": 0.7,
@@ -20599,7 +20599,7 @@
  {
   "page": "proekty/edelweiss.html",
   "kind": "land",
-  "html_kb": 45.5,
+  "html_kb": 45.4,
   "gzip_kb": 8.9,
   "css_kb": 1.9,
   "js_kb": 0.7,
@@ -20654,7 +20654,7 @@
   "page": "proekty/hodos-villa.html",
   "kind": "land",
   "html_kb": 49.8,
-  "gzip_kb": 9.8,
+  "gzip_kb": 9.7,
   "css_kb": 1.9,
   "js_kb": 0.7,
   "font_sizes": 0,
@@ -20680,7 +20680,7 @@
  {
   "page": "proekty/house-150.html",
   "kind": "land",
-  "html_kb": 29.4,
+  "html_kb": 29.3,
   "gzip_kb": 7.4,
   "css_kb": 1.9,
   "js_kb": 0.7,
@@ -20734,7 +20734,7 @@
  {
   "page": "proekty/linden-penthouse.html",
   "kind": "land",
-  "html_kb": 59.0,
+  "html_kb": 58.9,
   "gzip_kb": 10.8,
   "css_kb": 1.9,
   "js_kb": 0.7,
@@ -20761,7 +20761,7 @@
  {
   "page": "proekty/monpark-povnyi-proekt.html",
   "kind": "land",
-  "html_kb": 57.4,
+  "html_kb": 57.3,
   "gzip_kb": 13.3,
   "css_kb": 14.2,
   "js_kb": 1.1,
@@ -20792,7 +20792,7 @@
  {
   "page": "proekty/monpark.html",
   "kind": "land",
-  "html_kb": 30.4,
+  "html_kb": 30.3,
   "gzip_kb": 7.5,
   "css_kb": 1.9,
   "js_kb": 0.7,
@@ -20819,7 +20819,7 @@
  {
   "page": "proekty/office-chicago.html",
   "kind": "land",
-  "html_kb": 29.5,
+  "html_kb": 29.4,
   "gzip_kb": 7.2,
   "css_kb": 1.9,
   "js_kb": 0.7,
@@ -20846,8 +20846,8 @@
  {
   "page": "proekty/petrivtsi-house.html",
   "kind": "land",
-  "html_kb": 62.8,
-  "gzip_kb": 11.2,
+  "html_kb": 62.7,
+  "gzip_kb": 11.1,
   "css_kb": 1.9,
   "js_kb": 0.8,
   "font_sizes": 0,
@@ -20873,8 +20873,8 @@
  {
   "page": "proekty/pidgirland.html",
   "kind": "land",
-  "html_kb": 56.0,
-  "gzip_kb": 10.3,
+  "html_kb": 55.9,
+  "gzip_kb": 10.2,
   "css_kb": 1.9,
   "js_kb": 0.7,
   "font_sizes": 0,
@@ -20954,7 +20954,7 @@
  {
   "page": "proekty/usa-house.html",
   "kind": "land",
-  "html_kb": 35.7,
+  "html_kb": 35.6,
   "gzip_kb": 7.8,
   "css_kb": 1.9,
   "js_kb": 0.7,
@@ -20981,7 +20981,7 @@
  {
   "page": "proekty/yablu-rest.html",
   "kind": "land",
-  "html_kb": 28.9,
+  "html_kb": 28.8,
   "gzip_kb": 7.1,
   "css_kb": 1.9,
   "js_kb": 0.7,
@@ -21035,7 +21035,7 @@
  {
   "page": "proekty/yacht-vip.html",
   "kind": "land",
-  "html_kb": 43.3,
+  "html_kb": 43.2,
   "gzip_kb": 8.4,
   "css_kb": 1.9,
   "js_kb": 0.7,
@@ -21062,7 +21062,7 @@
  {
   "page": "pytannya.html",
   "kind": "land",
-  "html_kb": 55.8,
+  "html_kb": 55.7,
   "gzip_kb": 13.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21093,8 +21093,8 @@
  {
   "page": "realizatsiia-dyzain-proektu-kyiv.html",
   "kind": "land",
-  "html_kb": 49.3,
-  "gzip_kb": 13.1,
+  "html_kb": 49.2,
+  "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -21155,7 +21155,7 @@
  {
   "page": "rekonstruktsiia-budynku-kyiv.html",
   "kind": "land",
-  "html_kb": 47.7,
+  "html_kb": 47.5,
   "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21186,7 +21186,7 @@
  {
   "page": "remont-budynku-pid-klyuch-kyiv.html",
   "kind": "land",
-  "html_kb": 50.3,
+  "html_kb": 50.2,
   "gzip_kb": 13.0,
   "css_kb": 13.0,
   "js_kb": 0.5,
@@ -21217,7 +21217,7 @@
  {
   "page": "remont-i-budivnytstvo-yevropa.html",
   "kind": "land",
-  "html_kb": 44.5,
+  "html_kb": 44.3,
   "gzip_kb": 12.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21248,8 +21248,8 @@
  {
   "page": "remont-komertsiinykh-prymishchen-kyiv.html",
   "kind": "land",
-  "html_kb": 47.4,
-  "gzip_kb": 12.5,
+  "html_kb": 47.3,
+  "gzip_kb": 12.4,
   "css_kb": 13.1,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -21279,7 +21279,7 @@
  {
   "page": "remont-kukhni-kyiv.html",
   "kind": "land",
-  "html_kb": 44.9,
+  "html_kb": 44.8,
   "gzip_kb": 12.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21341,8 +21341,8 @@
  {
   "page": "remont-kvartyr-zhk-kyiv.html",
   "kind": "land",
-  "html_kb": 49.2,
-  "gzip_kb": 13.3,
+  "html_kb": 49.0,
+  "gzip_kb": 13.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -21372,7 +21372,7 @@
  {
   "page": "remont-kvartyry-zhk-a136-highlight-tower.html",
   "kind": "land",
-  "html_kb": 46.6,
+  "html_kb": 46.5,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21403,8 +21403,8 @@
  {
   "page": "remont-kvartyry-zhk-bulvar-fontaniv.html",
   "kind": "land",
-  "html_kb": 47.1,
-  "gzip_kb": 12.9,
+  "html_kb": 47.0,
+  "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -21434,7 +21434,7 @@
  {
   "page": "remont-kvartyry-zhk-edeldorf-hills.html",
   "kind": "land",
-  "html_kb": 47.4,
+  "html_kb": 47.3,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21465,8 +21465,8 @@
  {
   "page": "remont-kvartyry-zhk-greenville-na-pechersku.html",
   "kind": "land",
-  "html_kb": 47.7,
-  "gzip_kb": 13.0,
+  "html_kb": 47.6,
+  "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -21496,7 +21496,7 @@
  {
   "page": "remont-kvartyry-zhk-hvardiiskyi.html",
   "kind": "land",
-  "html_kb": 46.9,
+  "html_kb": 46.8,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21527,7 +21527,7 @@
  {
   "page": "remont-kvartyry-zhk-life-story.html",
   "kind": "land",
-  "html_kb": 46.4,
+  "html_kb": 46.2,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21558,7 +21558,7 @@
  {
   "page": "remont-kvartyry-zhk-linden-luxury-residences.html",
   "kind": "land",
-  "html_kb": 47.4,
+  "html_kb": 47.3,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21589,7 +21589,7 @@
  {
   "page": "remont-kvartyry-zhk-maxima-residence.html",
   "kind": "land",
-  "html_kb": 47.1,
+  "html_kb": 47.0,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21620,7 +21620,7 @@
  {
   "page": "remont-kvartyry-zhk-montreal-house.html",
   "kind": "land",
-  "html_kb": 46.5,
+  "html_kb": 46.4,
   "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21651,7 +21651,7 @@
  {
   "page": "remont-kvartyry-zhk-nordica-residence.html",
   "kind": "land",
-  "html_kb": 46.9,
+  "html_kb": 46.8,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21682,8 +21682,8 @@
  {
   "page": "remont-kvartyry-zhk-novopecherski-lypky.html",
   "kind": "land",
-  "html_kb": 48.2,
-  "gzip_kb": 13.1,
+  "html_kb": 48.0,
+  "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -21713,8 +21713,8 @@
  {
   "page": "remont-kvartyry-zhk-novyi-avtohraf.html",
   "kind": "land",
-  "html_kb": 46.6,
-  "gzip_kb": 12.8,
+  "html_kb": 46.5,
+  "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -21744,7 +21744,7 @@
  {
   "page": "remont-kvartyry-zhk-podil-hrad.html",
   "kind": "land",
-  "html_kb": 47.2,
+  "html_kb": 47.1,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21775,8 +21775,8 @@
  {
   "page": "remont-kvartyry-zhk-respublika.html",
   "kind": "land",
-  "html_kb": 46.8,
-  "gzip_kb": 12.8,
+  "html_kb": 46.7,
+  "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -21806,7 +21806,7 @@
  {
   "page": "remont-kvartyry-zhk-rusaniv-residence.html",
   "kind": "land",
-  "html_kb": 46.8,
+  "html_kb": 46.7,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21837,8 +21837,8 @@
  {
   "page": "remont-kvartyry-zhk-senat.html",
   "kind": "land",
-  "html_kb": 46.4,
-  "gzip_kb": 12.9,
+  "html_kb": 46.3,
+  "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -21868,8 +21868,8 @@
  {
   "page": "remont-kvartyry-zhk-taryan-towers.html",
   "kind": "land",
-  "html_kb": 47.2,
-  "gzip_kb": 13.0,
+  "html_kb": 47.1,
+  "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -21899,8 +21899,8 @@
  {
   "page": "remont-kvartyry-zhk-triiinity.html",
   "kind": "land",
-  "html_kb": 47.5,
-  "gzip_kb": 13.1,
+  "html_kb": 47.4,
+  "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -21930,7 +21930,7 @@
  {
   "page": "remont-kvartyry-zhk-unit-home.html",
   "kind": "land",
-  "html_kb": 49.4,
+  "html_kb": 49.3,
   "gzip_kb": 13.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -21961,7 +21961,7 @@
  {
   "page": "remont-novobudovy-kyiv.html",
   "kind": "land",
-  "html_kb": 56.3,
+  "html_kb": 56.2,
   "gzip_kb": 15.5,
   "css_kb": 13.1,
   "js_kb": 0.5,
@@ -22054,7 +22054,7 @@
  {
   "page": "remont-premium-klasu-kyiv.html",
   "kind": "land",
-  "html_kb": 52.0,
+  "html_kb": 51.8,
   "gzip_kb": 13.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22085,7 +22085,7 @@
  {
   "page": "remont-restoranu-kafe-kyiv.html",
   "kind": "land",
-  "html_kb": 57.6,
+  "html_kb": 57.4,
   "gzip_kb": 16.2,
   "css_kb": 13.3,
   "js_kb": 3.3,
@@ -22116,7 +22116,7 @@
  {
   "page": "remont-taunkhausa-kyiv.html",
   "kind": "land",
-  "html_kb": 46.1,
+  "html_kb": 46.0,
   "gzip_kb": 12.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22147,8 +22147,8 @@
  {
   "page": "remont-vannoi-kimnaty-kyiv.html",
   "kind": "land",
-  "html_kb": 46.2,
-  "gzip_kb": 12.4,
+  "html_kb": 46.1,
+  "gzip_kb": 12.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22178,8 +22178,8 @@
  {
   "page": "remontna-bryhada-kyiv.html",
   "kind": "land",
-  "html_kb": 48.9,
-  "gzip_kb": 12.8,
+  "html_kb": 48.8,
+  "gzip_kb": 12.7,
   "css_kb": 13.1,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22209,8 +22209,8 @@
  {
   "page": "ru/avtorskiy-i-tehnicheskiy-nadzor-kiev.html",
   "kind": "land",
-  "html_kb": 46.2,
-  "gzip_kb": 12.5,
+  "html_kb": 46.1,
+  "gzip_kb": 12.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22241,7 +22241,7 @@
   "page": "ru/baza-otdyha-pod-klyuch.html",
   "kind": "land",
   "html_kb": 56.5,
-  "gzip_kb": 15.5,
+  "gzip_kb": 15.4,
   "css_kb": 13.3,
   "js_kb": 3.4,
   "font_sizes": 6,
@@ -22271,8 +22271,8 @@
  {
   "page": "ru/biznes-pod-klyuch-kiev.html",
   "kind": "land",
-  "html_kb": 52.9,
-  "gzip_kb": 13.8,
+  "html_kb": 52.8,
+  "gzip_kb": 13.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22304,8 +22304,8 @@
  {
   "page": "ru/blog.html",
   "kind": "other",
-  "html_kb": 74.9,
-  "gzip_kb": 18.9,
+  "html_kb": 74.2,
+  "gzip_kb": 18.7,
   "css_kb": 13.5,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22335,8 +22335,8 @@
  {
   "page": "ru/chernovoy-remont-kvartiry-kiev.html",
   "kind": "land",
-  "html_kb": 43.4,
-  "gzip_kb": 11.9,
+  "html_kb": 43.3,
+  "gzip_kb": 11.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22366,8 +22366,8 @@
  {
   "page": "ru/dizayn-gostinitsy-kiev.html",
   "kind": "land",
-  "html_kb": 49.4,
-  "gzip_kb": 13.4,
+  "html_kb": 49.2,
+  "gzip_kb": 13.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22397,8 +22397,8 @@
  {
   "page": "ru/dizayn-i-remont-belaya-tserkov.html",
   "kind": "land",
-  "html_kb": 40.8,
-  "gzip_kb": 11.5,
+  "html_kb": 40.7,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22428,7 +22428,7 @@
  {
   "page": "ru/dizayn-i-remont-borispol.html",
   "kind": "land",
-  "html_kb": 40.9,
+  "html_kb": 40.8,
   "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22459,8 +22459,8 @@
  {
   "page": "ru/dizayn-i-remont-boyarka.html",
   "kind": "land",
-  "html_kb": 40.5,
-  "gzip_kb": 11.6,
+  "html_kb": 40.4,
+  "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22490,7 +22490,7 @@
  {
   "page": "ru/dizayn-i-remont-brovary.html",
   "kind": "land",
-  "html_kb": 41.0,
+  "html_kb": 40.9,
   "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22521,8 +22521,8 @@
  {
   "page": "ru/dizayn-i-remont-bucha.html",
   "kind": "land",
-  "html_kb": 41.8,
-  "gzip_kb": 11.9,
+  "html_kb": 41.7,
+  "gzip_kb": 11.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22552,8 +22552,8 @@
  {
   "page": "ru/dizayn-i-remont-cherkassy.html",
   "kind": "land",
-  "html_kb": 40.6,
-  "gzip_kb": 11.5,
+  "html_kb": 40.5,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22583,7 +22583,7 @@
  {
   "page": "ru/dizayn-i-remont-chernigov.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22614,8 +22614,8 @@
  {
   "page": "ru/dizayn-i-remont-chernovtsy.html",
   "kind": "land",
-  "html_kb": 40.5,
-  "gzip_kb": 11.5,
+  "html_kb": 40.4,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22645,7 +22645,7 @@
  {
   "page": "ru/dizayn-i-remont-dnepr.html",
   "kind": "land",
-  "html_kb": 40.8,
+  "html_kb": 40.7,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22676,8 +22676,8 @@
  {
   "page": "ru/dizayn-i-remont-fastov.html",
   "kind": "land",
-  "html_kb": 40.6,
-  "gzip_kb": 11.5,
+  "html_kb": 40.5,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22707,8 +22707,8 @@
  {
   "page": "ru/dizayn-i-remont-gostomel.html",
   "kind": "land",
-  "html_kb": 41.2,
-  "gzip_kb": 11.7,
+  "html_kb": 41.1,
+  "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22738,7 +22738,7 @@
  {
   "page": "ru/dizayn-i-remont-hmelnitskiy.html",
   "kind": "land",
-  "html_kb": 40.5,
+  "html_kb": 40.4,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22769,7 +22769,7 @@
  {
   "page": "ru/dizayn-i-remont-irpen.html",
   "kind": "land",
-  "html_kb": 42.8,
+  "html_kb": 42.7,
   "gzip_kb": 12.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22800,7 +22800,7 @@
  {
   "page": "ru/dizayn-i-remont-ivano-frankovsk.html",
   "kind": "land",
-  "html_kb": 40.9,
+  "html_kb": 40.8,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22831,7 +22831,7 @@
  {
   "page": "ru/dizayn-i-remont-kievskaya-oblast.html",
   "kind": "land",
-  "html_kb": 48.0,
+  "html_kb": 47.8,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22862,7 +22862,7 @@
  {
   "page": "ru/dizayn-i-remont-kropivnitskiy.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22893,7 +22893,7 @@
  {
   "page": "ru/dizayn-i-remont-lutsk.html",
   "kind": "land",
-  "html_kb": 40.2,
+  "html_kb": 40.1,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22924,7 +22924,7 @@
  {
   "page": "ru/dizayn-i-remont-lvov.html",
   "kind": "land",
-  "html_kb": 41.6,
+  "html_kb": 41.5,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22955,7 +22955,7 @@
  {
   "page": "ru/dizayn-i-remont-magazina-shouruma-kiev.html",
   "kind": "land",
-  "html_kb": 45.7,
+  "html_kb": 45.6,
   "gzip_kb": 12.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22986,7 +22986,7 @@
  {
   "page": "ru/dizayn-i-remont-obuhov.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23017,7 +23017,7 @@
  {
   "page": "ru/dizayn-i-remont-odessa.html",
   "kind": "land",
-  "html_kb": 41.2,
+  "html_kb": 41.1,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23048,8 +23048,8 @@
  {
   "page": "ru/dizayn-i-remont-penthausa-kiev.html",
   "kind": "land",
-  "html_kb": 48.7,
-  "gzip_kb": 13.1,
+  "html_kb": 48.6,
+  "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -23079,7 +23079,7 @@
  {
   "page": "ru/dizayn-i-remont-poltava.html",
   "kind": "land",
-  "html_kb": 40.4,
+  "html_kb": 40.3,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23110,7 +23110,7 @@
  {
   "page": "ru/dizayn-i-remont-rovno.html",
   "kind": "land",
-  "html_kb": 40.6,
+  "html_kb": 40.5,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23141,7 +23141,7 @@
  {
   "page": "ru/dizayn-i-remont-ternopol.html",
   "kind": "land",
-  "html_kb": 40.6,
+  "html_kb": 40.5,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23172,8 +23172,8 @@
  {
   "page": "ru/dizayn-i-remont-ukraina.html",
   "kind": "land",
-  "html_kb": 47.7,
-  "gzip_kb": 12.9,
+  "html_kb": 47.5,
+  "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -23203,7 +23203,7 @@
  {
   "page": "ru/dizayn-i-remont-uzhgorod.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23234,7 +23234,7 @@
  {
   "page": "ru/dizayn-i-remont-vasilkov.html",
   "kind": "land",
-  "html_kb": 40.8,
+  "html_kb": 40.6,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23265,7 +23265,7 @@
  {
   "page": "ru/dizayn-i-remont-vinnitsa.html",
   "kind": "land",
-  "html_kb": 40.5,
+  "html_kb": 40.4,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23296,7 +23296,7 @@
  {
   "page": "ru/dizayn-i-remont-vishnevoe.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23327,7 +23327,7 @@
  {
   "page": "ru/dizayn-i-remont-vyshgorod.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.5,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23358,8 +23358,8 @@
  {
   "page": "ru/dizayn-i-remont-zhitomir.html",
   "kind": "land",
-  "html_kb": 40.4,
-  "gzip_kb": 11.4,
+  "html_kb": 40.3,
+  "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -23389,7 +23389,7 @@
  {
   "page": "ru/dizayn-interera-doma-kiev.html",
   "kind": "land",
-  "html_kb": 54.3,
+  "html_kb": 54.1,
   "gzip_kb": 14.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23420,7 +23420,7 @@
  {
   "page": "ru/dizayn-interera-kiev.html",
   "kind": "land",
-  "html_kb": 56.1,
+  "html_kb": 56.0,
   "gzip_kb": 14.7,
   "css_kb": 13.7,
   "js_kb": 0.5,
@@ -23451,7 +23451,7 @@
  {
   "page": "ru/dizayn-interera-neoklassika-kiev.html",
   "kind": "land",
-  "html_kb": 47.9,
+  "html_kb": 47.8,
   "gzip_kb": 12.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23482,7 +23482,7 @@
  {
   "page": "ru/dizayn-interera-premium-kiev.html",
   "kind": "land",
-  "html_kb": 52.9,
+  "html_kb": 52.7,
   "gzip_kb": 14.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23513,7 +23513,7 @@
  {
   "page": "ru/dizayn-kvartiry-kiev.html",
   "kind": "land",
-  "html_kb": 51.5,
+  "html_kb": 51.3,
   "gzip_kb": 13.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23546,7 +23546,7 @@
  {
   "page": "ru/dizayn-ofisa-kiev.html",
   "kind": "land",
-  "html_kb": 51.8,
+  "html_kb": 51.6,
   "gzip_kb": 13.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23577,7 +23577,7 @@
  {
   "page": "ru/dizayn-ofisa-open-space-kiev.html",
   "kind": "land",
-  "html_kb": 50.6,
+  "html_kb": 50.4,
   "gzip_kb": 13.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23608,7 +23608,7 @@
  {
   "page": "ru/dizayn-remont-kvartiry-pechersk.html",
   "kind": "land",
-  "html_kb": 48.9,
+  "html_kb": 48.8,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23639,7 +23639,7 @@
  {
   "page": "ru/dizayn-restorana-kafe-kiev.html",
   "kind": "land",
-  "html_kb": 57.8,
+  "html_kb": 57.7,
   "gzip_kb": 16.0,
   "css_kb": 13.3,
   "js_kb": 3.3,
@@ -23670,7 +23670,7 @@
  {
   "page": "ru/dizayner-interera-kiev.html",
   "kind": "land",
-  "html_kb": 54.3,
+  "html_kb": 54.2,
   "gzip_kb": 14.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23701,7 +23701,7 @@
  {
   "page": "ru/dogovor-garantiya-oplata.html",
   "kind": "land",
-  "html_kb": 45.9,
+  "html_kb": 45.8,
   "gzip_kb": 12.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23732,7 +23732,7 @@
  {
   "page": "ru/dom-iz-brusa-kiev.html",
   "kind": "land",
-  "html_kb": 50.1,
+  "html_kb": 50.0,
   "gzip_kb": 14.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23763,7 +23763,7 @@
  {
   "page": "ru/dom-iz-gazobloka-pod-klyuch-kiev.html",
   "kind": "land",
-  "html_kb": 47.1,
+  "html_kb": 46.9,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23794,8 +23794,8 @@
  {
   "page": "ru/dom-pod-klyuch-koncha-zaspa.html",
   "kind": "land",
-  "html_kb": 48.3,
-  "gzip_kb": 12.9,
+  "html_kb": 48.2,
+  "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -23825,8 +23825,8 @@
  {
   "page": "ru/generalnyy-podryadchik-kiev.html",
   "kind": "land",
-  "html_kb": 52.9,
-  "gzip_kb": 14.2,
+  "html_kb": 52.7,
+  "gzip_kb": 14.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -23887,7 +23887,7 @@
  {
   "page": "ru/kalkulyator-remonta.html",
   "kind": "land",
-  "html_kb": 51.4,
+  "html_kb": 51.3,
   "gzip_kb": 14.5,
   "css_kb": 13.9,
   "js_kb": 1.4,
@@ -23921,8 +23921,8 @@
  {
   "page": "ru/kapitalnyy-remont-kvartiry-kiev.html",
   "kind": "land",
-  "html_kb": 61.8,
-  "gzip_kb": 17.3,
+  "html_kb": 61.6,
+  "gzip_kb": 17.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -23952,7 +23952,7 @@
  {
   "page": "ru/karkasnyy-dom-pod-klyuch-kiev.html",
   "kind": "land",
-  "html_kb": 52.7,
+  "html_kb": 52.5,
   "gzip_kb": 15.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -23983,7 +23983,7 @@
  {
   "page": "ru/komplektatsiya-pod-klyuch-kiev.html",
   "kind": "land",
-  "html_kb": 52.8,
+  "html_kb": 52.7,
   "gzip_kb": 13.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24014,7 +24014,7 @@
  {
   "page": "ru/konfidentsialnost.html",
   "kind": "land",
-  "html_kb": 32.7,
+  "html_kb": 32.6,
   "gzip_kb": 9.7,
   "css_kb": 13.2,
   "js_kb": 0.5,
@@ -24045,7 +24045,7 @@
  {
   "page": "ru/konfigurator.html",
   "kind": "land",
-  "html_kb": 34.2,
+  "html_kb": 34.1,
   "gzip_kb": 10.1,
   "css_kb": 9.7,
   "js_kb": 0.5,
@@ -24076,7 +24076,7 @@
  {
   "page": "ru/kontakty.html",
   "kind": "land",
-  "html_kb": 37.9,
+  "html_kb": 37.8,
   "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24107,7 +24107,7 @@
  {
   "page": "ru/kosmeticheskiy-remont-kvartiry-kiev.html",
   "kind": "land",
-  "html_kb": 43.7,
+  "html_kb": 43.6,
   "gzip_kb": 12.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24138,7 +24138,7 @@
  {
   "page": "ru/kuhni-i-shkafy-na-zakaz-kiev.html",
   "kind": "land",
-  "html_kb": 42.7,
+  "html_kb": 42.6,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24231,8 +24231,8 @@
  {
   "page": "ru/modulnyy-dom-kiev.html",
   "kind": "land",
-  "html_kb": 51.1,
-  "gzip_kb": 14.8,
+  "html_kb": 50.9,
+  "gzip_kb": 14.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -24262,7 +24262,7 @@
  {
   "page": "ru/o-nas.html",
   "kind": "land",
-  "html_kb": 55.9,
+  "html_kb": 55.8,
   "gzip_kb": 15.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24293,7 +24293,7 @@
  {
   "page": "ru/obustroystvo-ofisa-pod-klyuch-kiev.html",
   "kind": "land",
-  "html_kb": 46.5,
+  "html_kb": 46.4,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24355,7 +24355,7 @@
  {
   "page": "ru/pereplanirovka-kvartiry-kiev.html",
   "kind": "land",
-  "html_kb": 50.3,
+  "html_kb": 50.1,
   "gzip_kb": 13.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24386,7 +24386,7 @@
  {
   "page": "ru/proektirovanie-doma-kiev.html",
   "kind": "land",
-  "html_kb": 49.4,
+  "html_kb": 49.3,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24417,7 +24417,7 @@
  {
   "page": "ru/realizatsiya-dizayn-proekta-kiev.html",
   "kind": "land",
-  "html_kb": 49.2,
+  "html_kb": 49.1,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24448,7 +24448,7 @@
  {
   "page": "ru/referalnaya-programma.html",
   "kind": "land",
-  "html_kb": 39.9,
+  "html_kb": 39.8,
   "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24479,7 +24479,7 @@
  {
   "page": "ru/rekonstruktsiya-doma-kiev.html",
   "kind": "land",
-  "html_kb": 47.6,
+  "html_kb": 47.5,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24510,7 +24510,7 @@
  {
   "page": "ru/remont-doma-kiev.html",
   "kind": "land",
-  "html_kb": 47.9,
+  "html_kb": 47.8,
   "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24541,8 +24541,8 @@
  {
   "page": "ru/remont-i-stroitelstvo-evropa.html",
   "kind": "land",
-  "html_kb": 44.6,
-  "gzip_kb": 12.3,
+  "html_kb": 44.5,
+  "gzip_kb": 12.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -24572,8 +24572,8 @@
  {
   "page": "ru/remont-kommercheskih-pomeshcheniy-kiev.html",
   "kind": "land",
-  "html_kb": 47.7,
-  "gzip_kb": 12.5,
+  "html_kb": 47.6,
+  "gzip_kb": 12.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -24603,7 +24603,7 @@
  {
   "page": "ru/remont-kuhni-kiev.html",
   "kind": "land",
-  "html_kb": 44.3,
+  "html_kb": 44.2,
   "gzip_kb": 12.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24665,7 +24665,7 @@
  {
   "page": "ru/remont-kvartir-zhk-kiev.html",
   "kind": "land",
-  "html_kb": 49.4,
+  "html_kb": 49.3,
   "gzip_kb": 13.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24696,7 +24696,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-a136-highlight-tower.html",
   "kind": "land",
-  "html_kb": 46.7,
+  "html_kb": 46.6,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24727,7 +24727,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-bulvar-fontanov.html",
   "kind": "land",
-  "html_kb": 47.3,
+  "html_kb": 47.1,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24758,7 +24758,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-edeldorf-hills.html",
   "kind": "land",
-  "html_kb": 47.5,
+  "html_kb": 47.4,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24789,7 +24789,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-greenville-na-pecherske.html",
   "kind": "land",
-  "html_kb": 47.9,
+  "html_kb": 47.8,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24820,8 +24820,8 @@
  {
   "page": "ru/remont-kvartiry-zhk-gvardeyskiy.html",
   "kind": "land",
-  "html_kb": 46.9,
-  "gzip_kb": 12.9,
+  "html_kb": 46.7,
+  "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -24851,7 +24851,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-life-story.html",
   "kind": "land",
-  "html_kb": 46.4,
+  "html_kb": 46.3,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24882,7 +24882,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-linden-luxury-residences.html",
   "kind": "land",
-  "html_kb": 47.6,
+  "html_kb": 47.4,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24913,7 +24913,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-maxima-residence.html",
   "kind": "land",
-  "html_kb": 47.3,
+  "html_kb": 47.1,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24944,7 +24944,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-montreal-house.html",
   "kind": "land",
-  "html_kb": 46.7,
+  "html_kb": 46.5,
   "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -24975,7 +24975,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-nordica-residence.html",
   "kind": "land",
-  "html_kb": 47.1,
+  "html_kb": 47.0,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25006,7 +25006,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-novopecherskie-lipki.html",
   "kind": "land",
-  "html_kb": 48.4,
+  "html_kb": 48.3,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25037,8 +25037,8 @@
  {
   "page": "ru/remont-kvartiry-zhk-novyy-avtograf.html",
   "kind": "land",
-  "html_kb": 46.7,
-  "gzip_kb": 12.8,
+  "html_kb": 46.6,
+  "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -25068,7 +25068,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-podol-grad.html",
   "kind": "land",
-  "html_kb": 47.3,
+  "html_kb": 47.2,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25099,8 +25099,8 @@
  {
   "page": "ru/remont-kvartiry-zhk-respublika.html",
   "kind": "land",
-  "html_kb": 46.8,
-  "gzip_kb": 12.8,
+  "html_kb": 46.7,
+  "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -25130,7 +25130,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-rusaniv-residence.html",
   "kind": "land",
-  "html_kb": 47.0,
+  "html_kb": 46.9,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25161,8 +25161,8 @@
  {
   "page": "ru/remont-kvartiry-zhk-senat.html",
   "kind": "land",
-  "html_kb": 46.6,
-  "gzip_kb": 12.9,
+  "html_kb": 46.5,
+  "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -25192,7 +25192,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-taryan-towers.html",
   "kind": "land",
-  "html_kb": 47.4,
+  "html_kb": 47.2,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25223,7 +25223,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-triiinity.html",
   "kind": "land",
-  "html_kb": 47.6,
+  "html_kb": 47.5,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25254,7 +25254,7 @@
  {
   "page": "ru/remont-kvartiry-zhk-unit-home.html",
   "kind": "land",
-  "html_kb": 49.5,
+  "html_kb": 49.4,
   "gzip_kb": 13.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25347,8 +25347,8 @@
  {
   "page": "ru/remont-premium-klassa-kiev.html",
   "kind": "land",
-  "html_kb": 51.7,
-  "gzip_kb": 13.7,
+  "html_kb": 51.6,
+  "gzip_kb": 13.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -25378,7 +25378,7 @@
  {
   "page": "ru/remont-restorana-kafe-kiev.html",
   "kind": "land",
-  "html_kb": 57.6,
+  "html_kb": 57.5,
   "gzip_kb": 16.2,
   "css_kb": 13.3,
   "js_kb": 3.3,
@@ -25409,8 +25409,8 @@
  {
   "page": "ru/remont-taunhausa-kiev.html",
   "kind": "land",
-  "html_kb": 46.1,
-  "gzip_kb": 12.6,
+  "html_kb": 46.0,
+  "gzip_kb": 12.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -25440,8 +25440,8 @@
  {
   "page": "ru/remont-v-novostroyke-kiev.html",
   "kind": "land",
-  "html_kb": 48.9,
-  "gzip_kb": 12.7,
+  "html_kb": 48.7,
+  "gzip_kb": 12.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -25471,7 +25471,7 @@
  {
   "page": "ru/remont-vannoy-kiev.html",
   "kind": "land",
-  "html_kb": 45.9,
+  "html_kb": 45.8,
   "gzip_kb": 12.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25502,7 +25502,7 @@
  {
   "page": "ru/remontnaya-brigada-kiev.html",
   "kind": "land",
-  "html_kb": 49.6,
+  "html_kb": 49.5,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25533,7 +25533,7 @@
  {
   "page": "ru/stoimost-dizayna-interera-kiev.html",
   "kind": "land",
-  "html_kb": 51.1,
+  "html_kb": 50.9,
   "gzip_kb": 13.5,
   "css_kb": 13.7,
   "js_kb": 0.5,
@@ -25600,8 +25600,8 @@
  {
   "page": "ru/stoimost-remonta-ofisa-kiev.html",
   "kind": "land",
-  "html_kb": 51.8,
-  "gzip_kb": 14.0,
+  "html_kb": 51.6,
+  "gzip_kb": 13.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -25631,8 +25631,8 @@
  {
   "page": "ru/stoimost-stroitelstva-doma-kiev.html",
   "kind": "land",
-  "html_kb": 55.6,
-  "gzip_kb": 15.0,
+  "html_kb": 55.5,
+  "gzip_kb": 14.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -25665,7 +25665,7 @@
  {
   "page": "ru/stroitelstvo-domov-kiev.html",
   "kind": "land",
-  "html_kb": 58.7,
+  "html_kb": 58.6,
   "gzip_kb": 15.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25696,7 +25696,7 @@
  {
   "page": "ru/uslugi.html",
   "kind": "land",
-  "html_kb": 47.2,
+  "html_kb": 47.1,
   "gzip_kb": 12.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25727,8 +25727,8 @@
  {
   "page": "ru/voprosy.html",
   "kind": "land",
-  "html_kb": 55.7,
-  "gzip_kb": 13.3,
+  "html_kb": 55.6,
+  "gzip_kb": 13.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -25816,7 +25816,7 @@
  {
   "page": "vartist-budivnytstva-budynku-kyiv.html",
   "kind": "land",
-  "html_kb": 63.0,
+  "html_kb": 62.9,
   "gzip_kb": 17.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -25850,7 +25850,7 @@
  {
   "page": "vartist-dyzainu-interieru-kyiv.html",
   "kind": "land",
-  "html_kb": 51.1,
+  "html_kb": 50.9,
   "gzip_kb": 13.5,
   "css_kb": 13.7,
   "js_kb": 0.5,
@@ -25917,7 +25917,7 @@
  {
   "page": "vartist-remontu-ofisu-kyiv.html",
   "kind": "land",
-  "html_kb": 51.5,
+  "html_kb": 51.3,
   "gzip_kb": 13.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -26010,7 +26010,7 @@
  {
   "page": "zh/bathroom-renovation.html",
   "kind": "land",
-  "html_kb": 37.0,
+  "html_kb": 36.9,
   "gzip_kb": 10.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -26041,7 +26041,7 @@
  {
   "page": "zh/business-fit-out.html",
   "kind": "land",
-  "html_kb": 36.5,
+  "html_kb": 36.4,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -26072,8 +26072,8 @@
  {
   "page": "zh/commercial-renovation.html",
   "kind": "land",
-  "html_kb": 37.0,
-  "gzip_kb": 10.8,
+  "html_kb": 36.9,
+  "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -26134,8 +26134,8 @@
  {
   "page": "zh/design-implementation.html",
   "kind": "land",
-  "html_kb": 36.0,
-  "gzip_kb": 10.8,
+  "html_kb": 35.9,
+  "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -26165,8 +26165,8 @@
  {
   "page": "zh/faq.html",
   "kind": "land",
-  "html_kb": 35.5,
-  "gzip_kb": 10.2,
+  "html_kb": 35.4,
+  "gzip_kb": 10.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -26227,7 +26227,7 @@
  {
   "page": "zh/house-construction.html",
   "kind": "land",
-  "html_kb": 41.5,
+  "html_kb": 41.4,
   "gzip_kb": 13.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -26258,7 +26258,7 @@
  {
   "page": "zh/house-design.html",
   "kind": "land",
-  "html_kb": 35.3,
+  "html_kb": 35.2,
   "gzip_kb": 10.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -26289,7 +26289,7 @@
  {
   "page": "zh/house-renovation.html",
   "kind": "land",
-  "html_kb": 37.1,
+  "html_kb": 37.0,
   "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -26413,7 +26413,7 @@
  {
   "page": "zh/kitchen-renovation.html",
   "kind": "land",
-  "html_kb": 36.4,
+  "html_kb": 36.3,
   "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -26475,7 +26475,7 @@
  {
   "page": "zh/new-build-renovation.html",
   "kind": "land",
-  "html_kb": 36.7,
+  "html_kb": 36.6,
   "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -26537,8 +26537,8 @@
  {
   "page": "zh/privacy.html",
   "kind": "land",
-  "html_kb": 27.9,
-  "gzip_kb": 8.9,
+  "html_kb": 27.8,
+  "gzip_kb": 8.8,
   "css_kb": 13.2,
   "js_kb": 0.5,
   "font_sizes": 9,
@@ -26602,8 +26602,8 @@
  {
   "page": "zh/renovation-crew.html",
   "kind": "land",
-  "html_kb": 38.0,
-  "gzip_kb": 11.1,
+  "html_kb": 37.9,
+  "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -26633,7 +26633,7 @@
  {
   "page": "zh/resort-turnkey.html",
   "kind": "land",
-  "html_kb": 41.1,
+  "html_kb": 41.0,
   "gzip_kb": 12.6,
   "css_kb": 13.3,
   "js_kb": 2.4,
@@ -26665,7 +26665,7 @@
   "page": "zh/restaurant-design.html",
   "kind": "land",
   "html_kb": 41.6,
-  "gzip_kb": 12.9,
+  "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 2.3,
   "font_sizes": 6,
@@ -26695,7 +26695,7 @@
  {
   "page": "zh/services.html",
   "kind": "land",
-  "html_kb": 37.3,
+  "html_kb": 37.2,
   "gzip_kb": 10.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -26726,7 +26726,7 @@
  {
   "page": "zh/turnkey-procurement.html",
   "kind": "land",
-  "html_kb": 37.8,
+  "html_kb": 37.7,
   "gzip_kb": 10.9,
   "css_kb": 13.3,
   "js_kb": 0.5,

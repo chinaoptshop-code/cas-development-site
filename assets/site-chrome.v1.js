@@ -142,48 +142,10 @@
   h.classList.add('mo');
   var RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var IO = 'IntersectionObserver' in W;
-  var vh = W.innerHeight || 800;
   function $$(s, r) { try { return [].slice.call((r || d).querySelectorAll(s)); } catch (e) { return []; } }
-  function seen(el) { var b = el.getBoundingClientRect(); return b.top < vh * 0.95 && b.bottom > 0; } // уже на екрані
   var main = d.querySelector('main') || d.body;
-  var h1 = main.querySelector('h1'), img1 = main.querySelector('img');
-  function guarded(el) { // H1 і перше фото сторінки не анімуємо
-    return (h1 && (el === h1 || el.contains(h1))) || (img1 && (el === img1 || el.contains(img1)));
-  }
 
-  // 1. Поява при скролі: елементи, яких не бере reveal з ui-polish (етапи, факти, картки статей, блоки статті блогу)
-  var RV = '[data-reveal],ol.steps>li,.facts>div,.ab-facts>div,.ab-guar>div,.ab-steps>li,.cards>a,.hero>article>:is(h2,figure,.ag,details,.cta)';
-  function reveal() {
-    if (RM || !IO) return;
-    var list = $$(RV, main).filter(function (el) {
-      return !guarded(el) && !seen(el) && !el.closest('.rv,.reveal,.au,form,#lb,#plb,.lb,[aria-hidden="true"]');
-    });
-    if (!list.length) return;
-    var io = new IntersectionObserver(function (es) {
-      var batch = es.filter(function (e) { return e.isIntersecting; }).map(function (e) { return e.target; });
-      batch.sort(function (a, b) { var p = a.getBoundingClientRect(), q = b.getBoundingClientRect(); return p.top - q.top || p.left - q.left; });
-      batch.forEach(function (el, i) { io.unobserve(el); show(el, Math.min(i, 5) * 80); });
-    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
-    function show(el, delay) {
-      el.style.setProperty('--mo-d', delay + 'ms'); el.classList.add('mo-in');
-      setTimeout(function () { el.classList.remove('mo-rv', 'mo-in'); el.style.removeProperty('--mo-d'); }, 950 + delay);
-    }
-    list.forEach(function (el) { el.classList.add('mo-rv'); io.observe(el); });
-    W.addEventListener('beforeprint', function () { list.forEach(function (el) { el.classList.remove('mo-rv'); }); });
-    // швидкий скрол (якір, Home/End) може «перестрибнути» блок — те, що вже вище екрана, показуємо без анімації
-    var raf = 0;
-    function skipped() {
-      raf = 0;
-      list = list.filter(function (el) {
-        if (!el.classList.contains('mo-rv') || el.classList.contains('mo-in')) return false;
-        if (el.getBoundingClientRect().bottom < 0) { io.unobserve(el); el.classList.remove('mo-rv'); return false; }
-        return true;
-      });
-      if (!list.length) W.removeEventListener('scroll', onScroll);
-    }
-    function onScroll() { if (!raf) raf = requestAnimationFrame(skipped); }
-    W.addEventListener('scroll', onScroll, { passive: true });
-  }
+  // 1. Поява при скролі прибрана (Михайло 06.11.2026, unslop): контент видно одразу, без зсуву й затемнення.
 
   // 2. Лічильники фактів (150+, 10+, 12 міс.) не анімуємо: count-up від нуля під час прокрутки показував хибні «12+ проєктів»,
   // «3 міс. гарантія». У HTML — одразу фінальне значення (QA 03.11.2026).
@@ -305,7 +267,7 @@
     d.addEventListener('pointerleave', off);
   }
 
-  [marquee, reveal, accordion, magnet].forEach(function (f) { try { f(); } catch (e) {} });
+  [marquee, accordion, magnet].forEach(function (f) { try { f(); } catch (e) {} });
 })();
 // ── Кнопка «Зв'язатися» (.mbar[data-one], tools/site/chrome.py mbar_lead): тап — меню (Подзвонити, Telegram, WhatsApp, Viber, «Залишити номер»);
 // закривається повторним тапом, тапом поза меню, Esc і після вибору пункту. «Залишити номер» прокручує до форми — /assets/lead-form.v1.js.

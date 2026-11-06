@@ -144,7 +144,7 @@ def manual():
         s = None
     if s is not None:
         s = block(s, 'map', projects_html(), r'</div><!-- /pfRowsWrap -->\n')
-        s = block(s, 'mapchip', '<a class="filt" href="#karta">Карта проєктів</a>', r'<button class="filt on" onclick="filt\(this,\'all\'\)">Всі проєкти</button>\n')
+        s = block(s, 'mapchip', '<a class="filt" href="#karta">Карта проєктів</a>', r'<button class="filt on" onclick="filt\(this,\'all\'\)">Усі проєкти</button>\n')
         s = re.sub(r'<link rel="stylesheet" href="/assets/cas-map\.v1\.css[^"]*">\n', '', s)  # блокуючий варіант → неблокуючий
         out['portfolio.html'] = chrome.apply(assets(s, lazy=True), 'portfolio.html')
     f = os.path.join(ROOT, 'contact.html'); s = open(f, encoding='utf-8').read()
