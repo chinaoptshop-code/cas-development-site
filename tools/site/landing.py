@@ -377,11 +377,10 @@ def _section_html(lang, x):
         cards = []
         for c in x['items']:
             ttl = f'<a href="{c["href"]}">{e(c["h"])}</a>' if c.get('href') else e(c['h'])
-            if c.get('ico'):
-                ttl = f'<span class="xs-ico" aria-hidden="true">{c["ico"]}</span> ' + ttl
+            # c["ico"] (емодзі) не виводимо: лінійну іконку картці ставить ux.py (data-i) — без емодзі в інтерфейсі (unslop)
             cards.append('<div class="card">' + f'<h3>{ttl}</h3>'
                          + (f'<p style="color:var(--ac)">{e(c["price"])}</p>' if c.get('price') else '')
-                         + (f'<p style="color:var(--ac);font-size:var(--fs-small);letter-spacing:.12em;text-transform:uppercase">{e(c["role"])}</p>' if c.get('role') else '')
+                         + (f'<p style="color:var(--ac);font-size:var(--fs-small)">{e(c["role"])}</p>' if c.get('role') else '')
                          + (f'<p>{e(c["p"])}</p>' if c.get('p') else '')
                          + ('<ul>' + ''.join(f'<li>{e(i)}</li>' for i in c['li']) + '</ul>' if c.get('li') else '')
                          + (f'<p style="margin-top:10px"><a href="{c["href"]}">{e(c["more"])} →</a></p>' if c.get('more') and c.get('href') else '')

@@ -1,5 +1,5 @@
 /* Розширені секції лендингів (tools/site/rich.py) — головна, послуги, про студію, контакти й портфоліо всіх мов. UI-kit: /styleguide/#sections */
-.kick{font-size:var(--fs-small);letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin:0 0 12px}
+.kick{font-size:var(--fs-small);letter-spacing:.02em;color:var(--ac);margin:0 0 12px}
 .xs-lnk{margin:22px 0 0}.xs-lnk a,.xs-links a,.xs-head a{color:var(--ac);text-decoration:none}
 .xs-lnk a:hover,.xs-links a:hover,.xs-head a:hover{text-decoration:underline}
 /* перший екран з фото */
@@ -22,7 +22,7 @@ html body .hx.hx-home .hero{min-height:min(68vh,38rem);padding-bottom:20px}
 main>.hx-home+section.xs-strip{padding-top:12px!important}
 /* заголовок з посиланням праворуч */
 .xs-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 20px;flex-wrap:wrap;margin-bottom:24px}
-.xs-head h2{margin:0}.xs-head a{font-size:var(--fs-small);letter-spacing:.14em;text-transform:uppercase}
+.xs-head h2{margin:0}.xs-head a{font-size:var(--fs-small);letter-spacing:.02em}
 /* послуги */
 .xs-sv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
 .xs-c{border:1px solid var(--ln);background:var(--bg2);display:flex;flex-direction:column;min-width:0}
@@ -79,10 +79,10 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-ct>div{background:var(--bg);padding:18px;min-width:0}.xs-ct span{display:block;font-size:var(--fs-small);color:var(--mu);margin-bottom:4px}
 .xs-ct b{display:block;font-weight:600;overflow-wrap:anywhere}.xs-ct b a{text-decoration:none;border-bottom:1px solid var(--ln)}
 .xs-ct small{display:block;color:var(--mu);font-size:var(--fs-small);margin-top:4px}
-.xs-msg-h{margin:26px 0 0!important}.xs-contacts .xs-lead{color:var(--mu);max-width:46em;margin:0 0 22px}
+.xs-msg-h{margin:24px 0 0!important}.xs-contacts .xs-lead{color:var(--mu);max-width:46em;margin:0 0 22px}
 /* команда */
 .xs-tm .xs-av{display:inline-grid;place-items:center;width:44px;height:44px;border:1px solid var(--ac);border-radius:50%;color:var(--ac);font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-size:1.3em;margin-bottom:10px}
-.xs-role{color:var(--ac)!important;font-size:var(--fs-small)!important;letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px!important}
+.xs-role{color:var(--ac)!important;font-size:var(--fs-small)!important;letter-spacing:.02em;margin:0 0 8px!important}
 .xs-crew-h{font-size:var(--fs-h3);margin:40px 0 6px}.xs-crew-p{color:var(--mu)}
 .xs-crew{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;margin-top:16px}
 .xs-crew>div{border:1px solid var(--ln);padding:18px;background:var(--bg2)}.xs-crew p{color:var(--mu);margin:0 0 10px}
@@ -92,7 +92,6 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-meta{color:var(--mu);font-size:var(--fs-small);margin:0 0 18px}.xs-meta a{color:var(--ac)}
 .xs-proj .xs-st img{aspect-ratio:3/4}
 .xs-stat{display:inline-block;border:1px solid var(--ac);color:var(--ac);border-radius:999px;padding:2px 10px;margin-inline-end:10px}
-.xs-ico{font-style:normal}
 .xs-cta h2[data-i]{display:inline-block;padding-inline-start:1.32em}
 .xs-ct{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
 .xs-sub{color:var(--mu);margin:-12px 0 20px}

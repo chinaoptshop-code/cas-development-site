@@ -107,8 +107,8 @@ RULES = [
            r'项目|案例|مشاريع|مشروع|صور'),
     ('ar', r'' + B + r'стат(?:т|ь)|корисн|полезн|useful|блог|читайте|article|' + B + r'blog|read also|related|artícul|artykuł|czytaj|artikel|weiterlesen|lire aussi|'
            r'文章|阅读|مقالات|اقرأ'),
-    ('gl', r'європ|европ|europe|europa|' + B + r'світ(?!л)|' + B + r'мир(?!\w)|world|international|abroad|кордон|рубеж|全球|欧洲|أوروبا|world'),
-    ('gp', r'місто|регіон|регион|gdzie|dónde|' + B + r'wo(?!\w)|міст[аі]|' + B + r'город|район|област|україн|украин|київ|киев|поруч|рядом|де працю|где работ|географ|' + B + r'kyiv|' + B + r'kiev|'
+    ('gl', r'європ|европ|europe|europa|' + B + r'світ(?!л)|' + B + r'мир(?!\w)|world|international|abroad|weltweit|świat|кордон|рубеж|全球|欧洲|أوروبا|world'),
+    ('gp', r'місто|регіон|регион|gdzie|dónde|' + B + r'wo(?!\w)|міст[аі]|' + B + r'город|район|област|україн|украин|київ|киев|поруч|рядом|де працю|где работ|географ|' + B + r'kyiv|' + B + r'kiev|kyjiw|kijów|ucrania|'
            r'ukrain|' + B + r'city|region|where|ciudad|miast|' + B + r'stadt|' + B + r'ville|' + B + r'où|地区|城市|基辅|乌克兰|مدينة|منطقة|أين|كييف|أوكرانيا'),
     ('os', r'послуг|услуг|service|servicio|usług|leistung|prestation|服务|خدمات|خدمة'),
     ('ph', r'контакт|telefon|телефон|зв.?яз|связ|консульт|contact|phone|' + B + r'call|contacto|kontakt|anruf|' + B + r'appel|联系|电话|اتصل|اتصال|هاتف'),

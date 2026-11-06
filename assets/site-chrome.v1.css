@@ -87,7 +87,7 @@ body{padding-top:var(--sch-h)}
 /* ── повноекранне меню */
 .sch-menu{position:fixed;top:var(--sch-h);left:0;right:0;bottom:0;z-index:801;overflow-y:auto;overscroll-behavior:contain;background:var(--c-bg);border-top:1px solid var(--c-ln)}
 .sch-menu[hidden]{display:none!important}
-.sch-menu-in{max-width:640px;min-height:100%;margin:0 auto;padding:12px max(20px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:26px}
+.sch-menu-in{max-width:640px;min-height:100%;margin:0 auto;padding:12px max(20px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:24px}
 .sch-mq{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .sch-mq a{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 12px;border:1px solid var(--c-ac);color:var(--c-tx);
   font-size:.875rem;font-weight:600;line-height:1.2;text-align:center;text-decoration:none}
@@ -132,7 +132,7 @@ html.sch-lock .mbar{display:none!important}
 .scf .scf-svc[open] summary::after{content:"−"!important}
 .scf-svc-g{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px;max-width:1040px;margin:16px auto 0}
 .scf-svc-g b{display:block;margin-bottom:6px;font-size:.8125rem;font-weight:600;color:var(--c-ac)}
-.scf-svc-g a{display:block;padding:5px 0;font-size:.8125rem;color:var(--c-mu);text-decoration:none}
+.scf-svc-g a{display:block;padding:4px 0;font-size:.8125rem;color:var(--c-mu);text-decoration:none}
 .scf-svc-g a:hover,.scf-bot a:hover{color:var(--c-tx)}
 .scf-bot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 24px;margin-top:24px;padding-top:16px;border-top:1px solid var(--c-ln);font-size:.8125rem}
 .scf-langs{display:flex;flex-wrap:wrap;align-items:center;gap:0 14px}
@@ -248,9 +248,9 @@ details.o-more>summary::before{content:"+ "}details.o-more[open]>summary::before
 /* ══ Лід-магніт «Гід з цінами» (.gd-slot ставить tools/guide/build.py, форму будує /assets/lead-form.v1.js) */
 .gd-slot{max-width:1080px;margin:40px auto 0;padding:0 16px;box-sizing:border-box}.gd-slot:empty{margin:0;padding:0}
 article .gd-slot{margin:32px 0 0;padding:0}
-.gd{max-width:760px;padding:22px;border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:12px;background:linear-gradient(135deg,rgba(191,145,72,.11),rgba(191,145,72,.02))}
+.gd{max-width:760px;padding:22px;border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:12px;background:rgba(191,145,72,.05)}
 .gd-h{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-size:var(--fs-h3,1.5rem);line-height:1.15;margin:0 0 8px;color:var(--tx,#ede8df)}
-.gd-h::before{content:"PDF";display:inline-block;margin-inline-end:10px;padding:2px 7px;border:1px solid var(--ac,#bf9148);border-radius:4px;color:var(--ac,#bf9148);font:600 11px/1.4 Manrope,"Manrope Fallback",sans-serif;letter-spacing:.12em;vertical-align:.3em}
+.gd-h::before{content:"PDF";display:inline-block;margin-inline-end:10px;padding:2px 8px;border:1px solid var(--ac,#bf9148);border-radius:4px;color:var(--ac,#bf9148);font:600 .6875rem/1.4 Manrope,"Manrope Fallback",sans-serif;letter-spacing:.06em;vertical-align:.3em}
 .gd-p{color:var(--mu,#8a837c);font-size:var(--fs-small,.8125rem);line-height:1.5;margin:0;max-width:46em}
 .gd .lq{margin:16px 0 0}.gd .gd-ok{margin:16px 0 0}.gd-ok .btn{margin:12px 0 0}.gd-m{margin:10px 0 0;color:var(--mu,#8a837c);font-size:var(--fs-small,.8125rem)}
 
@@ -260,14 +260,14 @@ article .gd-slot{margin:32px 0 0;padding:0}
 .pk-c{display:flex;flex-direction:column}.pk-c:nth-child(2){border-color:var(--ac,#bf9148)}.pk-c h3{margin:0 0 6px}
 .pk-p{color:var(--ac,#bf9148);font-weight:600;margin:0 0 14px}
 .pk-c .pk-l{list-style:none;padding:0;margin:0}.pk-c .pk-l:last-of-type{margin-bottom:18px}
-.pk-c .pk-l li{position:relative;padding:7px 0 7px 26px;border-top:1px solid var(--ln);font-size:var(--fs-small,.8125rem);line-height:1.45}
+.pk-c .pk-l li{position:relative;padding:8px 0 8px 28px;border-top:1px solid var(--ln);font-size:var(--fs-small,.8125rem);line-height:1.45}
 .pk-c .pk-l li::before{content:"✓";position:absolute;left:0;top:7px;color:var(--ac,#bf9148);font-weight:700}
 .pk-c .pk-x li{color:var(--mu,#8a837c);opacity:.6}.pk-c .pk-x li::before{content:"—";color:var(--mu,#8a837c);font-weight:400}
 .pk-c .btn{align-self:flex-start;margin-top:auto}
 .pk-h{display:none;color:var(--mu,#8a837c);font-size:var(--fs-small,.8125rem);margin:-12px 0 12px}
 .pk-m{color:var(--mu,#8a837c);margin:16px 0 0;max-width:62ch}
 @media(max-width:759px){.pk{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:86%;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding-bottom:10px}.pk>.pk-c{scroll-snap-align:start}.pk-h{display:block}}
-[dir=rtl] .pk-c .pk-l li{padding:7px 26px 7px 0}[dir=rtl] .pk-c .pk-l li::before{left:auto;right:0}
+[dir=rtl] .pk-c .pk-l li{padding:8px 28px 8px 0}[dir=rtl] .pk-c .pk-l li::before{left:auto;right:0}
 
 /* ══ Motion */
 .mo-rv{opacity:0;translate:0 16px}
@@ -275,18 +275,16 @@ article .gd-slot{margin:32px 0 0;padding:0}
 .mo-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 .mo-mg{transition:translate .35s var(--ease-out,cubic-bezier(.2,.7,.2,1)),background-color .3s,color .3s,border-color .3s,box-shadow .3s,filter .3s}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){
-  .mo main :is(.grid>div.card,.cards>a,.ab-guar>div,.geo-item){transition:transform .45s var(--ease-out),border-color .4s ease,box-shadow .45s var(--ease-out)}
-  .mo main :is(.grid>div.card,.cards>a,.ab-guar>div):hover{transform:translateY(-4px);border-color:var(--ac,#BF9148);box-shadow:0 18px 40px -22px rgba(0,0,0,.9)}
-  .mo main .geo-item:hover{transform:translateY(-2px)}
-  .mo main .gal figure{transition:border-color .4s ease}.mo main .gal figure:hover{border-color:var(--ac,#BF9148)}
-  .mo main a.btn{transition:background-color .35s ease,color .35s ease,border-color .35s ease,transform .4s var(--ease-out),filter .35s ease}
-  .mo main a.btn:hover{transform:translateY(-1px)}
+  .mo main :is(.grid>div.card,.cards>a,.ab-guar>div,.geo-item){transition:border-color .2s var(--ease-out),background-color .2s var(--ease-out)}
+  .mo main :is(.grid>div.card,.cards>a,.ab-guar>div,.geo-item):hover{border-color:var(--ac,#BF9148)}
+  .mo main .gal figure{transition:border-color .2s ease}.mo main .gal figure:hover{border-color:var(--ac,#BF9148)}
+  .mo main a.btn{transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .12s var(--ease-out),filter .18s ease}
   .mo main a.btn:not(.main):hover{background-color:rgba(191,145,72,.12)}
   .mo main a.btn.main:hover{filter:brightness(1.08)}
   .mo main a.btn:active{transform:scale(.98)}
   .mo main .rel a{transition:color .2s ease,border-color .2s ease,background-color .2s ease}
   .mo main .rel a:hover{background-color:rgba(191,145,72,.08)}
-  .mo main ol.steps>li{transition:border-color .4s ease}.mo main ol.steps>li:hover{border-bottom-color:var(--ac,#BF9148)}
+  .mo main ol.steps>li{transition:border-color .2s ease}.mo main ol.steps>li:hover{border-bottom-color:var(--ac,#BF9148)}
   .mo main summary{transition:color .2s ease}.mo main summary:hover{color:var(--ac,#BF9148)}
 }
 .btn:disabled,.btn[aria-disabled=true]{opacity:.5;cursor:not-allowed;transform:none!important;filter:none!important}
@@ -360,7 +358,7 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
   .mbar a{min-width:0;padding:0 6px;overflow:hidden;white-space:nowrap}
   .mbar img{width:26px!important;height:26px!important}
 }
-@media(max-width:379px){.mbar{gap:6px!important}.mbar a{gap:5px!important}.mbar img{width:24px!important;height:24px!important}}
+@media(max-width:379px){.mbar{gap:6px!important}.mbar a{gap:4px!important}.mbar img{width:24px!important;height:24px!important}}
 /* найвужчі */
 @media(max-width:359px){.mbar a:not(.mb-call){font-size:0!important;gap:0!important}.mbar a:not(.mb-call) img{width:28px!important;height:28px!important}}
 /* кнопка «Зв'язатися» (Михайло 05.11.2026): замість панелі на всю ширину — одна пігулка в куті (≥44 px, не перекриває кнопки hero),
@@ -383,7 +381,7 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
   .mbar[data-one] .mb-menu a{justify-content:flex-start;gap:12px;min-height:48px;padding:0 12px;border:0;border-radius:10px;font-size:.9375rem!important;color:#f3eee6;background:none;white-space:nowrap}
   .mbar[data-one] .mb-menu a:hover,.mbar[data-one] .mb-menu a:focus-visible{background:rgba(191,145,72,.12)}
   .mbar[data-one] .mb-menu a.mb-call{background:#bf9148;color:#14120f}
-  .mbar[data-one] .mb-menu a.mb-call svg{width:20px;height:20px;margin-inline:3px}
+  .mbar[data-one] .mb-menu a.mb-call svg{width:20px;height:20px;margin-inline:4px}
   .mbar[data-one] .mb-menu img{width:26px!important;height:26px!important}
   .mbar[data-one] .mb-menu a.mb-lead{border:1px solid rgba(191,145,72,.6);color:#f3d7a6;justify-content:center;margin-top:4px}
   @media(prefers-reduced-motion:no-preference){.mbar[data-one].open .mb-menu{animation:mb-in .22s var(--ease-out,ease) both}}
@@ -411,7 +409,7 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
 /* ── Компактні блоки */
 .cmp-cut>.cmp-x{display:none!important}
 .cmp-more{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:48px;margin:14px 0 0;padding:0 18px;border:1px solid rgba(191,145,72,.35);border-radius:0;
-  background:none;color:var(--ac,#BF9148);font:600 .75rem/1.2 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  background:none;color:var(--ac,#BF9148);font:600 .8125rem/1.2 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.02em;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .cmp-more::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .4s var(--ease-out)}
 .cmp-more[aria-expanded="true"]::after{transform:translateY(2px) rotate(225deg)}
 .cmp-more:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
@@ -486,7 +484,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .bz{--bz-per:clamp(400px,50svh,560px);--bz-bot:0px}.bz[data-bz-c]{--bz-per:clamp(280px,34svh,400px)}
 @media(max-width:767px){.bz{--bz-bot:calc(64px + env(safe-area-inset-bottom,0px));--bz-per:clamp(320px,44svh,420px)}.bz[data-bz-c]{--bz-per:clamp(260px,32svh,360px)}}
 /* статичний стан сцен «Ландшафт» / «Ресторан» / «Будинок на воді» / «Комплекс» (до збірки; тут, а не в CSS сцен, що вантажаться після першої прокрутки, — інакше висота блоку змінюється, CLS) */
-.la-pies{margin:22px 0 0}.la-pies-h{font-size:var(--fs-small);letter-spacing:.2em;text-transform:uppercase;color:var(--ac,#BF9148);margin:0 0 6px}.la-pie ol{margin:10px 0 0;padding-inline-start:20px;color:var(--mu,#938c84)}.la-pie li b{color:var(--tx,#EDE8DF)}.la-pie li span{color:var(--ac,#BF9148)}.la-price{color:var(--ac,#BF9148);margin:18px 0 0}.rs-price{color:var(--ac,#BF9148);margin:18px 0 0}.rs-case{margin:8px 0 0}.wh-price{color:var(--ac,#BF9148);margin:18px 0 0}.rp-list{margin:14px 0 0;padding-inline-start:20px;color:var(--mu,#938c84)}.rp-list b{color:var(--tx,#EDE8DF)}.rp-rates{color:var(--ac,#BF9148);font-size:var(--fs-small);margin:14px 0 0}
+.la-pies{margin:22px 0 0}.la-pies-h{font-size:var(--fs-small);letter-spacing:.02em;color:var(--ac,#BF9148);margin:0 0 6px}.la-pie ol{margin:10px 0 0;padding-inline-start:20px;color:var(--mu,#938c84)}.la-pie li b{color:var(--tx,#EDE8DF)}.la-pie li span{color:var(--ac,#BF9148)}.la-price{color:var(--ac,#BF9148);margin:18px 0 0}.rs-price{color:var(--ac,#BF9148);margin:18px 0 0}.rs-case{margin:8px 0 0}.wh-price{color:var(--ac,#BF9148);margin:18px 0 0}.rp-list{margin:14px 0 0;padding-inline-start:20px;color:var(--mu,#938c84)}.rp-list b{color:var(--tx,#EDE8DF)}.rp-rates{color:var(--ac,#BF9148);font-size:var(--fs-small);margin:14px 0 0}
 /* ══ Резерв висоти сцен до збірки (CLS: швидка прокрутка, поки CSS/JS сцени ще вантажаться, — блок не змінює висоту, футер не стрибає; не покладаємось на scrollBy-компенсацію, яку iOS ігнорує під час інерційної прокрутки).
    Статичний список займає місце зібраної сцени; після збірки (.bz-on / .la-on / .rp-on) він переїжджає в сцену або ховається. .bz-no — скрипт сцени не завантажився (резерв знято).
    «Будинок/Ремонт з нуля» — точно: доріжка .bz-run (формула з build-anim.v1.css; її margin-top 8px поглинає сусідній відступ). Головні (CMP, .hx-home) — ≈ кадр + панель етапу,
@@ -530,10 +528,8 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .js h2[data-i]>.ic{position:absolute;inset-inline-start:0;top:.14em;width:.86em;height:.86em;color:var(--ac,#BF9148);stroke-width:1.3}
 .js :is(.card,.ab-guar>div)>h3[data-i]{position:relative;padding-top:44px}
 .js :is(.card,.ab-guar>div)>h3[data-i]>.ic{position:absolute;top:0;inset-inline-start:0;width:34px;height:34px;padding:8px;box-sizing:border-box;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:50%;
-  color:var(--ac,#BF9148);background:rgba(191,145,72,.06);stroke-width:1.5;transition:background-color .4s ease,color .4s ease,border-color .4s ease,rotate .5s var(--ease-out)}
-@media(hover:hover){:is(.card,.ab-guar>div):hover>h3[data-i]>.ic{background:var(--ac,#BF9148);color:#140f08;border-color:var(--ac,#BF9148);rotate:-8deg}}
-@media(prefers-reduced-motion:no-preference){.ic{animation:ux-ic .5s var(--ease-out) both}}
-@keyframes ux-ic{from{opacity:0;scale:.6}}
+  color:var(--ac,#BF9148);background:rgba(191,145,72,.06);stroke-width:1.5;transition:border-color .2s ease}
+@media(hover:hover){:is(.card,.ab-guar>div):hover>h3[data-i]>.ic{border-color:var(--ac,#BF9148)}}
 /* згортання: t — довгий текст (перший абзац, 4 рядки), s — описи етапів, q — FAQ (5), g — картки (6), l — список у статті (5) */
 .js [data-c]{position:relative;padding-bottom:68px}.js [data-c=x],.js [data-c=h],.js [data-c=k]{padding-bottom:0}
 .js [data-c=t]:not(.c-o)>p:first-of-type{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;line-clamp:4;overflow:hidden;
@@ -547,8 +543,8 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .js [data-c=q]:not(.c-o)>details:nth-of-type(n+6),.js [data-c=g]:not(.c-o) .grid>:nth-child(n+7),.js [data-c=l]:not(.c-o)>*>li:nth-child(n+6){display:none}
 .js [data-c=l]:not(.c-o)>*>li:nth-child(5){-webkit-mask-image:linear-gradient(180deg,#000,transparent);mask-image:linear-gradient(180deg,#000,transparent)}
 .c-b{position:absolute;bottom:8px;inset-inline-start:0;display:inline-flex;align-items:center;gap:10px;min-height:44px;max-width:calc(100% - 32px);padding:0 20px;
-  border:1px solid rgba(191,145,72,.45);border-radius:999px;background:none;color:var(--ac,#BF9148);font:600 .75rem/1.2 "Manrope","Manrope Fallback",system-ui,sans-serif;
-  letter-spacing:.14em;text-transform:uppercase;text-align:start;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background-color .3s ease,border-color .3s ease}
+  border:1px solid rgba(191,145,72,.45);border-radius:999px;background:none;color:var(--ac,#BF9148);font:600 .8125rem/1.2 "Manrope","Manrope Fallback",system-ui,sans-serif;
+  letter-spacing:.02em;text-align:start;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background-color .18s ease,border-color .18s ease}
 .c-b::after{content:"";flex:none;width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .4s var(--ease-out)}
 .c-b[aria-expanded=true]::after{transform:translateY(2px) rotate(225deg)}
 .c-b:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:3px}
@@ -572,7 +568,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):is(.c-o,:has(>.c-o)){grid-column:1/-1!important}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):not(:is([data-c=x]:not(.w),section:has(>.w[data-c=x]))+:is([data-c=x]:not(.w),section:has(>.w[data-c=x]))):not(:has(+[data-c=x]:not(.w),+section>.w[data-c=x])){grid-column:1/-1!important}
 .js section:not([data-c=x],:has(>.w[data-c=x]))+:is([data-c=x]:not(.w),section:has(>.w[data-c=x])),.js :is(.hero,.crumbs)+:is([data-c=x]:not(.w),section:has(>.w[data-c=x])){margin-top:0!important}
-.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x]))+:not([data-c=x],section:has(>.w[data-c=x]),script,style){margin-top:30px!important}
+.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x]))+:not([data-c=x],section:has(>.w[data-c=x]),script,style){margin-top:32px!important}
 .js .w[data-c=x]{margin:0;max-width:none;padding:16px 16px 18px}
 .js section:has(>.w[data-c=x]){padding:0!important}.js [data-c=x]:not(.w){padding:16px 16px 18px!important;height:auto!important;aspect-ratio:auto!important}.js [data-c=x]:not(.w):not(.c-o){min-height:0!important}
 @media(hover:hover){.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):not(.c-o,:has(>.c-o)):hover{border-color:var(--ac,#BF9148)!important;background:rgba(191,145,72,.07)!important}}
@@ -592,7 +588,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .c-o .ux-h::before{bottom:auto;height:76px}
 .ux-h::after{content:"";position:absolute;top:28px;inset-inline-end:20px;width:8px;height:8px;border-right:1.5px solid var(--ac,#BF9148);border-bottom:1.5px solid var(--ac,#BF9148);rotate:45deg;transition:rotate .4s var(--ease-out,ease)}
 .ux-h[aria-expanded=true]::after{rotate:225deg;top:32px}
-.js [data-c=x] h2>.ux-h>.ic,.js [data-c=x] h2[data-i]>.ic{position:absolute!important;top:14px!important;inset-inline-start:14px!important;width:38px!important;height:38px!important;padding:9px;box-sizing:border-box;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:50%;
+.js [data-c=x] h2>.ux-h>.ic,.js [data-c=x] h2[data-i]>.ic{position:absolute!important;top:14px!important;inset-inline-start:14px!important;width:38px!important;height:38px!important;padding:8px;box-sizing:border-box;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:50%;
   color:var(--ac,#BF9148);background:rgba(191,145,72,.06);stroke-width:1.5;transition:background-color .4s ease,color .4s ease,rotate .5s var(--ease-out,ease)}
 @media(hover:hover){.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):hover .ux-h>.ic{background:var(--ac,#BF9148);color:#140f08;rotate:-8deg}}
 .js [data-c=x][data-xs]:not(.c-o)::after{content:attr(data-xs);display:block;margin-top:6px;color:var(--ac,#BF9148);font:600 var(--fs-small,.8125rem)/1.3 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.04em}
@@ -650,17 +646,17 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 :where(a[data-a],.sp-name[data-a],h2[data-a])::after,.bz-go::before{
   --ux-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23BF9148' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.6 6.2V11h6.8V6.2M5 11V8.4h2V11'/%3E%3C/svg%3E");
   --ux-r:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23BF9148' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1.2 6.4 6 2l4.8 4.4'/%3E%3C/svg%3E");
-  background:var(--ux-r) no-repeat 8px 50%/12px 12px,var(--ux-w) no-repeat 8px 50%/12px 12px;animation:ux-build 3.2s var(--ease-out) infinite}
+  background:var(--ux-r) no-repeat 8px 50%/12px 12px,var(--ux-w) no-repeat 8px 50%/12px 12px;animation:ux-build 3.2s var(--ease-out) 1}
 :where(a[data-a],.sp-name[data-a],h2[data-a])::after{content:var(--ux-a,"Build animation");display:inline-block;vertical-align:.18em;margin-inline-start:.6em;padding:3px 10px;padding-inline-start:26px;
-  border:1px solid rgba(191,145,72,.5);border-radius:999px;font:600 10px/1.35 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(191,145,72,.5);border-radius:999px;font:500 .6875rem/1.35 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.01em;
   color:var(--ac,#BF9148);white-space:nowrap;max-width:100%;text-decoration:none;text-indent:0}
 @media(max-width:479px){:where(a[data-a],.sp-name[data-a],h2[data-a])::after{white-space:normal}}
 a[data-a=s]::after{content:var(--ux-as,"Interactive");vertical-align:.08em}
 a[data-a=i]::after,[data-c=k] a[data-a]::after{content:"";width:20px;height:16px;padding:0;margin-inline-start:6px;border:0;vertical-align:-.15em;background-position:50% 50%,50% 50%;animation-name:ux-build-c}
 @media(max-width:767px){.xs-all>.rel>a[data-a]::after{content:"";width:20px;height:16px;padding:0;margin-inline-start:6px;border:0;vertical-align:-.15em;background-position:50% 50%,50% 50%;animation-name:ux-build-c}} /* «Ще послуги» у вузьких картках (2 в ряд на телефоні): бейдж «Інтерактив» не вміщувався й обрізався — лише іконка */
-:is(:lang(zh),:lang(ar)) :where(a[data-a],.sp-name[data-a],h2[data-a])::after{letter-spacing:0;font-size:11px}
-@keyframes ux-build{0%{background-position:8px -14px,8px 22px}28%{background-position:8px -14px,8px 50%}52%,88%{background-position:8px 50%,8px 50%}100%{background-position:8px 50%,8px 50%;opacity:.35}}
-@keyframes ux-build-c{0%{background-position:50% -14px,50% 22px}28%{background-position:50% -14px,50% 50%}52%,88%{background-position:50% 50%,50% 50%}100%{background-position:50% 50%,50% 50%;opacity:.35}}
+:is(:lang(zh),:lang(ar)) :where(a[data-a],.sp-name[data-a],h2[data-a])::after{letter-spacing:0;font-size:.6875rem}
+@keyframes ux-build{0%{background-position:8px -14px,8px 22px}28%{background-position:8px -14px,8px 50%}52%,100%{background-position:8px 50%,8px 50%}}
+@keyframes ux-build-c{0%{background-position:50% -14px,50% 22px}28%{background-position:50% -14px,50% 50%}52%,100%{background-position:50% 50%,50% 50%}}
 [dir=rtl] :where(a[data-a]:not([data-a=i]),.sp-name[data-a],h2[data-a])::after{animation:none;background-position:calc(100% - 8px) 50%,calc(100% - 8px) 50%}
 /* кнопка-якір у hero сторінок з анімацією: «Дивитись, як ми будуємо» → #build-anim */
 .bz-go{display:inline-flex;align-items:center;gap:10px}
@@ -669,8 +665,7 @@ a[data-a=i]::after,[data-c=k] a[data-a]::after{content:"";width:20px;height:16px
 @media(prefers-reduced-motion:reduce){:where(a[data-a],.sp-name[data-a],h2[data-a])::after,.bz-go::before{animation:none!important;background-position:8px 50%,8px 50%}
   .bz-go::before,a[data-a=i]::after{background-position:50% 50%,50% 50%}.ic{animation:none}}
 /* плавна поява фото (blur-up): ui-polish ставить .ui-img лінивим фото до завантаження */
-.ui-img{transition:opacity .45s var(--ease-out),filter .45s var(--ease-out)!important}
-.ui-img:not(.ui-img-in){filter:blur(12px)}
+.ui-img{transition:opacity .45s var(--ease-out)!important}
 :is(.gal figure,figure.tph,.pg a,figure.af):has(>img.ui-img:not(.ui-img-in)){background:linear-gradient(100deg,rgba(191,145,72,.04) 30%,rgba(191,145,72,.12) 50%,rgba(191,145,72,.04) 70%) 0 0/300% 100%;animation:ux-sh 1.4s linear infinite}
 @keyframes ux-sh{to{background-position:-150% 0}}
 @media(prefers-reduced-motion:reduce){:is(.gal figure,figure.tph,.pg a,figure.af){animation:none!important}}
@@ -685,7 +680,9 @@ main :is(p,li,figcaption) a:not(.btn){overflow-wrap:anywhere}
 /* Оздоба: перший екран — H1 + одне речення; решта ліду, переваги й умови — у згорнутому «Умови замовлення» (Михайло 04.11.2026) */
 .ozd-hero>p{margin-bottom:10px}
 .ozd-more{margin:0 0 14px;border:0}
-.ozd-more>summary{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border:1px solid rgba(191,145,72,.45);border-radius:999px;color:var(--ac,#BF9148);font:600 .75rem/1.2 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;list-style:none}
+/* Оздоба: акцент у H1 — кольором, без курсиву (unslop: без italic-емфази) */
+.ozd-hero h1 em{font-style:normal}
+.ozd-more>summary{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border:1px solid rgba(191,145,72,.45);border-radius:999px;color:var(--ac,#BF9148);font:600 .8125rem/1.2 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.02em;cursor:pointer;list-style:none}
 .ozd-more>summary::-webkit-details-marker{display:none}
 .ozd-more>summary::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .4s var(--ease-out)}
 .ozd-more[open]>summary::after{transform:translateY(2px) rotate(225deg)}

@@ -176,7 +176,7 @@ code{font-size:.92em}
 .hero p{max-width:640px;max-inline-size:640px}.sg-note,.sg-meta p{max-width:720px;max-inline-size:720px}</style>
 <link rel="stylesheet" href="/assets/cas-map.v1.css?v=1a565e86">
 <link rel="stylesheet" href="/assets/ba.v1.css?v=0393468e">
-<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=b644c57b">
+<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=5b32acfb">
 </head>
 <body>
 <!--chrome:skip--><a class="skip" href="#main">Перейти до змісту</a><!--/chrome:skip-->
@@ -337,7 +337,7 @@ code{font-size:.92em}
 <section id="guide"><h2>Лід-магніт «Гід з цінами» (PDF)</h2>
 <div class="sg-c"><div class="sg-meta"><code>&lt;div class="gd-slot" data-pdf="/assets/guide/…pdf?v=…"&gt;</code> → <code>.gd</code> + <code>form.lq</code><p>Ставить <code>tools/guide/build.py</code> (деплой — tools/build-all.sh) на сторінки вартості, калькулятор і статті блогу про ціни (uk/ru); форму будує <code>/assets/lead-form.v1.js</code> ліниво: лише телефон, <code>data-form="guide"</code>, <code>data-service="Гід з цінами"</code>, source <code>…#guide</code>. Успіх — лише після 2xx: форма ховається, <code>.lq-ok.gd-ok</code> з кнопкою «Завантажити гід» і рядком «Менеджер також надішле його в Telegram/Viber». Не поп-ап. PDF (9 стор., ~330 КБ) — <code>python3 tools/guide/build.py pdf</code> з <code>tools/guide/content.py</code>; noindex у _headers.</p></div>
 <div class="sg-demo"><div class="gd-slot" data-built="1" style="margin:0;padding:0"><div class="gd"><p class="gd-h">Гід з цінами на ремонт і дизайн 2026</p><p class="gd-p">PDF: ставки «від» для Києва і Європи, що входить у ремонт від $550/м², пакети дизайну, будинок, етапи, схеми оплати й чекліст прийому ремонту.</p><form class="lq" onsubmit="event.preventDefault()" novalidate><label class="lq-l" for="sgGd">Залиште номер — і завантажте гід одразу</label><div class="lq-r"><input id="sgGd" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 97 123 45 67"><button class="lq-b" type="submit">Отримати гід</button></div></form></div></div>
-<p class="sg-note">Стан після 2xx:</p><div class="gd"><p class="gd-h">Гід з цінами на ремонт і дизайн 2026</p><div class="lq-ok gd-ok lf-ok-in" role="status"><span>Готово! Гід можна завантажити: </span><a class="btn main gd-dl" href="/assets/guide/gid-tsiny-remont-dyzain-2026-uk.pdf" download target="_blank" rel="noopener">Завантажити гід</a><p class="gd-m">Менеджер також надішле його в Telegram/Viber.</p></div></div></div></div>
+<p class="sg-note">Стан після 2xx:</p><div class="gd"><p class="gd-h">Гід з цінами на ремонт і дизайн 2026</p><div class="lq-ok gd-ok lf-ok-in" role="status"><span>Готово. Гід можна завантажити: </span><a class="btn main gd-dl" href="/assets/guide/gid-tsiny-remont-dyzain-2026-uk.pdf" download target="_blank" rel="noopener">Завантажити гід</a><p class="gd-m">Менеджер також надішле його в Telegram/Viber.</p></div></div></div></div>
 </section>
 
 <section id="ba"><h2>До / після</h2>
@@ -491,11 +491,11 @@ code{font-size:.92em}
 <div><label for="sgPhE">Телефон *</label><input id="sgPhE" type="tel" value="097 12" aria-invalid="true" aria-describedby="sgErrE" style="border-color:#e07a6a"><div class="err" id="sgErrE" role="alert">Перевірте номер: потрібно щонайменше 9 цифр, напр. 097 123 45 67 або +380 97 123 45 67.</div></div>
 <div class="btns"><button class="btn main lf-busy" type="button" disabled aria-busy="true">Надсилаємо…</button><button class="btn main" type="button">Надіслати ще раз</button></div>
 <div class="err" role="alert">Не вдалося надіслати заявку. Напишіть або подзвоніть: +380 97 866 77 55 (Telegram, Viber, WhatsApp).</div>
-<div class="ok lf-ok-in" role="status" style="display:block">Дякуємо! Перетелефонуємо найближчим часом.</div>
+<div class="ok lf-ok-in" role="status" style="display:block">Дякуємо. Перетелефонуємо найближчим часом.</div>
 </div></div></div>
 <div class="sg-c"><div class="sg-meta"><code>&lt;div class="lq-slot" data-form="quick-…"&gt;</code> → <code>form.lq</code><p>Компактне «Номер → передзвонимо» після цін, портфоліо, на сторінках проєктів і в статтях. У HTML — лише порожнє місце (ставить <code>tools/site/leadform.py</code>), форму будує <code>/assets/lead-form.v1.js</code>: підпис, телефон (type/inputmode/autocomplete=tel), кнопка «дієслово + результат», вигода <code>.o-note</code>, месенджери <code>.lq-alt</code>, факти <code>.lq-tr</code>. Без поп-апів. Стан відправки — <code>.lf-busy</code>, успіх — <code>.lq-ok.lf-ok-in</code>.</p></div>
 <div class="sg-demo"><div class="lq-slot" data-built="1"><form class="lq" onsubmit="event.preventDefault()" novalidate><label class="lq-l" for="sgLq">Потрібна цифра для вашої площі? Залиште номер — передзвонимо й порахуємо</label><div class="lq-r"><input id="sgLq" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 97 123 45 67"><button class="lq-b" type="submit">Отримати розрахунок</button></div><p class="o-note">Передзвонимо й порахуємо орієнтовну вартість. Консультація по телефону — безкоштовна.</p><p class="lq-alt">Або напишіть: <a href="https://t.me/+380978667755">Telegram</a> · <a href="viber://chat?number=%2B380978667755">Viber</a> · <a href="https://wa.me/380978667755">WhatsApp</a></p><p class="lq-tr">150+ проєктів з 2016 · гарантія 12 міс. · своя команда · Google 4,8★</p></form></div>
-<p><button class="lq-b lf-busy" type="button" disabled>Надсилаємо…</button></p><div class="lq-ok lf-ok-in" role="status">Дякуємо! Перетелефонуємо найближчим часом.</div>
+<p><button class="lq-b lf-busy" type="button" disabled>Надсилаємо…</button></p><div class="lq-ok lf-ok-in" role="status">Дякуємо. Перетелефонуємо найближчим часом.</div>
 <p class="sg-note" style="margin:18px 0 6px">Помилка в компактній формі — <code>.lq-e</code> під рядком, поле <code>aria-invalid</code>:</p>
 <div class="lq-slot" data-built="1"><form class="lq" onsubmit="event.preventDefault()" novalidate><label class="lq-l" for="sgLqE">Залиште номер — ми передзвонимо</label><div class="lq-r"><input id="sgLqE" type="tel" inputmode="tel" value="12" aria-invalid="true" aria-describedby="sgLqEe"><button class="lq-b" type="submit">Отримати розрахунок</button></div><div class="lq-e" id="sgLqEe" role="alert">Перевірте номер: потрібно щонайменше 9 цифр, напр. 097 123 45 67 або +380 97 123 45 67.</div></form></div>
 <p class="sg-note" style="margin:12px 0 0">Місця й джерело для CRM: <code>quick-prices → #prices</code>, <code>quick-portfolio → #portfolio</code>, <code>quick-project → #project</code>, <code>quick-services → #services</code>, <code>quick-blog-mid → #blog-mid</code>, <code>quick-blog-end → #blog-end</code>. Звіт по них — /kabinet/admin → «Аналітика».</p></div></div>
@@ -578,7 +578,7 @@ requestAnimationFrame(function(){requestAnimationFrame(function(){c.forEach(func
   <div class="scf-bot"><div class="scf-langs" role="group" aria-label="Мова"><span>Мова:</span><span class="scf-lang-on" aria-current="true" lang="uk">Українська</span><a href="/ru/" hreflang="ru" lang="ru">Русский</a><a href="/en/" hreflang="en" lang="en">English</a><a href="/es/" hreflang="es" lang="es">Español</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans">中文</a><a href="/pl/" hreflang="pl" lang="pl">Polski</a><a href="/de/" hreflang="de" lang="de">Deutsch</a><a href="/fr/" hreflang="fr" lang="fr">Français</a><a href="/ar/" hreflang="ar" lang="ar">العربية</a></div><a href="/konfidentsiinist">Політика конфіденційності</a><span>© 2026 CAS Development · Київ, Україна</span></div>
 </div>
 </footer><!--/chrome:f-->
-<link rel="stylesheet" href="/assets/media.v1.css?v=f45fc72f"><script src="/assets/media.v1.js?v=11148792" defer></script><script src="/assets/quiz.v1.js?v=e20724dc" defer></script>
+<link rel="stylesheet" href="/assets/media.v1.css?v=f45fc72f"><script src="/assets/media.v1.js?v=11148792" defer></script><script src="/assets/quiz.v1.js?v=8ce52f8b" defer></script>
 <script src="/assets/site-chrome.v1.js?v=c4c18d9d" defer></script>
 <script src="/assets/cas-map.v1.js?v=b6563f75" defer></script>
 <script src="/assets/ba.v1.js?v=e4081999" defer></script>
