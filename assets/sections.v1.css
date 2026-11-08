@@ -27,6 +27,8 @@ html body .hx.hx-home .hero{min-height:min(68vh,38rem);padding-bottom:20px}
 main>.hx-home+section.xs-strip{padding-top:12px!important}
 /* заголовок з посиланням праворуч */
 .xs-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 20px;flex-wrap:wrap;margin-bottom:24px}
+/* посилання в заголовку ряду (портфоліо: назва проєкту, «Відкрити →») — зона дотику ≥44 px без зміни макета (аудит 08.11.2026) */
+.xs-head a{position:relative}.xs-head a::before{content:"";position:absolute;inset:min(0px,calc(50% - 22px)) 0}
 .xs-head h2{margin:0}.xs-head a{font-size:var(--fs-small);letter-spacing:.02em}
 /* послуги */
 .xs-sv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
@@ -53,14 +55,14 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 [dir=rtl] .cv-b span{display:inline-block;transform:scaleX(-1)}
 .xs-cv a{position:relative;display:block;text-decoration:none;overflow:hidden;border:1px solid var(--ln)}
 .xs-cv img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
-.xs-cv span{position:absolute;inset:auto 0 0;padding:48px 16px 14px;background:linear-gradient(rgba(8,7,9,0),rgba(8,7,9,.9))}
+.xs-cv span{position:absolute;inset:auto 0 0;padding:56px 16px 14px;background:linear-gradient(rgba(8,7,9,0),rgba(8,7,9,.72) 45%,rgba(8,7,9,.94));text-shadow:0 1px 3px rgba(0,0,0,.7)}
 .xs-cv b{display:block;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:var(--fs-h3);line-height:1.15}
 .xs-cv small{color:#cfc8bd;font-size:var(--fs-small)}
 /* стрічка фото */
 .xs-st{display:grid;grid-auto-flow:column;grid-auto-columns:min(66vw,280px);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding-bottom:10px;scrollbar-width:thin}
 .xs-st>*{scroll-snap-align:start;position:relative;margin:0;display:block;text-decoration:none}
 .xs-st img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:var(--bg2)}
-.xs-st span{position:absolute;inset:auto 0 0;padding:28px 12px 10px;font-size:var(--fs-small);background:linear-gradient(rgba(8,7,9,0),rgba(8,7,9,.85))}
+.xs-st span{position:absolute;inset:auto 0 0;padding:34px 12px 10px;font-size:var(--fs-small);background:linear-gradient(rgba(8,7,9,0),rgba(8,7,9,.7) 45%,rgba(8,7,9,.92));text-shadow:0 1px 3px rgba(0,0,0,.75)}
 .xs-strip .w>.xs-st:first-child{margin-top:-8px}
 /* фото + текст */
 .xs-sp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:32px;align-items:center}
@@ -104,7 +106,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-proj,.xs-strip,.xs-covers,.xs-team,.xs-svc{content-visibility:auto;contain-intrinsic-size:auto 640px}
 /* блочність (04.11.2026): картка послуги — фото, назва, ціна, суть в 1–3 рядки й «Детальніше →»; перелік і теги — на сторінці послуги (у DOM лишаються) */
 .js .xs-sv .xs-cb>:is(ul,.xs-tags,details.xs-more){display:none}
-.js .xs-sv .xs-cb>p:not([class]){display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.js .xs-sv .xs-cb>p:not([class]){hyphens:manual;-webkit-hyphens:manual;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
 /* картки послуг — висота за вмістом, без порожньої середини (Михайло 05.11.2026): посилання одразу під описом */
 .xs-sv{align-items:flex-start}.xs-cb .xs-links{margin-top:0!important}
 /* «Ще послуги (N)» — кнопка-розгортання: згорнуто — лише заголовок «+»; розгорнуто — чипи-посилання переносяться на кілька рядків (без стрічки-marquee) */

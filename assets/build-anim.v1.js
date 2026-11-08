@@ -1275,6 +1275,12 @@
     function puff(g, kind, row) {
       if (rm || !cam || !g.firstChild) return;
       var now = Date.now(); if (now - pLast < (row ? 70 : 140)) return; pLast = now;
+      // getBBox одразу після зміни DOM змушує браузер перерахувати верстку посеред кадру (довгі задачі при прокрутці, INP) —
+      // міряємо після відмалювання кадру, коли верстка вже чиста (частинки зʼявляються на ~16 мс пізніше, оку непомітно)
+      W.requestAnimationFrame(function () { setTimeout(function () { puffNow(g, kind, row); }, 0); });
+    }
+    function puffNow(g, kind, row) {
+      if (!g.isConnected || !g.firstChild) return;
       var b; try { b = g.getBBox(); } catch (e) { return; } if (!b.width) return;
       var cn = kind === 2 ? 'bz-sp' : 'bz-dp', h = '';
       for (var i = 0; i < (row ? 5 : 7); i++) {
@@ -1319,7 +1325,10 @@
         if (scene === 'flat') { xb.disabled = a < sc.net; if (xb.disabled && xr) setXr(false); }
       }
     }
-    function span() { return run.offsetHeight - pin.offsetHeight; }
+    // висота доріжки: кеш (offsetHeight на кожному кадрі прокрутки змушував перераховувати верстку); скидається на resize/measure і зміну розмірів блоку
+    var spC = null;
+    function span() { if (spC == null) spC = run.offsetHeight - pin.offsetHeight; return spC; }
+    if (W.ResizeObserver) { var spRO = new ResizeObserver(function () { spC = null; }); spRO.observe(run); spRO.observe(pin); }
     // прогрес 0…1 → етап: старт із 0.6 (на вході в блок перший етап уже намальований)
     function target() {
       if (rm) return man;
@@ -1329,7 +1338,7 @@
     // прокрутка → прогрес: casDrive (site-chrome.v1.js) — згладжування, ліміт швидкості, не більше етапу за «клацання» колеса, зсув автопрогравання
     var drive = W.casDrive ? W.casDrive({ n: function () { return n; }, min: 0.6, raw: target, view: run, render: function (c) { cur = c; render(c); } }) : null;
     function kick() { if (drive) drive.kick(); else { cur = target(); render(cur); } }
-    function measure() { top0 = parseFloat(W.getComputedStyle(pin).top) || 0; kick(); }
+    function measure() { spC = null; top0 = parseFloat(W.getComputedStyle(pin).top) || 0; kick(); }
     function go(i) {
       if (rm) { man = i + 0.85; cur = man; render(cur); return; }
       if (drive) drive.reset();

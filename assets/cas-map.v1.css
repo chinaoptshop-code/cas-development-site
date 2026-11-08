@@ -60,3 +60,5 @@
 .cmap .maplibregl-ctrl.maplibregl-ctrl-attrib,.cmap .maplibregl-ctrl-attrib.maplibregl-compact-show,.cmap .maplibregl-ctrl-attrib.maplibregl-compact{background:rgba(13,12,11,.8);color:#a99f90;font-size:11px}.cmap .maplibregl-ctrl.maplibregl-ctrl-attrib a{color:#cbb48a}.cmap .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-button{filter:invert(.9);background-color:transparent}
 .cmap .maplibregl-cooperative-gesture-screen{font-family:var(--M,"Manrope","Manrope Fallback",sans-serif);background:rgba(13,12,11,.6);color:#ede8df}
 @media (prefers-reduced-motion:reduce){.cmap-poster{transition:none}.cmap-loading::after{animation-duration:2.4s}}
+/* кнопки масштабу на сенсорних — ≥44 px (аудит 08.11.2026) */
+@media (pointer:coarse){.cmap .maplibregl-ctrl-group button{width:44px;height:44px}}
