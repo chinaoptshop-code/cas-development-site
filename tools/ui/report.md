@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 858 (MAIN 6, LAND 435, інші 350). HTML разом 44200 КБ, з них інлайн CSS 17789 КБ і JS 566 КБ.
+Сторінок: 858 (MAIN 6, LAND 435, інші 350). HTML разом 44199 КБ, з них інлайн CSS 17789 КБ і JS 566 КБ.
 
 ## Проблеми
 
@@ -86,7 +86,7 @@
 | ozdoba/stil-obidnii-kruhlyi-marmur-z-obertovym-73.html | other | 59.6 | 15.2 | 32.4 | 0.7 | 14 | 333 |
 | ozdoba/zmishuvach-kukhonnyi-profesiinyi-z-pruzhynoiu-brashovane-519.html | other | 59.6 | 15.2 | 32.4 | 0.7 | 14 | 334 |
 | proekty/linden-penthouse.html | land | 59.6 | 10.9 | 1.9 | 0.7 | 0 | 467 |
-| remont-kvartyr-kyiv.html | land | 59.6 | 15.9 | 13.4 | 0.5 | 6 | 559 |
+| remont-kvartyr-kyiv.html | land | 59.6 | 15.8 | 13.4 | 0.5 | 6 | 559 |
 | blog/kapitalnyi-chy-kosmetychnyi-remont-shcho-obraty.html | article | 59.5 | 16.5 | 14.2 | 0.5 | 6 | 423 |
 | blog/komplektatsiia-interieru-samostiino-chy-z-komplektatorom.html | article | 59.5 | 16.8 | 14.2 | 0.5 | 6 | 429 |
 | ozdoba/elektrokamin-3d-z-parovym-polumiam-100-59.html | other | 59.5 | 15.3 | 32.4 | 0.7 | 14 | 337 |
@@ -156,7 +156,7 @@
 | ozdoba/keramohranit-velykoformatnyi-pid-kamin-120-60-40.html | other | 59.2 | 15.3 | 32.4 | 0.7 | 14 | 336 |
 | ozdoba/krislo-ofisne-erhonomichne-sitka-z-pidholivnykom-92.html | other | 59.2 | 15.3 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/kylym-vovnianyi-ruchnoho-taftynhu-v-smuhu-531.html | other | 59.2 | 15.3 | 32.4 | 0.7 | 14 | 335 |
-| ozdoba/lampa-nastilna-bankirska-z-zelenym-sklianym-430.html | other | 59.2 | 15.1 | 32.4 | 0.7 | 14 | 333 |
+| ozdoba/lampa-nastilna-bankirska-z-zelenym-sklianym-430.html | other | 59.2 | 15.2 | 32.4 | 0.7 | 14 | 333 |
 | ozdoba/liustra-liniina-latunna-zi-sklianymy-stryzhniamy-113.html | other | 59.2 | 15.2 | 32.4 | 0.7 | 14 | 329 |
 | ozdoba/myika-kukhonna-z-nerzhaviiuchoi-stali-chorna-102.html | other | 59.2 | 15.1 | 32.4 | 0.7 | 14 | 329 |
 | ozdoba/obihrivach-vulychnyi-hazovyi-piramida-425.html | other | 59.2 | 15.3 | 32.4 | 0.7 | 14 | 333 |
@@ -303,7 +303,7 @@
 | ozdoba/shezlonh-kushetka-velvetova-64.html | other | 58.7 | 15.2 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/stilets-barnyi-derevianyi-24.html | other | 58.7 | 15.2 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/svitylnyk-stelovyi-ip44-dlia-vannoi-bilyi-130.html | other | 58.7 | 15.2 | 32.4 | 0.7 | 14 | 332 |
-| ozdoba/svitylnyk-stelovyi-nakladnyi-bilyi-metal-i-133.html | other | 58.7 | 15.1 | 32.4 | 0.7 | 14 | 332 |
+| ozdoba/svitylnyk-stelovyi-nakladnyi-bilyi-metal-i-133.html | other | 58.7 | 15.2 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/tarilka-obidnia-portselianova-bila-27-sm-409.html | other | 58.7 | 15.2 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/trap-kvadratnyi-pid-plytku-nerzhaviiucha-stal-159.html | other | 58.7 | 15.1 | 32.4 | 0.7 | 14 | 328 |
 | ozdoba/tumba-prylizhkova-bila-2-shukhliady-67.html | other | 58.7 | 15.1 | 32.4 | 0.7 | 14 | 330 |
@@ -452,7 +452,7 @@
 | services.html | main | 52.0 | 13.6 | 13.3 | 0.5 | 6 | 502 |
 | ru/dizayn-kvartiry-kiev.html | land | 51.7 | 13.1 | 13.3 | 0.5 | 6 | 498 |
 | vartist-remontu-ofisu-kyiv.html | land | 51.7 | 13.9 | 13.3 | 0.5 | 6 | 471 |
-| modulnyi-budynok-kyiv.html | land | 51.5 | 14.6 | 13.3 | 0.5 | 6 | 490 |
+| modulnyi-budynok-kyiv.html | land | 51.4 | 14.6 | 13.3 | 0.5 | 6 | 490 |
 | ru/stoimost-dizayna-interera-kiev.html | land | 51.3 | 13.5 | 13.7 | 0.5 | 6 | 514 |
 | vartist-dyzainu-interieru-kyiv.html | land | 51.3 | 13.4 | 13.7 | 0.5 | 6 | 514 |
 | fr/index.html | land | 51.2 | 13.2 | 13.3 | 0.5 | 6 | 461 |
@@ -582,7 +582,7 @@
 | remont-kvartyry-zhk-respublika.html | land | 47.0 | 12.7 | 13.3 | 0.5 | 6 | 420 |
 | ru/remont-kvartiry-zhk-novyy-avtograf.html | land | 47.0 | 12.7 | 13.3 | 0.5 | 6 | 420 |
 | ru/remont-kvartiry-zhk-respublika.html | land | 47.0 | 12.7 | 13.3 | 0.5 | 6 | 420 |
-| remont-kvartyry-zhk-a136-highlight-tower.html | land | 46.9 | 12.7 | 13.3 | 0.5 | 6 | 421 |
+| remont-kvartyry-zhk-a136-highlight-tower.html | land | 46.9 | 12.8 | 13.3 | 0.5 | 6 | 421 |
 | ru/remont-kvartiry-zhk-a136-highlight-tower.html | land | 46.9 | 12.8 | 13.3 | 0.5 | 6 | 421 |
 | ru/remont-kvartiry-zhk-montreal-house.html | land | 46.9 | 12.7 | 13.3 | 0.5 | 6 | 422 |
 | ru/remont-kvartiry-zhk-senat.html | land | 46.9 | 12.8 | 13.3 | 0.5 | 6 | 420 |
@@ -601,10 +601,10 @@
 | ru/remont-kvartiry-zhk-life-story.html | land | 46.7 | 12.7 | 13.3 | 0.5 | 6 | 420 |
 | de/ueber-uns.html | land | 46.6 | 12.9 | 13.3 | 0.5 | 6 | 459 |
 | en/restaurant-design.html | land | 46.6 | 12.7 | 13.3 | 2.4 | 6 | 470 |
-| es/construccion-de-casas.html | land | 46.6 | 13.1 | 13.3 | 0.5 | 6 | 484 |
 | fr/calculateur-renovation.html | land | 46.6 | 13.0 | 13.9 | 1.4 | 6 | 456 |
 | remont-kvartyry-zhk-life-story.html | land | 46.6 | 12.7 | 13.3 | 0.5 | 6 | 420 |
 | es/calculadora-reforma.html | land | 46.5 | 12.9 | 13.9 | 1.4 | 6 | 457 |
+| es/construccion-de-casas.html | land | 46.5 | 13.1 | 13.3 | 0.5 | 6 | 484 |
 | fr/design-restaurant-cafe.html | land | 46.5 | 12.8 | 13.3 | 2.6 | 6 | 447 |
 | fr/renovation-cle-en-main.html | land | 46.5 | 13.1 | 13.3 | 0.5 | 6 | 465 |
 | pl/o-studiu.html | land | 46.5 | 13.2 | 13.3 | 0.5 | 6 | 466 |
@@ -622,10 +622,10 @@
 | ru/remont-vannoy-kiev.html | land | 46.2 | 12.4 | 13.3 | 0.5 | 6 | 422 |
 | blog/kompleks-vidpochynku-pid-kliuch-z-choho-skladaietsia-koshtorys.html | article | 46.1 | 12.8 | 14.2 | 0.5 | 6 | 370 |
 | proekty/edelweiss.html | land | 46.1 | 8.9 | 1.9 | 0.7 | 0 | 382 |
+| de/renovierung-schluesselfertig.html | land | 46.0 | 13.1 | 13.3 | 0.5 | 6 | 468 |
 | dogovir-garantiya-oplata.html | land | 46.0 | 12.2 | 13.3 | 0.5 | 6 | 409 |
 | ru/dizayn-i-remont-magazina-shouruma-kiev.html | land | 46.0 | 12.4 | 13.3 | 0.5 | 6 | 409 |
 | de/hausbau.html | land | 45.9 | 13.2 | 13.3 | 0.5 | 6 | 485 |
-| de/renovierung-schluesselfertig.html | land | 45.9 | 13.1 | 13.3 | 0.5 | 6 | 468 |
 | de/renovierungskosten-rechner.html | land | 45.9 | 13.0 | 13.9 | 1.4 | 6 | 458 |
 | dyzain-i-remont-mahazynu-shourumu-kyiv.html | land | 45.9 | 12.4 | 13.3 | 0.5 | 6 | 409 |
 | en/restaurant-fit-out.html | land | 45.9 | 13.2 | 13.3 | 2.4 | 6 | 499 |
@@ -634,10 +634,10 @@
 | en/renovation-cost-calculator.html | land | 45.6 | 12.7 | 13.9 | 1.4 | 6 | 466 |
 | en/resort-design.html | land | 45.6 | 12.5 | 13.3 | 2.5 | 6 | 460 |
 | fr/architecture-paysagere.html | land | 45.6 | 12.4 | 13.3 | 1.0 | 6 | 522 |
+| pl/kalkulator-remontu.html | land | 45.6 | 13.2 | 13.9 | 1.4 | 6 | 465 |
 | fr/base-de-loisirs-cle-en-main.html | land | 45.5 | 12.5 | 13.3 | 2.7 | 6 | 437 |
-| pl/kalkulator-remontu.html | land | 45.5 | 13.2 | 13.9 | 1.4 | 6 | 465 |
-| pl/osrodek-wypoczynkowy-pod-klucz.html | land | 45.5 | 12.7 | 13.3 | 2.5 | 6 | 451 |
 | es/complejo-turistico-llave-en-mano.html | land | 45.4 | 12.4 | 13.3 | 2.6 | 6 | 437 |
+| pl/osrodek-wypoczynkowy-pod-klucz.html | land | 45.4 | 12.7 | 13.3 | 2.5 | 6 | 451 |
 | es/paisajismo.html | land | 45.2 | 12.4 | 13.3 | 0.9 | 6 | 522 |
 | remont-kukhni-kyiv.html | land | 45.2 | 12.1 | 13.3 | 0.5 | 6 | 430 |
 | en/landscape-design.html | land | 45.1 | 12.3 | 13.3 | 0.9 | 6 | 537 |
@@ -834,7 +834,7 @@
 | zh/commercial-renovation.html | land | 37.4 | 10.7 | 13.3 | 0.5 | 6 | 384 |
 | en/house-design.html | land | 37.2 | 9.9 | 13.3 | 0.5 | 6 | 378 |
 | fr/conception-maison.html | land | 37.2 | 9.9 | 13.3 | 0.5 | 6 | 361 |
-| zh/new-build-renovation.html | land | 37.2 | 10.7 | 13.3 | 0.5 | 6 | 378 |
+| zh/new-build-renovation.html | land | 37.2 | 10.8 | 13.3 | 0.5 | 6 | 378 |
 | es/proyecto-de-casa.html | land | 37.1 | 9.9 | 13.3 | 0.5 | 6 | 361 |
 | pl/faq.html | land | 37.1 | 10.2 | 13.3 | 0.5 | 6 | 337 |
 | pl/projektant-wnetrz.html | land | 37.0 | 10.3 | 13.3 | 0.5 | 6 | 370 |
@@ -843,7 +843,7 @@
 | de/innenarchitekt.html | land | 36.8 | 10.1 | 13.3 | 0.5 | 6 | 363 |
 | es/contacto.html | land | 36.6 | 10.0 | 13.3 | 0.5 | 6 | 320 |
 | fr/contact.html | land | 36.6 | 10.1 | 13.3 | 0.5 | 6 | 320 |
-| pl/projekt-domu.html | land | 36.6 | 10.0 | 13.3 | 0.5 | 6 | 369 |
+| pl/projekt-domu.html | land | 36.6 | 10.1 | 13.3 | 0.5 | 6 | 369 |
 | de/hausplanung.html | land | 36.5 | 9.9 | 13.3 | 0.5 | 6 | 362 |
 | pl/kontakt.html | land | 36.5 | 10.2 | 13.3 | 0.5 | 6 | 328 |
 | zh/design-implementation.html | land | 36.5 | 10.7 | 13.3 | 0.5 | 6 | 365 |
@@ -872,7 +872,7 @@
 | pl/polityka-prywatnosci.html | land | 29.4 | 8.8 | 13.2 | 0.5 | 9 | 219 |
 | de/datenschutz.html | land | 29.3 | 8.7 | 13.2 | 0.5 | 9 | 212 |
 | es/privacidad.html | land | 29.3 | 8.6 | 13.2 | 0.5 | 9 | 211 |
-| en/privacy-policy.html | land | 28.9 | 8.4 | 13.2 | 0.5 | 9 | 220 |
+| en/privacy-policy.html | land | 28.9 | 8.5 | 13.2 | 0.5 | 9 | 220 |
 | proekty/dolls-salon.html | land | 28.6 | 7.1 | 1.9 | 0.7 | 0 | 306 |
 | zh/privacy.html | land | 28.5 | 8.9 | 13.2 | 0.5 | 9 | 209 |
 | tury.html | other | 20.1 | 4.8 | 0.0 | 0.0 | 0 | 293 |

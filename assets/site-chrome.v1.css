@@ -831,3 +831,8 @@ html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.pr
 .lt3,.lyt{position:relative;display:block;overflow:hidden;aspect-ratio:16/9}.lt3 img,.lyt img{display:block;width:100%;height:100%;object-fit:cover}
 .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}.vgrid figure{margin:0}.vgrid figcaption{padding:8px 0 0;font-size:var(--fs-small,.8125rem)}
 @media(max-width:767px){.vgrid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:84%;gap:12px;overflow-x:auto;padding-bottom:8px}}
+/* «Карта проєктів» (Михайло 08.11.2026): main — сітка LIGHT, секція карти з margin:auto стискалась до ~500 px — розтягуємо на весь ряд */
+html body main>.pmap{grid-column:1/-1;width:100%;box-sizing:border-box}
+@media(max-width:899px){.pmap .cmap-list{max-height:22rem;overflow:auto}}
+/* банер-плитка: aspect-ratio + max-height звужували блок (перенесений max-width) — тягнемо на всю ширину ряду (Михайло 08.11.2026) */
+.js [data-c=x]:not(.c-o):has(>.ux-wb){width:100%;box-sizing:border-box}
