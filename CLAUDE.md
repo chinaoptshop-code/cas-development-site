@@ -12,9 +12,15 @@
 
 - Код сайту в `main` викладають хмарна сесія і Mac mini (JARVIS) — будь-які зміни сайту й статті (Михайло 01.11.2026). Dell і інші сесії дають гілки або файли через Drive.
   Перед кожним пушем у `main`: `git pull --no-rebase origin main`, `bash tools/build-all.sh`, `python3 tools/site/chrome.py --check`, `python3 tools/site/i18n.py --check`,
-  `python3 tools/ui/ui.py budget`, `python3 tools/site/seo.py`, `python3 tools/blog/build.py --check`, `node tools/tests/run.mjs` — лише якщо все OK. Без force-push і rebase спільної історії;
+  `python3 tools/ui/ui.py budget`, `python3 tools/site/seo.py`, `python3 tools/blog/build.py --check`, `node tools/tests/run.mjs`, `node tools/tests/layout.mjs`, `node tools/tests/interact.mjs` — лише якщо все OK. Без force-push і rebase спільної історії;
   зміни functions/ і migrations/ — тільки з тестами `tools/tests/`. Ціни й факти — лише з цього файлу.
 - Перед комітом: `python3 tools/ui/ui.py scan` (звіт `tools/ui/report.md`) і `python3 tools/ui/ui.py budget`.
+- Аудит верстки й взаємодій (08.11.2026): `node tools/tests/layout.mjs` (швидко — головні/послуги/про/контакти/портфоліо на 402 і 1440; `--full --set core|uk|all --out <тека>` — 7 ширин 360…2560 і скріни `AU-*`)
+  ловить: блоки в `main`/секціях вужчі за ряд (секції й блоки в сітці `main` — `grid-column:1/-1`, без shrink-to-fit від `margin:auto`/`aspect-ratio`+`max-height`), текст поверх тексту/кнопок,
+  шапку/пігулку над H1, кнопками й полями (на старті й унизу сторінки), горизонтальну прокрутку, обрізаний текст, тап-цілі < 44 px (прозора зона `::before` рахується), сплющені фото, JS-помилки;
+  у `--full` ще контраст тексту на фото (піксельна проба під текстом; градієнти плиток LIGHT, `.xs-st`/`.xs-cv` не слабшати) і фото менші за слот × DPR. Взаємодії (бургер, мови, плитки, каруселі, сцени, пігулка,
+  форма: успіх лише після 2xx, `.lq-go`, квіз, калькулятор, карта) — `node tools/tests/interact.mjs`; швидкість (LCP/CLS/TBT, телефон 1.6 Мбіт/с CPU ×4 і ПК) — `node tools/tests/perf.mjs`.
+  Плитка `data-c="x"` при тапі тримає свій заголовок під пальцем (`uxSet(open, tap)` у site-chrome.v1.js). `seo.py` перевіряє й биті внутрішні посилання (href/src/srcset, `_redirects`), og:image і twitter:card.
 - Каталог компонентів — `/styleguide/` (noindex). Нові сторінки — лише з цих блоків.
 - Візуальна шліфовка — чекліст `.claude/skills/unslop` у режимі polish: бренд (палітра, шрифти, шапка/футер), секції й сцени лишаються; правила цього файлу важливіші за скіл (Михайло 06.11.2026); без появи секцій при прокрутці (контент видно одразу), кнопки — округлі, «Усі …», не «Всі …».
 - Шрифти — тільки власні з `/fonts/` (Cormorant Garamond + Manrope), без Google Fonts.
