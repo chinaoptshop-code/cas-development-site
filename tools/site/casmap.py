@@ -94,15 +94,13 @@ def projects_html():
                   f'<button type="button" class="cmap-fly" hidden aria-label="Показати на карті: {e(name)}">{PIN}</button></li>')
     return ('<section class="pmap" id="karta" aria-labelledby="pmap-h"><div class="lbl">Географія</div>'
             '<h2 class="pmap-h" id="pmap-h">Карта проєктів</h2>'
-            '<p class="pmap-sub">Київ, Київщина, Карпати, Бодрум, Дубай і США. Натисніть на точку або на значок поруч із проєктом у списку — карта покаже місто, '
-            'а в картці буде фото й посилання на сторінку проєкту.</p>'
+            '<p class="pmap-sub">Київ, Київщина, Карпати, Бодрум, Дубай і США.</p>'  # без інструкції «натисніть на точку…» (08.11.2026, менше тексту)
             '<div class="pmap-grid"><div class="cmap" data-cas-map="projects" data-load="visible" data-lang="uk" data-list="pmap-list" data-more="Сторінка проєкту →">'
             '<picture><source media="(max-width:899px)" srcset="/img/map/projects-sq.webp" width="800" height="800">'
             '<img class="cmap-poster" src="/img/map/projects-1280.webp" width="1280" height="800" loading="lazy" decoding="async" '
             'alt="Карта проєктів CAS Development: Київ і Київщина, Карпати, Бодрум (Туреччина), Дубай (ОАЕ), США"></picture></div>'
             '<ul class="cmap-list" id="pmap-list" aria-label="Проєкти на карті">' + ''.join(li) + '</ul></div>'
-            '<p class="pmap-note">На карті — центр міста або регіону; точних адрес приватних обʼєктів не показуємо. '
-            'Інші проєкти — у списку вище.</p></section>')
+            '<p class="pmap-note">На карті — центр міста або регіону, без адрес приватних обʼєктів.</p></section>')
 
 
 CSS = '<link rel="stylesheet" href="/assets/cas-map.v1.css">'

@@ -48,14 +48,11 @@ PAGES = {
     'de/renovierung-schluesselfertig.html': ('kv', 'rem'), 'fr/renovation-cle-en-main.html': ('kv', 'rem'), 'ar/turnkey-renovation.html': ('kv', 'rem'),
 }
 T = {
-    'uk': dict(h='Порахуйте орієнтовну вартість', p='4 короткі питання — і ви побачите орієнтир «від» за базовими ставками студії. '
-               'Наприкінці залиште телефон: передзвонимо й уточнимо розрахунок.',
+    'uk': dict(h='Порахуйте орієнтовну вартість', p='4 питання — і ви побачите орієнтир «від» за ставками студії.',
                ns='Калькулятор працює з увімкненим JavaScript. Залиште номер у формі заявки — порахуємо разом по телефону.'),
-    'ru': dict(h='Рассчитайте ориентировочную стоимость', p='4 коротких вопроса — и вы увидите ориентир «от» по базовым ставкам студии. '
-               'В конце оставьте телефон: перезвоним и уточним расчёт.',
+    'ru': dict(h='Рассчитайте ориентировочную стоимость', p='4 вопроса — и вы увидите ориентир «от» по ставкам студии.',
                ns='Калькулятор работает с включённым JavaScript. Оставьте номер в форме заявки — посчитаем вместе по телефону.'),
-    'en': dict(h='Get a quick cost estimate', p='Four short questions and you will see a “from” figure based on the studio’s base rates. '
-               'Leave your phone number at the end and we will call you to refine it.',
+    'en': dict(h='Get a quick cost estimate', p='Four questions and you will see a “from” figure at the studio’s rates.',
                ns='The calculator needs JavaScript. Leave your number in the request form and we will work it out with you by phone.'),
 }
 RX = re.compile(r'\n?<!--quiz-->.*?<!--/quiz-->', re.S)

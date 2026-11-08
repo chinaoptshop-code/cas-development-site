@@ -107,11 +107,15 @@ function marquee(){
   function setup(){
    if(cl.length)return true;
    if(sc.scrollWidth<=sc.clientWidth+8)return false; // усе й так видно (напр. .vgrid на десктопі) — не крутимо
-   items.forEach(function(it){var c=it.cloneNode(true);c.setAttribute('aria-hidden','true');c.classList.add('mq-c');
+   // копія через інертний <template> з data-mq-src: cloneNode(true) змушує Chrome тягнути всі lazy-фото копій одразу (30+ запитів);
+   // src/srcset повертаємо вже після вставки — тоді працює loading="lazy"
+   items.forEach(function(it){var tp=d.createElement('template');tp.innerHTML=it.outerHTML.replace(/<img\b[^>]*>/g,function(t){return t.replace(/\s(src|srcset)=/g,' data-mq-$1=')});
+    var c=tp.content.firstElementChild;c.setAttribute('aria-hidden','true');c.classList.add('mq-c');
     noId(c);$$('[id]',c).forEach(noId);
     $$('a,button,[tabindex]',c).concat(c.matches('a,button')?[c]:[]).forEach(function(x){x.setAttribute('tabindex','-1')});
     $$('img',c).forEach(function(im){im.classList.remove('ui-img','ui-img-in')});
-    sc.appendChild(c);cl.push(c)});
+    sc.appendChild(c);cl.push(c);
+    $$('img',c).forEach(function(im){['srcset','src'].forEach(function(a){var v=im.getAttribute('data-mq-'+a);if(v!=null){im.removeAttribute('data-mq-'+a);im.setAttribute(a,v)}})})});
    bar=d.createElement('div');bar.className='mq-bar';btn=d.createElement('button');btn.type='button';btn.className='mq-ap';bar.appendChild(btn);
    sc.parentNode.insertBefore(bar,sc);lab();
    sc.classList.add('mq-run'); // без scroll-snap, поки стрічка рухається й на паузі: інакше на паузі кадр «відскакує» до краю

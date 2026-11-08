@@ -91,6 +91,14 @@ jobs:
       - name: 🖼️ AVIF для зображень (tools/img/picture.py)
         run: python3 tools/img/picture.py
 
+      # Мініфікація лише копії, що йде на сайт (у репозиторії — читабельні файли з коментарями): −30–40% gzip CSS/JS,
+      # site-chrome.v1.css (блокує рендер) 23 → 16 КБ. Помилка esbuild — сайт іде без мініфікації, деплой не зупиняється.
+      - name: 🗜️ Minify CSS/JS (esbuild)
+        continue-on-error: true
+        run: >-
+          npx -y esbuild@0.24.0 assets/*.js assets/*.css assets/ozdoba/app.js assets/ozdoba/kp.v1.js
+          --minify --charset=utf8 --legal-comments=none --outbase=assets --outdir=assets --allow-overwrite --log-level=warning
+
       - name: 🧹 Exclude non-site files (tools, Claude config)
         run: rm -rf tools .claude CLAUDE.md migrations
 

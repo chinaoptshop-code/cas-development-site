@@ -154,7 +154,7 @@ ANIM = _anim_urls()
 # ── «Легкі» головні сторінки (Михайло 02.11.2026: «на головних — лише назви, усі деталі — всередині, при натисканні») ──
 # Кластери (усі мови, tools/site/lang/clusters*.json) + окремі сторінки з їхніми перекладами. На цих сторінках:
 #   hero — H1, рядок ціни, лід згорнутий в один рядок (data-c="h", тап — розгорнути), кнопки «Подзвонити» + «Порахувати»
-#          (a.ux-calc → квіз / калькулятор сторінки / калькулятор мови / форма), рядок довіри (CSS --ux-tr), без .facts і WhatsApp;
+#          (a.ux-calc → квіз / калькулятор сторінки / калькулятор мови / форма), без рядка довіри (з 08.11.2026), .facts і WhatsApp;
 #   секції — плитки (data-c="x" на <div class="w">): іконка + назва (H2) + рядок «від $…» (data-xs); тап — розгортає на місці.
 #          Текст лишається в DOM (SEO, FAQPage). Не плитки: форма, калькулятор, квіз, гід, «Будинок з нуля», карта, контакти.
 LIGHT_CLUSTERS = ('home', 'services', 'about', 'contact', 'design', 'renovation', 'construction', 'calculator', 'landscape', 'resort', 'restaurant', 'office', 'furnishing')
@@ -423,6 +423,9 @@ WIDE_ALT = {
                     ar='شرفة مطعم Monpark مساءً، وسط كييف — تصميم وتنفيذ CAS Development'),
 }
 WB_RX = re.compile(r'<img class="ux-wb"[^>]*>')
+# реальна ширина плитки-банера (замір Playwright 360…2560: 100vw−34 px до 1079, 1046 px до 1366, далі «Широкі екрани» ~59vw+315):
+# 402@3 бере 1200w замість 1600w (−74 КБ), 1440@1 — теж 1200w
+WB_SIZES = '(max-width:1079px) calc(100vw - 34px), (max-width:1366px) 1046px, calc(59vw + 315px)'
 
 
 def _wide_img(body, lang):
@@ -430,7 +433,7 @@ def _wide_img(body, lang):
     name, ws, pos = WIDE.get(h.group(1) if h else WIDE_FB, WIDE[WIDE_FB])
     alt = WIDE_ALT[name].get(lang) or WIDE_ALT[name]['en']
     srcset = ', '.join(f'/img/p/wide-{name}-{w}.webp {w}w' for w in ws)
-    return (f'<img class="ux-wb" src="/img/p/wide-{name}-{ws[1]}.webp" srcset="{srcset}" sizes="(min-width:1300px) 1300px, 100vw" '
+    return (f'<img class="ux-wb" src="/img/p/wide-{name}-{ws[1]}.webp" srcset="{srcset}" sizes="{WB_SIZES}" '
             f'loading="lazy" decoding="async" width="{ws[-1]}" height="{ws[-1] // 2}" alt="{html.escape(alt)}" style="object-position:{pos}">')
 
 
@@ -704,8 +707,8 @@ def css_block():
     out = []
     for l in UX:
         code = i18n.meta(l)['html']
-        tr = UX[l].get('trust') or UX['en'].get('trust', '')
-        out.append(f':root:lang({code}){{--ux-a:{json.dumps(UX[l]["a"], ensure_ascii=False)};--ux-as:{json.dumps(UX[l]["as"], ensure_ascii=False)};--ux-tr:{json.dumps(tr, ensure_ascii=False)}}}')
+        # --ux-tr (рядок довіри під кнопками hero) більше не виводимо — прибрано 08.11.2026 («менше тексту»)
+        out.append(f':root:lang({code}){{--ux-a:{json.dumps(UX[l]["a"], ensure_ascii=False)};--ux-as:{json.dumps(UX[l]["as"], ensure_ascii=False)}}}')
     return '/*ux:labels*/' + ''.join(out) + '/*/ux:labels*/'
 
 
