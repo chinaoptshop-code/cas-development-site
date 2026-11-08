@@ -48,7 +48,9 @@
     add('water', poly('wh-ripple', rect(-10, PW + 12, SH, PD + 12, 0)), -1, 0);
     add('water', '<g>' + gl + '</g>', -1, 0);
     add('shore', box('wh-shore', -10, PW + 12, SH - 10, SH, -2.6, 0.5) + poly('wh-grass', rect(-10, PW + 12, SH - 10, SH - 0.6, 0.52)), -1, 0);
-    [[-6, SH - 3], [-2, SH - 6], [PW + 4, SH - 4], [PW + 8, SH - 7], [PW * 0.75, SH - 7]].forEach(function (t, k) { add('shore', line('wh-trunk', [t[0], t[1], 0.5, t[0], t[1], 2.6]) + circ('wh-crown', t[0], t[1], 3.4, 1.3), -1, 0, null, null, k); });
+    // дерева на березі — у межах кадру FULL (QA 06.11: праве дерево зрізалось краєм картки на телефоні); крони враховано в FULL нижче
+    var TR = [[-6, SH - 3], [-2, SH - 6], [PW + 2.2, SH - 2.6], [PW * 0.75, SH - 7]];
+    TR.forEach(function (t, k) { add('shore', line('wh-trunk', [t[0], t[1], 0.5, t[0], t[1], 2.6]) + circ('wh-crown', t[0], t[1], 3.4, 1.3), -1, 0, null, null, k); });
     // 1 промір глибин: геодезист на березі, точки проміру на воді, контур платформи
     add('night', line('wh-tri', [bx - 3.4, SH - 1.6, 0.5, bx - 3, SH - 1.6, 1.9, bx - 2.6, SH - 1.6, 0.5]) + dot('wh-dev', bx - 3, SH - 1.6, 2, 3.5), 0, 0.05, 2);
     for (i = 0, n = 0; i <= 4; i++) for (var j = 0; j <= 4; j++, n++) { x = PW * i / 4; y = PD * j / 4; add('night', circ('wh-sound', x, y, 0, 0.35) + dot('wh-sp', x, y, 0, 1.6), 0, 0.15 + 0.6 * n / 25, 2); }
@@ -151,7 +153,9 @@
     els = [];
     order.forEach(function (ly) { L[ly].forEach(function (o) { o.id = id++; html += '<g class="wh-e' + (o.k < 0 ? ' on' : '') + (o.x != null ? ' ux ux' + o.x : '') + '">' + o.h + '</g>'; if (o.k >= 0) els.push(o); }); });
     els.sort(function (a, b) { return a.k - b.k; });
-    var c = [P(-1.5, SH - 3, zr), P(PW + 3, SH, 0), P(-1.5, PD + 2, 0), P(PW + 1, PD + 2, -2), P(PW + 4, 0, 0), P(-4, PD, 0)], xs = c.map(function (q) { return +q[0]; }), ys = c.map(function (q) { return +q[1]; });
+    var c = [P(-1.5, SH - 3, zr), P(PW + 3, SH, 0), P(-1.5, PD + 2, 0), P(PW + 1, PD + 2, -2), P(PW + 4, 0, 0), P(-4, PD, 0)];
+    TR.forEach(function (t) { c.push(P(t[0] + 1, t[1] - 1, 3.4), P(t[0], t[1], 4.4)); });
+    var xs = c.map(function (q) { return +q[0]; }), ys = c.map(function (q) { return +q[1]; });
     FULL = [Math.min.apply(0, xs) - 14, Math.min.apply(0, ys) - 14, Math.max.apply(0, xs) - Math.min.apply(0, xs) + 28, Math.max.apply(0, ys) - Math.min.apply(0, ys) + 28];
     FOC = [0, [0, 0, PW, PD, -2.6, Z], [0, 0, PW, PD, 0, Z], [0, 0, PW, PD, 0, Z], [bx - 3, SH - 2, bx + 3, 2, 0, Z + 1], [hx0, hy0, hx1, hy1, Z, zt], [hx0, hy0, hx1, hy1, Z, zr], 0, 0, [-1.5, hy1 - 1, PW, PD + 1, -0.6, Z + 1.5], 0, 0];
     svg.innerHTML = '<defs><linearGradient id="wh-wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f6f8f" stop-opacity=".78"/><stop offset="1" stop-color="#1b4a66" stop-opacity=".84"/></linearGradient>'

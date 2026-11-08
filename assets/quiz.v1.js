@@ -366,14 +366,18 @@
     w.appendChild(h); w.appendChild(el('p', 'qz-lead', t.p)); w.appendChild(box); sec.appendChild(w);
     me.parentNode.insertBefore(sec, me);
   }
-  function css(root) {
-    var href = root.dataset.css || CSS; if (!href || d.querySelector('link[data-qz]')) return;
-    var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = href; l.setAttribute('data-qz', ''); d.head.appendChild(l);
+  /* кроки будуємо лише після quiz.v1.css (CLS: без стилів кроки вищі за резерв .qz 360 px у site-chrome.v1.css і стрибають) */
+  function css(root, done) {
+    var href = root.dataset.css || CSS, l = d.querySelector('link[data-qz]');
+    if (!href) return done();
+    if (l) { if (l.sheet || l.dataset.ok) done(); else { l.addEventListener('load', done); l.addEventListener('error', done); } return; }
+    l = d.createElement('link'); l.rel = 'stylesheet'; l.href = href; l.setAttribute('data-qz', '');
+    var fin = function () { l.dataset.ok = '1'; done(); }; l.onload = fin; l.onerror = fin; d.head.appendChild(l);
   }
   function init() {
     mount();
     var left = [].slice.call(d.querySelectorAll('[data-quiz]')); if (!left.length) return;
-    var start = function (r) { css(r); build(r); };
+    var start = function (r) { if (r.dataset.qzw) return; r.dataset.qzw = '1'; css(r, function () { build(r); }); };
     // ліниво: коли блок ближче ніж 600 px до екрана (IntersectionObserver + запасна перевірка на scroll/resize)
     var near = function (r) { var b = r.getBoundingClientRect(); return b.bottom > -600 && b.top < (window.innerHeight || 800) + 600; };
     var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {

@@ -443,7 +443,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
   main :is(.spc-cta,.ps-tog,.sph>button){position:relative}
   main :is(.spc-cta,.ps-tog,.sph>button)::after{content:"";position:absolute;inset:-14px -4px}
   main .rel>a{min-height:44px;display:inline-flex;align-items:center}
-  main nav.chips .chip{min-height:40px}
+  main nav.chips .chip{min-height:44px}
   main .tile .cas-fav::after{content:"";position:absolute;inset:-5px}
   main .sv-toggle,main .hbtns .btn,main .hbtns button{min-height:44px}
   main .pf-filter .filt{min-height:44px;display:inline-flex!important;align-items:center}
@@ -461,7 +461,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 :where(main a:not([class]):not(:has(img,svg,picture))):hover{color:#EDE8DF;text-decoration-color:currentColor}
 :where(main a:not([class])):focus-visible{outline:2px solid #BF9148;outline-offset:2px;border-radius:2px}
 /* ── Тап-зони ≥44px (аудит Playwright 402/1440, 01.11.2026): видимий розмір не змінюємо, розширюємо зону натискання ── */
-.lq-alt a{position:relative}.lq-alt a::after{content:"";position:absolute;inset:-9px -3px}
+.lq-alt a{position:relative}.lq-alt a::after{content:"";position:absolute;inset:-10px -3px}
 :is(#of,.lq) :is(input:not([type=checkbox]):not([type=radio]):not([name=hp]),select){min-height:44px}
 :is(#of,.lq) .o-more>summary{min-height:44px;display:flex;align-items:center}
 .pcarousel-nav>button{min-width:44px;min-height:44px}
@@ -489,7 +489,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
    «Комплекс» — кадр генплану 10:7 (2/3 ширини з 901 px) + панель. Зміниш висоту сцени в JS/CSS — зміни й тут (перевірка: CLS-тест зі швидкою прокруткою й затриманим CSS). */
 @media(prefers-reduced-motion:no-preference){
   .js body:not(:has(.hx-home)) .bz[data-bz]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(var(--n,19) * var(--bz-per) + 100svh - var(--sch-h,64px) - var(--bz-bot));margin:0;overflow:hidden}
-  .js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(min(60vh,540px) + 15rem + 8px);margin:0;overflow:hidden}
+  .js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(max(min(60vh,540px),26.75rem) + 1.25rem + 8px);margin:0;overflow:hidden} /* ПК: кадр або колонка етапів (≈26.75rem, без пирога — 08.11), що вища */
   .bz[data-la]{--ln:16}.bz[data-rs]{--ln:14}.bz[data-wh]{--ln:12}
   .bz:is([data-la],[data-rs],[data-wh]){--lx:58px} /* --lx — панель налаштувань над доріжкою: 1 ряд ≈ 58 px, кожен перенос ряду ≈ +50 px */
   .js body:not(:has(.hx-home)) .bz:is([data-la],[data-rs],[data-wh]):not(.la-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(100vh + var(--ln) * clamp(400px,50vh,560px) + var(--lx));margin:0;overflow:hidden}
@@ -499,9 +499,8 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 @media(prefers-reduced-motion:no-preference) and (min-width:2200px){.js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 4px) * .4667 + 84px)}}
 @media(prefers-reduced-motion:no-preference) and (max-width:1099px){.bz:is([data-la],[data-rs]){--lx:112px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:1399px){.bz[data-wh]{--lx:112px}}
-@media(prefers-reduced-motion:no-preference) and (min-width:768px) and (max-width:1099px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(min(60vh,540px) + 23rem + 8px)}}
 @media(prefers-reduced-motion:no-preference) and (max-width:900px){.js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 20px) * .7 + 671px)}}
-@media(prefers-reduced-motion:no-preference) and (max-width:767px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(min(42vh,350px) + 24.5rem + 8px)}
+@media(prefers-reduced-motion:no-preference) and (max-width:767px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(min(42vh,350px) + 23.5rem + 8px)}
   .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 20px) * .45 + 836px)}
   .bz:is([data-la],[data-rs]){--lx:162px}.bz[data-wh]{--lx:162px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:419px){.bz[data-wh]{--lx:214px}}
@@ -756,3 +755,33 @@ html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(
    відео, «Що ми робимо» на телефоні, галереї. Прокрутка свайпом, тачпадом, колесом зі Shift і клавішами лишається; кнопку паузи дає marquee() */
 html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.prs-inner,.pcarousel-track,.gal,.pc-grid){scrollbar-width:none;-ms-overflow-style:none}
 html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.prs-inner,.pcarousel-track,.gal,.pc-grid)::-webkit-scrollbar{display:none;width:0;height:0}
+/* Смартфони, складані й двоекранні (08.11.2026, «адаптація під смартфони, в тому числі айфон дуо»):
+   поля — ≥16 px (iOS не збільшує сторінку при фокусі; :where — нуль специфічності, перекриває лише стилі браузера);
+   цілі дотику ≥44 px без зміни макета (прозора зона ::before) — «Усі …» у шапках секцій, перемикачі сцени; на сенсорних планшетах і розкладених
+   складаних (pointer:coarse, ≥768 px) — пункти меню шапки й «Заявка». Двоекранні (Surface Duo, Galaxy Fold з шарніром — viewport segments):
+   H1, рядок і кнопки hero та форма заявки — в одному сегменті, не під шарніром; верхній/нижній сегмент — hero головної у верхньому. */
+:where(input,select,textarea){font-size:max(1rem,16px)}
+.xs-head>a{position:relative}.xs-head>a::before{content:"";position:absolute;inset:-12px -6px}
+:is(.bz-g button,.bz-xb){position:relative}:is(.bz-g button,.bz-xb)::before{content:"";position:absolute;inset:-7px 0}
+#oBtn{min-height:2.75rem}
+.hero>p[data-c=h][role=button]{position:relative}.hero>p[data-c=h][role=button]::before{content:"";position:absolute;inset:-9px 0}
+.xs-links a{position:relative}.xs-links a::before{content:"";position:absolute;inset:-9px -2px}
+@media(pointer:coarse){.sch-cta,.sch-tel{min-height:44px}.sch-nav a{min-width:44px;justify-content:center}}
+.ux-k{top:6px;inset-inline-end:4px;width:44px;height:44px}.ux-k::after{top:17px;left:18px}
+@media(pointer:coarse) and (min-width:768px){.sch-nav a{min-height:44px}}
+@media(horizontal-viewport-segments:2){
+  html body .hx .hero>*,html body .hero>:is(h1,p,.btns,.price),html body .ozd-hero>*{max-width:calc(env(viewport-segment-width 0 0,50vw) - 3.5rem)!important}
+  html body .sch .sch-nav{display:none}html body .sch .sch-burger{display:inline-flex}html body .sch .sch-act{margin-inline-start:auto} /* меню шапки не під шарніром: кожен екран ~540 px — як планшет, бургер */
+  html body :is(form#of,#zayavka .lq){max-width:min(34rem,calc(env(viewport-segment-width 0 0,50vw) - 3.5rem))!important}
+}
+@media(vertical-viewport-segments:2) and (max-width:767px){
+  html body .hx.hx-home .hero{min-height:calc(env(viewport-segment-height 0 0,50vh) - var(--sch-h,64px));padding-bottom:20px}
+  html body main>.hx-home+section.xs-strip{padding-top:calc(env(viewport-segment-top 0 1,0px) - env(viewport-segment-bottom 0 0,0px) + 12px)!important} /* стрічка фото — нижче шарніра */
+}
+/* резерв карт (CLS): /assets/cas-map.v1.css вантажиться ліниво — розміри кадру й сітки /portfolio «Карта проєктів» і карти офісу задаємо тут (ті самі, що в cas-map.v1.css) */
+.cmap{position:relative;aspect-ratio:16/10}.cmap[data-cas-map=office]{aspect-ratio:4/3;max-height:520px;width:100%}
+.pmap{max-width:1180px;margin:0 auto;padding:64px 22px 24px}.pmap-h{margin:0 0 10px}.pmap-sub{margin:0 0 24px}.pmap-note{font-size:var(--fs-small,.8125rem);margin:12px 0 0}.pmap-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}.pmap .cmap{aspect-ratio:1/1}
+@media(min-width:900px){.pmap-grid{grid-template-columns:minmax(0,1fr) 320px}.pmap .cmap{aspect-ratio:16/10}.pmap .cmap-list{height:0;min-height:100%;overflow:auto}}
+.cmap{overflow:hidden}.cmap-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}.cmap .cmap-cv{position:absolute;inset:0;width:100%;height:100%}
+.cmap-list{list-style:none;margin:0;padding:0;border:1px solid var(--bd,rgba(191,145,72,.18));border-radius:4px}.cmap-list li{display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--bd,rgba(191,145,72,.14))}.cmap-list li:last-child{border-bottom:0}.cmap-list a b{font-weight:600}.cmap-list a span{font-size:var(--fs-small,.8125rem);letter-spacing:.04em}.cmap-list a{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;padding:10px 4px 10px 14px;min-height:44px}
+.cmap-fly{flex:none;width:44px;height:44px;margin-right:4px}.cmap-fly svg{width:20px;height:20px}.js .cmap-list .cmap-fly[hidden]{display:inline-grid;visibility:hidden}

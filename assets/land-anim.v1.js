@@ -175,10 +175,17 @@
   var FOC = [0, 0, 0, 0, [0.5, 0.25, 1, 1], 0, [0.15, 0.15, 0.85, 1], [0.05, 0.25, 0.95, 1], [0.15, 0.25, 0.85, 1], [0.05, 0.05, 0.75, 0.45], 0, 0, 0, [0, 0.3, 1, 0.95], [0.5, 0.45, 1, 0.95], 0];
   function target(i) {
     var f = FOC[i]; if (!f) return FULL;
-    var c = [P(U(f[0]), V(f[1]), 4), P(U(f[2]), V(f[1]), 0), P(U(f[0]), V(f[3]), 0), P(U(f[2]), V(f[3]), 0)], xs = c.map(function (q) { return +q[0]; }), ys = c.map(function (q) { return +q[1]; });
+    // кути фокуса на землі й на висоті будинку/крон (6.5 м): наїзд камери не зрізає верх будинку й дерев (QA Mac mini 06.11)
+    var c = [], g = [[f[0], f[1]], [f[2], f[1]], [f[0], f[3]], [f[2], f[3]]];
+    g.forEach(function (q) { c.push(P(U(q[0]), V(q[1]), 0), P(U(q[0]), V(q[1]), 6.5)); });
+    var xs = c.map(function (q) { return +q[0]; }), ys = c.map(function (q) { return +q[1]; });
     var w = Math.max.apply(0, xs) - Math.min.apply(0, xs) + 60, h = Math.max.apply(0, ys) - Math.min.apply(0, ys) + 60, ar = FULL[2] / FULL[3];
-    if (w / h < ar) w = h * ar; else h = w / ar; // пропорції як у повного кадру — без стрибків розміру
-    return [(Math.min.apply(0, xs) + Math.max.apply(0, xs)) / 2 - w / 2, (Math.min.apply(0, ys) + Math.max.apply(0, ys)) / 2 - h / 2, w, h];
+    // вищий за кадр блок (телефон, складаний у книжковій орієнтації): пропорції блоку — запас зверху для будинку й крон на тлі, без порожніх смуг
+    var bw = svg && svg.clientWidth, bh = svg && svg.clientHeight, h0;
+    if (bw > 0 && bh > 0 && bw / bh < ar) ar = bw / bh;
+    if (w / h < ar) w = h * ar; else { h0 = h; h = w / ar; }
+    var cy = (Math.min.apply(0, ys) + Math.max.apply(0, ys)) / 2 - (h0 ? (h - h0) * 0.35 : 0); // додану висоту — переважно вгору
+    return [(Math.min.apply(0, xs) + Math.max.apply(0, xs)) / 2 - w / 2, cy - h / 2, w, h];
   }
   function apply(force) {
     var p = prog;

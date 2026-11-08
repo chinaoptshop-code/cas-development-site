@@ -191,7 +191,7 @@ function showMore(){
 let moreQ=0;
 function queueMore(){ // наступна порція — у вільний час браузера
   if(moreQ||shown>=LIST.length) return; moreQ=1;
-  const go=()=>{ moreQ=0; showMore(); };
+  const go=()=>{ moreQ=0; const b=document.getElementById('more'); if(b && b.getBoundingClientRect().top < (window.innerHeight||800) - 40) return; showMore(); }; // кнопку вже видно — без стрибка, далі кнопкою
   window.requestIdleCallback ? requestIdleCallback(go,{timeout:600}) : setTimeout(go,60);
 }
 function syncMore(){
@@ -200,7 +200,8 @@ function syncMore(){
   b.hidden = left<=0 || tab!=='catalog';
   b.textContent = t('Показати ще {a} з {b}', {a:Math.min(left,CHUNK), b:left});
   if(!moreIO && 'IntersectionObserver' in window){
-    moreIO=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)) queueMore(); },{rootMargin:'0px 0px 900px 0px'});
+    // автопідвантаження — лише поки кнопка ще нижче екрана (CLS: якщо її вже видно або проскролили — розділи під сіткою не стрибають, далі — кнопкою)
+    moreIO=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting && e.boundingClientRect.top >= (window.innerHeight||800) - 40)) queueMore(); },{rootMargin:'0px 0px 900px 0px'});
     moreIO.observe(b);
   }
   if(moreIO && !b.hidden){ moreIO.unobserve(b); moreIO.observe(b); } // повторна перевірка після нової порції

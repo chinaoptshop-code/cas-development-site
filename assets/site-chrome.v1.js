@@ -551,6 +551,10 @@
   W.casAuto = function (o) {
     if (RM || !o.root) return null;
     var lang = (d.documentElement.lang || 'uk').slice(0, 2), t = T[lang] || T.en, user = false, ended = false, live = false, quiet = now() + 3000, lastStep = 0, iv = 0;
+    // компактна сцена головної (o.cmp, за замовчуванням — сторінка з .hx-home; QA 06.11: «проскролили за ~2 с — побачили 1–2 етапи»):
+    // грає лише коли кадр видно ≥ 60% (від меншого з кадру й екрана), прокрутка сторінки її не ставить на паузу (сцена від прокрутки не залежить),
+    // перший крок — через 1.6 с після входу в кадр; повернулися до сцени після ≥ 4 с поза кадром (або вона дограла) і не чіпали її — знову з 1-го етапу
+    var cmp = o.cmp != null ? !!o.cmp : !!d.querySelector('.hx-home'), touched = false, outAt = 0;
     var b = d.createElement('button'); b.type = 'button'; b.className = 'sc-ap' + (o.cls ? ' ' + o.cls : '');
     function lab() {
       var k = ended ? 2 : user ? 1 : 0; b.setAttribute('aria-label', t[k]); b.title = t[k];
@@ -559,8 +563,8 @@
     lab();
     if (o.host) o.host.insertBefore(b, o.before || null);
     function poke(ms) { quiet = Math.max(quiet, now() + ms); }
-    ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach(function (e) { o.root.addEventListener(e, function () { poke(9000); }, { passive: true }); });
-    W.addEventListener('scroll', function () { if (live) poke(3000); }, { passive: true });
+    ['pointerdown', 'wheel', 'keydown', 'touchstart'].forEach(function (e) { o.root.addEventListener(e, function () { touched = true; poke(9000); }, { passive: true }); });
+    if (!cmp) W.addEventListener('scroll', function () { if (live) poke(3000); }, { passive: true });
     b.addEventListener('click', function () {
       if (ended) { ended = false; user = false; o.restart(); } else user = !user;
       quiet = now() + (user ? 0 : 900); lastStep = now(); lab();
@@ -572,8 +576,18 @@
       lastStep = t0;
       if (!o.step()) { ended = true; lab(); }
     }
-    function run(v) { live = v; clearInterval(iv); iv = 0; if (v) { poke(1500); iv = setInterval(loop, 250); } }
-    if ('IntersectionObserver' in W) new IntersectionObserver(function (es) { run(es[es.length - 1].intersectionRatio >= 0.5); }, { threshold: [0, 0.5, 1] }).observe(o.view || o.root);
+    function run(v) {
+      if (v === live) return;
+      live = v; clearInterval(iv); iv = 0;
+      if (!v) { outAt = now(); return; }
+      if (cmp && !touched && !user && (ended || (outAt && now() - outAt > 4000)) && o.restart) { ended = false; o.restart(); lab(); }
+      quiet = now() + (cmp ? 1600 : 1500); lastStep = 0; iv = setInterval(loop, 250);
+    }
+    if ('IntersectionObserver' in W) new IntersectionObserver(function (es) {
+      var e = es[es.length - 1], h = e.boundingClientRect.height, vh = e.rootBounds ? e.rootBounds.height : W.innerHeight;
+      if (!cmp) return run(e.intersectionRatio >= 0.5);
+      run(e.isIntersecting && h > 0 && e.intersectionRect.height / Math.min(h, vh || h) >= 0.6);
+    }, { threshold: [0, 0.25, 0.5, 0.6, 0.75, 0.9, 1] }).observe(o.view || o.root);
     d.addEventListener('visibilitychange', function () { if (!d.hidden) poke(1500); });
     return { poke: poke, btn: b };
   };
