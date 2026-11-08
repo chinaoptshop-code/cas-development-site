@@ -268,11 +268,13 @@ def lang_links(lang, alts, cls):
     """Усі мови сайту (з наявною головною): посилання на hreflang-пару, інакше — на головну мови."""
     out = []
     for l in i18n.enabled():
-        label = LANG_CODE[l] if cls == 'sch-lang' else LANG_NAME[l]
+        # шапка й футер — короткі коди (UA RU EN…), повна назва — у title/aria-label (Михайло 08.11.2026)
+        label = LANG_CODE[l]
+        nm = LANG_NAME[l]
         if l == lang:
-            out.append(f'<span class="{cls}-on" aria-current="true" lang="{i18n.meta(l)["html"]}">{label}</span>')
+            out.append(f'<span class="{cls}-on" aria-current="true" lang="{i18n.meta(l)["html"]}" title="{nm}">{label}</span>')
         else:
-            out.append(f'<a href="{alts.get(l, HOME[l])}" hreflang="{i18n.meta(l)["hreflang"]}" lang="{i18n.meta(l)["html"]}">{label}</a>')
+            out.append(f'<a href="{alts.get(l, HOME[l])}" hreflang="{i18n.meta(l)["hreflang"]}" lang="{i18n.meta(l)["html"]}" title="{nm}" aria-label="{nm}">{label}</a>')
     return ''.join(out)
 
 
@@ -356,8 +358,8 @@ def footer(lang, alts):
         f'    <div class="scf-col"><b>{t["msg"]}</b><div class="scf-soc" role="group" aria-label="{t["msg"]} · {soc_l}">{soc}</div></div>\n'
         '  </div>\n'
         f'  <details class="scf-svc"><summary>{t["svc"]}</summary><nav class="scf-svc-g" aria-label="{t["svc_label"]}">{groups}</nav></details>\n'
-        f'  <div class="scf-bot"><div class="scf-langs" role="group" aria-label="{t["lang"]}"><span>{t["lang"]}:</span>{langs}</div>'
-        f'<a href="{t["privacy"][0]}">{t["privacy"][1]}</a><span>{t["copy"]}</span></div>\n'
+        f'  <div class="scf-bot"><div class="scf-langs" role="group" aria-label="{t["lang"]}">{langs}</div>'
+        f'<div class="scf-legal"><a href="{t["privacy"][0]}">{t["privacy"][1]}</a><span>{t["copy"].split(" · ")[0]}</span></div></div>\n'
         '</div>\n'
         '</footer><!--/chrome:f-->'
     )
