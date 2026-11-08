@@ -437,8 +437,155 @@ def _wide_img(body, lang):
             f'loading="lazy" decoding="async" width="{ws[-1]}" height="{ws[-1] // 2}" alt="{html.escape(alt)}" style="object-position:{pos}">')
 
 
+# ── Фото-плитки (Михайло 08.11.2026: «мінімізація тексту, максимізація картинок»): кожна плитка серії (data-c="x") —
+# фото проєкту CAS на весь кадр (4:5 на телефоні, фіксована висота з 760 px), назва поверх фото; FLUX-ілюстрація лишається
+# запасною (без фото). Фото — за темою сторінки (кластер) або темою H2 плитки (data-i), без повторів на сторінці.
+# Файли — портретні 4:5 копії img/p/<id>-400/900(/1200).webp з галерей /proekty; srcset — лише ширини тієї ж пропорції.
+TP = {  # пул: (id, проєкт)
+    'int': [('1IPpJjg5VkUVC8', 'pidgirland'), ('1m9fVTTPjd6nQs', 'hoda-estate'), ('1S8L6r4oQFAg5G', 'hodos-villa'), ('16lBNXfCt8e2mO', 'pidgirland'),
+            ('1FRa0FI6iMHK5L', 'hoda-estate'), ('13S65_x8RxCJgj', 'hodos-villa'), ('1PJG1j6uRAjFBk', 'pidgirland'), ('1-Lit8Tm15S9vl', 'hodos-villa')],
+    'reno': [('1GnosovqCCjnAI', 'tetris-hall'), ('11wEIjh0kDHFtz', 'tetris-hall'), ('12KrNt488GVEue', 'tetris-hall'), ('1LAwiVE6-unSDY', 'tetris-hall'),
+             ('1n0e2qfyf_vo9a', 'tetris-hall'), ('1pi5iAejdBaIhP', 'tetris-hall'), ('1C2WunUHvuF4y0', 'tetris-hall'), ('15mn_Or4V7WrFB', 'office-chicago')],
+    'house': [('1xAsDsaceELcL9', 'smart-villa'), ('1g-E1m6cFJ9kvH', 'a-frame-house'), ('1C16Cd6bvENPGL', 'smart-villa'), ('13j9IlxqOPHY1p', 'hoda-estate'),
+              ('1qeWnMdoeYieST', 'house-150'), ('1DhAA8_vK0zo3E', 'a-frame-house'), ('1wzwQKXdSQyRF2', 'smart-villa')],
+    'rest': [('1HL1J3k6Vl1nD-', 'monpark'), ('1pZgJUxqRJ7gaG', 'monpark'), ('15e6gUmfeplrU1', 'monpark'), ('1jKOiN3xyCjZCL', 'monpark'),
+             ('1wwL33KrIFXK0p', 'monpark'), ('1OGn3TXnLkQenE', 'yacht-restaurant'), ('1f57D9TAv8lJgR', 'monpark'), ('1dCBMYs58M2hfy', 'yacht-restaurant')],
+    'office': [('15mn_Or4V7WrFB', 'office-chicago'), ('16fKqdFifd2emf', 'office-chicago'), ('15PAZFo6btwfkp', 'office-chicago')],
+    'resort': [('1GqqKXz4Ax1_cM', 'yablu-rest'), ('19seq_4AT9Kb4a', 'monpark'), ('13WiocWsjrHB4B', 'yablu-rest'), ('1jjk3ERcqKTGqZ', 'yablu-rest')],
+    'kitchen': [('1mc8RMmncPstAS', 'pidgirland'), ('1uw4VaQ07oycO9', 'pidgirland'), ('11wEIjh0kDHFtz', 'tetris-hall')],
+    'bath': [('1LAwiVE6-unSDY', 'tetris-hall'), ('1zCpl2Feuh3xlW', 'hoda-estate'), ('1FiLI9kKE-C87h', 'pidgirland'), ('1t4GTVS3iV3us6', 'hoda-estate')],
+    'salon': [('1Y-Fiyq963hsV9', 'dolls-salon'), ('1gI8TsO03lYAxp', 'dolls-salon')],
+    'land': [('1xAsDsaceELcL9', 'smart-villa'), ('19seq_4AT9Kb4a', 'monpark'), ('10Vn1KOXla-jyZ', 'smart-villa'), ('1I84S9MOrJrmtk', 'monpark')],
+}
+TP_PROJ = {  # slug: (назва, тип обʼєкта, реалізовано?) — статуси як у captions.py / CLAUDE.md
+    'pidgirland': ('Pidgirland', 'house', 0), 'hoda-estate': ('Hoda Estate', 'house', 0), 'hodos-villa': ('Hodos Villa', 'villa', 0),
+    'tetris-hall': ('Tetris Hall', 'flat', 1), 'office-chicago': ('Office Chicago', 'office', 1), 'smart-villa': ('Smart Villa', 'villa', 0),
+    'a-frame-house': ('A-Frame House', 'house', 0), 'house-150': ('House 150', 'house', 0), 'monpark': ('Monpark', 'rest', 1),
+    'yacht-restaurant': ('Yacht Restaurant', 'rest', 0), 'yablu-rest': ('Yablu Rest', 'lounge', 0), 'dolls-salon': ('Dolls Salon', 'salon', 1),
+    'kitana-beach': ('Kitana Beach', 'beach', 0),
+}
+TP_WORD = {  # тип обʼєкта мовою сторінки
+    'house': dict(uk='будинок', ru='дом', en='house', es='casa', zh='住宅', pl='dom', de='Haus', fr='maison', ar='منزل'),
+    'villa': dict(uk='вілла', ru='вилла', en='villa', es='villa', zh='别墅', pl='willa', de='Villa', fr='villa', ar='فيلا'),
+    'flat': dict(uk='квартира', ru='квартира', en='apartment', es='apartamento', zh='公寓', pl='mieszkanie', de='Wohnung', fr='appartement', ar='شقة'),
+    'office': dict(uk='офіс', ru='офис', en='office', es='oficina', zh='办公室', pl='biuro', de='Büro', fr='bureau', ar='مكتب'),
+    'rest': dict(uk='ресторан', ru='ресторан', en='restaurant', es='restaurante', zh='餐厅', pl='restauracja', de='Restaurant', fr='restaurant', ar='مطعم'),
+    'lounge': dict(uk='зона відпочинку', ru='зона отдыха', en='lounge', es='zona de descanso', zh='休闲区', pl='strefa wypoczynku', de='Lounge', fr='espace détente', ar='منطقة استراحة'),
+    'beach': dict(uk='пляжний комплекс у Бодрумі', ru='пляжный комплекс в Бодруме', en='beach resort in Bodrum', es='complejo de playa en Bodrum',
+                  zh='博德鲁姆海滩度假村', pl='kompleks plażowy w Bodrum', de='Strandresort in Bodrum', fr='complexe balnéaire à Bodrum', ar='منتجع شاطئي في بودروم'),
+    'salon': dict(uk='салон краси', ru='салон красоты', en='beauty salon', es='salón de belleza', zh='美容院', pl='salon urody', de='Schönheitssalon', fr='salon de beauté', ar='صالون تجميل'),
+}
+TP_PAGE = {'design': 'int', 'furnishing': 'int', 'renovation': 'reno', 'construction': 'house', 'landscape': 'land', 'resort': 'resort',
+           'restaurant': 'rest', 'office': 'office', 'calculator': 'reno'}
+TP_KEY = {'rs': 'rest', 'of': 'office', 'tr': 'resort', 'la': 'land', 'ki': 'kitchen', 'ba': 'bath', 'pl': 'bath', 'cs': 'salon',
+          'ho': 'house', 'bw': 'house', 'ac': 'house', 'fl': 'reno', 're': 'reno', 'de': 'int', 'fu': 'int', 'pm': 'int'}
+TP_MIX = ['int', 'reno', 'house', 'rest', 'office', 'land']  # головні, послуги, про студію, контакти, портфоліо — по черзі з різних тем
+TP_RX = re.compile(r'<img class="ux-tp"[^>]*>')
+
+
+def _tp_page():
+    out = {}
+    c = i18n.clusters()
+    for k, cat in TP_PAGE.items():
+        for p in c.get(k, {}).values():
+            out[i18n.path_to_file(p)] = cat
+    for p in LIGHT_EXTRA:
+        if 'remont' in p or 'stoimost' in p:
+            for q in set((i18n.cluster_of(p) or {}).values()) | {p}:
+                out[i18n.path_to_file(q)] = 'reno'
+    return out
+
+
+TP_PAGES = _tp_page()
+
+
+def _tp_files(pid, _c={}):
+    """Копії тієї ж пропорції, що й 900-копія: [(ширина в назві, w, h), …] за зростанням."""
+    if pid not in _c:
+        from PIL import Image
+        d = os.path.join(ROOT, 'img/p')
+        base = Image.open(os.path.join(d, f'{pid}-900.webp')).size
+        ws = []
+        for f in os.listdir(d):
+            x = re.fullmatch(re.escape(pid) + r'-(\d+)\.webp', f)
+            if x:
+                sz = Image.open(os.path.join(d, f)).size
+                if abs(sz[0] / sz[1] - base[0] / base[1]) < .02:
+                    ws.append((int(x.group(1)),) + sz)
+        _c[pid] = sorted(ws)
+    return _c[pid]
+
+
+def _tp_lin(span, cols, gap, a, b):
+    """Ширина плитки зі span з 12 колонок, коли ширина сітки = a·vw + b: (a', b') для calc()."""
+    k = span / 12
+    return a * k, b * k - gap * 11 * k + gap * (span - 1)
+
+
+def _tp_sizes(sp, f=1.0):
+    """sizes плитки: модель «LIGHT-сітки» (site-chrome.v1.css): сітка = 100vw − 32 до 1080, 1048 px до 1366, далі --cw − 2rem;
+    gap 10 / 12 (з 760) / 14 px (з 1367); span — --s2/--s3/--s4/--s6 або 12/N. Коротко (бюджет HTML 64 КБ): vw з 1 знаком."""
+    def cl(a, b):
+        a, b = a * f, b * f
+        if not a:
+            return f'{b:.0f}px'
+        v = f'{a * 100:.1f}'.rstrip('0').rstrip('.')
+        return f'calc({v}vw {"+" if b >= 0 else "-"} {abs(b):.0f}px)'
+    # 760–1366: формула 3 у ряд (з 1100 — 4 у ряд, файл трохи більший; коротше — бюджет HTML 64 КБ)
+    out = [f'(max-width:759px) {cl(*_tp_lin(sp[2], 2, 10, 1, -32))}', f'(max-width:1366px) {cl(*_tp_lin(sp[3], 3, 12, 1, -32))}',
+           # з 1367: --cw − 2rem ≈ .6vw + 336 − 2(.5025vw + 9.14) = .59vw + 317.7
+           cl(*_tp_lin(sp[4], 4, 14, .59, 317.7))]  # з 2200 (6 у ряд) — та сама формула: файл трохи більший, зате коротше (бюджет HTML)
+    return ','.join(out)
+
+
+def _tp_img(pid, slug, lang, sp, eager=False, wmin=400):
+    name, kind, _ = TP_PROJ[slug]
+    alt = f'{name} — {TP_WORD[kind].get(lang, TP_WORD[kind]["en"])}'  # коротко (бюджет HTML 64 КБ); статус і студія — на сторінці проєкту
+    fs = [x for x in _tp_files(pid) if x[0] >= wmin]
+    srcset = ','.join(f'/img/p/{pid}-{n}.webp {w}w' for n, w, h in fs)
+    sp = sp or {2: 12, 3: 12, 4: 12, 6: 12}
+    _, w, h = fs[-1]
+    mid = next((x for x in fs if x[0] >= 900), fs[-1])[0]
+    f = max(1.0, round(w / h / .8, 2))  # альбомне фото в плитці 4:5 обрізається з боків — файл ширший за плитку
+    return (f'<img class="ux-tp" src="/img/p/{pid}-{mid}.webp" srcset="{srcset}" sizes="{_tp_sizes(sp, f)}" loading="{'eager' if eager else 'lazy'}" '
+            f'width="{w}" height="{h}" alt="{html.escape(alt)}">')
+
+
+# Тизери сцен «Ресторан з нуля» / «Комплекс відпочинку» (restaurant.py / resort.py: section.rp-teaser) — велике фото проєкту
+# (телефон — 4:3 над текстом; з 760 px — ліва колонка 1.15fr поруч із текстом, gap 2rem), lazy.
+TZ = {'rs': ('1jKOiN3xyCjZCL', 'monpark'), 'rp': ('1DeOWG4OI6VU89', 'kitana-beach')}
+TZ_RX = re.compile(r'<img class="ux-tz"[^>]*>')
+TZ_SIZES = '(max-width:759px) calc(100vw - 32px), (max-width:1079px) calc(53.5vw - 35px), (max-width:1366px) 542px, calc(30.8vw + 155px)'
+
+
+def _teasers(m, lang):
+    def add(x):
+        pid, slug = TZ['rs' if 'rs-teaser' in x.group(1) else 'rp']
+        img = _tp_img(pid, slug, lang, None, wmin=900).replace('class="ux-tp"', 'class="ux-tz"')
+        w, h = map(int, re.search(r'width="(\d+)" height="(\d+)"', img).groups())
+        f = max(1.0, round(w / h * .75, 2))  # кадр 4:3: ширше фото обрізається з боків
+        sz = TZ_SIZES if f == 1 else ','.join(f'{q} {v}' for q, v in (
+            ('(max-width:759px)', f'calc({100 * f:.0f}vw - {32 * f:.0f}px)'), ('(max-width:1079px)', f'calc({53.5 * f:.0f}vw - {35 * f:.0f}px)'),
+            ('(max-width:1366px)', f'{542 * f:.0f}px'), ('', f'calc({30.8 * f:.0f}vw + {155 * f:.0f}px)'))).strip()
+        img = re.sub(r'sizes="[^"]*"', f'sizes="{sz}"', img)
+        return x.group(0) + img
+    return re.sub(r'<section class="(rp-teaser(?: rs-teaser)?)"><div class="w">', add, m)
+
+
+def _tp_pick(cat, key, used, k):
+    order = [TP_KEY[key]] if key in TP_KEY else []
+    order += [cat] if cat != 'mix' else [TP_MIX[(k + j) % len(TP_MIX)] for j in range(len(TP_MIX))]
+    order += TP_MIX
+    for c in order:
+        for pid, slug in TP[c]:
+            if pid not in used:
+                used.add(pid)
+                return pid, slug
+    return TP['int'][0]
+
+
 SPAN_RX = re.compile(r'\sstyle="(?:--s[2346]:\d+;?)+"')
-STRIP = [WB_RX, SPAN_RX, re.compile(r'\sdata-i="[a-z0-9]{2}"'), re.compile(r'\sdata-c="[tsqglxhk]"'), re.compile(r'\sdata-a(?:="[si]")?(?=[\s>])'),
+STRIP = [WB_RX, TP_RX, TZ_RX, SPAN_RX, re.compile(r'\sdata-i="[a-z0-9]{2}"'), re.compile(r'\sdata-c="[tsqglxhk]"'), re.compile(r'\sdata-a(?:="[si]")?(?=[\s>])'),
          re.compile(r'\sdata-xs="[^"]*"'), re.compile(r'\sdata-cn="\d+"'), CALC_RX]
 UNWRAP = re.compile(r'<div data-c="l">(<(ul|ol)>.*?</\2>)</div>', re.S)
 REST_RX = re.compile(r'<span class="ux-rest">(.*?)</span>(?=</p>)', re.S)  # друга частина ліду hero (_lead_rest)
@@ -507,7 +654,7 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
 TAG_RX = re.compile(r'<!--.*?-->|<(script|style)\b[^>]*>.*?</\1>|<(/?)([a-zA-Z][\w-]*)\b[^>]*?(/?)>', re.S)
 
 
-def _spans(m, lang=''):
+def _spans(m, lang='', rel=''):
     k = m.find('>', m.find('<main')) + 1
     kids, depth = [], 0  # (позиція кінця відкривного тегу, тег, чи плитка)
     for x in TAG_RX.finditer(m, k):
@@ -537,26 +684,42 @@ def _spans(m, lang=''):
             runs.append(cur); cur = []
     if cur:
         runs.append(cur)
-    edits = []
+    edits, used, k = [], set(), 0
+    cat = TP_PAGES.get(rel, 'mix')
+    # перший ряд фото-плиток одразу під hero (до 2 блоків перед ним: крихти, hero) — у першому екрані: без lazy (LCP), решта — lazy
+    real = [x for x in kids if x[2] is not None]
+    top = bool(runs) and len(runs[0]) > 1 and next(i for i, x in enumerate(real) if x[0] == runs[0][0][0]) <= 2
+
+    def inner(pos, otag):
+        at = pos + len(otag)
+        if 'data-c="x"' not in otag:
+            w = re.compile(r'\s*<div class="w(?:\s[^"]*)?"[^>]*data-c="x"[^>]*>').match(m, at)
+            at = w.end() if w else -1
+        return at
     for run in runs:
         n = len(run)
         if n == 1 and lang:  # самотня плитка — банер на всю ширину: рендер проєкту замість FLUX (WIDE)
-            pos, otag = run[0]
-            at = pos + len(otag)
-            if 'data-c="x"' not in otag:
-                w = re.compile(r'\s*<div class="w(?:\s[^"]*)?"[^>]*data-c="x"[^>]*>').match(m, at)
-                at = w.end() if w else -1
+            at = inner(*run[0])
             if at > 0:
                 edits.append((at, _wide_img(m[at:at + 4000], lang)))
         for i, (pos, otag) in enumerate(run):
-            props = []
+            props, sp = [], {}
             for cols in (2, 3, 4, 6):
                 full = n // cols * cols
                 r = n - full
+                sp[cols] = 12 // cols
                 if n > 1 and i >= full and r and 12 % r == 0 and 12 // r != 12 // cols:
                     props.append(f'--s{cols}:{12 // r}')
+                    sp[cols] = 12 // r
             if props and 'style=' not in otag:
                 edits.append((pos + len(otag) - 1, ' style="' + ';'.join(props) + '"'))
+            if n > 1 and lang:  # фото-плитка: фото проєкту CAS на весь кадр (TP)
+                at = inner(pos, otag)
+                if at > 0:
+                    h = re.search(r'<h2[^>]*\bdata-i="(\w+)"', m[at:at + 600])
+                    pid, slug = _tp_pick(cat, h.group(1) if h else '', used, k)
+                    k += 1
+                    edits.append((at, _tp_img(pid, slug, lang, sp, top and run is runs[0] and i < 2)))
     for at, ins in reversed(edits):
         m = m[:at] + ins + m[at:]
     return m
@@ -662,8 +825,8 @@ def apply(s, rel):
     if not re.match(r'(?:[a-z]{2}/)?index\.html$', rel):  # головні — без іконок заголовків (вага й LCP головної)
         m = _icons(m)
     light = rel in LIGHT
+    lm = re.search(r'<html[^>]*\blang="([a-z]{2})', s)
     if light or not HERO_SKIP.match(rel):  # мінімалістичний hero — на всіх сторінках з .w.hero, крім статей і проєктів
-        lm = re.search(r'<html[^>]*\blang="([a-z]{2})', s)
         m = _light_hero(m, rel, lm.group(1) if lm else 'uk', s)
     if light:
         m = _light_custom(m, rel)
@@ -674,7 +837,9 @@ def apply(s, rel):
     if rel in ABOUT:
         m = re.sub(r'<div class="xs-tx">(?=(?:<h2[^>]*>.*?</h2>)?<p\b)', '<div class="xs-tx" data-c="t">', m, count=1, flags=re.S)
     if light:
-        m = _spans(m, lm.group(1) if lm else 'uk')
+        m = _spans(m, lm.group(1) if lm else 'uk', rel)
+    if 'rp-teaser' in m:
+        m = _teasers(m, lm.group(1) if lm else 'uk')
     if re.match(r'(?:[a-z]{2}/)?blog/', rel):
         m = _article_lists(m)
     m = _h2_tiles_only(m)
