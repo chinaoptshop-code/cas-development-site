@@ -176,7 +176,7 @@ code{font-size:.92em}
 .hero p{max-width:640px;max-inline-size:640px}.sg-note,.sg-meta p{max-width:720px;max-inline-size:720px}</style>
 <link rel="stylesheet" href="/assets/cas-map.v1.css?v=1a565e86">
 <link rel="stylesheet" href="/assets/ba.v1.css?v=0393468e">
-<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=501a4789">
+<link rel="stylesheet" href="/assets/site-chrome.v1.css?v=23c2a8b5">
 </head>
 <body>
 <!--chrome:skip--><a class="skip" href="#main">Перейти до змісту</a><!--/chrome:skip-->
@@ -432,7 +432,7 @@ code{font-size:.92em}
 </div></div></div>
 <div class="sg-c"><div class="sg-meta"><code>.grid[data-c="k"] &gt; .card</code> → <code>button.ux-k[aria-expanded]</code><p>Компактні картки поза плитками (перелік послуг без H2, «Як з нами звʼязатися»): назва + перший рядок (ціна / телефон), решта — за шевроном або тапом по картці. Посилання в назві лишаються посиланнями.</p></div>
 <div class="sg-demo"><div class="grid" data-c="k"><div class="card"><h3 data-i="de"><a href="/dyzain-interieru-kyiv">Дизайн інтерʼєру</a></h3><p style="color:var(--ac)">від $30 / м² · мін. проєкт $2 500</p><p>Концепція, 3D і робочі креслення.</p><ul><li>концепція й ескізний проєкт</li><li>3D-візуалізація</li></ul></div><div class="card"><h3 data-i="re"><a href="/remont-pid-klyuch-kyiv">Ремонт під ключ</a></h3><p style="color:var(--ac)">від $550 / м²</p><p>Роботи й чорнові матеріали; чистові — окремо, за кошторисом.</p></div></div></div></div>
-<div class="sg-c"><div class="sg-meta"><code>.hero &gt; p[data-c="h"]</code>, <code>a.btn.ux-calc</code>, <code>.btns::after</code> (<code>--ux-tr</code>)<p>Легкий hero: H1, рядок ціни, лід в один рядок (тап / Enter — увесь текст, <code>role="button"</code>), кнопки «Подзвонити» (заповнена) + «Порахувати» (квіз <code>#kalkulyator</code> → калькулятор сторінки <code>#calc</code> → калькулятор мови → <code>#zayavka</code>), рядок довіри «150+ проєктів · 12 міс. гарантія · своя команда» (тексти — <code>calc</code>/<code>trust</code> у <code>tools/site/lang/*.json</code>, uk/ru — у ux.py). Факти <code>.facts</code>, WhatsApp і «Дивитись, як ми будуємо» в hero сховані (є в нижній панелі й нижче на сторінці).</p></div>
+<div class="sg-c"><div class="sg-meta"><code>.hero &gt; p[data-c="h"]</code>, <code>a.btn.ux-calc</code><p>Легкий hero: H1, рядок ціни, лід в один рядок (тап / Enter — увесь текст, <code>role="button"</code>), кнопки «Подзвонити» (заповнена) + «Порахувати» (квіз <code>#kalkulyator</code> → калькулятор сторінки <code>#calc</code> → калькулятор мови → <code>#zayavka</code>), рядок довіри «150+ проєктів · 12 міс. гарантія · (підпис — <code>calc</code> у <code>tools/site/lang/*.json</code>, uk/ru — у ux.py); рядка довіри під кнопками немає (08.11.2026).як ми будуємо» в hero сховані (є в нижній панелі й нижче на сторінці).</p></div>
 <div class="sg-demo"><div class="w hero" style="padding:0"><div class="price" style="color:var(--ac)">від $550 / м² · кошторис ±5%, якщо ремонт робить CAS</div><p data-c="h">Ремонт квартир у Києві під ключ — від $550/м² (роботи й чорнові матеріали): CAS Development веде капітальний і косметичний ремонт, дизайн і комплектацію однією командою.</p><div class="btns"><a class="btn" href="tel:+380978667755">Подзвонити</a>
     <a class="btn ux-calc" href="/kalkuliator-remontu">Порахувати</a></div></div></div></div>
 <div class="sg-c"><div class="sg-meta"><code>.hero &gt; p[data-c="h"] &gt; span.ux-rest</code><p>Друга частина ліду hero: <code>tools/site/ux.py</code> (<code>_lead_rest</code>) лишає на виду перше речення, решту загортає в <code>span.ux-rest</code> — прихована, поки лід згорнутий (<code>.js [data-c=h]:not(.c-o)</code>), тап / Enter — увесь текст; текст завжди в DOM. Руками не писати.</p></div>
@@ -577,7 +577,7 @@ requestAnimationFrame(function(){requestAnimationFrame(function(){c.forEach(func
   <div class="scf-bot"><div class="scf-langs" role="group" aria-label="Мова"><span class="scf-lang-on" aria-current="true" lang="uk" title="Українська">UA</span><a href="/ru/" hreflang="ru" lang="ru" title="Русский" aria-label="Русский">RU</a><a href="/en/" hreflang="en" lang="en" title="English" aria-label="English">EN</a><a href="/es/" hreflang="es" lang="es" title="Español" aria-label="Español">ES</a><a href="/zh/" hreflang="zh-Hans" lang="zh-Hans" title="中文" aria-label="中文">ZH</a><a href="/pl/" hreflang="pl" lang="pl" title="Polski" aria-label="Polski">PL</a><a href="/de/" hreflang="de" lang="de" title="Deutsch" aria-label="Deutsch">DE</a><a href="/fr/" hreflang="fr" lang="fr" title="Français" aria-label="Français">FR</a><a href="/ar/" hreflang="ar" lang="ar" title="العربية" aria-label="العربية">AR</a></div><div class="scf-legal"><a href="/konfidentsiinist">Політика конфіденційності</a><span>© 2026 CAS Development</span></div></div>
 </div>
 </footer><!--/chrome:f-->
-<link rel="stylesheet" href="/assets/media.v1.css?v=f45fc72f"><script src="/assets/media.v1.js?v=11148792" defer></script><script src="/assets/quiz.v1.js?v=03591fd0" defer></script>
+<link rel="stylesheet" href="/assets/media.v1.css?v=f45fc72f"><script src="/assets/media.v1.js?v=11148792" defer></script><script src="/assets/quiz.v1.js?v=9828dc11" defer></script>
 <script src="/assets/site-chrome.v1.js?v=22da6131" defer></script>
 <script src="/assets/cas-map.v1.js?v=b6563f75" defer></script>
 <script src="/assets/ba.v1.js?v=e4081999" defer></script>

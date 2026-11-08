@@ -144,7 +144,8 @@ def block(lang, scene, compact, tier=0, mat='', var='new', cfg=None):
     f += ' data-bz-cfg="{t},{s},{a}"'.format(**cfg) if scene == 'house' and cfg else ''
     lead = f'<p class="bz-p">{e(t["p"])}{more}</p>' if tier < 2 else ''
     svc = f' data-service="{e(t["more"])}"' if compact and t['more'] else ''  # головна: заявка — про будинок, а не «Консультація (головна)»
-    team = f'<p class="bz-team">{e(t["team"])} <a href="{ABOUT[lang]}">{e(t["about"])}</a></p>' if tier < 2 else ''
+    # рядок «Хто ці люди — на сторінці Про нас» прибрано (менше тексту, сайт «легкий на погляд», 08.11.2026); тексти team/about лишаються в даних
+    team = ''
     # факти з CLAUDE.md — у HTML одразу фінальні значення (count-up прибрано: показував хибні проміжні «12+», «3 міс.»)
     # головна (compact): цифри вже в блоці довіри під проєктами — у сцені не повторюємо (Михайло 04.11.2026, «ясність»)
     facts = ('<p class="bz-facts">' + ''.join(f'<span><b data-count="{n}">{e(v)}</b> {e(x)}</span>' for n, v, x in FACTS[lang]) + '</p>') if tier < 1 and not compact else ''

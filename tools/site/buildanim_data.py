@@ -44,7 +44,7 @@ T['uk'] = dict(
             v=('зверху', 'знизу'), h=('зовні', 'всередині'), close='Закрити', shrink='усадка', mo='міс.', gar='гарантія'),
     house=dict(
         h='Будинок з нуля: технологія за 19 етапів', hc='Будинок з нуля — 19 етапів технології',
-        p='Прокручуйте — і будинок збереться так, як на ділянці: від геодезії до ключів. Перемикайте технологію стін і натискайте на шари, щоб побачити пиріг. Фотозвіти — раз на 1–2 тижні.',
+        p='Прокручуйте — і будинок збереться так, як на ділянці: від геодезії до ключів. Фотозвіти — раз на 1–2 тижні.',
         cta='Порахувати такий будинок', team='Хто ці люди — на сторінці', about='Про нас', more='Будівництво будинків',
         st=dict(
             geo=('Геодезія й винесення осей', 'Геодезист Микола знімає рельєф ділянки, виносить осі будинку в натуру й ставить обноску — від неї міряємо все далі.'),
@@ -140,7 +140,7 @@ T['ru'] = dict(
             v=('сверху', 'снизу'), h=('снаружи', 'внутри'), close='Закрыть', shrink='усадка', mo='мес.', gar='гарантия'),
     house=dict(
         h='Дом с нуля: технология за 19 этапов', hc='Дом с нуля — 19 этапов технологии',
-        p='Прокручивайте — и дом соберётся так, как на участке: от геодезии до ключей. Переключайте технологию стен и нажимайте на слои, чтобы увидеть пирог. Фотоотчёты — раз в 1–2 недели.',
+        p='Прокручивайте — и дом соберётся так, как на участке: от геодезии до ключей. Фотоотчёты — раз в 1–2 недели.',
         cta='Рассчитать такой дом', team='Кто эти люди — на странице', about='О нас', more='Строительство домов',
         st=dict(
             geo=('Геодезия и вынос осей', 'Геодезист Николай снимает рельеф участка, выносит оси дома в натуру и ставит обноску — от неё меряем всё дальше.'),
@@ -236,7 +236,7 @@ T['en'] = dict(
             v=('top', 'bottom'), h=('outside', 'inside'), close='Close', shrink='settling', mo='mo.', gar='warranty'),
     house=dict(
         h='A house from scratch: the method in 19 stages', hc='A house from scratch — 19 construction stages',
-        p='Scroll and the house comes together the way it does on site, from survey to keys. Switch the wall method and tap the layers to see each build-up. Photo reports every 1–2 weeks.',
+        p='Scroll and the house comes together the way it does on site, from survey to keys. Photo reports every 1–2 weeks.',
         cta='Estimate this house', team='Meet the people behind each stage on the', about='About page', more='House construction',
         st=dict(
             geo=('Survey and setting out', 'Our surveyor Mykola maps the terrain, sets out the house axes on the ground and builds batter boards that every later measurement starts from.'),
@@ -336,7 +336,7 @@ T['uk']['ui'].update(
 )
 T['uk']['flat'] = dict(
     h='Ремонт з нуля: квартира 86 м² за 19 етапів', hc='Ремонт квартири з нуля — 19 етапів',
-    p='Прокручуйте — і квартира пройде шлях від бетону до ключів у правильному порядку робіт. Перемикайте «Новобудова / Вторинка», вмикайте рентген мереж і натискайте на шари, щоб побачити пиріг. Фотозвіти — раз на 1–2 тижні.',
+    p='Прокручуйте — і квартира пройде шлях від бетону до ключів у правильному порядку робіт. Фотозвіти — раз на 1–2 тижні.',
     cta='Порахувати мій ремонт', team='Хто ці люди — на сторінці', about='Про нас', more='', svc='Ремонт квартир',
     st=dict(
         measure=('3D-замір квартири', 'Владислав сканує квартиру 3D-сканером: хмара точок дає реальні розміри, висоти, перепади плити й кути. Прораб звіряє замір з планом і вводами мереж.'),
@@ -393,7 +393,7 @@ T['ru']['ui'].update(
 )
 T['ru']['flat'] = dict(
     h='Ремонт с нуля: квартира 86 м² за 19 этапов', hc='Ремонт квартиры с нуля — 19 этапов',
-    p='Прокручивайте — и квартира пройдёт путь от бетона до ключей в правильном порядке работ. Переключайте «Новостройка / Вторичка», включайте рентген сетей и нажимайте на слои, чтобы увидеть пирог. Фотоотчёты — раз в 1–2 недели.',
+    p='Прокручивайте — и квартира пройдёт путь от бетона до ключей в правильном порядке работ. Фотоотчёты — раз в 1–2 недели.',
     cta='Рассчитать мой ремонт', team='Кто эти люди — на странице', about='О нас', more='', svc='Ремонт квартир',
     st=dict(
         measure=('3D-замер квартиры', 'Владислав сканирует квартиру 3D-сканером: облако точек даёт реальные размеры, высоты, перепады плиты и углы. Прораб сверяет замер с планом и вводами сетей.'),
@@ -450,7 +450,7 @@ T['en']['ui'].update(
 )
 T['en']['flat'] = dict(
     h='A renovation from scratch: an 86 m² apartment in 19 stages', hc='An apartment renovation from scratch — 19 stages',
-    p='Scroll and the apartment goes from bare concrete to keys in the right order of works. Switch between a new build and a resale flat, turn on the X-ray of services and tap the layers to see each build-up. Photo reports every 1–2 weeks.',
+    p='Scroll and the apartment goes from bare concrete to keys in the right order of works. Photo reports every 1–2 weeks.',
     cta='Estimate my renovation', team='Meet the people behind each stage on the', about='About page', more='', svc='Apartment renovation',
     st=dict(
         measure=('3D scan of the apartment', 'Vladyslav scans the apartment with a 3D scanner: the point cloud gives real sizes, heights, slab level differences and angles. The site manager checks it against the plan and service entries.'),

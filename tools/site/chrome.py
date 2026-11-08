@@ -597,7 +597,7 @@ def head_extras(s):
         t = m.group(0)
         # <picture><source media="…"> перед фото (окремий кадр для телефона): preload кожного джерела зі своїм media,
         # а <img> — лише поза цими media, щоб телефон не тягнув зайве десктопне фото
-        pic = vis.rfind('<picture>', 0, m.start())
+        pic = max(vis.rfind('<picture>', 0, m.start()), vis.rfind('<picture ', 0, m.start()))  # і <picture class="hx-bg"> (головні)
         srcs = re.findall(r'<source\b[^>]*>', vis[pic:m.start()]) if pic >= 0 and '</picture>' not in vis[pic:m.start()] else []
         medias = []
         for src in srcs:

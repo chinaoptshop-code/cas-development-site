@@ -101,7 +101,7 @@
 - Легкі головні сторінки (Михайло 02.11.2026: «на головних — лише назви, усі деталі — всередині, при натисканні»): `LIGHT` у `tools/site/ux.py`
   (кластери home/services/about/contact/design/renovation/construction/calculator/landscape/resort/restaurant/office/furnishing усіх мов + портфоліо, ремонт квартир, вартість ремонту).
   Секції — плитки `data-c="x"` (іконка + H2 + рядок «від $…» `data-xs`; тап — розгортає на місці, текст у DOM), картки без H2 — компактні `data-c="k"`,
-  hero — лід в один рядок `data-c="h"`, «Подзвонити» + «Порахувати» (`a.ux-calc` → квіз / калькулятор), рядок довіри (`calc`/`trust` у `ux` lang/*.json);
+  hero — лід в один рядок `data-c="h"`, «Подзвонити» + «Порахувати» (`a.ux-calc` → квіз / калькулятор); рядка довіри під кнопками hero немає (08.11.2026, «менше тексту»);
   ручні uk-сторінки — `LIGHT_CUSTOM`. Форма, квіз, калькулятор, гід і «Будинок з нуля» лишаються на виду. UI-kit — `/styleguide/#light`.
   Відступи секцій — одна шкала `--sp-sec` (2.75rem телефон / 3.5rem з 768 px, site-chrome.v1.css); картки послуг (rich svc) — фото, назва, ціна, суть, перелік — на сторінці послуги; команда — імʼя й роль, опис за шевроном.
   Ілюстрації плиток — `tools/site/tiles/<ключ data-i>.webp` (тема без своєї — запасна dm) 480×320 ≤40 КБ (Mac mini, FLUX локально) → `python3 tools/site/ux.py` копіює в `/img/tiles/` і вмикає.
@@ -129,6 +129,8 @@
   Більші копії — `python3 tools/img/originals.py img/p/<id>` (оригінал з Google Drive за `tools/img/drive-ids.json`, 1200/1600/1920 без апскейлу), далі build.py.
   Стрічки й каруселі — без системного повзунка (`scrollbar-width:none`, кінець site-chrome.v1.css). Перевірка — Playwright 1920 (DPR 1/1.5/2), 2560, 402@3:
   файл ≥ 0.95 × слот × DPR.
+- Швидкість (08.11.2026): фото нижче першого екрана — `loading="lazy"`; копії кадрів стрічок/каруселей (`marquee()`) — через інертний `<template>`, без cloneNode з src (інакше Chrome тягне всі копії);
+  preload LCP-фото з `<picture>` — окремо для кожного `media` (`chrome.head_extras`); CSS/JS на сайті мініфікує деплой (esbuild, крок «Minify»), у репозиторії — читабельні.
 
 ## Telegram (личный аккаунт пользователя) — `tools/telegram/`
 
