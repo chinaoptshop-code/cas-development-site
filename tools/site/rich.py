@@ -53,13 +53,15 @@ def img(x, alt=None, sizes='(max-width:767px) 90vw, 400px', cls='', eager=False)
     return f'<img{c} src="/{src}"{ss}{load} decoding="async" width="{w}" height="{h}" alt="{a(x.get("alt", "") if alt is None else alt)}">'
 
 
-def hero_bg(h):
-    """Фото першого екрана (не анімуємо, одна fetchpriority="high")."""
+def hero_bg(h, full=False):
+    """Фото першого екрана (не анімуємо, одна fetchpriority="high").
+    full — головні (Михайло 08.11.2026): на телефоні фото на весь екран під легшим затемненням, тому sizes 100vw (різкість)."""
     m = h.get('m')
-    src = (f'<source media="(max-width:767px) and (orientation:portrait)" srcset="{a(m["srcset"])}" sizes="60vw" width="{m["w"]}" height="{m["h"]}">'
+    ms = '100vw' if full else '60vw'
+    src = (f'<source media="(max-width:767px) and (orientation:portrait)" srcset="{a(m["srcset"])}" sizes="{ms}" width="{m["w"]}" height="{m["h"]}">'
            if m else '')
-    # телефон: фото під темним градієнтом — достатньо ~60vw (менше байтів до LCP)
-    return f'<picture class="hx-bg">{src}{img(h, sizes="(max-width:767px) 60vw, 100vw", eager=True)}</picture>'
+    # телефон (не головні): фото під темним градієнтом — достатньо ~60vw (менше байтів до LCP)
+    return f'<picture class="hx-bg">{src}{img(h, sizes=f"(max-width:767px) {ms}, 100vw", eager=True)}</picture>'
 
 
 def msgs():

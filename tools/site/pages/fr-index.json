@@ -266,47 +266,6 @@
      "loc": "Kyiv · 210 m²"
     }
    ]
-  },
-  {
-   "t": "facts",
-   "cls": "xs-trust",
-   "h2": "Pourquoi nos clients choisissent CAS",
-   "items": [
-    [
-     "150+",
-     "projets depuis 2016"
-    ],
-    [
-     "10+ ans",
-     "d’expérience"
-    ],
-    [
-     "12 mois",
-     "de garantie sur les travaux"
-    ],
-    [
-     "Équipe interne",
-     "salariés"
-    ]
-   ],
-   "links": [
-    [
-     "/fr/a-propos",
-     "Notre méthode"
-    ],
-    [
-     "/fr/a-propos",
-     "Garanties"
-    ],
-    [
-     "/fr/faq",
-     "Questions et réponses"
-    ],
-    [
-     "https://maps.google.com/?cid=15015666645432112566",
-     "Avis Google · 4,8★"
-    ]
-   ]
   }
  ]
 }

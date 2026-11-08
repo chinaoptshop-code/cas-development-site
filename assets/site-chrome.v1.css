@@ -106,7 +106,7 @@ body{padding-top:var(--sch-h)}
 .sch-mcta .sch-cta{display:inline-flex;min-height:48px;padding:0 28px;background:var(--c-ac);color:#14120f}
 .sch-mtel{display:inline-flex;align-items:center;gap:10px;min-height:48px;font-size:1.0625rem;font-weight:600;color:var(--c-tx);text-decoration:none}
 .sch-mmsg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.sch-mmsg a,.scf-msg a{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 12px;border:1px solid var(--c-ln);border-radius:12px;
+.sch-mmsg a{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 12px;border:1px solid var(--c-ln);border-radius:12px;
   font-size:.875rem;color:var(--c-tx);text-decoration:none}
 .bi::before{content:"";flex:none;width:20px;height:20px;background:center/contain no-repeat}.bi-telegram::before{background-image:url(/assets/brand/telegram.svg)}.bi-viber::before{background-image:url(/assets/brand/viber.svg)}.bi-whatsapp::before{background-image:url(/assets/brand/whatsapp.svg)}.bi-instagram::before{background-image:url(/assets/brand/instagram-96.png)}.bi-youtube::before{background-image:url(/assets/brand/youtube.svg)}
 html.sch-lock,html.sch-lock body{overflow:hidden}
@@ -122,8 +122,8 @@ html.sch-lock .mbar{display:none!important}
 .scf-col b{display:block;margin:0 0 10px;font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c-ac)}
 .scf address{font-style:normal;color:var(--c-tx)}
 .scf-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.125rem;font-weight:600;color:var(--c-tx);text-decoration:none}
-.scf-msg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.scf-soc{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.scf-soc a{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border:1px solid var(--c-ln);border-radius:12px}.scf-soc a:hover{border-color:var(--c-ac)}.scf-soc .bi::before{width:22px;height:22px}
+/* месенджери й соцмережі — один ряд однакових кнопок-іконок (Михайло 08.11.2026), назва — aria-label/title */
+.scf-soc{display:flex;flex-wrap:nowrap;gap:.5rem}.scf-soc a{display:inline-flex;flex:none;align-items:center;justify-content:center;width:2.875rem;height:2.875rem;border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}.scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}.scf-soc .bi::before{width:1.375rem;height:1.375rem}
 .scf .scf-svc{position:static;margin:32px 0 0;padding:16px 0 0;border:0;border-top:1px solid var(--c-ln)}
 .scf .scf-svc summary{display:flex;align-items:center;justify-content:center;min-height:44px;list-style:none;cursor:pointer;
   font-size:.75rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--c-ac);float:none}
@@ -154,7 +154,7 @@ main details:not([class*="sch"])>summary{padding-block:12px;margin-block:-12px}
   .sch-lang a,.sch-lang span{min-height:44px}
 }
 /* старі правила m-fix */
-@media(max-width:767px){.scf .scf-tel{font-size:1.125rem!important}.scf .scf-msg a{font-size:.875rem!important}.scf .scf-brand .sch-logo{font-size:1.15rem!important}}
+@media(max-width:767px){.scf .scf-tel{font-size:1.125rem!important}.scf .scf-brand .sch-logo{font-size:1.15rem!important}}
 /* Telegram Mini App */
 html.tg .sch-nav,html.tg .sch-lang,html.tg .sch-tel,html.tg .sch-cta,html.tg .sch-burger,html.tg .sch-menu,html.tg .scf{display:none!important}
 @media print{.sch,.sch-menu,.scf-svc{display:none!important}body{padding-top:0}}
@@ -189,6 +189,8 @@ html:lang(zh) body,html:lang(zh) body *{font-family:"Manrope","PingFang SC","Hir
 html:lang(zh) :is(h1,h2,h3,.price,.facts b){font-family:"Cormorant Garamond","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif!important;font-weight:400}
 html:lang(zh) .sch-nav a,html:lang(zh) .sch-cta{letter-spacing:.06em}
 html:lang(ar) body,html:lang(ar) body *{font-family:"Noto Naskh Arabic","Geeza Pro","Segoe UI",Tahoma,sans-serif!important}
+/* логотип — латиницею тим самим шрифтом, що й в інших мовах: арабський стек ширший і виштовхував бургер за край на 390 px (08.11.2026) */
+html:lang(ar) .sch-logo,html:lang(ar) .sch-logo *{font-family:"Cormorant Garamond","Cormorant Fallback",Georgia,serif!important}
 html:lang(ar) :is(h1,h2,h3){font-weight:600;line-height:1.35}
 html:lang(ar) body{line-height:1.8}
 html:lang(ar) .sch-nav a,html:lang(ar) .sch-cta,html:lang(ar) .sch-ld>summary{letter-spacing:0}
@@ -224,7 +226,6 @@ details.o-more>summary::-webkit-details-marker{display:none}details.o-more>summa
 details.o-more>summary::before{content:"+ "}details.o-more[open]>summary::before{content:"− "}details.o-more>*+*{margin-top:12px}
 .lq-alt,.lq-tr{font-size:var(--fs-small,.8125rem);line-height:1.5;margin:6px 0 0;color:var(--mu,#8a837c);max-width:34em}
 .lq-alt a{display:inline-block;padding:4px 2px;color:var(--ac,#bf9148);font-weight:600;text-decoration:none}.lq-alt a:hover{text-decoration:underline}
-.lq-tr{color:var(--tx,#ede8df);opacity:.78}
 :is(.lq,#of) :is(.o-note,.lq-alt,.lq-tr,.lq-l){font-size:var(--fs-small,.8125rem);line-height:1.5}:is(.lq,#of) :is(.lq-alt,.lq-tr){margin:6px 0 0}.lq .o-note{margin:8px 0 0}.lq :is(.o-note,.lq-alt){color:var(--mu,#8a837c)}
 .lq-slot:empty{margin:0;padding:0}.lq-slot{margin:28px 0 0}.lq-slot .lq{margin:0;max-width:620px;padding:18px 20px;border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:12px;background:rgba(191,145,72,.05)}
 .lq-slot .lq-ok{margin:0}.cta .lq-slot{margin:0 0 16px}.cta .lq-slot .lq{padding:0;border:0;background:none}
@@ -242,7 +243,6 @@ details.o-more>summary::before{content:"+ "}details.o-more[open]>summary::before
 @keyframes lf-spin{to{transform:rotate(360deg)}}
 .lf-ok-in{animation:lf-in .35s var(--ease-out) both}.lq-ok.lf-ok-in::before{content:"✓";display:inline-grid;place-items:center;width:1.5em;height:1.5em;margin-inline-end:10px;border-radius:50%;background:var(--ac,#bf9148);color:#140f08;font-weight:700;animation:lf-pop .4s var(--ease-out) .1s both}
 @keyframes lf-in{from{opacity:0;translate:0 8px}}@keyframes lf-pop{from{scale:.4;opacity:0}}
-@media(max-width:767px){#quickForm .lq-tr{display:none}}
 @media(prefers-reduced-motion:reduce){.lq-b,#oBtn{transition:none}.lq-b:active,#oBtn:active{transform:none}.lf-busy::after{animation-duration:1.6s}.lf-ok-in,.lq-ok.lf-ok-in::before{animation:none}}
 
 /* ══ Лід-магніт «Гід з цінами» (.gd-slot ставить tools/guide/build.py, форму будує /assets/lead-form.v1.js) */

@@ -8,10 +8,9 @@
 Що робить apply() (ідемпотентно; генератори — landing.py — викликають її перед chrome.apply()):
   • form#of: поле телефону — першим, type=tel, inputmode=tel, autocomplete=tel, підказка +380; «Імʼя (необовʼязково)»;
     площа й коментар — у згорнутому <details class="o-more"> «Додати коментар»; кнопка «дієслово + результат»
-    («Отримати розрахунок»); під нею вигода в один рядок .o-note (факти CLAUDE.md: передзвонимо й порахуємо орієнтовну
-    вартість, консультація по телефону безкоштовна — без «безкоштовного заміру» і «за 15 хвилин»), альтернатива
-    «Або напишіть: Telegram · Viber · WhatsApp» (.lq-alt) і рядок довіри .lq-tr (150+ проєктів з 2016, гарантія 12 міс.,
-    власні бригади, Google 4,8★ — лише ці факти). Обидва рядки — між <!--lqx--> і <!--/lqx-->.
+    («Отримати розрахунок»); під нею лише альтернатива «Або напишіть: Telegram · Viber · WhatsApp» (.lq-alt, між
+    <!--lqx--> і <!--/lqx-->). Стандартну примітку .o-note («Передзвонимо й порахуємо…») і рядок довіри .lq-tr
+    (150+ проєктів…) прибрано (Михайло 08.11.2026) — apply() їх видаляє; власну примітку сторінки (інший текст) лишає.
   • Швидка заявка в один рядок (form.lq, між <!--lq--> і <!--/lq-->) — у hero лендингів послуг одразу після кнопок
     (.w.hero .btns), з рядком месенджерів; стандартна кнопка «Отримати кошторис» над нею стає «Подзвонити» (tel:, вторинна).
   • Місця для компактного «Номер → передзвонимо» (<div class="lq-slot" data-form="…">; саму форму будує
@@ -95,14 +94,17 @@ def lang_of(s):
     return (m.group(1).lower() if m else 'uk') if (m and m.group(1).lower() in T) else 'uk'
 
 
-def extras(lang, trust=True):
-    """Рядок «Або напишіть: Telegram · Viber · WhatsApp» і (для повної форми) рядок довіри."""
+def extras(lang):
+    """Рядок «Або напишіть: Telegram · Viber · WhatsApp» (рядок довіри .lq-tr прибрано — Михайло 08.11.2026)."""
     t = T[lang]
     links = ' · '.join(f'<a href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '') + f'>{n}</a>' for n, u in MSG)
-    x = f'<p class="lq-alt">{e(t["alt"])} {links}</p>'
-    if trust:
-        x += f'<p class="lq-tr">{e(t["tr"])}</p>'
-    return f'<!--lqx-->{x}<!--/lqx-->'
+    return f'<!--lqx--><p class="lq-alt">{e(t["alt"])} {links}</p><!--/lqx-->'
+
+
+# стандартні примітки під кнопкою (усі мови) — прибираємо; власна примітка сторінки (інший текст) лишається
+_NB = lambda x: html.unescape(x).replace('\u00a0', ' ').strip()
+STD_NOTES = {_NB(v['note']) for v in T.values()}
+NOTE_RX = re.compile(r'<p class="o-note">([^<]*)</p>')
 
 
 def _wrapper(s, pos, lo, hi):
@@ -197,17 +199,15 @@ def upgrade_form(s, lang):
     else:
         s = s[:lo] + re.sub(r'(<details class="o-more"><summary>)([^<]*)', lambda x: x.group(1) + _keep(x.group(2), e(t['more'])), s[lo:hi], count=1) + s[hi:]
         hi = s.find('</form>', lo)
-    # вигода під кнопкою, месенджери як альтернатива й рядок довіри
+    # під кнопкою — лише «Або напишіть: …» (стандартна примітка й рядок довіри — прибрані, Михайло 08.11.2026)
     f = s[lo:hi]
-    old = X_RX.search(f)
     f = X_RX.sub('', f)
-    if 'class="o-note"' in f:
-        f = re.sub(r'(<p class="o-note">)([^<]*)', lambda x: x.group(1) + _keep(x.group(2), e(t['note'])), f, count=1)
-    else:
-        f = re.sub(r'(<button[^>]*\bid="oBtn"[^>]*>.*?</button>)', lambda x: x.group(1) + f'<p class="o-note">{e(t["note"])}</p>', f, count=1, flags=re.S)
+    f = NOTE_RX.sub(lambda m: '' if _NB(m.group(1)) in STD_NOTES else m.group(0), f)
     x = extras(lang)
-    if old: x = _keep(old.group(0), x).replace('Google ', 'Google\u00a0')
-    f = re.sub(r'(<p class="o-note">[^<]*</p>)', lambda m: m.group(1) + x, f, count=1)
+    if NOTE_RX.search(f):
+        f = NOTE_RX.sub(lambda m: m.group(0) + x, f, count=1)
+    else:
+        f = re.sub(r'(<button[^>]*\bid="oBtn"[^>]*>.*?</button>)', lambda m: m.group(1) + x, f, count=1, flags=re.S)
     return s[:lo] + f + s[hi:]
 
 
@@ -217,7 +217,7 @@ def quick_html(lang, service, source, form='quick-hero', idp='lq'):
             f'<label class="lq-l" for="{idp}P">{e(t["q"])}</label>'
             f'<div class="lq-r"><input id="{idp}P" type="tel" inputmode="tel" autocomplete="tel" placeholder="{a(t.get("ph", "+380 97 123 45 67"))}" aria-describedby="{idp}E">'
             f'<button class="lq-b" type="submit">{e(t["send"])}</button></div>'
-            f'<div class="lq-e" id="{idp}E" role="alert"></div><p class="o-note">{e(t["note"])}</p>{extras(lang, trust=False)}</form>'
+            f'<div class="lq-e" id="{idp}E" role="alert"></div>{extras(lang)}</form>'
             f'<div class="lq-ok" role="status" tabindex="-1" hidden>{e(t["ok"])}</div><!--/lq-->')
 
 

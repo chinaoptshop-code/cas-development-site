@@ -485,3 +485,5 @@
    кнопка ≥26×34 px (WCAG 2.5.8 — ≥24 px), проміжок рядів 10 px — розширені ::before-зони сусідніх рядів не перекриваються */
 @media(max-width:767px){.bz-cmp .bz-nav{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:10px 6px;margin-top:2px}
   .bz-cmp .bz-b{width:auto;min-width:0;height:34px;border-radius:999px;font-size:.8125rem;padding:0}}
+/* шапка сцени (лічильник · прогрес · «Рентген»): довгий підпис кнопки (de/pl/es) переноситься, а не виходить за край (768 px, Михайло 08.11.2026) */
+.bz-hd>.bz-xb{flex:0 1 auto;min-width:0;white-space:normal;line-height:1.2;text-align:center}

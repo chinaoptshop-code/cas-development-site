@@ -12,7 +12,7 @@
 <source type="image/avif"> з тими самими srcset/sizes — деплой (tools/img/picture.py).
 
 Слоти: strip (.xs-st; головна — .hx-home), proj (.xs-proj .xs-st, портфоліо — компактно через бюджет HTML),
-covers (.xs-cv), svc (.xs-sv, з урахуванням flex-рядів), split (.xs-pic), pg (галерея /proekty, компактно), hero (.hx — лише ширші файли).
+covers (.xs-cv), svc (.xs-sv, з урахуванням flex-рядів; на головній — карусель), split (.xs-pic), pg (галерея /proekty, компактно), hero (.hx — лише ширші файли).
 Перевірка: python3 tools/site/sharp.py --check (сторінки, де apply() щось змінив би).
 """
 import math, os, re, sys
@@ -71,6 +71,9 @@ def w_svc(vw, i, n, home):
     """Ширина й пропорція клітинки картки i з n (flex-wrap: basis 13rem, gap 16px; телефон — 2 колонки, головна — ряд зі свайпом)."""
     c = cont(vw)
     if home and vw <= 767: return .44 * c, 4 / 3
+    if home:  # головна — карусель (sections.v1.css): 3 картки в ряду до 1099 px, далі 4; gap 1rem; img max-height 12rem
+        w = (c - 2 * rem(vw)) / 3 if vw <= 1099 else (c - 3 * rem(vw)) / 4
+        return w, max(1.6, w / (12 * rem(vw)))
     if vw <= 599:
         if n % 2 and i == n - 1: return c, 16 / 7
         return (c - 10) / 2, 4 / 3
@@ -118,7 +121,7 @@ def family(src):
 # ---------- sizes ----------
 BPS = [424, 599, 767, 1023, 1099, 1366, 1699, 2199]
 SLOT_BPS = {'strip': [767, 1023, 1366, 2199], 'covers': [767, 1099, 1366, 1699], 'split': [767, 1023, 1366],
-            'svc': [599, 767, 1366]}
+            'svc': [599, 767, 1099, 1366]}
 
 
 def _fmt(v):

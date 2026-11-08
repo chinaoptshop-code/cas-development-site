@@ -340,9 +340,11 @@ def header(lang, path, alts, tools='', cta_href=None):
 
 def footer(lang, alts):
     t = T[lang]
-    msg = ''.join(f'<a class="bi bi-{k}" href="{u}" target="_blank" rel="noopener">{n}</a>' for k, n, u in MSG if k not in SOCIAL_K)
+    # месенджери й соцмережі — один ряд однакових кнопок-іконок (Михайло 08.11.2026); назва — aria-label і title
     soc_l = t.get('soc') or SOC_LABEL.get(lang, SOC_LABEL['en'])
-    soc = ''.join(f'<a class="bi bi-{k}" href="{u}" target="_blank" rel="noopener" aria-label="{n}"></a>' for k, n, u in SOCIAL)
+    row = [x for x in MSG if x[0] not in SOCIAL_K] + SOCIAL
+    soc = ''.join(f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '')
+                  + f' aria-label="{n}" title="{n}"></a>' for k, n, u in row)
     groups = ''.join(f'<div><b>{g}</b>' + ''.join(f'<a href="{h}">{n}</a>' for h, n in links) + '</div>' for g, links in [(g, _live(x)) for g, x in t['groups']] if links)
     langs = lang_links(lang, alts, 'scf-lang')
     return (
@@ -351,7 +353,7 @@ def footer(lang, alts):
         '  <div class="scf-top">\n'
         f'    <div class="scf-brand">{LOGO.format(home=HOME[lang], label=t["home_label"])}<p>{t["tagline"]}</p></div>\n'
         f'    <div class="scf-col"><b>{t["contacts"]}</b><address>{t["address"]}</address><a class="scf-tel" href="tel:{PHONE}">{PHONE_TXT}</a></div>\n'
-        f'    <div class="scf-col"><b>{t["msg"]}</b><div class="scf-msg">{msg}</div><div class="scf-soc" role="group" aria-label="{soc_l}">{soc}</div></div>\n'
+        f'    <div class="scf-col"><b>{t["msg"]}</b><div class="scf-soc" role="group" aria-label="{t["msg"]} · {soc_l}">{soc}</div></div>\n'
         '  </div>\n'
         f'  <details class="scf-svc"><summary>{t["svc"]}</summary><nav class="scf-svc-g" aria-label="{t["svc_label"]}">{groups}</nav></details>\n'
         f'  <div class="scf-bot"><div class="scf-langs" role="group" aria-label="{t["lang"]}"><span>{t["lang"]}:</span>{langs}</div>'

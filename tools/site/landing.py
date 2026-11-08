@@ -533,8 +533,8 @@ def hero_html(p):
     btn2 = p.get('btn2') or ['tel:+380978667755', '+380 97 866 77 55']
     if p.get('hero_img'):  # перший екран з фото (rich.hero_bg): .hx — фон, текст поверх
         hx = 'hx hx-home' if p['slug'] == 'index' else 'hx'  # головні: нижчий hero без рядка довіри (Михайло 05.11.2026)
-        o = [crumbs, f'<div class="{hx}">' + richsec.hero_bg(p['hero_img']), '<div class="w hero">']
-        if p['slug'] == 'index':  # головна (9 мов): лише H1 + рядок + «Подзвонити» (tel:); «Порахувати» дописує ux._light_hero; без eyebrow, фактів і зайвих кнопок у DOM
+        o = [crumbs, f'<div class="{hx}">' + richsec.hero_bg(p['hero_img'], full=p['slug'] == 'index'), '<div class="w hero">']
+        if p['slug'] == 'index':  # головна (9 мов): лише H1 + рядок; .btns після обробки ліду прибирає ux._light_hero (Михайло 08.11.2026 — hero без кнопок)
             o += [f'  <h1>{e(p["h1"])}</h1>'] + ([f'  <div class="price">{e(p["price"])}</div>'] if p.get('price') else []) + [_lead_p(p), '  <div class="btns">',
                   f'    <a class="btn" href="tel:+380978667755">{e(leadform._call(p["lang"])[0])}</a>', '  </div>']
             return o + ['</div></div>\n']

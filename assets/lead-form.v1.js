@@ -19,10 +19,9 @@
   // q — підпис компактної заявки; s_<місце> — підпис для конкретного місця (якщо нема — q); like — кнопка на сторінці проєкту
   var T = {
     uk: { empty: 'Вкажіть номер телефону — ми передзвонимо.', phone: 'Перевірте номер: потрібно щонайменше 9 цифр, напр. 097 123 45 67 або +380 97 123 45 67.',
-          sending: 'Надсилаємо…', again: 'Надіслати ще раз', name: 'Імʼя (необовʼязково)', more: 'Додати коментар', send: 'Отримати розрахунок',
-          note: 'Передзвонимо й порахуємо орієнтовну вартість. Консультація по телефону — безкоштовна.', ok: 'Дякуємо. Перетелефонуємо найближчим часом.',
+          sending: 'Надсилаємо…', again: 'Надіслати ще раз', name: 'Імʼя (необовʼязково)', more: 'Додати коментар', send: 'Отримати розрахунок', ok: 'Дякуємо. Перетелефонуємо найближчим часом.',
           fail: 'Не вдалося надіслати заявку. Напишіть або подзвоніть: +380 97 866 77 55 (Telegram, Viber, WhatsApp).',
-          alt: 'Або напишіть:', tr: '150+ проєктів з 2016 · гарантія 12 міс. · своя команда · Google\u00a04,8★',
+          alt: 'Або напишіть:',
           q: 'Залиште номер — ми передзвонимо', like: 'Хочу так само',
           s_prices: 'Потрібна цифра для вашої площі? Залиште номер — передзвонимо й порахуємо',
           s_portfolio: 'Хочете так само? Залиште номер — передзвонимо й обговоримо ваш обʼєкт',
@@ -30,10 +29,9 @@
           s_services: 'Не знаєте, що саме потрібно? Залиште номер — підкажемо й порахуємо',
           s_blog: 'Плануєте ремонт чи дизайн? Залиште номер — передзвонимо й порахуємо орієнтовну вартість' },
     ru: { empty: 'Укажите номер телефона — мы перезвоним.', phone: 'Проверьте номер: нужно не меньше 9 цифр, напр. 097 123 45 67 или +380 97 123 45 67.',
-          sending: 'Отправляем…', again: 'Отправить ещё раз', name: 'Имя (необязательно)', more: 'Добавить комментарий', send: 'Получить расчёт',
-          note: 'Перезвоним и посчитаем ориентировочную стоимость. Консультация по телефону — бесплатная.', ok: 'Спасибо. Перезвоним в ближайшее время.',
+          sending: 'Отправляем…', again: 'Отправить ещё раз', name: 'Имя (необязательно)', more: 'Добавить комментарий', send: 'Получить расчёт', ok: 'Спасибо. Перезвоним в ближайшее время.',
           fail: 'Не удалось отправить заявку. Напишите или позвоните: +380 97 866 77 55 (Telegram, Viber, WhatsApp).',
-          alt: 'Или напишите:', tr: '150+ проектов с 2016 · гарантия 12 мес. · своя команда · Google\u00a04,8★',
+          alt: 'Или напишите:',
           q: 'Оставьте номер — мы перезвоним', like: 'Хочу так же',
           s_prices: 'Нужна цифра для вашей площади? Оставьте номер — перезвоним и посчитаем',
           s_portfolio: 'Хотите так же? Оставьте номер — перезвоним и обсудим ваш объект',
@@ -41,10 +39,9 @@
           s_services: 'Не знаете, что именно нужно? Оставьте номер — подскажем и посчитаем',
           s_blog: 'Планируете ремонт или дизайн? Оставьте номер — перезвоним и посчитаем ориентировочную стоимость' },
     en: { empty: 'Please enter your phone number — we will call you back.', phone: 'Please check the number: at least 9 digits, with country code, e.g. +44 7700 900123.',
-          sending: 'Sending…', again: 'Send again', name: 'Name (optional)', more: 'Add a comment', send: 'Get an estimate',
-          note: 'We will call you back with a rough cost estimate. Phone consultation is free.', ok: 'Thank you. We will call you back shortly.',
+          sending: 'Sending…', again: 'Send again', name: 'Name (optional)', more: 'Add a comment', send: 'Get an estimate', ok: 'Thank you. We will call you back shortly.',
           fail: 'We could not send your request. Please message or call +380 97 866 77 55 (Telegram, WhatsApp, Viber).',
-          alt: 'Or message us:', tr: '150+ projects since 2016 · 12-month warranty · in-house team · Google\u00a04.8★',
+          alt: 'Or message us:',
           q: 'Leave your number — we will call you back', like: 'I want the same',
           s_prices: 'Need a figure for your floor area? Leave your number — we will call and estimate',
           s_portfolio: 'Like what you see? Leave your number — we will call to discuss your property',
@@ -52,40 +49,34 @@
           s_services: 'Not sure what you need? Leave your number — we will advise and estimate',
           s_blog: 'Planning a renovation or design? Leave your number — we will call with a rough estimate' },
     es: { empty: 'Indique su número de teléfono y le llamamos.', phone: 'Revise el número: al menos 9 dígitos, con el prefijo del país.',
-          sending: 'Enviando…', again: 'Enviar de nuevo', name: 'Nombre (opcional)', more: 'Añadir un comentario', send: 'Recibir presupuesto',
-          note: 'Le llamamos y le damos un coste orientativo. La consulta por teléfono es gratuita.', ok: 'Gracias. Le llamaremos en breve.',
+          sending: 'Enviando…', again: 'Enviar de nuevo', name: 'Nombre (opcional)', more: 'Añadir un comentario', send: 'Recibir presupuesto', ok: 'Gracias. Le llamaremos en breve.',
           fail: 'No pudimos enviar su solicitud. Escríbanos o llame al +380 97 866 77 55 (Telegram, WhatsApp, Viber).',
-          alt: 'O escríbanos:', tr: '150+ proyectos desde 2016 · garantía de 12 meses · equipo propio · Google\u00a04,8★',
+          alt: 'O escríbanos:',
           q: 'Deje su número y le llamamos', like: 'Quiero algo así' },
     zh: { empty: '请填写电话号码，我们会给您回电。', phone: '请检查号码：至少 9 位数字，并带国家区号。',
-          sending: '正在提交…', again: '重新提交', name: '姓名（选填）', more: '添加备注', send: '获取估价',
-          note: '我们会回电并估算大致费用。电话咨询免费。', ok: '谢谢。我们会尽快给您回电。',
+          sending: '正在提交…', again: '重新提交', name: '姓名（选填）', more: '添加备注', send: '获取估价', ok: '谢谢。我们会尽快给您回电。',
           fail: '提交失败。请通过 Telegram、WhatsApp 或 Viber 联系我们，或致电 +380 97 866 77 55。',
-          alt: '或发消息：', tr: '自2016年起150+个项目 · 12个月保修 · 自有团队 · Google\u00a04.8★',
+          alt: '或发消息：',
           q: '留下电话，我们给您回电', like: '我也想要' },
     pl: { empty: 'Podaj numer telefonu — oddzwonimy.', phone: 'Sprawdź numer: co najmniej 9 cyfr, z kierunkowym kraju.',
-          sending: 'Wysyłamy…', again: 'Wyślij ponownie', name: 'Imię (opcjonalnie)', more: 'Dodaj komentarz', send: 'Otrzymaj wycenę',
-          note: 'Oddzwonimy i podamy orientacyjny koszt. Konsultacja telefoniczna jest bezpłatna.', ok: 'Dziękujemy. Oddzwonimy wkrótce.',
+          sending: 'Wysyłamy…', again: 'Wyślij ponownie', name: 'Imię (opcjonalnie)', more: 'Dodaj komentarz', send: 'Otrzymaj wycenę', ok: 'Dziękujemy. Oddzwonimy wkrótce.',
           fail: 'Nie udało się wysłać zapytania. Napisz lub zadzwoń: +380 97 866 77 55 (Telegram, WhatsApp, Viber).',
-          alt: 'Lub napisz:', tr: '150+ projektów od 2016 · gwarancja 12 mies. · własny zespół · Google\u00a04,8★',
+          alt: 'Lub napisz:',
           q: 'Zostaw numer — oddzwonimy', like: 'Chcę tak samo' },
     de: { empty: 'Bitte geben Sie Ihre Telefonnummer ein — wir rufen zurück.', phone: 'Bitte prüfen Sie die Nummer: mindestens 9 Ziffern, mit Ländervorwahl.',
-          sending: 'Wird gesendet…', again: 'Erneut senden', name: 'Name (optional)', more: 'Kommentar hinzufügen', send: 'Schätzung erhalten',
-          note: 'Wir rufen zurück und nennen die ungefähren Kosten. Die telefonische Beratung ist kostenlos.', ok: 'Danke. Wir rufen Sie in Kürze zurück.',
+          sending: 'Wird gesendet…', again: 'Erneut senden', name: 'Name (optional)', more: 'Kommentar hinzufügen', send: 'Schätzung erhalten', ok: 'Danke. Wir rufen Sie in Kürze zurück.',
           fail: 'Die Anfrage konnte nicht gesendet werden. Schreiben oder rufen Sie uns an: +380 97 866 77 55 (Telegram, WhatsApp, Viber).',
-          alt: 'Oder schreiben Sie:', tr: '150+ Projekte seit 2016 · 12 Monate Garantie · eigenes Team · Google\u00a04,8★',
+          alt: 'Oder schreiben Sie:',
           q: 'Nummer hinterlassen — wir rufen zurück', like: 'So etwas möchte ich' },
     fr: { empty: 'Indiquez votre numéro de téléphone, nous vous rappelons.', phone: 'Vérifiez le numéro : au moins 9 chiffres, avec l’indicatif du pays.',
-          sending: 'Envoi…', again: 'Renvoyer', name: 'Nom (facultatif)', more: 'Ajouter un commentaire', send: 'Recevoir une estimation',
-          note: 'Nous vous rappelons avec une estimation indicative. La consultation par téléphone est gratuite.', ok: 'Merci. Nous vous rappelons rapidement.',
+          sending: 'Envoi…', again: 'Renvoyer', name: 'Nom (facultatif)', more: 'Ajouter un commentaire', send: 'Recevoir une estimation', ok: 'Merci. Nous vous rappelons rapidement.',
           fail: 'La demande n’a pas pu être envoyée. Écrivez-nous ou appelez le +380 97 866 77 55 (Telegram, WhatsApp, Viber).',
-          alt: 'Ou écrivez-nous :', tr: '150+ projets depuis 2016 · garantie 12 mois · équipe interne · Google\u00a04,8★',
+          alt: 'Ou écrivez-nous :',
           q: 'Laissez votre numéro, nous vous rappelons', like: 'Je veux la même chose' },
     ar: { empty: 'يرجى إدخال رقم الهاتف وسنعاود الاتصال بك.', phone: 'تحقق من الرقم: 9 أرقام على الأقل مع رمز الدولة.',
-          sending: 'جارٍ الإرسال…', again: 'إعادة الإرسال', name: 'الاسم (اختياري)', more: 'إضافة تعليق', send: 'احصل على تقدير',
-          note: 'سنتصل بك ونقدّم تقديرًا تقريبيًا للتكلفة. الاستشارة الهاتفية مجانية.', ok: 'شكرًا. سنعاود الاتصال بك قريبًا.',
+          sending: 'جارٍ الإرسال…', again: 'إعادة الإرسال', name: 'الاسم (اختياري)', more: 'إضافة تعليق', send: 'احصل على تقدير', ok: 'شكرًا. سنعاود الاتصال بك قريبًا.',
           fail: 'تعذّر إرسال الطلب. راسلنا أو اتصل على ‎+380 97 866 77 55 (Telegram وWhatsApp وViber).',
-          alt: 'أو راسلنا:', tr: '+150 مشروعًا منذ 2016 · ضمان 12 شهرًا · فريقنا الخاص · \u2066Google\u00a04.8★\u2069',
+          alt: 'أو راسلنا:',
           q: 'اترك رقمك وسنتصل بك', like: 'أريد مثل هذا' }
   };
   var lang = (document.documentElement.lang || 'uk').slice(0, 2).toLowerCase();
@@ -182,8 +173,8 @@
   }
   function focusEl(el) { if (!el) return; try { el.focus({ preventScroll: false }); } catch (x) { el.focus(); } }
   function el(tag, cls, text) { var x = document.createElement(tag); if (cls) x.className = cls; if (text != null) x.textContent = text; return x; }
-  // «Або напишіть: Telegram · Viber · WhatsApp» (+ рядок довіри) — для форм, які будує скрипт
-  function extras(trust) {
+  // «Або напишіть: Telegram · Viber · WhatsApp» — для форм, які будує скрипт (рядок довіри й примітку прибрано — Михайло 08.11.2026)
+  function extras() {
     var f = document.createDocumentFragment(), p = el('p', 'lq-alt', t.alt + ' ');
     MSG.forEach(function (m, i) {
       var a = el('a', '', m[0]); a.href = m[1];
@@ -192,7 +183,6 @@
       p.appendChild(a);
     });
     f.appendChild(p);
-    if (trust) f.appendChild(el('p', 'lq-tr', t.tr));
     return f;
   }
   // клік на месенджер біля форми — теж контакт: рахуємо в Clarity
@@ -259,7 +249,7 @@
     row.appendChild(inp); row.appendChild(b);
     var er = el('div', 'lq-e'); er.id = id + 'E'; er.setAttribute('role', 'alert');
     f.appendChild(lb); f.appendChild(row); f.appendChild(er);
-    if (!end) { f.appendChild(el('p', 'o-note', t.note)); f.appendChild(extras(true)); }
+    if (!end) f.appendChild(extras());
     var ok = el('div', 'lq-ok', t.ok); ok.setAttribute('role', 'status'); ok.setAttribute('tabindex', '-1'); ok.hidden = true;
     slot.appendChild(f); slot.appendChild(ok);
     wire(f);
@@ -342,7 +332,6 @@
         det.appendChild(wm);
       }
       if (btn0 && btn0.textContent.trim().length > 0) btn0.textContent = t.send;
-      if (btn0 && !form.querySelector('.o-note')) { var nt = el('p', 'o-note', t.note); btn0.insertAdjacentElement('afterend', nt); }
     }
     if (btn0) btn0.dataset.label = btn0.textContent;
     // доступність: помилка — role=alert і привʼязана до поля телефону; успіх — role=status, отримує фокус

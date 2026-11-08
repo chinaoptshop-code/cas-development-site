@@ -280,13 +280,28 @@ HERO_SKIP = re.compile(r'(?:[a-z]{2}/)?(?:blog|proekty)/')
 
 def _light_hero(m, rel, lang, full):
     i = m.find('<div class="w hero">')
-    k = m.find('<div class="btns">', i)
-    if i < 0 or k < 0:
+    if i < 0:
         return m
+    end = _close(m, 'div', i)
+    k = m.find('<div class="btns">', i)
+    home = bool(re.search(r'<div class="hx hx-home">\s*(?:<picture\b(?:(?!</picture>).)*</picture>)?\s*$', m[max(0, i - 4000):i], re.S))
+    if k < 0 or k > end:  # кнопки — лише всередині hero
+        if not home or end < 0:
+            return m
+        k = m.rfind('\n', i, end - len('</div>'))  # головна без кнопок: лід — до кінця hero
+        if k < 0:
+            return m
     hp = m[i:k]
     hp = hp.replace('<p>', '<p data-c="h">', 1) if '<p>' in hp else hp
     hp = _lead_rest(_lead_dup(hp))
     m = m[:i] + hp + m[k:]
+    if home:
+        # головні (9 мов, Михайло 08.11.2026): hero без кнопок — лише H1 + рядок; дзвінок — у шапці й пігулці «Зв'язатися»
+        k = m.find('<div class="btns">', i)
+        if 0 <= k < _close(m, 'div', i):
+            e = m.find('</div>', k)
+            m = m[:k].rstrip(' \t\n') + m[e + 6:]
+        return m
     m = _call_first(m, i, lang)
     k = m.find('<div class="btns">', i)
     a = m.find('</a>', k)

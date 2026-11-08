@@ -18,7 +18,12 @@ html body .hx.hx-home .hero{min-height:min(68vh,38rem);padding-bottom:20px}
 .hx-home .hero>.price{display:none}.js .hx-home .hero:has(>.price)>[data-c=h]{display:block}
 .hx-home .hero>[data-c=h]{letter-spacing:.08em;margin-top:14px}
 @media(min-width:768px){.hx-home .hero h1{font-size:clamp(2.2rem,1.2rem + 2.2vw,3.4rem);max-width:22em!important;line-height:1.12}}
-@media(max-width:767px){html body .hx.hx-home .hero{padding-top:96px}}
+/* головні (Михайло 08.11.2026): hero без кнопок; на телефоні — фото на весь екран (від низу шапки до низу вікна), H1 + рядок унизу кадру на затемненні,
+   над зоною пігулки «Зв'язатися» (76 px); стрічка фото — вже за першим екраном. На ПК — висота як була (≤ вікна). */
+@media(max-width:767px){
+  html body .hx.hx-home .hero{min-height:calc(100vh - var(--sch-h,64px));min-height:calc(100svh - var(--sch-h,64px));padding-top:96px;padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+  .hx.hx-home::before,[dir=rtl] .hx.hx-home::before{background:linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,.86) 22%,rgba(8,7,9,.45) 50%,rgba(8,7,9,.12) 100%)}
+}
 main>.hx-home+section.xs-strip{padding-top:12px!important}
 /* заголовок з посиланням праворуч */
 .xs-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 20px;flex-wrap:wrap;margin-bottom:24px}
@@ -117,12 +122,21 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
    блок довіри — один рядок фактів + рядок посилань; стрічка фото нижча */
 .hx-home~.xs-svc .xs-c{position:relative}.hx-home~.xs-svc .xs-c h3 a::after{content:"";position:absolute;inset:0}
 .hx-home~.xs-svc .xs-cb>p:not([class]),.hx-home~.xs-svc .xs-cb>.xs-links{display:none!important}
+/* «Що ми робимо» на головних — карусель як «Наші проєкти» (Михайло 08.11.2026): один ряд на всіх ширинах, свайп/scroll-snap,
+   кнопки ←/→ під рядом (carousel() у ui-polish.v1.js), повільна автопрокрутка marquee() (пауза при наведенні/тачі/дії, reduced-motion — статично).
+   Місце під кнопки (.cv-nav: 0.75rem + 44 px) резервує margin ряду до появи кнопок — без зсуву (CLS). Ширини — модель w_svc у tools/site/sharp.py. */
+.js .hx-home~.xs-svc .xs-sv{flex-wrap:nowrap;align-items:stretch;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;margin-bottom:calc(.75rem + 44px)}
+.js .hx-home~.xs-svc .xs-sv.cv-on{margin-bottom:0}
+.js .hx-home~.xs-svc .xs-sv::-webkit-scrollbar{display:none}
+.js .hx-home~.xs-svc .xs-sv>.xs-c{flex:0 0 calc((100% - 2rem) / 3);scroll-snap-align:start;min-width:0}
+.js .hx-home~.xs-svc .cv-nav{margin-top:.75rem}
+@media(min-width:1100px){.js .hx-home~.xs-svc .xs-sv>.xs-c{flex-basis:calc((100% - 3rem) / 4)}}
 @media(max-width:767px){
-  .js .hx-home~.xs-svc .xs-sv{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}
-  .js .hx-home~.xs-svc .xs-sv::-webkit-scrollbar{display:none}
-  .js .hx-home~.xs-svc .xs-sv>.xs-c{flex:0 0 44%;scroll-snap-align:start}
+  .js .hx-home~.xs-svc .xs-sv{gap:10px;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}
+  .js .hx-home~.xs-svc .xs-sv>.xs-c{flex:0 0 44%}
   .js .hx-home~.xs-svc .xs-sv .xs-c img{aspect-ratio:4/3!important;max-height:none}
   .hx-home~.xs-strip .xs-st{grid-auto-columns:46%!important}
+  .hx-home~.xs-svc .xs-note{text-align:start} /* «Для бізнесу: …» — від лівого краю, не під пігулкою «Зв'язатися» праворуч */
 }
 .hx-home~.xs-trust h2{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .hx-home~.xs-trust .facts{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 0;border:0;margin:0;background:none}
