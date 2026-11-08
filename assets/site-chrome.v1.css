@@ -756,3 +756,22 @@ html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(
    відео, «Що ми робимо» на телефоні, галереї. Прокрутка свайпом, тачпадом, колесом зі Shift і клавішами лишається; кнопку паузи дає marquee() */
 html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.prs-inner,.pcarousel-track,.gal,.pc-grid){scrollbar-width:none;-ms-overflow-style:none}
 html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.prs-inner,.pcarousel-track,.gal,.pc-grid)::-webkit-scrollbar{display:none;width:0;height:0}
+/* Компактний футер (Михайло 08.11.2026): мови — коди UA RU EN… в один ряд, політика й © — один блок;
+   на телефоні без порожнечі під футером — політика й © стоять поруч із пігулкою «Зв'язатися» */
+.scf-langs{gap:0 2px}
+.scf-langs a,.scf-langs span{display:inline-flex;align-items:center;justify-content:center;min-width:2.5rem;min-height:44px;letter-spacing:.06em}
+.scf-legal{display:flex;flex-wrap:wrap;align-items:center;gap:0 16px;color:var(--c-mu)}
+@media(max-width:767px){
+  .scf{padding-top:28px}
+  .scf-top{gap:18px}
+  .scf-brand p{margin-top:8px}
+  .scf-col b{margin-bottom:6px}
+  .scf .scf-svc{margin-top:20px;padding-top:8px}
+  .scf-bot{margin-top:8px;padding-top:4px;gap:0}
+  .scf-langs{width:100%;justify-content:space-between}
+  .scf-langs a,.scf-langs span{min-width:0;flex:1 1 0}
+  body:has(.mbar[data-one]):has(.scf){padding-bottom:0}
+  body:has(.mbar[data-one]) .scf{padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+  body:has(.mbar[data-one]) .scf-legal{flex-direction:column;align-items:flex-start;gap:0;min-height:48px;padding-inline-end:11.5rem;line-height:1.35}
+  body:has(.mbar[data-one]) .scf-legal a{min-height:32px}
+}
