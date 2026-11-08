@@ -366,12 +366,12 @@ def _light_custom(m, rel):
 # замість FLUX-ілюстрації 480×320 — світлий рендер проєкту CAS (img/p/wide-<назва>-800/1200/1400|1600.webp + AVIF, tools/img/build.py),
 # object-position — головне (диван/зал) у кадрі; alt — мовою сторінки. Ключ — тема H2 плитки (data-i), решта тем — WIDE_FB.
 WIDE = {
-    'dm': ('studio', (800, 1200, 1600), '50% 55%'),
-    'os': ('living', (800, 1200, 1400), '35% 60%'),
-    'st': ('house', (800, 1200, 1400), '40% 60%'),
-    'nf': ('lounge', (800, 1200, 1400), '40% 60%'),
-    'fq': ('lounge', (800, 1200, 1400), '40% 60%'),
-    'gu': ('living', (800, 1200, 1400), '35% 60%'),
+    'dm': ('studio', (800, 1200, 1600, 2400), '50% 55%'),
+    'os': ('living', (800, 1200, 1600, 2400), '35% 60%'),
+    'st': ('house', (800, 1200, 1600, 2400), '40% 60%'),
+    'nf': ('lounge', (800, 1200, 1600, 2400), '40% 60%'),
+    'fq': ('lounge', (800, 1200, 1600, 2400), '40% 60%'),
+    'gu': ('living', (800, 1200, 1600, 2400), '35% 60%'),
     'pj': ('monpark', (800, 1200, 1600), '50% 55%'),
 }
 WIDE_FB = 'dm'
@@ -433,8 +433,8 @@ def _wide_img(body, lang):
     name, ws, pos = WIDE.get(h.group(1) if h else WIDE_FB, WIDE[WIDE_FB])
     alt = WIDE_ALT[name].get(lang) or WIDE_ALT[name]['en']
     srcset = ', '.join(f'/img/p/wide-{name}-{w}.webp {w}w' for w in ws)
-    return (f'<img class="ux-wb" src="/img/p/wide-{name}-{ws[1]}.webp" srcset="{srcset}" sizes="{WB_SIZES}" '
-            f'loading="lazy" decoding="async" width="{ws[-1]}" height="{ws[-1] // 2}" alt="{html.escape(alt)}" style="object-position:{pos}">')
+    return (f'<img class="ux-wb" data-srcset="{srcset}" sizes="{WB_SIZES}" '  # банер — нижче першого екрана: вантажить site-chrome.v1.js при прокрутці
+            f'decoding="async" width="{ws[-1]}" height="{ws[-1] // 2}" alt="{html.escape(alt)}" style="object-position:{pos}">')
 
 
 # ── Фото-плитки (Михайло 08.11.2026: «мінімізація тексту, максимізація картинок»): кожна плитка серії (data-c="x") —
@@ -462,7 +462,7 @@ TP_PROJ = {  # slug: (назва, тип обʼєкта, реалізовано?
     'tetris-hall': ('Tetris Hall', 'flat', 1), 'office-chicago': ('Office Chicago', 'office', 1), 'smart-villa': ('Smart Villa', 'villa', 0),
     'a-frame-house': ('A-Frame House', 'house', 0), 'house-150': ('House 150', 'house', 0), 'monpark': ('Monpark', 'rest', 1),
     'yacht-restaurant': ('Yacht Restaurant', 'rest', 0), 'yablu-rest': ('Yablu Rest', 'lounge', 0), 'dolls-salon': ('Dolls Salon', 'salon', 1),
-    'kitana-beach': ('Kitana Beach', 'beach', 0),
+    'kitana-beach': ('Kitana Beach', 'beach', 0), 'petrivtsi-house': ('Petrivtsi House', 'house', 0),
 }
 TP_WORD = {  # тип обʼєкта мовою сторінки
     'house': dict(uk='будинок', ru='дом', en='house', es='casa', zh='住宅', pl='dom', de='Haus', fr='maison', ar='منزل'),
@@ -547,29 +547,79 @@ def _tp_img(pid, slug, lang, sp, eager=False, wmin=400):
     _, w, h = fs[-1]
     mid = next((x for x in fs if x[0] >= 900), fs[-1])[0]
     f = max(1.0, round(w / h / .8, 2))  # альбомне фото в плитці 4:5 обрізається з боків — файл ширший за плитку
-    return (f'<img class="ux-tp" src="/img/p/{pid}-{mid}.webp" srcset="{srcset}" sizes="{_tp_sizes(sp, f)}" loading="{'eager' if eager else 'lazy'}" '
+    # перший ряд під hero — eager (src); решта — data-srcset без src: вантажить site-chrome.v1.js лише при наближенні прокрутки (~350 px),
+    # а не за ~1250 px, як нативний lazy Chrome на телефоні (Михайло 08.11.2026); без JS плитки й так без фото (.ux-tp — лише в .js)
+    # Відкладене — коротко (бюджет HTML 64 КБ): data-p="<id>:<ширини>" → srcset /img/p/<id>-<w>.webp <w>w (JS; ширина в назві = ширина файла)
+    if eager:
+        lead = f'src="/img/p/{pid}-{mid}.webp" srcset="{srcset}"'
+    elif all(n == w for n, w, h in fs):
+        lead = f'data-p="{pid}:{",".join(str(n) for n, w, h in fs)}"'
+    else:
+        lead = f'data-srcset="{srcset}"'
+    return (f'<img class="ux-tp" {lead} sizes="{_tp_sizes(sp, f)}"{' loading="eager"' if eager else ''} '
             f'width="{w}" height="{h}" alt="{html.escape(alt)}">')
 
 
 # Тизери сцен «Ресторан з нуля» / «Комплекс відпочинку» (restaurant.py / resort.py: section.rp-teaser) — велике фото проєкту
 # (телефон — 4:3 над текстом; з 760 px — ліва колонка 1.15fr поруч із текстом, gap 2rem), lazy.
 TZ = {'rs': ('1jKOiN3xyCjZCL', 'monpark'), 'rp': ('1DeOWG4OI6VU89', 'kitana-beach')}
-TZ_RX = re.compile(r'<img class="ux-tz"[^>]*>')
+TZ_RX = re.compile(r'<img class="ux-tz"[^>]*>(?:<noscript><img class="ux-tz"[^>]*></noscript>)?')
 TZ_SIZES = '(max-width:759px) calc(100vw - 32px), (max-width:1079px) calc(53.5vw - 35px), (max-width:1366px) 542px, calc(30.8vw + 155px)'
 
 
 def _teasers(m, lang):
     def add(x):
         pid, slug = TZ['rs' if 'rs-teaser' in x.group(1) else 'rp']
-        img = _tp_img(pid, slug, lang, None, wmin=900).replace('class="ux-tp"', 'class="ux-tz"')
+        img = _tp_img(pid, slug, lang, None, wmin=900).replace('class="ux-tp"', 'class="ux-tz" decoding="async"')
         w, h = map(int, re.search(r'width="(\d+)" height="(\d+)"', img).groups())
         f = max(1.0, round(w / h * .75, 2))  # кадр 4:3: ширше фото обрізається з боків
         sz = TZ_SIZES if f == 1 else ','.join(f'{q} {v}' for q, v in (
             ('(max-width:759px)', f'calc({100 * f:.0f}vw - {32 * f:.0f}px)'), ('(max-width:1079px)', f'calc({53.5 * f:.0f}vw - {35 * f:.0f}px)'),
             ('(max-width:1366px)', f'{542 * f:.0f}px'), ('', f'calc({30.8 * f:.0f}vw + {155 * f:.0f}px)'))).strip()
         img = re.sub(r'sizes="[^"]*"', f'sizes="{sz}"', img)
-        return x.group(0) + img
+        img = re.sub(r'data-p="([^:"]+):([\d,]+)"', lambda y: 'data-srcset="' + ','.join(f'/img/p/{y.group(1)}-{v}.webp {v}w' for v in y.group(2).split(',')) + '"', img)
+        src = re.search(r'/img/p/[^ ]+-900\.webp', img).group(0)  # без JS (тизер видно й без нього) — одне фото 900w
+        return x.group(0) + img + f'<noscript><img class="ux-tz" src="{src}" width="{w}" height="{h}" alt="" loading="lazy"></noscript>'
     return re.sub(r'<section class="(rp-teaser(?: rs-teaser)?)"><div class="w">', add, m)
+
+
+# ── Фото hero на лендингах і основних сторінках без нього (Михайло 08.11.2026): головні (9 мов), services/about/contact/portfolio
+# вже мають .hx (rich.py); тут — сторінки LIGHT з <div class="w hero"> (лендинги послуг усіх мов). Велике фото проєкту CAS за темою
+# сторінки (TP_PAGES), hero лишається тим самим (H1 + рядок + 2 кнопки) поверх градієнта. Телефон (≤767) — кадр 4:5 hxm-<тема>,
+# висота ≤ 125vw (≤ 4:5, тож sizes = 100vw без поправки на обрізку) і ≤ 62svh; ПК — 2:1 hx-<тема>, висота ≤ min(60vh, 50vw, 36rem).
+# Фото — LCP: eager + fetchpriority="high" (одне на сторінку), preload з media ставить chrome.head_extras. Кадри — tools/img/crops.json
+# (tools/img/originals.py, q62 + легке згладжування: −30 % ваги). sizes не пишемо — за замовчуванням 100vw (бюджет HTML 64 КБ).
+CROPS = json.load(open(os.path.join(ROOT, 'tools/img/crops.json'), encoding='utf-8'))
+HERO = {'int': 'pidgirland', 'house': 'petrivtsi-house', 'reno': 'tetris-hall', 'rest': 'monpark', 'office': 'office-chicago',
+        'resort': 'yablu-rest', 'land': 'monpark'}
+HXL_RX = re.compile(r'<div class="hxl"><picture class="hx-bg">.*?</picture>\n?', re.S)
+
+
+def _hero_photo(m, rel, lang):
+    cat = TP_PAGES.get(rel)
+    i = m.find('<div class="w hero">')
+    if cat not in HERO or i < 0 or 'class="hx' in m[:i]:
+        return m
+    e = _close(m, 'div', i)
+    if e < 0:
+        return m
+    name, kind, _ = TP_PROJ[HERO[cat]]
+    alt = html.escape(f'{name} — {TP_WORD[kind].get(lang, TP_WORD[kind]["en"])}')
+    ss = lambda b, ws: ','.join(f'/img/p/{b}-{w}.webp {w}w' for w in ws if os.path.exists(os.path.join(ROOT, f'img/p/{b}-{w}.webp')))
+    d = ss(f'hx-{cat}', (1200, 1600, 1920, 2560))
+    top = d.rsplit(' ', 1)[0].rsplit('-', 1)[1][:-5]
+    pic = (f'<div class="hxl"><picture class="hx-bg"><source media="(max-width:767px)" srcset="{ss(f"hxm-{cat}", (600, 900, 1200))}">'
+           f'<img src="/img/p/hx-{cat}-1600.webp" srcset="{d}" fetchpriority="high" width="{top}" height="{int(top) // 2}" alt="{alt}"></picture>\n')
+    return m[:i] + pic + m[i:e] + '</div>' + m[e:]
+
+
+def _unhero(s):
+    x = HXL_RX.search(s)
+    if not x:
+        return s
+    s = s[:x.start()] + s[x.end():]
+    e = _close(s, 'div', x.start())  # hero
+    return s[:e] + s[e + 6:] if e > 0 and s.startswith('</div>', e) else s
 
 
 def _tp_pick(cat, key, used, k):
@@ -686,6 +736,8 @@ def _spans(m, lang='', rel=''):
         runs.append(cur)
     edits, used, k = [], set(), 0
     cat = TP_PAGES.get(rel, 'mix')
+    if '<div class="hxl">' in m and cat in HERO:  # фото hero не повторюємо в плитках
+        used.add(CROPS[f'img/p/hxm-{cat}']['src'].split('/')[-1])
     # перший ряд фото-плиток одразу під hero (до 2 блоків перед ним: крихти, hero) — у першому екрані: без lazy (LCP), решта — lazy
     real = [x for x in kids if x[2] is not None]
     top = bool(runs) and len(runs[0]) > 1 and next(i for i, x in enumerate(real) if x[0] == runs[0][0][0]) <= 2
@@ -779,6 +831,7 @@ def _badges(s):
 
 def strip(s):
     """Сторінка без атрибутів ux (для генераторів, що беруть живу сторінку за шаблон і шукають у ній точні рядки)."""
+    s = _unhero(s)
     s = REST_RX.sub(r'\1', s)
     s = UNWRAP.sub(r'\1', s)  # спершу обгортки списків (STRIP зняв би з них data-c і лишив порожній <div>)
     for rx in STRIP:
@@ -837,6 +890,7 @@ def apply(s, rel):
     if rel in ABOUT:
         m = re.sub(r'<div class="xs-tx">(?=(?:<h2[^>]*>.*?</h2>)?<p\b)', '<div class="xs-tx" data-c="t">', m, count=1, flags=re.S)
     if light:
+        m = _hero_photo(m, rel, lm.group(1) if lm else 'uk')
         m = _spans(m, lm.group(1) if lm else 'uk', rel)
     if 'rp-teaser' in m:
         m = _teasers(m, lm.group(1) if lm else 'uk')

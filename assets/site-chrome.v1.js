@@ -783,3 +783,20 @@
     } catch (x) { }
   });
 })();
+/* Фото нижче першого екрана — лише при прокрутці (Михайло 08.11.2026): img[data-srcset] (tools/site/ux.py: плитки LIGHT крім першого ряду,
+   банери, тизери; плитки — коротко data-p="<id>:<ширини>" → /img/p/<id>-<w>.webp) вантажимо, коли до кадру лишилось ~350 px, а не за ~1250 px, як нативний lazy Chrome на телефоні. Розмір кадру заданий
+   CSS/width·height — CLS 0. data-av — той самий srcset в AVIF (деплой, tools/img/picture.py), якщо браузер його показує. */
+(function(){
+ var d=document,W=window,l=[].slice.call(d.querySelectorAll('img[data-srcset],img[data-p]'));if(!l.length)return;
+ function go(av){
+  function set(im){var p=(im.getAttribute('data-p')||'').split(':'),s=av&&im.getAttribute('data-av')||im.getAttribute('data-srcset')||
+   p[1].split(',').map(function(w){return '/img/p/'+p[0]+'-'+w+'.webp '+w+'w'}).join(',');
+   ['data-av','data-srcset','data-p'].forEach(function(a){im.removeAttribute(a)});im.setAttribute('srcset',s)}
+  if(!('IntersectionObserver' in W)){l.forEach(set);return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);set(e.target)}})},{rootMargin:'350px 0px'});
+  l.forEach(function(im){io.observe(im)});
+ }
+ if(!l.some(function(im){return im.hasAttribute('data-av')})){go(0);return}
+ var t=new Image();t.onload=function(){go(t.width>0)};t.onerror=function(){go(0)};
+ t.src='data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADrbWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAETAAAAIQAAAChpaW5mAAAAAAABAAAAGmluZmUCAAAAAAEAAGF2MDFDb2xvcgAAAABqaXBycAAAAEtpcGNvAAAAFGlzcGUAAAAAAAAAAQAAAAEAAAAQcGl4aQAAAAADCAgIAAAADGF2MUOBAAwAAAAAE2NvbHJuY2x4AAEADQAGgAAAABdpcG1hAAAAAAAAAAEAAQQBAoMEAAAAKW1kYXQSAAoIGAAGiAhoNCAyExlHh4Yhh5555oAAAJBAyRxhQr4=';
+})();

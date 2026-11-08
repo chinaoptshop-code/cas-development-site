@@ -831,3 +831,17 @@ html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.pr
 .lt3,.lyt{position:relative;display:block;overflow:hidden;aspect-ratio:16/9}.lt3 img,.lyt img{display:block;width:100%;height:100%;object-fit:cover}
 .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}.vgrid figure{margin:0}.vgrid figcaption{padding:8px 0 0;font-size:var(--fs-small,.8125rem)}
 @media(max-width:767px){.vgrid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:84%;gap:12px;overflow-x:auto;padding-bottom:8px}}
+/* Фото hero лендингів (Михайло 08.11.2026; tools/site/ux.py _hero_photo): .hxl > picture.hx-bg + .w.hero поверх градієнта.
+   Висота: телефон ≤ min(62svh, 125vw) — кадр 4:5 hxm-*, ПК ≤ min(60vh, 50vw, 36rem) — кадр 2:1 hx-*; блок не вищий за пропорцію файла,
+   тож sizes = 100vw (sharp.py слот hxl). H1 і фото не анімуються; висота задана до завантаження фото (CLS 0). */
+.hxl{position:relative;isolation:isolate;overflow:hidden}
+.hxl>.hx-bg,.hxl>.hx-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;background:var(--bg2,#100e0c)}
+.hxl::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,7,9,.9) 0,rgba(8,7,9,.7) 42%,rgba(8,7,9,.18) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}
+[dir=rtl] .hxl::before{background:linear-gradient(270deg,rgba(8,7,9,.9) 0,rgba(8,7,9,.7) 42%,rgba(8,7,9,.18) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}
+html body .hxl>.hero{min-height:min(60vh,50vw,36rem);display:flex;flex-direction:column;justify-content:flex-end;padding-top:2.5rem;padding-bottom:2.25rem}
+.hxl .hero h1{text-shadow:0 1px 14px rgba(0,0,0,.35)}.hxl .hero p{color:#d3ccc1}
+@media(max-width:767px){html body .hxl>.hero{min-height:min(62vh,125vw);min-height:min(62svh,125vw);padding-top:4.5rem;padding-bottom:1.5rem}
+  .hxl::before,[dir=rtl] .hxl::before{background:linear-gradient(0deg,var(--bg) 2%,rgba(8,7,9,.84) 38%,rgba(8,7,9,.3) 72%,rgba(8,7,9,.12) 100%)}}
+.crumbs+.hxl{margin-top:-.25rem}
+/* Фото нижче першого екрана з data-srcset/data-p (ux.py: плитки, банери, тизери) — без JS не показуємо порожній кадр (тизер — фото в <noscript>) */
+html:not(.js) img:is([data-srcset],[data-p]){display:none}

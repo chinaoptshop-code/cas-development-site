@@ -8,13 +8,19 @@
 Оригінал — повнорозмірна мініатюра Google Drive (id з tools/img/drive-ids.json: коротка назва файлу в img/ → повний id),
 кеш поза репозиторієм (~/.cache/cas-img). Пише <база>-<ширина>.webp (WebP q81, без апскейлу: ширина ≤ оригіналу),
 кадрування — як у наявної копії тієї ж бази (центр, та сама пропорція). Далі — tools/img/build.py (AVIF + lqip).
+
+Похідні кадри (банери ux-wb, фото hero лендингів — tools/site/ux.py WIDE/HERO): tools/img/crops.json —
+  "<нова база>": {"src": "<база з drive-ids>", "ratio": W/H, "x": 0…1, "y": 0…1, "q": якість WebP, "blur": px}  (центр кадру; найбільший кадр цієї пропорції;
+  hero під градієнтом — q62, щоб LCP на телефоні не важчав)
+  python3 tools/img/originals.py --widths 1200,1600,1920,2400 img/p/hx-int
 """
 import io, json, os, sys, urllib.request
 
-from PIL import Image, ImageOps
+from PIL import Image, ImageFilter, ImageOps
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 IDS = json.load(open(os.path.join(ROOT, 'tools/img/drive-ids.json')))
+CROPS = json.load(open(os.path.join(ROOT, 'tools/img/crops.json')))
 CACHE = os.path.expanduser('~/.cache/cas-img')
 Q = 81
 
@@ -46,6 +52,17 @@ def ref_ratio(base):
 
 
 def make(base, widths):
+    if base in CROPS:  # похідний кадр: пропорція й центр — з crops.json
+        c = CROPS[base]
+        im = original(c['src'])
+        W, H = im.size
+        ar = c['ratio']
+        cw, ch = (round(H * ar), H) if W / H > ar else (W, round(W / ar))
+        x0 = min(max(0, round(W * c.get('x', .5) - cw / 2)), W - cw)
+        y0 = min(max(0, round(H * c.get('y', .5) - ch / 2)), H - ch)
+        im = im.crop((x0, y0, x0 + cw, y0 + ch))
+        W, H = im.size
+        return _write(base, im, widths, c.get('q', Q), c.get('blur', 0))
     im = original(base)
     ar = ref_ratio(base)
     W, H = im.size
@@ -54,6 +71,10 @@ def make(base, widths):
             nw = round(H * ar); im = im.crop(((W - nw) // 2, 0, (W - nw) // 2 + nw, H))
         else:
             nh = round(W / ar); im = im.crop((0, (H - nh) // 2, W, (H - nh) // 2 + nh))
+    return _write(base, im, widths, Q)
+
+
+def _write(base, im, widths, q=Q, blur=0):
     W, H = im.size
     out = []
     for w in widths:
@@ -63,7 +84,9 @@ def make(base, widths):
         if os.path.exists(p) and Image.open(p).size[0] == w:
             continue
         r = im.resize((w, round(H * w / W)), Image.LANCZOS)
-        r.save(p, 'WEBP', quality=Q, method=6)
+        if blur:  # легке згладжування шуму фото під градієнтом hero: −25–35 % ваги LCP, на DPR 2–3 непомітно
+            r = r.filter(ImageFilter.GaussianBlur(blur))
+        r.save(p, 'WEBP', quality=q, method=6)
         out.append((w, os.path.getsize(p) // 1024))
     return W, out
 
@@ -71,6 +94,8 @@ def make(base, widths):
 if __name__ == '__main__':
     args = sys.argv[1:]
     widths = [1200, 1600, 2000]
+    if '--q' in args:  # якість WebP (за замовчуванням 81); великі копії шумних фото — нижче, щоб байт/піксель ≈ як у меншої копії
+        i = args.index('--q'); Q = int(args[i + 1]); del args[i:i + 2]
     if '--widths' in args:
         i = args.index('--widths'); widths = [int(x) for x in args[i + 1].split(',')]; del args[i:i + 2]
     for b in args:

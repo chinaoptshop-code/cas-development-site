@@ -1,0 +1,20 @@
+{
+"img/p/hx-int": {"src": "img/p/1oD2FsTKZUszaA", "ratio": 2, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.4},
+"img/p/hxm-int": {"src": "img/p/1oD2FsTKZUszaA", "ratio": 0.8, "x": 0.62, "y": 0.5, "q": 62, "blur": 0.6},
+"img/p/hx-house": {"src": "img/p/1ZRiEBBWt3pzrB", "ratio": 2, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.4},
+"img/p/hxm-house": {"src": "img/p/1ZRiEBBWt3pzrB", "ratio": 0.8, "x": 0.42, "y": 0.5, "q": 62, "blur": 0.6},
+"img/p/hx-reno": {"src": "img/p/1GnosovqCCjnAI", "ratio": 2, "x": 0.5, "y": 0.55, "q": 62, "blur": 0.4},
+"img/p/hx-rest": {"src": "img/p/1HL1J3k6Vl1nD-", "ratio": 2, "x": 0.5, "y": 0.47, "q": 62, "blur": 0.4},
+"img/p/hx-office": {"src": "img/p/15mn_Or4V7WrFB", "ratio": 2, "x": 0.5, "y": 0.55, "q": 62, "blur": 0.4},
+"img/p/hx-resort": {"src": "img/p/13WiocWsjrHB4B", "ratio": 2, "x": 0.5, "y": 0.6, "q": 62, "blur": 0.4},
+"img/p/hx-land": {"src": "img/p/19seq_4AT9Kb4a", "ratio": 2, "x": 0.5, "y": 0.42, "q": 62, "blur": 0.4},
+"img/p/wide-studio": {"src": "img/hero-hodos-villa", "ratio": 2, "x": 0.5, "y": 0.494},
+"img/p/wide-living": {"src": "img/1nqFOoTfr5BD", "ratio": 2, "x": 0.5, "y": 0.5},
+"img/p/wide-house": {"src": "img/p/1ZRiEBBWt3pzrB", "ratio": 2, "x": 0.5, "y": 0.5},
+"img/p/wide-lounge": {"src": "img/1p_MqveKjiZ1", "ratio": 2, "x": 0.5, "y": 0.527},
+"img/p/hxm-reno": {"src": "img/p/1GnosovqCCjnAI", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6},
+"img/p/hxm-rest": {"src": "img/p/1HL1J3k6Vl1nD-", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6},
+"img/p/hxm-office": {"src": "img/p/15mn_Or4V7WrFB", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6},
+"img/p/hxm-resort": {"src": "img/p/13WiocWsjrHB4B", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6},
+"img/p/hxm-land": {"src": "img/p/19seq_4AT9Kb4a", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6}
+}
