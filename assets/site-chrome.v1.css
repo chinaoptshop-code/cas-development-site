@@ -108,7 +108,7 @@ body{padding-top:var(--sch-h)}
 .sch-mmsg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .sch-mmsg a{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 12px;border:1px solid var(--c-ln);border-radius:12px;
   font-size:.875rem;color:var(--c-tx);text-decoration:none}
-.bi::before{content:"";flex:none;width:20px;height:20px;background:center/contain no-repeat}.bi-telegram::before{background-image:url(/assets/brand/telegram.svg)}.bi-viber::before{background-image:url(/assets/brand/viber.svg)}.bi-whatsapp::before{background-image:url(/assets/brand/whatsapp.svg)}.bi-instagram::before{background-image:url(/assets/brand/instagram-96.png)}.bi-youtube::before{background-image:url(/assets/brand/youtube.svg)}
+.bi::before{content:"";flex:none;width:20px;height:20px;background:center/contain no-repeat}.bi-telegram::before{background-image:url(/assets/brand/telegram.svg)}.bi-viber::before{background-image:url(/assets/brand/viber.svg)}.bi-whatsapp::before{background-image:url(/assets/brand/whatsapp.svg)}.bi-instagram::before{background-image:url(/assets/brand/instagram-96.png)}.bi-youtube::before{background-image:url(/assets/brand/youtube.svg)}.bi-wechat::before{background-image:url(/assets/brand/wechat.svg)}
 html.sch-lock,html.sch-lock body{overflow:hidden}
 html.sch-lock .mbar{display:none!important}
 @media(min-width:1080px){.sch-menu{display:none!important}}

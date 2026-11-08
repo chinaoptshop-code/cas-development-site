@@ -155,3 +155,8 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .js .xs-team .grid>.card:last-child:nth-child(odd){grid-column:1/-1}
 @media(min-width:760px){.js .xs-team .grid>.card:last-child:nth-child(odd){grid-column:auto}}
 @media(max-width:759px){.js .xs-crew>div:last-child:nth-child(odd){grid-column:1/-1}}
+/* Власна команда без імен (Михайло 08.11.2026): відділи й групи — плашки в один-два ряди, опис прихований (є в DOM і title) */
+.xs-crew-c{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:1rem 0 0;padding:0}
+.xs-crew-c li{display:inline-flex;align-items:center;min-height:44px;padding:0 1.1rem;border:1px solid var(--ln);border-radius:999px;background:var(--bg2)}
+.xs-crew-c b{font-weight:500;color:var(--tx)}
+.xs-crew-c span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}

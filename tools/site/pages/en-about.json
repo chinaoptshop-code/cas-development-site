@@ -174,78 +174,39 @@
     "p": "Staff site managers, furniture makers and specialists who work on your project.",
     "groups": [
      {
+      "label": "Design department",
+      "p": "Architects, designers and engineers: layouts, working drawings, specifications.",
+      "people": []
+     },
+     {
+      "label": "Construction department",
+      "p": "Builders and installers of every trade, from rough works to finishing.",
+      "people": []
+     },
+     {
       "label": "Site managers",
       "p": "Run the crews on site: sequence and quality of work, sign-off of every stage.",
-      "people": [
-       [
-        "Oleh",
-        ""
-       ],
-       [
-        "Volodymyr",
-        ""
-       ],
-       [
-        "Serhii",
-        ""
-       ],
-       [
-        "Oleksandr",
-        ""
-       ],
-       [
-        "Mykhailo",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Furniture makers",
       "p": "Build and install kitchens, wardrobes and custom furniture from the project drawings.",
-      "people": [
-       [
-        "Serhii",
-        ""
-       ],
-       [
-        "Andrii",
-        ""
-       ],
-       [
-        "Oleh",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Land surveyor",
       "p": "Site surveys, setting out and level control during construction.",
-      "people": [
-       [
-        "Mykola",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "3D measurement",
       "p": "3D measurement of spaces and as-built drawings — an accurate base for design and estimates.",
-      "people": [
-       [
-        "Vladyslav",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Drone filming",
       "p": "Drone photo and video of plots, facades and construction progress for client reports.",
-      "people": [
-       [
-        "Mykhailo",
-        ""
-       ]
-      ]
+      "people": []
      }
     ]
    }

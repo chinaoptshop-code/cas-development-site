@@ -174,78 +174,39 @@
     "p": "Chefs de chantier, menuisiers et spécialistes salariés qui travaillent sur votre projet.",
     "groups": [
      {
+      "label": "Bureau d'études",
+      "p": "Architectes, designers et ingénieurs : plans, dessins d'exécution, spécifications.",
+      "people": []
+     },
+     {
+      "label": "Département travaux",
+      "p": "Ouvriers et installateurs de tous corps de métier, du gros œuvre aux finitions.",
+      "people": []
+     },
+     {
       "label": "Chefs de chantier",
       "p": "",
-      "people": [
-       [
-        "Oleh",
-        ""
-       ],
-       [
-        "Volodymyr",
-        ""
-       ],
-       [
-        "Serhii",
-        ""
-       ],
-       [
-        "Oleksandr",
-        ""
-       ],
-       [
-        "Mykhailo",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Menuisiers",
       "p": "",
-      "people": [
-       [
-        "Serhii",
-        ""
-       ],
-       [
-        "Andrii",
-        ""
-       ],
-       [
-        "Oleh",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Topographie",
       "p": "",
-      "people": [
-       [
-        "Mykola",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Relevé 3D",
       "p": "",
-      "people": [
-       [
-        "Vladyslav",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Prises de vue par drone",
       "p": "",
-      "people": [
-       [
-        "Mykhailo",
-        ""
-       ]
-      ]
+      "people": []
      }
     ]
    }
