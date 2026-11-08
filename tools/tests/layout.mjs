@@ -284,6 +284,7 @@ function analyze(opts) {
     // посилання всередині тексту абзацу — виняток WCAG 2.5.8
     const p = it.parentElement;
     if (it.tagName === 'A' && p && /^(P|LI|SPAN|SMALL|TD|DD|FIGCAPTION|LABEL|EM|B|STRONG)$/.test(p.tagName) && p.textContent.trim().length > it.textContent.trim().length + 3) continue;
+    if (it.matches('.rp-o')) continue; // обʼєкти генплану: тап поруч (≤24 px) відкриває найближчий — resort-plan.v1.js
     if (it.closest('.skip, .sch-menu, nav.crumbs, .crumbs, [aria-label*="крихт"], .bc, footer .sf-l')) continue;
     // прозора зона дотику ::before/::after (position:absolute з відʼємними inset) — рахуємо її розмір
     let tw = r.width, th = r.height;
@@ -292,7 +293,10 @@ function analyze(opts) {
       if (q.content === 'none' || q.position !== 'absolute') continue;
       const px = v => (/px$/.test(v) ? parseFloat(v) : null);
       const L = px(q.left), R = px(q.right), T = px(q.top), B = px(q.bottom);
-      const w2 = L != null && R != null ? r.width - L - R : parseFloat(q.width) || 0, h2 = T != null && B != null ? r.height - T - B : parseFloat(q.height) || 0;
+      // блок, від якого рахується inset: найближчий позиціонований предок (або сам елемент)
+      let cb = it; while (cb && cb !== document.body && cs(cb).position === 'static') cb = cb.parentElement;
+      const cr = (cb || it).getBoundingClientRect();
+      const w2 = L != null && R != null ? cr.width - L - R : parseFloat(q.width) || 0, h2 = T != null && B != null ? cr.height - T - B : parseFloat(q.height) || 0;
       tw = Math.max(tw, w2); th = Math.max(th, h2);
     }
     if (th < 43.5 || tw < 43.5) {
