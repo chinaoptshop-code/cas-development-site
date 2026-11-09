@@ -88,6 +88,7 @@ def msgs():
             f'<a class="bi bi-whatsapp" href="{WA}" target="_blank" rel="noopener">WhatsApp</a>'
             f'<a class="bi bi-instagram" href="{IG}" target="_blank" rel="noopener">Instagram</a>'
             f'<a class="bi bi-linkedin" href="{LI}" target="_blank" rel="noopener">LinkedIn</a>'
+            f'<a class="bi bi-tiktok" href="https://www.tiktok.com/@li_mi_tless" target="_blank" rel="noopener">TikTok</a>'
             # WeChat (Михайло 08.11.2026): додають за номером телефону; weixin:// відкриває застосунок
             f'<a class="bi bi-wechat" href="weixin://" title="WeChat: +380 63 866 77 55">WeChat +380 63 866 77 55</a></p>')
 
