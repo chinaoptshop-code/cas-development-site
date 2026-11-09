@@ -12,7 +12,8 @@
 <source type="image/avif"> з тими самими srcset/sizes — деплой (tools/img/picture.py).
 
 Слоти: strip (.xs-st; головна — .hx-home), proj (.xs-proj .xs-st, портфоліо — компактно через бюджет HTML),
-covers (.xs-cv), svc (.xs-sv, з урахуванням flex-рядів; на головній — карусель), split (.xs-pic), pg (галерея /proekty, компактно), hero (.hx — лише ширші файли).
+covers (.xs-cv), svc (.xs-sv, з урахуванням flex-рядів; на головній — карусель), split (.xs-pic), pg (галерея /proekty, компактно), hero (.hx — лише ширші файли),
+hxl (hero лендингів, tools/site/ux.py _hero_photo: телефон — кадр 4:5 у блоці ≤125vw заввишки, ПК — 2:1 у блоці ≤50vw; слот = 100vw, srcset ставить ux.py).
 Перевірка: python3 tools/site/sharp.py --check (сторінки, де apply() щось змінив би).
 """
 import math, os, re, sys
@@ -188,7 +189,7 @@ def _slot(anc):
         if 'xs-sv' in c: return 'svc', k
         if 'xs-pic' in c: return 'split', k
         if 'pg' in c: return 'pg', k
-        if 'hx-bg' in c or 'hx' in c: return 'hero', k
+        if 'hx-bg' in c or 'hx' in c or 'hxl' in c: return ('hxl' if any('hxl' in x for x in anc[k:]) else 'hero'), k
     return None, None
 
 
@@ -230,6 +231,8 @@ def fix(tag, slot, home, i=0, n=1):
     iw, ih = fam[-1][0], fam[-1][0] * size(src.group(1)[1:])[1] / size(src.group(1)[1:])[0]
     ar = iw / ih
     cov = lambda w, sar: w * max(1.0, ar / sar)
+    if slot == 'hxl':  # hero лендингів (ux.py _hero_photo): кадр ≤ пропорції файла (CSS .hxl), тож слот = 100vw без обрізки — sizes за замовчуванням
+        return tag
     if slot == 'hero':  # перше фото: sizes лишаємо (100vw / 60vw), додаємо ширші файли тієї ж пропорції
         if not re.search(r'\ssrcset="', tag): return tag
         return _attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in fam if w >= 400))

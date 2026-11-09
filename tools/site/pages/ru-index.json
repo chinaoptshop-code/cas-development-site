@@ -33,14 +33,14 @@
  ],
  "kicker": "Студия дизайна и архитектуры · Киев · с 2016 года",
  "hero_img": {
-  "img": "img/hero-hodos-villa-1280.webp",
-  "srcset": "/img/hero-hodos-villa-1280.webp 1280w, /img/hero-hodos-villa-1920.webp 1920w",
-  "alt": "Светлая столовая с мраморным столом, голубыми креслами и хрустальной люстрой — дизайн-проект Hodos Villa от CAS Development, Киев",
+  "img": "img/hero-pidgirland-1280.webp",
+  "srcset": "/img/hero-pidgirland-1280.webp 1280w, /img/hero-pidgirland-1920.webp 1920w",
+  "alt": "Гостиная-столовая с деревянными панелями — дизайн-проект Pidgirland от CAS Development",
   "sizes": "100vw",
   "m": {
-   "srcset": "/img/hero-hodos-villa-m720.webp 720w, /img/hero-hodos-villa-m1080.webp 1080w",
-   "w": 1080,
-   "h": 1800
+   "srcset": "/img/hero-pidgirland-m-720.webp 720w, /img/hero-pidgirland-m-1080.webp 1080w, /img/hero-pidgirland-m-1440.webp 1440w",
+   "w": 1440,
+   "h": 2400
   }
  },
  "og": "img/og/svc-ru-index.jpg",
