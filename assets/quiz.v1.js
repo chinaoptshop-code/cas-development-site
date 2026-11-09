@@ -86,7 +86,7 @@
       when: { now: '尽快', m3: '1–3 个月内', m6: '3–6 个月后', calc: '仍在规划预算' },
       area: '面积，m²', m2: 'm²', est: '参考价', from: '起', ind: '单独核算',
       line: { dyz: '设计方案', rem: '装修', of: '办公室装修', bud: '建造', meb: '家具配置', kl: '住宅交钥匙' },
-      min: '最低 $2,500',
+      min: '最低 $2 500',
       note: { rem: '装修 $550/m² 起：含人工和基础材料；饰面材料、家具和电器另计，按预算。',
         of: '办公室 $350/m² 起：含人工和基础材料。', kom: '商业空间没有统一单价，按预算核算。' },
       disc: '这是按工作室基础单价的参考。确切金额在现场测量后的预算中确定。',
@@ -137,9 +137,9 @@
       when: { now: 'Dès que possible', m3: 'D’ici 1 à 3 mois', m6: 'Dans 3 à 6 mois', calc: 'Je calcule encore le budget' },
       area: 'Surface, m²', m2: 'm²', est: 'Estimation', from: 'à partir de', ind: 'Chiffrage sur mesure',
       line: { dyz: 'projet de design', rem: 'rénovation', of: 'rénovation de bureaux', bud: 'construction', meb: 'ameublement', kl: 'maison clé en main' },
-      min: 'min. 2 500 $',
-      note: { rem: 'Rénovation à partir de 550 $/m² : main-d’œuvre et matériaux de gros œuvre ; finitions, mobilier et électroménager en sus, sur devis.',
-        of: 'Bureau à partir de 350 $/m² : main-d’œuvre et matériaux de gros œuvre.', kom: 'Pas de tarif forfaitaire pour les locaux commerciaux : chiffrage sur devis.' },
+      min: 'min. $2 500',
+      note: { rem: 'Rénovation à partir de $550/m² : main-d’œuvre et matériaux de gros œuvre ; finitions, mobilier et électroménager en sus, sur devis.',
+        of: 'Bureau à partir de $350/m² : main-d’œuvre et matériaux de gros œuvre.', kom: 'Pas de tarif forfaitaire pour les locaux commerciaux : chiffrage sur devis.' },
       disc: 'C’est un repère selon les tarifs de base du studio. Le montant exact est fixé dans le devis après le relevé.',
       phone: 'Téléphone pour le chiffrage *', ph: '+33 6 12 34 56 78', send: 'Recevoir le chiffrage', sending: 'Envoi…',
       tip: 'Nous vous rappelons rapidement. La consultation téléphonique est gratuite.',
@@ -154,7 +154,7 @@
       when: { now: 'في أقرب وقت', m3: 'خلال 1–3 أشهر', m6: 'بعد 3–6 أشهر', calc: 'ما زلت أحسب الميزانية' },
       area: 'المساحة، م²', m2: 'م²', est: 'تقديريًا', from: 'من', ind: 'نحسبها بشكل فردي',
       line: { dyz: 'مشروع تصميم', rem: 'تجديد', of: 'تجديد مكتب', bud: 'بناء', meb: 'تأثيث', kl: 'منزل تسليم مفتاح' },
-      min: 'حد أدنى $2,500',
+      min: 'حد أدنى $2 500',
       note: { rem: 'التجديد من $550/م²: الأعمال والمواد الأساسية؛ ومواد التشطيب والأثاث والأجهزة منفصلة وفق المقايسة.',
         of: 'المكتب من $350/م²: الأعمال والمواد الأساسية.', kom: 'لا يوجد سعر ثابت للمحلات التجارية: نحسبها وفق المقايسة.' },
       disc: 'هذا مؤشر وفق الأسعار الأساسية للاستوديو. يُحدَّد المبلغ الدقيق في المقايسة بعد القياس.',
@@ -248,9 +248,9 @@
     rg.type = 'range'; rg.min = 10; rg.max = 1000; rg.step = 5; rg.setAttribute('aria-label', t.area);
     nb.type = 'number'; nb.min = 10; nb.max = 20000; nb.step = 1; nb.inputMode = 'numeric'; nb.id = id + 'a'; nl.htmlFor = nb.id;
     function setArea(v, from) {
-      v = Math.round(+v || 0); st.area = v; if (from) areaSet = true;
+      v = Math.min(20000, Math.max(0, Math.round(+String(v).replace(',', '.') || 0))); st.area = v; if (from) areaSet = true;
       if (from !== rg) rg.value = Math.min(1000, Math.max(10, v));
-      if (from !== nb) nb.value = v;
+      if (from !== nb || +nb.value > 20000) nb.value = v;
       rg.setAttribute('aria-valuetext', v + ' ' + t.m2); navState();
     }
     rg.addEventListener('input', function () { setArea(rg.value, rg); });

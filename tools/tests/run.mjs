@@ -354,4 +354,73 @@ await it('адміни працюють як раніше (owner/manager без 
   eq(l.status, 200);
 });
 
+describe('Оздоба: правила CLAUDE.md на сервері (мін. 10 шт, мін. $500, знижки 3/5/7%, код партнера не сумується)');
+{
+  const se = makeEnv(freshDB());
+  const cat = JSON.parse((await import('node:fs')).readFileSync(new URL('../../assets/ozdoba/catalog.json', import.meta.url)));
+  const it0 = cat.items.find(i => i.price != null && !i.ss);
+  let ipn = 0;
+  const order = (qty, extra = {}) => call(se, 'POST', '/api/orders', { body: { phone: '0671234567', cart: [{ id: it0.id, qty, ci: -1 }], ...extra }, headers: { ip: '10.9.0.' + (++ipn) } });
+  const qFor = g => Math.max(10, Math.ceil(g / it0.price));
+  await it('catalog.json: пороги 230 000/460 000/920 000 ₴ → 3/5/7%, мінімум 10 шт', async () => {
+    eq(cat.volume_discounts, [[230000, 3], [460000, 5], [920000, 7]]); eq(cat.min_qty, 10);
+  });
+  await it('9 шт позиції — 400 з поясненням про мінімум', async () => {
+    const r = await order(9); eq(r.status, 400); ok(/10/.test(r.data.error));
+  });
+  await it('сума менше 23 000 ₴ (≈ $500) — 400', async () => {
+    const cheap = cat.items.filter(i => i.price != null && !i.ss).sort((a, b) => a.price - b.price)[0];
+    ok(cheap.price * 10 < 23000, 'є дешевий товар для перевірки');
+    const r = await call(se, 'POST', '/api/orders', { body: { phone: '0671234567', cart: [{ id: cheap.id, qty: 10, ci: -1 }] }, headers: { ip: '10.9.1.1' } });
+    eq(r.status, 400); ok(/23 000/.test(r.data.error));
+  });
+  await it('знижка за обсягом: <230k — 0%, ≥230k — 3%, ≥460k — 5%, ≥920k — 7%', async () => {
+    for (const [g, pct] of [[100000, 0], [230000, 3], [460000, 5], [920000, 7]]) {
+      const r = await order(qFor(g)); eq(r.status, 200, JSON.stringify(r.data)); eq(r.data.discount_pct, pct, `сума ${r.data.goods}`);
+      eq(r.data.discount, Math.round(r.data.goods * pct / 100)); eq(r.data.total, r.data.goods - r.data.discount); eq(r.data.shipping, 0, 'доставка не в сумі');
+    }
+  });
+  await it('код партнера: більший за обсягову — діє код; менший — діє обсягова; не сумуються', async () => {
+    await se.DB.prepare("INSERT INTO partner_codes (code, name, discount) VALUES ('DIZ-TEST', 'Тест', 4)").run();
+    const a = await order(qFor(240000), { promo: 'diz-test' });
+    eq(a.data.discount_pct, 4, 'код 4% > обсягова 3%'); eq(a.data.promo, 'DIZ-TEST');
+    const b = await order(qFor(470000), { promo: 'DIZ-TEST' });
+    eq(b.data.discount_pct, 5, 'обсягова 5% > код 4% — не 9%');
+    const c = await order(qFor(240000), { promo: 'NOPE-CODE' });
+    eq(c.data.discount_pct, 3); eq(c.data.promo, null, 'невідомий код не застосовано');
+  });
+  await it('ціни — з каталогу сервера, не з кошика клієнта', async () => {
+    const r = await call(se, 'POST', '/api/orders', { body: { phone: '0671234567', cart: [{ id: it0.id, qty: qFor(30000), ci: -1, price: 1 }] }, headers: { ip: '10.9.2.1' } });
+    eq(r.data.goods, it0.price * qFor(30000));
+  });
+}
+
+describe('Заявки: антиспам і валідація (/api/leads)');
+{
+  const le = makeEnv(freshDB());
+  const n = async () => (await le.DB.prepare("SELECT COUNT(*) AS n FROM orders WHERE kind = 'lead'").first()).n;
+  await it('приховане поле hp / website — «успіх» без збереження і без сповіщення', async () => {
+    bot.reset();
+    for (const body of [{ phone: '0671112233', hp: 'x' }, { phone: '0671112233', website: 'http://spam' }]) {
+      const r = await call(le, 'POST', '/api/leads', { body, headers: { ip: '10.8.0.1' } }); eq(r.status, 200); eq(r.data.number, undefined);
+    }
+    eq(await n(), 0); eq(bot.calls.length, 0);
+  });
+  await it('надіслано швидше 1,5 с після відкриття (t_ms) — не зберігається', async () => {
+    await call(le, 'POST', '/api/leads', { body: { phone: '0671112233', t_ms: 400 }, headers: { ip: '10.8.0.2' } }); eq(await n(), 0);
+  });
+  await it('телефон коротший 9 цифр — 400; міжнародний номер — приймається; сповіщення в Telegram надіслано', async () => {
+    eq((await call(le, 'POST', '/api/leads', { body: { phone: '12345' }, headers: { ip: '10.8.0.3' } })).status, 400);
+    bot.reset();
+    const r = await call(le, 'POST', '/api/leads', { body: { phone: '+44 7700 900123', t_ms: 9000, form: 'landing', lang: 'en' }, headers: { ip: '10.8.0.4' } });
+    eq(r.status, 200); ok(r.data.number); eq(await n(), 1);
+    ok(bot.calls.some(c => c.method === 'sendMessage'), 'адміни отримали сповіщення (мок Telegram)');
+  });
+  await it('6-та заявка з одного IP за годину — 429', async () => {
+    let last;
+    for (let i = 0; i < 6; i++) last = await call(le, 'POST', '/api/leads', { body: { phone: '06700000' + String(10 + i) }, headers: { ip: '10.8.0.9' } });
+    eq(last.status, 429);
+  });
+}
+
 process.exit(report() ? 1 : 0);
