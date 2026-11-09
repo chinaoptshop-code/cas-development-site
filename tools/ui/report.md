@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 858 (MAIN 6, LAND 435, інші 350). HTML разом 44200 КБ, з них інлайн CSS 17789 КБ і JS 566 КБ.
+Сторінок: 858 (MAIN 6, LAND 435, інші 350). HTML разом 44202 КБ, з них інлайн CSS 17789 КБ і JS 568 КБ.
 
 ## Проблеми
 
@@ -33,17 +33,17 @@
 | blog/inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit.html | article | 67.5 | 18.9 | 14.2 | 0.5 | 6 | 462 |
 | blog/remont-i-budivnytstvo-v-yevropi-z-ukrainskoiu-komandoiu.html | article | 67.0 | 18.4 | 14.2 | 0.5 | 6 | 497 |
 | blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html | article | 66.0 | 18.4 | 14.2 | 0.5 | 6 | 462 |
-| about.html | main | 63.8 | 17.5 | 13.3 | 0.5 | 6 | 502 |
 | budivnytstvo-budynkiv-kyiv.html | land | 63.8 | 16.8 | 13.1 | 0.5 | 6 | 563 |
+| about.html | main | 63.6 | 17.4 | 13.3 | 0.5 | 6 | 502 |
 | proekty/petrivtsi-house.html | land | 63.4 | 11.3 | 1.9 | 0.8 | 0 | 501 |
 | ru/stroitelstvo-domov-kiev.html | land | 63.4 | 16.8 | 13.3 | 0.5 | 6 | 558 |
+| ru/stoimost-remonta-kvartiry-kiev.html | land | 63.0 | 17.0 | 14.3 | 1.6 | 6 | 545 |
 | vartist-budivnytstva-budynku-kyiv.html | land | 63.0 | 17.5 | 13.3 | 0.5 | 6 | 569 |
-| ru/stoimost-remonta-kvartiry-kiev.html | land | 62.9 | 16.9 | 14.3 | 1.4 | 6 | 545 |
 | kapitalnyi-remont-kvartyry-kyiv.html | land | 61.7 | 17.2 | 13.3 | 0.5 | 6 | 561 |
 | ru/kapitalnyy-remont-kvartiry-kiev.html | land | 61.7 | 17.2 | 13.3 | 0.5 | 6 | 561 |
 | ru/dizayn-restorana-kafe-kiev.html | land | 61.6 | 16.5 | 13.3 | 3.3 | 6 | 517 |
+| vartist-remontu-kvartyry-kyiv.html | land | 61.1 | 16.7 | 14.3 | 1.6 | 6 | 538 |
 | remont-pid-klyuch-kyiv.html | land | 61.0 | 15.9 | 13.1 | 0.5 | 6 | 548 |
-| vartist-remontu-kvartyry-kyiv.html | land | 61.0 | 16.7 | 14.3 | 1.5 | 6 | 538 |
 | ru/baza-otdyha-pod-klyuch.html | land | 60.7 | 16.3 | 13.3 | 3.4 | 6 | 513 |
 | blog/karkas-hazoblok-chy-brus-z-choho-buduvaty-budynok.html | article | 60.6 | 17.1 | 14.2 | 0.5 | 6 | 474 |
 | dyzain-interieru-kyiv.html | land | 60.6 | 15.7 | 13.4 | 0.5 | 6 | 586 |
@@ -424,11 +424,11 @@
 | onlain-kontrol.html | land | 54.0 | 14.0 | 13.3 | 0.5 | 6 | 619 |
 | blog/yak-vidkryty-kafe-restoran-pid-kliuch.html | article | 53.9 | 15.0 | 14.2 | 0.5 | 6 | 388 |
 | blog/budynok-pid-kliuch-chy-korobka.html | article | 53.7 | 14.7 | 14.2 | 0.5 | 6 | 425 |
+| kalkuliator-remontu.html | land | 53.6 | 14.7 | 13.9 | 1.6 | 6 | 474 |
 | blog/remont-komertsiinoho-prymishchennia-etapy.html | article | 53.5 | 14.7 | 14.2 | 0.5 | 6 | 398 |
 | ru/meblirovka-kvartiry-kiev.html | land | 53.5 | 13.6 | 13.3 | 0.5 | 6 | 432 |
-| kalkuliator-remontu.html | land | 53.4 | 14.6 | 13.9 | 1.5 | 6 | 474 |
+| ru/kalkulyator-remonta.html | land | 53.4 | 14.7 | 13.9 | 1.6 | 6 | 474 |
 | blog/mebliuvannia-kvartyry-pid-orendu-cheklist.html | article | 53.3 | 14.7 | 14.2 | 0.5 | 6 | 408 |
-| ru/kalkulyator-remonta.html | land | 53.3 | 14.6 | 13.9 | 1.4 | 6 | 474 |
 | dyzain-interieru-premium-kyiv.html | land | 53.2 | 14.2 | 13.3 | 0.5 | 6 | 478 |
 | komplektatsiia-pid-kliuch-kyiv.html | land | 53.2 | 13.6 | 13.3 | 0.5 | 6 | 452 |
 | proekty/kitana-beach.html | land | 53.2 | 9.9 | 1.9 | 0.7 | 0 | 434 |
@@ -486,11 +486,11 @@
 | blog/etapy-remontu-kvartyry-pid-kliuch.html | article | 50.3 | 14.2 | 14.2 | 0.5 | 6 | 385 |
 | blog/skilky-koshtuie-remont-budynku-pid-kliuch.html | article | 50.3 | 13.9 | 14.2 | 0.5 | 6 | 399 |
 | blog/yak-vybraty-remontnu-bryhadu.html | article | 50.3 | 14.0 | 14.2 | 0.5 | 6 | 386 |
+| ar/renovation-calculator.html | land | 50.2 | 13.4 | 13.9 | 1.5 | 6 | 455 |
 | blog/dyzain-restoranu-z-choho-pochaty.html | article | 50.2 | 14.1 | 14.2 | 0.5 | 6 | 386 |
 | blog/suchasnyi-minimalizm-teplyi-interier.html | article | 50.2 | 14.1 | 14.2 | 0.5 | 6 | 382 |
 | kabinet/proekty.html | other | 50.1 | 13.5 | 32.5 | 0.7 | 14 | 272 |
 | ru/dom-iz-brusa-kiev.html | land | 50.1 | 14.3 | 13.3 | 0.5 | 6 | 484 |
-| ar/renovation-calculator.html | land | 50.0 | 13.4 | 13.9 | 1.4 | 6 | 455 |
 | kabinet/obiekt.html | other | 50.0 | 13.6 | 32.5 | 0.7 | 14 | 270 |
 | ru/uslugi.html | land | 50.0 | 12.9 | 13.3 | 0.5 | 6 | 443 |
 | en/about.html | land | 49.9 | 13.8 | 13.3 | 0.5 | 6 | 486 |
@@ -587,6 +587,7 @@
 | ru/remont-kvartiry-zhk-montreal-house.html | land | 46.9 | 12.7 | 13.3 | 0.5 | 6 | 422 |
 | ru/remont-kvartiry-zhk-senat.html | land | 46.9 | 12.8 | 13.3 | 0.5 | 6 | 420 |
 | en/interior-design.html | land | 46.8 | 12.2 | 13.7 | 0.5 | 6 | 503 |
+| fr/calculateur-renovation.html | land | 46.8 | 13.1 | 13.9 | 1.5 | 6 | 456 |
 | remont-kvartyry-zhk-novyi-avtohraf.html | land | 46.8 | 12.7 | 13.3 | 0.5 | 6 | 420 |
 | ru/obustroystvo-ofisa-pod-klyuch-kiev.html | land | 46.8 | 12.8 | 13.3 | 0.5 | 6 | 410 |
 | blog/dyzain-ofisu-z-choho-pochaty.html | article | 46.7 | 13.0 | 14.2 | 0.5 | 6 | 372 |
@@ -601,9 +602,8 @@
 | ru/remont-kvartiry-zhk-life-story.html | land | 46.7 | 12.8 | 13.3 | 0.5 | 6 | 420 |
 | de/ueber-uns.html | land | 46.6 | 12.9 | 13.3 | 0.5 | 6 | 459 |
 | en/restaurant-design.html | land | 46.6 | 12.7 | 13.3 | 2.4 | 6 | 470 |
-| fr/calculateur-renovation.html | land | 46.6 | 13.0 | 13.9 | 1.4 | 6 | 456 |
+| es/calculadora-reforma.html | land | 46.6 | 13.0 | 13.9 | 1.5 | 6 | 457 |
 | remont-kvartyry-zhk-life-story.html | land | 46.6 | 12.7 | 13.3 | 0.5 | 6 | 420 |
-| es/calculadora-reforma.html | land | 46.5 | 13.0 | 13.9 | 1.4 | 6 | 457 |
 | es/construccion-de-casas.html | land | 46.5 | 13.1 | 13.3 | 0.5 | 6 | 484 |
 | fr/design-restaurant-cafe.html | land | 46.5 | 12.8 | 13.3 | 2.6 | 6 | 447 |
 | fr/renovation-cle-en-main.html | land | 46.5 | 13.1 | 13.3 | 0.5 | 6 | 465 |
@@ -623,18 +623,18 @@
 | blog/kompleks-vidpochynku-pid-kliuch-z-choho-skladaietsia-koshtorys.html | article | 46.1 | 12.8 | 14.2 | 0.5 | 6 | 370 |
 | proekty/edelweiss.html | land | 46.1 | 8.9 | 1.9 | 0.7 | 0 | 382 |
 | de/renovierung-schluesselfertig.html | land | 46.0 | 13.1 | 13.3 | 0.5 | 6 | 468 |
+| de/renovierungskosten-rechner.html | land | 46.0 | 13.1 | 13.9 | 1.5 | 6 | 458 |
 | dogovir-garantiya-oplata.html | land | 46.0 | 12.2 | 13.3 | 0.5 | 6 | 409 |
 | ru/dizayn-i-remont-magazina-shouruma-kiev.html | land | 46.0 | 12.4 | 13.3 | 0.5 | 6 | 409 |
 | de/hausbau.html | land | 45.9 | 13.2 | 13.3 | 0.5 | 6 | 485 |
-| de/renovierungskosten-rechner.html | land | 45.9 | 13.0 | 13.9 | 1.4 | 6 | 458 |
 | dyzain-i-remont-mahazynu-shourumu-kyiv.html | land | 45.9 | 12.4 | 13.3 | 0.5 | 6 | 409 |
 | en/restaurant-fit-out.html | land | 45.9 | 13.2 | 13.3 | 2.4 | 6 | 499 |
 | blog/proekt-budynku-shcho-vkhodyt.html | article | 45.8 | 12.6 | 14.2 | 0.5 | 6 | 357 |
+| en/renovation-cost-calculator.html | land | 45.8 | 12.8 | 13.9 | 1.5 | 6 | 466 |
 | de/restaurantdesign.html | land | 45.7 | 12.8 | 13.3 | 2.5 | 6 | 448 |
-| en/renovation-cost-calculator.html | land | 45.6 | 12.7 | 13.9 | 1.4 | 6 | 466 |
+| pl/kalkulator-remontu.html | land | 45.7 | 13.2 | 13.9 | 1.5 | 6 | 465 |
 | en/resort-design.html | land | 45.6 | 12.5 | 13.3 | 2.5 | 6 | 460 |
 | fr/architecture-paysagere.html | land | 45.6 | 12.4 | 13.3 | 1.0 | 6 | 522 |
-| pl/kalkulator-remontu.html | land | 45.6 | 13.2 | 13.9 | 1.4 | 6 | 465 |
 | fr/base-de-loisirs-cle-en-main.html | land | 45.5 | 12.5 | 13.3 | 2.7 | 6 | 437 |
 | es/complejo-turistico-llave-en-mano.html | land | 45.4 | 12.4 | 13.3 | 2.6 | 6 | 437 |
 | pl/osrodek-wypoczynkowy-pod-klucz.html | land | 45.4 | 12.7 | 13.3 | 2.5 | 6 | 451 |
@@ -650,7 +650,7 @@
 | remont-i-budivnytstvo-yevropa.html | land | 44.7 | 12.2 | 13.3 | 0.5 | 6 | 407 |
 | ru/remont-kuhni-kiev.html | land | 44.6 | 12.1 | 13.3 | 0.5 | 6 | 421 |
 | zh/house-construction.html | land | 44.4 | 13.5 | 13.3 | 0.5 | 6 | 482 |
-| zh/renovation-calculator.html | land | 44.1 | 13.4 | 13.9 | 1.4 | 6 | 455 |
+| zh/renovation-calculator.html | land | 44.2 | 13.4 | 13.9 | 1.5 | 6 | 455 |
 | zh/restaurant-design.html | land | 44.1 | 13.2 | 13.3 | 2.3 | 6 | 445 |
 | ru/kosmeticheskiy-remont-kvartiry-kiev.html | land | 44.0 | 12.0 | 13.3 | 0.5 | 6 | 386 |
 | proekty/hoda-estate.html | land | 43.9 | 8.9 | 1.9 | 0.7 | 0 | 398 |
