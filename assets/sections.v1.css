@@ -25,6 +25,19 @@ html body .hx.hx-home .hero{min-height:min(68vh,38rem);padding-bottom:20px}
   .hx.hx-home::before,[dir=rtl] .hx.hx-home::before{background:linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,.86) 22%,rgba(8,7,9,.45) 50%,rgba(8,7,9,.12) 100%)}
 }
 main>.hx-home+section.xs-strip{padding-top:12px!important}
+/* головні на ПК (Михайло 09.11.2026): перший екран = hero + стрічка фото разом; стрічка — на всю ширину вікна (без порожніх полів),
+   кадри 4:5 (4 у ряд до 1023 px, 6 — до 1599, далі 7); hero = 100svh − шапка − висота кадру стрічки − 16 px (не нижче 20rem, не вище 100svh).
+   Телефон — як було (hero на весь екран, стрічка — одразу за ним). Ширини кадрів — модель tools/site/sharp.py (w_strip, home). */
+@media(min-width:768px){
+  :root{--hst-n:4;--hst-g:10px}
+  @media(min-width:1024px){:root{--hst-n:6;--hst-g:12px}}
+  @media(min-width:1600px){:root{--hst-n:7}}
+  @media(min-width:2200px){:root{--hst-g:14px}}
+  :root{--hst-w:calc((100vw - (var(--hst-n) - 1) * var(--hst-g)) / var(--hst-n))}
+  html body .hx.hx-home .hero{min-height:max(20rem,min(100vh,calc(100vh - var(--sch-h,64px) - var(--hst-w) * 1.25 - 16px)));min-height:max(20rem,min(100svh,calc(100svh - var(--sch-h,64px) - var(--hst-w) * 1.25 - 16px)));box-sizing:border-box}
+  html body main>.hx-home+section.xs-strip>.w{max-width:none;padding-inline:0;margin-inline:0}
+  html body main>.hx-home+section.xs-strip .xs-st{grid-auto-columns:var(--hst-w);gap:var(--hst-g)}
+}
 /* заголовок з посиланням праворуч */
 .xs-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px 20px;flex-wrap:wrap;margin-bottom:24px}
 /* посилання в заголовку ряду (портфоліо: назва проєкту, «Відкрити →») — зона дотику ≥44 px без зміни макета (аудит 08.11.2026) */

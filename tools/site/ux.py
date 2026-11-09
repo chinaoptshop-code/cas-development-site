@@ -595,18 +595,39 @@ HERO = {'int': 'pidgirland', 'house': 'petrivtsi-house', 'reno': 'tetris-hall', 
 HXL_RX = re.compile(r'<div class="hxl"><picture class="hx-bg">.*?</picture>\n?', re.S)
 
 
+# Довгий хвіст (Михайло 09.11.2026): міста, ЖК, FAQ, решта лендингів і службових сторінок з <div class="w hero"> без фото
+# (крім статей блогу й /proekty) — те саме фото hero; тема — за адресою сторінки (_cat_guess), фото на сторінці не повторюється.
+CAT_RX = (('rest', r'restor|restaur|kafe|hotel|gostinits|yacht'),
+          ('office', r'ofis|offic|biznes|business|commerc|komerts|kommerch|lokal|gewerbe|shourum|magazin|negocio|commerce|oficina|objekteinr|fit-out'),
+          ('int', r'(?:dyzain|dizayn)-i-remont-|^(?:faq|pytannya|voprosy|preguntas|blog)|interi|wnetrz|innenarch|dyzain|dizayn'),
+          ('reno', r'remont|renov|reform|sanier|ausbau|kapital|kosmet|chorn|chernov|pereplan|bryhad|brigad|crew|ekipa|handwerk|vanno|vannoy|bath|bano|lazienk|'
+                   r'kukhn|kuhn|kitchen|cocina|cuisine|kuech|kuchni|nahliad|nadzor|zhk|pidriadn|podryad|contractor'),
+          ('house', r'budyn|budivn|dom-|-dom|house|haus|casa|maison|karkas|modul|brus|gazob|proektuv|proektir|projekt-domu|rekonstr|stroit|conception'),
+          ('int', r'.'))
+
+
+def _cat_guess(rel):
+    slug = re.sub(r'^(?:[a-z]{2}/)?', '', rel)[:-5]
+    return next(c for c, rx in CAT_RX if re.search(rx, slug))
+
+
 def _hero_photo(m, rel, lang):
-    cat = TP_PAGES.get(rel)
+    cat = TP_PAGES.get(rel) or (None if rel in LIGHT or HERO_SKIP.match(rel) or re.match(r'(?:[a-z]{2}/)?index\.html$', rel) else _cat_guess(rel))
     i = m.find('<div class="w hero">')
-    if cat not in HERO or i < 0 or 'class="hx' in m[:i]:
+    if cat not in HERO or i < 0 or 'class="hx' in m[:i] or 'fetchpriority="high"' in m:
         return m
     e = _close(m, 'div', i)
     if e < 0:
         return m
+    if rel not in LIGHT:  # без повторів: якщо джерело кадру вже є на сторінці — інша тема
+        for c in [cat] + [x for x in ('int', 'reno', 'house', 'rest', 'office') if x != cat]:
+            if CROPS[f'img/p/hx-{c}']['src'].rsplit('/', 1)[1] not in m:
+                cat = c
+                break
     name, kind, _ = TP_PROJ[HERO[cat]]
     alt = html.escape(f'{name} — {TP_WORD[kind].get(lang, TP_WORD[kind]["en"])}')
     ss = lambda b, ws: ','.join(f'/img/p/{b}-{w}.webp {w}w' for w in ws if os.path.exists(os.path.join(ROOT, f'img/p/{b}-{w}.webp')))
-    d = ss(f'hx-{cat}', (1200, 1600, 1920, 2560))
+    d = ss(f'hx-{cat}', (1200, 1600, 1920, 2560, 3000, 3200, 3840))  # ≥ 2000w — лише великі екрани (бюджет 450 КБ, tools/img/build.py)
     top = d.rsplit(' ', 1)[0].rsplit('-', 1)[1][:-5]
     pic = (f'<div class="hxl"><picture class="hx-bg"><source media="(max-width:767px)" srcset="{ss(f"hxm-{cat}", (600, 900, 1200))}">'
            f'<img src="/img/p/hx-{cat}-1600.webp" srcset="{d}" fetchpriority="high" width="{top}" height="{int(top) // 2}" alt="{alt}"></picture>\n')
@@ -889,8 +910,8 @@ def apply(s, rel):
         m = _ozd(m)
     if rel in ABOUT:
         m = re.sub(r'<div class="xs-tx">(?=(?:<h2[^>]*>.*?</h2>)?<p\b)', '<div class="xs-tx" data-c="t">', m, count=1, flags=re.S)
+    m = _hero_photo(m, rel, lm.group(1) if lm else 'uk')  # LIGHT — за кластером; решта (довгий хвіст) — _cat_guess
     if light:
-        m = _hero_photo(m, rel, lm.group(1) if lm else 'uk')
         m = _spans(m, lm.group(1) if lm else 'uk', rel)
     if 'rp-teaser' in m:
         m = _teasers(m, lm.group(1) if lm else 'uk')

@@ -53,6 +53,21 @@ def img(x, alt=None, sizes='(max-width:767px) 90vw, 400px', cls='', eager=False)
     return f'<img{c} src="/{src}"{ss}{load} decoding="async" width="{w}" height="{h}" alt="{a(x.get("alt", "") if alt is None else alt)}">'
 
 
+# Слайд-шоу фону hero головних (9 мов, Михайло 09.11.2026): перше фото — hero_img (Pidgirland, eager, без анімації),
+# далі кожні ~10 с плавна зміна (1.2 с) на рендери проєктів CAS — вітальні, їдальні, кухні, спальні, ресторан, тераса
+# (без санвузлів, гардеробних, коридорів). Файли img/hs-<назва>-<w>.webp (ПК, 2:1) і -m-<w>.webp (телефон, 0.6) —
+# кадри tools/img/crops.json (tools/img/originals.py). Вантажить ui-polish.v1.js (heroSlides) лише після load/idle.
+HERO_SLIDES = ('living', 'dining', 'monpark', 'kitchen', 'bedroom', 'terrace', 'yacht')
+
+
+def _slides():
+    """data-hs="назва:ширини ПК:ширини телефона;…" — лише наявні файли (коротко: бюджет HTML)."""
+    import os
+    root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    ws = lambda b, xs: '.'.join(str(w) for w in xs if os.path.exists(os.path.join(root, f'img/{b}-{w}.webp')))
+    return ';'.join(f'{n}:{ws("hs-" + n, (1280, 1600, 1920, 2400))}:{ws("hs-" + n + "-m", (720, 1080, 1440))}' for n in HERO_SLIDES)
+
+
 def hero_bg(h, full=False):
     """Фото першого екрана (не анімуємо, одна fetchpriority="high").
     full — головні (Михайло 08.11.2026): на телефоні фото на весь екран під легшим затемненням, тому sizes 100vw (різкість)."""
@@ -61,7 +76,8 @@ def hero_bg(h, full=False):
     src = (f'<source media="(max-width:767px) and (orientation:portrait)" srcset="{a(m["srcset"])}" sizes="{ms}" width="{m["w"]}" height="{m["h"]}">'
            if m else '')
     # телефон (не головні): фото під темним градієнтом — достатньо ~60vw (менше байтів до LCP)
-    return f'<picture class="hx-bg">{src}{img(h, sizes=f"(max-width:767px) {ms}, 100vw", eager=True)}</picture>'
+    hs = f' data-hs="{_slides()}"' if full else ''
+    return f'<picture class="hx-bg"{hs}>{src}{img(h, sizes=f"(max-width:767px) {ms}, 100vw", eager=True)}</picture>'
 
 
 def msgs():
