@@ -79,7 +79,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const ship = 0;
   const total = goods - disc;
   const onReq = items.filter(i => i.price == null).length;
-  if (!onReq && goods - disc < 23000) return bad('Мінімальне замовлення — від 23 000 ₴ (≈ $500)');
+  if (!onReq && goods < 460000) return bad('Мінімальне замовлення — від 460 000 ₴ (≈ $10 000)');
   const number = await nextNumber(env);
   const name = str(d.name, 120) || c?.name || 'Без імені'; // імʼя необовʼязкове — обовʼязковий лише телефон
   const payment = ['card', 'invoice', 'cash', 'usdt'].includes(d.payment) ? d.payment : 'card';

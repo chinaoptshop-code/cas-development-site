@@ -17,7 +17,7 @@
     quote_sent: 'Комерційну пропозицію надіслано — перевірте Telegram або пошту.',
     paid: 'Оплату отримано, дякуємо! Передаємо замовлення у виробництво.',
     production: 'Замовлення виготовляється на фабриці.',
-    shipping: 'Замовлення в дорозі — поставка з Китаю 30–60 днів від підтвердження.',
+    shipping: 'Замовлення в дорозі — поставка з Китаю 35–70 днів від підтвердження.',
     delivered: 'Замовлення доставлено. Гарантія — 12 місяців.',
     cancelled: 'Замовлення скасовано. Якщо це помилка — напишіть менеджеру.'
   };
@@ -152,11 +152,11 @@
   }
   function stBadge(o) { return '<span class="kb-st' + (o.stage === 'cancelled' ? ' x' : o.stage === 'delivered' ? ' ok' : '') + '">' + esc(o.stage_label) + '</span>'; }
   var active = function (o) { return o.stage !== 'delivered' && o.stage !== 'cancelled'; };
-  function eta(o) { // орієнтовна поставка: 30–60 днів від підтвердження (дата оплати/запуску або створення)
+  function eta(o) { // орієнтовна поставка: 35–70 днів від підтвердження (дата оплати/запуску або створення)
     if (!active(o)) return '';
     var ev = (o.events || []).filter(function (e) { return ['paid', 'production'].indexOf(e.stage) >= 0; })[0];
     var d0 = parseDate(ev ? ev.created_at : o.created_at); if (!d0) return '';
-    return dfmt(addDays(d0, 30), { day: 'numeric', month: 'short' }) + ' – ' + dfmt(addDays(d0, 60), { day: 'numeric', month: 'short', year: 'numeric' });
+    return dfmt(addDays(d0, 35), { day: 'numeric', month: 'short' }) + ' – ' + dfmt(addDays(d0, 70), { day: 'numeric', month: 'short', year: 'numeric' });
   }
   function volumeBlock(D, partner) {
     var VOL = (D && D.volume_discounts) || [], g = D ? cartGoods(D) : 0;
@@ -228,7 +228,7 @@
           (o.stage !== 'cancelled' ? dots(o.stage) : '') + '<div class="kb-ord-m"><span>' + esc(dfmt(o.created_at)) + '</span><span>' + o.items.length + ' поз.</span><strong>' + money(o.total) + '</strong></div>' +
           (active(o) && eta(o) ? '<small class="muted">Орієнтовна поставка: ' + eta(o) + '</small>' : '') + '</a>';
         if (act.length > 1) h += '<p class="muted" style="font-size:var(--fs-small)">Ще ' + (act.length - 1) + ' активн' + (act.length === 2 ? 'е' : 'их') + ' — у розділі «Замовлення».</p>';
-      } else h += '<p class="muted">Замовлень ще немає. Комплектуйте обʼєкт в Оздобі: освітлення, меблі, декор і сантехніка з поставкою 30–60 днів.</p><a class="btn" href="/ozdoba">До каталогу Оздоби</a>';
+      } else h += '<p class="muted">Замовлень ще немає. Комплектуйте обʼєкт в Оздобі: освітлення, меблі, декор і сантехніка з поставкою 35–70 днів.</p><a class="btn" href="/ozdoba">До каталогу Оздоби</a>';
       h += '</section>';
       // профіль
       h += '<section class="kb-card s3 kb-in" aria-labelledby="kb-w-p"><div class="kb-ch"><h2 id="kb-w-p">Профіль</h2><a class="lnk" href="/kabinet/profil">Заповнити →</a></div>' +
@@ -261,7 +261,7 @@
           '<div class="kb-kits">' + kits.map(function (b) {
             return '<a class="kb-kit" href="/ozdoba/komplekty#k-' + esc(b.id) + '"><span class="ic">' + artSvg(D, b.art) + '</span><span><b>' + esc(b.name) + '</b><small class="muted">Комплект під ключ</small></span></a>';
           }).join('') + '</div><div class="kb-prods">' + recs.map(function (i) { return prodCard(D, i); }).join('') + '</div>' +
-          '<p class="muted" style="font-size:12px">Мінімальне замовлення — від $500 (≈23 000 ₴), від 10 шт кожної позиції. Поставка з Китаю 30–60 днів.</p></section>';
+          '<p class="muted" style="font-size:12px">Мінімальне замовлення — від $10 000 (≈460 000 ₴), від 10 шт кожної позиції. Поставка з Китаю 35–70 днів.</p></section>';
       }
       h += managerCard('s2', pj && pj.manager);
       paint(h + '</div>');
@@ -312,7 +312,7 @@
         '<p class="kb-print-h">CAS Development · Оздоба · cas-develop.com · ' + PHONE_TXT + '</p>' +
         '<div class="kb-grid"><section class="kb-card s6 kb-in"><div class="kb-ord-h"><div><p class="kb-eyebrow">Замовлення</p><h2 style="font-size:clamp(1.8rem,1.4rem + 1.2vw,2.4rem)">' + esc(o.number) + '</h2>' +
         '<small class="muted">від ' + esc(dfmt(o.created_at)) + '</small></div>' + stBadge(o) + '</div>' + tl +
-        '<div class="kb-note">' + esc(STAGE_NOTE[o.stage] || '') + (et ? ' Орієнтовна поставка: <b>' + et + '</b> (30–60 днів).' : '') + '</div>' +
+        '<div class="kb-note">' + esc(STAGE_NOTE[o.stage] || '') + (et ? ' Орієнтовна поставка: <b>' + et + '</b> (35–70 днів).' : '') + '</div>' +
         (o.manager_note ? '<p><b>Менеджер:</b> ' + esc(o.manager_note) + '</p>' : '') +
         '<div class="row kb-noprint"><button class="btn" type="button" id="kb-repeat">Повторити замовлення</button><button class="btn ghost" type="button" id="kb-print">Завантажити PDF / друк</button>' +
         '<a class="btn ghost" href="https://t.me/' + PHONE + '" target="_blank" rel="noopener">Питання менеджеру</a></div></section>' +
@@ -368,7 +368,7 @@
         var sum = L.reduce(function (s, i) { var p = minPrice(D, i); return s + (p || 0); }, 0);
         paint('<div class="row kb-in" style="justify-content:space-between;margin-bottom:14px"><p class="muted">' + L.length + ' товар' + (L.length === 1 ? '' : L.length < 5 ? 'и' : 'ів') + (sum ? ' · від ' + money(sum) + ' за одиницю кожного' : '') + '</p>' +
           '<a class="btn ghost sm" href="/ozdoba">Додати ще</a></div><div class="kb-prods">' + L.map(function (i) { return prodCard(D, i, { remove: true }); }).join('') + '</div>' +
-          '<p class="muted kb-in" style="font-size:var(--fs-small);margin-top:14px">Щоб замовити, відкрийте товар, оберіть колір і розмір. Мінімум — 10 шт кожної позиції, замовлення від $500 (≈23 000 ₴). Можливе виготовлення під замовлення: колір, розмір, матеріал.</p>');
+          '<p class="muted kb-in" style="font-size:var(--fs-small);margin-top:14px">Щоб замовити, відкрийте товар, оберіть колір і розмір. Мінімум — 10 шт кожної позиції, замовлення від $10 000 (≈460 000 ₴). Можливе виготовлення під замовлення: колір, розмір, матеріал.</p>');
         box.querySelectorAll('[data-unfav]').forEach(function (b) {
           b.onclick = function () { var id = +b.getAttribute('data-unfav'); b.disabled = true; unfav(id).then(function (ids) { toast('Прибрано з обраного'); draw(ids); }); };
         });

@@ -1,7 +1,7 @@
 # Фід Оздоби для Google Merchant Center / Pinterest / Meta
 
 Файл: `https://cas-develop.com/ozdoba/feed.xml` (RSS 2.0 з `g:`-полями), оновлюється `python3 tools/products/build.py` разом із каталогом.
-Поля: id (`ozd-<id>`), title, description (з мінімумом 10 шт позиції, мін. замовленням $500 і строком 30–60 днів), link, image_link (+ додаткові),
+Поля: id (`ozd-<id>`), title, description (з мінімумом 10 шт позиції, мін. замовленням $10 000 і строком 35–70 днів), link, image_link (+ додаткові),
 price в UAH, availability in_stock, condition new, brand «CAS Ozdoba», identifier_exists no (без GTIN), google_product_category, product_type, multipack 10.
 Товари без фото або без ціни у фід не потрапляють.
 
