@@ -10,7 +10,7 @@ python3 tools/site/caselang.py portfolio  # портфоліо en/ru: tools/site
 LOG="${TMPDIR:-/tmp}/cas-landing.log"
 python3 tools/site/landing.py > "$LOG" || { cat "$LOG"; exit 1; }
 tail -n 2 "$LOG"
-python3 tools/site/fullcase.py  # «Повний проєкт» /proekty/<slug>-povnyi-proekt (uk+ru) з tools/site/cases/*.json
+python3 tools/site/fullcase.py  # «Повний проєкт» /proekty/<slug>-povnyi-proekt (uk, ru, en) з tools/site/cases/*.json
 python3 tools/products/build.py
 python3 tools/tours/build.py pages
 python3 tools/shop/pages.py
