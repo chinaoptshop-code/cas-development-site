@@ -362,8 +362,8 @@ describe('Оздоба: правила CLAUDE.md на сервері (мін. 10
   let ipn = 0;
   const order = (qty, extra = {}) => call(se, 'POST', '/api/orders', { body: { phone: '0671234567', cart: [{ id: it0.id, qty, ci: -1 }], ...extra }, headers: { ip: '10.9.0.' + (++ipn) } });
   const qFor = g => Math.max(10, Math.ceil(g / it0.price));
-  await it('catalog.json: пороги 230 000/460 000/920 000 ₴ → 3/5/7%, мінімум 10 шт', async () => {
-    eq(cat.volume_discounts, [[230000, 3], [460000, 5], [920000, 7]]); eq(cat.min_qty, 10);
+  await it('catalog.json: пороги 460 000/920 000/1 840 000 ₴ → 3/5/7%, мінімум 10 шт', async () => {
+    eq(cat.volume_discounts, [[460000, 3], [920000, 5], [1840000, 7]]); eq(cat.min_qty, 10);
   });
   await it('9 шт позиції — 400 з поясненням про мінімум', async () => {
     const r = await order(9); eq(r.status, 400); ok(/10/.test(r.data.error));
@@ -374,8 +374,8 @@ describe('Оздоба: правила CLAUDE.md на сервері (мін. 10
     const r = await call(se, 'POST', '/api/orders', { body: { phone: '0671234567', cart: [{ id: cheap.id, qty: 10, ci: -1 }] }, headers: { ip: '10.9.1.1' } });
     eq(r.status, 400); ok(/460.000/.test(r.data.error));
   });
-  await it('знижка за обсягом: ≥460k — 5%, ≥920k — 7% (нижче 460k заявка не проходить)', async () => {
-    for (const [g, pct] of [[460000, 5], [920000, 7]]) {
+  await it('знижка за обсягом: ≥460k — 3%, ≥920k — 5%, ≥1 840k — 7% (нижче 460k заявка не проходить)', async () => {
+    for (const [g, pct] of [[460000, 3], [920000, 5], [1840000, 7]]) {
       const r = await order(qFor(g)); eq(r.status, 200, JSON.stringify(r.data)); eq(r.data.discount_pct, pct, `сума ${r.data.goods}`);
       eq(r.data.discount, Math.round(r.data.goods * pct / 100)); eq(r.data.total, r.data.goods - r.data.discount); eq(r.data.shipping, 0, 'доставка не в сумі');
     }
@@ -383,11 +383,11 @@ describe('Оздоба: правила CLAUDE.md на сервері (мін. 10
   await it('код партнера: більший за обсягову — діє код; менший — діє обсягова; не сумуються', async () => {
     await se.DB.prepare("INSERT INTO partner_codes (code, name, discount) VALUES ('DIZ-TEST', 'Тест', 4), ('DIZ-HIGH', 'Тест 2', 6)").run();
     const a = await order(qFor(470000), { promo: 'diz-high' });
-    eq(a.data.discount_pct, 6, 'код 6% > обсягова 5%'); eq(a.data.promo, 'DIZ-HIGH');
-    const b = await order(qFor(470000), { promo: 'DIZ-TEST' });
+    eq(a.data.discount_pct, 6, 'код 6% > обсягова 3%'); eq(a.data.promo, 'DIZ-HIGH');
+    const b = await order(qFor(930000), { promo: 'DIZ-TEST' });
     eq(b.data.discount_pct, 5, 'обсягова 5% > код 4% — не 9%');
     const c = await order(qFor(470000), { promo: 'NOPE-CODE' });
-    eq(c.data.discount_pct, 5); eq(c.data.promo, null, 'невідомий код не застосовано');
+    eq(c.data.discount_pct, 3); eq(c.data.promo, null, 'невідомий код не застосовано');
   });
   await it('ціни — з каталогу сервера, не з кошика клієнта', async () => {
     const r = await call(se, 'POST', '/api/orders', { body: { phone: '0671234567', cart: [{ id: it0.id, qty: qFor(470000), ci: -1, price: 1 }] }, headers: { ip: '10.9.2.1' } });

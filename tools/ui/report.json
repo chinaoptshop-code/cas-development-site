@@ -6449,7 +6449,7 @@
   "prices_bad": [
    "$10",
    "$20",
-   "$5"
+   "$40"
   ],
   "facts_bad": [],
   "est_bad": [],
@@ -9310,12 +9310,12 @@
  {
   "page": "ozdoba.html",
   "kind": "other",
-  "html_kb": 104.4,
+  "html_kb": 104.2,
   "gzip_kb": 23.3,
   "css_kb": 30.1,
   "js_kb": 0.7,
   "font_sizes": 13,
-  "tags": 768,
+  "tags": 765,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,
@@ -12007,12 +12007,12 @@
  {
   "page": "ozdoba/komplekty.html",
   "kind": "other",
-  "html_kb": 114.0,
-  "gzip_kb": 26.8,
+  "html_kb": 113.8,
+  "gzip_kb": 26.7,
   "css_kb": 32.4,
   "js_kb": 1.4,
   "font_sizes": 14,
-  "tags": 1534,
+  "tags": 1531,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 0,

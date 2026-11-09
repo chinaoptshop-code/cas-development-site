@@ -237,7 +237,7 @@ await test('калькулятор (ar, RTL): Європа й ландшафт',
   must((await p.textContent('#cSum')).includes('المقايسة'), 'ar: ландшафт у Європі не «وفق المقايسة»');
   must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'ar: горизонтальна прокрутка');
 });
-await test('Оздоба: кошик — мінімум 10 шт і $10 000, знижка 5%, заявка: 500 — без успіху, 200 — номер', '/ozdoba', 402, async p => {
+await test('Оздоба: кошик — мінімум 10 шт і $10 000, знижка 3%, заявка: 500 — без успіху, 200 — номер', '/ozdoba', 402, async p => {
   await p.waitForFunction(() => typeof DATA !== 'undefined' && DATA && DATA.items && DATA.items.length);
   const r = await p.evaluate(async () => {
     const it = DATA.items.find(i => i.price != null && !i.ss && i.price * 10 < 460000);
@@ -247,7 +247,7 @@ await test('Оздоба: кошик — мінімум 10 шт і $10 000, зн
     return { q: cart[0].qty, low: low.replace(/\s/g, ' '), big: document.getElementById('sheetCart').innerText };
   });
   must(r.low.includes('460 000') && /10/.test(r.low), 'немає підказки про мінімальне замовлення');
-  must(/−5%/.test(r.big), 'немає знижки за обсягом 5%');
+  must(/−3%/.test(r.big), 'немає знижки за обсягом 3%');
   await p.evaluate(() => openPay()); await p.waitForTimeout(300);
   await p.fill('#fPhone', '+48 512 345 678');
   posts = []; apiStatus = 500;
