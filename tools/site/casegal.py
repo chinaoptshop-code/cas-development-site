@@ -13,7 +13,7 @@ JSON: {"n": усього, "p": [[href, src, srcset, sizes, w, h, alt], …]} —
 (сторінка + JSON = повна галерея); en/ru — tools/site/caselang.py (<мова>/proekty/gal/<slug>.json з перекладеними alt).
 ALT — описовий alt галереї «<…>, фото N» (замість скороченого під бюджет, коли все було в HTML).
 """
-import hashlib, html, json, os, re, sys
+import html, json, os, re, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import chrome  # noqa: E402
@@ -51,14 +51,10 @@ def item(x, oc=False):
             + f' loading="lazy" decoding="async" width="{w}" height="{ht}" alt="{q(alt)}"></a>')
 
 
-def ver():
-    return hashlib.md5(open(os.path.join(ROOT, JS), 'rb').read()).hexdigest()[:8]
-
-
 def more_block(slug, n):
     u = '/' + jpath(slug)
     return (f'\n<!--gal:more--><p class="pg-more" style="margin:18px 0 0"><a class="btn" href="{u}" data-gal="{n}">{html.escape(MORE_TXT.format(n=n))}</a></p>'
-            f'<script src="/{JS}?v={ver()}" defer></script><!--/gal:more-->')
+            f'<script src="/{JS}" defer></script><!--/gal:more-->')  # ?v= ставить chrome.versions()
 
 
 def full_items(s, slug):

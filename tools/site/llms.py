@@ -125,7 +125,7 @@ def build():
     for loc in re.findall(r'<loc>([^<]+)</loc>', sm):
         u = loc.replace(B, '') or '/'
         lang = 'ru' if u.startswith('/ru/') else 'en' if u.startswith('/en/') else 'uk' if not re.match(r'/[a-z]{2}/', u) else None
-        if lang is None or u.startswith(('/blog', '/ru/blog', '/en/blog', '/ozdoba/', '/proekty/', '/tury/')):
+        if lang is None or u.startswith(('/blog', '/ru/blog', '/en/blog', '/ozdoba/', '/proekty/', '/tury/', '/en/tury/', '/ru/tury/')):
             continue
         f = os.path.join(ROOT, rel_of(u))
         if os.path.exists(f) and '"Service"' in open(f, encoding='utf-8').read().split('</head>')[0]:

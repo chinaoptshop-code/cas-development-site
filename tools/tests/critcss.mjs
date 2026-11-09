@@ -30,7 +30,7 @@ const BASE = `http://127.0.0.1:${server.address().port}`;
 function walk(d, out = []) {
   for (const n of readdirSync(join(ROOT, d))) {
     const p = d ? d + '/' + n : n;
-    if (/^(tools|node_modules|tury|\.)/.test(p)) continue;
+    if (/^(tools|node_modules|tury|\.|[a-z]{2}\/tury)/.test(p)) continue;
     if (statSync(join(ROOT, p)).isDirectory()) walk(p, out); else if (p.endsWith('.html') && !/^google/.test(n)) out.push(p);
   }
   return out;

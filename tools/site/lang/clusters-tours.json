@@ -1,0 +1,63 @@
+{
+ "_": "Генерує tools/tours/build.py pages: 3D-тури /tury мовами (руками не правити).",
+ "tury": {
+  "uk": "/tury",
+  "en": "/en/tury",
+  "ru": "/ru/tury"
+ },
+ "tur-apartment-2025": {
+  "uk": "/tury/apartment-2025",
+  "en": "/en/tury/apartment-2025",
+  "ru": "/ru/tury/apartment-2025"
+ },
+ "tur-apartment-37": {
+  "uk": "/tury/apartment-37",
+  "en": "/en/tury/apartment-37",
+  "ru": "/ru/tury/apartment-37"
+ },
+ "tur-apartment-45": {
+  "uk": "/tury/apartment-45",
+  "en": "/en/tury/apartment-45",
+  "ru": "/ru/tury/apartment-45"
+ },
+ "tur-apartment-56": {
+  "uk": "/tury/apartment-56",
+  "en": "/en/tury/apartment-56",
+  "ru": "/ru/tury/apartment-56"
+ },
+ "tur-apartment-80": {
+  "uk": "/tury/apartment-80",
+  "en": "/en/tury/apartment-80",
+  "ru": "/ru/tury/apartment-80"
+ },
+ "tur-edelweiss": {
+  "uk": "/tury/edelweiss",
+  "en": "/en/tury/edelweiss",
+  "ru": "/ru/tury/edelweiss"
+ },
+ "tur-hoda-estate": {
+  "uk": "/tury/hoda-estate",
+  "en": "/en/tury/hoda-estate",
+  "ru": "/ru/tury/hoda-estate"
+ },
+ "tur-house-concept-1": {
+  "uk": "/tury/house-concept-1",
+  "en": "/en/tury/house-concept-1",
+  "ru": "/ru/tury/house-concept-1"
+ },
+ "tur-house-concept-4": {
+  "uk": "/tury/house-concept-4",
+  "en": "/en/tury/house-concept-4",
+  "ru": "/ru/tury/house-concept-4"
+ },
+ "tur-triangle-house": {
+  "uk": "/tury/triangle-house",
+  "en": "/en/tury/triangle-house",
+  "ru": "/ru/tury/triangle-house"
+ },
+ "tur-yablunytsia-estate": {
+  "uk": "/tury/yablunytsia-estate",
+  "en": "/en/tury/yablunytsia-estate",
+  "ru": "/ru/tury/yablunytsia-estate"
+ }
+}
