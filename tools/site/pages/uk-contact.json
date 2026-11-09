@@ -3,8 +3,8 @@
  "lang": "uk",
  "kind": "contact",
  "service": "Консультація",
- "title": "Контакти CAS Development — Київ, телефон і месенджери",
- "description": "Контакти CAS Development у Києві: телефон +380 97 866 77 55, Telegram, WhatsApp, Viber, форма заявки й карта. Консультація по телефону безкоштовна.",
+ "title": "Контакти CAS Development: Київ, вул. Антоновича, 44",
+ "description": "Офіс CAS Development: Київ, вул. Антоновича, 44. Пн–Пт 10:00–20:00, онлайн 24/7. +380 97 866 77 55 — телефон, Telegram, Viber, WhatsApp.",
  "h1": "Контакти студії у Києві",
  "lead": "Контакти CAS Development у Києві: розкажіть про обʼєкт — запропонуємо рішення під ваш стиль і бюджет. Консультація по телефону — безкоштовна.",
  "btn2": [
@@ -45,8 +45,23 @@
      "@type": "PostalAddress",
      "streetAddress": "вул. Антоновича, 44",
      "addressLocality": "Київ",
+     "postalCode": "03186",
      "addressCountry": "UA"
     },
+    "openingHoursSpecification": [
+     {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+       "Monday",
+       "Tuesday",
+       "Wednesday",
+       "Thursday",
+       "Friday"
+      ],
+      "opens": "10:00",
+      "closes": "20:00"
+     }
+    ],
     "areaServed": [
      {
       "@type": "City",
@@ -158,6 +173,11 @@
      "Київ, вул. Антоновича, 44",
      "https://maps.google.com/?cid=15015666645432112566",
      "Як дістатися"
+    ],
+    [
+     "Години роботи",
+     "Пн–Пт 10:00–20:00 · Сб–Нд — вихідні · онлайн 24/7",
+     null
     ],
     [
      "Телефон",

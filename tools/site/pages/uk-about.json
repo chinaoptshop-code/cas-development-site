@@ -93,8 +93,23 @@
      "@type": "PostalAddress",
      "streetAddress": "вул. Антоновича, 44",
      "addressLocality": "Київ",
+     "postalCode": "03186",
      "addressCountry": "UA"
     },
+    "openingHoursSpecification": [
+     {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+       "Monday",
+       "Tuesday",
+       "Wednesday",
+       "Thursday",
+       "Friday"
+      ],
+      "opens": "10:00",
+      "closes": "20:00"
+     }
+    ],
     "telephone": "+380978667755",
     "image": "https://cas-develop.com/img/og-cas.jpg",
     "areaServed": [
