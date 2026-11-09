@@ -13,6 +13,8 @@
   "<нова база>": {"src": "<база з drive-ids>", "ratio": W/H, "x": 0…1, "y": 0…1, "q": якість WebP, "blur": px}  (центр кадру; найбільший кадр цієї пропорції;
   hero під градієнтом — q62, щоб LCP на телефоні не важчав)
   python3 tools/img/originals.py --widths 1200,1600,1920,2400 img/p/hx-int
+Копії ≥ 2000w (Михайло 09.11.2026, різкість на 1920@2 / 2560+): без blur, q ≤ 78 у межах 450 КБ; --force-big переписує наявні.
+  python3 tools/img/originals.py --widths 2400,2800,3200,3840 --force-big img/1nqFOoTfr5BD
 """
 import io, json, os, sys, urllib.request
 
@@ -22,7 +24,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 IDS = json.load(open(os.path.join(ROOT, 'tools/img/drive-ids.json')))
 CROPS = json.load(open(os.path.join(ROOT, 'tools/img/crops.json')))
 CACHE = os.path.expanduser('~/.cache/cas-img')
+FORCE = False
 Q = 81
+BIG_W, BIG_MAX = 2000, 450 * 1024  # копії ≥ 2000w: q ≤ 78 без згладжування, ≤ 450 КБ (Михайло 09.11.2026)
 
 
 def original(base):
@@ -81,9 +85,17 @@ def _write(base, im, widths, q=Q, blur=0):
         if w > W:
             continue
         p = os.path.join(ROOT, f'{base}-{w}.webp')
-        if os.path.exists(p) and Image.open(p).size[0] == w:
+        if os.path.exists(p) and Image.open(p).size[0] == w and not (FORCE and w >= BIG_W):
             continue
         r = im.resize((w, round(H * w / W)), Image.LANCZOS)
+        if w >= BIG_W:  # великі копії (лише великі екрани): без згладжування, якість ≤ 78, що влазить у BIG_MAX (як tools/img/build.py)
+            for qq in range(78, 39, -4):
+                b = io.BytesIO(); r.save(b, 'WEBP', quality=qq, method=6)
+                if b.tell() <= BIG_MAX:
+                    break
+            open(p, 'wb').write(b.getvalue())
+            out.append((w, os.path.getsize(p) // 1024))
+            continue
         if blur:  # легке згладжування шуму фото під градієнтом hero: −25–35 % ваги LCP, на DPR 2–3 непомітно
             r = r.filter(ImageFilter.GaussianBlur(blur))
         r.save(p, 'WEBP', quality=q, method=6)
@@ -96,6 +108,8 @@ if __name__ == '__main__':
     widths = [1200, 1600, 2000]
     if '--q' in args:  # якість WebP (за замовчуванням 81); великі копії шумних фото — нижче, щоб байт/піксель ≈ як у меншої копії
         i = args.index('--q'); Q = int(args[i + 1]); del args[i:i + 2]
+    FORCE = '--force-big' in args  # переписати й наявні копії ≥ 2000w (нова політика: без згладжування, ≤ 450 КБ)
+    if FORCE: args.remove('--force-big')
     if '--widths' in args:
         i = args.index('--widths'); widths = [int(x) for x in args[i + 1].split(',')]; del args[i:i + 2]
     for b in args:

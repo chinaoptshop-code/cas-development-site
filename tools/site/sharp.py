@@ -50,6 +50,9 @@ def _grid(vw, c):
 def w_strip(vw, home):
     c = cont(vw)
     if vw <= 767: return .46 * c if home else min(.66 * vw, 280)
+    if home:  # головні на ПК (sections.v1.css, 09.11.2026): стрічка на всю ширину вікна, 4 / 6 (з 1024) / 7 (з 1600) кадрів у ряд
+        n, g = (4, 10) if vw <= 1023 else (6, 12) if vw <= 1599 else (7, 12 if vw <= 2199 else 14)
+        return (vw - (n - 1) * g) / n
     return _grid(vw, c) or 280
 
 
@@ -254,7 +257,8 @@ def fix(tag, slot, home, i=0, n=1):
         return tag
     lo, hi = need(fn)
     cand = pick(fam, lo, hi)
-    return _attr(_attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in cand)), 'sizes', sizes(fn, SLOT_BPS[slot]))
+    bps = [767, 1023, 1599, 2199] if slot == 'strip' and home else SLOT_BPS[slot]  # головні: стрічка на всю ширину (6 → 7 кадрів з 1600)
+    return _attr(_attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in cand)), 'sizes', sizes(fn, bps))
 
 
 def apply(s, rel=''):
