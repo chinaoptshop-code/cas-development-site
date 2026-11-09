@@ -149,19 +149,19 @@ footer .fs a{display:inline-flex;align-items:center;min-height:44px}
   <style>#calc .cg{display:grid;gap:14px;max-width:640px}#calc select{width:100%;background:var(--bg2);border:1px solid var(--ln);color:var(--tx);padding:13px 14px;font:inherit;border-radius:6px}#calc .ck{display:flex;gap:10px;align-items:flex-start;color:var(--tx)}#calc .ck input{width:auto;margin-top:4px}#calc .sum{border:1px solid var(--ln);background:var(--bg2);padding:20px;margin-top:6px}#calc .sum b{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h2);color:var(--ac);display:block;line-height:1.1}#calc .sum p{color:var(--mu);margin:8px 0 0;font-size:var(--fs-small)}</style>
   <div class="cg">
     <div><label for="cKind">您的需求</label><select id="cKind"><option value="550" data-k="remont">公寓交钥匙装修 — 起价 $550/m²</option><option value="350" data-k="office">办公室装修 — 起价 $350/m²</option><option value="600" data-k="house">住宅建造（主体结构） — 起价 $600/m²</option><option value="1100" data-k="housekey">含精装的交钥匙住宅 — 起价 $1 100/m²</option></select></div>
-    <div><label for="cArea">面积（m²）</label><input id="cArea" type="number" inputmode="numeric" min="1" value="60"></div>
+    <div><label for="cArea">面积（m²）</label><input id="cArea" type="number" inputmode="decimal" min="1" max="100000" step="any" value="60"></div>
     <label class="ck"><input type="checkbox" id="cDesign">室内设计方案（$30/m² 起，最低 $2 500）</label>
     <label class="ck"><input type="checkbox" id="cFurn">家具与配套（$250/m² 起）</label>
     <div class="sum" aria-live="polite"><span>预估起价</span><b id="cSum">—</b><p id="cRows"></p><p>这是按我们基础单价计算的下限。公寓装修每平方米 $550 起包含施工和基础辅材；饰面主材、家具和家电另行计价，以预算为准。准确金额在测量并出具预算后确定；若由我们施工，最终费用与预算偏差不超过 ±5%。</p></div>
     <p><a class="btn main" id="cSend" href="#zayavka">获取准确预算</a></p>
   </div>
 <script>(function(){var $=function(i){return document.getElementById(i)},f=function(n){return casUsd(n)};
-function calc(){var a=Math.max(0,+$('cArea').value||0),o=$('cKind').selectedOptions[0],r=+o.value,rows=[[o.text.split(' — ')[0],r*a]];
+function calc(){var a=Math.min(100000,Math.max(0,Math.round(+String($('cArea').value).replace(',','.')||0))),o=$('cKind').selectedOptions[0],r=+o.value,rows=[[o.text.split(' — ')[0],r*a]];
 if($('cDesign').checked)rows.push(['设计方案',Math.max(30*a,2500)]);
 if($('cFurn').checked)rows.push(['家具配套',250*a]);
 var s=0;rows.forEach(function(x){s+=x[1]});$('cSum').textContent=a?f(s):'—';$('cRows').textContent=a?rows.map(function(x){return x[0]+': '+f(x[1])}).join(' · '):'';return{a:a,t:$('cRows').textContent,s:f(s)}}
 ['cKind','cArea','cDesign','cFurn'].forEach(function(i){$(i).addEventListener('input',calc);$(i).addEventListener('change',calc)});document.addEventListener('DOMContentLoaded',calc);
-$('cSend').addEventListener('click',function(){var c=calc(),ar=$('oArea'),m=$('oMsg');if(ar&&c.a)ar.value=c.a;if(m&&!m.value)m.value='计算器估算结果: '+c.t+' = 起价 '+c.s});})();</script>
+$('cSend').addEventListener('click',function(){var c=calc(),ar=$('oArea'),m=$('oMsg');if(ar&&c.a)ar.value=c.a;if(m&&(!m.value||m.value.indexOf('计算器估算结果: ')===0))m.value='计算器估算结果: '+c.t+' = 起价 '+c.s});})();</script>
 </div></section>
 
 <section><div class="w" data-c="x" data-xs="$550/m² 起"><img class="ux-tp" src="/img/p/1GnosovqCCjnAI-900.webp" srcset="/img/p/1GnosovqCCjnAI-400.webp 400w,/img/p/1GnosovqCCjnAI-600.webp 600w,/img/p/1GnosovqCCjnAI-900.webp 900w,/img/p/1GnosovqCCjnAI-1200.webp 1200w" sizes="(max-width:759px) calc(50vw - 21px),(max-width:1366px) calc(33.3vw - 19px),calc(14.8vw + 69px)" loading="lazy" width="1200" height="1600" alt="Tetris Hall — 公寓">
