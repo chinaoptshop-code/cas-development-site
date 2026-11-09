@@ -151,22 +151,46 @@ footer .fs a{display:inline-flex;align-items:center;min-height:44px}
 
 <section id="calc"><div class="w">
   <h2>Cost calculator</h2>
-  <style>#calc .cg{display:grid;gap:14px;max-width:640px}#calc select{width:100%;background:var(--bg2);border:1px solid var(--ln);color:var(--tx);padding:13px 14px;font:inherit;border-radius:6px}#calc .ck{display:flex;gap:10px;align-items:flex-start;color:var(--tx)}#calc .ck input{width:auto;margin-top:4px}#calc .sum{border:1px solid var(--ln);background:var(--bg2);padding:20px;margin-top:6px}#calc .sum b{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h2);color:var(--ac);display:block;line-height:1.1}#calc .sum p{color:var(--mu);margin:8px 0 0;font-size:var(--fs-small)}</style>
+  <style>#calc .cg{display:grid;gap:16px;max-width:640px}#calc select{width:100%;background:var(--bg2);border:1px solid var(--ln);color:var(--tx);padding:13px 14px;font:inherit;border-radius:6px}#calc .cl{display:block;margin-bottom:6px;font-size:var(--fs-small);color:var(--mu)}#calc .seg{display:flex;flex-wrap:wrap;gap:6px}#calc .seg.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}#calc .seg button{min-height:44px;padding:6px 14px;border-radius:999px;border:1px solid var(--ln);background:none;color:var(--tx);font:inherit;font-size:var(--fs-small);line-height:1.25;cursor:pointer}#calc .seg.g2 button{border-radius:12px;text-align:start}#calc .seg button small{display:block;opacity:.75}#calc .seg button[aria-pressed=true]{background:var(--ac);border-color:var(--ac);color:#140f08}#calc .seg button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}#calc .ck{display:flex;gap:10px;align-items:flex-start;color:var(--tx);min-height:44px}#calc .ck input{width:auto;margin-top:4px}#calc .ck small{color:var(--mu)}#calc [hidden]{display:none!important}#calc .sum{border:1px solid var(--ln);background:var(--bg2);padding:20px;margin-top:2px}#calc .sum b{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h2);color:var(--ac);display:block;line-height:1.1}#calc .sum p{color:var(--mu);margin:8px 0 0;font-size:var(--fs-small)}#calc .sum #cPlus{color:var(--tx)}</style>
   <div class="cg">
-    <div><label for="cKind">What you need</label><select id="cKind"><option value="550" data-k="remont">Turnkey apartment renovation — from $550/m²</option><option value="350" data-k="office">Office renovation — from $350/m²</option><option value="600" data-k="house">House construction (shell) — from $600/m²</option><option value="1100" data-k="housekey">Turnkey house with finishing — from $1,100/m²</option></select></div>
-    <div><label for="cArea">Area, m²</label><input id="cArea" type="number" inputmode="decimal" min="1" max="100000" step="any" value="60"></div>
-    <label class="ck"><input type="checkbox" id="cDesign">Interior design project (from $30/m², minimum $2,500)</label>
-    <label class="ck"><input type="checkbox" id="cFurn">Furnishing and procurement (from $250/m²)</label>
-    <div class="sum" aria-live="polite"><span>Approximately from</span><b id="cSum">—</b><p id="cRows"></p><p>This is the lower limit at our base rates. Apartment renovation from $550/m² covers works and rough materials; finishing materials, furniture and appliances are priced separately in the estimate. We give the exact amount after measuring and preparing the estimate; if we do the renovation, the total stays within ±5% of the estimate.</p></div>
+    <div role="group" aria-labelledby="cRegL"><span class="cl" id="cRegL">Project location</span><div class="seg" id="cReg"><button type="button" data-r="0" aria-pressed="true">Ukraine</button><button type="button" data-r="1" aria-pressed="false">Europe</button></div></div>
+    <div><label for="cKind">What you need</label><select id="cKind"><option value="remont">Turnkey apartment renovation — from $550/m²</option><option value="office">Office renovation — from $350/m²</option><option value="house">House construction (shell) — from $600/m²</option><option value="housekey">Turnkey house with finishing — from $1,100/m²</option><option value="design">Interior design project — from $6/m²</option><option value="arch">House architectural design — from $12/m²</option><option value="land">Landscape design — from $50/are</option></select></div>
+    <div><label for="cArea" id="cAreaL">Area, m²</label><input id="cArea" type="number" inputmode="decimal" min="0" max="100000" step="any" value="60"></div>
+    <div role="group" aria-labelledby="cDzL" id="cDzW"><span class="cl" id="cDzL">Design</span><div class="seg g2" id="cDz"><button type="button" data-p="0" aria-pressed="true">No design</button><button type="button" data-p="plan" aria-pressed="false">Space planning<small>$6/m²</small></button><button type="button" data-p="dz" aria-pressed="false">Design project<small>$30/m²</small></button><button type="button" data-p="full" aria-pressed="false">Full, with supervision<small>$45/m²</small></button></div></div>
+    <label class="ck" id="cFurnW"><input type="checkbox" id="cFurn"><span>Furnishing and procurement <small id="cFurnR">from $250/m²</small></span></label>
+    <div class="sum" aria-live="polite"><span id="cSumL">Approximately from</span><b id="cSum">—</b><p id="cPlus" hidden>+ items per estimate</p><p id="cRows"></p><p id="cNote">This is the lower limit at our base rates; we give the exact amount after measuring and preparing the estimate.</p></div>
     <p><a class="btn main" id="cSend" href="#zayavka">Get an exact estimate</a></p>
   </div>
-<script>(function(){var $=function(i){return document.getElementById(i)},f=function(n){return casUsd(n)};
-function calc(){var a=Math.min(100000,Math.max(0,Math.round(+String($('cArea').value).replace(',','.')||0))),o=$('cKind').selectedOptions[0],r=+o.value,rows=[[o.text.split(' — ')[0],r*a]];
-if($('cDesign').checked)rows.push(['Design project',Math.max(30*a,2500)]);
-if($('cFurn').checked)rows.push(['Furnishing',250*a]);
-var s=0;rows.forEach(function(x){s+=x[1]});$('cSum').textContent=a?f(s):'—';$('cRows').textContent=a?rows.map(function(x){return x[0]+': '+f(x[1])}).join(' · '):'';return{a:a,t:$('cRows').textContent,s:f(s)}}
-['cKind','cArea','cDesign','cFurn'].forEach(function(i){$(i).addEventListener('input',calc);$(i).addEventListener('change',calc)});document.addEventListener('DOMContentLoaded',calc);
-$('cSend').addEventListener('click',function(){var c=calc(),ar=$('oArea'),m=$('oMsg');if(ar&&c.a)ar.value=c.a;if(m&&(!m.value||m.value.indexOf('Calculator result: ')===0))m.value='Calculator result: '+c.t+' = from '+c.s});})();</script>
+<script>(function(){var C={"r":{"remont":[550,850],"office":[350,null],"house":[600,900],"housekey":[1100,1700],"arch":[12,18],"land":[50,null]},"p":{"0":[0,0,0,0],"plan":[6,null,2500,null],"dz":[30,45,2500,4000],"full":[45,null,2500,null]},"pk":["0","plan","dz","full"],"pn":["No design","Space planning","Design project","Full, with supervision"],"fu":[250,400],"k":["Turnkey apartment renovation","Office renovation","House construction (shell)","Turnkey house with finishing","Interior design project","House architectural design","Landscape design"],"wd":["remont","office","house","housekey","design"],"wf":["remont","office","housekey","design"],"rn":["remont","office"],"est":"per estimate","frm":"from","m2":"m²","sot":"are","ss":"ares","am":"Area, m²","fn":"Furnishing and procurement","nb":"This is the lower limit at our base rates; we give the exact amount after measuring and preparing the estimate.","nr":"Renovation covers works and rough materials; finishing materials, furniture and appliances are priced separately in the estimate.","n5":"If we do the renovation, the total stays within ±5% of the estimate.","na":"Architectural design: concept and working drawings (architecture, structure); engineering sections and site plan as specified.","nm":"Design minimum: {m}.","ne":"Europe: rates are about 50% higher than in Kyiv.","ua":"Ukraine","eu":"Europe","msg":"Calculator result","sv":"Calculator","pl":"+ items per estimate","as":"Plot, ares (1 are = 100 m²)"},$=function(i){return document.getElementById(i)},f=function(n){return casUsd(n)},R=0,P='0',mem={m:'60',s:'10'},unit='m';
+function kind(){return $('cKind').value}
+function rate(r,v){return r==null?C.est:C.frm+' '+f(r)+'/'+v}
+function sync(){var k=kind(),o=$('cKind').options,i,b;
+for(i=0;i<o.length;i++){var q=o[i].value,n=C.k[i];o[i].text=q==='design'?n+' — '+C.frm+' '+f(R?C.p.dz[1]:C.p.plan[0])+'/'+C.m2:n+' — '+rate(C.r[q][R],q==='land'?C.sot:C.m2)}
+$('cDzW').hidden=C.wd.indexOf(k)<0;$('cFurnW').hidden=C.wf.indexOf(k)<0;
+if(k==='design'&&P==='0')P='dz';
+b=$('cDz').querySelectorAll('button');for(i=0;i<b.length;i++){var p=b[i].getAttribute('data-p');b[i].hidden=p==='0'&&k==='design';b[i].setAttribute('aria-pressed',String(p===P));
+var s=b[i].querySelector('small');if(s)s.textContent=C.p[p][R]==null?C.est:f(C.p[p][R])+'/'+C.m2}
+b=$('cReg').querySelectorAll('button');for(i=0;i<b.length;i++)b[i].setAttribute('aria-pressed',String(+b[i].getAttribute('data-r')===R));
+$('cFurnR').textContent=C.frm+' '+f(C.fu[R])+'/'+C.m2;
+var u=k==='land'?'s':'m';if(u!==unit){mem[unit]=$('cArea').value;unit=u;$('cArea').value=mem[u];$('cAreaL').textContent=u==='s'?C.as:C.am}}
+function calc(){sync();var k=kind(),ki=$('cKind').selectedIndex,v=+String($('cArea').value).replace(',','.')||0,
+a=unit==='s'?Math.min(10000,Math.max(0,Math.round(v*10)/10)):Math.min(100000,Math.max(0,Math.round(v))),rows=[],s=0,est=0,notes=[C.nb];
+if(k!=='design')rows.push([C.k[ki],C.r[k][R]==null?null:C.r[k][R]*a]);
+if(C.wd.indexOf(k)>=0&&P!=='0'){var q=C.p[P],pi=C.pk.indexOf(P);rows.push([C.pn[pi],q[R]==null?null:Math.max(q[R]*a,q[2+R])]);if(q[R]!=null)notes.push(C.nm.replace('{m}',f(q[2+R])))}
+if(C.wf.indexOf(k)>=0&&$('cFurn').checked)rows.push([C.fn,C.fu[R]*a]);
+rows.forEach(function(x){if(x[1]==null)est=1;else s+=x[1]});
+if(C.rn.indexOf(k)>=0){notes.push(C.nr);notes.push(C.n5)}if(k==='arch')notes.push(C.na);if(R)notes.push(C.ne);
+var t=a?rows.map(function(x){return x[0]+': '+(x[1]==null?C.est:f(x[1]))}).join(' · '):'',st=!a?'—':s?f(s):C.est;
+$('cSumL').hidden=!(a&&s);$('cSum').textContent=st;$('cPlus').hidden=!(a&&s&&est);$('cRows').textContent=t;$('cNote').textContent=notes.join(' ');
+return{a:a,t:t,s:st,ok:!!(a&&s),k:k,ki:ki}}
+$('cReg').addEventListener('click',function(e){var b=e.target.closest('button');if(b){R=+b.getAttribute('data-r');calc()}});
+$('cDz').addEventListener('click',function(e){var b=e.target.closest('button');if(b){P=b.getAttribute('data-p');calc()}});
+['cKind','cArea','cFurn'].forEach(function(i){$(i).addEventListener('input',calc);$(i).addEventListener('change',calc)});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',calc);else calc();
+$('cSend').addEventListener('click',function(){var c=calc(),ar=$('oArea'),m=$('oMsg'),fo=$('of'),rg=R?C.eu:C.ua,svc=C.k[c.ki]+' · '+rg;
+if(ar&&c.a)ar.value=unit==='s'?Math.round(c.a*100):c.a;
+if(fo)fo.setAttribute('data-service',C.sv+': '+svc);
+if(m&&(!m.value||m.value.indexOf(C.msg)===0))m.value=C.msg+' ('+rg+(unit==='s'?', '+c.a+' '+C.ss:'')+'): '+c.t+(c.ok?' = '+C.frm+' '+c.s+($('cPlus').hidden?'':' '+C.pl):'')})})();</script>
 </div></section>
 
 <section><div class="w" data-c="x" data-xs="from $550/m²"><img class="ux-tp" data-p="11wEIjh0kDHFtz:400,600,900,1200,1600" sizes="(max-width:759px) calc(50vw - 21px),(max-width:1366px) calc(33.3vw - 19px),calc(14.8vw + 69px)" width="1600" height="2133" alt="Tetris Hall — apartment">
