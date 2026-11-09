@@ -75,7 +75,8 @@ await test('перемикач мов: меню й перехід на EN', '/se
 });
 for (const w of [402, 1440]) await test('плитки data-c="x": розгортання/згортання, прокрутка не стрибає', '/remont-kvartyr-kyiv', w, async p => {
   const b = p.locator('[data-c="x"] .ux-h').nth(1);
-  await b.scrollIntoViewIfNeeded(); await p.waitForTimeout(200);
+  // у середину екрана: біля нижнього краю кнопку перекриває пігулка «Зв'язатися», і Playwright сам докручує сторінку перед кліком
+  await b.evaluate(e => e.scrollIntoView({ block: 'center', behavior: 'instant' })); await p.waitForTimeout(200);
   const y0 = await p.evaluate(() => scrollY), t0 = await b.evaluate(e => e.getBoundingClientRect().top);
   await b.click(); await p.waitForTimeout(400);
   must(await b.getAttribute('aria-expanded') === 'true', 'не розгорнулась');

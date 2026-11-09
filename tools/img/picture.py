@@ -5,6 +5,9 @@
 
 Пропускає: перше фото з fetchpriority=high, зображення з id (їх src міняє JS — лайтбокси), уже обгорнуті в <picture>, вміст <script>,
 файли без .avif поруч. Браузер без AVIF бере WebP з <img>.
+Фото плиток/банерів/тизерів (class ux-tp/ux-wb/ux-tz, tools/site/ux.py) не обгортаємо: їх CSS — дочірні селектори ([data-c=x]>.ux-tp).
+Відкладені фото (data-srcset / data-p, вантажить site-chrome.v1.js при прокрутці) — дістають data-av: той самий srcset в AVIF, JS бере його,
+якщо браузер показує AVIF.
 """
 import glob, os, re
 
@@ -19,8 +22,26 @@ def avif(url):
     return a if os.path.exists(os.path.join(ROOT, a.lstrip('/'))) else None
 
 
+def avif_set(ss):
+    parts = []
+    for p in ss.split(','):
+        u, *d = p.strip().split()
+        a = avif(u)
+        if not a: return None
+        parts.append(' '.join([a] + d))
+    return ','.join(parts)
+
+
 def wrap(tag):
     if re.search(r'\bid="', tag): return None
+    ds = re.search(r'\bdata-srcset="([^"]+)"', tag)
+    dp = re.search(r'\bdata-p="([^:"]+):([\d,]+)"', tag)  # коротка форма плиток: <id>:<ширини> → /img/p/<id>-<w>.webp
+    if ds or dp:  # відкладене фото: AVIF — атрибутом для JS
+        if 'data-av=' in tag: return None
+        av = avif_set(ds.group(1) if ds else ','.join(f'/img/p/{dp.group(1)}-{w}.webp {w}w' for w in dp.group(2).split(',')))
+        g = (ds or dp).group(0)
+        return tag.replace(g, g + f' data-av="{av}"', 1) if av else None
+    if re.search(r'\bclass="ux-(?:tp|wb|tz)\b', tag): return None
     if 'fetchpriority="high"' in tag: return None  # перше фото (LCP): WebP декодується швидше на слабких телефонах
     src = re.search(r'\bsrc="([^"]+)"', tag)
     if not src or not avif(src.group(1)): return None

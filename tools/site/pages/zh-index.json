@@ -14,14 +14,14 @@
  ],
  "kicker": "设计与建筑工作室 · 基辅 · 始于 2016 年",
  "hero_img": {
-  "img": "img/hero-hodos-villa-1280.webp",
-  "srcset": "/img/hero-hodos-villa-1280.webp 1280w, /img/hero-hodos-villa-1920.webp 1920w",
-  "alt": "明亮的餐厅：大理石餐桌、蓝色扶手椅和水晶吊灯 — CAS Development 的 Hodos Villa 设计项目，基辅",
+  "img": "img/hero-pidgirland-1280.webp",
+  "srcset": "/img/hero-pidgirland-1280.webp 1280w, /img/hero-pidgirland-1920.webp 1920w",
+  "alt": "木饰面客餐厅 —— CAS Development 的 Pidgirland 设计项目",
   "sizes": "100vw",
   "m": {
-   "srcset": "/img/hero-hodos-villa-m720.webp 720w, /img/hero-hodos-villa-m1080.webp 1080w",
-   "w": 1080,
-   "h": 1800
+   "srcset": "/img/hero-pidgirland-m-720.webp 720w, /img/hero-pidgirland-m-1080.webp 1080w, /img/hero-pidgirland-m-1440.webp 1440w",
+   "w": 1440,
+   "h": 2400
   }
  },
  "sections": [
