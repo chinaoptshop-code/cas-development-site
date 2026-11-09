@@ -108,7 +108,7 @@ body{padding-top:var(--sch-h)}
 .sch-mmsg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .sch-mmsg a{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 12px;border:1px solid var(--c-ln);border-radius:12px;
   font-size:.875rem;color:var(--c-tx);text-decoration:none}
-.bi::before{content:"";flex:none;width:20px;height:20px;background:center/contain no-repeat}.bi-telegram::before{background-image:url(/assets/brand/telegram.svg)}.bi-viber::before{background-image:url(/assets/brand/viber.svg)}.bi-whatsapp::before{background-image:url(/assets/brand/whatsapp.svg)}.bi-instagram::before{background-image:url(/assets/brand/instagram-96.png)}.bi-youtube::before{background-image:url(/assets/brand/youtube.svg)}
+.bi::before{content:"";flex:none;width:20px;height:20px;background:center/contain no-repeat}.bi-telegram::before{background-image:url(/assets/brand/telegram.svg)}.bi-viber::before{background-image:url(/assets/brand/viber.svg)}.bi-whatsapp::before{background-image:url(/assets/brand/whatsapp.svg)}.bi-instagram::before{background-image:url(/assets/brand/instagram-96.png)}.bi-youtube::before{background-image:url(/assets/brand/youtube.svg)}.bi-wechat::before{background-image:url(/assets/brand/wechat.svg)}
 html.sch-lock,html.sch-lock body{overflow:hidden}
 html.sch-lock .mbar{display:none!important}
 @media(min-width:1080px){.sch-menu{display:none!important}}
@@ -758,8 +758,8 @@ html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(
 @media(min-width:760px){.js [data-c=x]:not(.c-o):has(>.ux-wb){aspect-ratio:21/9;max-height:26rem}}
 .js [data-c=x]:not(.c-o)>.ux-tp{display:block!important;position:absolute;inset:0;z-index:-2;width:100%;height:100%;max-width:none;margin:0;object-fit:cover;object-position:50% 45%;background:var(--bg2,#100e0c)}
 .js [data-c=x]:not(.c-o):has(>:is(.ux-tp,.ux-wb))::before{content:""!important;display:block!important;position:absolute!important;inset:0!important;z-index:-1;margin:0!important;aspect-ratio:auto!important;max-height:none!important;min-width:0!important;
-  background:linear-gradient(to top,rgba(12,10,8,.9) 0%,rgba(12,10,8,.55) 32%,rgba(12,10,8,0) 62%)!important}
-.js [data-c=x]:not(.c-o):has(>:is(.ux-tp,.ux-wb)) h2{padding:0!important;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+  background:linear-gradient(to top,rgba(12,10,8,.92) 0%,rgba(12,10,8,.78) 34%,rgba(12,10,8,.42) 58%,rgba(12,10,8,0) 78%)!important}
+.js [data-c=x]:not(.c-o):has(>:is(.ux-tp,.ux-wb)) h2{padding:0!important;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7),0 1px 10px rgba(0,0,0,.5)}
 .js [data-c=x]:not(.c-o):has(>:is(.ux-tp,.ux-wb)) h2 .ic{display:none!important}
 .js [data-c=x]:not(.c-o):has(>:is(.ux-tp,.ux-wb)) .ux-h::after{top:18px;border-color:#fff}
 @media(min-width:760px){.js [data-c=x]:not(.c-o):has(>.ux-tp){aspect-ratio:auto;height:clamp(15rem,22vw,26rem)}}@media(min-width:2200px){.js [data-c=x]:not(.c-o):has(>.ux-tp){height:clamp(15rem,15vw,26rem)}}
@@ -845,3 +845,8 @@ html body .hxl>.hero{min-height:min(60vh,50vw,36rem);display:flex;flex-direction
 .crumbs+.hxl{margin-top:-.25rem}
 /* Фото нижче першого екрана з data-srcset/data-p (ux.py: плитки, банери, тизери) — без JS не показуємо порожній кадр (тизер — фото в <noscript>) */
 html:not(.js) img:is([data-srcset],[data-p]){display:none}
+/* «Карта проєктів» (Михайло 08.11.2026): main — сітка LIGHT, секція карти з margin:auto стискалась до ~500 px — розтягуємо на весь ряд */
+html body main>.pmap{grid-column:1/-1;width:100%;box-sizing:border-box}
+@media(max-width:899px){.pmap .cmap-list{max-height:22rem;overflow:auto}}
+/* банер-плитка: aspect-ratio + max-height звужували блок (перенесений max-width) — тягнемо на всю ширину ряду (Михайло 08.11.2026) */
+.js [data-c=x]:not(.c-o):has(>.ux-wb){width:100%;box-sizing:border-box}

@@ -47,7 +47,7 @@ T['uk'] = dict(
         p='Прокручуйте — і будинок збереться так, як на ділянці: від геодезії до ключів. Фотозвіти — раз на 1–2 тижні.',
         cta='Порахувати такий будинок', team='Хто ці люди — на сторінці', about='Про нас', more='Будівництво будинків',
         st=dict(
-            geo=('Геодезія й винесення осей', 'Геодезист Микола знімає рельєф ділянки, виносить осі будинку в натуру й ставить обноску — від неї міряємо все далі.'),
+            geo=('Геодезія й винесення осей', 'Наш геодезист знімає рельєф ділянки, виносить осі будинку в натуру й ставить обноску — від неї міряємо все далі.'),
             pit=('Котлован', 'Знімаємо родючий шар і копаємо котлован під плиту на глибину з проєкту; ґрунт — у відвал, частина піде на зворотну засипку.'),
             trench=('Траншеї під стрічку', 'Копаємо траншеї під стрічковий фундамент за осями з обноски; ширина й глибина — за розрахунком КР і глибиною промерзання.'),
             base=('Піщано-щебенева подушка', 'На дно — геотекстиль, далі пісок і щебінь шарами з ущільненням віброплитою. Геотекстиль не дає подушці змішатися з ґрунтом.'),
@@ -143,7 +143,7 @@ T['ru'] = dict(
         p='Прокручивайте — и дом соберётся так, как на участке: от геодезии до ключей. Фотоотчёты — раз в 1–2 недели.',
         cta='Рассчитать такой дом', team='Кто эти люди — на странице', about='О нас', more='Строительство домов',
         st=dict(
-            geo=('Геодезия и вынос осей', 'Геодезист Николай снимает рельеф участка, выносит оси дома в натуру и ставит обноску — от неё меряем всё дальше.'),
+            geo=('Геодезия и вынос осей', 'Наш геодезист снимает рельеф участка, выносит оси дома в натуру и ставит обноску — от неё меряем всё дальше.'),
             pit=('Котлован', 'Снимаем плодородный слой и копаем котлован под плиту на глубину из проекта; грунт — в отвал, часть уйдёт на обратную засыпку.'),
             trench=('Траншеи под ленту', 'Копаем траншеи под ленточный фундамент по осям с обноски; ширина и глубина — по расчёту КР и глубине промерзания.'),
             base=('Песчано-щебёночная подушка', 'На дно — геотекстиль, дальше песок и щебень слоями с уплотнением виброплитой. Геотекстиль не даёт подушке смешаться с грунтом.'),
@@ -239,7 +239,7 @@ T['en'] = dict(
         p='Scroll and the house comes together the way it does on site, from survey to keys. Photo reports every 1–2 weeks.',
         cta='Estimate this house', team='Meet the people behind each stage on the', about='About page', more='House construction',
         st=dict(
-            geo=('Survey and setting out', 'Our surveyor Mykola maps the terrain, sets out the house axes on the ground and builds batter boards that every later measurement starts from.'),
+            geo=('Survey and setting out', 'Our surveyor maps the terrain, sets out the house axes on the ground and builds batter boards that every later measurement starts from.'),
             pit=('Excavation', 'We strip the topsoil and dig the pit for the slab to the design depth; the spoil is stockpiled, part of it goes back as backfill.'),
             trench=('Trenches for the strip footing', 'We dig the strip-footing trenches along the axes from the batter boards; width and depth follow the structural design and frost depth.'),
             base=('Sand and gravel bed', 'Geotextile on the bottom, then sand and crushed stone in compacted layers. The geotextile keeps the bed from mixing with the soil.'),
@@ -326,7 +326,7 @@ T['en'] = dict(
 
 # ═════════════════════════════════════════════ «Ремонт з нуля» v3: квартира ≈86 м² (кухня-вітальня, спальня, дитяча/кабінет, передпокій,
 # ванна, санвузол, гардеробна), 19 етапів, варіанти «Новобудова з нуля» / «Вторинка з демонтажем», рентген мереж, пироги шарів.
-# Команда й факти — лише з CLAUDE.md (3D-замір — Владислав; меблярі — Сергій, Андрій, Олег; штатні бригади; гарантія 12 міс.; фотозвіти раз на 1–2 тижні).
+# Команда й факти — лише з CLAUDE.md (3D-замір — штатний фахівець; меблярі — Сергій, Андрій, Олег; штатні бригади; гарантія 12 міс.; фотозвіти раз на 1–2 тижні).
 # Тепла підлога в квартирі — електрична (кабель у стяжці): водяну від центрального опалення в багатоквартирному будинку зазвичай не дозволяють.
 
 T['uk']['ui'].update(
@@ -339,7 +339,7 @@ T['uk']['flat'] = dict(
     p='Прокручуйте — і квартира пройде шлях від бетону до ключів у правильному порядку робіт. Фотозвіти — раз на 1–2 тижні.',
     cta='Порахувати мій ремонт', team='Хто ці люди — на сторінці', about='Про нас', more='', svc='Ремонт квартир',
     st=dict(
-        measure=('3D-замір квартири', 'Владислав сканує квартиру 3D-сканером: хмара точок дає реальні розміри, висоти, перепади плити й кути. Прораб звіряє замір з планом і вводами мереж.'),
+        measure=('3D-замір квартири', 'Наш фахівець сканує квартиру 3D-сканером: хмара точок дає реальні розміри, висоти, перепади плити й кути. Прораб звіряє замір з планом і вводами мереж.'),
         design=('Дизайн-проєкт на підлозі', 'План переносимо на бетон: зонування, меблі, розкладка плитки, схеми розеток, світла й сантехніки. Далі все робимо за кресленнями — нашими штатними бригадами.'),
         demo=('Демонтаж і вивезення', 'Знімаємо старі покриття, стяжку, плитку й перегородки, яких немає в проєкті; стару проводку й труби — повністю. Сміття — у мішки й на вивезення. Несучі стіни не чіпаємо.'),
         demo_n=('Приймання й підготовка', 'Перевіряємо квартиру від забудовника: геометрію стін, перепади плити, вікна й вводи мереж. Прибираємо, знепилюємо й ґрунтуємо бетон.'),
@@ -396,7 +396,7 @@ T['ru']['flat'] = dict(
     p='Прокручивайте — и квартира пройдёт путь от бетона до ключей в правильном порядке работ. Фотоотчёты — раз в 1–2 недели.',
     cta='Рассчитать мой ремонт', team='Кто эти люди — на странице', about='О нас', more='', svc='Ремонт квартир',
     st=dict(
-        measure=('3D-замер квартиры', 'Владислав сканирует квартиру 3D-сканером: облако точек даёт реальные размеры, высоты, перепады плиты и углы. Прораб сверяет замер с планом и вводами сетей.'),
+        measure=('3D-замер квартиры', 'Наш специалист сканирует квартиру 3D-сканером: облако точек даёт реальные размеры, высоты, перепады плиты и углы. Прораб сверяет замер с планом и вводами сетей.'),
         design=('Дизайн-проект на полу', 'План переносим на бетон: зонирование, мебель, раскладка плитки, схемы розеток, света и сантехники. Дальше всё делаем по чертежам — нашими штатными бригадами.'),
         demo=('Демонтаж и вывоз', 'Снимаем старые покрытия, стяжку, плитку и перегородки, которых нет в проекте; старую проводку и трубы — полностью. Мусор — в мешки и на вывоз. Несущие стены не трогаем.'),
         demo_n=('Приёмка и подготовка', 'Проверяем квартиру от застройщика: геометрию стен, перепады плиты, окна и вводы сетей. Убираем, обеспыливаем и грунтуем бетон.'),
@@ -453,7 +453,7 @@ T['en']['flat'] = dict(
     p='Scroll and the apartment goes from bare concrete to keys in the right order of works. Photo reports every 1–2 weeks.',
     cta='Estimate my renovation', team='Meet the people behind each stage on the', about='About page', more='', svc='Apartment renovation',
     st=dict(
-        measure=('3D scan of the apartment', 'Vladyslav scans the apartment with a 3D scanner: the point cloud gives real sizes, heights, slab level differences and angles. The site manager checks it against the plan and service entries.'),
+        measure=('3D scan of the apartment', 'Our specialist scans the apartment with a 3D scanner: the point cloud gives real sizes, heights, slab level differences and angles. The site manager checks it against the plan and service entries.'),
         design=('Design project on the floor', 'The plan goes onto the concrete: zoning, furniture, tile layout, socket, lighting and plumbing drawings. From here everything follows the drawings, done by our in-house crews.'),
         demo=('Demolition and removal', 'We strip old finishes, screed, tiles and the partitions the project removes; old wiring and pipes go completely. Debris goes into bags and is hauled away. Load-bearing walls stay untouched.'),
         demo_n=('Handover and preparation', 'We check the developer\'s shell: wall geometry, slab level differences, windows and service entries. Then we clean, dedust and prime the concrete.'),

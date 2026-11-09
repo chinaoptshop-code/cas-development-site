@@ -14,7 +14,7 @@
   W.__casBA = 1;
   var secs = [].slice.call(d.querySelectorAll('section.bz[data-bz]'));
   if (!secs.length || !W.fetch || !W.Promise) return;
-  var VER = {"ar.flat":"1689188e","ar.house":"cae0ff2a","de.flat":"7dc08b9d","de.house":"23d62137","en.flat":"eb0db236","en.house":"13b27e1e","es.flat":"a7a3dd77","es.house":"3cf40c05","fr.flat":"bbc24298","fr.house":"11e85169","pl.flat":"ccedf374","pl.house":"477536e2","ru.flat":"458864cc","ru.house":"170f51c3","uk.flat":"8bfbad04","uk.house":"2d20aa37","zh.flat":"55e04f66","zh.house":"3dc0f262"}; /*ver*/
+  var VER = {"ar.flat":"a264ddd6","ar.house":"8fd8754e","de.flat":"459be5a2","de.house":"1a8d1c59","en.flat":"daab009c","en.house":"b9caad42","es.flat":"9234dced","es.house":"8123983d","fr.flat":"25aae2bc","fr.house":"ae4701f1","pl.flat":"7b2d0891","pl.house":"ae10c17e","ru.flat":"3e3d71b2","ru.house":"18fe5cb5","uk.flat":"1d2e9bbc","uk.house":"daac7d84","zh.flat":"f4223dd1","zh.house":"a5dd72c4"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
   // головні (.hx-home): компактна сцена в межах екрана — без довгої sticky-доріжки; етапи крокує автопрогравання (casAuto) і кнопки ←/→ (Михайло 05.11.2026)
@@ -1275,6 +1275,12 @@
     function puff(g, kind, row) {
       if (rm || !cam || !g.firstChild) return;
       var now = Date.now(); if (now - pLast < (row ? 70 : 140)) return; pLast = now;
+      // getBBox одразу після зміни DOM змушує браузер перерахувати верстку посеред кадру (довгі задачі при прокрутці, INP) —
+      // міряємо після відмалювання кадру, коли верстка вже чиста (частинки зʼявляються на ~16 мс пізніше, оку непомітно)
+      W.requestAnimationFrame(function () { setTimeout(function () { puffNow(g, kind, row); }, 0); });
+    }
+    function puffNow(g, kind, row) {
+      if (!g.isConnected || !g.firstChild) return;
       var b; try { b = g.getBBox(); } catch (e) { return; } if (!b.width) return;
       var cn = kind === 2 ? 'bz-sp' : 'bz-dp', h = '';
       for (var i = 0; i < (row ? 5 : 7); i++) {
@@ -1319,7 +1325,10 @@
         if (scene === 'flat') { xb.disabled = a < sc.net; if (xb.disabled && xr) setXr(false); }
       }
     }
-    function span() { return run.offsetHeight - pin.offsetHeight; }
+    // висота доріжки: кеш (offsetHeight на кожному кадрі прокрутки змушував перераховувати верстку); скидається на resize/measure і зміну розмірів блоку
+    var spC = null;
+    function span() { if (spC == null) spC = run.offsetHeight - pin.offsetHeight; return spC; }
+    if (W.ResizeObserver) { var spRO = new ResizeObserver(function () { spC = null; }); spRO.observe(run); spRO.observe(pin); }
     // прогрес 0…1 → етап: старт із 0.6 (на вході в блок перший етап уже намальований)
     function target() {
       if (rm) return man;
@@ -1329,7 +1338,7 @@
     // прокрутка → прогрес: casDrive (site-chrome.v1.js) — згладжування, ліміт швидкості, не більше етапу за «клацання» колеса, зсув автопрогравання
     var drive = W.casDrive ? W.casDrive({ n: function () { return n; }, min: 0.6, raw: target, view: run, render: function (c) { cur = c; render(c); } }) : null;
     function kick() { if (drive) drive.kick(); else { cur = target(); render(cur); } }
-    function measure() { top0 = parseFloat(W.getComputedStyle(pin).top) || 0; kick(); }
+    function measure() { spC = null; top0 = parseFloat(W.getComputedStyle(pin).top) || 0; kick(); }
     function go(i) {
       if (rm) { man = i + 0.85; cur = man; render(cur); return; }
       if (drive) drive.reset();

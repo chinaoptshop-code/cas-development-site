@@ -174,78 +174,39 @@
     "p": "Fest angestellte Bauleiter, Möbeltischler und Fachleute, die an Ihrem Projekt arbeiten.",
     "groups": [
      {
+      "label": "Planungsabteilung",
+      "p": "Architekten, Designer und Planer: Grundrisse, Ausführungspläne, Spezifikationen.",
+      "people": []
+     },
+     {
+      "label": "Ausführungsabteilung",
+      "p": "Bauleute und Monteure aller Gewerke, vom Rohbau bis zum Innenausbau.",
+      "people": []
+     },
+     {
       "label": "Bauleiter",
       "p": "",
-      "people": [
-       [
-        "Oleh",
-        ""
-       ],
-       [
-        "Volodymyr",
-        ""
-       ],
-       [
-        "Serhii",
-        ""
-       ],
-       [
-        "Oleksandr",
-        ""
-       ],
-       [
-        "Mykhailo",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Möbeltischler",
       "p": "",
-      "people": [
-       [
-        "Serhii",
-        ""
-       ],
-       [
-        "Andrii",
-        ""
-       ],
-       [
-        "Oleh",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Vermessung",
       "p": "",
-      "people": [
-       [
-        "Mykola",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "3D-Aufmaß",
       "p": "",
-      "people": [
-       [
-        "Vladyslav",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Drohnenaufnahmen",
       "p": "",
-      "people": [
-       [
-        "Mykhailo",
-        ""
-       ]
-      ]
+      "people": []
      }
     ]
    }

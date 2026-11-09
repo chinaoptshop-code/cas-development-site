@@ -174,78 +174,39 @@
     "p": "Jefes de obra, ebanistas y especialistas de plantilla que trabajan en su proyecto.",
     "groups": [
      {
+      "label": "Departamento de proyectos",
+      "p": "Arquitectos, diseñadores e ingenieros: distribución, planos de ejecución, especificaciones.",
+      "people": []
+     },
+     {
+      "label": "Departamento de ejecución",
+      "p": "Constructores e instaladores de cada oficio, desde la obra gruesa hasta los acabados.",
+      "people": []
+     },
+     {
       "label": "Jefes de obra",
       "p": "",
-      "people": [
-       [
-        "Oleh",
-        ""
-       ],
-       [
-        "Volodymyr",
-        ""
-       ],
-       [
-        "Serhii",
-        ""
-       ],
-       [
-        "Oleksandr",
-        ""
-       ],
-       [
-        "Mykhailo",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Ebanistas",
       "p": "",
-      "people": [
-       [
-        "Serhii",
-        ""
-       ],
-       [
-        "Andrii",
-        ""
-       ],
-       [
-        "Oleh",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Topografía",
       "p": "",
-      "people": [
-       [
-        "Mykola",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Medición 3D",
       "p": "",
-      "people": [
-       [
-        "Vladyslav",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Filmación con dron",
       "p": "",
-      "people": [
-       [
-        "Mykhailo",
-        ""
-       ]
-      ]
+      "people": []
      }
     ]
    }

@@ -130,6 +130,16 @@
       g.addEventListener('click', function () { open(g); });
       g.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); open(g); } });
     });
+    // дрібні обʼєкти генплану на телефоні (пергола, будиночок ~20 px): тап поруч (до 24 px) відкриває найближчий — зона дотику ≥44 px без зміни малюнка
+    svg.addEventListener('click', function (ev) {
+      if (focus || (ev.target.closest && ev.target.closest('.rp-o'))) return;
+      var best = null, bd = 24;
+      [].forEach.call(svg.querySelectorAll('.rp-o'), function (g) {
+        var r = g.getBoundingClientRect(), d = Math.hypot(Math.max(r.left - ev.clientX, 0, ev.clientX - r.right), Math.max(r.top - ev.clientY, 0, ev.clientY - r.bottom));
+        if (d < bd) { bd = d; best = g; }
+      });
+      if (best) open(best);
+    });
   }
   /* камера */
   function tween() {

@@ -69,7 +69,9 @@ def msgs():
             f'<a class="bi bi-telegram" href="{TG}" target="_blank" rel="noopener">Telegram</a>'
             f'<a class="bi bi-viber" href="{VB}">Viber</a>'
             f'<a class="bi bi-whatsapp" href="{WA}" target="_blank" rel="noopener">WhatsApp</a>'
-            f'<a class="bi bi-instagram" href="{IG}" target="_blank" rel="noopener">Instagram</a></p>')
+            f'<a class="bi bi-instagram" href="{IG}" target="_blank" rel="noopener">Instagram</a>'
+            # WeChat (Михайло 08.11.2026): додають за номером телефону; weixin:// відкриває застосунок
+            f'<a class="bi bi-wechat" href="weixin://" title="WeChat: +380 63 866 77 55">WeChat +380 63 866 77 55</a></p>')
 
 
 def btns(bs):
@@ -196,6 +198,10 @@ def team(x):
         f'<p class="xs-role">{e(c["role"])}</p><p>{rich(c["p"])}</p></div>' for c in x['items']) + '</div>'
     if x.get('crew'):
         cr = x['crew']
+        if not any(g.get('people') for g in cr['groups']):
+            # без імен (Михайло 08.11.2026): лише відділи й групи — компактні плашки, опис у title і в DOM
+            return wrap(x, o + f'<h3 class="xs-crew-h">{e(cr["h3"])}</h3><p class="xs-crew-p">{e(cr["p"])}</p><ul class="xs-crew-c">' + ''.join(
+                f'<li title="{a(g.get("p", ""))}"><b>{e(g["label"])}</b>' + (f'<span>{e(g["p"])}</span>' if g.get('p') else '') + '</li>' for g in cr['groups']) + '</ul>', 'xs-team')
         o += f'<h3 class="xs-crew-h">{e(cr["h3"])}</h3><p class="xs-crew-p">{e(cr["p"])}</p><div class="xs-crew">' + ''.join(
             f'<div><p class="kick">{e(g["label"])}</p>' + (f'<p>{e(g["p"])}</p>' if g.get('p') else '') + '<ul>'
             + ''.join(f'<li><b>{e(n)}</b>' + (f' <span>{e(r)}</span>' if r else '') + '</li>' for n, r in g['people']) + '</ul></div>' for g in cr['groups']) + '</div>'

@@ -79,6 +79,9 @@ VIEW = '''<!doctype html>
 <meta property="og:title" content="{title} — 3D-тур CAS Development">
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="{site}{thumb}">
+<meta property="og:url" content="{site}/tury/{slug}">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg">
 <link rel="stylesheet" href="/assets/tours/tour.v1.css?v={vcss}">
 <script type="application/ld+json">{crumbs}</script>
@@ -119,7 +122,11 @@ INDEX = '''<!doctype html>
 <link rel="canonical" href="{site}/tury">
 <script type="application/ld+json">{crumbs}</script>
 <meta property="og:title" content="3D-тури обʼєктів — CAS Development">
+<meta property="og:description" content="3D-тури CAS Development: реалізовані інтерʼєри й 360-візуалізації дизайн-проєктів. Дивіться на телефоні, ноутбуці або у VR-окулярах.">
+<meta property="og:url" content="{site}/tury">
+<meta property="og:type" content="website">
 <meta property="og:image" content="{site}{og}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg">
 <link rel="stylesheet" href="/assets/tours/tour.v1.css?v={vcss}">
 </head><body class="list">

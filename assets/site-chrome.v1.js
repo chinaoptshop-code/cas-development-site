@@ -441,15 +441,18 @@
     b.type = 'button'; b.className = 'ux-h'; b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', id);
     while (h2.firstChild) b.appendChild(h2.firstChild);
     h2.appendChild(b);
-    c.uxSet = function (open) {
+    c.uxSet = function (open, tap) {
       if (open === c.classList.contains('c-o')) return;
-      var h0 = sec.offsetHeight;
+      var h0 = sec.offsetHeight, y0 = b.getBoundingClientRect().top;
       c.classList.toggle('c-o', open); b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      // тап: плитка на всю ширину сітки переїжджає в інший ряд — тримаємо її заголовок там, де був палець (без стрибка)
+      if (tap) { var dy = b.getBoundingClientRect().top - y0; if (Math.abs(dy) > 2) W.scrollTo({ top: W.scrollY + dy, behavior: 'instant' }); }
       anim(sec, h0);
       var r = sec.getBoundingClientRect();
-      if (r.top < 0 || (open && r.top > W.innerHeight * 0.75)) sec.scrollIntoView({ block: 'start', behavior: RM ? 'auto' : 'smooth' });
+      if (!tap && (r.top < 0 || (open && r.top > W.innerHeight * 0.75))) sec.scrollIntoView({ block: 'start', behavior: RM ? 'auto' : 'smooth' });
+      else if (tap && b.getBoundingClientRect().top < 0) b.scrollIntoView({ block: 'start', behavior: 'instant' });
     };
-    b.addEventListener('click', function () { c.uxSet(!c.classList.contains('c-o')); });
+    b.addEventListener('click', function () { c.uxSet(!c.classList.contains('c-o'), true); });
   }
   // компактні картки [data-c=k]: назва + перший рядок; кнопка-шеврон (aria-expanded) або тап по картці — деталі
   function cards(g) {
