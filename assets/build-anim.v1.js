@@ -1422,11 +1422,16 @@
       run.style.setProperty('--n', n);
       bb = [1e9, 1e9, -1e9, -1e9];
       C.m = mat; sc = scene === 'flat' ? flat(S, ui, fv, lang) : house(C, S, ui);
-      var body = '', nb = '';
+      var body = '', nb = '', lz = {}, nlz = 0;
+      // перша збірка частинами (TBT/INP, телефон CPU×4): одразу — лише шари до поточного етапу (+1), решта — порожні <g> на своєму місці (z-порядок той самий),
+      // вміст доливає fillLazy() у простої; шар, до якого дійшов прогрес раніше, render() доливає сам (lazyNow)
+      var s0 = rm && !CMP && !man ? n : Math.max(cur || 0, rm ? man : 0, 0.85);
       sc.parts.forEach(function (p, i) {
         var v = typeof p.v === 'function' ? '' : p.v;
         if (typeof p.v === 'function') p.v(1); // габарити з урахуванням повної висоти
-        var h = p.s < -1 && p.e < 0 && !p.c ? v : '<g class="bz-l' + (p.c ? ' ' + p.c : '') + '" data-i="' + i + '">' + v + '</g>';
+        var st = p.s < -1 && p.e < 0 && !p.c, lazy = !st && v && p.s >= Math.floor(s0) + 1;
+        if (lazy) { lz[i] = 1; nlz++; }
+        var h = st ? v : '<g class="bz-l' + (p.c ? ' ' + p.c : '') + '" data-i="' + i + '">' + (lazy ? '' : v) + '</g>';
         if (p.n) nb += h; else body += h;
       });
       if (scene === 'flat') body = '<g class="bz-sc">' + body + '</g><g class="bz-nt">' + nb + '</g>'; else body += nb;
@@ -1456,7 +1461,8 @@
       svg = nsvg;
       svg.style.setProperty('--gw', 'url(#bz-gw-' + scene + ')'); svg.style.setProperty('--rg', 'url(#bz-rg-' + scene + ')');
       var gs = svg.querySelectorAll('g.bz-l[data-i]');
-      layers = [].map.call(gs, function (g) { var p = sc.parts[+g.getAttribute('data-i')]; return { g: g, p: p, k: -1 }; });
+      layers = [].map.call(gs, function (g) { var i = +g.getAttribute('data-i'), p = sc.parts[i]; return { g: g, p: p, k: -1, z: lz[i] ? 1 : 0 }; });
+      fillLazy(nlz);
       ghost = svg.querySelector('.ghost'); cam = svg.querySelector('g.bz-cam'); sky = svg.querySelector('.bz-sky'); stars = svg.querySelector('.bz-stars');
       act = -1; pieKey = undefined;
       chips();
@@ -1509,12 +1515,27 @@
       var pg2 = d.createElementNS('http://www.w3.org/2000/svg', 'g'); pg2.setAttribute('class', 'bz-pf'); pg2.innerHTML = h; cam.appendChild(pg2);
       setTimeout(function () { if (pg2.parentNode) pg2.parentNode.removeChild(pg2); }, 1300);
     }
+    var fTok = 0;
+    function lazyNow(Ly) { Ly.z = 0; Ly.g.innerHTML = Ly.p.v; }
+    function fillLazy(cnt) { // вміст відкладених шарів — порціями ≤ ~6 мс у простої, не більше порції на кадр (верстка нових вузлів — у своєму кадрі)
+      var tok = ++fTok, j = 0; if (!cnt) return;
+      var ric = function (f) { W.requestAnimationFrame(function () { if (W.requestIdleCallback) W.requestIdleCallback(f, { timeout: 150 }); else setTimeout(f, 0); }); };
+      function chunk() {
+        if (tok !== fTok) return;
+        var t0 = Date.now();
+        for (; j < layers.length && Date.now() - t0 < 6; j++) if (layers[j].z) lazyNow(layers[j]);
+        if (j < layers.length) ric(chunk);
+      }
+      ric(chunk);
+    }
     function render(s) {
+      if (!sc) return; // сцена ще збирається (жест, resize, casAuto до кінця збірки)
       for (var j = 0; j < layers.length; j++) {
         var Ly = layers[j], p = Ly.p, k = p.s < -1 ? 1 : clamp((s - p.s) / 0.25);
         if (p.e >= 0) k *= 1 - clamp((s - p.e) / 0.25);
         k = Math.round(k * 100) / 100;
         if (p.e >= 0 && xr && p.n) k = p.s < -1 ? 1 : clamp((s - p.s) / 0.25); // рентген: прокладені мережі видно й під оздобленням
+        if (Ly.z && k > 0) lazyNow(Ly);
         if (k === Ly.k) continue;
         var was = Ly.k; Ly.k = k;
         if (p.m === 'g') { var h = p.v(k); if (h !== Ly.h) { var grew = Ly.h != null && h.length > Ly.h.length; Ly.h = h; Ly.g.innerHTML = h; if (grew && s > sPrev) puff(Ly.g, 0, 1); } continue; }
@@ -1555,10 +1576,15 @@
       return 0.6 + clamp((top0 - run.getBoundingClientRect().top) / sp) * (n - 0.6);
     }
     // прокрутка → прогрес: casDrive (site-chrome.v1.js) — згладжування, ліміт швидкості, не більше етапу за «клацання» колеса, зсув автопрогравання
-    var drive = W.casDrive ? W.casDrive({ n: function () { return n; }, min: 0.6, raw: target, view: run, render: function (c) { cur = c; render(c); } }) : null;
+    // casDrive — лише після збірки й mode(): інакше його перший кадр (IO на вході) «знімає» прогрес до кінця збірки й потім повзе від 0.6
+    var drive = null;
+    function mkDrive() {
+      drive = W.casDrive ? W.casDrive({ n: function () { return n; }, min: 0.6, raw: target, view: run, render: function (c) { cur = c; render(c); } }) : null;
+      }
     function kick() { if (drive) drive.kick(); else { cur = target(); render(cur); } }
     function measure() { spC = null; top0 = parseFloat(W.getComputedStyle(pin).top) || 0; kick(); }
     function go(i) {
+      if (!sc) return;
       if (rm) { man = i + 0.85; cur = man; render(cur); return; }
       if (drive) drive.reset();
       var r = run.getBoundingClientRect(), y = W.pageYOffset + r.top - top0 + span() * clamp((i + 0.85 - 0.6) / (n - 0.6));
@@ -1573,7 +1599,6 @@
     W.addEventListener('resize', function () { measure(); placeCfg(); }, { passive: true });
     if (MQ) { if (MQ.addEventListener) MQ.addEventListener('change', mode); else if (MQ.addListener) MQ.addListener(mode); }
     if (MOB) { if (MOB.addEventListener) { MOB.addEventListener('change', placePie); MOB.addEventListener('change', placeCfg); } else if (MOB.addListener) { MOB.addListener(placePie); MOB.addListener(placeCfg); } }
-    if (drive && W.casAuto && !CMP) W.casAuto({ root: run, view: fig, host: ctl, before: next, cls: 'bz-ap', step: function () { return !rm && drive.step(); }, restart: drive.restart, atEnd: drive.atEnd });
     if (CMP && W.casAuto) W.casAuto({ root: run, view: fig, host: ctl, before: next, cls: 'bz-ap', // компактна: крок — go() без прокрутки сторінки
       step: function () { var a = Math.floor(man); if (a >= n - 1) return false; go(a + 1); return true; }, restart: function () { go(0); }, atEnd: function () { return Math.floor(man) >= n - 1; } });
     // жести (Михайло 05.11 «як тут прокручувати?», 06.11 «наводиш — прокручується; збоку — проклацувати»): колесо над кадром ±1 етап, клік/тап у лівій/правій
@@ -1599,12 +1624,20 @@
       });
       goA.addEventListener('pointerleave', function () { goA.style.translate = ''; });
     }
-    build();
-    placePie();
-    placeCfg();
-    render(0.6);
-    mode();
-    if (above && nxt) { var dy = nxt.getBoundingClientRect().top - nxt0; if (Math.abs(dy) > 1) { var hs = d.documentElement.style; hs.scrollBehavior = 'auto'; W.scrollBy(0, dy); hs.scrollBehavior = ''; } } // без smooth з CSS
+    // збірка трьома задачами (телефон CPU×4: жодної > 150 мс): панель етапів уже в DOM → кадр → сцена (лише шари поточного етапу) → кадр → заміри й прогрес;
+    // блок у цей час поза кадром (start() чекає виходу з кадру) або щойно перемкнений на місці — проміжний кадр без сцени непомітний
+    var nx = function (f) { if (W.requestAnimationFrame) W.requestAnimationFrame(function () { setTimeout(f, 0); }); else setTimeout(f, 16); };
+    nx(function () {
+      build();
+      nx(function () {
+        mkDrive();
+        placePie();
+        placeCfg();
+        render(0.6);
+        mode();
+        if (above && nxt) { var dy = nxt.getBoundingClientRect().top - nxt0; if (Math.abs(dy) > 1) { var hs = d.documentElement.style; hs.scrollBehavior = 'auto'; W.scrollBy(0, dy); hs.scrollBehavior = ''; } } // без smooth з CSS
+      });
+    });
   }
 
   /* ---------- ліниве завантаження: CSS + JSON → сцена, за ~3 екрани до блоку ---------- */

@@ -289,8 +289,15 @@
   var mob = W.matchMedia('(max-width:767px)');
   var app = /^\/(?:ozdoba|kabinet|konfigurator)(?:[\/.]|$)/.test(location.pathname); // власні інтерфейси: шапку не ховаємо
   var y0 = W.pageYOffset || 0, acc = 0, raf = 0, hid = false;
-  function busy() { // відкрите меню, список мов або діалог — нічого не ховаємо
-    return h.classList.contains('sch-lock') || !!d.querySelector('.sch-ld[open],#lb.open,#plb.open,#sdlb.open,.lb.on,.sheet.open,dialog[open]');
+  // відкрите меню, список мов або діалог — нічого не ховаємо. Живі колекції замість querySelector на кожному кадрі прокрутки:
+  // на сторінках зі сценами (тисячі SVG-вузлів) складний селектор обходив увесь DOM (~20 мс на кадр при CPU×4)
+  var cLd = d.getElementsByClassName('sch-ld'), cLb = d.getElementsByClassName('lb'), cSh = d.getElementsByClassName('sheet'), cDg = d.getElementsByTagName('dialog');
+  function any(c, f) { for (var i = 0; i < c.length; i++) if (f(c[i])) return true; return false; }
+  function isOpen(e) { return e.hasAttribute('open'); }
+  function busy() {
+    if (h.classList.contains('sch-lock')) return true;
+    for (var i = 0, ids = ['lb', 'plb', 'sdlb']; i < 3; i++) { var e = d.getElementById(ids[i]); if (e && e.classList.contains('open')) return true; }
+    return any(cLd, isOpen) || any(cDg, isOpen) || any(cLb, function (e) { return e.classList.contains('on'); }) || any(cSh, function (e) { return e.classList.contains('open'); });
   }
   function set(hide) {
     if (hide === hid) return; hid = hide;

@@ -140,7 +140,8 @@
     var h = '', nCab = cfg.n, s = Math.sqrt(cfg.a) * 5.6, mw = Math.sqrt(cfg.r) * 10.5, mh = mw * 0.62;
     objs = [];
     var py = Math.round(nCab > 4 ? (752 + 1.32 * s) / 2 : 352 + 1.32 * s + 12); // доріжка вздовж будиночків — між рядами / під терасами, не крізь них
-    function obj(type, idx, inner) { var k = objs.length; objs.push(type); return '<g class="rp-o" data-o="' + type + '" data-k="' + k + '" tabindex="0" role="button" aria-label="' + esc(D.o[type]) + (idx ? ' ' + idx : '') + '">' + inner + '</g>'; }
+    LZ = []; // вміст обʼєктів — після землі, доріжок і дерев, по кілька на кадр (fillO): перша збірка без задач > 150 мс на телефоні
+    function obj(type, idx, inner) { var k = objs.length; objs.push(type); LZ[k] = inner; return '<g class="rp-o" data-o="' + type + '" data-k="' + k + '" tabindex="0" role="button" aria-label="' + esc(D.o[type]) + (idx ? ' ' + idx : '') + '"></g>'; }
     h += '<rect class="rp-grass" x="0" y="0" width="1000" height="700"/><rect fill="url(#rp-gq)" width="1000" height="590"/><rect class="rp-gtx" x="0" y="0" width="1000" height="700"/>';
     var lk = 'M0 590 C 250 576 750 602 1000 584 V 700 H 0 Z', wv = ' q 25 -6 50 0' + ' t 50 0'.repeat(21);
     h += Pth('rp-lake', lk) + Pth('rp-lktx', lk) + '<g clip-path="url(#rp-lk)"><g class="rp-waves">' + Pth('rp-wave', 'M0 620' + wv) + Pth('rp-wave', 'M-25 652' + wv) + '</g></g>';
@@ -210,6 +211,7 @@
       + '<g id="rp-ub"><circle cx="3" cy="4" r="9" fill="#000" opacity=".2"/><circle r="9"/>' + P([0, 2, 4, 6].map(function (k) { var a = k * Math.PI / 4, b = a + Math.PI / 4; return 'M0 0L' + n1(9 * Math.cos(a)) + ' ' + n1(9 * Math.sin(a)) + 'L' + n1(9 * Math.cos(b)) + ' ' + n1(9 * Math.sin(b)) + 'Z'; }).join(''), 'fill="#fff" opacity=".6"') + '<circle r="1.2" fill="#5b3c22"/></g>'
       + '<g id="rp-lp"><circle r="6" fill="url(#rp-gl)" opacity=".4"/><circle r="1.9" fill="#34312c"/><circle r="1" fill="#fff3c4"/></g>'
       + '<pattern id="rp-rp" width="46" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(-8)"><path d="M2 8q6-4 12 0M24 18q7-4 14 0" stroke="#e6f8ff" stroke-width=".8" fill="none" opacity=".22"/></pattern></defs>' + h;
+    fillO();
     [].forEach.call(svg.querySelectorAll('.rp-o'), function (g) {
       g.addEventListener('click', function () { open(g); });
       g.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); open(g); } });
@@ -233,7 +235,16 @@
     if (dn && !RM) raf = W.requestAnimationFrame(tween);
   }
   function cam(t) { vbT = t; if (RM) { vb = t.slice(); } if (!raf) tween(); }
+  var LZ = [], lzT = 0;
+  function fo(g) { var k = +g.getAttribute('data-k'); if (LZ[k] != null) { g.innerHTML = LZ[k]; LZ[k] = null; } }
+  function fillO() { // порціями ≤ ~6 мс у простої, не більше порції на кадр; обʼєкт, який відкривають раніше, доливає open()
+    var t = ++lzT, gs = svg.querySelectorAll('.rp-o'), j = 0;
+    function nf(f) { W.requestAnimationFrame(function () { if (W.requestIdleCallback) W.requestIdleCallback(f, { timeout: 150 }); else setTimeout(f, 0); }); }
+    function ch() { if (t !== lzT) return; var t0 = Date.now(); while (j < gs.length && Date.now() - t0 < 6) fo(gs[j++]); if (j < gs.length) nf(ch); }
+    nf(ch);
+  }
   function open(g, auto) {
+    fo(g);
     var b = g.getBBox(), pad = 30, w = Math.max(b.width + pad * 2, 180), h = w * 0.7;
     if (b.height + pad * 2 > h) { h = b.height + pad * 2; w = h / 0.7; }
     if (w > 1000) { w = 1000; h = 700; } // не ширше генплану — без порожнечі за краєм

@@ -232,7 +232,7 @@
     L.furn.sort(function (a, b) { return a.d - b.d; });
     var order = ['ground', 'slab', 'under', 'floor', 'ao', 'back', 'fin', 'duct', 'furn', 'front', 'terr', 'ppl', 'sky', 'glow'], html = '', id = 0;
     els = [];
-    order.forEach(function (ly) { L[ly].forEach(function (o) { o.id = id++; html += '<g class="rs-e' + (o.k < 0 ? ' on' : '') + (o.x != null ? ' ux ux' + o.x : '') + '">' + o.h + '</g>'; if (o.k >= 0) els.push(o); }); });
+    order.forEach(function (ly) { L[ly].forEach(function (o) { o.id = id++; o.z = o.k >= Math.floor(prog) + 1 && o.x == null && o.h.indexOf('-night') < 0 ? 1 : 0; html += '<g class="rs-e' + (o.k < 0 ? ' on' : '') + (o.x != null ? ' ux ux' + o.x : '') + '">' + (o.z ? '' : o.h) + '</g>'; if (o.k >= 0) els.push(o); }); });
     els.sort(function (a, b) { return a.k - b.k; });
     var c = [P(0, 0, H + 1.6), P(Wd + 2.6, 0, 0), P(0, Dp + TD, 0), P(Wd, Dp + TD, 0), P(Wd + 2.6, Dp, 0)], xs = c.map(function (q) { return +q[0]; }), ys = c.map(function (q) { return +q[1]; });
     FULL = [Math.min.apply(0, xs) - 16, Math.min.apply(0, ys) - 16, Math.max.apply(0, xs) - Math.min.apply(0, xs) + 32, Math.max.apply(0, ys) - Math.min.apply(0, ys) + 32];
@@ -252,6 +252,7 @@
     night = svg.querySelector('.rs-night');
     ptr = 0; shown = -1; vb = null;
     els.forEach(function (o) { o.n = nodes[o.id]; });
+    fillL();
     apply(true);
   }
   var FOC = [];
@@ -284,9 +285,18 @@
     function cl(c, d, a, b) { c = (c + (a + b) / 2) / 2; return Math.max(b + 0.05 * d - d, Math.min(a - 0.05 * d, c - d / 2)); }
     return [cl((x0 + x1) / 2, w, M[0], M[2]), cl((y0 + y1) / 2, h, M[1], M[3]), w, h];
   }
+  // перша збірка частинами (телефон CPU×4): вміст груп наступних етапів — порожні <g> на своєму місці, доливаються в простої порціями ≤ ~6 мс, не більше порції на кадр;
+  // група, до якої дійшов прогрес раніше, доливається одразу (fz)
+  var fT = 0;
+  function fz(o) { o.z = 0; o.n.innerHTML = o.h; }
+  function fillL() {
+    var t = ++fT, j = 0, ric = function (f) { W.requestAnimationFrame(function () { if (W.requestIdleCallback) W.requestIdleCallback(f, { timeout: 150 }); else setTimeout(f, 0); }); };
+    function ch() { if (t !== fT) return; var t0 = Date.now(); for (; j < els.length && Date.now() - t0 < 6; j++) if (els[j].z) fz(els[j]); if (j < els.length) ric(ch); }
+    ric(ch);
+  }
   function apply(force) {
     var p = prog;
-    while (ptr < els.length && els[ptr].k <= p) { els[ptr].n.classList.add('on'); ptr++; }
+    while (ptr < els.length && els[ptr].k <= p) { if (els[ptr].z) fz(els[ptr]); els[ptr].n.classList.add('on'); ptr++; }
     while (ptr > 0 && els[ptr - 1].k > p) { ptr--; els[ptr].n.classList.remove('on'); }
     els.forEach(function (o) { if (o.u != null) o.n.classList.toggle('gone', p >= o.u); });
     svg.classList.toggle('rs-under', p >= FLOOR + 0.5);
