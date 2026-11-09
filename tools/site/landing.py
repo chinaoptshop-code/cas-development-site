@@ -362,7 +362,9 @@ def gallery_html(lang, items, h2=None, more=True):
         w, h = Image.open(os.path.join(ROOT, src)).size
         figs.append(f'<figure><img src="/{src}" loading="lazy" decoding="async" width="{w}" height="{h}" alt="{a(alt)}"><figcaption>{e(cap)}</figcaption></figure>')
     return ['<section><div class="w">', f'  <h2>{e(h2 or t["proj"])}</h2>', '  <div class="gal">' + ''.join(figs) + '</div>'] + (
-        [f'  <p style="margin-top:18px"><a class="btn" href="/portfolio" hreflang="uk">{t["all_portfolio"]}</a></p>'] if more else []) + ['</div></section>\n']
+        [f'  <p style="margin-top:18px"><a class="btn" href="{pf}"{hl}>{t["all_portfolio"]}</a></p>'
+         for pf in ['/' + i18n.meta(lang)['prefix'] + 'portfolio' if i18n.exists('/' + i18n.meta(lang)['prefix'] + 'portfolio') else '/portfolio']
+         for hl in ['' if pf != '/portfolio' else ' hreflang="uk"']] if more else []) + ['</div></section>\n']
 
 
 def section_html(lang, x):

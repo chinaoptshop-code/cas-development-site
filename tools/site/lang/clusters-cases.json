@@ -1,0 +1,108 @@
+{
+ "_": "Генерує tools/site/caselang.py: сторінки проєктів /proekty/<slug> і портфоліо мовами (руками не правити).",
+ "portfolio": {
+  "uk": "/portfolio",
+  "en": "/en/portfolio",
+  "ru": "/ru/portfolio"
+ },
+ "case-a-frame-house": {
+  "uk": "/proekty/a-frame-house",
+  "en": "/en/proekty/a-frame-house",
+  "ru": "/ru/proekty/a-frame-house"
+ },
+ "case-diamond": {
+  "uk": "/proekty/diamond",
+  "en": "/en/proekty/diamond",
+  "ru": "/ru/proekty/diamond"
+ },
+ "case-dolls-salon": {
+  "uk": "/proekty/dolls-salon",
+  "en": "/en/proekty/dolls-salon",
+  "ru": "/ru/proekty/dolls-salon"
+ },
+ "case-dubai-villa": {
+  "uk": "/proekty/dubai-villa",
+  "en": "/en/proekty/dubai-villa",
+  "ru": "/ru/proekty/dubai-villa"
+ },
+ "case-edelweiss": {
+  "uk": "/proekty/edelweiss",
+  "en": "/en/proekty/edelweiss",
+  "ru": "/ru/proekty/edelweiss"
+ },
+ "case-hoda-estate": {
+  "uk": "/proekty/hoda-estate",
+  "en": "/en/proekty/hoda-estate",
+  "ru": "/ru/proekty/hoda-estate"
+ },
+ "case-hodos-villa": {
+  "uk": "/proekty/hodos-villa",
+  "en": "/en/proekty/hodos-villa",
+  "ru": "/ru/proekty/hodos-villa"
+ },
+ "case-house-150": {
+  "uk": "/proekty/house-150",
+  "en": "/en/proekty/house-150",
+  "ru": "/ru/proekty/house-150"
+ },
+ "case-kitana-beach": {
+  "uk": "/proekty/kitana-beach",
+  "en": "/en/proekty/kitana-beach",
+  "ru": "/ru/proekty/kitana-beach"
+ },
+ "case-linden-penthouse": {
+  "uk": "/proekty/linden-penthouse",
+  "en": "/en/proekty/linden-penthouse",
+  "ru": "/ru/proekty/linden-penthouse"
+ },
+ "proekt-monpark": {
+  "uk": "/proekty/monpark",
+  "en": "/en/proekty/monpark",
+  "ru": "/ru/proekty/monpark"
+ },
+ "case-office-chicago": {
+  "uk": "/proekty/office-chicago",
+  "en": "/en/proekty/office-chicago",
+  "ru": "/ru/proekty/office-chicago"
+ },
+ "case-petrivtsi-house": {
+  "uk": "/proekty/petrivtsi-house",
+  "en": "/en/proekty/petrivtsi-house",
+  "ru": "/ru/proekty/petrivtsi-house"
+ },
+ "case-pidgirland": {
+  "uk": "/proekty/pidgirland",
+  "en": "/en/proekty/pidgirland",
+  "ru": "/ru/proekty/pidgirland"
+ },
+ "case-smart-villa": {
+  "uk": "/proekty/smart-villa",
+  "en": "/en/proekty/smart-villa",
+  "ru": "/ru/proekty/smart-villa"
+ },
+ "case-tetris-hall": {
+  "uk": "/proekty/tetris-hall",
+  "en": "/en/proekty/tetris-hall",
+  "ru": "/ru/proekty/tetris-hall"
+ },
+ "case-usa-house": {
+  "uk": "/proekty/usa-house",
+  "en": "/en/proekty/usa-house",
+  "ru": "/ru/proekty/usa-house"
+ },
+ "case-yablu-rest": {
+  "uk": "/proekty/yablu-rest",
+  "en": "/en/proekty/yablu-rest",
+  "ru": "/ru/proekty/yablu-rest"
+ },
+ "case-yacht-restaurant": {
+  "uk": "/proekty/yacht-restaurant",
+  "en": "/en/proekty/yacht-restaurant",
+  "ru": "/ru/proekty/yacht-restaurant"
+ },
+ "case-yacht-vip": {
+  "uk": "/proekty/yacht-vip",
+  "en": "/en/proekty/yacht-vip",
+  "ru": "/ru/proekty/yacht-vip"
+ }
+}

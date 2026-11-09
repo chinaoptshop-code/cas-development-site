@@ -34,8 +34,8 @@
     "Services"
    ],
    [
-    "/portfolio",
-    "Portfolio (UA)"
+    "/en/portfolio",
+    "Portfolio"
    ],
    [
     "/en/ozdoba",
@@ -195,8 +195,8 @@
       "Contact"
      ],
      [
-      "/portfolio",
-      "Portfolio (in Ukrainian)"
+      "/en/portfolio",
+      "Portfolio"
      ]
     ]
    ]
@@ -227,7 +227,7 @@
   "other": "",
   "cta": "Get a quote",
   "call": "Call us",
-  "all_portfolio": "Full portfolio (in Ukrainian)",
+  "all_portfolio": "Full portfolio",
   "sections": "Sections",
   "facts": [
    [
