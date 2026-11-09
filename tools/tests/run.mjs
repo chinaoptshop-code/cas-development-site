@@ -240,7 +240,7 @@ await it('менеджер бачить усе (заявки + Оздоба), CS
   await call(env, 'PATCH', '/api/admin/crm', { cookie: ck.MGR, body: { id: L2, city: 'Львівська обл.', next_contact: '2020-01-01', status: 'in_work' } });
   eq((await call(env, 'GET', '/api/admin/crm?city=' + encodeURIComponent('Львів'), { cookie: ck.MGR })).data.rows.map(x => x.id), [L2]);
   eq((await call(env, 'GET', '/api/admin/crm?overdue=1', { cookie: ck.MGR })).data.rows.map(x => x.id), [L2]);
-  eq((await call(env, 'GET', '/api/admin/crm?min=200000', { cookie: ck.MGR })).data.rows.map(x => x.id), [L1]);
+  eq((await call(env, 'GET', '/api/admin/crm?min=200000&kind=lead', { cookie: ck.MGR })).data.rows.map(x => x.id), [L1]);
   const c = await call(env, 'GET', '/api/admin/crm?format=csv', { cookie: ck.MGR });
   eq(c.status, 200); ok(/Номер;Тип/.test(c.text));
   ok(await q1("SELECT 1 FROM audit_log WHERE action = 'crm.export'"));
