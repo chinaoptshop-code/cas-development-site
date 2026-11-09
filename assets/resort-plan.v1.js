@@ -1,6 +1,5 @@
-/* «Комплекс відпочинку» (tools/site/resort.py): інтерактивний генплан. Клік/тап/Enter по обʼєкту — плавний zoom і поетапне будівництво;
-   панель цін — лише ставки CLAUDE.md × обрана площа, решта — «за кошторисом». Вантажить site-chrome.v1.js після першої прокрутки.
-   CLS 0 — сцена будується, коли блок поза кадром; reduced-motion — без анімацій, етапи кнопками; Esc — назад до генплану. */
+/* «Комплекс відпочинку» (tools/site/resort.py): генплан; клік/Enter по обʼєкту — zoom і етапи будівництва; ціни — ставки CLAUDE.md × площа.
+   CLS 0 — збирається поза кадром; reduced-motion — статично; Esc — до генплану. */
 (function () {
   'use strict';
   var W = window, d = document, sec = d.querySelector('section.rp[data-rp]');
@@ -11,110 +10,122 @@
   var cfg = { n: 8, a: 45, r: 200, s: 100, l: 1 }, svg, vb = [0, 0, 1000, 700], vbT = vb.slice(), raf = 0, focus = null, stage = 0, timer = 0, panel, cap, bar, objs = [];
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
   function el(t, c, h) { var e = d.createElement(t); if (c) e.className = c; if (h != null) e.innerHTML = h; return e; }
-  // зупинки сцени (жести, автопрогравання, панель компактної сцени): 0 — генплан, далі по одному обʼєкту кожного типу
+  // зупинки: 0 — генплан, далі обʼєкт кожного типу
   var STOPS = ['cabin', 'main', 'pool', 'pergola', 'relax', 'beach', 'bar', 'tech'], NST = STOPS.length + 1, sdU = null, CMP = false;
   function curStop() { return focus ? STOPS.indexOf(focus.getAttribute('data-o')) + 1 : 0; }
   function goStop(i) { i = Math.max(0, Math.min(NST - 1, i)); if (!i) { if (focus) close(1); return; } var g = svg.querySelector('.rp-o[data-o="' + STOPS[i - 1] + '"]'); if (g) open(g, 2); }
   function side() { if (!sdU) return; var k = curStop(), L = steps().length || 1; sdU(k, k ? ((k - 1) + (stage + 1) / L) / (NST - 1) : 0); }
   function cl(ev, v) { try { if (W.clarity) { W.clarity('event', ev); if (v) W.clarity('set', ev, v); } } catch (e) { } }
   function money(n) { return window.casUsd(n, lang); } // формат мови — site-chrome.v1.js ($1 100; en — $1,100)
-  function R(c, x, y, w, h, rx, st) { return '<rect class="' + c + '"' + (st != null ? ' data-s="' + st + '"' : '') + ' x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h.toFixed(1) + '"' + (rx ? ' rx="' + rx + '"' : '') + '/>'; }
-  function C(c, x, y, r, st) { return '<circle class="' + c + '"' + (st != null ? ' data-s="' + st + '"' : '') + ' cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) + '"/>'; }
-  function Pth(c, dd, st) { return '<path class="' + c + '"' + (st != null ? ' data-s="' + st + '"' : '') + ' d="' + dd + '"/>'; }
+  function R(c, x, y, w, h, rx) { return '<rect class="' + c + '" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + h.toFixed(1) + '"' + (rx ? ' rx="' + rx + '"' : '') + '/>'; }
+  function C(c, x, y, r) { return '<circle class="' + c + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) + '"/>'; }
+  function Pth(c, dd) { return '<path class="' + c + '" d="' + dd + '"/>'; }
   function G(st, h, c) { return '<g class="rp-p' + (c || '') + '" data-s="' + st + '">' + h + '</g>'; }
-  /* деталі: <use> символів defs, тверді тіні (світло зліва згори), вальмові дахи */
+  /* обʼєкти — косокутна аксонометрія: земля — план, висота z — вліво-вгору (видно пд. і сх. стіни) */
   function n1(v) { return Math.round(v * 10) / 10; }
   function Us(id, x, y, sc, a) { return '<use href="#rp-' + id + '" transform="translate(' + n1(x) + ' ' + n1(y) + ')' + (sc && sc !== 1 ? ' scale(' + sc + ')' : '') + '"' + (a || '') + '/>'; }
   function P(dd, a) { return '<path d="' + dd + '" ' + a + '/>'; }
   function poly(q) { return 'M' + q.map(function (p) { return n1(p[0]) + ' ' + n1(p[1]); }).join('L') + 'Z'; }
   function Rr(x, y, w, h, a) { return '<rect x="' + n1(x) + '" y="' + n1(y) + '" width="' + n1(w) + '" height="' + n1(h) + '" ' + a + '/>'; }
-  function hsh(x, y, w, h, k) { return Rr(x + 4 * k, y + 5 * k, w, h, 'rx="2" fill="#08120a" opacity=".3"'); }
-  // дах: [верх, низ, ліво, право, ребра]; i — відступ гребеня
-  function hip(x0, y0, x1, y1, i) {
-    var cy = (y0 + y1) / 2, a = x0 + i, b = x1 - i;
-    return [poly([[x0, y0], [x1, y0], [b, cy], [a, cy]]), poly([[x0, y1], [x1, y1], [b, cy], [a, cy]]), poly([[x0, y0], [a, cy], [x0, y1]]), poly([[x1, y0], [b, cy], [x1, y1]]),
-      'M' + n1(x0) + ' ' + n1(y0) + 'L' + n1(a) + ' ' + n1(cy) + 'L' + n1(x0) + ' ' + n1(y1) + 'M' + n1(x1) + ' ' + n1(y0) + 'L' + n1(b) + ' ' + n1(cy) + 'L' + n1(x1) + ' ' + n1(y1) + 'M' + n1(a) + ' ' + n1(cy) + 'H' + n1(b)];
-  }
   function star(k, ro, ri, f) { var q = []; for (var i = 0; i < k * 2; i++) { var r = i % 2 ? ri : ro, t = Math.PI * i / k; q.push([r * Math.cos(t), r * Math.sin(t)]); } return P(poly(q), f); }
   function cub(a, b, c, e, t) { var u = 1 - t; return [0, 1].map(function (j) { return u * u * u * a[j] + 3 * u * u * t * b[j] + 3 * u * t * t * c[j] + t * t * t * e[j]; }); }
+  var KX = -.6, KY = -.72, E = ' stroke="#1d1610" stroke-width=".4" stroke-linejoin="round"';
+  function pj(p) { var z = p[2] || 0; return [p[0] + KX * z, p[1] + KY * z]; }
+  function hx(c, k) { return '#' + [1, 3, 5].map(function (i) { var v = Math.min(255, Math.round(parseInt(c.substr(i, 2), 16) * k)); return (v < 16 ? '0' : '') + v.toString(16); }).join(''); }
+  function F(q, c, a) { return P(poly(q.map(pj)), 'fill="' + c + '"' + (a || '')); }
+  function V(x, y, dx, dy, z, hz, c, a) { return F([[x, y, z], [x + dx, y + dy, z], [x + dx, y + dy, z + hz], [x, y, z + hz]], c, a); }
+  function T(x, y, w, h, z, c, a) { return F([[x, y, z], [x + w, y, z], [x + w, y + h, z], [x, y + h, z]], c, a); }
+  function L3(a, b, s) { a = pj(a); b = pj(b); return P('M' + n1(a[0]) + ' ' + n1(a[1]) + 'L' + n1(b[0]) + ' ' + n1(b[1]), s); }
+  function ci(p, r, c, a) { p = pj(p); return '<circle cx="' + n1(p[0]) + '" cy="' + n1(p[1]) + '" r="' + n1(r) + '" fill="' + c + '"' + (a || '') + '/>'; }
+  // t — фактура стін
+  function box(x, y, w, h, z0, z1, c, t) { var k = z1 - z0, o = V(x, y + h, w, 0, z0, k, hx(c, .84), E) + V(x + w, y, 0, h, z0, k, hx(c, .64), E); return o + (t ? V(x, y + h, w, 0, z0, k, t) + V(x + w, y, 0, h, z0, k, t) : '') + T(x, y, w, h, z1, c, E); }
+  function sd(x, y, w, h, z) { var a = .55 * z, b = .3 * z; return P(poly([[x, y], [x + w, y], [x + w + a, y + b], [x + w + a, y + h + b], [x + a, y + h + b], [x, y + h]]), 'fill="#08120a" opacity=".32"'); }
+  function cyl(x, y, r, z0, z1, c, t) { var k = r / .94, nx = -KY * k, ny = KX * k; return ci([x, y, z0], r, hx(c, .6)) + F([[x + nx, y + ny, z0], [x + nx, y + ny, z1], [x - nx, y - ny, z1], [x - nx, y - ny, z0]], hx(c, .74)) + ci([x, y, z1], r, t || c, E); }
+  // вікно з рамою вздовж (dx, dy)
+  function wn(x, y, dx, dy, z, hz, c) { return V(x, y, dx, dy, z, hz, '#2e241b') + V(x + dx * .14, y + dy * .14, dx * .72, dy * .72, z + hz * .12, hz * .76, c || '#9fc6d4') + L3([x + dx / 2, y + dy / 2, z], [x + dx / 2, y + dy / 2, z + hz], 'stroke="#2e241b" stroke-width=".7"'); }
+  // i — відступ гребеня (0 — двосхилий, фронтон g)
+  function roof(x, y, w, h, z, r, i, c, g) {
+    var m = y + h / 2, a = x + i, b = x + w - i, Z = z + r, q = [[x, y + h, z], [x + w, y + h, z], [b, m, Z], [a, m, Z]];
+    return F([[x, y, z], [x + w, y, z], [b, m, Z], [a, m, Z]], hx(c, .72), E) + F([[x, y, z], [a, m, Z], [x, y + h, z]], hx(c, 1.12), E) + F([[x + w, y, z], [b, m, Z], [x + w, y + h, z]], hx(g || c, .62), E)
+      + F(q, c, E) + F(q, 'url(#rp-th)') + L3([a, m, Z], [b, m, Z], 'stroke="#241a12" stroke-width="1.3"');
+  }
 
   /* частини обʼєктів за етапами (st[тип]) */
   function cabin(x, y, s) {
-    var o = G(0, R('rp-found', x - 3, y - 3, s + 6, s + 6, 2) + R('rp-cc', x - 3, y - 3, s + 6, s + 6, 2));
-    var f = ''; for (var i = 0; i <= 3; i++) for (var j = 0; j <= 3; j++) if (i % 3 === 0 || j % 3 === 0) f += C('rp-post', x + s * i / 3, y + s * j / 3, 1.6);
-    f += Pth('rp-beam', 'M' + x + ' ' + y + 'h' + s + 'v' + s + 'h' + (-s) + 'z M' + x + ' ' + (y + s / 2) + 'h' + s);
-    o += G(1, f);
-    var hp = hip(x - 4, y - 4, x + s + 4, y + s + 4, s * 0.2), cx = x + s * 0.66, cz = y + s * 0.2;
-    o += G(2, R('rp-sh', x + 1, y + 3, s + 10, s + 10, 6) + hsh(x - 4, y - 4, s + 8, s + 8, 1.2) + Pth('rp-roofa', hp[2]) + Pth('rp-roofb', hp[3]) + Pth('rp-roofc', hp[0]) + Pth('rp-roofd', hp[1])
-      + Pth('rp-tlh', hp[0] + hp[1]) + Pth('rp-tlv', hp[2] + hp[3]) + P(hp[3], 'fill="#000" opacity=".2"') + P(hp[2], 'fill="#fff" opacity=".06"')
-      + P(hp[4], 'fill="none" stroke="#2a1e15" stroke-width="1.1"') + P('M' + n1(x - 4 + s * .2) + ' ' + n1(y + s / 2 - .8) + 'H' + n1(x + s + 4 - s * .2), 'stroke="#c4a888" opacity=".55" stroke-width=".6"')
-      + Rr(x - 4, y - 4, s + 8, s + 8, 'fill="none" stroke="#24180f" stroke-width=".8" rx="1"') + Rr(x + s * 0.18, y + s * 0.12, s * 0.16, s * 0.12, 'fill="#9fc6d4" stroke="#2a1e15" stroke-width=".5"')
-      + hsh(cx, cz, 4.2, 4.2, .5) + Rr(cx, cz, 4.2, 4.2, 'fill="#8a7666" stroke="#3a2c22" stroke-width=".5"') + Rr(cx + 1, cz + 1, 2.2, 2.2, 'fill="#2a1e15"'));
-    var t = R('rp-deck', x, y + s + 4, s, s * 0.32) + R('rp-wdx', x, y + s + 4, s, s * 0.32); for (var k = 1; k < 8; k++) t += Pth('rp-board', 'M' + (x + s * k / 8) + ' ' + (y + s + 4) + 'v' + (s * 0.32));
-    o += G(3, t + C('rp-table', x + s * 0.78, y + s * 1.2, 2.4) + R('rp-lounger', x + s * 0.06, y + s + 6, 4.5, s * 0.26, 1.2) + R('rp-lounger', x + s * 0.2, y + s + 6, 4.5, s * 0.26, 1.2));
-    o += G(4, R('rp-win', x + s * 0.18, y + s + 1, s * 0.22, 3) + R('rp-win', x + s * 0.6, y + s + 1, s * 0.22, 3) + C('rp-glow', x + s / 2, y + s * 1.2, s * 0.35) + C('rp-lamp', x + s / 2, y + s * 1.2, 1.6));
+    var H = s * .36, r = s * .32, z = 2.5, wc = '#c49a6c', d = s * .32, o = G(0, sd(x - 3, y - 3, s + 6, s + 6, 3) + box(x - 2, y - 2, s + 4, s + 4, 0, z, '#a59d8e', 'url(#rp-cp)')), f = '';
+    [[0, 0], [1, 0], [0, 1], [1, 1], [.5, 1], [1, .5]].forEach(function (q) { f += box(x + q[0] * (s - 3), y + q[1] * (s - 3), 3, 3, z, z + H, '#8a6a46'); });
+    o += G(1, f + box(x, y, s, 2, z + H - 2, z + H, '#7a5a3a') + box(x + s - 2, y, 2, s, z + H - 2, z + H, '#7a5a3a') + box(x, y + s - 2, s, 2, z + H - 2, z + H, '#7a5a3a'));
+    o += G(2, sd(x, y, s + 4, s, H + r) + box(x, y, s, s, z, z + H, wc, 'url(#rp-wg)') + roof(x - 3, y - 3, s + 6, s + 6, z + H - 1, r, 0, '#5d4a3a', wc) + box(x + s * .62, y + s * .26, 4, 4, z + H + r * .6, z + H + r * 1.2, '#8a7666'));
+    var t = box(x, y + s, s, d, 0, 2, '#a07850') + T(x, y + s, s, d, 2, 'url(#rp-tv)'), k;
+    for (k = 0; k < 5; k++) t += L3([x + s * k / 4, y + s + d, 2], [x + s * k / 4, y + s + d, 7], 'stroke="#5b3c22" stroke-width="1.1"');
+    t += L3([x, y + s + d, 7], [x + s, y + s + d, 7], 'stroke="#7a5233" stroke-width="1.4"') + box(x + s * .08, y + s + 3, 5, d - 5, 2, 3.5, '#f2efe6') + box(x + s * .26, y + s + 3, 5, d - 5, 2, 3.5, '#f2efe6') + cyl(x + s * .75, y + s + d / 2, 2.6, 2, 5, '#6b4a2b');
+    o += G(3, t);
+    o += G(4, ci([x + s / 2, y + s * 1.15], s * .4, 'url(#rp-gl)') + wn(x + s * .1, y + s, s * .24, 0, z + H * .3, H * .5, '#ffd98a') + V(x + s * .42, y + s, s * .16, 0, z, H * .78, '#5b3c22', E) + wn(x + s * .66, y + s, s * .24, 0, z + H * .3, H * .5, '#ffd98a')
+      + wn(x + s, y + s * .25, 0, s * .3, z + H * .3, H * .5, '#ffd98a') + ci([x + s / 2, y + s, z + H * .9], 1.5, '#fff3c4'));
     return o;
   }
   function mainB(x, y, w, h) {
-    var o = G(0, Pth('rp-duct', 'M' + x + ' ' + (y + h * 0.2) + 'h' + w) + Pth('rp-pipe', 'M' + x + ' ' + (y + h * 0.5) + 'h' + w) + Pth('rp-cable', 'M' + x + ' ' + (y + h * 0.8) + 'h' + w) + R('rp-sh', x + 3, y + 5, w + 8, h + 8, 6) + R('rp-shell', x, y, w, h, 3) + R('rp-cc', x, y, w, h, 3));
-    var t = ''; for (var i = 0; i < 4; i++) for (var j = 0; j < 3; j++) t += C('rp-table', x + w * (0.12 + i * 0.13), y + h * (0.2 + j * 0.3), 3.5);
-    o += G(1, R('rp-hall', x + 2, y + 2, w * 0.6, h - 4, 2) + t);
-    var k = R('rp-kitch', x + w * 0.64, y + 2, w * 0.34, h - 4, 2); for (i = 0; i < 3; i++) k += R('rp-steel', x + w * 0.68, y + 6 + i * (h - 12) / 3, w * 0.26, (h - 12) / 3 - 4, 1);
-    o += G(2, k);
-    var tr = R('rp-deck', x - 4, y + h + 4, w + 8, h * 0.32) + R('rp-wdx', x - 4, y + h + 4, w + 8, h * 0.32); for (i = 0; i < 5; i++) tr += C('rp-umb', x + w * (0.1 + i * 0.2), y + h + 4 + h * 0.16, 6);
-    o += G(3, tr);
-    var hp = hip(x - 4, y - 4, x + w + 4, y + h + 4, h / 2 + 4), cy = y + h / 2, a = x + h / 2 + 6, b = x + w - h / 2 - 6, pv = '', i2;
-    for (i = 0; i < 4; i++) for (i2 = 0; i2 < 2; i2++) pv += Rr(a + (b - a) * i / 4 + 1, cy + 5 + i2 * (h / 4 - 1), (b - a) / 4 - 2, h / 4 - 5, 'fill="#1f3550" stroke="#7d97b3" stroke-width=".5"');
-    for (i = 0; i < 3; i++) pv += Rr(a + (b - a) * (0.15 + i * 0.3), cy - h / 4 - 2, 9, 6, 'fill="#bfe1ec" fill-opacity=".85" stroke="#2c3034" stroke-width=".6"');
-    o += G(3, hsh(x - 4, y - 4, w + 8, h + 8, 1.6) + P(hp[0], 'fill="#727a80"') + P(hp[1], 'fill="#40464b"') + P(hp[2], 'fill="#5e656b"') + P(hp[3], 'fill="#4a5055"')
-      + P(hp[0] + hp[1], 'fill="url(#rp-sv)"') + P(hp[2] + hp[3], 'fill="url(#rp-sn)"') + P(hp[4], 'fill="none" stroke="#2c3034" stroke-width="1.4"')
-      + Rr(x - 4, y - 4, w + 8, h + 8, 'fill="none" stroke="#25292c" stroke-width="1"') + pv, ' rp-rf');
-    return o;
+    var H = 22, z = 2, i, j, k = '', t = '', p = '', u = '', wc = '#e2dacb', o = sd(x, y, w, h, H + 14) + box(x - 2, y - 2, w + 4, h + 4, 0, z, '#8f8a80', 'url(#rp-cp)');
+    ['#5aa0d8', '#e0503c', '#f0b44c'].forEach(function (c, n) { o += L3([x, y + h * (.25 + n * .25), z], [x + w, y + h * (.25 + n * .25), z], 'stroke="' + c + '" stroke-width="2.4"'); });
+    o += box(x, y, w, 3, z, H, wc) + box(x, y, 3, h, z, H, wc);
+    for (i = 0; i < 5; i++) o += wn(x + 8 + i * w * .19, y + 3, w * .1, 0, z + 6, 10);
+    for (i = 0; i < 4; i++) for (j = 0; j < 3; j++) t += cyl(x + w * (.1 + i * .13), y + h * (.25 + j * .26), 3.6, z, z + 4.5, '#6b4a2b');
+    k += T(x + w * .62, y + 3, w * .38, h - 3, z, '#e4e2dc') + T(x + w * .62, y + 3, w * .38, h - 3, z, 'url(#rp-th)') + box(x + w * .62, y + 3, 2, h - 3, z, H * .6, wc);
+    for (i = 0; i < 3; i++) k += box(x + w * .7, y + 9 + i * (h - 16) / 3, w * .24, (h - 16) / 3 - 4, z, z + 6, '#9aa3a8');
+    for (i = 0; i < 5; i++) p += L3([x + w * (.1 + i * .2), y + h + 4 + h * .16, 2], [x + w * (.1 + i * .2), y + h + 4 + h * .16, 13], 'stroke="#5b3c22" stroke-width="1.2"') + Us('ub', x + w * (.1 + i * .2) + KX * 13, y + h + 4 + h * .16 + KY * 13, .75, ' fill="#f2efe6"');
+    var a = x + h / 2, b = x + w - h / 2, Y = y + h + 4, D = h / 2 + 4, y0, y1, x0, x1, zs = function (v) { return H + 16 * (Y - v) / D; };
+    for (i = 0; i < 6; i++) u += wn(x + 6 + i * (w - 12) / 6, y + h, (w - 12) / 6 - 5, 0, z + 5, 11);
+    u = box(x, y, w, h, z, H, wc, 'url(#rp-cp)') + u + wn(x + w, y + h * .2, 0, h * .25, z + 5, 11) + wn(x + w, y + h * .55, 0, h * .25, z + 5, 11) + roof(x - 4, y - 4, w + 8, h + 8, H, 16, D, '#6a7278');
+    for (i = 0; i < 4; i++) for (j = 0; j < 2; j++) { y0 = y + h - 4 - j * h / 5; y1 = y0 - h / 5 + 3; x0 = a + (b - a) * i / 4 + 1; x1 = x0 + (b - a) / 4 - 2; u += F([[x0, y0, zs(y0)], [x1, y0, zs(y0)], [x1, y1, zs(y1)], [x0, y1, zs(y1)]], '#1f3550', ' stroke="#7d97b3" stroke-width=".5"'); }
+    return G(0, o) + G(1, T(x + 3, y + 3, w * .59, h - 3, z, '#c8b08a') + T(x + 3, y + 3, w * .59, h - 3, z, 'url(#rp-wg)') + t) + G(2, k)
+      + G(3, box(x - 4, y + h + 2, w + 8, h * .34, 0, 2, '#a07850') + T(x - 4, y + h + 2, w + 8, h * .34, 2, 'url(#rp-tv)') + p) + G(3, u, ' rp-rf'); // дах — лише на генплані, відкритий — розріз
   }
   function pergola(x, y, w, h) {
-    var o = '', p = ''; [[0, 0], [1, 0], [0, 1], [1, 1], [0.5, 0], [0.5, 1]].forEach(function (q) { p += R('rp-pst', x + q[0] * w - 2, y + q[1] * h - 2, 4, 4); });
-    o += G(0, p) + G(1, R('rp-bm', x - 3, y - 1, w + 6, 3) + R('rp-bm', x - 3, y + h - 2, w + 6, 3));
-    var l = R('rp-sh', x + 2, y + 4, w + 6, h + 6, 4); for (var i = 1; i < 12; i++) l += Pth('rp-lv', 'M' + (x + w * i / 12) + ' ' + y + 'v' + h); o += G(2, l);
-    o += G(3, C('rp-glow', x + w / 2, y + h / 2, w * 0.45) + C('rp-lamp', x + w / 2, y + h / 2, 2));
-    return o;
+    var Z = 16, o = '', l = '', i;
+    [[0, 0], [1, 0], [0, 1], [1, 1], [.5, 0], [.5, 1]].forEach(function (q) { o += box(x + q[0] * w - 2, y + q[1] * h - 2, 4, 4, 0, Z, '#5b3c22'); });
+    for (i = 1; i < 12; i++) l += Rr(x + w * i / 12 + Z * .55, y + Z * .3, 2.4, h, 'fill="#08120a" opacity=".22"') + box(x + w * i / 12 - 1, y - 3, 2, h + 6, Z + 3, Z + 5, '#c9a57a');
+    return G(0, o) + G(1, box(x - 4, y - 2, w + 8, 3, Z, Z + 3, '#7a5233') + box(x - 4, y + h - 1, w + 8, 3, Z, Z + 3, '#7a5233')) + G(2, l)
+      + G(3, ci([x + w / 2, y + h / 2], w * .45, 'url(#rp-gl)') + L3([x + w / 2, y + h / 2, Z + 3], [x + w / 2, y + h / 2, 9], 'stroke="#34312c" stroke-width=".6"') + ci([x + w / 2, y + h / 2, 9], 2.2, '#fff3c4'));
   }
   function bar(x, y, w, h) {
-    var o = G(0, R('rp-found', x - 4, y - 4, w + 8, h + 8, 3));
-    o += G(1, C('rp-post', x, y, 2) + C('rp-post', x + w, y, 2) + C('rp-post', x, y + h, 2) + C('rp-post', x + w, y + h, 2));
-    var bs = ''; for (var i0 = 0; i0 < 4; i0++) bs += C('rp-table', x + 12 + (w - 24) * i0 / 3, y + h + 1, 2.2);
-    o += G(2, bs + Pth('rp-counter', 'M' + (x + 6) + ' ' + (y + h - 6) + 'v' + (-(h - 14)) + 'h' + (w - 12) + 'v' + (h - 14)));
-    o += G(3, R('rp-sh', x - 2, y - 1, w + 14, h * 0.55 + 8, 6) + R('rp-canopy', x - 6, y - 6, w + 12, h * 0.55, 4));
-    var s = ''; for (var i = 0; i < 9; i++) s += C('rp-bulb', x - 4 + (w + 8) * i / 8, y + h * 0.55 + Math.sin(i) * 2, 1.6); o += G(4, s + C('rp-glow', x + w / 2, y + h / 2, w * 0.5));
-    return o;
+    var Z = 18, o = G(0, sd(x - 4, y - 4, w + 8, h + 8, 3) + box(x - 4, y - 4, w + 8, h + 8, 0, 2, '#a59d8e', 'url(#rp-cp)')), p = '', s = '', i;
+    [[0, 0], [1, 0], [0, 1], [1, 1]].forEach(function (q) { p += box(x + q[0] * w - 1.5, y + q[1] * h - 1.5, 3, 3, 2, Z, '#6b4a2b'); }); o += G(1, p);
+    for (i = 0; i < 4; i++) s += cyl(x + 12 + (w - 24) * i / 3, y + h - 2, 2.2, 2, 6.5, '#3a2c22') + box(x + 10 + i * 13, y + 4, 3, 2, 10, 14, ['#3f7a4a', '#a0442f', '#d8b25a', '#4f6fa0'][i]);
+    o += G(2, box(x + 6, y + 3, w - 12, 4, 2, 10, '#5b3c22') + box(x + 6, y + h - 12, w - 12, 5, 2, 9, '#7a5233') + s);
+    var q = [[x - 6, y - 6, Z + 7], [x + w + 6, y - 6, Z + 7], [x + w + 6, y + h * .5, Z], [x - 6, y + h * .5, Z]];
+    o += G(3, F(q, '#d8c39a', E) + F(q, 'url(#rp-tv)') + V(x - 6, y + h * .5, w + 12, 0, Z - 1.5, 1.5, '#a8925f'));
+    for (s = '', i = 0; i < 9; i++) s += ci([x - 4 + (w + 8) * i / 8, y + h, Z - 2 - Math.sin(i * 1.1) * 1.4], 1.6, '#ffe9a8');
+    return o + G(4, ci([x + w / 2, y + h], w * .5, 'url(#rp-gl)') + s);
   }
   function pool(x, y, w, h) {
-    var dk = Rr(x - 16, y - 12, w + 32, h + 42, 'rx="6" fill="#d6c9ab"') + Rr(x - 16, y - 12, w + 32, h + 42, 'rx="6" class="rp-cc"'), q;
+    var dk = Rr(x - 16, y - 12, w + 32, h + 42, 'rx="6" fill="#d6c9ab"') + Rr(x - 16, y - 12, w + 32, h + 42, 'rx="6" class="rp-cc"'), q, a = 6, b = 11, t = '';
     for (q = 0; q < 6; q++) dk += Us('ls', x + 6 + q * 25 + (q > 2 ? 12 : 0), y + h + 14, 1, ' fill="' + ['#6fb7c9', '#e9b25a'][q % 2] + '"');
     dk += Us('ub', x + w / 2 + 3, y + h + 20, 1.05, ' fill="#bf9148"') + Us('pl', x + 9, y + h + 21, 1, ' fill="#c98a6a"') + Us('pl', x + 121, y + h + 21, 1, ' fill="#5d7fa3"');
-    var o = G(4, dk) + G(0, R('rp-dig', x - 6, y - 6, w + 12, h + 12, 10)) + G(1, R('rp-shellp', x - 3, y - 3, w + 6, h + 6, 9) + R('rp-cc', x - 3, y - 3, w + 6, h + 6, 9)) + G(2, R('rp-wp', x, y, w, h, 8));
-    var t = ''; for (var i = 1; i < 10; i++) t += Pth('rp-tile', 'M' + (x + w * i / 10) + ' ' + y + 'v' + h); for (i = 1; i < 5; i++) t += Pth('rp-tile', 'M' + x + ' ' + (y + h * i / 5) + 'h' + w);
-    o += G(3, R('rp-lining', x, y, w, h, 8) + t);
-    o += G(4, R('rp-water', x + 2, y + 2, w - 4, h - 4, 7) + R('rp-wtx', x + 2, y + 2, w - 4, h - 4, 7) + Pth('rp-ripple', 'M' + (x + 10) + ' ' + (y + h * 0.4) + 'q 10 -5 20 0 t 20 0 t 20 0 t 20 0') + C('rp-ulight', x + 8, y + h / 2, 5) + C('rp-ulight', x + w - 8, y + h / 2, 5)
-      + P(poly([[x + 4, y + 3], [x + w * 0.42, y + 3], [x + w * 0.2, y + h - 3], [x + 4, y + h - 3]]), 'fill="#fff" opacity=".13"') + P('M' + n1(x + w * 0.55) + ' ' + n1(y + 10) + 'l12 -3', 'stroke="#fff" opacity=".75" stroke-width="1.4" stroke-linecap="round"')
-      + '<circle cx="' + n1(x + w * 0.66) + '" cy="' + n1(y + h * 0.62) + '" r="4.5" fill="none" stroke="#e6f8ff" opacity=".6"/>' + Us('pp', x + w * 0.66, y + h * 0.62, 0.9, ' fill="#3f8fb3"'));
-    return o;
+    // видно пн. і зх. стінки й дно
+    function pit(c, e) { return Rr(x - e, y - e, w + 2 * e, h + 2 * e, 'fill="' + hx(c, .55) + '"') + P(poly([[x, y], [x + w, y], [x + w, y + b], [x + a, y + b]]), 'fill="' + hx(c, .8) + '"') + P(poly([[x, y], [x + a, y + b], [x + a, y + h], [x, y + h]]), 'fill="' + hx(c, .66) + '"') + Rr(x + a, y + b, w - a, h - b, 'fill="' + c + '"'); }
+    for (q = 1; q < 10; q++) t += 'M' + n1(x + w * q / 10) + ' ' + y + 'l' + a + ' ' + b + 'V' + (y + h);
+    for (q = 1; q < 4; q++) t += 'M' + (x + a) + ' ' + n1(y + b + (h - b) * q / 4) + 'H' + (x + w);
+    return G(4, dk) + G(0, pit('#7a5c3c', 6)) + G(1, pit('#a8a397', 3)) + G(2, pit('#5f8494', 3)) + G(3, pit('#cfe7ef', 3) + P(t, 'stroke="#8fbccb" stroke-width=".6" fill="none"'))
+      + G(4, R('rp-water', x, y, w, h, 2) + R('rp-wtx', x, y, w, h, 2) + Rr(x - 3, y - 3, w + 6, h + 6, 'rx="3" fill="none" stroke="#efe9dc" stroke-width="4"') + Pth('rp-ripple', 'M' + (x + 10) + ' ' + (y + h * .4) + 'q 10 -5 20 0 t 20 0 t 20 0 t 20 0') + C('rp-ulight', x + 8, y + h / 2, 5) + C('rp-ulight', x + w - 8, y + h / 2, 5)
+      + P(poly([[x + 4, y + 3], [x + w * .42, y + 3], [x + w * .2, y + h - 3], [x + 4, y + h - 3]]), 'fill="#fff" opacity=".13"') + L3([x + w - 20, y, 0], [x + w - 20, y, 9], 'stroke="#c7d0d6" stroke-width="1.4" fill="none"') + L3([x + w - 12, y, 0], [x + w - 12, y, 9], 'stroke="#c7d0d6" stroke-width="1.4"')
+      + '<circle cx="' + n1(x + w * .66) + '" cy="' + n1(y + h * .62) + '" r="4.5" fill="none" stroke="#e6f8ff" opacity=".6"/>' + Us('pp', x + w * .66, y + h * .62, .9, ' fill="#3f8fb3"'));
   }
   function tech(x, y) {
-    var o = G(0, R('rp-tb', x, y, 58, 48, 2) + C('rp-boil', x + 18, y + 24, 9) + C('rp-boil', x + 40, y + 24, 9));
-    o += G(1, R('rp-tb', x + 66, y, 40, 48, 2) + R('rp-epanel', x + 72, y + 8, 28, 32, 1) + Pth('rp-cable', 'M' + (x + 86) + ' ' + (y + 48) + 'v 20'));
-    o += G(2, R('rp-tb', x + 114, y, 86, 48, 6) + C('rp-tank', x + 136, y + 24, 14) + C('rp-tank', x + 176, y + 24, 14));
-    o += G(3, R('rp-store', x, y + 58, 86, 62, 2));
-    var p = R('rp-park', x + 94, y + 58, 106, 62, 2); for (var i = 1; i < 5; i++) p += Pth('rp-stripe', 'M' + (x + 94 + 106 * i / 5) + ' ' + (y + 58) + 'v 34');
-    [100, 142].forEach(function (c) { p += hsh(x + c, y + 64, 14, 24, .5) + R('rp-car', x + c, y + 64, 14, 24, 3) + Rr(x + c + 2, y + 69, 10, 4.5, 'rx="1" fill="#2b3640"') + Rr(x + c + 2, y + 82, 10, 3, 'rx="1" fill="#2b3640"'); });
-    o += G(4, p);
-    return o;
+    var o = G(0, sd(x, y, 58, 48, 22) + box(x, y, 58, 48, 0, 20, '#7a8086', 'url(#rp-tv)') + V(x + 8, y + 48, 10, 0, 0, 14, '#3a3a3a', E) + cyl(x + 46, y + 12, 3.2, 20, 34, '#9aa3a8') + cyl(x + 30, y + 22, 6, 20, 24, '#b04a3a'));
+    o += G(1, sd(x + 66, y, 40, 48, 18) + box(x + 66, y, 40, 48, 0, 16, '#8d9296') + V(x + 76, y + 48, 12, 0, 6, 8, '#d1c46a', E) + L3([x + 86, y + 48, 0], [x + 86, y + 70, 0], 'class="rp-cable"'));
+    o += G(2, box(x + 114, y, 86, 48, 0, 1.5, '#a59d8e') + cyl(x + 136, y + 24, 14, 1.5, 18, '#5a7f8a', '#7aa0aa') + cyl(x + 176, y + 24, 14, 1.5, 18, '#5a7f8a', '#7aa0aa') + L3([x + 150, y + 24, 8], [x + 162, y + 24, 8], 'stroke="#c7d0d6" stroke-width="2.4"'));
+    var p = T(x + 94, y + 58, 106, 62, 0, '#4a4a4a'), i;
+    o += G(3, sd(x, y + 58, 86, 62, 20) + box(x, y + 58, 86, 62, 0, 18, '#9a8f7e', 'url(#rp-tv)') + V(x + 22, y + 120, 42, 0, 0, 13, '#5f5a52', E) + V(x + 22, y + 120, 42, 0, 0, 13, 'url(#rp-th)'));
+    for (i = 1; i < 5; i++) p += Pth('rp-stripe', 'M' + (x + 94 + 106 * i / 5) + ' ' + (y + 58) + 'v 34');
+    [[100, '#c9c2b2'], [142, '#6f8fa8'], [163, '#a0442f']].forEach(function (c) { p += sd(x + c[0], y + 64, 14, 24, 6) + box(x + c[0], y + 64, 14, 24, .5, 5, c[1]) + box(x + c[0] + 1.5, y + 70, 11, 11, 5, 9, '#2b3640') + T(x + c[0] + 2, y + 70.5, 10, 10, 9.1, c[1]); });
+    [[96, 60], [196, 60], [96, 92], [196, 92]].forEach(function (c) { p += box(x + c[0] - 1, y + c[1] - 1, 2, 2, 0, 16, '#5b5f63'); });
+    return o + G(4, p + T(x + 94, y + 58, 104, 36, 16, '#b7c3c8', E + ' opacity=".55"')); // навіс напівпрозорий
   }
   function relax(x, y) {
-    var o = G(0, C('rp-pad', x, y, 46) + C('rp-cc', x, y, 46));
-    var l = ''; for (var i = 0; i < 4; i++) l += R('rp-lounger', x - 40 + i * 16, y - 34, 10, 22, 3); o += G(1, l);
-    o += G(2, C('rp-firering', x - 8, y + 12, 11) + C('rp-fire', x - 8, y + 12, 5) + C('rp-glow', x - 8, y + 12, 20));
-    o += G(3, C('rp-tub', x + 24, y + 14, 13) + C('rp-tubw', x + 24, y + 14, 10));
-    return o;
+    var o = G(0, C('rp-pad', x, y, 46) + C('rp-cc', x, y, 46)), l = '', i, a;
+    for (i = 0; i < 4; i++) { a = x - 40 + i * 16; l += box(a, y - 28, 10, 16, 0, 2.5, '#f2efe6') + F([[a, y - 28, 2.5], [a + 10, y - 28, 2.5], [a + 10, y - 33, 9], [a, y - 33, 9]], '#e0d9c6', E); }
+    o += G(1, l) + G(2, ci([x - 8, y + 12], 20, 'url(#rp-gl)') + cyl(x - 8, y + 12, 11, 0, 4, '#6b625a', '#3a332c') + ci([x - 8, y + 12, 4], 5, '#ff9b3d', ' class="rp-fire"'));
+    return o + G(3, sd(x + 11, y + 1, 26, 26, 7) + cyl(x + 24, y + 14, 13, 0, 7, '#7a5a3a') + ci([x + 24, y + 14, 7], 10, '#7fd3ff'));
   }
   function beach(y) {
     var sd = 'M0 ' + y + ' C 250 ' + (y - 14) + ' 750 ' + (y + 12) + ' 1000 ' + (y - 6) + ' V ' + (y + 70) + ' H 0 Z', o = G(0, Pth('rp-sand', sd) + Pth('rp-stx', sd) + Rr(0, y + 52, 1000, 18, 'fill="url(#rp-ws)"'));
@@ -131,7 +142,8 @@
     var py = Math.round(nCab > 4 ? (752 + 1.32 * s) / 2 : 352 + 1.32 * s + 12); // доріжка вздовж будиночків — між рядами / під терасами, не крізь них
     function obj(type, idx, inner) { var k = objs.length; objs.push(type); return '<g class="rp-o" data-o="' + type + '" data-k="' + k + '" tabindex="0" role="button" aria-label="' + esc(D.o[type]) + (idx ? ' ' + idx : '') + '">' + inner + '</g>'; }
     h += '<rect class="rp-grass" x="0" y="0" width="1000" height="700"/><rect fill="url(#rp-gq)" width="1000" height="590"/><rect class="rp-gtx" x="0" y="0" width="1000" height="700"/>';
-    h += Pth('rp-lake', 'M0 590 C 250 576 750 602 1000 584 V 700 H 0 Z') + Pth('rp-lktx', 'M0 590 C 250 576 750 602 1000 584 V 700 H 0 Z') + '<g clip-path="url(#rp-lk)"><g class="rp-waves">' + Pth('rp-wave', 'M0 620 q 25 -6 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0') + Pth('rp-wave', 'M-25 652 q 25 -6 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0') + '</g></g>';
+    var lk = 'M0 590 C 250 576 750 602 1000 584 V 700 H 0 Z', wv = ' q 25 -6 50 0' + ' t 50 0'.repeat(21);
+    h += Pth('rp-lake', lk) + Pth('rp-lktx', lk) + '<g clip-path="url(#rp-lk)"><g class="rp-waves">' + Pth('rp-wave', 'M0 620' + wv) + Pth('rp-wave', 'M-25 652' + wv) + '</g></g>';
     // доріжки: бордюр, покриття, шви; ліхтарі
     var e1 = 480 - mw / 2, py2 = 150 + mh / 2 + 34, pt = [[[200, 160], [300, 170], [380, 170], [e1, 170]], [[480, py2], [480, 280], [500, 300], [500, 360]], [[500, 360], [500, 420], [520, 470], [520, 540]],
       [[120, py], [300, py - 4], [700, py - 4], [900, py]], [[160, 470], [240, 500], [300, 520], [360, 540]], [[700, 480], [760, 500], [800, 505], [830, 510]]], pd = '', lp = '';
@@ -178,7 +190,7 @@
       + '<linearGradient id="rp-wt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4fb2d6"/><stop offset="1" stop-color="#1f6f95"/></linearGradient>'
       // тіні й фактури — напівпрозорі шари поверх кольору
       + '<radialGradient id="rp-shg"><stop offset=".45" stop-color="#0a1407" stop-opacity=".42"/><stop offset="1" stop-color="#0a1407" stop-opacity="0"/></radialGradient>'
-      + '<clipPath id="rp-lk"><path d="M0 590 C 250 576 750 602 1000 584 V 700 H 0 Z"/></clipPath>'
+      + '<clipPath id="rp-lk"><path d="' + lk + '"/></clipPath>'
       + '<pattern id="rp-gp" width="14" height="12" patternUnits="userSpaceOnUse"><path d="M2 9l.6-2.2M8 4l-.5-2M11 11l.7-2" stroke="#7fb05a" opacity=".14" stroke-width=".7"/><circle cx="5" cy="2" r=".8" fill="#1e3317" opacity=".35"/></pattern>'
       + '<pattern id="rp-th" width="6" height="2.6" patternUnits="userSpaceOnUse"><path d="M0 2.3h6" stroke="#1c120b" opacity=".35" stroke-width=".5"/></pattern>'
       + '<pattern id="rp-tv" width="2.6" height="6" patternUnits="userSpaceOnUse"><path d="M2.3 0v6" stroke="#1c120b" opacity=".35" stroke-width=".5"/></pattern>'
@@ -186,8 +198,6 @@
       + '<pattern id="rp-cp" width="9" height="7" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".5" fill="#fff" opacity=".1"/><circle cx="6" cy="4.5" r=".6" fill="#000" opacity=".14"/></pattern>'
       + '<pattern id="rp-sp" width="7" height="6" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".6" fill="#a88f5c" opacity=".35"/><circle cx="4.5" cy="4" r=".5" fill="#fff8e0" opacity=".4"/></pattern>'
       + '<pattern id="rp-gq" width="190" height="150" patternUnits="userSpaceOnUse"><ellipse cx="45" cy="35" rx="42" ry="26" fill="#86b25c" opacity=".09"/><ellipse cx="135" cy="100" rx="52" ry="30" fill="#162a10" opacity=".13"/><ellipse cx="140" cy="25" rx="24" ry="16" fill="#9cc46c" opacity=".07"/><ellipse cx="30" cy="120" rx="30" ry="19" fill="#162a10" opacity=".09"/></pattern>'
-      + '<pattern id="rp-sv" width="4" height="9" patternUnits="userSpaceOnUse"><path d="M.5 0v9" stroke="#c7d0d6" opacity=".28" stroke-width=".6"/></pattern>'
-      + '<pattern id="rp-sn" width="9" height="4" patternUnits="userSpaceOnUse"><path d="M0 .5h9" stroke="#c7d0d6" opacity=".22" stroke-width=".6"/></pattern>'
       + '<linearGradient id="rp-ws" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9c8150" stop-opacity="0"/><stop offset="1" stop-color="#9c8150" stop-opacity=".5"/></linearGradient>'
       + '<g id="rp-ta"><circle cx="4" cy="6" r="15" fill="url(#rp-shg)"/>' + [0, 1, 2, 3, 4, 5, 6].map(function (i) { return '<circle cx="' + n1(7.5 * Math.cos(i * .9)) + '" cy="' + n1(7.5 * Math.sin(i * .9)) + '" r="5" fill="#29501f"/>'; }).join('')
       + '<circle r="9" fill="#2f5a25"/><circle cx="-2.5" cy="-2.5" r="6.5" fill="#3f7431"/><circle cx="-4.5" cy="-5" r="3" fill="#5e9a47"/></g>'
@@ -204,7 +214,7 @@
       g.addEventListener('click', function () { open(g); });
       g.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); open(g); } });
     });
-    // телефон: тап поруч (≤24 px) відкриває найближчий обʼєкт — зона дотику ≥44 px без зміни малюнка
+    // тап ≤24 px поруч — найближчий обʼєкт
     svg.addEventListener('click', function (ev) {
       if (focus || (ev.target.closest && ev.target.closest('.rp-o'))) return;
       var best = null, bd = 24;
@@ -231,8 +241,8 @@
     cam([Math.max(0, Math.min(1000 - w, b.x + b.width / 2 - w / 2)), Math.max(0, Math.min(700 - h, b.y + b.height / 2 - h / 2)), w, h]); // кадр — у межах генплану
     stage = 0; show(); back.hidden = false; nav.hidden = false;
     clearInterval(timer);
-    if (auto === 2) { if (!RM) timer = setInterval(function () { if (stage < steps().length - 1) { stage++; show(); } else clearInterval(timer); }, 950); return; } // жест / номер етапу: етапи обʼєкта програються самі, без фокуса
-    if (auto) return; // автопрогравання (casAuto): етапи — його кроками, без фокуса й аналітики
+    if (auto === 2) { if (!RM) timer = setInterval(function () { if (stage < steps().length - 1) { stage++; show(); } else clearInterval(timer); }, 950); return; } // жест: етапи самі, без фокуса
+    if (auto) return; // casAuto: без фокуса й аналітики
     tourEnd = false;
     if (!RM) timer = setInterval(function () { if (stage < steps().length - 1) { stage++; show(); } else clearInterval(timer); }, 950);
     cl('rp_obj', g.getAttribute('data-o'));
@@ -286,7 +296,7 @@
     cap = el('p', 'rp-cap', '<span>' + esc(U.tap) + '</span>'); cap.setAttribute('aria-live', 'polite');
     back = el('button', 'btn rp-back', esc(U.back)); back.type = 'button'; back.hidden = true; back.addEventListener('click', function () { close(); });
     nav = el('div', 'la-nav rp-nav'); nav.hidden = true;
-    var pb = el('button', '', '‹') /* RTL: Unicode сам віддзеркалює ‹ › (Bidi_Mirrored), тож символи ті самі, що в LTR */, nb = el('button', '', '›');
+    var pb = el('button', '', '‹') /* RTL: ‹ › дзеркаляться самі */, nb = el('button', '', '›');
     pb.type = nb.type = 'button'; pb.setAttribute('aria-label', U.step + ' −'); nb.setAttribute('aria-label', U.step + ' +');
     pb.addEventListener('click', function () { clearInterval(timer); if (stage > 0) { stage--; show(); } });
     nb.addEventListener('click', function () { clearInterval(timer); if (stage < steps().length - 1) { stage++; show(); } });
@@ -307,7 +317,7 @@
     grid.appendChild(stage0); grid.appendChild(side);
     list.parentNode.insertBefore(ctl, list); list.parentNode.insertBefore(grid, list);
     list.classList.add('la-sr');
-    CMP = !RM && !!d.querySelector('.hx-home'); // головні: єдиний вигляд компактних сцен — кадр + панель casSide (Михайло 08.11.2026)
+    CMP = !RM && !!d.querySelector('.hx-home'); // головні: кадр + casSide (08.11.2026)
     var auHost = apw;
     if (CMP && W.casSide) {
       sec.classList.add('la-cmp', 'rp-cmp'); stage0.classList.add('la-stick');
@@ -322,18 +332,17 @@
     sec.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && focus) close(); });
     sec.classList.add('rp-on');
     layout(); price();
-    // автопрогравання: сцена в кадрі й людина не чіпає — по черзі обʼєкти генплану з етапами будівництва, наприкінці — назад до генплану й «Ще раз»
+    // автопрогравання: обʼєкти по черзі з етапами, наприкінці — генплан і «Ще раз»
     if (W.casAuto) W.casAuto({ root: stage0, view: svg, host: auHost, atEnd: function () { return tourEnd; },
       restart: function () { tourEnd = false; if (focus) close(1); },
-      step: function () { // по черзі зупинки (обʼєкт кожного типу) з етапами будівництва; наприкінці — назад до генплану й «Ще раз»
+      step: function () {
         clearInterval(timer);
         if (focus && stage < steps().length - 1) { stage++; show(); return true; }
         tourI = curStop() + 1;
         if (tourI >= NST) { if (focus) close(1); tourEnd = true; return false; }
         open(svg.querySelector('.rp-o[data-o="' + STOPS[tourI - 1] + '"]'), 1); return true;
       } });
-    // усі сторінки: колесо над кадром, клік збоку, свайп, ←/→ по відкритому обʼєкту — його етапи (без обʼєкта жести не перехоплюються)
-    // жести (усі сторінки): колесо над генпланом, клік збоку, свайп, ←/→ — зупинки: генплан → обʼєкти по черзі (етапи обʼєкта програються самі)
+    // жести: генплан → обʼєкти по черзі
     if (W.casGest) W.casGest({ root: stage0, view: svg, go: function (i) { clearInterval(timer); goStop(i); }, cur: curStop, n: NST,
       hint: CMP ? sdHost() : null, before: CMP ? sdNav() : null });
   }
@@ -341,7 +350,7 @@
   function sdNav() { return sec.querySelector('.sc-side .la-nav'); }
   function css() {
     return new Promise(function (res) {
-      // збираємо лише після свого CSS і scene-ui.v1.css (<link> міг бути доданий, але ще вантажитись) — інакше CLS до 1.0
+      // лише після свого CSS і scene-ui (інакше CLS)
       var href = sec.getAttribute('data-css'), ls = [], n, l = href && d.querySelector('link[href="' + href + '"]');
       if (href && !l) { l = d.createElement('link'); l.rel = 'stylesheet'; l.href = href; d.head.appendChild(l); }
       if (l) ls.push(l);
@@ -351,11 +360,11 @@
       ls.forEach(function (x) { if (x.sheet) return one(); var f = 0, k = function () { if (!f) { f = 1; one(); } }; x.addEventListener('load', k); x.addEventListener('error', k); setTimeout(k, 8000); });
     });
   }
-  // блок вище екрана стискається: тримаємо вміст на місці самі, якщо скрол-якоріння не спрацює (Safari, низ сторінки) — інакше CLS до 1.0
+  // блок вище екрана стискається — тримаємо вміст самі (інакше CLS)
   function keep() { var b0 = sec.getBoundingClientRect().bottom, up = b0 <= 0; enhance(); if (up) { var dy = sec.getBoundingClientRect().bottom - b0; if (Math.abs(dy) > 1) { var hs = d.documentElement.style; hs.scrollBehavior = 'auto'; W.scrollBy(0, dy); hs.scrollBehavior = ''; } } } // без smooth з CSS — інакше зсув видно
-  function inView() { var r = sec.getBoundingClientRect(); return r.top < 0 && r.bottom > 0; } // людина всередині блоку; верх блоку в кадрі — збираємо одразу (зсуву над ним немає)
+  function inView() { var r = sec.getBoundingClientRect(); return r.top < 0 && r.bottom > 0; } // верх у кадрі — одразу
   css().then(function () {
-    if (!inView() || sec.hasAttribute('data-sw') || !('IntersectionObserver' in W)) return keep(); // data-sw — показана перемикачем сцен на місці: одразу
+    if (!inView() || sec.hasAttribute('data-sw') || !('IntersectionObserver' in W)) return keep(); // data-sw — перемикач сцен
     var o = new IntersectionObserver(function (es) { if (!es[es.length - 1].isIntersecting) { o.disconnect(); keep(); } });
     o.observe(sec);
   });

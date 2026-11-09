@@ -192,9 +192,9 @@
     var lamps = []; for (x = 1; x < PW; x += 3) lamps.push([x, PD]); for (y = 2; y < PD; y += 3.5) lamps.push([-1.15, y]);
     add('glow', [dx0 - 0.3, dx0 + 1.3].map(function (lx) { return dot('wh2-hal', lx, hy1 + 0.05, Z + 2, 9) + dot('wh-lamp', lx, hy1 + 0.05, Z + 2, 1.8); }).join('') + dot('wh2-hal', px1 - 0.17, pe - 0.27, pz + 0.55, 8) + dot('wh-lamp', px1 - 0.17, pe - 0.27, pz + 0.5, 1.8)
       + line('wh-streak', [px1 - 0.17, pe + 0.3, 0, px1 - 0.17, pe + 0.3, -1.4]), DUSK, 0.25);
-    lamps.forEach(function (q, k) {
+    lamps.forEach(function (q, k) { // ліхтарі бічного поручня за будинком — у шарі terb (під будинком)
       var a = P(q[0], q[1] + 0.6, 0), b = P(q[0], q[1] + 0.6, -1.6); // доріжка світла — лише від ближнього краю (за дальнім її закриває настил)
-      add('glow', dot('wh2-hal', q[0], q[1], Z + 1.05, 8) + dot('wh-lamp', q[0], q[1], Z + 1.05, 2.2) + circ('wh-gl', q[0], q[1], Z + 1, 0.9) + (q[0] < 0 ? '' : '<line class="wh-streak" style="animation-delay:' + (k * 0.37).toFixed(2) + 's" x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '"/>'), DUSK, 0.3 + 0.5 * k / lamps.length);
+      add(q[0] < 0 && q[1] - q[0] + hx0 < hy1 ? 'terb' : 'glow', dot('wh2-hal', q[0], q[1], Z + 1.05, 8) + dot('wh-lamp', q[0], q[1], Z + 1.05, 2.2) + circ('wh-gl', q[0], q[1], Z + 1, 0.9) + (q[0] < 0 ? '' : '<line class="wh-streak" style="animation-delay:' + (k * 0.37).toFixed(2) + 's" x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '"/>'), DUSK, 0.3 + 0.5 * k / lamps.length);
     });
     // 12 здача: господарі на терасі, човен на воді
     add('ppl', person('p0', hx0 + 2.5, ty0 + 0.6, Z) + person('p1', hx0 + 3.3, ty0 + 0.4, Z), 11, 0.2);
@@ -257,8 +257,12 @@
     var c = [P(f[0], f[1], f[5]), P(f[2], f[1], f[4]), P(f[0], f[3], f[4]), P(f[2], f[3], f[4]), P(f[2], f[1], f[5]), P(f[0], f[3], f[5])], xs = c.map(function (q) { return +q[0]; }), ys = c.map(function (q) { return +q[1]; });
     var w = Math.max.apply(0, xs) - Math.min.apply(0, xs) + 50, h = Math.max.apply(0, ys) - Math.min.apply(0, ys) + 50, ar = FULL[2] / FULL[3];
     if (w / h < ar) w = h * ar; else h = w / ar;
-    w = Math.min(w, FULL[2]); h = Math.min(h, FULL[3]);
-    return [(Math.min.apply(0, xs) + Math.max.apply(0, xs)) / 2 - w / 2, (Math.min.apply(0, ys) + Math.max.apply(0, ys)) / 2 - h / 2, w, h];
+    // 09.11: уся модель — у кадрі з полем 5% з кожного боку; наїзд зміщує кадр до деталі етапу
+    var M = [FULL[0] + 14, FULL[1] + 14, FULL[0] + FULL[2] - 14, FULL[1] + FULL[3] - 14];
+    if (svg.clientHeight) ar = svg.clientWidth / svg.clientHeight;
+    w = Math.max(w, (M[2] - M[0]) / 0.9, (M[3] - M[1]) / 0.9 * ar); h = w / ar;
+    function cl(c, d, a, b) { c = (c + (a + b) / 2) / 2; return Math.max(b + 0.05 * d - d, Math.min(a - 0.05 * d, c - d / 2)); }
+    return [cl((Math.min.apply(0, xs) + Math.max.apply(0, xs)) / 2, w, M[0], M[2]), cl((Math.min.apply(0, ys) + Math.max.apply(0, ys)) / 2, h, M[1], M[3]), w, h];
   }
   function apply(force) {
     var p = prog;

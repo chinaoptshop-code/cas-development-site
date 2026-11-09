@@ -251,7 +251,14 @@
     if (bw > 0 && bh > 0 && bw / bh < ar) ar = bw / bh;
     if (w / h < ar) w = h * ar; else { h0 = h; h = w / ar; }
     var cy = (Math.min.apply(0, ys) + Math.max.apply(0, ys)) / 2 - (h0 ? (h - h0) * 0.35 : 0); // додану висоту — переважно вгору
-    return [(Math.min.apply(0, xs) + Math.max.apply(0, xs)) / 2 - w / 2, cy - h / 2, w, h];
+    return fit([(Math.min.apply(0, xs) + Math.max.apply(0, xs)) / 2 - w / 2, cy - h / 2, w, h], i, ar);
+  }
+  // 09.11: уся модель (ділянка з будинком) — у кадрі з полем 5% з кожного боку; наїзд зміщує кадр до деталі етапу й наближає, наскільки дозволяють пропорції блоку
+  function fit(f, i, ar) { if (svg && svg.clientHeight > 0) ar = svg.clientWidth / svg.clientHeight; return fitM(f, [FULL[0] + 20, FULL[1] + 20, FULL[0] + FULL[2] - 20, FULL[1] + FULL[3] - 20], ar); }
+  function fitM(f, M, ar) {
+    var w = Math.max(f[2], (M[2] - M[0]) / 0.9, (M[3] - M[1]) / 0.9 * ar), h = w / ar, cx = f[0] + f[2] / 2, cy = f[1] + f[3] / 2;
+    function cl(c, d, a, b) { c = (c + (a + b) / 2) / 2; return Math.max(b + 0.05 * d - d, Math.min(a - 0.05 * d, c - d / 2)); }
+    return [cl(cx, w, M[0], M[2]), cl(cy, h, M[1], M[3]), w, h];
   }
   function apply(force) {
     var p = prog;

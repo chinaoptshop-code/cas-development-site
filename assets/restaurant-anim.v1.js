@@ -278,7 +278,11 @@
     var w = x1 - x0 + pd * 2, h = y1 - y0 + pd * 2, fw = Math.max(FULL[2], FULL[3] * ar), fh = fw / ar;
     if (w / h < ar) w = h * ar; else h = w / ar;
     if (w > fw) { w = fw; h = fh; }
-    return [(x0 + x1 - w) / 2, (y0 + y1 - h) / 2, w, h];
+    // 09.11: уся модель — у кадрі з полем 5% з кожного боку; наїзд зміщує кадр до деталі етапу й наближає, наскільки дозволяють пропорції блоку
+    var M = [FULL[0] + 16, FULL[1] + 16, FULL[0] + FULL[2] - 16, FULL[1] + FULL[3] - 16];
+    w = Math.max(w, (M[2] - M[0]) / 0.9, (M[3] - M[1]) / 0.9 * ar); h = w / ar;
+    function cl(c, d, a, b) { c = (c + (a + b) / 2) / 2; return Math.max(b + 0.05 * d - d, Math.min(a - 0.05 * d, c - d / 2)); }
+    return [cl((x0 + x1) / 2, w, M[0], M[2]), cl((y0 + y1) / 2, h, M[1], M[3]), w, h];
   }
   function apply(force) {
     var p = prog;

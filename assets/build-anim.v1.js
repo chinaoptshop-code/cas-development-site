@@ -1163,7 +1163,7 @@
     s0 += pl('dim', [0, WY + 0.8, 0, WX, WY + 0.8, 0]) + pl('dim', [0, WY + 0.6, 0, 0, WY + 1.0, 0]) + pl('dim', [WX, WY + 0.6, 0, WX, WY + 1.0, 0]) + tf('dt', 6, WY + 1.35, 0, num('12.00')) +
       pl('dim', [WX + 0.8, 0, 0, WX + 0.8, WY, 0]) + pl('dim', [WX + 0.6, 0, 0, WX + 1.0, 0, 0]) + pl('dim', [WX + 0.6, WY, 0, WX + 1.0, WY, 0]) + tf('dt', WX + 1.35, 3.6, 0, num('7.20'), 1);
     I(3, 'measure', 0, null, s0, { h: ['design', 0.4] });
-    I(3, 'done', 0.2, null, seal(WX * 0.6, -T, H + 1.7, ui), { m: 'd' });
+    I(3, 'done', 0.2, null, seal(4.71, -6.19, 0, ui), { m: 'd' }); // 09.11: печатка — у вільному верхньому правому куті кадру (≈170,−16 px), не на стіні; у межах габариту — viewBox без змін
     return { parts: zsort(L), xr: -1, net: S('elec'), th: [['p-pl', S('plaster') + 0.45], ['p-pt', S('paint') + 0.4], ['p-eve', S('light') + 0.4]] };
   }
 
