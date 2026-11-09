@@ -8,13 +8,17 @@
 <meta property="og:title" content="Шоурум будинку — 3D-тур CAS Development">
 <meta property="og:description" content="360-тур шоуруму будинку. Тур 360° від CAS Development: телефон, ноутбук або VR-окуляри.">
 <meta property="og:image" content="https://cas-develop.com/img/tury/house-showroom/s01-thumb.jpg">
+<meta property="og:url" content="https://cas-develop.com/tury/house-showroom">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg">
-<link rel="stylesheet" href="/assets/tours/tour.v1.css?v=23b75aab">
+<link rel="stylesheet" href="/assets/tours/tour.v1.css?v=b88225a8">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://cas-develop.com/"}, {"@type": "ListItem", "position": 2, "name": "3D-тури", "item": "https://cas-develop.com/tury"}, {"@type": "ListItem", "position": 3, "name": "Шоурум будинку", "item": "https://cas-develop.com/tury/house-showroom"}]}</script>
 <script src="/assets/tours/aframe.min.js"></script>
-</head><body>
+</head><body class="tp">
 <script type="application/json" id="tour-data">{"slug": "house-showroom", "title": "Шоурум будинку", "description": "360-тур шоуруму будинку.", "hidden": true, "source": "kuula:7ZmNY", "start": "s01", "scenes": [{"id": "s01", "name": "Точка 1", "image": "/img/tury/house-showroom/s01.jpg", "yaw": 0.0, "hotspots": [{"to": "s02", "yaw": 82.3, "pitch": 0.3}, {"to": "s08", "yaw": 15.5, "pitch": 3.7}]}, {"id": "s02", "name": "Точка 2", "image": "/img/tury/house-showroom/s02.jpg", "yaw": 0.0, "hotspots": [{"to": "s01", "yaw": 0.6, "pitch": -1.5}, {"to": "s08", "yaw": 18.4, "pitch": 1.9}, {"to": "s03", "yaw": 104.2, "pitch": -6.3}, {"to": "s04", "yaw": 96.6, "pitch": -0.3}]}, {"id": "s03", "name": "Точка 3", "image": "/img/tury/house-showroom/s03.jpg", "yaw": 0.0, "hotspots": [{"to": "s02", "yaw": -79.3, "pitch": -1.9}, {"to": "s07", "yaw": 7.0, "pitch": -2.6}, {"to": "s04", "yaw": 78.9, "pitch": -7.0}]}, {"id": "s04", "name": "Точка 4", "image": "/img/tury/house-showroom/s04.jpg", "yaw": 0.0, "hotspots": [{"to": "s03", "yaw": -82.8, "pitch": -10.3}, {"to": "s02", "yaw": -87.4, "pitch": -0.3}, {"to": "s07", "yaw": -45.6, "pitch": -0.4}, {"to": "s05", "yaw": 5.5, "pitch": -5.9}]}, {"id": "s05", "name": "Точка 5", "image": "/img/tury/house-showroom/s05.jpg", "yaw": 0.0, "hotspots": [{"to": "s04", "yaw": -79.8, "pitch": -5.2}]}, {"id": "s06", "name": "Точка 6", "image": "/img/tury/house-showroom/s06.jpg", "yaw": 0.0, "hotspots": []}, {"id": "s07", "name": "Точка 7", "image": "/img/tury/house-showroom/s07.jpg", "yaw": 0.0, "hotspots": [{"to": "s04", "yaw": 119.6, "pitch": -7.8}, {"to": "s03", "yaw": 169.5, "pitch": -15.6}, {"to": "s02", "yaw": -131.9, "pitch": -10.7}, {"to": "s08", "yaw": -30.7, "pitch": -6.3}, {"to": "s05", "yaw": 53.2, "pitch": -6.2}, {"to": "s10", "yaw": -5.8, "pitch": -3.3}]}, {"id": "s08", "name": "Точка 8", "image": "/img/tury/house-showroom/s08.jpg", "yaw": 0.0, "hotspots": [{"to": "s02", "yaw": -170.5, "pitch": -7.9}, {"to": "s01", "yaw": -92.0, "pitch": -33.4}, {"to": "s07", "yaw": 122.8, "pitch": -8.3}, {"to": "s10", "yaw": 31.5, "pitch": -12.8}]}, {"id": "s09", "name": "Точка 9", "image": "/img/tury/house-showroom/s09.jpg", "yaw": 0.0, "hotspots": [{"to": "s03", "yaw": -167.1, "pitch": -7.3}, {"to": "s07", "yaw": -135.0, "pitch": -12.2}, {"to": "s04", "yaw": 154.1, "pitch": -7.7}, {"to": "s05", "yaw": 99.1, "pitch": -22.4}]}, {"id": "s10", "name": "Точка 10", "image": "/img/tury/house-showroom/s10.jpg", "yaw": 0.0, "hotspots": [{"to": "s07", "yaw": 88.2, "pitch": -6.8}, {"to": "s08", "yaw": 148.5, "pitch": -9.8}, {"to": "s01", "yaw": 163.3, "pitch": -10.7}, {"to": "s02", "yaw": 122.3, "pitch": -5.0}, {"to": "s05", "yaw": 7.1, "pitch": -7.3}]}]}</script>
-<a-scene id="scene" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .spot, .sky-hit" vr-mode-ui="enabled: true" loading-screen="dotsColor:#c8a96a; backgroundColor:#111" renderer="colorManagement:true" xr-mode-ui="enabled: true">
+<div class="tv" id="tv">
+<a-scene id="scene" embedded cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .spot, .sky-hit" vr-mode-ui="enabled: true" loading-screen="dotsColor:#c8a96a; backgroundColor:#111" renderer="colorManagement:true" xr-mode-ui="enabled: true">
   <a-assets timeout="20000"></a-assets>
   <a-sky id="sky" rotation="0 -90 0"></a-sky>
   <a-entity id="spots" follow-cam></a-entity>
@@ -36,5 +40,6 @@
 <div class="tzoom" role="group" aria-label="Масштаб"><button class="ib" id="zoomIn" aria-label="Наблизити">+</button><button class="ib" id="zoomOut" aria-label="Віддалити">−</button></div>
 <div class="hint" id="hint">Тягніть, щоб роздивитись · коліщатко або два пальці — масштаб · стрілки — перехід</div>
 <div class="edit" id="edit" hidden></div>
+</div>
 <script src="/assets/tours/tour.v1.js?v=96150080"></script>
 </body></html>

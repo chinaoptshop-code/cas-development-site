@@ -16,6 +16,7 @@
     fetchpriority="high" — не більше одного;
   • sitemap.xml: усі індексовані сторінки є, noindex-сторінок і неіснуючих URL немає, у кожного <url> є <lastmod>;
   • robots.txt: є Sitemap:, не закрито весь сайт;
+  • og:image — файл існує, twitter:card є; внутрішні посилання (href/src/srcset) ведуть на наявні файли або правила _redirects (0 «404»);
   • сирітські сторінки: на сторінку немає жодного посилання з вмісту інших сторінок (шапка/футер не рахуються).
 """
 import collections, glob, html, json, os, re, sys
@@ -25,7 +26,10 @@ B = 'https://cas-develop.com'
 SKIP_FILES = {'privacy.html', 'terms.html'}  # сторонні юридичні шаблони (noindex)
 # політики конфіденційності: посилання лише з футера/форм, хлібні крихти не потрібні
 LEGAL = {'konfidentsiinist.html', 'ru/konfidentsialnost.html', 'en/privacy-policy.html', 'es/privacidad.html',
-         'pl/polityka-prywatnosci.html', 'de/datenschutz.html', 'fr/confidentialite.html', 'zh/privacy.html', 'ar/privacy.html'}
+         'pl/polityka-prywatnosci.html', 'de/datenschutz.html', 'fr/confidentialite.html', 'zh/privacy.html', 'ar/privacy.html',
+         # умови використання (09.11.2026) — так само лише з футера
+         'umovy-korystuvannia.html', 'ru/usloviya-ispolzovaniya.html', 'en/terms-of-use.html', 'es/condiciones-de-uso.html', 'zh/terms-of-use.html',
+         'pl/regulamin.html', 'de/nutzungsbedingungen.html', 'fr/conditions-utilisation.html', 'ar/terms-of-use.html'}
 CJK = ('zh', 'ar')
 
 ERR, WARN = [], []
@@ -56,6 +60,24 @@ def pages():
 
 def text(s):
     return html.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', s))).strip()
+
+
+_RED = None
+
+
+def exists(u):
+    """Чи віддасть Cloudflare Pages щось за цим шляхом: файл, /x → x.html, /dir/ → dir/index.html, правило _redirects, API/кабінет."""
+    global _RED
+    if _RED is None:
+        _RED = [l.split()[0] for l in open(os.path.join(ROOT, '_redirects'), encoding='utf-8') if l.strip() and not l.startswith('#')]
+    from urllib.parse import unquote
+    u = unquote(html.unescape(u.split('#')[0].split('?')[0]))
+    if not u or u.startswith(('/api/', '/kabinet')):
+        return True
+    if any(r == u or r == u.rstrip('/') or r.endswith('*') and u.startswith(r[:-1]) for r in _RED):
+        return True
+    f = os.path.join(ROOT, u.lstrip('/'))
+    return os.path.isfile(f) or os.path.isfile(f.rstrip('/') + '.html') or os.path.isfile(os.path.join(f, 'index.html'))
 
 
 # ---------- JSON-LD ----------
@@ -132,6 +154,7 @@ def check_node(page, n):
 def main():
     quiet, strict = '--quiet' in sys.argv, '--strict' in sys.argv
     rows, titles, descs = {}, collections.defaultdict(list), collections.defaultdict(list)
+    broken = collections.defaultdict(set)
     inbound = collections.defaultdict(set)
     for rel in pages():
         s = open(os.path.join(ROOT, rel), encoding='utf-8').read()
@@ -159,6 +182,17 @@ def main():
             for n in nodes(d):
                 alltypes |= types(n)
                 check_node(rel, n)
+        base = '/' + os.path.dirname(rel) + '/' if os.path.dirname(rel) else '/'
+        for attr, v in re.findall(r'\b(href|src|srcset|imagesrcset)="([^"]+)"', re.sub(r'<script\b(?![^>]*ld\+json).*?</script>', '', s, flags=re.S)):
+            for c in ([x.strip().split()[0] for x in v.split(',') if x.strip()] if 'srcset' in attr else [v]):
+                if c.startswith(B):
+                    c = c[len(B):] or '/'
+                if re.match(r'^(?:[a-z][\w+.-]*:|#|//|\$\{)', c) or '…' in c:
+                    continue
+                if not c.startswith('/'):
+                    c = base + c
+                if not exists(c):
+                    broken[c.split('#')[0].split('?')[0]].add(rel)
         if noindex:
             continue
         m = re.search(r'<title>(.*?)</title>', head, re.S)
@@ -194,6 +228,14 @@ def main():
         # зображення
         vis = re.sub(r'<script\b.*?</script>|<template\b.*?</template>', '', s.split('<!--chrome:f-->')[0], flags=re.S)
         imgs = [i for i in re.findall(r'<img\b[^>]*>', vis) if re.search(r'\bsrc="[^"]', i) and '/assets/brand/' not in i]
+        # og:image / twitter:card
+        m = re.search(r'<meta property="og:image" content="([^"]+)"', head)
+        if not m:
+            warn(rel, 'немає og:image')
+        elif m.group(1).startswith(B) and not exists(m.group(1)[len(B):]):
+            err(rel, f'og:image не існує: {m.group(1)}')
+        if 'name="twitter:card"' not in head:
+            warn(rel, 'немає twitter:card')
         if len(re.findall(r'fetchpriority="high"', s)) > 1:
             err(rel, 'fetchpriority="high" більше одного')
         for k, i in enumerate(imgs):
@@ -234,6 +276,8 @@ def main():
     for u, r in rows.items():
         if not r['noindex'] and u != '/' and r['rel'] not in LEGAL and not inbound[u.rstrip('/') or '/']:
             warn(r['rel'], 'сирітська сторінка (немає посилань з вмісту інших сторінок)')
+    for u, src in sorted(broken.items()):
+        err(sorted(src)[0], f'бите внутрішнє посилання {u} (сторінок: {len(src)})')
     idx = sum(1 for r in rows.values() if not r['noindex'])
     if not quiet:
         for x in ERR: print('ПОМИЛКА', x)

@@ -32,7 +32,7 @@
    "p": [
     "Depuis 2016, nous avons réalisé plus de 150 projets en Ukraine et à l’étranger. Nous ne copions pas les tendances : nous comprenons d’abord comment vous vivez ou travaillez, puis nous créons l’espace en conséquence.",
     "Chaque projet commence par un brief et une rencontre (sur place ou en visio) et se termine par la remise du bien ; lorsque nous réalisons les travaux, le même chef de projet les suit sur le chantier.",
-    "Mobilier et matériaux arrivent directement de Chine via notre ligne Ozdoba : commande minimale dès $500, livraison en 30 à 60 jours."
+    "Mobilier et matériaux arrivent directement de Chine via notre ligne Ozdoba : commande minimale dès $10 000, livraison en 30 à 60 jours."
    ],
    "vals": [
     [
@@ -174,78 +174,39 @@
     "p": "Chefs de chantier, menuisiers et spécialistes salariés qui travaillent sur votre projet.",
     "groups": [
      {
+      "label": "Bureau d'études",
+      "p": "Architectes, designers et ingénieurs : plans, dessins d'exécution, spécifications.",
+      "people": []
+     },
+     {
+      "label": "Département travaux",
+      "p": "Ouvriers et installateurs de tous corps de métier, du gros œuvre aux finitions.",
+      "people": []
+     },
+     {
       "label": "Chefs de chantier",
       "p": "",
-      "people": [
-       [
-        "Oleh",
-        ""
-       ],
-       [
-        "Volodymyr",
-        ""
-       ],
-       [
-        "Serhii",
-        ""
-       ],
-       [
-        "Oleksandr",
-        ""
-       ],
-       [
-        "Mykhailo",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Menuisiers",
       "p": "",
-      "people": [
-       [
-        "Serhii",
-        ""
-       ],
-       [
-        "Andrii",
-        ""
-       ],
-       [
-        "Oleh",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Topographie",
       "p": "",
-      "people": [
-       [
-        "Mykola",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Relevé 3D",
       "p": "",
-      "people": [
-       [
-        "Vladyslav",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "Prises de vue par drone",
       "p": "",
-      "people": [
-       [
-        "Mykhailo",
-        ""
-       ]
-      ]
+      "people": []
      }
     ]
    }

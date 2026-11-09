@@ -12,7 +12,8 @@
 <source type="image/avif"> з тими самими srcset/sizes — деплой (tools/img/picture.py).
 
 Слоти: strip (.xs-st; головна — .hx-home), proj (.xs-proj .xs-st, портфоліо — компактно через бюджет HTML),
-covers (.xs-cv), svc (.xs-sv, з урахуванням flex-рядів; на головній — карусель), split (.xs-pic), pg (галерея /proekty, компактно), hero (.hx — лише ширші файли).
+covers (.xs-cv), svc (.xs-sv, з урахуванням flex-рядів; на головній — карусель), split (.xs-pic), pg (галерея /proekty, компактно), hero (.hx — лише ширші файли),
+hxl (hero лендингів, tools/site/ux.py _hero_photo: телефон — кадр 4:5 у блоці ≤125vw заввишки, ПК — 2:1 у блоці ≤50vw; слот = 100vw, srcset ставить ux.py).
 Перевірка: python3 tools/site/sharp.py --check (сторінки, де apply() щось змінив би).
 """
 import math, os, re, sys
@@ -49,6 +50,9 @@ def _grid(vw, c):
 def w_strip(vw, home):
     c = cont(vw)
     if vw <= 767: return .46 * c if home else min(.66 * vw, 280)
+    if home:  # головні на ПК (sections.v1.css, 09.11.2026): стрічка на всю ширину вікна, 4 / 6 (з 1024) / 7 (з 1600) кадрів у ряд
+        n, g = (4, 10) if vw <= 1023 else (6, 12) if vw <= 1599 else (7, 12 if vw <= 2199 else 14)
+        return (vw - (n - 1) * g) / n
     return _grid(vw, c) or 280
 
 
@@ -188,7 +192,7 @@ def _slot(anc):
         if 'xs-sv' in c: return 'svc', k
         if 'xs-pic' in c: return 'split', k
         if 'pg' in c: return 'pg', k
-        if 'hx-bg' in c or 'hx' in c: return 'hero', k
+        if 'hx-bg' in c or 'hx' in c or 'hxl' in c: return ('hxl' if any('hxl' in x for x in anc[k:]) else 'hero'), k
     return None, None
 
 
@@ -230,6 +234,8 @@ def fix(tag, slot, home, i=0, n=1):
     iw, ih = fam[-1][0], fam[-1][0] * size(src.group(1)[1:])[1] / size(src.group(1)[1:])[0]
     ar = iw / ih
     cov = lambda w, sar: w * max(1.0, ar / sar)
+    if slot == 'hxl':  # hero лендингів (ux.py _hero_photo): кадр ≤ пропорції файла (CSS .hxl), тож слот = 100vw без обрізки — sizes за замовчуванням
+        return tag
     if slot == 'hero':  # перше фото: sizes лишаємо (100vw / 60vw), додаємо ширші файли тієї ж пропорції
         if not re.search(r'\ssrcset="', tag): return tag
         return _attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in fam if w >= 400))
@@ -251,7 +257,8 @@ def fix(tag, slot, home, i=0, n=1):
         return tag
     lo, hi = need(fn)
     cand = pick(fam, lo, hi)
-    return _attr(_attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in cand)), 'sizes', sizes(fn, SLOT_BPS[slot]))
+    bps = [767, 1023, 1599, 2199] if slot == 'strip' and home else SLOT_BPS[slot]  # головні: стрічка на всю ширину (6 → 7 кадрів з 1600)
+    return _attr(_attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in cand)), 'sizes', sizes(fn, bps))
 
 
 def apply(s, rel=''):

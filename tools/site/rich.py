@@ -32,6 +32,7 @@ a = lambda s: html.escape(s, quote=True)
 MDLINK = re.compile(r'\[([^\]]+)\]\((/[^)\s]*|https?://[^)\s]+|tel:[^)\s]+|#[^)\s]*)\)')
 rich = lambda s: MDLINK.sub(lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', e(s))
 PHONE, WA, TG, VB = '+380978667755', 'https://wa.me/380978667755', 'https://t.me/+380978667755', 'viber://chat?number=%2B380978667755'
+LI = 'https://www.linkedin.com/in/mykhailo-litovchuk-818846244'
 IG, YT, MAPS = 'https://www.instagram.com/cas_development/', 'https://www.youtube.com/@cas_development', 'https://maps.google.com/?cid=15015666645432112566'
 _SZ = {}
 
@@ -53,6 +54,21 @@ def img(x, alt=None, sizes='(max-width:767px) 90vw, 400px', cls='', eager=False)
     return f'<img{c} src="/{src}"{ss}{load} decoding="async" width="{w}" height="{h}" alt="{a(x.get("alt", "") if alt is None else alt)}">'
 
 
+# Слайд-шоу фону hero головних (9 мов, Михайло 09.11.2026): перше фото — hero_img (Pidgirland, eager, без анімації),
+# далі кожні ~10 с плавна зміна (1.2 с) на рендери проєктів CAS — вітальні, їдальні, кухні, спальні, ресторан, тераса
+# (без санвузлів, гардеробних, коридорів). Файли img/hs-<назва>-<w>.webp (ПК, 2:1) і -m-<w>.webp (телефон, 0.6) —
+# кадри tools/img/crops.json (tools/img/originals.py). Вантажить ui-polish.v1.js (heroSlides) лише після load/idle.
+HERO_SLIDES = ('living', 'dining', 'monpark', 'kitchen', 'bedroom', 'terrace', 'yacht')
+
+
+def _slides():
+    """data-hs="назва:ширини ПК:ширини телефона;…" — лише наявні файли (коротко: бюджет HTML)."""
+    import os
+    root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    ws = lambda b, xs: '.'.join(str(w) for w in xs if os.path.exists(os.path.join(root, f'img/{b}-{w}.webp')))
+    return ';'.join(f'{n}:{ws("hs-" + n, (1280, 1600, 1920, 2400))}:{ws("hs-" + n + "-m", (720, 1080, 1440))}' for n in HERO_SLIDES)
+
+
 def hero_bg(h, full=False):
     """Фото першого екрана (не анімуємо, одна fetchpriority="high").
     full — головні (Михайло 08.11.2026): на телефоні фото на весь екран під легшим затемненням, тому sizes 100vw (різкість)."""
@@ -61,7 +77,8 @@ def hero_bg(h, full=False):
     src = (f'<source media="(max-width:767px) and (orientation:portrait)" srcset="{a(m["srcset"])}" sizes="{ms}" width="{m["w"]}" height="{m["h"]}">'
            if m else '')
     # телефон (не головні): фото під темним градієнтом — достатньо ~60vw (менше байтів до LCP)
-    return f'<picture class="hx-bg">{src}{img(h, sizes=f"(max-width:767px) {ms}, 100vw", eager=True)}</picture>'
+    hs = f' data-hs="{_slides()}"' if full else ''
+    return f'<picture class="hx-bg"{hs}>{src}{img(h, sizes=f"(max-width:767px) {ms}, 100vw", eager=True)}</picture>'
 
 
 def msgs():
@@ -69,7 +86,11 @@ def msgs():
             f'<a class="bi bi-telegram" href="{TG}" target="_blank" rel="noopener">Telegram</a>'
             f'<a class="bi bi-viber" href="{VB}">Viber</a>'
             f'<a class="bi bi-whatsapp" href="{WA}" target="_blank" rel="noopener">WhatsApp</a>'
-            f'<a class="bi bi-instagram" href="{IG}" target="_blank" rel="noopener">Instagram</a></p>')
+            f'<a class="bi bi-instagram" href="{IG}" target="_blank" rel="noopener">Instagram</a>'
+            f'<a class="bi bi-linkedin" href="{LI}" target="_blank" rel="noopener">LinkedIn</a>'
+            f'<a class="bi bi-tiktok" href="https://www.tiktok.com/@li_mi_tless" target="_blank" rel="noopener">TikTok</a>'
+            # WeChat (Михайло 08.11.2026): додають за номером телефону; weixin:// відкриває застосунок
+            f'<a class="bi bi-wechat" href="weixin://" title="WeChat: +380 63 866 77 55">WeChat +380 63 866 77 55</a></p>')
 
 
 def btns(bs):
@@ -196,6 +217,10 @@ def team(x):
         f'<p class="xs-role">{e(c["role"])}</p><p>{rich(c["p"])}</p></div>' for c in x['items']) + '</div>'
     if x.get('crew'):
         cr = x['crew']
+        if not any(g.get('people') for g in cr['groups']):
+            # без імен (Михайло 08.11.2026): лише відділи й групи — компактні плашки, опис у title і в DOM
+            return wrap(x, o + f'<h3 class="xs-crew-h">{e(cr["h3"])}</h3><p class="xs-crew-p">{e(cr["p"])}</p><ul class="xs-crew-c">' + ''.join(
+                f'<li title="{a(g.get("p", ""))}"><b>{e(g["label"])}</b>' + (f'<span>{e(g["p"])}</span>' if g.get('p') else '') + '</li>' for g in cr['groups']) + '</ul>', 'xs-team')
         o += f'<h3 class="xs-crew-h">{e(cr["h3"])}</h3><p class="xs-crew-p">{e(cr["p"])}</p><div class="xs-crew">' + ''.join(
             f'<div><p class="kick">{e(g["label"])}</p>' + (f'<p>{e(g["p"])}</p>' if g.get('p') else '') + '<ul>'
             + ''.join(f'<li><b>{e(n)}</b>' + (f' <span>{e(r)}</span>' if r else '') + '</li>' for n, r in g['people']) + '</ul></div>' for g in cr['groups']) + '</div>'

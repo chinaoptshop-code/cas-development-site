@@ -202,6 +202,10 @@
    ]
   ],
   "cta_href": "/en/contact",
+  "terms": [
+   "/en/terms-of-use",
+   "Terms"
+  ],
   "privacy": [
    "/en/privacy-policy",
    "Privacy policy"

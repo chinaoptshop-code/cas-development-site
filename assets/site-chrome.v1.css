@@ -108,7 +108,7 @@ body{padding-top:var(--sch-h)}
 .sch-mmsg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .sch-mmsg a{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 12px;border:1px solid var(--c-ln);border-radius:12px;
   font-size:.875rem;color:var(--c-tx);text-decoration:none}
-.bi::before{content:"";flex:none;width:20px;height:20px;background:center/contain no-repeat}.bi-telegram::before{background-image:url(/assets/brand/telegram.svg)}.bi-viber::before{background-image:url(/assets/brand/viber.svg)}.bi-whatsapp::before{background-image:url(/assets/brand/whatsapp.svg)}.bi-instagram::before{background-image:url(/assets/brand/instagram-96.png)}.bi-youtube::before{background-image:url(/assets/brand/youtube.svg)}
+.bi::before{content:"";flex:none;width:20px;height:20px;background:center/contain no-repeat}.bi-telegram::before{background-image:url(/assets/brand/telegram.svg)}.bi-viber::before{background-image:url(/assets/brand/viber.svg)}.bi-whatsapp::before{background-image:url(/assets/brand/whatsapp.svg)}.bi-instagram::before{background-image:url(/assets/brand/instagram-96.png)}.bi-youtube::before{background-image:url(/assets/brand/youtube.svg)}.bi-wechat::before{background-image:url(/assets/brand/wechat.svg)}.bi-linkedin::before{background-image:url(/assets/brand/linkedin.svg)}.bi-tiktok::before{background-image:url(/assets/brand/tiktok.svg)}
 html.sch-lock,html.sch-lock body{overflow:hidden}
 html.sch-lock .mbar{display:none!important}
 @media(min-width:1080px){.sch-menu{display:none!important}}
@@ -490,9 +490,9 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 @media(prefers-reduced-motion:no-preference){
   .js body:not(:has(.hx-home)) .bz[data-bz]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(var(--n,19) * var(--bz-per) + 100svh - var(--sch-h,64px) - var(--bz-bot));margin:0;overflow:hidden}
   .js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(max(min(60vh,540px),26.75rem) + 1.25rem + 8px);margin:0;overflow:hidden} /* ПК: кадр або колонка етапів (≈26.75rem, без пирога — 08.11), що вища */
-  .bz[data-la]{--ln:16}.bz[data-rs]{--ln:14}.bz[data-wh]{--ln:12}
+  .bz[data-la]{--lsn:16}.bz[data-rs]{--lsn:14}.bz[data-wh]{--lsn:12} /* кількість етапів; не --ln — це колір ліній (рамка перемикача й кадру), інакше рамки зникають */
   .bz:is([data-la],[data-rs],[data-wh]){--lx:58px} /* --lx — панель налаштувань над доріжкою: 1 ряд ≈ 58 px, кожен перенос ряду ≈ +50 px */
-  .js body:not(:has(.hx-home)) .bz:is([data-la],[data-rs],[data-wh]):not(.la-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(100vh + var(--ln) * clamp(400px,50vh,560px) + var(--lx));margin:0;overflow:hidden}
+  .js body:not(:has(.hx-home)) .bz:is([data-la],[data-rs],[data-wh]):not(.la-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(100vh + var(--lsn) * clamp(400px,50vh,560px) + var(--lx));margin:0;overflow:hidden}
   .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list{display:flow-root}
   .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{content:"";float:left;width:0;padding-top:calc((100% + 4px) * .4667 + 146px)}
 }
@@ -570,7 +570,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 @media(hover:hover){.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):not(.c-o,:has(>.c-o)):hover{border-color:var(--ac,#BF9148)!important;background:rgba(191,145,72,.07)!important}}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):has(.ux-h:focus-visible){outline:2px solid var(--ac,#BF9148);outline-offset:3px}
 /* згорнута плитка: лише H2 (і ланцюжок обгорток до нього в ручних секціях) */
-.js .w[data-c=x]:not(.c-o)>:not(h2,.ux-wb),.js [data-c=x]:not(.w):not(.c-o) :not(h2,h2 *,:has(h2),.ux-wb){display:none!important}
+.js .w[data-c=x]:not(.c-o)>:not(h2,.ux-wb,.ux-tp),.js [data-c=x]:not(.w):not(.c-o) :not(h2,h2 *,:has(h2),.ux-wb,.ux-tp){display:none!important}
 .js [data-c=x]:not(.w):not(.c-o) :has(h2){display:block!important;position:static!important;padding:0!important;margin:0!important;border:0!important;min-height:0!important;max-width:none!important;background:none!important;transform:none!important}
 .js [data-c=x] h2{position:static!important;margin:0!important;padding:48px 0 0!important;font-size:clamp(1.18rem,1.02rem + .55vw,1.5rem)!important;line-height:1.2!important;text-align:start!important;letter-spacing:0!important}
 .js [data-c=x].c-o h2,.js [data-c=x]:has(.c-o) h2{margin-bottom:16px!important}
@@ -746,6 +746,28 @@ html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(
 .js [data-c=x]:not(.c-o)>.ux-wb{display:block!important;width:calc(100% + 32px);max-width:none;height:auto;aspect-ratio:16/9;object-fit:cover;margin:-16px -16px 12px}
 @media(min-width:760px){.js [data-c=x]:not(.c-o)>.ux-wb{aspect-ratio:21/9;max-height:26rem}}
 .js [data-c=x]::before{background-size:contain!important}
+/* фото-плитки (ux.py TP, Михайло 08.11.2026: «мінімізація тексту, максимізація картинок»): згорнута плитка серії — фото проєкту CAS
+   на весь кадр (4:5 на телефоні, однакова висота в ряду з 760 px), назва й «від $…» поверх темного градієнта; FLUX-ілюстрація — лише без фото.
+   Фото й градієнт — під текстом (isolation + від'ємний z-index), зона натиску .ux-h::before лишається на всю плитку; розгорнута — без фото. */
+.ux-tp{display:none}
+.js [data-c=x]:not(.c-o):has(>.ux-tp){isolation:isolate;overflow:hidden;display:flex!important;flex-direction:column;justify-content:flex-end;aspect-ratio:4/5;min-height:0!important;padding:14px 14px 16px!important}
+.js section:has(>.w[data-c=x]>:is(.ux-tp,.ux-wb)),.js [data-c=x]:not(.w):has(>:is(.ux-tp,.ux-wb)){overflow:hidden}
+/* самотня плитка-банер — так само: рендер на весь кадр (16:9 телефон, 21:9 ≤ 26rem з 760 px), назва поверх */
+.js [data-c=x]:not(.c-o):has(>.ux-wb){isolation:isolate;overflow:hidden;display:flex!important;flex-direction:column;justify-content:flex-end;aspect-ratio:16/9;min-height:0!important;padding:14px 16px 16px!important}
+.js [data-c=x]:not(.c-o)>.ux-wb.ux-wb{position:absolute;inset:0;z-index:-2;width:100%;height:100%;margin:0;aspect-ratio:auto;max-height:none}
+@media(min-width:760px){.js [data-c=x]:not(.c-o):has(>.ux-wb){aspect-ratio:21/9;max-height:26rem}}
+.js [data-c=x]:not(.c-o)>.ux-tp{display:block!important;position:absolute;inset:0;z-index:-2;width:100%;height:100%;max-width:none;margin:0;object-fit:cover;object-position:50% 45%;background:var(--bg2,#100e0c)}
+.js [data-c=x]:not(.c-o):has(>:is(.ux-tp,.ux-wb))::before{content:""!important;display:block!important;position:absolute!important;inset:0!important;z-index:-1;margin:0!important;aspect-ratio:auto!important;max-height:none!important;min-width:0!important;
+  background:linear-gradient(to top,rgba(12,10,8,.92) 0%,rgba(12,10,8,.78) 34%,rgba(12,10,8,.42) 58%,rgba(12,10,8,0) 78%)!important}
+.js [data-c=x]:not(.c-o):has(>:is(.ux-tp,.ux-wb)) h2{padding:0!important;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7),0 1px 10px rgba(0,0,0,.5)}
+.js [data-c=x]:not(.c-o):has(>:is(.ux-tp,.ux-wb)) h2 .ic{display:none!important}
+.js [data-c=x]:not(.c-o):has(>:is(.ux-tp,.ux-wb)) .ux-h::after{top:18px;border-color:#fff}
+@media(min-width:760px){.js [data-c=x]:not(.c-o):has(>.ux-tp){aspect-ratio:auto;height:clamp(15rem,22vw,26rem)}}@media(min-width:2200px){.js [data-c=x]:not(.c-o):has(>.ux-tp){height:clamp(15rem,15vw,26rem)}}
+@media(max-width:759px){.js :is(section[style*="--s2:12"]>.w,[data-c=x][style*="--s2:12"]):not(.c-o):has(>.ux-tp){aspect-ratio:16/10}}/* непарна плитка на весь ряд — не вища за екран */
+/* тизери сцен «Ресторан з нуля» / «Комплекс відпочинку» (ux.py TZ): велике фото проєкту — над текстом на телефоні, ліва колонка з 760 px */
+.ux-tz{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:14px;margin:0 0 1.25rem;background:var(--bg2,#100e0c)}
+@media(min-width:760px){.rp-teaser>.w:has(>.ux-tz){display:grid;grid-template-columns:1.15fr 1fr;column-gap:2rem;align-content:center}
+  .rp-teaser>.w:has(>.ux-tz)>*{grid-column:2}.rp-teaser>.w>.ux-tz{grid-column:1;grid-row:1/span 4;margin:0;align-self:center}}
 /* критичні стилі перемикача сцен nav.la-tab — ті самі, що в /assets/scene-ui.v1.css (той вантажиться після першої прокрутки):
    без переповнення на 360 px і без зсуву, коли scene-ui підвантажиться */
 .la-tab{display:inline-flex;flex-wrap:wrap;max-width:100%;gap:4px;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:22px;padding:4px;margin:0 0 18px}
@@ -809,3 +831,22 @@ html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.pr
 .lt3,.lyt{position:relative;display:block;overflow:hidden;aspect-ratio:16/9}.lt3 img,.lyt img{display:block;width:100%;height:100%;object-fit:cover}
 .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}.vgrid figure{margin:0}.vgrid figcaption{padding:8px 0 0;font-size:var(--fs-small,.8125rem)}
 @media(max-width:767px){.vgrid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:84%;gap:12px;overflow-x:auto;padding-bottom:8px}}
+/* Фото hero лендингів (Михайло 08.11.2026; tools/site/ux.py _hero_photo): .hxl > picture.hx-bg + .w.hero поверх градієнта.
+   Висота: телефон ≤ min(62svh, 125vw) — кадр 4:5 hxm-*, ПК ≤ min(60vh, 50vw, 36rem) — кадр 2:1 hx-*; блок не вищий за пропорцію файла,
+   тож sizes = 100vw (sharp.py слот hxl). H1 і фото не анімуються; висота задана до завантаження фото (CLS 0). */
+.hxl{position:relative;isolation:isolate;overflow:hidden}
+.hxl>.hx-bg,.hxl>.hx-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;background:var(--bg2,#100e0c)}
+.hxl::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,7,9,.9) 0,rgba(8,7,9,.7) 42%,rgba(8,7,9,.18) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}
+[dir=rtl] .hxl::before{background:linear-gradient(270deg,rgba(8,7,9,.9) 0,rgba(8,7,9,.7) 42%,rgba(8,7,9,.18) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}
+html body .hxl>.hero{min-height:min(60vh,50vw,36rem);display:flex;flex-direction:column;justify-content:flex-end;padding-top:2.5rem;padding-bottom:2.25rem}
+.hxl .hero h1{text-shadow:0 1px 14px rgba(0,0,0,.35)}.hxl .hero p{color:#d3ccc1}
+@media(max-width:767px){html body .hxl>.hero{min-height:min(62vh,125vw);min-height:min(62svh,125vw);padding-top:4.5rem;padding-bottom:1.5rem}
+  .hxl::before,[dir=rtl] .hxl::before{background:linear-gradient(0deg,var(--bg) 2%,rgba(8,7,9,.84) 38%,rgba(8,7,9,.3) 72%,rgba(8,7,9,.12) 100%)}}
+.crumbs+.hxl{margin-top:-.25rem}
+/* Фото нижче першого екрана з data-srcset/data-p (ux.py: плитки, банери, тизери) — без JS не показуємо порожній кадр (тизер — фото в <noscript>) */
+html:not(.js) img:is([data-srcset],[data-p]){display:none}
+/* «Карта проєктів» (Михайло 08.11.2026): main — сітка LIGHT, секція карти з margin:auto стискалась до ~500 px — розтягуємо на весь ряд */
+html body main>.pmap{grid-column:1/-1;width:100%;box-sizing:border-box}
+@media(max-width:899px){.pmap .cmap-list{max-height:22rem;overflow:auto}}
+/* банер-плитка: aspect-ratio + max-height звужували блок (перенесений max-width) — тягнемо на всю ширину ряду (Михайло 08.11.2026) */
+.js [data-c=x]:not(.c-o):has(>.ux-wb){width:100%;box-sizing:border-box}

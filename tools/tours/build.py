@@ -7,6 +7,9 @@
       створює tools/tours/tours/<slug>.json: сцени за іменами файлів, переходи «далі / назад» між сусідніми.
   python3 tools/tours/build.py pages
       Перебудовує сторінки: /tury (список турів) і /tury/<slug> (переглядач) з усіх JSON.
+      Під переглядачем відкритого туру — текст із tools/tours/about.json (title/description, лід, «Докладніше» в <details>,
+      посилання на /proekty, послуги, /portfolio, «Інші тури» тієї ж групи); ?embed=1 — лише переглядач.
+      Новий відкритий тур: текст в about.json і посилання в rel «3D-тури 360°» у tools/site/pages/uk-portfolio.json.
 
 Переходи точно розставляються мишкою: відкрити /tury/<slug>?edit=1 → клік по фото → обрати кімнату →
 «Скопіювати JSON» → вставити в tools/tours/tours/<slug>.json → `pages`.
@@ -76,16 +79,20 @@ VIEW = '''<!doctype html>
 <title>{ttag}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{site}/tury/{slug}">{robots}
-<meta property="og:title" content="{title} — 3D-тур CAS Development">
+<meta property="og:title" content="{ogt}">
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="{site}{thumb}">
+<meta property="og:url" content="{site}/tury/{slug}">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg">
 <link rel="stylesheet" href="/assets/tours/tour.v1.css?v={vcss}">
 <script type="application/ld+json">{crumbs}</script>
 <script src="/assets/tours/aframe.min.js"></script>
-</head><body>
+</head><body class="tp">
 <script type="application/json" id="tour-data">{data}</script>
-<a-scene id="scene" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .spot, .sky-hit" vr-mode-ui="enabled: true" loading-screen="dotsColor:#c8a96a; backgroundColor:#111" renderer="colorManagement:true" xr-mode-ui="enabled: true">
+<div class="tv" id="tv">
+<a-scene id="scene" embedded cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .spot, .sky-hit" vr-mode-ui="enabled: true" loading-screen="dotsColor:#c8a96a; backgroundColor:#111" renderer="colorManagement:true" xr-mode-ui="enabled: true">
   <a-assets timeout="20000"></a-assets>
   <a-sky id="sky" rotation="0 -90 0"></a-sky>
   <a-entity id="spots" follow-cam></a-entity>
@@ -107,6 +114,7 @@ VIEW = '''<!doctype html>
 <div class="tzoom" role="group" aria-label="Масштаб"><button class="ib" id="zoomIn" aria-label="Наблизити">+</button><button class="ib" id="zoomOut" aria-label="Віддалити">−</button></div>
 <div class="hint" id="hint">Тягніть, щоб роздивитись · коліщатко або два пальці — масштаб · стрілки — перехід</div>
 <div class="edit" id="edit" hidden></div>
+</div>{info}
 <script src="/assets/tours/tour.v1.js?v={vjs}"></script>
 </body></html>
 '''
@@ -119,7 +127,11 @@ INDEX = '''<!doctype html>
 <link rel="canonical" href="{site}/tury">
 <script type="application/ld+json">{crumbs}</script>
 <meta property="og:title" content="3D-тури обʼєктів — CAS Development">
+<meta property="og:description" content="3D-тури CAS Development: реалізовані інтерʼєри й 360-візуалізації дизайн-проєктів. Дивіться на телефоні, ноутбуці або у VR-окулярах.">
+<meta property="og:url" content="{site}/tury">
+<meta property="og:type" content="website">
 <meta property="og:image" content="{site}{og}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg">
 <link rel="stylesheet" href="/assets/tours/tour.v1.css?v={vcss}">
 </head><body class="list">
@@ -145,6 +157,68 @@ INDEX = '''<!doctype html>
 '''
 
 
+# ── текст під переглядачем (tools/tours/about.json): що за обʼєкт, що видно, статус, навіщо 360°, посилання ──
+ABOUT = ROOT / 'tools/tours/about.json'
+HOW = {  # спільний абзац «навіщо тур 360°» — чотири варіанти, щоб тексти турів не повторювалися дослівно
+    'A': 'Навіщо тур 360°: дизайн-проєкт можна обійти ще до ремонту й побачити, як кімнати переходять одна в одну. '
+         'Планування, кольори й меблі легше погодити на моделі — правки вносимо в проєкт, а не на обʼєкті. '
+         'Модель будуємо на реальні розміри: наш фахівець робить 3D-замір приміщення сканером.',
+    'B': 'Тур 360° показує проєкт так, як його побачать господарі: з висоти очей і з реальними пропорціями кімнат. '
+         'На етапі проєкту зручно перевірити, куди дивляться вікна, як стоять меблі й чи вистачає світла, — і змінити це до початку робіт. '
+         'Розміри для моделі дає 3D-замір, який робить наш фахівець.',
+    'C': 'Концепт задає напрям: матеріали, світло, настрій кімнат. Обійти його в 360° простіше, ніж розглядати окремі рендери: '
+         'одразу зрозуміло, що подобається, а що варто змінити в повному дизайн-проєкті.',
+    'D': 'Концепт у 360° — це спосіб обрати стиль до того, як почнеться детальний проєкт: '
+         'кімнати видно цілком, а не окремими кадрами, тому порівнювати варіанти й вирішувати простіше.',
+}
+
+
+def _md(t):
+    """[текст](/шлях) → <a>; решта екранується."""
+    out, k = [], 0
+    for m in re.finditer(r'\[([^\]]+)\]\((/[^)\s]*)\)', t):
+        out += [html.escape(t[k:m.start()]), f'<a href="{html.escape(m.group(2))}">{html.escape(m.group(1))}</a>']
+        k = m.end()
+    return ''.join(out) + html.escape(t[k:])
+
+
+def _points(n):
+    return f'{n} ' + ('точка' if n % 10 == 1 and n % 100 != 11 else 'точки' if n % 10 in (2, 3, 4) and n % 100 not in (12, 13, 14) else 'точок')
+
+
+def _rooms(t):
+    """Зони туру з назв кімнат: «Спальня 2» → спальня, «Хол, 2 поверх» → хол; «Точка N» не рахуємо."""
+    seen = []
+    for sc in t['scenes']:
+        b = re.sub(r',\s*\d+\s*поверх$', '', re.sub(r'\s+\d+$', '', sc['name'].strip())).strip()
+        if b and not re.match(r'(?i)точка\b', b) and b.lower() not in seen:
+            seen.append(b.lower())
+    return seen
+
+
+def _info(t, a, related):
+    n = len(t['scenes'])
+    rooms = _rooms(t)
+    seen = (f'Що є в турі: {", ".join(rooms)} — {_points(n)} огляду. ' if rooms else f'У турі {_points(n)} огляду. ') + \
+        'Перемикайтеся стрілками на фото, кнопками ‹ › або через меню «Кімнати»; у VR-окулярах — кнопка VR.'
+    ps = [seen] + list(a.get('p', [])) + ([HOW[a['how']]] if a.get('how') else []) + ([a['tail']] if a.get('tail') else [])
+    links = ([(a['case'], 'Сторінка проєкту')] if a.get('case') else []) + [tuple(x) for x in a.get('links', [])] + \
+        [('/portfolio', 'Портфоліо'), ('/tury', 'Усі 3D-тури')]
+    rel = ''.join(f'<li><a href="/tury/{r["slug"]}"><img src="{r["_thumb"]}" alt="{html.escape(r["title"])} — кадр 3D-туру" loading="lazy" decoding="async" width="640" height="320">'
+                  f'<span>{html.escape(r["title"])}</span></a></li>' for r in related)
+    return ('\n<main class="ti" id="pro-tur">\n'
+            f'<p class="ti-eye">{html.escape(a.get("eye") or t.get("kind") or "3D-тур 360°")}</p>\n'
+            f'<h2>Про тур</h2>\n<p class="ti-lead">{_md(a["lead"])}</p>\n'
+            '<details class="ti-more"><summary>Докладніше про обʼєкт і тур</summary>\n'
+            + ''.join(f'<p>{_md(x)}</p>\n' for x in ps) +
+            '</details>\n'
+            '<nav class="ti-links" aria-label="Повʼязані сторінки">' + ''.join(f'<a href="{html.escape(u)}">{html.escape(l)}</a>' for u, l in links) + '</nav>\n'
+            + (f'<h2 class="ti-h">Інші тури</h2>\n<ul class="ti-rel">{rel}</ul>\n' if rel else '') +
+            '<p class="ti-cta">Хочете 3D-тур свого обʼєкта або дизайн-проєкт, який можна так само обійти? '
+            '<a href="/contact">Залишити заявку</a> · <a href="tel:+380978667755">+380 97 866 77 55</a></p>\n'
+            '</main>')
+
+
 def _crumbs(items):
     """JSON-LD BreadcrumbList (для seo.py: на всіх внутрішніх сторінках)."""
     return json.dumps({'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
@@ -159,20 +233,32 @@ def _ver(rel):  # хеш файлу для ?v= — /assets кешується н
 def pages():
     OUT.mkdir(exist_ok=True)
     cards, open_slugs = [], []
-    for f in sorted(DATA.glob('*.json')):
-        t = json.loads(f.read_text(encoding='utf-8'))
-        start = next(s for s in t['scenes'] if s['id'] == t['start'])
-        thumb = start['image'].replace('.jpg', '-thumb.jpg')
-        d = t.get('description') or f"Віртуальний 3D-тур «{t['title']}» від CAS Development."
+    about = json.loads(ABOUT.read_text(encoding='utf-8')) if ABOUT.exists() else {}
+    tours = [json.loads(f.read_text(encoding='utf-8')) for f in sorted(DATA.glob('*.json'))]
+    for t in tours:
+        st = next(s for s in t['scenes'] if s['id'] == t['start'])
+        t['_thumb'] = st['image'].replace('.jpg', '-thumb.jpg')
+    for t in tours:
+        a = about.get(t['slug']) if not t.get('hidden') else None
+        thumb = t['_thumb']
+        info, related = '', []
+        if a:  # «Інші тури»: наступні 3 відкриті тури тієї ж групи за order (по колу) — у кожного туру ≥ 3 вхідних посилання
+            grp = sorted((x for x in tours if not x.get('hidden') and (about.get(x['slug']) or {}).get('group') == a.get('group')),
+                         key=lambda x: (x.get('order', 99), x['slug']))
+            i = [x['slug'] for x in grp].index(t['slug'])
+            related = [grp[(i + k) % len(grp)] for k in range(1, min(4, len(grp)))]
+            info = _info(t, a, related)
+        d = (a or {}).get('description') or t.get('description') or f"Віртуальний 3D-тур «{t['title']}» від CAS Development."
         for tail in (' Тур 360° від CAS Development: телефон, ноутбук або VR-окуляри.', ' Тур 360° від CAS Development.'):
-            if len(d) < 70 and len(d + tail) <= 160:
+            if not a and len(d) < 70 and len(d + tail) <= 160:
                 d += tail
         desc = html.escape(d)
-        ttag = html.escape(next(c for c in (f"{t['title']} — 3D-тур | CAS Development", f"{t['title']} | CAS Development",
+        ttag = html.escape((a or {}).get('title') or next(c for c in (f"{t['title']} — 3D-тур | CAS Development", f"{t['title']} | CAS Development",
                                              f"{t['title']} — 3D-тур", t['title']) if len(c) <= 60 or c == t['title']))
         crumbs = _crumbs([('Головна', '/'), ('3D-тури', '/tury'), (t['title'], f"/tury/{t['slug']}")])
-        data = json.dumps(t, ensure_ascii=False).replace('</', '<\\/')
-        (OUT / f"{t['slug']}.html").write_text(VIEW.format(vcss=_ver("assets/tours/tour.v1.css"), vjs=_ver("assets/tours/tour.v1.js"), title=html.escape(t['title']), ttag=ttag, crumbs=crumbs, desc=desc, site=SITE,
+        data = json.dumps({k: v for k, v in t.items() if not k.startswith('_')}, ensure_ascii=False).replace('</', '<\\/')
+        (OUT / f"{t['slug']}.html").write_text(VIEW.format(vcss=_ver("assets/tours/tour.v1.css"), vjs=_ver("assets/tours/tour.v1.js"), title=html.escape(t['title']), ttag=ttag, info=info,
+                                                            ogt=html.escape(re.sub(r'\s*\|\s*CAS( Development)?$', '', (a or {}).get('title') or '') + ' | CAS Development' if a else f"{t['title']} — 3D-тур CAS Development"), crumbs=crumbs, desc=desc, site=SITE,
                                                             slug=t['slug'], thumb=thumb, data=data,
                                                             robots='\n<meta name="robots" content="noindex">' if t.get('hidden') else ''), encoding='utf-8')
         if not t.get('hidden'):
@@ -195,6 +281,14 @@ def pages():
         print('chrome.apply пропущено:', e)
     (ROOT / 'tury.html').write_text(idx, encoding='utf-8')
     sitemap(['/tury'] * bool(cards) + [f'/tury/{s}' for s in open_slugs])
+    pf = ROOT / 'tools/site/pages/uk-portfolio.json'  # блок «3D-тури 360°» у /portfolio — посилання на кожен відкритий тур
+    if pf.exists():
+        miss = [x for x in open_slugs if f'"/tury/{x}"' not in pf.read_text(encoding='utf-8')]
+        if miss:
+            print('Увага: тури без посилання в /portfolio (rel «3D-тури 360°» у tools/site/pages/uk-portfolio.json):', ', '.join(miss))
+    nabout = [x for x in open_slugs if x not in about]
+    if nabout:
+        print('Увага: відкриті тури без тексту в tools/tours/about.json:', ', '.join(nabout))
     print(f'Сторінки: /tury + {len(cards)} турів')
 
 

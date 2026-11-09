@@ -28,14 +28,14 @@
  ],
  "kicker": "Студія дизайну та архітектури · Київ · з 2016 року",
  "hero_img": {
-  "img": "img/hero-hodos-villa-1280.webp",
-  "srcset": "/img/hero-hodos-villa-1280.webp 1280w, /img/hero-hodos-villa-1920.webp 1920w",
-  "alt": "Світла їдальня з мармуровим столом, блакитними кріслами й кришталевою люстрою — дизайн-проєкт Hodos Villa від CAS Development, Київ",
+  "img": "img/hero-pidgirland-1280.webp",
+  "srcset": "/img/hero-pidgirland-1280.webp 1280w, /img/hero-pidgirland-1920.webp 1920w",
+  "alt": "Вітальня-їдальня з дерев'яними панелями — дизайн-проєкт Pidgirland від CAS Development",
   "sizes": "100vw",
   "m": {
-   "srcset": "/img/hero-hodos-villa-m720.webp 720w, /img/hero-hodos-villa-m1080.webp 1080w",
-   "w": 1080,
-   "h": 1800
+   "srcset": "/img/hero-pidgirland-m-720.webp 720w, /img/hero-pidgirland-m-1080.webp 1080w, /img/hero-pidgirland-m-1440.webp 1440w",
+   "w": 1440,
+   "h": 2400
   }
  },
  "ld_raw": [
@@ -63,8 +63,23 @@
       "@type": "PostalAddress",
       "streetAddress": "вул. Антоновича, 44",
       "addressLocality": "Київ",
+      "postalCode": "03186",
       "addressCountry": "UA"
      },
+     "openingHoursSpecification": [
+      {
+       "@type": "OpeningHoursSpecification",
+       "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+       ],
+       "opens": "10:00",
+       "closes": "20:00"
+      }
+     ],
      "areaServed": [
       {
        "@type": "City",

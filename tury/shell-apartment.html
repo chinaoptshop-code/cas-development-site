@@ -8,13 +8,17 @@
 <meta property="og:title" content="Квартира до ремонту — 3D-тур CAS Development">
 <meta property="og:description" content="Квартира в бетоні перед ремонтом — 360-тур. Тур 360° від CAS Development: телефон, ноутбук або VR-окуляри.">
 <meta property="og:image" content="https://cas-develop.com/img/tury/shell-apartment/img-20250527-175949-764-thumb.jpg">
+<meta property="og:url" content="https://cas-develop.com/tury/shell-apartment">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg">
-<link rel="stylesheet" href="/assets/tours/tour.v1.css?v=23b75aab">
+<link rel="stylesheet" href="/assets/tours/tour.v1.css?v=b88225a8">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://cas-develop.com/"}, {"@type": "ListItem", "position": 2, "name": "3D-тури", "item": "https://cas-develop.com/tury"}, {"@type": "ListItem", "position": 3, "name": "Квартира до ремонту", "item": "https://cas-develop.com/tury/shell-apartment"}]}</script>
 <script src="/assets/tours/aframe.min.js"></script>
-</head><body>
+</head><body class="tp">
 <script type="application/json" id="tour-data">{"slug": "shell-apartment", "title": "Квартира до ремонту", "description": "Квартира в бетоні перед ремонтом — 360-тур.", "hidden": true, "start": "img-20250527-175949-764", "scenes": [{"id": "img-20250527-175949-764", "name": "Точка 1", "image": "/img/tury/shell-apartment/img-20250527-175949-764.jpg", "yaw": 0, "hotspots": [{"to": "img-20250527-180126-526", "yaw": 0, "pitch": -15}]}, {"id": "img-20250527-180126-526", "name": "Точка 2", "image": "/img/tury/shell-apartment/img-20250527-180126-526.jpg", "yaw": 0, "hotspots": [{"to": "img-20250527-180152-397", "yaw": 0, "pitch": -15}, {"to": "img-20250527-175949-764", "yaw": 180, "pitch": -15}]}, {"id": "img-20250527-180152-397", "name": "Точка 3", "image": "/img/tury/shell-apartment/img-20250527-180152-397.jpg", "yaw": 0, "hotspots": [{"to": "img-20250527-180313-383", "yaw": 0, "pitch": -15}, {"to": "img-20250527-180126-526", "yaw": 180, "pitch": -15}]}, {"id": "img-20250527-180313-383", "name": "Точка 4", "image": "/img/tury/shell-apartment/img-20250527-180313-383.jpg", "yaw": 0, "hotspots": [{"to": "img-20250527-180403-411", "yaw": 0, "pitch": -15}, {"to": "img-20250527-180152-397", "yaw": 180, "pitch": -15}]}, {"id": "img-20250527-180403-411", "name": "Точка 5", "image": "/img/tury/shell-apartment/img-20250527-180403-411.jpg", "yaw": 0, "hotspots": [{"to": "img-20250527-180313-383", "yaw": 180, "pitch": -15}]}], "kind": "Квартира до ремонту", "place": "Київ", "order": 7}</script>
-<a-scene id="scene" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .spot, .sky-hit" vr-mode-ui="enabled: true" loading-screen="dotsColor:#c8a96a; backgroundColor:#111" renderer="colorManagement:true" xr-mode-ui="enabled: true">
+<div class="tv" id="tv">
+<a-scene id="scene" embedded cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .spot, .sky-hit" vr-mode-ui="enabled: true" loading-screen="dotsColor:#c8a96a; backgroundColor:#111" renderer="colorManagement:true" xr-mode-ui="enabled: true">
   <a-assets timeout="20000"></a-assets>
   <a-sky id="sky" rotation="0 -90 0"></a-sky>
   <a-entity id="spots" follow-cam></a-entity>
@@ -36,5 +40,6 @@
 <div class="tzoom" role="group" aria-label="Масштаб"><button class="ib" id="zoomIn" aria-label="Наблизити">+</button><button class="ib" id="zoomOut" aria-label="Віддалити">−</button></div>
 <div class="hint" id="hint">Тягніть, щоб роздивитись · коліщатко або два пальці — масштаб · стрілки — перехід</div>
 <div class="edit" id="edit" hidden></div>
+</div>
 <script src="/assets/tours/tour.v1.js?v=96150080"></script>
 </body></html>

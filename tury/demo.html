@@ -8,13 +8,17 @@
 <meta property="og:title" content="Демо-тур (тестові панорами) — 3D-тур CAS Development">
 <meta property="og:description" content="Тестовий 3D-тур для перевірки переглядача. Тур 360° від CAS Development: телефон, ноутбук або VR-окуляри.">
 <meta property="og:image" content="https://cas-develop.com/img/tury/demo/1-hotel-room-thumb.jpg">
+<meta property="og:url" content="https://cas-develop.com/tury/demo">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg">
-<link rel="stylesheet" href="/assets/tours/tour.v1.css?v=23b75aab">
+<link rel="stylesheet" href="/assets/tours/tour.v1.css?v=b88225a8">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Головна", "item": "https://cas-develop.com/"}, {"@type": "ListItem", "position": 2, "name": "3D-тури", "item": "https://cas-develop.com/tury"}, {"@type": "ListItem", "position": 3, "name": "Демо-тур (тестові панорами)", "item": "https://cas-develop.com/tury/demo"}]}</script>
 <script src="/assets/tours/aframe.min.js"></script>
-</head><body>
+</head><body class="tp">
 <script type="application/json" id="tour-data">{"slug": "demo", "title": "Демо-тур (тестові панорами)", "description": "Тестовий 3D-тур для перевірки переглядача.", "start": "1-hotel-room", "scenes": [{"id": "1-hotel-room", "name": "Номер готелю", "image": "/img/tury/demo/1-hotel-room.jpg", "yaw": 0, "hotspots": [{"to": "2-studio", "yaw": 0, "pitch": -15}]}, {"id": "2-studio", "name": "Студія", "image": "/img/tury/demo/2-studio.jpg", "yaw": 0, "hotspots": [{"to": "1-hotel-room", "yaw": 180, "pitch": -15}]}], "hidden": true}</script>
-<a-scene id="scene" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .spot, .sky-hit" vr-mode-ui="enabled: true" loading-screen="dotsColor:#c8a96a; backgroundColor:#111" renderer="colorManagement:true" xr-mode-ui="enabled: true">
+<div class="tv" id="tv">
+<a-scene id="scene" embedded cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .spot, .sky-hit" vr-mode-ui="enabled: true" loading-screen="dotsColor:#c8a96a; backgroundColor:#111" renderer="colorManagement:true" xr-mode-ui="enabled: true">
   <a-assets timeout="20000"></a-assets>
   <a-sky id="sky" rotation="0 -90 0"></a-sky>
   <a-entity id="spots" follow-cam></a-entity>
@@ -36,5 +40,6 @@
 <div class="tzoom" role="group" aria-label="Масштаб"><button class="ib" id="zoomIn" aria-label="Наблизити">+</button><button class="ib" id="zoomOut" aria-label="Віддалити">−</button></div>
 <div class="hint" id="hint">Тягніть, щоб роздивитись · коліщатко або два пальці — масштаб · стрілки — перехід</div>
 <div class="edit" id="edit" hidden></div>
+</div>
 <script src="/assets/tours/tour.v1.js?v=96150080"></script>
 </body></html>

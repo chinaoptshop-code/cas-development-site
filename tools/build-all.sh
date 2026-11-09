@@ -21,12 +21,15 @@ python3 tools/site/captions.py  # підписи галерей: обʼєкт, �
 python3 tools/site/casmap.py    # карти: «Карта проєктів» у /portfolio, офіс у /contact (лендинги контактів — через landing.py)
 python3 tools/site/quiz.py      # квіз-калькулятор перед формою заявки (ремонт, будівництво; на головних — ні)
 python3 tools/site/media.py     # тур 360° (/tury/<slug>) на сторінках проєктів, відео YouTube, канал у sameAs — з tools/site/media.json
+python3 tools/site/casetext.py  # «Про проєкт» на /proekty/<slug>: Задача → Рішення → Результат з tools/site/casetext.json
 python3 tools/site/buildanim.py # «Будинок з нуля» / «Ремонт з нуля» — scroll-анімація збірки (будівництво, ремонт квартир, головні)
 python3 tools/site/landanim.py  # «Ландшафт з нуля» — сцена на сторінках ландшафтного дизайну + перемикач «Будинок / Ландшафт» на будівництві
 python3 tools/site/resort.py    # «Комплекс відпочинку» — генплан (база відпочинку, ресторан), тизер (послуги, будівництво), перемикач сцен на головних
 python3 tools/site/restaurant.py # «Ресторан з нуля» — сцена на сторінках дизайну/ремонту ресторанів, тизер на послугах
 python3 tools/site/waterhouse.py # «Будинок на воді» — сцена на сторінках бази відпочинку (посилання в перемикачах сцен дають landanim/resort)
+python3 tools/site/notfound.py  # 404 для кожної мови (<мова>/404.html з 404.html; Cloudflare Pages бере найближчий)
 python3 tools/site/llms.py      # /llms.txt і /llms-full.txt — опис студії для ШІ (факти з CLAUDE.md, сторінки з sitemap)
+python3 tools/site/terms.py     # «Умови використання» 9 мов (шаблон — політика конфіденційності мови, кластер terms)
 python3 tools/site/chrome.py
 python3 tools/site/chrome.py --check
 python3 tools/site/ux.py --check

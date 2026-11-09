@@ -5,7 +5,8 @@ What it does (idempotent, never deletes/renames files, keeps dimensions):
   1. Re-encodes oversized WebP in place:
        - size inversion: a narrower variant of the same photo is heavier than a wider one;
        - over-quality: bytes per pixel above BPP_LIMIT;
-       - hero / first-screen images (read from HTML, read-only) above HERO_MAX bytes.
+       - hero / first-screen images (read from HTML, read-only) above HERO_MAX bytes (< 2000w)
+         or HERO_MAX_BIG (≥ 2000w: only big screens fetch them — q ≤ 78, no smoothing).
   2. Writes an .avif next to every .webp (quality picked per image by binary search:
      aim ~40% smaller than WebP, never below SSIM_MIN vs the WebP).
   3. Writes img/lqip.json: "img/p/<name>" -> tiny blurred WebP data URI (<= 300 bytes).
@@ -26,7 +27,9 @@ SSIM_MIN = 0.97          # vs current WebP, grayscale, downscaled 2x (max 768 px
 Q_MIN_AVIF = 40          # never go below this AVIF quality (except hard hero cap)
 AVIF_TARGET = 0.60       # aim: AVIF = 60% of WebP bytes (40% saving)
 AVIF_SPEED = 6
-HERO_MAX = 120 * 1024
+HERO_MAX = 120 * 1024     # hero-копії < BIG_W (телефони, ноутбуки — LCP): тісний бюджет, за потреби легке згладжування
+BIG_W = 2000              # hero-копії від 2000w вантажать лише великі екрани (1920@2, 2560+): окремий бюджет, без згладжування
+HERO_MAX_BIG = 450 * 1024 # (Михайло 09.11.2026: «різкіше перше фото на великих моніторах»)
 HERO_BLUR = (0, 0.4, 0.6, 0.8, 1.0)  # pre-smoothing radii tried only when a hero WebP cannot fit HERO_MAX
 BPP_LIMIT = 0.22         # bytes per pixel above which a WebP counts as over-quality
 REENC_MIN_GAIN = 0.12    # re-encode only if it saves >= 12%
@@ -118,15 +121,33 @@ def search(img, ref, enc, max_bytes, lo=20, hi=92, floor=True):
     return qs, get(qs), get_s(qs), False
 
 # ---------------------------------------------------------------- tasks ---------
+def hero_cap(path):
+    """Бюджет hero-копії: < BIG_W — HERO_MAX, ≥ BIG_W — HERO_MAX_BIG (ширина з файла)."""
+    try:
+        with Image.open(os.path.join(ROOT, path)) as im:
+            return HERO_MAX_BIG if im.size[0] >= BIG_W else HERO_MAX
+    except Exception:
+        return HERO_MAX
+
+
 def task_webp(args):
     path, reasons, max_bytes = args
     full = os.path.join(ROOT, path)
     before = os.path.getsize(full)
     img = load(full)
     ref = _gray(img)
-    q, data, s, ok = search(img, ref, enc_webp, max_bytes, lo=40, hi=90)
     hard_cap = "hero" in reasons
-    if len(data) < before * (1 - REENC_MIN_GAIN) or (hard_cap and before > HERO_MAX and len(data) < before):
+    big = hard_cap and img.size[0] >= BIG_W
+    cap_h = HERO_MAX_BIG if big else HERO_MAX
+    if big:  # великі hero-копії: найбільша якість ≤ 78, що влазить у HERO_MAX_BIG, без згладжування
+        q, data, s, _ = search(img, ref, enc_webp, max_bytes, lo=40, hi=78, floor=False)
+        if len(data) < before:
+            with open(full, "wb") as f:
+                f.write(data)
+            return dict(path=path, reasons=reasons + ["big"], before=before, after=len(data), q=q, ssim=round(s, 4), done=True)
+        return dict(path=path, reasons=reasons, before=before, after=before, q=None, ssim=None, done=False)
+    q, data, s, ok = search(img, ref, enc_webp, max_bytes, lo=40, hi=90)
+    if len(data) < before * (1 - REENC_MIN_GAIN) or (hard_cap and before > cap_h and len(data) < before):
         if hard_cap and len(data) > HERO_MAX:
             # hero cap wins over SSIM floor. Very grainy photos cannot reach 120 KB by quality alone
             # without blocking, so also try a light pre-smoothing and keep the best SSIM that fits.
@@ -271,8 +292,11 @@ def plan_webp(files, heroes):
                     reasons.append("inversion"); cap = int(lim * 0.95)
             if size / (w * h) > BPP_LIMIT:
                 reasons.append("over-quality"); cap = min(cap or 10**9, int(size * (1 - REENC_MIN_GAIN)))
-            if p in heroes and size > HERO_MAX:
-                reasons.append("hero"); cap = min(cap or 10**9, HERO_MAX)
+            hc = HERO_MAX_BIG if w >= BIG_W else HERO_MAX
+            if p in heroes and size > hc:
+                reasons.append("hero"); cap = min(cap or 10**9, hc)
+            elif p in heroes and w >= BIG_W:  # велика hero-копія в бюджеті: не чіпаємо (ні over-quality, ні inversion)
+                continue
             if reasons:
                 jobs[p] = (p, reasons, cap)
     return list(jobs.values()), info
@@ -313,7 +337,7 @@ def main():
                 reenc = list(done.values())
         print(f"AVIF: {len(files)} files", flush=True)
         av = []
-        for i, r in enumerate(pool.imap_unordered(task_avif, [(p, HERO_MAX if p in heroes else 10**9, a.force) for p in files], chunksize=4)):
+        for i, r in enumerate(pool.imap_unordered(task_avif, [(p, hero_cap(p) if p in heroes else 10**9, a.force) for p in files], chunksize=4)):
             av.append(r)
             if i % 100 == 0:
                 print(f"  {i}/{len(files)}", flush=True)
@@ -365,7 +389,7 @@ def write_report(files, skipped, wb, wa, reenc, av, lqip, heroes, hero_files, dt
     for p in hero_files:
         pages = sorted(heroes[p])
         L.append(f"| `{p}` | {kb(wa[p])} | {kb(avd[p]['avif'])} | {', '.join(pages[:3])}{' …' if len(pages) > 3 else ''} |")
-    over = [p for p in hero_files if wa[p] > HERO_MAX or avd[p]["avif"] > HERO_MAX]
+    over = [p for p in hero_files if wa[p] > hero_cap(p) or avd[p]["avif"] > hero_cap(p)]
     L += ["", f"Hero images over 120 KB: {len(over)}" + (": " + ", ".join(f"`{p}`" for p in over) if over else ""), ""]
     L += ["## Skipped", ""] + ([f"- `{p}` — {why}" for p, why in skipped] or ["- none"]) + [""]
     with open(os.path.join(ROOT, "tools", "img", "report.md"), "w") as f:

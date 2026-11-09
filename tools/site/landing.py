@@ -292,6 +292,22 @@ ORG = {'@type': 'Organization', '@id': B + '#business', 'name': 'CAS Development
 # YouTube media.py підставляє з tools/site/media.json (youtube_channel)
 SAME_AS = ['https://www.instagram.com/cas_development/', 'https://maps.google.com/?cid=15015666645432112566',
            'https://www.youtube.com/@cas_development']
+# офіс і години роботи — з Google Business Profile (09.11.2026): вул. Антоновича, 44, 03186; Пн–Пт 10:00–20:00, Сб–Нд вихідні (онлайн 24/7)
+HOURS = [{'@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          'opens': '10:00', 'closes': '20:00'}]
+STREET = {'uk': 'вул. Антоновича, 44', 'ru': 'ул. Антоновича, 44'}  # інші мови — латиницею
+LB_GEO = {'@type': 'GeoCoordinates', 'latitude': 50.4335971, 'longitude': 30.5131241}
+MAP = 'https://maps.google.com/?cid=15015666645432112566'
+
+
+def business(lang, **extra):
+    """Повний вузол LocalBusiness (той самий @id, що на головній) для «Контактів» і «Про студію» всіх мов."""
+    t = L[lang]
+    return dict({'@type': ['HomeAndConstructionBusiness', 'GeneralContractor'], '@id': B + '#business', 'name': 'CAS Development', 'url': B,
+                 'logo': B + 'apple-touch-icon.png', 'image': B + 'img/og-cas.jpg', 'telephone': '+380978667755', 'priceRange': '$$$',
+                 'address': {'@type': 'PostalAddress', 'streetAddress': STREET.get(lang, '44 Antonovycha St'), 'addressLocality': t['city'],
+                             'postalCode': '03186', 'addressCountry': 'UA'},
+                 'geo': LB_GEO, 'hasMap': MAP, 'openingHoursSpecification': HOURS, 'sameAs': SAME_AS}, **extra)
 e = lambda s: html.escape(s, quote=False)
 a = lambda s: html.escape(s, quote=True)
 # посилання в тексті абзаців «about» і відповідей FAQ: [анкор](/url) → <a href="/url">анкор</a> (у JSON-LD — лише анкор)
@@ -609,8 +625,9 @@ def ld(p):
     page = {'@type': {'about': 'AboutPage', 'contact': 'ContactPage'}.get(p.get('kind'), 'WebPage'), '@id': u + '#page', 'url': u,
             'name': p['title'], 'inLanguage': hl, 'isPartOf': {'@type': 'WebSite', '@id': B + '#site', 'url': B, 'name': 'CAS Development'}}
     if p.get('kind') == 'about':  # сутність студії — та сама, що на головній (@id), для Knowledge Graph і відповідей ШІ
-        page['mainEntity'] = dict(ORG, telephone='+380978667755', sameAs=SAME_AS, foundingDate='2016',
-                                  foundingLocation={'@type': 'Place', 'name': t['city']}, areaServed=area_served(lang))
+        page['mainEntity'] = business(lang, foundingDate='2016', foundingLocation={'@type': 'Place', 'name': t['city']}, areaServed=area_served(lang))
+    if p.get('kind') == 'contact':  # адреса з індексом і години роботи (Google Business Profile) — для локального пошуку
+        page['mainEntity'] = business(lang, areaServed=area_served(lang))
     if p.get('slug') == 'index':
         page['about'] = dict(ORG, telephone='+380978667755', sameAs=SAME_AS)
         g = [page]
@@ -796,11 +813,11 @@ def check(p):
     errs = []
     txt = json.dumps(p, ensure_ascii=False)
     if re.search(r'osocor|осокор|osokork|aqulla', txt, re.I): errs.append('Osocor/Aqulla')
-    ok = {'$30', '$350', '$550', '$250', '$600', '$1 100', '$1,100', '$50', '$2 500', '$2,500', '$500',
+    ok = {'$30', '$350', '$550', '$250', '$600', '$1 100', '$1,100', '$50', '$2 500', '$2,500', '$500', '$10 000', '$10 000', '$10,000', '$40 000', '$40,000', '$20 000', '$20,000',
           '$5 000', '$5,000', '$12', '$6', '$45',
-          '$850', '$900', '$1 700', '$1,700', '$18', '$400', '$4 000', '$4,000'}  # Європа: +50% до київських (Михайло 01.11.2026)  # $6/$45 — пакети дизайну (ринкова практика, Михайло делегував 27.10.2026)  # $500 — мін. замовлення Оздоби; $5 000 — поріг знижки за обсягом 3% (Михайло 25.10.2026);
+          '$850', '$900', '$1 700', '$1,700', '$18', '$400', '$4 000', '$4,000'}  # Європа: +50% до київських (Михайло 01.11.2026)  # $6/$45 — пакети дизайну (ринкова практика, Михайло делегував 27.10.2026)  # $10 000 — мін. замовлення Оздоби; $5 000 — поріг знижки за обсягом 3% (Михайло 25.10.2026);
     # $12 — архітектурний проєкт будинку від $12/м² за ринковою практикою (Михайло 26.10.2026, дослідження ринку)
-    for m in re.findall(r'\$\s?\d[\d ,.]*\d|\$\d', txt):
+    for m in re.findall(r'\$\s?\d[\d ,.]*\d|\$\d', txt.replace('\u00a0', ' ')):
         m = m.strip().rstrip(',.')
         if m not in ok and not re.fullmatch(r'\$\d{2,3}[ ,.]\d{3}', m):  # розрахунок площа × ставка
             errs.append('ціна ' + m)

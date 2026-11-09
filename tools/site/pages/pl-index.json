@@ -14,14 +14,14 @@
  ],
  "kicker": "Studio projektowania i architektury · Kijów · od 2016 roku",
  "hero_img": {
-  "img": "img/hero-hodos-villa-1280.webp",
-  "srcset": "/img/hero-hodos-villa-1280.webp 1280w, /img/hero-hodos-villa-1920.webp 1920w",
-  "alt": "Jasna jadalnia z marmurowym stołem, niebieskimi fotelami i kryształowym żyrandolem — projekt Hodos Villa od CAS Development, Kijów",
+  "img": "img/hero-pidgirland-1280.webp",
+  "srcset": "/img/hero-pidgirland-1280.webp 1280w, /img/hero-pidgirland-1920.webp 1920w",
+  "alt": "Salon z jadalnią i drewnianymi panelami — projekt Pidgirland, CAS Development",
   "sizes": "100vw",
   "m": {
-   "srcset": "/img/hero-hodos-villa-m720.webp 720w, /img/hero-hodos-villa-m1080.webp 1080w",
-   "w": 1080,
-   "h": 1800
+   "srcset": "/img/hero-pidgirland-m-720.webp 720w, /img/hero-pidgirland-m-1080.webp 1080w, /img/hero-pidgirland-m-1440.webp 1440w",
+   "w": 1440,
+   "h": 2400
   }
  },
  "sections": [
@@ -196,7 +196,7 @@
      "h": "Lokale biznesowe pod klucz",
      "href": "/pl/biznes-pod-klucz",
      "img": "img/svc-commercial-600.webp",
-     "price": "projekt od $30 / m² · wyposażenie od $500",
+     "price": "projekt od $30 / m² · wyposażenie od $10 000",
      "p": "Kawiarnie, restauracje, salony, sklepy i biura: projekt, remont, wyposażenie i otwarcie w jednych rękach.",
      "links": [
       [

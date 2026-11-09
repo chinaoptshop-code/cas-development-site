@@ -169,6 +169,46 @@ function carousel(){
   sc.parentNode.insertBefore(nav,sc.nextSibling);sc.classList.add('cv-on');
  });
 }
-function run(){[expanders,scrollers,imgFade,carousel,marquee].forEach(function(f){try{f()}catch(e){}})}
+/* Слайд-шоу фону hero головних (Михайло 09.11.2026; список — data-hs на picture.hx-bg, ставить tools/site/rich.py HERO_SLIDES):
+   перше фото (LCP, fetchpriority) не анімується; інші шари — лише після load + idle, кожен вантажиться перед показом (AVIF/WebP, телефон — кадр 0.6);
+   зміна кожні 10 с, перехід opacity 1.2 с; пауза, коли вкладка прихована або hero поза екраном; prefers-reduced-motion — без зміни.
+   Додаткові шари декоративні: alt="", aria-hidden. Висота блоку не змінюється (CLS 0). */
+function heroSlides(){
+ var pic=d.querySelector('.hx-home>picture.hx-bg[data-hs]');if(!pic||RM||!('IntersectionObserver' in W))return;
+ var hx=pic.parentNode,list=pic.getAttribute('data-hs').split(';').map(function(x){var p=x.split(':');return{n:p[0],d:(p[1]||'').split('.').filter(Boolean),m:(p[2]||'').split('.').filter(Boolean)}}).filter(function(x){return x.d.length&&x.m.length});
+ if(!list.length)return;
+ var st=d.createElement('style');
+ st.textContent='.hx-home>.hs-l img{opacity:0;transition:opacity 1.2s ease}.hx-home>.hs-l.hs-on img{opacity:1}'; // на img: деплой ставить picture{display:contents}
+ d.head.appendChild(st);
+ var layers=[pic],cur=0,vis=true,tm=0,busy=false;
+ function set(n,ws,m,ext){return ws.map(function(w){return '/img/hs-'+n+m+'-'+w+'.'+ext+' '+w+'w'}).join(', ')}
+ function make(i){
+  var x=list[i-1],P=d.createElement('picture');P.className='hx-bg hs-l';P.setAttribute('aria-hidden','true');
+  var q='(max-width:767px) and (orientation:portrait)';
+  P.innerHTML='<source type="image/avif" media="'+q+'" srcset="'+set(x.n,x.m,'-m','avif')+'" sizes="100vw">'+
+   '<source media="'+q+'" srcset="'+set(x.n,x.m,'-m','webp')+'" sizes="100vw">'+
+   '<source type="image/avif" srcset="'+set(x.n,x.d,'','avif')+'" sizes="100vw">'+
+   '<img src="/img/hs-'+x.n+'-'+x.d[0]+'.webp" srcset="'+set(x.n,x.d,'','webp')+'" sizes="100vw" alt="" decoding="async" width="2400" height="1200">';
+  return P;
+ }
+ function show(i){
+  var L=layers[i];
+  if(!L){L=layers[i]=make(i);hx.insertBefore(L,layers[i-1].nextSibling)}
+  var im=L.querySelector('img');busy=true;
+  var go=function(){busy=false;
+   var old=layers.filter(function(x,k){return k&&k!==i&&x.classList.contains('hs-on')});
+   if(i){L.classList.add('hs-on');setTimeout(function(){old.forEach(function(x){x.classList.remove('hs-on')})},1300)} // новий шар вище — старі гасимо після переходу
+   else old.forEach(function(x){x.classList.remove('hs-on')}); // назад до першого фото: верхній шар тане
+   cur=i;arm()};
+  if(im.complete&&im.naturalWidth)go();
+  else{im.addEventListener('load',function(){(im.decode?im.decode():Promise.resolve()).then(go,go)},{once:true});im.addEventListener('error',function(){busy=false;cur=i;arm()},{once:true})}
+ }
+ function arm(){clearTimeout(tm);if(vis&&!d.hidden&&!busy)tm=setTimeout(function(){show((cur+1)%(list.length+1))},10000)}
+ new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis)arm();else clearTimeout(tm)},{threshold:.15}).observe(hx);
+ d.addEventListener('visibilitychange',function(){if(d.hidden)clearTimeout(tm);else arm()});
+ var start=function(){(W.requestIdleCallback||function(f){setTimeout(f,200)})(arm)};
+ if(d.readyState==='complete')start();else W.addEventListener('load',start,{once:true});
+}
+function run(){[expanders,scrollers,imgFade,carousel,marquee,heroSlides].forEach(function(f){try{f()}catch(e){}})}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',run);else run();
 })();

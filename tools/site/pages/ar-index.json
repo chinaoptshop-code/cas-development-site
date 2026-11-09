@@ -14,14 +14,14 @@
  ],
  "kicker": "استوديو تصميم وعمارة · كييف · منذ 2016",
  "hero_img": {
-  "img": "img/hero-hodos-villa-1280.webp",
-  "srcset": "/img/hero-hodos-villa-1280.webp 1280w, /img/hero-hodos-villa-1920.webp 1920w",
-  "alt": "غرفة طعام مضيئة بطاولة رخامية وكراسٍ زرقاء وثريا كريستالية — مشروع تصميم Hodos Villa من CAS Development، كييف",
+  "img": "img/hero-pidgirland-1280.webp",
+  "srcset": "/img/hero-pidgirland-1280.webp 1280w, /img/hero-pidgirland-1920.webp 1920w",
+  "alt": "غرفة معيشة وطعام بألواح خشبية — مشروع تصميم Pidgirland من CAS Development",
   "sizes": "100vw",
   "m": {
-   "srcset": "/img/hero-hodos-villa-m720.webp 720w, /img/hero-hodos-villa-m1080.webp 1080w",
-   "w": 1080,
-   "h": 1800
+   "srcset": "/img/hero-pidgirland-m-720.webp 720w, /img/hero-pidgirland-m-1080.webp 1080w, /img/hero-pidgirland-m-1440.webp 1440w",
+   "w": 1440,
+   "h": 2400
   }
  },
  "sections": [
@@ -196,7 +196,7 @@
      "h": "تجهيز المحلات التجارية",
      "href": "/ar/business-fit-out",
      "img": "img/svc-commercial-600.webp",
-     "price": "التصميم من $30 / م² · التجهيز من $500",
+     "price": "التصميم من $30 / م² · التجهيز من $10 000",
      "p": "مقاهٍ ومطاعم وصالونات ومتاجر ومكاتب: تصميم وتنفيذ وتجهيز وافتتاح عبر جهة واحدة.",
      "links": [
       [

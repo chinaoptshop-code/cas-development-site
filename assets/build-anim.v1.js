@@ -14,7 +14,7 @@
   W.__casBA = 1;
   var secs = [].slice.call(d.querySelectorAll('section.bz[data-bz]'));
   if (!secs.length || !W.fetch || !W.Promise) return;
-  var VER = {"ar.flat":"1689188e","ar.house":"cae0ff2a","de.flat":"7dc08b9d","de.house":"23d62137","en.flat":"eb0db236","en.house":"13b27e1e","es.flat":"a7a3dd77","es.house":"3cf40c05","fr.flat":"bbc24298","fr.house":"11e85169","pl.flat":"ccedf374","pl.house":"477536e2","ru.flat":"458864cc","ru.house":"170f51c3","uk.flat":"8bfbad04","uk.house":"2d20aa37","zh.flat":"55e04f66","zh.house":"3dc0f262"}; /*ver*/
+  var VER = {"ar.flat":"dd4e8c42","ar.house":"6da9929c","de.flat":"bef66e8c","de.house":"407e45b3","en.flat":"ba190cfc","en.house":"32f566db","es.flat":"a055bd91","es.house":"de85aea4","fr.flat":"ccd5f01d","fr.house":"fe3284fe","pl.flat":"095e7c40","pl.house":"ac12d36a","ru.flat":"e63b4e18","ru.house":"c3917aff","uk.flat":"ad75a035","uk.house":"72d1609b","zh.flat":"fab61a6a","zh.house":"1a03b7f4"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
   // головні (.hx-home): компактна сцена в межах екрана — без довгої sticky-доріжки; етапи крокує автопрогравання (casAuto) і кнопки ←/→ (Михайло 05.11.2026)
@@ -608,14 +608,14 @@
     // людина 1,8 м біля входу — масштаб; зʼявляється на благоустрої (раніше стояла перед фасадом на всіх етапах і читалась як артефакт)
     var hp = P(dX + 1.1, Y1 + 1.6, 0).split(','), hq = P(dX + 1.1, Y1 + 1.6, 1.8).split(',');
     A('land', 0.8, '<g class="man"><line x1="' + hp[0] + '" y1="' + hp[1] + '" x2="' + hq[0] + '" y2="' + (+hq[1] + 3.2) + '"/><circle cx="' + hq[0] + '" cy="' + (+hq[1] + 1.6) + '" r="1.7"/></g>');
-    A('done', 0, seal(GX - 0.6, Y0 + 0.4, RZ + 0.9, ui), { m: 'd' });
+    A('done', 0, seal(GX - 0.6, Y0 + 0.4, RZ + 0.9, ui, 1.5), { m: 'd' }); // будинок у кадрі дрібніший за квартиру — печатка більша, «12» читається й на 402 px
     return { parts: L, xr: S('mep'), th: [], W: H.W, D: H.D };
   }
 
-  function seal(x, y, z, ui) { // печатка «12 міс. гарантія»
-    var q = P(x, y, z).split(','), a = +q[0], b = +q[1];
-    bb[0] = Math.min(bb[0], a - 28); bb[1] = Math.min(bb[1], b - 28); bb[2] = Math.max(bb[2], a + 28); bb[3] = Math.max(bb[3], b + 28);
-    return '<g class="seal"><circle cx="' + a + '" cy="' + b + '" r="27" class="sl1"/><circle cx="' + a + '" cy="' + b + '" r="22" class="sl2"/>' +
+  function seal(x, y, z, ui, k) { // печатка «12 міс. гарантія» (k — масштаб)
+    var q = P(x, y, z).split(','), a = +q[0], b = +q[1], r = 28 * (k || 1);
+    bb[0] = Math.min(bb[0], a - r); bb[1] = Math.min(bb[1], b - r); bb[2] = Math.max(bb[2], a + r); bb[3] = Math.max(bb[3], b + r);
+    return '<g class="seal"' + (k ? ' transform="translate(' + a + ' ' + b + ') scale(' + k + ') translate(' + (-a) + ' ' + (-b) + ')"' : '') + '><circle cx="' + a + '" cy="' + b + '" r="27" class="sl1"/><circle cx="' + a + '" cy="' + b + '" r="22" class="sl2"/>' +
       '<text x="' + a + '" y="' + (b + 1) + '" class="sl3">12</text><text x="' + a + '" y="' + (b + 11) + '" class="sl4">' + esc(ui.mo) + '</text><text x="' + a + '" y="' + (b - 12) + '" class="sl4">' + esc(ui.gar) + '</text></g>';
   }
 
@@ -1275,6 +1275,12 @@
     function puff(g, kind, row) {
       if (rm || !cam || !g.firstChild) return;
       var now = Date.now(); if (now - pLast < (row ? 70 : 140)) return; pLast = now;
+      // getBBox одразу після зміни DOM змушує браузер перерахувати верстку посеред кадру (довгі задачі при прокрутці, INP) —
+      // міряємо після відмалювання кадру, коли верстка вже чиста (частинки зʼявляються на ~16 мс пізніше, оку непомітно)
+      W.requestAnimationFrame(function () { setTimeout(function () { puffNow(g, kind, row); }, 0); });
+    }
+    function puffNow(g, kind, row) {
+      if (!g.isConnected || !g.firstChild) return;
       var b; try { b = g.getBBox(); } catch (e) { return; } if (!b.width) return;
       var cn = kind === 2 ? 'bz-sp' : 'bz-dp', h = '';
       for (var i = 0; i < (row ? 5 : 7); i++) {
@@ -1319,7 +1325,10 @@
         if (scene === 'flat') { xb.disabled = a < sc.net; if (xb.disabled && xr) setXr(false); }
       }
     }
-    function span() { return run.offsetHeight - pin.offsetHeight; }
+    // висота доріжки: кеш (offsetHeight на кожному кадрі прокрутки змушував перераховувати верстку); скидається на resize/measure і зміну розмірів блоку
+    var spC = null;
+    function span() { if (spC == null) spC = run.offsetHeight - pin.offsetHeight; return spC; }
+    if (W.ResizeObserver) { var spRO = new ResizeObserver(function () { spC = null; }); spRO.observe(run); spRO.observe(pin); }
     // прогрес 0…1 → етап: старт із 0.6 (на вході в блок перший етап уже намальований)
     function target() {
       if (rm) return man;
@@ -1329,7 +1338,7 @@
     // прокрутка → прогрес: casDrive (site-chrome.v1.js) — згладжування, ліміт швидкості, не більше етапу за «клацання» колеса, зсув автопрогравання
     var drive = W.casDrive ? W.casDrive({ n: function () { return n; }, min: 0.6, raw: target, view: run, render: function (c) { cur = c; render(c); } }) : null;
     function kick() { if (drive) drive.kick(); else { cur = target(); render(cur); } }
-    function measure() { top0 = parseFloat(W.getComputedStyle(pin).top) || 0; kick(); }
+    function measure() { spC = null; top0 = parseFloat(W.getComputedStyle(pin).top) || 0; kick(); }
     function go(i) {
       if (rm) { man = i + 0.85; cur = man; render(cur); return; }
       if (drive) drive.reset();

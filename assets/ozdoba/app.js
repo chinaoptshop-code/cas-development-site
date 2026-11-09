@@ -267,7 +267,7 @@ function renderBundle(id){
         </div></div>`; }).join('')}
     <div class="sum total"><span>${t('Разом')}, ${poz(n0)}</span><span>${money(bt)}</span></div>
     ${vp?`<div class="sum disc"><span>${t('Знижка за обсягом −{p}% у кошику',{p:vp})}</span><span>−${money(Math.round(bt*vp/100))}</span></div>`:''}
-    <p class="note-honest">${t('Ціна — сума позицій каталогу.')} ${VOLTXT} — ${t('рахується в кошику на всю суму товарів.')} ${t('Поставка з Китаю')} <span class="nw">30–60</span>\u00a0${t('днів')}; ${t(SHIPTXT)} ${t('Рахунок для ФОП і ТОВ; рахунки для компаній з ЄС — у процесі підключення.')}${b.premium?' '+t('Точну суму під ваш обʼєкт менеджер підтвердить після заявки.'):''}</p>
+    <p class="note-honest">${t('Ціна — сума позицій каталогу.')} ${VOLTXT} — ${t('рахується в кошику на всю суму товарів.')} ${t('Поставка з Китаю')} <span class="nw">35–70</span>\u00a0${t('днів')}; ${t(SHIPTXT)} ${t('Рахунок для ФОП і ТОВ; рахунки для компаній з ЄС — у процесі підключення.')}${b.premium?' '+t('Точну суму під ваш обʼєкт менеджер підтвердить після заявки.'):''}</p>
     ${req?`<p class="note-honest" style="color:var(--glow)">${t('У комплекті є позиції менше {m} шт — у кошик його не додати. Надішліть запит розрахунку: менеджер порахує комплект під ваш обʼєкт.',{m:MINQ()})}</p>
     <a class="btn" style="text-decoration:none" href="${reqHref}"${L?' onclick="closeAll()"':''}>${t('Запит розрахунку')}</a>`:`
     <button class="btn" onclick="addBundle('${id}')"${low?' disabled aria-disabled="true"':''}>${b.premium?t('Додати весь комплект у кошик'):t('Додати комплект у кошик')}</button>
@@ -311,7 +311,7 @@ function renderItem(){
     ${gallery(i, col(i,curC)[1])}
     </div><div class="it-info">
     ${L?`<p class="desc">${t('Колір, розмір, матеріал і оздоблення змінюємо під ваш проєкт. Повний опис і характеристики — на сторінці товару')} <a href="/ozdoba/${i.slug}" lang="uk" style="color:var(--brass)">${t('(українською)')}</a>.</p>`:`<p class="desc">${i.desc}</p>`}
-    <div class="meta"><span class="tag">${subN(i)}</span><span class="tag">${t('Ціна за 1 {u}',{u:unitN(i.unit)})}</span><span class="tag">${t('Від {m} {u}',{m:MINQ(),u:unitN(i.unit)})}</span><span class="tag">${t('Поставка')} <span class="nw">30–60</span>\u00a0${t('днів')}</span><span class="tag">OZD-${i.id}</span></div>
+    <div class="meta"><span class="tag">${subN(i)}</span><span class="tag">${t('Ціна за 1 {u}',{u:unitN(i.unit)})}</span><span class="tag">${t('Від {m} {u}',{m:MINQ(),u:unitN(i.unit)})}</span><span class="tag">${t('Поставка')} <span class="nw">35–70</span>\u00a0${t('днів')}</span><span class="tag">OZD-${i.id}</span></div>
 
     <p class="lbl">${t('Колір і фактура')} <b>${colN(col(i,curC)[0])}</b></p>
     <div class="swatches"><button class="swatch asis" aria-pressed="${curC<0}" aria-label="${t('Як на фото')}" onclick="setC(-1)">${t('як на фото')}</button>${cs.map((c,n)=>`<button class="swatch" style="background:${c[1]}" aria-pressed="${n===curC}" title="${colN(c[0])} — ${t('під замовлення')}" aria-label="${colN(c[0])} — ${t('під замовлення')}" onclick="setC(${n})"></button>`).join('')}</div>
@@ -359,7 +359,7 @@ function typeQ(v){ const q=Math.round(Number(v)||0); if(q<MINQ()) toast(t('Мі�
 function customHTML(i){
   const c=i.custom||[]; if(!c.length) return '';
   return `<div class="custom"><p class="lbl" style="margin-top:20px">Під ваш проєкт</p><ul>${c.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
-    <p class="note-honest" style="margin-top:6px">Виготовляємо під замовлення, поставка <span class="nw">30–60</span>\u00a0днів. Мінімум — ${MINQ()} ${esc(i.unit)} позиції.</p></div>`;
+    <p class="note-honest" style="margin-top:6px">Виготовляємо під замовлення, поставка <span class="nw">35–70</span>\u00a0днів. Мінімум — ${MINQ()} ${esc(i.unit)} позиції.</p></div>`;
 }
 function addToCart(){
   const ex=cart.find(c=>c.id===cur.id&&c.ci===curC&&c.si===curS);
@@ -390,9 +390,9 @@ function volHint(){ const g=goods(), cur=disc(), n=VOL().find(([t,pc])=>g<t && p
 const SHIPTXT = 'Вартість доставки й митних платежів розраховуємо індивідуально залежно від обсягу замовлення (веземо під замовлення з Китаю).';
 const ship = () => 0;
 const grand = () => goods()-discount();
-/* Оздоба комплектує обʼєкти: поштучно не продаємо, мінімальне замовлення ≈ $500 */
-const MIN_ORDER = 23000;
-const belowMin = () => !onReq() && goods()-discount() < MIN_ORDER;
+/* Оздоба комплектує обʼєкти: поштучно не продаємо, мінімальне замовлення ≈ $10 000 */
+const MIN_ORDER = 460000;
+const belowMin = () => !onReq() && goods() < MIN_ORDER; /* мінімум — за сумою товарів до знижки: знижка 5% діє вже від $10 000 */
 
 function save(){ try{ localStorage.setItem('ozd-cart',JSON.stringify(cart)); localStorage.setItem('ozd-fav',JSON.stringify([...fav])); }catch(e){} }
 function syncBadges(){ save();
@@ -435,8 +435,8 @@ function renderCart(){
     <div class="sum"><span>${t('Доставка й митні платежі')}</span><span>${t('розраховуємо індивідуально')}</span></div>
     ${onReq()?`<div class="sum"><span>${t('Позицій за запитом: {n}',{n:onReq()})}</span><span>${t('ціну назве менеджер')}</span></div>`:''}
     <div class="sum total"><span>${onReq()?t('Сума відомих позицій'):belowMin()?t('Разом'):t('Разом за товари')}</span><span>${money(grand())}</span></div>
-    <p class="note-honest" style="margin:2px 0 6px">${t('Мінімум — {m}\u00a0шт (одиниць) кожної позиції. Товари виготовляємо під замовлення, поставка з Китаю',{m:MINQ()})} <span class="nw">30–60</span>\u00a0${t('днів')}. ${t(SHIPTXT)}</p>
-    ${belowMin()?`<p class="note-honest" style="color:var(--glow)">${t('До мінімального замовлення залишилось {s}. Мінімальне замовлення — {min} (≈\u00a0$500) і від {m}\u00a0шт кожної позиції: ми комплектуємо обʼєкти й не продаємо поштучно. Додайте позиції або візьміть готовий комплект.',{s:money(MIN_ORDER-(goods()-discount())),min:money(MIN_ORDER),m:MINQ()})}</p>
+    <p class="note-honest" style="margin:2px 0 6px">${t('Мінімум — {m}\u00a0шт (одиниць) кожної позиції. Товари виготовляємо під замовлення, поставка з Китаю',{m:MINQ()})} <span class="nw">35–70</span>\u00a0${t('днів')}. ${t(SHIPTXT)}</p>
+    ${belowMin()?`<p class="note-honest" style="color:var(--glow)">${t('До мінімального замовлення залишилось {s}. Мінімальне замовлення — {min} (≈\u00a0$10 000) і від {m}\u00a0шт кожної позиції: ми комплектуємо обʼєкти й не продаємо поштучно. Додайте позиції або візьміть готовий комплект.',{s:money(MIN_ORDER-(goods()-discount())),min:money(MIN_ORDER),m:MINQ()})}</p>
     <button class="btn ghost" onclick="closeAll();setTab('bundles')">${t('Дивитись комплекти')}</button>`
     :`<button class="btn" onclick="openPay()">${t('Оформити замовлення')}</button>`}
     <div class="kp-box" style="border-top:1px solid var(--line);margin-top:16px;padding-top:12px">
@@ -499,7 +499,7 @@ function renderPay(){
     <button class="pay" aria-pressed="${payMethod==='card'}" onclick="setPay('card')"><span class="dot"></span>
       <span><b>${t('Карткою (посилання від менеджера)')}</b><small>${t('Посилання на оплату надішле менеджер після підтвердження наявності.')}</small></span></button>
     <button class="pay" aria-pressed="${payMethod==='invoice'}" onclick="setPay('invoice')"><span class="dot"></span>
-      <span><b>${t('Рахунок для ФОП або ТОВ')}</b><small>${t('Безготівковий розрахунок з ПДВ, закривні документи. Відвантаження після зарахування.')}</small></span></button>
+      <span><b>${t('Рахунок для ФОП або ТОВ')}</b><small>${t('Безготівковий розрахунок з ПДВ або без — індивідуально, закривні документи. Відвантаження після зарахування.')}</small></span></button>
     <button class="pay" aria-pressed="${payMethod==='cash'}" onclick="setPay('cash')"><span class="dot"></span>
       <span><b>${t('Готівкою — гривні, долари або євро')}</b><small>${t('Умови й місце оплати узгодить менеджер після підтвердження замовлення.')}</small></span></button>
     <button class="pay" aria-pressed="${payMethod==='usdt'}" onclick="setPay('usdt')"><span class="dot"></span>
@@ -535,7 +535,7 @@ async function pay(){
     if(r.ok){ const d=await r.json(); if(d.number){ ok=true; num=d.number; } }
     else if(r.status===400){ // сервер відхилив кошик (мінімум 10 шт, мін. сума) — показуємо причину, не обходимо перевірку
       const d=await r.json().catch(()=>null);
-      if(d&&d.error){ if(btn){ btn.disabled=false; btn.textContent=t('Надіслати заявку'); } toast(L?t('Заявку не прийнято: перевірте мінімум — {m} шт кожної позиції і замовлення від $500.',{m:MINQ()}):d.error); return; }
+      if(d&&d.error){ if(btn){ btn.disabled=false; btn.textContent=t('Надіслати заявку'); } toast(L?t('Заявку не прийнято: перевірте мінімум — {m} шт кожної позиції і замовлення від $10 000.',{m:MINQ()}):d.error); return; }
     }
   }catch(e){}
   if(!ok) try{
