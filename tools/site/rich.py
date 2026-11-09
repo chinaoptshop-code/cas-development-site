@@ -66,7 +66,7 @@ def _slides():
     import os
     root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     ws = lambda b, xs: '.'.join(str(w) for w in xs if os.path.exists(os.path.join(root, f'img/{b}-{w}.webp')))
-    return ';'.join(f'{n}:{ws("hs-" + n, (1280, 1600, 1920, 2400))}:{ws("hs-" + n + "-m", (720, 1080, 1440))}' for n in HERO_SLIDES)
+    return ';'.join(f'{n}:{ws("hs-" + n, (1280, 1600, 1920, 2400, 2800, 3200))}:{ws("hs-" + n + "-m", (720, 1080, 1440, 1800))}' for n in HERO_SLIDES)
 
 
 def hero_bg(h, full=False):
