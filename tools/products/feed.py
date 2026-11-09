@@ -1,6 +1,6 @@
 # Фід товарів Оздоби для Google Merchant Center, Pinterest і Meta-каталогу — /ozdoba/feed.xml (RSS 2.0 з g:-полями).
 # Викликається з tools/products/build.py (функція build(mod)); окремо: python3 tools/products/feed.py
-# Товари без фото пропускаємо. Ціна — базова з каталогу, UAH. Мінімум 10 шт позиції — у описі (мін. замовлення $500 — там само).
+# Товари без фото пропускаємо. Ціна — базова з каталогу, UAH. Мінімум 10 шт позиції — у описі (мін. замовлення $10 000 — там само).
 # Інструкція для Михайла — tools/products/MERCHANT.md. Акаунтів не створюємо — лише фід.
 import json, os, re, sys, html, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -21,7 +21,7 @@ def build(mod=None):
         price = float(str(i.get('price') or 0).replace(' ', '') or 0)
         if price <= 0: continue
         desc = re.sub(r'\s+', ' ', str(i.get('desc') or i['name'])).strip()
-        desc = f"{desc} Мінімальна кількість — {minq} {i.get('unit', 'шт')} позиції, мінімальне замовлення від $500; поставка з Китаю 30–60 днів. Можливе виготовлення під замовлення."
+        desc = f"{desc} Мінімальна кількість — {minq} {i.get('unit', 'шт')} позиції, мінімальне замовлення від $10 000; поставка з Китаю 35–70 днів. Можливе виготовлення під замовлення."
         items.append(f"""  <item>
    <g:id>ozd-{i['id']}</g:id>
    <g:title>{esc(i['name'][:150])}</g:title>
