@@ -584,11 +584,14 @@ def _attr(tag, name):
 
 
 def head_extras(s):
-    """Speculation Rules і preload LCP-фото одразу після <meta name="viewport"> (ідемпотентно)."""
+    """Speculation Rules і preload LCP-фото одразу після <meta name="viewport"> (ідемпотентно);
+    twitter:card там, де є og:image, але картки немає (юридичні й ручні сторінки)."""
     i = s.find('</head>')
     if i < 0:
         return s
     head, body = s[:i], s[i:]
+    if 'name="twitter:card"' not in head:
+        head = re.sub(r'(<meta property="og:image" content="[^"]+">\n?)', lambda m: m.group(1) + ('' if m.group(1).endswith('\n') else '\n') + '<meta name="twitter:card" content="summary_large_image">\n', head, count=1)
     head = LCP_RX.sub('', SPEC_RX.sub('', head))
     add = SPEC + '\n'
     vis = re.sub(r'<script\b.*?</script>|<template\b.*?</template>|<noscript\b.*?</noscript>', '', body, flags=re.S)

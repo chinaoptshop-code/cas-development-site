@@ -263,6 +263,8 @@
       slots.forEach(function (s) { sio.observe(s); });
     } else buildAll();
   }
+  // блок сцени, підставлений перемикачем сцен на головній (site-chrome.v1.js), — його місця .lq-slot теж стають кнопкою до єдиної форми
+  window.casLqSlots = function (root) { if (!form || !root) return; [].forEach.call(root.querySelectorAll('.lq-slot:not([data-built])'), function (s) { slots.push(s); build(s); }); };
 
   /* ---------- 0б. лід-магніт «Гід з цінами» (PDF): <div class="gd-slot" data-pdf="/assets/guide/…pdf?v=…"> ставить tools/guide/build.py.
      Та сама швидка заявка (лише телефон, data-form="guide", source …#guide); після 2xx — кнопка «Завантажити гід».

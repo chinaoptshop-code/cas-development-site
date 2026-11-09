@@ -4,7 +4,10 @@
 .la-e{opacity:0;transition:opacity .45s ease,transform .45s ease}.la-e.on{opacity:1}.la-e.gone{opacity:0!important}
 .la-e:not(.on){transform:translateY(-8px)}
 .la-soil{fill:#5b4630}.la-graded{fill:#6a5236}.la-lump{fill:#4a3826;stroke:#3a2b1c}
-.la-house.t,.la-roof{fill:#2a2622}.la-house.r{fill:#1e1b18}.la-house.l{fill:#24211d}
+.la-hwall.l{fill:#d8d0c2}.la-hwall.r{fill:#b9b0a1}.la-hplinth{fill:#6f675c}.la-hplinth.r{fill:#5c554b}
+.la-hroof.f{fill:#3a3631;stroke:#2a2622;stroke-width:.6}.la-hroof.b{fill:#2c2925}.la-hroof.e{fill:#24211d}.la-hridge{stroke:#55504a;stroke-width:1.2;fill:none}
+.la-hwin{fill:#5d7480;stroke:#e8e2d6;stroke-width:.8;transition:fill 1.2s ease}.la-hfr{stroke:#e8e2d6;stroke-width:.6;fill:none}.la-hdoor{fill:#6b4a2b;stroke:#e8e2d6;stroke-width:.6}
+.la-dusk .la-hwin{fill:#ffd98a}
 .la-tri,.la-peg{stroke:#d9c27a;stroke-width:1.2;fill:none}.la-dev{fill:#f0c94b}.la-pegf{fill:#e0503c}
 .la-axis{stroke:#e0503c;stroke-width:1;stroke-dasharray:4 4;fill:none}
 .la-dr{fill:#cfd6dc}.la-dr2{stroke:#cfd6dc;stroke-width:2}.la-scan{stroke:#7fd3ff;stroke-width:.8;opacity:.6;fill:none}

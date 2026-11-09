@@ -174,78 +174,39 @@
     "p": "为您的项目工作的正式工长、家具工匠和专业人员。",
     "groups": [
      {
+      "label": "设计部",
+      "p": "建筑师、设计师和工程师：平面布局、施工图、材料清单。",
+      "people": []
+     },
+     {
+      "label": "施工部",
+      "p": "各工种的施工和安装人员，从粗装到精装。",
+      "people": []
+     },
+     {
       "label": "工长",
       "p": "",
-      "people": [
-       [
-        "Oleh",
-        ""
-       ],
-       [
-        "Volodymyr",
-        ""
-       ],
-       [
-        "Serhii",
-        ""
-       ],
-       [
-        "Oleksandr",
-        ""
-       ],
-       [
-        "Mykhailo",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "家具工匠",
       "p": "",
-      "people": [
-       [
-        "Serhii",
-        ""
-       ],
-       [
-        "Andrii",
-        ""
-       ],
-       [
-        "Oleh",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "测绘",
       "p": "",
-      "people": [
-       [
-        "Mykola",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "3D 测量",
       "p": "",
-      "people": [
-       [
-        "Vladyslav",
-        ""
-       ]
-      ]
+      "people": []
      },
      {
       "label": "无人机航拍",
       "p": "",
-      "people": [
-       [
-        "Mykhailo",
-        ""
-       ]
-      ]
+      "people": []
      }
     ]
    }

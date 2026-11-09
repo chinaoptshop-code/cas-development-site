@@ -3,6 +3,7 @@
    CLS 0: сцена будується лише коли блок поза кадром; reduced-motion — статичні кадри з кнопками; клавіатура: ←/→, кнопки з aria. */
 (function () {
   'use strict';
+  var sdU = null; // casSide (site-chrome.v1.js): панель компактної сцени головної — лічильник, прогрес, номери етапів
   var W = window, d = document, sec = d.querySelector('section.la[data-la]');
   if (!sec || sec.__la) return; sec.__la = 1;
   var drive = null, RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -47,6 +48,24 @@
     Lt.relax = style === 2 ? [0.84, 0.64, 'g'] : [0.76, 0.74, 'f'];
     return Lt;
   }
+  // будинок-контекст ділянки — готовий, у стилі «Будинку з нуля»: світлі стіни, двосхилий дах зі звісами, вікна (світяться ввечері), двері й цоколь (Михайло 08.11.2026: «не чорна коробка»)
+  function house(x0, x1, y0, y1) {
+    var H = 3.3, R = 5.6, o = 0.35, ym = (y0 + y1) / 2, h = '', i, n = Math.max(3, Math.round((x1 - x0) / 2.6));
+    h += poly('la-hroof b', [x0 - o, ym, R, x1 + o, ym, R, x1 + o, y0 - o, H - 0.15, x0 - o, y0 - o, H - 0.15]);
+    h += poly('la-hwall r', [x1, y0, 0, x1, y1, 0, x1, y1, H, x1, ym, R - 0.25, x1, y0, H]); // фронтон
+    h += poly('la-hwall l', [x0, y1, 0, x1, y1, 0, x1, y1, H, x0, y1, H]);
+    h += poly('la-hplinth', [x0, y1, 0, x1, y1, 0, x1, y1, 0.35, x0, y1, 0.35]) + poly('la-hplinth r', [x1, y0, 0, x1, y1, 0, x1, y1, 0.35, x1, y0, 0.35]);
+    for (i = 0; i < n; i++) { // вікна фасаду (у бік саду) і двері посередині
+      var cx = x0 + (x1 - x0) * (i + 0.5) / n, dw = 0.55, door = i === Math.floor(n / 2);
+      if (door) h += poly('la-hdoor', [cx - 0.5, y1 + 0.01, 0.35, cx + 0.5, y1 + 0.01, 0.35, cx + 0.5, y1 + 0.01, 2.4, cx - 0.5, y1 + 0.01, 2.4]);
+      else h += poly('la-hwin', [cx - dw, y1 + 0.01, 1.0, cx + dw, y1 + 0.01, 1.0, cx + dw, y1 + 0.01, 2.6, cx - dw, y1 + 0.01, 2.6]) + line('la-hfr', [cx, y1 + 0.02, 1.0, cx, y1 + 0.02, 2.6]);
+    }
+    h += poly('la-hwin', [x1 + 0.01, ym - 0.6, 1.0, x1 + 0.01, ym + 0.6, 1.0, x1 + 0.01, ym + 0.6, 2.6, x1 + 0.01, ym - 0.6, 2.6]);
+    h += poly('la-hroof f', [x0 - o, y1 + o, H - 0.15, x1 + o, y1 + o, H - 0.15, x1 + o, ym, R, x0 - o, ym, R]);
+    h += line('la-hridge', [x0 - o, ym, R, x1 + o, ym, R]);
+    h += poly('la-hroof e', [x1 + o, y1 + o, H - 0.15, x1 + o, ym, R, x1 + o, ym, R + 0.12, x1 + o, y1 + o, H - 0.03]); // торець звісу
+    return h;
+  }
   function seg(p) { // полілінія в долях → метри, крок 0,6 м: [x, y, кут]
     var out = [];
     for (var i = 0; i < p.length - 1; i++) {
@@ -61,7 +80,7 @@
     var Lt = layout(cfg.s), i, j, t;
     // ділянка, будинок (контекст), паркан
     add('ground', poly('la-soil', rect(0, Wd, 0, Dp)), -1, 0);
-    add('ground', box('la-house', U(0.22), U(0.78), V(0.02), V(0.17), 0, 6) + poly('la-roof', [U(0.22), V(0.02), 6, U(0.78), V(0.02), 6, U(0.78), V(0.17), 6, U(0.22), V(0.17), 6]), -1, 0);
+    add('ground', house(U(0.22), U(0.78), V(0.02), V(0.17)), -1, 0);
     // 1 геодезія: тахеометр, кілки, осі
     add('top', line('la-tri', [U(0.97), V(0.03), 0, U(0.97), V(0.03), 1.4]) + line('la-tri', [U(0.95), V(0.05), 0, U(0.97), V(0.03), 1.4, U(0.99), V(0.05), 0]) + circ('la-dev', U(0.97), V(0.03), 1.5, 0.25), 0, 0.05, 3);
     var pegs = [[0, 0], [1, 0], [1, 1], [0, 1]].concat(Lt.path[0]);
@@ -198,7 +217,7 @@
     if (i !== shown || force) {
       shown = i;
       cap.innerHTML = '<b>' + esc(ST[i][0]) + '</b><span>' + esc(ST[i][1]) + '</span>';
-      cnt.textContent = (i + 1) + ' ' + ui.of + ' ' + N;
+      cnt.textContent = (i + 1) + ' ' + ui.of + ' ' + N; if (sdU) sdU(i);
       live.textContent = (i + 1) + '/' + N + ': ' + ST[i][0];
       vbT = target(i);
       if (i === N - 1) cl('la_end');
@@ -271,6 +290,7 @@
     stick.appendChild(foot);
     var CMP = !RM && !!d.querySelector('.hx-home'); // головні: компактна сцена в межах екрана — без sticky-доріжки, етапи крокує casAuto і ←/→ (Михайло 05.11.2026)
     if (RM || CMP) { box0.appendChild(ctr); box0.appendChild(stick); if (CMP) sec.classList.add('la-cmp'); }
+    if (CMP && W.casSide) sdU = W.casSide({ stick: stick, cap: cap, nav: nav, foot: foot, n: N, go: function (i) { go(i); }, title: function (i) { return i < 0 ? sec.querySelector('h2').textContent : ST[i][0]; } }); // єдиний вигляд компактних сцен (Михайло 08.11.2026)
     else { run = el('div', 'la-run'); run.style.height = 'calc(100vh + ' + N + ' * clamp(400px, 50vh, 560px))'; box0.appendChild(ctr); run.appendChild(stick); box0.appendChild(run); }
     list.parentNode.insertBefore(box0, list);
     list.classList.add('la-sr');
@@ -289,7 +309,7 @@
     if (CMP && W.casAuto) W.casAuto({ root: box0, view: svg, host: nav, step: function () { if (shown >= N - 1) return false; go(shown + 1); return true; },
       restart: function () { go(0); }, atEnd: function () { return shown >= N - 1; } });
     // жести всіх сцен (головні й повні): колесо над кадром ±1 етап, клік/тап збоку, свайп, ←/→; підказка — лише на головних. Повна sticky: go() плавно прокручує до етапу
-    if (W.casGest) W.casGest({ root: box0, view: svg, go: go, cur: function () { return Math.max(0, shown); }, n: N, hint: d.querySelector('.hx-home') ? stick : null, before: nav });
+    if (W.casGest) W.casGest({ root: box0, view: svg, go: go, cur: function () { return Math.max(0, shown); }, n: N, hint: d.querySelector('.hx-home') ? nav.parentNode : null, before: nav });
   }
   function css() {
     return new Promise(function (res) {
