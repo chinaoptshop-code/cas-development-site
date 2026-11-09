@@ -640,7 +640,8 @@
       hint = d.createElement('p'); hint.className = 'sc-hint'; hint.textContent = (HINT[lang] || HINT.en)[FINE ? 0 : 1].split(RM ? ' · ' : '\u0000')[0]; // reduced-motion — без «програється сама»
       o.hint.insertBefore(hint, o.before || null);
     }
-    function off(t) { return !t || !t.closest || !!t.closest(CTRL) || !!(o.skip && t.closest(o.skip)); }
+    // обʼєкти в самому SVG-кадрі з role=button (генплан «Комплексу») — не панелі керування: свайп і клік збоку з них теж крокують
+    function off(t) { if (!t || !t.closest) return true; var c = t.closest(CTRL); return !!(c && !(W.SVGElement && c instanceof W.SVGElement)) || !!(o.skip && t.closest(o.skip)); }
     function inZone(t) { var z = zone(); return !!(t && (t === z || (z.contains && z.contains(t)))); }
     // −1 / +1 — лівий/правий край кадру (у напрямку етапів: RTL — дзеркально), 0 — середина
     function edge(e) {
@@ -673,7 +674,7 @@
     v.addEventListener('dragstart', function (e) { e.preventDefault(); });
     // клік збоку — у фазі захоплення: раніше за обробники обʼєктів у кадрі (Комплекс: клік по обʼєкту відкриває його)
     v.addEventListener('click', function (e) {
-      if (moved) { moved = false; return; }
+      if (moved) { moved = false; e.stopPropagation(); e.preventDefault(); return; } // після перетягування — не клік (і не відкриття обʼєкта під пальцем)
       if (n() < 2 || off(e.target) || !inZone(e.target)) return;
       var s = edge(e)[0]; if (!s) return;
       e.stopPropagation(); e.preventDefault();
@@ -703,6 +704,37 @@
     ['click', 'keydown'].forEach(function (t) { o.root.addEventListener(t, function (e) { if (e.target.closest && e.target.closest('button')) done(); }); });
     return { done: done };
   };
+  /* casSide — єдиний вигляд компактних сцен головних (Михайло 08.11.2026 «уніфікований вигляд»): кадр ліворуч, панель праворуч (телефон — під кадром):
+     лічильник «01 / 16» + прогрес-лінія (клікабельна), назва й текст етапу (o.cap), ← пауза → (o.nav), рядок номерів етапів, ціна й одне посилання-заклик (o.foot).
+     Так само виглядає «Будинок з нуля» (.bz-cmp, build-anim.v1.css); стилі — scene-ui.v1.css (.sc-*). Повертає upd(i, frac?) — сцена кличе його при зміні етапу.
+     o: {stick (стає сіткою), cap, nav, foot?, n, go(i), title(i) → назва етапу (aria-label номера)} */
+  W.casSide = function (o) {
+    var side = d.createElement('div'), hd = d.createElement('div'), ct = d.createElement('p'), bar = d.createElement('span'), bi = d.createElement('i'), nums = d.createElement('div'), bs = [], N = o.n, cur = -1;
+    function pad(v) { return (v < 10 ? '0' : '') + v; }
+    side.className = 'sc-side'; hd.className = 'sc-hd'; ct.className = 'sc-ct'; bar.className = 'sc-bar'; bar.setAttribute('aria-hidden', 'true'); nums.className = 'sc-nums';
+    bar.appendChild(bi); hd.appendChild(ct); hd.appendChild(bar);
+    bar.addEventListener('click', function (e) { var r = bar.getBoundingClientRect(), f = (e.clientX - r.left) / Math.max(1, r.width); if (d.documentElement.dir === 'rtl') f = 1 - f; o.go(Math.max(0, Math.min(N - 1, Math.round(f * (N - 1))))); });
+    nums.setAttribute('role', 'group'); nums.setAttribute('aria-label', (o.title && o.title(-1)) || '');
+    for (var k = 0; k < N; k++) (function (k) {
+      var b = d.createElement('button'); b.type = 'button'; b.className = 'sc-n'; b.textContent = k + 1; if (o.title) b.setAttribute('aria-label', (k + 1) + '. ' + o.title(k));
+      b.addEventListener('click', function () { o.go(k); }); nums.appendChild(b); bs.push(b);
+    })(k);
+    var bb = o.nav.querySelectorAll('button'); // ← → як у «Будинку з нуля» (RTL — віддзеркалює CSS)
+    if (bb.length > 1) [[bb[0], 'sc-prev', '←'], [bb[bb.length - 1], 'sc-next', '→']].forEach(function (x) { x[0].classList.add(x[1]); x[0].innerHTML = '<span class="sc-ar" aria-hidden="true">' + x[2] + '</span>'; });
+    side.appendChild(hd); side.appendChild(o.cap); side.appendChild(o.nav); side.appendChild(nums);
+    if (o.foot) {
+      side.appendChild(o.foot);
+      [].forEach.call(o.foot.querySelectorAll('a.btn'), function (a) { a.classList.remove('btn', 'main'); a.classList.add('sc-more'); if (!/→$/.test(a.textContent)) a.textContent += ' →'; });
+    }
+    o.stick.classList.add('sc-grid'); o.stick.appendChild(side);
+    return function upd(i, f) {
+      i = Math.max(0, Math.min(N - 1, i));
+      ct.innerHTML = '<b>' + pad(i + 1) + '</b> / ' + pad(N);
+      bi.style.transform = 'scaleX(' + (f != null ? f : N > 1 ? i / (N - 1) : 1).toFixed(3) + ')';
+      if (i === cur) return; cur = i;
+      bs.forEach(function (b, j) { b.classList.toggle('is-done', j < i); if (j === i) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+    };
+  };
 })();
 
 /* Сцени (section.bz[data-js]: «Будинок з нуля», «Ландшафт», «Комплекс», «Ресторан», «Будинок на воді»; префікс bz — .ba зайнятий слайдером «до/після»):
@@ -712,7 +744,7 @@
 (function () {
   var W = window, d = document, ss = d.querySelectorAll('section.bz[data-js]'); // кілька сцен на сторінці — кожна свій скрипт
   if (!ss.length) return;
-  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=34360f40"; /*/sc:ui*/
+  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=5a2c3767"; /*/sc:ui*/
   var on = 0;
   function css(h) { if (!h || d.querySelector('link[href="' + h + '"]')) return; var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = h; d.head.appendChild(l); }
   function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; j.onerror = function () { [].forEach.call(d.querySelectorAll('section.bz[data-js]'), function (x) { if (x.getAttribute('data-js') === s) x.classList.add('bz-no'); }); }; d.head.appendChild(j); } // скрипт сцени не завантажився — без резерву висоти
@@ -762,6 +794,7 @@
       if (x !== sec) { sec.parentNode.replaceChild(x, sec); x.classList.remove('la-sw'); void x.offsetWidth; x.classList.add('la-sw'); }
       W.scrollBy({ top: nav.getBoundingClientRect().top - top, behavior: 'instant' }); // перемикач лишається на тому ж місці екрана
       if (x.__new) { x.__new = 0; css(x.getAttribute('data-css')); js(x.getAttribute('data-js')); }
+      if (W.casLqSlots) try { W.casLqSlots(x); } catch (er) { }
       try { if (W.clarity) W.clarity('event', 'scene_tab'); } catch (er) { }
     }).catch(function () { location.href = a.href; }).then(function () { nav.removeAttribute('aria-busy'); });
   });

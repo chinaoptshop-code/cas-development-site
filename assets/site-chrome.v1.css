@@ -490,9 +490,9 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 @media(prefers-reduced-motion:no-preference){
   .js body:not(:has(.hx-home)) .bz[data-bz]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(var(--n,19) * var(--bz-per) + 100svh - var(--sch-h,64px) - var(--bz-bot));margin:0;overflow:hidden}
   .js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(max(min(60vh,540px),26.75rem) + 1.25rem + 8px);margin:0;overflow:hidden} /* ПК: кадр або колонка етапів (≈26.75rem, без пирога — 08.11), що вища */
-  .bz[data-la]{--ln:16}.bz[data-rs]{--ln:14}.bz[data-wh]{--ln:12}
+  .bz[data-la]{--lsn:16}.bz[data-rs]{--lsn:14}.bz[data-wh]{--lsn:12} /* кількість етапів; не --ln — це колір ліній (рамка перемикача й кадру), інакше рамки зникають */
   .bz:is([data-la],[data-rs],[data-wh]){--lx:58px} /* --lx — панель налаштувань над доріжкою: 1 ряд ≈ 58 px, кожен перенос ряду ≈ +50 px */
-  .js body:not(:has(.hx-home)) .bz:is([data-la],[data-rs],[data-wh]):not(.la-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(100vh + var(--ln) * clamp(400px,50vh,560px) + var(--lx));margin:0;overflow:hidden}
+  .js body:not(:has(.hx-home)) .bz:is([data-la],[data-rs],[data-wh]):not(.la-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{box-sizing:border-box;height:calc(100vh + var(--lsn) * clamp(400px,50vh,560px) + var(--lx));margin:0;overflow:hidden}
   .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list{display:flow-root}
   .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{content:"";float:left;width:0;padding-top:calc((100% + 4px) * .4667 + 146px)}
 }

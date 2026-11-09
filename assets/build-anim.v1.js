@@ -608,14 +608,14 @@
     // людина 1,8 м біля входу — масштаб; зʼявляється на благоустрої (раніше стояла перед фасадом на всіх етапах і читалась як артефакт)
     var hp = P(dX + 1.1, Y1 + 1.6, 0).split(','), hq = P(dX + 1.1, Y1 + 1.6, 1.8).split(',');
     A('land', 0.8, '<g class="man"><line x1="' + hp[0] + '" y1="' + hp[1] + '" x2="' + hq[0] + '" y2="' + (+hq[1] + 3.2) + '"/><circle cx="' + hq[0] + '" cy="' + (+hq[1] + 1.6) + '" r="1.7"/></g>');
-    A('done', 0, seal(GX - 0.6, Y0 + 0.4, RZ + 0.9, ui), { m: 'd' });
+    A('done', 0, seal(GX - 0.6, Y0 + 0.4, RZ + 0.9, ui, 1.5), { m: 'd' }); // будинок у кадрі дрібніший за квартиру — печатка більша, «12» читається й на 402 px
     return { parts: L, xr: S('mep'), th: [], W: H.W, D: H.D };
   }
 
-  function seal(x, y, z, ui) { // печатка «12 міс. гарантія»
-    var q = P(x, y, z).split(','), a = +q[0], b = +q[1];
-    bb[0] = Math.min(bb[0], a - 28); bb[1] = Math.min(bb[1], b - 28); bb[2] = Math.max(bb[2], a + 28); bb[3] = Math.max(bb[3], b + 28);
-    return '<g class="seal"><circle cx="' + a + '" cy="' + b + '" r="27" class="sl1"/><circle cx="' + a + '" cy="' + b + '" r="22" class="sl2"/>' +
+  function seal(x, y, z, ui, k) { // печатка «12 міс. гарантія» (k — масштаб)
+    var q = P(x, y, z).split(','), a = +q[0], b = +q[1], r = 28 * (k || 1);
+    bb[0] = Math.min(bb[0], a - r); bb[1] = Math.min(bb[1], b - r); bb[2] = Math.max(bb[2], a + r); bb[3] = Math.max(bb[3], b + r);
+    return '<g class="seal"' + (k ? ' transform="translate(' + a + ' ' + b + ') scale(' + k + ') translate(' + (-a) + ' ' + (-b) + ')"' : '') + '><circle cx="' + a + '" cy="' + b + '" r="27" class="sl1"/><circle cx="' + a + '" cy="' + b + '" r="22" class="sl2"/>' +
       '<text x="' + a + '" y="' + (b + 1) + '" class="sl3">12</text><text x="' + a + '" y="' + (b + 11) + '" class="sl4">' + esc(ui.mo) + '</text><text x="' + a + '" y="' + (b - 12) + '" class="sl4">' + esc(ui.gar) + '</text></g>';
   }
 

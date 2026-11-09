@@ -5,6 +5,7 @@
    CLS 0: сцена будується, коли блок поза кадром; reduced-motion — статичні кадри з кнопками; клавіатура ←/→. */
 (function () {
   'use strict';
+  var sdU = null; // casSide (site-chrome.v1.js): панель компактної сцени головної — лічильник, прогрес, номери етапів
   var W = window, d = document, sec = d.querySelector('section.wh[data-wh]');
   if (!sec || sec.__wh) return; sec.__wh = 1;
   var drive = null, RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -40,7 +41,7 @@
     var A = cfg.a, hw = Math.sqrt(A * 1.3), hd = A / hw, PW = hw + 2, PD = hd + 5, Z = 1.1, i, x, y, n;
     var hx0 = 1, hx1 = 1 + hw, hy0 = 1, hy1 = 1 + hd, HT = 3, zt = Z + HT, yc = (hy0 + hy1) / 2, zr = zt + Math.min(2.4, hd * 0.22);
     var SH = -4, bx = PW * 0.35; // берег: y < SH; місток — від берега до платформи
-    L = { sky: [], bed: [], deep: [], refl: [], water: [], shore: [], pile: [], plat: [], net: [], house: [], terr: [], ppl: [], night: [], glow: [] };
+    L = { sky: [], bed: [], deep: [], refl: [], water: [], shore: [], pile: [], plat: [], terb: [], net: [], house: [], terr: [], ppl: [], night: [], glow: [] };
     add('sky', '<rect class="wh-day" x="-9999" y="-9999" width="19999" height="19999"/>', -1, 0);
     add('bed', poly('wh-bed', rect(-10, PW + 12, SH, PD + 12, -2.6)), -1, 0);
     add('water', poly('wh-water', rect(-10, PW + 12, SH, PD + 12, 0)), -1, 0);
@@ -124,15 +125,16 @@
     add('net', line('wh-ps', sew) + flow('wh-fs', sew, 4, 4), 7, 0.35, null, 1);
     add('net', line('wh-pe', pwr) + box('wh-box', hx0 + 0.1, hx0 + 0.35, hy0 + 0.3, hy0 + 0.9, Z + 1.2, Z + 1.9) + flow('wh-fe', pwr, 3, 2.4), 7, 0.6, null, 2);
     // 9 фасад і вікна: обшивка дошками, панорамне скління до води
-    for (y = hy0, n = 0; y < hy1 - 0.01; y += 1.2, n++) { var yy = Math.min(hy1, y + 1.2), win = y > hy0 + 0.6 && yy < hy1 - 0.6 && n % 2; add('house', wx('wh-clad' + (win ? ' gw' : ''), hx1, y, yy, Z, zt), 8, 0.05 + 0.4 * (y - hy0) / hd); }
-    for (x = hx0, n = 0; x < hx1 - 0.01; x += 1.2, n++) { var xx = Math.min(hx1, x + 1.2), w2 = x > hx0 + 0.5 && xx < hx1 - 0.5 && n % 4 !== 3; add('house', wy('wh-clad l' + (w2 ? ' gw' : ''), hy1, x, xx, Z, zt) + (w2 ? line('wh-mul', [xx, hy1, Z, xx, hy1, zt]) : ''), 8, 0.45 + 0.45 * (x - hx0) / hw); }
+    for (y = hy0, n = 0; y < hy1 - 0.01; y += 1.2, n++) { var yy = Math.min(hy1, y + 1.2), win = y > hy0 + 0.6 && yy < hy1 - 0.6 && n % 2; add('house', wx('wh-clad' + (win ? ' gw' : ''), hx1, y, yy, Z, zt), 8, 0.05 + 0.4 * (y - hy0) / hd); if (win) add('glow', wx('wh-wgl', hx1, y, yy, Z, zt), 8, 0.05 + 0.4 * (y - hy0) / hd); } // wh-wgl — світло у вікнах поверх нічного затемнення
+    for (x = hx0, n = 0; x < hx1 - 0.01; x += 1.2, n++) { var xx = Math.min(hx1, x + 1.2), w2 = x > hx0 + 0.5 && xx < hx1 - 0.5 && n % 4 !== 3; add('house', wy('wh-clad l' + (w2 ? ' gw' : ''), hy1, x, xx, Z, zt) + (w2 ? line('wh-mul', [xx, hy1, Z, xx, hy1, zt]) : ''), 8, 0.45 + 0.45 * (x - hx0) / hw); if (w2) add('glow', wy('wh-wgl', hy1, x, xx, Z, zt), 8, 0.45 + 0.45 * (x - hx0) / hw); }
     add('house', wy('wh-door', hy1, hx0 + hw * 0.08, hx0 + hw * 0.08 + 1, Z, Z + 2.2), 8, 0.95);
     add('refl', wx('wh-refl w', hx1, hy0 + 1, hy1 - 1, -zt + 0.4, -Z - 0.3) + wy('wh-refl w', hy1, hx0 + 1, hx1 - 1, -zt + 0.4, -Z - 0.3), DUSK, 0.3);
     // 10 тераса над водою: консоль, поручні, сходи у воду, шезлонги
     var ty0 = hy1 + 0.6, tx1 = PW;
-    add('terr', box('wh-tdeck', -1.2, 0, 0, PD, Z - 0.25, Z) , 9, 0.05);
-    for (y = 0; y < PD; y += 1.2) add('terr', box('wh-post', -1.2, -1.1, y, y + 0.1, Z, Z + 1), 9, 0.2 + 0.3 * y / PD);
-    add('terr', line('wh-rail', [-1.15, 0, Z + 1, -1.15, PD, Z + 1, PW, PD, Z + 1]), 9, 0.55);
+    // бічна тераса (x < 0) — за будинком: окремий шар terb до будинку, інакше поручні й ліхтарі малюються поверх даху (z-order, аудит 08.11.2026)
+    add('terb', box('wh-tdeck', -1.2, 0, 0, PD, Z - 0.25, Z) , 9, 0.05);
+    for (y = 0; y < PD; y += 1.2) add('terb', box('wh-post', -1.2, -1.1, y, y + 0.1, Z, Z + 1), 9, 0.2 + 0.3 * y / PD);
+    add('terb', line('wh-rail', [-1.15, 0, Z + 1, -1.15, PD, Z + 1]), 9, 0.55); add('terr', line('wh-rail', [-1.15, PD, Z + 1, PW, PD, Z + 1]), 9, 0.55);
     for (x = 0.4; x < PW; x += 1.2) add('terr', line('wh-bal', [x, PD, Z, x, PD, Z + 1]), 9, 0.35 + 0.2 * x / PW);
     add('terr', line('wh-lad', [PW - 1.6, PD, Z, PW - 1.6, PD + 0.4, -0.6]) + line('wh-lad', [PW - 1, PD, Z, PW - 1, PD + 0.4, -0.6]) + [0.6, 0.1, -0.4].map(function (z) { return line('wh-lad', [PW - 1.6, PD + 0.4 * (Z - z) / (Z + 0.6), z, PW - 1, PD + 0.4 * (Z - z) / (Z + 0.6), z]); }).join(''), 9, 0.65);
     [[hx0 + 1.5, ty0 + 1.4], [hx0 + 4, ty0 + 1.4]].forEach(function (q, k) { if (q[0] < PW - 2.5) add('terr', box('wh-lng', q[0], q[0] + 0.7, q[1], q[1] + 1.9, Z, Z + 0.35) + poly('wh-lngb', [q[0], q[1], Z + 0.35, q[0] + 0.7, q[1], Z + 0.35, q[0] + 0.7, q[1] + 0.3, Z + 1, q[0], q[1] + 0.3, Z + 1]), 9, 0.75 + k * 0.1); });
@@ -149,7 +151,7 @@
     if (!RM) { var c0 = P(PW + 9, PD + 3, 0), c1 = P(-6, PD + 7, 0); add('ppl', '<g class="wh-boat"><animateMotion dur="26s" repeatCount="indefinite" path="M' + c0.join(',') + ' L' + c1.join(',') + '"/>' + '<path class="wh-hull" d="M-14,0 q14,7 28,0 l-4,-3 h-20z"/>' + person('p2', 0, 0, 0.1) + '</g>', 11, 0.5); }
     // збірка
     ['shore', 'pile'].forEach(function (k) { L[k].sort(function (a, b) { return a.d - b.d; }); });
-    var order = ['sky', 'bed', 'deep', 'refl', 'water', 'shore', 'pile', 'plat', 'house', 'terr', 'net', 'ppl', 'night', 'glow'], html = '', id = 0;
+    var order = ['sky', 'bed', 'deep', 'refl', 'water', 'shore', 'pile', 'plat', 'terb', 'house', 'terr', 'net', 'ppl', 'night', 'glow'], html = '', id = 0;
     els = [];
     order.forEach(function (ly) { L[ly].forEach(function (o) { o.id = id++; html += '<g class="wh-e' + (o.k < 0 ? ' on' : '') + (o.x != null ? ' ux ux' + o.x : '') + '">' + o.h + '</g>'; if (o.k >= 0) els.push(o); }); });
     els.sort(function (a, b) { return a.k - b.k; });
@@ -190,7 +192,7 @@
     if (i !== shown || force) {
       shown = i;
       cap.innerHTML = '<b>' + esc(ST[i][0]) + '</b><span>' + esc(ST[i][1]) + '</span>';
-      cnt.textContent = (i + 1) + ' ' + ui.of + ' ' + N;
+      cnt.textContent = (i + 1) + ' ' + ui.of + ' ' + N; if (sdU) sdU(i);
       live.textContent = (i + 1) + '/' + N + ': ' + ST[i][0];
       vbT = target(i);
       if (i === N - 1) cl('wh_end');
@@ -261,6 +263,7 @@
     var foot = el('div', 'la-foot'); foot.appendChild(estEl); foot.appendChild(cta); stick.appendChild(foot);
     var CMP = !RM && !!d.querySelector('.hx-home'); // головні: компактна сцена в межах екрана — без sticky-доріжки, етапи крокує casAuto і ←/→ (Михайло 05.11.2026)
     if (RM || CMP) { box0.appendChild(ctr); box0.appendChild(stick); if (CMP) sec.classList.add('la-cmp'); }
+    if (CMP && W.casSide) sdU = W.casSide({ stick: stick, cap: cap, nav: nav, foot: foot, n: N, go: function (i) { go(i); }, title: function (i) { return i < 0 ? sec.querySelector('h2').textContent : ST[i][0]; } }); // єдиний вигляд компактних сцен (Михайло 08.11.2026)
     else { run = el('div', 'la-run'); run.style.height = 'calc(100vh + ' + N + ' * clamp(400px, 50vh, 560px))'; box0.appendChild(ctr); run.appendChild(stick); box0.appendChild(run); }
     list.parentNode.insertBefore(box0, list);
     list.classList.add('la-sr');
@@ -277,7 +280,7 @@
     if (CMP && W.casAuto) W.casAuto({ root: box0, view: svg, host: nav, step: function () { if (shown >= N - 1) return false; go(shown + 1); return true; },
       restart: function () { go(0); }, atEnd: function () { return shown >= N - 1; } });
     // жести всіх сцен (головні й повні): колесо над кадром ±1 етап, клік/тап збоку, свайп, ←/→; підказка — лише на головних. Повна sticky: go() плавно прокручує до етапу
-    if (W.casGest) W.casGest({ root: box0, view: svg, go: go, cur: function () { return Math.max(0, shown); }, n: N, hint: d.querySelector('.hx-home') ? stick : null, before: nav });
+    if (W.casGest) W.casGest({ root: box0, view: svg, go: go, cur: function () { return Math.max(0, shown); }, n: N, hint: d.querySelector('.hx-home') ? nav.parentNode : null, before: nav });
   }
   function css() {
     return new Promise(function (res) {
