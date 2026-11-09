@@ -16,7 +16,13 @@
   "img": "img/1p_MqveKjiZ1-1400.webp",
   "srcset": "/img/1p_MqveKjiZ1-r400.webp 400w, /img/1p_MqveKjiZ1-r600.webp 600w, /img/1p_MqveKjiZ1-r800.webp 800w, /img/1p_MqveKjiZ1-r1200.webp 1200w, /img/1p_MqveKjiZ1-1400.webp 1400w",
   "alt": "带壁炉的客厅 — Petrivtsi House, CAS Development 项目",
-  "sizes": "100vw"
+  "sizes": "100vw",
+  "m": {
+   "srcset": "/img/1p_MqveKjiZ1-m-800.webp 800w, /img/1p_MqveKjiZ1-m-1200.webp 1200w, /img/1p_MqveKjiZ1-m-1400.webp 1400w, /img/1p_MqveKjiZ1-m-1600.webp 1600w",
+   "w": 1600,
+   "h": 1280,
+   "sizes": "100vw"
+  }
  },
  "sections": [
   {

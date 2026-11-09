@@ -554,11 +554,11 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 /* ══ Легкі головні сторінки (tools/site/ux.py LIGHT, /styleguide/#light): секції-плитки [data-c=x], лід hero [data-c=h], «Порахувати», рядок довіри ──
    Плитка — <section> (або її <div class="w">) з H2: згорнута показує іконку, назву і рядок «від $…» (data-xs); тап — розгортає на всю ширину.
    Сітка — на контейнері секцій (main / #p-*), без обгорток: повноширинні блоки розтягуються назад на всю ширину (--uxp). Лише під .js — без JS усе відкрито. */
-.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){--uxp:max(16px,(100vw - 1048px)/2);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:10px;padding-inline:var(--uxp)}
-.js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x]))>*{grid-column:1/-1;margin-inline:calc(-1*var(--uxp));min-width:0}
-.js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x]))>.w{margin-inline:0;padding-inline:0;max-width:none}
-@media(min-width:760px){.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){grid-template-columns:repeat(3,minmax(0,1fr));column-gap:12px}}
-@media(min-width:1100px){.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){grid-template-columns:repeat(4,minmax(0,1fr))}}
+.js :is(main,main>div[id^="p-"])[data-xg][data-xg]:is(main,div){--uxp:max(16px,(100vw - 1048px)/2);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:10px;padding-inline:var(--uxp)}
+.js :where(main,main>div[id^="p-"]):where([data-xg])>*{grid-column:1/-1;margin-inline:calc(-1*var(--uxp));min-width:0}
+.js :where(main,main>div[id^="p-"]):where([data-xg])>.w{margin-inline:0;padding-inline:0;max-width:none}
+@media(min-width:760px){.js :is(main,main>div[id^="p-"])[data-xg][data-xg]:is(main,div){grid-template-columns:repeat(3,minmax(0,1fr));column-gap:12px}}
+@media(min-width:1100px){.js :is(main,main>div[id^="p-"])[data-xg][data-xg]:is(main,div){grid-template-columns:repeat(4,minmax(0,1fr))}}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:auto;margin:0 0 10px!important;position:relative;border:1px solid var(--ln,rgba(191,145,72,.22))!important;border-radius:14px;
   background:var(--bg2,rgba(255,255,255,.03))!important;transition:border-color .3s ease,background-color .3s ease;min-width:0}
 .js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])):is(.c-o,:has(>.c-o)){grid-column:1/-1!important}
@@ -590,11 +590,11 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .js [data-c=x][data-xs]:not(.c-o)::after{content:attr(data-xs);display:block;margin-top:6px;color:var(--ac,#BF9148);font:600 var(--fs-small,.8125rem)/1.3 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.04em}
 @media(prefers-reduced-motion:no-preference){.js .w[data-c=x].c-o>:not(h2){animation:ux-in .45s var(--ease-out,ease) both}}
 /* hero легкої сторінки: лід — один рядок (тап — увесь), «Подзвонити» + «Порахувати», рядок довіри замість фактів */
-.hero:has(>[data-c=h]){padding-top:28px;padding-bottom:36px}
-.hero:has(>[data-c=h]) .price{font-size:clamp(1.08rem,1rem + .5vw,1.4rem);margin:12px 0 6px}
-.hero:has(>[data-c=h]) .facts,.hero:has(>[data-c=h]) .btns :is(a[href*="wa.me"],.bz-go){display:none}
-.hero:has(>[data-c=h]) .btns{margin-top:18px}
-.hero:has(>[data-c=h]) .btns>.btn:first-child{background:var(--ac,#BF9148);color:#140f08}
+.hero[data-xh]{padding-top:28px;padding-bottom:36px}
+.hero[data-xh] .price{font-size:clamp(1.08rem,1rem + .5vw,1.4rem);margin:12px 0 6px}
+.hero[data-xh] .facts,.hero[data-xh] .btns :is(a[href*="wa.me"],.bz-go){display:none}
+.hero[data-xh] .btns{margin-top:18px}
+.hero[data-xh] .btns>.btn:first-child{background:var(--ac,#BF9148);color:#140f08}
 /* рядок довіри під кнопками hero прибрано (08.11.2026, «менше тексту»): hero = H1 + рядок + 2 кнопки; факти — у сцені й на «Про студію» */
 .js [data-c=h]{position:relative;margin-bottom:0}.js [data-c=h][role]{cursor:pointer}
 /* мінімалістичний hero (Михайло 04.11.2026): H1 + перше речення ліду (решта — span.ux-rest, тап — увесь текст; без «…» і шеврона) + «Подзвонити» і «Порахувати»;
@@ -602,16 +602,16 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .js [data-c=h]:not(.c-o)>.ux-rest{display:none}
 /* лендинг з рядком ціни: ціна — і є «один рядок»; лід лишається в DOM (SEO), але в першому екрані не показуємо */
 .js .hero:has(>.price)>[data-c=h]{display:none}
-.hero:has(>[data-c=h])>.kick,.hero:has(>[data-c=h]) .btns>:nth-child(n+3){display:none}
+.hero[data-xh]>.kick,.hero[data-xh] .btns>:nth-child(n+3){display:none}
 .js .card>[data-c=h]:not(.c-o){display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;padding-inline-end:22px}
 .js .card>[data-c=h]::after{content:"";position:absolute;top:.55em;inset-inline-end:4px;width:7px;height:7px;border-right:1.5px solid var(--ac,#BF9148);border-bottom:1.5px solid var(--ac,#BF9148);rotate:45deg;transition:rotate .3s ease}
 .js .card>[data-c=h].c-o::after{rotate:225deg;top:.75em}
-.js [data-c=h]:not(.c-o)>.ux-dup{display:none}.js [data-c=h]:not(.c-o):has(>.ux-dup)::first-letter{text-transform:uppercase}
+.js [data-c=h]:not(.c-o)>.ux-dup{display:none}.js [data-c=h]:not(.c-o)[data-xd]::first-letter{text-transform:uppercase}
 .js [data-c=h]:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:3px}
 @media print{.js :is(main,main>div[id^="p-"]){display:block!important;padding-inline:0!important}.js [data-c=h]{display:block!important}}
 .js [data-c=x] .lq-slot{display:none!important}
 /* сцена на легких сторінках: компактніша доріжка, але ≥220–280 px на етап — одне «клацання» колеса не перескакує етап (Михайло 03.11.2026) */
-.js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x])) .bz.bz{--bz-per:clamp(220px,28svh,300px)}@media(min-width:768px){.js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x])) .bz.bz{--bz-per:clamp(280px,30svh,360px)}}
+.js :where(main,main>div[id^="p-"]):where([data-xg]) .bz.bz{--bz-per:clamp(220px,28svh,300px)}@media(min-width:768px){.js :where(main,main>div[id^="p-"]):where([data-xg]) .bz.bz{--bz-per:clamp(280px,30svh,360px)}}
 /* компактні картки [data-c=k] (не плитка: контакти, перелік послуг): назва + перший рядок, решта — за шевроном / тапом */
 .js [data-c=k]{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 @media(min-width:760px){.js [data-c=k]{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}}
@@ -637,7 +637,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .js #p-services>[data-c=x]{margin:24px 22px 10px!important}
 @media(min-width:1100px){.js #p-services>[data-c=x]{margin:24px 52px 10px!important}}
 .js section:has(>.w>.card>[data-c=h]){padding:20px 0}.js .card>[data-c=h]:not(.c-o){-webkit-line-clamp:2;line-clamp:2}
-.js :where(main,main>div[id^="p-"]):where(:has(>section[data-c=x]),:has(>section>.w[data-c=x]))>#zayavka{padding-top:var(--sp-sec);padding-bottom:var(--sp-sec)}
+.js :where(main,main>div[id^="p-"]):where([data-xg])>#zayavka{padding-top:var(--sp-sec);padding-bottom:var(--sp-sec)}
 /* бейдж «Анімація реалізації»: будиночок «збирається» (стіни піднімаються, дах опускається); reduced-motion — статичний */
 :where(a[data-a],.sp-name[data-a],h2[data-a])::after,.bz-go::before{
   --ux-w:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23BF9148' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.6 6.2V11h6.8V6.2M5 11V8.4h2V11'/%3E%3C/svg%3E");
@@ -721,7 +721,7 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
   /* стрічка фото: цілі кадри на всю ширину контейнера */
   html body .xs-st{grid-auto-columns:calc((100% - 4 * 12px) / 5);gap:12px}
   /* легкі сторінки (ux.py LIGHT): сітка плиток на ширину контейнера, самотня плитка — банер, а не екран-картинка */
-  html.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){--uxp:max(16px,(100vw - var(--cw))/2 + 1rem);column-gap:14px}
+  html.js :is(main,main>div[id^="p-"])[data-xg][data-xg]:is(main,div){--uxp:max(16px,(100vw - var(--cw))/2 + 1rem);column-gap:14px}
   .js [data-c=x]::before{max-height:min(36vh,16rem);min-width:calc(100% + 32px)}
   /* сітки карток: мінімальна ширина в rem — колонок більше, але картки не дрібнішають разом із текстом */
   html body .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}
@@ -734,7 +734,7 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
 /* LIGHT-сітка плиток (03.11.2026, блочність): main — 12 колонок, плитка — 12/N (N = 2 → 3 з 760 px → 4 з 1100 → 6 з 2200);
    неповний останній ряд серії ділить ряд порівну: --s2/--s3/--s4/--s6 на секції ставить tools/site/ux.py (_spans) — без порожніх смуг
    і дрібних одиноких плиток; самотня плитка — банер на всю ширину з невисокою ілюстрацією. */
-html.js :is(main,main>div[id^="p-"]):is(:has(>section[data-c=x]),:has(>section>.w[data-c=x])){grid-template-columns:repeat(12,minmax(0,1fr))}
+html.js :is(main,main>div[id^="p-"])[data-xg][data-xg]:is(main,div){grid-template-columns:repeat(12,minmax(0,1fr))}
 html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s2,6)}
 @media(min-width:760px){html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s3,4)}.js [data-c=x]:not(.c-o)::before{max-height:min(36vh,16rem);min-width:calc(100% + 32px)}}
 @media(min-width:1100px){html.js :is([data-c=x]:not(.w),section:has(>.w[data-c=x])){grid-column:span var(--s4,3)}}

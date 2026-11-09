@@ -29,7 +29,7 @@ def _ver(path, _c={}):
 
 
 # спільні файли, які підключають сторінки: після зміни файлу всі сторінки отримують новий ?v=
-SHARED = ('/assets/site-chrome.v1.css', '/assets/site-chrome.v1.js', '/assets/lead-form.v1.js', '/assets/ui-polish.v1.js', '/assets/proekt.v1.css',
+SHARED = ('/assets/site-chrome.v1.css', '/assets/crit.v1.css', '/assets/site-chrome.v1.js', '/assets/lead-form.v1.js', '/assets/ui-polish.v1.js', '/assets/proekt.v1.css',
           '/assets/cas-map.v1.css', '/assets/cas-map.v1.js', '/assets/quiz.v1.js', '/assets/quiz.v1.css', '/assets/media.v1.js', '/assets/media.v1.css',
           '/assets/build-anim.v1.js', '/assets/build-anim.v1.css', '/assets/sections.v1.css', '/assets/calc.v1.js')
 SHARED_RX = re.compile(r'(' + '|'.join(re.escape(x) for x in SHARED) + r')(?:\?v=\w+)?(?=")')
@@ -39,7 +39,29 @@ def versions(s):
     return SHARED_RX.sub(lambda m: m.group(1) + '?v=' + _ver(m.group(1)), s)
 
 
-CSS_TAG = f'<link rel="stylesheet" href="/assets/site-chrome.v1.css?v={_ver("/assets/site-chrome.v1.css")}">'
+# Стилі (швидкість, 09.11.2026): у <head> блокує рендер лише критичний /assets/crit.v1.css (правила першого екрана —
+# tools/site/critcss.py, список — node tools/tests/critcss.mjs); повний /assets/site-chrome.v1.css — останнім у <body>:
+# контент Chrome малює з критичним, defer-скрипти виконуються вже після повного файлу, каскад після нього — як раніше.
+import critcss  # noqa: E402
+critcss.write()  # критичний файл — з поточного site-chrome.v1.css (до ?v=)
+# коротко (rel без лапок, crit.v1.css): сторінки на межі бюджету HTML 64 КБ (tools/ui/ui.py)
+CSS_TAG = f'<link rel=stylesheet href="/assets/crit.v1.css?v={_ver("/assets/crit.v1.css")}">'
+FULL_TAG = f'<link rel=stylesheet href="/assets/site-chrome.v1.css?v={_ver("/assets/site-chrome.v1.css")}">'
+FULL_RX = re.compile(r'<link rel="?stylesheet"? href="/assets/site-chrome\.v1\.css(?:\?v=\w+)?">\n?')
+CRIT_RX = re.compile(r'<link rel="?stylesheet"? href="/assets/(?:site-)?crit\.v1\.css(?:\?v=\w+)?">\n?')
+
+
+def full_css(s):
+    """Повний site-chrome.v1.css — останнім у <body> (перед </body>). Ідемпотентно.
+    Chrome малює все над ним з критичним CSS; defer-скрипти (і модулі) чекають на нього, хоч і стоять вище (перевірено:
+    скрипт бачить повний каскад, DOMContentLoaded — після CSS). Інлайн-скрипти body не міряють верстку."""
+    s = FULL_RX.sub('', s)
+    e = s.rfind('</body>')
+    if e < 0 or s.find('<body') < 0:
+        return s
+    return s[:e] + FULL_TAG + s[e:]
+
+
 JS_TAG = f'<script src="/assets/site-chrome.v1.js?v={_ver("/assets/site-chrome.v1.js")}" defer></script>'
 
 PHONE, PHONE_TXT = '+380978667755', '+380 97 866 77 55'
@@ -628,8 +650,71 @@ def head_extras(s):
     return head[:vp.end()] + add + head[vp.end():] + body
 
 
+# Маркери замість :has() у CSS (швидкість, 09.11.2026): правила виду main:has(>section[data-c=x]) і .hero:has(>[data-c=h])
+# змушували Chrome перераховувати стилі всього документа (~2 200 елементів) на кожну зміну DOM усередині main — кожен крок
+# сцени «Будинок/Ремонт з нуля» (TBT прокрутки 1.5 с → 0.35 с на телефоні CPU ×4). Розмітка статична (data-c ставить ux.py,
+# JS їх не змінює), тож стан :has() відомий під час збирання: data-xg — на main і main>div[id^="p-"] з дочірнім
+# section[data-c=x] або section>.w[data-c=x]; data-xh — на .hero з дочірнім [data-c=h];
+# data-xd — на [data-c=h] з дочірнім .ux-dup (::first-letter з :has() — найдорожче: перерахунок усього документа на кожну зміну DOM).
+# CSS (site-chrome.v1.css, sections.v1.css) — ті самі правила з атрибутами й тією самою специфічністю. Ідемпотентно.
+_HM_TAG = re.compile(r'<!--.*?-->|<(script|style|template|textarea|svg)\b.*?</\1\s*>|<(/?)([a-zA-Z][\w-]*)((?:[^>"\']|"[^"]*"|\'[^\']*\')*)>', re.S)
+_HM_VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr'}
+_HM_RM = re.compile(r' data-x[ghpd](?=[\s/>])')
+
+
+def _hm_cls(attrs):
+    m = re.search(r'\sclass="([^"]*)"', attrs)
+    return set(m.group(1).split()) if m else set()
+
+
+def _hm_dc(attrs):
+    m = re.search(r'\sdata-c="([^"]*)"', attrs)
+    return m.group(1) if m else None
+
+
+def has_marks(s):
+    s = _HM_RM.sub('', s)
+    stack, marks = [], {}  # marks: позиція кінця імені тегу → набір атрибутів
+    for m in _HM_TAG.finditer(s):
+        if not m.group(3):
+            continue
+        close, name, attrs = m.group(2), m.group(3).lower(), m.group(4)
+        if close:
+            for j in range(len(stack) - 1, -1, -1):
+                if stack[j]['n'] == name:
+                    del stack[j:]; break
+            continue
+        el = {'n': name, 'a': attrs, 'cls': _hm_cls(attrs), 'dc': _hm_dc(attrs), 'pos': m.end(4), 'xg': False}
+        par = stack[-1] if stack else None
+        if par:
+            pn, pc = par['n'], par['cls']
+            if par.get('grid') and name == 'section' and el['dc'] == 'x':
+                marks.setdefault(par['pos'], set()).add('data-xg')
+            if par.get('grid') and name == 'section':
+                el['gsec'] = par
+            if par.get('gsec') is not None and 'w' in el['cls'] and el['dc'] == 'x':
+                marks.setdefault(par['gsec']['pos'], set()).add('data-xg')
+            if 'hero' in pc and el['dc'] == 'h':
+                marks.setdefault(par['pos'], set()).add('data-xh')
+            if par['dc'] == 'h' and 'ux-dup' in el['cls']:
+                marks.setdefault(par['pos'], set()).add('data-xd')
+        if name == 'main' or (name == 'div' and par and par['n'] == 'main' and re.search(r'\sid="p-', attrs)):
+            el['grid'] = True
+        if name in _HM_VOID or attrs.rstrip().endswith('/'):
+            continue
+        stack.append(el)
+    if not marks:
+        return s
+    out, pos = [], 0
+    for p in sorted(marks):
+        out.append(s[pos:p]); out.append(''.join(' ' + a for a in sorted(marks[p]))); pos = p
+    out.append(s[pos:])
+    return ''.join(out)
+
+
 def apply(s, rel):
     """Ставить єдину шапку/футер у HTML сторінки `rel` (шлях від кореня сайту). Ідемпотентно."""
+    s = _HM_RM.sub('', s)  # маркери :has() — заново після ux.apply (генератори шукають точні рядки розмітки)
     rel = rel.replace(os.sep, '/')
     if os.path.basename(rel) in SKIP and '/' not in rel or rel.startswith('google'):
         return s
@@ -712,6 +797,7 @@ def apply(s, rel):
     s = ui_polish_ext(s)
     import ux  # іконки заголовків, згортання довгих блоків, бейдж «Анімація реалізації» (tools/site/ux.py)
     s = ux.apply(s, rel)
+    s = has_marks(s)
     import sharp  # різкі фото: srcset з усіх ширин і sizes під реальний слот (tools/site/sharp.py)
     s = sharp.apply(s, rel)
     s = versions(s)
@@ -727,15 +813,11 @@ def apply(s, rel):
     else:
         s = LCP_RX.sub('', SPEC_RX.sub('', s))
     # підключення стилів і скрипта
-    if CSS_TAG not in s:
-        s = s.replace('</head>', CSS_TAG + '\n</head>', 1)
-    else:  # стилі мають іти після всіх інлайн-стилів head
-        head = s.split('</head>')[0]
-        if not head.rstrip().endswith(CSS_TAG):
-            s = s.replace(CSS_TAG + '\n', '', 1).replace('</head>', CSS_TAG + '\n</head>', 1)
+    # критичні стилі — останніми в head (після всіх інлайн-стилів); старі теги (інша версія/назва) — геть
+    s = CRIT_RX.sub('', s).replace('</head>', CSS_TAG + '\n</head>', 1)
     if JS_TAG not in s:
         s = s.replace('</body>', JS_TAG + '\n</body>', 1)
-    return s
+    return full_css(s)
 
 
 # Один viewport на всі сторінки: viewport-fit=cover — сторінка на весь екран iPhone (Dynamic Island, home indicator,

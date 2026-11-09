@@ -26,6 +26,11 @@ def _chrome_apply(s, rel):
 
 LASTMOD = time.strftime('%Y-%m-%d', time.localtime(os.path.getmtime(os.path.join(ROOT, 'assets/ozdoba/catalog.json'))))  # для sitemap
 CAT = os.path.join(ROOT, 'assets/ozdoba/catalog.json')
+# Легкий каталог (швидкість, 09.11.2026): /ozdoba одразу вантажить лише catalog-lite.json (усі товари без desc/specs/custom,
+# ~30 КБ br замість ~71): картки, фільтри, кошик, обране працюють з ним; повний catalog.json app.js бере після load (idle)
+# або одразу при пошуку / відкритті картки товару. Генерує main() — руками не правити.
+LITE = os.path.join(ROOT, 'assets/ozdoba/catalog-lite.json')
+LITE_DROP = ('desc', 'specs', 'custom')
 APP = os.path.join(ROOT, 'assets/ozdoba/app.js')
 FAV = os.path.join(ROOT, 'assets/account-fav.v1.js')  # «серце» (обране) з синхронізацією з кабінетом клієнта
 PAGE = os.path.join(ROOT, 'ozdoba.html')
@@ -143,6 +148,11 @@ def main():
     for i in d['items']:
         if not i.get('slug'): i['slug'] = slugify(i['name'], i['id']); changed = True
     if changed: json.dump(d, open(CAT, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+    lite = {k: v for k, v in d.items() if k != '_doc'}
+    lite['items'] = [{k: v for k, v in i.items() if k not in LITE_DROP} for i in d['items']]
+    lt = json.dumps(lite, ensure_ascii=False, separators=(',', ':'))
+    if not os.path.exists(LITE) or open(LITE, encoding='utf-8').read() != lt:
+        open(LITE, 'w', encoding='utf-8').write(lt)
     ids = [i['id'] for i in d['items']]
     assert len(ids) == len(set(ids)), 'id товарів мають бути унікальні'
     for i in d['items']:
@@ -171,7 +181,8 @@ def main():
         ld['@graph'].append({'@type': 'FAQPage', 'mainEntity': [
             {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in qa]})
     s = re.sub(r'<!--ozd:ld-->.*?<!--/ozd:ld-->', lambda m: '<!--ozd:ld--><script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script><!--/ozd:ld-->', s, count=1, flags=re.S)
-    s = re.sub(r'/assets/ozdoba/catalog\.json\?v=\w+', '/assets/ozdoba/catalog.json?v=' + ver(CAT), s)
+    s = re.sub(r'<link rel="preload" id="ozd-data"[^>]*>', lambda m: '<link rel="preload" id="ozd-data" href="/assets/ozdoba/catalog-lite.json?v=' + ver(LITE)
+               + '" as="fetch" crossorigin data-full="/assets/ozdoba/catalog.json?v=' + ver(CAT) + '">', s, count=1)
     s = re.sub(r'/assets/ozdoba/app\.js\?v=\w+', '/assets/ozdoba/app.js?v=' + ver(APP), s)
     s = re.sub(r'<span class="cnt" id="cnt">[^<]*</span>', f'<span class="cnt" id="cnt">{plural(len(items))}</span>', s, count=1)
     s = re.sub(r'<!--ozd:kits-->.*?<!--/ozd:kits-->', lambda m: '<!--ozd:kits-->' + kits_cards(d) + '<!--/ozd:kits-->', s, count=1, flags=re.S)

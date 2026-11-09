@@ -142,10 +142,11 @@ function setTab(t){
 function toggleSearch(){
   const w=document.getElementById('searchwrap'), on=w.classList.toggle('on');
   document.getElementById('btnSearch').classList.toggle('on', on);
-  if(on) document.getElementById('q').focus();
+  if(on){ fullLoad(); document.getElementById('q').focus(); }
   else { query=''; document.getElementById('q').value=''; render(); }
 }
-function onSearch(){ query=document.getElementById('q').value.trim().toLowerCase(); if(tab!=='catalog') setTab('catalog'); else renderGrid(); }
+function onSearch(){ query=document.getElementById('q').value.trim().toLowerCase(); if(!FULLD) fullLoad().then(()=>{ if(query&&tab==='catalog') renderGrid(); });
+  if(tab!=='catalog') setTab('catalog'); else renderGrid(); }
 
 /* ===================== картки ===================== */
 function cardHTML(i){
@@ -300,7 +301,7 @@ function addKit(id){
 }
 
 /* ===================== картка товару ===================== */
-function openItem(id){ cur=byId(id); if(!cur) return; curC=-1; curS=defS(cur); curQ=MINQ(); renderItem();
+function openItem(id){ if(!FULLD) fullLoad().then(()=>{ if(cur&&cur.id===id&&document.getElementById('sheetItem').classList.contains('open')) renderItem(); }); cur=byId(id); if(!cur) return; curC=-1; curS=defS(cur); curQ=MINQ(); renderItem();
   open('sheetItem', true); try{history.replaceState(null,'','#p-'+id);}catch(e){} }
 function renderItem(){
   const i=cur, cs=colorsOf(i), s=SS(i);
@@ -602,7 +603,7 @@ function account(){ // показуємо «Кабінет», лише коли 
 }
 function boot(d, l){ account();
   if(l&&l.ui) L=l;
-  DATA=d; IT=d.items; BU=d.bundles; VOLTXT=VOLTXT_(); for(const k in d.art) ART[k]=S(d.art[k]);
+  DATA=d; IT=d.items; BU=d.bundles; fullMerge(); VOLTXT=VOLTXT_(); for(const k in d.art) ART[k]=S(d.art[k]);
   try{ JSON.parse(localStorage.getItem('ozd-cart')||'[]').forEach(c=>{ if(byId(c.id)) cart.push({...c,qty:Math.max(MINQ(),Math.round(Number(c.qty)||0))}); });
        if(!['card','invoice','cash','usdt'].includes(payMethod)) payMethod='card';
        JSON.parse(localStorage.getItem('ozd-fav')||'[]').forEach(id=>{ if(byId(id)) fav.add(id); }); }catch(e){}
@@ -655,6 +656,21 @@ function kpDownload(kitId){
   kpLoading.then(go, ()=>toast(t('Не вдалося підготувати КП — оновіть сторінку')));
 }
 
+/* Легкий каталог (09.11.2026): спершу catalog-lite.json (без desc/specs/custom — tools/products/build.py), повний — після load (idle)
+   або одразу при пошуку / відкритті товару; описи доливаються в ті самі обʼєкти товарів. Без data-full — повний одразу (старі сторінки). */
+let FULLD=false, fullP=null;
+function fullLoad(){
+  if(FULLD) return Promise.resolve();
+  const el=document.getElementById('ozd-data'), u=el&&el.dataset.full;
+  if(!u){ FULLD=true; return Promise.resolve(); }
+  return fullP || (fullP=fetch(u).then(r=>r.json()).then(f=>{
+    FM=new Map(f.items.map(i=>[i.id,i])); fullMerge(); FULLD=true;
+  }).catch(()=>{ FULLD=true; }));
+}
+let FM=null;
+function fullMerge(){ if(FM&&DATA) IT.forEach(i=>{ const x=FM.get(i.id); if(x) ['desc','specs','custom'].forEach(k=>{ if(k in x) i[k]=x[k]; }); }); }
+addEventListener('load',()=>{ const go=()=>{ if(DATA) fullLoad(); else setTimeout(go,500); };
+  'requestIdleCallback' in window ? requestIdleCallback(go,{timeout:3000}) : setTimeout(go,1500); });
 const i18nEl=document.getElementById('ozd-i18n');
 Promise.all([fetch(document.getElementById('ozd-data').href).then(r=>r.json()),
              i18nEl ? fetch(i18nEl.href).then(r=>r.json()) : null]).then(([d,l])=>boot(d,l))

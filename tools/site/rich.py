@@ -74,7 +74,8 @@ def hero_bg(h, full=False):
     full — головні (Михайло 08.11.2026): на телефоні фото на весь екран під легшим затемненням, тому sizes 100vw (різкість)."""
     m = h.get('m')
     ms = '100vw' if full else '60vw'
-    src = (f'<source media="(max-width:767px) and (orientation:portrait)" srcset="{a(m["srcset"])}" sizes="{ms}" width="{m["w"]}" height="{m["h"]}">'
+    # m["sizes"] — свій sizes телефонного кадру (послуги/про/контакти/портфоліо: легша копія того ж кадру -m-<w>, sizes як у ПК — 100vw)
+    src = (f'<source media="(max-width:767px) and (orientation:portrait)" srcset="{a(m["srcset"])}" sizes="{m.get("sizes", ms)}" width="{m["w"]}" height="{m["h"]}">'
            if m else '')
     # телефон (не головні): фото під темним градієнтом — достатньо ~60vw (менше байтів до LCP)
     hs = f' data-hs="{_slides()}"' if full else ''

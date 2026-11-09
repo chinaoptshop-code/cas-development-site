@@ -192,7 +192,7 @@ def apply(s, rel):
     # hero (не головна): кнопка «Дивитись, як ми будуємо» — після останньої кнопки першого .btns
     go, gk = '', -1
     if not compact:
-        mb = re.search(r'<div class="w hero">.*?<div class="btns">(.*?)\n?\s*</div>', s, re.S)
+        mb = re.search(r'<div class="w hero"(?: data-x[ghpd])*>.*?<div class="btns">(.*?)\n?\s*</div>', s, re.S)
         if mb:
             go, gk = go_btn(lang, scene), mb.end(1)
     for tier in (0, 1, 2, 3):

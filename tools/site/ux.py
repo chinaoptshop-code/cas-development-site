@@ -657,7 +657,8 @@ def _tp_pick(cat, key, used, k):
 
 SPAN_RX = re.compile(r'\sstyle="(?:--s[2346]:\d+;?)+"')
 STRIP = [WB_RX, TP_RX, TZ_RX, SPAN_RX, re.compile(r'\sdata-i="[a-z0-9]{2}"'), re.compile(r'\sdata-c="[tsqglxhk]"'), re.compile(r'\sdata-a(?:="[si]")?(?=[\s>])'),
-         re.compile(r'\sdata-xs="[^"]*"'), re.compile(r'\sdata-cn="\d+"'), CALC_RX]
+         re.compile(r'\sdata-xs="[^"]*"'), re.compile(r'\sdata-cn="\d+"'), CALC_RX,
+         re.compile(r' data-x[ghpd](?=[\s/>])')]  # маркери :has() з chrome.has_marks (ставить chrome.apply() заново)
 UNWRAP = re.compile(r'<div data-c="l">(<(ul|ol)>.*?</\2>)</div>', re.S)
 REST_RX = re.compile(r'<span class="ux-rest">(.*?)</span>(?=</p>)', re.S)  # друга частина ліду hero (_lead_rest)
 
