@@ -16,5 +16,7 @@
 "img/p/hxm-rest": {"src": "img/p/1HL1J3k6Vl1nD-", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6},
 "img/p/hxm-office": {"src": "img/p/15mn_Or4V7WrFB", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6},
 "img/p/hxm-resort": {"src": "img/p/13WiocWsjrHB4B", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6},
-"img/p/hxm-land": {"src": "img/p/19seq_4AT9Kb4a", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6}
+"img/p/hxm-land": {"src": "img/p/19seq_4AT9Kb4a", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6},
+"img/hero-pidgirland": {"src": "img/p/1IPpJjg5VkUVC8", "ratio": 1.6, "x": 0.5, "y": 0.5, "q": 72, "blur": 0.3},
+"img/hero-pidgirland-m": {"src": "img/p/1IPpJjg5VkUVC8", "ratio": 0.6, "x": 0.5, "y": 0.5, "q": 70, "blur": 0.5}
 }
