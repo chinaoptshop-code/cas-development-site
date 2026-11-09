@@ -32,3 +32,50 @@
 .sc-chev{position:fixed;z-index:30;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:rgba(13,12,10,.42);border:1px solid rgba(191,145,72,.35);color:var(--ac,#BF9148);font-size:26px;line-height:1;pointer-events:none;opacity:0;transition:opacity .18s}
 .sc-chev.is-on{opacity:.85}.sc-chev.is-dis{opacity:0}
 @media(prefers-reduced-motion:reduce){.sc-chev{transition:none}}
+/* ══ Єдиний вигляд компактних сцен головних (Михайло 08.11.2026 «уніфікований вигляд»): «Ландшафт», «Ресторан», «Будинок на воді», «Комплекс» — як «Будинок з нуля» (.bz-cmp):
+   кадр ліворуч, панель праворуч (телефон — під кадром): лічильник 01 / N + прогрес-лінія, назва й текст етапу, ← пауза →, рядок номерів, ціна й одне посилання-заклик.
+   Панель будує casSide (site-chrome.v1.js); тут — спільні стилі .sc-*; у CSS сцен — лише малюнок. Висоти кадру — ті самі, що в .bz-cmp (резерв CLS — site-chrome.v1.css) */
+.la-cmp .la-box{margin-top:8px}
+.la-cmp .la-stick.sc-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:clamp(18px,3vw,48px);align-items:start;padding:14px 0}
+.la-cmp .la-svg,.la-cmp .rp-svg{box-sizing:border-box;width:100%;height:min(60vh,540px);max-height:none;aspect-ratio:auto}
+.bz-cmp .bz-fig{box-sizing:border-box;border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:14px;background:radial-gradient(ellipse at 50% 30%,#1b1813,#0d0c0a);overflow:hidden}
+.bz-cmp .bz-mats{display:none!important} /* «Будинок / Квартира» — це вже вкладки перемикача сцен над блоком */
+.la-cmp :is(.la-pies,.la-price,.wh-price,.rs-price,.rs-case,.rp-rates,.rp-ctl,.rp-panel,.rp-tools,.la-cnt){display:none!important}
+.sc-side{position:relative;display:flex;flex-direction:column;gap:12px;min-width:0}
+.sc-hd{display:flex;align-items:center;gap:14px}
+.sc-ct{margin:0;flex:none;min-width:4.2em;font-variant-numeric:tabular-nums;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;color:var(--mu,#938c84);font-size:var(--fs-h3,1.4rem);line-height:1;letter-spacing:.04em}
+.sc-ct b{font-weight:300;color:var(--ac,#BF9148);font-size:1.7em;margin-inline-end:.08em}
+.sc-bar{flex:1;height:2px;background:var(--ln,rgba(191,145,72,.22));overflow:hidden;border-radius:2px;cursor:pointer;padding:6px 0;margin:-6px 0;background-clip:content-box;box-sizing:content-box}
+.sc-bar i{display:block;height:100%;background:var(--ac,#BF9148);transform-origin:0 50%;transform:scaleX(0);transition:transform .45s var(--ease-out,ease)}
+[dir=rtl] .sc-bar i{transform-origin:100% 50%}
+.sc-side .la-cap,.sc-side .rp-cap{margin:0;min-height:7.6rem}
+.sc-side :is(.la-cap,.rp-cap) b{display:block;font-family:'Manrope','Manrope Fallback',system-ui,sans-serif;font-weight:500;font-size:1.125rem;line-height:1.3;color:var(--tx,#EDE8DF);margin-bottom:6px}
+.sc-side :is(.la-cap,.rp-cap) span{display:block;line-height:1.55;color:#c9c1b6;font-size:.9375rem}
+.sc-side .la-nav{flex-wrap:wrap;gap:12px 10px}
+.sc-side .la-nav .la-prev,.sc-side .la-nav .sc-prev{order:1}.sc-side .la-nav .sc-ap{order:2}.sc-side .la-nav .la-next,.sc-side .la-nav .sc-next{order:3}
+.sc-side .la-nav button{width:48px;height:48px;flex:none;border-radius:50%;border:1px solid var(--ln,rgba(191,145,72,.22));background:transparent;color:var(--tx,#EDE8DF);font-size:18px;line-height:1;padding:0;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.sc-side .la-nav .sc-ap{border-color:var(--ac,#BF9148);color:var(--ac,#BF9148)}
+.sc-side .la-nav button:disabled{opacity:.35;cursor:default}
+[dir=rtl] .sc-side .la-nav button>span.sc-ar{display:inline-block;transform:scaleX(-1)}
+@media(hover:hover){.sc-side .la-nav button:not(:disabled):hover,.sc-n:hover{border-color:var(--ac,#BF9148);color:var(--tx,#EDE8DF)}}
+.sc-nums{display:flex;flex-wrap:wrap;gap:16px 4px}
+.sc-n{position:relative;width:28px;height:28px;border-radius:50%;border:1px solid var(--ln,rgba(191,145,72,.22));background:transparent;color:var(--mu,#938c84);font:500 11px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;padding:0}
+.sc-n::before{content:'';position:absolute;inset:min(0px,calc(50% - 22px))}
+.sc-n.is-done{color:var(--ac,#BF9148);border-color:rgba(191,145,72,.55)}
+.sc-n[aria-current]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#080709}
+.sc-side :is(.la-nav button,.sc-n):focus-visible,.sc-more:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
+.sc-side .la-foot{display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.sc-side .la-est{font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84);margin:0}
+.sc-more{align-self:flex-start;color:var(--ac,#BF9148);text-decoration:none;font-weight:500;padding:10px 0;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center}
+@media(hover:hover){.sc-more:hover{text-decoration:underline;text-underline-offset:4px}}
+@media(max-width:767px){
+  .la-cmp .la-stick.sc-grid{grid-template-columns:minmax(0,1fr);gap:8px;padding:6px 0 8px}
+  .la-cmp .la-svg,.la-cmp .rp-svg{height:min(42vh,350px)}
+  .sc-side{gap:8px}.sc-ct{font-size:1.05rem}
+  .sc-side :is(.la-cap,.rp-cap){min-height:7.2rem}.sc-side :is(.la-cap,.rp-cap) b{font-size:1rem}.sc-side :is(.la-cap,.rp-cap) span{font-size:.875rem}
+  .sc-side .la-nav{justify-content:center}
+  .sc-nums{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:10px 6px;margin-top:2px}
+  .sc-n{width:auto;min-width:0;height:34px;border-radius:999px;font-size:.8125rem}
+  .sc-side .la-foot{align-items:center}.sc-more{align-self:center}
+}
+.rp-cmp .rp-grid{display:block}.rp-cmp .rp-side{display:none}.rp-cmp .rp-svg{object-fit:contain}

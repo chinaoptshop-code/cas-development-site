@@ -3,6 +3,7 @@
    CLS 0: сцена будується лише коли блок поза кадром; reduced-motion — статичні кадри з кнопками; клавіатура: ←/→, кнопки з aria. */
 (function () {
   'use strict';
+  var sdU = null; // casSide (site-chrome.v1.js): панель компактної сцени головної — лічильник, прогрес, номери етапів
   var W = window, d = document, sec = d.querySelector('section.la[data-la]');
   if (!sec || sec.__la) return; sec.__la = 1;
   var drive = null, RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -263,7 +264,7 @@
     if (i !== shown || force) {
       shown = i;
       cap.innerHTML = '<b>' + esc(ST[i][0]) + '</b><span>' + esc(ST[i][1]) + '</span>';
-      cnt.textContent = (i + 1) + ' ' + ui.of + ' ' + N;
+      cnt.textContent = (i + 1) + ' ' + ui.of + ' ' + N; if (sdU) sdU(i);
       live.textContent = (i + 1) + '/' + N + ': ' + ST[i][0];
       vbT = target(i);
       if (i === N - 1) cl('la_end');
@@ -336,6 +337,7 @@
     stick.appendChild(foot);
     var CMP = !RM && !!d.querySelector('.hx-home'); // головні: компактна сцена в межах екрана — без sticky-доріжки, етапи крокує casAuto і ←/→ (Михайло 05.11.2026)
     if (RM || CMP) { box0.appendChild(ctr); box0.appendChild(stick); if (CMP) sec.classList.add('la-cmp'); }
+    if (CMP && W.casSide) sdU = W.casSide({ stick: stick, cap: cap, nav: nav, foot: foot, n: N, go: function (i) { go(i); }, title: function (i) { return i < 0 ? sec.querySelector('h2').textContent : ST[i][0]; } }); // єдиний вигляд компактних сцен (Михайло 08.11.2026)
     else { run = el('div', 'la-run'); run.style.height = 'calc(100vh + ' + N + ' * clamp(400px, 50vh, 560px))'; box0.appendChild(ctr); run.appendChild(stick); box0.appendChild(run); }
     list.parentNode.insertBefore(box0, list);
     list.classList.add('la-sr');
@@ -354,7 +356,7 @@
     if (CMP && W.casAuto) W.casAuto({ root: box0, view: svg, host: nav, step: function () { if (shown >= N - 1) return false; go(shown + 1); return true; },
       restart: function () { go(0); }, atEnd: function () { return shown >= N - 1; } });
     // жести всіх сцен (головні й повні): колесо над кадром ±1 етап, клік/тап збоку, свайп, ←/→; підказка — лише на головних. Повна sticky: go() плавно прокручує до етапу
-    if (W.casGest) W.casGest({ root: box0, view: svg, go: go, cur: function () { return Math.max(0, shown); }, n: N, hint: d.querySelector('.hx-home') ? stick : null, before: nav });
+    if (W.casGest) W.casGest({ root: box0, view: svg, go: go, cur: function () { return Math.max(0, shown); }, n: N, hint: d.querySelector('.hx-home') ? nav.parentNode : null, before: nav });
   }
   function css() {
     return new Promise(function (res) {

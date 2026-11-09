@@ -14,14 +14,14 @@
  ],
  "kicker": "Studio de design et d’architecture · Kyiv · depuis 2016",
  "hero_img": {
-  "img": "img/hero-hodos-villa-1280.webp",
-  "srcset": "/img/hero-hodos-villa-1280.webp 1280w, /img/hero-hodos-villa-1920.webp 1920w",
-  "alt": "Salle à manger lumineuse avec table en marbre, fauteuils bleus et lustre en cristal — projet Hodos Villa par CAS Development, Kyiv",
+  "img": "img/hero-pidgirland-1280.webp",
+  "srcset": "/img/hero-pidgirland-1280.webp 1280w, /img/hero-pidgirland-1920.webp 1920w",
+  "alt": "Séjour-salle à manger aux boiseries — projet Pidgirland de CAS Development",
   "sizes": "100vw",
   "m": {
-   "srcset": "/img/hero-hodos-villa-m720.webp 720w, /img/hero-hodos-villa-m1080.webp 1080w",
-   "w": 1080,
-   "h": 1800
+   "srcset": "/img/hero-pidgirland-m-720.webp 720w, /img/hero-pidgirland-m-1080.webp 1080w, /img/hero-pidgirland-m-1440.webp 1440w",
+   "w": 1440,
+   "h": 2400
   }
  },
  "sections": [

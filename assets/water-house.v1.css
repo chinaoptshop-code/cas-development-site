@@ -32,6 +32,7 @@
 .wh-hull{fill:#d8d2c4;stroke:#6b5236}
 .wh-lamp{fill:#ffe2a0;opacity:.4}.wh-gl{fill:url(#wh-gw);opacity:0;transition:opacity 1s}.wh-streak{stroke:#ffd98a;stroke-width:4;stroke-linecap:round;stroke-dasharray:2 5;opacity:0;transition:opacity 1s}
 /* вечір */
+.wh-wgl{fill:#ffcf7a;opacity:0;pointer-events:none;transition:opacity 1s}.wh-dusk .wh-wgl{opacity:.55}.wh-svg:is(.xr0,.xr1,.xr2) .wh-wgl{opacity:0}
 .wh-dusk .wh-gl{opacity:.85}.wh-dusk .wh-clad.gw{fill:#ffcf7a;fill-opacity:.8}.wh-dusk .wh-lamp{opacity:1}.wh-dusk .wh-streak{opacity:.3}.wh-dusk .wh-refl.w{opacity:.22}.wh-dusk .wh-glint{stroke:#ffd98a}
 /* мережі ховаються під обшивкою й настилом; рентген показує вибране */
 .wh-svg.wh-closed .ux{opacity:0!important}

@@ -14,7 +14,7 @@
   W.__casBA = 1;
   var secs = [].slice.call(d.querySelectorAll('section.bz[data-bz]'));
   if (!secs.length || !W.fetch || !W.Promise) return;
-  var VER = {"ar.flat":"a264ddd6","ar.house":"8fd8754e","de.flat":"459be5a2","de.house":"1a8d1c59","en.flat":"daab009c","en.house":"b9caad42","es.flat":"9234dced","es.house":"8123983d","fr.flat":"25aae2bc","fr.house":"ae4701f1","pl.flat":"7b2d0891","pl.house":"ae10c17e","ru.flat":"3e3d71b2","ru.house":"18fe5cb5","uk.flat":"1d2e9bbc","uk.house":"daac7d84","zh.flat":"f4223dd1","zh.house":"a5dd72c4"}; /*ver*/
+  var VER = {"ar.flat":"dd4e8c42","ar.house":"6da9929c","de.flat":"bef66e8c","de.house":"407e45b3","en.flat":"ba190cfc","en.house":"32f566db","es.flat":"a055bd91","es.house":"de85aea4","fr.flat":"ccd5f01d","fr.house":"fe3284fe","pl.flat":"095e7c40","pl.house":"ac12d36a","ru.flat":"e63b4e18","ru.house":"c3917aff","uk.flat":"ad75a035","uk.house":"72d1609b","zh.flat":"fab61a6a","zh.house":"1a03b7f4"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
   // головні (.hx-home): компактна сцена в межах екрана — без довгої sticky-доріжки; етапи крокує автопрогравання (casAuto) і кнопки ←/→ (Михайло 05.11.2026)
@@ -774,14 +774,14 @@
     A('land', 0.6, pl('lp', [dX - 1.2, GY - 0.8, 0, dX - 1.2, GY - 0.8, 1.1]) + circ('lpg', dX - 1.2, GY - 0.8, 1.15, 9) + circ('bulb', dX - 1.2, GY - 0.8, 1.15, 2) + pl('lp', [GX - 1.3, GY - 0.6, 0, GX - 1.3, GY - 0.6, 1.1]) + circ('lpg', GX - 1.3, GY - 0.6, 1.15, 9) + circ('bulb', GX - 1.3, GY - 0.6, 1.15, 2));
     // двоє нейтральних силуетів біля входу (масштаб 1,8 / 1,66 м) — зʼявляються на благоустрої
     A('land', 0.8, man(dX + 0.35, Y1 + FD + 2.6, 0.02, 1.8, '#d6d0c6', 0) + man(dX + 1.25, Y1 + FD + 2.95, 0, 1.66, '#bfb6a8', 1));
-    A('done', 0, seal(GX - 0.6, Y0 + 0.4, RZ + 0.9, ui), { m: 'd' });
+    A('done', 0, seal(GX - 0.6, Y0 + 0.4, RZ + 0.9, ui, 1.5), { m: 'd' }); // будинок у кадрі дрібніший за квартиру — печатка більша, «12» читається й на 402 px
     return { parts: L, xr: S('mep'), th: [], W: H.W, D: H.D };
   }
 
-  function seal(x, y, z, ui) { // печатка «12 міс. гарантія»
-    var q = P(x, y, z).split(','), a = +q[0], b = +q[1];
-    bb[0] = Math.min(bb[0], a - 28); bb[1] = Math.min(bb[1], b - 28); bb[2] = Math.max(bb[2], a + 28); bb[3] = Math.max(bb[3], b + 28);
-    return '<g class="seal"><circle cx="' + a + '" cy="' + b + '" r="27" class="sl1"/><circle cx="' + a + '" cy="' + b + '" r="22" class="sl2"/>' +
+  function seal(x, y, z, ui, k) { // печатка «12 міс. гарантія» (k — масштаб)
+    var q = P(x, y, z).split(','), a = +q[0], b = +q[1], r = 28 * (k || 1);
+    bb[0] = Math.min(bb[0], a - r); bb[1] = Math.min(bb[1], b - r); bb[2] = Math.max(bb[2], a + r); bb[3] = Math.max(bb[3], b + r);
+    return '<g class="seal"' + (k ? ' transform="translate(' + a + ' ' + b + ') scale(' + k + ') translate(' + (-a) + ' ' + (-b) + ')"' : '') + '><circle cx="' + a + '" cy="' + b + '" r="27" class="sl1"/><circle cx="' + a + '" cy="' + b + '" r="22" class="sl2"/>' +
       '<text x="' + a + '" y="' + (b + 1) + '" class="sl3">12</text><text x="' + a + '" y="' + (b + 11) + '" class="sl4">' + esc(ui.mo) + '</text><text x="' + a + '" y="' + (b - 12) + '" class="sl4">' + esc(ui.gar) + '</text></g>';
   }
 
