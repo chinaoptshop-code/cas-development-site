@@ -23,6 +23,7 @@ python3 tools/site/casmap.py    # карти: «Карта проєктів» у
 python3 tools/site/quiz.py      # квіз-калькулятор перед формою заявки (ремонт, будівництво; на головних — ні)
 python3 tools/site/media.py     # тур 360° (/tury/<slug>) на сторінках проєктів, відео YouTube, канал у sameAs — з tools/site/media.json
 python3 tools/site/casetext.py  # «Про проєкт» на /proekty/<slug>: Задача → Рішення → Результат з tools/site/casetext.json
+python3 tools/site/casegal.py   # довгі галереї /proekty (> 24 фото): 24 у HTML, решта — /proekty/gal/<slug>.json (case-gal.v1.js)
 python3 tools/site/caselang.py  # /en/proekty/<slug> і /ru/proekty/<slug> з готових uk-сторінок (переклад — tools/site/caselang/<мова>.json)
 python3 tools/site/buildanim.py # «Будинок з нуля» / «Ремонт з нуля» — scroll-анімація збірки (будівництво, ремонт квартир, головні)
 python3 tools/site/landanim.py  # «Ландшафт з нуля» — сцена на сторінках ландшафтного дизайну + перемикач «Будинок / Ландшафт» на будівництві

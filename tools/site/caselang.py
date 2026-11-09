@@ -67,7 +67,7 @@ class Tr:
         return key
 
 
-FMT = {'en': dict(m2='m²', frm='from'), 'ru': dict(m2='м²', frm='от')}
+FMT = {'en': dict(m2='m²', frm='from', all='Show all'), 'ru': dict(m2='м²', frm='от', all='Показать все')}
 EST = re.compile(r'^(.+?) · <span1>([\d ]+) м² × \$([\d ]+)/м²</span> — <b2>від \$([\d ]+)</b>$')
 CRUMB = re.compile(r'^<a1>Головна</a> / <a2>Портфоліо</a> / ([^<]+)$')
 
@@ -79,6 +79,9 @@ def rules(k, t):
     m = EST.match(k)
     if m:
         return f'{t(m.group(1))} · <span1>{n(m.group(2))} {f["m2"]} × ${n(m.group(3))}/{f["m2"]}</span> — <b2>{f["frm"]} ${n(m.group(4))}</b>'
+    m = re.fullmatch(r'Показати всі \((\d+)\)', k)  # кнопка довгої галереї (tools/site/casegal.py)
+    if m:
+        return f'{f["all"]} ({m.group(1)})'
     m = re.fullmatch(r'([\d ]+) м²', k)
     if m:
         return f'{n(m.group(1))} {f["m2"]}'
@@ -264,18 +267,31 @@ def build(slug, lang):
     body = re.sub(r'<!--m-fix--><div class="mbar".*?</div><!--/mb-menu-->', lambda m: m.group(0).replace('>Подзвонити</a>', '>' + CALL[lang] + '</a>'), body, flags=re.S)
     body = re.sub(r'<!--chrome:h-->.*?<!--/chrome:h-->|<!--chrome:f-->.*?<!--/chrome:f-->|<!--chrome:skip-->.*?<!--/chrome:skip-->|<!--m-fix--><div class="mbar".*?</div><!--/mb-menu-->', hold, body, flags=re.S)
     body = tr_html(body, t)
+    body = body.replace('"/proekty/gal/', '"/' + i18n.meta(lang)['prefix'] + 'proekty/gal/')  # хвіст довгої галереї — JSON мови (gallery())
     for k, v in keep.items():
         body = body.replace(k, v)
     body = fix_links(body, lang)
     s = head + '</head>' + body
     s = i18n.html_attrs(s, lang)
+    gal = gallery(slug, lang, t)
     if t.miss:
-        return None, t.miss
+        return None, t.miss, None
     rel = i18n.path_to_file(page_path(lang, slug))
     members = i18n.cluster_of(page_path(lang, slug)) or {}
     members = dict(members, **{lang: page_path(lang, slug)})
     s = i18n.set_alternates(s, members)
-    return chrome.apply(s, rel), []
+    return chrome.apply(s, rel), [], gal
+
+
+def gallery(slug, lang, t):
+    """Хвіст довгої галереї (tools/site/casegal.py): proekty/gal/<slug>.json → <мова>/proekty/gal/<slug>.json з перекладеними alt."""
+    f = os.path.join(ROOT, 'proekty/gal', slug + '.json')
+    if not os.path.exists(f):
+        return None
+    d = json.load(open(f, encoding='utf-8'))
+    for x in d['p']:
+        x[6] = t(x[6]) if CYR.search(x[6]) else x[6]
+    return json.dumps(d, ensure_ascii=False, separators=(',', ':')) + '\n'
 
 
 def clusters():
@@ -379,12 +395,22 @@ def run(check=False):
         for slug in cases():
             if slug not in have:
                 continue
-            s, miss = build(slug, lang)
+            s, miss, gal = build(slug, lang)
             rel = i18n.path_to_file(page_path(lang, slug))
             if miss:
                 errs += [f'{rel}: бракує перекладу: {k!r}' for k in dict.fromkeys(miss)]
                 continue
             errs += check_text(s, lang, rel)
+            jf = os.path.join(ROOT, i18n.meta(lang)['prefix'] + 'proekty/gal', slug + '.json')
+            old_j = open(jf, encoding='utf-8').read() if os.path.exists(jf) else None
+            if old_j != gal:
+                if check:
+                    errs.append(f'{jf[len(ROOT) + 1:]} застарів')
+                elif gal:
+                    os.makedirs(os.path.dirname(jf), exist_ok=True)
+                    open(jf, 'w', encoding='utf-8').write(gal)
+                else:
+                    os.remove(jf)
             f = os.path.join(ROOT, rel)
             old = open(f, encoding='utf-8').read() if os.path.exists(f) else None
             if old != s:
@@ -400,7 +426,7 @@ def run(check=False):
 def missing(lang):
     out = {}
     for slug in cases():
-        s, miss = build(slug, lang)
+        s, miss, _ = build(slug, lang)
         for k in dict.fromkeys(miss):
             out.setdefault(k, []).append(slug)
     t = Tr(lang, '_portfolio')
