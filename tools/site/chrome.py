@@ -153,6 +153,8 @@ if re.match(r'^https://www\.youtube\.com/(@[\w.\-]+|channel/UC[\w-]{22})$', _MED
     SOCIAL.append(('youtube', 'YouTube', _MEDIA['youtube_channel']))
 # LinkedIn Михайла (CEO) — Михайло 09.11.2026
 SOCIAL.append(('linkedin', 'LinkedIn', 'https://www.linkedin.com/in/mykhailo-litovchuk-818846244'))
+# TikTok Михайла «Міша під ключ» — Михайло 09.11.2026
+SOCIAL.append(('tiktok', 'TikTok', 'https://www.tiktok.com/@li_mi_tless'))
 SOCIAL_K = {x[0] for x in SOCIAL}
 SOC_LABEL = {'uk': 'Соцмережі', 'ru': 'Соцсети', 'en': 'Social media', 'es': 'Redes sociales', 'zh': '社交媒体', 'pl': 'Media społecznościowe',
              'de': 'Soziale Medien', 'fr': 'Réseaux sociaux', 'ar': 'التواصل الاجتماعي'}
