@@ -886,7 +886,7 @@ def _ozd(m):
 def apply(s, rel):
     """Ідемпотентно: спершу знімає свої атрибути, потім ставить заново (джерело правди — цей файл)."""
     rel = rel.replace(os.sep, '/')
-    if rel.startswith(('kabinet', 'ozdoba', 'tury', 'styleguide', 'konfigurator')) or '/ozdoba/' in rel:
+    if rel.startswith(('kabinet', 'ozdoba', 'tury', 'styleguide', 'konfigurator')) or '/ozdoba/' in rel or re.match(r'[a-z]{2}/tury\b', rel):
         return s
     i, j = s.find('<main'), s.find('<!--/chrome:f-->')
     if i < 0:
@@ -1010,7 +1010,7 @@ def stats():
     miss = collections.Counter()
     for f in glob.glob(os.path.join(ROOT, '**/*.html'), recursive=True):
         rel = os.path.relpath(f, ROOT)
-        if rel.startswith(('tools', '.claude', 'kabinet', 'ozdoba', 'styleguide', 'tury')):
+        if rel.startswith(('tools', '.claude', 'kabinet', 'ozdoba', 'styleguide', 'tury')) or re.match(r'[a-z]{2}/tury\b', rel):
             continue
         for k, t in re.findall(r'<h(?:2|3)[^>]*data-i="(\w+)"[^>]*>(.*?)</h[23]>', open(f, encoding='utf-8').read(), re.S):
             c[k] += 1

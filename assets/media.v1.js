@@ -10,7 +10,7 @@
     ru: { close: 'Закрыть', tour: 'Виртуальный тур 360°', demo: 'Демо: здесь откроется тур или видео YouTube.' },
     en: { close: 'Close', tour: 'Virtual 360° tour', demo: 'Demo: a 360° tour or a YouTube video opens here.' } };
   var t = T[lang] || T.en;
-  var OWN = /^\/tury\/[a-z0-9-]+$/, YT = /^[A-Za-z0-9_-]{11}$/;
+  var OWN = /^\/(?:[a-z]{2}\/)?tury\/[a-z0-9-]+$/, YT = /^[A-Za-z0-9_-]{11}$/;
   function clarity(ev) { try { if (window.clarity) window.clarity('event', ev); } catch (x) {} }
 
   var dlg, frame, back;

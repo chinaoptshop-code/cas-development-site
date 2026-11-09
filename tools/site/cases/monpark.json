@@ -258,207 +258,244 @@
   [
    "mpk-v01",
    "Фасад і головна тераса вдень",
-   "Фасад и главная терраса днём"
+   "Фасад и главная терраса днём",
+   "Facade and main terrace by day"
   ],
   [
    "mpk-v02",
    "Фасад увечері, фудтрак біля входу",
-   "Фасад вечером, фудтрак у входа"
+   "Фасад вечером, фудтрак у входа",
+   "Facade in the evening, food truck by the entrance"
   ],
   [
    "mpk-v03",
    "Двір і тераси — вид згори",
-   "Двор и террасы — вид сверху"
+   "Двор и террасы — вид сверху",
+   "Courtyard and terraces from above"
   ],
   [
    "mpk-v04",
    "Головна тераса ввечері",
-   "Главная терраса вечером"
+   "Главная терраса вечером",
+   "Main terrace in the evening"
   ],
   [
    "mpk-v05",
    "Вхідна група з арками",
-   "Входная группа с арками"
+   "Входная группа с арками",
+   "Arched entrance"
   ],
   [
    "mpk-v06",
    "Тераса другого поверху",
-   "Терраса второго этажа"
+   "Терраса второго этажа",
+   "Second-floor terrace"
   ],
   [
    "mpk-v07",
    "Бар на терасі другого поверху",
-   "Бар на террасе второго этажа"
+   "Бар на террасе второго этажа",
+   "Bar on the second-floor terrace"
   ],
   [
    "mpk-v08",
    "Зал: довгий стіл і винна стіна",
-   "Зал: длинный стол и винная стена"
+   "Зал: длинный стол и винная стена",
+   "Dining room: long table and wine wall"
   ],
   [
    "mpk-v09",
    "Бар у залі",
-   "Бар в зале"
+   "Бар в зале",
+   "Bar in the dining room"
   ],
   [
    "mpk-v10",
    "Зал: загальний вид",
-   "Зал: общий вид"
+   "Зал: общий вид",
+   "Dining room: general view"
   ],
   [
    "mpk-v11",
    "Зал біля арочних вікон",
-   "Зал у арочных окон"
+   "Зал у арочных окон",
+   "Dining room by the arched windows"
   ]
  ],
  "dw": [
   [
    "mpk-d02",
    "Обмірний план 1 поверху до перепланування",
-   "Обмерный план 1 этажа до перепланировки"
+   "Обмерный план 1 этажа до перепланировки",
+   "Measured plan of the ground floor before replanning"
   ],
   [
    "mpk-d03",
    "План монтажу 1 поверху",
-   "План монтажа 1 этажа"
+   "План монтажа 1 этажа",
+   "Ground-floor construction plan"
   ],
   [
    "mpk-d01",
    "План меблювання 1 поверху: 200 місць",
-   "План расстановки мебели 1 этажа: 200 мест"
+   "План расстановки мебели 1 этажа: 200 мест",
+   "Ground-floor furniture plan: 200 seats"
   ],
   [
    "mpk-d04",
    "План розеток і електричних виводів",
-   "План розеток и электрических выводов"
+   "План розеток и электрических выводов",
+   "Socket and electrical outlet plan"
   ],
   [
    "mpk-d05",
    "План освітлення 1 поверху",
-   "План освещения 1 этажа"
+   "План освещения 1 этажа",
+   "Ground-floor lighting plan"
   ],
   [
    "mpk-d06",
    "Специфікація освітлення",
-   "Спецификация освещения"
+   "Спецификация освещения",
+   "Lighting specification"
   ],
   [
    "mpk-d07",
    "План опалення й вентиляції",
-   "План отопления и вентиляции"
+   "План отопления и вентиляции",
+   "Heating and ventilation plan"
   ],
   [
    "mpk-d08",
    "План покриття підлоги",
-   "План покрытия пола"
+   "План покрытия пола",
+   "Floor finish plan"
   ],
   [
    "mpk-d09",
    "Площа оздоблення травертином",
-   "Площадь отделки травертином"
+   "Площадь отделки травертином",
+   "Travertine cladding areas"
   ],
   [
    "mpk-d10",
    "Розміри балюстради",
-   "Размеры балюстрады"
+   "Размеры балюстрады",
+   "Balustrade dimensions"
   ],
   [
    "mpk-d11",
    "ТЗ: тамбур і вхідна група",
-   "ТЗ: тамбур и входная группа"
+   "ТЗ: тамбур и входная группа",
+   "Brief: vestibule and entrance"
   ],
   [
    "mpk-d12",
    "ТЗ: санвузли",
-   "ТЗ: санузлы"
+   "ТЗ: санузлы",
+   "Brief: restrooms"
   ],
   [
    "mpk-d13",
    "Диван на замовлення",
-   "Диван на заказ"
+   "Диван на заказ",
+   "Custom sofa"
   ],
   [
    "mpk-d14",
    "Барна стійка",
-   "Барная стойка"
+   "Барная стойка",
+   "Bar counter"
   ]
  ],
  "rz": [
   {
    "h": [
     "Зал",
-    "Зал"
+    "Зал",
+    "Dining room"
    ],
    "items": [
     [
      "d",
      "mpk-d01",
      "План меблювання",
-     "План расстановки мебели"
+     "План расстановки мебели",
+     "Furniture plan"
     ],
     [
      "v",
      "mpk-v08",
      "Зал у 3D",
-     "Зал в 3D"
+     "Зал в 3D",
+     "Dining room in 3D"
     ],
     [
      "f",
      "mpk-f03",
      "Зал після відкриття",
-     "Зал после открытия"
+     "Зал после открытия",
+     "Dining room after opening"
     ]
    ]
   },
   {
    "h": [
     "Вхідна група",
-    "Входная группа"
+    "Входная группа",
+    "Entrance"
    ],
    "items": [
     [
      "d",
      "mpk-d11",
      "ТЗ: тамбур",
-     "ТЗ: тамбур"
+     "ТЗ: тамбур",
+     "Brief: vestibule"
     ],
     [
      "v",
      "mpk-v05",
      "Вхід у 3D",
-     "Вход в 3D"
+     "Вход в 3D",
+     "Entrance in 3D"
     ],
     [
      "f",
      "mpk-f02",
      "Вхід і тераса",
-     "Вход и терраса"
+     "Вход и терраса",
+     "Entrance and terrace"
     ]
    ]
   },
   {
    "h": [
     "Фасад і балюстрада",
-    "Фасад и балюстрада"
+    "Фасад и балюстрада",
+    "Facade and balustrade"
    ],
    "items": [
     [
      "d",
      "mpk-d10",
      "Розміри балюстради",
-     "Размеры балюстрады"
+     "Размеры балюстрады",
+     "Balustrade dimensions"
     ],
     [
      "v",
      "mpk-v01",
      "Фасад у 3D",
-     "Фасад в 3D"
+     "Фасад в 3D",
+     "Facade in 3D"
     ],
     [
      "f",
      "mpk-f01",
      "Фасад і тераса",
-     "Фасад и терраса"
+     "Фасад и терраса",
+     "Facade and terrace"
     ]
    ]
   }
@@ -467,7 +504,129 @@
   [
    "mpk-f04",
    "Зал крізь панорамне скління тераси",
-   "Зал сквозь панорамное остекление террасы"
+   "Зал сквозь панорамное остекление террасы",
+   "Dining room through the terrace's panoramic glazing"
   ]
- ]
+ ],
+ "en": {
+  "slug": "proekty/monpark-full-project",
+  "title": "Monpark: full restaurant design project, 3D and drawings | CAS Development",
+  "description": "Full design project of the Monpark restaurant: 3D visualisations of the dining room and terraces, working drawings, specifications and footage of the venue.",
+  "h1": "Monpark — a full restaurant design project",
+  "kicker": "Visualisations · drawings · completed venue",
+  "lead": "What a full project looks like: from the measured plan and furniture layout to drawings of furniture, lighting and ventilation — and the venue CAS Development completed from these drawings.",
+  "facts": [
+   [
+    "320 m²",
+    "restaurant area"
+   ],
+   [
+    "200",
+    "seats on the furniture plan"
+   ],
+   [
+    "247",
+    "sheets of working drawings"
+   ],
+   [
+    "94",
+    "pages of 3D visualisations"
+   ]
+  ],
+  "short": {
+   "h2": "Project at a glance",
+   "rows": [
+    [
+     "Property",
+     "a two-storey restaurant with a main terrace, a back courtyard and a second-floor terrace"
+    ],
+    [
+     "City",
+     "Kyiv, city centre"
+    ],
+    [
+     "Status",
+     "completed by CAS Development — the venue is open (stills from on-site video below)"
+    ],
+    [
+     "What the package includes",
+     "3D visualisations of the interior and exterior and an album of 247 working-drawing sheets"
+    ]
+   ],
+   "li": [
+    "measured plans before and after replanning, partition construction plan",
+    "electrics: sockets and outlets, lighting, lighting groups, LED strips, acoustics",
+    "heating, ventilation, plumbing outlets",
+    "floor finishes, granite «rugs», travertine, railing and balustrade",
+    "technical briefs for details: vestibule, stairs, pergolas, cornice, restrooms",
+    "drawings of custom furniture and decor: tables, sofas, bar counters, signage, light fittings",
+    "specifications for lighting, furniture and materials"
+   ]
+  },
+  "vis_h2": "Visualisations",
+  "vis_p": "11 of 94 visualisation pages: the facade and terraces by day and in the evening, the courtyard from above, the dining room, the bar and a restroom. Click an image to enlarge it.",
+  "dw_h2": "Drawings",
+  "dw_p": "14 of the 247 sheets of the working album, in the order the construction crew receives them. Sheets are shown without the title-block frame; click to see the details.",
+  "rz_h2": "From drawing to completed venue",
+  "rz_p": "Drawing → visualisation → finished venue. Photos are stills from on-site video.",
+  "inc_h2": "What a full design project includes",
+  "inc_p": "Monpark has everything from the «Full» package: visualisations of every zone, working drawings for engineering and finishes, drawings of custom furniture and specifications. For your property we tailor the scope to the brief.",
+  "inc_links": [
+   [
+    "/en/interior-design",
+    "Interior design"
+   ],
+   [
+    "/en/restaurant-design",
+    "Restaurant and café design"
+   ],
+   [
+    "/en/design-implementation",
+    "Design project implementation"
+   ]
+  ],
+  "rel_h2": "More about the project",
+  "rel": [
+   [
+    "/en/proekty/monpark",
+    "Monpark — project page"
+   ],
+   [
+    "/en/portfolio",
+    "Full portfolio"
+   ],
+   [
+    "/en/restaurant-fit-out",
+    "Turnkey restaurant fit-out"
+   ]
+  ],
+  "form_h2": "I want a project like this",
+  "service": "Повний дизайн-проєкт (як Monpark)",
+  "crumbs": [
+   [
+    "/en/",
+    "Home"
+   ],
+   [
+    "/en/portfolio",
+    "Portfolio"
+   ],
+   [
+    "/en/proekty/monpark",
+    "Monpark"
+   ]
+  ],
+  "crumb": "Full project",
+  "btn_call": "Call",
+  "btn_same": "I want the same",
+  "zoom": "Enlarge",
+  "close": "Close",
+  "lb_label": "Image viewer",
+  "alt": " — Monpark",
+  "lbl": {
+   "d": "Drawing",
+   "v": "Visualisation",
+   "f": "Completed"
+  }
+ }
 }

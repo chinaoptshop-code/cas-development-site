@@ -1,0 +1,235 @@
+{
+ "_": "English texts under the viewer /en/tury/<slug> (translation of about.json — same facts; «completed» only for apartment-2025). Built by tools/tours/build.py pages. name — tour title in the viewer and cards; links — [text](/en/path) to pages in this language. title ≤ 60, description ≤ 155.",
+ "apartment-2025": {
+  "name": "Apartment — completed interior",
+  "title": "Finished apartment in Kyiv — 360° 3D tour | CAS Development",
+  "description": "360° 3D tour of a finished apartment in Kyiv: living room, kitchen, bedroom, entrance hall and bathroom. See the finishes, furniture and lighting as if inside.",
+  "eye": "Completed interior · Kyiv",
+  "lead": "A 360° tour of a finished apartment in Kyiv: the interior after the works were completed, shot with a 360 camera. Walk through the rooms and look at the finishes, furniture and lighting the way you would on a site visit.",
+  "p": [
+   "This is a completed project, not a visualisation: the photos show real walls, joints, plumbing and lighting. That is how a renovation should be judged — by the result, not by a render.",
+   "CAS renovates apartments with its own team: [turnkey renovation in Kyiv](/en/turnkey-renovation) — from $550/m² (labour and rough materials; finishing materials, furniture and appliances are separate, per estimate). During the works the client gets photo reports every 1–2 weeks, and a 24/7 online camera on site can be added for an extra fee. If there is no design yet, we start with [apartment interior design](/en/apartment-interior-design). More projects are in the [portfolio](/en/portfolio)."
+  ],
+  "links": [
+   [
+    "/en/turnkey-renovation",
+    "Apartment renovation"
+   ],
+   [
+    "/en/apartment-interior-design",
+    "Apartment design"
+   ]
+  ]
+ },
+ "edelweiss": {
+  "name": "Edelweiss — 108 m² apartment design project",
+  "title": "Edelweiss, 108 m² apartment — 360° 3D tour | CAS Development",
+  "description": "360° 3D tour of the Edelweiss apartment design project, 108 m²: hall, living room with kitchen, bedrooms, walk-in wardrobe, bathrooms. Walk it before works.",
+  "eye": "Design project · 360 visualisation · 108 m²",
+  "lead": "360 visualisations of the Edelweiss apartment design project, 108 m²: a light interior with soft textures, a walk-in wardrobe and graphic art. This is a 3D model of the project, not photos of a finished apartment.",
+  "p": [
+   "The kitchen is combined with the living and dining area in one space, the walls behind the beds are finished with textile panels, and the walk-in wardrobe has glass fronts. The brief, solution and photos are on the [Edelweiss project page](/en/proekty/edelweiss)."
+  ],
+  "tail": "[Apartment interior design](/en/apartment-interior-design) — from $30/m², minimum order $2,500. CAS can carry out a project like this in full: [turnkey renovation](/en/turnkey-renovation) — from $550/m². Other work is in the [portfolio](/en/portfolio).",
+  "links": [
+   [
+    "/en/apartment-interior-design",
+    "Apartment design"
+   ],
+   [
+    "/en/turnkey-renovation",
+    "Apartment renovation"
+   ]
+  ]
+ },
+ "hoda-estate": {
+  "name": "Hoda Estate — house design project in the Carpathians",
+  "title": "Hoda Estate, Carpathian house — 360° 3D tour | CAS",
+  "description": "360° 3D tour of the Hoda Estate house design project, 180 m², in the Carpathians: living room with kitchen, bedrooms, stone bathrooms, a bathhouse.",
+  "eye": "Design project · 360 visualisation · Carpathians · 180 m²",
+  "lead": "360 visualisations of the interior design project for the Hoda Estate house, 180 m², in the Carpathians: wood, stone, linen and mountain views from the main rooms. This is a 3D model of the project, not photos of a built house.",
+  "p": [
+   "Exposed timber beams under the ceiling, light plaster, panoramic windows facing the mountains. The kitchen, living room and dining area form one space, natural stone is used in the bathrooms, and there is a separate bathhouse and laundry. The brief and solution are on the [Hoda Estate project page](/en/proekty/hoda-estate)."
+  ],
+  "tail": "[House interior design](/en/house-design) — from $30/m², minimum $2,500. CAS takes on renovation and construction in all regions of Ukraine, so a project in the Carpathians can be taken through to completion: [house construction](/en/house-construction) — from $600/m², turnkey from $1,100/m². More work is in the [portfolio](/en/portfolio).",
+  "links": [
+   [
+    "/en/house-design",
+    "House interior design"
+   ],
+   [
+    "/en/house-construction",
+    "House construction"
+   ]
+  ]
+ },
+ "triangle-house": {
+  "name": "Triangle House — interior concept",
+  "title": "Triangle House — 3D tour of an interior concept | CAS",
+  "description": "360° 3D tour of the Triangle House interior concept: a two-storey hall, living room with kitchen, bedrooms and a bathroom. Walk through the concept online.",
+  "eye": "Concept · 360 visualisation",
+  "lead": "360 visualisations of the interior concept for Triangle House: living room with kitchen, bedrooms, a bathroom and a hall on two floors. A concept is an interior option in 3D, not photos of a built house.",
+  "p": [
+   "In the tour you can go from the ground-floor hall to the upper hall and look into the bedrooms and bathroom — you can see how the house is organised vertically."
+  ],
+  "tail": "[House interior design](/en/house-design) — from $30/m², minimum $2,500. We can also build the house: [house construction](/en/house-construction) — from $600/m², turnkey from $1,100/m², and our specialists do the site survey and aerial photography. More projects are in the [portfolio](/en/portfolio).",
+  "links": [
+   [
+    "/en/house-design",
+    "House interior design"
+   ],
+   [
+    "/en/house-construction",
+    "House construction"
+   ]
+  ]
+ },
+ "yablunytsia-estate": {
+  "name": "Estate in Yablunytsia — concept",
+  "title": "Estate in Yablunytsia, Carpathians — 360° 3D tour | CAS",
+  "description": "360° 3D tour of the concept for an estate in Yablunytsia (Carpathians): grounds, pool, houses and paths. See how the estate looks together with its landscape.",
+  "eye": "Concept · 360 visualisation · Carpathians",
+  "lead": "360 visualisations of the concept for an estate in Yablunytsia (Carpathians): the grounds, a pool, houses and the paths between them. This is a 3D model of the concept, not photos of a built estate.",
+  "p": [
+   "The viewpoints are spread across the grounds: you can see how the houses sit relative to the pool, where the paths lead and how the estate looks as a whole. For a country property this works better than separate renders — the plot, the houses and the landscape are seen together.",
+   "For a real plot our specialists do the land survey and aerial photography, so the project is based on the actual terrain."
+  ],
+  "tail": "[Landscape design](/en/landscape-design) — from $50 per 100 m²; [house construction](/en/house-construction) — from $600/m², turnkey from $1,100/m². If the estate is meant as a place for guests to stay, see [turnkey holiday resort](/en/resort-design). More work is in the [portfolio](/en/portfolio).",
+  "links": [
+   [
+    "/en/landscape-design",
+    "Landscape design"
+   ],
+   [
+    "/en/house-construction",
+    "House construction"
+   ]
+  ]
+ },
+ "apartment-80": {
+  "name": "80 m² apartment — design project",
+  "title": "80 m² apartment with a terrace — 360° 3D tour | CAS",
+  "description": "360° 3D tour of an 80 m² apartment design project: hall, living room, dining room, kitchen, bedroom, walk-in wardrobe and terrace. Walk it before renovation.",
+  "eye": "Design project · 360 visualisation · 80 m²",
+  "lead": "360 visualisations of the design project for an 80 m² apartment with a terrace: hall, living room, dining room, kitchen, bedroom and walk-in wardrobe. This is a 3D model of the project, not photos of a finished apartment.",
+  "p": [
+   "A separate dining room, a walk-in wardrobe and access to the terrace — the tour shows how these zones connect to each other and to the living room."
+  ],
+  "tail": "[Apartment interior design](/en/apartment-interior-design) — from $30/m², minimum order $2,500; [renovation](/en/turnkey-renovation) to the design — from $550/m². More work is in the [portfolio](/en/portfolio).",
+  "links": [
+   [
+    "/en/apartment-interior-design",
+    "Apartment design"
+   ],
+   [
+    "/en/turnkey-renovation",
+    "Apartment renovation"
+   ]
+  ]
+ },
+ "apartment-56": {
+  "name": "56 m² apartment — design project",
+  "title": "56 m² apartment — 360° design project tour | CAS",
+  "description": "360° 3D tour of a 56 m² apartment design project: eight viewpoints across the whole apartment. See how the layout works before renovation starts.",
+  "eye": "Design project · 360 visualisation · 56 m²",
+  "lead": "360 visualisations of the design project for a 56 m² apartment, with viewpoints across the whole apartment. This is a 3D model of the project, not photos of a finished interior.",
+  "p": [
+   "Move between the viewpoints with the arrows on the photo or the ‹ › buttons below: you can see how the zones of the apartment flow into each other and how the layout works on 56 m²."
+  ],
+  "tail": "[Apartment interior design](/en/apartment-interior-design) — from $30/m², minimum order $2,500; [renovation](/en/turnkey-renovation) — from $550/m². More work is in the [portfolio](/en/portfolio).",
+  "links": [
+   [
+    "/en/apartment-interior-design",
+    "Apartment design"
+   ],
+   [
+    "/en/turnkey-renovation",
+    "Apartment renovation"
+   ]
+  ]
+ },
+ "apartment-45": {
+  "name": "45 m² apartment — design project",
+  "title": "45 m² apartment — 360° design project tour | CAS",
+  "description": "360° 3D tour of a 45 m² apartment design project: hall, kitchen, living room, bedroom and bathroom. Judge the proportions of a small flat before renovation.",
+  "eye": "Design project · 360 visualisation · 45 m²",
+  "lead": "360 visualisations of the design project for a 45 m² apartment: hall, kitchen, living room, bedroom and bathroom. This is a 3D model of the project, not photos of a finished apartment.",
+  "p": [
+   "In a small space it matters most how the rooms connect. In the tour you can walk from the hall to the kitchen, living room and bedroom and judge the proportions at eye level."
+  ],
+  "tail": "[Apartment interior design](/en/apartment-interior-design) — from $30/m², minimum order $2,500; [renovation](/en/turnkey-renovation) — from $550/m². More work is in the [portfolio](/en/portfolio).",
+  "links": [
+   [
+    "/en/apartment-interior-design",
+    "Apartment design"
+   ],
+   [
+    "/en/turnkey-renovation",
+    "Apartment renovation"
+   ]
+  ]
+ },
+ "apartment-37": {
+  "name": "37 m² apartment — design project",
+  "title": "37 m² apartment — 360° design project tour | CAS",
+  "description": "360° 3D tour of a compact 37 m² apartment design project: hall, kitchen, living room, bedroom and bathroom. See how everything fits into this area.",
+  "eye": "Design project · 360 visualisation · 37 m²",
+  "lead": "360 visualisations of the design project for a 37 m² apartment: hall, kitchen, living room, bedroom and bathroom. This is a 3D model of the project, not photos of a finished apartment.",
+  "p": [
+   "37 m² is a compact apartment where the layout decides everything. The tour shows how the hall, kitchen, living room and bedroom fit into this area and how the rooms open onto one another."
+  ],
+  "tail": "[Apartment interior design](/en/apartment-interior-design) — from $30/m², minimum order $2,500; [renovation](/en/turnkey-renovation) — from $550/m². More work is in the [portfolio](/en/portfolio).",
+  "links": [
+   [
+    "/en/apartment-interior-design",
+    "Apartment design"
+   ],
+   [
+    "/en/turnkey-renovation",
+    "Apartment renovation"
+   ]
+  ]
+ },
+ "house-concept-1": {
+  "name": "Private house — concept 1",
+  "title": "Private house, concept 1 — 360° 3D tour | CAS",
+  "description": "360° 3D tour of an interior concept for a private house, option 1: viewpoints throughout the house. Compare it with another version of the concept.",
+  "eye": "Concept · 360 visualisation · option 1",
+  "lead": "360 visualisations of an interior concept for a private house, option 1. A concept is an interior option in 3D, not photos of a built house.",
+  "p": [
+   "The viewpoints are spread throughout the house: move with the arrows on the photo or the ‹ › buttons below. Compare it with [concept 4](/en/tury/house-concept-4) to see how differently the interior of a private house can look."
+  ],
+  "tail": "[House interior design](/en/house-design) — from $30/m², minimum $2,500; [turnkey house renovation](/en/house-renovation) and [construction](/en/house-construction) — by our own team. More work is in the [portfolio](/en/portfolio).",
+  "links": [
+   [
+    "/en/house-design",
+    "House interior design"
+   ],
+   [
+    "/en/house-renovation",
+    "House renovation"
+   ]
+  ]
+ },
+ "house-concept-4": {
+  "name": "Private house — concept 4",
+  "title": "Private house, concept 4 — 360° 3D tour | CAS",
+  "description": "360° 3D tour of an interior concept for a private house, option 4: hall, kitchen, living room, bedrooms, nursery, walk-in wardrobe and bathrooms.",
+  "eye": "Concept · 360 visualisation · option 4",
+  "lead": "360 visualisations of an interior concept for a private house, option 4: hall, corridor, kitchen, living room, bedrooms, nursery, walk-in wardrobe and bathrooms. A concept is an interior option in 3D, not photos of a built house.",
+  "p": [
+   "The tour shows a family house: a separate nursery, a walk-in wardrobe and two bathrooms. Compare it with [concept 1](/en/tury/house-concept-1), another interior option for a private house."
+  ],
+  "tail": "[House interior design](/en/house-design) — from $30/m², minimum $2,500; [turnkey house renovation](/en/house-renovation) and [construction](/en/house-construction) — by our own team. More work is in the [portfolio](/en/portfolio).",
+  "links": [
+   [
+    "/en/house-design",
+    "House interior design"
+   ],
+   [
+    "/en/house-renovation",
+    "House renovation"
+   ]
+  ]
+ }
+}

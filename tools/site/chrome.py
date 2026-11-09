@@ -31,7 +31,7 @@ def _ver(path, _c={}):
 # спільні файли, які підключають сторінки: після зміни файлу всі сторінки отримують новий ?v=
 SHARED = ('/assets/site-chrome.v1.css', '/assets/crit.v1.css', '/assets/site-chrome.v1.js', '/assets/lead-form.v1.js', '/assets/ui-polish.v1.js', '/assets/proekt.v1.css',
           '/assets/cas-map.v1.css', '/assets/cas-map.v1.js', '/assets/quiz.v1.js', '/assets/quiz.v1.css', '/assets/media.v1.js', '/assets/media.v1.css',
-          '/assets/build-anim.v1.js', '/assets/build-anim.v1.css', '/assets/sections.v1.css', '/assets/calc.v1.js')
+          '/assets/build-anim.v1.js', '/assets/build-anim.v1.css', '/assets/sections.v1.css', '/assets/calc.v1.js', '/assets/case-gal.v1.js')
 SHARED_RX = re.compile(r'(' + '|'.join(re.escape(x) for x in SHARED) + r')(?:\?v=\w+)?(?=")')
 
 
@@ -715,7 +715,7 @@ def has_marks(s):
     return ''.join(out)
 
 
-CASE_A = re.compile(r'<a\b[^>]*\shref="/(proekty/[\w-]+|portfolio)(#[^"]*)?"[^>]*>')
+CASE_A = re.compile(r'<a\b[^>]*\shref="/(proekty/[\w-]+|portfolio|tury(?:/[\w-]+)?)(#[^"]*)?"[^>]*>')
 
 
 def local_cases(s, lang):
@@ -741,7 +741,7 @@ def apply(s, rel):
     rel = rel.replace(os.sep, '/')
     if os.path.basename(rel) in SKIP and '/' not in rel or rel.startswith('google'):
         return s
-    if rel.startswith('tury/'):  # повноекранні 3D-тури — без шапки/футера
+    if re.match(r'(?:[a-z]{2}/)?tury/', rel):  # повноекранні 3D-тури (uk, en, ru) — без шапки/футера
         return s
     lang, path, alts = page_lang(s), rel_to_path(rel), alternates(s)
     if rel in [i18n.path_to_file(h) for h in HOME.values()]:

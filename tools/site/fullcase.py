@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Сторінки «Повний проєкт» (/proekty/<slug>-povnyi-proekt, /ru/proekty/<slug>-polnyy-proekt) з tools/site/cases/*.json.
+"""Сторінки «Повний проєкт» (/proekty/<slug>-povnyi-proekt, /ru/proekty/<slug>-polnyy-proekt, /en/proekty/<slug>-full-project) з tools/site/cases/*.json.
 
-  python3 tools/site/fullcase.py            # зібрати всі кейси (uk + ru)
+  python3 tools/site/fullcase.py            # зібрати всі кейси (uk, ru, en — мови з JSON)
   python3 tools/site/fullcase.py --check    # лише перевірка (код 1, якщо HTML застарів або дані невірні)
 
 Що на сторінці (лише блоки UI-kit лендингів — шаблон landing.TPL, шапка/футер — chrome.apply, форма — спільна form#of):
@@ -21,7 +21,7 @@ from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import landing  # шаблон, екранування, пакети, ORG, sitemap (tools/site/landing.py)
-import chrome, i18n, leadform
+import chrome, i18n, leadform, ux
 
 ROOT, B = landing.ROOT, landing.B
 e, a = landing.e, landing.a
@@ -68,8 +68,15 @@ def url(c, lang):
     return B + i18n.meta(lang)['prefix'] + c[lang]['slug']
 
 
+LANGS = ('uk', 'ru', 'en')  # мови кейсу — ті, що є в JSON (c[lang])
+
+
 def k(lang):
-    return 2 if lang == 'ru' else 1  # індекс підпису в [id, uk, ru]
+    return LANGS.index(lang) + 1  # індекс підпису в [id, uk, ru, en]
+
+
+def langs(c):
+    return [l for l in LANGS if l in c]
 
 
 def main_html(c, lang):
@@ -127,7 +134,7 @@ def ld(c, lang):
           'mainEntity': {'@id': u + '#work'}},
          {'@type': 'CreativeWork', '@id': u + '#work', 'name': t['h1'], 'url': u, 'inLanguage': hl, 'description': t['lead'],
           'creator': landing.ORG, 'image': [m['contentUrl'] for m in media[:6]], 'genre': t['kicker'],
-          'isBasedOn': B.rstrip('/') + c['project'], 'hasPart': {'@id': u + '#gallery'}},
+          'isBasedOn': B.rstrip('/') + t['crumbs'][-1][0], 'hasPart': {'@id': u + '#gallery'}},
          {'@type': 'ImageGallery', '@id': u + '#gallery', 'name': f'{t["h1"]}: {t["vis_h2"]}, {t["dw_h2"]}', 'url': u, 'inLanguage': hl,
           'creator': {'@id': B + '#business'}, 'copyrightHolder': {'@id': B + '#business'}, 'associatedMedia': media}]
     return json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False)
@@ -149,6 +156,8 @@ def og(c):
 def build(c, lang):
     t = c[lang]
     s = leadform.QUICK_RX.sub('', open(os.path.join(ROOT, landing.TPL[lang]), encoding='utf-8').read())
+    if lang not in ('uk', 'ru'):  # нові мови: uk-шаблон з перекладом форми/панелі (як landing.build)
+        s = landing.translate_tpl(i18n.html_attrs(ux.strip(s), lang), lang)
     u = url(c, lang)
     s = re.sub(r'<title>.*?</title>', f'<title>{e(landing.title_tag(t["title"]))}</title>', s, count=1)
     for key, v in (('name="description"', t['description']), ('property="og:title"', t['title']),
@@ -178,7 +187,7 @@ def check_data(c):
     errs = []
     txt = json.dumps(c, ensure_ascii=False)
     if re.search(r'osocor|осокор|osokork|aqulla', txt, re.I): errs.append('сторонній бренд / Osocor у тексті')
-    for lang in ('uk', 'ru'):
+    for lang in langs(c):
         t = c[lang]
         if len(t['description']) > 160: errs.append(f'{lang}: description > 160')
         for h in re.findall(r'"(/[a-z0-9/-]*)"', json.dumps(t, ensure_ascii=False)):
@@ -195,7 +204,7 @@ def run(check=False):
         errs = check_data(c)
         if errs:
             print('❌', c['id'], errs); bad = 1; continue
-        for lang in ('uk', 'ru'):
+        for lang in langs(c):
             rel = path(c, lang)
             s = build(c, lang)
             full = os.path.join(ROOT, rel)

@@ -373,7 +373,7 @@ def apply(s, rel):
             s = add_quick(s, lang)
         else:
             s = QUICK_RX.sub('', s)
-    if not rel.startswith(('kabinet', 'ozdoba', 'styleguide', 'tury')):
+    if not rel.startswith(('kabinet', 'ozdoba', 'styleguide', 'tury')) and not re.match(r'[a-z]{2}/tury\b', rel):
         s = add_slots(s, rel)
     return s
 
