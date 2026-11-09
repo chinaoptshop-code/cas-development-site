@@ -34,7 +34,8 @@
     "founder": {
      "@type": "Person",
      "name": "Михайло",
-     "jobTitle": "Засновник і CEO"
+     "jobTitle": "Засновник і CEO",
+      "sameAs": "https://www.linkedin.com/in/mykhailo-litovchuk-818846244"
     },
     "foundingDate": "2016",
     "description": "Студія дизайну інтерʼєру, ремонт, будівництво й генпідряд під ключ у Києві: квартири, будинки, офіси, ресторани, готелі; комплектація меблями з Китаю.",

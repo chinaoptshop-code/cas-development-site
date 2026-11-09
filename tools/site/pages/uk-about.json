@@ -60,13 +60,15 @@
     "founder": {
      "@type": "Person",
      "name": "Михайло",
-     "jobTitle": "Засновник і CEO"
+     "jobTitle": "Засновник і CEO",
+      "sameAs": "https://www.linkedin.com/in/mykhailo-litovchuk-818846244"
     },
     "employee": [
      {
       "@type": "Person",
       "name": "Михайло",
-      "jobTitle": "Засновник і CEO"
+      "jobTitle": "Засновник і CEO",
+      "sameAs": "https://www.linkedin.com/in/mykhailo-litovchuk-818846244"
      },
      {
       "@type": "Person",

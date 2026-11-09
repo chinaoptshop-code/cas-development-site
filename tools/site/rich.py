@@ -32,6 +32,7 @@ a = lambda s: html.escape(s, quote=True)
 MDLINK = re.compile(r'\[([^\]]+)\]\((/[^)\s]*|https?://[^)\s]+|tel:[^)\s]+|#[^)\s]*)\)')
 rich = lambda s: MDLINK.sub(lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', e(s))
 PHONE, WA, TG, VB = '+380978667755', 'https://wa.me/380978667755', 'https://t.me/+380978667755', 'viber://chat?number=%2B380978667755'
+LI = 'https://www.linkedin.com/in/mykhailo-litovchuk-818846244'
 IG, YT, MAPS = 'https://www.instagram.com/cas_development/', 'https://www.youtube.com/@cas_development', 'https://maps.google.com/?cid=15015666645432112566'
 _SZ = {}
 
@@ -86,6 +87,7 @@ def msgs():
             f'<a class="bi bi-viber" href="{VB}">Viber</a>'
             f'<a class="bi bi-whatsapp" href="{WA}" target="_blank" rel="noopener">WhatsApp</a>'
             f'<a class="bi bi-instagram" href="{IG}" target="_blank" rel="noopener">Instagram</a>'
+            f'<a class="bi bi-linkedin" href="{LI}" target="_blank" rel="noopener">LinkedIn</a>'
             # WeChat (Михайло 08.11.2026): додають за номером телефону; weixin:// відкриває застосунок
             f'<a class="bi bi-wechat" href="weixin://" title="WeChat: +380 63 866 77 55">WeChat +380 63 866 77 55</a></p>')
 
