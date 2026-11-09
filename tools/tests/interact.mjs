@@ -26,7 +26,8 @@ const server = http.createServer(async (req, res) => {
   if (u.pathname.startsWith('/api/')) {
     const ch = []; for await (const c of req) ch.push(c);
     if (req.method === 'POST') posts.push({ path: u.pathname, body: Buffer.concat(ch).toString() });
-    res.writeHead(apiStatus, { 'content-type': 'application/json' }); return res.end('{}');
+    res.writeHead(apiStatus, { 'content-type': 'application/json' });
+    return res.end(u.pathname === '/api/orders' && apiStatus === 200 ? '{"ok":true,"number":"OZD-TEST-1"}' : '{}');
   }
   const f = staticFile(u.pathname);
   if (!f) { res.writeHead(404); return res.end(); }
@@ -186,6 +187,41 @@ await test('калькулятор: площа → сума', '/kalkuliator-remo
   await inp.dispatchEvent('input'); await inp.dispatchEvent('change'); await p.waitForTimeout(500);
   const after = await p.locator('main').innerText();
   must(after !== before && /\$\s?\d|\d[\d\s]*\s?\$/.test(after), 'сума не змінилась');
+});
+await test('калькулятор: 0 → «—», дизайн для 10 м² — мінімум $2 500, величезна площа обмежена', '/kalkuliator-remontu', 402, async p => {
+  const set = async v => { await p.fill('#cArea', v); await p.dispatchEvent('#cArea', 'input'); await p.waitForTimeout(150); return p.textContent('#cSum'); };
+  must((await set('0')) === '—', 'площа 0 не дає «—»');
+  must((await set('abc').catch(() => '—')) === '—', 'нечислове значення');
+  await p.selectOption('#cKind', { index: 0 }); await p.check('#cDesign');
+  await set('10');
+  must((await p.textContent('#cRows')).replace(/ /g, ' ').includes('$2 500'), 'дизайн 10 м² не дорівнює мінімуму $2 500');
+  const big = (await set('99999999')).replace(/\D/g, '');
+  must(+big <= 100000 * (550 + 30 + 250) + 1, 'площа не обмежена: ' + big);
+  await set('60'); await p.click('#cSend'); await p.waitForTimeout(300);
+  const m1 = await p.inputValue('#oMsg'); await set('80'); await p.click('#cSend'); await p.waitForTimeout(300);
+  must((await p.inputValue('#oMsg')) !== m1 && (await p.inputValue('#oArea')) === '80', 'повторний розрахунок не оновив форму');
+});
+await test('Оздоба: кошик — мінімум 10 шт і $500, знижка 5%, заявка: 500 — без успіху, 200 — номер', '/ozdoba', 402, async p => {
+  await p.waitForFunction(() => typeof DATA !== 'undefined' && DATA && DATA.items && DATA.items.length);
+  const r = await p.evaluate(async () => {
+    const it = DATA.items.find(i => i.price != null && !i.ss && i.price * 10 < 23000);
+    openItem(it.id); addToCart(); openCart(); await new Promise(s => setTimeout(s, 200));
+    const low = document.getElementById('sheetCart').innerText;
+    cart[0].qty = Math.ceil(470000 / it.price); renderCart();
+    return { q: cart[0].qty, low: low.replace(/\s/g, ' '), big: document.getElementById('sheetCart').innerText };
+  });
+  must(r.low.includes('23 000') && /10/.test(r.low), 'немає підказки про мінімальне замовлення');
+  must(/−5%/.test(r.big), 'немає знижки за обсягом 5%');
+  await p.evaluate(() => openPay()); await p.waitForTimeout(300);
+  await p.fill('#fPhone', '+48 512 345 678');
+  posts = []; apiStatus = 500;
+  await p.click('#sendBtn'); await p.waitForTimeout(800);
+  must(!(await p.locator('#payBody .done').count()), 'успіх показано при 500');
+  apiStatus = 200;
+  await p.click('#sendBtn'); await p.waitForTimeout(800);
+  must(await p.locator('#payBody .done').count() && (await p.textContent('#payBody')).includes('OZD-TEST-1'), 'немає успіху з номером при 200');
+  const b = JSON.parse(posts.filter(x => x.path === '/api/orders').at(-1).body);
+  must(b.cart[0].qty >= 10 && b.phone.includes('512'), 'кошик/телефон не в заявці');
 });
 await test('карта проєктів: постер → інтерактивна', '/portfolio', 1440, async p => {
   const m = p.locator('.cmap').first();
