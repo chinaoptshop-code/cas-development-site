@@ -154,36 +154,7 @@ CSS = ('#calc .cg{display:grid;gap:16px;max-width:640px}'
        '#calc .sum b{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h2);color:var(--ac);display:block;line-height:1.1}'
        '#calc .sum p{color:var(--mu);margin:8px 0 0;font-size:var(--fs-small)}#calc .sum #cPlus{color:var(--tx)}')
 
-JS = r'''(function(){var C=__CFG__,$=function(i){return document.getElementById(i)},f=function(n){return casUsd(n)},R=0,P='0',mem={m:'60',s:'10'},unit='m';
-function kind(){return $('cKind').value}
-function rate(r,v){return r==null?C.est:C.frm+' '+f(r)+'/'+v}
-function sync(){var k=kind(),o=$('cKind').options,i,b;
-for(i=0;i<o.length;i++){var q=o[i].value,n=C.k[i];o[i].text=q==='design'?n+' — '+C.frm+' '+f(R?C.p.dz[1]:C.p.plan[0])+'/'+C.m2:n+' — '+rate(C.r[q][R],q==='land'?C.sot:C.m2)}
-$('cDzW').hidden=C.wd.indexOf(k)<0;$('cFurnW').hidden=C.wf.indexOf(k)<0;
-if(k==='design'&&P==='0')P='dz';
-b=$('cDz').querySelectorAll('button');for(i=0;i<b.length;i++){var p=b[i].getAttribute('data-p');b[i].hidden=p==='0'&&k==='design';b[i].setAttribute('aria-pressed',String(p===P));
-var s=b[i].querySelector('small');if(s)s.textContent=C.p[p][R]==null?C.est:f(C.p[p][R])+'/'+C.m2}
-b=$('cReg').querySelectorAll('button');for(i=0;i<b.length;i++)b[i].setAttribute('aria-pressed',String(+b[i].getAttribute('data-r')===R));
-$('cFurnR').textContent=C.frm+' '+f(C.fu[R])+'/'+C.m2;
-var u=k==='land'?'s':'m';if(u!==unit){mem[unit]=$('cArea').value;unit=u;$('cArea').value=mem[u];$('cAreaL').textContent=u==='s'?C.as:C.am}}
-function calc(){sync();var k=kind(),ki=$('cKind').selectedIndex,v=+String($('cArea').value).replace(',','.')||0,
-a=unit==='s'?Math.min(10000,Math.max(0,Math.round(v*10)/10)):Math.min(100000,Math.max(0,Math.round(v))),rows=[],s=0,est=0,notes=[C.nb];
-if(k!=='design')rows.push([C.k[ki],C.r[k][R]==null?null:C.r[k][R]*a]);
-if(C.wd.indexOf(k)>=0&&P!=='0'){var q=C.p[P],pi=C.pk.indexOf(P);rows.push([C.pn[pi],q[R]==null?null:Math.max(q[R]*a,q[2+R])]);if(q[R]!=null)notes.push(C.nm.replace('{m}',f(q[2+R])))}
-if(C.wf.indexOf(k)>=0&&$('cFurn').checked)rows.push([C.fn,C.fu[R]*a]);
-rows.forEach(function(x){if(x[1]==null)est=1;else s+=x[1]});
-if(C.rn.indexOf(k)>=0){notes.push(C.nr);notes.push(C.n5)}if(k==='arch')notes.push(C.na);if(R)notes.push(C.ne);
-var t=a?rows.map(function(x){return x[0]+': '+(x[1]==null?C.est:f(x[1]))}).join(' · '):'',st=!a?'—':s?f(s):C.est;
-$('cSumL').hidden=!(a&&s);$('cSum').textContent=st;$('cPlus').hidden=!(a&&s&&est);$('cRows').textContent=t;$('cNote').textContent=notes.join(' ');
-return{a:a,t:t,s:st,ok:!!(a&&s),k:k,ki:ki}}
-$('cReg').addEventListener('click',function(e){var b=e.target.closest('button');if(b){R=+b.getAttribute('data-r');calc()}});
-$('cDz').addEventListener('click',function(e){var b=e.target.closest('button');if(b){P=b.getAttribute('data-p');calc()}});
-['cKind','cArea','cFurn'].forEach(function(i){$(i).addEventListener('input',calc);$(i).addEventListener('change',calc)});
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',calc);else calc();
-$('cSend').addEventListener('click',function(){var c=calc(),ar=$('oArea'),m=$('oMsg'),fo=$('of'),rg=R?C.eu:C.ua,svc=C.k[c.ki]+' · '+rg;
-if(ar&&c.a)ar.value=unit==='s'?Math.round(c.a*100):c.a;
-if(fo)fo.setAttribute('data-service',C.sv+': '+svc);
-if(m&&(!m.value||m.value.indexOf(C.msg)===0))m.value=C.msg+' ('+rg+(unit==='s'?', '+c.a+' '+C.ss:'')+'): '+c.t+(c.ok?' = '+C.frm+' '+c.s+($('cPlus').hidden?'':' '+C.pl):'')})})();'''
+JS_SRC = '/assets/calc.v1.js'  # логіка — окремий файл (бюджет HTML лендингів); ?v= ставить chrome.versions (SHARED)
 
 
 def block(lang):
@@ -194,7 +165,7 @@ def block(lang):
                nb=t['n_base'], nr=t['n_rem'], n5=t['n_5'], na=t['n_arch'], nm=t['n_min'], ne=t['n_eu'], ua=t['ua'], eu=t['eu'],
                msg=t['msg'], sv=t['svc'], pl=t['plus'])
     cfg['as'] = cfg.pop('as_')
-    js = JS.replace('__CFG__', json.dumps(cfg, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/'))
+    js = json.dumps(cfg, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     # без JS — підписи з українськими ставками (JS одразу перемальовує під регіон)
     opts = ''.join(f'<option value="{k}">{n} — ' + (f'{t["frm"]} {usd(PKG["plan"][0])}/{t["m2"]}' if k == 'design' else
                    f'{t["frm"]} {usd(RATE[k][0])}/{t["sot"] if k == "land" else t["m2"]}') + '</option>'
@@ -214,5 +185,5 @@ def block(lang):
     <div class="sum" aria-live="polite"><span id="cSumL">{t["res"]}</span><b id="cSum">—</b><p id="cPlus" hidden>{t["plus"]}</p><p id="cRows"></p><p id="cNote">{t["n_base"]}</p></div>
     <p><a class="btn main" id="cSend" href="#zayavka">{t["send"]}</a></p>
   </div>
-<script>{js}</script>
+<script type="application/json" id="cCfg">{js}</script><script src="{JS_SRC}" defer></script>
 </div></section>'''
