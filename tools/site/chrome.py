@@ -210,7 +210,7 @@ T = {
                            ('/remont-i-budivnytstvo-yevropa', 'Ремонт і будівництво в Європі')]),
         ]),
     'ru': dict(
-        nav=[('/ru/uslugi', 'Услуги'), ('/portfolio', 'Портфолио'), ('/ozdoba', 'Оздоба'), ('/ru/blog', 'Блог'),
+        nav=[('/ru/uslugi', 'Услуги'), ('/ru/portfolio', 'Портфолио'), ('/ozdoba', 'Оздоба'), ('/ru/blog', 'Блог'),
              ('/ru/o-nas', 'О студии'), ('/ru/kontakty', 'Контакты')],
         nav_label='Главное меню', menu='Меню', skip='Перейти к содержанию', menu_open='Открыть меню', menu_close='Закрыть меню', lang_label='Язык сайта',
         cta='Заявка', cta_href='/ru/#zayavka', home_label='CAS Development — на главную', kab='Кабинет', kab_full='Кабинет клиента',
@@ -287,6 +287,9 @@ def current(lang, path, href):
     if href == path:
         return True
     sect = {'/portfolio': ('/proekty/',), '/ozdoba': ('/ozdoba/',)}
+    m = re.fullmatch(r'(/[a-z]{2})/portfolio', href)  # портфоліо мови: її сторінки проєктів /en/proekty/…
+    if m:
+        sect[href] = (m.group(1) + '/proekty/',)
     if re.fullmatch(r'(?:/[a-z]{2})?/blog', href):  # блог будь-якою мовою: /blog, /ru/blog, /en/blog …
         sect[href] = (href + '/',)
     return path.startswith(sect.get(href, ('\0',)))
@@ -712,6 +715,26 @@ def has_marks(s):
     return ''.join(out)
 
 
+CASE_A = re.compile(r'<a\b[^>]*\shref="/(proekty/[\w-]+|portfolio)(#[^"]*)?"[^>]*>')
+
+
+def local_cases(s, lang):
+    """Посилання на /proekty/<slug> і /portfolio зі сторінки іншої мови → переклад цієї мови, якщо він є
+    (tools/site/caselang.py); hreflang="uk" при цьому знімаємо. uk-сторінки й мови без перекладу — без змін."""
+    pre = i18n.meta(lang)['prefix']
+    if lang == 'uk' or not pre:
+        return s
+
+    def one(m):
+        tag, p = m.group(0), m.group(1)
+        if not i18n.exists('/' + pre + p):
+            return tag
+        tag = tag.replace(f'href="/{p}', f'href="/{pre}{p}', 1)
+        return tag.replace(' hreflang="uk"', '')
+    i = s.find('<body')
+    return s if i < 0 else s[:i] + CASE_A.sub(one, s[i:])
+
+
 def apply(s, rel):
     """Ставить єдину шапку/футер у HTML сторінки `rel` (шлях від кореня сайту). Ідемпотентно."""
     s = _HM_RM.sub('', s)  # маркери :has() — заново після ux.apply (генератори шукають точні рядки розмітки)
@@ -803,6 +826,7 @@ def apply(s, rel):
     s = versions(s)
     s = fonts_block(s)
     s = nbsp_prices(s, lang)
+    s = local_cases(s, lang)
     if i18n.meta(lang).get('dir') == 'rtl':  # RTL: стрілка «далі» дивиться вліво (→ у тексті посилань — назад)
         i = s.find('<body')
         if i >= 0:

@@ -15,12 +15,6 @@
   "img": "img/p/1ZRiEBBWt3pzrB-1400.webp",
   "srcset": "/img/p/1ZRiEBBWt3pzrB-400.webp 400w, /img/p/1ZRiEBBWt3pzrB-900.webp 900w, /img/p/1ZRiEBBWt3pzrB-1400.webp 1400w",
   "sizes": "100vw",
-  "m": {
-   "srcset": "/img/p/1ZRiEBBWt3pzrB-m-800.webp 800w, /img/p/1ZRiEBBWt3pzrB-m-1200.webp 1200w, /img/p/1ZRiEBBWt3pzrB-m-1400.webp 1400w, /img/p/1ZRiEBBWt3pzrB-m-1600.webp 1600w",
-   "w": 1600,
-   "h": 800,
-   "sizes": "100vw"
-  },
   "alt": "Портфоліо CAS Development: реалізовані інтерʼєри в Києві"
  },
  "facts": false,

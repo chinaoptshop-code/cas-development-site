@@ -237,12 +237,14 @@ def project(x):
     return wrap(x, o, 'xs-proj')
 
 
-def pmap(x):
+def pmap(x, lang='uk'):
     import casmap
-    return casmap.projects_html().replace('<section class="pmap"', '<section class="pmap xs-pmap"', 1) + '\n'
+    return casmap.projects_html(lang).replace('<section class="pmap"', '<section class="pmap xs-pmap"', 1) + '\n'
 
 
 def render(lang, x):
+    if x['t'] == 'pmap':
+        return [pmap(x, lang)]
     return [globals()[x['t']](x)]
 
 

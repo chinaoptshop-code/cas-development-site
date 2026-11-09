@@ -84,23 +84,47 @@ def office_html(lang, h2=None):
             + office_map(lang, '(max-width:1180px) 100vw, 1100px') + '</div></section>\n')
 
 
-def projects_html():
+# «Карта проєктів» мовами (портфоліо uk/ru/en): тексти блоку, статус і місця — ті самі факти, що й uk
+PM = {
+    'uk': dict(lbl='Географія', h2='Карта проєктів', sub='Київ, Київщина, Карпати, Бодрум, Дубай і США.', more='Сторінка проєкту →',
+               alt='Карта проєктів CAS Development: Київ і Київщина, Карпати, Бодрум (Туреччина), Дубай (ОАЕ), США', list='Проєкти на карті',
+               fly='Показати на карті', note='На карті — центр міста або регіону, без адрес приватних обʼєктів.', ok='Реалізовано', dp='Дизайн-проєкт'),
+    'ru': dict(lbl='География', h2='Карта проектов', sub='Киев, Киевщина, Карпаты, Бодрум, Дубай и США.', more='Страница проекта →',
+               alt='Карта проектов CAS Development: Киев и Киевщина, Карпаты, Бодрум (Турция), Дубай (ОАЭ), США', list='Проекты на карте',
+               fly='Показать на карте', note='На карте — центр города или региона, без адресов частных объектов.', ok='Реализовано', dp='Дизайн-проект'),
+    'en': dict(lbl='Geography', h2='Project map', sub='Kyiv, the Kyiv region, the Carpathians, Bodrum, Dubai and the USA.', more='Project page →',
+               alt='CAS Development project map: Kyiv and the Kyiv region, the Carpathians, Bodrum (Turkey), Dubai (UAE), USA', list='Projects on the map',
+               fly='Show on the map', note='The map shows the centre of a city or region, never the address of a private property.', ok='Completed', dp='Design project'),
+}
+PLACE = {
+    'ru': {'Київ': 'Киев', 'ЖК Chicago, Київ': 'ЖК Chicago, Киев', 'Київ, центр': 'Киев, центр', 'Петрівці, Київська обл.': 'Петровцы, Киевская обл.',
+           'Київська обл.': 'Киевская обл.', 'Карпати': 'Карпаты', 'Бодрум, Туреччина': 'Бодрум, Турция', 'Дубай, ОАЕ': 'Дубай, ОАЭ', 'США': 'США'},
+    'en': {'Київ': 'Kyiv', 'ЖК Chicago, Київ': 'Chicago residential complex, Kyiv', 'Київ, центр': 'Kyiv, city centre', 'Петрівці, Київська обл.': 'Petrivtsi, Kyiv region',
+           'Київська обл.': 'Kyiv region', 'Карпати': 'Carpathians', 'Бодрум, Туреччина': 'Bodrum, Turkey', 'Дубай, ОАЕ': 'Dubai, UAE', 'США': 'USA'},
+}
+
+
+def projects_html(lang='uk'):
+    t = PM.get(lang, PM['uk'])
+    pre = '' if lang == 'uk' else '/' + lang
     li = []
     for slug, name, place, (lng, lat), z, img in PROJECTS:
         ok = slug in REALIZED
-        st = 'Реалізовано' if ok else 'Дизайн-проєкт'
-        li.append(f'<li><a href="/proekty/{slug}" data-ll="{lng},{lat}" data-z="{z}" data-img="{img}" data-st="{st}" data-place="{e(place)}"'
+        st = t['ok'] if ok else t['dp']
+        place = PLACE.get(lang, {}).get(place, place)
+        href = f'{pre}/proekty/{slug}' if os.path.exists(os.path.join(ROOT, pre.lstrip('/'), 'proekty', slug + '.html')) else f'/proekty/{slug}'
+        li.append(f'<li><a href="{href}" data-ll="{lng},{lat}" data-z="{z}" data-img="{img}" data-st="{st}" data-place="{e(place)}"'
                   + (' data-ok' if ok else '') + f'><b>{e(name)}</b><span>{e(place)} · {st}</span></a>'
-                  f'<button type="button" class="cmap-fly" hidden aria-label="Показати на карті: {e(name)}">{PIN}</button></li>')
-    return ('<section class="pmap" id="karta" aria-labelledby="pmap-h"><div class="lbl">Географія</div>'
-            '<h2 class="pmap-h" id="pmap-h">Карта проєктів</h2>'
-            '<p class="pmap-sub">Київ, Київщина, Карпати, Бодрум, Дубай і США.</p>'  # без інструкції «натисніть на точку…» (08.11.2026, менше тексту)
-            '<div class="pmap-grid"><div class="cmap" data-cas-map="projects" data-load="visible" data-lang="uk" data-list="pmap-list" data-more="Сторінка проєкту →">'
+                  f'<button type="button" class="cmap-fly" hidden aria-label="{t["fly"]}: {e(name)}">{PIN}</button></li>')
+    return (f'<section class="pmap" id="karta" aria-labelledby="pmap-h"><div class="lbl">{t["lbl"]}</div>'
+            f'<h2 class="pmap-h" id="pmap-h">{t["h2"]}</h2>'
+            f'<p class="pmap-sub">{e(t["sub"])}</p>'  # без інструкції «натисніть на точку…» (08.11.2026, менше тексту)
+            f'<div class="pmap-grid"><div class="cmap" data-cas-map="projects" data-load="visible" data-lang="{lang}" data-list="pmap-list" data-more="{e(t["more"])}">'
             '<picture><source media="(max-width:899px)" srcset="/img/map/projects-sq.webp" width="800" height="800">'
             '<img class="cmap-poster" src="/img/map/projects-1280.webp" width="1280" height="800" loading="lazy" decoding="async" '
-            'alt="Карта проєктів CAS Development: Київ і Київщина, Карпати, Бодрум (Туреччина), Дубай (ОАЕ), США"></picture></div>'
-            '<ul class="cmap-list" id="pmap-list" aria-label="Проєкти на карті">' + ''.join(li) + '</ul></div>'
-            '<p class="pmap-note">На карті — центр міста або регіону, без адрес приватних обʼєктів.</p></section>')
+            f'alt="{e(t["alt"])}"></picture></div>'
+            f'<ul class="cmap-list" id="pmap-list" aria-label="{t["list"]}">' + ''.join(li) + '</ul></div>'
+            f'<p class="pmap-note">{e(t["note"])}</p></section>')
 
 
 CSS = '<link rel="stylesheet" href="/assets/cas-map.v1.css">'

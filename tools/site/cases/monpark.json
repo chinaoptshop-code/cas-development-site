@@ -213,12 +213,12 @@
   "rel_h2": "Ещё о проекте",
   "rel": [
    [
-    "/proekty/monpark",
-    "Monpark — страница проекта (укр.)"
+    "/ru/proekty/monpark",
+    "Monpark — страница проекта"
    ],
    [
-    "/portfolio",
-    "Всё портфолио (укр.)"
+    "/ru/portfolio",
+    "Всё портфолио"
    ],
    [
     "/ru/remont-restorana-kafe-kiev",
@@ -233,11 +233,11 @@
     "Главная"
    ],
    [
-    "/portfolio",
+    "/ru/portfolio",
     "Портфолио"
    ],
    [
-    "/proekty/monpark",
+    "/ru/proekty/monpark",
     "Monpark"
    ]
   ],
