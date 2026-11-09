@@ -36,10 +36,16 @@ const SCENES = [
         for (let k = 0; k < n + 2; k++) { await p.locator(sel + ' .la-prev').click({ force: true }).catch(() => {}); await p.waitForTimeout(60); }
         await p.waitForTimeout(900);
         for (let i = 0; i < n; i++) { if (i) { await p.locator(sel + ' .la-next').click({ force: true }).catch(() => {}); await p.waitForTimeout(900); } await shot(i + 1); }
-      } else {            // Комплекс: план + кожен об'єкт списку
+      } else {            // Комплекс: план + по одному об'єкту кожного типу (g.rp-o[data-o]) на останньому етапі (кнопка › у .rp-nav)
         await shot(0);
-        const items = p.locator(sel + ' .rp-list button'); n = await items.count();
-        for (let i = 0; i < n; i++) { await items.nth(i).click({ force: true }).catch(() => {}); await p.waitForTimeout(900); await shot(i + 1); await p.locator(sel + ' .rp-back').click({ force: true }).catch(() => {}); await p.waitForTimeout(500); }
+        const ks = await p.$$eval(sel + ' .rp-o', gs => { const seen = {}; return gs.filter(g => !seen[g.dataset.o] && (seen[g.dataset.o] = 1)).map(g => g.dataset.k); });
+        n = ks.length;
+        for (let i = 0; i < n; i++) {
+          await p.locator(sel + ` .rp-o[data-k="${ks[i]}"]`).dispatchEvent('click').catch(() => {}); await p.waitForTimeout(300);
+          for (let k = 0; k < 6; k++) { await p.locator(sel + ' .rp-nav button').last().click({ force: true }).catch(() => {}); await p.waitForTimeout(60); }
+          await p.waitForTimeout(900); await shot(i + 1);
+          await p.locator(sel + ' .rp-back').click({ force: true }).catch(() => {}); await p.waitForTimeout(500);
+        }
       }
       console.log(name, w, 'етапів', n);
       await ctx.close();

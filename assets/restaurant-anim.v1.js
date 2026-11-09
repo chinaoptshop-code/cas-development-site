@@ -38,14 +38,19 @@
     for (var i = 0; i < n; i++) o += '<circle r="2.2" class="' + c + '"><animateMotion dur="' + dur + 's" begin="' + (i * dur / n).toFixed(2) + 's" repeatCount="indefinite" path="' + p + '"/></circle>';
     return RM ? '' : '<g>' + o + '</g>';
   }
-  function person(c, x, y, z) { // гість: тулуб і голова
-    var a = P(x, y, z), b = P(x, y, z + 1.0), h = P(x, y, z + 1.32);
-    return '<g class="rs-man ' + c + '"><line x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '"/><circle cx="' + h[0] + '" cy="' + h[1] + '" r="2.6"/></g>';
+  function sg(c, a) { var o = ''; for (var i = 0; i < a.length; i += 6) o += 'M' + P(a[i], a[i + 1], a[i + 2]).join(',') + 'L' + P(a[i + 3], a[i + 4], a[i + 5]).join(','); return '<path class="' + c + '" d="' + o + '"/>'; }
+  function sil(c, x, y, z, st, an) { // нейтральний силует (без облич): сидить або стоїть
+    return '<g class="rs-sil ' + c + '" transform="translate(' + P(x, y, z).join(',') + ')">' + (an || '') + '<path d="' + (st ? 'M-2 0L-2.4-8-3.4-9-3.6-15Q-3.4-17.4 0-17.5 3.4-17.4 3.6-15L3.4-9 2.4-8 2 0Z' : 'M-3.2 0L-3.5-7Q-3.4-9.6 0-9.7 3.4-9.6 3.5-7L3.2 0Z') + '"/><circle cy="' + (st ? -20 : -12.2) + '" r="2.4"/></g>';
   }
+  function chair(x0, x1, y0, y1, b0, b1) { // сидіння, чотири ніжки, спинка
+    var a = [], e = 0.05; [x0 + e, x1 - e].forEach(function (x) { [y0 + e, y1 - e].forEach(function (y) { a.push(x, y, 0, x, y, 0.42); }); });
+    return sg('rs-cleg', a) + box('rs-chair', x0, x1, y0, y1, 0.4, 0.47) + box('rs-chb', x0, x1, b0, b1, 0.47, 0.95);
+  }
+  function cone(c, x, y, z, w, h) { var q = P(x, y, z), a = +q[0], b = +q[1]; return '<polygon class="' + c + '" points="' + (a - w) + ',' + b + ' ' + a + ',' + (b - h) + ' ' + (a + w) + ',' + b + '"/><polygon class="' + c + ' b" points="' + a + ',' + (b - h) + ' ' + (a + w) + ',' + b + ' ' + a + ',' + (b + 1) + '"/>'; }
 
   function build() {
     var A = cfg.a; Wd = Math.sqrt(A * 1.5); Dp = A / Wd;
-    L = { ground: [], slab: [], under: [], floor: [], back: [], fin: [], duct: [], furn: [], front: [], terr: [], ppl: [], sky: [], glow: [] };
+    L = { ground: [], slab: [], under: [], floor: [], ao: [], back: [], fin: [], duct: [], furn: [], front: [], terr: [], ppl: [], sky: [], glow: [] };
     var i, j, t, n, x, y;
     var kx0 = Wd * 0.56, kx1 = Wd - 0.15, ky1 = Dp * 0.4; // кухня: задній правий кут
     var bx = 1.7, by0 = Dp * 0.14, by1 = Dp * 0.5;        // бар: уздовж лівої задньої стіни
@@ -63,7 +68,11 @@
     add('slab', box('rs-slab', 0, Wd, 0, Dp, -0.3, 0), 1, 0.02);
     add('slab', poly('rs-conc', rect(0, Wd, 0, Dp, 0)), 1, 0.03); // фактура бетону — ненавʼязливо
     var cols = []; for (x = 6; x < Wd - 2; x += 6) for (y = 6; y < Dp - 2; y += 6) cols.push([x, y]);
-    cols.forEach(function (c, k) { add('furn', box('rs-col', c[0] - 0.2, c[0] + 0.2, c[1] - 0.2, c[1] + 0.2, 0, H), 1, 0.1 + 0.2 * k / Math.max(1, cols.length), null, null, c[0] + c[1]); });
+    cols.forEach(function (c, k) {
+      var a = c[0], b = c[1], o = 0.1 + 0.2 * k / Math.max(1, cols.length);
+      add('furn', box('rs-col', a - 0.2, a + 0.2, b - 0.2, b + 0.2, 0, H) + wx('rs-cc2', a + 0.2, b - 0.2, b + 0.2, 0, H) + wy('rs-cc2', b + 0.2, a - 0.2, a + 0.2, 0, H) + box('rs-col', a - 0.27, a + 0.27, b - 0.27, b + 0.27, 0, 0.14) + box('rs-col', a - 0.26, a + 0.26, b - 0.26, b + 0.26, H - 0.18, H) + line('rs-hl', [a + 0.2, b + 0.2, 0.14, a + 0.2, b + 0.2, H - 0.18]), 1, o, null, null, a + b);
+      add('ao', poly('rs-sh', [a - 0.2, b + 0.2, 0.05, a + 0.2, b - 0.2, 0.05, a + 1.9, b + 0.5, 0.05, a + 1.5, b + 0.9, 0.05]) + circ('rs-ao', a, b, 0.05, 0.6), 1, o);
+    });
     var C = 7, ch = H / C;
     for (i = 0; i < C; i++) {
       var z0 = i * ch, z1 = z0 + ch, o = 0.15 + 0.75 * i / C;
@@ -79,7 +88,10 @@
     for (y = Dp; y > 0.1; y -= 2.5) gl.push(['x', Math.max(0, y - 2.5), y]);
     gl.forEach(function (g, k) {
       var h = g[0] === 'y' ? wy('rs-glass', Dp, g[1], g[2], 0.6, H - 0.55) + line('rs-mul', [g[2], Dp, 0.6, g[2], Dp, H - 0.55]) : wx('rs-glass r', Wd, g[1], g[2], 0.6, H - 0.55) + line('rs-mul', [Wd, g[1], 0.6, Wd, g[1], H - 0.55]);
+      var a = g[1], w = g[2] - a, Y = g[0] === 'y', fp = function (c, f) { var o = []; f.forEach(function (v, j) { var u = a + w * v; o.push(Y ? u : Wd + 0.02, Y ? Dp + 0.02 : g[2] + a - u, j < 2 ? 0.75 : H - 0.7); }); return poly(c, o); };
+      h += fp('rs-ref', [0.12, 0.3, 0.6, 0.42]) + fp('rs-ref t', [0.5, 0.56, 0.86, 0.8]);
       add('front', h, 2, 0.15 + 0.6 * k / gl.length);
+      if (k % 2) add('glow', circ('rs-glow a o', Y ? a + w / 2 : Wd + 1, Y ? Dp + 0.9 : a + w / 2, 0.02, 1.1), DUSK, 0.45);
     });
     add('front', wy('rs-glass dr', Dp, door[0], door[1], 0, H - 0.55) + line('rs-mul', [(door[0] + door[1]) / 2, Dp, 0, (door[0] + door[1]) / 2, Dp, H - 0.55]), 2, 0.78);
     add('front', wy('rs-band', Dp, 0, Wd, H - 0.55, H) + wx('rs-band r', Wd, 0, Dp, H - 0.55, H), 2, 0.85);
@@ -118,26 +130,47 @@
     tiles.forEach(function (q, k) { add('floor', poly('rs-tile t' + (((q[0] / tl) + (q[2] / tl)) & 1), rect(q[0], q[1], q[2], q[3], 0.04)), 6, 0.05 + 0.4 * k / tiles.length); });
     for (y = 0, n = 0; y < Dp - 0.01; y += 0.8, n++) {
       var y1 = Math.min(Dp, y + 0.8), xe = y < ky1 + 0.6 ? kx0 - 0.6 : Wd;
-      add('floor', poly('rs-plank p' + (n % 3), rect(0, xe, y, y1, 0.04)), 6, 0.45 + 0.5 * y / Dp);
+      var jt = []; for (x = 0.5 + (n % 3) * 0.6; x < xe - 0.2; x += 1.8) jt.push(x, y, 0.04, x, y1, 0.04);
+      add('floor', poly('rs-plank p' + (n % 3), rect(0, xe, y, y1, 0.04)) + sg('rs-jt', jt), 6, 0.45 + 0.5 * y / Dp);
     }
+    add('floor', poly('rs-grain', rect(0, Wd, ky1 + 0.6, Dp, 0.045)) + poly('rs-grain', rect(0, kx0 - 0.6, 0, ky1 + 0.6, 0.045)), 6, 0.97);
     // 7 стіни й стеля залу: оздоблення панелями, рейкова стеля над залом
     for (x = 0; x < Wd - 0.01; x += 3) add('fin', wy('rs-fin', 0.02, x, Math.min(Wd, x + 3), 0, H), 7, 0.05 + 0.3 * x / Wd);
     for (y = 0; y < Dp - 0.01; y += 3) add('fin', wx('rs-fin l', 0.02, y, Math.min(Dp, y + 3), 0, H), 7, 0.05 + 0.3 * y / Dp);
     add('fin', wy('rs-mold', 0.03, 0, Wd, 0.9, 1.0) + wx('rs-mold', 0.03, 0, Dp, 0.9, 1.0), 7, 0.4);
     for (x = 1, n = 0; x < Wd - 1; x += 0.9, n++) add('front', line('rs-slat', [x, ky1 + 1, 3.95, x, Dp - 0.8, 3.95]), 7, 0.45 + 0.5 * x / Wd);
     // 8 бар: стійка, стільниця, полиці з пляшками одна за одною, стільці
-    add('furn', box('rs-bar', bx, bx + 0.7, by0, by1, 0, 1.05) + box('rs-bartop', bx - 0.1, bx + 0.9, by0 - 0.1, by1 + 0.1, 1.05, 1.12), 8, 0.1, null, null, bx + by0);
+    var bg = ''; for (y = by0 + 0.3; y < by1 - 0.2; y += 0.55) bg += dot('rs-cup', bx + 0.55, y, 1.15, 1.1) + line('rs-tap', [bx + 0.15, y + 0.2, 1.12, bx + 0.15, y + 0.2, 1.42, bx + 0.3, y + 0.2, 1.42]);
+    add('furn', box('rs-bar', bx, bx + 0.7, by0, by1, 0, 1.05) + wx('rs-wd', bx + 0.7, by0, by1, 0, 1.05) + wy('rs-wd', by1, bx, bx + 0.7, 0, 1.05) + line('rs-brass', [bx + 0.8, by0, 0.22, bx + 0.8, by1, 0.22]) + box('rs-bartop', bx - 0.1, bx + 0.9, by0 - 0.1, by1 + 0.1, 1.05, 1.12) + bg, 8, 0.1, null, null, bx + by0);
+    add('ao', poly('rs-sh', rect(bx - 0.2, bx + 1.1, by0 - 0.2, by1 + 0.3, 0.05)) + poly('rs-sh', rect(0.02, 0.8, by0 - 0.1, by1 + 0.1, 0.05)), 8, 0.1);
+    add('fin', wx('rs-blit', 0.04, by0, by1, 1.3, 3.05), 8, 0.18);
+    for (y = by0 + 0.5; y < by1; y += (by1 - by0 - 0.6) / 2) { add('front', line('rs-pend', [bx + 0.35, y, 3.95, bx + 0.35, y, 2.25]) + circ('rs-shade', bx + 0.35, y, 2.25, 0.16), 8, 0.85); add('glow', circ('rs-glow b2', bx + 0.35, y, 1.9, 1.1), DUSK, 0.42); }
     add('furn', box('rs-barb', 0.05, 0.65, by0, by1, 0, 0.9), 8, 0.05, null, null, 0.2 + by0);
     for (i = 0; i < 3; i++) add('fin', line('rs-shelf', [0.06, by0, 1.5 + i * 0.5, 0.06, by1, 1.5 + i * 0.5]), 8, 0.2 + i * 0.05);
     var bot = '', bn = 0;
-    for (i = 0; i < 3; i++) for (y = by0 + 0.15; y < by1 - 0.1; y += 0.22) { var q0 = P(0.08, y, 1.52 + i * 0.5), q1 = P(0.08, y, 1.78 + i * 0.5); add('fin', '<line class="rs-btl b' + (bn % 4) + '" x1="' + q0[0] + '" y1="' + q0[1] + '" x2="' + q1[0] + '" y2="' + q1[1] + '"/>', 8, 0.3 + 0.4 * (bn++) / (3 * (by1 - by0) / 0.22)); }
+    for (i = 0; i < 3; i++) for (y = by0 + 0.15; y < by1 - 0.1; y += 0.22) { var q0 = P(0.08, y, 1.52 + i * 0.5), q1 = P(0.08, y, 1.78 + i * 0.5); var q2 = P(0.08, y, 1.9 + i * 0.5 - (bn % 3) * 0.05); add('fin', '<line class="rs-btl b' + (bn % 4) + '" x1="' + q0[0] + '" y1="' + q0[1] + '" x2="' + q1[0] + '" y2="' + q1[1] + '"/><line class="rs-btl nk b' + (bn % 4) + '" x1="' + q1[0] + '" y1="' + q1[1] + '" x2="' + q2[0] + '" y2="' + q2[1] + '"/>', 8, 0.3 + 0.4 * (bn++) / (3 * (by1 - by0) / 0.22)); }
     for (y = by0 + 0.4; y < by1 - 0.2; y += 0.75) add('furn', line('rs-leg', [bx + 1.3, y, 0, bx + 1.3, y, 0.75]) + circ('rs-stool', bx + 1.3, y, 0.78, 0.22), 8, 0.75 + 0.2 * (y - by0) / (by1 - by0), null, null, bx + 1.3 + y);
     // 9 відкрита кухня: лінія обладнання, острів, роздача, зонт; пара над плитами
     var eq = ['fr', 'st', 'st', 'ov', 'sk', 'fr'], ew = (kx1 - kx0 - 0.2) / eq.length;
-    eq.forEach(function (e2, k) { var x0 = kx0 + 0.1 + k * ew, hz = e2 === 'fr' ? 2.1 : 0.9; add('furn', box('rs-eq ' + e2, x0 + 0.04, x0 + ew - 0.04, 0.1, 0.85, 0, hz), 9, 0.05 + 0.35 * k / eq.length, null, null, x0 + 0.5); });
-    add('furn', box('rs-hood', hx0, hx1, 0.1, 1.3, 2.4, 2.85), 9, 0.45, null, null, sx + 0.6);
-    add('furn', box('rs-isl', kx0 + 1, kx1 - 1, ky1 * 0.45, ky1 * 0.45 + 0.9, 0, 0.92), 9, 0.55, null, null, kx0 + ky1 * 0.45 + 1);
-    add('furn', box('rs-pass', kx0 - 0.6, kx1, ky1, ky1 + 0.6, 0, 1.1) + line('rs-lamp', [kx0, ky1 + 0.3, 1.7, kx1 - 0.4, ky1 + 0.3, 1.7]), 9, 0.7, null, null, kx0 + ky1 + 0.3);
+    eq.forEach(function (e2, k) {
+      var x0 = kx0 + 0.1 + k * ew, x1 = x0 + ew, xm = x0 + ew / 2, hz = e2 === 'fr' ? 2.1 : 0.9, dt = '';
+      if (e2 === 'st') { [0.28, 0.72].forEach(function (u) { [0.32, 0.64].forEach(function (v) { dt += circ('rs-burn', x0 + ew * u, v, hz + 0.01, 0.13); }); }); dt += box('rs-pan', x0 + ew * 0.58, x0 + ew * 0.86, 0.48, 0.78, hz, hz + 0.22) + sg('rs-hdl', [x0 + 0.2, 0.86, 0.75, x0 + ew - 0.2, 0.86, 0.75]); }
+      if (e2 === 'ov') dt = wy('rs-ovw', 0.86, x0 + 0.2, x1 - 0.2, 0.18, 0.62) + sg('rs-hdl', [x0 + 0.2, 0.86, 0.7, x1 - 0.2, 0.86, 0.7]);
+      if (e2 === 'sk') dt = poly('rs-basin', rect(x0 + 0.18, xm - 0.05, 0.25, 0.72, hz + 0.01)) + poly('rs-basin', rect(xm + 0.05, x1 - 0.18, 0.25, 0.72, hz + 0.01)) + line('rs-tap', [xm, 0.15, hz, xm, 0.15, hz + 0.4, xm, 0.4, hz + 0.4]);
+      if (e2 === 'fr') dt = sg('rs-hdl', [xm, 0.86, 0.05, xm, 0.86, 2.05, xm - 0.1, 0.86, 1.1, xm - 0.1, 0.86, 1.6, xm + 0.1, 0.86, 1.1, xm + 0.1, 0.86, 1.6]);
+      add('furn', box('rs-eq ' + e2, x0 + 0.04, x1 - 0.04, 0.1, 0.85, 0, hz) + dt, 9, 0.05 + 0.35 * k / eq.length, null, null, x0 + 0.5);
+    });
+    add('ao', poly('rs-sh', rect(kx0, kx1, 0.05, 1.05, 0.05)) + poly('rs-sh', rect(kx0 + 0.9, kx1 - 0.9, ky1 * 0.45 - 0.1, ky1 * 0.45 + 1.1, 0.05)), 9, 0.05);
+    var rk = '', r0 = kx1 - 0.75, r1 = kx1 - 0.2, ry0 = ky1 * 0.45, ry1 = ry0 + 0.9, pp = [];
+    [r0, r1].forEach(function (x) { [ry0, ry1].forEach(function (y) { pp.push(x, y, 0, x, y, 1.9); }); });
+    [0.3, 0.9, 1.5, 1.9].forEach(function (z, k) { rk += poly('rs-rsh', rect(r0, r1, ry0, ry1, z)); if (k < 3) for (y = ry0 + 0.1; y < ry1 - 0.2; y += 0.32) rk += box('rs-ctn c' + ((k + y * 3 | 0) % 3), r0 + 0.08, r1 - 0.12, y, y + 0.24, z, z + 0.24); });
+    add('furn', sg('rs-rack', pp) + rk, 9, 0.62, null, null, r0 + ry0 + 0.6);
+    var fl = []; for (x = hx0 + 0.25; x < hx1 - 0.1; x += 0.45) fl.push(x, 1.3, 2.45, x, 1.3, 2.8);
+    add('furn', box('rs-hood', hx0, hx1, 0.1, 1.3, 2.4, 2.85) + sg('rs-hdl', fl), 9, 0.45, null, null, sx + 0.6);
+    var ip = ''; for (x = kx0 + 1.5; x < kx1 - 1.4; x += 1.1) ip += poly('rs-board b0', rect(x - 0.25, x + 0.2, ky1 * 0.45 + 0.2, ky1 * 0.45 + 0.55, 0.93)) + circ('rs-plate', x + 0.45, ky1 * 0.45 + 0.6, 0.93, 0.14);
+    add('furn', box('rs-isl', kx0 + 1, kx1 - 1, ky1 * 0.45, ky1 * 0.45 + 0.9, 0, 0.92) + ip, 9, 0.55, null, null, kx0 + ky1 * 0.45 + 1);
+    var pl = ''; for (x = kx0; x < kx1 - 0.5; x += 0.8) pl += circ('rs-plate', x, ky1 + 0.3, 1.11, 0.16);
+    add('furn', box('rs-pass', kx0 - 0.6, kx1, ky1, ky1 + 0.6, 0, 1.1) + pl + line('rs-lamp', [kx0, ky1 + 0.3, 1.7, kx1 - 0.4, ky1 + 0.3, 1.7]), 9, 0.7, null, null, kx0 + ky1 + 0.3);
     var steam = ''; for (i = 1; i < 3; i++) { var sxx = kx0 + 0.1 + (i + 0.5) * ew; steam += dot('rs-steam', sxx, 0.5, 1.1, 3) + '<circle class="rs-steam d" cx="' + P(sxx, 0.5, 1.1)[0] + '" cy="' + P(sxx, 0.5, 1.1)[1] + '" r="2.4"/>'; }
     add('furn', '<g>' + steam + '</g>', 9, 0.4, null, null, 1);
     // 10 меблі залу: столи з двома-чотирма стільцями, банкетка вздовж стіни
@@ -145,42 +178,58 @@
     for (x = bx + 3; x < Wd - 1.3; x += 2.7) for (y = 1.6; y < Dp - 1.4; y += 2.6) { if (x > kx0 - 1.6 && y < ky1 + 1.6) continue; if (Math.abs(y - sy) < 0.01) continue; tabs.push([x, y]); }
     tabs.forEach(function (q, k) {
       var x0 = q[0], y0 = q[1], o = 0.05 + 0.9 * k / tabs.length, dep = x0 + y0;
-      add('furn', box('rs-chair', x0 - 0.25, x0 + 0.25, y0 - 1.0, y0 - 0.55, 0, 0.45) + box('rs-chb', x0 - 0.25, x0 + 0.25, y0 - 1.05, y0 - 0.95, 0.45, 0.95), 10, o, null, null, dep - 0.8);
-      add('furn', line('rs-leg', [x0, y0, 0, x0, y0, 0.72]) + box('rs-tab', x0 - 0.45, x0 + 0.45, y0 - 0.45, y0 + 0.45, 0.72, 0.78), 10, o + 0.01, null, null, dep);
-      add('furn', box('rs-chair', x0 - 0.25, x0 + 0.25, y0 + 0.55, y0 + 1.0, 0, 0.45) + box('rs-chb', x0 - 0.25, x0 + 0.25, y0 + 0.95, y0 + 1.05, 0.45, 0.95), 10, o + 0.02, null, null, dep + 0.8);
+      add('furn', chair(x0 - 0.25, x0 + 0.25, y0 - 1.0, y0 - 0.55, y0 - 1.05, y0 - 0.95), 10, o, null, null, dep - 0.8);
+      add('furn', line('rs-leg', [x0, y0, 0, x0, y0, 0.72]) + box('rs-tab', x0 - 0.45, x0 + 0.45, y0 - 0.45, y0 + 0.45, 0.72, 0.78) + box('rs-cloth', x0 - 0.5, x0 + 0.5, y0 - 0.5, y0 + 0.5, 0.6, 0.8)
+        + circ('rs-plate', x0 - 0.1, y0 - 0.26, 0.81, 0.17) + circ('rs-plate', x0 + 0.1, y0 + 0.26, 0.81, 0.17) + dot('rs-cup', x0 + 0.28, y0 - 0.18, 0.86, 1) + dot('rs-cup', x0 - 0.28, y0 + 0.18, 0.86, 1)
+        + line('rs-cnd', [x0, y0, 0.81, x0, y0, 0.95]) + dot('rs-fl', x0, y0, 0.99, 1.1), 10, o + 0.01, null, null, dep);
+      add('furn', chair(x0 - 0.25, x0 + 0.25, y0 + 0.55, y0 + 1.0, y0 + 0.95, y0 + 1.05), 10, o + 0.02, null, null, dep + 0.8);
+      add('ao', circ('rs-ao', x0, y0, 0.05, 1.2), 10, o);
       add('front', line('rs-pend', [x0, y0, 3.95, x0, y0, 2.6]) + circ('rs-shade', x0, y0, 2.6, 0.3), 10, o + 0.03);
-      add('glow', circ('rs-glow', x0, y0, 2.4, 1.3), DUSK, 0.2 + 0.6 * k / tabs.length);
+      add('glow', circ('rs-glow' + ['', ' a', ' w'][k % 3], x0, y0, 2.4, [1.3, 1.6, 1.1][k % 3]), DUSK, 0.2 + 0.6 * k / tabs.length);
       q.push(o);
     });
     // 11 тераса: настил дошка за дошкою, вазони, парасолі, столи
     var tx0 = 0.4, tx1 = Wd * 0.72, ty0 = Dp + 0.5, ty1 = Dp + TD;
     add('terr', box('rs-deckb', tx0, tx1, ty0, ty1, 0, 0.12), 11, 0.03);
     for (x = tx0, n = 0; x < tx1 - 0.05; x += 0.3, n++) add('terr', poly('rs-board b' + (n % 2), rect(x, Math.min(tx1, x + 0.27), ty0, ty1, 0.14)), 11, 0.05 + 0.4 * (x - tx0) / (tx1 - tx0));
-    for (x = tx0 + 0.6; x < tx1; x += 2.2) add('terr', box('rs-pot', x - 0.3, x + 0.3, ty1 - 0.5, ty1 + 0.1, 0.12, 0.7) + circ('rs-bush', x, ty1 - 0.2, 1.05, 0.45), 11, 0.5 + 0.2 * x / tx1);
+    for (x = tx0 + 0.6, n = 0; x < tx1; x += 2.2, n++) {
+      var ph = [0.55, 0.95, 0.7][n % 3], yp = ty1 - 0.2, gs = [];
+      for (i = -2; i < 3; i++) gs.push(x, yp, ph, x + i * 0.12, yp - 0.05, ph + 0.5 - Math.abs(i) * 0.08);
+      add('terr', box('rs-pot', x - 0.3, x + 0.3, ty1 - 0.5, ty1 + 0.1, 0.12, ph) + (n % 3 === 1 ? cone('rs-cyp', x, yp, ph, 4.2, 22) : n % 3 ? sg('rs-grs', gs) + circ('rs-bush', x, yp, ph + 0.2, 0.32) : circ('rs-bush', x, yp, ph + 0.35, 0.45) + circ('rs-bush b', x + 0.1, yp, ph + 0.55, 0.28)), 11, 0.5 + 0.2 * x / tx1);
+    }
+    add('terr', box('rs-pot', tx1 - 0.55, tx1 - 0.1, ty0 + 0.3, ty1 - 0.9, 0.12, 0.45) + box('rs-hedge', tx1 - 0.52, tx1 - 0.13, ty0 + 0.35, ty1 - 0.95, 0.45, 0.85), 11, 0.6);
     var umb = []; for (x = tx0 + 1.8; x < tx1 - 1; x += 3.4) umb.push(x);
     umb.forEach(function (x0, k) {
       var y0 = (ty0 + ty1) / 2 - 0.3, o = 0.7 + 0.25 * k / umb.length;
-      add('terr', box('rs-chair', x0 - 0.9, x0 - 0.5, y0 - 0.2, y0 + 0.2, 0.12, 0.55) + box('rs-chair', x0 + 0.5, x0 + 0.9, y0 - 0.2, y0 + 0.2, 0.12, 0.55) + box('rs-tab', x0 - 0.4, x0 + 0.4, y0 - 0.4, y0 + 0.4, 0.82, 0.88) + line('rs-pole', [x0, y0, 0.12, x0, y0, 2.5]), 11, o);
-      add('terr', '<g class="rs-umb">' + poly('rs-can', [x0 - 1.4, y0, 2.3, x0, y0 - 1.4, 2.3, x0 + 1.4, y0, 2.3, x0, y0 + 1.4, 2.3]) + poly('rs-can2', [x0 - 1.4, y0, 2.3, x0, y0 + 1.4, 2.3, x0, y0, 2.75]) + '</g>', 11, o + 0.02);
+      add('terr', circ('rs-ao', x0 + 0.3, y0 + 0.3, 0.15, 1.5), 11, o);
+      add('terr', box('rs-chair', x0 - 0.9, x0 - 0.5, y0 - 0.2, y0 + 0.2, 0.12, 0.55) + box('rs-chair', x0 + 0.5, x0 + 0.9, y0 - 0.2, y0 + 0.2, 0.12, 0.55) + box('rs-tab', x0 - 0.4, x0 + 0.4, y0 - 0.4, y0 + 0.4, 0.82, 0.88) + dot('rs-cup', x0 - 0.2, y0 + 0.15, 0.94, 1.1) + dot('rs-cup', x0 + 0.2, y0 - 0.1, 0.94, 1.1) + line('rs-pole', [x0, y0, 0.12, x0, y0, 2.5]), 11, o);
+      var u = 1.3, cz = 2.3, az = 2.85, E = [[x0 - u, y0 - u], [x0 + u, y0 - u], [x0 + u, y0 + u], [x0 - u, y0 + u]], cn = '', vl = [];
+      ['rs-can2', 'rs-can', 'rs-can3', 'rs-can'].forEach(function (c, m) { var A = E[m], B = E[(m + 1) % 4]; cn += poly(c, [A[0], A[1], cz, B[0], B[1], cz, x0, y0, az]); });
+      for (i = 0; i <= 8; i++) { var e3 = i < 4 ? E[1] : E[2], f3 = i < 4 ? E[2] : E[3], t3 = (i % 4) / 4 + (i > 7 ? 1 : 0); vl.push(e3[0] + (f3[0] - e3[0]) * t3, e3[1] + (f3[1] - e3[1]) * t3, cz - (i % 2) * 0.12); }
+      add('terr', '<g class="rs-umb">' + cn + sg('rs-rib', [x0, y0, az, E[2][0], E[2][1], cz]) + line('rs-val', vl) + '</g>', 11, o + 0.02);
     });
     // 12 світло день → вечір: ніч, гірлянда тераси, підсвітка бару, роздачі й вивіски
     add('sky', '<rect class="rs-night" x="-9999" y="-9999" width="19999" height="19999"/>', DUSK, 0.02);
-    var gar = []; for (x = tx0; x <= tx1 + 0.01; x += (tx1 - tx0) / 10) gar.push(x, ty1, 2.6 - Math.sin((x - tx0) / (tx1 - tx0) * Math.PI) * 0.4);
-    add('glow', line('rs-wire', gar) + gar.reduce(function (a, v, k) { return k % 3 ? a : a + dot('rs-bulb', gar[k], gar[k + 1], gar[k + 2], 2.2); }, ''), DUSK, 0.3);
-    add('glow', circ('rs-glow bar', bx - 0.2, (by0 + by1) / 2, 1.8, 2.2) + circ('rs-glow', (kx0 + kx1) / 2, ky1, 1.6, 2), DUSK, 0.4);
-    add('glow', wy('rs-signon', Dp, Wd * 0.34, Wd * 0.66, H - 0.45, H - 0.1), DUSK, 0.5);
-    // 13 гості: за столами, біля бару; офіціант між роздачею й залом, гості заходять з вулиці
-    tabs.forEach(function (q, k) { if (k % 3 === 2) return; add('ppl', person('g' + (k % 4), q[0], q[1] - 0.78, 0.25) + (k % 2 ? '' : person('g' + ((k + 1) % 4), q[0], q[1] + 0.78, 0.25)), 13, 0.05 + 0.6 * k / tabs.length); });
-    for (y = by0 + 0.4; y < by1 - 0.2; y += 1.5) add('ppl', person('g2', bx + 1.3, y, 0.5), 13, 0.5);
-    umb.forEach(function (x0, k) { add('ppl', person('g' + (k % 4), x0 - 0.7, (ty0 + ty1) / 2 - 0.3, 0.3), 13, 0.4 + k * 0.05); });
+    function garl(xa, ya, xb, yb, z) { // гірлянда з провисом: дріт, лампочки, малі ореоли
+      var g = [], bl = '', hl = '';
+      for (var t = 0; t <= 1.001; t += 0.1) g.push(xa + (xb - xa) * t, ya + (yb - ya) * t, z - Math.sin(t * Math.PI) * 0.4);
+      for (t = 0; t < g.length; t += 6) { bl += dot('rs-bulb', g[t], g[t + 1], g[t + 2], 2); hl += circ('rs-glow a', g[t], g[t + 1], g[t + 2], 0.5); }
+      add('glow', line('rs-wire', g) + hl + bl, DUSK, 0.3);
+    }
+    garl(tx0, ty1, tx1, ty1, 2.6); garl(tx0, ty0, tx0, ty1, 2.9); garl(tx1, ty0, tx1, ty1, 2.9);
+    add('glow', circ('rs-glow bar', bx - 0.2, (by0 + by1) / 2, 1.8, 2.2) + circ('rs-glow b2', 0.2, (by0 + by1) / 2, 2.2, 1.3) + circ('rs-glow k', (kx0 + kx1) / 2, ky1, 1.6, 2) + circ('rs-glow k', sx, 0.8, 2.3, 1.7), DUSK, 0.4);
+    add('glow', wy('rs-signon', Dp, Wd * 0.34, Wd * 0.66, H - 0.45, H - 0.1) + circ('rs-glow a', Wd / 2, Dp + 0.4, H - 0.3, 2.2), DUSK, 0.5);
+    // 13 гості: 4–8 нейтральних силуетів — за столами, біля бару, на терасі; офіціант між роздачею й залом
+    [0.12, 0.38, 0.62, 0.88].forEach(function (f, k) { var q = tabs[Math.floor(f * tabs.length)], fr = k % 2; if (q) add('furn', sil('s' + k % 3, q[0], q[1] + (fr ? 0.78 : -0.78), 0.47), 13, 0.1 + 0.15 * k, null, null, q[0] + q[1] + (fr ? 0.75 : -0.75)); });
+    for (y = by0 + 0.4, n = 0; y < by1 - 0.2 && n < 2; y += 1.5, n++) add('furn', sil('s' + (n + 1), bx + 1.3, y, 0.8), 13, 0.5, null, null, bx + 1.31 + y);
+    if (umb.length) add('ppl', sil('s0', umb[0] - 0.7, (ty0 + ty1) / 2 - 0.3, 0.55), 13, 0.4);
     if (tabs.length && !RM) {
-      var t0 = tabs[Math.floor(tabs.length / 2)], w1 = P(kx0 - 0.3, ky1 + 1, 0), w2 = P(t0[0], t0[1] - 1.4, 0), g1 = P((door[0] + door[1]) / 2, Dp + TD + 1, 0), g2 = P((door[0] + door[1]) / 2, Dp - 1, 0);
-      add('ppl', '<g class="rs-walker">' + person('w', 0, 0, 0).replace('<g class="rs-man w">', '<g class="rs-man w"><animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;1;1;0;0" keyTimes="0;.4;.5;.9;1" calcMode="linear" path="M' + w1.join(',') + ' L' + w2.join(',') + '"/>') + '</g>', 13, 0.6);
-      add('ppl', '<g class="rs-walker">' + person('g1', 0, 0, 0).replace('<g class="rs-man g1">', '<g class="rs-man g1"><animateMotion dur="9s" repeatCount="indefinite" path="M' + g1.join(',') + ' L' + g2.join(',') + '"/>') + '</g>', 13, 0.7);
+      var t0 = tabs[Math.floor(tabs.length / 2)], w1 = P(kx0 - 0.3, ky1 + 1, 0), w2 = P(t0[0], t0[1] - 1.4, 0);
+      add('ppl', '<g class="rs-walker">' + sil('w', 0, 0, 0, 1, '<animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;1;1;0;0" keyTimes="0;.4;.5;.9;1" calcMode="linear" path="M' + w1.join(',') + ' L' + w2.join(',') + '"/>') + '</g>', 13, 0.6);
     }
     // збірка: шари в порядку малювання; меблі — за глибиною (x + y); ключі появи — у відсортованому списку
     L.furn.sort(function (a, b) { return a.d - b.d; });
-    var order = ['ground', 'slab', 'under', 'floor', 'back', 'fin', 'duct', 'furn', 'front', 'terr', 'ppl', 'sky', 'glow'], html = '', id = 0;
+    var order = ['ground', 'slab', 'under', 'floor', 'ao', 'back', 'fin', 'duct', 'furn', 'front', 'terr', 'ppl', 'sky', 'glow'], html = '', id = 0;
     els = [];
     order.forEach(function (ly) { L[ly].forEach(function (o) { o.id = id++; html += '<g class="rs-e' + (o.k < 0 ? ' on' : '') + (o.x != null ? ' ux ux' + o.x : '') + '">' + o.h + '</g>'; if (o.k >= 0) els.push(o); }); });
     els.sort(function (a, b) { return a.k - b.k; });
@@ -192,7 +241,12 @@
       + '<radialGradient id="rs-gw"><stop offset="0" stop-color="#ffd98a" stop-opacity=".9"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient>'
       + '<pattern id="rs-cc" width="9" height="7" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".5" fill="#fff" fill-opacity=".1"/><circle cx="6" cy="4.5" r=".6" fill="#000" fill-opacity=".14"/><circle cx="3.5" cy="5.5" r=".35" fill="#fff" fill-opacity=".08"/></pattern>'
       + '<linearGradient id="rs-wsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient>'
-      + '<pattern id="rs-brick" width="12" height="8" patternUnits="userSpaceOnUse"><rect width="12" height="8" fill="#8a4a32"/><path d="M0 4h12M6 0v4M0 4v4M12 4v4" stroke="#5e3020" stroke-width=".8"/></pattern></defs>' + html;
+      + '<pattern id="rs-brick" width="12" height="8" patternUnits="userSpaceOnUse"><rect width="12" height="8" fill="#8a4a32"/><path d="M0 4h12M6 0v4M0 4v4M12 4v4" stroke="#5e3020" stroke-width=".8"/></pattern>'
+      + '<pattern id="rs-gr" width="16" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 .8h7M9 2.1h6" stroke="#2a1a0c" stroke-opacity=".16" stroke-width=".35"/></pattern>'
+      + '<pattern id="rs-wdp" width="2.4" height="9" patternUnits="userSpaceOnUse"><path d="M.3 0v9" stroke="#1e150e" stroke-opacity=".5" stroke-width=".5"/><path d="M1.4 2v4" stroke="#c9a46a" stroke-opacity=".18" stroke-width=".3"/></pattern>'
+      + gr('aog', '#000', '.38', '#000') + gr('gw2', '#eef8ff', '.85', '#bfe0ff') + gr('gw3', '#ff9a86', '.8', '#ff6a5a') + gr('gw4', '#ffc46b', '.75', '#ff9b3d') + gr('gw5', '#fff1c9', '.9', '#ffd98a')
+      + '<linearGradient id="rs-bl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb347" stop-opacity=".05"/><stop offset=".6" stop-color="#ffd98a" stop-opacity=".7"/><stop offset="1" stop-color="#ffb347" stop-opacity=".25"/></linearGradient>'
+      + '<style>' + CSS + '</style></defs>' + html;
     nodes = [].slice.call(svg.querySelectorAll('g.rs-e'));
     night = svg.querySelector('.rs-night');
     ptr = 0; shown = -1; vb = null;
@@ -200,6 +254,21 @@
     apply(true);
   }
   var FOC = [];
+  function gr(id, c0, o, c1) { return '<radialGradient id="rs-' + id + '"><stop offset="0" stop-color="' + c0 + '" stop-opacity="' + o + '"/><stop offset="1" stop-color="' + c1 + '" stop-opacity="0"/></radialGradient>'; }
+  // стилі деталізації (лише малюнок сцени; керування — у restaurant-anim.v1.css і scene-ui.v1.css)
+  var CSS = '.rs-ao{fill:url(#rs-aog)}.rs-sh{fill:#000;opacity:.2}.rs-hl{stroke:#d6d0c4;stroke-width:.7;opacity:.6}.rs-cc2{fill:url(#rs-cc)}'
+    + '.rs-grain{fill:url(#rs-gr);pointer-events:none}.rs-jt{stroke:#4a3420;stroke-width:.35;opacity:.75;fill:none}'
+    + '.rs-cloth.t{fill:#f5f2ea}.rs-cloth.r{fill:#d6cfc1}.rs-cloth.l{fill:#e6e0d4}.st1 .rs-cloth{display:none}.st2 .rs-cloth.t{fill:#fbf6e9}'
+    + '.rs-plate{fill:#fff;stroke:#bdb5a6;stroke-width:.4}.rs-cup{fill:#d8ecf5;stroke:#8fb3c4;stroke-width:.3}.rs-cnd{stroke:#efe6d4;stroke-width:1.5}.rs-fl{fill:#ffc95c}.rs-dusk .rs-fl{fill:#fff0b8}'
+    + '.rs-cleg{stroke:#2a2018;stroke-width:.9;fill:none}.rs-ref{fill:#fff;opacity:.16;pointer-events:none}.rs-ref.t{opacity:.09}.rs-dusk .rs-ref{fill:#ffe0a0;opacity:.32}.rs-dusk .rs-ref.t{opacity:.2}'
+    + '.rs-wd{fill:url(#rs-wdp)}.rs-brass,.rs-tap{stroke:#c9a46a;stroke-width:1.1;fill:none;stroke-linecap:round}.rs-blit{fill:url(#rs-bl);opacity:.3;transition:opacity 1s}.rs-dusk .rs-blit{opacity:1}.rs-btl.nk{stroke-width:1.1}'
+    + '.rs-burn{fill:#2a2d30;stroke:#55595d;stroke-width:.6}.rs-dusk .rs-burn{stroke:#6fb6ff}.rs-pan.t{fill:#8d969c}.rs-pan.r,.rs-pan.l{fill:#b9c1c6}.rs-ovw{fill:#2a2d30;stroke:#7a8287;stroke-width:.5}.rs-dusk .rs-ovw{fill:#c96a2a}'
+    + '.rs-basin{fill:#6b7378;stroke:#4a5156;stroke-width:.4}.rs-hdl{stroke:#6b7378;stroke-width:.8;fill:none}.rs-rack{stroke:#7d868c;stroke-width:.9;fill:none}.rs-rsh{fill:#c4cbd0;stroke:#8d969c;stroke-width:.3}'
+    + '.rs-ctn.t{fill:#e8e3d8}.rs-ctn.r,.rs-ctn.l{fill:#bdb5a6}.rs-ctn.c1.r,.rs-ctn.c1.l{fill:#8fb39a}.rs-ctn.c2.r,.rs-ctn.c2.l{fill:#c9a46a}'
+    + '.rs-cyp{fill:#2f6a3a}.rs-cyp.b{fill:#24532c}.rs-bush.b{fill:#4f8f3e}.rs-grs{stroke:#7aa552;stroke-width:.8;fill:none}.rs-hedge.t{fill:#4a8a3c}.rs-hedge.r,.rs-hedge.l{fill:#33692b}'
+    + '.rs-can3{fill:#f7f1e4}.rs-rib{stroke:#c2b192;stroke-width:.5;fill:none}.rs-val{fill:none;stroke:#BF9148;stroke-width:1.1}'
+    + '.rs-glow.k{fill:url(#rs-gw2)}.rs-glow.b2{fill:url(#rs-gw3)}.rs-glow.a{fill:url(#rs-gw4)}.rs-glow.w{fill:url(#rs-gw5)}.rs-dusk .rs-glow.o{opacity:.45}'
+    + '.rs-sil{fill:#aeb2b8;stroke:#16191d;stroke-width:.7}.rs-sil.s1{fill:#9a9fa7}.rs-sil.s2{fill:#c0c3c7}.rs-sil.w{fill:#3a3e44}';
   function target(i) { // кадр під фактичні пропорції сцени (402 — майже квадрат, 1440 — 2:1): обʼєкт етапу — по центру й цілий
     var f = FOC[i]; if (!f) return FULL;
     var c = [P(f[0], f[1], f[5]), P(f[2], f[1], f[4]), P(f[0], f[3], f[4]), P(f[2], f[3], f[4]), P(f[2], f[1], f[5]), P(f[0], f[3], f[5])], xs = c.map(function (q) { return +q[0]; }), ys = c.map(function (q) { return +q[1]; });
