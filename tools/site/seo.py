@@ -26,7 +26,10 @@ B = 'https://cas-develop.com'
 SKIP_FILES = {'privacy.html', 'terms.html'}  # сторонні юридичні шаблони (noindex)
 # політики конфіденційності: посилання лише з футера/форм, хлібні крихти не потрібні
 LEGAL = {'konfidentsiinist.html', 'ru/konfidentsialnost.html', 'en/privacy-policy.html', 'es/privacidad.html',
-         'pl/polityka-prywatnosci.html', 'de/datenschutz.html', 'fr/confidentialite.html', 'zh/privacy.html', 'ar/privacy.html'}
+         'pl/polityka-prywatnosci.html', 'de/datenschutz.html', 'fr/confidentialite.html', 'zh/privacy.html', 'ar/privacy.html',
+         # умови використання (09.11.2026) — так само лише з футера
+         'umovy-korystuvannia.html', 'ru/usloviya-ispolzovaniya.html', 'en/terms-of-use.html', 'es/condiciones-de-uso.html', 'zh/terms-of-use.html',
+         'pl/regulamin.html', 'de/nutzungsbedingungen.html', 'fr/conditions-utilisation.html', 'ar/terms-of-use.html'}
 CJK = ('zh', 'ar')
 
 ERR, WARN = [], []
