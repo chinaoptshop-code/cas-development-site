@@ -31,7 +31,7 @@ def _ver(path, _c={}):
 # спільні файли, які підключають сторінки: після зміни файлу всі сторінки отримують новий ?v=
 SHARED = ('/assets/site-chrome.v1.css', '/assets/site-chrome.v1.js', '/assets/lead-form.v1.js', '/assets/ui-polish.v1.js', '/assets/proekt.v1.css',
           '/assets/cas-map.v1.css', '/assets/cas-map.v1.js', '/assets/quiz.v1.js', '/assets/quiz.v1.css', '/assets/media.v1.js', '/assets/media.v1.css',
-          '/assets/build-anim.v1.js', '/assets/build-anim.v1.css', '/assets/sections.v1.css')
+          '/assets/build-anim.v1.js', '/assets/build-anim.v1.css', '/assets/sections.v1.css', '/assets/calc.v1.js')
 SHARED_RX = re.compile(r'(' + '|'.join(re.escape(x) for x in SHARED) + r')(?:\?v=\w+)?(?=")')
 
 
@@ -163,7 +163,7 @@ T = {
         cta='Заявка', cta_href='/contact#cForm', home_label='CAS Development — на головну', kab='Кабінет', kab_full='Кабінет клієнта',
         tagline='Студія дизайну інтерʼєру, ремонту й будівництва під ключ. Київ, з 2016 року.',
         contacts='Контакти', address='вул. Антоновича, 44, Київ', msg='Месенджери', lang='Мова',
-        privacy=('/konfidentsiinist', 'Політика конфіденційності'), copy='© 2026 CAS Development · Київ, Україна',
+        privacy=('/konfidentsiinist', 'Політика конфіденційності'), terms=('/umovy-korystuvannia', 'Умови'), copy='© 2026 CAS Development · Київ, Україна',
         svc='Усі послуги студії', svc_label='Послуги студії',
         groups=[
             ('Ремонт', [('/remont-kvartyr-kyiv', 'Ремонт квартир'), ('/remont-pid-klyuch-kyiv', 'Ремонт під ключ'),
@@ -190,7 +190,7 @@ T = {
         cta='Заявка', cta_href='/ru/#zayavka', home_label='CAS Development — на главную', kab='Кабинет', kab_full='Кабинет клиента',
         tagline='Студия дизайна интерьера, ремонта и строительства под ключ. Киев, с 2016 года.',
         contacts='Контакты', address='ул. Антоновича, 44, Киев', msg='Мессенджеры', lang='Язык',
-        privacy=('/ru/konfidentsialnost', 'Политика конфиденциальности'), copy='© 2026 CAS Development · Киев, Украина',
+        privacy=('/ru/konfidentsialnost', 'Политика конфиденциальности'), terms=('/ru/usloviya-ispolzovaniya', 'Условия'), copy='© 2026 CAS Development · Киев, Украина',
         svc='Все услуги студии', svc_label='Услуги студии',
         groups=[
             ('Ремонт', [('/ru/remont-kvartir-kiev', 'Ремонт квартир'), ('/ru/remont-pod-klyuch-kiev', 'Ремонт под ключ'),
@@ -215,6 +215,8 @@ for _l in LANGS:  # нові мови — словник chrome з tools/site/la
     if _l not in T and i18n.ui(_l):
         _c = dict(i18n.ui(_l)['chrome'])
         _c['privacy'] = tuple(_c['privacy'])
+        if _c.get('terms'):
+            _c['terms'] = tuple(_c['terms'])
         T[_l] = _c
 
 
@@ -349,6 +351,8 @@ def footer(lang, alts):
                   + f' aria-label="{n}" title="{n}"></a>' for k, n, u in row)
     groups = ''.join(f'<div><b>{g}</b>' + ''.join(f'<a href="{h}">{n}</a>' for h, n in links) + '</div>' for g, links in [(g, _live(x)) for g, x in t['groups']] if links)
     langs = lang_links(lang, alts, 'scf-lang')
+    # «Умови використання» — поруч із політикою, коротка назва (Михайло 09.11.2026); посилання — лише коли сторінка є
+    terms = ''.join(f'<a href="{h}">{n}</a>' for h, n in _live([t['terms']])) if t.get('terms') else ''
     return (
         '<!--chrome:f--><footer class="scf">\n'
         '<div class="scf-in">\n'
@@ -359,7 +363,7 @@ def footer(lang, alts):
         '  </div>\n'
         f'  <details class="scf-svc"><summary>{t["svc"]}</summary><nav class="scf-svc-g" aria-label="{t["svc_label"]}">{groups}</nav></details>\n'
         f'  <div class="scf-bot"><div class="scf-langs" role="group" aria-label="{t["lang"]}">{langs}</div>'
-        f'<div class="scf-legal"><a href="{t["privacy"][0]}">{t["privacy"][1]}</a><span>{t["copy"].split(" · ")[0]}</span></div></div>\n'
+        f'<div class="scf-legal"><a href="{t["privacy"][0]}">{t["privacy"][1]}</a>{terms}<span>{t["copy"].split(" · ")[0]}</span></div></div>\n'
         '</div>\n'
         '</footer><!--/chrome:f-->'
     )

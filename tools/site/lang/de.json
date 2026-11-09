@@ -182,6 +182,10 @@
    ]
   ],
   "cta_href": "/de/kontakt",
+  "terms": [
+   "/de/nutzungsbedingungen",
+   "Nutzungsbedingungen"
+  ],
   "privacy": [
    "/de/datenschutz",
    "Datenschutzerklärung"

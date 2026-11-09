@@ -139,6 +139,17 @@
   "fr": "/fr/confidentialite",
   "ar": "/ar/privacy"
  },
+ "terms": {
+  "uk": "/umovy-korystuvannia",
+  "ru": "/ru/usloviya-ispolzovaniya",
+  "en": "/en/terms-of-use",
+  "es": "/es/condiciones-de-uso",
+  "zh": "/zh/terms-of-use",
+  "pl": "/pl/regulamin",
+  "de": "/de/nutzungsbedingungen",
+  "fr": "/fr/conditions-utilisation",
+  "ar": "/ar/terms-of-use"
+ },
  "kitchen": {
   "uk": "/remont-kukhni-kyiv",
   "ru": "/ru/remont-kuhni-kiev",

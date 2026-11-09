@@ -177,6 +177,10 @@
    ]
   ],
   "cta_href": "/fr/contact",
+  "terms": [
+   "/fr/conditions-utilisation",
+   "Conditions"
+  ],
   "privacy": [
    "/fr/confidentialite",
    "Politique de confidentialité"

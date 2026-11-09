@@ -29,6 +29,7 @@ python3 tools/site/restaurant.py # «Ресторан з нуля» — сцен
 python3 tools/site/waterhouse.py # «Будинок на воді» — сцена на сторінках бази відпочинку (посилання в перемикачах сцен дають landanim/resort)
 python3 tools/site/notfound.py  # 404 для кожної мови (<мова>/404.html з 404.html; Cloudflare Pages бере найближчий)
 python3 tools/site/llms.py      # /llms.txt і /llms-full.txt — опис студії для ШІ (факти з CLAUDE.md, сторінки з sitemap)
+python3 tools/site/terms.py     # «Умови використання» 9 мов (шаблон — політика конфіденційності мови, кластер terms)
 python3 tools/site/chrome.py
 python3 tools/site/chrome.py --check
 python3 tools/site/ux.py --check

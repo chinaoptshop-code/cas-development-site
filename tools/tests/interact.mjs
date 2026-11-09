@@ -191,16 +191,51 @@ await test('калькулятор: площа → сума', '/kalkuliator-remo
 });
 await test('калькулятор: 0 → «—», дизайн для 10 м² — мінімум $2 500, величезна площа обмежена', '/kalkuliator-remontu', 402, async p => {
   const set = async v => { await p.fill('#cArea', v); await p.dispatchEvent('#cArea', 'input'); await p.waitForTimeout(150); return p.textContent('#cSum'); };
+  const kind = async k => { await p.selectOption('#cKind', k); await p.waitForTimeout(150); };
+  const nb = s => s.replace(/[  ]/g, ' ');
   must((await set('0')) === '—', 'площа 0 не дає «—»');
   must((await set('abc').catch(() => '—')) === '—', 'нечислове значення');
-  await p.selectOption('#cKind', { index: 0 }); await p.check('#cDesign');
+  must((await set('-5')) === '—', 'відʼємна площа');
+  await kind('remont'); await p.click('#cDz [data-p="dz"]'); await p.check('#cFurn');
   await set('10');
-  must((await p.textContent('#cRows')).replace(/ /g, ' ').includes('$2 500'), 'дизайн 10 м² не дорівнює мінімуму $2 500');
+  must(nb(await p.textContent('#cRows')).includes('$2 500'), 'дизайн 10 м² не дорівнює мінімуму $2 500');
   const big = (await set('99999999')).replace(/\D/g, '');
-  must(+big <= 100000 * (550 + 30 + 250) + 1, 'площа не обмежена: ' + big);
+  must(+big <= 100000 * (550 + 45 + 250) + 1, 'площа не обмежена: ' + big);
+  // пакети дизайну: планувальний $6/м² і повний $45/м² — теж мінімум $2 500
+  await set('1000'); await p.click('#cDz [data-p="plan"]');
+  must(nb(await p.textContent('#cRows')).includes('$6 000'), 'планувальний 1000 м² ≠ $6 000');
+  await p.click('#cDz [data-p="full"]'); await set('20');
+  must(nb(await p.textContent('#cRows')).includes('$2 500'), 'повний 20 м² не дорівнює мінімуму $2 500');
+  // ±5% — лише для ремонту
+  must(/±5/.test(await p.textContent('#cNote')), 'немає ±5% для ремонту');
+  await kind('house'); must(!/±5/.test(await p.textContent('#cNote')), '±5% для будівництва');
+  must(await p.locator('#cFurnW').isHidden(), 'меблювання для коробки');
+  // Європа: ремонт $850, дизайн мін. $4 000, меблювання $400; офіс і ландшафт — за кошторисом
+  await kind('remont'); await p.click('#cReg [data-r="1"]'); await p.click('#cDz [data-p="dz"]'); await set('10');
+  must(nb(await p.textContent('#cRows')).includes('$8 500') && nb(await p.textContent('#cRows')).includes('$4 000') && nb(await p.textContent('#cRows')).includes('$4 000'), 'ставки Європи: ' + await p.textContent('#cRows'));
+  await p.click('#cDz [data-p="plan"]');
+  must(/кошторис/.test(await p.textContent('#cRows')) && await p.locator('#cPlus').isVisible(), 'планувальний у Європі не «за кошторисом»');
+  await kind('office'); await p.click('#cDz [data-p="0"]'); await p.uncheck('#cFurn'); await p.waitForTimeout(150);
+  must(/кошторис/.test(await p.textContent('#cSum')) && await p.locator('#cSumL').isHidden(), 'офіс у Європі не «за кошторисом»');
+  await kind('land');
+  must((await p.inputValue('#cArea')) === '10' && /сот/.test(await p.textContent('#cAreaL')), 'ландшафт — не в сотках');
+  must(/кошторис/.test(await p.textContent('#cSum')), 'ландшафт у Європі не «за кошторисом»');
+  await p.click('#cReg [data-r="0"]'); must(nb(await set('12.5')) === '$625', 'ландшафт 12,5 сотки ≠ $625');
+  await p.click('#cSend'); await p.waitForTimeout(300);
+  must((await p.inputValue('#oArea')) === '1250', 'сотки не перетворено на м² у формі');
+  const ms = await p.inputValue('#oMsg'), sv = await p.getAttribute('#of', 'data-service');
+  must(/Україна/.test(ms) && /Ландшафт/.test(ms) && /Ландшафт/.test(sv) && /Україна/.test(sv), 'регіон/послуга не в формі: ' + ms + ' | ' + sv);
+  await kind('remont'); must((await p.inputValue('#cArea')) !== '12.5', 'площа м² не відновилась після соток');
+  await p.click('#cReg [data-r="1"]');
   await set('60'); await p.click('#cSend'); await p.waitForTimeout(300);
-  const m1 = await p.inputValue('#oMsg'); await set('80'); await p.click('#cSend'); await p.waitForTimeout(300);
+  const m1 = await p.inputValue('#oMsg'); must(/Європа/.test(m1) && /Європа/.test(await p.getAttribute('#of', 'data-service')), 'Європа не в формі');
+  await set('80'); await p.click('#cSend'); await p.waitForTimeout(300);
   must((await p.inputValue('#oMsg')) !== m1 && (await p.inputValue('#oArea')) === '80', 'повторний розрахунок не оновив форму');
+});
+await test('калькулятор (ar, RTL): Європа й ландшафт', '/ar/renovation-calculator', 402, async p => {
+  await p.click('#cReg [data-r="1"]'); await p.selectOption('#cKind', 'land'); await p.waitForTimeout(150);
+  must((await p.textContent('#cSum')).includes('المقايسة'), 'ar: ландшафт у Європі не «وفق المقايسة»');
+  must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'ar: горизонтальна прокрутка');
 });
 await test('Оздоба: кошик — мінімум 10 шт і $500, знижка 5%, заявка: 500 — без успіху, 200 — номер', '/ozdoba', 402, async p => {
   await p.waitForFunction(() => typeof DATA !== 'undefined' && DATA && DATA.items && DATA.items.length);

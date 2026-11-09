@@ -499,7 +499,7 @@ function renderPay(){
     <button class="pay" aria-pressed="${payMethod==='card'}" onclick="setPay('card')"><span class="dot"></span>
       <span><b>${t('Карткою (посилання від менеджера)')}</b><small>${t('Посилання на оплату надішле менеджер після підтвердження наявності.')}</small></span></button>
     <button class="pay" aria-pressed="${payMethod==='invoice'}" onclick="setPay('invoice')"><span class="dot"></span>
-      <span><b>${t('Рахунок для ФОП або ТОВ')}</b><small>${t('Безготівковий розрахунок, закривні документи. Відвантаження після зарахування.')}</small></span></button>
+      <span><b>${t('Рахунок для ФОП або ТОВ')}</b><small>${t('Безготівковий розрахунок з ПДВ або без — індивідуально, закривні документи. Відвантаження після зарахування.')}</small></span></button>
     <button class="pay" aria-pressed="${payMethod==='cash'}" onclick="setPay('cash')"><span class="dot"></span>
       <span><b>${t('Готівкою — гривні, долари або євро')}</b><small>${t('Умови й місце оплати узгодить менеджер після підтвердження замовлення.')}</small></span></button>
     <button class="pay" aria-pressed="${payMethod==='usdt'}" onclick="setPay('usdt')"><span class="dot"></span>
