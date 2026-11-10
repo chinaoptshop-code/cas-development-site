@@ -34,8 +34,8 @@
     "Servicios"
    ],
    [
-    "/portfolio",
-    "Portafolio (UA)"
+    "/es/portfolio",
+    "Portafolio"
    ],
    [
     "/es/sobre-nosotros",
@@ -170,8 +170,8 @@
       "Contacto"
      ],
      [
-      "/portfolio",
-      "Portafolio (en ucraniano)"
+      "/es/portfolio",
+      "Portafolio"
      ]
     ]
    ]
@@ -202,7 +202,7 @@
   "other": "",
   "cta": "Pedir presupuesto",
   "call": "Llamar",
-  "all_portfolio": "Portafolio completo (en ucraniano)",
+  "all_portfolio": "Portafolio completo",
   "sections": "Secciones",
   "facts": [
    [

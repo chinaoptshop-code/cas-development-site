@@ -34,8 +34,8 @@
     "Usługi"
    ],
    [
-    "/portfolio",
-    "Portfolio (UA)"
+    "/pl/portfolio",
+    "Portfolio"
    ],
    [
     "/pl/ozdoba",
@@ -191,8 +191,8 @@
       "Kontakt"
      ],
      [
-      "/portfolio",
-      "Portfolio (po ukraińsku)"
+      "/pl/portfolio",
+      "Portfolio"
      ]
     ]
    ]
@@ -223,7 +223,7 @@
   "other": "",
   "cta": "Poproś o wycenę",
   "call": "Zadzwoń",
-  "all_portfolio": "Całe portfolio (po ukraińsku)",
+  "all_portfolio": "Całe portfolio",
   "sections": "Działy",
   "facts": [
    [

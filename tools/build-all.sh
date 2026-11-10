@@ -6,7 +6,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 python3 tools/site/ux.py          # тексти кнопок згортання/бейджів і версія спрайту іконок у /assets/site-chrome.v1.{js,css} (до ?v= у сторінках)
-python3 tools/site/caselang.py portfolio  # портфоліо en/ru: tools/site/pages/<мова>-portfolio.json з uk-portfolio.json (переклад — tools/site/caselang/)
+python3 tools/site/caselang.py portfolio  # портфоліо мовами (en, ru, es, pl, de, fr, zh, ar): tools/site/pages/<мова>-portfolio.json з uk-portfolio.json (переклад — tools/site/caselang/)
 LOG="${TMPDIR:-/tmp}/cas-landing.log"
 python3 tools/site/landing.py > "$LOG" || { cat "$LOG"; exit 1; }
 tail -n 2 "$LOG"
@@ -24,7 +24,7 @@ python3 tools/site/quiz.py      # квіз-калькулятор перед ф�
 python3 tools/site/media.py     # тур 360° (/tury/<slug>) на сторінках проєктів, відео YouTube, канал у sameAs — з tools/site/media.json
 python3 tools/site/casetext.py  # «Про проєкт» на /proekty/<slug>: Задача → Рішення → Результат з tools/site/casetext.json
 python3 tools/site/casegal.py   # довгі галереї /proekty (> 24 фото): 24 у HTML, решта — /proekty/gal/<slug>.json (case-gal.v1.js)
-python3 tools/site/caselang.py  # /en/proekty/<slug> і /ru/proekty/<slug> з готових uk-сторінок (переклад — tools/site/caselang/<мова>.json)
+python3 tools/site/caselang.py  # /<мова>/proekty/<slug> з готових uk-сторінок (переклад — tools/site/caselang/<мова>.json)
 python3 tools/site/buildanim.py # «Будинок з нуля» / «Ремонт з нуля» — scroll-анімація збірки (будівництво, ремонт квартир, головні)
 python3 tools/site/landanim.py  # «Ландшафт з нуля» — сцена на сторінках ландшафтного дизайну + перемикач «Будинок / Ландшафт» на будівництві
 python3 tools/site/resort.py    # «Комплекс відпочинку» — генплан (база відпочинку, ресторан), тизер (послуги, будівництво), перемикач сцен на головних

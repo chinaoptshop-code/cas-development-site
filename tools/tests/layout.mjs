@@ -29,7 +29,7 @@ const CL = JSON.parse(readFileSync(join(ROOT, 'tools/site/lang/clusters.json'), 
 const LANGS = ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'ar'];
 const core = [...LANGS.map(l => CL.home[l])];
 for (const k of ['services', 'about', 'contact']) for (const l of ['uk', 'en', 'ru', 'ar']) core.push(CL[k][l]);
-core.push('/portfolio', '/en/portfolio', '/ru/portfolio');
+core.push('/portfolio', '/en/portfolio', '/ru/portfolio', '/es/portfolio', '/ar/portfolio', '/ar/proekty/monpark', '/de/proekty/hoda-estate');
 const ukLand = readdirSync(join(ROOT, 'tools/site/pages')).filter(f => /^uk-.*\.json$/.test(f))
   .map(f => JSON.parse(readFileSync(join(ROOT, 'tools/site/pages', f), 'utf8')).slug).filter(s => s && !['index', 'about', 'services', 'contact', 'portfolio'].includes(s)).map(s => '/' + s);
 const extra = ['/en/interior-design', '/en/house-construction', '/en/turnkey-renovation', '/en/landscape-design', '/en/restaurant-design',

@@ -34,8 +34,8 @@
     "Leistungen"
    ],
    [
-    "/portfolio",
-    "Portfolio (UA)"
+    "/de/portfolio",
+    "Portfolio"
    ],
    [
     "/de/ueber-uns",
@@ -175,8 +175,8 @@
       "Kontakt"
      ],
      [
-      "/portfolio",
-      "Portfolio (auf Ukrainisch)"
+      "/de/portfolio",
+      "Portfolio"
      ]
     ]
    ]
@@ -207,7 +207,7 @@
   "other": "",
   "cta": "Angebot anfragen",
   "call": "Anrufen",
-  "all_portfolio": "Gesamtes Portfolio (auf Ukrainisch)",
+  "all_portfolio": "Gesamtes Portfolio",
   "sections": "Themen",
   "facts": [
    [

@@ -1,0 +1,4486 @@
+{
+ "slug": "portfolio",
+ "lang": "de",
+ "service": "Консультація (портфоліо)",
+ "title": "CAS-Portfolio: Wohnungen, Häuser, Büros und Restaurants",
+ "description": "CAS Development: über 150 Projekte seit 2016 — Wohnungen, Häuser, Restaurants, Büros und Salons in Kiew, den Karpaten, der Türkei, den USA und den VAE.",
+ "h1": "Portfolio: Jedes Projekt hat seine eigene Geschichte",
+ "lead": "Über 150 Projekte seit 2016: Wohnungen, Häuser, Restaurants, Büros und Salons in Kiew, in den Karpaten, in der Türkei, den USA und den VAE.",
+ "btn2": [
+  "tel:+380978667755",
+  "Anrufen"
+ ],
+ "kicker": "Unsere Arbeiten",
+ "hero_img": {
+  "img": "img/p/1ZRiEBBWt3pzrB-1400.webp",
+  "srcset": "/img/p/1ZRiEBBWt3pzrB-400.webp 400w, /img/p/1ZRiEBBWt3pzrB-900.webp 900w, /img/p/1ZRiEBBWt3pzrB-1400.webp 1400w",
+  "sizes": "100vw",
+  "alt": "Portfolio von CAS Development: umgesetzte Interieurs in Kiew"
+ },
+ "facts": false,
+ "ld_raw": [
+  {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Startseite",
+     "item": "https://cas-develop.com/de/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Portfolio",
+     "item": "https://cas-develop.com/de/portfolio"
+    }
+   ]
+  },
+  {
+   "@context": "https://schema.org",
+   "@type": "CollectionPage",
+   "@id": "https://cas-develop.com/de/portfolio#page",
+   "name": "Portfolio von CAS Development",
+   "url": "https://cas-develop.com/de/portfolio",
+   "inLanguage": "de",
+   "about": {
+    "@id": "https://cas-develop.com/de/#business"
+   },
+   "mainEntity": {
+    "@type": "ItemList",
+    "name": "Projekte von CAS Development",
+    "numberOfItems": 20,
+    "itemListElement": [
+     {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/yacht-restaurant#work",
+       "name": "Yacht Restaurant",
+       "url": "https://cas-develop.com/de/proekty/yacht-restaurant",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/linden-penthouse#work",
+       "name": "Linden Penthouse",
+       "url": "https://cas-develop.com/de/proekty/linden-penthouse",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/hoda-estate#work",
+       "name": "Hoda Estate",
+       "url": "https://cas-develop.com/de/proekty/hoda-estate",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/petrivtsi-house#work",
+       "name": "Petrivtsi House",
+       "url": "https://cas-develop.com/de/proekty/petrivtsi-house",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/usa-house#work",
+       "name": "USA House",
+       "url": "https://cas-develop.com/de/proekty/usa-house",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/pidgirland#work",
+       "name": "Pidgirland",
+       "url": "https://cas-develop.com/de/proekty/pidgirland",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/hodos-villa#work",
+       "name": "Hodos Villa",
+       "url": "https://cas-develop.com/de/proekty/hodos-villa",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/diamond#work",
+       "name": "Diamond",
+       "url": "https://cas-develop.com/de/proekty/diamond",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/edelweiss#work",
+       "name": "Edelweiss",
+       "url": "https://cas-develop.com/de/proekty/edelweiss",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/yacht-vip#work",
+       "name": "Yacht VIP",
+       "url": "https://cas-develop.com/de/proekty/yacht-vip",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/a-frame-house#work",
+       "name": "A-Frame House",
+       "url": "https://cas-develop.com/de/proekty/a-frame-house",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/monpark#work",
+       "name": "Monpark",
+       "url": "https://cas-develop.com/de/proekty/monpark",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Umgesetzt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 13,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/yablu-rest#work",
+       "name": "Yablu Rest",
+       "url": "https://cas-develop.com/de/proekty/yablu-rest",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 14,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/smart-villa#work",
+       "name": "Smart Villa",
+       "url": "https://cas-develop.com/de/proekty/smart-villa",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 15,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/house-150#work",
+       "name": "House 150",
+       "url": "https://cas-develop.com/de/proekty/house-150",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 16,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/kitana-beach#work",
+       "name": "Kitana Beach",
+       "url": "https://cas-develop.com/de/proekty/kitana-beach",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 17,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/dubai-villa#work",
+       "name": "Dubai Villa",
+       "url": "https://cas-develop.com/de/proekty/dubai-villa",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Designprojekt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 18,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/tetris-hall#work",
+       "name": "Tetris Hall",
+       "url": "https://cas-develop.com/de/proekty/tetris-hall",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Umgesetzt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 19,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/dolls-salon#work",
+       "name": "Dolls Salon",
+       "url": "https://cas-develop.com/de/proekty/dolls-salon",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Umgesetzt"
+      }
+     },
+     {
+      "@type": "ListItem",
+      "position": 20,
+      "item": {
+       "@type": "CreativeWork",
+       "@id": "https://cas-develop.com/de/proekty/office-chicago#work",
+       "name": "Office Chicago",
+       "url": "https://cas-develop.com/de/proekty/office-chicago",
+       "creator": {
+        "@id": "https://cas-develop.com/de/#business"
+       },
+       "creativeWorkStatus": "Umgesetzt"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "sections": [
+  {
+   "t": "text",
+   "p": [
+    "Wohnungen und Penthouses, Häuser und Villen, Restaurants, Salons, Büros und Ferienanlagen — in Kiew und Umgebung, in den Karpaten, in der Türkei (Bodrum), den USA und den VAE. Mehr zu unseren Leistungen: [Wohnungsdesign](/de/wohnungsdesign), [Hausinterieurs](/dyzain-interieru-budynku-kyiv), [Restaurants und Cafés](/de/restaurantdesign), [Büros](/dyzain-ofisu-kyiv), [schlüsselfertige Renovierung](/de/renovierung-schluesselfertig), [Premium-Renovierung](/remont-premium-klasu-kyiv), [Wohnungsrenovierung in Kiewer Wohnanlagen](/remont-kvartyr-zhk-kyiv), [schlüsselfertiger Hausbau](/de/hausbau) und [Generalunternehmer für Gewerbeobjekte](/en/general-contractor-kyiv)."
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Alle Projekte",
+   "items": [
+    [
+     "#karta",
+     "Projektkarte"
+    ],
+    [
+     "/de/proekty/yacht-restaurant",
+     "Yacht Restaurant"
+    ],
+    [
+     "/de/proekty/linden-penthouse",
+     "Linden Penthouse"
+    ],
+    [
+     "/de/proekty/hoda-estate",
+     "Hoda Estate"
+    ],
+    [
+     "/de/proekty/petrivtsi-house",
+     "Petrivtsi House"
+    ],
+    [
+     "/de/proekty/usa-house",
+     "USA House"
+    ],
+    [
+     "/de/proekty/pidgirland",
+     "Pidgirland"
+    ],
+    [
+     "/de/proekty/hodos-villa",
+     "Hodos Villa"
+    ],
+    [
+     "/de/proekty/diamond",
+     "Diamond"
+    ],
+    [
+     "/de/proekty/edelweiss",
+     "Edelweiss"
+    ],
+    [
+     "/de/proekty/yacht-vip",
+     "Yacht VIP"
+    ],
+    [
+     "/de/proekty/a-frame-house",
+     "A-Frame House"
+    ],
+    [
+     "/de/proekty/monpark",
+     "Monpark"
+    ],
+    [
+     "/de/proekty/yablu-rest",
+     "Yablu Rest"
+    ],
+    [
+     "/de/proekty/smart-villa",
+     "Smart Villa"
+    ],
+    [
+     "/de/proekty/house-150",
+     "House 150"
+    ],
+    [
+     "/de/proekty/kitana-beach",
+     "Kitana Beach"
+    ],
+    [
+     "/de/proekty/dubai-villa",
+     "Dubai Villa"
+    ],
+    [
+     "/de/proekty/tetris-hall",
+     "Tetris Hall"
+    ],
+    [
+     "/de/proekty/dolls-salon",
+     "Dolls Salon"
+    ],
+    [
+     "/de/proekty/office-chicago",
+     "Office Chicago"
+    ]
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "3D-Rundgänge 360°",
+   "items": [
+    [
+     "/en/tury",
+     "Alle 3D-Rundgänge (auf Englisch)"
+    ],
+    [
+     "/en/tury/apartment-2025",
+     "Fertige Wohnung, Kiew"
+    ],
+    [
+     "/en/tury/edelweiss",
+     "Edelweiss, 108 m²"
+    ],
+    [
+     "/en/tury/hoda-estate",
+     "Hoda Estate, Karpaten"
+    ],
+    [
+     "/en/tury/triangle-house",
+     "Triangle House"
+    ],
+    [
+     "/en/tury/yablunytsia-estate",
+     "Landsitz in Jablunyzja"
+    ],
+    [
+     "/en/tury/apartment-80",
+     "Wohnung, 80 m²"
+    ],
+    [
+     "/en/tury/apartment-56",
+     "Wohnung, 56 m²"
+    ],
+    [
+     "/en/tury/apartment-45",
+     "Wohnung, 45 m²"
+    ],
+    [
+     "/en/tury/apartment-37",
+     "Wohnung, 37 m²"
+    ],
+    [
+     "/en/tury/house-concept-1",
+     "Haus, Konzept 1"
+    ],
+    [
+     "/en/tury/house-concept-4",
+     "Haus, Konzept 4"
+    ]
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-yacht-restaurant",
+   "h2": "Yacht Restaurant",
+   "href": "/de/proekty/yacht-restaurant",
+   "status": "Designprojekt",
+   "meta": "Restaurant · Premium",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Yacht Restaurant",
+   "items": [
+    {
+     "img": "img/p/1432efN35q6M6V-200.webp",
+     "srcset": "/img/p/1432efN35q6M6V-200.webp 200w, /img/p/1432efN35q6M6V-400.webp 400w",
+     "alt": "Gastraum — Yacht Restaurant, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/18ej1fH-11uoyr-200.webp",
+     "srcset": "/img/p/18ej1fH-11uoyr-200.webp 200w, /img/p/18ej1fH-11uoyr-400.webp 400w, /img/p/18ej1fH-11uoyr-600.webp 600w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1OGn3TXnLkQenE-200.webp",
+     "srcset": "/img/p/1OGn3TXnLkQenE-200.webp 200w, /img/p/1OGn3TXnLkQenE-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/18W9L5_nV9nd-7-200.webp",
+     "srcset": "/img/p/18W9L5_nV9nd-7-200.webp 200w, /img/p/18W9L5_nV9nd-7-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1AaaZgBHrlYHcw-200.webp",
+     "srcset": "/img/p/1AaaZgBHrlYHcw-200.webp 200w, /img/p/1AaaZgBHrlYHcw-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lovunAyUeQX5c-200.webp",
+     "srcset": "/img/p/1lovunAyUeQX5c-200.webp 200w, /img/p/1lovunAyUeQX5c-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1BO7v9EOodBP_T-200.webp",
+     "srcset": "/img/p/1BO7v9EOodBP_T-200.webp 200w, /img/p/1BO7v9EOodBP_T-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1hdb2TvRgvPYUj-200.webp",
+     "srcset": "/img/p/1hdb2TvRgvPYUj-200.webp 200w, /img/p/1hdb2TvRgvPYUj-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1dCBMYs58M2hfy-200.webp",
+     "srcset": "/img/p/1dCBMYs58M2hfy-200.webp 200w, /img/p/1dCBMYs58M2hfy-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1REoAlKTCa5gkV-200.webp",
+     "srcset": "/img/p/1REoAlKTCa5gkV-200.webp 200w, /img/p/1REoAlKTCa5gkV-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1yZgfgzR6UjVKn-200.webp",
+     "srcset": "/img/p/1yZgfgzR6UjVKn-200.webp 200w, /img/p/1yZgfgzR6UjVKn-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1PhJkzkgJlzt4a-200.webp",
+     "srcset": "/img/p/1PhJkzkgJlzt4a-200.webp 200w, /img/p/1PhJkzkgJlzt4a-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1jA8QXpnVEd3yI-200.webp",
+     "srcset": "/img/p/1jA8QXpnVEd3yI-200.webp 200w, /img/p/1jA8QXpnVEd3yI-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1rq4f_wTglNj7L-200.webp",
+     "srcset": "/img/p/1rq4f_wTglNj7L-200.webp 200w, /img/p/1rq4f_wTglNj7L-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/14saBwyUJCsC3_-200.webp",
+     "srcset": "/img/p/14saBwyUJCsC3_-200.webp 200w, /img/p/14saBwyUJCsC3_-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1cE9ulLT9tcv8--200.webp",
+     "srcset": "/img/p/1cE9ulLT9tcv8--200.webp 200w, /img/p/1cE9ulLT9tcv8--400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1x6wPiV87szNQM-200.webp",
+     "srcset": "/img/p/1x6wPiV87szNQM-200.webp 200w, /img/p/1x6wPiV87szNQM-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1oYoYf3AikpzS0-200.webp",
+     "srcset": "/img/p/1oYoYf3AikpzS0-200.webp 200w, /img/p/1oYoYf3AikpzS0-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1aTb_XeCBGwl7e-200.webp",
+     "srcset": "/img/p/1aTb_XeCBGwl7e-200.webp 200w, /img/p/1aTb_XeCBGwl7e-400.webp 400w",
+     "alt": "Yacht Restaurant — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-linden-penthouse",
+   "h2": "Linden Penthouse",
+   "href": "/de/proekty/linden-penthouse",
+   "status": "Designprojekt",
+   "meta": "Kiew · 210 m²",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Linden Penthouse",
+   "items": [
+    {
+     "img": "img/p/1rJCChE1lDiB_j-200.webp",
+     "srcset": "/img/p/1rJCChE1lDiB_j-200.webp 200w, /img/p/1rJCChE1lDiB_j-400.webp 400w",
+     "alt": "Wohnzimmer — Linden Penthouse, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1MslU7S5X8gIEp-200.webp",
+     "srcset": "/img/p/1MslU7S5X8gIEp-200.webp 200w, /img/p/1MslU7S5X8gIEp-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1YQyhjEui9fb6v-200.webp",
+     "srcset": "/img/p/1YQyhjEui9fb6v-200.webp 200w, /img/p/1YQyhjEui9fb6v-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1b9YTkSJVqBhw--200.webp",
+     "srcset": "/img/p/1b9YTkSJVqBhw--200.webp 200w, /img/p/1b9YTkSJVqBhw--400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1x1AqXqQMEpCTa-200.webp",
+     "srcset": "/img/p/1x1AqXqQMEpCTa-200.webp 200w, /img/p/1x1AqXqQMEpCTa-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lE1pxDZXpKRFj-200.webp",
+     "srcset": "/img/p/1lE1pxDZXpKRFj-200.webp 200w, /img/p/1lE1pxDZXpKRFj-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1DhkksToobvm0e-200.webp",
+     "srcset": "/img/p/1DhkksToobvm0e-200.webp 200w, /img/p/1DhkksToobvm0e-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/19ArObxrWErpUm-200.webp",
+     "srcset": "/img/p/19ArObxrWErpUm-200.webp 200w, /img/p/19ArObxrWErpUm-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1gC1rPYVJ4DhhN-200.webp",
+     "srcset": "/img/p/1gC1rPYVJ4DhhN-200.webp 200w, /img/p/1gC1rPYVJ4DhhN-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1fSrbAysVw0K7a-200.webp",
+     "srcset": "/img/p/1fSrbAysVw0K7a-200.webp 200w, /img/p/1fSrbAysVw0K7a-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1c0Ql6Y2LIOhH5-200.webp",
+     "srcset": "/img/p/1c0Ql6Y2LIOhH5-200.webp 200w, /img/p/1c0Ql6Y2LIOhH5-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Fu2eZs4z4crzg-200.webp",
+     "srcset": "/img/p/1Fu2eZs4z4crzg-200.webp 200w, /img/p/1Fu2eZs4z4crzg-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1IykEngWV1O-Uq-200.webp",
+     "srcset": "/img/p/1IykEngWV1O-Uq-200.webp 200w, /img/p/1IykEngWV1O-Uq-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/11ThcnWJv7oBOo-200.webp",
+     "srcset": "/img/p/11ThcnWJv7oBOo-200.webp 200w, /img/p/11ThcnWJv7oBOo-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1WCwE-qMQJujwW-200.webp",
+     "srcset": "/img/p/1WCwE-qMQJujwW-200.webp 200w, /img/p/1WCwE-qMQJujwW-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1fFKUPdtKlwDtW-200.webp",
+     "srcset": "/img/p/1fFKUPdtKlwDtW-200.webp 200w, /img/p/1fFKUPdtKlwDtW-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1kat7cwlDf9ObO-200.webp",
+     "srcset": "/img/p/1kat7cwlDf9ObO-200.webp 200w, /img/p/1kat7cwlDf9ObO-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1BCdKtQruEmUXf-200.webp",
+     "srcset": "/img/p/1BCdKtQruEmUXf-200.webp 200w, /img/p/1BCdKtQruEmUXf-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1dluqRbX5p_Qdv-200.webp",
+     "srcset": "/img/p/1dluqRbX5p_Qdv-200.webp 200w, /img/p/1dluqRbX5p_Qdv-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1GKWyFLbcWTUNl-200.webp",
+     "srcset": "/img/p/1GKWyFLbcWTUNl-200.webp 200w, /img/p/1GKWyFLbcWTUNl-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/187RztEpyNUogl-200.webp",
+     "srcset": "/img/p/187RztEpyNUogl-200.webp 200w, /img/p/187RztEpyNUogl-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HuKCym7R1ikkL-200.webp",
+     "srcset": "/img/p/1HuKCym7R1ikkL-200.webp 200w, /img/p/1HuKCym7R1ikkL-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1iQklrtkJCKrmh-200.webp",
+     "srcset": "/img/p/1iQklrtkJCKrmh-200.webp 200w, /img/p/1iQklrtkJCKrmh-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1cxjOAv1Fd7BsT-200.webp",
+     "srcset": "/img/p/1cxjOAv1Fd7BsT-200.webp 200w, /img/p/1cxjOAv1Fd7BsT-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1RUJoBheH2sI47-200.webp",
+     "srcset": "/img/p/1RUJoBheH2sI47-200.webp 200w, /img/p/1RUJoBheH2sI47-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/13iDLcLcjNr3SY-200.webp",
+     "srcset": "/img/p/13iDLcLcjNr3SY-200.webp 200w, /img/p/13iDLcLcjNr3SY-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/14Mhy_AcLnZZYO-200.webp",
+     "srcset": "/img/p/14Mhy_AcLnZZYO-200.webp 200w, /img/p/14Mhy_AcLnZZYO-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1OuMeOIFVzsx7e-200.webp",
+     "srcset": "/img/p/1OuMeOIFVzsx7e-200.webp 200w, /img/p/1OuMeOIFVzsx7e-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Pw--cSelIP7vy-200.webp",
+     "srcset": "/img/p/1Pw--cSelIP7vy-200.webp 200w, /img/p/1Pw--cSelIP7vy-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1yiFYUYUtRfEMj-200.webp",
+     "srcset": "/img/p/1yiFYUYUtRfEMj-200.webp 200w, /img/p/1yiFYUYUtRfEMj-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Q9uD6p3iqwKQ7-200.webp",
+     "srcset": "/img/p/1Q9uD6p3iqwKQ7-200.webp 200w, /img/p/1Q9uD6p3iqwKQ7-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1T7PBl0ZZxj7Bv-200.webp",
+     "srcset": "/img/p/1T7PBl0ZZxj7Bv-200.webp 200w, /img/p/1T7PBl0ZZxj7Bv-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_Nh4kxLVbFsqN-200.webp",
+     "srcset": "/img/p/1_Nh4kxLVbFsqN-200.webp 200w, /img/p/1_Nh4kxLVbFsqN-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HWFEcjRVqjGo7-200.webp",
+     "srcset": "/img/p/1HWFEcjRVqjGo7-200.webp 200w, /img/p/1HWFEcjRVqjGo7-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/12eGAWlJE7VOvp-200.webp",
+     "srcset": "/img/p/12eGAWlJE7VOvp-200.webp 200w, /img/p/12eGAWlJE7VOvp-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1V_Qb5Njftlz2W-200.webp",
+     "srcset": "/img/p/1V_Qb5Njftlz2W-200.webp 200w, /img/p/1V_Qb5Njftlz2W-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1IBgBwDKUlwh1o-200.webp",
+     "srcset": "/img/p/1IBgBwDKUlwh1o-200.webp 200w, /img/p/1IBgBwDKUlwh1o-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1RjOLwE01go4pe-200.webp",
+     "srcset": "/img/p/1RjOLwE01go4pe-200.webp 200w, /img/p/1RjOLwE01go4pe-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1WXGcGF6fzjauK-200.webp",
+     "srcset": "/img/p/1WXGcGF6fzjauK-200.webp 200w, /img/p/1WXGcGF6fzjauK-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1j3cMDE8ffDVNn-200.webp",
+     "srcset": "/img/p/1j3cMDE8ffDVNn-200.webp 200w, /img/p/1j3cMDE8ffDVNn-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1YMz9YwRxyBEJ5-200.webp",
+     "srcset": "/img/p/1YMz9YwRxyBEJ5-200.webp 200w, /img/p/1YMz9YwRxyBEJ5-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1CjZUwt4ciGuRy-200.webp",
+     "srcset": "/img/p/1CjZUwt4ciGuRy-200.webp 200w, /img/p/1CjZUwt4ciGuRy-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1sfvYfb9zrCYIC-200.webp",
+     "srcset": "/img/p/1sfvYfb9zrCYIC-200.webp 200w, /img/p/1sfvYfb9zrCYIC-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1e_eYgoeMFIrvD-200.webp",
+     "srcset": "/img/p/1e_eYgoeMFIrvD-200.webp 200w, /img/p/1e_eYgoeMFIrvD-400.webp 400w, /img/p/1e_eYgoeMFIrvD-600.webp 600w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1rZPby_xRJQsRe-200.webp",
+     "srcset": "/img/p/1rZPby_xRJQsRe-200.webp 200w, /img/p/1rZPby_xRJQsRe-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/18kNtjY6K1n78t-200.webp",
+     "srcset": "/img/p/18kNtjY6K1n78t-200.webp 200w, /img/p/18kNtjY6K1n78t-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lYPxZZvFEs1Bf-200.webp",
+     "srcset": "/img/p/1lYPxZZvFEs1Bf-200.webp 200w, /img/p/1lYPxZZvFEs1Bf-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/11x1Z-x8MGTwpa-200.webp",
+     "srcset": "/img/p/11x1Z-x8MGTwpa-200.webp 200w, /img/p/11x1Z-x8MGTwpa-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1IydOEMBSXya6--200.webp",
+     "srcset": "/img/p/1IydOEMBSXya6--200.webp 200w, /img/p/1IydOEMBSXya6--400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1otkSP_nBQBYAN-200.webp",
+     "srcset": "/img/p/1otkSP_nBQBYAN-200.webp 200w, /img/p/1otkSP_nBQBYAN-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Yxk-voKENzinG-200.webp",
+     "srcset": "/img/p/1Yxk-voKENzinG-200.webp 200w, /img/p/1Yxk-voKENzinG-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1L7HEkvG-6eRKI-200.webp",
+     "srcset": "/img/p/1L7HEkvG-6eRKI-200.webp 200w, /img/p/1L7HEkvG-6eRKI-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Lahhq3ZtD_n2f-200.webp",
+     "srcset": "/img/p/1Lahhq3ZtD_n2f-200.webp 200w, /img/p/1Lahhq3ZtD_n2f-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1i5u7JWM5r7BbK-200.webp",
+     "srcset": "/img/p/1i5u7JWM5r7BbK-200.webp 200w, /img/p/1i5u7JWM5r7BbK-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1akxgm0ODhTGwW-200.webp",
+     "srcset": "/img/p/1akxgm0ODhTGwW-200.webp 200w, /img/p/1akxgm0ODhTGwW-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Z_7aJVUziIARk-200.webp",
+     "srcset": "/img/p/1Z_7aJVUziIARk-200.webp 200w, /img/p/1Z_7aJVUziIARk-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Lpdhtf4wuGd8R-200.webp",
+     "srcset": "/img/p/1Lpdhtf4wuGd8R-200.webp 200w, /img/p/1Lpdhtf4wuGd8R-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/18-IOQQk1Laxqn-200.webp",
+     "srcset": "/img/p/18-IOQQk1Laxqn-200.webp 200w, /img/p/18-IOQQk1Laxqn-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/13NkL8yHyETmfd-200.webp",
+     "srcset": "/img/p/13NkL8yHyETmfd-200.webp 200w, /img/p/13NkL8yHyETmfd-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1iXcp-VRdqzctf-200.webp",
+     "srcset": "/img/p/1iXcp-VRdqzctf-200.webp 200w, /img/p/1iXcp-VRdqzctf-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1-3RvithAlVcIa-200.webp",
+     "srcset": "/img/p/1-3RvithAlVcIa-200.webp 200w, /img/p/1-3RvithAlVcIa-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Rc4yBG2GjH2ew-200.webp",
+     "srcset": "/img/p/1Rc4yBG2GjH2ew-200.webp 200w, /img/p/1Rc4yBG2GjH2ew-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Pl-NisqrK6mjV-200.webp",
+     "srcset": "/img/p/1Pl-NisqrK6mjV-200.webp 200w, /img/p/1Pl-NisqrK6mjV-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Bfg4NaTGHgcwv-200.webp",
+     "srcset": "/img/p/1Bfg4NaTGHgcwv-200.webp 200w, /img/p/1Bfg4NaTGHgcwv-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Jkv3NVr5p2TpK-200.webp",
+     "srcset": "/img/p/1Jkv3NVr5p2TpK-200.webp 200w, /img/p/1Jkv3NVr5p2TpK-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1IWsdUHuStry1Y-200.webp",
+     "srcset": "/img/p/1IWsdUHuStry1Y-200.webp 200w, /img/p/1IWsdUHuStry1Y-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Dk_RntQ60BiP4-200.webp",
+     "srcset": "/img/p/1Dk_RntQ60BiP4-200.webp 200w, /img/p/1Dk_RntQ60BiP4-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1brn7j01xbAU9a-200.webp",
+     "srcset": "/img/p/1brn7j01xbAU9a-200.webp 200w, /img/p/1brn7j01xbAU9a-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1WoBTKTTCNVuoM-200.webp",
+     "srcset": "/img/p/1WoBTKTTCNVuoM-200.webp 200w, /img/p/1WoBTKTTCNVuoM-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1f8h2r5MBlLLf_-200.webp",
+     "srcset": "/img/p/1f8h2r5MBlLLf_-200.webp 200w, /img/p/1f8h2r5MBlLLf_-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HeFgM07asoepa-200.webp",
+     "srcset": "/img/p/1HeFgM07asoepa-200.webp 200w, /img/p/1HeFgM07asoepa-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/15syC3aiPnkoZu-200.webp",
+     "srcset": "/img/p/15syC3aiPnkoZu-200.webp 200w, /img/p/15syC3aiPnkoZu-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/12W1z8tHakMPyY-200.webp",
+     "srcset": "/img/p/12W1z8tHakMPyY-200.webp 200w, /img/p/12W1z8tHakMPyY-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1U0Sp8kHlKRGeB-200.webp",
+     "srcset": "/img/p/1U0Sp8kHlKRGeB-200.webp 200w, /img/p/1U0Sp8kHlKRGeB-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1TG4fd5dFRbtF5-200.webp",
+     "srcset": "/img/p/1TG4fd5dFRbtF5-200.webp 200w, /img/p/1TG4fd5dFRbtF5-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1G15Hv3Q7dXimr-200.webp",
+     "srcset": "/img/p/1G15Hv3Q7dXimr-200.webp 200w, /img/p/1G15Hv3Q7dXimr-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1isgu-MMJdedeI-200.webp",
+     "srcset": "/img/p/1isgu-MMJdedeI-200.webp 200w, /img/p/1isgu-MMJdedeI-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1JEV6UfUAxF1d6-200.webp",
+     "srcset": "/img/p/1JEV6UfUAxF1d6-200.webp 200w, /img/p/1JEV6UfUAxF1d6-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Wrn8k_L70K4Ou-200.webp",
+     "srcset": "/img/p/1Wrn8k_L70K4Ou-200.webp 200w, /img/p/1Wrn8k_L70K4Ou-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1yPubfKj2nru3V-200.webp",
+     "srcset": "/img/p/1yPubfKj2nru3V-200.webp 200w, /img/p/1yPubfKj2nru3V-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1qHvFdUK1NZCoT-200.webp",
+     "srcset": "/img/p/1qHvFdUK1NZCoT-200.webp 200w, /img/p/1qHvFdUK1NZCoT-400.webp 400w",
+     "alt": "Linden Penthouse — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-hoda-estate",
+   "h2": "Hoda Estate",
+   "href": "/de/proekty/hoda-estate",
+   "status": "Designprojekt",
+   "meta": "Karpaten · 180 m²",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Hoda Estate",
+   "items": [
+    {
+     "img": "img/p/1iBBOM6KWCT5qH-200.webp",
+     "srcset": "/img/p/1iBBOM6KWCT5qH-200.webp 200w, /img/p/1iBBOM6KWCT5qH-400.webp 400w",
+     "alt": "Wohnzimmer — Hoda Estate, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1FRa0FI6iMHK5L-200.webp",
+     "srcset": "/img/p/1FRa0FI6iMHK5L-200.webp 200w, /img/p/1FRa0FI6iMHK5L-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1f3m1_qf4mDosh-200.webp",
+     "srcset": "/img/p/1f3m1_qf4mDosh-200.webp 200w, /img/p/1f3m1_qf4mDosh-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HZT-E30rREI7d-200.webp",
+     "srcset": "/img/p/1HZT-E30rREI7d-200.webp 200w, /img/p/1HZT-E30rREI7d-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1iyezgpYu1pVWy-200.webp",
+     "srcset": "/img/p/1iyezgpYu1pVWy-200.webp 200w, /img/p/1iyezgpYu1pVWy-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1m9fVTTPjd6nQs-200.webp",
+     "srcset": "/img/p/1m9fVTTPjd6nQs-200.webp 200w, /img/p/1m9fVTTPjd6nQs-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Ffy7Evj6CelA3-200.webp",
+     "srcset": "/img/p/1Ffy7Evj6CelA3-200.webp 200w, /img/p/1Ffy7Evj6CelA3-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Y6PqxKL5KtU53-200.webp",
+     "srcset": "/img/p/1Y6PqxKL5KtU53-200.webp 200w, /img/p/1Y6PqxKL5KtU53-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1o-vUDoDVUBa-X-200.webp",
+     "srcset": "/img/p/1o-vUDoDVUBa-X-200.webp 200w, /img/p/1o-vUDoDVUBa-X-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1-3lAYiUZ_jLh3-200.webp",
+     "srcset": "/img/p/1-3lAYiUZ_jLh3-200.webp 200w, /img/p/1-3lAYiUZ_jLh3-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/13j9IlxqOPHY1p-200.webp",
+     "srcset": "/img/p/13j9IlxqOPHY1p-200.webp 200w, /img/p/13j9IlxqOPHY1p-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/12zoOFlf7uOKqM-200.webp",
+     "srcset": "/img/p/12zoOFlf7uOKqM-200.webp 200w, /img/p/12zoOFlf7uOKqM-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1MpOUnDEROFuCr-200.webp",
+     "srcset": "/img/p/1MpOUnDEROFuCr-200.webp 200w, /img/p/1MpOUnDEROFuCr-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/13RmgNBFtsA0AY-200.webp",
+     "srcset": "/img/p/13RmgNBFtsA0AY-200.webp 200w, /img/p/13RmgNBFtsA0AY-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Zhf18Qml-pUt0-200.webp",
+     "srcset": "/img/p/1Zhf18Qml-pUt0-200.webp 200w, /img/p/1Zhf18Qml-pUt0-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/11uU5XQekdzPi5-200.webp",
+     "srcset": "/img/p/11uU5XQekdzPi5-200.webp 200w, /img/p/11uU5XQekdzPi5-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1RiMHPeqh-PxGU-200.webp",
+     "srcset": "/img/p/1RiMHPeqh-PxGU-200.webp 200w, /img/p/1RiMHPeqh-PxGU-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1qj_LQIICs1I8e-200.webp",
+     "srcset": "/img/p/1qj_LQIICs1I8e-200.webp 200w, /img/p/1qj_LQIICs1I8e-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1zCpl2Feuh3xlW-200.webp",
+     "srcset": "/img/p/1zCpl2Feuh3xlW-200.webp 200w, /img/p/1zCpl2Feuh3xlW-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1t4GTVS3iV3us6-200.webp",
+     "srcset": "/img/p/1t4GTVS3iV3us6-200.webp 200w, /img/p/1t4GTVS3iV3us6-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1SaS14g1Av3txv-200.webp",
+     "srcset": "/img/p/1SaS14g1Av3txv-200.webp 200w, /img/p/1SaS14g1Av3txv-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1VmGRrBa7aRpc3-200.webp",
+     "srcset": "/img/p/1VmGRrBa7aRpc3-200.webp 200w, /img/p/1VmGRrBa7aRpc3-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1nuDExj-9LT-MK-200.webp",
+     "srcset": "/img/p/1nuDExj-9LT-MK-200.webp 200w, /img/p/1nuDExj-9LT-MK-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1I2LWv_RSXvRPR-200.webp",
+     "srcset": "/img/p/1I2LWv_RSXvRPR-200.webp 200w, /img/p/1I2LWv_RSXvRPR-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1JanjcwRCWZOAX-200.webp",
+     "srcset": "/img/p/1JanjcwRCWZOAX-200.webp 200w, /img/p/1JanjcwRCWZOAX-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1cgTG7hNGkPoJH-200.webp",
+     "srcset": "/img/p/1cgTG7hNGkPoJH-200.webp 200w, /img/p/1cgTG7hNGkPoJH-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ZxfuzTphpRnvo-200.webp",
+     "srcset": "/img/p/1ZxfuzTphpRnvo-200.webp 200w, /img/p/1ZxfuzTphpRnvo-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/16mDVNA7pOOoDB-200.webp",
+     "srcset": "/img/p/16mDVNA7pOOoDB-200.webp 200w, /img/p/16mDVNA7pOOoDB-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1rU6Ji265Gp1SW-200.webp",
+     "srcset": "/img/p/1rU6Ji265Gp1SW-200.webp 200w, /img/p/1rU6Ji265Gp1SW-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/17-m1K-FeUWgxA-200.webp",
+     "srcset": "/img/p/17-m1K-FeUWgxA-200.webp 200w, /img/p/17-m1K-FeUWgxA-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1FyiKr_amieUqQ-200.webp",
+     "srcset": "/img/p/1FyiKr_amieUqQ-200.webp 200w, /img/p/1FyiKr_amieUqQ-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ray7lK4zBxSdq-200.webp",
+     "srcset": "/img/p/1ray7lK4zBxSdq-200.webp 200w, /img/p/1ray7lK4zBxSdq-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1f8Z91L2ZOgewH-200.webp",
+     "srcset": "/img/p/1f8Z91L2ZOgewH-200.webp 200w, /img/p/1f8Z91L2ZOgewH-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1QyqeFi8nt3_3r-200.webp",
+     "srcset": "/img/p/1QyqeFi8nt3_3r-200.webp 200w, /img/p/1QyqeFi8nt3_3r-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/16Iazna88efu-R-200.webp",
+     "srcset": "/img/p/16Iazna88efu-R-200.webp 200w, /img/p/16Iazna88efu-R-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1exY7YTdFEf7F--200.webp",
+     "srcset": "/img/p/1exY7YTdFEf7F--200.webp 200w, /img/p/1exY7YTdFEf7F--400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HTdBNY-oY5p07-200.webp",
+     "srcset": "/img/p/1HTdBNY-oY5p07-200.webp 200w, /img/p/1HTdBNY-oY5p07-400.webp 400w, /img/p/1HTdBNY-oY5p07-600.webp 600w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1NbmJH4BngwrQW-200.webp",
+     "srcset": "/img/p/1NbmJH4BngwrQW-200.webp 200w, /img/p/1NbmJH4BngwrQW-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1OYcvF0MFJ6SVm-200.webp",
+     "srcset": "/img/p/1OYcvF0MFJ6SVm-200.webp 200w, /img/p/1OYcvF0MFJ6SVm-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1T5zqJAliyiEar-200.webp",
+     "srcset": "/img/p/1T5zqJAliyiEar-200.webp 200w, /img/p/1T5zqJAliyiEar-400.webp 400w",
+     "alt": "Hoda Estate — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-petrivtsi-house",
+   "h2": "Petrivtsi House",
+   "href": "/de/proekty/petrivtsi-house",
+   "status": "Designprojekt",
+   "meta": "Petriwzi · 320 m²",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Petrivtsi House",
+   "items": [
+    {
+     "img": "img/p/1co4thni1Q8_1J-200.webp",
+     "srcset": "/img/p/1co4thni1Q8_1J-200.webp 200w, /img/p/1co4thni1Q8_1J-400.webp 400w",
+     "alt": "Wohnzimmer mit Kamin — Petrivtsi House, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1NVeaQcV2TZSN5-200.webp",
+     "srcset": "/img/p/1NVeaQcV2TZSN5-200.webp 200w, /img/p/1NVeaQcV2TZSN5-400.webp 400w, /img/p/1NVeaQcV2TZSN5-600.webp 600w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1OR5i7-rm1k0MU-200.webp",
+     "srcset": "/img/p/1OR5i7-rm1k0MU-200.webp 200w, /img/p/1OR5i7-rm1k0MU-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Xdje8N1V14_0X-200.webp",
+     "srcset": "/img/p/1Xdje8N1V14_0X-200.webp 200w, /img/p/1Xdje8N1V14_0X-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1szuqdURge8MMs-200.webp",
+     "srcset": "/img/p/1szuqdURge8MMs-200.webp 200w, /img/p/1szuqdURge8MMs-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1jOeC33fekBMwG-200.webp",
+     "srcset": "/img/p/1jOeC33fekBMwG-200.webp 200w, /img/p/1jOeC33fekBMwG-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1J4aJenwLdzYp4-200.webp",
+     "srcset": "/img/p/1J4aJenwLdzYp4-200.webp 200w, /img/p/1J4aJenwLdzYp4-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1K7ZpZYr2AxAEw-200.webp",
+     "srcset": "/img/p/1K7ZpZYr2AxAEw-200.webp 200w, /img/p/1K7ZpZYr2AxAEw-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1glqe1jX7VTybl-200.webp",
+     "srcset": "/img/p/1glqe1jX7VTybl-200.webp 200w, /img/p/1glqe1jX7VTybl-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1A6d14UC4Yii3m-200.webp",
+     "srcset": "/img/p/1A6d14UC4Yii3m-200.webp 200w, /img/p/1A6d14UC4Yii3m-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1zyjkWscWS5R5C-200.webp",
+     "srcset": "/img/p/1zyjkWscWS5R5C-200.webp 200w, /img/p/1zyjkWscWS5R5C-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1pR-VwCb_YEKGc-200.webp",
+     "srcset": "/img/p/1pR-VwCb_YEKGc-200.webp 200w, /img/p/1pR-VwCb_YEKGc-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1l8ggYd-Xu5PuM-200.webp",
+     "srcset": "/img/p/1l8ggYd-Xu5PuM-200.webp 200w, /img/p/1l8ggYd-Xu5PuM-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/134qL50QN_2iD3-200.webp",
+     "srcset": "/img/p/134qL50QN_2iD3-200.webp 200w, /img/p/134qL50QN_2iD3-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1v3Yxy89lz6qSM-200.webp",
+     "srcset": "/img/p/1v3Yxy89lz6qSM-200.webp 200w, /img/p/1v3Yxy89lz6qSM-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1GKGW5SVI27Ili-200.webp",
+     "srcset": "/img/p/1GKGW5SVI27Ili-200.webp 200w, /img/p/1GKGW5SVI27Ili-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/15xFrkizdxDpRJ-200.webp",
+     "srcset": "/img/p/15xFrkizdxDpRJ-200.webp 200w, /img/p/15xFrkizdxDpRJ-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1nMioGF3iWpZHx-200.webp",
+     "srcset": "/img/p/1nMioGF3iWpZHx-200.webp 200w, /img/p/1nMioGF3iWpZHx-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/12byC_4WtgNn2a-200.webp",
+     "srcset": "/img/p/12byC_4WtgNn2a-200.webp 200w, /img/p/12byC_4WtgNn2a-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lcpRWY3UDAbYC-200.webp",
+     "srcset": "/img/p/1lcpRWY3UDAbYC-200.webp 200w, /img/p/1lcpRWY3UDAbYC-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1b7sIT2y5gF3a6-200.webp",
+     "srcset": "/img/p/1b7sIT2y5gF3a6-200.webp 200w, /img/p/1b7sIT2y5gF3a6-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1pP_CP88NMjrVD-200.webp",
+     "srcset": "/img/p/1pP_CP88NMjrVD-200.webp 200w, /img/p/1pP_CP88NMjrVD-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1T-Ag7cLOo-ASt-200.webp",
+     "srcset": "/img/p/1T-Ag7cLOo-ASt-200.webp 200w, /img/p/1T-Ag7cLOo-ASt-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HLbEkEaWIFEhr-200.webp",
+     "srcset": "/img/p/1HLbEkEaWIFEhr-200.webp 200w, /img/p/1HLbEkEaWIFEhr-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/17i3pfadTYlWle-200.webp",
+     "srcset": "/img/p/17i3pfadTYlWle-200.webp 200w, /img/p/17i3pfadTYlWle-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1UlNI0F7lOaKE5-200.webp",
+     "srcset": "/img/p/1UlNI0F7lOaKE5-200.webp 200w, /img/p/1UlNI0F7lOaKE5-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1JABMXMbXVWrXP-200.webp",
+     "srcset": "/img/p/1JABMXMbXVWrXP-200.webp 200w, /img/p/1JABMXMbXVWrXP-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1m96npPzUMmGnZ-200.webp",
+     "srcset": "/img/p/1m96npPzUMmGnZ-200.webp 200w, /img/p/1m96npPzUMmGnZ-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1m0bN_QL4_s0Li-200.webp",
+     "srcset": "/img/p/1m0bN_QL4_s0Li-200.webp 200w, /img/p/1m0bN_QL4_s0Li-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1BCMJKrx7QL5rm-200.webp",
+     "srcset": "/img/p/1BCMJKrx7QL5rm-200.webp 200w, /img/p/1BCMJKrx7QL5rm-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1hPjLiqvYG9Cka-200.webp",
+     "srcset": "/img/p/1hPjLiqvYG9Cka-200.webp 200w, /img/p/1hPjLiqvYG9Cka-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Ja3nopvE75gMm-200.webp",
+     "srcset": "/img/p/1Ja3nopvE75gMm-200.webp 200w, /img/p/1Ja3nopvE75gMm-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/183DWyhu0rYayX-200.webp",
+     "srcset": "/img/p/183DWyhu0rYayX-200.webp 200w, /img/p/183DWyhu0rYayX-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1thd0SkaGOcb-N-200.webp",
+     "srcset": "/img/p/1thd0SkaGOcb-N-200.webp 200w, /img/p/1thd0SkaGOcb-N-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1YYr4G2-4szbqz-200.webp",
+     "srcset": "/img/p/1YYr4G2-4szbqz-200.webp 200w, /img/p/1YYr4G2-4szbqz-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1E2tior8Z6MCzS-200.webp",
+     "srcset": "/img/p/1E2tior8Z6MCzS-200.webp 200w, /img/p/1E2tior8Z6MCzS-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1SnJcdFVj-W4kk-200.webp",
+     "srcset": "/img/p/1SnJcdFVj-W4kk-200.webp 200w, /img/p/1SnJcdFVj-W4kk-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1gXiWvuON9L6XT-200.webp",
+     "srcset": "/img/p/1gXiWvuON9L6XT-200.webp 200w, /img/p/1gXiWvuON9L6XT-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ZRiEBBWt3pzrB-200.webp",
+     "srcset": "/img/p/1ZRiEBBWt3pzrB-200.webp 200w, /img/p/1ZRiEBBWt3pzrB-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1nqFOoTfr5BDtv-200.webp",
+     "srcset": "/img/p/1nqFOoTfr5BDtv-200.webp 200w, /img/p/1nqFOoTfr5BDtv-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1bXRenK3si4Oil-200.webp",
+     "srcset": "/img/p/1bXRenK3si4Oil-200.webp 200w, /img/p/1bXRenK3si4Oil-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1jbfw_MkM3Br25-200.webp",
+     "srcset": "/img/p/1jbfw_MkM3Br25-200.webp 200w, /img/p/1jbfw_MkM3Br25-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1GcUh21VaVxeV7-200.webp",
+     "srcset": "/img/p/1GcUh21VaVxeV7-200.webp 200w, /img/p/1GcUh21VaVxeV7-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1beuMvJ3eIicS3-200.webp",
+     "srcset": "/img/p/1beuMvJ3eIicS3-200.webp 200w, /img/p/1beuMvJ3eIicS3-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1UcE9Pm2-KQ_9o-200.webp",
+     "srcset": "/img/p/1UcE9Pm2-KQ_9o-200.webp 200w, /img/p/1UcE9Pm2-KQ_9o-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1UBZb1-xu2725F-200.webp",
+     "srcset": "/img/p/1UBZb1-xu2725F-200.webp 200w, /img/p/1UBZb1-xu2725F-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1cXuBYxjG-ixBc-200.webp",
+     "srcset": "/img/p/1cXuBYxjG-ixBc-200.webp 200w, /img/p/1cXuBYxjG-ixBc-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1rWB_3T_XpHP7W-200.webp",
+     "srcset": "/img/p/1rWB_3T_XpHP7W-200.webp 200w, /img/p/1rWB_3T_XpHP7W-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/104gxpc3F-eqXH-200.webp",
+     "srcset": "/img/p/104gxpc3F-eqXH-200.webp 200w, /img/p/104gxpc3F-eqXH-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Wddnm8ECqwlvu-200.webp",
+     "srcset": "/img/p/1Wddnm8ECqwlvu-200.webp 200w, /img/p/1Wddnm8ECqwlvu-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1OgiLv-eSQr9Lo-200.webp",
+     "srcset": "/img/p/1OgiLv-eSQr9Lo-200.webp 200w, /img/p/1OgiLv-eSQr9Lo-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_5-J-ZcYxvLIt-200.webp",
+     "srcset": "/img/p/1_5-J-ZcYxvLIt-200.webp 200w, /img/p/1_5-J-ZcYxvLIt-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1x7SPmVpbqnuTE-200.webp",
+     "srcset": "/img/p/1x7SPmVpbqnuTE-200.webp 200w, /img/p/1x7SPmVpbqnuTE-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1RH7Th7ibQl5dI-200.webp",
+     "srcset": "/img/p/1RH7Th7ibQl5dI-200.webp 200w, /img/p/1RH7Th7ibQl5dI-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1c0MGdozaefvAa-200.webp",
+     "srcset": "/img/p/1c0MGdozaefvAa-200.webp 200w, /img/p/1c0MGdozaefvAa-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1SGDKLtQtxQg-k-200.webp",
+     "srcset": "/img/p/1SGDKLtQtxQg-k-200.webp 200w, /img/p/1SGDKLtQtxQg-k-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1gxdyfKSoN4dN4-200.webp",
+     "srcset": "/img/p/1gxdyfKSoN4dN4-200.webp 200w, /img/p/1gxdyfKSoN4dN4-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/16CJ3tcwMBWNLI-200.webp",
+     "srcset": "/img/p/16CJ3tcwMBWNLI-200.webp 200w, /img/p/16CJ3tcwMBWNLI-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1mvwG3vvNsU1_Z-200.webp",
+     "srcset": "/img/p/1mvwG3vvNsU1_Z-200.webp 200w, /img/p/1mvwG3vvNsU1_Z-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1eG6gNNPAdSYy8-200.webp",
+     "srcset": "/img/p/1eG6gNNPAdSYy8-200.webp 200w, /img/p/1eG6gNNPAdSYy8-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1AQLS0GlYpzg-1-200.webp",
+     "srcset": "/img/p/1AQLS0GlYpzg-1-200.webp 200w, /img/p/1AQLS0GlYpzg-1-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1p_MqveKjiZ1Y9-200.webp",
+     "srcset": "/img/p/1p_MqveKjiZ1Y9-200.webp 200w, /img/p/1p_MqveKjiZ1Y9-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1gwX4B45BcQ2Z--200.webp",
+     "srcset": "/img/p/1gwX4B45BcQ2Z--200.webp 200w, /img/p/1gwX4B45BcQ2Z--400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1FRhJqhEK_8q_7-200.webp",
+     "srcset": "/img/p/1FRhJqhEK_8q_7-200.webp 200w, /img/p/1FRhJqhEK_8q_7-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1grj-fg6ll6gbY-200.webp",
+     "srcset": "/img/p/1grj-fg6ll6gbY-200.webp 200w, /img/p/1grj-fg6ll6gbY-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HSKDBsjnZxbvO-200.webp",
+     "srcset": "/img/p/1HSKDBsjnZxbvO-200.webp 200w, /img/p/1HSKDBsjnZxbvO-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1N5oaUn_7eYM7i-200.webp",
+     "srcset": "/img/p/1N5oaUn_7eYM7i-200.webp 200w, /img/p/1N5oaUn_7eYM7i-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_AD69plhPISQt-200.webp",
+     "srcset": "/img/p/1_AD69plhPISQt-200.webp 200w, /img/p/1_AD69plhPISQt-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lW6SF-extZy1o-200.webp",
+     "srcset": "/img/p/1lW6SF-extZy1o-200.webp 200w, /img/p/1lW6SF-extZy1o-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1iK2P98TWjnkPG-200.webp",
+     "srcset": "/img/p/1iK2P98TWjnkPG-200.webp 200w, /img/p/1iK2P98TWjnkPG-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1O-vYddPDf0xVB-200.webp",
+     "srcset": "/img/p/1O-vYddPDf0xVB-200.webp 200w, /img/p/1O-vYddPDf0xVB-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_1o8zEHlbw_3f-200.webp",
+     "srcset": "/img/p/1_1o8zEHlbw_3f-200.webp 200w, /img/p/1_1o8zEHlbw_3f-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1T8jacyJtIwFJS-200.webp",
+     "srcset": "/img/p/1T8jacyJtIwFJS-200.webp 200w, /img/p/1T8jacyJtIwFJS-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1sY3ElRa0yzCXw-200.webp",
+     "srcset": "/img/p/1sY3ElRa0yzCXw-200.webp 200w, /img/p/1sY3ElRa0yzCXw-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1W7LnLomDSoW1g-200.webp",
+     "srcset": "/img/p/1W7LnLomDSoW1g-200.webp 200w, /img/p/1W7LnLomDSoW1g-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1iu9bUZ_Ob-0m9-200.webp",
+     "srcset": "/img/p/1iu9bUZ_Ob-0m9-200.webp 200w, /img/p/1iu9bUZ_Ob-0m9-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1QEJ_y0yTWVLTH-200.webp",
+     "srcset": "/img/p/1QEJ_y0yTWVLTH-200.webp 200w, /img/p/1QEJ_y0yTWVLTH-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1JYmujFmkKxfhc-200.webp",
+     "srcset": "/img/p/1JYmujFmkKxfhc-200.webp 200w, /img/p/1JYmujFmkKxfhc-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1FwmotKdTE-dg8-200.webp",
+     "srcset": "/img/p/1FwmotKdTE-dg8-200.webp 200w, /img/p/1FwmotKdTE-dg8-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Y3tZjyCbvQcxV-200.webp",
+     "srcset": "/img/p/1Y3tZjyCbvQcxV-200.webp 200w, /img/p/1Y3tZjyCbvQcxV-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/19G7lIe351hFxc-200.webp",
+     "srcset": "/img/p/19G7lIe351hFxc-200.webp 200w, /img/p/19G7lIe351hFxc-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/11pzKOcaUQzi9g-200.webp",
+     "srcset": "/img/p/11pzKOcaUQzi9g-200.webp 200w, /img/p/11pzKOcaUQzi9g-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1k5MhWE8biwqRr-200.webp",
+     "srcset": "/img/p/1k5MhWE8biwqRr-200.webp 200w, /img/p/1k5MhWE8biwqRr-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/15sNv3vkwz_kbA-200.webp",
+     "srcset": "/img/p/15sNv3vkwz_kbA-200.webp 200w, /img/p/15sNv3vkwz_kbA-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1X9W8Bc-yabPwx-200.webp",
+     "srcset": "/img/p/1X9W8Bc-yabPwx-200.webp 200w, /img/p/1X9W8Bc-yabPwx-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1sRuDe0pKB61H5-200.webp",
+     "srcset": "/img/p/1sRuDe0pKB61H5-200.webp 200w, /img/p/1sRuDe0pKB61H5-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1od_s1mJH9vhKC-200.webp",
+     "srcset": "/img/p/1od_s1mJH9vhKC-200.webp 200w, /img/p/1od_s1mJH9vhKC-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1xKnzT_CB5eKX--200.webp",
+     "srcset": "/img/p/1xKnzT_CB5eKX--200.webp 200w, /img/p/1xKnzT_CB5eKX--400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1i3xU9UbrPgeRD-200.webp",
+     "srcset": "/img/p/1i3xU9UbrPgeRD-200.webp 200w, /img/p/1i3xU9UbrPgeRD-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1H_O3iPl8q5VSy-200.webp",
+     "srcset": "/img/p/1H_O3iPl8q5VSy-200.webp 200w, /img/p/1H_O3iPl8q5VSy-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1dlTNZu4nrrbVP-200.webp",
+     "srcset": "/img/p/1dlTNZu4nrrbVP-200.webp 200w, /img/p/1dlTNZu4nrrbVP-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1eBjhdID0d53V5-200.webp",
+     "srcset": "/img/p/1eBjhdID0d53V5-200.webp 200w, /img/p/1eBjhdID0d53V5-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1zNPk4DoKG2oQZ-200.webp",
+     "srcset": "/img/p/1zNPk4DoKG2oQZ-200.webp 200w, /img/p/1zNPk4DoKG2oQZ-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1d0nKTY-P7HOeB-200.webp",
+     "srcset": "/img/p/1d0nKTY-P7HOeB-200.webp 200w, /img/p/1d0nKTY-P7HOeB-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1BokK_giq9_xv2-200.webp",
+     "srcset": "/img/p/1BokK_giq9_xv2-200.webp 200w, /img/p/1BokK_giq9_xv2-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/197Bi23wSzVky7-200.webp",
+     "srcset": "/img/p/197Bi23wSzVky7-200.webp 200w, /img/p/197Bi23wSzVky7-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1popwOOlI6_rc--200.webp",
+     "srcset": "/img/p/1popwOOlI6_rc--200.webp 200w, /img/p/1popwOOlI6_rc--400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1vvl89lH6k6G2Y-200.webp",
+     "srcset": "/img/p/1vvl89lH6k6G2Y-200.webp 200w, /img/p/1vvl89lH6k6G2Y-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1IG75Xz6j3Q76u-200.webp",
+     "srcset": "/img/p/1IG75Xz6j3Q76u-200.webp 200w, /img/p/1IG75Xz6j3Q76u-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Ijh6SNyDO4SON-200.webp",
+     "srcset": "/img/p/1Ijh6SNyDO4SON-200.webp 200w, /img/p/1Ijh6SNyDO4SON-400.webp 400w",
+     "alt": "Petrivtsi House — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-usa-house",
+   "h2": "USA House",
+   "href": "/de/proekty/usa-house",
+   "status": "Designprojekt",
+   "meta": "USA · 420 m²",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: USA House",
+   "items": [
+    {
+     "img": "img/p/1pYk5KBK_ne5Dj-200.webp",
+     "srcset": "/img/p/1pYk5KBK_ne5Dj-200.webp 200w, /img/p/1pYk5KBK_ne5Dj-400.webp 400w",
+     "alt": "Wohnzimmer — USA House, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/18V9n96tOhjKjh-200.webp",
+     "srcset": "/img/p/18V9n96tOhjKjh-200.webp 200w, /img/p/18V9n96tOhjKjh-400.webp 400w",
+     "alt": "Wohnzimmer, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1vWmbYVTmViGgW-200.webp",
+     "srcset": "/img/p/1vWmbYVTmViGgW-200.webp 200w, /img/p/1vWmbYVTmViGgW-400.webp 400w",
+     "alt": "Wohnzimmer, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1JuZ-lq-D6YudJ-200.webp",
+     "srcset": "/img/p/1JuZ-lq-D6YudJ-200.webp 200w, /img/p/1JuZ-lq-D6YudJ-400.webp 400w",
+     "alt": "Wohnzimmer, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1L6z-fyorw1bnO-200.webp",
+     "srcset": "/img/p/1L6z-fyorw1bnO-200.webp 200w, /img/p/1L6z-fyorw1bnO-400.webp 400w",
+     "alt": "Wohnzimmer, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1DKorNRNVwq3mz-200.webp",
+     "srcset": "/img/p/1DKorNRNVwq3mz-200.webp 200w, /img/p/1DKorNRNVwq3mz-400.webp 400w",
+     "alt": "Wohnzimmer, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1eCrCt_UkOax4--200.webp",
+     "srcset": "/img/p/1eCrCt_UkOax4--200.webp 200w, /img/p/1eCrCt_UkOax4--400.webp 400w",
+     "alt": "Wohnzimmer, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1-JbEjk44Nty34-200.webp",
+     "srcset": "/img/p/1-JbEjk44Nty34-200.webp 200w, /img/p/1-JbEjk44Nty34-400.webp 400w",
+     "alt": "Wohnzimmer, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1UHHuNQr53eCnB-200.webp",
+     "srcset": "/img/p/1UHHuNQr53eCnB-200.webp 200w, /img/p/1UHHuNQr53eCnB-400.webp 400w",
+     "alt": "Gästezimmer, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HTayIczxU0tr9-200.webp",
+     "srcset": "/img/p/1HTayIczxU0tr9-200.webp 200w, /img/p/1HTayIczxU0tr9-400.webp 400w",
+     "alt": "Gästezimmer, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Ay_fJySA5Kzxg-200.webp",
+     "srcset": "/img/p/1Ay_fJySA5Kzxg-200.webp 200w, /img/p/1Ay_fJySA5Kzxg-400.webp 400w",
+     "alt": "Gästezimmer, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1BP8TK2A4RDkxF-200.webp",
+     "srcset": "/img/p/1BP8TK2A4RDkxF-200.webp 200w, /img/p/1BP8TK2A4RDkxF-400.webp 400w",
+     "alt": "Gästezimmer, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_XQ5DeQEghfvh-200.webp",
+     "srcset": "/img/p/1_XQ5DeQEghfvh-200.webp 200w, /img/p/1_XQ5DeQEghfvh-400.webp 400w",
+     "alt": "Gästezimmer, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Y_dreM4mLMXXl-200.webp",
+     "srcset": "/img/p/1Y_dreM4mLMXXl-200.webp 200w, /img/p/1Y_dreM4mLMXXl-400.webp 400w",
+     "alt": "Fitnessraum, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Q5nGl_-ytBh_1-200.webp",
+     "srcset": "/img/p/1Q5nGl_-ytBh_1-200.webp 200w, /img/p/1Q5nGl_-ytBh_1-400.webp 400w",
+     "alt": "Fitnessraum, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1m0zZfD8pTTzPH-200.webp",
+     "srcset": "/img/p/1m0zZfD8pTTzPH-200.webp 200w, /img/p/1m0zZfD8pTTzPH-400.webp 400w",
+     "alt": "Fitnessraum, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Sy7cfbfQLVJL3-200.webp",
+     "srcset": "/img/p/1Sy7cfbfQLVJL3-200.webp 200w, /img/p/1Sy7cfbfQLVJL3-400.webp 400w",
+     "alt": "Fitnessraum, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/13MS4aVn4wzDHt-200.webp",
+     "srcset": "/img/p/13MS4aVn4wzDHt-200.webp 200w, /img/p/13MS4aVn4wzDHt-400.webp 400w, /img/p/13MS4aVn4wzDHt-600.webp 600w",
+     "alt": "Fitnessraum, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/18pJ7IWB4ig-Sy-200.webp",
+     "srcset": "/img/p/18pJ7IWB4ig-Sy-200.webp 200w, /img/p/18pJ7IWB4ig-Sy-400.webp 400w",
+     "alt": "Sauna, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/15Gpr3UKnD1cO_-200.webp",
+     "srcset": "/img/p/15Gpr3UKnD1cO_-200.webp 200w, /img/p/15Gpr3UKnD1cO_-400.webp 400w",
+     "alt": "Sauna, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1xHgW4-qNkmwBW-200.webp",
+     "srcset": "/img/p/1xHgW4-qNkmwBW-200.webp 200w, /img/p/1xHgW4-qNkmwBW-400.webp 400w",
+     "alt": "Sauna, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/15sQdyBkfu3DZY-200.webp",
+     "srcset": "/img/p/15sQdyBkfu3DZY-200.webp 200w, /img/p/15sQdyBkfu3DZY-400.webp 400w",
+     "alt": "Sauna, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/12eGppdrKqBNh_-200.webp",
+     "srcset": "/img/p/12eGppdrKqBNh_-200.webp 200w, /img/p/12eGppdrKqBNh_-400.webp 400w",
+     "alt": "Sauna, USA House (USA) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-pidgirland",
+   "h2": "Pidgirland",
+   "href": "/de/proekty/pidgirland",
+   "status": "Designprojekt",
+   "meta": "Region Kiew · 260 m²",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Pidgirland",
+   "items": [
+    {
+     "img": "img/p/1xSbwYmzFkTN2A-200.webp",
+     "srcset": "/img/p/1xSbwYmzFkTN2A-200.webp 200w, /img/p/1xSbwYmzFkTN2A-400.webp 400w",
+     "alt": "Wohn- und Esszimmer — Pidgirland, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1FiLI9kKE-C87h-200.webp",
+     "srcset": "/img/p/1FiLI9kKE-C87h-200.webp 200w, /img/p/1FiLI9kKE-C87h-400.webp 400w, /img/p/1FiLI9kKE-C87h-600.webp 600w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1hXV_Pz6_GfnXe-200.webp",
+     "srcset": "/img/p/1hXV_Pz6_GfnXe-200.webp 200w, /img/p/1hXV_Pz6_GfnXe-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1RCrrbyNJHQhkg-200.webp",
+     "srcset": "/img/p/1RCrrbyNJHQhkg-200.webp 200w, /img/p/1RCrrbyNJHQhkg-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/17c2Uv-OmlrmLD-200.webp",
+     "srcset": "/img/p/17c2Uv-OmlrmLD-200.webp 200w, /img/p/17c2Uv-OmlrmLD-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/18VXNYlwqxP5Ku-200.webp",
+     "srcset": "/img/p/18VXNYlwqxP5Ku-200.webp 200w, /img/p/18VXNYlwqxP5Ku-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ZuehaZ36y6J6E-200.webp",
+     "srcset": "/img/p/1ZuehaZ36y6J6E-200.webp 200w, /img/p/1ZuehaZ36y6J6E-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1daFcpcK1gWDEF-200.webp",
+     "srcset": "/img/p/1daFcpcK1gWDEF-200.webp 200w, /img/p/1daFcpcK1gWDEF-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1RvmhIdSYDqMGE-200.webp",
+     "srcset": "/img/p/1RvmhIdSYDqMGE-200.webp 200w, /img/p/1RvmhIdSYDqMGE-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/154BT2-dJVsEwG-200.webp",
+     "srcset": "/img/p/154BT2-dJVsEwG-200.webp 200w, /img/p/154BT2-dJVsEwG-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/16lBNXfCt8e2mO-200.webp",
+     "srcset": "/img/p/16lBNXfCt8e2mO-200.webp 200w, /img/p/16lBNXfCt8e2mO-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1MU5CsbWCONM6W-200.webp",
+     "srcset": "/img/p/1MU5CsbWCONM6W-200.webp 200w, /img/p/1MU5CsbWCONM6W-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1-8D7MemmFMEKf-200.webp",
+     "srcset": "/img/p/1-8D7MemmFMEKf-200.webp 200w, /img/p/1-8D7MemmFMEKf-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1GGDjjxewA-j99-200.webp",
+     "srcset": "/img/p/1GGDjjxewA-j99-200.webp 200w, /img/p/1GGDjjxewA-j99-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1MP_RPGiZ7XjIO-200.webp",
+     "srcset": "/img/p/1MP_RPGiZ7XjIO-200.webp 200w, /img/p/1MP_RPGiZ7XjIO-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1RNdTVLX3GuGSw-200.webp",
+     "srcset": "/img/p/1RNdTVLX3GuGSw-200.webp 200w, /img/p/1RNdTVLX3GuGSw-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1AztUSd7w28udB-200.webp",
+     "srcset": "/img/p/1AztUSd7w28udB-200.webp 200w, /img/p/1AztUSd7w28udB-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1IPpJjg5VkUVC8-200.webp",
+     "srcset": "/img/p/1IPpJjg5VkUVC8-200.webp 200w, /img/p/1IPpJjg5VkUVC8-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1hpjxJOWhLNmdm-200.webp",
+     "srcset": "/img/p/1hpjxJOWhLNmdm-200.webp 200w, /img/p/1hpjxJOWhLNmdm-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1EF970_A0ogfOB-200.webp",
+     "srcset": "/img/p/1EF970_A0ogfOB-200.webp 200w, /img/p/1EF970_A0ogfOB-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1uw4VaQ07oycO9-200.webp",
+     "srcset": "/img/p/1uw4VaQ07oycO9-200.webp 200w, /img/p/1uw4VaQ07oycO9-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_flnMGInvdQl9-200.webp",
+     "srcset": "/img/p/1_flnMGInvdQl9-200.webp 200w, /img/p/1_flnMGInvdQl9-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1N1EawjN73QGa8-200.webp",
+     "srcset": "/img/p/1N1EawjN73QGa8-200.webp 200w, /img/p/1N1EawjN73QGa8-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1mc8RMmncPstAS-200.webp",
+     "srcset": "/img/p/1mc8RMmncPstAS-200.webp 200w, /img/p/1mc8RMmncPstAS-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1PJG1j6uRAjFBk-200.webp",
+     "srcset": "/img/p/1PJG1j6uRAjFBk-200.webp 200w, /img/p/1PJG1j6uRAjFBk-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1usAOI5R4L3xU--200.webp",
+     "srcset": "/img/p/1usAOI5R4L3xU--200.webp 200w, /img/p/1usAOI5R4L3xU--400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1oD2FsTKZUszaA-200.webp",
+     "srcset": "/img/p/1oD2FsTKZUszaA-200.webp 200w, /img/p/1oD2FsTKZUszaA-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1JGuPkezNcqDa4-200.webp",
+     "srcset": "/img/p/1JGuPkezNcqDa4-200.webp 200w, /img/p/1JGuPkezNcqDa4-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1DuwwuBVaVFt0l-200.webp",
+     "srcset": "/img/p/1DuwwuBVaVFt0l-200.webp 200w, /img/p/1DuwwuBVaVFt0l-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_QfM3eQL_sXTY-200.webp",
+     "srcset": "/img/p/1_QfM3eQL_sXTY-200.webp 200w, /img/p/1_QfM3eQL_sXTY-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_6hABfJrCiqwh-200.webp",
+     "srcset": "/img/p/1_6hABfJrCiqwh-200.webp 200w, /img/p/1_6hABfJrCiqwh-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1l4BeFiLG4CcZf-200.webp",
+     "srcset": "/img/p/1l4BeFiLG4CcZf-200.webp 200w, /img/p/1l4BeFiLG4CcZf-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1E6NFKHCjyZ3VR-200.webp",
+     "srcset": "/img/p/1E6NFKHCjyZ3VR-200.webp 200w, /img/p/1E6NFKHCjyZ3VR-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1mqkE4XthpCE8x-200.webp",
+     "srcset": "/img/p/1mqkE4XthpCE8x-200.webp 200w, /img/p/1mqkE4XthpCE8x-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1CLykVdD1Tq2RD-200.webp",
+     "srcset": "/img/p/1CLykVdD1Tq2RD-200.webp 200w, /img/p/1CLykVdD1Tq2RD-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1OZyM8TpIjv-9O-200.webp",
+     "srcset": "/img/p/1OZyM8TpIjv-9O-200.webp 200w, /img/p/1OZyM8TpIjv-9O-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1AHNaTwtHj_rhZ-200.webp",
+     "srcset": "/img/p/1AHNaTwtHj_rhZ-200.webp 200w, /img/p/1AHNaTwtHj_rhZ-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1kEngkEw6vkNUu-200.webp",
+     "srcset": "/img/p/1kEngkEw6vkNUu-200.webp 200w, /img/p/1kEngkEw6vkNUu-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1iW9ciwPuhdyFJ-200.webp",
+     "srcset": "/img/p/1iW9ciwPuhdyFJ-200.webp 200w, /img/p/1iW9ciwPuhdyFJ-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1GcQvIUgLS-imQ-200.webp",
+     "srcset": "/img/p/1GcQvIUgLS-imQ-200.webp 200w, /img/p/1GcQvIUgLS-imQ-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1BX98NaDYDChf3-200.webp",
+     "srcset": "/img/p/1BX98NaDYDChf3-200.webp 200w, /img/p/1BX98NaDYDChf3-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1FZgZ9AedZhFHP-200.webp",
+     "srcset": "/img/p/1FZgZ9AedZhFHP-200.webp 200w, /img/p/1FZgZ9AedZhFHP-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1uPQbJ3ClBJX4Q-200.webp",
+     "srcset": "/img/p/1uPQbJ3ClBJX4Q-200.webp 200w, /img/p/1uPQbJ3ClBJX4Q-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1xmf1cMuNCrRxJ-200.webp",
+     "srcset": "/img/p/1xmf1cMuNCrRxJ-200.webp 200w, /img/p/1xmf1cMuNCrRxJ-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ey5Jil8hIa-6r-200.webp",
+     "srcset": "/img/p/1ey5Jil8hIa-6r-200.webp 200w, /img/p/1ey5Jil8hIa-6r-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1OBoBX5OMMVm_Z-200.webp",
+     "srcset": "/img/p/1OBoBX5OMMVm_Z-200.webp 200w, /img/p/1OBoBX5OMMVm_Z-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/198AKNeWfadCvx-200.webp",
+     "srcset": "/img/p/198AKNeWfadCvx-200.webp 200w, /img/p/198AKNeWfadCvx-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1yPXMUfezQ5_ci-200.webp",
+     "srcset": "/img/p/1yPXMUfezQ5_ci-200.webp 200w, /img/p/1yPXMUfezQ5_ci-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1k9yQst9HSDAqd-200.webp",
+     "srcset": "/img/p/1k9yQst9HSDAqd-200.webp 200w, /img/p/1k9yQst9HSDAqd-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1jao6_lic3Vktp-200.webp",
+     "srcset": "/img/p/1jao6_lic3Vktp-200.webp 200w, /img/p/1jao6_lic3Vktp-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1gBtlpWuVN58eq-200.webp",
+     "srcset": "/img/p/1gBtlpWuVN58eq-200.webp 200w, /img/p/1gBtlpWuVN58eq-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_OMpDYhZe8Q2c-200.webp",
+     "srcset": "/img/p/1_OMpDYhZe8Q2c-200.webp 200w, /img/p/1_OMpDYhZe8Q2c-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1cbPDH2RnB9eGa-200.webp",
+     "srcset": "/img/p/1cbPDH2RnB9eGa-200.webp 200w, /img/p/1cbPDH2RnB9eGa-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/18ubgd_vr4UxEM-200.webp",
+     "srcset": "/img/p/18ubgd_vr4UxEM-200.webp 200w, /img/p/18ubgd_vr4UxEM-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/17KJnTx-xcXz5c-200.webp",
+     "srcset": "/img/p/17KJnTx-xcXz5c-200.webp 200w, /img/p/17KJnTx-xcXz5c-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1iIIHBlm4XuTYX-200.webp",
+     "srcset": "/img/p/1iIIHBlm4XuTYX-200.webp 200w, /img/p/1iIIHBlm4XuTYX-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1T2Erc9fImQAJY-200.webp",
+     "srcset": "/img/p/1T2Erc9fImQAJY-200.webp 200w, /img/p/1T2Erc9fImQAJY-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ovGbSM7ih6UnF-200.webp",
+     "srcset": "/img/p/1ovGbSM7ih6UnF-200.webp 200w, /img/p/1ovGbSM7ih6UnF-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1wmoPgq-LjhQBP-200.webp",
+     "srcset": "/img/p/1wmoPgq-LjhQBP-200.webp 200w, /img/p/1wmoPgq-LjhQBP-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HvvuDOEe6wzmA-200.webp",
+     "srcset": "/img/p/1HvvuDOEe6wzmA-200.webp 200w, /img/p/1HvvuDOEe6wzmA-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1CXODXI3MQiMRC-200.webp",
+     "srcset": "/img/p/1CXODXI3MQiMRC-200.webp 200w, /img/p/1CXODXI3MQiMRC-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1uLpti7atQFlvS-200.webp",
+     "srcset": "/img/p/1uLpti7atQFlvS-200.webp 200w, /img/p/1uLpti7atQFlvS-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1cmGp9eXaEWbZF-200.webp",
+     "srcset": "/img/p/1cmGp9eXaEWbZF-200.webp 200w, /img/p/1cmGp9eXaEWbZF-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1qxQCaYEUim3HV-200.webp",
+     "srcset": "/img/p/1qxQCaYEUim3HV-200.webp 200w, /img/p/1qxQCaYEUim3HV-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lh7Kkea8IEwHC-200.webp",
+     "srcset": "/img/p/1lh7Kkea8IEwHC-200.webp 200w, /img/p/1lh7Kkea8IEwHC-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1-65nc6Pv_3Jda-200.webp",
+     "srcset": "/img/p/1-65nc6Pv_3Jda-200.webp 200w, /img/p/1-65nc6Pv_3Jda-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/11hm0z8HOVLYlU-200.webp",
+     "srcset": "/img/p/11hm0z8HOVLYlU-200.webp 200w, /img/p/11hm0z8HOVLYlU-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1RXCYnc97pjnng-200.webp",
+     "srcset": "/img/p/1RXCYnc97pjnng-200.webp 200w, /img/p/1RXCYnc97pjnng-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/13-eqSi9z1-fJe-200.webp",
+     "srcset": "/img/p/13-eqSi9z1-fJe-200.webp 200w, /img/p/13-eqSi9z1-fJe-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1EICsmq9TAXRqZ-200.webp",
+     "srcset": "/img/p/1EICsmq9TAXRqZ-200.webp 200w, /img/p/1EICsmq9TAXRqZ-400.webp 400w",
+     "alt": "Pidgirland — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-hodos-villa",
+   "h2": "Hodos Villa",
+   "href": "/de/proekty/hodos-villa",
+   "status": "Designprojekt",
+   "meta": "Kiew · 500 m²",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Hodos Villa",
+   "items": [
+    {
+     "img": "img/p/1xskjqBvCXgXuL-200.webp",
+     "srcset": "/img/p/1xskjqBvCXgXuL-200.webp 200w, /img/p/1xskjqBvCXgXuL-400.webp 400w",
+     "alt": "Esszimmer — Hodos Villa, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Grj8_m7MJwsbE-200.webp",
+     "srcset": "/img/p/1Grj8_m7MJwsbE-200.webp 200w, /img/p/1Grj8_m7MJwsbE-400.webp 400w",
+     "alt": "Eingang, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Xdb_M0v9MyKsV-200.webp",
+     "srcset": "/img/p/1Xdb_M0v9MyKsV-200.webp 200w, /img/p/1Xdb_M0v9MyKsV-400.webp 400w",
+     "alt": "Eingang, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1jS6hUJuy_cM08-200.webp",
+     "srcset": "/img/p/1jS6hUJuy_cM08-200.webp 200w, /img/p/1jS6hUJuy_cM08-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1TcDKfxIgD531P-200.webp",
+     "srcset": "/img/p/1TcDKfxIgD531P-200.webp 200w, /img/p/1TcDKfxIgD531P-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1SDryLobUiLJ67-200.webp",
+     "srcset": "/img/p/1SDryLobUiLJ67-200.webp 200w, /img/p/1SDryLobUiLJ67-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1-ZBmZr06YTHNc-200.webp",
+     "srcset": "/img/p/1-ZBmZr06YTHNc-200.webp 200w, /img/p/1-ZBmZr06YTHNc-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1amWZypgqtUZ3K-200.webp",
+     "srcset": "/img/p/1amWZypgqtUZ3K-200.webp 200w, /img/p/1amWZypgqtUZ3K-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1hKvQ9T1jDNKOp-200.webp",
+     "srcset": "/img/p/1hKvQ9T1jDNKOp-200.webp 200w, /img/p/1hKvQ9T1jDNKOp-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1-Lit8Tm15S9vl-200.webp",
+     "srcset": "/img/p/1-Lit8Tm15S9vl-200.webp 200w, /img/p/1-Lit8Tm15S9vl-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/17aENHbKpJ78y6-200.webp",
+     "srcset": "/img/p/17aENHbKpJ78y6-200.webp 200w, /img/p/17aENHbKpJ78y6-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1YVCt0SH0U_fk_-200.webp",
+     "srcset": "/img/p/1YVCt0SH0U_fk_-200.webp 200w, /img/p/1YVCt0SH0U_fk_-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1akpqWqDXX6sXC-200.webp",
+     "srcset": "/img/p/1akpqWqDXX6sXC-200.webp 200w, /img/p/1akpqWqDXX6sXC-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1S8L6r4oQFAg5G-200.webp",
+     "srcset": "/img/p/1S8L6r4oQFAg5G-200.webp 200w, /img/p/1S8L6r4oQFAg5G-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1KVy31VKXiodBJ-200.webp",
+     "srcset": "/img/p/1KVy31VKXiodBJ-200.webp 200w, /img/p/1KVy31VKXiodBJ-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1FLpe2b2NaaIPt-200.webp",
+     "srcset": "/img/p/1FLpe2b2NaaIPt-200.webp 200w, /img/p/1FLpe2b2NaaIPt-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1kxCnAuFqOWXq7-200.webp",
+     "srcset": "/img/p/1kxCnAuFqOWXq7-200.webp 200w, /img/p/1kxCnAuFqOWXq7-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lEbzbqufAWR7N-200.webp",
+     "srcset": "/img/p/1lEbzbqufAWR7N-200.webp 200w, /img/p/1lEbzbqufAWR7N-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1sWwgUEwnF_Tr5-200.webp",
+     "srcset": "/img/p/1sWwgUEwnF_Tr5-200.webp 200w, /img/p/1sWwgUEwnF_Tr5-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1YM9A7oX54GHU0-200.webp",
+     "srcset": "/img/p/1YM9A7oX54GHU0-200.webp 200w, /img/p/1YM9A7oX54GHU0-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1NrRPjetjjmzXT-200.webp",
+     "srcset": "/img/p/1NrRPjetjjmzXT-200.webp 200w, /img/p/1NrRPjetjjmzXT-400.webp 400w",
+     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1VUB7mHyi1SPnp-200.webp",
+     "srcset": "/img/p/1VUB7mHyi1SPnp-200.webp 200w, /img/p/1VUB7mHyi1SPnp-400.webp 400w",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/18QGd9cvcoEngv-200.webp",
+     "srcset": "/img/p/18QGd9cvcoEngv-200.webp 200w, /img/p/18QGd9cvcoEngv-400.webp 400w",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1L9sYKBbGdSG6g-200.webp",
+     "srcset": "/img/p/1L9sYKBbGdSG6g-200.webp 200w, /img/p/1L9sYKBbGdSG6g-400.webp 400w",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1RPu-1neix9ZRW-200.webp",
+     "srcset": "/img/p/1RPu-1neix9ZRW-200.webp 200w, /img/p/1RPu-1neix9ZRW-400.webp 400w",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1pdpVBh-pCdJ0a-200.webp",
+     "srcset": "/img/p/1pdpVBh-pCdJ0a-200.webp 200w, /img/p/1pdpVBh-pCdJ0a-400.webp 400w",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Uglho8mIjjRCM-200.webp",
+     "srcset": "/img/p/1Uglho8mIjjRCM-200.webp 200w, /img/p/1Uglho8mIjjRCM-400.webp 400w",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1cpatJSs3zoc3Z-200.webp",
+     "srcset": "/img/p/1cpatJSs3zoc3Z-200.webp 200w, /img/p/1cpatJSs3zoc3Z-400.webp 400w",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1VbP8mR23rLxAY-200.webp",
+     "srcset": "/img/p/1VbP8mR23rLxAY-200.webp 200w, /img/p/1VbP8mR23rLxAY-400.webp 400w",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/13S65_x8RxCJgj-200.webp",
+     "srcset": "/img/p/13S65_x8RxCJgj-200.webp 200w, /img/p/13S65_x8RxCJgj-400.webp 400w",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1eyDkON_k3qOm--200.webp",
+     "srcset": "/img/p/1eyDkON_k3qOm--200.webp 200w, /img/p/1eyDkON_k3qOm--400.webp 400w",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1rvZLtFPI-5yip-200.webp",
+     "srcset": "/img/p/1rvZLtFPI-5yip-200.webp 200w, /img/p/1rvZLtFPI-5yip-400.webp 400w",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/13056IopoRl5SG-200.webp",
+     "srcset": "/img/p/13056IopoRl5SG-200.webp 200w, /img/p/13056IopoRl5SG-400.webp 400w",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1IaznF6yqteSog-200.webp",
+     "srcset": "/img/p/1IaznF6yqteSog-200.webp 200w, /img/p/1IaznF6yqteSog-400.webp 400w",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Rye3Ub7GaZ-9t-200.webp",
+     "srcset": "/img/p/1Rye3Ub7GaZ-9t-200.webp 200w, /img/p/1Rye3Ub7GaZ-9t-400.webp 400w",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1EvoVkw92W1VRb-200.webp",
+     "srcset": "/img/p/1EvoVkw92W1VRb-200.webp 200w, /img/p/1EvoVkw92W1VRb-400.webp 400w",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1rX6WjnHT4fCgV-200.webp",
+     "srcset": "/img/p/1rX6WjnHT4fCgV-200.webp 200w, /img/p/1rX6WjnHT4fCgV-400.webp 400w",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1amCZv3ztoxi9t-200.webp",
+     "srcset": "/img/p/1amCZv3ztoxi9t-200.webp 200w, /img/p/1amCZv3ztoxi9t-400.webp 400w",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HOnuog3t9a6tP-200.webp",
+     "srcset": "/img/p/1HOnuog3t9a6tP-200.webp 200w, /img/p/1HOnuog3t9a6tP-400.webp 400w",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1h0DQErA8iJLTm-200.webp",
+     "srcset": "/img/p/1h0DQErA8iJLTm-200.webp 200w, /img/p/1h0DQErA8iJLTm-400.webp 400w",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1gf2OJce5x5f-x-200.webp",
+     "srcset": "/img/p/1gf2OJce5x5f-x-200.webp 200w, /img/p/1gf2OJce5x5f-x-400.webp 400w",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1piGn5WSwmjShr-200.webp",
+     "srcset": "/img/p/1piGn5WSwmjShr-200.webp 200w, /img/p/1piGn5WSwmjShr-400.webp 400w",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1dLPPNEAuguwep-200.webp",
+     "srcset": "/img/p/1dLPPNEAuguwep-200.webp 200w, /img/p/1dLPPNEAuguwep-400.webp 400w",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1770Ox4TlZ7Ho1-200.webp",
+     "srcset": "/img/p/1770Ox4TlZ7Ho1-200.webp 200w, /img/p/1770Ox4TlZ7Ho1-400.webp 400w",
+     "alt": "Bad 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1l80YII0VeNjGG-200.webp",
+     "srcset": "/img/p/1l80YII0VeNjGG-200.webp 200w, /img/p/1l80YII0VeNjGG-400.webp 400w",
+     "alt": "Bad 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1cYFLgq0KHAGPJ-200.webp",
+     "srcset": "/img/p/1cYFLgq0KHAGPJ-200.webp 200w, /img/p/1cYFLgq0KHAGPJ-400.webp 400w",
+     "alt": "Bad 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1KC7wnAej6DxF8-200.webp",
+     "srcset": "/img/p/1KC7wnAej6DxF8-200.webp 200w, /img/p/1KC7wnAej6DxF8-400.webp 400w",
+     "alt": "Bad 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1kCFiBVhuml_dY-200.webp",
+     "srcset": "/img/p/1kCFiBVhuml_dY-200.webp 200w, /img/p/1kCFiBVhuml_dY-400.webp 400w",
+     "alt": "Bad 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1koFiJyNPUrcPa-200.webp",
+     "srcset": "/img/p/1koFiJyNPUrcPa-200.webp 200w, /img/p/1koFiJyNPUrcPa-400.webp 400w",
+     "alt": "Bad 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1we2aOJeR2kfqx-200.webp",
+     "srcset": "/img/p/1we2aOJeR2kfqx-200.webp 200w, /img/p/1we2aOJeR2kfqx-400.webp 400w",
+     "alt": "Bad 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/10oOhYbcJqYkMP-200.webp",
+     "srcset": "/img/p/10oOhYbcJqYkMP-200.webp 200w, /img/p/10oOhYbcJqYkMP-400.webp 400w",
+     "alt": "Bad 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1fBtM0vjjN62p4-200.webp",
+     "srcset": "/img/p/1fBtM0vjjN62p4-200.webp 200w, /img/p/1fBtM0vjjN62p4-400.webp 400w",
+     "alt": "Bad 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1jiEXuONJLmEJA-200.webp",
+     "srcset": "/img/p/1jiEXuONJLmEJA-200.webp 200w, /img/p/1jiEXuONJLmEJA-400.webp 400w",
+     "alt": "Bad 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1sSM3fuz42KHve-200.webp",
+     "srcset": "/img/p/1sSM3fuz42KHve-200.webp 200w, /img/p/1sSM3fuz42KHve-400.webp 400w",
+     "alt": "Ankleide 1",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1M13ysKRsQvnPk-200.webp",
+     "srcset": "/img/p/1M13ysKRsQvnPk-200.webp 200w, /img/p/1M13ysKRsQvnPk-400.webp 400w, /img/p/1M13ysKRsQvnPk-600.webp 600w",
+     "alt": "Ankleide 1",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1BmrYo1JJhoD0e-200.webp",
+     "srcset": "/img/p/1BmrYo1JJhoD0e-200.webp 200w, /img/p/1BmrYo1JJhoD0e-400.webp 400w",
+     "alt": "Ankleide 1",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1cRl7TrOdOCcln-200.webp",
+     "srcset": "/img/p/1cRl7TrOdOCcln-200.webp 200w, /img/p/1cRl7TrOdOCcln-400.webp 400w",
+     "alt": "Ankleide 1",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1q6HV2CsaTIwGT-200.webp",
+     "srcset": "/img/p/1q6HV2CsaTIwGT-200.webp 200w, /img/p/1q6HV2CsaTIwGT-400.webp 400w",
+     "alt": "Ankleide 2",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1pzmheAc0iEYEs-200.webp",
+     "srcset": "/img/p/1pzmheAc0iEYEs-200.webp 200w, /img/p/1pzmheAc0iEYEs-400.webp 400w",
+     "alt": "Ankleide 2",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1XNEMUBlYgN0kx-200.webp",
+     "srcset": "/img/p/1XNEMUBlYgN0kx-200.webp 200w, /img/p/1XNEMUBlYgN0kx-400.webp 400w",
+     "alt": "Ankleide 2",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lRyanOS0NO_P5-200.webp",
+     "srcset": "/img/p/1lRyanOS0NO_P5-200.webp 200w, /img/p/1lRyanOS0NO_P5-400.webp 400w",
+     "alt": "Ankleide 2",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-diamond",
+   "h2": "Diamond",
+   "href": "/de/proekty/diamond",
+   "status": "Designprojekt",
+   "meta": "Wohnung",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Diamond",
+   "items": [
+    {
+     "img": "img/p/17c1WWHOs1rMHM-200.webp",
+     "srcset": "/img/p/17c1WWHOs1rMHM-200.webp 200w, /img/p/17c1WWHOs1rMHM-400.webp 400w",
+     "alt": "Wohnzimmer — Diamond, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1iGcqtsUqLNWbB-200.webp",
+     "srcset": "/img/p/1iGcqtsUqLNWbB-200.webp 200w, /img/p/1iGcqtsUqLNWbB-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1rfuCVdOfWwhML-200.webp",
+     "srcset": "/img/p/1rfuCVdOfWwhML-200.webp 200w, /img/p/1rfuCVdOfWwhML-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1-mbd9A7_L1qQH-200.webp",
+     "srcset": "/img/p/1-mbd9A7_L1qQH-200.webp 200w, /img/p/1-mbd9A7_L1qQH-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1cmhqiOOvgssjr-200.webp",
+     "srcset": "/img/p/1cmhqiOOvgssjr-200.webp 200w, /img/p/1cmhqiOOvgssjr-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1FkU_rQubrrcjS-200.webp",
+     "srcset": "/img/p/1FkU_rQubrrcjS-200.webp 200w, /img/p/1FkU_rQubrrcjS-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/10NiUcZNhKMjmn-200.webp",
+     "srcset": "/img/p/10NiUcZNhKMjmn-200.webp 200w, /img/p/10NiUcZNhKMjmn-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lwlRyjfHyBxlf-200.webp",
+     "srcset": "/img/p/1lwlRyjfHyBxlf-200.webp 200w, /img/p/1lwlRyjfHyBxlf-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/17iXO_p_vmD8N4-200.webp",
+     "srcset": "/img/p/17iXO_p_vmD8N4-200.webp 200w, /img/p/17iXO_p_vmD8N4-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/16KX_8hasvf6Nm-200.webp",
+     "srcset": "/img/p/16KX_8hasvf6Nm-200.webp 200w, /img/p/16KX_8hasvf6Nm-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lcczk9v-heAbx-200.webp",
+     "srcset": "/img/p/1lcczk9v-heAbx-200.webp 200w, /img/p/1lcczk9v-heAbx-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/185Vq83rYCiQrB-200.webp",
+     "srcset": "/img/p/185Vq83rYCiQrB-200.webp 200w, /img/p/185Vq83rYCiQrB-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1K7Z-ZSESm035Z-200.webp",
+     "srcset": "/img/p/1K7Z-ZSESm035Z-200.webp 200w, /img/p/1K7Z-ZSESm035Z-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1jGLXLATPQvKKJ-200.webp",
+     "srcset": "/img/p/1jGLXLATPQvKKJ-200.webp 200w, /img/p/1jGLXLATPQvKKJ-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/141VP7pfVngfzx-200.webp",
+     "srcset": "/img/p/141VP7pfVngfzx-200.webp 200w, /img/p/141VP7pfVngfzx-400.webp 400w",
+     "alt": "Wohnzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1vzZWZIEqi-SB2-200.webp",
+     "srcset": "/img/p/1vzZWZIEqi-SB2-200.webp 200w, /img/p/1vzZWZIEqi-SB2-400.webp 400w",
+     "alt": "Schlafzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lbbasXyEUVibL-200.webp",
+     "srcset": "/img/p/1lbbasXyEUVibL-200.webp 200w, /img/p/1lbbasXyEUVibL-400.webp 400w",
+     "alt": "Schlafzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ldeBf7khf9DJL-200.webp",
+     "srcset": "/img/p/1ldeBf7khf9DJL-200.webp 200w, /img/p/1ldeBf7khf9DJL-400.webp 400w",
+     "alt": "Schlafzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/11tTyqnFe4CXSF-200.webp",
+     "srcset": "/img/p/11tTyqnFe4CXSF-200.webp 200w, /img/p/11tTyqnFe4CXSF-400.webp 400w",
+     "alt": "Schlafzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1mL3Wz2nSw5Sk9-200.webp",
+     "srcset": "/img/p/1mL3Wz2nSw5Sk9-200.webp 200w, /img/p/1mL3Wz2nSw5Sk9-400.webp 400w",
+     "alt": "Schlafzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1YK7PZH68KuzqO-200.webp",
+     "srcset": "/img/p/1YK7PZH68KuzqO-200.webp 200w, /img/p/1YK7PZH68KuzqO-400.webp 400w",
+     "alt": "Schlafzimmer, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1wrWGSTpXHv5zh-200.webp",
+     "srcset": "/img/p/1wrWGSTpXHv5zh-200.webp 200w, /img/p/1wrWGSTpXHv5zh-400.webp 400w",
+     "alt": "Schlafzimmer 2, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HHNPRWa0MwuJh-200.webp",
+     "srcset": "/img/p/1HHNPRWa0MwuJh-200.webp 200w, /img/p/1HHNPRWa0MwuJh-400.webp 400w",
+     "alt": "Schlafzimmer 2, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1rjz-RBLKjBRnG-200.webp",
+     "srcset": "/img/p/1rjz-RBLKjBRnG-200.webp 200w, /img/p/1rjz-RBLKjBRnG-400.webp 400w",
+     "alt": "Schlafzimmer 2, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1I74t1NxahL4bT-200.webp",
+     "srcset": "/img/p/1I74t1NxahL4bT-200.webp 200w, /img/p/1I74t1NxahL4bT-400.webp 400w",
+     "alt": "Schlafzimmer 2, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1TVmlG5IOkFywL-200.webp",
+     "srcset": "/img/p/1TVmlG5IOkFywL-200.webp 200w, /img/p/1TVmlG5IOkFywL-400.webp 400w",
+     "alt": "Schlafzimmer 2, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/16zOw3X4Ww2p7k-200.webp",
+     "srcset": "/img/p/16zOw3X4Ww2p7k-200.webp 200w, /img/p/16zOw3X4Ww2p7k-400.webp 400w",
+     "alt": "Schlafzimmer 2, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_0dwyRHn7GINF-200.webp",
+     "srcset": "/img/p/1_0dwyRHn7GINF-200.webp 200w, /img/p/1_0dwyRHn7GINF-400.webp 400w",
+     "alt": "Bad, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/131zlcfDBGOBKc-200.webp",
+     "srcset": "/img/p/131zlcfDBGOBKc-200.webp 200w, /img/p/131zlcfDBGOBKc-400.webp 400w",
+     "alt": "Bad, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1fIGqTJq9l1wxc-200.webp",
+     "srcset": "/img/p/1fIGqTJq9l1wxc-200.webp 200w, /img/p/1fIGqTJq9l1wxc-400.webp 400w",
+     "alt": "Bad, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1KRQc2j7r208K3-200.webp",
+     "srcset": "/img/p/1KRQc2j7r208K3-200.webp 200w, /img/p/1KRQc2j7r208K3-400.webp 400w",
+     "alt": "Bad, Diamond (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-edelweiss",
+   "h2": "Edelweiss",
+   "href": "/de/proekty/edelweiss",
+   "status": "Designprojekt",
+   "meta": "Wohnung",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Edelweiss",
+   "items": [
+    {
+     "img": "img/p/1DL1BY7Tg6L5B5-200.webp",
+     "srcset": "/img/p/1DL1BY7Tg6L5B5-200.webp 200w, /img/p/1DL1BY7Tg6L5B5-400.webp 400w",
+     "alt": "Gesamtansicht, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HMtnMX7Fgpwg5-200.webp",
+     "srcset": "/img/p/1HMtnMX7Fgpwg5-200.webp 200w, /img/p/1HMtnMX7Fgpwg5-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/16gZ_bjozxlW-7-200.webp",
+     "srcset": "/img/p/16gZ_bjozxlW-7-200.webp 200w, /img/p/16gZ_bjozxlW-7-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1kgGeYeTRMGe13-200.webp",
+     "srcset": "/img/p/1kgGeYeTRMGe13-200.webp 200w, /img/p/1kgGeYeTRMGe13-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1PvmuHU2AMCVCn-200.webp",
+     "srcset": "/img/p/1PvmuHU2AMCVCn-200.webp 200w, /img/p/1PvmuHU2AMCVCn-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1a0hg1jYs-MzTv-200.webp",
+     "srcset": "/img/p/1a0hg1jYs-MzTv-200.webp 200w, /img/p/1a0hg1jYs-MzTv-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1NcVNNspIcdTWJ-200.webp",
+     "srcset": "/img/p/1NcVNNspIcdTWJ-200.webp 200w, /img/p/1NcVNNspIcdTWJ-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Yr6kq0qIQ3QXl-200.webp",
+     "srcset": "/img/p/1Yr6kq0qIQ3QXl-200.webp 200w, /img/p/1Yr6kq0qIQ3QXl-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/17MT3Ipm3yi6XJ-200.webp",
+     "srcset": "/img/p/17MT3Ipm3yi6XJ-200.webp 200w, /img/p/17MT3Ipm3yi6XJ-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1G-nToBv9Tu0Mx-200.webp",
+     "srcset": "/img/p/1G-nToBv9Tu0Mx-200.webp 200w, /img/p/1G-nToBv9Tu0Mx-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1LWviRDqFVa-Yl-200.webp",
+     "srcset": "/img/p/1LWviRDqFVa-Yl-200.webp 200w, /img/p/1LWviRDqFVa-Yl-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1xOdXfa98ziH9v-200.webp",
+     "srcset": "/img/p/1xOdXfa98ziH9v-200.webp 200w, /img/p/1xOdXfa98ziH9v-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Iowr8xNKcPyht-200.webp",
+     "srcset": "/img/p/1Iowr8xNKcPyht-200.webp 200w, /img/p/1Iowr8xNKcPyht-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_xW-2dYf73g9R-200.webp",
+     "srcset": "/img/p/1_xW-2dYf73g9R-200.webp 200w, /img/p/1_xW-2dYf73g9R-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1iB7PyZKVxKeOT-200.webp",
+     "srcset": "/img/p/1iB7PyZKVxKeOT-200.webp 200w, /img/p/1iB7PyZKVxKeOT-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/12nFEUgYzQvykH-200.webp",
+     "srcset": "/img/p/12nFEUgYzQvykH-200.webp 200w, /img/p/12nFEUgYzQvykH-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1c7FYO8hXqGcMj-200.webp",
+     "srcset": "/img/p/1c7FYO8hXqGcMj-200.webp 200w, /img/p/1c7FYO8hXqGcMj-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/18D4ZNj_1eXsu8-200.webp",
+     "srcset": "/img/p/18D4ZNj_1eXsu8-200.webp 200w, /img/p/18D4ZNj_1eXsu8-400.webp 400w",
+     "alt": "Wohnzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1c013P0IxkscMx-200.webp",
+     "srcset": "/img/p/1c013P0IxkscMx-200.webp 200w, /img/p/1c013P0IxkscMx-400.webp 400w",
+     "alt": "Schlafzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1R5heSsQ87Kzcg-200.webp",
+     "srcset": "/img/p/1R5heSsQ87Kzcg-200.webp 200w, /img/p/1R5heSsQ87Kzcg-400.webp 400w",
+     "alt": "Schlafzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1FEPSaMLXmuvZ7-200.webp",
+     "srcset": "/img/p/1FEPSaMLXmuvZ7-200.webp 200w, /img/p/1FEPSaMLXmuvZ7-400.webp 400w",
+     "alt": "Schlafzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1bFvRDB0zXUZhT-200.webp",
+     "srcset": "/img/p/1bFvRDB0zXUZhT-200.webp 200w, /img/p/1bFvRDB0zXUZhT-400.webp 400w",
+     "alt": "Schlafzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1o0nTe2j1o426y-200.webp",
+     "srcset": "/img/p/1o0nTe2j1o426y-200.webp 200w, /img/p/1o0nTe2j1o426y-400.webp 400w",
+     "alt": "Schlafzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1-S9JpiQvWLj8M-200.webp",
+     "srcset": "/img/p/1-S9JpiQvWLj8M-200.webp 200w, /img/p/1-S9JpiQvWLj8M-400.webp 400w",
+     "alt": "Schlafzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1UcOq-MZZUnGon-200.webp",
+     "srcset": "/img/p/1UcOq-MZZUnGon-200.webp 200w, /img/p/1UcOq-MZZUnGon-400.webp 400w",
+     "alt": "Schlafzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1iFvb3PTIgDYio-200.webp",
+     "srcset": "/img/p/1iFvb3PTIgDYio-200.webp 200w, /img/p/1iFvb3PTIgDYio-400.webp 400w",
+     "alt": "Schlafzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1tI0wIWkjukKD0-200.webp",
+     "srcset": "/img/p/1tI0wIWkjukKD0-200.webp 200w, /img/p/1tI0wIWkjukKD0-400.webp 400w",
+     "alt": "Schlafzimmer, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1cN4XDRjYkXRoD-200.webp",
+     "srcset": "/img/p/1cN4XDRjYkXRoD-200.webp 200w, /img/p/1cN4XDRjYkXRoD-400.webp 400w",
+     "alt": "Schlafzimmer 2, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lBsQ9US7hTjgs-200.webp",
+     "srcset": "/img/p/1lBsQ9US7hTjgs-200.webp 200w, /img/p/1lBsQ9US7hTjgs-400.webp 400w",
+     "alt": "Schlafzimmer 2, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Kv2sWnKSF325--200.webp",
+     "srcset": "/img/p/1Kv2sWnKSF325--200.webp 200w, /img/p/1Kv2sWnKSF325--400.webp 400w",
+     "alt": "Schlafzimmer 2, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1pZ520Hg-lE_9r-200.webp",
+     "srcset": "/img/p/1pZ520Hg-lE_9r-200.webp 200w, /img/p/1pZ520Hg-lE_9r-400.webp 400w",
+     "alt": "Schlafzimmer 2, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_UbvxJRDCe8jR-200.webp",
+     "srcset": "/img/p/1_UbvxJRDCe8jR-200.webp 200w, /img/p/1_UbvxJRDCe8jR-400.webp 400w",
+     "alt": "Schlafzimmer 2, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1DNC-OHY4GsgUq-200.webp",
+     "srcset": "/img/p/1DNC-OHY4GsgUq-200.webp 200w, /img/p/1DNC-OHY4GsgUq-400.webp 400w",
+     "alt": "Bad 1, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1yIDi0QGi3xQqH-200.webp",
+     "srcset": "/img/p/1yIDi0QGi3xQqH-200.webp 200w, /img/p/1yIDi0QGi3xQqH-400.webp 400w",
+     "alt": "Bad 1, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ZYLDGAjmD_8aa-200.webp",
+     "srcset": "/img/p/1ZYLDGAjmD_8aa-200.webp 200w, /img/p/1ZYLDGAjmD_8aa-400.webp 400w",
+     "alt": "Bad 2, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1v95tqKYHyxy2R-200.webp",
+     "srcset": "/img/p/1v95tqKYHyxy2R-200.webp 200w, /img/p/1v95tqKYHyxy2R-400.webp 400w",
+     "alt": "Bad 2, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/15_7PIy3m4VI-x-200.webp",
+     "srcset": "/img/p/15_7PIy3m4VI-x-200.webp 200w, /img/p/15_7PIy3m4VI-x-400.webp 400w",
+     "alt": "Bad 2, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ZwqCxDqIAqn7c-200.webp",
+     "srcset": "/img/p/1ZwqCxDqIAqn7c-200.webp 200w, /img/p/1ZwqCxDqIAqn7c-400.webp 400w",
+     "alt": "Bad 2, Edelweiss (Wohnung) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-yacht-vip",
+   "h2": "Yacht VIP",
+   "href": "/de/proekty/yacht-vip",
+   "status": "Designprojekt",
+   "meta": "Residenz · Premium",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Yacht VIP",
+   "items": [
+    {
+     "img": "img/p/1_0wYN-6Q8LZFX-200.webp",
+     "srcset": "/img/p/1_0wYN-6Q8LZFX-200.webp 200w, /img/p/1_0wYN-6Q8LZFX-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1M1G9hYfhwE68E-200.webp",
+     "srcset": "/img/p/1M1G9hYfhwE68E-200.webp 200w, /img/p/1M1G9hYfhwE68E-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ZiKpaz1uoRJAf-200.webp",
+     "srcset": "/img/p/1ZiKpaz1uoRJAf-200.webp 200w, /img/p/1ZiKpaz1uoRJAf-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1npF2xqhkSjoB0-200.webp",
+     "srcset": "/img/p/1npF2xqhkSjoB0-200.webp 200w, /img/p/1npF2xqhkSjoB0-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1aO6p7Rlu2Prsa-200.webp",
+     "srcset": "/img/p/1aO6p7Rlu2Prsa-200.webp 200w, /img/p/1aO6p7Rlu2Prsa-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/175LKVDDxIkBun-200.webp",
+     "srcset": "/img/p/175LKVDDxIkBun-200.webp 200w, /img/p/175LKVDDxIkBun-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Zqkr3N2v1LWbX-200.webp",
+     "srcset": "/img/p/1Zqkr3N2v1LWbX-200.webp 200w, /img/p/1Zqkr3N2v1LWbX-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/18Gq2eFZpz_4sf-200.webp",
+     "srcset": "/img/p/18Gq2eFZpz_4sf-200.webp 200w, /img/p/18Gq2eFZpz_4sf-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1NxSoNJ-KDE-p2-200.webp",
+     "srcset": "/img/p/1NxSoNJ-KDE-p2-200.webp 200w, /img/p/1NxSoNJ-KDE-p2-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Ea3Lx4hjBzAhz-200.webp",
+     "srcset": "/img/p/1Ea3Lx4hjBzAhz-200.webp 200w, /img/p/1Ea3Lx4hjBzAhz-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1blvZfj0TNZJBY-200.webp",
+     "srcset": "/img/p/1blvZfj0TNZJBY-200.webp 200w, /img/p/1blvZfj0TNZJBY-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1zeZS1sFYWaipa-200.webp",
+     "srcset": "/img/p/1zeZS1sFYWaipa-200.webp 200w, /img/p/1zeZS1sFYWaipa-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/15mu-kkH23rA_p-200.webp",
+     "srcset": "/img/p/15mu-kkH23rA_p-200.webp 200w, /img/p/15mu-kkH23rA_p-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HzPzK15fj4oYE-200.webp",
+     "srcset": "/img/p/1HzPzK15fj4oYE-200.webp 200w, /img/p/1HzPzK15fj4oYE-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1wQMeOsdIEhCuM-200.webp",
+     "srcset": "/img/p/1wQMeOsdIEhCuM-200.webp 200w, /img/p/1wQMeOsdIEhCuM-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1DkFxtDBiwR4J5-200.webp",
+     "srcset": "/img/p/1DkFxtDBiwR4J5-200.webp 200w, /img/p/1DkFxtDBiwR4J5-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1RecY91o_2nWP0-200.webp",
+     "srcset": "/img/p/1RecY91o_2nWP0-200.webp 200w, /img/p/1RecY91o_2nWP0-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1YxS08TrpgVxD5-200.webp",
+     "srcset": "/img/p/1YxS08TrpgVxD5-200.webp 200w, /img/p/1YxS08TrpgVxD5-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Ec3Wf58nlFJrv-200.webp",
+     "srcset": "/img/p/1Ec3Wf58nlFJrv-200.webp 200w, /img/p/1Ec3Wf58nlFJrv-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1dY0n-LuaXH040-200.webp",
+     "srcset": "/img/p/1dY0n-LuaXH040-200.webp 200w, /img/p/1dY0n-LuaXH040-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1E4oNUol8XQqzH-200.webp",
+     "srcset": "/img/p/1E4oNUol8XQqzH-200.webp 200w, /img/p/1E4oNUol8XQqzH-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1os-y1fHN37CVF-200.webp",
+     "srcset": "/img/p/1os-y1fHN37CVF-200.webp 200w, /img/p/1os-y1fHN37CVF-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ie-t3VL-EnDBE-200.webp",
+     "srcset": "/img/p/1ie-t3VL-EnDBE-200.webp 200w, /img/p/1ie-t3VL-EnDBE-400.webp 400w",
+     "alt": "Interieur, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1w9ji7wpjA8cXX-200.webp",
+     "srcset": "/img/p/1w9ji7wpjA8cXX-200.webp 200w, /img/p/1w9ji7wpjA8cXX-400.webp 400w",
+     "alt": "Kamin, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1RuPaBSsa4XBUC-200.webp",
+     "srcset": "/img/p/1RuPaBSsa4XBUC-200.webp 200w, /img/p/1RuPaBSsa4XBUC-400.webp 400w",
+     "alt": "Kamin, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HQnsoPll6MYv8-200.webp",
+     "srcset": "/img/p/1HQnsoPll6MYv8-200.webp 200w, /img/p/1HQnsoPll6MYv8-400.webp 400w",
+     "alt": "Kamin, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1bBgDNdhxE5ycl-200.webp",
+     "srcset": "/img/p/1bBgDNdhxE5ycl-200.webp 200w, /img/p/1bBgDNdhxE5ycl-400.webp 400w",
+     "alt": "Kamin, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1EsNuAvihzwtHu-200.webp",
+     "srcset": "/img/p/1EsNuAvihzwtHu-200.webp 200w, /img/p/1EsNuAvihzwtHu-400.webp 400w",
+     "alt": "Kamin, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ysDlUWQvPsS7V-200.webp",
+     "srcset": "/img/p/1ysDlUWQvPsS7V-200.webp 200w, /img/p/1ysDlUWQvPsS7V-400.webp 400w",
+     "alt": "Kamin, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ye1Rm0pclyD82-200.webp",
+     "srcset": "/img/p/1ye1Rm0pclyD82-200.webp 200w, /img/p/1ye1Rm0pclyD82-400.webp 400w",
+     "alt": "Kamin, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1DjPCm2LLUh8U3-200.webp",
+     "srcset": "/img/p/1DjPCm2LLUh8U3-200.webp 200w, /img/p/1DjPCm2LLUh8U3-400.webp 400w",
+     "alt": "Bad, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1mGbhlyyG1mFlq-200.webp",
+     "srcset": "/img/p/1mGbhlyyG1mFlq-200.webp 200w, /img/p/1mGbhlyyG1mFlq-400.webp 400w",
+     "alt": "Bad, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HbUO0O3sBvy42-200.webp",
+     "srcset": "/img/p/1HbUO0O3sBvy42-200.webp 200w, /img/p/1HbUO0O3sBvy42-400.webp 400w",
+     "alt": "Bad, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1bPE17TlSMLbYz-200.webp",
+     "srcset": "/img/p/1bPE17TlSMLbYz-200.webp 200w, /img/p/1bPE17TlSMLbYz-400.webp 400w",
+     "alt": "Dusche, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1kXCozWYkz8fGG-200.webp",
+     "srcset": "/img/p/1kXCozWYkz8fGG-200.webp 200w, /img/p/1kXCozWYkz8fGG-400.webp 400w",
+     "alt": "Dusche, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Up2fy_4hzPkWG-200.webp",
+     "srcset": "/img/p/1Up2fy_4hzPkWG-200.webp 200w, /img/p/1Up2fy_4hzPkWG-400.webp 400w",
+     "alt": "Dusche, Yacht VIP (Residenz) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-a-frame-house",
+   "h2": "A-Frame House",
+   "href": "/de/proekty/a-frame-house",
+   "status": "Designprojekt",
+   "meta": "Architektur",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: A-Frame House",
+   "items": [
+    {
+     "img": "img/p/1DhAA8_vK0zo3E-200.webp",
+     "srcset": "/img/p/1DhAA8_vK0zo3E-200.webp 200w, /img/p/1DhAA8_vK0zo3E-400.webp 400w",
+     "alt": "Interieur — A-Frame House, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1g-E1m6cFJ9kvH-200.webp",
+     "srcset": "/img/p/1g-E1m6cFJ9kvH-200.webp 200w, /img/p/1g-E1m6cFJ9kvH-400.webp 400w",
+     "alt": "A-Frame House (Architektur) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1pF5ohNHdSnme0-200.webp",
+     "srcset": "/img/p/1pF5ohNHdSnme0-200.webp 200w, /img/p/1pF5ohNHdSnme0-400.webp 400w",
+     "alt": "A-Frame House (Architektur) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1D5SepOyqNoUiJ-200.webp",
+     "srcset": "/img/p/1D5SepOyqNoUiJ-200.webp 200w, /img/p/1D5SepOyqNoUiJ-400.webp 400w",
+     "alt": "A-Frame House (Architektur) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1kCutMggFic7Ow-200.webp",
+     "srcset": "/img/p/1kCutMggFic7Ow-200.webp 200w, /img/p/1kCutMggFic7Ow-400.webp 400w",
+     "alt": "A-Frame House (Architektur) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1gB5Gm7pw3yuo--200.webp",
+     "srcset": "/img/p/1gB5Gm7pw3yuo--200.webp 200w, /img/p/1gB5Gm7pw3yuo--400.webp 400w",
+     "alt": "A-Frame House (Architektur) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/19QAFUKOB05Vsg-200.webp",
+     "srcset": "/img/p/19QAFUKOB05Vsg-200.webp 200w, /img/p/19QAFUKOB05Vsg-400.webp 400w",
+     "alt": "A-Frame House (Architektur) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1LCIxro-uCXsOv-200.webp",
+     "srcset": "/img/p/1LCIxro-uCXsOv-200.webp 200w, /img/p/1LCIxro-uCXsOv-400.webp 400w",
+     "alt": "A-Frame House (Architektur) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1SIOMonpmHZoIv-200.webp",
+     "srcset": "/img/p/1SIOMonpmHZoIv-200.webp 200w, /img/p/1SIOMonpmHZoIv-400.webp 400w",
+     "alt": "A-Frame House (Architektur) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1YAHZ30ZL0oPli-200.webp",
+     "srcset": "/img/p/1YAHZ30ZL0oPli-200.webp 200w, /img/p/1YAHZ30ZL0oPli-400.webp 400w",
+     "alt": "A-Frame House (Architektur) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-monpark",
+   "h2": "Monpark",
+   "href": "/de/proekty/monpark",
+   "status": "Designprojekt",
+   "meta": "Restaurant und Terrasse",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Monpark",
+   "items": [
+    {
+     "img": "img/p/1HL1J3k6Vl1nD--200.webp",
+     "srcset": "/img/p/1HL1J3k6Vl1nD--200.webp 200w, /img/p/1HL1J3k6Vl1nD--400.webp 400w",
+     "alt": "Gastraum — Monpark, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1jKOiN3xyCjZCL-200.webp",
+     "srcset": "/img/p/1jKOiN3xyCjZCL-200.webp 200w, /img/p/1jKOiN3xyCjZCL-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/12HcLhMA1BYGfJ-200.webp",
+     "srcset": "/img/p/12HcLhMA1BYGfJ-200.webp 200w, /img/p/12HcLhMA1BYGfJ-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1a7Iiulje5gvN7-200.webp",
+     "srcset": "/img/p/1a7Iiulje5gvN7-200.webp 200w, /img/p/1a7Iiulje5gvN7-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1f57D9TAv8lJgR-200.webp",
+     "srcset": "/img/p/1f57D9TAv8lJgR-200.webp 200w, /img/p/1f57D9TAv8lJgR-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1fJUIA-kCmfblI-200.webp",
+     "srcset": "/img/p/1fJUIA-kCmfblI-200.webp 200w, /img/p/1fJUIA-kCmfblI-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1I84S9MOrJrmtk-200.webp",
+     "srcset": "/img/p/1I84S9MOrJrmtk-200.webp 200w, /img/p/1I84S9MOrJrmtk-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1c17SGx_MWDbyF-200.webp",
+     "srcset": "/img/p/1c17SGx_MWDbyF-200.webp 200w, /img/p/1c17SGx_MWDbyF-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/17CXSsdzqH4VIW-200.webp",
+     "srcset": "/img/p/17CXSsdzqH4VIW-200.webp 200w, /img/p/17CXSsdzqH4VIW-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1pZgJUxqRJ7gaG-200.webp",
+     "srcset": "/img/p/1pZgJUxqRJ7gaG-200.webp 200w, /img/p/1pZgJUxqRJ7gaG-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1wwL33KrIFXK0p-200.webp",
+     "srcset": "/img/p/1wwL33KrIFXK0p-200.webp 200w, /img/p/1wwL33KrIFXK0p-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Juzv3QC28JIlj-200.webp",
+     "srcset": "/img/p/1Juzv3QC28JIlj-200.webp 200w, /img/p/1Juzv3QC28JIlj-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/19seq_4AT9Kb4a-200.webp",
+     "srcset": "/img/p/19seq_4AT9Kb4a-200.webp 200w, /img/p/19seq_4AT9Kb4a-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/15e6gUmfeplrU1-200.webp",
+     "srcset": "/img/p/15e6gUmfeplrU1-200.webp 200w, /img/p/15e6gUmfeplrU1-400.webp 400w",
+     "alt": "Monpark (Restaurant und Terrasse) — Designprojekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-yablu-rest",
+   "h2": "Yablu Rest",
+   "href": "/de/proekty/yablu-rest",
+   "status": "Designprojekt",
+   "meta": "Empfang · Erholung · Konferenzen",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Yablu Rest",
+   "items": [
+    {
+     "img": "img/p/1jjk3ERcqKTGqZ-200.webp",
+     "srcset": "/img/p/1jjk3ERcqKTGqZ-200.webp 200w, /img/p/1jjk3ERcqKTGqZ-400.webp 400w",
+     "alt": "Lounge-Bereich — Yablu Rest, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1GqqKXz4Ax1_cM-200.webp",
+     "srcset": "/img/p/1GqqKXz4Ax1_cM-200.webp 200w, /img/p/1GqqKXz4Ax1_cM-400.webp 400w",
+     "alt": "Yablu Rest — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/16Do4G_08hSZtl-200.webp",
+     "srcset": "/img/p/16Do4G_08hSZtl-200.webp 200w, /img/p/16Do4G_08hSZtl-400.webp 400w",
+     "alt": "Yablu Rest — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1KTRoR62drP2kI-200.webp",
+     "srcset": "/img/p/1KTRoR62drP2kI-200.webp 200w, /img/p/1KTRoR62drP2kI-400.webp 400w",
+     "alt": "Yablu Rest — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/13WiocWsjrHB4B-200.webp",
+     "srcset": "/img/p/13WiocWsjrHB4B-200.webp 200w, /img/p/13WiocWsjrHB4B-400.webp 400w",
+     "alt": "Yablu Rest — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1qpeuEP8q2xNHW-200.webp",
+     "srcset": "/img/p/1qpeuEP8q2xNHW-200.webp 200w, /img/p/1qpeuEP8q2xNHW-400.webp 400w",
+     "alt": "Yablu Rest — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1PYQ1NiQoorPDk-200.webp",
+     "srcset": "/img/p/1PYQ1NiQoorPDk-200.webp 200w, /img/p/1PYQ1NiQoorPDk-400.webp 400w",
+     "alt": "Yablu Rest — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-smart-villa",
+   "h2": "Smart Villa",
+   "href": "/de/proekty/smart-villa",
+   "status": "Designprojekt",
+   "meta": "Villa · 170 m²",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Smart Villa",
+   "items": [
+    {
+     "img": "img/p/1jLCsJh1mIO_wX-200.webp",
+     "srcset": "/img/p/1jLCsJh1mIO_wX-200.webp 200w, /img/p/1jLCsJh1mIO_wX-400.webp 400w",
+     "alt": "Fassade und Pool — Smart Villa, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1kHF6cjS291puf-200.webp",
+     "srcset": "/img/p/1kHF6cjS291puf-200.webp 200w, /img/p/1kHF6cjS291puf-400.webp 400w",
+     "alt": "Smart Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1C16Cd6bvENPGL-200.webp",
+     "srcset": "/img/p/1C16Cd6bvENPGL-200.webp 200w, /img/p/1C16Cd6bvENPGL-400.webp 400w",
+     "alt": "Smart Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ssG4DP62XXdPp-200.webp",
+     "srcset": "/img/p/1ssG4DP62XXdPp-200.webp 200w, /img/p/1ssG4DP62XXdPp-400.webp 400w",
+     "alt": "Smart Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1QEC6xYFG-Nioq-200.webp",
+     "srcset": "/img/p/1QEC6xYFG-Nioq-200.webp 200w, /img/p/1QEC6xYFG-Nioq-400.webp 400w",
+     "alt": "Smart Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1BQqqJb_OqPOz7-200.webp",
+     "srcset": "/img/p/1BQqqJb_OqPOz7-200.webp 200w, /img/p/1BQqqJb_OqPOz7-400.webp 400w",
+     "alt": "Smart Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1xAsDsaceELcL9-200.webp",
+     "srcset": "/img/p/1xAsDsaceELcL9-200.webp 200w, /img/p/1xAsDsaceELcL9-400.webp 400w",
+     "alt": "Smart Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/10Vn1KOXla-jyZ-200.webp",
+     "srcset": "/img/p/10Vn1KOXla-jyZ-200.webp 200w, /img/p/10Vn1KOXla-jyZ-400.webp 400w",
+     "alt": "Smart Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1wzwQKXdSQyRF2-200.webp",
+     "srcset": "/img/p/1wzwQKXdSQyRF2-200.webp 200w, /img/p/1wzwQKXdSQyRF2-400.webp 400w",
+     "alt": "Smart Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-house-150",
+   "h2": "House 150",
+   "href": "/de/proekty/house-150",
+   "status": "Designprojekt",
+   "meta": "Haus · 150 m²",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: House 150",
+   "items": [
+    {
+     "img": "img/p/1F4OovwNYQPfoF-200.webp",
+     "srcset": "/img/p/1F4OovwNYQPfoF-200.webp 200w, /img/p/1F4OovwNYQPfoF-400.webp 400w",
+     "alt": "House 150 — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Us4FZpRlnEsqf-200.webp",
+     "srcset": "/img/p/1Us4FZpRlnEsqf-200.webp 200w, /img/p/1Us4FZpRlnEsqf-400.webp 400w",
+     "alt": "House 150 — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/11aAO2oD99DpQ5-200.webp",
+     "srcset": "/img/p/11aAO2oD99DpQ5-200.webp 200w, /img/p/11aAO2oD99DpQ5-400.webp 400w",
+     "alt": "House 150 — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1sG7aFsQ8ibl9z-200.webp",
+     "srcset": "/img/p/1sG7aFsQ8ibl9z-200.webp 200w, /img/p/1sG7aFsQ8ibl9z-400.webp 400w",
+     "alt": "House 150 — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1g5cs3iVIpzLju-200.webp",
+     "srcset": "/img/p/1g5cs3iVIpzLju-200.webp 200w, /img/p/1g5cs3iVIpzLju-400.webp 400w",
+     "alt": "House 150 — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1NHpLHf_OUr8fM-200.webp",
+     "srcset": "/img/p/1NHpLHf_OUr8fM-200.webp 200w, /img/p/1NHpLHf_OUr8fM-400.webp 400w",
+     "alt": "House 150 — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1LWScRofv3Y_4w-200.webp",
+     "srcset": "/img/p/1LWScRofv3Y_4w-200.webp 200w, /img/p/1LWScRofv3Y_4w-400.webp 400w",
+     "alt": "House 150 — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1qeWnMdoeYieST-200.webp",
+     "srcset": "/img/p/1qeWnMdoeYieST-200.webp 200w, /img/p/1qeWnMdoeYieST-400.webp 400w",
+     "alt": "House 150 — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-kitana-beach",
+   "h2": "Kitana Beach",
+   "href": "/de/proekty/kitana-beach",
+   "status": "Designprojekt",
+   "meta": "Bodrum, Türkei · Strandresort",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Kitana Beach",
+   "items": [
+    {
+     "img": "img/p/1R7JHtKFpuMJSl-200.webp",
+     "srcset": "/img/p/1R7JHtKFpuMJSl-200.webp 200w, /img/p/1R7JHtKFpuMJSl-400.webp 400w",
+     "alt": "Wasserbungalow — Kitana Beach, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1A9yy4nI-gf9h3-200.webp",
+     "srcset": "/img/p/1A9yy4nI-gf9h3-200.webp 200w, /img/p/1A9yy4nI-gf9h3-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1XdhtH1mjWRTli-200.webp",
+     "srcset": "/img/p/1XdhtH1mjWRTli-200.webp 200w, /img/p/1XdhtH1mjWRTli-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1liDtgnsluGT4T-200.webp",
+     "srcset": "/img/p/1liDtgnsluGT4T-200.webp 200w, /img/p/1liDtgnsluGT4T-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1DeOWG4OI6VU89-200.webp",
+     "srcset": "/img/p/1DeOWG4OI6VU89-200.webp 200w, /img/p/1DeOWG4OI6VU89-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1lbUjCwPjkFYN2-200.webp",
+     "srcset": "/img/p/1lbUjCwPjkFYN2-200.webp 200w, /img/p/1lbUjCwPjkFYN2-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Ax7HF4e7HN2W3-200.webp",
+     "srcset": "/img/p/1Ax7HF4e7HN2W3-200.webp 200w, /img/p/1Ax7HF4e7HN2W3-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1cy3h8o-eFhKc2-200.webp",
+     "srcset": "/img/p/1cy3h8o-eFhKc2-200.webp 200w, /img/p/1cy3h8o-eFhKc2-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1SIGruxAZsVuYR-200.webp",
+     "srcset": "/img/p/1SIGruxAZsVuYR-200.webp 200w, /img/p/1SIGruxAZsVuYR-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1gsaCW5ixbLdX--200.webp",
+     "srcset": "/img/p/1gsaCW5ixbLdX--200.webp 200w, /img/p/1gsaCW5ixbLdX--400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1xdt1VBM3GzIES-200.webp",
+     "srcset": "/img/p/1xdt1VBM3GzIES-200.webp 200w, /img/p/1xdt1VBM3GzIES-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Bbyy6UYBBKZjB-200.webp",
+     "srcset": "/img/p/1Bbyy6UYBBKZjB-200.webp 200w, /img/p/1Bbyy6UYBBKZjB-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1pF8Y6ekINIUu3-200.webp",
+     "srcset": "/img/p/1pF8Y6ekINIUu3-200.webp 200w, /img/p/1pF8Y6ekINIUu3-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1ECXs-VguIyYDb-200.webp",
+     "srcset": "/img/p/1ECXs-VguIyYDb-200.webp 200w, /img/p/1ECXs-VguIyYDb-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1qX9hzwrpAy9pR-200.webp",
+     "srcset": "/img/p/1qX9hzwrpAy9pR-200.webp 200w, /img/p/1qX9hzwrpAy9pR-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/10K9mc6oyFQJ3v-200.webp",
+     "srcset": "/img/p/10K9mc6oyFQJ3v-200.webp 200w, /img/p/10K9mc6oyFQJ3v-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1tbE1y_QDn8aNB-200.webp",
+     "srcset": "/img/p/1tbE1y_QDn8aNB-200.webp 200w, /img/p/1tbE1y_QDn8aNB-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1uq3Cj_SAUujWj-200.webp",
+     "srcset": "/img/p/1uq3Cj_SAUujWj-200.webp 200w, /img/p/1uq3Cj_SAUujWj-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1pUtPUyH1A--pR-200.webp",
+     "srcset": "/img/p/1pUtPUyH1A--pR-200.webp 200w, /img/p/1pUtPUyH1A--pR-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1crLTw1jHDIiBh-200.webp",
+     "srcset": "/img/p/1crLTw1jHDIiBh-200.webp 200w, /img/p/1crLTw1jHDIiBh-400.webp 400w",
+     "alt": "Kitana Beach — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-dubai-villa",
+   "h2": "Dubai Villa",
+   "href": "/de/proekty/dubai-villa",
+   "status": "Designprojekt",
+   "meta": "Dubai · Villa",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Dubai Villa",
+   "items": [
+    {
+     "img": "img/p/1IWgqOm6pY2p34-200.webp",
+     "srcset": "/img/p/1IWgqOm6pY2p34-200.webp 200w, /img/p/1IWgqOm6pY2p34-400.webp 400w",
+     "alt": "Hausfassade — Dubai Villa, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1uBxYPk7W36Rp0-200.webp",
+     "srcset": "/img/p/1uBxYPk7W36Rp0-200.webp 200w, /img/p/1uBxYPk7W36Rp0-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1f4YLIK5drlYUn-200.webp",
+     "srcset": "/img/p/1f4YLIK5drlYUn-200.webp 200w, /img/p/1f4YLIK5drlYUn-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1IhIqeKtZeqq0--200.webp",
+     "srcset": "/img/p/1IhIqeKtZeqq0--200.webp 200w, /img/p/1IhIqeKtZeqq0--400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1oa1vcETLOsDeN-200.webp",
+     "srcset": "/img/p/1oa1vcETLOsDeN-200.webp 200w, /img/p/1oa1vcETLOsDeN-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/18NggdjWbMUpb8-200.webp",
+     "srcset": "/img/p/18NggdjWbMUpb8-200.webp 200w, /img/p/18NggdjWbMUpb8-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1gYXIxGIc3NoEu-200.webp",
+     "srcset": "/img/p/1gYXIxGIc3NoEu-200.webp 200w, /img/p/1gYXIxGIc3NoEu-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/183Q79Kf8WqggB-200.webp",
+     "srcset": "/img/p/183Q79Kf8WqggB-200.webp 200w, /img/p/183Q79Kf8WqggB-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1X8nyagDdx0Vcu-200.webp",
+     "srcset": "/img/p/1X8nyagDdx0Vcu-200.webp 200w, /img/p/1X8nyagDdx0Vcu-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Y5IXBDXBf9KTw-200.webp",
+     "srcset": "/img/p/1Y5IXBDXBf9KTw-200.webp 200w, /img/p/1Y5IXBDXBf9KTw-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1-ju_PIWMxE6mU-200.webp",
+     "srcset": "/img/p/1-ju_PIWMxE6mU-200.webp 200w, /img/p/1-ju_PIWMxE6mU-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1MKwXM1j0upivc-200.webp",
+     "srcset": "/img/p/1MKwXM1j0upivc-200.webp 200w, /img/p/1MKwXM1j0upivc-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1oMYGyjmfx6Ucx-200.webp",
+     "srcset": "/img/p/1oMYGyjmfx6Ucx-200.webp 200w, /img/p/1oMYGyjmfx6Ucx-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1SvkRuBIkBYMt8-200.webp",
+     "srcset": "/img/p/1SvkRuBIkBYMt8-200.webp 200w, /img/p/1SvkRuBIkBYMt8-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1hoY5XEGDFe6BT-200.webp",
+     "srcset": "/img/p/1hoY5XEGDFe6BT-200.webp 200w, /img/p/1hoY5XEGDFe6BT-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1_Z-h3JqT8xtuw-200.webp",
+     "srcset": "/img/p/1_Z-h3JqT8xtuw-200.webp 200w, /img/p/1_Z-h3JqT8xtuw-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1UILnOZ6RL0zQi-200.webp",
+     "srcset": "/img/p/1UILnOZ6RL0zQi-200.webp 200w, /img/p/1UILnOZ6RL0zQi-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Jv9WFNad0IhIq-200.webp",
+     "srcset": "/img/p/1Jv9WFNad0IhIq-200.webp 200w, /img/p/1Jv9WFNad0IhIq-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1As6AwAJUrykRU-200.webp",
+     "srcset": "/img/p/1As6AwAJUrykRU-200.webp 200w, /img/p/1As6AwAJUrykRU-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1e5H64BlQpldO_-200.webp",
+     "srcset": "/img/p/1e5H64BlQpldO_-200.webp 200w, /img/p/1e5H64BlQpldO_-400.webp 400w",
+     "alt": "Dubai Villa — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-tetris-hall",
+   "h2": "Tetris Hall",
+   "href": "/de/proekty/tetris-hall",
+   "status": "Umgesetzt",
+   "meta": "",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Tetris Hall",
+   "items": [
+    {
+     "img": "img/p/1nzb-w0NOCS1VA-200.webp",
+     "srcset": "/img/p/1nzb-w0NOCS1VA-200.webp 200w, /img/p/1nzb-w0NOCS1VA-400.webp 400w",
+     "alt": "Wohnzimmer — Tetris Hall, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1xqY1KZo2JY5xq-200.webp",
+     "srcset": "/img/p/1xqY1KZo2JY5xq-200.webp 200w, /img/p/1xqY1KZo2JY5xq-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1bXytwftMuIHBN-200.webp",
+     "srcset": "/img/p/1bXytwftMuIHBN-200.webp 200w, /img/p/1bXytwftMuIHBN-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1nLXvH7oBWQqht-200.webp",
+     "srcset": "/img/p/1nLXvH7oBWQqht-200.webp 200w, /img/p/1nLXvH7oBWQqht-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1jTQoq46yey2Zm-200.webp",
+     "srcset": "/img/p/1jTQoq46yey2Zm-200.webp 200w, /img/p/1jTQoq46yey2Zm-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1GnosovqCCjnAI-200.webp",
+     "srcset": "/img/p/1GnosovqCCjnAI-200.webp 200w, /img/p/1GnosovqCCjnAI-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1n0e2qfyf_vo9a-200.webp",
+     "srcset": "/img/p/1n0e2qfyf_vo9a-200.webp 200w, /img/p/1n0e2qfyf_vo9a-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1I-IGVmRlgOsEb-200.webp",
+     "srcset": "/img/p/1I-IGVmRlgOsEb-200.webp 200w, /img/p/1I-IGVmRlgOsEb-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/15so-bNcSjdD1d-200.webp",
+     "srcset": "/img/p/15so-bNcSjdD1d-200.webp 200w, /img/p/15so-bNcSjdD1d-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1x0WwsFSQLMsYd-200.webp",
+     "srcset": "/img/p/1x0WwsFSQLMsYd-200.webp 200w, /img/p/1x0WwsFSQLMsYd-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/12KrNt488GVEue-200.webp",
+     "srcset": "/img/p/12KrNt488GVEue-200.webp 200w, /img/p/12KrNt488GVEue-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1pi5iAejdBaIhP-200.webp",
+     "srcset": "/img/p/1pi5iAejdBaIhP-200.webp 200w, /img/p/1pi5iAejdBaIhP-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/12dNpuaz8pP2GV-200.webp",
+     "srcset": "/img/p/12dNpuaz8pP2GV-200.webp 200w, /img/p/12dNpuaz8pP2GV-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1LAwiVE6-unSDY-200.webp",
+     "srcset": "/img/p/1LAwiVE6-unSDY-200.webp 200w, /img/p/1LAwiVE6-unSDY-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/11wEIjh0kDHFtz-200.webp",
+     "srcset": "/img/p/11wEIjh0kDHFtz-200.webp 200w, /img/p/11wEIjh0kDHFtz-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1C2WunUHvuF4y0-200.webp",
+     "srcset": "/img/p/1C2WunUHvuF4y0-200.webp 200w, /img/p/1C2WunUHvuF4y0-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1bJ2Gw-YLWZIs4-200.webp",
+     "srcset": "/img/p/1bJ2Gw-YLWZIs4-200.webp 200w, /img/p/1bJ2Gw-YLWZIs4-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1dHW-ciO1rn1E0-200.webp",
+     "srcset": "/img/p/1dHW-ciO1rn1E0-200.webp 200w, /img/p/1dHW-ciO1rn1E0-400.webp 400w",
+     "alt": "Tetris Hall — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-dolls-salon",
+   "h2": "Dolls Salon",
+   "href": "/de/proekty/dolls-salon",
+   "status": "Umgesetzt",
+   "meta": "",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Dolls Salon",
+   "items": [
+    {
+     "img": "img/p/1rX1eAn3-aYuHF-200.webp",
+     "srcset": "/img/p/1rX1eAn3-aYuHF-200.webp 200w, /img/p/1rX1eAn3-aYuHF-400.webp 400w",
+     "alt": "Dolls Salon — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/11-2l13BlD_4wv-200.webp",
+     "srcset": "/img/p/11-2l13BlD_4wv-200.webp 200w, /img/p/11-2l13BlD_4wv-400.webp 400w",
+     "alt": "Dolls Salon — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1S_QdDAbXIVbgH-200.webp",
+     "srcset": "/img/p/1S_QdDAbXIVbgH-200.webp 200w, /img/p/1S_QdDAbXIVbgH-400.webp 400w",
+     "alt": "Dolls Salon — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1R90iVFjLt7Eoh-200.webp",
+     "srcset": "/img/p/1R90iVFjLt7Eoh-200.webp 200w, /img/p/1R90iVFjLt7Eoh-400.webp 400w",
+     "alt": "Dolls Salon — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1gI8TsO03lYAxp-200.webp",
+     "srcset": "/img/p/1gI8TsO03lYAxp-200.webp 200w, /img/p/1gI8TsO03lYAxp-400.webp 400w",
+     "alt": "Dolls Salon — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1Y-Fiyq963hsV9-200.webp",
+     "srcset": "/img/p/1Y-Fiyq963hsV9-200.webp 200w, /img/p/1Y-Fiyq963hsV9-400.webp 400w",
+     "alt": "Dolls Salon — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/10VXmTxtwOLr2P-200.webp",
+     "srcset": "/img/p/10VXmTxtwOLr2P-200.webp 200w, /img/p/10VXmTxtwOLr2P-400.webp 400w",
+     "alt": "Dolls Salon — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1HNIT4W7Xpj5Jf-200.webp",
+     "srcset": "/img/p/1HNIT4W7Xpj5Jf-200.webp 200w, /img/p/1HNIT4W7Xpj5Jf-400.webp 400w",
+     "alt": "Dolls Salon — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1r2axJNZMXtVkp-200.webp",
+     "srcset": "/img/p/1r2axJNZMXtVkp-200.webp 200w, /img/p/1r2axJNZMXtVkp-400.webp 400w",
+     "alt": "Dolls Salon — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "project",
+   "id": "p-office-chicago",
+   "h2": "Office Chicago",
+   "href": "/de/proekty/office-chicago",
+   "status": "Umgesetzt",
+   "meta": "Wohnanlage Chicago, Kiew",
+   "open": "zur Projektseite →",
+   "btn": "Öffnen →",
+   "label": "Fotos: Office Chicago",
+   "items": [
+    {
+     "img": "img/p/11Hotk9uWWN_pE-200.webp",
+     "srcset": "/img/p/11Hotk9uWWN_pE-200.webp 200w, /img/p/11Hotk9uWWN_pE-400.webp 400w",
+     "alt": "Großraumbüro — Office Chicago, ein Projekt von CAS Development",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/16fKqdFifd2emf-200.webp",
+     "srcset": "/img/p/16fKqdFifd2emf-200.webp 200w, /img/p/16fKqdFifd2emf-400.webp 400w",
+     "alt": "Office Chicago — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/13a8ks6jQlZ5LY-200.webp",
+     "srcset": "/img/p/13a8ks6jQlZ5LY-200.webp 200w, /img/p/13a8ks6jQlZ5LY-400.webp 400w",
+     "alt": "Office Chicago — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/172MXziiSXy2Bp-200.webp",
+     "srcset": "/img/p/172MXziiSXy2Bp-200.webp 200w, /img/p/172MXziiSXy2Bp-400.webp 400w",
+     "alt": "Office Chicago — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/175ItegntHAFeI-200.webp",
+     "srcset": "/img/p/175ItegntHAFeI-200.webp 200w, /img/p/175ItegntHAFeI-400.webp 400w",
+     "alt": "Office Chicago — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/15PAZFo6btwfkp-200.webp",
+     "srcset": "/img/p/15PAZFo6btwfkp-200.webp 200w, /img/p/15PAZFo6btwfkp-400.webp 400w",
+     "alt": "Office Chicago — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/15mn_Or4V7WrFB-200.webp",
+     "srcset": "/img/p/15mn_Or4V7WrFB-200.webp 200w, /img/p/15mn_Or4V7WrFB-400.webp 400w",
+     "alt": "Office Chicago — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    },
+    {
+     "img": "img/p/1AuTOsj6bQ1y2f-200.webp",
+     "srcset": "/img/p/1AuTOsj6bQ1y2f-200.webp 200w, /img/p/1AuTOsj6bQ1y2f-400.webp 400w",
+     "alt": "Office Chicago — Projektfoto",
+     "sizes": "(max-width:767px) 200px, 280px"
+    }
+   ]
+  },
+  {
+   "t": "pmap"
+  }
+ ]
+}
