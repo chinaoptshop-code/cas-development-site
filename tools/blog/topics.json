@@ -1375,5 +1375,125 @@
    "Ремонт и строительство в Европе"
   ],
   "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "shcho-vkhodyt-u-dyzain-proekt-budynku",
+  "title": "Що входить у дизайн-проєкт будинку: склад, етапи й ціна",
+  "keyword": "дизайн-проєкт будинку",
+  "service": [
+   "/dyzain-interieru-budynku-kyiv",
+   "Дизайн інтерʼєру будинку"
+  ],
+  "status": "draft",
+  "note": "GSC 10.11.2026: покази без статті; чекає ОК Михайла"
+ },
+ {
+  "lang": "ru",
+  "slug": "chto-vkhodit-v-dizayn-proekt-doma",
+  "title": "Что входит в дизайн-проект дома: состав, этапы и цена",
+  "keyword": "дизайн-проект дома",
+  "service": [
+   "/ru/dizayn-interera-doma-kiev",
+   "Дизайн интерьера дома"
+  ],
+  "status": "draft",
+  "note": "GSC 10.11.2026: покази без статті; чекає ОК Михайла"
+ },
+ {
+  "lang": "uk",
+  "slug": "dyzain-open-space-ofisu-planuvannia-zonuvannia-akustyka",
+  "title": "Дизайн опен-спейс офісу: планування, зонування, акустика",
+  "keyword": "дизайн опен-спейс офісу",
+  "service": [
+   "/dyzain-ofisu-open-space-kyiv",
+   "Дизайн офісу open space"
+  ],
+  "status": "draft",
+  "note": "GSC 10.11.2026: покази без статті; чекає ОК Михайла"
+ },
+ {
+  "lang": "ru",
+  "slug": "dizayn-open-space-ofisa-planirovka-zonirovanie-akustika",
+  "title": "Дизайн опен-спейс офиса: планировка, зонирование, акустика",
+  "keyword": "дизайн опен-спейс офиса",
+  "service": [
+   "/ru/dizayn-ofisa-open-space-kiev",
+   "Дизайн офиса open space"
+  ],
+  "status": "draft",
+  "note": "GSC 10.11.2026: покази без статті; чекає ОК Михайла"
+ },
+ {
+  "lang": "uk",
+  "slug": "karkasnyi-budynok-pid-kliuch-etapy-i-tsina",
+  "title": "Каркасний будинок під ключ: етапи й з чого складається ціна",
+  "keyword": "каркасний будинок під ключ",
+  "service": [
+   "/karkasnyi-budynok-pid-kliuch-kyiv",
+   "Каркасний будинок під ключ"
+  ],
+  "status": "draft",
+  "note": "GSC 10.11.2026: покази без статті; чекає ОК Михайла"
+ },
+ {
+  "lang": "ru",
+  "slug": "karkasnyy-dom-pod-klyuch-etapy-i-tsena",
+  "title": "Каркасный дом под ключ: этапы и из чего складывается цена",
+  "keyword": "каркасный дом под ключ",
+  "service": [
+   "/ru/karkasnyy-dom-pod-klyuch-kiev",
+   "Каркасный дом под ключ"
+  ],
+  "status": "draft",
+  "note": "GSC 10.11.2026: покази без статті; чекає ОК Михайла"
+ },
+ {
+  "lang": "uk",
+  "slug": "budivnytstvo-mini-hotelyu-pid-kliuch",
+  "title": "Будівництво міні-готелю під ключ: від концепції до запуску",
+  "keyword": "будівництво міні-готелю",
+  "service": [
+   "/dyzain-hotelu-kyiv",
+   "Дизайн і ремонт готелю"
+  ],
+  "status": "draft",
+  "note": "GSC 10.11.2026: покази без статті; чекає ОК Михайла"
+ },
+ {
+  "lang": "ru",
+  "slug": "stroitelstvo-mini-otelya-pod-klyuch",
+  "title": "Строительство мини-отеля под ключ: от концепции до запуска",
+  "keyword": "строительство мини-отеля",
+  "service": [
+   "/ru/dizayn-gostinitsy-kiev",
+   "Дизайн и ремонт гостиницы"
+  ],
+  "status": "draft",
+  "note": "GSC 10.11.2026: покази без статті; чекає ОК Михайла"
+ },
+ {
+  "lang": "uk",
+  "slug": "home-staging-pidhotovka-kvartyry-do-prodazhu-chy-orendy",
+  "title": "Home staging: як підготувати квартиру до продажу чи оренди",
+  "keyword": "home staging квартири",
+  "service": [
+   "/mebliuvannia-kvartyry-kyiv",
+   "Меблювання квартири"
+  ],
+  "status": "draft",
+  "note": "GSC 10.11.2026: покази без статті; чекає ОК Михайла"
+ },
+ {
+  "lang": "ru",
+  "slug": "home-staging-podgotovka-kvartiry-k-prodazhe-ili-arende",
+  "title": "Home staging: как подготовить квартиру к продаже или аренде",
+  "keyword": "home staging квартиры",
+  "service": [
+   "/ru/meblirovka-kvartiry-kiev",
+   "Меблировка квартиры"
+  ],
+  "status": "draft",
+  "note": "GSC 10.11.2026: покази без статті; чекає ОК Михайла"
  }
 ]
