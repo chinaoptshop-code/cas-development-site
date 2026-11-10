@@ -326,7 +326,7 @@ T['en'] = dict(
 
 # ═════════════════════════════════════════════ «Ремонт з нуля» v3: квартира ≈86 м² (кухня-вітальня, спальня, дитяча/кабінет, передпокій,
 # ванна, санвузол, гардеробна), 19 етапів, варіанти «Новобудова з нуля» / «Вторинка з демонтажем», рентген мереж, пироги шарів.
-# Команда й факти — лише з CLAUDE.md (3D-замір — штатний фахівець; меблярі — без імен; штатні бригади; гарантія 12 міс.; фотозвіти раз на 1–2 тижні).
+# Команда й факти — лише з CLAUDE.md (3D-замір — штатний фахівець; меблярі — без імен; штатна команда; гарантія 12 міс.; фотозвіти раз на 1–2 тижні).
 # Тепла підлога в квартирі — електрична (кабель у стяжці): водяну від центрального опалення в багатоквартирному будинку зазвичай не дозволяють.
 
 T['uk']['ui'].update(
@@ -340,7 +340,7 @@ T['uk']['flat'] = dict(
     cta='Порахувати мій ремонт', team='Хто ці люди — на сторінці', about='Про нас', more='', svc='Ремонт квартир',
     st=dict(
         measure=('3D-замір квартири', 'Наш фахівець сканує квартиру 3D-сканером: хмара точок дає реальні розміри, висоти, перепади плити й кути. Прораб звіряє замір з планом і вводами мереж.'),
-        design=('Дизайн-проєкт на підлозі', 'План переносимо на бетон: зонування, меблі, розкладка плитки, схеми розеток, світла й сантехніки. Далі все робимо за кресленнями — нашими штатними бригадами.'),
+        design=('Дизайн-проєкт на підлозі', 'План переносимо на бетон: зонування, меблі, розкладка плитки, схеми розеток, світла й сантехніки. Далі все робимо за кресленнями — нашою штатною командою.'),
         demo=('Демонтаж і вивезення', 'Знімаємо старі покриття, стяжку, плитку й перегородки, яких немає в проєкті; стару проводку й труби — повністю. Сміття — у мішки й на вивезення. Несучі стіни не чіпаємо.'),
         demo_n=('Приймання й підготовка', 'Перевіряємо квартиру від забудовника: геометрію стін, перепади плити, вікна й вводи мереж. Прибираємо, знепилюємо й ґрунтуємо бетон.'),
         part=('Перегородки', 'Мокрі зони — з газоблоку 100 мм на клей з армуванням рядів; кімнати — з гіпсокартону на металевому профілі з мінватою для звукоізоляції. Прорізи — за проєктом.'),
@@ -397,7 +397,7 @@ T['ru']['flat'] = dict(
     cta='Рассчитать мой ремонт', team='Кто эти люди — на странице', about='О нас', more='', svc='Ремонт квартир',
     st=dict(
         measure=('3D-замер квартиры', 'Наш специалист сканирует квартиру 3D-сканером: облако точек даёт реальные размеры, высоты, перепады плиты и углы. Прораб сверяет замер с планом и вводами сетей.'),
-        design=('Дизайн-проект на полу', 'План переносим на бетон: зонирование, мебель, раскладка плитки, схемы розеток, света и сантехники. Дальше всё делаем по чертежам — нашими штатными бригадами.'),
+        design=('Дизайн-проект на полу', 'План переносим на бетон: зонирование, мебель, раскладка плитки, схемы розеток, света и сантехники. Дальше всё делаем по чертежам — нашей штатной командой.'),
         demo=('Демонтаж и вывоз', 'Снимаем старые покрытия, стяжку, плитку и перегородки, которых нет в проекте; старую проводку и трубы — полностью. Мусор — в мешки и на вывоз. Несущие стены не трогаем.'),
         demo_n=('Приёмка и подготовка', 'Проверяем квартиру от застройщика: геометрию стен, перепады плиты, окна и вводы сетей. Убираем, обеспыливаем и грунтуем бетон.'),
         part=('Перегородки', 'Мокрые зоны — из газоблока 100 мм на клей с армированием рядов; комнаты — из гипсокартона на металлическом профиле с минватой для звукоизоляции. Проёмы — по проекту.'),
@@ -454,7 +454,7 @@ T['en']['flat'] = dict(
     cta='Estimate my renovation', team='Meet the people behind each stage on the', about='About page', more='', svc='Apartment renovation',
     st=dict(
         measure=('3D scan of the apartment', 'Our specialist scans the apartment with a 3D scanner: the point cloud gives real sizes, heights, slab level differences and angles. The site manager checks it against the plan and service entries.'),
-        design=('Design project on the floor', 'The plan goes onto the concrete: zoning, furniture, tile layout, socket, lighting and plumbing drawings. From here everything follows the drawings, done by our in-house crews.'),
+        design=('Design project on the floor', 'The plan goes onto the concrete: zoning, furniture, tile layout, socket, lighting and plumbing drawings. From here everything follows the drawings, done by our in-house team.'),
         demo=('Demolition and removal', 'We strip old finishes, screed, tiles and the partitions the project removes; old wiring and pipes go completely. Debris goes into bags and is hauled away. Load-bearing walls stay untouched.'),
         demo_n=('Handover and preparation', 'We check the developer\'s shell: wall geometry, slab level differences, windows and service entries. Then we clean, dedust and prime the concrete.'),
         part=('Partitions', 'Wet areas get 100 mm aerated block on adhesive with reinforced courses; rooms get plasterboard on metal studs with mineral wool for sound insulation. Openings follow the project.'),

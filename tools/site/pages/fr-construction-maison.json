@@ -7,7 +7,7 @@
  "h1": "Construction de maisons clé en main à Kyiv et dans sa région",
  "price": "gros œuvre dès $600 / m² · clé en main avec finitions dès $1 100 / m²",
  "lead": "Nous construisons maisons individuelles, cottages et résidences de campagne — de la conception et des fondations jusqu’aux finitions intérieures, au mobilier et à l’aménagement du terrain. Nous prenons aussi en charge rénovations lourdes et extensions.",
- "guarantees": true,
+ "guarantees": "no5",
  "cards": [
   [
    "Conception",
@@ -96,7 +96,7 @@
   ],
   [
    "Devis et contrat",
-   "Prix et délais par étapes ; si CAS construit, le total reste à ±5 %."
+   "Prix et délais par étapes, fixés dans le contrat avant le démarrage."
   ],
   [
    "Construction",

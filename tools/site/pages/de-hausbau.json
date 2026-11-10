@@ -7,7 +7,7 @@
  "h1": "Schlüsselfertiger Hausbau in Kyjiw und Umgebung",
  "price": "Rohbau ab $600 / m² · schlüsselfertig mit Ausbau ab $1 100 / m²",
  "lead": "Wir bauen Einfamilienhäuser, Cottages und Landsitze — von Planung und Fundament bis zu Innenausbau, Möbeln und Gartengestaltung. Auch Umbauten und Erweiterungen übernehmen wir.",
- "guarantees": true,
+ "guarantees": "no5",
  "cards": [
   [
    "Planung",
@@ -96,7 +96,7 @@
   ],
   [
    "Kostenvoranschlag und Vertrag",
-   "Preis und Termine nach Phasen; baut CAS, bleibt die Summe innerhalb von ±5 %."
+   "Preis und Termine nach Phasen, vor Baubeginn im Vertrag festgelegt."
   ],
   [
    "Bau",

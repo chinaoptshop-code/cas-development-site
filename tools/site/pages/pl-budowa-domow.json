@@ -7,7 +7,7 @@
  "h1": "Budowa domów pod klucz w Kijowie i okolicach",
  "price": "stan surowy od $600 / m² · pod klucz z wykończeniem od $1 100 / m²",
  "lead": "Budujemy domy jednorodzinne i rezydencje podmiejskie — od projektu i fundamentów po wykończenie wnętrz, meble i zagospodarowanie działki. Podejmujemy się też przebudów i rozbudów.",
- "guarantees": true,
+ "guarantees": "no5",
  "cards": [
   [
    "Projekt",
@@ -122,7 +122,7 @@
   ],
   [
    "Kosztorys i umowa",
-   "Cena i terminy według etapów; jeśli buduje CAS, wynik w granicach ±5%."
+   "Cena i terminy według etapów, zapisane w umowie przed startem prac."
   ],
   [
    "Budowa",

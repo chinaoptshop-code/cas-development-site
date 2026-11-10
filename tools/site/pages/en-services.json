@@ -5,7 +5,7 @@
  "title": "Services in Kyiv: design, renovation, construction | CAS Development",
  "description": "CAS Development services: interior design from $30/m², renovation from $550/m², offices from $350/m², construction from $600/m², furnishing from $250/m².",
  "h1": "Studio services: from idea to finished space",
- "lead": "Order the full cycle or a single stage. Every service is backed by one team of architects, designers, engineers and our own renovation crews.",
+ "lead": "Order the full cycle or a single stage. Every service is backed by one team: architects, designers, engineers and our own builders.",
  "btn2": [
   "https://wa.me/380978667755",
   "WhatsApp"
@@ -132,12 +132,12 @@
      "h": "Turnkey business premises",
      "href": "/en/business-fit-out",
      "img": "img/svc-commercial-600.webp",
-     "price": "design from $30 / m² · furnishing from $10,000",
+     "price": "design from $30 / m² · furniture from China: orders from $10,000",
      "li": [
       "cafés and restaurants",
       "beauty salons and shops",
       "offices and mini-hotels",
-      "furnishing from China from $10,000"
+      "furniture from China: orders from $10,000"
      ],
      "links": [
       [
@@ -240,7 +240,7 @@
     ],
     [
      "/portfolio",
-     "Portfolio (UA)"
+     "Portfolio"
     ]
    ]
   }

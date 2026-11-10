@@ -14,7 +14,7 @@
   W.__casBA = 1;
   var secs = [].slice.call(d.querySelectorAll('section.bz[data-bz]'));
   if (!secs.length || !W.fetch || !W.Promise) return;
-  var VER = {"ar.flat":"dd4e8c42","ar.house":"6da9929c","de.flat":"bef66e8c","de.house":"407e45b3","en.flat":"ba190cfc","en.house":"32f566db","es.flat":"a055bd91","es.house":"de85aea4","fr.flat":"ccd5f01d","fr.house":"fe3284fe","pl.flat":"095e7c40","pl.house":"ac12d36a","ru.flat":"e63b4e18","ru.house":"c3917aff","uk.flat":"ad75a035","uk.house":"72d1609b","zh.flat":"fab61a6a","zh.house":"1a03b7f4"}; /*ver*/
+  var VER = {"ar.flat":"dd4e8c42","ar.house":"6da9929c","de.flat":"bef66e8c","de.house":"407e45b3","en.flat":"1d82d6d8","en.house":"32f566db","es.flat":"a055bd91","es.house":"de85aea4","fr.flat":"ccd5f01d","fr.house":"fe3284fe","pl.flat":"095e7c40","pl.house":"ac12d36a","ru.flat":"7e279bbf","ru.house":"c3917aff","uk.flat":"9a5703ba","uk.house":"72d1609b","zh.flat":"fab61a6a","zh.house":"1a03b7f4"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
   // головні (.hx-home): компактна сцена в межах екрана — без довгої sticky-доріжки; етапи крокує автопрогравання (casAuto) і кнопки ←/→ (Михайло 05.11.2026)
