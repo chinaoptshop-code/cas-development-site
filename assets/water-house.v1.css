@@ -48,3 +48,4 @@
   .wh-e.on .wh-sound{animation:wh-rp 2.4s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
 }
 @media (prefers-reduced-motion:reduce){.wh-e,.wh-drv,.wh-slide,.wh-gl,.wh-streak,.wh-clad,.wh-refl.w{transition:none}}
+.wh-zz *{animation-play-state:paused!important}

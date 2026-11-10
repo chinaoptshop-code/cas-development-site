@@ -140,7 +140,7 @@
     var h = '', nCab = cfg.n, s = Math.sqrt(cfg.a) * 5.6, mw = Math.sqrt(cfg.r) * 10.5, mh = mw * 0.62;
     objs = [];
     var py = Math.round(nCab > 4 ? (752 + 1.32 * s) / 2 : 352 + 1.32 * s + 12); // доріжка вздовж будиночків — між рядами / під терасами, не крізь них
-    LZ = []; // вміст обʼєктів — після землі, доріжок і дерев, по кілька на кадр (fillO): перша збірка без задач > 150 мс на телефоні
+    LZ = []; // вміст обʼєктів — по кілька на кадр (fillO): без задач > 150 мс на телефоні
     function obj(type, idx, inner) { var k = objs.length; objs.push(type); LZ[k] = inner; return '<g class="rp-o" data-o="' + type + '" data-k="' + k + '" tabindex="0" role="button" aria-label="' + esc(D.o[type]) + (idx ? ' ' + idx : '') + '"></g>'; }
     h += '<rect class="rp-grass" x="0" y="0" width="1000" height="700"/><rect fill="url(#rp-gq)" width="1000" height="590"/><rect class="rp-gtx" x="0" y="0" width="1000" height="700"/>';
     var lk = 'M0 590 C 250 576 750 602 1000 584 V 700 H 0 Z', wv = ' q 25 -6 50 0' + ' t 50 0'.repeat(21);
@@ -173,7 +173,7 @@
     h += obj('relax', 0, relax(150, 490));
     h += obj('beach', 0, beach(520));
     h += obj('bar', 0, bar(800, 500, 70, 38));
-    // піна, відблиски, пірс, човни, плавці, люди — поза обʼєктами
+    // піна, пірс, човни, люди — поза обʼєктами
     var w = '', fm = 'M0 591q12 3 24 0' + 't24 0'.repeat(41), pl = '';
     w += P(fm, 'fill="none" stroke="#f4fbff" opacity=".75" stroke-width="2.4"') + P(fm.replace('M0 591', 'M-10 598'), 'fill="none" stroke="#e6f8ff" opacity=".35" stroke-width="1.4" stroke-dasharray="22 9 8 12"');
     for (var g = 0; g < 18; g++) w += P('M' + n1((g * 157 + 40) % 990) + ' ' + n1(610 + (g * 37) % 84) + 'h' + (4 + g % 4 * 2), 'stroke="#fff" opacity=".55" stroke-width="1.2" stroke-linecap="round"');
@@ -252,7 +252,7 @@
     cam([Math.max(0, Math.min(1000 - w, b.x + b.width / 2 - w / 2)), Math.max(0, Math.min(700 - h, b.y + b.height / 2 - h / 2)), w, h]); // кадр — у межах генплану
     stage = 0; show(); back.hidden = false; nav.hidden = false;
     clearInterval(timer);
-    if (auto === 2) { if (!RM) timer = setInterval(function () { if (stage < steps().length - 1) { stage++; show(); } else clearInterval(timer); }, 950); return; } // жест: етапи самі, без фокуса
+    if (auto === 2) { if (!RM) timer = setInterval(function () { if (stage < steps().length - 1) { stage++; show(); } else clearInterval(timer); }, 950); return; } // жест: етапи самі
     if (auto) return; // casAuto: без фокуса й аналітики
     tourEnd = false;
     if (!RM) timer = setInterval(function () { if (stage < steps().length - 1) { stage++; show(); } else clearInterval(timer); }, 950);
@@ -304,6 +304,7 @@
     ctl.appendChild(seg(U.lvl, U.lvls, 1, function (i) { cfg.l = i; price(); }));
     var grid = el('div', 'rp-grid'), stage0 = el('div', 'rp-stage');
     svg = d.createElementNS(NS, 'svg'); svg.setAttribute('class', 'rp-svg'); svg.setAttribute('viewBox', '0 0 1000 700'); svg.setAttribute('aria-label', sec.querySelector('h2').textContent);
+    if (!RM && W.IntersectionObserver) new IntersectionObserver(function (e) { svg.classList.toggle('rp-zz', !e[e.length - 1].isIntersecting); }).observe(svg);
     cap = el('p', 'rp-cap', '<span>' + esc(U.tap) + '</span>'); cap.setAttribute('aria-live', 'polite');
     back = el('button', 'btn rp-back', esc(U.back)); back.type = 'button'; back.hidden = true; back.addEventListener('click', function () { close(); });
     nav = el('div', 'la-nav rp-nav'); nav.hidden = true;
@@ -343,7 +344,7 @@
     sec.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && focus) close(); });
     sec.classList.add('rp-on');
     layout(); price();
-    // автопрогравання: обʼєкти по черзі з етапами, наприкінці — генплан і «Ще раз»
+    // автопрогравання: обʼєкти по черзі, наприкінці — генплан
     if (W.casAuto) W.casAuto({ root: stage0, view: svg, host: auHost, atEnd: function () { return tourEnd; },
       restart: function () { tourEnd = false; if (focus) close(1); },
       step: function () {

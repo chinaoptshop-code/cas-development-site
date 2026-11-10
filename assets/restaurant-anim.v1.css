@@ -66,3 +66,4 @@
   .rs-e.on .rs-scan{animation:rs-ray .9s ease-in-out infinite}
 }
 @media (prefers-reduced-motion:reduce){.rs-e,.rs-glow,.rs-umb,.rs-glass{transition:none}}
+.rs-zz *{animation-play-state:paused!important}

@@ -294,8 +294,13 @@
     function ch() { if (t !== fT) return; var t0 = Date.now(); for (; j < els.length && Date.now() - t0 < 6; j++) if (els[j].z) fz(els[j]); if (j < els.length) ric(ch); }
     ric(ch);
   }
+  // пауза безперервних анімацій (CSS — клас rs-zz, SMIL — pauseAnimations): поза кадром, вкладка прихована або ≥ 4 с без кроків
+  var zW = 0, zV = 0, zT = 0, zP = false;
+  function nap(w) { if (RM) return; if (w) zW = Date.now(); clearTimeout(zT); var t = zW + 4e3 - Date.now(), on = !!zV && !d.hidden && t > 0; zT = on ? setTimeout(nap, t + 50) : 0;
+    if (on === zP) { zP = !on; svg.classList.toggle('rs-zz', zP); if (svg.pauseAnimations) zP ? svg.pauseAnimations() : svg.unpauseAnimations(); } }
   function apply(force) {
     var p = prog;
+    if (zP || !zT) nap(1); else zW = Date.now();
     while (ptr < els.length && els[ptr].k <= p) { if (els[ptr].z) fz(els[ptr]); els[ptr].n.classList.add('on'); ptr++; }
     while (ptr > 0 && els[ptr - 1].k > p) { ptr--; els[ptr].n.classList.remove('on'); }
     els.forEach(function (o) { if (o.u != null) o.n.classList.toggle('gone', p >= o.u); });
@@ -384,6 +389,7 @@
     sec.classList.add('la-on');
     svg.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); go(shown + ((e.key === 'ArrowRight') !== (d.documentElement.dir === 'rtl') ? 1 : -1)); } }); // preventDefault — casGest на блоці не робить другого кроку; RTL — дзеркально
     svg.setAttribute('tabindex', '0');
+    if (!RM) { if ('IntersectionObserver' in W) new IntersectionObserver(function (es) { zV = es[es.length - 1].isIntersecting; nap(zV); }).observe(svg); else zV = 1; d.addEventListener('visibilitychange', function () { nap(!d.hidden); }); }
     prog = RM ? N - 0.001 : CMP ? 0.999 : 0;
     build();
     W.addEventListener('resize', function () { if (shown >= 0) { vbT = target(shown); if (RM) vb = vbT.slice(); if (!raf) tick(); } });
