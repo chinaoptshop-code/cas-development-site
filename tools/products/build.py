@@ -24,7 +24,34 @@ def _chrome_apply(s, rel):
     """Форма заявки (обовʼязковий лише телефон) + єдина шапка/футер."""
     return chrome.apply(leadform.apply(s, rel), rel)
 
-LASTMOD = time.strftime('%Y-%m-%d', time.localtime(os.path.getmtime(os.path.join(ROOT, 'assets/ozdoba/catalog.json'))))  # для sitemap
+# lastmod у sitemap (10.11.2026): не «сьогодні» на кожній збірці, а дата останньої зміни самого товару — tools/products/lastmod.json
+# ({id: [хеш запису товару, дата]}; хеш змінився → дата = сьогодні; файл пише main(), rebuild.yml його комітить).
+# Перше заповнення — дата останнього коміту catalog.json. LASTMOD — найсвіжіша дата товарів (/ozdoba, категорії, прайс, en/pl).
+LM_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lastmod.json')
+LASTMOD = time.strftime('%Y-%m-%d')
+ITEM_LM = {}
+
+
+def item_lastmod(items):
+    import subprocess
+    try: old = json.load(open(LM_PATH, encoding='utf-8'))
+    except (OSError, ValueError): old = None
+    seed = time.strftime('%Y-%m-%d')
+    if old is None:
+        try:
+            seed = subprocess.run(['git', 'log', '-1', '--format=%cs', '--', 'assets/ozdoba/catalog.json'], cwd=ROOT,
+                                  capture_output=True, text=True, timeout=20).stdout.strip() or seed
+        except Exception: pass
+    old = old or {}
+    out = {}
+    for i in items:
+        h = hashlib.sha1(json.dumps(i, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:10]
+        k = str(i['id'])
+        out[k] = old[k] if k in old and old[k][0] == h else [h, seed if not old else time.strftime('%Y-%m-%d')]
+    if out != old:
+        rows = ',\n'.join(f'"{k}":{json.dumps(out[k])}' for k in sorted(out, key=int))
+        open(LM_PATH, 'w', encoding='utf-8').write('{\n' + rows + '\n}\n')
+    return {int(k): v[1] for k, v in out.items()}
 CAT = os.path.join(ROOT, 'assets/ozdoba/catalog.json')
 # Легкий каталог (швидкість, 09.11.2026): /ozdoba одразу вантажить лише catalog-lite.json (усі товари без desc/specs/custom,
 # ~30 КБ br замість ~71): картки, фільтри, кошик, обране працюють з ним; повний catalog.json app.js бере після load (idle)
@@ -148,6 +175,9 @@ def main():
     for i in d['items']:
         if not i.get('slug'): i['slug'] = slugify(i['name'], i['id']); changed = True
     if changed: json.dump(d, open(CAT, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+    global LASTMOD
+    ITEM_LM.clear(); ITEM_LM.update(item_lastmod(d['items']))
+    LASTMOD = max(ITEM_LM.values())
     lite = {k: v for k, v in d.items() if k != '_doc'}
     lite['items'] = [{k: v for k, v in i.items() if k not in LITE_DROP} for i in d['items']]
     lt = json.dumps(lite, ensure_ascii=False, separators=(',', ':'))
@@ -205,6 +235,17 @@ def main():
 TR = dict(zip('абвгґдеєжзиіїйклмнопрстуфхцчшщьюя', ['a', 'b', 'v', 'h', 'g', 'd', 'e', 'ie', 'zh', 'z', 'y', 'i', 'i', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'kh', 'ts', 'ch', 'sh', 'shch', '', 'iu', 'ia']))
 VENUE = {'apt': 'квартира', 'resto': 'ресторан і бар', 'hotel': 'готель', 'office': 'офіс', 'shop': 'магазин і шоурум',
          'cafe': 'кафе і кавʼярня', 'beauty': 'салон краси', 'spa': 'SPA і велнес'}
+
+
+# «Підходить для» на сторінці товару — з посиланнями на послуги під цей тип обʼєкта (внутрішня перелінковка, без нових фактів)
+VENUE_URL = {'apt': '/mebliuvannia-kvartyry-kyiv', 'resto': '/dyzain-restoranu-kafe-kyiv', 'cafe': '/dyzain-restoranu-kafe-kyiv',
+             'hotel': '/dyzain-hotelu-kyiv', 'office': '/dyzain-ofisu-kyiv', 'shop': '/dyzain-i-remont-mahazynu-shourumu-kyiv'}
+
+
+def venues_dd(i):
+    vs = [v for v in i['vn'] if v in VENUE]
+    if not vs: return ''
+    return '<dt>Підходить для</dt><dd>' + ', '.join(f'<a href="{VENUE_URL[v]}">{e(VENUE[v])}</a>' if v in VENUE_URL else e(VENUE[v]) for v in vs) + '</dd>'
 
 
 SITE = 'https://cas-develop.com'
@@ -281,7 +322,7 @@ def product_page(d, i, shell, items, title):
                                        else 'як у назві й на фото; інший колір — під замовлення, уточнює менеджер')]
     if sizes: rows.append(('Розміри', ', '.join(s[0] for s in sizes)))
     mq = d.get('min_qty', MINQ)
-    rows += [(k, v) for k, v in specs] + [('Одиниця', i['unit']), ('Мінімальна кількість', f'{mq} {i["unit"]} (менше не можна)'), ('Поставка', '35–70 днів, виготовлення під замовлення'), ('Доставка й митні платежі', 'розраховуємо індивідуально залежно від обсягу замовлення'), ('Підходить для', ', '.join(VENUE[v] for v in i['vn'] if v in VENUE))]
+    rows += [(k, v) for k, v in specs] + [('Одиниця', i['unit']), ('Мінімальна кількість', f'{mq} {i["unit"]} (менше не можна)'), ('Поставка', '35–70 днів, виготовлення під замовлення'), ('Доставка й митні платежі', 'розраховуємо індивідуально залежно від обсягу замовлення')]
     custom = list(i.get('custom') or [])
     custom_html = (f'<div class="pp-custom"><h2>Під ваш проєкт</h2><ul>{"".join(f"<li>{e(x)}</li>" for x in custom)}</ul>'
                    f'<p>Виготовляємо під замовлення, поставка 35–70 днів. Мінімум — {mq} {e(i["unit"])} кожної позиції; поштучно не продаємо, замовлення від $10 000 (≈ 460 000 ₴).</p></div>') if custom else ''
@@ -289,7 +330,13 @@ def product_page(d, i, shell, items, title):
     po = {'A': 0, 'B': 1, 'C': 2}
     same = sorted((x for x in items if x['cat'] == i['cat'] and x['id'] != i['id']),
                   key=lambda x: (x['sub'] != i['sub'], po.get(x.get('prio'), 3), abs(x['id'] - i['id'])))
-    rel = same[:6]
+    # + 2 сусіди по колу в межах категорії (порядок каталогу): кожен товар гарантовано має ≥ 2 вхідні посилання зі сторінок
+    # товарів — інакше нові позиції без prio не потрапляли в жодні «Схожі» (GSC «виявлено, не проіндексовано», 10.11.2026)
+    ring = [x for x in items if x['cat'] == i['cat']]
+    k = next(n for n, x in enumerate(ring) if x['id'] == i['id'])
+    nb = [ring[(k + j) % len(ring)] for j in (1, 2) if len(ring) > j]
+    nb = [x for n, x in enumerate(nb) if x['id'] != i['id'] and x not in nb[:n]]
+    rel = [x for x in same if x not in nb][:6 - len(nb)] + nb
     cslug = CATS[i['cat']][0] if i['cat'] in CATS else None
     rel_html = ''.join(re.sub(r'<button[^>]*class="heart".*?</button>', '', card(d, x), flags=re.S)
                        .replace(f'onclick="openItem({x["id"]})"', f'onclick="location.href=\'/ozdoba/{x["slug"]}\'"') for x in rel)
@@ -329,7 +376,7 @@ def product_page(d, i, shell, items, title):
       <p class="desc">{e(i["desc"])}</p>
       <p class="pp-btns"><a class="btn" href="/ozdoba#p-{i["id"]}">Обрати колір і додати в кошик</a><a class="btn ghost" href="#zayavka">Запитати ціну й наявність</a></p>
       {custom_html}
-      <dl class="specs">{''.join(f'<dt>{e(k)}</dt><dd>{e(v)}</dd>' for k, v in rows)}</dl>
+      <dl class="specs">{''.join(f'<dt>{e(k)}</dt><dd>{e(v)}</dd>' for k, v in rows)}{venues_dd(i)}</dl>
       <p class="note-honest">Ціна орієнтовна: остаточну вартість, наявність і строк менеджер підтверджує після заявки. Вартість доставки й митних платежів розраховуємо індивідуально залежно від обсягу замовлення (веземо під замовлення з Китаю). Рахунок для ФОП і ТОВ — з ПДВ або без, індивідуально; рахунки для компаній з ЄС — у процесі підключення.</p>
     </div>
   </article>
@@ -404,7 +451,7 @@ PP_CSS = """
 .pp-custom li{break-inside:avoid}
 .pp-custom p{color:var(--muted);font-size:var(--fs-small);margin:0}
 .ozd-intro p{color:var(--muted);max-width:40em;margin:0 0 12px}
-.ozd-intro a,.ozd-sec details a{color:var(--brass)}
+.ozd-intro a,.ozd-sec details a,.pp-info .specs a{color:var(--brass)}
 """
 
 
@@ -428,7 +475,7 @@ def product_pages(d):
         if p not in keep and f.endswith('.html') and f not in ('komplekty.html', 'prais.html'): os.remove(p)
     sm = os.path.join(ROOT, 'sitemap.xml'); s = open(sm, encoding='utf-8').read()
     s = re.sub(r'  <url><loc>https://cas-develop\.com/ozdoba/[^<]+</loc>.*?</url>\n', '', s)
-    add = ''.join(f'  <url><loc>https://cas-develop.com/ozdoba/{i["slug"]}</loc><lastmod>{LASTMOD}</lastmod></url>\n' for i in d['items'])
+    add = ''.join(f'  <url><loc>https://cas-develop.com/ozdoba/{i["slug"]}</loc><lastmod>{ITEM_LM.get(i["id"], LASTMOD)}</lastmod></url>\n' for i in d['items'])
     open(sm, 'w', encoding='utf-8').write(s.replace('</urlset>', add + '</urlset>'))
     return len(d['items'])
 
@@ -534,10 +581,10 @@ def category_pages(d):
         a, b = s.index('<div class="bar" id="bar">'), s.index('<!--ui-polish--><script')
         s = s[:a] + s[b:]
         open(os.path.join(ROOT, 'ozdoba/kategoriia', slug + '.html'), 'w', encoding='utf-8').write(with_fav(_chrome_apply(s, f'ozdoba/kategoriia/{slug}.html')))
-        out.append(u)
+        out.append((u, max(ITEM_LM.get(x['id'], LASTMOD) for x in items)))
     sm = os.path.join(ROOT, 'sitemap.xml'); t = open(sm, encoding='utf-8').read()
     t = re.sub(r'  <url><loc>https://cas-develop\.com/ozdoba/kategoriia/[^<]+</loc>.*?</url>\n', '', t)
-    t = t.replace('</urlset>', ''.join(f'  <url><loc>{x}</loc><lastmod>{LASTMOD}</lastmod></url>\n' for x in out) + '</urlset>')
+    t = t.replace('</urlset>', ''.join(f'  <url><loc>{x}</loc><lastmod>{lm}</lastmod></url>\n' for x, lm in out) + '</urlset>')
     open(sm, 'w', encoding='utf-8').write(t)
     return len(out)
 
