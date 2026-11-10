@@ -194,7 +194,7 @@ def prices_html(lang, x):
 # Пакети дизайн-проєкту — порівняння (UI-kit: /styleguide/ «Порівняння пакетів дизайну»; стилі .pk — /assets/site-chrome.v1.css).
 # Базовий — від $30/м², мін. $2 500 (Михайло); планувальний від $6/м² і повний від $45/м² — ринкова практика Києва 2026
 # (Михайло делегував 27.10.2026); мінімум $2 500 для всіх пакетів — Михайло 31.10.2026. Склад — з попередніх карток пакетів.
-# Кожен пункт — (текст, рівень): 0 — у всіх пакетах, 1 — з базового, 2 — лише в повному. Телефон: свайп-картки (scroll-snap).
+# Кожен пункт — (текст, рівень): 0 — у всіх пакетах, 1 — з базового, 2 — лише в повному; картка показує лише пункти свого рівня. Телефон: свайп-картки (scroll-snap).
 PACKAGES = {
     'uk': dict(h='Пакети дизайн-проєкту: порівняння',
                pk=[('Планувальний', 'від $6/м²'), ('Базовий дизайн-проєкт', 'від $30/м²'), ('Повний з авторським наглядом', 'від $45/м²')],
@@ -202,7 +202,7 @@ PACKAGES = {
                       ('3D-візуалізації всіх приміщень', 1), ('робочі креслення для ремонту', 1),
                       ('специфікації матеріалів і меблів', 1), ('розгортки стін, креслення меблів', 2),
                       ('авторський нагляд під час ремонту', 2), ('підбір меблів, світла й декору', 2)],
-               min='мін. $2 500', no='не входить', cta='Обговорити пакет', hint='Гортайте, щоб порівняти →',
+               plus='Усе з пакета «{}», а також:', cta='Обговорити пакет', hint='Гортайте, щоб порівняти →',
                note='Мінімум — $2 500 для будь-якого пакета; точну суму й склад фіксуємо в договорі. Закупівля меблів — окремо (комплектація).'),
     'ru': dict(h='Пакеты дизайн-проекта: сравнение',
                pk=[('Планировочный', 'от $6/м²'), ('Базовый дизайн-проект', 'от $30/м²'), ('Полный с авторским надзором', 'от $45/м²')],
@@ -210,7 +210,7 @@ PACKAGES = {
                       ('3D-визуализации всех помещений', 1), ('рабочие чертежи для ремонта', 1),
                       ('спецификации материалов и мебели', 1), ('развёртки стен, чертежи мебели', 2),
                       ('авторский надзор во время ремонта', 2), ('подбор мебели, света и декора', 2)],
-               min='мин. $2 500', no='не входит', cta='Обсудить пакет', hint='Листайте, чтобы сравнить →',
+               plus='Всё из пакета «{}», а также:', cta='Обсудить пакет', hint='Листайте, чтобы сравнить →',
                note='Минимум — $2 500 для любого пакета; точную сумму и состав фиксируем в договоре. Закупка мебели — отдельно (комплектация).'),
     'en': dict(h='Design project packages compared',
                pk=[('Layout', 'from $6/m²'), ('Standard design project', 'from $30/m²'), ('Full, with designer supervision', 'from $45/m²')],
@@ -218,19 +218,21 @@ PACKAGES = {
                       ('3D visualisations of every room', 1), ('working drawings for the renovation', 1),
                       ('material and furniture specifications', 1), ('wall elevations, furniture drawings', 2),
                       ('designer supervision during renovation', 2), ('selection of furniture, lighting and decor', 2)],
-               min='min. $2,500', no='not included', cta='Discuss this package', hint='Swipe to compare →',
+               plus='Everything in {}, plus:', cta='Discuss this package', hint='Swipe to compare →',
                note='Minimum $2,500 for any package; the exact fee and scope are fixed in the contract. Furniture purchasing is separate (procurement).'),
 }
 
 
 def packages_html(lang):
+    """Картка пакета — лише те, що додається до попереднього (Михайло 10.11.2026: однакові списки в трьох картках не показуємо):
+    планувальний — обміри й планування; базовий — «усе з планувального» + візуалізації, креслення, специфікації; повний — + нагляд.
+    Мінімум $2 500 — один раз у примітці під картками, не в кожній картці."""
     d = PACKAGES[lang]
     cards = ''
     for i, (name, price) in enumerate(d['pk']):
-        yes = ''.join(f'<li>{e(t)}</li>' for t, lvl in d['items'] if lvl <= i)
-        no = ''.join(f'<li>{e(t)}</li>' for t, lvl in d['items'] if lvl > i)  # «не входить» — окремим списком з aria-label (бюджет HTML)
-        cards += (f'<div class="card pk-c"><h3>{e(name)}</h3><p class="pk-p">{e(price)} · {e(d["min"])}</p><ul class="pk-l">{yes}</ul>'
-                  + (f'<ul class="pk-l pk-x" aria-label="{e(d["no"])}">{no}</ul>' if no else '')
+        plus = f'<li><b>{e(d["plus"].format(d["pk"][i - 1][0]))}</b></li>' if i else ''
+        yes = plus + ''.join(f'<li>{e(t)}</li>' for t, lvl in d['items'] if lvl == i)
+        cards += (f'<div class="card pk-c"><h3>{e(name)}</h3><p class="pk-p">{e(price)}</p><ul class="pk-l">{yes}</ul>'
                   + f'<a class="btn{" main" if i == 1 else ""}" href="#zayavka">{e(d["cta"])}</a></div>')
     return ('<!--cas:packages--><section><div class="w">\n' f'  <h2>{e(d["h"])}</h2>\n' + (f'  <p class="pk-in">{e(d["intro"])}</p>\n' if d.get('intro') else '')
             + f'  <p class="pk-h" aria-hidden="true">{e(d["hint"])}</p><div class="pk">{cards}</div>\n'
