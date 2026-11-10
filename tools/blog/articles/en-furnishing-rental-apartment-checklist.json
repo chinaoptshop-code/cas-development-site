@@ -7,7 +7,10 @@
  "description": "What an unfurnished rental apartment needs: a room-by-room checklist, hard-wearing materials, a budget from $250/m² and furniture sourcing from China.",
  "lead": "Furnishing an apartment for rent is not about expensive furniture — it is about the right set: everything needed for daily life, nothing superfluous, easy to maintain and photogenic in the listing. Here is a room-by-room checklist and how to calculate the budget.",
  "date": "2026-10-25",
- "service": ["/en/turnkey-furnishing", "Turnkey furnishing"],
+ "service": [
+  "/en/turnkey-furnishing",
+  "Turnkey furnishing"
+ ],
  "photo": "img/p/1DL1BY7Tg6L5B5-900.webp",
  "photo_alt": "Beige open-plan kitchen and living room with a light sofa and a marble splashback — Edelweiss design project",
  "body": [
@@ -32,8 +35,8 @@
   ["p", "Light fabrics are fine if they have a protective finish or removable covers. For short-term lets, hotel textiles are convenient — white towels and linen that are easy to wash and replace."],
   ["h2", "How much it costs to furnish a rental apartment"],
   ["p", "Turnkey furnishing of an apartment with us costs from $250 per m². For a 40 m² apartment that is from 40 × $250 = $10,000, for a 60 m² apartment from 60 × $250 = $15,000. This covers selection, specification, ordering, delivery, assembly and placement; the exact estimate depends on the rental format and the items chosen."],
-  ["p", "Some furniture, lighting and textiles are worth sourcing directly from factories in China. In our catalogue, [Ozdoba (in Ukrainian)](/ozdoba), the minimum order starts at $10,000; items can be combined, and we do not sell single pieces. Delivery takes 35–70 days, so if the apartment is still being renovated, order in parallel with the works."],
-  ["p", "A tip for owners: do not economise on the mattress, lighting and storage — these are what reviews mention most. Decor can be added gradually, once you see how the apartment performs as a rental."],
+  ["p", "Some furniture, lighting and textiles are worth sourcing directly from factories in China. In our catalogue, [Ozdoba (in Ukrainian)](/ozdoba), the minimum order starts at $10,000; items can be combined, and we do not sell single pieces. Delivery takes 35–70 days, so if the apartment is still being renovated, order in parallel with the works. How to order furniture and lighting from China without risk is covered in [a separate article](/en/blog/furniture-from-china-for-interiors)."],
+  ["p", "A tip for owners: do not economise on the mattress, lighting and storage — these are what reviews mention most. Decor can be added gradually, once you see how the apartment performs as a rental. Where saving makes sense and where it does not — see [how not to overpay for a luxury interior](/en/blog/luxury-interior-how-not-to-overpay)."],
   ["img", "/img/p/1bXytwftMuIHBN-900.webp", "Sofa, marble side table and floor lamp against a concrete-effect wall — completed Tetris Hall apartment", "Tetris Hall: a calm base with a few accents looks great in photos"],
   ["h2", "The order of furnishing: from plan to move-in"],
   ["p", "Furnishing is faster and cheaper when decisions are made in the right order. First a furniture plan with dimensions, then the specification, and only then the order. That way furniture is guaranteed to fit its place and the sofa will go through the door and into the lift."],
@@ -49,5 +52,10 @@
   ["What must a rental apartment have?", "A comfortable bed with a quality mattress, a sofa, a dining set, basic appliances, storage, bedside lighting, blackout curtains, crockery and two sets of textiles."],
   ["Can I order furniture from China for one apartment?", "Yes. The minimum order in the Ozdoba catalogue is from $10,000, and items can be combined. Delivery takes 35–70 days."],
   ["Do you style the apartment for listing photos?", "Yes. After the furniture is placed we style the apartment — textiles, decor, lighting — so it looks good in photos."]
+ ],
+ "related": [
+  "furniture-from-china-for-interiors",
+  "luxury-interior-how-not-to-overpay",
+  "rough-vs-finishing-works-apartment-renovation"
  ]
 }

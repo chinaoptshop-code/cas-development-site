@@ -31,6 +31,115 @@ PIES = [(r'покрівл|кровл|дах|крыш|roof|dach', 'roof'), (r'ф�
         (r'перекрит|перекрыт', 'slab'), (r'вікн|окна|window|okna', 'win'), (r'будинок|будівництв|дом|строит|house|budow', 'w_block')]
 
 
+# Контекстний блок послуги (Михайло/GSC 10.11.2026: читачі блогу приходять зі статей, шлях до заявки слабкий):
+# один рядок + одна кнопка на лендинг послуги за темою статті + (необовʼязково) друге текстове посилання.
+# Стоїть після 2-го розділу (≤ 2 розділів — одразу після «Коротко»); форми посеред статті немає — заявка лише в #zayavka внизу.
+# Тема — перший збіг у slug + назві; якщо послуга статті ("service") з тієї ж «родини», кнопка веде на неї (вона точніша).
+# Ціни й факти — лише з CLAUDE.md; замір не обіцяємо безкоштовним, безкоштовна — консультація по телефону.
+TOPICS = [  # (тема, regex slug статті — перекриває послугу; regex URL послуги статті, що теж дає цю тему)
+    ('nadzor', r'nahliad|nadzor|supervision', r'nahliad|nadzor'),
+    ('smeta', r'koshtorys|smet|kosztorys|skilky-koshtuie-remont|skolko-stoit-remont|renovation-cost|koszt-remontu', r'vartist-remontu-kv|stoimost-remonta-kv|kalk|calculator'),
+    ('own', None, r'ofis|office|biur|restoran|restaur|kafe|biznes|business|baza|resort|osrod|komerts|kommerch|commercial|lokali|yevropa|evropa|premium|realiz|implementation|dogov|contract|bryhad|brigad|crew|ekipa|pidriad|podryad|contractor'),
+    ('furn', None, r'mebl|komplekt|ozdoba|furnish|procure|umeblow|kompletac'),
+    ('build', None, r'budivnytstvo|stroitelstvo|house-construction|budowa|proektuvannia-budynku|proektirovanie-doma|house-design|projekt-domu|rekonstr'),
+    ('design', None, r'dyzain|dizayn|interior-design|apartment-interior|interior-designer|projekt-wnetrza|projektowanie-wnetrz|projektant'),
+]
+# smeta з конкретною послугою (ванна, кухня, новобудова, будинок, капітальний) — кнопка лишається на ній
+SMETA_KEEP = r'vartist|stoimost|vann|bathroom|lazien|kukh|kuhn|kitchen|novobud|novostro|new-build|budyn|doma|house|domu|kapital'
+TP = {  # тема → (рядок, [основний href, підпис кнопки], [друге посилання або None])
+    'uk': {
+        'nadzor': ('Технічний і авторський нагляд CAS — і коли ремонт робить інший підрядник: умови й вартість індивідуально. Консультація по телефону безкоштовна.',
+                   ['/avtorskyi-i-tekhnichnyi-nahliad-kyiv', 'Авторський і технічний нагляд'], None),
+        'furn': ('Меблювання під ключ — від $250/м²; меблі, світло й декор під замовлення з Китаю — каталог Оздоба. Консультація по телефону безкоштовна.',
+                 ['/mebliuvannia-kvartyry-kyiv', 'Меблювання квартири'], ['/ozdoba', 'Каталог Оздоба']),
+        'build': ('Будівництво будинку — від $600/м², під ключ — від $1 100/м²; архпроєкт — від $12/м². Консультація по телефону безкоштовна.',
+                  ['/budivnytstvo-budynkiv-kyiv', 'Будівництво будинків'], ['/budivnytstvo-budynkiv-kyiv#build-anim', 'Дивитись, як ми будуємо']),
+        'smeta': ('Ремонт — від $550/м²: роботи й чорнові матеріали; чистові матеріали, меблі й техніка — окремо, за кошторисом. Консультація по телефону безкоштовна.',
+                  ['/vartist-remontu-kvartyry-kyiv', 'Вартість ремонту квартири'], ['/kalkuliator-remontu', 'Калькулятор ремонту']),
+        'design': ('Дизайн-проєкт — від $30/м² (мін. $2 500), планувальне рішення — від $6/м². Консультація по телефону безкоштовна.',
+                   ['/dyzain-interieru-kyiv', 'Дизайн інтерʼєру'], ['/kalkuliator-remontu', 'Калькулятор вартості']),
+        'own': ('Розкажіть про обʼєкт — назвемо орієнтовну вартість. Консультація по телефону безкоштовна.', None, None),
+    },
+    'ru': {
+        'nadzor': ('Технический и авторский надзор CAS — и когда ремонт делает другой подрядчик: условия и стоимость индивидуально. Консультация по телефону бесплатная.',
+                   ['/ru/avtorskiy-i-tehnicheskiy-nadzor-kiev', 'Авторский и технический надзор'], None),
+        'furn': ('Меблировка под ключ — от $250/м²; мебель, свет и декор под заказ из Китая. Консультация по телефону бесплатная.',
+                 ['/ru/meblirovka-kvartiry-kiev', 'Меблировка квартиры'], ['/ru/komplektatsiya-pod-klyuch-kiev', 'Комплектация под ключ']),
+        'build': ('Строительство дома — от $600/м², под ключ — от $1 100/м²; архпроект — от $12/м². Консультация по телефону бесплатная.',
+                  ['/ru/stroitelstvo-domov-kiev', 'Строительство домов'], ['/ru/stroitelstvo-domov-kiev#build-anim', 'Смотреть, как мы строим']),
+        'smeta': ('Ремонт — от $550/м²: работы и черновые материалы; чистовые материалы, мебель и техника — отдельно, по смете. Консультация по телефону бесплатная.',
+                  ['/ru/stoimost-remonta-kvartiry-kiev', 'Стоимость ремонта квартиры'], ['/ru/kalkulyator-remonta', 'Калькулятор ремонта']),
+        'design': ('Дизайн-проект — от $30/м² (мин. $2 500), планировочное решение — от $6/м². Консультация по телефону бесплатная.',
+                   ['/ru/dizayn-interera-kiev', 'Дизайн интерьера'], ['/ru/kalkulyator-remonta', 'Калькулятор стоимости']),
+        'own': ('Расскажите об объекте — назовём ориентировочную стоимость. Консультация по телефону бесплатная.', None, None),
+    },
+    'en': {
+        'nadzor': ('CAS technical and author supervision, also when another contractor does the renovation: terms and cost are agreed individually. Phone consultation is free.',
+                   ['/en/design-implementation', 'Design implementation'], None),
+        'furn': ('Turnkey furnishing from $250/m²; custom furniture, lighting and decor from China — the Ozdoba catalogue. Phone consultation is free.',
+                 ['/en/turnkey-furnishing', 'Turnkey furnishing'], ['/en/ozdoba', 'Ozdoba catalogue']),
+        'build': ('House construction from $600/m², turnkey from $1,100/m²; architectural design from $12/m². Phone consultation is free.',
+                  ['/en/house-construction', 'House construction'], ['/en/house-construction#build-anim', 'See how we build']),
+        'smeta': ('Renovation from $550/m²: labour and rough materials; finishing materials, furniture and appliances are estimated separately. Phone consultation is free.',
+                  ['/en/turnkey-renovation', 'Turnkey renovation'], ['/en/renovation-cost-calculator', 'Renovation cost calculator']),
+        'design': ('Interior design from $30/m² (min. $2,500), space planning from $6/m². Phone consultation is free.',
+                   ['/en/interior-design', 'Interior design'], ['/en/renovation-cost-calculator', 'Cost calculator']),
+        'own': ('Tell us about your property and we will give you a rough cost. Phone consultation is free.', None, None),
+    },
+    'pl': {
+        'nadzor': ('Nadzór techniczny i autorski CAS, także gdy remont prowadzi inny wykonawca: warunki i koszt ustalamy indywidualnie. Konsultacja telefoniczna jest bezpłatna.',
+                   ['/pl/realizacja-projektu', 'Realizacja projektu'], None),
+        'furn': ('Umeblowanie pod klucz od $250/m²; meble, oświetlenie i dekoracje na zamówienie z Chin — katalog Ozdoba. Konsultacja telefoniczna jest bezpłatna.',
+                 ['/pl/umeblowanie-pod-klucz', 'Umeblowanie pod klucz'], ['/pl/ozdoba', 'Katalog Ozdoba']),
+        'build': ('Budowa domu od $600/m², pod klucz od $1 100/m²; projekt architektoniczny od $12/m². Konsultacja telefoniczna jest bezpłatna.',
+                  ['/pl/budowa-domow', 'Budowa domów'], ['/pl/budowa-domow#build-anim', 'Zobacz, jak budujemy']),
+        'smeta': ('Remont od $550/m²: robocizna i materiały stanu surowego; materiały wykończeniowe, meble i AGD — osobno, wg kosztorysu. Konsultacja telefoniczna jest bezpłatna.',
+                  ['/pl/remont-pod-klucz', 'Remont pod klucz'], ['/pl/kalkulator-remontu', 'Kalkulator remontu']),
+        'design': ('Projekt wnętrza od $30/m² (min. $2 500), układ funkcjonalny od $6/m². Konsultacja telefoniczna jest bezpłatna.',
+                   ['/pl/projektowanie-wnetrz', 'Projektowanie wnętrz'], ['/pl/kalkulator-remontu', 'Kalkulator kosztów']),
+        'own': ('Opowiedz o obiekcie — podamy orientacyjny koszt. Konsultacja telefoniczna jest bezpłatna.', None, None),
+    },
+}
+TP_ARIA = {'uk': 'Послуга за темою статті', 'ru': 'Услуга по теме статьи', 'en': 'Related service', 'pl': 'Usługa związana z artykułem'}
+
+
+def _exists(href):
+    p = href.split('#')[0].strip('/')
+    return bool(p) and (os.path.exists(os.path.join(ROOT, p + '.html')) or os.path.exists(os.path.join(ROOT, p, 'index.html')))
+
+
+def topic(a):
+    """Тема: спершу slug (надзор/нагляд, кошторис — кнопка на свою послугу), далі — родина URL послуги статті."""
+    for k, rx, _ in TOPICS:
+        if rx and re.search(rx, a['slug']):
+            own = next(f for t, _, f in TOPICS if t == 'own')
+            return 'own' if k == 'smeta' and re.search(own, a['service'][0]) else k  # кошторис комплексу/офісу — своя послуга й ставки
+    return next((k for k, _, f in TOPICS if re.search(f, a['service'][0])), 'own')
+
+
+def cta_html(a):
+    """<aside class="bcta">: рядок + кнопка на лендинг за темою (+ друге посилання). Порожньо, якщо мови немає в TP."""
+    lang = a['lang']
+    if lang not in TP:
+        return ''
+    k = topic(a)
+    line, main, sec = TP[lang][k]
+    fam = next(f for t, _, f in TOPICS if t == k)
+    su, sl = a['service']
+    sl = re.sub(r'\s+(?:від|от|from|od)\s+\$.*$', '', sl)
+    if not main or k not in ('nadzor', 'smeta') or re.search(fam, su) or (k == 'smeta' and re.search(SMETA_KEEP, su)):
+        main = [su, sl]  # послуга статті точніша; тему перекриваємо лише для нагляду й кошторису
+    if not _exists(main[0]):
+        main = [su, sl]
+    if sec and (not _exists(sec[0]) or (sec[0].split('#')[0] == main[0] and '#' not in sec[0])):
+        sec = None
+    o = (f'<aside class="bcta" data-t="{k}" aria-label="{esc(TP_ARIA.get(lang, ""))}"><p>{esc(line)}</p><p class="bcta-a">'
+         f'<a class="btn main" href="{main[0]}">{esc(main[1])}</a>')
+    if sec:
+        o += f'<a class="bcta-2" href="{sec[0]}">{esc(sec[1])} →</a>'
+    return o + '</p></aside>'
+
+
 def _icon(i, ver):
     return f'<svg class="ic" aria-hidden="true"><use href="/assets/icons.v1.svg?v={ver}#{i}"/></svg>'
 
@@ -105,10 +214,16 @@ def body(a, render_node, inline, ver):
     if len(secs) >= 3:
         o.append(f'<nav class="btoc" aria-label="{esc(t["toc"])}">' + ''.join(
             f'<a href="#s{i + 1}"><b>{i + 1:02d}</b><span>{esc(h)}</span></a>' for i, (h, _) in enumerate(secs)) + '</nav>')
+    cta = cta_html(a)
+    at = 1 if len(secs) >= 3 else -1  # після 2-го розділу; коротка стаття — одразу після «Коротко»
+    if at < 0 and cta:
+        o.append(cta)
     for i, (h, nodes) in enumerate(secs):
         inner = render_node(nodes)
         inner = re.sub(r'<ul>', '<ul class="chk">', inner)  # чеклісти з іконками (CSS ::before)
         if i == pie_at:
             inner += '\n' + pie_html(lang, pk)
         o.append(f'<section class="bsec" id="s{i + 1}" aria-labelledby="s{i + 1}h"><h2 id="s{i + 1}h">{esc(h)}</h2><div class="bsc">{inner}</div></section>')
+        if i == at and cta:
+            o.append(cta)
     return '\n'.join(o)

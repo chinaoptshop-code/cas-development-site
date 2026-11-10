@@ -31,3 +31,9 @@ ul.chk li::before{content:'';position:absolute;inset-inline-start:0;top:.25em;wi
   @keyframes bp-in{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}}}
 /* «Читайте також» і інші списки-посилання статті (li — лише посилання): рядок ≥44 px на сенсорних екранах (аудит 08.11.2026) */
 @media (pointer:coarse){article>ul>li>a:only-child{display:inline-block;padding-block:.62em}article>ul:has(>li>a:only-child)>li{margin:0}}
+/* контекстний блок послуги після 2-го розділу (light.cta_html): рядок + кнопка на лендинг + друге посилання; без форми — заявка в #zayavka внизу */
+.bcta{border:1px solid var(--ln,rgba(191,145,72,.22));border-inline-start:3px solid var(--ac,#BF9148);background:var(--bg2,#100e0c);padding:16px 20px;margin:28px 0}
+.hero article .bcta p{margin:0;font-size:var(--fs-small);line-height:1.55}
+.hero article .bcta p.bcta-a{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:12px}
+.bcta .btn{min-height:44px;display:inline-flex;align-items:center}
+.bcta-2{color:var(--ac,#BF9148);min-height:44px;display:inline-flex;align-items:center}

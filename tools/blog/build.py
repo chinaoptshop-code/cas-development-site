@@ -345,16 +345,40 @@ def build_article(a, arts):
   {light.body(a, render_body, inline, chrome._ver('/assets/icons.v1.svg'))}
   <h2>{t["faq"]}</h2>
   {''.join(f'<details><summary>{esc(q)}</summary><p>{esc(ans)}</p></details>' for q, ans in a["faq"])}
-  <div class="cta"><h2 style="margin-top:0">{t["cta_h"]}</h2><p style="margin:0 0 16px">{t["cta_p"]}</p>
-  <div class="btns"><a class="btn main" href="https://t.me/+380978667755">Telegram</a><a class="btn" href="https://wa.me/380978667755">WhatsApp</a><a class="btn" href="tel:+380978667755">+380 97 866 77 55</a></div>
-  <p style="margin:14px 0 0"><a href="{svc_url}">{esc(svc_label)} →</a></p></div>
   <h2>{t["more"]}</h2><ul>{links}</ul>
 '''
     if light.CSS not in s:  # стилі легкого блогу (блокують рендер — без стрибків макета)
         s = s.replace('<link rel="canonical"', f'<link rel="stylesheet" href="/{light.CSS}?v={chrome._ver("/" + light.CSS)}">\n<link rel="canonical"', 1)
     i = s.index('<article>') + 9; j = s.index('</article>')
     s = s[:i] + art + s[j:]
+    # одна форма внизу (#zayavka, як на лендингах): пігулка «Залишити номер» і шапка ведуть сюди; джерело заявки — blog:<slug>
+    k = s.index('</article></div>', i) + len('</article></div>')
+    s = s[:k] + '\n' + lead_section(a, t) + s[k:]
+    if leadform.SCRIPT not in s and 'lead-form.v1.js' not in s:
+        s = s.replace('</body>', leadform.SCRIPT + '\n</body>', 1)
     wr(path_of(a), s)
+
+
+# підписи форми uk/ru (як у шаблонах лендингів); нові мови — розділ "form" у tools/site/lang/<мова>.json
+FORM = {'uk': dict(area='Площа, м²', msg='Коментар', ph_area='напр. 120', ph_msg="Що за обʼєкт, де, бажані терміни", ok_h='Заявку отримано', ok_p='Звʼяжемося найближчим часом.', phone='Телефон *', ph_phone='+380 97 123 45 67'),
+        'ru': dict(area='Площадь, м²', msg='Комментарий', ph_area='напр. 120', ph_msg='Что за объект, где, желаемые сроки', ok_h='Заявка получена', ok_p='Свяжемся в ближайшее время.', phone='Телефон *', ph_phone='+380 97 123 45 67')}
+
+
+def lead_section(a, t):
+    """Блок заявки внизу статті: заклик + form#of (підписи, порядок полів і «Або напишіть» ставить leadform.upgrade_form)."""
+    lang = a['lang']
+    f = FORM.get(lang) or i18n.ui(lang)['form']
+    su, sl = a['service']
+    svc = re.sub(r'\s+(?:від|от|from|od)\s+\$.*$', '', sl)
+    return (f'<section id="zayavka"><div class="w">\n  <h2>{t["cta_h"]}</h2>\n  <p>{t["cta_p"]}</p>\n'
+            f'  <form id="of" data-form="blog" data-service="{esc(svc)}" data-source="blog:{esc(a["slug"])}" novalidate>\n'
+            f'    <div><label for="oPhone">{esc(f["phone"])}</label><input id="oPhone" placeholder="{esc(f["ph_phone"])}" aria-describedby="oErr"><div class="err" id="oErr" role="alert"></div></div>\n'
+            f'    <div><label for="oName">Імʼя</label><input id="oName" autocomplete="name"></div>\n'
+            f'    <div><label for="oArea">{esc(f["area"])}</label><input id="oArea" inputmode="numeric" placeholder="{esc(f["ph_area"])}"></div>\n'
+            f'    <div><label for="oMsg">{esc(f["msg"])}</label><textarea id="oMsg" rows="3" placeholder="{esc(f["ph_msg"])}"></textarea></div>\n'
+            f'    <button class="btn main" id="oBtn" type="submit">Отримати розрахунок</button>\n  </form>\n'
+            f'  <div class="ok" id="oOk" role="status" tabindex="-1"><h3 style="font-size:var(--fs-h3);margin-bottom:8px">{esc(f["ok_h"])}</h3><p style="color:var(--mu);margin:0">{esc(f["ok_p"])}</p></div>\n'
+            f'  <p style="margin:14px 0 0"><a href="{su}">{esc(svc)} →</a></p>\n</div></section>')
 
 
 def legacy_uk():
