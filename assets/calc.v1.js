@@ -4,7 +4,7 @@ function casCalcInit(){var D=document.getElementById('cCfg');if(!D)return;var C=
 function kind(){return $('cKind').value}
 function rate(r,v){return r==null?C.est:C.frm+' '+f(r)+'/'+v}
 function sync(){var k=kind(),o=$('cKind').options,i,b;
-for(i=0;i<o.length;i++){var q=o[i].value,n=C.k[i];o[i].text=q==='design'?n+' — '+C.frm+' '+f(R?C.p.dz[1]:C.p.plan[0])+'/'+C.m2:n+' — '+rate(C.r[q][R],q==='land'?C.sot:C.m2)}
+for(i=0;i<o.length;i++){var q=o[i].value,n=C.k[i];o[i].text=q==='design'?n+' — '+C.frm+' '+f(R?C.p.dz[1]:C.p.dz[0])+'/'+C.m2:n+' — '+rate(C.r[q][R],q==='land'?C.sot:C.m2)}
 $('cDzW').hidden=C.wd.indexOf(k)<0;$('cFurnW').hidden=C.wf.indexOf(k)<0;
 if(k==='design'&&P==='0')P='dz';
 b=$('cDz').querySelectorAll('button');for(i=0;i<b.length;i++){var p=b[i].getAttribute('data-p');b[i].hidden=p==='0'&&k==='design';b[i].setAttribute('aria-pressed',String(p===P));

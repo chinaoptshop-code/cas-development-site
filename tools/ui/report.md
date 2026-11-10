@@ -449,7 +449,7 @@
 | ru/stoimost-dizayna-interera-kiev.html | land | 53.2 | 13.9 | 13.7 | 0.5 | 6 | 528 |
 | vartist-dyzainu-interieru-kyiv.html | land | 53.2 | 13.9 | 13.7 | 0.5 | 6 | 528 |
 | blog/salon-krasy-pid-kliuch.html | article | 53.1 | 14.9 | 14.2 | 0.5 | 6 | 391 |
-| ar/renovation-calculator.html | land | 53.0 | 14.0 | 14.7 | 2.4 | 6 | 484 |
+| ar/renovation-calculator.html | land | 53.0 | 14.1 | 14.7 | 2.4 | 6 | 484 |
 | ru/dizayn-kvartiry-kiev.html | land | 52.9 | 13.5 | 13.3 | 0.5 | 6 | 508 |
 | vartist-remontu-ofisu-kyiv.html | land | 52.9 | 14.2 | 13.3 | 0.5 | 6 | 481 |
 | modulnyi-budynok-kyiv.html | land | 52.8 | 14.9 | 13.3 | 0.5 | 6 | 500 |

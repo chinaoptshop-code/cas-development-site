@@ -167,7 +167,7 @@ def block(lang):
     cfg['as'] = cfg.pop('as_')
     js = json.dumps(cfg, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     # без JS — підписи з українськими ставками (JS одразу перемальовує під регіон)
-    opts = ''.join(f'<option value="{k}">{n} — ' + (f'{t["frm"]} {usd(PKG["plan"][0])}/{t["m2"]}' if k == 'design' else
+    opts = ''.join(f'<option value="{k}">{n} — ' + (f'{t["frm"]} {usd(PKG["dz"][0])}/{t["m2"]}' if k == 'design' else
                    f'{t["frm"]} {usd(RATE[k][0])}/{t["sot"] if k == "land" else t["m2"]}') + '</option>'
                    for k, n in zip(KINDS, t['k']))
     pk = ''.join(f'<button type="button" data-p="{p}" aria-pressed="{str(p == "0").lower()}">{n}'
