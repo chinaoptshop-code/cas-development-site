@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Переклади сторінок проєктів /proekty/<slug> і портфоліо (en, ru) — генеруються з українських сторінок.
+"""Переклади сторінок проєктів /proekty/<slug> і портфоліо (en, ru, es, pl, de, fr, zh, ar) — генеруються з українських сторінок.
 
   python3 tools/site/caselang.py                 # зібрати <мова>/proekty/<slug>.html (після casetext.py і media.py)
   python3 tools/site/caselang.py portfolio       # tools/site/pages/<мова>-portfolio.json з uk-portfolio.json (до landing.py)
@@ -21,7 +21,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import i18n  # noqa: E402
 
 ROOT, B = i18n.ROOT, i18n.B
-LANGS = ('en', 'ru')
+LANGS = ('en', 'ru', 'es', 'pl', 'de', 'fr', 'zh', 'ar')  # мова збирається, коли є tools/site/caselang/<мова>.json
 DATA = os.path.join(ROOT, 'tools/site/caselang')
 CL = os.path.join(ROOT, 'tools/site/lang/clusters-cases.json')
 SKIP = re.compile(r'-povnyi-proekt\.html$')  # «Повний проєкт» збирає fullcase.py (кластер case-<id>)
@@ -67,7 +67,10 @@ class Tr:
         return key
 
 
-FMT = {'en': dict(m2='m²', frm='from', all='Show all'), 'ru': dict(m2='м²', frm='от', all='Показать все')}
+FMT = {'en': dict(m2='m²', frm='from {}', all='Show all'), 'ru': dict(m2='м²', frm='от {}', all='Показать все'),
+       'es': dict(m2='m²', frm='desde {}', all='Mostrar todas'), 'pl': dict(m2='m²', frm='od {}', all='Pokaż wszystkie'),
+       'de': dict(m2='m²', frm='ab {}', all='Alle anzeigen'), 'fr': dict(m2='m²', frm='dès {}', all='Tout afficher'),
+       'zh': dict(m2='m²', frm='{} 起', all='显示全部'), 'ar': dict(m2='م²', frm='من {}', all='عرض الكل')}
 EST = re.compile(r'^(.+?) · <span1>([\d ]+) м² × \$([\d ]+)/м²</span> — <b2>від \$([\d ]+)</b>$')
 CRUMB = re.compile(r'^<a1>Головна</a> / <a2>Портфоліо</a> / ([^<]+)$')
 
@@ -78,7 +81,7 @@ def rules(k, t):
     n = lambda x: i18n.num(int(x.replace(' ', '')), t.lang)
     m = EST.match(k)
     if m:
-        return f'{t(m.group(1))} · <span1>{n(m.group(2))} {f["m2"]} × ${n(m.group(3))}/{f["m2"]}</span> — <b2>{f["frm"]} ${n(m.group(4))}</b>'
+        return f'{t(m.group(1))} · <span1>{n(m.group(2))} {f["m2"]} × ${n(m.group(3))}/{f["m2"]}</span> — <b2>{f["frm"].format("$" + n(m.group(4)))}</b>'
     m = re.fullmatch(r'Показати всі \((\d+)\)', k)  # кнопка довгої галереї (tools/site/casegal.py)
     if m:
         return f'{f["all"]} ({m.group(1)})'
@@ -102,6 +105,8 @@ def local(href, lang):
     m = i18n.cluster_of(p) or {}
     if lang in m:
         return m[lang] + ('#' + frag if frag else '')
+    if lang not in ('en', 'ru') and 'en' in m:  # сторінки без версії мови (тури, «Повний проєкт», частина лендингів) → англійська, а не uk
+        return m['en'] + ('#' + frag if frag else '')
     mm = re.fullmatch(r'/(proekty/[\w-]+|portfolio)', p)
     if mm and i18n.exists('/' + i18n.meta(lang)['prefix'] + mm.group(1)):
         return '/' + i18n.meta(lang)['prefix'] + mm.group(1) + ('#' + frag if frag else '')
@@ -120,7 +125,11 @@ def fix_links(s, lang):
         if new is None:
             return tag if 'hreflang=' in tag else tag.replace(h.group(0), h.group(0) + ' hreflang="uk"', 1)
         tag = tag.replace(h.group(0), f' href="{new}"', 1)
-        return re.sub(r' hreflang="uk"', '', tag) if new != h.group(1) else tag
+        if new != h.group(1):
+            tag = re.sub(r' hreflang="uk"', '', tag)
+            if lang != 'en' and new.startswith('/en/'):  # англійська версія замість відсутньої (тури, «Повний проєкт»)
+                tag = tag.replace(f' href="{new}"', f' href="{new}" hreflang="en"', 1)
+        return tag
     return re.sub(r'<a\b[^>]*>', one, s)
 
 
@@ -237,7 +246,7 @@ def tr_json(o, t, lang, slug):
     return o
 
 
-CALL = {'en': 'Call', 'ru': 'Позвонить'}
+CALL = {'en': 'Call', 'ru': 'Позвонить', 'es': 'Llamar', 'pl': 'Zadzwoń', 'de': 'Anrufen', 'fr': 'Appeler', 'zh': '致电', 'ar': 'اتصل بنا'}
 
 
 def page_path(lang, slug):
@@ -255,7 +264,7 @@ def build(slug, lang):
         head = re.sub(r'(<meta ' + k + r' content=")([^"]*)', lambda m: m.group(1) + html.escape(t(html.unescape(m.group(2))), quote=True).replace('&#x27;', "'"), head, count=1)
     head = re.sub(r'(<link rel="canonical" href=")[^"]*', lambda m: m.group(1) + u, head, count=1)
     head = re.sub(r'(<meta property="og:url" content=")[^"]*', lambda m: m.group(1) + u, head, count=1)
-    head = re.sub(r'(<meta property="og:locale" content=")[^"]*', lambda m: m.group(1) + {'en': 'en_US', 'ru': 'ru_RU'}[lang], head, count=1)
+    head = re.sub(r'(<meta property="og:locale" content=")[^"]*', lambda m: m.group(1) + {'en': 'en_US', 'ru': 'ru_RU', 'es': 'es_ES', 'pl': 'pl_PL', 'de': 'de_DE', 'fr': 'fr_FR', 'zh': 'zh_CN', 'ar': 'ar_AR'}[lang], head, count=1)
     head = re.sub(r'(<script type="application/ld\+json">)(.*?)(</script>)',
                   lambda m: m.group(1) + json.dumps(tr_json(json.loads(m.group(2)), t, lang, slug), ensure_ascii=False).replace('</', '<\\/') + m.group(3), head, flags=re.S)
     # тіло: шапку/футер/пігулку перебудує chrome.apply — їх не перекладаємо
@@ -382,7 +391,7 @@ def check_text(s, lang, rel):
     """Після перекладу в <main>/<head> не лишилося української (ru — літер і/ї/є/ґ/ʼ, en — кирилиці)."""
     vis = re.sub(r'<!--chrome:[hf]-->.*?<!--/chrome:[hf]-->|<script(?! type="application/ld)\b.*?</script>|<style\b.*?</style>', '', s, flags=re.S)
     vis = re.sub(r'data-service="[^"]*"|<link [^>]*>', '', vis)
-    rx = CYR if lang == 'en' else UK_ONLY
+    rx = UK_ONLY if lang == 'ru' else CYR
     bad = sorted(set(m.group(0) for m in re.finditer(r'[^<>"]{0,30}' + rx.pattern + r'[^<>"]{0,30}', vis)))
     return [f'{rel}: лишилось «{b.strip()}»' for b in bad[:5]]
 

@@ -11,7 +11,7 @@ import glob, gzip, json, os, re, sys
 from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-MAIN = {'index.html', 'ru/index.html', 'services.html', 'about.html', 'contact.html', 'portfolio.html', 'en/portfolio.html', 'ru/portfolio.html'}  # портфоліо мовами — той самий шаблон, що й uk (tools/site/caselang.py)
+MAIN = {'index.html', 'ru/index.html', 'services.html', 'about.html', 'contact.html', 'portfolio.html'} | {f'{l}/portfolio.html' for l in ('en', 'ru', 'es', 'pl', 'de', 'fr', 'zh', 'ar')}  # портфоліо мовами — той самий шаблон, що й uk (tools/site/caselang.py)
 SKIP = {'privacy.html', 'terms.html', '404.html'}  # сторонні/службові шаблони
 
 # Підтверджені Михайлом цифри (план Dell v2 §1). Усе інше на сторінках — підозріле.
@@ -22,7 +22,7 @@ FACT_BAD = [r'\b158\+', r'\b200\+ проєкт', r'\b214\+', r'2 роки гар
             r'\b36[ \u00a0-]?(міс|мес|month|meses|mies|Monat|Mon\.|mois|个月|شهر)', r'(?i)\b(3|три|трьома|three|tres|trzy|drei|trois)\s+(власн\w*\s+|собствен\w*\s+|наш\w*\s+|штатн\w*\s+|in-house\s+|own\s+|salaried\s+)*(бригад|crews|cuadrillas|ekip|Teams|équipes)', r'(三支|3 支)\S{0,8}施工队', r'(ثلاثة|3) فرق']
 
 BUDGET = {  # ліміти (без стиснення, бо brotli на сервері); MAIN — тимчасово м'якші до Ф3
-    'html_kb': {'land': 64, 'article': 80, 'main': 260, 'other': 120},  # article — лонгріди блогу 1500–2200 слів (той самий шаблон, що й land)
+    'html_kb': {'land': 64, 'article': 80, 'main': 264, 'other': 120},  # main 264 — uk-портфоліо з hreflang 9 мов (10.11.2026); article — лонгріди блогу 1500–2200 слів (той самий шаблон, що й land)
     'inline_js_kb': {'land': 8, 'article': 8, 'main': 90, 'other': 40},
 }
 

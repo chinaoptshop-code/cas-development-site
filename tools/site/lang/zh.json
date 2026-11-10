@@ -34,8 +34,8 @@
     "服务"
    ],
    [
-    "/portfolio",
-    "作品集（乌克兰语）"
+    "/zh/portfolio",
+    "作品集"
    ],
    [
     "/zh/about",
@@ -170,8 +170,8 @@
       "联系我们"
      ],
      [
-      "/portfolio",
-      "作品集（乌克兰语）"
+      "/zh/portfolio",
+      "作品集"
      ]
     ]
    ]
@@ -202,7 +202,7 @@
   "other": "",
   "cta": "获取报价",
   "call": "致电",
-  "all_portfolio": "全部作品（乌克兰语）",
+  "all_portfolio": "全部作品",
   "sections": "目录",
   "facts": [
    [

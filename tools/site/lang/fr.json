@@ -34,8 +34,8 @@
     "Services"
    ],
    [
-    "/portfolio",
-    "Portfolio (UA)"
+    "/fr/portfolio",
+    "Portfolio"
    ],
    [
     "/fr/a-propos",
@@ -170,8 +170,8 @@
       "Contact"
      ],
      [
-      "/portfolio",
-      "Portfolio (en ukrainien)"
+      "/fr/portfolio",
+      "Portfolio"
      ]
     ]
    ]
@@ -202,7 +202,7 @@
   "other": "",
   "cta": "Demander un devis",
   "call": "Appeler",
-  "all_portfolio": "Portfolio complet (en ukrainien)",
+  "all_portfolio": "Portfolio complet",
   "sections": "Rubriques",
   "facts": [
    [
