@@ -43,3 +43,4 @@
 .rp-cc{fill:url(#rp-cp);pointer-events:none}.rp-stx{fill:url(#rp-sp);pointer-events:none}
 .rp-wtx,.rp-lktx{fill:url(#rp-rp);pointer-events:none}
 .rp-zoom .rp-o:not(.rp-act) .rp-sh{opacity:.5}
+.rp-zz *{animation-play-state:paused!important}

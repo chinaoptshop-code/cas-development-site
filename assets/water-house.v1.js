@@ -66,7 +66,7 @@
     });
     add('shore', '<path class="wh2-rd" d="' + rd + '"/><path class="wh2-ct" d="' + ct + '"/>', -1, 0, null, null, 50);
 
-    // дерева на березі — у межах кадру FULL (QA 06.11: праве дерево зрізалось краєм картки на телефоні); крони враховано в FULL нижче
+    // дерева на березі — у межах кадру FULL (QA 06.11)
     var TR = [[-6, SH - 3], [-2, SH - 6], [PW + 2.2, SH - 2.6], [PW * 0.75, SH - 7]];
     // дерева й кущі з тінями (верх крон — у межах FULL, що рахується з TR)
     var TH = [[3.4, 1.3], [4.4, 1.4, 1], [2.8, 1.05], [3.3, 1.2]];
@@ -165,7 +165,7 @@
     // 10 тераса над водою: консоль, поручні, сходи у воду, шезлонги
     var ty0 = hy1 + 0.6, tx1 = PW;
     add('terr', spill, DUSK, 0.3);
-    // бічна тераса (x < 0) — за будинком: окремий шар terb до будинку, інакше поручні й ліхтарі малюються поверх даху (z-order, аудит 08.11.2026)
+    // бічна тераса (x < 0) — за будинком: шар terb до будинку (z-order, аудит 08.11)
     add('terb', box('wh-tdeck', -1.2, 0, 0, PD, Z - 0.25, Z) , 9, 0.05);
     for (y = 0; y < PD; y += 1.2) add('terb', box('wh-post', -1.2, -1.1, y, y + 0.1, Z, Z + 1), 9, 0.2 + 0.3 * y / PD);
     add('terb', line('wh-rail', [-1.15, 0, Z + 1, -1.15, PD, Z + 1]), 9, 0.55); add('terr', line('wh-rail', [-1.15, PD, Z + 1, PW, PD, Z + 1]), 9, 0.55);
@@ -265,7 +265,7 @@
     function cl(c, d, a, b) { c = (c + (a + b) / 2) / 2; return Math.max(b + 0.05 * d - d, Math.min(a - 0.05 * d, c - d / 2)); }
     return [cl((Math.min.apply(0, xs) + Math.max.apply(0, xs)) / 2, w, M[0], M[2]), cl((Math.min.apply(0, ys) + Math.max.apply(0, ys)) / 2, h, M[1], M[3]), w, h];
   }
-  // перша збірка частинами (телефон CPU×4): вміст груп наступних етапів — порожні <g> на своєму місці, доливаються в простої порціями ≤ ~6 мс, не більше порції на кадр;
+  // перша збірка частинами (CPU×4): групи наступних етапів — порожні <g>, доливаються в простої порціями ≤ ~6 мс;
   // група, до якої дійшов прогрес раніше, доливається одразу (fz)
   var fT = 0;
   function fz(o) { o.z = 0; o.n.innerHTML = o.h; }
@@ -274,8 +274,13 @@
     function ch() { if (t !== fT) return; var t0 = Date.now(); for (; j < els.length && Date.now() - t0 < 6; j++) if (els[j].z) fz(els[j]); if (j < els.length) ric(ch); }
     ric(ch);
   }
+  // пауза анімацій (wh-zz, SMIL): поза кадром, вкладка прихована, ≥ 4 с без кроків
+  var zW = 0, zV = 0, zT = 0, zP = false;
+  function nap(w) { if (RM) return; if (w) zW = Date.now(); clearTimeout(zT); var t = zW + 4e3 - Date.now(), on = !!zV && !d.hidden && t > 0; zT = on ? setTimeout(nap, t + 50) : 0;
+    if (on === zP) { zP = !on; svg.classList.toggle('wh-zz', zP); if (svg.pauseAnimations) zP ? svg.pauseAnimations() : svg.unpauseAnimations(); } }
   function apply(force) {
     var p = prog;
+    if (zP || !zT) nap(1); else zW = Date.now();
     while (ptr < els.length && els[ptr].k <= p) { if (els[ptr].z) fz(els[ptr]); els[ptr].n.classList.add('on'); ptr++; }
     while (ptr > 0 && els[ptr - 1].k > p) { ptr--; els[ptr].n.classList.remove('on'); }
     els.forEach(function (o) { if (o.u != null) o.n.classList.toggle('gone', p >= o.u); });
@@ -339,7 +344,7 @@
     ctr.appendChild(xr);
     var stick = el('div', 'la-stick');
     svg = d.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('class', 'la-svg wh-svg'); svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', sec.querySelector('h2').textContent);
-    var nav = el('div', 'la-nav'), pb = el('button', 'la-prev', '‹') /* RTL: Unicode сам віддзеркалює ‹ › (Bidi_Mirrored), тож символи ті самі, що в LTR */, nb = el('button', 'la-next', '›');
+    var nav = el('div', 'la-nav'), pb = el('button', 'la-prev', '‹') /* RTL: ‹ › дзеркаляться самі */, nb = el('button', 'la-next', '›');
     pb.type = nb.type = 'button'; pb.setAttribute('aria-label', ui.prev); nb.setAttribute('aria-label', ui.next);
     pb.addEventListener('click', function () { go(shown - 1); }); nb.addEventListener('click', function () { go(shown + 1); });
     cnt = el('span', 'la-cnt'); cap = el('p', 'la-cap'); live = el('span', 'la-live'); live.setAttribute('aria-live', 'polite');
@@ -364,6 +369,7 @@
     sec.classList.add('la-on');
     svg.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); go(shown + ((e.key === 'ArrowRight') !== (d.documentElement.dir === 'rtl') ? 1 : -1)); } }); // preventDefault — casGest на блоці не робить другого кроку; RTL — дзеркально
     svg.setAttribute('tabindex', '0');
+    if (!RM) { if ('IntersectionObserver' in W) new IntersectionObserver(function (es) { zV = es[es.length - 1].isIntersecting; nap(zV); }).observe(svg); else zV = 1; d.addEventListener('visibilitychange', function () { nap(!d.hidden); }); }
     prog = RM ? N - 0.001 : CMP ? 0.999 : 0;
     build();
     if (!RM && !CMP && W.casDrive) {
@@ -378,8 +384,7 @@
   }
   function css() {
     return new Promise(function (res) {
-      // свій CSS і спільний scene-ui.v1.css: збираємо сцену лише після того, як обидва застосовано (site-chrome.v1.js міг уже додати <link>,
-      // але файл ще вантажиться — без очікування сцена будується без стилів, а потім стискається, і низ сторінки «стрибає», CLS до 1.0)
+      // збираємо лише після свого CSS і scene-ui.v1.css, інакше сцена стискається (CLS)
       var href = sec.getAttribute('data-css'), ls = [], n, l = href && d.querySelector('link[href="' + href + '"]');
       if (href && !l) { l = d.createElement('link'); l.rel = 'stylesheet'; l.href = href; d.head.appendChild(l); }
       if (l) ls.push(l);
@@ -389,8 +394,7 @@
       ls.forEach(function (x) { if (x.sheet) return one(); var f = 0, k = function () { if (!f) { f = 1; one(); } }; x.addEventListener('load', k); x.addEventListener('error', k); setTimeout(k, 8000); });
     });
   }
-  // блок вище екрана (швидка прокрутка, reduced-motion — він стискається): тримаємо видимий вміст на місці самі,
-  // якщо скрол-якоріння браузера не спрацює (низ сторінки, Safari без overflow-anchor), інакше CLS до 1.0
+  // блок вище екрана: тримаємо вміст на місці, якщо скрол-якоріння не спрацює (інакше CLS до 1.0)
   function keep() { var b0 = sec.getBoundingClientRect().bottom, up = b0 <= 0; enhance(); if (up) { var dy = sec.getBoundingClientRect().bottom - b0; if (Math.abs(dy) > 1) { var hs = d.documentElement.style; hs.scrollBehavior = 'auto'; W.scrollBy(0, dy); hs.scrollBehavior = ''; } } } // без smooth з CSS — інакше зсув видно
   function inView() { var r = sec.getBoundingClientRect(); return r.top < 0 && r.bottom > 0; } // людина всередині блоку; верх блоку в кадрі — збираємо одразу (зсуву над ним немає)
   css().then(function () {
