@@ -81,7 +81,7 @@ def w_svc(vw, i, n, home):
     if vw <= 599:
         if n % 2 and i == n - 1: return c, 16 / 7
         return (c - 10) / 2, 4 / 3
-    k = max(1, int((c + 16) // (13 * rem(vw) + 16)))
+    k = 5 if n == 5 and vw >= 1367 else 3  # sections.v1.css (11.11.2026): 5 карток — 3 + 2, з 1367 — 5 в ряд; 6 — 3 + 3
     row = i // k; r = min(k, n - row * k)
     w = (c - (r - 1) * 16) / r
     if vw >= 1367: w = min(w, 48 * rem(vw))
