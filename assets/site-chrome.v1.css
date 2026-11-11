@@ -117,13 +117,13 @@ html.sch-lock .mbar{display:none!important}
 .scf{position:static;display:block;margin:0;padding:48px 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--c-ln);background:var(--c-bg);
   color:var(--c-mu);font-size:var(--fs-body,1rem);line-height:1.6}
 .scf-in{max-width:1280px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
-.scf-top{display:grid;grid-template-columns:1fr;gap:28px}
+.scf-top{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
 .scf-brand p{max-width:21.7em;margin:14px 0 0;font-size:.875rem;color:var(--c-mu)}
 .scf-col b{display:block;margin:0 0 10px;font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c-ac)}
 .scf address{font-style:normal;color:var(--c-tx)}
 .scf-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.125rem;font-weight:600;color:var(--c-tx);text-decoration:none}
 /* месенджери й соцмережі — один ряд однакових кнопок-іконок (Михайло 08.11.2026), назва — aria-label/title */
-.scf-soc{display:flex;flex-wrap:nowrap;gap:.5rem}.scf-soc a{display:inline-flex;flex:none;align-items:center;justify-content:center;width:2.875rem;height:2.875rem;border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}.scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}.scf-soc .bi::before{width:1.375rem;height:1.375rem}
+.scf-soc{display:flex;flex-wrap:nowrap;gap:clamp(2px,calc((100% - 7 * 2.875rem) / 6),.5rem)}.scf-soc a{display:inline-flex;flex:0 1 auto;min-width:0;align-items:center;justify-content:center;width:2.875rem;height:2.875rem;border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}.scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}.scf-soc .bi::before{width:1.375rem;height:1.375rem}
 .scf .scf-svc{position:static;margin:32px 0 0;padding:16px 0 0;border:0;border-top:1px solid var(--c-ln)}
 .scf .scf-svc summary{display:flex;align-items:center;justify-content:center;min-height:44px;list-style:none;cursor:pointer;
   font-size:.75rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--c-ac);float:none}
@@ -142,6 +142,10 @@ html.sch-lock .mbar{display:none!important}
   .scf-top{grid-template-columns:1.3fr 1fr 1.2fr;gap:40px}
   .scf-svc-g{grid-template-columns:repeat(4,1fr)}
   .scf-in{padding:0 max(28px,env(safe-area-inset-right,0px)) 0 max(28px,env(safe-area-inset-left,0px))}
+}
+/* планшет 760–1099: три колонки не вміщують ряд із 7 іконок (≈370 px) — бренд ліворуч, контакти й месенджери стовпчиком праворуч (без горизонтальної прокрутки) */
+@media(min-width:760px) and (max-width:1099px){
+  .scf-top{grid-template-columns:minmax(0,1fr) auto;gap:28px 40px}.scf-brand{grid-row:span 2}
 }
 /* зони дотику ≥44px на мобільному */
 .crumbs a{display:inline-flex;align-items:center;min-height:32px;padding:0 4px}

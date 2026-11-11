@@ -69,11 +69,25 @@ def _slides():
     return ';'.join(f'{n}:{ws("hs-" + n, (1280, 1600, 1920, 2400, 2800, 3200))}:{ws("hs-" + n + "-m", (720, 1080, 1440, 1800))}' for n in HERO_SLIDES)
 
 
+def home_sizes(ar):
+    """sizes фото hero головних (9 мов) з поправкою на обрізку object-fit:cover; ar — пропорція файла (ш/в).
+    Телефон (портрет, ≤767 px): блок 100vw × (100svh − шапка 64 px) — фото 0.6 займає ширину ≈ 0.6 × висоти.
+    ПК (sections.v1.css .hx-home, 09.11.2026): висота hero = 100vh − шапка − кадр стрічки 4:5 (100vw / 4 · 6 · 7 кадрів у ряд) − 16 px, ≥ 20rem;
+    фото ширше за блок, коли висота × ar > 100vw. Той самий розрахунок — у heroSlides() (ui-polish.v1.js) для наступних кадрів."""
+    if ar < 1:
+        return f'max(100vw, calc({ar * 100:g}vh - {64 * ar:g}px))'
+    k = lambda n: f'max(100vw, {20 * ar:g}rem, calc({ar * 100:g}vh - {ar * 80:g}px - {ar * 125 / n:.4g}vw))'
+    return f'(max-width:767px) 100vw, (max-width:1023px) {k(4)}, (max-width:1599px) {k(6)}, {k(7)}'
+
+
 def hero_bg(h, full=False):
     """Фото першого екрана (не анімуємо, одна fetchpriority="high").
     full — головні (Михайло 08.11.2026): на телефоні фото на весь екран під легшим затемненням, тому sizes 100vw (різкість)."""
     m = h.get('m')
     ms = '100vw' if full else '60vw'
+    if full:  # головні: кадр hero не має пропорції файла (object-fit:cover) — sizes = ширина, яку фото реально займає (різкість без апскейлу)
+        m = dict(m, sizes=home_sizes(.6)) if m else m
+        h = dict(h, sizes=home_sizes(size(h['img'])[0] / size(h['img'])[1]))
     # m["sizes"] — свій sizes телефонного кадру (послуги/про/контакти/портфоліо: легша копія того ж кадру -m-<w>, sizes як у ПК — 100vw)
     src = (f'<source media="(max-width:767px) and (orientation:portrait)" srcset="{a(m["srcset"])}" sizes="{m.get("sizes", ms)}" width="{m["w"]}" height="{m["h"]}">'
            if m else '')

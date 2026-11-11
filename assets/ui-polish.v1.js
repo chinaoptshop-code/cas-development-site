@@ -96,7 +96,7 @@ function marquee(){
   de:['Foto-Lauf anhalten','Foto-Lauf starten'],fr:['Mettre le défilement en pause','Relancer le défilement'],ar:['إيقاف تمرير الصور','تشغيل تمرير الصور']})[(d.documentElement.lang||'uk').slice(0,2)]||['Pause','Play'];
  var list=$$('.xs-st,.vgrid,.strip,.xs-cv,.hx-home~.xs-svc .xs-sv');if(!list.length)return;
  var st=d.createElement('style');
- st.textContent='.mq-bar{position:relative;height:0;z-index:3}.mq-ap{position:absolute;top:8px;inset-inline-end:8px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(191,145,72,.7);background:rgba(8,7,9,.62);color:#EDE8DF;font:600 13px/1 system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}.mq-ap:focus-visible{outline:2px solid #BF9148;outline-offset:2px}.mq-run{scroll-snap-type:none!important;scroll-behavior:auto!important}';
+ st.textContent='.mq-bar{position:relative;height:0;z-index:3}.mq-ap{position:absolute;top:.5rem;inset-inline-end:.5rem;width:2.75rem;height:2.75rem;border-radius:50%;border:1px solid rgba(191,145,72,.7);background:rgba(8,7,9,.62);color:#EDE8DF;font:600 .8125rem/1 system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}.mq-ap:focus-visible{outline:2px solid #BF9148;outline-offset:2px}.mq-run{scroll-snap-type:none!important;scroll-behavior:auto!important}';
  d.head.appendChild(st);
  list.forEach(function(sc){
   if(sc.__mq)return;sc.__mq=1;
@@ -116,8 +116,12 @@ function marquee(){
     $$('img',c).forEach(function(im){im.classList.remove('ui-img','ui-img-in')});
     sc.appendChild(c);cl.push(c);
     $$('img',c).forEach(function(im){['srcset','src'].forEach(function(a){var v=im.getAttribute('data-mq-'+a);if(v!=null){im.removeAttribute('data-mq-'+a);im.setAttribute(a,v)}})})});
-   bar=d.createElement('div');bar.className='mq-bar';btn=d.createElement('button');btn.type='button';btn.className='mq-ap';bar.appendChild(btn);
-   sc.parentNode.insertBefore(bar,sc);lab();
+   // каруселі зі стрілками (.cv-nav від carousel()): пауза — у тому ж ряду перед ←/→, не поверх фото картки; стрічки без стрілок — кнопка в куті
+   var nav=sc.nextElementSibling&&sc.nextElementSibling.classList.contains('cv-nav')?sc.nextElementSibling:null;
+   btn=d.createElement('button');btn.type='button';btn.className=nav?'cv-p':'mq-ap';
+   if(nav)nav.insertBefore(btn,nav.firstChild);
+   else{bar=d.createElement('div');bar.className='mq-bar';bar.appendChild(btn);sc.parentNode.insertBefore(bar,sc)}
+   lab();
    sc.classList.add('mq-run'); // без scroll-snap, поки стрічка рухається й на паузі: інакше на паузі кадр «відскакує» до краю
    btn.addEventListener('click',function(){stop=!stop;lab();if(!stop){hold=0;sync()}go()});
    return true;
@@ -184,11 +188,13 @@ function heroSlides(){
  function set(n,ws,m,ext){return ws.map(function(w){return '/img/hs-'+n+m+'-'+w+'.'+ext+' '+w+'w'}).join(', ')}
  function make(i){
   var x=list[i-1],P=d.createElement('picture');P.className='hx-bg hs-l';P.setAttribute('aria-hidden','true');
-  var q='(max-width:767px) and (orientation:portrait)';
-  P.innerHTML='<source type="image/avif" media="'+q+'" srcset="'+set(x.n,x.m,'-m','avif')+'" sizes="100vw">'+
-   '<source media="'+q+'" srcset="'+set(x.n,x.m,'-m','webp')+'" sizes="100vw">'+
-   '<source type="image/avif" srcset="'+set(x.n,x.d,'','avif')+'" sizes="100vw">'+
-   '<img src="/img/hs-'+x.n+'-'+x.d[0]+'.webp" srcset="'+set(x.n,x.d,'','webp')+'" sizes="100vw" alt="" decoding="async" width="2400" height="1200">';
+  var q='(max-width:767px) and (orientation:portrait)',
+   // sizes — ширина, яку кадр реально займає в блоці (object-fit:cover): телефон 0.6, ПК 2:1 (як home_sizes() у tools/site/rich.py)
+   bw=hx.offsetWidth,bh=hx.offsetHeight,zm=Math.ceil(Math.max(bw,bh*.6))+'px',zd=Math.ceil(Math.max(bw,bh*2))+'px';
+  P.innerHTML='<source type="image/avif" media="'+q+'" srcset="'+set(x.n,x.m,'-m','avif')+'" sizes="'+zm+'">'+
+   '<source media="'+q+'" srcset="'+set(x.n,x.m,'-m','webp')+'" sizes="'+zm+'">'+
+   '<source type="image/avif" srcset="'+set(x.n,x.d,'','avif')+'" sizes="'+zd+'">'+
+   '<img src="/img/hs-'+x.n+'-'+x.d[0]+'.webp" srcset="'+set(x.n,x.d,'','webp')+'" sizes="'+zd+'" alt="" decoding="async" width="2400" height="1200">';
   return P;
  }
  function show(i){
