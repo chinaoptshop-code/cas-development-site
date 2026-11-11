@@ -54,7 +54,7 @@
 | blog/planuvalne-rishennia-koly-dostatno.html | article | 61.8 | 17.4 | 14.2 | 0.5 | 6 | 440 |
 | blog/skilky-tryvaie-remont-kvartyry-v-novobudovi.html | article | 61.8 | 17.5 | 14.2 | 0.5 | 6 | 447 |
 | blog/kapitalnyi-chy-kosmetychnyi-remont-shcho-obraty.html | article | 61.7 | 17.3 | 14.2 | 0.5 | 6 | 451 |
-| blog/komplektatsiia-interieru-samostiino-chy-z-komplektatorom.html | article | 61.6 | 17.5 | 14.2 | 0.5 | 6 | 457 |
+| blog/komplektatsiia-interieru-samostiino-chy-z-komplektatorom.html | article | 61.6 | 17.6 | 14.2 | 0.5 | 6 | 457 |
 | blog/remont-u-peredmisti-kyieva-shcho-vrakhuvaty.html | article | 61.6 | 17.6 | 14.2 | 0.5 | 6 | 443 |
 | ru/dizayn-restorana-kafe-kiev.html | land | 61.5 | 16.7 | 13.3 | 3.3 | 6 | 527 |
 | ozdoba/stilets-krislo-obidnii-bukle-z-pidlokitnykamy-74.html | other | 61.3 | 15.8 | 32.4 | 0.7 | 14 | 344 |
@@ -73,7 +73,7 @@
 | ozdoba/dyvan-vulychnyi-kruhlyi-sektsiinyi-z-podushkamy-173.html | other | 60.4 | 15.5 | 32.4 | 0.7 | 14 | 338 |
 | ozdoba/liustra-kiltseva-led-3-zolotykh-kiltsia-110.html | other | 60.4 | 15.6 | 32.4 | 0.7 | 14 | 343 |
 | ozdoba/portal-kaminnyi-z-biloho-marmuru-klasychnyi-500.html | other | 60.4 | 15.5 | 32.4 | 0.7 | 14 | 341 |
-| ozdoba/stil-obidnii-kruhlyi-marmur-z-obertovym-73.html | other | 60.4 | 15.4 | 32.4 | 0.7 | 14 | 340 |
+| ozdoba/stil-obidnii-kruhlyi-marmur-z-obertovym-73.html | other | 60.4 | 15.5 | 32.4 | 0.7 | 14 | 340 |
 | ozdoba/dyvan-priamyi-shkirianyi-zi-stobanoiu-spynkoiu-62.html | other | 60.3 | 15.6 | 32.4 | 0.7 | 14 | 345 |
 | ozdoba/liustra-hilka-z-plafonamy-z-dymchastoho-112.html | other | 60.3 | 15.5 | 32.4 | 0.7 | 14 | 343 |
 | ozdoba/pidvis-z-tkanynnym-tsylindrychnym-abazhurom-3.html | other | 60.3 | 15.6 | 32.4 | 0.7 | 14 | 345 |
@@ -123,7 +123,7 @@
 | ozdoba/plytka-z-travertynu-ukladannia-frantsuzkyi-vizerunok-565.html | other | 60.0 | 15.5 | 32.4 | 0.7 | 14 | 340 |
 | ozdoba/stil-vohnyshche-hazovyi-kruhlyi-zi-sklianym-509.html | other | 60.0 | 15.5 | 32.4 | 0.7 | 14 | 341 |
 | ozdoba/stil-zhurnalnyi-z-marmurovoiu-stilnytseiu-2-70.html | other | 60.0 | 15.5 | 32.4 | 0.7 | 14 | 342 |
-| ozdoba/torsher-arka-z-plafonom-kapeliukh-579.html | other | 60.0 | 15.5 | 32.4 | 0.7 | 14 | 343 |
+| ozdoba/torsher-arka-z-plafonom-kapeliukh-579.html | other | 60.0 | 15.6 | 32.4 | 0.7 | 14 | 343 |
 | ozdoba/bra-na-hnuchkii-opori-gooseneck-7.html | other | 59.9 | 15.6 | 32.4 | 0.7 | 14 | 347 |
 | ozdoba/bra-tuba-latun-z-ryflenym-sklom-5.html | other | 59.9 | 15.6 | 32.4 | 0.7 | 14 | 344 |
 | ozdoba/dveri-ambarni-z-masyvu-sosny-z-535.html | other | 59.9 | 15.5 | 32.4 | 0.7 | 14 | 339 |
@@ -131,7 +131,7 @@
 | ozdoba/dveri-rozsuvni-ambarni-z-reikoiu-siri-534.html | other | 59.9 | 15.4 | 32.4 | 0.7 | 14 | 340 |
 | ozdoba/dyvan-miakyi-obtichnyi-oksamyt-taup-572.html | other | 59.9 | 15.6 | 32.4 | 0.7 | 14 | 341 |
 | ozdoba/instaliatsiia-dlia-pidvisnoho-bide-rehulovana-za-136.html | other | 59.9 | 15.5 | 32.4 | 0.7 | 14 | 337 |
-| ozdoba/karho-vysuvne-bahatofunktsionalne-hrafit-108.html | other | 59.9 | 15.5 | 32.4 | 0.7 | 14 | 338 |
+| ozdoba/karho-vysuvne-bahatofunktsionalne-hrafit-108.html | other | 59.9 | 15.6 | 32.4 | 0.7 | 14 | 338 |
 | ozdoba/keramohranit-velykoformatnyi-pid-kamin-120-60-40.html | other | 59.9 | 15.6 | 32.4 | 0.7 | 14 | 346 |
 | ozdoba/krislo-launzh-tkanyna-ialynka-20.html | other | 59.9 | 15.6 | 32.4 | 0.7 | 14 | 346 |
 | ozdoba/lampa-nastilna-bankirska-z-zelenym-sklianym-430.html | other | 59.9 | 15.3 | 32.4 | 0.7 | 14 | 341 |
@@ -195,7 +195,7 @@
 | ozdoba/shpalery-vinilovi-pid-tkanynu-vohnestiiki-568.html | other | 59.7 | 15.5 | 32.4 | 0.7 | 14 | 340 |
 | ozdoba/shtory-lniani-blekaut-na-skladkakh-para-526.html | other | 59.7 | 15.5 | 32.4 | 0.7 | 14 | 342 |
 | ozdoba/stil-kerivnyka-l-podibnyi-z-tumboiu-577.html | other | 59.7 | 15.5 | 32.4 | 0.7 | 14 | 336 |
-| ozdoba/stil-kruhlyi-na-dyskovii-opori-70-26.html | other | 59.7 | 15.5 | 32.4 | 0.7 | 14 | 346 |
+| ozdoba/stil-kruhlyi-na-dyskovii-opori-70-26.html | other | 59.7 | 15.6 | 32.4 | 0.7 | 14 | 346 |
 | ozdoba/stil-kruhlyi-z-tyku-na-kiltsevii-176.html | other | 59.7 | 15.5 | 32.4 | 0.7 | 14 | 337 |
 | ozdoba/stil-obidnii-rozkladnyi-keramichna-stilnytsia-72.html | other | 59.7 | 15.4 | 32.4 | 0.7 | 14 | 337 |
 | ozdoba/stilets-barnyi-povorotnyi-z-hazliftom-ekoshkira-412.html | other | 59.7 | 15.4 | 32.4 | 0.7 | 14 | 340 |
@@ -246,7 +246,7 @@
 | ozdoba/kabina-akustychna-dlia-dzvinkiv-na-1-98.html | other | 59.5 | 15.4 | 32.4 | 0.7 | 14 | 338 |
 | ozdoba/kandeliabr-pidlohovyi-z-kryshtalevymy-tsylindramy-560.html | other | 59.5 | 15.4 | 32.4 | 0.7 | 14 | 339 |
 | ozdoba/kashpo-vysoki-tsylindrychni-nabir-3-179.html | other | 59.5 | 15.5 | 32.4 | 0.7 | 14 | 337 |
-| ozdoba/krislo-kokon-pidvisne-na-stiitsi-180.html | other | 59.5 | 15.4 | 32.4 | 0.7 | 14 | 336 |
+| ozdoba/krislo-kokon-pidvisne-na-stiitsi-180.html | other | 59.5 | 15.5 | 32.4 | 0.7 | 14 | 336 |
 | ozdoba/moldynh-poliuretanovyi-z-ornamentom-pid-zoloto-314.html | other | 59.5 | 15.4 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/nabir-posudu-z-reaktyvnoiu-hlazuriu-teplyi-552.html | other | 59.5 | 15.3 | 32.4 | 0.7 | 14 | 336 |
 | ozdoba/parket-dubovyi-inzhenernyi-42.html | other | 59.5 | 15.5 | 32.4 | 0.7 | 14 | 344 |
@@ -306,9 +306,9 @@
 | ozdoba/parket-inzhenernyi-dub-frantsuzka-ialynka-temnyi-306.html | other | 59.3 | 15.3 | 32.4 | 0.7 | 14 | 336 |
 | ozdoba/pled-viazanyi-bavovnianyi-siryi-melanzh-528.html | other | 59.3 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/plytka-kabanchyk-bila-hliantseva-z-faskoiu-302.html | other | 59.3 | 15.3 | 32.4 | 0.7 | 14 | 337 |
-| ozdoba/plytka-nastinna-pastelna-z-khvyliastoiu-hlazur-303.html | other | 59.3 | 15.3 | 32.4 | 0.7 | 14 | 334 |
+| ozdoba/plytka-nastinna-pastelna-z-khvyliastoiu-hlazur-303.html | other | 59.3 | 15.4 | 32.4 | 0.7 | 14 | 334 |
 | ozdoba/prozhektor-liniinyi-nastinnyi-wall-washer-127.html | other | 59.3 | 15.3 | 32.4 | 0.7 | 14 | 340 |
-| ozdoba/prozhektor-sadovyi-na-kilku-povorotnyi-129.html | other | 59.3 | 15.3 | 32.4 | 0.7 | 14 | 338 |
+| ozdoba/prozhektor-sadovyi-na-kilku-povorotnyi-129.html | other | 59.3 | 15.4 | 32.4 | 0.7 | 14 | 338 |
 | ozdoba/ruchka-skoba-dlia-vkhidnykh-dverei-chorna-324.html | other | 59.3 | 15.3 | 32.4 | 0.7 | 14 | 338 |
 | ozdoba/rushnykosushka-elektrychna-drabynka-bila-152.html | other | 59.3 | 15.4 | 32.4 | 0.7 | 14 | 338 |
 | ozdoba/shezlonh-kushetka-velvetova-64.html | other | 59.3 | 15.4 | 32.4 | 0.7 | 14 | 338 |
@@ -353,7 +353,7 @@
 | ozdoba/kylym-dzhutovyi-z-bakhromoiu-200-300-43.html | other | 59.1 | 15.3 | 32.4 | 0.7 | 14 | 341 |
 | ozdoba/kylym-vovnianyi-petelnyi-200-300-44.html | other | 59.1 | 15.3 | 32.4 | 0.7 | 14 | 341 |
 | ozdoba/lizhko-dvoiarusne-z-shukhliadamy-sire-82.html | other | 59.1 | 15.3 | 32.4 | 0.7 | 14 | 337 |
-| ozdoba/lizhko-dytiache-budynochok-bile-81.html | other | 59.1 | 15.3 | 32.4 | 0.7 | 14 | 335 |
+| ozdoba/lizhko-dytiache-budynochok-bile-81.html | other | 59.1 | 15.4 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/mozaika-shestykutna-sklo-i-kamin-301.html | other | 59.1 | 15.3 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/panel-dekoratyvna-pid-skeliu-41.html | other | 59.1 | 15.4 | 32.4 | 0.7 | 14 | 337 |
 | ozdoba/petlia-prykhovana-3d-rehulovana-chorna-323.html | other | 59.1 | 15.3 | 32.4 | 0.7 | 14 | 335 |
