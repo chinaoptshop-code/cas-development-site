@@ -104,6 +104,7 @@
 ".scf-langs",
 ".scf-bot a",
 ".scf-lang-on",
+".scf-brand",
 ".crumbs a",
 "main details:not([class*=\"sch\"])>summary",
 ".card h3 a,.card p>a:only-child",
@@ -335,7 +336,7 @@
 "html body :is(main,main>div[id^=\"p-\"])>section:not([data-c=x],:has(>.w[data-c=x]),.pmap,#karta,#faq)",
 "html:root",
 "html body .w,html body .gd-slot,html body .lq-wide,html body .pmap,html body .bz[data-bz-c]>.w",
-"html body .w,html body .lq-wide",
+"html body .w,html body .lq-wide,html body .bz[data-bz-c]>.w",
 "html body .sch-in",
 "html body .scf-in",
 "html body .scf-svc-g",
@@ -392,4 +393,5 @@
 ".hxl .hero h1",
 ".hxl .hero p",
 ".hxl::before,[dir=rtl] .hxl::before",
-".crumbs+.hxl"]
+".crumbs+.hxl",
+".scf-top>.scf-col:last-child"]

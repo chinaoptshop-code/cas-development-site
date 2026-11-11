@@ -65,12 +65,12 @@
 .sc-n[aria-current]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#080709}
 .sc-side :is(.la-nav button,.sc-n):focus-visible,.sc-more:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
 .sc-side .la-foot{display:flex;flex-direction:column;align-items:flex-start;gap:0}
-.sc-side .la-est{font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84);margin:0}
+.sc-side .la-est{font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84);margin:0;text-wrap:balance}
 .sc-more{align-self:flex-start;color:var(--ac,#BF9148);text-decoration:none;font-weight:500;padding:10px 0;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center}
 @media(hover:hover){.sc-more:hover{text-decoration:underline;text-underline-offset:4px}}
 @media(max-width:767px){
   .la-cmp .la-stick.sc-grid{grid-template-columns:minmax(0,1fr);gap:8px;padding:6px 0 8px}
-  .la-cmp .la-svg,.la-cmp .rp-svg{height:min(42vh,350px)}
+  .la-cmp .la-svg,.la-cmp .rp-svg{height:min(40vh,340px);height:min(40svh,340px)}
   .sc-side{gap:8px}.sc-ct{font-size:1.05rem}
   .sc-side :is(.la-cap,.rp-cap){min-height:7.2rem}.sc-side :is(.la-cap,.rp-cap) b{font-size:1rem}.sc-side :is(.la-cap,.rp-cap) span{font-size:.875rem}
   .sc-side .la-nav{justify-content:center}
@@ -79,3 +79,9 @@
   .sc-side .la-foot{align-items:center}.sc-more{align-self:center}
 }
 .rp-cmp .rp-grid{display:block}.rp-cmp .rp-side{display:none}.rp-cmp .rp-svg{object-fit:contain}
+/* телефон, компактні сцени головних — у межах екрана (аудит 11.11.2026: 402×874 — 880–920 px від перемикача до низу панелі): підказка жестів — не рядок панелі,
+   а напис поверх низу кадру (той самий текст, зникає після першої дії, панель не змінює висоту); кадр — min(40svh,340px); H2 — site-chrome.v1.css (.hx-home~.bz h2) */
+@media(max-width:767px){
+  .bz-cmp .bz-side>.sc-hint,.la-cmp .sc-side>.sc-hint{position:absolute;left:10px;right:10px;bottom:calc(100% + 16px);z-index:2;margin:0;padding:5px 10px;border-radius:10px;
+    background:rgba(13,12,10,.8);color:#d8d0c4;font-size:.75rem;line-height:1.35;text-align:center;pointer-events:none}
+}

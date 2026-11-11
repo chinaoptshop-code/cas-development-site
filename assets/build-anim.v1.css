@@ -107,7 +107,7 @@
 .bz-cmp .bz-go{display:none!important}
 .bz-cmp .bz-p,.bz-cmp .bz-cb,.bz-cmp .bz-cfg,.bz-cmp .bz-cap,.bz-cmp .bz-team,.bz-cmp .bz-facts,.bz-cmp .bz-pie{display:none!important}.bz-cmp .bz-fig{padding-top:0!important}
 .bz-cmp .bz-cta{display:none} /* головні: заклик — у панелі (.bz-foot), як у решти вкладок; .lq-go блоку переносить контекст у форму */
-@media(max-width:767px){.bz-cmp .bz-fig{height:min(42vh,350px)}.bz-cmp .bz-pin{grid-template-rows:auto auto}.bz-cmp .bz-go{position:static;align-self:flex-start}}
+@media(max-width:767px){.bz-cmp .bz-fig{height:min(40vh,340px);height:min(40svh,340px)}.bz-cmp .bz-pin{grid-template-rows:auto auto}.bz-cmp .bz-go{position:static;align-self:flex-start}}
 .bz-rm .bz-run{height:auto}
 .bz-rm .bz-pin{position:relative;top:auto;height:auto}
 .bz-rm .bz-fig{height:min(62vh,560px)}
@@ -501,7 +501,7 @@
 .bz-cfgl{align-self:flex-start;color:var(--ac,#BF9148);text-decoration:none;font-weight:500;padding:10px 0;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center}
 .bz-cfgl[hidden]{display:none}
 @media(hover:hover){.bz-cfgl:hover{text-decoration:underline;text-underline-offset:4px}}
-.bz-foot{display:flex;flex-direction:column;align-items:flex-start}.bz-est{margin:0;font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84)}
+.bz-foot{display:flex;flex-direction:column;align-items:flex-start}.bz-est{margin:0;font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84);text-wrap:balance}
 @media(max-width:767px){.bz-cmp .bz-ctl{justify-content:center}.bz-cmp .bz-cfgl{align-self:center}.bz-foot{align-items:center;text-align:center}}
 /* телефон, компактна сцена головних: компактний ряд номерів етапів (підказка casGest згадує «номер етапу») — 2 ряди по 10, без горизонтальної прокрутки з 320 px;
    кнопка ≥26×34 px (WCAG 2.5.8 — ≥24 px), проміжок рядів 10 px — розширені ::before-зони сусідніх рядів не перекриваються */

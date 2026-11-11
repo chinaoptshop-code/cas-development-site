@@ -751,7 +751,7 @@
 (function () {
   var W = window, d = document, ss = d.querySelectorAll('section.bz[data-js]'); // кілька сцен на сторінці — кожна свій скрипт
   if (!ss.length) return;
-  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=5a2c3767"; /*/sc:ui*/
+  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=3cb79fa2"; /*/sc:ui*/
   var on = 0;
   function css(h) { if (!h || d.querySelector('link[href="' + h + '"]')) return; var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = h; d.head.appendChild(l); }
   function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; j.onerror = function () { [].forEach.call(d.querySelectorAll('section.bz[data-js]'), function (x) { if (x.getAttribute('data-js') === s) x.classList.add('bz-no'); }); }; d.head.appendChild(j); } // скрипт сцени не завантажився — без резерву висоти
@@ -800,6 +800,8 @@
       [].forEach.call(nav.querySelectorAll('a'), function (b) { if (b === a) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
       if (x !== sec) { sec.parentNode.replaceChild(x, sec); x.classList.remove('la-sw'); void x.offsetWidth; x.classList.add('la-sw'); }
       W.scrollBy({ top: nav.getBoundingClientRect().top - top, behavior: 'instant' }); // перемикач лишається на тому ж місці екрана
+      var ar = a.getBoundingClientRect(), nr = nav.getBoundingClientRect(); // телефон: перемикач — ряд із прокруткою; після перенесення в новий блок його прокрутка скидається — активна вкладка знову в кадрі
+      if (nav.scrollWidth > nav.clientWidth + 1 && (ar.left < nr.left || ar.right > nr.right)) nav.scrollLeft += ar.left + ar.width / 2 - (nr.left + nr.width / 2);
       if (x.__new) { x.__new = 0; css(x.getAttribute('data-css')); js(x.getAttribute('data-js')); }
       if (W.casLqSlots) try { W.casLqSlots(x); } catch (er) { }
       try { if (W.clarity) W.clarity('event', 'scene_tab'); } catch (er) { }

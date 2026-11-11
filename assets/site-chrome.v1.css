@@ -504,9 +504,12 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 @media(prefers-reduced-motion:no-preference) and (max-width:1099px){.bz:is([data-la],[data-rs]){--lx:112px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:1399px){.bz[data-wh]{--lx:112px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:900px){.js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 20px) * .7 + 671px)}}
-@media(prefers-reduced-motion:no-preference) and (max-width:767px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(min(42vh,350px) + 23.5rem + 8px)}
+@media(prefers-reduced-motion:no-preference) and (max-width:767px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(min(40vh,340px) + clamp(22.5rem,calc(637px - 69vw),25rem) + 8px);height:calc(min(40svh,340px) + clamp(22.5rem,calc(637px - 69vw),25rem) + 8px)} /* панель вища на вузьких (переноси): 402+ — 22.5rem, 344 — 25rem */
   .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 20px) * .45 + 836px)}
   .bz:is([data-la],[data-rs]){--lx:162px}.bz[data-wh]{--lx:162px}}
+@media(max-width:767px){html body .hx-home~.bz h2{font-size:1.5rem;line-height:1.15}}
+@media(max-width:659px){html body .hx-home~.bz .la-tab{padding-inline-end:28px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 30px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 30px),transparent)}
+  html body[dir=rtl] .hx-home~.bz .la-tab,html[dir=rtl] body .hx-home~.bz .la-tab{-webkit-mask-image:linear-gradient(270deg,#000 calc(100% - 30px),transparent);mask-image:linear-gradient(270deg,#000 calc(100% - 30px),transparent)}} /* вкладки сцен на телефоні — ряд із прокруткою: край тане — видно, що є ще (обрізаний «Ком…» виглядав як помилка, аудит 11.11.2026) */ /* компактна сцена головної в межах екрана: заголовок — до 2 рядків (аудит 11.11.2026); до й після збірки однаковий */
 @media(prefers-reduced-motion:no-preference) and (max-width:419px){.bz[data-wh]{--lx:214px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:389px){.bz:is([data-la],[data-rs]):is(:lang(uk),:lang(ru),:lang(pl)){--lx:212px}} /* панель — мовозалежна: інші мови тут уміщуються в 3 ряди */
 @media(prefers-reduced-motion:no-preference) and (min-width:768px) and (max-width:1099px){.bz:is([data-la],[data-rs]):lang(zh){--lx:58px}}

@@ -142,7 +142,8 @@ body{padding-top:var(--sch-h)}
 @media(min-width:760px){.scf-top{grid-template-columns:1.3fr 1fr 1.2fr;gap:40px}
 .scf-svc-g{grid-template-columns:repeat(4,1fr)}
 .scf-in{padding:0 max(28px,env(safe-area-inset-right,0px)) 0 max(28px,env(safe-area-inset-left,0px))}}
-@media(min-width:760px) and (max-width:1099px){.scf-top{grid-template-columns:minmax(0,1fr) auto;gap:28px 40px}}
+@media(min-width:760px) and (max-width:1099px){.scf-top{grid-template-columns:minmax(0,1fr) auto;gap:28px 40px}
+.scf-brand{grid-row:span 2}}
 .crumbs a{display:inline-flex;align-items:center;min-height:32px;padding:0 4px}
 main details:not([class*="sch"])>summary{padding-block:12px;margin-block:-12px}
 @media(max-width:767px),(pointer:coarse){.crumbs a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:0 6px}
@@ -446,7 +447,7 @@ main :is(p,li,figcaption) a:not(.btn){overflow-wrap:anywhere}
 html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]),.pmap,#karta,#faq){padding-block:var(--sp-sec)}
 @media(min-width:1367px){html:root{font-size:clamp(16px,calc(.5025vw + 9.14px),24px);--cw:clamp(1080px,calc(60vw + 336px),2400px);--sch-h:calc(clamp(64px,4rem,92px) + env(safe-area-inset-top,0px))}
 html body .w,html body .gd-slot,html body .lq-wide,html body .pmap,html body .bz[data-bz-c]>.w{max-width:var(--cw)}
-html body .w,html body .lq-wide{padding-inline:clamp(16px,1.5rem,40px)}
+html body .w,html body .lq-wide,html body .bz[data-bz-c]>.w{padding-inline:clamp(16px,1.5rem,40px)}
 html body .sch-in{max-width:max(1360px,calc(var(--cw) + 16rem));padding-inline:clamp(28px,2rem,48px)}
 html body .scf-in{max-width:var(--cw)}
 html body .scf-svc-g{max-width:calc(var(--cw) - 4rem)}
@@ -532,7 +533,8 @@ html body .hxl>.hero{min-height:min(60vh,50vw,36rem);display:flex;flex-direction
 .crumbs+.hxl{margin-top:-.25rem}
 @media(max-width:419px){.scf-soc{gap:clamp(0px,calc((100% - 7 * 2.75rem) / 6),.5rem)}
 .scf-soc a{width:2.75rem;height:2.75rem}}
-@media(min-width:760px) and (max-width:1099px){.scf-top{grid-template-columns:1.3fr 1fr}}
+@media(min-width:760px) and (max-width:1099px){.scf-top{grid-template-columns:1.3fr 1fr}
+.scf-top>.scf-col:last-child{grid-column:1/-1}}
 @media(min-width:1100px){.scf-top{grid-template-columns:1.3fr 1fr minmax(23.25rem,1.2fr)}}
 @media(min-width:768px) and (max-width:1023px){.hxl::before{background:linear-gradient(90deg,rgba(8,7,9,.88) 0,rgba(8,7,9,.66) 50%,rgba(8,7,9,.42) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}
 [dir=rtl] .hxl::before{background:linear-gradient(270deg,rgba(8,7,9,.88) 0,rgba(8,7,9,.66) 50%,rgba(8,7,9,.42) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}}

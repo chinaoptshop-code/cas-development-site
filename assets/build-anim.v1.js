@@ -1359,6 +1359,7 @@
     fig.appendChild(mats); fig.appendChild(cfg); fig.appendChild(cap); fig.appendChild(lg);
     pin.appendChild(skip); pin.appendChild(fig); pin.appendChild(side);
     run.appendChild(pin);
+    if (CMP) sec.classList.add('bz-cmp'); // компактна — до вставки: між вставкою й mode() (наступний кадр) кадр уже має свою висоту (CLS, коли блок у кадрі під час збірки)
     cta.parentNode.insertBefore(run, cta);
     sec.classList.add('bz-on');
 
