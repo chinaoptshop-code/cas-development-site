@@ -468,7 +468,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 .dv>a{display:inline-block;padding:10px 0;margin:-10px 0}
 /* ══ «Будинок / Ремонт з нуля» (section.bz) — статичний стан до збірки сцени; тут, а не в build-anim.v1.css (вантажиться після першої прокрутки), щоб висота блоку в кадрі не стрибала (CLS). Головна (data-bz-c) — власна сітка ── */
 .bz[data-bz-c]{padding:56px 0 64px;border-top:1px solid var(--ln,rgba(191,145,72,.18))}
-.bz[data-bz-c]>.w{max-width:1180px;margin:0 auto;padding:0 22px;box-sizing:border-box}
+.bz[data-bz-c]>.w{max-width:1080px;margin:0 auto;padding:0 16px;box-sizing:border-box} /* як .w решти сторінки й вкладок перемикача сцен: кадр не стрибає вбік при перемиканні (аудит 11.11.2026) */
 .bz[data-bz-c] h2{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:300;font-size:var(--fs-h2,2.25rem);line-height:1.15;margin:0 0 10px}
 .bz[data-bz-c] .bz-p{color:var(--mu,#938c84);margin:0;max-width:44em}
 .bz-p a{color:var(--ac,#BF9148);white-space:nowrap}
@@ -509,7 +509,7 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 @media(prefers-reduced-motion:no-preference) and (max-width:389px){.bz[data-rs]:lang(es){--lx:212px}}@media(prefers-reduced-motion:no-preference) and (max-width:419px){.bz[data-la]:lang(ru){--lx:212px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:339px){.bz[data-wh]{--lx:264px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:419px){.bz[data-wh]:lang(zh){--lx:162px}}@media(prefers-reduced-motion:no-preference) and (min-width:1100px){.bz[data-wh]:is(:lang(zh),:lang(en),:lang(ar)){--lx:58px}}@media(prefers-reduced-motion:no-preference) and (min-width:390px) and (max-width:419px){.bz[data-wh]:lang(ar){--lx:162px}}
-.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-no) :is(.bz-p,.bz-team){display:none}.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-no) .bz-cta{padding:14px 18px;margin-top:12px}
+.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-no) :is(.bz-p,.bz-team){display:none}.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-no) .bz-cta{display:none} /* заклик — у панелі сцени (.bz-foot); схований і до збірки — без зсуву */
 /* ══ Квіз (section.qz-s, ставить /assets/quiz.v1.js на DOMContentLoaded): каркас секції й висоту .qz резервуємо тут — quiz.v1.css вантажиться ліниво біля блоку (CLS) ── */
 .qz-s{padding:56px 0;border-top:1px solid var(--ln,rgba(191,145,72,.18))}
 .qz-w{max-width:1080px;margin:0 auto;padding:0 16px}
@@ -695,7 +695,7 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
 @media(min-width:1367px){
   html:root{font-size:clamp(16px,calc(.5025vw + 9.14px),24px);--cw:clamp(1080px,calc(60vw + 336px),2400px);--sch-h:calc(clamp(64px,4rem,92px) + env(safe-area-inset-top,0px))}
   html body .w,html body .gd-slot,html body .lq-wide,html body .pmap,html body .bz[data-bz-c]>.w{max-width:var(--cw)}
-  html body .w,html body .lq-wide{padding-inline:clamp(16px,1.5rem,40px)}
+  html body .w,html body .lq-wide,html body .bz[data-bz-c]>.w{padding-inline:clamp(16px,1.5rem,40px)}
   html body .sch-in{max-width:max(1360px,calc(var(--cw) + 16rem));padding-inline:clamp(28px,2rem,48px)}
   html body .scf-in{max-width:var(--cw)}
   html body .scf-svc-g{max-width:calc(var(--cw) - 4rem)}

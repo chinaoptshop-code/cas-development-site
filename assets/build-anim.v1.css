@@ -62,7 +62,7 @@
 .bz-b.is-done{color:var(--ac,#BF9148);border-color:rgba(191,145,72,.55)}
 .bz-b[aria-current]{background:var(--ac,#BF9148);border-color:var(--ac,#BF9148);color:#080709}
 .bz-pb{display:none}
-.bz-go:focus-visible,.bz-skip:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:3px}
+.bz-go:focus-visible,.bz-skip:focus-visible,.bz-cmp .bz-fig:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:3px}
 @media(hover:hover){.bz-b:hover,.bz-pv:not(:disabled):hover,.bz-nx:not(:disabled):hover{border-color:var(--ac,#BF9148);color:var(--tx,#EDE8DF);transform:translateY(-1px)}.bz-b[aria-current]:hover{color:#080709}}
 .bz-go{align-self:flex-start;display:inline-flex;align-items:center;gap:.5em;min-height:46px;padding:0 22px;border-radius:999px;background:var(--ac,#BF9148);color:#080709;
   font-weight:600;text-decoration:none;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .45s var(--ease-out),transform .45s var(--ease-out),translate .35s var(--ease-out),visibility 0s .45s}
@@ -106,7 +106,7 @@
 .bz-cmp .bz-run{height:auto}.bz-cmp .bz-pin{position:relative;top:auto;height:auto}.bz-cmp .bz-fig{height:min(60vh,540px)}
 .bz-cmp .bz-go{display:none!important}
 .bz-cmp .bz-p,.bz-cmp .bz-cb,.bz-cmp .bz-cfg,.bz-cmp .bz-cap,.bz-cmp .bz-team,.bz-cmp .bz-facts,.bz-cmp .bz-pie{display:none!important}.bz-cmp .bz-fig{padding-top:0!important}
-.bz-cmp .bz-cta{padding:14px 18px;margin-top:12px}
+.bz-cmp .bz-cta{display:none} /* головні: заклик — у панелі (.bz-foot), як у решти вкладок; .lq-go блоку переносить контекст у форму */
 @media(max-width:767px){.bz-cmp .bz-fig{height:min(42vh,350px)}.bz-cmp .bz-pin{grid-template-rows:auto auto}.bz-cmp .bz-go{position:static;align-self:flex-start}}
 .bz-rm .bz-run{height:auto}
 .bz-rm .bz-pin{position:relative;top:auto;height:auto}
@@ -404,6 +404,27 @@
   .bz-cap{font-size:11px;bottom:2px}
 }
 .bz-rm .bz-fig svg.bz-in{animation:none}
+/* ПК-ширина, але низький екран (телефон у ландшафті 852×393, 932×430, ноутбук 1024×600; аудит 11.11.2026): колонка етапів вища за екран розтягувала ряд сітки —
+   кадр ставав 600–900 px і будинок опинявся під краєм екрана, а панель налаштувань над сценою закривала решту. Ряд — висота екрана, колонка етапів
+   прокручується всередині, налаштування — за кнопкою ⚙ поверх сцени (як на телефоні; JS — LOW у build-anim.v1.js) */
+@media(min-width:768px){
+  .bz:not(.bz-cmp):not(.bz-rm) .bz-pin{grid-template-rows:minmax(0,1fr)}
+  .bz:not(.bz-cmp):not(.bz-rm) .bz-side{min-height:0;max-height:100%;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+  .bz:not(.bz-cmp):not(.bz-rm) .bz-side>*{flex-shrink:0} /* блоки колонки не стискаються одне на одне (пиріг накладався на текст) — колонка прокручується */
+}
+@media(min-width:768px) and (max-height:640px){
+  .bz:not(.bz-cmp):not(.bz-rm) .bz-pin{align-items:stretch;padding:6px 0}
+  .bz:not(.bz-cmp):not(.bz-rm) .bz-side{justify-content:flex-start}
+  .bz:not(.bz-cmp) .bz-fig{padding-top:38px}
+  .bz-cb{display:inline-flex;align-items:center;gap:6px;flex:none;min-height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--ac,#BF9148);background:rgba(16,14,12,.72);color:var(--ac,#BF9148);
+    font:600 12px/1 'Manrope','Manrope Fallback',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+  .bz-cb[aria-expanded="true"]{background:var(--ac,#BF9148);color:#080709}
+  .bz-mats{flex-wrap:nowrap;overflow:hidden;right:0}.bz-mats .bz-cb{display:block;flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;line-height:28px}
+  .bz-cfg{display:none;top:38px;bottom:0;overflow:auto;overscroll-behavior:contain;padding:10px 10px 12px;box-sizing:border-box;background:rgba(16,14,12,.96);border:1px solid var(--ln,rgba(191,145,72,.22));border-radius:12px;z-index:4}
+  .bz-fig.cfg-open .bz-cfg{display:flex}
+  .bz-cfg .bz-g{flex-wrap:wrap}.bz-cfg button{min-height:34px}
+  .bz-cx{display:block;align-self:stretch;margin-top:4px;background:var(--ac,#BF9148)!important;color:#080709!important;border-color:var(--ac,#BF9148)!important;font-weight:600!important}
+}
 
 /* сцена будинку v3: гараж, плоский дах і тераса, вальма, A-frame, стильові деталі */
 .bz-fig .man line{stroke:#d6d0c6;stroke-width:2.4;stroke-linecap:round}.bz-fig .man circle{fill:#d6d0c6}
@@ -472,7 +493,7 @@
 .bz-cmp .bz-pin{align-items:start}
 .bz-cmp .bz-side{justify-content:flex-start}
 .bz-cmp .bz-side>.bz-hd{order:1}.bz-cmp .bz-side>.bz-st{order:2}.bz-cmp .bz-side>.sc-hint{order:3}.bz-cmp .bz-side>.bz-ctl{order:4}
-.bz-cmp .bz-side>.bz-cfgl{order:5}.bz-cmp .bz-side>.bz-pie{order:6}.bz-cmp .bz-side>*{order:7}
+.bz-cmp .bz-side>.bz-cfgl,.bz-cmp .bz-side>.bz-foot{order:5}.bz-cmp .bz-side>.bz-pie{order:6}.bz-cmp .bz-side>*{order:7}
 .bz-cmp .bz-ctl{flex-wrap:wrap;justify-content:flex-start;gap:12px 10px}
 .bz-cmp .bz-pv{order:1}.bz-cmp .bz-ap{order:2}.bz-cmp .bz-nx{order:3}.bz-cmp .bz-pb{order:4}.bz-cmp .bz-nav{order:5;flex:1 0 100%}
 .bz-cmp .bz-pv,.bz-cmp .bz-nx,.bz-cmp .bz-ap{width:48px;height:48px;font-size:18px}
@@ -480,7 +501,8 @@
 .bz-cfgl{align-self:flex-start;color:var(--ac,#BF9148);text-decoration:none;font-weight:500;padding:10px 0;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center}
 .bz-cfgl[hidden]{display:none}
 @media(hover:hover){.bz-cfgl:hover{text-decoration:underline;text-underline-offset:4px}}
-@media(max-width:767px){.bz-cmp .bz-ctl{justify-content:center}.bz-cmp .bz-cfgl{align-self:center}}
+.bz-foot{display:flex;flex-direction:column;align-items:flex-start}.bz-est{margin:0;font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84)}
+@media(max-width:767px){.bz-cmp .bz-ctl{justify-content:center}.bz-cmp .bz-cfgl{align-self:center}.bz-foot{align-items:center;text-align:center}}
 /* телефон, компактна сцена головних: компактний ряд номерів етапів (підказка casGest згадує «номер етапу») — 2 ряди по 10, без горизонтальної прокрутки з 320 px;
    кнопка ≥26×34 px (WCAG 2.5.8 — ≥24 px), проміжок рядів 10 px — розширені ::before-зони сусідніх рядів не перекриваються */
 @media(max-width:767px){.bz-cmp .bz-nav{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:10px 6px;margin-top:2px}

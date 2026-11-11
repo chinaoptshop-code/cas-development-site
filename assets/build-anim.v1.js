@@ -17,6 +17,7 @@
   var VER = {"ar.flat":"dd4e8c42","ar.house":"6da9929c","de.flat":"bef66e8c","de.house":"407e45b3","en.flat":"1d82d6d8","en.house":"32f566db","es.flat":"a055bd91","es.house":"de85aea4","fr.flat":"ccd5f01d","fr.house":"fe3284fe","pl.flat":"095e7c40","pl.house":"ac12d36a","ru.flat":"7e279bbf","ru.house":"c3917aff","uk.flat":"9a5703ba","uk.house":"72d1609b","zh.flat":"fab61a6a","zh.house":"1a03b7f4"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
+  var LOW = W.matchMedia && W.matchMedia('(min-width:768px) and (max-height:640px)'); // низький екран ПК-ширини (телефон у ландшафті): налаштування — за кнопкою ⚙, як на телефоні
   // головні (.hx-home): компактна сцена в межах екрана — без довгої sticky-доріжки; етапи крокує автопрогравання (casAuto) і кнопки ←/→ (Михайло 05.11.2026)
   var CMP = !!d.querySelector('.hx-home');
   // «Налаштувати свій будинок →» під компактною сценою головної — повна сцена з конфігуратором на сторінці будівництва (tools/site/lang/clusters.json: construction)
@@ -24,6 +25,12 @@
     en: ['/en/house-construction', 'Configure your house →'], es: ['/es/construccion-de-casas', 'Configura tu casa →'], zh: ['/zh/house-construction', '定制您的房子 →'],
     pl: ['/pl/budowa-domow', 'Skonfiguruj swój dom →'], de: ['/de/hausbau', 'Eigenes Haus konfigurieren →'], fr: ['/fr/construction-maison', 'Configurer votre maison →'],
     ar: ['/ar/house-construction', 'صمّم منزلك ←'] };
+  // ціна «від» у панелі компактної «Квартири» (CLAUDE.md: ремонт від $550/м² = роботи + чорнові матеріали); будинок — ui.cfg.price з даних сцени
+  var EST_F = { uk: 'Ремонт — від $550/м² (роботи й чорнові матеріали)', ru: 'Ремонт — от $550/м² (работы и черновые материалы)',
+    en: 'Renovation from $550/m² (labour and rough materials)', es: 'Reforma desde $550/m² (mano de obra y materiales de obra gris)', zh: '装修每平方米 $550 起（人工和基础材料）',
+    pl: 'Remont od $550/m² (robocizna i materiały budowlane)', de: 'Sanierung ab $550/m² (Arbeit und Rohbaumaterial)', fr: 'Rénovation dès $550/m² (main-d’œuvre et matériaux de gros œuvre)',
+    ar: 'التجديد من ‎$550/م² (الأعمال والمواد الأساسية)' };
+  function rtl() { return d.documentElement.dir === 'rtl'; }
   var lang = (d.documentElement.lang || 'uk').slice(0, 2); if (!VER[lang + '.house']) lang = 'uk';
   var MATS = ['block', 'brick', 'frame', 'brus'];
   function cl(ev, v) { try { if (W.clarity) W.clarity('event', ev); if (v && W.clarity) W.clarity('set', ev, v); } catch (e) { } } // аналітика: кінець, CTA, матеріал, пиріг
@@ -1325,7 +1332,7 @@
     });
     cfg.addEventListener('keydown', function (e) { if (e.key === 'Escape' && cfgOpen) setCfgOpen(false); });
     function placeCfg() { // десктоп: панель над сценою, сцена — нижче (padding у межах fig, висота блоку та сама); телефон — панель за кнопкою поверх сцени
-      var mob = !!(MOB && MOB.matches), on = scene === 'house' && !!ui.cfg && !mob;
+      var mob = !!(MOB && MOB.matches) || !!(LOW && LOW.matches), on = scene === 'house' && !!ui.cfg && !mob;
       cfg.style.top = on && cpt ? (mats.offsetHeight + 8) + 'px' : '';
       fig.style.paddingTop = on ? (cfg.offsetTop + cfg.offsetHeight + 4) + 'px' : '';
       if (!mob && cfgOpen) setCfgOpen(false);
@@ -1598,6 +1605,7 @@
     }
     W.addEventListener('resize', function () { measure(); placeCfg(); }, { passive: true });
     if (MQ) { if (MQ.addEventListener) MQ.addEventListener('change', mode); else if (MQ.addListener) MQ.addListener(mode); }
+    if (LOW) { if (LOW.addEventListener) LOW.addEventListener('change', placeCfg); else if (LOW.addListener) LOW.addListener(placeCfg); }
     if (MOB) { if (MOB.addEventListener) { MOB.addEventListener('change', placePie); MOB.addEventListener('change', placeCfg); } else if (MOB.addListener) { MOB.addListener(placePie); MOB.addListener(placeCfg); } }
     if (CMP && W.casAuto) W.casAuto({ root: run, view: fig, host: ctl, before: next, cls: 'bz-ap', // компактна: крок — go() без прокрутки сторінки
       step: function () { var a = Math.floor(man); if (a >= n - 1) return false; go(a + 1); return true; }, restart: function () { go(0); }, atEnd: function () { return Math.floor(man) >= n - 1; } });
@@ -1605,9 +1613,24 @@
     // чверті кадру, свайп, ←/→; компактна — ще й підказка один раз. Повна sticky: крок — go(), тобто плавна прокрутка до етапу (casDrive веде далі)
     if (W.casGest) W.casGest({ root: run, view: fig, zone: function () { return fig.querySelector('svg:not(.bz-out)'); }, go: go,
       cur: function () { return CMP ? Math.floor(man) : Math.max(0, act); }, n: function () { return n; }, hint: CMP ? side : null, before: ctl });
-    if (CMP && CFGL[lang]) {
-      var cfgl = el('a', 'bz-cfgl'); cfgl.href = CFGL[lang][0] + '#build-anim'; cfgl.textContent = CFGL[lang][1];
-      side.insertBefore(cfgl, goA); cfgl.hidden = scene !== 'house'; sec.__cfgl = cfgl;
+    // низ панелі компактної сцени — як у решти вкладок (casSide: .la-foot): ціна «від» + одне посилання-заклик (аудит 11.11.2026: у «Квартири» не було ні ціни, ні заклику в панелі,
+    // а під сценою стояв окремий блок .bz-cta — тепер він схований на головних, контекст сцени у форму переносить той самий .lq-go)
+    // кадр компактної сцени фокусується кліком/Tab — ←/→ крокують, як у решти вкладок (у тих фокус бере сам SVG; аудит 11.11.2026)
+    if (CMP) { fig.tabIndex = 0; fig.setAttribute('role', 'group'); fig.setAttribute('aria-label', ui.nav || ''); }
+    if (CMP) {
+      var foot = el('div', 'bz-foot'), est = el('p', 'bz-est'), cfgl = el('a', 'bz-cfgl');
+      est.textContent = scene === 'house' ? (ui.cfg && ui.cfg.price) || '' : EST_F[lang] || '';
+      if (scene === 'house' && CFGL[lang]) { cfgl.href = CFGL[lang][0] + '#build-anim'; cfgl.textContent = CFGL[lang][1]; }
+      else {
+        cfgl.href = d.getElementById('zayavka') ? '#zayavka' : '#' + cta.id; cfgl.textContent = ((data.cta && data.cta[scene]) || (ch3 ? ch3.textContent : '')) + (rtl() ? ' ←' : ' →');
+        cfgl.addEventListener('click', function (e) { // контекст сцени (послуга, «Порахувати мою квартиру») — через кнопку .lq-go схованого блоку
+          var s = cta.querySelector('.lq-slot'); if (s && !s.querySelector('.lq-go') && W.casLqSlots) try { W.casLqSlots(cta); } catch (er) { }
+          var g = s && s.querySelector('.lq-go'); if (g) { e.preventDefault(); g.click(); }
+          cl('build_anim_cta');
+        });
+      }
+      if (est.textContent) foot.appendChild(est);
+      foot.appendChild(cfgl); side.insertBefore(foot, goA);
     }
     // мікровзаємодії (лише миша, без prefers-reduced-motion): легкий нахил сцени за курсором і «магнітна» кнопка CTA
     if (W.matchMedia && W.matchMedia('(hover: hover) and (pointer: fine)').matches) {
