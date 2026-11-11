@@ -108,7 +108,8 @@ _NB_THOUS = re.compile(r'(?<![\d.,])(\d{1,3})((?: \d{3})+)(?!\d)')
 _NB_PREP = re.compile(r'(?<!\w)(від|до|от|около|близько|od|do|from|to|ab|bis|desde|hasta|dès|minimum|min\.|мін\.|≈|~|=|×) (?=[$€₴]|\d)', re.I)
 _NB_TIMES = re.compile(r'(\d|m²|м²) ([×=]) ')
 _NB_UNIT = re.compile(r'(\d) (₴|грн|zł|PLN|USD|EUR|€|m²|м²|m2|м2|%|dni|dnia|днів|дні|дня|тижні|тижнів|тижня|тиждень|місяців|міс\.|days|weeks|months|días|semanas|meses|jours|semaines|mois|Tage|Wochen|Monate|tygodnie|tygodni|miesięcy|сотку|сотки|соток|шт|szt\.|pcs|cm|см|мм|mm|кг|kg|м|m)(?!\w)')
-_NB_RANGE = re.compile(r'(?<![\w–-])(\$?\d+(?:\u00a0\d{3})*[–-]\$?\d+(?:\u00a0\d{3})*)(?![\w–-])')
+# час «10:00–20:00» — цілий діапазон (раніше ловилось «00–20» посеред часу, і рядок рвався на «10:» / «00–20» / «:00»)
+_NB_RANGE = re.compile(r'(?<![\w–-])(?<!\d:)(\$?\d+(?::\d\d)?(?:\u00a0\d{3})*[–-]\$?\d+(?::\d\d)?(?:\u00a0\d{3})*)(?![\w–-]|:\d)')
 # однолітерні прийменники й сполучники (uk/ru) не лишаються в кінці рядка: «з Китаю», «і бар»
 _NB_ONE = re.compile(r'(?<![\w\u00a0-])([зйіувоаксиЗЙІУВОАКСИ]) (?=\S)')
 _NB_ONE_PL = re.compile(r'(?<![\w\u00a0-])([wzioauWZIOAU]) (?=\S)')  # pl: «w Kijowie», «z UE»

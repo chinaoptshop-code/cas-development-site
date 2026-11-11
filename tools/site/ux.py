@@ -726,6 +726,29 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
 TAG_RX = re.compile(r'<!--.*?-->|<(script|style)\b[^>]*>.*?</\1>|<(/?)([a-zA-Z][\w-]*)\b[^>]*?(/?)>', re.S)
 
 
+def _row_spans(n, cols):
+    """Ширина (з 12 колонок) кожної з n плиток серії, коли в ряд їх cols. Неповний останній ряд ділить ряд порівну;
+    одна зайва плитка (r = 1) при 3+ у ряд не тягнеться смугою на всю ширину (портретне фото 990×240) — два останні ряди
+    рівні: 4 = 2 + 2, 5 = 2 + 3, 7 = 3 + 4 (11.11.2026). На телефоні (2 у ряд) непарна — на весь ряд, як і було."""
+    spans = [12 // cols] * n
+    full = n // cols * cols
+    r = n - full
+    if n <= 1 or not r:
+        return spans
+    if r == 1 and cols > 2 and n > cols:
+        a = (cols + 1) // 2
+        b = cols + 1 - a
+        st = n - cols - 1
+        for j in range(a):
+            spans[st + j] = 12 // a
+        for j in range(b):
+            spans[st + a + j] = 12 // b
+    elif 12 % r == 0:
+        for j in range(full, n):
+            spans[j] = 12 // r
+    return spans
+
+
 def _spans(m, lang='', rel=''):
     k = m.find('>', m.find('<main')) + 1
     kids, depth = [], 0  # (позиція кінця відкривного тегу, тег, чи плитка)
@@ -779,12 +802,9 @@ def _spans(m, lang='', rel=''):
         for i, (pos, otag) in enumerate(run):
             props, sp = [], {}
             for cols in (2, 3, 4, 6):
-                full = n // cols * cols
-                r = n - full
-                sp[cols] = 12 // cols
-                if n > 1 and i >= full and r and 12 % r == 0 and 12 // r != 12 // cols:
-                    props.append(f'--s{cols}:{12 // r}')
-                    sp[cols] = 12 // r
+                sp[cols] = _row_spans(n, cols)[i]
+                if sp[cols] != 12 // cols:
+                    props.append(f'--s{cols}:{sp[cols]}')
             if props and 'style=' not in otag:
                 edits.append((pos + len(otag) - 1, ' style="' + ';'.join(props) + '"'))
             if n > 1 and lang:  # фото-плитка: фото проєкту CAS на весь кадр (TP)

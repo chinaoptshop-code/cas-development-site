@@ -850,3 +850,15 @@ html body main>.pmap{grid-column:1/-1;width:100%;box-sizing:border-box}
 @media(max-width:899px){.pmap .cmap-list{max-height:22rem;overflow:auto}}
 /* банер-плитка: aspect-ratio + max-height звужували блок (перенесений max-width) — тягнемо на всю ширину ряду (Михайло 08.11.2026) */
 .js [data-c=x]:not(.c-o):has(>.ux-wb){width:100%;box-sizing:border-box}
+/* футер, соцмережі (11.11.2026): 7 кнопок 46 px + проміжки не влазили в 328 px (360) — горизонтальна прокрутка 26 px на всіх сторінках;
+   на вузьких телефонах кнопки 44 px, проміжок ділить залишок ряду (один ряд, як і раніше) */
+@media(max-width:419px){.scf-soc{gap:clamp(0px,calc((100% - 7 * 2.75rem) / 6),.5rem)}.scf-soc a{width:2.75rem;height:2.75rem}}
+/* футер на планшетах і ноутбуках (11.11.2026): ряд соцмереж ~23.1rem не влазив у третю колонку (768–1240 px) — вилазив за край,
+   а колонка «Контакти» стискалась до слова в рядку. 760–1099: бренд і контакти поруч, месенджери — окремим рядом; з 1100 — третя колонка не вужча за ряд */
+@media(min-width:760px) and (max-width:1099px){.scf-top{grid-template-columns:1.3fr 1fr}.scf-top>.scf-col:last-child{grid-column:1/-1}}
+@media(min-width:1100px){.scf-top{grid-template-columns:1.3fr 1fr minmax(23.25rem,1.2fr)}}
+/* hero лендингів на планшетах (11.11.2026): H1 займає майже всю ширину, а бічний градієнт праворуч (RTL — ліворуч) майже прозорий —
+   світлі місця фото (лампи, вікна) під кінцем заголовка давали контраст < 3; на 768–1023 px дальній край темніший */
+@media(min-width:768px) and (max-width:1023px){
+  .hxl::before{background:linear-gradient(90deg,rgba(8,7,9,.88) 0,rgba(8,7,9,.66) 50%,rgba(8,7,9,.42) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}
+  [dir=rtl] .hxl::before{background:linear-gradient(270deg,rgba(8,7,9,.88) 0,rgba(8,7,9,.66) 50%,rgba(8,7,9,.42) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}}

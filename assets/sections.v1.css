@@ -96,7 +96,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-msg a:hover{border-color:var(--ac)}
 /* контакти */
 .xs-ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1px;background:var(--ln);border:1px solid var(--ln)}
-.xs-ct>div{background:var(--bg);padding:18px;min-width:0}.xs-ct span{display:block;font-size:var(--fs-small);color:var(--mu);margin-bottom:4px}
+.xs-ct>div{background:var(--bg);padding:18px;min-width:0}.xs-ct>div>span{display:block;font-size:var(--fs-small);color:var(--mu);margin-bottom:4px}
 .xs-ct b{display:block;font-weight:600;overflow-wrap:anywhere}.xs-ct b a{text-decoration:none;border-bottom:1px solid var(--ln)}
 .xs-ct small{display:block;color:var(--mu);font-size:var(--fs-small);margin-top:4px}
 .xs-msg-h{margin:24px 0 0!important}.xs-contacts .xs-lead{color:var(--mu);max-width:46em;margin:0 0 22px}
@@ -175,3 +175,16 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-crew-c li{display:inline-flex;align-items:center;min-height:44px;padding:0 1.1rem;border:1px solid var(--ln);border-radius:999px;background:var(--bg2)}
 .xs-crew-c b{font-weight:500;color:var(--tx)}
 .xs-crew-c span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* /portfolio (усі мови, 11.11.2026): назва проєкту — посилання в H2, а правило «.xs-head a» (дрібний шрифт «Відкрити →») робило її 13 px;
+   назва — розміру заголовка (помірного: проєктів на сторінці багато), колір тексту, акцент при наведенні */
+.xs-head h2 a{font-size:inherit;letter-spacing:inherit;color:inherit}.xs-head h2 a:hover{color:var(--ac);text-decoration:none}
+.xs-proj .xs-head h2{font-size:clamp(1.5rem,1.15rem + 1.2vw,2.25rem)}
+/* «Послуги» (усі мови, 11.11.2026): flex-basis 13rem давав 4 + 1 на 1024–1366 (п'ята картка — смуга на всю ширину з фото 990×192)
+   і 5 + 1 на 1920 (6 карток). Тепер ряди рівні: 5 карток — 3 + 2, з 1367 px — 5 в ряд; 6 карток — 3 + 3. Телефон (≤599) — як було.
+   Модель ширин — w_svc у tools/site/sharp.py. Головні (карусель) не зачіпає. */
+@media(min-width:600px){
+  .xs-svc:not(.hx-home~.xs-svc) .xs-sv>.xs-c{flex:1 1 calc((100% - 32px) / 3)}
+}
+@media(min-width:1367px){
+  .xs-svc:not(.hx-home~.xs-svc) .xs-sv>.xs-c:first-child:nth-last-child(5),.xs-svc:not(.hx-home~.xs-svc) .xs-sv>.xs-c:first-child:nth-last-child(5)~.xs-c{flex-basis:calc((100% - 64px) / 5)}
+}
