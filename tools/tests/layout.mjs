@@ -21,7 +21,7 @@ const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? proces
 const FULL = process.argv.includes('--full');
 const OUT = arg('--out', null);
 if (OUT) mkdirSync(OUT, { recursive: true });
-const DPR = { 360: 3, 402: 3, 768: 2, 1024: 2, 1440: 1, 1920: 2, 2560: 1 };
+const DPR = { 344: 3, 360: 3, 390: 3, 402: 3, 430: 3, 768: 2, 1024: 2, 1440: 1, 1920: 2, 2560: 1 };
 const WIDTHS = (arg('--widths', FULL ? '360,402,768,1024,1440,1920,2560' : '402,1440')).split(',').map(Number);
 
 // ===== набори сторінок =====

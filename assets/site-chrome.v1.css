@@ -117,13 +117,13 @@ html.sch-lock .mbar{display:none!important}
 .scf{position:static;display:block;margin:0;padding:48px 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--c-ln);background:var(--c-bg);
   color:var(--c-mu);font-size:var(--fs-body,1rem);line-height:1.6}
 .scf-in{max-width:1280px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
-.scf-top{display:grid;grid-template-columns:1fr;gap:28px}
+.scf-top{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
 .scf-brand p{max-width:21.7em;margin:14px 0 0;font-size:.875rem;color:var(--c-mu)}
 .scf-col b{display:block;margin:0 0 10px;font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c-ac)}
 .scf address{font-style:normal;color:var(--c-tx)}
 .scf-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.125rem;font-weight:600;color:var(--c-tx);text-decoration:none}
 /* месенджери й соцмережі — один ряд однакових кнопок-іконок (Михайло 08.11.2026), назва — aria-label/title */
-.scf-soc{display:flex;flex-wrap:nowrap;gap:.5rem}.scf-soc a{display:inline-flex;flex:none;align-items:center;justify-content:center;width:2.875rem;height:2.875rem;border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}.scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}.scf-soc .bi::before{width:1.375rem;height:1.375rem}
+.scf-soc{display:flex;flex-wrap:nowrap;gap:clamp(2px,calc((100% - 7 * 2.875rem) / 6),.5rem)}.scf-soc a{display:inline-flex;flex:0 1 auto;min-width:0;align-items:center;justify-content:center;width:2.875rem;height:2.875rem;border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}.scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}.scf-soc .bi::before{width:1.375rem;height:1.375rem}
 .scf .scf-svc{position:static;margin:32px 0 0;padding:16px 0 0;border:0;border-top:1px solid var(--c-ln)}
 .scf .scf-svc summary{display:flex;align-items:center;justify-content:center;min-height:44px;list-style:none;cursor:pointer;
   font-size:.75rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--c-ac);float:none}
@@ -142,6 +142,10 @@ html.sch-lock .mbar{display:none!important}
   .scf-top{grid-template-columns:1.3fr 1fr 1.2fr;gap:40px}
   .scf-svc-g{grid-template-columns:repeat(4,1fr)}
   .scf-in{padding:0 max(28px,env(safe-area-inset-right,0px)) 0 max(28px,env(safe-area-inset-left,0px))}
+}
+/* планшет 760–1099: три колонки не вміщують ряд із 7 іконок (≈370 px) — бренд ліворуч, контакти й месенджери стовпчиком праворуч (без горизонтальної прокрутки) */
+@media(min-width:760px) and (max-width:1099px){
+  .scf-top{grid-template-columns:minmax(0,1fr) auto;gap:28px 40px}.scf-brand{grid-row:span 2}
 }
 /* зони дотику ≥44px на мобільному */
 .crumbs a{display:inline-flex;align-items:center;min-height:32px;padding:0 4px}
@@ -850,3 +854,15 @@ html body main>.pmap{grid-column:1/-1;width:100%;box-sizing:border-box}
 @media(max-width:899px){.pmap .cmap-list{max-height:22rem;overflow:auto}}
 /* банер-плитка: aspect-ratio + max-height звужували блок (перенесений max-width) — тягнемо на всю ширину ряду (Михайло 08.11.2026) */
 .js [data-c=x]:not(.c-o):has(>.ux-wb){width:100%;box-sizing:border-box}
+/* футер, соцмережі (11.11.2026): 7 кнопок 46 px + проміжки не влазили в 328 px (360) — горизонтальна прокрутка 26 px на всіх сторінках;
+   на вузьких телефонах кнопки 44 px, проміжок ділить залишок ряду (один ряд, як і раніше) */
+@media(max-width:419px){.scf-soc{gap:clamp(0px,calc((100% - 7 * 2.75rem) / 6),.5rem)}.scf-soc a{width:2.75rem;height:2.75rem}}
+/* футер на планшетах і ноутбуках (11.11.2026): ряд соцмереж ~23.1rem не влазив у третю колонку (768–1240 px) — вилазив за край,
+   а колонка «Контакти» стискалась до слова в рядку. 760–1099: бренд і контакти поруч, месенджери — окремим рядом; з 1100 — третя колонка не вужча за ряд */
+@media(min-width:760px) and (max-width:1099px){.scf-top{grid-template-columns:1.3fr 1fr}.scf-top>.scf-col:last-child{grid-column:1/-1}}
+@media(min-width:1100px){.scf-top{grid-template-columns:1.3fr 1fr minmax(23.25rem,1.2fr)}}
+/* hero лендингів на планшетах (11.11.2026): H1 займає майже всю ширину, а бічний градієнт праворуч (RTL — ліворуч) майже прозорий —
+   світлі місця фото (лампи, вікна) під кінцем заголовка давали контраст < 3; на 768–1023 px дальній край темніший */
+@media(min-width:768px) and (max-width:1023px){
+  .hxl::before{background:linear-gradient(90deg,rgba(8,7,9,.88) 0,rgba(8,7,9,.66) 50%,rgba(8,7,9,.42) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}
+  [dir=rtl] .hxl::before{background:linear-gradient(270deg,rgba(8,7,9,.88) 0,rgba(8,7,9,.66) 50%,rgba(8,7,9,.42) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}}
