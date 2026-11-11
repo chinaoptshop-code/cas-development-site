@@ -122,7 +122,7 @@ body{padding-top:var(--sch-h)}
 .scf-col b{display:block;margin:0 0 10px;font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c-ac)}
 .scf address{font-style:normal;color:var(--c-tx)}
 .scf-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.125rem;font-weight:600;color:var(--c-tx);text-decoration:none}
-.scf-soc{display:flex;flex-wrap:nowrap;gap:.5rem}
+.scf-soc{display:flex;flex-wrap:wrap;gap:.5rem}
 .scf-soc a{display:inline-flex;flex:none;align-items:center;justify-content:center;width:2.875rem;height:2.875rem;border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}
 .scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}
 .scf-soc .bi::before{width:1.375rem;height:1.375rem}
@@ -456,7 +456,8 @@ html body .scf-svc-g{max-width:calc(var(--cw) - 4rem)}
 .sch-cta,.sch-tel,.sch-lang a,.sch-lang span{min-height:2.5rem}
 .sch-cta{padding:0 1.15rem}
 html body form{max-width:34rem}
-html body article{max-width:48rem}
+html body article:not(.pp){max-width:48rem}
+html body article.pp{grid-template-columns:minmax(0,36rem) minmax(0,1fr);column-gap:clamp(28px,3rem,72px)}
 .lq-r input,html body input,html body select,html body textarea{font-size:max(16px,1rem)}
 html body .btn{padding:.8rem 1.4rem}
 html body .hx .hero{min-height:min(76vh,46rem)}

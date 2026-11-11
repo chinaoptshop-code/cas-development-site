@@ -122,8 +122,8 @@ html.sch-lock .mbar{display:none!important}
 .scf-col b{display:block;margin:0 0 10px;font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c-ac)}
 .scf address{font-style:normal;color:var(--c-tx)}
 .scf-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.125rem;font-weight:600;color:var(--c-tx);text-decoration:none}
-/* месенджери й соцмережі — один ряд однакових кнопок-іконок (Михайло 08.11.2026), назва — aria-label/title */
-.scf-soc{display:flex;flex-wrap:nowrap;gap:.5rem}.scf-soc a{display:inline-flex;flex:none;align-items:center;justify-content:center;width:2.875rem;height:2.875rem;border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}.scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}.scf-soc .bi::before{width:1.375rem;height:1.375rem}
+/* месенджери й соцмережі — один ряд однакових кнопок-іконок (Михайло 08.11.2026), назва — aria-label/title; 7 кнопок × 46 px не влазять у 344–400 px — там переносяться на другий ряд, а не дають горизонтальну прокрутку */
+.scf-soc{display:flex;flex-wrap:wrap;gap:.5rem}.scf-soc a{display:inline-flex;flex:none;align-items:center;justify-content:center;width:2.875rem;height:2.875rem;border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}.scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}.scf-soc .bi::before{width:1.375rem;height:1.375rem}
 .scf .scf-svc{position:static;margin:32px 0 0;padding:16px 0 0;border:0;border-top:1px solid var(--c-ln)}
 .scf .scf-svc summary{display:flex;align-items:center;justify-content:center;min-height:44px;list-style:none;cursor:pointer;
   font-size:.75rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--c-ac);float:none}
@@ -709,7 +709,9 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
   html body form{max-width:34rem}
   html body .lq{max-width:36rem}html body .lq-slot .lq{max-width:40rem}
   html body .qz,html body .gd{max-width:48rem}
-  html body article{max-width:48rem}
+  html body article:not(.pp){max-width:48rem}
+  /* картка товару Оздоби: фото — до 36rem (файли до 1200 px), опис — решта ширини контейнера */
+  html body article.pp{grid-template-columns:minmax(0,36rem) minmax(0,1fr);column-gap:clamp(28px,3rem,72px)}
   .lq-r input,html body input,html body select,html body textarea{font-size:max(16px,1rem)}
   .lq-r input,.lq-b{min-height:3rem}
   .lq-b{padding:.75rem 1.4rem}
@@ -728,6 +730,8 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
   html body .vgrid{grid-template-columns:repeat(auto-fill,minmax(17rem,1fr))}
   /* Оздоба (tools/products/build.py): каталог на ширину контейнера */
   html body :is(.ozd-sec,.vhead,.venues,.tabs,.chips,.sortrow),html body #grid.grid{max-width:var(--cw)}
+  /* сторінки категорій Оздоби: сітка товарів — пряма дитина main; ширина й відступи як у .w, щоб стояла під заголовком */
+  html body main>.grid{max-width:var(--cw);padding-inline:clamp(16px,1.5rem,40px)}
 }
 @media(min-width:1024px) and (max-width:1366px){html body .xs-st{grid-auto-columns:calc((100% - 3 * 10px) / 4)}}
 @media(min-width:2200px){html body .xs-st{grid-auto-columns:calc((100% - 5 * 14px) / 6);gap:14px}}

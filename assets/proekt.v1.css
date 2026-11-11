@@ -90,3 +90,6 @@ body{--ui-field:#745E3F}body{--ui-ring:var(--ac,var(--brass,var(--gold,#BF9148))
 
 /* «Про проєкт» (tools/site/casetext.py): Задача → Рішення → Результат */
 .w.txt>p{color:var(--mu);max-width:70ch;margin:0 0 14px}.w.txt>h3{font-size:var(--fs-h3);margin:22px 0 10px}.w.txt>h2+h3{margin-top:0}.w.txt>p:last-child{margin:18px 0 0}.w.txt>ul{color:var(--mu);margin:0;padding-left:18px}.w.txt a{color:var(--ac)}
+
+/* головне фото кейсу (портретне 4:5) на ПК було ~1125 px заввишки — весь перший екран; тепер не вище за ~80% екрана, пропорція та сама (ширина зменшується) */
+main .w.hero>img[fetchpriority]{width:auto!important;max-width:100%!important;max-height:min(80vh,56rem);max-height:min(80svh,56rem)}

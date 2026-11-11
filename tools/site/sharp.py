@@ -193,6 +193,7 @@ def _slot(anc):
         if 'xs-pic' in c: return 'split', k
         if 'pg' in c: return 'pg', k
         if 'hx-bg' in c or 'hx' in c or 'hxl' in c: return ('hxl' if any('hxl' in x for x in anc[k:]) else 'hero'), k
+        if k == 0 and {'w', 'hero'} <= c: return 'hero', k  # головне фото /proekty (img — пряма дитина .w.hero): ширші копії для ПК/телефона 3x
     return None, None
 
 
@@ -250,7 +251,16 @@ def fix(tag, slot, home, i=0, n=1):
         return _attr(_attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in cand)), 'sizes', f'(max-width:424px) {_fmt(66 * f)}vw, {math.ceil(280 * f)}px')
     elif slot == 'pg':  # /proekty: галерея 4:3, компактно
         f = max(1.0, ar / (4 / 3))
-        cand = [(w, p) for w, p in fam if w in (400, 900)] or fam[-2:]
+        # компактно: мала копія (~400) + найменша, що покриває ПК (360 px × обрізка × DPR 2); «900» без апскейлу буває 789 px —
+        # тож беремо за фактичною шириною, а не за назвою (інакше в srcset лишалася сама 400 і фото на ПК було розмите)
+        big = [x for x in fam if x[0] >= 380]
+        if big:
+            needw = math.ceil(360 * f * 2)
+            hi = next((x for x in big if x[0] >= needw), big[-1])
+            mid = [x for x in big if x[0] == 900 and big[0][0] < 900 < hi[0]]
+            cand = sorted({big[0], *mid, hi})
+        else:
+            cand = fam[-2:]
         return _attr(_attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in cand)), 'sizes',
                      f'(max-width:599px) {_fmt(47 * f)}vw, (max-width:767px) {_fmt(96 * f)}vw, {math.ceil(360 * f)}px')
     else:

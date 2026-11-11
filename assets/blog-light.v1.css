@@ -9,6 +9,8 @@
 .btoc a{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--ln,rgba(191,145,72,.22));padding:12px 14px;text-decoration:none;min-height:44px;line-height:1.35;font-size:var(--fs-small)}
 .btoc a:hover,.btoc a:focus-visible{border-color:var(--ac,#BF9148)}
 .btoc b{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:1.25em;color:var(--ac,#BF9148);line-height:1}
+/* телефон: зміст-плитки у 2 колонки (11 плиток в одну колонку займали ~1,5 екрана до першого розділу) */
+@media (max-width:599px){.btoc{grid-template-columns:1fr 1fr;gap:6px}.btoc a{padding:10px 10px;gap:8px;overflow-wrap:anywhere;hyphens:auto}}
 .bsec{scroll-margin-top:84px}
 /* згорнутий розділ: лише перший абзац, обрізаний до 3 рядків; решта (абзаци, списки, фото, пиріг) — по «Читати далі» */
 .js .bsc[data-c=t]:not(.c-o)>p:first-of-type{display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
