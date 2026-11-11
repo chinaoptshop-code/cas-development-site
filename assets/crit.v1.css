@@ -458,7 +458,8 @@ html body .scf-svc-g{max-width:calc(var(--cw) - 4rem)}
 .sch-cta,.sch-tel,.sch-lang a,.sch-lang span{min-height:2.5rem}
 .sch-cta{padding:0 1.15rem}
 html body form{max-width:34rem}
-html body article{max-width:48rem}
+html body article:not(.pp){max-width:48rem}
+html body article.pp{grid-template-columns:minmax(0,36rem) minmax(0,1fr);column-gap:clamp(28px,3rem,72px)}
 .lq-r input,html body input,html body select,html body textarea{font-size:max(16px,1rem)}
 html body .btn{padding:.8rem 1.4rem}
 html body .hx .hero{min-height:min(76vh,46rem)}

@@ -33,12 +33,24 @@ CSS = ('<style id="case">.gal a{display:block;color:inherit;text-decoration:none
        '.hero .cover{display:block;width:100%;height:auto;margin:22px 0 0;border:1px solid var(--ln)}'
        '.lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:flex;visibility:hidden;opacity:0;pointer-events:none;align-items:center;justify-content:center;z-index:10000;transition:opacity .25s ease,visibility 0s linear .25s}'
        '#lb.on{visibility:visible;opacity:1;pointer-events:auto;transition:opacity .25s ease}.lb img{max-width:96vw;max-height:90vh;background:#fff}'
-       '.lb button{position:absolute;top:12px;right:12px;min-width:44px;min-height:44px;background:none;border:1px solid var(--ln);color:#EDE8DF;font-size:20px;border-radius:50%;cursor:pointer}</style>\n')
-JS = ("<script>function lb(l){var b=document.getElementById('lb'),i=document.getElementById('lbi'),m=l.querySelector('img');i.src=l.href;i.alt=m?m.alt:'';"
-      "b.classList.add('on');b.querySelector('button').focus();lb.o=l;return false}function lbx(){var b=document.getElementById('lb');b.classList.remove('on');"
-      "if(lb.o)lb.o.focus()}document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.getElementById('lb').classList.contains('on'))lbx()});"
+       '.lb button{position:absolute;top:12px;right:12px;min-width:44px;min-height:44px;background:none;border:1px solid var(--ln);color:#EDE8DF;font-size:20px;border-radius:50%;cursor:pointer}'
+       # ‹ › і лічильник — гортання всіх фото сторінки (як у галереях /proekty), RTL не потрібен (uk/ru/en)
+       '.lb .lb-p,.lb .lb-n{top:50%;right:auto;left:12px;translate:0 -50%;width:48px;height:48px;background:rgba(8,7,9,.6);font-size:28px;line-height:1}.lb .lb-n{left:auto;right:12px}'
+       '.lb-c{position:absolute;bottom:14px;left:50%;translate:-50% 0;padding:3px 10px;border-radius:999px;background:rgba(8,7,9,.72);color:#EDE8DF;font-size:var(--fs-small)}'
+       '@media(max-width:599px){.lb .lb-p,.lb .lb-n{top:auto;bottom:6px;translate:none}}</style>\n')
+JS = ("<script>function lbL(){return[].slice.call(document.querySelectorAll('.gal a[href^=\"/img/\"]'))}"
+      "function lbs(l){var i=document.getElementById('lbi'),m=l.querySelector('img'),L=lbL(),c=document.getElementById('lbc');i.src=l.href;i.alt=m?m.alt:'';lb.o=l;"
+      "if(c)c.textContent=(L.indexOf(l)+1)+' / '+L.length}"
+      "function lb(l){var b=document.getElementById('lb');lbs(l);b.classList.add('on');b.querySelector('button').focus();return false}"
+      "function lbg(d){var L=lbL(),k=L.indexOf(lb.o);if(k<0||!L.length)return;lbs(L[(k+d+L.length)%L.length])}"
+      "function lbx(){var b=document.getElementById('lb');b.classList.remove('on');if(lb.o)lb.o.focus()}"
+      "document.addEventListener('keydown',function(e){if(!document.getElementById('lb').classList.contains('on'))return;"
+      "if(e.key==='Escape')lbx();else if(e.key==='ArrowLeft')lbg(-1);else if(e.key==='ArrowRight')lbg(1)});"
+      "(function(){var x=null,b=document.getElementById('lb');if(!b)return;b.addEventListener('touchstart',function(e){x=e.touches[0].clientX},{passive:true});"
+      "b.addEventListener('touchend',function(e){if(x===null)return;var d=e.changedTouches[0].clientX-x;x=null;if(Math.abs(d)>40)lbg(d<0?1:-1)},{passive:true})})();"
       "document.addEventListener('click',function(e){var l=e.target.closest&&e.target.closest('.gal a[href^=\"/img/\"]');"
       "if(l&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey){e.preventDefault();lb(l)}});</script>\n")
+NAV = {'uk': ('Попереднє фото', 'Наступне фото'), 'ru': ('Предыдущее фото', 'Следующее фото'), 'en': ('Previous photo', 'Next photo')}
 
 
 def big(i):
@@ -178,7 +190,9 @@ def build(c, lang):
     s = leadform.apply(s, path(c, lang))
     s = s.replace('</head>', CSS + '</head>', 1)
     lbox = (f'<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="{a(t["lb_label"])}" onclick="if(event.target===this)lbx()">'
-            f'<img id="lbi" alt=""><button type="button" onclick="lbx()" aria-label="{a(t["close"])}">✕</button></div>\n' + JS)
+            f'<img id="lbi" alt=""><button type="button" onclick="lbx()" aria-label="{a(t["close"])}">✕</button>'
+            f'<button type="button" class="lb-p" onclick="lbg(-1)" aria-label="{a(NAV[lang][0])}">‹</button>'
+            f'<button type="button" class="lb-n" onclick="lbg(1)" aria-label="{a(NAV[lang][1])}">›</button><span class="lb-c" id="lbc" aria-live="polite"></span></div>\n' + JS)
     s = s.replace('<!--/chrome:f-->', '<!--/chrome:f-->\n' + lbox, 1) if '<!--/chrome:f-->' in s else s.replace('</body>', lbox + '</body>', 1)
     return chrome.apply(s, path(c, lang))
 

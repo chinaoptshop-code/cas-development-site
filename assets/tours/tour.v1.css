@@ -52,40 +52,42 @@ body.vr .tnav,body.vr .tzoom,body.editing .tnav{display:none}
 .edit button:hover{border-color:var(--t-ac)}
 
 /* ── список турів /tury (під шапкою й футером сайту) ── */
-body.list{height:auto;background:var(--t-bg)}
-.tl{max-width:1240px;margin:0 auto;padding:110px 28px 40px}
-.tl-eye{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--t-ac);margin:0 0 18px}
+body.list{height:auto;background:var(--t-bg);font-size:1rem}
+.tl{max-width:var(--cw,1240px);margin:0 auto;padding:clamp(48px,6vw,96px) 28px 40px}
+.tl-eye{font-size:.6875rem;letter-spacing:.22em;text-transform:uppercase;color:var(--t-ac);margin:0 0 18px}
 .tl h1,.tl h2{font-family:var(--t-D);font-weight:300;color:var(--t-tx);line-height:1.08;margin:0}
-.tl h1{font-size:clamp(40px,6vw,76px)}
-.tl h2{font-size:clamp(30px,4vw,48px)}
+.tl h1{font-size:clamp(2.5rem,6vw,4.75rem)}
+.tl h2{font-size:clamp(1.875rem,4vw,3rem)}
 .tl em{font-style:italic;color:var(--t-ac)}
-.tl-lead{max-width:640px;color:var(--t-mu);font-size:16px;line-height:1.7;margin:22px 0 0}
+.tl-lead{max-width:40em;color:var(--t-mu);font-size:1rem;line-height:1.7;margin:22px 0 0}
 .tl-how{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(237,232,223,.08)}
 .tl-how li{padding:20px 22px 0 0;display:grid;gap:6px}
-.tl-how b{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--t-ac);font-weight:600}
-.tl-how span{color:var(--t-mu);font-size:14px}
-.tl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:4px;margin:64px 0 0}
+.tl-how b{font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:var(--t-ac);font-weight:600}
+.tl-how span{color:var(--t-mu);font-size:.875rem}
+.tl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(21.25rem,100%),1fr));gap:4px;margin:64px 0 0}
 .tl-card{position:relative;display:block;aspect-ratio:2/1;overflow:hidden;background:var(--t-sf);color:var(--t-tx);text-decoration:none}
 .tl-img{position:absolute;inset:0;background-image:var(--pano);background-size:200% 100%;background-repeat:repeat-x;background-position:0 50%}
 .tl-img img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .5s}
 .tl-card:hover .tl-img img{opacity:0}
 .tl-card:hover .tl-img{animation:tl-pan 14s linear infinite}
 @keyframes tl-pan{to{background-position:200% 50%}}
-.tl-card::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(8,7,9,.88));pointer-events:none}
-.tl-badge{position:absolute;top:14px;left:14px;z-index:2;font-size:10px;letter-spacing:.18em;padding:3px 9px;border:1px solid rgba(191,145,72,.6);color:var(--t-ac);background:rgba(8,7,9,.55)}
-.tl-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:18px 20px;display:grid;gap:4px}
-.tl-meta{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--t-ac)}
-.tl-name{font-family:var(--t-D);font-size:28px;font-weight:300;line-height:1.1}
-.tl-go{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--t-tx);opacity:0;transform:translateY(6px);transition:all .3s}
+.tl-card::after{content:'';position:absolute;inset:0;background:linear-gradient(rgba(8,7,9,.35),transparent 22%,transparent 30%,rgba(8,7,9,.72) 58%,rgba(8,7,9,.94));pointer-events:none}
+.tl-badge{position:absolute;top:14px;left:14px;z-index:2;font-size:.625rem;letter-spacing:.18em;padding:3px 9px;border:1px solid rgba(191,145,72,.6);color:var(--t-ac);background:rgba(8,7,9,.82)}
+.tl-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:36px 20px 18px;display:grid;gap:4px;background:linear-gradient(rgba(8,7,9,0),rgba(8,7,9,.78) 34%,rgba(8,7,9,.9))}
+.tl-meta{font-size:.65625rem;letter-spacing:.16em;text-transform:uppercase;color:#dcb46e;text-shadow:0 1px 4px rgba(0,0,0,.9)}
+.tl-name{font-family:var(--t-D);font-size:1.75rem;font-weight:300;line-height:1.1;text-shadow:0 1px 6px rgba(0,0,0,.85)}
+.tl-go{font-size:.6875rem;letter-spacing:.16em;text-transform:uppercase;color:var(--t-tx);opacity:0;transform:translateY(6px);transition:all .3s}
 .tl-card:hover .tl-go{opacity:1;transform:none}
-.tl-cta{margin:90px 0 30px;padding:56px 0 0;border-top:1px solid rgba(237,232,223,.08);display:grid;gap:18px;max-width:720px}
+.tl-cta{margin:clamp(48px,7vw,90px) 0 30px;padding:clamp(32px,4vw,56px) 0 0;border-top:1px solid rgba(237,232,223,.08);display:grid;gap:18px;max-width:720px}
 .tl-cta p{color:var(--t-mu);line-height:1.7;margin:0}
 .tl-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
-.tl-btn{font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:14px 26px;text-decoration:none;background:var(--t-ac);color:#140f08;border:1px solid var(--t-ac);transition:all .2s}
+.tl-btn{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;padding:14px 26px;text-decoration:none;background:var(--t-ac);color:#140f08;border:1px solid var(--t-ac);min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center;border-radius:999px;transition:all .2s}
 .tl-btn:hover{background:transparent;color:var(--t-ac)}
 .tl-btn.ghost{background:transparent;color:var(--t-tx);border-color:rgba(237,232,223,.25)}
 .tl-btn.ghost:hover{border-color:var(--t-ac);color:var(--t-ac)}
-@media(max-width:760px){.tl{padding:90px 18px 30px}.tl-card{aspect-ratio:16/10}.tl-name{font-size:24px}.tl-how{grid-template-columns:1fr}.tl-grid{grid-template-columns:1fr}.tl-go{opacity:1;transform:none}}
+@media(max-width:760px){.tl{padding:32px 16px 24px}.tl-grid{margin-top:36px}.tl-card{aspect-ratio:16/10}.tl-name{font-size:1.5rem}.tl-how{grid-template-columns:1fr}.tl-grid{grid-template-columns:1fr}.tl-go{opacity:1;transform:none}}
+/* великі екрани: картки ширші — 3 у ряд замість 5 дрібних */
+@media(min-width:1800px){.tl-grid{grid-template-columns:repeat(auto-fill,minmax(26rem,1fr));gap:6px}}
 @media(prefers-reduced-motion:reduce){.tl-card:hover .tl-img{animation:none}.tl-card:hover .tl-img img{opacity:1}}
 .edit{max-height:calc(100% - 90px);overflow:auto}
 .edit hr{border:0;border-top:1px solid rgba(237,232,223,.12);margin:4px 0;width:100%}
@@ -131,3 +133,6 @@ body.embed .ti{display:none}
 .ti .ti-cta{margin-top:2.25rem;color:var(--t-tx)}
 .ti .ti-cta a{display:inline-block;padding:.6rem 0}
 .ti a:focus-visible,.ti summary:focus-visible{outline:2px solid var(--t-ac);outline-offset:2px}
+
+/* вузькі екрани: назва туру в шапці переглядача — у два рядки, а не обрізана до кількох літер */
+@media(max-width:600px){.ui{gap:10px;padding:12px 14px}.title{white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-height:1.35;font-size:11px;letter-spacing:.08em}}

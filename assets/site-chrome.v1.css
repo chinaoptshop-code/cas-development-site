@@ -716,7 +716,9 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
   html body form{max-width:34rem}
   html body .lq{max-width:36rem}html body .lq-slot .lq{max-width:40rem}
   html body .qz,html body .gd{max-width:48rem}
-  html body article{max-width:48rem}
+  html body article:not(.pp){max-width:48rem}
+  /* картка товару Оздоби: фото — до 36rem (файли до 1200 px), опис — решта ширини контейнера */
+  html body article.pp{grid-template-columns:minmax(0,36rem) minmax(0,1fr);column-gap:clamp(28px,3rem,72px)}
   .lq-r input,html body input,html body select,html body textarea{font-size:max(16px,1rem)}
   .lq-r input,.lq-b{min-height:3rem}
   .lq-b{padding:.75rem 1.4rem}
@@ -735,6 +737,8 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
   html body .vgrid{grid-template-columns:repeat(auto-fill,minmax(17rem,1fr))}
   /* Оздоба (tools/products/build.py): каталог на ширину контейнера */
   html body :is(.ozd-sec,.vhead,.venues,.tabs,.chips,.sortrow),html body #grid.grid{max-width:var(--cw)}
+  /* сторінки категорій Оздоби: сітка товарів — пряма дитина main; ширина й відступи як у .w, щоб стояла під заголовком */
+  html body main>.grid{max-width:var(--cw);padding-inline:clamp(16px,1.5rem,40px)}
 }
 @media(min-width:1024px) and (max-width:1366px){html body .xs-st{grid-auto-columns:calc((100% - 3 * 10px) / 4)}}
 @media(min-width:2200px){html body .xs-st{grid-auto-columns:calc((100% - 5 * 14px) / 6);gap:14px}}
