@@ -78,6 +78,13 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-st img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:var(--bg2)}
 .xs-st span{position:absolute;inset:auto 0 0;padding:34px 12px 10px;font-size:var(--fs-small);background:linear-gradient(rgba(8,7,9,0),rgba(8,7,9,.7) 45%,rgba(8,7,9,.92));text-shadow:0 1px 3px rgba(0,0,0,.75)}
 .xs-strip .w>.xs-st:first-child{margin-top:-8px}
+/* кадри-посилання стрічки → кейс (Михайло 11.11.2026): без зміни макета; ПК — легкий наїзд фото й золотий підпис, фокус — рамка всередині кадру */
+.xs-st>a{color:var(--tx,#EDE8DF);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;-webkit-user-drag:none}
+.xs-st>a img{-webkit-user-drag:none}
+.xs-st>a:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:-2px}
+@media(hover:hover) and (pointer:fine){.xs-st>a img{transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .4s}.xs-st>a span{transition:color .3s}
+ .xs-st>a:hover img{transform:scale(1.035);filter:brightness(1.06)}.xs-st>a:hover span{color:var(--ac,#BF9148)}}
+@media(prefers-reduced-motion:reduce){.xs-st>a img{transition:none!important}.xs-st>a:hover img{transform:none}}
 /* фото + текст */
 .xs-sp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:32px;align-items:center}
 .xs-pic{position:relative}.xs-pic img{display:block;width:100%;height:auto;border:1px solid var(--ln)}

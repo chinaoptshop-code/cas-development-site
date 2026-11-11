@@ -275,6 +275,7 @@
   "menu": "Menü"
  },
  "ux": {
+  "open": "Projekt öffnen",
   "more": "Weiterlesen",
   "less": "Weniger anzeigen",
   "q": "Alle Fragen ({n})",

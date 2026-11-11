@@ -320,6 +320,7 @@
   ]
  },
  "ux": {
+  "open": "otwórz projekt",
   "more": "Czytaj dalej",
   "less": "Zwiń",
   "q": "Wszystkie pytania ({n})",

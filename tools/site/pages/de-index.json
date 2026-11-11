@@ -33,79 +33,92 @@
      "img": "img/p/1rJCChE1lDiB_j-900.webp",
      "srcset": "/img/p/1rJCChE1lDiB_j-400.webp 400w, /img/p/1rJCChE1lDiB_j-900.webp 900w",
      "alt": "Wohnzimmer — Linden Penthouse",
-     "label": "Linden Penthouse"
+     "label": "Linden Penthouse",
+     "href": "/proekty/linden-penthouse"
     },
     {
      "img": "img/p/1iBBOM6KWCT5qH-900.webp",
      "srcset": "/img/p/1iBBOM6KWCT5qH-400.webp 400w, /img/p/1iBBOM6KWCT5qH-900.webp 900w",
      "alt": "Wohnzimmer — Hoda Estate",
-     "label": "Hoda Estate"
+     "label": "Hoda Estate",
+     "href": "/proekty/hoda-estate"
     },
     {
      "img": "img/p/11Hotk9uWWN_pE-900.webp",
      "srcset": "/img/p/11Hotk9uWWN_pE-400.webp 400w, /img/p/11Hotk9uWWN_pE-900.webp 900w",
      "alt": "Open-Space-Büro — Office Chicago",
-     "label": "Office Chicago"
+     "label": "Office Chicago",
+     "href": "/proekty/office-chicago"
     },
     {
      "img": "img/p/1co4thni1Q8_1J-900.webp",
      "srcset": "/img/p/1co4thni1Q8_1J-400.webp 400w, /img/p/1co4thni1Q8_1J-900.webp 900w",
      "alt": "Wohnzimmer mit Kamin — Petrivtsi House",
-     "label": "Petrivtsi House"
+     "label": "Petrivtsi House",
+     "href": "/proekty/petrivtsi-house"
     },
     {
      "img": "img/p/1R7JHtKFpuMJSl-900.webp",
      "srcset": "/img/p/1R7JHtKFpuMJSl-400.webp 400w, /img/p/1R7JHtKFpuMJSl-900.webp 900w",
      "alt": "Bungalows über dem Wasser — Kitana Beach",
-     "label": "Kitana Beach"
+     "label": "Kitana Beach",
+     "href": "/proekty/kitana-beach"
     },
     {
      "img": "img/p/1vWmbYVTmViGgW-900.webp",
      "srcset": "/img/p/1vWmbYVTmViGgW-400.webp 400w, /img/p/1vWmbYVTmViGgW-900.webp 900w",
      "alt": "Wohnzimmer — USA House",
-     "label": "USA House"
+     "label": "USA House",
+     "href": "/proekty/usa-house"
     },
     {
      "img": "img/p/1ey5Jil8hIa-6r-900.webp",
      "srcset": "/img/p/1ey5Jil8hIa-6r-400.webp 400w, /img/p/1ey5Jil8hIa-6r-900.webp 900w",
      "alt": "Wohnbereich — Pidgirland",
-     "label": "Pidgirland"
+     "label": "Pidgirland",
+     "href": "/proekty/pidgirland"
     },
     {
      "img": "img/p/1jS6hUJuy_cM08-900.webp",
      "srcset": "/img/p/1jS6hUJuy_cM08-400.webp 400w, /img/p/1jS6hUJuy_cM08-900.webp 900w",
      "alt": "Wohnzimmer mit Kamin — Hodos Villa",
-     "label": "Hodos Villa"
+     "label": "Hodos Villa",
+     "href": "/proekty/hodos-villa"
     },
     {
      "img": "img/p/1432efN35q6M6V-900.webp",
      "srcset": "/img/p/1432efN35q6M6V-400.webp 400w, /img/p/1432efN35q6M6V-900.webp 900w",
      "alt": "Restaurantsaal — Yacht Restaurant",
-     "label": "Yacht Restaurant"
+     "label": "Yacht Restaurant",
+     "href": "/proekty/yacht-restaurant"
     },
     {
      "img": "img/p/1f8h2r5MBlLLf_-900.webp",
      "srcset": "/img/p/1f8h2r5MBlLLf_-400.webp 400w, /img/p/1f8h2r5MBlLLf_-900.webp 900w",
      "alt": "Küche — Linden Penthouse",
-     "label": "Linden Penthouse"
+     "label": "Linden Penthouse",
+     "href": "/proekty/linden-penthouse"
     },
     {
      "img": "img/p/1HZT-E30rREI7d-900.webp",
      "srcset": "/img/p/1HZT-E30rREI7d-400.webp 400w, /img/p/1HZT-E30rREI7d-900.webp 900w",
      "alt": "Wohn- und Essbereich — Hoda Estate",
-     "label": "Hoda Estate"
+     "label": "Hoda Estate",
+     "href": "/proekty/hoda-estate"
     },
     {
      "img": "img/p/1MP_RPGiZ7XjIO-900.webp",
      "srcset": "/img/p/1MP_RPGiZ7XjIO-400.webp 400w, /img/p/1MP_RPGiZ7XjIO-900.webp 900w",
      "alt": "Essbereich — Pidgirland",
-     "label": "Pidgirland"
+     "label": "Pidgirland",
+     "href": "/proekty/pidgirland"
     },
     {
      "img": "img/p/1OGn3TXnLkQenE-900.webp",
      "srcset": "/img/p/1OGn3TXnLkQenE-400.webp 400w, /img/p/1OGn3TXnLkQenE-900.webp 900w",
      "alt": "Restaurantsaal — Yacht Restaurant",
-     "label": "Yacht Restaurant"
+     "label": "Yacht Restaurant",
+     "href": "/proekty/yacht-restaurant"
     }
    ]
   },

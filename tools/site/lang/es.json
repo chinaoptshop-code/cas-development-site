@@ -270,6 +270,7 @@
   "menu": "Menú"
  },
  "ux": {
+  "open": "abrir proyecto",
   "more": "Leer más",
   "less": "Mostrar menos",
   "q": "Todas las preguntas ({n})",

@@ -324,6 +324,7 @@
   ]
  },
  "ux": {
+  "open": "open project",
   "more": "Read more",
   "less": "Show less",
   "q": "All questions ({n})",

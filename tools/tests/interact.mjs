@@ -38,12 +38,14 @@ const BASE = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch();
 let fails = 0;
 const IGN = /net::ERR_FAILED|ERR_BLOCKED|Failed to load resource|ERR_ABORTED/;
+// Chrome скасовує cross-document view transition, коли нова сторінка ще не ввімкнула @view-transition (так само з «Що ми робимо» → лендинг) — не помилка сайту
+const IGN_PE = /Transition was aborted because of invalid state/;
 async function test(name, path, w, fn) {
   const ctx = await browser.newContext({ viewport: { width: w, height: w < 600 ? 874 : 900 }, deviceScaleFactor: 1, isMobile: w < 600, hasTouch: w < 600 });
   await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => /n8n\./.test(r.request().url()) ? r.fulfill({ status: apiStatus, body: '{}' }) : r.abort());
   const page = await ctx.newPage();
   const errs = [];
-  page.on('pageerror', e => errs.push('JS: ' + e.message));
+  page.on('pageerror', e => { if (!IGN_PE.test(e.message)) errs.push('JS: ' + e.message); });
   page.on('console', m => { if (m.type() === 'error' && !IGN.test(m.text())) errs.push('console: ' + m.text().slice(0, 160)); });
   try {
     await page.goto(BASE + path, { waitUntil: 'load' });
@@ -103,14 +105,49 @@ for (const w of [402, 1440]) await test('карусель «Що ми робим
   const s1 = await row.evaluate(e => e.scrollLeft);
   must(Math.abs(s1 - s0) > 20, `→ не гортає (${s0}→${s1})`);
 });
-await test('стрічка фото: кнопка паузи', '/', 1440, async p => {
+await test('карусель «Наші проєкти»: кнопка паузи', '/', 1440, async p => {
   await wakeup(p);
-  const b = p.locator('.mq-b, .mq button, [class*="mq"] button').first();
-  must(await b.count(), 'немає кнопки паузи стрічки');
-  await b.scrollIntoViewIfNeeded();
+  const b = p.locator('.xs-covers .cv-p').first();
+  await p.locator('.xs-cv').first().scrollIntoViewIfNeeded(); await p.waitForTimeout(600);
+  must(await b.count(), 'немає кнопки паузи каруселі');
   const a0 = await b.getAttribute('aria-pressed');
   await b.click(); await p.waitForTimeout(200);
   must(await b.getAttribute('aria-pressed') !== a0, 'aria-pressed не змінився');
+});
+// стрічка під hero головних (Михайло 11.11.2026): без кнопки паузи, автопрокрутка, кадри — посилання на кейс своєї мови; тап відкриває, свайп — ні
+for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 402], ['/ar/', 1440]]) await test('стрічка фото під hero: кадри-посилання, тап/свайп, без паузи', path, w, async p => {
+  const pre = path === '/' ? '' : path.replace(/\/$/, '');
+  const sc = p.locator('.hx-home~.xs-strip .xs-st').first();
+  await p.waitForTimeout(700);
+  must(await p.locator('.xs-strip .mq-ap, .xs-strip .mq-bar, .hx-home~.xs-strip button').count() === 0, 'у стрічки є кнопка паузи');
+  const bad = await sc.evaluate((e, pre) => [...e.querySelectorAll(':scope>a')].filter(a => !a.classList.contains('mq-c')).filter(a => !(a.getAttribute('href').startsWith(pre + '/proekty/') || a.getAttribute('href') === pre + '/portfolio') || !a.getAttribute('aria-label')).length + (e.querySelector(':scope>figure') ? 1 : 0), pre);
+  must(bad === 0, `кадри без посилання/aria-label своєї мови: ${bad}`);
+  await sc.evaluate(e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(400);
+  if (w > 600) await p.mouse.move(5, 5);
+  const s0 = await sc.evaluate(e => Math.abs(e.scrollLeft)); await p.waitForTimeout(1500);
+  const s1 = await sc.evaluate(e => Math.abs(e.scrollLeft));
+  must(s1 - s0 > 5, `автопрокрутка стоїть (${s0}→${s1})`);
+  const bb = await sc.boundingBox();
+  const cx = bb.x + bb.width * 0.3, cy = bb.y + bb.height * 0.5;
+  // свайп / перетягування — без переходу
+  const url0 = p.url();
+  if (w < 600) {
+    const cdp = await p.context().newCDPSession(p);
+    const pt = x => [{ x, y: cy }];
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: pt(cx + 120) });
+    for (let i = 1; i <= 8; i++) { await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: pt(cx + 120 - i * 25) }); await p.waitForTimeout(16); }
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  } else {
+    await p.mouse.move(cx + 120, cy); await p.mouse.down(); await p.mouse.move(cx, cy, { steps: 8 }); await p.mouse.up();
+  }
+  await p.waitForTimeout(700);
+  must(p.url() === url0, `свайп відкрив ${p.url()}`);
+  // тап / клік — відкриває кейс кадру під пальцем
+  const href = await p.evaluate(([x, y]) => document.elementFromPoint(x, y)?.closest('a')?.getAttribute('href'), [cx, cy]);
+  must(href, 'під точкою немає посилання');
+  if (w < 600) await p.touchscreen.tap(cx, cy); else await p.mouse.click(cx, cy);
+  await p.waitForURL(u => new URL(u).pathname.replace(/\.html$/, '') === href.replace(/\.html$/, ''), { timeout: 5000 }).catch(() => {});
+  must(new URL(p.url()).pathname.replace(/\.html$/, '') === href, `тап: ${p.url()} замість ${href}`);
 });
 for (const w of [402, 1440]) await test('сцена на головній: клік у правій чверті, ←/→, перемикач сцен без переходу', '/', w, async p => {
   await wakeup(p);

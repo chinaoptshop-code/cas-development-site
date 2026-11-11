@@ -88,7 +88,7 @@ function imgFade(){
 }
 /* Стрічки фото (.xs-st — стрічка під hero й галереї проєктів, .vgrid — «Відео з обʼєктів» на телефоні, .strip): повільна автопрокрутка
    ~25 px/с безшовним колом (копія кадрів — aria-hidden, без фокуса), лише в кадрі (IntersectionObserver) і на видимій вкладці; пауза при наведенні,
-   фокусі, тачі/колесі (9 с), кнопка ❚❚/▶ (44 px, aria-label); prefers-reduced-motion — статично. Висота блоку не змінюється (CLS 0). Михайло 03.11.2026. */
+   фокусі, тачі/колесі (9 с), кнопка ❚❚/▶ (44 px, aria-label; стрічка під hero головних — без неї, Михайло 11.11.2026); prefers-reduced-motion — статично. Висота блоку не змінюється (CLS 0). Михайло 03.11.2026. */
 function marquee(){
  if(RM||!('IntersectionObserver' in W)||!W.requestAnimationFrame)return;
  var L=({uk:['Пауза прокрутки фото','Прокручувати фото'],ru:['Пауза прокрутки фото','Прокручивать фото'],en:['Pause photo scrolling','Play photo scrolling'],
@@ -117,16 +117,19 @@ function marquee(){
     sc.appendChild(c);cl.push(c);
     $$('img',c).forEach(function(im){['srcset','src'].forEach(function(a){var v=im.getAttribute('data-mq-'+a);if(v!=null){im.removeAttribute('data-mq-'+a);im.setAttribute(a,v)}})})});
    // каруселі зі стрілками (.cv-nav від carousel()): пауза — у тому ж ряду перед ←/→, не поверх фото картки; стрічки без стрілок — кнопка в куті
-   var nav=sc.nextElementSibling&&sc.nextElementSibling.classList.contains('cv-nav')?sc.nextElementSibling:null;
-   btn=d.createElement('button');btn.type='button';btn.className=nav?'cv-p':'mq-ap';
-   if(nav)nav.insertBefore(btn,nav.firstChild);
-   else{bar=d.createElement('div');bar.className='mq-bar';bar.appendChild(btn);sc.parentNode.insertBefore(bar,sc)}
-   lab();
+   // стрічка під hero головних — без кнопки паузи (Михайло 11.11.2026): пауза при наведенні, дотику й фокусі
+   if(!sc.matches('.hx-home~.xs-strip .xs-st')){
+    var nav=sc.nextElementSibling&&sc.nextElementSibling.classList.contains('cv-nav')?sc.nextElementSibling:null;
+    btn=d.createElement('button');btn.type='button';btn.className=nav?'cv-p':'mq-ap';
+    if(nav)nav.insertBefore(btn,nav.firstChild);
+    else{bar=d.createElement('div');bar.className='mq-bar';bar.appendChild(btn);sc.parentNode.insertBefore(bar,sc)}
+    lab();
+    btn.addEventListener('click',function(){stop=!stop;lab();if(!stop){hold=0;sync()}go()});
+   }
    sc.classList.add('mq-run'); // без scroll-snap, поки стрічка рухається й на паузі: інакше на паузі кадр «відскакує» до краю
-   btn.addEventListener('click',function(){stop=!stop;lab();if(!stop){hold=0;sync()}go()});
    return true;
   }
-  function lab(){btn.setAttribute('aria-label',L[stop?1:0]);btn.title=L[stop?1:0];btn.innerHTML='<span aria-hidden="true">'+(stop?'▶':'❚❚')+'</span>';btn.setAttribute('aria-pressed',stop?'true':'false')}
+  function lab(){if(!btn)return;btn.setAttribute('aria-label',L[stop?1:0]);btn.title=L[stop?1:0];btn.innerHTML='<span aria-hidden="true">'+(stop?'▶':'❚❚')+'</span>';btn.setAttribute('aria-pressed',stop?'true':'false')}
   function measure(){half=Math.abs(cl[0].offsetLeft-items[0].offsetLeft)}
   function sync(){pos=Math.abs(sc.scrollLeft);measure();if(half&&pos>=half)pos-=half}
   function act(){return live&&!stop&&!hover&&!d.hidden&&Date.now()>=hold}
@@ -215,6 +218,21 @@ function heroSlides(){
  var start=function(){(W.requestIdleCallback||function(f){setTimeout(f,200)})(arm)};
  if(d.readyState==='complete')start();else W.addEventListener('load',start,{once:true});
 }
-function run(){[expanders,scrollers,imgFade,carousel,marquee,heroSlides].forEach(function(f){try{f()}catch(e){}})}
+/* Кадри-посилання стрічки (.xs-st a; на головних — кейси проєктів, Михайло 11.11.2026): відкриває лише тап/клік; свайп чи перетягування
+   (зсув пальця/миші або прокрутки > 8 px між pointerdown і click) перехід скасовує. Працює й без автопрокрутки (reduced-motion). */
+function stripTap(){
+ $$('.xs-st').forEach(function(sc){
+  if(sc.__tap||!sc.querySelector('a[href]'))return;sc.__tap=1;
+  var x=0,y=0,l=0,on=false;
+  sc.addEventListener('pointerdown',function(e){on=true;x=e.clientX;y=e.clientY;l=sc.scrollLeft},{passive:true,capture:true});
+  sc.addEventListener('click',function(e){
+   if(!e.target.closest||!e.target.closest('a[href]'))return;
+   var moved=on&&(Math.abs(e.clientX-x)>8||Math.abs(e.clientY-y)>8||Math.abs(sc.scrollLeft-l)>8);on=false;
+   if(moved){e.preventDefault();e.stopPropagation()}
+  },true);
+  sc.addEventListener('dragstart',function(e){if(e.target.closest&&e.target.closest('a'))e.preventDefault()});
+ });
+}
+function run(){[expanders,scrollers,imgFade,carousel,marquee,stripTap,heroSlides].forEach(function(f){try{f()}catch(e){}})}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',run);else run();
 })();

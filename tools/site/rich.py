@@ -12,6 +12,7 @@
               "note": "текст з [посиланнями](/url)"}; фото картки — 16:10 (img/svc-<послуга>-{400,600}.webp), що показує саме цю послугу
   covers   — обкладинки проєктів: {"h2", "more": [url, текст], "items": [{"href", "img", "srcset", "name", "loc", "alt"}]}
   strip    — стрічка фото з прокруткою (scroll-snap): {"h2"?, "label" (aria), "items": [{"img", "srcset", "alt", "label", "href"}]}
+              (href — кейс /proekty/<slug>, aria-label — label + ux "open"; стрічка головних — усі кадри посиланнями)
   split    — фото + текст: {"img", "alt", "href"?, "badge": [число, підпис]?, "h2"?, "lead"?, "p": [...], "vals": [[h, p], ...]?, "btn": [url, текст]?}
   facts    — цифри: {"h2", "items": [[значення, підпис], ...], "links": [[url, текст], ...]?} (блок довіри головних — "cls": "xs-trust")
   cta      — заклик: {"h2"?, "score"?, "p": [...], "btns": [[url, текст, "main"?], ...], "msgs": true?}
@@ -174,11 +175,16 @@ def covers(x):
     return wrap(x, head(x) + f'<div class="xs-cv">{it}</div>', 'xs-covers')
 
 
-def strip(x):
+def strip(x, lang='uk'):
+    # кадр з "href" — посилання на кейс (Михайло 11.11.2026: «щоб можна було клікати й відкривався проєкт»);
+    # /proekty/<slug> у JSON усіх мов — сторінку своєї мови підставляє chrome.local_cases; aria-label — «Назва — відкрити проєкт»
+    import ux
+    op = ux.UX.get(lang, {}).get('open') or ux.UX['uk']['open']
     it = []
     for c in x['items']:
         body = img(c, None, '(max-width:767px) 60vw, 300px') + (f'<span>{e(c["label"])}</span>' if c.get('label') else '')
-        it.append(f'<a href="{a(c["href"])}">{body}</a>' if c.get('href') else f'<figure>{body}</figure>')
+        lab = f' aria-label="{a(c["label"] + " — " + op)}"' if c.get('label') else ''
+        it.append(f'<a href="{a(c["href"])}"{lab}>{body}</a>' if c.get('href') else f'<figure>{body}</figure>')
     lab = f' aria-label="{a(x["label"])}"' if x.get('label') else ''
     lead = f'<p class="xs-sub">{rich(x["p"])}</p>' if x.get('p') else ''
     return wrap(x, head(x) + lead + f'<div class="xs-st" tabindex="0" role="region"{lab}>' + ''.join(it) + '</div>', 'xs-strip')
@@ -259,6 +265,8 @@ def pmap(x, lang='uk'):
 def render(lang, x):
     if x['t'] == 'pmap':
         return [pmap(x, lang)]
+    if x['t'] == 'strip':
+        return [strip(x, lang)]
     return [globals()[x['t']](x)]
 
 
