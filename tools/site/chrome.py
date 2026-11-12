@@ -156,6 +156,8 @@ def fonts_block(s):
     return FONTS_RX.sub(lambda m: FONTS_TAG, s, count=1)
 
 import i18n  # реєстр мов, hreflang-кластери (tools/site/i18n.py)
+import flags  # перемикачі сайту: OZDOBA_PUBLIC — Оздоба прихована з 12.11.2026 (tools/site/flags.py)
+OZDOBA_PUBLIC = flags.OZDOBA_PUBLIC
 
 LANGS = i18n.LANGS
 HOME = {l: i18n.home(l) for l in LANGS}
@@ -249,7 +251,8 @@ for _l in LANGS:  # нові мови — словник chrome з tools/site/la
 
 def _live(links):
     """Лише посилання на наявні сторінки (зовнішні й #якорі — як є)."""
-    return [(h, n) for h, n in links if not h.startswith('/') or h.startswith('/#') or i18n.exists(h)]
+    return [(h, n) for h, n in links if (not h.startswith('/') or h.startswith('/#') or i18n.exists(h))
+            and (OZDOBA_PUBLIC or not flags.oz_href(h))]  # Оздоба прихована — без пунктів меню/футера
 
 LOGO = '<a class="sch-logo" href="{home}" aria-label="{label}">CAS<em>.</em>Development</a>'
 BURGER = '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="sch-b1" d="M4 7h16"/><path class="sch-b2" d="M4 12h16"/><path class="sch-b3" d="M4 17h16"/></svg>'
@@ -344,8 +347,10 @@ def header(lang, path, alts, tools='', cta_href=None):
     if calc and lang in ('uk', 'ru'):  # у довших мовах меню вже на межі ширини шапки
         cl = CALC_SHORT.get(lang, calc[1])
         ca = f'<a href="{calc[0]}"' + (' aria-current="page"' if calc[0] == path else '') + f'>{cl}</a>'
-        k = nav_items.find('>', nav_items.find('href="/ozdoba'))
-        k = nav_items.find('</a>', k) + 4 if k > 0 else len(nav_items)
+        k = nav_items.find('href="/ozdoba')
+        if k < 0:  # Оздоба прихована (flags.OZDOBA_PUBLIC) — калькулятор після «Портфоліо»
+            k = nav_items.find('portfolio"')
+        k = nav_items.find('</a>', k) + 4 if k >= 0 else len(nav_items)
         nav_items = nav_items[:k] + ca + nav_items[k:]
     if calc:
         quick += f'<a class="sch-mcalc" href="{calc[0]}"' + (' aria-current="page"' if calc[0] == path else '') + f'>{calc[1]}</a>'
@@ -736,6 +741,78 @@ def local_cases(s, lang):
     return s if i < 0 else s[:i] + CASE_A.sub(one, s[i:])
 
 
+# ── Оздоба прихована (flags.OZDOBA_PUBLIC = False) ─────────────────────────────
+# Посилання на /ozdoba* у текстах сторінок: окремий пункт (між тегами: списки «Інші послуги», кнопки, картки,
+# <p>/<li> з одним посиланням) — прибираємо цілком, посилання в реченні — лишаємо текстом. Оригінал — у коментарі
+# <!--ozh:base64--> (і <!--/ozh--> замість </a>), тож при OZDOBA_PUBLIC = True oz_show() повертає розмітку як була
+# (і на ручних сторінках, які не перезбирає жоден генератор).
+_OZ_A = r'<a\b[^>]*\shref="(?:https://cas-develop\.com)?/(?:[a-z]{2}/)?ozdoba(?:[/?#][^"]*)?"[^>]*>(?:(?!</a>).)*?</a>'
+_OZ_WRAP = re.compile(r'<(p|li)\b[^>]*>\s*' + _OZ_A + r'\s*</\1>', re.S)
+_OZ_ALONE = re.compile(r'(?<=>)(\s*)' + _OZ_A + r'(?=\s*<(?!!--/ozh))', re.S)
+_OZ_INLINE = re.compile(r'(<a\b[^>]*\shref="(?:https://cas-develop\.com)?/(?:[a-z]{2}/)?ozdoba(?:[/?#][^"]*)?"[^>]*>)((?:(?!</a>).)*?)</a>', re.S)
+_OZ_SKIP = re.compile(r'<script\b.*?</script>|<style\b.*?</style>|<!--.*?-->', re.S)
+
+
+def _oz_b64(t):
+    import base64
+    return base64.b64encode(t.encode('utf-8')).decode('ascii')  # без «-»: коментар не закінчується на «--->»
+
+
+def oz_hide(s):
+    """Знімає посилання на Оздобу з <body> сторінки (скрипти, стилі й коментарі не чіпає). Ідемпотентно."""
+    i = s.find('<body')
+    if i < 0 or 'ozdoba' not in s[i:]:
+        return s
+    head, body = s[:i], s[i:]
+    parts, pos = [], 0
+    for m in _OZ_SKIP.finditer(body):  # обробляємо лише розмітку між скриптами/стилями/коментарями
+        parts.append((body[pos:m.start()], True)); parts.append((m.group(0), False)); pos = m.end()
+    parts.append((body[pos:], True))
+
+    def one(t):
+        t = _OZ_WRAP.sub(lambda m: '<!--ozh:' + _oz_b64(m.group(0)) + '-->', t)
+        t = _OZ_ALONE.sub(lambda m: m.group(1) + '<!--ozh:' + _oz_b64(m.group(0)[len(m.group(1)):]) + '-->', t)
+        return _OZ_INLINE.sub(lambda m: '<!--ozh:' + _oz_b64(m.group(1)) + '-->' + m.group(2) + '<!--/ozh-->', t)
+    return head + ''.join(one(t) if ok and 'ozdoba' in t else t for t, ok in parts)
+
+
+def oz_show(s):
+    """Зворотне до oz_hide(): повертає збережені посилання (OZDOBA_PUBLIC = True)."""
+    if '<!--ozh:' not in s:
+        return s
+    import base64
+    s = re.sub(r'<!--ozh:([A-Za-z0-9+/=]+)-->', lambda m: base64.b64decode(m.group(1)).decode('utf-8'), s)
+    return s.replace('<!--/ozh-->', '</a>')
+
+
+OZ_ROBOTS = '<meta name="robots" content="noindex, nofollow" data-oz="{}">'
+OZ_ROBOTS_RX = re.compile(r'<meta name="robots" content="noindex, nofollow" data-oz="([^"]*)">')
+
+
+def oz_seo(s):
+    """Сторінки самої Оздоби, поки вона прихована: noindex, nofollow (попереднє значення robots — у data-oz),
+    без JSON-LD (Product/Offer/ItemList — попередження GSC «Пропозиції від продавців») і без hreflang.
+    JSON-LD і hreflang генератор (tools/products/build.py, intl.py) ставить заново на кожній збірці."""
+    head, sep, rest = s.partition('</head>')
+    if not sep:
+        return s
+    if not OZDOBA_PUBLIC:
+        if not OZ_ROBOTS_RX.search(head):
+            m = re.search(r'<meta name="robots" content="([^"]*)">\n?', head)
+            prev = m.group(1) if m else ''
+            if m:
+                head = head[:m.start()] + head[m.end():]
+            tag = OZ_ROBOTS.format(prev)
+            m = re.search(r'<meta name="viewport"[^>]*>\n?', head) or re.search(r'<meta charset[^>]*>\n?', head)
+            head = head[:m.end()] + tag + '\n' + head[m.end():] if m else head.replace('<head>', '<head>\n' + tag, 1)
+        head = re.sub(r'<script type="application/ld\+json">.*?</script>', '', head, flags=re.S)
+        head = re.sub(r'<link rel="alternate" hreflang="[^"]+" href="[^"]+">\n?', '', head)
+        rest = re.sub(r'<script type="application/ld\+json">.*?</script>', '', rest, flags=re.S)
+    else:
+        head = OZ_ROBOTS_RX.sub(lambda m: f'<meta name="robots" content="{m.group(1)}">' if m.group(1) else '', head)
+    return head + sep + rest
+
+
 def apply(s, rel):
     """Ставить єдину шапку/футер у HTML сторінки `rel` (шлях від кореня сайту). Ідемпотентно."""
     s = _HM_RM.sub('', s)  # маркери :has() — заново після ux.apply (генератори шукають точні рядки розмітки)
@@ -819,6 +896,15 @@ def apply(s, rel):
     s = clarity(s)
     s = skip_and_main(s, lang)
     s = ui_polish_ext(s)
+    if flags.OZ_FILE.match(rel):
+        s = oz_seo(s)
+    elif OZDOBA_PUBLIC:
+        s = oz_show(s)
+    elif not rel.startswith('kabinet'):  # кабінет (замовлення й обране Оздоби) — без змін
+        s = oz_hide(s)
+        # JSON-LD інших сторінок (напр. Offer «Комплектація з Китаю» на головній): без url на приховану Оздобу;
+        # генератор (landing.py) ставить його знову, коли OZDOBA_PUBLIC = True
+        s = re.sub(r',\s*"url":\s*"https://cas-develop\.com/(?:[a-z]{2}/)?ozdoba(?:[/?#][^"]*)?"', '', s)
     import ux  # іконки заголовків, згортання довгих блоків, бейдж «Анімація реалізації» (tools/site/ux.py)
     s = ux.apply(s, rel)
     s = has_marks(s)

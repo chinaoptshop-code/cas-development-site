@@ -225,9 +225,37 @@ def main():
     nl, no_tr = intl.build(sys.modules[__name__])
     npr, kb = pricelist.build(sys.modules[__name__])
     nf = feed.build(sys.modules[__name__])   # /ozdoba/feed.xml — Google Merchant / Pinterest / Meta (tools/products/feed.py)
+    oz_visibility()
     photos = sum(1 for i in d['items'] if i.get('img'))
     print(f'Оздоба: {len(items)} товарів, з фото {photos}, сторінок товарів {pages}, категорій {cats}, комплектів під обʼєкт {nk}, версія каталогу {ver(CAT)}')
     print(f'Оздоба en/pl: {nl} сторінки' + (f', без перекладу назви: {no_tr} товарів (беремо поле en)' if no_tr else '') + f'; прайс /ozdoba/prais: {npr} позицій, {kb} КБ')
+
+
+
+# Оздоба прихована (tools/site/flags.py, OZDOBA_PUBLIC = False, Михайло 12.11.2026): сторінки лишаються за прямою адресою,
+# але без sitemap і з X-Robots-Tag у _headers (noindex і без JSON-LD/hreflang у самих сторінках — chrome.oz_seo).
+# OZDOBA_PUBLIC = True → блок у _headers прибирається, sitemap заповнюють product_pages/category_pages/kits_page/intl.
+OZ_HDR = ('# ozdoba:hidden — Оздоба прихована (tools/site/flags.py OZDOBA_PUBLIC); блок пише tools/products/build.py\n'
+          '/ozdoba\n  X-Robots-Tag: noindex, nofollow\n\n/ozdoba/*\n  X-Robots-Tag: noindex, nofollow\n\n'
+          '/en/ozdoba\n  X-Robots-Tag: noindex, nofollow\n\n/pl/ozdoba\n  X-Robots-Tag: noindex, nofollow\n'
+          '# /ozdoba:hidden\n')
+OZ_HDR_RX = re.compile(r'\n?# ozdoba:hidden.*?# /ozdoba:hidden\n', re.S)
+
+
+def oz_visibility():
+    hp = os.path.join(ROOT, '_headers'); h = open(hp, encoding='utf-8').read()
+    n = OZ_HDR_RX.sub('', h)
+    if not chrome.OZDOBA_PUBLIC:
+        n = n.rstrip('\n') + '\n\n' + OZ_HDR
+        sm = os.path.join(ROOT, 'sitemap.xml'); t = open(sm, encoding='utf-8').read()
+        u = re.sub(r'  <url><loc>https://cas-develop\.com/(?:[a-z]{2}/)?ozdoba(?:[/?#][^<]*)?</loc>.*?</url>\n', '', t)
+        if u != t:
+            open(sm, 'w', encoding='utf-8').write(u)
+    elif '<loc>https://cas-develop.com/ozdoba</loc>' not in open(os.path.join(ROOT, 'sitemap.xml'), encoding='utf-8').read():
+        sm = os.path.join(ROOT, 'sitemap.xml'); t = open(sm, encoding='utf-8').read()
+        open(sm, 'w', encoding='utf-8').write(t.replace('</urlset>', f'  <url><loc>https://cas-develop.com/ozdoba</loc><lastmod>{LASTMOD}</lastmod></url>\n</urlset>'))
+    if n != h:
+        open(hp, 'w', encoding='utf-8').write(n)
 
 
 

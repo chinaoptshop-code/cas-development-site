@@ -13,6 +13,8 @@ import html, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 B = 'https://cas-develop.com'
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import flags  # noqa: E402  OZDOBA_PUBLIC (tools/site/flags.py)
 
 # ---- факти (CLAUDE.md; дата підтвердження — там само) ----
 FACTS_UK = [
@@ -108,7 +110,7 @@ def head_uk():
          '## Факти']
     o += [f'- {x}' for x in FACTS_UK]
     o += ['', '## Послуги', f'- {SERVICES_UK[0].upper() + SERVICES_UK[1:]}.', '', '## Ціни «від» (орієнтир; точна сума — за кошторисом)']
-    o += [f'- [{n}]({B}{u}): {p}' for n, p, u in PRICES_UK]
+    o += [f'- [{n}]({B}{u}): {p}' for n, p, u in PRICES_UK if flags.OZDOBA_PUBLIC or not flags.oz_href(u)]  # Оздоба прихована (flags.py)
     o += ['', '## Портфоліо (усі проєкти — роботи CAS Development)', '- Реалізовано: ' + '; '.join(f'[{n}]({B}/proekty/{s}) — {d}' for n, s, d in REALIZED) + '.',
           '- Дизайн-проєкти: ' + '; '.join(f'[{n}]({B}/proekty/{s}) — {d}' for n, s, d in DESIGN) + '.',
           f'- Усі проєкти й карта: {B}/portfolio', '', '## Профілі', *[f'- {x}' for x in SAME_AS]]

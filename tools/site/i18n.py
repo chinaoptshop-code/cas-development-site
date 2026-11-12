@@ -112,6 +112,11 @@ def clusters(_c={}):
                     c[same].update({l: p for l, p in m.items() if l not in c[same]})
                 else:
                     c[cid] = dict(m)
+        if HERE not in sys.path:
+            sys.path.insert(0, HERE)
+        import flags  # Оздоба прихована (tools/site/flags.py) — без hreflang-кластера /ozdoba ↔ /en/ozdoba ↔ /pl/ozdoba
+        if not flags.OZDOBA_PUBLIC:
+            c = {k: v for k, v in c.items() if k.startswith('_') or not any(flags.oz_href(p) for p in v.values())}
         _c['c'] = c
     return _c['c']
 

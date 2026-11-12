@@ -85,3 +85,17 @@
   ! X-Frame-Options
   ! Content-Security-Policy
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval' https://static.cloudflareinsights.com https://www.clarity.ms https://scripts.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://cdn.aframe.io; font-src 'self' data:; connect-src 'self' data: blob: https://cdn.aframe.io https://cloudflareinsights.com https://*.clarity.ms; media-src 'self' data: blob:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors *
+
+# ozdoba:hidden — Оздоба прихована (tools/site/flags.py OZDOBA_PUBLIC); блок пише tools/products/build.py
+/ozdoba
+  X-Robots-Tag: noindex, nofollow
+
+/ozdoba/*
+  X-Robots-Tag: noindex, nofollow
+
+/en/ozdoba
+  X-Robots-Tag: noindex, nofollow
+
+/pl/ozdoba
+  X-Robots-Tag: noindex, nofollow
+# /ozdoba:hidden

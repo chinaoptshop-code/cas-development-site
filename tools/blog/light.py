@@ -9,6 +9,7 @@ import html, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, 'tools/site'))
+import flags  # noqa: E402  OZDOBA_PUBLIC (tools/site/flags.py)
 CSS = 'assets/blog-light.v1.css'
 esc = lambda s: html.escape(s, quote=True)
 
@@ -131,6 +132,13 @@ def cta_html(a):
         main = [su, sl]  # послуга статті точніша; тему перекриваємо лише для нагляду й кошторису
     if not _exists(main[0]):
         main = [su, sl]
+    if not flags.OZDOBA_PUBLIC:  # Оздоба прихована (tools/site/flags.py): без кнопок і згадки каталогу в заклику
+        dm = TP[lang]['furn'][1]
+        if flags.oz_href(main[0]) and dm and not flags.oz_href(dm[0]):
+            main = dm
+        if sec and flags.oz_href(sec[0]):
+            sec = None
+        line = re.sub(r'\s*[—–-]\s*[^.;—]*?(?:Оздоб|Ozdoba)[^.;—]*', '', line)
     if sec and (not _exists(sec[0]) or (sec[0].split('#')[0] == main[0] and '#' not in sec[0])):
         sec = None
     o = (f'<aside class="bcta" data-t="{k}" aria-label="{esc(TP_ARIA.get(lang, ""))}"><p>{esc(line)}</p><p class="bcta-a">'

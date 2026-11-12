@@ -23,6 +23,8 @@ import collections, glob, html, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 B = 'https://cas-develop.com'
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import flags  # noqa: E402  OZDOBA_PUBLIC (tools/site/flags.py)
 SKIP_FILES = {'privacy.html', 'terms.html'}  # сторонні юридичні шаблони (noindex)
 # політики конфіденційності: посилання лише з футера/форм, хлібні крихти не потрібні
 LEGAL = {'konfidentsiinist.html', 'ru/konfidentsialnost.html', 'en/privacy-policy.html', 'es/privacidad.html',
@@ -193,6 +195,13 @@ def main():
                     c = base + c
                 if not exists(c):
                     broken[c.split('#')[0].split('?')[0]].add(rel)
+        # Оздоба прихована (tools/site/flags.py): з публічних сторінок — жодного посилання на /ozdoba*, на самій Оздобі — noindex
+        if not flags.OZDOBA_PUBLIC:
+            if flags.OZ_FILE.match(rel):
+                if not noindex:
+                    err(rel, 'Оздоба прихована, а сторінка без noindex')
+            elif not rel.startswith('kabinet') and re.search(r'<a\b[^>]*\shref="(?:' + re.escape(B) + r')?/(?:[a-z]{2}/)?ozdoba(?:[/?#"])', s):
+                err(rel, 'посилання на приховану Оздобу (/ozdoba)')
         if noindex:
             continue
         m = re.search(r'<title>(.*?)</title>', head, re.S)
