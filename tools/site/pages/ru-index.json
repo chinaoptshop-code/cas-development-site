@@ -112,8 +112,8 @@
      "href": "/proekty/linden-penthouse"
     },
     {
-     "img": "img/p/1iBBOM6KWCT5qH-900.webp",
-     "srcset": "/img/p/1iBBOM6KWCT5qH-400.webp 400w, /img/p/1iBBOM6KWCT5qH-900.webp 900w",
+     "img": "img/p/1m9fVTTPjd6nQs-900.webp",
+     "srcset": "/img/p/1m9fVTTPjd6nQs-400.webp 400w, /img/p/1m9fVTTPjd6nQs-900.webp 900w",
      "alt": "Гостиная — Hoda Estate",
      "label": "Hoda Estate",
      "href": "/proekty/hoda-estate"
@@ -138,13 +138,6 @@
      "alt": "Бунгало над водой — Kitana Beach",
      "label": "Kitana Beach",
      "href": "/proekty/kitana-beach"
-    },
-    {
-     "img": "img/p/1vWmbYVTmViGgW-900.webp",
-     "srcset": "/img/p/1vWmbYVTmViGgW-400.webp 400w, /img/p/1vWmbYVTmViGgW-900.webp 900w",
-     "alt": "Гостиная — USA House",
-     "label": "USA House",
-     "href": "/proekty/usa-house"
     },
     {
      "img": "img/p/1ey5Jil8hIa-6r-900.webp",
@@ -453,16 +446,16 @@
    "items": [
     {
      "href": "/proekty/petrivtsi-house",
-     "img": "img/p/1co4thni1Q8_1J-900.webp",
-     "srcset": "/img/p/1co4thni1Q8_1J-400.webp 400w, /img/p/1co4thni1Q8_1J-900.webp 900w",
+     "img": "img/p/1N5oaUn_7eYM7i-900.webp",
+     "srcset": "/img/p/1N5oaUn_7eYM7i-400.webp 400w, /img/p/1N5oaUn_7eYM7i-900.webp 900w",
      "alt": "Гостиная с камином — Petrivtsi House, проект CAS Development",
      "name": "Petrivtsi House",
      "loc": "Петровцы · 320 м²"
     },
     {
      "href": "/proekty/hoda-estate",
-     "img": "img/p/1iBBOM6KWCT5qH-900.webp",
-     "srcset": "/img/p/1iBBOM6KWCT5qH-400.webp 400w, /img/p/1iBBOM6KWCT5qH-900.webp 900w",
+     "img": "img/p/1FRa0FI6iMHK5L-900.webp",
+     "srcset": "/img/p/1FRa0FI6iMHK5L-400.webp 400w, /img/p/1FRa0FI6iMHK5L-900.webp 900w",
      "alt": "Гостиная — Hoda Estate, проект CAS Development",
      "name": "Hoda Estate",
      "loc": "Карпаты · 180 м²"
@@ -477,8 +470,8 @@
     },
     {
      "href": "/proekty/pidgirland",
-     "img": "img/p/1ey5Jil8hIa-6r-900.webp",
-     "srcset": "/img/p/1ey5Jil8hIa-6r-400.webp 400w, /img/p/1ey5Jil8hIa-6r-900.webp 900w",
+     "img": "img/p/1IPpJjg5VkUVC8-900.webp",
+     "srcset": "/img/p/1IPpJjg5VkUVC8-400.webp 400w, /img/p/1IPpJjg5VkUVC8-900.webp 900w",
      "alt": "Гостиная — Pidgirland, проект CAS Development",
      "name": "Pidgirland",
      "loc": "Киевская обл. · 260 м²"
@@ -493,8 +486,8 @@
     },
     {
      "href": "/proekty/linden-penthouse",
-     "img": "img/p/1rJCChE1lDiB_j-900.webp",
-     "srcset": "/img/p/1rJCChE1lDiB_j-400.webp 400w, /img/p/1rJCChE1lDiB_j-900.webp 900w",
+     "img": "img/p/1WCwE-qMQJujwW-900.webp",
+     "srcset": "/img/p/1WCwE-qMQJujwW-400.webp 400w, /img/p/1WCwE-qMQJujwW-900.webp 900w",
      "alt": "Гостиная — Linden Penthouse, проект CAS Development",
      "name": "Linden Penthouse",
      "loc": "Киев · 210 м²"

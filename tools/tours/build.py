@@ -471,6 +471,8 @@ def _pages_lang(lang, tours, about, tl, hub, cl):
     cards.sort(key=lambda c: c[0])
     og = cards[0][2] if cards else '/img/og/default.jpg'
     cards = [c[1] for c in cards]
+    # LCP сторінки турів — перша картка (аудит фото 16.11.2026): без lazy, fetchpriority="high"; решта — lazy
+    cards[:1] = [c.replace(' loading="lazy"', ' fetchpriority="high"', 1) for c in cards[:1]]
     idx = INDEX.format(vcss=_ver("assets/tours/tour.v1.css"), site=SITE, og=og, crumbs=_crumbs([(x['home'], P + '/'), (x['tours'], base)]),
                        cards='\n'.join(cards) or f'<p class="tl-lead">{x["i_empty"]}</p>', lang=lang, base=base, x=x,
                        alts=_alts(cl['tury']).lstrip('\n') + ('\n' if len(cl['tury']) > 1 else ''))

@@ -443,19 +443,25 @@ def _wide_img(body, lang):
 # Файли — портретні 4:5 копії img/p/<id>-400/900(/1200).webp з галерей /proekty; srcset — лише ширини тієї ж пропорції.
 TP = {  # пул: (id, проєкт)
     'int': [('1IPpJjg5VkUVC8', 'pidgirland'), ('1m9fVTTPjd6nQs', 'hoda-estate'), ('1S8L6r4oQFAg5G', 'hodos-villa'), ('16lBNXfCt8e2mO', 'pidgirland'),
-            ('1FRa0FI6iMHK5L', 'hoda-estate'), ('13S65_x8RxCJgj', 'hodos-villa'), ('1PJG1j6uRAjFBk', 'pidgirland'), ('1-Lit8Tm15S9vl', 'hodos-villa')],
+            ('1FRa0FI6iMHK5L', 'hoda-estate'), ('13S65_x8RxCJgj', 'hodos-villa'), ('1PJG1j6uRAjFBk', 'pidgirland'), ('1-Lit8Tm15S9vl', 'hodos-villa'),
+            ('1gwX4B45BcQ2Z-', 'petrivtsi-house'), ('1_AD69plhPISQt', 'petrivtsi-house'), ('16CJ3tcwMBWNLI', 'petrivtsi-house'), ('1eBjhdID0d53V5', 'petrivtsi-house')],
     'reno': [('1GnosovqCCjnAI', 'tetris-hall'), ('11wEIjh0kDHFtz', 'tetris-hall'), ('12KrNt488GVEue', 'tetris-hall'), ('1LAwiVE6-unSDY', 'tetris-hall'),
              ('1n0e2qfyf_vo9a', 'tetris-hall'), ('1pi5iAejdBaIhP', 'tetris-hall'), ('1C2WunUHvuF4y0', 'tetris-hall'), ('15mn_Or4V7WrFB', 'office-chicago')],
-    'house': [('1xAsDsaceELcL9', 'smart-villa'), ('1g-E1m6cFJ9kvH', 'a-frame-house'), ('1C16Cd6bvENPGL', 'smart-villa'), ('13j9IlxqOPHY1p', 'hoda-estate'),
-              ('1qeWnMdoeYieST', 'house-150'), ('1DhAA8_vK0zo3E', 'a-frame-house'), ('1wzwQKXdSQyRF2', 'smart-villa')],
+    'house': [('1xAsDsaceELcL9', 'smart-villa'), ('1g-E1m6cFJ9kvH', 'a-frame-house'), ('1kHF6cjS291puf', 'smart-villa'), ('1NHpLHf_OUr8fM', 'house-150'),
+              ('1C16Cd6bvENPGL', 'smart-villa'), ('1DhAA8_vK0zo3E', 'a-frame-house'), ('1BQqqJb_OqPOz7', 'smart-villa'), ('1qeWnMdoeYieST', 'house-150')],
     'rest': [('1HL1J3k6Vl1nD-', 'monpark'), ('1pZgJUxqRJ7gaG', 'monpark'), ('15e6gUmfeplrU1', 'monpark'), ('1jKOiN3xyCjZCL', 'monpark'),
              ('1wwL33KrIFXK0p', 'monpark'), ('1OGn3TXnLkQenE', 'yacht-restaurant'), ('1f57D9TAv8lJgR', 'monpark'), ('1dCBMYs58M2hfy', 'yacht-restaurant')],
-    'office': [('15mn_Or4V7WrFB', 'office-chicago'), ('16fKqdFifd2emf', 'office-chicago'), ('15PAZFo6btwfkp', 'office-chicago')],
+    'office': [('15mn_Or4V7WrFB', 'office-chicago'), ('16fKqdFifd2emf', 'office-chicago'), ('15PAZFo6btwfkp', 'office-chicago'), ('11Hotk9uWWN_pE', 'office-chicago'),
+               ('172MXziiSXy2Bp', 'office-chicago'), ('175ItegntHAFeI', 'office-chicago'), ('1AuTOsj6bQ1y2f', 'office-chicago')],
     'resort': [('1GqqKXz4Ax1_cM', 'yablu-rest'), ('19seq_4AT9Kb4a', 'monpark'), ('13WiocWsjrHB4B', 'yablu-rest'), ('1jjk3ERcqKTGqZ', 'yablu-rest')],
-    'kitchen': [('1mc8RMmncPstAS', 'pidgirland'), ('1uw4VaQ07oycO9', 'pidgirland'), ('11wEIjh0kDHFtz', 'tetris-hall')],
-    'bath': [('1LAwiVE6-unSDY', 'tetris-hall'), ('1zCpl2Feuh3xlW', 'hoda-estate'), ('1FiLI9kKE-C87h', 'pidgirland'), ('1t4GTVS3iV3us6', 'hoda-estate')],
+    'kitchen': [('1mc8RMmncPstAS', 'pidgirland'), ('1uw4VaQ07oycO9', 'pidgirland'), ('11wEIjh0kDHFtz', 'tetris-hall'), ('1T8jacyJtIwFJS', 'petrivtsi-house'),
+                ('1sY3ElRa0yzCXw', 'petrivtsi-house')],
+    'bath': [('1LAwiVE6-unSDY', 'tetris-hall'), ('1zCpl2Feuh3xlW', 'hoda-estate'), ('1FiLI9kKE-C87h', 'pidgirland'), ('1t4GTVS3iV3us6', 'hoda-estate'),
+             ('1OR5i7-rm1k0MU', 'petrivtsi-house'), ('1Xdje8N1V14_0X', 'petrivtsi-house')],
     'salon': [('1Y-Fiyq963hsV9', 'dolls-salon'), ('1gI8TsO03lYAxp', 'dolls-salon')],
-    'land': [('1xAsDsaceELcL9', 'smart-villa'), ('19seq_4AT9Kb4a', 'monpark'), ('10Vn1KOXla-jyZ', 'smart-villa'), ('1I84S9MOrJrmtk', 'monpark')],
+    # ландшафт (аудит фото 16.11.2026): спершу сади й тераси приватних будинків, тераси Monpark — запасні
+    'land': [('1xAsDsaceELcL9', 'smart-villa'), ('1kHF6cjS291puf', 'smart-villa'), ('1BQqqJb_OqPOz7', 'smart-villa'), ('1Us4FZpRlnEsqf', 'house-150'),
+             ('10Vn1KOXla-jyZ', 'smart-villa'), ('11aAO2oD99DpQ5', 'house-150'), ('19seq_4AT9Kb4a', 'monpark'), ('1I84S9MOrJrmtk', 'monpark')],
 }
 TP_PROJ = {  # slug: (назва, тип обʼєкта, реалізовано?) — статуси як у captions.py / CLAUDE.md
     'pidgirland': ('Pidgirland', 'house', 0), 'hoda-estate': ('Hoda Estate', 'house', 0), 'hodos-villa': ('Hodos Villa', 'villa', 0),
@@ -535,6 +541,8 @@ def _tp_sizes(sp, f=1.0):
     out = [f'(max-width:759px) {cl(*_tp_lin(sp[2], 2, 10, 1, -32))}', f'(max-width:1366px) {cl(*_tp_lin(sp[3], 3, 12, 1, -32))}',
            # з 1367: --cw − 2rem ≈ .6vw + 336 − 2(.5025vw + 9.14) = .59vw + 317.7
            cl(*_tp_lin(sp[4], 4, 14, .59, 317.7))]  # з 2200 (6 у ряд) — та сама формула: файл трохи більший, зате коротше (бюджет HTML)
+    if sp.get(6, 2) / 6 > sp[4] / 4 + .01:  # з 2200 плитка ширша, ніж у 4 в ряд (неповний ряд 6-колонки: 2 плитки по пів ряду ≈ 905 px на 2560,
+        out[-1] = f'(max-width:2199px) {out[-1]},{cl(*_tp_lin(sp[6], 6, 14, .59, 317.7))}'  # а sizes давав 448 px — аудит фото 16.11.2026)
     return ','.join(out)
 
 
@@ -643,9 +651,15 @@ def _unhero(s):
     return s[:e] + s[e + 6:] if e > 0 and s.startswith('</div>', e) else s
 
 
+TP_GENERIC = {'re', 'de', 'fu', 'pm', 'fl', 'cs'}  # ключі-дії («ремонт», «дизайн», «меблі», «магазин/бізнес») — тема сторінки важливіша
+# (аудит фото 16.11.2026: «Інтерʼєр, що працює на виручку» на ресторанах показував спальню Tetris Hall, «Меблі під ключ… магазинів» — салон краси)
+
+
 def _tp_pick(cat, key, used, k):
-    order = [TP_KEY[key]] if key in TP_KEY else []
+    gen = key in TP_GENERIC and cat != 'mix'
+    order = [TP_KEY[key]] if key in TP_KEY and not gen else []
     order += [cat] if cat != 'mix' else [TP_MIX[(k + j) % len(TP_MIX)] for j in range(len(TP_MIX))]
+    order += [TP_KEY[key]] if gen else []
     order += TP_MIX
     for c in order:
         for pid, slug in TP[c]:
@@ -783,6 +797,11 @@ def _spans(m, lang='', rel=''):
     cat = TP_PAGES.get(rel, 'mix')
     if '<div class="hxl">' in m and cat in HERO:  # фото hero не повторюємо в плитках
         used.add(CROPS[f'img/p/hxm-{cat}']['src'].split('/')[-1])
+    # фото, що вже є на сторінці (галерея проєктів, тизер, кейс), у плитках не повторюємо (аудит фото 16.11.2026: «Галерея» і плитка
+    # з тим самим кадром на будівництві/ресторанах/базі відпочинку); портфоліо (сотні фото в стрічках) — лише плитки між собою
+    own = set(re.findall(r'/img/p/([\w-]+?)-\d+\.webp', TP_RX.sub('', m)))
+    if len(own) <= 60:
+        used |= own
     # перший ряд фото-плиток одразу під hero (до 2 блоків перед ним: крихти, hero) — у першому екрані: без lazy (LCP), решта — lazy
     real = [x for x in kids if x[2] is not None]
     top = bool(runs) and len(runs[0]) > 1 and next(i for i, x in enumerate(real) if x[0] == runs[0][0][0]) <= 2

@@ -89,6 +89,10 @@ def hero_bg(h, full=False):
     if full:  # головні: кадр hero не має пропорції файла (object-fit:cover) — sizes = ширина, яку фото реально займає (різкість без апскейлу)
         m = dict(m, sizes=home_sizes(.6)) if m else m
         h = dict(h, sizes=home_sizes(size(h['img'])[0] / size(h['img'])[1]))
+    else:  # послуги/про/контакти/портфоліо: блок ≥ min(80vh, 760px) заввишки (.hx .hero) — альбомне фото ширше за блок
+        ar = size(h['img'])[0] / size(h['img'])[1]  # (планшет 820×1180: 2:1 у кадрі 820×760 — потрібно ~1520 px, а не 100vw; аудит фото 16.11.2026)
+        if ar > 1:
+            h = dict(h, sizes=f'(max-width:767px) {ms}, max(100vw, min({80 * ar:g}vh, {760 * ar:g}px))')
     # m["sizes"] — свій sizes телефонного кадру (послуги/про/контакти/портфоліо: легша копія того ж кадру -m-<w>, sizes як у ПК — 100vw)
     src = (f'<source media="(max-width:767px) and (orientation:portrait)" srcset="{a(m["srcset"])}" sizes="{m.get("sizes", ms)}" width="{m["w"]}" height="{m["h"]}">'
            if m else '')
@@ -248,12 +252,19 @@ def team(x):
     return wrap(x, o, 'xs-team')
 
 
+def _wd(c):
+    """Альбомне фото (≥ 3:2) у стрічці портфоліо займає дві клітинки (.xs-proj a.wd, sections.v1.css): у кадрі 3:4 від 2:1 лишалось ~37 %
+    (аудит фото 16.11.2026: обкладинки Hoda Estate, USA House, Edelweiss)."""
+    w, h = size(c['img'])
+    return ' class="wd"' if w / h >= 1.5 else ''
+
+
 def project(x):
     meta = (f'<p class="xs-meta"><span class="xs-stat">{e(x["status"])}</span>{e(x["meta"])} · <a href="{a(x["href"])}">{e(x["open"])}</a></p>')
     o = (f'<div class="xs-head"><h2><a href="{a(x["href"])}">{e(x["h2"])}</a></h2>'
          + (f'<a href="{a(x["href"])}">{e(x["btn"])}</a>' if x.get('btn') else '') + '</div>' + meta + ''.join(f'<p>{rich(p)}</p>' for p in x.get('p', [])))
     o += (f'<div class="xs-st" tabindex="0" role="region" aria-label="{a(x["label"])}">'
-          + ''.join(f'<a href="{a(x["href"])}">{img(c, None, "(max-width:767px) 60vw, 300px")}</a>' for c in x['items']) + '</div>')
+          + ''.join(f'<a href="{a(x["href"])}"{_wd(c)}>{img(c, None, "(max-width:767px) 60vw, 300px")}</a>' for c in x['items']) + '</div>')
     return wrap(x, o, 'xs-proj')
 
 
