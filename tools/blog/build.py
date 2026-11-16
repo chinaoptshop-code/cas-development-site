@@ -576,7 +576,7 @@ def related_blocks(items_by_lang, n_show=3):
     return n
 
 
-BUDGET_LAND = 64 * 1024  # tools/ui/ui.py BUDGET html_kb land
+BUDGET_LAND = 64 * 1024 - 3072  # tools/ui/ui.py BUDGET html_kb land; запас 3 КБ — наступні кроки build-all (ux, сцени) ще додають розмітку
 
 
 def og_images(arts):

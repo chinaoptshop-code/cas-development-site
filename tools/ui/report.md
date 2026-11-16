@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 893 (MAIN 14, LAND 444, інші 358). HTML разом 47586 КБ, з них інлайн CSS 18173 КБ і JS 583 КБ.
+Сторінок: 893 (MAIN 14, LAND 444, інші 358). HTML разом 47585 КБ, з них інлайн CSS 18173 КБ і JS 583 КБ.
 
 ## Проблеми
 
@@ -43,15 +43,15 @@
 | blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html | article | 69.7 | 19.4 | 14.2 | 0.5 | 6 | 493 |
 | blog/komplektatsiia-interieru-samostiino-chy-z-komplektatorom.html | article | 64.6 | 20.5 | 14.2 | 0.5 | 6 | 454 |
 | about.html | main | 64.5 | 18.0 | 13.3 | 0.5 | 6 | 490 |
-| ru/stoimost-remonta-kvartiry-kiev.html | land | 64.3 | 17.3 | 15.1 | 2.4 | 6 | 550 |
 | blog/karkas-hazoblok-chy-brus-z-choho-buduvaty-budynok.html | article | 64.1 | 18.0 | 14.2 | 0.5 | 6 | 505 |
-| vartist-remontu-kvartyry-kyiv.html | land | 64.1 | 17.5 | 15.1 | 2.5 | 6 | 570 |
+| ru/stoimost-remonta-kvartiry-kiev.html | land | 64.0 | 17.3 | 15.1 | 2.4 | 6 | 549 |
 | blog/skilky-tryvaie-remont-kvartyry-v-novobudovi.html | article | 63.7 | 18.1 | 14.2 | 0.5 | 6 | 450 |
 | blog/rekonstruktsiia-chy-novyi-budynok.html | article | 63.6 | 17.5 | 14.2 | 0.5 | 6 | 454 |
 | blog/tekhnichnyi-nahliad-za-remontom-koly-potriben.html | article | 63.6 | 17.8 | 14.2 | 0.5 | 6 | 455 |
 | budivnytstvo-budynkiv-kyiv.html | land | 63.5 | 17.0 | 13.1 | 0.5 | 6 | 567 |
 | remont-ofisu-pid-klyuch-kyiv.html | land | 63.4 | 19.6 | 13.0 | 0.5 | 6 | 502 |
 | ru/remont-ofisa-kiev.html | land | 63.3 | 19.6 | 13.3 | 0.5 | 6 | 494 |
+| vartist-remontu-kvartyry-kyiv.html | land | 63.3 | 17.4 | 15.1 | 2.5 | 6 | 564 |
 | ru/stroitelstvo-domov-kiev.html | land | 63.2 | 17.0 | 13.3 | 0.5 | 6 | 564 |
 | blog/planuvalne-rishennia-koly-dostatno.html | article | 63.1 | 17.6 | 14.2 | 0.5 | 6 | 443 |
 | blog/remont-u-peredmisti-kyieva-shcho-vrakhuvaty.html | article | 63.1 | 17.8 | 14.2 | 0.5 | 6 | 446 |
