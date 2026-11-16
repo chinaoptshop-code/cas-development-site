@@ -30,7 +30,7 @@
  "hero_img": {
   "img": "img/hero-pidgirland-1280.webp",
   "srcset": "/img/hero-pidgirland-1280.webp 1280w, /img/hero-pidgirland-1920.webp 1920w",
-  "alt": "Вітальня-їдальня з дерев'яними панелями — дизайн-проєкт Pidgirland від CAS Development",
+  "alt": "Вітальня-їдальня з деревʼяними панелями — дизайн-проєкт Pidgirland від CAS Development",
   "sizes": "100vw",
   "m": {
    "srcset": "/img/hero-pidgirland-m-720.webp 720w, /img/hero-pidgirland-m-1080.webp 1080w, /img/hero-pidgirland-m-1440.webp 1440w",
@@ -809,7 +809,7 @@
      "img": "img/svc-renovation-600.webp",
      "srcset": "/img/svc-renovation-400.webp 400w, /img/svc-renovation-600.webp 600w",
      "price": "від $550 / м²",
-     "p": "Повний цикл будівельних та оздоблювальних робіт з гарантією. Від $550/м² — роботи й чорнові матеріали; чистові — окремо, за кошторисом.",
+     "p": "Повний цикл будівельних та оздоблювальних робіт з гарантією. У ціні — роботи й чорнові матеріали; чистові — окремо, за кошторисом.",
      "links": [
       [
        "/remont-pid-klyuch-kyiv",

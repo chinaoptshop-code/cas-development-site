@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 877 (MAIN 14, LAND 444, інші 352). HTML разом 46514 КБ, з них інлайн CSS 18023 КБ і JS 584 КБ.
+Сторінок: 877 (MAIN 14, LAND 444, інші 352). HTML разом 46511 КБ, з них інлайн CSS 18023 КБ і JS 584 КБ.
 
 ## Проблеми
 
@@ -20,17 +20,17 @@
 |---|---|---|---|---|---|---|---|
 | portfolio.html | main | 260.1 | 30.4 | 13.3 | 0.5 | 6 | 1904 |
 | ru/portfolio.html | main | 256.0 | 29.4 | 13.3 | 0.5 | 6 | 1856 |
-| ar/portfolio.html | main | 254.6 | 28.8 | 13.3 | 0.5 | 6 | 1834 |
-| es/portfolio.html | main | 246.5 | 28.0 | 13.3 | 0.5 | 6 | 1837 |
-| fr/portfolio.html | main | 245.1 | 28.0 | 13.3 | 0.5 | 6 | 1836 |
-| pl/portfolio.html | main | 244.9 | 28.1 | 13.3 | 0.5 | 6 | 1841 |
-| zh/portfolio.html | main | 243.6 | 28.4 | 13.3 | 0.5 | 6 | 1834 |
-| de/portfolio.html | main | 242.9 | 27.9 | 13.3 | 0.5 | 6 | 1837 |
+| ar/portfolio.html | main | 254.6 | 28.7 | 13.3 | 0.5 | 6 | 1834 |
+| es/portfolio.html | main | 246.0 | 27.9 | 13.3 | 0.5 | 6 | 1837 |
+| fr/portfolio.html | main | 244.5 | 27.9 | 13.3 | 0.5 | 6 | 1836 |
+| pl/portfolio.html | main | 244.2 | 27.9 | 13.3 | 0.5 | 6 | 1841 |
+| zh/portfolio.html | main | 242.9 | 28.3 | 13.3 | 0.5 | 6 | 1834 |
 | en/portfolio.html | main | 242.8 | 27.5 | 13.3 | 0.5 | 6 | 1842 |
+| de/portfolio.html | main | 242.2 | 27.7 | 13.3 | 0.5 | 6 | 1837 |
 | ozdoba/prais.html | other | 114.4 | 27.8 | 5.8 | 0.9 | 9 | 3024 |
 | ozdoba/komplekty.html | other | 105.8 | 24.9 | 32.4 | 1.4 | 14 | 1530 |
 | ozdoba.html | other | 95.5 | 21.5 | 30.1 | 0.7 | 13 | 760 |
-| index.html | main | 82.2 | 18.5 | 13.3 | 0.5 | 6 | 545 |
+| index.html | main | 82.1 | 18.4 | 13.3 | 0.5 | 6 | 545 |
 | blog.html | other | 78.8 | 20.2 | 13.5 | 0.5 | 6 | 440 |
 | pl/ozdoba.html | other | 76.1 | 18.1 | 30.7 | 0.7 | 13 | 619 |
 | ru/blog.html | other | 76.1 | 19.3 | 13.5 | 0.5 | 6 | 428 |
@@ -41,7 +41,7 @@
 | blog/inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit.html | article | 69.3 | 19.7 | 14.2 | 0.5 | 6 | 486 |
 | blog/remont-i-budivnytstvo-v-yevropi-z-ukrainskoiu-komandoiu.html | article | 68.7 | 19.1 | 14.2 | 0.5 | 6 | 520 |
 | blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html | article | 68.0 | 19.0 | 14.2 | 0.5 | 6 | 487 |
-| about.html | main | 64.0 | 17.4 | 13.3 | 0.5 | 6 | 490 |
+| about.html | main | 64.1 | 17.7 | 13.3 | 0.5 | 6 | 490 |
 | ru/stoimost-remonta-kvartiry-kiev.html | land | 63.7 | 17.2 | 15.1 | 2.4 | 6 | 549 |
 | budivnytstvo-budynkiv-kyiv.html | land | 63.4 | 17.0 | 13.1 | 0.5 | 6 | 568 |
 | vartist-remontu-kvartyry-kyiv.html | land | 63.0 | 17.3 | 15.1 | 2.5 | 6 | 564 |
@@ -74,7 +74,7 @@
 | dyzain-restoranu-kafe-kyiv.html | land | 58.9 | 16.1 | 13.0 | 3.3 | 6 | 523 |
 | ozdoba/stilets-krislo-obidnii-bukle-z-pidlokitnykamy-74.html | other | 58.8 | 15.5 | 32.4 | 0.7 | 14 | 342 |
 | ozdoba/krislo-launzh-vulychne-z-tyku-z-541.html | other | 58.7 | 15.4 | 32.4 | 0.7 | 14 | 343 |
-| ru/dizayn-interera-kiev.html | land | 58.6 | 15.7 | 13.7 | 0.5 | 6 | 562 |
+| ru/dizayn-interera-kiev.html | land | 58.7 | 15.7 | 13.7 | 0.5 | 6 | 562 |
 | ozdoba/lizhko-hotelne-z-shyrokym-uzholiviam-i-576.html | other | 58.5 | 15.5 | 32.4 | 0.7 | 14 | 341 |
 | ozdoba/dyvan-modulnyi-miakyi-2-sektsii-60.html | other | 58.4 | 15.5 | 32.4 | 0.7 | 14 | 344 |
 | ozdoba/krislo-vulychne-z-motuzkoiu-chorne-z-545.html | other | 58.4 | 15.3 | 32.4 | 0.7 | 14 | 341 |
@@ -510,8 +510,8 @@
 | pl/budowa-domow.html | land | 50.8 | 14.7 | 13.3 | 0.5 | 6 | 532 |
 | realizatsiia-dyzain-proektu-kyiv.html | land | 50.8 | 13.4 | 13.3 | 0.5 | 6 | 440 |
 | ru/remont-kvartir-zhk-kiev.html | land | 50.8 | 13.4 | 13.3 | 0.5 | 6 | 490 |
+| en/about.html | land | 50.7 | 13.5 | 13.3 | 0.5 | 6 | 476 |
 | proektuvannia-budynku-kyiv.html | land | 50.7 | 13.0 | 13.0 | 0.5 | 6 | 451 |
-| en/about.html | land | 50.6 | 13.5 | 13.3 | 0.5 | 6 | 476 |
 | remont-kvartyr-zhk-kyiv.html | land | 50.6 | 13.5 | 13.3 | 0.5 | 6 | 490 |
 | ru/realizatsiya-dizayn-proekta-kiev.html | land | 50.6 | 13.3 | 13.3 | 0.5 | 6 | 439 |
 | blog/koshtorys-na-remont-yak-chytaty.html | article | 50.5 | 14.0 | 14.2 | 0.5 | 6 | 395 |
@@ -605,7 +605,7 @@
 | remont-kvartyry-zhk-life-story.html | land | 47.8 | 13.0 | 13.3 | 0.5 | 6 | 427 |
 | ru/remont-kvartiry-zhk-life-story.html | land | 47.8 | 13.0 | 13.3 | 0.5 | 6 | 427 |
 | blog/proekt-budynku-shcho-vkhodyt.html | article | 47.7 | 13.3 | 14.2 | 0.5 | 6 | 382 |
-| de/ueber-uns.html | land | 47.7 | 13.3 | 13.3 | 0.5 | 6 | 452 |
+| de/ueber-uns.html | land | 47.7 | 13.2 | 13.3 | 0.5 | 6 | 452 |
 | remont-vannoi-kimnaty-kyiv.html | land | 47.7 | 12.7 | 13.3 | 0.5 | 6 | 437 |
 | remont-taunkhausa-kyiv.html | land | 47.6 | 12.8 | 13.3 | 0.5 | 6 | 418 |
 | ru/avtorskiy-i-tehnicheskiy-nadzor-kiev.html | land | 47.6 | 12.7 | 13.3 | 0.5 | 6 | 421 |
