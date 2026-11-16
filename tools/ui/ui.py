@@ -70,7 +70,7 @@ def analyse(rel):
         'tags': len(re.findall(r'<[a-zA-Z][^>]*>', body)),
         'img_no_size': sum(1 for i in imgs if not ('width=' in i and 'height=' in i)),
         'img_no_alt': sum(1 for i in imgs if ' alt=' not in i),
-        'fetchpriority_high': len(re.findall(r'fetchpriority="high"', s)),
+        'fetchpriority_high': len(re.findall(r'<img\b[^>]*fetchpriority="high"', s)),  # preload LCP-фото (link data-lcp) — не рахуємо
         'onclick_nav': len(re.findall(r'onclick="(?:goProject|go|filtToProject|location\.href)\(', s)),
         'h1_animated': bool(re.search(r'<h1[^>]*class="[^"]*\b(au|reveal|rv)\b', s)),
         'google_fonts': 'fonts.googleapis' in s,

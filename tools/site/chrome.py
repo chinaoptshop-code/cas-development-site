@@ -575,7 +575,9 @@ def mbar_logos(s):
     blk = s[k:e]
     for pre, (name, label) in MBAR_IMG.items():
         blk = re.sub(r'(<a href="' + re.escape(pre) + r'[^"]*"[^>]*>)\s*<svg\b.*?</svg>',
-                     lambda m: m.group(1) + f'<img src="/assets/brand/{name}.svg" width="32" height="32" alt="" decoding="async">', blk, flags=re.S)
+                     lambda m: m.group(1) + f'<img src="/assets/brand/{name}.svg" width="32" height="32" alt="" loading="lazy" decoding="async">', blk, flags=re.S)
+    # меню пігулки сховане (display:none) до тапу: lazy — логотипи не ділять канал з LCP-фото на першому завантаженні
+    blk = blk.replace('width="32" height="32" alt="" decoding="async">', 'width="32" height="32" alt="" loading="lazy" decoding="async">')
     return s[:k] + blk + s[e:]
 
 
@@ -612,7 +614,7 @@ def mbar_lead(s, lang, rel=''):
     one = MB_ONE.get(lang, MB_ONE['en'])[0]
     m = re.match(r'(<!--m-fix--><div class="mbar")[^>]*>\n?', blk)  # aria-label панелі — «Швидкий зв'язок» мовою сторінки (landing.py FORM_UK шукає його в шаблоні)
     body = blk[m.end():].strip('\n')
-    vb = '' if 'viber://' in body else f'<a class="mb-vb" href="{VIBER}" target="_blank" rel="noopener"><img src="/assets/brand/viber.svg" width="32" height="32" alt="" decoding="async">Viber</a>\n'
+    vb = '' if 'viber://' in body else f'<a class="mb-vb" href="{VIBER}" target="_blank" rel="noopener"><img src="/assets/brand/viber.svg" width="32" height="32" alt="" loading="lazy" decoding="async">Viber</a>\n'
     aria = ((i18n.ui(lang) or {}).get('form') or {}).get('mbar') or {'ru': 'Быстрая связь'}.get(lang, "Швидкий зв'язок")
     out = (f'{m.group(1)} data-one role="navigation" aria-label="{aria}">\n'
            f'<button type="button" class="mb-tg" aria-expanded="false" aria-controls="mb-menu">{one}</button>\n'
@@ -649,6 +651,8 @@ SPEC = ('<script type="speculationrules">'
 SPEC_RX = re.compile(r'<script type="speculationrules">.*?</script>\n?', re.S)
 # LCP-фото (img з fetchpriority="high"): preload у <head>, щоб браузер почав вантажити його разом зі шрифтами,
 # не чекаючи розбору інлайн-стилів. Атрибути (srcset/sizes) — ті самі, що в <img>, тож подвійного завантаження немає.
+# fetchpriority="high" і на preload: без нього Chrome вантажить preload-фото з пріоритетом Low (як звичайне <img> до розкладки)
+# і ділить канал зі шрифтами й фото нижче — на телефоні 1.6 Мбіт/с LCP лендингів 2.4–2.5 с (аудит 16.11.2026).
 LCP_RX = re.compile(r'<link rel="preload" as="image" data-lcp[^>]*>\n?')
 
 
@@ -680,9 +684,9 @@ def head_extras(s):
         for src in srcs:
             if _attr(src, 'media') and _attr(src, 'srcset') and not _attr(src, 'type'):
                 medias.append(_attr(src, 'media'))
-                add += (f'<link rel="preload" as="image" data-lcp imagesrcset="{_attr(src, "srcset")}"'
+                add += (f'<link rel="preload" as="image" data-lcp fetchpriority="high" imagesrcset="{_attr(src, "srcset")}"'
                         + (f' imagesizes="{_attr(src, "sizes")}"' if _attr(src, 'sizes') else '') + f' media="{_attr(src, "media")}">\n')
-        link = f'<link rel="preload" as="image" data-lcp href="{_attr(t, "src")}"'
+        link = f'<link rel="preload" as="image" data-lcp fetchpriority="high" href="{_attr(t, "src")}"'
         if _attr(t, 'srcset'):
             link += f' imagesrcset="{_attr(t, "srcset")}"' + (f' imagesizes="{_attr(t, "sizes")}"' if _attr(t, 'sizes') else '')
         if len(medias) == 1:

@@ -270,6 +270,12 @@
 
   [marquee, accordion, magnet].forEach(function (f) { try { f(); } catch (e) {} });
 })();
+// ── «Перейти до змісту» (a.skip): фокус переходить у <main> (tabindex=-1 ставимо лише тут), наступний Tab — перший елемент змісту
+(function () {
+  var s = document.querySelector('a.skip[href="#main"]'), m = document.getElementById('main');
+  if (!s || !m) return;
+  s.addEventListener('click', function () { if (!m.hasAttribute('tabindex')) m.setAttribute('tabindex', '-1'); try { m.focus({ preventScroll: true }); } catch (x) { m.focus(); } });
+})();
 // ── Кнопка «Зв'язатися» (.mbar[data-one], tools/site/chrome.py mbar_lead): тап — меню (Подзвонити, Telegram, WhatsApp, Viber, «Залишити номер»);
 // закривається повторним тапом, тапом поза меню, Esc і після вибору пункту. «Залишити номер» прокручує до форми — /assets/lead-form.v1.js.
 (function () {
@@ -326,6 +332,8 @@
   d.addEventListener('focusout', function () { setTimeout(function () { if (!isField(d.activeElement)) h.classList.remove('mb-kbd'); }, 60); });
   // якір (#zayavka тощо): після переходу шапка й панель видимі
   W.addEventListener('hashchange', function () { acc = 0; set(false); });
+  // клавіатура (зокрема ПК із зумом 200 %+, де діє телефонний макет): фокус у схованій шапці чи пігулці — показуємо їх (WCAG 2.4.7)
+  d.addEventListener('focusin', function (e) { var t = e.target; if (hid && t && t.closest && t.closest('.sch,.mbar')) { acc = 0; set(false); } });
 })();
 // ── Компактні блоки: довгі списки на телефоні згорнуті до N пунктів + кнопка «Показати ще» (плавне розкриття).
 // Розмітка: data-compact="6" на контейнері (діти — пункти); також автоматично для списків з COMPACT нижче.

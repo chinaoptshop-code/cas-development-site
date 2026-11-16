@@ -127,9 +127,12 @@
   // стан кнопки: «надсилаємо…» зі спінером (CSS .lf-busy) і назад
   function busy(btn, on, text) {
     if (!btn) return;
+    if (on) btn._lfFocus = document.activeElement === btn;
     btn.disabled = on; btn.classList.toggle('lf-busy', on);
     if (on) btn.setAttribute('aria-busy', 'true'); else btn.removeAttribute('aria-busy');
     if (text != null) btn.textContent = text;
+    // disabled знімає фокус з кнопки (він падає на <body>): після відповіді повертаємо його, щоб клавіатура й зчитувач не губили місце
+    if (!on && btn._lfFocus && (!document.activeElement || document.activeElement === document.body)) { btn._lfFocus = false; try { btn.focus({ preventScroll: true }); } catch (x) {} }
   }
 
   // заявка йде паралельно в CRM сайту (/api/leads → D1 + миттєве сповіщення в Telegram) і в n8n (старий ланцюжок);
