@@ -123,7 +123,7 @@ html.sch-lock .mbar{display:none!important}
 .scf address{font-style:normal;color:var(--c-tx)}
 .scf-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.125rem;font-weight:600;color:var(--c-tx);text-decoration:none}
 /* месенджери й соцмережі — один ряд однакових кнопок-іконок (Михайло 08.11.2026), назва — aria-label/title */
-.scf-soc{display:flex;flex-wrap:nowrap;gap:clamp(2px,calc((100% - 7 * 2.875rem) / 6),.5rem)}.scf-soc a{display:inline-flex;flex:0 1 auto;min-width:0;align-items:center;justify-content:center;width:2.875rem;height:2.875rem;border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}.scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}.scf-soc .bi::before{width:1.375rem;height:1.375rem}
+.scf-soc{display:flex;flex-wrap:nowrap;gap:clamp(2px,calc((100% - 7 * 2.875rem) / 6),.5rem)}.scf-soc a{display:inline-flex;flex:0 1 auto;min-width:0;align-items:center;justify-content:center;width:max(44px,2.875rem);height:max(44px,2.875rem);border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}.scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}.scf-soc .bi::before{width:1.375rem;height:1.375rem}
 .scf .scf-svc{position:static;margin:32px 0 0;padding:16px 0 0;border:0;border-top:1px solid var(--c-ln)}
 .scf .scf-svc summary{display:flex;align-items:center;justify-content:center;min-height:44px;list-style:none;cursor:pointer;
   font-size:.75rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--c-ac);float:none}
@@ -236,7 +236,7 @@ details.o-more>summary::before{content:"+ "}details.o-more[open]>summary::before
 /* місце швидкої заявки до ліниво зібраної форми (lead-form.v1.js будує її за ~3 екрани): резерв висоти — без стрибка вмісту при швидкій прокрутці (CLS). Значення — мінімальні виміряні висоти форм (360–1440 px) */
 .js .lq-slot[data-form]:empty{margin-top:28px;min-height:250px}
 /* одна форма на сторінку: є form#of — місце .lq-slot стає кнопкою .lq-go (lead-form.v1.js), резерв — лише під кнопку */
-.js body:has(#of) .lq-slot[data-form]:empty{min-height:48px!important}.lq-slot>.lq-go{display:inline-flex}.bz-cta:has(.lq-go)>h3{display:none}.js .lq-slot[data-form$="-end"]:empty{margin-top:0;min-height:130px}
+.js body:has(#of) .lq-slot[data-form]:empty{min-height:48px!important}.lq-slot>.lq-go{display:inline-flex}.bz-cta:has(.lq-go)>h3{display:none}.bz-cta:has(.lq-go){padding:0;border:0;background:none;margin-top:16px} /* лише кнопка — без порожньої картки-рамки (16.11.2026) */.js .lq-slot[data-form$="-end"]:empty{margin-top:0;min-height:130px}
 @media(min-width:768px){.js .lq-slot[data-form]:empty{min-height:200px}html[lang=en].js .lq-slot[data-form]:empty{min-height:236px}html[lang=en].js .lq-slot[data-form$="-end"]:empty{min-height:78px}.js .lq-slot[data-form$="-end"]:empty{min-height:78px}}
 .lq-wide{max-width:1180px;padding:0 22px;margin:40px auto 0;box-sizing:border-box}
 /* мікровзаємодія кнопки й стани «надсилаємо…/дякуємо» */
@@ -412,7 +412,8 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
 
 /* ── Компактні блоки */
 .cmp-cut>.cmp-x{display:none!important}
-.cmp-more{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:48px;margin:14px 0 0;padding:0 18px;border:1px solid rgba(191,145,72,.35);border-radius:0;
+/* «Показати ще» — той самий вигляд, що «Читати далі» (.c-b): округла контурна кнопка від початку рядка (16.11.2026, було квадратне на всю ширину) */
+.cmp-more{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:auto;max-width:100%;min-height:44px;margin:14px 0 0;padding:0 20px;border:1px solid rgba(191,145,72,.45);border-radius:999px;
   background:none;color:var(--ac,#BF9148);font:600 .8125rem/1.2 "Manrope","Manrope Fallback",system-ui,sans-serif;letter-spacing:.02em;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .cmp-more::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .4s var(--ease-out)}
 .cmp-more[aria-expanded="true"]::after{transform:translateY(2px) rotate(225deg)}
@@ -694,6 +695,9 @@ main :is(p,li,figcaption) a:not(.btn){overflow-wrap:anywhere}
 /* Ритм секцій (блочність, 04.11.2026): одна шкала вертикальних відступів у rem — телефон 2.75rem, з 768 px 3.5rem (на широких росте з коренем);
    плитки LIGHT ([data-c=x]) мають свою сітку з gap, карти й якорі без відступів — їх не чіпаємо */
 :root{--sp-sec:2.75rem}@media(min-width:768px){:root{--sp-sec:3.5rem}}
+/* Дрібний текст на телефонах (16.11.2026): --fs-small (крихти, підписи полів, «Або напишіть», підписи фото) — не менше 13 px,
+   текст кнопок (.btn, кнопка заявки) — 14 px; на ПК шкала без змін */
+@media(max-width:767px){html:root{--fs-small:.8125rem}html body :is(.btn,.lq-b){font-size:.875rem}}
 html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]),.pmap,#karta,#faq){padding-block:var(--sp-sec)}
 /* ── Широкі екрани (Михайло 03.11.2026: «щоб усе читабельно було на різних девайсах»). Флюїдний масштаб:
    до 1366 px — як було (корінь 16 px); далі корінь росте до ~19 px на 1920, ~22 px на 2560 (стеля 24 px) → усі rem/em
@@ -702,7 +706,12 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
 @media(min-width:1367px){
   html:root{font-size:clamp(16px,calc(.5025vw + 9.14px),24px);--cw:clamp(1080px,calc(60vw + 336px),2400px);--sch-h:calc(clamp(64px,4rem,92px) + env(safe-area-inset-top,0px))}
   html body .w,html body .gd-slot,html body .lq-wide,html body .pmap,html body .bz[data-bz-c]>.w{max-width:var(--cw)}
-  html body .w,html body .lq-wide,html body .bz[data-bz-c]>.w{padding-inline:clamp(16px,1.5rem,40px)}
+  html:root{--gut:clamp(16px,1.5rem,40px)}
+  html body .w,html body .lq-wide,html body .bz[data-bz-c]>.w{padding-inline:var(--gut)}
+  /* одна лінія лівого краю (16.11.2026): інлайн-стилі сторінок задають .w.hero/.w.crumbs{padding:16px} — на широких це зсувало H1 і крихти
+     на 8–12 px від секцій і плиток; тепер hero, крихти, секції й сітка плиток LIGHT (--uxp) стоять на одному відступі --gut */
+  html body .w.hero,html body .w.crumbs{padding-inline:var(--gut)}
+  html.js :where(main,main>div[id^="p-"]):where([data-xg])>.w.crumbs{padding-inline:0}
   html body .sch-in{max-width:max(1360px,calc(var(--cw) + 16rem));padding-inline:clamp(28px,2rem,48px)}
   html body .scf-in{max-width:var(--cw)}
   html body .scf-svc-g{max-width:calc(var(--cw) - 4rem)}
@@ -730,7 +739,7 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
   /* стрічка фото: цілі кадри на всю ширину контейнера */
   html body .xs-st{grid-auto-columns:calc((100% - 4 * 12px) / 5);gap:12px}
   /* легкі сторінки (ux.py LIGHT): сітка плиток на ширину контейнера, самотня плитка — банер, а не екран-картинка */
-  html.js :is(main,main>div[id^="p-"])[data-xg][data-xg]:is(main,div){--uxp:max(16px,(100vw - var(--cw))/2 + 1rem);column-gap:14px}
+  html.js :is(main,main>div[id^="p-"])[data-xg][data-xg]:is(main,div){--uxp:max(16px,(100vw - var(--cw))/2 + var(--gut));column-gap:14px}
   .js [data-c=x]::before{max-height:min(36vh,16rem);min-width:calc(100% + 32px)}
   /* сітки карток: мінімальна ширина в rem — колонок більше, але картки не дрібнішають разом із текстом */
   html body .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}
@@ -816,7 +825,7 @@ html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.pr
 .pmap{max-width:1180px;margin:0 auto;padding:64px 22px 24px}.pmap-h{margin:0 0 10px}.pmap-sub{margin:0 0 24px}.pmap-note{font-size:var(--fs-small,.8125rem);margin:12px 0 0}.pmap-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}.pmap .cmap{aspect-ratio:1/1}
 @media(min-width:900px){.pmap-grid{grid-template-columns:minmax(0,1fr) 320px}.pmap .cmap{aspect-ratio:16/10}.pmap .cmap-list{height:0;min-height:100%;overflow:auto}}
 .cmap{overflow:hidden}.cmap-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}.cmap .cmap-cv{position:absolute;inset:0;width:100%;height:100%}
-.cmap-list{list-style:none;margin:0;padding:0;border:1px solid var(--bd,rgba(191,145,72,.18));border-radius:4px}.cmap-list li{display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--bd,rgba(191,145,72,.14))}.cmap-list li:last-child{border-bottom:0}.cmap-list a b{font-weight:600}.cmap-list a span{font-size:var(--fs-small,.8125rem);letter-spacing:.04em}.cmap-list a{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;padding:10px 4px 10px 14px;min-height:44px}
+.cmap-list{list-style:none;margin:0;padding:0;border:1px solid var(--bd,rgba(191,145,72,.18));border-radius:14px}.cmap-list li{display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--bd,rgba(191,145,72,.14))}.cmap-list li:last-child{border-bottom:0}.cmap-list a b{font-weight:600}.cmap-list a span{font-size:var(--fs-small,.8125rem);letter-spacing:.04em}.cmap-list a{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;padding:10px 4px 10px 14px;min-height:44px}
 .cmap-fly{flex:none;width:44px;height:44px;margin-right:4px}.cmap-fly svg{width:20px;height:20px}.js .cmap-list .cmap-fly[hidden]{display:inline-grid;visibility:hidden}
 /* Компактний футер (Михайло 08.11.2026): мови — коди UA RU EN… в один ряд, політика й © — один блок;
    на телефоні без порожнечі під футером — політика й © стоять поруч із пігулкою «Зв'язатися» */
@@ -854,6 +863,8 @@ html body .hxl>.hero{min-height:min(60vh,50vw,36rem);display:flex;flex-direction
 @media(max-width:767px){html body .hxl>.hero{min-height:min(62vh,125vw);min-height:min(62svh,125vw);padding-top:4.5rem;padding-bottom:1.5rem}
   .hxl::before,[dir=rtl] .hxl::before{background:linear-gradient(0deg,var(--bg) 2%,rgba(8,7,9,.84) 38%,rgba(8,7,9,.3) 72%,rgba(8,7,9,.12) 100%)}}
 .crumbs+.hxl{margin-top:-.25rem}
+/* крихти у 2 рядки на телефоні (довга назва лендингу): другий рядок налазив на фото hero — відступ замість від’ємного поля (16.11.2026) */
+@media(max-width:767px){.crumbs+.hxl{margin-top:.375rem}}
 /* Фото нижче першого екрана з data-srcset/data-p (ux.py: плитки, банери, тизери) — без JS не показуємо порожній кадр (тизер — фото в <noscript>) */
 html:not(.js) img:is([data-srcset],[data-p]){display:none}
 /* «Карта проєктів» (Михайло 08.11.2026): main — сітка LIGHT, секція карти з margin:auto стискалась до ~500 px — розтягуємо на весь ряд */
@@ -863,7 +874,7 @@ html body main>.pmap{grid-column:1/-1;width:100%;box-sizing:border-box}
 .js [data-c=x]:not(.c-o):has(>.ux-wb){width:100%;box-sizing:border-box}
 /* футер, соцмережі (11.11.2026): 7 кнопок 46 px + проміжки не влазили в 328 px (360) — горизонтальна прокрутка 26 px на всіх сторінках;
    на вузьких телефонах кнопки 44 px, проміжок ділить залишок ряду (один ряд, як і раніше) */
-@media(max-width:419px){.scf-soc{gap:clamp(0px,calc((100% - 7 * 2.75rem) / 6),.5rem)}.scf-soc a{width:2.75rem;height:2.75rem}}
+@media(max-width:419px){.scf-soc{gap:clamp(0px,calc((100% - 7 * 2.75rem) / 6),.5rem)}.scf-soc a{width:max(44px,2.75rem);height:max(44px,2.75rem)}}
 /* футер на планшетах і ноутбуках (11.11.2026): ряд соцмереж ~23.1rem не влазив у третю колонку (768–1240 px) — вилазив за край,
    а колонка «Контакти» стискалась до слова в рядку. 760–1099: бренд і контакти поруч, месенджери — окремим рядом; з 1100 — третя колонка не вужча за ряд */
 @media(min-width:760px) and (max-width:1099px){.scf-top{grid-template-columns:1.3fr 1fr}.scf-top>.scf-col:last-child{grid-column:1/-1}}

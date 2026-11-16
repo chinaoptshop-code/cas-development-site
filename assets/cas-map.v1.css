@@ -1,5 +1,5 @@
 /* CAS map — блок «Карта» UI-kit (/styleguide/#map). Розмітка: tools/site/casmap.py, логіка: /assets/cas-map.v1.js */
-.cmap{scroll-margin-top:84px;position:relative;overflow:hidden;background:#0d0c0b;border:1px solid rgba(191,145,72,.3);border-radius:4px;aspect-ratio:16/10;isolation:isolate;color:#ede8df}
+.cmap{scroll-margin-top:84px;position:relative;overflow:hidden;background:#0d0c0b;border:1px solid rgba(191,145,72,.3);border-radius:14px;aspect-ratio:16/10;isolation:isolate;color:#ede8df}
 .cmap[data-cas-map=office]{aspect-ratio:4/3;max-height:520px;width:100%}
 .cmap-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity .6s ease}
 .cmap-ready .cmap-poster{opacity:0;pointer-events:none}
@@ -20,7 +20,7 @@
 .pmap-sub{color:var(--mu,#938c84);margin:0 0 24px}
 .pmap-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
 .pmap .cmap{aspect-ratio:1/1}
-.cmap-list{list-style:none;margin:0;padding:0;border:1px solid var(--bd,rgba(191,145,72,.18));border-radius:4px}
+.cmap-list{list-style:none;margin:0;padding:0;border:1px solid var(--bd,rgba(191,145,72,.18));border-radius:14px}
 .cmap-list li{display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--bd,rgba(191,145,72,.14))}
 .cmap-list li:last-child{border-bottom:0}
 .cmap-list li.on{background:rgba(191,145,72,.1)}

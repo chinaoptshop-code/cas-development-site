@@ -169,7 +169,8 @@ def upgrade_form(s, lang):
         return tg
     f = re.sub(r'<input[^>]*\bid="oPhone"[^>]*>', ph, f, count=1)
     f = re.sub(r'(<input[^>]*\bid="oName"[^>]*?)\s+required(?:="[^"]*")?', r'\1', f, count=1)
-    # кнопка
+    # кнопка: одна основна (заливка) — клас «btn main» на всіх сторінках (16.11.2026: на uk-контактах була контурна)
+    f = re.sub(r'<button[^>]*\bid="oBtn"[^>]*>', lambda x: x.group(0) if re.search(r'class="[^"]*\bmain\b', x.group(0)) else re.sub(r'class="([^"]*)"', lambda c: f'class="{(c.group(1) + " main").strip()}"', x.group(0), count=1), f, count=1)
     f = re.sub(r'(<button[^>]*\bid="oBtn"[^>]*>)(.*?)(</button>)', lambda x: x.group(1) + _keep(x.group(2), e(t['send'])) + x.group(3), f, count=1, flags=re.S)
     s = s[:lo] + f + s[hi:]
     hi = s.find('</form>', lo)
