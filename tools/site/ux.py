@@ -366,12 +366,12 @@ def _light_custom(m, rel):
 # замість FLUX-ілюстрації 480×320 — світлий рендер проєкту CAS (img/p/wide-<назва>-800/1200/1400|1600.webp + AVIF, tools/img/build.py),
 # object-position — головне (диван/зал) у кадрі; alt — мовою сторінки. Ключ — тема H2 плитки (data-i), решта тем — WIDE_FB.
 WIDE = {
-    'dm': ('studio', (800, 1200, 1600, 2400), '50% 55%'),
-    'os': ('living', (800, 1200, 1600, 2400), '35% 60%'),
-    'st': ('house', (800, 1200, 1600, 2400), '40% 60%'),
-    'nf': ('lounge', (800, 1200, 1600, 2400), '40% 60%'),
-    'fq': ('lounge', (800, 1200, 1600, 2400), '40% 60%'),
-    'gu': ('living', (800, 1200, 1600, 2400), '35% 60%'),
+    'dm': ('studio', (800, 1200, 1600, 2400, 3000), '50% 55%'),  # 3000/3200 — 1920@2 (банер ~1430 px × 2; warn-fix 16.11.2026)
+    'os': ('living', (800, 1200, 1600, 2400, 3200), '35% 60%'),
+    'st': ('house', (800, 1200, 1600, 2400, 3200), '40% 60%'),
+    'nf': ('lounge', (800, 1200, 1600, 2400, 3000), '40% 60%'),
+    'fq': ('lounge', (800, 1200, 1600, 2400, 3000), '40% 60%'),
+    'gu': ('living', (800, 1200, 1600, 2400, 3200), '35% 60%'),
     'pj': ('monpark', (800, 1200, 1600), '50% 55%'),
 }
 WIDE_FB = 'dm'
@@ -531,19 +531,59 @@ def _tp_lin(span, cols, gap, a, b):
 def _tp_sizes(sp, f=1.0):
     """sizes плитки: модель «LIGHT-сітки» (site-chrome.v1.css): сітка = 100vw − 32 до 1080, 1048 px до 1366, далі --cw − 2rem;
     gap 10 / 12 (з 760) / 14 px (з 1367); span — --s2/--s3/--s4/--s6 або 12/N. Коротко (бюджет HTML 64 КБ): vw з 1 знаком."""
-    def cl(a, b):
+    fs = f if isinstance(f, tuple) else (f,) * 4  # поправка на обрізку: телефон, 760–1366, 1367–2199, ≥ 2200
+
+    def cl(a, b, f=1.0):
         a, b = a * f, b * f
         if not a:
             return f'{b:.0f}px'
         v = f'{a * 100:.1f}'.rstrip('0').rstrip('.')
         return f'calc({v}vw {"+" if b >= 0 else "-"} {abs(b):.0f}px)'
     # 760–1366: формула 3 у ряд (з 1100 — 4 у ряд, файл трохи більший; коротше — бюджет HTML 64 КБ)
-    out = [f'(max-width:759px) {cl(*_tp_lin(sp[2], 2, 10, 1, -32))}', f'(max-width:1366px) {cl(*_tp_lin(sp[3], 3, 12, 1, -32))}',
+    out = [f'(max-width:759px) {cl(*_tp_lin(sp[2], 2, 10, 1, -32), fs[0])}', f'(max-width:1366px) {cl(*_tp_lin(sp[3], 3, 12, 1, -32), fs[1])}',
            # з 1367: --cw − 2rem ≈ .6vw + 336 − 2(.5025vw + 9.14) = .59vw + 317.7
-           cl(*_tp_lin(sp[4], 4, 14, .59, 317.7))]  # з 2200 (6 у ряд) — та сама формула: файл трохи більший, зате коротше (бюджет HTML)
-    if sp.get(6, 2) / 6 > sp[4] / 4 + .01:  # з 2200 плитка ширша, ніж у 4 в ряд (неповний ряд 6-колонки: 2 плитки по пів ряду ≈ 905 px на 2560,
-        out[-1] = f'(max-width:2199px) {out[-1]},{cl(*_tp_lin(sp[6], 6, 14, .59, 317.7))}'  # а sizes давав 448 px — аудит фото 16.11.2026)
+           cl(*_tp_lin(sp[4], 4, 14, .59, 317.7), fs[2])]  # з 2200 (6 у ряд) — та сама формула: файл трохи більший, зате коротше (бюджет HTML)
+    if sp.get(6, 2) / 6 > sp[4] / 4 + .01 or fs[3] > fs[2] + .04:  # з 2200 плитка ширша, ніж у 4 в ряд (неповний ряд 6-колонки: 2 плитки по пів ряду
+        out[-1] = f'(max-width:2199px) {out[-1]},{cl(*_tp_lin(sp[6], 6, 14, .59, 317.7), fs[3])}'  # ≈ 905 px на 2560, а sizes давав 448 px — аудит фото 16.11.2026)
     return ','.join(out)
+
+
+# Широкі плитки (warn-fix 16.11.2026): плитка з фіксованою висотою з 760 px на пів ряду — кадр ~1.7–2.4:1, портрет 4:5 там видно на 40–45 %.
+# Модель кадру плитки (site-chrome.v1.css «LIGHT-сітка»): ширина — як у _tp_sizes, висота — 4:5 (16:10 на весь ряд) до 760,
+# далі clamp(15rem, 22vw | 15vw з 2200, 26rem). Плитка, де 4:5 втрачає > 45 % кадру хоч на одній ширині, бере кадр 4:3 того ж фото
+# (img/p/tl-<id>-600…1600, tools/img/crops.json → originals.py) або альбомне фото з пулу.
+TP_W = (360, 402, 430, 760, 820, 1024, 1099, 1100, 1280, 1440, 1920, 2199, 2200, 2560)
+
+
+def _tp_aspect(W, sp):
+    rem = 16 if W < 1367 else min(24, max(16, .005025 * W + 9.14))
+    g = W - 32 if W < 1080 else 1048 if W < 1367 else min(2400, max(1080, .6 * W + 336)) - 2 * rem
+    gap = 10 if W < 760 else 12 if W < 1367 else 14
+    c = 2 if W < 760 else 3 if W < 1100 else 4 if W < 2200 else 6
+    if W < 760:
+        return 1.6 if sp[2] == 12 else .8
+    s = sp[c]
+    return ((g - 11 * gap) * s / 12 + gap * (s - 1)) / min(26 * rem, max(15 * rem, (.22 if W < 2200 else .15) * W))
+
+
+def _tp_loss(a, sp):
+    return max(1 - min(a / x, x / a) for x in (_tp_aspect(W, sp) for W in TP_W))
+
+
+def _tp_factors(a, sp):
+    """Поправка sizes на обрізку cover по діапазонах _tp_sizes: файл ширший за кадр, коли фото ширше за плитку."""
+    rng = ((0, 759), (760, 1366), (1367, 2199), (2200, 9999))
+    fs = (max([1.0] + [a / _tp_aspect(W, sp) for W in TP_W if lo <= W <= hi]) for lo, hi in rng)
+    return tuple(round(f, 2) if f >= 1.05 else 1.0 for f in fs)  # < 5 % — без поправки (коротше; браузер і так бере файл із запасом)
+
+
+def _tp_wide(sp):
+    return bool(sp) and _tp_loss(.8, sp) > .45
+
+
+def _tp_ar(pid):
+    _, w, h = _tp_files(pid)[-1]
+    return w / h
 
 
 def _tp_img(pid, slug, lang, sp, eager=False, wmin=400):
@@ -554,7 +594,7 @@ def _tp_img(pid, slug, lang, sp, eager=False, wmin=400):
     sp = sp or {2: 12, 3: 12, 4: 12, 6: 12}
     _, w, h = fs[-1]
     mid = next((x for x in fs if x[0] >= 900), fs[-1])[0]
-    f = max(1.0, round(w / h / .8, 2))  # альбомне фото в плитці 4:5 обрізається з боків — файл ширший за плитку
+    f = _tp_factors(w / h, sp)  # альбомне фото у вужчій плитці обрізається з боків — файл ширший за плитку
     # перший ряд під hero — eager (src); решта — data-srcset без src: вантажить site-chrome.v1.js лише при наближенні прокрутки (~350 px),
     # а не за ~1250 px, як нативний lazy Chrome на телефоні (Михайло 08.11.2026); без JS плитки й так без фото (.ux-tp — лише в .js)
     # Відкладене — коротко (бюджет HTML 64 КБ): data-p="<id>:<ширини>" → srcset /img/p/<id>-<w>.webp <w>w (JS; ширина в назві = ширина файла)
@@ -657,17 +697,33 @@ TP_GENERIC = {'re', 'de', 'fu', 'pm', 'fl', 'cs'}  # ключі-дії («рем
 # (аудит фото 16.11.2026: «Інтерʼєр, що працює на виручку» на ресторанах показував спальню Tetris Hall, «Меблі під ключ… магазинів» — салон краси)
 
 
-def _tp_pick(cat, key, used, k):
+def _tp_land(pid, sp):
+    """Файл-база для широкої плитки: саме фото, якщо воно альбомне й велике, або його кадр 4:3 tl-<id>; None — не годиться."""
+    for b in (pid, f'tl-{pid}'):
+        if os.path.exists(os.path.join(ROOT, f'img/p/{b}-900.webp')) and _tp_files(b)[-1][1] >= 1200 and _tp_loss(_tp_ar(b), sp) <= .46:
+            return b
+    return None
+
+
+def _tp_pick(cat, key, used, k, sp=None, own=frozenset()):
     gen = key in TP_GENERIC and cat != 'mix'
     order = [TP_KEY[key]] if key in TP_KEY and not gen else []
     order += [cat] if cat != 'mix' else [TP_MIX[(k + j) % len(TP_MIX)] for j in range(len(TP_MIX))]
     order += [TP_KEY[key]] if gen else []
     order += TP_MIX
-    for c in order:
-        for pid, slug in TP[c]:
-            if pid not in used:
-                used.add(pid)
-                return pid, slug
+    wide = _tp_wide(sp)
+    # широка плитка — спершу фото з альбомним кадром тієї ж теми; пул вичерпано фото сторінки (портфоліо: стрічки показують усі
+    # проєкти) — друге коло: без повтору між плитками, повтор зі стрічкою допустимий
+    for taken in (lambda p: p in used, lambda p: p in used and p not in own):
+        for need in ((True, False) if wide else (False,)):
+            for c in order:
+                for pid, slug in TP[c]:
+                    if taken(pid):
+                        continue
+                    b = _tp_land(pid, sp) if need else pid
+                    if b:
+                        used.add(pid)
+                        return b, slug
     return TP['int'][0]
 
 
@@ -800,10 +856,9 @@ def _spans(m, lang='', rel=''):
     if '<div class="hxl">' in m and cat in HERO:  # фото hero не повторюємо в плитках
         used.add(CROPS[f'img/p/hxm-{cat}']['src'].split('/')[-1])
     # фото, що вже є на сторінці (галерея проєктів, тизер, кейс), у плитках не повторюємо (аудит фото 16.11.2026: «Галерея» і плитка
-    # з тим самим кадром на будівництві/ресторанах/базі відпочинку); портфоліо (сотні фото в стрічках) — лише плитки між собою
+    # з тим самим кадром на будівництві/ресторанах/базі відпочинку)
     own = set(re.findall(r'/img/p/([\w-]+?)-\d+\.webp', TP_RX.sub('', m)))
-    if len(own) <= 60:
-        used |= own
+    used |= own  # і на портфоліо (warn-fix 16.11.2026); якщо пул вичерпано фото сторінки — _tp_pick бере друге коло (без повтору між плитками)
     # перший ряд фото-плиток одразу під hero (до 2 блоків перед ним: крихти, hero) — у першому екрані: без lazy (LCP), решта — lazy
     real = [x for x in kids if x[2] is not None]
     top = bool(runs) and len(runs[0]) > 1 and next(i for i, x in enumerate(real) if x[0] == runs[0][0][0]) <= 2
@@ -832,7 +887,7 @@ def _spans(m, lang='', rel=''):
                 at = inner(pos, otag)
                 if at > 0:
                     h = re.search(r'<h2[^>]*\bdata-i="(\w+)"', m[at:at + 600])
-                    pid, slug = _tp_pick(cat, h.group(1) if h else '', used, k)
+                    pid, slug = _tp_pick(cat, h.group(1) if h else '', used, k, sp, own)
                     k += 1
                     edits.append((at, _tp_img(pid, slug, lang, sp, top and run is runs[0] and i < 2)))
     for at, ins in reversed(edits):

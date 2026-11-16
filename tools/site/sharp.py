@@ -13,6 +13,7 @@
 
 Слоти: strip (.xs-st; головна — .hx-home), proj (.xs-proj .xs-st, портфоліо — компактно через бюджет HTML),
 covers (.xs-cv), svc (.xs-sv, з урахуванням flex-рядів; на головній — карусель), split (.xs-pic), pg (галерея /proekty, компактно), hero (.hx — лише ширші файли),
+gal (.gal лендингів), af / agf (фото статей блогу), tph (фото на сторінках дизайнера, captions.py),
 hxl (hero лендингів, tools/site/ux.py _hero_photo: телефон — кадр 4:5 у блоці ≤125vw заввишки, ПК — 2:1 у блоці ≤50vw; слот = 100vw, srcset ставить ux.py).
 Перевірка: python3 tools/site/sharp.py --check (сторінки, де apply() щось змінив би).
 """
@@ -88,6 +89,19 @@ def w_svc(vw, i, n, home):
     return w, max(1.6, w / (12 * rem(vw)))
 
 
+def w_gal(vw):
+    """Галерея лендингів (.gal: auto-fill minmax(240px,1fr), gap 10; до 599 — 2 колонки, gap 6; рамка 1 px), кадр 4:3."""
+    c = cont(vw)
+    if vw <= 599: return (c - 6) / 2 - 2
+    n = max(1, int((c + 10) // 250))
+    return (c - (n - 1) * 10) / n - 2
+
+
+def w_af(vw):
+    """Фото статті блогу (figure.af — колонка тексту ~47.9rem) і пара фото (.ag2 .agf, gap 12)."""
+    return min(vw - 34, 47.9 * rem(vw))
+
+
 def w_pg(vw):
     c = cont(vw)
     if vw <= 599: return (c - 6) / 2
@@ -125,6 +139,7 @@ def family(src):
 # ---------- sizes ----------
 BPS = [424, 599, 767, 1023, 1099, 1366, 1699, 2199]
 SLOT_BPS = {'strip': [767, 1023, 1366, 2199], 'covers': [767, 1099, 1366, 1699], 'split': [767, 1023, 1366],
+            'af': [800, 1366], 'agf': [800, 1366], 'tph': [767],
             'svc': [599, 767, 1099, 1366]}
 
 
@@ -192,6 +207,10 @@ def _slot(anc):
         if 'xs-sv' in c: return 'svc', k
         if 'xs-pic' in c: return 'split', k
         if 'pg' in c: return 'pg', k
+        if 'gal' in c: return 'gal', k  # warn-fix 16.11.2026: галереї лендингів, фото статей, фото «Про дизайнера» — без srcset були розмиті на 768@2 / 2560
+        if 'agf' in c: return 'agf', k
+        if 'af' in c: return 'af', k
+        if 'tph' in c: return 'tph', k
         if 'hx-bg' in c or 'hx' in c or 'hxl' in c: return ('hxl' if any('hxl' in x for x in anc[k:]) else 'hero'), k
         if k == 0 and {'w', 'hero'} <= c: return 'hero', k  # головне фото /proekty (img — пряма дитина .w.hero): ширші копії для ПК/телефона 3x
     return None, None
@@ -244,6 +263,18 @@ def fix(tag, slot, home, i=0, n=1):
     elif slot == 'covers': fn = lambda vw: cov(w_covers(vw), .8)
     elif slot == 'split': fn = w_split
     elif slot == 'svc': fn = lambda vw: cov(*w_svc(vw, i, n, home))
+    elif slot == 'gal':  # коротко (бюджет HTML лендингів 64 КБ): srcset лише коли src (900) замалий — «900w, найменша достатня»; × обрізка 4:3
+        f = max(1.0, ar / (4 / 3))
+        cur = size(src.group(1)[1:])[0]
+        hi = max(cov(w_gal(vw), 4 / 3) * (3 if vw <= 430 else 2) for vw in range(320, 3841, 8))  # DPR 3 — телефони ≤ 430, далі 2
+        if cur >= .95 * hi or not [w for w, _ in fam if w > cur]:
+            return _attr(_attr(tag, 'srcset', None), 'sizes', None)
+        big = next(((w, p) for w, p in fam if w >= .95 * hi), fam[-1])
+        cand = [(w, p) for w, p in fam if w == cur] + [big]
+        return _attr(_attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in cand)), 'sizes', f'(max-width:773px) {_fmt(50 * f)}vw, {math.ceil(322 * f)}px')
+    elif slot == 'af': fn = w_af
+    elif slot == 'agf': fn = lambda vw: cov((w_af(vw) - 12) / 2, .8)
+    elif slot == 'tph': fn = lambda vw: cov(min(cont(vw), 760) - 2, 1.5)
     elif slot == 'proj':  # портфоліо: ~620 фото, бюджет HTML — два кандидати 400/900 і sizes з двох частин
         fn = lambda vw: cov(w_strip(vw, False), .75)
         f = max(1.0, ar / .75)
