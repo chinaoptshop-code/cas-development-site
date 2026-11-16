@@ -88,19 +88,50 @@ def h1_name(s):
     return re.sub(r'<[^>]+>', '', (re.search(r'<h1[^>]*>(.*?)</h1>', s, re.S) or [None, ''])[1]).strip()
 
 
+def _family(src):
+    """srcset картки туру: копії img/p/<id>-<w>.webp тієї ж пропорції (кадр ≤ 860 px, cover 16:9)."""
+    x = re.match(r'/img/p/([\w-]+?)-\d+\.webp$', src)
+    if not x:
+        return ''
+    from PIL import Image
+    d = os.path.join(ROOT, 'img/p')
+    ws = []
+    for f in os.listdir(d):
+        y = re.fullmatch(re.escape(x.group(1)) + r'-(\d+)\.webp', f)
+        if y and int(y.group(1)) >= 400:
+            ws.append((int(y.group(1)), Image.open(os.path.join(d, f)).size))
+    if not ws:
+        return ''
+    ws.sort()
+    ar = ws[-1][1][0] / ws[-1][1][1]
+    ws = [w for w, (a, b) in ws if abs(a / b - ar) < .02]
+    k = max(1.0, ar / (16 / 9))  # фото ширше за 16:9 обрізається з боків — файл ширший за кадр
+    return (f' srcset="{", ".join(f"/img/p/{x.group(1)}-{w}.webp {w}w" for w in ws)}"'
+            f' sizes="(max-width:892px) {100 * k:.0f}vw, {860 * k:.0f}px"')
+
+
 def project_tour(s, slug, lang, show_all):
     t = T[lang]
     m = re.search(r'<h2[^>]*>Фото проєкту</h2>.*?<img\b([^>]*)>', s, re.S) or re.search(r'<img\b([^>]*\bwidth="\d+"[^>]*)>', s)
     attrs = m.group(1) if m else ''
+    # картка туру 16:9 (media.v1.css .lt3): портретне перше фото галереї лишало ~40 % кадру і було 900w у слоті 860 px × DPR 2 —
+    # беремо перше альбомне фото галереї (≥ 1.4) і srcset з усіх копій тієї ж пропорції (аудит фото 16.11.2026)
+    i = s.find('Фото проєкту')
+    for x in re.finditer(r'<img\b([^>]*)>', s[i:] if i >= 0 else ''):
+        w, h = (re.search(r'\b' + k + r'="(\d+)"', x.group(1)) for k in ('width', 'height'))
+        if w and h and int(w.group(1)) / int(h.group(1)) >= 1.4 and '/img/p/' in x.group(1):
+            attrs = x.group(1)
+            break
     g = lambda a, d: (re.search(r'\b' + a + r'="([^"]*)"', attrs) or [None, d])[1]
     src = re.sub(r'-400\.webp$', '-900.webp', g('src', '/img/map/office-800.webp'))
+    ss = _family(src)
     name = h1_name(s)
     title = f'{t["tour"]} — {name}' if name else t['tour']
     more = f'<p style="margin:16px 0 0"><a href="/tury" style="color:var(--ac)">{e(t["all"])}</a></p>' if show_all else ''
     return ('\n<!--tour360--><section id="tur-360"><div class="w">\n'
             f'  <h2>{e(t["tour"])}</h2><p style="{LEAD}">{e(t["tour_p"])}</p>\n'
             f'  <div style="max-width:860px"><a class="lt3" href="/tury/{slug}" data-tour data-title="{e(title)}">'
-            f'<img src="{e(src)}" width="{g("width", "900")}" height="{g("height", "600")}" loading="lazy" decoding="async" alt="{e(title)}">'
+            f'<img src="{e(src)}"{ss} width="{g("width", "900")}" height="{g("height", "600")}" loading="lazy" decoding="async" alt="{e(title)}">'
             f'<span class="lt3-b">{e(t["tour_btn"])}</span><span class="lt3-c">{e(name or title)}</span></a></div>{more}\n'
             f'</div></section>{ASSETS}<!--/tour360-->')
 

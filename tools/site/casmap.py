@@ -135,13 +135,13 @@ PLACE = {
 
 
 def projects_html(lang='uk'):
-    t = PM.get(lang, PM['uk'])
+    t = PM.get(lang, PM['en'])  # es/pl/de/fr/zh/ar — англійською (аудит 16.11.2026: блок і alt постера були українською)
     pre = '' if lang == 'uk' else '/' + lang
     li = []
     for slug, name, place, (lng, lat), z, img in PROJECTS:
         ok = slug in REALIZED
         st = t['ok'] if ok else t['dp']
-        place = PLACE.get(lang, {}).get(place, place)
+        place = (PLACE.get(lang) or ({} if lang == 'uk' else PLACE['en'])).get(place, place)
         href = f'{pre}/proekty/{slug}' if os.path.exists(os.path.join(ROOT, pre.lstrip('/'), 'proekty', slug + '.html')) else f'/proekty/{slug}'
         li.append(f'<li><a href="{href}" data-ll="{lng},{lat}" data-z="{z}" data-img="{img}" data-st="{st}" data-place="{e(place)}"'
                   + (' data-ok' if ok else '') + f'><b>{e(name)}</b><span>{e(place)} · {st}</span></a>'

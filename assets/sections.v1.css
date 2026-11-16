@@ -119,6 +119,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-proj h2{margin-bottom:6px}.xs-proj h2 a{text-decoration:none}
 .xs-meta{color:var(--mu);font-size:var(--fs-small);margin:0 0 18px}.xs-meta a{color:var(--ac)}
 .xs-proj .xs-st img{aspect-ratio:3/4}
+.xs-proj .xs-st>a.wd{grid-column:span 2}.xs-proj .xs-st>a.wd img{aspect-ratio:auto;height:100%} /* альбомне фото — дві клітинки (rich._wd) */
 .xs-stat{display:inline-block;border:1px solid var(--ac);color:var(--ac);border-radius:999px;padding:2px 10px;margin-inline-end:10px}
 .xs-cta h2[data-i]{display:inline-block;padding-inline-start:1.32em}
 .xs-ct{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
