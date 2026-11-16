@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 893 (MAIN 14, LAND 444, інші 358). HTML разом 47341 КБ, з них інлайн CSS 18164 КБ і JS 583 КБ.
+Сторінок: 893 (MAIN 14, LAND 444, інші 358). HTML разом 47340 КБ, з них інлайн CSS 18164 КБ і JS 583 КБ.
 
 ## Проблеми
 
@@ -533,10 +533,10 @@
 | ru/dizayn-remont-kvartiry-pechersk.html | land | 50.5 | 13.3 | 13.3 | 0.5 | 6 | 472 |
 | ru/realizatsiya-dizayn-proekta-kiev.html | land | 50.5 | 13.3 | 13.3 | 0.5 | 6 | 439 |
 | dyzain-remont-kvartyry-pechersk.html | land | 50.4 | 13.3 | 13.3 | 0.5 | 6 | 472 |
-| kabinet/obiekt.html | other | 50.4 | 13.7 | 32.5 | 0.7 | 14 | 272 |
-| kabinet/proekty.html | other | 50.4 | 13.6 | 32.5 | 0.7 | 14 | 274 |
 | remontna-bryhada-kyiv.html | land | 50.4 | 13.1 | 13.1 | 0.5 | 6 | 456 |
 | ar/resort-turnkey.html | land | 50.3 | 13.2 | 13.3 | 3.4 | 6 | 445 |
+| kabinet/obiekt.html | other | 50.3 | 13.6 | 32.5 | 0.7 | 14 | 267 |
+| kabinet/proekty.html | other | 50.3 | 13.6 | 32.5 | 0.7 | 14 | 269 |
 | ru/remont-v-novostroyke-kiev.html | land | 50.3 | 12.9 | 13.3 | 0.5 | 6 | 449 |
 | blog/ofis-u-biznes-tsentri-shcho-uzghodyty-pered-remontom.html | article | 50.2 | 13.7 | 14.2 | 0.5 | 6 | 392 |
 | blog/dyzain-ofisu-z-choho-pochaty.html | article | 50.1 | 15.3 | 14.2 | 0.5 | 6 | 396 |
@@ -584,15 +584,15 @@
 | ru/dom-iz-gazobloka-pod-klyuch-kiev.html | land | 48.5 | 13.1 | 13.3 | 0.5 | 6 | 423 |
 | ru/remont-kvartiry-zhk-nordica-residence.html | land | 48.5 | 13.0 | 13.3 | 0.5 | 6 | 428 |
 | fr/a-propos.html | land | 48.4 | 13.5 | 13.3 | 0.5 | 6 | 446 |
-| kabinet/profil.html | other | 48.4 | 12.9 | 32.5 | 0.7 | 14 | 248 |
-| kabinet/zamovlennia.html | other | 48.4 | 12.9 | 32.5 | 0.7 | 14 | 248 |
 | remont-kvartyry-zhk-hvardiiskyi.html | land | 48.4 | 13.1 | 13.3 | 0.5 | 6 | 428 |
 | ru/remont-kvartiry-zhk-rusaniv-residence.html | land | 48.4 | 13.1 | 13.3 | 0.5 | 6 | 427 |
-| kabinet.html | other | 48.3 | 12.9 | 32.5 | 0.7 | 14 | 247 |
-| kabinet/obrane.html | other | 48.3 | 12.9 | 32.5 | 0.7 | 14 | 248 |
+| kabinet/profil.html | other | 48.3 | 12.9 | 32.5 | 0.7 | 14 | 243 |
+| kabinet/zamovlennia.html | other | 48.3 | 12.9 | 32.5 | 0.7 | 14 | 243 |
 | remont-kvartyry-zhk-nordica-residence.html | land | 48.3 | 13.1 | 13.3 | 0.5 | 6 | 428 |
 | remont-kvartyry-zhk-rusaniv-residence.html | land | 48.3 | 13.1 | 13.3 | 0.5 | 6 | 427 |
 | en/renovation-cost-calculator.html | land | 48.2 | 13.3 | 14.7 | 1.9 | 6 | 492 |
+| kabinet.html | other | 48.2 | 12.9 | 32.5 | 0.7 | 14 | 242 |
+| kabinet/obrane.html | other | 48.2 | 12.9 | 32.5 | 0.7 | 14 | 243 |
 | remont-kvartyry-zhk-respublika.html | land | 48.2 | 13.0 | 13.3 | 0.5 | 6 | 427 |
 | ru/remont-kvartiry-zhk-gvardeyskiy.html | land | 48.2 | 13.1 | 13.3 | 0.5 | 6 | 428 |
 | blog/budynok-na-vodi-pali-chy-pontony.html | article | 48.1 | 13.5 | 14.2 | 0.5 | 6 | 412 |
@@ -624,22 +624,22 @@
 | ru/remont-taunhausa-kiev.html | land | 47.6 | 12.8 | 13.3 | 0.5 | 6 | 418 |
 | avtorskyi-i-tekhnichnyi-nahliad-kyiv.html | land | 47.5 | 12.7 | 13.3 | 0.5 | 6 | 421 |
 | fr/design-restaurant-cafe.html | land | 47.4 | 13.0 | 13.3 | 2.6 | 6 | 457 |
-| kabinet/zaboroneno.html | other | 47.4 | 12.8 | 32.5 | 0.7 | 14 | 213 |
 | pl/o-studiu.html | land | 47.3 | 13.7 | 13.3 | 0.5 | 6 | 456 |
 | ru/remont-vannoy-kiev.html | land | 47.3 | 12.7 | 13.3 | 0.5 | 6 | 428 |
 | en/restaurant-fit-out.html | land | 47.2 | 13.9 | 13.3 | 2.4 | 6 | 506 |
 | en/turnkey-renovation.html | land | 47.2 | 13.1 | 13.3 | 0.5 | 6 | 498 |
 | es/diseno-restaurantes-cafeterias.html | land | 47.2 | 12.9 | 13.3 | 2.5 | 6 | 457 |
+| kabinet/zaboroneno.html | other | 47.2 | 12.7 | 32.5 | 0.7 | 14 | 208 |
 | ru/dizayn-i-remont-magazina-shouruma-kiev.html | land | 47.2 | 12.8 | 13.3 | 0.5 | 6 | 415 |
 | dyzain-i-remont-mahazynu-shourumu-kyiv.html | land | 47.1 | 12.8 | 13.3 | 0.5 | 6 | 415 |
 | fr/construction-maison.html | land | 47.1 | 13.4 | 13.3 | 0.5 | 6 | 491 |
 | fr/renovation-cle-en-main.html | land | 47.1 | 13.3 | 13.3 | 0.5 | 6 | 475 |
-| kabinet/team.html | other | 47.1 | 12.6 | 32.5 | 0.7 | 14 | 212 |
 | en/restaurant-design.html | land | 47.0 | 12.9 | 13.3 | 2.4 | 6 | 477 |
 | es/construccion-de-casas.html | land | 47.0 | 13.2 | 13.3 | 0.5 | 6 | 493 |
-| kabinet/admin.html | other | 47.0 | 12.6 | 32.5 | 0.7 | 14 | 211 |
+| kabinet/team.html | other | 46.9 | 12.5 | 32.5 | 0.7 | 14 | 207 |
 | pl/projektowanie-restauracji.html | land | 46.9 | 13.2 | 13.3 | 2.5 | 6 | 468 |
 | es/reforma-llave-en-mano.html | land | 46.8 | 13.2 | 13.3 | 0.5 | 6 | 477 |
+| kabinet/admin.html | other | 46.8 | 12.5 | 32.5 | 0.7 | 14 | 206 |
 | de/restaurantdesign.html | land | 46.6 | 13.0 | 13.3 | 2.5 | 6 | 458 |
 | zh/about.html | land | 46.6 | 13.8 | 13.3 | 0.5 | 6 | 452 |
 | zh/renovation-calculator.html | land | 46.6 | 14.0 | 14.7 | 1.8 | 6 | 484 |
