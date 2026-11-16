@@ -259,67 +259,133 @@
    "mpk-v01",
    "Фасад і головна тераса вдень",
    "Фасад и главная терраса днём",
-   "Facade and main terrace by day"
+   "Facade and main terrace by day",
+   "Fachada y terraza principal de día",
+   "Fasada i główny taras w dzień",
+   "Fassade und Hauptterrasse bei Tag",
+   "Façade et terrasse principale de jour",
+   "白天的立面与主露台",
+   "الواجهة والتراس الرئيسي نهارًا"
   ],
   [
    "mpk-v02",
    "Фасад увечері, фудтрак біля входу",
    "Фасад вечером, фудтрак у входа",
-   "Facade in the evening, food truck by the entrance"
+   "Facade in the evening, food truck by the entrance",
+   "Fachada al atardecer, food truck junto a la entrada",
+   "Fasada wieczorem, food truck przy wejściu",
+   "Fassade am Abend, Foodtruck am Eingang",
+   "Façade le soir, food truck près de l’entrée",
+   "傍晚的立面，入口旁的餐车",
+   "الواجهة مساءً وعربة طعام عند المدخل"
   ],
   [
    "mpk-v03",
    "Двір і тераси — вид згори",
    "Двор и террасы — вид сверху",
-   "Courtyard and terraces from above"
+   "Courtyard and terraces from above",
+   "Patio y terrazas vistos desde arriba",
+   "Dziedziniec i tarasy z góry",
+   "Innenhof und Terrassen von oben",
+   "Cour et terrasses vues d’en haut",
+   "俯瞰庭院与露台",
+   "الفناء والتراسات من الأعلى"
   ],
   [
    "mpk-v04",
    "Головна тераса ввечері",
    "Главная терраса вечером",
-   "Main terrace in the evening"
+   "Main terrace in the evening",
+   "Terraza principal al atardecer",
+   "Główny taras wieczorem",
+   "Hauptterrasse am Abend",
+   "Terrasse principale le soir",
+   "傍晚的主露台",
+   "التراس الرئيسي مساءً"
   ],
   [
    "mpk-v05",
    "Вхідна група з арками",
    "Входная группа с арками",
-   "Arched entrance"
+   "Arched entrance",
+   "Entrada con arcos",
+   "Wejście z łukami",
+   "Eingangsbereich mit Bögen",
+   "Entrée à arcades",
+   "带拱门的入口",
+   "المدخل ذو الأقواس"
   ],
   [
    "mpk-v06",
    "Тераса другого поверху",
    "Терраса второго этажа",
-   "Second-floor terrace"
+   "Second-floor terrace",
+   "Terraza de la planta superior",
+   "Taras na piętrze",
+   "Terrasse im Obergeschoss",
+   "Terrasse à l’étage",
+   "二层露台",
+   "تراس الطابق العلوي"
   ],
   [
    "mpk-v07",
    "Бар на терасі другого поверху",
    "Бар на террасе второго этажа",
-   "Bar on the second-floor terrace"
+   "Bar on the second-floor terrace",
+   "Barra en la terraza de la planta superior",
+   "Bar na tarasie na piętrze",
+   "Bar auf der Terrasse im Obergeschoss",
+   "Bar sur la terrasse de l’étage",
+   "二层露台上的吧台",
+   "البار في تراس الطابق العلوي"
   ],
   [
    "mpk-v08",
    "Зал: довгий стіл і винна стіна",
    "Зал: длинный стол и винная стена",
-   "Dining room: long table and wine wall"
+   "Dining room: long table and wine wall",
+   "Comedor: mesa larga y pared de vinos",
+   "Sala: długi stół i ściana z winami",
+   "Gastraum: lange Tafel und Weinwand",
+   "Salle : longue table et mur à vins",
+   "餐厅：长桌与酒墙",
+   "الصالة: طاولة طويلة وجدار النبيذ"
   ],
   [
    "mpk-v09",
    "Бар у залі",
    "Бар в зале",
-   "Bar in the dining room"
+   "Bar in the dining room",
+   "Barra en el comedor",
+   "Bar na sali",
+   "Bar im Gastraum",
+   "Bar dans la salle",
+   "餐厅内的吧台",
+   "البار في الصالة"
   ],
   [
    "mpk-v10",
    "Зал: загальний вид",
    "Зал: общий вид",
-   "Dining room: general view"
+   "Dining room: general view",
+   "Comedor: vista general",
+   "Sala: widok ogólny",
+   "Gastraum: Gesamtansicht",
+   "Salle : vue d’ensemble",
+   "餐厅：全景",
+   "الصالة: منظر عام"
   ],
   [
    "mpk-v11",
    "Зал біля арочних вікон",
    "Зал у арочных окон",
-   "Dining room by the arched windows"
+   "Dining room by the arched windows",
+   "Comedor junto a las ventanas en arco",
+   "Sala przy łukowych oknach",
+   "Gastraum an den Bogenfenstern",
+   "Salle près des fenêtres en arc",
+   "拱形窗旁的用餐区",
+   "الصالة قرب النوافذ المقوّسة"
   ]
  ],
  "dw": [
@@ -327,85 +393,169 @@
    "mpk-d02",
    "Обмірний план 1 поверху до перепланування",
    "Обмерный план 1 этажа до перепланировки",
-   "Measured plan of the ground floor before replanning"
+   "Measured plan of the ground floor before replanning",
+   "Plano de medición de la planta baja antes de la redistribución",
+   "Inwentaryzacja parteru przed zmianą układu",
+   "Aufmaß des Erdgeschosses vor dem Umbau",
+   "Relevé du rez-de-chaussée avant le réaménagement",
+   "改造前的一层测量图",
+   "مخطط الرفع المساحي للطابق الأرضي قبل إعادة التخطيط"
   ],
   [
    "mpk-d03",
    "План монтажу 1 поверху",
    "План монтажа 1 этажа",
-   "Ground-floor construction plan"
+   "Ground-floor construction plan",
+   "Plano de tabiquería de la planta baja",
+   "Plan montażu ścianek parteru",
+   "Montageplan des Erdgeschosses",
+   "Plan de montage du rez-de-chaussée",
+   "一层隔墙施工图",
+   "مخطط تركيب القواطع في الطابق الأرضي"
   ],
   [
    "mpk-d01",
    "План меблювання 1 поверху: 200 місць",
    "План расстановки мебели 1 этажа: 200 мест",
-   "Ground-floor furniture plan: 200 seats"
+   "Ground-floor furniture plan: 200 seats",
+   "Plano de mobiliario de la planta baja: 200 plazas",
+   "Plan umeblowania parteru: 200 miejsc",
+   "Möblierungsplan des Erdgeschosses: 200 Plätze",
+   "Plan d’implantation du mobilier au rez-de-chaussée : 200 places",
+   "一层家具布置图：200 个座位",
+   "مخطط توزيع الأثاث في الطابق الأرضي: 200 مقعد"
   ],
   [
    "mpk-d04",
    "План розеток і електричних виводів",
    "План розеток и электрических выводов",
-   "Socket and electrical outlet plan"
+   "Socket and electrical outlet plan",
+   "Plano de enchufes y salidas eléctricas",
+   "Plan gniazd i wypustów elektrycznych",
+   "Plan der Steckdosen und Elektroauslässe",
+   "Plan des prises et sorties électriques",
+   "插座与电气出线点布置图",
+   "مخطط المقابس ومخارج الكهرباء"
   ],
   [
    "mpk-d05",
    "План освітлення 1 поверху",
    "План освещения 1 этажа",
-   "Ground-floor lighting plan"
+   "Ground-floor lighting plan",
+   "Plano de iluminación de la planta baja",
+   "Plan oświetlenia parteru",
+   "Beleuchtungsplan des Erdgeschosses",
+   "Plan d’éclairage du rez-de-chaussée",
+   "一层照明布置图",
+   "مخطط الإضاءة في الطابق الأرضي"
   ],
   [
    "mpk-d06",
    "Специфікація освітлення",
    "Спецификация освещения",
-   "Lighting specification"
+   "Lighting specification",
+   "Especificación de iluminación",
+   "Specyfikacja oświetlenia",
+   "Leuchtenspezifikation",
+   "Spécification de l’éclairage",
+   "照明清单",
+   "مواصفات الإضاءة"
   ],
   [
    "mpk-d07",
    "План опалення й вентиляції",
    "План отопления и вентиляции",
-   "Heating and ventilation plan"
+   "Heating and ventilation plan",
+   "Plano de calefacción y ventilación",
+   "Plan ogrzewania i wentylacji",
+   "Heizungs- und Lüftungsplan",
+   "Plan de chauffage et de ventilation",
+   "供暖与通风布置图",
+   "مخطط التدفئة والتهوية"
   ],
   [
    "mpk-d08",
    "План покриття підлоги",
    "План покрытия пола",
-   "Floor finish plan"
+   "Floor finish plan",
+   "Plano de revestimiento de suelos",
+   "Plan posadzek",
+   "Bodenbelagsplan",
+   "Plan des revêtements de sol",
+   "地面铺装图",
+   "مخطط أرضيات الكسوة"
   ],
   [
    "mpk-d09",
    "Площа оздоблення травертином",
    "Площадь отделки травертином",
-   "Travertine cladding areas"
+   "Travertine cladding areas",
+   "Superficies revestidas de travertino",
+   "Powierzchnie wykończone trawertynem",
+   "Flächen mit Travertinverkleidung",
+   "Surfaces revêtues de travertin",
+   "洞石饰面区域",
+   "مساحات الكسوة بالترافرتين"
   ],
   [
    "mpk-d10",
    "Розміри балюстради",
    "Размеры балюстрады",
-   "Balustrade dimensions"
+   "Balustrade dimensions",
+   "Dimensiones de la balaustrada",
+   "Wymiary balustrady",
+   "Maße der Balustrade",
+   "Dimensions de la balustrade",
+   "栏杆尺寸",
+   "أبعاد الدرابزين"
   ],
   [
    "mpk-d11",
    "ТЗ: тамбур і вхідна група",
    "ТЗ: тамбур и входная группа",
-   "Brief: vestibule and entrance"
+   "Brief: vestibule and entrance",
+   "Pliego técnico: cortavientos y entrada",
+   "Wytyczne techniczne: wiatrołap i wejście",
+   "Technische Vorgabe: Windfang und Eingang",
+   "Cahier technique : sas et entrée",
+   "技术任务书：门斗与入口",
+   "المواصفات الفنية: الردهة الفاصلة والمدخل"
   ],
   [
    "mpk-d12",
    "ТЗ: санвузли",
    "ТЗ: санузлы",
-   "Brief: restrooms"
+   "Brief: restrooms",
+   "Pliego técnico: aseos",
+   "Wytyczne techniczne: toalety",
+   "Technische Vorgabe: Sanitärräume",
+   "Cahier technique : sanitaires",
+   "技术任务书：卫生间",
+   "المواصفات الفنية: دورات المياه"
   ],
   [
    "mpk-d13",
    "Диван на замовлення",
    "Диван на заказ",
-   "Custom sofa"
+   "Custom sofa",
+   "Sofá a medida",
+   "Sofa na zamówienie",
+   "Sofa nach Maß",
+   "Canapé sur mesure",
+   "定制沙发",
+   "أريكة حسب الطلب"
   ],
   [
    "mpk-d14",
    "Барна стійка",
    "Барная стойка",
-   "Bar counter"
+   "Bar counter",
+   "Barra del bar",
+   "Lada barowa",
+   "Bartheke",
+   "Comptoir de bar",
+   "吧台",
+   "طاولة البار"
   ]
  ],
  "rz": [
@@ -413,7 +563,13 @@
    "h": [
     "Зал",
     "Зал",
-    "Dining room"
+    "Dining room",
+    "Comedor",
+    "Sala",
+    "Gastraum",
+    "Salle",
+    "餐厅",
+    "الصالة"
    ],
    "items": [
     [
@@ -421,21 +577,39 @@
      "mpk-d01",
      "План меблювання",
      "План расстановки мебели",
-     "Furniture plan"
+     "Furniture plan",
+     "Plano de mobiliario",
+     "Plan umeblowania",
+     "Möblierungsplan",
+     "Plan du mobilier",
+     "家具布置图",
+     "مخطط الأثاث"
     ],
     [
      "v",
      "mpk-v08",
      "Зал у 3D",
      "Зал в 3D",
-     "Dining room in 3D"
+     "Dining room in 3D",
+     "Comedor en 3D",
+     "Sala w 3D",
+     "Gastraum in 3D",
+     "Salle en 3D",
+     "餐厅 3D 效果",
+     "الصالة بالأبعاد الثلاثية"
     ],
     [
      "f",
      "mpk-f03",
      "Зал після відкриття",
      "Зал после открытия",
-     "Dining room after opening"
+     "Dining room after opening",
+     "Comedor tras la apertura",
+     "Sala po otwarciu",
+     "Gastraum nach der Eröffnung",
+     "Salle après l’ouverture",
+     "开业后的餐厅",
+     "الصالة بعد الافتتاح"
     ]
    ]
   },
@@ -443,7 +617,13 @@
    "h": [
     "Вхідна група",
     "Входная группа",
-    "Entrance"
+    "Entrance",
+    "Entrada",
+    "Wejście",
+    "Eingangsbereich",
+    "Entrée",
+    "入口",
+    "المدخل"
    ],
    "items": [
     [
@@ -451,21 +631,39 @@
      "mpk-d11",
      "ТЗ: тамбур",
      "ТЗ: тамбур",
-     "Brief: vestibule"
+     "Brief: vestibule",
+     "Pliego técnico: cortavientos",
+     "Wytyczne: wiatrołap",
+     "Vorgabe: Windfang",
+     "Cahier technique : sas",
+     "技术任务书：门斗",
+     "المواصفات: الردهة الفاصلة"
     ],
     [
      "v",
      "mpk-v05",
      "Вхід у 3D",
      "Вход в 3D",
-     "Entrance in 3D"
+     "Entrance in 3D",
+     "Entrada en 3D",
+     "Wejście w 3D",
+     "Eingang in 3D",
+     "Entrée en 3D",
+     "入口 3D 效果",
+     "المدخل بالأبعاد الثلاثية"
     ],
     [
      "f",
      "mpk-f02",
      "Вхід і тераса",
      "Вход и терраса",
-     "Entrance and terrace"
+     "Entrance and terrace",
+     "Entrada y terraza",
+     "Wejście i taras",
+     "Eingang und Terrasse",
+     "Entrée et terrasse",
+     "入口与露台",
+     "المدخل والتراس"
     ]
    ]
   },
@@ -473,7 +671,13 @@
    "h": [
     "Фасад і балюстрада",
     "Фасад и балюстрада",
-    "Facade and balustrade"
+    "Facade and balustrade",
+    "Fachada y balaustrada",
+    "Fasada i balustrada",
+    "Fassade und Balustrade",
+    "Façade et balustrade",
+    "立面与栏杆",
+    "الواجهة والدرابزين"
    ],
    "items": [
     [
@@ -481,21 +685,39 @@
      "mpk-d10",
      "Розміри балюстради",
      "Размеры балюстрады",
-     "Balustrade dimensions"
+     "Balustrade dimensions",
+     "Dimensiones de la balaustrada",
+     "Wymiary balustrady",
+     "Maße der Balustrade",
+     "Dimensions de la balustrade",
+     "栏杆尺寸",
+     "أبعاد الدرابزين"
     ],
     [
      "v",
      "mpk-v01",
      "Фасад у 3D",
      "Фасад в 3D",
-     "Facade in 3D"
+     "Facade in 3D",
+     "Fachada en 3D",
+     "Fasada w 3D",
+     "Fassade in 3D",
+     "Façade en 3D",
+     "立面 3D 效果",
+     "الواجهة بالأبعاد الثلاثية"
     ],
     [
      "f",
      "mpk-f01",
      "Фасад і тераса",
      "Фасад и терраса",
-     "Facade and terrace"
+     "Facade and terrace",
+     "Fachada y terraza",
+     "Fasada i taras",
+     "Fassade und Terrasse",
+     "Façade et terrasse",
+     "立面与露台",
+     "الواجهة والتراس"
     ]
    ]
   }
@@ -505,7 +727,13 @@
    "mpk-f04",
    "Зал крізь панорамне скління тераси",
    "Зал сквозь панорамное остекление террасы",
-   "Dining room through the terrace's panoramic glazing"
+   "Dining room through the terrace's panoramic glazing",
+   "Comedor a través del acristalamiento panorámico de la terraza",
+   "Sala przez panoramiczne przeszklenie tarasu",
+   "Gastraum durch die Panoramaverglasung der Terrasse",
+   "La salle à travers le vitrage panoramique de la terrasse",
+   "透过露台全景玻璃看餐厅",
+   "الصالة عبر الزجاج البانورامي للتراس"
   ]
  ],
  "en": {
@@ -627,6 +855,732 @@
    "d": "Drawing",
    "v": "Visualisation",
    "f": "Completed"
+  }
+ },
+ "es": {
+  "slug": "proekty/monpark-proyecto-completo",
+  "title": "Monpark: proyecto completo de restaurante, 3D y planos | CAS Development",
+  "description": "Proyecto de diseño completo del restaurante Monpark: visualizaciones 3D del comedor y las terrazas, planos de ejecución, especificaciones e imágenes del local.",
+  "h1": "Monpark — proyecto de diseño completo de un restaurante",
+  "kicker": "Visualizaciones · planos · local en funcionamiento",
+  "lead": "Cómo es un proyecto completo: desde el plano de medición y la distribución del mobiliario hasta los planos de muebles, iluminación y ventilación, y el local que CAS Development ejecutó a partir de esos planos.",
+  "facts": [
+   [
+    "320 m²",
+    "superficie del restaurante"
+   ],
+   [
+    "200",
+    "plazas en el plano de mobiliario"
+   ],
+   [
+    "247",
+    "hojas de planos de ejecución"
+   ],
+   [
+    "94",
+    "páginas de visualizaciones 3D"
+   ]
+  ],
+  "short": {
+   "h2": "El proyecto en breve",
+   "rows": [
+    [
+     "Inmueble",
+     "restaurante de dos plantas con terraza principal, patio trasero y terraza en la planta superior"
+    ],
+    [
+     "Ciudad",
+     "Kiev, centro"
+    ],
+    [
+     "Estado",
+     "ejecutado por CAS Development: el local está abierto (más abajo, fotogramas de vídeo grabado en el local)"
+    ],
+    [
+     "Qué incluye",
+     "visualizaciones 3D del interior y del exterior y un álbum de 247 hojas de planos de ejecución"
+    ]
+   ],
+   "li": [
+    "planos de medición antes y después de la redistribución, plano de tabiquería",
+    "electricidad: enchufes y salidas, iluminación, circuitos de luz, tiras LED, acústica",
+    "calefacción, ventilación, tomas de fontanería",
+    "revestimientos de suelo, «alfombras» de granito, travertino, barandilla y balaustrada",
+    "pliegos técnicos de detalles: cortavientos, escalera, pérgolas, cornisa, aseos",
+    "planos de muebles y decoración a medida: mesas, sofás, barras, rótulos, luminarias",
+    "especificaciones de iluminación, mobiliario y materiales"
+   ]
+  },
+  "vis_h2": "Visualizaciones",
+  "vis_p": "11 de las 94 páginas de visualizaciones: la fachada y las terrazas de día y al atardecer, el patio desde arriba, el comedor, la barra y un aseo. Haga clic en una imagen para ampliarla.",
+  "dw_h2": "Planos",
+  "dw_p": "14 de las 247 hojas del álbum de ejecución, en el orden en que las recibe el equipo de obra. Las hojas se muestran sin el cajetín; haga clic para ver los detalles.",
+  "rz_h2": "Del plano al local terminado",
+  "rz_p": "Plano → visualización → local terminado. Las fotos son fotogramas de vídeo grabado en el local.",
+  "inc_h2": "Qué incluye un proyecto de diseño completo",
+  "inc_p": "Monpark tiene todo lo del paquete «Completo»: visualizaciones de todas las zonas, planos de ejecución de instalaciones y acabados, planos de muebles a medida y especificaciones. Para su inmueble ajustamos el contenido al encargo.",
+  "inc_links": [
+   [
+    "/es/diseno-interiores",
+    "Diseño de interiores"
+   ],
+   [
+    "/es/diseno-restaurantes-cafeterias",
+    "Diseño de restaurantes y cafeterías"
+   ],
+   [
+    "/es/ejecucion-proyecto-diseno",
+    "Ejecución del proyecto de diseño"
+   ]
+  ],
+  "rel_h2": "Más sobre el proyecto",
+  "rel": [
+   [
+    "/es/proekty/monpark",
+    "Monpark — página del proyecto"
+   ],
+   [
+    "/es/portfolio",
+    "Portfolio completo"
+   ],
+   [
+    "/es/reforma-locales-comerciales",
+    "Reforma de locales comerciales"
+   ]
+  ],
+  "form_h2": "Quiero un proyecto así",
+  "service": "Повний дизайн-проєкт (як Monpark)",
+  "crumbs": [
+   [
+    "/es/",
+    "Inicio"
+   ],
+   [
+    "/es/portfolio",
+    "Portfolio"
+   ],
+   [
+    "/es/proekty/monpark",
+    "Monpark"
+   ]
+  ],
+  "crumb": "Proyecto completo",
+  "btn_call": "Llamar",
+  "btn_same": "Quiero lo mismo",
+  "zoom": "Ampliar",
+  "close": "Cerrar",
+  "lb_label": "Visor de imágenes",
+  "alt": " — Monpark",
+  "lbl": {
+   "d": "Plano",
+   "v": "Visualización",
+   "f": "Realizado"
+  }
+ },
+ "pl": {
+  "slug": "proekty/monpark-pelny-projekt",
+  "title": "Monpark: pełny projekt restauracji, 3D i rysunki | CAS Development",
+  "description": "Pełny projekt wnętrza restauracji Monpark: wizualizacje 3D sali i tarasów, rysunki wykonawcze, specyfikacje i kadry z działającego lokalu.",
+  "h1": "Monpark — pełny projekt wnętrza restauracji",
+  "kicker": "Wizualizacje · rysunki · realizacja",
+  "lead": "Jak wygląda pełny projekt: od inwentaryzacji i planu umeblowania po rysunki mebli, oświetlenia i wentylacji — oraz lokal, który CAS Development zrealizowało według tych rysunków.",
+  "facts": [
+   [
+    "320 m²",
+    "powierzchnia restauracji"
+   ],
+   [
+    "200",
+    "miejsc na planie umeblowania"
+   ],
+   [
+    "247",
+    "arkuszy rysunków wykonawczych"
+   ],
+   [
+    "94",
+    "strony wizualizacji 3D"
+   ]
+  ],
+  "short": {
+   "h2": "Projekt w skrócie",
+   "rows": [
+    [
+     "Obiekt",
+     "dwukondygnacyjna restauracja z głównym tarasem, tylnym dziedzińcem i tarasem na piętrze"
+    ],
+    [
+     "Miasto",
+     "Kijów, centrum"
+    ],
+    [
+     "Status",
+     "zrealizowane przez CAS Development — lokal działa (poniżej kadry z nagrania wideo z obiektu)"
+    ],
+    [
+     "Co zawiera",
+     "wizualizacje 3D wnętrza i elewacji oraz album 247 arkuszy rysunków wykonawczych"
+    ]
+   ],
+   "li": [
+    "inwentaryzacje przed zmianą układu i po niej, plan montażu ścianek",
+    "elektryka: gniazda i wypusty, oświetlenie, obwody oświetleniowe, taśmy LED, akustyka",
+    "ogrzewanie, wentylacja, podejścia sanitarne",
+    "posadzki, granitowe „dywany”, trawertyn, balustrady i barierki",
+    "wytyczne techniczne detali: wiatrołap, schody, pergole, gzyms, toalety",
+    "rysunki mebli i dekoracji na zamówienie: stoły, sofy, lady barowe, szyldy, oprawy oświetleniowe",
+    "specyfikacje oświetlenia, mebli i materiałów"
+   ]
+  },
+  "vis_h2": "Wizualizacje",
+  "vis_p": "11 z 94 stron wizualizacji: fasada i tarasy w dzień i wieczorem, dziedziniec z góry, sala, bar i toaleta. Kliknij obraz, aby go powiększyć.",
+  "dw_h2": "Rysunki",
+  "dw_p": "14 z 247 arkuszy albumu wykonawczego, w kolejności, w jakiej otrzymuje je ekipa budowlana. Arkusze pokazujemy bez tabelki rysunkowej; kliknij, aby zobaczyć szczegóły.",
+  "rz_h2": "Od rysunku do gotowego lokalu",
+  "rz_p": "Rysunek → wizualizacja → gotowy lokal. Zdjęcia to kadry z nagrania wideo z obiektu.",
+  "inc_h2": "Co obejmuje pełny projekt wnętrza",
+  "inc_p": "Monpark ma wszystko z pakietu „Pełny”: wizualizacje wszystkich stref, rysunki wykonawcze instalacji i wykończeń, rysunki mebli na zamówienie i specyfikacje. Dla Twojego obiektu dobieramy zakres do zadania.",
+  "inc_links": [
+   [
+    "/pl/projektowanie-wnetrz",
+    "Projektowanie wnętrz"
+   ],
+   [
+    "/pl/projektowanie-restauracji",
+    "Projektowanie restauracji i kawiarni"
+   ],
+   [
+    "/pl/realizacja-projektu",
+    "Realizacja projektu wnętrza"
+   ]
+  ],
+  "rel_h2": "Więcej o projekcie",
+  "rel": [
+   [
+    "/pl/proekty/monpark",
+    "Monpark — strona projektu"
+   ],
+   [
+    "/pl/portfolio",
+    "Pełne portfolio"
+   ],
+   [
+    "/pl/remont-lokali-uzytkowych",
+    "Remont lokali użytkowych"
+   ]
+  ],
+  "form_h2": "Chcę taki projekt",
+  "service": "Повний дизайн-проєкт (як Monpark)",
+  "crumbs": [
+   [
+    "/pl/",
+    "Strona główna"
+   ],
+   [
+    "/pl/portfolio",
+    "Portfolio"
+   ],
+   [
+    "/pl/proekty/monpark",
+    "Monpark"
+   ]
+  ],
+  "crumb": "Pełny projekt",
+  "btn_call": "Zadzwoń",
+  "btn_same": "Chcę tak samo",
+  "zoom": "Powiększ",
+  "close": "Zamknij",
+  "lb_label": "Podgląd obrazów",
+  "alt": " — Monpark",
+  "lbl": {
+   "d": "Rysunek",
+   "v": "Wizualizacja",
+   "f": "Realizacja"
+  }
+ },
+ "de": {
+  "slug": "proekty/monpark-gesamtprojekt",
+  "title": "Monpark: komplettes Restaurantprojekt, 3D und Pläne | CAS Development",
+  "description": "Komplettes Designprojekt des Restaurants Monpark: 3D-Visualisierungen von Gastraum und Terrassen, Ausführungspläne, Spezifikationen und Bilder aus dem Lokal.",
+  "h1": "Monpark — komplettes Designprojekt eines Restaurants",
+  "kicker": "Visualisierungen · Pläne · Umsetzung",
+  "lead": "So sieht ein komplettes Projekt aus: vom Aufmaß und Möblierungsplan bis zu den Plänen für Möbel, Licht und Lüftung — und das Lokal, das CAS Development nach diesen Plänen umgesetzt hat.",
+  "facts": [
+   [
+    "320 m²",
+    "Fläche des Restaurants"
+   ],
+   [
+    "200",
+    "Plätze im Möblierungsplan"
+   ],
+   [
+    "247",
+    "Blätter Ausführungspläne"
+   ],
+   [
+    "94",
+    "Seiten 3D-Visualisierungen"
+   ]
+  ],
+  "short": {
+   "h2": "Das Projekt in Kürze",
+   "rows": [
+    [
+     "Objekt",
+     "zweigeschossiges Restaurant mit Hauptterrasse, Hinterhof und Terrasse im Obergeschoss"
+    ],
+    [
+     "Stadt",
+     "Kyjiw, Zentrum"
+    ],
+    [
+     "Status",
+     "umgesetzt von CAS Development — das Lokal ist geöffnet (unten Standbilder aus Videoaufnahmen vor Ort)"
+    ],
+    [
+     "Lieferumfang",
+     "3D-Visualisierungen innen und außen sowie eine Mappe mit 247 Blättern Ausführungsplänen"
+    ]
+   ],
+   "li": [
+    "Aufmaßpläne vor und nach dem Umbau, Montageplan der Trennwände",
+    "Elektro: Steckdosen und Auslässe, Beleuchtung, Lichtgruppen, LED-Bänder, Akustik",
+    "Heizung, Lüftung, Sanitäranschlüsse",
+    "Bodenbeläge, Granit-„Teppiche“, Travertin, Geländer und Balustrade",
+    "technische Vorgaben für Details: Windfang, Treppe, Pergolen, Gesims, Sanitärräume",
+    "Pläne für Möbel und Dekor nach Maß: Tische, Sofas, Bartheken, Schilder, Leuchten",
+    "Spezifikationen für Licht, Möbel und Materialien"
+   ]
+  },
+  "vis_h2": "Visualisierungen",
+  "vis_p": "11 von 94 Visualisierungsseiten: Fassade und Terrassen bei Tag und am Abend, der Innenhof von oben, der Gastraum, die Bar und ein Sanitärraum. Zum Vergrößern auf ein Bild klicken.",
+  "dw_h2": "Pläne",
+  "dw_p": "14 der 247 Blätter der Ausführungsmappe, in der Reihenfolge, in der das Bauteam sie erhält. Die Blätter sind ohne Schriftfeld gezeigt; klicken, um die Details zu sehen.",
+  "rz_h2": "Vom Plan zum fertigen Lokal",
+  "rz_p": "Plan → Visualisierung → fertiges Lokal. Die Fotos sind Standbilder aus Videoaufnahmen vor Ort.",
+  "inc_h2": "Was ein komplettes Designprojekt umfasst",
+  "inc_p": "Monpark enthält alles aus dem Paket „Vollständig“: Visualisierungen aller Bereiche, Ausführungspläne für Haustechnik und Oberflächen, Pläne für Möbel nach Maß und Spezifikationen. Für Ihr Objekt stimmen wir den Umfang auf die Aufgabe ab.",
+  "inc_links": [
+   [
+    "/de/innenarchitektur",
+    "Innenarchitektur"
+   ],
+   [
+    "/de/restaurantdesign",
+    "Restaurant- und Café-Design"
+   ],
+   [
+    "/de/umsetzung-designprojekt",
+    "Umsetzung des Designprojekts"
+   ]
+  ],
+  "rel_h2": "Mehr zum Projekt",
+  "rel": [
+   [
+    "/de/proekty/monpark",
+    "Monpark — Projektseite"
+   ],
+   [
+    "/de/portfolio",
+    "Gesamtes Portfolio"
+   ],
+   [
+    "/de/gewerberaeume-renovierung",
+    "Renovierung von Gewerberäumen"
+   ]
+  ],
+  "form_h2": "Ich möchte so ein Projekt",
+  "service": "Повний дизайн-проєкт (як Monpark)",
+  "crumbs": [
+   [
+    "/de/",
+    "Startseite"
+   ],
+   [
+    "/de/portfolio",
+    "Portfolio"
+   ],
+   [
+    "/de/proekty/monpark",
+    "Monpark"
+   ]
+  ],
+  "crumb": "Gesamtprojekt",
+  "btn_call": "Anrufen",
+  "btn_same": "Das möchte ich auch",
+  "zoom": "Vergrößern",
+  "close": "Schließen",
+  "lb_label": "Bildansicht",
+  "alt": " — Monpark",
+  "lbl": {
+   "d": "Plan",
+   "v": "Visualisierung",
+   "f": "Umgesetzt"
+  }
+ },
+ "fr": {
+  "slug": "proekty/monpark-projet-complet",
+  "title": "Monpark : projet complet de restaurant, 3D et plans | CAS Development",
+  "description": "Projet de design complet du restaurant Monpark : visualisations 3D de la salle et des terrasses, plans d’exécution, spécifications et images du lieu.",
+  "h1": "Monpark — un projet de design complet de restaurant",
+  "kicker": "Visualisations · plans · réalisation",
+  "lead": "À quoi ressemble un projet complet : du relevé et du plan d’implantation du mobilier aux plans des meubles, de l’éclairage et de la ventilation — et le restaurant que CAS Development a réalisé d’après ces plans.",
+  "facts": [
+   [
+    "320 m²",
+    "surface du restaurant"
+   ],
+   [
+    "200",
+    "places sur le plan du mobilier"
+   ],
+   [
+    "247",
+    "feuilles de plans d’exécution"
+   ],
+   [
+    "94",
+    "pages de visualisations 3D"
+   ]
+  ],
+  "short": {
+   "h2": "Le projet en bref",
+   "rows": [
+    [
+     "Bien",
+     "restaurant sur deux niveaux avec terrasse principale, cour arrière et terrasse à l’étage"
+    ],
+    [
+     "Ville",
+     "Kyiv, centre-ville"
+    ],
+    [
+     "Statut",
+     "réalisé par CAS Development — le restaurant est ouvert (images extraites d’une vidéo tournée sur place ci-dessous)"
+    ],
+    [
+     "Contenu du dossier",
+     "visualisations 3D de l’intérieur et de l’extérieur et un album de 247 feuilles de plans d’exécution"
+    ]
+   ],
+   "li": [
+    "relevés avant et après réaménagement, plan de montage des cloisons",
+    "électricité : prises et sorties, éclairage, circuits d’éclairage, rubans LED, acoustique",
+    "chauffage, ventilation, attentes de plomberie",
+    "revêtements de sol, « tapis » en granit, travertin, garde-corps et balustrade",
+    "cahiers techniques des détails : sas, escalier, pergolas, corniche, sanitaires",
+    "plans de mobilier et de décor sur mesure : tables, canapés, comptoirs de bar, enseignes, luminaires",
+    "spécifications de l’éclairage, du mobilier et des matériaux"
+   ]
+  },
+  "vis_h2": "Visualisations",
+  "vis_p": "11 des 94 pages de visualisations : la façade et les terrasses de jour et le soir, la cour vue d’en haut, la salle, le bar et des sanitaires. Cliquez sur une image pour l’agrandir.",
+  "dw_h2": "Plans",
+  "dw_p": "14 des 247 feuilles de l’album d’exécution, dans l’ordre où l’équipe de chantier les reçoit. Les feuilles sont présentées sans cartouche ; cliquez pour voir les détails.",
+  "rz_h2": "Du plan au restaurant terminé",
+  "rz_p": "Plan → visualisation → restaurant terminé. Les photos sont des images extraites d’une vidéo tournée sur place.",
+  "inc_h2": "Ce que comprend un projet de design complet",
+  "inc_p": "Monpark comprend tout ce que contient la formule « Complet » : visualisations de toutes les zones, plans d’exécution des réseaux et des finitions, plans du mobilier sur mesure et spécifications. Pour votre bien, nous adaptons le contenu à la demande.",
+  "inc_links": [
+   [
+    "/fr/architecture-interieur",
+    "Architecture d’intérieur"
+   ],
+   [
+    "/fr/design-restaurant-cafe",
+    "Design de restaurant et de café"
+   ],
+   [
+    "/fr/realisation-projet",
+    "Réalisation du projet de design"
+   ]
+  ],
+  "rel_h2": "En savoir plus sur le projet",
+  "rel": [
+   [
+    "/fr/proekty/monpark",
+    "Monpark — page du projet"
+   ],
+   [
+    "/fr/portfolio",
+    "Tout le portfolio"
+   ],
+   [
+    "/fr/renovation-locaux-commerciaux",
+    "Rénovation de locaux commerciaux"
+   ]
+  ],
+  "form_h2": "Je veux un projet comme celui-ci",
+  "service": "Повний дизайн-проєкт (як Monpark)",
+  "crumbs": [
+   [
+    "/fr/",
+    "Accueil"
+   ],
+   [
+    "/fr/portfolio",
+    "Portfolio"
+   ],
+   [
+    "/fr/proekty/monpark",
+    "Monpark"
+   ]
+  ],
+  "crumb": "Projet complet",
+  "btn_call": "Appeler",
+  "btn_same": "Je veux le même",
+  "zoom": "Agrandir",
+  "close": "Fermer",
+  "lb_label": "Visionneuse d’images",
+  "alt": " — Monpark",
+  "lbl": {
+   "d": "Plan",
+   "v": "Visualisation",
+   "f": "Réalisé"
+  }
+ },
+ "zh": {
+  "slug": "proekty/monpark-full-project",
+  "title": "Monpark：完整餐厅设计方案、3D 与图纸 | CAS Development",
+  "description": "Monpark 餐厅完整设计方案：餐厅大厅与露台的 3D 效果图、施工图、材料清单，以及按方案建成的餐厅实景。",
+  "h1": "Monpark——完整的餐厅设计方案",
+  "kicker": "效果图 · 图纸 · 落地实施",
+  "lead": "完整设计方案是什么样的：从测量图和家具布置，到家具、照明和通风图纸——以及 CAS Development 按这些图纸建成的餐厅。",
+  "facts": [
+   [
+    "320 m²",
+    "餐厅面积"
+   ],
+   [
+    "200",
+    "家具布置图中的座位"
+   ],
+   [
+    "247",
+    "页施工图"
+   ],
+   [
+    "94",
+    "页 3D 效果图"
+   ]
+  ],
+  "short": {
+   "h2": "项目概况",
+   "rows": [
+    [
+     "项目",
+     "两层餐厅，设有主露台、后院和二层露台"
+    ],
+    [
+     "城市",
+     "基辅，市中心"
+    ],
+    [
+     "状态",
+     "由 CAS Development 实施完成——餐厅已在营业（下方为现场视频截图）"
+    ],
+    [
+     "交付内容",
+     "室内外 3D 效果图，以及 247 页的施工图集"
+    ]
+   ],
+   "li": [
+    "改造前后的测量图、隔墙施工图",
+    "电气：插座与出线点、照明、灯光回路、LED 灯带、声学",
+    "供暖、通风、给排水预留点",
+    "地面铺装、花岗岩“地毯”拼花、洞石、栏杆与扶手",
+    "节点技术任务书：门斗、楼梯、凉棚、檐口、卫生间",
+    "定制家具与装饰图纸：餐桌、沙发、吧台、招牌、灯具",
+    "照明、家具与材料清单"
+   ]
+  },
+  "vis_h2": "效果图",
+  "vis_p": "94 页效果图中的 11 页：白天和傍晚的立面与露台、俯瞰庭院、餐厅大厅、吧台和卫生间。点击图片可放大。",
+  "dw_h2": "图纸",
+  "dw_p": "247 页施工图集中的 14 页，按施工团队接收的顺序排列。图纸不含图框标题栏；点击可查看细节。",
+  "rz_h2": "从图纸到建成的餐厅",
+  "rz_p": "图纸 → 效果图 → 建成的餐厅。照片为现场视频截图。",
+  "inc_h2": "完整设计方案包含什么",
+  "inc_p": "Monpark 包含「完整」套餐的全部内容：所有区域的效果图、机电与饰面施工图、定制家具图纸和材料清单。针对您的项目，我们会根据任务确定内容。",
+  "inc_links": [
+   [
+    "/zh/interior-design",
+    "室内设计"
+   ],
+   [
+    "/zh/restaurant-design",
+    "餐厅与咖啡馆设计"
+   ],
+   [
+    "/zh/design-implementation",
+    "设计方案落地实施"
+   ]
+  ],
+  "rel_h2": "更多项目信息",
+  "rel": [
+   [
+    "/zh/proekty/monpark",
+    "Monpark——项目页面"
+   ],
+   [
+    "/zh/portfolio",
+    "全部作品集"
+   ],
+   [
+    "/zh/commercial-renovation",
+    "商业空间装修"
+   ]
+  ],
+  "form_h2": "我想要这样的方案",
+  "service": "Повний дизайн-проєкт (як Monpark)",
+  "crumbs": [
+   [
+    "/zh/",
+    "首页"
+   ],
+   [
+    "/zh/portfolio",
+    "作品集"
+   ],
+   [
+    "/zh/proekty/monpark",
+    "Monpark"
+   ]
+  ],
+  "crumb": "完整方案",
+  "btn_call": "致电",
+  "btn_same": "我也想要",
+  "zoom": "放大",
+  "close": "关闭",
+  "lb_label": "图片查看器",
+  "alt": " — Monpark",
+  "lbl": {
+   "d": "图纸",
+   "v": "效果图",
+   "f": "实景"
+  }
+ },
+ "ar": {
+  "slug": "proekty/monpark-full-project",
+  "title": "Monpark: مشروع مطعم كامل، تصورات 3D ورسومات | CAS Development",
+  "description": "مشروع التصميم الكامل لمطعم Monpark: تصورات ثلاثية الأبعاد للصالة والتراسات، ورسومات تنفيذية، ومواصفات، ولقطات من المطعم المنفّذ.",
+  "h1": "Monpark — مشروع تصميم كامل لمطعم",
+  "kicker": "تصورات · رسومات · تنفيذ",
+  "lead": "كيف يبدو المشروع الكامل: من مخطط الرفع المساحي وتوزيع الأثاث إلى رسومات الأثاث والإضاءة والتهوية — والمطعم الذي نفّذته CAS Development وفق هذه الرسومات.",
+  "facts": [
+   [
+    "320 م²",
+    "مساحة المطعم"
+   ],
+   [
+    "200",
+    "مقعد في مخطط الأثاث"
+   ],
+   [
+    "247",
+    "لوحة رسومات تنفيذية"
+   ],
+   [
+    "94",
+    "صفحة تصورات ثلاثية الأبعاد"
+   ]
+  ],
+  "short": {
+   "h2": "المشروع باختصار",
+   "rows": [
+    [
+     "العقار",
+     "مطعم من طابقين مع تراس رئيسي وفناء خلفي وتراس في الطابق العلوي"
+    ],
+    [
+     "المدينة",
+     "كييف، وسط المدينة"
+    ],
+    [
+     "الحالة",
+     "نفّذته CAS Development — المطعم يعمل (لقطات من فيديو صُوّر في الموقع أدناه)"
+    ],
+    [
+     "محتوى الحزمة",
+     "تصورات ثلاثية الأبعاد للداخل والخارج وألبوم من 247 لوحة رسومات تنفيذية"
+    ]
+   ],
+   "li": [
+    "مخططات الرفع المساحي قبل إعادة التخطيط وبعدها، ومخطط تركيب القواطع",
+    "الكهرباء: المقابس والمخارج، الإضاءة، دوائر الإنارة، شرائط LED، الصوتيات",
+    "التدفئة والتهوية ومخارج السباكة",
+    "أرضيات الكسوة، «سجاجيد» الغرانيت، الترافرتين، الدرابزين والحواجز",
+    "مواصفات فنية للتفاصيل: الردهة الفاصلة، الدرج، البرغولات، الكورنيش، دورات المياه",
+    "رسومات أثاث وديكور حسب الطلب: طاولات، أرائك، طاولات بار، لافتات، وحدات إنارة",
+    "مواصفات الإضاءة والأثاث والمواد"
+   ]
+  },
+  "vis_h2": "التصورات",
+  "vis_p": "11 من أصل 94 صفحة تصورات: الواجهة والتراسات نهارًا ومساءً، والفناء من الأعلى، والصالة، والبار، ودورة مياه. انقر على الصورة لتكبيرها.",
+  "dw_h2": "الرسومات",
+  "dw_p": "14 من أصل 247 لوحة في الألبوم التنفيذي، بالترتيب الذي يتسلمها به فريق التنفيذ. تُعرض اللوحات دون إطار الختم؛ انقر لرؤية التفاصيل.",
+  "rz_h2": "من الرسم إلى المطعم المنجز",
+  "rz_p": "الرسم ← التصور ← المطعم المنجز. الصور لقطات من فيديو صُوّر في الموقع.",
+  "inc_h2": "ما يتضمنه مشروع التصميم الكامل",
+  "inc_p": "يتضمن Monpark كل ما في باقة «الكاملة»: تصورات لجميع المناطق، ورسومات تنفيذية للأنظمة والتشطيبات، ورسومات أثاث حسب الطلب، ومواصفات. ولعقارك نحدد المحتوى وفق المهمة.",
+  "inc_links": [
+   [
+    "/ar/interior-design",
+    "التصميم الداخلي"
+   ],
+   [
+    "/ar/restaurant-design",
+    "تصميم المطاعم والمقاهي"
+   ],
+   [
+    "/ar/design-implementation",
+    "تنفيذ مشروع التصميم"
+   ]
+  ],
+  "rel_h2": "المزيد عن المشروع",
+  "rel": [
+   [
+    "/ar/proekty/monpark",
+    "Monpark — صفحة المشروع"
+   ],
+   [
+    "/ar/portfolio",
+    "معرض الأعمال كاملًا"
+   ],
+   [
+    "/ar/commercial-renovation",
+    "تجديد المساحات التجارية"
+   ]
+  ],
+  "form_h2": "أريد مشروعًا كهذا",
+  "service": "Повний дизайн-проєкт (як Monpark)",
+  "crumbs": [
+   [
+    "/ar/",
+    "الرئيسية"
+   ],
+   [
+    "/ar/portfolio",
+    "معرض الأعمال"
+   ],
+   [
+    "/ar/proekty/monpark",
+    "Monpark"
+   ]
+  ],
+  "crumb": "المشروع الكامل",
+  "btn_call": "اتصل بنا",
+  "btn_same": "أريد مثله",
+  "zoom": "تكبير",
+  "close": "إغلاق",
+  "lb_label": "عارض الصور",
+  "alt": " — Monpark",
+  "lbl": {
+   "d": "رسم",
+   "v": "تصور",
+   "f": "منفّذ"
   }
  }
 }

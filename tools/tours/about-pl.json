@@ -1,0 +1,235 @@
+{
+ "_": "Teksty po polsku pod przeglądarką /pl/tury/<slug> (tłumaczenie about.json: te same fakty; «zrealizowane» tylko dla apartment-2025). Buduje tools/tours/build.py pages. name — nazwa spaceru w przeglądarce i na kartach; linki — [tekst](/pl/ścieżka) do stron w tym języku. title ≤ 60, description ≤ 155.",
+ "apartment-2025": {
+  "name": "Mieszkanie — zrealizowane wnętrze",
+  "title": "Gotowe mieszkanie w Kijowie — spacer 3D 360° | CAS",
+  "description": "Spacer 3D 360° po gotowym mieszkaniu w Kijowie: salon, kuchnia, sypialnia, przedpokój i łazienka. Obejrzyj wykończenie, meble i światło jak na miejscu.",
+  "eye": "Zrealizowane wnętrze · Kijów",
+  "lead": "Spacer 360° po gotowym mieszkaniu w Kijowie: wnętrze po zakończeniu prac, sfotografowane kamerą 360. Przejdź przez pomieszczenia i obejrzyj wykończenie, meble i oświetlenie tak, jak podczas wizyty na miejscu.",
+  "p": [
+   "To zrealizowany obiekt, a nie wizualizacja: na zdjęciach są prawdziwe ściany, łączenia, armatura i oświetlenie. Tak właśnie warto oceniać remont — po efekcie, a nie po renderze.",
+   "CAS remontuje mieszkania własnym zespołem: [remont pod klucz w Kijowie](/pl/remont-pod-klucz) — od $550/m² (robocizna i materiały do stanu surowego; materiały wykończeniowe, meble i AGD — osobno, według kosztorysu). W trakcie prac klient otrzymuje fotorelacje co 1–2 tygodnie, a za dodatkową opłatą można uruchomić kamerę online na budowie 24/7. Jeśli nie ma jeszcze projektu, zaczniemy od [projektu wnętrza mieszkania](/pl/projekt-wnetrza-mieszkania). Więcej realizacji — w [portfolio](/pl/portfolio)."
+  ],
+  "links": [
+   [
+    "/pl/remont-pod-klucz",
+    "Remont mieszkań"
+   ],
+   [
+    "/pl/projekt-wnetrza-mieszkania",
+    "Projekt mieszkania"
+   ]
+  ]
+ },
+ "edelweiss": {
+  "name": "Edelweiss — projekt wnętrza mieszkania 108 m²",
+  "title": "Edelweiss, mieszkanie 108 m² — spacer 3D 360° | CAS",
+  "description": "Spacer 3D 360° po projekcie mieszkania Edelweiss, 108 m²: hol, salon z kuchnią, sypialnie, garderoba, łazienki. Obejdź wnętrze przed rozpoczęciem prac.",
+  "eye": "Projekt wnętrza · wizualizacja 360 · 108 m²",
+  "lead": "Wizualizacje 360 projektu wnętrza mieszkania Edelweiss, 108 m²: jasne wnętrze z miękkimi fakturami, garderobą i grafiką na ścianach. To model 3D projektu, a nie zdjęcia gotowego mieszkania.",
+  "p": [
+   "Kuchnia jest połączona ze strefą dzienną i jadalnią w jedną przestrzeń, ściany za łóżkami wykończono panelami tapicerowanymi, a garderoba ma szklane fronty. Zadanie, rozwiązanie i zdjęcia — na [stronie projektu Edelweiss](/pl/proekty/edelweiss)."
+  ],
+  "tail": "[Projekt wnętrza mieszkania](/pl/projekt-wnetrza-mieszkania) — od $30/m², minimalne zamówienie $2 500. CAS może zrealizować taki projekt w całości: [remont pod klucz](/pl/remont-pod-klucz) — od $550/m². Inne prace — w [portfolio](/pl/portfolio).",
+  "links": [
+   [
+    "/pl/projekt-wnetrza-mieszkania",
+    "Projekt mieszkania"
+   ],
+   [
+    "/pl/remont-pod-klucz",
+    "Remont mieszkań"
+   ]
+  ]
+ },
+ "hoda-estate": {
+  "name": "Hoda Estate — projekt wnętrza domu w Karpatach",
+  "title": "Hoda Estate, dom w Karpatach — spacer 3D 360° | CAS",
+  "description": "Spacer 3D 360° po projekcie domu Hoda Estate, 180 m², w Karpatach: salon z kuchnią, sypialnie, łazienki z kamieniem, sauna. Drewno i widok na góry.",
+  "eye": "Projekt wnętrza · wizualizacja 360 · Karpaty · 180 m²",
+  "lead": "Wizualizacje 360 projektu wnętrza domu Hoda Estate, 180 m², w Karpatach: drewno, kamień, len i widok na góry z głównych pomieszczeń. To model 3D projektu, a nie zdjęcia wybudowanego domu.",
+  "p": [
+   "Odsłonięte drewniane belki pod sufitem, jasny tynk, panoramiczne okna z widokiem na góry. Kuchnia, salon i jadalnia tworzą jedną przestrzeń, w łazienkach użyto kamienia naturalnego, osobno jest sauna i pralnia. Zadanie i rozwiązanie — na [stronie projektu Hoda Estate](/pl/proekty/hoda-estate)."
+  ],
+  "tail": "[Projekt domu](/pl/projekt-domu) — od $30/m², minimum $2 500. CAS prowadzi remonty i budowy we wszystkich obwodach Ukrainy, więc projekt w Karpatach można doprowadzić do realizacji: [budowa domów](/pl/budowa-domow) — od $600/m², pod klucz — od $1 100/m². Więcej prac — w [portfolio](/pl/portfolio).",
+  "links": [
+   [
+    "/pl/projekt-domu",
+    "Projekt domu"
+   ],
+   [
+    "/pl/budowa-domow",
+    "Budowa domów"
+   ]
+  ]
+ },
+ "triangle-house": {
+  "name": "Triangle House — koncepcja wnętrza",
+  "title": "Triangle House — spacer 3D po koncepcji wnętrza | CAS",
+  "description": "Spacer 3D 360° po koncepcji wnętrza Triangle House: hol na dwóch poziomach, salon z kuchnią, sypialnie i łazienka. Obejdź koncepcję online.",
+  "eye": "Koncepcja · wizualizacja 360",
+  "lead": "Wizualizacje 360 koncepcji wnętrza Triangle House: salon z kuchnią, sypialnie, łazienka i hol na dwóch poziomach. Koncepcja to wariant wnętrza w 3D, a nie zdjęcia wybudowanego domu.",
+  "p": [
+   "W spacerze można przejść z holu na parterze do holu na górnym poziomie i zajrzeć do sypialni i łazienki — widać, jak dom jest zorganizowany w pionie."
+  ],
+  "tail": "[Projekt domu](/pl/projekt-domu) — od $30/m², minimum $2 500. Możemy też wybudować dom: [budowa domów](/pl/budowa-domow) — od $600/m², pod klucz — od $1 100/m², a geodezję działki i zdjęcia z drona wykonują nasi specjaliści. Więcej projektów — w [portfolio](/pl/portfolio).",
+  "links": [
+   [
+    "/pl/projekt-domu",
+    "Projekt domu"
+   ],
+   [
+    "/pl/budowa-domow",
+    "Budowa domów"
+   ]
+  ]
+ },
+ "yablunytsia-estate": {
+  "name": "Posiadłość w Jabłunyci — koncepcja",
+  "title": "Posiadłość w Jabłunyci, Karpaty — spacer 3D 360° | CAS",
+  "description": "Spacer 3D 360° po koncepcji posiadłości w Jabłunyci (Karpaty): teren, basen, domy i ścieżki. Zobacz, jak posiadłość wygląda razem z krajobrazem.",
+  "eye": "Koncepcja · wizualizacja 360 · Karpaty",
+  "lead": "Wizualizacje 360 koncepcji posiadłości w Jabłunyci (Karpaty): teren, basen, domy i ścieżki między nimi. To model 3D koncepcji, a nie zdjęcia wybudowanej posiadłości.",
+  "p": [
+   "Punkty widokowe są rozmieszczone na całym terenie: widać, jak domy stoją względem basenu, dokąd prowadzą ścieżki i jak posiadłość wygląda jako całość. Przy obiekcie pozamiejskim działa to lepiej niż pojedyncze wizualizacje — działkę, domy i krajobraz widać razem.",
+   "Na rzeczywistej działce nasi specjaliści wykonują geodezję i zdjęcia z drona, więc projekt opiera się na prawdziwym ukształtowaniu terenu."
+  ],
+  "tail": "[Projektowanie ogrodów](/pl/projektowanie-ogrodow) — od $50 za ar (100 m²); [budowa domów](/pl/budowa-domow) — od $600/m², pod klucz — od $1 100/m². Jeśli posiadłość ma przyjmować gości, zobacz [ośrodek wypoczynkowy pod klucz](/pl/osrodek-wypoczynkowy-pod-klucz). Więcej prac — w [portfolio](/pl/portfolio).",
+  "links": [
+   [
+    "/pl/projektowanie-ogrodow",
+    "Projektowanie ogrodów"
+   ],
+   [
+    "/pl/budowa-domow",
+    "Budowa domów"
+   ]
+  ]
+ },
+ "apartment-80": {
+  "name": "Mieszkanie 80 m² — projekt wnętrza",
+  "title": "Mieszkanie 80 m² z tarasem — spacer 3D 360° | CAS",
+  "description": "Spacer 3D 360° po projekcie mieszkania 80 m²: hol, salon, jadalnia, kuchnia, sypialnia, garderoba i taras. Obejdź mieszkanie jeszcze przed remontem.",
+  "eye": "Projekt wnętrza · wizualizacja 360 · 80 m²",
+  "lead": "Wizualizacje 360 projektu wnętrza mieszkania 80 m² z tarasem: hol, salon, jadalnia, kuchnia, sypialnia i garderoba. To model 3D projektu, a nie zdjęcia gotowego mieszkania.",
+  "p": [
+   "Osobna jadalnia, garderoba i wyjście na taras — spacer pokazuje, jak te strefy łączą się ze sobą i z salonem."
+  ],
+  "tail": "[Projekt wnętrza mieszkania](/pl/projekt-wnetrza-mieszkania) — od $30/m², minimalne zamówienie $2 500; [remont](/pl/remont-pod-klucz) według projektu — od $550/m². Więcej prac — w [portfolio](/pl/portfolio).",
+  "links": [
+   [
+    "/pl/projekt-wnetrza-mieszkania",
+    "Projekt mieszkania"
+   ],
+   [
+    "/pl/remont-pod-klucz",
+    "Remont mieszkań"
+   ]
+  ]
+ },
+ "apartment-56": {
+  "name": "Mieszkanie 56 m² — projekt wnętrza",
+  "title": "Mieszkanie 56 m² — spacer 360° po projekcie | CAS",
+  "description": "Spacer 3D 360° po projekcie mieszkania 56 m²: osiem punktów widokowych w całym mieszkaniu. Zobacz, jak działa układ, zanim zacznie się remont.",
+  "eye": "Projekt wnętrza · wizualizacja 360 · 56 m²",
+  "lead": "Wizualizacje 360 projektu wnętrza mieszkania 56 m² z punktami widokowymi w całym mieszkaniu. To model 3D projektu, a nie zdjęcia gotowego wnętrza.",
+  "p": [
+   "Przechodź między punktami widokowymi strzałkami na zdjęciu lub przyciskami ‹ › poniżej: widać, jak strefy mieszkania przechodzą jedna w drugą i jak działa układ na 56 m²."
+  ],
+  "tail": "[Projekt wnętrza mieszkania](/pl/projekt-wnetrza-mieszkania) — od $30/m², minimalne zamówienie $2 500; [remont](/pl/remont-pod-klucz) — od $550/m². Więcej prac — w [portfolio](/pl/portfolio).",
+  "links": [
+   [
+    "/pl/projekt-wnetrza-mieszkania",
+    "Projekt mieszkania"
+   ],
+   [
+    "/pl/remont-pod-klucz",
+    "Remont mieszkań"
+   ]
+  ]
+ },
+ "apartment-45": {
+  "name": "Mieszkanie 45 m² — projekt wnętrza",
+  "title": "Mieszkanie 45 m² — spacer 360° po projekcie | CAS",
+  "description": "Spacer 3D 360° po projekcie mieszkania 45 m²: hol, kuchnia, salon, sypialnia i łazienka. Oceń proporcje małego mieszkania jeszcze przed remontem.",
+  "eye": "Projekt wnętrza · wizualizacja 360 · 45 m²",
+  "lead": "Wizualizacje 360 projektu wnętrza mieszkania 45 m²: hol, kuchnia, salon, sypialnia i łazienka. To model 3D projektu, a nie zdjęcia gotowego mieszkania.",
+  "p": [
+   "Na małej powierzchni najważniejsze jest to, jak łączą się pomieszczenia. W spacerze można przejść z holu do kuchni, salonu i sypialni i ocenić proporcje z wysokości oczu."
+  ],
+  "tail": "[Projekt wnętrza mieszkania](/pl/projekt-wnetrza-mieszkania) — od $30/m², minimalne zamówienie $2 500; [remont](/pl/remont-pod-klucz) — od $550/m². Więcej prac — w [portfolio](/pl/portfolio).",
+  "links": [
+   [
+    "/pl/projekt-wnetrza-mieszkania",
+    "Projekt mieszkania"
+   ],
+   [
+    "/pl/remont-pod-klucz",
+    "Remont mieszkań"
+   ]
+  ]
+ },
+ "apartment-37": {
+  "name": "Mieszkanie 37 m² — projekt wnętrza",
+  "title": "Mieszkanie 37 m² — spacer 360° po projekcie | CAS",
+  "description": "Spacer 3D 360° po projekcie kompaktowego mieszkania 37 m²: hol, kuchnia, salon, sypialnia i łazienka. Zobacz, jak wszystko mieści się na tej powierzchni.",
+  "eye": "Projekt wnętrza · wizualizacja 360 · 37 m²",
+  "lead": "Wizualizacje 360 projektu wnętrza mieszkania 37 m²: hol, kuchnia, salon, sypialnia i łazienka. To model 3D projektu, a nie zdjęcia gotowego mieszkania.",
+  "p": [
+   "37 m² to kompaktowe mieszkanie, w którym o wszystkim decyduje układ. Spacer pokazuje, jak hol, kuchnia, salon i sypialnia mieszczą się na tej powierzchni i jak pomieszczenia otwierają się na siebie."
+  ],
+  "tail": "[Projekt wnętrza mieszkania](/pl/projekt-wnetrza-mieszkania) — od $30/m², minimalne zamówienie $2 500; [remont](/pl/remont-pod-klucz) — od $550/m². Więcej prac — w [portfolio](/pl/portfolio).",
+  "links": [
+   [
+    "/pl/projekt-wnetrza-mieszkania",
+    "Projekt mieszkania"
+   ],
+   [
+    "/pl/remont-pod-klucz",
+    "Remont mieszkań"
+   ]
+  ]
+ },
+ "house-concept-1": {
+  "name": "Dom prywatny — koncepcja 1",
+  "title": "Dom prywatny, koncepcja 1 — spacer 3D 360° | CAS",
+  "description": "Spacer 3D 360° po koncepcji wnętrza domu prywatnego, wariant 1: punkty widokowe w całym domu. Porównaj go z innym wariantem koncepcji.",
+  "eye": "Koncepcja · wizualizacja 360 · wariant 1",
+  "lead": "Wizualizacje 360 koncepcji wnętrza domu prywatnego, wariant 1. Koncepcja to wariant wnętrza w 3D, a nie zdjęcia wybudowanego domu.",
+  "p": [
+   "Punkty widokowe są rozmieszczone w całym domu: przechodź strzałkami na zdjęciu lub przyciskami ‹ › poniżej. Porównaj go z [koncepcją 4](/pl/tury/house-concept-4), aby zobaczyć, jak różnie może wyglądać wnętrze domu prywatnego."
+  ],
+  "tail": "[Projekt domu](/pl/projekt-domu) — od $30/m², minimum $2 500; [remont domu pod klucz](/pl/remont-domu) i [budowa](/pl/budowa-domow) — własnym zespołem. Więcej prac — w [portfolio](/pl/portfolio).",
+  "links": [
+   [
+    "/pl/projekt-domu",
+    "Projekt domu"
+   ],
+   [
+    "/pl/remont-domu",
+    "Remont domu"
+   ]
+  ]
+ },
+ "house-concept-4": {
+  "name": "Dom prywatny — koncepcja 4",
+  "title": "Dom prywatny, koncepcja 4 — spacer 3D 360° | CAS",
+  "description": "Spacer 3D 360° po koncepcji wnętrza domu prywatnego, wariant 4: hol, kuchnia, salon, sypialnie, pokój dziecięcy, garderoba i łazienki.",
+  "eye": "Koncepcja · wizualizacja 360 · wariant 4",
+  "lead": "Wizualizacje 360 koncepcji wnętrza domu prywatnego, wariant 4: hol, korytarz, kuchnia, salon, sypialnie, pokój dziecięcy, garderoba i łazienki. Koncepcja to wariant wnętrza w 3D, a nie zdjęcia wybudowanego domu.",
+  "p": [
+   "Spacer pokazuje dom rodzinny: osobny pokój dziecięcy, garderobę i dwie łazienki. Porównaj go z [koncepcją 1](/pl/tury/house-concept-1) — innym wariantem wnętrza domu prywatnego."
+  ],
+  "tail": "[Projekt domu](/pl/projekt-domu) — od $30/m², minimum $2 500; [remont domu pod klucz](/pl/remont-domu) i [budowa](/pl/budowa-domow) — własnym zespołem. Więcej prac — w [portfolio](/pl/portfolio).",
+  "links": [
+   [
+    "/pl/projekt-domu",
+    "Projekt domu"
+   ],
+   [
+    "/pl/remont-domu",
+    "Remont domu"
+   ]
+  ]
+ }
+}

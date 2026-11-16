@@ -1,0 +1,235 @@
+{
+ "_": "Deutsche Texte unter dem Viewer /de/tury/<slug> (Übersetzung von about.json: dieselben Fakten; «fertig/realisiert» nur für apartment-2025). Erzeugt von tools/tours/build.py pages. name — Titel des Rundgangs im Viewer und auf den Karten; Links — [Text](/de/pfad) auf Seiten in dieser Sprache. title ≤ 60, description ≤ 155.",
+ "apartment-2025": {
+  "name": "Wohnung — fertiges Interieur",
+  "title": "Fertige Wohnung in Kyjiw — 3D-Rundgang 360° | CAS",
+  "description": "3D-Rundgang 360° durch eine fertige Wohnung in Kyjiw: Wohnzimmer, Küche, Schlafzimmer, Diele und Bad. Oberflächen, Möbel und Licht wie vor Ort ansehen.",
+  "eye": "Fertiges Interieur · Kyjiw",
+  "lead": "Ein 360°-Rundgang durch eine fertige Wohnung in Kyjiw: das Interieur nach Abschluss der Arbeiten, aufgenommen mit einer 360-Kamera. Gehen Sie durch die Räume und sehen Sie sich Oberflächen, Möbel und Beleuchtung an wie bei einer Besichtigung.",
+  "p": [
+   "Das ist ein realisiertes Objekt, keine Visualisierung: Die Fotos zeigen echte Wände, Fugen, Sanitär und Beleuchtung. Genau so sollte man eine Renovierung beurteilen — am Ergebnis, nicht am Rendering.",
+   "CAS renoviert Wohnungen mit eigenem Team: [schlüsselfertige Renovierung in Kyjiw](/de/renovierung-schluesselfertig) — ab $550/m² (Arbeiten und Rohbaumaterialien; Ausbaumaterialien, Möbel und Geräte separat, nach Kostenvoranschlag). Während der Arbeiten erhält der Kunde alle 1–2 Wochen Fotoberichte, gegen Aufpreis lässt sich eine Online-Kamera auf der Baustelle rund um die Uhr einrichten. Gibt es noch kein Projekt, beginnen wir mit dem [Wohnungsdesign](/de/wohnungsdesign). Weitere Objekte im [Portfolio](/de/portfolio)."
+  ],
+  "links": [
+   [
+    "/de/renovierung-schluesselfertig",
+    "Wohnungsrenovierung"
+   ],
+   [
+    "/de/wohnungsdesign",
+    "Wohnungsdesign"
+   ]
+  ]
+ },
+ "edelweiss": {
+  "name": "Edelweiss — Designprojekt einer Wohnung, 108 m²",
+  "title": "Edelweiss, Wohnung 108 m² — 3D-Rundgang 360° | CAS",
+  "description": "3D-Rundgang 360° durch das Designprojekt der Wohnung Edelweiss, 108 m²: Halle, Wohnzimmer mit Küche, Schlafzimmer, Ankleide, Bäder. Vor dem Bau begehen.",
+  "eye": "Designprojekt · 360-Visualisierung · 108 m²",
+  "lead": "360-Visualisierungen des Designprojekts der Wohnung Edelweiss, 108 m²: ein helles Interieur mit weichen Texturen, Ankleide und grafischer Kunst. Das ist ein 3D-Modell des Projekts, keine Fotos einer fertigen Wohnung.",
+  "p": [
+   "Die Küche ist mit Wohn- und Essbereich zu einem Raum verbunden, die Wände hinter den Betten sind mit Textilpaneelen verkleidet, die Ankleide hat Glasfronten. Aufgabe, Lösung und Bilder finden Sie auf der [Projektseite Edelweiss](/de/proekty/edelweiss)."
+  ],
+  "tail": "[Wohnungsdesign](/de/wohnungsdesign) — ab $30/m², Mindestauftrag $2 500. CAS kann ein solches Projekt vollständig umsetzen: [schlüsselfertige Renovierung](/de/renovierung-schluesselfertig) — ab $550/m². Weitere Arbeiten im [Portfolio](/de/portfolio).",
+  "links": [
+   [
+    "/de/wohnungsdesign",
+    "Wohnungsdesign"
+   ],
+   [
+    "/de/renovierung-schluesselfertig",
+    "Wohnungsrenovierung"
+   ]
+  ]
+ },
+ "hoda-estate": {
+  "name": "Hoda Estate — Designprojekt eines Hauses in den Karpaten",
+  "title": "Hoda Estate, Haus in den Karpaten — 3D-Rundgang 360° | CAS",
+  "description": "3D-Rundgang 360° durch das Designprojekt des Hauses Hoda Estate, 180 m², in den Karpaten: Wohnzimmer mit Küche, Schlafzimmer, Steinbäder, Sauna.",
+  "eye": "Designprojekt · 360-Visualisierung · Karpaten · 180 m²",
+  "lead": "360-Visualisierungen des Innendesign-Projekts für das Haus Hoda Estate, 180 m², in den Karpaten: Holz, Stein, Leinen und Bergblick aus den Haupträumen. Das ist ein 3D-Modell des Projekts, keine Fotos eines gebauten Hauses.",
+  "p": [
+   "Sichtbare Holzbalken unter der Decke, heller Putz, Panoramafenster zu den Bergen. Küche, Wohnzimmer und Essbereich bilden einen Raum, in den Bädern wird Naturstein verwendet, dazu kommen eine separate Sauna und eine Waschküche. Aufgabe und Lösung stehen auf der [Projektseite Hoda Estate](/de/proekty/hoda-estate)."
+  ],
+  "tail": "[Hausplanung und Innendesign](/de/hausplanung) — ab $30/m², mindestens $2 500. CAS übernimmt Renovierung und Bau in allen Regionen der Ukraine, daher lässt sich ein Projekt in den Karpaten bis zur Umsetzung führen: [Hausbau](/de/hausbau) — ab $600/m², schlüsselfertig ab $1 100/m². Weitere Arbeiten im [Portfolio](/de/portfolio).",
+  "links": [
+   [
+    "/de/hausplanung",
+    "Hausplanung"
+   ],
+   [
+    "/de/hausbau",
+    "Hausbau"
+   ]
+  ]
+ },
+ "triangle-house": {
+  "name": "Triangle House — Interieurkonzept",
+  "title": "Triangle House — 3D-Rundgang eines Interieurkonzepts | CAS",
+  "description": "3D-Rundgang 360° durch das Interieurkonzept Triangle House: Halle über zwei Ebenen, Wohnzimmer mit Küche, Schlafzimmer und Bad. Das Konzept online begehen.",
+  "eye": "Konzept · 360-Visualisierung",
+  "lead": "360-Visualisierungen des Interieurkonzepts für Triangle House: Wohnzimmer mit Küche, Schlafzimmer, ein Bad und eine Halle über zwei Ebenen. Ein Konzept ist eine Interieurvariante in 3D, keine Fotos eines gebauten Hauses.",
+  "p": [
+   "Im Rundgang gelangt man von der Halle im Erdgeschoss in die obere Halle und kann in Schlafzimmer und Bad schauen — so wird sichtbar, wie das Haus vertikal organisiert ist."
+  ],
+  "tail": "[Hausplanung und Innendesign](/de/hausplanung) — ab $30/m², mindestens $2 500. Wir können das Haus auch bauen: [Hausbau](/de/hausbau) — ab $600/m², schlüsselfertig ab $1 100/m²; Vermessung des Grundstücks und Luftaufnahmen übernehmen unsere Fachleute. Weitere Projekte im [Portfolio](/de/portfolio).",
+  "links": [
+   [
+    "/de/hausplanung",
+    "Hausplanung"
+   ],
+   [
+    "/de/hausbau",
+    "Hausbau"
+   ]
+  ]
+ },
+ "yablunytsia-estate": {
+  "name": "Landsitz in Jablunyzja — Konzept",
+  "title": "Landsitz in Jablunyzja, Karpaten — 3D-Rundgang 360° | CAS",
+  "description": "3D-Rundgang 360° durch das Konzept eines Landsitzes in Jablunyzja (Karpaten): Gelände, Pool, Häuser und Wege. So wirkt der Landsitz mit seiner Landschaft.",
+  "eye": "Konzept · 360-Visualisierung · Karpaten",
+  "lead": "360-Visualisierungen des Konzepts für einen Landsitz in Jablunyzja (Karpaten): das Gelände, ein Pool, die Häuser und die Wege dazwischen. Das ist ein 3D-Modell des Konzepts, keine Fotos eines gebauten Landsitzes.",
+  "p": [
+   "Die Standpunkte sind über das Gelände verteilt: Man sieht, wie die Häuser zum Pool stehen, wohin die Wege führen und wie der Landsitz als Ganzes wirkt. Für ein Objekt auf dem Land funktioniert das besser als einzelne Renderings — Grundstück, Häuser und Landschaft sind zusammen zu sehen.",
+   "Auf einem realen Grundstück übernehmen unsere Fachleute Vermessung und Luftaufnahmen, sodass das Projekt auf dem tatsächlichen Gelände aufbaut."
+  ],
+  "tail": "[Gartengestaltung](/de/gartengestaltung) — ab $50 pro Ar (100 m²); [Hausbau](/de/hausbau) — ab $600/m², schlüsselfertig ab $1 100/m². Soll der Landsitz Gäste beherbergen, siehe [Ferienanlage schlüsselfertig](/de/ferienanlage-schluesselfertig). Weitere Arbeiten im [Portfolio](/de/portfolio).",
+  "links": [
+   [
+    "/de/gartengestaltung",
+    "Gartengestaltung"
+   ],
+   [
+    "/de/hausbau",
+    "Hausbau"
+   ]
+  ]
+ },
+ "apartment-80": {
+  "name": "Wohnung 80 m² — Designprojekt",
+  "title": "Wohnung 80 m² mit Terrasse — 3D-Rundgang 360° | CAS",
+  "description": "3D-Rundgang 360° durch das Designprojekt einer 80-m²-Wohnung: Halle, Wohnzimmer, Esszimmer, Küche, Schlafzimmer, Ankleide und Terrasse.",
+  "eye": "Designprojekt · 360-Visualisierung · 80 m²",
+  "lead": "360-Visualisierungen des Designprojekts einer 80-m²-Wohnung mit Terrasse: Halle, Wohnzimmer, Esszimmer, Küche, Schlafzimmer und Ankleide. Das ist ein 3D-Modell des Projekts, keine Fotos einer fertigen Wohnung.",
+  "p": [
+   "Ein separates Esszimmer, eine Ankleide und der Zugang zur Terrasse — der Rundgang zeigt, wie diese Bereiche miteinander und mit dem Wohnzimmer verbunden sind."
+  ],
+  "tail": "[Wohnungsdesign](/de/wohnungsdesign) — ab $30/m², Mindestauftrag $2 500; [Renovierung](/de/renovierung-schluesselfertig) nach dem Projekt — ab $550/m². Weitere Arbeiten im [Portfolio](/de/portfolio).",
+  "links": [
+   [
+    "/de/wohnungsdesign",
+    "Wohnungsdesign"
+   ],
+   [
+    "/de/renovierung-schluesselfertig",
+    "Wohnungsrenovierung"
+   ]
+  ]
+ },
+ "apartment-56": {
+  "name": "Wohnung 56 m² — Designprojekt",
+  "title": "Wohnung 56 m² — 360°-Rundgang durch das Projekt | CAS",
+  "description": "3D-Rundgang 360° durch das Designprojekt einer 56-m²-Wohnung: acht Standpunkte in der ganzen Wohnung. So funktioniert der Grundriss vor der Renovierung.",
+  "eye": "Designprojekt · 360-Visualisierung · 56 m²",
+  "lead": "360-Visualisierungen des Designprojekts einer 56-m²-Wohnung mit Standpunkten in der ganzen Wohnung. Das ist ein 3D-Modell des Projekts, keine Fotos eines fertigen Interieurs.",
+  "p": [
+   "Wechseln Sie mit den Pfeilen im Bild oder den Tasten ‹ › unten zwischen den Standpunkten: So sieht man, wie die Bereiche der Wohnung ineinander übergehen und wie der Grundriss auf 56 m² funktioniert."
+  ],
+  "tail": "[Wohnungsdesign](/de/wohnungsdesign) — ab $30/m², Mindestauftrag $2 500; [Renovierung](/de/renovierung-schluesselfertig) — ab $550/m². Weitere Arbeiten im [Portfolio](/de/portfolio).",
+  "links": [
+   [
+    "/de/wohnungsdesign",
+    "Wohnungsdesign"
+   ],
+   [
+    "/de/renovierung-schluesselfertig",
+    "Wohnungsrenovierung"
+   ]
+  ]
+ },
+ "apartment-45": {
+  "name": "Wohnung 45 m² — Designprojekt",
+  "title": "Wohnung 45 m² — 360°-Rundgang durch das Projekt | CAS",
+  "description": "3D-Rundgang 360° durch das Designprojekt einer 45-m²-Wohnung: Halle, Küche, Wohnzimmer, Schlafzimmer und Bad. Proportionen vor der Renovierung prüfen.",
+  "eye": "Designprojekt · 360-Visualisierung · 45 m²",
+  "lead": "360-Visualisierungen des Designprojekts einer 45-m²-Wohnung: Halle, Küche, Wohnzimmer, Schlafzimmer und Bad. Das ist ein 3D-Modell des Projekts, keine Fotos einer fertigen Wohnung.",
+  "p": [
+   "Auf kleiner Fläche kommt es vor allem darauf an, wie die Räume verbunden sind. Im Rundgang geht man von der Halle in Küche, Wohnzimmer und Schlafzimmer und beurteilt die Proportionen auf Augenhöhe."
+  ],
+  "tail": "[Wohnungsdesign](/de/wohnungsdesign) — ab $30/m², Mindestauftrag $2 500; [Renovierung](/de/renovierung-schluesselfertig) — ab $550/m². Weitere Arbeiten im [Portfolio](/de/portfolio).",
+  "links": [
+   [
+    "/de/wohnungsdesign",
+    "Wohnungsdesign"
+   ],
+   [
+    "/de/renovierung-schluesselfertig",
+    "Wohnungsrenovierung"
+   ]
+  ]
+ },
+ "apartment-37": {
+  "name": "Wohnung 37 m² — Designprojekt",
+  "title": "Wohnung 37 m² — 360°-Rundgang durch das Projekt | CAS",
+  "description": "3D-Rundgang 360° durch das Designprojekt einer kompakten 37-m²-Wohnung: Halle, Küche, Wohnzimmer, Schlafzimmer und Bad. So passt alles auf diese Fläche.",
+  "eye": "Designprojekt · 360-Visualisierung · 37 m²",
+  "lead": "360-Visualisierungen des Designprojekts einer 37-m²-Wohnung: Halle, Küche, Wohnzimmer, Schlafzimmer und Bad. Das ist ein 3D-Modell des Projekts, keine Fotos einer fertigen Wohnung.",
+  "p": [
+   "37 m² sind eine kompakte Wohnung, in der der Grundriss alles entscheidet. Der Rundgang zeigt, wie Halle, Küche, Wohnzimmer und Schlafzimmer auf diese Fläche passen und wie sich die Räume zueinander öffnen."
+  ],
+  "tail": "[Wohnungsdesign](/de/wohnungsdesign) — ab $30/m², Mindestauftrag $2 500; [Renovierung](/de/renovierung-schluesselfertig) — ab $550/m². Weitere Arbeiten im [Portfolio](/de/portfolio).",
+  "links": [
+   [
+    "/de/wohnungsdesign",
+    "Wohnungsdesign"
+   ],
+   [
+    "/de/renovierung-schluesselfertig",
+    "Wohnungsrenovierung"
+   ]
+  ]
+ },
+ "house-concept-1": {
+  "name": "Privathaus — Konzept 1",
+  "title": "Privathaus, Konzept 1 — 3D-Rundgang 360° | CAS",
+  "description": "3D-Rundgang 360° durch ein Interieurkonzept für ein Privathaus, Variante 1: Standpunkte im ganzen Haus. Zum Vergleich mit einer anderen Variante.",
+  "eye": "Konzept · 360-Visualisierung · Variante 1",
+  "lead": "360-Visualisierungen eines Interieurkonzepts für ein Privathaus, Variante 1. Ein Konzept ist eine Interieurvariante in 3D, keine Fotos eines gebauten Hauses.",
+  "p": [
+   "Die Standpunkte sind über das ganze Haus verteilt: Wechseln Sie mit den Pfeilen im Bild oder den Tasten ‹ › unten. Vergleichen Sie es mit [Konzept 4](/de/tury/house-concept-4), um zu sehen, wie unterschiedlich das Interieur eines Privathauses aussehen kann."
+  ],
+  "tail": "[Hausplanung und Innendesign](/de/hausplanung) — ab $30/m², mindestens $2 500; [schlüsselfertige Haussanierung](/de/haussanierung) und [Hausbau](/de/hausbau) — mit eigenem Team. Weitere Arbeiten im [Portfolio](/de/portfolio).",
+  "links": [
+   [
+    "/de/hausplanung",
+    "Hausplanung"
+   ],
+   [
+    "/de/haussanierung",
+    "Haussanierung"
+   ]
+  ]
+ },
+ "house-concept-4": {
+  "name": "Privathaus — Konzept 4",
+  "title": "Privathaus, Konzept 4 — 3D-Rundgang 360° | CAS",
+  "description": "3D-Rundgang 360° durch ein Interieurkonzept für ein Privathaus, Variante 4: Halle, Küche, Wohnzimmer, Schlafzimmer, Kinderzimmer, Ankleide und Bäder.",
+  "eye": "Konzept · 360-Visualisierung · Variante 4",
+  "lead": "360-Visualisierungen eines Interieurkonzepts für ein Privathaus, Variante 4: Halle, Flur, Küche, Wohnzimmer, Schlafzimmer, Kinderzimmer, Ankleide und Bäder. Ein Konzept ist eine Interieurvariante in 3D, keine Fotos eines gebauten Hauses.",
+  "p": [
+   "Der Rundgang zeigt ein Familienhaus: ein separates Kinderzimmer, eine Ankleide und zwei Bäder. Vergleichen Sie es mit [Konzept 1](/de/tury/house-concept-1), einer anderen Interieurvariante für ein Privathaus."
+  ],
+  "tail": "[Hausplanung und Innendesign](/de/hausplanung) — ab $30/m², mindestens $2 500; [schlüsselfertige Haussanierung](/de/haussanierung) und [Hausbau](/de/hausbau) — mit eigenem Team. Weitere Arbeiten im [Portfolio](/de/portfolio).",
+  "links": [
+   [
+    "/de/hausplanung",
+    "Hausplanung"
+   ],
+   [
+    "/de/haussanierung",
+    "Haussanierung"
+   ]
+  ]
+ }
+}

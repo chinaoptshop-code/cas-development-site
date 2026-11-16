@@ -380,6 +380,12 @@
  "case-monpark": {
   "uk": "/proekty/monpark-povnyi-proekt",
   "ru": "/ru/proekty/monpark-polnyy-proekt",
-  "en": "/en/proekty/monpark-full-project"
+  "en": "/en/proekty/monpark-full-project",
+  "es": "/es/proekty/monpark-proyecto-completo",
+  "pl": "/pl/proekty/monpark-pelny-projekt",
+  "de": "/de/proekty/monpark-gesamtprojekt",
+  "fr": "/fr/proekty/monpark-projet-complet",
+  "zh": "/zh/proekty/monpark-full-project",
+  "ar": "/ar/proekty/monpark-full-project"
  }
 }
