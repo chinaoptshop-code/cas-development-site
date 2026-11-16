@@ -8,7 +8,8 @@
     var en = lg(l) === 'en', p = (dp == null ? String(Math.round(+n * 1000) / 1000) : (+n).toFixed(dp)).split('.');
     return p[0].replace(/\B(?=(\d{3})+(?!\d))/g, en ? ',' : '\u00a0') + (p[1] ? (en ? '.' : ',') + p[1] : '');
   };
-  W.casUsd = function (n, l) { return '$' + W.casNum(Math.round(+n), l); };
+  // ціни: тисячі — вузький нерозривний пробіл U+202F ($1 100), en/zh — кома ($1,100) (Михайло 16.11.2026)
+  W.casUsd = function (n, l) { var c = lg(l) === 'zh' ? ',' : '\u202f'; return '$' + W.casNum(Math.round(+n), l).replace(/\u00a0/g, c); };
 })(window);
 (function () {
   var d = document, h = d.documentElement;

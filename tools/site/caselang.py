@@ -51,7 +51,7 @@ class Tr:
         self.miss = []
 
     def __call__(self, key):
-        k = key.replace('\u00a0', ' ')
+        k = key.replace('\u00a0', ' ').replace('\u202f', ' ')
         r = rules(k, self)
         if r is not None:
             return r

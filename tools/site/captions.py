@@ -61,7 +61,7 @@ def gallery(g, lang):
         else:
             seen.add(name)
             new = caption(name, lang)
-        return m.group(0) if m.group(0).replace('\u00a0', ' ') == new else new  # нерозривні пробіли ставить chrome.py
+        return m.group(0) if m.group(0).replace('\u00a0', ' ').replace('\u202f', ' ') == new else new  # нерозривні пробіли ставить chrome.py
     return CAP_RX.sub(cap, g)
 
 
@@ -119,7 +119,7 @@ def apply(s, rel):
         return s
     old = PH_RX.search(s)
     s2 = photo(s, rel, lang)
-    if old and s2 != s and PH_RX.search(s2) and PH_RX.search(s2).group(0) == old.group(0).replace('\u00a0', ' '):
+    if old and s2 != s and PH_RX.search(s2) and PH_RX.search(s2).group(0) == old.group(0).replace('\u00a0', ' ').replace('\u202f', ' '):
         s2 = s  # той самий блок (нерозривні пробіли від chrome.py)
     s = s2
     if 'class="gal"' not in s:

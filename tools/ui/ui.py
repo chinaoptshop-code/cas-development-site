@@ -54,7 +54,7 @@ def analyse(rel):
     k = kind(rel, s)
     css = ''.join(re.findall(r'<style[^>]*>(.*?)</style>', s, re.S))
     js = ''.join(m for m in re.findall(r'<script(?![^>]*(?:application/ld\+json|speculationrules))[^>]*>(.*?)</script>', s, re.S))
-    body = re.sub(r'<(script|style)[^>]*>.*?</\1>', '', s, flags=re.S).replace(' ', ' ')  # nbsp у цінах — chrome.nbsp_prices
+    body = re.sub(r'<(script|style)[^>]*>.*?</\1>', '', s, flags=re.S).replace(' ', ' ').replace('\u202f', ' ')  # nbsp у цінах — chrome.nbsp_prices
     # орієнтири «площа × базова ставка» (картка «Коротко про проєкт»): перевіряємо розрахунок, а не список цін
     est = re.findall(r'<b data-est="(\d+)x(\d+)"[^>]*>(?:від|от) \$([\d ]+)</b>', body)
     est_bad = [f'{a}x{r}=${v}' for a, r, v in est if int(r) not in EST_RATES or int(v.replace(' ', '')) != (max(int(a) * 30, 2500) if r == '30' else int(a) * int(r))]
@@ -81,7 +81,7 @@ def analyse(rel):
         'osocor': bool(re.search(r'osocor|осокор|osokork', s, re.I)),
         'mu': sorted(set(re.findall(r'--mu:\s*(#[0-9a-fA-F]{3,6})', css))),
         'bg2': sorted(set(re.findall(r'--bg2:\s*(#[0-9a-fA-F]{3,6})', css))),
-        'prices_bad': sorted(set(p for p in re.findall(r'\$\s?\d[\d ]*', text) if p.strip().rstrip() not in PRICES_OK and not p.startswith('$1 ') and '/' not in p)),
+        'prices_bad': sorted(set(p for p in re.findall(r'\$\s?\d[\d ]*', re.sub(r'(?<=\$\d),(?=\d{3})', ' ', text)) if p.strip().rstrip() not in PRICES_OK and not p.startswith('$1 ') and '/' not in p)),
         'facts_bad': [p for p in FACT_BAD if re.search(p, text)],
         'est_bad': est_bad,
         'webhook_copies': s.count('webhook/contact-form'),

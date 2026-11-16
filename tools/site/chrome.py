@@ -14,7 +14,7 @@ products/build.py, shop/pages.py, gen-landing.py) викликають apply() �
 Мова сторінки — з <html lang>, перемикач мови веде на hreflang-пару (якщо є) або на головну мови.
 Іконки Оздоби/кабінету (пошук, обране, #accLink, кошик) зберігаються в слоті .sch-tools — їх обслуговує app.js.
 """
-import glob, json, os, re, sys
+import glob, html, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 B = 'https://cas-develop.com'
@@ -109,7 +109,7 @@ _NB_PREP = re.compile(r'(?<!\w)(від|до|от|около|близько|od|do
 _NB_TIMES = re.compile(r'(\d|m²|м²) ([×=]) ')
 _NB_UNIT = re.compile(r'(\d) (₴|грн|zł|PLN|USD|EUR|€|m²|м²|m2|м2|%|dni|dnia|днів|дні|дня|тижні|тижнів|тижня|тиждень|місяців|міс\.|days|weeks|months|días|semanas|meses|jours|semaines|mois|Tage|Wochen|Monate|tygodnie|tygodni|miesięcy|сотку|сотки|соток|шт|szt\.|pcs|cm|см|мм|mm|кг|kg|м|m)(?!\w)')
 # час «10:00–20:00» — цілий діапазон (раніше ловилось «00–20» посеред часу, і рядок рвався на «10:» / «00–20» / «:00»)
-_NB_RANGE = re.compile(r'(?<![\w–-])(?<!\d:)(\$?\d+(?::\d\d)?(?:\u00a0\d{3})*[–-]\$?\d+(?::\d\d)?(?:\u00a0\d{3})*)(?![\w–-]|:\d)')
+_NB_RANGE = re.compile(r'(?<![\w–-])(?<!\d:)(\$?\d+(?::\d\d)?(?:[\u00a0\u202f,]\d{3})*[–-]\$?\d+(?::\d\d)?(?:[\u00a0\u202f,]\d{3})*)(?![\w–-]|:\d)')
 # однолітерні прийменники й сполучники (uk/ru) не лишаються в кінці рядка: «з Китаю», «і бар»
 _NB_ONE = re.compile(r'(?<![\w\u00a0-])([зйіувоаксиЗЙІУВОАКСИ]) (?=\S)')
 _NB_ONE_PL = re.compile(r'(?<![\w\u00a0-])([wzioauWZIOAU]) (?=\S)')  # pl: «w Kijowie», «z UE»
@@ -119,7 +119,41 @@ _NB_TAG = re.compile(r'<(' + '|'.join(_NB_SKIP) + r')\b[^>]*>.*?</\1\s*>|<!--.*?
 _NB_ARROW = re.compile(r' ([→←])(?=\s*$)')
 
 
+# Єдиний формат цін (Михайло 16.11.2026): «від $1 100/м²» — тисячі вузьким нерозривним пробілом (U+202F; en, zh — «$1,100»),
+# одиниця через «/» без пробілів («$30 / м²», «$30 за м²», «$30 per m²» → «$30/м²»). Суми не змінюються.
+NN = '\u202f'
+_PR_SEP = '[ \u00a0\u202f,]'
+_PR_NUM = re.compile(r'(?<=\$)(\d{1,3}(?:' + _PR_SEP + r'\d{3})+)(?![\d,]\d)|(?<=\d[–-])(\d{1,3}(?:' + _PR_SEP + r'\d{3})+)(?![\d,]\d)')
+_PR_UNIT = re.compile(r'(\$\d[\d,\u202f]*(?:[–-]\$?\d[\d,\u202f]*)?)[ \u00a0\u202f]*(?:/|(?:за|za|per|pro|par|por)(?=[ \u00a0\u202f]))[ \u00a0\u202f]*'
+                      r'(м²|m²|м2|m2|م²|сотку|сотки|соток|ar(?![\w]))')
+
+
+def price_fmt(t, lang=None):
+    """«$1 100 за м²» → «$1 100/м²» (U+202F; en/zh — «$1,100/m²»). Ідемпотентно; суми не змінюються."""
+    if '$' not in t:
+        return t
+    sep = ',' if lang in ('en', 'zh') else NN
+    t = _PR_NUM.sub(lambda m: re.sub(_PR_SEP, sep, m.group(0)), t)
+    return _PR_UNIT.sub(r'\1/\2', t)
+
+
+_PR_ATTR = re.compile(r'(\s(?:alt|title|aria-label|content|data-xs)=")([^"]*\$[^"]*)(")')
+
+
+def prices_all(s, lang=None):
+    """Формат цін поза текстом <body>: <title>, атрибути (meta description, alt, data-xs…), JSON-LD."""
+    if '$' not in s:
+        return s
+    s = re.sub(r'(<title>)(.*?)(</title>)', lambda m: m.group(1) + price_fmt(m.group(2), lang) + m.group(3), s, count=1, flags=re.S)
+    s = re.sub(r'<script type="application/ld\+json">.*?</script>|<script\b.*?</script>|<style\b.*?</style>|<!--.*?-->|<[a-zA-Z][^<>]*\$[^<>]*>',
+               lambda m: price_fmt(m.group(0), lang) if m.group(0).startswith('<script type="application/ld+json">')
+               else _PR_ATTR.sub(lambda a: a.group(1) + price_fmt(a.group(2), lang) + a.group(3), m.group(0))
+               if m.group(0)[1:2].isalpha() and not m.group(0).startswith(('<script', '<style')) else m.group(0), s, flags=re.S)
+    return s
+
+
 def _nb_text(t, lang=None):
+    t = price_fmt(t, lang)
     t = _NB_THOUS.sub(lambda m: m.group(1) + m.group(2).replace(' ', NB), t)
     t = _NB_TIMES.sub(lambda m: m.group(1) + NB + m.group(2) + ' ', t)
     t = _NB_PREP.sub(lambda m: m.group(1) + NB, t)
@@ -156,6 +190,7 @@ def fonts_block(s):
     return FONTS_RX.sub(lambda m: FONTS_TAG, s, count=1)
 
 import i18n  # реєстр мов, hreflang-кластери (tools/site/i18n.py)
+import oztext  # тексти про Оздобу, поки вона прихована (tools/site/oztext.py)
 import flags  # перемикачі сайту: OZDOBA_PUBLIC — Оздоба прихована з 12.11.2026 (tools/site/flags.py)
 OZDOBA_PUBLIC = flags.OZDOBA_PUBLIC
 
@@ -813,14 +848,35 @@ def oz_seo(s):
     return head + sep + rest
 
 
+_CALL_BTN = re.compile(r'(<div class="btns">(?:(?!</div>).)*?<a class="btn" href="tel:\+380978667755">)\+380[ \u00a0]97[ \u00a0]866[ \u00a0]77[ \u00a0]55(</a>)', re.S)
+
+
+def call_label(s, lang):
+    """Кнопка дзвінка в рядку кнопок (.btns: hero лендингів, «Замовити схожий проєкт») — «Подзвонити» мовою сторінки,
+    не номер телефону (Михайло 16.11.2026); tel: той самий. Номер — у шапці, футері й пігулці «Зв'язатися»."""
+    if '<div class="btns">' not in s:
+        return s
+    import leadform
+    c = leadform._call(lang)
+    return _CALL_BTN.sub(lambda m: m.group(1) + html.escape(c[0]) + m.group(2), s) if c else s
+
+
 def apply(s, rel):
     """Ставить єдину шапку/футер у HTML сторінки `rel` (шлях від кореня сайту). Ідемпотентно."""
     s = _HM_RM.sub('', s)  # маркери :has() — заново після ux.apply (генератори шукають точні рядки розмітки)
     rel = rel.replace(os.sep, '/')
     if os.path.basename(rel) in SKIP and '/' not in rel or rel.startswith('google'):
         return s
-    if re.match(r'(?:[a-z]{2}/)?tury/', rel):  # повноекранні 3D-тури (uk, en, ru) — без шапки/футера
-        return s
+    if re.match(r'(?:[a-z]{2}/)?tury/', rel):  # повноекранні 3D-тури (uk, en, ru) — без шапки/футера; лише формат цін
+        lang = page_lang(s)
+        i = s.find('<body')
+        if i >= 0:
+            body, out, pos = s[i:], [], 0
+            for m in _NB_TAG.finditer(body):
+                out += [price_fmt(body[pos:m.start()], lang), m.group(0)]
+                pos = m.end()
+            s = s[:i] + ''.join(out) + price_fmt(body[pos:], lang)
+        return prices_all(s, lang)
     lang, path, alts = page_lang(s), rel_to_path(rel), alternates(s)
     if rel in [i18n.path_to_file(h) for h in HOME.values()]:
         alts.setdefault(lang, HOME[lang])
@@ -899,9 +955,11 @@ def apply(s, rel):
     if flags.OZ_FILE.match(rel):
         s = oz_seo(s)
     elif OZDOBA_PUBLIC:
-        s = oz_show(s)
+        s = oz_show(oztext.show(s))
     elif not rel.startswith('kabinet'):  # кабінет (замовлення й обране Оздоби) — без змін
         s = oz_hide(s)
+        # тексти без назви Оздоби й мінімального замовлення: «комплектація напряму з фабрик Китаю» (tools/site/oztext.py)
+        s = oztext.hide(s, lang)
         # JSON-LD інших сторінок (напр. Offer «Комплектація з Китаю» на головній): без url на приховану Оздобу;
         # генератор (landing.py) ставить його знову, коли OZDOBA_PUBLIC = True
         s = re.sub(r',\s*"url":\s*"https://cas-develop\.com/(?:[a-z]{2}/)?ozdoba(?:[/?#][^"]*)?"', '', s)
@@ -914,7 +972,9 @@ def apply(s, rel):
     s = lbox.apply(s, rel)
     s = versions(s)
     s = fonts_block(s)
+    s = call_label(s, lang)
     s = nbsp_prices(s, lang)
+    s = prices_all(s, lang)
     s = local_cases(s, lang)
     if i18n.meta(lang).get('dir') == 'rtl':  # RTL: стрілка «далі» дивиться вліво (→ у тексті посилань — назад)
         i = s.find('<body')

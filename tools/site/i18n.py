@@ -38,7 +38,8 @@ def num(n, lang='uk', dp=0):
 
 
 def usd(n, lang='uk'):
-    return '$' + num(n, lang)
+    """Ціна: тисячі — U+202F ($1 100), en/zh — кома ($1,100) (Михайло 16.11.2026; те саме — chrome.price_fmt, casUsd у JS)."""
+    return '$' + num(n, lang).replace('\u00a0', ',' if lang == 'zh' else '\u202f')
 
 
 def _load(lang, _c={}):

@@ -10,6 +10,7 @@ import html, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, 'tools/site'))
 import flags  # noqa: E402  OZDOBA_PUBLIC (tools/site/flags.py)
+import oztext  # noqa: E402  тексти без Оздоби й мінімального замовлення, поки вона прихована
 CSS = 'assets/blog-light.v1.css'
 esc = lambda s: html.escape(s, quote=True)
 
@@ -206,6 +207,8 @@ def body(a, render_node, inline, ver):
     # «Коротко»: час читання, ціни зі статті, розділи й питання, послуга
     mins = max(1, round(_words(a['body']) / 200))
     text = ' '.join(str(n[1]) for n in a['body'] if n[0] in ('p', 'ul', 'ol'))
+    if not flags.OZDOBA_PUBLIC:  # «Ціни:» — без мінімального замовлення Оздоби ($10 000) і порогів її знижок
+        text = re.sub(r'\d+ ?% — \S+ \$[\d  ,]+\d', '', oztext.text(text, lang))  # пороги знижок за обсягом Оздоби
     prices = []
     for m in PRICE.finditer(text):
         p = re.sub(r'\s+', ' ', m.group(0)).strip()

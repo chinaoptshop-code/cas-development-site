@@ -123,14 +123,14 @@ def check(a):
     if not re.fullmatch(r'[a-z0-9-]+', a['slug']): errs.append('slug: лише a-z, 0-9, -')
     if len(a['description']) > 170: errs.append('description довший за 170 символів')
     if len(a.get('seo_title') or title_tag(a['title'])) > 60: errs.append('<title> довший за 60 символів — додати "seo_title" (≤60)')
-    txt = json.dumps(a, ensure_ascii=False)
+    txt = json.dumps(a, ensure_ascii=False).replace('\u202f', ' ')
     if re.search(r'osocor|осокор|osokork', txt, re.I): errs.append('Osocor заборонено')
     calc = set()  # розрахунок «N × $ставка = $сума»: сума дозволена, якщо ставка підтверджена й множення правильне
     for n, rate, res in re.findall(r'(\d+)\s*(?:м²|m²)?\s*×\s*(\$\d[\d ]*?\d?)(?:/м²|/m²)?\s*=\s*(\$\d[\d ,]*\d|\$\d)', txt):
         r, v = int(re.sub(r'\D', '', rate)), int(re.sub(r'\D', '', res))
         if rate.strip() in PRICES_OK and int(n) * r == v: calc.add(res.strip())
         else: errs.append(f'розрахунок {n} × {rate.strip()} = {res} — неправильний або ставка не підтверджена')
-    for p in re.findall(r'\$\s?\d[\d ,]*\d|\$\d', txt.replace('\u00a0', ' ')):
+    for p in re.findall(r'\$\s?\d[\d ,]*\d|\$\d', txt.replace('\u00a0', ' ').replace('\u202f', ' ')):  # тисячі: NBSP/U+202F (chrome.price_fmt)
         p = p.strip().rstrip(',')
         if p in calc: continue
         if not any(p == ok or p.startswith(ok + ' ') for ok in PRICES_OK) and not re.fullmatch(r'\$\d{1,3}(( \d{3})+|(,\d{3})+)', p):
