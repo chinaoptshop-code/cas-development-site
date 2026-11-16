@@ -100,7 +100,7 @@
             '<td><small>' + (s.linked ? 'акаунт: ' + esc(s.account_name || '') + (s.last_login ? '<br>вхід ' + when(s.last_login) : '') : 'чекає першого входу') + '</small></td>' +
             '<td><small>📋 ' + (s.open_leads || 0) + ' · 🏗 ' + (s.active_projects || 0) + (s.open_issues ? ' · <span class="err">⚠ ' + s.open_issues + '</span>' : '') + '</small></td>' +
             '<td>' + (ro ? '<small class="muted">' + (owner ? 'власник (змінна OWNER_TG_ID)' : '') + '</small>' :
-              '<span class="row"><button type="button" class="btn ' + (s.active ? 'danger' : '') + ' sm" data-act>' + (s.active ? 'Вимкнути' : 'Увімкнути') + '</button>' +
+              '<span class="row"><button type="button" class="btn ghost sm" data-edit aria-expanded="false">Змінити</button><button type="button" class="btn ' + (s.active ? 'danger' : '') + ' sm" data-act>' + (s.active ? 'Вимкнути' : 'Увімкнути') + '</button>' +
               (s.linked && s.active ? '<button type="button" class="btn ghost sm" data-out title="Анулювати всі сесії">Вийти скрізь</button>' : '') + '</span>') + '</td></tr>';
         }).join('') + '</tbody></table></div>' +
         '<h3 style="margin-top:28px">Ролі й права</h3><p class="muted">Сервер перевіряє права на кожному запиті: працівник бачить лише призначені йому заявки й обʼєкти; суми — лише з правом «Суми, платежі, борги».</p>' +
@@ -131,6 +131,36 @@
           patch(id, { active: on }, on ? 'Доступ увімкнено' : 'Доступ вимкнено');
         };
         var o = $('[data-out]', tr); if (o) o.onclick = function () { if (confirm('Завершити всі сесії «' + name + '»?')) patch(id, { logout: true }, 'Сесії завершено'); };
+        // Редагування імені, контактів для входу й примітки (16.11): форма-рядок під працівником, PATCH лише змінених полів
+        var ed = $('[data-edit]', tr); if (ed) ed.onclick = function () {
+          var open = tr.nextElementSibling && tr.nextElementSibling.classList.contains('st-edit');
+          $$('tr.st-edit', L).forEach(function (x) { x.remove(); });
+          $$('[data-edit]', L).forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+          if (open) return;
+          var s = d.staff.filter(function (x) { return x.id === id; })[0] || {};
+          var row = document.createElement('tr'); row.className = 'st-edit';
+          row.innerHTML = '<td colspan="5"><form class="form two" data-ed novalidate>' +
+            '<label class="f"><span>Імʼя</span><input name="name" required autocomplete="off" value="' + esc(s.name || '') + '"></label>' +
+            '<label class="f"><span>Telegram id <small>(цифри)</small></span><input name="tg" inputmode="numeric" value="' + esc(s.tg_id || '') + '"></label>' +
+            '<label class="f"><span>Пошта Google</span><input name="email" type="email" inputmode="email" value="' + esc(s.email || '') + '"></label>' +
+            '<label class="f"><span>Телефон</span><input name="phone" type="tel" inputmode="tel" value="' + esc(s.phone || '') + '"></label>' +
+            '<label class="f full"><span>Примітка</span><input name="note" value="' + esc(s.note || '') + '"></label>' +
+            '<div class="full row"><button class="btn sm" type="submit">Зберегти</button><button class="btn ghost sm" type="button" data-cancel>Скасувати</button><span class="err" data-e role="alert"></span></div></form></td>';
+          tr.parentNode.insertBefore(row, tr.nextSibling); ed.setAttribute('aria-expanded', 'true');
+          var fe = $('[data-ed]', row); $('input', fe).focus();
+          $('[data-cancel]', row).onclick = function () { row.remove(); ed.setAttribute('aria-expanded', 'false'); ed.focus(); };
+          fe.onsubmit = function (e) {
+            e.preventDefault();
+            var b = {}; new FormData(fe).forEach(function (v, k) { b[k] = String(v).trim(); });
+            var err = !b.name ? 'Вкажіть імʼя' : !b.tg && !b.email && !b.phone ? 'Потрібен Telegram id, пошта або телефон для входу' : b.tg && !/^\d{1,20}$/.test(b.tg) ? 'Telegram id — лише цифри' : '';
+            if (err) { $('[data-e]', fe).textContent = err; return; }
+            var was = { name: s.name || '', tg: s.tg_id ? String(s.tg_id) : '', email: s.email || '', phone: s.phone || '', note: s.note || '' }, ch = {};
+            Object.keys(b).forEach(function (k) { if (b[k] !== was[k]) ch[k] = b[k]; });
+            if (!Object.keys(ch).length) { row.remove(); return; }
+            $('button[type=submit]', fe).disabled = true;
+            patch(id, ch, 'Зміни збережено');
+          };
+        };
       });
     });
   }
