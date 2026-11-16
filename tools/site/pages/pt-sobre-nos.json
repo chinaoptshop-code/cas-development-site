@@ -1,0 +1,309 @@
+{
+ "slug": "sobre-nos",
+ "lang": "pt",
+ "kind": "about",
+ "service": "Sobre o estúdio",
+ "title": "Sobre a CAS Development — estúdio de design e obras em Kyiv",
+ "description": "CAS Development: estúdio de design, remodelações e construção fundado em Kyiv em 2016. Mais de 150 projetos na Ucrânia e no estrangeiro, garantia de 12 meses.",
+ "h1": "Criamos espaços com vida",
+ "facts": false,
+ "lead": "A CAS Development é um estúdio onde a arquitetura encontra o detalhe. Fundado em Kyiv em 2016, projeta interiores, remodela e constrói chave na mão: de apartamentos compactos a moradias, restaurantes e escritórios.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "kicker": "Sobre o estúdio",
+ "hero_img": {
+  "img": "img/1p_MqveKjiZ1-1400.webp",
+  "srcset": "/img/1p_MqveKjiZ1-r400.webp 400w, /img/1p_MqveKjiZ1-r600.webp 600w, /img/1p_MqveKjiZ1-r800.webp 800w, /img/1p_MqveKjiZ1-r1200.webp 1200w, /img/1p_MqveKjiZ1-1400.webp 1400w",
+  "alt": "Sala com lareira — Petrivtsi House, projeto da CAS Development",
+  "sizes": "100vw",
+  "m": {
+   "srcset": "/img/1p_MqveKjiZ1-m-800.webp 800w, /img/1p_MqveKjiZ1-m-1200.webp 1200w, /img/1p_MqveKjiZ1-m-1400.webp 1400w, /img/1p_MqveKjiZ1-m-1600.webp 1600w",
+   "w": 1600,
+   "h": 1280,
+   "sizes": "100vw"
+  }
+ },
+ "sections": [
+  {
+   "t": "split",
+   "img": "img/p/1jS6hUJuy_cM08-900.webp",
+   "srcset": "/img/p/1jS6hUJuy_cM08-400.webp 400w, /img/p/1jS6hUJuy_cM08-900.webp 900w",
+   "alt": "Sala com lareira — Hodos Villa, projeto da CAS Development",
+   "badge": [
+    "2016",
+    "Fundado em Kyiv"
+   ],
+   "h2": "A nossa abordagem",
+   "p": [
+    "Desde 2016 realizámos mais de 150 projetos na Ucrânia e no estrangeiro. Não copiamos tendências: primeiro percebemos como vive ou trabalha e depois criamos o espaço a partir daí.",
+    "Cada projeto começa com um briefing e uma reunião (presencial ou por videochamada) e termina com a entrega do imóvel; quando fazemos a obra, o mesmo gestor acompanha o projeto no local.",
+    "Móveis e materiais chegam diretamente da China através da nossa linha Ozdoba: encomenda mínima a partir de $10 000, entrega em 35–70 dias."
+   ],
+   "vals": [
+    [
+     "Minimalismo",
+     "Retiramos o supérfluo e deixamos o essencial. Cada pormenor tem o seu lugar."
+    ],
+    [
+     "Qualidade",
+     "Materiais, soluções e profissionais testados ao longo dos anos."
+    ],
+    [
+     "Transparência",
+     "Relatórios fotográficos a cada 1–2 semanas e um orçamento sem rubricas escondidas."
+    ],
+    [
+     "Personalidade",
+     "Sem modelos: cada projeto reflete uma pessoa concreta."
+    ]
+   ]
+  },
+  {
+   "t": "facts",
+   "h2": "A CAS Development em números",
+   "items": [
+    [
+     "150+",
+     "projetos"
+    ],
+    [
+     "10+ anos",
+     "de experiência, desde 2016"
+    ],
+    [
+     "12 meses",
+     "de garantia nos trabalhos"
+    ],
+    [
+     "±5%",
+     "precisão do orçamento se a remodelação for feita por nós"
+    ]
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Porque nos escolhem",
+   "p": [
+    "Design, obra e fornecimento geridos por uma só empresa: sem tempos mortos entre especialidades nem discussões sobre responsabilidades. O orçamento fecha-se antes de começar e, se a remodelação for feita pela nossa equipa, o custo final não se desvia mais de ±5%.",
+    "Trabalhamos com clientes na Ucrânia, na Europa e noutros países: projetámos casas e villas para os EUA e os Emirados. Todo o processo de design pode ser feito online e os desenhos ficam prontos para o seu empreiteiro local.",
+    "Móveis, iluminação e materiais chegam diretamente de fabricantes na China e são produzidos por encomenda: cor, tamanho, material e acabamento segundo o seu projeto."
+   ]
+  },
+  {
+   "t": "guarantees"
+  },
+  {
+   "t": "steps",
+   "h2": "Como trabalhamos",
+   "items": [
+    [
+     "Briefing",
+     "Reunião ou videochamada sobre o imóvel, o seu modo de vida, orçamento e prazos."
+    ],
+    [
+     "Projeto de design",
+     "Opções de planta, visualizações 3D e conjunto completo de desenhos."
+    ],
+    [
+     "Orçamento e contrato",
+     "Preço, prazos e fases de pagamento fixados antes de começar."
+    ],
+    [
+     "Obra e fornecimento",
+     "Equipas próprias, compras, relatórios fotográficos a cada 1–2 semanas."
+    ],
+    [
+     "Entrega",
+     "Móveis montados, espaço decorado, 12 meses de garantia nas obras."
+    ]
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Onde trabalhamos",
+   "items": [
+    {
+     "ico": "📍",
+     "h": "Kyiv",
+     "p": "Sede do estúdio: apartamentos, moradias e espaços comerciais com visita à obra."
+    },
+    {
+     "ico": "🇺🇦",
+     "h": "Ucrânia",
+     "p": "Design, remodelações, construção e mobiliário em todo o país."
+    },
+    {
+     "ico": "🇪🇺",
+     "h": "Europa",
+     "p": "Projetos em Espanha, França, Alemanha e Polónia: design, remodelações, construção e mobiliário."
+    },
+    {
+     "ico": "🌍",
+     "h": "Todo o mundo",
+     "p": "Projetos em Bali, na Turquia (Kitana Beach, Bodrum) e nos EUA; design online e acompanhamento."
+    }
+   ]
+  },
+  {
+   "t": "team",
+   "h2": "As pessoas por trás do seu projeto",
+   "items": [
+    {
+     "h": "Mykhailo",
+     "role": "Fundador e CEO",
+     "p": "Dirige cada projeto desde a primeira reunião até à entrega. Acorda com o cliente o orçamento, os prazos e as decisões-chave, e responde pelo resultado."
+    },
+    {
+     "h": "Serzh",
+     "role": "Gestor de projeto",
+     "p": "Prepara o orçamento e o calendário da obra, organiza as equipas e a compra de materiais. Controla os prazos em obra e envia ao cliente relatórios fotográficos a cada 1–2 semanas."
+    },
+    {
+     "h": "Alisa",
+     "role": "Designer de interiores",
+     "p": "Desenvolve o conceito e o estilo do interior e prepara as visualizações 3D. Seleciona materiais, móveis e iluminação e redige as especificações com que a equipa trabalha."
+    },
+    {
+     "h": "Olena",
+     "role": "Projetista",
+     "p": "Elabora plantas e desenhos de execução: paredes divisórias, eletricidade, canalização e iluminação. Prepara as medições para a equipa e verifica se a obra segue o projeto."
+    },
+    {
+     "h": "Roman",
+     "role": "Programador de IA",
+     "p": "Web, pedidos, assistentes e automação."
+    }
+   ],
+   "crew": {
+    "h3": "A nossa equipa de obra",
+    "p": "Encarregados de obra, marceneiros e especialistas do quadro que trabalham no seu projeto.",
+    "groups": [
+     {
+      "label": "Departamento de projetos",
+      "p": "Arquitetos, designers e engenheiros: plantas, desenhos de execução, especificações.",
+      "people": []
+     },
+     {
+      "label": "Departamento de execução",
+      "p": "Construtores e instaladores de cada especialidade, da obra bruta aos acabamentos.",
+      "people": []
+     },
+     {
+      "label": "Encarregados de obra",
+      "p": "",
+      "people": []
+     },
+     {
+      "label": "Marceneiros",
+      "p": "",
+      "people": []
+     },
+     {
+      "label": "Topografia",
+      "p": "",
+      "people": []
+     },
+     {
+      "label": "Levantamento 3D",
+      "p": "",
+      "people": []
+     },
+     {
+      "label": "Filmagem com drone",
+      "p": "",
+      "people": []
+     }
+    ]
+   }
+  },
+  {
+   "t": "faq",
+   "h2": "A CAS Development em resumo: perguntas frequentes",
+   "items": [
+    [
+     "O que é a CAS Development?",
+     "Um estúdio de design de interiores, remodelações e construção chave na mão de Kyiv, fundado em 2016: projetos de design, remodelação de apartamentos e moradias, construção, escritórios e espaços comerciais, e mobiliário diretamente de fábricas na China."
+    ],
+    [
+     "Quem fundou a CAS Development?",
+     "O estúdio foi fundado por Mykhailo, o seu fundador e CEO, em Kyiv em 2016."
+    ],
+    [
+     "Onde trabalha a CAS Development?",
+     "O escritório fica na Rua Antonovycha, 44, Kyiv. Trabalhamos em Kyiv e na sua região, fazemos remodelações e construção em todas as regiões da Ucrânia e na Europa; tivemos e temos projetos em Bali, Espanha, EUA, França, Alemanha, Polónia e Turquia."
+    ],
+    [
+     "Quanto custam os serviços?",
+     "Projeto de design a partir de $30/m² (mínimo $2 500), remodelação chave na mão a partir de $550/m² (mão de obra e materiais de obra bruta), escritório a partir de $350/m², mobiliário a partir de $250/m², moradia: estrutura a partir de $600/m², chave na mão a partir de $1 100/m². O valor exato fica fixado no orçamento após a medição."
+    ],
+    [
+     "Quanto custa o design de interiores?",
+     "A partir de $30 por m², com um orçamento mínimo de projeto de $2 500. O preço exato é confirmado após o briefing."
+    ],
+    [
+     "Fazem projetos de habitação fora da Ucrânia?",
+     "Sim. O design pode ser feito inteiramente online e os desenhos e medições ficam prontos para o seu empreiteiro local."
+    ],
+    [
+     "Também constroem?",
+     "Sim. Remodelação de apartamentos e moradias a partir de $550 por m² (mão de obra e materiais básicos de obra; acabamentos, móveis e eletrodomésticos à parte, segundo orçamento), escritórios a partir de $350 por m², construção a partir de $600 por m² e chave na mão com acabamentos a partir de $1 100 por m²."
+    ],
+    [
+     "Como entrar em contacto?",
+     "Por WhatsApp, Telegram, Viber ou pelo formulário abaixo; respondemos em breve."
+    ]
+   ]
+  },
+  {
+   "t": "cta",
+   "h2": "O que dizem os clientes",
+   "score": "4,8",
+   "p": [
+    "As opiniões de pessoas com quem já realizámos projetos estão no nosso perfil do Google."
+   ],
+   "btns": [
+    [
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Ler opiniões no Google",
+     1
+    ]
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Outros serviços",
+   "items": [
+    [
+     "/pt/servicos",
+     "Todos os serviços"
+    ],
+    [
+     "/pt/design-de-interiores",
+     "Design de interiores"
+    ],
+    [
+     "/pt/execucao-projeto-design",
+     "Execução do projeto de design"
+    ],
+    [
+     "/pt/remodelacao-chave-na-mao",
+     "Remodelação chave na mão"
+    ],
+    [
+     "/pt/construcao-de-moradias",
+     "Construção de moradias"
+    ],
+    [
+     "/pt/mobiliario-chave-na-mao",
+     "Mobiliário chave na mão"
+    ],
+    [
+     "/pt/espacos-comerciais-chave-na-mao",
+     "Espaços comerciais chave na mão"
+    ]
+   ]
+  }
+ ]
+}

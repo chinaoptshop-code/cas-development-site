@@ -1089,7 +1089,7 @@
   }
 
   // ---------- Блог ----------
-  var LANGS = ['uk', 'ru', 'en', 'pl', 'es', 'zh', 'de', 'fr', 'ar'];
+  var LANGS = ['uk', 'ru', 'en', 'pl', 'es', 'zh', 'de', 'fr', 'pt', 'ar'];
   var AD = 'tools/blog/articles', DD = 'tools/blog/drafts';
   RENDER.blog = function (L) {
     return needToken(L).then(function (ok) {

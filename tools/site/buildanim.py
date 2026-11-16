@@ -76,9 +76,9 @@ MAT = {'karkasnyi-budynok-pid-kliuch-kyiv.html': 'frame', 'ru/karkasnyy-dom-pod-
 CFG = {'modulnyi-budynok-kyiv.html': dict(t='one', s='minimal', a=80), 'ru/modulnyy-dom-kiev.html': dict(t='one', s='minimal', a=80)}
 VAR = {'kapitalnyi-remont-kvartyry-kyiv.html': 'old', 'ru/kapitalnyy-remont-kvartiry-kiev.html': 'old'}
 ABOUT = {'uk': '/about', 'ru': '/ru/o-nas', 'en': '/en/about', 'es': '/es/sobre-nosotros', 'zh': '/zh/about', 'pl': '/pl/o-studiu',
-         'de': '/de/ueber-uns', 'fr': '/fr/a-propos', 'ar': '/ar/about'}
+         'de': '/de/ueber-uns', 'fr': '/fr/a-propos', 'pt': '/pt/sobre-nos', 'ar': '/ar/about'}
 BUILD = {'uk': '/budivnytstvo-budynkiv-kyiv', 'ru': '/ru/stroitelstvo-domov-kiev', 'en': '/en/house-construction', 'es': '/es/construccion-de-casas',
-         'zh': '/zh/house-construction', 'pl': '/pl/budowa-domow', 'de': '/de/hausbau', 'fr': '/fr/construction-maison', 'ar': '/ar/house-construction'}
+         'zh': '/zh/house-construction', 'pl': '/pl/budowa-domow', 'de': '/de/hausbau', 'fr': '/fr/construction-maison', 'pt': '/pt/construcao-de-moradias', 'ar': '/ar/house-construction'}
 
 # тексти етапів, матеріалів і «пирогів» шарів — tools/site/buildanim_data.py (єдине джерело для HTML і JSON скрипта)
 import buildanim_data as BD  # noqa: E402
@@ -90,6 +90,7 @@ FACTS = {'uk': [('150', '150+', 'проєктів з 2016'), ('10', '10+', 'ро
          'pl': [('150', '150+', 'projektów od 2016'), ('10', '10+', 'lat doświadczenia'), ('12', '12 mies.', 'gwarancji')],
          'de': [('150', '150+', 'Projekte seit 2016'), ('10', '10+', 'Jahre Erfahrung'), ('12', '12 Mon.', 'Gewährleistung')],
          'fr': [('150', '150+', 'projets depuis 2016'), ('10', '10+', 'ans d’expérience'), ('12', '12 mois', 'de garantie')],
+         'pt': [('150', '150+', 'projetos desde 2016'), ('10', '10+', 'anos de experiência'), ('12', '12 meses', 'de garantia')],
          'ar': [('150', '+150', 'مشروعًا منذ 2016'), ('10', '+10', 'سنوات خبرة'), ('12', '12 شهرًا', 'ضمان')]}
 JSON_OUT = 'assets/build-anim.v1.{}.{}.json'  # дані для скрипта: окремо мова × сцена (house / flat) — сторінка тягне лише свою сцену (бюджет ≤ 60 КБ gzip)
 SCENES = ('house', 'flat')

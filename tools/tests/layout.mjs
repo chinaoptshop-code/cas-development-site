@@ -26,7 +26,7 @@ const WIDTHS = (arg('--widths', FULL ? '360,402,768,1024,1440,1920,2560' : '402,
 
 // ===== набори сторінок =====
 const CL = JSON.parse(readFileSync(join(ROOT, 'tools/site/lang/clusters.json'), 'utf8'));
-const LANGS = ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'ar'];
+const LANGS = ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'pt', 'ar'];
 const core = [...LANGS.map(l => CL.home[l])];
 for (const k of ['services', 'about', 'contact']) for (const l of ['uk', 'en', 'ru', 'ar']) core.push(CL[k][l]);
 core.push('/portfolio', '/en/portfolio', '/ru/portfolio', '/es/portfolio', '/ar/portfolio', '/ar/proekty/monpark', '/de/proekty/hoda-estate');

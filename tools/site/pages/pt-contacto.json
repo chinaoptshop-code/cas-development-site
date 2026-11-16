@@ -1,0 +1,142 @@
+{
+ "slug": "contacto",
+ "lang": "pt",
+ "kind": "contact",
+ "service": "Contactos",
+ "title": "Contactos — CAS Development, Kyiv (Ucrânia)",
+ "description": "Contacte a CAS Development: +380 97 866 77 55 (telefone, WhatsApp, Telegram, Viber), Rua Antonovycha, 44, Kyiv. Consulta gratuita.",
+ "h1": "Vamos falar do seu espaço",
+ "lead": "Fale-nos do seu imóvel e propomos uma solução à medida do seu estilo e orçamento. A consulta por telefone é gratuita; no formulário só o telefone é obrigatório.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "facts": false,
+ "kicker": "Contactos",
+ "hero_img": {
+  "img": "img/p/1HZT-E30rREI7d-1600.webp",
+  "srcset": "/img/p/1HZT-E30rREI7d-400.webp 400w, /img/p/1HZT-E30rREI7d-900.webp 900w, /img/p/1HZT-E30rREI7d-1200.webp 1200w, /img/p/1HZT-E30rREI7d-1600.webp 1600w, /img/p/1HZT-E30rREI7d-2000.webp 2000w",
+  "alt": "Moradia Hoda Estate nos Cárpatos — projeto da CAS Development",
+  "sizes": "100vw",
+  "m": {
+   "srcset": "/img/1FRa0FI6iMHK-m-800.webp 800w, /img/1FRa0FI6iMHK-m-1200.webp 1200w, /img/1FRa0FI6iMHK-m-1400.webp 1400w, /img/1FRa0FI6iMHK-m-1600.webp 1600w",
+   "w": 1600,
+   "h": 2000,
+   "sizes": "100vw"
+  }
+ },
+ "sections": [
+  {
+   "t": "contacts",
+   "h2": "Como nos contactar",
+   "p": "Escreva-nos quando quiser: respondemos em breve.",
+   "rows": [
+    [
+     "Escritório",
+     "Rua Antonovycha, 44, Kyiv, Ucrânia",
+     "https://maps.google.com/?cid=15015666645432112566",
+     "Como chegar"
+    ],
+    [
+     "Horário",
+     "Seg–Sex 10:00–20:00 · Sáb–Dom encerrado · online 24/7",
+     null
+    ],
+    [
+     "Telefone",
+     "+380 97 866 77 55",
+     "tel:+380978667755",
+     "O mesmo número no Telegram, Viber e WhatsApp"
+    ],
+    [
+     "E-mail",
+     "china.opt.shop@gmail.com",
+     "mailto:china.opt.shop@gmail.com",
+     null
+    ],
+    [
+     "Instagram",
+     "@cas_development",
+     "https://www.instagram.com/cas_development/",
+     "Projetos e obras em curso"
+    ],
+    [
+     "YouTube",
+     "@cas_development",
+     "https://www.youtube.com/@cas_development"
+    ]
+   ],
+   "msgs": true,
+   "msgs_h": "Mensagens"
+  },
+  {
+   "t": "map"
+  },
+  {
+   "t": "text",
+   "h2": "Quer saber o orçamento antecipadamente?",
+   "p": [
+    "Design a partir de $30/m², remodelação a partir de $550/m², escritórios a partir de $350/m², construção a partir de $600/m², mobiliário a partir de $250/m². O valor final chega com o orçamento após a consulta.",
+    "[Abrir a calculadora →](/pt/calculadora-obras)"
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Contrato, garantia, pagamento",
+   "p": [
+    "Trabalhamos com contrato, orçamento e autos de cada fase; garantia de 12 meses nos trabalhos; o pagamento segue um calendário à sua medida, a partir de um adiantamento de 10%.",
+    "[Perguntas frequentes →](/pt/perguntas-frequentes)"
+   ]
+  },
+  {
+   "t": "text",
+   "h2": "Onde trabalhamos",
+   "p": [
+    "O escritório da CAS Development fica na Rua Antonovycha, 44, Kyiv. Trabalhamos em toda Kyiv e na sua região; remodelações e construção em todas as regiões da Ucrânia e na Europa.",
+    "Desde 2016, mais de 150 projetos em Kyiv, em toda a Ucrânia e no estrangeiro: Espanha, França, Alemanha, Polónia, Turquia (Bodrum), EUA e Bali. A consulta por telefone é gratuita; a medição no local é paga e o seu custo depende do imóvel."
+   ],
+   "link": [
+    "/pt/sobre-nos",
+    "Sobre o estúdio e a equipa →"
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Outros serviços",
+   "items": [
+    [
+     "/pt/servicos",
+     "Todos os serviços"
+    ],
+    [
+     "/pt/design-de-interiores",
+     "Design de interiores"
+    ],
+    [
+     "/pt/execucao-projeto-design",
+     "Execução do projeto de design"
+    ],
+    [
+     "/pt/remodelacao-chave-na-mao",
+     "Remodelação chave na mão"
+    ],
+    [
+     "/pt/construcao-de-moradias",
+     "Construção de moradias"
+    ],
+    [
+     "/pt/mobiliario-chave-na-mao",
+     "Mobiliário chave na mão"
+    ],
+    [
+     "/pt/espacos-comerciais-chave-na-mao",
+     "Espaços comerciais chave na mão"
+    ],
+    [
+     "/pt/perguntas-frequentes",
+     "Perguntas frequentes"
+    ]
+   ]
+  }
+ ]
+}

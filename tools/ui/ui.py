@@ -11,7 +11,7 @@ import glob, gzip, json, os, re, sys
 from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-MAIN = {'index.html', 'ru/index.html', 'services.html', 'about.html', 'contact.html', 'portfolio.html'} | {f'{l}/portfolio.html' for l in ('en', 'ru', 'es', 'pl', 'de', 'fr', 'zh', 'ar')}  # портфоліо мовами — той самий шаблон, що й uk (tools/site/caselang.py)
+MAIN = {'index.html', 'ru/index.html', 'services.html', 'about.html', 'contact.html', 'portfolio.html'} | {f'{l}/portfolio.html' for l in ('en', 'ru', 'es', 'pl', 'de', 'fr', 'pt', 'zh', 'ar')}  # портфоліо мовами — той самий шаблон, що й uk (tools/site/caselang.py)
 SKIP = {'privacy.html', 'terms.html', '404.html'}  # сторонні/службові шаблони
 
 # Підтверджені Михайлом цифри (план Dell v2 §1). Усе інше на сторінках — підозріле.

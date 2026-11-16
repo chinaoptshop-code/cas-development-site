@@ -59,12 +59,13 @@ def _r(*pairs):
 COMMON = _r(
     (r' ?\((?:≈|ca\.|ok\.|about|около|приблизно|env\.|aprox\.|约)? ?(?:460 000 ?₴|₴ ?460 000)\)', ''),
     (r'(?<=\d) (шт|szt|uds|pcs|pz|St)\.(?=[,;]| [a-zа-яіїєґ])', r' \1'),
-    (r'^(?:Ціни|Цены|Prices|Ceny|Preise|Prix|Precios|价格|الأسعار): .*', lambda m: _items(m.group(0), ', ')),
+    (r'^(?:Ціни|Цены|Prices|Ceny|Preise|Prix|Precios|Preços|价格|الأسعار): .*', lambda m: _items(m.group(0), ', ')),
     (r'^.* · .*$', lambda m: _items(m.group(0), ' · ')),
 )
 UA, RU = 'напряму з фабрик Китаю', 'напрямую с фабрик Китая'
 EN, PL, DE = 'directly from factories in China', 'bezpośrednio z fabryk w Chinach', 'direkt von Fabriken in China'
 FR, ES = 'directement auprès d’usines en Chine', 'directamente de fábricas en China'
+PT = 'diretamente de fábricas na China'
 
 # ── Правила (порядок важливий). Текст нормалізований: NBSP/NNBSP → пробіл. ─────────────────────────────────────────
 # Спершу — мінімальне замовлення (фрази, потім цілі речення), далі — фрази з назвою бренду, наприкінці — повтори.
@@ -313,6 +314,21 @@ RULES = {
         (r'a través de nuestr[ao] (?:línea|catálogo) Ozdoba', ES),
         (r'(?:directamente )?(?:de China|de fábricas en China) ' + ES, ES),
     ),
+    'pt': COMMON + _r(
+        (r'^equipamento da China a partir de \$10 000$', f'equipamento {PT}'),
+        (r'⌂(?:A encomenda mínima|A partir de \$10 000)[^.]*?(?:\$10 000|artigos)', None),
+        (r': encomenda mínima a partir de \$10 000, ', ': '),
+        (r', equipamento do catálogo Ozdoba a partir de \$10 000', f', equipamento {PT}'),
+        (r'Encomenda a partir de \$10 000\.', None),
+        (r'[Ee]ncomenda mínima[^.]*?\$10 000|Não vendemos peças avulsas|No catálogo Ozdoba \(em ucraniano\) pode ver', None),
+        (r'^(?:a partir de )?\$10 000$', ''),
+        (r'Móveis da China e Ozdoba', f'Móveis {PT}'), (r'móveis da China e Ozdoba', f'móveis {PT}'),
+        (r'Equipamento da China com a Ozdoba', f'Equipamento {PT}'),
+        (r'Área pessoal e encomendas Ozdoba', 'Área pessoal e encomendas'),
+        (r'^Encomendas Ozdoba$', 'Encomendas de móveis da China'), (r', encomendas Ozdoba,', ', encomendas de móveis,'),
+        (r'através d[oa] noss[ao] (?:linha|catálogo) Ozdoba', PT),
+        (r'(?:diretamente )?(?:da China|de fábricas na China) ' + PT, PT),
+    ),
     'zh': COMMON + _r(
         (r'Ozdoba 如何下单', '如何从中国工厂订购家具'),
         (r'Ozdoba 最低订单 \$10 000 起；每款至少 10 件，不单件销售。', ''),
@@ -356,7 +372,7 @@ RULES = {
 DROP_Q = re.compile(r'(?:купити|купить|замовити меблі|заказать мебель)[^?]*(?:Оздоб|одн)[^?]*(?:одну|одной|одну річ|одну вещь|однієї|одной)|'
                     r'знижки в Оздобі|скидки в Оздобе|оплатити замовлення в Оздобі|оплатить заказ в Оздобе|'
                     r'single item from Ozdoba|pojedyncz\w* (?:sztuk|rzecz)\w* (?:w|z) Ozdob|ein einzelnes Stück|un seul article chez Ozdoba|'
-                    r'una sola pieza en Ozdoba|قطعة واحدة من Ozdoba|可以只买一件|окремими позиціями|отдельными позициями|w Ozdobie jedną|'
+                    r'una sola pieza en Ozdoba|uma só peça na Ozdoba|قطعة واحدة من Ozdoba|可以只买一件|окремими позиціями|отдельными позициями|w Ozdobie jedną|'
                     r'мінімальне замовлення|минимальный заказ|minimum order|pedido mínimo|commande minimum|Mindest|minimalne zamówienie|'
                     r'最低起订|起订额|الحد الأدنى للطلب')
 

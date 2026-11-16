@@ -1,0 +1,287 @@
+{
+ "_": "Словник мови: meta — код/назва/атрибути, chrome — шапка й футер (tools/site/chrome.py), landing — підписи блоків лендингів, form — форма заявки й нижня панель (tools/site/landing.py); ux — кнопки згортання, бейдж анімації й кнопка в hero (tools/site/ux.py).",
+ "meta": {
+  "code": "PT",
+  "name": "Português",
+  "html": "pt-PT",
+  "hreflang": "pt",
+  "dir": "ltr",
+  "prefix": "pt/",
+  "fonts": "latin"
+ },
+ "chrome": {
+  "nav_label": "Menu principal",
+  "menu": "Menu",
+  "skip": "Saltar para o conteúdo",
+  "menu_open": "Abrir menu",
+  "menu_close": "Fechar menu",
+  "lang_label": "Idioma do site",
+  "cta": "Pedir orçamento",
+  "home_label": "CAS Development — início",
+  "kab": "A minha conta",
+  "kab_full": "Área de cliente",
+  "tagline": "Estúdio de design de interiores, remodelações e construção chave na mão. Kyiv, Ucrânia, desde 2016.",
+  "contacts": "Contactos",
+  "address": "Rua Antonovycha, 44, Kyiv, Ucrânia",
+  "msg": "Mensagens",
+  "lang": "Idioma",
+  "copy": "© 2026 CAS Development · Kyiv, Ucrânia",
+  "svc": "Todos os serviços",
+  "svc_label": "Serviços do estúdio",
+  "nav": [
+   [
+    "/pt/servicos",
+    "Serviços"
+   ],
+   [
+    "/pt/portfolio",
+    "Portfólio"
+   ],
+   [
+    "/pt/sobre-nos",
+    "Estúdio"
+   ],
+   [
+    "/pt/perguntas-frequentes",
+    "Perguntas"
+   ],
+   [
+    "/pt/contacto",
+    "Contactos"
+   ]
+  ],
+  "groups": [
+   [
+    "Design",
+    [
+     [
+      "/pt/design-de-interiores",
+      "Design de interiores"
+     ],
+     [
+      "/pt/execucao-projeto-design",
+      "Execução do projeto"
+     ],
+     [
+      "/pt/designer-de-interiores",
+      "Designer de interiores"
+     ],
+     [
+      "/pt/design-de-interiores-apartamento",
+      "Design de interiores de apartamentos"
+     ],
+     [
+      "/pt/design-restaurantes-cafes",
+      "Design de restaurantes e cafés"
+     ],
+     [
+      "/pt/projeto-de-moradia",
+      "Projeto de moradia"
+     ],
+     [
+      "/pt/arquitetura-paisagista",
+      "Arquitetura paisagista"
+     ]
+    ]
+   ],
+   [
+    "Obras",
+    [
+     [
+      "/pt/remodelacao-chave-na-mao",
+      "Remodelação chave na mão"
+     ],
+     [
+      "/pt/construcao-de-moradias",
+      "Construção de moradias"
+     ],
+     [
+      "/pt/espacos-comerciais-chave-na-mao",
+      "Espaços comerciais chave na mão"
+     ],
+     [
+      "/pt/remodelacao-cozinha",
+      "Remodelação de cozinhas"
+     ],
+     [
+      "/pt/remodelacao-casa-de-banho",
+      "Remodelação de casas de banho"
+     ],
+     [
+      "/pt/remodelacao-apartamento-novo",
+      "Remodelação de apartamento novo"
+     ],
+     [
+      "/pt/remodelacao-moradia",
+      "Remodelação de moradias"
+     ],
+     [
+      "/pt/remodelacao-escritorios",
+      "Remodelação de escritórios"
+     ],
+     [
+      "/pt/remodelacao-lojas-espacos-comerciais",
+      "Remodelação de lojas e espaços comerciais"
+     ],
+     [
+      "/pt/equipa-de-obras",
+      "Equipa de obras"
+     ],
+     [
+      "/pt/complexo-turistico-chave-na-mao",
+      "Complexo turístico chave na mão"
+     ]
+    ]
+   ],
+   [
+    "Mobiliário",
+    [
+     [
+      "/pt/mobiliario-chave-na-mao",
+      "Mobiliário chave na mão"
+     ],
+     [
+      "/pt/equipamento-chave-na-mao",
+      "Equipamento chave na mão"
+     ]
+    ]
+   ],
+   [
+    "Estúdio",
+    [
+     [
+      "/pt/servicos",
+      "Todos os serviços"
+     ],
+     [
+      "/pt/calculadora-obras",
+      "Calculadora de custos"
+     ],
+     [
+      "/pt/sobre-nos",
+      "Sobre o estúdio"
+     ],
+     [
+      "/pt/perguntas-frequentes",
+      "Perguntas frequentes"
+     ],
+     [
+      "/pt/contacto",
+      "Contactos"
+     ],
+     [
+      "/pt/portfolio",
+      "Portfólio"
+     ]
+    ]
+   ]
+  ],
+  "cta_href": "/pt/contacto#zayavka",
+  "terms": [
+   "/pt/termos-de-utilizacao",
+   "Termos"
+  ],
+  "privacy": [
+   "/pt/privacidade",
+   "Política de privacidade"
+  ]
+ },
+ "landing": {
+  "home": "Início",
+  "svc": "Serviços",
+  "inc": "O que inclui",
+  "proj": "Os nossos projetos",
+  "steps": "Como trabalhamos",
+  "faq": "Perguntas e respostas",
+  "rel": "Outros serviços",
+  "alt": " — projeto da CAS Development",
+  "city": "Kyiv",
+  "region": "Região de Kyiv",
+  "country": "Ucrânia",
+  "europe": "Europa",
+  "other": "",
+  "cta": "Pedir orçamento",
+  "call": "Ligar",
+  "all_portfolio": "Portfólio completo",
+  "sections": "Secções",
+  "facts": [
+   [
+    "150+",
+    "projetos realizados"
+   ],
+   [
+    "10+ anos",
+    "de experiência, desde 2016"
+   ],
+   [
+    "12 meses",
+    "de garantia nas obras"
+   ],
+   [
+    "China",
+    "móveis e materiais diretamente da fábrica"
+   ]
+  ],
+  "guar": [
+   "Garantias",
+   [
+    [
+     "Garantia de 12 meses nas obras",
+     "Entregamos a obra com auto de receção; todos os trabalhos realizados têm 12 meses de garantia."
+    ],
+    [
+     "Orçamento ±5% se a obra for feita pela CAS",
+     "Elaboramos o orçamento antes de começar. Se a remodelação for executada pela nossa equipa, o custo final não se desvia mais de ±5%."
+    ],
+    [
+     "Equipa própria",
+     "Trabalham os nossos próprios funcionários, não subempreiteiros, de acordo com a complexidade e o tipo de obra."
+    ],
+    [
+     "Contrato e pagamento à sua medida",
+     "Preço, prazos e calendário de pagamentos ficam no contrato: 50/50, 50/30/20, 50/40/10 ou por fases; começa-se com um adiantamento a partir de 10%."
+    ],
+    [
+     "Fotos e câmara 24/7",
+     "A cada 1–2 semanas, fotos da obra por Telegram ou WhatsApp; com custo adicional, câmara online na obra 24/7."
+    ]
+   ]
+  ],
+  "home_url": "/pt/",
+  "svc_url": "/pt/servicos"
+ },
+ "form": {
+  "form_h2": "Fale-nos do seu projeto",
+  "name": "Nome (opcional)",
+  "phone": "Telefone / WhatsApp *",
+  "area": "Área, m²",
+  "msg": "Comentário",
+  "ph_phone": "+351 912 345 678",
+  "ph_area": "p. ex. 120",
+  "ph_msg": "Tipo de imóvel, localização, prazos pretendidos",
+  "send": "Receber orçamento",
+  "ok_h": "Pedido recebido",
+  "ok_p": "Entraremos em contacto consigo em breve.",
+  "mbar": "Contacto rápido",
+  "call": "Ligar",
+  "close": "Fechar",
+  "prev": "Foto anterior",
+  "next": "Foto seguinte",
+  "menu": "Menu"
+ },
+ "ux": {
+  "open": "abrir projeto",
+  "more": "Ler mais",
+  "less": "Mostrar menos",
+  "q": "Todas as perguntas ({n})",
+  "s": "Detalhes de cada fase",
+  "g": "Ver mais ({n})",
+  "l": "Lista completa ({n})",
+  "a": "Animação da obra",
+  "go_house": "Ver como construímos",
+  "go_flat": "Ver como remodelamos",
+  "as": "Interativo",
+  "calc": "Calcular",
+  "trust": "150+ projetos · 12 meses de garantia · equipa própria"
+ }
+}

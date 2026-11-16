@@ -37,7 +37,7 @@ TEASE = {i18n.path_to_file(u): l for l, u in _cl('/services').items()}
 
 
 TAB = {'uk': 'Ресторан', 'ru': 'Ресторан', 'en': 'Restaurant', 'es': 'Restaurante', 'zh': '餐厅', 'pl': 'Restauracja', 'de': 'Restaurant',
-       'fr': 'Restaurant', 'ar': 'مطعم'}
+       'fr': 'Restaurant', 'pt': 'Restaurante', 'ar': 'مطعم'}
 
 
 def tab_link(lang, cur=False):

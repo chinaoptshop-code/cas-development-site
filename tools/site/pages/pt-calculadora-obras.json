@@ -1,0 +1,179 @@
+{
+ "slug": "calculadora-obras",
+ "lang": "pt",
+ "service": "Calculadora do custo de remodelação",
+ "title": "Calculadora de remodelação em Kyiv — preço por m² online",
+ "description": "Calculadora online do custo de remodelação e de construção de moradias em Kyiv: remodelação a partir de $550/m², design a partir de $30/m², móveis $250/m².",
+ "h1": "Calculadora do custo de remodelação em Kyiv",
+ "price": "remodelação a partir de $550 / m² · moradia chave na mão a partir de $1 100 / m²",
+ "lead": "Calcule o custo indicativo de remodelar um apartamento ou um escritório ou de construir uma moradia com as nossas tarifas base. Acrescente o projeto de design e o mobiliário e envie-nos o cálculo: após a medição preparamos um orçamento exato.",
+ "calc": true,
+ "cards": [
+  [
+   "Remodelação",
+   [
+    "apartamento chave na mão — a partir de $550/m²",
+    "escritório — a partir de $350/m²",
+    "orçamento ±5% se a obra for feita pela CAS"
+   ]
+  ],
+  [
+   "Moradia",
+   [
+    "estrutura — a partir de $600/m²",
+    "chave na mão com acabamentos — a partir de $1 100/m²",
+    "projeto e orçamento antes de começar"
+   ]
+  ],
+  [
+   "Design e móveis",
+   [
+    "projeto de design — a partir de $30/m², mínimo $2 500",
+    "mobiliário e equipamento — a partir de $250/m²",
+    "arquitetura paisagista — a partir de $50 por cada 100 m² de terreno"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Porquê «a partir de» e não um preço exato",
+   [
+    "O custo final depende do estado do imóvel, do volume de trabalho e dos materiais. A calculadora mostra o limite inferior segundo as nossas tarifas base. O valor exato é fixado no orçamento após a medição e o projeto; e se a obra for feita por nós, o total não sai dos ±5% do orçamento."
+   ]
+  ]
+ ],
+ "steps": [
+  [
+   "Cálculo",
+   "Calculadora ou chamada."
+  ],
+  [
+   "Medição",
+   "Visitamos o imóvel."
+  ],
+  [
+   "Orçamento",
+   "Lista detalhada de trabalhos e materiais."
+  ],
+  [
+   "Contrato",
+   "Fixamos preço e calendário."
+  ],
+  [
+   "Início",
+   "Equipa própria e relatórios em cada fase."
+  ]
+ ],
+ "faq": [
+  [
+   "Quanto custa remodelar um apartamento de 60 m² em Kyiv?",
+   "Com a tarifa base, a partir de $33 000 (60 m² × $550). O preço a partir de $550/m² inclui a mão de obra e os materiais básicos de obra; os materiais de acabamento, os móveis e os eletrodomésticos são à parte, segundo orçamento. O valor exato é dado após a medição e o orçamento."
+  ],
+  [
+   "Os materiais estão incluídos?",
+   "A tarifa chave na mão inclui trabalhos e materiais segundo orçamento; móveis e decoração são calculados à parte, a partir de $250 por m²."
+  ],
+  [
+   "O preço pode subir durante a obra?",
+   "Se a obra for feita por nós, o total não sai dos ±5% do orçamento aprovado."
+  ],
+  [
+   "Quanto custa uma moradia de 150 m² chave na mão?",
+   "Com a tarifa base, a partir de $165 000 (150 m² × $1 100). O valor exato, após o projeto."
+  ]
+ ],
+ "rel": [
+  [
+   "/pt/remodelacao-cozinha",
+   "Remodelação de cozinha"
+  ],
+  [
+   "/pt/remodelacao-casa-de-banho",
+   "Remodelação de casa de banho"
+  ],
+  [
+   "/pt/remodelacao-apartamento-novo",
+   "Remodelação de apartamento novo"
+  ],
+  [
+   "/pt/remodelacao-moradia",
+   "Remodelação de moradia"
+  ],
+  [
+   "/pt/remodelacao-escritorios",
+   "Remodelação de escritórios"
+  ],
+  [
+   "/pt/remodelacao-lojas-espacos-comerciais",
+   "Remodelação de espaços comerciais"
+  ],
+  [
+   "/pt/equipa-de-obras",
+   "Equipa de obras"
+  ],
+  [
+   "/pt/equipamento-chave-na-mao",
+   "Equipamento chave na mão"
+  ],
+  [
+   "/pt/designer-de-interiores",
+   "Designer de interiores"
+  ],
+  [
+   "/pt/design-de-interiores-apartamento",
+   "Design de interiores de apartamentos"
+  ],
+  [
+   "/pt/design-restaurantes-cafes",
+   "Design de restaurantes e cafés"
+  ],
+  [
+   "/pt/projeto-de-moradia",
+   "Projeto de moradia"
+  ],
+  [
+   "/pt/arquitetura-paisagista",
+   "Arquitetura paisagista"
+  ],
+  [
+   "/pt/complexo-turistico-chave-na-mao",
+   "Complexo turístico chave na mão"
+  ],
+  [
+   "/pt/design-de-interiores",
+   "Design de interiores"
+  ],
+  [
+   "/pt/execucao-projeto-design",
+   "Execução do projeto de design"
+  ],
+  [
+   "/pt/remodelacao-chave-na-mao",
+   "Remodelação chave na mão"
+  ],
+  [
+   "/pt/construcao-de-moradias",
+   "Construção de moradias"
+  ],
+  [
+   "/pt/mobiliario-chave-na-mao",
+   "Mobiliário chave na mão"
+  ],
+  [
+   "/pt/espacos-comerciais-chave-na-mao",
+   "Espaços comerciais chave na mão"
+  ],
+  [
+   "/pt/perguntas-frequentes",
+   "Perguntas frequentes"
+  ],
+  [
+   "/pt/contacto",
+   "Contactos"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

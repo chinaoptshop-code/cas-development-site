@@ -27,6 +27,8 @@ T = {
            ('Startseite', 'Leistungen', 'Über uns', 'Kontakt')),
     'fr': ('Page introuvable', 'Cette page n’existe pas', 'Le lien est peut-être obsolète. Commencez par l’accueil ou découvrez nos services.',
            ('Accueil', 'Services', 'À propos', 'Contact')),
+    'pt': ('Página não encontrada', 'Esta página não existe', 'A ligação pode estar desatualizada. Comece pela página inicial ou veja os nossos serviços.',
+           ('Início', 'Serviços', 'Sobre o estúdio', 'Contactos')),
     'zh': ('页面未找到', '该页面不存在', '链接可能已失效。请从首页开始，或查看我们的服务。', ('首页', '服务', '关于我们', '联系我们')),
     'ar': ('الصفحة غير موجودة', 'هذه الصفحة غير موجودة', 'ربما أصبح الرابط قديمًا. ابدأ من الصفحة الرئيسية أو اطّلع على خدماتنا.',
            ('الرئيسية', 'الخدمات', 'عن الاستوديو', 'اتصل بنا')),
