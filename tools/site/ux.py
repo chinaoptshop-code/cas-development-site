@@ -57,58 +57,58 @@ RULES = [
            r'كيف نعمل|етап|этап|' + B + r'stage|' + B + r'step|etap|phase|étape|' + B + r'krok|кроки|шаги|порядок|ablauf|步骤|مراحل'),
     ('gu', r'гарант|warrant|guarant|garant|gwaranc|保修|保障|质保|ضمان'),
     ('do', r'договір|договор|contract|contrato|' + B + r'umow|vertrag|contrat|合同|عقد|документ|document|' + B + r'акт' + r'(?!\w)'),
-    ('rc', r'оплат|\d0/\d0|payment|' + B + r'pago|płatno|zahlung|paiement|付款|支付|الدفع|рахун|' + B + r'счёт|' + B + r'счет|invoice|factura|faktur|facture'),
-    ('pc', r'знижк|скидк|discount|descuent|rabat|' + B + r'remise|折扣|خصم'),
-    ('pr', r'вартіст|стоимост|' + B + r'цін|' + B + r'цен[аыу]|скільки кошт|сколько сто|кошторис|смет|бюджет|' + B + r'price|pric|' + B + r'cost|budget|'
+    ('rc', r'pagament|fatura|оплат|\d0/\d0|payment|' + B + r'pago|płatno|zahlung|paiement|付款|支付|الدفع|рахун|' + B + r'счёт|' + B + r'счет|invoice|factura|faktur|facture'),
+    ('pc', r'desconto|знижк|скидк|discount|descuent|rabat|' + B + r'remise|折扣|خصم'),
+    ('pr', r'preço|custo|orçament|quanto custa|вартіст|стоимост|' + B + r'цін|' + B + r'цен[аыу]|скільки кошт|сколько сто|кошторис|смет|бюджет|' + B + r'price|pric|' + B + r'cost|budget|'
            r'кошту|коштув|' + B + r'стоит|precio|coste|presupuest|' + B + r'cen[ay]|koszt|preis|kosten|' + B + r'prix|coût|tarif|价格|费用|报价|预算|造价|سعر|أسعار|تكلفة|ميزانية'),
-    ('ey', r'нагляд|надзор|supervis|nadzór|aufsicht|bauleitung|监理|إشراف'),
-    ('in', r'що входить|что входит|what.?s included|included|incluye|incluid|obejmuj|zakres|leistungsumfang|umfang|inclus|服务内容|包含|تشمل|'
+    ('ey', r'acompanhamento|fiscaliza|нагляд|надзор|supervis|nadzór|aufsicht|bauleitung|监理|إشراف'),
+    ('in', r'o que inclui|inclui|що входить|что входит|what.?s included|included|incluye|incluid|obejmuj|zakres|leistungsumfang|umfang|inclus|服务内容|包含|تشمل|'
            r'склад |состав'),
-    ('ti', r'строк|термін|' + B + r'срок|скільки трива|сколько длит|timeline|how long|timing|duration|plazo|' + B + r'tiempo|' + B + r'termin(?!at)|' + B + r'czas|'
+    ('ti', r'prazo|quanto tempo|duraç|строк|термін|' + B + r'срок|скільки трива|сколько длит|timeline|how long|timing|duration|plazo|' + B + r'tiempo|' + B + r'termin(?!at)|' + B + r'czas|'
            r'dauer|zeitplan|délai|durée|工期|时间|周期|مدة|графік|график|schedule'),
-    ('cm', r'камер|kamer|cámara|caméra|摄像|汇报|онлайн|контрол|фотозвіт|фотоотч|звіт|отчёт|отчет|' + B + r'report|camera|control|kontrol|überwach|contrôle|suivi|监控|报告|'
+    ('cm', r'câmara|relatório|камер|kamer|cámara|caméra|摄像|汇报|онлайн|контрол|фотозвіт|фотоотч|звіт|отчёт|отчет|' + B + r'report|camera|control|kontrol|überwach|contrôle|suivi|监控|报告|'
            r'كاميرا|مراقبة|تقارير|прозор|прозрач|transparen'),
-    ('te', r'команд|cuadrilla|施工队|فرق|brygad|бригад|прораб|майстр|мастер|' + B + r'team|' + B + r'crew|equipo|ekip|zespół|handwerker|équipe|团队|فريق|хто ми|кто мы|'
+    ('te', r'equipa|quem somos|sobre nós|команд|cuadrilla|施工队|فرق|brygad|бригад|прораб|майстр|мастер|' + B + r'team|' + B + r'crew|equipo|ekip|zespół|handwerker|équipe|团队|فريق|хто ми|кто мы|'
            r'хто викон|кто выполн|about us|про нас|о нас|про студ|о студ|who we are|quiénes|o nas|über uns|qui sommes|关于我们|من نحن'),
-    ('hf', r'тепл[аи] підлог|тепл(?:ый|ые) пол|опален|отоплен|heating|calefacc|ogrzew|heizung|chauffage|供暖|تدفئة'),
-    ('fa', r'вентиляц|кондиц|ventilat|klimat|lüft|climatis|通风|空调|تهوية'),
-    ('lp', r'освітл|освещ|' + B + r'світл|' + B + r'свет(?!у|ск)|lighting|ilumin|oświetl|beleucht|éclairage|照明|灯光|إضاءة'),
-    ('el', r'електр|інженер|инженер|engineer|ingenier|instalac|haustechnik|ingénierie|工程|هندس|электр|electric|eléctr|elektr|électri|电气|电路|كهرب'),
-    ('ba', r'' + B + r'ванн|санвуз|санузл|bathroom|baño|łazien|badsan|' + B + r'bad(?!\w)|salle de bain|浴室|卫生间|حمام'),
-    ('pl', r'сантех|водопост|каналіз|канализ|гідроізол|гидроизол|plumb|fontaner|hydraul|sanitär|plomberie|水电|سباكة'),
-    ('ki', r'кухн|kitchen|cocina|kuchn|küche|cuisine|厨房|مطبخ|шаф|wardrobe|armario|szaf|schrank|placard|衣柜|خزائن'),
-    ('la', r'ландшафт|терас|terrace|terraza|taras|terrasse|благоустр|' + B + r'сад|ділянк|участ(?:ок|ка|ке)|landscap|garden|paisaj|jardín|krajobraz|ogród|garten|paysag|jardin|景观|园林|حديقة|حدائق|تنسيق'),
-    ('rs', r'ресторан|' + B + r'кафе|restaurant|café|' + B + r'cafe|restauracj|kawiarn|gastronom|餐厅|مطعم'),
+    ('hf', r'aquecimento|piso radiante|тепл[аи] підлог|тепл(?:ый|ые) пол|опален|отоплен|heating|calefacc|ogrzew|heizung|chauffage|供暖|تدفئة'),
+    ('fa', r'ventilaç|climatiza|вентиляц|кондиц|ventilat|klimat|lüft|climatis|通风|空调|تهوية'),
+    ('lp', r'iluminaç|освітл|освещ|' + B + r'світл|' + B + r'свет(?!у|ск)|lighting|ilumin|oświetl|beleucht|éclairage|照明|灯光|إضاءة'),
+    ('el', r'eletric|elétric|instalaç|електр|інженер|инженер|engineer|ingenier|instalac|haustechnik|ingénierie|工程|هندس|электр|electric|eléctr|elektr|électri|电气|电路|كهرب'),
+    ('ba', r'casa de banho|casas de banho|' + B + r'ванн|санвуз|санузл|bathroom|baño|łazien|badsan|' + B + r'bad(?!\w)|salle de bain|浴室|卫生间|حمام'),
+    ('pl', r'canaliza|impermeabiliza|сантех|водопост|каналіз|канализ|гідроізол|гидроизол|plumb|fontaner|hydraul|sanitär|plomberie|水电|سباكة'),
+    ('ki', r'cozinh|roupeir|кухн|kitchen|cocina|kuchn|küche|cuisine|厨房|مطبخ|шаф|wardrobe|armario|szaf|schrank|placard|衣柜|خزائن'),
+    ('la', r'terraç|esplanad|jardim|paisag|ландшафт|терас|terrace|terraza|taras|terrasse|благоустр|' + B + r'сад|ділянк|участ(?:ок|ка|ке)|landscap|garden|paisaj|jardín|krajobraz|ogród|garten|paysag|jardin|景观|园林|حديقة|حدائق|تنسيق'),
+    ('rs', r'restaurante|ресторан|' + B + r'кафе|restaurant|café|' + B + r'cafe|restauracj|kawiarn|gastronom|餐厅|مطعم'),
     ('ht', r'готел|гостиниц|hotel|hôtel|酒店|فندق'),
     ('tr', r'баз[аиу] відпоч|баз[аыу] отдых|resort|turístic|ośrod|ferienanlage|base de loisirs|度假|منتجع'),
-    ('of', r'офіс|офис|office|oficina|' + B + r'biur|büro|bureau|办公|مكتب|open space|коворк'),
-    ('cs', r'магазин|шоурум|бізнес|бизнес|комерц|коммерч|business|commercial|negocio|comercial|biznes|komercyj|gewerb|commerce|商业|商铺|تجاري'),
+    ('of', r'escritóri|офіс|офис|office|oficina|' + B + r'biur|büro|bureau|办公|مكتب|open space|коворк'),
+    ('cs', r'negócio|comerciai|loja|магазин|шоурум|бізнес|бизнес|комерц|коммерч|business|commercial|negocio|comercial|biznes|komercyj|gewerb|commerce|商业|商铺|تجاري'),
     ('pm', r'преміум|премиум|люкс|luxury|premium|' + B + r'lujo|luksus|luxus|' + B + r'luxe|高端|豪华|فاخر'),
     ('x3', B + r'3d|360|' + B + r'тур(?!\w)|' + B + r'tour|візуаліз|визуализ|visuali|render|渲染|效果图'),
-    ('ac', r'архітект|кресл|чертеж|drawing|rysun|zeichnung|dessin|图纸|مخطط|архитект|проєктуван|проектирован|архпроєкт|architect|arquitect|architekt|建筑设计|معماري'),
-    ('pn', r'перепланув|' + B + r'площ|' + B + r'area|superficie|powierzch|fläche|面积|مساحة|planung|układ|distribuci|переплан|планув|планиров|' + B + r'layout|planning|' + B + r'plano|planowan|grundriss|aménagement|规划|平面|تخطيط|'
+    ('ac', r'arquitet|desenho|архітект|кресл|чертеж|drawing|rysun|zeichnung|dessin|图纸|مخطط|архитект|проєктуван|проектирован|архпроєкт|architect|arquitect|architekt|建筑设计|معماري'),
+    ('pn', r'planta|medição|levantamento|перепланув|' + B + r'площ|' + B + r'area|superficie|powierzch|fläche|面积|مساحة|planung|układ|distribuci|переплан|планув|планиров|' + B + r'layout|planning|' + B + r'plano|planowan|grundriss|aménagement|规划|平面|تخطيط|'
            r'замір|замер|обмір|обмер|survey|medici|pomiar|aufmaß|' + B + r'mesure|测量|قياس'),
-    ('fu', r'мебл|мебел|ausstatt|wyposaż|equipam|меблир|комплектац|декор|furnish|furnitur|muebl|amuebl|equipamiento|' + B + r'mebl|kompletac|möbel|einricht|meubl|ameublement|'
+    ('fu', r'mobili|móve|equipament|мебл|мебел|ausstatt|wyposaż|equipam|меблир|комплектац|декор|furnish|furnitur|muebl|amuebl|equipamiento|' + B + r'mebl|kompletac|möbel|einricht|meubl|ameublement|'
            r'家具|软装|أثاث|تأثيث|оздоба|ozdoba|китай|' + B + r'china|' + B + r'chin[ae]'),
-    ('bw', r'' + B + r'стін|' + B + r'стен|газоблок|цегл|кирпич|' + B + r'брус|каркас|модульн|фундамент|коробк|покрівл|кровл|' + B + r'wall|brick|timber|'
+    ('bw', r'parede|tijolo|madeira|fundaç|' + B + r'стін|' + B + r'стен|газоблок|цегл|кирпич|' + B + r'брус|каркас|модульн|фундамент|коробк|покрівл|кровл|' + B + r'wall|brick|timber|'
            r'' + B + r'frame|modular|foundation|' + B + r'roof|' + B + r'muro|ladrillo|madera|ścian|cegł|szkielet|' + B + r'wand|ziegel|' + B + r'holz|'
            r'brique|ossature|墙|砖|框架|模块|جدران|طوب'),
-    ('wa', r'помилк|ошибк|mistake|' + B + r'error|błęd|fehler|erreur|errores|错误|أخطاء|ризик|риск|' + B + r'risk'),
-    ('hh', r'реаліз|реализ|realiz|implement|umsetz|ejecuci|exécution|réalisation|实施|تنفيذ|генпідряд|генподряд|contractor|contratista|wykonawc|generalunternehm|entreprise générale|总包|مقاول'),
-    ('wr', r'підготов|подготов|preparat|przygotow|vorbereit|preparaci|préparat|准备|تحضير'),
-    ('re', r'ремонт|renovier|trabajo|wykończ|демонтаж|оздобл|отделк|renovat|refurb|reform|remont|sanier|umbau|rénov|装修|翻新|تجديد|ترميم|' + B + r'робот|' + B + r'работ|'
+    ('wa', r'erros|помилк|ошибк|mistake|' + B + r'error|błęd|fehler|erreur|errores|错误|أخطاء|ризик|риск|' + B + r'risk'),
+    ('hh', r'execuç|empreiteiro|реаліз|реализ|realiz|implement|umsetz|ejecuci|exécution|réalisation|实施|تنفيذ|генпідряд|генподряд|contractor|contratista|wykonawc|generalunternehm|entreprise générale|总包|مقاول'),
+    ('wr', r'preparaç|підготов|подготов|preparat|przygotow|vorbereit|preparaci|préparat|准备|تحضير'),
+    ('re', r'remodela|ремонт|renovier|trabajo|wykończ|демонтаж|оздобл|отделк|renovat|refurb|reform|remont|sanier|umbau|rénov|装修|翻新|تجديد|ترميم|' + B + r'робот|' + B + r'работ|'
            r'' + B + r'works|' + B + r'obras|' + B + r'prace|arbeiten|travaux'),
-    ('ho', r'будин|' + B + r'bau(?!\w)|neubau|будівниц|будуєм|строител|строим|' + B + r'дом|котедж|коттедж|' + B + r'house|' + B + r'home|villa|вілл|вилл|' + B + r'casa|'
+    ('ho', r'moradia|construç|будин|' + B + r'bau(?!\w)|neubau|будівниц|будуєм|строител|строим|' + B + r'дом|котедж|коттедж|' + B + r'house|' + B + r'home|villa|вілл|вилл|' + B + r'casa|'
            r'construc|' + B + r'dom(?!\w)|' + B + r'domu|' + B + r'domy|budow|' + B + r'haus|maison|房屋|别墅|منزل|بناء|فيلا'),
     ('fl', r'квартир|' + B + r'жк|новобуд|новостро|apartment|' + B + r'flat|' + B + r'piso|apartamento|mieszkan|wohnung|appartement|公寓|شقة|شقق|'
            r'пентхаус|penthouse|таунхаус|townhouse'),
-    ('de', r'дизайн|design|diseñ|' + B + r'projekt wn|gestalt|conception|décor|设计|تصميم|інтер.?єр|интерьер|interior|interieur|wnętrz|intérieur|室内|ديكور'),
-    ('pj', r'проєкт|проект|портфол|' + B + r'фото|кейс|приклад|пример|project|portfolio|photo|' + B + r'case|proyecto|realizac|projekt|projet|réalis|'
+    ('de', r'design de|дизайн|design|diseñ|' + B + r'projekt wn|gestalt|conception|décor|设计|تصميم|інтер.?єр|интерьер|interior|interieur|wnętrz|intérieur|室内|ديكور'),
+    ('pj', r'projeto|portfólio|проєкт|проект|портфол|' + B + r'фото|кейс|приклад|пример|project|portfolio|photo|' + B + r'case|proyecto|realizac|projekt|projet|réalis|'
            r'项目|案例|مشاريع|مشروع|صور'),
-    ('ar', r'' + B + r'стат(?:т|ь)|корисн|полезн|useful|блог|читайте|article|' + B + r'blog|read also|related|artícul|artykuł|czytaj|artikel|weiterlesen|lire aussi|'
+    ('ar', r'artigo|' + B + r'стат(?:т|ь)|корисн|полезн|useful|блог|читайте|article|' + B + r'blog|read also|related|artícul|artykuł|czytaj|artikel|weiterlesen|lire aussi|'
            r'文章|阅读|مقالات|اقرأ'),
-    ('gl', r'європ|европ|europe|europa|' + B + r'світ(?!л)|' + B + r'мир(?!\w)|world|international|abroad|weltweit|świat|кордон|рубеж|全球|欧洲|أوروبا|world'),
-    ('gp', r'місто|регіон|регион|gdzie|dónde|' + B + r'wo(?!\w)|міст[аі]|' + B + r'город|район|област|україн|украин|київ|киев|поруч|рядом|де працю|где работ|географ|' + B + r'kyiv|' + B + r'kiev|kyjiw|kijów|ucrania|'
+    ('gl', r'mundo|estrangeiro|європ|европ|europe|europa|' + B + r'світ(?!л)|' + B + r'мир(?!\w)|world|international|abroad|weltweit|świat|кордон|рубеж|全球|欧洲|أوروبا|world'),
+    ('gp', r'onde |cidade|ucrânia|місто|регіон|регион|gdzie|dónde|' + B + r'wo(?!\w)|міст[аі]|' + B + r'город|район|област|україн|украин|київ|киев|поруч|рядом|де працю|где работ|географ|' + B + r'kyiv|' + B + r'kiev|kyjiw|kijów|ucrania|'
            r'ukrain|' + B + r'city|region|where|ciudad|miast|' + B + r'stadt|' + B + r'ville|' + B + r'où|地区|城市|基辅|乌克兰|مدينة|منطقة|أين|كييف|أوكرانيا'),
     ('os', r'послуг|услуг|service|servicio|usług|leistung|prestation|服务|خدمات|خدمة'),
     ('ph', r'контакт|telefon|телефон|зв.?яз|связ|консульт|contact|phone|' + B + r'call|contacto|kontakt|anruf|' + B + r'appel|联系|电话|اتصل|اتصال|هاتف'),
@@ -384,6 +384,7 @@ WIDE_ALT = {
                    pl='Kuchnia z jadalnią, marmurowy stół i kryształowy żyrandol — projekt Hodos Villa, CAS Development',
                    de='Wohnküche mit Marmortisch und Kristallleuchter — Projekt Hodos Villa von CAS Development',
                    fr='Cuisine-salle à manger, table en marbre et lustre en cristal — projet Hodos Villa de CAS Development',
+                   pt='Cozinha e sala de jantar com mesa de mármore e lustre de cristal — projeto Hodos Villa da CAS Development',
                    ar='مطبخ وغرفة طعام بطاولة رخامية وثريا كريستالية — مشروع Hodos Villa من CAS Development'),
     'living': dict(uk='Вітальня з каміном і великим диваном — заміський будинок у Петрівцях, CAS Development',
                    ru='Гостиная с камином и большим диваном — загородный дом в Петровцах, CAS Development',
@@ -393,6 +394,7 @@ WIDE_ALT = {
                    pl='Salon z kominkiem i dużą sofą — dom pod Kijowem (Petrivtsi), CAS Development',
                    de='Wohnzimmer mit Kamin und großem Sofa — Landhaus in Petrivtsi von CAS Development',
                    fr='Salon avec cheminée et grand canapé — maison à Petrivtsi par CAS Development',
+                   pt='Sala com lareira e sofá grande — moradia em Petrivtsi da CAS Development',
                    ar='غرفة معيشة بمدفأة وأريكة كبيرة — منزل في بيتريفتسي من CAS Development'),
     'house': dict(uk='Вітальня зі сходами й каміном у приватному будинку — проєкт CAS Development',
                   ru='Гостиная с лестницей и камином в частном доме — проект CAS Development',
@@ -402,6 +404,7 @@ WIDE_ALT = {
                   pl='Salon ze schodami i kominkiem w domu jednorodzinnym — projekt CAS Development',
                   de='Wohnzimmer mit Treppe und Kamin in einem Privathaus — Projekt von CAS Development',
                   fr='Salon avec escalier et cheminée dans une maison individuelle — projet CAS Development',
+                  pt='Sala com escada e lareira numa moradia particular — projeto da CAS Development',
                   ar='غرفة معيشة بدرج ومدفأة في منزل خاص — مشروع CAS Development'),
     'lounge': dict(uk='Світла вітальня з диваном і торшером — інтерʼєр від CAS Development',
                    ru='Светлая гостиная с диваном и торшером — интерьер от CAS Development',
@@ -411,6 +414,7 @@ WIDE_ALT = {
                    pl='Jasny salon z sofą i lampą podłogową — wnętrze CAS Development',
                    de='Helles Wohnzimmer mit Sofa und Stehleuchte — Interior von CAS Development',
                    fr='Salon lumineux avec canapé et lampadaire — intérieur CAS Development',
+                   pt='Sala luminosa com sofá e candeeiro de pé — interior da CAS Development',
                    ar='غرفة معيشة مشرقة بأريكة ومصباح أرضي — تصميم CAS Development'),
     'monpark': dict(uk='Тераса ресторану Monpark увечері, центр Києва — дизайн і реалізація CAS Development',
                     ru='Терраса ресторана Monpark вечером, центр Киева — дизайн и реализация CAS Development',
@@ -420,6 +424,7 @@ WIDE_ALT = {
                     pl='Taras restauracji Monpark wieczorem, centrum Kijowa — projekt i realizacja CAS Development',
                     de='Terrasse des Restaurants Monpark am Abend, Kyjiw-Zentrum — Design und Umsetzung CAS Development',
                     fr='Terrasse du restaurant Monpark le soir, centre de Kyiv — conception et réalisation CAS Development',
+                    pt='Esplanada do restaurante Monpark ao fim da tarde, centro de Kyiv — design e execução da CAS Development',
                     ar='شرفة مطعم Monpark مساءً، وسط كييف — تصميم وتنفيذ CAS Development'),
 }
 WB_RX = re.compile(r'<img class="ux-wb"[^>]*>')
@@ -471,15 +476,15 @@ TP_PROJ = {  # slug: (назва, тип обʼєкта, реалізовано?
     'kitana-beach': ('Kitana Beach', 'beach', 0), 'petrivtsi-house': ('Petrivtsi House', 'house', 0),
 }
 TP_WORD = {  # тип обʼєкта мовою сторінки
-    'house': dict(uk='будинок', ru='дом', en='house', es='casa', zh='住宅', pl='dom', de='Haus', fr='maison', ar='منزل'),
-    'villa': dict(uk='вілла', ru='вилла', en='villa', es='villa', zh='别墅', pl='willa', de='Villa', fr='villa', ar='فيلا'),
-    'flat': dict(uk='квартира', ru='квартира', en='apartment', es='apartamento', zh='公寓', pl='mieszkanie', de='Wohnung', fr='appartement', ar='شقة'),
-    'office': dict(uk='офіс', ru='офис', en='office', es='oficina', zh='办公室', pl='biuro', de='Büro', fr='bureau', ar='مكتب'),
-    'rest': dict(uk='ресторан', ru='ресторан', en='restaurant', es='restaurante', zh='餐厅', pl='restauracja', de='Restaurant', fr='restaurant', ar='مطعم'),
-    'lounge': dict(uk='зона відпочинку', ru='зона отдыха', en='lounge', es='zona de descanso', zh='休闲区', pl='strefa wypoczynku', de='Lounge', fr='espace détente', ar='منطقة استراحة'),
+    'house': dict(uk='будинок', ru='дом', en='house', es='casa', zh='住宅', pl='dom', de='Haus', fr='maison', pt='moradia', ar='منزل'),
+    'villa': dict(uk='вілла', ru='вилла', en='villa', es='villa', zh='别墅', pl='willa', de='Villa', fr='villa', pt='villa', ar='فيلا'),
+    'flat': dict(uk='квартира', ru='квартира', en='apartment', es='apartamento', zh='公寓', pl='mieszkanie', de='Wohnung', fr='appartement', pt='apartamento', ar='شقة'),
+    'office': dict(uk='офіс', ru='офис', en='office', es='oficina', zh='办公室', pl='biuro', de='Büro', fr='bureau', pt='escritório', ar='مكتب'),
+    'rest': dict(uk='ресторан', ru='ресторан', en='restaurant', es='restaurante', zh='餐厅', pl='restauracja', de='Restaurant', fr='restaurant', pt='restaurante', ar='مطعم'),
+    'lounge': dict(uk='зона відпочинку', ru='зона отдыха', en='lounge', es='zona de descanso', zh='休闲区', pl='strefa wypoczynku', de='Lounge', fr='espace détente', pt='zona de descanso', ar='منطقة استراحة'),
     'beach': dict(uk='пляжний комплекс у Бодрумі', ru='пляжный комплекс в Бодруме', en='beach resort in Bodrum', es='complejo de playa en Bodrum',
-                  zh='博德鲁姆海滩度假村', pl='kompleks plażowy w Bodrum', de='Strandresort in Bodrum', fr='complexe balnéaire à Bodrum', ar='منتجع شاطئي في بودروم'),
-    'salon': dict(uk='салон краси', ru='салон красоты', en='beauty salon', es='salón de belleza', zh='美容院', pl='salon urody', de='Schönheitssalon', fr='salon de beauté', ar='صالون تجميل'),
+                  zh='博德鲁姆海滩度假村', pl='kompleks plażowy w Bodrum', de='Strandresort in Bodrum', fr='complexe balnéaire à Bodrum', pt='resort de praia em Bodrum', ar='منتجع شاطئي في بودروم'),
+    'salon': dict(uk='салон краси', ru='салон красоты', en='beauty salon', es='salón de belleza', zh='美容院', pl='salon urody', de='Schönheitssalon', fr='salon de beauté', pt='salão de beleza', ar='صالون تجميل'),
 }
 TP_PAGE = {'design': 'int', 'furnishing': 'int', 'renovation': 'reno', 'construction': 'house', 'landscape': 'land', 'resort': 'resort',
            'restaurant': 'rest', 'office': 'office', 'calculator': 'reno'}

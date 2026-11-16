@@ -65,6 +65,7 @@ PAGES = {
     'de/renovierungskosten-rechner.html': ('flat', 0), 'fr/calculateur-renovation.html': ('flat', 0), 'ar/renovation-calculator.html': ('flat', 0),
     'es/index.html': ('house', 1), 'zh/index.html': ('house', 1), 'pl/index.html': ('house', 1),
     'de/index.html': ('house', 1), 'fr/index.html': ('house', 1), 'ar/index.html': ('house', 1),
+    'pt/construcao-de-moradias.html': ('house', 0), 'pt/remodelacao-chave-na-mao.html': ('flat', 0), 'pt/calculadora-obras.html': ('flat', 0), 'pt/index.html': ('house', 1),
 }
 
 # стартовий матеріал стін у конфігураторі сцени «будинок» (block — газоблок за замовчуванням; brick, frame, brus)

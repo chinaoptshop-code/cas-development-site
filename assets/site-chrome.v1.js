@@ -56,7 +56,7 @@
   var TX = ({ uk: { close: 'Закрити', photo: 'Перегляд фото' }, ru: { close: 'Закрыть', photo: 'Просмотр фото' },
               en: { close: 'Close', photo: 'Photo viewer' }, es: { close: 'Cerrar', photo: 'Visor de fotos' },
               zh: { close: '关闭', photo: '查看照片' }, pl: { close: 'Zamknij', photo: 'Podgląd zdjęcia' }, de: { close: 'Schließen', photo: 'Fotoansicht' },
-              fr: { close: 'Fermer', photo: 'Visionneuse de photos' }, ar: { close: 'إغلاق', photo: 'عارض الصور' } })[LG] ||
+              fr: { close: 'Fermer', photo: 'Visionneuse de photos' }, pt: { close: 'Fechar', photo: 'Visualizador de fotos' }, ar: { close: 'إغلاق', photo: 'عارض الصور' } })[LG] ||
            { close: 'Закрити', photo: 'Перегляд фото' };
   var FOC = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
   var CLOSE = '[data-close],.x,#lb-close,#plb-close,#sdlb-close,button[aria-label="' + TX.close + '"]';
@@ -158,7 +158,7 @@
   var LG = (h.lang || 'uk').slice(0, 2);
   var TX = ({ uk: ['Зупинити стрічку', 'Запустити стрічку'], ru: ['Остановить ленту', 'Запустить ленту'], en: ['Pause carousel', 'Play carousel'],
               es: ['Pausar carrusel', 'Reanudar carrusel'], zh: ['暂停滚动', '继续滚动'], pl: ['Zatrzymaj pasek', 'Wznów pasek'],
-              de: ['Laufband anhalten', 'Laufband starten'], fr: ['Mettre en pause', 'Relancer le défilement'], ar: ['إيقاف الشريط', 'تشغيل الشريط'] })[LG] ||
+              de: ['Laufband anhalten', 'Laufband starten'], fr: ['Mettre en pause', 'Relancer le défilement'], pt: ['Pausar o carrossel', 'Retomar o carrossel'], ar: ['إيقاف الشريط', 'تشغيل الشريط'] })[LG] ||
            ['Pause', 'Play'];
   var FOCUS = 'a,button,input,select,textarea,[tabindex],[onclick],[role=button]';
   function mqOn(host) {
@@ -356,7 +356,7 @@
   if (!W.matchMedia || !('classList' in h)) return;
   var LG = (h.lang || 'uk').slice(0, 2);
   var TX = ({ uk: ['Показати ще', 'Згорнути'], ru: ['Показать ещё', 'Свернуть'], en: ['Show more', 'Show less'], es: ['Ver más', 'Ver menos'],
-              zh: ['显示更多', '收起'], pl: ['Pokaż więcej', 'Zwiń'], de: ['Mehr anzeigen', 'Weniger'], fr: ['Voir plus', 'Réduire'], ar: ['عرض المزيد', 'عرض أقل'] })[LG] || ['Show more', 'Show less'];
+              zh: ['显示更多', '收起'], pl: ['Pokaż więcej', 'Zwiń'], de: ['Mehr anzeigen', 'Weniger'], fr: ['Voir plus', 'Réduire'], pt: ['Ver mais', 'Ver menos'], ar: ['عرض المزيد', 'عرض أقل'] })[LG] || ['Show more', 'Show less'];
   var mq = W.matchMedia('(max-width:767px)');
   // автоматично (лише телефон): довгі сітки/списки, що займають кілька екранів
   // фото проєкту (.pg — 20–30 фото на всю ширину), галереї лендингів (.gal), довгі сітки карток (.grid — напр. ЖК за районами)
@@ -530,7 +530,7 @@
   var T = { uk: ['Пауза анімації', 'Відтворити анімацію', 'Ще раз'], ru: ['Пауза анимации', 'Воспроизвести анимацию', 'Ещё раз'],
     en: ['Pause animation', 'Play animation', 'Replay'], es: ['Pausar animación', 'Reproducir animación', 'Repetir'], zh: ['暂停动画', '播放动画', '重播'],
     pl: ['Wstrzymaj animację', 'Odtwórz animację', 'Jeszcze raz'], de: ['Animation anhalten', 'Animation abspielen', 'Nochmal'],
-    fr: ['Mettre l’animation en pause', 'Lire l’animation', 'Rejouer'], ar: ['إيقاف الحركة مؤقتًا', 'تشغيل الحركة', 'إعادة'] };
+    fr: ['Mettre l’animation en pause', 'Lire l’animation', 'Rejouer'], pt: ['Pausar a animação', 'Reproduzir a animação', 'Repetir'], ar: ['إيقاف الحركة مؤقتًا', 'تشغيل الحركة', 'إعادة'] };
   function now() { return Date.now(); }
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   // o: {n (число або функція), min (старт, напр. 0.6), raw() → прогрес за прокруткою в етапах або null, render(cur, act), view (елемент для IO)}
@@ -643,6 +643,7 @@
     pl: ['Etapy: najedź i przewiń kółkiem lub kliknij z boku · odtwarza się sama', 'Etapy: przesuń lub dotknij boku sceny · odtwarza się sama'],
     de: ['Etappen: Maus darüber und Rad drehen oder seitlich klicken · läuft von selbst', 'Etappen: wischen oder seitlich tippen · läuft von selbst'],
     fr: ['Étapes : survolez et tournez la molette, ou cliquez sur un côté · se lit toute seule', 'Étapes : glissez ou touchez un côté de la scène · se lit toute seule'],
+    pt: ['Fases: passe o cursor e rode a roda, ou clique num dos lados · reproduz-se sozinha', 'Fases: deslize ou toque num dos lados da cena · reproduz-se sozinha'],
     ar: ['المراحل: مرّر المؤشر وأدر العجلة أو انقر على أحد الجانبين · تعمل تلقائيًا', 'المراحل: اسحب أو المس أحد جانبي المشهد · تعمل تلقائيًا'] };
   var FINE = W.matchMedia && W.matchMedia('(hover: hover) and (pointer: fine)').matches, CTRL = 'button,a,input,select,textarea,label,summary,[role=button]';
   function seen(v) { try { if (v) W.localStorage.setItem('casScHint', '1'); return W.localStorage.getItem('casScHint') === '1'; } catch (e) { return !!v; } }

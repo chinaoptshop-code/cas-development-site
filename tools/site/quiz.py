@@ -46,6 +46,7 @@ PAGES = {
     'de/hausbau.html': ('dim', 'bud'), 'fr/construction-maison.html': ('dim', 'bud'), 'ar/house-construction.html': ('dim', 'bud'),
     'es/reforma-llave-en-mano.html': ('kv', 'rem'), 'zh/turnkey-renovation.html': ('kv', 'rem'), 'pl/remont-pod-klucz.html': ('kv', 'rem'),
     'de/renovierung-schluesselfertig.html': ('kv', 'rem'), 'fr/renovation-cle-en-main.html': ('kv', 'rem'), 'ar/turnkey-renovation.html': ('kv', 'rem'),
+    'pt/construcao-de-moradias.html': ('dim', 'bud'), 'pt/remodelacao-chave-na-mao.html': ('kv', 'rem'),
 }
 T = {
     'uk': dict(h='Порахуйте орієнтовну вартість', p='4 питання — і ви побачите орієнтир «від» за ставками студії.',

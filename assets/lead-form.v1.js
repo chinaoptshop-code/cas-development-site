@@ -77,6 +77,11 @@
           fail: 'La demande n’a pas pu être envoyée. Écrivez-nous ou appelez le +380 97 866 77 55 (Telegram, WhatsApp, Viber).',
           alt: 'Ou écrivez-nous :',
           q: 'Laissez votre numéro, nous vous rappelons', like: 'Je veux la même chose' },
+    pt: { empty: 'Indique o seu número de telefone e ligamos-lhe.', phone: 'Verifique o número: pelo menos 9 dígitos, com o indicativo do país.',
+          sending: 'A enviar…', again: 'Enviar de novo', name: 'Nome (opcional)', more: 'Acrescentar um comentário', send: 'Receber orçamento', ok: 'Obrigado. Ligaremos em breve.',
+          fail: 'Não foi possível enviar o pedido. Escreva-nos ou ligue para +380 97 866 77 55 (Telegram, WhatsApp, Viber).',
+          alt: 'Ou escreva-nos:',
+          q: 'Deixe o seu número e ligamos-lhe', like: 'Quero algo assim' },
     ar: { empty: 'يرجى إدخال رقم الهاتف وسنعاود الاتصال بك.', phone: 'تحقق من الرقم: 9 أرقام على الأقل مع رمز الدولة.',
           sending: 'جارٍ الإرسال…', again: 'إعادة الإرسال', name: 'الاسم (اختياري)', more: 'إضافة تعليق', send: 'احصل على تقدير', ok: 'شكرًا. سنعاود الاتصال بك قريبًا.',
           fail: 'تعذّر إرسال الطلب. راسلنا أو اتصل على ‎+380 97 866 77 55 (Telegram وWhatsApp وViber).',
@@ -251,7 +256,7 @@
     en: ['Leave your number', 'Estimate my house', 'Estimate my apartment'], es: ['Dejar mi número', 'Calcular mi casa', 'Calcular mi piso'],
     zh: ['留下电话', '估算我的房子', '估算我的公寓'], pl: ['Zostaw numer', 'Wyceń mój dom', 'Wyceń moje mieszkanie'],
     de: ['Nummer hinterlassen', 'Mein Haus berechnen', 'Meine Wohnung berechnen'], fr: ['Laisser mon numéro', 'Estimer ma maison', 'Estimer mon appartement'],
-    ar: ['اترك رقمك', 'احسب تكلفة منزلي', 'احسب تكلفة شقتي'] };
+    pt: ['Deixar o meu número', 'Calcular a minha casa', 'Calcular o meu apartamento'], ar: ['اترك رقمك', 'احسب تكلفة منزلي', 'احسب تكلفة شقتي'] };
   function goBtn(slot, name) {
     var g = GO[lang] || GO.uk, sc = slot.closest('section.bz[data-bz]'), kind = sc ? (sc.getAttribute('data-bz') === 'flat' ? 2 : 1) : 0;
     var a = el('a', 'btn main lq-go', g[kind]); a.href = '#zayavka'; a.setAttribute('data-form', name);
