@@ -1,10 +1,10 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 882 (MAIN 14, LAND 444, інші 352). HTML разом 46952 КБ, з них інлайн CSS 18093 КБ і JS 581 КБ.
+Сторінок: 888 (MAIN 14, LAND 444, інші 358). HTML разом 47067 КБ, з них інлайн CSS 18093 КБ і JS 581 КБ.
 
 ## Проблеми
 
-- **Без Clarity** (3): en/tury.html, ru/tury.html, tury.html
+- **Без Clarity** (9): ar/tury.html, de/tury.html, en/tury.html, es/tury.html, fr/tury.html, pl/tury.html, ru/tury.html, tury.html, zh/tury.html
 - **Непідтверджені ціни** (74): ar/renovation-calculator.html['$165 000 ', '$33 000 '], biznes-pid-kliuch-kyiv.html['$52 500'], blog/akustyka-open-space-bez-hluhykh-peregorodok.html['$35 000 ', '$35 000       '], blog/bryf-dlia-dyzainera-interieru.html['$44 000'], blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html['$165 000', '$165 000 ', '$165 000       ', '$90 000 '], blog/budynok-pid-kliuch-chy-korobka.html['$165 000', '$90 000'], blog/chornovyi-i-chystovyi-remont-riznytsia.html['$38 500', '$38 500 '], blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html['$2 400'], blog/dyzain-i-remont-penthausa-pid-kliuch.html['$115 500  ', '$174 300', '$52 500  ', '$6 300', '$6 300  ', '$6 300       '], blog/dyzain-interieru-onlain-budynok-za-kordonom.html['$7 500', '$7 500       '], blog/dyzain-interieru-z-choho-pochaty.html['$3 000'], blog/dyzain-malenkoi-kvartyry-zberihannia.html['$2 700'] …
 - **Класи поза /styleguide/ (warning, `ui.py classes`)** (40): .acc-box, .ba-g, .bi-wechat, .cl, .cover, .dw, .g2, .hx, .hx-bg, .hxl, .la-pies, .la-pies-h …
 
@@ -23,7 +23,7 @@
 | ar/portfolio.html | main | 255.6 | 28.8 | 13.3 | 0.5 | 6 | 1834 |
 | es/portfolio.html | main | 246.9 | 28.0 | 13.3 | 0.5 | 6 | 1837 |
 | fr/portfolio.html | main | 245.5 | 28.0 | 13.3 | 0.5 | 6 | 1836 |
-| pl/portfolio.html | main | 245.2 | 28.0 | 13.3 | 0.5 | 6 | 1841 |
+| pl/portfolio.html | main | 245.1 | 28.0 | 13.3 | 0.5 | 6 | 1841 |
 | zh/portfolio.html | main | 243.9 | 28.4 | 13.3 | 0.5 | 6 | 1834 |
 | en/portfolio.html | main | 243.8 | 27.7 | 13.3 | 0.5 | 6 | 1842 |
 | de/portfolio.html | main | 243.2 | 27.8 | 13.3 | 0.5 | 6 | 1837 |
@@ -366,6 +366,7 @@
 | ozdoba/svitylnyk-nad-dzerkalo-ip44-planka-30-131.html | other | 57.3 | 15.2 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/vidro-dlia-lodu-z-kryshkoiu-nerzhaviiucha-406.html | other | 57.3 | 15.2 | 32.4 | 0.7 | 14 | 337 |
 | ozdoba/vizok-barnyi-na-kolesakh-zolotyi-3-422.html | other | 57.3 | 15.2 | 32.4 | 0.7 | 14 | 337 |
+| proekty/monpark-povnyi-proekt.html | land | 57.3 | 13.0 | 13.6 | 0.5 | 6 | 514 |
 | ozdoba/dozator-dlia-myla-z-pidstavkoiu-35.html | other | 57.2 | 15.2 | 32.4 | 0.7 | 14 | 336 |
 | ozdoba/dveri-vkhidni-stalevi-hrafit-320.html | other | 57.2 | 15.2 | 32.4 | 0.7 | 14 | 332 |
 | ozdoba/ekran-nastilnyi-akustychnyi-z-fetru-pet-99.html | other | 57.2 | 15.2 | 32.4 | 0.7 | 14 | 334 |
@@ -432,7 +433,6 @@
 | ru/dizayn-ofisa-kiev.html | land | 56.4 | 17.7 | 13.3 | 0.5 | 6 | 474 |
 | ru/kalkulyator-remonta.html | land | 56.4 | 15.3 | 14.7 | 2.4 | 6 | 499 |
 | ru/meblirovka-kvartiry-kiev.html | land | 56.3 | 16.5 | 13.3 | 0.5 | 6 | 438 |
-| proekty/monpark-povnyi-proekt.html | land | 56.2 | 12.9 | 13.6 | 0.5 | 6 | 508 |
 | blog/mebli-z-kytaiu-dlia-interieru.html | article | 56.0 | 18.1 | 14.2 | 0.5 | 6 | 417 |
 | mebliuvannia-kvartyry-kyiv.html | land | 56.0 | 16.5 | 13.3 | 0.5 | 6 | 436 |
 | landshaftnyi-dyzain-kyiv.html | land | 55.8 | 15.0 | 13.1 | 1.1 | 6 | 582 |
@@ -897,6 +897,12 @@
 | pl/polityka-prywatnosci.html | land | 30.2 | 9.4 | 13.2 | 0.5 | 9 | 221 |
 | en/privacy-policy.html | land | 29.6 | 8.9 | 13.2 | 0.5 | 9 | 222 |
 | zh/privacy.html | land | 29.4 | 9.6 | 13.2 | 0.5 | 9 | 214 |
-| ru/tury.html | other | 21.3 | 5.1 | 0.0 | 0.0 | 0 | 303 |
-| tury.html | other | 21.2 | 5.1 | 0.0 | 0.0 | 0 | 303 |
-| en/tury.html | other | 17.7 | 4.0 | 0.0 | 0.0 | 0 | 291 |
+| ru/tury.html | other | 21.8 | 5.1 | 0.0 | 0.0 | 0 | 309 |
+| tury.html | other | 21.8 | 5.1 | 0.0 | 0.0 | 0 | 309 |
+| ar/tury.html | other | 20.5 | 4.5 | 0.0 | 0.0 | 0 | 291 |
+| fr/tury.html | other | 18.8 | 4.2 | 0.0 | 0.0 | 0 | 291 |
+| es/tury.html | other | 18.7 | 4.2 | 0.0 | 0.0 | 0 | 291 |
+| pl/tury.html | other | 18.5 | 4.3 | 0.0 | 0.0 | 0 | 296 |
+| de/tury.html | other | 18.4 | 4.2 | 0.0 | 0.0 | 0 | 292 |
+| en/tury.html | other | 18.3 | 4.1 | 0.0 | 0.0 | 0 | 297 |
+| zh/tury.html | other | 18.0 | 4.4 | 0.0 | 0.0 | 0 | 291 |
