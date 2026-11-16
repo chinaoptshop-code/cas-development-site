@@ -11,7 +11,9 @@ False:
     (tools/site/oztext.py у chrome.apply(), оригінал у <!--ozt:…-->; Михайло 16.11.2026);
   • самі сторінки Оздоби лишаються за прямою адресою: noindex, nofollow, без JSON-LD і hreflang (chrome.oz_seo),
     без записів у sitemap.xml і з X-Robots-Tag у _headers (products/build.py), без Оздоби в llms.txt;
-  • кабінет /kabinet (замовлення, обране) і функції замовлень працюють як були.
+  • кабінет /kabinet (tools/shop/pages.py, kabinet_v2.py → data-oz="0" у kabinet.v2.js): без кошика в шапці, промо Оздоби,
+    знижки за обсягом і рекомендацій; вкладки «Замовлення»/«Обране» — лише якщо в клієнта є замовлення чи обране
+    (наявні клієнти бачать свої замовлення); API замовлень працює як було.
 Повернути: OZDOBA_PUBLIC = True і `bash tools/build-all.sh`.
 """
 import re
