@@ -22,6 +22,7 @@
 .adm table.adm tr.clk{cursor:pointer}.adm table.adm tr.clk:hover td{background:var(--surface-2)}
 .adm .tscroll{overflow-x:auto}
 .adm .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 8px;font-size:12px;color:var(--muted);white-space:nowrap}
+.adm button.pill{background:none;font:inherit;font-size:12px;cursor:pointer;min-height:24px}.adm button.pill:hover{border-color:var(--brass);color:var(--glow)}
 .adm .pill.on{border-color:var(--brass);color:var(--glow)}
 .adm .pill.warn{border-color:#e07a6a;color:#e07a6a}
 .adm .thumb{width:48px;height:48px;object-fit:contain;border-radius:8px;background:var(--surface-2)}

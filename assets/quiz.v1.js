@@ -335,6 +335,7 @@
       function onLead(ev) {
         if (done || !ev.detail || ev.detail.form !== 'quiz') return; done = true; restore();
         steps.forEach(function (s) { s.hidden = true; }); nav.hidden = true; head.hidden = true; root.classList.add('qz-done');
+        if (window.casLeadAfter) window.casLeadAfter(ok); // години відповіді + Telegram (lead-form.v1.js)
         ok.hidden = false; try { ok.focus({ preventScroll: true }); } catch (x) { ok.focus(); }
       }
       d.addEventListener('cas:lead', onLead);

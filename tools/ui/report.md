@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 893 (MAIN 14, LAND 444, інші 358). HTML разом 47483 КБ, з них інлайн CSS 18164 КБ і JS 583 КБ.
+Сторінок: 893 (MAIN 14, LAND 444, інші 358). HTML разом 47502 КБ, з них інлайн CSS 18171 КБ і JS 583 КБ.
 
 ## Проблеми
 
@@ -69,7 +69,7 @@
 | blog/bryf-dlia-dyzainera-interieru.html | article | 60.3 | 17.6 | 14.2 | 0.5 | 6 | 439 |
 | blog/oplata-remontu-chastynamy-skhemy-platezhiv.html | article | 60.1 | 17.2 | 14.2 | 0.5 | 6 | 437 |
 | blog/komplektatsiia-restoranu-hotelyu-z-kytaiu.html | article | 59.9 | 19.4 | 14.2 | 0.5 | 6 | 419 |
-| ru/o-nas.html | land | 59.9 | 16.2 | 13.3 | 0.5 | 6 | 486 |
+| ru/o-nas.html | land | 59.9 | 16.3 | 13.3 | 0.5 | 6 | 486 |
 | ru/remont-kvartir-kiev.html | land | 59.9 | 16.0 | 13.7 | 0.5 | 6 | 564 |
 | dyzain-interieru-kyiv.html | land | 59.7 | 15.9 | 13.4 | 0.5 | 6 | 572 |
 | remont-kvartyr-kyiv.html | land | 59.7 | 16.0 | 13.4 | 0.5 | 6 | 565 |
@@ -584,7 +584,7 @@
 | ru/dom-iz-gazobloka-pod-klyuch-kiev.html | land | 48.7 | 13.2 | 13.3 | 0.5 | 6 | 423 |
 | ru/remont-kvartiry-zhk-nordica-residence.html | land | 48.7 | 13.1 | 13.3 | 0.5 | 6 | 428 |
 | fr/a-propos.html | land | 48.6 | 13.4 | 13.3 | 0.5 | 6 | 446 |
-| remont-kvartyry-zhk-hvardiiskyi.html | land | 48.6 | 13.1 | 13.3 | 0.5 | 6 | 428 |
+| remont-kvartyry-zhk-hvardiiskyi.html | land | 48.6 | 13.2 | 13.3 | 0.5 | 6 | 428 |
 | ru/remont-kvartiry-zhk-rusaniv-residence.html | land | 48.6 | 13.2 | 13.3 | 0.5 | 6 | 427 |
 | remont-kvartyry-zhk-nordica-residence.html | land | 48.5 | 13.1 | 13.3 | 0.5 | 6 | 428 |
 | remont-kvartyry-zhk-rusaniv-residence.html | land | 48.5 | 13.2 | 13.3 | 0.5 | 6 | 427 |
@@ -615,7 +615,7 @@
 | oblashtuvannia-ofisu-pid-kliuch-kyiv.html | land | 48.0 | 13.1 | 13.3 | 0.5 | 6 | 416 |
 | remont-kvartyry-zhk-life-story.html | land | 48.0 | 13.0 | 13.3 | 0.5 | 6 | 427 |
 | remont-kvartyry-zhk-senat.html | land | 48.0 | 13.1 | 13.3 | 0.5 | 6 | 427 |
-| ru/remont-kvartiry-zhk-life-story.html | land | 48.0 | 13.0 | 13.3 | 0.5 | 6 | 427 |
+| ru/remont-kvartiry-zhk-life-story.html | land | 48.0 | 13.1 | 13.3 | 0.5 | 6 | 427 |
 | ru/dogovor-garantiya-oplata.html | land | 47.9 | 12.7 | 13.3 | 0.5 | 6 | 416 |
 | remont-vannoi-kimnaty-kyiv.html | land | 47.8 | 12.7 | 13.3 | 0.5 | 6 | 437 |
 | dogovir-garantiya-oplata.html | land | 47.7 | 12.6 | 13.3 | 0.5 | 6 | 416 |
@@ -747,7 +747,7 @@
 | dyzain-i-remont-chernivtsi.html | land | 42.1 | 11.7 | 13.3 | 0.5 | 6 | 337 |
 | dyzain-i-remont-poltava.html | land | 42.1 | 11.7 | 13.3 | 0.5 | 6 | 338 |
 | dyzain-i-remont-vinnytsia.html | land | 42.1 | 11.7 | 13.3 | 0.5 | 6 | 337 |
-| dyzain-i-remont-vyshneve.html | land | 42.1 | 11.7 | 13.3 | 0.5 | 6 | 341 |
+| dyzain-i-remont-vyshneve.html | land | 42.1 | 11.8 | 13.3 | 0.5 | 6 | 341 |
 | dyzain-i-remont-zhytomyr.html | land | 42.1 | 11.6 | 13.3 | 0.5 | 6 | 339 |
 | proekty/edelweiss.html | land | 42.1 | 8.8 | 1.9 | 0.5 | 0 | 373 |
 | ru/dizayn-i-remont-boyarka.html | land | 42.1 | 11.8 | 13.3 | 0.5 | 6 | 340 |
@@ -902,12 +902,12 @@
 | pl/polityka-prywatnosci.html | land | 30.3 | 9.4 | 13.2 | 0.5 | 9 | 221 |
 | en/privacy-policy.html | land | 29.7 | 9.0 | 13.2 | 0.5 | 9 | 222 |
 | zh/privacy.html | land | 29.5 | 9.6 | 13.2 | 0.5 | 9 | 214 |
-| ru/tury.html | other | 21.8 | 5.1 | 0.0 | 0.0 | 0 | 309 |
-| tury.html | other | 21.8 | 5.1 | 0.0 | 0.0 | 0 | 309 |
-| ar/tury.html | other | 20.6 | 4.5 | 0.0 | 0.0 | 0 | 291 |
-| fr/tury.html | other | 18.8 | 4.2 | 0.0 | 0.0 | 0 | 291 |
-| es/tury.html | other | 18.7 | 4.2 | 0.0 | 0.0 | 0 | 291 |
-| pl/tury.html | other | 18.6 | 4.3 | 0.0 | 0.0 | 0 | 296 |
-| de/tury.html | other | 18.4 | 4.2 | 0.0 | 0.0 | 0 | 292 |
-| en/tury.html | other | 18.3 | 4.1 | 0.0 | 0.0 | 0 | 297 |
-| zh/tury.html | other | 18.1 | 4.4 | 0.0 | 0.0 | 0 | 291 |
+| ru/tury.html | other | 23.9 | 5.8 | 0.8 | 0.0 | 0 | 322 |
+| tury.html | other | 23.9 | 5.8 | 0.8 | 0.0 | 0 | 322 |
+| ar/tury.html | other | 22.7 | 5.2 | 0.8 | 0.0 | 0 | 304 |
+| fr/tury.html | other | 20.9 | 4.9 | 0.8 | 0.0 | 0 | 304 |
+| es/tury.html | other | 20.8 | 4.9 | 0.8 | 0.0 | 0 | 304 |
+| pl/tury.html | other | 20.6 | 5.0 | 0.8 | 0.0 | 0 | 309 |
+| de/tury.html | other | 20.5 | 4.8 | 0.8 | 0.0 | 0 | 305 |
+| en/tury.html | other | 20.4 | 4.7 | 0.8 | 0.0 | 0 | 310 |
+| zh/tury.html | other | 20.1 | 5.1 | 0.8 | 0.0 | 0 | 304 |

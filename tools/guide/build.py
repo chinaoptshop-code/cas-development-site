@@ -9,8 +9,9 @@
 Сторінки: вартість ремонту квартири, дизайну, будинку, офісу, калькулятор (uk + ru) — перед формою <section id="zayavka">;
 статті блогу про ціни (slug: skilky-koshtuie|skolko-stoit|biudzhet|byudzhet|koshtorys|smetu) — перед кінцевим CTA.
 У HTML — лише місце <div class="gd-slot" data-pdf="/assets/guide/<файл>.pdf?v=<хеш>"></div> (~90 байтів: лендинги на межі
-бюджету 64 КБ); форму будує /assets/lead-form.v1.js: лише телефон, data-form="guide", data-service «Гід з цінами»,
-data-source …#guide; після 2xx — кнопка «Завантажити гід» і «Менеджер також надішле його в Telegram/Viber». Без поп-апів.
+бюджету 64 КБ); блок будує /assets/lead-form.v1.js: одна форма на сторінку (Михайло 16.11.2026) — не друга форма, а кнопка
+«Отримати гід з цінами» → #zayavka, що переносить у form#of data-form="guide", data-service «Гід з цінами», data-source …#guide
+і коментар «Хочу гід з цінами»; після 2xx у #oOk — кнопка «Завантажити гід». Без поп-апів.
 Стилі блоку — /assets/site-chrome.v1.css («Лід-магніт»). PDF у пошук не потрапляє: X-Robots-Tag noindex у _headers.
 Шрифти PDF — лише власні з /fonts (Cormorant Garamond + Manrope), фото — з img/p (проєкти CAS).
 PDF містить дату створення, тому перегенеровуємо лише після зміни текстів (команда pdf), а ?v= береться з хешу файлу.

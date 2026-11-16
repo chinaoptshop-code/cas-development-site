@@ -39,6 +39,7 @@ await api('OWNER', 'POST', '/api/admin/projects', { type: 'payment', project_id:
 await api('OWNER', 'POST', '/api/admin/projects', { type: 'payment', project_id: P1, title: 'Після чорнових', amount: 15000, due_date: iso(-1) });
 for (const [i, s] of ['Ремонт квартири', 'Дизайн інтерʼєру', 'Будівництво будинку'].entries())
   await call(env, 'POST', '/api/leads', { body: { name: 'Лід ' + (i + 1), phone: '067111223' + i, service: s, source: 'cas-develop.com/remont-kvartyr-kyiv#prices' }, headers: { ip: '10.0.1.' + i } });
+await call(env, 'POST', '/api/leads', { body: { name: 'Лід з кейсу', phone: '0671112299', service: 'Дизайн інтерʼєру', source: 'cas-develop.com/dyzain-interieru-kyiv', ref_path: '/proekty/monpark' }, headers: { ip: '10.0.1.9' } });
 await api('FORE', 'POST', '/api/team/action', { type: 'issue', project_id: P1, note: 'Протікає стояк у ванній' });
 
 // ===== сервер =====
@@ -124,6 +125,16 @@ let nAdd = 0;
 console.log('Майстер-панель власника');
 await check('owner-studio', 'OWNER', '/kabinet/admin#studio', W, async p => { await see(p, 'body.adm-owner'); await see(p, '.adm-tabs', 'Студія'); await see(p, '#admView', 'Воронк|воронк'); });
 await check('owner-crm', 'OWNER', '/kabinet/admin#crm', W, async p => { await see(p, '#admView', 'Лід 1'); });
+// сторінка-джерело (orders.ref_path): позначка «← /шлях» у списку, клік — фільтр за нею, поле фільтра й рядок у картці
+await check('owner-crm-ref', 'OWNER', '/kabinet/admin#crm', W, async p => {
+  await see(p, '#admView', 'Лід з кейсу');
+  if (!(await p.$('[data-f=ref]'))) throw new Error('немає фільтра «Сторінка-джерело»');
+  await p.locator('[data-ref="/proekty/monpark"]').first().click(); await p.waitForTimeout(600);
+  if (await p.inputValue('[data-f=ref]') !== '/proekty/monpark') throw new Error('клік по позначці не поставив фільтр');
+  const t = await p.textContent('[data-list]');
+  if (!/Лід з кейсу/.test(t) || /Лід 1/.test(t)) throw new Error('фільтр за сторінкою-джерелом не працює');
+  await p.locator('[data-list] :text("Лід з кейсу")').first().click(); await see(p, 'dialog[open]', 'Сторінка-джерело: /proekty/monpark');
+});
 await check('owner-staff', 'OWNER', '/kabinet/admin#team', W, async p => { await see(p, '.staff-t', 'Олег');
   await p.click('details.add summary'); await see(p, '[data-add]');
   const n = ++nAdd; await p.fill('[data-add] [name=name]', 'Тест Менеджер ' + n); await p.selectOption('[data-add] [name=role]', 'manager'); await p.fill('[data-add] [name=email]', 'test.manager' + n + '@example.com');

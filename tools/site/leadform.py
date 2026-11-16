@@ -25,6 +25,8 @@
 робить спільний /assets/lead-form.v1.js. Без поп-апів і exit-intent.
 Контакти поруч із формою #zayavka на ПК ≥1024 px (телефон, Telegram/WhatsApp/Viber, адреса, години; Михайло 16.11.2026) — aside.of-ct
 будує lead-form.v1.js (абсолютно в правій половині .w, без зміни потоку — CLS 0); тексти 9 мов — sync_js() (див. нижче).
+"Гід з цінами" (.gd-slot, tools/guide/build.py) — не друга форма, а кнопка «Отримати гід з цінами» до #zayavka з контекстом (data-form=guide);
+після 2xx у кожному блоці успіху — години відповіді й кнопка Telegram (тексти T[мова] after/gd/gd_msg → AF у lead-form.v1.js, sync_js()).
 Форму з data-lf="keep" (власна форма сторінки, landing.py "form_html") не переписуємо.
 Сторінки інших агентів (SKIP) не чіпаємо; блог, Оздобу, кабінет і сторінки проєктів — без швидкої заявки в hero.
 """
@@ -39,38 +41,47 @@ T = {
     'uk': dict(name='Імʼя (необовʼязково)', phone='Телефон *', ph='+380 97 123 45 67', more='Додати коментар', send='Отримати розрахунок',
                note='Передзвонимо й порахуємо орієнтовну вартість. Консультація по телефону — безкоштовна.',
                alt='Або напишіть:', tr='150+ проєктів з 2016 · гарантія 12 міс. · своя команда · Google\u00a04,8★',
-               q='Залиште номер — ми передзвонимо', ok='Дякуємо. Перетелефонуємо найближчим часом.', mb='Залишити номер'),
+               q='Залиште номер — ми передзвонимо', ok='Дякуємо. Перетелефонуємо найближчим часом.', mb='Залишити номер',
+               after='Відповідаємо Пн–Пт 10:00–20:00. Якщо терміново — напишіть у Telegram', gd='Отримати гід з цінами', gd_msg='Хочу гід з цінами'),
     'ru': dict(name='Имя (необязательно)', phone='Телефон *', ph='+380 97 123 45 67', more='Добавить комментарий', send='Получить расчёт',
                note='Перезвоним и посчитаем ориентировочную стоимость. Консультация по телефону — бесплатная.',
                alt='Или напишите:', tr='150+ проектов с 2016 · гарантия 12 мес. · своя команда · Google\u00a04,8★',
-               q='Оставьте номер — мы перезвоним', ok='Спасибо. Перезвоним в ближайшее время.', mb='Оставить номер'),
+               q='Оставьте номер — мы перезвоним', ok='Спасибо. Перезвоним в ближайшее время.', mb='Оставить номер',
+               after='Отвечаем Пн–Пт 10:00–20:00. Если срочно — напишите в Telegram', gd='Получить гид по ценам', gd_msg='Хочу гид по ценам'),
     'en': dict(name='Name (optional)', more='Add a comment', send='Get an estimate',
                note='We will call you back with a rough cost estimate. Phone consultation is free.',
                alt='Or message us:', tr='150+ projects since 2016 · 12-month warranty · in-house team · Google\u00a04.8★',
-               q='Leave your number — we will call you back', ok='Thank you. We will call you back shortly.', mb='Leave number'),
+               q='Leave your number — we will call you back', ok='Thank you. We will call you back shortly.', mb='Leave number',
+               after='We reply Mon–Fri 10:00–20:00. If it is urgent, message us on Telegram', gd='Get the price guide', gd_msg='I would like the price guide'),
     'es': dict(name='Nombre (opcional)', more='Añadir un comentario', send='Recibir presupuesto',
                note='Le llamamos y le damos un coste orientativo. La consulta por teléfono es gratuita.',
                alt='O escríbanos:', tr='150+ proyectos desde 2016 · garantía de 12 meses · equipo propio · Google\u00a04,8★',
-               q='Deje su número y le llamamos', ok='Gracias. Le llamaremos en breve.', mb='Dejar número'),
+               q='Deje su número y le llamamos', ok='Gracias. Le llamaremos en breve.', mb='Dejar número',
+               after='Respondemos de lunes a viernes, 10:00–20:00. Si es urgente, escríbanos por Telegram', gd='Recibir la guía de precios', gd_msg='Quiero la guía de precios'),
     'zh': dict(name='姓名（选填）', more='添加备注', send='获取估价',
                note='我们会回电并估算大致费用。电话咨询免费。', alt='或发消息：', tr='自2016年起150+个项目 · 12个月保修 · 自有团队 · Google\u00a04.8★',
-               q='留下电话，我们给您回电', ok='谢谢。我们会尽快给您回电。', mb='留下电话'),
+               q='留下电话，我们给您回电', ok='谢谢。我们会尽快给您回电。', mb='留下电话',
+               after='我们的回复时间：周一至周五 10:00–20:00。如有急事，请通过 Telegram 联系我们', gd='获取价格指南', gd_msg='我想要价格指南'),
     'pl': dict(name='Imię (opcjonalnie)', more='Dodaj komentarz', send='Otrzymaj wycenę',
                note='Oddzwonimy i podamy orientacyjny koszt. Konsultacja telefoniczna jest bezpłatna.',
                alt='Lub napisz:', tr='150+ projektów od 2016 · gwarancja 12 mies. · własny zespół · Google\u00a04,8★',
-               q='Zostaw numer — oddzwonimy', ok='Dziękujemy. Oddzwonimy wkrótce.', mb='Zostaw numer'),
+               q='Zostaw numer — oddzwonimy', ok='Dziękujemy. Oddzwonimy wkrótce.', mb='Zostaw numer',
+               after='Odpowiadamy pn–pt 10:00–20:00. Jeśli to pilne — napisz na Telegramie', gd='Pobierz przewodnik po cenach', gd_msg='Chcę przewodnik po cenach'),
     'de': dict(name='Name (optional)', more='Kommentar hinzufügen', send='Schätzung erhalten',
                note='Wir rufen zurück und nennen die ungefähren Kosten. Die telefonische Beratung ist kostenlos.',
                alt='Oder schreiben Sie:', tr='150+ Projekte seit 2016 · 12 Monate Garantie · eigenes Team · Google\u00a04,8★',
-               q='Nummer hinterlassen — wir rufen zurück', ok='Danke. Wir rufen Sie in Kürze zurück.', mb='Rückruf'),
+               q='Nummer hinterlassen — wir rufen zurück', ok='Danke. Wir rufen Sie in Kürze zurück.', mb='Rückruf',
+               after='Wir antworten Mo–Fr 10:00–20:00. Wenn es dringend ist, schreiben Sie uns auf Telegram', gd='Preisleitfaden erhalten', gd_msg='Ich möchte den Preisleitfaden'),
     'fr': dict(name='Nom (facultatif)', more='Ajouter un commentaire', send='Recevoir une estimation',
                note='Nous vous rappelons avec une estimation indicative. La consultation par téléphone est gratuite.',
                alt='Ou écrivez-nous :', tr='150+ projets depuis 2016 · garantie 12 mois · équipe interne · Google\u00a04,8★',
-               q='Laissez votre numéro, nous vous rappelons', ok='Merci. Nous vous rappelons rapidement.', mb='Être rappelé'),
+               q='Laissez votre numéro, nous vous rappelons', ok='Merci. Nous vous rappelons rapidement.', mb='Être rappelé',
+               after='Nous répondons du lundi au vendredi, 10:00–20:00. En cas d’urgence, écrivez-nous sur Telegram', gd='Recevoir le guide des prix', gd_msg='Je souhaite le guide des prix'),
     'ar': dict(name='الاسم (اختياري)', more='إضافة تعليق', send='احصل على تقدير',
                note='سنتصل بك ونقدّم تقديرًا تقريبيًا للتكلفة. الاستشارة الهاتفية مجانية.',
                alt='أو راسلنا:', tr='+150 مشروعًا منذ 2016 · ضمان 12 شهرًا · فريقنا الخاص · \u2066Google\u00a04.8★\u2069',
-               q='اترك رقمك وسنتصل بك', ok='شكرًا. سنعاود الاتصال بك قريبًا.', mb='اترك رقمك'),
+               q='اترك رقمك وسنتصل بك', ok='شكرًا. سنعاود الاتصال بك قريبًا.', mb='اترك رقمك',
+               after='نرد من الاثنين إلى الجمعة 10:00–20:00. إذا كان الأمر عاجلًا، راسلنا على Telegram', gd='احصل على دليل الأسعار', gd_msg='أريد دليل الأسعار'),
 }
 # месенджери — ті самі, що в шапці й нижній панелі (tools/site/chrome.py, MSG)
 MSG = (('Telegram', 'https://t.me/+380978667755'), ('Viber', 'viber://chat?number=%2B380978667755'), ('WhatsApp', 'https://wa.me/380978667755'))
@@ -409,9 +420,20 @@ def ct_js():
     return '/*ct*/\n  var CT = {\n' + ',\n'.join(rows) + '\n  };\n  /*/ct*/'
 
 
+# після 2xx (Михайло 16.11.2026): рядок «Відповідаємо Пн–Пт 10:00–20:00. Якщо терміново — напишіть у Telegram» + кнопка Telegram,
+# кнопка лід-магніту «Отримати гід з цінами» (.gd-go → #zayavka) і коментар «Хочу гід з цінами» — T[мова] after/gd/gd_msg → AF у lead-form.v1.js
+AF_RX = re.compile(r'/\*af\*/.*?/\*/af\*/', re.S)
+
+
+def af_js():
+    import json
+    rows = [f'    {l}: {json.dumps([t["after"], t["gd"], t["gd_msg"]], ensure_ascii=False)}' for l, t in T.items()]
+    return '/*af*/\n  var AF = {\n' + ',\n'.join(rows) + '\n  };\n  /*/af*/'
+
+
 def sync_js(check=False):
     s = open(JS, encoding='utf-8').read()
-    new = CT_RX.sub(lambda m: ct_js(), s, count=1)
+    new = AF_RX.sub(lambda m: af_js(), CT_RX.sub(lambda m: ct_js(), s, count=1), count=1)
     if new != s and not check:
         open(JS, 'w', encoding='utf-8').write(new)
     return new == s
@@ -441,7 +463,7 @@ if __name__ == '__main__':
             else:
                 open(p, 'w', encoding='utf-8').write(new); n += 1
     if not sync_js('--check' in sys.argv):
-        bad.append('assets/lead-form.v1.js (контакти біля форми — CT)')
+        bad.append('assets/lead-form.v1.js (контакти біля форми — CT, тексти після успіху й гіда — AF)')
     if '--check' in sys.argv:
         print('\n'.join(bad) if bad else 'Форми заявки: OK')
         sys.exit(1 if bad else 0)

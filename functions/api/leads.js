@@ -5,12 +5,20 @@
 // З заголовком x-lead-key = LEAD_INGEST_KEY (n8n, інтеграції) — без ліміту; без ключа — до 5 заявок на годину з IP
 // і не більше GLOBAL_PER_HOUR на весь сайт (захист D1 і Telegram від ботнету; справжніх заявок у рази менше).
 // Аналітика (migrations/0009_lead_meta.sql): form, lang, utm — окремими колонками; без міграції заявка зберігається без них.
+// Сторінка-джерело (migrations/0011_lead_ref.sql): ref_path — попередня сторінка сайту (lead-form.v1.js, з document.referrer);
+// приймаємо лише шлях того самого сайту (refPath нижче), інакше — null. Без міграції 0011 — зберігаємо без неї (fallback).
 import { bad, hexOf, json, nextLeadNumber, readJSON, same, sha256, str } from '../_lib.js';
 import { notifyNew } from '../_alerts.js';
 import { ipKey } from '../_rate.js';
 
 const GLOBAL_PER_HOUR = 300;
 const noColumn = e => /no such column|has no column/i.test(String(e && e.message));
+// лише шлях того самого сайту: «/…», не «//host», без схеми, query, hash, пробілів, керівних символів і < > " ' \ ; ≤ 160 символів
+export const refPath = v => {
+  if (typeof v !== 'string') return null;
+  const s = v.trim();
+  return s.length <= 160 && /^\/(?![\/\\])[^\s\x00-\x1f\x7f?#\\<>"'`]*$/.test(s) ? s : null;
+};
 
 export async function onRequestPost({ request, env, waitUntil }) {
   let d;
@@ -41,15 +49,15 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const number = await nextLeadNumber(env);
   const base = [number, str(d.name, 120) || 'Без імені', phone, str(d.service, 200), str(d.source || d.page, 200), comment];
   const utm = d.utm_source ? [d.utm_source, d.utm_medium, d.utm_campaign].filter(Boolean).map(x => str(x, 60)).join(' / ') : null;
+  // колонки аналітики: з 0011 — ref_path, з 0009 — form, lang, utm; якщо міграцію ще не застосовано — пробуємо коротший набір
+  const meta = [['form', str(d.form, 40)], ['lang', str(d.lang, 8)], ['utm', utm], ['ref_path', refPath(d.ref_path)]];
   let r;
-  try {
-    r = await env.DB.prepare(`INSERT INTO orders (number, kind, name, phone, items, service, source, comment, status, form, lang, utm)
-        VALUES (?, 'lead', ?, ?, '[]', ?, ?, ?, 'new', ?, ?, ?)`)
-      .bind(...base, str(d.form, 40), str(d.lang, 8), utm).run();
-  } catch (e) {
-    if (!noColumn(e)) throw e; // міграція 0009 ще не застосована — зберігаємо як раніше
-    r = await env.DB.prepare(`INSERT INTO orders (number, kind, name, phone, items, service, source, comment, status)
-        VALUES (?, 'lead', ?, ?, '[]', ?, ?, ?, 'new')`).bind(...base).run();
+  for (const cols of [meta, meta.slice(0, 3), []]) {
+    try {
+      r = await env.DB.prepare(`INSERT INTO orders (number, kind, name, phone, items, service, source, comment, status${cols.map(c => ', ' + c[0]).join('')})
+          VALUES (?, 'lead', ?, ?, '[]', ?, ?, ?, 'new'${', ?'.repeat(cols.length)})`).bind(...base, ...cols.map(c => c[1])).run();
+      break;
+    } catch (e) { if (!noColumn(e) || !cols.length) throw e; }
   }
   await env.DB.prepare("INSERT INTO order_events (order_id, status, author) VALUES (?, 'new', ?)").bind(r.meta.last_row_id, str(d.form, 40) || 'site').run();
   const alert = notifyNew(env, r.meta.last_row_id, {

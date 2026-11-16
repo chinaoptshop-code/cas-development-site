@@ -363,7 +363,7 @@
     var saved = {}; try { saved = JSON.parse(localStorage.getItem('crmFilters') || '{}') || {}; } catch (e) { /* noop */ }
     var preset = null; try { preset = JSON.parse(sessionStorage.getItem('crmPreset') || 'null'); sessionStorage.removeItem('crmPreset'); } catch (e) { /* noop */ }
     var narrow = window.matchMedia && matchMedia('(max-width: 700px)').matches;
-    var S = Object.assign({ view: localStorage.getItem('crmView') || (narrow ? 'table' : 'kanban'), board: can('leads.view_all') ? 'lead' : 'order', kind: '', status: '', assignee: '', staff: '', city: '', min: '', max: '', overdue: false, due: false, q: '', place: '', period: '', from: '', to: '' }, saved, preset || {}), ST = {}, LST = {}, OST = {}, rows = [], AS = [], STAFF = [];
+    var S = Object.assign({ view: localStorage.getItem('crmView') || (narrow ? 'table' : 'kanban'), board: can('leads.view_all') ? 'lead' : 'order', kind: '', status: '', assignee: '', staff: '', city: '', min: '', max: '', overdue: false, due: false, q: '', place: '', ref: '', period: '', from: '', to: '' }, saved, preset || {}), ST = {}, LST = {}, OST = {}, rows = [], AS = [], STAFF = [];
     if (!can('leads.view_all')) S.board = 'order'; if (!can('orders.view')) S.board = 'lead';
     var stOf = function (r) { return r.kind === 'lead' ? LST : OST; };
     L.innerHTML = '<div class="tb crm-tb">' +
@@ -380,6 +380,8 @@
       '<select data-f="assignee" aria-label="Відповідальний (текст)"' + (can('staff.view') ? ' hidden' : '') + '><option value="">Усі відповідальні</option></select>' +
       '<select data-f="staff" aria-label="Працівник"' + (can('staff.view') ? '' : ' hidden') + '><option value="">Усі працівники</option><option value="none">Не призначено</option></select>' +
       '<input data-f="city" type="search" placeholder="Область / місто" aria-label="Область або місто" class="w-city">' +
+      // сторінка-джерело (попередня сторінка сайту перед заявкою, orders.ref_path) — лише тим, хто бачить усі заявки (власник, менеджер)
+      (can('leads.view_all') ? '<input data-f="ref" type="search" placeholder="Сторінка-джерело: /proekty/…" aria-label="Сторінка-джерело" class="w-city">' : '') +
       (can('finance.view') ? '<span class="row"><input data-f="min" type="number" inputmode="numeric" min="0" placeholder="Сума від" aria-label="Сума від" class="w-num"><input data-f="max" type="number" inputmode="numeric" min="0" placeholder="до" aria-label="Сума до" class="w-num"></span>' : '') +
       '<label class="chk"><input type="checkbox" data-f="overdue"> прострочені</label>' +
       '<label class="chk"><input type="checkbox" data-f="due"> звʼязатися сьогодні</label>' +
@@ -399,7 +401,7 @@
       var r = range();
       return '/api/admin/crm?kind=' + S.kind + '&status=' + S.status + '&assignee=' + encodeURIComponent(S.assignee) + '&due=' + (S.due ? 1 : '') +
         '&staff=' + encodeURIComponent(S.staff) + '&city=' + encodeURIComponent(S.city) + '&min=' + encodeURIComponent(S.min) + '&max=' + encodeURIComponent(S.max) + '&overdue=' + (S.overdue ? 1 : '') +
-        '&place=' + encodeURIComponent(S.place) + '&from=' + r.from + '&to=' + r.to + '&q=' + encodeURIComponent(S.q) + (csv ? '&format=csv' : '');
+        '&place=' + encodeURIComponent(S.place) + '&ref=' + encodeURIComponent(S.ref || '') + '&from=' + r.from + '&to=' + r.to + '&q=' + encodeURIComponent(S.q) + (csv ? '&format=csv' : '');
     }
     function segs() {
       $$('[data-v]', L).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.v === S.view); });
@@ -407,19 +409,19 @@
       var bs = $('[data-boards]', L); if (bs) bs.hidden = S.view !== 'kanban';
       $('[data-csv]', L).href = qs(true); $('[data-csv]', L).hidden = !can('export');
       $('[data-dates]', L).hidden = S.period !== 'custom';
-      var n = ['kind', 'status', 'assignee', 'staff', 'city', 'min', 'max', 'place', 'period'].filter(function (k) { return S[k]; }).length + (S.due ? 1 : 0) + (S.overdue ? 1 : 0);
+      var n = ['kind', 'status', 'assignee', 'staff', 'city', 'min', 'max', 'place', 'ref', 'period'].filter(function (k) { return S[k]; }).length + (S.due ? 1 : 0) + (S.overdue ? 1 : 0);
       $('[data-fc]', L).textContent = n ? '· ' + n : '';
-      try { localStorage.setItem('crmFilters', JSON.stringify({ board: S.board, kind: S.kind, status: S.status, assignee: S.assignee, staff: S.staff, city: S.city, min: S.min, max: S.max, overdue: S.overdue, due: S.due, place: S.place, period: S.period, from: S.from, to: S.to })); } catch (e) { /* noop */ }
+      try { localStorage.setItem('crmFilters', JSON.stringify({ board: S.board, kind: S.kind, status: S.status, assignee: S.assignee, staff: S.staff, city: S.city, min: S.min, max: S.max, overdue: S.overdue, due: S.due, place: S.place, ref: S.ref, period: S.period, from: S.from, to: S.to })); } catch (e) { /* noop */ }
     }
     $$('[data-v]', L).forEach(function (b) { b.onclick = function () { S.view = b.dataset.v; try { localStorage.setItem('crmView', S.view); } catch (e) { /* noop */ } segs(); transition(draw); }; });
     $$('[data-b]', L).forEach(function (b) { b.onclick = function () { S.board = b.dataset.b; segs(); transition(draw); }; });
     $$('[data-f]', L).forEach(function (el) {
       var k = el.dataset.f;
       if (el.type === 'checkbox') el.checked = !!S[k]; else el.value = S[k] || '';
-      el[k === 'q' || k === 'city' || k === 'min' || k === 'max' ? 'oninput' : 'onchange'] = (k === 'q' || k === 'city' || k === 'min' || k === 'max' ? debounce : function (f) { return f; })(function () { S[k] = el.type === 'checkbox' ? el.checked : el.value; segs(); load(); });
+      el[k === 'q' || k === 'city' || k === 'ref' || k === 'min' || k === 'max' ? 'oninput' : 'onchange'] = (k === 'q' || k === 'city' || k === 'ref' || k === 'min' || k === 'max' ? debounce : function (f) { return f; })(function () { S[k] = el.type === 'checkbox' ? el.checked : el.value; segs(); load(); });
     });
     $('[data-reset]', L).onclick = function () {
-      ['kind', 'status', 'assignee', 'staff', 'city', 'min', 'max', 'place', 'period', 'from', 'to', 'q'].forEach(function (k) { S[k] = ''; }); S.due = false; S.overdue = false;
+      ['kind', 'status', 'assignee', 'staff', 'city', 'min', 'max', 'place', 'ref', 'period', 'from', 'to', 'q'].forEach(function (k) { S[k] = ''; }); S.due = false; S.overdue = false;
       $$('[data-f]', L).forEach(function (el) { if (el.type === 'checkbox') el.checked = false; else el.value = ''; });
       segs(); load();
     };
@@ -433,7 +435,13 @@
     // час реакції (functions/_alerts.js): скільки хвилин від заявки до «Взяв у роботу» (Telegram або перший статус ≠ «Нове»)
     var mins = function (n) { return n < 60 ? n + ' хв' : Math.floor(n / 60) + ' год' + (n % 60 ? ' ' + (n % 60) + ' хв' : ''); };
     var react = function (r) { return r.reaction_min != null ? '<small class="' + (r.reaction_min > SLA ? 'due' : '') + '" title="Час реакції">⏱ ' + mins(r.reaction_min) + '</small>' : ''; };
-    var src = function (r) { return r.place ? '<span class="pill src" title="' + esc(r.source || '') + '">' + esc(placeLabel(r.place)) + (r.page && r.page !== '/' ? ' · ' + esc(r.page.length > 34 ? r.page.slice(0, 33) + '…' : r.page) : '') + '</span>' : ''; };
+    var src = function (r) { return r.place ? '<span class="pill src" title="' + esc(r.source || '') + '">' + esc(placeLabel(r.place)) + (r.page && r.page !== '/' ? ' · ' + esc(r.page.length > 34 ? r.page.slice(0, 33) + '…' : r.page) : '') + '</span>' + refp(r) : ''; };
+    // сторінка-джерело: звідки відвідувач перейшов на сторінку з формою (кейс, тур, стаття); клік — фільтр за нею
+    var refp = function (r) { return r.ref_path ? ' <button type="button" class="pill src" data-ref="' + esc(r.ref_path) + '" title="Сторінка-джерело — показати всі заявки з неї">← ' + esc(r.ref_path.length > 34 ? r.ref_path.slice(0, 33) + '…' : r.ref_path) + '</button>' : ''; };
+    L.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('[data-ref]'); if (!b) return;
+      e.preventDefault(); e.stopPropagation(); if (dlg.open) dlg.close(); S.ref = b.dataset.ref; var fi = $('[data-f=ref]', L); if (fi) fi.value = S.ref; segs(); load();
+    }, true);
     function load() {
       list.setAttribute('aria-busy', 'true');
       if (!rows.length) list.innerHTML = '<div class="skel-kn" aria-hidden="true">' + '<i></i>'.repeat(narrow ? 3 : 6) + '</div>';
@@ -560,6 +568,7 @@
           (r.reaction_min != null ? ' · час реакції: ' + mins(r.reaction_min) : '') + ' ' + slaBadge(r) + '</p>' +
           (r.phone ? '<p class="full"><b>' + esc(r.phone) + '</b> ' + quick(r) + '</p>' : '') +
           (r.place ? '<p class="full muted">Джерело: ' + src(r) + (site ? ' <a href="' + esc(site) + '" target="_blank" rel="noopener">відкрити сторінку ↗</a>' : '') + (r.form ? ' · форма ' + esc(r.form) : '') + (r.lang ? ' · ' + esc(r.lang) : '') + (r.utm ? ' · UTM ' + esc(r.utm) : '') + '</p>' : '') +
+          (r.ref_path ? '<p class="full muted">Сторінка-джерело: <a href="https://cas-develop.com' + esc(r.ref_path) + '" target="_blank" rel="noopener">' + esc(r.ref_path) + ' ↗</a></p>' : '') +
           (what(r) ? '<p class="full">' + esc(what(r)) + '</p>' : '') + (r.comment ? '<p class="full muted" style="white-space:pre-wrap">' + esc(r.comment) + '</p>' : '') +
           (r.kind === 'order' ? '<p class="full muted">Сума замовлення: ' + money(r.total) + (r.on_request ? ' + ' + r.on_request + ' поз. за запитом' : '') + ' · оплата: ' + esc(r.payment) + (r.delivery ? ' · ' + esc(r.delivery) : '') + '</p>' : '')
           : '<label class="f"><span>Імʼя</span><input name="name" autocomplete="off"></label><label class="f"><span>Телефон</span><input name="phone" type="tel" inputmode="tel" placeholder="+380 97 123 45 67"></label>' +
@@ -643,6 +652,7 @@
           }).join('') + '</div>' +
           table('По джерелах (місце форми)', s.by_place, 'Джерело', function (k) { return esc(placeLabel(k)) + (/^#/.test(k) ? ' <small>' + esc(k) + '</small>' : ''); }, true) +
           table('По сторінках', s.by_page, 'Сторінка', function (k) { return '<a href="https://cas-develop.com' + esc(k) + '" target="_blank" rel="noopener">' + esc(k) + '</a>'; }) +
+          (s.by_ref && s.by_ref.length ? table('По сторінках-джерелах (звідки перейшли на сторінку з формою)', s.by_ref, 'Сторінка-джерело', function (k) { return '<a href="https://cas-develop.com' + esc(k) + '" target="_blank" rel="noopener">' + esc(k) + '</a>'; }) : '') +
           table('По формах', s.by_form, 'Форма', esc) + table('По мовах', s.by_lang, 'Мова', esc) +
           '<p class="muted"><small>«Конверсія» тут — частка заявок, що дійшли до КП / оплати у воронці CRM (відвідування сторінок рахує Clarity, не адмінка). ' +
           'Місце форми — з адреси, яку пише форма: «#prices», «#portfolio» тощо. Форма, мова й UTM — для заявок після застосування міграції 0009. Клік по рядку джерела відкриває ці заявки в CRM.</small></p>';

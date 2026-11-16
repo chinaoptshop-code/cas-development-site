@@ -194,6 +194,9 @@ await test('форма: порожній телефон не надсилаєт�
   apiStatus = 200;
   await p.click('#oBtn'); await p.waitForTimeout(1500);
   must(await okVis(), 'успіх не показано при 200');
+  const af = await p.evaluate(() => { const x = document.querySelector('#oOk .lf-after'), a = x && x.querySelector('a.lf-tg'); return x ? { t: x.textContent, h: a && a.getAttribute('href'), v: !!x.offsetParent, hh: a ? a.getBoundingClientRect().height : 0 } : null; });
+  must(af && af.v && /Пн–Пт 10:00–20:00/.test(af.t) && /терміново/.test(af.t), 'після успіху немає рядка «Відповідаємо Пн–Пт 10:00–20:00…»: ' + JSON.stringify(af));
+  must(af.h === 'https://t.me/+380978667755' && af.hh >= 44, 'кнопка Telegram після успіху: ' + JSON.stringify(af));
   const b = JSON.parse(posts.at(-1).body); must(/380671234567|0671234567/.test(b.phone), 'телефон не в заявці');
   must(b.service, 'немає service');
 });
@@ -408,6 +411,7 @@ await test('квіз → лід: form=quiz, source …#quiz, відповіді;
   const b = lastLead();
   must(b.form === 'quiz' && /#quiz$/.test(b.source) && /^Квіз:/.test(b.message), 'квіз: ' + b.form + ' | ' + b.source + ' | ' + b.message);
   must(await q.locator('.qz-ok').isVisible(), 'немає успіху квізу');
+  must(await q.locator('.qz-ok .lf-after a.lf-tg[href="https://t.me/+380978667755"]').isVisible(), 'у квізі після успіху немає години відповіді й кнопки Telegram');
   must(!/#quiz/.test(await p.getAttribute('#of', 'data-source')), 'source форми не відновлено після квізу');
 });
 await test('кейс → «Хочу так само» → лендинг: у заявці «Перед цим: /proekty/…»', '/proekty/monpark', 402, async p => {
@@ -417,8 +421,35 @@ await test('кейс → «Хочу так само» → лендинг: у з�
   await p.locator('#of').scrollIntoViewIfNeeded();
   const b = await submitOf(p);
   must(/Перед цим: \/proekty\/monpark/.test(b.message), 'немає сторінки-джерела в заявці: ' + b.message);
+  must(b.ref_path === '/proekty/monpark', 'сторінка-джерело не окремим полем ref_path: ' + b.ref_path);
   must(b.service && !/#/.test(b.source), 'service/source: ' + JSON.stringify(b));
 });
+// «Гід з цінами» (16.11.2026): не друга форма, а кнопка → єдина форма #zayavka з контекстом; після 2xx — «Завантажити гід»
+for (const [path, w, re] of [['/ru/kalkulyator-remonta', 402, /гид по ценам/], ['/vartist-remontu-kvartyry-kyiv', 1440, /гід з цінами/]]) await test('«Гід з цінами»: кнопка → #zayavka, контекст guide, без другої форми; 200 — посилання на PDF', path, w, async p => {
+  await p.evaluate(() => document.querySelector('.gd-slot').scrollIntoView({ block: 'center' })); await p.waitForTimeout(800);
+  must(await p.locator('form').evaluateAll(fs => fs.filter(f => f.offsetParent && f.id !== 'of' && !f.closest('header,.sch,.qz,dialog')).length) === 0, 'на сторінці друга форма');
+  must(!(await p.locator('.gd-slot form').count()), 'у гіді лишилась форма');
+  const go = p.locator('.gd-slot a.gd-go');
+  must(re.test((await go.textContent()).toLowerCase()), 'текст кнопки гіда: ' + await go.textContent());
+  must((await go.boundingBox()).height >= 44, 'кнопка гіда < 44 px');
+  await go.click(); await p.waitForTimeout(1200);
+  const y = await p.locator('#oPhone').evaluate(e => e.getBoundingClientRect().top);
+  must(y > -50 && y < 900, 'форма не у видимій зоні після кнопки гіда: ' + Math.round(y));
+  must(re.test((await p.inputValue('#oMsg')).toLowerCase()), 'коментар «Хочу гід…» не в формі');
+  const b = await submitOf(p);
+  must(b.form === 'guide' && /#guide$/.test(b.source) && b.service === 'Гід з цінами', 'контекст гіда: ' + JSON.stringify(b));
+  must(await p.locator('#oOk a.gd-dl[href*="/assets/guide/"]').isVisible(), 'після успіху немає «Завантажити гід»');
+});
+// каталог 3D-турів: лише пігулка «Звʼязатися» (як на решті сайту), без форми
+for (const path of ['/tury', '/en/tury', '/ar/tury']) await test('каталог турів: пігулка «Звʼязатися» з меню, форми немає', path, 402, async p => {
+  must(!(await p.locator('form').count()), 'на каталозі турів є форма');
+  const tg = p.locator('.mbar[data-one] .mb-tg');
+  must(await tg.isVisible(), 'немає пігулки «Звʼязатися»');
+  await tg.click(); await p.waitForTimeout(300);
+  must(await p.locator('.mbar .mb-menu a[href="tel:+380978667755"]').isVisible(), 'у меню немає «Подзвонити»');
+  must(/#zayavka$/.test(await p.locator('.mbar .mb-lead').getAttribute('href')), '«Залишити номер» не на #zayavka контактів');
+});
+await test('каталог турів на ПК: пігулки немає', '/tury', 1440, async p => { must(!(await p.locator('.mbar').isVisible()), 'пігулка на ПК'); });
 for (const [path, w] of [['/proekty/monpark', 1440], ['/tury/apartment-2025', 402], ['/en/tury/apartment-2025', 402], ['/ru/tury/apartment-2025', 1440]]) await test('сторінка без форми: «Заявка»/пігулка/CTA ведуть на #zayavka контактів, месенджери й tel: правильні', path, w, async p => {
   const r = await p.evaluate(() => {
     const hrefs = [...document.querySelectorAll('a[href]')].map(a => a.getAttribute('href'));

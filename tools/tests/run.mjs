@@ -1,4 +1,4 @@
-// Тести ролей і доступу CRM (migrations 0001–0010, functions/_roles.js). Запуск: node tools/tests/run.mjs
+// Тести ролей і доступу CRM (migrations 0001–0011, functions/_roles.js). Запуск: node tools/tests/run.mjs
 // Стенд — tools/tests/harness.mjs (node:sqlite замість D1, мок Telegram). Перевіряємо для кожної ролі, що вона бачить і
 // чого НЕ бачить (рядки й поля), заборону ескалації, деактивацію, session_version, аудит, CSRF і старі сценарії клієнта/заявок.
 import { addClient, bot, call, describe, eq, freshDB, it, login, makeEnv, ok, report } from './harness.mjs';
@@ -339,6 +339,64 @@ await it('/kabinet/team: працівники — так; клієнт — 403; 
   eq((await call(env, 'GET', '/kabinet/team', { cookie: ck.C1 })).status, 403);
   eq((await call(env, 'GET', '/kabinet', { cookie: ck.C1 })).status, 200);
 });
+
+describe('Сторінка-джерело заявки (orders.ref_path, migrations/0011): прийом, перевірка, CRM, CSV, ролі');
+{
+  const re = makeEnv(freshDB());
+  const rq = (sql, ...a) => re.DB.prepare(sql).bind(...a).first();
+  const o = await addClient(re, { id: 111, name: 'Власник' }), m = await addClient(re, { id: 222, name: 'Менеджер' });
+  const rc = { O: await login(re, o), M: await login(re, m) };
+  await call(re, 'GET', '/api/me', { cookie: rc.M });
+  let n = 0;
+  const lead = async ref => {
+    n++;
+    const r = await call(re, 'POST', '/api/leads', { body: { phone: '06700000' + String(10 + n), service: 'Ремонт', source: 'cas-develop.com/remont-kvartyr-kyiv', form: 'landing', ref_path: ref }, headers: { ip: '10.9.0.' + n } });
+    eq(r.status, 200, 'заявка прийнята');
+    return rq('SELECT id, ref_path, form FROM orders WHERE number = ?', r.data.number);
+  };
+  let A, B;
+  await it('шлях того самого сайту зберігається окремою колонкою', async () => {
+    A = await lead('/proekty/monpark'); eq(A.ref_path, '/proekty/monpark'); eq(A.form, 'landing');
+    B = await lead('/tury/apartment-2025'); eq(B.ref_path, '/tury/apartment-2025');
+    eq((await lead('/ru/blog/kak-sostavit-smetu-na-remont')).ref_path, '/ru/blog/kak-sostavit-smetu-na-remont');
+  });
+  await it('чужий домен, //host, схема, query/hash, розмітка, задовге, не рядок → null (заявка все одно зберігається)', async () => {
+    for (const bad of ['https://evil.example/x', '//evil.example/x', 'javascript:alert(1)', '/a?x=1', '/a#b', '/a b', '/<script>', '/a"b', '\\\\evil', '/' + 'x'.repeat(170), 'proekty', 123, { p: '/x' }, ''])
+      eq((await lead(bad)).ref_path, null, 'відхилено: ' + JSON.stringify(bad));
+    eq((await lead(undefined)).ref_path, null);
+  });
+  await it('CRM менеджера: поле ref_path, фільтр ?ref= (точно й за префіксом «/proekty/»), аналітика by_ref', async () => {
+    const all = await call(re, 'GET', '/api/admin/crm?kind=lead', { cookie: rc.M });
+    eq(all.status, 200); eq(all.data.rows.find(x => x.id === A.id).ref_path, '/proekty/monpark');
+    eq((await call(re, 'GET', '/api/admin/crm?ref=' + encodeURIComponent('/proekty/monpark'), { cookie: rc.M })).data.rows.map(x => x.id), [A.id]);
+    eq((await call(re, 'GET', '/api/admin/crm?ref=' + encodeURIComponent('/proekty/'), { cookie: rc.M })).data.rows.map(x => x.id), [A.id]);
+    eq((await call(re, 'GET', '/api/admin/crm?ref=' + encodeURIComponent('/proekty'), { cookie: rc.M })).data.rows.length, 0, 'без «/» у кінці — точний збіг');
+    eq((await call(re, 'GET', '/api/admin/crm?ref=' + encodeURIComponent('%'), { cookie: rc.M })).data.rows.length, 0, '% — не шаблон');
+    const st = await call(re, 'GET', '/api/admin/crm?stats=1', { cookie: rc.O });
+    ok(st.data.by_ref.some(g => g.key === '/tury/apartment-2025' && g.n === 1), 'by_ref у аналітиці');
+  });
+  await it('CSV: колонка «Сторінка-джерело»', async () => {
+    const c = await call(re, 'GET', '/api/admin/crm?format=csv&kind=lead', { cookie: rc.O });
+    eq(c.status, 200); ok(/;Сторінка-джерело;/.test(c.text.split('\r\n')[0]), 'заголовок'); ok(c.text.includes(';/proekty/monpark;'), 'значення');
+  });
+  await it('дизайнер (лише призначені заявки): ref_path не бачить, ?ref= ігнорується', async () => {
+    const s = await call(re, 'POST', '/api/admin/staff', { cookie: rc.O, body: { name: 'Дизайнерка', role: 'designer', email: 'des@example.com' } });
+    eq(s.status, 200);
+    rc.D = await login(re, await addClient(re, { provider: 'google', id: 'g-des', name: 'D', email: 'des@example.com' }));
+    eq((await call(re, 'PATCH', '/api/admin/crm', { cookie: rc.O, body: { id: A.id, assignee_staff_id: s.data.id } })).status, 200);
+    const r = await call(re, 'GET', '/api/admin/crm?ref=' + encodeURIComponent('/tury/apartment-2025'), { cookie: rc.D });
+    eq(r.status, 200); eq(r.data.rows.map(x => x.id), [A.id]); ok(!('ref_path' in r.data.rows[0]), 'без ref_path');
+  });
+  await it('база без міграції 0011: заявка з ref_path зберігається з form/lang (0009), без ref_path; до 0009 — як раніше', async () => {
+    for (const up of [10, 8]) {
+      const oe = makeEnv(freshDB(up));
+      const r = await call(oe, 'POST', '/api/leads', { body: { phone: '0501112299', form: 'landing', lang: 'uk', ref_path: '/proekty/monpark' } });
+      eq(r.status, 200, 'міграції до ' + up);
+      const row = await oe.DB.prepare('SELECT * FROM orders WHERE number = ?').bind(r.data.number).first();
+      ok(!('ref_path' in row)); if (up >= 9) eq(row.form, 'landing');
+    }
+  });
+}
 
 describe('Сумісність: база без міграції 0010');
 await it('адміни працюють як раніше (owner/manager без рядка staff), клієнт — як раніше', async () => {

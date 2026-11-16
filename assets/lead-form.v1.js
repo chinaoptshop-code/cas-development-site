@@ -4,7 +4,11 @@
    2) Швидка заявка в один рядок form.lq (телефон + кнопка; ті самі data-service/data-source/data-form), успіх — .lq-ok після форми.
    3) Місця <div class="lq-slot" data-form="quick-prices|quick-portfolio|quick-project|quick-blog-mid|…"> — компактне
       «Номер → передзвонимо» (form.lq) будує цей скрипт — ліниво, за ~1,5 екрана до місця; data-source = джерело сторінки + «#місце» (для CRM і аналітики).
-   4) Лід-магніт <div class="gd-slot" data-pdf="…"> (tools/guide/build.py) — «Гід з цінами»: телефон → після 2xx кнопка «Завантажити гід».
+   4) Лід-магніт <div class="gd-slot" data-pdf="…"> (tools/guide/build.py) — «Гід з цінами»: не друга форма, а кнопка «Отримати гід з цінами»
+      (.lq-go.gd-go) → єдина форма #zayavka з контекстом (data-form/source …#guide, коментар «Хочу гід з цінами»); після 2xx у #oOk — «Завантажити гід».
+   Після 2xx у кожному блоці успіху (#oOk, .lq-ok, .qz-ok) — рядок «Відповідаємо Пн–Пт 10:00–20:00. Якщо терміново — напишіть у Telegram» + кнопка
+   Telegram (Михайло 16.11.2026; тексти — AF нижче, їх пише tools/site/leadform.py sync_js з leadform.T[мова]['after'/'gd'/'gd_msg']).
+   Сторінка-джерело (попередня сторінка сайту) — окреме поле ref_path (CRM, migrations/0011_lead_ref.sql) і, як раніше, рядок «Перед цим: …» у коментарі.
    Розмітку й тексти ставить tools/site/leadform.py; стилі — /assets/site-chrome.v1.css («Легка заявка»);
    сторінки без розмітки leadform.py (кабінет, динамічні) скрипт дооформлює сам.
    Мова повідомлень — з <html lang>. Надсилаємо в /api/leads (CRM + Telegram) і в n8n; успіх — лише після 2xx хоча б від одного;
@@ -150,22 +154,48 @@
     var miss = function () { if (--left === 0) { clearTimeout(timer); fail(); } };
     var timer = setTimeout(fail, 12000);
     data.t_ms = Date.now() - T0;
-    var tr = trail(); if (tr && String(data.message || '').indexOf(tr) < 0) data.message = (data.message ? data.message + '\n' : '') + tr;
+    var rp = refPath(); if (rp) data.ref_path = rp;
+    var tr = rp ? 'Перед цим: ' + rp : ''; if (tr && String(data.message || '').indexOf(tr) < 0) data.message = (data.message ? data.message + '\n' : '') + tr; // рядок — для n8n і старих звітів
     var body = JSON.stringify(data);
     [API, HOOK].forEach(function (url) {
       fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, credentials: url === API ? 'same-origin' : 'omit' })
         .then(function (r) { if (r.ok) ok(); else miss(); }, miss);
     });
   }
-  // звідки прийшов відвідувач у межах сайту (кейс, тур, стаття → лендинг/контакти): менеджеру — контекст заявки без зайвих полів;
-  // лише той самий сайт і інша сторінка; підпис — українською (як NONAME)
-  function trail() {
+  // звідки прийшов відвідувач у межах сайту (кейс, тур, стаття → лендинг/контакти): лише той самий сайт і інша сторінка,
+  // лише шлях (без query/hash), ≤ 160 символів — сервер перевіряє так само (functions/api/leads.js refPath)
+  function refPath() {
     try {
       var r = document.referrer ? new URL(document.referrer) : null;
       if (!r || r.host !== location.host || r.pathname === location.pathname) return '';
-      return 'Перед цим: ' + decodeURIComponent(r.pathname).slice(0, 160);
+      return decodeURIComponent(r.pathname).slice(0, 160);
     } catch (x) { return ''; }
   }
+  /*af*/
+  var AF = {
+    uk: ["Відповідаємо Пн–Пт 10:00–20:00. Якщо терміново — напишіть у Telegram", "Отримати гід з цінами", "Хочу гід з цінами"],
+    ru: ["Отвечаем Пн–Пт 10:00–20:00. Если срочно — напишите в Telegram", "Получить гид по ценам", "Хочу гид по ценам"],
+    en: ["We reply Mon–Fri 10:00–20:00. If it is urgent, message us on Telegram", "Get the price guide", "I would like the price guide"],
+    es: ["Respondemos de lunes a viernes, 10:00–20:00. Si es urgente, escríbanos por Telegram", "Recibir la guía de precios", "Quiero la guía de precios"],
+    zh: ["我们的回复时间：周一至周五 10:00–20:00。如有急事，请通过 Telegram 联系我们", "获取价格指南", "我想要价格指南"],
+    pl: ["Odpowiadamy pn–pt 10:00–20:00. Jeśli to pilne — napisz na Telegramie", "Pobierz przewodnik po cenach", "Chcę przewodnik po cenach"],
+    de: ["Wir antworten Mo–Fr 10:00–20:00. Wenn es dringend ist, schreiben Sie uns auf Telegram", "Preisleitfaden erhalten", "Ich möchte den Preisleitfaden"],
+    fr: ["Nous répondons du lundi au vendredi, 10:00–20:00. En cas d’urgence, écrivez-nous sur Telegram", "Recevoir le guide des prix", "Je souhaite le guide des prix"],
+    ar: ["نرد من الاثنين إلى الجمعة 10:00–20:00. إذا كان الأمر عاجلًا، راسلنا على Telegram", "احصل على دليل الأسعار", "أريد دليل الأسعار"]
+  };
+  /*/af*/
+  var af = AF[lang] || AF.uk || ['', '', ''];
+  // після 2xx: години відповіді + кнопка Telegram (ті самі посилання, що у футері) — один раз у блоці успіху
+  function after(ok) {
+    if (!ok || !af[0] || ok.querySelector('.lf-after')) return;
+    var p = el('p', 'lf-after', af[0] + ' '), a = el('a', 'btn lf-tg');
+    a.href = MSG[0][1]; a.target = '_blank'; a.rel = 'noopener';
+    var i = el('img'); i.src = '/assets/brand/telegram.svg'; i.width = i.height = 20; i.alt = ''; i.decoding = 'async';
+    a.appendChild(i); a.appendChild(document.createTextNode('Telegram'));
+    a.addEventListener('click', function () { clarity('lead_msg', 'telegram', 'lead_msg_app'); });
+    p.appendChild(a); ok.appendChild(p);
+  }
+  window.casLeadAfter = after; // квіз (/assets/quiz.v1.js) — для свого .qz-ok
   // приховане поле-пастка: людина його не бачить і не заповнює, боти, що заповнюють усе, — так
   function trap(form) {
     if (form.querySelector('input[name="hp"]')) return;
@@ -281,40 +311,43 @@
   window.casLqSlots = function (root) { if (!form || !root) return; [].forEach.call(root.querySelectorAll('.lq-slot:not([data-built])'), function (s) { slots.push(s); build(s); }); };
 
   /* ---------- 0б. лід-магніт «Гід з цінами» (PDF): <div class="gd-slot" data-pdf="/assets/guide/…pdf?v=…"> ставить tools/guide/build.py.
-     Та сама швидка заявка (лише телефон, data-form="guide", source …#guide); після 2xx — кнопка «Завантажити гід».
-     Без поп-апів; блок будуємо ліниво, як і .lq-slot. */
+     Одна форма на сторінку (Михайло 16.11.2026): замість другої форми — кнопка «Отримати гід з цінами» (.lq-go.gd-go → #zayavka),
+     що переносить контекст у form#of (data-form="guide", data-service «Гід з цінами», source …#guide, коментар «Хочу гід з цінами»);
+     після 2xx у #oOk — кнопка «Завантажити гід». Без #of (styleguide) — та сама кнопка на «Заявку» з шапки. Блок будуємо ліниво. */
   var G = {
     uk: { h: 'Гід з цінами на ремонт і дизайн 2026', p: 'PDF: ставки «від» для Києва і Європи, що входить у ремонт від $550/м², пакети дизайну, будинок, етапи, схеми оплати й чекліст прийому ремонту.',
-          l: 'Залиште номер — і завантажте гід одразу', b: 'Отримати гід', ok: 'Готово. Гід можна завантажити:', dl: 'Завантажити гід', m: 'Менеджер також надішле його в Telegram/Viber.' },
+          ok: 'Гід можна завантажити:', dl: 'Завантажити гід' },
     ru: { h: 'Гид по ценам на ремонт и дизайн 2026', p: 'PDF: ставки «от» для Киева и Европы, что входит в ремонт от $550/м², пакеты дизайна, дом, этапы, схемы оплаты и чек-лист приёмки ремонта.',
-          l: 'Оставьте номер — и скачайте гид сразу', b: 'Получить гид', ok: 'Готово. Гид можно скачать:', dl: 'Скачать гид', m: 'Менеджер также отправит его в Telegram/Viber.' }
+          ok: 'Гид можно скачать:', dl: 'Скачать гид' }
   };
-  var gslots = [].slice.call(document.querySelectorAll('.gd-slot:not([data-built])'));
+  var gslots = [].slice.call(document.querySelectorAll('.gd-slot:not([data-built])')), gpdf = '';
   function buildGuide(slot) {
     if (slot.hasAttribute('data-built')) return;
     slot.setAttribute('data-built', '1');
-    var g = G[lang] || G.uk, id = 'gd' + gslots.indexOf(slot), pdf = slot.getAttribute('data-pdf') || '';
+    var g = G[lang] || G.uk, pdf = slot.getAttribute('data-pdf') || '';
     var box = el('div', 'gd');
     box.appendChild(el('p', 'gd-h', g.h)); box.appendChild(el('p', 'gd-p', g.p));
-    var f = el('form', 'lq'); f.noValidate = true;
-    f.setAttribute('data-form', 'guide'); f.setAttribute('data-service', 'Гід з цінами');
-    f.setAttribute('data-source', srcBase.replace(/#.*$/, '') + '#guide');
-    var lb = el('label', 'lq-l', g.l); lb.htmlFor = id + 'P';
-    var row = el('div', 'lq-r'), inp = el('input');
-    inp.id = id + 'P'; inp.type = 'tel'; inp.setAttribute('inputmode', 'tel'); inp.setAttribute('autocomplete', 'tel');
-    inp.placeholder = '+380 97 123 45 67'; inp.setAttribute('aria-describedby', id + 'E');
-    var b = el('button', 'lq-b', g.b); b.type = 'submit';
-    row.appendChild(inp); row.appendChild(b);
-    var er = el('div', 'lq-e'); er.id = id + 'E'; er.setAttribute('role', 'alert');
-    f.appendChild(lb); f.appendChild(row); f.appendChild(er);
-    var ok = el('div', 'lq-ok gd-ok'); ok.setAttribute('role', 'status'); ok.setAttribute('tabindex', '-1'); ok.hidden = true;
-    ok.appendChild(el('span', '', g.ok + ' '));
-    var a = el('a', 'btn main gd-dl', g.dl); a.href = pdf; a.setAttribute('download', ''); a.target = '_blank'; a.rel = 'noopener';
-    a.addEventListener('click', function () { clarity('guide_download', lang, 'guide_lang'); });
-    ok.appendChild(a); ok.appendChild(el('p', 'gd-m', g.m));
-    box.appendChild(f); box.appendChild(ok);
+    var a = el('a', 'btn main lq-go gd-go', af[1]); a.setAttribute('data-form', 'guide');
+    var cta = document.querySelector('a.sch-cta');
+    a.href = form ? '#zayavka' : (cta ? cta.getAttribute('href') : '#zayavka');
+    if (form) a.addEventListener('click', function () {
+      gpdf = pdf;
+      form.setAttribute('data-service', 'Гід з цінами'); form.setAttribute('data-form', 'guide');
+      form.setAttribute('data-source', srcBase.replace(/#.*$/, '') + '#guide');
+      var m = $('oMsg');
+      if (m) { if (!m.value || m.value === af[2]) m.value = af[2]; var det = m.closest('details'); if (det) det.open = true; }
+      clarity('guide_go', lang, 'guide_lang');
+    });
+    box.appendChild(a);
     slot.appendChild(box);
-    wire(f);
+  }
+  // після 2xx заявки з контекстом гіда — посилання на PDF у блоці успіху форми
+  function guideOk(ok) {
+    if (!ok || !gpdf || form.dataset.form !== 'guide' || ok.querySelector('.gd-dl')) return;
+    var g = G[lang] || G.uk, p = el('p', 'gd-ok', g.ok + ' ');
+    var a = el('a', 'btn main gd-dl', g.dl); a.href = gpdf; a.setAttribute('download', ''); a.target = '_blank'; a.rel = 'noopener';
+    a.addEventListener('click', function () { clarity('guide_download', lang, 'guide_lang'); });
+    p.appendChild(a); ok.appendChild(p);
   }
   if (gslots.length) {
     if ('IntersectionObserver' in window) {
@@ -376,7 +409,7 @@
       post(data, function () {
         busy(btn, false);
         form.style.display = 'none';
-        var ok = $('oOk'); if (ok) { ok.style.display = 'block'; ok.classList.add('lf-ok-in'); focusEl(ok); }
+        var ok = $('oOk'); if (ok) { guideOk(ok); after(ok); ok.style.display = 'block'; ok.classList.add('lf-ok-in'); focusEl(ok); }
       }, function () {
         busy(btn, false, t.again);
         if (err) err.textContent = t.fail;
@@ -407,7 +440,7 @@
         busy(btn, false, label);
         var ok = f.nextElementSibling && f.nextElementSibling.classList.contains('lq-ok') ? f.nextElementSibling : null;
         if (!ok) { ok = el('div', 'lq-ok', t.ok); ok.setAttribute('role', 'status'); f.parentNode.insertBefore(ok, f.nextSibling); }
-        ok.setAttribute('tabindex', '-1'); ok.hidden = false; ok.style.display = 'block'; ok.classList.add('lf-ok-in');
+        after(ok); ok.setAttribute('tabindex', '-1'); ok.hidden = false; ok.style.display = 'block'; ok.classList.add('lf-ok-in');
         f.style.display = 'none';
         focusEl(ok);
       }, function () {

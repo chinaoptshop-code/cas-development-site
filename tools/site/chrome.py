@@ -591,6 +591,37 @@ VIBER = 'viber://chat?number=%2B380978667755'
 MB_LEAD_RX = re.compile(r'<style id="mb-lead">.*?</style>|<a class="mb-(?:lead|vb)"[^>]*>.*?</a>\n?|<button type="button" class="mb-tg"[^>]*>.*?</button>\n?|<div class="mb-menu"[^>]*>\n?|</div><!--/mb-menu-->\n?', re.S)
 
 
+# Базова панель .mbar (стилі m-fix + посилання) для сторінок, що будуються без неї (каталог 3D-турів /tury і /<мова>/tury,
+# Михайло 16.11.2026: лише пігулка «Звʼязатися», без форми). mbar_lead() перетворює її на пігулку з меню, як на решті сайту.
+MBAR_CSS = ('<!--m-fix--><style id="m-fix">\n.mbar{display:none}\n@media(max-width:767px){\n'
+            'body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}\n'
+            '.mbar{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;top:auto;height:auto;width:auto;z-index:9990;'
+            'padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(14,13,12,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);'
+            'border-top:1px solid rgba(191,145,72,.25)}\n'
+            '.mbar a{display:flex;align-items:center;justify-content:center;gap:7px;min-height:46px;border-radius:12px;'
+            'font:600 var(--fs-small)/1 "Manrope","Manrope Fallback",system-ui,sans-serif;text-decoration:none;color:#f3eee6;border:1px solid rgba(191,145,72,.35)}\n'
+            '.mbar a.mb-call{background:#bf9148;color:#14120f;border-color:#bf9148}\n.mbar svg{width:18px;height:18px;flex:none}\n.mbar img{width:32px;height:32px;flex:none}\n}\n</style>')
+_PHONE_SVG = ('<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 '
+              '.6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>')
+
+
+def mbar_add(s, lang):
+    """Сторінка без панелі .mbar → базова панель (стилі в <head>, посилання перед </body>); далі mbar_lead(). Ідемпотентно."""
+    if '<div class="mbar"' in s:
+        return s
+    import leadform
+    c = leadform._call(lang)
+    call = html.escape(c[0] if c else 'Подзвонити')
+    img = lambda n: f'<img src="/assets/brand/{n}.svg" width="32" height="32" alt="" loading="lazy" decoding="async">'
+    bar = (f'<!--m-fix--><div class="mbar">\n<a class="mb-call" href="tel:+380978667755">{_PHONE_SVG}{call}</a>\n'
+           f'<a href="https://t.me/+380978667755" target="_blank" rel="noopener">{img("telegram")}Telegram</a>\n'
+           f'<a href="https://wa.me/380978667755" target="_blank" rel="noopener">{img("whatsapp")}WhatsApp</a>\n</div>\n')
+    if 'id="m-fix"' not in s:
+        s = s.replace('</head>', MBAR_CSS + '\n</head>', 1)
+    k = s.rfind('</body>')
+    return s[:k] + bar + s[k:] if k >= 0 else s
+
+
 def mbar_lead(s, lang, rel=''):
     """Панель .mbar → кнопка «Зв'язатися» + меню (ідемпотентно)."""
     import leadform  # тексти легкої заявки (tools/site/leadform.py)
@@ -949,6 +980,8 @@ def apply(s, rel):
     s = re.sub(r'(<style[^>]*>)(.*?)</style>', _st, s, flags=re.S)
     s = fix_js(s)
     s = re.sub(r'(<style[^>]*>)(.*?)</style>', lambda m: m.group(1) + _nocursor(m.group(2)) + '</style>', s, flags=re.S)
+    if re.match(r'(?:[a-z]{2}/)?tury\.html$', rel):  # каталог 3D-турів: лише пігулка «Звʼязатися», без форми (Михайло 16.11.2026)
+        s = mbar_add(s, lang)
     s = mbar_logos(s)
     s = mbar_lead(s, lang, rel)
     s = viewport(s)

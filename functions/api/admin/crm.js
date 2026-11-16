@@ -1,8 +1,9 @@
 // CRM: замовлення Оздоби й заявки студії (orders.kind = order | lead) в одній таблиці. Права — functions/_roles.js:
 //   рядки: leads.view_all — усі заявки, leads.view_assigned — лише де assignee_staff_id = я; orders.view — замовлення Оздоби;
 //   поля: без finance.view — без сум/оплати, без clients.contacts — без телефону/пошти (shapeOrder).
-// GET  ?kind=&status=&q=&assignee=&staff=<id|none>&city=&min=&max=&due=1&overdue=1&place=&from=&to=&format=csv — список
-//   (CSV — право export; place — місце форми, див. placeOf; from / to — дати YYYY-MM-DD за Києвом, включно)
+// GET  ?kind=&status=&q=&assignee=&staff=<id|none>&city=&min=&max=&due=1&overdue=1&place=&ref=&from=&to=&format=csv — список
+//   (CSV — право export; place — місце форми, див. placeOf; from / to — дати YYYY-MM-DD за Києвом, включно;
+//   ref — сторінка-джерело orders.ref_path, migrations/0011: поле, фільтр і колонка CSV — лише з leads.view_all, тобто власник і менеджер)
 // GET  ?stats=1&days=7|30 — аналітика заявок (leads.view_all)
 // GET  ?events=<id> — історія статусів (лише видимого рядка)
 // POST {name, phone, email, service, source, comment, city, amount, currency, assignee_staff_id, next_contact} — нова заявка вручну (leads.edit)
@@ -27,7 +28,7 @@ const QUOTE = new Set(['quote_sent', 'contract', 'project', 'handover', 'warrant
 const PAID = new Set(['contract', 'project', 'handover', 'warranty', 'paid', 'production', 'shipping', 'delivered']);
 const CLOSED_SQL = CLOSED.map(s => `'${s}'`).join(', ');
 
-function where(p, args) {
+function where(p, args, x) {
   let sql = '';
   if (p('kind') === 'order' || p('kind') === 'lead') { sql += ' AND o.kind = ?'; args.push(p('kind')); }
   const pl = p('place');
@@ -35,6 +36,10 @@ function where(p, args) {
   else if (pl === 'manual') sql += " AND o.kind = 'lead' AND COALESCE(o.source, '') NOT LIKE '%cas-develop.com%' AND COALESCE(o.source, '') NOT LIKE '%.pages.dev%'";
   else if (pl === 'form') sql += ` AND o.kind = 'lead' AND ${SITE} AND o.source NOT LIKE '%#%'`;
   else if (/^#[\w-]{1,40}$/.test(pl)) { sql += ' AND o.source LIKE ?'; args.push('%' + pl); }
+  const ref = p('ref');
+  if (ref && x && x.can('leads.view_all')) { // точний шлях або початок («/proekty/» — усі кейси); LIKE-символи екрануємо
+    sql += " AND o.ref_path LIKE ? ESCAPE '\\'"; args.push(ref.slice(0, 160).replace(/[\\%_]/g, c => '\\' + c) + (ref.endsWith('/') ? '%' : ''));
+  }
   const from = date(p('from')), to = date(p('to'));
   if (from) { sql += ' AND o.created_at >= ?'; args.push(sqlTime(kyivMidnight(from))); }
   if (to) { sql += ' AND o.created_at < ?'; args.push(sqlTime(new Date(kyivMidnight(to).getTime() + 86400000))); }
@@ -71,7 +76,7 @@ async function stats(env, days) {
     reaction: { n: r.length, avg: r.length ? Math.round(r.reduce((s, x) => s + x, 0) / r.length) : null,
       within: r.filter(x => x <= SLA_MIN).length, sla: SLA_MIN },
     funnel: group(() => 'all')[0] || null,
-    by_place: group(placeOf), by_page: group(pageOf, 40), by_form: group(o => o.form || null, 20), by_lang: group(o => o.lang || null, 12),
+    by_place: group(placeOf), by_page: group(pageOf, 40), by_ref: group(o => o.ref_path || null, 40), by_form: group(o => o.form || null, 20), by_lang: group(o => o.lang || null, 12),
     by_day: days_.map(d => ({ date: d, n: perDay[d] })),
   };
 }
@@ -79,7 +84,7 @@ async function stats(env, days) {
 function csv(rows) {
   const cols = [['number', 'Номер'], ['kind', 'Тип'], ['created_at', 'Створено'], ['status', 'Статус'], ['name', 'Клієнт'], ['phone', 'Телефон'],
     ['email', 'Email'], ['service', 'Послуга / товари'], ['amount', 'Сума'], ['currency', 'Валюта'], ['assignee', 'Відповідальний'],
-    ['next_contact', 'Наступний контакт'], ['reaction_min', 'Реакція, хв'], ['city', 'Місто / область'], ['source', 'Джерело'], ['place', 'Місце форми'], ['form', 'Форма'], ['lang', 'Мова'], ['utm', 'UTM'], ['taken_at', 'Взято в роботу'], ['crm_note', 'Нотатки'], ['comment', 'Коментар клієнта'], ['payment', 'Оплата'], ['delivery', 'Доставка']];
+    ['next_contact', 'Наступний контакт'], ['reaction_min', 'Реакція, хв'], ['city', 'Місто / область'], ['source', 'Джерело'], ['place', 'Місце форми'], ['ref_path', 'Сторінка-джерело'], ['form', 'Форма'], ['lang', 'Мова'], ['utm', 'UTM'], ['taken_at', 'Взято в роботу'], ['crm_note', 'Нотатки'], ['comment', 'Коментар клієнта'], ['payment', 'Оплата'], ['delivery', 'Доставка']];
   // CSV-інʼєкція: текст з публічної форми, що починається з = + - @ (або табуляції), Excel/Таблиці виконали б як формулу —
   // додаємо апостроф (числа на кшталт суми лишаються числами)
   const cell = v => {
@@ -125,7 +130,7 @@ export async function onRequestGet({ request, env }) {
   if (p('format') === 'csv' && !x.can('export')) return bad('Немає права на експорт', 403);
   if ((p('from') && !date(p('from'))) || (p('to') && !date(p('to')))) return bad('Дата — РРРР-ММ-ДД');
   const args = [];
-  let sql = 'SELECT o.*, c.username, c.provider, c.city AS client_city FROM orders o LEFT JOIN clients c ON c.id = o.client_id WHERE ' + orderScope(x, args) + where(p, args);
+  let sql = 'SELECT o.*, c.username, c.provider, c.city AS client_city FROM orders o LEFT JOIN clients c ON c.id = o.client_id WHERE ' + orderScope(x, args) + where(p, args, x);
   if (p('status') && STATUSES[p('status')]) { sql += ' AND o.status = ?'; args.push(p('status')); }
   if (p('status') === 'open') sql += ` AND o.status NOT IN (${CLOSED_SQL})`;
   if (p('assignee')) { sql += ' AND o.assignee = ?'; args.push(p('assignee')); }
@@ -155,6 +160,7 @@ export async function onRequestGet({ request, env }) {
   const rows = results.map(o => shapeOrder({ ...o, items: JSON.parse(o.items || '[]'), place: placeOf(o), page: pageOf(o),
     assignee_name: o.assignee_staff_id && S.get(o.assignee_staff_id) ? S.get(o.assignee_staff_id).name : null,
     status_label: statusLabel(o.status, o.kind) }, x));
+  if (!x.can('leads.view_all')) for (const r of rows) delete r.ref_path; // сторінка-джерело — власнику й менеджеру
   if (p('format') === 'csv') {
     await audit(env, request, x, 'crm.export', 'orders', null, null, { rows: rows.length, query: u.search.slice(0, 400) });
     return new Response(csv(rows), { headers: {
