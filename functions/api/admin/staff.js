@@ -5,6 +5,7 @@
 //                  з tg / email / phone: перший вхід привʼязує його автоматично (functions/_roles.js findStaff).
 // PATCH {id, name?, role?, active?, note?, tg?, email?, phone?, logout?: true} — змінити / деактивувати / «вийти на всіх пристроях».
 // Заборонено: призначати роль owner, змінювати власника, змінювати самого себе (ескалація) — 403. Усе — в audit_log.
+// Зміна tg/email/phone: хоча б один контакт (422), не чужий (409); привʼязаний акаунт відвʼязується, його сесії анулюються.
 import { bad, bumpSession, json, normalizePhone, readJSON, str } from '../../_lib.js';
 import { ASSIGNABLE, PERMS, ROLES, audit, need, noTable } from '../../_roles.js';
 
@@ -86,15 +87,30 @@ export async function onRequestPatch({ request, env }) {
     phone: has(d, 'phone') ? phoneOk(d.phone) : s.phone,
   };
   if (n.tg_id === undefined || n.email === undefined || n.phone === undefined) return bad('Некоректний Telegram id, пошта або телефон', 422);
+  // контакти для входу (16.11): хоча б один; нові значення — не чужі (як у POST); змінили — старий акаунт відвʼязуємо,
+  // при наступному вході працівника привʼяже findStaff за актуальними контактами
+  const same = (a, b) => String(a ?? '') === String(b ?? '');
+  const contactChanged = !same(n.tg_id, s.tg_id) || !same(n.email, s.email) || !same(n.phone, s.phone);
+  if (contactChanged) {
+    if (!n.tg_id && !n.email && !n.phone) return bad('Вкажіть Telegram id, пошту Google або телефон — за ним працівник увійде', 422);
+    const tg = same(n.tg_id, s.tg_id) ? null : n.tg_id, email = same(n.email, s.email) ? null : n.email, phone = same(n.phone, s.phone) ? null : n.phone;
+    const dup = await env.DB.prepare(`SELECT s.id, s.name FROM staff s LEFT JOIN clients c ON c.id = s.client_id
+        WHERE s.id <> ?4 AND ((?1 IS NOT NULL AND (s.tg_id = ?1 OR (c.provider = 'telegram' AND c.provider_id = ?1) OR c.tg_id = ?1))
+           OR (?2 IS NOT NULL AND (s.email = ?2 OR lower(c.email) = ?2)) OR (?3 IS NOT NULL AND (s.phone = ?3 OR c.phone = ?3))) LIMIT 1`).bind(tg, email, phone, s.id).first();
+    if (dup) return bad(`Такий контакт уже має працівник: ${dup.name}`, 409);
+  }
+  const unlink = !!(s.client_id && contactChanged);
   await env.DB.prepare(`UPDATE staff SET name = ?, role = ?, active = ?, note = ?, tg_id = ?, email = ?, phone = ?, updated_at = datetime('now'),
+      client_id = CASE WHEN ? THEN NULL ELSE client_id END,
       deactivated_at = CASE WHEN ? = 0 THEN COALESCE(deactivated_at, datetime('now')) ELSE NULL END WHERE id = ?`)
-    .bind(n.name, n.role, n.active, n.note, n.tg_id, n.email, n.phone, n.active, s.id).run();
-  // деактивація, зміна ролі або «вийти на всіх пристроях» — усі сесії працівника недійсні негайно
-  const kill = s.client_id && ((s.active && !n.active) || n.role !== s.role || d.logout === true);
+    .bind(n.name, n.role, n.active, n.note, n.tg_id, n.email, n.phone, unlink ? 1 : 0, n.active, s.id).run();
+  // деактивація, зміна ролі, контактів для входу або «вийти на всіх пристроях» — усі сесії працівника недійсні негайно
+  const kill = s.client_id && ((s.active && !n.active) || n.role !== s.role || unlink || d.logout === true);
   if (kill) await bumpSession(env, s.client_id);
   const before = {}, after = {};
   for (const k of Object.keys(n)) if (String(n[k] ?? '') !== String(s[k] ?? '')) { before[k] = s[k]; after[k] = n[k]; }
   if (d.logout === true) after.logout = true;
+  if (unlink) after.unlinked_account = s.client_id;
   const action = s.active && !n.active ? 'staff.deactivate' : !s.active && n.active ? 'staff.activate' : n.role !== s.role ? 'staff.role' : d.logout ? 'staff.logout' : 'staff.update';
   await audit(env, request, x, action, 'staff', s.id, before, after);
   return json({ ok: true, sessions_revoked: !!kill });

@@ -157,6 +157,7 @@
             var was = { name: s.name || '', tg: s.tg_id ? String(s.tg_id) : '', email: s.email || '', phone: s.phone || '', note: s.note || '' }, ch = {};
             Object.keys(b).forEach(function (k) { if (b[k] !== was[k]) ch[k] = b[k]; });
             if (!Object.keys(ch).length) { row.remove(); return; }
+            if (s.linked && ('tg' in ch || 'email' in ch || 'phone' in ch) && !confirm('Змінено контакт для входу: акаунт «' + (s.account_name || s.name || '') + '» буде відвʼязано, сесії завершено. Працівник увійде за новими контактами. Продовжити?')) return;
             $('button[type=submit]', fe).disabled = true;
             patch(id, ch, 'Зміни збережено');
           };

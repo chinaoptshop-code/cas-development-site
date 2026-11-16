@@ -90,6 +90,34 @@ await it('менеджер бачить список працівників ли
   const o = await call(env, 'GET', '/api/admin/staff', { cookie: ck.OWNER });
   ok(o.data.staff.some(s => s.tg_id === '333')); ok(o.data.roles.foreman.perms.includes('reports.upload'));
 });
+await it('редагування працівника: лише власник, перевірка контактів, дубль 409, аудит', async () => {
+  eq((await call(env, 'PATCH', '/api/admin/staff', { cookie: ck.MGR, body: { id: accId, name: 'Злам' } })).status, 403);
+  eq((await call(env, 'PATCH', '/api/admin/staff', { cookie: ck.OWNER, body: { id: accId, tg: 'abc' } })).status, 422);
+  eq((await call(env, 'PATCH', '/api/admin/staff', { cookie: ck.OWNER, body: { id: accId, email: 'not-mail' } })).status, 422);
+  eq((await call(env, 'PATCH', '/api/admin/staff', { cookie: ck.OWNER, body: { id: accId, phone: '' } })).status, 422, 'без жодного контакту');
+  eq((await call(env, 'PATCH', '/api/admin/staff', { cookie: ck.OWNER, body: { id: designerId, tg: '333' } })).status, 409, 'Telegram id прораба');
+  eq((await call(env, 'PATCH', '/api/admin/staff', { cookie: ck.OWNER, body: { id: designerId, phone: '+380971234567' } })).status, 409, 'телефон бухгалтера');
+  const r = await call(env, 'PATCH', '/api/admin/staff', { cookie: ck.OWNER, body: { id: accId, name: 'Ірина Б.', note: 'фінанси' } });
+  eq(r.status, 200); eq(r.data.sessions_revoked, false, 'імʼя й примітка — сесії лишаються');
+  eq((await q1('SELECT name, note FROM staff WHERE id = ?', accId)).name, 'Ірина Б.');
+  eq((await call(env, 'GET', '/api/me', { cookie: ck.ACC })).data.client.staff.role, 'accountant');
+  const a = await q1("SELECT before, after FROM audit_log WHERE action = 'staff.update' AND entity_id = ? ORDER BY id DESC LIMIT 1", String(accId));
+  ok(a && JSON.parse(a.before).name === 'Ірина' && JSON.parse(a.after).note === 'фінанси');
+});
+await it('зміна контакту для входу відвʼязує старий акаунт і анулює його сесії', async () => {
+  const ACC = (await q1('SELECT client_id FROM staff WHERE id = ?', accId)).client_id;
+  const r = await call(env, 'PATCH', '/api/admin/staff', { cookie: ck.OWNER, body: { id: accId, phone: '097 000 11 22' } });
+  eq(r.status, 200); eq(r.data.sessions_revoked, true);
+  eq((await q1('SELECT client_id, phone FROM staff WHERE id = ?', accId)).client_id, null);
+  eq((await call(env, 'GET', '/api/me', { cookie: ck.ACC })).data.client, null, 'стара cookie недійсна');
+  ck.ACC = await login(env, ACC);
+  eq((await call(env, 'GET', '/api/me', { cookie: ck.ACC })).data.client.staff, null, 'старий номер — уже не працівник');
+  eq((await call(env, 'GET', '/api/admin/crm', { cookie: ck.ACC })).status, 403);
+  eq((await call(env, 'PATCH', '/api/admin/staff', { cookie: ck.OWNER, body: { id: accId, phone: '097 123 45 67' } })).status, 200);
+  ck.ACC = await login(env, ACC);
+  eq((await call(env, 'GET', '/api/me', { cookie: ck.ACC })).data.client.staff.role, 'accountant', 'повернули номер — привʼязано знову');
+  eq((await q1('SELECT client_id FROM staff WHERE id = ?', accId)).client_id, ACC);
+});
 
 // ===== дані =====
 let P1, P2, L1, L2, ORD;
