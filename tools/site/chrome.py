@@ -224,7 +224,7 @@ T = {
         nav=[('/services', 'Послуги'), ('/portfolio', 'Портфоліо'), ('/ozdoba', 'Оздоба'), ('/blog', 'Блог'),
              ('/about', 'Про студію'), ('/contact', 'Контакти')],
         nav_label='Головне меню', menu='Меню', skip='Перейти до змісту', menu_open='Відкрити меню', menu_close='Закрити меню', lang_label='Мова сайту',
-        cta='Заявка', cta_href='/contact#cForm', home_label='CAS Development — на головну', kab='Кабінет', kab_full='Кабінет клієнта',
+        cta='Заявка', cta_href='/contact#zayavka', home_label='CAS Development — на головну', kab='Кабінет', kab_full='Кабінет клієнта',
         tagline='Студія дизайну інтерʼєру, ремонту й будівництва під ключ. Київ, з 2016 року.',
         contacts='Контакти', address='вул. Антоновича, 44, Київ', msg='Месенджери', lang='Мова',
         privacy=('/konfidentsiinist', 'Політика конфіденційності'), terms=('/umovy-korystuvannia', 'Умови'), copy='© 2026 CAS Development · Київ, Україна',

@@ -150,11 +150,21 @@
     var miss = function () { if (--left === 0) { clearTimeout(timer); fail(); } };
     var timer = setTimeout(fail, 12000);
     data.t_ms = Date.now() - T0;
+    var tr = trail(); if (tr && String(data.message || '').indexOf(tr) < 0) data.message = (data.message ? data.message + '\n' : '') + tr;
     var body = JSON.stringify(data);
     [API, HOOK].forEach(function (url) {
       fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, credentials: url === API ? 'same-origin' : 'omit' })
         .then(function (r) { if (r.ok) ok(); else miss(); }, miss);
     });
+  }
+  // звідки прийшов відвідувач у межах сайту (кейс, тур, стаття → лендинг/контакти): менеджеру — контекст заявки без зайвих полів;
+  // лише той самий сайт і інша сторінка; підпис — українською (як NONAME)
+  function trail() {
+    try {
+      var r = document.referrer ? new URL(document.referrer) : null;
+      if (!r || r.host !== location.host || r.pathname === location.pathname) return '';
+      return 'Перед цим: ' + decodeURIComponent(r.pathname).slice(0, 160);
+    } catch (x) { return ''; }
   }
   // приховане поле-пастка: людина його не бачить і не заповнює, боти, що заповнюють усе, — так
   function trap(form) {
@@ -218,6 +228,7 @@
     a.addEventListener('click', function () {
       var svc = slot.getAttribute('data-service');
       if (svc) form.setAttribute('data-service', svc);
+      form.setAttribute('data-form', name); form.setAttribute('data-source', srcBase.replace(/#.*$/, '') + '#' + name.replace(/^quick-/, ''));
       var m = $('oMsg');
       if (sc && m) {
         var cb = sc.querySelector('.bz-cb'), cap = sc.querySelector('.bz-cap'), act = sc.querySelector('.bz-mats [aria-pressed="true"]');
