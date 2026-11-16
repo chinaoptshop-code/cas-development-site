@@ -1,0 +1,222 @@
+{
+ "slug": "premium-renovation",
+ "lang": "en",
+ "service": "Premium renovation",
+ "title": "Premium renovation in Kyiv — luxury renovation from $550/m²",
+ "description": "Luxury renovation of apartments, penthouses and houses in Kyiv to a design project: MEP, supervision, photo reports, estimate ±5%, 12-month warranty.",
+ "h1": "Premium renovation in Kyiv",
+ "price": "from $550 / m² — works and rough materials",
+ "lead": "Complex details, expensive materials with no room for error and engineering on the scale of a small house — we carry out luxury renovations with a 12-month warranty. We renovate apartments in boutique residences, penthouses and private houses to a design project, with technical supervision, designer supervision and one accountable manager.",
+ "facts": [
+  [
+   "from $550",
+   "per m², works and rough materials"
+  ],
+  [
+   "±5%",
+   "estimate, when CAS renovates"
+  ],
+  [
+   "12 mo.",
+   "warranty on works"
+  ],
+  [
+   "1–2 weeks",
+   "photo report frequency"
+  ]
+ ],
+ "cards": [
+  [
+   "Properties",
+   [
+    "apartments in boutique and premium residences",
+    "penthouses and duplexes",
+    "private houses and villas",
+    "apartments in historic buildings"
+   ]
+  ],
+  [
+   "Complex works",
+   [
+    "natural stone and large-format slabs",
+    "concealed doors and shadow gaps",
+    "ceilings with concealed lighting",
+    "custom joinery"
+   ]
+  ],
+  [
+   "Engineering",
+   [
+    "ventilation with heat recovery",
+    "multiple air-conditioning zones",
+    "smart home and lighting scenes",
+    "water treatment and underfloor heating"
+   ]
+  ],
+  [
+   "Control",
+   [
+    "technical supervision and inspection of concealed works",
+    "designer supervision",
+    "photo reports every 1–2 weeks",
+    "certificates for each stage"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "What premium renovation means",
+   [
+    "In a premium renovation the cost of a mistake is high: a natural stone slab cannot be redone, concealed doors need perfect wall geometry, and lighting in niches has to be planned at the rough-works stage. That is why we work only from working drawings and accept every concealed stage — electrics, plumbing, waterproofing — before it is closed up.",
+    "Engineering in a large apartment or house is a project of its own: ventilation with heat recovery, several air-conditioning zones, smart home, water treatment. We design these systems together with the interior so that service cupboards and access panels do not end up in the middle of the living room."
+   ]
+  ],
+  [
+   "Renovation in boutique residences and central Kyiv",
+   [
+    "In boutique buildings the renovation is approved by the management company, works follow the building's schedule and materials are delivered under its rules. We take care of these approvals."
+   ]
+  ],
+  [
+   "How much a luxury renovation costs",
+   [
+    "Turnkey renovation from $550 per m² covers works and rough materials. Finishing materials, furniture and appliances are estimated separately, because in the premium segment they define the total. For a 150 m² apartment the base calculation is 150 m² × $550; a design project costs from $30 per m² (minimum $2,500).",
+    "If CAS carries out the renovation to our design, the total stays within ±5% of the approved estimate. The exact figure comes from the estimate after a site survey; the survey is paid, its cost depends on the property."
+   ]
+  ]
+ ],
+ "steps": [
+  [
+   "Inspection and survey",
+   "We inspect the property and check the building's renovation rules."
+  ],
+  [
+   "Design project",
+   "Or we review your design and refine the details."
+  ],
+  [
+   "Estimate and contract",
+   "Price, timeline and payment stages before work starts."
+  ],
+  [
+   "Rough works",
+   "Engineering and concealed works, each stage accepted."
+  ],
+  [
+   "Finishing",
+   "Stone, joinery, lighting — to the drawings."
+  ],
+  [
+   "Procurement and handover",
+   "Furniture, styling, certificate and 12-month warranty."
+  ]
+ ],
+ "faq": [
+  [
+   "How much does a premium renovation cost?",
+   "From $550 per m² — works and rough materials. Finishing materials, furniture and appliances are estimated separately. A design project costs from $30 per m² (minimum $2,500)."
+  ],
+  [
+   "How is luxury renovation different from a standard one?",
+   "In the complexity of details and precision: natural stone, concealed doors, shadow gaps, built-in lighting, complex engineering. Such a renovation is carried out only from working drawings with technical supervision."
+  ],
+  [
+   "Can you renovate to another designer's project?",
+   "Yes. We review the drawings, prepare an estimate and deliver; if needed, we coordinate decisions with the author of the design."
+  ],
+  [
+   "Who handles approvals with the building's management company?",
+   "We do. We approve the works, schedule and material deliveries under the building's rules."
+  ],
+  [
+   "How can I follow the renovation from abroad?",
+   "We send photo reports every 1–2 weeks, sign certificates for each stage and agree key decisions remotely."
+  ],
+  [
+   "What warranty do you give?",
+   "12 months on completed works. If CAS carries out the renovation to our design, the total stays within ±5% of the estimate."
+  ]
+ ],
+ "guarantees": true,
+ "gallery": [
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1f8h2r5MBlLLf_-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1xskjqBvCXgXuL-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1jS6hUJuy_cM08-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1lcczk9v-heAbx-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1co4thni1Q8_1J-900.webp",
+   "Petrivtsi House"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "near": [
+  "Premium projects",
+  [
+   [
+    "/en/premium-interior-design",
+    "Premium interior design"
+   ],
+   [
+    "/en/general-contractor-kyiv",
+    "General contractor"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/design-implementation",
+   "Design implementation"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Turnkey furnishing"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Cost calculator"
+  ],
+  [
+   "/en/contract-warranty-payment",
+   "Contract, warranty, payment (sample contract)"
+  ],
+  [
+   "/en/contact",
+   "Contact"
+  ]
+ ]
+}

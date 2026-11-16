@@ -1,0 +1,212 @@
+{
+ "slug": "umowa-gwarancja-platnosc",
+ "lang": "pl",
+ "service": "Umowa, gwarancja, płatność (wzór umowy)",
+ "title": "Umowa na remont, gwarancja i płatność — CAS, Kijów",
+ "description": "Umowa na remont i budowę z CAS: kosztorys, terminy, odbiory etapów, 12 miesięcy gwarancji, płatność 50/50, 50/30/20, 50/40/10 lub od 10% zaliczki.",
+ "h1": "Umowa na remont, gwarancja i płatność",
+ "lead": "Jak działa umowa na remont lub budowę z CAS Development: co obejmuje, jak przekazujemy każdy etap, jaka jest gwarancja i jak można zapłacić. Na życzenie wyślemy wzór umowy.",
+ "cta": "Otrzymać wzór umowy",
+ "form_h2": "Otrzymać wzór umowy",
+ "facts": [
+  [
+   "12 mies.",
+   "gwarancji na prace"
+  ],
+  [
+   "±5%",
+   "kosztorys, gdy remont robi CAS"
+  ],
+  [
+   "od 10%",
+   "zaliczki na start"
+  ],
+  [
+   "Własny zespół",
+   "pracownicy etatowi"
+  ]
+ ],
+ "sections": [
+  {
+   "t": "text",
+   "h2": "Umowa o dzieło budowlane to podstawa każdego remontu",
+   "p": [
+    "Remont i budowę zawieramy jako umowę o wykonanie robót (rozdział 61 Kodeksu cywilnego Ukrainy): wykonawca realizuje pracę według zlecenia klienta, a klient odbiera i opłaca wynik. Wszystko, co dla Ciebie ważne — zakres, cena, terminy i gwarancja — zapisujemy w umowie i załącznikach przed startem.",
+    "Najczęstszy problem umów remontowych to nieostry zakres: „wyremontować mieszkanie” bez listy prac. Dlatego do naszej umowy dołączamy szczegółowy kosztorys prac i materiałów, a przy remoncie według projektu — rysunki."
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "Co zawiera umowa CAS",
+   "items": [
+    [
+     "Przedmiot umowy",
+     "Obiekt, adres, lista i zakres prac; projekt wnętrza lub rysunki jako załącznik."
+    ],
+    [
+     "Kosztorys",
+     "Prace i materiały pozycja po pozycji. Jeśli remont wykonuje CAS, suma nie odbiega od kosztorysu o więcej niż ±5%."
+    ],
+    [
+     "Terminy",
+     "Data startu, harmonogram etapów i termin odbioru. Terminy zaczynają się od 2 tygodni, zależnie od zakresu."
+    ],
+    [
+     "Warunki płatności",
+     "Wybrany schemat: 50/50, 50/30/20, 50/40/10 lub według etapów; start od zaliczki 10%. Zaliczka i protokół, do którego przypisana jest każda płatność, są w umowie."
+    ],
+    [
+     "Odbiór etapów",
+     "Każdy etap przekazujemy z podpisanym protokołem — widzisz, co zrobiono i za co płacisz."
+    ],
+    [
+     "Raportowanie",
+     "Fotorelacje co 1–2 tygodnie; za dopłatą — kamera online na budowie 24/7."
+    ],
+    [
+     "Gwarancja",
+     "12 miesięcy na wykonane prace od dnia odbioru protokołem końcowym. Przy budowie, remoncie kapitalnym i przebudowie gwarancja na budynek wynika z art. 884 Kodeksu cywilnego Ukrainy i umowy. Jak zgłosić usterkę i w jakim terminie ją usuniemy — zapisujemy w umowie."
+    ],
+    [
+     "Odpowiedzialność",
+     "Co się dzieje przy naruszeniu terminów lub płatności i jak rozwiązujemy spory."
+    ],
+    [
+     "Siła wyższa",
+     "Siła wyższa (art. 617 Kodeksu cywilnego) to zdarzenia, które bezpośrednio uniemożliwiają wykonanie konkretnego zobowiązania, np. ostrzał lub uszkodzenie obiektu. Strona dotknięta zdarzeniem zawiadamia drugą i potwierdza to zaświadczeniem Izby Handlowej lub innymi dokumentami; terminy przesuwają się na czas trwania zdarzenia. Stan wojenny czy planowe wyłączenia prądu same w sobie nie są siłą wyższą — ich wpływ na terminy uzgadniamy w umowie osobno."
+    ],
+    [
+     "Rozwiązanie umowy",
+     "Warunki i tryb: rozliczenie za faktycznie wykonane prace i materiały kupione dla obiektu (art. 849 Kodeksu cywilnego)."
+    ]
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Schematy płatności dopasowane do Ciebie",
+   "items": [
+    {
+     "h": "50/50",
+     "p": "50% na start, 50% po odbiorze i podpisaniu protokołu końcowego."
+    },
+    {
+     "h": "50/30/20",
+     "p": "50% na start, 30% po odbiorze etapu pośredniego protokołem, 20% po podpisaniu protokołu końcowego."
+    },
+    {
+     "h": "50/40/10",
+     "p": "50% na start, 40% po etapie pośrednim, ostatnie 10% po podpisaniu protokołu końcowego."
+    },
+    {
+     "h": "Według etapów",
+     "p": "Płatność za każdy etap osobno; start od zaliczki 10%."
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Formy płatności",
+   "items": [
+    {
+     "h": "Faktura",
+     "p": "Dla firm zarejestrowanych na Ukrainie — z VAT lub bez, indywidualnie — z dokumentami zamknięcia. Fakturowanie dla firm z UE jest w trakcie uruchamiania."
+    },
+    {
+     "h": "Inne formy",
+     "p": "Inne formy płatności uzgadniamy w umowie."
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Kto wykonuje prace",
+   "items": [
+    {
+     "h": "Własny zespół",
+     "p": "Remont wykonuje zespół CAS — pracownicy etatowi pod różny poziom złożoności i rodzaje prac; kuchnie i szafy na wymiar robią nasi pracownicy i partnerzy. Kierownik budowy sprawdza każdy etap."
+    },
+    {
+     "h": "Kontrola online",
+     "p": "Fotorelacje z budowy co 1–2 tygodnie; za dopłatą — kamera online 24/7, by widzieć obiekt w każdej chwili."
+    },
+    {
+     "h": "Kosztorys ±5%",
+     "p": "Gwarancja kosztorysu obowiązuje tylko wtedy, gdy remont wykonuje CAS: wtedy suma nie odbiega o więcej niż ±5%."
+    }
+   ]
+  },
+  {
+   "t": "guarantees",
+   "more": false
+  },
+  {
+   "t": "faq",
+   "h2": "Pytania i odpowiedzi",
+   "items": [
+    [
+     "Czy mogę zobaczyć umowę przed podpisaniem?",
+     "Tak. Zostaw zgłoszenie, a wyślemy wzór umowy; dla Twojego obiektu przygotujemy umowę z kosztorysem i harmonogramem."
+    ],
+    [
+     "Jaka jest gwarancja na remont?",
+     "12 miesięcy na wykonane prace od dnia odbioru protokołem końcowym. Przy budowie i przebudowie gwarancja na budynek wynika z art. 884 Kodeksu cywilnego Ukrainy i umowy."
+    ],
+    [
+     "Jak mogę zapłacić?",
+     "Według wybranego schematu: 50/50, 50/30/20, 50/40/10 lub według etapów; start od zaliczki 10%. Fakturą (dla firm zarejestrowanych na Ukrainie — z VAT lub bez, indywidualnie) lub w inny sposób uzgodniony w umowie."
+    ],
+    [
+     "Jak zapłacić z zagranicy?",
+     "Fakturą w USD lub EUR (przelew SWIFT), kartą przez link do faktury lub w USDT. Umowa jest po angielsku; warunki ustalamy indywidualnie."
+    ],
+    [
+     "Czy suma może wzrosnąć w trakcie remontu?",
+     "Jeśli remont wykonuje CAS, suma nie odbiega od zatwierdzonego kosztorysu o więcej niż ±5%."
+    ],
+    [
+     "Kto pracuje na budowie?",
+     "Zespół CAS — pracownicy etatowi pod różną złożoność i rodzaje prac; kuchnie i szafy na wymiar — nasi pracownicy i partnerzy."
+    ],
+    [
+     "Jak śledzić prace z zagranicy?",
+     "Fotorelacje co 1–2 tygodnie, a za dopłatą — kamera online na budowie 24/7."
+    ],
+    [
+     "Ile trwa remont?",
+     "Termin zapisujemy w umowie; zaczyna się od 2 tygodni, zależnie od zakresu."
+    ]
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Przydatne strony",
+   "items": [
+    [
+     "/pl/remont-pod-klucz",
+     "Remont pod klucz"
+    ],
+    [
+     "/pl/budowa-domow",
+     "Budowa domów"
+    ],
+    [
+     "/pl/ekipa-remontowa",
+     "Ekipa remontowa"
+    ],
+    [
+     "/pl/kalkulator-remontu",
+     "Kalkulator kosztów"
+    ],
+    [
+     "/pl/faq",
+     "FAQ"
+    ],
+    [
+     "/pl/kontakt",
+     "Kontakt"
+    ]
+   ]
+  }
+ ],
+ "gallery": []
+}

@@ -1,0 +1,65 @@
+{
+ "_": "Кластери етапу 2 перекладу лендингів послуг (17.11.2026): усі мови. i18n.py зливає clusters-*.json з clusters.json.",
+ "hotel": {
+  "uk": "/dyzain-hotelu-kyiv",
+  "ru": "/ru/dizayn-gostinitsy-kiev",
+  "es": "/es/diseno-hoteles",
+  "pl": "/pl/projektowanie-hoteli",
+  "de": "/de/hoteldesign",
+  "fr": "/fr/design-hotel",
+  "zh": "/zh/hotel-design",
+  "ar": "/ar/hotel-design"
+ },
+ "contract": {
+  "uk": "/dogovir-garantiya-oplata",
+  "ru": "/ru/dogovor-garantiya-oplata",
+  "es": "/es/contrato-garantia-pago",
+  "pl": "/pl/umowa-gwarancja-platnosc",
+  "de": "/de/vertrag-gewaehrleistung-zahlung",
+  "fr": "/fr/contrat-garantie-paiement",
+  "zh": "/zh/contract-warranty-payment",
+  "ar": "/ar/contract-warranty-payment"
+ },
+ "general-contractor": {
+  "uk": "/heneralnyi-pidriadnyk-kyiv",
+  "ru": "/ru/generalnyy-podryadchik-kiev",
+  "es": "/es/contratista-general",
+  "pl": "/pl/generalny-wykonawca",
+  "de": "/de/generalunternehmer",
+  "fr": "/fr/entreprise-generale",
+  "zh": "/zh/general-contractor",
+  "ar": "/ar/general-contractor"
+ },
+ "restaurant-fit-out": {
+  "uk": "/remont-restoranu-kafe-kyiv",
+  "ru": "/ru/remont-restorana-kafe-kiev",
+  "es": "/es/reforma-restaurantes",
+  "pl": "/pl/remont-restauracji",
+  "de": "/de/restaurant-ausbau",
+  "fr": "/fr/amenagement-restaurant",
+  "zh": "/zh/restaurant-fit-out",
+  "ar": "/ar/restaurant-fit-out"
+ },
+ "premium-design": {
+  "uk": "/dyzain-interieru-premium-kyiv",
+  "ru": "/ru/dizayn-interera-premium-kiev",
+  "en": "/en/premium-interior-design",
+  "es": "/es/diseno-interiores-premium",
+  "pl": "/pl/projektowanie-wnetrz-premium",
+  "de": "/de/premium-innenarchitektur",
+  "fr": "/fr/architecture-interieur-haut-de-gamme",
+  "zh": "/zh/premium-interior-design",
+  "ar": "/ar/premium-interior-design"
+ },
+ "premium-renovation": {
+  "uk": "/remont-premium-klasu-kyiv",
+  "ru": "/ru/remont-premium-klassa-kiev",
+  "en": "/en/premium-renovation",
+  "es": "/es/reforma-premium",
+  "pl": "/pl/remont-premium",
+  "de": "/de/premium-renovierung",
+  "fr": "/fr/renovation-haut-de-gamme",
+  "zh": "/zh/premium-renovation",
+  "ar": "/ar/premium-renovation"
+ }
+}
