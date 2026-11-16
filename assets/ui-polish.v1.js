@@ -102,7 +102,7 @@ function marquee(){
   if(sc.__mq)return;sc.__mq=1;
   var items=Array.prototype.filter.call(sc.children,function(c){return c.nodeType===1});
   if(items.length<3)return;
-  var cl=[],half=0,pos=0,live=false,stop=false,hover=false,hold=0,raf=0,lt=0,tm=0,bar=null,btn=null,rtl=W.getComputedStyle(sc).direction==='rtl';
+  var cl=[],half=0,pos=0,live=false,stop=false,hover=false,hold=0,raf=0,lt=0,tm=0,bar=null,btn=null,rtl=((sc.closest('[dir]')||{}).dir||'')==='rtl'; // без getComputedStyle на кожну стрічку (примусовий перерахунок стилів; /portfolio — 21 стрічка)
   function noId(x){if(x.id)x.removeAttribute('id')}
   function setup(){
    if(cl.length)return true;
@@ -233,6 +233,7 @@ function stripTap(){
   sc.addEventListener('dragstart',function(e){if(e.target.closest&&e.target.closest('a'))e.preventDefault()});
  });
 }
-function run(){[expanders,scrollers,imgFade,carousel,marquee,stripTap,heroSlides].forEach(function(f){try{f()}catch(e){}})}
+// кожен блок — окремою задачею (TBT: на /portfolio одна задача була 140–170 мс на телефоні CPU ×4; аудит швидкості 16.11.2026)
+function run(){var fs=[expanders,scrollers,imgFade,carousel,marquee,stripTap,heroSlides];(function next(){var f=fs.shift();try{f()}catch(e){}if(fs.length)setTimeout(next,0)})()}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',run);else run();
 })();
