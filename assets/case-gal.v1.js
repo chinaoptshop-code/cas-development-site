@@ -1,5 +1,5 @@
 /* Довгі галереї /proekty (tools/site/casegal.py): у HTML — перші 24 мініатюри, решта — JSON з посилання «Показати всі (N)» (a[data-gal]).
-   Клік по кнопці або прокрутка до кінця галереї — дописує решту тими самими атрибутами (клітинки 4:3 — без CLS).
+   Клік по кнопці або наближення прокрутки до кінця галереї (кнопка ще нижче екрана) — дописує решту тими самими атрибутами (клітинки 4:3 — без CLS).
    Лайтбокс — спільний /assets/lightbox.v1.js (tools/site/lbox.py): дійшли до останнього завантаженого фото — window.casGalMore() дописує JSON. */
 (function(){
 var d=document,W=window,btn=d.querySelector('a[data-gal]');if(!btn)return;
@@ -18,7 +18,8 @@ function load(){
 }
 btn.addEventListener('click',function(e){if(e.ctrlKey||e.metaKey||e.shiftKey)return;e.preventDefault();var n=links().length;
  load().then(function(){var a=links()[n];if(a)a.focus()})});
-if('IntersectionObserver' in W){var io=new IntersectionObserver(function(es){if(es.some(function(x){return x.isIntersecting})){io.disconnect();load()}},{rootMargin:'0px 0px 700px 0px'});io.observe(btn)}
+// дозавантаження лише поки кнопка нижче екрана: швидка прокрутка вже показала CTA/«Інші проєкти» під галереєю — хвіст зсунув би їх (CLS 0,6–0,8; аудит 16.11.2026), тоді — кнопкою
+if('IntersectionObserver' in W){var io=new IntersectionObserver(function(es){if(es.some(function(x){return x.isIntersecting&&x.boundingClientRect.top>=(W.innerHeight||d.documentElement.clientHeight)})){io.disconnect();load()}},{rootMargin:'0px 0px 700px 0px'});io.observe(btn)}
 // лайтбокс — спільний /assets/lightbox.v1.js: гортає всі a[data-lb] сторінки, у кінці завантаженого — дописує хвіст через casGalMore()
 W.casGalN=N;W.casGalMore=function(){return load()||Promise.resolve()};
 })();

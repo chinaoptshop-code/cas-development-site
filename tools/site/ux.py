@@ -564,7 +564,9 @@ def _tp_img(pid, slug, lang, sp, eager=False, wmin=400):
         lead = f'data-p="{pid}:{",".join(str(n) for n, w, h in fs)}"'
     else:
         lead = f'data-srcset="{srcset}"'
-    return (f'<img class="ux-tp" {lead} sizes="{_tp_sizes(sp, f)}"{' loading="eager"' if eager else ''} '
+    # eager-ряд — fetchpriority="low": на телефоні він під першим екраном і не має відбирати канал у LCP-фото hero (preload high;
+    # HTTP/2 Cloudflare віддає спершу його), на ПК різниці не видно (аудит швидкості 16.11.2026)
+    return (f'<img class="ux-tp" {lead} sizes="{_tp_sizes(sp, f)}"{' loading="eager" fetchpriority="low"' if eager else ''} '
             f'width="{w}" height="{h}" alt="{html.escape(alt)}">')
 
 
