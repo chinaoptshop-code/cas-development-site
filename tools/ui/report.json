@@ -281,7 +281,7 @@
  {
   "page": "ar/furnishing.html",
   "kind": "land",
-  "html_kb": 42.3,
+  "html_kb": 42.4,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -312,7 +312,7 @@
  {
   "page": "ar/house-construction.html",
   "kind": "land",
-  "html_kb": 50.7,
+  "html_kb": 50.8,
   "gzip_kb": 14.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -780,7 +780,7 @@
  {
   "page": "ar/restaurant-design.html",
   "kind": "land",
-  "html_kb": 51.2,
+  "html_kb": 51.3,
   "gzip_kb": 13.4,
   "css_kb": 13.3,
   "js_kb": 3.3,
@@ -904,7 +904,7 @@
  {
   "page": "ar/turnkey-renovation.html",
   "kind": "land",
-  "html_kb": 50.9,
+  "html_kb": 51.0,
   "gzip_kb": 14.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -967,7 +967,7 @@
   "page": "baza-vidpochynku-pid-klyuch.html",
   "kind": "land",
   "html_kb": 57.0,
-  "gzip_kb": 15.4,
+  "gzip_kb": 15.7,
   "css_kb": 13.0,
   "js_kb": 3.5,
   "font_sizes": 6,
@@ -2324,12 +2324,12 @@
  {
   "page": "blog/open-space-chy-kabinety-planuvannia-ofisu.html",
   "kind": "article",
-  "html_kb": 50.7,
-  "gzip_kb": 14.9,
+  "html_kb": 51.6,
+  "gzip_kb": 15.1,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 385,
+  "tags": 388,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -3151,7 +3151,7 @@
  {
   "page": "blog/skilky-koshtuie-remont-vannoi-kyiv.html",
   "kind": "article",
-  "html_kb": 53.1,
+  "html_kb": 53.2,
   "gzip_kb": 16.4,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -3478,7 +3478,7 @@
   "page": "budivnytstvo-budynkiv-kyiv.html",
   "kind": "land",
   "html_kb": 63.3,
-  "gzip_kb": 16.9,
+  "gzip_kb": 17.0,
   "css_kb": 13.1,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -3756,7 +3756,7 @@
  {
   "page": "de/einrichtung-schluesselfertig.html",
   "kind": "land",
-  "html_kb": 40.0,
+  "html_kb": 40.1,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -3787,7 +3787,7 @@
  {
   "page": "de/faq.html",
   "kind": "land",
-  "html_kb": 42.3,
+  "html_kb": 42.2,
   "gzip_kb": 13.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -4441,7 +4441,7 @@
  {
   "page": "de/restaurantdesign.html",
   "kind": "land",
-  "html_kb": 46.5,
+  "html_kb": 46.6,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 2.5,
@@ -5558,7 +5558,7 @@
   "page": "dyzain-i-remont-vyshneve.html",
   "kind": "land",
   "html_kb": 42.1,
-  "gzip_kb": 11.8,
+  "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -5774,7 +5774,7 @@
  {
   "page": "dyzain-ofisu-kyiv.html",
   "kind": "land",
-  "html_kb": 57.0,
+  "html_kb": 56.9,
   "gzip_kb": 18.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6208,7 +6208,7 @@
  {
   "page": "en/faq.html",
   "kind": "land",
-  "html_kb": 42.7,
+  "html_kb": 42.6,
   "gzip_kb": 13.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6580,7 +6580,7 @@
  {
   "page": "en/office-renovation.html",
   "kind": "land",
-  "html_kb": 45.6,
+  "html_kb": 45.7,
   "gzip_kb": 13.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6990,7 +6990,7 @@
  {
   "page": "en/turnkey-renovation.html",
   "kind": "land",
-  "html_kb": 47.1,
+  "html_kb": 47.2,
   "gzip_kb": 13.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7113,7 +7113,7 @@
  {
   "page": "es/complejo-turistico-llave-en-mano.html",
   "kind": "land",
-  "html_kb": 46.3,
+  "html_kb": 46.4,
   "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 2.6,
@@ -7175,7 +7175,7 @@
  {
   "page": "es/construccion-de-casas.html",
   "kind": "land",
-  "html_kb": 46.9,
+  "html_kb": 47.0,
   "gzip_kb": 13.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7330,7 +7330,7 @@
  {
   "page": "es/diseno-restaurantes-cafeterias.html",
   "kind": "land",
-  "html_kb": 47.1,
+  "html_kb": 47.2,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 2.5,
@@ -7764,7 +7764,7 @@
  {
   "page": "es/reforma-llave-en-mano.html",
   "kind": "land",
-  "html_kb": 46.7,
+  "html_kb": 46.8,
   "gzip_kb": 13.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -7981,7 +7981,7 @@
  {
   "page": "fr/ameublement-cle-en-main.html",
   "kind": "land",
-  "html_kb": 40.5,
+  "html_kb": 40.6,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8012,7 +8012,7 @@
  {
   "page": "fr/architecture-interieur.html",
   "kind": "land",
-  "html_kb": 41.1,
+  "html_kb": 41.2,
   "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8043,7 +8043,7 @@
  {
   "page": "fr/architecture-paysagere.html",
   "kind": "land",
-  "html_kb": 46.1,
+  "html_kb": 46.2,
   "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 1.0,
@@ -8356,7 +8356,7 @@
  {
   "page": "fr/design-restaurant-cafe.html",
   "kind": "land",
-  "html_kb": 47.3,
+  "html_kb": 47.4,
   "gzip_kb": 13.0,
   "css_kb": 13.3,
   "js_kb": 2.6,
@@ -8635,7 +8635,7 @@
  {
   "page": "fr/renovation-bureaux.html",
   "kind": "land",
-  "html_kb": 42.6,
+  "html_kb": 42.7,
   "gzip_kb": 11.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8666,7 +8666,7 @@
  {
   "page": "fr/renovation-cle-en-main.html",
   "kind": "land",
-  "html_kb": 47.0,
+  "html_kb": 47.1,
   "gzip_kb": 13.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -20109,7 +20109,7 @@
   "page": "pl/faq.html",
   "kind": "land",
   "html_kb": 41.5,
-  "gzip_kb": 13.4,
+  "gzip_kb": 13.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -20514,7 +20514,7 @@
  {
   "page": "pl/projektowanie-ogrodow.html",
   "kind": "land",
-  "html_kb": 45.5,
+  "html_kb": 45.6,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.9,
@@ -20545,7 +20545,7 @@
  {
   "page": "pl/projektowanie-restauracji.html",
   "kind": "land",
-  "html_kb": 46.8,
+  "html_kb": 46.9,
   "gzip_kb": 13.2,
   "css_kb": 13.3,
   "js_kb": 2.5,
@@ -20576,7 +20576,7 @@
  {
   "page": "pl/projektowanie-wnetrz.html",
   "kind": "land",
-  "html_kb": 41.5,
+  "html_kb": 41.6,
   "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -20855,7 +20855,7 @@
  {
   "page": "pl/remont-pod-klucz.html",
   "kind": "land",
-  "html_kb": 46.4,
+  "html_kb": 46.5,
   "gzip_kb": 13.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -22511,7 +22511,7 @@
  {
   "page": "remont-ofisu-pid-klyuch-kyiv.html",
   "kind": "land",
-  "html_kb": 62.7,
+  "html_kb": 62.8,
   "gzip_kb": 19.5,
   "css_kb": 13.0,
   "js_kb": 0.5,
@@ -22574,7 +22574,7 @@
   "page": "remont-premium-klasu-kyiv.html",
   "kind": "land",
   "html_kb": 53.4,
-  "gzip_kb": 14.2,
+  "gzip_kb": 14.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -22823,7 +22823,7 @@
  {
   "page": "ru/blog.html",
   "kind": "other",
-  "html_kb": 79.6,
+  "html_kb": 79.7,
   "gzip_kb": 20.3,
   "css_kb": 13.5,
   "js_kb": 0.5,
@@ -23939,7 +23939,7 @@
  {
   "page": "ru/dizayn-interera-kiev.html",
   "kind": "land",
-  "html_kb": 58.6,
+  "html_kb": 58.7,
   "gzip_kb": 15.7,
   "css_kb": 13.7,
   "js_kb": 0.5,
@@ -24002,7 +24002,7 @@
   "page": "ru/dizayn-interera-premium-kiev.html",
   "kind": "land",
   "html_kb": 56.5,
-  "gzip_kb": 17.1,
+  "gzip_kb": 17.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -26215,7 +26215,7 @@
  {
   "page": "ru/stroitelstvo-domov-kiev.html",
   "kind": "land",
-  "html_kb": 62.7,
+  "html_kb": 62.8,
   "gzip_kb": 16.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -26835,7 +26835,7 @@
  {
   "page": "zh/furnishing.html",
   "kind": "land",
-  "html_kb": 38.8,
+  "html_kb": 38.9,
   "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -26866,7 +26866,7 @@
  {
   "page": "zh/house-construction.html",
   "kind": "land",
-  "html_kb": 44.7,
+  "html_kb": 44.8,
   "gzip_kb": 13.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -27145,7 +27145,7 @@
  {
   "page": "zh/office-renovation.html",
   "kind": "land",
-  "html_kb": 40.8,
+  "html_kb": 40.9,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -27334,7 +27334,7 @@
  {
   "page": "zh/restaurant-design.html",
   "kind": "land",
-  "html_kb": 44.8,
+  "html_kb": 44.9,
   "gzip_kb": 13.4,
   "css_kb": 13.3,
   "js_kb": 2.3,
@@ -27458,7 +27458,7 @@
  {
   "page": "zh/turnkey-renovation.html",
   "kind": "land",
-  "html_kb": 44.4,
+  "html_kb": 44.5,
   "gzip_kb": 13.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
