@@ -545,3 +545,5 @@ html body .hxl>.hero{min-height:min(60vh,50vw,36rem);display:flex;flex-direction
 @media(min-width:1100px){.scf-top{grid-template-columns:1.3fr 1fr minmax(23.25rem,1.2fr)}}
 @media(min-width:768px) and (max-width:1023px){.hxl::before{background:linear-gradient(90deg,rgba(8,7,9,.88) 0,rgba(8,7,9,.66) 50%,rgba(8,7,9,.42) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}
 [dir=rtl] .hxl::before{background:linear-gradient(270deg,rgba(8,7,9,.88) 0,rgba(8,7,9,.66) 50%,rgba(8,7,9,.42) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}}
+.gal figure{position:relative}
+.gal figcaption a::after{content:"";position:absolute;inset:0}

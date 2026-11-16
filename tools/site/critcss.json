@@ -398,4 +398,6 @@
 ".hxl .hero p",
 ".hxl::before,[dir=rtl] .hxl::before",
 ".crumbs+.hxl",
-".scf-top>.scf-col:last-child"]
+".scf-top>.scf-col:last-child",
+".gal figure",
+".gal figcaption a::after"]
