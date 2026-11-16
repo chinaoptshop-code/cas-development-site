@@ -712,25 +712,42 @@
   // ---------- Проєкти клієнтів (/api/admin/projects, migrations/0005_account.sql) ----------
   // Клієнт бачить їх у /kabinet/proekty і /kabinet/obiekt («Онлайн-контроль», міграція 0008): етапи зі статусами й прогресом,
   // фотозвіти (з привʼязкою до етапу), документи й акти етапів, графік платежів, камера 24/7, особистий код партнера.
-  var SVC = { design: 'Дизайн', repair: 'Ремонт', build: 'Будівництво', furnish: 'Меблювання', landscape: 'Ландшафт', other: 'Інше' };
+  var SVC = { design: 'Дизайн-проєкт', repair: 'Ремонт', build: 'Будівництво', furnish: 'Комплектація меблями', landscape: 'Ландшафт', other: 'Інше' };
   var PST = { active: 'Триває', paused: 'На паузі', done: 'Завершено' };
   var DKIND = { contract: 'Договір', estimate: 'Кошторис', invoice: 'Рахунок', act: 'Акт етапу', design: 'Дизайн-проєкт', other: 'Інше' };
   var SST = { planned: 'Заплановано', in_progress: 'В роботі', review: 'Приймання', done: 'Виконано', paused: 'Пауза' };
   var PAYST = { planned: 'Заплановано', due: 'До оплати', paid: 'Оплачено' };
   var SCHEMES = { '50/50': [50, 50], '50/30/20': [50, 30, 20], '50/40/10': [50, 40, 10] }; // лише підказка-заготовка: рядки потім редагуються
+  // вкладки списку: проєктування окремо від робіт на обʼєкті (комплектація, ландшафт, інше — у «Усі»)
+  var PGROUP = [['all', 'Усі', null], ['design', 'Проєктування', ['design']], ['works', 'Ремонт і будівництво', ['repair', 'build']]];
+  var PF = { group: 'all', service: '', status: '', staff: '', late: false, q: '' }; // фільтри списку (до перезавантаження сторінки)
   var progressOf = function (st) { return st && st.length ? Math.round(st.reduce(function (s, x) { return s + (+x.progress || 0); }, 0) / st.length) : 0; };
+  var curStage = function (st) { st = st || []; return st.filter(function (s) { return s.status === 'in_progress' || s.status === 'review'; })[0] || st.filter(function (s) { return s.status !== 'done'; })[0] || null; };
+  var isLate = function (dt, status) { return !!(dt && dt < today() && status !== 'done'); };
+  var payLate = function (y) { return y.status !== 'paid' && !!y.due_date && y.due_date < today(); };
+  var dmy = function (s) { return s ? String(s).slice(0, 10).split('-').reverse().join('.') : ''; };
   var PAPI = '/api/admin/projects';
   RENDER.projects = function (L, cid, openId) {
     L.innerHTML = '<p class="muted">Завантаження…</p>';
-    return Promise.all([api('/api/admin/clients'), api(PAPI + (cid ? '?client_id=' + cid : '')), api('/api/admin/partner-codes').catch(function () { return { codes: [] }; })]).then(function (r) {
+    return Promise.all([api('/api/admin/clients'), api(PAPI + (cid ? '?client_id=' + cid : '')), api('/api/admin/partner-codes').catch(function () { return { codes: [] }; }),
+      can('staff.view') ? api('/api/admin/staff').catch(function () { return { staff: [] }; }) : Promise.resolve({ staff: [] })]).then(function (r) {
       var clients = r[0].clients, d = r[1], codes = r[2].codes || [];
-      var cl = function (id) { return clients.find(function (c) { return c.id === id; }) || { id: id }; };
+      d._staff = (r[3].staff || []).filter(function (x) { return x.active; });
+      d._clients = clients;
       var clName = function (c) { return (c.name || 'Клієнт #' + c.id) + (c.phone ? ' · ' + c.phone : c.email ? ' · ' + c.email : ''); };
+      var canEdit = !d.can || d.can.edit !== false;
       L.innerHTML = '<div class="tb"><select data-c class="grow" aria-label="Клієнт"><option value="">Усі клієнти</option>' + clients.map(function (c) { return '<option value="' + c.id + '"' + (c.id === cid ? ' selected' : '') + '>' + esc(clName(c)) + '</option>'; }).join('') + '</select>' +
-        '<button class="btn" data-new' + (cid ? '' : ' disabled title="Спершу виберіть клієнта"') + '>+ Проєкт</button></div>' +
+        (canEdit ? '<button class="btn" data-new>+ Новий проєкт</button>' : '') + '</div>' +
         '<div class="note">Проєкти, етапи, фотозвіти, документи, платежі й камеру бачить лише цей клієнт у своєму кабінеті (<b>/kabinet/proekty</b>, <b>/kabinet/obiekt</b> — «Онлайн-контроль»). Клієнт має хоча б раз увійти на сайт (Telegram, Google або телефон), щоб зʼявитися у списку.' +
-        (d.online === false ? '<br><b>Камера й графік платежів зʼявляться після застосування міграції 0008 (автоматично під час деплою).</b>' : '') + '</div>' +
+        (d.online === false ? '<br><b>Камера й графік платежів зʼявляться після застосування міграції 0008 (автоматично під час деплою).</b>' : '') +
+        (d.tasks_ready === false ? '<br><b>Дата здачі й задачі зʼявляться після застосування міграції 0012 (автоматично під час деплою).</b>' : '') + '</div>' +
         (cid ? '<div class="tb" data-pc><b>Особистий код партнера клієнта:</b><input data-code list="pcList" placeholder="DIZ-…" style="text-transform:uppercase" value="' + esc((codes.find(function (x) { return x.client_id === cid; }) || {}).code || '') + '"><datalist id="pcList">' + codes.map(function (x) { return '<option value="' + esc(x.code) + '">' + esc(x.name || '') + '</option>'; }).join('') + '</datalist><button class="btn ghost sm" data-bind>Привʼязати</button><button class="btn ghost sm" data-unbind>Відвʼязати</button></div>' : '') +
+        '<div class="tb pj-filters"><div class="seg" role="group" aria-label="Група проєктів" data-grp></div>' +
+        '<select data-fs aria-label="Тип проєкту"><option value="">Усі типи</option>' + Object.keys(SVC).map(function (k) { return '<option value="' + k + '"' + (PF.service === k ? ' selected' : '') + '>' + SVC[k] + '</option>'; }).join('') + '</select>' +
+        '<select data-fst aria-label="Стан"><option value="">Будь-який стан</option>' + Object.keys(PST).map(function (k) { return '<option value="' + k + '"' + (PF.status === k ? ' selected' : '') + '>' + PST[k] + '</option>'; }).join('') + '</select>' +
+        '<select data-fa aria-label="Відповідальний"></select>' +
+        '<label class="row pj-late"><input type="checkbox" data-fl' + (PF.late ? ' checked' : '') + '> Лише прострочені</label>' +
+        '<input type="search" class="grow" data-fq placeholder="Пошук: назва, клієнт, адреса" aria-label="Пошук проєктів" value="' + esc(PF.q) + '"></div>' +
         '<div data-list></div>';
       $('[data-c]', L).onchange = function () { RENDER.projects(L, +this.value || null); };
       if (cid) {
@@ -738,22 +755,92 @@
         $('[data-bind]', L).onclick = function () { var v = $('[data-code]', L).value.trim(); if (v) pc(v); };
         $('[data-unbind]', L).onclick = function () { pc(null); };
       }
-      $('[data-new]', L).onclick = function () {
-        var t = prompt('Назва проєкту (напр. «Ремонт квартири, ЖК …»):'); if (!t) return;
-        api(PAPI, { method: 'POST', body: { type: 'project', client_id: cid, title: t, service: 'repair', stages: [{ name: 'Дизайн-проєкт', progress: 0 }, { name: 'Чорнові роботи', progress: 0 }, { name: 'Чистові роботи', progress: 0 }, { name: 'Меблі й декор', progress: 0 }] } })
-          .then(function (x) { RENDER.projects(L, cid, x.id); }, function (e) { toast(e.message, true); });
+      var nb = $('[data-new]', L); if (nb) nb.onclick = function () { newProjectForm(L, d, cid); };
+      // відповідальні: з довідника персоналу або з самих проєктів (без staff.view)
+      var heads = {};
+      d._staff.forEach(function (x) { heads[x.id] = x.name; });
+      d.projects.forEach(function (p) { if (p.assignee_staff_id && !heads[p.assignee_staff_id]) heads[p.assignee_staff_id] = p.assignee_name || '#' + p.assignee_staff_id; });
+      $('[data-fa]', L).innerHTML = '<option value="">Усі відповідальні</option><option value="none"' + (PF.staff === 'none' ? ' selected' : '') + '>Без відповідального</option>' +
+        Object.keys(heads).map(function (k) { return '<option value="' + k + '"' + (String(PF.staff) === k ? ' selected' : '') + '>' + esc(heads[k]) + '</option>'; }).join('');
+      var lateP = function (p) { return p.overdue || isLate(p.deadline, p.status) || (d.payments || []).some(function (y) { return y.project_id === p.id && payLate(y); }) ||
+        (d.tasks || []).some(function (t) { return t.project_id === p.id && !t.done && isLate(t.due_date); }); };
+      var hay = function (p) { var c = clients.find(function (x) { return x.id === p.client_id; }) || {}; return [p.title, p.client_name, c.name, c.phone, c.email, p.address].join(' ').toLowerCase(); };
+      var inGroup = function (p, g) { var G = PGROUP.filter(function (x) { return x[0] === g; })[0]; return !G || !G[2] || G[2].indexOf(p.service) >= 0; };
+      var pass = function (p) {
+        if (!inGroup(p, PF.group)) return false;
+        if (PF.service && p.service !== PF.service) return false;
+        if (PF.status && p.status !== PF.status) return false;
+        if (PF.staff === 'none' ? p.assignee_staff_id : PF.staff && String(p.assignee_staff_id) !== String(PF.staff)) return false;
+        if (PF.late && !lateP(p)) return false;
+        return !PF.q || hay(p).indexOf(PF.q.toLowerCase()) >= 0;
       };
       var list = $('[data-list]', L);
-      if (!d.projects.length) { list.innerHTML = '<p class="muted">Проєктів немає.</p>'; return; }
-      list.innerHTML = '<div class="tscroll"><table class="adm"><tr><th>Проєкт</th><th>Клієнт</th><th>Прогрес</th><th>Стан</th><th>Наступний крок</th></tr>' + d.projects.map(function (p) {
-        var pr = progressOf(p.stages);
-        return '<tr class="clk" data-id="' + p.id + '"><td><b>' + esc(p.title) + '</b><br><small>' + esc(SVC[p.service] || p.service || '') + (p.address ? ' · ' + esc(p.address) : '') + '</small></td><td>' + esc(p.client_name || '#' + p.client_id) + '</td>' +
-          '<td><progress max="100" value="' + pr + '" style="width:90px"></progress> ' + pr + '%</td><td><span class="pill' + (p.status === 'active' ? ' on' : '') + '">' + esc(PST[p.status] || p.status) + '</span></td><td><small>' + esc(p.next_step || '') + (p.next_date ? ' · ' + esc(p.next_date) : '') + '</small></td></tr>';
-      }).join('') + '</table></div>';
-      $$('tr.clk', list).forEach(function (tr) { tr.onclick = function () { projectForm(L, d, +tr.dataset.id, cid); }; });
+      function draw() {
+        $('[data-grp]', L).innerHTML = PGROUP.map(function (g) { var n = d.projects.filter(function (p) { return inGroup(p, g[0]); }).length; return '<button type="button" data-g="' + g[0] + '" aria-pressed="' + (PF.group === g[0]) + '">' + g[1] + ' <small>' + n + '</small></button>'; }).join('');
+        $$('[data-g]', L).forEach(function (b) { b.onclick = function () { PF.group = b.dataset.g; draw(); }; });
+        var rows = d.projects.filter(pass);
+        if (!d.projects.length) { list.innerHTML = '<p class="muted">Проєктів немає.' + (canEdit ? ' Натисніть «+ Новий проєкт» — етапи підставляться за типом.' : '') + '</p>'; return; }
+        if (!rows.length) { list.innerHTML = '<p class="muted">За цими фільтрами нічого немає.</p>'; return; }
+        list.innerHTML = '<div class="tscroll"><table class="adm pj-list"><tr><th>Проєкт</th><th>Тип</th><th>Поточний етап</th><th>Здача</th><th>Задачі</th><th>Стан</th></tr>' + rows.map(function (p) {
+          var pr = progressOf(p.stages), cs = curStage(p.stages), late = isLate(p.deadline, p.status);
+          var lp = (d.payments || []).filter(function (y) { return y.project_id === p.id && payLate(y); }).length;
+          var lt = (d.tasks || []).filter(function (t) { return t.project_id === p.id && !t.done && isLate(t.due_date); }).length;
+          return '<tr class="clk" data-id="' + p.id + '" tabindex="0"><td><b>' + esc(p.title) + '</b><br><small>' + esc(p.client_name || '#' + p.client_id) + (p.address ? ' · ' + esc(p.address) : '') + '</small>' +
+            (p.assignee_name ? '<br><small class="muted">Відповідальний: ' + esc(p.assignee_name) + '</small>' : '') + (lp ? ' <span class="pill warn">💸 прострочено платежів: ' + lp + '</span>' : '') + '</td>' +
+            '<td><small>' + esc(SVC[p.service] || p.service || '') + '</small></td>' +
+            '<td>' + (cs ? esc(cs.name) + '<br><small class="muted">' + esc(SST[cs.status] || '') + (cs.approved_at ? ' · ✓ погоджено' : '') + '</small>' : p.stages && p.stages.length ? '<small class="ok">усі етапи виконано</small>' : '<small class="muted">—</small>') +
+            '<br><progress max="100" value="' + pr + '" style="width:90px" aria-label="Прогрес ' + pr + '%"></progress> <small>' + pr + '%</small></td>' +
+            '<td>' + (p.deadline ? '<span class="' + (late ? 'err' : '') + '">' + dmy(p.deadline) + '</span>' + (late ? '<br><span class="pill warn">прострочено</span>' : '') : '<small class="muted">—</small>') + '</td>' +
+            '<td>' + (p.tasks_total ? '<b>' + (p.tasks_done || 0) + '/' + p.tasks_total + '</b>' + (lt ? '<br><small class="err">прострочено: ' + lt + '</small>' : '') : '<small class="muted">—</small>') + '</td>' +
+            '<td><span class="pill' + (p.status === 'active' ? ' on' : '') + '">' + esc(PST[p.status] || p.status) + '</span>' + (p.next_step ? '<br><small>' + esc(p.next_step) + (p.next_date ? ' · ' + dmy(p.next_date) : '') + '</small>' : '') + '</td></tr>';
+        }).join('') + '</table></div><p class="muted">Показано ' + rows.length + ' з ' + d.projects.length + '.</p>';
+        $$('tr.clk', list).forEach(function (tr) { tr.onclick = tr.onkeydown = function (e) { if (e.type === 'keydown' && e.key !== 'Enter') return; projectForm(L, d, +tr.dataset.id, cid); }; });
+      }
+      $('[data-fs]', L).onchange = function () { PF.service = this.value; draw(); };
+      $('[data-fst]', L).onchange = function () { PF.status = this.value; draw(); };
+      $('[data-fa]', L).onchange = function () { PF.staff = this.value; draw(); };
+      $('[data-fl]', L).onchange = function () { PF.late = this.checked; draw(); };
+      $('[data-fq]', L).oninput = debounce(function () { PF.q = $('[data-fq]', L).value.trim(); draw(); }, 200);
+      draw();
       if (openId) projectForm(L, d, openId, cid);
     }, function (e) { L.innerHTML = '<p class="err">' + esc(e.message) + (/оновлюється/.test(e.message) ? ' (міграція 0005 ще не застосована — зʼявиться після деплою)' : '') + '</p>'; });
   };
+  // «Новий проєкт»: тип → шаблон етапів (з сервера, d.templates), клієнт, адреса, площа, договір, здача, відповідальний, графік платежів
+  function newProjectForm(L, d, cid) {
+    var T = d.templates || {}, clients = d._clients || [], STF = d._staff || [];
+    var defSvc = PF.group === 'design' ? 'design' : PF.service || 'repair';
+    var fin = can('finance.edit') && d.online !== false;
+    L.innerHTML = '<div class="tb"><button class="btn ghost sm" data-back>← До списку</button><b class="grow">Новий проєкт</b></div>' +
+      '<form class="form two" data-nf><label class="f"><span>Тип проєкту</span><select name="service" required>' + Object.keys(SVC).map(function (k) { return '<option value="' + k + '"' + (k === defSvc ? ' selected' : '') + '>' + SVC[k] + '</option>'; }).join('') + '</select></label>' +
+      '<label class="f"><span>Клієнт</span><select name="client_id" required><option value="">— оберіть клієнта —</option>' + clients.map(function (c) { return '<option value="' + c.id + '"' + (c.id === cid ? ' selected' : '') + '>' + esc((c.name || 'Клієнт #' + c.id) + (c.phone ? ' · ' + c.phone : '')) + '</option>'; }).join('') + '</select></label>' +
+      '<label class="f full"><span>Назва</span><input name="title" required maxlength="120" placeholder="Дизайн квартири, ЖК … / Ремонт офісу на …"></label>' +
+      '<label class="f"><span>Адреса обʼєкта</span><input name="address" maxlength="200"></label><label class="f"><span>Площа, м²</span><input name="area" type="number" min="0" step="0.1"></label>' +
+      (can('finance.edit') ? '<label class="f"><span>Сума договору</span><span class="row"><input name="contract_amount" type="number" min="0" step="1" class="grow"><select name="contract_currency" aria-label="Валюта"><option>USD</option><option>UAH</option><option>EUR</option></select></span></label>' : '') +
+      '<label class="f"><span>Дата здачі (за договором)</span><input name="deadline" type="date"' + (d.tasks_ready === false ? ' disabled title="Після міграції 0012"' : '') + '></label>' +
+      (STF.length ? '<label class="f"><span>Відповідальний</span><select name="assignee_staff_id"><option value="">— пізніше —</option>' + STF.map(function (x) { return '<option value="' + x.id + '">' + esc(x.name) + ' · ' + esc(x.role_label || '') + '</option>'; }).join('') + '</select></label>' : '') +
+      (fin ? '<label class="f"><span>Графік платежів</span><select name="scheme"><option value="">Без графіка (додати пізніше)</option>' + Object.keys(SCHEMES).map(function (k) { return '<option value="' + k + '">' + k + '</option>'; }).join('') + '</select>' +
+        '<small class="muted">Аванс — до першого етапу, проміжний — до середнього, останній — до останнього; суми — від суми договору.</small></label>' : '') +
+      '<div class="f full"><span>Етапи за шаблоном <small class="muted">(після створення можна перейменувати, додати чи прибрати)</small></span><ol class="pj-tpl" data-tpl></ol></div>' +
+      '<p class="err full" data-e role="alert"></p><div class="full row"><button class="btn" type="submit">Створити проєкт</button></div></form>';
+    var f = $('[data-nf]', L);
+    var tpl = function () { var a = T[f.service.value] || []; $('[data-tpl]', L).innerHTML = a.length ? a.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') : '<li class="muted">Без шаблону — етапи додасте в картці проєкту</li>'; };
+    f.service.onchange = tpl; tpl();
+    $('[data-back]', L).onclick = function () { RENDER.projects(L, cid); };
+    f.onsubmit = function (e) {
+      e.preventDefault();
+      var F = f.elements, err = $('[data-e]', L);
+      if (!F.client_id.value) { err.textContent = 'Оберіть клієнта (клієнт має хоча б раз увійти на сайт)'; F.client_id.focus(); return; }
+      if (!F.title.value.trim()) { err.textContent = 'Вкажіть назву проєкту'; F.title.focus(); return; }
+      var b = { type: 'project', client_id: +F.client_id.value, title: F.title.value.trim(), service: F.service.value, address: F.address.value, area: F.area.value };
+      if (F.deadline && !F.deadline.disabled && F.deadline.value) b.deadline = F.deadline.value;
+      if (F.assignee_staff_id && F.assignee_staff_id.value) b.assignee_staff_id = +F.assignee_staff_id.value;
+      if (F.contract_amount && F.contract_amount.value !== '') { b.contract_amount = F.contract_amount.value; b.contract_currency = F.contract_currency.value; }
+      if (F.scheme && F.scheme.value) b.scheme = F.scheme.value;
+      var btn = $('button[type=submit]', f); btn.disabled = true; err.textContent = '';
+      api(PAPI, { method: 'POST', body: b }).then(function (x) { toast('Проєкт створено — етапи за шаблоном «' + SVC[b.service] + '»'); RENDER.projects(L, cid && b.client_id !== cid ? null : cid, x.id); },
+        function (e2) { btn.disabled = false; err.textContent = e2.message; });
+    };
+  }
   function projectForm(L, d, id, cid) {
     var p = d.projects.find(function (x) { return x.id === id; }); if (!p) return;
     var stages = clone(p.stages || []), reports = d.reports.filter(function (r) { return r.project_id === id; }), docs = d.documents.filter(function (x) { return x.client_id === p.client_id && (!x.project_id || x.project_id === id); });
@@ -768,7 +855,8 @@
       '<label class="f"><span>Послуга</span><select name="service">' + opt(SVC, p.service) + '</select></label><label class="f"><span>Стан</span><select name="status">' + opt(PST, p.status) + '</select></label>' +
       '<label class="f"><span>Адреса обʼєкта</span><input name="address" value="' + esc(p.address || '') + '"></label><label class="f"><span>Площа, м²</span><input name="area" type="number" min="0" step="0.1" value="' + esc(p.area == null ? '' : p.area) + '"></label>' +
       '<label class="f"><span>Наступний крок (бачить клієнт)</span><input name="next_step" value="' + esc(p.next_step || '') + '"></label><label class="f"><span>Дата наступного кроку</span><input name="next_date" type="date" value="' + esc(p.next_date || '') + '"></label>' +
-      '<label class="f"><span>Відповідальний менеджер</span><input name="manager" value="' + esc(p.manager || '') + '"></label>' +
+      '<label class="f"><span>Дата здачі (за договором)' + (isLate(p.deadline, p.status) ? ' <b class="err">— прострочено</b>' : '') + '</span><input name="deadline" type="date" value="' + esc(p.deadline || '') + '"' + (d.tasks_ready === false ? ' disabled title="Після міграції 0012"' : '') + '></label>' +
+      '<label class="f"><span>Відповідальний менеджер (текст для клієнта)</span><input name="manager" value="' + esc(p.manager || '') + '"></label>' +
       '<label class="f full"><span>Камера 24/7 — посилання (за доп. оплату; порожньо — клієнт бачить «Підключити камеру»)</span><input name="camera_url" type="url" inputmode="url" placeholder="https://youtube.com/live/… або посилання хмари камери (Ezviz, Hik-Connect, Imou…)" value="' + esc(p.camera_url || '') + '"' + (d.online === false ? ' disabled' : '') + '>' +
       '<small class="muted">YouTube-трансляція (доступ «за посиланням») вбудовується в кабінет; пряме посилання на кадр .jpg — показується картинкою; інше — кнопкою «Відкрити камеру» в новій вкладці. Лише https, без логіна й пароля в адресі. Бачить тільки цей клієнт.</small></label>' +
       '<label class="f full"><span>Підказка до камери (бачить клієнт)</span><input name="camera_note" maxlength="300" placeholder="Напр.: вхід у застосунок Ezviz — за вашим номером телефону" value="' + esc(p.camera_note || '') + '"' + (d.online === false ? ' disabled' : '') + '></label>' +
@@ -777,6 +865,7 @@
       '<fieldset class="f full team-fs" data-team><legend>Команда обʼєкта (бачать обʼєкт у своєму кабінеті /kabinet/team)</legend><p class="muted">Завантаження…</p></fieldset>' +
       '<div class="f full"><span>Етапи: статус і прогрес <small data-pr></small></span><div data-st></div></div></form>' +
       '<div class="row" style="margin:10px 0 24px"><button class="btn" data-save>Зберегти проєкт</button></div>' +
+      '<h3>Задачі по етапах <small class="muted" data-tkn></small></h3><div data-tk></div>' +
       ((d.issues || []).some(function (i) { return i.project_id === id; }) ? '<h3>Проблеми на обʼєкті (бачить лише команда)</h3><div data-iss></div>' : '') +
       '<h3>Фотозвіти</h3><div data-rep></div>' +
       '<form class="form two" data-rf style="margin-top:10px"><label class="f"><span>Дата</span><input name="date" type="date" value="' + today() + '"></label><label class="f"><span>Заголовок</span><input name="title" placeholder="Тиждень 5: стяжка й електрика"></label>' +
@@ -794,19 +883,32 @@
       '<select name="status" aria-label="Статус">' + opt(PAYST, 'planned') + '</select><input name="note" placeholder="Примітка" class="grow"><button class="btn" type="submit">Додати платіж</button></form>' +
       '<div class="tb"><span class="muted">Заготовка схеми (додасть рядки з %):</span>' + Object.keys(SCHEMES).map(function (k) { return '<button type="button" class="btn ghost sm" data-sch="' + k + '">' + k + '</button>'; }).join('') + '</div>');
     var stEl = $('[data-st]', L);
+    var isDesign = function () { return val('[name=service]', L) === 'design'; };
+    // дизайн-проєкт: «Погоджено клієнтом» (дата) і лічильник правок — у JSON етапу; клієнт бачить «погоджено» в кабінеті
+    var apprRow = function (s, i) {
+      if (!isDesign()) return '';
+      return '<div class="row pj-appr">' + (s.approved_at ? '<span class="pill on">✓ Погоджено клієнтом ' + dmy(s.approved_at) + '</span><button type="button" class="btn ghost sm" data-unap="' + i + '">Скасувати погодження</button>'
+        : '<button type="button" class="btn ghost sm" data-ap="' + i + '"' + (s.id ? '' : ' disabled title="Спершу збережіть проєкт"') + '>Погоджено клієнтом</button>') +
+        '<span class="muted">Правки:</span><button type="button" class="btn ghost sm" data-rv="' + i + '" data-dv="-1" aria-label="Менше правок">−</button><b data-rvn="' + i + '">' + (+s.revisions || 0) + '</b>' +
+        '<button type="button" class="btn ghost sm" data-rv="' + i + '" data-dv="1" aria-label="Ще одна правка">+</button></div>';
+    };
     function drawStages() {
       stEl.innerHTML = stages.map(function (s, i) {
-        return '<div class="row" style="margin-bottom:8px"><input class="grow" data-k="name" data-i="' + i + '" value="' + esc(s.name) + '" placeholder="Етап"><select data-k="status" data-i="' + i + '" aria-label="Статус етапу">' + opt(SST, s.status || (+s.progress >= 100 ? 'done' : +s.progress > 0 ? 'in_progress' : 'planned')) + '</select><input type="range" min="0" max="100" step="5" data-k="progress" data-i="' + i + '" value="' + (+s.progress || 0) + '" aria-label="Прогрес"><b data-pv="' + i + '" style="width:44px">' + (+s.progress || 0) + '%</b>' +
-          '<input type="date" data-k="start" data-i="' + i + '" value="' + esc(s.start || '') + '" aria-label="Початок"><input type="date" data-k="end" data-i="' + i + '" value="' + esc(s.end || '') + '" aria-label="Кінець"><input data-k="note" data-i="' + i + '" value="' + esc(s.note || '') + '" placeholder="Примітка"><button type="button" class="je-add" data-sd="' + i + '">✕</button></div>';
-      }).join('') + '<button type="button" class="je-add" data-sa>+ етап</button>';
+        return '<div class="pj-stage"><div class="row" style="margin-bottom:8px"><input class="grow" data-k="name" data-i="' + i + '" value="' + esc(s.name) + '" placeholder="Етап"><select data-k="status" data-i="' + i + '" aria-label="Статус етапу">' + opt(SST, s.status || (+s.progress >= 100 ? 'done' : +s.progress > 0 ? 'in_progress' : 'planned')) + '</select><input type="range" min="0" max="100" step="5" data-k="progress" data-i="' + i + '" value="' + (+s.progress || 0) + '" aria-label="Прогрес"><b data-pv="' + i + '" style="width:44px">' + (+s.progress || 0) + '%</b>' +
+          '<input type="date" data-k="start" data-i="' + i + '" value="' + esc(s.start || '') + '" aria-label="Початок"><input type="date" data-k="end" data-i="' + i + '" value="' + esc(s.end || '') + '" aria-label="Кінець"><input data-k="note" data-i="' + i + '" value="' + esc(s.note || '') + '" placeholder="Примітка"><button type="button" class="je-add" data-sd="' + i + '" aria-label="Прибрати етап">✕</button></div>' + apprRow(s, i) + '</div>';
+      }).join('') + '<button type="button" class="je-add" data-sa>+ етап</button>' + (isDesign() ? '<p class="muted">«Погоджено клієнтом» зберігається одразу; лічильник правок — кнопкою «Зберегти проєкт».</p>' : '');
       $('[data-pr]', L).textContent = '· загалом ' + progressOf(stages) + '%';
       $$('[data-k]', stEl).forEach(function (x) { x.oninput = x.onchange = function () { var s = stages[+x.dataset.i]; s[x.dataset.k] = x.dataset.k === 'progress' ? +x.value : x.value;
         if (x.dataset.k === 'status' && x.value === 'done' && +s.progress < 100) { s.progress = 100; drawStages(); return; }
         if (x.dataset.k === 'progress') { $('[data-pv="' + x.dataset.i + '"]', stEl).textContent = x.value + '%'; $('[data-pr]', L).textContent = '· загалом ' + progressOf(stages) + '%'; } }; });
       $$('[data-sd]', stEl).forEach(function (x) { x.onclick = function () { stages.splice(+x.dataset.sd, 1); drawStages(); }; });
       $('[data-sa]', stEl).onclick = function () { stages.push({ name: '', progress: 0 }); drawStages(); };
+      $$('[data-ap]', stEl).forEach(function (x) { x.onclick = function () { stages[+x.dataset.ap].approved_at = today(); save('Етап погоджено клієнтом'); }; });
+      $$('[data-unap]', stEl).forEach(function (x) { x.onclick = function () { if (confirm('Зняти позначку «погоджено»?')) { delete stages[+x.dataset.unap].approved_at; save('Погодження знято'); } }; });
+      $$('[data-rv]', stEl).forEach(function (x) { x.onclick = function () { var s = stages[+x.dataset.rv]; s.revisions = Math.max(0, Math.min(99, (+s.revisions || 0) + (+x.dataset.dv))); $('[data-rvn="' + x.dataset.rv + '"]', stEl).textContent = s.revisions; }; });
     }
     drawStages();
+    $('[name=service]', L).onchange = drawStages;
     $('[data-back]', L).onclick = back;
     var fail = function (e) { toast(e.message, true); };
     // команда: відповідальний + виконавці з задачею (project_staff); працівник отримує Telegram і бачить обʼєкт у /kabinet/team
@@ -835,13 +937,43 @@
       }).join('');
       $$('[data-ir]', iss).forEach(function (b) { b.onclick = function () { api(PAPI, { method: 'PATCH', body: { type: 'issue', id: +b.dataset.ir, status: 'resolved' } }).then(function () { toast('Позначено вирішеним'); reload(); }, function (e) { toast(e.message, true); }); }; });
     }
-    $('[data-save]', L).onclick = function () {
+    function save(msg) {
       var b = { type: 'project', id: id, stages: stages.filter(function (s) { return String(s.name || '').trim(); }) };
       new FormData($('[data-f]', L)).forEach(function (v, k) { b[k] = v; });
       if (STF.length) { b.assignee_staff_id = lead ? +lead : null; b.staff = team.filter(function (t) { return t.id; }); }
       if (!can('finance.edit')) { delete b.contract_amount; delete b.contract_currency; }
-      api(PAPI, { method: 'PATCH', body: b }).then(function () { toast('Проєкт збережено'); reload(); }, fail);
-    };
+      return api(PAPI, { method: 'PATCH', body: b }).then(function () { toast(msg || 'Проєкт збережено'); reload(); }, fail);
+    }
+    $('[data-save]', L).onclick = function () { save(); };
+    // чекліст задач (migrations/0012): по етапах, виконавець, термін; працівник бачить свої в /kabinet/team («Сьогодні»)
+    var tkEl = $('[data-tk]', L), TKS = (d.tasks || []).filter(function (t) { return t.project_id === id; }), TSTF = d._staff || [];
+    if (d.tasks_ready === false) tkEl.innerHTML = '<p class="muted">Задачі зʼявляться після застосування міграції 0012 (автоматично під час деплою).</p>';
+    else {
+      var tkRow = function (t) {
+        var late = !t.done && isLate(t.due_date);
+        return '<li class="pj-task' + (t.done ? ' done' : '') + (late ? ' late' : '') + '"><label class="row"><input type="checkbox" data-tkd="' + t.id + '"' + (t.done ? ' checked' : '') + '><span>' + esc(t.title) + '</span></label>' +
+          '<small class="muted">' + (t.staff_name ? esc(t.staff_name) : 'без виконавця') + (t.due_date ? ' · <span class="' + (late ? 'err' : '') + '">до ' + dmy(t.due_date) + (late ? ' — прострочено' : '') + '</span>' : '') + (t.done && t.done_at ? ' · виконано ' + dmy(t.done_at) : '') + '</small>' +
+          (can('projects.edit') ? '<button type="button" class="je-add" data-tkx="' + t.id + '" aria-label="Видалити задачу">✕</button>' : '') + '</li>';
+      };
+      var groups = (p.stages || []).filter(function (s) { return s.id; }).map(function (s) { return [s.name, TKS.filter(function (t) { return t.stage_id === s.id; })]; })
+        .concat([['Без етапу', TKS.filter(function (t) { return !t.stage_id || !(p.stages || []).some(function (s) { return s.id === t.stage_id; }); })]])
+        .filter(function (g) { return g[1].length; });
+      $('[data-tkn]', L).textContent = TKS.length ? '· виконано ' + TKS.filter(function (t) { return t.done; }).length + ' з ' + TKS.length : '';
+      tkEl.innerHTML = (groups.length ? groups.map(function (g) { return '<div class="pj-tg"><b>' + esc(g[0]) + '</b><ul class="pj-tasks">' + g[1].map(tkRow).join('') + '</ul></div>'; }).join('') : '<p class="muted">Задач ще немає — додайте, що зробити на кожному етапі (напр. «Погодити розкладку плитки»).</p>') +
+        (d.can && d.can.task ? '<form class="tb" data-tkf style="margin-top:10px;flex-wrap:wrap"><input name="title" class="grow" required maxlength="160" placeholder="Задача: замовити плитку, погодити світло…" aria-label="Задача" style="min-width:200px">' +
+          '<select name="stage_id" aria-label="Етап">' + stOpt('') + '</select>' +
+          (can('projects.edit') ? '<select name="staff_id" aria-label="Виконавець"><option value="">— виконавець —</option>' + TSTF.map(function (x) { return '<option value="' + x.id + '"' + (x.id === p.assignee_staff_id ? ' selected' : '') + '>' + esc(x.name) + '</option>'; }).join('') + '</select>' : '') +
+          '<input name="due_date" type="date" aria-label="Термін"><button class="btn" type="submit">Додати задачу</button></form>' : '');
+      $$('[data-tkd]', tkEl).forEach(function (c) { c.onchange = function () { c.disabled = true; api(PAPI, { method: 'PATCH', body: { type: 'task', id: +c.dataset.tkd, done: c.checked } }).then(function () { toast(c.checked ? 'Задачу виконано' : 'Задачу повернуто в роботу'); reload(); }, function (e) { c.disabled = false; c.checked = !c.checked; fail(e); }); }; });
+      $$('[data-tkx]', tkEl).forEach(function (b) { b.onclick = function () { if (confirm('Видалити задачу?')) api(PAPI + '?type=task&id=' + b.dataset.tkx, { method: 'DELETE' }).then(reload, fail); }; });
+      var tkf = $('[data-tkf]', tkEl);
+      if (tkf) tkf.onsubmit = function (e) {
+        e.preventDefault(); var F = tkf.elements;
+        var b = { type: 'task', project_id: id, title: F.title.value, stage_id: F.stage_id.value || null, due_date: F.due_date.value || null, sort: TKS.length };
+        if (F.staff_id) b.staff_id = F.staff_id.value ? +F.staff_id.value : null;
+        api(PAPI, { method: 'POST', body: b }).then(function () { toast('Задачу додано'); reload(); }, fail);
+      };
+    }
     $('[data-del]', L).onclick = function () {
       if (prompt('Видалити проєкт разом із фотозвітами? Напишіть «так».') !== 'так') return;
       api(PAPI + '?type=project&id=' + id, { method: 'DELETE' }).then(back, fail);
@@ -885,7 +1017,8 @@
     // графік платежів (migrations/0008): рядки бази, статус міняється одразу зі списку
     var payEl = $('[data-pay]', L);
     payEl.innerHTML = pays.length ? '<div class="tscroll"><table class="adm"><tr><th>Платіж</th><th>Етап</th><th>%</th><th>Сума</th><th>План</th><th>Статус</th><th>Факт</th><th></th></tr>' + pays.map(function (x) {
-      return '<tr><td><b>' + esc(x.title) + '</b>' + (x.note ? '<br><small>' + esc(x.note) + '</small>' : '') + '</td><td><small>' + esc(stName(x.stage_id) || '—') + '</small></td><td>' + (x.pct != null ? esc(x.pct) + '%' : '—') + '</td>' +
+      var pl = payLate(x);
+      return '<tr' + (pl ? ' class="late"' : '') + '><td><b>' + esc(x.title) + '</b>' + (pl ? ' <span class="pill warn">' + (x.status === 'due' ? 'до оплати · ' : '') + 'прострочено</span>' : '') + (x.note ? '<br><small>' + esc(x.note) + '</small>' : '') + '</td><td><small>' + esc(stName(x.stage_id) || '—') + '</small></td><td>' + (x.pct != null ? esc(x.pct) + '%' : '—') + '</td>' +
         '<td>' + (x.amount != null ? money(x.amount, x.currency) : '—') + '</td><td><input type="date" data-pd="' + x.id + '" value="' + esc(x.due_date || '') + '" aria-label="Дата за планом"></td>' +
         '<td><select data-ps="' + x.id + '" aria-label="Статус">' + opt(PAYST, x.status) + '</select></td><td><small>' + esc(x.paid_date || '') + '</small></td>' +
         '<td><button class="btn ghost sm" data-pe="' + x.id + '">Сума</button> <button class="btn ghost sm" data-px="' + x.id + '" aria-label="Видалити платіж">✕</button></td></tr>';

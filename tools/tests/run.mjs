@@ -1,4 +1,4 @@
-// Тести ролей і доступу CRM (migrations 0001–0011, functions/_roles.js). Запуск: node tools/tests/run.mjs
+// Тести ролей і доступу CRM (migrations 0001–0012, functions/_roles.js). Запуск: node tools/tests/run.mjs
 // Стенд — tools/tests/harness.mjs (node:sqlite замість D1, мок Telegram). Перевіряємо для кожної ролі, що вона бачить і
 // чого НЕ бачить (рядки й поля), заборону ескалації, деактивацію, session_version, аудит, CSRF і старі сценарії клієнта/заявок.
 import { addClient, bot, call, describe, eq, freshDB, it, login, makeEnv, ok, report } from './harness.mjs';
@@ -430,6 +430,232 @@ describe('Сторінка-джерело заявки (orders.ref_path, migrati
       const row = await oe.DB.prepare('SELECT * FROM orders WHERE number = ?').bind(r.data.number).first();
       ok(!('ref_path' in row)); if (up >= 9) eq(row.form, 'landing');
     }
+  });
+}
+
+describe('CRM обʼєктів: шаблони етапів, дата здачі, графік за схемою, фільтри (migrations/0012)');
+{
+  const ce = makeEnv(freshDB());
+  const cq = (sql, ...a) => ce.DB.prepare(sql).bind(...a).first();
+  const day = n => new Date(Date.now() + n * 86400000).toISOString().slice(0, 10);
+  const o = await addClient(ce, { id: 111, name: 'Власник' }), m = await addClient(ce, { id: 222, name: 'Менеджер' });
+  const cl = await addClient(ce, { id: 990, name: 'Тест-клієнт', phone: '+380500000001' });
+  const k = { O: await login(ce, o), M: await login(ce, m), C: await login(ce, cl) };
+  await call(ce, 'GET', '/api/me', { cookie: k.M });
+  const f1 = await call(ce, 'POST', '/api/admin/staff', { cookie: k.O, body: { name: 'Прораб А', role: 'foreman', tg: '444' } });
+  const f2 = await call(ce, 'POST', '/api/admin/staff', { cookie: k.O, body: { name: 'Прораб Б', role: 'foreman', tg: '555' } });
+  const A = f1.data.id, B = f2.data.id;
+  k.A = await login(ce, await addClient(ce, { id: 444, name: 'А' }));
+  k.B = await login(ce, await addClient(ce, { id: 555, name: 'Б' }));
+  const proj = async (body, cookie = k.O) => call(ce, 'POST', '/api/admin/projects', { cookie, body: { type: 'project', client_id: cl, ...body } });
+  const list = async (qs = '', cookie = k.O) => (await call(ce, 'GET', '/api/admin/projects' + qs, { cookie })).data;
+  const get = async (id, cookie = k.O) => (await list('', cookie)).projects.find(p => p.id === id);
+  let D1, R1, B1, O1;
+
+  await it('GET віддає шаблони етапів за типом (одне джерело правди — сервер)', async () => {
+    const d = await list();
+    eq(Object.keys(d.templates), ['design', 'repair', 'build', 'furnish', 'landscape', 'other']);
+    eq(d.templates.design[0], 'Обміри й ТЗ'); eq(d.templates.design.length, 7); eq(d.templates.build.length, 9); eq(d.templates.other, []);
+    eq(Object.keys(d.schemes), ['50/50', '50/30/20', '50/40/10']);
+  });
+  await it('новий проєкт без stages → етапи з шаблону типу; явні stages — без шаблону', async () => {
+    const tpl = (await list()).templates;
+    const r = await proj({ title: 'Дизайн квартири', service: 'design', address: 'вул. Тестова, 5', area: 80, assignee_staff_id: A });
+    eq(r.status, 200); D1 = r.data.id;
+    const st = JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', D1)).stages);
+    eq(st.map(s => s.name), tpl.design); ok(st.every(s => s.status === 'planned' && s.progress === 0));
+    eq(new Set(st.map(s => s.id)).size, 7, 'унікальні id етапів');
+    B1 = (await proj({ title: 'Будинок', service: 'build' })).data.id;
+    eq(JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', B1)).stages).length, 9);
+    O1 = (await proj({ title: 'Інше', service: 'nonsense' })).data.id;
+    const o1 = await cq('SELECT service, stages FROM projects WHERE id = ?', O1);
+    eq(o1.service, 'other'); eq(JSON.parse(o1.stages), []);
+    const own = (await proj({ title: 'Свої етапи', service: 'repair', stages: [{ name: 'Один' }] })).data.id;
+    eq(JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', own)).stages).map(s => s.name), ['Один']);
+  });
+  await it('ремонт зі схемою 50/30/20: платежі від суми договору, привʼязані до першого / середнього / останнього етапу', async () => {
+    const r = await proj({ title: 'Ремонт офісу', service: 'repair', contract_amount: 10000, contract_currency: 'EUR', scheme: '50/30/20', deadline: day(-3) });
+    eq(r.status, 200); R1 = r.data.id;
+    const st = JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', R1)).stages);
+    const pay = (await ce.DB.prepare('SELECT * FROM project_payments WHERE project_id = ? ORDER BY sort').bind(R1).all()).results;
+    eq(pay.map(y => y.amount), [5000, 3000, 2000]); eq(pay.map(y => y.pct), [50, 30, 20]); ok(pay.every(y => y.currency === 'EUR' && y.status === 'planned'));
+    eq(pay.map(y => y.stage_id), [st[0].id, st[3].id, st[6].id]);
+    ok(/^Аванс 50%/.test(pay[0].title) && /Після завершення/.test(pay[2].title));
+    const a = await cq("SELECT after FROM audit_log WHERE action = 'project.create' AND entity_id = ?", String(R1));
+    eq(JSON.parse(a.after).scheme, '50/30/20');
+  });
+  await it('дата здачі: зберігається, прострочка = deadline < сьогодні і статус не «Завершено»', async () => {
+    let p = await get(R1);
+    eq(p.deadline, day(-3)); eq(p.overdue, true);
+    eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: R1, deadline: day(30) } })).status, 200);
+    p = await get(R1); eq(p.deadline, day(30)); eq(p.overdue, false);
+    await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: R1, deadline: day(-1), status: 'done' } });
+    eq((await get(R1)).overdue, false, 'завершений — не прострочений');
+    await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: R1, status: 'active' } });
+    eq((await get(R1)).overdue, true);
+    await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: B1, deadline: 'завтра' } });
+    eq((await get(B1)).deadline, null, 'некоректна дата → null');
+    ok(await cq("SELECT 1 FROM audit_log WHERE action = 'project.update' AND entity_id = ? AND after LIKE '%deadline%'", String(R1)), 'зміна дати в аудиті');
+  });
+  await it('GET ?service= і ?status= фільтрують на сервері; невідоме значення ігнорується', async () => {
+    eq((await list('?service=design')).projects.map(p => p.id), [D1]);
+    eq((await list('?service=build&status=active')).projects.map(p => p.id), [B1]);
+    eq((await list('?status=done')).projects.length, 0);
+    eq((await list('?service=hack')).projects.length, (await list()).projects.length);
+  });
+  await it('без finance.edit схему платежів не створити (403); прораб не створює проєкт', async () => {
+    eq((await proj({ title: 'x', service: 'repair' }, k.A)).status, 403);
+    // дизайн-проєкт без суми: схема з порожніми сумами, але лише з правом фінансів — менеджер має
+    const r = await proj({ title: 'Комплектація', service: 'furnish', scheme: '50/50' }, k.M);
+    eq(r.status, 200);
+    eq((await ce.DB.prepare('SELECT amount FROM project_payments WHERE project_id = ?').bind(r.data.id).all()).results.map(y => y.amount), [null, null]);
+  });
+
+  describe('CRM обʼєктів: погодження етапу дизайн-проєкту (approved_at, revisions)');
+  await it('approved_at і revisions зберігаються в етапі; некоректні — відкидаються; клієнт бачить «погоджено»', async () => {
+    const st = (await get(D1)).stages;
+    st[0].approved_at = day(-2); st[0].revisions = 3; st[1].approved_at = 'вчора'; st[1].revisions = 500; st[2].revisions = -4;
+    eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: D1, stages: st } })).status, 200);
+    const s2 = JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', D1)).stages);
+    eq([s2[0].approved_at, s2[0].revisions], [day(-2), 3]);
+    ok(!('approved_at' in s2[1])); eq(s2[1].revisions, 99, 'обмеження 99'); ok(!('revisions' in s2[2]), 'відʼємне → без поля');
+    eq(s2.map(s => s.id), st.map(s => s.id), 'id етапів не змінились');
+    const c = await call(ce, 'GET', '/api/account/projects', { cookie: k.C });
+    eq(c.data.projects.find(p => p.id === D1).stages[0].approved_at, day(-2));
+  });
+  await it('«етап виконано» з кабінету працівника не стирає погодження', async () => {
+    const sid = (await get(D1)).stages[0].id;
+    eq((await call(ce, 'POST', '/api/team/action', { cookie: k.A, body: { type: 'stage', project_id: D1, stage_id: sid, status: 'done' } })).status, 200);
+    const s0 = JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', D1)).stages)[0];
+    eq([s0.status, s0.approved_at, s0.revisions], ['done', day(-2), 3]);
+  });
+
+  describe('CRM обʼєктів: задачі (project_tasks) — CRUD, права, кабінет працівника');
+  let T1, T2, T3, TB;
+  await it('власник створює задачу з виконавцем і терміном → Telegram виконавцю, аудит task.create; GET віддає tasks', async () => {
+    bot.reset();
+    const sid = (await get(D1)).stages[1].id;
+    const r = await call(ce, 'POST', '/api/admin/projects', { cookie: k.O, body: { type: 'task', project_id: D1, title: 'Погодити планування', stage_id: sid, staff_id: A, due_date: day(-1) } });
+    eq(r.status, 200); T1 = r.data.id;
+    ok(bot.calls.some(c => c.chat_id === '444' && /Погодити планування/.test(c.text)), 'сповіщення виконавцю');
+    T2 = (await call(ce, 'POST', '/api/admin/projects', { cookie: k.O, body: { type: 'task', project_id: D1, title: 'Замовити плитку', staff_id: B, due_date: day(5) } })).data.id;
+    T3 = (await call(ce, 'POST', '/api/admin/projects', { cookie: k.O, body: { type: 'task', project_id: D1, title: 'Нічия задача', staff_id: null } })).data.id;
+    TB = (await call(ce, 'POST', '/api/admin/projects', { cookie: k.O, body: { type: 'task', project_id: B1, title: 'Чужий обʼєкт', staff_id: B } })).data.id;
+    const d = await list();
+    const t1 = d.tasks.find(t => t.id === T1);
+    eq([t1.title, t1.stage_id, t1.staff_name, t1.done], ['Погодити планування', sid, 'Прораб А', 0]);
+    const p = d.projects.find(x => x.id === D1); eq([p.tasks_total, p.tasks_done], [3, 0]);
+    ok(await cq("SELECT 1 FROM audit_log WHERE action = 'task.create' AND entity_id = ?", String(D1)));
+    eq((await call(ce, 'POST', '/api/admin/projects', { cookie: k.O, body: { type: 'task', project_id: D1, title: '  ' } })).status, 422);
+    eq((await call(ce, 'POST', '/api/admin/projects', { cookie: k.O, body: { type: 'task', project_id: D1, title: 'x', staff_id: 9999 } })).status, 422);
+    const bad = (await call(ce, 'POST', '/api/admin/projects', { cookie: k.O, body: { type: 'task', project_id: D1, title: 'Етап чужий', stage_id: 'zzzzz' } })).data.id;
+    eq((await cq('SELECT stage_id FROM project_tasks WHERE id = ?', bad)).stage_id, null, 'етап не з цього проєкту → null');
+    await call(ce, 'DELETE', '/api/admin/projects?type=task&id=' + bad, { cookie: k.O });
+  });
+  await it('прораб бачить задачі лише своїх обʼєктів; чужий обʼєкт — 404', async () => {
+    const d = await list('', k.A);
+    eq(d.projects.map(p => p.id), [D1]); ok(!d.tasks.some(t => t.id === TB), 'без задач чужого обʼєкта');
+    eq((await call(ce, 'POST', '/api/admin/projects', { cookie: k.A, body: { type: 'task', project_id: B1, title: 'x' } })).status, 404);
+    eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.A, body: { type: 'task', id: TB, done: true } })).status, 404);
+    eq((await call(ce, 'POST', '/api/team/action', { cookie: k.A, body: { type: 'task', project_id: B1, task_id: TB } })).status, 404);
+  });
+  await it('прораб: свою задачу ставить лише на себе, редагувати чуже чи поля — 403, видаляти — 403', async () => {
+    const r = await call(ce, 'POST', '/api/admin/projects', { cookie: k.A, body: { type: 'task', project_id: D1, title: 'Купити профіль' } });
+    eq(r.status, 200); eq((await cq('SELECT staff_id FROM project_tasks WHERE id = ?', r.data.id)).staff_id, A, 'на себе');
+    eq((await call(ce, 'POST', '/api/admin/projects', { cookie: k.A, body: { type: 'task', project_id: D1, title: 'x', staff_id: B } })).status, 403);
+    eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.A, body: { type: 'task', id: T1, title: 'Інше' } })).status, 403);
+    eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.A, body: { type: 'task', id: T2, done: true } })).status, 403, 'задача Прораба Б');
+    eq((await call(ce, 'DELETE', '/api/admin/projects?type=task&id=' + r.data.id, { cookie: k.A })).status, 403);
+    eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.A, body: { type: 'task', id: r.data.id, done: true } })).status, 200);
+    eq((await cq('SELECT done, done_by FROM project_tasks WHERE id = ?', r.data.id)).done_by, A);
+  });
+  await it('/kabinet/team: мої невиконані задачі як kind «task» (прострочена — urgent), чекліст обʼєкта; чужих у «Сьогодні» немає', async () => {
+    const t = await call(ce, 'GET', '/api/team/today', { cookie: k.A });
+    eq(t.status, 200);
+    const mine = t.data.tasks.filter(x => x.kind === 'task');
+    eq(mine.map(x => x.task_id), [T1]); eq(mine[0].urgent, true); eq(mine[0].due, day(-1)); ok(/етап/.test(mine[0].sub));
+    const p = t.data.projects.find(x => x.id === D1);
+    eq(p.tasks.length, 4); ok(p.tasks.find(x => x.id === T1).mine && !p.tasks.find(x => x.id === T2).mine);
+    eq(p.tasks.find(x => x.id === T1).stage_name, (await get(D1)).stages[1].name);
+    // виконавця задачі додано в команду обʼєкта — Б бачить свої задачі й ці обʼєкти, але не задачі А
+    const tb = await call(ce, 'GET', '/api/team/today', { cookie: k.B });
+    eq(tb.data.tasks.filter(x => x.kind === 'task').map(x => x.task_id), [T2, TB]);
+    eq(tb.data.projects.map(x => x.id).sort(), [D1, B1].sort());
+    ok(await cq('SELECT 1 FROM project_staff WHERE project_id = ? AND staff_id = ?', B1, B), 'Б у команді B1');
+  });
+  await it('працівник відмічає свою задачу (team/action type task) — зникає з «Сьогодні», аудит task.done; чужу — 403; нічию — можна', async () => {
+    eq((await call(ce, 'POST', '/api/team/action', { cookie: k.A, body: { type: 'task', project_id: D1, task_id: T2 } })).status, 403);
+    const r = await call(ce, 'POST', '/api/team/action', { cookie: k.A, body: { type: 'task', project_id: D1, task_id: T1 } });
+    eq(r.status, 200); eq(r.data.done, true);
+    const row = await cq('SELECT done, done_by, done_at FROM project_tasks WHERE id = ?', T1);
+    eq([row.done, row.done_by], [1, A]); ok(row.done_at);
+    ok(!(await call(ce, 'GET', '/api/team/today', { cookie: k.A })).data.tasks.some(x => x.task_id === T1));
+    ok(await cq("SELECT 1 FROM audit_log WHERE action = 'task.done' AND staff_id = ?", A));
+    eq((await call(ce, 'POST', '/api/team/action', { cookie: k.A, body: { type: 'task', project_id: D1, task_id: T3 } })).status, 200, 'без виконавця');
+    eq((await call(ce, 'POST', '/api/team/action', { cookie: k.A, body: { type: 'task', project_id: D1, task_id: T1, done: false } })).status, 200);
+    eq((await cq('SELECT done, done_at FROM project_tasks WHERE id = ?', T1)).done_at, null, 'повернуто в роботу');
+    eq((await call(ce, 'POST', '/api/team/action', { cookie: k.A, body: { type: 'task', project_id: D1, task_id: TB } })).status, 404, 'задача іншого обʼєкта');
+  });
+  await it('власник редагує і видаляє задачу; видалення проєкту прибирає його задачі', async () => {
+    eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { type: 'task', id: T2, title: 'Замовити плитку 60×60', staff_id: A, done: true } })).status, 200);
+    const t2 = await cq('SELECT * FROM project_tasks WHERE id = ?', T2);
+    eq([t2.title, t2.staff_id, t2.done], ['Замовити плитку 60×60', A, 1]);
+    eq((await call(ce, 'DELETE', '/api/admin/projects?type=task&id=' + T3, { cookie: k.O })).status, 200);
+    ok(!await cq('SELECT 1 FROM project_tasks WHERE id = ?', T3)); ok(await cq("SELECT 1 FROM audit_log WHERE action = 'task.delete'"));
+    eq((await call(ce, 'DELETE', '/api/admin/projects?type=task&id=' + T3, { cookie: k.O })).status, 404, 'вже немає');
+    const tmp = (await proj({ title: 'На видалення', service: 'repair' })).data.id;
+    await call(ce, 'POST', '/api/admin/projects', { cookie: k.O, body: { type: 'task', project_id: tmp, title: 'x' } });
+    eq((await call(ce, 'DELETE', '/api/admin/projects?type=project&id=' + tmp, { cookie: k.O })).status, 200);
+    ok(!await cq('SELECT 1 FROM project_tasks WHERE project_id = ?', tmp));
+  });
+  await it('дашборд «Студія»: прострочені задачі й дати здачі — у «прострочене»', async () => {
+    const r = await call(ce, 'GET', '/api/admin/studio', { cookie: k.O });
+    eq(r.status, 200);
+    ok(r.data.overdue.tasks.some(t => t.id === T1 && t.project_title === 'Дизайн квартири'), 'прострочена задача');
+    ok(!r.data.overdue.tasks.some(t => t.id === T2), 'виконана — ні');
+    ok(r.data.overdue.deadlines.some(p => p.project_id === R1), 'обʼєкт з минулою датою здачі');
+    eq(r.data.workload.find(w => w.id === A).late_tasks, 1);
+  });
+
+  describe('Безпека: платежі, документи й DELETE лише видимого обʼєкта (canSeeProject)');
+  await it('працівник з правами фінансів/редагування, але без projects.view_all — чужий обʼєкт 404', async () => {
+    const R = await import('../../functions/_roles.js');
+    const was = R.ROLES.foreman.perms.slice();
+    R.ROLES.foreman.perms.push('finance.edit', 'finance.view', 'projects.edit');
+    try {
+      const pay = (await ce.DB.prepare('SELECT id FROM project_payments WHERE project_id = ?').bind(R1).first()).id;
+      eq((await call(ce, 'POST', '/api/admin/projects', { cookie: k.A, body: { type: 'payment', project_id: R1, title: 'Хак', amount: 1 } })).status, 404, 'POST платежу');
+      eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.A, body: { type: 'payment', id: pay, status: 'paid' } })).status, 404, 'PATCH платежу');
+      eq((await cq('SELECT status FROM project_payments WHERE id = ?', pay)).status, 'planned');
+      eq((await call(ce, 'DELETE', '/api/admin/projects?type=payment&id=' + pay, { cookie: k.A })).status, 404, 'DELETE платежу');
+      eq((await call(ce, 'DELETE', '/api/admin/projects?type=project&id=' + B1, { cookie: k.A })).status, 404, 'DELETE проєкту');
+      eq((await call(ce, 'DELETE', '/api/admin/projects?type=task&id=' + TB, { cookie: k.A })).status, 404, 'DELETE задачі');
+      eq((await call(ce, 'POST', '/api/admin/projects', { cookie: k.A, body: { type: 'document', client_id: cl, project_id: B1, kind: 'act', title: 'x', url: 'https://example.com/a.pdf' } })).status, 404, 'документ до чужого');
+      ok(await cq('SELECT 1 FROM projects WHERE id = ?', B1) && await cq('SELECT 1 FROM project_payments WHERE id = ?', pay));
+      eq((await call(ce, 'POST', '/api/admin/projects', { cookie: k.A, body: { type: 'payment', project_id: D1, title: 'Свій', amount: 1 } })).status, 200, 'свій обʼєкт — можна');
+    } finally { R.ROLES.foreman.perms.length = 0; R.ROLES.foreman.perms.push(...was); }
+    eq((await call(ce, 'POST', '/api/admin/projects', { cookie: k.A, body: { type: 'payment', project_id: D1, title: 'x' } })).status, 403, 'права повернуто');
+  });
+
+  describe('Сумісність: база без міграції 0012');
+  await it('дата здачі й задачі не ламають решту: створення з шаблоном, PATCH, GET, кабінет, студія', async () => {
+    const oe = makeEnv(freshDB(11));
+    const ow = await login(oe, await addClient(oe, { id: 111, name: 'В' }));
+    await addClient(oe, { id: 991, name: 'К' });
+    const cid = (await oe.DB.prepare('SELECT id FROM clients WHERE provider_id = ?').bind('991').first()).id;
+    const r = await call(oe, 'POST', '/api/admin/projects', { cookie: ow, body: { type: 'project', client_id: cid, title: 'Старий', service: 'landscape', deadline: '2030-01-01', scheme: '50/50', contract_amount: 100 } });
+    eq(r.status, 200, JSON.stringify(r.data));
+    const row = await oe.DB.prepare('SELECT * FROM projects WHERE id = ?').bind(r.data.id).first();
+    ok(!('deadline' in row)); eq(JSON.parse(row.stages).length, 7);
+    eq((await oe.DB.prepare('SELECT COUNT(*) AS n FROM project_payments').first()).n, 2);
+    eq((await call(oe, 'PATCH', '/api/admin/projects', { cookie: ow, body: { id: r.data.id, title: 'Старий 2', deadline: '2031-01-01' } })).status, 200);
+    const g = await call(oe, 'GET', '/api/admin/projects', { cookie: ow });
+    eq(g.status, 200); eq(g.data.tasks, []); eq(g.data.tasks_ready, false); eq(g.data.projects[0].title, 'Старий 2');
+    eq((await call(oe, 'POST', '/api/admin/projects', { cookie: ow, body: { type: 'task', project_id: r.data.id, title: 'x' } })).status, 503);
+    eq((await call(oe, 'GET', '/api/team/today', { cookie: ow })).status, 200);
+    eq((await call(oe, 'POST', '/api/team/action', { cookie: ow, body: { type: 'task', project_id: r.data.id, task_id: 1 } })).status, 503);
+    const st = await call(oe, 'GET', '/api/admin/studio', { cookie: ow });
+    eq(st.status, 200); eq(st.data.overdue.tasks, []);
   });
 }
 

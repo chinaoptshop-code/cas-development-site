@@ -1,6 +1,8 @@
 // Кабінет працівника (/kabinet/team): «Мої задачі на сьогодні», мої обʼєкти зі стадіями й наступним кроком, (для менеджера) заявки.
 // GET → {me, tasks, projects, leads, finance?}. Рядки — лише видимі працівнику (projectScope / orderScope), поля — shapeProject / shapeOrder:
 // прораб бачить адресу й телефон клієнта, але не суми; бухгалтер — суми, але не телефони.
+// Задачі проєкту (project_tasks, міграція 0012): чекліст обʼєкта (projects[].tasks) і мої невиконані — у «Сьогодні» як kind 'task'
+// (прострочені — urgent); відмітити — POST /api/team/action {type: 'task'}. До міграції — без задач.
 import { CLOSED, json, statusLabel } from '../../_lib.js';
 import { SLA_MIN, sqlTime } from '../../_alerts.js';
 import { cameraOf, progressOf, stageStatus, STAGE_STATUS } from '../../_account.js';
@@ -31,6 +33,11 @@ export async function onRequestGet({ request, env }) {
       const ISS = ids.length ? (await env.DB.prepare(`SELECT i.id, i.project_id, i.stage_id, i.note, i.photos, i.status, i.created_at, s.name AS staff_name FROM project_issues i
           LEFT JOIN staff s ON s.id = i.staff_id WHERE i.project_id IN (${q}) AND i.status = 'open' ORDER BY i.id DESC`).bind(...ids).all()).results : [];
       const AS = ids.length ? (await env.DB.prepare(`SELECT id, name, role FROM staff WHERE id IN (SELECT assignee_staff_id FROM projects WHERE id IN (${q}))`).bind(...ids).all()).results : [];
+      let TK = [];
+      try {
+        TK = ids.length ? (await env.DB.prepare(`SELECT t.id, t.project_id, t.stage_id, t.title, t.staff_id, t.due_date, t.done, t.done_at, s.name AS staff_name FROM project_tasks t
+            LEFT JOIN staff s ON s.id = t.staff_id WHERE t.project_id IN (${q}) ORDER BY t.done, t.sort, COALESCE(t.due_date, '9999'), t.id LIMIT 1000`).bind(...ids).all()).results : [];
+      } catch (e) { if (!noTable(e)) throw e; }
       if (x.can('finance.view') && ids.length) payments = (await env.DB.prepare(`SELECT * FROM project_payments WHERE project_id IN (${q}) AND status != 'paid' ORDER BY COALESCE(due_date, '9999') LIMIT 200`).bind(...ids).all()).results;
       projects = P.map(p => {
         const stages = parse(p.stages, []).map(s => ({ ...s, status: stageStatus(s), status_label: STAGE_STATUS[stageStatus(s)] }));
@@ -50,6 +57,9 @@ export async function onRequestGet({ request, env }) {
           last_report: reps[0] ? reps[0].date : null,
           issues: ISS.filter(i => i.project_id === p.id).map(i => ({ ...i, photos: parse(i.photos, []) })),
           payments: payments.filter(y => y.project_id === p.id),
+          deadline: p.deadline || null,
+          tasks: TK.filter(y => y.project_id === p.id).map(y => ({ ...y, done: !!y.done, mine: y.staff_id === x.staffId,
+            stage_name: (stages.find(s => s.id === y.stage_id) || {}).name || null })),
         }, x);
       });
       for (const p of projects) {
@@ -59,6 +69,9 @@ export async function onRequestGet({ request, env }) {
           tasks.push({ kind: 'stage', urgent: s.end < t, due: s.end, project_id: p.id, stage_id: s.id, title: `Етап «${s.name}» — дедлайн ${s.end}`, sub: p.title });
         if (x.can('reports.upload') && (!p.last_report || p.last_report <= day(-REPORT_EVERY)))
           tasks.push({ kind: 'report', urgent: false, due: t, project_id: p.id, title: 'Фотозвіт для клієнта', sub: p.title + (p.last_report ? ` · останній ${p.last_report}` : ' · ще не було') });
+        for (const y of p.tasks) if (!y.done && y.mine)
+          tasks.push({ kind: 'task', urgent: !!(y.due_date && y.due_date < t), due: y.due_date || null, project_id: p.id, task_id: y.id, stage_id: y.stage_id,
+            title: y.title, sub: p.title + (y.stage_name ? ` · етап «${y.stage_name}»` : '') });
         for (const i of p.issues || []) if (x.can('projects.edit') || i.staff_name === x.name)
           tasks.push({ kind: 'issue', urgent: true, due: i.created_at.slice(0, 10), project_id: p.id, issue_id: i.id, title: 'Проблема: ' + i.note.slice(0, 80), sub: p.title });
       }

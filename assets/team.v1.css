@@ -155,3 +155,12 @@ dialog.tm-sheet::backdrop{background:rgba(10,8,6,.5)}
   .tm-btn,.tm-toast{transition:none}
   ::view-transition-old(root),::view-transition-new(root){animation:none}
 }
+/* чекліст задач обʼєкта (team.v1.js — checklist) */
+.tm-tl{list-style:none;margin:6px 0 4px;padding:0}
+.tm-tl li{border-bottom:1px solid var(--tm-line)}
+.tm-tl label{display:flex;gap:12px;align-items:flex-start;padding:10px 2px;min-height:44px;cursor:pointer}
+.tm-tl input{width:24px;height:24px;flex:none;margin-top:1px;accent-color:var(--tm-ok)}
+.tm-tl span{display:flex;flex-direction:column;gap:2px;font-size:15px}
+.tm-tl small{font-size:13px}
+.tm-tl li.done span{text-decoration:line-through;color:var(--tm-mut)}
+.tm-tl li.late small{color:var(--tm-warn,#b3261e)}
