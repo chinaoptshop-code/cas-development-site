@@ -373,7 +373,7 @@ DROP_Q = re.compile(r'(?:купити|купить|замовити меблі|�
                     r'знижки в Оздобі|скидки в Оздобе|оплатити замовлення в Оздобі|оплатить заказ в Оздобе|'
                     r'single item from Ozdoba|pojedyncz\w* (?:sztuk|rzecz)\w* (?:w|z) Ozdob|ein einzelnes Stück|un seul article chez Ozdoba|'
                     r'una sola pieza en Ozdoba|uma só peça na Ozdoba|قطعة واحدة من Ozdoba|可以只买一件|окремими позиціями|отдельными позициями|w Ozdobie jedną|'
-                    r'мінімальне замовлення|минимальный заказ|minimum order|pedido mínimo|commande minimum|Mindest|minimalne zamówienie|'
+                    r'мінімальне замовлення|минимальный заказ|minimum order|pedido mínimo|encomenda mínima|commande minimum|Mindest|minimalne zamówienie|'
                     r'最低起订|起订额|الحد الأدنى للطلب')
 
 

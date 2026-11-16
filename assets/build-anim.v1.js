@@ -14,7 +14,7 @@
   W.__casBA = 1;
   var secs = [].slice.call(d.querySelectorAll('section.bz[data-bz]'));
   if (!secs.length || !W.fetch || !W.Promise) return;
-  var VER = {"ar.flat":"dd4e8c42","ar.house":"72f5497d","de.flat":"bef66e8c","de.house":"ea8c3b75","en.flat":"1d82d6d8","en.house":"e290d5e4","es.flat":"a055bd91","es.house":"2981262c","fr.flat":"ccd5f01d","fr.house":"5dcf8861","pl.flat":"095e7c40","pl.house":"eea301c3","ru.flat":"7e279bbf","ru.house":"0173dbc5","uk.flat":"9a5703ba","uk.house":"80a10b51","zh.flat":"fab61a6a","zh.house":"ebb4c404"}; /*ver*/
+  var VER = {"ar.flat":"dd4e8c42","ar.house":"72f5497d","de.flat":"bef66e8c","de.house":"ea8c3b75","en.flat":"1d82d6d8","en.house":"e290d5e4","es.flat":"a055bd91","es.house":"2981262c","fr.flat":"ccd5f01d","fr.house":"5dcf8861","pl.flat":"095e7c40","pl.house":"eea301c3","pt.flat":"50dec566","pt.house":"7b11d901","ru.flat":"7e279bbf","ru.house":"0173dbc5","uk.flat":"9a5703ba","uk.house":"80a10b51","zh.flat":"fab61a6a","zh.house":"ebb4c404"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
   var LOW = W.matchMedia && W.matchMedia('(min-width:768px) and (max-height:640px)'); // низький екран ПК-ширини (телефон у ландшафті): налаштування — за кнопкою ⚙, як на телефоні

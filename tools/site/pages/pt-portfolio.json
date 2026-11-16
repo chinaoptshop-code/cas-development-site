@@ -33,16 +33,16 @@
      "@type": "ListItem",
      "position": 2,
      "name": "Portfólio",
-     "item": "https://cas-develop.com/en/portfolio"
+     "item": "https://cas-develop.com/pt/portfolio"
     }
    ]
   },
   {
    "@context": "https://schema.org",
    "@type": "CollectionPage",
-   "@id": "https://cas-develop.com/en/portfolio#page",
+   "@id": "https://cas-develop.com/pt/portfolio#page",
    "name": "Portfólio da CAS Development",
-   "url": "https://cas-develop.com/en/portfolio",
+   "url": "https://cas-develop.com/pt/portfolio",
    "inLanguage": "pt",
    "about": {
     "@id": "https://cas-develop.com/pt/#business"
@@ -438,51 +438,51 @@
    "h2": "Visitas 3D 360°",
    "items": [
     [
-     "/en/tury",
+     "/pt/tury",
      "Todas as visitas 3D"
     ],
     [
-     "/en/tury/apartment-2025",
+     "/pt/tury/apartment-2025",
      "Apartamento concluído, Kyiv"
     ],
     [
-     "/en/tury/edelweiss",
+     "/pt/tury/edelweiss",
      "Edelweiss, 108 m²"
     ],
     [
-     "/en/tury/hoda-estate",
+     "/pt/tury/hoda-estate",
      "Hoda Estate, Cárpatos"
     ],
     [
-     "/en/tury/triangle-house",
+     "/pt/tury/triangle-house",
      "Triangle House"
     ],
     [
-     "/en/tury/yablunytsia-estate",
+     "/pt/tury/yablunytsia-estate",
      "Propriedade em Yablunytsia"
     ],
     [
-     "/en/tury/apartment-80",
+     "/pt/tury/apartment-80",
      "Apartamento, 80 m²"
     ],
     [
-     "/en/tury/apartment-56",
+     "/pt/tury/apartment-56",
      "Apartamento, 56 m²"
     ],
     [
-     "/en/tury/apartment-45",
+     "/pt/tury/apartment-45",
      "Apartamento, 45 m²"
     ],
     [
-     "/en/tury/apartment-37",
+     "/pt/tury/apartment-37",
      "Apartamento, 37 m²"
     ],
     [
-     "/en/tury/house-concept-1",
+     "/pt/tury/house-concept-1",
      "Moradia, conceito 1"
     ],
     [
-     "/en/tury/house-concept-4",
+     "/pt/tury/house-concept-4",
      "Moradia, conceito 4"
     ]
    ]

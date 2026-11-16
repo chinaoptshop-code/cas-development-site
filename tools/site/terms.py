@@ -101,7 +101,7 @@ T = {
         ]),
     'pt': dict(
         title='Termos de utilização | CAS Development',
-        desc='Termos de utilização do cas-develop.com: a informação não é uma proposta, preços «a partir de» indicativos, encomendas Ozdoba, pedidos e direitos sobre fotos.',
+        desc='Termos de utilização do cas-develop.com: a informação não é proposta, preços «a partir de» indicativos, encomendas Ozdoba, pedidos e direitos sobre fotos.',
         h1='Termos de utilização', date='Versão de 16 de novembro de 2026',
         body=[
             ('Quem somos', ['O site cas-develop.com pertence à CAS Development, estúdio de design de interiores, remodelações e construção ({addr}). Telefone, Telegram, Viber, WhatsApp: {phone}. Ao utilizar o site, aceita estes termos.']),

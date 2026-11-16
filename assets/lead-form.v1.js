@@ -186,6 +186,7 @@
     pl: ["Odpowiadamy pn–pt 10:00–20:00. Jeśli to pilne — napisz na Telegramie", "Pobierz przewodnik po cenach", "Chcę przewodnik po cenach"],
     de: ["Wir antworten Mo–Fr 10:00–20:00. Wenn es dringend ist, schreiben Sie uns auf Telegram", "Preisleitfaden erhalten", "Ich möchte den Preisleitfaden"],
     fr: ["Nous répondons du lundi au vendredi, 10:00–20:00. En cas d’urgence, écrivez-nous sur Telegram", "Recevoir le guide des prix", "Je souhaite le guide des prix"],
+    pt: ["Respondemos de segunda a sexta, 10:00–20:00. Se for urgente, escreva-nos pelo Telegram", "Receber o guia de preços", "Quero o guia de preços"],
     ar: ["نرد من الاثنين إلى الجمعة 10:00–20:00. إذا كان الأمر عاجلًا، راسلنا على Telegram", "احصل على دليل الأسعار", "أريد دليل الأسعار"]
   };
   /*/af*/
@@ -470,6 +471,7 @@
     pl: ["Kontakt", "Telefon", "Komunikatory", "Biuro", "ul. Antonowycza 44, 03186 Kijów, Ukraina", "Godziny pracy", "Pn–Pt 10:00–20:00 · Sb–Nd nieczynne · online 24/7"],
     de: ["Kontakt", "Telefon", "Messenger", "Büro", "Antonowytscha-Str. 44, 03186 Kyjiw, Ukraine", "Öffnungszeiten", "Mo–Fr 10:00–20:00 · Sa–So geschlossen · online 24/7"],
     fr: ["Contact", "Téléphone", "Messageries", "Bureau", "44, rue Antonovytcha, 03186 Kyiv, Ukraine", "Horaires", "Lun–ven 10:00–20:00 · sam–dim fermé · en ligne 24/7"],
+    pt: ["Contactos", "Telefone", "Mensagens", "Escritório", "Rua Antonovycha, 44, 03186 Kyiv, Ucrânia", "Horário", "Seg–Sex 10:00–20:00 · Sáb–Dom encerrado · online 24/7"],
     ar: ["التواصل", "الهاتف", "تطبيقات المراسلة", "المكتب", "شارع أنتونوفيتشا 44، كييف 03186، أوكرانيا", "ساعات العمل", "الاثنين–الجمعة 10:00–20:00 · السبت–الأحد عطلة · أونلاين 24/7"]
   };
   /*/ct*/
