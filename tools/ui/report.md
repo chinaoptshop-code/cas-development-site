@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 893 (MAIN 14, LAND 444, інші 358). HTML разом 47340 КБ, з них інлайн CSS 18164 КБ і JS 583 КБ.
+Сторінок: 893 (MAIN 14, LAND 444, інші 358). HTML разом 47341 КБ, з них інлайн CSS 18164 КБ і JS 583 КБ.
 
 ## Проблеми
 
@@ -57,7 +57,7 @@
 | blog/rekonstruktsiia-chy-novyi-budynok.html | article | 62.1 | 17.3 | 14.2 | 0.5 | 6 | 448 |
 | blog/skilky-tryvaie-remont-kvartyry-v-novobudovi.html | article | 62.0 | 17.9 | 14.2 | 0.5 | 6 | 444 |
 | blog/tekhnichnyi-nahliad-za-remontom-koly-potriben.html | article | 61.9 | 17.6 | 14.2 | 0.5 | 6 | 449 |
-| blog/planuvalne-rishennia-koly-dostatno.html | article | 61.6 | 17.3 | 14.2 | 0.5 | 6 | 437 |
+| blog/planuvalne-rishennia-koly-dostatno.html | article | 61.6 | 17.4 | 14.2 | 0.5 | 6 | 437 |
 | blog/kapitalnyi-chy-kosmetychnyi-remont-shcho-obraty.html | article | 61.5 | 17.2 | 14.2 | 0.5 | 6 | 448 |
 | blog/remont-u-peredmisti-kyieva-shcho-vrakhuvaty.html | article | 61.4 | 17.6 | 14.2 | 0.5 | 6 | 440 |
 | ru/dizayn-restorana-kafe-kiev.html | land | 61.4 | 16.7 | 13.3 | 3.3 | 6 | 523 |
@@ -394,7 +394,7 @@
 | ozdoba/vaza-keramichna-hlazurovana-48.html | other | 57.2 | 15.3 | 32.4 | 0.7 | 14 | 337 |
 | ozdoba/dzerkalo-arochne-v-tonkii-zolotii-rami-426.html | other | 57.1 | 15.1 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/dzerkalo-khvyliaste-kruhle-v-zolotii-rami-564.html | other | 57.1 | 15.1 | 32.4 | 0.7 | 14 | 335 |
-| ozdoba/kelykhy-kryshtalevi-hranchasti-nabir-6-556.html | other | 57.1 | 15.1 | 32.4 | 0.7 | 14 | 335 |
+| ozdoba/kelykhy-kryshtalevi-hranchasti-nabir-6-556.html | other | 57.1 | 15.0 | 32.4 | 0.7 | 14 | 335 |
 | ozdoba/komod-vysokyi-5-shukhliad-hrafit-84.html | other | 57.1 | 15.2 | 32.4 | 0.7 | 14 | 336 |
 | ozdoba/kylym-dzhutovyi-z-bakhromoiu-200-300-43.html | other | 57.1 | 15.1 | 32.4 | 0.7 | 14 | 339 |
 | ozdoba/kylym-vovnianyi-petelnyi-200-300-44.html | other | 57.1 | 15.1 | 32.4 | 0.7 | 14 | 339 |
@@ -429,7 +429,7 @@
 | ozdoba/servetka-lliana-57.html | other | 56.7 | 15.0 | 32.4 | 0.7 | 14 | 337 |
 | budynok-pid-kliuch-koncha-zaspa.html | land | 56.6 | 15.4 | 13.3 | 0.5 | 6 | 555 |
 | kalkuliator-remontu.html | land | 56.5 | 15.3 | 14.7 | 2.5 | 6 | 499 |
-| ru/dizayn-interera-premium-kiev.html | land | 56.5 | 17.0 | 13.3 | 0.5 | 6 | 483 |
+| ru/dizayn-interera-premium-kiev.html | land | 56.5 | 17.1 | 13.3 | 0.5 | 6 | 483 |
 | ru/dizayn-ofisa-kiev.html | land | 56.4 | 17.7 | 13.3 | 0.5 | 6 | 474 |
 | ru/kalkulyator-remonta.html | land | 56.4 | 15.3 | 14.7 | 2.4 | 6 | 499 |
 | landshaftnyi-dyzain-kyiv.html | land | 56.3 | 15.3 | 13.1 | 1.1 | 6 | 588 |
@@ -663,7 +663,7 @@
 | ar/office-renovation.html | land | 45.6 | 11.7 | 13.3 | 0.5 | 6 | 396 |
 | pl/projektowanie-ogrodow.html | land | 45.6 | 12.9 | 13.3 | 0.9 | 6 | 537 |
 | en/landscape-design.html | land | 45.5 | 12.5 | 13.3 | 0.9 | 6 | 544 |
-| ar/faq.html | land | 45.4 | 13.9 | 13.3 | 0.5 | 6 | 337 |
+| ar/faq.html | land | 45.4 | 13.8 | 13.3 | 0.5 | 6 | 337 |
 | de/gartengestaltung.html | land | 45.4 | 12.6 | 13.3 | 0.9 | 6 | 533 |
 | ru/kosmeticheskiy-remont-kvartiry-kiev.html | land | 45.1 | 12.2 | 13.3 | 0.5 | 6 | 393 |
 | chornovyi-remont-kvartyry-kyiv.html | land | 44.9 | 12.1 | 13.3 | 0.5 | 6 | 392 |
@@ -755,7 +755,7 @@
 | ru/dizayn-i-remont-rovno.html | land | 41.9 | 11.7 | 13.3 | 0.5 | 6 | 339 |
 | ru/dizayn-i-remont-vinnitsa.html | land | 41.9 | 11.7 | 13.3 | 0.5 | 6 | 337 |
 | ru/kontakty.html | land | 41.9 | 11.7 | 13.3 | 0.5 | 6 | 352 |
-| dyzain-i-remont-poltava.html | land | 41.8 | 11.7 | 13.3 | 0.5 | 6 | 338 |
+| dyzain-i-remont-poltava.html | land | 41.8 | 11.6 | 13.3 | 0.5 | 6 | 338 |
 | dyzain-i-remont-ternopil.html | land | 41.8 | 11.6 | 13.3 | 0.5 | 6 | 339 |
 | ru/dizayn-i-remont-boyarka.html | land | 41.8 | 11.7 | 13.3 | 0.5 | 6 | 340 |
 | ru/dizayn-i-remont-poltava.html | land | 41.8 | 11.6 | 13.3 | 0.5 | 6 | 338 |
@@ -816,8 +816,8 @@
 | pl/remont-lazienki.html | land | 40.1 | 11.2 | 13.3 | 0.5 | 6 | 401 |
 | proekty/hoda-estate.html | land | 40.1 | 8.8 | 1.9 | 0.5 | 0 | 384 |
 | de/badsanierung.html | land | 40.0 | 10.9 | 13.3 | 0.5 | 6 | 392 |
+| pl/blog.html | other | 40.0 | 10.8 | 13.5 | 0.5 | 6 | 281 |
 | de/haussanierung.html | land | 39.9 | 10.7 | 13.3 | 0.5 | 6 | 400 |
-| pl/blog.html | other | 39.9 | 10.8 | 13.5 | 0.5 | 6 | 281 |
 | ar/contact.html | land | 39.8 | 11.0 | 13.3 | 0.5 | 6 | 330 |
 | de/neubauwohnung-ausbau.html | land | 39.8 | 10.9 | 13.3 | 0.5 | 6 | 392 |
 | en/kitchen-renovation.html | land | 39.8 | 10.7 | 13.3 | 0.5 | 6 | 409 |
@@ -885,14 +885,14 @@
 | proekty/monpark.html | land | 33.7 | 8.1 | 1.9 | 0.5 | 0 | 340 |
 | ar/terms-of-use.html | land | 33.4 | 10.3 | 13.2 | 0.5 | 9 | 225 |
 | proekty/office-chicago.html | land | 32.7 | 7.8 | 1.9 | 0.5 | 0 | 329 |
-| proekty/smart-villa.html | land | 32.4 | 8.0 | 1.9 | 0.5 | 0 | 335 |
-| proekty/house-150.html | land | 32.2 | 7.9 | 1.9 | 0.5 | 0 | 333 |
+| proekty/smart-villa.html | land | 32.5 | 8.0 | 1.9 | 0.5 | 0 | 335 |
+| proekty/house-150.html | land | 32.3 | 7.9 | 1.9 | 0.5 | 0 | 333 |
 | proekty/yablu-rest.html | land | 32.1 | 7.6 | 1.9 | 0.5 | 0 | 321 |
-| ar/privacy.html | land | 31.9 | 9.7 | 13.2 | 0.5 | 9 | 216 |
+| ar/privacy.html | land | 32.0 | 9.7 | 13.2 | 0.5 | 9 | 216 |
 | fr/conditions-utilisation.html | land | 31.6 | 9.9 | 13.2 | 0.5 | 9 | 224 |
 | es/condiciones-de-uso.html | land | 31.5 | 9.8 | 13.2 | 0.5 | 9 | 225 |
+| pl/regulamin.html | land | 31.3 | 10.0 | 13.2 | 0.5 | 9 | 230 |
 | de/nutzungsbedingungen.html | land | 31.2 | 9.9 | 13.2 | 0.5 | 9 | 226 |
-| pl/regulamin.html | land | 31.2 | 10.0 | 13.2 | 0.5 | 9 | 230 |
 | proekty/dolls-salon.html | land | 31.1 | 7.7 | 1.9 | 0.5 | 0 | 324 |
 | en/terms-of-use.html | land | 31.0 | 9.7 | 13.2 | 0.5 | 9 | 231 |
 | fr/confidentialite.html | land | 30.7 | 9.4 | 13.2 | 0.5 | 9 | 216 |
@@ -901,13 +901,13 @@
 | es/privacidad.html | land | 30.2 | 9.2 | 13.2 | 0.5 | 9 | 216 |
 | pl/polityka-prywatnosci.html | land | 30.2 | 9.4 | 13.2 | 0.5 | 9 | 221 |
 | en/privacy-policy.html | land | 29.6 | 8.9 | 13.2 | 0.5 | 9 | 222 |
-| zh/privacy.html | land | 29.4 | 9.6 | 13.2 | 0.5 | 9 | 214 |
+| zh/privacy.html | land | 29.5 | 9.6 | 13.2 | 0.5 | 9 | 214 |
 | ru/tury.html | other | 21.8 | 5.1 | 0.0 | 0.0 | 0 | 309 |
 | tury.html | other | 21.8 | 5.1 | 0.0 | 0.0 | 0 | 309 |
-| ar/tury.html | other | 20.5 | 4.5 | 0.0 | 0.0 | 0 | 291 |
+| ar/tury.html | other | 20.6 | 4.5 | 0.0 | 0.0 | 0 | 291 |
 | fr/tury.html | other | 18.8 | 4.2 | 0.0 | 0.0 | 0 | 291 |
 | es/tury.html | other | 18.7 | 4.2 | 0.0 | 0.0 | 0 | 291 |
 | pl/tury.html | other | 18.5 | 4.3 | 0.0 | 0.0 | 0 | 296 |
 | de/tury.html | other | 18.4 | 4.2 | 0.0 | 0.0 | 0 | 292 |
 | en/tury.html | other | 18.3 | 4.1 | 0.0 | 0.0 | 0 | 297 |
-| zh/tury.html | other | 18.0 | 4.4 | 0.0 | 0.0 | 0 | 291 |
+| zh/tury.html | other | 18.1 | 4.4 | 0.0 | 0.0 | 0 | 291 |
