@@ -1,0 +1,235 @@
+{
+ "_": "Textes en français sous le visualiseur /fr/tury/<slug> (traduction de about.json : mêmes faits ; « réalisé » uniquement pour apartment-2025). Généré par tools/tours/build.py pages. name — titre de la visite dans le visualiseur et sur les cartes ; liens — [texte](/fr/chemin) vers des pages dans cette langue. title ≤ 60, description ≤ 155.",
+ "apartment-2025": {
+  "name": "Appartement — intérieur réalisé",
+  "title": "Appartement terminé à Kyiv — visite 3D à 360° | CAS",
+  "description": "Visite 3D à 360° d’un appartement terminé à Kyiv : séjour, cuisine, chambre, entrée et salle de bains. Finitions, mobilier et lumière comme sur place.",
+  "eye": "Intérieur réalisé · Kyiv",
+  "lead": "Une visite à 360° d’un appartement terminé à Kyiv : l’intérieur après la fin des travaux, photographié avec une caméra 360. Parcourez les pièces et observez les finitions, le mobilier et l’éclairage comme lors d’une visite sur place.",
+  "p": [
+   "Il s’agit d’un chantier réalisé, pas d’une visualisation : les photos montrent de vrais murs, joints, sanitaires et éclairages. C’est ainsi qu’il faut juger une rénovation — sur le résultat, pas sur un rendu.",
+   "CAS rénove les appartements avec sa propre équipe : [rénovation clé en main à Kyiv](/fr/renovation-cle-en-main) — à partir de $550/m² (main-d’œuvre et matériaux de gros œuvre ; matériaux de finition, mobilier et électroménager à part, sur devis). Pendant les travaux, le client reçoit des rapports photo toutes les 1 à 2 semaines, et une caméra en ligne 24 h/24 sur le chantier peut être ajoutée moyennant un supplément. S’il n’y a pas encore de projet, nous commençons par le [design de l’appartement](/fr/design-appartement). D’autres réalisations dans le [portfolio](/fr/portfolio)."
+  ],
+  "links": [
+   [
+    "/fr/renovation-cle-en-main",
+    "Rénovation d’appartement"
+   ],
+   [
+    "/fr/design-appartement",
+    "Design d’appartement"
+   ]
+  ]
+ },
+ "edelweiss": {
+  "name": "Edelweiss — projet de design d’un appartement de 108 m²",
+  "title": "Edelweiss, appartement de 108 m² — visite 3D à 360° | CAS",
+  "description": "Visite 3D à 360° du projet de design de l’appartement Edelweiss, 108 m² : hall, séjour avec cuisine, chambres, dressing, salles de bains.",
+  "eye": "Projet de design · visualisation 360 · 108 m²",
+  "lead": "Visualisations 360 du projet de design de l’appartement Edelweiss, 108 m² : un intérieur clair aux textures douces, avec dressing et art graphique. C’est une maquette 3D du projet, pas des photos d’un appartement terminé.",
+  "p": [
+   "La cuisine est réunie avec le séjour et la salle à manger dans un seul espace, les murs derrière les lits sont habillés de panneaux textiles et le dressing a des façades en verre. La demande, la solution et les images sont sur la [page du projet Edelweiss](/fr/proekty/edelweiss)."
+  ],
+  "tail": "[Design d’appartement](/fr/design-appartement) — à partir de $30/m², commande minimale $2 500. CAS peut réaliser entièrement un tel projet : [rénovation clé en main](/fr/renovation-cle-en-main) — à partir de $550/m². D’autres travaux dans le [portfolio](/fr/portfolio).",
+  "links": [
+   [
+    "/fr/design-appartement",
+    "Design d’appartement"
+   ],
+   [
+    "/fr/renovation-cle-en-main",
+    "Rénovation d’appartement"
+   ]
+  ]
+ },
+ "hoda-estate": {
+  "name": "Hoda Estate — projet de design d’une maison dans les Carpates",
+  "title": "Hoda Estate, maison des Carpates — visite 3D à 360° | CAS",
+  "description": "Visite 3D à 360° du projet de design de la maison Hoda Estate, 180 m², dans les Carpates : séjour avec cuisine, chambres, salles de bains en pierre, sauna.",
+  "eye": "Projet de design · visualisation 360 · Carpates · 180 m²",
+  "lead": "Visualisations 360 du projet d’architecture intérieure de la maison Hoda Estate, 180 m², dans les Carpates : bois, pierre, lin et vue sur la montagne depuis les pièces principales. C’est une maquette 3D du projet, pas des photos d’une maison construite.",
+  "p": [
+   "Poutres en bois apparentes au plafond, enduit clair, baies panoramiques face aux montagnes. Cuisine, séjour et coin repas forment un seul espace, la pierre naturelle est utilisée dans les salles de bains, avec en plus un sauna et une buanderie séparés. La demande et la solution sont sur la [page du projet Hoda Estate](/fr/proekty/hoda-estate)."
+  ],
+  "tail": "[Conception et design de maison](/fr/conception-maison) — à partir de $30/m², minimum $2 500. CAS réalise rénovations et constructions dans toutes les régions d’Ukraine : un projet dans les Carpates peut donc être mené jusqu’à sa réalisation. [Construction de maison](/fr/construction-maison) — à partir de $600/m², clé en main à partir de $1 100/m². D’autres travaux dans le [portfolio](/fr/portfolio).",
+  "links": [
+   [
+    "/fr/conception-maison",
+    "Conception de maison"
+   ],
+   [
+    "/fr/construction-maison",
+    "Construction de maison"
+   ]
+  ]
+ },
+ "triangle-house": {
+  "name": "Triangle House — concept d’intérieur",
+  "title": "Triangle House — visite 3D d’un concept d’intérieur | CAS",
+  "description": "Visite 3D à 360° du concept d’intérieur de Triangle House : hall sur deux niveaux, séjour avec cuisine, chambres et salle de bains. À parcourir en ligne.",
+  "eye": "Concept · visualisation 360",
+  "lead": "Visualisations 360 du concept d’intérieur de Triangle House : séjour avec cuisine, chambres, une salle de bains et un hall sur deux niveaux. Un concept est une option d’intérieur en 3D, pas des photos d’une maison construite.",
+  "p": [
+   "Dans la visite, on passe du hall du rez-de-chaussée au hall du niveau supérieur et on jette un œil aux chambres et à la salle de bains : on voit comment la maison s’organise à la verticale."
+  ],
+  "tail": "[Conception et design de maison](/fr/conception-maison) — à partir de $30/m², minimum $2 500. Nous pouvons aussi construire la maison : [construction de maison](/fr/construction-maison) — à partir de $600/m², clé en main à partir de $1 100/m² ; le relevé topographique du terrain et les prises de vue aériennes sont assurés par nos spécialistes. D’autres projets dans le [portfolio](/fr/portfolio).",
+  "links": [
+   [
+    "/fr/conception-maison",
+    "Conception de maison"
+   ],
+   [
+    "/fr/construction-maison",
+    "Construction de maison"
+   ]
+  ]
+ },
+ "yablunytsia-estate": {
+  "name": "Domaine à Iablounytsia — concept",
+  "title": "Domaine à Iablounytsia, Carpates — visite 3D 360° | CAS",
+  "description": "Visite 3D à 360° du concept d’un domaine à Iablounytsia (Carpates) : terrain, piscine, maisons et allées. Le domaine vu avec son paysage.",
+  "eye": "Concept · visualisation 360 · Carpates",
+  "lead": "Visualisations 360 du concept d’un domaine à Iablounytsia (Carpates) : le terrain, une piscine, les maisons et les allées qui les relient. C’est une maquette 3D du concept, pas des photos d’un domaine construit.",
+  "p": [
+   "Les points de vue sont répartis sur le terrain : on voit comment les maisons se placent par rapport à la piscine, où mènent les allées et comment le domaine se présente dans son ensemble. Pour une propriété à la campagne, c’est plus parlant que des rendus séparés : le terrain, les maisons et le paysage se voient ensemble.",
+   "Sur un terrain réel, nos spécialistes réalisent le relevé topographique et les prises de vue aériennes : le projet part du relief réel."
+  ],
+  "tail": "[Architecture paysagère](/fr/architecture-paysagere) — à partir de $50 par 100 m² de terrain ; [construction de maison](/fr/construction-maison) — à partir de $600/m², clé en main à partir de $1 100/m². Si le domaine doit accueillir des hôtes, voir [base de loisirs clé en main](/fr/base-de-loisirs-cle-en-main). D’autres travaux dans le [portfolio](/fr/portfolio).",
+  "links": [
+   [
+    "/fr/architecture-paysagere",
+    "Architecture paysagère"
+   ],
+   [
+    "/fr/construction-maison",
+    "Construction de maison"
+   ]
+  ]
+ },
+ "apartment-80": {
+  "name": "Appartement de 80 m² — projet de design",
+  "title": "Appartement de 80 m² avec terrasse — visite 3D 360° | CAS",
+  "description": "Visite 3D à 360° du projet de design d’un appartement de 80 m² : hall, séjour, salle à manger, cuisine, chambre, dressing et terrasse.",
+  "eye": "Projet de design · visualisation 360 · 80 m²",
+  "lead": "Visualisations 360 du projet de design d’un appartement de 80 m² avec terrasse : hall, séjour, salle à manger, cuisine, chambre et dressing. C’est une maquette 3D du projet, pas des photos d’un appartement terminé.",
+  "p": [
+   "Une salle à manger séparée, un dressing et l’accès à la terrasse : la visite montre comment ces espaces communiquent entre eux et avec le séjour."
+  ],
+  "tail": "[Design d’appartement](/fr/design-appartement) — à partir de $30/m², commande minimale $2 500 ; [rénovation](/fr/renovation-cle-en-main) selon le projet — à partir de $550/m². D’autres travaux dans le [portfolio](/fr/portfolio).",
+  "links": [
+   [
+    "/fr/design-appartement",
+    "Design d’appartement"
+   ],
+   [
+    "/fr/renovation-cle-en-main",
+    "Rénovation d’appartement"
+   ]
+  ]
+ },
+ "apartment-56": {
+  "name": "Appartement de 56 m² — projet de design",
+  "title": "Appartement de 56 m² — visite 360° du projet | CAS",
+  "description": "Visite 3D à 360° du projet de design d’un appartement de 56 m² : huit points de vue dans tout l’appartement. Le plan, vu avant les travaux.",
+  "eye": "Projet de design · visualisation 360 · 56 m²",
+  "lead": "Visualisations 360 du projet de design d’un appartement de 56 m², avec des points de vue dans tout l’appartement. C’est une maquette 3D du projet, pas des photos d’un intérieur terminé.",
+  "p": [
+   "Passez d’un point de vue à l’autre avec les flèches sur la photo ou les boutons ‹ › en bas : on voit comment les espaces de l’appartement s’enchaînent et comment le plan fonctionne sur 56 m²."
+  ],
+  "tail": "[Design d’appartement](/fr/design-appartement) — à partir de $30/m², commande minimale $2 500 ; [rénovation](/fr/renovation-cle-en-main) — à partir de $550/m². D’autres travaux dans le [portfolio](/fr/portfolio).",
+  "links": [
+   [
+    "/fr/design-appartement",
+    "Design d’appartement"
+   ],
+   [
+    "/fr/renovation-cle-en-main",
+    "Rénovation d’appartement"
+   ]
+  ]
+ },
+ "apartment-45": {
+  "name": "Appartement de 45 m² — projet de design",
+  "title": "Appartement de 45 m² — visite 360° du projet | CAS",
+  "description": "Visite 3D à 360° du projet de design d’un appartement de 45 m² : hall, cuisine, séjour, chambre et salle de bains. Jugez les proportions avant les travaux.",
+  "eye": "Projet de design · visualisation 360 · 45 m²",
+  "lead": "Visualisations 360 du projet de design d’un appartement de 45 m² : hall, cuisine, séjour, chambre et salle de bains. C’est une maquette 3D du projet, pas des photos d’un appartement terminé.",
+  "p": [
+   "Dans un petit espace, l’essentiel est la façon dont les pièces communiquent. Dans la visite, on va du hall à la cuisine, au séjour et à la chambre, et on juge les proportions à hauteur des yeux."
+  ],
+  "tail": "[Design d’appartement](/fr/design-appartement) — à partir de $30/m², commande minimale $2 500 ; [rénovation](/fr/renovation-cle-en-main) — à partir de $550/m². D’autres travaux dans le [portfolio](/fr/portfolio).",
+  "links": [
+   [
+    "/fr/design-appartement",
+    "Design d’appartement"
+   ],
+   [
+    "/fr/renovation-cle-en-main",
+    "Rénovation d’appartement"
+   ]
+  ]
+ },
+ "apartment-37": {
+  "name": "Appartement de 37 m² — projet de design",
+  "title": "Appartement de 37 m² — visite 360° du projet | CAS",
+  "description": "Visite 3D à 360° du projet de design d’un appartement compact de 37 m² : hall, cuisine, séjour, chambre et salle de bains. Tout tient sur cette surface.",
+  "eye": "Projet de design · visualisation 360 · 37 m²",
+  "lead": "Visualisations 360 du projet de design d’un appartement de 37 m² : hall, cuisine, séjour, chambre et salle de bains. C’est une maquette 3D du projet, pas des photos d’un appartement terminé.",
+  "p": [
+   "37 m², c’est un appartement compact où le plan décide de tout. La visite montre comment le hall, la cuisine, le séjour et la chambre tiennent sur cette surface et comment les pièces s’ouvrent les unes sur les autres."
+  ],
+  "tail": "[Design d’appartement](/fr/design-appartement) — à partir de $30/m², commande minimale $2 500 ; [rénovation](/fr/renovation-cle-en-main) — à partir de $550/m². D’autres travaux dans le [portfolio](/fr/portfolio).",
+  "links": [
+   [
+    "/fr/design-appartement",
+    "Design d’appartement"
+   ],
+   [
+    "/fr/renovation-cle-en-main",
+    "Rénovation d’appartement"
+   ]
+  ]
+ },
+ "house-concept-1": {
+  "name": "Maison individuelle — concept 1",
+  "title": "Maison individuelle, concept 1 — visite 3D à 360° | CAS",
+  "description": "Visite 3D à 360° d’un concept d’intérieur pour une maison individuelle, option 1 : points de vue dans toute la maison. À comparer avec une autre version.",
+  "eye": "Concept · visualisation 360 · option 1",
+  "lead": "Visualisations 360 d’un concept d’intérieur pour une maison individuelle, option 1. Un concept est une option d’intérieur en 3D, pas des photos d’une maison construite.",
+  "p": [
+   "Les points de vue sont répartis dans toute la maison : déplacez-vous avec les flèches sur la photo ou les boutons ‹ › en bas. Comparez avec le [concept 4](/fr/tury/house-concept-4) pour voir à quel point l’intérieur d’une maison individuelle peut varier."
+  ],
+  "tail": "[Conception et design de maison](/fr/conception-maison) — à partir de $30/m², minimum $2 500 ; [rénovation de maison clé en main](/fr/renovation-maison-cle-en-main) et [construction](/fr/construction-maison) — par notre propre équipe. D’autres travaux dans le [portfolio](/fr/portfolio).",
+  "links": [
+   [
+    "/fr/conception-maison",
+    "Conception de maison"
+   ],
+   [
+    "/fr/renovation-maison-cle-en-main",
+    "Rénovation de maison"
+   ]
+  ]
+ },
+ "house-concept-4": {
+  "name": "Maison individuelle — concept 4",
+  "title": "Maison individuelle, concept 4 — visite 3D à 360° | CAS",
+  "description": "Visite 3D à 360° d’un concept d’intérieur pour une maison individuelle, option 4 : hall, cuisine, séjour, chambres, chambre d’enfant, dressing.",
+  "eye": "Concept · visualisation 360 · option 4",
+  "lead": "Visualisations 360 d’un concept d’intérieur pour une maison individuelle, option 4 : hall, couloir, cuisine, séjour, chambres, chambre d’enfant, dressing et salles de bains. Un concept est une option d’intérieur en 3D, pas des photos d’une maison construite.",
+  "p": [
+   "La visite montre une maison familiale : une chambre d’enfant séparée, un dressing et deux salles de bains. Comparez avec le [concept 1](/fr/tury/house-concept-1), une autre option d’intérieur pour une maison individuelle."
+  ],
+  "tail": "[Conception et design de maison](/fr/conception-maison) — à partir de $30/m², minimum $2 500 ; [rénovation de maison clé en main](/fr/renovation-maison-cle-en-main) et [construction](/fr/construction-maison) — par notre propre équipe. D’autres travaux dans le [portfolio](/fr/portfolio).",
+  "links": [
+   [
+    "/fr/conception-maison",
+    "Conception de maison"
+   ],
+   [
+    "/fr/renovation-maison-cle-en-main",
+    "Rénovation de maison"
+   ]
+  ]
+ }
+}

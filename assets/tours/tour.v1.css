@@ -3,6 +3,8 @@
 @font-face{font-family:Manrope;font-weight:200 800;font-display:swap;src:url(/fonts/manrope-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
 @font-face{font-family:'Cormorant Garamond';font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:'Cormorant Garamond';font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:Manrope;font-weight:200 800;font-display:swap;src:url(/fonts/manrope-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20C0,U+2C60-2C7F,U+A720-A7FF} /* pl, de, fr (16.11.2026) */
+@font-face{font-family:'Cormorant Garamond';font-weight:300 700;font-display:swap;src:url(/fonts/cormorant-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20C0,U+2C60-2C7F,U+A720-A7FF}
 :root{--t-bg:#080709;--t-sf:#181620;--t-tx:#EDE8DF;--t-mu:#938c84;--t-ac:#BF9148;--t-D:'Cormorant Garamond',Georgia,serif;--t-M:Manrope,system-ui,sans-serif}
 
 /* ── переглядач ── */
@@ -136,3 +138,19 @@ body.embed .ti{display:none}
 
 /* вузькі екрани: назва туру в шапці переглядача — у два рядки, а не обрізана до кількох літер */
 @media(max-width:600px){.ui{gap:10px;padding:12px 14px}.title{white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-height:1.35;font-size:11px;letter-spacing:.08em}}
+
+/* ── ar (RTL, 16.11.2026): дзеркально — кімнати ‹ › праворуч, масштаб і VR ліворуч, меню кімнат ліворуч; без розрядки літер (арабське письмо звʼязне) ── */
+[dir=rtl] .tnav{left:auto;right:14px}
+[dir=rtl] .tzoom{right:auto;left:14px}
+[dir=rtl] .rooms{right:auto;left:14px}
+[dir=rtl] .rooms a{border-left:0;border-right:2px solid transparent}
+[dir=rtl] .rooms a.on{border-right-color:var(--t-ac)}
+[dir=rtl] .edit{left:auto;right:14px}
+[dir=rtl] .a-enter-vr,[dir=rtl] .a-enter-ar{right:auto!important;left:5px}
+[dir=rtl] .a-enter-ar{left:60px}
+[dir=rtl] .tl-badge{left:auto;right:14px}
+[dir=rtl] .tl-how li{padding:20px 0 0 22px}
+[dir=rtl] .ti-more summary::after{margin-left:0;margin-right:.5rem}
+[dir=rtl] .title,[dir=rtl] .btn,[dir=rtl] .hint,[dir=rtl] .tl-eye,[dir=rtl] .tl-how b,[dir=rtl] .tl-meta,[dir=rtl] .tl-go,[dir=rtl] .tl-btn,[dir=rtl] .ti-eye,[dir=rtl] .cnt{letter-spacing:0}
+[dir=rtl] a[href^="tel:"],[dir=rtl] .cnt{unicode-bidi:isolate;direction:ltr}  /* «2 / 6», а не «6 / 2» */
+:lang(zh) .title,:lang(zh) .btn,:lang(zh) .ti-eye,:lang(zh) .tl-eye{letter-spacing:.06em}

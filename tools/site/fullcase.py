@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Сторінки «Повний проєкт» (/proekty/<slug>-povnyi-proekt, /ru/proekty/<slug>-polnyy-proekt, /en/proekty/<slug>-full-project) з tools/site/cases/*.json.
+"""Сторінки «Повний проєкт» (/proekty/<slug>-povnyi-proekt, /ru/proekty/<slug>-polnyy-proekt, /en/proekty/<slug>-full-project,
+/es /pl /de /fr /zh /ar — slug у блоці мови) з tools/site/cases/*.json.
 
-  python3 tools/site/fullcase.py            # зібрати всі кейси (uk, ru, en — мови з JSON)
+  python3 tools/site/fullcase.py            # зібрати всі кейси (uk, ru, en, es, pl, de, fr, zh, ar — мови з JSON)
   python3 tools/site/fullcase.py --check    # лише перевірка (код 1, якщо HTML застарів або дані невірні)
 
 Що на сторінці (лише блоки UI-kit лендингів — шаблон landing.TPL, шапка/футер — chrome.apply, форма — спільна form#of):
@@ -60,11 +61,11 @@ def url(c, lang):
     return B + i18n.meta(lang)['prefix'] + c[lang]['slug']
 
 
-LANGS = ('uk', 'ru', 'en')  # мови кейсу — ті, що є в JSON (c[lang])
+LANGS = ('uk', 'ru', 'en', 'es', 'pl', 'de', 'fr', 'zh', 'ar')  # мови кейсу — ті, що є в JSON (c[lang]); порядок = порядок підписів [id, uk, ru, en, es, pl, de, fr, zh, ar]
 
 
 def k(lang):
-    return LANGS.index(lang) + 1  # індекс підпису в [id, uk, ru, en]
+    return LANGS.index(lang) + 1  # індекс підпису в [id, uk, ru, en, es, pl, de, fr, zh, ar]
 
 
 def langs(c):

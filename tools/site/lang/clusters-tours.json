@@ -3,61 +3,133 @@
  "tury": {
   "uk": "/tury",
   "en": "/en/tury",
-  "ru": "/ru/tury"
+  "ru": "/ru/tury",
+  "es": "/es/tury",
+  "pl": "/pl/tury",
+  "de": "/de/tury",
+  "fr": "/fr/tury",
+  "zh": "/zh/tury",
+  "ar": "/ar/tury"
  },
  "tur-apartment-2025": {
   "uk": "/tury/apartment-2025",
   "en": "/en/tury/apartment-2025",
-  "ru": "/ru/tury/apartment-2025"
+  "ru": "/ru/tury/apartment-2025",
+  "es": "/es/tury/apartment-2025",
+  "pl": "/pl/tury/apartment-2025",
+  "de": "/de/tury/apartment-2025",
+  "fr": "/fr/tury/apartment-2025",
+  "zh": "/zh/tury/apartment-2025",
+  "ar": "/ar/tury/apartment-2025"
  },
  "tur-apartment-37": {
   "uk": "/tury/apartment-37",
   "en": "/en/tury/apartment-37",
-  "ru": "/ru/tury/apartment-37"
+  "ru": "/ru/tury/apartment-37",
+  "es": "/es/tury/apartment-37",
+  "pl": "/pl/tury/apartment-37",
+  "de": "/de/tury/apartment-37",
+  "fr": "/fr/tury/apartment-37",
+  "zh": "/zh/tury/apartment-37",
+  "ar": "/ar/tury/apartment-37"
  },
  "tur-apartment-45": {
   "uk": "/tury/apartment-45",
   "en": "/en/tury/apartment-45",
-  "ru": "/ru/tury/apartment-45"
+  "ru": "/ru/tury/apartment-45",
+  "es": "/es/tury/apartment-45",
+  "pl": "/pl/tury/apartment-45",
+  "de": "/de/tury/apartment-45",
+  "fr": "/fr/tury/apartment-45",
+  "zh": "/zh/tury/apartment-45",
+  "ar": "/ar/tury/apartment-45"
  },
  "tur-apartment-56": {
   "uk": "/tury/apartment-56",
   "en": "/en/tury/apartment-56",
-  "ru": "/ru/tury/apartment-56"
+  "ru": "/ru/tury/apartment-56",
+  "es": "/es/tury/apartment-56",
+  "pl": "/pl/tury/apartment-56",
+  "de": "/de/tury/apartment-56",
+  "fr": "/fr/tury/apartment-56",
+  "zh": "/zh/tury/apartment-56",
+  "ar": "/ar/tury/apartment-56"
  },
  "tur-apartment-80": {
   "uk": "/tury/apartment-80",
   "en": "/en/tury/apartment-80",
-  "ru": "/ru/tury/apartment-80"
+  "ru": "/ru/tury/apartment-80",
+  "es": "/es/tury/apartment-80",
+  "pl": "/pl/tury/apartment-80",
+  "de": "/de/tury/apartment-80",
+  "fr": "/fr/tury/apartment-80",
+  "zh": "/zh/tury/apartment-80",
+  "ar": "/ar/tury/apartment-80"
  },
  "tur-edelweiss": {
   "uk": "/tury/edelweiss",
   "en": "/en/tury/edelweiss",
-  "ru": "/ru/tury/edelweiss"
+  "ru": "/ru/tury/edelweiss",
+  "es": "/es/tury/edelweiss",
+  "pl": "/pl/tury/edelweiss",
+  "de": "/de/tury/edelweiss",
+  "fr": "/fr/tury/edelweiss",
+  "zh": "/zh/tury/edelweiss",
+  "ar": "/ar/tury/edelweiss"
  },
  "tur-hoda-estate": {
   "uk": "/tury/hoda-estate",
   "en": "/en/tury/hoda-estate",
-  "ru": "/ru/tury/hoda-estate"
+  "ru": "/ru/tury/hoda-estate",
+  "es": "/es/tury/hoda-estate",
+  "pl": "/pl/tury/hoda-estate",
+  "de": "/de/tury/hoda-estate",
+  "fr": "/fr/tury/hoda-estate",
+  "zh": "/zh/tury/hoda-estate",
+  "ar": "/ar/tury/hoda-estate"
  },
  "tur-house-concept-1": {
   "uk": "/tury/house-concept-1",
   "en": "/en/tury/house-concept-1",
-  "ru": "/ru/tury/house-concept-1"
+  "ru": "/ru/tury/house-concept-1",
+  "es": "/es/tury/house-concept-1",
+  "pl": "/pl/tury/house-concept-1",
+  "de": "/de/tury/house-concept-1",
+  "fr": "/fr/tury/house-concept-1",
+  "zh": "/zh/tury/house-concept-1",
+  "ar": "/ar/tury/house-concept-1"
  },
  "tur-house-concept-4": {
   "uk": "/tury/house-concept-4",
   "en": "/en/tury/house-concept-4",
-  "ru": "/ru/tury/house-concept-4"
+  "ru": "/ru/tury/house-concept-4",
+  "es": "/es/tury/house-concept-4",
+  "pl": "/pl/tury/house-concept-4",
+  "de": "/de/tury/house-concept-4",
+  "fr": "/fr/tury/house-concept-4",
+  "zh": "/zh/tury/house-concept-4",
+  "ar": "/ar/tury/house-concept-4"
  },
  "tur-triangle-house": {
   "uk": "/tury/triangle-house",
   "en": "/en/tury/triangle-house",
-  "ru": "/ru/tury/triangle-house"
+  "ru": "/ru/tury/triangle-house",
+  "es": "/es/tury/triangle-house",
+  "pl": "/pl/tury/triangle-house",
+  "de": "/de/tury/triangle-house",
+  "fr": "/fr/tury/triangle-house",
+  "zh": "/zh/tury/triangle-house",
+  "ar": "/ar/tury/triangle-house"
  },
  "tur-yablunytsia-estate": {
   "uk": "/tury/yablunytsia-estate",
   "en": "/en/tury/yablunytsia-estate",
-  "ru": "/ru/tury/yablunytsia-estate"
+  "ru": "/ru/tury/yablunytsia-estate",
+  "es": "/es/tury/yablunytsia-estate",
+  "pl": "/pl/tury/yablunytsia-estate",
+  "de": "/de/tury/yablunytsia-estate",
+  "fr": "/fr/tury/yablunytsia-estate",
+  "zh": "/zh/tury/yablunytsia-estate",
+  "ar": "/ar/tury/yablunytsia-estate"
  }
 }

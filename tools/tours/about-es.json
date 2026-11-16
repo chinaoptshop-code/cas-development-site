@@ -1,0 +1,235 @@
+{
+ "_": "Textos en español bajo el visor /es/tury/<slug> (traducción de about.json: mismos hechos; «terminado/realizado» solo para apartment-2025). Lo genera tools/tours/build.py pages. name — título del tour en el visor y las tarjetas; enlaces — [texto](/es/ruta) a páginas en este idioma. title ≤ 60, description ≤ 155.",
+ "apartment-2025": {
+  "name": "Piso — interior terminado",
+  "title": "Piso terminado en Kiev — tour 3D 360° | CAS Development",
+  "description": "Tour 3D 360° de un piso terminado en Kiev: salón, cocina, dormitorio, recibidor y baño. Vea los acabados, los muebles y la luz como si estuviera dentro.",
+  "eye": "Interior terminado · Kiev",
+  "lead": "Tour 360° de un piso terminado en Kiev: el interior una vez acabadas las obras, fotografiado con una cámara 360. Recorra las estancias y fíjese en los acabados, los muebles y la luz como en una visita en persona.",
+  "p": [
+   "Es una obra terminada, no una visualización: las fotos muestran paredes, juntas, sanitarios e iluminación reales. Así es como conviene valorar una reforma: por el resultado, no por un render.",
+   "CAS reforma pisos con su propio equipo: [reforma llave en mano en Kiev](/es/reforma-llave-en-mano) — desde $550/m² (mano de obra y materiales de obra gruesa; los materiales de acabado, los muebles y los electrodomésticos van aparte, según presupuesto). Durante las obras el cliente recibe informes fotográficos cada 1–2 semanas y, con coste adicional, se puede instalar una cámara en línea 24/7 en la obra. Si aún no hay proyecto, empezamos por el [diseño de interiores del piso](/es/diseno-interiores-piso). Más obras en el [portfolio](/es/portfolio)."
+  ],
+  "links": [
+   [
+    "/es/reforma-llave-en-mano",
+    "Reforma de pisos"
+   ],
+   [
+    "/es/diseno-interiores-piso",
+    "Diseño de pisos"
+   ]
+  ]
+ },
+ "edelweiss": {
+  "name": "Edelweiss — proyecto de diseño de un piso de 108 m²",
+  "title": "Edelweiss, piso de 108 m² — tour 3D 360° | CAS Development",
+  "description": "Tour 3D 360° del proyecto de diseño del piso Edelweiss, 108 m²: vestíbulo, salón con cocina, dormitorios, vestidor y baños. Recórralo antes de la obra.",
+  "eye": "Proyecto de diseño · visualización 360 · 108 m²",
+  "lead": "Visualizaciones 360 del proyecto de diseño del piso Edelweiss, 108 m²: un interior luminoso con texturas suaves, vestidor y arte gráfico. Es un modelo 3D del proyecto, no fotos de un piso terminado.",
+  "p": [
+   "La cocina está unida a la zona de salón y comedor en un solo espacio, las paredes detrás de las camas llevan paneles textiles y el vestidor tiene frentes de vidrio. El encargo, la solución y las imágenes están en la [página del proyecto Edelweiss](/es/proekty/edelweiss)."
+  ],
+  "tail": "[Diseño de interiores de pisos](/es/diseno-interiores-piso) — desde $30/m², pedido mínimo $2 500. CAS puede ejecutar un proyecto así por completo: [reforma llave en mano](/es/reforma-llave-en-mano) — desde $550/m². Más trabajos en el [portfolio](/es/portfolio).",
+  "links": [
+   [
+    "/es/diseno-interiores-piso",
+    "Diseño de pisos"
+   ],
+   [
+    "/es/reforma-llave-en-mano",
+    "Reforma de pisos"
+   ]
+  ]
+ },
+ "hoda-estate": {
+  "name": "Hoda Estate — proyecto de diseño de una casa en los Cárpatos",
+  "title": "Hoda Estate, casa en los Cárpatos — tour 3D 360° | CAS",
+  "description": "Tour 3D 360° del proyecto de diseño de la casa Hoda Estate, 180 m², en los Cárpatos: salón con cocina, dormitorios, baños de piedra y una sauna.",
+  "eye": "Proyecto de diseño · visualización 360 · Cárpatos · 180 m²",
+  "lead": "Visualizaciones 360 del proyecto de interiorismo de la casa Hoda Estate, 180 m², en los Cárpatos: madera, piedra, lino y vistas a la montaña desde las estancias principales. Es un modelo 3D del proyecto, no fotos de una casa construida.",
+  "p": [
+   "Vigas de madera vistas bajo el techo, revoco claro y ventanales panorámicos hacia las montañas. La cocina, el salón y el comedor forman un solo espacio, los baños llevan piedra natural y hay una sauna y un lavadero aparte. El encargo y la solución están en la [página del proyecto Hoda Estate](/es/proekty/hoda-estate)."
+  ],
+  "tail": "[Proyecto y diseño de casas](/es/proyecto-de-casa) — desde $30/m², mínimo $2 500. CAS asume reformas y construcción en todas las regiones de Ucrania, así que un proyecto en los Cárpatos puede llevarse hasta su ejecución: [construcción de casas](/es/construccion-de-casas) — desde $600/m², llave en mano desde $1 100/m². Más trabajos en el [portfolio](/es/portfolio).",
+  "links": [
+   [
+    "/es/proyecto-de-casa",
+    "Diseño de casas"
+   ],
+   [
+    "/es/construccion-de-casas",
+    "Construcción de casas"
+   ]
+  ]
+ },
+ "triangle-house": {
+  "name": "Triangle House — concepto de interiorismo",
+  "title": "Triangle House — tour 3D de un concepto interior | CAS",
+  "description": "Tour 3D 360° del concepto de interiorismo de Triangle House: vestíbulo a doble altura, salón con cocina, dormitorios y baño. Recorra el concepto en línea.",
+  "eye": "Concepto · visualización 360",
+  "lead": "Visualizaciones 360 del concepto de interiorismo de Triangle House: salón con cocina, dormitorios, un baño y un vestíbulo en dos niveles. Un concepto es una propuesta de interior en 3D, no fotos de una casa construida.",
+  "p": [
+   "En el tour se puede pasar del vestíbulo de la planta baja al del nivel superior y asomarse a los dormitorios y al baño: se ve cómo se organiza la casa en vertical."
+  ],
+  "tail": "[Proyecto y diseño de casas](/es/proyecto-de-casa) — desde $30/m², mínimo $2 500. También podemos construir la casa: [construcción de casas](/es/construccion-de-casas) — desde $600/m², llave en mano desde $1 100/m²; nuestros especialistas hacen la topografía de la parcela y la fotografía aérea. Más proyectos en el [portfolio](/es/portfolio).",
+  "links": [
+   [
+    "/es/proyecto-de-casa",
+    "Diseño de casas"
+   ],
+   [
+    "/es/construccion-de-casas",
+    "Construcción de casas"
+   ]
+  ]
+ },
+ "yablunytsia-estate": {
+  "name": "Finca en Yablunytsia — concepto",
+  "title": "Finca en Yablunytsia, Cárpatos — tour 3D 360° | CAS",
+  "description": "Tour 3D 360° del concepto de una finca en Yablunytsia (Cárpatos): terreno, piscina, casas y caminos. Vea cómo se integra la finca en el paisaje.",
+  "eye": "Concepto · visualización 360 · Cárpatos",
+  "lead": "Visualizaciones 360 del concepto de una finca en Yablunytsia (Cárpatos): el terreno, una piscina, las casas y los caminos entre ellas. Es un modelo 3D del concepto, no fotos de una finca construida.",
+  "p": [
+   "Los puntos de vista están repartidos por el terreno: se ve cómo se sitúan las casas respecto a la piscina, adónde llevan los caminos y cómo se percibe la finca en conjunto. Para una casa de campo esto funciona mejor que los renders sueltos: la parcela, las casas y el paisaje se ven juntos.",
+   "En una parcela real, nuestros especialistas hacen la topografía y la fotografía aérea, de modo que el proyecto parte del terreno real."
+  ],
+  "tail": "[Paisajismo](/es/paisajismo) — desde $50 por cada 100 m² de parcela; [construcción de casas](/es/construccion-de-casas) — desde $600/m², llave en mano desde $1 100/m². Si la finca va a acoger huéspedes, vea [complejo turístico llave en mano](/es/complejo-turistico-llave-en-mano). Más trabajos en el [portfolio](/es/portfolio).",
+  "links": [
+   [
+    "/es/paisajismo",
+    "Paisajismo"
+   ],
+   [
+    "/es/construccion-de-casas",
+    "Construcción de casas"
+   ]
+  ]
+ },
+ "apartment-80": {
+  "name": "Piso de 80 m² — proyecto de diseño",
+  "title": "Piso de 80 m² con terraza — tour 3D 360° | CAS",
+  "description": "Tour 3D 360° del proyecto de diseño de un piso de 80 m²: vestíbulo, salón, comedor, cocina, dormitorio, vestidor y terraza. Recórralo antes de la reforma.",
+  "eye": "Proyecto de diseño · visualización 360 · 80 m²",
+  "lead": "Visualizaciones 360 del proyecto de diseño de un piso de 80 m² con terraza: vestíbulo, salón, comedor, cocina, dormitorio y vestidor. Es un modelo 3D del proyecto, no fotos de un piso terminado.",
+  "p": [
+   "Un comedor independiente, un vestidor y salida a la terraza: el tour muestra cómo se conectan estas zonas entre sí y con el salón."
+  ],
+  "tail": "[Diseño de interiores de pisos](/es/diseno-interiores-piso) — desde $30/m², pedido mínimo $2 500; [reforma](/es/reforma-llave-en-mano) según el proyecto — desde $550/m². Más trabajos en el [portfolio](/es/portfolio).",
+  "links": [
+   [
+    "/es/diseno-interiores-piso",
+    "Diseño de pisos"
+   ],
+   [
+    "/es/reforma-llave-en-mano",
+    "Reforma de pisos"
+   ]
+  ]
+ },
+ "apartment-56": {
+  "name": "Piso de 56 m² — proyecto de diseño",
+  "title": "Piso de 56 m² — tour 360° del proyecto de diseño | CAS",
+  "description": "Tour 3D 360° del proyecto de diseño de un piso de 56 m²: ocho puntos de vista por todo el piso. Vea cómo funciona la distribución antes de la reforma.",
+  "eye": "Proyecto de diseño · visualización 360 · 56 m²",
+  "lead": "Visualizaciones 360 del proyecto de diseño de un piso de 56 m², con puntos de vista por todo el piso. Es un modelo 3D del proyecto, no fotos de un interior terminado.",
+  "p": [
+   "Pase de un punto de vista a otro con las flechas de la foto o los botones ‹ › de abajo: se ve cómo las zonas del piso se comunican y cómo funciona la distribución en 56 m²."
+  ],
+  "tail": "[Diseño de interiores de pisos](/es/diseno-interiores-piso) — desde $30/m², pedido mínimo $2 500; [reforma](/es/reforma-llave-en-mano) — desde $550/m². Más trabajos en el [portfolio](/es/portfolio).",
+  "links": [
+   [
+    "/es/diseno-interiores-piso",
+    "Diseño de pisos"
+   ],
+   [
+    "/es/reforma-llave-en-mano",
+    "Reforma de pisos"
+   ]
+  ]
+ },
+ "apartment-45": {
+  "name": "Piso de 45 m² — proyecto de diseño",
+  "title": "Piso de 45 m² — tour 360° del proyecto de diseño | CAS",
+  "description": "Tour 3D 360° del proyecto de diseño de un piso de 45 m²: vestíbulo, cocina, salón, dormitorio y baño. Valore las proporciones de un piso pequeño.",
+  "eye": "Proyecto de diseño · visualización 360 · 45 m²",
+  "lead": "Visualizaciones 360 del proyecto de diseño de un piso de 45 m²: vestíbulo, cocina, salón, dormitorio y baño. Es un modelo 3D del proyecto, no fotos de un piso terminado.",
+  "p": [
+   "En un espacio pequeño lo que más importa es cómo se conectan las estancias. En el tour se puede ir del vestíbulo a la cocina, el salón y el dormitorio y valorar las proporciones a la altura de los ojos."
+  ],
+  "tail": "[Diseño de interiores de pisos](/es/diseno-interiores-piso) — desde $30/m², pedido mínimo $2 500; [reforma](/es/reforma-llave-en-mano) — desde $550/m². Más trabajos en el [portfolio](/es/portfolio).",
+  "links": [
+   [
+    "/es/diseno-interiores-piso",
+    "Diseño de pisos"
+   ],
+   [
+    "/es/reforma-llave-en-mano",
+    "Reforma de pisos"
+   ]
+  ]
+ },
+ "apartment-37": {
+  "name": "Piso de 37 m² — proyecto de diseño",
+  "title": "Piso de 37 m² — tour 360° del proyecto de diseño | CAS",
+  "description": "Tour 3D 360° del proyecto de diseño de un piso compacto de 37 m²: vestíbulo, cocina, salón, dormitorio y baño. Vea cómo cabe todo en esta superficie.",
+  "eye": "Proyecto de diseño · visualización 360 · 37 m²",
+  "lead": "Visualizaciones 360 del proyecto de diseño de un piso de 37 m²: vestíbulo, cocina, salón, dormitorio y baño. Es un modelo 3D del proyecto, no fotos de un piso terminado.",
+  "p": [
+   "37 m² es un piso compacto en el que la distribución lo decide todo. El tour muestra cómo caben el vestíbulo, la cocina, el salón y el dormitorio en esta superficie y cómo se abren las estancias unas a otras."
+  ],
+  "tail": "[Diseño de interiores de pisos](/es/diseno-interiores-piso) — desde $30/m², pedido mínimo $2 500; [reforma](/es/reforma-llave-en-mano) — desde $550/m². Más trabajos en el [portfolio](/es/portfolio).",
+  "links": [
+   [
+    "/es/diseno-interiores-piso",
+    "Diseño de pisos"
+   ],
+   [
+    "/es/reforma-llave-en-mano",
+    "Reforma de pisos"
+   ]
+  ]
+ },
+ "house-concept-1": {
+  "name": "Casa particular — concepto 1",
+  "title": "Casa particular, concepto 1 — tour 3D 360° | CAS",
+  "description": "Tour 3D 360° de un concepto de interiorismo para una casa particular, opción 1: puntos de vista por toda la casa. Compárelo con otra versión del concepto.",
+  "eye": "Concepto · visualización 360 · opción 1",
+  "lead": "Visualizaciones 360 de un concepto de interiorismo para una casa particular, opción 1. Un concepto es una propuesta de interior en 3D, no fotos de una casa construida.",
+  "p": [
+   "Los puntos de vista están repartidos por toda la casa: muévase con las flechas de la foto o los botones ‹ › de abajo. Compárelo con el [concepto 4](/es/tury/house-concept-4) para ver lo distinto que puede ser el interior de una casa particular."
+  ],
+  "tail": "[Proyecto y diseño de casas](/es/proyecto-de-casa) — desde $30/m², mínimo $2 500; [reforma de casas llave en mano](/es/reforma-casa-llave-en-mano) y [construcción](/es/construccion-de-casas) — con nuestro propio equipo. Más trabajos en el [portfolio](/es/portfolio).",
+  "links": [
+   [
+    "/es/proyecto-de-casa",
+    "Diseño de casas"
+   ],
+   [
+    "/es/reforma-casa-llave-en-mano",
+    "Reforma de casas"
+   ]
+  ]
+ },
+ "house-concept-4": {
+  "name": "Casa particular — concepto 4",
+  "title": "Casa particular, concepto 4 — tour 3D 360° | CAS",
+  "description": "Tour 3D 360° de un concepto de interiorismo para una casa particular, opción 4: vestíbulo, cocina, salón, dormitorios, cuarto infantil, vestidor y baños.",
+  "eye": "Concepto · visualización 360 · opción 4",
+  "lead": "Visualizaciones 360 de un concepto de interiorismo para una casa particular, opción 4: vestíbulo, pasillo, cocina, salón, dormitorios, habitación infantil, vestidor y baños. Un concepto es una propuesta de interior en 3D, no fotos de una casa construida.",
+  "p": [
+   "El tour muestra una casa familiar: habitación infantil independiente, vestidor y dos baños. Compárelo con el [concepto 1](/es/tury/house-concept-1), otra propuesta de interior para una casa particular."
+  ],
+  "tail": "[Proyecto y diseño de casas](/es/proyecto-de-casa) — desde $30/m², mínimo $2 500; [reforma de casas llave en mano](/es/reforma-casa-llave-en-mano) y [construcción](/es/construccion-de-casas) — con nuestro propio equipo. Más trabajos en el [portfolio](/es/portfolio).",
+  "links": [
+   [
+    "/es/proyecto-de-casa",
+    "Diseño de casas"
+   ],
+   [
+    "/es/reforma-casa-llave-en-mano",
+    "Reforma de casas"
+   ]
+  ]
+ }
+}
