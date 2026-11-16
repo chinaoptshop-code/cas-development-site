@@ -14,6 +14,8 @@
 Посилання — на версію цієї мови з кластерів (tools/site/lang/clusters*.json; /proekty/x → /<мова>/proekty/x, /portfolio → /<мова>/portfolio),
 інакше лишається uk з hreflang="uk". Кластери case-<slug> і portfolio — tools/site/lang/clusters-cases.json (пише цей скрипт).
 Факти — лише ті, що в uk (без нових чисел; «реалізовано» — лише де є в uk). Шапку/футер/пігулку ставить chrome.apply().
+Описові alt окремих фото — "_img": {"<id файлу в /img/p/>": "що видно на фото"} у словнику мови: alt такого <img> (і в хвості галереї)
+= «<назва, місце> — <опис>» (назва й місце — з перекладеного шаблонного alt сторінки, до « — »), без «фото N».
 """
 import glob, html, json, os, re, sys, datetime
 
@@ -226,6 +228,29 @@ def tr_html(s, t):
     return ''.join(out)
 
 
+IMG_ID = re.compile(r'/img/p/([\w-]+?)-\d+\.webp')
+
+
+def img_alt(alt, src, lang):
+    """Описовий alt фото з "_img" словника мови (ключ — id файлу); інакше — як є."""
+    m = IMG_ID.search(src or '')
+    d = load(lang).get('_img', {})
+    if not m or m.group(1) not in d:
+        return alt
+    return alt.split(' — ', 1)[0] + ' — ' + d[m.group(1)]
+
+
+def desc_alts(s, lang):
+    def one(m):
+        tag = m.group(0)
+        src, alt = re.search(r'\ssrc="([^"]*)"', tag), re.search(r'\salt="([^"]*)"', tag)
+        if not src or not alt or not alt.group(1):
+            return tag
+        new = html.escape(img_alt(html.unescape(alt.group(1)), src.group(1), lang), quote=True).replace('&#x27;', "'")
+        return tag.replace(alt.group(0), f' alt="{new}"', 1)
+    return re.sub(r'<img\b[^>]*>', one, s)
+
+
 def tr_json(o, t, lang, slug):
     if isinstance(o, dict):
         r = {k: tr_json(v, t, lang, slug) for k, v in o.items()}
@@ -276,6 +301,7 @@ def build(slug, lang):
     body = re.sub(r'<!--m-fix--><div class="mbar".*?</div><!--/mb-menu-->', lambda m: m.group(0).replace('>Подзвонити</a>', '>' + CALL[lang] + '</a>'), body, flags=re.S)
     body = re.sub(r'<!--chrome:h-->.*?<!--/chrome:h-->|<!--chrome:f-->.*?<!--/chrome:f-->|<!--chrome:skip-->.*?<!--/chrome:skip-->|<!--m-fix--><div class="mbar".*?</div><!--/mb-menu-->', hold, body, flags=re.S)
     body = tr_html(body, t)
+    body = desc_alts(body, lang)
     body = body.replace('"/proekty/gal/', '"/' + i18n.meta(lang)['prefix'] + 'proekty/gal/')  # хвіст довгої галереї — JSON мови (gallery())
     for k, v in keep.items():
         body = body.replace(k, v)
@@ -299,7 +325,7 @@ def gallery(slug, lang, t):
         return None
     d = json.load(open(f, encoding='utf-8'))
     for x in d['p']:
-        x[6] = t(x[6]) if CYR.search(x[6]) else x[6]
+        x[6] = img_alt(t(x[6]) if CYR.search(x[6]) else x[6], x[0], lang)
     return json.dumps(d, ensure_ascii=False, separators=(',', ':')) + '\n'
 
 
