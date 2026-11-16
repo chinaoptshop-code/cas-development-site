@@ -227,7 +227,7 @@
     Promise.all([
       soft(api('/api/account/profile'), { settings: {}, addresses: [] }),
       soft(api('/api/account/orders'), { orders: [] }),
-      favorites(),
+      soft(favorites(), []),
       soft(api('/api/account/projects'), { projects: [] }),
       catalog()
     ]).then(function (r) {
