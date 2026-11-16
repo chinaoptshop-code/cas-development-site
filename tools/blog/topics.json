@@ -79,13 +79,14 @@
  {
   "lang": "uk",
   "slug": "hazoblok-chy-keramika-dlia-budynku",
-  "title": "Газоблок чи кераміка: з чого будувати будинок",
+  "title": "Газоблок чи керамічний блок: з чого будувати будинок",
   "keyword": "газоблок чи керамічний блок",
   "service": [
    "/budivnytstvo-budynkiv-kyiv",
    "Будівництво будинків"
   ],
-  "status": "todo"
+  "status": "published",
+  "note": "16.11.2026: ОК Михайла («Публікуй 5 нових статей»)"
  },
  {
   "lang": "ru",
@@ -167,24 +168,26 @@
  {
   "lang": "uk",
   "slug": "landshaftnyi-dyzain-dilianky-z-choho-pochaty",
-  "title": "Ландшафтний дизайн ділянки: з чого почати й скільки коштує",
+  "title": "Ландшафтний дизайн ділянки: з чого почати і скільки коштує",
   "keyword": "ландшафтний дизайн київ",
   "service": [
    "/landshaftnyi-dyzain-kyiv",
    "Ландшафтний дизайн"
   ],
-  "status": "todo"
+  "status": "published",
+  "note": "16.11.2026: ОК Михайла («Публікуй 5 нових статей»)"
  },
  {
   "lang": "ru",
   "slug": "landshaftnyy-dizayn-uchastka-cena",
-  "title": "Ландшафтный дизайн участка: этапы и цена за сотку",
+  "title": "Ландшафтный дизайн участка: с чего начать и сколько стоит",
   "keyword": "ландшафтный дизайн киев",
   "service": [
    "/ru/landshaftnyy-dizayn-kiev",
    "Ландшафтный дизайн"
   ],
-  "status": "todo"
+  "status": "published",
+  "note": "16.11.2026: ОК Михайла («Публікуй 5 нових статей»)"
  },
  {
   "lang": "uk",
@@ -211,13 +214,14 @@
  {
   "lang": "uk",
   "slug": "pereplanuvannia-kvartyry-shcho-mozhna",
-  "title": "Перепланування квартири: що можна змінювати і що варто знати",
+  "title": "Перепланування квартири: що можна змінити, а що ні",
   "keyword": "перепланування квартири київ",
   "service": [
-   "/remont-kvartyr-kyiv",
-   "Ремонт квартир"
+   "/pereplanuvannia-kvartyry-kyiv",
+   "Перепланування квартири"
   ],
-  "status": "todo"
+  "status": "published",
+  "note": "16.11.2026: ОК Михайла («Публікуй 5 нових статей»)"
  },
  {
   "lang": "ru",
@@ -279,13 +283,14 @@
  {
   "lang": "uk",
   "slug": "osvitlennia-v-interieri-scenarii",
-  "title": "Освітлення в інтерʼєрі: сценарії світла для кожної кімнати",
+  "title": "Освітлення квартири: сценарії, групи світла й типові помилки",
   "keyword": "освітлення квартири дизайн",
   "service": [
    "/dyzain-interieru-kvartyry-kyiv",
    "Дизайн квартири"
   ],
-  "status": "todo"
+  "status": "published",
+  "note": "16.11.2026: ОК Михайла («Публікуй 5 нових статей»)"
  },
  {
   "lang": "ru",
@@ -844,14 +849,14 @@
  {
   "lang": "uk",
   "slug": "remont-kvartyry-pechersk-staryi-fond",
-  "title": "Ремонт квартири на Печерську: старий фонд і новобудови",
+  "title": "Ремонт квартири на Печерську в старому фонді: що врахувати",
   "keyword": "ремонт квартири печерськ",
   "service": [
    "/dyzain-remont-kvartyry-pechersk",
-   "Дизайн і ремонт на Печерську"
+   "Дизайн і ремонт квартири на Печерську"
   ],
-  "status": "todo",
-  "note": "SEO-аудит 25.10.2026: комерційний запит, сегмент від $5 000"
+  "status": "published",
+  "note": "16.11.2026: ОК Михайла («Публікуй 5 нових статей»)"
  },
  {
   "lang": "uk",
@@ -1495,5 +1500,53 @@
   ],
   "status": "published",
   "note": "GSC 10.11.2026: покази без статті; ОК Михайла 16.11.2026"
+ },
+ {
+  "lang": "ru",
+  "slug": "pereplanirovka-kvartiry-chto-mozhno",
+  "title": "Перепланировка квартиры: что можно изменить, а что нет",
+  "keyword": "перепланировка квартиры киев",
+  "service": [
+   "/ru/pereplanirovka-kvartiry-kiev",
+   "Перепланировка квартиры"
+  ],
+  "status": "published",
+  "note": "16.11.2026: ОК Михайла («Публікуй 5 нових статей»)"
+ },
+ {
+  "lang": "ru",
+  "slug": "gazoblok-ili-keramika-dlya-doma",
+  "title": "Газоблок или керамический блок: из чего строить дом",
+  "keyword": "газоблок или керамический блок",
+  "service": [
+   "/ru/stroitelstvo-domov-kiev",
+   "Строительство домов"
+  ],
+  "status": "published",
+  "note": "16.11.2026: ОК Михайла («Публікуй 5 нових статей»)"
+ },
+ {
+  "lang": "ru",
+  "slug": "osveshchenie-v-interere-scenarii",
+  "title": "Освещение квартиры: сценарии, группы света и типичные ошибки",
+  "keyword": "освещение квартиры дизайн",
+  "service": [
+   "/ru/dizayn-kvartiry-kiev",
+   "Дизайн квартиры"
+  ],
+  "status": "published",
+  "note": "16.11.2026: ОК Михайла («Публікуй 5 нових статей»)"
+ },
+ {
+  "lang": "ru",
+  "slug": "remont-kvartiry-pechersk-staryy-fond",
+  "title": "Ремонт квартиры на Печерске в старом фонде: что учесть",
+  "keyword": "ремонт квартиры печерск",
+  "service": [
+   "/ru/dizayn-remont-kvartiry-pechersk",
+   "Дизайн и ремонт квартиры на Печерске"
+  ],
+  "status": "published",
+  "note": "16.11.2026: ОК Михайла («Публікуй 5 нових статей»)"
  }
 ]
