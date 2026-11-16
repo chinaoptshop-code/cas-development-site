@@ -403,6 +403,66 @@
     });
   }
 
+  /* ---------- 2б. контакти поруч із формою #zayavka на ПК (≥1024 px; Михайло 16.11.2026: права половина була порожня) ----------
+     Телефон, месенджери (ті самі посилання, що в шапці/футері), адреса й години роботи. Тексти — CT нижче, їх пише
+     tools/site/leadform.py (sync_js) з <мова>-contact*.json і chrome.T — руками не правити. У HTML блоку немає (лендинги на межі
+     бюджету 64 КБ): скрипт ставить <aside class="of-ct"> абсолютно в праву частину .w — потік сторінки не змінюється (CLS 0).
+     Телефон (<1024 px) — без блоку; на сторінках контактів (.xs-contacts) — теж без нього. */
+  /*ct*/
+  var CT = {
+    uk: ["Контакти", "Телефон", "Месенджери", "Офіс", "вул. Антоновича, 44, Київ, 03186", "Години роботи", "Пн–Пт 10:00–20:00 · Сб–Нд — вихідні · онлайн 24/7"],
+    ru: ["Контакты", "Телефон", "Мессенджеры", "Офис", "ул. Антоновича, 44, Киев, 03186", "Часы работы", "Пн–Пт 10:00–20:00 · Сб–Вс — выходные · онлайн 24/7"],
+    en: ["Contacts", "Phone", "Messengers", "Office", "44 Antonovycha St., Kyiv 03186, Ukraine", "Hours", "Mon–Fri 10:00–20:00 · Sat–Sun closed · online 24/7"],
+    es: ["Contacto", "Teléfono", "Mensajería", "Oficina", "Calle Antonovycha 44, 03186 Kiev, Ucrania", "Horario", "Lun–Vie 10:00–20:00 · Sáb–Dom cerrado · online 24/7"],
+    zh: ["联系方式", "电话", "即时通讯", "办公室", "乌克兰基辅 Antonovycha 街 44 号，03186", "营业时间", "周一至周五 10:00–20:00 · 周六、周日休息 · 线上 24/7"],
+    pl: ["Kontakt", "Telefon", "Komunikatory", "Biuro", "ul. Antonowycza 44, 03186 Kijów, Ukraina", "Godziny pracy", "Pn–Pt 10:00–20:00 · Sb–Nd nieczynne · online 24/7"],
+    de: ["Kontakt", "Telefon", "Messenger", "Büro", "Antonowytscha-Str. 44, 03186 Kyjiw, Ukraine", "Öffnungszeiten", "Mo–Fr 10:00–20:00 · Sa–So geschlossen · online 24/7"],
+    fr: ["Contact", "Téléphone", "Messageries", "Bureau", "44, rue Antonovytcha, 03186 Kyiv, Ukraine", "Horaires", "Lun–ven 10:00–20:00 · sam–dim fermé · en ligne 24/7"],
+    ar: ["التواصل", "الهاتف", "تطبيقات المراسلة", "المكتب", "شارع أنتونوفيتشا 44، كييف 03186، أوكرانيا", "ساعات العمل", "الاثنين–الجمعة 10:00–20:00 · السبت–الأحد عطلة · أونلاين 24/7"]
+  };
+  /*/ct*/
+  (function () {
+    var sec = $('zayavka'), f = $('of');
+    if (!sec || !f || !sec.contains(f) || document.querySelector('.xs-contacts') || !window.matchMedia) return;
+    var w = f.parentNode, mq = window.matchMedia('(min-width:1024px)'), box = null;
+    function place() {
+      if (!box || !mq.matches) return;
+      var rtl = getComputedStyle(w).direction === 'rtl', cs = getComputedStyle(w), gap = 64;
+      var pl = parseFloat(cs.paddingLeft) || 0, pr = parseFloat(cs.paddingRight) || 0, W = w.clientWidth;
+      var rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      var avail = rtl ? f.offsetLeft - gap - pl : W - pr - (f.offsetLeft + f.offsetWidth + gap);
+      box.style.top = f.offsetTop + 'px';
+      box.style.width = Math.max(0, Math.min(avail, 26 * rem)) + 'px';
+      if (rtl) box.style.right = (W - f.offsetLeft + gap) + 'px';
+      else box.style.left = (f.offsetLeft + f.offsetWidth + gap) + 'px';
+    }
+    function build() {
+      if (box || !mq.matches) return place();
+      var c = CT[lang] || CT.en || CT.uk;
+      box = el('aside', 'of-ct'); box.setAttribute('aria-label', c[0]);
+      var row = function (lab, body) { var d = el('div', 'of-ct-r'); d.appendChild(el('span', 'of-ct-l', lab)); d.appendChild(body); box.appendChild(d); };
+      var tel = el('a', 'of-ct-tel', '+380 97 866 77 55'); tel.href = 'tel:+380978667755'; tel.dir = 'ltr';
+      row(c[1], tel);
+      var ms = el('div', 'of-ct-m');
+      [['Telegram', 'https://t.me/+380978667755', 'telegram'], ['WhatsApp', 'https://wa.me/380978667755', 'whatsapp'], ['Viber', 'viber://chat?number=%2B380978667755', 'viber']].forEach(function (m) {
+        var a = el('a'); a.href = m[1]; if (/^http/.test(m[1])) { a.target = '_blank'; a.rel = 'noopener'; }
+        var i = el('img'); i.src = '/assets/brand/' + m[2] + '.svg'; i.width = i.height = 24; i.alt = ''; i.decoding = 'async';
+        a.appendChild(i); a.appendChild(document.createTextNode(m[0]));
+        a.addEventListener('click', function () { clarity('lead_msg', m[0], 'lead_msg'); });
+        ms.appendChild(a);
+      });
+      row(c[2], ms);
+      row(c[3], el('span', 'of-ct-v', c[4]));
+      row(c[5], el('span', 'of-ct-v', c[6]));
+      w.classList.add('of-ct-w');
+      w.appendChild(box);
+      place();
+    }
+    build();
+    if (mq.addEventListener) mq.addEventListener('change', build);
+    window.addEventListener('resize', place, { passive: true });
+  })();
+
   /* ---------- 3. «Залишити номер» (нижня панель) і кнопки-якорі #zayavka / #lead: прокрутка й фокус на телефоні ---------- */
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a.mb-lead, a[href="#zayavka"], a[href="#lead"]');
