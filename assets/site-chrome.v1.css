@@ -888,3 +888,21 @@ html body main>.pmap{grid-column:1/-1;width:100%;box-sizing:border-box}
    «Наші проєкти» лендингів (.gal з посиланням у підписі) — картка-посилання цілком: тап по фото веде на кейс, як по назві */
 a[data-lb]{cursor:zoom-in}
 .gal figure{position:relative}.gal figcaption a::after{content:"";position:absolute;inset:0}
+
+/* ══ Контакти поруч із формою #zayavka на ПК (Михайло 16.11.2026) — aside.of-ct будує /assets/lead-form.v1.js (≥1024 px; top/left — від form#of);
+   абсолютно в правій половині .w: потік сторінки не змінюється (CLS 0); телефон (<1024 px) — без блоку */
+.of-ct{display:none}
+@media (min-width:1024px){
+  #zayavka>.of-ct-w{position:relative}
+  #zayavka .of-ct{display:grid;position:absolute;align-content:start;gap:1.125rem;padding:1.5rem 1.75rem;border:1px solid var(--ln,rgba(191,145,72,.3));border-radius:14px;background:rgba(191,145,72,.04);box-sizing:border-box}
+  .of-ct-r{display:grid;gap:.25rem;min-width:0}
+  .of-ct-l{font-size:var(--fs-small,.8125rem);color:var(--mu,#8a837c);line-height:1.4}
+  .of-ct-v{color:var(--tx,#ede8df);line-height:1.5;overflow-wrap:anywhere}
+  a.of-ct-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.375rem;font-weight:600;color:var(--tx,#ede8df);text-decoration:none;white-space:nowrap}
+  a.of-ct-tel:hover{color:var(--ac,#bf9148)}
+  .of-ct-m{display:flex;flex-wrap:wrap;gap:.5rem}
+  .of-ct-m a{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 .875rem;border:1px solid var(--ln,rgba(191,145,72,.35));border-radius:999px;color:var(--tx,#ede8df);font-size:var(--fs-small,.8125rem);font-weight:600;text-decoration:none}
+  .of-ct-m a:hover,.of-ct-m a:focus-visible{border-color:var(--ac,#bf9148)}
+  .of-ct-m img{width:1.25rem;height:1.25rem}
+}
+@media (horizontal-viewport-segments:2){#zayavka .of-ct{display:none}} /* двоекранні: форма — в одному сегменті, без блоку через шарнір */

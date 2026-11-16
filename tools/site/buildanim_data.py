@@ -4,7 +4,7 @@
 2) /assets/build-anim.v1.<мова>.json — усі матеріали, етапи й «пироги» шарів для скрипта сцени (assets/build-anim.v1.js).
 
 Факти — лише з CLAUDE.md: команда з /about (без імен фахівців — «наш геодезист», прораби, меблярі, 3D-замір,
-зйомка з дрона — Михайло), гарантія 12 міс., фотозвіти раз на 1–2 тижні. Без цін і строків.
+зйомка з дрона — «наш фахівець», без імен), гарантія 12 міс., фотозвіти раз на 1–2 тижні. Без цін і строків.
 Технологія й товщини шарів — типові для ринку (у блоці підписано «типові товщини»); точні — у проєкті КР/АР конкретного будинку.
 
 Послідовності етапів (MATS) — однакової довжини (19) для всіх матеріалів: перемикач матеріалу не змінює висоту блоку (CLS 0).
@@ -60,7 +60,7 @@ T['uk'] = dict(
             ushp=('УШП: утеплена шведська плита', 'XPS по дну й L-блоки по краях, труби теплої підлоги й вводи комунікацій закладаємо до бетону, зверху — сітка.'),
             b_w1=('Кладка 1 поверху', 'Газоблок на клей (шов 2–3 мм), перший ряд — на розчин по гідроізоляції. Кожен 4-й ряд армуємо в штробах, над прорізами — перемички.'),
             belt1=('Монолітний армопояс', 'Опалубка, армокаркас і бетон по периметру: армопояс розподіляє навантаження від перекриття й звʼязує стіни в одне ціле.'),
-            slab=('Перекриття', 'Пустотні плити краном або монолітне перекриття по опалубці з двома сітками — за проєктом КР. Хід робіт Михайло знімає з дрона.'),
+            slab=('Перекриття', 'Пустотні плити краном або монолітне перекриття по опалубці з двома сітками — за проєктом КР. Хід робіт наш фахівець знімає з дрона.'),
             b_w2=('2 поверх, армопояс, мауерлат', 'Стіни 2 поверху за тією ж технологією, зверху — другий армопояс із закладними шпильками, на них — мауерлат по гідроізоляції.'),
             k_w1=('Цегляна кладка 1 поверху', 'Кладка на цементно-піщаний розчин з перевʼязкою швів, кладкова сітка кожні 4–5 рядів, над прорізами — перемички.'),
             k_belt=('Пояс під перекриття', 'Монолітний пояс або армований шов під плити — за КР: рівна основа для перекриття й звʼязок стін між собою.'),
@@ -81,7 +81,7 @@ T['uk'] = dict(
             r_win=('Вікна в обсадних коробках', 'Вікна й двері — в обсадних коробках (окосячці) із зазором під усадку; монтажний шов теплий, зі стрічками.'),
             r_fin=('Шліфування й захист деревини', 'Шліфуємо стіни, наносимо антисептик, вогнебіозахист і лазур або олію — деревина дихає й не темніє.'),
             rafters=('Крокви, мембрана, контробрешітка', 'Кроквяна система на мауерлаті, по ній — супердифузійна мембрана, контробрешітка (вентзазор) і обрешітка під покриття.'),
-            roof=('Утеплення покрівлі й покриття', 'Металочерепиця або фальц по обрешітці, водостоки; між кроквами — мінвата, знизу — пароізоляція. Михайло знімає дах з дрона.'),
+            roof=('Утеплення покрівлі й покриття', 'Металочерепиця або фальц по обрешітці, водостоки; між кроквами — мінвата, знизу — пароізоляція. Наш фахівець знімає дах з дрона.'),
             win=('Вікна: теплий монтаж', 'Енергоефективні вікна на анкерах, шов у три шари: ззовні паропроникна стрічка, в шві піна, зсередини — пароізоляційна стрічка.'),
             mep=('Інженерні мережі', 'Електрика від щита з автоматами й ПЗВ, вода й каналізація з ухилом, котел і тепла підлога, припливно-витяжна вентиляція — за проєктами ЕО, ВК, ОВ.'),
             screed=('Стяжка й штукатурка', 'Стяжка по трубах теплої підлоги з демпферною стрічкою, штукатурка стін по маяках — рівна основа під оздоблення.'),
@@ -156,7 +156,7 @@ T['ru'] = dict(
             ushp=('УШП: утеплённая шведская плита', 'XPS по дну и L-блоки по краям, трубы тёплого пола и вводы коммуникаций закладываем до бетона, сверху — сетка.'),
             b_w1=('Кладка 1 этажа', 'Газоблок на клей (шов 2–3 мм), первый ряд — на раствор по гидроизоляции. Каждый 4-й ряд армируем в штробах, над проёмами — перемычки.'),
             belt1=('Монолитный армопояс', 'Опалубка, армокаркас и бетон по периметру: армопояс распределяет нагрузку от перекрытия и связывает стены в одно целое.'),
-            slab=('Перекрытие', 'Пустотные плиты краном или монолитное перекрытие по опалубке с двумя сетками — по проекту КР. Ход работ Михаил снимает с дрона.'),
+            slab=('Перекрытие', 'Пустотные плиты краном или монолитное перекрытие по опалубке с двумя сетками — по проекту КР. Ход работ наш специалист снимает с дрона.'),
             b_w2=('2 этаж, армопояс, мауэрлат', 'Стены 2 этажа по той же технологии, сверху — второй армопояс с закладными шпильками, на них — мауэрлат по гидроизоляции.'),
             k_w1=('Кирпичная кладка 1 этажа', 'Кладка на цементно-песчаный раствор с перевязкой швов, кладочная сетка каждые 4–5 рядов, над проёмами — перемычки.'),
             k_belt=('Пояс под перекрытие', 'Монолитный пояс или армированный шов под плиты — по КР: ровное основание для перекрытия и связь стен между собой.'),
@@ -177,7 +177,7 @@ T['ru'] = dict(
             r_win=('Окна в обсадных коробках', 'Окна и двери — в обсадных коробках (окосячке) с зазором под усадку; монтажный шов тёплый, с лентами.'),
             r_fin=('Шлифовка и защита древесины', 'Шлифуем стены, наносим антисептик, огнебиозащиту и лазурь или масло — древесина дышит и не темнеет.'),
             rafters=('Стропила, мембрана, контробрешётка', 'Стропильная система на мауэрлате, по ней — супердиффузионная мембрана, контробрешётка (вентзазор) и обрешётка под покрытие.'),
-            roof=('Утепление кровли и покрытие', 'Металлочерепица или фальц по обрешётке, водостоки; между стропилами — минвата, снизу — пароизоляция. Михаил снимает крышу с дрона.'),
+            roof=('Утепление кровли и покрытие', 'Металлочерепица или фальц по обрешётке, водостоки; между стропилами — минвата, снизу — пароизоляция. Наш специалист снимает крышу с дрона.'),
             win=('Окна: тёплый монтаж', 'Энергоэффективные окна на анкерах, шов в три слоя: снаружи паропроницаемая лента, в шве пена, изнутри — пароизоляционная лента.'),
             mep=('Инженерные сети', 'Электрика от щита с автоматами и УЗО, вода и канализация с уклоном, котёл и тёплый пол, приточно-вытяжная вентиляция — по проектам ЭО, ВК, ОВ.'),
             screed=('Стяжка и штукатурка', 'Стяжка по трубам тёплого пола с демпферной лентой, штукатурка стен по маякам — ровное основание под отделку.'),
@@ -252,7 +252,7 @@ T['en'] = dict(
             ushp=('Insulated raft (Swedish slab)', 'XPS on the bed and L-blocks at the edges; underfloor heating pipes and service entries go in before the concrete, with mesh on top.'),
             b_w1=('Ground-floor blockwork', 'Aerated block on thin-bed adhesive (2–3 mm joints), the first course on mortar over the damp-proof layer. Every 4th course is reinforced, lintels over openings.'),
             belt1=('Ring beam', 'Formwork, a rebar cage and concrete around the perimeter: the ring beam spreads the floor load and ties the walls together.'),
-            slab=('Floor slab', 'Hollow-core planks by crane or a cast-in-place slab with two meshes — per the structural design. Mykhailo films the progress by drone.'),
+            slab=('Floor slab', 'Hollow-core planks by crane or a cast-in-place slab with two meshes — per the structural design. Our specialist films the progress by drone.'),
             b_w2=('First floor, ring beam, wall plate', 'First-floor walls the same way, topped with a second ring beam with cast-in studs that hold the timber wall plate.'),
             k_w1=('Ground-floor brickwork', 'Bonded brickwork on cement-sand mortar, bed-joint mesh every 4–5 courses, lintels over openings.'),
             k_belt=('Bond beam under the floor', 'A cast ring beam or reinforced bed joint under the planks — per the structural design: a level bearing and a tie between walls.'),
@@ -273,7 +273,7 @@ T['en'] = dict(
             r_win=('Windows in floating frames', 'Windows and doors go into floating sub-frames with a settling gap; the joint is sealed with tapes.'),
             r_fin=('Sanding and wood protection', 'We sand the walls and apply antiseptic, fire protection and a stain or oil — the wood breathes and keeps its colour.'),
             rafters=('Rafters, membrane, counter-battens', 'Rafters on the wall plate, then a vapour-open roofing membrane, counter-battens for ventilation and battens for the roofing.'),
-            roof=('Roof insulation and covering', 'Metal tiles or standing seam on battens, gutters; mineral wool between rafters, a vapour barrier below. Mykhailo films the roof by drone.'),
+            roof=('Roof insulation and covering', 'Metal tiles or standing seam on battens, gutters; mineral wool between rafters, a vapour barrier below. Our specialist films the roof by drone.'),
             win=('Windows: sealed installation', 'Energy-efficient windows on anchors with a three-layer joint: a breathable tape outside, foam in the gap, a vapour-tight tape inside.'),
             mep=('Building services', 'Wiring from a panel with breakers and RCDs, water and sloped drainage, boiler and underfloor heating, balanced ventilation — per the MEP design.'),
             screed=('Screed and plaster', 'Screed over the heating pipes with an edge strip, walls plastered to guide beads — a true base for the finishes.'),
@@ -542,7 +542,7 @@ T['uk']['ui']['cfg'] = dict(
            one_t='1 поверх — до 220 м²: площу змінено на 220 м²'),
 )
 T['uk']['sto'] = dict(
-    one=dict(slab=('Перекриття над поверхом', 'Плита або балки стелі за КР: зверху — утеплення горища або основа плоскої покрівлі. Хід робіт Михайло знімає з дрона.'),
+    one=dict(slab=('Перекриття над поверхом', 'Плита або балки стелі за КР: зверху — утеплення горища або основа плоскої покрівлі. Хід робіт наш фахівець знімає з дрона.'),
              b_w2=('Мауерлат на шпильках', 'Одноповерховий будинок: по армопоясу й перекриттю — шпильки, гідроізоляція й мауерлат, на який спиратимуться крокви.'),
              k_w2=('Пояс і мауерлат', 'Пояс під покрівлю по перекриттю, мауерлат на шпильках по гідроізоляції; під облицювання лишаємо гнучкі звʼязки.'),
              f_w2=('Верхня обвʼязка й стельові балки', 'Одноповерховий каркас: подвійна верхня обвʼязка, стельові балки з кроком під утеплювач — на них спираються крокви.'),
@@ -557,7 +557,7 @@ T['uk']['sto'] = dict(
               roof=('Покрівельний пиріг і мембрана', 'Пароізоляція, утеплення, ПВХ-мембрана з заведенням на парапет, капельник по парапету й лійки з обігрівом.')),
     ter=dict(roof=('Експлуатована покрівля: тераса', 'Інверсійний пиріг: мембрана, XPS і геотекстиль, плитка на регульованих опорах; скляне огородження й вихід на дах.')),
     hip=dict(rafters=('Вальмова кроквяна система', 'Чотири схили: кутові крокви, нарожники й коротші крокви біля вальм; далі мембрана, контробрешітка й обрешітка.'),
-             roof=('Утеплення й черепиця', 'Черепиця по обрешітці, водостоки по периметру; між кроквами — мінвата, знизу — пароізоляція. Михайло знімає дах з дрона.')),
+             roof=('Утеплення й черепиця', 'Черепиця по обрешітці, водостоки по периметру; між кроквами — мінвата, знизу — пароізоляція. Наш фахівець знімає дах з дрона.')),
     af=dict(f_studs=('A-рами', 'Трикутні рами з сухого струганого або клеєного бруса з кроком 1–1,2 м: вони одночасно стіни й дах.'),
             f_osb=('ОСБ по рамах і антресоль', 'ОСБ-3 по рамах дає жорсткість; балки антресолі спираються на рами, під ними — простір на всю висоту.'),
             f_w2=('Каркас фронтонів', 'Стійки й ригелі фронтонів під великі вікна; задній фронтон — глухіший, з утепленням.'),
@@ -604,7 +604,7 @@ T['ru']['ui']['cfg'] = dict(
            one_t='1 этаж — до 220 м²: площадь изменена на 220 м²'),
 )
 T['ru']['sto'] = dict(
-    one=dict(slab=('Перекрытие над этажом', 'Плита или балки потолка по КР: сверху — утепление чердака или основание плоской кровли. Ход работ Михаил снимает с дрона.'),
+    one=dict(slab=('Перекрытие над этажом', 'Плита или балки потолка по КР: сверху — утепление чердака или основание плоской кровли. Ход работ наш специалист снимает с дрона.'),
              b_w2=('Мауэрлат на шпильках', 'Одноэтажный дом: по армопоясу и перекрытию — шпильки, гидроизоляция и мауэрлат, на который обопрутся стропила.'),
              k_w2=('Пояс и мауэрлат', 'Пояс под кровлю по перекрытию, мауэрлат на шпильках по гидроизоляции; под облицовку оставляем гибкие связи.'),
              f_w2=('Верхняя обвязка и потолочные балки', 'Одноэтажный каркас: двойная верхняя обвязка, потолочные балки с шагом под утеплитель — на них опираются стропила.'),
@@ -619,7 +619,7 @@ T['ru']['sto'] = dict(
               roof=('Кровельный пирог и мембрана', 'Пароизоляция, утепление, ПВХ-мембрана с заведением на парапет, капельник по парапету и воронки с обогревом.')),
     ter=dict(roof=('Эксплуатируемая кровля: терраса', 'Инверсионный пирог: мембрана, XPS и геотекстиль, плитка на регулируемых опорах; стеклянное ограждение и выход на крышу.')),
     hip=dict(rafters=('Вальмовая стропильная система', 'Четыре ската: угловые стропила, нарожники и укороченные стропила у вальм; дальше мембрана, контробрешётка и обрешётка.'),
-             roof=('Утепление и черепица', 'Черепица по обрешётке, водостоки по периметру; между стропилами — минвата, снизу — пароизоляция. Михаил снимает крышу с дрона.')),
+             roof=('Утепление и черепица', 'Черепица по обрешётке, водостоки по периметру; между стропилами — минвата, снизу — пароизоляция. Наш специалист снимает крышу с дрона.')),
     af=dict(f_studs=('A-рамы', 'Треугольные рамы из сухого строганого или клеёного бруса с шагом 1–1,2 м: они одновременно стены и крыша.'),
             f_osb=('ОСБ по рамам и антресоль', 'ОСБ-3 по рамам даёт жёсткость; балки антресоли опираются на рамы, под ними — пространство на всю высоту.'),
             f_w2=('Каркас фронтонов', 'Стойки и ригели фронтонов под большие окна; задний фронтон — более глухой, с утеплением.'),
@@ -666,7 +666,7 @@ T['en']['ui']['cfg'] = dict(
            one_t='1 storey up to 220 m²: area set to 220 m²'),
 )
 T['en']['sto'] = dict(
-    one=dict(slab=('Ceiling slab', 'A slab or ceiling joists per the structural design, topped with loft insulation or forming the base of a flat roof. Mykhailo films progress by drone.'),
+    one=dict(slab=('Ceiling slab', 'A slab or ceiling joists per the structural design, topped with loft insulation or forming the base of a flat roof. Our specialist films progress by drone.'),
              b_w2=('Wall plate on studs', 'A single-storey house: studs, damp-proofing and the wall plate go on the ring beam and slab to carry the rafters.'),
              k_w2=('Ring beam and wall plate', 'A ring beam under the roof on the slab, the wall plate on studs over damp-proofing; flexible ties left for the facing brick.'),
              f_w2=('Top plate and ceiling joists', 'A single-storey frame: double top plate and ceiling joists spaced for insulation; the rafters sit on them.'),
@@ -681,7 +681,7 @@ T['en']['sto'] = dict(
               roof=('Roof build-up and membrane', 'Vapour barrier, insulation, a PVC membrane turned up the parapet, a drip edge and heated outlets.')),
     ter=dict(roof=('Usable roof: a terrace', 'An inverted build-up: membrane, XPS and geotextile, tiles on adjustable pedestals; glass railing and a roof access.')),
     hip=dict(rafters=('Hip roof framing', 'Four slopes: hip rafters, jack rafters and shorter rafters at the hips, then membrane, counter battens and battens.'),
-             roof=('Insulation and roof tiles', 'Tiles on battens, gutters all round; mineral wool between the rafters with a vapour barrier below. Mykhailo films the roof by drone.')),
+             roof=('Insulation and roof tiles', 'Tiles on battens, gutters all round; mineral wool between the rafters with a vapour barrier below. Our specialist films the roof by drone.')),
     af=dict(f_studs=('A-frames', 'Triangular frames of dry planed or glulam timber at 1–1.2 m centres: they are walls and roof at once.'),
             f_osb=('OSB on frames and a mezzanine', 'OSB-3 on the frames adds stiffness; mezzanine joists sit on the frames with full-height space below.'),
             f_w2=('Gable framing', 'Studs and rails for big gable windows; the rear gable is more solid and insulated.'),
