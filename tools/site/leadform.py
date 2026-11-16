@@ -23,6 +23,8 @@
   • Стилі — у /assets/site-chrome.v1.css (розділ «Легка заявка»); старий інлайн <style id="lead-ui"> прибираємо.
 Надсилання, перевірку номера, маску, стани «надсилаємо…/дякуємо» і події Clarity (`lead_submit`, `lead_start`, `lead_msg`)
 робить спільний /assets/lead-form.v1.js. Без поп-апів і exit-intent.
+Контакти поруч із формою #zayavka на ПК ≥1024 px (телефон, Telegram/WhatsApp/Viber, адреса, години; Михайло 16.11.2026) — aside.of-ct
+будує lead-form.v1.js (абсолютно в правій половині .w, без зміни потоку — CLS 0); тексти 9 мов — sync_js() (див. нижче).
 Форму з data-lf="keep" (власна форма сторінки, landing.py "form_html") не переписуємо.
 Сторінки інших агентів (SKIP) не чіпаємо; блог, Оздобу, кабінет і сторінки проєктів — без швидкої заявки в hero.
 """
@@ -379,6 +381,42 @@ def apply(s, rel):
     return s
 
 
+# ── контакти поруч із формою #zayavka на ПК (Михайло 16.11.2026): блок будує /assets/lead-form.v1.js (у HTML його немає —
+# лендинги на межі бюджету 64 КБ); тексти — сюди з рядка «Офіс»/«Години»/«Телефон» секції contacts у <мова>-contact*.json і chrome.T
+# (contacts, msg), адреса з індексом 03186 (факт із CLAUDE.md). sync_js() пише словник CT між /*ct*/ і /*/ct*/ у lead-form.v1.js.
+CONTACT_PAGES = dict(uk='uk-contact', ru='ru-kontakty', en='en-contact', es='es-contacto', zh='zh-contact', pl='pl-kontakt',
+                     de='de-kontakt', fr='fr-contact', ar='ar-contact')
+ADDR = dict(uk='вул. Антоновича, 44, Київ, 03186', ru='ул. Антоновича, 44, Киев, 03186', en='44 Antonovycha St., Kyiv 03186, Ukraine',
+            es='Calle Antonovycha 44, 03186 Kiev, Ucrania', zh='乌克兰基辅 Antonovycha 街 44 号，03186', pl='ul. Antonowycza 44, 03186 Kijów, Ukraina',
+            de='Antonowytscha-Str. 44, 03186 Kyjiw, Ukraine', fr='44, rue Antonovytcha, 03186 Kyiv, Ukraine', ar='شارع أنتونوفيتشا 44، كييف 03186، أوكرانيا')
+JS = os.path.join(ROOT, 'assets', 'lead-form.v1.js')
+CT_RX = re.compile(r'/\*ct\*/.*?/\*/ct\*/', re.S)
+
+
+def ct_js():
+    import json
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import chrome
+    rows = []
+    for l, f in CONTACT_PAGES.items():
+        p = json.load(open(os.path.join(ROOT, 'tools', 'site', 'pages', f + '.json'), encoding='utf-8'))
+        r = next(x for x in p['sections'] if x.get('t') == 'contacts')['rows']
+        office = next(x for x in r if str(x[2] or '').startswith('https://maps.'))
+        hours = next(x for x in r if '10:00' in x[1])
+        phone = next(x for x in r if str(x[2] or '').startswith('tel:'))
+        d = [chrome.T[l]['contacts'], phone[0], chrome.T[l]['msg'], office[0], ADDR[l], hours[0], hours[1]]
+        rows.append(f'    {l}: {json.dumps(d, ensure_ascii=False)}')
+    return '/*ct*/\n  var CT = {\n' + ',\n'.join(rows) + '\n  };\n  /*/ct*/'
+
+
+def sync_js(check=False):
+    s = open(JS, encoding='utf-8').read()
+    new = CT_RX.sub(lambda m: ct_js(), s, count=1)
+    if new != s and not check:
+        open(JS, 'w', encoding='utf-8').write(new)
+    return new == s
+
+
 def pages():
     out = []
     for f in sorted(glob.glob(os.path.join(ROOT, '**/*.html'), recursive=True)):
@@ -402,6 +440,8 @@ if __name__ == '__main__':
                 bad.append(r)
             else:
                 open(p, 'w', encoding='utf-8').write(new); n += 1
+    if not sync_js('--check' in sys.argv):
+        bad.append('assets/lead-form.v1.js (контакти біля форми — CT)')
     if '--check' in sys.argv:
         print('\n'.join(bad) if bad else 'Форми заявки: OK')
         sys.exit(1 if bad else 0)
