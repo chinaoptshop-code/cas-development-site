@@ -1,6 +1,6 @@
 """Умови використання сайту (9 мов) — /umovy-korystuvannia, /ru/usloviya-ispolzovaniya, /en/terms-of-use …
 
-Редакція від 09.11.2026 (Михайло). Шаблон сторінки — політика конфіденційності тієї ж мови (head, стилі .pp, шапка/футер),
+Редакція від 09.11.2026 (Михайло); 16.11.2026 — оплата від іноземних клієнтів. Шаблон сторінки — політика конфіденційності тієї ж мови (head, стилі .pp, шапка/футер),
 замінюються title/description/canonical/og, hreflang (кластер "terms" у tools/site/lang/clusters.json) і вміст <main>.
 Факти — лише з CLAUDE.md. /terms (англ. умови застосунку для TikTok) — окрема стара сторінка, не чіпаємо.
 Запуск: python3 tools/site/terms.py (у build-all перед chrome.py). Посилання «Умови» у футері — `terms` у chrome.py / lang/*.json.
@@ -14,7 +14,7 @@ import chrome  # noqa: E402
 
 ROOT = i18n.ROOT
 B = i18n.B
-DATE = '2026-11-09'
+DATE = '2026-11-16'
 PHONE = '+380 97 866 77 55'
 
 # {privacy} {contact} {ozdoba} — посилання тієї ж мови; {addr} — адреса з футера; {phone}
@@ -22,10 +22,10 @@ T = {
     'uk': dict(
         title='Умови використання сайту | CAS Development',
         desc='Умови використання cas-develop.com: інформація не є офертою, ціни «від» орієнтовні, замовлення Оздоби, заявки, права на фото й рендери.',
-        h1='Умови використання сайту', date='Редакція від 09.11.2026',
+        h1='Умови використання сайту', date='Редакція від 16.11.2026',
         body=[
             ('Хто ми', ['Сайт cas-develop.com належить студії дизайну інтерʼєру, ремонту й будівництва CAS Development ({addr}). Телефон, Telegram, Viber, WhatsApp: {phone}. Користуючись сайтом, ви погоджуєтеся з цими умовами.']),
-            ('Інформація на сайті — не оферта', ['Тексти, ціни, калькулятор і приклади проєктів на сайті — довідкові й не є публічною офертою. Роботи виконуємо за письмовим договором; обсяг, вартість, строки й гарантія — у договорі.']),
+            ('Інформація на сайті — не оферта', ['Тексти, ціни, калькулятор і приклади проєктів на сайті — довідкові й не є публічною офертою. Роботи виконуємо за письмовим договором; обсяг, вартість, строки й гарантія — у договорі.', 'Клієнти з-за кордону можуть оплатити рахунком у $/€ (SWIFT), карткою за посиланням-рахунком або в USDT; договір — англійською, умови — індивідуально.']),
             ('Ціни «від»', ['Ціни з позначкою «від» і результат калькулятора — орієнтовна нижня межа за нашими базовими ставками. Остаточну вартість фіксують кошторис і договір після заміру (замір платний) та узгодження обсягу робіт і матеріалів.',
                             'Гарантія 12 місяців діє лише на роботи, які CAS Development виконує за договором.']),
             ('Заявки й персональні дані', ['Надсилаючи форму, ви погоджуєтеся, що ми звʼяжемося з вами щодо заявки. Заявка ні до чого не зобовʼязує ні вас, ні нас. Які дані ми отримуємо і як їх обробляємо — у <a href="{privacy}">Політиці конфіденційності</a>.']),
@@ -42,10 +42,10 @@ T = {
     'ru': dict(
         title='Условия использования сайта | CAS Development',
         desc='Условия использования cas-develop.com: информация не является офертой, цены «от» ориентировочные, заказы Оздобы, заявки, права на фото и рендеры.',
-        h1='Условия использования сайта', date='Редакция от 09.11.2026',
+        h1='Условия использования сайта', date='Редакция от 16.11.2026',
         body=[
             ('Кто мы', ['Сайт cas-develop.com принадлежит студии дизайна интерьера, ремонта и строительства CAS Development ({addr}). Телефон, Telegram, Viber, WhatsApp: {phone}. Пользуясь сайтом, вы соглашаетесь с этими условиями.']),
-            ('Информация на сайте — не оферта', ['Тексты, цены, калькулятор и примеры проектов на сайте — справочные и не являются публичной офертой. Работы выполняем по письменному договору; объём, стоимость, сроки и гарантия — в договоре.']),
+            ('Информация на сайте — не оферта', ['Тексты, цены, калькулятор и примеры проектов на сайте — справочные и не являются публичной офертой. Работы выполняем по письменному договору; объём, стоимость, сроки и гарантия — в договоре.', 'Клиенты из-за рубежа могут оплатить счётом в $/€ (SWIFT), картой по ссылке-счёту или в USDT; договор — на английском, условия — индивидуально.']),
             ('Цены «от»', ['Цены с пометкой «от» и результат калькулятора — ориентировочная нижняя граница по нашим базовым ставкам. Окончательную стоимость фиксируют смета и договор после замера (замер платный) и согласования объёма работ и материалов.',
                            'Гарантия 12 месяцев действует только на работы, которые CAS Development выполняет по договору.']),
             ('Заявки и персональные данные', ['Отправляя форму, вы соглашаетесь, что мы свяжемся с вами по заявке. Заявка ни к чему не обязывает ни вас, ни нас. Какие данные мы получаем и как их обрабатываем — в <a href="{privacy}">Политике конфиденциальности</a>.']),
@@ -62,10 +62,10 @@ T = {
     'en': dict(
         title='Terms of Use | CAS Development',
         desc='Terms of use of cas-develop.com: site information is not an offer, “from” prices are indicative, Ozdoba orders, enquiries, rights to photos and renders.',
-        h1='Terms of Use', date='Version of 9 November 2026',
+        h1='Terms of Use', date='Version of 16 November 2026',
         body=[
             ('Who we are', ['The website cas-develop.com belongs to CAS Development, an interior design, renovation and construction studio ({addr}). Phone, Telegram, Viber, WhatsApp: {phone}. By using the website you agree to these terms.']),
-            ('Website information is not an offer', ['Texts, prices, the calculator and project examples on the website are for information only and are not a public offer. We carry out work under a written contract; scope, cost, timing and warranty are set in the contract.']),
+            ('Website information is not an offer', ['Texts, prices, the calculator and project examples on the website are for information only and are not a public offer. We carry out work under a written contract; scope, cost, timing and warranty are set in the contract.', 'Clients abroad can pay by invoice in USD or EUR (SWIFT transfer), by card via an invoice link or in USDT; the contract is in English and terms are agreed individually.']),
             ('“From” prices', ['Prices marked “from” and calculator results are an indicative lower limit at our base rates. The final cost is fixed by the estimate and the contract after on-site measurement (measurement is paid) and agreement on the scope of works and materials.',
                                'The 12-month warranty applies only to works that CAS Development carries out under a contract.']),
             ('Enquiries and personal data', ['By sending a form you agree that we will contact you about your enquiry. An enquiry does not oblige either you or us. What data we receive and how we process it is described in the <a href="{privacy}">Privacy policy</a>.']),
@@ -82,10 +82,10 @@ T = {
     'es': dict(
         title='Condiciones de uso | CAS Development',
         desc='Condiciones de uso de cas-develop.com: la información no es una oferta, precios «desde» orientativos, pedidos de Ozdoba, solicitudes y derechos sobre fotos.',
-        h1='Condiciones de uso', date='Versión del 9 de noviembre de 2026',
+        h1='Condiciones de uso', date='Versión del 16 de noviembre de 2026',
         body=[
             ('Quiénes somos', ['El sitio web cas-develop.com pertenece a CAS Development, estudio de diseño de interiores, reformas y construcción ({addr}). Teléfono, Telegram, Viber, WhatsApp: {phone}. Al usar el sitio, acepta estas condiciones.']),
-            ('La información del sitio no es una oferta', ['Los textos, precios, la calculadora y los ejemplos de proyectos son informativos y no constituyen una oferta pública. Trabajamos con contrato por escrito; el alcance, el coste, los plazos y la garantía se fijan en el contrato.']),
+            ('La información del sitio no es una oferta', ['Los textos, precios, la calculadora y los ejemplos de proyectos son informativos y no constituyen una oferta pública. Trabajamos con contrato por escrito; el alcance, el coste, los plazos y la garantía se fijan en el contrato.', 'Los clientes en el extranjero pueden pagar con factura en USD o EUR (transferencia SWIFT), con tarjeta mediante un enlace de factura o en USDT; el contrato está en inglés y las condiciones se acuerdan de forma individual.']),
             ('Precios «desde»', ['Los precios marcados «desde» y el resultado de la calculadora son un límite inferior orientativo según nuestras tarifas base. El coste final lo fijan el presupuesto y el contrato tras la medición (la medición es de pago) y el acuerdo sobre el alcance de las obras y los materiales.',
                                  'La garantía de 12 meses se aplica solo a las obras que CAS Development realiza por contrato.']),
             ('Solicitudes y datos personales', ['Al enviar un formulario, acepta que nos pongamos en contacto con usted sobre su solicitud. La solicitud no obliga ni a usted ni a nosotros. Qué datos recibimos y cómo los tratamos se explica en la <a href="{privacy}">Política de privacidad</a>.']),
@@ -102,10 +102,10 @@ T = {
     'zh': dict(
         title='网站使用条款 | CAS Development',
         desc='cas-develop.com 使用条款：网站信息不构成要约，“起价”仅供参考，Ozdoba 订单、咨询申请、照片与效果图版权。',
-        h1='网站使用条款', date='2026 年 11 月 9 日版',
+        h1='网站使用条款', date='2026 年 11 月 16 日版',
         body=[
             ('关于我们', ['网站 cas-develop.com 属于室内设计、装修与建造工作室 CAS Development（{addr}）。电话、Telegram、Viber、WhatsApp：{phone}。使用本网站即表示您同意本条款。']),
-            ('网站信息不构成要约', ['网站上的文字、价格、计算器和项目案例仅供参考，不构成公开要约。我们依据书面合同施工；范围、费用、工期和保修以合同为准。']),
+            ('网站信息不构成要约', ['网站上的文字、价格、计算器和项目案例仅供参考，不构成公开要约。我们依据书面合同施工；范围、费用、工期和保修以合同为准。', '海外客户可通过美元或欧元发票（SWIFT 汇款）、发票链接刷卡或 USDT 付款；合同为英文，具体条件单独商定。']),
             ('“起价”', ['标有“起”的价格和计算器结果是按我们基础单价得出的参考下限。最终费用在测量（测量收费）并商定工程和材料范围后，以预算和合同为准。',
                        '12 个月保修仅适用于 CAS Development 依据合同完成的工程。']),
             ('咨询申请与个人数据', ['提交表单即表示您同意我们就申请与您联系。申请对您和我们均无约束力。我们收集哪些数据以及如何处理，请见<a href="{privacy}">隐私政策</a>。']),
@@ -122,10 +122,10 @@ T = {
     'pl': dict(
         title='Regulamin korzystania ze strony | CAS Development',
         desc='Regulamin cas-develop.com: informacje nie są ofertą, ceny „od” są orientacyjne, zamówienia Ozdoba, zapytania, prawa do zdjęć i wizualizacji.',
-        h1='Regulamin korzystania ze strony', date='Wersja z 9 listopada 2026 r.',
+        h1='Regulamin korzystania ze strony', date='Wersja z 16 listopada 2026 r.',
         body=[
             ('Kim jesteśmy', ['Strona cas-develop.com należy do CAS Development — studia projektowania wnętrz, remontów i budowy ({addr}). Telefon, Telegram, Viber, WhatsApp: {phone}. Korzystając ze strony, akceptujesz ten regulamin.']),
-            ('Informacje na stronie nie są ofertą', ['Teksty, ceny, kalkulator i przykłady projektów na stronie mają charakter informacyjny i nie stanowią oferty w rozumieniu przepisów. Prace wykonujemy na podstawie pisemnej umowy; zakres, koszt, terminy i gwarancję określa umowa.']),
+            ('Informacje na stronie nie są ofertą', ['Teksty, ceny, kalkulator i przykłady projektów na stronie mają charakter informacyjny i nie stanowią oferty w rozumieniu przepisów. Prace wykonujemy na podstawie pisemnej umowy; zakres, koszt, terminy i gwarancję określa umowa.', 'Klienci z zagranicy mogą zapłacić fakturą w USD lub EUR (przelew SWIFT), kartą przez link do faktury albo w USDT; umowa jest po angielsku, warunki ustalamy indywidualnie.']),
             ('Ceny „od”', ['Ceny oznaczone „od” i wynik kalkulatora to orientacyjna dolna granica według naszych stawek bazowych. Ostateczny koszt ustalają kosztorys i umowa po pomiarze (pomiar jest płatny) i uzgodnieniu zakresu prac i materiałów.',
                            'Gwarancja 12 miesięcy obejmuje wyłącznie prace wykonane przez CAS Development na podstawie umowy.']),
             ('Zapytania i dane osobowe', ['Wysyłając formularz, zgadzasz się, że skontaktujemy się z Tobą w sprawie zapytania. Zapytanie nie zobowiązuje ani Ciebie, ani nas. Jakie dane otrzymujemy i jak je przetwarzamy — w <a href="{privacy}">Polityce prywatności</a>.']),
@@ -142,10 +142,10 @@ T = {
     'de': dict(
         title='Nutzungsbedingungen | CAS Development',
         desc='Nutzungsbedingungen von cas-develop.com: Angaben sind kein Angebot, „ab“-Preise sind Richtwerte, Ozdoba-Bestellungen, Anfragen, Rechte an Fotos und Renderings.',
-        h1='Nutzungsbedingungen', date='Fassung vom 9. November 2026',
+        h1='Nutzungsbedingungen', date='Fassung vom 16. November 2026',
         body=[
             ('Wer wir sind', ['Die Website cas-develop.com gehört CAS Development, einem Studio für Innenarchitektur, Renovierung und Bau ({addr}). Telefon, Telegram, Viber, WhatsApp: {phone}. Mit der Nutzung der Website stimmen Sie diesen Bedingungen zu.']),
-            ('Angaben auf der Website sind kein Angebot', ['Texte, Preise, der Rechner und Projektbeispiele dienen der Information und sind kein verbindliches Angebot. Wir arbeiten auf Grundlage eines schriftlichen Vertrags; Umfang, Kosten, Fristen und Gewährleistung regelt der Vertrag.']),
+            ('Angaben auf der Website sind kein Angebot', ['Texte, Preise, der Rechner und Projektbeispiele dienen der Information und sind kein verbindliches Angebot. Wir arbeiten auf Grundlage eines schriftlichen Vertrags; Umfang, Kosten, Fristen und Gewährleistung regelt der Vertrag.', 'Kunden im Ausland können per Rechnung in USD oder EUR (SWIFT-Überweisung), per Karte über einen Rechnungslink oder in USDT zahlen; der Vertrag ist auf Englisch, die Konditionen vereinbaren wir individuell.']),
             ('„Ab“-Preise', ['Preise mit „ab“ und Ergebnisse des Rechners sind eine unverbindliche Untergrenze nach unseren Basissätzen. Die endgültigen Kosten legen Kostenvoranschlag und Vertrag nach dem Aufmaß (das Aufmaß ist kostenpflichtig) und der Abstimmung von Leistungsumfang und Materialien fest.',
                              'Die Gewährleistung von 12 Monaten gilt nur für Arbeiten, die CAS Development im Rahmen eines Vertrags ausführt.']),
             ('Anfragen und personenbezogene Daten', ['Mit dem Absenden eines Formulars stimmen Sie zu, dass wir Sie zu Ihrer Anfrage kontaktieren. Eine Anfrage verpflichtet weder Sie noch uns. Welche Daten wir erhalten und wie wir sie verarbeiten, steht in der <a href="{privacy}">Datenschutzerklärung</a>.']),
@@ -162,10 +162,10 @@ T = {
     'fr': dict(
         title='Conditions d’utilisation | CAS Development',
         desc='Conditions d’utilisation de cas-develop.com : informations sans valeur d’offre, prix « dès » indicatifs, commandes Ozdoba, demandes, droits sur les photos.',
-        h1='Conditions d’utilisation', date='Version du 9 novembre 2026',
+        h1='Conditions d’utilisation', date='Version du 16 novembre 2026',
         body=[
             ('Qui nous sommes', ['Le site cas-develop.com appartient à CAS Development, studio de design d’intérieur, de rénovation et de construction ({addr}). Téléphone, Telegram, Viber, WhatsApp : {phone}. En utilisant le site, vous acceptez ces conditions.']),
-            ('Les informations du site ne sont pas une offre', ['Les textes, prix, le calculateur et les exemples de projets sont donnés à titre informatif et ne constituent pas une offre. Nous travaillons sur contrat écrit ; périmètre, coût, délais et garantie sont fixés dans le contrat.']),
+            ('Les informations du site ne sont pas une offre', ['Les textes, prix, le calculateur et les exemples de projets sont donnés à titre informatif et ne constituent pas une offre. Nous travaillons sur contrat écrit ; périmètre, coût, délais et garantie sont fixés dans le contrat.', 'Les clients à l’étranger peuvent payer sur facture en USD ou en EUR (virement SWIFT), par carte via un lien de facture ou en USDT ; le contrat est en anglais et les conditions se fixent au cas par cas.']),
             ('Prix « dès »', ['Les prix marqués « dès » et le résultat du calculateur sont une borne basse indicative selon nos tarifs de base. Le coût final est fixé par le devis et le contrat après métré (le métré est payant) et accord sur le périmètre des travaux et des matériaux.',
                              'La garantie de 12 mois s’applique uniquement aux travaux réalisés par CAS Development dans le cadre d’un contrat.']),
             ('Demandes et données personnelles', ['En envoyant un formulaire, vous acceptez que nous vous recontactions au sujet de votre demande. Une demande n’engage ni vous ni nous. Les données que nous recevons et leur traitement sont décrits dans la <a href="{privacy}">Politique de confidentialité</a>.']),
@@ -182,10 +182,10 @@ T = {
     'ar': dict(
         title='شروط الاستخدام | CAS Development',
         desc='شروط استخدام cas-develop.com: معلومات الموقع ليست عرضًا ملزمًا، والأسعار «من» تقريبية، وطلبات Ozdoba، والطلبات، وحقوق الصور والتصاميم.',
-        h1='شروط استخدام الموقع', date='نسخة 9 نوفمبر 2026',
+        h1='شروط استخدام الموقع', date='نسخة 16 نوفمبر 2026',
         body=[
             ('من نحن', ['الموقع cas-develop.com مملوك لاستوديو CAS Development للتصميم الداخلي والتجديد والبناء ({addr}). الهاتف وTelegram وViber وWhatsApp: <bdi dir="ltr" class="nw" style="white-space:nowrap">{phone}</bdi>. باستخدامك الموقع فإنك توافق على هذه الشروط.']),
-            ('معلومات الموقع ليست عرضًا', ['النصوص والأسعار والحاسبة وأمثلة المشاريع على الموقع للاطلاع فقط ولا تُعد عرضًا عامًا ملزمًا. ننفّذ الأعمال بموجب عقد مكتوب؛ ويحدد العقد النطاق والتكلفة والمدة والضمان.']),
+            ('معلومات الموقع ليست عرضًا', ['النصوص والأسعار والحاسبة وأمثلة المشاريع على الموقع للاطلاع فقط ولا تُعد عرضًا عامًا ملزمًا. ننفّذ الأعمال بموجب عقد مكتوب؛ ويحدد العقد النطاق والتكلفة والمدة والضمان.', 'يمكن للعملاء من خارج أوكرانيا الدفع بفاتورة بالدولار الأمريكي أو اليورو (تحويل SWIFT)، أو بالبطاقة عبر رابط الفاتورة، أو بعملة USDT؛ العقد باللغة الإنجليزية، والشروط نتفق عليها بشكل فردي.']),
             ('الأسعار «من»', ['الأسعار المسبوقة بكلمة «من» ونتيجة الحاسبة حدٌّ أدنى تقريبي وفق أسعارنا الأساسية. تُحدَّد التكلفة النهائية في المقايسة والعقد بعد القياس (القياس مدفوع) والاتفاق على نطاق الأعمال والمواد.',
                               'يسري ضمان 12 شهرًا فقط على الأعمال التي تنفذها CAS Development بموجب عقد.']),
             ('الطلبات والبيانات الشخصية', ['بإرسال النموذج توافق على أن نتواصل معك بشأن طلبك. الطلب لا يُلزمك ولا يُلزمنا بشيء. البيانات التي نتلقاها وكيفية معالجتها موضّحة في <a href="{privacy}">سياسة الخصوصية</a>.']),
