@@ -84,7 +84,7 @@ def office_html(lang, h2=None):
             + office_map(lang, '(max-width:1180px) 100vw, 1100px') + '</div></section>\n')
 
 
-# «Карта проєктів» мовами (портфоліо uk/ru/en): тексти блоку, статус і місця — ті самі факти, що й uk
+# «Карта проєктів» мовами (портфоліо uk/ru/en + es/pl/de/fr/zh/ar — 16.11.2026): тексти блоку, статус і місця — ті самі факти, що й uk
 PM = {
     'uk': dict(lbl='Географія', h2='Карта проєктів', sub='Київ, Київщина, Карпати, Бодрум, Дубай і США.', more='Сторінка проєкту →',
                alt='Карта проєктів CAS Development: Київ і Київщина, Карпати, Бодрум (Туреччина), Дубай (ОАЕ), США', list='Проєкти на карті',
@@ -95,12 +95,42 @@ PM = {
     'en': dict(lbl='Geography', h2='Project map', sub='Kyiv, the Kyiv region, the Carpathians, Bodrum, Dubai and the USA.', more='Project page →',
                alt='CAS Development project map: Kyiv and the Kyiv region, the Carpathians, Bodrum (Turkey), Dubai (UAE), USA', list='Projects on the map',
                fly='Show on the map', note='The map shows the centre of a city or region, never the address of a private property.', ok='Completed', dp='Design project'),
+    'es': dict(lbl='Geografía', h2='Mapa de proyectos', sub='Kiev, la región de Kiev, los Cárpatos, Bodrum, Dubái y EE. UU.', more='Página del proyecto →',
+               alt='Mapa de proyectos de CAS Development: Kiev y su región, los Cárpatos, Bodrum (Turquía), Dubái (EAU), EE. UU.', list='Proyectos en el mapa',
+               fly='Mostrar en el mapa', note='El mapa muestra el centro de la ciudad o de la región, nunca la dirección de una vivienda privada.', ok='Realizado', dp='Proyecto de diseño'),
+    'pl': dict(lbl='Geografia', h2='Mapa projektów', sub='Kijów, obwód kijowski, Karpaty, Bodrum, Dubaj i USA.', more='Strona projektu →',
+               alt='Mapa projektów CAS Development: Kijów i obwód kijowski, Karpaty, Bodrum (Turcja), Dubaj (ZEA), USA', list='Projekty na mapie',
+               fly='Pokaż na mapie', note='Na mapie — centrum miasta lub regionu, bez adresów prywatnych obiektów.', ok='Zrealizowany', dp='Projekt wnętrz'),
+    'de': dict(lbl='Geografie', h2='Projektkarte', sub='Kiew, Region Kiew, Karpaten, Bodrum, Dubai und USA.', more='Zum Projekt →',
+               alt='Projektkarte von CAS Development: Kiew und Region Kiew, Karpaten, Bodrum (Türkei), Dubai (VAE), USA', list='Projekte auf der Karte',
+               fly='Auf der Karte zeigen', note='Die Karte zeigt das Zentrum der Stadt oder Region, nie die Adresse eines Privatobjekts.', ok='Umgesetzt', dp='Designprojekt'),
+    'fr': dict(lbl='Géographie', h2='Carte des projets', sub='Kyiv, la région de Kyiv, les Carpates, Bodrum, Dubaï et les États-Unis.', more='Page du projet →',
+               alt='Carte des projets CAS Development : Kyiv et sa région, les Carpates, Bodrum (Turquie), Dubaï (EAU), États-Unis', list='Projets sur la carte',
+               fly='Afficher sur la carte', note='La carte indique le centre de la ville ou de la région, jamais l’adresse d’un bien privé.', ok='Réalisé', dp='Projet de design'),
+    'zh': dict(lbl='项目分布', h2='项目地图', sub='基辅、基辅州、喀尔巴阡山、博德鲁姆、迪拜和美国。', more='查看项目 →',
+               alt='CAS Development 项目地图：基辅及基辅州、喀尔巴阡山、博德鲁姆（土耳其）、迪拜（阿联酋）、美国', list='地图上的项目',
+               fly='在地图上显示', note='地图仅标注城市或地区中心，不显示私人物业地址。', ok='已落地', dp='设计方案'),
+    'ar': dict(lbl='الجغرافيا', h2='خريطة المشاريع', sub='كييف ومنطقة كييف وجبال الكاربات وبودروم ودبي والولايات المتحدة.', more='صفحة المشروع ←',
+               alt='خريطة مشاريع CAS Development: كييف ومنطقتها، جبال الكاربات، بودروم (تركيا)، دبي (الإمارات)، الولايات المتحدة', list='المشاريع على الخريطة',
+               fly='عرض على الخريطة', note='تُظهر الخريطة مركز المدينة أو المنطقة فقط، من دون عناوين العقارات الخاصة.', ok='منفَّذ', dp='مشروع تصميم'),
 }
 PLACE = {
     'ru': {'Київ': 'Киев', 'ЖК Chicago, Київ': 'ЖК Chicago, Киев', 'Київ, центр': 'Киев, центр', 'Петрівці, Київська обл.': 'Петровцы, Киевская обл.',
            'Київська обл.': 'Киевская обл.', 'Карпати': 'Карпаты', 'Бодрум, Туреччина': 'Бодрум, Турция', 'Дубай, ОАЕ': 'Дубай, ОАЭ', 'США': 'США'},
     'en': {'Київ': 'Kyiv', 'ЖК Chicago, Київ': 'Chicago residential complex, Kyiv', 'Київ, центр': 'Kyiv, city centre', 'Петрівці, Київська обл.': 'Petrivtsi, Kyiv region',
            'Київська обл.': 'Kyiv region', 'Карпати': 'Carpathians', 'Бодрум, Туреччина': 'Bodrum, Turkey', 'Дубай, ОАЕ': 'Dubai, UAE', 'США': 'USA'},
+    'es': {'Київ': 'Kiev', 'ЖК Chicago, Київ': 'Complejo residencial Chicago, Kiev', 'Київ, центр': 'Kiev, centro', 'Петрівці, Київська обл.': 'Petrivtsi, región de Kiev',
+           'Київська обл.': 'Región de Kiev', 'Карпати': 'Cárpatos', 'Бодрум, Туреччина': 'Bodrum, Turquía', 'Дубай, ОАЕ': 'Dubái, EAU', 'США': 'EE. UU.'},
+    'pl': {'Київ': 'Kijów', 'ЖК Chicago, Київ': 'Osiedle Chicago, Kijów', 'Київ, центр': 'Kijów, centrum', 'Петрівці, Київська обл.': 'Petriwci, obwód kijowski',
+           'Київська обл.': 'Obwód kijowski', 'Карпати': 'Karpaty', 'Бодрум, Туреччина': 'Bodrum, Turcja', 'Дубай, ОАЕ': 'Dubaj, ZEA', 'США': 'USA'},
+    'de': {'Київ': 'Kiew', 'ЖК Chicago, Київ': 'Wohnanlage Chicago, Kiew', 'Київ, центр': 'Kiew, Zentrum', 'Петрівці, Київська обл.': 'Petriwzi, Region Kiew',
+           'Київська обл.': 'Region Kiew', 'Карпати': 'Karpaten', 'Бодрум, Туреччина': 'Bodrum, Türkei', 'Дубай, ОАЕ': 'Dubai, VAE', 'США': 'USA'},
+    'fr': {'Київ': 'Kyiv', 'ЖК Chicago, Київ': 'Résidence Chicago, Kyiv', 'Київ, центр': 'Kyiv, centre-ville', 'Петрівці, Київська обл.': 'Petrivtsi, région de Kyiv',
+           'Київська обл.': 'Région de Kyiv', 'Карпати': 'Carpates', 'Бодрум, Туреччина': 'Bodrum, Turquie', 'Дубай, ОАЕ': 'Dubaï, EAU', 'США': 'États-Unis'},
+    'zh': {'Київ': '基辅', 'ЖК Chicago, Київ': '基辅 Chicago 住宅区', 'Київ, центр': '基辅市中心', 'Петрівці, Київська обл.': '基辅州彼得里夫齐',
+           'Київська обл.': '基辅州', 'Карпати': '喀尔巴阡山', 'Бодрум, Туреччина': '土耳其博德鲁姆', 'Дубай, ОАЕ': '阿联酋迪拜', 'США': '美国'},
+    'ar': {'Київ': 'كييف', 'ЖК Chicago, Київ': 'مجمع شيكاغو السكني، كييف', 'Київ, центр': 'وسط كييف', 'Петрівці, Київська обл.': 'بيتريفتسي، منطقة كييف',
+           'Київська обл.': 'منطقة كييف', 'Карпати': 'جبال الكاربات', 'Бодрум, Туреччина': 'بودروم، تركيا', 'Дубай, ОАЕ': 'دبي، الإمارات', 'США': 'الولايات المتحدة'},
 }
 
 
