@@ -1,0 +1,235 @@
+{
+ "_": "Textos em português sob o visualizador /pt/tury/<slug> (tradução de about.json: os mesmos factos; «concluído/realizado» só para apartment-2025). Gerado por tools/tours/build.py pages. name — título da visita no visualizador e nos cartões; ligações — [texto](/pt/caminho) para páginas nesta língua. title ≤ 60, description ≤ 155.",
+ "apartment-2025": {
+  "name": "Apartamento — interior concluído",
+  "title": "Apartamento concluído em Kyiv — visita 3D 360° | CAS",
+  "description": "Visita 3D 360° a um apartamento concluído em Kyiv: sala, cozinha, quarto, entrada e casa de banho. Veja os acabamentos, os móveis e a luz como lá dentro.",
+  "eye": "Interior concluído · Kyiv",
+  "lead": "Visita 360° a um apartamento concluído em Kyiv: o interior depois de terminadas as obras, fotografado com uma câmara 360. Percorra as divisões e repare nos acabamentos, nos móveis e na luz como numa visita presencial.",
+  "p": [
+   "É uma obra concluída, não uma visualização: as fotos mostram paredes, juntas, louças sanitárias e iluminação reais. É assim que convém avaliar uma remodelação: pelo resultado, não por um render.",
+   "A CAS remodela apartamentos com a sua própria equipa: [remodelação chave na mão em Kyiv](/pt/remodelacao-chave-na-mao) — a partir de $550/m² (mão de obra e materiais de obra bruta; os materiais de acabamento, os móveis e os eletrodomésticos são à parte, segundo orçamento). Durante as obras o cliente recebe relatórios fotográficos a cada 1–2 semanas e, com custo adicional, pode ser instalada uma câmara online 24/7 na obra. Se ainda não houver projeto, começamos pelo [design de interiores do apartamento](/pt/design-de-interiores-apartamento). Mais obras no [portfólio](/pt/portfolio)."
+  ],
+  "links": [
+   [
+    "/pt/remodelacao-chave-na-mao",
+    "Remodelação de apartamentos"
+   ],
+   [
+    "/pt/design-de-interiores-apartamento",
+    "Design de apartamentos"
+   ]
+  ]
+ },
+ "edelweiss": {
+  "name": "Edelweiss — projeto de design de um apartamento de 108 m²",
+  "title": "Edelweiss, apartamento de 108 m² — visita 3D 360° | CAS",
+  "description": "Visita 3D 360° ao projeto de design do apartamento Edelweiss, 108 m²: átrio, sala com cozinha, quartos, closet e casas de banho. Percorra-o antes da obra.",
+  "eye": "Projeto de design · visualização 360 · 108 m²",
+  "lead": "Visualizações 360 do projeto de design do apartamento Edelweiss, 108 m²: um interior luminoso com texturas suaves, closet e arte gráfica. É um modelo 3D do projeto, não fotos de um apartamento concluído.",
+  "p": [
+   "A cozinha está unida à zona de estar e de jantar num só espaço, as paredes atrás das camas têm painéis têxteis e o closet tem frentes de vidro. O objetivo, a solução e as imagens estão na [página do projeto Edelweiss](/pt/proekty/edelweiss)."
+  ],
+  "tail": "[Design de interiores de apartamentos](/pt/design-de-interiores-apartamento) — a partir de $30/m², encomenda mínima $2 500. A CAS pode executar um projeto assim por completo: [remodelação chave na mão](/pt/remodelacao-chave-na-mao) — a partir de $550/m². Mais trabalhos no [portfólio](/pt/portfolio).",
+  "links": [
+   [
+    "/pt/design-de-interiores-apartamento",
+    "Design de apartamentos"
+   ],
+   [
+    "/pt/remodelacao-chave-na-mao",
+    "Remodelação de apartamentos"
+   ]
+  ]
+ },
+ "hoda-estate": {
+  "name": "Hoda Estate — projeto de design de uma casa nos Cárpatos",
+  "title": "Hoda Estate, casa nos Cárpatos — visita 3D 360° | CAS",
+  "description": "Visita 3D 360° ao projeto de design da casa Hoda Estate, 180 m², nos Cárpatos: sala com cozinha, quartos, casas de banho em pedra e uma sauna.",
+  "eye": "Projeto de design · visualização 360 · Cárpatos · 180 m²",
+  "lead": "Visualizações 360 do projeto de design de interiores da casa Hoda Estate, 180 m², nos Cárpatos: madeira, pedra, linho e vista para a montanha a partir das divisões principais. É um modelo 3D do projeto, não fotos de uma casa construída.",
+  "p": [
+   "Vigas de madeira à vista sob o teto, reboco claro e janelas panorâmicas para as montanhas. A cozinha, a sala de estar e a sala de jantar formam um só espaço, as casas de banho têm pedra natural e há uma sauna e uma lavandaria à parte. O objetivo e a solução estão na [página do projeto Hoda Estate](/pt/proekty/hoda-estate)."
+  ],
+  "tail": "[Projeto e design de moradias](/pt/projeto-de-moradia) — a partir de $30/m², mínimo $2 500. A CAS assume remodelações e construção em todas as regiões da Ucrânia, por isso um projeto nos Cárpatos pode ser levado até à execução: [construção de moradias](/pt/construcao-de-moradias) — a partir de $600/m², chave na mão a partir de $1 100/m². Mais trabalhos no [portfólio](/pt/portfolio).",
+  "links": [
+   [
+    "/pt/projeto-de-moradia",
+    "Design de moradias"
+   ],
+   [
+    "/pt/construcao-de-moradias",
+    "Construção de moradias"
+   ]
+  ]
+ },
+ "triangle-house": {
+  "name": "Triangle House — conceito de design de interiores",
+  "title": "Triangle House — visita 3D a um conceito de interior | CAS",
+  "description": "Visita 3D 360° ao conceito de interiores da Triangle House: átrio de pé-direito duplo, sala com cozinha, quartos e casa de banho. Percorra-o online.",
+  "eye": "Conceito · visualização 360",
+  "lead": "Visualizações 360 do conceito de design de interiores da Triangle House: sala com cozinha, quartos, uma casa de banho e um átrio em dois níveis. Um conceito é uma proposta de interior em 3D, não fotos de uma casa construída.",
+  "p": [
+   "Na visita é possível passar do átrio do piso térreo para o do nível superior e espreitar os quartos e a casa de banho: vê-se como a casa se organiza na vertical."
+  ],
+  "tail": "[Projeto e design de moradias](/pt/projeto-de-moradia) — a partir de $30/m², mínimo $2 500. Também podemos construir a casa: [construção de moradias](/pt/construcao-de-moradias) — a partir de $600/m², chave na mão a partir de $1 100/m²; os nossos especialistas fazem o levantamento topográfico do terreno e a fotografia aérea. Mais projetos no [portfólio](/pt/portfolio).",
+  "links": [
+   [
+    "/pt/projeto-de-moradia",
+    "Design de moradias"
+   ],
+   [
+    "/pt/construcao-de-moradias",
+    "Construção de moradias"
+   ]
+  ]
+ },
+ "yablunytsia-estate": {
+  "name": "Propriedade em Yablunytsia — conceito",
+  "title": "Propriedade em Yablunytsia, Cárpatos — visita 3D 360° | CAS",
+  "description": "Visita 3D 360° ao conceito de uma propriedade em Yablunytsia (Cárpatos): terreno, piscina, casas e caminhos. Veja como se integra na paisagem.",
+  "eye": "Conceito · visualização 360 · Cárpatos",
+  "lead": "Visualizações 360 do conceito de uma propriedade em Yablunytsia (Cárpatos): o terreno, uma piscina, as casas e os caminhos entre elas. É um modelo 3D do conceito, não fotos de uma propriedade construída.",
+  "p": [
+   "Os pontos de vista estão distribuídos pelo terreno: vê-se como as casas se situam em relação à piscina, para onde levam os caminhos e como se percebe a propriedade no seu conjunto. Para uma casa de campo isto funciona melhor do que renders soltos: o terreno, as casas e a paisagem veem-se juntos.",
+   "Num terreno real, os nossos especialistas fazem o levantamento topográfico e a fotografia aérea, de modo que o projeto parte do terreno real."
+  ],
+  "tail": "[Arquitetura paisagista](/pt/arquitetura-paisagista) — a partir de $50 por cada 100 m² de terreno; [construção de moradias](/pt/construcao-de-moradias) — a partir de $600/m², chave na mão a partir de $1 100/m². Se a propriedade vier a receber hóspedes, veja [complexo turístico chave na mão](/pt/complexo-turistico-chave-na-mao). Mais trabalhos no [portfólio](/pt/portfolio).",
+  "links": [
+   [
+    "/pt/arquitetura-paisagista",
+    "Arquitetura paisagista"
+   ],
+   [
+    "/pt/construcao-de-moradias",
+    "Construção de moradias"
+   ]
+  ]
+ },
+ "apartment-80": {
+  "name": "Apartamento de 80 m² — projeto de design",
+  "title": "Apartamento de 80 m² com terraço — visita 3D 360° | CAS",
+  "description": "Visita 3D 360° ao projeto de design de um apartamento de 80 m²: átrio, sala, sala de jantar, cozinha, quarto, closet e terraço. Percorra-o antes da obra.",
+  "eye": "Projeto de design · visualização 360 · 80 m²",
+  "lead": "Visualizações 360 do projeto de design de um apartamento de 80 m² com terraço: átrio, sala de estar, sala de jantar, cozinha, quarto e closet. É um modelo 3D do projeto, não fotos de um apartamento concluído.",
+  "p": [
+   "Uma sala de jantar independente, um closet e saída para o terraço: a visita mostra como estas zonas se ligam entre si e com a sala."
+  ],
+  "tail": "[Design de interiores de apartamentos](/pt/design-de-interiores-apartamento) — a partir de $30/m², encomenda mínima $2 500; [remodelação](/pt/remodelacao-chave-na-mao) segundo o projeto — a partir de $550/m². Mais trabalhos no [portfólio](/pt/portfolio).",
+  "links": [
+   [
+    "/pt/design-de-interiores-apartamento",
+    "Design de apartamentos"
+   ],
+   [
+    "/pt/remodelacao-chave-na-mao",
+    "Remodelação de apartamentos"
+   ]
+  ]
+ },
+ "apartment-56": {
+  "name": "Apartamento de 56 m² — projeto de design",
+  "title": "Apartamento de 56 m² — visita 360° ao projeto | CAS",
+  "description": "Visita 3D 360° ao projeto de design de um apartamento de 56 m²: oito pontos de vista por todo o apartamento. Veja como funciona a planta antes da obra.",
+  "eye": "Projeto de design · visualização 360 · 56 m²",
+  "lead": "Visualizações 360 do projeto de design de um apartamento de 56 m², com pontos de vista por todo o apartamento. É um modelo 3D do projeto, não fotos de um interior concluído.",
+  "p": [
+   "Passe de um ponto de vista para outro com as setas na foto ou os botões ‹ › abaixo: vê-se como as zonas do apartamento comunicam e como funciona a planta em 56 m²."
+  ],
+  "tail": "[Design de interiores de apartamentos](/pt/design-de-interiores-apartamento) — a partir de $30/m², encomenda mínima $2 500; [remodelação](/pt/remodelacao-chave-na-mao) — a partir de $550/m². Mais trabalhos no [portfólio](/pt/portfolio).",
+  "links": [
+   [
+    "/pt/design-de-interiores-apartamento",
+    "Design de apartamentos"
+   ],
+   [
+    "/pt/remodelacao-chave-na-mao",
+    "Remodelação de apartamentos"
+   ]
+  ]
+ },
+ "apartment-45": {
+  "name": "Apartamento de 45 m² — projeto de design",
+  "title": "Apartamento de 45 m² — visita 360° ao projeto | CAS",
+  "description": "Visita 3D 360° ao projeto de design de um apartamento de 45 m²: átrio, cozinha, sala, quarto e casa de banho. Avalie as proporções de um espaço pequeno.",
+  "eye": "Projeto de design · visualização 360 · 45 m²",
+  "lead": "Visualizações 360 do projeto de design de um apartamento de 45 m²: átrio, cozinha, sala, quarto e casa de banho. É um modelo 3D do projeto, não fotos de um apartamento concluído.",
+  "p": [
+   "Num espaço pequeno o que mais importa é como as divisões se ligam. Na visita pode ir do átrio à cozinha, à sala e ao quarto e avaliar as proporções à altura dos olhos."
+  ],
+  "tail": "[Design de interiores de apartamentos](/pt/design-de-interiores-apartamento) — a partir de $30/m², encomenda mínima $2 500; [remodelação](/pt/remodelacao-chave-na-mao) — a partir de $550/m². Mais trabalhos no [portfólio](/pt/portfolio).",
+  "links": [
+   [
+    "/pt/design-de-interiores-apartamento",
+    "Design de apartamentos"
+   ],
+   [
+    "/pt/remodelacao-chave-na-mao",
+    "Remodelação de apartamentos"
+   ]
+  ]
+ },
+ "apartment-37": {
+  "name": "Apartamento de 37 m² — projeto de design",
+  "title": "Apartamento de 37 m² — visita 360° ao projeto | CAS",
+  "description": "Visita 3D 360° ao projeto de design de um apartamento compacto de 37 m²: átrio, cozinha, sala, quarto e casa de banho. Veja como tudo cabe nesta área.",
+  "eye": "Projeto de design · visualização 360 · 37 m²",
+  "lead": "Visualizações 360 do projeto de design de um apartamento de 37 m²: átrio, cozinha, sala, quarto e casa de banho. É um modelo 3D do projeto, não fotos de um apartamento concluído.",
+  "p": [
+   "37 m² é um apartamento compacto em que a planta decide tudo. A visita mostra como cabem o átrio, a cozinha, a sala e o quarto nesta área e como as divisões se abrem umas para as outras."
+  ],
+  "tail": "[Design de interiores de apartamentos](/pt/design-de-interiores-apartamento) — a partir de $30/m², encomenda mínima $2 500; [remodelação](/pt/remodelacao-chave-na-mao) — a partir de $550/m². Mais trabalhos no [portfólio](/pt/portfolio).",
+  "links": [
+   [
+    "/pt/design-de-interiores-apartamento",
+    "Design de apartamentos"
+   ],
+   [
+    "/pt/remodelacao-chave-na-mao",
+    "Remodelação de apartamentos"
+   ]
+  ]
+ },
+ "house-concept-1": {
+  "name": "Moradia particular — conceito 1",
+  "title": "Moradia particular, conceito 1 — visita 3D 360° | CAS",
+  "description": "Visita 3D 360° a um conceito de design de interiores para uma moradia particular, opção 1: pontos de vista por toda a casa. Compare-o com outra versão.",
+  "eye": "Conceito · visualização 360 · opção 1",
+  "lead": "Visualizações 360 de um conceito de design de interiores para uma moradia particular, opção 1. Um conceito é uma proposta de interior em 3D, não fotos de uma casa construída.",
+  "p": [
+   "Os pontos de vista estão distribuídos por toda a casa: desloque-se com as setas na foto ou os botões ‹ › abaixo. Compare-o com o [conceito 4](/pt/tury/house-concept-4) para ver como pode ser diferente o interior de uma moradia particular."
+  ],
+  "tail": "[Projeto e design de moradias](/pt/projeto-de-moradia) — a partir de $30/m², mínimo $2 500; [remodelação de moradias chave na mão](/pt/remodelacao-moradia) e [construção](/pt/construcao-de-moradias) — com a nossa própria equipa. Mais trabalhos no [portfólio](/pt/portfolio).",
+  "links": [
+   [
+    "/pt/projeto-de-moradia",
+    "Design de moradias"
+   ],
+   [
+    "/pt/remodelacao-moradia",
+    "Remodelação de moradias"
+   ]
+  ]
+ },
+ "house-concept-4": {
+  "name": "Moradia particular — conceito 4",
+  "title": "Moradia particular, conceito 4 — visita 3D 360° | CAS",
+  "description": "Visita 3D 360° a um conceito de interiores para uma moradia particular, opção 4: átrio, cozinha, sala, quartos, quarto de criança, closet e casas de banho.",
+  "eye": "Conceito · visualização 360 · opção 4",
+  "lead": "Visualizações 360 de um conceito de design de interiores para uma moradia particular, opção 4: átrio, corredor, cozinha, sala, quartos, quarto de criança, closet e casas de banho. Um conceito é uma proposta de interior em 3D, não fotos de uma casa construída.",
+  "p": [
+   "A visita mostra uma casa familiar: quarto de criança independente, closet e duas casas de banho. Compare-o com o [conceito 1](/pt/tury/house-concept-1), outra proposta de interior para uma moradia particular."
+  ],
+  "tail": "[Projeto e design de moradias](/pt/projeto-de-moradia) — a partir de $30/m², mínimo $2 500; [remodelação de moradias chave na mão](/pt/remodelacao-moradia) e [construção](/pt/construcao-de-moradias) — com a nossa própria equipa. Mais trabalhos no [portfólio](/pt/portfolio).",
+  "links": [
+   [
+    "/pt/projeto-de-moradia",
+    "Design de moradias"
+   ],
+   [
+    "/pt/remodelacao-moradia",
+    "Remodelação de moradias"
+   ]
+  ]
+ }
+}
