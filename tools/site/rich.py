@@ -144,7 +144,9 @@ def wrap(x, inner, cls):
 def svc(x):
     cards = []
     for c in x['items']:
-        ttl = f'<a href="{a(c["href"])}">{e(c["h"])}</a>' if c.get('href') else e(c['h'])
+        # картка з фото — посилання цілком (CLAUDE.md «Фото: що відкривається»): без "href" — перше посилання картки
+        href = c.get('href') or next((u for u, _ in (c.get('links') or (c.get('all') or [None, []])[1])), None)
+        ttl = f'<a href="{a(href)}">{e(c["h"])}</a>' if href else e(c['h'])
         # alt — з "alt" картки (опис фото), інакше порожній
         o = (img(c, None, '(max-width:767px) 92vw, 300px') if c.get('img') else '') + '<div class="xs-cb">' + f'<h3>{ttl}</h3>'
         o += f'<p class="xs-pr">{e(c["price"])}</p>' if c.get('price') else ''
