@@ -8,6 +8,9 @@
   var TAB = main.getAttribute('data-kb');
   var box = document.getElementById('kb');
   var A = window.CASAccount;
+  // Оздоба прихована (tools/site/flags.py OZDOBA_PUBLIC = False → data-oz="0" від tools/shop/kabinet_v2.py): без промо Оздоби,
+  // знижки за обсягом і рекомендацій; «Замовлення»/«Обране» — лише якщо в клієнта вже є замовлення чи обране.
+  var OZ = main.getAttribute('data-oz') !== '0';
   var PHONE = '+380978667755', PHONE_TXT = '+380 97 866 77 55';
   var STAGES = [['new', 'Нове'], ['in_work', 'В роботі'], ['quote_sent', 'КП надіслано'], ['paid', 'Оплачено'],
     ['production', 'У виробництві'], ['shipping', 'В дорозі'], ['delivered', 'Доставлено']];
@@ -176,6 +179,23 @@
   function goHome() {
     A.me(true).then(function (c) { if (c && c.home && c.home !== '/kabinet' && TAB === 'overview') location.href = c.home; else location.reload(); }, function () { location.reload(); });
   }
+  function ozTabs(nOrders, nFav) { // Оздоба прихована: показати вкладки, де є дані
+    var t = { orders: nOrders, fav: nFav };
+    document.querySelectorAll('.kb-tabs a[data-kb-tab]').forEach(function (a) { if (t[a.getAttribute('data-kb-tab')] > 0) a.hidden = false; });
+  }
+  function ozCheck() { // для вкладок без власних даних замовлень/обраного
+    if (OZ) return;
+    Promise.all([soft(api('/api/account/orders'), { orders: [] }), soft(favorites(), [])]).then(function (r) { ozTabs((r[0].orders || []).length, (r[1] || []).length); });
+  }
+  function outBtn(sm) { // «Вийти / змінити акаунт»: вихід на цьому пристрої → /kabinet з входом (A.logout, /api/auth/logout)
+    return '<button class="btn ghost' + (sm ? ' sm' : '') + '" type="button" data-kb-out>Вийти / змінити акаунт</button>';
+  }
+  function bindOut() {
+    box.querySelectorAll('[data-kb-out]').forEach(function (b) {
+      b.onclick = function () { b.disabled = true; A.logout().then(function () { location.href = '/kabinet'; }, function () { b.disabled = false; toast('Не вдалося вийти. Спробуйте ще раз.', true); }); };
+    });
+  }
+
   /* ---------- гість ---------- */
   function guest() {
     var perks = [
@@ -184,7 +204,8 @@
       [IC.plan, 'Ваш обʼєкт онлайн', 'Етапи, фотозвіти раз на 1–2 тижні, акти, графік платежів і камера 24/7 (за доп. оплату). <a href="/onlain-kontrol">Демо →</a>'],
       [IC.shield, 'Без паролів', 'Вхід через Telegram, Google або номер телефону.']
     ];
-    paint('<div class="kb-guest"><section class="kb-card glow kb-in"><p class="kb-eyebrow">Особистий кабінет</p><h2>Усе про ваші замовлення й проєкти — в одному місці</h2>' +
+    if (!OZ) perks = perks.slice(2); // Оздоба прихована — без замовлень і обраного товарів
+    paint('<div class="kb-guest"><section class="kb-card glow kb-in"><p class="kb-eyebrow">Особистий кабінет</p><h2>' + (OZ ? 'Усе про ваші замовлення й проєкти — в одному місці' : 'Усе про ваш проєкт — в одному місці') + '</h2>' +
       '<ul class="kb-perks">' + perks.map(function (p) { return '<li>' + svg(p[0]) + '<div><b>' + p[1] + '</b><span>' + p[2] + '</span></div></li>'; }).join('') + '</ul></section>' +
       '<section class="kb-card kb-in" aria-labelledby="kb-login-h"><h2 id="kb-login-h">Увійти</h2><div id="kb-login"></div></section></div>');
     A.login(document.getElementById('kb-login'), goHome);
@@ -206,30 +227,35 @@
     Promise.all([
       soft(api('/api/account/profile'), { settings: {}, addresses: [] }),
       soft(api('/api/account/orders'), { orders: [] }),
-      favorites(),
+      soft(favorites(), []),
       soft(api('/api/account/projects'), { projects: [] }),
       catalog()
     ]).then(function (r) {
       var P = r[0], O = (r[1].orders || []), F = r[2] || [], PR = (r[3].projects || []), D = r[4];
       var act = O.filter(active), comp = completion(c, P);
+      var fi = D ? F.map(function (id) { return D.byId[id]; }).filter(Boolean) : [];
+      var showO = OZ || O.length > 0, showF = OZ || fi.length > 0;
+      if (!OZ) ozTabs(O.length, fi.length);
+      var w = OZ ? null : ((showO ? 1 : 0) + (showF ? 1 : 0)) % 2 ? 's3' : 's6'; // ширина менеджера (s3-картки парами, без дірки)
       var since = parseDate(P.created_at);
       var h = '<div class="kb-grid">';
       // привітання
       h += '<section class="kb-card glow s6 kb-in"><div class="kb-hero">' + ava(c) + '<div class="kb-hero-t"><h2>' + greet() + ', ' + esc((c.name || 'клієнте').split(/\s+/)[0]) + '</h2>' +
         '<p>' + (since ? 'З нами з ' + dfmt(since, { month: 'long', year: 'numeric' }) + ' · ' : '') + esc(c.provider === 'telegram' ? (c.username ? '@' + c.username : 'Telegram') : c.provider === 'phone' ? (c.phone || '') : (c.email || '')) + '</p>' +
-        '<div class="kb-stats"><a class="kb-chip" href="/kabinet/zamovlennia"><b>' + act.length + '</b> активн' + (act.length === 1 ? 'е' : 'их') + ' замовлен' + (act.length === 1 ? 'ня' : 'ь') + '</a>' +
-        '<a class="kb-chip" href="/kabinet/obrane"><b>' + F.length + '</b> в обраному</a><a class="kb-chip" href="/kabinet/proekty"><b>' + PR.length + '</b> проєкт' + (PR.length === 1 ? '' : PR.length > 1 && PR.length < 5 ? 'и' : 'ів') + '</a></div></div>' +
-        (c.staff ? '<a class="btn ghost sm" href="' + esc(c.staff.home) + '">' + (c.staff.home === '/kabinet/admin' ? 'Майстер-панель' : 'Кабінет працівника') + '</a>' : c.admin ? '<a class="btn ghost sm" href="/kabinet/admin">Облік замовлень</a>' : '') + '</div></section>';
+        '<div class="kb-stats">' + (showO ? '<a class="kb-chip" href="/kabinet/zamovlennia"><b>' + act.length + '</b> активн' + (act.length === 1 ? 'е' : 'их') + ' замовлен' + (act.length === 1 ? 'ня' : 'ь') + '</a>' : '') +
+        (showF ? '<a class="kb-chip" href="/kabinet/obrane"><b>' + F.length + '</b> в обраному</a>' : '') + '<a class="kb-chip" href="/kabinet/proekty"><b>' + PR.length + '</b> проєкт' + (PR.length === 1 ? '' : PR.length > 1 && PR.length < 5 ? 'и' : 'ів') + '</a></div></div>' +
+        '<div class="kb-hero-a">' + (c.staff ? '<a class="btn ghost sm" href="' + esc(c.staff.home) + '">' + (c.staff.home === '/kabinet/admin' ? 'Майстер-панель' : 'Кабінет працівника') + '</a>' : c.admin ? '<a class="btn ghost sm" href="/kabinet/admin">Облік замовлень</a>' : '') +
+        outBtn(true) + '</div></div></section>';
       // замовлення
       var o = act[0] || O[0];
-      h += '<section class="kb-card s3 kb-in" aria-labelledby="kb-w-o"><div class="kb-ch"><h2 id="kb-w-o">Замовлення</h2><a class="lnk" href="/kabinet/zamovlennia">Усі →</a></div>';
+      if (showO) h += '<section class="kb-card s3 kb-in" aria-labelledby="kb-w-o"><div class="kb-ch"><h2 id="kb-w-o">Замовлення</h2><a class="lnk" href="/kabinet/zamovlennia">Усі →</a></div>';
       if (o) {
         h += '<a class="kb-ord" href="/kabinet/zamovlennia?n=' + encodeURIComponent(o.number) + '" style="padding:14px"><div class="kb-ord-h"><b>' + esc(o.number) + '</b>' + stBadge(o) + '</div>' +
           (o.stage !== 'cancelled' ? dots(o.stage) : '') + '<div class="kb-ord-m"><span>' + esc(dfmt(o.created_at)) + '</span><span>' + o.items.length + ' поз.</span><strong>' + money(o.total) + '</strong></div>' +
           (active(o) && eta(o) ? '<small class="muted">Орієнтовна поставка: ' + eta(o) + '</small>' : '') + '</a>';
         if (act.length > 1) h += '<p class="muted" style="font-size:var(--fs-small)">Ще ' + (act.length - 1) + ' активн' + (act.length === 2 ? 'е' : 'их') + ' — у розділі «Замовлення».</p>';
-      } else h += '<p class="muted">Замовлень ще немає. Комплектуйте обʼєкт в Оздобі: освітлення, меблі, декор і сантехніка з поставкою 35–70 днів.</p><a class="btn" href="/ozdoba">До каталогу Оздоби</a>';
-      h += '</section>';
+      } else if (showO) h += '<p class="muted">Замовлень ще немає. Комплектуйте обʼєкт в Оздобі: освітлення, меблі, декор і сантехніка з поставкою 35–70 днів.</p><a class="btn" href="/ozdoba">До каталогу Оздоби</a>';
+      if (showO) h += '</section>';
       // профіль
       h += '<section class="kb-card s3 kb-in" aria-labelledby="kb-w-p"><div class="kb-ch"><h2 id="kb-w-p">Профіль</h2><a class="lnk" href="/kabinet/profil">Заповнити →</a></div>' +
         '<div class="row" style="gap:18px;align-items:center;flex-wrap:nowrap">' + ring(comp.pct) + '<ul class="kb-todo">' +
@@ -237,22 +263,21 @@
         (comp.pct < 100 ? '<p class="muted" style="font-size:var(--fs-small)">Заповнений профіль — швидше оформлення й рахунок без уточнень.</p>' : '') + '</section>';
       // проєкти
       var pj = PR.filter(function (p) { return p.status === 'active'; })[0] || PR[0];
-      h += '<section class="kb-card s2 kb-in" aria-labelledby="kb-w-pr"><div class="kb-ch"><h2 id="kb-w-pr">Проєкт</h2><a class="lnk" href="' + (pj ? '/kabinet/obiekt?p=' + pj.id : '/kabinet/proekty') + '">' + (pj ? 'Онлайн-контроль →' : 'Детальніше →') + '</a></div>';
+      h += '<section class="kb-card ' + (w ? 's3' : 's2') + ' kb-in" aria-labelledby="kb-w-pr"><div class="kb-ch"><h2 id="kb-w-pr">Проєкт</h2><a class="lnk" href="' + (pj ? '/kabinet/obiekt?p=' + pj.id : '/kabinet/proekty') + '">' + (pj ? 'Онлайн-контроль →' : 'Детальніше →') + '</a></div>';
       if (pj) h += '<p><b>' + esc(pj.title) + '</b></p>' + bar(pj.progress) + '<p class="muted" style="font-size:var(--fs-small)">Готовність ' + pj.progress + '%' + (pj.next_step ? ' · Далі: ' + esc(pj.next_step) : '') + '</p>';
       else h += '<p class="muted">Дизайн, ремонт чи будівництво з CAS — етапи, фотозвіти раз на 1–2 тижні й документи будуть тут.</p><a class="btn ghost" href="/kabinet/proekty#kb-lead">Обговорити проєкт</a>';
       h += '</section>';
       // обране
-      h += '<section class="kb-card s2 kb-in" aria-labelledby="kb-w-f"><div class="kb-ch"><h2 id="kb-w-f">Обране</h2><a class="lnk" href="/kabinet/obrane">Усе →</a></div>';
-      var fi = D ? F.map(function (id) { return D.byId[id]; }).filter(Boolean) : [];
-      if (fi.length) h += '<p class="kb-big">' + fi.length + '</p><div class="kb-thumbs">' + fi.slice(0, 4).map(function (i) {
+      if (showF) h += '<section class="kb-card ' + (w ? 's3' : 's2') + ' kb-in" aria-labelledby="kb-w-f"><div class="kb-ch"><h2 id="kb-w-f">Обране</h2><a class="lnk" href="/kabinet/obrane">Усе →</a></div>';
+      if (!showF) { /* Оздоба прихована, обраного немає */ } else if (fi.length) h += '<p class="kb-big">' + fi.length + '</p><div class="kb-thumbs">' + fi.slice(0, 4).map(function (i) {
         return '<a href="' + esc(url(i)) + '" title="' + esc(i.name) + '">' + (i.img ? '<img src="' + esc(img(i)) + '" width="56" height="56" alt="' + esc(i.name) + '" loading="lazy">' : '<span class="art">' + artSvg(D, i.art) + '</span>') + '</a>';
       }).join('') + '</div>';
       else h += '<p class="muted">Натискайте ♡ на товарах Оздоби — вони збережуться тут на всіх ваших пристроях.</p><a class="btn ghost" href="/ozdoba">Обрати товари</a>';
-      h += '</section>';
+      if (showF) h += '</section>';
       // знижка
-      h += '<section class="kb-card s2 kb-in">' + volumeBlock(D, P.partner) + '</section>';
+      if (OZ) h += '<section class="kb-card s2 kb-in">' + volumeBlock(D, P.partner) + '</section>';
       // рекомендації
-      if (D) {
+      if (D && OZ) {
         var kits = (D.bundles || []).filter(function (b) { return b.premium; }).slice(0, 3);
         var recs = D.items.filter(function (i) { return i.prio === 'A' && i.img && F.indexOf(i.id) < 0; });
         var off = new Date().getDate() % Math.max(1, recs.length - 4);
@@ -263,8 +288,9 @@
           }).join('') + '</div><div class="kb-prods">' + recs.map(function (i) { return prodCard(D, i); }).join('') + '</div>' +
           '<p class="muted" style="font-size:12px">Мінімальне замовлення — від $10 000 (≈460 000 ₴), від 10 шт кожної позиції. Поставка з Китаю 35–70 днів.</p></section>';
       }
-      h += managerCard('s2', pj && pj.manager);
+      h += managerCard(w || 's2', pj && pj.manager);
       paint(h + '</div>');
+      bindOut();
     });
   }
 
@@ -274,6 +300,8 @@
     if (n) return orderDetail(n);
     api('/api/account/orders').then(function (d) {
       var O = d.orders || [];
+      if (!OZ) ozTabs(O.length, 0);
+      if (!O.length && !OZ) return paint(empty(IC.box, 'Замовлень немає', 'Тут зʼявляться ваші замовлення зі статусом і датою поставки. Питання — менеджеру.', '') + '<div class="kb-grid" style="margin-top:16px">' + managerCard('s6') + '</div>');
       if (!O.length) return paint(empty(IC.box, 'Замовлень ще немає', 'Додайте товари в кошик Оздоби або візьміть готовий комплект для ресторану, готелю чи офісу — оформлене замовлення зʼявиться тут зі статусом і датою поставки.',
         '<div class="row" style="justify-content:center"><a class="btn" href="/ozdoba">До каталогу</a><a class="btn ghost" href="/ozdoba/komplekty">Комплекти</a></div>') + '<div class="kb-grid" style="margin-top:16px">' + managerCard('s6') + '</div>');
       var filt = 'active';
@@ -363,6 +391,8 @@
       var D = r[1];
       function draw(ids) {
         var L = D ? ids.map(function (id) { return D.byId[id]; }).filter(Boolean) : [];
+        if (!OZ) ozTabs(0, L.length);
+        if (!L.length && !OZ) return paint(empty(IC.heart, 'В обраному порожньо', 'Збережених товарів немає.', '<a class="btn" href="/kabinet">До кабінету</a>'));
         if (!L.length) return paint(empty(IC.heart, 'В обраному порожньо', 'Натискайте ♡ на картках товарів в Оздобі — збережені позиції будуть тут на всіх ваших пристроях. Зручно, щоб показати дизайнеру чи партнеру.',
           '<a class="btn" href="/ozdoba">Перейти в Оздобу</a>'));
         var sum = L.reduce(function (s, i) { var p = minPrice(D, i); return s + (p || 0); }, 0);
@@ -647,12 +677,12 @@
       // адреси
       h += '<section class="kb-card s6 kb-in" aria-labelledby="kb-ad"><div class="kb-ch"><h2 id="kb-ad">Адреси доставки</h2><button class="btn ghost sm" type="button" id="ad-add">+ Додати адресу</button></div><div id="ad-list" class="kb-addr"></div><div id="ad-form"></div></section>';
       // партнерам і знижки
-      h += '<section class="kb-card s3 kb-in" aria-labelledby="kb-pt"><h2 id="kb-pt">Партнерам</h2>' + (P.partner
+      if (OZ || P.partner) h += '<section class="kb-card ' + (OZ ? 's3' : 's6') + ' kb-in" aria-labelledby="kb-pt"><h2 id="kb-pt">Партнерам</h2>' + (P.partner
         ? '<p class="muted" style="font-size:var(--fs-small)">Ваш особистий код партнера:</p><div class="kb-code"><b>' + esc(P.partner.code) + '</b><button class="btn ghost sm" type="button" id="pt-copy" data-code="' + esc(P.partner.code) + '">Скопіювати</button></div>' +
           '<p>Знижка <b>' + P.partner.discount + '%</b> · замовлень з кодом: ' + (P.partner.uses || 0) + '</p><div class="kb-note">Код не сумується зі знижкою за обсягом — діє більша. Вводьте його в кошику Оздоби або передайте клієнту.</div>'
         : '<p class="muted">Дизайнерам, архітекторам і студіям — особистий код партнера зі знижкою на товари Оздоби для ваших обʼєктів. Публічних промокодів немає.</p><a class="btn ghost" href="https://t.me/' + PHONE + '" target="_blank" rel="noopener">Стати партнером</a>') + '</section>';
-      h += '<section class="kb-card s3 kb-in">' + volumeBlock(D, null) + '</section>';
-      h += '<section class="kb-card s6 kb-in kb-noprint"><div class="row" style="justify-content:space-between"><p class="muted">Вийти з кабінету на цьому пристрої</p><div class="row">' + (cl.admin ? '<a class="btn ghost sm" href="/kabinet/admin">Облік замовлень</a>' : '') + '<button class="btn ghost sm" type="button" id="kb-out">Вийти</button></div></div></section>';
+      if (OZ) h += '<section class="kb-card s3 kb-in">' + volumeBlock(D, null) + '</section>';
+      h += '<section class="kb-card s6 kb-in kb-noprint" aria-labelledby="kb-ac"><div class="row" style="justify-content:space-between"><div><h2 id="kb-ac">Акаунт</h2><p class="muted">Вийти з кабінету на цьому пристрої — і за потреби увійти іншим акаунтом (Telegram, Google чи телефон).</p></div><div class="row">' + (cl.admin ? '<a class="btn ghost sm" href="/kabinet/admin">Облік замовлень</a>' : '') + outBtn(true) + '</div></div></section>';
       paint(h + '</div>');
       bindProfile(P);
     }, function (e) { paint('<p class="acc-err">' + esc(e.message) + '</p>'); });
@@ -780,7 +810,7 @@
       var code = cp.getAttribute('data-code');
       (navigator.clipboard ? navigator.clipboard.writeText(code) : Promise.reject()).then(function () { toast('Код скопійовано'); }, function () { toast(code); });
     };
-    document.getElementById('kb-out').onclick = function () { A.logout().then(function () { location.href = '/kabinet'; }); };
+    bindOut();
   }
 
   /* ---------- старт ---------- */
@@ -790,9 +820,9 @@
       if (!c) return guest();
       if (TAB === 'orders') orders(c);
       else if (TAB === 'fav') fav(c);
-      else if (TAB === 'projects') projects(c);
-      else if (TAB === 'object') objectTab(c);
-      else if (TAB === 'profile') profile(c);
+      else if (TAB === 'projects') { projects(c); ozCheck(); }
+      else if (TAB === 'object') { objectTab(c); ozCheck(); }
+      else if (TAB === 'profile') { profile(c); ozCheck(); }
       else overview(c);
     });
   }

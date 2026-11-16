@@ -4,9 +4,15 @@
 Викликається з tools/shop/pages.py (shell і page() — звідти). Уся логіка — /assets/kabinet.v2.js, стилі — /assets/kabinet.v2.css,
 вхід — /assets/account.v1.js. API — functions/api/account/*. Усі сторінки noindex (shell з pages.py).
 """
-import hashlib, os
+import hashlib, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(ROOT, 'tools/site'))
+import flags  # noqa: E402  OZDOBA_PUBLIC (tools/site/flags.py)
+
+# Оздоба прихована (flags.OZDOBA_PUBLIC = False): вкладки «Замовлення»/«Обране» — hidden (kabinet.v2.js показує їх, лише якщо
+# у клієнта є замовлення чи обране), у JS — data-oz="0": без промо Оздоби, знижки за обсягом і рекомендацій. True — усе як було.
+OZ_TABS = ('orders', 'fav')
 
 
 def ver(rel):
@@ -71,14 +77,21 @@ def body(key):
     tab = next(t for t in TABS if t[0] == key)
     crumbs = '<a href="/">Головна</a> / ' + ('Кабінет' if key == 'overview' else f'<a href="/kabinet">Кабінет</a> / {tab[2]}')
     cur = ' aria-current="page"'
+    oz = flags.OZDOBA_PUBLIC
+
+    def attrs(k):
+        a = cur if k == key else ''
+        if not oz and k in OZ_TABS:  # Оздоба прихована: вкладку показує JS, якщо є дані (поточну — одразу)
+            a += f' data-kb-tab="{k}"' + ('' if k == key else ' hidden')
+        return a
     nav = ''.join(
-        f'<a href="/{slug}"{cur if k == key else ""}><svg viewBox="0 0 24 24" aria-hidden="true">{I[ic]}</svg><span>{label}</span></a>'
+        f'<a href="/{slug}"{attrs(k)}><svg viewBox="0 0 24 24" aria-hidden="true">{I[ic]}</svg><span>{label}</span></a>'
         for k, slug, label, ic, _, _ in TABS)
     scripts = f'<script src="/assets/account.v1.js?v={ver("assets/account.v1.js")}" defer></script>\n' \
               f'<script src="/assets/kabinet.v2.js?v={ver("assets/kabinet.v2.js")}" defer></script>'
     if key in ('projects', 'object'):
         scripts += f'\n<script src="/assets/lead-form.v1.js?v={ver("assets/lead-form.v1.js")}" defer></script>'
-    return f"""<main class="acc kb" data-kb="{key}">
+    return f"""<main class="acc kb" data-kb="{key}"{"" if oz else ' data-oz="0"'}>
   <div class="crumbs">{crumbs}</div>
   <h1 class="kb-h1">{tab[5]}</h1>
   <nav class="kb-tabs" aria-label="Розділи кабінету">{nav}</nav>

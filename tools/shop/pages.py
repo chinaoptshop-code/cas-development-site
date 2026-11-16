@@ -102,7 +102,8 @@ def shell():
     if hdr:
         cart_svg = re.search(r'aria-label="Кошик">(<svg.*?</svg>)', hdr.group(0), flags=re.S).group(1)
         acc = re.search(r'<a class="ico" id="accLink".*?</a>', hdr.group(0), flags=re.S)
-        s = s.replace(hdr.group(0), (acc.group(0) + '\n  ' if acc else '') + f'<a class="ico" href="/ozdoba" aria-label="Кошик">{cart_svg}</a>')
+        cart = f'<a class="ico" href="/ozdoba" aria-label="Кошик">{cart_svg}</a>' if chrome.OZDOBA_PUBLIC else ''  # Оздоба прихована — без кошика
+        s = s.replace(hdr.group(0), (acc.group(0) + ('\n  ' if cart else '') if acc else '') + cart)
     return s
 
 
