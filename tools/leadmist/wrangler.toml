@@ -1,0 +1,31 @@
+# LeadMist / ЛідМіст — Cloudflare Worker (бот + лендинг + сторінка згоди).
+# Окремий проєкт Cloudflare, НЕ сайт CAS. Плейсхолдери замінити перед деплоєм (див. README.md).
+name = "leadmist"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+[vars]
+# Публічна адреса Worker'а (поки домену немає — *.workers.dev).
+PUBLIC_URL = "https://leadmist.example.workers.dev"
+# Username бота без @ (з BotFather).
+BOT_USERNAME = "LeadMistBot"
+# Telegram ID адміністраторів/модераторів через кому.
+ADMIN_TG_IDS = "0"
+TERMS_VERSION = "platform-2026-11-16-draft"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "leadmist"
+# `wrangler d1 create leadmist` → вставити database_id сюди.
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[triggers]
+# Нагадування, друга хвиля розсилки, повернення лідів — щогодини.
+crons = ["17 * * * *"]
+
+# Секрети — ЛИШЕ через `wrangler secret put <NAME>` (локально — .dev.vars, не комітити):
+#   TELEGRAM_BOT_TOKEN       — токен від @BotFather
+#   TELEGRAM_WEBHOOK_SECRET  — довільний рядок 32+ символи (заголовок X-Telegram-Bot-Api-Secret-Token)
+#   CONTACT_KEY              — 32 байти base64 (AES-GCM для контактів клієнтів): `openssl rand -base64 32`
+#   HASH_KEY                 — довільний рядок 32+ символи (HMAC: хеш телефону/e-mail, OTP)

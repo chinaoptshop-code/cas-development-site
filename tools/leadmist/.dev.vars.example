@@ -1,0 +1,5 @@
+# Скопіювати в .dev.vars для `wrangler dev` (НЕ комітити .dev.vars). Значення — фейкові.
+TELEGRAM_BOT_TOKEN=000000:FAKE
+TELEGRAM_WEBHOOK_SECRET=change-me-32-chars-minimum-000000000
+CONTACT_KEY=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+HASH_KEY=change-me-32-chars-minimum-000000000
