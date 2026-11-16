@@ -884,3 +884,7 @@ html body main>.pmap{grid-column:1/-1;width:100%;box-sizing:border-box}
 @media(min-width:768px) and (max-width:1023px){
   .hxl::before{background:linear-gradient(90deg,rgba(8,7,9,.88) 0,rgba(8,7,9,.66) 50%,rgba(8,7,9,.42) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}
   [dir=rtl] .hxl::before{background:linear-gradient(270deg,rgba(8,7,9,.88) 0,rgba(8,7,9,.66) 50%,rgba(8,7,9,.42) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}}
+/* Фото: що відкривається (16.11.2026, CLAUDE.md): фото-посилання на велику копію — спільний лайтбокс /assets/lightbox.v1.js (курсор-лупа);
+   «Наші проєкти» лендингів (.gal з посиланням у підписі) — картка-посилання цілком: тап по фото веде на кейс, як по назві */
+a[data-lb]{cursor:zoom-in}
+.gal figure{position:relative}.gal figcaption a::after{content:"";position:absolute;inset:0}

@@ -8,8 +8,8 @@
 Розмітка: під `.pg` — блок <!--gal:more-->: посилання «Показати всі (N)» на JSON (без JS — відкриває список файлів) і
 /assets/case-gal.v1.js (defer): клік або прокрутка до кінця галереї (за ~700 px) — дописує решту мініатюр тими самими атрибутами
 (alt, width/height, srcset/sizes — sharp.py рахує їх тут, на повній галереї), клітинки 4:3 (proekt.v1.css) — без CLS;
-лайтбокс #lb: ‹ › / ←→ / свайп по всіх фото сторінки (підвантажує JSON, коли дійшли до 24-го), лічильник «n / N».
-JSON: {"n": усього, "p": [[href, src, srcset, sizes, w, h, alt], …]} — лише хвіст. Джерело правди хвоста — сам JSON
+лайтбокс — спільний /assets/lightbox.v1.js (tools/site/lbox.py): гортає всі фото сторінки й через window.casGalMore() підвантажує JSON, коли дійшли до 24-го.
+JSON: {"n": усього, "p": [[href, src, srcset, sizes, w, h, alt, ширини data-lb], …]} — лише хвіст. Джерело правди хвоста — сам JSON
 (сторінка + JSON = повна галерея); en/ru — tools/site/caselang.py (<мова>/proekty/gal/<slug>.json з перекладеними alt).
 ALT — описовий alt галереї «<…>, фото N» (замість скороченого під бюджет, коли все було в HTML).
 """
@@ -23,7 +23,7 @@ LIMIT = 24
 JS = 'assets/case-gal.v1.js'
 ALT = {'petrivtsi-house': 'Petrivtsi House — приватний будинок 320 м² у Петрівцях'}
 GAL = re.compile(r'(<div class="pg"[^>]*>)(.*?)(</div>)', re.S)
-ITEM = re.compile(r'<a href="([^"]+)"[^>]*><img\b([^>]*)></a>')
+ITEM = re.compile(r'<a href="([^"]+)"([^>]*)><img\b([^>]*)></a>')
 MORE = re.compile(r'\n?<!--gal:more-->.*?<!--/gal:more-->', re.S)
 # інлайн-делегування кліку з деяких сторінок — лайтбокс довгих галерей веде case-gal.v1.js (інакше кадр відкривається двічі)
 DELEG = "document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('.pg a');if(a){e.preventDefault();lb(a.href)}});"
@@ -40,14 +40,14 @@ def attr(tag, k):
 
 
 def parse(body):
-    return [[h, attr(t, 'src'), attr(t, 'srcset'), attr(t, 'sizes'), int(attr(t, 'width') or 0), int(attr(t, 'height') or 0), attr(t, 'alt')]
-            for h, t in ITEM.findall(body)]
+    return [[h, attr(t, 'src'), attr(t, 'srcset'), attr(t, 'sizes'), int(attr(t, 'width') or 0), int(attr(t, 'height') or 0), attr(t, 'alt'), attr(a, 'data-lb')]
+            for h, a, t in ITEM.findall(body)]
 
 
-def item(x, oc=False):
-    h, src, ss, sz, w, ht, alt = x
+def item(x):
+    h, src, ss, sz, w, ht, alt = x[:7]
     q = lambda v: html.escape(v, quote=True)
-    return (f'<a href="{q(h)}"' + (' onclick="return lb(this.href)"' if oc else '') + f'><img src="{q(src)}"' + (f' srcset="{q(ss)}"' if ss else '') + (f' sizes="{q(sz)}"' if sz else '')
+    return (f'<a href="{q(h)}"' + (f' data-lb="{q(x[7])}"' if len(x) > 7 else '') + f'><img src="{q(src)}"' + (f' srcset="{q(ss)}"' if ss else '') + (f' sizes="{q(sz)}"' if sz else '')
             + f' loading="lazy" decoding="async" width="{w}" height="{ht}" alt="{q(alt)}"></a>')
 
 
@@ -80,7 +80,7 @@ def render(s, slug):
     m = GAL.search(s)
     m0 = re.sub(r' data-compact="\d+"', '', m.group(1))
     short = len(items) <= LIMIT
-    s = s[:m.start()] + m0 + ''.join(item(x, short) for x in items) + m.group(3) + s[m.end():]
+    s = s[:m.start()] + m0 + ''.join(item(x) for x in items) + m.group(3) + s[m.end():]
     if short:
         return chrome.apply(s, rel), None
     s = chrome.apply(s, rel)  # sharp.py: srcset/sizes на всіх фото повної галереї

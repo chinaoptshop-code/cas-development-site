@@ -143,7 +143,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 @media(min-width:768px){.xs-trust .facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
 /* головні (Михайло 05.11.2026, мінімізація): «Що ми робимо» — назва + ціна «від» (картка — посилання цілком; на телефоні — один ряд зі свайпом),
    блок довіри — один рядок фактів + рядок посилань; стрічка фото нижча */
-.hx-home~.xs-svc .xs-c{position:relative}.hx-home~.xs-svc .xs-c h3 a::after{content:"";position:absolute;inset:0}
+.xs-svc .xs-c{position:relative}.xs-svc .xs-c h3 a::after{content:"";position:absolute;inset:0}.xs-svc .xs-cb>:is(.xs-links,details,ul,p:has(a)){position:relative;z-index:1} /* картка — посилання цілком (фото, назва), інші посилання й розгортання — над ним */
 .hx-home~.xs-svc .xs-cb>p:not([class]),.hx-home~.xs-svc .xs-cb>.xs-links{display:none!important}
 /* «Що ми робимо» на головних — карусель як «Наші проєкти» (Михайло 08.11.2026): один ряд на всіх ширинах, свайп/scroll-snap,
    кнопки ←/→ під рядом (carousel() у ui-polish.v1.js), повільна автопрокрутка marquee() (пауза при наведенні/тачі/дії, reduced-motion — статично).

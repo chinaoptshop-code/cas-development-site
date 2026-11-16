@@ -1,6 +1,6 @@
 /* CAS — слайдер «до / після» (/assets/ba.v1.js, /styleguide/#ba). Ліва частина — «до», права — «після». */
 .ba-w{margin:0 0 22px}.ba-w figcaption{margin-top:8px;color:var(--mu,#938c84);font-size:var(--fs-small,.8125rem)}
-.ba{--p:50%;position:relative;overflow:hidden;border-radius:12px;background:var(--bg2,#100e0c);direction:ltr;touch-action:pan-y;cursor:ew-resize;-webkit-user-select:none;user-select:none}
+.ba{--p:50%;position:relative;overflow:hidden;border-radius:12px;background:var(--bg2,#100e0c);direction:ltr;touch-action:pan-y pinch-zoom;cursor:ew-resize;-webkit-user-select:none;user-select:none}
 .ba img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
 .ba-b{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--p)) 0 0)}
 .ba-h{position:absolute;top:0;bottom:0;left:var(--p);width:44px;margin-left:-22px;display:grid;place-items:center;cursor:ew-resize;outline:0}
