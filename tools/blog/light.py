@@ -164,6 +164,8 @@ def _words(body):
 
 
 def pie_key(a):
+    if a.get('pie') is False:  # стаття не технічна, хоч у назві «будівництво» (напр. міні-готель) — без пирога
+        return None
     if a['lang'] not in ('uk', 'ru', 'en', 'pl', 'es', 'de', 'fr', 'zh', 'ar'):
         return None
     src = (a['slug'] + ' ' + a['title']).lower()
