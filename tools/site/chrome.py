@@ -31,7 +31,7 @@ def _ver(path, _c={}):
 # спільні файли, які підключають сторінки: після зміни файлу всі сторінки отримують новий ?v=
 SHARED = ('/assets/site-chrome.v1.css', '/assets/crit.v1.css', '/assets/site-chrome.v1.js', '/assets/lead-form.v1.js', '/assets/ui-polish.v1.js', '/assets/proekt.v1.css',
           '/assets/cas-map.v1.css', '/assets/cas-map.v1.js', '/assets/quiz.v1.js', '/assets/quiz.v1.css', '/assets/media.v1.js', '/assets/media.v1.css',
-          '/assets/build-anim.v1.js', '/assets/build-anim.v1.css', '/assets/sections.v1.css', '/assets/calc.v1.js', '/assets/case-gal.v1.js')
+          '/assets/build-anim.v1.js', '/assets/build-anim.v1.css', '/assets/sections.v1.css', '/assets/calc.v1.js', '/assets/case-gal.v1.js', '/assets/lightbox.v1.js')
 SHARED_RX = re.compile(r'(' + '|'.join(re.escape(x) for x in SHARED) + r')(?:\?v=\w+)?(?=")')
 
 
@@ -910,6 +910,8 @@ def apply(s, rel):
     s = has_marks(s)
     import sharp  # різкі фото: srcset з усіх ширин і sizes під реальний слот (tools/site/sharp.py)
     s = sharp.apply(s, rel)
+    import lbox  # один лайтбокс фото (tools/site/lbox.py → /assets/lightbox.v1.js): data-lb з ширинами, без інлайн-лайтбоксів
+    s = lbox.apply(s, rel)
     s = versions(s)
     s = fonts_block(s)
     s = nbsp_prices(s, lang)

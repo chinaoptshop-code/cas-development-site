@@ -307,6 +307,65 @@ await test('карта проєктів: постер → інтерактивн
   const url = p.url(); await fly.click(); await p.waitForTimeout(800);
   must(p.url() === url, 'кнопка «Показати на карті» перейшла на іншу сторінку');
 });
+// ── лайтбокс фото (/assets/lightbox.v1.js, tools/site/lbox.py): один на весь сайт; тап → відкрито з великою копією, свайп ←/→, щипок/подвійний тап — зум
+//    (свайп при зумі не гортає), «Назад» і свайп униз закривають без переходу, Esc/тло, фокус усередині й повернення, RTL — дзеркально, довга галерея — хвіст з JSON
+const lbState = p => p.evaluate(() => window.casLb && casLb.state());
+async function touches(p) {
+  const cdp = await p.context().newCDPSession(p);
+  const t = (type, pts) => cdp.send('Input.dispatchTouchEvent', { type, touchPoints: pts.map(([x, y], id) => ({ x, y, id })) });
+  return {
+    swipe: async (x0, y0, x1, y1) => { await t('touchStart', [[x0, y0]]); for (let i = 1; i <= 8; i++) { await t('touchMove', [[x0 + (x1 - x0) * i / 8, y0 + (y1 - y0) * i / 8]]); await p.waitForTimeout(16); } await t('touchEnd', []); await p.waitForTimeout(350); },
+    pinch: async (cx, cy, d0, d1) => { await t('touchStart', [[cx - d0, cy], [cx + d0, cy]]); for (let i = 1; i <= 10; i++) { const d = d0 + (d1 - d0) * i / 10; await t('touchMove', [[cx - d, cy], [cx + d, cy]]); await p.waitForTimeout(16); } await t('touchEnd', []); await p.waitForTimeout(300); },
+    dbl: async (x, y) => { for (let k = 0; k < 2; k++) { await t('touchStart', [[x, y]]); await t('touchEnd', []); await p.waitForTimeout(80); } await p.waitForTimeout(350); },
+  };
+}
+for (const [path, rtl] of [['/proekty/monpark', false], ['/ar/proekty/monpark', true]]) await test('лайтбокс на телефоні: тап, велика копія, свайп, щипок, подвійний тап, «Назад», свайп униз' + (rtl ? ' (RTL)' : ''), path, 402, async p => {
+  const W = 402, H = 874, url = p.url();
+  const a = p.locator('a[data-lb]').first(); await a.scrollIntoViewIfNeeded(); await p.waitForTimeout(300);
+  await a.tap(); await p.waitForTimeout(600);
+  let s = await lbState(p);
+  must(s && s.open && s.i === 0 && s.n > 1, 'лайтбокс не відкрився тапом');
+  must(p.url() === url, 'тап по фото перейшов на файл');
+  const im = await p.evaluate(() => { const i = document.querySelector('.clb-im'), w = +(i.currentSrc.match(/-(\d+)\.webp/) || [])[1]; return { w, slot: i.getBoundingClientRect().width * devicePixelRatio, lb: document.querySelector('a[data-lb]').getAttribute('data-lb') }; });
+  const maxW = Math.max(...im.lb.split(',').map(Number));
+  must(im.w >= Math.min(im.slot, maxW) * 0.95, `лайтбокс показує малу копію: ${im.w}w на кадр ${Math.round(im.slot)} px`);
+  must(await p.evaluate(() => document.getElementById('clb').contains(document.activeElement)), 'фокус не в лайтбоксі');
+  const g = await touches(p);
+  await g.swipe(W * .8, H / 2, W * .2, H / 2); // палець вліво: далі (RTL — назад)
+  s = await lbState(p); must(s.i === (rtl ? s.n - 1 : 1), `свайп ← не гортає: ${s.i}`);
+  await g.swipe(W * .2, H / 2, W * .8, H / 2);
+  s = await lbState(p); must(s.i === 0, `свайп → не повертає: ${s.i}`);
+  await g.pinch(W / 2, H / 2, 40, 140); s = await lbState(p); must(s.z > 1.5, `щипок не збільшує: ${s.z}`);
+  await g.swipe(W * .7, H / 2, W * .3, H / 2); s = await lbState(p); must(s.i === 0 && s.z > 1.5, 'свайп при зумі гортає фото замість пересування');
+  await g.dbl(W / 2, H / 2); s = await lbState(p); must(s.z === 1, `подвійний тап не скидає зум: ${s.z}`);
+  await g.dbl(W / 2, H / 2); s = await lbState(p); must(s.z > 2, `подвійний тап не збільшує: ${s.z}`);
+  await p.goBack({ waitUntil: 'commit' }).catch(() => {}); await p.waitForTimeout(500);
+  s = await lbState(p); must(!s.open && p.url() === url, '«Назад» не закрив лайтбокс або пішов зі сторінки');
+  await a.scrollIntoViewIfNeeded(); await a.tap(); await p.waitForTimeout(600);
+  must((await lbState(p)).open, 'лайтбокс не відкрився вдруге');
+  await g.swipe(W / 2, H * .4, W / 2, H * .85);
+  s = await lbState(p); must(!s.open && p.url() === url, 'свайп униз не закрив лайтбокс');
+});
+await test('лайтбокс на ПК: клік, ‹ ›, ←/→, Tab усередині, Esc → фокус на мініатюрі; довга галерея — хвіст з JSON', '/proekty/petrivtsi-house', 1440, async p => {
+  const a = p.locator('a[data-lb]').nth(22); await a.scrollIntoViewIfNeeded(); await a.click(); await p.waitForTimeout(500);
+  let s = await lbState(p); must(s && s.open && s.i === 22 && s.n >= 100, `лайтбокс не відкрився кліком: ${JSON.stringify(s)}`);
+  await p.click('.clb-n'); await p.waitForTimeout(250); await p.keyboard.press('ArrowRight'); await p.waitForTimeout(250); await p.keyboard.press('ArrowRight'); await p.waitForTimeout(800);
+  s = await lbState(p); must(s.i === 25 && /-\d+\.webp/.test(s.src), `‹ › / → не дійшли до хвоста галереї: ${s.i}`);
+  for (let k = 0; k < 4; k++) await p.keyboard.press('Tab');
+  must(await p.evaluate(() => document.getElementById('clb').contains(document.activeElement)), 'Tab вийшов з лайтбокса');
+  await p.keyboard.press('Escape'); await p.waitForTimeout(400);
+  s = await lbState(p); must(!s.open, 'Esc не закрив');
+  must(await p.evaluate(() => !!document.activeElement.closest('a[data-lb]')), 'фокус не повернувся на мініатюру');
+  await a.click(); await p.waitForTimeout(500); await p.mouse.click(200, 120); await p.waitForTimeout(500);
+  must(!(await lbState(p)).open, 'клік по тлу не закрив');
+});
+await test('«Наші проєкти» лендингу: тап по фото — на сторінку проєкту (картка-посилання)', '/dyzain-interieru-kyiv', 402, async p => {
+  const b = p.locator('[data-c="x"]:has(.gal) .ux-h').first();
+  if (await b.count()) { await b.evaluate(e => e.scrollIntoView({ block: 'center', behavior: 'instant' })); await b.click(); await p.waitForTimeout(500); }
+  const hit = await p.evaluate(() => { const im = document.querySelector('.gal figure img'); if (!im) return 'немає .gal'; im.scrollIntoView({ block: 'center', behavior: 'instant' });
+    const r = im.getBoundingClientRect(); const el = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); const l = el && el.closest('a[href]'); return l ? l.getAttribute('href') : 'під пальцем ' + (el && el.tagName); });
+  must(/^\/proekty\//.test(hit) || hit === 'немає .gal', `фото «Наших проєктів» не веде на кейс: ${hit}`);
+});
 await browser.close(); server.close();
 console.log(fails ? `\n${fails} FAIL` : '\nВзаємодії: ALL OK');
 process.exit(fails ? 1 : 0);

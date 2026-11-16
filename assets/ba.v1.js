@@ -1,5 +1,5 @@
 /* CAS — слайдер «до / після» (.ba; розмітка — tools/site/landing.py ba_html, документація — /styleguide/#ba).
-   Мишею/пальцем — тягнути будь-де по фото (вертикальна прокрутка сторінки лишається: touch-action:pan-y);
+   Мишею/пальцем — тягнути будь-де по фото (вертикальна прокрутка сторінки лишається: touch-action:pan-y pinch-zoom — щипок збільшує сторінку);
    клавіатура на ручці (role="slider"): ←/→ ±5%, PageUp/PageDown ±10%, Home/End — 0/100%. Без бібліотек. */
 (function () {
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)');
@@ -21,6 +21,7 @@
     }
     f.addEventListener('pointerdown', function (e) {
       if (e.button) return;
+      if (!e.isPrimary) { drag = false; return; } // другий палець — щипок (зум сторінки), не повзунок
       drag = true;
       try { f.setPointerCapture(e.pointerId); } catch (x) {}
       at(e);
