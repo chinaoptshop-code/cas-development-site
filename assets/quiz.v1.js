@@ -324,12 +324,12 @@
       var f = d.getElementById('of'), oP = d.getElementById('oPhone');
       if (!f || !oP || typeof f.requestSubmit !== 'function') { fail(t.fail); return; }
       var oA = d.getElementById('oArea'), oM = d.getElementById('oMsg'), oE = d.getElementById('oErr');
-      var keep = { form: f.dataset.form, service: f.dataset.service, area: oA ? oA.value : '', msg: oM ? oM.value : '', phone: oP.value };
+      var keep = { form: f.dataset.form, service: f.dataset.service, source: f.dataset.source, area: oA ? oA.value : '', msg: oM ? oM.value : '', phone: oP.value };
       var e = estimate(st.obj, st.svc, st.area), done = false, mo;
       sb.disabled = true; sb.textContent = t.sending;
       function restore() {
         if (mo) mo.disconnect(); d.removeEventListener('cas:lead', onLead);
-        f.dataset.form = keep.form || 'landing'; f.dataset.service = keep.service || '';
+        f.dataset.form = keep.form || 'landing'; f.dataset.service = keep.service || ''; if (keep.source != null) f.dataset.source = keep.source;
         if (oA) oA.value = keep.area; if (oM) oM.value = keep.msg; oP.value = keep.phone;
       }
       function onLead(ev) {
@@ -346,7 +346,7 @@
       oP.value = '+' + n;
       if (oA) oA.value = String(st.area);
       if (oM) oM.value = summary(e) + (keep.msg ? '\n' + keep.msg : '');
-      f.dataset.form = 'quiz';
+      f.dataset.form = 'quiz'; f.dataset.source = (keep.source || location.host + location.pathname).replace(/#.*$/, '') + '#quiz';
       f.dataset.service = U.svc[st.svc] + ' · ' + U.obj[st.obj] + (keep.service ? ' (' + keep.service + ')' : '');
       f.requestSubmit();
     }

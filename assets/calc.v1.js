@@ -28,6 +28,6 @@ $('cDz').addEventListener('click',function(e){var b=e.target.closest('button');i
 calc();
 $('cSend').addEventListener('click',function(){var c=calc(),ar=$('oArea'),m=$('oMsg'),fo=$('of'),rg=R?C.eu:C.ua,svc=C.k[c.ki]+' · '+rg;
 if(ar&&c.a)ar.value=unit==='s'?Math.round(c.a*100):c.a;
-if(fo)fo.setAttribute('data-service',C.sv+': '+svc);
-if(m&&(!m.value||m.value.indexOf(C.msg)===0))m.value=C.msg+' ('+rg+(unit==='s'?', '+c.a+' '+C.ss:'')+'): '+c.t+(c.ok?' = '+C.frm+' '+c.s+($('cPlus').hidden?'':' '+C.pl):'')})}
+if(fo){fo.setAttribute('data-service',C.sv+': '+svc);fo.setAttribute('data-form','calc');fo.setAttribute('data-source',(fo.getAttribute('data-source')||location.host+location.pathname).replace(/#.*$/,'')+'#calc')}
+if(m&&(!m.value||m.value.indexOf(C.msg)===0))m.value=C.msg+' ('+rg+(unit==='s'?', '+c.a+' '+C.ss:'')+'): '+c.t+(c.ok?' = '+C.frm+' '+c.s+($('cPlus').hidden?'':' '+C.pl):'');var dt=m&&m.closest('details');if(dt)dt.open=true})}
 if(document.readyState==='complete')casCalcInit();else document.addEventListener('DOMContentLoaded',casCalcInit);
