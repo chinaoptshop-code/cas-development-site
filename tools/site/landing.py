@@ -111,7 +111,10 @@ def _lead_p(p):
     """Лід hero. "line" (головні, Михайло 05.11.2026: «Київ · Україна · Worldwide») — видимий рядок під H1,
     увесь "lead" — після нього; ux._lead_rest ховає його в span.ux-rest (у DOM для SEO, тап — розгортає)."""
     if p.get('line'):
-        return f'  <p><span class="ux-ln">{e(p["line"])}</span> {e(p["lead"])}</p>'
+        ln = e(p['line'])
+        if p.get('lang', 'uk') != 'en':  # «Worldwide» англійською в усіх мовах — зчитувач вимовляє його англійською (WCAG 3.1.2)
+            ln = ln.replace('Worldwide', '<span lang="en">Worldwide</span>')
+        return f'  <p><span class="ux-ln">{ln}</span> {e(p["lead"])}</p>'
     return f'  <p>{e(p["lead"])}</p>'
 
 def translate_tpl(s, lang):

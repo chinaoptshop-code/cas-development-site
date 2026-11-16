@@ -57,7 +57,7 @@ const cspOf = path => {
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg', '.woff2': 'font/woff2', '.avif': 'image/avif', '.ico': 'image/x-icon' };
 function staticFile(path) {
   let f = join(ROOT, decodeURIComponent(path));
-  if (existsSync(f) && statSync(f).isDirectory()) f = join(f, 'index.html');
+  if (existsSync(f) && statSync(f).isDirectory()) f = !existsSync(join(f, 'index.html')) && existsSync(f + '.html') ? f + '.html' : join(f, 'index.html'); // /kabinet → kabinet.html (поруч тека kabinet/)
   if (!existsSync(f) && existsSync(f + '.html')) f = f + '.html';
   return existsSync(f) && !f.includes('/tools/') ? f : null;
 }
@@ -82,7 +82,7 @@ const server = http.createServer(async (req, res) => {
     const headers = { 'content-type': f ? MIME[extname(f)] || 'application/octet-stream' : 'text/html; charset=utf-8' };
     if (!f || extname(f) === '.html') { const csp = cspOf(u.pathname); if (csp.length) headers['content-security-policy'] = csp.join(', '); }
     res.writeHead(status, headers); res.end(body != null ? body : readFileSync(f));
-  } catch (e) { res.writeHead(500); res.end(String(e && e.stack || e)); }
+  } catch (e) { if (!res.headersSent) res.writeHead(500); res.end(String(e && e.stack || e)); }
 });
 await new Promise(ok => server.listen(0, '127.0.0.1', ok));
 const BASE = `http://127.0.0.1:${server.address().port}`;
@@ -153,6 +153,21 @@ await check('client-object', 'C1', '/kabinet/obiekt', W, async p => {
   const t = await p.textContent('main');
   if (/Протікає стояк|Олег \(прораб\)/.test(t)) throw new Error('клієнт бачить внутрішні поля (проблема/працівник)');
 });
+// Оздоба прихована (tools/site/flags.py OZDOBA_PUBLIC = False → data-oz="0"): у огляді без промо Оздоби й кошика,
+// вкладки «Замовлення»/«Обране» — лише за наявності даних; кнопка «Вийти / змінити акаунт» — в огляді й профілі
+const OZ_OFF = /data-oz="0"/.test(readFileSync(join(ROOT, 'kabinet.html'), 'utf8'));
+await check('client-overview', 'C1', '/kabinet', W, async p => {
+  await see(p, '#kb [data-kb-out]', 'Вийти / змінити акаунт');
+  if (!OZ_OFF) return;
+  const t = await p.textContent('#kb');
+  if (/До каталогу Оздоби|Рекомендуємо з Оздоби|Знижка за обсягом/.test(t)) throw new Error('промо Оздоби в огляді');
+  if (await p.$('header a[aria-label="Кошик"]')) throw new Error('кошик у шапці');
+  const st = await p.evaluate(async () => { const r = await window.CASAccount.api('/api/account/orders').catch(() => ({ orders: [] }));
+    const v = s => { const a = document.querySelector('.kb-tabs a[data-kb-tab="' + s + '"]'); return a && !a.hidden; };
+    return { n: (r.orders || []).length, o: v('orders') }; });
+  if (st.o !== st.n > 0) throw new Error(`вкладка «Замовлення»: видно=${st.o}, замовлень=${st.n}`);
+});
+await check('client-profile', 'C1', '/kabinet/profil', [402], async p => { await see(p, '#kb [data-kb-out]', 'Вийти / змінити акаунт'); });
 console.log('Чужий інтерфейс → 403');
 await check('denied-team-admin', 'FORE', '/kabinet/admin', [402], async (p, r) => { if (r.status() !== 403) throw new Error('статус ' + r.status()); await see(p, 'h1', 'не для вашого'); });
 await check('denied-client-team', 'C1', '/kabinet/team', [402], async (p, r) => { if (r.status() !== 403) throw new Error('статус ' + r.status()); });

@@ -245,7 +245,7 @@ def main():
             err(rel, f'og:image не існує: {m.group(1)}')
         if 'name="twitter:card"' not in head:
             warn(rel, 'немає twitter:card')
-        if len(re.findall(r'fetchpriority="high"', s)) > 1:
+        if len(re.findall(r'<img\b[^>]*fetchpriority="high"', s)) > 1:  # preload того ж фото (link data-lcp) не рахується
             err(rel, 'fetchpriority="high" більше одного')
         for k, i in enumerate(imgs):
             src = (re.search(r'\bsrc="([^"]*)"', i) or [0, '?'])[1]

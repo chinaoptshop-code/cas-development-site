@@ -270,6 +270,12 @@
 
   [marquee, accordion, magnet].forEach(function (f) { try { f(); } catch (e) {} });
 })();
+// ── «Перейти до змісту» (a.skip): фокус переходить у <main> (tabindex=-1 ставимо лише тут), наступний Tab — перший елемент змісту
+(function () {
+  var s = document.querySelector('a.skip[href="#main"]'), m = document.getElementById('main');
+  if (!s || !m) return;
+  s.addEventListener('click', function () { if (!m.hasAttribute('tabindex')) m.setAttribute('tabindex', '-1'); try { m.focus({ preventScroll: true }); } catch (x) { m.focus(); } });
+})();
 // ── Кнопка «Зв'язатися» (.mbar[data-one], tools/site/chrome.py mbar_lead): тап — меню (Подзвонити, Telegram, WhatsApp, Viber, «Залишити номер»);
 // закривається повторним тапом, тапом поза меню, Esc і після вибору пункту. «Залишити номер» прокручує до форми — /assets/lead-form.v1.js.
 (function () {
@@ -290,6 +296,7 @@
   var mob = W.matchMedia('(max-width:767px)');
   var app = /^\/(?:ozdoba|kabinet|konfigurator)(?:[\/.]|$)/.test(location.pathname); // власні інтерфейси: шапку не ховаємо
   var y0 = W.pageYOffset || 0, acc = 0, raf = 0, hid = false;
+  function vhNow() { return W.innerHeight || 700; }
   // відкрите меню, список мов або діалог — нічого не ховаємо. Живі колекції замість querySelector на кожному кадрі прокрутки:
   // на сторінках зі сценами (тисячі SVG-вузлів) складний селектор обходив увесь DOM (~20 мс на кадр при CPU×4)
   var cLd = d.getElementsByClassName('sch-ld'), cLb = d.getElementsByClassName('lb'), cSh = d.getElementsByClassName('sheet'), cDg = d.getElementsByTagName('dialog');
@@ -297,6 +304,8 @@
   function isOpen(e) { return e.hasAttribute('open'); }
   function busy() {
     if (h.classList.contains('sch-lock')) return true;
+    var ae = d.activeElement; // фокус клавіатури в шапці чи пігулці — їх не ховаємо (WCAG 2.4.7; і на ПК із зумом 200 %+)
+    if (ae && ae !== d.body && ae.closest && ae.closest('.sch,.mbar')) return true;
     for (var i = 0, ids = ['lb', 'plb', 'sdlb']; i < 3; i++) { var e = d.getElementById(ids[i]); if (e && e.classList.contains('open')) return true; }
     return any(cLd, isOpen) || any(cDg, isOpen) || any(cLb, function (e) { return e.classList.contains('on'); }) || any(cSh, function (e) { return e.classList.contains('open'); });
   }
@@ -326,6 +335,18 @@
   d.addEventListener('focusout', function () { setTimeout(function () { if (!isField(d.activeElement)) h.classList.remove('mb-kbd'); }, 60); });
   // якір (#zayavka тощо): після переходу шапка й панель видимі
   W.addEventListener('hashchange', function () { acc = 0; set(false); });
+  // клавіатура (зокрема ПК із зумом 200 %+, де діє телефонний макет): фокус у схованій шапці чи пігулці — показуємо їх (далі тримає busy())
+  d.addEventListener('focusin', function (e) { var t = e.target; if (hid && t && t.closest && t.closest('.sch,.mbar')) { acc = 0; set(false); } });
+  // елемент під фокусом опинився під пігулкою «Звʼязатися» (кут екрана) — трохи прокручуємо, щоб його було видно (WCAG 2.4.11)
+  d.addEventListener('focusin', function (e) {
+    var t = e.target, b = mob.matches && d.querySelector('.mbar[data-one] .mb-tg');
+    if (!b || !t || !t.getBoundingClientRect || (t.closest && t.closest('.mbar'))) return;
+    requestAnimationFrame(function () { // після власної прокрутки браузера до елемента
+      if (d.activeElement !== t || hid) return;
+      var r = t.getBoundingClientRect(), q = b.getBoundingClientRect();
+      if (r.bottom > q.top - 8 && r.top < q.bottom && r.right > q.left && r.left < q.right) W.scrollBy(0, Math.min(r.bottom - q.top + 16, vhNow() / 2));
+    });
+  });
 })();
 // ── Компактні блоки: довгі списки на телефоні згорнуті до N пунктів + кнопка «Показати ще» (плавне розкриття).
 // Розмітка: data-compact="6" на контейнері (діти — пункти); також автоматично для списків з COMPACT нижче.

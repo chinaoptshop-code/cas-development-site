@@ -366,6 +366,74 @@ await test('«Наші проєкти» лендингу: тап по фото �
     const r = im.getBoundingClientRect(); const el = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); const l = el && el.closest('a[href]'); return l ? l.getAttribute('href') : 'під пальцем ' + (el && el.tagName); });
   must(/^\/proekty\//.test(hit) || hit === 'немає .gal', `фото «Наших проєктів» не веде на кейс: ${hit}`);
 });
+// ── шляхи до заявки (CRO, 16.11.2026): кожен лід несе послугу, місце (source …#місце, form) і контекст; посилання на заявку без форми — на #zayavka контактів
+const lastLead = () => JSON.parse(posts.filter(x => x.path === '/api/leads').at(-1).body);
+const submitOf = async (p, phone = '0671234567') => {
+  apiStatus = 200; posts = [];
+  await p.fill('#oPhone', phone); await p.click('#oBtn'); await p.waitForTimeout(1500);
+  must(posts.some(x => x.path === '/api/leads'), 'заявку не надіслано');
+  return lastLead();
+};
+await test('калькулятор → форма: коментар з розрахунком видно; лід — form=calc, source …#calc, площа й конфігурація', '/kalkuliator-remontu', 402, async p => {
+  await p.fill('#cArea', '75'); await p.dispatchEvent('#cArea', 'input');
+  await p.locator('#cSend').scrollIntoViewIfNeeded(); await p.click('#cSend'); await p.waitForTimeout(1200);
+  must(await p.evaluate(() => document.activeElement.id === 'oPhone'), 'після «Отримати точний кошторис» фокус не на телефоні');
+  must(await p.locator('#oMsg').isVisible(), 'розрахунок схований у згорнутому «Додати коментар»');
+  const b = await submitOf(p);
+  must(b.form === 'calc' && /#calc$/.test(b.source) && /^cas-develop\.com\/kalkuliator-remontu#calc$/.test(b.source), 'місце калькулятора: ' + b.form + ' | ' + b.source);
+  must(b.area === '75' && /калькулятор/i.test(b.message) && /\$/.test(b.message) && /Калькулятор/.test(b.service), 'конфігурація не в заявці: ' + JSON.stringify(b));
+});
+await test('.lq-go у сцені → лід: form і source …#місце, конфігурація будинку в коментарі', '/budivnytstvo-budynkiv-kyiv', 1440, async p => {
+  await wakeup(p);
+  await p.evaluate(() => scrollTo(0, document.documentElement.scrollHeight / 2)); await p.waitForTimeout(1500);
+  const go = p.locator('section.bz[data-bz] .lq-go').first();
+  if (!(await go.count())) throw new Error('немає .lq-go у сцені');
+  const place = (await go.getAttribute('data-form')).replace(/^quick-/, '');
+  await go.scrollIntoViewIfNeeded(); await go.click(); await p.waitForTimeout(1200);
+  const b = await submitOf(p);
+  must(b.form === 'quick-' + place && b.source.endsWith('#' + place), 'місце .lq-go не в заявці: ' + b.form + ' | ' + b.source);
+  must(b.message.length > 10 && b.service, 'конфігурація/послуга не в заявці: ' + JSON.stringify(b));
+});
+await test('квіз → лід: form=quiz, source …#quiz, відповіді; після успіху форма повертає своє місце', '/remont-kvartyr-kyiv', 402, async p => {
+  await wakeup(p);
+  const q = p.locator('.qz').first();
+  if (!(await q.count())) throw new Error('немає квізу');
+  await q.scrollIntoViewIfNeeded(); await p.waitForTimeout(800);
+  const step = async () => { const l = q.locator('.qz-st:not([hidden]) label:not([hidden])').first(); await l.click(); await p.waitForTimeout(400); };
+  await step(); await step();
+  await q.locator('.qz-nx').click(); await p.waitForTimeout(300);
+  await step();
+  apiStatus = 200; posts = [];
+  await q.locator('.qz-pr input').fill('0671234567'); await q.locator('.qz-send').click(); await p.waitForTimeout(1500);
+  const b = lastLead();
+  must(b.form === 'quiz' && /#quiz$/.test(b.source) && /^Квіз:/.test(b.message), 'квіз: ' + b.form + ' | ' + b.source + ' | ' + b.message);
+  must(await q.locator('.qz-ok').isVisible(), 'немає успіху квізу');
+  must(!/#quiz/.test(await p.getAttribute('#of', 'data-source')), 'source форми не відновлено після квізу');
+});
+await test('кейс → «Хочу так само» → лендинг: у заявці «Перед цим: /proekty/…»', '/proekty/monpark', 402, async p => {
+  const a = p.locator('main a[href$="#zayavka"]').first();
+  must(await a.count(), 'немає «Хочу так само» з #zayavka');
+  await Promise.all([p.waitForNavigation(), a.click()]); await p.waitForTimeout(500);
+  await p.locator('#of').scrollIntoViewIfNeeded();
+  const b = await submitOf(p);
+  must(/Перед цим: \/proekty\/monpark/.test(b.message), 'немає сторінки-джерела в заявці: ' + b.message);
+  must(b.service && !/#/.test(b.source), 'service/source: ' + JSON.stringify(b));
+});
+for (const [path, w] of [['/proekty/monpark', 1440], ['/tury/apartment-2025', 402], ['/en/tury/apartment-2025', 402], ['/ru/tury/apartment-2025', 1440]]) await test('сторінка без форми: «Заявка»/пігулка/CTA ведуть на #zayavka контактів, месенджери й tel: правильні', path, w, async p => {
+  const r = await p.evaluate(() => {
+    const hrefs = [...document.querySelectorAll('a[href]')].map(a => a.getAttribute('href'));
+    return {
+      contact: [...document.querySelectorAll('main a[href], .mbar a[href], a.sch-cta')].map(a => a.getAttribute('href')).filter(h => /^\/(?:[a-z]{2}\/)?(?:contact|kontakty|kontakt|contacto)(?:#|$)/.test(h)),
+      cform: hrefs.filter(h => /#cForm/.test(h)),
+      tel: [...new Set(hrefs.filter(h => /^tel:/.test(h)))],
+      tg: [...new Set(hrefs.filter(h => /t\.me\//.test(h)))], wa: [...new Set(hrefs.filter(h => /wa\.me|whatsapp/.test(h)))], vb: [...new Set(hrefs.filter(h => /^viber:/.test(h)))]
+    };
+  });
+  must(!r.cform.length, 'посилання на неіснуючий #cForm');
+  must(r.contact.length && r.contact.every(h => h.endsWith('#zayavka')), 'посилання на контакти без #zayavka: ' + r.contact.join(' '));
+  must(r.tel.join() === 'tel:+380978667755', 'tel: ' + r.tel.join());
+  must(r.tg.join() === 'https://t.me/+380978667755' && r.wa.join() === 'https://wa.me/380978667755' && r.vb.join() === 'viber://chat?number=%2B380978667755', 'месенджери: ' + JSON.stringify(r));
+});
 await browser.close(); server.close();
 console.log(fails ? `\n${fails} FAIL` : '\nВзаємодії: ALL OK');
 process.exit(fails ? 1 : 0);
