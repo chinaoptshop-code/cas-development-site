@@ -834,6 +834,11 @@
 
     A.me().then(function (c) {
       if (!c) return guest();
+      // Працівник на /kabinet одразу потрапляє у свій кабінет (/kabinet/team або /kabinet/admin), а не в клієнтський (16.11).
+      // Кабінет клієнта для себе — /kabinet?client=1 (посилання є в кабінеті працівника).
+      var asClient = /[?&]client=1\b/.test(location.search);
+      try { if (asClient) sessionStorage.setItem('kb-as-client', '1'); else asClient = sessionStorage.getItem('kb-as-client') === '1'; } catch (e) { /* приватний режим */ }
+      if (TAB === 'overview' && c.staff && c.staff.home && c.staff.home !== '/kabinet' && !asClient) { location.replace(c.staff.home); return; }
       if (TAB === 'orders') orders(c);
       else if (TAB === 'fav') fav(c);
       else if (TAB === 'projects') { projects(c); ozCheck(); }

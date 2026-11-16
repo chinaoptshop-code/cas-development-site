@@ -91,7 +91,7 @@
     var urgent = D.tasks.filter(function (t) { return t.urgent; }).length;
     root.innerHTML = '<header class="tm-hello"><div><p class="muted">' + new Date().toLocaleDateString('uk-UA', { weekday: 'long', day: 'numeric', month: 'long' }) + '</p>' +
       '<h2>' + hi + ', ' + esc(String(D.me.name || '').split(' ')[0]) + '</h2><p><span class="tm-role">' + esc(D.me.role_label) + '</span>' +
-      (D.me.panel ? ' <a class="tm-link" href="/kabinet/admin">Панель CRM →</a>' : '') + '</p></div>' +
+      (D.me.panel ? ' <a class="tm-link" href="/kabinet/admin">Панель CRM →</a>' : '') + ' <a class="tm-link" href="/kabinet?client=1">Кабінет клієнта</a></p></div>' +
       '<div class="tm-chips"><span><b>' + D.tasks.length + '</b> задач' + (urgent ? ' · <em>' + urgent + ' термінових</em>' : '') + '</span><span><b>' + D.projects.length + '</b> обʼєкт(ів)</span></div></header>' +
       '<nav class="tm-nav" aria-label="Розділи кабінету працівника">' + T.map(function (t) {
         return '<a href="#' + t[0] + '" data-v="' + t[0] + '"' + (t[0] === VIEW ? ' aria-current="page"' : '') + '>' + ic(t[2]) + '<span>' + t[1] + '</span>' + (t[3] ? '<i>' + t[3] + '</i>' : '') + '</a>';
