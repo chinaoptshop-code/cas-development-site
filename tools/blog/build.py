@@ -137,7 +137,7 @@ def check(a):
         if p in calc: continue
         if not any(p == ok or p.startswith(ok + ' ') for ok in PRICES_OK) and not re.fullmatch(r'\$\d{1,3}(( \d{3})+|(,\d{3})+)', p):
             errs.append(f'ціна {p} — перевірити (дозволені лише підтверджені ставки або розрахунок із них)')
-    words = sum(len(str(v).split()) for k, v, *_ in a['body'] if k not in PHOTO_KINDS for v in (v if isinstance(v, list) else [v]))
+    words = sum(light._wc(str(v)) for k, v, *_ in a['body'] if k not in PHOTO_KINDS for v in (v if isinstance(v, list) else [v]))
     if words < 450: errs.append(f'замало тексту: {words} слів (мінімум 450)')
     if a.get('photo') and not os.path.exists(os.path.join(ROOT, a['photo'])): errs.append(f"фото {a['photo']} не знайдено")
     if a.get('photo') and not (a.get('photo_alt') or '').strip(): errs.append('немає photo_alt для hero-фото')
@@ -589,6 +589,7 @@ def og_images(arts):
     for a in arts:
         out = os.path.join(ROOT, f"img/og/{a['slug']}.jpg")
         if os.path.exists(out) or not a.get('photo'): continue
+        if a['lang'] in ('zh', 'ar'): continue  # шрифт OG (Cormorant) без ієрогліфів/арабиці: zh/ar — slug як у en, тож OG — англійської статті (або загальне)
         img = m.render({'kind': 'blog', 'slug': a['slug'], 'title': a['title'], 'photo': a['photo'],
                         'label': L[a['lang']].get('og_label', 'БЛОГ')}, black, mask)
         m.save(img, m.Path(out) if hasattr(m, 'Path') else __import__('pathlib').Path(out))
