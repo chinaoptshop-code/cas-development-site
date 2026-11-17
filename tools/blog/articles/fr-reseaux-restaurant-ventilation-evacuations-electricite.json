@@ -1,0 +1,142 @@
+{
+ "slug": "reseaux-restaurant-ventilation-evacuations-electricite",
+ "lang": "fr",
+ "translation_of": "inzheneriia-restoranu-ventyliatsiia-kanalizatsiia-elektryka",
+ "title": "Réseaux d'un restaurant : ventilation, bacs à graisse et électricité à prévoir avant les travaux",
+ "seo_title": "Réseaux d'un restaurant : quoi prévoir avant travaux",
+ "description": "Ce qu'il faut prévoir dans les réseaux d'un restaurant avant travaux : extraction de cuisine, évacuations avec bacs à graisse, électricité, ordre.",
+ "lead": "Les clients voient la salle, le bar et le mobilier, mais un restaurant repose sur ce qui se trouve dans le plafond et sous le sol. Voici les réseaux à prévoir avant les travaux pour que la cuisine fonctionne et que la salle ne sente pas la friture. Sur notre site, vous pouvez parcourir ce chemin dans la scène « Restaurant de A à Z » : 14 étapes en coupe.",
+ "date": "2026-11-04",
+ "service": [
+  "/fr/design-restaurant-cafe",
+  "Design de restaurant et de café"
+ ],
+ "photo": "img/p/1jKOiN3xyCjZCL-900.webp",
+ "photo_alt": "Bar avec mur à vins, suspensions au-dessus du comptoir et banquettes à carreaux — restaurant Monpark, centre de Kyiv, projet de CAS Development",
+ "body": [
+  [
+   "h2",
+   "1. Commencer par le métré et la technologie de la cuisine"
+  ],
+  [
+   "p",
+   "On ne peut pas concevoir les réseaux d'un restaurant sans la technologie de la cuisine : ce qu'on cuisine, sur quels équipements, combien de couverts et quelle charge aux heures de pointe. C'est pourquoi viennent d'abord le métré et le scan 3D du local, puis l'implantation de la cuisine avec un cuisiniste professionnel, et seulement ensuite les réseaux et l'intérieur de la salle."
+  ],
+  [
+   "p",
+   "L'erreur la plus coûteuse : concevoir d'abord la salle et « caser » la cuisine ensuite. Les gaines d'extraction traversent alors la salle et les plonges se retrouvent là où il n'y a pas de pente pour l'évacuation."
+  ],
+  [
+   "h2",
+   "2. Ventilation : la cuisine d'un côté, la salle de l'autre"
+  ],
+  [
+   "ul",
+   [
+    "extraction au-dessus de la zone de cuisson : un système à part avec son propre ventilateur et son rejet",
+    "air neuf en cuisine, pour que l'extraction n'« aspire » pas l'air de la salle",
+    "ventilation et climatisation de la salle selon le nombre de clients et les vitrages",
+    "tracé des gaines validé avec le bailleur ou le syndic avant le démarrage"
+   ]
+  ],
+  [
+   "p",
+   "Le bon équilibre, c'est une pression légèrement plus élevée en salle qu'en cuisine : les odeurs n'atteignent pas les clients. Nous intégrons les tracés de gaines au projet de plafond dès le départ, sinon il faudra abaisser le plafond après la pose."
+  ],
+  [
+   "h2",
+   "3. Évacuations et bacs à graisse"
+  ],
+  [
+   "p",
+   "Les eaux de la cuisine nécessitent des bacs à graisse, sous les plonges ou un bac commun en sortie. Il faut prévoir les pentes, des tampons de nettoyage accessibles et des siphons de sol dédiés dans les zones de lavage. Sous le sol, ces réseaux passent avant la chape : on ne peut donc les modifier ensuite qu'en démolissant."
+  ],
+  [
+   "h2",
+   "4. Électricité de la cuisine"
+  ],
+  [
+   "ul",
+   [
+    "la puissance du local : à vérifier avant de signer le bail",
+    "des circuits dédiés pour fourneaux, fours, chambres froides et lave-vaisselle",
+    "un tableau avec réserve pour les équipements ajoutés dans l'année",
+    "éclairage de sécurité et balisage des issues de secours"
+   ]
+  ],
+  [
+   "p",
+   "Si la puissance attribuée ne suffit pas, l'augmenter peut prendre des mois. C'est pourquoi nous posons cette question en premier, dès le choix du local."
+  ],
+  [
+   "h2",
+   "Courants faibles, eau et sécurité"
+  ],
+  [
+   "p",
+   "Outre les trois réseaux principaux, un restaurant compte plusieurs systèmes à prévoir avant les finitions. Caisses et terminaux, Wi-Fi client, vidéosurveillance, musique en salle, appel du personnel : autant de câbles qui doivent être dans les murs et le plafond avant l'enduisage. L'eau chaude de la cuisine demande un ballon dédié ou un raccordement suffisamment dimensionné, et les zones de lavage des filtres et un adoucisseur pour les lave-vaisselle et la machine à café."
+  ],
+  [
+   "p",
+   "Les exigences incendie pour les établissements sont plus strictes que pour les logements : alarme, issues de secours, matériaux résistants au feu en cuisine. Nous les intégrons au projet dès le départ pour que le local passe les contrôles avant l'ouverture sans reprise."
+  ],
+  [
+   "h2",
+   "Comment les réseaux influencent le design de la salle"
+  ],
+  [
+   "p",
+   "Hauteur sous plafond, position du bar, emplacements des grilles de ventilation et des luminaires : tout cela découle de choix techniques. C'est pourquoi le designer et l'ingénieur travaillent ensemble dès le premier jour : les gaines peuvent se cacher dans des éléments architecturaux du plafond et les grilles devenir un élément du décor. La salle paraît alors pensée, et non un compromis entre esthétique et technique."
+  ],
+  [
+   "h2",
+   "5. L'ordre des travaux"
+  ],
+  [
+   "ol",
+   [
+    "métré et scan 3D",
+    "technologie et implantation de la cuisine",
+    "conception des réseaux : ventilation, évacuations, électricité, courants faibles",
+    "gros œuvre et pose des réseaux",
+    "sol, murs, plafond",
+    "bar, cuisine, mobilier, éclairage",
+    "mise en service et ouverture test"
+   ]
+  ],
+  [
+   "h2",
+   "6. Sur quoi ne pas économiser"
+  ],
+  [
+   "p",
+   "Sur la ventilation de la cuisine, l'étanchéité des zones de lavage et la réserve de puissance. Ce qui est économisé ici devra être repris dans un établissement en activité, avec fermeture et perte de chiffre d'affaires."
+  ],
+  [
+   "h2",
+   "Combien ça coûte"
+  ],
+  [
+   "p",
+   "Le design de restaurant chez CAS Development démarre à $30 le m² (minimum $2 500). Réseaux et travaux sont chiffrés sur devis : la composition des réseaux dépend de la cuisine et du local. Exemple de réalisation : le restaurant Monpark au centre de Kyiv, conçu et réalisé par CAS."
+  ]
+ ],
+ "faq": [
+  [
+   "Quand prévoir la ventilation d'un restaurant ?",
+   "Avant le projet de plafond et le gros œuvre, juste après la technologie de la cuisine. Les tracés de gaines déterminent la hauteur sous plafond de la salle."
+  ],
+  [
+   "Le bac à graisse est-il obligatoire ?",
+   "Pour une cuisine professionnelle, oui : sans lui, les évacuations se bouchent vite. Le type et l'emplacement sont définis dans le projet."
+  ],
+  [
+   "Combien coûte le design d'un restaurant ?",
+   "À partir de $30 le m², minimum $2 500. Réseaux et travaux sur devis après le métré."
+  ],
+  [
+   "Peut-on voir les étapes de façon visuelle ?",
+   "Oui, la page design de restaurant propose la scène « Restaurant de A à Z » : 14 étapes du métré aux premiers clients."
+  ]
+ ]
+}

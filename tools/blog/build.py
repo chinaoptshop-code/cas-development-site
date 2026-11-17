@@ -521,7 +521,7 @@ def build_index(lang, items, langs):
         s = re.sub(r'<!--blog:topics-->.*?<!--/blog:topics-->', lambda _: blk, s, count=1, flags=re.S)
     else:  # перший запуск: старий список карток без тем
         s = re.sub(r'<section><div class="w"><div class="cards">.*?</div></div></section>', lambda _: blk, s, count=1, flags=re.S)
-    s = re.sub(r'<style id="bt-css">.*?</style>', '', s, flags=re.S).replace('</head>', TOPICS_CSS + '\n</head>', 1)
+    s = re.sub(r'<style id="bt-css">.*?</style>\n?', '', s, flags=re.S).replace('</head>', TOPICS_CSS + '\n</head>', 1)
     # хаб блогу → лендинги послуг (перелінковка: анкори з ключами); шаблон — сам uk-індекс, тож спершу прибираємо старий блок
     s = re.sub(r'<!--blog:svc-->.*?<!--/blog:svc-->', '', s, flags=re.S)
     if HUB_SVC.get(lang):
