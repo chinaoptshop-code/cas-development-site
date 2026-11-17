@@ -6,7 +6,7 @@ import { normalizePhone, publicClient } from '../../_lib.js';
 import { body, client, json, bad, noTable, notReady, txt } from '../../_account.js';
 
 const TYPES = ['private', 'fop', 'tov', 'eu'];
-const LANGS = ['uk', 'ru', 'en'];
+const LANGS = ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'pt', 'ar']; // мови сайту (tools/site/i18n.py) — «Мова спілкування» в кабінеті
 const DEF = { client_type: 'private', company_name: null, company_code: null, docs_email: null, lang: 'uk', notify_tg: 1 };
 
 async function load(env, c) {
