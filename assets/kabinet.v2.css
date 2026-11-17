@@ -13,6 +13,7 @@
 .kb .btn.sm{padding:8px 14px;min-height:36px;font-size:var(--fs-small)}
 .kb .lnk{color:var(--glow);text-decoration:none;font-weight:600;font-size:var(--fs-small)}
 .kb .lnk:hover{text-decoration:underline}
+.kb-rev{margin:6px 0 0}.kb-rev .lnk{display:inline-flex;align-items:center;gap:6px;min-height:44px}.kb-rev svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
 .kb .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 
 /* вкладки: десктоп — під заголовком; мобільний — нижня панель */

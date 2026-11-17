@@ -107,6 +107,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-ct>div{background:var(--bg);padding:18px;min-width:0}.xs-ct>div>span{display:block;font-size:var(--fs-small);color:var(--mu);margin-bottom:4px}
 .xs-ct b{display:block;font-weight:600;overflow-wrap:anywhere}.xs-ct b a{text-decoration:none;border-bottom:1px solid var(--ln)}
 .xs-ct small{display:block;color:var(--mu);font-size:var(--fs-small);margin-top:4px}
+.xs-rev{margin:16px 0 0}.xs-rev a{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;text-decoration:underline;text-decoration-color:var(--ln);text-underline-offset:4px}.xs-rev .ic{color:var(--ac,#BF9148)}
 .xs-msg-h{margin:24px 0 0!important}.xs-contacts .xs-lead{color:var(--mu);max-width:46em;margin:0 0 22px}
 /* команда */
 .xs-tm .xs-av{display:inline-grid;place-items:center;width:44px;height:44px;border:1px solid var(--ac);border-radius:50%;color:var(--ac);font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-size:1.3em;margin-bottom:10px}

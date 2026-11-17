@@ -7,7 +7,7 @@
  "description": "CAS Development: design, renovation and construction studio founded in Kyiv in 2016. 150+ projects in Ukraine and abroad, 12-month warranty.",
  "h1": "Interiors, renovation and houses, from the first sketch to the keys",
  "facts": false,
- "lead": "CAS Development is an interior design, renovation and construction studio founded in Kyiv in 2016. It designs interiors, renovates and builds turnkey — from compact apartments to private houses, restaurants and offices.",
+ "lead": "CAS Development is an interior design, renovation and construction studio founded in Kyiv in 2016. The studio designs interiors and delivers turnkey renovation and construction — from compact apartments to private houses, restaurants and offices.",
  "btn2": [
   "https://wa.me/380978667755",
   "WhatsApp"
@@ -73,7 +73,7 @@
      "of experience, since 2016"
     ],
     [
-     "12 mo.",
+     "12 months",
      "warranty on works"
     ],
     [
@@ -173,7 +173,7 @@
     {
      "h": "Roman",
      "role": "AI developer",
-     "p": "Website, requests, assistants and automation."
+     "p": "Website, enquiry handling, assistants and automation."
     }
    ],
    "crew": {
@@ -322,7 +322,7 @@
     ],
     [
      "/en/business-fit-out",
-     "Turnkey business premises"
+     "Turnkey commercial fit-out"
     ]
    ]
   }

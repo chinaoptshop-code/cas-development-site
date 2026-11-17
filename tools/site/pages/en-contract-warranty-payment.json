@@ -3,15 +3,15 @@
  "lang": "en",
  "service": "Contract, warranty, payment (sample contract)",
  "title": "Renovation contract, warranty and payment — CAS, Kyiv",
- "description": "Renovation and construction contract with CAS: estimate, timeline, stage acceptance, 12-month warranty, payment 50/50, 50/30/20, 50/40/10 or from a 10% advance.",
+ "description": "Renovation and construction contract with CAS: estimate, timeline, stage acceptance, 12-month warranty, payment 50/50, 50/30/20, 50/40/10, 10% deposit to start.",
  "h1": "Renovation contract, warranty and payment",
  "lead": "How a renovation or construction contract with CAS Development works: what it covers, how we hand over each stage, what the warranty is and how you can pay. We will send a sample contract on request.",
  "cta": "Get a sample contract",
  "form_h2": "Get a sample contract",
  "facts": [
-  ["12 mo.", "warranty on works"],
+  ["12 months", "warranty on works"],
   ["±5%", "estimate, when CAS renovates"],
-  ["from 10%", "advance to start"],
+  ["from 10%", "deposit to start"],
   ["In-house team", "salaried staff"]
  ],
  "sections": [
@@ -30,7 +30,7 @@
     ["Subject of the contract", "Property, address, list and volume of works; the design project or drawings as an annex."],
     ["Estimate", "Works and materials item by item. If CAS carries out the renovation, the total stays within ±5% of the estimate."],
     ["Timeline", "Start date, stage schedule and handover date. Timelines start from 2 weeks, depending on the scope."],
-    ["Payment terms", "The schedule you chose: 50/50, 50/30/20, 50/40/10 or split by stages; you start with an advance from 10%. The advance and the certificate each payment is tied to are fixed in the contract."],
+    ["Payment terms", "The schedule you chose: 50/50, 50/30/20, 50/40/10 or split by stages, starting with a deposit of 10% or more. The deposit and the certificate each payment is tied to are fixed in the contract."],
     ["Stage acceptance", "Each stage is handed over with a signed completion certificate, so you see what is done and what you pay for."],
     ["Reporting", "Photo reports every 1–2 weeks; for an extra fee, an online camera on site 24/7."],
     ["Warranty", "12 months on completed works from the day they are accepted under the final certificate. For construction, major renovation and reconstruction, the warranty on the building follows Article 884 of the Civil Code of Ukraine and the contract. How to report a defect and how fast we fix it is set out in the contract."],
@@ -46,7 +46,7 @@
     {"h": "50/50", "p": "50% at the start, 50% after handover and signing of the final certificate."},
     {"h": "50/30/20", "p": "50% at the start, 30% after an intermediate stage is accepted under a certificate, 20% after the final certificate is signed."},
     {"h": "50/40/10", "p": "50% at the start, 40% after an intermediate stage, the last 10% after the final certificate is signed."},
-    {"h": "Split by stages", "p": "Pay for each stage separately; start with an advance from 10%."}
+    {"h": "Split by stages", "p": "Pay for each stage separately; start with a deposit of 10% or more."}
    ]
   },
   {
@@ -75,7 +75,7 @@
    "items": [
     ["Can I see the contract before signing?", "Yes. Leave a request and we will send a sample contract; for your property we prepare a contract with an estimate and schedule."],
     ["What is the warranty on renovation?", "12 months on completed works from the day they are accepted under the final certificate. For construction and reconstruction, the warranty on the building follows Article 884 of the Civil Code of Ukraine and the contract."],
-    ["How can I pay?", "On the schedule you choose: 50/50, 50/30/20, 50/40/10 or split by stages; you start with an advance from 10%. By invoice (for companies registered in Ukraine — with or without VAT, individually) or another method agreed in the contract."],
+    ["How can I pay?", "On the schedule you choose: 50/50, 50/30/20, 50/40/10 or split by stages, starting with a deposit of 10% or more. By invoice (for companies registered in Ukraine — with or without VAT, individually) or another method agreed in the contract."],
     ["How can I pay from abroad?", "By invoice in USD or EUR (SWIFT transfer), by card via an invoice link, or in USDT. The contract is in English; terms are agreed individually."],
     ["Can the total grow during the renovation?", "If CAS carries out the renovation, the total stays within ±5% of the approved estimate."],
     ["Who works on site?", "The in-house CAS team of salaried staff for different complexity and types of work; custom kitchens and wardrobes are made by our staff and partners."],
