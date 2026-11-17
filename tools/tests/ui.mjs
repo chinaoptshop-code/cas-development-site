@@ -94,7 +94,7 @@ let fails = 0;
 const cookieOf = s => { const [name, value] = s.split('='); return { name, value: s.slice(name.length + 1), url: BASE }; };
 async function check(label, who, path, widths, expect) {
   for (const w of widths) {
-    const ctx = await browser.newContext({ viewport: { width: w, height: w < 600 ? 874 : 900 }, deviceScaleFactor: 1, isMobile: w < 600, hasTouch: w < 600 });
+    const ctx = await browser.newContext({ viewport: { width: w, height: w < 600 ? 874 : 900 }, deviceScaleFactor: 1, isMobile: w < 600, hasTouch: w < 600, locale: 'uk-UA' }); // мова браузера — uk (кабінет клієнта бере її, якщо інших підказок немає)
     if (who) await ctx.addCookies([cookieOf(ck[who])]);
     await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => r.abort());
     const page = await ctx.newPage();
@@ -179,6 +179,48 @@ await check('client-overview', 'C1', '/kabinet', W, async p => {
   if (st.o !== st.n > 0) throw new Error(`вкладка «Замовлення»: видно=${st.o}, замовлень=${st.n}`);
 });
 await check('client-profile', 'C1', '/kabinet/profil', [402], async p => { await see(p, '#kb [data-kb-out]', 'Вийти / змінити акаунт'); });
+// Мови кабінету клієнта (assets/kabinet-i18n.v1.js, tools/shop/kabinet_v2.py): ?lang=xx → словник, шапка/футер мови, памʼять між сторінками,
+// перемикач select#kb-lang, RTL для ar, мова зі сторінки-джерела (referrer), працівник і адмінка — українською
+const noUk = async (p, sel = 'main') => { const t = await p.textContent(sel); const m = t.match(/Етапи робіт|Графік платежів|Документи|Особисті дані|Мова спілкування|Вийти \/ змінити акаунт|Загальна готовність/); if (m) throw new Error('неперекладене: ' + m[0]); };
+await check('client-lang-en', 'C1', '/kabinet/obiekt?lang=en', W, async p => {
+  await see(p, '#kb .kb-card', 'Квартира, тестовий обʼєкт');
+  if (await p.getAttribute('html', 'lang') !== 'en') throw new Error('html lang ≠ en');
+  await see(p, 'h1', 'My site: online control'); await see(p, '#kb', 'Work stages'); await see(p, '#kb', 'Payment schedule'); await noUk(p);
+  if (!await p.$('header.sch .sch-nav a[href^="/en/"]')) throw new Error('шапка не англійською');
+  if (!await p.$('footer.scf a[href^="/en/"]')) throw new Error('футер не англійською');
+  if (!/\?lang=ru$/.test(await p.getAttribute('.scf-langs a[lang="ru"]', 'href'))) throw new Error('мови футера не ведуть на цю ж сторінку кабінету');
+  await p.click('.kb-tabs a[href="/kabinet/profil"]'); await p.waitForSelector('#kb-pf');
+  if (await p.getAttribute('html', 'lang') !== 'en') throw new Error('мова не запамʼяталась між сторінками');
+  await see(p, '#kb', 'Personal details'); await noUk(p);
+  if ((await p.$$eval('#pf-lang option', o => o.length)) !== 10) throw new Error('«Мова спілкування» — не 10 мов');
+});
+await check('client-lang-switch-rtl', 'C1', '/kabinet/obiekt?lang=en', [402, 1440], async p => {
+  await p.waitForSelector('#kb .kb-card');
+  await Promise.all([p.waitForURL(/lang=ar/), p.selectOption('#kb-lang', 'ar')]);
+  await p.waitForSelector('#kb .kb-card');
+  const a = await p.evaluate(() => ({ dir: document.documentElement.dir, lang: document.documentElement.lang, stored: localStorage.getItem('cas-kab-lang'), ck: document.cookie,
+    sel: document.getElementById('kb-lang').value, ta: getComputedStyle(document.querySelector('.kb-note') || document.body).borderRightWidth }));
+  if (a.dir !== 'rtl' || a.lang !== 'ar' || a.stored !== 'ar' || !/cas_lang=ar/.test(a.ck) || a.sel !== 'ar') throw new Error('ar/RTL: ' + JSON.stringify(a));
+  await noUk(p); await p.waitForLoadState('networkidle');
+  await Promise.all([p.waitForURL(/lang=uk/), p.selectOption('#kb-lang', 'uk')]);
+  await see(p, 'h1', 'Мій обʼєкт'); await see(p, '#kb', 'Етапи робіт');
+  if (await p.evaluate(() => document.documentElement.dir === 'rtl' || document.documentElement.lang !== 'uk')) throw new Error('після uk лишився RTL/мова');
+});
+await check('client-lang-ar', 'C1', '/kabinet/obiekt?lang=ar', W, async p => { // RTL: без горизонтальної прокрутки (перевіряє check), шапка й текст арабською
+  await see(p, '#kb .kb-card', 'Квартира, тестовий обʼєкт'); await noUk(p);
+  if (await p.evaluate(() => document.documentElement.dir) !== 'rtl') throw new Error('немає dir=rtl');
+  await see(p, '#kb', 'جدول الدفعات');
+});
+await check('client-lang-referrer', null, '/kabinet', [402], async p => {
+  await p.goto(BASE + '/kabinet', { referer: BASE + '/de/', waitUntil: 'networkidle' });
+  if (await p.getAttribute('html', 'lang') !== 'de') throw new Error('мова зі сторінки-джерела /de/ не взялась');
+  await see(p, '#kb-login-h', 'Anmelden|Einloggen');
+  await see(p, '#kb', 'Telefon');
+});
+await check('staff-stays-uk', 'FORE', '/kabinet/team?lang=en', [402], async p => {
+  await see(p, 'h1', 'Кабінет працівника');
+  if (await p.getAttribute('html', 'lang') !== 'uk') throw new Error('кабінет працівника змінив мову');
+});
 console.log('Чужий інтерфейс → 403');
 await check('denied-team-admin', 'FORE', '/kabinet/admin', [402], async (p, r) => { if (r.status() !== 403) throw new Error('статус ' + r.status()); await see(p, 'h1', 'не для вашого'); });
 await check('denied-client-team', 'C1', '/kabinet/team', [402], async (p, r) => { if (r.status() !== 403) throw new Error('статус ' + r.status()); });

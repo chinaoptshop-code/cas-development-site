@@ -207,6 +207,13 @@ await it('клієнт: лише свій проєкт; без суми дого
   ok(r.data.projects[0].reports.some(x => x.photos.includes(mediaUrl)), 'фотозвіт прораба видно клієнту');
   eq((await call(env, 'GET', '/api/account/projects', { cookie: ck.C2 })).data.projects.map(p => p.id), [P2]);
 });
+await it('профіль: «Мова спілкування» — усі 10 мов сайту, невідома → 422', async () => {
+  for (const l of ['pt', 'ar', 'zh', 'uk']) {
+    const r = await call(env, 'PATCH', '/api/account/profile', { cookie: ck.C1, body: { lang: l } });
+    eq(r.status, 200, l); eq(r.data.settings.lang, l);
+  }
+  eq((await call(env, 'PATCH', '/api/account/profile', { cookie: ck.C1, body: { lang: 'xx' } })).status, 422);
+});
 await it('клієнт не має доступу до /api/admin/* і /api/team/*', async () => {
   for (const p of ['/api/admin/crm', '/api/admin/projects', '/api/admin/staff', '/api/admin/studio', '/api/admin/audit', '/api/team/today'])
     eq((await call(env, 'GET', p, { cookie: ck.C1 })).status, 403, p);

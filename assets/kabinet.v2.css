@@ -348,3 +348,27 @@ a.kb-ord:hover{border-color:var(--brass)}
   .kb-in{animation:none!important}
   a{text-decoration:none}
 }
+
+/* мова кабінету: перемикач у рядку крихт (assets/kabinet-i18n.v1.js, tools/shop/kabinet_v2.py lang_switch) */
+.kb-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px}
+.kb-top .crumbs{margin:0}
+.kb-lng{position:relative;display:inline-flex;align-items:center;margin:0}
+.kb-lng svg{position:absolute;inset-inline-start:12px;width:18px;height:18px;fill:none;stroke:var(--muted);stroke-width:1.6;pointer-events:none}
+.kb-lng select{appearance:none;-webkit-appearance:none;min-height:44px;padding-block:0;padding-inline:38px 34px;border:1px solid var(--line);border-radius:999px;background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a89f92' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/14px;color:var(--cream);font:inherit;font-size:var(--fs-small);font-weight:600;cursor:pointer}
+.kb-lng select:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+
+/* RTL (ar): дзеркальні відступи, лінії таймлайна й позначки */
+[dir=rtl] .kb-lng select{background-position:left 12px center}
+[dir=rtl] .kb-prod .x{right:auto;left:8px}
+[dir=rtl] .kb-tl li::before{left:auto;right:13px}
+@media(min-width:900px){[dir=rtl] .kb-tl.h li{padding:0 0 0 6px;text-align:right}[dir=rtl] .kb-tl.h li::before{left:6px;right:30px}}
+[dir=rtl] .kb-sum{margin-left:0;margin-right:auto}
+[dir=rtl] .kb-note{border-left:0;border-right:2px solid var(--brass);border-radius:10px 0 0 10px}
+[dir=rtl] .kb-lb button{right:auto;left:14px}
+[dir=rtl] .kb .kb-sw input[type=checkbox]::after{left:auto;right:3px}
+[dir=rtl] .kb .kb-sw input[type=checkbox]:checked::after{transform:translateX(-20px)}
+[dir=rtl] .kb-steps>li::before{left:auto;right:14px}
+[dir=rtl] .kb-feed-d b{margin-right:0;margin-left:6px}
+[dir=rtl] .kb-items th,[dir=rtl] .kb-items td{text-align:right}
+[dir=rtl] .kb-items td.n,[dir=rtl] .kb-items th.n{text-align:left}
+[dir=rtl] .acc-prof img{float:right;margin-right:0;margin-left:12px}

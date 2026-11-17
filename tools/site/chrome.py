@@ -292,7 +292,24 @@ def _live(links):
 LOGO = '<a class="sch-logo" href="{home}" aria-label="{label}">CAS<em>.</em>Development</a>'
 BURGER = '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="sch-b1" d="M4 7h16"/><path class="sch-b2" d="M4 12h16"/><path class="sch-b3" d="M4 17h16"/></svg>'
 # іконки кабінету й калькулятора — CSS-маски (.sch-kab, .sch-mkab, .sch-mcalc у site-chrome.v1.css), не інлайн-SVG: бюджет HTML лендингів
-KAB_HREF = '/kabinet'  # кабінет клієнта є лише українською — з усіх мов ведемо сюди
+KAB_HREF = '/kabinet'  # кабінет клієнта — один URL на всі мови; мову передає ?lang=xx (kab_lang), далі її памʼятає кабінет
+_KAB_A = re.compile(r'(href=")(/kabinet(?:/[\w-]+)*)(\?[^"#]*)?(#[^"]*)?(")')
+
+
+def kab_lang(s, lang):
+    """Посилання на кабінет клієнта зі сторінок мови ≠ uk → /kabinet…?lang=xx (кабінет вибирає мову інтерфейсу,
+    tools/shop/kabinet_v2.py). Кабінет працівника й адмінка (/kabinet/team, /kabinet/admin) — українською, без мітки. Ідемпотентно."""
+    if lang == 'uk':
+        return s
+
+    def one(m):
+        q = m.group(3) or ''
+        if re.match(r'/kabinet/(?:team|admin)\b', m.group(2)) or re.search(r'[?&;]lang=', q):
+            return m.group(0)
+        q = (q + '&amp;' if q else '?') + 'lang=' + lang
+        return m.group(1) + m.group(2) + q + (m.group(4) or '') + m.group(5)
+    i = s.find('<body')
+    return s if i < 0 else s[:i] + _KAB_A.sub(one, s[i:])
 PHONE_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1'
              '-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>')
 
@@ -1015,6 +1032,8 @@ def apply(s, rel):
     s = nbsp_prices(s, lang)
     s = prices_all(s, lang)
     s = local_cases(s, lang)
+    if not rel.startswith('kabinet'):
+        s = kab_lang(s, lang)
     if i18n.meta(lang).get('dir') == 'rtl':  # RTL: стрілка «далі» дивиться вліво (→ у тексті посилань — назад)
         i = s.find('<body')
         if i >= 0:
