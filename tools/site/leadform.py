@@ -402,7 +402,7 @@ def apply(s, rel):
 # (contacts, msg), адреса з індексом 03186 (факт із CLAUDE.md). sync_js() пише словник CT між /*ct*/ і /*/ct*/ у lead-form.v1.js.
 CONTACT_PAGES = dict(uk='uk-contact', ru='ru-kontakty', en='en-contact', es='es-contacto', zh='zh-contact', pl='pl-kontakt',
                      de='de-kontakt', fr='fr-contact', pt='pt-contacto', ar='ar-contact')
-ADDR = dict(uk='вул. Антоновича, 44, Київ, 03186', ru='ул. Антоновича, 44, Киев, 03186', en='44 Antonovycha St., Kyiv 03186, Ukraine',
+ADDR = dict(uk='вул. Антоновича, 44, Київ, 03186', ru='ул. Антоновича, 44, Киев, 03186', en='44 Antonovycha St, Kyiv 03186, Ukraine',
             es='Calle Antonovycha 44, 03186 Kiev, Ucrania', zh='乌克兰基辅 Antonovycha 街 44 号，03186', pl='ul. Antonowycza 44, 03186 Kijów, Ukraina',
             de='Antonowytscha-Str. 44, 03186 Kyjiw, Ukraine', fr='44, rue Antonovytcha, 03186 Kyiv, Ukraine', pt='Rua Antonovycha, 44, 03186 Kyiv, Ucrânia', ar='شارع أنتونوفيتشا 44، كييف 03186، أوكرانيا')
 JS = os.path.join(ROOT, 'assets', 'lead-form.v1.js')

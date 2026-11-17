@@ -466,7 +466,7 @@
   var CT = {
     uk: ["Контакти", "Телефон", "Месенджери", "Офіс", "вул. Антоновича, 44, Київ, 03186", "Години роботи", "Пн–Пт 10:00–20:00 · Сб–Нд — вихідні · онлайн 24/7"],
     ru: ["Контакты", "Телефон", "Мессенджеры", "Офис", "ул. Антоновича, 44, Киев, 03186", "Часы работы", "Пн–Пт 10:00–20:00 · Сб–Вс — выходные · онлайн 24/7"],
-    en: ["Contacts", "Phone", "Messengers", "Office", "44 Antonovycha St., Kyiv 03186, Ukraine", "Hours", "Mon–Fri 10:00–20:00 · Sat–Sun closed · online 24/7"],
+    en: ["Contacts", "Phone", "Messengers", "Office", "44 Antonovycha St, Kyiv 03186, Ukraine", "Hours", "Mon–Fri 10:00–20:00 · Sat–Sun closed · online enquiries 24/7"],
     es: ["Contacto", "Teléfono", "Mensajería", "Oficina", "Calle Antonovycha 44, 03186 Kiev, Ucrania", "Horario", "Lun–Vie 10:00–20:00 · Sáb–Dom cerrado · online 24/7"],
     zh: ["联系方式", "电话", "即时通讯", "办公室", "乌克兰基辅 Antonovycha 街 44 号，03186", "营业时间", "周一至周五 10:00–20:00 · 周六、周日休息 · 线上 24/7"],
     pl: ["Kontakt", "Telefon", "Komunikatory", "Biuro", "ul. Antonowycza 44, 03186 Kijów, Ukraina", "Godziny pracy", "Pn–Pt 10:00–20:00 · Sb–Nd nieczynne · online 24/7"],

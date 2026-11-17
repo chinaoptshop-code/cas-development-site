@@ -41,7 +41,7 @@
       note: 'Prices are indicative; the final proposal (in UAH, USD or EUR) follows after confirmation by our manager — prices, availability and lead time.',
       cta: 'Confirm prices and lead time', ctat: 'Send the quote number to our manager by phone, Telegram, Viber or WhatsApp — or place a request from the cart on our website.',
       scan: 'Ozdoba catalogue', print: 'Save PDF / print', close: 'Close', hint: 'In the print dialog choose “Save as PDF”.',
-      phone: 'Phone', addr: '44 Antonovycha St., Kyiv, Ukraine', file: 'Quote'
+      phone: 'Phone', addr: '44 Antonovycha St, Kyiv, Ukraine', file: 'Quote'
     },
     pl: {
       kp: 'Oferta handlowa', no: 'Oferta nr', date: 'Data', co: 'Firma / obiekt', kit: 'Zestaw',

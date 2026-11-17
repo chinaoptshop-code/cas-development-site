@@ -77,7 +77,7 @@ TP = {  # тема → (рядок, [основний href, підпис кно�
         'own': ('Расскажите об объекте — назовём ориентировочную стоимость. Консультация по телефону бесплатная.', None, None),
     },
     'en': {
-        'nadzor': ('CAS technical and author supervision, also when another contractor does the renovation: terms and cost are agreed individually. Phone consultation is free.',
+        'nadzor': ('CAS technical and designer supervision, also when another contractor does the renovation: terms and cost are agreed individually. Phone consultation is free.',
                    ['/en/design-implementation', 'Design implementation'], None),
         'furn': ('Turnkey furnishing from $250/m²; custom furniture, lighting and decor from China — the Ozdoba catalogue. Phone consultation is free.',
                  ['/en/turnkey-furnishing', 'Turnkey furnishing'], ['/en/ozdoba', 'Ozdoba catalogue']),

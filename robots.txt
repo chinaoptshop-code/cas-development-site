@@ -1,12 +1,10 @@
-User-agent: *
-Allow: /
-# API кабінету й форм — не сторінки
-Disallow: /api/
-# кабінет клієнта й адмінка — особисті сторінки (ще й noindex у заголовках)
-Disallow: /kabinet
-
-# Пошукові й AI-краулери — явно дозволено (відповіді ШІ з посиланням на сайт); кабінет і API закриті й для них.
+# Одна політика для всіх: сайт відкритий, закриті лише API й кабінет.
+# Пошукові й AI-краулери названі явно (відповіді ШІ з посиланням на сайт) — ті самі правила, що й для решти.
 # Короткий опис студії для ШІ: /llms.txt, повний — /llms-full.txt
+# Увага: якщо в Cloudflare увімкнено «Managed robots.txt» (AI Crawl Control), Cloudflare дописує ПЕРЕД цим файлом
+# свій блок (User-agent: * з Content-Signal і Disallow: / для GPTBot, ClaudeBot, CCBot, Google-Extended…) —
+# він суперечить цій політиці; вимикає/змінює його власник у панелі Cloudflare, не цей файл.
+User-agent: *
 User-agent: Googlebot
 User-agent: Bingbot
 User-agent: Applebot
@@ -28,7 +26,9 @@ User-agent: Amazonbot
 User-agent: MistralAI-User
 User-agent: cohere-ai
 Allow: /
+# API кабінету й форм — не сторінки
 Disallow: /api/
+# кабінет клієнта й адмінка — особисті сторінки (ще й noindex у заголовках)
 Disallow: /kabinet
 
 Sitemap: https://cas-develop.com/sitemap.xml
