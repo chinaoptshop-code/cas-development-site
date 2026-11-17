@@ -229,11 +229,18 @@ def cta(x):
     return wrap(x, o, 'xs-cta')
 
 
+GREVIEW = 'https://g.page/r/CbaVqfJBXWLQEAE/review'
+STAR = ('M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z')  # Lucide star (ISC)
+
+
 def contacts(x):
     rows = ''.join(f'<div><span>{e(r[0])}</span><b>' + (f'<a href="{a(r[2])}"' + (' target="_blank" rel="noopener"' if r[2].startswith('http') else '')
                    + f'><bdi>{e(r[1])}</bdi></a>' if r[2] else e(r[1])) + '</b>' + (f'<small>{e(r[3])}</small>' if len(r) > 3 and r[3] else '') + '</div>'
                    for r in x['rows'])
     o = head(x) + (f'<p class="xs-lead">{rich(x["p"])}</p>' if x.get('p') else '') + f'<div class="xs-ct">{rows}</div>'
+    if x.get('review'):  # відгук у Google — основний профіль GBP (Михайло 17.11.2026), текст мовою сторінки
+        o += (f'<p class="xs-rev"><a href="{GREVIEW}" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+              f'<path d="{STAR}"/></svg>{e(x["review"])}</a></p>')
     mh = f'<p class="kick xs-msg-h">{e(x["msgs_h"])}</p>' if x.get('msgs_h') else ''
     return wrap(x, o + (mh + msgs() if x.get('msgs') else ''), 'xs-contacts')
 

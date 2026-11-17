@@ -39,7 +39,11 @@
     set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* приватний режим */ } }
   };
   var svg = function (p, cls) { return '<svg viewBox="0 0 24 24" aria-hidden="true"' + (cls ? ' class="' + cls + '"' : '') + '>' + p + '</svg>'; };
+  // відгук у Google (основний профіль GBP) — лише для завершеного обʼєкта (status «done»)
+  var GREV = 'https://g.page/r/CbaVqfJBXWLQEAE/review';
+  function rev(p) { return p.status === 'done' ? '<p class="kb-rev"><a class="lnk" href="' + GREV + '" target="_blank" rel="noopener">' + svg(IC.star) + 'Залишити відгук у Google</a></p>' : ''; }
   var IC = {
+    star: '<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/>',
     box: '<path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9"/>',
     heart: '<path d="M12 20s-7-4.6-7-9.7A4.2 4.2 0 0 1 12 7a4.2 4.2 0 0 1 7 3.3C19 15.4 12 20 12 20z"/>',
     plan: '<rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 10h17M9 10v10M14 15h6.5"/>',
@@ -443,7 +447,7 @@
         h += '<section class="kb-card glow kb-in"><div class="kb-ch"><div><p class="kb-eyebrow">' + esc(SERV[p.service] || 'Проєкт') + (p.area ? ' · ' + esc(p.area) + ' м²' : '') + '</p><h2>' + esc(p.title) + '</h2>' +
           (p.address ? '<small class="muted">' + esc(p.address) + '</small>' : '') + '</div><span class="kb-st' + (p.status === 'done' ? ' ok' : '') + '">' + ({ active: 'Триває', paused: 'На паузі', done: 'Завершено' }[p.status] || '') + '</span></div>' +
           '<div class="row" style="justify-content:space-between"><span>Загальна готовність</span><b class="kb-big" style="font-size:2rem">' + p.progress + '%</b></div>' + bar(p.progress) +
-          '<div class="row"><a class="btn sm" href="/kabinet/obiekt?p=' + p.id + '">Онлайн-контроль: етапи, платежі, камера →</a></div>' +
+          '<div class="row"><a class="btn sm" href="/kabinet/obiekt?p=' + p.id + '">Онлайн-контроль: етапи, платежі, камера →</a></div>' + rev(p) +
           (p.next_step ?'<div class="kb-next">' + svg(IC.flag) + '<div><p class="kb-eyebrow">Наступний крок' + (p.next_date ? ' · ' + esc(dfmt(p.next_date, { day: 'numeric', month: 'long' })) : '') + '</p><p>' + esc(p.next_step) + '</p></div></div>' : '') +
           (p.stages.length ? '<h3>Етапи</h3><div class="kb-stages">' + p.stages.map(function (s, i) {
             var pc = Math.max(0, Math.min(100, s.progress || 0));
@@ -572,7 +576,7 @@
         '<div class="kb-obj-top"><div><span class="muted" style="font-size:var(--fs-small)">Загальна готовність</span><b class="kb-big" style="display:block">' + p.progress + '%</b></div>' +
         '<div class="kb-stats"><span class="kb-chip"><b>' + nDone + '/' + stages.length + '</b> етапів виконано</span><a class="kb-chip" href="#kb-feed-h"><b>' + R.length + '</b> ' + plural(R.length, 'фотозвіт', 'фотозвіти', 'фотозвітів') + '</a>' +
         (last ? '<span class="kb-chip">останній: <b>' + esc(dfmt(last.date, { day: 'numeric', month: 'short' })) + '</b></span>' : '') + '<a class="kb-chip" href="#kb-cam-h">камера: <b>' + (p.camera ? 'є' : 'немає') + '</b></a></div></div>' + bar(p.progress) +
-        (cur ? '<p style="font-size:var(--fs-small)">Зараз: <b>' + esc(cur.name) + '</b> · ' + (cur.progress || 0) + '%</p>' : '') +
+        (cur ? '<p style="font-size:var(--fs-small)">Зараз: <b>' + esc(cur.name) + '</b> · ' + (cur.progress || 0) + '%</p>' : '') + rev(p) +
         (p.next_step ? '<div class="kb-next">' + svg(IC.flag) + '<div><p class="kb-eyebrow">Наступний крок' + (p.next_date ? ' · ' + esc(dfmt(p.next_date, { day: 'numeric', month: 'long' })) : '') + '</p><p>' + esc(p.next_step) + '</p></div></div>' : '') + '</section>';
       // етапи
       h += '<section class="kb-card s6 kb-in" aria-labelledby="kb-stg-h"><div class="kb-ch"><h2 id="kb-stg-h">Етапи робіт</h2><small class="muted">строки — за договором</small></div>';

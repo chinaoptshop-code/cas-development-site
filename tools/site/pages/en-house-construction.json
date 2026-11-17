@@ -14,7 +14,7 @@
    [
     "architectural design and layouts",
     "facades and 3D visualisations",
-    "structure and engineering networks",
+    "structure and building services",
     "estimate and construction schedule"
    ]
   ],
@@ -23,7 +23,7 @@
    [
     "foundation and shell",
     "roof, windows, facade",
-    "engineering networks",
+    "building services",
     "reconstruction and extensions"
    ]
   ],
@@ -33,7 +33,7 @@
     "interior finishing",
     "furniture and lighting from China",
     "landscape design",
-    "author and technical supervision"
+    "design and technical supervision"
    ]
   ]
  ],
@@ -156,7 +156,7 @@
   ],
   [
    "Do you reconstruct old houses?",
-   "Yes: reconstruction, extensions, replacement of engineering networks and full finishing."
+   "Yes: reconstruction, extensions, replacement of building services and full finishing."
   ]
  ],
  "rel": [
@@ -182,7 +182,7 @@
   ],
   [
    "/en/business-fit-out",
-   "Turnkey business premises"
+   "Turnkey commercial fit-out"
   ],
   [
    "/en/faq",

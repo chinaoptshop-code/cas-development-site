@@ -85,7 +85,7 @@ BUILD = {'uk': '/budivnytstvo-budynkiv-kyiv', 'ru': '/ru/stroitelstvo-domov-kiev
 import buildanim_data as BD  # noqa: E402
 FACTS = {'uk': [('150', '150+', 'проєктів з 2016'), ('10', '10+', 'років досвіду'), ('12', '12 міс.', 'гарантія')],
          'ru': [('150', '150+', 'проектов с 2016'), ('10', '10+', 'лет опыта'), ('12', '12 мес.', 'гарантия')],
-         'en': [('150', '150+', 'projects since 2016'), ('10', '10+', 'years of experience'), ('12', '12 mo.', 'warranty')],
+         'en': [('150', '150+', 'projects since 2016'), ('10', '10+', 'years of experience'), ('12', '12 months', 'warranty')],
          'es': [('150', '150+', 'proyectos desde 2016'), ('10', '10+', 'años de experiencia'), ('12', '12 meses', 'de garantía')],
          'zh': [('150', '150+', '项目（自 2016 年）'), ('10', '10+', '年经验'), ('12', '12 个月', '质保')],
          'pl': [('150', '150+', 'projektów od 2016'), ('10', '10+', 'lat doświadczenia'), ('12', '12 mies.', 'gwarancji')],
