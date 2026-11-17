@@ -269,7 +269,7 @@
   // Вкладки майстер-панелі власника (Студія, Персонал, Аудит) додає assets/admin/studio.v1.js через window.CASStudio.
   var TABS = [
     ['crm', 'CRM', ['leads.view_all', 'orders.view']], ['stats', 'Аналітика', ['leads.view_all']], ['orders', 'Замовлення Оздоби', ['orders.view']],
-    ['clients', 'Клієнти', ['clients.view']], ['projects', 'Обʼєкти', ['projects.view_all']], ['codes', 'Коди партнерів', ['partners.manage']],
+    ['clients', 'Клієнти', ['clients.view']], ['projects', 'Обʼєкти', ['projects.view_all']], ['partners', 'Партнери', ['partners.base']], ['codes', 'Коди партнерів', ['partners.manage']],
     ['products', 'Товари', ['cms.edit']], ['blog', 'Блог', ['cms.edit']], ['landings', 'Лендинги', ['cms.edit']], ['lang', 'Меню й футер', ['cms.edit']],
     ['pages', 'Сторінки', ['cms.edit']], ['media', 'Медіа', ['cms.edit']], ['history', 'Історія', ['cms.edit']],
   ];
@@ -316,7 +316,7 @@
   // внесені вручну — «manual», Оздоба — «order» (functions/api/admin/crm.js, placeOf).
   var PLACES = [['form', 'Форма сторінки'], ['#prices', 'Після цін (#prices)'], ['#portfolio', 'Після портфоліо (#portfolio)'],
     ['#project', 'Сторінка проєкту (#project)'], ['#services', 'Послуги (#services)'], ['#blog-mid', 'Стаття, середина (#blog-mid)'],
-    ['#blog-end', 'Стаття, кінець (#blog-end)'], ['manual', 'Вручну / дзвінок'], ['order', 'Замовлення Оздоби']];
+    ['#blog-end', 'Стаття, кінець (#blog-end)'], ['manual', 'Вручну / дзвінок'], ['finder', 'Бот пошуку'], ['order', 'Замовлення Оздоби']];
   var placeLabel = function (k) { var p = PLACES.find(function (x) { return x[0] === k; }); return p ? p[1].replace(/ \(#.*\)$/, '') : k; };
   var SLA = 15; // хв, як SLA_MIN у functions/_alerts.js
   var utc = function (s) { return new Date(String(s || '').replace(' ', 'T') + 'Z'); };
@@ -935,6 +935,73 @@
         api('/api/admin/partner-codes', { method: 'PATCH', body: { code: b.dataset.code, active: b.dataset.on === '1' } }).then(function () { RENDER.codes(L); });
       }; });
     });
+  };
+
+  // ---------- Партнери (база з бота пошуку: /api/admin/partners, functions/_partners.js) ----------
+  // Підрядники, бригади, постачальники, ріелтори, будівельні компанії, дизайнери, яких бот відсіяв як «не клієнт», і додані вручну.
+  // Лише публічні контакти; статус і нотатки веде менеджер (бот їх не змінює). Права — partners.base, CSV — export.
+  RENDER.partners = function (L) {
+    var S = { type: '', status: '', city: '', q: '' };
+    try { Object.assign(S, JSON.parse(localStorage.getItem('partnerFilters') || '{}') || {}); } catch (e) { /* noop */ }
+    var TYPES = {}, STS = {};
+    var opts = function (o, v) { return Object.keys(o).map(function (k) { return '<option value="' + k + '"' + (k === v ? ' selected' : '') + '>' + esc(o[k]) + '</option>'; }).join(''); };
+    var qs = function (csv) { return '/api/admin/partners?type=' + S.type + '&status=' + S.status + '&city=' + encodeURIComponent(S.city) + '&q=' + encodeURIComponent(S.q) + (csv ? '&format=csv' : ''); };
+    var host = function (u) { return String(u || '').replace(/^https?:\/\//, '').replace(/\/$/, '').slice(0, 40); };
+    function list() {
+      return api(qs()).then(function (d) {
+        TYPES = d.types; STS = d.statuses;
+        L.innerHTML = '<div class="tb"><input class="grow" type="search" data-f="q" placeholder="Пошук: імʼя, компанія, @username, телефон, тег, нотатки" aria-label="Пошук">' +
+          '<select data-f="type" aria-label="Тип"><option value="">Усі типи</option>' + opts(TYPES, S.type) + '</select>' +
+          '<select data-f="status" aria-label="Статус"><option value="">Усі статуси</option>' + opts(STS, S.status) + '</select>' +
+          '<input data-f="city" type="search" placeholder="Місто / область" aria-label="Місто або область" class="w-city">' +
+          '<button class="btn" type="button" data-new>+ Партнер</button>' + (can('export') ? '<a class="btn ghost" data-csv href="' + qs(true) + '" download>CSV</a>' : '') + '</div>' +
+          '<p class="muted">' + d.rows.length + (d.rows.length >= 2000 ? '+' : '') + ' у списку · ' + Object.keys(STS).map(function (k) { return esc(STS[k]) + ': ' + (d.counts[k] || 0); }).join(' · ') +
+          '. Бот пошуку додає тих, кого відсіяв як «не клієнт»; повторна зустріч — «Разів» +1.</p>' +
+          (d.rows.length ? '<div class="tscroll"><table class="adm" data-ptbl><tr><th>Партнер</th><th>Тип</th><th>Місто</th><th>Контакти</th><th>Джерело</th><th>Разів</th><th>Востаннє</th><th>Статус</th></tr>' + d.rows.map(function (r) {
+            return '<tr class="clk" data-id="' + r.id + '" tabindex="0"><td><b>' + esc(r.name || r.company || '—') + '</b>' + (r.name && r.company ? '<br><small>' + esc(r.company) + '</small>' : '') +
+              (r.tags.length ? '<br>' + r.tags.slice(0, 5).map(function (t) { return '<span class="pill">' + esc(t) + '</span>'; }).join(' ') : '') + '</td>' +
+              '<td>' + esc(r.type_label) + '</td><td>' + esc(r.city || '') + '</td><td><small>' + [r.tg ? '@' + esc(r.tg) : '', esc(r.phone || ''), esc(host(r.site))].filter(Boolean).join('<br>') + '</small></td>' +
+              '<td><small>' + esc(r.source_name || '') + '</small></td><td>' + r.times_seen + '</td><td><small>' + esc(String(r.last_seen || '').slice(0, 10)) + '</small></td>' +
+              '<td><span class="pill' + (r.status === 'working' ? ' on' : r.status === 'rejected' ? ' warn' : '') + '">' + esc(r.status_label) + '</span></td></tr>';
+          }).join('') + '</table></div>' : '<p class="muted">Поки порожньо. Партнерів додає бот пошуку або кнопка «+ Партнер».</p>');
+        $$('[data-f]', L).forEach(function (el) {
+          var go = function () { S[el.dataset.f] = el.value.trim(); try { localStorage.setItem('partnerFilters', JSON.stringify(S)); } catch (e) { /* noop */ } list(); };
+          if (el.tagName === 'SELECT') el.onchange = go; else { el.value = S[el.dataset.f] || ''; el.oninput = debounce(go, 350); }
+        });
+        var q = $('[data-f="q"]', L); if (q && S.q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
+        $('[data-new]', L).onclick = function () { card(null); };
+        $$('tr.clk', L).forEach(function (tr) {
+          var openCard = function () { api('/api/admin/partners?id=' + tr.dataset.id).then(function (x) { card(x.partner); }, function (e) { toast(e.message, true); }); };
+          tr.onclick = openCard; tr.onkeydown = function (e) { if (e.key === 'Enter') openCard(); };
+        });
+      });
+    }
+    function card(r) {
+      var n = !r; r = r || { type: 'other', status: 'new', tags: [], sources: [] };
+      var f = function (k, label, type, ph) { return '<label class="fld"><span>' + label + '</span><input name="' + k + '" type="' + (type || 'text') + '" value="' + esc(k === 'tg' && r.tg ? '@' + r.tg : r[k] || '') + '"' + (ph ? ' placeholder="' + ph + '"' : '') + '></label>'; };
+      L.innerHTML = '<div class="tb"><button class="btn ghost sm" type="button" data-back>← До списку</button><b class="grow">' + (n ? 'Новий партнер' : esc(r.name || r.company || 'Партнер #' + r.id)) + '</b></div>' +
+        '<form class="pform" data-pf>' + f('name', 'Імʼя') + f('company', 'Компанія') +
+        '<label class="fld"><span>Тип</span><select name="type">' + opts(TYPES, r.type) + '</select></label>' +
+        '<label class="fld"><span>Статус</span><select name="status">' + opts(STS, r.status) + '</select></label>' +
+        f('city', 'Місто / область') + f('tg', 'Telegram', 'text', '@username') + f('phone', 'Телефон', 'tel', '+380…') + f('site', 'Сайт', 'url', 'https://…') +
+        '<label class="fld"><span>Теги (через кому)</span><input name="tags" value="' + esc(r.tags.join(', ')) + '"></label>' +
+        '<label class="fld"><span>Нотатки</span><textarea name="notes" rows="4">' + esc(r.notes || '') + '</textarea></label>' +
+        '<p><button class="btn" type="submit">' + (n ? 'Додати' : 'Зберегти') + '</button> <span class="err" data-m></span></p></form>' +
+        (n ? '' : '<p class="muted">Вперше: ' + esc(r.first_seen) + ' · востаннє: ' + esc(r.last_seen) + ' · разів: ' + r.times_seen + '</p>' +
+          (r.sources.length ? '<h3>Де бачили</h3><ul class="plist">' + r.sources.map(function (s) {
+            return '<li><small>' + esc(String(s.at || '').slice(0, 16)) + '</small> ' + esc(s.name || '') + (s.url && /^https?:\/\//.test(s.url) ? ' — <a href="' + esc(s.url) + '" target="_blank" rel="noopener noreferrer nofollow">повідомлення</a>' : '') + '</li>';
+          }).join('') + '</ul>' : ''));
+      $('[data-back]', L).onclick = list;
+      $('[data-pf]', L).onsubmit = function (e) {
+        e.preventDefault(); var F = e.target, b = {};
+        ['name', 'company', 'type', 'status', 'city', 'tg', 'phone', 'site', 'notes'].forEach(function (k) { b[k] = F[k].value.trim(); });
+        b.tags = F.tags.value.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
+        if (!n) b.id = r.id;
+        api('/api/admin/partners', { method: n ? 'POST' : 'PATCH', body: b }).then(function () { toast(n ? 'Партнера додано' : 'Збережено'); list(); },
+          function (er) { $('[data-m]', L).textContent = er.message; });
+      };
+    }
+    return list();
   };
 
   // ---------- Товари Оздоби ----------

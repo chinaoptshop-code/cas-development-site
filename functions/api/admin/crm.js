@@ -3,7 +3,8 @@
 //   поля: без finance.view — без сум/оплати, без clients.contacts — без телефону/пошти (shapeOrder).
 // GET  ?kind=&status=&q=&assignee=&staff=<id|none>&city=&min=&max=&due=1&overdue=1&place=&ref=&from=&to=&format=csv — список
 //   (CSV — право export; place — місце форми, див. placeOf; from / to — дати YYYY-MM-DD за Києвом, включно;
-//   ref — сторінка-джерело orders.ref_path, migrations/0011: поле, фільтр і колонка CSV — лише з leads.view_all, тобто власник і менеджер)
+//   ref — сторінка-джерело orders.ref_path, migrations/0011: поле, фільтр і колонка CSV — лише з leads.view_all, тобто власник і менеджер;
+//   source=finder або place=finder — заявки бота пошуку (POST /api/bot/leads, orders.source = 'finder', migrations/0013))
 // GET  ?stats=1&days=7|30 — аналітика заявок (leads.view_all)
 // GET  ?events=<id> — історія статусів (лише видимого рядка)
 // POST {name, phone, email, service, source, comment, city, amount, currency, assignee_staff_id, next_contact} — нова заявка вручну (leads.edit)
@@ -20,7 +21,7 @@ const date = v => (v == null || v === '' ? null : /^\d{4}-\d{2}-\d{2}$/.test(Str
 const int = v => (v == null || v === '' ? null : Number.isFinite(+v) && +v >= 0 ? Math.round(+v) : undefined);
 const SITE = "(o.source LIKE '%cas-develop.com%' OR o.source LIKE '%.pages.dev%')";
 // місце форми: «#prices» … з source; основна форма сторінки — «form»; вручну / дзвінок — «manual»; Оздоба — «order»
-export const placeOf = o => o.kind === 'order' ? 'order'
+export const placeOf = o => o.kind === 'order' ? 'order' : o.source === 'finder' ? 'finder'
   : !/cas-develop\.com|\.pages\.dev/.test(o.source || '') ? 'manual' : (/#([\w-]+)$/.exec(o.source || '') || [, 'form'])[1].replace(/^(?!form$)/, '#');
 // сторінка без домену, «#місця» і мовного кореня: cas-develop.com/remont-kvartyr-kyiv#prices → /remont-kvartyr-kyiv
 export const pageOf = o => { const m = /(?:cas-develop\.com|\.pages\.dev)(\/[^#?\s]*)?/.exec(o.source || ''); return m ? (m[1] || '/') : null; };
@@ -33,7 +34,8 @@ function where(p, args, x) {
   if (p('kind') === 'order' || p('kind') === 'lead') { sql += ' AND o.kind = ?'; args.push(p('kind')); }
   const pl = p('place');
   if (pl === 'order') sql += " AND o.kind = 'order'";
-  else if (pl === 'manual') sql += " AND o.kind = 'lead' AND COALESCE(o.source, '') NOT LIKE '%cas-develop.com%' AND COALESCE(o.source, '') NOT LIKE '%.pages.dev%'";
+  else if (pl === 'finder' || p('source') === 'finder') sql += " AND o.kind = 'lead' AND o.source = 'finder'";
+  else if (pl === 'manual') sql += " AND o.kind = 'lead' AND COALESCE(o.source, '') NOT IN ('finder') AND COALESCE(o.source, '') NOT LIKE '%cas-develop.com%' AND COALESCE(o.source, '') NOT LIKE '%.pages.dev%'";
   else if (pl === 'form') sql += ` AND o.kind = 'lead' AND ${SITE} AND o.source NOT LIKE '%#%'`;
   else if (/^#[\w-]{1,40}$/.test(pl)) { sql += ' AND o.source LIKE ?'; args.push('%' + pl); }
   const ref = p('ref');
@@ -83,7 +85,7 @@ async function stats(env, days) {
 
 function csv(rows) {
   const cols = [['number', 'Номер'], ['kind', 'Тип'], ['created_at', 'Створено'], ['status', 'Статус'], ['name', 'Клієнт'], ['phone', 'Телефон'],
-    ['email', 'Email'], ['service', 'Послуга / товари'], ['amount', 'Сума'], ['currency', 'Валюта'], ['assignee', 'Відповідальний'],
+    ['contact_tg', 'Telegram'], ['email', 'Email'], ['service', 'Послуга / товари'], ['amount', 'Сума'], ['currency', 'Валюта'], ['assignee', 'Відповідальний'],
     ['next_contact', 'Наступний контакт'], ['reaction_min', 'Реакція, хв'], ['city', 'Місто / область'], ['source', 'Джерело'], ['place', 'Місце форми'], ['ref_path', 'Сторінка-джерело'], ['form', 'Форма'], ['lang', 'Мова'], ['utm', 'UTM'], ['taken_at', 'Взято в роботу'], ['crm_note', 'Нотатки'], ['comment', 'Коментар клієнта'], ['payment', 'Оплата'], ['delivery', 'Доставка']];
   // CSV-інʼєкція: текст з публічної форми, що починається з = + - @ (або табуляції), Excel/Таблиці виконали б як формулу —
   // додаємо апостроф (числа на кшталт суми лишаються числами)
@@ -148,7 +150,7 @@ export async function onRequestGet({ request, env }) {
     args.push(sqlTime(new Date(Date.now() - SLA_MIN * 60000)));
   }
   if (p('q')) {
-    const cols = ['o.number', 'o.name', 'o.service', 'o.crm_note', 'o.comment', 'o.source'].concat(x.can('clients.contacts') ? ['o.phone', 'o.email'] : []);
+    const cols = ['o.number', 'o.name', 'o.service', 'o.crm_note', 'o.comment', 'o.source'].concat(x.can('clients.contacts') ? ['o.phone', 'o.email', 'o.contact_tg'] : []);
     sql += ' AND (' + cols.map(c => c + ' LIKE ?').join(' OR ') + ')';
     for (let i = 0; i < cols.length; i++) args.push(`%${p('q')}%`);
   }

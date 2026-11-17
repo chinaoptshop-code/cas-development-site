@@ -174,7 +174,7 @@
     'report.create': 'Фотозвіт', 'report.update': 'Зміна звіту', 'report.delete': 'Видалення звіту', 'issue.create': 'Проблема на обʼєкті', 'issue.resolved': 'Проблему вирішено', 'issue.open': 'Проблему відкрито',
     'payment.create': 'Платіж', 'payment.update': 'Зміна платежу', 'payment.delete': 'Видалення платежу', 'document.create': 'Документ', 'document.delete': 'Видалення документа',
     'staff.create': 'Новий працівник', 'staff.update': 'Зміна працівника', 'staff.role': 'Зміна ролі', 'staff.deactivate': 'Доступ вимкнено', 'staff.activate': 'Доступ увімкнено', 'staff.logout': 'Сесії завершено',
-    'partner.create': 'Код партнера', 'partner.update': 'Зміна коду', 'partner.link': 'Код → клієнт', 'cms.save': 'Зміна сайту', 'cms.revert': 'Відкат сайту',
+    'partner.create': 'Код партнера', 'partner.update': 'Зміна коду', 'partner.link': 'Код → клієнт', 'pbase.create': 'Новий партнер (база)', 'pbase.update': 'Зміна партнера (база)', 'pbase.export': 'Експорт партнерів', 'cms.save': 'Зміна сайту', 'cms.revert': 'Відкат сайту',
   };
   var short = function (v) { if (v == null) return ''; var s = typeof v === 'string' ? v : JSON.stringify(v); return s.length > 60 ? s.slice(0, 59) + '…' : s; };
   function changes(r) {

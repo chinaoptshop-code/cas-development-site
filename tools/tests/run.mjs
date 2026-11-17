@@ -516,4 +516,7 @@ describe('Заявки: антиспам і валідація (/api/leads)');
   });
 }
 
+// «Партнери» і API бота пошуку (migrations/0013) — окремий файл, спільний звіт
+await import('./partners.mjs');
+
 process.exit(report() ? 1 : 0);

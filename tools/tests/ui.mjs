@@ -17,7 +17,9 @@ const shotsDir = process.argv.includes('--shots') ? process.argv[process.argv.in
 if (shotsDir) mkdirSync(shotsDir, { recursive: true });
 
 // ===== дані =====
+const BOTKEY = 'test-leadbot-key-0123456789abcdef'; // фіктивний ключ лише для тестів
 const env = makeEnv(freshDB(), {
+  LEADBOT_KEY: BOTKEY,
   ASSETS: { fetch: async req => new Response(readFileSync(join(ROOT, new URL(req.url).pathname.slice(1) + '.html')), { headers: { 'content-type': 'text/html' } }) },
 });
 const OWNER = await addClient(env, { id: 111, name: 'Михайло' });
@@ -40,6 +42,11 @@ await api('OWNER', 'POST', '/api/admin/projects', { type: 'payment', project_id:
 for (const [i, s] of ['Ремонт квартири', 'Дизайн інтерʼєру', 'Будівництво будинку'].entries())
   await call(env, 'POST', '/api/leads', { body: { name: 'Лід ' + (i + 1), phone: '067111223' + i, service: s, source: 'cas-develop.com/remont-kvartyr-kyiv#prices' }, headers: { ip: '10.0.1.' + i } });
 await call(env, 'POST', '/api/leads', { body: { name: 'Лід з кейсу', phone: '0671112299', service: 'Дизайн інтерʼєру', source: 'cas-develop.com/dyzain-interieru-kyiv', ref_path: '/proekty/monpark' }, headers: { ip: '10.0.1.9' } });
+// бот пошуку: партнери й заявка «В CRM» (functions/api/bot/*)
+for (const b of [{ name: 'Бригада Тест', type: 'crew', city: 'Київ', tg: '@test_crew_ua', tags: ['плитка'], source_name: 'Тестова група', source_url: 'https://t.me/test_group/1' },
+  { company: 'ТОВ «Тест Постач»', type: 'supplier', city: 'Львів', site: 'https://supplier.example.com' }])
+  await call(env, 'POST', '/api/bot/partners', { body: b, headers: { 'x-bot-key': BOTKEY, noOrigin: true } });
+await call(env, 'POST', '/api/bot/leads', { body: { hash: 'uitest-lead-0001', service: 'Ремонт квартири', city: 'Київ', text: 'Лід з бота: шукаю ремонт 60 м²', author: { tg: '@test_author' } }, headers: { 'x-bot-key': BOTKEY, noOrigin: true } });
 await api('FORE', 'POST', '/api/team/action', { type: 'issue', project_id: P1, note: 'Протікає стояк у ванній' });
 
 // ===== сервер =====
@@ -135,6 +142,27 @@ await check('owner-crm-ref', 'OWNER', '/kabinet/admin#crm', W, async p => {
   if (!/Лід з кейсу/.test(t) || /Лід 1/.test(t)) throw new Error('фільтр за сторінкою-джерелом не працює');
   await p.locator('[data-list] :text("Лід з кейсу")').first().click(); await see(p, 'dialog[open]', 'Сторінка-джерело: /proekty/monpark');
 });
+// «Партнери»: список, фільтр за типом, картка, збереження статусу; CRM — фільтр «Бот пошуку»
+await check('owner-partners', 'OWNER', '/kabinet/admin#partners', W, async p => {
+  await see(p, '[data-ptbl]', 'Бригада Тест'); await see(p, '[data-ptbl]', 'Тест Постач');
+  await p.selectOption('[data-f=type]', 'supplier'); await p.waitForTimeout(500);
+  const t = await p.textContent('#admView');
+  if (/Бригада Тест/.test(t) || !/Тест Постач/.test(t)) throw new Error('фільтр за типом не працює');
+  await p.selectOption('[data-f=type]', ''); await p.waitForTimeout(500);
+  await p.locator('[data-ptbl] tr.clk', { hasText: 'Бригада Тест' }).click(); await see(p, '[data-pf]');
+  if (await p.inputValue('[data-pf] [name=tg]') !== '@test_crew_ua') throw new Error('картка: немає @username');
+  await see(p, '#admView', 'Тестова група');
+  await p.selectOption('[data-pf] [name=status]', 'interesting'); await p.click('[data-pf] button[type=submit]');
+  await see(p, '[data-ptbl]', 'Цікавий');
+  await p.selectOption('[data-f=type]', ''); // скидаємо фільтр (зберігається в localStorage)
+});
+await check('owner-crm-finder', 'OWNER', '/kabinet/admin#crm', [1440], async p => {
+  await see(p, '#admView', 'Лід 1');
+  await p.selectOption('[data-f=place]', 'finder'); await p.waitForTimeout(600);
+  const t = await p.textContent('[data-list]');
+  if (!/@test_author/.test(t) || /Лід 1/.test(t)) throw new Error('фільтр «Бот пошуку» не працює');
+  await p.selectOption('[data-f=place]', '');
+});
 await check('owner-staff', 'OWNER', '/kabinet/admin#team', W, async p => { await see(p, '.staff-t', 'Олег');
   await p.click('details.add summary'); await see(p, '[data-add]');
   const n = ++nAdd; await p.fill('[data-add] [name=name]', 'Тест Менеджер ' + n); await p.selectOption('[data-add] [name=role]', 'manager'); await p.fill('[data-add] [name=email]', 'test.manager' + n + '@example.com');
@@ -144,6 +172,7 @@ console.log('Робоча панель менеджера (без Студії/�
 await check('manager-panel', 'MGR', '/kabinet/admin', [1440], async p => {
   await see(p, 'body.adm-manager'); await see(p, '.adm-tabs', 'CRM');
   if (/Студія|Персонал|Аудит/.test(await p.textContent('.adm-tabs'))) throw new Error('менеджер бачить вкладки власника');
+  if (!/Партнери/.test(await p.textContent('.adm-tabs'))) throw new Error('менеджер не бачить «Партнери»');
 });
 console.log('Кабінет працівника (прораб)');
 await check('team-today', 'FORE', '/kabinet/team', W, async p => {
