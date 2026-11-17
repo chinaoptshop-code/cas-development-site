@@ -1,0 +1,353 @@
+{
+ "slug": "wand-boden-dachaufbau-haus-schichten-fehler",
+ "lang": "de",
+ "translation_of": "pyrih-stiny-pidlohy-i-pokrivli-pryvatnoho-budynku",
+ "title": "Wand-, Boden- und Dachaufbau eines Einfamilienhauses: Schichten, Dicken, Fehler",
+ "seo_title": "Wand-, Boden- und Dachaufbau: Schichten und Fehler",
+ "description": "Wand-, Boden- und Dachaufbau eines Einfamilienhauses: Schichtenfolge, typische Dämmstärken, Dampfbremsen und Membranen, Anschlüsse und teure Fehler.",
+ "lead": "Der Aufbau von Wand, Boden und Dach ist die Schichtenfolge, von der abhängt, ob ein Haus in zehn Jahren noch warm und trocken ist. Ein Fehler in einer Schicht zeigt sich nicht sofort: Er kommt als Kondensat, Schimmel in Ecken, nasse Dämmung und hohe Heizkosten zum Vorschein. Wir erklären, woraus jede Konstruktion besteht, welche Dicken in der Praxis üblich sind und wo der Aufbau am häufigsten «reißt».",
+ "date": "2026-11-01",
+ "service": [
+  "/de/hausplanung",
+  "Planung eines Einfamilienhauses"
+ ],
+ "photo": "img/p/1Us4FZpRlnEsqf-900.webp",
+ "photo_alt": "Terrasse eines eingeschossigen Hauses mit Außenkamin und Überdachung bei Sonnenuntergang — Projekt House 150",
+ "body": [
+  [
+   "h2",
+   "Wand-, Boden- und Dachaufbau: warum so viele Schichten"
+  ],
+  [
+   "p",
+   "Jedes Außenbauteil — Wand, Boden, Dach — erfüllt mehrere Aufgaben zugleich: Es trägt Lasten, hält Wärme, stoppt Wind, schützt vor Wasser von außen und Wasserdampf von innen. Kein Material kann das alles gut, deshalb besteht das Bauteil aus Schichten, und jede ist für ihre Aufgabe zuständig. Die Schichtenfolge bestimmt, wohin Feuchtigkeit wandert und wo sie kondensieren kann."
+  ],
+  [
+   "p",
+   "Die Grundregel, die fast alle Anschlüsse erklärt: Die Dampfdurchlässigkeit der Schichten muss von innen nach außen zunehmen. Innen liegt eine luftdichte Schicht, die warmen, feuchten Dampf aus dem Bauteil fernhält; außen Schichten, die vor Wind und Regen schützen, aber Restfeuchte entweichen lassen. Umgekehrt gelangt Feuchte in die Dämmung und bleibt dort."
+  ],
+  [
+   "ul",
+   [
+    "tragende Schicht — Mauerwerk, Ständerwerk, Platte oder Sparren",
+    "Wärmedämmung — Mineralwolle, Polystyrol, PIR oder andere Stoffe nach Projekt",
+    "Dampfbremse oder luftdichte Schicht auf der Innenseite",
+    "dampfdurchlässiger Wind- und Feuchteschutz außen",
+    "eine Hinterlüftung dort, wo Fassade oder Dach «atmen» müssen",
+    "Oberflächen außen und innen"
+   ]
+  ],
+  [
+   "p",
+   "Die folgenden Dicken sind Richtwerte aus der Marktpraxis für das Klima der Region Kyjiw. Genaue Werte liefert die wärmetechnische Berechnung in der [Hausplanung](/de/hausplanung): Sie berücksichtigt die konkreten Materialien, die Klimazone und die Anforderungen an die Energieeffizienz."
+  ],
+  [
+   "h2",
+   "Wandaufbau"
+  ],
+  [
+   "h3",
+   "Mauerwerk mit WDVS-Putzfassade"
+  ],
+  [
+   "p",
+   "Die häufigste Variante für ein Haus aus Porenbeton oder Ziegel. Von innen nach außen: Innenputz, Mauerwerk, Kleber, Dämmplatten, Armierungsschicht mit Glasfasergewebe, Grundierung und Oberputz. Der Innenputz ist hier mehr als Oberfläche: Eine durchgehende, fugenlose Schicht wirkt als Luftdichtheitsebene, deshalb werden auch Wände hinter Steckdosen und Möbeln verputzt."
+  ],
+  [
+   "ul",
+   [
+    "Mauerwerk — typisch 300–400 mm, Steinart und Dicke legt das Projekt fest",
+    "Dämmung — typisch 100–150 mm; auf Porenbeton wegen der Dampfdurchlässigkeit eher Mineralwolle",
+    "Verdübelung nach Herstellerschema, an Ecken verstärkt",
+    "Armierungsgewebe mit Überlappung, zusätzliche Diagonalarmierung an Öffnungsecken"
+   ]
+  ],
+  [
+   "h3",
+   "Hinterlüftete Fassade"
+  ],
+  [
+   "p",
+   "Von innen nach außen: Innenoberfläche, Mauerwerk, verdübelte Dämmung, Winddichtungsbahn oder hydrophobierte Platten, Hinterlüftungsebene und Bekleidung auf Unterkonstruktion — Faserzementplatten, Keramik, Holzschalung. Die Hinterlüftung lässt Feuchte entweichen, die Bekleidung schützt die Dämmung vor Regen und UV. Entscheidend sind eine offene Zuluft unten und Abluft oben, mit Gitter gegen Nager und Insekten."
+  ],
+  [
+   "h3",
+   "Holzrahmenwand"
+  ],
+  [
+   "p",
+   "Im [Holzrahmenhaus](/de/holzrahmenhaus) hält die Dämmung zwischen den Ständern die Wärme, die Qualität der Schichten ist daher entscheidend. Von innen nach außen: Oberfläche (oft Gipskarton), Installationsebene auf Lattung für Leitungen, Dampfbremse mit verklebten Stößen oder Platte mit abgedichteten Fugen als Luftdichtheitsebene, Ständerwerk mit Mineralwolle, Windschutzplatte oder -bahn, Hinterlüftung und Fassade."
+  ],
+  [
+   "ul",
+   [
+    "Dämmung zwischen den Ständern — typisch 150–200 mm; eine Zusatzlage quer zu den Ständern verringert Wärmebrücken über das Holz",
+    "die Installationsebene erlaubt Kabelführung ohne Durchstoßen der Dampfbremse",
+    "jede Durchführung von Rohr oder Kabel durch die Dampfbremse erhält eine Manschette oder ein Dichtband"
+   ]
+  ],
+  [
+   "h3",
+   "Sockel und Traufstreifen"
+  ],
+  [
+   "p",
+   "Der untere Wandbereich leidet am meisten unter Spritzwasser, Schnee und Schmelzwasser. Der Sockel wird mit feuchteunempfindlichem Material gedämmt — meist extrudiertem Polystyrol — und mit schlagfester Oberfläche bekleidet. Ein vom Haus weg geneigter Traufstreifen und eine Drainage leiten Wasser vom Fundament ab; ist der Streifen gedämmt, friert der Boden an der Platte weniger durch."
+  ],
+  [
+   "h3",
+   "Typische Fehler bei Wänden"
+  ],
+  [
+   "ul",
+   [
+    "dichtes Polystyrol auf Porenbeton ohne Berechnung — Feuchte bleibt im Mauerwerk",
+    "Dämmen einer feuchten Wand nach der nassen Jahreszeit",
+    "Fugen zwischen Dämmplatten mit Schaum oder Kleber statt mit Streifen gefüllt",
+    "Dampfbremse mit unverklebten Stößen oder von Befestigungen durchlöchert",
+    "hinterlüftete Fassade ohne Windschutz oder mit verschlossener Lüftungsebene"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1g5cs3iVIpzLju-900.webp",
+   "Pool und Terrasse eines eingeschossigen 150-m²-Hauses — Visualisierung des Projekts House 150",
+   "Fassade und Terrasse: Die äußere Wandschicht schützt die Dämmung vor Regen und Sonne"
+  ],
+  [
+   "h2",
+   "Bodenaufbau"
+  ],
+  [
+   "h3",
+   "Boden auf Erdreich und Fundamentplatte"
+  ],
+  [
+   "p",
+   "Von unten nach oben: verdichteter Boden und Sand- oder Schotterbett, Sauberkeitsschicht oder andere Unterlage, Abdichtung, Dämmung aus extrudiertem Polystyrol, Platte oder Estrich, Trennfolie, Estrich mit Fußbodenheizungsrohren und Belag. Bei der gedämmten Bodenplatte liegt das XPS unter der ganzen Platte und am Rand, die Heizkreise liegen in der Platte. Bei der klassischen Platte kommt die Dämmung oben, unter den Estrich."
+  ],
+  [
+   "ul",
+   [
+    "XPS unter Platte oder Estrich — typisch 100–150 mm; Plattenstirn und Sockel werden ebenfalls gedämmt",
+    "die Abdichtung liegt unter der Dämmung und wird an den Wänden hochgeführt",
+    "Randdämmstreifen um den Estrich, Bewegungsfugen nach Projekt",
+    "Fußbodenheizungsrohre werden vor dem Estricheinbau abgedrückt"
+   ]
+  ],
+  [
+   "h3",
+   "Balkenlage über belüftetem Kriechraum"
+  ],
+  [
+   "p",
+   "Typisch für Holz- und Holzrahmenhäuser auf Pfählen oder Streifenfundament. Von unten nach oben: Windschutzbahn oder -platte unter den Balken, Dämmung zwischen den Balken, Dampfbremse darüber, Blindboden und Belag. Der Kriechraum wird über Lüftungsöffnungen belüftet, sonst sammelt sich Bodenfeuchte unter dem Haus."
+  ],
+  [
+   "h3",
+   "Geschossdecke"
+  ],
+  [
+   "p",
+   "Hier geht es nicht um Wärme, sondern um Schall. Auf einer Betondecke wird ein schwimmender Estrich auf Trittschalldämmung mit Randtrennung ausgeführt, in einer Holzbalkendecke Mineralwolle zwischen den Balken, federnde Deckenabhänger und Trittschallunterlage unter dem Belag. Ohne das hört man Schritte aus dem Obergeschoss deutlich."
+  ],
+  [
+   "h3",
+   "Typische Fehler bei Böden"
+  ],
+  [
+   "ul",
+   [
+    "ungedämmte Plattenstirn — ein kalter Streifen am Raumrand",
+    "Estrich ohne Randstreifen: Risse und Schallübertragung auf die Wände",
+    "verschlossene Lüftungsöffnungen des Kriechraums",
+    "Folie statt Abdichtung unter der Dämmung auf Erdreich"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1HZT-E30rREI7d-900.webp",
+   "Wohn- und Essbereich des Hauses Hoda Estate in den Karpaten mit Holzbalken, Esstisch und Panoramafenstern",
+   "Decke mit Holzbalken: Die Schalldämmung wird vor dem Ausbau in den Aufbau eingeplant"
+  ],
+  [
+   "h2",
+   "Dachaufbau"
+  ],
+  [
+   "p",
+   "Über das Dach verliert ein Haus am meisten Wärme, weil warme Luft aufsteigt, und im Winter arbeitet das Dach am längsten unter Schnee und Temperaturwechseln. Deshalb ist die Dachdämmung meist dicker als die Wanddämmung, und die Anforderungen an Dampfbremse und Lüftung sind strenger. Die Konstruktion hängt davon ab, ob unter dem Dach ein ausgebautes Dachgeschoss, ein kalter Dachboden oder ein begehbares Flachdach liegt."
+  ],
+  [
+   "h3",
+   "Steildach mit gedämmtem Dachgeschoss"
+  ],
+  [
+   "p",
+   "Von außen nach innen: Eindeckung, Traglattung, Konterlattung als Lüftungsebene, diffusionsoffene Unterdeckbahn, Dämmung zwischen den Sparren, oft eine Zusatzlage unter den Sparren, Dampfbremse mit verklebten Stößen, Installationslattung und Innenbekleidung. Unter Bitumenschindeln kommt eine durchgehende Schalung aus feuchtebeständigen Platten mit Unterlagsbahn hinzu, die Lüftungsebene bleibt unter der Schalung."
+  ],
+  [
+   "ul",
+   [
+    "Dachdämmung — typisch 200–250 mm und mehr, die genaue Dicke liefert die Berechnung",
+    "die Lüftungsebene funktioniert nur mit Zuluft an der Traufe und Abluft am First oder über Lüfter",
+    "die Bahn wird richtig herum und mit Überlappung verlegt, die Dampfbremse an Wände und Sparren angeklebt",
+    "die Dämmung sitzt satt zwischen den Sparren, ohne Fugen und ohne gegen die Bahn zu drücken"
+   ]
+  ],
+  [
+   "h3",
+   "Kalter Dachboden"
+  ],
+  [
+   "p",
+   "Ist der Dachboden unbeheizt, dämmt man die oberste Geschossdecke statt der Dachflächen. Die Dampfbremse liegt raumseitig unter der Dämmung, und der Dachboden selbst wird gut belüftet. Das ist günstiger und zuverlässiger als ein unbeheiztes Dach zu dämmen."
+  ],
+  [
+   "h3",
+   "Flachdach"
+  ],
+  [
+   "p",
+   "Klassischer Aufbau von unten: tragende Platte, Dampfsperre, Gefälleschicht, Dämmung, Abdichtungsbahn. Beim Umkehrdach liegt die Abdichtung unter der XPS-Dämmung, darauf Kiesauflast oder Terrassenbelag. Die häufigsten Flachdachprobleme liegen an den Anschlüssen: Attiken, Abläufe, Durchdringungen und zu geringes Gefälle."
+  ],
+  [
+   "h3",
+   "Typische Fehler am Dach"
+  ],
+  [
+   "ul",
+   [
+    "keine Konterlattung — die Bahn liegt ohne Lüftungsebene auf der Dämmung",
+    "Dampfbremse mit Lücken an Kabel- und Lüftungsdurchführungen",
+    "die Dachdämmung schließt nicht an die Wanddämmung an — kalter Punkt an der Traufe",
+    "Traufzuluft beim Verkleiden der Untersicht verschlossen"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1g-E1m6cFJ9kvH-900.webp",
+   "A-Frame-Haus mit dreieckigem Panoramafenster und Galerie — Designprojekt von CAS Development",
+   "Beim A-Frame ist das Dach zugleich Wand, sein Aufbau verlangt daher besondere Präzision"
+  ],
+  [
+   "h2",
+   "Anschlüsse, an denen der Aufbau am häufigsten reißt"
+  ],
+  [
+   "p",
+   "Die Fläche einer Wand oder eines Dachs herzustellen ist nicht schwer. Probleme entstehen dort, wo verschiedene Bauteile zusammentreffen: Dämmung und Luftdichtheitsebene müssen ohne Unterbrechung von einem ins andere übergehen."
+  ],
+  [
+   "ul",
+   [
+    "Sockel und Plattenstirn: Boden-, Sockel- und Wanddämmung bilden eine durchgehende Linie",
+    "Ringanker und Stürze: Beton wird außen gedämmt, sonst wird er zur Wärmebrücke",
+    "Fenster: dreistufige Anschlussfuge und Dämmung an den Laibungen",
+    "Wand-Dach-Anschluss: Wanddämmung trifft auf Dachdämmung, die Dampfbremse wird auf die Wand geführt",
+    "Durchdringungen, Balkonplatten, Schornsteine — Abdichtung und thermische Trennung"
+   ]
+  ],
+  [
+   "h2",
+   "Luftdichtheit und Lüftung: die Kehrseite der warmen Hülle"
+  ],
+  [
+   "p",
+   "Je besser gedämmt und dichter ein Haus ist, desto weniger Luft tauscht sich über Fugen aus. Das ist gut für die Wärme, aber Feuchte aus Atmung, Kochen und Duschen entweicht nicht mehr von selbst. Deshalb plant man die warme Hülle zusammen mit der Lüftung: natürlich mit durchdachten Zuluftöffnungen und Abluftkanälen oder mechanisch mit Wärmerückgewinnung. Sonst bildet sich Kondensat an den kältesten Flächen — Laibungen, Ecken, Wand-Decken-Übergängen."
+  ],
+  [
+   "ul",
+   [
+    "die Planung hat einen Lüftungsteil oder zumindest ein Zu- und Abluftschema für jeden Raum",
+    "Abluft aus Bädern, Küche und Hauswirtschaftsraum ist Pflicht",
+    "Kanaltrassen und Durchführungen durch die Dampfbremse werden vor dem Ausbau festgelegt",
+    "im Effizienzhaus wird die Luftdichtheit der Hülle vor dem Ausbau gemessen"
+   ]
+  ],
+  [
+   "h2",
+   "So lesen Sie den Aufbau in der Planung"
+  ],
+  [
+   "p",
+   "In Ausführungsplänen wird der Aufbau in Schnitten und Details gezeigt: Jede Schicht ist mit Material und Dicke beschriftet, Anschlüsse sind in größerem Maßstab gezeichnet. Enthält die Planung nur Ansichten und Grundrisse, wählt das Team die Schichten nach eigenem Ermessen, und Angebote lassen sich nicht vergleichen. Vor der Ausschreibung sollten Sie einiges prüfen."
+  ],
+  [
+   "ul",
+   [
+    "jedes Bauteil — Wand, Boden, Dach, Geschossdecke — hat einen eigenen Schnitt",
+    "Dämmstoffart und -dicke, Art der Bahnen und der Dampfbremse sind angegeben",
+    "Details für Sockel, Fenster, Traufe und Ringanker sind gezeichnet",
+    "im Kostenvoranschlag stehen dieselben Materialien und Dicken wie in den Plänen"
+   ]
+  ],
+  [
+   "h2",
+   "Checkliste: den Aufbau prüfen, bevor er verschlossen wird"
+  ],
+  [
+   "ul",
+   [
+    "die Planung enthält Schnitte mit dem Aufbau jedes Bauteils und Anschlussdetails",
+    "die Materialien auf der Baustelle entsprechen der Spezifikation nach Art und Dicke",
+    "die Dämmung liegt satt, mit versetzten Stößen und ohne Fugen",
+    "Bahnen liegen richtig herum, Überlappungen sind verklebt",
+    "die Dampfbremse ist durchgehend, Durchführungen sind abgedichtet",
+    "Lüftungsebenen haben Zu- und Abluft",
+    "verdeckte Schichten werden vor dem Schließen mit Maßband fotografiert"
+   ]
+  ],
+  [
+   "gallery",
+   [
+    [
+     "/img/p/12zoOFlf7uOKqM-900.webp",
+     "Schlafzimmer im Haus Hoda Estate mit Holzdecke und bodentiefen Panoramafenstern"
+    ],
+    [
+     "/img/p/1FRa0FI6iMHK5L-900.webp",
+     "Ein 180-m²-Haus in den Karpaten mit Holz, Stein und Bergblick — Projekt Hoda Estate"
+    ]
+   ]
+  ],
+  [
+   "h2",
+   "So planen und bauen wir die warme Hülle"
+  ],
+  [
+   "p",
+   "In einer CAS-Planung hat jedes Außenbauteil einen Schnitt mit Schichten und Anschlussdetails — das Team erfindet den Aufbau nicht auf der Baustelle. Die Architekturplanung eines Hauses kostet ab $12/m² (Entwurfs- und Ausführungsplanung Architektur und Tragwerk; TGA-Teile nach Auftrag), der Bau ab $600/m², ein schlüsselfertiges Haus ab $1 100/m². Eine grobe Summe für Ihre Fläche liefert der [Rechner](/de/renovierungskosten-rechner)."
+  ],
+  [
+   "p",
+   "Es baut unser eigenes Team, ein Ansprechpartner führt das Projekt, und verdeckte Arbeiten halten wir in Fotoberichten alle 1–2 Wochen fest. Kostenvoranschlag und Fristen stehen vor dem Start im Vertrag, die Gewährleistung auf die Arbeiten beträgt 12 Monate."
+  ]
+ ],
+ "faq": [
+  [
+   "Welche Dämmstärke brauchen die Wände eines Einfamilienhauses?",
+   "Sie ergibt sich aus der wärmetechnischen Berechnung. In der Marktpraxis sind es bei WDVS auf Mauerwerk typisch 100–150 mm, bei einer Holzrahmenwand 150–200 mm zwischen den Ständern, oft mit Zusatzlage. Die konkrete Zahl hängt von Wandbaustoff und Dämmstoff ab."
+  ],
+  [
+   "Braucht ein Porenbetonhaus eine Dampfbremse?",
+   "Eine separate Folie im Mauerwerk ist meist nicht nötig: Die durchgehende Innenputzschicht wirkt als Luftdichtheitsebene. Wichtig ist, dass die Dampfdurchlässigkeit nach außen zunimmt. In Holzrahmenwänden und gedämmten Dächern ist eine Dampfbremse mit verklebten Stößen Pflicht."
+  ],
+  [
+   "Mineralwolle oder Polystyrol für die Fassade?",
+   "Für diffusionsoffene Wände wie Porenbeton wählt man meist Mineralwolle: Sie lässt Feuchte nach außen und brennt nicht. Polystyrol ist günstiger, wird auf Porenbeton aber nur nach Berechnung eingesetzt. Für Fundament und Boden auf Erdreich nimmt man extrudiertes Polystyrol."
+  ],
+  [
+   "Wozu dient die Hinterlüftung unter der Dacheindeckung?",
+   "Durch die Lüftungsebene zwischen Bahn und Eindeckung entweicht Feuchte, die in die Dämmung gelangt ist, und das Dachgeschoss heizt sich im Sommer weniger auf. Ohne Konterlattung und freie Zu- und Abluft wird die Bahn nass, und die Dämmung verliert nach und nach ihre Wirkung."
+  ],
+  [
+   "Bodenplatte unten oder oben dämmen?",
+   "Beides funktioniert. Die Dämmung unter der Platte hält die massive Platte in der warmen Hülle und passt zur Heizung in der Platte; die Dämmung oben ist bei einer klassischen Platte einfacher. In beiden Fällen wird auch die Plattenstirn gedämmt, sonst entsteht ein kalter Randstreifen."
+  ],
+  [
+   "Lässt sich der Aufbau in einem bestehenden Haus korrigieren?",
+   "Oft ja: Die Fassade kann nachgedämmt, das Dach neu aufgebaut, der Boden erneuert werden. Zuerst braucht es aber ein Gutachten — manchmal ist es einfacher, das Bauteil im Rahmen eines Umbaus zu ändern. Wir entscheiden nach Besichtigung und Berechnung."
+  ]
+ ]
+}

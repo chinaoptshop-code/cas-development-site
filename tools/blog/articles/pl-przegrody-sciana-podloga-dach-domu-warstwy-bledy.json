@@ -1,0 +1,353 @@
+{
+ "slug": "przegrody-sciana-podloga-dach-domu-warstwy-bledy",
+ "lang": "pl",
+ "translation_of": "pyrih-stiny-pidlohy-i-pokrivli-pryvatnoho-budynku",
+ "title": "Przegrody ściany, podłogi i dachu domu: warstwy, typowe grubości, błędy",
+ "seo_title": "Ściana, podłoga i dach domu: warstwy i błędy",
+ "description": "Przegrody ściany, podłogi i dachu domu jednorodzinnego: kolejność warstw, typowe grubości ocieplenia, paroizolacja i membrany, węzły i drogie błędy.",
+ "lead": "Układ warstw ściany, podłogi i dachu decyduje o tym, czy w domu będzie ciepło i sucho za dziesięć lat. Błąd w jednej warstwie nie widać od razu: wychodzi jako kondensacja, pleśń w narożnikach, mokra izolacja i rachunki za ogrzewanie. Wyjaśniamy, z czego składa się każda przegroda, jakie grubości są typowe w praktyce rynkowej i gdzie układ najczęściej się «rwie».",
+ "date": "2026-11-01",
+ "service": [
+  "/pl/projekt-domu",
+  "Projekt domu jednorodzinnego"
+ ],
+ "photo": "img/p/1Us4FZpRlnEsqf-900.webp",
+ "photo_alt": "Taras parterowego domu z kominkiem zewnętrznym i zadaszeniem o zachodzie słońca — projekt House 150",
+ "body": [
+  [
+   "h2",
+   "Ściana, podłoga i dach: po co tyle warstw"
+  ],
+  [
+   "p",
+   "Każda przegroda zewnętrzna — ściana, podłoga, dach — pełni jednocześnie kilka funkcji: przenosi obciążenia, trzyma ciepło, zatrzymuje wiatr, chroni przed wodą z zewnątrz i parą wodną od środka. Żaden materiał nie robi tego wszystkiego dobrze, więc przegrodę składa się z warstw, a każda odpowiada za swoje. Od kolejności warstw zależy, dokąd będzie wędrować wilgoć i gdzie może się skroplić."
+  ],
+  [
+   "p",
+   "Główna zasada, która tłumaczy prawie wszystkie węzły: paroprzepuszczalność warstw powinna rosnąć od wewnątrz na zewnątrz. Od środka — szczelna warstwa, która nie wpuszcza ciepłej, wilgotnej pary w przegrodę; od zewnątrz — warstwy chroniące przed wiatrem i deszczem, ale wypuszczające resztki wilgoci. Odwrotnie wilgoć trafia do izolacji i w niej zostaje."
+  ],
+  [
+   "ul",
+   [
+    "warstwa nośna — mur, szkielet, płyta lub krokwie",
+    "termoizolacja — wełna mineralna, styropian, PIR lub inne materiały według projektu",
+    "paroizolacja lub warstwa szczelna od wewnątrz",
+    "wiatro- i wodoizolacja od zewnątrz, przepuszczająca parę",
+    "szczelina wentylacyjna tam, gdzie elewacja lub dach mają «oddychać»",
+    "wykończenie na zewnątrz i wewnątrz"
+   ]
+  ],
+  [
+   "p",
+   "Grubości poniżej to orientacyjne wartości z praktyki rynkowej dla warunków obwodu kijowskiego. Dokładne wartości daje obliczenie cieplne w [projekcie domu](/pl/projekt-domu): uwzględnia konkretne materiały, strefę klimatyczną i wymagania efektywności energetycznej."
+  ],
+  [
+   "h2",
+   "Układ warstw ściany"
+  ],
+  [
+   "h3",
+   "Mur z elewacją w systemie ETICS"
+  ],
+  [
+   "p",
+   "Najczęstszy wariant dla domu z betonu komórkowego czy pustaka ceramicznego. Od środka na zewnątrz: tynk wewnętrzny, mur, klej, płyty izolacji, warstwa zbrojona z siatką z włókna szklanego, grunt i tynk dekoracyjny. Tynk wewnętrzny to tu nie tylko wykończenie: ciągła warstwa bez szczelin działa jako warstwa szczelna, dlatego tynkuje się też ściany za gniazdkami i meblami."
+  ],
+  [
+   "ul",
+   [
+    "mur — typowo 300–400 mm, klasę i grubość określa projekt",
+    "izolacja — typowo 100–150 mm; na betonie komórkowym częściej wełna mineralna ze względu na paroprzepuszczalność",
+    "kołkowanie według schematu producenta, ze wzmocnieniem na narożnikach",
+    "siatka zbrojąca z zakładem, dodatkowe ukośne paski w narożach otworów"
+   ]
+  ],
+  [
+   "h3",
+   "Elewacja wentylowana"
+  ],
+  [
+   "p",
+   "Od środka na zewnątrz: wykończenie, mur, izolacja na kołkach, membrana wiatroizolacyjna lub płyty hydrofobizowane, szczelina wentylacyjna i okładzina na podkonstrukcji — płyty włóknocementowe, ceramika, deska. Szczelina pozwala wilgoci uciec, a okładzina chroni izolację przed deszczem i UV. Kluczowe są otwarty wlot powietrza na dole i wylot u góry, zabezpieczone siatką przed gryzoniami i owadami."
+  ],
+  [
+   "h3",
+   "Ściana szkieletowa"
+  ],
+  [
+   "p",
+   "W [domu szkieletowym](/pl/dom-szkieletowy) ciepło trzyma właśnie izolacja między słupkami, więc jakość warstw jest decydująca. Od środka na zewnątrz: wykończenie (często płyta g-k), przestrzeń instalacyjna na łatach do prowadzenia przewodów, paroizolacja z klejonymi stykami albo płyta z uszczelnionymi stykami jako warstwa szczelna, szkielet z wełną mineralną, płyta lub membrana wiatroizolacyjna, szczelina wentylacyjna i elewacja."
+  ],
+  [
+   "ul",
+   [
+    "izolacja między słupkami — typowo 150–200 mm; dodatkowa warstwa w poprzek słupków ogranicza mostki przez drewno",
+    "przestrzeń instalacyjna pozwala prowadzić kable bez przebijania paroizolacji",
+    "każde przejście rury czy kabla przez paroizolację — z mankietem lub taśmą uszczelniającą"
+   ]
+  ],
+  [
+   "h3",
+   "Cokół i opaska"
+  ],
+  [
+   "p",
+   "Dolna część ściany najbardziej cierpi od rozbryzgów, śniegu i wody roztopowej. Cokół ociepla się materiałem odpornym na wilgoć — zwykle polistyrenem ekstrudowanym — i okłada odporną na uderzenia okładziną. Opaska ze spadkiem od domu i drenaż odprowadzają wodę od fundamentu; ocieplona opaska ogranicza przemarzanie gruntu przy płycie."
+  ],
+  [
+   "h3",
+   "Typowe błędy w ścianach"
+  ],
+  [
+   "ul",
+   [
+    "twardy styropian na betonie komórkowym bez obliczeń — wilgoć zostaje w murze",
+    "ocieplanie mokrej ściany po sezonie deszczowym",
+    "szczeliny między płytami wypełnione pianą lub klejem zamiast wstawek",
+    "paroizolacja z niezaklejonymi stykami lub przebita mocowaniami w szkielecie",
+    "elewacja wentylowana bez wiatroizolacji lub z zamkniętą szczeliną"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1g5cs3iVIpzLju-900.webp",
+   "Basen i taras parterowego domu 150 m² — wizualizacja projektu House 150",
+   "Elewacja i taras: zewnętrzna warstwa ściany chroni izolację przed deszczem i słońcem"
+  ],
+  [
+   "h2",
+   "Układ warstw podłogi"
+  ],
+  [
+   "h3",
+   "Podłoga na gruncie i płyta fundamentowa"
+  ],
+  [
+   "p",
+   "Od dołu do góry: zagęszczony grunt i podsypka z piasku lub tłucznia, chudy beton lub inna podbudowa, hydroizolacja, izolacja z polistyrenu ekstrudowanego, płyta lub jastrych, folia rozdzielająca, jastrych z rurami ogrzewania podłogowego i posadzka. W ocieplonej płycie fundamentowej XPS leży pod całą płytą i na obwodzie, a pętle ogrzewania są w jej wnętrzu. W klasycznej płycie izolację kładzie się na wierzchu, pod jastrychem."
+  ],
+  [
+   "ul",
+   [
+    "XPS pod płytą lub jastrychem — typowo 100–150 mm; obowiązkowo ociepla się też czoło płyty i cokół",
+    "hydroizolację prowadzi się pod izolacją i wywija na ściany",
+    "taśma dylatacyjna na obwodzie jastrychu, dylatacje według projektu",
+    "rury ogrzewania podłogowego — z próbą ciśnieniową przed wylaniem jastrychu"
+   ]
+  ],
+  [
+   "h3",
+   "Podłoga na legarach nad przewietrzaną przestrzenią"
+  ],
+  [
+   "p",
+   "Typowa dla domów drewnianych i szkieletowych na palach lub ławach. Od dołu do góry: membrana lub płyta wiatroizolacyjna pod legarami, izolacja między legarami, paroizolacja na wierzchu, podłoga konstrukcyjna i wykończenie. Przestrzeń pod podłogą wentyluje się otworami, inaczej wilgoć z gruntu zbiera się pod domem."
+  ],
+  [
+   "h3",
+   "Strop międzykondygnacyjny"
+  ],
+  [
+   "p",
+   "Tu chodzi nie o ciepło, a o dźwięk. Na stropie żelbetowym robi się jastrych «pływający» na podkładzie akustycznym, oddzielony od ścian; w drewnianym — wełnę mineralną między belkami, sprężyste wieszaki sufitu i podkład akustyczny pod podłogą. Bez tego kroki z piętra będzie dobrze słychać."
+  ],
+  [
+   "h3",
+   "Typowe błędy w podłogach"
+  ],
+  [
+   "ul",
+   [
+    "nieocieplone czoło płyty — zimny pas na obwodzie pomieszczeń",
+    "jastrych bez taśmy dylatacyjnej: pęknięcia i przenoszenie hałasu na ściany",
+    "zamknięte otwory wentylacyjne pod podłogą",
+    "folia zamiast hydroizolacji pod izolacją na gruncie"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1HZT-E30rREI7d-900.webp",
+   "Salon z jadalnią domu Hoda Estate w Karpatach z drewnianymi belkami, stołem i panoramicznymi oknami",
+   "Strop z drewnianymi belkami: izolację akustyczną zakłada się w układzie przed wykończeniem"
+  ],
+  [
+   "h2",
+   "Układ warstw dachu"
+  ],
+  [
+   "p",
+   "Przez dach dom traci ciepło najintensywniej, bo ciepłe powietrze unosi się w górę, a zimą to dach najdłużej pracuje pod śniegiem i przy wahaniach temperatury. Dlatego izolacja dachu jest zwykle grubsza niż ścian, a wymagania co do paroizolacji i wentylacji — surowsze. Konstrukcję dobiera się zależnie od tego, czy pod dachem będzie poddasze użytkowe, nieużytkowy strych czy płaski dach użytkowy."
+  ],
+  [
+   "h3",
+   "Dach skośny z ocieplonym poddaszem"
+  ],
+  [
+   "p",
+   "Od zewnątrz do środka: pokrycie, łaty, kontrłaty tworzące szczelinę wentylacyjną, membrana wysokoparoprzepuszczalna, izolacja między krokwiami, często dodatkowa warstwa pod krokwiami, paroizolacja z klejonymi stykami, ruszt montażowy i wykończenie. Pod gont dodaje się pełne deskowanie z płyty wodoodpornej i podkład, a szczelina wentylacyjna zostaje pod deskowaniem."
+  ],
+  [
+   "ul",
+   [
+    "izolacja dachu — typowo 200–250 mm i więcej, dokładną grubość daje obliczenie",
+    "szczelina wentylacyjna działa tylko z wlotem powietrza przy okapie i wylotem w kalenicy lub przez wywietrzniki",
+    "membranę kładzie się właściwą stroną i z zakładami, paroizolację klei się do ścian i krokwi",
+    "izolacja ciasno między krokwiami, bez szczelin i bez dociskania do membrany"
+   ]
+  ],
+  [
+   "h3",
+   "Zimny strych"
+  ],
+  [
+   "p",
+   "Jeśli strych jest nieużytkowy, ociepla się strop pod nim, a nie połacie. Paroizolację kładzie się pod izolacją od strony pokoi, a sam strych dobrze się wentyluje. To taniej i pewniej niż ocieplanie nieogrzewanego dachu."
+  ],
+  [
+   "h3",
+   "Dach płaski"
+  ],
+  [
+   "p",
+   "Klasyczny układ od dołu: płyta nośna, paroizolacja, warstwa spadkowa, izolacja, membrana hydroizolacyjna. W dachu odwróconym hydroizolacja leży pod izolacją z XPS, a na wierzchu — balast lub nawierzchnia tarasu. Najczęstsze problemy dachów płaskich to węzły: attyki, wpusty, przejścia instalacji i zbyt mały spadek."
+  ],
+  [
+   "h3",
+   "Typowe błędy w dachu"
+  ],
+  [
+   "ul",
+   [
+    "brak kontrłat — membrana leży na izolacji bez szczeliny wentylacyjnej",
+    "paroizolacja z przerwami w miejscach przejść kabli i wentylacji",
+    "izolacja dachu nie styka się z ociepleniem ściany — zimny węzeł przy okapie",
+    "zakryte otwory wentylacyjne w okapach przy wykończeniu podbitki"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1g-E1m6cFJ9kvH-900.webp",
+   "Dom A-frame z trójkątnym panoramicznym oknem i antresolą — projekt CAS Development",
+   "W A-frame dach jest zarazem ścianą, więc jego układ warstw wymaga szczególnej precyzji"
+  ],
+  [
+   "h2",
+   "Węzły, w których układ najczęściej się rwie"
+  ],
+  [
+   "p",
+   "Złożenie płaszczyzny ściany czy dachu nie jest trudne. Problemy pojawiają się tam, gdzie spotykają się różne przegrody: izolacja i warstwa szczelna muszą przechodzić z jednej w drugą bez przerw."
+  ],
+  [
+   "ul",
+   [
+    "cokół i czoło płyty: izolacja podłogi, cokołu i ściany tworzy jedną ciągłą linię",
+    "wieniec i nadproża: beton ociepla się od zewnątrz, inaczej staje się mostkiem termicznym",
+    "okna: trójwarstwowy montaż i izolacja na ościeżach",
+    "styk ściany z dachem: izolacja ściany spotyka się z izolacją dachu, paroizolacja zachodzi na ścianę",
+    "przejścia instalacji, płyty balkonowe, kominy — uszczelnienia i przekładki termiczne"
+   ]
+  ],
+  [
+   "h2",
+   "Szczelność i wentylacja: druga strona ciepłej obudowy"
+  ],
+  [
+   "p",
+   "Im lepiej ocieplony i szczelniejszy dom, tym mniej powietrza wymienia się przez nieszczelności. To dobre dla ciepła, ale wilgoć z oddechu, kuchni i prysznica przestaje uchodzić sama. Dlatego ciepłą obudowę projektuje się razem z wentylacją: grawitacyjną z przemyślanymi nawiewami i kanałami wywiewnymi albo mechaniczną z odzyskiem ciepła. Inaczej kondensat pojawia się na najzimniejszych powierzchniach — ościeżach, narożnikach, stykach ściany z sufitem."
+  ],
+  [
+   "ul",
+   [
+    "projekt ma część wentylacyjną lub przynajmniej schemat nawiewu i wywiewu dla każdego pomieszczenia",
+    "wywiew z łazienek, kuchni i pralni — obowiązkowo",
+    "trasy kanałów i przejścia przez paroizolację planuje się przed wykończeniem",
+    "w domu energooszczędnym szczelność obudowy sprawdza się przed pracami wykończeniowymi"
+   ]
+  ],
+  [
+   "h2",
+   "Jak czytać układ warstw w projekcie"
+  ],
+  [
+   "p",
+   "W rysunkach wykonawczych układ warstw pokazuje się na przekrojach i w detalach: każda warstwa jest opisana materiałem i grubością, a węzły rysuje się w większej skali. Jeśli w projekcie są tylko elewacje i rzuty, ekipa dobierze warstwy według uznania, a porównanie ofert wykonawców będzie niemożliwe. Przed przetargiem warto sprawdzić kilka rzeczy."
+  ],
+  [
+   "ul",
+   [
+    "każda przegroda — ściana, podłoga, dach, strop — ma osobny przekrój",
+    "podane są rodzaje i grubości izolacji, typ membran i paroizolacji",
+    "narysowane są detale cokołu, okna, okapu i wieńca",
+    "w kosztorysie są te same materiały i grubości co na rysunkach"
+   ]
+  ],
+  [
+   "h2",
+   "Lista kontrolna: jak sprawdzić warstwy, zanim się je zakryje"
+  ],
+  [
+   "ul",
+   [
+    "projekt zawiera przekroje z warstwami każdej przegrody i detale węzłów",
+    "materiały na budowie zgadzają się ze specyfikacją co do rodzaju i grubości",
+    "izolacja ułożona ciasno, z przesuniętymi stykami, bez szczelin",
+    "membrany ułożone właściwą stroną, zakłady zaklejone",
+    "paroizolacja ciągła, przejścia uszczelnione",
+    "szczeliny wentylacyjne mają wlot i wylot powietrza",
+    "ukryte warstwy sfotografowane z miarką przed zakryciem"
+   ]
+  ],
+  [
+   "gallery",
+   [
+    [
+     "/img/p/12zoOFlf7uOKqM-900.webp",
+     "Sypialnia domu Hoda Estate z drewnianym sufitem i panoramicznymi oknami do podłogi"
+    ],
+    [
+     "/img/p/1FRa0FI6iMHK5L-900.webp",
+     "Dom 180 m² w Karpatach z drewnem, kamieniem i widokiem na góry — projekt Hoda Estate"
+    ]
+   ]
+  ],
+  [
+   "h2",
+   "Jak projektujemy i budujemy ciepłą obudowę"
+  ],
+  [
+   "p",
+   "W projekcie CAS każda przegroda ma przekrój z warstwami i detale węzłów — ekipa nie wymyśla układu na budowie. Projekt architektoniczny domu — od $12/m² (koncepcja i projekt wykonawczy architektury i konstrukcji; branże instalacyjne według zlecenia), budowa — od $600/m², dom pod klucz — od $1 100/m². Orientacyjną kwotę dla swojej powierzchni policzysz w [kalkulatorze](/pl/kalkulator-remontu)."
+  ],
+  [
+   "p",
+   "Buduje nasz własny zespół, obiekt prowadzi jeden menedżer, prace zanikające dokumentujemy w raportach zdjęciowych co 1–2 tygodnie. Kosztorys i terminy są w umowie przed startem, gwarancja na prace — 12 miesięcy."
+  ]
+ ],
+ "faq": [
+  [
+   "Jakiej grubości izolacji potrzebują ściany domu?",
+   "Określa ją obliczenie cieplne w projekcie. W praktyce rynkowej dla ETICS na murze to typowo 100–150 mm, dla ściany szkieletowej — 150–200 mm między słupkami, często z dodatkową warstwą. Konkretna liczba zależy od materiału ściany i izolacji."
+  ],
+  [
+   "Czy dom z betonu komórkowego potrzebuje paroizolacji?",
+   "Osobna folia w ścianie murowanej zwykle nie jest potrzebna: rolę warstwy szczelnej pełni ciągły tynk wewnętrzny. Ważne, by paroprzepuszczalność rosła na zewnątrz. W ścianach szkieletowych i ocieplonym dachu paroizolacja z klejonymi stykami jest obowiązkowa."
+  ],
+  [
+   "Wełna mineralna czy styropian na elewację?",
+   "Dla ścian paroprzepuszczalnych, jak beton komórkowy, częściej wybiera się wełnę mineralną: nie blokuje wilgoci i nie płonie. Styropian jest tańszy, ale na betonie komórkowym stosuje się go tylko po obliczeniach. Do fundamentów i podłogi na gruncie używa się polistyrenu ekstrudowanego."
+  ],
+  [
+   "Po co szczelina wentylacyjna pod pokryciem dachu?",
+   "Przez szczelinę między membraną a pokryciem uchodzi wilgoć, która dostała się do izolacji, a poddasze mniej się przegrzewa latem. Bez kontrłat i swobodnego wlotu i wylotu powietrza membrana moknie, a izolacja stopniowo traci właściwości."
+  ],
+  [
+   "Ocieplać płytę fundamentową od spodu czy od góry?",
+   "Oba warianty działają. Ocieplenie pod płytą zostawia masywną płytę w ciepłej obudowie i pasuje do ogrzewania w płycie; ocieplenie od góry jest prostsze przy klasycznej płycie. W obu przypadkach ociepla się też czoło płyty, inaczej na obwodzie będzie zimny pas."
+  ],
+  [
+   "Czy można poprawić układ warstw w gotowym domu?",
+   "Często tak: elewację można doocieplić, dach przełożyć, podłogę przerobić. Najpierw jednak potrzebna jest ekspertyza — czasem prościej zmienić przegrodę w ramach przebudowy. Decyzję podejmujemy po oględzinach i obliczeniach."
+  ]
+ ]
+}

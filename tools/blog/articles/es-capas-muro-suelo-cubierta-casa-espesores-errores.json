@@ -1,0 +1,353 @@
+{
+ "slug": "capas-muro-suelo-cubierta-casa-espesores-errores",
+ "lang": "es",
+ "translation_of": "pyrih-stiny-pidlohy-i-pokrivli-pryvatnoho-budynku",
+ "title": "Capas de muro, suelo y cubierta de una casa: orden, espesores típicos y errores",
+ "seo_title": "Capas de muro, suelo y cubierta: espesores y errores",
+ "description": "Capas de muro, suelo y cubierta de una vivienda: orden, espesores típicos de aislamiento, barreras de vapor y membranas, encuentros y errores caros.",
+ "lead": "La sección constructiva de muro, suelo y cubierta es el orden de capas del que depende que la casa siga cálida y seca dentro de diez años. Un error en una capa no se ve enseguida: aparece como condensación, moho en las esquinas, aislamiento mojado y facturas de calefacción. Explicamos de qué se compone cada elemento, qué espesores son típicos en la práctica del mercado y dónde se «rompe» más a menudo la sección.",
+ "date": "2026-11-01",
+ "service": [
+  "/es/proyecto-de-casa",
+  "Proyecto y diseño de casa unifamiliar"
+ ],
+ "photo": "img/p/1Us4FZpRlnEsqf-900.webp",
+ "photo_alt": "Terraza de una casa de una planta con chimenea exterior y pérgola al atardecer — proyecto House 150",
+ "body": [
+  [
+   "h2",
+   "Muro, suelo y cubierta: por qué tantas capas"
+  ],
+  [
+   "p",
+   "Cada elemento de la envolvente —muro, suelo, cubierta— cumple varias funciones a la vez: soporta cargas, conserva el calor, frena el viento, protege del agua exterior y del vapor interior. Ningún material hace bien todo esto, por eso el elemento se compone de capas y cada una se encarga de lo suyo. Del orden de las capas depende hacia dónde se mueve la humedad y dónde puede condensar."
+  ],
+  [
+   "p",
+   "La regla principal que explica casi todos los encuentros: la permeabilidad al vapor de las capas debe aumentar de dentro hacia fuera. Dentro va una capa estanca que impide que el vapor cálido entre en el elemento; fuera, capas que protegen del viento y la lluvia pero dejan salir la humedad residual. Si se hace al revés, la humedad entra en el aislamiento y se queda allí."
+  ],
+  [
+   "ul",
+   [
+    "capa portante: fábrica, entramado, losa o cabios",
+    "aislamiento térmico: lana mineral, poliestireno, PIR u otros materiales según proyecto",
+    "barrera de vapor o capa estanca al aire por el interior",
+    "protección contra viento y humedad por el exterior, permeable al vapor",
+    "cámara ventilada donde la fachada o la cubierta deben «respirar»",
+    "acabados exterior e interior"
+   ]
+  ],
+  [
+   "p",
+   "Los espesores siguientes son referencias de la práctica del mercado para el clima de la región de Kiev. Los valores exactos los da el cálculo térmico del [proyecto de la casa](/es/proyecto-de-casa): tiene en cuenta los materiales concretos, la zona climática y los requisitos de eficiencia energética."
+  ],
+  [
+   "h2",
+   "Sección del muro"
+  ],
+  [
+   "h3",
+   "Fábrica con fachada enfoscada (SATE)"
+  ],
+  [
+   "p",
+   "La opción más extendida para casas de hormigón celular o bloque cerámico. De dentro afuera: enlucido interior, fábrica, adhesivo, placas de aislamiento, capa base armada con malla de fibra de vidrio, imprimación y revoco decorativo. El enlucido interior aquí no es solo acabado: una capa continua sin rendijas funciona como capa estanca, por eso también se enlucen las paredes tras enchufes y muebles."
+  ],
+  [
+   "ul",
+   [
+    "fábrica: típicamente 300–400 mm, tipo y espesor según proyecto",
+    "aislamiento: típicamente 100–150 mm; sobre hormigón celular se prefiere lana mineral por su permeabilidad",
+    "fijación mecánica según el esquema del fabricante, reforzada en esquinas",
+    "malla con solapes y refuerzos en diagonal en las esquinas de huecos"
+   ]
+  ],
+  [
+   "h3",
+   "Fachada ventilada"
+  ],
+  [
+   "p",
+   "De dentro afuera: acabado, fábrica, aislamiento con espigas, membrana cortavientos o placas hidrofugadas, cámara ventilada y revestimiento sobre subestructura: paneles de fibrocemento, cerámica, tabla de madera. La cámara deja salir la humedad y el revestimiento protege el aislamiento de la lluvia y los UV. Lo clave es una entrada de aire abierta abajo y una salida arriba, protegidas con malla contra roedores e insectos."
+  ],
+  [
+   "h3",
+   "Muro de entramado"
+  ],
+  [
+   "p",
+   "En una [casa de entramado ligero](/es/casa-entramado-madera) el calor lo retiene el aislamiento entre montantes, así que la calidad de las capas es decisiva. De dentro afuera: acabado (a menudo placa de yeso), trasdosado para instalaciones sobre rastrel, barrera de vapor con juntas encintadas o tablero con juntas selladas como capa estanca, entramado con lana mineral, tablero o membrana cortavientos, cámara ventilada y fachada."
+  ],
+  [
+   "ul",
+   [
+    "aislamiento entre montantes: típicamente 150–200 mm; una capa extra cruzada reduce los puentes térmicos de la madera",
+    "el trasdosado permite pasar cables sin perforar la barrera de vapor",
+    "cada paso de tubo o cable por la barrera de vapor lleva manguito o cinta de sellado"
+   ]
+  ],
+  [
+   "h3",
+   "Zócalo y acera perimetral"
+  ],
+  [
+   "p",
+   "La parte baja del muro es la que más sufre por salpicaduras, nieve y deshielo. El zócalo se aísla con un material que no teme la humedad —normalmente poliestireno extruido— y se reviste con un acabado resistente a golpes. Una acera con pendiente hacia fuera y un drenaje alejan el agua de la cimentación; si la acera está aislada, el terreno junto a la losa se hiela menos."
+  ],
+  [
+   "h3",
+   "Errores típicos en muros"
+  ],
+  [
+   "ul",
+   [
+    "poliestireno denso sobre hormigón celular sin cálculo: la humedad queda atrapada en la fábrica",
+    "aislar un muro húmedo tras la temporada de lluvias",
+    "juntas entre placas rellenas de espuma o adhesivo en lugar de piezas",
+    "barrera de vapor con juntas sin encintar o perforada por fijaciones en el entramado",
+    "fachada ventilada sin cortavientos o con la cámara cerrada"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1g5cs3iVIpzLju-900.webp",
+   "Piscina y terraza de una casa de una planta de 150 m² — visualización del proyecto House 150",
+   "Fachada y terraza: la capa exterior del muro protege el aislamiento de la lluvia y el sol"
+  ],
+  [
+   "h2",
+   "Sección del suelo"
+  ],
+  [
+   "h3",
+   "Solera sobre terreno y losa de cimentación"
+  ],
+  [
+   "p",
+   "De abajo arriba: terreno compactado y encachado de arena o grava, hormigón de limpieza u otra base, impermeabilización, aislamiento de poliestireno extruido, losa o solera, lámina separadora, mortero con los tubos del suelo radiante y pavimento. En la losa aislada tipo sueca, el XPS va bajo toda la losa y en el perímetro, y los circuitos de calefacción dentro de la losa. En la losa convencional el aislamiento va encima, bajo el mortero."
+  ],
+  [
+   "ul",
+   [
+    "XPS bajo losa o solera: típicamente 100–150 mm; también se aíslan el canto de la losa y el zócalo",
+    "la impermeabilización va bajo el aislamiento y se sube por los muros",
+    "banda perimetral en el mortero y juntas de dilatación según proyecto",
+    "los tubos del suelo radiante se prueban a presión antes de verter el mortero"
+   ]
+  ],
+  [
+   "h3",
+   "Forjado de viguetas sobre cámara ventilada"
+  ],
+  [
+   "p",
+   "Propio de casas de madera y entramado sobre pilotes o zapata corrida. De abajo arriba: membrana o tablero cortavientos bajo las viguetas, aislamiento entre viguetas, barrera de vapor encima, tablero base y pavimento. La cámara se ventila con rejillas; si no, la humedad del terreno se acumula bajo la casa."
+  ],
+  [
+   "h3",
+   "Forjado entre plantas"
+  ],
+  [
+   "p",
+   "Aquí el objetivo no es el calor, sino el sonido. En un forjado de hormigón se hace un mortero «flotante» sobre lámina acústica desolidarizado de los muros; en uno de madera, lana mineral entre vigas, cuelgues elásticos del techo y lámina acústica bajo el pavimento. Sin esto, los pasos del piso de arriba se oirán claramente."
+  ],
+  [
+   "h3",
+   "Errores típicos en suelos"
+  ],
+  [
+   "ul",
+   [
+    "canto de losa sin aislar: una franja fría en el perímetro de las estancias",
+    "mortero sin banda perimetral: fisuras y ruido transmitido a los muros",
+    "rejillas de la cámara tapadas",
+    "lámina en lugar de impermeabilización bajo el aislamiento sobre terreno"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1HZT-E30rREI7d-900.webp",
+   "Salón-comedor de la casa Hoda Estate en los Cárpatos con vigas de madera, mesa de comedor y ventanales",
+   "Forjado con vigas de madera: el aislamiento acústico se incluye en la sección antes de los acabados"
+  ],
+  [
+   "h2",
+   "Sección de la cubierta"
+  ],
+  [
+   "p",
+   "Por la cubierta es por donde más calor pierde una casa, porque el aire caliente sube, y en invierno es la cubierta la que más tiempo trabaja bajo la nieve y los cambios de temperatura. Por eso el aislamiento de la cubierta suele ser más grueso que el de los muros, y las exigencias de control de vapor y ventilación, más estrictas. La solución se elige según haya bajo cubierta una buhardilla habitable, un desván no habitable o una cubierta plana transitable."
+  ],
+  [
+   "h3",
+   "Cubierta inclinada con buhardilla aislada"
+  ],
+  [
+   "p",
+   "De fuera adentro: cubrición, rastreles, contrarrastreles que forman la cámara ventilada, membrana transpirable, aislamiento entre cabios, a menudo una capa extra bajo los cabios, barrera de vapor con juntas encintadas, rastrel de instalaciones y acabado. Bajo teja asfáltica se añade un entablado continuo de tablero resistente a la humedad y una lámina base, dejando la cámara ventilada bajo el entablado."
+  ],
+  [
+   "ul",
+   [
+    "aislamiento de cubierta: típicamente 200–250 mm o más, el espesor exacto lo da el cálculo",
+    "la cámara solo funciona con entrada de aire en el alero y salida en la cumbrera o por aireadores",
+    "la membrana se coloca por la cara correcta y con solapes; la barrera de vapor se encinta a muros y cabios",
+    "aislamiento ajustado entre cabios, sin huecos y sin presionar la membrana"
+   ]
+  ],
+  [
+   "h3",
+   "Desván frío"
+  ],
+  [
+   "p",
+   "Si el desván no es habitable, se aísla el forjado bajo él y no los faldones. La barrera de vapor va bajo el aislamiento por el lado de las estancias, y el desván se ventila bien. Es más barato y fiable que aislar una cubierta que no se calefacta."
+  ],
+  [
+   "h3",
+   "Cubierta plana"
+  ],
+  [
+   "p",
+   "Esquema clásico de abajo arriba: losa portante, barrera de vapor, capa de formación de pendientes, aislamiento, membrana impermeabilizante. En la cubierta invertida la impermeabilización va bajo el aislamiento de XPS, con lastre o pavimento de terraza encima. Los problemas más frecuentes de las cubiertas planas están en los encuentros: petos, sumideros, pasos de instalaciones y pendiente insuficiente."
+  ],
+  [
+   "h3",
+   "Errores típicos en cubiertas"
+  ],
+  [
+   "ul",
+   [
+    "sin contrarrastrel: la membrana apoya en el aislamiento sin cámara ventilada",
+    "barrera de vapor rota en los pasos de cables y ventilación",
+    "el aislamiento de cubierta no enlaza con el del muro: un puente frío en el alero",
+    "rejillas del alero tapadas al rematar los sofitos"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1g-E1m6cFJ9kvH-900.webp",
+   "Casa A-frame con ventanal triangular y altillo — proyecto de diseño de CAS Development",
+   "En una A-frame la cubierta también es muro, por eso su sección exige especial precisión"
+  ],
+  [
+   "h2",
+   "Encuentros donde más se rompe la sección"
+  ],
+  [
+   "p",
+   "Montar el plano de un muro o una cubierta no es difícil. Los problemas aparecen donde se encuentran elementos distintos: el aislamiento y la capa estanca deben pasar de uno a otro sin interrupciones."
+  ],
+  [
+   "ul",
+   [
+    "zócalo y canto de losa: el aislamiento de suelo, zócalo y muro forma una línea continua",
+    "zuncho y dinteles: el hormigón se aísla por fuera, si no se convierte en puente térmico",
+    "ventanas: junta de montaje en tres capas y aislamiento en los derrames",
+    "encuentro muro-cubierta: el aislamiento del muro se une al de la cubierta y la barrera de vapor sube al muro",
+    "pasos de instalaciones, losas de balcón, chimeneas: sellado y rotura de puente térmico"
+   ]
+  ],
+  [
+   "h2",
+   "Estanqueidad y ventilación: la otra cara de la envolvente"
+  ],
+  [
+   "p",
+   "Cuanto mejor aislada y más estanca es una casa, menos aire se renueva por rendijas. Es bueno para el calor, pero la humedad de la respiración, la cocina y la ducha ya no sale sola. Por eso la envolvente se proyecta junto con la ventilación: natural, con admisiones y conductos de extracción bien pensados, o mecánica con recuperación de calor. Si no, la condensación aparece en las superficies más frías: derrames, esquinas, encuentros muro-techo."
+  ],
+  [
+   "ul",
+   [
+    "el proyecto tiene un apartado de ventilación o al menos un esquema de admisión y extracción por estancia",
+    "la extracción en baños, cocina y lavadero es obligatoria",
+    "los recorridos de conductos y los pasos por la barrera de vapor se prevén antes de los acabados",
+    "en una casa de alta eficiencia se prueba la estanqueidad de la envolvente antes de los acabados"
+   ]
+  ],
+  [
+   "h2",
+   "Cómo leer la sección en el proyecto"
+  ],
+  [
+   "p",
+   "En los planos de ejecución la sección se muestra en cortes y detalles: cada capa lleva material y espesor, y los encuentros se dibujan a mayor escala. Si el proyecto solo tiene alzados y plantas, el equipo elegirá las capas a su criterio y no se podrán comparar las ofertas de contratistas. Antes de licitar conviene comprobar varias cosas."
+  ],
+  [
+   "ul",
+   [
+    "cada elemento —muro, suelo, cubierta, forjado— tiene su propio corte",
+    "se indican tipos y espesores de aislamiento, tipo de membranas y barrera de vapor",
+    "están dibujados los detalles de zócalo, ventana, alero y zuncho",
+    "el presupuesto recoge los mismos materiales y espesores que los planos"
+   ]
+  ],
+  [
+   "h2",
+   "Lista: cómo revisar la sección antes de cerrarla"
+  ],
+  [
+   "ul",
+   [
+    "el proyecto tiene cortes con la sección de cada elemento y detalles de encuentros",
+    "los materiales en obra coinciden con la especificación en tipo y espesor",
+    "el aislamiento está colocado ajustado, con juntas a matajunta y sin huecos",
+    "las membranas están por la cara correcta y los solapes encintados",
+    "la barrera de vapor es continua y los pasos están sellados",
+    "las cámaras ventiladas tienen entrada y salida de aire",
+    "las capas ocultas se fotografían con cinta métrica antes de cerrarlas"
+   ]
+  ],
+  [
+   "gallery",
+   [
+    [
+     "/img/p/12zoOFlf7uOKqM-900.webp",
+     "Dormitorio de la casa Hoda Estate con techo de madera y ventanales hasta el suelo"
+    ],
+    [
+     "/img/p/1FRa0FI6iMHK5L-900.webp",
+     "Casa de 180 m² en los Cárpatos con madera, piedra y vistas a la montaña — proyecto Hoda Estate"
+    ]
+   ]
+  ],
+  [
+   "h2",
+   "Cómo proyectamos y construimos la envolvente"
+  ],
+  [
+   "p",
+   "En un proyecto de CAS cada elemento de la envolvente tiene un corte con sus capas y los detalles de encuentros: el equipo no se inventa la sección en obra. El proyecto arquitectónico de la casa cuesta desde $12/m² (anteproyecto y proyecto de ejecución de arquitectura y estructura; instalaciones según encargo), la construcción desde $600/m² y la casa llave en mano desde $1 100/m². Puede calcular una cifra orientativa para su superficie en la [calculadora](/es/calculadora-reforma)."
+  ],
+  [
+   "p",
+   "Construye nuestro propio equipo, un único gestor lleva la obra y los trabajos ocultos se registran en informes fotográficos cada 1–2 semanas. Presupuesto y plazos van en el contrato antes de empezar; la garantía sobre los trabajos es de 12 meses."
+  ]
+ ],
+ "faq": [
+  [
+   "¿Qué espesor de aislamiento necesitan los muros de una casa?",
+   "Lo fija el cálculo térmico del proyecto. En la práctica del mercado es típicamente 100–150 mm en fachada SATE sobre fábrica y 150–200 mm entre montantes en muro de entramado, a menudo con capa extra. La cifra concreta depende del material del muro y del aislamiento."
+  ],
+  [
+   "¿Necesita barrera de vapor una casa de hormigón celular?",
+   "Una lámina aparte en un muro de fábrica no suele ser necesaria: el enlucido interior continuo hace de capa estanca. Lo importante es que la permeabilidad aumente hacia fuera. En muros de entramado y cubiertas aisladas la barrera de vapor con juntas encintadas es obligatoria."
+  ],
+  [
+   "¿Lana mineral o poliestireno para la fachada?",
+   "En muros permeables al vapor, como el hormigón celular, se elige más a menudo lana mineral: deja salir la humedad y no arde. El poliestireno es más barato, pero sobre hormigón celular solo se usa con cálculo. Para cimentación y suelo sobre terreno se usa poliestireno extruido."
+  ],
+  [
+   "¿Para qué sirve la cámara ventilada bajo cubierta?",
+   "Por la cámara entre membrana y cubrición sale la humedad que ha entrado en el aislamiento y se reduce el sobrecalentamiento de la buhardilla en verano. Sin contrarrastrel ni entrada y salida de aire libres, la membrana se moja y el aislamiento pierde propiedades poco a poco."
+  ],
+  [
+   "¿La losa de cimentación se aísla por debajo o por encima?",
+   "Ambas opciones funcionan. Aislar bajo la losa deja la masa de la losa dentro de la envolvente y va bien con suelo radiante en la losa; aislar por encima es más sencillo en una losa convencional. En ambos casos se aísla también el canto, o habrá una franja fría en el perímetro."
+  ],
+  [
+   "¿Se puede corregir la sección en una casa ya construida?",
+   "A menudo sí: la fachada se puede reaislar, la cubierta rehacer y el suelo renovar. Pero primero hace falta una inspección: a veces es más sencillo cambiar el elemento dentro de una rehabilitación. Decidimos tras la visita y el cálculo."
+  ]
+ ]
+}
