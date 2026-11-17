@@ -203,10 +203,18 @@
    [
     "/pt/remodelacao-moradia",
     "Remodelação de moradia"
+   ],
+   [
+    "/pt/reconstrucao-de-moradias",
+    "Reconstrução de moradias"
    ]
   ]
  ],
  "rel": [
+  [
+   "/pt/preco-remodelacao-apartamento",
+   "Preço da remodelação"
+  ],
   [
    "/pt/mobiliario-chave-na-mao",
    "Mobiliário chave na mão"
