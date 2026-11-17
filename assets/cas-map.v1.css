@@ -4,7 +4,7 @@
 .cmap-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:opacity .6s ease}
 .cmap-ready .cmap-poster{opacity:0;pointer-events:none}
 .cmap .cmap-cv{position:absolute;inset:0;width:100%;height:100%}
-.cmap-go{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:2;min-height:44px;padding:10px 20px;border:1px solid #bf9148;border-radius:999px;background:rgba(13,12,11,.82);color:#ede8df;font:600 var(--fs-small,.8125rem)/1 var(--M,"Manrope","Manrope Fallback",sans-serif);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(4px)}
+.cmap-go{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:2;min-height:44px;padding:10px 20px;border:1px solid #bf9148;border-radius:999px;background:rgba(13,12,11,.82);color:#ede8df;font:600 var(--fs-small,.8125rem)/1 var(--M,"Manrope","Manrope Fallback",sans-serif);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .cmap-go:hover,.cmap-go:focus-visible{background:#bf9148;color:#0d0c0b}
 .cmap-go[hidden],.cmap-fly[hidden]{display:none}
 .cmap-loading::after{content:"";position:absolute;left:50%;top:50%;width:28px;height:28px;margin:-14px 0 0 -14px;border:2px solid rgba(191,145,72,.3);border-top-color:#bf9148;border-radius:50%;animation:cmap-spin .9s linear infinite;z-index:3}
