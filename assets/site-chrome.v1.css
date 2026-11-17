@@ -845,9 +845,11 @@ html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.pr
   .scf-col b{margin-bottom:6px}
   .scf .scf-svc{margin-top:20px;padding-top:8px}
   .scf-bot{margin-top:8px;padding-top:4px;gap:0}
-  /* 9 кодів в один ряд на всю ширину екрана (без бічних полів і проміжків): клітинка ≥ 44 px з 396 px (warn-fix 16.11.2026; на 360 — 40 px) */
+  /* коди мов в один ряд на всю ширину екрана (з 440 px; вужче — два ряди нижче) (без бічних полів і проміжків): клітинка ≥ 44 px з 396 px (warn-fix 16.11.2026; на 360 — 40 px) */
   .scf-langs{width:calc(100% + 32px);margin-inline:-16px;gap:0;justify-content:space-between}
   .scf-langs a,.scf-langs span{min-width:0;flex:1 1 0}
+  /* 10 кодів (з pt, 17.11.2026): вужче 440 px клітинка < 44 px — два рівні ряди по 5 (кожна ≥ 68 px на 344) */
+  @media(max-width:439px){.scf-langs{display:grid;grid-template-columns:repeat(5,1fr)}}
   body:has(.mbar[data-one]):has(.scf){padding-bottom:0}
   body:has(.mbar[data-one]) .scf{padding-bottom:calc(14px + env(safe-area-inset-bottom))}
   body:has(.mbar[data-one]) .scf-legal{flex-direction:column;align-items:flex-start;gap:0;min-height:48px;padding-inline-end:11.5rem;line-height:1.35;overflow-wrap:break-word;hyphens:auto}  /* 320 px (WCAG 1.4.10, зум 400 %): довге слово поруч із пігулкою переноситься, без горизонтальної прокрутки */

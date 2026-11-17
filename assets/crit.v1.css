@@ -528,6 +528,7 @@ html body main>.hx-home+section.xs-strip{padding-top:calc(env(viewport-segment-t
 .scf-bot{margin-top:8px;padding-top:4px;gap:0}
 .scf-langs{width:calc(100% + 32px);margin-inline:-16px;gap:0;justify-content:space-between}
 .scf-langs a,.scf-langs span{min-width:0;flex:1 1 0}
+@media(max-width:439px){.scf-langs{display:grid;grid-template-columns:repeat(5,1fr)}}
 body:has(.mbar[data-one]):has(.scf){padding-bottom:0}}
 .hxl{position:relative;isolation:isolate;overflow:hidden}
 .hxl>.hx-bg,.hxl>.hx-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;background:var(--bg2,#100e0c)}
