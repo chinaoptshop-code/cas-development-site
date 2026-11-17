@@ -2,7 +2,7 @@
  "slug": "suivi-de-chantier",
  "lang": "fr",
  "service": "Suivi de chantier architecte et technique",
- "title": "Suivi de chantier par l’architecte et suivi technique à Kyiv | CAS",
+ "title": "Suivi de chantier architecte et technique à Kyiv | CAS",
  "description": "Suivi de l’architecte et suivi technique des travaux à Kyiv : conformité au projet, ouvrages cachés, rapports photo toutes les 1 à 2 semaines.",
  "h1": "Suivi de chantier : architecte et technique",
  "price": "coût sur devis, selon le bien et la fréquence des visites",
@@ -168,6 +168,10 @@
   [
    "/fr/renovation-cle-en-main",
    "Rénovation clé en main"
+  ],
+  [
+   "/fr/renovation-appartement",
+   "Rénovation d’appartement clé en main"
   ],
   [
    "/fr/renovation-maison-cle-en-main",

@@ -1,0 +1,202 @@
+{
+ "slug": "cena-projektu-wnetrza",
+ "lang": "pl",
+ "service": "Projekt wnętrza",
+ "title": "Cena projektu wnętrza w Kijowie — cennik CAS od $30/m²",
+ "description": "Cennik CAS na projekt wnętrza w Kijowie: układ od $6/m², projekt od $30/m² (min. $2 500), z nadzorem autorskim od $45/m². Wycenimy Twój projekt.",
+ "h1": "Cena projektu wnętrza w Kijowie: cennik i pakiety",
+ "price": "od $30 / m² · minimalny projekt $2 500",
+ "lead": "Projekt wnętrza w CAS Development w Kijowie kosztuje od $30 za m², minimum $2 500 za projekt. W cenie są układ, wizualizacje 3D, rysunki wykonawcze dla ekipy i specyfikacja materiałów. Poniżej przykłady wyliczeń dla mieszkania i domu oraz co wpływa na sumę.",
+ "cards": [
+  [
+   "Układ",
+   [
+    "pomiary i inwentaryzacja",
+    "warianty układu",
+    "rozmieszczenie mebli",
+    "schematy światła i gniazdek"
+   ]
+  ],
+  [
+   "3D i styl",
+   [
+    "koncepcja i styl",
+    "wizualizacje 3D pomieszczeń",
+    "dobór kolorów i faktur",
+    "poprawki do akceptacji"
+   ]
+  ],
+  [
+   "Rysunki",
+   [
+    "rysunki wykonawcze dla ekipy",
+    "elektryka, hydraulika, sufity, podłogi",
+    "dobór płytek i wykończeń",
+    "specyfikacja materiałów"
+   ]
+  ],
+  [
+   "Budżet",
+   [
+    "dobór mebli i oświetlenia",
+    "kosztorys remontu według projektu",
+    "±5% kosztorysu, jeśli remont robi CAS",
+    "nadzór autorski — osobno"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Ile kosztuje projekt mieszkania: przykłady",
+   [
+    "Cena projektu to powierzchnia × $30, ale nie mniej niż $2 500. Dlatego dla mieszkań do 83 m² obowiązuje minimum: projekt mieszkania 60 m² kosztuje $2 500. Dla 120 m² to 120 × $30, dla domu 400 m² — od $12 000 (400 × $30).",
+    "Dokładną kwotę podajemy po zapoznaniu się z obiektem: zależy od powierzchni, liczby pomieszczeń, złożoności układu i zakresu rysunków. Konsultacja telefoniczna jest bezpłatna — od razu podamy orientację.",
+    "Dla pełnego budżetu przy typowych metrażach: remont pod klucz od $550/m² (robocizna i materiały budowlane) i umeblowanie od $250/m²."
+   ]
+  ],
+  [
+   "Dlaczego projekt zwraca się przy remoncie",
+   [
+    "Projekt wnętrza to nie tylko ładne 3D. Rysunki wykonawcze i specyfikacja pozwalają przygotować dokładny kosztorys remontu przed startem, a ekipie pracować bez zgadywania i przeróbek. Jeśli CAS wykonuje remont według naszego projektu, suma nie odbiega od kosztorysu o więcej niż ±5%.",
+    "Projektujemy z uwzględnieniem realnych cen materiałów i mebli, więc wnętrze z wizualizacji mieści się w budżecie. Część mebli, oświetlenia i dekoracji można zamówić bezpośrednio w fabrykach w Chinach, bez pośredników, w ramach kompletacji wnętrz."
+   ]
+  ],
+  [
+   "Studio czy projektant indywidualny",
+   [
+    "W studiu nad projektem pracuje zespół — architekt, projektant, inżynierowie i kosztorysant — a po projekcie jeden zespół prowadzi remont, kompletację i odbiór."
+   ]
+  ]
+ ],
+ "steps": [
+  [
+   "Brief",
+   "Powierzchnia, styl życia, oczekiwania, budżet."
+  ],
+  [
+   "Pomiar",
+   "Pomiary i inwentaryzacja."
+  ],
+  [
+   "Układ",
+   "Warianty i rozmieszczenie mebli."
+  ],
+  [
+   "Koncepcja i 3D",
+   "Styl, materiały, wizualizacje."
+  ],
+  [
+   "Rysunki",
+   "Rysunki wykonawcze i specyfikacja."
+  ],
+  [
+   "Kosztorys",
+   "Kosztorys remontu według projektu."
+  ]
+ ],
+ "faq": [
+  [
+   "Ile kosztuje projekt wnętrza w Kijowie za m²?",
+   "Od $30 za m², minimalny budżet projektu $2 500. Dla mieszkań do 83 m² obowiązuje minimum, powyżej — powierzchnia × $30."
+  ],
+  [
+   "Ile kosztuje projekt mieszkania 60 m²?",
+   "$2 500 — minimalna kwota. Dla większej powierzchni — powierzchnia × $30, np. 120 × $30 dla 120 m²."
+  ],
+  [
+   "Co obejmuje projekt?",
+   "Pomiary, warianty układu, wizualizacje 3D, rysunki wykonawcze (elektryka, hydraulika, sufity, podłogi), specyfikację materiałów i mebli, kosztorys remontu."
+  ],
+  [
+   "Ile kosztują usługi projektanta z remontem pod klucz?",
+   "Projekt od $30/m² (minimum $2 500), remont od $550/m² (robocizna i materiały budowlane), umeblowanie od $250/m². Wykończenie, meble i AGD według kosztorysu."
+  ],
+  [
+   "Czy można zamówić sam projekt?",
+   "Tak. Rysunki przygotowujemy tak, by mogła z nich pracować każda ekipa; nadzór autorski — osobno."
+  ],
+  [
+   "Czy projektujecie zdalnie?",
+   "Tak, projekt możemy przygotować też dla obiektu w innym mieście lub kraju."
+  ]
+ ],
+ "guarantees": true,
+ "packages": true,
+ "gallery": [
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1f8h2r5MBlLLf_-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1xskjqBvCXgXuL-900.webp",
+   "Hodos Villa"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "near": [
+  "Projektowanie wnętrz",
+  [
+   [
+    "/pl/projektowanie-wnetrz",
+    "Projektowanie wnętrz"
+   ],
+   [
+    "/pl/projektant-wnetrz",
+    "Projektant wnętrz"
+   ],
+   [
+    "/pl/projekt-wnetrza-mieszkania",
+    "Projekt wnętrza mieszkania"
+   ],
+   [
+    "/pl/projektowanie-wnetrz-domu",
+    "Projekt wnętrza domu"
+   ],
+   [
+    "/pl/projektowanie-biur",
+    "Projekt i remont biura"
+   ],
+   [
+    "/pl/projektowanie-restauracji",
+    "Projektowanie restauracji i kawiarni"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/realizacja-projektu",
+   "Realizacja projektu"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów"
+  ],
+  [
+   "/pl/kontakt",
+   "Kontakt"
+  ]
+ ]
+}

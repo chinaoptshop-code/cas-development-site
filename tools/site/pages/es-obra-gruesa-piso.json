@@ -167,6 +167,10 @@
    [
     "/es/reforma-ligera-piso",
     "Reforma ligera de pisos"
+   ],
+   [
+    "/es/precio-reforma-piso",
+    "Reforma de pisos llave en mano"
    ]
   ]
  ],
@@ -182,6 +186,10 @@
   [
    "/es/reforma-bano",
    "Reforma de baño"
+  ],
+  [
+   "/es/cocinas-armarios-a-medida",
+   "Cocinas y armarios a medida"
   ],
   [
    "/es/calculadora-reforma",

@@ -1,0 +1,216 @@
+{
+ "slug": "renovation-construction-europe",
+ "lang": "en",
+ "service": "Turnkey design, renovation and construction in Europe",
+ "title": "Renovation and construction in Europe — turnkey design by CAS",
+ "description": "Turnkey interior design, renovation and construction in Europe by the Kyiv studio CAS: Poland, Germany, France, Spain. In-house team, contract, “from” prices.",
+ "h1": "Turnkey renovation, design and construction in Europe",
+ "price": "renovation from $850/m² · design from $45/m² · house from $900/m²",
+ "lead": "Renovation and construction in Europe by CAS: design projects, renovation by our own team and turnkey houses for clients who live in Poland, Germany, France, Spain and other countries. One team, a contract and an estimate before the start.",
+ "parent": [
+  "/en/services",
+  "Services"
+ ],
+ "area": [
+  {
+   "@type": "Continent",
+   "name": "Europe"
+  },
+  {
+   "@type": "Country",
+   "name": "Poland"
+  },
+  {
+   "@type": "Country",
+   "name": "Germany"
+  },
+  {
+   "@type": "Country",
+   "name": "France"
+  },
+  {
+   "@type": "Country",
+   "name": "Spain"
+  }
+ ],
+ "facts": [
+  [
+   "from $850",
+   "renovation per m² in Europe"
+  ],
+  [
+   "from $45",
+   "design per m², min. $4,000"
+  ],
+  [
+   "12 mo.",
+   "warranty on works"
+  ],
+  [
+   "In-house team",
+   "salaried staff"
+  ]
+ ],
+ "cards": [
+  [
+   "Interior design",
+   [
+    "measurements and layout solutions",
+    "3D visualisations and working drawings",
+    "materials and furniture specification",
+    "designer supervision"
+   ]
+  ],
+  [
+   "Turnkey renovation",
+   [
+    "new-build and resale apartments",
+    "houses and cottages",
+    "works and rough materials from $850/m²",
+    "estimate before works start"
+   ]
+  ],
+  [
+   "House construction",
+   [
+    "architectural design from $18/m²",
+    "shell from $900/m²",
+    "turnkey with finishes from $1,700/m²",
+    "MEP and roofing"
+   ]
+  ],
+  [
+   "Furniture and procurement",
+   [
+    "furnishing from $400/m²",
+    "custom kitchens and wardrobes",
+    "furniture and lighting from China",
+    "final styling"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Who this service is for",
+   [
+    "For Ukrainians and others who have bought an apartment or house in Europe and want the interior and renovation quality they know from Kyiv projects: a well-planned layout, working drawings, designer supervision and furnishing.",
+    "CAS projects have been and are in Spain, France, Germany and Poland, as well as outside Europe — the Kitana Beach complex in Bodrum (Turkey), properties in Bali, a house in the USA and a villa in Dubai (design project)."
+   ]
+  ],
+  [
+   "How we work in Europe",
+   [
+    "We run the design project online and travel for measurements and key stages. Renovation and construction are carried out by our salaried team; local regulations, permits and contractor requirements differ by country, so the format of works, logistics and team accommodation are agreed individually and fixed in the contract.",
+    "Furniture, lighting and decor can be supplied from China — delivery and customs duties are calculated individually depending on the volume. Invoicing for EU companies is being set up."
+   ]
+  ],
+  [
+   "“From” prices",
+   [
+    "Rates in Europe are about 50% higher than in Kyiv: design project from $45 per m² (minimum $4,000), turnkey renovation from $850 per m² (works and rough materials), shell construction from $900 per m², turnkey with finishes from $1,700 per m². Logistics, site visits and local materials are priced separately — the exact amount will be in the estimate."
+   ]
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "By phone or online: property, tasks, budget."
+  ],
+  [
+   "Survey and brief",
+   "Measurements, wishes, input data."
+  ],
+  [
+   "Design and estimate",
+   "Interior or architecture, price and schedule in the contract."
+  ],
+  [
+   "Works",
+   "Renovation or construction with photo reports."
+  ],
+  [
+   "Handover",
+   "Certificate, 12-month warranty on works."
+  ]
+ ],
+ "faq": [
+  [
+   "Which countries do you work in?",
+   "Projects have been and are in Spain, France, Germany and Poland, as well as Turkey, Bali, the USA and the UAE. Other countries are discussed individually."
+  ],
+  [
+   "Does your own team work in Europe?",
+   "Yes, renovation and construction are carried out by our salaried team. Travel and accommodation terms are individual, in the contract."
+  ],
+  [
+   "Can a European company get an invoice?",
+   "Invoicing for EU companies is being set up; ask the manager about current payment options."
+  ],
+  [
+   "Can I order only a design project for an apartment in Europe?",
+   "Yes, from $45 per m², minimum $4,000: online meetings, 3D, working drawings and specifications."
+  ]
+ ],
+ "guarantees": "no5",
+ "gallery": [
+  [
+   "img/p/1A9yy4nI-gf9h3-900.webp",
+   "Kitana Beach"
+  ],
+  [
+   "img/p/1IWgqOm6pY2p34-900.webp",
+   "Dubai Villa"
+  ],
+  [
+   "img/p/18V9n96tOhjKjh-900.webp",
+   "USA House"
+  ],
+  [
+   "img/p/1iBBOM6KWCT5qH-900.webp",
+   "Hoda Estate"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "near": [
+  "Services",
+  [
+   [
+    "/en/interior-design",
+    "Interior design"
+   ],
+   [
+    "/en/turnkey-renovation",
+    "Turnkey renovation"
+   ],
+   [
+    "/en/house-construction",
+    "House construction"
+   ],
+   [
+    "/en/turnkey-furnishing",
+    "Turnkey furnishing"
+   ],
+   [
+    "/en/house-design",
+    "House design"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/en/contract-warranty-payment",
+   "Contract, warranty, payment (sample contract)"
+  ],
+  [
+   "/en/faq",
+   "FAQ"
+  ],
+  [
+   "/en/contact",
+   "Contact"
+  ]
+ ]
+}

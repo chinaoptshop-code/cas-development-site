@@ -163,6 +163,10 @@
    [
     "/ar/rough-renovation",
     "أعمال التأسيس في الشقق"
+   ],
+   [
+    "/ar/apartment-renovation-cost",
+    "تجديد الشقق بنظام تسليم المفتاح"
    ]
   ]
  ],
@@ -178,6 +182,10 @@
   [
    "/ar/bathroom-renovation",
    "تجديد الحمّام"
+  ],
+  [
+   "/ar/custom-kitchens-wardrobes",
+   "مطابخ وخزائن حسب الطلب"
   ],
   [
    "/ar/renovation-calculator",

@@ -2,7 +2,7 @@
  "slug": "projektowanie-biur",
  "lang": "pl",
  "service": "Projekt i remont biura",
- "title": "Projektowanie biur w Kijowie — od $30/m²: open space i gabinety",
+ "title": "Projektowanie biur w Kijowie — od $30/m² | CAS",
  "description": "Projekt biura w Kijowie od $30/m²: open space, gabinety, sale konferencyjne, akustyka, światło. Remont biura od $350/m², faktura dla firm.",
  "h1": "Projekt i remont biura w Kijowie",
  "price": "projekt od $30 / m² · remont biura od $350 / m²",
@@ -195,6 +195,18 @@
    [
     "/pl/remont-biura",
     "Remont biura"
+   ],
+   [
+    "/pl/koszt-remontu-biura",
+    "Remont biura pod klucz"
+   ],
+   [
+    "/pl/projekt-biura-open-space",
+    "Projekt biura open space"
+   ],
+   [
+    "/pl/wykonczenie-biura-pod-klucz",
+    "Wykończenie biura pod klucz (fit-out)"
    ],
    [
     "/pl/generalny-wykonawca",

@@ -1,0 +1,210 @@
+{
+ "slug": "interior-design-cost",
+ "lang": "en",
+ "service": "Interior design",
+ "title": "Interior design cost in Kyiv — CAS price list from $30/m²",
+ "description": "CAS interior design prices in Kyiv: layout from $6/m², design project from $30/m² (min. $2,500), with designer supervision from $45/m².",
+ "h1": "Interior design cost in Kyiv: prices and packages",
+ "price": "from $30 / m² · minimum project $2,500",
+ "lead": "Interior design at CAS Development in Kyiv costs from $30 per m², with a minimum of $2,500 per project. The price includes layouts, 3D visualisations, working drawings for the crew and a materials specification. Below are calculation examples for an apartment and a house and what affects the total.",
+ "prices": {
+  "h2": "Design, renovation and furnishing for 40, 65, 80 and 120 m²",
+  "p": "The design project is only part of the budget. Here is the lower bound at the studio's base rates for typical areas, if you order renovation and furnishing as well.",
+  "rows": [
+   "design",
+   "repair",
+   "furnish"
+  ]
+ },
+ "cards": [
+  [
+   "Layout",
+   [
+    "measurements and measured plan",
+    "layout options",
+    "furniture arrangement",
+    "lighting and socket plans"
+   ]
+  ],
+  [
+   "3D and style",
+   [
+    "concept and style",
+    "3D visualisations of rooms",
+    "colour and texture selection",
+    "revisions until approval"
+   ]
+  ],
+  [
+   "Drawings",
+   [
+    "working drawings for the crew",
+    "electrics, plumbing, ceilings, floors",
+    "tile and finish selection",
+    "materials specification"
+   ]
+  ],
+  [
+   "Budget",
+   [
+    "furniture and lighting selection",
+    "renovation estimate to the design",
+    "±5% of the estimate if CAS renovates",
+    "designer supervision — separately"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "How much an apartment design project costs: examples",
+   [
+    "The price of a design project is the area × $30, but not less than $2,500. So for apartments up to 83 m² the minimum applies: a 60 m² apartment design costs $2,500. For a 120 m² apartment it is 120 × $30, for a 400 m² house from $12,000 (400 × $30).",
+    "We quote the exact amount after seeing the property: it depends on area, number of rooms, complexity of the layout and the scope of drawings. A phone consultation is free — we will give a benchmark right away."
+   ]
+  ],
+  [
+   "Why design pays for itself during renovation",
+   [
+    "A design project is not just beautiful 3D. Working drawings and the specification make it possible to prepare an accurate renovation estimate before the start, and let the crew work without guesswork and rework. If CAS carries out the renovation to our design, the total stays within ±5% of the estimate.",
+    "We design with real prices for materials and furniture in mind, so the interior from the visualisations fits the budget. Part of the furniture, lighting and decor can be ordered directly from factories in China, without intermediaries, through turnkey procurement."
+   ]
+  ],
+  [
+   "Design studio or freelance designer: the difference",
+   [
+    "In a studio a team works on the project — architect, designer, engineers and estimator — and after the design one team handles renovation, procurement and handover."
+   ]
+  ]
+ ],
+ "steps": [
+  [
+   "Brief",
+   "Area, lifestyle, wishes, budget."
+  ],
+  [
+   "Survey",
+   "Measurements and measured plan."
+  ],
+  [
+   "Layout",
+   "Options and furniture arrangement."
+  ],
+  [
+   "Concept and 3D",
+   "Style, materials, visualisations."
+  ],
+  [
+   "Drawings",
+   "Working drawings and specification."
+  ],
+  [
+   "Estimate",
+   "Renovation estimate to the design."
+  ]
+ ],
+ "faq": [
+  [
+   "How much does interior design cost in Kyiv per m²?",
+   "From $30 per m², minimum project budget $2,500. For apartments up to 83 m² the minimum applies, above that — area × $30."
+  ],
+  [
+   "How much does a design project for a 60 m² apartment cost?",
+   "$2,500 — the minimum project fee. For a larger area — area × $30, for example 120 × $30 for a 120 m² apartment."
+  ],
+  [
+   "What is included in the design project?",
+   "Measurements, layout options, 3D visualisations, working drawings (electrics, plumbing, ceilings, floors), materials and furniture specification, renovation estimate."
+  ],
+  [
+   "How much do designer services with turnkey renovation cost?",
+   "Design from $30/m² (minimum $2,500), renovation from $550/m² for works and rough materials, furnishing from $250/m². Finishing materials, furniture and appliances per estimate."
+  ],
+  [
+   "Can I order only the design without renovation?",
+   "Yes. We prepare drawings so that any crew can work from them; designer supervision by separate agreement."
+  ],
+  [
+   "Do you design remotely?",
+   "Yes, we can prepare a design project for a property in another city or country."
+  ]
+ ],
+ "guarantees": true,
+ "packages": true,
+ "gallery": [
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1f8h2r5MBlLLf_-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1xskjqBvCXgXuL-900.webp",
+   "Hodos Villa"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "near": [
+  "Interior design",
+  [
+   [
+    "/en/interior-design",
+    "Interior design"
+   ],
+   [
+    "/en/interior-designer",
+    "Interior designer"
+   ],
+   [
+    "/en/apartment-interior-design",
+    "Apartment interior design"
+   ],
+   [
+    "/en/house-interior-design",
+    "House interior design"
+   ],
+   [
+    "/en/office-design",
+    "Office design and renovation"
+   ],
+   [
+    "/en/restaurant-design",
+    "Restaurant & café design"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/en/turnkey-procurement",
+   "Turnkey procurement"
+  ],
+  [
+   "/en/design-implementation",
+   "Design implementation"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Cost calculator"
+  ],
+  [
+   "/en/contact",
+   "Contact"
+  ]
+ ]
+}

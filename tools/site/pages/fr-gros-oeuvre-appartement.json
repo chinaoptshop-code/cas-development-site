@@ -167,6 +167,10 @@
    [
     "/fr/rafraichissement-appartement",
     "Rafraîchissement d’appartement"
+   ],
+   [
+    "/fr/prix-renovation-appartement",
+    "Rénovation d’appartement clé en main"
    ]
   ]
  ],
@@ -182,6 +186,10 @@
   [
    "/fr/renovation-salle-de-bain",
    "Rénovation de salle de bain"
+  ],
+  [
+   "/fr/cuisines-placards-sur-mesure",
+   "Cuisines et placards sur mesure"
   ],
   [
    "/fr/calculateur-renovation",

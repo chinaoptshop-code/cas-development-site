@@ -163,6 +163,10 @@
    [
     "/de/rohausbau-wohnung",
     "Rohausbau einer Wohnung"
+   ],
+   [
+    "/de/wohnungsrenovierung-kosten",
+    "Wohnungsrenovierung schlüsselfertig"
    ]
   ]
  ],
@@ -178,6 +182,10 @@
   [
    "/de/badsanierung",
    "Badsanierung"
+  ],
+  [
+   "/de/kuechen-und-schraenke-nach-mass",
+   "Küchen und Schränke nach Maß"
   ],
   [
    "/de/renovierungskosten-rechner",

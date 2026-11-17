@@ -226,5 +226,115 @@
   "fr": "/fr/renovation-maison-de-ville",
   "zh": "/zh/townhouse-renovation",
   "ar": "/ar/townhouse-renovation"
+ },
+ "apartment-renovation": {
+  "uk": "/remont-kvartyr-kyiv",
+  "ru": "/ru/remont-kvartir-kiev",
+  "en": "/en/apartment-renovation",
+  "es": "/es/reforma-pisos",
+  "pl": "/pl/remont-mieszkan",
+  "de": "/de/wohnungsrenovierung",
+  "fr": "/fr/renovation-appartement",
+  "zh": "/zh/apartment-renovation",
+  "ar": "/ar/apartment-renovation"
+ },
+ "cost-design": {
+  "uk": "/vartist-dyzainu-interieru-kyiv",
+  "ru": "/ru/stoimost-dizayna-interera-kiev",
+  "en": "/en/interior-design-cost",
+  "es": "/es/precio-diseno-interiores",
+  "pl": "/pl/cena-projektu-wnetrza",
+  "de": "/de/innenarchitektur-kosten",
+  "fr": "/fr/prix-architecture-interieur",
+  "zh": "/zh/interior-design-cost",
+  "ar": "/ar/interior-design-cost"
+ },
+ "cost-office": {
+  "uk": "/vartist-remontu-ofisu-kyiv",
+  "ru": "/ru/stoimost-remonta-ofisa-kiev",
+  "en": "/en/office-renovation-cost",
+  "es": "/es/precio-reforma-oficina",
+  "pl": "/pl/koszt-remontu-biura",
+  "de": "/de/bueroumbau-kosten",
+  "fr": "/fr/prix-renovation-bureaux",
+  "zh": "/zh/office-renovation-cost",
+  "ar": "/ar/office-renovation-cost"
+ },
+ "cost-renovation": {
+  "uk": "/vartist-remontu-kvartyry-kyiv",
+  "ru": "/ru/stoimost-remonta-kvartiry-kiev",
+  "en": "/en/apartment-renovation-cost",
+  "es": "/es/precio-reforma-piso",
+  "pl": "/pl/koszt-remontu-mieszkania",
+  "de": "/de/wohnungsrenovierung-kosten",
+  "fr": "/fr/prix-renovation-appartement",
+  "zh": "/zh/apartment-renovation-cost",
+  "ar": "/ar/apartment-renovation-cost"
+ },
+ "geo-europe": {
+  "uk": "/remont-i-budivnytstvo-yevropa",
+  "ru": "/ru/remont-i-stroitelstvo-evropa",
+  "en": "/en/renovation-construction-europe",
+  "es": "/es/reforma-construccion-europa",
+  "pl": "/pl/remont-i-budowa-europa",
+  "de": "/de/renovierung-bau-europa",
+  "fr": "/fr/renovation-construction-europe",
+  "zh": "/zh/renovation-construction-europe",
+  "ar": "/ar/renovation-construction-europe"
+ },
+ "kitchens-custom": {
+  "uk": "/kukhni-i-shafy-na-zamovlennia-kyiv",
+  "ru": "/ru/kuhni-i-shkafy-na-zakaz-kiev",
+  "en": "/en/custom-kitchens-wardrobes",
+  "es": "/es/cocinas-armarios-a-medida",
+  "pl": "/pl/kuchnie-i-szafy-na-wymiar",
+  "de": "/de/kuechen-und-schraenke-nach-mass",
+  "fr": "/fr/cuisines-placards-sur-mesure",
+  "zh": "/zh/custom-kitchens-wardrobes",
+  "ar": "/ar/custom-kitchens-wardrobes"
+ },
+ "neoclassic": {
+  "uk": "/dyzain-interieru-neoklasyka-kyiv",
+  "ru": "/ru/dizayn-interera-neoklassika-kiev",
+  "en": "/en/neoclassical-interior-design",
+  "es": "/es/diseno-interiores-neoclasico",
+  "pl": "/pl/projektowanie-wnetrz-neoklasyka",
+  "de": "/de/neoklassische-innenarchitektur",
+  "fr": "/fr/architecture-interieur-neoclassique",
+  "zh": "/zh/neoclassical-interior-design",
+  "ar": "/ar/neoclassical-interior-design"
+ },
+ "office-fit-out": {
+  "uk": "/oblashtuvannia-ofisu-pid-kliuch-kyiv",
+  "ru": "/ru/obustroystvo-ofisa-pod-klyuch-kiev",
+  "en": "/en/office-fit-out",
+  "es": "/es/acondicionamiento-oficinas",
+  "pl": "/pl/wykonczenie-biura-pod-klucz",
+  "de": "/de/bueroausbau-schluesselfertig",
+  "fr": "/fr/amenagement-bureaux-cle-en-main",
+  "zh": "/zh/office-fit-out",
+  "ar": "/ar/office-fit-out"
+ },
+ "office-open-space": {
+  "uk": "/dyzain-ofisu-open-space-kyiv",
+  "ru": "/ru/dizayn-ofisa-open-space-kiev",
+  "en": "/en/open-space-office-design",
+  "es": "/es/diseno-oficina-open-space",
+  "pl": "/pl/projekt-biura-open-space",
+  "de": "/de/open-space-bueroplanung",
+  "fr": "/fr/design-bureau-open-space",
+  "zh": "/zh/open-space-office-design",
+  "ar": "/ar/open-space-office-design"
+ },
+ "retail": {
+  "uk": "/dyzain-i-remont-mahazynu-shourumu-kyiv",
+  "ru": "/ru/dizayn-i-remont-magazina-shouruma-kiev",
+  "en": "/en/shop-showroom-design",
+  "es": "/es/diseno-reforma-tiendas",
+  "pl": "/pl/projekt-i-remont-sklepu",
+  "de": "/de/ladenbau-showroom",
+  "fr": "/fr/design-amenagement-boutique",
+  "zh": "/zh/shop-showroom-design",
+  "ar": "/ar/shop-showroom-design"
  }
 }

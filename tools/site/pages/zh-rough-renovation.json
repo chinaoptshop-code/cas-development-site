@@ -167,6 +167,10 @@
    [
     "/zh/cosmetic-renovation",
     "公寓简装翻新"
+   ],
+   [
+    "/zh/apartment-renovation-cost",
+    "公寓交钥匙装修"
    ]
   ]
  ],
@@ -182,6 +186,10 @@
   [
    "/zh/bathroom-renovation",
    "卫生间装修"
+  ],
+  [
+   "/zh/custom-kitchens-wardrobes",
+   "定制橱柜与衣柜"
   ],
   [
    "/zh/renovation-calculator",

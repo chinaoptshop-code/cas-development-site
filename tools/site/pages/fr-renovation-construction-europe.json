@@ -1,0 +1,216 @@
+{
+ "slug": "renovation-construction-europe",
+ "lang": "fr",
+ "service": "Design, rénovation et construction clé en main en Europe",
+ "title": "Rénovation et construction en Europe — design clé en main CAS",
+ "description": "Architecture d’intérieur, rénovation et construction clé en main en Europe par CAS (Kyiv) : Pologne, Allemagne, France, Espagne. Équipe interne, contrat.",
+ "h1": "Rénovation, design et construction clé en main en Europe",
+ "price": "rénovation dès $850/m² · design dès $45/m² · maison dès $900/m²",
+ "lead": "Rénovation et construction en Europe par CAS : projets de design, travaux par notre propre équipe et maisons clé en main pour des clients vivant en Pologne, en Allemagne, en France, en Espagne et ailleurs. Une seule équipe, un contrat et un devis avant le démarrage.",
+ "parent": [
+  "/fr/services",
+  "Services"
+ ],
+ "area": [
+  {
+   "@type": "Continent",
+   "name": "Europe"
+  },
+  {
+   "@type": "Country",
+   "name": "Pologne"
+  },
+  {
+   "@type": "Country",
+   "name": "Allemagne"
+  },
+  {
+   "@type": "Country",
+   "name": "France"
+  },
+  {
+   "@type": "Country",
+   "name": "Espagne"
+  }
+ ],
+ "facts": [
+  [
+   "dès $850",
+   "rénovation au m² en Europe"
+  ],
+  [
+   "dès $45",
+   "design au m², min. $4 000"
+  ],
+  [
+   "12 mois",
+   "garantie sur les travaux"
+  ],
+  [
+   "Équipe interne",
+   "salariés de l’entreprise"
+  ]
+ ],
+ "cards": [
+  [
+   "Architecture d’intérieur",
+   [
+    "relevé et solutions de plan",
+    "visualisations 3D et plans d’exécution",
+    "descriptif des matériaux et du mobilier",
+    "suivi de l’architecte"
+   ]
+  ],
+  [
+   "Rénovation clé en main",
+   [
+    "appartements neufs et anciens",
+    "maisons et cottages",
+    "main-d’œuvre et gros œuvre dès $850/m²",
+    "devis avant démarrage"
+   ]
+  ],
+  [
+   "Construction de maison",
+   [
+    "projet architectural dès $18/m²",
+    "gros œuvre dès $900/m²",
+    "clé en main avec finitions dès $1 700/m²",
+    "réseaux et toiture"
+   ]
+  ],
+  [
+   "Mobilier et équipement",
+   [
+    "ameublement dès $400/m²",
+    "cuisines et placards sur mesure",
+    "mobilier et luminaires de Chine",
+    "stylisme final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "À qui s’adresse ce service",
+   [
+    "Aux Ukrainiens et à d’autres clients qui ont acheté un appartement ou une maison en Europe et veulent l’intérieur et la qualité de rénovation des projets kyiviens : un plan réfléchi, des plans d’exécution, un suivi de l’architecte et l’ameublement.",
+    "CAS a mené et mène des projets en Espagne, en France, en Allemagne et en Pologne, ainsi qu’hors d’Europe — le complexe Kitana Beach à Bodrum (Turquie), des biens à Bali, une maison aux États-Unis et une villa à Dubaï (projet de design)."
+   ]
+  ],
+  [
+   "Comment nous travaillons en Europe",
+   [
+    "Le projet de design se mène en ligne, nous nous déplaçons pour le relevé et les étapes clés. Rénovation et construction sont réalisées par notre équipe salariée ; réglementations locales, autorisations et exigences envers les entreprises varient selon le pays, d’où un format de travail, une logistique et un hébergement de l’équipe convenus au cas par cas et fixés au contrat.",
+    "Mobilier, luminaires et décoration peuvent être fournis depuis la Chine — transport et droits de douane sont calculés selon le volume. La facturation des sociétés de l’UE est en cours de mise en place."
+   ]
+  ],
+  [
+   "Prix « à partir de »",
+   [
+    "Les tarifs en Europe sont environ 50 % plus élevés qu’à Kyiv : projet de design à partir de $45 le m² (minimum $4 000), rénovation clé en main à partir de $850 le m² (main-d’œuvre et gros œuvre), gros œuvre de maison à partir de $900 le m², clé en main avec finitions à partir de $1 700 le m². Logistique, déplacements et matériaux locaux sont chiffrés à part — le montant exact figurera au devis."
+   ]
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "Par téléphone ou en ligne : bien, besoins, budget."
+  ],
+  [
+   "Relevé et brief",
+   "Cotes, souhaits, données d’entrée."
+  ],
+  [
+   "Projet et devis",
+   "Intérieur ou architecture ; prix et planning au contrat."
+  ],
+  [
+   "Travaux",
+   "Rénovation ou construction avec rapports photo."
+  ],
+  [
+   "Réception",
+   "Procès-verbal, garantie 12 mois."
+  ]
+ ],
+ "faq": [
+  [
+   "Dans quels pays travaillez-vous ?",
+   "Nous avons mené et menons des projets en Espagne, en France, en Allemagne et en Pologne, ainsi qu’en Turquie, à Bali, aux États-Unis et aux Émirats. Les autres pays se discutent au cas par cas."
+  ],
+  [
+   "Votre propre équipe travaille-t-elle en Europe ?",
+   "Oui, rénovation et construction sont réalisées par notre équipe salariée. Déplacement et hébergement au cas par cas, au contrat."
+  ],
+  [
+   "Une société européenne peut-elle recevoir une facture ?",
+   "La facturation des sociétés de l’UE est en cours de mise en place ; le chef de projet précise les options de paiement actuelles."
+  ],
+  [
+   "Peut-on commander uniquement un projet de design pour un appartement en Europe ?",
+   "Oui, à partir de $45 le m², minimum $4 000 : réunions en ligne, 3D, plans d’exécution et descriptifs."
+  ]
+ ],
+ "guarantees": "no5",
+ "gallery": [
+  [
+   "img/p/1A9yy4nI-gf9h3-900.webp",
+   "Kitana Beach"
+  ],
+  [
+   "img/p/1IWgqOm6pY2p34-900.webp",
+   "Dubai Villa"
+  ],
+  [
+   "img/p/18V9n96tOhjKjh-900.webp",
+   "USA House"
+  ],
+  [
+   "img/p/1iBBOM6KWCT5qH-900.webp",
+   "Hoda Estate"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "near": [
+  "Services",
+  [
+   [
+    "/fr/architecture-interieur",
+    "Architecture d’intérieur"
+   ],
+   [
+    "/fr/renovation-cle-en-main",
+    "Rénovation clé en main"
+   ],
+   [
+    "/fr/construction-maison",
+    "Construction de maisons"
+   ],
+   [
+    "/fr/ameublement-cle-en-main",
+    "Ameublement clé en main"
+   ],
+   [
+    "/fr/conception-maison",
+    "Conception de maison"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/contrat-garantie-paiement",
+   "Contrat, garantie, paiement (modèle de contrat)"
+  ],
+  [
+   "/fr/faq",
+   "FAQ"
+  ],
+  [
+   "/fr/contact",
+   "Contact"
+  ]
+ ]
+}

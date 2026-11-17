@@ -163,6 +163,10 @@
    [
     "/pl/remont-surowy-mieszkania",
     "Prace surowe w mieszkaniu"
+   ],
+   [
+    "/pl/koszt-remontu-mieszkania",
+    "Remont mieszkania pod klucz"
    ]
   ]
  ],
@@ -178,6 +182,10 @@
   [
    "/pl/remont-lazienki",
    "Remont łazienki"
+  ],
+  [
+   "/pl/kuchnie-i-szafy-na-wymiar",
+   "Kuchnie i szafy na wymiar"
   ],
   [
    "/pl/kalkulator-remontu",
