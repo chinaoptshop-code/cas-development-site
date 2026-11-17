@@ -1,6 +1,18 @@
 /* Квіз-калькулятор (/assets/quiz.v1.js, /styleguide/#quiz). Токени сторінки: --bg2 --tx --mu --ac --ln; власні шрифти сторінки. */
 .qz *{box-sizing:border-box}
 .qz-hd{margin:0 0 18px}
+.qz-hr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;margin:0 0 8px}
+.qz-hr .qz-pg{margin:0}
+.qz-rb{display:flex;align-items:center;gap:8px;margin-inline-start:auto}
+.qz-rl{font-size:var(--fs-small,.8125rem);color:var(--mu,#938c84)}
+.qz-rg{display:inline-flex;padding:2px;border:1px solid var(--ln,rgba(191,145,72,.35));border-radius:999px}
+.qz-ro{position:relative;display:flex;min-height:44px;cursor:pointer}
+.qz-ro input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.qz-ro span{display:flex;align-items:center;padding:0 14px;border-radius:999px;font-size:var(--fs-small,.8125rem);font-weight:600;color:var(--tx,#EDE8DF);transition:background .2s,color .2s}
+.qz-ro:hover span{color:var(--ac,#BF9148)}
+.qz-ro input:checked+span{background:var(--ac,#BF9148);color:#140f08}
+.qz-ro input:focus-visible+span{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
+body.light .qz-ro input:checked+span{color:#FBF8F3}
 .qz-pg{margin:0 0 8px;font-size:var(--fs-small,.8125rem);letter-spacing:.08em;text-transform:uppercase;color:var(--mu,#938c84)}
 .qz-bar{height:3px;border-radius:3px;background:var(--ln,rgba(191,145,72,.22));overflow:hidden}
 .qz-bar i{display:block;height:100%;width:0;background:var(--ac,#BF9148);transition:width .3s ease}
@@ -44,5 +56,5 @@
 .qz-nv[hidden],.qz-hd[hidden],.qz-st[hidden]{display:none}
 .qz.qz-done{min-height:0}
 body.light .qz-nx,body.light .qz-send{color:#FBF8F3}
-@media (max-width:520px){.qz{padding:16px}.qz-os{grid-template-columns:1fr 1fr}.qz-o{padding:10px 12px;font-size:.9375rem}.qz-o span::before{margin-inline-end:8px}}
-@media (prefers-reduced-motion:reduce){.qz-bar i,.qz-o{transition:none}}
+@media (max-width:520px){.qz{padding:16px}.qz-rl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.qz-ro span{padding:0 12px}.qz-os{grid-template-columns:1fr 1fr}.qz-o{padding:10px 12px;font-size:.9375rem}.qz-o span::before{margin-inline-end:8px}}
+@media (prefers-reduced-motion:reduce){.qz-bar i,.qz-o,.qz-ro span{transition:none}}
