@@ -387,8 +387,37 @@ def path(lang, slug):
 
 
 def title_tag(t):
-    """<title> до 60 символів: якщо з брендом довше — без суфікса « | CAS Development» (og:title лишається повним)."""
-    return t if len(t) <= 60 else re.sub(r'\s*[|—–]\s*CAS Development\s*$', '', t)
+    """<title> до 60 символів: якщо з брендом довше — без суфікса « | CAS Development» / « | CAS» (og:title лишається повним)."""
+    return t if len(t) <= 60 else re.sub(r'\s*[|—–]\s*CAS(?: Development)?\s*$', '', t)
+
+
+# Дочірні лендинги без власного місця в меню: хаб кластера-«батька» кожною мовою посилається на них у «Інші послуги» (rel),
+# інакше сторінки мов — сирітські (seo.py). Ключі — id кластерів tools/site/lang/clusters*.json; підпис — коротка назва мовою.
+HUB_CHILDREN = {
+    'design': {'cost-design': dict(en='Interior design cost', es='Precio del diseño de interiores', pl='Cena projektu wnętrza',
+                                   de='Kosten der Innenarchitektur', fr='Prix de l’architecture d’intérieur', zh='室内设计价格',
+                                   ar='تكلفة التصميم الداخلي', pt='Preço do design de interiores')},
+    'business': {'retail': dict(en='Shops and showrooms', es='Tiendas y showrooms', pl='Sklepy i showroomy', de='Läden und Showrooms',
+                                fr='Boutiques et showrooms', zh='商店与展厅', ar='المتاجر وصالات العرض', pt='Lojas e showrooms')},
+    'renovation': {'geo-europe': dict(en='Renovation and construction in Europe', es='Reforma y construcción en Europa',
+                                      pl='Remont i budowa w Europie', de='Renovierung und Bau in Europa',
+                                      fr='Rénovation et construction en Europe', zh='欧洲装修与建造',
+                                      ar='التجديد والبناء في أوروبا', pt='Remodelação e construção na Europa')},
+}
+
+
+def hub_rel(p):
+    """Додає в p['rel'] хаба посилання на його дочірні лендинги (HUB_CHILDREN), якщо їх там ще немає."""
+    lang, c = p['lang'], i18n.clusters()
+    here = '/' + i18n.meta(lang)['prefix'] + ('' if p['slug'] == 'index' else p['slug'])
+    for hub, kids in HUB_CHILDREN.items():
+        if c.get(hub, {}).get(lang) != here: continue
+        rel = p.setdefault('rel', [])
+        for kid, names in kids.items():
+            u = c.get(kid, {}).get(lang)
+            if u and lang in names and all(x[0] != u for x in rel):
+                rel.append([u, names[lang]])
+    return p
 
 
 def faqs(p):
@@ -905,7 +934,7 @@ PENDING = set()  # сторінки, що збираються в цьому ж 
 if __name__ == '__main__':
     only = set(sys.argv[1:])
     bad, built = 0, []
-    allp = [json.load(open(f, encoding='utf-8')) for f in sorted(glob.glob(os.path.join(ROOT, 'tools/site/pages/*.json')))]
+    allp = [hub_rel(json.load(open(f, encoding='utf-8'))) for f in sorted(glob.glob(os.path.join(ROOT, 'tools/site/pages/*.json')))]
     PENDING.update('/' + i18n.meta(p['lang'])['prefix'] + ('' if p['slug'] == 'index' else p['slug']) for p in allp)
     # головні сторінки мов — першими (перемикач мов показує лише мови з наявною головною)
     allp.sort(key=lambda p: p['slug'] != 'index')
