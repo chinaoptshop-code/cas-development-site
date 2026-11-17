@@ -161,7 +161,8 @@
   "de": "/de/komplettsanierung-wohnung",
   "fr": "/fr/renovation-lourde-appartement",
   "zh": "/zh/major-renovation",
-  "ar": "/ar/major-renovation"
+  "ar": "/ar/major-renovation",
+  "pt": "/pt/remodelacao-integral-apartamento"
  },
  "office-design": {
   "uk": "/dyzain-ofisu-kyiv",
@@ -172,7 +173,8 @@
   "de": "/de/bueroplanung",
   "fr": "/fr/design-bureaux",
   "zh": "/zh/office-design",
-  "ar": "/ar/office-design"
+  "ar": "/ar/office-design",
+  "pt": "/pt/design-de-escritorios"
  },
  "penthouse": {
   "uk": "/dyzain-i-remont-penthausa-kyiv",
@@ -183,7 +185,8 @@
   "de": "/de/penthouse-design-renovierung",
   "fr": "/fr/design-renovation-penthouse",
   "zh": "/zh/penthouse-design-renovation",
-  "ar": "/ar/penthouse-design-renovation"
+  "ar": "/ar/penthouse-design-renovation",
+  "pt": "/pt/design-remodelacao-penthouse"
  },
  "reconstruction": {
   "uk": "/rekonstruktsiia-budynku-kyiv",
@@ -194,7 +197,8 @@
   "de": "/de/hausumbau",
   "fr": "/fr/reconstruction-maison",
   "zh": "/zh/house-reconstruction",
-  "ar": "/ar/house-reconstruction"
+  "ar": "/ar/house-reconstruction",
+  "pt": "/pt/reconstrucao-de-moradias"
  },
  "replanning": {
   "uk": "/pereplanuvannia-kvartyry-kyiv",
@@ -205,7 +209,8 @@
   "de": "/de/grundrissaenderung-wohnung",
   "fr": "/fr/reamenagement-appartement",
   "zh": "/zh/apartment-replanning",
-  "ar": "/ar/apartment-replanning"
+  "ar": "/ar/apartment-replanning",
+  "pt": "/pt/redistribuicao-apartamento"
  },
  "rough-renovation": {
   "uk": "/chornovyi-remont-kvartyry-kyiv",
@@ -216,7 +221,8 @@
   "de": "/de/rohausbau-wohnung",
   "fr": "/fr/gros-oeuvre-appartement",
   "zh": "/zh/rough-renovation",
-  "ar": "/ar/rough-renovation"
+  "ar": "/ar/rough-renovation",
+  "pt": "/pt/obra-bruta-apartamento"
  },
  "supervision": {
   "uk": "/avtorskyi-i-tekhnichnyi-nahliad-kyiv",
@@ -227,7 +233,8 @@
   "de": "/de/bauueberwachung",
   "fr": "/fr/suivi-de-chantier",
   "zh": "/zh/construction-supervision",
-  "ar": "/ar/construction-supervision"
+  "ar": "/ar/construction-supervision",
+  "pt": "/pt/acompanhamento-fiscalizacao-obra"
  },
  "townhouse": {
   "uk": "/remont-taunkhausa-kyiv",
@@ -238,7 +245,8 @@
   "de": "/de/reihenhaus-renovierung",
   "fr": "/fr/renovation-maison-de-ville",
   "zh": "/zh/townhouse-renovation",
-  "ar": "/ar/townhouse-renovation"
+  "ar": "/ar/townhouse-renovation",
+  "pt": "/pt/remodelacao-moradia-em-banda"
  },
  "apartment-renovation": {
   "uk": "/remont-kvartyr-kyiv",
@@ -249,7 +257,8 @@
   "de": "/de/wohnungsrenovierung",
   "fr": "/fr/renovation-appartement",
   "zh": "/zh/apartment-renovation",
-  "ar": "/ar/apartment-renovation"
+  "ar": "/ar/apartment-renovation",
+  "pt": "/pt/remodelacao-apartamentos"
  },
  "cost-design": {
   "uk": "/vartist-dyzainu-interieru-kyiv",
@@ -260,7 +269,8 @@
   "de": "/de/innenarchitektur-kosten",
   "fr": "/fr/prix-architecture-interieur",
   "zh": "/zh/interior-design-cost",
-  "ar": "/ar/interior-design-cost"
+  "ar": "/ar/interior-design-cost",
+  "pt": "/pt/preco-design-de-interiores"
  },
  "cost-office": {
   "uk": "/vartist-remontu-ofisu-kyiv",
@@ -271,7 +281,8 @@
   "de": "/de/bueroumbau-kosten",
   "fr": "/fr/prix-renovation-bureaux",
   "zh": "/zh/office-renovation-cost",
-  "ar": "/ar/office-renovation-cost"
+  "ar": "/ar/office-renovation-cost",
+  "pt": "/pt/preco-remodelacao-escritorio"
  },
  "cost-renovation": {
   "uk": "/vartist-remontu-kvartyry-kyiv",
@@ -282,7 +293,8 @@
   "de": "/de/wohnungsrenovierung-kosten",
   "fr": "/fr/prix-renovation-appartement",
   "zh": "/zh/apartment-renovation-cost",
-  "ar": "/ar/apartment-renovation-cost"
+  "ar": "/ar/apartment-renovation-cost",
+  "pt": "/pt/preco-remodelacao-apartamento"
  },
  "geo-europe": {
   "uk": "/remont-i-budivnytstvo-yevropa",
@@ -293,7 +305,8 @@
   "de": "/de/renovierung-bau-europa",
   "fr": "/fr/renovation-construction-europe",
   "zh": "/zh/renovation-construction-europe",
-  "ar": "/ar/renovation-construction-europe"
+  "ar": "/ar/renovation-construction-europe",
+  "pt": "/pt/remodelacao-construcao-europa"
  },
  "kitchens-custom": {
   "uk": "/kukhni-i-shafy-na-zamovlennia-kyiv",
@@ -316,7 +329,8 @@
   "de": "/de/neoklassische-innenarchitektur",
   "fr": "/fr/architecture-interieur-neoclassique",
   "zh": "/zh/neoclassical-interior-design",
-  "ar": "/ar/neoclassical-interior-design"
+  "ar": "/ar/neoclassical-interior-design",
+  "pt": "/pt/design-de-interiores-neoclassico"
  },
  "office-fit-out": {
   "uk": "/oblashtuvannia-ofisu-pid-kliuch-kyiv",
@@ -327,7 +341,8 @@
   "de": "/de/bueroausbau-schluesselfertig",
   "fr": "/fr/amenagement-bureaux-cle-en-main",
   "zh": "/zh/office-fit-out",
-  "ar": "/ar/office-fit-out"
+  "ar": "/ar/office-fit-out",
+  "pt": "/pt/fit-out-escritorios"
  },
  "office-open-space": {
   "uk": "/dyzain-ofisu-open-space-kyiv",
@@ -338,7 +353,8 @@
   "de": "/de/open-space-bueroplanung",
   "fr": "/fr/design-bureau-open-space",
   "zh": "/zh/open-space-office-design",
-  "ar": "/ar/open-space-office-design"
+  "ar": "/ar/open-space-office-design",
+  "pt": "/pt/design-escritorio-open-space"
  },
  "retail": {
   "uk": "/dyzain-i-remont-mahazynu-shourumu-kyiv",
@@ -349,6 +365,7 @@
   "de": "/de/ladenbau-showroom",
   "fr": "/fr/design-amenagement-boutique",
   "zh": "/zh/shop-showroom-design",
-  "ar": "/ar/shop-showroom-design"
+  "ar": "/ar/shop-showroom-design",
+  "pt": "/pt/design-remodelacao-lojas-showrooms"
  }
 }
