@@ -535,6 +535,11 @@
     if (!target) return; // форми на сторінці нема — посилання веде на сторінку з формою
     e.preventDefault();
     try { target.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (x) { target.scrollIntoView(); }
-    setTimeout(function () { try { target.focus({ preventScroll: true }); } catch (x) { target.focus(); } }, 400);
+    setTimeout(function () {
+      // Safari не має scroll anchoring: збірка сцени вище (її компенсація scrollBy) обриває плавну прокрутку — поле лишалось за екраном. Доводимо до місця.
+      var r = target.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > (window.innerHeight || 0)) target.scrollIntoView({ block: 'center' });
+      try { target.focus({ preventScroll: true }); } catch (x) { target.focus(); }
+    }, 400);
   });
 })();
