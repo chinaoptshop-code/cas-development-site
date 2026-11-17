@@ -47,10 +47,10 @@
       if (!isOpen()) return;
       if (e.key === 'Escape') { e.preventDefault(); set(false, true); return; }
       if (e.key === 'Tab') { // фокус лишається в меню і на кнопці закриття
-        var f = [btn].concat([].slice.call(menu.querySelectorAll('a,button')));
+        // по колу вручну: Safari за замовчуванням Tab пропускає <a>, і з останньої кнопки фокус тікав за межі меню
+        var f = [btn].concat([].slice.call(menu.querySelectorAll('a[href],button:not([disabled])')).filter(shown));
         var i = f.indexOf(d.activeElement);
-        if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
-        else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+        e.preventDefault(); f[e.shiftKey ? (i <= 0 ? f.length - 1 : i - 1) : (i < 0 || i === f.length - 1 ? 0 : i + 1)].focus();
       }
     });
     var mq = window.matchMedia && window.matchMedia('(min-width:1080px)');
@@ -127,9 +127,9 @@
     }
     if (e.key === 'Tab') {
       var f = focusables(dl), i = f.indexOf(d.activeElement);
-      if (!f.length) { e.preventDefault(); dl.focus(); return; }
-      if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
-      else if (!e.shiftKey && (i < 0 || i === f.length - 1)) { e.preventDefault(); f[0].focus(); }
+      e.preventDefault(); // по колу вручну — Safari за замовчуванням Tab пропускає <a> (фокус тікав з діалогу)
+      if (!f.length) { dl.focus(); return; }
+      f[e.shiftKey ? (i <= 0 ? f.length - 1 : i - 1) : (i < 0 || i === f.length - 1 ? 0 : i + 1)].focus();
     }
   });
   // «Усі послуги студії» — згорнуто на всіх сторінках і ширинах (Михайло 05.11.2026); посилання лишаються в DOM (SEO)
