@@ -1,0 +1,181 @@
+{
+ "slug": "nadzor-autorski-i-techniczny",
+ "lang": "pl",
+ "service": "Nadzór autorski i techniczny",
+ "title": "Nadzór autorski i techniczny nad remontem w Kijowie | CAS",
+ "description": "Nadzór autorski projektanta i nadzór techniczny nad remontem i budową w Kijowie: zgodność z projektem, odbiór prac zakrytych, fotorelacje co 1–2 tygodnie.",
+ "h1": "Nadzór autorski i techniczny",
+ "price": "koszt według kosztorysu, zależnie od obiektu i częstotliwości wizyt",
+ "lead": "Nadzór autorski pilnuje, by remont był zgodny z projektem wnętrza; techniczny — by prace wykonano zgodnie z technologią i normami. W naszych projektach oba rodzaje kontroli są częścią generalnego wykonawstwa, a do naszego projektu nadzór autorski można zamówić osobno.",
+ "cards": [
+  [
+   "Nadzór autorski",
+   [
+    "wizyty projektanta na budowie",
+    "odpowiedzi ekipie w sprawie rysunków",
+    "uzgadnianie zamian materiałów",
+    "kontrola mebli, światła, dekoracji"
+   ]
+  ],
+  [
+   "Nadzór techniczny",
+   [
+    "odbiór prac zakrytych",
+    "sprawdzanie geometrii i poziomów",
+    "kontrola elektryki i hydrauliki",
+    "sprawdzanie materiałów na budowie"
+   ]
+  ],
+  [
+   "Raportowanie",
+   [
+    "fotorelacje co 1–2 tygodnie",
+    "zapis uwag i terminów",
+    "protokoły etapów",
+    "kontakt przez Telegram"
+   ]
+  ],
+  [
+   "Kiedy to potrzebne",
+   [
+    "złożony projekt wnętrza",
+    "duży dom lub penthouse",
+    "lokal komercyjny z datą otwarcia",
+    "remont, gdy jesteś za granicą"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Po co nadzór, skoro jest ekipa",
+   [
+    "Ekipa odpowiada za wykonanie, ale nie zawsze za zgodność z zamysłem: bez kontroli detale się upraszcza, materiały zamienia na „odpowiedniki”, a wymiary wnęk rozjeżdżają się z meblami. Nadzór autorski chroni projekt, techniczny — jakość tego, co schowa się pod wykończeniem.",
+    "Najważniejsze są prace zakryte: elektryka, hydraulika, hydroizolacja, wylewka, podkład pod kamień. Odbieramy je przed zamknięciem i dokumentujemy na zdjęciach, żeby po roku nie trzeba było kuć ścian."
+   ]
+  ],
+  [
+   "Jak to działa w CAS",
+   [
+    "Gdy remont według naszego projektu wykonuje CAS, nadzór techniczny i autorski są wbudowane w proces: projektant i inżynier widzą obiekt na każdym etapie, a Ty co 1–2 tygodnie dostajesz fotorelację i podpisujesz protokoły etapów. Na prace — 12 miesięcy gwarancji.",
+    "Jeśli projekt jest nasz, a remont wykonuje inny wykonawca, nadzór autorski można zamówić osobno. Format i częstotliwość wizyt oraz warunki nadzoru technicznego na cudzej budowie ustalamy indywidualnie."
+   ]
+  ]
+ ],
+ "steps": [
+  [
+   "Brief",
+   "Obiekt, projekt, etap prac, częstotliwość wizyt."
+  ],
+  [
+   "Analiza projektu",
+   "Analizujemy rysunki i kosztorys, ustalamy punkty kontrolne."
+  ],
+  [
+   "Wizyty",
+   "Przeglądy na kluczowych etapach, odpowiedzi ekipie."
+  ],
+  [
+   "Odbiór prac zakrytych",
+   "Zdjęcia, uwagi, terminy poprawek."
+  ],
+  [
+   "Raporty",
+   "Fotorelacje co 1–2 tygodnie, protokoły etapów."
+  ]
+ ],
+ "faq": [
+  [
+   "Czym różni się nadzór autorski od technicznego?",
+   "Autorski to kontrola zgodności remontu z projektem: materiały, wymiary, światło, meble. Techniczny to kontrola jakości i technologii: geometria, prace zakryte, instalacje."
+  ],
+  [
+   "Ile kosztuje nadzór?",
+   "Zależy od powierzchni, czasu trwania prac i częstotliwości wizyt — podajemy po briefie. Gdy remont robi CAS, kontrola jakości jest już częścią naszej pracy."
+  ],
+  [
+   "Czy można zamówić sam nadzór autorski?",
+   "Tak, do naszego projektu — nawet jeśli remont wykonuje inny wykonawca."
+  ],
+  [
+   "Jestem za granicą — jak kontrolować remont?",
+   "Co 1–2 tygodnie wysyłamy fotorelacje, kluczowe decyzje uzgadniamy zdalnie, protokoły etapów podpisujemy."
+  ],
+  [
+   "Czym są prace zakryte i dlaczego trzeba je odbierać?",
+   "To wszystko, co później zakryje wykończenie: przewody, rury, hydroizolacja, wylewka. Odbiór przed zamknięciem to jedyny sposób, by sprawdzić je bez kucia."
+  ],
+  [
+   "Jaka jest gwarancja?",
+   "12 miesięcy na prace wykonane przez CAS."
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1co4thni1Q8_1J-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1SGDKLtQtxQg-k-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/15mn_Or4V7WrFB-900.webp",
+   "Office Chicago"
+  ],
+  [
+   "img/p/1gI8TsO03lYAxp-900.webp",
+   "Dolls Salon"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "near": [
+  "Powiązane usługi",
+  [
+   [
+    "/pl/generalny-wykonawca",
+    "Generalne wykonawstwo"
+   ],
+   [
+    "/pl/realizacja-projektu",
+    "Realizacja projektu"
+   ],
+   [
+    "/pl/remont-premium",
+    "Remont premium"
+   ],
+   [
+    "/pl/budowa-domow",
+    "Budowa domów"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/projektowanie-wnetrz",
+   "Projektowanie wnętrz"
+  ],
+  [
+   "/pl/remont-pod-klucz",
+   "Remont pod klucz"
+  ],
+  [
+   "/pl/remont-domu",
+   "Remont domu"
+  ],
+  [
+   "/pl/faq",
+   "FAQ"
+  ]
+ ]
+}

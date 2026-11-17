@@ -67,7 +67,7 @@
    [
     "nadzór autorski",
     "kosztorys remontu",
-    "kompletacja przez Ozdoba",
+    "kompletacja",
     "finalna stylizacja"
    ]
   ]
@@ -84,7 +84,7 @@
    "Od projektu do realizacji bez strat",
    [
     "Najdroższe błędy w segmencie premium zdarzają się między projektem a budową: ekipa upraszcza detal, dostawca zmienia fakturę, meble nie mieszczą się we wnękach. Dlatego prowadzimy projekt do końca — nadzór autorski, remont naszym zespołem, kompletacja i stylizacja.",
-    "Meble, oświetlenie i dekoracje możemy zamówić bezpośrednio w fabrykach w Chinach przez katalog Ozdoba, także na zamówienie — kolor, rozmiar, materiał, wykończenie. Zamówienia od $10 000, dostawa 35–70 dni, więc zamawiamy równolegle z remontem."
+    "Meble, oświetlenie i dekoracje możemy zamówić bezpośrednio w fabrykach w Chinach, także na zamówienie — kolor, rozmiar, materiał, wykończenie. Dostawa trwa 35–70 dni, więc zamawiamy równolegle z remontem."
    ]
   ],
   [
@@ -136,7 +136,7 @@
   ],
   [
    "Czy można zamówić meble na wymiar?",
-   "Tak. Przez katalog Ozdoba zamawiamy meble i oświetlenie w fabrykach w Chinach z produkcją na zamówienie — kolor, rozmiar, materiał, wykończenie. Zamówienia od $10 000, dostawa 35–70 dni."
+   "Tak. Zamawiamy meble i oświetlenie w fabrykach w Chinach z produkcją na zamówienie — kolor, rozmiar, materiał, wykończenie. Dostawa 35–70 dni."
   ],
   [
    "Czy pracujecie z obiektami za granicą?",
@@ -196,6 +196,10 @@
    [
     "/pl/remont-premium",
     "Remont premium"
+   ],
+   [
+    "/pl/projektowanie-wnetrz-domu",
+    "Projekt wnętrza domu"
    ],
    [
     "/pl/projektant-wnetrz",

@@ -67,7 +67,7 @@
    [
     "supervisión de autor",
     "presupuesto de la reforma",
-    "equipamiento a través de Ozdoba",
+    "equipamiento",
     "estilismo final"
    ]
   ]
@@ -84,7 +84,7 @@
    "Del proyecto a la obra sin pérdidas",
    [
     "Los errores más caros del segmento premium se producen entre el proyecto y la obra: la cuadrilla simplifica un detalle, el proveedor cambia una textura, los muebles no caben en los huecos. Por eso llevamos el proyecto hasta el final: supervisión de autor, reforma con nuestro equipo, equipamiento y estilismo.",
-    "Muebles, iluminación y decoración pueden pedirse directamente a fábricas de China a través del catálogo Ozdoba, también a medida: color, tamaño, material, acabado. Pedidos desde $10 000 y entrega en 35–70 días, por eso pedimos en paralelo a la reforma."
+    "Muebles, iluminación y decoración pueden pedirse directamente a fábricas de China, también a medida: color, tamaño, material, acabado. La entrega tarda 35–70 días, por eso pedimos en paralelo a la reforma."
    ]
   ],
   [
@@ -136,7 +136,7 @@
   ],
   [
    "¿Se pueden pedir muebles a medida?",
-   "Sí. A través del catálogo Ozdoba pedimos muebles e iluminación a fábricas de China con fabricación a medida: color, tamaño, material, acabado. Pedidos desde $10 000, entrega en 35–70 días."
+   "Sí. Pedimos muebles e iluminación a fábricas de China con fabricación a medida: color, tamaño, material, acabado. Entrega en 35–70 días."
   ],
   [
    "¿Trabajan con inmuebles en el extranjero?",
@@ -196,6 +196,10 @@
    [
     "/es/reforma-premium",
     "Reforma premium"
+   ],
+   [
+    "/es/diseno-interiores-casa",
+    "Diseño de interiores de casas"
    ],
    [
     "/es/disenador-interiores",

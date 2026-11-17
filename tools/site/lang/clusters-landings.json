@@ -61,5 +61,170 @@
   "fr": "/fr/renovation-haut-de-gamme",
   "zh": "/zh/premium-renovation",
   "ar": "/ar/premium-renovation"
+ },
+ "cosmetic-renovation": {
+  "uk": "/kosmetychnyi-remont-kvartyry-kyiv",
+  "ru": "/ru/kosmeticheskiy-remont-kvartiry-kiev",
+  "en": "/en/cosmetic-renovation",
+  "es": "/es/reforma-ligera-piso",
+  "pl": "/pl/remont-kosmetyczny",
+  "de": "/de/schoenheitsreparaturen",
+  "fr": "/fr/rafraichissement-appartement",
+  "zh": "/zh/cosmetic-renovation",
+  "ar": "/ar/cosmetic-renovation"
+ },
+ "cost-construction": {
+  "uk": "/vartist-budivnytstva-budynku-kyiv",
+  "ru": "/ru/stoimost-stroitelstva-doma-kiev",
+  "en": "/en/house-construction-cost",
+  "es": "/es/precio-construccion-casa",
+  "pl": "/pl/koszt-budowy-domu",
+  "de": "/de/hausbau-kosten",
+  "fr": "/fr/prix-construction-maison",
+  "zh": "/zh/house-construction-cost",
+  "ar": "/ar/house-construction-cost"
+ },
+ "house-aerated": {
+  "uk": "/budynok-z-hazobloku-pid-kliuch-kyiv",
+  "ru": "/ru/dom-iz-gazobloka-pod-klyuch-kiev",
+  "en": "/en/aerated-concrete-house",
+  "es": "/es/casa-hormigon-celular",
+  "pl": "/pl/dom-z-betonu-komorkowego",
+  "de": "/de/porenbetonhaus",
+  "fr": "/fr/maison-beton-cellulaire",
+  "zh": "/zh/aerated-concrete-house",
+  "ar": "/ar/aerated-concrete-house"
+ },
+ "house-frame": {
+  "uk": "/karkasnyi-budynok-pid-kliuch-kyiv",
+  "ru": "/ru/karkasnyy-dom-pod-klyuch-kiev",
+  "en": "/en/timber-frame-house",
+  "es": "/es/casa-entramado-madera",
+  "pl": "/pl/dom-szkieletowy",
+  "de": "/de/holzrahmenhaus",
+  "fr": "/fr/maison-ossature-bois",
+  "zh": "/zh/timber-frame-house",
+  "ar": "/ar/timber-frame-house"
+ },
+ "house-interior": {
+  "uk": "/dyzain-interieru-budynku-kyiv",
+  "ru": "/ru/dizayn-interera-doma-kiev",
+  "en": "/en/house-interior-design",
+  "es": "/es/diseno-interiores-casa",
+  "pl": "/pl/projektowanie-wnetrz-domu",
+  "de": "/de/hausinterieur",
+  "fr": "/fr/architecture-interieur-maison",
+  "zh": "/zh/house-interior-design",
+  "ar": "/ar/house-interior-design"
+ },
+ "house-modular": {
+  "uk": "/modulnyi-budynok-kyiv",
+  "ru": "/ru/modulnyy-dom-kiev",
+  "en": "/en/modular-house",
+  "es": "/es/casa-modular",
+  "pl": "/pl/dom-modulowy",
+  "de": "/de/modulhaus",
+  "fr": "/fr/maison-modulaire",
+  "zh": "/zh/modular-house",
+  "ar": "/ar/modular-house"
+ },
+ "house-timber": {
+  "uk": "/budynok-z-brusa-kyiv",
+  "ru": "/ru/dom-iz-brusa-kiev",
+  "en": "/en/timber-house",
+  "es": "/es/casa-de-madera",
+  "pl": "/pl/dom-z-bali",
+  "de": "/de/holzbalkenhaus",
+  "fr": "/fr/maison-bois-massif",
+  "zh": "/zh/timber-house",
+  "ar": "/ar/timber-house"
+ },
+ "major-renovation": {
+  "uk": "/kapitalnyi-remont-kvartyry-kyiv",
+  "ru": "/ru/kapitalnyy-remont-kvartiry-kiev",
+  "en": "/en/major-renovation",
+  "es": "/es/reforma-integral-piso",
+  "pl": "/pl/remont-kapitalny-mieszkania",
+  "de": "/de/komplettsanierung-wohnung",
+  "fr": "/fr/renovation-lourde-appartement",
+  "zh": "/zh/major-renovation",
+  "ar": "/ar/major-renovation"
+ },
+ "office-design": {
+  "uk": "/dyzain-ofisu-kyiv",
+  "ru": "/ru/dizayn-ofisa-kiev",
+  "en": "/en/office-design",
+  "es": "/es/diseno-oficinas",
+  "pl": "/pl/projektowanie-biur",
+  "de": "/de/bueroplanung",
+  "fr": "/fr/design-bureaux",
+  "zh": "/zh/office-design",
+  "ar": "/ar/office-design"
+ },
+ "penthouse": {
+  "uk": "/dyzain-i-remont-penthausa-kyiv",
+  "ru": "/ru/dizayn-i-remont-penthausa-kiev",
+  "en": "/en/penthouse-design-renovation",
+  "es": "/es/diseno-reforma-atico",
+  "pl": "/pl/projekt-i-remont-penthouse",
+  "de": "/de/penthouse-design-renovierung",
+  "fr": "/fr/design-renovation-penthouse",
+  "zh": "/zh/penthouse-design-renovation",
+  "ar": "/ar/penthouse-design-renovation"
+ },
+ "reconstruction": {
+  "uk": "/rekonstruktsiia-budynku-kyiv",
+  "ru": "/ru/rekonstruktsiya-doma-kiev",
+  "en": "/en/house-reconstruction",
+  "es": "/es/reconstruccion-casas",
+  "pl": "/pl/przebudowa-domu",
+  "de": "/de/hausumbau",
+  "fr": "/fr/reconstruction-maison",
+  "zh": "/zh/house-reconstruction",
+  "ar": "/ar/house-reconstruction"
+ },
+ "replanning": {
+  "uk": "/pereplanuvannia-kvartyry-kyiv",
+  "ru": "/ru/pereplanirovka-kvartiry-kiev",
+  "en": "/en/apartment-replanning",
+  "es": "/es/redistribucion-piso",
+  "pl": "/pl/zmiana-ukladu-mieszkania",
+  "de": "/de/grundrissaenderung-wohnung",
+  "fr": "/fr/reamenagement-appartement",
+  "zh": "/zh/apartment-replanning",
+  "ar": "/ar/apartment-replanning"
+ },
+ "rough-renovation": {
+  "uk": "/chornovyi-remont-kvartyry-kyiv",
+  "ru": "/ru/chernovoy-remont-kvartiry-kiev",
+  "en": "/en/rough-renovation",
+  "es": "/es/obra-gruesa-piso",
+  "pl": "/pl/remont-surowy-mieszkania",
+  "de": "/de/rohausbau-wohnung",
+  "fr": "/fr/gros-oeuvre-appartement",
+  "zh": "/zh/rough-renovation",
+  "ar": "/ar/rough-renovation"
+ },
+ "supervision": {
+  "uk": "/avtorskyi-i-tekhnichnyi-nahliad-kyiv",
+  "ru": "/ru/avtorskiy-i-tehnicheskiy-nadzor-kiev",
+  "en": "/en/design-and-technical-supervision",
+  "es": "/es/supervision-de-obra",
+  "pl": "/pl/nadzor-autorski-i-techniczny",
+  "de": "/de/bauueberwachung",
+  "fr": "/fr/suivi-de-chantier",
+  "zh": "/zh/construction-supervision",
+  "ar": "/ar/construction-supervision"
+ },
+ "townhouse": {
+  "uk": "/remont-taunkhausa-kyiv",
+  "ru": "/ru/remont-taunhausa-kiev",
+  "en": "/en/townhouse-renovation",
+  "es": "/es/reforma-adosado",
+  "pl": "/pl/remont-szeregowca",
+  "de": "/de/reihenhaus-renovierung",
+  "fr": "/fr/renovation-maison-de-ville",
+  "zh": "/zh/townhouse-renovation",
+  "ar": "/ar/townhouse-renovation"
  }
 }

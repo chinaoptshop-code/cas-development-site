@@ -67,7 +67,7 @@
    [
     "Designerüberwachung",
     "Kostenvoranschlag der Renovierung",
-    "Ausstattung über Ozdoba",
+    "Ausstattung",
     "finales Styling"
    ]
   ]
@@ -84,7 +84,7 @@
    "Vom Entwurf zur Umsetzung ohne Verluste",
    [
     "Die teuersten Fehler im Premiumsegment entstehen zwischen Planung und Bau: Das Team vereinfacht ein Detail, ein Lieferant tauscht eine Oberfläche, Möbel passen nicht in die Nischen. Deshalb führen wir das Projekt bis zum Ende — Designerüberwachung, Renovierung durch unser Team, Ausstattung und Styling.",
-    "Möbel, Leuchten und Deko können wir über unseren Katalog Ozdoba direkt bei Fabriken in China bestellen, auch als Sonderanfertigung — Farbe, Größe, Material, Oberfläche. Bestellungen ab $10 000, Lieferung in 35–70 Tagen, daher bestellen wir parallel zur Renovierung."
+    "Möbel, Leuchten und Deko können wir direkt bei Fabriken in China bestellen, auch als Sonderanfertigung — Farbe, Größe, Material, Oberfläche. Lieferung in 35–70 Tagen, daher bestellen wir parallel zur Renovierung."
    ]
   ],
   [
@@ -136,7 +136,7 @@
   ],
   [
    "Können Möbel nach Maß gefertigt werden?",
-   "Ja. Über den Katalog Ozdoba bestellen wir Möbel und Leuchten bei Fabriken in China als Sonderanfertigung — Farbe, Größe, Material, Oberfläche. Bestellungen ab $10 000, Lieferung in 35–70 Tagen."
+   "Ja. Wir bestellen Möbel und Leuchten bei Fabriken in China als Sonderanfertigung — Farbe, Größe, Material, Oberfläche. Lieferung in 35–70 Tagen."
   ],
   [
    "Arbeiten Sie auch an Objekten im Ausland?",
@@ -196,6 +196,10 @@
    [
     "/de/premium-renovierung",
     "Premium-Renovierung"
+   ],
+   [
+    "/de/hausinterieur",
+    "Innenarchitektur für Häuser"
    ],
    [
     "/de/innenarchitekt",
