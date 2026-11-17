@@ -11,6 +11,14 @@
   // ціни: тисячі — вузький нерозривний пробіл U+202F ($1 100), en/zh — кома ($1,100) (Михайло 16.11.2026)
   W.casUsd = function (n, l) { var c = lg(l) === 'zh' ? ',' : '\u202f'; return '$' + W.casNum(Math.round(+n), l).replace(/\u00a0/g, c); };
 })(window);
+/* Safari/WebKit запускає defer-скрипти, не дочекавшись повного site-chrome.v1.css у кінці <body> (Chrome чекає): усе нижче міряє верстку
+   (стрічки, згортання data-c, сцени, ліниві фото) — тож стартує лише після цього CSS. Chrome — без змін (CSS уже готовий). */
+(function (go) {
+  var l = document.querySelector('link[href*="/assets/site-chrome.v1.css"]');
+  if (!l || l.sheet) return go();
+  var k = 0, f = function () { if (!k++) go(); };
+  l.addEventListener('load', f); l.addEventListener('error', f); window.addEventListener('load', f);
+})(function () {
 (function () {
   var d = document, h = d.documentElement;
   var btn = d.querySelector('.sch-burger'), menu = d.getElementById('sch-menu');
@@ -868,3 +876,4 @@
  var t=new Image();t.onload=function(){go(t.width>0)};t.onerror=function(){go(0)};
  t.src='data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADrbWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAETAAAAIQAAAChpaW5mAAAAAAABAAAAGmluZmUCAAAAAAEAAGF2MDFDb2xvcgAAAABqaXBycAAAAEtpcGNvAAAAFGlzcGUAAAAAAAAAAQAAAAEAAAAQcGl4aQAAAAADCAgIAAAADGF2MUOBAAwAAAAAE2NvbHJuY2x4AAEADQAGgAAAABdpcG1hAAAAAAAAAAEAAQQBAoMEAAAAKW1kYXQSAAoIGAAGiAhoNCAyExlHh4Yhh5555oAAAJBAyRxhQr4=';
 })();
+});

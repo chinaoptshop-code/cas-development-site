@@ -513,7 +513,11 @@
       w.appendChild(box);
       place();
     }
-    build();
+    // Safari/WebKit запускає defer-скрипти до повного site-chrome.v1.css (кінець <body>): без нього .of-ct-w ще static і offsetTop форми —
+    // від <body> (блок опинявся на десятки тисяч px нижче, сторінка ×4 довша). Будуємо після CSS; Chrome — одразу.
+    var l = document.querySelector('link[href*="/assets/site-chrome.v1.css"]');
+    if (!l || l.sheet) build();
+    else { var k = 0, go = function () { if (!k++) build(); }; l.addEventListener('load', go); l.addEventListener('error', go); window.addEventListener('load', go); }
     if (mq.addEventListener) mq.addEventListener('change', build);
     window.addEventListener('resize', place, { passive: true });
   })();
