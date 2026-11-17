@@ -8,7 +8,8 @@
   "de": "/de/hoteldesign",
   "fr": "/fr/design-hotel",
   "zh": "/zh/hotel-design",
-  "ar": "/ar/hotel-design"
+  "ar": "/ar/hotel-design",
+  "pt": "/pt/design-hoteis"
  },
  "contract": {
   "uk": "/dogovir-garantiya-oplata",
@@ -18,7 +19,8 @@
   "de": "/de/vertrag-gewaehrleistung-zahlung",
   "fr": "/fr/contrat-garantie-paiement",
   "zh": "/zh/contract-warranty-payment",
-  "ar": "/ar/contract-warranty-payment"
+  "ar": "/ar/contract-warranty-payment",
+  "pt": "/pt/contrato-garantia-pagamento"
  },
  "general-contractor": {
   "uk": "/heneralnyi-pidriadnyk-kyiv",
@@ -28,7 +30,8 @@
   "de": "/de/generalunternehmer",
   "fr": "/fr/entreprise-generale",
   "zh": "/zh/general-contractor",
-  "ar": "/ar/general-contractor"
+  "ar": "/ar/general-contractor",
+  "pt": "/pt/empreiteiro-geral"
  },
  "restaurant-fit-out": {
   "uk": "/remont-restoranu-kafe-kyiv",
@@ -38,7 +41,8 @@
   "de": "/de/restaurant-ausbau",
   "fr": "/fr/amenagement-restaurant",
   "zh": "/zh/restaurant-fit-out",
-  "ar": "/ar/restaurant-fit-out"
+  "ar": "/ar/restaurant-fit-out",
+  "pt": "/pt/remodelacao-restaurantes-cafes"
  },
  "premium-design": {
   "uk": "/dyzain-interieru-premium-kyiv",
@@ -49,7 +53,8 @@
   "de": "/de/premium-innenarchitektur",
   "fr": "/fr/architecture-interieur-haut-de-gamme",
   "zh": "/zh/premium-interior-design",
-  "ar": "/ar/premium-interior-design"
+  "ar": "/ar/premium-interior-design",
+  "pt": "/pt/design-de-interiores-premium"
  },
  "premium-renovation": {
   "uk": "/remont-premium-klasu-kyiv",
@@ -60,7 +65,8 @@
   "de": "/de/premium-renovierung",
   "fr": "/fr/renovation-haut-de-gamme",
   "zh": "/zh/premium-renovation",
-  "ar": "/ar/premium-renovation"
+  "ar": "/ar/premium-renovation",
+  "pt": "/pt/remodelacao-premium"
  },
  "cosmetic-renovation": {
   "uk": "/kosmetychnyi-remont-kvartyry-kyiv",
@@ -71,7 +77,8 @@
   "de": "/de/schoenheitsreparaturen",
   "fr": "/fr/rafraichissement-appartement",
   "zh": "/zh/cosmetic-renovation",
-  "ar": "/ar/cosmetic-renovation"
+  "ar": "/ar/cosmetic-renovation",
+  "pt": "/pt/remodelacao-ligeira-apartamento"
  },
  "cost-construction": {
   "uk": "/vartist-budivnytstva-budynku-kyiv",
@@ -82,7 +89,8 @@
   "de": "/de/hausbau-kosten",
   "fr": "/fr/prix-construction-maison",
   "zh": "/zh/house-construction-cost",
-  "ar": "/ar/house-construction-cost"
+  "ar": "/ar/house-construction-cost",
+  "pt": "/pt/preco-construcao-casa"
  },
  "house-aerated": {
   "uk": "/budynok-z-hazobloku-pid-kliuch-kyiv",
@@ -93,7 +101,8 @@
   "de": "/de/porenbetonhaus",
   "fr": "/fr/maison-beton-cellulaire",
   "zh": "/zh/aerated-concrete-house",
-  "ar": "/ar/aerated-concrete-house"
+  "ar": "/ar/aerated-concrete-house",
+  "pt": "/pt/casa-betao-celular"
  },
  "house-frame": {
   "uk": "/karkasnyi-budynok-pid-kliuch-kyiv",
@@ -104,7 +113,8 @@
   "de": "/de/holzrahmenhaus",
   "fr": "/fr/maison-ossature-bois",
   "zh": "/zh/timber-frame-house",
-  "ar": "/ar/timber-frame-house"
+  "ar": "/ar/timber-frame-house",
+  "pt": "/pt/casa-estrutura-madeira"
  },
  "house-interior": {
   "uk": "/dyzain-interieru-budynku-kyiv",
@@ -115,7 +125,8 @@
   "de": "/de/hausinterieur",
   "fr": "/fr/architecture-interieur-maison",
   "zh": "/zh/house-interior-design",
-  "ar": "/ar/house-interior-design"
+  "ar": "/ar/house-interior-design",
+  "pt": "/pt/design-de-interiores-moradia"
  },
  "house-modular": {
   "uk": "/modulnyi-budynok-kyiv",
@@ -126,7 +137,8 @@
   "de": "/de/modulhaus",
   "fr": "/fr/maison-modulaire",
   "zh": "/zh/modular-house",
-  "ar": "/ar/modular-house"
+  "ar": "/ar/modular-house",
+  "pt": "/pt/casa-modular"
  },
  "house-timber": {
   "uk": "/budynok-z-brusa-kyiv",
@@ -137,7 +149,8 @@
   "de": "/de/holzbalkenhaus",
   "fr": "/fr/maison-bois-massif",
   "zh": "/zh/timber-house",
-  "ar": "/ar/timber-house"
+  "ar": "/ar/timber-house",
+  "pt": "/pt/casa-de-madeira"
  },
  "major-renovation": {
   "uk": "/kapitalnyi-remont-kvartyry-kyiv",
@@ -291,7 +304,8 @@
   "de": "/de/kuechen-und-schraenke-nach-mass",
   "fr": "/fr/cuisines-placards-sur-mesure",
   "zh": "/zh/custom-kitchens-wardrobes",
-  "ar": "/ar/custom-kitchens-wardrobes"
+  "ar": "/ar/custom-kitchens-wardrobes",
+  "pt": "/pt/cozinhas-roupeiros-por-medida"
  },
  "neoclassic": {
   "uk": "/dyzain-interieru-neoklasyka-kyiv",

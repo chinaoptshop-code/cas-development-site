@@ -1,0 +1,212 @@
+{
+ "slug": "contrato-garantia-pagamento",
+ "lang": "pt",
+ "service": "Contrato, garantia e pagamento (minuta de contrato)",
+ "title": "Contrato de remodelação, garantia e pagamento — CAS, Kyiv",
+ "description": "Contrato de remodelação e construção com a CAS: orçamento, prazos, receção por fases, garantia de 12 meses, pagamento 50/50, 50/30/20, 50/40/10 ou por fases.",
+ "h1": "Contrato de remodelação, garantia e pagamento",
+ "lead": "Como funciona um contrato de remodelação ou construção com a CAS Development: o que inclui, como entregamos cada fase, que garantia damos e como pode pagar. Enviamos-lhe uma minuta de contrato, se a pedir.",
+ "cta": "Receber uma minuta de contrato",
+ "form_h2": "Receber uma minuta de contrato",
+ "facts": [
+  [
+   "12 meses",
+   "de garantia nas obras"
+  ],
+  [
+   "±5%",
+   "orçamento, se a obra for feita pela CAS"
+  ],
+  [
+   "a partir de 10%",
+   "adiantamento para começar"
+  ],
+  [
+   "Equipa própria",
+   "funcionários do quadro"
+  ]
+ ],
+ "sections": [
+  {
+   "t": "text",
+   "h2": "O contrato de empreitada é a base de cada obra",
+   "p": [
+    "Formalizamos a remodelação e a construção como contrato de empreitada, nos termos do capítulo 61 do Código Civil da Ucrânia: o empreiteiro executa a obra por encomenda do cliente, e o cliente recebe e paga o resultado. Tudo o que importa para si — âmbito, preço, prazos e garantia — fica fixado no contrato e nos seus anexos antes de começar.",
+    "O problema mais comum nos contratos de remodelação é um âmbito vago: «remodelar o apartamento» sem lista de trabalhos. Por isso, o nosso contrato é acompanhado de um orçamento detalhado de trabalhos e materiais e, se a obra seguir um projeto de design, dos respetivos desenhos."
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "O que inclui o contrato da CAS",
+   "items": [
+    [
+     "Objeto do contrato",
+     "Imóvel, morada, lista e volume de trabalhos; o projeto de design ou os desenhos como anexo."
+    ],
+    [
+     "Orçamento",
+     "Trabalhos e materiais, rubrica a rubrica. Se a obra for executada pela CAS, o total não se desvia mais de ±5% do orçamento."
+    ],
+    [
+     "Prazos",
+     "Data de início, calendário de fases e data de entrega. Os prazos começam nas 2 semanas, consoante o volume."
+    ],
+    [
+     "Condições de pagamento",
+     "O esquema que escolher: 50/50, 50/30/20, 50/40/10 ou por fases; começa-se com um adiantamento a partir de 10%. O adiantamento e o auto a que cada pagamento está ligado constam do contrato."
+    ],
+    [
+     "Receção por fases",
+     "Cada fase é entregue com um auto assinado: vê o que está feito e pelo que paga."
+    ],
+    [
+     "Relatórios",
+     "Relatórios fotográficos a cada 1–2 semanas; com custo adicional, câmara online na obra 24/7."
+    ],
+    [
+     "Garantia",
+     "12 meses sobre os trabalhos executados, a contar da receção com o auto final. Em construção, remodelação integral e reconstrução, a garantia do edifício segue o artigo 884 do Código Civil da Ucrânia e o contrato. A forma de comunicar um defeito e o prazo para o corrigir ficam fixados no contrato."
+    ],
+    [
+     "Responsabilidade",
+     "O que acontece se os prazos ou os pagamentos não forem cumpridos e como se resolvem divergências."
+    ],
+    [
+     "Força maior",
+     "Força maior (artigo 617 do Código Civil) são factos que impedem diretamente o cumprimento de uma obrigação concreta, por exemplo um bombardeamento ou danos no imóvel. A parte afetada avisa a outra e comprova-o com um certificado da Câmara de Comércio ou outros documentos; os prazos são prorrogados enquanto o facto durar. A lei marcial ou os cortes de energia programados não são, por si só, força maior: o seu efeito nos prazos é acordado à parte no contrato."
+    ],
+    [
+     "Rescisão",
+     "Condições e procedimento: acerto de contas pelos trabalhos efetivamente executados e pelos materiais comprados para o imóvel (artigo 849 do Código Civil)."
+    ]
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Esquemas de pagamento à sua medida",
+   "items": [
+    {
+     "h": "50/50",
+     "p": "50% no início, 50% após a entrega e a assinatura do auto final."
+    },
+    {
+     "h": "50/30/20",
+     "p": "50% no início, 30% após a receção de uma fase intermédia com auto, 20% após a assinatura do auto final."
+    },
+    {
+     "h": "50/40/10",
+     "p": "50% no início, 40% após uma fase intermédia, os últimos 10% após a assinatura do auto final."
+    },
+    {
+     "h": "Por fases",
+     "p": "Pagamento de cada fase em separado; começa-se com um adiantamento a partir de 10%."
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Formas de pagamento",
+   "items": [
+    {
+     "h": "Fatura",
+     "p": "Para empresas registadas na Ucrânia — com ou sem IVA, caso a caso — com documentação de fecho. A faturação a empresas da UE está em processo de ativação."
+    },
+    {
+     "h": "Outras formas",
+     "p": "Outras formas de pagamento são acordadas no contrato."
+    }
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Quem faz o trabalho",
+   "items": [
+    {
+     "h": "Equipa própria",
+     "p": "A obra é executada pela equipa da CAS, funcionários do quadro para diferentes níveis de complexidade e tipos de trabalho; as cozinhas e roupeiros por medida são feitos pelos nossos funcionários e parceiros. Um encarregado de obra verifica cada fase."
+    },
+    {
+     "h": "Controlo online",
+     "p": "Relatórios fotográficos da obra a cada 1–2 semanas; com custo adicional, câmara online 24/7 para ver a obra a qualquer momento."
+    },
+    {
+     "h": "Orçamento ±5%",
+     "p": "A garantia do orçamento aplica-se apenas se a obra for executada pela CAS: nesse caso, o total não se desvia mais de ±5%."
+    }
+   ]
+  },
+  {
+   "t": "guarantees",
+   "more": false
+  },
+  {
+   "t": "faq",
+   "h2": "Perguntas e respostas",
+   "items": [
+    [
+     "Posso ver o contrato antes de assinar?",
+     "Sim. Deixe um pedido e enviamos-lhe uma minuta de contrato; para o seu imóvel preparamos o contrato com orçamento e calendário."
+    ],
+    [
+     "Que garantia tem a remodelação?",
+     "12 meses sobre os trabalhos executados, a contar da receção com o auto final. Em construção e reconstrução, a garantia do edifício segue o artigo 884 do Código Civil da Ucrânia e o contrato."
+    ],
+    [
+     "Como posso pagar?",
+     "Segundo o esquema escolhido: 50/50, 50/30/20, 50/40/10 ou por fases; começa-se com um adiantamento a partir de 10%. Por fatura (para empresas registadas na Ucrânia, com ou sem IVA, caso a caso) ou outra forma acordada no contrato."
+    ],
+    [
+     "Como pagar a partir do estrangeiro?",
+     "Por fatura em USD ou EUR (transferência SWIFT), com cartão através de um link de pagamento ou em USDT. O contrato é em inglês; as condições são acordadas caso a caso."
+    ],
+    [
+     "O total pode aumentar durante a obra?",
+     "Se a obra for executada pela CAS, o total não se desvia mais de ±5% do orçamento aprovado."
+    ],
+    [
+     "Quem trabalha na obra?",
+     "A equipa da CAS, funcionários do quadro para diferentes complexidades e tipos de trabalho; as cozinhas e roupeiros por medida, os nossos funcionários e parceiros."
+    ],
+    [
+     "Como acompanho a obra a partir do estrangeiro?",
+     "Relatórios fotográficos a cada 1–2 semanas e, com custo adicional, câmara online na obra 24/7."
+    ],
+    [
+     "Quanto tempo dura uma remodelação?",
+     "O prazo consta do contrato e começa nas 2 semanas, consoante o volume."
+    ]
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Páginas úteis",
+   "items": [
+    [
+     "/pt/remodelacao-chave-na-mao",
+     "Remodelação chave na mão"
+    ],
+    [
+     "/pt/construcao-de-moradias",
+     "Construção de moradias"
+    ],
+    [
+     "/pt/equipa-de-obras",
+     "Equipa de obras"
+    ],
+    [
+     "/pt/calculadora-obras",
+     "Calculadora de custos"
+    ],
+    [
+     "/pt/perguntas-frequentes",
+     "Perguntas frequentes"
+    ],
+    [
+     "/pt/contacto",
+     "Contactos"
+    ]
+   ]
+  }
+ ],
+ "gallery": []
+}
