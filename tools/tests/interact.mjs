@@ -221,7 +221,7 @@ await test('квіз: крок і перехід до форми', '/remont-kvar
   await opt.click(); await p.waitForTimeout(300);
 });
 await test('калькулятор: площа → сума', '/kalkuliator-remontu', 1440, async p => {
-  const inp = p.locator('input[type=number], input[type=range]').first();
+  const inp = p.locator('#cArea');
   must(await inp.count(), 'немає поля площі');
   const before = await p.locator('main').innerText();
   await inp.fill('120').catch(async () => { await inp.evaluate(e => { e.value = 120; e.dispatchEvent(new Event('input', { bubbles: true })); }); });
@@ -272,6 +272,36 @@ await test('калькулятор: 0 → «—», дизайн для 10 м² �
   await set('80'); await p.click('#cSend'); await p.waitForTimeout(300);
   must((await p.inputValue('#oMsg')) !== m1 && (await p.inputValue('#oArea')) === '80', 'повторний розрахунок не оновив форму');
 });
+await test('калькулятор: кома, помилка й стеля поля, розбивка рядками, Enter, підписи для читалки', '/kalkuliator-remontu', 402, async p => {
+  const set = async v => { await p.fill('#cArea', v); await p.waitForTimeout(120); };
+  must(await p.getAttribute('#cArea', 'inputmode') === 'decimal' && await p.locator('label[for="cArea"]').count() === 1, 'поле площі без inputmode/підпису');
+  must(await p.getAttribute('#cKind', 'id') && await p.locator('label[for="cKind"]').count() === 1, 'select без підпису');
+  await set('75,6'); must((await p.textContent('#cSum')).replace(/\D/g, '') === String(76 * 550), 'кома в площі: ' + await p.textContent('#cSum'));
+  must(await p.locator('#cRows li').count() === 1 && /76 м² × \$550\/м²/.test(await p.textContent('#cRows')), 'розбивка без «площа × ставка»: ' + await p.textContent('#cRows'));
+  await set('abc');
+  must(await p.getAttribute('#cArea', 'aria-invalid') === 'true' && await p.locator('#cAreaE').isVisible() && (await p.textContent('#cSum')) === '—', 'нечислова площа без помилки');
+  must(await p.getAttribute('#cArea', 'aria-describedby') === 'cAreaE', 'помилка не повʼязана з полем');
+  await set('-3'); must(await p.getAttribute('#cArea', 'aria-invalid') === 'true', 'відʼємна площа без помилки');
+  await set('500000'); must(/100 000/.test((await p.textContent('#cAreaE')).replace(/\u00a0/g, ' ')) && await p.getAttribute('#cArea', 'aria-invalid') === 'false', 'стеля без підказки: ' + await p.textContent('#cAreaE'));
+  await set(''); must(await p.locator('#cAreaE').isHidden() && (await p.textContent('#cSum')) === '—', 'порожнє поле — помилка або сума');
+  await p.fill('#cArea', '40'); await p.press('#cArea', 'Enter'); await p.waitForTimeout(100);
+  must((await p.textContent('#cSum')).replace(/\D/g, '') === '22000', 'Enter не перерахував');
+  await p.click('#cDz [data-p="dz"]'); await p.check('#cFurn');
+  must(await p.locator('#cRows li').count() === 3 && /мінімум \$2\u202f500/.test(await p.textContent('#cRows')), 'дизайн 40 м² не показує мінімум: ' + await p.textContent('#cRows'));
+  must(await p.getAttribute('#cSumP', 'aria-live') === 'polite', 'сума не озвучується');
+  must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'горизонтальна прокрутка');
+});
+for (const [path, rx] of [['/ru/kalkulyator-remonta', /Калькулятор/], ['/en/renovation-cost-calculator', /Calculator/], ['/es/calculadora-reforma', /Calculadora/], ['/zh/renovation-calculator', /计算器/],
+  ['/pl/kalkulator-remontu', /Kalkulator/], ['/de/renovierungskosten-rechner', /Rechner/], ['/fr/calculateur-renovation', /Calculateur/], ['/ar/renovation-calculator', /الحاسبة/]]) {
+  await test('калькулятор мовою: сума, кома/крапка, конфіг → форма (data-service, #oMsg, площа)', path, 402, async p => {
+    must(/\$/.test(await p.textContent('#cSum')), 'немає суми');
+    await p.fill('#cArea', '80,5'); await p.waitForTimeout(120);
+    must((await p.textContent('#cSum')).replace(/\D/g, '') === String(81 * 550), 'кома: ' + await p.textContent('#cSum'));
+    await p.click('#cSend'); await p.waitForTimeout(300);
+    must(rx.test(await p.getAttribute('#of', 'data-service')) && (await p.getAttribute('#of', 'data-form')) === 'calc', 'послуга/місце не в формі');
+    must((await p.inputValue('#oArea')) === '81' && /\$/.test(await p.inputValue('#oMsg')), 'площа/розрахунок не в формі');
+  });
+}
 await test('калькулятор (ar, RTL): Європа й ландшафт', '/ar/renovation-calculator', 402, async p => {
   await p.click('#cReg [data-r="1"]'); await p.selectOption('#cKind', 'land'); await p.waitForTimeout(150);
   must((await p.textContent('#cSum')).includes('المقايسة'), 'ar: ландшафт у Європі не «وفق المقايسة»');
@@ -396,6 +426,7 @@ await test('.lq-go у сцені → лід: form і source …#місце, ко
   const b = await submitOf(p);
   must(b.form === 'quick-' + place && b.source.endsWith('#' + place), 'місце .lq-go не в заявці: ' + b.form + ' | ' + b.source);
   must(b.message.length > 10 && b.service, 'конфігурація/послуга не в заявці: ' + JSON.stringify(b));
+  must(/\$600×\d+ = \$[\d\u202f]+ \/ \$1\u202f100×\d+ = \$/.test(b.message), 'орієнтир коробка/під ключ (casCost) не в коментарі: ' + b.message);
 });
 await test('квіз → лід: form=quiz, source …#quiz, відповіді; після успіху форма повертає своє місце', '/remont-kvartyr-kyiv', 402, async p => {
   await wakeup(p);

@@ -5,6 +5,13 @@
    статичні кадри з кнопками; клавіатура ←/→. */
 (function () {
   'use strict';
+  /*rates*/ /* ЗГЕНЕРОВАНО tools/site/rates.py — ставки CLAUDE.md [Україна, Європа], null — за кошторисом; руками не правити */
+var CAS_RATES = {"reno":[550,850],"office":[350,null],"box":[600,900],"key":[1100,1700],"arch":[12,18],"land":[50,null],"furn":[250,400],"plan":[6,null],"dz":[30,45],"full":[45,null]}, CAS_DMIN = [2500, 4000], CAS_DZ = ["plan", "dz", "full"];
+/* сума рядка: ставка × площа (дизайн — не менше мінімуму), округлена; null — ставки немає (за кошторисом) або площа ≤ 0 */
+function casCost(k, R, a) { var r = CAS_RATES[k], i = R ? 1 : 0, v = r ? r[i] : null; if (v == null || !(a > 0) || !isFinite(a)) return null; var s = v * a; if (CAS_DZ.indexOf(k) >= 0) s = Math.max(s, CAS_DMIN[i]); return Math.round(s); }
+/* число з поля вводу: кома або крапка, пробіли між тисячами; NaN — не число */
+function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202f]/g, '').replace(',', '.'); return /^[-+]?(\d+\.?\d*|\.\d+)$/.test(s) ? +s : NaN; }
+/*/rates*/
   var sdU = null; // casSide (site-chrome.v1.js): панель компактної сцени головної — лічильник, прогрес, номери етапів
   var W = window, d = document, sec = d.querySelector('section.rs[data-rs]');
   if (!sec || sec.__rs) return; sec.__rs = 1;
@@ -350,7 +357,7 @@
     return g;
   }
   function money(v) { return window.casNum(v); } // формат мови — site-chrome.v1.js
-  function est() { return ui.est.replace('{n}', cfg.a).replace('{v}', money(Math.max(2500, cfg.a * 30))); }
+  function est() { return ui.est.replace('{n}', cfg.a).replace('{v}', money(casCost('dz', 0, cfg.a))); }
   function enhance() {
     var list = sec.querySelector('ol.bz-st'), box0 = el('div', 'la-box'), ctr = el('div', 'la-ctl');
     ctr.appendChild(seg(ui.area, AR.map(function (n) { return n + ' ' + ui.unit; }), 1, function (i) { cfg.a = AR[i]; build(); estEl.textContent = est(); cl('rs_area', cfg.a); }));

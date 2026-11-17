@@ -2,6 +2,13 @@
    CLS 0 — збирається поза кадром; reduced-motion — статично; Esc — до генплану. */
 (function () {
   'use strict';
+  /*rates*/ /* ЗГЕНЕРОВАНО tools/site/rates.py — ставки CLAUDE.md [Україна, Європа], null — за кошторисом; руками не правити */
+var CAS_RATES = {"reno":[550,850],"office":[350,null],"box":[600,900],"key":[1100,1700],"arch":[12,18],"land":[50,null],"furn":[250,400],"plan":[6,null],"dz":[30,45],"full":[45,null]}, CAS_DMIN = [2500, 4000], CAS_DZ = ["plan", "dz", "full"];
+/* сума рядка: ставка × площа (дизайн — не менше мінімуму), округлена; null — ставки немає (за кошторисом) або площа ≤ 0 */
+function casCost(k, R, a) { var r = CAS_RATES[k], i = R ? 1 : 0, v = r ? r[i] : null; if (v == null || !(a > 0) || !isFinite(a)) return null; var s = v * a; if (CAS_DZ.indexOf(k) >= 0) s = Math.max(s, CAS_DMIN[i]); return Math.round(s); }
+/* число з поля вводу: кома або крапка, пробіли між тисячами; NaN — не число */
+function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202f]/g, '').replace(',', '.'); return /^[-+]?(\d+\.?\d*|\.\d+)$/.test(s) ? +s : NaN; }
+/*/rates*/
   var W = window, d = document, sec = d.querySelector('section.rp[data-rp]');
   if (!sec || sec.__rp) return; sec.__rp = 1;
   var RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches, NS = 'http://www.w3.org/2000/svg';
@@ -276,9 +283,9 @@
   function planT() { return sec.querySelector('h2').textContent.split(/ [—–-] /)[0]; }
   /* ціни */
   function price() {
-    var cab = cfg.n * cfg.a, rate = cfg.l ? 1100 : 600, area = cab + cfg.r;
-    var rows = [[U.r_cab.replace('{n}', cfg.n).replace('{a}', cfg.a), cab * rate], [U.r_main.replace('{a}', cfg.r), cfg.r * rate],
-      [U.r_dz, Math.max(area * 30, 2500)], [U.r_mb, area * 250], [U.r_land.replace('{s}', cfg.s), cfg.s * 50]];
+    var cab = cfg.n * cfg.a, rk = cfg.l ? 'key' : 'box', area = cab + cfg.r;
+    var rows = [[U.r_cab.replace('{n}', cfg.n).replace('{a}', cfg.a), casCost(rk, 0, cab)], [U.r_main.replace('{a}', cfg.r), casCost(rk, 0, cfg.r)],
+      [U.r_dz, casCost('dz', 0, area)], [U.r_mb, casCost('furn', 0, area)], [U.r_land.replace('{s}', cfg.s), casCost('land', 0, cfg.s)]];
     var sum = rows.reduce(function (a, r) { return a + r[1]; }, 0);
     if (estEl) estEl.textContent = U.total + ' ' + money(sum) + ' ' + U.plus;
     panel.innerHTML = '<p class="rp-ph">' + esc(U.prices) + '</p><dl>' + rows.map(function (r) { return '<div><dt>' + esc(r[0]) + '</dt><dd>' + money(r[1]) + '</dd></div>'; }).join('')

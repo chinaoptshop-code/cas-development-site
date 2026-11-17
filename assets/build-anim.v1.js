@@ -9,6 +9,13 @@
    5) prefers-reduced-motion — без доріжки й руху: статичні кадри, перемикання степером; клавіатура: «Пропустити анімацію», кнопки етапів (←/→, Home/End).
    CTA — спільний /assets/lead-form.v1.js (.lq-slot → data-source «#build-anim»). Слухач прокрутки працює лише поки блок у кадрі. На LCP не впливає. */
 (function () {
+  /*rates*/ /* ЗГЕНЕРОВАНО tools/site/rates.py — ставки CLAUDE.md [Україна, Європа], null — за кошторисом; руками не правити */
+var CAS_RATES = {"reno":[550,850],"office":[350,null],"box":[600,900],"key":[1100,1700],"arch":[12,18],"land":[50,null],"furn":[250,400],"plan":[6,null],"dz":[30,45],"full":[45,null]}, CAS_DMIN = [2500, 4000], CAS_DZ = ["plan", "dz", "full"];
+/* сума рядка: ставка × площа (дизайн — не менше мінімуму), округлена; null — ставки немає (за кошторисом) або площа ≤ 0 */
+function casCost(k, R, a) { var r = CAS_RATES[k], i = R ? 1 : 0, v = r ? r[i] : null; if (v == null || !(a > 0) || !isFinite(a)) return null; var s = v * a; if (CAS_DZ.indexOf(k) >= 0) s = Math.max(s, CAS_DMIN[i]); return Math.round(s); }
+/* число з поля вводу: кома або крапка, пробіли між тисячами; NaN — не число */
+function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202f]/g, '').replace(',', '.'); return /^[-+]?(\d+\.?\d*|\.\d+)$/.test(s) ? +s : NaN; }
+/*/rates*/
   var d = document, W = window;
   if (W.__casBA) { if (typeof W.__casBA === 'function') [].forEach.call(d.querySelectorAll('section.bz[data-bz][data-sw]'), W.__casBA); return; } // скрипт уже працює: блок, показаний перемикачем сцен на місці, — запускаємо тут
   W.__casBA = 1;
@@ -1294,6 +1301,9 @@
     var cfg = el('div', 'bz-cfg'); cfg.id = 'bz-cfg' + sx; cfg.setAttribute('role', 'group'); cfg.setAttribute('aria-label', ui.mat || '');
     var cap = el('p', 'bz-cap'); cap.setAttribute('aria-live', 'polite');
     function flL(h) { var u = ui.cfg; return h.AF ? u.fl.af : u.fl[h.TY]; }
+    // орієнтир для обраної площі — ті самі ставки й математика, що в калькуляторі (casCost, rates-блок): коробка / під ключ
+    function hUsd(n) { return W.casUsd ? W.casUsd(n, lang) : '$' + n; }
+    function hEst(full) { var b = casCost('box', 0, C.a), k = casCost('key', 0, C.a); return full ? hUsd(CAS_RATES.box[0]) + '×' + C.a + ' = ' + hUsd(b) + ' / ' + hUsd(CAS_RATES.key[0]) + '×' + C.a + ' = ' + hUsd(k) : '≈' + C.a + ' ' + ui.cfg.m2 + ': ' + hUsd(b) + ' / ' + hUsd(k); }
     function summ() { var u = ui.cfg, h = hder(C); return ui.m[C.m] + ' · ' + (h.AF ? '' : u.tn[h.TY] + ' · ') + u.sn[C.s] + ' · ' + C.a + ' ' + u.m2; }
     function cfgHtml() {
       var u = ui.cfg; if (!u) return;
@@ -1304,7 +1314,7 @@
       cfg.innerHTML = '<div class="bz-cr">' + grp(ui.mat, 'm', MATS, C.m, ui.m) + '</div><div class="bz-cr">' + grp(u.t, 't', TYP, h.AF ? '' : h.TY, u.tn) +
         '<span class="bz-g" role="group" aria-label="' + esc(u.x) + '"><span class="bz-gl" aria-hidden="true">' + esc(u.x) + '</span>' + ex + '</span></div>' +
         '<div class="bz-cr">' + grp(u.s, 'y', STY, C.s, u.sn) + '</div><div class="bz-cr">' + grp(u.a, 'a', SZ, C.a, szn) + '</div>' +
-        '<p class="bz-hint" aria-live="polite">' + esc(hint ? u.h[hint] || u.h[hint.replace(/_[at]$/, '')] || '' : '') + '</p><p class="bz-prc">' + esc(u.price) + '</p>' +
+        '<p class="bz-hint" aria-live="polite">' + esc(hint ? u.h[hint] || u.h[hint.replace(/_[at]$/, '')] || '' : '') + '</p><p class="bz-prc">' + esc(u.price) + '<br><b>' + esc(hEst()) + '</b></p>' +
         '<button type="button" class="bz-cx">' + esc(u.done) + '</button>';
       var dm = function (v) { return W.casNum(v, lang); };
       cap.textContent = '≈ ' + C.a + ' ' + u.m2 + ' · ' + flL(h) + ' · ' + dm(h.W) + ' × ' + dm(h.D) + ' м'.replace('м', lang === 'en' ? 'm' : 'м') + (C.g ? ' · ' + (C.g === 'g' ? u.gar : u.car) : '') + (C.r ? ' · ' + u.ter : '');
@@ -1489,8 +1499,9 @@
       }
       var sl = cta.querySelector('.lq-slot'); if (!sl) return;
       var u = ui.cfg, h = hder(C);
+      if (scene === 'house' && u) sl.setAttribute('data-est', hEst(1)); else sl.removeAttribute('data-est');
       sl.setAttribute('data-msg', scene === 'flat' ? (ui.sc ? ui.sc.flat + ': ' : '') + (ui.fl ? ui.fl[fv] : fv) :
-        (ui.sc ? ui.sc.house + ': ' : '') + (u ? [ui.m[C.m], flL(h), u.sn[C.s], '≈' + C.a + ' ' + u.m2].concat(C.g ? [C.g === 'g' ? u.gar : u.car] : [], C.r ? [u.ter] : []).join(' / ') : ui.m[mat]));
+        (ui.sc ? ui.sc.house + ': ' : '') + (u ? [ui.m[C.m], flL(h), u.sn[C.s], '≈' + C.a + ' ' + u.m2].concat(C.g ? [C.g === 'g' ? u.gar : u.car] : [], C.r ? [u.ter] : []).join(' / ') + ' · ' + hEst(1) : ui.m[mat]));
     }
     function setMat(m, user) {
       mat = m; build(); render(cur);

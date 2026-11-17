@@ -8,6 +8,13 @@
    Успіх — лише після події cas:lead (lead-form шле її після 2xx), помилку дзеркалимо з #oErr. Clarity: quiz_step; lead_submit — lead-form.
    data-demo — режим для /styleguide/: нічого не надсилає. */
 (function () {
+  /*rates*/ /* ЗГЕНЕРОВАНО tools/site/rates.py — ставки CLAUDE.md [Україна, Європа], null — за кошторисом; руками не правити */
+var CAS_RATES = {"reno":[550,850],"office":[350,null],"box":[600,900],"key":[1100,1700],"arch":[12,18],"land":[50,null],"furn":[250,400],"plan":[6,null],"dz":[30,45],"full":[45,null]}, CAS_DMIN = [2500, 4000], CAS_DZ = ["plan", "dz", "full"];
+/* сума рядка: ставка × площа (дизайн — не менше мінімуму), округлена; null — ставки немає (за кошторисом) або площа ≤ 0 */
+function casCost(k, R, a) { var r = CAS_RATES[k], i = R ? 1 : 0, v = r ? r[i] : null; if (v == null || !(a > 0) || !isFinite(a)) return null; var s = v * a; if (CAS_DZ.indexOf(k) >= 0) s = Math.max(s, CAS_DMIN[i]); return Math.round(s); }
+/* число з поля вводу: кома або крапка, пробіли між тисячами; NaN — не число */
+function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202f]/g, '').replace(',', '.'); return /^[-+]?(\d+\.?\d*|\.\d+)$/.test(s) ? +s : NaN; }
+/*/rates*/
   var d = document, lang = (d.documentElement.lang || 'uk').slice(0, 2).toLowerCase();
   var L = {
     uk: { h: 'Порахуйте орієнтовну вартість', p: '4 питання — і ви побачите орієнтир «від» за ставками студії.',
@@ -183,7 +190,8 @@
   };
   var t = L[lang] || L.uk, U = L.uk;
   var UA = lang === 'uk' || lang === 'ru';
-  var RATE = { dyz: 30, rem: 550, of: 350, meb: 250, bud: 600, kl: 1100 }, DMIN = 2500;
+  /* ставки — CAS_RATES/casCost з rates-блоку вгорі (tools/site/rates.py); квіз — за київськими ставками (Україна) */
+  var RATE = { dyz: 'dz', rem: 'reno', of: 'office', meb: 'furn', bud: 'box', kl: 'key' };
   var SVC = ['dyz', 'rem', 'bud', 'meb', 'kl'], OBJ = ['kv', 'dim', 'kom', 'of'], WHEN = ['now', 'm3', 'm6', 'calc'];
   var DEF_AREA = { kv: 70, dim: 150, kom: 120, of: 150 };
 
@@ -203,20 +211,20 @@
   /* Розрахунок: [{k: рядок, v: сума|null, r: ставка}], нотатки. Лише ставки CLAUDE.md. */
   function estimate(o, s, a) {
     var lines = [], notes = [];
-    var rt = function (n) { return money(n) + '/' + t.m2; };
-    var dz = function () { lines.push({ k: 'dyz', v: Math.max(a * RATE.dyz, DMIN), r: rt(30) + ', ' + t.min }); };
+    var rt = function (k) { return money(CAS_RATES[k][0]) + '/' + t.m2; };
+    var dz = function () { lines.push({ k: 'dyz', v: casCost(RATE.dyz, 0, a), r: rt(RATE.dyz) + ', ' + t.min }); };
     var rm = function () {
       if (o === 'kom') { lines.push({ k: 'rem', v: null }); notes.push(t.note.kom); }
-      else if (o === 'of') { lines.push({ k: 'of', v: a * RATE.of, r: rt(350) }); notes.push(t.note.of); }
-      else { lines.push({ k: 'rem', v: a * RATE.rem, r: rt(550) }); notes.push(t.note.rem); }
+      else if (o === 'of') { lines.push({ k: 'of', v: casCost(RATE.of, 0, a), r: rt(RATE.of) }); notes.push(t.note.of); }
+      else { lines.push({ k: 'rem', v: casCost(RATE.rem, 0, a), r: rt(RATE.rem) }); notes.push(t.note.rem); }
     };
-    var mb = function () { lines.push({ k: 'meb', v: a * RATE.meb, r: rt(250) }); };
+    var mb = function () { lines.push({ k: 'meb', v: casCost(RATE.meb, 0, a), r: rt(RATE.meb) }); };
     if (s === 'dyz') dz();
     else if (s === 'rem') rm();
     else if (s === 'meb') mb();
-    else if (s === 'bud') lines.push(o === 'dim' ? { k: 'bud', v: a * RATE.bud, r: rt(600) } : { k: 'bud', v: null });
+    else if (s === 'bud') lines.push(o === 'dim' ? { k: 'bud', v: casCost(RATE.bud, 0, a), r: rt(RATE.bud) } : { k: 'bud', v: null });
     else if (s === 'kl') {
-      if (o === 'dim') lines.push({ k: 'kl', v: a * RATE.kl, r: rt(1100) });
+      if (o === 'dim') lines.push({ k: 'kl', v: casCost(RATE.kl, 0, a), r: rt(RATE.kl) });
       else { dz(); rm(); mb(); }
     }
     var sum = 0, known = 0, unknown = 0;
@@ -263,11 +271,11 @@
     var fa = el('fieldset', 'qz-st'), la = el('legend', 'qz-q', t.q[2]); la.tabIndex = -1; fa.appendChild(la);
     var row = el('div', 'qz-ar'), rg = el('input'), nb = el('input'), nl = el('label', 'qz-al', t.area);
     rg.type = 'range'; rg.min = 10; rg.max = 1000; rg.step = 5; rg.setAttribute('aria-label', t.area);
-    nb.type = 'number'; nb.min = 10; nb.max = 20000; nb.step = 1; nb.inputMode = 'numeric'; nb.id = id + 'a'; nl.htmlFor = nb.id;
+    nb.type = 'text'; nb.inputMode = 'decimal'; nb.autocomplete = 'off'; nb.setAttribute('pattern', '[0-9 .,]*'); nb.id = id + 'a'; nl.htmlFor = nb.id;
     function setArea(v, from) {
-      v = Math.min(20000, Math.max(0, Math.round(+String(v).replace(',', '.') || 0))); st.area = v; if (from) areaSet = true;
+      v = casParseNum(v); v = isFinite(v) ? Math.min(20000, Math.max(0, Math.round(v))) : 0; st.area = v; if (from) areaSet = true;
       if (from !== rg) rg.value = Math.min(1000, Math.max(10, v));
-      if (from !== nb || +nb.value > 20000) nb.value = v;
+      var pv = casParseNum(nb.value); if (from !== nb || pv > 20000 || pv < 0) nb.value = v;
       rg.setAttribute('aria-valuetext', v + ' ' + t.m2); navState();
     }
     rg.addEventListener('input', function () { setArea(rg.value, rg); });

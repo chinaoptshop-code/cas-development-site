@@ -5,6 +5,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
+python3 tools/site/rates.py       # ставки (CLAUDE.md) → rates-блок у calc/quiz/сценах (до ?v= у сторінках)
 python3 tools/site/ux.py          # тексти кнопок згортання/бейджів і версія спрайту іконок у /assets/site-chrome.v1.{js,css} (до ?v= у сторінках)
 python3 tools/site/caselang.py portfolio  # портфоліо мовами (en, ru, es, pl, de, fr, zh, ar): tools/site/pages/<мова>-portfolio.json з uk-portfolio.json (переклад — tools/site/caselang/)
 LOG="${TMPDIR:-/tmp}/cas-landing.log"

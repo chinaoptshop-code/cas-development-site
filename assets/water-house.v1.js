@@ -5,13 +5,20 @@
    CLS 0: сцена будується, коли блок поза кадром; reduced-motion — статичні кадри з кнопками; клавіатура ←/→. */
 (function () {
   'use strict';
+  /*rates*/ /* ЗГЕНЕРОВАНО tools/site/rates.py — ставки CLAUDE.md [Україна, Європа], null — за кошторисом; руками не правити */
+var CAS_RATES = {"reno":[550,850],"office":[350,null],"box":[600,900],"key":[1100,1700],"arch":[12,18],"land":[50,null],"furn":[250,400],"plan":[6,null],"dz":[30,45],"full":[45,null]}, CAS_DMIN = [2500, 4000], CAS_DZ = ["plan", "dz", "full"];
+/* сума рядка: ставка × площа (дизайн — не менше мінімуму), округлена; null — ставки немає (за кошторисом) або площа ≤ 0 */
+function casCost(k, R, a) { var r = CAS_RATES[k], i = R ? 1 : 0, v = r ? r[i] : null; if (v == null || !(a > 0) || !isFinite(a)) return null; var s = v * a; if (CAS_DZ.indexOf(k) >= 0) s = Math.max(s, CAS_DMIN[i]); return Math.round(s); }
+/* число з поля вводу: кома або крапка, пробіли між тисячами; NaN — не число */
+function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202f]/g, '').replace(',', '.'); return /^[-+]?(\d+\.?\d*|\.\d+)$/.test(s) ? +s : NaN; }
+/*/rates*/
   var sdU = null; // casSide (site-chrome.v1.js): панель компактної сцени головної — лічильник, прогрес, номери етапів
   var W = window, d = document, sec = d.querySelector('section.wh[data-wh]');
   if (!sec || sec.__wh) return; sec.__wh = 1;
   var drive = null, RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var ui = {}; try { ui = JSON.parse(sec.querySelector('script.wh-ui').textContent); } catch (e) { return; }
   var ST = [].map.call(sec.querySelectorAll('ol.bz-st > li'), function (li) { var b = li.querySelector('b'), s = li.querySelector('span'); return [b ? b.textContent : li.textContent, s ? s.textContent : '']; });
-  var N = ST.length || 12, AR = [60, 100, 150], RATE = [600, 1100];
+  var N = ST.length || 12, AR = [60, 100, 150], RATE = ['box', 'key'];
   var cfg = { a: 100, f: 0, l: 0, xr: [0, 0, 0] }, prog = 0, shown = -1, svg, els = [], nodes = [], ptr = 0, vb = null, vbT = null, raf = 0, run, cap, cnt, live, night, FULL, FOC = [];
   var CLAD = 8, DUSK = 10;
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
@@ -329,7 +336,7 @@
     return g;
   }
   function money(v) { return window.casNum(v); } // формат мови — site-chrome.v1.js
-  function est() { return ui.est.replace('{n}', cfg.a).replace('{l}', ui.lvls[cfg.l]).replace('{v}', money(cfg.a * RATE[cfg.l])); }
+  function est() { return ui.est.replace('{n}', cfg.a).replace('{l}', ui.lvls[cfg.l]).replace('{v}', money(casCost(RATE[cfg.l], 0, cfg.a))); }
   function enhance() {
     var list = sec.querySelector('ol.bz-st'), box0 = el('div', 'la-box'), ctr = el('div', 'la-ctl'), estEl = el('p', 'la-est');
     ctr.appendChild(seg(ui.area, AR.map(function (n) { return n + ' ' + ui.unit; }), 1, function (i) { cfg.a = AR[i]; build(); estEl.textContent = est(); cl('wh_area', cfg.a); }));
