@@ -41,11 +41,11 @@ PIES = [(r'покрівл|кровл|дах|крыш|roof|dach', 'roof'), (r'ф�
 # Ціни й факти — лише з CLAUDE.md; замір не обіцяємо безкоштовним, безкоштовна — консультація по телефону.
 TOPICS = [  # (тема, regex slug статті — перекриває послугу; regex URL послуги статті, що теж дає цю тему)
     ('nadzor', r'nahliad|nadzor|supervision', r'nahliad|nadzor'),
-    ('smeta', r'koshtorys|smet|kosztorys|skilky-koshtuie-remont|skolko-stoit-remont|renovation-cost|koszt-remontu', r'vartist-remontu-kv|stoimost-remonta-kv|kalk|calculator'),
-    ('own', None, r'ofis|office|biur|restoran|restaur|kafe|biznes|business|baza|resort|osrod|komerts|kommerch|commercial|lokali|yevropa|evropa|premium|realiz|implementation|dogov|contract|bryhad|brigad|crew|ekipa|pidriad|podryad|contractor'),
-    ('furn', None, r'mebl|komplekt|ozdoba|furnish|procure|umeblow|kompletac'),
-    ('build', None, r'budivnytstvo|stroitelstvo|house-construction|budowa|proektuvannia-budynku|proektirovanie-doma|house-design|projekt-domu|rekonstr'),
-    ('design', None, r'dyzain|dizayn|interior-design|apartment-interior|interior-designer|projekt-wnetrza|projektowanie-wnetrz|projektant'),
+    ('smeta', r'koshtorys|smet|kosztorys|skilky-koshtuie-remont|skolko-stoit-remont|renovation-cost|koszt-remontu', r'vartist-remontu-kv|stoimost-remonta-kv|kalk|calculator|calculadora|rechner|calculateur'),
+    ('own', None, r'ofis|office|biur|restoran|restaur|kafe|biznes|business|baza|resort|osrod|komerts|kommerch|commercial|lokali|yevropa|evropa|premium|realiz|implementation|dogov|contract|bryhad|brigad|crew|ekipa|pidriad|podryad|contractor|oficina|buero|bureau|escritorio|negocio|gewerbe|commerce|comercia|complejo|ferienanlage|loisirs|complexo|ejecucion|umsetzung|realisation|execucao|vertrag'),
+    ('furn', None, r'mebl|komplekt|ozdoba|furnish|procure|umeblow|kompletac|amueblamiento|equipamiento|einrichtung|ameublement|equipement|mobiliario|equipamento'),
+    ('build', None, r'budivnytstvo|stroitelstvo|house-construction|budowa|proektuvannia-budynku|proektirovanie-doma|house-design|projekt-domu|rekonstr|construccion-de-casas|proyecto-de-casa|hausbau|hausplanung|construction-maison|conception-maison|construcao-de-moradias|projeto-de-moradia'),
+    ('design', None, r'dyzain|dizayn|interior-design|apartment-interior|interior-designer|projekt-wnetrza|projektowanie-wnetrz|projektant|diseno|innenarchitektur|wohnungsdesign|architecture-interieur|design-appartement|design-de-interiores|apartment-design'),
 ]
 # smeta з конкретною послугою (ванна, кухня, новобудова, будинок, капітальний) — кнопка лишається на ній
 SMETA_KEEP = r'vartist|stoimost|vann|bathroom|lazien|kukh|kuhn|kitchen|novobud|novostro|new-build|budyn|doma|house|domu|kapital'
@@ -102,8 +102,87 @@ TP = {  # тема → (рядок, [основний href, підпис кно�
                    ['/pl/projektowanie-wnetrz', 'Projektowanie wnętrz'], ['/pl/kalkulator-remontu', 'Kalkulator kosztów']),
         'own': ('Opowiedz o obiekcie — podamy orientacyjny koszt. Konsultacja telefoniczna jest bezpłatna.', None, None),
     },
+    'es': {
+        'nadzor': ('Supervisión técnica y de autor de CAS, también cuando la reforma la hace otro contratista: condiciones y coste, de forma individual. La consulta por teléfono es gratuita.',
+                   ['/es/ejecucion-proyecto-diseno', 'Ejecución del proyecto de diseño'], None),
+        'furn': ('Amueblamiento llave en mano desde $250/m²; muebles, iluminación y decoración a medida. La consulta por teléfono es gratuita.',
+                 ['/es/amueblamiento-llave-en-mano', 'Amueblamiento llave en mano'], ['/es/equipamiento-llave-en-mano', 'Equipamiento llave en mano']),
+        'build': ('Construcción de casas desde $600/m², llave en mano desde $1 100/m²; proyecto arquitectónico desde $12/m². La consulta por teléfono es gratuita.',
+                  ['/es/construccion-de-casas', 'Construcción de casas'], ['/es/construccion-de-casas#build-anim', 'Mira cómo construimos']),
+        'smeta': ('Reforma desde $550/m²: mano de obra y materiales de obra gruesa; acabados, muebles y electrodomésticos, aparte, según presupuesto. La consulta por teléfono es gratuita.',
+                  ['/es/reforma-llave-en-mano', 'Reforma llave en mano'], ['/es/calculadora-reforma', 'Calculadora de reforma']),
+        'design': ('Proyecto de diseño desde $30/m² (mín. $2 500), distribución desde $6/m². La consulta por teléfono es gratuita.',
+                   ['/es/diseno-interiores', 'Diseño de interiores'], ['/es/calculadora-reforma', 'Calculadora de costes']),
+        'own': ('Cuéntanos sobre tu inmueble y te daremos un coste orientativo. La consulta por teléfono es gratuita.', None, None),
+    },
+    'de': {
+        'nadzor': ('Technische und gestalterische Bauaufsicht von CAS, auch wenn ein anderes Unternehmen renoviert: Bedingungen und Kosten individuell. Die telefonische Beratung ist kostenlos.',
+                   ['/de/umsetzung-designprojekt', 'Umsetzung des Designprojekts'], None),
+        'furn': ('Schlüsselfertige Einrichtung ab $250/m²; Möbel, Licht und Dekor nach Maß. Die telefonische Beratung ist kostenlos.',
+                 ['/de/einrichtung-schluesselfertig', 'Einrichtung schlüsselfertig'], ['/de/objekteinrichtung', 'Objekteinrichtung']),
+        'build': ('Hausbau ab $600/m², schlüsselfertig ab $1 100/m²; Architekturplanung ab $12/m². Die telefonische Beratung ist kostenlos.',
+                  ['/de/hausbau', 'Hausbau'], ['/de/hausbau#build-anim', 'So bauen wir']),
+        'smeta': ('Renovierung ab $550/m²: Arbeit und Rohbaumaterial; Ausbaumaterial, Möbel und Geräte separat nach Kostenvoranschlag. Die telefonische Beratung ist kostenlos.',
+                  ['/de/renovierung-schluesselfertig', 'Schlüsselfertige Renovierung'], ['/de/renovierungskosten-rechner', 'Renovierungskosten-Rechner']),
+        'design': ('Designprojekt ab $30/m² (mind. $2 500), Grundrissplanung ab $6/m². Die telefonische Beratung ist kostenlos.',
+                   ['/de/innenarchitektur', 'Innenarchitektur'], ['/de/renovierungskosten-rechner', 'Kostenrechner']),
+        'own': ('Erzählen Sie uns von Ihrem Objekt – wir nennen einen Richtwert. Die telefonische Beratung ist kostenlos.', None, None),
+    },
+    'fr': {
+        'nadzor': ('Suivi technique et suivi de conception CAS, y compris quand un autre entrepreneur réalise les travaux : conditions et coût au cas par cas. La consultation téléphonique est gratuite.',
+                   ['/fr/realisation-projet', 'Réalisation du projet'], None),
+        'furn': ('Ameublement clé en main à partir de $250/m² ; mobilier, luminaires et décoration sur mesure. La consultation téléphonique est gratuite.',
+                 ['/fr/ameublement-cle-en-main', 'Ameublement clé en main'], ['/fr/equipement-cle-en-main', 'Équipement clé en main']),
+        'build': ('Construction de maison à partir de $600/m², clé en main à partir de $1 100/m² ; projet d’architecture à partir de $12/m². La consultation téléphonique est gratuite.',
+                  ['/fr/construction-maison', 'Construction de maison'], ['/fr/construction-maison#build-anim', 'Voir comment nous construisons']),
+        'smeta': ('Rénovation à partir de $550/m² : main-d’œuvre et matériaux de gros œuvre ; finitions, mobilier et électroménager à part, sur devis. La consultation téléphonique est gratuite.',
+                  ['/fr/renovation-cle-en-main', 'Rénovation clé en main'], ['/fr/calculateur-renovation', 'Calculateur de rénovation']),
+        'design': ('Projet de design à partir de $30/m² (min. $2 500), plan d’aménagement à partir de $6/m². La consultation téléphonique est gratuite.',
+                   ['/fr/architecture-interieur', 'Architecture d’intérieur'], ['/fr/calculateur-renovation', 'Calculateur de coût']),
+        'own': ('Parlez-nous de votre bien : nous vous donnerons un coût indicatif. La consultation téléphonique est gratuite.', None, None),
+    },
+    'pt': {
+        'nadzor': ('Fiscalização técnica e acompanhamento de autor da CAS, também quando a obra é feita por outro empreiteiro: condições e custo definidos caso a caso. A consulta por telefone é gratuita.',
+                   ['/pt/execucao-projeto-design', 'Execução do projeto de design'], None),
+        'furn': ('Mobiliário chave na mão desde $250/m²; móveis, iluminação e decoração por medida. A consulta por telefone é gratuita.',
+                 ['/pt/mobiliario-chave-na-mao', 'Mobiliário chave na mão'], ['/pt/equipamento-chave-na-mao', 'Equipamento chave na mão']),
+        'build': ('Construção de moradias desde $600/m², chave na mão desde $1 100/m²; projeto de arquitetura desde $12/m². A consulta por telefone é gratuita.',
+                  ['/pt/construcao-de-moradias', 'Construção de moradias'], ['/pt/construcao-de-moradias#build-anim', 'Veja como construímos']),
+        'smeta': ('Remodelação desde $550/m²: mão de obra e materiais de base; acabamentos, móveis e eletrodomésticos à parte, por orçamento. A consulta por telefone é gratuita.',
+                  ['/pt/remodelacao-chave-na-mao', 'Remodelação chave na mão'], ['/pt/calculadora-obras', 'Calculadora de obras']),
+        'design': ('Projeto de design desde $30/m² (mín. $2 500), estudo de layout desde $6/m². A consulta por telefone é gratuita.',
+                   ['/pt/design-de-interiores', 'Design de interiores'], ['/pt/calculadora-obras', 'Calculadora de custos']),
+        'own': ('Fale-nos do seu imóvel e indicamos um custo aproximado. A consulta por telefone é gratuita.', None, None),
+    },
+    'zh': {
+        'nadzor': ('CAS 提供技术监理和设计师监理，其他承包商施工时也可以：条件和费用单独商定。电话咨询免费。',
+                   ['/zh/design-implementation', '设计方案落地'], None),
+        'furn': ('交钥匙家具配置每平方米 $250 起；家具、灯具和装饰均可定制。电话咨询免费。',
+                 ['/zh/furnishing', '交钥匙家具配置'], ['/zh/turnkey-procurement', '交钥匙配套采购']),
+        'build': ('房屋建造每平方米 $600 起，交钥匙每平方米 $1,100 起；建筑设计每平方米 $12 起。电话咨询免费。',
+                  ['/zh/house-construction', '房屋建造'], ['/zh/house-construction#build-anim', '看看我们如何建造']),
+        'smeta': ('装修每平方米 $550 起：人工和基础材料；饰面材料、家具和电器另按预算计算。电话咨询免费。',
+                  ['/zh/turnkey-renovation', '交钥匙装修'], ['/zh/renovation-calculator', '装修费用计算器']),
+        'design': ('设计方案每平方米 $30 起（最低 $2,500），平面布局方案每平方米 $6 起。电话咨询免费。',
+                   ['/zh/interior-design', '室内设计'], ['/zh/renovation-calculator', '费用计算器']),
+        'own': ('告诉我们您的物业情况，我们会给出大致费用。电话咨询免费。', None, None),
+    },
+    'ar': {
+        'nadzor': ('إشراف فني وإشراف المصمم من CAS، حتى عندما ينفذ التجديد مقاول آخر: الشروط والتكلفة تُحدَّد لكل حالة. الاستشارة الهاتفية مجانية.',
+                   ['/ar/design-implementation', 'تنفيذ مشروع التصميم'], None),
+        'furn': ('التأثيث الجاهز للتسليم من $250/م²؛ أثاث وإضاءة وديكور حسب الطلب. الاستشارة الهاتفية مجانية.',
+                 ['/ar/furnishing', 'التأثيث الجاهز للتسليم'], ['/ar/turnkey-procurement', 'التجهيز الجاهز للتسليم']),
+        'build': ('بناء المنازل من $600/م²، والجاهز للتسليم من $1 100/م²؛ التصميم المعماري من $12/م². الاستشارة الهاتفية مجانية.',
+                  ['/ar/house-construction', 'بناء المنازل'], ['/ar/house-construction#build-anim', 'شاهد كيف نبني']),
+        'smeta': ('التجديد من $550/م²: الأعمال ومواد الأعمال الأولية؛ مواد التشطيب والأثاث والأجهزة منفصلة حسب التقدير. الاستشارة الهاتفية مجانية.',
+                  ['/ar/turnkey-renovation', 'التجديد الجاهز للتسليم'], ['/ar/renovation-calculator', 'حاسبة تكلفة التجديد']),
+        'design': ('مشروع التصميم من $30/م² (الحد الأدنى $2 500)، والمخطط الوظيفي من $6/م². الاستشارة الهاتفية مجانية.',
+                   ['/ar/interior-design', 'التصميم الداخلي'], ['/ar/renovation-calculator', 'حاسبة التكلفة']),
+        'own': ('أخبرنا عن عقارك وسنعطيك تكلفة تقديرية. الاستشارة الهاتفية مجانية.', None, None),
+    },
 }
-TP_ARIA = {'uk': 'Послуга за темою статті', 'ru': 'Услуга по теме статьи', 'en': 'Related service', 'pl': 'Usługa związana z artykułem'}
+TP_ARIA = {'uk': 'Послуга за темою статті', 'ru': 'Услуга по теме статьи', 'en': 'Related service', 'pl': 'Usługa związana z artykułem',
+           'es': 'Servicio relacionado', 'de': 'Passende Leistung', 'fr': 'Service associé', 'pt': 'Serviço relacionado', 'zh': '相关服务', 'ar': 'خدمة ذات صلة'}
 
 
 def _exists(href):
@@ -154,13 +233,22 @@ def _icon(i, ver):
     return f'<svg class="ic" aria-hidden="true"><use href="/assets/icons.v1.svg?v={ver}#{i}"/></svg>'
 
 
+_CJK = re.compile(r'[\u3400-\u9fff]')
+
+
+def _wc(s):
+    """Слова; для китайської — ієрогліфи / 2 (≈ слово), щоб «хв читання» й мінімум тексту були співмірні."""
+    c = len(_CJK.findall(s))
+    return len(s.split()) + c // 2 if c else len(s.split())
+
+
 def _words(body):
     n = 0
     for node in body:
         if node[0] == 'p':
-            n += len(node[1].split())
+            n += _wc(node[1])
         elif node[0] in ('ul', 'ol'):
-            n += sum(len(x.split()) for x in node[1])
+            n += sum(_wc(x) for x in node[1])
     return n
 
 

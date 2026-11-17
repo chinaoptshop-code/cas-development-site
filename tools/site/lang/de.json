@@ -38,6 +38,10 @@
     "Portfolio"
    ],
    [
+    "/de/blog",
+    "Blog"
+   ],
+   [
     "/de/ueber-uns",
     "Über uns"
    ],
@@ -171,6 +175,10 @@
       "FAQ"
      ],
      [
+      "/de/blog",
+      "Blog: Preise und Ratgeber"
+     ],
+     [
       "/de/kontakt",
       "Kontakt"
      ],
@@ -288,5 +296,34 @@
   "as": "Interaktiv",
   "calc": "Berechnen",
   "trust": "150+ Projekte · 12 Mon. Gewährleistung · eigenes Team"
+ },
+ "blog": {
+  "blog": "Blog",
+  "faq": "Fragen und Antworten",
+  "more": "Weiterlesen",
+  "cta_h": "Wir kalkulieren Ihr Projekt",
+  "cta_p": "Die telefonische Beratung ist kostenlos: Erzählen Sie uns von Ihrem Objekt, und wir nennen Ihnen einen Richtwert.",
+  "rel_h": "Artikel zum Thema",
+  "blog_title": "Blog über Innenarchitektur und Renovierung",
+  "blog_h1": "Blog über Innenarchitektur und Renovierung",
+  "blog_desc": "Ratgeber von CAS Development, Design- und Baustudio aus Kiew: Kosten für Innenarchitektur und Renovierung, Ausbau schlüsselfertig, Hausbau.",
+  "blog_lead": "Wir erklären verständlich, was Planung, Renovierung und Einrichtung kosten, wie die Arbeit abläuft und worauf Sie achten sollten – für Kunden in der Ukraine, in Europa und weltweit.",
+  "blog_name": "CAS Development Blog",
+  "og_label": "BLOG",
+  "other_lang_mark": "(auf Englisch)",
+  "months": [
+   "Januar",
+   "Februar",
+   "März",
+   "April",
+   "Mai",
+   "Juni",
+   "Juli",
+   "August",
+   "September",
+   "Oktober",
+   "November",
+   "Dezember"
+  ]
  }
 }

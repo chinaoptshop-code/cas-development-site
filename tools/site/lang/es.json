@@ -38,6 +38,10 @@
     "Portafolio"
    ],
    [
+    "/es/blog",
+    "Blog"
+   ],
+   [
     "/es/sobre-nosotros",
     "Estudio"
    ],
@@ -166,6 +170,10 @@
       "Preguntas frecuentes"
      ],
      [
+      "/es/blog",
+      "Blog: precios y guías"
+     ],
+     [
       "/es/contacto",
       "Contacto"
      ],
@@ -283,5 +291,34 @@
   "as": "Interactivo",
   "calc": "Calcular",
   "trust": "150+ proyectos · 12 meses de garantía · equipo propio"
+ },
+ "blog": {
+  "blog": "Blog",
+  "faq": "Preguntas y respuestas",
+  "more": "Lee también",
+  "cta_h": "Calculamos tu proyecto",
+  "cta_p": "La consulta por teléfono es gratuita: cuéntanos sobre tu inmueble y te daremos un coste orientativo.",
+  "rel_h": "Artículos relacionados",
+  "blog_title": "Blog de diseño de interiores y reformas",
+  "blog_h1": "Blog de diseño de interiores y reformas",
+  "blog_desc": "Guías de CAS Development, estudio de diseño y construcción de Kiev: costes de diseño y reforma, obras llave en mano, construcción de casas en Ucrania y Europa.",
+  "blog_lead": "Explicamos con palabras sencillas cuánto cuestan el diseño, la reforma y el amueblamiento, cómo se organiza el trabajo y qué revisar, para clientes en Ucrania, Europa y todo el mundo.",
+  "blog_name": "Blog de CAS Development",
+  "og_label": "BLOG",
+  "other_lang_mark": "(en inglés)",
+  "months": [
+   "enero",
+   "febrero",
+   "marzo",
+   "abril",
+   "mayo",
+   "junio",
+   "julio",
+   "agosto",
+   "septiembre",
+   "octubre",
+   "noviembre",
+   "diciembre"
+  ]
  }
 }
