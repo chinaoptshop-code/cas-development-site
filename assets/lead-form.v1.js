@@ -77,6 +77,11 @@
           fail: 'La demande n’a pas pu être envoyée. Écrivez-nous ou appelez le +380 97 866 77 55 (Telegram, WhatsApp, Viber).',
           alt: 'Ou écrivez-nous :',
           q: 'Laissez votre numéro, nous vous rappelons', like: 'Je veux la même chose' },
+    pt: { empty: 'Indique o seu número de telefone e ligamos-lhe.', phone: 'Verifique o número: pelo menos 9 dígitos, com o indicativo do país.',
+          sending: 'A enviar…', again: 'Enviar de novo', name: 'Nome (opcional)', more: 'Acrescentar um comentário', send: 'Receber orçamento', ok: 'Obrigado. Ligaremos em breve.',
+          fail: 'Não foi possível enviar o pedido. Escreva-nos ou ligue para +380 97 866 77 55 (Telegram, WhatsApp, Viber).',
+          alt: 'Ou escreva-nos:',
+          q: 'Deixe o seu número e ligamos-lhe', like: 'Quero algo assim' },
     ar: { empty: 'يرجى إدخال رقم الهاتف وسنعاود الاتصال بك.', phone: 'تحقق من الرقم: 9 أرقام على الأقل مع رمز الدولة.',
           sending: 'جارٍ الإرسال…', again: 'إعادة الإرسال', name: 'الاسم (اختياري)', more: 'إضافة تعليق', send: 'احصل على تقدير', ok: 'شكرًا. سنعاود الاتصال بك قريبًا.',
           fail: 'تعذّر إرسال الطلب. راسلنا أو اتصل على ‎+380 97 866 77 55 (Telegram وWhatsApp وViber).',
@@ -181,6 +186,7 @@
     pl: ["Odpowiadamy pn–pt 10:00–20:00. Jeśli to pilne — napisz na Telegramie", "Pobierz przewodnik po cenach", "Chcę przewodnik po cenach"],
     de: ["Wir antworten Mo–Fr 10:00–20:00. Wenn es dringend ist, schreiben Sie uns auf Telegram", "Preisleitfaden erhalten", "Ich möchte den Preisleitfaden"],
     fr: ["Nous répondons du lundi au vendredi, 10:00–20:00. En cas d’urgence, écrivez-nous sur Telegram", "Recevoir le guide des prix", "Je souhaite le guide des prix"],
+    pt: ["Respondemos de segunda a sexta, 10:00–20:00. Se for urgente, escreva-nos pelo Telegram", "Receber o guia de preços", "Quero o guia de preços"],
     ar: ["نرد من الاثنين إلى الجمعة 10:00–20:00. إذا كان الأمر عاجلًا، راسلنا على Telegram", "احصل على دليل الأسعار", "أريد دليل الأسعار"]
   };
   /*/af*/
@@ -251,7 +257,7 @@
     en: ['Leave your number', 'Estimate my house', 'Estimate my apartment'], es: ['Dejar mi número', 'Calcular mi casa', 'Calcular mi piso'],
     zh: ['留下电话', '估算我的房子', '估算我的公寓'], pl: ['Zostaw numer', 'Wyceń mój dom', 'Wyceń moje mieszkanie'],
     de: ['Nummer hinterlassen', 'Mein Haus berechnen', 'Meine Wohnung berechnen'], fr: ['Laisser mon numéro', 'Estimer ma maison', 'Estimer mon appartement'],
-    ar: ['اترك رقمك', 'احسب تكلفة منزلي', 'احسب تكلفة شقتي'] };
+    pt: ['Deixar o meu número', 'Calcular a minha casa', 'Calcular o meu apartamento'], ar: ['اترك رقمك', 'احسب تكلفة منزلي', 'احسب تكلفة شقتي'] };
   function goBtn(slot, name) {
     var g = GO[lang] || GO.uk, sc = slot.closest('section.bz[data-bz]'), kind = sc ? (sc.getAttribute('data-bz') === 'flat' ? 2 : 1) : 0;
     var a = el('a', 'btn main lq-go', g[kind]); a.href = '#zayavka'; a.setAttribute('data-form', name);
@@ -466,6 +472,7 @@
     pl: ["Kontakt", "Telefon", "Komunikatory", "Biuro", "ul. Antonowycza 44, 03186 Kijów, Ukraina", "Godziny pracy", "Pn–Pt 10:00–20:00 · Sb–Nd nieczynne · online 24/7"],
     de: ["Kontakt", "Telefon", "Messenger", "Büro", "Antonowytscha-Str. 44, 03186 Kyjiw, Ukraine", "Öffnungszeiten", "Mo–Fr 10:00–20:00 · Sa–So geschlossen · online 24/7"],
     fr: ["Contact", "Téléphone", "Messageries", "Bureau", "44, rue Antonovytcha, 03186 Kyiv, Ukraine", "Horaires", "Lun–ven 10:00–20:00 · sam–dim fermé · en ligne 24/7"],
+    pt: ["Contactos", "Telefone", "Mensagens", "Escritório", "Rua Antonovycha, 44, 03186 Kyiv, Ucrânia", "Horário", "Seg–Sex 10:00–20:00 · Sáb–Dom encerrado · online 24/7"],
     ar: ["التواصل", "الهاتف", "تطبيقات المراسلة", "المكتب", "شارع أنتونوفيتشا 44، كييف 03186، أوكرانيا", "ساعات العمل", "الاثنين–الجمعة 10:00–20:00 · السبت–الأحد عطلة · أونلاين 24/7"]
   };
   /*/ct*/

@@ -24,6 +24,7 @@
     pl: ['Podgląd zdjęcia', 'Zamknij', 'Poprzednie zdjęcie', 'Następne zdjęcie'],
     de: ['Fotoansicht', 'Schließen', 'Vorheriges Foto', 'Nächstes Foto'],
     fr: ['Visionneuse de photos', 'Fermer', 'Photo précédente', 'Photo suivante'],
+    pt: ['Visualizador de fotos', 'Fechar', 'Foto anterior', 'Foto seguinte'],
     ar: ['عارض الصور', 'إغلاق', 'الصورة السابقة', 'الصورة التالية']
   })[LG] || ['Photo viewer', 'Close', 'Previous photo', 'Next photo'];
   var RM = W.matchMedia && matchMedia('(prefers-reduced-motion: reduce)');

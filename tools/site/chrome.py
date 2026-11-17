@@ -217,7 +217,7 @@ SOCIAL.append(('linkedin', 'LinkedIn', 'https://www.linkedin.com/in/mykhailo-lit
 SOCIAL.append(('tiktok', 'TikTok', 'https://www.tiktok.com/@li_mi_tless'))
 SOCIAL_K = {x[0] for x in SOCIAL}
 SOC_LABEL = {'uk': 'Соцмережі', 'ru': 'Соцсети', 'en': 'Social media', 'es': 'Redes sociales', 'zh': '社交媒体', 'pl': 'Media społecznościowe',
-             'de': 'Soziale Medien', 'fr': 'Réseaux sociaux', 'ar': 'التواصل الاجتماعي'}
+             'de': 'Soziale Medien', 'fr': 'Réseaux sociaux', 'pt': 'Redes sociais', 'ar': 'التواصل الاجتماعي'}
 
 T = {
     'uk': dict(
@@ -344,7 +344,9 @@ def lang_links(lang, alts, cls):
         if l == lang:
             out.append(f'<span class="{cls}-on" aria-current="true" lang="{i18n.meta(l)["html"]}" title="{nm}">{label}</span>')
         else:
-            out.append(f'<a href="{alts.get(l, HOME[l])}" hreflang="{i18n.meta(l)["hreflang"]}" lang="{i18n.meta(l)["html"]}" title="{nm}" aria-label="{nm}">{label}</a>')
+            # меню бургера (sch-lang, сенсорні екрани) — без title: підказка при наведенні там не потрібна, aria-label лишається (−~150 Б HTML, 10 мов з pt)
+            tt = '' if cls == 'sch-lang' else f' title="{nm}"'
+            out.append(f'<a href="{alts.get(l, HOME[l])}" hreflang="{i18n.meta(l)["hreflang"]}" lang="{i18n.meta(l)["html"]}"{tt} aria-label="{nm}">{label}</a>')
     return ''.join(out)
 
 
@@ -363,7 +365,7 @@ def lang_menu(lang, alts, label):
 
 
 CALC_SHORT = {'uk': 'Калькулятор', 'ru': 'Калькулятор', 'en': 'Calculator', 'es': 'Calculadora', 'pl': 'Kalkulator',
-              'fr': 'Calculateur', 'de': 'Rechner', 'zh': '计算器', 'ar': 'الحاسبة'}
+              'fr': 'Calculateur', 'pt': 'Calculadora', 'de': 'Rechner', 'zh': '计算器', 'ar': 'الحاسبة'}
 
 
 def header(lang, path, alts, tools='', cta_href=None):
@@ -586,7 +588,7 @@ def mbar_logos(s):
 # /assets/lead-form.v1.js прокручує до поля телефону й ставить фокус). Посилання панелі з усіма атрибутами лишаються як були.
 # Стилі — «Кнопка Зв'язатися» в site-chrome.v1.css (.mbar[data-one]; на ПК панелі немає — у шапці телефон і «Заявка»),
 # відкриття/закриття — site-chrome.v1.js. Ідемпотентно: згенеровані частини (кнопка, обгортка, Viber, «Залишити номер») знімаємо й ставимо заново.
-MB_ONE = dict(uk=("Зв'язатися",), ru=('Связаться',), en=('Contact',), es=('Contactar',), zh=('联系我们',), pl=('Kontakt',), de=('Kontakt',), fr=('Contact',), ar=('تواصل معنا',))
+MB_ONE = dict(uk=("Зв'язатися",), ru=('Связаться',), en=('Contact',), es=('Contactar',), zh=('联系我们',), pl=('Kontakt',), de=('Kontakt',), fr=('Contact',), pt=('Contactar',), ar=('تواصل معنا',))
 VIBER = 'viber://chat?number=%2B380978667755'
 MB_LEAD_RX = re.compile(r'<style id="mb-lead">.*?</style>|<a class="mb-(?:lead|vb)"[^>]*>.*?</a>\n?|<button type="button" class="mb-tg"[^>]*>.*?</button>\n?|<div class="mb-menu"[^>]*>\n?|</div><!--/mb-menu-->\n?', re.S)
 

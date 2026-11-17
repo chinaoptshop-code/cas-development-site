@@ -23,7 +23,7 @@ B = 'https://cas-develop.com'
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 # порядок = порядок у перемикачі мов; ru/uk — без JSON-словника (тексти в chrome.py/landing.py)
-LANGS = ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'ar']
+LANGS = ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'pt', 'ar']
 BASE = {
     'uk': dict(code='UA', name='Українська', html='uk', hreflang='uk', dir='ltr', prefix='', fonts='cyrillic'),
     'ru': dict(code='RU', name='Русский', html='ru', hreflang='ru', dir='ltr', prefix='ru/', fonts='cyrillic'),

@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import i18n  # noqa: E402
 
 ROOT, B = i18n.ROOT, i18n.B
-LANGS = ('en', 'ru', 'es', 'pl', 'de', 'fr', 'zh', 'ar')  # мова збирається, коли є tools/site/caselang/<мова>.json
+LANGS = ('en', 'ru', 'es', 'pl', 'de', 'fr', 'pt', 'zh', 'ar')  # мова збирається, коли є tools/site/caselang/<мова>.json
 DATA = os.path.join(ROOT, 'tools/site/caselang')
 CL = os.path.join(ROOT, 'tools/site/lang/clusters-cases.json')
 SKIP = re.compile(r'-povnyi-proekt\.html$')  # «Повний проєкт» збирає fullcase.py (кластер case-<id>)
@@ -71,7 +71,7 @@ class Tr:
 
 FMT = {'en': dict(m2='m²', frm='from {}', all='Show all'), 'ru': dict(m2='м²', frm='от {}', all='Показать все'),
        'es': dict(m2='m²', frm='desde {}', all='Mostrar todas'), 'pl': dict(m2='m²', frm='od {}', all='Pokaż wszystkie'),
-       'de': dict(m2='m²', frm='ab {}', all='Alle anzeigen'), 'fr': dict(m2='m²', frm='dès {}', all='Tout afficher'),
+       'de': dict(m2='m²', frm='ab {}', all='Alle anzeigen'), 'fr': dict(m2='m²', frm='dès {}', all='Tout afficher'), 'pt': dict(m2='m²', frm='a partir de {}', all='Mostrar todas'),
        'zh': dict(m2='m²', frm='{} 起', all='显示全部'), 'ar': dict(m2='م²', frm='من {}', all='عرض الكل')}
 EST = re.compile(r'^(.+?) · <span1>([\d ]+) м² × \$([\d ]+)/м²</span> — <b2>від \$([\d ]+)</b>$')
 CRUMB = re.compile(r'^<a1>Головна</a> / <a2>Портфоліо</a> / ([^<]+)$')
@@ -271,7 +271,7 @@ def tr_json(o, t, lang, slug):
     return o
 
 
-CALL = {'en': 'Call', 'ru': 'Позвонить', 'es': 'Llamar', 'pl': 'Zadzwoń', 'de': 'Anrufen', 'fr': 'Appeler', 'zh': '致电', 'ar': 'اتصل بنا'}
+CALL = {'en': 'Call', 'ru': 'Позвонить', 'es': 'Llamar', 'pl': 'Zadzwoń', 'de': 'Anrufen', 'fr': 'Appeler', 'pt': 'Ligar', 'zh': '致电', 'ar': 'اتصل بنا'}
 
 
 def page_path(lang, slug):
@@ -289,7 +289,7 @@ def build(slug, lang):
         head = re.sub(r'(<meta ' + k + r' content=")([^"]*)', lambda m: m.group(1) + html.escape(t(html.unescape(m.group(2))), quote=True).replace('&#x27;', "'"), head, count=1)
     head = re.sub(r'(<link rel="canonical" href=")[^"]*', lambda m: m.group(1) + u, head, count=1)
     head = re.sub(r'(<meta property="og:url" content=")[^"]*', lambda m: m.group(1) + u, head, count=1)
-    head = re.sub(r'(<meta property="og:locale" content=")[^"]*', lambda m: m.group(1) + {'en': 'en_US', 'ru': 'ru_RU', 'es': 'es_ES', 'pl': 'pl_PL', 'de': 'de_DE', 'fr': 'fr_FR', 'zh': 'zh_CN', 'ar': 'ar_AR'}[lang], head, count=1)
+    head = re.sub(r'(<meta property="og:locale" content=")[^"]*', lambda m: m.group(1) + {'en': 'en_US', 'ru': 'ru_RU', 'es': 'es_ES', 'pl': 'pl_PL', 'de': 'de_DE', 'fr': 'fr_FR', 'pt': 'pt_PT', 'zh': 'zh_CN', 'ar': 'ar_AR'}[lang], head, count=1)
     head = re.sub(r'(<script type="application/ld\+json">)(.*?)(</script>)',
                   lambda m: m.group(1) + json.dumps(tr_json(json.loads(m.group(2)), t, lang, slug), ensure_ascii=False).replace('</', '<\\/') + m.group(3), head, flags=re.S)
     # тіло: шапку/футер/пігулку перебудує chrome.apply — їх не перекладаємо

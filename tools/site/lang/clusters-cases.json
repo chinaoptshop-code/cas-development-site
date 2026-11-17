@@ -8,6 +8,7 @@
   "pl": "/pl/portfolio",
   "de": "/de/portfolio",
   "fr": "/fr/portfolio",
+  "pt": "/pt/portfolio",
   "zh": "/zh/portfolio",
   "ar": "/ar/portfolio"
  },
@@ -19,6 +20,7 @@
   "pl": "/pl/proekty/a-frame-house",
   "de": "/de/proekty/a-frame-house",
   "fr": "/fr/proekty/a-frame-house",
+  "pt": "/pt/proekty/a-frame-house",
   "zh": "/zh/proekty/a-frame-house",
   "ar": "/ar/proekty/a-frame-house"
  },
@@ -30,6 +32,7 @@
   "pl": "/pl/proekty/diamond",
   "de": "/de/proekty/diamond",
   "fr": "/fr/proekty/diamond",
+  "pt": "/pt/proekty/diamond",
   "zh": "/zh/proekty/diamond",
   "ar": "/ar/proekty/diamond"
  },
@@ -41,6 +44,7 @@
   "pl": "/pl/proekty/dolls-salon",
   "de": "/de/proekty/dolls-salon",
   "fr": "/fr/proekty/dolls-salon",
+  "pt": "/pt/proekty/dolls-salon",
   "zh": "/zh/proekty/dolls-salon",
   "ar": "/ar/proekty/dolls-salon"
  },
@@ -52,6 +56,7 @@
   "pl": "/pl/proekty/dubai-villa",
   "de": "/de/proekty/dubai-villa",
   "fr": "/fr/proekty/dubai-villa",
+  "pt": "/pt/proekty/dubai-villa",
   "zh": "/zh/proekty/dubai-villa",
   "ar": "/ar/proekty/dubai-villa"
  },
@@ -63,6 +68,7 @@
   "pl": "/pl/proekty/edelweiss",
   "de": "/de/proekty/edelweiss",
   "fr": "/fr/proekty/edelweiss",
+  "pt": "/pt/proekty/edelweiss",
   "zh": "/zh/proekty/edelweiss",
   "ar": "/ar/proekty/edelweiss"
  },
@@ -74,6 +80,7 @@
   "pl": "/pl/proekty/hoda-estate",
   "de": "/de/proekty/hoda-estate",
   "fr": "/fr/proekty/hoda-estate",
+  "pt": "/pt/proekty/hoda-estate",
   "zh": "/zh/proekty/hoda-estate",
   "ar": "/ar/proekty/hoda-estate"
  },
@@ -85,6 +92,7 @@
   "pl": "/pl/proekty/hodos-villa",
   "de": "/de/proekty/hodos-villa",
   "fr": "/fr/proekty/hodos-villa",
+  "pt": "/pt/proekty/hodos-villa",
   "zh": "/zh/proekty/hodos-villa",
   "ar": "/ar/proekty/hodos-villa"
  },
@@ -96,6 +104,7 @@
   "pl": "/pl/proekty/house-150",
   "de": "/de/proekty/house-150",
   "fr": "/fr/proekty/house-150",
+  "pt": "/pt/proekty/house-150",
   "zh": "/zh/proekty/house-150",
   "ar": "/ar/proekty/house-150"
  },
@@ -107,6 +116,7 @@
   "pl": "/pl/proekty/kitana-beach",
   "de": "/de/proekty/kitana-beach",
   "fr": "/fr/proekty/kitana-beach",
+  "pt": "/pt/proekty/kitana-beach",
   "zh": "/zh/proekty/kitana-beach",
   "ar": "/ar/proekty/kitana-beach"
  },
@@ -118,6 +128,7 @@
   "pl": "/pl/proekty/linden-penthouse",
   "de": "/de/proekty/linden-penthouse",
   "fr": "/fr/proekty/linden-penthouse",
+  "pt": "/pt/proekty/linden-penthouse",
   "zh": "/zh/proekty/linden-penthouse",
   "ar": "/ar/proekty/linden-penthouse"
  },
@@ -129,6 +140,7 @@
   "pl": "/pl/proekty/monpark",
   "de": "/de/proekty/monpark",
   "fr": "/fr/proekty/monpark",
+  "pt": "/pt/proekty/monpark",
   "zh": "/zh/proekty/monpark",
   "ar": "/ar/proekty/monpark"
  },
@@ -140,6 +152,7 @@
   "pl": "/pl/proekty/office-chicago",
   "de": "/de/proekty/office-chicago",
   "fr": "/fr/proekty/office-chicago",
+  "pt": "/pt/proekty/office-chicago",
   "zh": "/zh/proekty/office-chicago",
   "ar": "/ar/proekty/office-chicago"
  },
@@ -151,6 +164,7 @@
   "pl": "/pl/proekty/petrivtsi-house",
   "de": "/de/proekty/petrivtsi-house",
   "fr": "/fr/proekty/petrivtsi-house",
+  "pt": "/pt/proekty/petrivtsi-house",
   "zh": "/zh/proekty/petrivtsi-house",
   "ar": "/ar/proekty/petrivtsi-house"
  },
@@ -162,6 +176,7 @@
   "pl": "/pl/proekty/pidgirland",
   "de": "/de/proekty/pidgirland",
   "fr": "/fr/proekty/pidgirland",
+  "pt": "/pt/proekty/pidgirland",
   "zh": "/zh/proekty/pidgirland",
   "ar": "/ar/proekty/pidgirland"
  },
@@ -173,6 +188,7 @@
   "pl": "/pl/proekty/smart-villa",
   "de": "/de/proekty/smart-villa",
   "fr": "/fr/proekty/smart-villa",
+  "pt": "/pt/proekty/smart-villa",
   "zh": "/zh/proekty/smart-villa",
   "ar": "/ar/proekty/smart-villa"
  },
@@ -184,6 +200,7 @@
   "pl": "/pl/proekty/tetris-hall",
   "de": "/de/proekty/tetris-hall",
   "fr": "/fr/proekty/tetris-hall",
+  "pt": "/pt/proekty/tetris-hall",
   "zh": "/zh/proekty/tetris-hall",
   "ar": "/ar/proekty/tetris-hall"
  },
@@ -195,6 +212,7 @@
   "pl": "/pl/proekty/usa-house",
   "de": "/de/proekty/usa-house",
   "fr": "/fr/proekty/usa-house",
+  "pt": "/pt/proekty/usa-house",
   "zh": "/zh/proekty/usa-house",
   "ar": "/ar/proekty/usa-house"
  },
@@ -206,6 +224,7 @@
   "pl": "/pl/proekty/yablu-rest",
   "de": "/de/proekty/yablu-rest",
   "fr": "/fr/proekty/yablu-rest",
+  "pt": "/pt/proekty/yablu-rest",
   "zh": "/zh/proekty/yablu-rest",
   "ar": "/ar/proekty/yablu-rest"
  },
@@ -217,6 +236,7 @@
   "pl": "/pl/proekty/yacht-restaurant",
   "de": "/de/proekty/yacht-restaurant",
   "fr": "/fr/proekty/yacht-restaurant",
+  "pt": "/pt/proekty/yacht-restaurant",
   "zh": "/zh/proekty/yacht-restaurant",
   "ar": "/ar/proekty/yacht-restaurant"
  },
@@ -228,6 +248,7 @@
   "pl": "/pl/proekty/yacht-vip",
   "de": "/de/proekty/yacht-vip",
   "fr": "/fr/proekty/yacht-vip",
+  "pt": "/pt/proekty/yacht-vip",
   "zh": "/zh/proekty/yacht-vip",
   "ar": "/ar/proekty/yacht-vip"
  }

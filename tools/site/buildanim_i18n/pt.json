@@ -1,0 +1,1312 @@
+{
+ "ui.skip": "Saltar a animação",
+ "ui.nav": "Fases",
+ "ui.st": "Fase",
+ "ui.fig": "Ilustração: ",
+ "ui.mat": "Sistema de paredes",
+ "ui.m.block": "Bloco de betão celular",
+ "ui.m.brick": "Tijolo",
+ "ui.m.frame": "Estrutura de madeira",
+ "ui.m.brus": "Toros de madeira maciça",
+ "ui.prev": "Fase anterior",
+ "ui.next": "Fase seguinte",
+ "ui.pie": "Camadas construtivas",
+ "ui.typ": "espessuras típicas",
+ "ui.v": [
+  "em cima",
+  "em baixo"
+ ],
+ "ui.h": [
+  "exterior",
+  "interior"
+ ],
+ "ui.close": "Fechar",
+ "ui.shrink": "assentamento",
+ "ui.mo": "meses",
+ "ui.gar": "garantia",
+ "ui.fl.v": "Apartamento",
+ "ui.fl.new": "Novo a partir do zero",
+ "ui.fl.old": "Usado com demolição",
+ "ui.sc.house": "Moradia",
+ "ui.sc.flat": "Apartamento",
+ "ui.xr": "Raio X das instalações",
+ "ui.s": [
+  "divisão",
+  "divisão contígua"
+ ],
+ "ui.m2": "m²",
+ "ui.rm.liv": "Cozinha e sala",
+ "ui.rm.bed": "Quarto",
+ "ui.rm.kid": "Quarto de criança / escritório",
+ "ui.rm.hall": "Entrada",
+ "ui.rm.bath": "Casa de banho",
+ "ui.rm.wc": "Lavabo",
+ "ui.rm.wr": "Closet",
+ "ui.cfg.t": "Tipo",
+ "ui.cfg.s": "Estilo",
+ "ui.cfg.a": "Área",
+ "ui.cfg.x": "Opções",
+ "ui.cfg.done": "Pronto",
+ "ui.cfg.tn.one": "1 piso",
+ "ui.cfg.tn.attic": "Sótão habitável",
+ "ui.cfg.tn.two": "2 pisos",
+ "ui.cfg.fl.one": "1 piso",
+ "ui.cfg.fl.attic": "1 piso + sótão",
+ "ui.cfg.fl.two": "2 pisos",
+ "ui.cfg.fl.af": "A-frame com mezanino",
+ "ui.cfg.sn.minimal": "Minimalista",
+ "ui.cfg.sn.barn": "Barnhouse",
+ "ui.cfg.sn.scandi": "Escandinavo",
+ "ui.cfg.sn.classic": "Clássico",
+ "ui.cfg.sn.chalet": "Chalé de montanha",
+ "ui.cfg.sn.aframe": "A-frame",
+ "ui.cfg.xn.g": "Garagem",
+ "ui.cfg.xn.c": "Telheiro",
+ "ui.cfg.xn.r": "Terraço na cobertura",
+ "ui.cfg.m2": "m²",
+ "ui.cfg.gar": "garagem",
+ "ui.cfg.car": "telheiro",
+ "ui.cfg.ter": "terraço",
+ "ui.cfg.price": "Referência: construção a partir de $600/m², chave na mão a partir de $1 100/m²",
+ "ui.cfg.h.af": "As A-frame são construídas em estrutura de madeira: sistema alterado para «Estrutura de madeira»",
+ "ui.cfg.h.af2": "A-frame só em estrutura de madeira: estilo alterado para «Escandinavo»",
+ "ui.cfg.h.af3": "Uma A-frame não admite garagem nem terraço na cobertura: opção desativada",
+ "ui.cfg.h.af4": "A-frame até 160 m²: área alterada",
+ "ui.cfg.h.af5": "A A-frame é térrea com mezanino: estilo alterado",
+ "ui.cfg.h.br": "Não fazemos cobertura plana em casas de toros maciços (assentamento): sistema ou estilo alterado",
+ "ui.cfg.h.at": "O sótão habitável precisa de cobertura inclinada: tipo ou estilo alterado",
+ "ui.cfg.h.ter": "O terraço na cobertura exige cobertura plana: estilo alterado para «Minimalista»",
+ "ui.cfg.h.ter2": "Terraço só sobre cobertura plana: opção desativada",
+ "ui.cfg.h.two": "2 pisos a partir de 120 m²: área ou tipo alterados",
+ "ui.cfg.h.one": "1 piso até 220 m²: área ou tipo alterados",
+ "ui.cfg.h.two_a": "2 pisos a partir de 120 m²: tipo alterado para esta área",
+ "ui.cfg.h.two_t": "2 pisos a partir de 120 m²: área ajustada para 120 m²",
+ "ui.cfg.h.one_a": "1 piso até 220 m²: tipo alterado para 2 pisos",
+ "ui.cfg.h.one_t": "1 piso até 220 m²: área ajustada para 220 m²",
+ "house.h": "Uma casa a partir do zero: o processo em 19 fases",
+ "house.hc": "Uma casa a partir do zero — 19 fases de obra",
+ "house.p": "Desloque a página e a casa ergue-se como no terreno: da implantação à entrega das chaves. Relatórios fotográficos a cada 1–2 semanas.",
+ "house.cta": "Calcular esta casa",
+ "house.team": "Quem está por trás de cada fase — na página",
+ "house.about": "Sobre nós",
+ "house.more": "Construção de moradias",
+ "house.st.geo": [
+  "Topografia e implantação",
+  "O nosso topógrafo faz o levantamento do terreno, implanta os eixos da casa e coloca as cérceas: a partir delas mede-se tudo o resto."
+ ],
+ "house.st.pit": [
+  "Escavação",
+  "Retiramos a terra vegetal e escavamos a caixa para a laje até à cota do projeto; parte da terra é reutilizada no aterro."
+ ],
+ "house.st.trench": [
+  "Valas para a sapata contínua",
+  "Escavamos as valas da sapata contínua seguindo os eixos das cérceas; largura e profundidade segundo o cálculo estrutural e a profundidade de congelação."
+ ],
+ "house.st.base": [
+  "Enrocamento de areia e brita",
+  "No fundo, geotêxtil; por cima, areia e brita em camadas compactadas com placa vibratória. O geotêxtil impede que o enrocamento se misture com o solo."
+ ],
+ "house.st.hydro": [
+  "Impermeabilização e XPS sob a laje",
+  "Betão de limpeza, membrana betuminosa soldada com sobreposições e placas XPS: a laje não absorve humidade nem perde calor para o solo."
+ ],
+ "house.st.rebar": [
+  "Armadura da laje",
+  "Duas malhas de aço sobre espaçadores (recobrimento), reforços de bordo e arranques para elementos betonados no local. O encarregado recebe a armadura antes da betonagem."
+ ],
+ "house.st.pour": [
+  "Betonagem da laje",
+  "O betão chega em autobetoneira e é colocado com bomba; vibra-se com agulha e depois faz-se a cura: mantemo-lo húmido e coberto enquanto ganha resistência."
+ ],
+ "house.st.s_rebar": [
+  "Cofragem e armadura da sapata",
+  "Montamos a cofragem, atamos a armadura longitudinal e transversal e deixamos arranques para as paredes."
+ ],
+ "house.st.s_pour": [
+  "Betonagem da sapata",
+  "Betonamos com vibração e sem juntas frias; depois cobrimos e humedecemos durante a presa."
+ ],
+ "house.st.s_hydro": [
+  "Impermeabilização e isolamento do soco",
+  "Emulsão betuminosa, XPS no soco, membrana drenante de pitons — e aterro compactado."
+ ],
+ "house.st.ushp": [
+  "Laje sueca isolada (UShP)",
+  "XPS na base e blocos em L nos bordos; os tubos de piso radiante e as ligações às redes são colocados antes do betão, com malha por cima."
+ ],
+ "house.st.b_w1": [
+  "Paredes de bloco do piso térreo",
+  "Bloco de betão celular com cola (junta de 2–3 mm), primeira fiada com argamassa sobre a barreira anti-humidade. Cada 4.ª fiada armada e lintéis sobre os vãos."
+ ],
+ "house.st.belt1": [
+  "Cinta perimetral",
+  "Cofragem, armadura e betão em todo o perímetro: a cinta reparte a carga da laje e une as paredes."
+ ],
+ "house.st.slab": [
+  "Laje de piso",
+  "Lajes alveolares colocadas com grua ou laje betonada no local com duas malhas, segundo o projeto de estruturas. O nosso especialista regista o avanço com drone."
+ ],
+ "house.st.b_w2": [
+  "Piso superior, cinta e frechal",
+  "Paredes do piso superior com o mesmo sistema; por cima, uma segunda cinta com varões roscados embebidos que fixam o frechal de madeira."
+ ],
+ "house.st.k_w1": [
+  "Alvenaria de tijolo do piso térreo",
+  "Alvenaria travada com argamassa de cimento, armadura de junta a cada 4–5 fiadas e lintéis sobre os vãos."
+ ],
+ "house.st.k_belt": [
+  "Cinta sob a laje",
+  "Cinta de betão ou junta armada sob as lajes, segundo o projeto: apoio nivelado e travamento das paredes."
+ ],
+ "house.st.k_w2": [
+  "Piso superior e frechal",
+  "Alvenaria do piso superior, cinta sob a cobertura e frechal sobre varões roscados com barreira anti-humidade; deixam-se ligadores para o tijolo de face à vista."
+ ],
+ "house.st.f_plate": [
+  "Travessa inferior",
+  "Madeira tratada sobre barreira anti-humidade, ancorada à laje: a base de toda a estrutura."
+ ],
+ "house.st.f_studs": [
+  "Montantes da estrutura",
+  "Montantes de madeira seca aplainada no módulo do isolamento, duplos junto aos vãos, com padieiras e travessa superior."
+ ],
+ "house.st.f_osb": [
+  "OSB e vigotas",
+  "Por fora, painéis OSB/3 que contraventam a estrutura. As vigotas apoiam em estribos e recebem o soalho do piso superior."
+ ],
+ "house.st.f_w2": [
+  "Estrutura do piso superior",
+  "Montantes, travessas e OSB do piso superior com o mesmo sistema; a travessa superior faz de frechal."
+ ],
+ "house.st.f_ins": [
+  "Isolamento e membranas",
+  "Lã mineral entre montantes sem folgas, membrana corta-vento respirável por fora e barreira de vapor com juntas fitadas por dentro."
+ ],
+ "house.st.f_fin": [
+  "Caixa técnica e placa de gesso",
+  "Ripas sobre a barreira de vapor deixam passagem para cabos e tubos sem a furar. Depois, placa de gesso cartonado e barramento."
+ ],
+ "house.st.fac_f": [
+  "Fachada: caixa de ar ventilada e revestimento",
+  "As contrarripas criam a caixa de ar ventilada; por cima, o revestimento: tábuas, painéis de fibrocimento ou um sistema de reboco, segundo o projeto."
+ ],
+ "house.st.r_crown": [
+  "Fiada de arranque",
+  "Sobre a impermeabilização das fundações, tábua de apoio e primeira fiada de toro tratado, fixada com varões roscados."
+ ],
+ "house.st.r_walls": [
+  "Paredes de toros",
+  "As fiadas assentam sobre vedante de juta ou linho e unem-se com cavilhas; os cantos, com encaixe estanque."
+ ],
+ "house.st.r_slab": [
+  "Vigas da laje",
+  "As vigas encaixam nas fiadas com folga para o assentamento e recebem o soalho do piso superior."
+ ],
+ "house.st.r_w2": [
+  "Fiadas do piso superior",
+  "Paredes do piso superior com o mesmo sistema; a última fiada sustenta as varas."
+ ],
+ "house.st.r_rafters": [
+  "Varas sobre apoios deslizantes",
+  "As varas fixam-se à última fiada com apoios deslizantes: ao assentar, a cobertura não puxa as paredes; depois, membrana e contrarripas."
+ ],
+ "house.st.r_shrink": [
+  "Assentamento e compensadores",
+  "A casa de toros assenta: sob os pilares há macacos roscados que se reajustam e as juntas são recalafetadas. Os acabamentos, depois do assentamento."
+ ],
+ "house.st.r_win": [
+  "Janelas em pré-aros flutuantes",
+  "Janelas e portas em pré-aros flutuantes com folga para o assentamento; junta de montagem estanque com fitas."
+ ],
+ "house.st.r_fin": [
+  "Lixagem e proteção da madeira",
+  "Lixamos as paredes e aplicamos antissético, retardador de fogo e velatura ou óleo: a madeira respira e não escurece."
+ ],
+ "house.st.rafters": [
+  "Varas, membrana e contrarripas",
+  "Estrutura de varas sobre o frechal, membrana respirável, contrarripas (caixa de ventilação) e ripas para a cobertura."
+ ],
+ "house.st.roof": [
+  "Isolamento e cobertura",
+  "Telha metálica ou chapa de junta agrafada sobre ripas e caleiras; lã mineral entre as varas e barreira de vapor por baixo. O nosso especialista regista a cobertura com drone."
+ ],
+ "house.st.win": [
+  "Janelas: montagem estanque",
+  "Janelas eficientes ancoradas, junta em três camadas: fita respirável por fora, espuma na junta e fita barreira de vapor por dentro."
+ ],
+ "house.st.mep": [
+  "Instalações",
+  "Eletricidade a partir do quadro com disjuntores e diferenciais, água e esgoto com pendente, caldeira e piso radiante, ventilação de duplo fluxo — segundo os projetos de especialidades."
+ ],
+ "house.st.screed": [
+  "Betonilha e reboco",
+  "Betonilha sobre os tubos de piso radiante com banda perimetral e reboco das paredes com mestras: base plana para os acabamentos."
+ ],
+ "house.st.fac_b": [
+  "Fachada: isolamento e reboco (ETICS)",
+  "Lã mineral ou EPS com cola e buchas, camada de base armada com rede, primário e reboco decorativo."
+ ],
+ "house.st.fac_k": [
+  "Fachada: isolamento e tijolo de face à vista",
+  "Lã mineral sobre a parede, caixa de ar ventilada e tijolo de face à vista com ligadores flexíveis: uma fachada sem reboco e resistente às intempéries."
+ ],
+ "house.st.int": [
+  "Interior, móveis e iluminação",
+  "Acabamentos segundo o projeto de design, cozinha e roupeiros dos nossos marceneiros, luminárias — e luz nas janelas."
+ ],
+ "house.st.land": [
+  "Arranjos exteriores e paisagismo",
+  "Passeio perimetral com drenagem, caminhos, relvado, árvores e iluminação exterior, segundo o projeto de arquitetura paisagista."
+ ],
+ "house.st.done": [
+  "Entrega e garantia de 12 meses",
+  "Vistoriamos a casa consigo, assinamos os autos e entregamos a documentação final da obra e as chaves. Garantia: 12 meses."
+ ],
+ "pie.net": [
+  "Instalações no esquema",
+  [
+   [
+    "Eletricidade",
+    "ELE",
+    "Cabos a partir do quadro: iluminação, tomadas e circuitos próprios para eletrodomésticos"
+   ],
+   [
+    "Canalização",
+    "ÁGU",
+    "Água fria e quente desde a entrada até cada ponto"
+   ],
+   [
+    "Aquecimento e piso radiante",
+    "AVAC",
+    "Caldeira, coletor e circuitos de piso radiante"
+   ],
+   [
+    "Esgoto",
+    "ESG",
+    "Tubos com pendente até à saída da casa"
+   ],
+   [
+    "Ventilação",
+    "AVAC",
+    "Recuperador: ar novo para as divisões, extração da cozinha e das casas de banho"
+   ]
+  ]
+ ],
+ "pie.fplate": [
+  "Laje de fundação em camadas",
+  [
+   [
+    "Laje armada",
+    "250–300 mm",
+    "Betão segundo o projeto, duas malhas"
+   ],
+   [
+    "Membrana",
+    "—",
+    "Camada separadora: a calda não penetra no isolamento"
+   ],
+   [
+    "XPS",
+    "100 mm",
+    "Poliestireno extrudido: não absorve água e conserva o calor"
+   ],
+   [
+    "Impermeabilização",
+    "2 camadas",
+    "Membrana soldada, com sobreposições e dobrada nos bordos"
+   ],
+   [
+    "Betão de limpeza",
+    "50–80 mm",
+    "Base firme e plana para a impermeabilização"
+   ],
+   [
+    "Brita",
+    "150–200 mm",
+    "Compactada, corta a capilaridade"
+   ],
+   [
+    "Areia",
+    "200–300 mm",
+    "Em camadas regadas e compactadas"
+   ],
+   [
+    "Geotêxtil",
+    "—",
+    "Impede que o enrocamento se misture com o solo"
+   ]
+  ]
+ ],
+ "pie.ushp": [
+  "Laje sueca isolada em camadas",
+  [
+   [
+    "Laje com piso radiante",
+    "100 mm",
+    "Laje fina armada com tubos embebidos"
+   ],
+   [
+    "XPS",
+    "200 mm",
+    "Duas camadas com juntas desencontradas, blocos em L nos bordos"
+   ],
+   [
+    "Brita",
+    "150 mm",
+    "Compactada, drena a água"
+   ],
+   [
+    "Areia",
+    "200–300 mm",
+    "Em camadas compactadas"
+   ],
+   [
+    "Geotêxtil",
+    "—",
+    "Separa o enrocamento do solo"
+   ],
+   [
+    "Drenagem",
+    "—",
+    "Tubo perimetral que afasta a água da laje"
+   ]
+  ]
+ ],
+ "pie.fstrip": [
+  "Soco em camadas",
+  [
+   [
+    "Membrana drenante",
+    "—",
+    "Protege o isolamento e escoa a água"
+   ],
+   [
+    "XPS",
+    "50–100 mm",
+    "Isolamento do soco e da sapata"
+   ],
+   [
+    "Emulsão betuminosa",
+    "2 demãos",
+    "Sobre primário"
+   ],
+   [
+    "Betão da sapata",
+    "400–500 mm",
+    "Armadura longitudinal e transversal"
+   ],
+   [
+    "Enrocamento",
+    "200–300 mm",
+    "Areia e brita compactadas"
+   ]
+  ]
+ ],
+ "pie.slab": [
+  "Laje de piso em camadas",
+  [
+   [
+    "Revestimento de piso",
+    "8–20 mm",
+    "Ladrilho, parquet ou vinil"
+   ],
+   [
+    "Betonilha",
+    "50–70 mm",
+    "Pode levar piso radiante"
+   ],
+   [
+    "Isolamento acústico",
+    "20–40 mm",
+    "Amortece o ruído de impacto entre pisos"
+   ],
+   [
+    "Laje",
+    "200–220 mm",
+    "Laje alveolar ou betonada no local, segundo o projeto"
+   ],
+   [
+    "Teto",
+    "—",
+    "Barramento, placa de gesso ou teto falso tensionado"
+   ]
+  ]
+ ],
+ "pie.roof": [
+  "Cobertura em camadas",
+  [
+   [
+    "Revestimento da cobertura",
+    "0,45–0,5 mm",
+    "Telha metálica ou junta agrafada"
+   ],
+   [
+    "Ripas",
+    "25×100 mm",
+    "Espaçamento segundo o perfil; painel contínuo para junta agrafada"
+   ],
+   [
+    "Contrarripas",
+    "50×50 mm",
+    "Caixa ventilada: retira humidade e calor"
+   ],
+   [
+    "Membrana respirável",
+    "—",
+    "Impede a passagem da água e deixa sair o vapor"
+   ],
+   [
+    "Varas + lã mineral",
+    "200 mm",
+    "Isolamento entre as varas sem folgas"
+   ],
+   [
+    "Barreira de vapor",
+    "—",
+    "Juntas fitadas: o vapor não chega ao isolamento"
+   ],
+   [
+    "Acabamento interior",
+    "12,5 mm",
+    "Ripas e placa de gesso"
+   ]
+  ]
+ ],
+ "pie.win": [
+  "Montagem estanque de janela",
+  [
+   [
+    "Fita respirável",
+    "—",
+    "Protege a junta da chuva e deixa sair a humidade"
+   ],
+   [
+    "Espuma de poliuretano",
+    "20–40 mm",
+    "Preenche e isola a junta"
+   ],
+   [
+    "Fita barreira de vapor",
+    "—",
+    "Impede que o vapor interior entre na junta"
+   ],
+   [
+    "Peitoril exterior e parapeito",
+    "—",
+    "São colocados depois das fitas"
+   ]
+  ]
+ ],
+ "pie.floor": [
+  "Pavimento do piso térreo em camadas",
+  [
+   [
+    "Revestimento de piso",
+    "8–20 mm",
+    "Ladrilho, parquet ou vinil"
+   ],
+   [
+    "Betonilha com piso radiante",
+    "50–70 mm",
+    "Tubo PE-Xa ou PE-RT a cada 150–200 mm"
+   ],
+   [
+    "Banda perimetral",
+    "8–10 mm",
+    "A betonilha dilata sem fissurar"
+   ],
+   [
+    "Membrana",
+    "—",
+    "Camada separadora"
+   ],
+   [
+    "Isolamento",
+    "50–100 mm",
+    "XPS ou EPS sob o piso radiante"
+   ],
+   [
+    "Laje",
+    "—",
+    "Laje de fundação"
+   ]
+  ]
+ ],
+ "pie.w_block": [
+  "Parede de bloco celular",
+  [
+   [
+    "Reboco decorativo",
+    "2–3 mm",
+    "Acabamento texturado sobre primário"
+   ],
+   [
+    "Camada de base armada",
+    "5–7 mm",
+    "Cola e rede de fibra de vidro: sem fissuras"
+   ],
+   [
+    "Lã mineral ou EPS",
+    "100 mm",
+    "A lã mineral é respirável e incombustível"
+   ],
+   [
+    "Cola e buchas",
+    "—",
+    "Buchas de isolamento segundo o esquema"
+   ],
+   [
+    "Bloco celular",
+    "300–375 mm",
+    "D400–D500 com cola, junta de 2–3 mm"
+   ],
+   [
+    "Reboco",
+    "10–15 mm",
+    "De gesso, com mestras"
+   ]
+  ]
+ ],
+ "pie.w_brick": [
+  "Parede de tijolo",
+  [
+   [
+    "Tijolo de face à vista",
+    "120 mm",
+    "Fachada sem reboco"
+   ],
+   [
+    "Caixa de ar ventilada",
+    "20–40 mm",
+    "Retira a humidade do isolamento"
+   ],
+   [
+    "Lã mineral",
+    "50–100 mm",
+    "Painéis com buchas, atravessados por ligadores flexíveis"
+   ],
+   [
+    "Tijolo estrutural",
+    "380 mm",
+    "Alvenaria de tijolo e meio com argamassa"
+   ],
+   [
+    "Reboco",
+    "15–20 mm",
+    "De cal e cimento ou de gesso"
+   ]
+  ]
+ ],
+ "pie.w_frame": [
+  "Parede de estrutura de madeira",
+  [
+   [
+    "Revestimento",
+    "—",
+    "Tábuas, fibrocimento ou reboco"
+   ],
+   [
+    "Caixa de ar ventilada",
+    "25–50 mm",
+    "Contrarripas"
+   ],
+   [
+    "Membrana corta-vento",
+    "—",
+    "Respirável"
+   ],
+   [
+    "OSB/3",
+    "9–12 mm",
+    "Rigidez da estrutura"
+   ],
+   [
+    "Estrutura + lã mineral",
+    "150–200 mm",
+    "Montantes no módulo do isolamento"
+   ],
+   [
+    "Barreira de vapor",
+    "—",
+    "Juntas fitadas"
+   ],
+   [
+    "Caixa técnica",
+    "50 mm",
+    "Ripas e lã, por aqui passam os cabos"
+   ],
+   [
+    "Placa de gesso",
+    "12,5 mm",
+    "Uma ou duas camadas"
+   ]
+  ]
+ ],
+ "pie.w_brus": [
+  "Parede de toros maciços",
+  [
+   [
+    "Velatura ou óleo",
+    "—",
+    "Proteção UV e contra a humidade"
+   ],
+   [
+    "Toro",
+    "150–200 mm",
+    "Perfilado ou lamelado colado"
+   ],
+   [
+    "Vedante entre fiadas",
+    "—",
+    "Juta ou linho"
+   ],
+   [
+    "Cavilhas",
+    "—",
+    "Mantêm as fiadas num plano"
+   ],
+   [
+    "Antissético",
+    "—",
+    "Tratamento antes da montagem"
+   ]
+  ]
+ ],
+ "pie.f_part": [
+  "Parede divisória de placa de gesso",
+  [
+   [
+    "Pintura e barramento",
+    "1–2 mm",
+    "Juntas com fita de reforço"
+   ],
+   [
+    "Placa de gesso",
+    "2×12,5 mm",
+    "Duas camadas com juntas desencontradas"
+   ],
+   [
+    "Perfis + lã mineral",
+    "50–75 mm",
+    "Isolamento acústico entre divisões"
+   ],
+   [
+    "Placa de gesso",
+    "2×12,5 mm",
+    "Zonas húmidas: bloco celular ou placa hidrófuga"
+   ],
+   [
+    "Banda elástica",
+    "—",
+    "Sob as guias no chão e no teto: amortece vibrações"
+   ]
+  ]
+ ],
+ "pie.f_net": [
+  "Instalações do apartamento",
+  [
+   [
+    "Eletricidade",
+    "ELE",
+    "A partir do quadro com disjuntores e diferenciais: luz, tomadas, circuitos dedicados"
+   ],
+   [
+    "Baixa tensão",
+    "TEL",
+    "Internet, TV e intercomunicador por traçado próprio"
+   ],
+   [
+    "Água fria",
+    "ÁGU",
+    "Do coletor a cada ponto"
+   ],
+   [
+    "Água quente",
+    "ÁGU",
+    "Circuito próprio a partir do coletor"
+   ],
+   [
+    "Esgotos",
+    "ESG",
+    "Pendente de 2–3% até ao tubo de queda"
+   ],
+   [
+    "Piso radiante",
+    "ELE",
+    "Cabo de aquecimento, sonda e termóstato"
+   ],
+   [
+    "Climatização e ventilação",
+    "AVAC",
+    "Linhas de cobre com escoamento de condensados, conduta do exaustor"
+   ]
+  ]
+ ],
+ "pie.f_wet": [
+  "Zona húmida: pavimento",
+  [
+   [
+    "Ladrilho",
+    "8–10 mm",
+    "Estereotomia segundo o projeto"
+   ],
+   [
+    "Cimento-cola",
+    "3–5 mm",
+    "Talocha dentada"
+   ],
+   [
+    "Impermeabilização, 2.ª demão",
+    "1–2 mm",
+    "Membrana líquida sobre a betonilha e nas paredes"
+   ],
+   [
+    "Betonilha",
+    "30–50 mm",
+    "Com pendente para o ralo, se houver"
+   ],
+   [
+    "Impermeabilização, 1.ª demão",
+    "1–2 mm",
+    "Sobre a laje, dobrada 20 cm nas paredes"
+   ],
+   [
+    "Primário",
+    "—",
+    "Aderência ao betão"
+   ],
+   [
+    "Laje",
+    "—",
+    "Betão"
+   ]
+  ]
+ ],
+ "pie.f_floor": [
+  "Pavimento com aquecimento radiante",
+  [
+   [
+    "Ladrilho ou grés porcelânico",
+    "8–10 mm",
+    "Cozinha, casa de banho, entrada"
+   ],
+   [
+    "Cola",
+    "5–8 mm",
+    "Flexível, adequada para piso radiante"
+   ],
+   [
+    "Betonilha com fibra",
+    "40–60 mm",
+    "Semisseca, com mestras"
+   ],
+   [
+    "Cabo de aquecimento",
+    "—",
+    "Sobre fita de fixação, sonda em tubo corrugado"
+   ],
+   [
+    "Isolamento",
+    "20–30 mm",
+    "O calor sobe e não se perde na laje"
+   ],
+   [
+    "Banda perimetral",
+    "8–10 mm",
+    "Junto às paredes: sem fissuras na betonilha"
+   ],
+   [
+    "Laje",
+    "—",
+    "Betão"
+   ]
+  ]
+ ],
+ "pie.f_pq": [
+  "Pavimento: parquet ou SPC",
+  [
+   [
+    "Parquet ou SPC",
+    "4–15 mm",
+    "Flutuante ou colado"
+   ],
+   [
+    "Base isolante",
+    "1,5–3 mm",
+    "Nivela e amortece o ruído de passos"
+   ],
+   [
+    "Primário",
+    "—",
+    "Elimina o pó da betonilha"
+   ],
+   [
+    "Betonilha",
+    "40–60 mm",
+    "Seca: humidade dentro da norma do revestimento"
+   ],
+   [
+    "Laje",
+    "—",
+    "Betão"
+   ]
+  ]
+ ],
+ "pie.f_wall": [
+  "Parede em camadas",
+  [
+   [
+    "Pintura",
+    "2 demãos",
+    "Ou papel de parede"
+   ],
+   [
+    "Massa de acabamento",
+    "1–2 mm",
+    "Pronta para pintar"
+   ],
+   [
+    "Massa de base",
+    "2–3 mm",
+    "Com véu de vidro, se necessário"
+   ],
+   [
+    "Reboco",
+    "10–30 mm",
+    "De gesso, com mestras"
+   ],
+   [
+    "Primário",
+    "—",
+    "Aderência ao suporte"
+   ],
+   [
+    "Parede",
+    "—",
+    "Betão, tijolo ou bloco celular"
+   ]
+  ]
+ ],
+ "pie.f_ceil": [
+  "Teto em camadas",
+  [
+   [
+    "Pintura",
+    "2 demãos",
+    "Sobre massa de acabamento"
+   ],
+   [
+    "Placa de gesso",
+    "2×12,5 mm",
+    "Juntas desencontradas: sem fissuras"
+   ],
+   [
+    "Perfis metálicos",
+    "27–60 mm",
+    "Sobre suspensões diretas"
+   ],
+   [
+    "Condutas e cabos",
+    "—",
+    "Ventilação, climatização, iluminação"
+   ],
+   [
+    "Laje",
+    "—",
+    "Betão"
+   ]
+  ]
+ ],
+ "pie.w_block_v": [
+  "Bloco celular, fachada ventilada",
+  [
+   [
+    "Revestimento",
+    "18–25 mm",
+    "Tábuas, ripas ou fibrocimento"
+   ],
+   [
+    "Caixa de ar ventilada",
+    "25–50 mm",
+    "As contrarripas escoam a humidade"
+   ],
+   [
+    "Membrana corta-vento",
+    "—",
+    "Respirável"
+   ],
+   [
+    "Lã mineral",
+    "100 mm",
+    "Com buchas de isolamento"
+   ],
+   [
+    "Bloco celular",
+    "300–375 mm",
+    "D400–D500 com cola"
+   ],
+   [
+    "Reboco",
+    "10–15 mm",
+    "De gesso, com mestras"
+   ]
+  ]
+ ],
+ "pie.w_brick_v": [
+  "Tijolo, fachada ventilada",
+  [
+   [
+    "Revestimento",
+    "18–25 mm",
+    "Tábuas, ripas ou fibrocimento"
+   ],
+   [
+    "Caixa de ar ventilada",
+    "25–50 mm",
+    "Contrarripas"
+   ],
+   [
+    "Membrana corta-vento",
+    "—",
+    "Respirável"
+   ],
+   [
+    "Lã mineral",
+    "100 mm",
+    "Com buchas"
+   ],
+   [
+    "Tijolo estrutural",
+    "380 mm",
+    "Alvenaria de tijolo e meio"
+   ],
+   [
+    "Reboco",
+    "15–20 mm",
+    "De cal e cimento ou de gesso"
+   ]
+  ]
+ ],
+ "pie.roof_flat": [
+  "Cobertura plana",
+  [
+   [
+    "Membrana de PVC",
+    "1,5 mm",
+    "Dobrada na platibanda, ralos aquecidos"
+   ],
+   [
+    "Isolamento",
+    "150–200 mm",
+    "PIR ou lã mineral, 2 camadas"
+   ],
+   [
+    "Formação de pendentes",
+    "20–150 mm",
+    "Cunhas para os ralos"
+   ],
+   [
+    "Barreira de vapor",
+    "—",
+    "Soldada, juntas seladas"
+   ],
+   [
+    "Laje de cobertura",
+    "200–220 mm",
+    "Betonada no local ou alveolar, segundo o projeto"
+   ]
+  ]
+ ],
+ "pie.roof_ter": [
+  "Cobertura transitável",
+  [
+   [
+    "Ladrilho sobre apoios",
+    "20–40 mm",
+    "Apoios reguláveis, a água corre por baixo"
+   ],
+   [
+    "Geotêxtil",
+    "—",
+    "Camada separadora"
+   ],
+   [
+    "XPS",
+    "150–200 mm",
+    "Cobertura invertida: isolamento sobre a membrana"
+   ],
+   [
+    "Impermeabilização",
+    "2 camadas",
+    "Membrana soldada ou PVC"
+   ],
+   [
+    "Formação de pendentes",
+    "20–150 mm",
+    "Cunhas para os ralos"
+   ],
+   [
+    "Laje de cobertura",
+    "200–220 mm",
+    "Calculada para a carga do terraço"
+   ]
+  ]
+ ],
+ "pie.slab_c": [
+  "Teto sob desvão frio",
+  [
+   [
+    "Lã mineral",
+    "200–250 mm",
+    "Mantém o calor dentro de casa"
+   ],
+   [
+    "Barreira de vapor",
+    "—",
+    "Sob o isolamento"
+   ],
+   [
+    "Laje ou vigotas",
+    "200–220 mm",
+    "Segundo o projeto de estruturas"
+   ],
+   [
+    "Teto",
+    "—",
+    "Barramento, placa de gesso ou teto falso tensionado"
+   ]
+  ]
+ ],
+ "flat.h": "Remodelação a partir do zero: um apartamento de 86 m² em 19 fases",
+ "flat.hc": "Remodelação integral de um apartamento — 19 fases",
+ "flat.p": "Desloque a página e o apartamento passa do betão à vista à entrega das chaves, pela ordem certa dos trabalhos. Relatórios fotográficos a cada 1–2 semanas.",
+ "flat.cta": "Calcular a minha remodelação",
+ "flat.team": "Quem está por trás de cada fase — na página",
+ "flat.about": "Sobre nós",
+ "flat.more": "",
+ "flat.svc": "Remodelação de apartamentos",
+ "flat.st.measure": [
+  "Levantamento 3D do apartamento",
+  "O nosso especialista digitaliza o apartamento com um scanner 3D: a nuvem de pontos dá medidas reais, alturas, desníveis da laje e ângulos. O encarregado confronta-a com a planta e as ligações às redes."
+ ],
+ "flat.st.design": [
+  "O projeto, marcado no chão",
+  "A planta passa para o betão: divisões, mobiliário, estereotomia do ladrilho, esquemas de tomadas, iluminação e canalização. A partir daqui, tudo é feito segundo os desenhos e com as nossas próprias equipas."
+ ],
+ "flat.st.demo": [
+  "Demolição e remoção de entulho",
+  "Retiramos acabamentos, betonilhas, azulejos e as paredes divisórias que o projeto elimina; a instalação elétrica e as canalizações antigas, por completo. O entulho é ensacado e retirado. As paredes estruturais não se tocam."
+ ],
+ "flat.st.demo_n": [
+  "Receção e preparação",
+  "Verificamos a obra do promotor: geometria das paredes, desníveis da laje, janelas e ligações às redes. Depois limpamos, retiramos o pó e aplicamos primário no betão."
+ ],
+ "flat.st.part": [
+  "Paredes divisórias",
+  "Nas zonas húmidas, bloco celular de 100 mm com cola e fiadas armadas; nas divisões, placa de gesso sobre perfis com lã mineral para o isolamento acústico. Vãos segundo o projeto."
+ ],
+ "flat.st.elec": [
+  "Eletricidade e baixa tensão",
+  "Roços, caixas de aparelhagem, caixas de derivação e cabos segundo o esquema; circuitos próprios para a cozinha, o termoacumulador e o piso radiante. Quadro com disjuntores e diferenciais; internet, TV e intercomunicador à parte. Também agora, as linhas de climatização."
+ ],
+ "flat.st.elec_o": [
+  "Eletricidade: instalação nova completa",
+  "A instalação antiga é retirada por inteiro. Cabos de cobre novos em roços, caixas, derivações, quadro com disjuntores e diferenciais; baixa tensão por traçado próprio. Também agora, as linhas de climatização."
+ ],
+ "flat.st.plumb": [
+  "Canalização e coletor",
+  "Do contador ao coletor e, a partir dele, tubo de PPR ou multicamada para cada ponto. Esgotos com pendente de 2–3% para o tubo de queda; estrutura para a sanita suspensa."
+ ],
+ "flat.st.plumb_o": [
+  "Canalização: tubos de queda e tubagens",
+  "Os tubos de queda dentro do apartamento são substituídos de acordo com o condomínio. Coletor, tubo de PPR ou multicamada, esgotos com pendente de 2–3% e estrutura para a sanita."
+ ],
+ "flat.st.hydro": [
+  "Impermeabilização das zonas húmidas",
+  "Impermeabilizante líquido sobre primário: banda de reforço nos cantos e mangas nas saídas, dobra de 20 cm nas paredes e mais alta no duche e na banheira. A 2.ª demão, antes do azulejo."
+ ],
+ "flat.st.screed": [
+  "Piso radiante e betonilha",
+  "Banda perimetral, isolamento e cabo de aquecimento onde há piso radiante. Mestras com nível laser e betonilha semisseca reforçada com fibra."
+ ],
+ "flat.st.plaster": [
+  "Reboco com mestras",
+  "Primário, mestras com nível laser e reboco: de gesso nas divisões, de cimento nas zonas húmidas. Paredes planas e ângulos retos para azulejo, pintura e móveis embutidos."
+ ],
+ "flat.st.win": [
+  "Ombreiras e parapeitos",
+  "Verificamos e afinamos as janelas do promotor e acrescentamos a fita barreira de vapor onde falta. Depois, ombreiras isoladas e parapeitos."
+ ],
+ "flat.st.win_o": [
+  "Substituição de janelas",
+  "Retiram-se os caixilhos velhos; as janelas novas são ancoradas com montagem estanque em três camadas: fitas por fora e por dentro, espuma na junta. Depois, ombreiras e parapeitos."
+ ],
+ "flat.st.ceil": [
+  "Tetos",
+  "Perfis sobre suspensões, duas camadas de placa de gesso, sancas para fitas LED e calhas de cortinado. Uma sanca oculta a conduta do exaustor e as linhas de climatização."
+ ],
+ "flat.st.tile": [
+  "Azulejo e ladrilho",
+  "Estereotomia segundo o projeto, a partir do eixo, sem cortes estreitos. Cola com talocha dentada sobre a 2.ª demão de impermeabilização, juntas regulares com espaçadores, depois betumação e selagem dos cantos."
+ ],
+ "flat.st.paint": [
+  "Barramento e pintura",
+  "Juntas das placas com fita de reforço. Massa de base e de acabamento, lixagem com luz rasante, primário e duas demãos de pintura."
+ ],
+ "flat.st.floor": [
+  "Pavimento e rodapés",
+  "Parquet ou SPC sobre betonilha seca e plana com base isolante e junta de dilatação junto às paredes. Rodapé embutido ou para pintar."
+ ],
+ "flat.st.doors": [
+  "Portas",
+  "Portas ocultas à face da parede na casa de banho, no lavabo e no closet; portas com aro e guarnição nas divisões. Porta de entrada blindada com vedantes."
+ ],
+ "flat.st.furn": [
+  "Cozinha e roupeiros por medida",
+  "Os nossos marceneiros montam módulo a módulo: inferiores, bancada, superiores e coluna de eletrodomésticos; depois o closet, o roupeiro da entrada e o do quarto de criança."
+ ],
+ "flat.st.light": [
+  "Louças sanitárias e iluminação",
+  "Instalamos banheira, lavatório, sanita suspensa e torneiras e ligamos os eletrodomésticos. Cenários de luz: luz de trabalho na cozinha, luz quente ao fim do dia, LED nas sancas."
+ ],
+ "flat.st.decor": [
+  "Decoração e limpeza",
+  "Têxteis, plantas, quadros e pormenores segundo o projeto de design. Depois, limpeza profissional de fim de obra: sem pó, película nem restos de argamassa."
+ ],
+ "flat.st.done": [
+  "Entrega e garantia de 12 meses",
+  "Vistoriamos o apartamento consigo ponto por ponto, assinamos os autos e entregamos os desenhos das instalações ocultas e as chaves. Garantia: 12 meses."
+ ],
+ "sto.one.slab": [
+  "Laje de teto",
+  "Laje ou vigotas de teto segundo o projeto: por cima, isolamento do desvão ou base da cobertura plana. O nosso especialista regista o avanço com drone."
+ ],
+ "sto.one.b_w2": [
+  "Frechal sobre varões roscados",
+  "Casa térrea: sobre a cinta e a laje, varões roscados, barreira anti-humidade e frechal que recebe as varas."
+ ],
+ "sto.one.k_w2": [
+  "Cinta e frechal",
+  "Cinta sob a cobertura sobre a laje e frechal sobre varões roscados com barreira anti-humidade; ligadores flexíveis para o tijolo de face à vista."
+ ],
+ "sto.one.f_w2": [
+  "Travessa superior e vigotas de teto",
+  "Estrutura térrea: travessa superior dupla e vigotas no módulo do isolamento; sobre elas apoiam as varas."
+ ],
+ "sto.one.r_w2": [
+  "Última fiada",
+  "A fiada superior à altura do projeto recebe as varas; as vigas de teto encaixam com folga para o assentamento."
+ ],
+ "sto.one.roof": [
+  "Cobertura sobre desvão frio",
+  "Revestimento sobre ripas e caleiras perimetrais; o desvão fica frio e ventilado, com o isolamento sobre a laje."
+ ],
+ "sto.attic.b_w2": [
+  "Sótão: muro baixo, cinta e frechal",
+  "Muros baixos do sótão com cerca de 1 m em bloco celular, cinta com varões roscados e frechal por cima. A cobertura é mais inclinada: o sótão precisa de altura."
+ ],
+ "sto.attic.k_w2": [
+  "Sótão: muro baixo e frechal",
+  "Muros baixos com cerca de 1 m, cinta sob a cobertura e frechal sobre varões roscados com barreira anti-humidade."
+ ],
+ "sto.attic.f_w2": [
+  "Estrutura do muro baixo do sótão",
+  "Montantes do muro baixo sobre o soalho e travessa superior para as varas; o sótão é isolado pelas águas do telhado."
+ ],
+ "sto.attic.r_w2": [
+  "Fiadas do muro baixo do sótão",
+  "Algumas fiadas de muro baixo e a superior para as varas, com folga para o assentamento."
+ ],
+ "sto.attic.roof": [
+  "Isolamento do sótão e cobertura",
+  "Lã mineral entre as varas e barreira de vapor por baixo: o sótão é um piso habitável. Janelas de telhado na água com os seus kits de estanquidade."
+ ],
+ "sto.flat.rafters": [
+  "Cobertura plana: laje e platibanda",
+  "Laje de cobertura segundo o projeto, platibanda perimetral e formação de pendentes para os ralos: a água não fica estagnada."
+ ],
+ "sto.flat.roof": [
+  "Camadas da cobertura e membrana",
+  "Barreira de vapor, isolamento, membrana de PVC dobrada na platibanda, pingadeira e ralos aquecidos."
+ ],
+ "sto.ter.roof": [
+  "Cobertura transitável: terraço",
+  "Cobertura invertida: membrana, XPS e geotêxtil, ladrilho sobre apoios reguláveis; guarda de vidro e acesso à cobertura."
+ ],
+ "sto.hip.rafters": [
+  "Cobertura de quatro águas",
+  "Quatro águas: rincões, varas de rincão e varas mais curtas junto às águas; depois membrana, contrarripas e ripas."
+ ],
+ "sto.hip.roof": [
+  "Isolamento e telha",
+  "Telha sobre ripas, caleiras em todo o perímetro; lã mineral entre as varas com barreira de vapor por baixo. O nosso especialista regista a cobertura com drone."
+ ],
+ "sto.af.f_studs": [
+  "Pórticos em A",
+  "Pórticos triangulares de madeira seca aplainada ou lamelada a cada 1–1,2 m: são ao mesmo tempo parede e cobertura."
+ ],
+ "sto.af.f_osb": [
+  "OSB sobre pórticos e mezanino",
+  "O OSB-3 sobre os pórticos dá rigidez; as vigotas do mezanino apoiam nos pórticos, com pé-direito duplo por baixo."
+ ],
+ "sto.af.f_w2": [
+  "Estrutura das empenas",
+  "Montantes e travessas para as grandes janelas da empena; a empena traseira é mais fechada e isolada."
+ ],
+ "sto.af.rafters": [
+  "Membrana e caixa ventilada",
+  "Membrana respirável sobre o OSB, contrarripas para a ventilação do beiral à cumeeira e ripas da cobertura."
+ ],
+ "sto.af.roof": [
+  "Cobertura quase até ao chão",
+  "Junta agrafada ou telha asfáltica sobre ripas; lã mineral entre os pórticos e barreira de vapor fitada por dentro."
+ ],
+ "sto.af.win": [
+  "Empena envidraçada",
+  "Envidraçado da empena com montagem estanque: fitas por fora e por dentro, espuma na junta; a porta ao centro."
+ ],
+ "sto.af.f_ins": [
+  "Isolamento das águas",
+  "Lã mineral entre os pórticos sem folgas e barreira de vapor por dentro: as águas da A-frame são parede e cobertura."
+ ],
+ "sto.af.fac_f": [
+  "Revestimento da empena",
+  "À volta do vidro: contrarripas e revestimento de tábuas ou fibrocimento sobre caixa de ar ventilada."
+ ],
+ "sto.clad.fac_b": [
+  "Fachada ventilada: isolamento e revestimento",
+  "Lã mineral com buchas, membrana corta-vento, contrarripas (caixa de ar ventilada) e revestimento: tábuas, ripas ou fibrocimento segundo o estilo."
+ ],
+ "sto.clad.fac_k": [
+  "Fachada ventilada sobre tijolo",
+  "Lã mineral com buchas, membrana corta-vento, contrarripas (caixa de ar ventilada) e revestimento: tábuas, ripas ou fibrocimento segundo o estilo."
+ ],
+ "sto.rnd.fac_f": [
+  "Fachada: sistema de reboco",
+  "Membrana, painéis de suporte do reboco sobre a estrutura, camada de base armada e reboco decorativo: uma estrutura de madeira acabada em reboco."
+ ],
+ "sto.flat_one.b_w2": [
+  "Arranques para a platibanda",
+  "Cobertura plana: na cinta e na laje deixam-se arranques para a platibanda de betão e ancoragens da cobertura. Não é preciso frechal."
+ ],
+ "sto.flat_one.k_w2": [
+  "Cinta para a platibanda",
+  "Cobertura plana: cinta betonada no local sobre a laje com arranques para a platibanda; sem frechal, ligadores flexíveis para o tijolo de face à vista."
+ ],
+ "sto.flat_one.f_w2": [
+  "Travessa superior e vigotas de cobertura",
+  "Estrutura para cobertura plana: travessa superior dupla e vigotas com painel contínuo para formar as pendentes."
+ ],
+ "sto.flat_two.b_w2": [
+  "Piso superior e cinta",
+  "Paredes do piso superior com o mesmo sistema e cinta para a laje de cobertura: a cobertura plana não precisa de frechal."
+ ],
+ "sto.flat_two.k_w2": [
+  "Piso superior e cinta da laje",
+  "Alvenaria do piso superior e cinta betonada no local para a laje de cobertura; ligadores flexíveis para o tijolo de face à vista."
+ ],
+ "sto.flat_two.f_w2": [
+  "Estrutura do piso superior",
+  "Montantes, travessas e OSB do piso superior; a travessa superior recebe as vigotas da cobertura plana."
+ ]
+}

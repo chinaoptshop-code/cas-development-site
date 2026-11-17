@@ -20,7 +20,7 @@ TAB_RX = re.compile(r'<!--la:tab-->.*?<!--/la:tab-->', re.S)
 JS, CSS = '/assets/land-anim.v1.js', '/assets/land-anim.v1.css'
 
 LAND = {'uk': '/landshaftnyi-dyzain-kyiv', 'ru': '/ru/landshaftnyy-dizayn-kiev', 'en': '/en/landscape-design', 'es': '/es/paisajismo',
-        'zh': '/zh/landscape-design', 'pl': '/pl/projektowanie-ogrodow', 'de': '/de/gartengestaltung', 'fr': '/fr/architecture-paysagere', 'ar': '/ar/landscape-design'}
+        'zh': '/zh/landscape-design', 'pl': '/pl/projektowanie-ogrodow', 'de': '/de/gartengestaltung', 'fr': '/fr/architecture-paysagere', 'pt': '/pt/arquitetura-paisagista', 'ar': '/ar/landscape-design'}
 
 T = {
  'uk': dict(h='Ландшафт з нуля — 16 етапів облаштування ділянки', p='Прокручуйте — і ділянка перетвориться на сад: від геодезії до вечірнього світла. Оберіть площу й стиль, увімкніть рентген, щоб побачити дренаж, полив і кабелі під газоном.',

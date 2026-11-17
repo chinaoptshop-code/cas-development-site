@@ -26,10 +26,17 @@ const WIDTHS = (arg('--widths', FULL ? '360,402,768,1024,1440,1920,2560' : '402,
 
 // ===== набори сторінок =====
 const CL = JSON.parse(readFileSync(join(ROOT, 'tools/site/lang/clusters.json'), 'utf8'));
-const LANGS = ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'ar'];
+// + clusters-*.json (як i18n.clusters(): той самий ключ — доповнюємо мовами, напр. clusters-pt.json)
+for (const f of readdirSync(join(ROOT, 'tools/site/lang')).filter(f => /^clusters-.+\.json$/.test(f)).sort()) {
+  for (const [k, v] of Object.entries(JSON.parse(readFileSync(join(ROOT, 'tools/site/lang', f), 'utf8')))) {
+    if (k.startsWith('_') || typeof v !== 'object') continue;
+    CL[k] = Object.assign({}, v, CL[k] || {});
+  }
+}
+const LANGS = ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'pt', 'ar'];
 const core = [...LANGS.map(l => CL.home[l])];
 for (const k of ['services', 'about', 'contact']) for (const l of ['uk', 'en', 'ru', 'ar']) core.push(CL[k][l]);
-core.push('/portfolio', '/en/portfolio', '/ru/portfolio', '/es/portfolio', '/ar/portfolio', '/ar/proekty/monpark', '/de/proekty/hoda-estate');
+core.push('/portfolio', '/en/portfolio', '/ru/portfolio', '/es/portfolio', '/ar/portfolio', '/pt/portfolio', '/pt/servicos', '/ar/proekty/monpark', '/de/proekty/hoda-estate');
 const ukLand = readdirSync(join(ROOT, 'tools/site/pages')).filter(f => /^uk-.*\.json$/.test(f))
   .map(f => JSON.parse(readFileSync(join(ROOT, 'tools/site/pages', f), 'utf8')).slug).filter(s => s && !['index', 'about', 'services', 'contact', 'portfolio'].includes(s)).map(s => '/' + s);
 const extra = ['/en/interior-design', '/en/house-construction', '/en/turnkey-renovation', '/en/landscape-design', '/en/restaurant-design',

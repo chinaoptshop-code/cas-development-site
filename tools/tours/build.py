@@ -157,7 +157,7 @@ INDEX = '''<!doctype html>
 
 # ── текст під переглядачем (tools/tours/about.json; en/ru — about-<мова>.json): що за обʼєкт, що видно, статус, навіщо 360°, посилання ──
 ABOUT = ROOT / 'tools/tours/about.json'
-LANGS = ('uk', 'en', 'ru', 'es', 'pl', 'de', 'fr', 'zh', 'ar')  # uk — основна; інші — лише відкриті тури з текстом в about-<мова>.json (/<мова>/tury/<slug>; ar — RTL)
+LANGS = ('uk', 'en', 'ru', 'es', 'pl', 'de', 'fr', 'pt', 'zh', 'ar')  # uk — основна; інші — лише відкриті тури з текстом в about-<мова>.json (/<мова>/tury/<slug>; ar — RTL)
 CL = ROOT / 'tools/site/lang/clusters-tours.json'  # hreflang-кластери турів (пише pages(); tools/site/i18n.py зливає clusters-*.json)
 HOW = {  # спільний абзац «навіщо тур 360°» — чотири варіанти, щоб тексти турів не повторювалися дослівно
     'uk': {
@@ -237,6 +237,17 @@ HOW = {  # спільний абзац «навіщо тур 360°» — чот�
          'on voit tout de suite ce qui plaît et ce qu’il vaut mieux changer dans le projet de design complet.',
     'D': 'Un concept à 360° permet de choisir un style avant le début du projet détaillé : '
          'on voit les pièces en entier et non image par image, il est donc plus facile de comparer les options et de décider.'},
+    'pt': {
+    'A': 'Para que serve uma visita 360°: um projeto de design pode ser percorrido antes da remodelação, para ver como uma divisão dá lugar à outra. '
+         'A planta, as cores e os móveis acordam-se mais facilmente sobre o modelo: as alterações fazem-se no projeto, não na obra. '
+         'O modelo é construído com as medidas reais: o nosso especialista faz um levantamento 3D do espaço com scanner.',
+    'B': 'Uma visita 360° mostra o projeto tal como os donos o vão ver: à altura dos olhos e com as proporções reais das divisões. '
+         'Na fase de projeto é fácil verificar para onde dão as janelas, como fica o mobiliário e se há luz suficiente — e mudá-lo antes de começar as obras. '
+         'As medidas do modelo vêm de um levantamento 3D feito pelo nosso especialista.',
+    'C': 'Um conceito define a direção: materiais, luz, o ambiente das divisões. Percorrê-lo em 360° é mais fácil do que olhar para renders soltos: '
+         'percebe-se logo o que agrada e o que vale a pena mudar no projeto de design completo.',
+    'D': 'Um conceito em 360° é uma forma de escolher o estilo antes de começar o projeto detalhado: '
+         'veem-se as divisões inteiras e não imagens soltas, por isso comparar opções e decidir torna-se mais simples.'},
     'zh': {
     'A': '为什么要做 360° 漫游：装修开始之前，就能在设计方案里走一圈，看清各个房间如何衔接。'
          '布局、配色和家具在模型上更容易确定——修改落在方案里，而不是施工现场。'
@@ -280,6 +291,9 @@ ROOMS = {
     'fr': {'Спальня': 'Chambre', 'Вітальня': 'Salon', 'Кухня': 'Cuisine', 'Передпокій': 'Entrée', 'Ванна': 'Salle de bains', 'Хол': 'Hall',
            'Їдальня': 'Salle à manger', 'Гардеробна': 'Dressing', 'Тераса': 'Terrasse', 'Коридор': 'Couloir', 'Дитяча': 'Chambre d’enfant', 'Лазня': 'Sauna',
            'Пральня': 'Buanderie', 'Гостьова спальня': 'Chambre d’amis', 'Душова': 'Salle de douche', 'Точка': 'Point'},
+    'pt': {'Спальня': 'Quarto', 'Вітальня': 'Sala de estar', 'Кухня': 'Cozinha', 'Передпокій': 'Entrada', 'Ванна': 'Casa de banho', 'Хол': 'Átrio',
+           'Їдальня': 'Sala de jantar', 'Гардеробна': 'Closet', 'Тераса': 'Terraço', 'Коридор': 'Corredor', 'Дитяча': 'Quarto de criança', 'Лазня': 'Sauna',
+           'Пральня': 'Lavandaria', 'Гостьова спальня': 'Quarto de hóspedes', 'Душова': 'Casa de banho com duche', 'Точка': 'Ponto'},
     'zh': {'Спальня': '卧室', 'Вітальня': '客厅', 'Кухня': '厨房', 'Передпокій': '玄关', 'Ванна': '卫生间', 'Хол': '大厅',
            'Їдальня': '餐厅', 'Гардеробна': '衣帽间', 'Тераса': '露台', 'Коридор': '走廊', 'Дитяча': '儿童房', 'Лазня': '桑拿房',
            'Пральня': '洗衣房', 'Гостьова спальня': '客卧', 'Душова': '淋浴间', 'Точка': '观景点'},
@@ -289,7 +303,7 @@ ROOMS = {
 }
 FLOOR = {'en': lambda n: f'{n}{"st" if n == 1 else "nd" if n == 2 else "rd" if n == 3 else "th"} floor', 'ru': lambda n: f'{n} этаж',
          # «2 поверх» = другий рівень від землі; pl/de/fr/es/ar рахують поверхи інакше (партер/1. Etage), тому — «рівень N»
-         'es': lambda n: f'nivel {n}', 'pl': lambda n: f'poziom {n}', 'de': lambda n: f'Ebene {n}', 'fr': lambda n: f'niveau {n}',
+         'es': lambda n: f'nivel {n}', 'pl': lambda n: f'poziom {n}', 'de': lambda n: f'Ebene {n}', 'fr': lambda n: f'niveau {n}', 'pt': lambda n: f'nível {n}',
          'zh': lambda n: f'{n}层', 'ar': lambda n: f'المستوى {n}'}
 SEP = {'zh': '，', 'ar': '، '}  # кома між назвою кімнати й рівнем
 WORDS = {  # kind / place з JSON туру
@@ -299,6 +313,7 @@ WORDS = {  # kind / place з JSON туру
     'pl': {'Дизайн-проєкт': 'Projekt wnętrza', '360-візуалізація': 'Wizualizacja 360', 'Концепт': 'Koncepcja', 'Квартира': 'Mieszkanie', 'Київ': 'Kijów', 'Карпати': 'Karpaty'},
     'de': {'Дизайн-проєкт': 'Designprojekt', '360-візуалізація': '360-Visualisierung', 'Концепт': 'Konzept', 'Квартира': 'Wohnung', 'Київ': 'Kyjiw', 'Карпати': 'Karpaten'},
     'fr': {'Дизайн-проєкт': 'Projet de design', '360-візуалізація': 'Visualisation 360', 'Концепт': 'Concept', 'Квартира': 'Appartement', 'Київ': 'Kyiv', 'Карпати': 'Carpates'},
+    'pt': {'Дизайн-проєкт': 'Projeto de design', '360-візуалізація': 'Visualização 360', 'Концепт': 'Conceito', 'Квартира': 'Apartamento', 'Київ': 'Kyiv', 'Карпати': 'Cárpatos'},
     'zh': {'Дизайн-проєкт': '设计方案', '360-візуалізація': '360 效果图', 'Концепт': '概念方案', 'Квартира': '公寓', 'Київ': '基辅', 'Карпати': '喀尔巴阡山'},
     'ar': {'Дизайн-проєкт': 'مشروع تصميم', '360-візуалізація': 'تصور 360', 'Концепт': 'مفهوم', 'Квартира': 'شقة', 'Київ': 'كييف', 'Карпати': 'جبال الكاربات'},
 }
@@ -425,6 +440,22 @@ X = {  # підписи сторінок мовою
                i_how='<li><b>Téléphone</b><span>Tournez le téléphone ou glissez du doigt</span></li>\n<li><b>Ordinateur</b><span>Faites glisser à la souris, cliquez sur une flèche pour la pièce suivante</span></li>\n<li><b>Casque VR</b><span>Bouton VR dans la visite — et vous êtes à l’intérieur</span></li>',
                i_cta_h='Une visite 3D de <em>votre</em> bien ?', i_cta_p='Nous réalisons les prises de vue à 360° et montons une visite pour la vente, la location ou un portfolio — ou un projet de design que l’on pourra parcourir de la même façon.',
                i_cta_a='Envoyer une demande', i_empty='Les visites arrivent bientôt.'),
+    'pt': dict(rooms='Divisões', rooms_nav='Divisões da visita', prev='Divisão anterior', next='Divisão seguinte', zoom='Zoom', zin='Aproximar', zout='Afastar',
+               hint='Arraste para olhar à volta · roda ou dois dedos para o zoom · setas para mudar de divisão',
+               home='Início', tours='Visitas 3D', eye='Visita 3D 360°', about='Sobre a visita', more='Mais sobre o imóvel e a visita', rel_aria='Páginas relacionadas',
+               case='Página do projeto', portfolio='Portfólio', all='Todas as visitas 3D', others='Outras visitas', frame='imagem da visita 3D', contact='/pt/contacto',
+               cta='Quer uma visita 3D do seu imóvel ou um projeto de design que se possa percorrer assim? ', cta_a='Enviar pedido',
+               seen=lambda rooms, n: f'Na visita: {", ".join(rooms)} — {n} {"ponto de vista" if n == 1 else "pontos de vista"}. ',
+               seen0=lambda n: f'A visita tem {n} {"ponto de vista" if n == 1 else "pontos de vista"}. ',
+               nav='Mude de divisão com as setas na foto, os botões ‹ › ou o menu «Divisões»; com óculos de RV, use o botão VR.',
+               card_n=lambda n: f'{n} pontos', card_go='Abrir a visita →', card_alt='visita 3D 360°',
+               i_title='Visitas 3D aos nossos projetos — visitas virtuais | CAS',
+               i_desc='Visitas 3D da CAS Development: interiores concluídos e visualizações 360 de projetos de design. No telemóvel, no portátil ou com óculos de RV.',
+               i_ogt='Visitas 3D aos nossos projetos — CAS Development', i_eye='Portfólio · 360°', i_h1='Percorra os nossos <em>projetos</em>',
+               i_lead='Visitas 360° a interiores concluídos e visualizações 360 dos nossos projetos de design e conceitos: o tipo de cada visita está indicado no seu cartão. Abra uma visita e passe de uma divisão para a outra com as setas na foto, como se estivesse lá dentro.',
+               i_how='<li><b>Telemóvel</b><span>Rode o telemóvel ou deslize o dedo</span></li>\n<li><b>Portátil</b><span>Arraste com o rato; clique numa seta para passar à divisão seguinte</span></li>\n<li><b>Óculos de RV</b><span>Carregue em VR na visita e fica lá dentro</span></li>',
+               i_cta_h='Quer uma visita 3D do <em>seu</em> imóvel?', i_cta_p='Fotografamos em 360° e montamos uma visita para venda, arrendamento ou portfólio, ou criamos um projeto de design que poderá ser percorrido da mesma forma.',
+               i_cta_a='Enviar pedido', i_empty='As visitas chegam em breve.'),
     'zh': dict(rooms='房间', rooms_nav='漫游房间', prev='上一个房间', next='下一个房间', zoom='缩放', zin='放大', zout='缩小',
                hint='拖动环视 · 滚轮或双指缩放 · 点击箭头切换房间',
                home='首页', tours='3D 漫游', eye='360° 3D 漫游', about='关于漫游', more='进一步了解项目与漫游', rel_aria='相关页面',

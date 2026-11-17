@@ -217,7 +217,7 @@ def apply(s, rel, c, pub=None):
 
 def pages():
     out = []
-    for d in ('', 'ru/', 'en/', 'es/', 'zh/', 'pl/', 'de/', 'fr/', 'ar/', 'proekty/'):
+    for d in ('', 'ru/', 'en/', 'es/', 'zh/', 'pl/', 'de/', 'fr/', 'pt/', 'ar/', 'proekty/'):
         p = os.path.join(ROOT, d)
         if os.path.isdir(p):
             out += [d + f for f in sorted(os.listdir(p)) if f.endswith('.html')]

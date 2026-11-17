@@ -1,0 +1,284 @@
+{
+ "slug": "index",
+ "lang": "pt",
+ "service": "Todos os serviços",
+ "title": "CAS Development — design, remodelação e obras em Kyiv",
+ "description": "Estúdio em Kyiv desde 2016: design de interiores a partir de $30/m², remodelação chave na mão a partir de $550/m², construção, móveis direto da China.",
+ "h1": "Construção, design de interiores e remodelação chave na mão",
+ "line": "Kyiv · Ucrânia · Worldwide",
+ "price": "design a partir de $30 / m² · remodelação a partir de $550 / m² · construção a partir de $600 / m²",
+ "lead": "A CAS Development é um estúdio de design de interiores e arquitetura fundado em Kyiv em 2016. Mais de 150 projetos realizados: apartamentos, moradias, villas, restaurantes, salões e escritórios. Uma só equipa acompanha-o do primeiro esboço até à entrega das chaves e traz o mobiliário diretamente de fábricas na China.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "kicker": "Estúdio de design e arquitetura · Kyiv · desde 2016",
+ "hero_img": {
+  "img": "img/hero-pidgirland-1280.webp",
+  "srcset": "/img/hero-pidgirland-1280.webp 1280w, /img/hero-pidgirland-1920.webp 1920w",
+  "alt": "Sala de estar e jantar com painéis de madeira — projeto Pidgirland da CAS Development",
+  "sizes": "100vw",
+  "m": {
+   "srcset": "/img/hero-pidgirland-m-720.webp 720w, /img/hero-pidgirland-m-1080.webp 1080w, /img/hero-pidgirland-m-1440.webp 1440w",
+   "w": 1440,
+   "h": 2400
+  }
+ },
+ "sections": [
+  {
+   "t": "strip",
+   "label": "Fotos dos nossos projetos",
+   "items": [
+    {
+     "img": "img/p/1rJCChE1lDiB_j-900.webp",
+     "srcset": "/img/p/1rJCChE1lDiB_j-400.webp 400w, /img/p/1rJCChE1lDiB_j-900.webp 900w",
+     "alt": "Sala de estar — Linden Penthouse",
+     "label": "Linden Penthouse",
+     "href": "/proekty/linden-penthouse"
+    },
+    {
+     "img": "img/p/1m9fVTTPjd6nQs-900.webp",
+     "srcset": "/img/p/1m9fVTTPjd6nQs-400.webp 400w, /img/p/1m9fVTTPjd6nQs-900.webp 900w",
+     "alt": "Sala de estar — Hoda Estate",
+     "label": "Hoda Estate",
+     "href": "/proekty/hoda-estate"
+    },
+    {
+     "img": "img/p/11Hotk9uWWN_pE-900.webp",
+     "srcset": "/img/p/11Hotk9uWWN_pE-400.webp 400w, /img/p/11Hotk9uWWN_pE-900.webp 900w",
+     "alt": "Escritório open space — Office Chicago",
+     "label": "Office Chicago",
+     "href": "/proekty/office-chicago"
+    },
+    {
+     "img": "img/p/1co4thni1Q8_1J-900.webp",
+     "srcset": "/img/p/1co4thni1Q8_1J-400.webp 400w, /img/p/1co4thni1Q8_1J-900.webp 900w",
+     "alt": "Sala com lareira — Petrivtsi House",
+     "label": "Petrivtsi House",
+     "href": "/proekty/petrivtsi-house"
+    },
+    {
+     "img": "img/p/1R7JHtKFpuMJSl-900.webp",
+     "srcset": "/img/p/1R7JHtKFpuMJSl-400.webp 400w, /img/p/1R7JHtKFpuMJSl-900.webp 900w",
+     "alt": "Bungalows sobre a água — Kitana Beach",
+     "label": "Kitana Beach",
+     "href": "/proekty/kitana-beach"
+    },
+    {
+     "img": "img/p/1n0e2qfyf_vo9a-900.webp",
+     "srcset": "/img/p/1n0e2qfyf_vo9a-400.webp 400w, /img/p/1n0e2qfyf_vo9a-900.webp 900w",
+     "alt": "Quarto — Tetris Hall",
+     "label": "Tetris Hall",
+     "href": "/proekty/tetris-hall"
+    },
+    {
+     "img": "img/p/1ey5Jil8hIa-6r-900.webp",
+     "srcset": "/img/p/1ey5Jil8hIa-6r-400.webp 400w, /img/p/1ey5Jil8hIa-6r-900.webp 900w",
+     "alt": "Sala de estar — Pidgirland",
+     "label": "Pidgirland",
+     "href": "/proekty/pidgirland"
+    },
+    {
+     "img": "img/p/1jS6hUJuy_cM08-900.webp",
+     "srcset": "/img/p/1jS6hUJuy_cM08-400.webp 400w, /img/p/1jS6hUJuy_cM08-900.webp 900w",
+     "alt": "Sala com lareira — Hodos Villa",
+     "label": "Hodos Villa",
+     "href": "/proekty/hodos-villa"
+    },
+    {
+     "img": "img/p/1432efN35q6M6V-900.webp",
+     "srcset": "/img/p/1432efN35q6M6V-400.webp 400w, /img/p/1432efN35q6M6V-900.webp 900w",
+     "alt": "Sala do restaurante — Yacht Restaurant",
+     "label": "Yacht Restaurant",
+     "href": "/proekty/yacht-restaurant"
+    },
+    {
+     "img": "img/p/1f8h2r5MBlLLf_-900.webp",
+     "srcset": "/img/p/1f8h2r5MBlLLf_-400.webp 400w, /img/p/1f8h2r5MBlLLf_-900.webp 900w",
+     "alt": "Cozinha — Linden Penthouse",
+     "label": "Linden Penthouse",
+     "href": "/proekty/linden-penthouse"
+    },
+    {
+     "img": "img/p/1FRa0FI6iMHK5L-900.webp",
+     "srcset": "/img/p/1FRa0FI6iMHK5L-400.webp 400w, /img/p/1FRa0FI6iMHK5L-900.webp 900w",
+     "alt": "Sala de estar e jantar — Hoda Estate",
+     "label": "Hoda Estate",
+     "href": "/proekty/hoda-estate"
+    },
+    {
+     "img": "img/p/1MP_RPGiZ7XjIO-900.webp",
+     "srcset": "/img/p/1MP_RPGiZ7XjIO-400.webp 400w, /img/p/1MP_RPGiZ7XjIO-900.webp 900w",
+     "alt": "Sala de jantar — Pidgirland",
+     "label": "Pidgirland",
+     "href": "/proekty/pidgirland"
+    },
+    {
+     "img": "img/p/1OGn3TXnLkQenE-900.webp",
+     "srcset": "/img/p/1OGn3TXnLkQenE-400.webp 400w, /img/p/1OGn3TXnLkQenE-900.webp 900w",
+     "alt": "Sala do restaurante — Yacht Restaurant",
+     "label": "Yacht Restaurant",
+     "href": "/proekty/yacht-restaurant"
+    }
+   ]
+  },
+  {
+   "t": "svc",
+   "h2": "O que fazemos",
+   "more": [
+    "/pt/servicos",
+    "Todos os serviços →"
+   ],
+   "items": [
+    {
+     "h": "Design de interiores",
+     "href": "/pt/design-de-interiores",
+     "img": "img/svc-design-600.webp",
+     "srcset": "/img/svc-design-400.webp 400w, /img/svc-design-600.webp 600w",
+     "price": "a partir de $30 / m² · projeto mínimo $2 500",
+     "p": "Planta, visualizações 3D, desenhos de execução e medições com que qualquer empreiteiro pode trabalhar.",
+     "links": [
+      [
+       "/pt/design-de-interiores",
+       "Saber mais →"
+      ]
+     ],
+     "alt": "Visualização de uma sala de estar e jantar com vigas de madeira e janelas panorâmicas — projeto da CAS Development"
+    },
+    {
+     "h": "Execução do projeto de design",
+     "href": "/pt/execucao-projeto-design",
+     "img": "img/svc-implementation-600.webp",
+     "srcset": "/img/svc-implementation-400.webp 400w, /img/svc-implementation-600.webp 600w",
+     "price": "remodelação a partir de $550 / m² · mobiliário a partir de $250 / m²",
+     "p": "Executamos o seu projeto — nosso ou de outro designer — tal como nas visualizações.",
+     "links": [
+      [
+       "/pt/execucao-projeto-design",
+       "Saber mais →"
+      ]
+     ],
+     "alt": "Office Chicago em Kyiv, já executado: open space com uma ilha de plantas vivas entre os postos de trabalho"
+    },
+    {
+     "h": "Remodelação chave na mão",
+     "href": "/pt/remodelacao-chave-na-mao",
+     "img": "img/svc-renovation-600.webp",
+     "srcset": "/img/svc-renovation-400.webp 400w, /img/svc-renovation-600.webp 600w",
+     "price": "habitação a partir de $550 / m² · escritórios a partir de $350 / m²",
+     "p": "Ciclo completo com equipas próprias: obra bruta, acabamentos, instalações, materiais e limpeza.",
+     "links": [
+      [
+       "/pt/remodelacao-chave-na-mao",
+       "Saber mais →"
+      ]
+     ],
+     "alt": "Sala luminosa com janelas panorâmicas — apartamento Tetris Hall remodelado pela CAS Development"
+    },
+    {
+     "h": "Construção de moradias",
+     "href": "/pt/construcao-de-moradias",
+     "img": "img/svc-construction-600.webp",
+     "srcset": "/img/svc-construction-400.webp 400w, /img/svc-construction-600.webp 600w",
+     "price": "estrutura a partir de $600 / m² · chave na mão a partir de $1 100 / m²",
+     "p": "Casas e moradias desde as fundações e a cobertura até aos interiores e ao jardim.",
+     "links": [
+      [
+       "/pt/construcao-de-moradias",
+       "Saber mais →"
+      ]
+     ],
+     "alt": "Fachada de uma moradia térrea com telheiro para carros — projeto House 150"
+    },
+    {
+     "h": "Mobiliário chave na mão",
+     "href": "/pt/mobiliario-chave-na-mao",
+     "img": "img/svc-furnishing-600.webp",
+     "srcset": "/img/svc-furnishing-400.webp 400w, /img/svc-furnishing-600.webp 600w",
+     "price": "a partir de $250 / m²",
+     "p": "Móveis, iluminação, têxteis e decoração segundo o projeto: entrega, montagem e styling final.",
+     "links": [
+      [
+       "/pt/mobiliario-chave-na-mao",
+       "Saber mais →"
+      ]
+     ],
+     "alt": "Cozinha e sala com sofás e frentes claras — projeto Edelweiss da CAS Development"
+    },
+    {
+     "h": "Espaços comerciais chave na mão",
+     "href": "/pt/espacos-comerciais-chave-na-mao",
+     "img": "img/svc-commercial-600.webp",
+     "price": "design a partir de $30 / m² · equipamento a partir de $10 000",
+     "p": "Cafés, restaurantes, salões, lojas e escritórios: design, obra, equipamento e abertura nas mesmas mãos.",
+     "links": [
+      [
+       "/pt/espacos-comerciais-chave-na-mao",
+       "Saber mais →"
+      ]
+     ],
+     "srcset": "/img/svc-commercial-400.webp 400w, /img/svc-commercial-600.webp 600w",
+     "alt": "Sala do restaurante Monpark depois da abertura — executado pela CAS Development"
+    }
+   ]
+  },
+  {
+   "t": "covers",
+   "h2": "Os nossos projetos",
+   "more": [
+    "/portfolio",
+    "Todos os projetos →"
+   ],
+   "items": [
+    {
+     "href": "/proekty/petrivtsi-house",
+     "img": "img/p/1N5oaUn_7eYM7i-900.webp",
+     "srcset": "/img/p/1N5oaUn_7eYM7i-400.webp 400w, /img/p/1N5oaUn_7eYM7i-900.webp 900w",
+     "alt": "Sala com lareira — Petrivtsi House, projeto da CAS Development",
+     "name": "Petrivtsi House",
+     "loc": "Petrivtsi · 320 m²"
+    },
+    {
+     "href": "/proekty/hoda-estate",
+     "img": "img/p/1f3m1_qf4mDosh-900.webp",
+     "srcset": "/img/p/1f3m1_qf4mDosh-400.webp 400w, /img/p/1f3m1_qf4mDosh-900.webp 900w",
+     "alt": "Sala de estar — Hoda Estate, projeto da CAS Development",
+     "name": "Hoda Estate",
+     "loc": "Cárpatos · 180 m²"
+    },
+    {
+     "href": "/proekty/usa-house",
+     "img": "img/p/1vWmbYVTmViGgW-900.webp",
+     "srcset": "/img/p/1vWmbYVTmViGgW-400.webp 400w, /img/p/1vWmbYVTmViGgW-900.webp 900w",
+     "alt": "Sala de estar — USA House, projeto da CAS Development",
+     "name": "USA House",
+     "loc": "EUA · 420 m²"
+    },
+    {
+     "href": "/proekty/pidgirland",
+     "img": "img/p/1IPpJjg5VkUVC8-900.webp",
+     "srcset": "/img/p/1IPpJjg5VkUVC8-400.webp 400w, /img/p/1IPpJjg5VkUVC8-900.webp 900w",
+     "alt": "Sala de estar — Pidgirland, projeto da CAS Development",
+     "name": "Pidgirland",
+     "loc": "região de Kyiv · 260 m²"
+    },
+    {
+     "href": "/proekty/hodos-villa",
+     "img": "img/p/1xskjqBvCXgXuL-900.webp",
+     "srcset": "/img/p/1xskjqBvCXgXuL-400.webp 400w, /img/p/1xskjqBvCXgXuL-900.webp 900w",
+     "alt": "Sala de jantar — Hodos Villa, projeto da CAS Development",
+     "name": "Hodos Villa",
+     "loc": "Kyiv · 500 m²"
+    },
+    {
+     "href": "/proekty/linden-penthouse",
+     "img": "img/p/1WCwE-qMQJujwW-900.webp",
+     "srcset": "/img/p/1WCwE-qMQJujwW-400.webp 400w, /img/p/1WCwE-qMQJujwW-900.webp 900w",
+     "alt": "Sala de estar — Linden Penthouse, projeto da CAS Development",
+     "name": "Linden Penthouse",
+     "loc": "Kyiv · 210 m²"
+    }
+   ]
+  }
+ ]
+}

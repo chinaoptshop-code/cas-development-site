@@ -1,0 +1,213 @@
+{
+ "slug": "projeto-de-moradia",
+ "lang": "pt",
+ "service": "Projeto de moradia unifamiliar",
+ "title": "Projeto e design de moradia unifamiliar em Kyiv",
+ "description": "Projeto de arquitetura e interiores de moradias em Kyiv: planta, fachadas, 3D e desenhos. Design a partir de $30/m², chave na mão a partir de $1 100/m².",
+ "h1": "Projeto e design de moradia unifamiliar",
+ "price": "design a partir de $30 / m² · construção chave na mão a partir de $1 100 / m²",
+ "lead": "Uma casa pensada da fachada às tomadas: arquitetura, planta para a sua família, design de interiores e arranjo do terreno; uma só equipa do esboço às chaves.",
+ "cards": [
+  [
+   "Arquitetura",
+   [
+    "esboço e volumetria",
+    "plantas dos pisos",
+    "fachadas e materiais",
+    "implantação no terreno"
+   ]
+  ],
+  [
+   "Design de interiores",
+   [
+    "design de todas as divisões",
+    "visualizações 3D",
+    "iluminação, móveis, materiais",
+    "especificações"
+   ]
+  ],
+  [
+   "Construção",
+   [
+    "orçamento e calendário de obra",
+    "construção com acabamentos chave na mão",
+    "equipamento da China",
+    "acompanhamento do design"
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1co4thni1Q8_1J-900.webp",
+   "Petrivtsi House",
+   "Sala com lareira — Petrivtsi House, projeto da CAS Development"
+  ],
+  [
+   "img/p/1SGDKLtQtxQg-k-900.webp",
+   "Petrivtsi House",
+   "Sala de jantar — Petrivtsi House, projeto da CAS Development"
+  ],
+  [
+   "img/p/1xskjqBvCXgXuL-900.webp",
+   "Hodos Villa",
+   "Sala de jantar — Hodos Villa, projeto da CAS Development"
+  ],
+  [
+   "img/p/1jS6hUJuy_cM08-900.webp",
+   "Hodos Villa",
+   "Sala com lareira — Hodos Villa, projeto da CAS Development"
+  ],
+  [
+   "img/p/1jLCsJh1mIO_wX-900.webp",
+   "Smart Villa",
+   "Fachada e piscina — Smart Villa, projeto da CAS Development"
+  ],
+  [
+   "img/p/1C16Cd6bvENPGL-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1g-E1m6cFJ9kvH-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1DhAA8_vK0zo3E-900.webp",
+   "A-Frame House",
+   "Interior — A-Frame House, projeto da CAS Development"
+  ]
+ ],
+ "steps": [
+  [
+   "Primeiro encontro",
+   "Terreno, composição da família, desejos e orçamento."
+  ],
+  [
+   "Esboço",
+   "Propomos volumetria e planta e ajustamo-las aos seus desejos."
+  ],
+  [
+   "Projeto e 3D",
+   "Fachadas, interiores, visualizações: vê a casa antes de começar a construir."
+  ],
+  [
+   "Desenhos de execução",
+   "Documentação com que os construtores trabalham sem suposições."
+  ],
+  [
+   "Construção",
+   "Se quiser, construímos chave na mão a partir de $1 100 por m²."
+  ]
+ ],
+ "faq": [
+  [
+   "Quanto custa o projeto de uma moradia?",
+   "O design, a partir de $30 por m², com um orçamento mínimo de projeto de $2 500. O custo exato é dado depois de conhecermos o terreno e a tarefa."
+  ],
+  [
+   "Quanto custa construir uma moradia chave na mão?",
+   "A construção com acabamentos chave na mão, a partir de $1 100 por m². Móveis e equipamento são calculados à parte; podemos trazê-los diretamente da China."
+  ],
+  [
+   "Também fazem o design de interiores e o arranjo exterior?",
+   "Sim: arquitetura, design de interiores e arranjo do terreno num mesmo projeto."
+  ],
+  [
+   "Onde trabalham?",
+   "Kyiv e toda a Ucrânia, a Europa e o mundo: projetos em Bali, Turquia, Espanha, EUA, França, Alemanha e Polónia."
+  ]
+ ],
+ "rel": [
+  [
+   "/pt/remodelacao-cozinha",
+   "Remodelação de cozinha"
+  ],
+  [
+   "/pt/remodelacao-casa-de-banho",
+   "Remodelação de casa de banho"
+  ],
+  [
+   "/pt/remodelacao-apartamento-novo",
+   "Remodelação de apartamento novo"
+  ],
+  [
+   "/pt/remodelacao-moradia",
+   "Remodelação de moradia"
+  ],
+  [
+   "/pt/remodelacao-escritorios",
+   "Remodelação de escritórios"
+  ],
+  [
+   "/pt/remodelacao-lojas-espacos-comerciais",
+   "Remodelação de espaços comerciais"
+  ],
+  [
+   "/pt/equipa-de-obras",
+   "Equipa de obras"
+  ],
+  [
+   "/pt/equipamento-chave-na-mao",
+   "Equipamento chave na mão"
+  ],
+  [
+   "/pt/calculadora-obras",
+   "Calculadora de custos"
+  ],
+  [
+   "/pt/designer-de-interiores",
+   "Designer de interiores"
+  ],
+  [
+   "/pt/design-de-interiores-apartamento",
+   "Design de interiores de apartamentos"
+  ],
+  [
+   "/pt/design-restaurantes-cafes",
+   "Design de restaurantes e cafés"
+  ],
+  [
+   "/pt/arquitetura-paisagista",
+   "Arquitetura paisagista"
+  ],
+  [
+   "/pt/complexo-turistico-chave-na-mao",
+   "Complexo turístico chave na mão"
+  ],
+  [
+   "/pt/design-de-interiores",
+   "Design de interiores"
+  ],
+  [
+   "/pt/execucao-projeto-design",
+   "Execução do projeto de design"
+  ],
+  [
+   "/pt/remodelacao-chave-na-mao",
+   "Remodelação chave na mão"
+  ],
+  [
+   "/pt/construcao-de-moradias",
+   "Construção de moradias"
+  ],
+  [
+   "/pt/mobiliario-chave-na-mao",
+   "Mobiliário chave na mão"
+  ],
+  [
+   "/pt/espacos-comerciais-chave-na-mao",
+   "Espaços comerciais chave na mão"
+  ],
+  [
+   "/pt/perguntas-frequentes",
+   "Perguntas frequentes"
+  ],
+  [
+   "/pt/contacto",
+   "Contactos"
+  ]
+ ],
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ]
+}

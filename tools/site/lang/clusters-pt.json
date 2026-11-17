@@ -1,0 +1,119 @@
+{
+ "_": "Кластери португальської (pt, 17.11.2026). i18n.py зливає clusters-*.json з clusters.json за ключем.",
+ "home": {
+  "uk": "/",
+  "pt": "/pt/"
+ },
+ "services": {
+  "uk": "/services",
+  "pt": "/pt/servicos"
+ },
+ "about": {
+  "uk": "/about",
+  "pt": "/pt/sobre-nos"
+ },
+ "contact": {
+  "uk": "/contact",
+  "pt": "/pt/contacto"
+ },
+ "design": {
+  "uk": "/dyzain-interieru-kyiv",
+  "pt": "/pt/design-de-interiores"
+ },
+ "renovation": {
+  "uk": "/remont-pid-klyuch-kyiv",
+  "pt": "/pt/remodelacao-chave-na-mao"
+ },
+ "construction": {
+  "uk": "/budivnytstvo-budynkiv-kyiv",
+  "pt": "/pt/construcao-de-moradias"
+ },
+ "furnishing": {
+  "uk": "/mebliuvannia-kvartyry-kyiv",
+  "pt": "/pt/mobiliario-chave-na-mao"
+ },
+ "implementation": {
+  "uk": "/realizatsiia-dyzain-proektu-kyiv",
+  "pt": "/pt/execucao-projeto-design"
+ },
+ "business": {
+  "uk": "/biznes-pid-kliuch-kyiv",
+  "pt": "/pt/espacos-comerciais-chave-na-mao"
+ },
+ "faq": {
+  "uk": "/pytannya",
+  "pt": "/pt/perguntas-frequentes"
+ },
+ "privacy": {
+  "uk": "/konfidentsiinist",
+  "pt": "/pt/privacidade"
+ },
+ "terms": {
+  "uk": "/umovy-korystuvannia",
+  "pt": "/pt/termos-de-utilizacao"
+ },
+ "case-monpark": {
+  "uk": "/proekty/monpark-povnyi-proekt",
+  "pt": "/pt/proekty/monpark-projeto-completo"
+ },
+ "kitchen": {
+  "uk": "/remont-kukhni-kyiv",
+  "pt": "/pt/remodelacao-cozinha"
+ },
+ "bathroom": {
+  "uk": "/remont-vannoi-kimnaty-kyiv",
+  "pt": "/pt/remodelacao-casa-de-banho"
+ },
+ "newbuild": {
+  "uk": "/remont-novobudovy-kyiv",
+  "pt": "/pt/remodelacao-apartamento-novo"
+ },
+ "house-renovation": {
+  "uk": "/remont-budynku-pid-klyuch-kyiv",
+  "pt": "/pt/remodelacao-moradia"
+ },
+ "office": {
+  "uk": "/remont-ofisu-pid-klyuch-kyiv",
+  "pt": "/pt/remodelacao-escritorios"
+ },
+ "commercial": {
+  "uk": "/remont-komertsiinykh-prymishchen-kyiv",
+  "pt": "/pt/remodelacao-lojas-espacos-comerciais"
+ },
+ "crew": {
+  "uk": "/remontna-bryhada-kyiv",
+  "pt": "/pt/equipa-de-obras"
+ },
+ "procurement": {
+  "uk": "/komplektatsiia-pid-kliuch-kyiv",
+  "pt": "/pt/equipamento-chave-na-mao"
+ },
+ "calculator": {
+  "uk": "/kalkuliator-remontu",
+  "pt": "/pt/calculadora-obras"
+ },
+ "designer": {
+  "uk": "/dyzainer-interieru-kyiv",
+  "pt": "/pt/designer-de-interiores"
+ },
+ "design-apartment": {
+  "uk": "/dyzain-interieru-kvartyry-kyiv",
+  "pt": "/pt/design-de-interiores-apartamento"
+ },
+ "restaurant": {
+  "uk": "/dyzain-restoranu-kafe-kyiv",
+  "pt": "/pt/design-restaurantes-cafes"
+ },
+ "house-design": {
+  "uk": "/proektuvannia-budynku-kyiv",
+  "pt": "/pt/projeto-de-moradia"
+ },
+ "landscape": {
+  "uk": "/landshaftnyi-dyzain-kyiv",
+  "pt": "/pt/arquitetura-paisagista"
+ },
+ "resort": {
+  "uk": "/baza-vidpochynku-pid-klyuch",
+  "pt": "/pt/complexo-turistico-chave-na-mao"
+ }
+}

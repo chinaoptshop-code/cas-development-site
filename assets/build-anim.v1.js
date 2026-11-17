@@ -21,7 +21,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
   W.__casBA = 1;
   var secs = [].slice.call(d.querySelectorAll('section.bz[data-bz]'));
   if (!secs.length || !W.fetch || !W.Promise) return;
-  var VER = {"ar.flat":"dd4e8c42","ar.house":"72f5497d","de.flat":"bef66e8c","de.house":"ea8c3b75","en.flat":"1d82d6d8","en.house":"e290d5e4","es.flat":"a055bd91","es.house":"2981262c","fr.flat":"ccd5f01d","fr.house":"5dcf8861","pl.flat":"095e7c40","pl.house":"eea301c3","ru.flat":"7e279bbf","ru.house":"0173dbc5","uk.flat":"9a5703ba","uk.house":"80a10b51","zh.flat":"fab61a6a","zh.house":"ebb4c404"}; /*ver*/
+  var VER = {"ar.flat":"dd4e8c42","ar.house":"72f5497d","de.flat":"bef66e8c","de.house":"ea8c3b75","en.flat":"1d82d6d8","en.house":"e290d5e4","es.flat":"a055bd91","es.house":"2981262c","fr.flat":"ccd5f01d","fr.house":"5dcf8861","pl.flat":"095e7c40","pl.house":"eea301c3","pt.flat":"50dec566","pt.house":"7b11d901","ru.flat":"7e279bbf","ru.house":"0173dbc5","uk.flat":"9a5703ba","uk.house":"80a10b51","zh.flat":"fab61a6a","zh.house":"ebb4c404"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
   var LOW = W.matchMedia && W.matchMedia('(min-width:768px) and (max-height:640px)'); // низький екран ПК-ширини (телефон у ландшафті): налаштування — за кнопкою ⚙, як на телефоні
@@ -31,12 +31,12 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
   var CFGL = { uk: ['/budivnytstvo-budynkiv-kyiv', 'Налаштувати свій будинок →'], ru: ['/ru/stroitelstvo-domov-kiev', 'Настроить свой дом →'],
     en: ['/en/house-construction', 'Configure your house →'], es: ['/es/construccion-de-casas', 'Configura tu casa →'], zh: ['/zh/house-construction', '定制您的房子 →'],
     pl: ['/pl/budowa-domow', 'Skonfiguruj swój dom →'], de: ['/de/hausbau', 'Eigenes Haus konfigurieren →'], fr: ['/fr/construction-maison', 'Configurer votre maison →'],
-    ar: ['/ar/house-construction', 'صمّم منزلك ←'] };
+    pt: ['/pt/construcao-de-moradias', 'Configurar a sua casa →'], ar: ['/ar/house-construction', 'صمّم منزلك ←'] };
   // ціна «від» у панелі компактної «Квартири» (CLAUDE.md: ремонт від $550/м² = роботи + чорнові матеріали); будинок — ui.cfg.price з даних сцени
   var EST_F = { uk: 'Ремонт — від $550/м² (роботи й чорнові матеріали)', ru: 'Ремонт — от $550/м² (работы и черновые материалы)',
     en: 'Renovation from $550/m² (labour and rough materials)', es: 'Reforma desde $550/m² (mano de obra y materiales de obra gris)', zh: '装修每平方米 $550 起（人工和基础材料）',
     pl: 'Remont od $550/m² (robocizna i materiały budowlane)', de: 'Sanierung ab $550/m² (Arbeit und Rohbaumaterial)', fr: 'Rénovation dès $550/m² (main-d’œuvre et matériaux de gros œuvre)',
-    ar: 'التجديد من ‎$550/م² (الأعمال والمواد الأساسية)' };
+    pt: 'Remodelação a partir de $550/m² (mão de obra e materiais de obra bruta)', ar: 'التجديد من ‎$550/م² (الأعمال والمواد الأساسية)' };
   function rtl() { return d.documentElement.dir === 'rtl'; }
   var lang = (d.documentElement.lang || 'uk').slice(0, 2); if (!VER[lang + '.house']) lang = 'uk';
   var MATS = ['block', 'brick', 'frame', 'brus'];

@@ -77,6 +77,11 @@ T = {
                alt='Ou écrivez-nous :', tr='150+ projets depuis 2016 · garantie 12 mois · équipe interne · Google\u00a04,8★',
                q='Laissez votre numéro, nous vous rappelons', ok='Merci. Nous vous rappelons rapidement.', mb='Être rappelé',
                after='Nous répondons du lundi au vendredi, 10:00–20:00. En cas d’urgence, écrivez-nous sur Telegram', gd='Recevoir le guide des prix', gd_msg='Je souhaite le guide des prix'),
+    'pt': dict(name='Nome (opcional)', more='Acrescentar um comentário', send='Receber orçamento',
+               note='Ligamos-lhe e damos-lhe um custo indicativo. A consulta por telefone é gratuita.',
+               alt='Ou escreva-nos:', tr='150+ projetos desde 2016 · garantia de 12 meses · equipa própria · Google\u00a04,8★',
+               q='Deixe o seu número e ligamos-lhe', ok='Obrigado. Ligaremos em breve.', mb='Deixar número',
+               after='Respondemos de segunda a sexta, 10:00–20:00. Se for urgente, escreva-nos pelo Telegram', gd='Receber o guia de preços', gd_msg='Quero o guia de preços'),
     'ar': dict(name='الاسم (اختياري)', more='إضافة تعليق', send='احصل على تقدير',
                note='سنتصل بك ونقدّم تقديرًا تقريبيًا للتكلفة. الاستشارة الهاتفية مجانية.',
                alt='أو راسلنا:', tr='+150 مشروعًا منذ 2016 · ضمان 12 شهرًا · فريقنا الخاص · \u2066Google\u00a04.8★\u2069',
@@ -396,10 +401,10 @@ def apply(s, rel):
 # лендинги на межі бюджету 64 КБ); тексти — сюди з рядка «Офіс»/«Години»/«Телефон» секції contacts у <мова>-contact*.json і chrome.T
 # (contacts, msg), адреса з індексом 03186 (факт із CLAUDE.md). sync_js() пише словник CT між /*ct*/ і /*/ct*/ у lead-form.v1.js.
 CONTACT_PAGES = dict(uk='uk-contact', ru='ru-kontakty', en='en-contact', es='es-contacto', zh='zh-contact', pl='pl-kontakt',
-                     de='de-kontakt', fr='fr-contact', ar='ar-contact')
+                     de='de-kontakt', fr='fr-contact', pt='pt-contacto', ar='ar-contact')
 ADDR = dict(uk='вул. Антоновича, 44, Київ, 03186', ru='ул. Антоновича, 44, Киев, 03186', en='44 Antonovycha St., Kyiv 03186, Ukraine',
             es='Calle Antonovycha 44, 03186 Kiev, Ucrania', zh='乌克兰基辅 Antonovycha 街 44 号，03186', pl='ul. Antonowycza 44, 03186 Kijów, Ukraina',
-            de='Antonowytscha-Str. 44, 03186 Kyjiw, Ukraine', fr='44, rue Antonovytcha, 03186 Kyiv, Ukraine', ar='شارع أنتونوفيتشا 44، كييف 03186، أوكرانيا')
+            de='Antonowytscha-Str. 44, 03186 Kyjiw, Ukraine', fr='44, rue Antonovytcha, 03186 Kyiv, Ukraine', pt='Rua Antonovycha, 44, 03186 Kyiv, Ucrânia', ar='شارع أنتونوفيتشا 44، كييف 03186، أوكرانيا')
 JS = os.path.join(ROOT, 'assets', 'lead-form.v1.js')
 CT_RX = re.compile(r'/\*ct\*/.*?/\*/ct\*/', re.S)
 

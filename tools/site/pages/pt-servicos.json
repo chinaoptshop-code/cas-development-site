@@ -1,0 +1,236 @@
+{
+ "slug": "servicos",
+ "lang": "pt",
+ "service": "Todos os serviços",
+ "title": "Serviços em Kyiv: design, remodelação, obras e mobiliário",
+ "description": "Serviços da CAS Development: design a partir de $30/m², remodelação a partir de $550/m², escritórios $350/m², construção $600/m², mobiliário $250/m².",
+ "h1": "Serviços do estúdio: da ideia ao espaço pronto",
+ "lead": "Contrate o ciclo completo ou apenas uma fase. Por trás de cada serviço está a mesma equipa de arquitetos, designers, engenheiros e equipas de obra próprias.",
+ "btn2": [
+  "https://wa.me/380978667755",
+  "WhatsApp"
+ ],
+ "kicker": "Os nossos serviços",
+ "hero_img": {
+  "img": "img/1nqFOoTfr5BD-1400.webp",
+  "srcset": "/img/1nqFOoTfr5BD-r400.webp 400w, /img/1nqFOoTfr5BD-r600.webp 600w, /img/1nqFOoTfr5BD-r800.webp 800w, /img/1nqFOoTfr5BD-r1200.webp 1200w, /img/1nqFOoTfr5BD-1400.webp 1400w",
+  "alt": "Design de interiores e remodelação chave na mão da CAS Development em Kyiv",
+  "sizes": "100vw",
+  "m": {
+   "srcset": "/img/1nqFOoTfr5BD-m-800.webp 800w, /img/1nqFOoTfr5BD-m-1200.webp 1200w, /img/1nqFOoTfr5BD-m-1400.webp 1400w, /img/1nqFOoTfr5BD-m-1600.webp 1600w",
+   "w": 1600,
+   "h": 800,
+   "sizes": "100vw"
+  }
+ },
+ "sections": [
+  {
+   "t": "svc",
+   "h2_sr": "Os nossos serviços",
+   "items": [
+    {
+     "h": "Design de interiores",
+     "href": "/pt/design-de-interiores",
+     "img": "img/svc-design-600.webp",
+     "srcset": "/img/svc-design-400.webp 400w, /img/svc-design-600.webp 600w",
+     "price": "a partir de $30 / m² · projeto mínimo $2 500",
+     "li": [
+      "conceito e moodboard",
+      "visualizações 3D de cada divisão",
+      "desenhos de execução e medições",
+      "acompanhamento do design em obra"
+     ],
+     "links": [
+      [
+       "/pt/design-de-interiores",
+       "Saber mais →"
+      ]
+     ],
+     "alt": "Visualização de uma sala de estar e jantar com vigas de madeira e janelas panorâmicas — projeto da CAS Development"
+    },
+    {
+     "h": "Execução do projeto de design",
+     "href": "/pt/execucao-projeto-design",
+     "img": "img/svc-implementation-600.webp",
+     "srcset": "/img/svc-implementation-400.webp 400w, /img/svc-implementation-600.webp 600w",
+     "price": "remodelação a partir de $550 / m² · mobiliário a partir de $250 / m²",
+     "li": [
+      "revisão dos desenhos",
+      "orçamento antes de começar",
+      "obra fiel aos desenhos",
+      "compras e mobiliário"
+     ],
+     "links": [
+      [
+       "/pt/execucao-projeto-design",
+       "Saber mais →"
+      ]
+     ],
+     "alt": "Office Chicago em Kyiv, já executado: open space com uma ilha de plantas vivas entre os postos de trabalho"
+    },
+    {
+     "h": "Remodelação chave na mão",
+     "href": "/pt/remodelacao-chave-na-mao",
+     "img": "img/svc-renovation-600.webp",
+     "srcset": "/img/svc-renovation-400.webp 400w, /img/svc-renovation-600.webp 600w",
+     "price": "habitação a partir de $550 / m² · escritórios a partir de $350 / m²",
+     "li": [
+      "demolições e obra bruta",
+      "eletricidade, canalização, ventilação",
+      "acabamentos: azulejo, pavimentos, tetos, pintura",
+      "entrega com 12 meses de garantia"
+     ],
+     "links": [
+      [
+       "/pt/remodelacao-chave-na-mao",
+       "Saber mais →"
+      ]
+     ],
+     "alt": "Sala luminosa com janelas panorâmicas — apartamento Tetris Hall remodelado pela CAS Development"
+    },
+    {
+     "h": "Construção de moradias",
+     "href": "/pt/construcao-de-moradias",
+     "img": "img/svc-construction-600.webp",
+     "srcset": "/img/svc-construction-400.webp 400w, /img/svc-construction-600.webp 600w",
+     "price": "estrutura a partir de $600 / m² · chave na mão a partir de $1 100 / m²",
+     "li": [
+      "projeto de arquitetura e fachadas",
+      "fundações, paredes, cobertura",
+      "instalações técnicas",
+      "acabamentos interiores e jardim"
+     ],
+     "links": [
+      [
+       "/pt/construcao-de-moradias",
+       "Saber mais →"
+      ]
+     ],
+     "alt": "Fachada de uma moradia térrea com telheiro para carros — projeto House 150"
+    },
+    {
+     "h": "Mobiliário chave na mão",
+     "href": "/pt/mobiliario-chave-na-mao",
+     "img": "img/svc-furnishing-600.webp",
+     "srcset": "/img/svc-furnishing-400.webp 400w, /img/svc-furnishing-600.webp 600w",
+     "price": "a partir de $250 / m²",
+     "li": [
+      "móveis por medida e da China",
+      "iluminação e eletrodomésticos",
+      "têxteis e decoração",
+      "entrega, montagem e styling"
+     ],
+     "links": [
+      [
+       "/pt/mobiliario-chave-na-mao",
+       "Saber mais →"
+      ]
+     ],
+     "alt": "Cozinha e sala com sofás e frentes claras — projeto Edelweiss da CAS Development"
+    },
+    {
+     "h": "Espaços comerciais chave na mão",
+     "href": "/pt/espacos-comerciais-chave-na-mao",
+     "img": "img/svc-commercial-600.webp",
+     "price": "design a partir de $30 / m² · equipamento a partir de $10 000",
+     "li": [
+      "cafés e restaurantes",
+      "salões de beleza e lojas",
+      "escritórios e pequenos hotéis",
+      "equipamento da China a partir de $10 000"
+     ],
+     "links": [
+      [
+       "/pt/espacos-comerciais-chave-na-mao",
+       "Saber mais →"
+      ]
+     ],
+     "srcset": "/img/svc-commercial-400.webp 400w, /img/svc-commercial-600.webp 600w",
+     "alt": "Sala do restaurante Monpark depois da abertura — executado pela CAS Development"
+    }
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Outros serviços",
+   "items": [
+    [
+     "/pt/calculadora-obras",
+     "Calculadora do custo de remodelação"
+    ],
+    [
+     "/pt/complexo-turistico-chave-na-mao",
+     "Projeto de complexo turístico"
+    ],
+    [
+     "/pt/designer-de-interiores",
+     "Serviços de designer de interiores"
+    ],
+    [
+     "/pt/design-de-interiores-apartamento",
+     "Design de interiores de apartamentos"
+    ],
+    [
+     "/pt/design-restaurantes-cafes",
+     "Design de restaurantes e cafés"
+    ],
+    [
+     "/pt/equipamento-chave-na-mao",
+     "Equipamento de projetos chave na mão"
+    ],
+    [
+     "/pt/equipa-de-obras",
+     "Equipa de obras"
+    ],
+    [
+     "/pt/arquitetura-paisagista",
+     "Arquitetura paisagista"
+    ],
+    [
+     "/pt/projeto-de-moradia",
+     "Projeto de moradia unifamiliar"
+    ],
+    [
+     "/pt/remodelacao-casa-de-banho",
+     "Remodelação de casa de banho"
+    ],
+    [
+     "/pt/remodelacao-moradia",
+     "Remodelação de moradia chave na mão"
+    ],
+    [
+     "/pt/remodelacao-cozinha",
+     "Remodelação de cozinha"
+    ],
+    [
+     "/pt/remodelacao-lojas-espacos-comerciais",
+     "Remodelação de espaços comerciais"
+    ],
+    [
+     "/pt/remodelacao-apartamento-novo",
+     "Remodelação de apartamento novo"
+    ],
+    [
+     "/pt/remodelacao-escritorios",
+     "Remodelação de escritórios chave na mão"
+    ],
+    [
+     "/pt/sobre-nos",
+     "Sobre o estúdio"
+    ],
+    [
+     "/pt/perguntas-frequentes",
+     "Perguntas frequentes"
+    ],
+    [
+     "/pt/contacto",
+     "Contactos"
+    ],
+    [
+     "/pt/portfolio",
+     "Portfólio"
+    ]
+   ]
+  }
+ ]
+}

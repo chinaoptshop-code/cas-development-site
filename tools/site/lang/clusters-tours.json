@@ -8,6 +8,7 @@
   "pl": "/pl/tury",
   "de": "/de/tury",
   "fr": "/fr/tury",
+  "pt": "/pt/tury",
   "zh": "/zh/tury",
   "ar": "/ar/tury"
  },
@@ -19,6 +20,7 @@
   "pl": "/pl/tury/apartment-2025",
   "de": "/de/tury/apartment-2025",
   "fr": "/fr/tury/apartment-2025",
+  "pt": "/pt/tury/apartment-2025",
   "zh": "/zh/tury/apartment-2025",
   "ar": "/ar/tury/apartment-2025"
  },
@@ -30,6 +32,7 @@
   "pl": "/pl/tury/apartment-37",
   "de": "/de/tury/apartment-37",
   "fr": "/fr/tury/apartment-37",
+  "pt": "/pt/tury/apartment-37",
   "zh": "/zh/tury/apartment-37",
   "ar": "/ar/tury/apartment-37"
  },
@@ -41,6 +44,7 @@
   "pl": "/pl/tury/apartment-45",
   "de": "/de/tury/apartment-45",
   "fr": "/fr/tury/apartment-45",
+  "pt": "/pt/tury/apartment-45",
   "zh": "/zh/tury/apartment-45",
   "ar": "/ar/tury/apartment-45"
  },
@@ -52,6 +56,7 @@
   "pl": "/pl/tury/apartment-56",
   "de": "/de/tury/apartment-56",
   "fr": "/fr/tury/apartment-56",
+  "pt": "/pt/tury/apartment-56",
   "zh": "/zh/tury/apartment-56",
   "ar": "/ar/tury/apartment-56"
  },
@@ -63,6 +68,7 @@
   "pl": "/pl/tury/apartment-80",
   "de": "/de/tury/apartment-80",
   "fr": "/fr/tury/apartment-80",
+  "pt": "/pt/tury/apartment-80",
   "zh": "/zh/tury/apartment-80",
   "ar": "/ar/tury/apartment-80"
  },
@@ -74,6 +80,7 @@
   "pl": "/pl/tury/edelweiss",
   "de": "/de/tury/edelweiss",
   "fr": "/fr/tury/edelweiss",
+  "pt": "/pt/tury/edelweiss",
   "zh": "/zh/tury/edelweiss",
   "ar": "/ar/tury/edelweiss"
  },
@@ -85,6 +92,7 @@
   "pl": "/pl/tury/hoda-estate",
   "de": "/de/tury/hoda-estate",
   "fr": "/fr/tury/hoda-estate",
+  "pt": "/pt/tury/hoda-estate",
   "zh": "/zh/tury/hoda-estate",
   "ar": "/ar/tury/hoda-estate"
  },
@@ -96,6 +104,7 @@
   "pl": "/pl/tury/house-concept-1",
   "de": "/de/tury/house-concept-1",
   "fr": "/fr/tury/house-concept-1",
+  "pt": "/pt/tury/house-concept-1",
   "zh": "/zh/tury/house-concept-1",
   "ar": "/ar/tury/house-concept-1"
  },
@@ -107,6 +116,7 @@
   "pl": "/pl/tury/house-concept-4",
   "de": "/de/tury/house-concept-4",
   "fr": "/fr/tury/house-concept-4",
+  "pt": "/pt/tury/house-concept-4",
   "zh": "/zh/tury/house-concept-4",
   "ar": "/ar/tury/house-concept-4"
  },
@@ -118,6 +128,7 @@
   "pl": "/pl/tury/triangle-house",
   "de": "/de/tury/triangle-house",
   "fr": "/fr/tury/triangle-house",
+  "pt": "/pt/tury/triangle-house",
   "zh": "/zh/tury/triangle-house",
   "ar": "/ar/tury/triangle-house"
  },
@@ -129,6 +140,7 @@
   "pl": "/pl/tury/yablunytsia-estate",
   "de": "/de/tury/yablunytsia-estate",
   "fr": "/fr/tury/yablunytsia-estate",
+  "pt": "/pt/tury/yablunytsia-estate",
   "zh": "/zh/tury/yablunytsia-estate",
   "ar": "/ar/tury/yablunytsia-estate"
  }

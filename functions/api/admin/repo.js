@@ -11,7 +11,7 @@ const NO_TOKEN = { error: 'Потрібен токен GitHub: додайте с
 
 // директорії, які можна переглядати списком
 const LIST_DIRS = ['tools/blog/articles', 'tools/blog/drafts', 'tools/site/pages', 'tools/site/lang', 'img/p', 'img/products', 'img/uploads', 'proekty'];
-const HTML_DIRS = ['', 'proekty', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'ar'];
+const HTML_DIRS = ['', 'proekty', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'pt', 'ar'];
 
 const fail = e => e instanceof GhError ? bad(e.message, e.status) : bad('Помилка сервера: ' + (e && e.message || e), 500);
 

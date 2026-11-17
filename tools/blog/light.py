@@ -22,10 +22,11 @@ T = {
     'es': dict(k='En breve', toc='Contenido', read='min de lectura', parts='Secciones', q='preguntas', price='Precios', svc='Servicio'),
     'de': dict(k='Kurz gesagt', toc='Inhalt', read='Min. Lesezeit', parts='Abschnitte', q='Fragen', price='Preise', svc='Leistung'),
     'fr': dict(k='En bref', toc='Sommaire', read='min de lecture', parts='Sections', q='questions', price='Prix', svc='Service'),
+    'pt': dict(k='Em resumo', toc='Índice', read='min de leitura', parts='Secções', q='perguntas', price='Preços', svc='Serviço'),
     'zh': dict(k='要点', toc='目录', read='分钟阅读', parts='章节', q='问题', price='价格', svc='服务'),
     'ar': dict(k='باختصار', toc='المحتويات', read='دقائق للقراءة', parts='الأقسام', q='الأسئلة', price='الأسعار', svc='الخدمة'),
 }
-PRICE = re.compile(r'(?:від|от|from|od|desde|ab|dès|à partir de)\s+\$\s?\d+(?:[  ,]\d{3})*(?:\s?(?:за|per|/|za)\s?(?:м²|m²|сотку))?', re.I)
+PRICE = re.compile(r'(?:від|от|from|od|desde|ab|dès|à partir de|a partir de)\s+\$\s?\d+(?:[  ,]\d{3})*(?:\s?(?:за|per|/|za)\s?(?:м²|m²|сотку))?', re.I)
 # технічні статті → пиріг шарів (ключ T[lang]['pie'] у buildanim_data); перший збіг у назві/slug
 PIES = [(r'покрівл|кровл|дах|крыш|roof|dach', 'roof'), (r'фундамент|плит[аиу] фундам|foundation|fundament', 'fplate'),
         (r'газоблок|цегл|кирпич|стін|стен|wall|ścian', 'w_block'), (r'каркас|frame|szkielet', 'w_frame'), (r'брус|timber|bali', 'w_brus'),
@@ -166,7 +167,7 @@ def _words(body):
 def pie_key(a):
     if a.get('pie') is False:  # стаття не технічна, хоч у назві «будівництво» (напр. міні-готель) — без пирога
         return None
-    if a['lang'] not in ('uk', 'ru', 'en', 'pl', 'es', 'de', 'fr', 'zh', 'ar'):
+    if a['lang'] not in ('uk', 'ru', 'en', 'pl', 'es', 'de', 'fr', 'pt', 'zh', 'ar'):
         return None
     src = (a['slug'] + ' ' + a['title']).lower()
     # лише технічні статті: будівництво, конструкції, «мокрі» зони, підлоги, покрівля

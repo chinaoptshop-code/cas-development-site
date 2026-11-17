@@ -16,7 +16,7 @@ function syncExp(el,target,cls){
 function a11y(){
  var L=({uk:['Закрити','Попереднє фото','Наступне фото','Меню'],ru:['Закрыть','Предыдущее фото','Следующее фото','Меню'],en:['Close','Previous photo','Next photo','Menu'],
   pl:['Zamknij','Poprzednie zdjęcie','Następne zdjęcie','Menu'],de:['Schließen','Vorheriges Foto','Nächstes Foto','Menü'],es:['Cerrar','Foto anterior','Foto siguiente','Menú'],
-  fr:['Fermer','Photo précédente','Photo suivante','Menu'],zh:['关闭','上一张','下一张','菜单'],ar:['إغلاق','الصورة السابقة','الصورة التالية','القائمة']})[(d.documentElement.lang||'uk').slice(0,2)]||['Close','Previous photo','Next photo','Menu'];
+  fr:['Fermer','Photo précédente','Photo suivante','Menu'],pt:['Fechar','Foto anterior','Foto seguinte','Menu'],zh:['关闭','上一张','下一张','菜单'],ar:['إغلاق','الصورة السابقة','الصورة التالية','القائمة']})[(d.documentElement.lang||'uk').slice(0,2)]||['Close','Previous photo','Next photo','Menu'];
  btnify(d.getElementById('lb-close'),L[0]);
  btnify(d.getElementById('lb-prev'),L[1]);
  btnify(d.getElementById('lb-next'),L[2]);
@@ -93,7 +93,7 @@ function marquee(){
  if(RM||!('IntersectionObserver' in W)||!W.requestAnimationFrame)return;
  var L=({uk:['Пауза прокрутки фото','Прокручувати фото'],ru:['Пауза прокрутки фото','Прокручивать фото'],en:['Pause photo scrolling','Play photo scrolling'],
   es:['Pausar desplazamiento de fotos','Reanudar desplazamiento de fotos'],zh:['暂停照片滚动','继续照片滚动'],pl:['Wstrzymaj przewijanie zdjęć','Wznów przewijanie zdjęć'],
-  de:['Foto-Lauf anhalten','Foto-Lauf starten'],fr:['Mettre le défilement en pause','Relancer le défilement'],ar:['إيقاف تمرير الصور','تشغيل تمرير الصور']})[(d.documentElement.lang||'uk').slice(0,2)]||['Pause','Play'];
+  de:['Foto-Lauf anhalten','Foto-Lauf starten'],fr:['Mettre le défilement en pause','Relancer le défilement'],pt:['Pausar o deslizamento das fotos','Retomar o deslizamento das fotos'],ar:['إيقاف تمرير الصور','تشغيل تمرير الصور']})[(d.documentElement.lang||'uk').slice(0,2)]||['Pause','Play'];
  var list=$$('.xs-st,.vgrid,.strip,.xs-cv,.hx-home~.xs-svc .xs-sv');if(!list.length)return;
  var st=d.createElement('style');
  st.textContent='.mq-bar{position:relative;height:0;z-index:3}.mq-ap{position:absolute;top:.5rem;inset-inline-end:.5rem;width:2.75rem;height:2.75rem;border-radius:50%;border:1px solid rgba(191,145,72,.7);background:rgba(8,7,9,.62);color:#EDE8DF;font:600 .8125rem/1 system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}.mq-ap:focus-visible{outline:2px solid #BF9148;outline-offset:2px}.mq-run{scroll-snap-type:none!important;scroll-behavior:auto!important}';
@@ -157,9 +157,9 @@ function marquee(){
 function carousel(){
  var lg=(d.documentElement.lang||'uk').slice(0,2),
  LP=({uk:['Попередні проєкти','Наступні проєкти'],ru:['Предыдущие проекты','Следующие проекты'],en:['Previous projects','Next projects'],es:['Proyectos anteriores','Proyectos siguientes'],
-  zh:['上一组项目','下一组项目'],pl:['Poprzednie projekty','Następne projekty'],de:['Vorherige Projekte','Nächste Projekte'],fr:['Projets précédents','Projets suivants'],ar:['المشاريع السابقة','المشاريع التالية']})[lg]||['Previous','Next'],
+  zh:['上一组项目','下一组项目'],pl:['Poprzednie projekty','Następne projekty'],de:['Vorherige Projekte','Nächste Projekte'],fr:['Projets précédents','Projets suivants'],pt:['Projetos anteriores','Projetos seguintes'],ar:['المشاريع السابقة','المشاريع التالية']})[lg]||['Previous','Next'],
  LS=({uk:['Попередні послуги','Наступні послуги'],ru:['Предыдущие услуги','Следующие услуги'],en:['Previous services','Next services'],es:['Servicios anteriores','Servicios siguientes'],
-  zh:['上一项服务','下一项服务'],pl:['Poprzednie usługi','Następne usługi'],de:['Vorherige Leistungen','Nächste Leistungen'],fr:['Services précédents','Services suivants'],ar:['الخدمات السابقة','الخدمات التالية']})[lg]||['Previous','Next'];
+  zh:['上一项服务','下一项服务'],pl:['Poprzednie usługi','Następne usługi'],de:['Vorherige Leistungen','Nächste Leistungen'],fr:['Services précédents','Services suivants'],pt:['Serviços anteriores','Serviços seguintes'],ar:['الخدمات السابقة','الخدمات التالية']})[lg]||['Previous','Next'];
  $$('.xs-cv,.hx-home~.xs-svc .xs-sv').forEach(function(sc){
   if(sc.__cv)return;sc.__cv=1;
   var L=sc.classList.contains('xs-sv')?LS:LP;

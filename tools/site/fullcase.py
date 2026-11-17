@@ -61,7 +61,7 @@ def url(c, lang):
     return B + i18n.meta(lang)['prefix'] + c[lang]['slug']
 
 
-LANGS = ('uk', 'ru', 'en', 'es', 'pl', 'de', 'fr', 'zh', 'ar')  # мови кейсу — ті, що є в JSON (c[lang]); порядок = порядок підписів [id, uk, ru, en, es, pl, de, fr, zh, ar]
+LANGS = ('uk', 'ru', 'en', 'es', 'pl', 'de', 'fr', 'zh', 'ar', 'pt')  # мови кейсу — ті, що є в JSON (c[lang]); порядок = порядок підписів [id, uk, ru, en, es, pl, de, fr, zh, ar, pt]
 
 
 def k(lang):
