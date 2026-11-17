@@ -1031,6 +1031,8 @@ def apply(s, rel):
     s = call_label(s, lang)
     s = nbsp_prices(s, lang)
     s = prices_all(s, lang)
+    import ldfix  # JSON-LD: метадані фото (creditText/copyrightNotice), без графа в графі (tools/site/ldfix.py)
+    s = ldfix.apply(s, rel)
     s = local_cases(s, lang)
     if not rel.startswith('kabinet'):
         s = kab_lang(s, lang)
