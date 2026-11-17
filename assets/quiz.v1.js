@@ -283,7 +283,9 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
         if (st[key] === k) inp.checked = true;
         inp.addEventListener('change', function () { st[key] = k; if (key === 'obj') syncSvc(); navState(); });
         // мишею/дотиком — одразу далі; клавіатурою (стрілки) — лише вибір, далі кнопкою
-        lb.addEventListener('click', function (e) { if (e.detail > 0 && e.target === inp) setTimeout(function () { go(i + 1); }, 160); });
+        // Safari: клік, який мітка передає в радіо, має detail 0 (Chrome — 1) — тож ловимо сам клік по мітці/радіо (detail > 0), один раз
+        var tm = 0;
+        lb.addEventListener('click', function (e) { if (e.detail > 0 && !tm) tm = setTimeout(function () { tm = 0; if (inp.checked) go(i + 1); }, 160); });
         lb.appendChild(inp); lb.appendChild(el('span', '', labels[k])); grid.appendChild(lb);
       });
       fs.appendChild(grid); return fs;
