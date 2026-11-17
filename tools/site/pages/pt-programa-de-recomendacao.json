@@ -1,0 +1,162 @@
+{
+ "slug": "programa-de-recomendacao",
+ "lang": "pt",
+ "service": "Programa de recomendação: recomendar um cliente",
+ "title": "Programa de recomendação CAS: 5–15% por cliente",
+ "description": "Recomende um cliente para design, remodelação ou construção: depois do contrato com a CAS, recebe 5–15% do valor dos trabalhos. Condições por escrito.",
+ "h1": "Programa de recomendação da CAS Development",
+ "price": "Recompensa de 5–15% do valor dos trabalhos do contrato",
+ "lead": "Conhece alguém que esteja a planear design de interiores, uma remodelação ou a construção de uma casa? Recomende a CAS Development: quando o cliente assinar o contrato, recebe uma recompensa de 5–15% do valor dos trabalhos do contrato. O montante depende do volume e do tipo de projeto; as condições ficam por escrito.",
+ "cta": "Recomendar um cliente",
+ "form_h2": "Recomendar um cliente",
+ "facts": [
+  [
+   "5–15%",
+   "do valor dos trabalhos do contrato"
+  ],
+  [
+   "por escrito",
+   "fixamos as condições da recompensa"
+  ],
+  [
+   "150+",
+   "projetos desde 2016"
+  ],
+  [
+   "12 meses",
+   "de garantia nas obras"
+  ]
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Quem pode recomendar",
+   "items": [
+    {
+     "h": "Clientes da CAS",
+     "p": "Já fez connosco um design, uma remodelação ou uma casa e sabe como trabalhamos: fale de nós a amigos e conhecidos."
+    },
+    {
+     "h": "Parceiros",
+     "p": "Fornecedores, fabricantes de móveis e materiais, empreiteiros de áreas afins que encontram clientes no início do projeto."
+    },
+    {
+     "h": "Designers e arquitetos",
+     "p": "O seu cliente procura uma equipa para a remodelação ou a construção segundo o seu projeto: recomende a execução pela CAS."
+    },
+    {
+     "h": "Mediadores imobiliários",
+     "p": "Quem compra um apartamento ou uma casa planeia muitas vezes logo o design e a remodelação: indique a quem se dirigir."
+    }
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "Como funciona",
+   "items": [
+    [
+     "Recomenda",
+     "Deixe o seu número no formulário abaixo e descreva brevemente quem recomenda e o que é preciso, ou escreva ao nosso gestor por Telegram ou Viber."
+    ],
+    [
+     "Registamos a recomendação",
+     "Ligamos-lhe, esclarecemos os pormenores e registamos por escrito a recomendação e as condições da recompensa."
+    ],
+    [
+     "Trabalhamos com o cliente",
+     "Consulta por telefone, medição, orçamento e contrato: tudo fica a cargo da nossa equipa."
+    ],
+    [
+     "O cliente assina o contrato",
+     "A recompensa é devida quando o cliente recomendado assina um contrato com a CAS."
+    ],
+    [
+     "Recebe a recompensa",
+     "5–15% do valor dos trabalhos do contrato: o montante depende do volume e do tipo de projeto. Prazos e forma de pagamento por acordo."
+    ]
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Que clientes pode recomendar",
+   "items": [
+    {
+     "h": "Design de interiores",
+     "href": "/pt/design-de-interiores",
+     "p": "Apartamentos, casas, escritórios e restaurantes: projeto de design a partir de $30/m², mínimo $2 500."
+    },
+    {
+     "h": "Remodelação chave na mão",
+     "href": "/pt/remodelacao-chave-na-mao",
+     "p": "Remodelação de apartamentos e casas com a nossa equipa do quadro, a partir de $550/m² por mão de obra e materiais básicos."
+    },
+    {
+     "h": "Construção de moradias",
+     "href": "/pt/construcao-de-moradias",
+     "p": "Estrutura a partir de $600/m², casa chave na mão a partir de $1 100/m²; estrutura de madeira, modulares, em madeira maciça."
+    },
+    {
+     "h": "Espaços comerciais",
+     "href": "/pt/remodelacao-escritorios",
+     "p": "Escritórios a partir de $350/m², restaurantes, hotéis e negócios chave na mão."
+    }
+   ]
+  },
+  {
+   "t": "faq",
+   "h2": "Perguntas e respostas",
+   "items": [
+    [
+     "Qual é o valor da recompensa?",
+     "5–15% do valor dos trabalhos do contrato assinado pelo cliente recomendado. O montante depende do volume e do tipo de projeto; as condições concretas ficam por escrito."
+    ],
+    [
+     "Quando e como é paga a recompensa?",
+     "Prazos e forma de pagamento por acordo: discutimo-los e registamo-los por escrito juntamente com as condições da recompensa."
+    ],
+    [
+     "É preciso ser cliente da CAS?",
+     "Não. Podem recomendar clientes, parceiros, designers, arquitetos e mediadores imobiliários."
+    ],
+    [
+     "Como sabem que o cliente vem da minha parte?",
+     "Deixa um pedido no formulário ou escreve ao gestor, e registamos a recomendação. O cliente também pode indicar o seu nome quando nos contactar."
+    ],
+    [
+     "Tenho de participar nas negociações?",
+     "Não. Basta a recomendação; a consulta, a medição, o orçamento e o contrato ficam a cargo da nossa equipa."
+    ],
+    [
+     "Quando não há recompensa?",
+     "A recompensa está ligada ao contrato: se o cliente recomendado não assinar contrato com a CAS, não há recompensa."
+    ]
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Páginas úteis",
+   "items": [
+    [
+     "/pt/contrato-garantia-pagamento",
+     "Contrato, garantia e pagamento"
+    ],
+    [
+     "/pt/portfolio",
+     "Portfólio"
+    ],
+    [
+     "/pt/sobre-nos",
+     "Sobre o estúdio"
+    ],
+    [
+     "/pt/contacto",
+     "Contactos"
+    ],
+    [
+     "/kabinet",
+     "Área de cliente"
+    ]
+   ]
+  }
+ ]
+}

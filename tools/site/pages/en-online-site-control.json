@@ -1,0 +1,168 @@
+{
+ "slug": "online-site-control",
+ "lang": "en",
+ "service": "Online site control",
+ "title": "Online renovation control: photo reports, stages, 24/7 cam",
+ "description": "Online site control in the CAS client portal: stages with progress, photo reports every 1–2 weeks, acts, payment schedule. 24/7 camera at extra cost.",
+ "h1": "Online control of renovation and construction",
+ "lead": "Your project in the client portal: work stages with statuses and completion percentage, photo reports every 1–2 weeks, the contract, estimate and stage acts, and the payment schedule. For an extra fee we install a 24/7 camera on site.",
+ "cta": "Connect online control",
+ "facts": [
+  [
+   "1–2 weeks",
+   "photo reports from site"
+  ],
+  [
+   "24/7",
+   "camera, at extra cost"
+  ],
+  [
+   "12 months",
+   "warranty on works"
+  ],
+  [
+   "150+",
+   "projects since 2016"
+  ]
+ ],
+ "cards": [
+  [
+   "Stages and progress",
+   [
+    "stages from the contract: demolition, rough works, finishing, furniture",
+    "status of each stage: planned, in progress, acceptance, done",
+    "completion percentage per stage and for the whole project",
+    "next step and date"
+   ]
+  ],
+  [
+   "Photo reports every 1–2 weeks",
+   [
+    "site photos with date and the site manager's comment",
+    "each report is linked to a stage, so you see what was done",
+    "all reports in one feed, no searching through messengers",
+    "photos open full screen"
+   ]
+  ],
+  [
+   "Documents and acts",
+   [
+    "works contract and estimate",
+    "acts of completed works for every stage",
+    "invoices for payment",
+    "everything in one place, on any device"
+   ]
+  ],
+  [
+   "Payment schedule",
+   [
+    "payments by stage, as in the contract",
+    "status: planned, due, paid",
+    "a scheme to suit you: 50/50, 50/30/20, 50/40/10, instalments",
+    "works start from a 10% advance"
+   ]
+  ],
+  [
+   "24/7 camera, at extra cost",
+   [
+    "a camera on site, streaming to the portal or an app",
+    "watch the site at any time, no trips needed",
+    "only you see the stream link",
+    "price on request, depends on the site"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Why online control",
+   [
+    "Renovation and construction take weeks and months, and clients often live in another city or country. Online control removes the need to travel to the site and keep asking: stages, photos, documents and payments are visible in the [client portal](/kabinet).",
+    "Your manager updates the portal: stage progress, photo reports every 1–2 weeks, acts and invoices. Work timelines are fixed in the contract, from 2 weeks depending on scope.",
+    "A 24/7 camera is installed on site at extra cost: once it is connected, the stream opens right from the portal. Only you see the link."
+   ]
+  ]
+ ],
+ "steps": [
+  [
+   "Contract",
+   "We fix stages, timelines and the payment scheme, and the schedule in the portal is built from them."
+  ],
+  [
+   "Portal login",
+   "Sign in with Telegram, Google or your phone number, no passwords."
+  ],
+  [
+   "Stages and payments",
+   "The manager adds the contract stages, the payment schedule and documents."
+  ],
+  [
+   "Photo reports",
+   "Every 1–2 weeks: site photos with a comment, linked to a stage."
+  ],
+  [
+   "24/7 camera",
+   "On request and at extra cost: a camera on site streaming to the portal."
+  ],
+  [
+   "Handover",
+   "Stage acts in the portal; a 12-month warranty on the works."
+  ]
+ ],
+ "faq": [
+  [
+   "How much does online control cost?",
+   "Stages, photo reports every 1–2 weeks, documents and the payment schedule in the portal are part of CAS's work on your project. The 24/7 camera is an extra cost, price on request: it depends on the site and the equipment."
+  ],
+  [
+   "How often do photo reports appear?",
+   "Every 1–2 weeks. Each report has site photos, a date and a comment, and is linked to a work stage."
+  ],
+  [
+   "Who else can see my project?",
+   "Only you and CAS managers. The portal opens after signing in with Telegram, Google or your phone number; only you see the camera link."
+  ],
+  [
+   "How does the 24/7 camera work?",
+   "We install a camera on site and set up the stream. If it is on YouTube with link-only access, you watch it right in the portal; if it is in the camera's cloud, the portal opens its website or app in a new tab."
+  ],
+  [
+   "What if I have a different payment scheme?",
+   "The schedule in the portal is built from your contract: 50/50, 50/30/20, 50/40/10 or instalments, starting from a 10% advance."
+  ],
+  [
+   "Can I connect online control if the renovation is already underway?",
+   "Yes, if CAS is doing the works: the manager adds the stages, documents and payments, and photo reports start from the next week. Technical supervision of another contractor: terms and price on an individual basis."
+  ]
+ ],
+ "rel": [
+  [
+   "/en/apartment-renovation",
+   "Turnkey apartment renovation"
+  ],
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/house-construction",
+   "House construction"
+  ],
+  [
+   "/en/office-renovation",
+   "Office renovation"
+  ],
+  [
+   "/en/design-and-technical-supervision",
+   "Designer and technical supervision"
+  ],
+  [
+   "/en/general-contractor-kyiv",
+   "General contractor"
+  ]
+ ],
+ "extra": "<section><div class=\"w\"><h2>Portal demo: this is how your project looks online</h2><p class=\"okd-intro\">The data is made up: this is a «Demo project». Only you see your real project, after signing in to the portal with Telegram, Google or your phone number.</p><div class=\"okd\"><div class=\"okd-bar\" aria-hidden=\"true\"><span class=\"okd-dots\"><i></i><i></i><i></i></span><span class=\"okd-url\">cas-develop.com/kabinet/obiekt</span><span class=\"okd-badge\">DEMO</span></div><div class=\"okd-head\"><p class=\"okd-eb\">Renovation · 86 m²</p><h3>Demo project: apartment</h3><div class=\"okd-top\"><div class=\"okd-big\"><small>Overall progress</small>54%</div><div class=\"okd-chips\"><span><b>2/5</b> stages done</span><span><b>6</b> photo reports</span><span>latest: <b>12 Oct</b></span><span>camera: <b>yes</b></span></div></div><div class=\"okd-pb\"><i style=\"width:54%\"></i></div></div><div class=\"okd-tabs\" role=\"tablist\" aria-label=\"Demo project: apartment\"><button type=\"button\" role=\"tab\" id=\"okd-t0\" aria-controls=\"okd-p0\" aria-selected=\"true\">Stages</button><button type=\"button\" role=\"tab\" id=\"okd-t1\" aria-controls=\"okd-p1\" aria-selected=\"false\">Photo reports</button><button type=\"button\" role=\"tab\" id=\"okd-t2\" aria-controls=\"okd-p2\" aria-selected=\"false\">Documents</button><button type=\"button\" role=\"tab\" id=\"okd-t3\" aria-controls=\"okd-p3\" aria-selected=\"false\">Payments</button><button type=\"button\" role=\"tab\" id=\"okd-t4\" aria-controls=\"okd-p4\" aria-selected=\"false\">24/7 camera</button></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p0\" aria-labelledby=\"okd-t0\"><ol class=\"okd-ul\"><li class=\"done\"><span class=\"okd-d\" aria-hidden=\"true\">✓</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Demolition and preparation</b><span class=\"okd-s ok\">Done</span></div><div class=\"okd-pb\"><i style=\"width:100%\"></i></div><div class=\"okd-m\"><span>2 – 13 Sep · 100%</span><span>Stage 1 act (PDF)</span></div></div></li><li class=\"done\"><span class=\"okd-d\" aria-hidden=\"true\">✓</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Electrics and plumbing</b><span class=\"okd-s ok\">Done</span></div><div class=\"okd-pb\"><i style=\"width:100%\"></i></div><div class=\"okd-m\"><span>16 Sep – 4 Oct · 100%</span><span>Stage 2 act (PDF)</span></div></div></li><li class=\"cur\"><span class=\"okd-d\" aria-hidden=\"true\">3</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Screed, plaster, levelling</b><span class=\"okd-s on\">In progress</span></div><div class=\"okd-pb\"><i style=\"width:70%\"></i></div><div class=\"okd-m\"><span>7 – 31 Oct · 70%</span></div></div></li><li class=\"\"><span class=\"okd-d\" aria-hidden=\"true\">4</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Finishing works</b><span class=\"okd-s \">Planned</span></div><div class=\"okd-pb\"><i style=\"width:0%\"></i></div><div class=\"okd-m\"><span>November · 0%</span></div></div></li><li class=\"\"><span class=\"okd-d\" aria-hidden=\"true\">5</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Furniture, appliances and decor</b><span class=\"okd-s \">Planned</span></div><div class=\"okd-pb\"><i style=\"width:0%\"></i></div><div class=\"okd-m\"><span>December · 0%</span></div></div></li></ol></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p1\" aria-labelledby=\"okd-t1\"><ol class=\"okd-feed\"><li><div class=\"okd-fd\"><b>12 Oct</b><small>2026</small></div><div class=\"okd-fb\"><div class=\"okd-sh\"><b>Week 6: screed and plaster</b><span class=\"okd-s\">Screed, plaster</span></div><p>Screed poured in the living room and bedroom, plaster at 70%. Next photo report in a week.</p><div class=\"okd-gal\"><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Site photo (illustration)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M60 104 L40 120 M80 104 L80 120 M100 104 L120 120\" opacity=\".8\"/><rect x=\"70\" y=\"56\" width=\"20\" height=\"30\" opacity=\".6\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Site photo (illustration)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M68 60h24M68 70h24M68 80h24M68 90h24\" opacity=\".8\"/><path d=\"M14 52 L14 104 M24 55 L24 101\" opacity=\".6\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Site photo (illustration)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><rect x=\"70\" y=\"56\" width=\"20\" height=\"26\"/><path d=\"M80 56v26M70 69h20\"/><path d=\"M8 110 L40 98\" opacity=\".7\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Site photo (illustration)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M80 30 v8\"/><path d=\"M72 38 h16 l-4 8 h-8z\"/><path d=\"M80 52 v4 M70 50 l-3 3 M90 50 l3 3\" opacity=\".7\"/></svg></div></div></div></li><li><div class=\"okd-fd\"><b>4 Oct</b><small>2026</small></div><div class=\"okd-fb\"><div class=\"okd-sh\"><b>Week 5: electrics acceptance</b><span class=\"okd-s\">Electrics and plumbing</span></div><p>Lines and the panel checked, stage 2 act signed.</p><div class=\"okd-gal\"><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Site photo (illustration)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M80 30 v8\"/><path d=\"M72 38 h16 l-4 8 h-8z\"/><path d=\"M80 52 v4 M70 50 l-3 3 M90 50 l3 3\" opacity=\".7\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Site photo (illustration)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M110 60 h30 v30 h-20\" /><circle cx=\"120\" cy=\"90\" r=\"4\"/><path d=\"M20 70 h22 v24\" opacity=\".8\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Site photo (illustration)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M68 60h24M68 70h24M68 80h24M68 90h24\" opacity=\".8\"/><path d=\"M14 52 L14 104 M24 55 L24 101\" opacity=\".6\"/></svg></div></div></div></li><li><div class=\"okd-fd\"><b>20 Sep</b><small>2026</small></div><div class=\"okd-fb\"><div class=\"okd-sh\"><b>Week 3: plumbing layout</b><span class=\"okd-s\">Electrics and plumbing</span></div><p>New pipes in the bathroom and kitchen, pressure test passed with no remarks.</p><div class=\"okd-gal\"><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Site photo (illustration)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M110 60 h30 v30 h-20\" /><circle cx=\"120\" cy=\"90\" r=\"4\"/><path d=\"M20 70 h22 v24\" opacity=\".8\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Site photo (illustration)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M110 52 L150 40 M110 64 L150 54 M110 76 L150 68 M110 88 L150 82 M122 49 V100 M136 45 V104\" opacity=\".75\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Site photo (illustration)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M110 60 h30 v30 h-20\" /><circle cx=\"120\" cy=\"90\" r=\"4\"/><path d=\"M20 70 h22 v24\" opacity=\".8\"/></svg></div></div></div></li></ol></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p2\" aria-labelledby=\"okd-t2\"><ul class=\"okd-docs\"><li><i>DOC</i><span><b>Works contract</b><small>stages, timelines and payment scheme</small></span></li><li><i>EST</i><span><b>Estimate</b><small>works and rough materials</small></span></li><li><i>ACT</i><span><b>Stage 1 act</b><small>Demolition and preparation</small></span></li><li><i>ACT</i><span><b>Stage 2 act</b><small>Electrics and plumbing</small></span></li><li><i>INV</i><span><b>Invoice for the 2nd payment</b><small>after rough works</small></span></li></ul></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p3\" aria-labelledby=\"okd-t3\"><div class=\"okd-tbl\"><table><thead><tr><th>Payment</th><th>Stage</th><th class=\"n\">Share</th><th>Status</th></tr></thead><tbody><tr><td><b>Advance</b></td><td>Works start</td><td class=\"n\">50%</td><td><span class=\"okd-s ok\">Paid</span></td></tr><tr><td><b>After rough works</b></td><td>Screed, plaster</td><td class=\"n\">30%</td><td><span class=\"okd-s on\">Due</span></td></tr><tr><td><b>On completion</b></td><td>Furniture and decor</td><td class=\"n\">20%</td><td><span class=\"okd-s \">Planned</span></td></tr></tbody></table></div><p class=\"okd-note\">Example of a 50/30/20 scheme. We tailor the payment scheme to you: 50/50, 50/30/20, 50/40/10 or instalments, starting from a 10% advance. The portal shows your schedule from the contract.</p></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p4\" aria-labelledby=\"okd-t4\"><div class=\"okd-cam\"><svg viewBox=\"0 0 320 180\" role=\"img\" aria-label=\"Illustration of a frame from the site camera\" fill=\"none\" stroke=\"#BF9148\" stroke-width=\"1.4\" stroke-linecap=\"round\"><rect width=\"320\" height=\"180\" fill=\"#0d0b09\" stroke=\"none\"/><path d=\"M0 40 L110 70 L110 150 L0 180 M320 40 L210 70 L210 150 L320 180 M110 70 H210 M110 150 H210\" opacity=\".5\"/><rect x=\"130\" y=\"84\" width=\"60\" height=\"46\" opacity=\".7\"/><path d=\"M160 84 V130 M130 107 H190\" opacity=\".5\"/><path d=\"M40 150 l20 -40 l20 40 z M230 140 h50 v-24 h-50 z\" opacity=\".55\"/></svg><span class=\"okd-live\">LIVE</span><span class=\"okd-time\" data-okd-time>12:00:00</span></div><p class=\"okd-note\">The site camera is an extra cost, price on request. Only you see the stream: in the portal or in the camera app.</p></div></div><div class=\"okd-cta\"><a class=\"btn main\" href=\"#zayavka\">Connect online control</a><a class=\"btn\" href=\"/kabinet\">Sign in to the portal</a></div></div></section>",
+ "assets": [
+  "assets/onlain-kontrol.v1.css",
+  "assets/onlain-kontrol.v1.js"
+ ]
+}

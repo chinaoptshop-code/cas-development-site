@@ -1,0 +1,162 @@
+{
+ "slug": "programa-de-referidos",
+ "lang": "es",
+ "service": "Programa de referidos: recomendar un cliente",
+ "title": "Programa de referidos de CAS: 5–15% por cliente",
+ "description": "Recomiende un cliente de diseño, reforma o construcción: cuando firme contrato con CAS, recibe el 5–15% del importe de las obras. Condiciones por escrito.",
+ "h1": "Programa de referidos de CAS Development",
+ "price": "Recompensa del 5–15% del importe de las obras del contrato",
+ "lead": "¿Conoce a alguien que planea un diseño de interiores, una reforma o construir una casa? Recomiende CAS Development: cuando el cliente firme el contrato, recibirá una recompensa del 5–15% del importe de las obras del contrato. La cuantía depende del volumen y del tipo de proyecto; las condiciones se fijan por escrito.",
+ "cta": "Recomendar un cliente",
+ "form_h2": "Recomendar un cliente",
+ "facts": [
+  [
+   "5–15%",
+   "del importe de las obras del contrato"
+  ],
+  [
+   "por escrito",
+   "fijamos las condiciones"
+  ],
+  [
+   "150+",
+   "proyectos desde 2016"
+  ],
+  [
+   "12 meses",
+   "garantía de las obras"
+  ]
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Quién puede recomendar",
+   "items": [
+    {
+     "h": "Clientes de CAS",
+     "p": "Ya hizo con nosotros un diseño, una reforma o una casa y sabe cómo trabajamos: hable de nosotros a amigos y conocidos."
+    },
+    {
+     "h": "Socios",
+     "p": "Proveedores, fabricantes de muebles y materiales, contratistas afines que conocen a clientes al inicio de un proyecto."
+    },
+    {
+     "h": "Diseñadores y arquitectos",
+     "p": "Su cliente busca un equipo para la reforma o la obra según su proyecto: recomiende la ejecución con CAS."
+    },
+    {
+     "h": "Agentes inmobiliarios",
+     "p": "Quien compra un piso o una casa suele planear enseguida el diseño y la reforma: dígale a quién dirigirse."
+    }
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "Cómo funciona",
+   "items": [
+    [
+     "Recomienda",
+     "Deje su número en el formulario de abajo y describa brevemente a quién recomienda y qué necesita, o escriba a nuestro responsable por Telegram o Viber."
+    ],
+    [
+     "Registramos la recomendación",
+     "Le llamamos, aclaramos los detalles y dejamos por escrito la recomendación y las condiciones de la recompensa."
+    ],
+    [
+     "Trabajamos con el cliente",
+     "Consulta telefónica, medición, presupuesto y contrato: los lleva nuestro equipo."
+    ],
+    [
+     "El cliente firma el contrato",
+     "La recompensa se genera cuando el cliente recomendado firma un contrato con CAS."
+    ],
+    [
+     "Recibe la recompensa",
+     "El 5–15% del importe de las obras del contrato: depende del volumen y del tipo de proyecto. Plazos y forma de pago, de mutuo acuerdo."
+    ]
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "A quién puede recomendar",
+   "items": [
+    {
+     "h": "Diseño de interiores",
+     "href": "/es/diseno-interiores",
+     "p": "Pisos, casas, oficinas y restaurantes: proyecto de diseño desde $30/m², mínimo $2 500."
+    },
+    {
+     "h": "Reforma llave en mano",
+     "href": "/es/reforma-llave-en-mano",
+     "p": "Reforma de pisos y casas con nuestro equipo en plantilla, desde $550/m² por mano de obra y materiales de obra."
+    },
+    {
+     "h": "Construcción de casas",
+     "href": "/es/construccion-de-casas",
+     "p": "Estructura desde $600/m², casa llave en mano desde $1 100/m²; de entramado, modulares, de madera."
+    },
+    {
+     "h": "Locales comerciales",
+     "href": "/es/reforma-oficinas",
+     "p": "Oficinas desde $350/m², restaurantes, hoteles y negocios llave en mano."
+    }
+   ]
+  },
+  {
+   "t": "faq",
+   "h2": "Preguntas y respuestas",
+   "items": [
+    [
+     "¿Cuánto es la recompensa?",
+     "El 5–15% del importe de las obras del contrato firmado por el cliente recomendado. Depende del volumen y del tipo de proyecto; las condiciones concretas se fijan por escrito."
+    ],
+    [
+     "¿Cuándo y cómo se paga?",
+     "Plazos y forma de pago de mutuo acuerdo: los hablamos y los dejamos por escrito junto con las condiciones de la recompensa."
+    ],
+    [
+     "¿Hace falta ser cliente de CAS?",
+     "No. Pueden recomendar clientes, socios, diseñadores, arquitectos y agentes inmobiliarios."
+    ],
+    [
+     "¿Cómo sabrán que el cliente viene de mi parte?",
+     "Deja una solicitud en el formulario o escribe al responsable, y registramos la recomendación. El cliente también puede dar su nombre al contactarnos."
+    ],
+    [
+     "¿Tengo que participar en las negociaciones?",
+     "No. Basta con la recomendación; la consulta, la medición, el presupuesto y el contrato los lleva nuestro equipo."
+    ],
+    [
+     "¿Cuándo no hay recompensa?",
+     "La recompensa va ligada al contrato: si el cliente recomendado no firma contrato con CAS, no hay recompensa."
+    ]
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Páginas útiles",
+   "items": [
+    [
+     "/es/contrato-garantia-pago",
+     "Contrato, garantía y pago (modelo de contrato)"
+    ],
+    [
+     "/es/portfolio",
+     "Portafolio"
+    ],
+    [
+     "/es/sobre-nosotros",
+     "Sobre el estudio"
+    ],
+    [
+     "/es/contacto",
+     "Contacto"
+    ],
+    [
+     "/kabinet",
+     "Área de cliente"
+    ]
+   ]
+  }
+ ]
+}

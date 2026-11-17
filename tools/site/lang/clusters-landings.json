@@ -367,5 +367,29 @@
   "zh": "/zh/shop-showroom-design",
   "ar": "/ar/shop-showroom-design",
   "pt": "/pt/design-remodelacao-lojas-showrooms"
+ },
+ "online-control": {
+  "uk": "/onlain-kontrol",
+  "ru": "/ru/onlain-kontrol",
+  "en": "/en/online-site-control",
+  "es": "/es/control-de-obra-online",
+  "zh": "/zh/online-site-control",
+  "pl": "/pl/kontrola-budowy-online",
+  "de": "/de/online-baustellenkontrolle",
+  "fr": "/fr/suivi-de-chantier-en-ligne",
+  "pt": "/pt/controlo-de-obra-online",
+  "ar": "/ar/online-site-control"
+ },
+ "referral": {
+  "uk": "/referalna-prohrama",
+  "ru": "/ru/referalnaya-programma",
+  "en": "/en/referral-programme",
+  "es": "/es/programa-de-referidos",
+  "zh": "/zh/referral-programme",
+  "pl": "/pl/program-polecen",
+  "de": "/de/empfehlungsprogramm",
+  "fr": "/fr/programme-de-parrainage",
+  "pt": "/pt/programa-de-recomendacao",
+  "ar": "/ar/referral-programme"
  }
 }

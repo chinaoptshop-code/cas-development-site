@@ -1,0 +1,162 @@
+{
+ "slug": "programme-de-parrainage",
+ "lang": "fr",
+ "service": "Programme de parrainage : recommander un client",
+ "title": "Parrainage CAS : récompense de 5–15 % par client",
+ "description": "Recommandez un client pour un design, une rénovation ou une construction : après la signature avec CAS, vous touchez 5–15 % du montant des travaux.",
+ "h1": "Programme de parrainage CAS Development",
+ "price": "Récompense de 5–15 % du montant des travaux du contrat",
+ "lead": "Vous connaissez quelqu'un qui prévoit un design d'intérieur, une rénovation ou la construction d'une maison ? Recommandez CAS Development : quand le client signe le contrat, vous recevez une récompense de 5–15 % du montant des travaux du contrat. Le montant dépend du volume et du type de projet ; les conditions sont fixées par écrit.",
+ "cta": "Recommander un client",
+ "form_h2": "Recommander un client",
+ "facts": [
+  [
+   "5–15 %",
+   "du montant des travaux du contrat"
+  ],
+  [
+   "par écrit",
+   "nous fixons les conditions"
+  ],
+  [
+   "150+",
+   "projets depuis 2016"
+  ],
+  [
+   "12 mois",
+   "garantie sur les travaux"
+  ]
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Qui peut recommander",
+   "items": [
+    {
+     "h": "Clients de CAS",
+     "p": "Vous avez déjà réalisé avec nous un design, une rénovation ou une maison et savez comment nous travaillons : parlez de nous à vos amis et connaissances."
+    },
+    {
+     "h": "Partenaires",
+     "p": "Fournisseurs, fabricants de meubles et de matériaux, entreprises de corps de métier voisins qui rencontrent les clients au début d'un projet."
+    },
+    {
+     "h": "Designers et architectes",
+     "p": "Votre client cherche une équipe pour réaliser la rénovation ou la construction selon votre projet : recommandez la réalisation par CAS."
+    },
+    {
+     "h": "Agents immobiliers",
+     "p": "L'acheteur d'un appartement ou d'une maison prévoit souvent aussitôt le design et la rénovation : indiquez-lui à qui s'adresser."
+    }
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "Comment ça marche",
+   "items": [
+    [
+     "Vous recommandez",
+     "Laissez votre numéro dans le formulaire ci-dessous et décrivez brièvement qui vous recommandez et le besoin, ou écrivez à notre chef de projet sur Telegram ou Viber."
+    ],
+    [
+     "Nous enregistrons la recommandation",
+     "Nous vous rappelons, précisons les détails et fixons par écrit la recommandation et les conditions de la récompense."
+    ],
+    [
+     "Nous travaillons avec le client",
+     "Consultation téléphonique, métré, devis et contrat : notre équipe s'en charge."
+    ],
+    [
+     "Le client signe le contrat",
+     "La récompense est due dès que le client recommandé a signé un contrat avec CAS."
+    ],
+    [
+     "Vous recevez la récompense",
+     "5–15 % du montant des travaux du contrat : le montant dépend du volume et du type de projet. Délais et mode de versement par accord."
+    ]
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Qui vous pouvez recommander",
+   "items": [
+    {
+     "h": "Design d'intérieur",
+     "href": "/fr/architecture-interieur",
+     "p": "Appartements, maisons, bureaux et restaurants : projet de design dès $30/m², minimum $2 500."
+    },
+    {
+     "h": "Rénovation clé en main",
+     "href": "/fr/renovation-cle-en-main",
+     "p": "Rénovation d'appartements et de maisons par notre propre équipe salariée, dès $550/m² pour les travaux et les matériaux de gros œuvre."
+    },
+    {
+     "h": "Construction de maisons",
+     "href": "/fr/construction-maison",
+     "p": "Gros œuvre dès $600/m², maison clé en main dès $1 100/m² ; ossature bois, modulaires, en bois massif."
+    },
+    {
+     "h": "Locaux commerciaux",
+     "href": "/fr/renovation-bureaux",
+     "p": "Bureaux dès $350/m², restaurants, hôtels et commerces clé en main."
+    }
+   ]
+  },
+  {
+   "t": "faq",
+   "h2": "Questions et réponses",
+   "items": [
+    [
+     "Quel est le montant de la récompense ?",
+     "5–15 % du montant des travaux du contrat signé par le client recommandé. Il dépend du volume et du type de projet ; les conditions précises sont fixées par écrit."
+    ],
+    [
+     "Quand et comment la récompense est-elle versée ?",
+     "Délais et mode de versement par accord : nous en discutons et les fixons par écrit avec les conditions de la récompense."
+    ],
+    [
+     "Faut-il être client de CAS ?",
+     "Non. Clients, partenaires, designers, architectes et agents immobiliers peuvent recommander."
+    ],
+    [
+     "Comment saurez-vous que le client vient de moi ?",
+     "Vous laissez une demande dans le formulaire ou écrivez au chef de projet, et nous enregistrons la recommandation. Le client peut aussi donner votre nom en nous contactant."
+    ],
+    [
+     "Dois-je participer aux négociations ?",
+     "Non. La recommandation suffit ; consultation, métré, devis et contrat sont pris en charge par notre équipe."
+    ],
+    [
+     "Quand la récompense n'est-elle pas due ?",
+     "La récompense est liée au contrat : si le client recommandé ne signe pas de contrat avec CAS, aucune récompense n'est due."
+    ]
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Pages utiles",
+   "items": [
+    [
+     "/fr/contrat-garantie-paiement",
+     "Contrat, garantie, paiement (modèle de contrat)"
+    ],
+    [
+     "/fr/portfolio",
+     "Portfolio"
+    ],
+    [
+     "/fr/a-propos",
+     "Le studio"
+    ],
+    [
+     "/fr/contact",
+     "Contact"
+    ],
+    [
+     "/kabinet",
+     "Espace client"
+    ]
+   ]
+  }
+ ]
+}
