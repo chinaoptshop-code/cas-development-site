@@ -21,6 +21,9 @@
   у `--full` ще контраст тексту на фото (піксельна проба під текстом; градієнти плиток LIGHT, `.xs-st`/`.xs-cv` не слабшати) і фото менші за слот × DPR. Взаємодії (бургер, мови, плитки, каруселі, сцени, пігулка,
   форма: успіх лише після 2xx, `.lq-go`, квіз, калькулятор, карта) — `node tools/tests/interact.mjs`; швидкість (LCP/CLS/TBT, телефон 1.6 Мбіт/с CPU ×4 і ПК) — `node tools/tests/perf.mjs`.
   Плитка `data-c="x"` при тапі тримає свій заголовок під пальцем (`uxSet(open, tap)` у site-chrome.v1.js). `seo.py` перевіряє й биті внутрішні посилання (href/src/srcset, `_redirects`), og:image і twitter:card.
+- AI-пошук і розмітка (Михайло 17.11.2026: AI-краулери дозволені — robots.txt): `/llms.txt` і `/llms-full.txt` пише `tools/site/llms.py` (факти — з цього файлу, проєкти й статуси — з JSON-LD /proekty, сторінки 10 мов — з кластерів hreflang; Оздоба, поки прихована, — ні).
+  JSON-LD: Service лендингів — `offers` з рядка ціни (лише підтверджені суми «від», `ldfix.offers`), LocalBusiness з `founder` (LinkedIn/TikTok Михайла — sameAs засновника, не студії) на головних/про/контактах 9 мов;
+  спільні поправки (метадані фото ImageObject, Service без offers — з meta description, граф у графі) — `tools/site/ldfix.py` у `chrome.apply()`; перевірка — `python3 tools/site/ldcheck.py` (`--strict` — код 1 при помилках, `--file <сторінка>`).
 - Каталог компонентів — `/styleguide/` (noindex). Нові сторінки — лише з цих блоків.
 - Візуальна шліфовка — чекліст `.claude/skills/unslop` у режимі polish: бренд (палітра, шрифти, шапка/футер), секції й сцени лишаються; правила цього файлу важливіші за скіл (Михайло 06.11.2026); без появи секцій при прокрутці (контент видно одразу), кнопки — округлі, «Усі …», не «Всі …».
 - Шрифти — тільки власні з `/fonts/` (Cormorant Garamond + Manrope), без Google Fonts.

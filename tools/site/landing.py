@@ -46,6 +46,7 @@ import leadform  # легка заявка: лише телефон, швидк�
 import casmap  # карти: офіс у контактах, «Карта проєктів» (tools/site/casmap.py)
 import rich as richsec  # розширені секції: головна/послуги/про/контакти/портфоліо (tools/site/rich.py)
 import ux  # іконки заголовків і згортання (tools/site/ux.py) — знімаємо з шаблону
+import ldfix  # Offer з рядка ціни (tools/site/ldfix.py)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 B = 'https://cas-develop.com/'
@@ -362,6 +363,17 @@ LB_GEO = {'@type': 'GeoCoordinates', 'latitude': 50.4335971, 'longitude': 30.513
 MAP = 'https://maps.google.com/?cid=15015666645432112566'
 
 
+# засновник (Михайло 09.11.2026): особисті LinkedIn і TikTok — sameAs засновника, не студії (профілі студії — SAME_AS)
+FOUNDER_SAME_AS = ['https://www.linkedin.com/in/mykhailo-litovchuk-818846244', 'https://www.tiktok.com/@li_mi_tless']
+FOUNDER = {'uk': ('Михайло', 'Засновник і CEO'), 'ru': ('Михаил', 'Основатель и CEO')}  # інші мови — латиницею
+def founder(lang):
+    n, r = FOUNDER.get(lang, ('Mykhailo', 'Founder and CEO'))
+    return {'@type': 'Person', 'name': n, 'jobTitle': r, 'sameAs': FOUNDER_SAME_AS}
+
+
+offers = ldfix.offers  # рядок ціни → Offer (tools/site/ldfix.py; той самий розбір доповнює ручні сторінки)
+
+
 def business(lang, **extra):
     """Повний вузол LocalBusiness (той самий @id, що на головній) для «Контактів» і «Про студію» всіх мов."""
     t = L[lang]
@@ -369,7 +381,7 @@ def business(lang, **extra):
                  'logo': B + 'apple-touch-icon.png', 'image': B + 'img/og-cas.jpg', 'telephone': '+380978667755', 'priceRange': '$$$',
                  'address': {'@type': 'PostalAddress', 'streetAddress': STREET.get(lang, '44 Antonovycha St'), 'addressLocality': t['city'],
                              'postalCode': '03186', 'addressCountry': 'UA'},
-                 'geo': LB_GEO, 'hasMap': MAP, 'openingHoursSpecification': HOURS, 'sameAs': SAME_AS}, **extra)
+                 'geo': LB_GEO, 'hasMap': MAP, 'openingHoursSpecification': HOURS, 'sameAs': SAME_AS, 'founder': founder(lang)}, **extra)
 e = lambda s: html.escape(s, quote=False)
 a = lambda s: html.escape(s, quote=True)
 # посилання в тексті абзаців «about» і відповідей FAQ: [анкор](/url) → <a href="/url">анкор</a> (у JSON-LD — лише анкор)
@@ -711,7 +723,9 @@ def main_html(p):
 
 def ld(p):
     if p.get('ld_raw'):  # збережена розмітка ручної сторінки (головна, про, контакти, портфоліо): обʼєкти без "@context" — у @graph
-        g = [{k: v for k, v in o.items() if k != '@context'} for o in p['ld_raw']]
+        g = []
+        for o in p['ld_raw']:  # вкладений {"@graph": […]} — розгортаємо: Google не читає граф у графі
+            g += [{k: v for k, v in x.items() if k != '@context'} for x in (o['@graph'] if set(o) <= {'@context', '@graph'} else [o])]
         return json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False, separators=(',', ':'))
     lang = p['lang']
     t, u, hl = L[lang], url(lang, p['slug']), i18n.meta(lang)['hreflang']
@@ -723,14 +737,19 @@ def ld(p):
     if p.get('kind') == 'contact':  # адреса з індексом і години роботи (Google Business Profile) — для локального пошуку
         page['mainEntity'] = business(lang, areaServed=area_served(lang))
     if p.get('slug') == 'index':
-        page['about'] = dict(ORG, telephone='+380978667755', sameAs=SAME_AS)
+        page['about'] = business(lang, areaServed=area_served(lang), foundingDate='2016')  # повна сутність студії на головній кожної мови
         g = [page]
     elif p.get('groups') or p.get('sections'):
         g = [{'@type': 'BreadcrumbList', 'itemListElement': [
                  {'@type': 'ListItem', 'position': 1, 'name': t['home'], 'item': home},
                  {'@type': 'ListItem', 'position': 2, 'name': p['h1'], 'item': u}]}, page]
     else:
-        g = [{'@type': 'Service', 'name': p['service'], 'serviceType': p['service'], 'areaServed': p.get('area') or area_served(lang), 'provider': ORG, 'url': u},
+        # serviceType = name — дубль (−40…60 байт бюджету), description = meta description сторінки — її й так читають пошук і ШІ
+        sv = {'@type': 'Service', 'name': p['service'], 'areaServed': p.get('area') or area_served(lang), 'provider': ORG, 'url': u}
+        of = offers(p.get('price'))
+        if of:
+            sv['offers'] = of
+        g = [sv,
              {'@type': 'BreadcrumbList', 'itemListElement': [
                  {'@type': 'ListItem', 'position': 1, 'name': t['home'], 'item': home},
                  {'@type': 'ListItem', 'position': 2, 'name': (p.get('parent') or [0, t['svc']])[1], 'item': B.rstrip('/') + (p.get('parent') or [t['svc_url']])[0]},

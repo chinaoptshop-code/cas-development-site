@@ -68,14 +68,14 @@
      "@type": "Person",
      "name": "Михайло",
      "jobTitle": "Засновник і CEO",
-      "sameAs": "https://www.linkedin.com/in/mykhailo-litovchuk-818846244"
+      "sameAs": ["https://www.linkedin.com/in/mykhailo-litovchuk-818846244", "https://www.tiktok.com/@li_mi_tless"]
     },
     "employee": [
      {
       "@type": "Person",
       "name": "Михайло",
       "jobTitle": "Засновник і CEO",
-      "sameAs": "https://www.linkedin.com/in/mykhailo-litovchuk-818846244"
+      "sameAs": ["https://www.linkedin.com/in/mykhailo-litovchuk-818846244", "https://www.tiktok.com/@li_mi_tless"]
      },
      {
       "@type": "Person",
@@ -120,6 +120,7 @@
      }
     ],
     "telephone": "+380978667755",
+    "geo": {"@type": "GeoCoordinates", "latitude": 50.4335971, "longitude": 30.5131241},
     "image": "https://cas-develop.com/img/og-cas.jpg",
     "areaServed": [
      {
