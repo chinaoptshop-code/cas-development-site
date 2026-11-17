@@ -441,9 +441,33 @@ await test('квіз → лід: form=quiz, source …#quiz, відповіді;
   await q.locator('.qz-pr input').fill('0671234567'); await q.locator('.qz-send').click(); await p.waitForTimeout(1500);
   const b = lastLead();
   must(b.form === 'quiz' && /#quiz$/.test(b.source) && /^Квіз:/.test(b.message), 'квіз: ' + b.form + ' | ' + b.source + ' | ' + b.message);
+  must(/регіон: Україна/.test(b.message) && /Україна/.test(b.service), 'квіз uk: регіон «Україна» не в заявці: ' + b.service + ' | ' + b.message);
   must(await q.locator('.qz-ok').isVisible(), 'немає успіху квізу');
   must(await q.locator('.qz-ok .lf-after a.lf-tg[href="https://t.me/+380978667755"]').isVisible(), 'у квізі після успіху немає години відповіді й кнопки Telegram');
   must(!/#quiz/.test(await p.getAttribute('#of', 'data-source')), 'source форми не відновлено після квізу');
+});
+await test('квіз en: регіон типово «Європа» (радіогрупа), перемикач → Україна перераховує орієнтир і йде в заявку', '/en/turnkey-renovation', 402, async p => {
+  await wakeup(p);
+  const q = p.locator('.qz').first();
+  if (!(await q.count())) throw new Error('немає квізу');
+  await q.scrollIntoViewIfNeeded(); await p.waitForTimeout(800);
+  must(await q.getAttribute('data-region') === 'eu', 'en: типовий регіон не Європа: ' + await q.getAttribute('data-region'));
+  const rg = q.locator('[role="radiogroup"]');
+  must(await rg.count() === 1 && (await rg.locator('input[type="radio"]').count()) === 2, 'немає радіогрупи регіону з 2 радіо');
+  const lid = await rg.getAttribute('aria-labelledby'); must(lid && (await p.locator('#' + lid).textContent()).trim(), 'радіогрупа без підпису');
+  for (const l of await rg.locator('label').all()) { const bb = await l.boundingBox(); must(bb && bb.height >= 44, 'ціль регіону < 44 px: ' + (bb && bb.height)); }
+  const step = async () => { const l = q.locator('.qz-st:not([hidden]) label:not([hidden])').first(); await l.click(); await p.waitForTimeout(400); };
+  await step(); await step(); // квартира → дизайн-проєкт (70 м²): Європа — мін. $4 000, Україна — мін. $2 500
+  await q.locator('.qz-nx').click(); await p.waitForTimeout(300);
+  await step();
+  const head = () => q.locator('.qz-res .qz-q').textContent();
+  must(/\$4,000/.test(await head()), 'en/Європа: орієнтир не $4,000: ' + await head());
+  await rg.locator('label').first().click(); await p.waitForTimeout(200);
+  must(await q.getAttribute('data-region') === 'ua' && /\$2,500/.test(await head()), 'перемикач → Україна не перерахував: ' + await head());
+  apiStatus = 200; posts = [];
+  await q.locator('.qz-pr input').fill('0671234567'); await q.locator('.qz-send').click(); await p.waitForTimeout(1500);
+  const b = lastLead();
+  must(b.form === 'quiz' && /регіон: Україна/.test(b.message) && /Україна/.test(b.service), 'регіон не в заявці: ' + b.service + ' | ' + b.message);
 });
 await test('кейс → «Хочу так само» → лендинг: у заявці «Перед цим: /proekty/…»', '/proekty/monpark', 402, async p => {
   const a = p.locator('main a[href$="#zayavka"]').first();

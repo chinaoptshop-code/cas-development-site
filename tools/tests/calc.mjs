@@ -64,6 +64,20 @@ it('casCalcArea: порожнє — без помилки, мінус/смітт
   eq(p(casCalcArea('99999999', false, 100000)), { a: 100000, bad: false, cut: true });
 });
 
+// квіз: перемикач «Україна / Європа» (Михайло 17.11.2026) — тексти 10 мов, ставки в нотатках лише з rates-блоку, типовий регіон за мовою
+const QZ = read('assets/quiz.v1.js');
+it('квіз: 10 мов мають reg/rg/ne, нотатки й мінімум — шаблони {r}/{m}, без зашитих $', () => {
+  ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'pt', 'ar'].forEach(l => {
+    const m = QZ.match(new RegExp('\\n    ' + l + ': \\{ (reg: [^\\n]+)\\n([\\s\\S]*?)demo:'));
+    if (!m) throw new Error(l + ': немає reg/rg/ne');
+    if (!/rg: \['[^']+', '[^']+'\], ne: '[^']+'/.test(m[1])) throw new Error(l + ': rg/ne');
+    if (/\$\d/.test(m[2])) throw new Error(l + ': зашита ставка $ у текстах (лише {r}/{m} з rates-блоку)');
+    if (!/min: '[^']*\{m\}'/.test(m[2]) || (m[2].match(/\{r\}/g) || []).length !== 2) throw new Error(l + ': шаблони {m}/{r}');
+  });
+  if (!/DEF_REG = UA \? 0 : 1/.test(QZ) || !/var UA = lang === 'uk' \|\| lang === 'ru'/.test(QZ)) throw new Error('типовий регіон: uk/ru — Україна, решта — Європа');
+  if (/CAS_RATES\[[^\]]+\]\[0\]|casCost\([^)]*, 0, a\)/.test(QZ)) throw new Error('квіз рахує лише за Україною (зашитий індекс 0)');
+});
+
 // конфіг калькулятора — той, що стоїть на сторінці (uk) і в усіх 9 мовах
 const PAGES = ['kalkuliator-remontu', 'ru/kalkulyator-remonta', 'en/renovation-cost-calculator', 'es/calculadora-reforma', 'zh/renovation-calculator',
   'pl/kalkulator-remontu', 'de/renovierungskosten-rechner', 'fr/calculateur-renovation', 'ar/renovation-calculator'];
