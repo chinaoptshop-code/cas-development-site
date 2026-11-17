@@ -1,0 +1,162 @@
+{
+ "slug": "empfehlungsprogramm",
+ "lang": "de",
+ "service": "Empfehlungsprogramm: Kunden empfehlen",
+ "title": "CAS-Empfehlungsprogramm: 5–15 % Prämie pro Kunde",
+ "description": "Empfehlen Sie einen Kunden für Design, Renovierung oder Bau: Nach Vertragsabschluss mit CAS erhalten Sie 5–15 % der Auftragssumme. Bedingungen schriftlich.",
+ "h1": "Empfehlungsprogramm von CAS Development",
+ "price": "Prämie von 5–15 % der Auftragssumme laut Vertrag",
+ "lead": "Kennen Sie jemanden, der ein Innendesign, eine Renovierung oder einen Hausbau plant? Empfehlen Sie CAS Development: Sobald der Kunde den Vertrag unterschreibt, erhalten Sie eine Prämie von 5–15 % der Auftragssumme laut Vertrag. Die Höhe hängt von Umfang und Art des Projekts ab; die Bedingungen halten wir schriftlich fest.",
+ "cta": "Kunden empfehlen",
+ "form_h2": "Kunden empfehlen",
+ "facts": [
+  [
+   "5–15 %",
+   "der Auftragssumme laut Vertrag"
+  ],
+  [
+   "schriftlich",
+   "halten wir die Bedingungen fest"
+  ],
+  [
+   "150+",
+   "Projekte seit 2016"
+  ],
+  [
+   "12 Monate",
+   "Gewährleistung auf die Arbeiten"
+  ]
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Wer empfehlen kann",
+   "items": [
+    {
+     "h": "Kunden von CAS",
+     "p": "Sie haben mit uns bereits ein Design, eine Renovierung oder ein Haus umgesetzt und wissen, wie wir arbeiten: Erzählen Sie Freunden und Bekannten von uns."
+    },
+    {
+     "h": "Partner",
+     "p": "Lieferanten, Möbel- und Materialhersteller, verwandte Auftragnehmer, die Kunden zu Projektbeginn treffen."
+    },
+    {
+     "h": "Designer und Architekten",
+     "p": "Ihr Kunde sucht ein Team für Renovierung oder Bau nach Ihrem Entwurf: Empfehlen Sie die Umsetzung durch CAS."
+    },
+    {
+     "h": "Immobilienmakler",
+     "p": "Käufer einer Wohnung oder eines Hauses planen oft sofort Design und Renovierung: Sagen Sie ihnen, an wen sie sich wenden können."
+    }
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "So funktioniert es",
+   "items": [
+    [
+     "Sie empfehlen",
+     "Hinterlassen Sie Ihre Nummer im Formular unten und beschreiben Sie kurz, wen Sie empfehlen und was benötigt wird, oder schreiben Sie unserem Manager per Telegram oder Viber."
+    ],
+    [
+     "Wir erfassen die Empfehlung",
+     "Wir rufen Sie zurück, klären die Details und halten die Empfehlung und die Prämienbedingungen schriftlich fest."
+    ],
+    [
+     "Wir arbeiten mit dem Kunden",
+     "Telefonberatung, Aufmaß, Kostenvoranschlag und Vertrag übernimmt unser Team."
+    ],
+    [
+     "Der Kunde unterschreibt",
+     "Die Prämie entsteht, sobald der empfohlene Kunde einen Vertrag mit CAS abgeschlossen hat."
+    ],
+    [
+     "Sie erhalten die Prämie",
+     "5–15 % der Auftragssumme laut Vertrag: Die Höhe hängt von Umfang und Art des Projekts ab. Zeitpunkt und Art der Auszahlung nach Vereinbarung."
+    ]
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Wen Sie empfehlen können",
+   "items": [
+    {
+     "h": "Innendesign",
+     "href": "/de/innenarchitektur",
+     "p": "Wohnungen, Häuser, Büros und Restaurants: Designprojekt ab $30/m², mindestens $2 500."
+    },
+    {
+     "h": "Renovierung schlüsselfertig",
+     "href": "/de/renovierung-schluesselfertig",
+     "p": "Renovierung von Wohnungen und Häusern mit eigenem festangestelltem Team, ab $550/m² für Arbeiten und Rohbaumaterial."
+    },
+    {
+     "h": "Hausbau",
+     "href": "/de/hausbau",
+     "p": "Rohbau ab $600/m², schlüsselfertiges Haus ab $1 100/m²; Holzrahmen-, Modul- und Holzhäuser."
+    },
+    {
+     "h": "Gewerbeflächen",
+     "href": "/de/bueroumbau",
+     "p": "Büros ab $350/m², Restaurants, Hotels und Gewerbe schlüsselfertig."
+    }
+   ]
+  },
+  {
+   "t": "faq",
+   "h2": "Fragen und Antworten",
+   "items": [
+    [
+     "Wie hoch ist die Prämie?",
+     "5–15 % der Auftragssumme des Vertrags, den der empfohlene Kunde abgeschlossen hat. Die Höhe hängt von Umfang und Art des Projekts ab; konkrete Bedingungen halten wir schriftlich fest."
+    ],
+    [
+     "Wann und wie wird die Prämie ausgezahlt?",
+     "Zeitpunkt und Art der Auszahlung nach Vereinbarung: Wir besprechen sie und halten sie zusammen mit den Prämienbedingungen schriftlich fest."
+    ],
+    [
+     "Muss ich Kunde von CAS sein?",
+     "Nein. Empfehlen können Kunden, Partner, Designer, Architekten und Immobilienmakler."
+    ],
+    [
+     "Woher wissen Sie, dass der Kunde von mir kommt?",
+     "Sie senden eine Anfrage über das Formular oder schreiben dem Manager, und wir erfassen die Empfehlung. Der Kunde kann auch Ihren Namen nennen, wenn er sich bei uns meldet."
+    ],
+    [
+     "Muss ich an den Verhandlungen teilnehmen?",
+     "Nein. Die Empfehlung genügt; Beratung, Aufmaß, Kostenvoranschlag und Vertrag übernimmt unser Team."
+    ],
+    [
+     "Wann gibt es keine Prämie?",
+     "Die Prämie ist an den Vertrag gebunden: Schließt der empfohlene Kunde keinen Vertrag mit CAS, entsteht keine Prämie."
+    ]
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Nützliche Seiten",
+   "items": [
+    [
+     "/de/vertrag-gewaehrleistung-zahlung",
+     "Vertrag, Gewährleistung, Zahlung (Mustervertrag)"
+    ],
+    [
+     "/de/portfolio",
+     "Консультація (портфоліо)"
+    ],
+    [
+     "/de/ueber-uns",
+     "Über das Studio"
+    ],
+    [
+     "/de/kontakt",
+     "Kontakt"
+    ],
+    [
+     "/kabinet",
+     "Kundenbereich"
+    ]
+   ]
+  }
+ ]
+}

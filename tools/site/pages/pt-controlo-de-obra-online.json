@@ -1,0 +1,168 @@
+{
+ "slug": "controlo-de-obra-online",
+ "lang": "pt",
+ "service": "Controlo de obra online",
+ "title": "Controlo de obra online: fotos, fases, câmara 24/7 | CAS",
+ "description": "Controlo da obra online na área de cliente da CAS: fases com progresso, fotos a cada 1–2 semanas, autos, calendário de pagamentos. Câmara 24/7 com custo extra.",
+ "h1": "Controlo online da remodelação e da construção",
+ "lead": "A sua obra na área de cliente: fases dos trabalhos com estado e percentagem de execução, relatórios fotográficos a cada 1–2 semanas, contrato, orçamento e autos das fases, calendário de pagamentos. Com custo adicional, instalamos uma câmara 24/7 na obra.",
+ "cta": "Ativar o controlo online",
+ "facts": [
+  [
+   "1–2 semanas",
+   "relatórios fotográficos da obra"
+  ],
+  [
+   "24/7",
+   "câmara, com custo adicional"
+  ],
+  [
+   "12 meses",
+   "de garantia nas obras"
+  ],
+  [
+   "150+",
+   "projetos desde 2016"
+  ]
+ ],
+ "cards": [
+  [
+   "Fases e progresso",
+   [
+    "fases do contrato: demolição, obra bruta, acabamentos, móveis",
+    "estado de cada fase: planeada, em curso, receção, concluída",
+    "percentagem de execução por fase e da obra no total",
+    "próximo passo e data"
+   ]
+  ],
+  [
+   "Relatórios fotográficos a cada 1–2 semanas",
+   [
+    "fotos da obra com data e comentário do encarregado",
+    "cada relatório ligado a uma fase: vê o que foi feito",
+    "todos os relatórios num só feed, sem procurar em mensageiros",
+    "as fotos abrem em ecrã inteiro"
+   ]
+  ],
+  [
+   "Documentos e autos",
+   [
+    "contrato de empreitada e orçamento",
+    "autos de trabalhos executados por fase",
+    "faturas para pagamento",
+    "tudo num só lugar, em qualquer dispositivo"
+   ]
+  ],
+  [
+   "Calendário de pagamentos",
+   [
+    "pagamentos por fase, segundo o contrato",
+    "estado: planeado, a pagar, pago",
+    "esquema à sua medida: 50/50, 50/30/20, 50/40/10, prestações",
+    "os trabalhos começam com um adiantamento a partir de 10%"
+   ]
+  ],
+  [
+   "Câmara 24/7, com custo adicional",
+   [
+    "câmara na obra, transmissão na área de cliente ou numa app",
+    "veja a obra a qualquer momento, sem deslocações",
+    "só o cliente vê o link da transmissão",
+    "preço sob consulta, depende da obra"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Para que serve o controlo online",
+   [
+    "A remodelação e a construção duram semanas e meses, e o cliente vive muitas vezes noutra cidade ou país. O controlo online elimina a necessidade de ir à obra e de perguntar repetidamente: fases, fotos, documentos e pagamentos ficam visíveis na [área de cliente](/kabinet).",
+    "Os dados são atualizados pelo seu gestor: progresso das fases, relatórios fotográficos a cada 1–2 semanas, autos e faturas. Os prazos dos trabalhos ficam no contrato, a partir de 2 semanas, consoante o volume.",
+    "A câmara 24/7 é instalada na obra com custo adicional: quando está ligada, a transmissão abre diretamente na área de cliente. Só o cliente vê o link."
+   ]
+  ]
+ ],
+ "steps": [
+  [
+   "Contrato",
+   "Fixamos as fases, os prazos e o esquema de pagamento; o calendário na área de cliente é construído a partir deles."
+  ],
+  [
+   "Acesso à área de cliente",
+   "Entra com Telegram, Google ou o número de telefone, sem palavras-passe."
+  ],
+  [
+   "Fases e pagamentos",
+   "O gestor introduz as fases do contrato, o calendário de pagamentos e os documentos."
+  ],
+  [
+   "Relatórios fotográficos",
+   "A cada 1–2 semanas, fotos da obra com comentário, ligadas a uma fase."
+  ],
+  [
+   "Câmara 24/7",
+   "Se quiser e com custo adicional: câmara na obra com transmissão na área de cliente."
+  ],
+  [
+   "Entrega da obra",
+   "Autos das fases na área de cliente; garantia de 12 meses nas obras."
+  ]
+ ],
+ "faq": [
+  [
+   "Quanto custa o controlo online?",
+   "As fases, os relatórios fotográficos a cada 1–2 semanas, os documentos e o calendário de pagamentos na área de cliente fazem parte do trabalho da CAS na sua obra. A câmara 24/7 tem custo adicional, preço sob consulta: depende da obra e do equipamento."
+  ],
+  [
+   "Com que frequência aparecem os relatórios fotográficos?",
+   "A cada 1–2 semanas. Cada relatório tem fotos da obra, data e comentário, e está ligado a uma fase dos trabalhos."
+  ],
+  [
+   "Quem mais vê a minha obra?",
+   "Apenas o cliente e os gestores da CAS. A área de cliente abre depois de entrar com Telegram, Google ou o número de telefone; o link da câmara só o cliente o vê."
+  ],
+  [
+   "Como funciona a câmara 24/7?",
+   "Instalamos a câmara na obra e configuramos a transmissão. Se estiver no YouTube com acesso por link, vê-a diretamente na área de cliente; se estiver na cloud da câmara, a área de cliente abre o site ou a app numa nova aba."
+  ],
+  [
+   "E se eu tiver outro esquema de pagamento?",
+   "O calendário na área de cliente é construído a partir do seu contrato: 50/50, 50/30/20, 50/40/10 ou prestações, com início a partir de 10% de adiantamento."
+  ],
+  [
+   "Posso ativar o controlo se a obra já estiver em curso?",
+   "Sim, se os trabalhos forem executados pela CAS: o gestor introduz as fases, os documentos e os pagamentos, e os relatórios fotográficos começam na semana seguinte. Fiscalização técnica de outro empreiteiro: condições e preço caso a caso."
+  ]
+ ],
+ "rel": [
+  [
+   "/pt/remodelacao-apartamentos",
+   "Remodelação de apartamentos chave na mão"
+  ],
+  [
+   "/pt/remodelacao-chave-na-mao",
+   "Remodelação chave na mão"
+  ],
+  [
+   "/pt/construcao-de-moradias",
+   "Construção de moradias"
+  ],
+  [
+   "/pt/remodelacao-escritorios",
+   "Remodelação de escritórios"
+  ],
+  [
+   "/pt/acompanhamento-fiscalizacao-obra",
+   "Acompanhamento e fiscalização de obra"
+  ],
+  [
+   "/pt/empreiteiro-geral",
+   "Empreiteiro geral"
+  ]
+ ],
+ "extra": "<section><div class=\"w\"><h2>Demo da área de cliente: é assim que vê a sua obra online</h2><p class=\"okd-intro\">Os dados são fictícios: é uma «Obra de demonstração». A sua obra real só o cliente a vê, depois de entrar na área de cliente com Telegram, Google ou o número de telefone.</p><div class=\"okd\"><div class=\"okd-bar\" aria-hidden=\"true\"><span class=\"okd-dots\"><i></i><i></i><i></i></span><span class=\"okd-url\">cas-develop.com/kabinet/obiekt</span><span class=\"okd-badge\">DEMO</span></div><div class=\"okd-head\"><p class=\"okd-eb\">Remodelação · 86 m²</p><h3>Obra de demonstração: apartamento</h3><div class=\"okd-top\"><div class=\"okd-big\"><small>Execução total</small>54%</div><div class=\"okd-chips\"><span><b>2/5</b> fases concluídas</span><span><b>6</b> relatórios fotográficos</span><span>último: <b>12 out.</b></span><span>câmara: <b>sim</b></span></div></div><div class=\"okd-pb\"><i style=\"width:54%\"></i></div></div><div class=\"okd-tabs\" role=\"tablist\" aria-label=\"Obra de demonstração: apartamento\"><button type=\"button\" role=\"tab\" id=\"okd-t0\" aria-controls=\"okd-p0\" aria-selected=\"true\">Fases</button><button type=\"button\" role=\"tab\" id=\"okd-t1\" aria-controls=\"okd-p1\" aria-selected=\"false\">Fotos</button><button type=\"button\" role=\"tab\" id=\"okd-t2\" aria-controls=\"okd-p2\" aria-selected=\"false\">Documentos</button><button type=\"button\" role=\"tab\" id=\"okd-t3\" aria-controls=\"okd-p3\" aria-selected=\"false\">Pagamentos</button><button type=\"button\" role=\"tab\" id=\"okd-t4\" aria-controls=\"okd-p4\" aria-selected=\"false\">Câmara 24/7</button></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p0\" aria-labelledby=\"okd-t0\"><ol class=\"okd-ul\"><li class=\"done\"><span class=\"okd-d\" aria-hidden=\"true\">✓</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Demolição e preparação</b><span class=\"okd-s ok\">Concluída</span></div><div class=\"okd-pb\"><i style=\"width:100%\"></i></div><div class=\"okd-m\"><span>2 – 13 set. · 100%</span><span>Auto da fase 1 (PDF)</span></div></div></li><li class=\"done\"><span class=\"okd-d\" aria-hidden=\"true\">✓</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Eletricidade e canalização</b><span class=\"okd-s ok\">Concluída</span></div><div class=\"okd-pb\"><i style=\"width:100%\"></i></div><div class=\"okd-m\"><span>16 set. – 4 out. · 100%</span><span>Auto da fase 2 (PDF)</span></div></div></li><li class=\"cur\"><span class=\"okd-d\" aria-hidden=\"true\">3</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Betonilha, reboco, regularização</b><span class=\"okd-s on\">Em curso</span></div><div class=\"okd-pb\"><i style=\"width:70%\"></i></div><div class=\"okd-m\"><span>7 – 31 out. · 70%</span></div></div></li><li class=\"\"><span class=\"okd-d\" aria-hidden=\"true\">4</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Acabamentos</b><span class=\"okd-s \">Planeada</span></div><div class=\"okd-pb\"><i style=\"width:0%\"></i></div><div class=\"okd-m\"><span>novembro · 0%</span></div></div></li><li class=\"\"><span class=\"okd-d\" aria-hidden=\"true\">5</span><div class=\"okd-sb\"><div class=\"okd-sh\"><b>Móveis, eletrodomésticos e decoração</b><span class=\"okd-s \">Planeada</span></div><div class=\"okd-pb\"><i style=\"width:0%\"></i></div><div class=\"okd-m\"><span>dezembro · 0%</span></div></div></li></ol></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p1\" aria-labelledby=\"okd-t1\"><ol class=\"okd-feed\"><li><div class=\"okd-fd\"><b>12 out.</b><small>2026</small></div><div class=\"okd-fb\"><div class=\"okd-sh\"><b>Semana 6: betonilha e reboco</b><span class=\"okd-s\">Betonilha, reboco</span></div><p>Betonilha feita na sala e no quarto, reboco a 70%. Próximo relatório fotográfico dentro de uma semana.</p><div class=\"okd-gal\"><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Foto da obra (ilustração)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M60 104 L40 120 M80 104 L80 120 M100 104 L120 120\" opacity=\".8\"/><rect x=\"70\" y=\"56\" width=\"20\" height=\"30\" opacity=\".6\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Foto da obra (ilustração)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M68 60h24M68 70h24M68 80h24M68 90h24\" opacity=\".8\"/><path d=\"M14 52 L14 104 M24 55 L24 101\" opacity=\".6\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Foto da obra (ilustração)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><rect x=\"70\" y=\"56\" width=\"20\" height=\"26\"/><path d=\"M80 56v26M70 69h20\"/><path d=\"M8 110 L40 98\" opacity=\".7\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Foto da obra (ilustração)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M80 30 v8\"/><path d=\"M72 38 h16 l-4 8 h-8z\"/><path d=\"M80 52 v4 M70 50 l-3 3 M90 50 l3 3\" opacity=\".7\"/></svg></div></div></div></li><li><div class=\"okd-fd\"><b>4 out.</b><small>2026</small></div><div class=\"okd-fb\"><div class=\"okd-sh\"><b>Semana 5: receção da eletricidade</b><span class=\"okd-s\">Eletricidade e canalização</span></div><p>Verificámos as linhas e o quadro e assinámos o auto da fase 2.</p><div class=\"okd-gal\"><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Foto da obra (ilustração)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M80 30 v8\"/><path d=\"M72 38 h16 l-4 8 h-8z\"/><path d=\"M80 52 v4 M70 50 l-3 3 M90 50 l3 3\" opacity=\".7\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Foto da obra (ilustração)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M110 60 h30 v30 h-20\" /><circle cx=\"120\" cy=\"90\" r=\"4\"/><path d=\"M20 70 h22 v24\" opacity=\".8\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Foto da obra (ilustração)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M68 60h24M68 70h24M68 80h24M68 90h24\" opacity=\".8\"/><path d=\"M14 52 L14 104 M24 55 L24 101\" opacity=\".6\"/></svg></div></div></div></li><li><div class=\"okd-fd\"><b>20 set.</b><small>2026</small></div><div class=\"okd-fb\"><div class=\"okd-sh\"><b>Semana 3: redes de canalização</b><span class=\"okd-s\">Eletricidade e canalização</span></div><p>Tubagens novas na casa de banho e na cozinha, ensaio de pressão sem observações.</p><div class=\"okd-gal\"><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Foto da obra (ilustração)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M110 60 h30 v30 h-20\" /><circle cx=\"120\" cy=\"90\" r=\"4\"/><path d=\"M20 70 h22 v24\" opacity=\".8\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Foto da obra (ilustração)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M110 52 L150 40 M110 64 L150 54 M110 76 L150 68 M110 88 L150 82 M122 49 V100 M136 45 V104\" opacity=\".75\"/></svg></div><div class=\"okd-ph\"><svg viewBox=\"0 0 160 120\" role=\"img\" aria-label=\"Foto da obra (ilustração)\"><path d=\"M0 30 L60 46 L60 104 L0 120 M160 30 L100 46 L100 104 L160 120 M60 46 L100 46 M60 104 L100 104\" opacity=\".55\"/><path d=\"M110 60 h30 v30 h-20\" /><circle cx=\"120\" cy=\"90\" r=\"4\"/><path d=\"M20 70 h22 v24\" opacity=\".8\"/></svg></div></div></div></li></ol></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p2\" aria-labelledby=\"okd-t2\"><ul class=\"okd-docs\"><li><i>DOC</i><span><b>Contrato de empreitada</b><small>fases, prazos e esquema de pagamento</small></span></li><li><i>EST</i><span><b>Orçamento</b><small>trabalhos e materiais básicos</small></span></li><li><i>ACT</i><span><b>Auto da fase 1</b><small>Demolição e preparação</small></span></li><li><i>ACT</i><span><b>Auto da fase 2</b><small>Eletricidade e canalização</small></span></li><li><i>INV</i><span><b>Fatura do 2.º pagamento</b><small>após a obra bruta</small></span></li></ul></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p3\" aria-labelledby=\"okd-t3\"><div class=\"okd-tbl\"><table><thead><tr><th>Pagamento</th><th>Fase</th><th class=\"n\">Parte</th><th>Estado</th></tr></thead><tbody><tr><td><b>Adiantamento</b></td><td>Início dos trabalhos</td><td class=\"n\">50%</td><td><span class=\"okd-s ok\">Pago</span></td></tr><tr><td><b>Após a obra bruta</b></td><td>Betonilha, reboco</td><td class=\"n\">30%</td><td><span class=\"okd-s on\">A pagar</span></td></tr><tr><td><b>Na conclusão</b></td><td>Móveis e decoração</td><td class=\"n\">20%</td><td><span class=\"okd-s \">Planeada</span></td></tr></tbody></table></div><p class=\"okd-note\">Exemplo de esquema 50/30/20. Definimos o esquema de pagamento à sua medida: 50/50, 50/30/20, 50/40/10 ou prestações, com início a partir de 10% de adiantamento. Na área de cliente vê o seu calendário do contrato.</p></div><div class=\"okd-p\" role=\"tabpanel\" id=\"okd-p4\" aria-labelledby=\"okd-t4\"><div class=\"okd-cam\"><svg viewBox=\"0 0 320 180\" role=\"img\" aria-label=\"Ilustração de uma imagem da câmara na obra\" fill=\"none\" stroke=\"#BF9148\" stroke-width=\"1.4\" stroke-linecap=\"round\"><rect width=\"320\" height=\"180\" fill=\"#0d0b09\" stroke=\"none\"/><path d=\"M0 40 L110 70 L110 150 L0 180 M320 40 L210 70 L210 150 L320 180 M110 70 H210 M110 150 H210\" opacity=\".5\"/><rect x=\"130\" y=\"84\" width=\"60\" height=\"46\" opacity=\".7\"/><path d=\"M160 84 V130 M130 107 H190\" opacity=\".5\"/><path d=\"M40 150 l20 -40 l20 40 z M230 140 h50 v-24 h-50 z\" opacity=\".55\"/></svg><span class=\"okd-live\">LIVE</span><span class=\"okd-time\" data-okd-time>12:00:00</span></div><p class=\"okd-note\">A câmara na obra tem custo adicional, preço sob consulta. Só o cliente vê a transmissão: na área de cliente ou na app da câmara.</p></div></div><div class=\"okd-cta\"><a class=\"btn main\" href=\"#zayavka\">Ativar o controlo online</a><a class=\"btn\" href=\"/kabinet\">Entrar na área de cliente</a></div></div></section>",
+ "assets": [
+  "assets/onlain-kontrol.v1.css",
+  "assets/onlain-kontrol.v1.js"
+ ]
+}

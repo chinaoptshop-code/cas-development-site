@@ -1,0 +1,162 @@
+{
+ "slug": "referral-programme",
+ "lang": "en",
+ "service": "Referral programme: recommend a client",
+ "title": "CAS referral programme: 5–15% reward per client",
+ "description": "Recommend a client for design, renovation or construction: once they sign a contract with CAS, you get 5–15% of the works amount. Terms agreed in writing.",
+ "h1": "CAS Development referral programme",
+ "price": "Reward of 5–15% of the works amount under the contract",
+ "lead": "Know someone planning interior design, a renovation or building a house? Recommend CAS Development: when the client signs a contract, you receive a reward of 5–15% of the works amount under the contract. The size depends on the scope and type of project; we agree the terms in writing.",
+ "cta": "Recommend a client",
+ "form_h2": "Recommend a client",
+ "facts": [
+  [
+   "5–15%",
+   "of the works amount under the contract"
+  ],
+  [
+   "in writing",
+   "we fix the reward terms"
+  ],
+  [
+   "150+",
+   "projects since 2016"
+  ],
+  [
+   "12 months",
+   "warranty on works"
+  ]
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Who can recommend",
+   "items": [
+    {
+     "h": "CAS clients",
+     "p": "You have already done design, a renovation or a house with us and know how we work: tell your friends and acquaintances about us."
+    },
+    {
+     "h": "Partners",
+     "p": "Suppliers, furniture and material manufacturers, related contractors who meet clients at the start of a project."
+    },
+    {
+     "h": "Designers and architects",
+     "p": "Your client is looking for a team to carry out a renovation or construction to your design: recommend CAS for the implementation."
+    },
+    {
+     "h": "Estate agents",
+     "p": "Buyers of a new apartment or house often plan design and renovation straight away: tell them who to contact."
+    }
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "How it works",
+   "items": [
+    [
+     "You recommend",
+     "Leave your number in the form below and briefly describe who you are recommending and what they need, or message our manager on Telegram or Viber."
+    ],
+    [
+     "We record the referral",
+     "We call you back, clarify the details and record the referral and the reward terms in writing."
+    ],
+    [
+     "We work with the client",
+     "Phone consultation, measurement, estimate and contract are handled by our team."
+    ],
+    [
+     "The client signs a contract",
+     "The reward is due once the recommended client has signed a contract with CAS."
+    ],
+    [
+     "You receive the reward",
+     "5–15% of the works amount under the contract: the size depends on the scope and type of project. Timing and method of payment by agreement."
+    ]
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Who you can recommend",
+   "items": [
+    {
+     "h": "Interior design",
+     "href": "/en/interior-design",
+     "p": "Apartments, houses, offices and restaurants: design project from $30/m², minimum $2,500."
+    },
+    {
+     "h": "Turnkey renovation",
+     "href": "/en/turnkey-renovation",
+     "p": "Apartment and house renovation by our own in-house team, from $550/m² for works and rough materials."
+    },
+    {
+     "h": "House construction",
+     "href": "/en/house-construction",
+     "p": "Shell from $600/m², turnkey house from $1,100/m²; timber-frame, modular, timber houses."
+    },
+    {
+     "h": "Commercial premises",
+     "href": "/en/office-renovation",
+     "p": "Offices from $350/m², restaurants, hotels and turnkey business premises."
+    }
+   ]
+  },
+  {
+   "t": "faq",
+   "h2": "Questions and answers",
+   "items": [
+    [
+     "How big is the reward?",
+     "5–15% of the works amount under the contract signed by the recommended client. The size depends on the scope and type of project; specific terms are agreed in writing."
+    ],
+    [
+     "When and how is the reward paid?",
+     "Timing and method of payment by agreement: we discuss them and record them in writing together with the reward terms."
+    ],
+    [
+     "Do I need to be a CAS client?",
+     "No. Clients, partners, designers, architects and estate agents can all recommend."
+    ],
+    [
+     "How will you know the client came from me?",
+     "You leave a request in the form or message our manager, and we record the referral. The client can also mention your name when contacting us."
+    ],
+    [
+     "Do I need to take part in negotiations?",
+     "No. A recommendation is enough; the consultation, measurement, estimate and contract are handled by our team."
+    ],
+    [
+     "When is no reward paid?",
+     "The reward is tied to the contract: if the recommended client does not sign a contract with CAS, no reward is due."
+    ]
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Useful pages",
+   "items": [
+    [
+     "/en/contract-warranty-payment",
+     "Contract, warranty, payment (sample contract)"
+    ],
+    [
+     "/en/portfolio",
+     "Консультація (портфоліо)"
+    ],
+    [
+     "/en/about",
+     "About the studio"
+    ],
+    [
+     "/en/contact",
+     "Contact"
+    ],
+    [
+     "/kabinet",
+     "Client portal"
+    ]
+   ]
+  }
+ ]
+}

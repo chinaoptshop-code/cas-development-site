@@ -1,0 +1,162 @@
+{
+ "slug": "program-polecen",
+ "lang": "pl",
+ "service": "Program poleceń: polecenie klienta",
+ "title": "Program poleceń CAS: 5–15% nagrody za klienta",
+ "description": "Poleć klienta na projekt wnętrza, remont lub budowę: po podpisaniu umowy z CAS otrzymasz 5–15% wartości prac. Warunki ustalamy na piśmie.",
+ "h1": "Program poleceń CAS Development",
+ "price": "Nagroda 5–15% wartości prac z umowy",
+ "lead": "Znasz kogoś, kto planuje projekt wnętrza, remont lub budowę domu? Poleć CAS Development: gdy klient podpisze umowę, otrzymasz nagrodę w wysokości 5–15% wartości prac z umowy. Wysokość zależy od zakresu i rodzaju projektu; warunki ustalamy na piśmie.",
+ "cta": "Poleć klienta",
+ "form_h2": "Poleć klienta",
+ "facts": [
+  [
+   "5–15%",
+   "wartości prac z umowy"
+  ],
+  [
+   "na piśmie",
+   "ustalamy warunki nagrody"
+  ],
+  [
+   "150+",
+   "projektów od 2016 roku"
+  ],
+  [
+   "12 mies.",
+   "gwarancja na prace"
+  ]
+ ],
+ "sections": [
+  {
+   "t": "cards",
+   "h2": "Kto może polecać",
+   "items": [
+    {
+     "h": "Klienci CAS",
+     "p": "Zrealizowałeś już z nami projekt, remont lub dom i wiesz, jak pracujemy: opowiedz o nas znajomym."
+    },
+    {
+     "h": "Partnerzy",
+     "p": "Dostawcy, producenci mebli i materiałów, wykonawcy z pokrewnych branż, którzy poznają klientów na starcie projektu."
+    },
+    {
+     "h": "Projektanci i architekci",
+     "p": "Twój klient szuka ekipy do remontu lub budowy według Twojego projektu: poleć realizację w CAS."
+    },
+    {
+     "h": "Pośrednicy nieruchomości",
+     "p": "Kupujący mieszkanie lub dom często od razu planuje projekt i remont: podpowiedz, do kogo się zwrócić."
+    }
+   ]
+  },
+  {
+   "t": "steps",
+   "h2": "Jak to działa",
+   "items": [
+    [
+     "Polecasz",
+     "Zostaw swój numer w formularzu poniżej i krótko opisz, kogo polecasz i czego potrzebuje, albo napisz do naszego opiekuna na Telegramie lub Viberze."
+    ],
+    [
+     "Rejestrujemy polecenie",
+     "Oddzwonimy, doprecyzujemy szczegóły i zapiszemy polecenie oraz warunki nagrody na piśmie."
+    ],
+    [
+     "Pracujemy z klientem",
+     "Konsultację telefoniczną, pomiar, kosztorys i umowę prowadzi nasz zespół."
+    ],
+    [
+     "Klient podpisuje umowę",
+     "Nagroda należy się, gdy polecony klient podpisze umowę z CAS."
+    ],
+    [
+     "Otrzymujesz nagrodę",
+     "5–15% wartości prac z umowy: wysokość zależy od zakresu i rodzaju projektu. Termin i sposób wypłaty według ustaleń."
+    ]
+   ]
+  },
+  {
+   "t": "cards",
+   "h2": "Kogo możesz polecić",
+   "items": [
+    {
+     "h": "Projektowanie wnętrz",
+     "href": "/pl/projektowanie-wnetrz",
+     "p": "Mieszkania, domy, biura i restauracje: projekt od $30/m², minimum $2 500."
+    },
+    {
+     "h": "Remont pod klucz",
+     "href": "/pl/remont-pod-klucz",
+     "p": "Remont mieszkań i domów własną etatową ekipą, od $550/m² za prace i materiały budowlane."
+    },
+    {
+     "h": "Budowa domów",
+     "href": "/pl/budowa-domow",
+     "p": "Stan surowy od $600/m², dom pod klucz od $1 100/m²; szkieletowe, modułowe, z bali."
+    },
+    {
+     "h": "Lokale komercyjne",
+     "href": "/pl/remont-biura",
+     "p": "Biura od $350/m², restauracje, hotele i biznes pod klucz."
+    }
+   ]
+  },
+  {
+   "t": "faq",
+   "h2": "Pytania i odpowiedzi",
+   "items": [
+    [
+     "Ile wynosi nagroda?",
+     "5–15% wartości prac z umowy podpisanej przez poleconego klienta. Wysokość zależy od zakresu i rodzaju projektu; konkretne warunki ustalamy na piśmie."
+    ],
+    [
+     "Kiedy i jak jest wypłacana nagroda?",
+     "Termin i sposób wypłaty według ustaleń: omawiamy je i zapisujemy razem z warunkami nagrody."
+    ],
+    [
+     "Czy trzeba być klientem CAS?",
+     "Nie. Polecać mogą klienci, partnerzy, projektanci, architekci i pośrednicy nieruchomości."
+    ],
+    [
+     "Skąd będziecie wiedzieć, że klient jest ode mnie?",
+     "Zostawiasz zgłoszenie w formularzu lub piszesz do opiekuna, a my rejestrujemy polecenie. Klient może też podać Twoje imię, gdy się z nami skontaktuje."
+    ],
+    [
+     "Czy muszę uczestniczyć w negocjacjach?",
+     "Nie. Wystarczy polecenie; konsultację, pomiar, kosztorys i umowę prowadzi nasz zespół."
+    ],
+    [
+     "Kiedy nagroda nie przysługuje?",
+     "Nagroda jest związana z umową: jeśli polecony klient nie podpisze umowy z CAS, nagroda nie przysługuje."
+    ]
+   ]
+  },
+  {
+   "t": "rel",
+   "h2": "Przydatne strony",
+   "items": [
+    [
+     "/pl/umowa-gwarancja-platnosc",
+     "Umowa, gwarancja, płatność (wzór umowy)"
+    ],
+    [
+     "/pl/portfolio",
+     "Консультація (портфоліо)"
+    ],
+    [
+     "/pl/o-studiu",
+     "O studiu"
+    ],
+    [
+     "/pl/kontakt",
+     "Kontakt"
+    ],
+    [
+     "/kabinet",
+     "Panel klienta"
+    ]
+   ]
+  }
+ ]
+}
