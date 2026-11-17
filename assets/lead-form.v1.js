@@ -265,7 +265,8 @@
         var cfg = cb ? cb.textContent.replace(/^[\s\u2699]+/, '') : '';
         if (cap && cap.textContent && !cap.hidden) cap.textContent.replace(/^≈\s*/, '').split(' · ').forEach(function (x) { if (x && cfg.indexOf(x) < 0 && !/^\d+\s*(?:м²|m²|م²)$/.test(x)) cfg += (cfg ? ' · ' : '') + x; }); // габарити, гараж/тераса — без повторів
         if (!cfg && act) cfg = act.textContent;
-        m.value = g[kind] + (cfg ? ': ' + cfg.trim() : '');
+        var es = slot.getAttribute('data-est') || ''; // орієнтир сцени за тими ж ставками, що калькулятор (build-anim: casCost)
+        m.value = g[kind] + (cfg ? ': ' + cfg.trim() : '') + (es ? ' · ' + es : '');
         var det = m.closest('details'); if (det) det.open = true;
       }
     });

@@ -449,6 +449,29 @@ main :is(p,li,figcaption) a:not(.btn){overflow-wrap:anywhere}
 @media(max-width:767px){html:root{--fs-small:.8125rem}
 html body :is(.btn,.lq-b){font-size:.875rem}}
 html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]),.pmap,#karta,#faq){padding-block:var(--sp-sec)}
+#calc .cg{display:grid;gap:16px;max-width:640px}
+#calc select{width:100%;background:var(--bg2);border:1px solid var(--ln);color:var(--tx);padding:13px 14px;font:inherit;border-radius:6px}
+#calc .cl{display:block;margin-bottom:6px;font-size:var(--fs-small);color:var(--mu)}
+#calc .seg{display:flex;flex-wrap:wrap;gap:6px}
+#calc .seg.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+#calc .seg button{min-height:44px;padding:6px 14px;border-radius:999px;border:1px solid var(--ln);background:none;color:var(--tx);font:inherit;font-size:var(--fs-small);line-height:1.25;cursor:pointer}
+#calc .seg.g2 button{border-radius:12px;text-align:start}
+#calc .seg button small{display:block;opacity:.75}
+#calc .seg button[aria-pressed=true]{background:var(--ac);border-color:var(--ac);color:#140f08}
+#calc .seg button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+#calc .ck{display:flex;gap:10px;align-items:flex-start;color:var(--tx);min-height:44px}
+#calc .ck input{width:auto;margin-top:4px}
+#calc .ck small{color:var(--mu)}
+#calc [hidden]{display:none!important}
+#calc .ar{position:relative}
+#calc .ar input{padding-inline-end:3.2em}
+#calc .ar i{position:absolute;inset-inline-end:14px;bottom:14px;font-style:normal;color:var(--mu);pointer-events:none}
+#calc #cAreaE{margin:6px 0 0;font-size:var(--fs-small);color:var(--mu)}
+#calc .sum{border:1px solid var(--ln);background:var(--bg2);padding:20px;margin-top:2px;border-radius:14px}
+#calc .sum b{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h2);color:var(--ac);display:block;line-height:1.1}
+#calc .sum p{color:var(--mu);margin:8px 0 0;font-size:var(--fs-small)}
+#calc .sum #cPlus{color:var(--tx)}
+#calc .sum ul{list-style:none;margin:12px 0 0;padding:12px 0 0;border-top:1px solid var(--ln);display:grid;gap:6px;font-size:var(--fs-small)}
 @media(min-width:1367px){html:root{font-size:clamp(16px,calc(.5025vw + 9.14px),24px);--cw:clamp(1080px,calc(60vw + 336px),2400px);--sch-h:calc(clamp(64px,4rem,92px) + env(safe-area-inset-top,0px))}
 html body .w,html body .gd-slot,html body .lq-wide,html body .pmap,html body .bz[data-bz-c]>.w{max-width:var(--cw)}
 html:root{--gut:clamp(16px,1.5rem,40px)}
