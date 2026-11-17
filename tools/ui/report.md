@@ -750,11 +750,11 @@
 | es/equipamiento-llave-en-mano.html | land | 44.1 | 13.6 | 13.3 | 0.5 | 6 | 383 |
 | fr/prix-architecture-interieur.html | land | 44.1 | 11.9 | 13.3 | 0.5 | 6 | 450 |
 | pt/design-de-interiores-premium.html | land | 44.1 | 11.9 | 13.3 | 0.5 | 6 | 433 |
-| pt/empreiteiro-geral.html | land | 44.1 | 11.8 | 13.3 | 0.5 | 6 | 441 |
 | es/diseno-interiores-premium.html | land | 44.0 | 11.8 | 13.3 | 0.5 | 6 | 433 |
 | fr/entreprise-generale.html | land | 44.0 | 11.9 | 13.3 | 0.5 | 6 | 436 |
 | pl/koszt-budowy-domu.html | land | 44.0 | 12.4 | 13.3 | 0.5 | 6 | 437 |
 | pl/projektowanie-wnetrz-domu.html | land | 44.0 | 12.4 | 13.3 | 0.5 | 6 | 471 |
+| pt/empreiteiro-geral.html | land | 44.0 | 11.8 | 13.3 | 0.5 | 6 | 441 |
 | de/premium-innenarchitektur.html | land | 43.9 | 12.1 | 13.3 | 0.5 | 6 | 434 |
 | fr/design-bureaux.html | land | 43.9 | 11.9 | 13.3 | 0.5 | 6 | 430 |
 | pl/kompletacja-wnetrz.html | land | 43.9 | 13.9 | 13.3 | 0.5 | 6 | 394 |
@@ -872,7 +872,6 @@
 | es/reforma-integral-piso.html | land | 42.2 | 11.6 | 13.3 | 0.5 | 6 | 412 |
 | fr/maison-ossature-bois.html | land | 42.2 | 11.6 | 13.3 | 0.5 | 6 | 403 |
 | fr/prix-renovation-bureaux.html | land | 42.2 | 11.6 | 13.3 | 0.5 | 6 | 411 |
-| pt/casa-estrutura-madeira.html | land | 42.2 | 11.5 | 13.3 | 0.5 | 6 | 404 |
 | ru/dizayn-i-remont-boyarka.html | land | 42.2 | 11.9 | 13.3 | 0.5 | 6 | 344 |
 | ru/dizayn-i-remont-chernovtsy.html | land | 42.2 | 11.8 | 13.3 | 0.5 | 6 | 341 |
 | ru/dizayn-i-remont-poltava.html | land | 42.2 | 11.8 | 13.3 | 0.5 | 6 | 342 |
@@ -882,6 +881,7 @@
 | ru/dizayn-i-remont-vyshgorod.html | land | 42.2 | 11.8 | 13.3 | 0.5 | 6 | 344 |
 | de/komplettsanierung-wohnung.html | land | 42.1 | 11.8 | 13.3 | 0.5 | 6 | 413 |
 | en/contract-warranty-payment.html | land | 42.1 | 11.2 | 13.3 | 0.5 | 6 | 414 |
+| pt/casa-estrutura-madeira.html | land | 42.1 | 11.5 | 13.3 | 0.5 | 6 | 404 |
 | pt/espacos-comerciais-chave-na-mao.html | land | 42.1 | 12.9 | 13.3 | 0.5 | 6 | 383 |
 | ru/dizayn-i-remont-zhitomir.html | land | 42.1 | 11.7 | 13.3 | 0.5 | 6 | 343 |
 | dyzain-i-remont-ternopil.html | land | 42.0 | 11.7 | 13.3 | 0.5 | 6 | 343 |
