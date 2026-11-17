@@ -16,7 +16,8 @@ export function ipKey(request) {
 export const ipHash = async (request, salt) => hexOf(await sha256(salt + '|' + ipKey(request)));
 
 // Зареєструвати спробу в кошику bucket; true — ліміт перевищено (спробу не записуємо).
-export async function limited(env, request, bucket, limit, windowS = 3600) {
+// peek = true — лише перевірити, не записуючи спробу (бот: вірний ключ після серії невдалих — functions/api/bot/_middleware.js).
+export async function limited(env, request, bucket, limit, windowS = 3600, peek = false) {
   try {
     const now = Math.floor(Date.now() / 1000), key = await ipHash(request, bucket);
     // прибирання: лише старі записи цього кошика — швидко за індексом
@@ -24,6 +25,7 @@ export async function limited(env, request, bucket, limit, windowS = 3600) {
     const r = await env.DB.prepare('SELECT COUNT(*) AS n FROM rate_hits WHERE bucket = ? AND ip_hash = ? AND created_at > ?')
       .bind(bucket, key, now - windowS).first();
     if ((r?.n || 0) >= limit) return true;
+    if (peek) return false;
     await env.DB.prepare('INSERT INTO rate_hits (bucket, ip_hash, created_at) VALUES (?, ?, ?)').bind(bucket, key, now).run();
     return false;
   } catch (e) {

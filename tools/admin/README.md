@@ -181,6 +181,80 @@ GitHub і створіть новий (кроки 2–6).
 вручну й не для старих). Локальна перевірка: `wrangler pages dev` з `.dev.vars` (`TELEGRAM_API_BASE` — адреса мок-сервера
 Bot API, `ALERTS_TEST_CLOCK=1` — дозволяє підміняти час полем `now` у `lead-sla`); у продакшні ці дві змінні не задаються.
 
+## 8а. Партнери і бот пошуку (з 17.11.2026)
+
+Бот пошуку заявок (працює на Mac mini, Telegram-помічник) читає групи й сайти, знаходить людей, яким потрібні ремонт,
+дизайн чи будівництво, і показує їх Михайлу з кнопками **«В CRM»** і **«Не цікаво»**. Тих, хто пише не як клієнт, а як
+підрядник, бригада, постачальник, ріелтор, будівельна компанія чи дизайнер, бот не викидає, а зберігає в базу **«Партнери»**
+для майбутньої співпраці.
+
+**Розділ «Партнери»** у `/kabinet/admin` (бачать власник і менеджер; дизайнер, прораби, бухгалтер — ні):
+
+- список із фільтрами: тип (бригада/підрядник, постачальник, ріелтор, будівельна компанія, дизайнер/архітектор, інше),
+  статус (**новий / цікавий / співпрацюємо / не цікавий**), місто чи область, пошук (імʼя, компанія, @username, телефон, тег, нотатки);
+- картка: імʼя, компанія, тип, місто, публічні контакти (Telegram @username, телефон, сайт), теги, нотатки, статус,
+  «Вперше / востаннє / разів» і список «Де бачили» (група або сайт + посилання на повідомлення);
+- **«+ Партнер»** — додати вручну; **CSV** — вивантаження списку з поточними фільтрами (для Excel / Google Таблиць);
+- кожна зміна й експорт — у журналі аудиту («Новий партнер (база)», «Зміна партнера (база)», «Експорт партнерів»).
+
+Один і той самий партнер не дублюється: якщо збігається Telegram, телефон (у будь-якому форматі), сайт (з `www` чи без)
+або назва компанії (без «ТОВ», «ФОП», лапок) — бот лише оновлює запис: «Разів» +1, дата «востаннє», нове джерело й теги.
+**Статус і нотатки веде менеджер — бот їх ніколи не змінює.** Зберігаються лише публічні контакти з оголошень.
+
+**Заявки з бота** («В CRM») потрапляють у звичайну CRM з джерелом **«Бот пошуку»** (фільтр «Джерело → Бот пошуку»):
+послуга, місто, площа, бюджет, оцінка бота, скор, посилання на повідомлення, уривок тексту, Telegram автора. Та сама
+заявка вдруге не створюється. Сповіщення в Telegram («Взяв у роботу», SLA 15 хв) — лише якщо бот попросив (`notify: true`).
+
+### Ключ бота `LEADBOT_KEY` — як налаштувати (один раз)
+
+1. Згенеруйте довгий випадковий ключ (≥ 32 символи), наприклад на Mac: `openssl rand -hex 32`. Нікуди його не пишіть
+   у репозиторій, чати чи нотатки — лише у два місця нижче.
+2. **Сайт.** GitHub → репозиторій → **Settings → Secrets and variables → Actions → New repository secret**:
+   Name **`SHOP_LEADBOT_KEY`**, Secret — ключ → **Add secret**. Потім **Actions → «🚀 Deploy to Cloudflare Pages» → Run workflow**:
+   деплой сам кладе його в секрети Cloudflare Pages як `LEADBOT_KEY` (як інші ключі сайту).
+   Інший шлях — Cloudflare → **Workers & Pages → cas-development-site → Settings → Variables and Secrets → Add →
+   Type: Secret**, Name `LEADBOT_KEY` (Production) → Save → перевикласти сайт. Якщо задано обидва, при деплої переможе GitHub-секрет.
+3. **Бот (Mac mini).** Ключ — у змінній середовища `LEADBOT_KEY` процесу бота: файл `.env` бота поза репозиторієм
+   (права `chmod 600`) або Keychain / launchd-plist, адреса API — `https://cas-develop.com`. Бот шле його в заголовку
+   `X-Bot-Key` з кожним запитом.
+4. Перевірка: `curl -s -H "X-Bot-Key: $LEADBOT_KEY" "https://cas-develop.com/api/bot/feedback?limit=1"` → `{"items":[…]}`.
+   `401` — ключ не той; `503` — сайт ще не отримав ключ (крок 2) або ключ коротший за 24 символи.
+5. Зміна ключа (витік, новий Mac): новий ключ у кроках 2–3; старий перестає працювати після деплою.
+
+Захист: без ключа або з невірним — `401`; після 20 невдалих спроб з однієї адреси за годину — `429` (навіть з вірним ключем
+до кінця години); з вірним ключем — до 1200 запитів на годину. Ключ порівнюється рівночасово (за часом відповіді не вгадати).
+Будь-яке поле з HTML (`<тег>`, `&lt;`…) → `400`; довгі тексти обрізаються; телефони, @username і посилання перевіряються.
+
+### API бота (сервер → сервер, JSON, заголовок `X-Bot-Key`)
+
+```
+POST /api/bot/partners      {"name":"Бригада Петра","company":null,"type":"crew","city":"Київ","tg":"@petro_crew",
+                             "phone":"067 111 22 33","site":"https://example.com","source_name":"Ремонт Київ (група)",
+                             "source_url":"https://t.me/remont_kyiv/123","tags":["плитка"]}
+                            → {"ok":true,"id":12,"created":true,"times_seen":1}
+                            пакетом: {"items":[…до 50…]} → {"ok":true,"results":[{id,created,times_seen} | {error}]}
+                            type: crew | supplier | realtor | builder | designer | other
+POST /api/bot/leads         {"hash":"tg-remont_kyiv-555","service":"Ремонт квартири","city":"Київ","area":"75 м²",
+                             "budget":"$40 000","estimate":"від $41 250","score":87,"source_name":"Ремонт Київ",
+                             "source_url":"https://t.me/remont_kyiv/555","text":"Шукаю бригаду…",
+                             "author":{"name":"Андрій","tg":"@andrii","phone":null},"notify":false}
+                            → {"ok":true,"id":301,"number":"LD-2611-0042","notified":false}
+                            повтор hash → {"ok":true,"duplicate":true,"id":301,"number":"LD-2611-0042"}
+                            обовʼязково: service або text; author.tg / author.phone або source_url
+POST /api/bot/feedback      {"hash":"tg-remont_kyiv-556","reason":"реклама підрядника","verdict":"not_interested"}
+                            → {"ok":true,"hash":"…"}  (verdict: not_interested | interesting | spam; повтор hash оновлює)
+GET  /api/bot/feedback?since=2026-11-17T00:00:00Z&limit=500
+                            → {"items":[{hash,verdict,reason,created_at,updated_at}],"next":"2026-11-17 09:12:44","more":false}
+                            next — передати як since наступного разу (since: РРРР-ММ-ДД, «РРРР-ММ-ДД HH:MM:SS» UTC або ISO)
+```
+
+**Для розробника:** міграція `migrations/0013_partners.sql` (`partners`, `bot_feedback`, `orders.ext_hash`, `orders.contact_tg`;
+номер 0013, бо 0012 — гілка `mac/crm-projects`); перевірка полів, дедуплікація, CSV — `functions/_partners.js`; ключ і ліміти —
+`functions/api/bot/_middleware.js`; обробники — `functions/api/bot/{partners,leads,feedback}.js`; адмінка —
+`functions/api/admin/partners.js` (право `partners.base` у `functions/_roles.js`), інтерфейс — `RENDER.partners` в
+`assets/admin/cms.v1.js`; CRM: `?source=finder` / `?place=finder` (`functions/api/admin/crm.js`). Тести: `tools/tests/partners.mjs`
+(запускає `node tools/tests/run.mjs`) і `node tools/tests/ui.mjs` («owner-partners», «owner-crm-finder»).
+
 ## 9. Для розробника
 
 - API: `functions/api/admin/repo.js` (GitHub, білий список шляхів — `functions/_gh.js`), `crm.js`, `projects.js`,

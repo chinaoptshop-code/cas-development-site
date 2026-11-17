@@ -109,6 +109,7 @@
   Заявки й замовлення → D1 + миттєве сповіщення адмінам у Telegram (кнопка «Взяв у роботу», SLA 15 хв, звіт о 20:45) —
   `functions/_alerts.js`, розділ «Сповіщення про заявки» в `tools/admin/README.md`.
   Сторінка-джерело заявки (16.11.2026) — окреме поле `orders.ref_path` (міграція 0011; шле lead-form.v1.js, приймає лише `/шлях` того самого сайту), у CRM — позначка/фільтр/картка/CSV для власника й менеджера; рядок «Перед цим: …» у коментарі лишається (n8n, Telegram); README — розділ 7.
+  «Партнери» і бот пошуку (Михайло 17.11.2026): база підрядників/постачальників/ріелторів… з бота (міграція 0013, право `partners.base` — власник і менеджер), API бота `/api/bot/{partners,leads,feedback}` з ключем `X-Bot-Key` = секрет `LEADBOT_KEY` (GitHub `SHOP_LEADBOT_KEY` → деплой), заявки бота — `source=finder`; README — розділ 8а.
   Деплой сам збирає сайт `tools/build-all.sh` (landing → products → shop → blog → chrome → i18n); `rebuild.yml` комітить згенероване з `[rebuild]`.
 - «Будинок з нуля» / «Ремонт з нуля» (scroll-анімація збірки, префікс класів `bz`, `.ba` — слайдер «до/після»): тексти етапів і пироги шарів — `tools/site/buildanim_data.py`, генератор `tools/site/buildanim.py`
   (сторінки — `PAGES`, у build-all), `assets/build-anim.v1.{js,css}` (вантажить site-chrome.v1.js після першої прокрутки), UI-kit — `/styleguide/#build-anim-sg`;

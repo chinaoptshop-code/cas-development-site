@@ -26,6 +26,7 @@ export const PERMS = {
   'reports.upload': 'Фотозвіти',
   'issues.report': '«Проблема на обʼєкті»',
   'partners.manage': 'Коди партнерів',
+  'partners.base': 'База «Партнери» (підрядники, постачальники з бота пошуку)',
   'cms.edit': 'Редагування сайту',
   'staff.view': 'Список працівників (для призначення)',
   'staff.manage': 'Додавати й деактивувати працівників, ролі',
@@ -40,7 +41,7 @@ export const ROLES = {
   owner: { label: 'Власник', home: '/kabinet/admin', perms: ALL },
   manager: { label: 'Менеджер', home: '/kabinet/team', perms: ['panel.admin', 'leads.view_all', 'leads.edit', 'leads.assign', 'orders.view', 'orders.edit',
     'clients.view', 'clients.contacts', 'finance.view', 'finance.edit', 'projects.view_all', 'projects.edit', 'projects.edit_stage',
-    'reports.upload', 'issues.report', 'partners.manage', 'cms.edit', 'staff.view', 'export'] },
+    'reports.upload', 'issues.report', 'partners.manage', 'partners.base', 'cms.edit', 'staff.view', 'export'] },
   designer: { label: 'Дизайнер', home: '/kabinet/team', perms: ['leads.view_assigned', 'leads.edit', ...FIELD] },
   foreman: { label: 'Прораб', home: '/kabinet/team', perms: FIELD },
   furniture: { label: 'Мебляр', home: '/kabinet/team', perms: FIELD },
@@ -160,7 +161,7 @@ export function orderScope(x, args, alias = 'o') {
 
 // ===== Field-level =====
 const MONEY_O = ['amount', 'total', 'discount', 'discount_pct', 'payment', 'paid', 'promo', 'currency'];
-const CONTACT_O = ['phone', 'email', 'username', 'company'];
+const CONTACT_O = ['phone', 'email', 'username', 'company', 'contact_tg'];
 export function shapeOrder(o, x) {
   const r = { ...o };
   if (!x.can('finance.view')) {
