@@ -39,3 +39,5 @@ ul.chk li::before{content:'';position:absolute;inset-inline-start:0;top:.25em;wi
 .hero article .bcta p.bcta-a{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:12px}
 .bcta .btn{min-height:44px;display:inline-flex;align-items:center}
 .bcta-2{color:var(--ac,#BF9148);min-height:44px;display:inline-flex;align-items:center}
+/* Рядок теми під «Читайте також» (tools/blog/build.py, hubs.py): тема → послуга → калькулятор; цілі дотику ≥44 px */
+.btp{color:var(--mu);margin-top:12px}.btp a{display:inline-block;min-height:44px;line-height:44px}
