@@ -41,6 +41,7 @@ import chrome  # єдина шапка/футер (tools/site/chrome.py)
 import leadform  # noqa: E402  легка заявка (tools/site/leadform.py)
 sys.path.insert(0, os.path.join(ROOT, 'tools/blog'))
 import light  # noqa: E402  легкий блог: «Коротко», зміст-плитки, згорнуті розділи, пиріг шарів (tools/blog/light.py)
+import hubs  # noqa: E402  теми блогу: розділи індексу, «Читайте також», крихти з темою (tools/blog/hubs.py)
 
 
 def _chrome_apply(s, rel):
@@ -298,8 +299,50 @@ def related_articles(a, arts, n=6):
     pick = [by[s] for s in a.get('related', []) if s in by]
     w = _words(a)
     score = lambda p: (3 * (p.get('service', [''])[0] == a.get('service', [''])[0]) + len(w & _words(p)), p['date'], p['slug'])
-    pick += [p for p in sorted(same, key=score, reverse=True) if p not in pick]
+    ranked = sorted(same, key=score, reverse=True)
+    k = topic_of(a)  # спершу 3–4 статті тієї ж теми (кластер hubs.py), далі — схожі з інших тем
+    pick += [p for p in ranked if p not in pick and topic_of(p) == k][:max(0, 4 - len(pick))]
+    pick += [p for p in ranked if p not in pick]
     return pick[:n]
+
+
+REL = {}  # (lang, slug) → «Читайте також» після balance_related()
+
+
+def balance_related(arts, need=3):
+    """Кожна стаття — щонайменше в need списках «Читайте також» своєї мови (без сиріт): статтю з меншою кількістю
+    ставимо в списки найближчих статей (спершу тієї ж теми) замість останнього пункту, який і так має > need вхідних."""
+    REL.clear()
+    for a in arts: REL[(a['lang'], a['slug'])] = related_articles(a, arts)
+    cnt = {}
+    for lst in REL.values():
+        for p in lst: cnt[(p['lang'], p['slug'])] = cnt.get((p['lang'], p['slug']), 0) + 1
+    for a in sorted(arts, key=lambda x: (cnt.get((x['lang'], x['slug']), 0), x['slug'])):
+        me = (a['lang'], a['slug']); w = _words(a); k = topic_of(a)
+        hosts = sorted((h for h in arts if h['lang'] == a['lang'] and h is not a),
+                       key=lambda h: (topic_of(h) == k, len(w & _words(h)), h['slug']), reverse=True)
+        for h in hosts:
+            if cnt.get(me, 0) >= need: break
+            lst = REL[(h['lang'], h['slug'])]
+            if a in lst: continue
+            out = next((i for i in range(len(lst) - 1, -1, -1) if cnt.get((lst[i]['lang'], lst[i]['slug']), 0) > need), None)
+            if out is None: continue
+            cnt[(lst[out]['lang'], lst[out]['slug'])] -= 1
+            lst.pop(out); lst.insert(min(4, len(lst)), a)
+            cnt[me] = cnt.get(me, 0) + 1
+
+
+_TOPIC = {}
+
+
+def topic_of(a):
+    """Тема статті (hubs.py): переклад — тема uk-оригіналу, щоб пара була в одній темі."""
+    key = (a['lang'], a['slug'])
+    if key not in _TOPIC: _TOPIC[key] = hubs.classify(a, ARTS, group)
+    return _TOPIC[key]
+
+
+def topic_url(lang, k): return blog_path(lang) + '#' + hubs.ANCHOR[k]
 
 
 def build_article(a, arts):
@@ -321,6 +364,7 @@ def build_article(a, arts):
     g = group(a, arts)
     if len(g) > 1:
         s = s.replace('<link rel="canonical"', i18n.alt_links({l: '/' + path_of(x)[:-5] for l, x in g.items()}) + '<link rel="canonical"', 1)
+    tk = topic_of(a)
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Article", "headline": a['title'], "description": a['description'], "datePublished": a['date'], "dateModified": a.get('modified', a['date']),
          "author": {"@type": "Organization", "name": "CAS Development", "url": B}, "publisher": {"@type": "Organization", "@id": B + "#business", "name": "CAS Development", "url": B, "logo": B + "apple-touch-icon.png"},
@@ -328,16 +372,24 @@ def build_article(a, arts):
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": t['home'], "item": B + t['home_url'].lstrip('/')},
             {"@type": "ListItem", "position": 2, "name": t['blog'], "item": B + t['blog_url'].lstrip('/')},
-            {"@type": "ListItem", "position": 3, "name": a['title'], "item": url}]},
+            {"@type": "ListItem", "position": 3, "name": hubs.label(lang, tk), "item": B + topic_url(lang, tk).lstrip('/')},
+            {"@type": "ListItem", "position": 4, "name": a['title'], "item": url}]},
         {"@type": "FAQPage", "inLanguage": i18n.meta(lang)['hreflang'], "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in a['faq']]}]}
     s = re.sub(r'<script type="application/ld\+json">.*?</script>', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>', s, count=1, flags=re.S)
     s = re.sub(r'<div class="w crumbs">.*?</div>',
-               f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / <a href="{t["blog_url"]}">{t["blog"]}</a> / {esc(a["title"])}</div>', s, count=1, flags=re.S)
-    same = related_articles(a, arts)
+               f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / <a href="{t["blog_url"]}">{t["blog"]}</a> / <a href="{topic_url(lang, tk)}">{esc(hubs.label(lang, tk))}</a> / {esc(a["title"])}</div>', s, count=1, flags=re.S)
+    same = REL.get((a['lang'], a['slug'])) or related_articles(a, arts)
     links = ''.join(f'<li><a href="/{path_of(p)[:-5]}">{esc(p["title"])}</a></li>' for p in same)
     if lang == 'uk':
         links += ''.join(f'<li><a href="/blog/{x["slug"]}">{esc(x["title"])}</a></li>' for x in legacy_uk()[:max(0, 6 - len(same))] if x['slug'] != a['slug'])
     svc_url, svc_label = a['service']
+    svc_short = re.sub(r'\s+(?:від|от|from|od)\s+\$.*$', '', svc_label)
+    hu = hubs.ui(lang)  # рядок теми під «Читайте також»: усі статті теми · послуга статті · калькулятор
+    tline = [f'<a href="{topic_url(lang, tk)}">{esc(hu["topic"])}: {esc(hubs.label(lang, tk))}</a>',
+             f'<a href="{svc_url}">{esc(svc_short)}</a>']
+    cl = (hubs.LINKS.get(lang) or {}).get(tk)
+    if cl and cl[0] != svc_url and light._exists(cl[0]): tline.append(f'<a href="{cl[0]}">{esc(cl[1])}</a>')
+    if hubs.CALC.get(lang) and hubs.CALC[lang] != svc_url: tline.append(f'<a href="{hubs.CALC[lang]}">{esc(hu["calc"])}</a>')
     art = f'''
   <h1 style="font-size:var(--fs-h1)">{esc(a["title"])}</h1>
   <p class="date">CAS Development · <time datetime="{a["date"]}">{fmt_date(a["date"], lang)}</time></p>
@@ -347,6 +399,7 @@ def build_article(a, arts):
   <h2>{t["faq"]}</h2>
   {''.join(f'<details><summary>{esc(q)}</summary><p>{esc(ans)}</p></details>' for q, ans in a["faq"])}
   <h2>{t["more"]}</h2><ul>{links}</ul>
+  <p class="btp">{' · '.join(tline)}</p>
 '''
     if light.CSS not in s:  # стилі легкого блогу (блокують рендер — без стрибків макета)
         s = s.replace('<link rel="canonical"', f'<link rel="stylesheet" href="/{light.CSS}?v={chrome._ver("/" + light.CSS)}">\n<link rel="canonical"', 1)
@@ -413,6 +466,32 @@ HUB_SVC = {
 }
 
 
+# індекс блогу за темами (hubs.py): рядок тем-якорів, далі розділ кожної теми — посилання на послугу теми й калькулятор + картки статей
+TOPICS_CSS = ('<style id="bt-css">.btags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}'
+              '.btags a{display:inline-flex;align-items:center;gap:.4em;min-height:44px;padding:0 1em;border:1px solid var(--ln);border-radius:999px;'
+              'background:var(--bg2);color:inherit;text-decoration:none;font-size:var(--fs-small)}.btags a:hover{border-color:var(--ac)}'
+              '.btags small{color:var(--mu);font-size:inherit}.bt-l{margin:0 0 16px;color:var(--mu)}.bt-l a{display:inline-block;padding:.6em 0}'
+              '.cards h3{font-size:var(--fs-h3);margin:0 0 8px}[id^="t-"]{scroll-margin-top:5rem}</style>')
+
+
+def topics_block(lang, items, pre):
+    hu = hubs.ui(lang)
+    by = {}
+    for x in items: by.setdefault(topic_of(x), []).append(x)
+    ks = [k for k in hubs.ORDER if by.get(k)]
+    o = [f'<!--blog:topics--><section><div class="w"><nav class="btags" aria-label="{esc(hu["nav"])}">'
+         + ''.join(f'<a href="#{hubs.ANCHOR[k]}">{esc(hubs.label(lang, k))} <small>{len(by[k])}</small></a>' for k in ks) + '</nav></div></section>']
+    for k in ks:
+        links = []
+        cl = (hubs.LINKS.get(lang) or {}).get(k)
+        if cl and light._exists(cl[0]): links.append(f'<a href="{cl[0]}">{esc(cl[1])} →</a>')
+        if hubs.CALC.get(lang) and light._exists(hubs.CALC[lang]): links.append(f'<a href="{hubs.CALC[lang]}">{esc(hu["calc"])} →</a>')
+        cards = ''.join(f'<a href="{pre}{x["slug"]}"><h3>{esc(x["title"])}</h3><p>{esc(x["description"])}</p></a>' for x in by[k])
+        o.append(f'<section id="{hubs.ANCHOR[k]}"><div class="w"><h2>{esc(hubs.label(lang, k))}</h2>'
+                 + (f'<p class="bt-l">{" · ".join(links)}</p>' if links else '') + f'<div class="cards">{cards}</div></div></section>')
+    return '\n'.join(o) + '<!--/blog:topics-->'
+
+
 def build_index(lang, items, langs):
     """Індекс блогу мови; langs — мови, у яких є індекс (для hreflang)."""
     t = L[lang]
@@ -437,47 +516,67 @@ def build_index(lang, items, langs):
     s = re.sub(r'<script type="application/ld\+json">.*?</script>', '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False, separators=(',', ':')) + '</script>', s, count=1, flags=re.S)
     s = re.sub(r'<div class="w crumbs">.*?</div>', f'<div class="w crumbs"><a href="{t["home_url"]}">{t["home"]}</a> / {t["blog"]}</div>', s, count=1, flags=re.S)
     s = re.sub(r'<div class="w hero"(?: data-x[ghpd])*><h1>.*?</div>', f'<div class="w hero"><h1>{t["blog_h1"]}</h1><p>{t["blog_lead"]}</p></div>', s, count=1, flags=re.S)
-    cards = ''.join(f'<a href="{pre}{x["slug"]}"><h2>{esc(x["title"])}</h2><p>{esc(x["description"])}</p></a>' for x in items)
-    s = re.sub(r'<div class="cards">.*?</div></div></section>', f'<div class="cards">{cards}</div></div></section>', s, count=1, flags=re.S)
+    blk = topics_block(lang, items, pre)
+    if '<!--blog:topics-->' in s:
+        s = re.sub(r'<!--blog:topics-->.*?<!--/blog:topics-->', lambda _: blk, s, count=1, flags=re.S)
+    else:  # перший запуск: старий список карток без тем
+        s = re.sub(r'<section><div class="w"><div class="cards">.*?</div></div></section>', lambda _: blk, s, count=1, flags=re.S)
+    s = re.sub(r'<style id="bt-css">.*?</style>', '', s, flags=re.S).replace('</head>', TOPICS_CSS + '\n</head>', 1)
     # хаб блогу → лендинги послуг (перелінковка: анкори з ключами); шаблон — сам uk-індекс, тож спершу прибираємо старий блок
     s = re.sub(r'<!--blog:svc-->.*?<!--/blog:svc-->', '', s, flags=re.S)
     if HUB_SVC.get(lang):
         h, links = HUB_SVC[lang]
         blk = (f'<!--blog:svc--><section><div class="w"><h2>{esc(h)}</h2><p>'
                + ' · '.join(f'<a href="{u}">{esc(a)}</a>' for u, a in links) + '</p></div></section><!--/blog:svc-->')
-        s = s.replace(f'<div class="cards">{cards}</div></div></section>', f'<div class="cards">{cards}</div></div></section>' + blk, 1)
+        s = s.replace('<!--/blog:topics-->', '<!--/blog:topics-->' + blk, 1)
     wr(prefix(lang) + 'blog.html', s)
 
 
-def related_blocks(items_by_lang):
-    """Блок «Статті по темі» на сторінках послуг (між маркерами <!--cas:articles-->)."""
-    by_svc = {}
+def related_blocks(items_by_lang, n_show=3):
+    """Блок «Статті по темі» на сторінках послуг (між маркерами <!--cas:articles-->): 3 найрелевантніші статті мови —
+    статті цієї послуги, далі тієї ж теми (тема лендингу — hubs.classify_text за URL + теми, де він головна послуга),
+    далі спільні слова з <title>/description сторінки. Лендинги — послуги статей і головні послуги тем (hubs.LINKS)."""
+    urls = {}
     for lang, items in items_by_lang.items():
-        pre = blog_path(lang) + '/'
         for x in items:
-            u = x['service'][0]
-            if u: by_svc.setdefault(u, []).append((lang, pre + x['slug'], x['title']))
+            if x['service'][0]: urls.setdefault(x['service'][0], lang_of_href(x['service'][0]))
+        for k, (u, _) in (hubs.LINKS.get(lang) or {}).items(): urls.setdefault(u, lang)
     n = 0
-    for u, lst in by_svc.items():
+    for u, lang in sorted(urls.items()):
         f = u.lstrip('/') + '.html'
-        if not os.path.exists(os.path.join(ROOT, f)): continue
+        if not os.path.exists(os.path.join(ROOT, f)) or lang not in L or lang not in items_by_lang: continue
         s = rd(f)
-        lang = lang_of_href(u)
-        if lang not in L: continue
-        mine = [x for x in lst if x[0] == lang][:6]
+        ks = {hubs.classify_text(u)} | {k for k, (h, _) in (hubs.LINKS.get(lang) or {}).items() if h == u}
+        tm = re.search(r'<title>(.*?)</title>', s, re.S); dm = re.search(r'<meta name="description" content="([^"]*)"', s)
+        w = _words({'title': html.unescape(tm.group(1)) if tm else '', 'description': html.unescape(dm.group(1)) if dm else ''})
+        def score(x):
+            return (10 * (x['service'][0] == u) + 4 * (topic_of(x) in ks) + 2 * min(len(w & _words(x)), 4), x['date'], x['slug'])
+        # релевантні: ця послуга або тема лендингу; інші — лише з ≥ 4 спільними словами (не «дизайн»/«проєкт» самі по собі)
+        cand = [x for x in sorted(items_by_lang[lang], key=score, reverse=True)
+                if x['service'][0] == u or topic_of(x) in ks or len(w & _words(x)) >= 4]
+        if not any(x['service'][0] == u or topic_of(x) in ks for x in cand): continue  # теми немає цією мовою — блок не ставимо
+        mine = cand[:n_show]
         if not mine: continue
+        pre = blog_path(lang) + '/'
         block = (f'<!--cas:articles--><section><div class="w"><h2>{L[lang]["rel_h"]}</h2><div class="rel arts">'
-                 + ''.join(f'<a href="{h}">{esc(tt)}</a>' for _, h, tt in mine) + '</div></div></section><!--/cas:articles-->\n')
+                 + ''.join(f'<a href="{pre}{x["slug"]}">{esc(x["title"])}</a>' for x in mine) + '</div></div></section><!--/cas:articles-->\n')
         if '<!--cas:articles-->' in s:
-            s = re.sub(r'<!--cas:articles-->.*?<!--/cas:articles-->\n?', block, s, count=1, flags=re.S)
+            s = re.sub(r'<!--cas:articles-->.*?<!--/cas:articles-->\n?', lambda _: block, s, count=1, flags=re.S)
         else:
             rel = ['Інші послуги', 'Другие услуги'] + [(i18n.ui(l) or {}).get('landing', {}).get('rel', '') for l in i18n.LANGS]
             anchor = (re.search(r'<section><div class="w"(?: data-c="\w")?>\s*<h2(?: data-i="\w+")?>(' + '|'.join(re.escape(x) for x in rel if x) + r')</h2>', s)
                       or re.search(r'<section id="zayavka">', s))
             if not anchor: continue
             s = s[:anchor.start()] + block + s[anchor.start():]
-        wr(f, s); n += 1
+        s0 = rd(f)
+        wr(f, s)
+        if '<!--cas:articles-->' not in s0 and os.path.getsize(os.path.join(ROOT, f)) > BUDGET_LAND:  # новий блок не має вивести лендинг за бюджет HTML (ui.py)
+            open(os.path.join(ROOT, f), 'w', encoding='utf-8').write(s0); continue
+        n += 1
     return n
+
+
+BUDGET_LAND = 64 * 1024 - 3072  # tools/ui/ui.py BUDGET html_kb land; запас 3 КБ — наступні кроки build-all (ux, сцени) ще додають розмітку
 
 
 def og_images(arts):
@@ -524,6 +623,7 @@ def main():
           for l in i18n.LANGS if l in L}
     by = {l: v for l, v in by.items() if v}
     # спершу індекси: перемикач мов статті без перекладу веде на індекс блогу тієї мови (chrome.apply)
+    balance_related(arts)
     for l, items in by.items(): build_index(l, items, list(by))
     for a in arts: build_article(a, arts)
     n = related_blocks(by)
