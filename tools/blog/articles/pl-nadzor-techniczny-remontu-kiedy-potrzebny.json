@@ -1,0 +1,265 @@
+{
+ "slug": "nadzor-techniczny-remontu-kiedy-potrzebny",
+ "lang": "pl",
+ "translation_of": "tekhnichnyi-nahliad-za-remontom-koly-potriben",
+ "title": "Nadzór techniczny nad remontem mieszkania: kiedy jest potrzebny i co sprawdza",
+ "seo_title": "Nadzór techniczny nad remontem: kiedy i po co",
+ "description": "Nadzór techniczny nad remontem mieszkania: co sprawdza, odbiór robót zakrytych, czym różni się od nadzoru autorskiego i kiedy się opłaca.",
+ "lead": "Nadzór techniczny nad remontem jest potrzebny, gdy nie możesz codziennie bywać na budowie albo nie masz pewności, czy ocenisz jakość robót zakrytych. Jego zadanie to wychwycić błąd, póki jego naprawa jest tania. Wyjaśniamy, co sprawdza nadzór, kiedy ma sens i jak go zorganizować.",
+ "date": "2026-11-01",
+ "service": [
+  "/pl/nadzor-autorski-i-techniczny",
+  "Nadzór autorski i techniczny"
+ ],
+ "photo": "img/p/1co4thni1Q8_1J-900.webp",
+ "photo_alt": "Salon z kominkiem — Petrivtsi House, projekt CAS Development",
+ "body": [
+  [
+   "h2",
+   "Czym jest nadzór techniczny"
+  ],
+  [
+   "p",
+   "Nadzór techniczny to niezależna kontrola wykonania robót budowlanych: czy są zgodne z projektem, technologią producentów materiałów i umową. Inspektor nie buduje i nie kieruje ekipą. Patrzy na budowę oczami inwestora, ale z wiedzą fachowca: co dokładnie ma być zrobione, jak to sprawdzić i do czego prowadzi odstępstwo."
+  ],
+  [
+   "p",
+   "Najcenniejsza część pracy to roboty zakryte. Elektryka, hydraulika, hydroizolacja, wylewka, zbrojenie i ocieplenie po zakryciu stają się niewidoczne. Przeoczona wada wychodzi dopiero wtedy, gdy się ujawni — przeciekiem, pęknięciem, wybijającym bezpiecznikiem. Naprawa oznacza wtedy demontaż gotowych wykończeń."
+  ],
+  [
+   "h3",
+   "Czego nadzór techniczny nie robi"
+  ],
+  [
+   "ul",
+   [
+    "nie kieruje ekipą i nie planuje codziennej pracy — to zadanie kierownika robót",
+    "nie kupuje materiałów i nie odpowiada za dostawy",
+    "nie zmienia projektu — odstępstwa uzgadnia się z autorem projektu i inwestorem",
+    "nie zastępuje gwarancji wykonawcy: odpowiedzialność za roboty zostaje po jego stronie"
+   ]
+  ],
+  [
+   "p",
+   "Znajomość tych granic jest ważna, by nie oczekiwać niemożliwego. Inspektor to twoje oczy i wiedza na budowie, a nie kolejny uczestnik przejmujący odpowiedzialność wykonawcy. Dobry nadzór nie kłóci się z ekipą, tylko dokumentuje fakty i proponuje sposób naprawy."
+  ],
+  [
+   "h2",
+   "Czym różni się od nadzoru autorskiego"
+  ],
+  [
+   "p",
+   "Te usługi bywają mylone, choć odpowiadają na różne pytania. Nadzór autorski to kontrola projektanta: czy efekt odpowiada koncepcji, materiałom i detalom. Nadzór techniczny to kontrola inżyniera: czy roboty są wykonane poprawnie technicznie."
+  ],
+  [
+   "ul",
+   [
+    "nadzór autorski sprawdza, czy oprawa wisi tam, gdzie zaplanowano, i czy fuga płytek trafia w oś wnęki",
+    "nadzór techniczny sprawdza, czy instalacja do oprawy jest poprawnie wykonana i czy pod płytkami jest hydroizolacja",
+    "nadzór autorski odpowiada na pytania ekipy dotyczące rysunków i detali",
+    "nadzór techniczny dokumentuje odstępstwa od technologii i wymaga ich usunięcia przed kolejnym etapem"
+   ]
+  ],
+  [
+   "p",
+   "Przy złożonej inwestycji potrzebne są oba. Więcej o roli projektanta na budowie w artykule o [nadzorze autorskim](/pl/blog/nadzor-autorski-projektanta)."
+  ],
+  [
+   "img",
+   "/img/p/1K7ZpZYr2AxAEw-900.webp",
+   "Łazienka z wolnostojącą wanną, szafką z dwiema umywalkami, podświetlanymi wnękami i czarnym grzejnikiem — projekt Petrivtsi House",
+   "Strefy mokre to główny przedmiot kontroli: hydroizolacji pod płytkami już nie widać"
+  ],
+  [
+   "h2",
+   "Kiedy nadzór techniczny jest szczególnie potrzebny"
+  ],
+  [
+   "ul",
+   [
+    "remont prowadzi wykonawca, z którym wcześniej nie współpracowałeś",
+    "nie możesz regularnie bywać na budowie — mieszkasz w innym mieście lub za granicą",
+    "projekt ma złożone instalacje: ogrzewanie podłogowe, wentylację, klimatyzację, smart home",
+    "przenosisz strefy mokre lub robisz łazienkę w nowym miejscu",
+    "budżet jest duży, a błąd w robotach stanu surowego będzie kosztowny",
+    "na budowie pracuje kilku niezależnych wykonawców i nikt nie odpowiada za całość"
+   ]
+  ],
+  [
+   "p",
+   "Jeśli remont prowadzi jeden generalny wykonawca według projektu i z własną kontrolą jakości, potrzeba zewnętrznego nadzoru jest mniejsza — ale i wtedy warto wiedzieć, które roboty sprawdzić samemu lub na podstawie fotorelacji. Na przykład umów się, że przed zakryciem ścian i podłóg dostajesz szczegółowe zdjęcia z miarą i możesz przyjechać, a próby ciśnieniowe rur są opisane w osobnym raporcie."
+  ],
+  [
+   "h2",
+   "Co sprawdza nadzór: lista robót zakrytych"
+  ],
+  [
+   "p",
+   "Poniżej roboty, które najważniej sprawdzić przed zakryciem. Listy można używać także bez inspektora, porównując ją z fotorelacjami wykonawcy."
+  ],
+  [
+   "h3",
+   "Elektryka"
+  ],
+  [
+   "ul",
+   [
+    "trasy kabli zgodne z projektem, położenie udokumentowane zdjęciami z miarą",
+    "przekroje kabli dobrane do obciążenia, osobne obwody dla mocnych urządzeń",
+    "rozdzielnica zmontowana starannie, obwody opisane, są zabezpieczenia",
+    "puszki osadzone na projektowej wysokości i w poziomie"
+   ]
+  ],
+  [
+   "h3",
+   "Hydraulika i strefy mokre"
+  ],
+  [
+   "ul",
+   [
+    "instalacja wody i kanalizacji sprawdzona pod ciśnieniem przed zakryciem",
+    "kanalizacja ma spadki, rewizje zostawione w dostępnych miejscach",
+    "hydroizolacja wywinięta na ściany, narożniki i styki wzmocnione taśmą",
+    "stelaże sztywno zamocowane, wyprowadzenia zgodne z rysunkami"
+   ]
+  ],
+  [
+   "h3",
+   "Podłoża i wykończenie"
+  ],
+  [
+   "ul",
+   [
+    "wylewka równa, bez pęknięć i pustek, wysezonowana przed ułożeniem okładziny",
+    "ściany i narożniki w płaszczyźnie, sprawdzone łatą i poziomicą",
+    "płytki bez pustek pod spodem, fugi równe, układ zgodny z rysunkiem",
+    "drzwi ukryte i fugi cieniowe w jednej płaszczyźnie ze ścianą"
+   ]
+  ],
+  [
+   "h3",
+   "Wentylacja, klimatyzacja i ogrzewanie podłogowe"
+  ],
+  [
+   "ul",
+   [
+    "trasy kanałów i przewodów chłodniczych zgodne z projektem i dostępne serwisowo",
+    "odpływ skroplin klimatyzacji ma spadek i jest wyprowadzony tam, gdzie przewidziano",
+    "pętle ogrzewania ułożone z właściwym rozstawem i sprawdzone przed wylewką",
+    "czujniki i termostaty w miejscach wygodnych w użyciu"
+   ]
+  ],
+  [
+   "gallery",
+   [
+    [
+     "/img/p/1gXiWvuON9L6XT-900.webp",
+     "Pralnia z urządzeniami, grzejnikiem łazienkowym i szafami do sufitu — projekt domu w Petriwcach"
+    ],
+    [
+     "/img/p/1v3Yxy89lz6qSM-900.webp",
+     "Sypialnia w Petrivtsi House z tapicerowanym łóżkiem, jasnymi panelami ściennymi, lampkami nocnymi i ukrytym oświetleniem"
+    ]
+   ]
+  ],
+  [
+   "h2",
+   "Jak nadzór techniczny oszczędza pieniądze"
+  ],
+  [
+   "p",
+   "Nadzór kosztuje, więc warto zapytać, czy się zwraca. Oszczędność nie bierze się z niższej ceny remontu, tylko z mniejszej liczby poprawek — a poprawki zawsze kosztują więcej niż zrobienie dobrze za pierwszym razem."
+  ],
+  [
+   "ul",
+   [
+    "wada hydroizolacji znaleziona przed płytkami to miejscowa naprawa; po — demontaż łazienki",
+    "zła trasa kabla zauważona przed tynkiem to drobna poprawka; po — bruzdy w gotowej ścianie",
+    "nierówna wylewka wykryta przed parkietem to wyrównanie; po — wymiana podłogi",
+    "luźny stelaż znaleziony przed obudową to dokręcenie mocowań; po — rozbiórka zabudowy"
+   ]
+  ],
+  [
+   "p",
+   "Nadzór daje też dokumentację do rozmowy z wykonawcą: protokoły odbioru robót zakrytych, zdjęcia, listę uwag. To ważne zwłaszcza, gdy płatności są powiązane z etapami — płacisz za etap o potwierdzonej jakości. A ekipa, która wie, że roboty zakryte zostaną sprawdzone, po prostu pracuje uważniej."
+  ],
+  [
+   "h2",
+   "Jak zorganizować nadzór techniczny"
+  ],
+  [
+   "ol",
+   [
+    "Uzgodnij listę kluczowych kontroli przed startem robót, według harmonogramu etapów.",
+    "Zapisz w umowie z wykonawcą, że robót zakrytych nie zakrywa się bez kontroli.",
+    "Ustal formę: wizyty na budowie, fotorelacje z wymiarami, protokoły odbioru.",
+    "Prowadź listę uwag z terminami — i sprawdzaj poprawki.",
+    "Powiąż kolejne płatności z usunięciem uwag z poprzedniego etapu."
+   ]
+  ],
+  [
+   "p",
+   "Wizyty wynikają z harmonogramu, nie z kalendarza. Kluczowe momenty to: przed zakryciem elektryki i hydrauliki, przed wylewką, po hydroizolacji stref mokrych, przed płytkami i podłogą, przed montażem mebli na wymiar i przy odbiorze końcowym. Wizyty łatwo połączyć z regularnymi fotorelacjami i [kontrolą budowy online](/pl/kontrola-budowy-online). Warunki umowy i płatności opisujemy na stronie [umowa, gwarancja, płatność](/pl/umowa-gwarancja-platnosc)."
+  ],
+  [
+   "h2",
+   "Nowe budownictwo czy rynek wtórny"
+  ],
+  [
+   "p",
+   "W nowym budynku nadzór często zaczyna się jeszcze przed remontem — od tego, co przekazał deweloper: geometrii ścian i sufitów, wylewki, okien, kanałów wentylacyjnych, instalacji. Wykryte wady najlepiej udokumentować i rozwiązać z deweloperem przed własnymi pracami. Na rynku wtórnym akcent jest inny: stan stropów i ścian po rozbiórce, stare piony, ukryte przecieki, wentylacja. Tu nadzór pomaga w porę zdecydować o dodatkowych pracach i wpisać je do kosztorysu, zanim staną się niespodzianką."
+  ],
+  [
+   "p",
+   "Nadzorem zajmują się inżynierowie budownictwa z doświadczeniem przy remontach. Poproś o przykładowe raporty, ustal sposób dokumentowania uwag i to, jak szybko specjalista przyjedzie na kontrolę poza planem. Inspektor powinien być niezależny od sprawdzanego wykonawcy i raportować bezpośrednio tobie."
+  ],
+  [
+   "h2",
+   "Sygnały ostrzegawcze, że nadzór jest konieczny"
+  ],
+  [
+   "ul",
+   [
+    "wykonawca zakrywa ściany, zanim zobaczyłeś instalację elektryczną",
+    "na pytanie „gdzie hydroizolacja?” słyszysz „jest, proszę się nie martwić”",
+    "fotorelacje są nieregularne lub bez szczegółów",
+    "roboty odbiegają od rysunków, „bo tak prościej”",
+    "ciągle pojawiają się zmiany zakresu bez wyjaśnień"
+   ]
+  ],
+  [
+   "p",
+   "Każdy z tych sygnałów to powód, by się zatrzymać i poprosić o niezależną kontrolę, póki poprawki nie wymagają demontażu."
+  ],
+  [
+   "h2",
+   "Jak pracuje CAS Development"
+  ],
+  [
+   "p",
+   "Jeśli remont według projektu prowadzi CAS, kontrola jakości jest wbudowana w proces: roboty wykonuje własny zespół etatowych pracowników, roboty zakryte są dokumentowane przed zakryciem, fotorelacje przychodzą co 1–2 tygodnie, a [remont mieszkania](/pl/remont-mieszkan) ma 12-miesięczną gwarancję. Jeśli remont prowadzi inny wykonawca, możemy przejąć [nadzór autorski i techniczny](/pl/nadzor-autorski-i-techniczny) — warunki i koszt ustalamy indywidualnie dla obiektu i harmonogramu. Mamy za sobą ponad 150 projektów od 2016 roku. Konsultacja telefoniczna jest bezpłatna."
+  ]
+ ],
+ "faq": [
+  [
+   "Czym jest nadzór techniczny nad remontem?",
+   "To niezależna kontrola zgodności robót z projektem, technologią materiałów i umową. Najważniejsza jest kontrola robót zakrytych przed ich zakryciem."
+  ],
+  [
+   "Czym różni się od nadzoru autorskiego?",
+   "Nadzór autorski pilnuje zgodności z koncepcją projektanta, techniczny — poprawności wykonania od strony inżynierskiej. Przy złożonych inwestycjach przydają się oba."
+  ],
+  [
+   "Ile kosztuje nadzór techniczny w CAS?",
+   "Jeśli remont prowadzi inny wykonawca, warunki i koszt ustalamy indywidualnie — zależnie od obiektu, zakresu robót i harmonogramu wizyt."
+  ],
+  [
+   "Czy nadzór jest potrzebny, gdy remont pod klucz robi jedna firma?",
+   "W mniejszym stopniu, jeśli firma ma własną kontrolę jakości i dokumentuje roboty zakryte. Ale o zdjęcia robót zakrytych przed zakryciem warto prosić zawsze."
+  ],
+  [
+   "Które roboty najważniej sprawdzić?",
+   "Elektrykę, hydraulikę, hydroizolację stref mokrych, wylewkę i geometrię ścian — wszystko, co po wykończeniu stanie się niewidoczne."
+  ]
+ ]
+}

@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 1189 (MAIN 15, LAND 732, інші 365). HTML разом 60788 КБ, з них інлайн CSS 22087 КБ і JS 773 КБ.
+Сторінок: 1189 (MAIN 15, LAND 732, інші 365). HTML разом 60800 КБ, з них інлайн CSS 22087 КБ і JS 773 КБ.
 
 ## Проблеми
 
@@ -42,6 +42,7 @@
 | blog/inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit.html | article | 71.5 | 20.1 | 14.2 | 0.5 | 6 | 496 |
 | blog/remont-i-budivnytstvo-v-yevropi-z-ukrainskoiu-komandoiu.html | article | 70.9 | 19.8 | 14.2 | 0.5 | 6 | 530 |
 | blog/dohovir-na-dyzain-proekt-interieru-shcho-pereviryty.html | article | 69.9 | 19.4 | 14.2 | 0.5 | 6 | 497 |
+| blog/tekhnichnyi-nahliad-za-remontom-koly-potriben.html | article | 65.7 | 18.2 | 14.2 | 0.5 | 6 | 467 |
 | blog/komplektatsiia-interieru-samostiino-chy-z-komplektatorom.html | article | 64.8 | 20.5 | 14.2 | 0.5 | 6 | 458 |
 | about.html | main | 64.7 | 18.1 | 13.3 | 0.5 | 6 | 495 |
 | blog/kamin-shpon-latun-materialy-premium-interieru.html | article | 64.5 | 19.6 | 14.2 | 0.5 | 6 | 442 |
@@ -49,7 +50,6 @@
 | blog/skilky-tryvaie-remont-kvartyry-v-novobudovi.html | article | 63.9 | 18.2 | 14.2 | 0.5 | 6 | 454 |
 | ru/stoimost-remonta-kvartiry-kiev.html | land | 63.9 | 17.2 | 13.7 | 2.5 | 6 | 564 |
 | blog/rekonstruktsiia-chy-novyi-budynok.html | article | 63.7 | 17.5 | 14.2 | 0.5 | 6 | 458 |
-| blog/tekhnichnyi-nahliad-za-remontom-koly-potriben.html | article | 63.7 | 17.9 | 14.2 | 0.5 | 6 | 459 |
 | budivnytstvo-budynkiv-kyiv.html | land | 63.7 | 17.0 | 13.1 | 0.5 | 6 | 572 |
 | remont-ofisu-pid-klyuch-kyiv.html | land | 63.7 | 19.7 | 13.0 | 0.5 | 6 | 507 |
 | vartist-remontu-kvartyry-kyiv.html | land | 63.6 | 17.4 | 13.7 | 2.5 | 6 | 579 |
@@ -576,6 +576,7 @@
 | dyzain-interieru-neoklasyka-kyiv.html | land | 49.8 | 13.1 | 13.3 | 0.5 | 6 | 449 |
 | ru/remont-kommercheskih-pomeshcheniy-kiev.html | land | 49.8 | 12.8 | 13.3 | 0.5 | 6 | 460 |
 | ar/landscape-design.html | land | 49.7 | 13.3 | 13.3 | 1.1 | 6 | 538 |
+| ar/blog.html | other | 49.6 | 12.0 | 14.0 | 0.5 | 7 | 362 |
 | remont-komertsiinykh-prymishchen-kyiv.html | land | 49.6 | 13.0 | 13.1 | 0.5 | 6 | 464 |
 | ru/dogovor-garantiya-oplata.html | land | 49.6 | 13.0 | 13.3 | 0.5 | 6 | 429 |
 | ru/remont-kvartiry-zhk-greenville-na-pecherske.html | land | 49.6 | 13.3 | 13.3 | 0.5 | 6 | 432 |
@@ -601,7 +602,6 @@
 | ru/remont-kvartiry-zhk-edeldorf-hills.html | land | 49.2 | 13.3 | 13.3 | 0.5 | 6 | 432 |
 | ru/remont-kvartiry-zhk-linden-luxury-residences.html | land | 49.2 | 13.3 | 13.3 | 0.5 | 6 | 432 |
 | blog/kompleks-vidpochynku-pid-kliuch-z-choho-skladaietsia-koshtorys.html | article | 49.1 | 13.6 | 14.2 | 0.5 | 6 | 404 |
-| ar/blog.html | other | 49.0 | 11.9 | 14.0 | 0.5 | 7 | 359 |
 | ar/house-construction-cost.html | land | 49.0 | 12.7 | 13.3 | 0.5 | 6 | 433 |
 | pt/design-restaurantes-cafes.html | land | 49.0 | 13.4 | 13.3 | 2.6 | 6 | 473 |
 | remont-taunkhausa-kyiv.html | land | 49.0 | 13.0 | 13.3 | 0.5 | 6 | 430 |
@@ -708,10 +708,10 @@
 | kukhni-i-shafy-na-zamovlennia-kyiv.html | land | 46.3 | 12.7 | 13.3 | 0.5 | 6 | 401 |
 | ru/chernovoy-remont-kvartiry-kiev.html | land | 46.3 | 12.4 | 13.3 | 0.5 | 6 | 404 |
 | ru/kuhni-i-shkafy-na-zakaz-kiev.html | land | 46.3 | 12.7 | 13.3 | 0.5 | 6 | 401 |
+| ar/contract-warranty-payment.html | land | 46.2 | 12.0 | 13.3 | 0.5 | 6 | 410 |
 | ar/premium-renovation.html | land | 46.2 | 12.1 | 13.3 | 0.5 | 6 | 427 |
 | en/office-renovation.html | land | 46.2 | 13.4 | 13.3 | 0.5 | 6 | 432 |
 | ar/business-fit-out.html | land | 46.1 | 13.9 | 13.3 | 0.5 | 6 | 391 |
-| ar/contract-warranty-payment.html | land | 46.1 | 11.9 | 13.3 | 0.5 | 6 | 409 |
 | en/landscape-design.html | land | 46.1 | 12.6 | 13.3 | 0.9 | 6 | 549 |
 | pl/projektowanie-ogrodow.html | land | 46.1 | 13.1 | 13.3 | 0.9 | 6 | 542 |
 | zh/restaurant-design.html | land | 46.1 | 13.8 | 13.3 | 2.3 | 6 | 471 |
@@ -719,12 +719,14 @@
 | ar/faq.html | land | 45.9 | 14.0 | 13.3 | 0.5 | 6 | 345 |
 | zh/house-construction.html | land | 45.9 | 13.9 | 13.3 | 0.5 | 6 | 505 |
 | ar/major-renovation.html | land | 45.8 | 12.1 | 13.3 | 0.5 | 6 | 414 |
+| fr/blog.html | other | 45.7 | 11.4 | 14.0 | 0.5 | 7 | 363 |
 | zh/turnkey-renovation.html | land | 45.7 | 14.0 | 13.3 | 0.5 | 6 | 492 |
 | zh/resort-turnkey.html | land | 45.6 | 13.5 | 13.3 | 2.4 | 6 | 461 |
 | en/interior-design-cost.html | land | 45.5 | 12.3 | 13.7 | 0.5 | 6 | 512 |
 | fr/architecture-interieur-maison.html | land | 45.5 | 12.2 | 13.3 | 0.5 | 6 | 467 |
 | zh/restaurant-fit-out.html | land | 45.5 | 14.0 | 13.3 | 2.3 | 6 | 502 |
 | fr/renovation-appartement.html | land | 45.4 | 12.0 | 13.3 | 0.5 | 6 | 416 |
+| pt/blog.html | other | 45.4 | 11.3 | 14.0 | 0.5 | 7 | 364 |
 | pt/remodelacao-apartamentos.html | land | 45.4 | 11.9 | 13.3 | 0.5 | 6 | 419 |
 | ar/office-renovation-cost.html | land | 45.3 | 11.9 | 13.3 | 0.5 | 6 | 414 |
 | fr/prix-construction-maison.html | land | 45.3 | 12.2 | 13.3 | 0.5 | 6 | 434 |
@@ -737,8 +739,8 @@
 | en/house-interior-design.html | land | 45.1 | 12.1 | 13.3 | 0.5 | 6 | 484 |
 | ar/interior-design.html | land | 45.0 | 11.8 | 13.3 | 0.5 | 6 | 394 |
 | ar/penthouse-design-renovation.html | land | 45.0 | 11.8 | 13.3 | 0.5 | 6 | 400 |
+| es/blog.html | other | 45.0 | 11.3 | 14.0 | 0.5 | 7 | 364 |
 | es/diseno-interiores-casa.html | land | 45.0 | 12.1 | 13.3 | 0.5 | 6 | 469 |
-| fr/blog.html | other | 45.0 | 11.2 | 14.0 | 0.5 | 7 | 360 |
 | pt/equipamento-chave-na-mao.html | land | 45.0 | 13.8 | 13.3 | 0.5 | 6 | 393 |
 | ar/open-space-office-design.html | land | 44.9 | 11.9 | 13.3 | 0.5 | 6 | 409 |
 | dyzain-i-remont-irpin.html | land | 44.9 | 12.8 | 13.3 | 0.5 | 6 | 350 |
@@ -749,15 +751,14 @@
 | ar/aerated-concrete-house.html | land | 44.8 | 11.7 | 13.3 | 0.5 | 6 | 401 |
 | de/wohnungsrenovierung.html | land | 44.8 | 12.0 | 13.3 | 0.5 | 6 | 420 |
 | en/house-construction-cost.html | land | 44.8 | 12.1 | 13.3 | 0.5 | 6 | 447 |
-| pt/blog.html | other | 44.8 | 11.1 | 14.0 | 0.5 | 7 | 361 |
 | ar/office-fit-out.html | land | 44.7 | 11.7 | 13.3 | 0.5 | 6 | 400 |
 | es/equipamiento-llave-en-mano.html | land | 44.7 | 13.8 | 13.3 | 0.5 | 6 | 393 |
 | fr/architecture-interieur-haut-de-gamme.html | land | 44.7 | 12.1 | 13.3 | 0.5 | 6 | 432 |
 | ar/shop-showroom-design.html | land | 44.6 | 11.7 | 13.3 | 0.5 | 6 | 400 |
 | ar/renovation-crew.html | land | 44.5 | 11.5 | 13.3 | 0.5 | 6 | 407 |
+| de/blog.html | other | 44.5 | 11.4 | 14.0 | 0.5 | 7 | 365 |
 | de/hausinterieur.html | land | 44.5 | 12.2 | 13.3 | 0.5 | 6 | 470 |
 | en/general-contractor-kyiv.html | land | 44.5 | 12.0 | 13.3 | 0.5 | 6 | 458 |
-| es/blog.html | other | 44.5 | 11.1 | 14.0 | 0.5 | 7 | 361 |
 | pt/remodelacao-escritorios.html | land | 44.5 | 11.6 | 13.3 | 0.5 | 6 | 418 |
 | zh/landscape-design.html | land | 44.5 | 13.2 | 13.3 | 0.9 | 6 | 537 |
 | de/hausbau-kosten.html | land | 44.4 | 12.3 | 13.3 | 0.5 | 6 | 437 |
@@ -766,7 +767,9 @@
 | ar/bathroom-renovation.html | land | 44.3 | 11.6 | 13.3 | 0.5 | 6 | 403 |
 | fr/prix-architecture-interieur.html | land | 44.3 | 12.0 | 13.3 | 0.5 | 6 | 454 |
 | pt/preco-design-de-interiores.html | land | 44.3 | 11.9 | 13.3 | 0.5 | 6 | 455 |
+| en/blog.html | other | 44.2 | 11.2 | 14.0 | 0.5 | 7 | 367 |
 | fr/entreprise-generale.html | land | 44.2 | 11.9 | 13.3 | 0.5 | 6 | 440 |
+| pl/blog.html | other | 44.2 | 11.6 | 14.0 | 0.5 | 7 | 366 |
 | pt/design-de-escritorios.html | land | 44.2 | 11.9 | 13.3 | 0.5 | 6 | 439 |
 | pt/design-de-interiores-premium.html | land | 44.2 | 11.9 | 13.3 | 0.5 | 6 | 436 |
 | pt/empreiteiro-geral.html | land | 44.2 | 11.8 | 13.3 | 0.5 | 6 | 445 |
@@ -783,7 +786,7 @@
 | pl/koszt-budowy-domu.html | land | 44.0 | 12.4 | 13.3 | 0.5 | 6 | 438 |
 | pl/projektowanie-wnetrz-domu.html | land | 44.0 | 12.4 | 13.3 | 0.5 | 6 | 471 |
 | pt/redistribuicao-apartamento.html | land | 44.0 | 11.8 | 13.3 | 0.5 | 6 | 445 |
-| de/blog.html | other | 43.9 | 11.3 | 14.0 | 0.5 | 7 | 362 |
+| ar/construction-supervision.html | land | 43.9 | 11.5 | 13.3 | 0.5 | 6 | 397 |
 | es/contratista-general.html | land | 43.9 | 11.8 | 13.3 | 0.5 | 6 | 445 |
 | es/diseno-oficinas.html | land | 43.9 | 11.8 | 13.3 | 0.5 | 6 | 439 |
 | es/reforma-oficinas.html | land | 43.9 | 11.5 | 13.3 | 0.5 | 6 | 416 |
@@ -793,7 +796,6 @@
 | fr/architecture-interieur-neoclassique.html | land | 43.8 | 11.8 | 13.3 | 0.5 | 6 | 441 |
 | ar/modular-house.html | land | 43.7 | 11.7 | 13.3 | 0.5 | 6 | 400 |
 | en/office-design.html | land | 43.7 | 11.8 | 13.3 | 0.5 | 6 | 451 |
-| pl/blog.html | other | 43.7 | 11.4 | 14.0 | 0.5 | 7 | 363 |
 | pl/remont-biura.html | land | 43.7 | 11.9 | 13.3 | 0.5 | 6 | 421 |
 | ar/commercial-renovation.html | land | 43.6 | 11.4 | 13.3 | 0.5 | 6 | 408 |
 | ar/furnishing.html | land | 43.6 | 11.6 | 13.3 | 0.5 | 6 | 381 |
@@ -801,22 +803,21 @@
 | de/generalunternehmer.html | land | 43.6 | 11.9 | 13.3 | 0.5 | 6 | 446 |
 | dyzain-i-remont-bucha.html | land | 43.6 | 12.2 | 13.3 | 0.5 | 6 | 350 |
 | dyzain-i-remont-khmelnytskyi.html | land | 43.6 | 13.2 | 13.3 | 0.5 | 6 | 344 |
-| en/blog.html | other | 43.6 | 11.0 | 14.0 | 0.5 | 7 | 364 |
 | fr/renovation-haut-de-gamme.html | land | 43.6 | 11.8 | 13.3 | 0.5 | 6 | 427 |
 | pl/projektowanie-wnetrz-premium.html | land | 43.6 | 12.2 | 13.3 | 0.5 | 6 | 438 |
 | ru/dizayn-i-remont-bucha.html | land | 43.6 | 12.2 | 13.3 | 0.5 | 6 | 350 |
 | ar/townhouse-renovation.html | land | 43.5 | 11.5 | 13.3 | 0.5 | 6 | 385 |
+| fr/contrat-garantie-paiement.html | land | 43.5 | 11.7 | 13.3 | 0.5 | 6 | 410 |
 | ru/dizayn-i-remont-hmelnitskiy.html | land | 43.5 | 13.1 | 13.3 | 0.5 | 6 | 344 |
-| ar/construction-supervision.html | land | 43.4 | 11.4 | 13.3 | 0.5 | 6 | 391 |
 | de/bueroplanung.html | land | 43.4 | 12.0 | 13.3 | 0.5 | 6 | 440 |
 | en/premium-renovation.html | land | 43.4 | 11.6 | 13.3 | 0.5 | 6 | 444 |
 | es/redistribucion-piso.html | land | 43.4 | 11.7 | 13.3 | 0.5 | 6 | 445 |
-| fr/contrat-garantie-paiement.html | land | 43.4 | 11.7 | 13.3 | 0.5 | 6 | 410 |
 | pt/design-de-interiores-neoclassico.html | land | 43.4 | 11.7 | 13.3 | 0.5 | 6 | 442 |
 | pt/remodelacao-premium.html | land | 43.4 | 11.6 | 13.3 | 0.5 | 6 | 430 |
 | ar/services.html | land | 43.3 | 11.3 | 13.3 | 0.5 | 6 | 382 |
 | de/innenarchitektur-kosten.html | land | 43.3 | 12.0 | 13.3 | 0.5 | 6 | 456 |
 | pl/generalny-wykonawca.html | land | 43.3 | 12.1 | 13.3 | 0.5 | 6 | 447 |
+| zh/blog.html | other | 43.3 | 11.9 | 14.0 | 0.5 | 7 | 362 |
 | en/apartment-replanning.html | land | 43.2 | 11.6 | 13.3 | 0.5 | 6 | 454 |
 | pt/remodelacao-integral-apartamento.html | land | 43.2 | 11.7 | 13.3 | 0.5 | 6 | 417 |
 | ru/dizayn-i-remont-lvov.html | land | 43.2 | 12.0 | 13.3 | 0.5 | 6 | 342 |
@@ -842,19 +843,18 @@
 | dyzain-i-remont-hostomel.html | land | 42.9 | 12.0 | 13.3 | 0.5 | 6 | 346 |
 | en/business-fit-out.html | land | 42.9 | 13.2 | 13.3 | 0.5 | 6 | 409 |
 | en/major-renovation.html | land | 42.9 | 11.7 | 13.3 | 0.5 | 6 | 428 |
+| es/contrato-garantia-pago.html | land | 42.9 | 11.6 | 13.3 | 0.5 | 6 | 414 |
 | es/preguntas-frecuentes.html | land | 42.9 | 13.2 | 13.3 | 0.5 | 6 | 347 |
 | pl/projektowanie-wnetrz-neoklasyka.html | land | 42.9 | 12.1 | 13.3 | 0.5 | 6 | 444 |
 | pl/zmiana-ukladu-mieszkania.html | land | 42.9 | 11.9 | 13.3 | 0.5 | 6 | 447 |
 | ru/dizayn-i-remont-gostomel.html | land | 42.9 | 12.0 | 13.3 | 0.5 | 6 | 346 |
 | de/neoklassische-innenarchitektur.html | land | 42.8 | 11.8 | 13.3 | 0.5 | 6 | 443 |
 | dyzain-i-remont-odesa.html | land | 42.8 | 12.0 | 13.3 | 0.5 | 6 | 341 |
-| es/contrato-garantia-pago.html | land | 42.8 | 11.5 | 13.3 | 0.5 | 6 | 414 |
 | fr/commerce-cle-en-main.html | land | 42.8 | 13.2 | 13.3 | 0.5 | 6 | 391 |
 | fr/faq.html | land | 42.8 | 13.3 | 13.3 | 0.5 | 6 | 346 |
 | pt/contrato-garantia-pagamento.html | land | 42.8 | 11.4 | 13.3 | 0.5 | 6 | 407 |
 | pt/espacos-comerciais-chave-na-mao.html | land | 42.8 | 13.2 | 13.3 | 0.5 | 6 | 394 |
 | ru/dizayn-i-remont-odessa.html | land | 42.8 | 12.0 | 13.3 | 0.5 | 6 | 341 |
-| zh/blog.html | other | 42.8 | 11.7 | 14.0 | 0.5 | 7 | 359 |
 | zh/house-interior-design.html | land | 42.8 | 12.4 | 13.3 | 0.5 | 6 | 467 |
 | dyzain-i-remont-ivano-frankivsk.html | land | 42.7 | 11.8 | 13.3 | 0.5 | 6 | 343 |
 | proekty/edelweiss.html | land | 42.7 | 8.9 | 1.9 | 0.5 | 0 | 378 |
@@ -896,6 +896,7 @@
 | ru/dizayn-i-remont-vasilkov.html | land | 42.4 | 11.9 | 13.3 | 0.5 | 6 | 346 |
 | dyzain-i-remont-boiarka.html | land | 42.3 | 11.9 | 13.3 | 0.5 | 6 | 344 |
 | dyzain-i-remont-vyshhorod.html | land | 42.3 | 11.8 | 13.3 | 0.5 | 6 | 344 |
+| en/contract-warranty-payment.html | land | 42.3 | 11.3 | 13.3 | 0.5 | 6 | 416 |
 | en/house-reconstruction.html | land | 42.3 | 11.4 | 13.3 | 0.5 | 6 | 433 |
 | fr/maison-ossature-bois.html | land | 42.3 | 11.6 | 13.3 | 0.5 | 6 | 406 |
 | ru/dizayn-i-remont-belaya-tserkov.html | land | 42.3 | 11.8 | 13.3 | 0.5 | 6 | 346 |
@@ -907,7 +908,6 @@
 | dyzain-i-remont-vinnytsia.html | land | 42.2 | 11.8 | 13.3 | 0.5 | 6 | 341 |
 | dyzain-i-remont-vyshneve.html | land | 42.2 | 11.8 | 13.3 | 0.5 | 6 | 345 |
 | dyzain-i-remont-zhytomyr.html | land | 42.2 | 11.7 | 13.3 | 0.5 | 6 | 343 |
-| en/contract-warranty-payment.html | land | 42.2 | 11.3 | 13.3 | 0.5 | 6 | 415 |
 | en/office-renovation-cost.html | land | 42.2 | 11.4 | 13.3 | 0.5 | 6 | 426 |
 | pl/remont-kapitalny-mieszkania.html | land | 42.2 | 12.0 | 13.3 | 0.5 | 6 | 419 |
 | pt/casa-estrutura-madeira.html | land | 42.2 | 11.5 | 13.3 | 0.5 | 6 | 407 |
@@ -934,6 +934,7 @@
 | es/reconstruccion-casas.html | land | 42.0 | 11.4 | 13.3 | 0.5 | 6 | 420 |
 | fr/amenagement-bureaux-cle-en-main.html | land | 42.0 | 11.4 | 13.3 | 0.5 | 6 | 402 |
 | pl/biznes-pod-klucz.html | land | 42.0 | 13.3 | 13.3 | 0.5 | 6 | 397 |
+| pt/acompanhamento-fiscalizacao-obra.html | land | 42.0 | 11.3 | 13.3 | 0.5 | 6 | 400 |
 | pt/remodelacao-casa-de-banho.html | land | 42.0 | 11.2 | 13.3 | 0.5 | 6 | 406 |
 | ar/rough-renovation.html | land | 41.9 | 11.1 | 13.3 | 0.5 | 6 | 383 |
 | es/casa-entramado-madera.html | land | 41.9 | 11.4 | 13.3 | 0.5 | 6 | 407 |
@@ -944,6 +945,7 @@
 | es/diseno-reforma-atico.html | land | 41.8 | 11.4 | 13.3 | 0.5 | 6 | 403 |
 | es/equipo-de-reformas.html | land | 41.8 | 11.1 | 13.3 | 0.5 | 6 | 411 |
 | fr/ameublement-cle-en-main.html | land | 41.8 | 11.3 | 13.3 | 0.5 | 6 | 383 |
+| fr/suivi-de-chantier.html | land | 41.8 | 11.3 | 13.3 | 0.5 | 6 | 396 |
 | pl/faq.html | land | 41.8 | 13.5 | 13.3 | 0.5 | 6 | 349 |
 | pl/projektowanie-wnetrz.html | land | 41.8 | 11.6 | 13.3 | 0.5 | 6 | 398 |
 | pt/casa-betao-celular.html | land | 41.8 | 11.4 | 13.3 | 0.5 | 6 | 404 |
@@ -980,16 +982,18 @@
 | en/open-space-office-design.html | land | 41.5 | 11.3 | 13.3 | 0.5 | 6 | 421 |
 | es/casa-hormigon-celular.html | land | 41.5 | 11.3 | 13.3 | 0.5 | 6 | 404 |
 | es/diseno-oficina-open-space.html | land | 41.5 | 11.4 | 13.3 | 0.5 | 6 | 412 |
+| es/supervision-de-obra.html | land | 41.5 | 11.2 | 13.3 | 0.5 | 6 | 399 |
 | fr/renovation-maison-cle-en-main.html | land | 41.5 | 11.0 | 13.3 | 0.5 | 6 | 410 |
 | fr/services.html | land | 41.5 | 11.0 | 13.3 | 0.5 | 6 | 384 |
 | de/hoteldesign.html | land | 41.4 | 11.7 | 13.3 | 0.5 | 6 | 423 |
+| en/design-and-technical-supervision.html | land | 41.4 | 11.1 | 13.3 | 0.5 | 6 | 408 |
 | en/turnkey-furnishing.html | land | 41.4 | 11.1 | 13.3 | 0.5 | 6 | 392 |
 | es/reforma-casa-llave-en-mano.html | land | 41.4 | 11.0 | 13.3 | 0.5 | 6 | 414 |
 | es/servicios.html | land | 41.4 | 10.9 | 13.3 | 0.5 | 6 | 384 |
 | fr/renovation-construction-europe.html | land | 41.4 | 11.2 | 13.3 | 0.5 | 6 | 395 |
-| pt/acompanhamento-fiscalizacao-obra.html | land | 41.4 | 11.1 | 13.3 | 0.5 | 6 | 393 |
 | pt/remodelacao-construcao-europa.html | land | 41.4 | 11.2 | 13.3 | 0.5 | 6 | 396 |
 | pt/remodelacao-lojas-espacos-comerciais.html | land | 41.4 | 11.0 | 13.3 | 0.5 | 6 | 411 |
+| de/bauueberwachung.html | land | 41.3 | 11.3 | 13.3 | 0.5 | 6 | 401 |
 | de/einrichtung-schluesselfertig.html | land | 41.3 | 11.3 | 13.3 | 0.5 | 6 | 385 |
 | en/house-renovation.html | land | 41.3 | 11.0 | 13.3 | 0.5 | 6 | 427 |
 | es/diseno-reforma-tiendas.html | land | 41.3 | 11.3 | 13.3 | 0.5 | 6 | 403 |
@@ -1000,7 +1004,6 @@
 | de/bueroausbau-schluesselfertig.html | land | 41.2 | 11.5 | 13.3 | 0.5 | 6 | 404 |
 | de/open-space-bueroplanung.html | land | 41.2 | 11.5 | 13.3 | 0.5 | 6 | 413 |
 | es/reforma-bano.html | land | 41.2 | 11.2 | 13.3 | 0.5 | 6 | 406 |
-| fr/suivi-de-chantier.html | land | 41.2 | 11.1 | 13.3 | 0.5 | 6 | 389 |
 | pl/dom-szkieletowy.html | land | 41.2 | 11.7 | 13.3 | 0.5 | 6 | 409 |
 | pl/projektowanie-hoteli.html | land | 41.2 | 11.8 | 13.3 | 0.5 | 6 | 424 |
 | pl/przebudowa-domu.html | land | 41.2 | 11.6 | 13.3 | 0.5 | 6 | 422 |
@@ -1011,7 +1014,6 @@
 | en/bathroom-renovation.html | land | 41.1 | 11.1 | 13.3 | 0.5 | 6 | 417 |
 | es/reforma-construccion-europa.html | land | 41.1 | 11.2 | 13.3 | 0.5 | 6 | 396 |
 | es/reforma-locales-comerciales.html | land | 41.1 | 11.0 | 13.3 | 0.5 | 6 | 411 |
-| es/supervision-de-obra.html | land | 41.1 | 11.1 | 13.3 | 0.5 | 6 | 393 |
 | pl/ekipa-remontowa.html | land | 41.1 | 11.4 | 13.3 | 0.5 | 6 | 413 |
 | zh/faq.html | land | 41.1 | 13.6 | 13.3 | 0.5 | 6 | 345 |
 | zh/interior-design.html | land | 41.1 | 11.8 | 13.3 | 0.5 | 6 | 394 |
@@ -1029,7 +1031,6 @@
 | de/haussanierung.html | land | 40.9 | 11.1 | 13.3 | 0.5 | 6 | 415 |
 | de/ladenbau-showroom.html | land | 40.9 | 11.4 | 13.3 | 0.5 | 6 | 404 |
 | de/leistungen.html | land | 40.9 | 11.0 | 13.3 | 0.5 | 6 | 385 |
-| en/design-and-technical-supervision.html | land | 40.9 | 11.0 | 13.3 | 0.5 | 6 | 402 |
 | en/services.html | land | 40.9 | 10.8 | 13.3 | 0.5 | 6 | 390 |
 | pl/projekt-biura-open-space.html | land | 40.9 | 11.7 | 13.3 | 0.5 | 6 | 414 |
 | pl/projekt-i-remont-sklepu.html | land | 40.9 | 11.6 | 13.3 | 0.5 | 6 | 405 |
@@ -1042,7 +1043,6 @@
 | pl/uslugi.html | land | 40.8 | 11.0 | 13.3 | 0.5 | 6 | 386 |
 | proekty/yacht-vip.html | land | 40.8 | 8.5 | 1.9 | 0.5 | 0 | 367 |
 | pt/remodelacao-cozinha.html | land | 40.8 | 11.0 | 13.3 | 0.5 | 6 | 405 |
-| de/bauueberwachung.html | land | 40.7 | 11.1 | 13.3 | 0.5 | 6 | 394 |
 | de/renovierung-bau-europa.html | land | 40.7 | 11.2 | 13.3 | 0.5 | 6 | 397 |
 | en/modular-house.html | land | 40.7 | 11.2 | 13.3 | 0.5 | 6 | 412 |
 | es/casa-de-madera.html | land | 40.7 | 11.2 | 13.3 | 0.5 | 6 | 404 |
@@ -1053,11 +1053,12 @@
 | pl/remont-lazienki.html | land | 40.7 | 11.4 | 13.3 | 0.5 | 6 | 408 |
 | proekty/hoda-estate.html | land | 40.7 | 8.9 | 1.9 | 0.5 | 0 | 389 |
 | pt/remodelacao-moradia-em-banda.html | land | 40.7 | 11.1 | 13.3 | 0.5 | 6 | 388 |
+| pl/nadzor-autorski-i-techniczny.html | land | 40.6 | 11.3 | 13.3 | 0.5 | 6 | 401 |
+| zh/contract-warranty-payment.html | land | 40.6 | 11.8 | 13.3 | 0.5 | 6 | 411 |
 | de/modulhaus.html | land | 40.5 | 11.4 | 13.3 | 0.5 | 6 | 404 |
 | en/new-build-renovation.html | land | 40.5 | 10.8 | 13.3 | 0.5 | 6 | 410 |
 | es/reforma-cocina.html | land | 40.5 | 10.9 | 13.3 | 0.5 | 6 | 405 |
 | pt/execucao-projeto-design.html | land | 40.5 | 11.1 | 13.3 | 0.5 | 6 | 392 |
-| zh/contract-warranty-payment.html | land | 40.5 | 11.8 | 13.3 | 0.5 | 6 | 410 |
 | zh/major-renovation.html | land | 40.5 | 11.9 | 13.3 | 0.5 | 6 | 415 |
 | de/holzbalkenhaus.html | land | 40.4 | 11.3 | 13.3 | 0.5 | 6 | 405 |
 | en/design-implementation.html | land | 40.4 | 11.1 | 13.3 | 0.5 | 6 | 403 |
@@ -1072,7 +1073,6 @@
 | de/neubauwohnung-ausbau.html | land | 40.2 | 11.0 | 13.3 | 0.5 | 6 | 400 |
 | en/townhouse-renovation.html | land | 40.2 | 11.0 | 13.3 | 0.5 | 6 | 393 |
 | es/reforma-adosado.html | land | 40.2 | 11.1 | 13.3 | 0.5 | 6 | 388 |
-| pl/nadzor-autorski-i-techniczny.html | land | 40.2 | 11.2 | 13.3 | 0.5 | 6 | 395 |
 | pl/remont-i-budowa-europa.html | land | 40.2 | 11.4 | 13.3 | 0.5 | 6 | 398 |
 | de/reihenhaus-renovierung.html | land | 40.1 | 11.2 | 13.3 | 0.5 | 6 | 389 |
 | en/apartment-interior-design.html | land | 40.1 | 10.6 | 13.3 | 0.5 | 6 | 405 |
@@ -1124,6 +1124,7 @@
 | es/obra-gruesa-piso.html | land | 39.4 | 10.8 | 13.3 | 0.5 | 6 | 385 |
 | es/proyecto-de-casa.html | land | 39.4 | 10.4 | 13.3 | 0.5 | 6 | 386 |
 | proekty/kitana-beach.html | land | 39.4 | 8.6 | 1.9 | 0.5 | 0 | 365 |
+| zh/construction-supervision.html | land | 39.4 | 11.4 | 13.3 | 0.5 | 6 | 397 |
 | zh/shop-showroom-design.html | land | 39.4 | 11.6 | 13.3 | 0.5 | 6 | 401 |
 | de/rohausbau-wohnung.html | land | 39.3 | 10.9 | 13.3 | 0.5 | 6 | 386 |
 | es/disenador-interiores.html | land | 39.3 | 10.5 | 13.3 | 0.5 | 6 | 380 |
@@ -1138,7 +1139,6 @@
 | pl/remont-surowy-mieszkania.html | land | 39.1 | 11.0 | 13.3 | 0.5 | 6 | 387 |
 | pl/remont-kosmetyczny.html | land | 39.0 | 11.0 | 13.3 | 0.5 | 6 | 386 |
 | proekty/hodos-villa.html | land | 39.0 | 8.7 | 1.9 | 0.5 | 0 | 377 |
-| zh/construction-supervision.html | land | 39.0 | 11.3 | 13.3 | 0.5 | 6 | 391 |
 | zh/kitchen-renovation.html | land | 39.0 | 11.3 | 13.3 | 0.5 | 6 | 402 |
 | en/interior-designer.html | land | 38.9 | 10.4 | 13.3 | 0.5 | 6 | 389 |
 | zh/new-build-renovation.html | land | 38.9 | 11.2 | 13.3 | 0.5 | 6 | 396 |
