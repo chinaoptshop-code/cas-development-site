@@ -292,7 +292,7 @@ await test('калькулятор: кома, помилка й стеля по�
   must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'горизонтальна прокрутка');
 });
 for (const [path, rx] of [['/ru/kalkulyator-remonta', /Калькулятор/], ['/en/renovation-cost-calculator', /Calculator/], ['/es/calculadora-reforma', /Calculadora/], ['/zh/renovation-calculator', /计算器/],
-  ['/pl/kalkulator-remontu', /Kalkulator/], ['/de/renovierungskosten-rechner', /Rechner/], ['/fr/calculateur-renovation', /Calculateur/], ['/ar/renovation-calculator', /الحاسبة/]]) {
+  ['/pl/kalkulator-remontu', /Kalkulator/], ['/de/renovierungskosten-rechner', /Rechner/], ['/fr/calculateur-renovation', /Calculateur/], ['/pt/calculadora-obras', /Calculadora/], ['/ar/renovation-calculator', /الحاسبة/]]) {
   await test('калькулятор мовою: сума, кома/крапка, конфіг → форма (data-service, #oMsg, площа)', path, 402, async p => {
     must(/\$/.test(await p.textContent('#cSum')), 'немає суми');
     await p.fill('#cArea', '80,5'); await p.waitForTimeout(120);

@@ -344,7 +344,9 @@ def lang_links(lang, alts, cls):
         if l == lang:
             out.append(f'<span class="{cls}-on" aria-current="true" lang="{i18n.meta(l)["html"]}" title="{nm}">{label}</span>')
         else:
-            out.append(f'<a href="{alts.get(l, HOME[l])}" hreflang="{i18n.meta(l)["hreflang"]}" lang="{i18n.meta(l)["html"]}" title="{nm}" aria-label="{nm}">{label}</a>')
+            # меню бургера (sch-lang, сенсорні екрани) — без title: підказка при наведенні там не потрібна, aria-label лишається (−~150 Б HTML, 10 мов з pt)
+            tt = '' if cls == 'sch-lang' else f' title="{nm}"'
+            out.append(f'<a href="{alts.get(l, HOME[l])}" hreflang="{i18n.meta(l)["hreflang"]}" lang="{i18n.meta(l)["html"]}"{tt} aria-label="{nm}">{label}</a>')
     return ''.join(out)
 
 
