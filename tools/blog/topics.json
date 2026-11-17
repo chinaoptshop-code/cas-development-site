@@ -795,7 +795,7 @@
    "/dyzain-ofisu-kyiv",
    "Дизайн офісу"
   ],
-  "status": "todo",
+  "status": "published",
   "note": "SEO-аудит 25.10.2026: комерційний запит, сегмент від $5 000"
  },
  {
@@ -1548,5 +1548,17 @@
   ],
   "status": "published",
   "note": "16.11.2026: ОК Михайла («Публікуй 5 нових статей»)"
+ },
+ {
+  "lang": "ru",
+  "slug": "dizayn-ofisa-open-space-peregovornye",
+  "title": "Дизайн офиса: как спланировать open space, кабинеты и переговорные",
+  "keyword": "дизайн офиса киев",
+  "service": [
+   "/ru/dizayn-ofisa-kiev",
+   "Дизайн офиса"
+  ],
+  "pair": "dyzain-ofisu-open-space-perehovorni",
+  "status": "published"
  }
 ]
