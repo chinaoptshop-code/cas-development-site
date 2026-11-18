@@ -407,5 +407,11 @@
  "Профіль і реквізити": "Profil et facturation",
  "Профіль і реквізити — кабінет": "Profil et facturation — espace personnel",
  "Погоджено": "Validé",
- "погоджено": "validé"
+ "погоджено": "validé",
+ "чекає вашого погодження": "en attente de votre validation",
+ "Погодити етап": "Valider l’étape",
+ "Погодити етап «{n}»? Студія отримає повідомлення.": "Valider l’étape « {n} » ? Le studio sera prévenu.",
+ "Етап погоджено — дякуємо!": "Étape validée — merci !",
+ "Етап не знайдено": "Étape introuvable",
+ "Етап ще не готовий до погодження": "L’étape n’est pas encore prête à être validée"
 }

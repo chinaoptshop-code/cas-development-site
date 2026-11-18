@@ -1,0 +1,329 @@
+{
+ "slug": "haustechnik-wohnung-reihenfolge-der-arbeiten",
+ "lang": "de",
+ "title": "Haustechnik in der Wohnung bei der Komplettsanierung: Elektrik, Sanitär, Lüftung, Fußbodenheizung",
+ "translation_of": "inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit",
+ "seo_title": "Haustechnik in der Wohnung: Reihenfolge und Prüfungen",
+ "description": "Haustechnik bei der Komplettsanierung: Planung, Elektrik und Verteiler, Sanitär und Abwasser, Lüftung, Klimaanlage, Fußbodenheizung. Reihenfolge und Prüfungen.",
+ "lead": "Die Haustechnik ist der Teil der Sanierung, den man nach der Übergabe nicht sieht – aber sie entscheidet, ob die Sicherung fliegt, ob der Nachbar unter Wasser steht und ob im Bad Schimmel wächst. Wir erklären, in welcher Reihenfolge Elektrik, Sanitär, Lüftung und Fußbodenheizung verlegt werden, welche Lösungen marktüblich sind und was man prüfen sollte, solange die Wände noch nicht verputzt sind.",
+ "date": "2026-11-01",
+ "service": [
+  "/de/renovierung-schluesselfertig",
+  "Schlüsselfertige Renovierung"
+ ],
+ "photo": "img/p/1xSbwYmzFkTN2A-900.webp",
+ "photo_alt": "Wohn-Essbereich – Pidgirland, ein Projekt von CAS Development",
+ "body": [
+  [
+   "h2",
+   "Haustechnik in der Wohnung: warum die Reihenfolge wichtiger ist als Marken"
+  ],
+  [
+   "p",
+   "Eine teure Armatur schützt nicht vor einem Leck an einer unsauberen Verbindung, und gutes Kabel nicht vor einem überlasteten Stromkreis. Die meisten Probleme entstehen nicht durch Material, sondern durch falsche Abfolge und fehlende Prüfungen vor dem Verschließen. Deshalb folgt die Haustechnik bei einer Komplettsanierung einem Plan und einer klaren Reihenfolge: erst Entscheidungen auf Papier, dann Verlegung, dann Prüfung – und erst danach Putz, Estrich und Ausbau."
+  ],
+  [
+   "ol",
+   [
+    "Haustechnikplanung und Entscheidungen zu den Geräten",
+    "Rückbau, Trennwände, Prüfung von Steigleitungen und Hausanschlüssen",
+    "Elektro-Rohinstallation und Schwachstrom",
+    "Wasserversorgung, Abwasser, Vorwandelemente",
+    "Lüftung, Klimaanlage, Leitungstrassen und Kondensatablauf",
+    "Prüfungen: Druckprobe, Messungen, Fotodokumentation, Protokolle",
+    "Putz, Estrich mit Fußbodenheizung, Abdichtung der Nassbereiche",
+    "Ausbau, danach Endmontage von Elektrik und Sanitär"
+   ]
+  ],
+  [
+   "h2",
+   "Phase 0. Planung: was vor dem ersten Schlitz feststehen muss"
+  ],
+  [
+   "p",
+   "Steckdosen, Schalter und Wasseranschlüsse richten sich nach Möbeln und Geräten, deshalb braucht man zuerst Grundriss und Möblierungsplan. Küche, Waschmaschine, Warmwasserspeicher, Klimageräte und Wasseraufbereitung sollten mindestens nach Maßen und Leistung feststehen: Davon hängen Leitungsquerschnitte, Stromkreise im Verteiler sowie Höhen und Lage der Anschlüsse ab."
+  ],
+  [
+   "ul",
+   [
+    "Steckdosen- und Schalterplan mit Höhen und Maßen",
+    "Schema der Lichtkreise und Lichtszenen",
+    "Stromlaufplan des Verteilers mit Nennwerten von Leitungsschutzschaltern und FI",
+    "Wasser- und Abwasserplan mit Anschlusshöhen",
+    "Plan für Lüftung, Klimaleitungen und Kondensatablauf",
+    "Verlegeplan der Fußbodenheizung und Lage der Thermostate"
+   ]
+  ],
+  [
+   "p",
+   "Im Neubau prüft man zuerst, was der Bauträger gemacht hat: wo der Etagenverteiler sitzt, welche Leistung der Wohnung zugeteilt ist, wie Steigleitungen und Lüftungsschächte ausgeführt sind. Mehr dazu auf der Seite [Sanierung im Neubau](/de/neubauwohnung-ausbau)."
+  ],
+  [
+   "h2",
+   "Elektrik"
+  ],
+  [
+   "h3",
+   "Verteiler und Stromkreise"
+  ],
+  [
+   "p",
+   "Der Wohnungsverteiler ist das Herz der Elektrik. Typisch sind ein Hauptschalter, Fehlerstromschutzschalter, Leitungsschutzschalter je Stromkreis und bei Bedarf ein Spannungswächter oder Überspannungsschutz. Die Stromkreise werden so aufgeteilt, dass ein Fehler in einer Zone nicht die ganze Wohnung stromlos macht und starke Verbraucher eigene Leitungen haben."
+  ],
+  [
+   "ul",
+   [
+    "Beleuchtung getrennt von Steckdosen, nach Wohnbereichen",
+    "Steckdosen nach Räumen, die Küchenarbeitsfläche als eigener Stromkreis",
+    "eigene Leitungen für Kochfeld, Backofen, Geschirrspüler, Waschmaschine, Warmwasserspeicher, Klimageräte und Fußbodenheizung",
+    "FI-Schutz für Steckdosenkreise und Nassbereiche – marktüblich mit 30 mA",
+    "Beschriftung jedes Schutzschalters und Plan an der Verteilertür"
+   ]
+  ],
+  [
+   "h3",
+   "Kabel und Verlegung"
+  ],
+  [
+   "p",
+   "Verwendet wird dreiadriges Kupferkabel – Außenleiter, Neutralleiter und Schutzleiter. Marktüblich sind 1,5 mm² für Licht, 2,5 mm² für Steckdosen und für Kochfeld und andere starke Verbraucher ein nach Leistung berechneter Querschnitt, meist 4–6 mm². In Wänden verläuft das Kabel streng senkrecht und waagerecht in festgelegten Zonen, damit man es später nicht anbohrt; in Boden und Decke im Wellrohr. Abzweigdosen müssen zugänglich bleiben."
+  ],
+  [
+   "h3",
+   "Schwachstrom"
+  ],
+  [
+   "p",
+   "Internet, WLAN, Gegensprechanlage, Kameras, Leckagesensoren und Smart Home werden zeitgleich mit der Starkstromverkabelung verlegt, aber auf getrennten Trassen. In der Regel führt ein Telekommunikationskabel vom Hausanschluss zu einem Medienschrank und von dort Netzwerkkabel zum Fernseher, zum Arbeitsplatz und zu den WLAN-Access-Points an der Decke. Fürs Smart Home wird schon in der Planung festgelegt, welche Kreise gesteuert werden, und Platz für Module im Verteiler oder in den Dosen eingeplant."
+  ],
+  [
+   "h3",
+   "Badezimmer"
+  ],
+  [
+   "p",
+   "Im Bad gelten strengere Regeln: Steckdosen und Schalter liegen außerhalb der Spritzwasserbereiche, Leuchten haben die passende Schutzart, und Metallteile – Rohre, Wanne, Duschtasse – werden über den Potenzialausgleich verbunden. Fußbodenheizung und Handtuchheizkörper werden über einen FI-Schutz angeschlossen."
+  ],
+  [
+   "h3",
+   "Was vor dem Verputzen zu prüfen ist"
+  ],
+  [
+   "ul",
+   [
+    "Steckdosen und Schalter entsprechen dem Plan in Höhe und Lage",
+    "ein Foto jeder Wand mit Maßband – damit man später weiß, wo das Kabel liegt",
+    "Isolationswiderstandsmessung und Auslösetest des FI-Schutzes",
+    "Schutzleiter an jeder Steckdose"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1pF5ohNHdSnme0-900.webp",
+   "Steckdosen- und Schalterblock über einem Holzbeistelltisch am Sofa – Interieur A-Frame House",
+   "Steckdosen an Sofa und Bett werden schon in der Planung an den Möbeln ausgerichtet"
+  ],
+  [
+   "h2",
+   "Sanitär und Abwasser"
+  ],
+  [
+   "h3",
+   "Wasserversorgung: Verteiler oder T-Stück-System"
+  ],
+  [
+   "p",
+   "Beim Verteilersystem wird jede Entnahmestelle – Armatur, WC, Waschmaschine – über eine eigene Leitung vom Verteiler versorgt und lässt sich absperren, ohne die ganze Wohnung trockenzulegen. Das T-Stück-System ist einfacher und günstiger, aber weniger wartungsfreundlich. Rohre sind geschweißtes Polypropylen, PE-X oder Verbundrohr mit Pressfittings; in Wänden und Böden bleiben nur unlösbare Verbindungen. Kaltwasser wird gegen Kondensat, Warmwasser gegen Wärmeverluste gedämmt."
+  ],
+  [
+   "ul",
+   [
+    "am Hausanschluss: Absperrventile, Grob- und Feinfilter, Druckminderer, Zähler nach den Regeln des Hauses",
+    "Leckageschutz – Sensoren und motorbetriebene Ventile",
+    "Zugang zu Verteiler, Ventilen und Filtern über Revisionsöffnungen"
+   ]
+  ],
+  [
+   "h3",
+   "Abwasser"
+  ],
+  [
+   "p",
+   "Üblich sind 50-mm-Rohre für Waschtisch, Dusche und Waschmaschine und 110 mm für das WC. Waagerechte Strecken haben ein gleichmäßiges Gefälle zum Fallrohr – marktüblich etwa 2–3 cm pro Meter bei 50-mm-Rohren, ohne Gegengefälle. Richtungswechsel werden mit zwei 45°-Bögen statt einem scharfen Bogen ausgeführt, an Knotenpunkten bleiben Revisionsöffnungen. Das gemeinsame Fallrohr des Hauses wird ohne Genehmigung weder verlegt noch verkleinert und für Ruhe mit Schallschutz ummantelt."
+  ],
+  [
+   "h3",
+   "Vorwandelemente, Abläufe und Abdichtung"
+  ],
+  [
+   "p",
+   "Wand-WC und Waschtisch werden an Vorwandelementen befestigt – Stahlrahmen, die vor dem Beplanken der Wände montiert werden. Eine bodengleiche Dusche mit Rinnen- oder Punktablauf braucht Gefälle im Estrich und eine exakte Ablaufhöhe. Nassbereiche erhalten eine Flüssig- oder Bahnenabdichtung mit Hochzug an den Wänden, in der Dusche auf ganzer Spritzwasserhöhe; Ecken und Rohrdurchführungen werden mit Dichtbändern und Manschetten abgedichtet."
+  ],
+  [
+   "h3",
+   "Was vor dem Verschließen zu prüfen ist"
+  ],
+  [
+   "ul",
+   [
+    "Druckprobe der Leitungen mit Druck und Dauer nach Vorgabe des Rohrherstellers oder der Planung, mit Foto des Manometers",
+    "Höhen und Lage der Anschlüsse laut Plan",
+    "Abwassergefälle mit der Wasserwaage, keine Durchhänge",
+    "durchgehende Abdichtung, auch in Ecken und am Ablauf"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1gXiWvuON9L6XT-900.webp",
+   "Hauswirtschaftsraum mit Geräten, Handtuchheizkörper und deckenhohen Schränken – Hausprojekt in Petriwzi",
+   "Waschmaschine und Trockner: eigene Stromleitungen, Wasseranschluss, Ablauf und Zugang zu den Ventilen"
+  ],
+  [
+   "h2",
+   "Lüftung und Klimatisierung"
+  ],
+  [
+   "p",
+   "In einem Mehrfamilienhaus läuft die Abluft aus Küche und Bädern meist über Lüftungsschächte. Sie dürfen weder zugemauert noch verkleinert oder zweckentfremdet werden: Davon hängt die Lüftung Ihrer Wohnung und der Nachbarn ab. Die Dunstabzugshaube wird nach Planung und Hausregeln angeschlossen, im Bad kommt ein Ventilator mit Rückschlagklappe zum Einsatz. Dichte Fenster lassen kaum Luft herein, daher braucht es Zuluft: Fenster- oder Wandlüfter, dezentrale Lüftungsgeräte mit Wärmerückgewinnung, wo die Fassade es zulässt, oder eine zentrale Zu- und Abluftanlage mit Wärmerückgewinnung, wenn über der Decke Platz ist."
+  ],
+  [
+   "p",
+   "Die Leitungen der Klimaanlage – gedämmte Kältemittelrohre, Kondensatablauf und Kabel – werden vor dem Verputzen verlegt. Der Ablauf braucht Gefälle oder eine Kondensatpumpe, und der Standort des Außengeräts wird nach den Hausregeln abgestimmt. Sind die Wände geschlossen, lässt sich die Trasse ohne Zerstörung des Ausbaus nicht mehr ändern."
+  ],
+  [
+   "ul",
+   [
+    "Zuluft in die Wohnräume und Abluft aus Küche, Bädern und Ankleiden",
+    "Überströmung zwischen Räumen – Spalt unter den Türen oder Gitter",
+    "Innengeräte so platzieren, dass der Luftstrom nicht aufs Bett oder den Schreibtisch bläst",
+    "Zugang zu Filtern und Ablauf für die Wartung"
+   ]
+  ],
+  [
+   "h2",
+   "Fußbodenheizung"
+  ],
+  [
+   "p",
+   "In Wohnungen wird meist eine elektrische Fußbodenheizung gebaut: Heizkabel im Estrich, eine dünne Heizmatte im Fliesenkleber oder Heizfolie unter Laminat oder Parkett, sofern der Bodenhersteller das zulässt. Eine Warmwasser-Fußbodenheizung an der Zentralheizung eines Mehrfamilienhauses ist meist nicht erlaubt, weil sie das System aus dem Gleichgewicht bringt. Möglich ist sie bei Einzelheizung – über eine Mischergruppe und nach Planung."
+  ],
+  [
+   "ul",
+   [
+    "eigene Leitung mit Schutzschalter und FI-Schutz",
+    "Bodentemperaturfühler im Schutzrohr – damit er austauschbar ist",
+    "Dämmung unter dem Estrich, damit man nicht die Nachbarn unten heizt",
+    "nicht unter Küche, Schränken, Wanne und anderen Möbeln ohne Füße verlegen",
+    "Widerstandsmessung des Kabels vor und nach dem Verlegen, Foto der Verlegung mit Maßen"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/11wEIjh0kDHFtz-900.webp",
+   "Küche mit Einbaugeräten und Fronten in Holzoptik – realisierte Wohnung Tetris Hall",
+   "Einbaugeräte in der Küche: Jedes starke Gerät bekommt seine eigene Leitung"
+  ],
+  [
+   "h2",
+   "Wie die Haustechnik Raumhöhen und Bodenniveaus beeinflusst"
+  ],
+  [
+   "p",
+   "Haustechnik kostet Zentimeter, und das sollte man wissen, bevor man sich in eine bestimmte Raumhöhe verliebt. Lüftungskanäle und Kanalklimageräte brauchen Platz über einer abgehängten Decke. Ein Estrich mit Fußbodenheizung und Dämmung ist dicker als ein normaler, und eine bodengleiche Dusche braucht Raum für Ablauf und Gefälle. Vorwandelemente für Wand-WC und Waschtisch sowie Verteiler belegen Nischen in den Wänden."
+  ],
+  [
+   "p",
+   "Deshalb müssen Design und Haustechnik im Projekt abgestimmt sein: wo die Decke abgehängt wird, wo Verkleidungen Leitungen verbergen, welche Bodenniveaus die Räume haben und wie die Übergänge schwellenlos gelingen."
+  ],
+  [
+   "h2",
+   "Unterlagen und Normen: was Sie erhalten sollten"
+  ],
+  [
+   "p",
+   "Die Arbeiten werden nach geltenden Baunormen, den Regeln für elektrische Anlagen und den Vorgaben der Gerätehersteller ausgeführt. Für Sie als Bauherr sind weniger die Normenlisten wichtig als die Unterlagen, die nach der Sanierung bleiben. Sie brauchen sie, wenn Sie in ein paar Jahren ein Regal aufhängen, den Warmwasserspeicher tauschen oder ein Leck suchen."
+  ],
+  [
+   "ul",
+   [
+    "Bestandspläne von Elektrik und Sanitär – wie tatsächlich verlegt wurde",
+    "Fotos von Wänden und Böden mit Maßband vor dem Verschließen",
+    "Stromlaufplan des Verteilers mit beschrifteten Stromkreisen",
+    "Messprotokolle der Elektrik und Druckprobenprotokolle der Leitungen",
+    "Datenblätter und Garantieunterlagen der Geräte"
+   ]
+  ],
+  [
+   "p",
+   "Arbeitet ein Unternehmer, dem Sie nicht ganz vertrauen, können verdeckte Arbeiten von einem unabhängigen Fachmann geprüft werden – dazu der Artikel über die [Bauaufsicht](/de/blog/technische-bauaufsicht-wohnungsrenovierung)."
+  ],
+  [
+   "h2",
+   "Typische Fehler in der Haustechnik einer Wohnung"
+  ],
+  [
+   "ul",
+   [
+    "Steckdosen „wie vom Bauträger“, ohne Bezug zu Möbeln und Geräten – später Verlängerungskabel",
+    "ein Stromkreis für die ganze Küche, starke Geräte ohne eigene Leitungen",
+    "diagonale Kabeltrassen in Wänden",
+    "Rohrverbindungen im Estrich ohne Zugang",
+    "Abwasser ohne Gefälle oder mit scharfen Bögen",
+    "zugemauerter oder verkleinerter Lüftungsschacht, Abzug ohne Zuluft",
+    "Fußbodenheizung unter Möbeln und ohne Dämmung",
+    "Wände schließen ohne Druckprobe und Fotodokumentation"
+   ]
+  ],
+  [
+   "gallery",
+   [
+    [
+     "/img/p/1dHW-ciO1rn1E0-900.webp",
+     "Wohnzimmer mit Steinwand, TV-Nische und Schienenstrahlern – realisierte Wohnung Tetris Hall"
+    ],
+    [
+     "/img/p/1NVeaQcV2TZSN5-900.webp",
+     "Bad mit freistehender Wanne, Dusche und beleuchteter Nische – Hausprojekt in Petriwzi"
+    ]
+   ]
+  ],
+  [
+   "h2",
+   "Wie wir die Haustechnik bei der Komplettsanierung umsetzen"
+  ],
+  [
+   "p",
+   "Die Haustechnik gehört zur [Kernsanierung der Wohnung](/de/komplettsanierung-wohnung) und zur schlüsselfertigen Sanierung bei CAS: ab $550/m² für Arbeiten und Rohbaumaterial, Ausbaumaterialien, Möbel und Technik separat nach Kostenvoranschlag. Zur Orientierung: 70 m² × $550 = $38 500 zum Basissatz – die genaue Summe ergibt der Kostenvoranschlag nach der Planung. Ihre Fläche können Sie im [Sanierungsrechner](/de/renovierungskosten-rechner) berechnen, und woraus sich der Preis zusammensetzt, zeigt die Seite [Kosten der Wohnungssanierung](/de/wohnungsrenovierung-kosten)."
+  ],
+  [
+   "p",
+   "Die Arbeiten führt unser eigenes Team aus, verdeckte Arbeiten dokumentieren wir in Fotoberichten alle 1–2 Wochen, auf Wunsch gibt es gegen Aufpreis eine Online-Kamera auf der Baustelle rund um die Uhr. Ein Ansprechpartner, Kostenvoranschlag und Fristen im Vertrag, 12 Monate Gewährleistung auf die Arbeiten. Wenn Sie unsicher sind, ob die Leitungen komplett erneuert werden müssen, beginnen Sie mit dem Artikel [Kernsanierung oder Schönheitsrenovierung](/de/blog/kernsanierung-oder-renovierung-was-waehlen)."
+  ]
+ ],
+ "faq": [
+  [
+   "In welcher Reihenfolge wird die Haustechnik in einer Wohnung installiert?",
+   "Zuerst Planung und Geräteentscheidungen, dann Rückbau und Trennwände, Elektro-Rohinstallation, Wasser und Abwasser, Lüftung und Klimaleitungen, Prüfungen und Fotodokumentation – erst danach Putz, Estrich und Ausbau."
+  ],
+  [
+   "Welcher Kabelquerschnitt ist für Steckdosen und Licht nötig?",
+   "Marktüblich 1,5 mm² Kupfer für Licht, 2,5 mm² für Steckdosen und für Kochfeld und andere starke Verbraucher ein berechneter Querschnitt, meist 4–6 mm². Die genauen Werte legt die Planung nach Leistung und Leitungslänge fest."
+  ],
+  [
+   "Verteiler oder T-Stück-System – was ist besser?",
+   "Der Verteiler ist teurer, aber jede Stelle lässt sich einzeln absperren, und in den Wänden gibt es keine Zwischenverbindungen. Das T-Stück-System ist einfacher und günstiger. Bei Wohnungen mit mehreren Bädern und vielen Geräten wählt man meist den Verteiler."
+  ],
+  [
+   "Ist eine Warmwasser-Fußbodenheizung in der Wohnung möglich?",
+   "An der Zentralheizung eines Mehrfamilienhauses meist nicht, weil sie das Hausnetz stört. Bei Einzelheizung ist sie über eine Mischergruppe möglich. Sonst wird elektrisch geheizt."
+  ],
+  [
+   "Darf die Dunstabzugshaube an den Lüftungsschacht?",
+   "Das hängt von der Schachtkonstruktion und den Hausregeln ab. Der Schacht darf nicht zugemauert oder verkleinert und die natürliche Abluft nicht abgeschnitten werden. Die Anschlussvariante wird in der Planung festgelegt."
+  ],
+  [
+   "Was sollte man vor dem Verputzen prüfen?",
+   "Ob Steckdosen und Anschlüsse dem Plan entsprechen, Fotos der Wände mit Maßband, Isolationsmessung und FI-Funktion, Druckprobe der Leitungen, Abwassergefälle und Klimaleitungen."
+  ]
+ ]
+}

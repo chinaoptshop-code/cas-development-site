@@ -1,0 +1,33 @@
+{
+ "_": "Кластери гілки i18n/land1811 (18.11.2026): Конча-Заспа, Печерськ, «По Україні» мовами. i18n.py зливає clusters-*.json з clusters.json за ключем.",
+ "suburbs": {
+  "en": "/en/turnkey-house-koncha-zaspa",
+  "es": "/es/casa-llave-en-mano-koncha-zaspa",
+  "pl": "/pl/dom-pod-klucz-koncza-zaspa",
+  "de": "/de/haus-schluesselfertig-kontscha-saspa",
+  "fr": "/fr/maison-cle-en-main-kontcha-zaspa",
+  "pt": "/pt/moradia-chave-na-mao-koncha-zaspa",
+  "zh": "/zh/turnkey-house-koncha-zaspa",
+  "ar": "/ar/turnkey-house-koncha-zaspa"
+ },
+ "pechersk": {
+  "en": "/en/apartment-design-renovation-pechersk",
+  "es": "/es/diseno-reforma-piso-pechersk",
+  "pl": "/pl/projekt-remont-mieszkania-peczersk",
+  "de": "/de/wohnung-design-renovierung-petschersk",
+  "fr": "/fr/design-renovation-appartement-petchersk",
+  "pt": "/pt/design-remodelacao-apartamento-pechersk",
+  "zh": "/zh/apartment-design-renovation-pechersk",
+  "ar": "/ar/apartment-design-renovation-pechersk"
+ },
+ "geo-ukraine": {
+  "en": "/en/design-renovation-ukraine",
+  "es": "/es/diseno-reforma-ucrania",
+  "pl": "/pl/projektowanie-remont-ukraina",
+  "de": "/de/innenarchitektur-renovierung-ukraine",
+  "fr": "/fr/design-renovation-ukraine",
+  "pt": "/pt/design-remodelacao-ucrania",
+  "zh": "/zh/design-renovation-ukraine",
+  "ar": "/ar/design-renovation-ukraine"
+ }
+}

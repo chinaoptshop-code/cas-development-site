@@ -1,0 +1,329 @@
+{
+ "slug": "instalacoes-tecnicas-apartamento-ordem-dos-trabalhos",
+ "lang": "pt",
+ "title": "Instalações técnicas num apartamento chave na mão: eletricidade, canalização, ventilação, piso radiante",
+ "translation_of": "inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit",
+ "seo_title": "Instalações do apartamento: ordem e verificações",
+ "description": "Instalações num apartamento chave na mão: projeto, eletricidade e quadro, águas e esgotos, ventilação, ar condicionado, piso radiante. Ordem e verificações.",
+ "lead": "As instalações técnicas são a parte da obra que não se vê depois da entrega, mas são elas que decidem se o disjuntor dispara, se inunda o vizinho e se aparece bolor na casa de banho. Explicamos por que ordem se instalam a eletricidade, as águas e esgotos, a ventilação e o piso radiante, que soluções são habituais segundo a prática do mercado e o que verificar enquanto as paredes ainda não estão rebocadas.",
+ "date": "2026-11-01",
+ "service": [
+  "/pt/remodelacao-chave-na-mao",
+  "Remodelação chave na mão"
+ ],
+ "photo": "img/p/1xSbwYmzFkTN2A-900.webp",
+ "photo_alt": "Sala de estar e jantar — Pidgirland, projeto CAS Development",
+ "body": [
+  [
+   "h2",
+   "Instalações técnicas: porque a ordem conta mais do que as marcas"
+  ],
+  [
+   "p",
+   "Uma torneira cara não evita uma fuga numa ligação mal feita, nem um bom cabo salva um circuito sobrecarregado. A maior parte dos problemas não vem dos materiais, mas de uma sequência errada e da falta de verificações antes de fechar. Por isso, numa remodelação chave na mão, as instalações seguem um projeto e uma ordem clara: primeiro as decisões no papel, depois a instalação, depois os ensaios e só então reboco, betonilha e acabamentos."
+  ],
+  [
+   "ol",
+   [
+    "projeto das instalações e decisões sobre os equipamentos",
+    "demolição, paredes divisórias, verificação de prumadas e entradas",
+    "eletricidade em tosco e correntes fracas",
+    "abastecimento de água, esgotos, estruturas de embutir",
+    "ventilação, ar condicionado, linhas e drenagem de condensados",
+    "ensaios: pressão, medições, registo fotográfico, autos",
+    "reboco, betonilha com piso radiante, impermeabilização das zonas húmidas",
+    "acabamentos e, depois, aparelhagem elétrica e louças sanitárias"
+   ]
+  ],
+  [
+   "h2",
+   "Fase 0. Projeto: o que decidir antes do primeiro roço"
+  ],
+  [
+   "p",
+   "Tomadas, interruptores e pontos de água dependem do mobiliário e dos equipamentos, por isso primeiro é precisa a planta e a disposição dos móveis. Cozinha, máquina de lavar, termoacumulador, aparelhos de ar condicionado e tratamento de água devem ser escolhidos pelo menos em dimensões e potência: daí dependem as secções dos cabos, os circuitos do quadro e as alturas e cotas das saídas."
+  ],
+  [
+   "ul",
+   [
+    "planta de tomadas e interruptores com alturas e cotas",
+    "esquema dos circuitos de iluminação e cenários de comando",
+    "esquema unifilar do quadro com calibres de disjuntores e diferenciais",
+    "esquema de águas e esgotos com alturas das saídas",
+    "esquema de ventilação, linhas de ar condicionado e drenagem de condensados",
+    "traçado do piso radiante e posição dos termóstatos"
+   ]
+  ],
+  [
+   "p",
+   "Num prédio novo, verifica-se primeiro o que o construtor deixou: onde está o quadro do piso, que potência está atribuída ao apartamento, como saem as prumadas e as condutas de ventilação. Mais detalhes na página de [remodelação em prédio novo](/pt/remodelacao-apartamento-novo)."
+  ],
+  [
+   "h2",
+   "Eletricidade"
+  ],
+  [
+   "h3",
+   "Quadro e circuitos"
+  ],
+  [
+   "p",
+   "O quadro elétrico é o coração da instalação. Normalmente tem um interruptor geral, diferenciais, disjuntores por circuito e, se necessário, relé de tensão ou proteção contra sobretensões. Os circuitos separam-se para que uma avaria numa zona não deixe todo o apartamento sem luz e os grandes consumidores tenham linhas próprias."
+  ],
+  [
+   "ul",
+   [
+    "iluminação separada das tomadas, por zonas do apartamento",
+    "tomadas por divisão, com a bancada da cozinha num circuito próprio",
+    "linhas dedicadas para placa, forno, máquina de lavar loiça, máquina de lavar roupa, termoacumulador, ar condicionado e piso radiante",
+    "proteção diferencial nas tomadas e zonas húmidas — habitualmente de 30 mA",
+    "identificação de cada disjuntor e esquema na porta do quadro"
+   ]
+  ],
+  [
+   "h3",
+   "Cabo e traçado"
+  ],
+  [
+   "p",
+   "Usa-se cabo de cobre de três condutores — fase, neutro e terra. Segundo a prática do mercado, 1,5 mm² para iluminação, 2,5 mm² para tomadas e, para a placa e outros grandes consumidores, a secção calculada pela potência, normalmente 4–6 mm². Nas paredes, o cabo segue estritamente na vertical e na horizontal, em zonas definidas, para não ser furado mais tarde; em pavimentos e tetos vai em tubo corrugado. As caixas de derivação têm de ficar acessíveis."
+  ],
+  [
+   "h3",
+   "Correntes fracas"
+  ],
+  [
+   "p",
+   "Internet, Wi-Fi, intercomunicador, câmaras, sensores de fuga e domótica instalam-se ao mesmo tempo que a eletricidade, mas em traçados separados. Em regra, um cabo de telecomunicações vai do ATI a um bastidor multimédia e daí segue cabo de pares trançados para a televisão, o posto de trabalho e os pontos de acesso Wi-Fi no teto. Para a domótica, decide-se no projeto que circuitos serão comandados e reserva-se espaço para módulos no quadro ou nas caixas."
+  ],
+  [
+   "h3",
+   "Casa de banho"
+  ],
+  [
+   "p",
+   "Na casa de banho as regras são mais apertadas: tomadas e interruptores ficam fora das zonas de salpicos, as luminárias têm o índice de proteção adequado e as partes metálicas — tubos, banheira, base de duche — ligam-se pela ligação equipotencial. O piso radiante e o toalheiro elétrico ligam-se com proteção diferencial."
+  ],
+  [
+   "h3",
+   "O que verificar antes de rebocar"
+  ],
+  [
+   "ul",
+   [
+    "tomadas e interruptores conformes à planta em alturas e cotas",
+    "foto de cada parede com fita métrica — para saber depois por onde passa o cabo",
+    "medição da resistência de isolamento e teste de disparo do diferencial",
+    "condutor de terra em todas as tomadas"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1pF5ohNHdSnme0-900.webp",
+   "Conjunto de tomadas e interruptores sobre uma mesa de apoio em madeira junto ao sofá — interior A-Frame House",
+   "As tomadas junto ao sofá e à cama são definidas em função dos móveis logo no projeto"
+  ],
+  [
+   "h2",
+   "Águas e esgotos"
+  ],
+  [
+   "h3",
+   "Abastecimento de água: coletor ou derivações em T"
+  ],
+  [
+   "p",
+   "Com coletor, cada ponto — misturadora, sanita, máquina de lavar — é alimentado por um tubo próprio e pode ser fechado sem cortar a água a todo o apartamento. O sistema com derivações em T é mais simples e barato, mas menos cómodo na manutenção. Os tubos são de polipropileno soldado, PEX ou multicamada com acessórios de pressão; nas paredes e pavimentos só ficam ligações permanentes. A água fria isola-se contra a condensação e a quente contra perdas de calor."
+  ],
+  [
+   "ul",
+   [
+    "na entrada: válvulas, filtros grosseiro e fino, redutor de pressão e contadores conforme as regras do prédio",
+    "sistema anti-inundação — sensores e válvulas motorizadas",
+    "acesso ao coletor, às válvulas e aos filtros por alçapões de visita"
+   ]
+  ],
+  [
+   "h3",
+   "Esgotos"
+  ],
+  [
+   "p",
+   "Normalmente usam-se tubos de 50 mm para lavatório, duche e máquina de lavar, e de 110 mm para a sanita. Os troços horizontais têm pendente constante para a prumada — segundo a prática do mercado, cerca de 2–3 cm por metro nos tubos de 50 mm, sem contrapendentes. As mudanças de direção fazem-se com duas curvas de 45° em vez de uma brusca, e deixam-se bocas de limpeza nos nós. A prumada comum do prédio não se desloca nem se reduz sem autorização e é envolvida em isolamento acústico."
+  ],
+  [
+   "h3",
+   "Estruturas de embutir, ralos e impermeabilização"
+  ],
+  [
+   "p",
+   "A sanita e o lavatório suspensos fixam-se a estruturas de embutir — quadros de aço montados antes de forrar as paredes. Um duche de nível com ralo linear ou pontual exige pendente na betonilha e uma altura exata do ralo. As zonas húmidas recebem impermeabilização líquida ou em tela, subindo pelas paredes, no duche até toda a altura dos salpicos; cantos e passagens de tubos selam-se com bandas e mangas."
+  ],
+  [
+   "h3",
+   "O que verificar antes de fechar"
+  ],
+  [
+   "ul",
+   [
+    "ensaio de pressão das tubagens com a pressão e a duração exigidas pelo fabricante ou pelo projeto, com foto do manómetro",
+    "alturas e cotas das saídas segundo o esquema",
+    "pendentes dos esgotos verificadas com nível, sem barrigas",
+    "continuidade da impermeabilização, incluindo cantos e junto ao ralo"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1gXiWvuON9L6XT-900.webp",
+   "Lavandaria com eletrodomésticos, toalheiro e armários até ao teto — projeto de moradia em Petrivtsi",
+   "Máquinas de lavar e secar: linhas elétricas próprias, entrada de água, esgoto e acesso às válvulas"
+  ],
+  [
+   "h2",
+   "Ventilação e ar condicionado"
+  ],
+  [
+   "p",
+   "Num prédio de apartamentos, a extração da cozinha e das casas de banho faz-se normalmente pelas condutas de ventilação. Não se podem tapar, reduzir nem usar para outros fins: delas depende a ventilação do seu apartamento e dos vizinhos. O exaustor liga-se segundo o projeto e as regras do prédio, e na casa de banho instala-se um ventilador com válvula anti-retorno. As janelas estanques quase não deixam entrar ar, por isso é preciso admissão: grelhas na caixilharia ou na parede, recuperadores descentralizados onde a fachada o permita, ou um sistema central de insuflação e extração com recuperação de calor se houver espaço no teto falso."
+  ],
+  [
+   "p",
+   "As linhas de ar condicionado — tubos frigoríficos isolados, drenagem e cabo — instalam-se antes do reboco. A drenagem precisa de pendente ou de uma bomba de condensados, e o local da unidade exterior acorda-se segundo as regras do prédio. Depois de fechar as paredes, o traçado já não pode ser alterado sem destruir os acabamentos."
+  ],
+  [
+   "ul",
+   [
+    "insuflação nas divisões habitáveis e extração na cozinha, casas de banho e closets",
+    "passagem de ar entre divisões — folga sob as portas ou grelhas",
+    "unidades interiores colocadas de modo a não soprar para a cama ou a secretária",
+    "acesso aos filtros e à drenagem para manutenção"
+   ]
+  ],
+  [
+   "h2",
+   "Piso radiante"
+  ],
+  [
+   "p",
+   "Em apartamentos faz-se sobretudo piso radiante elétrico: cabo na betonilha, malha fina na cola do cerâmico ou película sob flutuante ou parquet, se o fabricante do pavimento o permitir. O piso radiante hidráulico ligado ao aquecimento central de um prédio normalmente não é permitido, porque desequilibra o sistema. É possível com aquecimento individual — através de um grupo de mistura e segundo projeto."
+  ],
+  [
+   "ul",
+   [
+    "linha própria com disjuntor e proteção diferencial",
+    "sonda de temperatura do pavimento em tubo, para poder ser substituída",
+    "isolamento térmico sob a betonilha, para não aquecer o vizinho de baixo",
+    "não colocar sob a cozinha, roupeiros, banheira ou outros móveis sem pés",
+    "medição da resistência do cabo antes e depois da colocação, foto do traçado com cotas"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/11wEIjh0kDHFtz-900.webp",
+   "Cozinha com eletrodomésticos encastrados e frentes imitação madeira — apartamento concluído Tetris Hall",
+   "Eletrodomésticos encastrados: cada aparelho potente tem a sua própria linha"
+  ],
+  [
+   "h2",
+   "Como as instalações afetam o pé-direito e os níveis dos pavimentos"
+  ],
+  [
+   "p",
+   "As instalações ocupam centímetros, e convém sabê-lo antes de se apaixonar por um determinado pé-direito. As condutas de ventilação mecânica e as unidades de ar condicionado de conduta precisam de espaço sobre o teto falso. A betonilha com piso radiante e isolamento é mais espessa do que uma normal, e um duche de nível exige espaço para o ralo e a pendente. As estruturas de embutir para louças suspensas e os coletores ocupam nichos nas paredes."
+  ],
+  [
+   "p",
+   "Por isso o design e as instalações têm de estar coordenados no projeto: onde o teto desce, onde as sancas escondem condutas, que níveis de pavimento há em cada divisão e como fazer as transições sem soleiras."
+  ],
+  [
+   "h2",
+   "Documentos e normas: o que deve receber"
+  ],
+  [
+   "p",
+   "Os trabalhos são executados de acordo com as normas de construção em vigor, as regras das instalações elétricas e as exigências dos fabricantes. Para si, como dono de obra, mais do que a lista de normas importam os documentos que ficam depois da obra. Vão ser precisos quando, daqui a uns anos, quiser pendurar uma prateleira, trocar o termoacumulador ou encontrar uma fuga."
+  ],
+  [
+   "ul",
+   [
+    "telas finais de eletricidade e canalização — como foi realmente instalado",
+    "fotos das paredes e pavimentos com fita métrica antes de fechar",
+    "esquema unifilar do quadro com circuitos identificados",
+    "relatórios de medições elétricas e de ensaios de pressão",
+    "fichas técnicas e garantias dos equipamentos"
+   ]
+  ],
+  [
+   "p",
+   "Se a obra for feita por um empreiteiro em quem não confia totalmente, os trabalhos ocultos podem ser verificados por um técnico independente — falamos disso no artigo sobre a [fiscalização técnica](/pt/blog/fiscalizacao-tecnica-remodelacao-quando-e-necessaria)."
+  ],
+  [
+   "h2",
+   "Erros comuns nas instalações de um apartamento"
+  ],
+  [
+   "ul",
+   [
+    "tomadas «como o construtor deixou», sem ligação aos móveis e equipamentos — depois vêm as extensões",
+    "um só circuito para toda a cozinha, equipamentos potentes sem linhas próprias",
+    "cabos em diagonal nas paredes",
+    "ligações de tubos na betonilha sem acesso",
+    "esgotos sem pendente ou com curvas bruscas",
+    "conduta de ventilação tapada ou reduzida, exaustão sem admissão de ar",
+    "piso radiante sob os móveis e sem isolamento",
+    "fechar paredes sem ensaio de pressão nem registo fotográfico"
+   ]
+  ],
+  [
+   "gallery",
+   [
+    [
+     "/img/p/1dHW-ciO1rn1E0-900.webp",
+     "Sala com parede de pedra, nicho para TV e iluminação em calha — apartamento concluído Tetris Hall"
+    ],
+    [
+     "/img/p/1NVeaQcV2TZSN5-900.webp",
+     "Casa de banho com banheira de pousar, duche e nicho iluminado — projeto de moradia em Petrivtsi"
+    ]
+   ]
+  ],
+  [
+   "h2",
+   "Como fazemos as instalações numa remodelação chave na mão"
+  ],
+  [
+   "p",
+   "As instalações fazem parte da [remodelação total do apartamento](/pt/remodelacao-integral-apartamento) e da remodelação chave na mão da CAS: desde $550/m² para mão de obra e materiais de base; materiais de acabamento, mobiliário e eletrodomésticos à parte, por orçamento. Como referência: 70 m² × $550 = $38 500 à tarifa base — o valor exato resulta do orçamento após o projeto. Pode calcular a sua área na [calculadora de remodelação](/pt/calculadora-obras) e ver de que se compõe o preço na página [custo da remodelação de um apartamento](/pt/preco-remodelacao-apartamento)."
+  ],
+  [
+   "p",
+   "Os trabalhos são feitos pela nossa própria equipa, os trabalhos ocultos ficam registados em relatórios fotográficos a cada 1–2 semanas e, se quiser, instalamos uma câmara online 24/7 na obra mediante custo adicional. Um único gestor, orçamento e prazos no contrato e 12 meses de garantia sobre os trabalhos. Se tem dúvidas sobre a necessidade de substituir todas as instalações, comece pelo artigo [remodelação total ou renovação ligeira](/pt/blog/remodelacao-total-ou-renovacao-ligeira-o-que-escolher)."
+  ]
+ ],
+ "faq": [
+  [
+   "Por que ordem se fazem as instalações de um apartamento?",
+   "Primeiro o projeto e as decisões sobre equipamentos; depois demolição e paredes, eletricidade em tosco, águas e esgotos, ventilação e linhas de ar condicionado, ensaios e registo fotográfico, e só então reboco, betonilha e acabamentos."
+  ],
+  [
+   "Que secção de cabo é precisa para tomadas e iluminação?",
+   "Segundo a prática do mercado, cabo de cobre de 1,5 mm² para iluminação, 2,5 mm² para tomadas e, para a placa e outros grandes consumidores, a secção calculada, normalmente 4–6 mm². Os valores exatos são definidos no projeto em função da potência e do comprimento da linha."
+  ],
+  [
+   "Coletor ou derivações em T — o que é melhor?",
+   "O coletor é mais caro, mas cada ponto fecha-se separadamente e não há ligações intermédias nas paredes. As derivações em T são mais simples e baratas. Em apartamentos com várias casas de banho e muitos aparelhos escolhe-se geralmente o coletor."
+  ],
+  [
+   "É possível ter piso radiante hidráulico num apartamento?",
+   "Ligado ao aquecimento central de um prédio, normalmente não, porque perturba o sistema comum. É possível com aquecimento individual, através de um grupo de mistura. Nos restantes casos instala-se piso radiante elétrico."
+  ],
+  [
+   "Pode-se ligar o exaustor à conduta de ventilação?",
+   "Depende da conceção da conduta e das regras do prédio. Não se pode tapar nem reduzir a conduta nem anular a extração natural. A forma de ligação define-se no projeto."
+  ],
+  [
+   "O que verificar antes de rebocar?",
+   "Que tomadas e saídas correspondem à planta, fotos das paredes com fita métrica, medições de isolamento e funcionamento do diferencial, ensaio de pressão das tubagens, pendentes dos esgotos e linhas de ar condicionado."
+  ]
+ ]
+}

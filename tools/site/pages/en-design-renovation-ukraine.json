@@ -1,0 +1,182 @@
+{
+ "slug": "design-renovation-ukraine",
+ "lang": "en",
+ "service": "Interior design, renovation and construction across Ukraine",
+ "title": "Interior design, renovation and construction across Ukraine | CAS",
+ "description": "Interior design across Ukraine, remotely or on site; turnkey renovation and house construction in every region: Lviv, Odesa, Dnipro, Vinnytsia and other cities.",
+ "h1": "Interior design, renovation and construction across Ukraine",
+ "price": "renovation from $550/m² · design from $30/m² · house from $600/m²",
+ "lead": "Interior design from $30/m², remotely or with site visits; turnkey renovation and construction across Ukraine by our own team, in every region. Travel terms are agreed individually, and prices are \"from\", as in Kyiv.",
+ "guarantees": "no5",
+ "cards": [
+  [
+   "Interior design",
+   [
+    "measurements and layout",
+    "3D visualisations and working drawings",
+    "materials and furniture specification",
+    "designer supervision"
+   ]
+  ],
+  [
+   "Turnkey renovation",
+   [
+    "new-build and resale apartments",
+    "houses and cottages",
+    "works and rough materials from $550/m²",
+    "estimate before work starts"
+   ]
+  ],
+  [
+   "House construction",
+   [
+    "architectural design from $12/m²",
+    "shell from $600/m²",
+    "turnkey with finishing from $1,100/m²",
+    "utilities and roofing"
+   ]
+  ],
+  [
+   "Furniture and procurement",
+   [
+    "furnishing from $250/m²",
+    "custom kitchens and wardrobes",
+    "furniture and lighting direct from China",
+    "final styling"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "How we work with other cities",
+   [
+    "Design project: online meetings and concept presentations, 3D visualisations and drawings in digital form, revisions in a shared chat. Measurements and designer supervision on site, on the schedule set in the contract.",
+    "Renovation and construction: our salaried team travels to the site; the scope of works, schedule and payment scheme are fixed in the contract. Team travel and accommodation are priced individually. Photo reports every 1–2 weeks, and an online camera on site 24/7 for an extra fee."
+   ]
+  ],
+  [
+   "Prices \"from\"",
+   [
+    "Design project from $30 per m², minimum $2,500; layout package from $6/m², full package with designer supervision from $45/m². Turnkey renovation from $550 per m² (works and rough materials), office from $350 per m², house shell from $600 per m², turnkey with finishing from $1,100 per m².",
+    "The exact sum comes from the estimate after the survey and logistics are agreed. We work in Lviv, Odesa, Dnipro, Vinnytsia, Zhytomyr, Chernihiv, Cherkasy, Poltava, Ivano-Frankivsk, Ternopil, Uzhhorod, Rivne, Lutsk, Khmelnytskyi, Chernivtsi, Kropyvnytskyi and the Kyiv region."
+   ]
+  ],
+  [
+   "Projects in Ukraine and abroad",
+   [
+    "Our projects include houses in the Kyiv region (Petrivtsi House, Pidgirland), Hoda Estate in the Carpathians, the Kitana Beach complex in Bodrum, a villa design project in Dubai and a house in the USA. We have also worked in Bali, Spain, France, Germany and Poland."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1FRa0FI6iMHK5L-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/1A9yy4nI-gf9h3-900.webp",
+   "Kitana Beach"
+  ],
+  [
+   "img/p/18V9n96tOhjKjh-900.webp",
+   "USA House"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "By phone or online: property, goals, budget."
+  ],
+  [
+   "Survey and brief",
+   "Measurements, wishes, initial data."
+  ],
+  [
+   "Design and estimate",
+   "Interior or architecture; price and schedule in the contract."
+  ],
+  [
+   "Works",
+   "Renovation or construction with photo reports."
+  ],
+  [
+   "Handover",
+   "Certificate, 12-month warranty on works."
+  ]
+ ],
+ "faq": [
+  [
+   "Can I order a design project remotely?",
+   "Yes: the concept, 3D and drawings are agreed online; measurements and designer supervision involve site visits on the schedule in the contract."
+  ],
+  [
+   "Do you renovate in other regions with your own team?",
+   "Yes, we take renovation and construction in all regions of Ukraine. Team travel and accommodation are priced individually."
+  ],
+  [
+   "Are prices different in the regions?",
+   "The base \"from\" rates are the same as in Kyiv; logistics and travel are calculated separately."
+  ],
+  [
+   "How do I follow the works from another city?",
+   "Photo reports every 1–2 weeks, and an online camera on site 24/7 for an extra fee."
+  ],
+  [
+   "Do you work outside Ukraine?",
+   "Yes, we take renovation and construction in Europe; European prices are higher than in Kyiv, see the Europe page."
+  ]
+ ],
+ "near": [
+  "Other regions",
+  [
+   [
+    "/en/renovation-construction-europe",
+    "Turnkey design, renovation and construction in Europe"
+   ],
+   [
+    "/en/turnkey-renovation",
+    "Turnkey renovation"
+   ],
+   [
+    "/en/interior-design",
+    "Interior design"
+   ],
+   [
+    "/en/house-construction",
+    "House construction"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/en/house-renovation",
+   "Turnkey house renovation"
+  ],
+  [
+   "/en/turnkey-procurement",
+   "Turnkey interior procurement"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Renovation cost calculator"
+  ],
+  [
+   "/en/contract-warranty-payment",
+   "Contract, warranty, payment (sample contract)"
+  ],
+  [
+   "/en/portfolio",
+   "Консультація (портфоліо)"
+  ]
+ ],
+ "area": [
+  {
+   "@type": "Country",
+   "name": "Ukraine"
+  }
+ ]
+}

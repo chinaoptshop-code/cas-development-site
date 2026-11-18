@@ -407,5 +407,11 @@
  "Профіль і реквізити": "Profil i dane do faktury",
  "Профіль і реквізити — кабінет": "Profil i dane do faktury — konto",
  "Погоджено": "Zatwierdzono",
- "погоджено": "zatwierdzono"
+ "погоджено": "zatwierdzono",
+ "чекає вашого погодження": "czeka na Twoją akceptację",
+ "Погодити етап": "Zatwierdź etap",
+ "Погодити етап «{n}»? Студія отримає повідомлення.": "Zatwierdzić etap „{n}”? Studio otrzyma powiadomienie.",
+ "Етап погоджено — дякуємо!": "Etap zatwierdzony — dziękujemy!",
+ "Етап не знайдено": "Nie znaleziono etapu",
+ "Етап ще не готовий до погодження": "Etap nie jest jeszcze gotowy do akceptacji"
 }
