@@ -31,6 +31,7 @@ GROUP_ALLOWED = ",".join(t for t in re.split(r",\s*", ALLOWED)
 CLIENT_ALLOWED = "WebFetch,WebSearch,Read(" + str(MEMORY / "inbox-files") + "/**)"
 TEAM_TASKS = MEMORY / "02 Задачі команди.md"
 STATE = MEMORY / ".bot-state.json"
+PENDING_Q = MEMORY / ".pending-questions.jsonl"   # питання Михайлу «чекаю так/ні» (пише tg-out.sh), 18.11
 DIALOG = MEMORY / ".dialog.jsonl"   # останні репліки діалогу з Михайлом — контекст для нової розмови дня (у Drive не йде)
 MEMORY_SYNC = REPO / "tools/assistant/bin/memory-sync.sh"   # дзеркало памʼяті на Google Drive після кожної відповіді
 INBOX = MEMORY / "inbox-files"
@@ -170,6 +171,42 @@ def _open_tasks(max_lines=60):
     return "\n".join(out)
 
 
+def _pending(hours=48, n=5):
+    """Відкриті питання Михайлу за останні 2 доби (найновіше — останнім)."""
+    try:
+        rows = [json.loads(l) for l in PENDING_Q.read_text(encoding="utf-8").splitlines() if l.strip()]
+    except (FileNotFoundError, ValueError):
+        return []
+    since = (datetime.datetime.now() - datetime.timedelta(hours=hours)).isoformat(timespec="minutes")
+    closed = {r["id"] for r in rows if r.get("status") == "answered"}
+    return [r for r in rows if r.get("status") == "open" and r["id"] not in closed and r["t"] >= since][-n:]
+
+
+def close_pending(answer):
+    """Відповідь Михайла закриває останнє відкрите питання."""
+    p = _pending()
+    if p:
+        with PENDING_Q.open("a", encoding="utf-8") as f:
+            f.write(json.dumps({"id": p[-1]["id"], "t": datetime.datetime.now().isoformat(timespec="minutes"),
+                                "status": "answered", "answer": answer[:300]}, ensure_ascii=False) + "\n")
+
+
+def recent_block():
+    """18.11: у КОЖЕН промпт — останні репліки в обидва боки (включно з tg-out від інших сесій) і відкриті питання.
+    Інакше на «Публікуй сам» бот не бачив щойно надісланого питання й перепитував."""
+    d, q = _tail_dialog(16), _pending()
+    out = ""
+    if d:
+        out += f"\n\nОСТАННІ ПОВІДОМЛЕННЯ ЧАТУ (в обидва боки, найновіше внизу; «Помічник (tg-out)» — надіслали інші сесії/скрипти):\n{d}\n"
+    if q:
+        out += ("\nВІДКРИТІ ПИТАННЯ МИХАЙЛУ (чекаємо відповіді; найновіше внизу):\n"
+                + "\n".join(f"[{r['t'][5:16].replace('T', ' ')}] {r['q'][:600]}" for r in q) + "\n"
+                + "Коротка відповідь Михайла («так», «ні», «сам», «публікуй», «1», «2», «другий» тощо) — це відповідь на НАЙНОВІШЕ "
+                  "відкрите питання, а не нова задача. Не перепитуй «що саме»: виконай вибраний варіант або, якщо виконати "
+                  "мусить сесія Claude Code на Mac, коротко підтверди й допиши задачу в 02 Задачі.md з позначкою «для Mac».\n")
+    return out
+
+
 def context_block():
     d, j, t = _tail_dialog(), _journal_recent(), _open_tasks()
     if not (d or j or t):
@@ -205,7 +242,7 @@ tools/assistant/bin/md2pdf.sh <файл.md> (напряму, без «bash» п�
 SEND_FILE: /повний/шлях/до/файлу
 Коли показуєш переписку чи говориш про конкретну людину/чат із Telegram Михайла — додай окремий рядок
 OPEN_CHAT: @нік | Імʼя   (або числовий id замість ніка, якщо ніка немає; до 5 таких рядків) — я зроблю кнопку «Відкрити чат».
-Якщо просять «всю переписку», а повідомлень більше ~15 — у відповіді коротко, а повний текст файлом (Markdown → PDF, SEND_FILE).{context_block() if fresh else ""}"""
+Якщо просять «всю переписку», а повідомлень більше ~15 — у відповіді коротко, а повний текст файлом (Markdown → PDF, SEND_FILE).{context_block() if fresh else ""}{recent_block()}"""
 
 
 def run_claude(prompt, session, resume, tools=ALLOWED, turns=None, _final=False):
@@ -303,13 +340,15 @@ def handle(msg, state):
     if fresh:
         state["sid"] = str(uuid.uuid4())
     LOG("→", kind, content[:80])
+    prompt = build_prompt(kind, content, msg.get("caption", ""), fresh)   # до remember: питання бачать стан ДО відповіді
     remember("Михайло", content if kind == "текст" else f"[{kind}] {content}")
+    close_pending(content)
     api("sendChatAction", chat_id=OWNER, action="typing")
     timed_out = False
     out = None
     if ROUTER.use_claude():
         try:
-            out = run_claude(build_prompt(kind, content, msg.get("caption", ""), fresh), state["sid"], not fresh)
+            out = run_claude(prompt, state["sid"], not fresh)
         except ClaudeUnavailable as e:
             if ROUTER.mode() == "claude":                    # /local off — без локального режиму, лише чесна помилка
                 send_text(f"⚠️ Claude недоступний: {e}. Локальний режим вимкнено (/local off); /local auto — увімкнути."); return
@@ -345,8 +384,8 @@ ANSWER_RULE = ("Саму відповідь обгорни рядками ===В�
 # недоступний — локальною моделлю Ollama на Mac mini. Підписка Claude (claude -p) — лише для Михайла й команди.
 API_ENV = pathlib.Path.home() / "jarvis/projects/quiz/.env"
 CLIENT_MODEL = os.environ.get("ASSISTANT_CLIENT_MODEL", "claude-sonnet-5")
-# Локальні моделі по черзі: qwen3:8b на SSD (окремий сервер :11435), запас — qwen3:4b на внутрішньому диску (:11434)
-LOCAL_MODELS = [("http://127.0.0.1:11435", "qwen3:8b"), ("http://127.0.0.1:11434", os.environ.get("ASSISTANT_LOCAL_MODEL", "qwen3:4b"))]
+# Локальна модель: одна Ollama на :11434 (моделі на SSD, з 04.11), qwen3:8b — основна за бенчмарком docs/LOCAL-AI.md у ~/jarvis
+LOCAL_MODELS = [("http://127.0.0.1:11434", os.environ.get("ASSISTANT_LOCAL_MODEL", "qwen3:8b"))]
 
 
 def api_key():
@@ -786,6 +825,20 @@ def on_button(cq, state):
         blog_button(n, cq, state); return
     if act in ("allow", "deny"):
         client_button(act, n, cq, state); return
+    if act == "lead":                                      # пошук клієнтів (~/jarvis/scripts/tg-watch.py): «В CRM» / «Не цікаво», 18.11
+        verdict, _, lid = n.partition(":")
+        r = subprocess.run(["/opt/homebrew/bin/python3", str(pathlib.Path.home() / "jarvis/scripts/leadfilter.py"), "feedback", lid, verdict],
+                           capture_output=True, text=True, timeout=60)
+        answer_cq(cq, (r.stdout.strip() or r.stderr.strip() or "Готово")[:190])
+        m = cq.get("message", {})
+        try:
+            kb = [[b for b in row if b.get("callback_data") not in (f"lead:crm:{lid}", f"lead:no:{lid}")]   # прибрати кнопки лише цього ліда
+                  for row in (m.get("reply_markup") or {}).get("inline_keyboard", [])]
+            api("editMessageReplyMarkup", chat_id=OWNER, message_id=m.get("message_id"),
+                reply_markup=json.dumps({"inline_keyboard": [r for r in kb if r]}))
+        except Exception as e:
+            LOG("editMessageReplyMarkup:", e)
+        return
     if act == "mail":                                      # лист із локального режиму: надсилається ЛИШЕ тут, після кнопки
         r = local_mode.mail_button(n)
         answer_cq(cq, r.text[:190])
@@ -977,8 +1030,20 @@ def revise_task(t, kind, content, state):
     show_draft(t, out)
 
 
+def single_instance():
+    """18.11: два процеси bot.py відповідали на одне повідомлення двічі. Другий екземпляр — одразу вихід."""
+    import fcntl
+    global _LOCK
+    _LOCK = open(MEMORY / ".bot.lock", "w")
+    try:
+        fcntl.flock(_LOCK, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        LOG("уже працює інший екземпляр бота — виходжу"); sys.exit(0)
+
+
 def main():
     MEMORY.mkdir(parents=True, exist_ok=True)
+    single_instance()
     state = load_state()
     global ME
     ME = api("getMe"); LOG(f"бот @{ME['username']} запущено; власник {OWNER}; групи {sorted(GROUPS)}; пам'ять {MEMORY}")
@@ -1002,6 +1067,12 @@ def main():
             state["offset"] = u["update_id"] + 1
             msg = u.get("message") or {}
             chat = msg.get("chat", {}).get("id")
+            mid = f"{chat}:{msg.get('message_id')}" if msg else ""
+            done = state.setdefault("handled", [])
+            if mid and mid in done:                            # дедуплікація за message_id
+                LOG("повтор повідомлення", mid, "— пропускаю"); continue
+            if mid:
+                done.append(mid); del done[:-300]
             try:
                 if "callback_query" in u:
                     on_button(u["callback_query"], state)

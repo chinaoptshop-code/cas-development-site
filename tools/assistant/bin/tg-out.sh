@@ -32,6 +32,18 @@ import sys
 t=sys.argv[1]; n=3900
 for i in range(0,len(t),n): sys.stdout.write(t[i:i+n]+"\0")
 PY
+      # 18.11: вихідні з tg-out (сесії Claude Code, скрипти) теж у діалог бота — щоб «так»/«публікуй сам» на них він розумів.
+      # Питання (є «?» або «так») → відкрите питання в .pending-questions.jsonl; TG_OUT_ASK=0 — не вважати питанням.
+      python3 - "$msg" "${ASSISTANT_MEMORY_DIR:-$HOME/assistant-memory}" "${TG_OUT_ASK:-auto}" <<'PY' || true
+import sys, json, datetime, pathlib, re
+t, mem, ask = sys.argv[1], pathlib.Path(sys.argv[2]), sys.argv[3]
+now = datetime.datetime.now().isoformat(timespec="minutes")
+with (mem / ".dialog.jsonl").open("a", encoding="utf-8") as f:
+    f.write(json.dumps({"t": now, "who": "Помічник (tg-out)", "text": t[:1500]}, ensure_ascii=False) + "\n")
+if ask == "1" or (ask == "auto" and re.search(r"\?|«так", t)):
+    with (mem / ".pending-questions.jsonl").open("a", encoding="utf-8") as f:
+        f.write(json.dumps({"id": now, "t": now, "q": t[:1200], "status": "open"}, ensure_ascii=False) + "\n")
+PY
       ;;
     file)  api sendDocument -F chat_id="$cid" -F document=@"${1:?файл}" -F caption="${2:-}" >/dev/null ;;
     voice)
