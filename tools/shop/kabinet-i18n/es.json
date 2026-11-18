@@ -413,5 +413,19 @@
  "Погодити етап «{n}»? Студія отримає повідомлення.": "¿Aprobar la etapa «{n}»? El estudio recibirá un aviso.",
  "Етап погоджено — дякуємо!": "Etapa aprobada, ¡gracias!",
  "Етап не знайдено": "Etapa no encontrada",
- "Етап ще не готовий до погодження": "La etapa aún no está lista para aprobarse"
+ "Етап ще не готовий до погодження": "La etapa aún no está lista para aprobarse",
+ "Архітектурний проєкт": "Proyecto arquitectónico",
+ "Візуалізації": "Visualizaciones",
+ "Креслення": "Planos",
+ "Специфікація": "Especificación",
+ "Правки: {n} з {m}": "Revisiones: {n} de {m}",
+ "Правки: {n}": "Revisiones: {n}",
+ "Є правки": "Tengo cambios",
+ "Що змінити? Опишіть правки — дизайнер отримає їх одразу.": "¿Qué hay que cambiar? Describa los cambios: el diseñador los recibirá de inmediato.",
+ "Надіслати правки": "Enviar cambios",
+ "правки надіслано": "cambios enviados",
+ "Правки надіслано — етап повернувся в роботу": "Cambios enviados: la etapa vuelve a estar en curso",
+ "Ваші правки": "Sus cambios",
+ "Етап уже погоджено": "Esta etapa ya está aprobada",
+ "Опишіть, що змінити": "Describa qué cambiar"
 }

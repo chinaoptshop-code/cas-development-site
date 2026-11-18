@@ -1,0 +1,191 @@
+{
+ "slug": "projektowanie-remont-wasylkow",
+ "lang": "pl",
+ "service": "Projekt, remont i budowa pod klucz w Wasylkowie",
+ "title": "Remont pod klucz w Wasylkowie — projekt i domy | CAS",
+ "description": "Remont i budowa pod klucz w Wasylkowie: domy szkieletowe, modułowe i murowane, remont od $550/m², projekt od $30/m². Własny zespół CAS.",
+ "h1": "Projekt, remont i budowa pod klucz w Wasylkowie",
+ "price": "remont od $550/m² · projekt od $30/m² · dom od $600/m²",
+ "lead": "Remont pod klucz w Wasylkowie i okolicznych wsiach — mieszkania w starszych blokach, domy prywatne, nowe domy szkieletowe i modułowe. Projekt, remont i budowa — od projektu po meble.",
+ "parent": [
+  "/pl/projektowanie-remont-obwod-kijowski",
+  "Obwód kijowski"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Wasylków",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Obwód kijowski"
+   }
+  }
+ ],
+ "near": [
+  "W pobliżu: inne miasta",
+  [
+   [
+    "/pl/projektowanie-remont-obuchow",
+    "Obuchów"
+   ],
+   [
+    "/pl/projektowanie-remont-bojarka",
+    "Bojarka"
+   ],
+   [
+    "/pl/projektowanie-remont-biala-cerkiew",
+    "Biała Cerkiew"
+   ],
+   [
+    "/pl/projektowanie-remont-obwod-kijowski",
+    "Wszystkie miasta obwodu kijowskiego"
+   ],
+   [
+    "/pl/dom-pod-klucz-koncza-zaspa",
+    "Koncza-Zaspa, Kozyn, Puszcza-Wodyca"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Projekt wnętrz",
+   [
+    "pomiary i układ funkcjonalny",
+    "wizualizacje 3D i rysunki wykonawcze",
+    "specyfikacja materiałów i mebli",
+    "nadzór autorski"
+   ]
+  ],
+  [
+   "Remont pod klucz",
+   [
+    "mieszkania z rynku pierwotnego i wtórnego",
+    "domy i domy letniskowe",
+    "robocizna i materiały podstawowe od $550/m²",
+    "kosztorys przed startem prac"
+   ]
+  ],
+  [
+   "Budowa domu",
+   [
+    "projekt architektoniczny od $12/m²",
+    "stan surowy od $600/m²",
+    "pod klucz z wykończeniem od $1 100/m²",
+    "instalacje i dach"
+   ]
+  ],
+  [
+   "Meble i wyposażenie",
+   [
+    "umeblowanie od $250/m²",
+    "kuchnie i szafy na wymiar",
+    "meble i oświetlenie prosto z Chin",
+    "końcowa stylizacja"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Wasylków: stare miasto nad Stuhną i zabudowa jednorodzinna",
+   [
+    "Wasylków nad rzeką Stuhną to jedno z najstarszych miast obwodu kijowskiego. Zabudowa to głównie domy z różnych lat i niewielkie bloki, nowych osiedli jest mało, więc większość zleceń to remont i przebudowa domu albo budowa nowego na rodzinnej działce.",
+    "Działki w Wasylkowie i okolicznych wsiach są zwykle większe niż bliżej Kijowa — jest miejsce na garaż, budynki gospodarcze i ogród. Wszystko to planujemy od razu w planie zagospodarowania, żeby dom „nie zgubił się” na działce."
+   ]
+  ],
+  [
+   "Projektowanie wnętrz w Wasylkowie",
+   [
+    "W domach w Wasylkowie wnętrze często projektujemy razem z architekturą: prosta bryła, ciepłe wnętrze z drewnem, kuchnia z salonem z wyjściem do ogrodu. Przy mniejszym budżecie sprawdza się pakiet funkcjonalny od $6 za m². Projekt wnętrza od $30 za m² (minimum $2 500); pakiety — na stronie [studio projektowania wnętrz](/pl/projektowanie-wnetrz)."
+   ]
+  ],
+  [
+   "Remont pod klucz i budowa domu",
+   [
+    "Remontujemy domy i mieszkania: wymiana dachu i instalacji, ocieplenie, wyrównanie ścian, wykończenie; jeśli trzeba tylko przygotować mieszkanie — robimy [remont do stanu surowego](/pl/remont-surowy-mieszkania). Na dużych działkach dobrze sprawdzają się [domy szkieletowe](/pl/dom-szkieletowy) i [modułowe](/pl/dom-modulowy), a także klasyczne z betonu komórkowego.",
+    "Ten sam etatowy zespół co w Kijowie i te same stawki: remont od $550 za m² (robocizna i materiały budowlane), a jeśli remont wykonuje CAS, wynik końcowy mieści się w ±5% kosztorysu. Projekt architektoniczny od $12 za m², stan surowy od $600 za m², pod klucz z wykończeniem od $1 100 za m²; 12 miesięcy gwarancji na prace. Więcej: [remont pod klucz](/pl/remont-pod-klucz) i [budowa domów](/pl/budowa-domow)."
+   ]
+  ],
+  [
+   "Logistyka, kontrola i raporty",
+   [
+    "Kierownicy budów włączają wizyty w zwykły harmonogram, tak jak w dzielnicach Kijowa, a materiały wozimy z kijowskich hurtowni. Między wizytami — raporty zdjęciowe co 1–2 tygodnie; za dopłatą kamera online na budowie 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1DhAA8_vK0zo3E-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1LWScRofv3Y_4w-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1co4thni1Q8_1J-900.webp",
+   "Petrivtsi House"
+  ]
+ ],
+ "steps": [
+  [
+   "Konsultacja",
+   "Telefonicznie lub online: obiekt, zadania, budżet."
+  ],
+  [
+   "Pomiar i brief",
+   "Pomiary, oczekiwania, dane wyjściowe."
+  ],
+  [
+   "Projekt i kosztorys",
+   "Wnętrze lub architektura; cena i harmonogram w umowie."
+  ],
+  [
+   "Prace",
+   "Remont lub budowa z raportami zdjęciowymi."
+  ],
+  [
+   "Odbiór",
+   "Protokół i 12 miesięcy gwarancji na prace."
+  ]
+ ],
+ "faq": [
+  [
+   "Czy mogę zamówić sam układ domu?",
+   "Tak, pakiet funkcjonalny od $6 za m²: inwentaryzacja, 2–3 warianty układu i plan rozstawienia mebli."
+  ],
+  [
+   "Czy budujecie domy w Wasylkowie i okolicach?",
+   "Tak: projekt architektoniczny od $12 za m², stan surowy od $600 za m², pod klucz z wykończeniem od $1 100 za m²."
+  ],
+  [
+   "Kto będzie pracował na budowie?",
+   "Nasz własny etatowy zespół — do prac o różnym stopniu złożoności i różnego typu. 12 miesięcy gwarancji na prace."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-domu",
+   "Remont domu pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów remontu"
+  ],
+  [
+   "/pl/umowa-gwarancja-platnosc",
+   "Umowa, gwarancja, płatność (wzór umowy)"
+  ],
+  [
+   "/pl/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

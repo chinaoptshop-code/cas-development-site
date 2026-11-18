@@ -19,12 +19,12 @@ export async function onRequestPost({ request, env }) {
       if (!d.items.length || d.items.length > MAX_ITEMS) return bad(`items: від 1 до ${MAX_ITEMS}`);
       const results = [];
       for (const it of d.items) {
-        try { results.push(await upsertPartner(env, partnerInput(it))); }
+        try { results.push(await upsertPartner(env, partnerInput(it, { bot: true }))); }
         catch (e) { if (e instanceof Invalid) results.push({ error: e.message }); else throw e; }
       }
       return json({ ok: true, results });
     }
-    return json({ ok: true, ...(await upsertPartner(env, partnerInput(d))) });
+    return json({ ok: true, ...(await upsertPartner(env, partnerInput(d, { bot: true }))) });
   } catch (e) {
     if (e instanceof Invalid) return bad(e.message);
     if (noTable(e)) return bad('База партнерів ще не готова (міграція 0013)', 503);

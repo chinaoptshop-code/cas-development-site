@@ -787,7 +787,7 @@
 })();
 
 /* Сцени (section.bz[data-js]: «Будинок з нуля», «Ландшафт», «Комплекс», «Ресторан», «Будинок на воді»; префікс bz — .ba зайнятий слайдером «до/після»):
-   скрипти сцен і спільні стилі керування /assets/scene-ui.v1.css вантажимо лише після першої прокрутки (0 байтів на завантаженні).
+   спільні стилі керування /assets/scene-ui.v1.css і CSS сцен вантажимо лише після першої прокрутки (0 байтів на завантаженні), скрипт сцени — коли блок за ~1.5 екрана.
    Перемикач сцен nav.la-tab — на місці: клік підтягує блок сцени з її сторінки (fetch + DOMParser, той самий origin), ставить його замість
    поточного, переносить перемикач і вантажить JS/CSS сцени; <a href> лишаються для SEO й без JS. Показані сцени живуть у пам'яті — повернення миттєве. */
 (function () {
@@ -797,17 +797,23 @@
   var on = 0;
   function css(h) { if (!h || d.querySelector('link[href="' + h + '"]')) return; var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = h; d.head.appendChild(l); }
   function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; j.onerror = function () { [].forEach.call(d.querySelectorAll('section.bz[data-js]'), function (x) { if (x.getAttribute('data-js') === s) x.classList.add('bz-no'); }); }; d.head.appendChild(j); } // скрипт сцени не завантажився — без резерву висоти
+  // скрипт сцени (build-anim.v1.js ~50 КБ br, збірка SVG) — лише коли блок ближче ~1.5 екрана (18.11.2026: на телефоні CPU×4 він давав
+  // 200–700 мс TBT одразу після першої прокрутки, навіть якщо людина до сцени не догортає); стилі — одразу після першої прокрутки (дешево):
+  // скрипт збирає сцену лише після свого CSS і scene-ui.v1.css, а резерв висоти (site-chrome.v1.css) тримає CLS, поки JS ще в дорозі
+  var seen = {}, io = null;
+  function need(s) { var src = s.getAttribute('data-js'); if (!src || seen[src]) return; seen[src] = 1; js(src); }
+  function all() { [].forEach.call(d.querySelectorAll('section.bz[data-js]'), need); }
   function go() {
     W.removeEventListener('scroll', go);
     if (on) return; on = 1;
     W.__casBAs = 1;
     css(SCUI);
-    var seen = {};
-    [].forEach.call(ss, function (s) {
-      var src = s.getAttribute('data-js'); if (seen[src]) return; seen[src] = 1;
-      js(src);
-      css(s.getAttribute('data-css')); // стилі — одразу разом зі скриптом, щоб сцена була готова задовго до блоку
-    });
+    [].forEach.call(ss, function (s) { css(s.getAttribute('data-css')); });
+    if (!('IntersectionObserver' in W)) return all();
+    io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); need(e.target); } });
+    }, { rootMargin: '150% 0px 150% 0px' });
+    [].forEach.call(ss, function (s) { io.observe(s); });
   }
   if ((W.pageYOffset || 0) > 0) go(); else W.addEventListener('scroll', go, { passive: true });
 
@@ -834,7 +840,7 @@
     if (!keep[key(here)]) keep[key(here)] = sec; // блок, з яким прийшла сторінка — для кнопки «назад» у перемикачі
     if (u.pathname.replace(/\.html$/, '') === here.pathname.replace(/\.html$/, '') && !keep[key(u)]) { var own = d.getElementById(u.hash.slice(1)); if (own && own.matches('section.bz[data-js]')) keep[key(u)] = own; }
     nav.setAttribute('aria-busy', 'true');
-    go();
+    go(); all(); // перемикач — уже біля сцени: її скрипт потрібен зараз
     load(u).then(function (x) {
       var top = nav.getBoundingClientRect().top;
       var old = x.querySelector('nav.la-tab'); if (old && old !== nav) old.remove();

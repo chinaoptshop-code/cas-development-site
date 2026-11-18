@@ -6,7 +6,10 @@
 // POST /api/account/projects {action: 'approve', project_id, stage_id} — клієнт сам погоджує етап дизайн-проєкту (service 'design'),
 //   коли студія виставила його на приймання (status 'review') або вже виконала ('done'): approved_at = сьогодні, approved_by = 'client'.
 //   Лише свій проєкт (client_id = сесія), інакше 404; повторне погодження — ok без змін. Студії — Telegram (власник/менеджери +
-//   відповідальний), audit_log 'project.approve'. Ліміт — 30/год з IP.
+//   відповідальний), audit_log 'project.approve'. Ліміт — 30/год з IP. Те саме — для архітектурного проєкту (service 'arch').
+// POST {action: 'revise', project_id, stage_id, note} — «Є правки» (той самий етап на прийманні, ще не погоджений):
+//   revisions + 1, етап → «В роботі», rev_note / rev_at — останній коментар клієнта; понад rev_max (кругів за договором) — over: true.
+//   Студії й відповідальному етапу — Telegram, audit_log 'project.revise'.
 import { body, cameraOf, client, json, noTable, progressOf, stageStatus, STAGE_STATUS, PAY_STATUS } from '../../_account.js';
 import { escHtml, notifyStaff, notifyTeam } from '../../_alerts.js';
 import { audit } from '../../_roles.js';
@@ -37,7 +40,8 @@ export async function onRequestGet({ request, env }) {
     }
     const doc = x => pick(x, ['id', 'project_id', 'order_id', 'kind', 'title', 'url', 'stage_id', 'created_at']);
     const projects = P.map(p => {
-      const stages = parse(p.stages, []).map(s => ({ ...s, status: stageStatus(s), status_label: STAGE_STATUS[stageStatus(s)] }));
+      // відповідальний етапу (staff_id) і журнал етапу (hist) — внутрішні поля команди, клієнту не віддаємо
+      const stages = parse(p.stages, []).map(({ staff_id, hist, ...s }) => ({ ...s, status: stageStatus(s), status_label: STAGE_STATUS[stageStatus(s)] }));
       const cam = cameraOf(p.camera_url);
       return {
         ...pick(p, P_KEYS), stages, progress: progressOf(stages),
@@ -60,25 +64,58 @@ export async function onRequestPost({ request, env }) {
   if (await limited(env, request, 'account-approve', 30)) return json({ error: 'Забагато запитів — спробуйте за кілька хвилин' }, 429);
   const { d, error: e2 } = await body(request, 4 * 1024);
   if (e2) return e2;
-  if (!d || d.action !== 'approve') return json({ error: 'Некоректний запит' }, 400);
+  if (!d || !['approve', 'revise'].includes(d.action)) return json({ error: 'Некоректний запит' }, 400);
   const pid = Number.parseInt(d.project_id, 10), sid = String(d.stage_id || '');
   let p = null;
   try {
     p = Number.isInteger(pid) ? await env.DB.prepare('SELECT * FROM projects WHERE id = ? AND client_id = ?').bind(pid, c.id).first() : null;
   } catch (e) { if (!noTable(e)) throw e; }
   const stages = p ? parse(p.stages, []) : [];
-  const i = p && p.service === 'design' ? stages.findIndex(s => s && s.id === sid) : -1;
+  const i = p && DESIGN.includes(p.service) ? stages.findIndex(s => s && s.id === sid) : -1;
   if (i < 0) return json({ error: 'Етап не знайдено' }, 404);
   const s = stages[i];
+  if (d.action === 'revise') return revise(request, env, c, p, stages, i, d);
   if (s.approved_at) return json({ ok: true, already: true, stage: { id: s.id, approved_at: s.approved_at } });
   if (!['review', 'done'].includes(stageStatus(s))) return json({ error: 'Етап ще не готовий до погодження' }, 409);
   const day = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Kyiv' });
-  stages[i] = { ...s, approved_at: day, approved_by: 'client' };
+  const who0 = c.name || c.phone || 'Клієнт';
+  stages[i] = { ...s, approved_at: day, approved_by: 'client', hist: [...(Array.isArray(s.hist) ? s.hist : []), { act: 'approve', at: stamp(), by: who0 }].slice(-30) };
   await env.DB.prepare("UPDATE projects SET stages = ?, updated_at = datetime('now') WHERE id = ? AND client_id = ?").bind(JSON.stringify(stages), pid, c.id).run();
   const who = c.name || c.phone || 'Клієнт';
   await audit(env, request, { client: c, staffId: null, name: who, role: 'client' }, 'project.approve', 'projects', pid, { stage_id: s.id, approved_at: null }, { stage_id: s.id, approved_at: day, by: 'client' });
   const text = `✅ Клієнт погодив етап <b>${escHtml(s.name)}</b>\nОбʼєкт: ${escHtml(p.title)}\nКлієнт: ${escHtml(who)}`;
   await notifyTeam(env, text, 'https://cas-develop.com/kabinet/admin#projects');
-  if (p.assignee_staff_id) await notifyStaff(env, p.assignee_staff_id, text, { inline_keyboard: [[{ text: '📋 Мої задачі', url: 'https://cas-develop.com/kabinet/team' }]] });
+  await toStaff(env, p, s, text);
   return json({ ok: true, stage: { id: s.id, approved_at: day } });
+}
+
+const DESIGN = ['design', 'arch'];
+// «YYYY-MM-DD HH:MM» за Києвом — для історії етапу
+const stamp = () => new Date().toLocaleString('sv-SE', { timeZone: 'Europe/Kyiv' }).slice(0, 16);
+const TEAM_KB = { inline_keyboard: [[{ text: '📋 Мої задачі', url: 'https://cas-develop.com/kabinet/team' }]] };
+// відповідальному за обʼєкт і за етап (без повтору)
+async function toStaff(env, p, s, text) {
+  for (const id of new Set([p.assignee_staff_id, s.staff_id].filter(Boolean))) await notifyStaff(env, id, text, TEAM_KB);
+}
+
+// «Є правки»: клієнт повертає етап у роботу з коментарем; лічильник правок + 1
+async function revise(request, env, c, p, stages, i, d) {
+  const s = stages[i];
+  if (s.approved_at) return json({ error: 'Етап уже погоджено' }, 409);
+  if (!['review', 'done'].includes(stageStatus(s))) return json({ error: 'Етап ще не готовий до погодження' }, 409);
+  const note = String(d.note == null ? '' : d.note).replace(/[\u0000-\u0009\u000b-\u001f\u007f]/g, ' ').trim().slice(0, 1000);
+  if (note.length < 3) return json({ error: 'Опишіть, що змінити' }, 422);
+  const day = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Kyiv' });
+  const revisions = Math.min(99, (Number(s.revisions) || 0) + 1), over = !!(s.rev_max && revisions > s.rev_max);
+  const who = c.name || c.phone || 'Клієнт';
+  stages[i] = { ...s, status: 'in_progress', progress: Math.min(Number(s.progress) || 0, 90), revisions, rev_note: note, rev_at: day,
+    hist: [...(Array.isArray(s.hist) ? s.hist : []), { act: 'revise', at: stamp(), by: who, note }].slice(-30) };
+  await env.DB.prepare("UPDATE projects SET stages = ?, updated_at = datetime('now') WHERE id = ? AND client_id = ?").bind(JSON.stringify(stages), p.id, c.id).run();
+  await audit(env, request, { client: c, staffId: null, name: who, role: 'client' }, 'project.revise', 'projects', p.id,
+    { stage_id: s.id, revisions: s.revisions || 0, status: stageStatus(s) }, { stage_id: s.id, revisions, status: 'in_progress', note });
+  const text = `✏️ Клієнт просить правки: етап <b>${escHtml(s.name)}</b> (правка ${revisions}${s.rev_max ? ' з ' + s.rev_max : ''}${over ? ' — понад договір' : ''})\n` +
+    `Обʼєкт: ${escHtml(p.title)}\nКлієнт: ${escHtml(who)}\n«${escHtml(note)}»`;
+  await notifyTeam(env, text, 'https://cas-develop.com/kabinet/admin#projects');
+  await toStaff(env, p, s, text);
+  return json({ ok: true, stage: { id: s.id, status: 'in_progress', revisions, rev_max: s.rev_max || null, over } });
 }

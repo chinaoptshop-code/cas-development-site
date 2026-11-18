@@ -1,0 +1,187 @@
+{
+ "slug": "design-renovation-rivne",
+ "lang": "fr",
+ "service": "Design d’intérieur et rénovation à Rivne",
+ "title": "Architecture d’intérieur et rénovation à Rivne | CAS",
+ "description": "Architecture d’intérieur à Rivne : appartements neufs et anciens, maisons en périphérie. Design dès $30/m², rénovation dès $550/m², maisons dès $600/m².",
+ "h1": "Design d’intérieur et rénovation à Rivne",
+ "price": "rénovation dès $550/m² · design dès $30/m² · maison dès $600/m²",
+ "lead": "Architecture d’intérieur à Rivne pour les appartements des résidences neuves et des immeubles soviétiques, et pour les maisons de la périphérie et de Polésie. Projet à distance ou avec déplacements ; rénovation et construction par notre équipe, à des conditions individuelles.",
+ "parent": [
+  "/fr/design-renovation-ukraine",
+  "Toute l’Ukraine"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Rivne",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Oblast de Rivne"
+   }
+  }
+ ],
+ "near": [
+  "À proximité : autres villes",
+  [
+   [
+    "/fr/design-renovation-loutsk",
+    "Loutsk"
+   ],
+   [
+    "/fr/design-renovation-jytomyr",
+    "Jytomyr"
+   ],
+   [
+    "/fr/design-renovation-ternopil",
+    "Ternopil"
+   ],
+   [
+    "/fr/design-renovation-ukraine",
+    "Toutes les villes d’Ukraine"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Architecture intérieure",
+   [
+    "relevé et plan d’aménagement",
+    "visualisations 3D et plans d’exécution",
+    "descriptif des matériaux et du mobilier",
+    "suivi du concepteur"
+   ]
+  ],
+  [
+   "Rénovation clé en main",
+   [
+    "appartements neufs et anciens",
+    "maisons et cottages",
+    "travaux et matériaux de gros œuvre dès $550/m²",
+    "devis avant le début des travaux"
+   ]
+  ],
+  [
+   "Construction de maison",
+   [
+    "projet architectural dès $12/m²",
+    "gros œuvre dès $600/m²",
+    "clé en main avec finitions dès $1 100/m²",
+    "réseaux et toiture"
+   ]
+  ],
+  [
+   "Mobilier et équipement",
+   [
+    "ameublement dès $250/m²",
+    "cuisines et placards sur mesure",
+    "mobilier et luminaires en direct de Chine",
+    "stylisme final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Rivne : une ville verte et des terrains de Polésie",
+   [
+    "Rivne est une ville verte de parcs et de quartiers d’immeubles où de nombreuses résidences neuves sont apparues ces dernières années. La périphérie et la Polésie alentour, ce sont des maisons sur de grands terrains entre forêts et marais.",
+    "Les terrains de Polésie ont souvent une nappe phréatique haute et des sols tourbeux. Bien concevoir les fondations et le drainage y est crucial : nous le réglons avant toute décision d’aménagement intérieur."
+   ]
+  ],
+  [
+   "Architecture d’intérieur à Rivne",
+   [
+    "Pour les appartements de Rivne : un plan fonctionnel, des rangements et de la lumière ; pour les maisons : une palette chaude avec du bois, une cheminée et de grandes fenêtres sur le jardin. Au choix, formule plan d’aménagement, formule de base ou formule complète avec suivi de chantier. Projet de design à partir de $30 le m² (minimum $2 500) ; les formules sont détaillées sur la page [studio d’architecture d’intérieur](/fr/architecture-interieur)."
+   ]
+  ],
+  [
+   "Rénovation clé en main et construction de maisons",
+   [
+    "Nous rénovons appartements et maisons, des réseaux neufs jusqu’aux finitions. Nous construisons des maisons en béton cellulaire, en brique, à ossature bois et en madriers ; les fondations sont conçues après l’étude du terrain — voir aussi [conception de maison](/fr/conception-maison).",
+    "La rénovation est réalisée par notre équipe salariée : à partir de $550 le m² pour les travaux et matériaux de base ; matériaux de finition, mobilier et électroménager en sus, sur devis. Le périmètre, le calendrier et l’échéancier (50/50, 50/30/20 ou par étapes, acompte à partir de 10 %) sont fixés au contrat ; le déplacement de l’équipe se négocie au cas par cas. Projet d’architecture à partir de $12 le m², gros œuvre à partir de $600 le m², clé en main avec finitions à partir de $1 100 le m² — voir [rénovation clé en main](/fr/renovation-cle-en-main) et [construction de maisons](/fr/construction-maison)."
+   ]
+  ],
+  [
+   "Logistique, suivi et rapports",
+   [
+    "Le projet et les validations se font en ligne ; nous nous déplaçons pour les relevés et les étapes clés selon le calendrier du contrat, les conditions et le coût des déplacements et de l’hébergement de l’équipe étant individuels. Entre deux visites, reportages photo toutes les 1 à 2 semaines et, en option payante, caméra en ligne sur le chantier 24 h/24."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1DhAA8_vK0zo3E-900.webp",
+   "A-Frame House"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "Par téléphone ou en ligne : bien, objectifs, budget."
+  ],
+  [
+   "Relevé et brief",
+   "Mesures, souhaits, données de départ."
+  ],
+  [
+   "Projet et devis",
+   "Intérieur ou architecture ; prix et planning au contrat."
+  ],
+  [
+   "Travaux",
+   "Rénovation ou construction avec reportages photo."
+  ],
+  [
+   "Livraison",
+   "Procès-verbal, garantie de 12 mois sur les travaux."
+  ]
+ ],
+ "faq": [
+  [
+   "Peut-on construire sur un terrain à nappe phréatique haute ?",
+   "Oui, mais le projet de fondations et de drainage se fait après l’étude du terrain. Gros œuvre à partir de $600 le m²."
+  ],
+  [
+   "Combien coûte une rénovation à Rivne ?",
+   "À partir de $550 le m² pour les travaux et matériaux de base ; matériaux de finition, mobilier et électroménager en sus, sur devis."
+  ],
+  [
+   "Combien coûte un projet de design à Rivne ?",
+   "À partir de $30 le m², minimum $2 500. La formule plan d’aménagement démarre à $6 le m², la formule complète avec suivi de chantier par le designer à $45 le m²."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/renovation-maison-cle-en-main",
+   "Rénovation de maison clé en main"
+  ],
+  [
+   "/fr/equipement-cle-en-main",
+   "Équipement de projets clé en main"
+  ],
+  [
+   "/fr/calculateur-renovation",
+   "Calculateur du coût de rénovation"
+  ],
+  [
+   "/fr/contrat-garantie-paiement",
+   "Contrat, garantie, paiement (modèle de contrat)"
+  ],
+  [
+   "/fr/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

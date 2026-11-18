@@ -1,5 +1,6 @@
 // Швидкість основних типів сторінок: LCP, CLS, TBT (сума long tasks понад 50 мс), байти й запити першого завантаження.
 //   node tools/tests/perf.mjs [--pages /,/x] [--runs 2] [--json out.json]
+// «сцена» — TBT/CLS прокрутки колесом до першої сцени section.bz (або квізу) й ще 3 екрани крізь неї.
 // Профілі: «телефон» 402×874 DPR3, 1.6 Мбіт/с, RTT 150 мс, CPU ×4; «ПК» 1440×900 без обмежень. Статика — з репозиторію
 // (ті самі правила, що tools/tests/layout.mjs), зовнішні запити (Clarity тощо) блокуються; мініфікацію деплою не враховано.
 import http from 'node:http';
@@ -65,16 +66,26 @@ async function measure(path, p) {
   await page.mouse.wheel(0, 900); await page.waitForTimeout(p.net ? 2500 : 800);
   await page.mouse.wheel(0, 2400); await page.waitForTimeout(p.net ? 2500 : 800);
   const m = await page.evaluate(() => window.__m);
+  // сцена (section.bz) і квіз: прокрутка колесом до блоку й крізь нього — TBT/CLS цієї фази окремо (скрипт сцени, збірка, casDrive)
+  let tbtScene = 0, clsScene = 0;
+  const tgt = await page.evaluate(() => { const s = document.querySelector('section.bz[data-js], [data-quiz]'); return s ? Math.round(s.getBoundingClientRect().top + scrollY) : -1; });
+  if (tgt >= 0) {
+    const vh = p.viewport.height;
+    for (let y = await page.evaluate(() => scrollY); y < tgt + 3 * vh; y += vh * 0.8) { await page.mouse.wheel(0, vh * 0.8); await page.waitForTimeout(p.net ? 700 : 250); }
+    await page.waitForTimeout(p.net ? 2500 : 800);
+    const m2 = await page.evaluate(() => window.__m);
+    tbtScene = Math.round(m2.tbt - m.tbt); clsScene = +(m2.cls - m.cls).toFixed(3);
+  }
   await ctx.close();
-  return { lcp: Math.round(m.lcp), lcpEl: m.lcpEl.slice(0, 60), cls: +m.cls.toFixed(3), tbt: Math.round(initial.tbt), tbtScroll: Math.round(m.tbt - initial.tbt), load, kb: Math.round(initial.bytes / 1024), reqs: initial.reqs, kbAfterScroll: Math.round(bytes / 1024) };
+  return { lcp: Math.round(m.lcp), lcpEl: m.lcpEl.slice(0, 60), cls: +m.cls.toFixed(3), tbt: Math.round(initial.tbt), tbtScroll: Math.round(m.tbt - initial.tbt), tbtScene, clsScene, load, kb: Math.round(initial.bytes / 1024), reqs: initial.reqs, kbAfterScroll: Math.round(bytes / 1024) };
 }
 const out = [];
 for (const path of PAGES) for (const [name, p] of Object.entries(PROF)) {
   const rs = []; for (let i = 0; i < RUNS; i++) rs.push(await measure(path, p));
   const med = k => rs.map(r => r[k]).sort((a, b) => a - b)[Math.floor((rs.length - 1) / 2)];
-  const r = { path, prof: name, lcp: med('lcp'), cls: Math.max(...rs.map(r => r.cls)), tbt: med('tbt'), tbtScroll: med('tbtScroll'), kb: med('kb'), reqs: med('reqs'), kbAfterScroll: med('kbAfterScroll'), lcpEl: rs[0].lcpEl };
+  const r = { path, prof: name, lcp: med('lcp'), cls: Math.max(...rs.map(r => r.cls)), tbt: med('tbt'), tbtScroll: med('tbtScroll'), tbtScene: med('tbtScene'), clsScene: Math.max(...rs.map(r => r.clsScene)), kb: med('kb'), reqs: med('reqs'), kbAfterScroll: med('kbAfterScroll'), lcpEl: rs[0].lcpEl };
   out.push(r);
-  console.log(`${path.padEnd(42)} ${name.padEnd(8)} LCP ${String(r.lcp).padStart(5)} мс  CLS ${r.cls.toFixed(3)}  TBT ${String(r.tbt).padStart(4)}+${String(r.tbtScroll).padStart(4)} мс  ${String(r.kb).padStart(5)} КБ/${r.reqs} запитів (після прокрутки ${r.kbAfterScroll} КБ)  LCP: ${r.lcpEl}`);
+  console.log(`${path.padEnd(42)} ${name.padEnd(8)} LCP ${String(r.lcp).padStart(5)} мс  CLS ${r.cls.toFixed(3)}  TBT ${String(r.tbt).padStart(4)}+${String(r.tbtScroll).padStart(4)} мс  сцена TBT ${String(r.tbtScene).padStart(4)} CLS ${r.clsScene.toFixed(3)}  ${String(r.kb).padStart(5)} КБ/${r.reqs} запитів (після прокрутки ${r.kbAfterScroll} КБ)  LCP: ${r.lcpEl}`);
 }
 if (arg('--json')) writeFileSync(arg('--json'), JSON.stringify(out, null, 1));
 await browser.close(); server.close();

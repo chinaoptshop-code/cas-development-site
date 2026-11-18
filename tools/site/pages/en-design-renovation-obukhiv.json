@@ -1,0 +1,191 @@
+{
+ "slug": "design-renovation-obukhiv",
+ "lang": "en",
+ "service": "Turnkey design, renovation and construction in Obukhiv",
+ "title": "Turnkey renovation in Obukhiv — design and houses | CAS",
+ "description": "Turnkey renovation of apartments and houses in Obukhiv, Ukrainka and Trypillia: design from $30/m², renovation from $550/m², construction from $600/m².",
+ "h1": "Turnkey design, renovation and construction in Obukhiv",
+ "price": "renovation from $550/m² · design from $30/m² · house from $600/m²",
+ "lead": "Turnkey renovation in Obukhiv, Ukrainka and the villages above the Dnipro south of Kyiv: apartments, private houses and country residences. Design, renovation, construction and landscaping by one team.",
+ "parent": [
+  "/en/design-renovation-kyiv-region",
+  "Kyiv region"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Obukhiv",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Kyiv region"
+   }
+  }
+ ],
+ "near": [
+  "Nearby: other cities",
+  [
+   [
+    "/en/design-renovation-vasylkiv",
+    "Vasylkiv"
+   ],
+   [
+    "/en/design-renovation-boryspil",
+    "Boryspil"
+   ],
+   [
+    "/en/design-renovation-bila-tserkva",
+    "Bila Tserkva"
+   ],
+   [
+    "/en/design-renovation-kyiv-region",
+    "All towns of the Kyiv region"
+   ],
+   [
+    "/en/turnkey-house-koncha-zaspa",
+    "Koncha-Zaspa, Kozyn, Pushcha-Vodytsia"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Interior design",
+   [
+    "measurements and layout",
+    "3D visualisations and working drawings",
+    "materials and furniture specification",
+    "designer supervision"
+   ]
+  ],
+  [
+   "Turnkey renovation",
+   [
+    "new-build and resale apartments",
+    "houses and cottages",
+    "works and rough materials from $550/m²",
+    "estimate before work starts"
+   ]
+  ],
+  [
+   "House construction",
+   [
+    "architectural design from $12/m²",
+    "shell from $600/m²",
+    "turnkey with finishing from $1,100/m²",
+    "utilities and roofing"
+   ]
+  ],
+  [
+   "Furniture and procurement",
+   [
+    "furnishing from $250/m²",
+    "custom kitchens and wardrobes",
+    "furniture and lighting direct from China",
+    "final styling"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "The Obukhiv area: a town, the Dnipro and country houses",
+   [
+    "Obukhiv is a small town with mostly Soviet-era housing and a private sector, and nearby are Ukrainka and Trypillia on the Dnipro and Kozyn closer to Kyiv. There are many country houses here, used both for permanent living and as a dacha with a view of the water.",
+    "For apartments in Obukhiv and Ukrainka the typical task is a major renovation of older housing. For houses above the Dnipro — terraces, large windows, a sauna or pool and landscaping of a sloping plot."
+   ]
+  ],
+  [
+   "Interior design in Obukhiv",
+   [
+    "On plots overlooking the Dnipro, interior design is closely tied to the architecture: where the windows are, where the living room faces, how you go down from the terrace to the garden. For apartments — a functional layout and light finishes. Design project from $30 per m² (minimum $2,500); packages are on the [interior design studio](/en/interior-design) page."
+   ]
+  ],
+  [
+   "Turnkey renovation and house construction",
+   [
+    "We renovate apartments with full replacement of services, houses and cottages; details of the warranty are on the [contract, warranty, payment](/en/contract-warranty-payment) page. Plots above the Dnipro often slope, so we design for the terrain, retaining walls and drainage; for country residences see also [houses in Koncha-Zaspa and Kozyn](/en/turnkey-house-koncha-zaspa).",
+    "The same salaried team as in Kyiv, at the same rates: renovation from $550 per m² (works and rough materials), and if CAS carries out the renovation, the final total stays within ±5% of the estimate. Architectural design from $12 per m², house shell from $600 per m², turnkey with finishing from $1,100 per m²; 12-month warranty on works. More on [turnkey renovation](/en/turnkey-renovation) and [house construction](/en/house-construction)."
+   ]
+  ],
+  [
+   "Logistics, control and reports",
+   [
+    "Our site managers include visits to the town in their normal schedule, just as for Kyiv districts, and materials come from Kyiv warehouses. Between visits you get photo reports every 1–2 weeks; an online camera on site 24/7 is available for an extra fee."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1jLCsJh1mIO_wX-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1xskjqBvCXgXuL-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/12W1z8tHakMPyY-900.webp",
+   "Linden Penthouse"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "By phone or online: property, goals, budget."
+  ],
+  [
+   "Survey and brief",
+   "Measurements, wishes, initial data."
+  ],
+  [
+   "Design and estimate",
+   "Interior or architecture; price and schedule in the contract."
+  ],
+  [
+   "Works",
+   "Renovation or construction with photo reports."
+  ],
+  [
+   "Handover",
+   "Certificate, 12-month warranty on works."
+  ]
+ ],
+ "faq": [
+  [
+   "Do you do landscaping for a house above the Dnipro?",
+   "Yes, landscape design from $50 per 100 m²: site plan, zoning, garden lighting, terraces."
+  ],
+  [
+   "How much does renovation in Obukhiv cost?",
+   "From $550 per m² for works and rough materials; finishing materials, furniture and appliances are separate, per estimate."
+  ],
+  [
+   "Can you build on a sloping plot?",
+   "Yes. The foundation, retaining walls and drainage are designed after we receive the site survey data."
+  ]
+ ],
+ "rel": [
+  [
+   "/en/house-renovation",
+   "Turnkey house renovation"
+  ],
+  [
+   "/en/turnkey-procurement",
+   "Turnkey interior procurement"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Renovation cost calculator"
+  ],
+  [
+   "/en/contract-warranty-payment",
+   "Contract, warranty, payment (sample contract)"
+  ],
+  [
+   "/en/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

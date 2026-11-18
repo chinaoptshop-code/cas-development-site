@@ -565,6 +565,254 @@
   "webhook_copies": 0
  },
  {
+  "page": "ar/design-renovation-bila-tserkva.html",
+  "kind": "land",
+  "html_kb": 44.3,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-boiarka.html",
+  "kind": "land",
+  "html_kb": 43.6,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-boryspil.html",
+  "kind": "land",
+  "html_kb": 43.8,
+  "gzip_kb": 11.8,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-brovary.html",
+  "kind": "land",
+  "html_kb": 44.1,
+  "gzip_kb": 11.8,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-bucha.html",
+  "kind": "land",
+  "html_kb": 44.3,
+  "gzip_kb": 11.8,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 390,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-cherkasy.html",
+  "kind": "land",
+  "html_kb": 43.6,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-chernihiv.html",
+  "kind": "land",
+  "html_kb": 43.9,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-chernivtsi.html",
+  "kind": "land",
+  "html_kb": 43.8,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 382,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "ar/design-renovation-dnipro.html",
   "kind": "land",
   "html_kb": 43.6,
@@ -596,14 +844,231 @@
   "webhook_copies": 0
  },
  {
-  "page": "ar/design-renovation-kyiv-region.html",
+  "page": "ar/design-renovation-fastiv.html",
   "kind": "land",
-  "html_kb": 48.0,
-  "gzip_kb": 12.6,
+  "html_kb": 43.6,
+  "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 445,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-hostomel.html",
+  "kind": "land",
+  "html_kb": 44.1,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-irpin.html",
+  "kind": "land",
+  "html_kb": 44.6,
+  "gzip_kb": 11.9,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-ivano-frankivsk.html",
+  "kind": "land",
+  "html_kb": 44.4,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-khmelnytskyi.html",
+  "kind": "land",
+  "html_kb": 43.9,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-kropyvnytskyi.html",
+  "kind": "land",
+  "html_kb": 44.0,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-kyiv-region.html",
+  "kind": "land",
+  "html_kb": 48.5,
+  "gzip_kb": 12.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 457,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-lutsk.html",
+  "kind": "land",
+  "html_kb": 43.3,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 382,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -658,6 +1123,37 @@
   "webhook_copies": 0
  },
  {
+  "page": "ar/design-renovation-obukhiv.html",
+  "kind": "land",
+  "html_kb": 43.4,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "ar/design-renovation-odesa.html",
   "kind": "land",
   "html_kb": 43.8,
@@ -689,14 +1185,293 @@
   "webhook_copies": 0
  },
  {
-  "page": "ar/design-renovation-ukraine.html",
+  "page": "ar/design-renovation-poltava.html",
   "kind": "land",
-  "html_kb": 46.3,
-  "gzip_kb": 12.0,
+  "html_kb": 43.8,
+  "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 419,
+  "tags": 382,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-rivne.html",
+  "kind": "land",
+  "html_kb": 43.5,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-ternopil.html",
+  "kind": "land",
+  "html_kb": 43.6,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-ukraine.html",
+  "kind": "land",
+  "html_kb": 48.8,
+  "gzip_kb": 12.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 471,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-uzhhorod.html",
+  "kind": "land",
+  "html_kb": 44.0,
+  "gzip_kb": 11.8,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-vasylkiv.html",
+  "kind": "land",
+  "html_kb": 43.7,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-vinnytsia.html",
+  "kind": "land",
+  "html_kb": 43.9,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 382,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-vyshhorod.html",
+  "kind": "land",
+  "html_kb": 43.9,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-vyshneve.html",
+  "kind": "land",
+  "html_kb": 43.5,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "ar/design-renovation-zhytomyr.html",
+  "kind": "land",
+  "html_kb": 43.8,
+  "gzip_kb": 11.8,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 382,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -6249,6 +7024,223 @@
   "webhook_copies": 0
  },
  {
+  "page": "de/innenarchitektur-renovierung-bila-zerkwa.html",
+  "kind": "land",
+  "html_kb": 40.6,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 390,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-bojarka.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-boryspil.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-browary.html",
+  "kind": "land",
+  "html_kb": 40.6,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-butscha.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 393,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-chmelnyzkyj.html",
+  "kind": "land",
+  "html_kb": 40.6,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-czernowitz.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "de/innenarchitektur-renovierung-dnipro.html",
   "kind": "land",
   "html_kb": 40.4,
@@ -6257,6 +7249,192 @@
   "js_kb": 0.5,
   "font_sizes": 6,
   "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-fastiw.html",
+  "kind": "land",
+  "html_kb": 40.4,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 390,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-hostomel.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-irpin.html",
+  "kind": "land",
+  "html_kb": 41.3,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 392,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-iwano-frankiwsk.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-kropywnyzkyj.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-luzk.html",
+  "kind": "land",
+  "html_kb": 40.0,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -6313,12 +7491,48 @@
  {
   "page": "de/innenarchitektur-renovierung-oblast-kyjiw.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.9,
   "gzip_kb": 12.0,
+=======
+  "html_kb": 44.2,
+  "gzip_kb": 12.1,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 449,
+  "tags": 461,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-obuchiw.html",
+  "kind": "land",
+  "html_kb": 40.2,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -6373,14 +7587,360 @@
   "webhook_copies": 0
  },
  {
-  "page": "de/innenarchitektur-renovierung-ukraine.html",
+  "page": "de/innenarchitektur-renovierung-poltawa.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.5,
   "gzip_kb": 11.6,
+=======
+  "html_kb": 40.5,
+  "gzip_kb": 11.3,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 423,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-riwne.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-schytomyr.html",
+  "kind": "land",
+  "html_kb": 40.4,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-ternopil.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-tscherkassy.html",
+  "kind": "land",
+  "html_kb": 40.4,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-tschernihiw.html",
+  "kind": "land",
+  "html_kb": 40.7,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-ukraine.html",
+  "kind": "land",
+  "html_kb": 44.4,
+  "gzip_kb": 12.0,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 475,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-uschhorod.html",
+  "kind": "land",
+  "html_kb": 40.7,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-wasylkiw.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 390,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-winnyzja.html",
+  "kind": "land",
+  "html_kb": 40.4,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-wyschhorod.html",
+  "kind": "land",
+  "html_kb": 40.4,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "de/innenarchitektur-renovierung-wyschnewe.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7594,12 +9154,17 @@
  {
   "page": "dyzain-i-remont-bila-tserkva.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.8,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.0,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 346,
+  "tags": 354,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7607,7 +9172,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -7625,12 +9190,17 @@
  {
   "page": "dyzain-i-remont-boiarka.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.9,
   "gzip_kb": 12.0,
+=======
+  "html_kb": 44.0,
+  "gzip_kb": 12.1,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 344,
+  "tags": 352,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7638,7 +9208,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -7656,12 +9226,17 @@
  {
   "page": "dyzain-i-remont-boryspil.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.0,
   "gzip_kb": 12.0,
+=======
+  "html_kb": 44.2,
+  "gzip_kb": 12.1,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 345,
+  "tags": 353,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7669,7 +9244,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -7687,12 +9262,16 @@
  {
   "page": "dyzain-i-remont-brovary.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.2,
+=======
+  "html_kb": 44.3,
+>>>>>>> origin/main
   "gzip_kb": 12.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 345,
+  "tags": 353,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7700,7 +9279,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -7718,12 +9297,17 @@
  {
   "page": "dyzain-i-remont-bucha.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 44.2,
   "gzip_kb": 12.3,
+=======
+  "html_kb": 45.2,
+  "gzip_kb": 12.4,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 350,
+  "tags": 358,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7731,7 +9315,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -7749,12 +9333,16 @@
  {
   "page": "dyzain-i-remont-cherkasy.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.9,
+=======
+  "html_kb": 44.1,
+>>>>>>> origin/main
   "gzip_kb": 12.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 342,
+  "tags": 350,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7762,7 +9350,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -7780,12 +9368,17 @@
  {
   "page": "dyzain-i-remont-chernihiv.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.0,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.1,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 344,
+  "tags": 352,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7793,7 +9386,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -7811,12 +9404,17 @@
  {
   "page": "dyzain-i-remont-chernivtsi.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.8,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.0,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 341,
+  "tags": 349,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7824,7 +9422,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -7873,12 +9471,17 @@
  {
   "page": "dyzain-i-remont-fastiv.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.8,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.0,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 346,
+  "tags": 354,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7886,7 +9489,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -7904,12 +9507,16 @@
  {
   "page": "dyzain-i-remont-hostomel.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.5,
+=======
+  "html_kb": 44.6,
+>>>>>>> origin/main
   "gzip_kb": 12.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 346,
+  "tags": 354,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7917,7 +9524,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -7935,12 +9542,17 @@
  {
   "page": "dyzain-i-remont-irpin.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 45.4,
   "gzip_kb": 12.9,
+=======
+  "html_kb": 46.5,
+  "gzip_kb": 13.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 350,
+  "tags": 358,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7948,7 +9560,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -7966,12 +9578,17 @@
  {
   "page": "dyzain-i-remont-ivano-frankivsk.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.2,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.6,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 343,
+  "tags": 351,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -7979,7 +9596,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -7997,12 +9614,17 @@
  {
   "page": "dyzain-i-remont-khmelnytskyi.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 44.2,
   "gzip_kb": 13.4,
+=======
+  "html_kb": 45.4,
+  "gzip_kb": 13.5,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 344,
+  "tags": 352,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -8010,7 +9632,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -8028,12 +9650,17 @@
  {
   "page": "dyzain-i-remont-kropyvnytskyi.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.9,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.3,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 342,
+  "tags": 350,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -8041,7 +9668,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -8090,12 +9717,17 @@
  {
   "page": "dyzain-i-remont-lutsk.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.2,
   "gzip_kb": 11.7,
+=======
+  "html_kb": 43.3,
+  "gzip_kb": 11.8,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 342,
+  "tags": 350,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -8103,7 +9735,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -8183,12 +9815,16 @@
  {
   "page": "dyzain-i-remont-obukhiv.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.9,
+=======
+  "html_kb": 44.0,
+>>>>>>> origin/main
   "gzip_kb": 12.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 344,
+  "tags": 352,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -8196,7 +9832,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -8276,12 +9912,16 @@
  {
   "page": "dyzain-i-remont-poltava.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.7,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 43.9,
+  "gzip_kb": 12.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 342,
+  "tags": 350,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -8289,7 +9929,132 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "dyzain-i-remont-rivne.html",
+  "kind": "land",
+  "html_kb": 44.0,
+  "gzip_kb": 12.0,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 351,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "dyzain-i-remont-ternopil.html",
+  "kind": "land",
+  "html_kb": 43.7,
+  "gzip_kb": 11.9,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 351,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "dyzain-i-remont-ukraina.html",
+  "kind": "land",
+  "html_kb": 50.9,
+  "gzip_kb": 13.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 496,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "dyzain-i-remont-uzhhorod.html",
+  "kind": "land",
+  "html_kb": 44.1,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 350,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -8431,12 +10196,17 @@
  {
   "page": "dyzain-i-remont-vasylkiv.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.9,
   "gzip_kb": 12.0,
+=======
+  "html_kb": 44.1,
+  "gzip_kb": 12.1,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 346,
+  "tags": 354,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -8444,7 +10214,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -8462,12 +10232,17 @@
  {
   "page": "dyzain-i-remont-vinnytsia.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.8,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 43.9,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 341,
+  "tags": 349,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -8475,7 +10250,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -8493,12 +10268,17 @@
  {
   "page": "dyzain-i-remont-vyshhorod.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.9,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.1,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 344,
+  "tags": 352,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -8506,7 +10286,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -8524,12 +10304,17 @@
  {
   "page": "dyzain-i-remont-vyshneve.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.8,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 43.9,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 345,
+  "tags": 353,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -8537,7 +10322,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -8555,12 +10340,17 @@
  {
   "page": "dyzain-i-remont-zhytomyr.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.7,
   "gzip_kb": 11.8,
+=======
+  "html_kb": 43.8,
+  "gzip_kb": 11.9,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 343,
+  "tags": 351,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -8568,7 +10358,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -9424,6 +11214,254 @@
   "webhook_copies": 0
  },
  {
+  "page": "en/design-renovation-bila-tserkva.html",
+  "kind": "land",
+  "html_kb": 40.7,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 396,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-boiarka.html",
+  "kind": "land",
+  "html_kb": 40.4,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 393,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-boryspil.html",
+  "kind": "land",
+  "html_kb": 40.4,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 394,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-brovary.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 395,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-bucha.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 399,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-cherkasy.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 392,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-chernihiv.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 393,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-chernivtsi.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 391,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "en/design-renovation-dnipro.html",
   "kind": "land",
   "html_kb": 40.1,
@@ -9455,14 +11493,231 @@
   "webhook_copies": 0
  },
  {
-  "page": "en/design-renovation-kyiv-region.html",
+  "page": "en/design-renovation-fastiv.html",
   "kind": "land",
-  "html_kb": 43.5,
-  "gzip_kb": 11.8,
+  "html_kb": 40.3,
+  "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 457,
+  "tags": 396,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-hostomel.html",
+  "kind": "land",
+  "html_kb": 40.6,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 394,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-irpin.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 398,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-ivano-frankivsk.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 393,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-khmelnytskyi.html",
+  "kind": "land",
+  "html_kb": 40.6,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 393,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-kropyvnytskyi.html",
+  "kind": "land",
+  "html_kb": 40.7,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 392,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-kyiv-region.html",
+  "kind": "land",
+  "html_kb": 44.1,
+  "gzip_kb": 11.9,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 469,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-lutsk.html",
+  "kind": "land",
+  "html_kb": 39.9,
+  "gzip_kb": 11.0,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 391,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -9517,6 +11772,37 @@
   "webhook_copies": 0
  },
  {
+  "page": "en/design-renovation-obukhiv.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 394,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "en/design-renovation-odesa.html",
   "kind": "land",
   "html_kb": 40.1,
@@ -9548,14 +11834,293 @@
   "webhook_copies": 0
  },
  {
-  "page": "en/design-renovation-ukraine.html",
+  "page": "en/design-renovation-poltava.html",
   "kind": "land",
-  "html_kb": 42.2,
-  "gzip_kb": 11.4,
+  "html_kb": 40.4,
+  "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 431,
+  "tags": 391,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-rivne.html",
+  "kind": "land",
+  "html_kb": 40.2,
+  "gzip_kb": 11.0,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 392,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-ternopil.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 392,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-ukraine.html",
+  "kind": "land",
+  "html_kb": 44.2,
+  "gzip_kb": 11.8,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 483,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-uzhhorod.html",
+  "kind": "land",
+  "html_kb": 40.6,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 392,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-vasylkiv.html",
+  "kind": "land",
+  "html_kb": 40.4,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 396,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-vinnytsia.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 391,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-vyshhorod.html",
+  "kind": "land",
+  "html_kb": 40.4,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 394,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-vyshneve.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 395,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "en/design-renovation-zhytomyr.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 391,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -12041,6 +14606,254 @@
   "webhook_copies": 0
  },
  {
+  "page": "es/diseno-reforma-bila-tserkva.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-boiarka.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-boryspil.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-brovary.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-bucha.html",
+  "kind": "land",
+  "html_kb": 41.1,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 392,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-cherkasy.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-chernihiv.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-chernivtsi.html",
+  "kind": "land",
+  "html_kb": 40.7,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "es/diseno-reforma-dnipro.html",
   "kind": "land",
   "html_kb": 40.7,
@@ -12072,6 +14885,192 @@
   "webhook_copies": 0
  },
  {
+  "page": "es/diseno-reforma-fastiv.html",
+  "kind": "land",
+  "html_kb": 40.6,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-hostomel.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-irpin.html",
+  "kind": "land",
+  "html_kb": 41.5,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 391,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-ivano-frankivsk.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-jmelnytski.html",
+  "kind": "land",
+  "html_kb": 40.7,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-kropyvnytsky.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "es/diseno-reforma-leopolis.html",
   "kind": "land",
   "html_kb": 41.0,
@@ -12080,6 +15079,68 @@
   "js_kb": 0.5,
   "font_sizes": 6,
   "tags": 382,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-lutsk.html",
+  "kind": "land",
+  "html_kb": 40.2,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-obukhiv.html",
+  "kind": "land",
+  "html_kb": 40.6,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -12165,14 +15226,112 @@
   "webhook_copies": 0
  },
  {
-  "page": "es/diseno-reforma-region-kiev.html",
+  "page": "es/diseno-reforma-poltava.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 44.0,
   "gzip_kb": 12.0,
+=======
+  "html_kb": 40.6,
+  "gzip_kb": 11.2,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 448,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-region-kiev.html",
+  "kind": "land",
+  "html_kb": 44.2,
+  "gzip_kb": 12.1,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 460,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-rivne.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-ternopil.html",
+  "kind": "land",
+  "html_kb": 40.6,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -12229,12 +15388,203 @@
  {
   "page": "es/diseno-reforma-ucrania.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.9,
   "gzip_kb": 11.6,
+=======
+  "html_kb": 44.6,
+  "gzip_kb": 11.9,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 422,
+  "tags": 474,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-uzhgorod.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-vasylkiv.html",
+  "kind": "land",
+  "html_kb": 40.6,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-vinnytsia.html",
+  "kind": "land",
+  "html_kb": 40.7,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-vyshhorod.html",
+  "kind": "land",
+  "html_kb": 40.6,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-vyshneve.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "es/diseno-reforma-zhytomyr.html",
+  "kind": "land",
+  "html_kb": 40.7,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -14257,6 +17607,161 @@
   "webhook_copies": 0
  },
  {
+  "page": "fr/design-renovation-bila-tserkva.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-boiarka.html",
+  "kind": "land",
+  "html_kb": 41.0,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-boryspil.html",
+  "kind": "land",
+  "html_kb": 41.1,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-boutcha.html",
+  "kind": "land",
+  "html_kb": 41.6,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 390,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-brovary.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "fr/design-renovation-dnipro.html",
   "kind": "land",
   "html_kb": 41.1,
@@ -14265,6 +17770,254 @@
   "js_kb": 0.5,
   "font_sizes": 6,
   "tags": 382,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-fastiv.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-hostomel.html",
+  "kind": "land",
+  "html_kb": 41.4,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-irpin.html",
+  "kind": "land",
+  "html_kb": 42.0,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 390,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-ivano-frankivsk.html",
+  "kind": "land",
+  "html_kb": 41.5,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-jytomyr.html",
+  "kind": "land",
+  "html_kb": 41.0,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-khmelnytsky.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-kropyvnytsky.html",
+  "kind": "land",
+  "html_kb": 41.3,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-loutsk.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -14319,6 +18072,37 @@
   "webhook_copies": 0
  },
  {
+  "page": "fr/design-renovation-oboukhiv.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "fr/design-renovation-odessa.html",
   "kind": "land",
   "html_kb": 41.2,
@@ -14327,6 +18111,37 @@
   "js_kb": 0.5,
   "font_sizes": 6,
   "tags": 381,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-oujhorod.html",
+  "kind": "land",
+  "html_kb": 41.3,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -14381,14 +18196,204 @@
   "webhook_copies": 0
  },
  {
+  "page": "fr/design-renovation-poltava.html",
+  "kind": "land",
+  "html_kb": 41.0,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "fr/design-renovation-region-kyiv.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 44.4,
+=======
+  "html_kb": 44.8,
+>>>>>>> origin/main
   "gzip_kb": 12.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 446,
+  "tags": 458,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-rivne.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-tcherkassy.html",
+  "kind": "land",
+  "html_kb": 41.0,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-tchernihiv.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-tchernivtsi.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-ternopil.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -14414,12 +18419,141 @@
  {
   "page": "fr/design-renovation-ukraine.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.1,
   "gzip_kb": 11.6,
+=======
+  "html_kb": 45.1,
+  "gzip_kb": 12.1,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 419,
+  "tags": 471,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-vasylkiv.html",
+  "kind": "land",
+  "html_kb": 41.1,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-vinnytsia.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-vychhorod.html",
+  "kind": "land",
+  "html_kb": 41.1,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "fr/design-renovation-vychneve.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -28016,6 +32150,285 @@
   "webhook_copies": 0
  },
  {
+  "page": "pl/projektowanie-remont-biala-cerkiew.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 391,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-bojarka.html",
+  "kind": "land",
+  "html_kb": 40.0,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-boryspol.html",
+  "kind": "land",
+  "html_kb": 40.1,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-browary.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 390,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-bucza.html",
+  "kind": "land",
+  "html_kb": 40.4,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 394,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-chmielnicki.html",
+  "kind": "land",
+  "html_kb": 40.2,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-czerkasy.html",
+  "kind": "land",
+  "html_kb": 40.0,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-czernihow.html",
+  "kind": "land",
+  "html_kb": 40.2,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-czerniowce.html",
+  "kind": "land",
+  "html_kb": 40.2,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "pl/projektowanie-remont-dniepr.html",
   "kind": "land",
   "html_kb": 40.3,
@@ -28024,6 +32437,192 @@
   "js_kb": 0.5,
   "font_sizes": 6,
   "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-fastow.html",
+  "kind": "land",
+  "html_kb": 40.0,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 391,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-hostomel.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-irpien.html",
+  "kind": "land",
+  "html_kb": 41.0,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 393,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-iwano-frankiwsk.html",
+  "kind": "land",
+  "html_kb": 40.6,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-kropywnycki.html",
+  "kind": "land",
+  "html_kb": 40.4,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-luck.html",
+  "kind": "land",
+  "html_kb": 39.7,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -28078,14 +32677,50 @@
   "webhook_copies": 0
  },
  {
+  "page": "pl/projektowanie-remont-obuchow.html",
+  "kind": "land",
+<<<<<<< HEAD
+  "html_kb": 43.5,
+  "gzip_kb": 12.3,
+=======
+  "html_kb": 39.9,
+  "gzip_kb": 11.4,
+>>>>>>> origin/main
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "pl/projektowanie-remont-obwod-kijowski.html",
   "kind": "land",
-  "html_kb": 43.5,
+  "html_kb": 43.7,
   "gzip_kb": 12.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 450,
+  "tags": 462,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -28140,14 +32775,298 @@
   "webhook_copies": 0
  },
  {
-  "page": "pl/projektowanie-remont-ukraina.html",
+  "page": "pl/projektowanie-remont-poltawa.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.1,
   "gzip_kb": 11.8,
+=======
+  "html_kb": 40.2,
+  "gzip_kb": 11.4,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 424,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-rowne.html",
+  "kind": "land",
+  "html_kb": 39.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-tarnopol.html",
+  "kind": "land",
+  "html_kb": 40.0,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-ukraina.html",
+  "kind": "land",
+  "html_kb": 43.8,
+  "gzip_kb": 12.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 476,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-uzhorod.html",
+  "kind": "land",
+  "html_kb": 40.3,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-wasylkow.html",
+  "kind": "land",
+  "html_kb": 40.1,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 391,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-winnica.html",
+  "kind": "land",
+  "html_kb": 40.0,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-wyszniewe.html",
+  "kind": "land",
+  "html_kb": 40.0,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 390,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-wyszogrod.html",
+  "kind": "land",
+  "html_kb": 40.1,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pl/projektowanie-remont-zytomierz.html",
+  "kind": "land",
+  "html_kb": 40.1,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -30454,6 +35373,254 @@
   "webhook_copies": 0
  },
  {
+  "page": "pt/design-remodelacao-bila-tserkva.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-boiarka.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-boryspil.html",
+  "kind": "land",
+  "html_kb": 41.1,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-brovary.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-bucha.html",
+  "kind": "land",
+  "html_kb": 41.6,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 392,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-cherkasy.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-chernihiv.html",
+  "kind": "land",
+  "html_kb": 41.1,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-chernivtsi.html",
+  "kind": "land",
+  "html_kb": 41.1,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "pt/design-remodelacao-dnipro.html",
   "kind": "land",
   "html_kb": 41.1,
@@ -30462,6 +35629,223 @@
   "js_kb": 0.5,
   "font_sizes": 6,
   "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-fastiv.html",
+  "kind": "land",
+  "html_kb": 41.0,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-hostomel.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-irpin.html",
+  "kind": "land",
+  "html_kb": 41.9,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 391,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-ivano-frankivsk.html",
+  "kind": "land",
+  "html_kb": 41.5,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-jitomir.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-khmelnytskyi.html",
+  "kind": "land",
+  "html_kb": 41.1,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-kropyvnytskyi.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -30516,6 +35900,37 @@
   "webhook_copies": 0
  },
  {
+  "page": "pt/design-remodelacao-lutsk.html",
+  "kind": "land",
+  "html_kb": 40.5,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "pt/design-remodelacao-lviv.html",
   "kind": "land",
   "html_kb": 41.3,
@@ -30524,6 +35939,37 @@
   "js_kb": 0.5,
   "font_sizes": 6,
   "tags": 382,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-obukhiv.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -30609,14 +36055,112 @@
   "webhook_copies": 0
  },
  {
+  "page": "pt/design-remodelacao-poltava.html",
+  "kind": "land",
+<<<<<<< HEAD
+  "html_kb": 44.4,
+  "gzip_kb": 12.1,
+=======
+  "html_kb": 41.0,
+  "gzip_kb": 11.3,
+>>>>>>> origin/main
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "pt/design-remodelacao-regiao-kyiv.html",
   "kind": "land",
-  "html_kb": 44.4,
+  "html_kb": 44.6,
   "gzip_kb": 12.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 448,
+  "tags": 460,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-rivne.html",
+  "kind": "land",
+  "html_kb": 40.8,
+  "gzip_kb": 11.2,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-ternopil.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -30642,12 +36186,172 @@
  {
   "page": "pt/design-remodelacao-ucrania.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.3,
   "gzip_kb": 11.6,
+=======
+  "html_kb": 45.1,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 422,
+  "tags": 474,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-uzhhorod.html",
+  "kind": "land",
+  "html_kb": 41.2,
+  "gzip_kb": 11.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-vasylkiv.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-vinnytsia.html",
+  "kind": "land",
+  "html_kb": 41.0,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-vyshhorod.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "pt/design-remodelacao-vyshneve.html",
+  "kind": "land",
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 388,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33291,12 +38995,17 @@
  {
   "page": "ru/dizayn-i-remont-belaya-tserkov.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.9,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.1,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 346,
+  "tags": 354,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33304,7 +39013,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33322,12 +39031,17 @@
  {
   "page": "ru/dizayn-i-remont-borispol.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.1,
   "gzip_kb": 12.0,
+=======
+  "html_kb": 44.3,
+  "gzip_kb": 12.1,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 345,
+  "tags": 353,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33335,7 +39049,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33353,12 +39067,17 @@
  {
   "page": "ru/dizayn-i-remont-boyarka.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.8,
   "gzip_kb": 12.0,
+=======
+  "html_kb": 43.9,
+  "gzip_kb": 12.1,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 344,
+  "tags": 352,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33366,7 +39085,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33384,12 +39103,17 @@
  {
   "page": "ru/dizayn-i-remont-brovary.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.2,
   "gzip_kb": 12.0,
+=======
+  "html_kb": 44.3,
+  "gzip_kb": 12.1,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 345,
+  "tags": 353,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33397,7 +39121,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33415,12 +39139,17 @@
  {
   "page": "ru/dizayn-i-remont-bucha.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 44.2,
   "gzip_kb": 12.3,
+=======
+  "html_kb": 45.2,
+  "gzip_kb": 12.4,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 350,
+  "tags": 358,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33428,7 +39157,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33446,12 +39175,16 @@
  {
   "page": "ru/dizayn-i-remont-cherkassy.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.9,
+=======
+  "html_kb": 44.1,
+>>>>>>> origin/main
   "gzip_kb": 12.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 342,
+  "tags": 350,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33459,7 +39192,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33477,12 +39210,17 @@
  {
   "page": "ru/dizayn-i-remont-chernigov.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.0,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.2,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 344,
+  "tags": 352,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33490,7 +39228,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33508,12 +39246,17 @@
  {
   "page": "ru/dizayn-i-remont-chernovtsy.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.7,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 43.9,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 341,
+  "tags": 349,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33521,7 +39264,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33570,12 +39313,17 @@
  {
   "page": "ru/dizayn-i-remont-fastov.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.9,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.0,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 346,
+  "tags": 354,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33583,7 +39331,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33601,12 +39349,17 @@
  {
   "page": "ru/dizayn-i-remont-gostomel.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.5,
   "gzip_kb": 12.1,
+=======
+  "html_kb": 44.6,
+  "gzip_kb": 12.2,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 346,
+  "tags": 354,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33614,7 +39367,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33632,12 +39385,17 @@
  {
   "page": "ru/dizayn-i-remont-hmelnitskiy.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 44.1,
   "gzip_kb": 13.3,
+=======
+  "html_kb": 45.4,
+  "gzip_kb": 13.4,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 344,
+  "tags": 352,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33645,7 +39403,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33663,12 +39421,17 @@
  {
   "page": "ru/dizayn-i-remont-irpen.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 45.4,
   "gzip_kb": 12.9,
+=======
+  "html_kb": 46.6,
+  "gzip_kb": 13.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 350,
+  "tags": 358,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33676,7 +39439,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33694,12 +39457,17 @@
  {
   "page": "ru/dizayn-i-remont-ivano-frankovsk.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.2,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.6,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 343,
+  "tags": 351,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33707,7 +39475,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33756,12 +39524,17 @@
  {
   "page": "ru/dizayn-i-remont-kropivnitskiy.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.9,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.3,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 342,
+  "tags": 350,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33769,7 +39542,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33787,12 +39560,17 @@
  {
   "page": "ru/dizayn-i-remont-lutsk.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.3,
   "gzip_kb": 11.7,
+=======
+  "html_kb": 43.3,
+  "gzip_kb": 11.8,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 342,
+  "tags": 350,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33800,7 +39578,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33880,12 +39658,17 @@
  {
   "page": "ru/dizayn-i-remont-obuhov.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.9,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.1,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 344,
+  "tags": 352,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33893,7 +39676,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -33973,12 +39756,17 @@
  {
   "page": "ru/dizayn-i-remont-poltava.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.7,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 43.9,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 342,
+  "tags": 350,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33986,7 +39774,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -34004,12 +39792,17 @@
  {
   "page": "ru/dizayn-i-remont-rovno.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.8,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 43.9,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 343,
+  "tags": 351,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -34017,7 +39810,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -34035,12 +39828,17 @@
  {
   "page": "ru/dizayn-i-remont-ternopol.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.7,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 43.9,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 343,
+  "tags": 351,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -34048,7 +39846,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -34097,12 +39895,17 @@
  {
   "page": "ru/dizayn-i-remont-uzhgorod.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.0,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.2,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 342,
+  "tags": 350,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -34110,7 +39913,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -34128,12 +39931,17 @@
  {
   "page": "ru/dizayn-i-remont-vasilkov.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 43.0,
   "gzip_kb": 12.0,
+=======
+  "html_kb": 44.1,
+  "gzip_kb": 12.1,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 346,
+  "tags": 354,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -34141,7 +39949,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -34159,12 +39967,17 @@
  {
   "page": "ru/dizayn-i-remont-vinnitsa.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.7,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 43.9,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 341,
+  "tags": 349,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -34172,7 +39985,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -34190,12 +40003,17 @@
  {
   "page": "ru/dizayn-i-remont-vishnevoe.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.8,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 44.0,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 345,
+  "tags": 353,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -34203,7 +40021,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -34221,12 +40039,17 @@
  {
   "page": "ru/dizayn-i-remont-vyshgorod.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.7,
   "gzip_kb": 11.9,
+=======
+  "html_kb": 43.9,
+  "gzip_kb": 12.0,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 344,
+  "tags": 352,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -34234,7 +40057,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -34252,12 +40075,17 @@
  {
   "page": "ru/dizayn-i-remont-zhitomir.html",
   "kind": "land",
+<<<<<<< HEAD
   "html_kb": 42.6,
   "gzip_kb": 11.8,
+=======
+  "html_kb": 43.8,
+  "gzip_kb": 11.9,
+>>>>>>> origin/main
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 343,
+  "tags": 351,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -34265,7 +40093,7 @@
   "h1_animated": false,
   "google_fonts": false,
   "clarity": true,
-  "hreflang": 3,
+  "hreflang": 11,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -37494,6 +43322,254 @@
   "webhook_copies": 0
  },
  {
+  "page": "zh/design-renovation-bila-tserkva.html",
+  "kind": "land",
+  "html_kb": 39.5,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-boiarka.html",
+  "kind": "land",
+  "html_kb": 39.0,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-boryspil.html",
+  "kind": "land",
+  "html_kb": 39.2,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-brovary.html",
+  "kind": "land",
+  "html_kb": 39.3,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-bucha.html",
+  "kind": "land",
+  "html_kb": 39.4,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 390,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-cherkasy.html",
+  "kind": "land",
+  "html_kb": 38.9,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-chernihiv.html",
+  "kind": "land",
+  "html_kb": 39.2,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-chernivtsi.html",
+  "kind": "land",
+  "html_kb": 39.2,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 382,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "zh/design-renovation-dnipro.html",
   "kind": "land",
   "html_kb": 38.8,
@@ -37525,14 +43601,231 @@
   "webhook_copies": 0
  },
  {
-  "page": "zh/design-renovation-kyiv-region.html",
+  "page": "zh/design-renovation-fastiv.html",
   "kind": "land",
-  "html_kb": 42.2,
-  "gzip_kb": 12.4,
+  "html_kb": 39.1,
+  "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 446,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-hostomel.html",
+  "kind": "land",
+  "html_kb": 39.3,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-irpin.html",
+  "kind": "land",
+  "html_kb": 39.7,
+  "gzip_kb": 11.9,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 389,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-ivano-frankivsk.html",
+  "kind": "land",
+  "html_kb": 39.8,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-khmelnytskyi.html",
+  "kind": "land",
+  "html_kb": 39.3,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 384,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-kropyvnytskyi.html",
+  "kind": "land",
+  "html_kb": 39.4,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-kyiv-region.html",
+  "kind": "land",
+  "html_kb": 42.8,
+  "gzip_kb": 12.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 458,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-lutsk.html",
+  "kind": "land",
+  "html_kb": 38.7,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 382,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -37587,6 +43880,37 @@
   "webhook_copies": 0
  },
  {
+  "page": "zh/design-renovation-obukhiv.html",
+  "kind": "land",
+  "html_kb": 38.9,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "zh/design-renovation-odesa.html",
   "kind": "land",
   "html_kb": 38.9,
@@ -37618,14 +43942,293 @@
   "webhook_copies": 0
  },
  {
-  "page": "zh/design-renovation-ukraine.html",
+  "page": "zh/design-renovation-poltava.html",
   "kind": "land",
-  "html_kb": 40.7,
-  "gzip_kb": 11.9,
+  "html_kb": 39.1,
+  "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 420,
+  "tags": 382,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-rivne.html",
+  "kind": "land",
+  "html_kb": 38.8,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-ternopil.html",
+  "kind": "land",
+  "html_kb": 38.9,
+  "gzip_kb": 11.5,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-ukraine.html",
+  "kind": "land",
+  "html_kb": 42.7,
+  "gzip_kb": 12.4,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 472,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-uzhhorod.html",
+  "kind": "land",
+  "html_kb": 39.3,
+  "gzip_kb": 11.7,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 383,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-vasylkiv.html",
+  "kind": "land",
+  "html_kb": 39.1,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 387,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-vinnytsia.html",
+  "kind": "land",
+  "html_kb": 39.0,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 382,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-vyshhorod.html",
+  "kind": "land",
+  "html_kb": 39.2,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 385,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-vyshneve.html",
+  "kind": "land",
+  "html_kb": 38.9,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 386,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "zh/design-renovation-zhytomyr.html",
+  "kind": "land",
+  "html_kb": 39.0,
+  "gzip_kb": 11.6,
+  "css_kb": 13.3,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 382,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,

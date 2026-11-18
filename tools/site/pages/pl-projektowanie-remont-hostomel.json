@@ -1,0 +1,191 @@
+{
+ "slug": "projektowanie-remont-hostomel",
+ "lang": "pl",
+ "service": "Projekt, remont i budowa pod klucz w Hostomlu",
+ "title": "Remont pod klucz w Hostomlu — projekt i domy | CAS",
+ "description": "Remont i budowa domów pod klucz w Hostomlu: projekt od $12/m², stan surowy od $600/m², pod klucz od $1 100/m², remont od $550/m².",
+ "h1": "Projekt, remont i budowa pod klucz w Hostomlu",
+ "price": "remont od $550/m² · projekt od $30/m² · dom od $600/m²",
+ "lead": "Remont od $550/m², domy od $600/m²: w Hostomlu prowadzimy remonty pod klucz i budowę — od projektu po meble, własnym zespołem, z kosztorysem i umową.",
+ "parent": [
+  "/pl/projektowanie-remont-obwod-kijowski",
+  "Obwód kijowski"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Hostomel",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Obwód kijowski"
+   }
+  }
+ ],
+ "near": [
+  "W pobliżu: inne miasta",
+  [
+   [
+    "/pl/projektowanie-remont-bucza",
+    "Bucza"
+   ],
+   [
+    "/pl/projektowanie-remont-irpien",
+    "Irpień"
+   ],
+   [
+    "/pl/projektowanie-remont-wyszogrod",
+    "Wyszogród"
+   ],
+   [
+    "/pl/projektowanie-remont-obwod-kijowski",
+    "Wszystkie miasta obwodu kijowskiego"
+   ],
+   [
+    "/pl/dom-pod-klucz-koncza-zaspa",
+    "Koncza-Zaspa, Kozyn, Puszcza-Wodyca"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Projekt wnętrz",
+   [
+    "pomiary i układ funkcjonalny",
+    "wizualizacje 3D i rysunki wykonawcze",
+    "specyfikacja materiałów i mebli",
+    "nadzór autorski"
+   ]
+  ],
+  [
+   "Remont pod klucz",
+   [
+    "mieszkania z rynku pierwotnego i wtórnego",
+    "domy i domy letniskowe",
+    "robocizna i materiały podstawowe od $550/m²",
+    "kosztorys przed startem prac"
+   ]
+  ],
+  [
+   "Budowa domu",
+   [
+    "projekt architektoniczny od $12/m²",
+    "stan surowy od $600/m²",
+    "pod klucz z wykończeniem od $1 100/m²",
+    "instalacje i dach"
+   ]
+  ],
+  [
+   "Meble i wyposażenie",
+   [
+    "umeblowanie od $250/m²",
+    "kuchnie i szafy na wymiar",
+    "meble i oświetlenie prosto z Chin",
+    "końcowa stylizacja"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Hostomel: domy prywatne i nowe osiedla",
+   [
+    "Hostomel to przede wszystkim miasto domów: siedliska na kilku arach, nowe osiedla domów i niewielkie bloki bliżej trasy do Kijowa. Wielu właścicieli nie remontuje, tylko buduje od nowa lub gruntownie przebudowuje stary dom.",
+    "Na hostomelskich działkach często robimy całość: [projektowanie domu](/pl/projekt-domu), budowę, instalacje, wnętrza i zagospodarowanie terenu. Dzięki temu styki etapów — fundament i posadzki, instalacje i meble — nie zaskakują na etapie wykończenia."
+   ]
+  ],
+  [
+   "Projektowanie wnętrz w Hostomlu",
+   [
+    "W domu w Hostomlu projekt zaczynamy od rzutów kondygnacji: gdzie sypialnie, gdzie pomieszczenia techniczne i kotłownia, jak przejść z tarasu do kuchni. Domy parterowe z tarasem i basenem — jak nasz House 150 — szczególnie dobrze sprawdzają się na małych działkach. Projekt wnętrza od $30 za m² (minimum $2 500); pakiety — na stronie [studio projektowania wnętrz](/pl/projektowanie-wnetrz)."
+   ]
+  ],
+  [
+   "Remont pod klucz i budowa domu",
+   [
+    "Remontujemy domy po zakupie, przebudowujemy stare siedliska i odnawiamy mieszkania; w starym domu najpierw sprawdzamy dach, ściany i instalacje. Budujemy domy z betonu komórkowego i cegły, [modułowe](/pl/dom-modulowy) i szkieletowe, a [koszt budowy domu](/pl/koszt-budowy-domu) rozpisujemy w umowie na etapy.",
+    "Ten sam etatowy zespół co w Kijowie i te same stawki: remont od $550 za m² (robocizna i materiały budowlane), a jeśli remont wykonuje CAS, wynik końcowy mieści się w ±5% kosztorysu. Projekt architektoniczny od $12 za m², stan surowy od $600 za m², pod klucz z wykończeniem od $1 100 za m²; 12 miesięcy gwarancji na prace. Więcej: [remont pod klucz](/pl/remont-pod-klucz) i [budowa domów](/pl/budowa-domow)."
+   ]
+  ],
+  [
+   "Logistyka, kontrola i raporty",
+   [
+    "Kierownicy budów włączają wizyty w zwykły harmonogram, tak jak w dzielnicach Kijowa, a materiały wozimy z kijowskich hurtowni. Między wizytami — raporty zdjęciowe co 1–2 tygodnie; za dopłatą kamera online na budowie 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1F4OovwNYQPfoF-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/1DhAA8_vK0zo3E-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1xskjqBvCXgXuL-900.webp",
+   "Hodos Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "Konsultacja",
+   "Telefonicznie lub online: obiekt, zadania, budżet."
+  ],
+  [
+   "Pomiar i brief",
+   "Pomiary, oczekiwania, dane wyjściowe."
+  ],
+  [
+   "Projekt i kosztorys",
+   "Wnętrze lub architektura; cena i harmonogram w umowie."
+  ],
+  [
+   "Prace",
+   "Remont lub budowa z raportami zdjęciowymi."
+  ],
+  [
+   "Odbiór",
+   "Protokół i 12 miesięcy gwarancji na prace."
+  ]
+ ],
+ "faq": [
+  [
+   "Ile kosztuje budowa domu w Hostomlu?",
+   "Stan surowy od $600 za m², pod klucz z wykończeniem od $1 100 za m². Dla domu 150 m² wyliczenie bazowe to 150 m² × $600 za stan surowy lub 150 m² × $1 100 pod klucz; dokładnie — według kosztorysu."
+  ],
+  [
+   "Czy robicie wnętrza w domu zbudowanym przez innego wykonawcę?",
+   "Tak. Projekt od $30 za m², remont od $550 za m²; jeśli remont wykonuje CAS, mieścimy się w ±5% kosztorysu."
+  ],
+  [
+   "Co się bardziej opłaca: przebudować stary dom czy postawić nowy?",
+   "To zależy od fundamentów i ścian. Po oględzinach przygotowujemy kosztorys obu wariantów, żeby decyzja opierała się na liczbach."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-domu",
+   "Remont domu pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów remontu"
+  ],
+  [
+   "/pl/umowa-gwarancja-platnosc",
+   "Umowa, gwarancja, płatność (wzór umowy)"
+  ],
+  [
+   "/pl/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

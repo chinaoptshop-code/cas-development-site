@@ -6,6 +6,7 @@
 import { CLOSED, json, statusLabel } from '../../_lib.js';
 import { SLA_MIN, sqlTime } from '../../_alerts.js';
 import { cameraOf, progressOf, stageStatus, STAGE_STATUS } from '../../_account.js';
+import { projectContacts } from '../../_partners.js';
 import { PERMS, ROLES, need, noTable, orderScope, projectScope, shapeOrder, shapeProject } from '../../_roles.js';
 
 const parse = (s, d) => { try { const v = JSON.parse(s); return v == null ? d : v; } catch { return d; } };
@@ -39,8 +40,11 @@ export async function onRequestGet({ request, env }) {
             LEFT JOIN staff s ON s.id = t.staff_id WHERE t.project_id IN (${q}) ORDER BY t.done, t.sort, COALESCE(t.due_date, '9999'), t.id LIMIT 1000`).bind(...ids).all()).results : [];
       } catch (e) { if (!noTable(e)) throw e; }
       if (x.can('finance.view') && ids.length) payments = (await env.DB.prepare(`SELECT * FROM project_payments WHERE project_id IN (${q}) AND status != 'paid' ORDER BY COALESCE(due_date, '9999') LIMIT 200`).bind(...ids).all()).results;
+      const SN = new Map((await env.DB.prepare('SELECT id, name FROM staff').all()).results.map(r => [r.id, r.name])); // відповідальні етапів
+      const CT = await projectContacts(env, x, ids); // контакти обʼєкта (contacts.linked) — бригади, постачальники, майстри
       projects = P.map(p => {
-        const stages = parse(p.stages, []).map(s => ({ ...s, status: stageStatus(s), status_label: STAGE_STATUS[stageStatus(s)] }));
+        const stages = parse(p.stages, []).map(s => ({ ...s, status: stageStatus(s), status_label: STAGE_STATUS[stageStatus(s)],
+          ...(s.staff_id ? { staff_name: SN.get(s.staff_id) || null, mine: s.staff_id === x.staffId } : {}) }));
         const current = stages.find(s => s.status === 'in_progress' || s.status === 'review') || stages.find(s => s.status !== 'done') || null;
         const reps = R.filter(r => r.project_id === p.id);
         const lead = AS.find(s => s.id === p.assignee_staff_id);
@@ -58,6 +62,7 @@ export async function onRequestGet({ request, env }) {
           issues: ISS.filter(i => i.project_id === p.id).map(i => ({ ...i, photos: parse(i.photos, []) })),
           payments: payments.filter(y => y.project_id === p.id),
           deadline: p.deadline || null,
+          contacts: CT[p.id] || [],
           tasks: TK.filter(y => y.project_id === p.id).map(y => ({ ...y, done: !!y.done, mine: y.staff_id === x.staffId,
             stage_name: (stages.find(s => s.id === y.stage_id) || {}).name || null })),
         }, x);
@@ -65,8 +70,13 @@ export async function onRequestGet({ request, env }) {
       for (const p of projects) {
         if (p.status !== 'active') continue;
         if (p.next_date && p.next_date <= t && p.next_step) tasks.push({ kind: 'next', urgent: p.next_date < t, due: p.next_date, project_id: p.id, title: p.next_step, sub: p.title });
-        for (const s of p.stages) if (s.status !== 'done' && s.end && s.end <= soon)
-          tasks.push({ kind: 'stage', urgent: s.end < t, due: s.end, project_id: p.id, stage_id: s.id, title: `Етап «${s.name}»`, sub: p.title });
+        // етап: термін близько або минув; «мій етап» (відповідальний — я) у роботі чи з правками від клієнта — завжди
+        for (const s of p.stages) {
+          const mine = s.staff_id && s.staff_id === x.staffId;
+          if (s.status !== 'done' && ((s.end && s.end <= soon) || (mine && ['in_progress', 'review'].includes(s.status))))
+            tasks.push({ kind: 'stage', urgent: !!(s.end && s.end < t), due: s.end || null, project_id: p.id, stage_id: s.id, mine: !!mine,
+              title: `${mine ? 'Мій етап' : 'Етап'} «${s.name}»`, sub: p.title + (s.rev_note && !s.approved_at ? ` · правки клієнта: «${String(s.rev_note).slice(0, 80)}»` : '') });
+        }
         if (x.can('reports.upload') && (!p.last_report || p.last_report <= day(-REPORT_EVERY)))
           tasks.push({ kind: 'report', urgent: false, due: t, project_id: p.id, title: 'Фотозвіт для клієнта', sub: p.title + (p.last_report ? ` · останній ${p.last_report}` : ' · ще не було') });
         for (const y of p.tasks) if (!y.done && y.mine)

@@ -11,7 +11,7 @@
 
 Похідні кадри (банери ux-wb, фото hero лендингів — tools/site/ux.py WIDE/HERO): tools/img/crops.json —
   "<нова база>": {"src": "<база з drive-ids>", "ratio": W/H, "x": 0…1, "y": 0…1, "q": якість WebP, "blur": px}  (центр кадру; найбільший кадр цієї пропорції;
-  hero під градієнтом — q62, щоб LCP на телефоні не важчав)
+  hero під градієнтом — q62, щоб LCP на телефоні не важчав; "w1200": {"q": 56, "blur": 0.6…1.0} — своя якість однієї ширини: кадри телефона hxm-*-1200 ≈ 35–95 КБ)
   python3 tools/img/originals.py --widths 1200,1600,1920,2400 img/p/hx-int
 Копії ≥ 2000w (Михайло 09.11.2026, різкість на 1920@2 / 2560+): без blur, q ≤ 78 у межах 450 КБ; --force-big переписує наявні.
   python3 tools/img/originals.py --widths 2400,2800,3200,3840 --force-big img/1nqFOoTfr5BD
@@ -66,7 +66,7 @@ def make(base, widths):
         y0 = min(max(0, round(H * c.get('y', .5) - ch / 2)), H - ch)
         im = im.crop((x0, y0, x0 + cw, y0 + ch))
         W, H = im.size
-        return _write(base, im, widths, c.get('q', Q), c.get('blur', 0))
+        return _write(base, im, widths, c.get('q', Q), c.get('blur', 0), c)
     im = original(base)
     ar = ref_ratio(base)
     W, H = im.size
@@ -78,8 +78,9 @@ def make(base, widths):
     return _write(base, im, widths, Q)
 
 
-def _write(base, im, widths, q=Q, blur=0):
+def _write(base, im, widths, q=Q, blur=0, c=None):
     W, H = im.size
+    q0, b0 = q, blur
     out = []
     for w in widths:
         if w > W:
@@ -88,6 +89,8 @@ def _write(base, im, widths, q=Q, blur=0):
         if os.path.exists(p) and Image.open(p).size[0] == w and not (FORCE and w >= BIG_W):
             continue
         r = im.resize((w, round(H * w / W)), Image.LANCZOS)
+        o = (c or {}).get(f'w{w}') or {}  # своя якість/згладжування для однієї ширини: "w1200": {"q": 56, "blur": 0.8} (hero телефона, 18.11.2026)
+        q, blur = o.get('q', q0), o.get('blur', b0)
         if w >= BIG_W:  # великі копії (лише великі екрани): без згладжування, якість ≤ 78, що влазить у BIG_MAX (як tools/img/build.py)
             for qq in range(78, 39, -4):
                 b = io.BytesIO(); r.save(b, 'WEBP', quality=qq, method=6)

@@ -1,0 +1,191 @@
+{
+ "slug": "design-renovation-boryspil",
+ "lang": "en",
+ "service": "Turnkey design, renovation and construction in Boryspil",
+ "title": "Turnkey renovation in Boryspil — design and houses | CAS",
+ "description": "Turnkey renovation in Boryspil and house building in nearby villages: design from $30/m², renovation from $550/m², shell from $600/m².",
+ "h1": "Turnkey design, renovation and construction in Boryspil",
+ "price": "renovation from $550/m² · design from $30/m² · house from $600/m²",
+ "lead": "Turnkey renovation in Boryspil: apartments, private houses and cottages in the villages along the Boryspil highway. We design, renovate and build with CAS's own team.",
+ "parent": [
+  "/en/design-renovation-kyiv-region",
+  "Kyiv region"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Boryspil",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Kyiv region"
+   }
+  }
+ ],
+ "near": [
+  "Nearby: other cities",
+  [
+   [
+    "/en/design-renovation-brovary",
+    "Brovary"
+   ],
+   [
+    "/en/design-renovation-obukhiv",
+    "Obukhiv"
+   ],
+   [
+    "/en/design-renovation-vasylkiv",
+    "Vasylkiv"
+   ],
+   [
+    "/en/design-renovation-kyiv-region",
+    "All towns of the Kyiv region"
+   ],
+   [
+    "/en/turnkey-house-koncha-zaspa",
+    "Koncha-Zaspa, Kozyn, Pushcha-Vodytsia"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Interior design",
+   [
+    "measurements and layout",
+    "3D visualisations and working drawings",
+    "materials and furniture specification",
+    "designer supervision"
+   ]
+  ],
+  [
+   "Turnkey renovation",
+   [
+    "new-build and resale apartments",
+    "houses and cottages",
+    "works and rough materials from $550/m²",
+    "estimate before work starts"
+   ]
+  ],
+  [
+   "House construction",
+   [
+    "architectural design from $12/m²",
+    "shell from $600/m²",
+    "turnkey with finishing from $1,100/m²",
+    "utilities and roofing"
+   ]
+  ],
+  [
+   "Furniture and procurement",
+   [
+    "furnishing from $250/m²",
+    "custom kitchens and wardrobes",
+    "furniture and lighting direct from China",
+    "final styling"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Boryspil and the highway: houses for year-round living",
+   [
+    "Boryspil is known for its airport, but for us it is above all a town of private houses and small complexes, plus villages and cottage communities along the highway: Hora, Shchaslyve, Velyka Oleksandrivka. People who work in Kyiv but want a house with a plot move here.",
+    "Houses here are often bought as a shell or ready for finishing, and then the key is not to redo what has been done but to continue properly: check the roof, windows, screed and services, and estimate exactly what is missing."
+   ]
+  ],
+  [
+   "Interior design in Boryspil",
+   [
+    "For a house near Boryspil the design usually includes a living room with double-height space or large windows, a guest bedroom for relatives and a work area. Town apartments are more compact, so built-in furniture and storage matter. Design project from $30 per m² (minimum $2,500); packages are on the [interior design studio](/en/interior-design) page."
+   ]
+  ],
+  [
+   "Turnkey renovation and house construction",
+   [
+    "We renovate houses after the developer and apartments in town, from rough works to furniture, plus [kitchen renovation](/en/kitchen-renovation) with [made-to-order kitchens](/en/custom-kitchens-wardrobes) by our staff and partners. Plots on the left bank are mostly flat and open, so we design for wind and sun: a south-facing terrace and a sheltered entrance.",
+    "The same salaried team as in Kyiv, at the same rates: renovation from $550 per m² (works and rough materials), and if CAS carries out the renovation, the final total stays within ±5% of the estimate. Architectural design from $12 per m², house shell from $600 per m², turnkey with finishing from $1,100 per m²; 12-month warranty on works. More on [turnkey renovation](/en/turnkey-renovation) and [house construction](/en/house-construction)."
+   ]
+  ],
+  [
+   "Logistics, control and reports",
+   [
+    "Our site managers include visits to the town in their normal schedule, just as for Kyiv districts, and materials come from Kyiv warehouses. Between visits you get photo reports every 1–2 weeks; an online camera on site 24/7 is available for an extra fee."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1F4OovwNYQPfoF-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/1_0wYN-6Q8LZFX-900.webp",
+   "Yacht VIP"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "By phone or online: property, goals, budget."
+  ],
+  [
+   "Survey and brief",
+   "Measurements, wishes, initial data."
+  ],
+  [
+   "Design and estimate",
+   "Interior or architecture; price and schedule in the contract."
+  ],
+  [
+   "Works",
+   "Renovation or construction with photo reports."
+  ],
+  [
+   "Handover",
+   "Certificate, 12-month warranty on works."
+  ]
+ ],
+ "faq": [
+  [
+   "The house was bought as a shell. Where do we start?",
+   "With an inspection and a list of works: what has been done and what needs fixing. Then a design project and an estimate for completing the house."
+  ],
+  [
+   "Do you build in the villages near Boryspil?",
+   "Yes: Hora, Shchaslyve, Velyka Oleksandrivka and other places along this route. Shell from $600 per m², turnkey from $1,100 per m²."
+  ],
+  [
+   "How much does renovation in Boryspil cost?",
+   "From $550 per m² for works and rough materials; finishing materials, furniture and appliances are separate, per estimate."
+  ]
+ ],
+ "rel": [
+  [
+   "/en/house-renovation",
+   "Turnkey house renovation"
+  ],
+  [
+   "/en/turnkey-procurement",
+   "Turnkey interior procurement"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Renovation cost calculator"
+  ],
+  [
+   "/en/contract-warranty-payment",
+   "Contract, warranty, payment (sample contract)"
+  ],
+  [
+   "/en/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

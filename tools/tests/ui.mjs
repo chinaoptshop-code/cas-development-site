@@ -165,6 +165,19 @@ await check('owner-crm-quick', 'OWNER', '/kabinet/admin#crm', W, async p => {
   p.once('dialog', d => d.accept()); await p.click('dialog[open] button.x'); await p.waitForTimeout(200);
   if (await p.$('dialog[open]')) throw new Error('картка не закрилась після підтвердження');
 });
+// Пропозиція з заявки: тип підставлено з тексту, площа → «від $2 550», «Зберегти розрахунок» → «Розрахунок», «Створити проєкт» → картка проєкту
+await check('owner-lead-offer', 'OWNER', '/kabinet/admin#crm', [1440], async p => {
+  await see(p, '[data-list]', 'Лід 2');
+  await p.locator('.kn-card', { hasText: 'Лід 2' }).first().locator('b').first().click(); await see(p, 'dialog[open] [data-offer]', 'Пропозиція');
+  if (await p.inputValue('dialog[open] [data-ok]') !== 'dz') throw new Error('тип не підставлено з «Дизайн інтерʼєру»');
+  await p.fill('dialog[open] [data-oa]', '85'); await see(p, 'dialog[open] [data-os]', 'від \\$2\u202f550');
+  await p.click('dialog[open] [data-osave]'); await p.waitForTimeout(800);
+  if (await p.inputValue('dialog[open] [name=status]') !== 'quote_sent') throw new Error('стадія не «Розрахунок»');
+  p.once('dialog', d => d.accept()); await p.click('dialog[open] [data-oconv]');
+  await see(p, '.pj-lead', 'З заявки'); await see(p, '[data-f] [name=title]');
+  if (!/Дизайн-проєкт/.test(await p.inputValue('[data-f] [name=title]'))) throw new Error('назва проєкту');
+  const n = await p.$$eval('.pj-stage', e => e.length); if (n !== 8) throw new Error('етапів дизайну ' + n);
+});
 // «Партнери»: список, фільтр за типом, картка, збереження статусу; CRM — фільтр «Бот пошуку»
 await check('owner-partners', 'OWNER', '/kabinet/admin#partners', W, async p => {
   await see(p, '[data-ptbl]', 'Бригада Тест'); await see(p, '[data-ptbl]', 'Тест Постач');
@@ -178,6 +191,14 @@ await check('owner-partners', 'OWNER', '/kabinet/admin#partners', W, async p => 
   await p.selectOption('[data-pf] [name=status]', 'interesting'); await p.click('[data-pf] button[type=submit]');
   await see(p, '[data-ptbl]', 'Цікавий');
   await p.selectOption('[data-f=type]', ''); // скидаємо фільтр (зберігається в localStorage)
+  // швидкий фільтр за типом і новий контакт-майстер з оцінкою
+  await p.click('[data-qt=crew]'); await p.waitForTimeout(500);
+  if (!/Бригада Тест/.test(await p.textContent('[data-ptbl]')) || /Тест Постач/.test(await p.textContent('#admView'))) throw new Error('швидкий фільтр «Бригади»');
+  await p.click('[data-qt=""]'); await p.waitForTimeout(400);
+  await p.click('[data-new]'); await see(p, '[data-pf]');
+  await p.fill('[data-pf] [name=name]', 'Майстер UI ' + (++nAdd)); await p.selectOption('[data-pf] [name=type]', 'master'); await p.selectOption('[data-pf] [name=rating]', '5');
+  await p.click('[data-pf] button[type=submit]'); await see(p, '[data-ptbl]', 'Майстер UI');
+  if (!(await p.$('[data-ptbl] .ct-star'))) throw new Error('немає оцінки в списку');
 });
 await check('owner-crm-finder', 'OWNER', '/kabinet/admin#crm', [1440], async p => {
   await see(p, '#admView', 'Лід 1');
@@ -198,6 +219,13 @@ await check('owner-project-save', 'OWNER', '/kabinet/admin#projects', W, async p
   if (await p.inputValue('[data-f] [name=next_step]') !== 'Приймання електрики й сантехніки') throw new Error('не збережено');
   if (!(await p.$eval('[data-dirty]', e => e.hidden))) throw new Error('позначка лишилась після збереження');
 });
+// Контакти обʼєкта: пошук у довіднику → привʼязка з роллю → видно в картці; прораб бачить контакт у своєму кабінеті
+await check('owner-project-contacts', 'OWNER', '/kabinet/admin#projects', [1440], async p => {
+  await p.locator('#admView .clk', { hasText: 'Квартира, тестовий обʼєкт' }).first().click(); await see(p, '[data-pct]');
+  if (await p.$('[data-pct] [data-ctx]')) return; // уже привʼязано попереднім проходом
+  await p.fill('[data-ctr]', 'Плитка'); await p.fill('[data-ctq]', 'Бригада'); await p.waitForSelector('[data-ctl]');
+  await p.click('[data-ctl]'); await see(p, '[data-pct] .ct-links', 'Бригада Тест');
+});
 await check('owner-staff', 'OWNER', '/kabinet/admin#team', W, async p => { await see(p, '.staff-t', 'Олег');
   await p.click('details.add summary'); await see(p, '[data-add]');
   const n = ++nAdd; await p.fill('[data-add] [name=name]', 'Тест Менеджер ' + n); await p.selectOption('[data-add] [name=role]', 'manager'); await p.fill('[data-add] [name=email]', 'test.manager' + n + '@example.com');
@@ -207,7 +235,7 @@ console.log('Робоча панель менеджера (без Студії/�
 await check('manager-panel', 'MGR', '/kabinet/admin', [1440], async p => {
   await see(p, 'body.adm-manager'); await see(p, '.adm-tabs', 'CRM');
   if (/Студія|Персонал|Аудит/.test(await p.textContent('.adm-tabs'))) throw new Error('менеджер бачить вкладки власника');
-  if (!/Партнери/.test(await p.textContent('.adm-tabs'))) throw new Error('менеджер не бачить «Партнери»');
+  if (!/Контакти/.test(await p.textContent('.adm-tabs'))) throw new Error('менеджер не бачить «Контакти»');
 });
 console.log('Кабінет працівника (прораб)');
 await check('team-today', 'FORE', '/kabinet/team', W, async p => {
@@ -221,6 +249,9 @@ await check('team-objects', 'FORE', '/kabinet/team#objects', W, async p => {
   const fs = await p.$eval('#tmSheet textarea', e => parseFloat(getComputedStyle(e).fontSize)); if (fs < 16) throw new Error('поле < 16px (iPhone збільшить)');
   const small = await p.$$eval('.tm-btn,.tm-nav a,.tm-x', els => els.filter(e => e.offsetParent && e.getBoundingClientRect().height < 43.5).map(e => e.textContent.trim()).slice(0, 3));
   if (small.length) throw new Error('кнопки < 44px: ' + small.join(', '));
+});
+await check('team-contacts', 'FORE', '/kabinet/team#objects', [402], async p => {
+  await see(p, '.tm-obj', 'Квартира, тестовий обʼєкт'); await see(p, '.tm-obj', 'Контакти обʼєкта');
 });
 console.log('Кабінет клієнта');
 await check('client-object', 'C1', '/kabinet/obiekt', W, async p => {
