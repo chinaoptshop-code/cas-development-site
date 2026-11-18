@@ -1,0 +1,329 @@
+{
+ "slug": "instalaciones-piso-reforma-integral-orden-de-trabajos",
+ "lang": "es",
+ "title": "Instalaciones de un piso en una reforma integral: electricidad, fontanería, ventilación, suelo radiante",
+ "translation_of": "inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit",
+ "seo_title": "Instalaciones del piso: orden de trabajos y controles",
+ "description": "Instalaciones del piso en una reforma integral: proyecto, electricidad, fontanería, ventilación, climatización, suelo radiante. Orden y controles.",
+ "lead": "Las instalaciones son la parte de la reforma que no se ve tras la entrega, pero deciden si salta el automático, si se inunda al vecino y si aparece moho en el baño. Explicamos en qué orden se instalan la electricidad, la fontanería, la ventilación y el suelo radiante, qué soluciones son habituales según la práctica del mercado y qué comprobar mientras las paredes aún no están enlucidas.",
+ "date": "2026-11-01",
+ "service": [
+  "/es/reforma-llave-en-mano",
+  "Reforma llave en mano"
+ ],
+ "photo": "img/p/1xSbwYmzFkTN2A-900.webp",
+ "photo_alt": "Salón-comedor — Pidgirland, proyecto de CAS Development",
+ "body": [
+  [
+   "h2",
+   "Instalaciones de un piso: por qué el orden importa más que las marcas"
+  ],
+  [
+   "p",
+   "Un grifo caro no evita una fuga en una unión mal hecha, ni un buen cable salva un circuito sobrecargado. La mayoría de los problemas de instalaciones no vienen de los materiales, sino de una secuencia equivocada y de la falta de comprobaciones antes de cerrar. Por eso, en una reforma integral las instalaciones siguen un proyecto y un orden claro: primero las decisiones sobre el papel, luego el tendido, después las pruebas y solo entonces enlucido, solera y acabados."
+  ],
+  [
+   "ol",
+   [
+    "proyecto de instalaciones y decisiones sobre los equipos",
+    "demolición, tabiques, revisión de bajantes y acometidas",
+    "electricidad en bruto y corrientes débiles",
+    "fontanería, saneamiento, bastidores empotrados",
+    "ventilación, climatización, líneas y desagüe de condensados",
+    "pruebas: presión, mediciones, fotos y actas",
+    "enlucido, solera con suelo radiante, impermeabilización de zonas húmedas",
+    "acabados y, después, mecanismos y aparatos sanitarios"
+   ]
+  ],
+  [
+   "h2",
+   "Fase 0. Proyecto: qué decidir antes de la primera roza"
+  ],
+  [
+   "p",
+   "Enchufes, interruptores y tomas de agua se vinculan a los muebles y equipos, así que primero hacen falta la distribución y el plano de mobiliario. Cocina, lavadora, termo, aires acondicionados y tratamiento de agua deben elegirse al menos en tamaño y potencia: de ello dependen las secciones de cable, los circuitos del cuadro y la altura y posición de las tomas."
+  ],
+  [
+   "ul",
+   [
+    "plano de enchufes e interruptores con alturas y cotas",
+    "esquema de circuitos de iluminación y escenas de control",
+    "esquema unifilar del cuadro con calibres de magnetotérmicos y diferenciales",
+    "esquema de fontanería y saneamiento con alturas de las tomas",
+    "esquema de ventilación, líneas frigoríficas y desagües de condensados",
+    "plano del suelo radiante y posición de los termostatos"
+   ]
+  ],
+  [
+   "p",
+   "En obra nueva, primero se revisa lo que dejó la promotora: dónde está el cuadro de planta, qué potencia tiene asignada el piso, cómo salen las bajantes y los conductos de ventilación. Más detalles en la página de [reforma de obra nueva](/es/reforma-obra-nueva)."
+  ],
+  [
+   "h2",
+   "Electricidad"
+  ],
+  [
+   "h3",
+   "Cuadro y circuitos"
+  ],
+  [
+   "p",
+   "El cuadro eléctrico es el corazón de la instalación. Normalmente lleva un interruptor general, diferenciales, magnetotérmicos por circuitos y, si hace falta, relé de tensión o protección contra sobretensiones. Los circuitos se separan para que una avería en una zona no deje sin luz todo el piso y los grandes consumidores tengan líneas propias."
+  ],
+  [
+   "ul",
+   [
+    "iluminación separada de los enchufes, por zonas del piso",
+    "enchufes por estancias, con la encimera de cocina en un circuito propio",
+    "líneas dedicadas para placa, horno, lavavajillas, lavadora, termo, aires acondicionados y suelo radiante",
+    "protección diferencial en circuitos de enchufes y zonas húmedas, habitualmente de 30 mA",
+    "etiqueta en cada automático y esquema en la puerta del cuadro"
+   ]
+  ],
+  [
+   "h3",
+   "Cable y trazado"
+  ],
+  [
+   "p",
+   "Se usa cable de cobre de tres conductores: fase, neutro y tierra. Según la práctica del mercado, 1,5 mm² para iluminación, 2,5 mm² para enchufes y, para la placa y otros grandes consumidores, la sección calculada por potencia, normalmente 4–6 mm². En las paredes el cable va estrictamente en vertical y horizontal, en zonas definidas, para no perforarlo después; en suelos y techos, dentro de tubo corrugado. Las cajas de registro deben quedar accesibles."
+  ],
+  [
+   "h3",
+   "Corrientes débiles"
+  ],
+  [
+   "p",
+   "Internet, wifi, videoportero, cámaras, sensores de fuga y domótica se instalan a la vez que la electricidad, pero por trazados separados. Normalmente llega un cable de telecomunicaciones del registro de entrada a un armario multimedia, y desde ahí cable de par trenzado a la televisión, el puesto de trabajo y los puntos de acceso wifi del techo. Para la domótica, en el proyecto se decide qué líneas se controlarán y se deja espacio para módulos en el cuadro o en las cajas."
+  ],
+  [
+   "h3",
+   "Baño"
+  ],
+  [
+   "p",
+   "En el baño las reglas son más estrictas: enchufes e interruptores fuera de las zonas de salpicadura, luminarias con el grado de protección adecuado y las partes metálicas —tuberías, bañera, plato de ducha— unidas mediante equipotencialidad. El suelo radiante y el toallero se conectan con protección diferencial."
+  ],
+  [
+   "h3",
+   "Qué comprobar antes de enlucir"
+  ],
+  [
+   "ul",
+   [
+    "que enchufes e interruptores coinciden con el plano en alturas y cotas",
+    "foto de cada pared con cinta métrica, para saber después por dónde va el cable",
+    "medición del aislamiento y prueba de disparo del diferencial",
+    "conductor de tierra en cada enchufe"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1pF5ohNHdSnme0-900.webp",
+   "Bloque de enchufes e interruptores sobre una mesita de madera junto al sofá — interior de A-Frame House",
+   "Los enchufes junto al sofá y la cama se vinculan a los muebles en la fase de proyecto"
+  ],
+  [
+   "h2",
+   "Fontanería y saneamiento"
+  ],
+  [
+   "h3",
+   "Suministro de agua: colector o derivaciones en T"
+  ],
+  [
+   "p",
+   "Con colector, cada punto —grifo, inodoro, lavadora— se alimenta con su propia tubería desde el colector y se puede cortar sin dejar sin agua todo el piso. El sistema con derivaciones en T es más sencillo y barato, pero menos cómodo de mantener. Las tuberías son de polipropileno soldado, polietileno reticulado o multicapa con accesorios a presión; en paredes y suelos solo quedan uniones permanentes. El agua fría se aísla contra la condensación y la caliente contra las pérdidas de calor."
+  ],
+  [
+   "ul",
+   [
+    "en la acometida: llaves, filtros de gruesos y finos, reductor de presión y contadores según las normas del edificio",
+    "sistema antifugas: sensores y electroválvulas",
+    "acceso al colector, llaves y filtros mediante registros"
+   ]
+  ],
+  [
+   "h3",
+   "Saneamiento"
+  ],
+  [
+   "p",
+   "Normalmente se usan tubos de 50 mm para lavabo, ducha y lavadora, y de 110 mm para el inodoro. Los tramos horizontales llevan pendiente constante hacia la bajante —según la práctica del mercado, unos 2–3 cm por metro en tubos de 50 mm—, sin contrapendientes. Los cambios de dirección se hacen con dos codos de 45° y no con uno brusco, y se dejan registros en los nudos. La bajante común del edificio no se mueve ni se reduce sin autorización, y se forra con aislamiento acústico para que sea silenciosa."
+  ],
+  [
+   "h3",
+   "Bastidores, sumideros e impermeabilización"
+  ],
+  [
+   "p",
+   "El inodoro y el lavabo suspendidos se fijan a bastidores, estructuras de acero que se montan antes de cerrar las paredes. Una ducha a ras de suelo con sumidero lineal o puntual requiere pendiente en la solera y una altura exacta del sumidero. Las zonas húmedas se cubren con impermeabilización líquida o en lámina que sube por las paredes, en la ducha hasta toda la altura de salpicadura; esquinas y pasos de tuberías se sellan con bandas y manguitos."
+  ],
+  [
+   "h3",
+   "Qué comprobar antes de cerrar"
+  ],
+  [
+   "ul",
+   [
+    "prueba de presión de las tuberías con la presión y el tiempo que exigen el fabricante o el proyecto, con foto del manómetro",
+    "alturas y posiciones de las tomas según el esquema",
+    "pendientes del saneamiento con nivel, sin tramos combados",
+    "continuidad de la impermeabilización, también en esquinas y junto al sumidero"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1gXiWvuON9L6XT-900.webp",
+   "Lavadero con electrodomésticos, toallero y armarios hasta el techo — proyecto de casa en Petrivtsi",
+   "Lavadora y secadora: líneas eléctricas propias, toma de agua, desagüe y acceso a las llaves"
+  ],
+  [
+   "h2",
+   "Ventilación y climatización"
+  ],
+  [
+   "p",
+   "En un edificio de viviendas, la extracción de la cocina y los baños suele ir por conductos de ventilación. No se pueden tapar, reducir ni usar para otros fines: de ellos depende la ventilación de su piso y la de los vecinos. La campana se conecta según el proyecto y las normas del edificio, y en el baño se pone un extractor con clapeta antirretorno. Las ventanas estancas apenas dejan pasar aire, así que hace falta aporte: aireadores en ventana o muro, recuperadores descentralizados donde la fachada lo permita, o un sistema central de impulsión y extracción con recuperación si hay espacio en el falso techo."
+  ],
+  [
+   "p",
+   "Las líneas de climatización —tuberías frigoríficas aisladas, desagüe y cable— se tienden antes de enlucir. El desagüe necesita pendiente o una bomba de condensados, y la ubicación de la unidad exterior se acuerda según las normas del edificio. Con las paredes cerradas, el trazado ya no se puede cambiar sin destrozar los acabados."
+  ],
+  [
+   "ul",
+   [
+    "impulsión en las estancias y extracción en cocina, baños y vestidores",
+    "paso de aire entre estancias: holgura bajo las puertas o rejillas",
+    "unidades interiores colocadas para que el aire no dé sobre la cama o la mesa de trabajo",
+    "acceso a filtros y desagües para el mantenimiento"
+   ]
+  ],
+  [
+   "h2",
+   "Suelo radiante"
+  ],
+  [
+   "p",
+   "En pisos lo más habitual es el suelo radiante eléctrico: cable en la solera, malla fina en el adhesivo cerámico o lámina bajo laminado o parquet si el fabricante del pavimento lo permite. El suelo radiante por agua conectado a la calefacción central de un edificio normalmente no está permitido, porque desequilibra el sistema. Es posible con calefacción individual, mediante un grupo de mezcla y según proyecto."
+  ],
+  [
+   "ul",
+   [
+    "línea propia con magnetotérmico y protección diferencial",
+    "sonda de temperatura de suelo en tubo, para poder sustituirla",
+    "aislamiento bajo la solera para no calentar al vecino de abajo",
+    "no colocarlo bajo la cocina, armarios, bañera u otros muebles sin patas",
+    "medición de la resistencia del cable antes y después de colocarlo, foto del trazado con cotas"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/11wEIjh0kDHFtz-900.webp",
+   "Cocina con electrodomésticos integrados y frentes imitación madera — piso realizado Tetris Hall",
+   "Electrodomésticos integrados: cada aparato potente tiene su propia línea"
+  ],
+  [
+   "h2",
+   "Cómo afectan las instalaciones a la altura de techos y al nivel de suelos"
+  ],
+  [
+   "p",
+   "Las instalaciones ocupan centímetros, y conviene saberlo antes de enamorarse de una altura de techo concreta. Los conductos de ventilación y las unidades de conductos de climatización necesitan espacio sobre el falso techo. Una solera con suelo radiante y aislamiento es más gruesa que una normal, y una ducha a ras de suelo necesita sitio para el sumidero y la pendiente. Los bastidores de los sanitarios suspendidos y los colectores ocupan hornacinas en las paredes."
+  ],
+  [
+   "p",
+   "Por eso diseño e instalaciones deben coordinarse en el proyecto: dónde baja el techo, dónde se esconden los cajeados, qué niveles de suelo hay en cada estancia y cómo resolver las transiciones sin umbrales."
+  ],
+  [
+   "h2",
+   "Documentos y normas: qué debe recibir"
+  ],
+  [
+   "p",
+   "Los trabajos se ejecutan conforme a la normativa de edificación vigente, al reglamento de instalaciones eléctricas y a las exigencias de los fabricantes. Para usted como cliente, más que la lista de normas, importan los documentos que quedan tras la reforma. Los necesitará cuando, años después, quiera colgar una balda, cambiar el termo o localizar una fuga."
+  ],
+  [
+   "ul",
+   [
+    "planos as-built de electricidad y fontanería: cómo se instaló realmente",
+    "fotos de paredes y suelos con cinta métrica antes de cerrar",
+    "esquema unifilar del cuadro con los circuitos rotulados",
+    "actas de mediciones eléctricas y de prueba de presión de tuberías",
+    "fichas técnicas y garantías de los equipos"
+   ]
+  ],
+  [
+   "p",
+   "Si la reforma la hace un contratista en quien no confía del todo, los trabajos ocultos puede revisarlos un técnico independiente: lo explicamos en el artículo sobre la [supervisión técnica](/es/blog/supervision-tecnica-reforma-cuando-hace-falta)."
+  ],
+  [
+   "h2",
+   "Errores habituales en las instalaciones de un piso"
+  ],
+  [
+   "ul",
+   [
+    "enchufes «como los dejó la promotora», sin vincularlos a muebles y equipos; luego, alargadores",
+    "un solo circuito para toda la cocina, equipos potentes sin líneas propias",
+    "trazados de cable en diagonal por las paredes",
+    "uniones de tubería en la solera sin acceso",
+    "saneamiento sin pendiente o con giros bruscos",
+    "conducto de ventilación tapado o reducido, extractor sin aporte de aire",
+    "suelo radiante bajo los muebles y sin aislamiento",
+    "cerrar paredes sin prueba de presión ni fotos"
+   ]
+  ],
+  [
+   "gallery",
+   [
+    [
+     "/img/p/1dHW-ciO1rn1E0-900.webp",
+     "Salón con pared de piedra, hornacina para la TV e iluminación de carril — piso realizado Tetris Hall"
+    ],
+    [
+     "/img/p/1NVeaQcV2TZSN5-900.webp",
+     "Baño con bañera exenta, ducha y hornacina iluminada — proyecto de casa en Petrivtsi"
+    ]
+   ]
+  ],
+  [
+   "h2",
+   "Cómo hacemos las instalaciones en una reforma integral"
+  ],
+  [
+   "p",
+   "Las instalaciones forman parte de la [reforma integral de pisos](/es/reforma-integral-piso) y de la reforma llave en mano de CAS: desde $550/m² por mano de obra y materiales de obra gruesa; acabados, mobiliario y equipos, aparte según presupuesto. Como referencia: 70 m² × $550 = $38 500 con la tarifa base; la cifra exacta la da el presupuesto tras el proyecto. Puede calcular su superficie en la [calculadora de reformas](/es/calculadora-reforma) y ver de qué se compone el precio en la página [precio de la reforma de un piso](/es/precio-reforma-piso)."
+  ],
+  [
+   "p",
+   "Los trabajos los hace nuestro propio equipo, registramos los trabajos ocultos en informes fotográficos cada 1–2 semanas y, si lo desea, ponemos una cámara online 24/7 en la obra con coste adicional. Un único gestor, presupuesto y plazos en el contrato y 12 meses de garantía en los trabajos. Si duda de si necesita renovar todas las instalaciones, empiece por el artículo [reforma integral o lavado de cara](/es/blog/reforma-integral-o-lavado-de-cara)."
+  ]
+ ],
+ "faq": [
+  [
+   "¿En qué orden se hacen las instalaciones de un piso?",
+   "Primero el proyecto y las decisiones sobre los equipos; después demolición y tabiques, electricidad en bruto, fontanería y saneamiento, ventilación y líneas de climatización, pruebas y fotos, y solo entonces enlucido, solera y acabados."
+  ],
+  [
+   "¿Qué sección de cable hace falta para enchufes e iluminación?",
+   "Según la práctica del mercado, cable de cobre de 1,5 mm² para iluminación, 2,5 mm² para enchufes y, para la placa y otros grandes consumidores, la sección calculada, normalmente 4–6 mm². Los valores exactos los fija el proyecto según la potencia y la longitud de la línea."
+  ],
+  [
+   "¿Colector o derivaciones en T: qué es mejor?",
+   "El colector es más caro, pero cada punto se puede cortar por separado y no hay uniones intermedias en las paredes. Las derivaciones en T son más sencillas y baratas. En pisos con varios baños y muchos aparatos se suele elegir colector."
+  ],
+  [
+   "¿Se puede poner suelo radiante por agua en un piso?",
+   "Conectado a la calefacción central de un edificio, normalmente no, porque altera el sistema común. Es posible con calefacción individual mediante un grupo de mezcla. En los demás casos se instala eléctrico."
+  ],
+  [
+   "¿Se puede conectar la campana al conducto de ventilación?",
+   "Depende del tipo de conducto y de las normas del edificio. No se puede tapar ni reducir el conducto ni anular con él la extracción natural. La solución se define en el proyecto."
+  ],
+  [
+   "¿Qué comprobar antes de enlucir?",
+   "Que enchufes y tomas coinciden con el plano, fotos de las paredes con cinta métrica, medición del aislamiento y funcionamiento del diferencial, prueba de presión de las tuberías, pendientes del saneamiento y líneas de climatización."
+  ]
+ ]
+}

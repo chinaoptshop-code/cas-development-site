@@ -1,0 +1,329 @@
+{
+ "slug": "instalacje-w-mieszkaniu-pod-klucz-kolejnosc-prac",
+ "lang": "pl",
+ "title": "Instalacje w mieszkaniu pod klucz: elektryka, hydraulika, wentylacja, ogrzewanie podłogowe",
+ "translation_of": "inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit",
+ "seo_title": "Instalacje w mieszkaniu: kolejność prac i kontrole",
+ "description": "Instalacje w mieszkaniu pod klucz: projekt, elektryka i rozdzielnica, wod-kan, wentylacja, klimatyzacja, ogrzewanie podłogowe. Kolejność prac i kontrole.",
+ "lead": "Instalacje to ta część remontu, której po odbiorze nie widać, ale to one decydują, czy będzie wybijać bezpiecznik, czy zalejesz sąsiadów i czy w łazience pojawi się pleśń. Wyjaśniamy, w jakiej kolejności układa się elektrykę, wod-kan, wentylację i ogrzewanie podłogowe, jakie rozwiązania są typowe według praktyki rynkowej i co sprawdzić, póki ściany nie są jeszcze otynkowane.",
+ "date": "2026-11-01",
+ "service": [
+  "/pl/remont-pod-klucz",
+  "Remont pod klucz"
+ ],
+ "photo": "img/p/1xSbwYmzFkTN2A-900.webp",
+ "photo_alt": "Salon z jadalnią — Pidgirland, projekt CAS Development",
+ "body": [
+  [
+   "h2",
+   "Instalacje w mieszkaniu: dlaczego kolejność jest ważniejsza niż marki"
+  ],
+  [
+   "p",
+   "Drogi kran nie uchroni przed przeciekiem na źle wykonanym połączeniu, a dobry kabel — przed przeciążonym obwodem. Większość problemów z instalacjami bierze się nie z materiałów, lecz z niewłaściwej kolejności i braku kontroli przed zakryciem. Dlatego w remoncie pod klucz instalacje prowadzi się według projektu i w jasnym porządku: najpierw decyzje na papierze, potem układanie, potem próby, a dopiero potem tynk, wylewka i wykończenie."
+  ],
+  [
+   "ol",
+   [
+    "projekt instalacji i decyzje dotyczące sprzętu",
+    "rozbiórka, ścianki, sprawdzenie pionów i przyłączy",
+    "elektryka w stanie surowym i instalacje niskoprądowe",
+    "wodociąg, kanalizacja, stelaże podtynkowe",
+    "wentylacja, klimatyzacja, trasy i odpływ skroplin",
+    "próby: ciśnieniowe, pomiary, dokumentacja zdjęciowa, protokoły",
+    "tynk, wylewka z ogrzewaniem podłogowym, hydroizolacja stref mokrych",
+    "wykończenie, potem biały montaż elektryki i hydrauliki"
+   ]
+  ],
+  [
+   "h2",
+   "Etap 0. Projekt: co ustalić przed pierwszą bruzdą"
+  ],
+  [
+   "p",
+   "Gniazdka, włączniki i punkty wody wiąże się z meblami i sprzętem, dlatego najpierw potrzebny jest układ i rozstawienie mebli. Kuchnię, pralkę, bojler, klimatyzatory i uzdatnianie wody warto wybrać przynajmniej co do gabarytów i mocy: od tego zależą przekroje kabli, obwody w rozdzielnicy oraz wysokości i położenie wyprowadzeń."
+  ],
+  [
+   "ul",
+   [
+    "plan gniazdek i włączników z wysokościami i wymiarami",
+    "schemat obwodów oświetlenia i scen sterowania",
+    "schemat jednokreskowy rozdzielnicy z wartościami wyłączników i RCD",
+    "schemat wody i kanalizacji z wysokościami wyprowadzeń",
+    "schemat wentylacji, tras klimatyzacji i odpływu skroplin",
+    "rozkład ogrzewania podłogowego i miejsca termostatów"
+   ]
+  ],
+  [
+   "p",
+   "W nowym budynku najpierw sprawdza się, co zrobił deweloper: gdzie stoi rozdzielnica piętrowa, jaka moc jest przydzielona mieszkaniu, jak wyprowadzone są piony i kanały wentylacyjne. Więcej o specyfice — na stronie [remont w nowym budynku](/pl/remont-mieszkania-deweloperskiego)."
+  ],
+  [
+   "h2",
+   "Elektryka"
+  ],
+  [
+   "h3",
+   "Rozdzielnica i obwody"
+  ],
+  [
+   "p",
+   "Rozdzielnica mieszkania to serce elektryki. Zwykle ma wyłącznik główny, wyłączniki różnicowoprądowe, wyłączniki nadprądowe dla obwodów i w razie potrzeby przekaźnik napięciowy lub ochronę przepięciową. Obwody dzieli się tak, by usterka w jednej strefie nie odcinała prądu w całym mieszkaniu, a duże odbiorniki miały własne linie."
+  ],
+  [
+   "ul",
+   [
+    "oświetlenie osobno od gniazdek, strefami mieszkania",
+    "gniazdka według pokojów, blat kuchenny na osobnym obwodzie",
+    "osobne linie do płyty, piekarnika, zmywarki, pralki, bojlera, klimatyzatorów i ogrzewania podłogowego",
+    "ochrona różnicowoprądowa dla gniazdek i stref mokrych — według praktyki rynkowej 30 mA",
+    "opis każdego wyłącznika i schemat na drzwiczkach rozdzielnicy"
+   ]
+  ],
+  [
+   "h3",
+   "Kabel i prowadzenie"
+  ],
+  [
+   "p",
+   "Stosuje się miedziany kabel trzyżyłowy — faza, neutralny i ochronny. Według praktyki rynkowej do oświetlenia bierze się przekrój 1,5 mm², do gniazdek 2,5 mm², a do płyty i innych dużych odbiorników — według obliczeń mocy, zwykle 4–6 mm². W ścianach kabel prowadzi się ściśle pionowo i poziomo w wyznaczonych strefach, żeby później go nie przewiercić; w podłodze i suficie — w peszlu. Puszki rozgałęźne muszą pozostać dostępne."
+  ],
+  [
+   "h3",
+   "Instalacje niskoprądowe"
+  ],
+  [
+   "p",
+   "Internet, Wi-Fi, domofon, kamery, czujniki zalania i inteligentny dom układa się równolegle z instalacją siłową, ale osobnymi trasami. Zwykle od skrzynki przyłączeniowej do szafki multimedialnej prowadzi się kabel telekomunikacyjny, a od niej skrętkę do telewizora, stanowiska pracy i sufitowych punktów dostępowych Wi-Fi. Przy inteligentnym domu już na etapie projektu ustala się, które obwody będą sterowane, i zostawia miejsce na moduły w rozdzielnicy lub puszkach."
+  ],
+  [
+   "h3",
+   "Łazienka"
+  ],
+  [
+   "p",
+   "W łazience obowiązują ostrzejsze zasady: gniazdka i włączniki umieszcza się poza strefami zachlapania, oprawy dobiera z odpowiednim stopniem ochrony, a metalowe elementy — rury, wannę, brodzik — łączy połączeniami wyrównawczymi. Ogrzewanie podłogowe i grzejnik drabinkowy podłącza się przez zabezpieczenie różnicowoprądowe."
+  ],
+  [
+   "h3",
+   "Co sprawdzić przed tynkowaniem"
+  ],
+  [
+   "ul",
+   [
+    "zgodność gniazdek i włączników z planem co do wysokości i położenia",
+    "zdjęcie każdej ściany z miarką — żeby potem wiedzieć, gdzie biegnie kabel",
+    "pomiar rezystancji izolacji i sprawdzenie zadziałania różnicówki",
+    "przewód ochronny w każdym gniazdku"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1pF5ohNHdSnme0-900.webp",
+   "Zestaw gniazdek i włączników nad drewnianą szafką przy sofie — wnętrze A-Frame House",
+   "Gniazdka przy sofie i łóżku wiąże się z meblami już na etapie projektu"
+  ],
+  [
+   "h2",
+   "Wod-kan"
+  ],
+  [
+   "h3",
+   "Wodociąg: rozdzielacz czy trójniki"
+  ],
+  [
+   "p",
+   "W układzie z rozdzielaczem każdy punkt — bateria, WC, pralka — zasilany jest osobną rurą z rozdzielacza i można go zakręcić bez wyłączania wody w całym mieszkaniu. Układ trójnikowy jest prostszy i tańszy, ale mniej wygodny w obsłudze. Rury to zgrzewany polipropylen, PEX lub wielowarstwowe na złączkach zaprasowywanych; w ścianach i podłodze zostają tylko połączenia nierozłączne. Zimną wodę izoluje się przed kondensacją, ciepłą — przed stratami ciepła."
+  ],
+  [
+   "ul",
+   [
+    "na przyłączu: zawory, filtry zgrubny i dokładny, reduktor ciśnienia, wodomierze zgodnie z zasadami budynku",
+    "system ochrony przed zalaniem — czujniki i zawory z napędem",
+    "dostęp do rozdzielacza, zaworów i filtrów przez klapy rewizyjne"
+   ]
+  ],
+  [
+   "h3",
+   "Kanalizacja"
+  ],
+  [
+   "p",
+   "Zwykle do umywalki, prysznica i pralki stosuje się rury 50 mm, do WC — 110 mm. Odcinki poziome układa się ze stałym spadkiem w stronę pionu — według praktyki rynkowej około 2–3 cm na metr dla rur 50 mm, bez przeciwspadków. Zmiany kierunku robi się dwoma kolanami 45°, a nie jednym ostrym, a na węzłach zostawia rewizje. Wspólnego pionu budynku nie przenosi się ani nie zmniejsza bez zgody, a dla ciszy owija izolacją akustyczną."
+  ],
+  [
+   "h3",
+   "Stelaże, odpływy i hydroizolacja"
+  ],
+  [
+   "p",
+   "Podwieszane WC i umywalkę mocuje się do stelaży — stalowych ram montowanych przed zabudową ścian. Prysznic bez brodzika z odpływem liniowym lub punktowym wymaga spadku wylewki i dokładnej wysokości odpływu. Strefy mokre pokrywa się hydroizolacją płynną lub w rolce z wywinięciem na ściany, w strefie prysznica na całą wysokość zachlapania; narożniki i przejścia rur uszczelnia się taśmami i mankietami."
+  ],
+  [
+   "h3",
+   "Co sprawdzić przed zakryciem"
+  ],
+  [
+   "ul",
+   [
+    "próbę ciśnieniową instalacji przy ciśnieniu i czasie wymaganym przez producenta rur lub projekt, ze zdjęciem manometru",
+    "wysokości i położenie wyprowadzeń według schematu",
+    "spadki kanalizacji poziomicą, brak ugięć",
+    "ciągłość hydroizolacji, także w narożnikach i przy odpływie"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1gXiWvuON9L6XT-900.webp",
+   "Pralnia ze sprzętem, grzejnikiem drabinkowym i szafami do sufitu — projekt domu w Petriwcach",
+   "Pralka i suszarka: osobne linie elektryczne, doprowadzenie wody, odpływ i dostęp do zaworów"
+  ],
+  [
+   "h2",
+   "Wentylacja i klimatyzacja"
+  ],
+  [
+   "p",
+   "W budynku wielorodzinnym wyciąg z kuchni i łazienek zwykle prowadzi przez kanały wentylacyjne. Nie można ich zamurowywać, zwężać ani wykorzystywać do innych celów: zależy od nich wentylacja Twojego mieszkania i mieszkań sąsiadów. Okap podłącza się zgodnie z projektem i zasadami budynku, w łazience montuje się wentylator z klapą zwrotną. Szczelne okna prawie nie przepuszczają powietrza, więc potrzebny jest nawiew: nawiewniki okienne lub ścienne, zdecentralizowane rekuperatory, jeśli pozwala na to elewacja, albo centralna wentylacja nawiewno-wywiewna z odzyskiem ciepła, jeśli jest miejsce pod sufitem."
+  ],
+  [
+   "p",
+   "Trasy klimatyzacji — izolowane rury chłodnicze, odpływ skroplin i kabel — układa się przed tynkiem. Odpływ wymaga spadku lub pompki skroplin, a miejsce jednostki zewnętrznej uzgadnia się według zasad budynku. Po zamknięciu ścian trasy nie da się zmienić bez niszczenia wykończenia."
+  ],
+  [
+   "ul",
+   [
+    "nawiew do pokojów i wyciąg z kuchni, łazienek i garderób",
+    "przepływ powietrza między pokojami — szczelina pod drzwiami lub kratki",
+    "jednostki wewnętrzne ustawione tak, by strumień nie wiał na łóżko czy biurko",
+    "dostęp do filtrów i odpływu w celach serwisowych"
+   ]
+  ],
+  [
+   "h2",
+   "Ogrzewanie podłogowe"
+  ],
+  [
+   "p",
+   "W mieszkaniu najczęściej robi się elektryczne ogrzewanie podłogowe: kabel w wylewce, cienką matę w kleju do płytek albo folię pod panelami lub parkietem, jeśli producent podłogi na to pozwala. Wodnego ogrzewania podłogowego z centralnego ogrzewania w budynku wielorodzinnym zwykle nie wolno robić, bo zaburza równowagę systemu. Jest możliwe przy indywidualnym ogrzewaniu — przez układ mieszający i według projektu."
+  ],
+  [
+   "ul",
+   [
+    "osobna linia z wyłącznikiem i zabezpieczeniem różnicowoprądowym",
+    "czujnik temperatury podłogi w rurce — żeby dało się go wymienić",
+    "izolacja termiczna pod wylewką, żeby nie grzać sąsiadów z dołu",
+    "nie układać pod kuchnią, szafami, wanną i innymi meblami bez nóżek",
+    "pomiar rezystancji kabla przed i po ułożeniu, zdjęcie rozkładu z wymiarami"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/11wEIjh0kDHFtz-900.webp",
+   "Kuchnia z zabudowanym sprzętem i frontami imitującymi drewno — zrealizowane mieszkanie Tetris Hall",
+   "Zabudowany sprzęt kuchenny: każde mocne urządzenie dostaje własną linię"
+  ],
+  [
+   "h2",
+   "Jak instalacje wpływają na wysokość sufitów i poziom podłóg"
+  ],
+  [
+   "p",
+   "Instalacje zabierają centymetry i warto o tym wiedzieć, zanim zakochasz się w konkretnej wysokości sufitu. Kanały wentylacji mechanicznej i kanałowe jednostki klimatyzacji potrzebują miejsca nad sufitem podwieszanym. Wylewka z ogrzewaniem podłogowym i izolacją jest grubsza od zwykłej, a prysznic bez brodzika wymaga miejsca na odpływ i spadek. Stelaże pod podwieszaną ceramikę i rozdzielacze zajmują wnęki w ścianach."
+  ],
+  [
+   "p",
+   "Dlatego projekt wnętrza i instalacji musi być uzgodniony: gdzie obniża się sufit, gdzie chowają się zabudowy, jakie są poziomy podłóg w różnych pokojach i jak wyrównać przejścia bez progów."
+  ],
+  [
+   "h2",
+   "Dokumenty i normy: co powinieneś otrzymać"
+  ],
+  [
+   "p",
+   "Prace wykonuje się zgodnie z obowiązującymi przepisami budowlanymi, zasadami budowy instalacji elektrycznych i wymaganiami producentów urządzeń. Dla Ciebie jako inwestora ważniejsza od listy norm jest dokumentacja, która zostaje po remoncie. Przyda się, gdy za kilka lat zechcesz powiesić półkę, wymienić bojler albo znaleźć przeciek."
+  ],
+  [
+   "ul",
+   [
+    "schematy powykonawcze elektryki i hydrauliki — jak naprawdę je poprowadzono",
+    "zdjęcia ścian i podłóg z miarką przed zakryciem",
+    "schemat jednokreskowy rozdzielnicy z opisanymi obwodami",
+    "protokoły pomiarów elektrycznych i prób ciśnieniowych",
+    "karty techniczne i dokumenty gwarancyjne urządzeń"
+   ]
+  ],
+  [
+   "p",
+   "Jeśli remont wykonuje wykonawca, któremu nie do końca ufasz, roboty zanikające może sprawdzić niezależny specjalista — piszemy o tym w artykule o [nadzorze technicznym](/pl/blog/nadzor-techniczny-remontu-kiedy-potrzebny)."
+  ],
+  [
+   "h2",
+   "Typowe błędy w instalacjach mieszkania"
+  ],
+  [
+   "ul",
+   [
+    "gniazdka „jak u dewelopera”, bez powiązania z meblami i sprzętem — potem przedłużacze",
+    "jeden obwód na całą kuchnię, mocny sprzęt bez osobnych linii",
+    "ukośne trasy kabli w ścianach",
+    "połączenia rur w wylewce bez dostępu",
+    "kanalizacja bez spadku lub z ostrymi zakrętami",
+    "zamurowany lub zwężony kanał wentylacyjny, okap bez nawiewu",
+    "ogrzewanie podłogowe pod meblami i bez izolacji",
+    "zamykanie ścian bez prób ciśnieniowych i dokumentacji zdjęciowej"
+   ]
+  ],
+  [
+   "gallery",
+   [
+    [
+     "/img/p/1dHW-ciO1rn1E0-900.webp",
+     "Salon z kamienną ścianą, wnęką na TV i oświetleniem szynowym — zrealizowane mieszkanie Tetris Hall"
+    ],
+    [
+     "/img/p/1NVeaQcV2TZSN5-900.webp",
+     "Łazienka z wolnostojącą wanną, prysznicem i podświetloną wnęką — projekt domu w Petriwcach"
+    ]
+   ]
+  ],
+  [
+   "h2",
+   "Jak robimy instalacje w remoncie pod klucz"
+  ],
+  [
+   "p",
+   "Instalacje wchodzą w [remont kapitalny mieszkania](/pl/remont-kapitalny-mieszkania) i remont pod klucz w CAS: od $550/m² za robociznę i materiały do prac surowych; materiały wykończeniowe, meble i sprzęt — osobno według kosztorysu. Orientacyjnie: 70 m² × $550 = $38 500 według stawki bazowej — dokładną kwotę podaje kosztorys po projekcie. Swoją powierzchnię możesz przeliczyć w [kalkulatorze remontu](/pl/kalkulator-remontu), a z czego składa się cena — na stronie [koszt remontu mieszkania](/pl/koszt-remontu-mieszkania)."
+  ],
+  [
+   "p",
+   "Prace wykonuje nasz własny zespół, roboty zanikające dokumentujemy w raportach zdjęciowych co 1–2 tygodnie, a na życzenie — kamera online na budowie 24/7 za dopłatą. Jeden opiekun, kosztorys i terminy w umowie, gwarancja na prace — 12 miesięcy. Jeśli nie wiesz, czy potrzebna jest pełna wymiana instalacji, zacznij od artykułu [remont kapitalny czy odświeżenie](/pl/blog/remont-kapitalny-czy-odswiezenie-co-wybrac)."
+  ]
+ ],
+ "faq": [
+  [
+   "W jakiej kolejności robi się instalacje w mieszkaniu?",
+   "Najpierw projekt i decyzje dotyczące sprzętu, potem rozbiórka i ścianki, elektryka w stanie surowym, wodociąg i kanalizacja, wentylacja i trasy klimatyzacji, próby i dokumentacja zdjęciowa, a dopiero potem tynk, wylewka i wykończenie."
+  ],
+  [
+   "Jaki przekrój kabla jest potrzebny do gniazdek i oświetlenia?",
+   "Według praktyki rynkowej do oświetlenia — kabel miedziany 1,5 mm², do gniazdek — 2,5 mm², do płyty i innych dużych odbiorników — według obliczeń, zwykle 4–6 mm². Dokładne wartości określa projekt na podstawie mocy i długości linii."
+  ],
+  [
+   "Rozdzielacz czy trójniki — co lepsze?",
+   "Rozdzielacz jest droższy, ale każdy punkt można zakręcić osobno, a w ścianach nie ma połączeń pośrednich. Trójniki są prostsze i tańsze. W mieszkaniach z kilkoma łazienkami i wieloma urządzeniami częściej wybiera się rozdzielacz."
+  ],
+  [
+   "Czy można zrobić wodne ogrzewanie podłogowe w mieszkaniu?",
+   "Z centralnego ogrzewania w budynku wielorodzinnym — zwykle nie, bo zaburza to pracę instalacji budynku. Wodne ogrzewanie podłogowe jest możliwe przy indywidualnym ogrzewaniu przez układ mieszający. W pozostałych przypadkach robi się elektryczne."
+  ],
+  [
+   "Czy można podłączyć okap do kanału wentylacyjnego?",
+   "Zależy to od konstrukcji kanału i zasad budynku. Nie można zamurowywać ani zwężać kanału ani odcinać nim naturalnego wyciągu. Sposób podłączenia ustala się w projekcie."
+  ],
+  [
+   "Co sprawdzić przed tynkowaniem?",
+   "Zgodność gniazdek i wyprowadzeń z planem, zdjęcia ścian z miarką, pomiary izolacji i działanie różnicówki, próbę ciśnieniową rur, spadki kanalizacji i trasy klimatyzacji."
+  ]
+ ]
+}
