@@ -486,6 +486,8 @@ TP_WORD = {  # тип обʼєкта мовою сторінки
                   zh='博德鲁姆海滩度假村', pl='kompleks plażowy w Bodrum', de='Strandresort in Bodrum', fr='complexe balnéaire à Bodrum', pt='resort de praia em Bodrum', ar='منتجع شاطئي في بودروم'),
     'bathroom': dict(uk='ванна кімната', ru='ванная комната', en='bathroom', es='baño', zh='浴室', pl='łazienka', de='Badezimmer', fr='salle de bain', pt='casa de banho', ar='حمام'),
     'kitchen': dict(uk='кухня', ru='кухня', en='kitchen', es='cocina', zh='厨房', pl='kuchnia', de='Küche', fr='cuisine', pt='cozinha', ar='مطبخ'),
+    'lobby': dict(uk='лобі комплексу в Бодрумі', ru='лобби комплекса в Бодруме', en='resort lobby in Bodrum', es='vestíbulo del complejo en Bodrum',
+                  zh='博德鲁姆度假村大堂', pl='lobby kompleksu w Bodrum', de='Lobby des Resorts in Bodrum', fr='hall du complexe à Bodrum', pt='átrio do resort em Bodrum', ar='ردهة المنتجع في بودروم'),
     'salon': dict(uk='салон краси', ru='салон красоты', en='beauty salon', es='salón de belleza', zh='美容院', pl='salon urody', de='Schönheitssalon', fr='salon de beauté', pt='salão de beleza', ar='صالون تجميل'),
 }
 TP_PAGE = {'design': 'int', 'furnishing': 'int', 'renovation': 'reno', 'construction': 'house', 'landscape': 'land', 'resort': 'resort',
@@ -648,16 +650,23 @@ def _teasers(m, lang):
 # (tools/img/originals.py, q62 + легке згладжування: −30 % ваги). sizes не пишемо — за замовчуванням 100vw (бюджет HTML 64 КБ).
 CROPS = json.load(open(os.path.join(ROOT, 'tools/img/crops.json'), encoding='utf-8'))
 HERO = {'int': 'pidgirland', 'house': 'petrivtsi-house', 'reno': 'tetris-hall', 'rest': 'monpark', 'office': 'office-chicago',
-        'resort': 'yablu-rest', 'land': 'monpark', 'bath': 'hoda-estate', 'kitchen': 'pidgirland'}
+        'resort': 'yablu-rest', 'land': 'monpark', 'bath': 'hoda-estate', 'kitchen': 'pidgirland',
+        'office2': 'office-chicago', 'rest2': 'monpark', 'hotel': 'kitana-beach', 'reno2': 'tetris-hall'}
 # ванні й кухні (18.11.2026: на лендингах ремонту ванної був кадр спальні Tetris Hall) — власні кадри hx-/hxm-bath, hx-/hxm-kitchen
 # (tools/img/crops.json); alt — назва проєкту + кімната, а не тип обʼєкта
-HERO_ROOM = {'bath': 'bathroom', 'kitchen': 'kitchen'}
+HERO_ROOM = {'bath': 'bathroom', 'kitchen': 'kitchen', 'hotel': 'lobby'}
+# другий кадр тієї ж теми (18.11.2026: офіси, ресторани й готелі показували вітальню Pidgirland — основний кадр теми вже в галереї
+# сторінки, а запасна тема була чужою): офіс — робочі місця Office Chicago (hx-office2), ресторан — зала Monpark (hx-rest2),
+# готель — лобі Kitana Beach (hx-hotel). Запасний кадр — лише з цього ланцюжка (жодної вітальні на офісі чи ресторані).
+# Ремонт (reno) — вітальня-їдальня Tetris Hall замість спальні; якщо вона вже на сторінці — стіна з ТВ-нішею Tetris Hall (hx-reno2).
+HERO_ALT = {'office': ['office2'], 'rest': ['rest2'], 'hotel': ['rest2', 'rest'], 'reno': ['reno2']}
 HXL_RX = re.compile(r'<div class="hxl"><picture class="hx-bg">.*?</picture>\n?', re.S)
 
 
 # Довгий хвіст (Михайло 09.11.2026): міста, ЖК, FAQ, решта лендингів і службових сторінок з <div class="w hero"> без фото
 # (крім статей блогу й /proekty) — те саме фото hero; тема — за адресою сторінки (_cat_guess), фото на сторінці не повторюється.
-CAT_RX = (('rest', r'restor|restaur|kafe|hotel|gostinits|yacht'),
+CAT_RX = (('hotel', r'hotel|gostinits'),
+          ('rest', r'restor|restaur|kafe|yacht'),
           ('bath', r'(?:^|-)(?:vann|bano|sanvuz|sanuz)|bathroom|banho|lazienk|badsan|badezimmer|salle-de-bain'),  # не «-uvannia»
           ('kitchen', r'kukhn|kuhn|kitchen|cocina|cozinha|cuisine|kuech|kuchni'),
           ('office', r'ofis|offic|biznes|business|commerc|komerts|kommerch|lokal|gewerbe|shourum|magazin|negocio|commerce|oficina|objekteinr|fit-out|escritorio|comercia|lojas|shop-showroom|ladenbau'),
@@ -681,8 +690,10 @@ def _hero_photo(m, rel, lang):
     e = _close(m, 'div', i)
     if e < 0:
         return m
-    if rel not in LIGHT:  # без повторів: якщо джерело кадру вже є на сторінці — інша тема
-        for c in [cat] + [x for x in ('int', 'reno', 'house', 'rest', 'office') if x != cat]:
+    if rel not in LIGHT:  # без повторів: якщо джерело кадру вже є на сторінці — другий кадр теми (HERO_ALT), інакше — інша тема
+        alt = HERO_ALT.get(cat)
+        chain = [cat] + (alt or [x for x in ('int', 'reno', 'house', 'rest', 'office') if x != cat])
+        for c in chain:
             if CROPS[f'img/p/hx-{c}']['src'].rsplit('/', 1)[1] not in m:
                 cat = c
                 break
@@ -866,7 +877,7 @@ def _spans(m, lang='', rel=''):
         runs.append(cur)
     edits, used, k = [], set(), 0
     cat = TP_PAGES.get(rel, 'mix')
-    for hc in set(re.findall(r'/img/p/hxm?-([a-z]+)-\d+\.webp', m)):  # фото hero (будь-якої теми, і з _cat_guess) не повторюємо в плитках
+    for hc in set(re.findall(r'/img/p/hxm?-([a-z]+\d?)-\d+\.webp', m)):  # фото hero (будь-якої теми, і з _cat_guess) не повторюємо в плитках
         if f'img/p/hxm-{hc}' in CROPS:
             used.add(CROPS[f'img/p/hxm-{hc}']['src'].split('/')[-1])
     # фото, що вже є на сторінці (галерея проєктів, тизер, кейс), у плитках не повторюємо (аудит фото 16.11.2026: «Галерея» і плитка
