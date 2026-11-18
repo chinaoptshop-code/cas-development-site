@@ -226,8 +226,8 @@
  {
   "page": "ar/bathroom-renovation.html",
   "kind": "land",
-  "html_kb": 44.2,
-  "gzip_kb": 11.6,
+  "html_kb": 44.1,
+  "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -474,7 +474,7 @@
  {
   "page": "ar/custom-kitchens-wardrobes.html",
   "kind": "land",
-  "html_kb": 41.7,
+  "html_kb": 41.6,
   "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -5054,7 +5054,7 @@
  {
   "page": "de/badsanierung.html",
   "kind": "land",
-  "html_kb": 40.9,
+  "html_kb": 40.7,
   "gzip_kb": 11.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6084,7 +6084,7 @@
  {
   "page": "de/kuechen-und-schraenke-nach-mass.html",
   "kind": "land",
-  "html_kb": 39.5,
+  "html_kb": 39.4,
   "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6115,7 +6115,7 @@
  {
   "page": "de/kuechenrenovierung.html",
   "kind": "land",
-  "html_kb": 40.2,
+  "html_kb": 40.1,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -6146,7 +6146,7 @@
  {
   "page": "de/ladenbau-showroom.html",
   "kind": "land",
-  "html_kb": 40.9,
+  "html_kb": 41.0,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -8606,8 +8606,8 @@
  {
   "page": "en/bathroom-renovation.html",
   "kind": "land",
-  "html_kb": 41.0,
-  "gzip_kb": 11.1,
+  "html_kb": 40.9,
+  "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -8823,7 +8823,7 @@
  {
   "page": "en/custom-kitchens-wardrobes.html",
   "kind": "land",
-  "html_kb": 39.6,
+  "html_kb": 39.5,
   "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -9322,7 +9322,7 @@
  {
   "page": "en/kitchen-renovation.html",
   "kind": "land",
-  "html_kb": 40.5,
+  "html_kb": 40.4,
   "gzip_kb": 10.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -10696,8 +10696,8 @@
  {
   "page": "es/cocinas-armarios-a-medida.html",
   "kind": "land",
-  "html_kb": 39.6,
-  "gzip_kb": 10.8,
+  "html_kb": 39.5,
+  "gzip_kb": 10.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -11913,8 +11913,8 @@
  {
   "page": "es/reforma-bano.html",
   "kind": "land",
-  "html_kb": 41.2,
-  "gzip_kb": 11.2,
+  "html_kb": 41.0,
+  "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -11975,7 +11975,7 @@
  {
   "page": "es/reforma-cocina.html",
   "kind": "land",
-  "html_kb": 40.5,
+  "html_kb": 40.4,
   "gzip_kb": 10.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -12134,7 +12134,7 @@
  {
   "page": "es/reforma-locales-comerciales.html",
   "kind": "land",
-  "html_kb": 41.3,
+  "html_kb": 41.4,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -13036,7 +13036,7 @@
  {
   "page": "fr/cuisines-placards-sur-mesure.html",
   "kind": "land",
-  "html_kb": 39.9,
+  "html_kb": 39.8,
   "gzip_kb": 10.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -14104,7 +14104,7 @@
  {
   "page": "fr/renovation-cuisine.html",
   "kind": "land",
-  "html_kb": 40.9,
+  "html_kb": 40.8,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -14292,7 +14292,7 @@
  {
   "page": "fr/renovation-salle-de-bain.html",
   "kind": "land",
-  "html_kb": 41.7,
+  "html_kb": 41.5,
   "gzip_kb": 11.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -15004,7 +15004,7 @@
  {
   "page": "kukhni-i-shafy-na-zamovlennia-kyiv.html",
   "kind": "land",
-  "html_kb": 46.2,
+  "html_kb": 46.1,
   "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -27109,7 +27109,7 @@
  {
   "page": "pl/remont-kuchni.html",
   "kind": "land",
-  "html_kb": 39.9,
+  "html_kb": 39.8,
   "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -27140,7 +27140,7 @@
  {
   "page": "pl/remont-lazienki.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.5,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -28923,8 +28923,8 @@
  {
   "page": "pt/design-remodelacao-lojas-showrooms.html",
   "kind": "land",
-  "html_kb": 41.6,
-  "gzip_kb": 11.3,
+  "html_kb": 41.7,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -28954,7 +28954,7 @@
  {
   "page": "pt/design-remodelacao-penthouse.html",
   "kind": "land",
-  "html_kb": 42.6,
+  "html_kb": 42.5,
   "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -29741,7 +29741,7 @@
  {
   "page": "pt/remodelacao-casa-de-banho.html",
   "kind": "land",
-  "html_kb": 42.0,
+  "html_kb": 41.7,
   "gzip_kb": 11.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -29836,8 +29836,8 @@
  {
   "page": "pt/remodelacao-cozinha.html",
   "kind": "land",
-  "html_kb": 40.8,
-  "gzip_kb": 11.0,
+  "html_kb": 40.7,
+  "gzip_kb": 10.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -29899,7 +29899,7 @@
   "page": "pt/remodelacao-integral-apartamento.html",
   "kind": "land",
   "html_kb": 43.8,
-  "gzip_kb": 12.0,
+  "gzip_kb": 11.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -29931,7 +29931,7 @@
  {
   "page": "pt/remodelacao-ligeira-apartamento.html",
   "kind": "land",
-  "html_kb": 39.7,
+  "html_kb": 39.8,
   "gzip_kb": 10.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -29962,7 +29962,7 @@
  {
   "page": "pt/remodelacao-lojas-espacos-comerciais.html",
   "kind": "land",
-  "html_kb": 41.6,
+  "html_kb": 41.7,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -30024,7 +30024,7 @@
  {
   "page": "pt/remodelacao-moradia.html",
   "kind": "land",
-  "html_kb": 41.7,
+  "html_kb": 41.8,
   "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -30454,7 +30454,7 @@
  {
   "page": "remont-kukhni-kyiv.html",
   "kind": "land",
-  "html_kb": 47.2,
+  "html_kb": 47.1,
   "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -31322,7 +31322,7 @@
  {
   "page": "remont-vannoi-kimnaty-kyiv.html",
   "kind": "land",
-  "html_kb": 48.2,
+  "html_kb": 48.0,
   "gzip_kb": 12.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -33313,7 +33313,7 @@
  {
   "page": "ru/kuhni-i-shkafy-na-zakaz-kiev.html",
   "kind": "land",
-  "html_kb": 46.2,
+  "html_kb": 46.1,
   "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -33809,7 +33809,7 @@
  {
   "page": "ru/remont-kuhni-kiev.html",
   "kind": "land",
-  "html_kb": 46.5,
+  "html_kb": 46.4,
   "gzip_kb": 12.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -34677,7 +34677,7 @@
  {
   "page": "ru/remont-vannoy-kiev.html",
   "kind": "land",
-  "html_kb": 47.9,
+  "html_kb": 47.8,
   "gzip_kb": 12.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -35436,8 +35436,8 @@
  {
   "page": "zh/bathroom-renovation.html",
   "kind": "land",
-  "html_kb": 39.5,
-  "gzip_kb": 11.5,
+  "html_kb": 39.4,
+  "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -35684,7 +35684,7 @@
  {
   "page": "zh/custom-kitchens-wardrobes.html",
   "kind": "land",
-  "html_kb": 38.0,
+  "html_kb": 37.9,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -36183,7 +36183,7 @@
  {
   "page": "zh/kitchen-renovation.html",
   "kind": "land",
-  "html_kb": 39.1,
+  "html_kb": 39.0,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,

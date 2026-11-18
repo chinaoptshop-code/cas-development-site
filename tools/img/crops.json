@@ -76,5 +76,9 @@
 "img/p/tl-1t4GTVS3iV3us6": {"src": "img/p/1t4GTVS3iV3us6", "ratio": 1.3333, "x": 0.5, "y": 0.5},
 "img/p/tl-1OR5i7-rm1k0MU": {"src": "img/p/1OR5i7-rm1k0MU", "ratio": 1.3333, "x": 0.5, "y": 0.5},
 "img/p/tl-1Xdje8N1V14_0X": {"src": "img/p/1Xdje8N1V14_0X", "ratio": 1.3333, "x": 0.5, "y": 0.5},
-"img/p/tl-1I84S9MOrJrmtk": {"src": "img/p/1I84S9MOrJrmtk", "ratio": 1.3333, "x": 0.5, "y": 0.5}
+"img/p/tl-1I84S9MOrJrmtk": {"src": "img/p/1I84S9MOrJrmtk", "ratio": 1.3333, "x": 0.5, "y": 0.5},
+"img/p/hx-bath": {"src": "img/p/1zCpl2Feuh3xlW", "ratio": 2, "x": 0.5, "y": 0.64, "q": 62, "blur": 0.4},
+"img/p/hxm-bath": {"src": "img/p/1zCpl2Feuh3xlW", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6},
+"img/p/hx-kitchen": {"src": "img/p/1mc8RMmncPstAS", "ratio": 2, "x": 0.5, "y": 0.54, "q": 62, "blur": 0.4},
+"img/p/hxm-kitchen": {"src": "img/p/1mc8RMmncPstAS", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6}
 }
