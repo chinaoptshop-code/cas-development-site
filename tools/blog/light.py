@@ -90,7 +90,7 @@ TP = {  # тема → (рядок, [основний href, підпис кно�
         'own': ('Tell us about your property and we will give you a rough cost. Phone consultation is free.', None, None),
     },
     'pl': {
-        'nadzor': ('Nadzór techniczny i autorski CAS, także gdy remont prowadzi inny wykonawca: warunki i koszt ustalamy indywidualnie. Konsultacja telefoniczna jest bezpłatna.',
+        'nadzor': ('Nadzór inwestorski i autorski CAS, także gdy remont prowadzi inny wykonawca: warunki i koszt ustalamy indywidualnie. Konsultacja telefoniczna jest bezpłatna.',
                    ['/pl/realizacja-projektu', 'Realizacja projektu'], None),
         'furn': ('Umeblowanie pod klucz od $250/m²; meble, oświetlenie i dekoracje na zamówienie z Chin — katalog Ozdoba. Konsultacja telefoniczna jest bezpłatna.',
                  ['/pl/umeblowanie-pod-klucz', 'Umeblowanie pod klucz'], ['/pl/ozdoba', 'Katalog Ozdoba']),
@@ -116,7 +116,7 @@ TP = {  # тема → (рядок, [основний href, підпис кно�
         'own': ('Cuéntanos sobre tu inmueble y te daremos un coste orientativo. La consulta por teléfono es gratuita.', None, None),
     },
     'de': {
-        'nadzor': ('Technische und gestalterische Bauaufsicht von CAS, auch wenn ein anderes Unternehmen renoviert: Bedingungen und Kosten individuell. Die telefonische Beratung ist kostenlos.',
+        'nadzor': ('Technische und gestalterische Bauüberwachung von CAS, auch wenn ein anderes Unternehmen renoviert: Bedingungen und Kosten individuell. Die telefonische Beratung ist kostenlos.',
                    ['/de/umsetzung-designprojekt', 'Umsetzung des Designprojekts'], None),
         'furn': ('Schlüsselfertige Einrichtung ab $250/m²; Möbel, Licht und Dekor nach Maß. Die telefonische Beratung ist kostenlos.',
                  ['/de/einrichtung-schluesselfertig', 'Einrichtung schlüsselfertig'], ['/de/objekteinrichtung', 'Objekteinrichtung']),
@@ -142,7 +142,7 @@ TP = {  # тема → (рядок, [основний href, підпис кно�
         'own': ('Parlez-nous de votre bien : nous vous donnerons un coût indicatif. La consultation téléphonique est gratuite.', None, None),
     },
     'pt': {
-        'nadzor': ('Fiscalização técnica e acompanhamento de autor da CAS, também quando a obra é feita por outro empreiteiro: condições e custo definidos caso a caso. A consulta por telefone é gratuita.',
+        'nadzor': ('Fiscalização técnica e acompanhamento do designer da CAS, também quando a obra é feita por outro empreiteiro: condições e custo definidos caso a caso. A consulta por telefone é gratuita.',
                    ['/pt/execucao-projeto-design', 'Execução do projeto de design'], None),
         'furn': ('Mobiliário chave na mão desde $250/m²; móveis, iluminação e decoração por medida. A consulta por telefone é gratuita.',
                  ['/pt/mobiliario-chave-na-mao', 'Mobiliário chave na mão'], ['/pt/equipamento-chave-na-mao', 'Equipamento chave na mão']),
@@ -155,15 +155,15 @@ TP = {  # тема → (рядок, [основний href, підпис кно�
         'own': ('Fale-nos do seu imóvel e indicamos um custo aproximado. A consulta por telefone é gratuita.', None, None),
     },
     'zh': {
-        'nadzor': ('CAS 提供技术监理和设计师监理，其他承包商施工时也可以：条件和费用单独商定。电话咨询免费。',
+        'nadzor': ('CAS 提供技术监理和设计监督，其他承包商施工时也可以：条件和费用单独商定。电话咨询免费。',
                    ['/zh/design-implementation', '设计方案落地'], None),
-        'furn': ('交钥匙家具配置每平方米 $250 起；家具、灯具和装饰均可定制。电话咨询免费。',
+        'furn': ('交钥匙家具配置 $250/m² 起；家具、灯具和装饰均可定制。电话咨询免费。',
                  ['/zh/furnishing', '交钥匙家具配置'], ['/zh/turnkey-procurement', '交钥匙配套采购']),
-        'build': ('房屋建造每平方米 $600 起，交钥匙每平方米 $1,100 起；建筑设计每平方米 $12 起。电话咨询免费。',
+        'build': ('房屋建造 $600/m² 起，交钥匙 $1,100/m² 起；建筑设计 $12/m² 起。电话咨询免费。',
                   ['/zh/house-construction', '房屋建造'], ['/zh/house-construction#build-anim', '看看我们如何建造']),
-        'smeta': ('装修每平方米 $550 起：人工和基础材料；饰面材料、家具和电器另按预算计算。电话咨询免费。',
+        'smeta': ('装修 $550/m² 起：人工和基础材料；饰面材料、家具和电器另按预算计算。电话咨询免费。',
                   ['/zh/turnkey-renovation', '交钥匙装修'], ['/zh/renovation-calculator', '装修费用计算器']),
-        'design': ('设计方案每平方米 $30 起（最低 $2,500），平面布局方案每平方米 $6 起。电话咨询免费。',
+        'design': ('设计方案 $30/m² 起（最低 $2,500），平面布局方案 $6/m² 起。电话咨询免费。',
                    ['/zh/interior-design', '室内设计'], ['/zh/renovation-calculator', '费用计算器']),
         'own': ('告诉我们您的物业情况，我们会给出大致费用。电话咨询免费。', None, None),
     },
@@ -305,7 +305,8 @@ def body(a, render_node, inline, ver):
         p = re.sub(r'\s+', ' ', m.group(0)).strip()
         if p.lower() not in [x.lower() for x in prices]:
             prices.append(p)
-    rows = [('ti', f'≈ {mins} {t["read"]}'), ('st', f'{t["parts"]}: {len(secs)} · {t["q"]}: {len(a.get("faq", []))}')]
+    cl = '：' if lang == 'zh' else ':'  # zh — повноширинна двокрапка
+    rows = [('ti', f'≈ {mins} {t["read"]}'), ('st', f'{t["parts"]}{cl} {len(secs)} · {t["q"]}{cl} {len(a.get("faq", []))}'.replace('： ', '：'))]
     if prices:
         rows.insert(1, ('pr', f'{t["price"]}: ' + ', '.join(prices[:3])))
     su, sl = a['service']

@@ -1,5 +1,5 @@
 {
- "_": "Deutsche Texte unter dem Viewer /de/tury/<slug> (Übersetzung von about.json: dieselben Fakten; «fertig/realisiert» nur für apartment-2025). Erzeugt von tools/tours/build.py pages. name — Titel des Rundgangs im Viewer und auf den Karten; Links — [Text](/de/pfad) auf Seiten in dieser Sprache. title ≤ 60, description ≤ 155.",
+ "_": "Deutsche Texte unter dem Viewer /de/tury/<slug> (Übersetzung von about.json: dieselben Fakten; „fertig/realisiert“ nur für apartment-2025). Erzeugt von tools/tours/build.py pages. name — Titel des Rundgangs im Viewer und auf den Karten; Links — [Text](/de/pfad) auf Seiten in dieser Sprache. title ≤ 60, description ≤ 155.",
  "apartment-2025": {
   "name": "Wohnung — fertiges Interieur",
   "title": "Fertige Wohnung in Kyjiw — 3D-Rundgang 360° | CAS",

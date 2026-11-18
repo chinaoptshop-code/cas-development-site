@@ -6,7 +6,7 @@
  "description": "Calculateur en ligne : rénovation d’appartement ou de bureau, construction de maison à Kyiv. Rénovation dès $550/m², design dès $30/m², mobilier dès $250/m².",
  "h1": "Calculateur du coût de rénovation à Kyiv",
  "price": "rénovation dès $550 / m² · maison clé en main dès $1 100 / m²",
- "lead": "Estimez le coût indicatif d’une rénovation d’appartement ou de bureau, ou de la construction d’une maison, selon nos tarifs de base. Ajoutez le projet de design et l’ameublement, puis envoyez-nous le calcul : après métré, nous préparerons un devis précis.",
+ "lead": "Estimez le coût indicatif d’une rénovation d’appartement ou de bureau, ou de la construction d’une maison, selon nos tarifs de base. Ajoutez le projet de design et l’ameublement, puis envoyez-nous le calcul : après relevé, nous préparerons un devis précis.",
  "calc": true,
  "cards": [
   [
@@ -38,7 +38,7 @@
   [
    "Pourquoi « dès » et pas un prix exact",
    [
-    "Le coût final dépend de l’état du bien, du volume de travaux et des matériaux. Le calculateur affiche la borne basse selon nos tarifs de base. Le montant exact est fixé dans le devis après métré et projet ; et si nous réalisons les travaux, le total ne sort pas de ±5 % du devis."
+    "Le coût final dépend de l’état du bien, du volume de travaux et des matériaux. Le calculateur affiche la borne basse selon nos tarifs de base. Le montant exact est fixé dans le devis après relevé et projet ; et si nous réalisons les travaux, le total ne sort pas de ±5 % du devis."
    ]
   ]
  ],
@@ -48,7 +48,7 @@
    "Calculateur ou appel."
   ],
   [
-   "Métré",
+   "Relevé",
    "Nous nous déplaçons sur place."
   ],
   [
@@ -67,7 +67,7 @@
  "faq": [
   [
    "Combien coûte la rénovation d’un appartement de 60 m² à Kyiv ?",
-   "Au tarif de base, dès $33 000 (60 m² × $550). Le prix dès $550/m² comprend les travaux et les matériaux de base ; les matériaux de finition, le mobilier et l’électroménager sont chiffrés à part dans le devis. Le montant exact est donné après métré et devis."
+   "Au tarif de base, dès $33 000 (60 m² × $550). Le prix dès $550/m² comprend les travaux et les matériaux de base ; les matériaux de finition, le mobilier et l’électroménager sont chiffrés à part dans le devis. Le montant exact est donné après relevé et devis."
   ],
   [
    "Les matériaux sont-ils compris ?",

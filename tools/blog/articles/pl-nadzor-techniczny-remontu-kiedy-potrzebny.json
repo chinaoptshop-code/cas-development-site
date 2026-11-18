@@ -2,10 +2,10 @@
  "slug": "nadzor-techniczny-remontu-kiedy-potrzebny",
  "lang": "pl",
  "translation_of": "tekhnichnyi-nahliad-za-remontom-koly-potriben",
- "title": "Nadzór techniczny nad remontem mieszkania: kiedy jest potrzebny i co sprawdza",
- "seo_title": "Nadzór techniczny nad remontem: kiedy i po co",
- "description": "Nadzór techniczny nad remontem mieszkania: co sprawdza, odbiór robót zakrytych, czym różni się od nadzoru autorskiego i kiedy się opłaca.",
- "lead": "Nadzór techniczny nad remontem jest potrzebny, gdy nie możesz codziennie bywać na budowie albo nie masz pewności, czy ocenisz jakość robót zakrytych. Jego zadanie to wychwycić błąd, póki jego naprawa jest tania. Wyjaśniamy, co sprawdza nadzór, kiedy ma sens i jak go zorganizować.",
+ "title": "Nadzór inwestorski nad remontem mieszkania: kiedy jest potrzebny i co sprawdza",
+ "seo_title": "Nadzór inwestorski nad remontem: kiedy i po co",
+ "description": "Nadzór inwestorski nad remontem mieszkania: co sprawdza, odbiór robót zakrytych, czym różni się od nadzoru autorskiego i kiedy się opłaca.",
+ "lead": "Nadzór inwestorski nad remontem jest potrzebny, gdy nie możesz codziennie bywać na budowie albo nie masz pewności, czy ocenisz jakość robót zakrytych. Jego zadanie to wychwycić błąd, póki jego naprawa jest tania. Wyjaśniamy, co sprawdza nadzór, kiedy ma sens i jak go zorganizować.",
  "date": "2026-11-01",
  "service": [
   "/pl/nadzor-autorski-i-techniczny",
@@ -16,11 +16,11 @@
  "body": [
   [
    "h2",
-   "Czym jest nadzór techniczny"
+   "Czym jest nadzór inwestorski"
   ],
   [
    "p",
-   "Nadzór techniczny to niezależna kontrola wykonania robót budowlanych: czy są zgodne z projektem, technologią producentów materiałów i umową. Inspektor nie buduje i nie kieruje ekipą. Patrzy na budowę oczami inwestora, ale z wiedzą fachowca: co dokładnie ma być zrobione, jak to sprawdzić i do czego prowadzi odstępstwo."
+   "Nadzór inwestorski to niezależna kontrola wykonania robót budowlanych: czy są zgodne z projektem, technologią producentów materiałów i umową. Inspektor nie buduje i nie kieruje ekipą. Patrzy na budowę oczami inwestora, ale z wiedzą fachowca: co dokładnie ma być zrobione, jak to sprawdzić i do czego prowadzi odstępstwo."
   ],
   [
    "p",
@@ -28,7 +28,7 @@
   ],
   [
    "h3",
-   "Czego nadzór techniczny nie robi"
+   "Czego nadzór inwestorski nie robi"
   ],
   [
    "ul",
@@ -49,15 +49,15 @@
   ],
   [
    "p",
-   "Te usługi bywają mylone, choć odpowiadają na różne pytania. Nadzór autorski to kontrola projektanta: czy efekt odpowiada koncepcji, materiałom i detalom. Nadzór techniczny to kontrola inżyniera: czy roboty są wykonane poprawnie technicznie."
+   "Te usługi bywają mylone, choć odpowiadają na różne pytania. Nadzór autorski to kontrola projektanta: czy efekt odpowiada koncepcji, materiałom i detalom. Nadzór inwestorski to kontrola inżyniera: czy roboty są wykonane poprawnie technicznie."
   ],
   [
    "ul",
    [
     "nadzór autorski sprawdza, czy oprawa wisi tam, gdzie zaplanowano, i czy fuga płytek trafia w oś wnęki",
-    "nadzór techniczny sprawdza, czy instalacja do oprawy jest poprawnie wykonana i czy pod płytkami jest hydroizolacja",
+    "nadzór inwestorski sprawdza, czy instalacja do oprawy jest poprawnie wykonana i czy pod płytkami jest hydroizolacja",
     "nadzór autorski odpowiada na pytania ekipy dotyczące rysunków i detali",
-    "nadzór techniczny dokumentuje odstępstwa od technologii i wymaga ich usunięcia przed kolejnym etapem"
+    "nadzór inwestorski dokumentuje odstępstwa od technologii i wymaga ich usunięcia przed kolejnym etapem"
    ]
   ],
   [
@@ -72,7 +72,7 @@
   ],
   [
    "h2",
-   "Kiedy nadzór techniczny jest szczególnie potrzebny"
+   "Kiedy nadzór inwestorski jest szczególnie potrzebny"
   ],
   [
    "ul",
@@ -164,7 +164,7 @@
   ],
   [
    "h2",
-   "Jak nadzór techniczny oszczędza pieniądze"
+   "Jak nadzór inwestorski oszczędza pieniądze"
   ],
   [
    "p",
@@ -185,7 +185,7 @@
   ],
   [
    "h2",
-   "Jak zorganizować nadzór techniczny"
+   "Jak zorganizować nadzór inwestorski"
   ],
   [
    "ol",
@@ -242,7 +242,7 @@
  ],
  "faq": [
   [
-   "Czym jest nadzór techniczny nad remontem?",
+   "Czym jest nadzór inwestorski nad remontem?",
    "To niezależna kontrola zgodności robót z projektem, technologią materiałów i umową. Najważniejsza jest kontrola robót zakrytych przed ich zakryciem."
   ],
   [
@@ -250,7 +250,7 @@
    "Nadzór autorski pilnuje zgodności z koncepcją projektanta, techniczny — poprawności wykonania od strony inżynierskiej. Przy złożonych inwestycjach przydają się oba."
   ],
   [
-   "Ile kosztuje nadzór techniczny w CAS?",
+   "Ile kosztuje nadzór inwestorski w CAS?",
    "Jeśli remont prowadzi inny wykonawca, warunki i koszt ustalamy indywidualnie — zależnie od obiektu, zakresu robót i harmonogramu wizyt."
   ],
   [

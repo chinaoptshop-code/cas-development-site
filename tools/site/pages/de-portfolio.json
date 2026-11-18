@@ -3,9 +3,9 @@
  "lang": "de",
  "service": "Консультація (портфоліо)",
  "title": "CAS-Portfolio: Wohnungen, Häuser, Büros und Restaurants",
- "description": "CAS Development: über 150 Projekte seit 2016 — Wohnungen, Häuser, Restaurants, Büros und Salons in Kiew, den Karpaten, der Türkei, den USA und den VAE.",
+ "description": "CAS Development: über 150 Projekte seit 2016 — Wohnungen, Häuser, Restaurants, Büros und Salons in Kyjiw, den Karpaten, der Türkei, den USA und den VAE.",
  "h1": "Portfolio: Jedes Projekt hat seine eigene Geschichte",
- "lead": "Über 150 Projekte seit 2016: Wohnungen, Häuser, Restaurants, Büros und Salons in Kiew, in den Karpaten, in der Türkei, den USA und den VAE.",
+ "lead": "Über 150 Projekte seit 2016: Wohnungen, Häuser, Restaurants, Büros und Salons in Kyjiw, in den Karpaten, in der Türkei, den USA und den VAE.",
  "btn2": [
   "tel:+380978667755",
   "Anrufen"
@@ -21,7 +21,7 @@
    "h": 1091,
    "sizes": "100vw"
   },
-  "alt": "Portfolio von CAS Development: umgesetzte Interieurs in Kiew"
+  "alt": "Portfolio von CAS Development: umgesetzte Interieurs in Kyjiw"
  },
  "facts": false,
  "ld_raw": [
@@ -346,7 +346,7 @@
   {
    "t": "text",
    "p": [
-    "Wohnungen und Penthouses, Häuser und Villen, Restaurants, Salons, Büros und Ferienanlagen — in Kiew und Umgebung, in den Karpaten, in der Türkei (Bodrum), den USA und den VAE. Mehr zu unseren Leistungen: [Wohnungsdesign](/de/wohnungsdesign), [Hausinterieurs](/de/hausinterieur), [Restaurants und Cafés](/de/restaurantdesign), [Büros](/de/bueroplanung), [schlüsselfertige Renovierung](/de/renovierung-schluesselfertig), [Premium-Renovierung](/de/premium-renovierung), [Wohnungsrenovierung in Kiewer Wohnanlagen](/remont-kvartyr-zhk-kyiv), [schlüsselfertiger Hausbau](/de/hausbau) und [Generalunternehmer für Gewerbeobjekte](/de/generalunternehmer)."
+    "Wohnungen und Penthouses, Häuser und Villen, Restaurants, Salons, Büros und Ferienanlagen — in Kyjiw und Umgebung, in den Karpaten, in der Türkei (Bodrum), den USA und den VAE. Mehr zu unseren Leistungen: [Wohnungsdesign](/de/wohnungsdesign), [Hausinterieurs](/de/hausinterieur), [Restaurants und Cafés](/de/restaurantdesign), [Büros](/de/bueroplanung), [schlüsselfertige Renovierung](/de/renovierung-schluesselfertig), [Premium-Renovierung](/de/premium-renovierung), [Wohnungsrenovierung in Kyjiwer Wohnanlagen](/remont-kvartyr-zhk-kyiv), [schlüsselfertiger Hausbau](/de/hausbau) und [Generalunternehmer für Gewerbeobjekte](/de/generalunternehmer)."
    ]
   },
   {
@@ -449,7 +449,7 @@
     ],
     [
      "/de/tury/apartment-2025",
-     "Fertige Wohnung, Kiew"
+     "Fertige Wohnung, Kyjiw"
     ],
     [
      "/de/tury/edelweiss",
@@ -626,7 +626,7 @@
    "h2": "Linden Penthouse",
    "href": "/de/proekty/linden-penthouse",
    "status": "Designprojekt",
-   "meta": "Kiew · 210 m²",
+   "meta": "Kyjiw · 210 m²",
    "open": "zur Projektseite →",
    "btn": "Öffnen →",
    "label": "Fotos: Linden Penthouse",
@@ -2142,7 +2142,7 @@
    "h2": "Pidgirland",
    "href": "/de/proekty/pidgirland",
    "status": "Designprojekt",
-   "meta": "Region Kiew · 260 m²",
+   "meta": "Region Kyjiw · 260 m²",
    "open": "zur Projektseite →",
    "btn": "Öffnen →",
    "label": "Fotos: Pidgirland",
@@ -2575,7 +2575,7 @@
    "h2": "Hodos Villa",
    "href": "/de/proekty/hodos-villa",
    "status": "Designprojekt",
-   "meta": "Kiew · 500 m²",
+   "meta": "Kyjiw · 500 m²",
    "open": "zur Projektseite →",
    "btn": "Öffnen →",
    "label": "Fotos: Hodos Villa",
@@ -2589,313 +2589,313 @@
     {
      "img": "img/p/1Grj8_m7MJwsbE-200.webp",
      "srcset": "/img/p/1Grj8_m7MJwsbE-200.webp 200w, /img/p/1Grj8_m7MJwsbE-400.webp 400w",
-     "alt": "Eingang, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Eingang, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1Xdb_M0v9MyKsV-200.webp",
      "srcset": "/img/p/1Xdb_M0v9MyKsV-200.webp 200w, /img/p/1Xdb_M0v9MyKsV-400.webp 400w",
-     "alt": "Eingang, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Eingang, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1jS6hUJuy_cM08-200.webp",
      "srcset": "/img/p/1jS6hUJuy_cM08-200.webp 200w, /img/p/1jS6hUJuy_cM08-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1TcDKfxIgD531P-200.webp",
      "srcset": "/img/p/1TcDKfxIgD531P-200.webp 200w, /img/p/1TcDKfxIgD531P-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1SDryLobUiLJ67-200.webp",
      "srcset": "/img/p/1SDryLobUiLJ67-200.webp 200w, /img/p/1SDryLobUiLJ67-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1-ZBmZr06YTHNc-200.webp",
      "srcset": "/img/p/1-ZBmZr06YTHNc-200.webp 200w, /img/p/1-ZBmZr06YTHNc-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1amWZypgqtUZ3K-200.webp",
      "srcset": "/img/p/1amWZypgqtUZ3K-200.webp 200w, /img/p/1amWZypgqtUZ3K-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1hKvQ9T1jDNKOp-200.webp",
      "srcset": "/img/p/1hKvQ9T1jDNKOp-200.webp 200w, /img/p/1hKvQ9T1jDNKOp-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1-Lit8Tm15S9vl-200.webp",
      "srcset": "/img/p/1-Lit8Tm15S9vl-200.webp 200w, /img/p/1-Lit8Tm15S9vl-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/17aENHbKpJ78y6-200.webp",
      "srcset": "/img/p/17aENHbKpJ78y6-200.webp 200w, /img/p/17aENHbKpJ78y6-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1YVCt0SH0U_fk_-200.webp",
      "srcset": "/img/p/1YVCt0SH0U_fk_-200.webp 200w, /img/p/1YVCt0SH0U_fk_-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1akpqWqDXX6sXC-200.webp",
      "srcset": "/img/p/1akpqWqDXX6sXC-200.webp 200w, /img/p/1akpqWqDXX6sXC-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1S8L6r4oQFAg5G-200.webp",
      "srcset": "/img/p/1S8L6r4oQFAg5G-200.webp 200w, /img/p/1S8L6r4oQFAg5G-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1KVy31VKXiodBJ-200.webp",
      "srcset": "/img/p/1KVy31VKXiodBJ-200.webp 200w, /img/p/1KVy31VKXiodBJ-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1FLpe2b2NaaIPt-200.webp",
      "srcset": "/img/p/1FLpe2b2NaaIPt-200.webp 200w, /img/p/1FLpe2b2NaaIPt-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1kxCnAuFqOWXq7-200.webp",
      "srcset": "/img/p/1kxCnAuFqOWXq7-200.webp 200w, /img/p/1kxCnAuFqOWXq7-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1lEbzbqufAWR7N-200.webp",
      "srcset": "/img/p/1lEbzbqufAWR7N-200.webp 200w, /img/p/1lEbzbqufAWR7N-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1sWwgUEwnF_Tr5-200.webp",
      "srcset": "/img/p/1sWwgUEwnF_Tr5-200.webp 200w, /img/p/1sWwgUEwnF_Tr5-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1YM9A7oX54GHU0-200.webp",
      "srcset": "/img/p/1YM9A7oX54GHU0-200.webp 200w, /img/p/1YM9A7oX54GHU0-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1NrRPjetjjmzXT-200.webp",
      "srcset": "/img/p/1NrRPjetjjmzXT-200.webp 200w, /img/p/1NrRPjetjjmzXT-400.webp 400w",
-     "alt": "Wohnzimmer, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Wohnzimmer, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1VUB7mHyi1SPnp-200.webp",
      "srcset": "/img/p/1VUB7mHyi1SPnp-200.webp 200w, /img/p/1VUB7mHyi1SPnp-400.webp 400w",
-     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/18QGd9cvcoEngv-200.webp",
      "srcset": "/img/p/18QGd9cvcoEngv-200.webp 200w, /img/p/18QGd9cvcoEngv-400.webp 400w",
-     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1L9sYKBbGdSG6g-200.webp",
      "srcset": "/img/p/1L9sYKBbGdSG6g-200.webp 200w, /img/p/1L9sYKBbGdSG6g-400.webp 400w",
-     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1RPu-1neix9ZRW-200.webp",
      "srcset": "/img/p/1RPu-1neix9ZRW-200.webp 200w, /img/p/1RPu-1neix9ZRW-400.webp 400w",
-     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1pdpVBh-pCdJ0a-200.webp",
      "srcset": "/img/p/1pdpVBh-pCdJ0a-200.webp 200w, /img/p/1pdpVBh-pCdJ0a-400.webp 400w",
-     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1Uglho8mIjjRCM-200.webp",
      "srcset": "/img/p/1Uglho8mIjjRCM-200.webp 200w, /img/p/1Uglho8mIjjRCM-400.webp 400w",
-     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1cpatJSs3zoc3Z-200.webp",
      "srcset": "/img/p/1cpatJSs3zoc3Z-200.webp 200w, /img/p/1cpatJSs3zoc3Z-400.webp 400w",
-     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1VbP8mR23rLxAY-200.webp",
      "srcset": "/img/p/1VbP8mR23rLxAY-200.webp 200w, /img/p/1VbP8mR23rLxAY-400.webp 400w",
-     "alt": "Schlafzimmer 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/13S65_x8RxCJgj-200.webp",
      "srcset": "/img/p/13S65_x8RxCJgj-200.webp 200w, /img/p/13S65_x8RxCJgj-400.webp 400w",
-     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1eyDkON_k3qOm--200.webp",
      "srcset": "/img/p/1eyDkON_k3qOm--200.webp 200w, /img/p/1eyDkON_k3qOm--400.webp 400w",
-     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1rvZLtFPI-5yip-200.webp",
      "srcset": "/img/p/1rvZLtFPI-5yip-200.webp 200w, /img/p/1rvZLtFPI-5yip-400.webp 400w",
-     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/13056IopoRl5SG-200.webp",
      "srcset": "/img/p/13056IopoRl5SG-200.webp 200w, /img/p/13056IopoRl5SG-400.webp 400w",
-     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1IaznF6yqteSog-200.webp",
      "srcset": "/img/p/1IaznF6yqteSog-200.webp 200w, /img/p/1IaznF6yqteSog-400.webp 400w",
-     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1Rye3Ub7GaZ-9t-200.webp",
      "srcset": "/img/p/1Rye3Ub7GaZ-9t-200.webp 200w, /img/p/1Rye3Ub7GaZ-9t-400.webp 400w",
-     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1EvoVkw92W1VRb-200.webp",
      "srcset": "/img/p/1EvoVkw92W1VRb-200.webp 200w, /img/p/1EvoVkw92W1VRb-400.webp 400w",
-     "alt": "Schlafzimmer 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 2, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1rX6WjnHT4fCgV-200.webp",
      "srcset": "/img/p/1rX6WjnHT4fCgV-200.webp 200w, /img/p/1rX6WjnHT4fCgV-400.webp 400w",
-     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1amCZv3ztoxi9t-200.webp",
      "srcset": "/img/p/1amCZv3ztoxi9t-200.webp 200w, /img/p/1amCZv3ztoxi9t-400.webp 400w",
-     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1HOnuog3t9a6tP-200.webp",
      "srcset": "/img/p/1HOnuog3t9a6tP-200.webp 200w, /img/p/1HOnuog3t9a6tP-400.webp 400w",
-     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1h0DQErA8iJLTm-200.webp",
      "srcset": "/img/p/1h0DQErA8iJLTm-200.webp 200w, /img/p/1h0DQErA8iJLTm-400.webp 400w",
-     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1gf2OJce5x5f-x-200.webp",
      "srcset": "/img/p/1gf2OJce5x5f-x-200.webp 200w, /img/p/1gf2OJce5x5f-x-400.webp 400w",
-     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1piGn5WSwmjShr-200.webp",
      "srcset": "/img/p/1piGn5WSwmjShr-200.webp 200w, /img/p/1piGn5WSwmjShr-400.webp 400w",
-     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1dLPPNEAuguwep-200.webp",
      "srcset": "/img/p/1dLPPNEAuguwep-200.webp 200w, /img/p/1dLPPNEAuguwep-400.webp 400w",
-     "alt": "Schlafzimmer 3, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Schlafzimmer 3, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1770Ox4TlZ7Ho1-200.webp",
      "srcset": "/img/p/1770Ox4TlZ7Ho1-200.webp 200w, /img/p/1770Ox4TlZ7Ho1-400.webp 400w",
-     "alt": "Bad 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Bad 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1l80YII0VeNjGG-200.webp",
      "srcset": "/img/p/1l80YII0VeNjGG-200.webp 200w, /img/p/1l80YII0VeNjGG-400.webp 400w",
-     "alt": "Bad 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Bad 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1cYFLgq0KHAGPJ-200.webp",
      "srcset": "/img/p/1cYFLgq0KHAGPJ-200.webp 200w, /img/p/1cYFLgq0KHAGPJ-400.webp 400w",
-     "alt": "Bad 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Bad 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1KC7wnAej6DxF8-200.webp",
      "srcset": "/img/p/1KC7wnAej6DxF8-200.webp 200w, /img/p/1KC7wnAej6DxF8-400.webp 400w",
-     "alt": "Bad 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Bad 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1kCFiBVhuml_dY-200.webp",
      "srcset": "/img/p/1kCFiBVhuml_dY-200.webp 200w, /img/p/1kCFiBVhuml_dY-400.webp 400w",
-     "alt": "Bad 1, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Bad 1, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1koFiJyNPUrcPa-200.webp",
      "srcset": "/img/p/1koFiJyNPUrcPa-200.webp 200w, /img/p/1koFiJyNPUrcPa-400.webp 400w",
-     "alt": "Bad 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Bad 2, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1we2aOJeR2kfqx-200.webp",
      "srcset": "/img/p/1we2aOJeR2kfqx-200.webp 200w, /img/p/1we2aOJeR2kfqx-400.webp 400w",
-     "alt": "Bad 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Bad 2, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/10oOhYbcJqYkMP-200.webp",
      "srcset": "/img/p/10oOhYbcJqYkMP-200.webp 200w, /img/p/10oOhYbcJqYkMP-400.webp 400w",
-     "alt": "Bad 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Bad 2, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1fBtM0vjjN62p4-200.webp",
      "srcset": "/img/p/1fBtM0vjjN62p4-200.webp 200w, /img/p/1fBtM0vjjN62p4-400.webp 400w",
-     "alt": "Bad 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Bad 2, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
      "img": "img/p/1jiEXuONJLmEJA-200.webp",
      "srcset": "/img/p/1jiEXuONJLmEJA-200.webp 200w, /img/p/1jiEXuONJLmEJA-400.webp 400w",
-     "alt": "Bad 2, Hodos Villa (Kiew) — Designprojekt von CAS Development",
+     "alt": "Bad 2, Hodos Villa (Kyjiw) — Designprojekt von CAS Development",
      "sizes": "(max-width:767px) 200px, 280px"
     },
     {
@@ -4430,7 +4430,7 @@
    "h2": "Office Chicago",
    "href": "/de/proekty/office-chicago",
    "status": "Umgesetzt",
-   "meta": "Wohnanlage Chicago, Kiew",
+   "meta": "Wohnanlage Chicago, Kyjiw",
    "open": "zur Projektseite →",
    "btn": "Öffnen →",
    "label": "Fotos: Office Chicago",

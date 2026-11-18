@@ -1,5 +1,5 @@
 {
- "_": "中文文本，显示在 /zh/tury/<slug> 漫游下方（about.json 的翻译：事实相同；「已完工」仅用于 apartment-2025）。由 tools/tours/build.py pages 生成。name — 漫游在查看器和卡片中的名称；链接 — [文字](/zh/路径)，指向本语言页面。title ≤ 60，description ≤ 155。",
+ "_": "中文文本，显示在 /zh/tury/<slug> 漫游下方（about.json 的翻译：事实相同；“已完工”仅用于 apartment-2025）。由 tools/tours/build.py pages 生成。name — 漫游在查看器和卡片中的名称；链接 — [文字](/zh/路径)，指向本语言页面。title ≤ 60，description ≤ 155。",
  "apartment-2025": {
   "name": "公寓——已完工室内",
   "title": "基辅已完工公寓——360° 3D 漫游 | CAS Development",

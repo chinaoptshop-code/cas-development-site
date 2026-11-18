@@ -385,7 +385,7 @@ def build_article(a, arts):
     svc_url, svc_label = a['service']
     svc_short = re.sub(r'\s+(?:від|от|from|od)\s+\$.*$', '', svc_label)
     hu = hubs.ui(lang)  # рядок теми під «Читайте також»: усі статті теми · послуга статті · калькулятор
-    tline = [f'<a href="{topic_url(lang, tk)}">{esc(hu["topic"])}: {esc(hubs.label(lang, tk))}</a>',
+    tline = [f'<a href="{topic_url(lang, tk)}">{esc(hu["topic"])}{'：' if lang == 'zh' else ': '}{esc(hubs.label(lang, tk))}</a>',
              f'<a href="{svc_url}">{esc(svc_short)}</a>']
     cl = (hubs.LINKS.get(lang) or {}).get(tk)
     if cl and cl[0] != svc_url and light._exists(cl[0]): tline.append(f'<a href="{cl[0]}">{esc(cl[1])}</a>')

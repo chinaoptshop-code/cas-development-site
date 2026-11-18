@@ -1,5 +1,5 @@
 {
- "_": "English texts under the viewer /en/tury/<slug> (translation of about.json — same facts; «completed» only for apartment-2025). Built by tools/tours/build.py pages. name — tour title in the viewer and cards; links — [text](/en/path) to pages in this language. title ≤ 60, description ≤ 155.",
+ "_": "English texts under the viewer /en/tury/<slug> (translation of about.json — same facts; “completed” only for apartment-2025). Built by tools/tours/build.py pages. name — tour title in the viewer and cards; links — [text](/en/path) to pages in this language. title ≤ 60, description ≤ 155.",
  "apartment-2025": {
   "name": "Apartment — completed interior",
   "title": "Finished apartment in Kyiv — 360° 3D tour | CAS Development",

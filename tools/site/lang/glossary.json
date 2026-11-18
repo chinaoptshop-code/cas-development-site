@@ -1,0 +1,502 @@
+{
+ "_": "Глосарій перекладів (18.11.2026): ключові терміни uk → бажаний переклад кожної мови. «avoid» — регулярні вирази (Python re) кальок і застарілих варіантів, які ловить tools/site/i18nlint.py у видимому тексті зібраних сторінок; «note» — пояснення для перекладача. Ціни й факти — лише з CLAUDE.md. Новий термін: додати сюди, виправити джерела (pages JSON, lang/*.json, caselang/*.json, *_i18n.py, статті блогу, kabinet-i18n, tours/about-*.json) і перезібрати.",
+ "register": {
+  "en": "you; neutral, no exclamation marks",
+  "es": "es-ES; сторінки й форми — usted (Le llamamos, Deje su número), блог — tú; piso (не departamento), reforma, presupuesto",
+  "pl": "ty (Zostaw numer, Napisz), без Pan/Pani",
+  "de": "Sie; Kyjiw — офіційна форма (Auswärtiges Amt), у тексті не змішувати з «Kiew»",
+  "fr": "vous; пробіл перед : ; ? ! і всередині « » ставить типографіка",
+  "pt": "pt-PT: equipa, contacto, telemóvel, remodelação, betão, casa de banho, registo; o senhor/você — уникати, безособово або 3-тя особа (Ligamos-lhe)",
+  "zh": "zh-Hans (материковий): лапки “ ”, не 「 」; повноширинна пунктуація ，。：；？（）; пробіл між ієрогліфами й латиницею/цифрами",
+  "ar": "فصحى معاصرة؛ RTL: ، ؛ ؟ замість , ; ?; імена — арабським письмом (ميخايلو)",
+  "ru": "вы; «ёлочки», как в uk"
+ },
+ "quotes": {
+  "uk": "« »",
+  "ru": "« »",
+  "en": "“ ”",
+  "es": "« »",
+  "pl": "„ ”",
+  "de": "„ “",
+  "fr": "« »",
+  "pt": "« »",
+  "zh": "“ ”",
+  "ar": "« »"
+ },
+ "terms": [
+  {
+   "uk": "дизайн-проєкт",
+   "ru": "дизайн-проект",
+   "en": "design project (interior design project)",
+   "es": "proyecto de diseño / proyecto de interiorismo",
+   "pl": "projekt wnętrz",
+   "de": "Designprojekt",
+   "fr": "projet de design",
+   "pt": "projeto de design (de interiores)",
+   "zh": "室内设计方案",
+   "ar": "مشروع التصميم الداخلي"
+  },
+  {
+   "uk": "ремонт під ключ",
+   "ru": "ремонт под ключ",
+   "en": "turnkey renovation",
+   "es": "reforma llave en mano",
+   "pl": "remont pod klucz",
+   "de": "schlüsselfertige Renovierung",
+   "fr": "rénovation clé en main",
+   "pt": "remodelação chave na mão",
+   "zh": "交钥匙装修",
+   "ar": "التجديد بنظام تسليم المفتاح",
+   "avoid": {
+    "en": [
+     "(?i)\\bturn-key\\b",
+     "(?i)\\bkey-ready\\b"
+    ],
+    "pt": [
+     "(?i)\\bchave-na-mão\\b",
+     "\\b[Rr]eformas?\\b(?! (?:integral|parcial))"
+    ],
+    "de": [
+     "(?i)\\bschlüsselfertige?n? Reparatur\\w*"
+    ]
+   }
+  },
+  {
+   "uk": "під ключ (будинок)",
+   "ru": "под ключ",
+   "en": "turnkey",
+   "es": "llave en mano",
+   "pl": "pod klucz",
+   "de": "schlüsselfertig",
+   "fr": "clé en main",
+   "pt": "chave na mão",
+   "zh": "交钥匙",
+   "ar": "تسليم المفتاح"
+  },
+  {
+   "uk": "коробка (будинку)",
+   "ru": "коробка",
+   "en": "shell",
+   "es": "obra gris (estructura y cerramientos)",
+   "pl": "stan surowy",
+   "de": "Rohbau",
+   "fr": "gros œuvre",
+   "pt": "estrutura (tosco)",
+   "zh": "主体结构",
+   "ar": "الهيكل",
+   "note": "не дослівно «box/Box/caja/boîte/pudełko»; «white box» — лише як термін офісного fit-out"
+  },
+  {
+   "uk": "авторський нагляд",
+   "ru": "авторский надзор",
+   "en": "designer supervision",
+   "es": "supervisión del diseñador",
+   "pl": "nadzór autorski",
+   "de": "künstlerische Oberleitung",
+   "fr": "suivi du designer",
+   "pt": "acompanhamento do designer",
+   "zh": "设计监督",
+   "ar": "إشراف المصمم",
+   "avoid": {
+    "en": [
+     "(?i)\\bauthor'?s? supervision"
+    ],
+    "es": [
+     "(?i)supervisión (?:de|del) autor"
+    ],
+    "pt": [
+     "(?i)acompanhamento d[eo] autor"
+    ],
+    "de": [
+     "(?i)\\b(?:Designer|Autoren)(?:überwachung|aufsicht)"
+    ],
+    "fr": [
+     "(?i)(?:supervision|suivi) d['’]auteur"
+    ],
+    "zh": [
+     "设计师?监理"
+    ]
+   },
+   "note": "калька «author's supervision / supervisión de autor / Autorenüberwachung» незрозуміла носію; zh 监理 — це технагляд (工程监理), не авторський"
+  },
+  {
+   "uk": "технагляд",
+   "ru": "технадзор",
+   "en": "technical supervision",
+   "es": "supervisión técnica",
+   "pl": "nadzór inwestorski",
+   "de": "Bauüberwachung (technische)",
+   "fr": "suivi technique",
+   "pt": "fiscalização técnica",
+   "zh": "技术监理",
+   "ar": "الإشراف الفني",
+   "avoid": {
+    "pl": [
+     "(?i)\\bnadz(?:ór|oru|orem|orze|orowi) techniczn\\w*"
+    ],
+    "de": [
+     "Bauaufsicht(?!sbeh)"
+    ]
+   },
+   "note": "pl: інспектор нагляду інвестора — «nadzór inwestorski»; de: «Bauaufsicht» — це орган влади (Bauaufsichtsbehörde)"
+  },
+  {
+   "uk": "кошторис",
+   "ru": "смета",
+   "en": "estimate",
+   "es": "presupuesto",
+   "pl": "kosztorys",
+   "de": "Kostenvoranschlag",
+   "fr": "devis",
+   "pt": "orçamento",
+   "zh": "预算",
+   "ar": "تقدير التكلفة / المقايسة"
+  },
+  {
+   "uk": "планувальне рішення",
+   "ru": "планировочное решение",
+   "en": "space planning",
+   "es": "proyecto de distribución",
+   "pl": "układ funkcjonalny",
+   "de": "Grundrissplanung",
+   "fr": "plan d’aménagement",
+   "pt": "estudo de layout",
+   "zh": "平面布局方案",
+   "ar": "تخطيط المساحات",
+   "avoid": {
+    "en": [
+     "(?i)\\b(?:planning|layout) solutions?\\b",
+     "(?i)\\bplanning decisions?\\b"
+    ]
+   }
+  },
+  {
+   "uk": "комплектація",
+   "ru": "комплектация",
+   "en": "procurement",
+   "es": "equipamiento",
+   "pl": "kompletacja wyposażenia",
+   "de": "Beschaffung / Objekteinrichtung",
+   "fr": "approvisionnement",
+   "pt": "aprovisionamento",
+   "zh": "采购配套",
+   "ar": "التوريد والتجهيز",
+   "avoid": {
+    "en": [
+     "(?i)\\bcomplectation\\b"
+    ],
+    "de": [
+     "(?i)\\bKomplektierung\\b"
+    ],
+    "fr": [
+     "(?i)\\bcomplectation\\b"
+    ],
+    "es": [
+     "(?i)\\bcomplectación\\b"
+    ]
+   }
+  },
+  {
+   "uk": "меблювання",
+   "ru": "меблировка",
+   "en": "furnishing",
+   "es": "amueblamiento",
+   "pl": "umeblowanie",
+   "de": "Einrichtung",
+   "fr": "ameublement",
+   "pt": "mobiliário",
+   "zh": "家具配置",
+   "ar": "التأثيث"
+  },
+  {
+   "uk": "архпроєкт (АР/КР)",
+   "ru": "архпроект (АР/КР)",
+   "en": "architectural design (architectural and structural drawings)",
+   "es": "proyecto arquitectónico (planos de arquitectura y estructura)",
+   "pl": "projekt architektoniczny (architektura i konstrukcja)",
+   "de": "Architekturplanung (Architektur- und Tragwerksplanung)",
+   "fr": "projet architectural (plans d’architecture et de structure)",
+   "pt": "projeto de arquitetura (arquitetura e estruturas)",
+   "zh": "建筑设计（建筑与结构施工图）",
+   "ar": "التصميم المعماري (المخططات المعمارية والإنشائية)",
+   "avoid": {
+    "en": [
+     "\\bAR (?:and|&) KR\\b"
+    ],
+    "de": [
+     "\\bAR und KR\\b"
+    ],
+    "es": [
+     "\\bAR y KR\\b"
+    ],
+    "fr": [
+     "\\bAR et KR\\b"
+    ],
+    "pl": [
+     "\\bAR i KR\\b"
+    ],
+    "pt": [
+     "\\bAR e KR\\b"
+    ]
+   },
+   "note": "літери АР/КР/ОВ/ВК/ЕО іноземцю нічого не кажуть — розкривати словами"
+  },
+  {
+   "uk": "замір",
+   "ru": "замер",
+   "en": "site survey / measurements",
+   "es": "medición",
+   "pl": "pomiar",
+   "de": "Aufmaß",
+   "fr": "relevé",
+   "pt": "medição",
+   "zh": "测量",
+   "ar": "القياس",
+   "avoid": {
+    "fr": [
+     "\\b[Mm]étrés?\\b"
+    ],
+    "en": [
+     "(?i)\\bfree (?:site )?(?:measurement|survey)s?\\b(?!\\?)"
+    ],
+    "de": [
+     "(?i)\\bkostenlose[sn]? Aufmaß"
+    ],
+    "es": [
+     "(?i)\\bmedición gratuita\\b(?!\\?)"
+    ],
+    "pl": [
+     "(?i)\\bbezpłatn\\w* pomiar\\w*(?!\\?)"
+    ],
+    "pt": [
+     "(?i)\\bmedição gratuita\\b(?!\\?)"
+    ],
+    "zh": [
+     "免费(?:测量|量房|上门)(?![^。]*？)"
+    ]
+   },
+   "note": "замір платний (CLAUDE.md) — «безкоштовний замір» не обіцяти в жодній мові; у fr «métré» — це підрахунок обсягів, не обмір"
+  },
+  {
+   "uk": "Подзвонити",
+   "ru": "Позвонить",
+   "en": "Call",
+   "es": "Llamar",
+   "pl": "Zadzwoń",
+   "de": "Anrufen",
+   "fr": "Appeler",
+   "pt": "Ligar",
+   "zh": "致电",
+   "ar": "اتصل بنا"
+  },
+  {
+   "uk": "Порахувати",
+   "ru": "Рассчитать",
+   "en": "Calculate",
+   "es": "Calcular",
+   "pl": "Oblicz",
+   "de": "Berechnen",
+   "fr": "Calculer",
+   "pt": "Calcular",
+   "zh": "估算费用",
+   "ar": "احسب التكلفة",
+   "note": "кнопка сцени «Порахувати мій будинок»: en Estimate my house, es Presupuestar mi casa, pl Wyceń mój dom, de Hauskosten berechnen, fr Estimer ma maison, pt Orçamentar a minha casa, zh 估算我的房子, ar احسب تكلفة منزلي (GO у assets/lead-form.v1.js)"
+  },
+  {
+   "uk": "Зв'язатися",
+   "ru": "Связаться",
+   "en": "Contact",
+   "es": "Contactar",
+   "pl": "Kontakt",
+   "de": "Kontakt",
+   "fr": "Contact",
+   "pt": "Contactar",
+   "zh": "联系我们",
+   "ar": "تواصل معنا",
+   "note": "MB_ONE у tools/site/chrome.py"
+  },
+  {
+   "uk": "Залишити номер",
+   "ru": "Оставить номер",
+   "en": "Leave your number",
+   "es": "Dejar mi número",
+   "pl": "Zostaw numer",
+   "de": "Nummer hinterlassen",
+   "fr": "Laisser mon numéro",
+   "pt": "Deixar o meu número",
+   "zh": "留下电话",
+   "ar": "اترك رقمك",
+   "note": "T[мова].mb у tools/site/leadform.py і GO у lead-form.v1.js"
+  },
+  {
+   "uk": "Усі …",
+   "ru": "Все …",
+   "en": "All …",
+   "es": "Todos los … / Todas las …",
+   "pl": "Wszystkie …",
+   "de": "Alle …",
+   "fr": "Tous les … / Toutes les …",
+   "pt": "Todos os … / Todas as …",
+   "zh": "全部…",
+   "ar": "جميع … / كل …"
+  },
+  {
+   "uk": "від $1 100/м²",
+   "ru": "от $1 100/м²",
+   "en": "from $1,100/m²",
+   "es": "desde $1 100/m²",
+   "pl": "od $1 100/m²",
+   "de": "ab $1 100/m²",
+   "fr": "dès $1 100/m² (à partir de $1 100/m²)",
+   "pt": "a partir de $1 100/m²",
+   "zh": "$1,100/m² 起",
+   "ar": "من $1 100/م²",
+   "avoid": {
+    "zh": [
+     "每平方米\\s*\\$[\\d,\\u202f ]+\\s*起"
+    ],
+    "en": [
+     "\\$\\d[\\d,]* per (?:sq\\.? ?m|m²|square met)"
+    ]
+   },
+   "note": "формат ставить chrome.price_fmt (тисячі U+202F, en/zh — кома; «/» без пробілів); у zh — «$30/m² 起», не «每平方米 $30 起»"
+  }
+ ],
+ "latin_ok": [
+  "CAS",
+  "Development",
+  "CAS Development",
+  "Telegram",
+  "Viber",
+  "WhatsApp",
+  "WeChat",
+  "Instagram",
+  "YouTube",
+  "LinkedIn",
+  "TikTok",
+  "Google",
+  "Microsoft",
+  "Clarity",
+  "Cloudflare",
+  "JavaScript",
+  "Worldwide",
+  "UA",
+  "RU",
+  "EN",
+  "ES",
+  "ZH",
+  "PL",
+  "DE",
+  "FR",
+  "PT",
+  "AR",
+  "Monpark",
+  "Pidgirland",
+  "Linden",
+  "Penthouse",
+  "Hoda",
+  "Estate",
+  "Office",
+  "Chicago",
+  "Petrivtsi",
+  "House",
+  "Kitana",
+  "Beach",
+  "Tetris",
+  "Hall",
+  "Hodos",
+  "Villa",
+  "Yacht",
+  "Restaurant",
+  "VIP",
+  "Edelweiss",
+  "Diamond",
+  "Dolls",
+  "Salon",
+  "Dubai",
+  "USA",
+  "A-Frame",
+  "A-frame",
+  "Frame",
+  "Yablu",
+  "Rest",
+  "Triangle",
+  "Smart",
+  "Japandi",
+  "Loft",
+  "Antonovycha",
+  "Pechersk",
+  "Koncha",
+  "Zaspa",
+  "m",
+  "mm",
+  "cm",
+  "kg",
+  "kW",
+  "K",
+  "D",
+  "3D",
+  "VR",
+  "LED",
+  "PDF",
+  "PNG",
+  "IP",
+  "USDT",
+  "SWIFT",
+  "IT",
+  "CEO",
+  "SPA",
+  "XPS",
+  "EPS",
+  "OSB",
+  "PPR",
+  "SPC",
+  "LVT",
+  "PVC",
+  "PVD",
+  "HPL",
+  "WPC",
+  "CLT",
+  "SIP",
+  "Wi-Fi",
+  "Wi",
+  "Fi",
+  "FF",
+  "E",
+  "U",
+  "T",
+  "L",
+  "B",
+  "A",
+  "S",
+  "M",
+  "O",
+  "R",
+  "cookie",
+  "Cookie",
+  "username",
+  "ACT",
+  "DOC",
+  "EST",
+  "INV",
+  "LIVE",
+  "fit-out",
+  "shell",
+  "core",
+  "white",
+  "box",
+  "home",
+  "staging",
+  "kuula",
+  "mA",
+  "Viola",
+  "Pinterest",
+  "PIR",
+  "PEX",
+  "HoReCa",
+  "AI",
+  "Calacatta"
+ ],
+ "latin_ok_zh": [],
+ "latin_ok_ar": []
+}

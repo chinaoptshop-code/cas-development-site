@@ -254,10 +254,10 @@
   /* Одна форма на сторінку (Михайло 05.11.2026): якщо внизу є form#of (#zayavka), місце .lq-slot — не друга форма, а кнопка,
      що переносить контекст (послугу, конфігурацію сцени) у єдину форму й прокручує до неї (скрол і фокус — обробник 3 нижче). */
   var GO = { uk: ['Залишити номер', 'Порахувати мій будинок', 'Порахувати мою квартиру'], ru: ['Оставить номер', 'Рассчитать мой дом', 'Рассчитать мою квартиру'],
-    en: ['Leave your number', 'Estimate my house', 'Estimate my apartment'], es: ['Dejar mi número', 'Calcular mi casa', 'Calcular mi piso'],
+    en: ['Leave your number', 'Estimate my house', 'Estimate my apartment'], es: ['Dejar mi número', 'Presupuestar mi casa', 'Presupuestar mi piso'],
     zh: ['留下电话', '估算我的房子', '估算我的公寓'], pl: ['Zostaw numer', 'Wyceń mój dom', 'Wyceń moje mieszkanie'],
-    de: ['Nummer hinterlassen', 'Mein Haus berechnen', 'Meine Wohnung berechnen'], fr: ['Laisser mon numéro', 'Estimer ma maison', 'Estimer mon appartement'],
-    pt: ['Deixar o meu número', 'Calcular a minha casa', 'Calcular o meu apartamento'], ar: ['اترك رقمك', 'احسب تكلفة منزلي', 'احسب تكلفة شقتي'] };
+    de: ['Nummer hinterlassen', 'Hauskosten berechnen', 'Wohnungskosten berechnen'], fr: ['Laisser mon numéro', 'Estimer ma maison', 'Estimer mon appartement'],
+    pt: ['Deixar o meu número', 'Orçamentar a minha casa', 'Orçamentar o meu apartamento'], ar: ['اترك رقمك', 'احسب تكلفة منزلي', 'احسب تكلفة شقتي'] };
   function goBtn(slot, name) {
     var g = GO[lang] || GO.uk, sc = slot.closest('section.bz[data-bz]'), kind = sc ? (sc.getAttribute('data-bz') === 'flat' ? 2 : 1) : 0;
     var a = el('a', 'btn main lq-go', g[kind]); a.href = '#zayavka'; a.setAttribute('data-form', name);

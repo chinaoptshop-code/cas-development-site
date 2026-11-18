@@ -1,5 +1,5 @@
 {
- "_": "Teksty po polsku pod przeglądarką /pl/tury/<slug> (tłumaczenie about.json: te same fakty; «zrealizowane» tylko dla apartment-2025). Buduje tools/tours/build.py pages. name — nazwa spaceru w przeglądarce i na kartach; linki — [tekst](/pl/ścieżka) do stron w tym języku. title ≤ 60, description ≤ 155.",
+ "_": "Teksty po polsku pod przeglądarką /pl/tury/<slug> (tłumaczenie about.json: te same fakty; „zrealizowane” tylko dla apartment-2025). Buduje tools/tours/build.py pages. name — nazwa spaceru w przeglądarce i na kartach; linki — [tekst](/pl/ścieżka) do stron w tym języku. title ≤ 60, description ≤ 155.",
  "apartment-2025": {
   "name": "Mieszkanie — zrealizowane wnętrze",
   "title": "Gotowe mieszkanie w Kijowie — spacer 3D 360° | CAS",

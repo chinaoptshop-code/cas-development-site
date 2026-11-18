@@ -13,7 +13,7 @@
  "body": [
   ["h2", "Czym jest nadzór autorski"],
   ["p", "Projekt wnętrza to rysunki, rozwinięcia ścian, schematy oświetlenia i gniazd, specyfikacje materiałów i mebli. Ale rysunki same się nie zbudują: czyta je ekipa, a każdy fachowiec może zinterpretować detal po swojemu. Nadzór autorski oznacza udział autora projektu w remoncie: projektant przyjeżdża na budowę, sprawdza, czy wszystko powstaje zgodnie z rysunkami, i rozwiązuje kwestie, które pojawiają się w trakcie prac."],
-  ["p", "To nie to samo co nadzór techniczny czy praca kierownika robót. Kierownik odpowiada za organizację prac i jakość wykonania, a projektant za to, żeby efekt odpowiadał zamysłowi: proporcje, wysokości, linie światła, styki materiałów, kolory."],
+  ["p", "To nie to samo co nadzór inwestorski czy praca kierownika robót. Kierownik odpowiada za organizację prac i jakość wykonania, a projektant za to, żeby efekt odpowiadał zamysłowi: proporcje, wysokości, linie światła, styki materiałów, kolory."],
   ["p", "Nadzór nie służy wyłącznie „ładnemu” efektowi. Często dopiero na budowie okazuje się, że ściana różni się od pomiarów, pion biegnie w innym miejscu, niż zakładano, albo wybrany materiał wycofano z produkcji. Wtedy decyzję powinien podjąć autor projektu, który rozumie, jak zmiana wpłynie na resztę wnętrza."],
   ["h2", "Co obejmuje nadzór autorski"],
   ["ul", ["wizyty na budowie na kluczowych etapach", "sprawdzanie zgodności z rysunkami: ściany, gniazda, oświetlenie, hydraulika", "odpowiedzi na pytania ekipy", "korekta rozwiązań, jeśli wymaga tego sytuacja na budowie", "akceptacja zamienników materiałów", "weryfikacja wymiarów pod meble na wymiar przed ich produkcją", "kontrola montażu końcowego: oprawy, drzwi, fronty, dekoracje"]],
@@ -42,7 +42,7 @@
  "faq": [
   ["Ile razy projektant przyjeżdża na budowę?", "To zależy od etapów i złożoności obiektu; harmonogram wizyt ustalamy w umowie."],
   ["Czy można obejść się bez nadzoru?", "Można, ale wtedy rośnie ryzyko, że efekt będzie odbiegał od wizualizacji 3D."],
-  ["Czym nadzór autorski różni się od technicznego?", "Nadzór techniczny kontroluje jakość i technologię prac, a autorski — zgodność efektu z projektem: wymiary, materiały, oświetlenie, detale."],
+  ["Czym nadzór autorski różni się od technicznego?", "Nadzór inwestorski kontroluje jakość i technologię prac, a autorski — zgodność efektu z projektem: wymiary, materiały, oświetlenie, detale."],
   ["Czy mogę zamówić nadzór autorski, jeśli remont robi moja ekipa?", "Tak, nadzór autorski można zamówić osobno — projektant będzie współpracował z Twoją ekipą na podstawie rysunków projektu."]
  ]
 }

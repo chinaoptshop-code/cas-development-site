@@ -40,7 +40,7 @@ LABEL = {
                furn='Mobiliario y equipamiento', legal='Contrato y supervisión'),
     'de': dict(design='Innenarchitektur', reno='Renovierung', build='Hausbau', land='Gartengestaltung',
                biz='Büros, Restaurants, Gewerbe', cost='Kosten und Kalkulation', mat='Materialien und Technik',
-               furn='Möbel und Einrichtung', legal='Vertrag und Bauaufsicht'),
+               furn='Möbel und Einrichtung', legal='Vertrag und Bauüberwachung'),
     'fr': dict(design='Architecture d’intérieur', reno='Rénovation', build='Construction de maisons', land='Paysage',
                biz='Bureaux, restaurants, commerces', cost='Coûts et devis', mat='Matériaux et techniques',
                furn='Mobilier et équipement', legal='Contrat et suivi'),

@@ -34,7 +34,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     pt: ['/pt/construcao-de-moradias', 'Configurar a sua casa →'], ar: ['/ar/house-construction', 'صمّم منزلك ←'] };
   // ціна «від» у панелі компактної «Квартири» (CLAUDE.md: ремонт від $550/м² = роботи + чорнові матеріали); будинок — ui.cfg.price з даних сцени
   var EST_F = { uk: 'Ремонт — від $550/м² (роботи й чорнові матеріали)', ru: 'Ремонт — от $550/м² (работы и черновые материалы)',
-    en: 'Renovation from $550/m² (labour and rough materials)', es: 'Reforma desde $550/m² (mano de obra y materiales de obra gris)', zh: '装修每平方米 $550 起（人工和基础材料）',
+    en: 'Renovation from $550/m² (labour and rough materials)', es: 'Reforma desde $550/m² (mano de obra y materiales de obra gris)', zh: '装修 $550/m² 起（人工和基础材料）',
     pl: 'Remont od $550/m² (robocizna i materiały budowlane)', de: 'Sanierung ab $550/m² (Arbeit und Rohbaumaterial)', fr: 'Rénovation dès $550/m² (main-d’œuvre et matériaux de gros œuvre)',
     pt: 'Remodelação a partir de $550/m² (mão de obra e materiais de obra bruta)', ar: 'التجديد من ‎$550/م² (الأعمال والمواد الأساسية)' };
   function rtl() { return d.documentElement.dir === 'rtl'; }

@@ -38,6 +38,7 @@ python3 tools/site/chrome.py
 python3 tools/site/chrome.py --check
 python3 tools/site/ux.py --check
 python3 tools/site/i18n.py --check
+python3 tools/site/i18nlint.py --quiet || echo "::warning::Якість перекладів (tools/site/i18nlint.py): кирилиця/латиниця не в тій мові або порушення глосарію tools/site/lang/glossary.json"
 python3 tools/site/oztext.py --check | tail -n 3 || echo "::warning::Оздоба в текстах публічних сторінок (tools/site/oztext.py --check) — додати правило"
 python3 tools/site/seo.py --quiet || echo "::warning::SEO-перевірка (tools/site/seo.py) знайшла помилки — деплой не зупиняємо"
 python3 tools/site/ldcheck.py --strict | sed -n 3p || echo "::warning::JSON-LD (tools/site/ldcheck.py) — є помилки schema.org/Google, деплой не зупиняємо"
