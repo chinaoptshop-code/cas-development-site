@@ -11,6 +11,14 @@
   // ціни: тисячі — вузький нерозривний пробіл U+202F ($1 100), en/zh — кома ($1,100) (Михайло 16.11.2026)
   W.casUsd = function (n, l) { var c = lg(l) === 'zh' ? ',' : '\u202f'; return '$' + W.casNum(Math.round(+n), l).replace(/\u00a0/g, c); };
 })(window);
+/* Safari/WebKit запускає defer-скрипти, не дочекавшись повного site-chrome.v1.css у кінці <body> (Chrome чекає): усе нижче міряє верстку
+   (стрічки, згортання data-c, сцени, ліниві фото) — тож стартує лише після цього CSS. Chrome — без змін (CSS уже готовий). */
+(function (go) {
+  var l = document.querySelector('link[href*="/assets/site-chrome.v1.css"]');
+  if (!l || l.sheet) return go();
+  var k = 0, f = function () { if (!k++) go(); };
+  l.addEventListener('load', f); l.addEventListener('error', f); window.addEventListener('load', f);
+})(function () {
 (function () {
   var d = document, h = d.documentElement;
   var btn = d.querySelector('.sch-burger'), menu = d.getElementById('sch-menu');
@@ -39,10 +47,10 @@
       if (!isOpen()) return;
       if (e.key === 'Escape') { e.preventDefault(); set(false, true); return; }
       if (e.key === 'Tab') { // фокус лишається в меню і на кнопці закриття
-        var f = [btn].concat([].slice.call(menu.querySelectorAll('a,button')));
+        // по колу вручну: Safari за замовчуванням Tab пропускає <a>, і з останньої кнопки фокус тікав за межі меню
+        var f = [btn].concat([].slice.call(menu.querySelectorAll('a[href],button:not([disabled])')).filter(shown));
         var i = f.indexOf(d.activeElement);
-        if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
-        else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+        e.preventDefault(); f[e.shiftKey ? (i <= 0 ? f.length - 1 : i - 1) : (i < 0 || i === f.length - 1 ? 0 : i + 1)].focus();
       }
     });
     var mq = window.matchMedia && window.matchMedia('(min-width:1080px)');
@@ -119,9 +127,9 @@
     }
     if (e.key === 'Tab') {
       var f = focusables(dl), i = f.indexOf(d.activeElement);
-      if (!f.length) { e.preventDefault(); dl.focus(); return; }
-      if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
-      else if (!e.shiftKey && (i < 0 || i === f.length - 1)) { e.preventDefault(); f[0].focus(); }
+      e.preventDefault(); // по колу вручну — Safari за замовчуванням Tab пропускає <a> (фокус тікав з діалогу)
+      if (!f.length) { dl.focus(); return; }
+      f[e.shiftKey ? (i <= 0 ? f.length - 1 : i - 1) : (i < 0 || i === f.length - 1 ? 0 : i + 1)].focus();
     }
   });
   // «Усі послуги студії» — згорнуто на всіх сторінках і ширинах (Михайло 05.11.2026); посилання лишаються в DOM (SEO)
@@ -868,3 +876,4 @@
  var t=new Image();t.onload=function(){go(t.width>0)};t.onerror=function(){go(0)};
  t.src='data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADrbWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAETAAAAIQAAAChpaW5mAAAAAAABAAAAGmluZmUCAAAAAAEAAGF2MDFDb2xvcgAAAABqaXBycAAAAEtpcGNvAAAAFGlzcGUAAAAAAAAAAQAAAAEAAAAQcGl4aQAAAAADCAgIAAAADGF2MUOBAAwAAAAAE2NvbHJuY2x4AAEADQAGgAAAABdpcG1hAAAAAAAAAAEAAQQBAoMEAAAAKW1kYXQSAAoIGAAGiAhoNCAyExlHh4Yhh5555oAAAJBAyRxhQr4=';
 })();
+});

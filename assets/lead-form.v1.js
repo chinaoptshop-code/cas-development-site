@@ -513,7 +513,11 @@
       w.appendChild(box);
       place();
     }
-    build();
+    // Safari/WebKit запускає defer-скрипти до повного site-chrome.v1.css (кінець <body>): без нього .of-ct-w ще static і offsetTop форми —
+    // від <body> (блок опинявся на десятки тисяч px нижче, сторінка ×4 довша). Будуємо після CSS; Chrome — одразу.
+    var l = document.querySelector('link[href*="/assets/site-chrome.v1.css"]');
+    if (!l || l.sheet) build();
+    else { var k = 0, go = function () { if (!k++) build(); }; l.addEventListener('load', go); l.addEventListener('error', go); window.addEventListener('load', go); }
     if (mq.addEventListener) mq.addEventListener('change', build);
     window.addEventListener('resize', place, { passive: true });
   })();
@@ -531,6 +535,11 @@
     if (!target) return; // форми на сторінці нема — посилання веде на сторінку з формою
     e.preventDefault();
     try { target.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (x) { target.scrollIntoView(); }
-    setTimeout(function () { try { target.focus({ preventScroll: true }); } catch (x) { target.focus(); } }, 400);
+    setTimeout(function () {
+      // Safari не має scroll anchoring: збірка сцени вище (її компенсація scrollBy) обриває плавну прокрутку — поле лишалось за екраном. Доводимо до місця.
+      var r = target.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > (window.innerHeight || 0)) target.scrollIntoView({ block: 'center' });
+      try { target.focus({ preventScroll: true }); } catch (x) { target.focus(); }
+    }, 400);
   });
 })();
