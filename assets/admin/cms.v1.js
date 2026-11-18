@@ -747,14 +747,16 @@
   // ---------- Проєкти клієнтів (/api/admin/projects, migrations/0005_account.sql) ----------
   // Клієнт бачить їх у /kabinet/proekty і /kabinet/obiekt («Онлайн-контроль», міграція 0008): етапи зі статусами й прогресом,
   // фотозвіти (з привʼязкою до етапу), документи й акти етапів, графік платежів, камера 24/7, особистий код партнера.
-  var SVC = { design: 'Дизайн-проєкт', repair: 'Ремонт', build: 'Будівництво', furnish: 'Комплектація меблями', landscape: 'Ландшафт', other: 'Інше' };
+  var SVC = { design: 'Дизайн-проєкт', arch: 'Архітектурний проєкт', repair: 'Ремонт', build: 'Будівництво', furnish: 'Комплектація меблями', landscape: 'Ландшафт', other: 'Інше' };
   var PST = { active: 'Триває', paused: 'На паузі', done: 'Завершено' };
-  var DKIND = { contract: 'Договір', estimate: 'Кошторис', invoice: 'Рахунок', act: 'Акт етапу', design: 'Дизайн-проєкт', other: 'Інше' };
+  var DKIND = { contract: 'Договір', estimate: 'Кошторис', invoice: 'Рахунок', act: 'Акт етапу', design: 'Дизайн-проєкт', render: 'Візуалізації', drawing: 'Креслення', spec: 'Специфікація', other: 'Інше' };
+  var HACT = { approve: '✓ погодив етап', revise: '✏️ попросив правки', remind: '🔔 нагадування клієнту' };
+  var DESIGN_SVC = ['design', 'arch']; // проєктування: погодження клієнтом, правки, результати етапів
   var SST = { planned: 'Заплановано', in_progress: 'В роботі', review: 'Приймання', done: 'Виконано', paused: 'Пауза' };
   var PAYST = { planned: 'Заплановано', due: 'До оплати', paid: 'Оплачено' };
   var SCHEMES = { '50/50': [50, 50], '50/30/20': [50, 30, 20], '50/40/10': [50, 40, 10] }; // лише підказка-заготовка: рядки потім редагуються
   // вкладки списку: проєктування окремо від робіт на обʼєкті (комплектація, ландшафт, інше — у «Усі»)
-  var PGROUP = [['all', 'Усі', null], ['design', 'Проєктування', ['design']], ['works', 'Ремонт і будівництво', ['repair', 'build']]];
+  var PGROUP = [['all', 'Усі', null], ['design', 'Проєктування', ['design', 'arch']], ['works', 'Ремонт і будівництво', ['repair', 'build']]];
   var PF = { group: 'all', service: '', status: '', staff: '', late: false, q: '' }; // фільтри списку (до перезавантаження сторінки)
   var progressOf = function (st) { return st && st.length ? Math.round(st.reduce(function (s, x) { return s + (+x.progress || 0); }, 0) / st.length) : 0; };
   var curStage = function (st) { st = st || []; return st.filter(function (s) { return s.status === 'in_progress' || s.status === 'review'; })[0] || st.filter(function (s) { return s.status !== 'done'; })[0] || null; };
@@ -890,7 +892,8 @@
     // етапи зі збереженим id (нові етапи отримують id після «Зберегти проєкт»)
     var stOpt = function (v) { return '<option value="">— без етапу —</option>' + (p.stages || []).filter(function (s) { return s.id; }).map(function (s) { return '<option value="' + esc(s.id) + '"' + (s.id === v ? ' selected' : '') + '>' + esc(s.name) + '</option>'; }).join(''); };
     var stName = function (sid) { var s = (p.stages || []).find(function (x) { return x.id === sid; }); return s ? s.name : ''; };
-    L.innerHTML = '<div class="tb"><button class="btn ghost sm" data-back>← До списку</button><b class="grow">' + esc(p.title) + ' <small>· ' + esc(p.client_name || '#' + p.client_id) + '</small></b><button class="btn danger sm" data-del>Видалити проєкт</button></div>' +
+    L.innerHTML = '<div class="tb"><button class="btn ghost sm" data-back>← До списку</button><b class="grow">' + esc(p.title) + ' <small>· ' + esc(p.client_name || '#' + p.client_id) + '</small></b>' +
+      '<span class="pj-prog" title="Загальна готовність — середнє етапів"><progress max="100" value="' + progressOf(p.stages) + '" aria-label="Готовність ' + progressOf(p.stages) + '%"></progress> <b>' + progressOf(p.stages) + '%</b></span><button class="btn danger sm" data-del>Видалити проєкт</button></div>' +
       '<form class="form two" data-f><label class="f full"><span>Назва</span><input name="title" value="' + esc(p.title) + '"></label>' +
       '<label class="f"><span>Послуга</span><select name="service">' + opt(SVC, p.service) + '</select></label><label class="f"><span>Стан</span><select name="status">' + opt(PST, p.status) + '</select></label>' +
       '<label class="f"><span>Адреса обʼєкта</span><input name="address" value="' + esc(p.address || '') + '"></label><label class="f"><span>Площа, м²</span><input name="area" type="number" min="0" step="0.1" value="' + esc(p.area == null ? '' : p.area) + '"></label>' +
@@ -923,22 +926,33 @@
       '<select name="status" aria-label="Статус">' + opt(PAYST, 'planned') + '</select><input name="note" placeholder="Примітка" class="grow"><button class="btn" type="submit">Додати платіж</button></form>' +
       '<div class="tb"><span class="muted">Заготовка схеми (додасть рядки з %):</span>' + Object.keys(SCHEMES).map(function (k) { return '<button type="button" class="btn ghost sm" data-sch="' + k + '">' + k + '</button>'; }).join('') + '</div>');
     var stEl = $('[data-st]', L);
-    var isDesign = function () { return val('[name=service]', L) === 'design'; };
+    var isDesign = function () { return DESIGN_SVC.indexOf(val('[name=service]', L)) >= 0; };
+    var STG = d._staff || [];
+    // результати етапу — документи цього проєкту з stage_id (візуалізації, креслення, специфікації, акти); клієнт бачить їх у кабінеті
+    var stDocs = function (sid) { return sid ? docs.filter(function (x) { return x.project_id === id && x.stage_id === sid; }) : []; };
     // дизайн-проєкт: «Погоджено клієнтом» (дата) і лічильник правок — у JSON етапу; клієнт бачить «погоджено» в кабінеті
     var apprRow = function (s, i) {
       if (!isDesign()) return '';
       return '<div class="row pj-appr">' + (s.approved_at ? '<span class="pill on">✓ Погоджено клієнтом ' + dmy(s.approved_at) + (s.approved_by === 'client' ? ' (у кабінеті)' : '') + '</span><button type="button" class="btn ghost sm" data-unap="' + i + '">Скасувати погодження</button>'
         : '<button type="button" class="btn ghost sm" data-ap="' + i + '"' + (s.id ? '' : ' disabled title="Спершу збережіть проєкт"') + '>Погоджено клієнтом</button>') +
         '<span class="muted">Правки:</span><button type="button" class="btn ghost sm" data-rv="' + i + '" data-dv="-1" aria-label="Менше правок">−</button><b data-rvn="' + i + '">' + (+s.revisions || 0) + '</b>' +
-        '<button type="button" class="btn ghost sm" data-rv="' + i + '" data-dv="1" aria-label="Ще одна правка">+</button></div>';
+        '<button type="button" class="btn ghost sm" data-rv="' + i + '" data-dv="1" aria-label="Ще одна правка">+</button>' +
+        '<label class="row pj-rmax"><span class="muted">з</span><input type="number" min="0" max="20" data-k="rev_max" data-i="' + i + '" value="' + esc(s.rev_max || '') + '" placeholder="∞" aria-label="Кругів правок за договором"></label>' +
+        (s.rev_max && (+s.revisions || 0) > s.rev_max ? '<span class="pill warn">понад договір</span>' : '') + '</div>' +
+        (s.rev_note && !s.approved_at ? '<p class="pj-revn"><b>Правки від клієнта ' + dmy(s.rev_at) + ':</b> «' + esc(s.rev_note) + '»</p>' : '') +
+        (s.hist && s.hist.length ? '<details class="pj-hist"><summary>Історія етапу · ' + s.hist.length + '</summary><ul>' + s.hist.slice().reverse().map(function (h) {
+          return '<li><small class="muted">' + esc(h.at) + '</small> ' + esc(HACT[h.act] || h.act) + (h.by ? ' — ' + esc(h.by) : '') + (h.note ? ': «' + esc(h.note) + '»' : '') + '</li>'; }).join('') + '</ul></details>' : '') +
+        (function () { var L2 = stDocs(s.id); return L2.length ? '<p class="pj-dlv"><span class="muted">Результати етапу:</span> ' + L2.map(function (x) { return '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(DKIND[x.kind] || '') + ': ' + esc(x.title) + '</a>'; }).join(' · ') + '</p>'
+          : s.id ? '<p class="pj-dlv muted">Результатів ще немає — додайте документ (Візуалізації / Креслення / Специфікація) з цим етапом нижче.</p>' : ''; })();
     };
     function drawStages() {
       stEl.innerHTML = stages.map(function (s, i) {
         return '<div class="pj-stage"><div class="row" style="margin-bottom:8px"><input class="grow" data-k="name" data-i="' + i + '" value="' + esc(s.name) + '" placeholder="Етап"><select data-k="status" data-i="' + i + '" aria-label="Статус етапу">' + opt(SST, s.status || (+s.progress >= 100 ? 'done' : +s.progress > 0 ? 'in_progress' : 'planned')) + '</select><input type="range" min="0" max="100" step="5" data-k="progress" data-i="' + i + '" value="' + (+s.progress || 0) + '" aria-label="Прогрес"><b data-pv="' + i + '" style="width:44px">' + (+s.progress || 0) + '%</b>' +
-          '<input type="date" data-k="start" data-i="' + i + '" value="' + esc(s.start || '') + '" aria-label="Початок"><input type="date" data-k="end" data-i="' + i + '" value="' + esc(s.end || '') + '" aria-label="Кінець"><input data-k="note" data-i="' + i + '" value="' + esc(s.note || '') + '" placeholder="Примітка"><button type="button" class="je-add" data-sd="' + i + '" aria-label="Прибрати етап">✕</button></div>' + apprRow(s, i) + '</div>';
+          '<input type="date" data-k="start" data-i="' + i + '" value="' + esc(s.start || '') + '" aria-label="Початок"><input type="date" data-k="end" data-i="' + i + '" value="' + esc(s.end || '') + '" aria-label="Термін етапу"' + (isLate(s.end, s.status) ? ' class="late" title="Термін етапу минув"' : '') + '>' +
+          (STG.length ? '<select data-k="staff_id" data-i="' + i + '" aria-label="Відповідальний за етап"><option value="">— відповідальний —</option>' + STG.map(function (x) { return '<option value="' + x.id + '"' + (String(x.id) === String(s.staff_id || '') ? ' selected' : '') + '>' + esc(x.name) + '</option>'; }).join('') + '</select>' : '') + '<input data-k="note" data-i="' + i + '" value="' + esc(s.note || '') + '" placeholder="Примітка"><button type="button" class="je-add" data-sd="' + i + '" aria-label="Прибрати етап">✕</button></div>' + apprRow(s, i) + '</div>';
       }).join('') + '<button type="button" class="je-add" data-sa>+ етап</button>' + (isDesign() ? '<p class="muted">«Погоджено клієнтом» зберігається одразу; лічильник правок — кнопкою «Зберегти проєкт».</p>' : '');
       $('[data-pr]', L).textContent = '· загалом ' + progressOf(stages) + '%';
-      $$('[data-k]', stEl).forEach(function (x) { x.oninput = x.onchange = function () { var s = stages[+x.dataset.i]; s[x.dataset.k] = x.dataset.k === 'progress' ? +x.value : x.value;
+      $$('[data-k]', stEl).forEach(function (x) { x.oninput = x.onchange = function () { var s = stages[+x.dataset.i]; s[x.dataset.k] = ['progress', 'staff_id', 'rev_max'].indexOf(x.dataset.k) >= 0 ? (+x.value || (x.dataset.k === 'progress' ? 0 : null)) : x.value;
         if (x.dataset.k === 'status' && x.value === 'done' && +s.progress < 100) { s.progress = 100; drawStages(); return; }
         if (x.dataset.k === 'progress') { $('[data-pv="' + x.dataset.i + '"]', stEl).textContent = x.value + '%'; $('[data-pr]', L).textContent = '· загалом ' + progressOf(stages) + '%'; } }; });
       $$('[data-sd]', stEl).forEach(function (x) { x.onclick = function () {
