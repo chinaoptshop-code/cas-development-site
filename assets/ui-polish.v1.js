@@ -235,5 +235,7 @@ function stripTap(){
 }
 // кожен блок — окремою задачею (TBT: на /portfolio одна задача була 140–170 мс на телефоні CPU ×4; аудит швидкості 16.11.2026)
 function run(){var fs=[expanders,scrollers,imgFade,carousel,marquee,stripTap,heroSlides];(function next(){var f=fs.shift();try{f()}catch(e){}if(fs.length)setTimeout(next,0)})()}
-if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',run);else run();
+// Safari/WebKit запускає defer-скрипти до повного site-chrome.v1.css у кінці <body>: стрічки й каруселі міряють ширину — чекаємо на CSS (Chrome — одразу)
+function css(go){var l=d.querySelector('link[href*="/assets/site-chrome.v1.css"]');if(!l||l.sheet)return go();var k=0,f=function(){if(!k++)go()};l.addEventListener('load',f);l.addEventListener('error',f);W.addEventListener('load',f)}
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',function(){css(run)});else css(run);
 })();

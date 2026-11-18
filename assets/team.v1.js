@@ -1,5 +1,5 @@
 /* CAS Development — кабінет працівника /kabinet/team (генерує tools/shop/pages.py). Mobile-first: прораб з телефона на обʼєкті.
-   API: GET /api/team/today (задачі, мої обʼєкти, заявки), POST /api/team/action (етап / фотозвіт / проблема),
+   API: GET /api/team/today (задачі, мої обʼєкти, заявки), POST /api/team/action (етап / фотозвіт / проблема / задача виконана),
    POST /api/team/upload (фото → /api/media/<id>), PATCH /api/admin/crm (стадія заявки — лише з правом leads.edit).
    Сервер сам фільтрує рядки й поля за роллю (functions/_roles.js) — тут лише показуємо те, що прийшло. */
 (function () {
@@ -91,7 +91,7 @@
     var urgent = D.tasks.filter(function (t) { return t.urgent; }).length;
     root.innerHTML = '<header class="tm-hello"><div><p class="muted">' + new Date().toLocaleDateString('uk-UA', { weekday: 'long', day: 'numeric', month: 'long' }) + '</p>' +
       '<h2>' + hi + ', ' + esc(String(D.me.name || '').split(' ')[0]) + '</h2><p><span class="tm-role">' + esc(D.me.role_label) + '</span>' +
-      (D.me.panel ? ' <a class="tm-link" href="/kabinet/admin">Панель CRM →</a>' : '') + '</p></div>' +
+      (D.me.panel ? ' <a class="tm-link" href="/kabinet/admin">Панель CRM →</a>' : '') + ' <a class="tm-link" href="/kabinet?client=1">Кабінет клієнта</a></p></div>' +
       '<div class="tm-chips"><span><b>' + D.tasks.length + '</b> задач' + (urgent ? ' · <em>' + urgent + ' термінових</em>' : '') + '</span><span><b>' + D.projects.length + '</b> обʼєкт(ів)</span></div></header>' +
       '<nav class="tm-nav" aria-label="Розділи кабінету працівника">' + T.map(function (t) {
         return '<a href="#' + t[0] + '" data-v="' + t[0] + '"' + (t[0] === VIEW ? ' aria-current="page"' : '') + '>' + ic(t[2]) + '<span>' + t[1] + '</span>' + (t[3] ? '<i>' + t[3] + '</i>' : '') + '</a>';
@@ -116,7 +116,7 @@
   var proj = function (id) { return D.projects.find(function (p) { return p.id === id; }); };
 
   /* ---------- Сьогодні ---------- */
-  var KIND = { report: ['cam', 'Фотозвіт'], stage: ['ok', 'Етап'], next: ['today', 'Наступний крок'], issue: ['warn', 'Проблема'], lead: ['list', 'Заявка'], contact: ['phone', 'Звʼязатися'], payment: ['money', 'Платіж'] };
+  var KIND = { report: ['cam', 'Фотозвіт'], stage: ['ok', 'Етап'], next: ['today', 'Наступний крок'], issue: ['warn', 'Проблема'], lead: ['list', 'Заявка'], contact: ['phone', 'Звʼязатися'], payment: ['money', 'Платіж'], task: ['ok', 'Задача'] };
   function todayView() {
     if (!D.tasks.length) return '<section class="tm-card tm-empty"><p class="big">🎉</p><h3>На сьогодні все</h3><p class="muted">Нових задач немає. Обʼєкти — у вкладці «Обʼєкти».</p></section>';
     return '<ul class="tm-tasks">' + D.tasks.map(function (t, i) {
@@ -124,10 +124,11 @@
       var btn = '';
       if (t.kind === 'report' && can('reports.upload')) btn = '<button class="tm-btn" data-act="report" data-p="' + t.project_id + '">' + ic('cam') + 'Зробити фотозвіт</button>';
       else if (t.kind === 'stage' && can('projects.edit_stage')) btn = '<button class="tm-btn" data-act="stage" data-p="' + t.project_id + '" data-s="' + esc(t.stage_id) + '">' + ic('ok') + 'Етап виконано</button>';
+      else if (t.kind === 'task' && can('projects.edit_stage')) btn = '<button class="tm-btn" data-tdone="' + t.task_id + '" data-p="' + t.project_id + '">' + ic('ok') + 'Виконано</button>';
       else if (t.kind === 'issue' || t.kind === 'next') btn = '<button class="tm-btn ghost" data-open="' + t.project_id + '">Відкрити обʼєкт</button>';
       else if ((t.kind === 'lead' || t.kind === 'contact') && o) btn = (o.phone ? '<a class="tm-btn" href="tel:+' + digits(o.phone) + '">' + ic('phone') + 'Подзвонити</a>' : '') +
         (t.kind === 'lead' && can('leads.edit') ? '<button class="tm-btn ghost" data-take="' + o.id + '">Взяв у роботу</button>' : '');
-      return '<li class="tm-task' + (t.urgent ? ' urgent' : '') + '" style="--i:' + i + '"><span class="tm-ic">' + ic(k[0]) + '</span><div class="tm-tx"><small>' + esc(k[1]) + (t.due ? ' · ' + (t.due < today() ? 'прострочено з ' : '') + dmy(t.due) : '') + '</small>' +
+      return '<li class="tm-task' + (t.urgent ? ' urgent' : '') + '" style="--i:' + i + '"><span class="tm-ic">' + ic(k[0]) + '</span><div class="tm-tx"><small>' + esc(k[1]) + (t.due ? ' · ' + (t.due < today() ? 'прострочено з ' : t.kind === 'task' ? 'до ' : '') + dmy(t.due) : '') + '</small>' +
         '<b>' + esc(t.title) + '</b>' + (t.sub ? '<span class="muted">' + esc(t.sub) + '</span>' : '') + (p && p.address ? '<span class="muted">' + ic('map') + esc(p.address) + '</span>' : '') + '<div class="tm-row">' + btn + '</div></div></li>';
     }).join('') + '</ul>';
   }
@@ -142,6 +143,8 @@
         '<span class="tm-pct" style="--p:' + p.progress + '"><b>' + p.progress + '%</b></span></header>' +
         (p.current ? '<p class="tm-now">Зараз: <b>' + esc(p.current.name) + '</b> · ' + esc(p.current.status_label) + (p.current.end ? ' · до ' + dmy(p.current.end) : '') + '</p>' : '') +
         (p.next_step ? '<p class="tm-next">Наступний крок: <b>' + esc(p.next_step) + '</b>' + (p.next_date ? ' · ' + dmy(p.next_date) : '') + '</p>' : '') +
+        (p.deadline ? '<p class="' + (p.deadline < today() ? 'err' : 'muted') + '">Здача обʼєкта: ' + dmy(p.deadline) + (p.deadline < today() ? ' — прострочено' : '') + '</p>' : '') +
+        checklist(p) +
         '<div class="tm-contacts">' + (p.address ? '<a class="tm-btn ghost" href="' + esc(mapUrl) + '" target="_blank" rel="noopener">' + ic('map') + esc(p.address) + '</a>' : '') +
         (p.client_phone ? '<a class="tm-btn ghost" href="tel:+' + digits(p.client_phone) + '">' + ic('phone') + 'Клієнт: ' + esc(p.client_phone) + '</a>' : '') + '</div>' +
         '<div class="tm-actions">' + (can('reports.upload') ? '<button class="tm-btn" data-act="report" data-p="' + p.id + '">' + ic('cam') + 'Фотозвіт</button>' : '') +
@@ -155,6 +158,28 @@
           (p.reports.length ? '<div class="tm-reps">' + p.reports.map(function (r) { return '<div><small>' + dmy(r.date) + ' · ' + esc(r.title || '') + '</small><div class="tm-ph">' + r.photos.map(function (u) { return '<a href="' + esc(u) + '" target="_blank" rel="noopener"><img src="' + esc(u) + '" alt="Фото з обʼєкта" width="88" height="66" loading="lazy"></a>'; }).join('') + '</div></div>'; }).join('') + '</div>' : '<p class="muted">Фотозвітів ще не було.</p>') +
         '</details></article>';
     }).join('');
+  }
+
+  // чекліст задач обʼєкта: свої (або нічиї) можна відмітити, чужі — лише перегляд
+  function checklist(p) {
+    var T = p.tasks || [];
+    if (!T.length) return '';
+    var n = T.filter(function (t) { return t.done; }).length;
+    return '<details class="tm-more tm-check"' + (T.some(function (t) { return t.mine && !t.done; }) ? ' open' : '') + '><summary>Задачі · ' + n + '/' + T.length + '</summary><ul class="tm-tl">' + T.map(function (t) {
+      var mine = t.mine || !t.staff_id || can('projects.edit'), late = !t.done && t.due_date && t.due_date < today();
+      return '<li class="' + (t.done ? 'done' : '') + (late ? ' late' : '') + '"><label><input type="checkbox" data-tchk="' + t.id + '" data-p="' + p.id + '"' + (t.done ? ' checked' : '') + (mine && can('projects.edit_stage') ? '' : ' disabled') + '>' +
+        '<span>' + esc(t.title) + '<small class="muted">' + [t.stage_name, t.staff_name || 'без виконавця', t.due_date ? (late ? 'прострочено з ' : 'до ') + dmy(t.due_date) : ''].filter(Boolean).map(esc).join(' · ') + '</small></span></label></li>';
+    }).join('') + '</ul></details>';
+  }
+  function setTask(pid, tid, done, el) {
+    var p = proj(pid), t = p && (p.tasks || []).find(function (x) { return x.id === tid; });
+    if (el) el.disabled = true;
+    if (t) t.done = done;
+    if (done) D.tasks = D.tasks.filter(function (x) { return !(x.kind === 'task' && x.task_id === tid); });
+    swap(draw);
+    api('/api/team/action', { method: 'POST', body: { type: 'task', project_id: pid, task_id: tid, done: done } }).then(function () {
+      toast(done ? 'Задачу виконано' : 'Задачу повернуто в роботу'); load(true);
+    }, function (e) { if (t) t.done = !done; toast('Не збережено: ' + e.message, true); load(true); });
   }
 
   /* ---------- Заявки (менеджер, дизайнер) ---------- */
@@ -198,6 +223,8 @@
   function bind(v) {
     $$('[data-act]', v).forEach(function (b) { b.onclick = function () { sheet(b.dataset.act, +b.dataset.p, b.dataset.s); }; });
     $$('[data-open]', v).forEach(function (b) { b.onclick = function () { go('objects'); setTimeout(function () { var el = $('#obj-' + b.dataset.open); if (el) { el.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' }); el.classList.add('flash'); } }, 60); }; });
+    $$('[data-tdone]', v).forEach(function (b) { b.onclick = function () { setTask(+b.dataset.p, +b.dataset.tdone, true, b); }; });
+    $$('[data-tchk]', v).forEach(function (c) { c.onchange = function () { setTask(+c.dataset.p, +c.dataset.tchk, c.checked, c); }; });
     $$('[data-take]', v).forEach(function (b) { b.onclick = function () { setLead(+b.dataset.take, 'in_work', b); }; });
     $$('[data-st]', v).forEach(function (s) { s.onchange = function () { setLead(+s.dataset.st, s.value, s); }; });
     var o = $('[data-out]', v); if (o) o.onclick = function () { A.logout().then(function () { location.href = '/kabinet'; }); };

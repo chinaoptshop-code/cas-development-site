@@ -3,14 +3,16 @@
 // POST {type: 'report', project_id, stage_id?, title?, note?, photos: [url]}          — фотозвіт для клієнта (reports.upload)
 // POST {type: 'issue', project_id, stage_id?, note, photos?: [url]}                     — «проблема на обʼєкті» (issues.report),
 //      лише для команди; власнику й менеджерам — Telegram.
+// POST {type: 'task', project_id, task_id, done?: true|false}                         — відмітити задачу (projects.edit_stage):
+//      лише свою або без виконавця (з projects.edit — будь-яку); міграція 0012, до неї — 503.
 // photos — адреси /api/media/<id> цього ж обʼєкта (POST /api/team/upload) або https-посилання.
 import { bad, json, readJSON } from '../../_lib.js';
 import { escHtml, notifyTeam } from '../../_alerts.js';
-import { STAGE_STATUS, date, httpsUrl, int, stageStatus, txt } from '../../_account.js';
+import { STAGE_STATUS, date, httpsUrl, int, noTable, notReady, stageStatus, txt } from '../../_account.js';
 import { audit, canSeeProject, need } from '../../_roles.js';
 import { limited } from '../../_rate.js';
 
-const PERM = { stage: 'projects.edit_stage', report: 'reports.upload', issue: 'issues.report' };
+const PERM = { stage: 'projects.edit_stage', report: 'reports.upload', issue: 'issues.report', task: 'projects.edit_stage' };
 const MEDIA = /\/api\/media\/([0-9a-f]{24})$/;
 
 async function photosOf(env, request, projectId, v) {
@@ -42,6 +44,20 @@ export async function onRequestPost({ request, env }) {
   const pr = await env.DB.prepare('SELECT * FROM projects WHERE id = ?').bind(pid).first();
   const stages = (() => { try { return JSON.parse(pr.stages || '[]'); } catch { return []; } })();
   const stageId = d.stage_id && stages.some(s => s.id === d.stage_id) ? String(d.stage_id) : null;
+
+  if (d.type === 'task') {
+    let tk;
+    try { tk = await env.DB.prepare('SELECT * FROM project_tasks WHERE id = ? AND project_id = ?').bind(int(d.task_id), pid).first(); }
+    catch (e) { if (noTable(e)) return notReady(); throw e; }
+    if (!tk) return bad('Задачу не знайдено', 404);
+    if (tk.staff_id && tk.staff_id !== x.staffId && !x.can('projects.edit')) return bad('Це задача іншого працівника', 403);
+    const done = d.done === false ? 0 : 1;
+    await env.DB.prepare(`UPDATE project_tasks SET done = ?, done_at = CASE WHEN ? = 1 THEN datetime('now') END, done_by = CASE WHEN ? = 1 THEN ? END WHERE id = ?`)
+      .bind(done, done, done, x.staffId, tk.id).run();
+    await env.DB.prepare("UPDATE projects SET updated_at = datetime('now') WHERE id = ?").bind(pid).run();
+    await audit(env, request, x, done ? 'task.done' : 'task.reopen', 'projects', pid, { task_id: tk.id, done: tk.done }, { task_id: tk.id, title: tk.title, done });
+    return json({ ok: true, done: !!done });
+  }
 
   if (d.type === 'stage') {
     if (!['in_progress', 'review', 'done'].includes(d.status)) return bad('Невідомий статус етапу', 422);

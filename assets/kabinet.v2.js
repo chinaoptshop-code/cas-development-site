@@ -461,7 +461,7 @@
           (p.next_step ?'<div class="kb-next">' + svg(IC.flag) + '<div><p class="kb-eyebrow">' + T('Наступний крок') + (p.next_date ? ' · ' + esc(dfmt(p.next_date, { day: 'numeric', month: 'long' })) : '') + '</p><p>' + esc(p.next_step) + '</p></div></div>' : '') +
           (p.stages.length ? '<h3>' + T('Етапи') + '</h3><div class="kb-stages">' + p.stages.map(function (s, i) {
             var pc = Math.max(0, Math.min(100, s.progress || 0));
-            return '<div class="kb-stage' + (pc >= 100 ? ' done' : '') + '"><div class="kb-stage-h"><b>' + (i + 1) + '. ' + esc(s.name) + (i === stIdx ? ' <span class="kb-st" style="padding:1px 8px;font-size:11px">' + T('зараз') + '</span>' : '') + '</b><span class="muted">' +
+            return '<div class="kb-stage' + (pc >= 100 ? ' done' : '') + '"><div class="kb-stage-h"><b>' + (i + 1) + '. ' + esc(s.name) + (i === stIdx ? ' <span class="kb-st" style="padding:1px 8px;font-size:11px">' + T('зараз') + '</span>' : '') + approvedB(s) + '</b><span class="muted">' +
               [s.start && dfmt(s.start, { day: 'numeric', month: 'short' }), s.end && dfmt(s.end, { day: 'numeric', month: 'short' })].filter(Boolean).join(' – ') + ' · ' + pc + '%</span></div>' + bar(pc) +
               (s.note ? '<small class="muted">' + esc(s.note) + '</small>' : '') + '</div>';
           }).join('') + '</div>' : '') + '</section>';
@@ -508,6 +508,8 @@
   var cash = function (n, c) { return n == null ? '' : (c === 'UAH' ? fmt(n) + ' ₴' : (CUR[c] || '$') + fmt(n)); };
   var YT = /^https:\/\/www\.youtube-nocookie\.com\/embed\/[\w-]{11}\?[\w=&]*$/;
   var nRepT = function (n) { return T('Фотозвітів: {n}', { n: n }); };
+  // дизайн-проєкт: етап погоджено клієнтом (approved_at у JSON етапу, ставить менеджер)
+  function approvedB(s) { return s.approved_at ? ' <span class="kb-ss done" title="' + esc(T('Погоджено')) + ' ' + esc(dfmt(s.approved_at)) + '">✓ ' + esc(T('погоджено')) + ' ' + esc(dfmt(s.approved_at, { day: 'numeric', month: 'short' })) + '</span>' : ''; }
   function stBadgeS(s) { return '<span class="kb-ss ' + esc(s.status) + '">' + esc(STS[s.status] || s.status_label || '') + '</span>'; }
   function camCard(p) {
     var cam = p.camera, h = '<section class="kb-card kb-cam s6 kb-in" aria-labelledby="kb-cam-h"><div class="kb-ch"><div><p class="kb-eyebrow">' + T('Онлайн-контроль') + '</p><h2 id="kb-cam-h">' + T('Камера 24/7') + '</h2></div>';
@@ -597,7 +599,7 @@
           var sActs = acts.filter(function (x) { return s.id && x.stage_id === s.id; });
           var dates = [s.start && dfmt(s.start, { day: 'numeric', month: 'short' }), s.end && dfmt(s.end, { day: 'numeric', month: 'short', year: 'numeric' })].filter(Boolean).join(' – ');
           return '<li class="' + esc(s.status) + (s === cur ? ' cur' : '') + '"' + (s === cur ? ' aria-current="step"' : '') + '><span class="d" aria-hidden="true">' + (s.status === 'done' ? '' : i + 1) + '</span><div class="kb-step-b">' +
-            '<div class="kb-stage-h"><b>' + esc(s.name) + '</b>' + stBadgeS(s) + '</div>' +
+            '<div class="kb-stage-h"><b>' + esc(s.name) + approvedB(s) + '</b>' + stBadgeS(s) + '</div>' +
             '<div class="row" style="gap:10px;flex-wrap:nowrap"><div style="flex:1">' + bar(pc) + '</div><small class="muted" style="white-space:nowrap">' + pc + '%</small></div>' +
             '<div class="kb-step-m">' + (dates ? '<span>' + esc(dates) + '</span>' : '') + (nRep ? '<button type="button" class="lnk" data-stg="' + esc(s.id) + '">' + nRepT(nRep) + ' →</button>' : '') +
             sActs.map(function (a) { var u = safeUrl(a.url); return u ? '<a class="lnk" href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + svg(IC.doc) + esc(a.title) + '</a>' : ''; }).join('') + '</div>' +
@@ -834,6 +836,11 @@
 
     A.me().then(function (c) {
       if (!c) return guest();
+      // Працівник на /kabinet одразу потрапляє у свій кабінет (/kabinet/team або /kabinet/admin), а не в клієнтський (16.11).
+      // Кабінет клієнта для себе — /kabinet?client=1 (посилання є в кабінеті працівника).
+      var asClient = /[?&]client=1\b/.test(location.search);
+      try { if (asClient) sessionStorage.setItem('kb-as-client', '1'); else asClient = sessionStorage.getItem('kb-as-client') === '1'; } catch (e) { /* приватний режим */ }
+      if (TAB === 'overview' && c.staff && c.staff.home && c.staff.home !== '/kabinet' && !asClient) { location.replace(c.staff.home); return; }
       if (TAB === 'orders') orders(c);
       else if (TAB === 'fav') fav(c);
       else if (TAB === 'projects') { projects(c); ozCheck(); }
