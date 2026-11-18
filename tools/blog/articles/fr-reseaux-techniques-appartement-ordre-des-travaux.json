@@ -1,0 +1,329 @@
+{
+ "slug": "reseaux-techniques-appartement-ordre-des-travaux",
+ "lang": "fr",
+ "title": "Réseaux techniques d'un appartement clé en main : électricité, plomberie, ventilation, plancher chauffant",
+ "translation_of": "inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit",
+ "seo_title": "Réseaux techniques d'un appartement : ordre et contrôles",
+ "description": "Réseaux d'un appartement clé en main : projet, électricité, plomberie, ventilation, climatisation, plancher chauffant. Ordre des travaux et contrôles.",
+ "lead": "Les réseaux techniques sont la partie de la rénovation qu'on ne voit plus après la livraison, mais ce sont eux qui décident si le disjoncteur saute, si l'on inonde les voisins et si la moisissure apparaît dans la salle de bains. Nous expliquons dans quel ordre on pose l'électricité, la plomberie, la ventilation et le plancher chauffant, quelles solutions sont courantes selon la pratique du marché et ce qu'il faut vérifier tant que les murs ne sont pas enduits.",
+ "date": "2026-11-01",
+ "service": [
+  "/fr/renovation-cle-en-main",
+  "Rénovation clé en main"
+ ],
+ "photo": "img/p/1xSbwYmzFkTN2A-900.webp",
+ "photo_alt": "Séjour-salle à manger — Pidgirland, un projet CAS Development",
+ "body": [
+  [
+   "h2",
+   "Réseaux techniques d'un appartement : pourquoi l'ordre compte plus que les marques"
+  ],
+  [
+   "p",
+   "Un mitigeur haut de gamme n'empêche pas une fuite sur un raccord mal fait, et un bon câble ne sauve pas un circuit surchargé. La plupart des problèmes ne viennent pas des matériaux, mais d'un mauvais enchaînement et de l'absence de contrôles avant fermeture. C'est pourquoi, dans une rénovation clé en main, les réseaux suivent un projet et un ordre clair : d'abord les décisions sur le papier, puis la pose, puis les essais, et seulement ensuite enduit, chape et finitions."
+  ],
+  [
+   "ol",
+   [
+    "projet des réseaux et choix des équipements",
+    "démolition, cloisons, vérification des colonnes et des arrivées",
+    "électricité en premier œuvre et courants faibles",
+    "alimentation en eau, évacuations, bâti-supports",
+    "ventilation, climatisation, liaisons et évacuation des condensats",
+    "essais : mise en pression, mesures, photos, procès-verbaux",
+    "enduit, chape avec plancher chauffant, étanchéité des zones humides",
+    "finitions, puis appareillage électrique et sanitaire"
+   ]
+  ],
+  [
+   "h2",
+   "Étape 0. Le projet : que décider avant la première saignée"
+  ],
+  [
+   "p",
+   "Prises, interrupteurs et arrivées d'eau dépendent des meubles et des équipements : il faut donc d'abord le plan d'aménagement et l'implantation du mobilier. Cuisine, lave-linge, chauffe-eau, climatiseurs et traitement de l'eau doivent être choisis au moins en dimensions et en puissance : de cela dépendent les sections de câble, les circuits du tableau, les hauteurs et cotes des sorties."
+  ],
+  [
+   "ul",
+   [
+    "plan des prises et interrupteurs avec hauteurs et cotes",
+    "schéma des circuits d'éclairage et des scénarios de commande",
+    "schéma unifilaire du tableau avec calibres des disjoncteurs et différentiels",
+    "schéma d'eau et d'évacuation avec hauteurs des sorties",
+    "schéma de ventilation, des liaisons de climatisation et des condensats",
+    "calepinage du plancher chauffant et emplacement des thermostats"
+   ]
+  ],
+  [
+   "p",
+   "Dans le neuf, on vérifie d'abord ce qu'a fait le promoteur : où est le tableau d'étage, quelle puissance est allouée à l'appartement, comment sortent les colonnes et les conduits de ventilation. Plus de détails sur la page [rénovation dans le neuf](/fr/renovation-appartement-neuf)."
+  ],
+  [
+   "h2",
+   "Électricité"
+  ],
+  [
+   "h3",
+   "Tableau et circuits"
+  ],
+  [
+   "p",
+   "Le tableau électrique est le cœur de l'installation. Il comporte en général un interrupteur général, des interrupteurs différentiels, des disjoncteurs par circuit et, si nécessaire, un relais de tension ou un parafoudre. Les circuits sont séparés pour qu'un défaut dans une zone ne coupe pas tout l'appartement et que les gros appareils aient leurs propres lignes."
+  ],
+  [
+   "ul",
+   [
+    "éclairage séparé des prises, par zones",
+    "prises par pièce, plan de travail de la cuisine sur un circuit dédié",
+    "lignes spécialisées pour la plaque, le four, le lave-vaisselle, le lave-linge, le chauffe-eau, les climatiseurs et le plancher chauffant",
+    "protection différentielle des prises et des zones humides — 30 mA selon la pratique du marché",
+    "repérage de chaque disjoncteur et schéma sur la porte du tableau"
+   ]
+  ],
+  [
+   "h3",
+   "Câbles et cheminement"
+  ],
+  [
+   "p",
+   "On utilise du câble cuivre trois conducteurs : phase, neutre et terre. Selon la pratique du marché, 1,5 mm² pour l'éclairage, 2,5 mm² pour les prises et, pour la plaque et les autres gros appareils, une section calculée selon la puissance, en général 4 à 6 mm². Dans les murs, le câble suit strictement des tracés verticaux et horizontaux dans des zones définies, pour ne pas être percé plus tard ; dans les sols et plafonds, il passe en gaine. Les boîtes de dérivation doivent rester accessibles."
+  ],
+  [
+   "h3",
+   "Courants faibles"
+  ],
+  [
+   "p",
+   "Internet, Wi-Fi, interphone, caméras, détecteurs de fuite et domotique se posent en même temps que l'électricité, mais sur des cheminements séparés. En général, un câble de communication va du coffret d'arrivée à une baie multimédia, puis du câble à paires torsadées part vers la télévision, le poste de travail et les points d'accès Wi-Fi au plafond. Pour la domotique, on décide dès le projet quelles lignes seront pilotées et on réserve la place des modules dans le tableau ou les boîtiers."
+  ],
+  [
+   "h3",
+   "Salle de bains"
+  ],
+  [
+   "p",
+   "Les règles sont plus strictes dans la salle de bains : prises et interrupteurs hors des volumes exposés aux projections, luminaires à l'indice de protection adapté, et éléments métalliques — tuyaux, baignoire, receveur — reliés par une liaison équipotentielle. Le plancher chauffant et le sèche-serviettes sont raccordés via une protection différentielle."
+  ],
+  [
+   "h3",
+   "Ce qu'il faut vérifier avant l'enduit"
+  ],
+  [
+   "ul",
+   [
+    "conformité des prises et interrupteurs au plan, en hauteur et en cote",
+    "une photo de chaque mur avec un mètre ruban, pour savoir ensuite où passe le câble",
+    "mesure de l'isolement et test de déclenchement des différentiels",
+    "conducteur de terre dans chaque prise"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1pF5ohNHdSnme0-900.webp",
+   "Bloc de prises et d'interrupteurs au-dessus d'un chevet en bois près du canapé — intérieur A-Frame House",
+   "Les prises près du canapé et du lit sont calées sur le mobilier dès le projet"
+  ],
+  [
+   "h2",
+   "Plomberie et évacuations"
+  ],
+  [
+   "h3",
+   "Alimentation en eau : nourrice ou en série"
+  ],
+  [
+   "p",
+   "Avec une nourrice, chaque point — mitigeur, WC, lave-linge — est alimenté par son propre tuyau et peut être coupé sans priver tout l'appartement d'eau. La distribution en série (par tés) est plus simple et moins chère, mais moins pratique à entretenir. Les tuyaux sont en polypropylène soudé, en PER ou en multicouche à sertir ; dans les murs et sols, seuls des raccords non démontables subsistent. L'eau froide est isolée contre la condensation, l'eau chaude contre les pertes de chaleur."
+  ],
+  [
+   "ul",
+   [
+    "à l'arrivée : vannes, filtres à tamis et fins, réducteur de pression, compteurs selon les règles de l'immeuble",
+    "un système anti-fuite — détecteurs et vannes motorisées",
+    "accès à la nourrice, aux vannes et aux filtres par des trappes de visite"
+   ]
+  ],
+  [
+   "h3",
+   "Évacuations"
+  ],
+  [
+   "p",
+   "En général, on utilise du tuyau de 50 mm pour le lavabo, la douche et le lave-linge, et de 110 mm pour le WC. Les tronçons horizontaux ont une pente constante vers la colonne — selon la pratique du marché, environ 2 à 3 cm par mètre pour du 50 mm, sans contre-pente. Les changements de direction se font avec deux coudes à 45° plutôt qu'un seul coude serré, et des tampons de visite sont laissés aux nœuds. La colonne commune de l'immeuble ne se déplace ni ne se réduit sans accord, et on l'habille d'un isolant acoustique pour le silence."
+  ],
+  [
+   "h3",
+   "Bâti-supports, siphons de sol et étanchéité"
+  ],
+  [
+   "p",
+   "Le WC et le lavabo suspendus se fixent sur des bâti-supports, des cadres en acier posés avant l'habillage des murs. Une douche à l'italienne avec caniveau ou siphon ponctuel demande une pente de chape et une hauteur de siphon précise. Les zones humides reçoivent une étanchéité liquide ou en membrane remontée sur les murs, jusqu'à toute la hauteur des projections dans la douche ; angles et traversées de tuyaux sont traités avec bandes et manchettes."
+  ],
+  [
+   "h3",
+   "Ce qu'il faut vérifier avant de refermer"
+  ],
+  [
+   "ul",
+   [
+    "mise en pression des canalisations à la pression et la durée exigées par le fabricant ou le projet, avec photo du manomètre",
+    "hauteurs et cotes des sorties selon le schéma",
+    "pentes des évacuations au niveau, sans flèche",
+    "continuité de l'étanchéité, y compris dans les angles et autour du siphon"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1gXiWvuON9L6XT-900.webp",
+   "Buanderie avec électroménager, sèche-serviettes et placards jusqu'au plafond — projet de maison à Petrivtsi",
+   "Lave-linge et sèche-linge : lignes électriques dédiées, arrivée d'eau, évacuation et accès aux vannes"
+  ],
+  [
+   "h2",
+   "Ventilation et climatisation"
+  ],
+  [
+   "p",
+   "Dans un immeuble collectif, l'extraction de la cuisine et des salles d'eau passe généralement par des conduits de ventilation. Il est interdit de les boucher, de les réduire ou de les détourner : la ventilation de votre appartement et de celui des voisins en dépend. La hotte est raccordée selon le projet et le règlement de l'immeuble, et la salle de bains reçoit un extracteur avec clapet anti-retour. Les fenêtres étanches ne laissent presque pas passer l'air : il faut donc des entrées d'air, en menuiserie ou en façade, des récupérateurs décentralisés si la façade le permet, ou une VMC double flux centrale s'il y a de la place en faux plafond."
+  ],
+  [
+   "p",
+   "Les liaisons de climatisation — tubes frigorifiques isolés, évacuation des condensats et câble — sont posées avant l'enduit. L'évacuation a besoin d'une pente ou d'une pompe de relevage, et l'emplacement de l'unité extérieure est validé selon le règlement de l'immeuble. Une fois les murs fermés, impossible de modifier le tracé sans casser les finitions."
+  ],
+  [
+   "ul",
+   [
+    "soufflage dans les pièces de vie et extraction dans la cuisine, les salles d'eau et les dressings",
+    "transfert d'air entre pièces — détalonnage des portes ou grilles",
+    "unités intérieures placées pour ne pas souffler sur le lit ou le bureau",
+    "accès aux filtres et aux condensats pour l'entretien"
+   ]
+  ],
+  [
+   "h2",
+   "Plancher chauffant"
+  ],
+  [
+   "p",
+   "En appartement, on pose le plus souvent un plancher chauffant électrique : câble dans la chape, trame fine dans la colle à carrelage ou film sous stratifié ou parquet si le fabricant du revêtement l'autorise. Un plancher chauffant à eau branché sur le chauffage collectif est en général interdit, car il déséquilibre l'installation. Il est possible avec un chauffage individuel, via un module de mélange et sur projet."
+  ],
+  [
+   "ul",
+   [
+    "une ligne dédiée avec disjoncteur et protection différentielle",
+    "une sonde de sol dans une gaine — pour pouvoir la remplacer",
+    "un isolant sous la chape pour ne pas chauffer les voisins du dessous",
+    "pas sous la cuisine, les placards, la baignoire ni les meubles sans pieds",
+    "mesure de la résistance du câble avant et après la pose, photo du calepinage coté"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/11wEIjh0kDHFtz-900.webp",
+   "Cuisine avec électroménager encastré et façades aspect bois — appartement réalisé Tetris Hall",
+   "Électroménager encastré : chaque appareil puissant a sa propre ligne"
+  ],
+  [
+   "h2",
+   "Comment les réseaux influencent la hauteur sous plafond et les niveaux de sol"
+  ],
+  [
+   "p",
+   "Les réseaux prennent des centimètres, et mieux vaut le savoir avant de s'attacher à une hauteur sous plafond précise. Les gaines de VMC et les climatiseurs gainables demandent de la place au-dessus d'un faux plafond. Une chape avec plancher chauffant et isolant est plus épaisse qu'une chape ordinaire, et une douche à l'italienne exige de la place pour le siphon et la pente. Les bâti-supports et les nourrices occupent des niches dans les murs."
+  ],
+  [
+   "p",
+   "Le design et les réseaux doivent donc être coordonnés dans le projet : où le plafond descend, où les coffrages cachent les gaines, quels sont les niveaux de sol des différentes pièces et comment raccorder ces niveaux sans seuils."
+  ],
+  [
+   "h2",
+   "Documents et normes : ce que vous devez recevoir"
+  ],
+  [
+   "p",
+   "Les travaux sont réalisés conformément aux normes de construction en vigueur, aux règles des installations électriques et aux prescriptions des fabricants. Pour vous, maître d'ouvrage, la liste des normes compte moins que les documents qui restent après la rénovation. Vous en aurez besoin quand, quelques années plus tard, il faudra fixer une étagère, changer le chauffe-eau ou trouver une fuite."
+  ],
+  [
+   "ul",
+   [
+    "schémas de récolement de l'électricité et de la plomberie — tels que réellement posés",
+    "photos des murs et sols avec un mètre avant fermeture",
+    "schéma unifilaire du tableau avec circuits repérés",
+    "procès-verbaux de mesures électriques et d'essais de pression",
+    "notices et garanties des équipements"
+   ]
+  ],
+  [
+   "p",
+   "Si les travaux sont confiés à une entreprise en qui vous n'avez pas toute confiance, les ouvrages cachés peuvent être contrôlés par un spécialiste indépendant — voir l'article sur le [contrôle technique de chantier](/fr/blog/controle-technique-renovation-appartement)."
+  ],
+  [
+   "h2",
+   "Erreurs fréquentes sur les réseaux d'un appartement"
+  ],
+  [
+   "ul",
+   [
+    "des prises « comme le promoteur les a posées », sans lien avec les meubles et les appareils — d'où les rallonges",
+    "un seul circuit pour toute la cuisine, des appareils puissants sans ligne dédiée",
+    "des câbles en diagonale dans les murs",
+    "des raccords de tuyaux dans la chape sans accès",
+    "des évacuations sans pente ou avec des coudes serrés",
+    "un conduit de ventilation bouché ou réduit, une extraction sans entrée d'air",
+    "un plancher chauffant sous les meubles et sans isolant",
+    "des murs refermés sans essai de pression ni photos"
+   ]
+  ],
+  [
+   "gallery",
+   [
+    [
+     "/img/p/1dHW-ciO1rn1E0-900.webp",
+     "Séjour avec mur en pierre, niche TV et éclairage sur rail — appartement réalisé Tetris Hall"
+    ],
+    [
+     "/img/p/1NVeaQcV2TZSN5-900.webp",
+     "Salle de bains avec baignoire îlot, douche et niche éclairée — projet de maison à Petrivtsi"
+    ]
+   ]
+  ],
+  [
+   "h2",
+   "Comment nous traitons les réseaux dans une rénovation clé en main"
+  ],
+  [
+   "p",
+   "Les réseaux font partie de la [rénovation lourde d'appartement](/fr/renovation-lourde-appartement) et de la rénovation clé en main chez CAS : à partir de $550/m² pour les travaux et matériaux de gros œuvre ; matériaux de finition, mobilier et électroménager à part, sur devis. Pour repère : 70 m² × $550 = $38 500 au tarif de base — le montant exact vient du devis après le projet. Vous pouvez calculer votre surface avec le [calculateur de rénovation](/fr/calculateur-renovation) et voir de quoi se compose le prix sur la page [coût de la rénovation d'un appartement](/fr/prix-renovation-appartement)."
+  ],
+  [
+   "p",
+   "Les travaux sont réalisés par notre propre équipe, les ouvrages cachés sont documentés dans des rapports photo toutes les 1 à 2 semaines et, sur demande, une caméra en ligne 24 h/24 est installée sur le chantier moyennant supplément. Un seul interlocuteur, devis et délais au contrat, garantie de 12 mois sur les travaux. Si vous hésitez à refaire entièrement les réseaux, commencez par l'article [rénovation lourde ou rafraîchissement](/fr/blog/renovation-lourde-ou-rafraichissement-que-choisir)."
+  ]
+ ],
+ "faq": [
+  [
+   "Dans quel ordre pose-t-on les réseaux d'un appartement ?",
+   "D'abord le projet et le choix des équipements, puis démolition et cloisons, électricité en premier œuvre, eau et évacuations, ventilation et liaisons de climatisation, essais et photos, et seulement ensuite enduit, chape et finitions."
+  ],
+  [
+   "Quelle section de câble pour les prises et l'éclairage ?",
+   "Selon la pratique du marché, câble cuivre de 1,5 mm² pour l'éclairage, 2,5 mm² pour les prises et, pour la plaque et les autres gros appareils, une section calculée, en général 4 à 6 mm². Les valeurs exactes sont fixées par le projet selon la puissance et la longueur de ligne."
+  ],
+  [
+   "Nourrice ou distribution en série : que choisir ?",
+   "La nourrice coûte plus cher, mais chaque point se coupe séparément et il n'y a pas de raccords intermédiaires dans les murs. La distribution en série est plus simple et moins chère. Pour les appartements avec plusieurs salles d'eau et de nombreux appareils, on choisit le plus souvent la nourrice."
+  ],
+  [
+   "Peut-on installer un plancher chauffant à eau en appartement ?",
+   "Sur le chauffage collectif d'un immeuble, en général non, car cela perturbe l'installation commune. C'est possible avec un chauffage individuel via un module de mélange. Sinon, on pose un plancher chauffant électrique."
+  ],
+  [
+   "Peut-on raccorder la hotte au conduit de ventilation ?",
+   "Cela dépend de la conception du conduit et du règlement de l'immeuble. Il est interdit de boucher ou de réduire le conduit et d'y supprimer le tirage naturel. La solution de raccordement est définie dans le projet."
+  ],
+  [
+   "Que vérifier avant l'enduit ?",
+   "La conformité des prises et sorties au plan, les photos des murs avec un mètre, les mesures d'isolement et le fonctionnement des différentiels, l'essai de pression des canalisations, les pentes d'évacuation et les liaisons de climatisation."
+  ]
+ ]
+}
