@@ -722,7 +722,7 @@
  {
   "page": "ar/design-renovation-cherkasy.html",
   "kind": "land",
-  "html_kb": 43.8,
+  "html_kb": 43.6,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -753,7 +753,7 @@
  {
   "page": "ar/design-renovation-chernihiv.html",
   "kind": "land",
-  "html_kb": 44.1,
+  "html_kb": 43.9,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -784,8 +784,8 @@
  {
   "page": "ar/design-renovation-chernivtsi.html",
   "kind": "land",
-  "html_kb": 44.0,
-  "gzip_kb": 11.8,
+  "html_kb": 43.8,
+  "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -939,7 +939,7 @@
  {
   "page": "ar/design-renovation-ivano-frankivsk.html",
   "kind": "land",
-  "html_kb": 44.6,
+  "html_kb": 44.4,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -970,7 +970,7 @@
  {
   "page": "ar/design-renovation-khmelnytskyi.html",
   "kind": "land",
-  "html_kb": 44.1,
+  "html_kb": 43.9,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -1001,7 +1001,7 @@
  {
   "page": "ar/design-renovation-kropyvnytskyi.html",
   "kind": "land",
-  "html_kb": 44.2,
+  "html_kb": 44.0,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -1063,7 +1063,7 @@
  {
   "page": "ar/design-renovation-lutsk.html",
   "kind": "land",
-  "html_kb": 43.5,
+  "html_kb": 43.3,
   "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -1187,7 +1187,7 @@
  {
   "page": "ar/design-renovation-poltava.html",
   "kind": "land",
-  "html_kb": 44.0,
+  "html_kb": 43.8,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -1218,7 +1218,7 @@
  {
   "page": "ar/design-renovation-rivne.html",
   "kind": "land",
-  "html_kb": 43.6,
+  "html_kb": 43.5,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -1249,7 +1249,7 @@
  {
   "page": "ar/design-renovation-ternopil.html",
   "kind": "land",
-  "html_kb": 43.8,
+  "html_kb": 43.6,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -1311,7 +1311,7 @@
  {
   "page": "ar/design-renovation-uzhhorod.html",
   "kind": "land",
-  "html_kb": 44.2,
+  "html_kb": 44.0,
   "gzip_kb": 11.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -1373,7 +1373,7 @@
  {
   "page": "ar/design-renovation-vinnytsia.html",
   "kind": "land",
-  "html_kb": 44.1,
+  "html_kb": 43.9,
   "gzip_kb": 11.7,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -1466,7 +1466,7 @@
  {
   "page": "ar/design-renovation-zhytomyr.html",
   "kind": "land",
-  "html_kb": 44.0,
+  "html_kb": 43.8,
   "gzip_kb": 11.8,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -11179,7 +11179,7 @@
  {
   "page": "en/design-renovation-chernihiv.html",
   "kind": "land",
-  "html_kb": 40.6,
+  "html_kb": 40.5,
   "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -11211,7 +11211,7 @@
   "page": "en/design-renovation-chernivtsi.html",
   "kind": "land",
   "html_kb": 40.5,
-  "gzip_kb": 11.2,
+  "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -11365,7 +11365,7 @@
  {
   "page": "en/design-renovation-ivano-frankivsk.html",
   "kind": "land",
-  "html_kb": 40.9,
+  "html_kb": 40.8,
   "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -11396,7 +11396,7 @@
  {
   "page": "en/design-renovation-khmelnytskyi.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -11489,7 +11489,7 @@
  {
   "page": "en/design-renovation-lutsk.html",
   "kind": "land",
-  "html_kb": 40.0,
+  "html_kb": 39.9,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -11613,7 +11613,7 @@
  {
   "page": "en/design-renovation-poltava.html",
   "kind": "land",
-  "html_kb": 40.5,
+  "html_kb": 40.4,
   "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -11644,7 +11644,7 @@
  {
   "page": "en/design-renovation-rivne.html",
   "kind": "land",
-  "html_kb": 40.3,
+  "html_kb": 40.2,
   "gzip_kb": 11.0,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -11675,7 +11675,7 @@
  {
   "page": "en/design-renovation-ternopil.html",
   "kind": "land",
-  "html_kb": 40.4,
+  "html_kb": 40.3,
   "gzip_kb": 11.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -11737,7 +11737,7 @@
  {
   "page": "en/design-renovation-uzhhorod.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -11799,7 +11799,7 @@
  {
   "page": "en/design-renovation-vinnytsia.html",
   "kind": "land",
-  "html_kb": 40.6,
+  "html_kb": 40.5,
   "gzip_kb": 11.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -14571,7 +14571,7 @@
  {
   "page": "es/diseno-reforma-chernihiv.html",
   "kind": "land",
-  "html_kb": 40.9,
+  "html_kb": 40.8,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -14602,7 +14602,7 @@
  {
   "page": "es/diseno-reforma-chernivtsi.html",
   "kind": "land",
-  "html_kb": 40.8,
+  "html_kb": 40.7,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -14788,7 +14788,7 @@
  {
   "page": "es/diseno-reforma-jmelnytski.html",
   "kind": "land",
-  "html_kb": 40.8,
+  "html_kb": 40.7,
   "gzip_kb": 11.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -14819,7 +14819,7 @@
  {
   "page": "es/diseno-reforma-kropyvnytsky.html",
   "kind": "land",
-  "html_kb": 41.0,
+  "html_kb": 40.9,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -14881,7 +14881,7 @@
  {
   "page": "es/diseno-reforma-lutsk.html",
   "kind": "land",
-  "html_kb": 40.3,
+  "html_kb": 40.2,
   "gzip_kb": 11.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -15005,7 +15005,7 @@
  {
   "page": "es/diseno-reforma-poltava.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -15098,7 +15098,7 @@
  {
   "page": "es/diseno-reforma-ternopil.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -15191,7 +15191,7 @@
  {
   "page": "es/diseno-reforma-uzhgorod.html",
   "kind": "land",
-  "html_kb": 41.0,
+  "html_kb": 40.9,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -15253,7 +15253,7 @@
  {
   "page": "es/diseno-reforma-vinnytsia.html",
   "kind": "land",
-  "html_kb": 40.8,
+  "html_kb": 40.7,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -17655,7 +17655,7 @@
  {
   "page": "fr/design-renovation-ivano-frankivsk.html",
   "kind": "land",
-  "html_kb": 41.7,
+  "html_kb": 41.5,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -17686,7 +17686,7 @@
  {
   "page": "fr/design-renovation-jytomyr.html",
   "kind": "land",
-  "html_kb": 41.2,
+  "html_kb": 41.0,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -17717,7 +17717,7 @@
  {
   "page": "fr/design-renovation-khmelnytsky.html",
   "kind": "land",
-  "html_kb": 41.4,
+  "html_kb": 41.2,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -17748,7 +17748,7 @@
  {
   "page": "fr/design-renovation-kropyvnytsky.html",
   "kind": "land",
-  "html_kb": 41.4,
+  "html_kb": 41.3,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -17779,7 +17779,7 @@
  {
   "page": "fr/design-renovation-loutsk.html",
   "kind": "land",
-  "html_kb": 40.9,
+  "html_kb": 40.8,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -17903,7 +17903,7 @@
  {
   "page": "fr/design-renovation-oujhorod.html",
   "kind": "land",
-  "html_kb": 41.5,
+  "html_kb": 41.3,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -17965,7 +17965,7 @@
  {
   "page": "fr/design-renovation-poltava.html",
   "kind": "land",
-  "html_kb": 41.2,
+  "html_kb": 41.0,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -18027,7 +18027,7 @@
  {
   "page": "fr/design-renovation-rivne.html",
   "kind": "land",
-  "html_kb": 41.1,
+  "html_kb": 40.9,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -18058,7 +18058,7 @@
  {
   "page": "fr/design-renovation-tcherkassy.html",
   "kind": "land",
-  "html_kb": 41.1,
+  "html_kb": 41.0,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -18089,7 +18089,7 @@
  {
   "page": "fr/design-renovation-tchernihiv.html",
   "kind": "land",
-  "html_kb": 41.3,
+  "html_kb": 41.2,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -18120,7 +18120,7 @@
  {
   "page": "fr/design-renovation-tchernivtsi.html",
   "kind": "land",
-  "html_kb": 41.4,
+  "html_kb": 41.2,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -18151,8 +18151,8 @@
  {
   "page": "fr/design-renovation-ternopil.html",
   "kind": "land",
-  "html_kb": 41.1,
-  "gzip_kb": 11.4,
+  "html_kb": 40.9,
+  "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -18244,7 +18244,7 @@
  {
   "page": "fr/design-renovation-vinnytsia.html",
   "kind": "land",
-  "html_kb": 41.4,
+  "html_kb": 41.2,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -32065,7 +32065,7 @@
  {
   "page": "pl/projektowanie-remont-chmielnicki.html",
   "kind": "land",
-  "html_kb": 40.3,
+  "html_kb": 40.2,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -32158,7 +32158,7 @@
  {
   "page": "pl/projektowanie-remont-czerniowce.html",
   "kind": "land",
-  "html_kb": 40.3,
+  "html_kb": 40.2,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -32313,7 +32313,7 @@
  {
   "page": "pl/projektowanie-remont-iwano-frankiwsk.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.6,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -32344,7 +32344,7 @@
  {
   "page": "pl/projektowanie-remont-kropywnycki.html",
   "kind": "land",
-  "html_kb": 40.5,
+  "html_kb": 40.4,
   "gzip_kb": 11.5,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -32530,7 +32530,7 @@
  {
   "page": "pl/projektowanie-remont-poltawa.html",
   "kind": "land",
-  "html_kb": 40.3,
+  "html_kb": 40.2,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -32592,7 +32592,7 @@
  {
   "page": "pl/projektowanie-remont-tarnopol.html",
   "kind": "land",
-  "html_kb": 40.1,
+  "html_kb": 40.0,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -32654,7 +32654,7 @@
  {
   "page": "pl/projektowanie-remont-uzhorod.html",
   "kind": "land",
-  "html_kb": 40.4,
+  "html_kb": 40.3,
   "gzip_kb": 11.6,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -32716,7 +32716,7 @@
  {
   "page": "pl/projektowanie-remont-winnica.html",
   "kind": "land",
-  "html_kb": 40.1,
+  "html_kb": 40.0,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -35278,7 +35278,7 @@
  {
   "page": "pt/design-remodelacao-cherkasy.html",
   "kind": "land",
-  "html_kb": 40.9,
+  "html_kb": 40.8,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -35309,7 +35309,7 @@
  {
   "page": "pt/design-remodelacao-chernihiv.html",
   "kind": "land",
-  "html_kb": 41.2,
+  "html_kb": 41.1,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -35340,7 +35340,7 @@
  {
   "page": "pt/design-remodelacao-chernivtsi.html",
   "kind": "land",
-  "html_kb": 41.2,
+  "html_kb": 41.1,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -35495,7 +35495,7 @@
  {
   "page": "pt/design-remodelacao-ivano-frankivsk.html",
   "kind": "land",
-  "html_kb": 41.6,
+  "html_kb": 41.5,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -35526,7 +35526,7 @@
  {
   "page": "pt/design-remodelacao-jitomir.html",
   "kind": "land",
-  "html_kb": 41.0,
+  "html_kb": 40.8,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -35557,7 +35557,7 @@
  {
   "page": "pt/design-remodelacao-khmelnytskyi.html",
   "kind": "land",
-  "html_kb": 41.2,
+  "html_kb": 41.1,
   "gzip_kb": 11.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -35588,7 +35588,7 @@
  {
   "page": "pt/design-remodelacao-kropyvnytskyi.html",
   "kind": "land",
-  "html_kb": 41.4,
+  "html_kb": 41.2,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -35650,7 +35650,7 @@
  {
   "page": "pt/design-remodelacao-lutsk.html",
   "kind": "land",
-  "html_kb": 40.7,
+  "html_kb": 40.5,
   "gzip_kb": 11.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -35805,7 +35805,7 @@
  {
   "page": "pt/design-remodelacao-poltava.html",
   "kind": "land",
-  "html_kb": 41.1,
+  "html_kb": 41.0,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -35867,8 +35867,8 @@
  {
   "page": "pt/design-remodelacao-rivne.html",
   "kind": "land",
-  "html_kb": 40.9,
-  "gzip_kb": 11.3,
+  "html_kb": 40.8,
+  "gzip_kb": 11.2,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -35898,7 +35898,7 @@
  {
   "page": "pt/design-remodelacao-ternopil.html",
   "kind": "land",
-  "html_kb": 41.0,
+  "html_kb": 40.9,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -35960,7 +35960,7 @@
  {
   "page": "pt/design-remodelacao-uzhhorod.html",
   "kind": "land",
-  "html_kb": 41.3,
+  "html_kb": 41.2,
   "gzip_kb": 11.4,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -36022,7 +36022,7 @@
  {
   "page": "pt/design-remodelacao-vinnytsia.html",
   "kind": "land",
-  "html_kb": 41.1,
+  "html_kb": 41.0,
   "gzip_kb": 11.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
