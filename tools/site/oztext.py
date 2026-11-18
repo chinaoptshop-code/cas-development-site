@@ -10,7 +10,8 @@ chrome.apply() → hide() на кожній збірці, тож OZDOBA_PUBLIC =
   (<details> і Question у JSON-LD FAQPage);
 • атрибути (alt, title, aria-label, content, data-xs), <title> і JSON-LD — ті самі правила (тег/блок — у маркері ozt);
 • text(s, lang) — те саме для рядка (blog/light.py: рядок «Ціни:» у «Коротко»).
-Перевірка: `python3 tools/site/oztext.py --check` (у зібраних сторінках, крім /ozdoba* і /kabinet, немає назви й мінімуму),
+Перевірка: `python3 tools/site/oztext.py --check` (у зібраних сторінках, крім /ozdoba* і /kabinet, немає назви, мінімуму $10 000 /
+10 шт, теми «мінімальне замовлення» статей про меблі з Китаю й живих посилань на /ozdoba; суми-розрахунки «40 м² × $250 = $10 000» — не мінімум),
 `--dry` — що змінюється.
 """
 import base64
@@ -23,11 +24,37 @@ import sys
 
 NB, NN = '\u00a0', '\u202f'
 
-# Назва бренду (не «оздоблення», «оздоблювальні»)
-BRAND = re.compile(r'Оздоб(?!лен|лю|ле)|Ozdoba|奥兹多巴|أوزدوبا')
-# Мінімальне замовлення Оздоби: $10 000 / $10,000 / 460 000 ₴ (не $110 000)
-MIN = re.compile(r'(?<![\d,.])\$10[ ,]000(?![\d,])|(?<![\d,.])10[ ,]000 ?\$(?![\d,])|(?<![\d])460 000 ?₴|₴ ?460 000')
-TRIG = re.compile(BRAND.pattern + '|' + MIN.pattern)
+# Назва бренду (не «оздоблення», «оздоблювальні»; pl — відмінки «Ozdobę/Ozdobie/Ozdobą», не «ozdobny»)
+BRAND = re.compile(r'Оздоб(?!лен|лю|ле)|Ozdob(?:a|ą|ę|y|ie|o)(?![a-ząćęłńóśźż])|奥兹多巴|أوزدوبا')
+# Мінімальне замовлення Оздоби: $10 000 / $10,000 / 460 000 ₴ (не $110 000 і не $10 000 000; кома/крапка після суми — так)
+MIN = re.compile(r'(?<![\d,.])\$10[ ,]000(?!\d|[ ,.]\d)|(?<![\d,.])10[ ,]000 ?\$(?![\d,])|(?<![\d])460 000 ?₴|₴ ?460 000')
+# Мінімум 10 шт кожної позиції (лише з «мінімум/від/менше…» перед числом)
+MIN10 = re.compile(r'(?:[Мм]інімум|[Мм]инимум|менше|меньше|від|от|[Mm]inimum(?: of)?|at least|fewer than|less than|mindestens|weniger als|'
+                   r'co najmniej|mniej niż|mínimo(?: de)?|menos de|au moins|moins de|至少|少于|最少|لا يقل عن|أقل من) '
+                   r'10 ?(?:шт|штук|одиниц|единиц|pcs|pieces|units|Stück|sztuk|szt|unidades|uds|unités|pièces|peças|件|قطع)')
+# «Мінімальне замовлення» як тема розділу/опису статті про меблі з Китаю (не «мінімальне замовлення $2 500» дизайну)
+MINW = re.compile(r'[Мм]інімальне замовлення(?:,| й| і) (?:строки|кількість)|[Мм]инимальный заказ(?:,| и) (?:сроки|количество)|'
+                  r'[Mm]inimum order, delivery|[Mm]inimalne zamówienie, terminy')
+# Сума після площі чи «=» — розрахунок («40 м² × $250 = $10 000», «40 м² — від $10 000»), не мінімум Оздоби
+_CALC = re.compile(r'(?:\d ?(?:м²|m²|م²)[^$.;]{0,30}|= ?)$')
+_TRIG = re.compile('(?P<b>' + BRAND.pattern + ')|(?P<m>' + MIN.pattern + ')|' + MIN10.pattern + '|' + MINW.pattern)
+
+
+class _Trig:
+    """Назва бренду, мінімум ($10 000 / 10 шт) або тема «мінімальне замовлення» — без сум-розрахунків меблювання."""
+    pattern = _TRIG.pattern
+
+    def finditer(self, t):
+        for m in _TRIG.finditer(t):
+            if m.group('m') and _CALC.search(t[max(0, m.start() - 45):m.start()]):
+                continue
+            yield m
+
+    def search(self, t):
+        return next(self.finditer(t), None)
+
+
+TRIG = _Trig()
 
 P = '[-]'  # місце вбудованого тегу (<a>, <b>, маркер ozh) у тексті шматка
 
@@ -71,6 +98,15 @@ PT = 'diretamente de fábricas na China'
 # Спершу — мінімальне замовлення (фрази, потім цілі речення), далі — фрази з назвою бренду, наприкінці — повтори.
 RULES = {
     'uk': COMMON + _r(
+        # меблі для офісу / комплектація з Китаю: мінімум $10 000 і 10 шт, тема «мінімальне замовлення» (18.11.2026)
+        (r'^Поштучно не продаємо: мінімальне замовлення — від \$10 000, мінімум 10 шт кожної позиції\..*$',
+         'Меблі виготовляють на фабриках партіями під проєкт: кількість кожної позиції фіксуємо в специфікації, а менеджер підтверджує ціну й строк.'),
+        (r'^Мінімальне замовлення і кількість$', 'Кількість і специфікація'),
+        (r', мінімальне замовлення й строки', ' і строки'),
+        (r'^Мінімальне замовлення — від \$10 000, мінімум 10 штук кожної позиції, поставка', f'Замовляємо {UA}, поставка'),
+        (r' — замовлення від \$10 000, мінімум 10 шт кожної позиції(?=[.;]|$)', ''),
+        (r' — можливі від 10 штук кожної позиції', ' — можливі'),
+        (r'[Яя]кщо[^.]*?менше 10 шт', None),
         (r'⌂(?:Мінімальн\w* замовлення|У (?:нашому )?каталозі «?Оздоба»? мінімальне|Так, мінімальне замовлення)[^.]*?\$10 000', None),
         (r'⌂Умови прості:', None),
         (r'Мінімальне замовлення, (строки|терміни)', lambda m: m.group(1).capitalize()),
@@ -133,6 +169,15 @@ RULES = {
         (r'([.!?] |^)' + UA, lambda m: m.group(1) + UA[0].upper() + UA[1:]),
     ),
     'ru': COMMON + _r(
+        (r'^Поштучно не продаём: минимальный заказ — от \$10 000, минимум 10 шт каждой позиции\..*$',
+         'Мебель изготавливают на фабриках партиями под проект: количество каждой позиции фиксируем в спецификации, а менеджер подтверждает цену и срок.'),
+        (r'^Минимальный заказ и количество$', 'Количество и спецификация'),
+        (r', минимальный заказ и сроки', ' и сроки'),
+        (r'^Минимальный заказ — от \$10 000, минимум 10 штук каждой позиции, поставка', f'Заказываем {RU}, поставка'),
+        (r' — заказ от \$10 000, минимум 10 шт каждой позиции(?=[.;]|$)', ''),
+        (r' — возможна от 10 штук каждой позиции', ' — возможна'),
+        (r'[Ее]сли[^.]*?меньше 10 шт', None),
+        (r'^Минимальный заказ, (сроки и оплата)$', lambda m: m.group(1).capitalize()),
         (r'^Да\. В каталоге «?Оздоба»? минимальный заказ от \$10 000, поштучно не продаём\.$', f'Да, {RU}.'),
         (r'⌂(?:Минимальн\w* заказ|В (?:нашем )?каталоге «?Оздоба»? минимальный|Да, минимальный заказ|Да\. В каталоге «?Оздоба»? минимальный)[^.]*?\$10 000|⌂От \$10 000', None),
         (r'⌂(?:Поштучно|Условия простые:)', None),
@@ -200,6 +245,8 @@ RULES = {
         (r'([.!?] |^)' + RU, lambda m: m.group(1) + RU[0].upper() + RU[1:]),
     ),
     'en': COMMON + _r(
+        (r'^Minimum order, (delivery times and payment)$', lambda m: m.group(1).capitalize()),
+        (r', minimum order, (?=delivery times)', ', '),
         (r'^furniture from China: orders from \$10,000$', f'furniture {EN}'),
         (r'directly from China through the (ⓟ?)Ozdoba catalogue(ⓟ?)', r'\1directly from factories in China\2'),
         (r'⌂(?:(?:The )?[Mm]inimum order|In our catalogue, Ozdoba \(in Ukrainian\), the minimum|Our minimum order|From \$10,000|Yes\. The minimum order|Minimum order)[^.]*?\$10,000', None),
@@ -237,6 +284,10 @@ RULES = {
         (r'directly ' + EN, EN), (EN + ' ' + EN, EN), (EN + ', made to order at factories in China', EN + ', made to order'),
     ),
     'pl': COMMON + _r(
+        (r'^Minimalne zamówienie, (terminy dostawy i płatność)$', lambda m: m.group(1).capitalize()),
+        (r', minimalne zamówienie, (?=terminy dostawy)', ', '),
+        (r'z Chin przez Ozdobę', PL),
+        (r'przez Ozdobę', PL),
         (r'^wyposażenie z Chin od \$10 000$', f'wyposażenie {PL}'),
         (r'bezpośrednio z Chin przez (ⓟ?)katalog Ozdoba(ⓟ?)', r'\1bezpośrednio z fabryk w Chinach\2'),
         (r' ?\(ⓟ?opis po polskuⓟ?, katalog \(po ukraińsku\)\)', ''),
@@ -558,13 +609,13 @@ def hide(s, lang):
 
 
 def leftovers(s):
-    """Назва бренду або мінімальне замовлення у видимому тексті, атрибутах, <title> і JSON-LD (без маркерів ozt/ozh)."""
+    """Назва бренду, мінімальне замовлення ($10 000, 10 шт) чи живе посилання на /ozdoba у видимому тексті, атрибутах, <title> і JSON-LD (без маркерів ozt/ozh)."""
     s = re.sub(r'<!--.*?-->', '', s, flags=re.S)
+    out = ['посилання ' + h for h in re.findall(r'\shref="((?:https://cas-develop\.com)?/(?:[a-z]{2}/)?ozdoba(?:[/?#][^"]*)?)"', s)]
     s = re.sub(r'<script(?! type="application/ld\+json")\b.*?</script>|<style\b.*?</style>', '', s, flags=re.S)
     s = re.sub(r'<b data-est="[^"]*">[^<]*</b>', '', s)  # меблювання 40 м² × $250 = $10 000 — не мінімум Оздоби
     s = re.sub(r'\s(?:href|src|srcset|id|class|data-[\w-]+)="[^"]*"', ' ', s)
     s = re.sub(r'(?<![\w/])#ozdoba\b|/ozdoba\b', '', s)
-    out = []
     for m in TRIG.finditer(norm(_html.unescape(s))):
         a = norm(_html.unescape(s))
         out.append(a[max(0, m.start() - 70):m.end() + 50].replace('\n', ' '))
