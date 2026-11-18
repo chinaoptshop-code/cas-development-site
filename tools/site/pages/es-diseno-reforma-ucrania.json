@@ -170,7 +170,7 @@
   ],
   [
    "/es/portfolio",
-   "Консультація (портфоліо)"
+   "Portfolio"
   ]
  ],
  "area": [
@@ -178,5 +178,31 @@
    "@type": "Country",
    "name": "Ucrania"
   }
+ ],
+ "places": [
+  "Regiones y ciudades con página propia",
+  "Vivienda local, logística y proyectos típicos:",
+  [
+   {
+    "h": "Región de Kiev",
+    "href": "/es/diseno-reforma-region-kiev",
+    "p": "Irpin, Bucha, Brovary, Boryspil y otras ciudades, con precios de Kiev."
+   },
+   {
+    "h": "Leópolis",
+    "href": "/es/diseno-reforma-leopolis",
+    "p": "Edificios históricos, obra nueva y casas en las afueras."
+   },
+   {
+    "h": "Odesa",
+    "href": "/es/diseno-reforma-odesa",
+    "p": "Centro histórico, torres frente al mar y casas en la costa."
+   },
+   {
+    "h": "Dnipró",
+    "href": "/es/diseno-reforma-dnipro",
+    "p": "Obra nueva junto al río, pisos estalinistas, casas y oficinas."
+   }
+  ]
  ]
 }

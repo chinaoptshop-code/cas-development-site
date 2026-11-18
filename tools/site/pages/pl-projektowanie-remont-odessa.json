@@ -1,0 +1,187 @@
+{
+ "slug": "projektowanie-remont-odessa",
+ "lang": "pl",
+ "service": "Projektowanie wnętrz, remont i budowa pod klucz w Odessie",
+ "title": "Projektowanie wnętrz w Odessie — remont i budowa pod klucz | CAS",
+ "description": "Projektowanie wnętrz w Odessie: mieszkania w zabytkowym centrum i wieżowcach nad morzem, domy na wybrzeżu. Projekt od $30/m², remont od $550/m².",
+ "h1": "Projektowanie wnętrz, remont i budowa pod klucz w Odessie",
+ "price": "remont od $550/m² · projekt od $30/m² · dom od $600/m²",
+ "lead": "Projektowanie wnętrz w Odessie — dla mieszkań w XIX-wiecznych kamienicach centrum, wieżowców w Arkadii i przy drogach Fontańskich oraz domów nad morzem. Projekt prowadzimy zdalnie lub z dojazdem, remont i budowę — naszym zespołem na indywidualnych warunkach.",
+ "parent": [
+  "/pl/projektowanie-remont-ukraina",
+  "Cała Ukraina"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Odessa",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Obwód odeski"
+   }
+  }
+ ],
+ "near": [
+  "W pobliżu: inne miasta",
+  [
+   [
+    "/pl/projektowanie-remont-lwow",
+    "Lwów"
+   ],
+   [
+    "/pl/projektowanie-remont-dniepr",
+    "Dniepr"
+   ],
+   [
+    "/pl/projektowanie-remont-obwod-kijowski",
+    "Obwód kijowski"
+   ],
+   [
+    "/pl/projektowanie-remont-ukraina",
+    "Wszystkie miasta Ukrainy"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Projekt wnętrz",
+   [
+    "pomiary i układ funkcjonalny",
+    "wizualizacje 3D i rysunki wykonawcze",
+    "specyfikacja materiałów i mebli",
+    "nadzór autorski"
+   ]
+  ],
+  [
+   "Remont pod klucz",
+   [
+    "mieszkania z rynku pierwotnego i wtórnego",
+    "domy i domy letniskowe",
+    "robocizna i materiały podstawowe od $550/m²",
+    "kosztorys przed startem prac"
+   ]
+  ],
+  [
+   "Budowa domu",
+   [
+    "projekt architektoniczny od $12/m²",
+    "stan surowy od $600/m²",
+    "pod klucz z wykończeniem od $1 100/m²",
+    "instalacje i dach"
+   ]
+  ],
+  [
+   "Meble i wyposażenie",
+   [
+    "umeblowanie od $250/m²",
+    "kuchnie i szafy na wymiar",
+    "meble i oświetlenie prosto z Chin",
+    "końcowa stylizacja"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Odessa: zabytkowe centrum, wieżowce nad morzem i domy na wybrzeżu",
+   [
+    "W centrum Odessy stoją XIX-wieczne kamienice z wysokimi sufitami, wewnętrznymi podwórzami i ścianami z miejscowego wapienia muszlowego. Nad morzem, w Arkadii i przy drogach Fontańskich, — nowoczesne wieżowce z panoramicznymi oknami, a wzdłuż wybrzeża — domy prywatne i letniskowe.",
+    "Morskie powietrze i wilgoć to główne wyzwanie dla wnętrza: działają na drewno, metal i tynk. W projekcie dobieramy materiały i okucia odporne na takie warunki, a wentylację i hydroizolację planujemy tam, gdzie to kluczowe."
+   ]
+  ],
+  [
+   "Projektowanie wnętrz w Odessie",
+   [
+    "W mieszkaniach z widokiem na morze wnętrze budujemy wokół panoramy: minimum ścianek w salonie, jasne naturalne materiały, tarasy. W starej zabudowie — przywrócenie wysokości sufitów, sztukaterii i parkietu razem z nowoczesną kuchnią i łazienką. Cena — od $30 za m² (minimum $2 500), pakiety — na stronie [projektant wnętrz](/pl/projektant-wnetrz)."
+   ]
+  ],
+  [
+   "Remont pod klucz i budowa domu",
+   [
+    "Remont w budynkach z wapienia muszlowego zaczynamy od oceny ścian i wilgoci, w nowych budynkach — od odbioru prac deweloperskich. Pracuje nasz etatowy zespół, zakres i harmonogram płatności są w umowie: od $550 za m², dojazd zespołu — na warunkach indywidualnych.",
+    "Na wybrzeżu pod Odessą budujemy domy z uwzględnieniem gruntu i wiatru: fundament — według danych z działki, elewacje i dach — z materiałów odpornych na wilgoć i sól. Wille z basenami i tarasami, jak nasze projekty Smart Villa czy Dubai Villa, pasują tu szczególnie dobrze. Stan surowy — od $600 za m², pod klucz — od $1 100 za m²."
+   ]
+  ],
+  [
+   "Logistyka, kontrola i raporty",
+   [
+    "Odessa leży daleko od Kijowa, więc pracujemy tak: projekt i uzgodnienia — online, pomiary i kluczowe etapy — z dojazdem, pomiędzy nimi — raporty zdjęciowe. Warunki i koszt dojazdów oraz zakwaterowania zespołu — indywidualnie, w umowie."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1IWgqOm6pY2p34-900.webp",
+   "Dubai Villa"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1jLCsJh1mIO_wX-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/18Gq2eFZpz_4sf-900.webp",
+   "Yacht VIP"
+  ]
+ ],
+ "steps": [
+  [
+   "Konsultacja",
+   "Telefonicznie lub online: obiekt, zadania, budżet."
+  ],
+  [
+   "Pomiar i brief",
+   "Pomiary, oczekiwania, dane wyjściowe."
+  ],
+  [
+   "Projekt i kosztorys",
+   "Wnętrze lub architektura; cena i harmonogram w umowie."
+  ],
+  [
+   "Prace",
+   "Remont lub budowa z raportami zdjęciowymi."
+  ],
+  [
+   "Odbiór",
+   "Protokół i 12 miesięcy gwarancji na prace."
+  ]
+ ],
+ "faq": [
+  [
+   "Czy robicie projekt dla Odessy zdalnie?",
+   "Tak: spotkania online, 3D i rysunki w wersji elektronicznej. Pomiary — z dojazdem lub w uzgodnionym formacie. Projekt od $30 za m², minimum $2 500."
+  ],
+  [
+   "Jakie materiały dobieracie do domu nad morzem?",
+   "Odporne na wilgoć i sól: gres, kamień, systemy elewacyjne i okucia do takich warunków; drewno — tylko tam, gdzie jest osłonięte."
+  ],
+  [
+   "Ile kosztuje dom pod klucz pod Odessą?",
+   "Stan surowy — od $600 za m², pod klucz z wykończeniem — od $1 100 za m². Logistyka i dojazd zespołu — warunki i koszt indywidualnie."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-domu",
+   "Remont domu pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów remontu"
+  ],
+  [
+   "/pl/umowa-gwarancja-platnosc",
+   "Umowa, gwarancja, płatność (wzór umowy)"
+  ],
+  [
+   "/pl/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

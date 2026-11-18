@@ -170,7 +170,7 @@
   ],
   [
    "/zh/portfolio",
-   "Консультація (портфоліо)"
+   "作品集"
   ]
  ],
  "area": [
@@ -178,5 +178,31 @@
    "@type": "Country",
    "name": "乌克兰"
   }
+ ],
+ "places": [
+  "设有专页的地区和城市",
+  "当地住房、物流与典型项目：",
+  [
+   {
+    "h": "基辅州",
+    "href": "/zh/design-renovation-kyiv-region",
+    "p": "伊尔平、布查、布罗瓦里、鲍里斯波尔等城市——价格与基辅相同。"
+   },
+   {
+    "h": "利沃夫",
+    "href": "/zh/design-renovation-lviv",
+    "p": "历史建筑、新楼盘和城郊住宅。"
+   },
+   {
+    "h": "敖德萨",
+    "href": "/zh/design-renovation-odesa",
+    "p": "历史中心、海滨高层和沿海住宅。"
+   },
+   {
+    "h": "第聂伯",
+    "href": "/zh/design-renovation-dnipro",
+    "p": "河滨新楼盘、斯大林式建筑、住宅和办公室。"
+   }
+  ]
  ]
 }

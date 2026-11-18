@@ -1,0 +1,187 @@
+{
+ "slug": "design-renovation-odesa",
+ "lang": "en",
+ "service": "Turnkey interior design, renovation and construction in Odesa",
+ "title": "Interior design in Odesa — renovation and construction | CAS",
+ "description": "Interior design in Odesa: apartments in the historic centre and seaside high-rises, houses by the sea. Design from $30/m², renovation from $550/m².",
+ "h1": "Turnkey interior design, renovation and construction in Odesa",
+ "price": "renovation from $550/m² · design from $30/m² · house from $600/m²",
+ "lead": "Interior design in Odesa for apartments in 19th-century buildings in the centre, high-rises in Arcadia and along the Fontan roads, and private houses by the sea. We run the project remotely or with site visits; renovation and construction are done by our team on individual terms.",
+ "parent": [
+  "/en/design-renovation-ukraine",
+  "Across Ukraine"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Odesa",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Odesa Oblast"
+   }
+  }
+ ],
+ "near": [
+  "Nearby: other cities",
+  [
+   [
+    "/en/design-renovation-lviv",
+    "Lviv"
+   ],
+   [
+    "/en/design-renovation-dnipro",
+    "Dnipro"
+   ],
+   [
+    "/en/design-renovation-kyiv-region",
+    "Kyiv region"
+   ],
+   [
+    "/en/design-renovation-ukraine",
+    "All cities in Ukraine"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Interior design",
+   [
+    "measurements and layout",
+    "3D visualisations and working drawings",
+    "materials and furniture specification",
+    "designer supervision"
+   ]
+  ],
+  [
+   "Turnkey renovation",
+   [
+    "new-build and resale apartments",
+    "houses and cottages",
+    "works and rough materials from $550/m²",
+    "estimate before work starts"
+   ]
+  ],
+  [
+   "House construction",
+   [
+    "architectural design from $12/m²",
+    "shell from $600/m²",
+    "turnkey with finishing from $1,100/m²",
+    "utilities and roofing"
+   ]
+  ],
+  [
+   "Furniture and procurement",
+   [
+    "furnishing from $250/m²",
+    "custom kitchens and wardrobes",
+    "furniture and lighting direct from China",
+    "final styling"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Odesa: the historic centre, seaside high-rises and coastal houses",
+   [
+    "Central Odesa has 19th-century buildings with high ceilings, inner courtyards and walls of local shell limestone. By the sea, in Arcadia and along the Fontan roads, there are modern high-rises with panoramic windows, and along the coast — private houses and summer homes.",
+    "Sea air and humidity are the main challenge for an interior: they affect wood, metal and plaster. In the project we choose materials and hardware that withstand these conditions and plan ventilation and waterproofing where it matters."
+   ]
+  ],
+  [
+   "Interior design in Odesa",
+   [
+    "For apartments with a sea view we build the interior around the panorama: few partitions in the living room, light natural materials, terraces. In older buildings we restore ceiling heights, stucco and parquet alongside a modern kitchen and bathroom. From $30 per m² (minimum $2,500); packages are on the [interior designer](/en/interior-designer) page."
+   ]
+  ],
+  [
+   "Turnkey renovation and house construction",
+   [
+    "In shell-limestone buildings we start by assessing the walls and damp; in new builds, by accepting the rough works. Our salaried team does the work, and the scope and payment schedule are set in the contract: from $550 per m², team travel on individual terms.",
+    "On the coast near Odesa we build houses with soil and wind in mind: the foundation follows the site survey data, façades and roofs use materials resistant to moisture and salt. Villas with pools and terraces, like our Smart Villa or Dubai Villa projects, fit especially well here. Shell from $600 per m², turnkey from $1,100 per m²."
+   ]
+  ],
+  [
+   "Logistics, control and reports",
+   [
+    "Odesa is far from Kyiv, so we work like this: design and approvals online, measurements and key stages with site visits, photo reports in between. Terms and costs of travel and team accommodation are individual and set in the contract."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1IWgqOm6pY2p34-900.webp",
+   "Dubai Villa"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1jLCsJh1mIO_wX-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/18Gq2eFZpz_4sf-900.webp",
+   "Yacht VIP"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "By phone or online: property, goals, budget."
+  ],
+  [
+   "Survey and brief",
+   "Measurements, wishes, initial data."
+  ],
+  [
+   "Design and estimate",
+   "Interior or architecture; price and schedule in the contract."
+  ],
+  [
+   "Works",
+   "Renovation or construction with photo reports."
+  ],
+  [
+   "Handover",
+   "Certificate, 12-month warranty on works."
+  ]
+ ],
+ "faq": [
+  [
+   "Do you do design projects for Odesa remotely?",
+   "Yes: online meetings, 3D and drawings in digital form. Measurements on a site visit or in an agreed format. Design from $30 per m², minimum $2,500."
+  ],
+  [
+   "Which materials do you choose for a house by the sea?",
+   "Ones that resist moisture and salt: porcelain stoneware, stone, façade systems and hardware made for these conditions; wood only where it is protected."
+  ],
+  [
+   "How much does a turnkey house near Odesa cost?",
+   "Shell from $600 per m², turnkey with finishing from $1,100 per m². Logistics and team travel are priced individually."
+  ]
+ ],
+ "rel": [
+  [
+   "/en/house-renovation",
+   "Turnkey house renovation"
+  ],
+  [
+   "/en/turnkey-procurement",
+   "Turnkey interior procurement"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Renovation cost calculator"
+  ],
+  [
+   "/en/contract-warranty-payment",
+   "Contract, warranty, payment (sample contract)"
+  ],
+  [
+   "/en/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

@@ -1,0 +1,284 @@
+{
+ "slugs": {
+  "hub": "design-renovation-kyiv-region",
+  "lviv": "design-renovation-lviv",
+  "odesa": "design-renovation-odesa",
+  "dnipro": "design-renovation-dnipro"
+ },
+ "portfolio": "Portfolio",
+ "ua": "Design and renovation across Ukraine",
+ "ua_short": "Across Ukraine",
+ "eu": "Renovation and construction in Europe",
+ "all": "All cities in Ukraine",
+ "other": "Other regions",
+ "near": "Nearby: other cities",
+ "hub": {
+  "area": "Kyiv region",
+  "service": "Turnkey design, renovation and construction in the Kyiv region",
+  "title": "Turnkey renovation in the Kyiv region — design and houses | CAS",
+  "description": "Turnkey renovation, interior design and house construction across the Kyiv region: Irpin, Bucha, Brovary, Boryspil, Bila Tserkva. Own team, Kyiv prices.",
+  "h1": "Turnkey design, renovation and construction in the Kyiv region",
+  "lead": "Turnkey renovation in the Kyiv region: apartments in suburban new builds, private houses and cottages, houses built from the ground up. In the towns and villages around Kyiv we work with the same salaried team and at the same rates as in Kyiv.",
+  "places": [
+   "Towns of the Kyiv region where we work",
+   "Each town has its own housing, logistics and typical tasks:"
+  ],
+  "towns": [
+   [
+    "Irpin",
+    "New residential complexes, townhouses and houses among the pines; restoring homes."
+   ],
+   [
+    "Bucha",
+    "Cottages and low-rise complexes for year-round life outside the city."
+   ],
+   [
+    "Hostomel",
+    "Private houses, rebuilding old homesteads, houses from scratch."
+   ],
+   [
+    "Vyshneve",
+    "New builds right next to Kyiv — renovation to capital-city standards."
+   ],
+   [
+    "Boiarka",
+    "A forest suburb: houses, dachas converted for year-round living, timber."
+   ],
+   [
+    "Brovary",
+    "The left bank: panel blocks, new builds, cottages and offices."
+   ],
+   [
+    "Boryspil",
+    "Houses along the highway: Hora, Shchaslyve, Velyka Oleksandrivka."
+   ],
+   [
+    "Vyshhorod",
+    "By the Dnipro and the Kyiv Sea; Petrivtsi House, 320 m²."
+   ],
+   [
+    "Obukhiv",
+    "Obukhiv, Ukrainka, Trypillia — country houses above the Dnipro."
+   ],
+   [
+    "Vasylkiv",
+    "An old town on the Stuhna: timber-frame and modular houses."
+   ],
+   [
+    "Fastiv",
+    "Rebuilding family houses and renovating older housing stock."
+   ],
+   [
+    "Bila Tserkva",
+    "The region's largest city: apartments, houses, commercial premises."
+   ]
+  ],
+  "koncha": [
+   "Koncha-Zaspa, Kozyn, Pushcha-Vodytsia",
+   "Turnkey country houses and residences."
+  ],
+  "about": [
+   [
+    "The Kyiv region by direction",
+    [
+     "West — Irpin, Bucha, Hostomel: new residential complexes, townhouses and houses in the forest. South-west — Vyshneve, Boiarka, Fastiv: new builds on the Kyiv border and a large private housing sector. South — Vasylkiv, Obukhiv, Bila Tserkva: family homesteads, houses above the Dnipro and a large city with its own housing market.",
+     "East — Brovary and Boryspil: the left bank, flat plots and cottage communities along the highways. North — Vyshhorod and Petrivtsi by the Kyiv Sea, where we designed Petrivtsi House, 320 m². And separately, country residences in Koncha-Zaspa, Kozyn and Pushcha-Vodytsia."
+    ]
+   ],
+   [
+    "Prices in the region are the same as in Kyiv",
+    [
+     "Design project from $30 per m² (minimum $2,500), turnkey renovation from $550 per m² (works and rough materials), house shell from $600 per m², turnkey house with finishing from $1,100 per m², furnishing from $250 per m².",
+     "If CAS carries out the renovation, the final total stays within ±5% of the estimate. Site measurement is paid, priced individually; phone consultations are free. Details are on the [turnkey renovation]({/remont-pid-klyuch-kyiv}) and [house construction]({/budivnytstvo-budynkiv-kyiv}) pages."
+    ]
+   ],
+   [
+    "How we manage projects outside the city",
+    [
+     "Site managers run projects by area, so a house in Bucha or Brovary gets as much attention as an apartment in Pechersk. Photo reports every 1–2 weeks, an online camera on site 24/7 for an extra fee, and a 12-month warranty on works."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Which towns in the Kyiv region do you work in?",
+    "Irpin, Bucha, Hostomel, Vyshneve, Boiarka, Brovary, Boryspil, Vyshhorod, Obukhiv, Vasylkiv, Fastiv, Bila Tserkva, and the villages and cottage communities around them."
+   ],
+   [
+    "Is renovation in the region more expensive than in Kyiv?",
+    "The base rates are the same: renovation from $550 per m², design from $30 per m², construction from $600 per m²."
+   ],
+   [
+    "Who works on projects in the region?",
+    "Our own salaried team, covering different levels of complexity and types of work — the same team as in Kyiv."
+   ],
+   [
+    "Do you build houses from scratch in the region?",
+    "Yes: architectural design from $12 per m², shell from $600 per m², turnkey with finishing from $1,100 per m²."
+   ]
+  ]
+ },
+ "lviv": {
+  "name": "Lviv",
+  "region": "Lviv Oblast",
+  "service": "Turnkey interior design, renovation and construction in Lviv",
+  "title": "Interior design in Lviv — renovation and construction | CAS",
+  "description": "Interior design in Lviv, remotely or on site: design from $30/m², renovation from $550/m², houses from $600/m². Historic townhouses, new builds, houses.",
+  "h1": "Turnkey interior design, renovation and construction in Lviv",
+  "lead": "Interior design in Lviv for apartments in Austrian-era townhouses, new residential complexes and private houses outside the city. We do the design project remotely or with site visits; renovation and construction are carried out by CAS's own team on terms agreed individually.",
+  "about": [
+   [
+    "Lviv: historic townhouses, pre-war housing and new builds",
+    [
+     "Housing in Lviv is very varied. The historic centre has Austrian and Polish-era townhouses with high ceilings, timber floors, stucco and tiled stoves; Sykhiv and Levandivka have panel-block estates; the outskirts and suburbs have new residential complexes and cottages.",
+     "An apartment in a historic townhouse needs special care: floor structures, damp walls, old chimneys and limits on alterations in listed buildings. We build this into the project, keeping valuable details such as stucco or parquet and hiding new services so they do not clash with the building's history."
+    ]
+   ],
+   [
+    "Interior design in Lviv",
+    [
+     "In Lviv townhouses the typical brief is a modern interior where you can still feel the building: restored doors, tall windows, light on several levels. In new builds it is a functional layout and storage; in houses near Lviv, a fireplace, a terrace and a view of the garden. From $30 per m² (minimum $2,500); packages are on the [interior design studio]({/dyzain-interieru-kyiv}) page."
+    ]
+   ],
+   [
+    "Turnkey renovation and house construction",
+    [
+     "In a townhouse we start with a survey of floors and walls; in a new build, with a check of the developer's rough works. The scope, schedule and payments are fixed in the contract, and the works are carried out by our salaried team: from $550 per m², team travel on individual terms.",
+     "Near Lviv we build brick, aerated-block, timber-frame and log houses designed for the damp climate: reliable foundation waterproofing, ventilated façades and a quality roof. Shell from $600 per m², turnkey from $1,100 per m²."
+    ]
+   ],
+   [
+    "Logistics, control and reports",
+    [
+     "Lviv projects work well in stages: the design is run online, and we travel for measurements, key renovation stages and handover. Travel terms and costs are individual and fixed in the contract. Furniture and lighting from China (delivery 35–70 days) are shipped to the site, with delivery priced separately."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Can I order a design project for Lviv remotely?",
+    "Yes. The concept, 3D and drawings are agreed online; measurements are taken on a site visit or in an agreed format. Design from $30 per m², minimum $2,500."
+   ],
+   [
+    "Do you work with apartments in historic townhouses?",
+    "Yes. The project takes into account the floor structures, damp and the restrictions on listed buildings; replanning only within what can be approved."
+   ],
+   [
+    "Do you renovate in Lviv with your own team?",
+    "Yes, renovation from $550 per m² (works and rough materials) is carried out by our salaried team. Team travel and accommodation are priced individually."
+   ]
+  ]
+ },
+ "odesa": {
+  "name": "Odesa",
+  "region": "Odesa Oblast",
+  "service": "Turnkey interior design, renovation and construction in Odesa",
+  "title": "Interior design in Odesa — renovation and construction | CAS",
+  "description": "Interior design in Odesa: apartments in the historic centre and seaside high-rises, houses by the sea. Design from $30/m², renovation from $550/m².",
+  "h1": "Turnkey interior design, renovation and construction in Odesa",
+  "lead": "Interior design in Odesa for apartments in 19th-century buildings in the centre, high-rises in Arcadia and along the Fontan roads, and private houses by the sea. We run the project remotely or with site visits; renovation and construction are done by our team on individual terms.",
+  "about": [
+   [
+    "Odesa: the historic centre, seaside high-rises and coastal houses",
+    [
+     "Central Odesa has 19th-century buildings with high ceilings, inner courtyards and walls of local shell limestone. By the sea, in Arcadia and along the Fontan roads, there are modern high-rises with panoramic windows, and along the coast — private houses and summer homes.",
+     "Sea air and humidity are the main challenge for an interior: they affect wood, metal and plaster. In the project we choose materials and hardware that withstand these conditions and plan ventilation and waterproofing where it matters."
+    ]
+   ],
+   [
+    "Interior design in Odesa",
+    [
+     "For apartments with a sea view we build the interior around the panorama: few partitions in the living room, light natural materials, terraces. In older buildings we restore ceiling heights, stucco and parquet alongside a modern kitchen and bathroom. From $30 per m² (minimum $2,500); packages are on the [interior designer]({/dyzainer-interieru-kyiv}) page."
+    ]
+   ],
+   [
+    "Turnkey renovation and house construction",
+    [
+     "In shell-limestone buildings we start by assessing the walls and damp; in new builds, by accepting the rough works. Our salaried team does the work, and the scope and payment schedule are set in the contract: from $550 per m², team travel on individual terms.",
+     "On the coast near Odesa we build houses with soil and wind in mind: the foundation follows the site survey data, façades and roofs use materials resistant to moisture and salt. Villas with pools and terraces, like our Smart Villa or Dubai Villa projects, fit especially well here. Shell from $600 per m², turnkey from $1,100 per m²."
+    ]
+   ],
+   [
+    "Logistics, control and reports",
+    [
+     "Odesa is far from Kyiv, so we work like this: design and approvals online, measurements and key stages with site visits, photo reports in between. Terms and costs of travel and team accommodation are individual and set in the contract."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Do you do design projects for Odesa remotely?",
+    "Yes: online meetings, 3D and drawings in digital form. Measurements on a site visit or in an agreed format. Design from $30 per m², minimum $2,500."
+   ],
+   [
+    "Which materials do you choose for a house by the sea?",
+    "Ones that resist moisture and salt: porcelain stoneware, stone, façade systems and hardware made for these conditions; wood only where it is protected."
+   ],
+   [
+    "How much does a turnkey house near Odesa cost?",
+    "Shell from $600 per m², turnkey with finishing from $1,100 per m². Logistics and team travel are priced individually."
+   ]
+  ]
+ },
+ "dnipro": {
+  "name": "Dnipro",
+  "region": "Dnipropetrovsk Oblast",
+  "service": "Turnkey interior design, renovation and construction in Dnipro",
+  "title": "Interior design in Dnipro — renovation and construction | CAS",
+  "description": "Interior design in Dnipro: riverside new builds, Stalin-era apartments, houses and offices. Design from $30/m², renovation from $550/m², office from $350/m².",
+  "h1": "Turnkey interior design, renovation and construction in Dnipro",
+  "lead": "Interior design in Dnipro for apartments in riverside high-rises, spacious Stalin-era flats in the centre, private houses and offices. We do the design project remotely or with site visits, and take on renovation and construction with our own team on agreed terms.",
+  "about": [
+   [
+    "Dnipro: the embankment, Stalin-era buildings and business districts",
+    [
+     "Dnipro is a city of a million people with many spacious apartments: Stalin-era buildings with high ceilings in the centre, new builds along the embankment overlooking the river, and private houses on the left bank and in the suburbs.",
+     "It is a business city, so besides homes there are often offices, showrooms and restaurants. Here our [office design]({/dyzain-ofisu-kyiv}) experience helps — for example, Office Chicago with green walls and zoning without solid partitions."
+    ]
+   ],
+   [
+    "Interior design in Dnipro",
+    [
+     "In large Dnipro apartments the design project often includes a private owners' suite with bedroom, bathroom and walk-in wardrobe, a separate guest area and a study. For riverside apartments we plan lighting scenarios and an interior that works with the river view. From $30 per m² (minimum $2,500); packages are on the [interior design cost]({/vartist-dyzainu-interieru-kyiv}) page."
+    ]
+   ],
+   [
+    "Turnkey renovation and house construction",
+    [
+     "We renovate apartments, houses and offices; offices from $350 per m² (works and rough materials). In Stalin-era buildings we plan full replacement of services and levelling of ceilings; scope and payment schedule are set in the contract. Apartments from $550 per m², team travel on individual terms.",
+     "In the suburbs of Dnipro we build aerated-block, brick and timber-frame houses, with an architectural design from $12 per m². The site plan, garage, terrace and pool go into the project from the start. Shell from $600 per m², turnkey from $1,100 per m²."
+    ]
+   ],
+   [
+    "Logistics, control and reports",
+    [
+     "We run the project online and travel for measurements and key stages on the schedule set in the contract. Terms and costs of travel and team accommodation are individual; between visits — photo reports every 1–2 weeks."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Can I order an apartment design in Dnipro without constant trips?",
+    "Yes. Most approvals happen online; we come to the site for measurements and designer supervision on schedule. Design from $30 per m², minimum $2,500."
+   ],
+   [
+    "Do you do offices in Dnipro?",
+    "Yes: office design and renovation from $350 per m² (works and rough materials). For companies registered in Ukraine, invoices with or without VAT, individually."
+   ],
+   [
+    "How much does apartment renovation in Dnipro cost?",
+    "From $550 per m² for works and rough materials; finishing materials and appliances are separate. Team travel on individual terms."
+   ]
+  ]
+ },
+ "uahub": [
+  "Regions and cities with their own pages",
+  "Local housing, logistics and typical projects:",
+  {
+   "hub": "Irpin, Bucha, Brovary, Boryspil and other towns — Kyiv prices.",
+   "lviv": "Historic townhouses, new builds and houses near the city.",
+   "odesa": "The historic centre, seaside high-rises and coastal houses.",
+   "dnipro": "Riverside new builds, Stalin-era flats, houses and offices."
+  }
+ ]
+}

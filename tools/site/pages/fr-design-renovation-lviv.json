@@ -1,0 +1,187 @@
+{
+ "slug": "design-renovation-lviv",
+ "lang": "fr",
+ "service": "Architecture d’intérieur, rénovation et construction clé en main à Lviv",
+ "title": "Architecture d’intérieur et rénovation à Lviv | CAS",
+ "description": "Architecture d’intérieur à Lviv, à distance ou sur place : design dès $30/m², rénovation dès $550/m², maison dès $600/m². Immeubles anciens, neuf, maisons.",
+ "h1": "Architecture d’intérieur, rénovation et construction clé en main à Lviv",
+ "price": "rénovation dès $550/m² · design dès $30/m² · maison dès $600/m²",
+ "lead": "Architecture d’intérieur à Lviv pour des appartements dans des immeubles de l’époque autrichienne, des résidences neuves et des maisons aux alentours. Nous réalisons le projet à distance ou avec des déplacements ; la rénovation et la construction sont confiées à l’équipe CAS, à des conditions convenues au cas par cas.",
+ "parent": [
+  "/fr/design-renovation-ukraine",
+  "Toute l’Ukraine"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Lviv",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Oblast de Lviv"
+   }
+  }
+ ],
+ "near": [
+  "À proximité : autres villes",
+  [
+   [
+    "/fr/design-renovation-odessa",
+    "Odessa"
+   ],
+   [
+    "/fr/design-renovation-dnipro",
+    "Dnipro"
+   ],
+   [
+    "/fr/design-renovation-region-kyiv",
+    "Région de Kyiv"
+   ],
+   [
+    "/fr/design-renovation-ukraine",
+    "Toutes les villes d’Ukraine"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Architecture intérieure",
+   [
+    "relevé et plan d’aménagement",
+    "visualisations 3D et plans d’exécution",
+    "descriptif des matériaux et du mobilier",
+    "suivi du concepteur"
+   ]
+  ],
+  [
+   "Rénovation clé en main",
+   [
+    "appartements neufs et anciens",
+    "maisons et cottages",
+    "travaux et matériaux de gros œuvre dès $550/m²",
+    "devis avant le début des travaux"
+   ]
+  ],
+  [
+   "Construction de maison",
+   [
+    "projet architectural dès $12/m²",
+    "gros œuvre dès $600/m²",
+    "clé en main avec finitions dès $1 100/m²",
+    "réseaux et toiture"
+   ]
+  ],
+  [
+   "Mobilier et équipement",
+   [
+    "ameublement dès $250/m²",
+    "cuisines et placards sur mesure",
+    "mobilier et luminaires en direct de Chine",
+    "stylisme final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Lviv : immeubles anciens, bâti d’avant-guerre et constructions neuves",
+   [
+    "L’habitat de Lviv est très varié. Le centre historique compte des immeubles des époques autrichienne et polonaise, avec de hauts plafonds, des planchers en bois, des moulures et des poêles en faïence ; Sykhiv et Levandivka sont des quartiers d’immeubles en panneaux ; la périphérie et les environs accueillent des résidences neuves et des maisons.",
+    "Un appartement dans un immeuble ancien demande une attention particulière : planchers, murs humides, vieux conduits de cheminée, restrictions dans les bâtiments protégés. Nous l’intégrons au projet : nous préservons les détails de valeur, comme les moulures ou le parquet, et dissimulons les nouveaux réseaux pour qu’ils ne heurtent pas l’histoire du bâtiment."
+   ]
+  ],
+  [
+   "Architecture d’intérieur à Lviv",
+   [
+    "Dans les immeubles anciens de Lviv, la demande type est un intérieur contemporain où l’on sent encore le bâtiment : portes restaurées, hautes fenêtres, éclairage sur plusieurs niveaux. Dans le neuf, un plan fonctionnel et des rangements ; dans les maisons des environs, une cheminée, une terrasse et une vue sur le jardin. À partir de $30 le m² (minimum $2 500) ; les formules sont sur la page [architecture d’intérieur](/fr/architecture-interieur)."
+   ]
+  ],
+  [
+   "Rénovation clé en main et construction de maisons",
+   [
+    "Dans un immeuble ancien, nous commençons par examiner planchers et murs ; dans le neuf, par contrôler les travaux du promoteur. Le périmètre, le calendrier et les paiements sont fixés dans le contrat, et les travaux sont réalisés par notre équipe salariée : à partir de $550 le m², déplacement de l’équipe à conditions individuelles.",
+    "Autour de Lviv, nous construisons des maisons en brique, en béton cellulaire, à ossature bois ou en bois massif, adaptées au climat humide : étanchéité soignée des fondations, façades ventilées, toiture de qualité. Gros œuvre à partir de $600 le m², clé en main à partir de $1 100 le m²."
+   ]
+  ],
+  [
+   "Logistique, suivi et rapports",
+   [
+    "Avec Lviv, nous travaillons par étapes : le projet se mène en ligne, et nous nous déplaçons pour les relevés, les étapes clés du chantier et la réception. Les conditions et le coût des déplacements sont individuels et fixés au contrat. Le mobilier et les luminaires de Chine (livraison en 35 à 70 jours) sont acheminés jusqu’au chantier ; le transport est chiffré à part."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1FRa0FI6iMHK5L-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/10NiUcZNhKMjmn-900.webp",
+   "Diamond"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "Par téléphone ou en ligne : bien, objectifs, budget."
+  ],
+  [
+   "Relevé et brief",
+   "Mesures, souhaits, données de départ."
+  ],
+  [
+   "Projet et devis",
+   "Intérieur ou architecture ; prix et planning au contrat."
+  ],
+  [
+   "Travaux",
+   "Rénovation ou construction avec reportages photo."
+  ],
+  [
+   "Livraison",
+   "Procès-verbal, garantie de 12 mois sur les travaux."
+  ]
+ ],
+ "faq": [
+  [
+   "Peut-on commander un projet de design pour Lviv à distance ?",
+   "Oui. Le concept, la 3D et les plans sont validés en ligne ; les relevés se font sur place ou selon un format convenu. Design à partir de $30 le m², minimum $2 500."
+  ],
+  [
+   "Travaillez-vous dans des immeubles historiques ?",
+   "Oui. Le projet tient compte des planchers, de l’humidité et des contraintes des bâtiments protégés ; les modifications de plan restent dans ce qui peut être autorisé."
+  ],
+  [
+   "Rénovez-vous à Lviv avec votre propre équipe ?",
+   "Oui, la rénovation à partir de $550 le m² (travaux et matériaux de base) est réalisée par notre équipe salariée. Déplacement et hébergement de l’équipe : conditions et coût individuels."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/renovation-maison-cle-en-main",
+   "Rénovation de maison clé en main"
+  ],
+  [
+   "/fr/equipement-cle-en-main",
+   "Équipement de projets clé en main"
+  ],
+  [
+   "/fr/calculateur-renovation",
+   "Calculateur du coût de rénovation"
+  ],
+  [
+   "/fr/contrat-garantie-paiement",
+   "Contrat, garantie, paiement (modèle de contrat)"
+  ],
+  [
+   "/fr/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

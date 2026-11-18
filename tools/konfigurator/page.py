@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Збирає /konfigurator (uk) і /ru/konfigurator (ru) з однієї розмітки + i18n-рядків.
+"""Збирає /konfigurator (uk), /ru/konfigurator (ru) і сторінки 8 інших мов (en, es, pl, de, fr, pt, zh, ar з RTL) з однієї розмітки + i18n-рядків.
 
   python3 tools/konfigurator/textures.py   # (разово) процедурні текстури → assets/konfigurator/tex/
   python3 tools/konfigurator/bake.py       # (після зміни масок/кадрів) фото, маски, scene.json
   python3 tools/konfigurator/page.py       # свотчі, assets/konfigurator/app.js + kf.css, konfigurator.html, ru/konfigurator.html
 
 Матеріали, кімнати, стилі — config.json; логіка сцени й інтерфейсу — kf.js; стилі — kf.css.
+Переклади мов, крім uk/ru (шлях, тексти сторінки, рядки скрипта, кімнати, зони, стилі, матеріали) — i18n.json;
+tx (рядки kf.js) усіх мов — теж там. Посилання «Від картинки — до інтерʼєру» — сторінки своєї мови з кластерів i18n.
 Сторінки проходять chrome.apply() (шапка/футер, форма — leadform.apply()) і hreflang з tools/site/lang/clusters-konfigurator.json.
 Спільні файли підключаються з ?v=<хеш вмісту> (у /assets/* кеш на рік).
 """
@@ -29,6 +31,35 @@ def _chrome_apply(s, rel):
 CFG = json.load(open(os.path.join(HERE, 'config.json'), encoding='utf-8'))
 SCENE = json.load(open(os.path.join(HERE, 'scene.json'), encoding='utf-8'))
 B = 'https://cas-develop.com'
+L10N = json.load(open(os.path.join(HERE, 'i18n.json'), encoding='utf-8'))
+
+
+def _cl(cid, lang):
+    return i18n.clusters()[cid][lang]
+
+
+def _extend():
+    """Мови з i18n.json: назви в CFG (мова → ключ, як uk/ru) і словник сторінки в T."""
+    for lang, d in L10N.items():
+        if lang.startswith('_') or 'page' not in d:
+            continue
+        for mid, nm in d['mat'].items():
+            CFG['mat'][mid][lang] = nm
+        for r, (nm, alt) in d['rooms'].items():
+            CFG['rooms'][r][lang] = nm
+            CFG['rooms'][r]['alt_' + lang] = alt
+            for z, zz in CFG['rooms'][r]['zones'].items():
+                zz[lang] = d['zones'].get(r + '.' + z) or d['zones'][z]
+        for pid, (nm, ds) in d['presets'].items():
+            CFG['presets'][pid][lang] = nm
+            CFG['presets'][pid]['d_' + lang] = ds
+        t = dict(d['page'])
+        ui = i18n.ui(lang)['landing']
+        t.update(path=d['path'], file=d['path'].lstrip('/') + '.html', home=i18n.home(lang), home_t=ui['home'],
+                 contact=_cl('contact', lang), source='cas-develop.com' + d['path'],
+                 steps=[tuple(x) for x in t['steps']],
+                 links=[(_cl(c, lang), n, p) for c, (n, p) in zip(('design', 'renovation', 'furnishing', 'calculator'), t['links'])])
+        T[lang] = t
 
 
 # ── свотчі: «матеріальні кульки» в одному спрайті ─────────────────────────
@@ -154,6 +185,8 @@ T = {
         contact='/contact'),
 }
 
+_extend()
+
 ICON = {
     'ba': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 7l-3 5 3 5M19 7l3 5-3 5"/></svg>',
     'eve': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>',
@@ -211,7 +244,7 @@ def page(lang, v):
     links = ''.join(f'<a class="card" href="{h}"><h3>{e(n)}</h3><p>{e(p)}</p><span class="kf-more">{e(t["more"])} →</span></a>' for h, n, p in t['links'])
     tool = lambda k: (f'<button type="button" class="kf-tool" id="kf{ {"ba": "BA", "eve": "Eve", "share": "Share", "save": "Save"}[k] }" '
                       + ('aria-pressed="false" ' if k in ('ba', 'eve') else '') + f'aria-label="{e(t[k + "_l"])}" title="{e(t[k + "_l"])}">{ICON[k]}<span>{e(t[k])}</span></button>')
-    return f'''<!DOCTYPE html>
+    out = f'''<!DOCTYPE html>
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
@@ -304,6 +337,7 @@ def page(lang, v):
 </body>
 </html>
 '''
+    return i18n.fonts(i18n.html_attrs(out, lang), lang)
 
 
 def main():
@@ -312,7 +346,7 @@ def main():
                                if f.endswith('.webp')) + b''.join(open(os.path.join(OUT, 'tex', f), 'rb').read() for f in sorted(os.listdir(os.path.join(OUT, 'tex'))))).hexdigest()[:8]
     cfg = {k: CFG[k] for k in ('tex', 'mat', 'rooms', 'presets')}
     js = ('/* CAS Development — конфігуратор інтерʼєру. Згенеровано tools/konfigurator/page.py з config.json, scene.json і kf.js — не правити руками. */\n'
-          'var KF=' + json.dumps({'cfg': cfg, 'scene': SCENE, 'sw': sw, 'v': kv}, ensure_ascii=False, separators=(',', ':')) + ';\n'
+          'var KF=' + json.dumps({'cfg': cfg, 'scene': SCENE, 'sw': sw, 'v': kv, 'tx': {l: d['tx'] for l, d in L10N.items() if not l.startswith('_')}}, ensure_ascii=False, separators=(',', ':')) + ';\n'
           + open(os.path.join(HERE, 'kf.js'), encoding='utf-8').read())
     open(os.path.join(OUT, 'app.js'), 'w', encoding='utf-8').write(js)
     open(os.path.join(OUT, 'kf.css'), 'w', encoding='utf-8').write(open(os.path.join(HERE, 'kf.css'), encoding='utf-8').read())
@@ -326,6 +360,10 @@ def main():
         os.makedirs(os.path.dirname(p), exist_ok=True)
         open(p, 'w', encoding='utf-8').write(s)
         print(t['file'], len(s.encode()) // 1024, 'KB')
+    sm = os.path.join(ROOT, 'sitemap.xml'); x = open(sm, encoding='utf-8').read()  # нові мови — у sitemap (наявні рядки не чіпаємо)
+    add = ''.join(f'  <url><loc>{B}{t["path"]}</loc><lastmod>2026-11-18</lastmod></url>\n' for t in T.values() if f'<loc>{B}{t["path"]}</loc>' not in x)
+    if add:
+        open(sm, 'w', encoding='utf-8').write(x.replace('</urlset>', add + '</urlset>'))
     print('app.js', os.path.getsize(os.path.join(OUT, 'app.js')) // 1024, 'KB; sw.webp', os.path.getsize(os.path.join(OUT, 'sw.webp')) // 1024, 'KB')
 
 

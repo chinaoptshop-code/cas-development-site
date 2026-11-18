@@ -1,0 +1,187 @@
+{
+ "slug": "design-renovation-dnipro",
+ "lang": "en",
+ "service": "Turnkey interior design, renovation and construction in Dnipro",
+ "title": "Interior design in Dnipro — renovation and construction | CAS",
+ "description": "Interior design in Dnipro: riverside new builds, Stalin-era apartments, houses and offices. Design from $30/m², renovation from $550/m², office from $350/m².",
+ "h1": "Turnkey interior design, renovation and construction in Dnipro",
+ "price": "renovation from $550/m² · design from $30/m² · house from $600/m²",
+ "lead": "Interior design in Dnipro for apartments in riverside high-rises, spacious Stalin-era flats in the centre, private houses and offices. We do the design project remotely or with site visits, and take on renovation and construction with our own team on agreed terms.",
+ "parent": [
+  "/en/design-renovation-ukraine",
+  "Across Ukraine"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Dnipro",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Dnipropetrovsk Oblast"
+   }
+  }
+ ],
+ "near": [
+  "Nearby: other cities",
+  [
+   [
+    "/en/design-renovation-lviv",
+    "Lviv"
+   ],
+   [
+    "/en/design-renovation-odesa",
+    "Odesa"
+   ],
+   [
+    "/en/design-renovation-kyiv-region",
+    "Kyiv region"
+   ],
+   [
+    "/en/design-renovation-ukraine",
+    "All cities in Ukraine"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Interior design",
+   [
+    "measurements and layout",
+    "3D visualisations and working drawings",
+    "materials and furniture specification",
+    "designer supervision"
+   ]
+  ],
+  [
+   "Turnkey renovation",
+   [
+    "new-build and resale apartments",
+    "houses and cottages",
+    "works and rough materials from $550/m²",
+    "estimate before work starts"
+   ]
+  ],
+  [
+   "House construction",
+   [
+    "architectural design from $12/m²",
+    "shell from $600/m²",
+    "turnkey with finishing from $1,100/m²",
+    "utilities and roofing"
+   ]
+  ],
+  [
+   "Furniture and procurement",
+   [
+    "furnishing from $250/m²",
+    "custom kitchens and wardrobes",
+    "furniture and lighting direct from China",
+    "final styling"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Dnipro: the embankment, Stalin-era buildings and business districts",
+   [
+    "Dnipro is a city of a million people with many spacious apartments: Stalin-era buildings with high ceilings in the centre, new builds along the embankment overlooking the river, and private houses on the left bank and in the suburbs.",
+    "It is a business city, so besides homes there are often offices, showrooms and restaurants. Here our [office design](/en/office-design) experience helps — for example, Office Chicago with green walls and zoning without solid partitions."
+   ]
+  ],
+  [
+   "Interior design in Dnipro",
+   [
+    "In large Dnipro apartments the design project often includes a private owners' suite with bedroom, bathroom and walk-in wardrobe, a separate guest area and a study. For riverside apartments we plan lighting scenarios and an interior that works with the river view. From $30 per m² (minimum $2,500); packages are on the [interior design cost](/en/interior-design-cost) page."
+   ]
+  ],
+  [
+   "Turnkey renovation and house construction",
+   [
+    "We renovate apartments, houses and offices; offices from $350 per m² (works and rough materials). In Stalin-era buildings we plan full replacement of services and levelling of ceilings; scope and payment schedule are set in the contract. Apartments from $550 per m², team travel on individual terms.",
+    "In the suburbs of Dnipro we build aerated-block, brick and timber-frame houses, with an architectural design from $12 per m². The site plan, garage, terrace and pool go into the project from the start. Shell from $600 per m², turnkey from $1,100 per m²."
+   ]
+  ],
+  [
+   "Logistics, control and reports",
+   [
+    "We run the project online and travel for measurements and key stages on the schedule set in the contract. Terms and costs of travel and team accommodation are individual; between visits — photo reports every 1–2 weeks."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/11Hotk9uWWN_pE-900.webp",
+   "Office Chicago"
+  ],
+  [
+   "img/p/12W1z8tHakMPyY-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1_0wYN-6Q8LZFX-900.webp",
+   "Yacht VIP"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "By phone or online: property, goals, budget."
+  ],
+  [
+   "Survey and brief",
+   "Measurements, wishes, initial data."
+  ],
+  [
+   "Design and estimate",
+   "Interior or architecture; price and schedule in the contract."
+  ],
+  [
+   "Works",
+   "Renovation or construction with photo reports."
+  ],
+  [
+   "Handover",
+   "Certificate, 12-month warranty on works."
+  ]
+ ],
+ "faq": [
+  [
+   "Can I order an apartment design in Dnipro without constant trips?",
+   "Yes. Most approvals happen online; we come to the site for measurements and designer supervision on schedule. Design from $30 per m², minimum $2,500."
+  ],
+  [
+   "Do you do offices in Dnipro?",
+   "Yes: office design and renovation from $350 per m² (works and rough materials). For companies registered in Ukraine, invoices with or without VAT, individually."
+  ],
+  [
+   "How much does apartment renovation in Dnipro cost?",
+   "From $550 per m² for works and rough materials; finishing materials and appliances are separate. Team travel on individual terms."
+  ]
+ ],
+ "rel": [
+  [
+   "/en/house-renovation",
+   "Turnkey house renovation"
+  ],
+  [
+   "/en/turnkey-procurement",
+   "Turnkey interior procurement"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Renovation cost calculator"
+  ],
+  [
+   "/en/contract-warranty-payment",
+   "Contract, warranty, payment (sample contract)"
+  ],
+  [
+   "/en/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

@@ -1,0 +1,284 @@
+{
+ "slugs": {
+  "hub": "innenarchitektur-renovierung-oblast-kyjiw",
+  "lviv": "innenarchitektur-renovierung-lwiw",
+  "odesa": "innenarchitektur-renovierung-odessa",
+  "dnipro": "innenarchitektur-renovierung-dnipro"
+ },
+ "portfolio": "Portfolio",
+ "ua": "Design und Renovierung in der ganzen Ukraine",
+ "ua_short": "Ganze Ukraine",
+ "eu": "Renovierung und Bau in Europa",
+ "all": "Alle Städte der Ukraine",
+ "other": "Weitere Regionen",
+ "near": "In der Nähe: weitere Städte",
+ "hub": {
+  "area": "Oblast Kyjiw",
+  "service": "Design, Renovierung und Bau schlüsselfertig in der Oblast Kyjiw",
+  "title": "Renovierung in der Oblast Kyjiw — Design und Häuser | CAS",
+  "description": "Renovierung, Innenarchitektur und Hausbau schlüsselfertig in der Oblast Kyjiw: Irpin, Butscha, Browary, Boryspil. Eigenes Team, Preise wie in Kyjiw.",
+  "h1": "Design, Renovierung und Bau schlüsselfertig in der Oblast Kyjiw",
+  "lead": "Schlüsselfertige Renovierung in der Oblast Kyjiw: Wohnungen in Neubauten am Stadtrand, Einfamilienhäuser und Landhäuser, Hausbau von Grund auf. In den Städten und Dörfern rund um Kyjiw arbeiten wir mit demselben fest angestellten Team und zu denselben Sätzen wie in Kyjiw.",
+  "places": [
+   "Städte der Oblast Kyjiw, in denen wir arbeiten",
+   "Jede Stadt hat ihre eigene Bebauung, Logistik und typischen Aufgaben:"
+  ],
+  "towns": [
+   [
+    "Irpin",
+    "Neue Wohnanlagen, Reihenhäuser und Häuser zwischen Kiefern; Wiederaufbau von Wohnungen."
+   ],
+   [
+    "Butscha",
+    "Einfamilienhäuser und niedrige Wohnanlagen zum ganzjährigen Wohnen."
+   ],
+   [
+    "Hostomel",
+    "Einfamilienhäuser, Umbau alter Gehöfte, Häuser von Grund auf."
+   ],
+   [
+    "Wyschnewe",
+    "Neubauten direkt an der Stadtgrenze — Renovierung wie in der Hauptstadt."
+   ],
+   [
+    "Bojarka",
+    "Ein Waldvorort: Häuser, Datschen zum Dauerwohnen, Blockhäuser."
+   ],
+   [
+    "Browary",
+    "Das linke Ufer: Plattenbauten, Neubauten, Einfamilienhäuser und Büros."
+   ],
+   [
+    "Boryspil",
+    "Häuser entlang der Fernstraße: Hora, Schtschaslywe, Welyka Oleksandriwka."
+   ],
+   [
+    "Wyschhorod",
+    "Am Dnipro und am Kyjiwer Meer; Petrivtsi House, 320 m²."
+   ],
+   [
+    "Obuchiw",
+    "Obuchiw, Ukrajinka, Trypillja — Landhäuser über dem Dnipro."
+   ],
+   [
+    "Wasylkiw",
+    "Eine alte Stadt an der Stuhna: Holzrahmen- und Modulhäuser."
+   ],
+   [
+    "Fastiw",
+    "Umbau von Familienhäusern und Renovierung älterer Bestandsbauten."
+   ],
+   [
+    "Bila Zerkwa",
+    "Die größte Stadt der Oblast: Wohnungen, Häuser, Gewerbeflächen."
+   ]
+  ],
+  "koncha": [
+   "Kontscha-Saspa, Kosyn, Puschtscha-Wodyzja",
+   "Schlüsselfertige Landhäuser und Residenzen."
+  ],
+  "about": [
+   [
+    "Die Oblast Kyjiw nach Himmelsrichtungen",
+    [
+     "Westen — Irpin, Butscha, Hostomel: neue Wohnanlagen, Reihenhäuser und Häuser im Wald. Südwesten — Wyschnewe, Bojarka, Fastiw: Neubauten an der Stadtgrenze und viele Einfamilienhäuser. Süden — Wasylkiw, Obuchiw, Bila Zerkwa: Familiengehöfte, Häuser über dem Dnipro und eine große Stadt mit eigenem Wohnungsmarkt.",
+     "Osten — Browary und Boryspil: das linke Ufer, ebene Grundstücke und Siedlungen entlang der Fernstraßen. Norden — Wyschhorod und Petriwzi am Kyjiwer Meer, wo wir Petrivtsi House mit 320 m² geplant haben. Gesondert — Landresidenzen in Kontscha-Saspa, Kosyn und Puschtscha-Wodyzja."
+    ]
+   ],
+   [
+    "Preise in der Oblast — wie in Kyjiw",
+    [
+     "Designprojekt ab $30 pro m² (mindestens $2 500), schlüsselfertige Renovierung ab $550 pro m² (Arbeiten und Rohbaumaterialien), Rohbau eines Hauses ab $600 pro m², schlüsselfertiges Haus mit Ausbau ab $1 100 pro m², Einrichtung ab $250 pro m².",
+     "Führt CAS die Renovierung aus, weicht die Endsumme um höchstens ±5 % vom Kostenvoranschlag ab. Das Aufmaß vor Ort ist kostenpflichtig, der Preis wird individuell festgelegt; die telefonische Beratung ist kostenlos. Details auf den Seiten [schlüsselfertige Renovierung]({/remont-pid-klyuch-kyiv}) und [Hausbau]({/budivnytstvo-budynkiv-kyiv})."
+    ]
+   ],
+   [
+    "Wie wir Baustellen außerhalb der Stadt steuern",
+    [
+     "Bauleiter betreuen die Objekte nach Gebieten, sodass ein Haus in Butscha oder Browary genauso viel Aufmerksamkeit bekommt wie eine Wohnung in Petschersk. Fotoberichte alle 1–2 Wochen, gegen Aufpreis eine Online-Kamera auf der Baustelle rund um die Uhr; auf die Arbeiten gilt eine Gewährleistung von 12 Monaten."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "In welchen Städten der Oblast Kyjiw arbeiten Sie?",
+    "Irpin, Butscha, Hostomel, Wyschnewe, Bojarka, Browary, Boryspil, Wyschhorod, Obuchiw, Wasylkiw, Fastiw, Bila Zerkwa sowie in den umliegenden Dörfern und Siedlungen."
+   ],
+   [
+    "Ist eine Renovierung in der Oblast teurer als in Kyjiw?",
+    "Die Basissätze sind dieselben: Renovierung ab $550 pro m², Design ab $30 pro m², Bau ab $600 pro m²."
+   ],
+   [
+    "Wer arbeitet auf den Baustellen in der Oblast?",
+    "Unser eigenes fest angestelltes Team für unterschiedliche Schwierigkeitsgrade und Gewerke — dasselbe wie in Kyjiw."
+   ],
+   [
+    "Bauen Sie in der Oblast Häuser von Grund auf?",
+    "Ja: Architekturplanung ab $12 pro m², Rohbau ab $600 pro m², schlüsselfertig mit Ausbau ab $1 100 pro m²."
+   ]
+  ]
+ },
+ "lviv": {
+  "name": "Lwiw",
+  "region": "Oblast Lwiw",
+  "service": "Innenarchitektur, Renovierung und Bau schlüsselfertig in Lwiw",
+  "title": "Innenarchitektur in Lwiw (Lemberg) — Renovierung und Bau | CAS",
+  "description": "Innenarchitektur in Lwiw aus der Ferne oder vor Ort: Design ab $30/m², Renovierung ab $550/m², Haus ab $600/m². Altbauten, Neubauten, Häuser.",
+  "h1": "Innenarchitektur, Renovierung und Bau schlüsselfertig in Lwiw",
+  "lead": "Innenarchitektur in Lwiw (Lemberg) für Wohnungen in österreichischen Altbauten, neuen Wohnanlagen und Häusern vor der Stadt. Das Designprojekt erstellen wir aus der Ferne oder mit Besuchen vor Ort, Renovierung und Bau übernimmt das eigene CAS-Team zu individuell vereinbarten Bedingungen.",
+  "about": [
+   [
+    "Lwiw: Altbauten, Vorkriegsbestand und Neubauten",
+    [
+     "Das Wohnen in Lwiw ist sehr unterschiedlich. In der historischen Altstadt stehen österreichische und polnische Bürgerhäuser mit hohen Decken, Holzbalkendecken, Stuck und Kachelöfen; in Sychiw und Lewandiwka Plattenbausiedlungen; am Stadtrand und im Umland neue Wohnanlagen und Einfamilienhäuser.",
+     "Eine Altbauwohnung braucht besondere Sorgfalt: Deckenkonstruktion, feuchte Wände, alte Kamine, Auflagen für Baudenkmäler. Das berücksichtigen wir im Projekt — wertvolle Details wie Stuck oder Parkett bleiben erhalten, und die neue Haustechnik wird so verborgen, dass sie der Geschichte des Hauses nicht widerspricht."
+    ]
+   ],
+   [
+    "Innenarchitektur in Lwiw",
+    [
+     "In Lwiwer Altbauten wünschen sich Kunden meist ein modernes Interieur, in dem das Haus spürbar bleibt: restaurierte Türen, hohe Fenster, Licht auf mehreren Ebenen. In Neubauten geht es um einen funktionalen Grundriss und Stauraum, in Häusern vor Lwiw um Kamin, Terrasse und Blick in den Garten. Ab $30 pro m² (mindestens $2 500); Pakete auf der Seite [Innenarchitektur]({/dyzain-interieru-kyiv})."
+    ]
+   ],
+   [
+    "Schlüsselfertige Renovierung und Hausbau",
+    [
+     "Im Altbau beginnen wir mit der Prüfung von Decken und Wänden, im Neubau mit der Kontrolle der Rohbauarbeiten des Bauträgers. Umfang, Zeitplan und Zahlungen stehen im Vertrag, die Arbeiten führt unser fest angestelltes Team aus: ab $550 pro m², Anreise des Teams zu individuellen Bedingungen.",
+     "Bei Lwiw bauen wir Häuser aus Ziegel und Porenbeton, in Holzrahmen- und Blockbauweise — passend zum feuchten Klima: zuverlässige Abdichtung des Fundaments, hinterlüftete Fassaden, ein solides Dach. Rohbau ab $600 pro m², schlüsselfertig ab $1 100 pro m²."
+    ]
+   ],
+   [
+    "Logistik, Kontrolle und Berichte",
+    [
+     "Mit Lwiw arbeiten wir am besten in Etappen: Das Projekt läuft online, zum Aufmaß, zu den wichtigen Bauphasen und zur Abnahme kommen wir vor Ort. Bedingungen und Kosten der Anreise sind individuell und im Vertrag festgehalten. Möbel und Leuchten aus China (Lieferzeit 35–70 Tage) liefern wir bis zum Objekt, die Lieferkosten werden separat berechnet."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Kann ich ein Designprojekt für Lwiw aus der Ferne bestellen?",
+    "Ja. Konzept, 3D und Pläne stimmen wir online ab; das Aufmaß erfolgt vor Ort oder in einem vereinbarten Format. Design ab $30 pro m², mindestens $2 500."
+   ],
+   [
+    "Arbeiten Sie mit Wohnungen in historischen Altbauten?",
+    "Ja. Das Projekt berücksichtigt Deckenkonstruktion, Feuchtigkeit und Denkmalauflagen; Grundrissänderungen nur im genehmigungsfähigen Rahmen."
+   ],
+   [
+    "Renovieren Sie in Lwiw mit dem eigenen Team?",
+    "Ja, die Renovierung ab $550 pro m² (Arbeiten und Rohbaumaterialien) führt unser fest angestelltes Team aus. Anreise und Unterkunft des Teams zu individuellen Bedingungen und Kosten."
+   ]
+  ]
+ },
+ "odesa": {
+  "name": "Odessa",
+  "region": "Oblast Odessa",
+  "service": "Innenarchitektur, Renovierung und Bau schlüsselfertig in Odessa",
+  "title": "Innenarchitektur in Odessa — Renovierung und Bau | CAS",
+  "description": "Innenarchitektur in Odessa: Wohnungen im historischen Zentrum und in Hochhäusern am Meer, Häuser an der Küste. Design ab $30/m², Renovierung ab $550/m².",
+  "h1": "Innenarchitektur, Renovierung und Bau schlüsselfertig in Odessa",
+  "lead": "Innenarchitektur in Odessa für Wohnungen in Häusern des 19. Jahrhunderts im Zentrum, Hochhäuser in Arkadija und an den Fontan-Straßen sowie Häuser am Meer. Das Projekt führen wir aus der Ferne oder mit Besuchen vor Ort, Renovierung und Bau übernimmt unser Team zu individuellen Bedingungen.",
+  "about": [
+   [
+    "Odessa: historisches Zentrum, Hochhäuser am Meer und Häuser an der Küste",
+    [
+     "Im Zentrum von Odessa stehen Häuser aus dem 19. Jahrhundert mit hohen Decken, Innenhöfen und Wänden aus örtlichem Muschelkalk. Am Meer, in Arkadija und an den Fontan-Straßen, gibt es moderne Hochhäuser mit Panoramafenstern, entlang der Küste Einfamilien- und Ferienhäuser.",
+     "Meeresluft und Feuchtigkeit sind die größte Herausforderung für ein Interieur: Sie setzen Holz, Metall und Putz zu. Im Projekt wählen wir Materialien und Beschläge, die diesen Bedingungen standhalten, und planen Lüftung und Abdichtung dort, wo es darauf ankommt."
+    ]
+   ],
+   [
+    "Innenarchitektur in Odessa",
+    [
+     "In Wohnungen mit Meerblick gestalten wir das Interieur rund um das Panorama: wenige Trennwände im Wohnzimmer, helle Naturmaterialien, Terrassen. Im Altbau stellen wir Deckenhöhen, Stuck und Parkett wieder her und kombinieren sie mit moderner Küche und modernem Bad. Ab $30 pro m² (mindestens $2 500); Pakete auf der Seite [Innenarchitekt]({/dyzainer-interieru-kyiv})."
+    ]
+   ],
+   [
+    "Schlüsselfertige Renovierung und Hausbau",
+    [
+     "In Häusern aus Muschelkalk beginnen wir mit der Bewertung von Wänden und Feuchtigkeit, im Neubau mit der Abnahme der Rohbauarbeiten. Es arbeitet unser fest angestelltes Team, Umfang und Zahlungsplan stehen im Vertrag: ab $550 pro m², Anreise des Teams zu individuellen Bedingungen.",
+     "An der Küste bei Odessa bauen wir Häuser mit Blick auf Boden und Wind: Das Fundament richtet sich nach den Grundstücksdaten, Fassaden und Dach entstehen aus feuchtigkeits- und salzbeständigen Materialien. Villen mit Pool und Terrassen — wie unsere Projekte Smart Villa oder Dubai Villa — passen hier besonders gut. Rohbau ab $600 pro m², schlüsselfertig ab $1 100 pro m²."
+    ]
+   ],
+   [
+    "Logistik, Kontrolle und Berichte",
+    [
+     "Odessa liegt weit von Kyjiw entfernt, deshalb arbeiten wir so: Design und Abstimmungen online, Aufmaß und wichtige Bauphasen vor Ort, dazwischen Fotoberichte. Bedingungen und Kosten für Anreise und Unterkunft des Teams sind individuell und im Vertrag geregelt."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Erstellen Sie Designprojekte für Odessa aus der Ferne?",
+    "Ja: Online-Termine, 3D und Pläne in digitaler Form. Aufmaß vor Ort oder in einem vereinbarten Format. Design ab $30 pro m², mindestens $2 500."
+   ],
+   [
+    "Welche Materialien wählen Sie für ein Haus am Meer?",
+    "Feuchtigkeits- und salzbeständige: Feinsteinzeug, Naturstein, Fassadensysteme und Beschläge für solche Bedingungen; Holz nur dort, wo es geschützt ist."
+   ],
+   [
+    "Was kostet ein schlüsselfertiges Haus bei Odessa?",
+    "Rohbau ab $600 pro m², schlüsselfertig mit Ausbau ab $1 100 pro m². Logistik und Anreise des Teams zu individuellen Bedingungen und Kosten."
+   ]
+  ]
+ },
+ "dnipro": {
+  "name": "Dnipro",
+  "region": "Oblast Dnipropetrowsk",
+  "service": "Innenarchitektur, Renovierung und Bau schlüsselfertig in Dnipro",
+  "title": "Innenarchitektur in Dnipro — Renovierung und Bau | CAS",
+  "description": "Innenarchitektur in Dnipro: Neubauten am Ufer, Stalin-Bauten, Häuser und Büros. Design ab $30/m², Renovierung ab $550/m², Büro ab $350/m².",
+  "h1": "Innenarchitektur, Renovierung und Bau schlüsselfertig in Dnipro",
+  "lead": "Innenarchitektur in Dnipro für Wohnungen in Hochhäusern an der Uferpromenade, großzügige Wohnungen in Stalin-Bauten im Zentrum, Einfamilienhäuser und Büros. Das Designprojekt erstellen wir aus der Ferne oder vor Ort, Renovierung und Bau übernehmen wir mit dem eigenen Team zu vereinbarten Bedingungen.",
+  "about": [
+   [
+    "Dnipro: Uferpromenade, Stalin-Bauten und Geschäftsviertel",
+    [
+     "Dnipro ist eine Millionenstadt mit vielen großzügigen Wohnungen: Stalin-Bauten mit hohen Decken im Zentrum, Neubauten entlang der Uferpromenade mit Blick auf den Fluss sowie Einfamilienhäuser am linken Ufer und im Umland.",
+     "Die Stadt ist geschäftlich geprägt, deshalb geht es neben Wohnungen oft um Büros, Showrooms und Restaurants. Hier hilft unsere Erfahrung in der [Büroplanung]({/dyzain-ofisu-kyiv}) — etwa Office Chicago mit begrünten Wänden und Zonierung ohne geschlossene Wände."
+    ]
+   ],
+   [
+    "Innenarchitektur in Dnipro",
+    [
+     "In großen Wohnungen in Dnipro umfasst das Designprojekt oft einen privaten Bereich der Eigentümer mit Schlafzimmer, Bad und Ankleide, einen separaten Gästebereich und ein Arbeitszimmer. In Wohnungen an der Uferpromenade planen wir Lichtszenarien und ein Interieur, das mit dem Flussblick spielt. Ab $30 pro m² (mindestens $2 500); Pakete auf der Seite [Kosten der Innenarchitektur]({/vartist-dyzainu-interieru-kyiv})."
+    ]
+   ],
+   [
+    "Schlüsselfertige Renovierung und Hausbau",
+    [
+     "Wir renovieren Wohnungen, Häuser und Büros — Büros ab $350 pro m² (Arbeiten und Rohbaumaterialien). In Stalin-Bauten planen wir den kompletten Austausch der Leitungen und das Ausgleichen der Decken; Umfang und Zahlungsplan stehen im Vertrag. Wohnungen ab $550 pro m², Anreise des Teams zu individuellen Bedingungen.",
+     "Im Umland von Dnipro bauen wir Häuser aus Porenbeton und Ziegel sowie in Holzrahmenbauweise — mit Architekturplanung ab $12 pro m². Lageplan, Garage, Terrasse und Pool planen wir von Anfang an mit. Rohbau ab $600 pro m², schlüsselfertig ab $1 100 pro m²."
+    ]
+   ],
+   [
+    "Logistik, Kontrolle und Berichte",
+    [
+     "Das Projekt führen wir online, zum Aufmaß und zu den wichtigen Bauphasen kommen wir nach dem Zeitplan im Vertrag. Bedingungen und Kosten für Anreise und Unterkunft des Teams sind individuell; zwischen den Besuchen gibt es Fotoberichte alle 1–2 Wochen."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Kann ich ein Wohnungsdesign in Dnipro ohne ständige Reisen bestellen?",
+    "Ja. Die meisten Abstimmungen laufen online; zum Aufmaß und zur Bauüberwachung durch den Designer kommen wir nach Zeitplan. Design ab $30 pro m², mindestens $2 500."
+   ],
+   [
+    "Gestalten Sie Büros in Dnipro?",
+    "Ja: Büroplanung und Renovierung ab $350 pro m² (Arbeiten und Rohbaumaterialien). Für in der Ukraine registrierte Unternehmen Rechnung mit oder ohne MwSt., individuell."
+   ],
+   [
+    "Was kostet eine Wohnungsrenovierung in Dnipro?",
+    "Ab $550 pro m² für Arbeiten und Rohbaumaterialien; Ausbaumaterialien und Geräte separat. Anreise des Teams zu individuellen Bedingungen."
+   ]
+  ]
+ },
+ "uahub": [
+  "Regionen und Städte mit eigenen Seiten",
+  "Örtliche Bebauung, Logistik und typische Projekte:",
+  {
+   "hub": "Irpin, Butscha, Browary, Boryspil und weitere Städte — Preise wie in Kyjiw.",
+   "lviv": "Altbauten, Neubauten und Häuser vor der Stadt.",
+   "odesa": "Historisches Zentrum, Hochhäuser am Meer und Häuser an der Küste.",
+   "dnipro": "Neubauten am Ufer, Stalin-Bauten, Häuser und Büros."
+  }
+ ]
+}
