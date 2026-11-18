@@ -64,6 +64,7 @@ function stagesOf(v) {
     // дизайн-проєкт: дата погодження етапу клієнтом і кількість правок (лише якщо задано — JSON не роздуваємо)
     const ap = date(s && s.approved_at), rv = Math.max(0, Math.min(99, int(s && s.revisions) || 0));
     if (ap) out.approved_at = ap;
+    if (ap && s.approved_by === 'client') out.approved_by = 'client'; // погодив сам клієнт у кабінеті (POST /api/account/projects)
     if (rv) out.revisions = rv;
     return out;
   });

@@ -48,6 +48,8 @@ for (const b of [{ name: 'Бригада Тест', type: 'crew', city: 'Киї�
   await call(env, 'POST', '/api/bot/partners', { body: b, headers: { 'x-bot-key': BOTKEY, noOrigin: true } });
 await call(env, 'POST', '/api/bot/leads', { body: { hash: 'uitest-lead-0001', service: 'Ремонт квартири', city: 'Київ', text: 'Лід з бота: шукаю ремонт 60 м²', author: { tg: '@test_author' } }, headers: { 'x-bot-key': BOTKEY, noOrigin: true } });
 await api('FORE', 'POST', '/api/team/action', { type: 'issue', project_id: P1, note: 'Протікає стояк у ванній' });
+await api('OWNER', 'POST', '/api/admin/projects', { type: 'project', client_id: C1, service: 'design', status: 'paused', title: 'Дизайн квартири, тест',
+  stages: [{ name: 'Обміри й ТЗ', status: 'done', progress: 100, approved_at: iso(-3) }, { name: 'Планувальне рішення', status: 'review', progress: 90 }, { name: 'Концепція', progress: 0 }] });
 
 // ===== сервер =====
 const H = readFileSync(join(ROOT, '_headers'), 'utf8');
@@ -142,6 +144,27 @@ await check('owner-crm-ref', 'OWNER', '/kabinet/admin#crm', W, async p => {
   if (!/Лід з кейсу/.test(t) || /Лід 1/.test(t)) throw new Error('фільтр за сторінкою-джерелом не працює');
   await p.locator('[data-list] :text("Лід з кейсу")').first().click(); await see(p, 'dialog[open]', 'Сторінка-джерело: /proekty/monpark');
 });
+// CRM: швидкі фільтри (один дотик), «Взяти в роботу» на новій заявці — без відкриття картки; у картці — дати «Завтра/+3 дні»
+await check('owner-crm-quick', 'OWNER', '/kabinet/admin#crm', W, async p => {
+  await see(p, '[data-list]', 'Лід 1');
+  if (await p.$eval('details.crm-more', d => d.open)) throw new Error('панель фільтрів розгорнута без активних фільтрів');
+  await p.click('[data-qf=new]'); await p.waitForTimeout(500);
+  if (await p.getAttribute('[data-qf=new]', 'aria-pressed') !== 'true') throw new Error('«Нові» не позначено');
+  const n0 = await p.$$eval('[data-take]', b => b.length); if (!n0) throw new Error('немає «Взяти в роботу»');
+  const small = await p.$$eval('[data-take],[data-qf]', els => els.filter(e => e.offsetParent && e.getBoundingClientRect().height < 35.5).length);
+  if (small) throw new Error('кнопки менші за норму: ' + small);
+  const card = p.locator('.kn-card:has([data-take])').first(), num = (await card.locator('b').first().textContent()).trim();
+  await card.locator('[data-take]').click(); await p.waitForTimeout(700);
+  if (await p.locator('.kn-card', { hasText: num }).count()) throw new Error('взята заявка лишилась серед «Нових»');
+  await p.click('[data-qf=all]'); await p.waitForTimeout(500);
+  await p.locator('.kn-card', { hasText: num }).first().locator('b').first().click(); // не по позначці сторінки-джерела (вона ставить фільтр) await see(p, 'dialog[open]', 'В роботі|взято|Взяв');
+  if (await p.$('dialog[open] [data-take]')) throw new Error('у взятої заявки знову «Взяти в роботу»');
+  await p.click('dialog[open] [data-nc="1"]');
+  const v = await p.inputValue('dialog[open] [name=next_contact]');
+  if (v !== new Date(Date.now() + 86400000).toLocaleDateString('sv-SE', { timeZone: 'Europe/Kyiv' })) throw new Error('«Завтра» поставило ' + v);
+  p.once('dialog', d => d.accept()); await p.click('dialog[open] button.x'); await p.waitForTimeout(200);
+  if (await p.$('dialog[open]')) throw new Error('картка не закрилась після підтвердження');
+});
 // «Партнери»: список, фільтр за типом, картка, збереження статусу; CRM — фільтр «Бот пошуку»
 await check('owner-partners', 'OWNER', '/kabinet/admin#partners', W, async p => {
   await see(p, '[data-ptbl]', 'Бригада Тест'); await see(p, '[data-ptbl]', 'Тест Постач');
@@ -158,10 +181,22 @@ await check('owner-partners', 'OWNER', '/kabinet/admin#partners', W, async p => 
 });
 await check('owner-crm-finder', 'OWNER', '/kabinet/admin#crm', [1440], async p => {
   await see(p, '#admView', 'Лід 1');
+  await p.click('details.crm-more summary'); // панель фільтрів згорнута, доки фільтри не задано
   await p.selectOption('[data-f=place]', 'finder'); await p.waitForTimeout(600);
   const t = await p.textContent('[data-list]');
   if (!/@test_author/.test(t) || /Лід 1/.test(t)) throw new Error('фільтр «Бот пошуку» не працює');
   await p.selectOption('[data-f=place]', '');
+});
+await check('owner-project-save', 'OWNER', '/kabinet/admin#projects', W, async p => {
+  await see(p, '#admView', 'Квартира, тестовий обʼєкт');
+  await p.locator('#admView .clk', { hasText: 'Квартира, тестовий обʼєкт' }).first().click(); await see(p, '[data-save]');
+  if (!(await p.$eval('[data-dirty]', e => e.hidden))) throw new Error('позначка змін без змін');
+  await p.fill('[data-f] [name=next_step]', 'Приймання електрики й сантехніки');
+  if (await p.$eval('[data-dirty]', e => e.hidden)) throw new Error('немає позначки незбережених змін');
+  if (await p.$eval('.pj-save', e => getComputedStyle(e).position) !== 'sticky') throw new Error('«Зберегти проєкт» не липка');
+  await p.click('[data-save]'); await p.waitForTimeout(800); await see(p, '[data-save]');
+  if (await p.inputValue('[data-f] [name=next_step]') !== 'Приймання електрики й сантехніки') throw new Error('не збережено');
+  if (!(await p.$eval('[data-dirty]', e => e.hidden))) throw new Error('позначка лишилась після збереження');
 });
 await check('owner-staff', 'OWNER', '/kabinet/admin#team', W, async p => { await see(p, '.staff-t', 'Олег');
   await p.click('details.add summary'); await see(p, '[data-add]');
@@ -192,6 +227,15 @@ await check('client-object', 'C1', '/kabinet/obiekt', W, async p => {
   await see(p, 'main', 'Квартира, тестовий обʼєкт');
   const t = await p.textContent('main');
   if (/Протікає стояк|Олег \(прораб\)/.test(t)) throw new Error('клієнт бачить внутрішні поля (проблема/працівник)');
+});
+await check('client-approve', 'C1', '/kabinet/proekty', [402], async p => {
+  await see(p, '#kb', 'Дизайн квартири, тест'); await see(p, '#kb', 'чекає вашого погодження');
+  const h = await p.$eval('[data-appr]', b => b.getBoundingClientRect().height); if (h < 43.5) throw new Error('кнопка < 44px');
+  p.once('dialog', d => d.accept()); await p.click('[data-appr]'); await p.waitForTimeout(600);
+  if (await p.$('[data-appr]')) throw new Error('кнопка лишилась');
+  const r = await p.evaluate(() => window.CASAccount.api('/api/account/projects'));
+  const st = r.projects.find(x => x.service === 'design').stages[1];
+  if (!st.approved_at || st.approved_by !== 'client') throw new Error('не збережено: ' + JSON.stringify(st));
 });
 // Оздоба прихована (tools/site/flags.py OZDOBA_PUBLIC = False → data-oz="0"): у огляді без промо Оздоби й кошика,
 // вкладки «Замовлення»/«Обране» — лише за наявності даних; кнопка «Вийти / змінити акаунт» — в огляді й профілі

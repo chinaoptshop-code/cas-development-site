@@ -144,6 +144,7 @@ await it('прораб бачить лише свій обʼєкт: адреса
   eq(t.status, 200); eq(t.data.projects.map(p => p.id), [P1]);
   ok(!('contract_amount' in t.data.projects[0]) && !('payments' in t.data.projects[0]));
   ok(t.data.tasks.some(x => x.kind === 'stage' && x.urgent), 'прострочений етап у задачах');
+  ok(t.data.tasks.filter(x => x.kind === 'stage').every(x => /^Етап «.+»$/.test(x.title) && x.due), 'назва етапу без дублю дати (дата — у полі due)');
   ok(t.data.tasks.some(x => x.kind === 'report'), 'нагадування про фотозвіт');
   eq(t.data.leads, []);
 });
@@ -528,6 +529,35 @@ describe('CRM обʼєктів: шаблони етапів, дата здачі
     eq((await call(ce, 'POST', '/api/team/action', { cookie: k.A, body: { type: 'stage', project_id: D1, stage_id: sid, status: 'done' } })).status, 200);
     const s0 = JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', D1)).stages)[0];
     eq([s0.status, s0.approved_at, s0.revisions], ['done', day(-2), 3]);
+  });
+  await it('клієнт сам погоджує етап на прийманні (POST /api/account/projects): Telegram, аудит, approved_by зберігається', async () => {
+    const ap = (body, cookie = k.C) => call(ce, 'POST', '/api/account/projects', { cookie, body: { action: 'approve', project_id: D1, ...body } });
+    const sid = (await get(D1)).stages[2].id, kyiv = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Kyiv' });
+    eq((await ap({ stage_id: sid })).status, 409, 'етап ще не на прийманні');
+    eq((await call(ce, 'POST', '/api/team/action', { cookie: k.A, body: { type: 'stage', project_id: D1, stage_id: sid, status: 'review' } })).status, 200);
+    eq((await ap({ stage_id: sid }, k.A)).status, 404, 'чужий проєкт — як неіснуючий');
+    eq((await ap({ stage_id: 'zzzzz' })).status, 404);
+    eq((await call(ce, 'POST', '/api/account/projects', { cookie: k.C, body: { action: 'delete', project_id: D1, stage_id: sid } })).status, 400);
+    eq((await call(ce, 'POST', '/api/account/projects', { body: { action: 'approve', project_id: D1, stage_id: sid } })).status, 401);
+    bot.reset();
+    const r = await ap({ stage_id: sid });
+    eq(r.status, 200); eq(r.data.stage.approved_at, kyiv);
+    const s = JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', D1)).stages)[2];
+    eq([s.approved_at, s.approved_by, s.status], [kyiv, 'client', 'review']);
+    ok(bot.calls.some(c => /Клієнт погодив етап/.test(c.text) && c.chat_id === '444'), 'відповідальному');
+    ok(bot.calls.some(c => /Клієнт погодив етап/.test(c.text) && c.chat_id === '111'), 'власнику');
+    ok(await cq("SELECT 1 FROM audit_log WHERE action = 'project.approve' AND entity_id = ? AND role = 'client'", String(D1)));
+    eq((await ap({ stage_id: sid })).data.already, true, 'повторно — без змін');
+    // збереження проєкту в адмінці не губить «погодив клієнт»
+    eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: D1, stages: (await get(D1)).stages } })).status, 200);
+    eq(JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', D1)).stages)[2].approved_by, 'client');
+  });
+  await it('погодження клієнтом — лише для дизайн-проєкту', async () => {
+    const r = await proj({ title: 'Ремонт для погодження', service: 'repair' });
+    const sid = (await get(r.data.id)).stages[0].id;
+    await call(ce, 'POST', '/api/team/action', { cookie: k.O, body: { type: 'stage', project_id: r.data.id, stage_id: sid, status: 'review' } });
+    eq((await call(ce, 'POST', '/api/account/projects', { cookie: k.C, body: { action: 'approve', project_id: r.data.id, stage_id: sid } })).status, 404);
+    await call(ce, 'DELETE', '/api/admin/projects?type=project&id=' + r.data.id, { cookie: k.O });
   });
 
   describe('CRM обʼєктів: задачі (project_tasks) — CRUD, права, кабінет працівника');
