@@ -10,7 +10,8 @@
 Ставить apply() у chrome.apply() (після nbsp_prices); на повторному проході стара «(≈ …)» замінюється новою (курс міг змінитися).
 Оздоба (власна фраза «$10 000 (≈ 460 000 ₴)») і кабінет — без змін. У JS — window.casFx(n, мова) (калькулятор, квіз).
 Курси оновлювати раз на місяць (--update); без мережі лишаються попередні значення з fx.json.
-Округлення: € — до 1 (< 100), до 10 (< 1 000), до 50 (≥ 1 000); ₴ — до 10 (< 1 000), до 100 (< 10 000), до 500 (≥ 10 000).
+Округлення: € — до 1 (< 100), 10 (< 1 000), 50 (< 10 000), 100 (< 100 000), далі 1 000;
+₴ — до 10 (< 1 000), 100 (< 10 000), 500 (< 100 000), 1 000 (< 1 000 000), далі 10 000 (суми калькулятора).
 """
 import json, os, re, sys, urllib.request
 
@@ -65,9 +66,9 @@ def approx(usd, lang, r=None):
     """$ → «€500» / «25 000 ₴» (або None для мов лише з $)."""
     r = r or rates()
     if lang in EUR_LANGS and r.get('eur_uah'):
-        return '€' + _grp(_round(usd * r['usd_uah'] / r['eur_uah'], [(100, 1), (1000, 10), (10 ** 12, 50)]))
+        return '€' + _grp(_round(usd * r['usd_uah'] / r['eur_uah'], [(100, 1), (1000, 10), (10000, 50), (100000, 100), (10 ** 12, 1000)]))
     if lang in UAH_LANGS and r.get('usd_uah'):
-        return _grp(_round(usd * r['usd_uah'], [(1000, 10), (10000, 100), (10 ** 12, 500)])) + NB + '₴'
+        return _grp(_round(usd * r['usd_uah'], [(1000, 10), (10000, 100), (100000, 500), (1000000, 1000), (10 ** 12, 10000)])) + NB + '₴'
     return None
 
 
@@ -75,7 +76,7 @@ def _num(x):
     return int(re.sub(r'[ ,]', '', x))
 
 
-def _text(t, lang, r):
+def _text(t, lang, r, room=None):
     rx, out, pos = _rx(lang), [], 0
     for m in rx.finditer(t):
         if m.start() < pos:
@@ -101,6 +102,12 @@ def _text(t, lang, r):
             x, end = m.group(1) + ' ' + s + ', ', end + 2
         else:
             x = m.group(1) + ' ' + s + ')'
+        if room is not None:  # бюджет HTML сторінки: друга валюта — лише поки вміщується (по порядку: спершу hero й верх сторінки)
+            extra = len(x.encode()) - len(t[m.start():end].encode())
+            if extra > room[0]:
+                room[1] += 1
+                continue
+            room[0] -= extra
         out += [t[pos:m.start()], x]
         pos = end
     out.append(t[pos:])
@@ -118,8 +125,22 @@ def strip(s):
 _SKIP = re.compile(r'<(script|style|title|textarea|pre|code|svg)\b[^>]*>.*?</\1\s*>|<!--.*?-->|<[^>]*>', re.S | re.I)
 
 
+SKIPPED = {}  # сторінка → скільки цін лишилось без другої валюти через бюджет HTML (звіт — fx.py --report)
+
+
+def _limit(s, rel):
+    try:
+        sys.path.insert(0, os.path.join(ROOT, 'tools', 'ui'))
+        import ui
+        return ui.BUDGET['html_kb'][ui.kind(rel.replace(os.sep, '/'), s)] * 1024
+    except Exception:
+        return 64 * 1024
+
+
 def apply(s, lang, rel=''):
-    """Друга валюта в тексті <body> (не атрибути, не скрипти/JSON-LD; <template> — так, це копії стрічок). Ідемпотентно."""
+    """Друга валюта в тексті <body> (не атрибути, не скрипти/JSON-LD; <template> — так, це копії стрічок). Ідемпотентно:
+    стара «(≈ …)» знімається й ставиться заново за поточним курсом. Бюджет HTML (tools/ui/ui.py) важливіший: що не вміщується —
+    лишається лише в $ (chrome.apply викликає це останнім кроком, коли сторінка вже повна)."""
     if lang not in EUR_LANGS + UAH_LANGS or '$' not in s:
         return s
     if re.match(r'(?:[a-z]{2}/)?(?:ozdoba|kabinet)', rel.replace(os.sep, '/')):
@@ -127,17 +148,41 @@ def apply(s, lang, rel=''):
     r = rates()
     if not r.get('usd_uah'):
         return s
+    s = strip(s)
     i = s.find('<body')
     if i < 0:
         return s
+    room = [_limit(s, rel) - len(s.encode()), 0]
     body, out, pos = s[i:], [], 0
     for m in _SKIP.finditer(body):
         x = body[pos:m.start()]
-        out += [_text(x, lang, r) if '$' in x else x, m.group(0)]
+        out += [_text(x, lang, r, room) if '$' in x else x, m.group(0)]
         pos = m.end()
     x = body[pos:]
-    out.append(_text(x, lang, r) if '$' in x else x)
+    out.append(_text(x, lang, r, room) if '$' in x else x)
+    if room[1]:
+        SKIPPED[rel] = room[1]
+    else:
+        SKIPPED.pop(rel, None)
     return s[:i] + ''.join(out)
+
+
+def report():
+    """Сторінки, де бюджет HTML не вмістив другу валюту біля всіх цін «від»."""
+    import glob, chrome
+    n = 0
+    for f in sorted(glob.glob(os.path.join(ROOT, '**', '*.html'), recursive=True)):
+        rel = os.path.relpath(f, ROOT)
+        if rel.startswith(('tools', 'node_modules')):
+            continue
+        s = open(f, encoding='utf-8').read()
+        lang = chrome.page_lang(s)
+        if lang in EUR_LANGS + UAH_LANGS and '$' in s:
+            apply(s, lang, rel)
+            if rel in SKIPPED:
+                n += 1
+                print(f'fx: {rel}: без ≈ (бюджет HTML) — {SKIPPED[rel]} цін')
+    print(f'fx: сторінок з пропусками через бюджет: {n}')
 
 
 def js_block(r=None):
@@ -174,6 +219,9 @@ def update():
 if __name__ == '__main__':
     if '--update' in sys.argv:
         update()
+    if '--report' in sys.argv:
+        sys.path.insert(0, HERE)
+        report()
     if '--demo' in sys.argv:
         for l, t in [('uk', 'від $550/м² (роботи)'), ('ru', 'от $1 100/м²'), ('de', 'ab $30/m²'), ('fr', 'dès $1 100/m²'),
                      ('pl', 'od $50/ar'), ('pt', 'a partir de $600/m²'), ('es', 'desde $6/m²')]:

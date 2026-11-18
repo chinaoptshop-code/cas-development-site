@@ -1032,8 +1032,6 @@ def apply(s, rel):
     s = call_label(s, lang)
     s = nbsp_prices(s, lang)
     s = prices_all(s, lang)
-    import fx  # «від $550/м² (≈ €500/м²)» de/fr/es/pt/pl, «(≈ 25 000 ₴/м²)» uk/ru — курси НБУ з tools/site/fx.json (Михайло 18.11.2026)
-    s = fx.apply(s, lang, rel)
     import ldfix  # JSON-LD: метадані фото (creditText/copyrightNotice), без графа в графі (tools/site/ldfix.py)
     s = ldfix.apply(s, rel)
     s = local_cases(s, lang)
@@ -1053,7 +1051,10 @@ def apply(s, rel):
     s = CRIT_RX.sub('', s).replace('</head>', CSS_TAG + '\n</head>', 1)
     if JS_TAG not in s:
         s = s.replace('</body>', JS_TAG + '\n</body>', 1)
-    return full_css(s)
+    # «від $550/м² (≈ €500/м²)» de/fr/es/pt/pl, «(≈ 25 000 ₴/м²)» uk/ru — курси НБУ з tools/site/fx.json (Михайло 18.11.2026);
+    # останнім кроком: сторінка вже повна, і друга валюта не виходить за бюджет HTML (tools/site/fx.py)
+    import fx
+    return fx.apply(full_css(s), lang, rel)
 
 
 # Один viewport на всі сторінки: viewport-fit=cover — сторінка на весь екран iPhone (Dynamic Island, home indicator,

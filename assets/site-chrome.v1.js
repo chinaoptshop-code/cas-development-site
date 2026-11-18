@@ -16,8 +16,8 @@
   W.casFx = function (n, l) {
     var L = lg(l), R = W.casFxR || {}, v = +n, st, s;
     if (!(v > 0) || !R.uah) return '';
-    if (/^(de|fr|es|pt|pl)$/.test(L) && R.eur) { v = v * R.uah / R.eur; st = v < 100 ? 1 : v < 1000 ? 10 : 50; s = '\u20ac' + W.casNum(Math.round(v / st) * st || st, L).replace(/\u00a0/g, '\u202f'); }
-    else if (/^(uk|ru)$/.test(L)) { v = v * R.uah; st = v < 1000 ? 10 : v < 10000 ? 100 : 500; s = W.casNum(Math.round(v / st) * st || st, L).replace(/\u00a0/g, '\u202f') + '\u00a0\u20b4'; }
+    if (/^(de|fr|es|pt|pl)$/.test(L) && R.eur) { v = v * R.uah / R.eur; st = v < 100 ? 1 : v < 1000 ? 10 : v < 1e4 ? 50 : v < 1e5 ? 100 : 1000; s = '\u20ac' + W.casNum(Math.round(v / st) * st || st, L).replace(/\u00a0/g, '\u202f'); }
+    else if (/^(uk|ru)$/.test(L)) { v = v * R.uah; st = v < 1000 ? 10 : v < 1e4 ? 100 : v < 1e5 ? 500 : v < 1e6 ? 1000 : 10000; s = W.casNum(Math.round(v / st) * st || st, L).replace(/\u00a0/g, '\u202f') + '\u00a0\u20b4'; }
     else return '';
     return ' (\u2248\u00a0' + s + ')';
   };
