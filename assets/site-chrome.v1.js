@@ -10,6 +10,17 @@
   };
   // ціни: тисячі — вузький нерозривний пробіл U+202F ($1 100), en/zh — кома ($1,100) (Михайло 16.11.2026)
   W.casUsd = function (n, l) { var c = lg(l) === 'zh' ? ',' : '\u202f'; return '$' + W.casNum(Math.round(+n), l).replace(/\u00a0/g, c); };
+  // друга валюта біля ціни (Михайло 18.11.2026, «$ головна + ≈€/≈₴»): de fr es pt pl — « (≈ €500)», uk ru — « (≈ 25 000 ₴)», інші — ''.
+  // Курси НБУ — блок нижче пише tools/site/fx.py (--update раз на місяць); округлення те саме, що fx.approx у Python.
+  /*fx*/W.casFxR = {uah: 45.202, eur: 49.5717, d: "19.11.2026"};/*/fx*/
+  W.casFx = function (n, l) {
+    var L = lg(l), R = W.casFxR || {}, v = +n, st, s;
+    if (!(v > 0) || !R.uah) return '';
+    if (/^(de|fr|es|pt|pl)$/.test(L) && R.eur) { v = v * R.uah / R.eur; st = v < 100 ? 1 : v < 1000 ? 10 : 50; s = '\u20ac' + W.casNum(Math.round(v / st) * st || st, L).replace(/\u00a0/g, '\u202f'); }
+    else if (/^(uk|ru)$/.test(L)) { v = v * R.uah; st = v < 1000 ? 10 : v < 10000 ? 100 : 500; s = W.casNum(Math.round(v / st) * st || st, L).replace(/\u00a0/g, '\u202f') + '\u00a0\u20b4'; }
+    else return '';
+    return ' (\u2248\u00a0' + s + ')';
+  };
 })(window);
 /* Safari/WebKit запускає defer-скрипти, не дочекавшись повного site-chrome.v1.css у кінці <body> (Chrome чекає): усе нижче міряє верстку
    (стрічки, згортання data-c, сцени, ліниві фото) — тож стартує лише після цього CSS. Chrome — без змін (CSS уже готовий). */

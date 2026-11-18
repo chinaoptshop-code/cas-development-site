@@ -522,6 +522,8 @@ def hide(s, lang):
     """Тексти сторінки без назви Оздоби й мінімального замовлення. Ідемпотентно."""
     if not TRIG.search(norm(s)):
         return s
+    import fx  # «$10 000 (≈ 452 000 ₴)» від fx.apply не має ховати мінімум від правил: другу валюту fx ставить знову після hide
+    s = fx.strip(s)
     i = s.find('<body')
     head, body = (s, '') if i < 0 else (s[:i], s[i:])
     # head: <title>, meta-атрибути, JSON-LD

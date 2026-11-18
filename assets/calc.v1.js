@@ -71,7 +71,7 @@ function casCalcInit() {
     var s = res.s, ok = !!(a && s), st = !a ? '—' : s ? f(s) : C.est, E = $('cAreaE'), inp = $('cArea');
     inp.setAttribute('aria-invalid', String(ar.bad)); E.hidden = !(ar.bad || ar.cut); E.className = ar.bad ? 'er' : '';
     E.textContent = ar.bad ? C.bad : ar.cut ? C.mxn.replace('{m}', casNum(a) + ' ' + (unit === 's' ? C.ss : C.m2)) : '';
-    $('cSumL').hidden = !ok; $('cSum').textContent = st; $('cPlus').hidden = !(ok && res.est);
+    $('cSumL').hidden = !ok; $('cSum').textContent = st; var X = $('cSumX'); if (!X) { X = document.createElement('span'); X.id = 'cSumX'; $('cSum').parentNode.insertBefore(X, $('cSum').nextSibling); } X.textContent = ok && window.casFx ? casFx(s) : ''; // ≈ €/₴ (fx.py) $('cPlus').hidden = !(ok && res.est);
     var ul = $('cRows'); ul.textContent = '';
     if (a) labs.forEach(function (l) { var li = document.createElement('li'), sp = document.createElement('span'), em = document.createElement('em'); sp.textContent = l[0]; em.textContent = l[1]; li.appendChild(sp); li.appendChild(em); ul.appendChild(li); });
     ul.hidden = !a; $('cNote').textContent = notes.join(' ');

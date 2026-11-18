@@ -930,7 +930,8 @@ def apply(s, rel):
                 out += [price_fmt(body[pos:m.start()], lang), m.group(0)]
                 pos = m.end()
             s = s[:i] + ''.join(out) + price_fmt(body[pos:], lang)
-        return prices_all(s, lang)
+        import fx  # друга валюта біля «від $…» (tools/site/fx.py)
+        return prices_all(fx.apply(s, lang, rel), lang)
     lang, path, alts = page_lang(s), rel_to_path(rel), alternates(s)
     if rel in [i18n.path_to_file(h) for h in HOME.values()]:
         alts.setdefault(lang, HOME[lang])
@@ -1031,6 +1032,8 @@ def apply(s, rel):
     s = call_label(s, lang)
     s = nbsp_prices(s, lang)
     s = prices_all(s, lang)
+    import fx  # «від $550/м² (≈ €500/м²)» de/fr/es/pt/pl, «(≈ 25 000 ₴/м²)» uk/ru — курси НБУ з tools/site/fx.json (Михайло 18.11.2026)
+    s = fx.apply(s, lang, rel)
     import ldfix  # JSON-LD: метадані фото (creditText/copyrightNotice), без графа в графі (tools/site/ldfix.py)
     s = ldfix.apply(s, rel)
     s = local_cases(s, lang)
