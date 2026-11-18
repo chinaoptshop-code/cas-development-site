@@ -149,6 +149,13 @@
         (p.next_step ? '<p class="tm-next">Наступний крок: <b>' + esc(p.next_step) + '</b>' + (p.next_date ? ' · ' + dmy(p.next_date) : '') + '</p>' : '') +
         (p.deadline ? '<p class="' + (p.deadline < today() ? 'err' : 'muted') + '">Здача обʼєкта: ' + dmy(p.deadline) + (p.deadline < today() ? ' — прострочено' : '') + '</p>' : '') +
         checklist(p) +
+        // контакти обʼєкта (бригади, майстри, постачальники): лише перегляд, дзвінок одним дотиком
+        (p.contacts && p.contacts.length ? '<details class="tm-more"><summary>Контакти обʼєкта · ' + p.contacts.length + '</summary><ul class="tm-cts">' + p.contacts.map(function (c) {
+          var k = c.contact;
+          return '<li><b>' + esc(k.name || k.company || '') + '</b> <small class="muted">' + esc(k.type_label) + (c.role ? ' · ' + esc(c.role) : '') + '</small>' +
+            (k.phone ? '<a class="tm-btn ghost" href="tel:+' + digits(k.phone) + '">' + ic('phone') + esc(k.phone) + '</a>' : '') +
+            (k.tg ? '<a class="tm-btn ghost" href="https://t.me/' + esc(k.tg) + '" target="_blank" rel="noopener">@' + esc(k.tg) + '</a>' : '') + '</li>';
+        }).join('') + '</ul></details>' : '') +
         '<div class="tm-contacts">' + (p.address ? '<a class="tm-btn ghost" href="' + esc(mapUrl) + '" target="_blank" rel="noopener">' + ic('map') + esc(p.address) + '</a>' : '') +
         (p.client_phone ? '<a class="tm-btn ghost" href="tel:+' + digits(p.client_phone) + '">' + ic('phone') + 'Клієнт: ' + esc(p.client_phone) + '</a>' : '') + '</div>' +
         '<div class="tm-actions">' + (can('reports.upload') ? '<button class="tm-btn" data-act="report" data-p="' + p.id + '">' + ic('cam') + 'Фотозвіт</button>' : '') +
@@ -156,7 +163,9 @@
         (can('issues.report') ? '<button class="tm-btn warn" data-act="issue" data-p="' + p.id + '">' + ic('warn') + 'Проблема</button>' : '') + '</div>' +
         (p.issues && p.issues.length ? '<div class="tm-issues">' + p.issues.map(function (i) { return '<p>⚠ ' + esc(i.note) + ' <small class="muted">' + esc(i.staff_name || '') + ' · ' + dmy(i.created_at) + '</small></p>'; }).join('') + '</div>' : '') +
         '<details class="tm-more"><summary>Етапи, команда, звіти</summary>' +
-          '<ol class="tm-stages">' + p.stages.map(function (s) { return '<li class="st-' + s.status + '"><span>' + esc(s.name) + '</span><small>' + esc(s.status_label) + (s.end ? ' · ' + dmy(s.end) : '') + '</small><i style="--w:' + (+s.progress || 0) + '%"></i></li>'; }).join('') + '</ol>' +
+          '<ol class="tm-stages">' + p.stages.map(function (s) { return '<li class="st-' + s.status + '"><span>' + esc(s.name) + (s.mine ? ' <b>· мій</b>' : '') + '</span><small>' + esc(s.status_label) + (s.end ? ' · до ' + dmy(s.end) : '') +
+            (s.staff_name && !s.mine ? ' · ' + esc(s.staff_name) : '') + (s.revisions ? ' · правки: ' + s.revisions + (s.rev_max ? ' з ' + s.rev_max : '') : '') + (s.approved_at ? ' · ✓ погоджено' : '') +
+            (s.rev_note && !s.approved_at ? '<br>Клієнт: «' + esc(s.rev_note) + '»' : '') + '</small><i style="--w:' + (+s.progress || 0) + '%"></i></li>'; }).join('') + '</ol>' +
           (p.lead ? '<p class="muted">Відповідальний: <b>' + esc(p.lead.name) + '</b> (' + esc(p.lead.role_label) + ')</p>' : '') +
           (p.team && p.team.length ? '<p class="muted">Команда: ' + p.team.map(function (t) { return esc(t.name) + ' — ' + esc(t.task || t.role_label); }).join('; ') + '</p>' : '') +
           (p.reports.length ? '<div class="tm-reps">' + p.reports.map(function (r) { return '<div><small>' + dmy(r.date) + ' · ' + esc(r.title || '') + '</small><div class="tm-ph">' + r.photos.map(function (u) { return '<a href="' + esc(u) + '" target="_blank" rel="noopener"><img src="' + esc(u) + '" alt="Фото з обʼєкта" width="88" height="66" loading="lazy"></a>'; }).join('') + '</div></div>'; }).join('') + '</div>' : '<p class="muted">Фотозвітів ще не було.</p>') +

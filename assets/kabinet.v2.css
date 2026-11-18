@@ -376,3 +376,10 @@ a.kb-ord:hover{border-color:var(--brass)}
 .kb-appr{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-top:8px;font-weight:400}
 .kb-appr small{color:var(--glow);font-size:var(--fs-small)}
 .kb-appr .btn,.kb-appr .btn.sm{min-height:44px;margin:0;display:inline-flex;align-items:center;justify-content:center}
+.kb-revf{display:grid;gap:8px;margin-top:8px;font-weight:400}
+.kb-revf label{display:grid;gap:6px;font-size:var(--fs-small)}
+.kb-revf textarea{font:inherit;font-size:16px;padding:10px 12px;border-radius:14px;border:1px solid var(--line,rgba(127,127,127,.35));background:transparent;color:inherit;width:100%;box-sizing:border-box}
+.kb-revf .row{display:flex;flex-wrap:wrap;gap:8px}
+.kb-revf .btn{min-height:44px;margin:0}
+.kb-revs{display:inline-block;margin-inline-start:6px;font-weight:400}
+.kb-revn{display:block;margin-top:4px}

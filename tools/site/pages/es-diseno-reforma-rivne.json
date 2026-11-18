@@ -1,0 +1,187 @@
+{
+ "slug": "diseno-reforma-rivne",
+ "lang": "es",
+ "service": "Interiorismo, reforma y construcción en Rivne",
+ "title": "Interiorismo en Rivne — reforma y construcción | CAS",
+ "description": "Interiorismo en Rivne: pisos de obra nueva y antiguos, casas en las afueras. Diseño desde $30/m², reforma desde $550/m², casas desde $600/m².",
+ "h1": "Interiorismo, reforma y construcción en Rivne",
+ "price": "reforma desde $550/m² · diseño desde $30/m² · casa desde $600/m²",
+ "lead": "Interiorismo en Rivne para pisos en promociones nuevas y edificios soviéticos, y para casas en las afueras y en Polesia. El proyecto, a distancia o con visitas; la reforma y la construcción, con nuestro equipo y condiciones individuales.",
+ "parent": [
+  "/es/diseno-reforma-ucrania",
+  "Toda Ucrania"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Rivne",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Óblast de Rivne"
+   }
+  }
+ ],
+ "near": [
+  "Cerca: otras ciudades",
+  [
+   [
+    "/es/diseno-reforma-lutsk",
+    "Lutsk"
+   ],
+   [
+    "/es/diseno-reforma-zhytomyr",
+    "Zhytómyr"
+   ],
+   [
+    "/es/diseno-reforma-ternopil",
+    "Ternópil"
+   ],
+   [
+    "/es/diseno-reforma-ucrania",
+    "Todas las ciudades de Ucrania"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Diseño de interiores",
+   [
+    "medición y distribución",
+    "visualizaciones 3D y planos de ejecución",
+    "especificación de materiales y muebles",
+    "supervisión de autor"
+   ]
+  ],
+  [
+   "Reforma llave en mano",
+   [
+    "pisos de obra nueva y de segunda mano",
+    "casas y chalés",
+    "mano de obra y materiales base desde $550/m²",
+    "presupuesto antes de empezar"
+   ]
+  ],
+  [
+   "Construcción de casas",
+   [
+    "proyecto arquitectónico desde $12/m²",
+    "estructura desde $600/m²",
+    "llave en mano con acabados desde $1 100/m²",
+    "instalaciones y cubierta"
+   ]
+  ],
+  [
+   "Muebles y equipamiento",
+   [
+    "amueblamiento desde $250/m²",
+    "cocinas y armarios a medida",
+    "muebles e iluminación directos de China",
+    "estilismo final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Rivne: una ciudad verde y parcelas de Polesia",
+   [
+    "Rivne es una ciudad verde de parques y barrios de bloques donde en los últimos años han surgido muchas promociones nuevas. Las afueras y la Polesia que la rodea son casas con parcelas grandes entre bosques y humedales.",
+    "Las parcelas de Polesia suelen tener el nivel freático alto y suelos de turba. Aquí es crucial proyectar bien la cimentación y el drenaje, y lo resolvemos antes de cualquier decisión de interiorismo."
+   ]
+  ],
+  [
+   "Interiorismo en Rivne",
+   [
+    "Para pisos en Rivne, una distribución funcional, almacenaje y luz; para casas, una paleta cálida con madera, chimenea y grandes ventanas al jardín. Se puede elegir el paquete de distribución, el básico o el completo con dirección de diseño. Proyecto de diseño desde $30 por m² (mínimo $2 500); los paquetes están en la página [estudio de interiorismo](/es/diseno-interiores)."
+   ]
+  ],
+  [
+   "Reforma llave en mano y construcción de casas",
+   [
+    "Reformamos pisos y casas, desde las instalaciones nuevas hasta los acabados. Construimos casas de bloque, ladrillo, entramado y madera maciza; la cimentación se proyecta tras el estudio de la parcela; vea también [proyecto de casa](/es/proyecto-de-casa).",
+    "La reforma la ejecuta nuestro equipo en plantilla: desde $550 por m² de obra y materiales de base; los materiales de acabado, los muebles y los electrodomésticos van aparte, según presupuesto. El alcance, el calendario y el plan de pagos (50/50, 50/30/20 o por fases, con un anticipo desde el 10 %) constan en el contrato; el desplazamiento del equipo se acuerda de forma individual. Proyecto arquitectónico desde $12 por m², estructura desde $600 por m², casa llave en mano con acabados desde $1 100 por m²: más en [reforma llave en mano](/es/reforma-llave-en-mano) y [construcción de casas](/es/construccion-de-casas)."
+   ]
+  ],
+  [
+   "Logística, control e informes",
+   [
+    "El proyecto y las aprobaciones se llevan online; viajamos para las mediciones y las fases clave según el calendario del contrato, y las condiciones y el coste de los desplazamientos y del alojamiento del equipo son individuales. Entre visitas, informes fotográficos cada 1–2 semanas y, con coste adicional, cámara online en obra 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1DhAA8_vK0zo3E-900.webp",
+   "A-Frame House"
+  ]
+ ],
+ "steps": [
+  [
+   "Consulta",
+   "Por teléfono o en línea: inmueble, objetivos, presupuesto."
+  ],
+  [
+   "Medición y briefing",
+   "Medidas, deseos, datos de partida."
+  ],
+  [
+   "Proyecto y presupuesto",
+   "Diseño o arquitectura; precio y calendario en el contrato."
+  ],
+  [
+   "Obras",
+   "Reforma o construcción con informes fotográficos."
+  ],
+  [
+   "Entrega",
+   "Acta y garantía de 12 meses sobre los trabajos."
+  ]
+ ],
+ "faq": [
+  [
+   "¿Se puede construir en una parcela con el nivel freático alto?",
+   "Sí, pero el proyecto de cimentación y drenaje se hace tras el estudio de la parcela. Estructura desde $600 por m²."
+  ],
+  [
+   "¿Cuánto cuesta una reforma en Rivne?",
+   "Desde $550 por m² de obra y materiales de base; los materiales de acabado, los muebles y los electrodomésticos van aparte, según presupuesto."
+  ],
+  [
+   "¿Cuánto cuesta un proyecto de diseño en Rivne?",
+   "Desde $30 por m², mínimo $2 500. El paquete de distribución empieza en $6 por m² y el completo con dirección de diseño, en $45 por m²."
+  ]
+ ],
+ "rel": [
+  [
+   "/es/reforma-casa-llave-en-mano",
+   "Reforma de casa llave en mano"
+  ],
+  [
+   "/es/equipamiento-llave-en-mano",
+   "Equipamiento de proyectos llave en mano"
+  ],
+  [
+   "/es/calculadora-reforma",
+   "Calculadora del coste de reforma"
+  ],
+  [
+   "/es/contrato-garantia-pago",
+   "Contrato, garantía y pago (modelo de contrato)"
+  ],
+  [
+   "/es/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

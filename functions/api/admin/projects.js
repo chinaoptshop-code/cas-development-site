@@ -13,6 +13,9 @@
 //                            deadline?, scheme?: '50/50'|'50/30/20'|'50/40/10'}
 //                           stages: [{id?, name, status?, progress, start?, end?, note?, approved_at?, revisions?}] — id етапу сервер ставить сам;
 //                           без stages — шаблон етапів за типом (TEMPLATES); scheme — графік платежів з привʼязкою до етапів (finance.edit)
+//          type 'from_lead': {order_id, title?} — заявка → проєкт (projects.edit + видима заявка): клієнт (leadClient), тип і площа з пропозиції
+//                           (orders.offer, migrations/0014), адреса — місто заявки, відповідальний — з заявки; заявка → «Проєкт: етапи», orders.project_id;
+//                           повторно → 409 {id}
 //          type 'task':     {project_id, title, stage_id?, staff_id?, due_date?, sort?}   (міграція 0012)
 //          type 'report':   {project_id, date, title?, note?, photos: ["https://…"], stage_id?}
 //          type 'document': {client_id, project_id?, order_id?, kind, title, url, stage_id?}   — акт етапу: kind 'act' + stage_id
@@ -25,19 +28,27 @@
 // CSRF, JSON-only і розмір тіла — functions/api/_middleware.js.
 import {
   admin, body, cameraOf, CURRENCIES, date, httpsUrl, int, json, bad, newStageKey, noTable, notReady,
-  PAY_STATUS, STAGE_STATUS, stageKey, stageStatus, txt,
+  PAY_STATUS, progressOf, STAGE_STATUS, stageKey, stageStatus, txt,
 } from '../../_account.js';
-import { normCode } from '../../_lib.js';
+import { normCode, normalizePhone } from '../../_lib.js';
 import { escHtml, notifyStaff } from '../../_alerts.js';
-import { audit, canSeeProject, need, projectScope, shapeProject, staffById } from '../../_roles.js';
+import { audit, canSeeProject, need, orderScope, projectScope, shapeProject, staffById } from '../../_roles.js';
 import { limited } from '../../_rate.js';
+import { leadContact, projectContacts } from '../../_partners.js';
 
-const SERVICES = ['design', 'repair', 'build', 'furnish', 'landscape', 'other'];
+// arch — архітектурний проєкт (будинок, комерційна будівля): ескіз, АР, КР, інженерні розділи, генплан, дозвільні документи
+const SERVICES = ['design', 'arch', 'repair', 'build', 'furnish', 'landscape', 'other'];
+// проєктування: погодження етапів клієнтом, раунди правок, результати етапу (документи зі stage_id)
+export const DESIGN_SERVICES = ['design', 'arch'];
 const STATUS = ['active', 'paused', 'done'];
-const KINDS = ['contract', 'estimate', 'invoice', 'act', 'design', 'other'];
+// render / drawing / spec — результати етапів проєктування (візуалізації, креслення, специфікації), привʼязуються до stage_id
+const KINDS = ['contract', 'estimate', 'invoice', 'act', 'design', 'render', 'drawing', 'spec', 'other'];
 // Шаблони етапів за типом проєкту — одне джерело правди (адмінка бере їх із GET як templates)
 export const TEMPLATES = {
-  design: ['Обміри й ТЗ', 'Планувальне рішення', 'Концепція / мудборд', '3D-візуалізації', 'Робочі креслення', 'Специфікації й комплектація', 'Авторський нагляд'],
+  // дизайн інтерʼєру — як у практиці студії (Михайло 18.11.2026): бриф → замір → планування → концепція → 3D → креслення → комплектація → нагляд
+  design: ['Бриф', 'Замір / 3D-замір', 'Планувальне рішення', 'Концепція / колажі', '3D-візуалізації', 'Робочі креслення', 'Специфікації й комплектація', 'Авторський нагляд'],
+  // архітектурний проєкт: ОВ / ВК / ЕО — за завданням (CLAUDE.md: «ескізний + робочий АР і КР; ОВ, ВК, ЕО, генплан — за завданням»)
+  arch: ['Ескізний проєкт', 'АР — архітектурні рішення', 'КР — конструктивні рішення', 'ОВ / ВК / ЕО (за завданням)', 'Генплан', 'Супровід дозвільних документів'],
   repair: ['Демонтаж', 'Чорнові роботи', 'Інженерні мережі', 'Штукатурка й стяжка', 'Чистове оздоблення', 'Меблі й техніка', 'Здача й прибирання'],
   build: ['Проєкт і дозволи', 'Фундамент', 'Коробка', 'Покрівля', 'Вікна й фасад', 'Інженерія', 'Оздоблення', 'Благоустрій', 'Здача'],
   furnish: ['Підбір і специфікація', 'Погодження', 'Замовлення', 'Виробництво', 'Доставка', 'Монтаж'],
@@ -66,8 +77,39 @@ function stagesOf(v) {
     if (ap) out.approved_at = ap;
     if (ap && s.approved_by === 'client') out.approved_by = 'client'; // погодив сам клієнт у кабінеті (POST /api/account/projects)
     if (rv) out.revisions = rv;
+    // відповідальний за етап (staff.id; перевірка активності — checkStageStaff) і кругів правок за договором
+    const sid = int(s && s.staff_id), rm = int(s && s.rev_max);
+    if (sid > 0) out.staff_id = sid;
+    if (rm > 0) out.rev_max = Math.min(rm, 20);
+    // остання вимога правок від клієнта (POST /api/account/projects, action 'revise') — зберігаємо при «Зберегти проєкт»
+    const rn = txt(s && s.rev_note, 1000), ra = date(s && s.rev_at);
+    if (rn && ra) { out.rev_note = rn; out.rev_at = ra; }
+    // історія погоджень і правок етапу (пише кабінет клієнта й нагадування) — зберігаємо як є, до 30 записів
+    const hist = histOf(s && s.hist);
+    if (hist.length) out.hist = hist;
     return out;
   });
+}
+const HIST_ACT = ['approve', 'revise', 'remind'];
+export function histOf(v) {
+  return Array.isArray(v) ? v.filter(h => h && HIST_ACT.includes(h.act) && /^\d{4}-\d{2}-\d{2}( \d{2}:\d{2})?$/.test(String(h.at || '')))
+    .slice(-30).map(h => ({ act: h.act, at: String(h.at), by: txt(h.by, 80), ...(h.note ? { note: txt(h.note, 1000) } : {}) })) : [];
+}
+// відповідальні етапів: нові — лише активні працівники; кожен потрапляє в команду обʼєкта (бачить його в /kabinet/team)
+// і отримує Telegram. Уже призначених раніше (навіть якщо працівника вимкнули) не перевіряємо — збереження не ламається.
+const stageStaff = j => { try { return JSON.parse(j || '[]').filter(s => s && s.staff_id).map(s => [s.staff_id, s.name]); } catch { return []; } };
+async function checkStageStaff(env, stagesJson, prevJson) {
+  const had = new Set(stageStaff(prevJson).map(([id, name]) => id + '|' + name));
+  const fresh = stageStaff(stagesJson).filter(([id, name]) => !had.has(id + '|' + name));
+  for (const [id] of fresh) { const st = await staffById(env, id); if (!st || !st.active) return { error: bad('Відповідальний етапу: працівника не знайдено або вимкнено', 422) }; }
+  return { fresh };
+}
+async function stageAssigned(env, x, projectId, title, fresh) {
+  for (const [sid, name] of fresh) {
+    await joinTeam(env, projectId, sid);
+    if (sid !== x.staffId) await notifyStaff(env, sid, `📐 Вам призначено етап <b>${escHtml(name)}</b>\nОбʼєкт: ${escHtml(title)}`,
+      { inline_keyboard: [[{ text: '📋 Мої задачі', url: 'https://cas-develop.com/kabinet/team' }]] });
+  }
 }
 // графік платежів за схемою: аванс — перший етап, проміжний — середній, останній — останній етап
 function schemeRows(key, stages, amount, currency) {
@@ -209,22 +251,30 @@ export async function onRequestGet({ request, env }) {
       TK = ids.length ? (await env.DB.prepare(`SELECT t.*, s.name AS staff_name FROM project_tasks t LEFT JOIN staff s ON s.id = t.staff_id WHERE t.project_id IN (${q})
           ORDER BY t.done, t.sort, COALESCE(t.due_date, '9999'), t.id LIMIT 3000`).bind(...ids).all()).results : [];
     } catch (e) { if (!noTable(e)) throw e; tasksReady = false; }
+    let LD = []; // заявки, з яких виросли проєкти: номер і джерело (сторінка-джерело — лише leads.view_all)
+    try {
+      const oids = [...new Set(P.map(p => p.order_id).filter(Boolean))];
+      LD = oids.length ? (await env.DB.prepare(`SELECT id, number, source, ref_path FROM orders WHERE id IN (${oids.map(() => '?').join(',')})`).bind(...oids).all()).results : [];
+    } catch (e) { if (!noTable(e)) throw e; }
+    const CT = await projectContacts(env, x, ids); // контакти обʼєкта (бригади, постачальники…) — migrations/0015
     const t = today();
     const projects = P.map(p => {
+      const ld = p.order_id ? LD.find(o => o.id === p.order_id) : null;
       const tk = TK.filter(y => y.project_id === p.id);
       return shapeProject({ ...p, team: PS.filter(y => y.project_id === p.id), assignee_name: (AS.find(s => s.id === p.assignee_staff_id) || {}).name || null,
-        overdue: !!(p.deadline && p.deadline < t && p.status !== 'done'), tasks_total: tk.length, tasks_done: tk.filter(y => y.done).length }, x);
+        overdue: !!(p.deadline && p.deadline < t && p.status !== 'done'), progress: progressOf(p.stages), contacts: CT[p.id] || [],
+        ...(ld ? { lead: { id: ld.id, number: ld.number, source: ld.source, ...(x.can('leads.view_all') ? { ref_path: ld.ref_path } : {}) } } : {}), tasks_total: tk.length, tasks_done: tk.filter(y => y.done).length }, x);
     });
     return json({
       projects, reports: R, documents: D, payments: PAY, issues: ISS, tasks: TK, tasks_ready: tasksReady, online, services: SERVICES, statuses: STATUS, kinds: KINDS,
-      templates: TEMPLATES, schemes: SCHEMES, today: t,
+      templates: TEMPLATES, schemes: SCHEMES, design_services: DESIGN_SERVICES, today: t,
       can: { edit: x.can('projects.edit'), finance: x.can('finance.view'), finance_edit: x.can('finance.edit'), report: x.can('reports.upload'), task: canTask(x) },
       stage_statuses: STAGE_STATUS, pay_statuses: PAY_STATUS, currencies: CURRENCIES,
     });
   });
 }
 
-const PERM = { project: 'projects.edit', document: 'projects.edit', payment: 'finance.edit', report: 'reports.upload', partner: 'partners.manage', issue: 'projects.edit', task: 'projects.edit_stage' };
+const PERM = { from_lead: 'projects.edit', project: 'projects.edit', document: 'projects.edit', payment: 'finance.edit', report: 'reports.upload', partner: 'partners.manage', issue: 'projects.edit', task: 'projects.edit_stage' };
 const deny = p => bad('Немає права: ' + p, 403);
 const permOk = (x, type) => (type === 'task' ? canTask(x) : x.can(PERM[type]));
 
@@ -260,6 +310,72 @@ async function assign(env, request, x, pr, d) {
 const money = d => has(d, 'contract_amount') || has(d, 'contract_currency');
 const contractOf = d => ({ amount: num(d.contract_amount), currency: CURRENCIES.includes(d.contract_currency) ? d.contract_currency : 'USD' });
 
+const SVC_LABEL = { design: 'Дизайн-проєкт', arch: 'Архітектурний проєкт', repair: 'Ремонт', build: 'Будівництво', furnish: 'Комплектація', landscape: 'Ландшафт', other: 'Проєкт' };
+// тип проєкту за текстом заявки (коли пропозиції ще немає)
+export function guessService(t) {
+  const s = String(t || '').toLowerCase();
+  return /архіт|архпро|architect/.test(s) ? 'arch' : /дизайн|design|інтерʼ?єр|інтер'єр/.test(s) ? 'design' : /ландшафт|landscape|сад/.test(s) ? 'landscape'
+    : /будів|будинок|house|котедж|коробк/.test(s) ? 'build' : /ремонт|renovat|офіс|office/.test(s) ? 'repair' : /меблю|комплект|furnish/.test(s) ? 'furnish' : 'other';
+}
+// Клієнт для проєкту з заявки. Лише підтверджені звʼязки: заявка вже має client_id (подана з кабінету) → вхід за цим номером, підтверджений
+// Telegram-ботом (login_requests confirmed/used; телефон у профілі клієнт може вписати будь-який — йому не віримо) → новий запис clients
+// provider 'phone' (provider_id = номер: щойно клієнт увійде за номером, він побачить проєкт) або 'crm' без номера.
+export async function leadClient(env, o) {
+  if (o.client_id && await env.DB.prepare('SELECT 1 FROM clients WHERE id = ?').bind(o.client_id).first()) return o.client_id;
+  const phone = normalizePhone(o.phone);
+  if (phone) {
+    const lr = await env.DB.prepare("SELECT client_id FROM login_requests WHERE phone = ? AND status IN ('confirmed', 'used') AND client_id IS NOT NULL ORDER BY created_at DESC LIMIT 1").bind(phone).first().catch(() => null);
+    if (lr && await env.DB.prepare('SELECT 1 FROM clients WHERE id = ?').bind(lr.client_id).first()) return lr.client_id;
+  }
+  const [prov, pid] = phone ? ['phone', phone] : ['crm', 'lead-' + o.id];
+  await env.DB.prepare('INSERT OR IGNORE INTO clients (provider, provider_id, name, email, phone) VALUES (?, ?, ?, ?, ?)')
+    .bind(prov, pid, txt(o.name, 120), txt(o.email, 200), phone).run();
+  return (await env.DB.prepare('SELECT id FROM clients WHERE provider = ? AND provider_id = ?').bind(prov, pid).first()).id;
+}
+
+// створення проєкту: POST type 'project' і конверсія заявки (type 'from_lead')
+async function newProject(env, request, x, d) {
+  if ((money(d) || d.scheme) && !x.can('finance.edit')) return deny('finance.edit');
+  const cl = await env.DB.prepare('SELECT id FROM clients WHERE id = ?').bind(int(d.client_id)).first();
+  if (!cl) return bad('Клієнта не знайдено', 404);
+  // без етапів — шаблон за типом проєкту
+  const svc = SERVICES.includes(d.service) ? d.service : 'other';
+  const { p, error: e2 } = projectFields(Array.isArray(d.stages) ? d : { ...d, stages: TEMPLATES[svc].map(name => ({ name, status: 'planned', progress: 0 })) });
+  if (e2) return bad(e2, 422);
+  const ss = await checkStageStaff(env, p.stages, '[]');
+  if (ss.error) return ss.error;
+  const cam = cameraFields(d);
+  if (cam && cam.error) return bad(cam.error, 422);
+  const r = await env.DB.prepare('INSERT INTO projects (client_id, title, service, address, area, status, stages, next_step, next_date, manager) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')
+    .bind(cl.id, p.title, p.service, p.address ?? null, p.area ?? null, p.status, p.stages, p.next_step ?? null, p.next_date ?? null, p.manager ?? null).run();
+  const pid = r.meta.last_row_id;
+  if (cam) await env.DB.prepare('UPDATE projects SET camera_url = ?, camera_note = ? WHERE id = ?').bind(cam.url, cam.note, pid).run();
+  if (money(d)) { const m = contractOf(d); await env.DB.prepare('UPDATE projects SET contract_amount = ?, contract_currency = ? WHERE id = ?').bind(m.amount, m.currency, pid).run(); }
+  const dl = deadlineOf(d);
+  if (dl && dl.v) await tolerant(env.DB.prepare('UPDATE projects SET deadline = ? WHERE id = ?').bind(dl.v, pid).run());
+  if (d.scheme && SCHEMES[d.scheme]) { // графік платежів за схемою (до міграції 0008 — пропускаємо)
+    const m = contractOf(d);
+    for (const y of schemeRows(d.scheme, JSON.parse(p.stages), m.amount, m.currency))
+      await tolerant(env.DB.prepare(`INSERT INTO project_payments (project_id, stage_id, title, pct, amount, currency, status, sort) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`)
+        .bind(pid, y.stage_id, y.title, y.pct, y.amount, y.currency, y.status, y.sort).run());
+  }
+  if (d.order_id && int(d.order_id)) { // проєкт виріс із заявки: заявка переходить у стадію «Проєкт»
+    const o = await env.DB.prepare("SELECT id, status FROM orders WHERE id = ? AND kind = 'lead'").bind(int(d.order_id)).first();
+    if (o) {
+      await env.DB.prepare('UPDATE projects SET order_id = ? WHERE id = ?').bind(o.id, pid).run();
+      if (['new', 'in_work', 'quote_sent', 'contract'].includes(o.status)) {
+        await env.DB.prepare("UPDATE orders SET status = 'project', updated_at = datetime('now') WHERE id = ?").bind(o.id).run();
+        await env.DB.prepare("INSERT INTO order_events (order_id, status, note, author) VALUES (?, 'project', ?, ?)").bind(o.id, 'Створено проєкт «' + p.title + '»', x.name).run();
+      }
+    }
+  }
+  const a = await assign(env, request, x, { id: pid, title: p.title, assignee_staff_id: null }, d);
+  if (a.error) return a.error;
+  await stageAssigned(env, x, pid, p.title, ss.fresh);
+  await audit(env, request, x, 'project.create', 'projects', pid, null, { client_id: cl.id, ...p, deadline: dl ? dl.v : null, scheme: SCHEMES[d.scheme] ? d.scheme : null });
+  return json({ ok: true, id: pid });
+}
+
 export async function onRequestPost({ request, env }) {
   const { x, error } = await admin(request, env, [...Object.values(PERM), 'projects.edit']);
   if (error) return error;
@@ -269,43 +385,30 @@ export async function onRequestPost({ request, env }) {
   if (!PERM[d.type]) return bad('Невідомий type');
   if (!permOk(x, d.type)) return deny(PERM[d.type]);
   return run(async () => {
-    if (d.type === 'project') {
-      if ((money(d) || d.scheme) && !x.can('finance.edit')) return deny('finance.edit');
-      const cl = await env.DB.prepare('SELECT id FROM clients WHERE id = ?').bind(int(d.client_id)).first();
-      if (!cl) return bad('Клієнта не знайдено', 404);
-      // без етапів — шаблон за типом проєкту
-      const svc = SERVICES.includes(d.service) ? d.service : 'other';
-      const { p, error: e2 } = projectFields(Array.isArray(d.stages) ? d : { ...d, stages: TEMPLATES[svc].map(name => ({ name, status: 'planned', progress: 0 })) });
-      if (e2) return bad(e2, 422);
-      const cam = cameraFields(d);
-      if (cam && cam.error) return bad(cam.error, 422);
-      const r = await env.DB.prepare('INSERT INTO projects (client_id, title, service, address, area, status, stages, next_step, next_date, manager) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')
-        .bind(cl.id, p.title, p.service, p.address ?? null, p.area ?? null, p.status, p.stages, p.next_step ?? null, p.next_date ?? null, p.manager ?? null).run();
-      const pid = r.meta.last_row_id;
-      if (cam) await env.DB.prepare('UPDATE projects SET camera_url = ?, camera_note = ? WHERE id = ?').bind(cam.url, cam.note, pid).run();
-      if (money(d)) { const m = contractOf(d); await env.DB.prepare('UPDATE projects SET contract_amount = ?, contract_currency = ? WHERE id = ?').bind(m.amount, m.currency, pid).run(); }
-      const dl = deadlineOf(d);
-      if (dl && dl.v) await tolerant(env.DB.prepare('UPDATE projects SET deadline = ? WHERE id = ?').bind(dl.v, pid).run());
-      if (d.scheme && SCHEMES[d.scheme]) { // графік платежів за схемою (до міграції 0008 — пропускаємо)
-        const m = contractOf(d);
-        for (const y of schemeRows(d.scheme, JSON.parse(p.stages), m.amount, m.currency))
-          await tolerant(env.DB.prepare(`INSERT INTO project_payments (project_id, stage_id, title, pct, amount, currency, status, sort) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`)
-            .bind(pid, y.stage_id, y.title, y.pct, y.amount, y.currency, y.status, y.sort).run());
-      }
-      if (d.order_id && int(d.order_id)) { // проєкт виріс із заявки: заявка переходить у стадію «Проєкт»
-        const o = await env.DB.prepare("SELECT id, status FROM orders WHERE id = ? AND kind = 'lead'").bind(int(d.order_id)).first();
-        if (o) {
-          await env.DB.prepare('UPDATE projects SET order_id = ? WHERE id = ?').bind(o.id, pid).run();
-          if (['new', 'in_work', 'quote_sent', 'contract'].includes(o.status)) {
-            await env.DB.prepare("UPDATE orders SET status = 'project', updated_at = datetime('now') WHERE id = ?").bind(o.id).run();
-            await env.DB.prepare("INSERT INTO order_events (order_id, status, note, author) VALUES (?, 'project', ?, ?)").bind(o.id, 'Створено проєкт «' + p.title + '»', x.name).run();
-          }
-        }
-      }
-      const a = await assign(env, request, x, { id: pid, title: p.title, assignee_staff_id: null }, d);
-      if (a.error) return a.error;
-      await audit(env, request, x, 'project.create', 'projects', pid, null, { client_id: cl.id, ...p, deadline: dl ? dl.v : null, scheme: SCHEMES[d.scheme] ? d.scheme : null });
-      return json({ ok: true, id: pid });
+    if (d.type === 'project') return newProject(env, request, x, d);
+    if (d.type === 'from_lead') {
+      // заявка → проєкт однією кнопкою: клієнт, контакт, джерело (orders.source/ref_path через order_id), тип і площа з пропозиції
+      const args = [];
+      const o = await env.DB.prepare(`SELECT o.* FROM orders o WHERE o.id = ? AND o.kind = 'lead' AND ${orderScope(x, args)}`).bind(int(d.order_id) || 0, ...args).first();
+      if (!o) return bad('Заявку не знайдено', 404);
+      const ex = await env.DB.prepare('SELECT id FROM projects WHERE id = ? OR order_id = ? ORDER BY id LIMIT 1').bind(o.project_id || 0, o.id).first();
+      if (ex) return json({ error: 'Проєкт із цієї заявки вже створено', id: ex.id }, 409);
+      const cid = await leadClient(env, o);
+      let f = null; try { f = JSON.parse(o.offer || 'null'); } catch { /* noop */ }
+      const svc = f && SERVICES.includes(f.service) ? f.service : guessService(`${o.service || ''} ${o.comment || ''}`);
+      const area = f && f.area > 0 ? (f.unit === 'сотка' ? f.area * 100 : f.area) : null;
+      const st = o.assignee_staff_id ? await staffById(env, o.assignee_staff_id) : null;
+      const res = await newProject(env, request, x, {
+        client_id: cid, title: txt(d.title, 120) || `${SVC_LABEL[svc]} · ${o.name || o.number}`, service: svc, area, address: txt(o.city, 200), order_id: o.id,
+        ...(st && st.active ? { assignee_staff_id: st.id } : {}),
+      });
+      const j = await res.clone().json();
+      if (!j.ok) return res;
+      if (!o.client_id) await env.DB.prepare('UPDATE orders SET client_id = ? WHERE id = ? AND client_id IS NULL').bind(cid, o.id).run();
+      await tolerant(env.DB.prepare('UPDATE orders SET project_id = ? WHERE id = ?').bind(j.id, o.id).run());
+      const contact = await leadContact(env, o, cid, j.id, x.staffId); // клієнт у «Контактах» + звʼязки (migrations/0015)
+      await audit(env, request, x, 'lead.convert', 'orders', o.id, null, { project_id: j.id, client_id: cid, service: svc, area, contact_id: contact });
+      return json({ ok: true, id: j.id, client_id: cid });
     }
     if (d.type === 'task') {
       const pr = await env.DB.prepare('SELECT id, title, stages FROM projects WHERE id = ?').bind(int(d.project_id)).first();
@@ -458,6 +561,8 @@ export async function onRequestPatch({ request, env }) {
     if (money(d) && !x.can('finance.edit')) return deny('finance.edit');
     const { p, error: e2 } = projectFields(d, cur);
     if (e2) return bad(e2, 422);
+    const ss = has(d, 'stages') ? await checkStageStaff(env, p.stages, cur.stages) : { fresh: [] };
+    if (ss.error) return ss.error;
     const cam = cameraFields(d);
     if (cam && cam.error) return bad(cam.error, 422);
     await env.DB.prepare(`UPDATE projects SET title = ?, service = ?, address = ?, area = ?, status = ?, stages = ?, next_step = ?, next_date = ?, manager = ?, updated_at = datetime('now') WHERE id = ?`)
@@ -469,6 +574,7 @@ export async function onRequestPatch({ request, env }) {
     if (dl && (dl.v || cur.deadline !== undefined)) await tolerant(env.DB.prepare('UPDATE projects SET deadline = ? WHERE id = ?').bind(dl.v, cur.id).run());
     const a = await assign(env, request, x, cur, d);
     if (a.error) return a.error;
+    await stageAssigned(env, x, cur.id, p.title, ss.fresh);
     if (dl && String(dl.v ?? '') !== String(cur.deadline ?? '')) p.deadline = dl.v;
     const changed = Object.fromEntries(Object.entries(p).filter(([k, v]) => String(v ?? '') !== String(cur[k] ?? '')));
     if (Object.keys(changed).length || money(d)) await audit(env, request, x, 'project.update', 'projects', cur.id,

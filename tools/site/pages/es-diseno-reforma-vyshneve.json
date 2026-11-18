@@ -1,0 +1,191 @@
+{
+ "slug": "diseno-reforma-vyshneve",
+ "lang": "es",
+ "service": "Diseño, reforma y construcción llave en mano en Vyshneve",
+ "title": "Reforma llave en mano en Vyshneve — diseño y casas | CAS",
+ "description": "Reforma de pisos llave en mano en Vyshneve: obra nueva junto a Kiev, diseño desde $30/m², reforma desde $550/m², muebles. Equipo propio.",
+ "h1": "Diseño, reforma y construcción llave en mano en Vyshneve",
+ "price": "reforma desde $550/m² · diseño desde $30/m² · casa desde $600/m²",
+ "lead": "Reforma llave en mano en Vyshneve: sobre todo pisos de obra nueva junto al límite de Kiev, y también casas. Diseño, reforma y muebles con un solo equipo, igual que en la capital.",
+ "parent": [
+  "/es/diseno-reforma-region-kiev",
+  "Región de Kiev"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Vyshneve",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Región de Kiev"
+   }
+  }
+ ],
+ "near": [
+  "Cerca: otras ciudades",
+  [
+   [
+    "/es/diseno-reforma-boiarka",
+    "Boiarka"
+   ],
+   [
+    "/es/diseno-reforma-irpin",
+    "Irpin"
+   ],
+   [
+    "/es/diseno-reforma-vasylkiv",
+    "Vasylkiv"
+   ],
+   [
+    "/es/diseno-reforma-region-kiev",
+    "Todas las ciudades de la región de Kiev"
+   ],
+   [
+    "/es/casa-llave-en-mano-koncha-zaspa",
+    "Koncha-Zaspa, Kozyn, Pushcha-Vodytsia"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Diseño de interiores",
+   [
+    "medición y distribución",
+    "visualizaciones 3D y planos de ejecución",
+    "especificación de materiales y muebles",
+    "supervisión de autor"
+   ]
+  ],
+  [
+   "Reforma llave en mano",
+   [
+    "pisos de obra nueva y de segunda mano",
+    "casas y chalés",
+    "mano de obra y materiales base desde $550/m²",
+    "presupuesto antes de empezar"
+   ]
+  ],
+  [
+   "Construcción de casas",
+   [
+    "proyecto arquitectónico desde $12/m²",
+    "estructura desde $600/m²",
+    "llave en mano con acabados desde $1 100/m²",
+    "instalaciones y cubierta"
+   ]
+  ],
+  [
+   "Muebles y equipamiento",
+   [
+    "amueblamiento desde $250/m²",
+    "cocinas y armarios a medida",
+    "muebles e iluminación directos de China",
+    "estilismo final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Vyshneve: obra nueva pegada a Kiev",
+   [
+    "Vyshneve prácticamente se ha unido a los barrios kievitas de Borshchahivka y Zhuliany, así que aquí los retos son los de la obra nueva de la capital: un piso de promotora, planta libre y la necesidad de encajar cocina, salón y cuarto infantil en poca superficie.",
+    "Junto a los bloques quedan casas y dachas antiguas que sus dueños adaptan para vivir todo el año. Aquí combinamos a menudo la reforma de un piso para unos miembros de la familia y la reconstrucción de una casa para otros."
+   ]
+  ],
+  [
+   "Interiorismo en Vyshneve",
+   [
+    "En los pisos de Vyshneve lo más pedido es un [diseño de piso](/es/diseno-interiores-piso) que convierta un estudio en habitaciones separadas, o al revés, que una cocina y salón. Hacemos los planos con tanto detalle que la cuadrilla no tenga que decidir nada sobre la marcha. Proyecto de diseño desde $30 por m² (mínimo $2 500); los paquetes están en la página [estudio de interiorismo](/es/diseno-interiores)."
+   ]
+  ],
+  [
+   "Reforma llave en mano y construcción de casas",
+   [
+    "Reformamos pisos desde el recrecido y el enlucido hasta los muebles; para obra nueva, vea también [reforma de piso en obra nueva](/es/reforma-obra-nueva). Las parcelas son pequeñas, así que las casas suelen ser compactas, de dos plantas y con pocos pasillos; tras una inspección es posible la [reconstrucción con una segunda planta](/es/reconstruccion-casas).",
+    "El mismo equipo en plantilla que en Kiev y con las mismas tarifas: reforma desde $550 por m² (obra y materiales de base) y, si la reforma la hace CAS, el total final no se desvía del presupuesto más de un ±5 %. Proyecto arquitectónico desde $12 por m², estructura desde $600 por m², llave en mano con acabados desde $1 100 por m²; 12 meses de garantía sobre los trabajos. Más en [reforma llave en mano](/es/reforma-llave-en-mano) y [construcción de casas](/es/construccion-de-casas)."
+   ]
+  ],
+  [
+   "Logística, control e informes",
+   [
+    "Nuestros jefes de obra incluyen las visitas en su calendario habitual, igual que en los barrios de Kiev, y los materiales salen de almacenes de Kiev. Entre visitas, informes fotográficos cada 1–2 semanas; con coste adicional, cámara online en obra 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/12KrNt488GVEue-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/10NiUcZNhKMjmn-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/17MT3Ipm3yi6XJ-900.webp",
+   "Edelweiss"
+  ]
+ ],
+ "steps": [
+  [
+   "Consulta",
+   "Por teléfono o en línea: inmueble, objetivos, presupuesto."
+  ],
+  [
+   "Medición y briefing",
+   "Medidas, deseos, datos de partida."
+  ],
+  [
+   "Proyecto y presupuesto",
+   "Diseño o arquitectura; precio y calendario en el contrato."
+  ],
+  [
+   "Obras",
+   "Reforma o construcción con informes fotográficos."
+  ],
+  [
+   "Entrega",
+   "Acta y garantía de 12 meses sobre los trabajos."
+  ]
+ ],
+ "faq": [
+  [
+   "¿Se puede unir la cocina con el salón en un piso de obra nueva?",
+   "Depende de la estructura y de si el piso tiene gas. Lo comprobamos en la fase de distribución, antes de empezar la reforma."
+  ],
+  [
+   "¿Cuánto cuesta una reforma en Vyshneve?",
+   "Desde $550 por m² de obra y materiales de base; los materiales de acabado, los muebles y los electrodomésticos van aparte, según presupuesto."
+  ],
+  [
+   "¿Los precios en Vyshneve son distintos a los de Kiev?",
+   "No, las tarifas base son las mismas: diseño desde $30 por m², reforma desde $550 por m², amueblamiento desde $250 por m²."
+  ]
+ ],
+ "rel": [
+  [
+   "/es/reforma-casa-llave-en-mano",
+   "Reforma de casa llave en mano"
+  ],
+  [
+   "/es/equipamiento-llave-en-mano",
+   "Equipamiento de proyectos llave en mano"
+  ],
+  [
+   "/es/calculadora-reforma",
+   "Calculadora del coste de reforma"
+  ],
+  [
+   "/es/contrato-garantia-pago",
+   "Contrato, garantía y pago (modelo de contrato)"
+  ],
+  [
+   "/es/portfolio",
+   "Portfolio"
+  ]
+ ]
+}
