@@ -865,9 +865,15 @@
 (function(){
  var d=document,W=window,l=[].slice.call(d.querySelectorAll('img[data-srcset],img[data-p]'));if(!l.length)return;
  function go(av){
-  function set(im){var p=(im.getAttribute('data-p')||'').split(':'),s=av&&im.getAttribute('data-av')||im.getAttribute('data-srcset')||
+  // data-pn="<id>:<ширини>@<до px>|<sizes>" (tools/site/ux.py _tp_narrow): плитка широка лише на ширших вікнах — тут портретна копія того ж фото
+  // коротко: data-p="tl-<id>:<ширини>*" = data-pn="<id>:600,900,1200@759|calc(50vw - 21px)"
+  function set(im){var dp=im.getAttribute('data-p')||'',st=/\*$/.test(dp),n=st?[0,dp.split(':')[0].replace(/^tl-/,''),'600,900,1200','759','calc(50vw - 21px)']:
+   (im.getAttribute('data-pn')||'').match(/^([^:]+):([\d,]+)@(\d+)\|(.+)$/);dp=dp.replace(/\*$/,'');var x=n&&W.matchMedia&&matchMedia('(max-width:'+n[3]+'px)').matches,
+   p=x?[n[1],n[2]]:dp.split(':'),e=x&&av&&im.hasAttribute('data-avn')?'.avif ':'.webp ',
+   s=x?p[1].split(',').map(function(w){return '/img/p/'+p[0]+'-'+w+e+w+'w'}).join(','):av&&im.getAttribute('data-av')||im.getAttribute('data-srcset')||
    p[1].split(',').map(function(w){var q=w.split('=');return '/img/p/'+p[0]+'-'+q[0]+'.webp '+(q[1]||q[0])+'w'}).join(',');
-   ['data-av','data-srcset','data-p'].forEach(function(a){im.removeAttribute(a)});im.setAttribute('srcset',s)}
+   if(x)im.setAttribute('sizes',n[4]);
+   ['data-av','data-srcset','data-p','data-pn','data-avn'].forEach(function(a){im.removeAttribute(a)});im.setAttribute('srcset',s)}
   if(!('IntersectionObserver' in W)){l.forEach(set);W.casLazy=set;return}
   // scrollMargin — і в стрічках з горизонтальною прокруткою (портфоліо .xs-proj, 18.11.2026: data-p "<id>:<назва>[=<ширина>],…") наступні кадри — заздалегідь
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);set(e.target)}})},{rootMargin:'350px 0px',scrollMargin:'0px 600px'});
