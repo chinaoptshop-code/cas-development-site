@@ -1,5 +1,5 @@
 // Юніт-тести ставок і математики калькулятора/квізу/сцен (без браузера). Запуск: node tools/tests/calc.mjs (код 1 при помилках)
-// Ставки — tools/site/rates.py → rates-блок у JS (calc.v1.js, quiz.v1.js, сцени); тут — що блок один і той самий скрізь,
+// Ставки — tools/site/rates.py → rates-блок у JS (calc.v1.js, quiz-core.v1.js, сцени); тут — що блок один і той самий скрізь,
 // що ставки збігаються з CLAUDE.md, мінімуми, Європа, розбір поля (кома, пробіли, мінус, сміття), стеля, і що Python (rates.cost) = JS (casCost).
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -13,7 +13,7 @@ const it = (name, fn) => { n++; try { fn(); console.log('  ✓ ' + name); } catc
 const eq = (a, b, m = '') => { const A = JSON.stringify(a), B = JSON.stringify(b); if (A !== B) throw new Error(`${m} очікували ${B}, маємо ${A}`); };
 const read = f => readFileSync(join(ROOT, f), 'utf8');
 
-const CONSUMERS = ['calc', 'quiz', 'build-anim', 'land-anim', 'resort-plan', 'restaurant-anim', 'water-house'].map(x => `assets/${x}.v1.js`);
+const CONSUMERS = ['calc', 'quiz-core', 'build-anim', 'land-anim', 'resort-plan', 'restaurant-anim', 'water-house'].map(x => `assets/${x}.v1.js`);
 const RX = /\/\*rates\*\/[\s\S]*?\/\*\/rates\*\//g;
 const blocks = CONSUMERS.map(f => read(f).match(RX) || []);
 
@@ -65,7 +65,7 @@ it('casCalcArea: порожнє — без помилки, мінус/смітт
 });
 
 // квіз: перемикач «Україна / Європа» (Михайло 17.11.2026) — тексти 10 мов, ставки в нотатках лише з rates-блоку, типовий регіон за мовою
-const QZ = read('assets/quiz.v1.js');
+const QZ = read('assets/quiz-core.v1.js'); // ядро квізу (quiz.v1.js — лише завантажувач)
 it('квіз: 10 мов мають reg/rg/ne, нотатки й мінімум — шаблони {r}/{m}, без зашитих $', () => {
   ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'pt', 'ar'].forEach(l => {
     const m = QZ.match(new RegExp('\\n    ' + l + ': \\{ (reg: [^\\n]+)\\n([\\s\\S]*?)demo:'));
