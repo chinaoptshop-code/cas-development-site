@@ -407,5 +407,11 @@
  "Профіль і реквізити": "Perfil e faturação",
  "Профіль і реквізити — кабінет": "Perfil e faturação — área pessoal",
  "Погоджено": "Aprovado",
- "погоджено": "aprovado"
+ "погоджено": "aprovado",
+ "чекає вашого погодження": "aguarda a sua aprovação",
+ "Погодити етап": "Aprovar etapa",
+ "Погодити етап «{n}»? Студія отримає повідомлення.": "Aprovar a etapa «{n}»? O estúdio será notificado.",
+ "Етап погоджено — дякуємо!": "Etapa aprovada — obrigado!",
+ "Етап не знайдено": "Etapa não encontrada",
+ "Етап ще не готовий до погодження": "A etapa ainda não está pronta para aprovação"
 }

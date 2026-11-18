@@ -461,7 +461,7 @@
           (p.next_step ?'<div class="kb-next">' + svg(IC.flag) + '<div><p class="kb-eyebrow">' + T('Наступний крок') + (p.next_date ? ' · ' + esc(dfmt(p.next_date, { day: 'numeric', month: 'long' })) : '') + '</p><p>' + esc(p.next_step) + '</p></div></div>' : '') +
           (p.stages.length ? '<h3>' + T('Етапи') + '</h3><div class="kb-stages">' + p.stages.map(function (s, i) {
             var pc = Math.max(0, Math.min(100, s.progress || 0));
-            return '<div class="kb-stage' + (pc >= 100 ? ' done' : '') + '"><div class="kb-stage-h"><b>' + (i + 1) + '. ' + esc(s.name) + (i === stIdx ? ' <span class="kb-st" style="padding:1px 8px;font-size:11px">' + T('зараз') + '</span>' : '') + approvedB(s) + '</b><span class="muted">' +
+            return '<div class="kb-stage' + (pc >= 100 ? ' done' : '') + '"><div class="kb-stage-h"><b>' + (i + 1) + '. ' + esc(s.name) + (i === stIdx ? ' <span class="kb-st" style="padding:1px 8px;font-size:11px">' + T('зараз') + '</span>' : '') + approvedB(s, p) + '</b><span class="muted">' +
               [s.start && dfmt(s.start, { day: 'numeric', month: 'short' }), s.end && dfmt(s.end, { day: 'numeric', month: 'short' })].filter(Boolean).join(' – ') + ' · ' + pc + '%</span></div>' + bar(pc) +
               (s.note ? '<small class="muted">' + esc(s.note) + '</small>' : '') + '</div>';
           }).join('') + '</div>' : '') + '</section>';
@@ -509,7 +509,24 @@
   var YT = /^https:\/\/www\.youtube-nocookie\.com\/embed\/[\w-]{11}\?[\w=&]*$/;
   var nRepT = function (n) { return T('Фотозвітів: {n}', { n: n }); };
   // дизайн-проєкт: етап погоджено клієнтом (approved_at у JSON етапу, ставить менеджер)
-  function approvedB(s) { return s.approved_at ? ' <span class="kb-ss done" title="' + esc(T('Погоджено')) + ' ' + esc(dfmt(s.approved_at)) + '">✓ ' + esc(T('погоджено')) + ' ' + esc(dfmt(s.approved_at, { day: 'numeric', month: 'short' })) + '</span>' : ''; }
+  // етап дизайн-проєкту на прийманні без погодження — кнопка «Погодити етап» (POST /api/account/projects, action approve)
+  function approvedB(s, p) {
+    if (s.approved_at) return ' <span class="kb-ss done" title="' + esc(T('Погоджено')) + ' ' + esc(dfmt(s.approved_at)) + '">✓ ' + esc(T('погоджено')) + ' ' + esc(dfmt(s.approved_at, { day: 'numeric', month: 'short' })) + '</span>';
+    if (p && p.service === 'design' && s.id && (s.status === 'review' || s.status === 'done')) return ' <span class="kb-appr"><small>' + esc(T('чекає вашого погодження')) + '</small>' +
+      '<button type="button" class="btn sm" data-appr="' + esc(p.id + ':' + s.id) + '" data-nm="' + esc(s.name) + '">' + esc(T('Погодити етап')) + '</button></span>';
+    return '';
+  }
+  if (box) box.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-appr]'); if (!b) return;
+    e.preventDefault();
+    if (!confirm(T('Погодити етап «{n}»? Студія отримає повідомлення.', { n: b.getAttribute('data-nm') }))) return;
+    var k = b.getAttribute('data-appr').split(':'); b.disabled = true;
+    api('/api/account/projects', { method: 'POST', body: { action: 'approve', project_id: +k[0], stage_id: k[1] } }).then(function (r) {
+      var w = b.closest('.kb-appr'), d = r && r.stage ? r.stage.approved_at : '';
+      if (w) w.outerHTML = '<span class="kb-ss done">✓ ' + esc(T('погоджено')) + (d ? ' ' + esc(dfmt(d, { day: 'numeric', month: 'short' })) : '') + '</span>';
+      toast(T('Етап погоджено — дякуємо!'));
+    }, function (er) { b.disabled = false; toast(er.message, true); });
+  });
   function stBadgeS(s) { return '<span class="kb-ss ' + esc(s.status) + '">' + esc(STS[s.status] || s.status_label || '') + '</span>'; }
   function camCard(p) {
     var cam = p.camera, h = '<section class="kb-card kb-cam s6 kb-in" aria-labelledby="kb-cam-h"><div class="kb-ch"><div><p class="kb-eyebrow">' + T('Онлайн-контроль') + '</p><h2 id="kb-cam-h">' + T('Камера 24/7') + '</h2></div>';
@@ -599,7 +616,7 @@
           var sActs = acts.filter(function (x) { return s.id && x.stage_id === s.id; });
           var dates = [s.start && dfmt(s.start, { day: 'numeric', month: 'short' }), s.end && dfmt(s.end, { day: 'numeric', month: 'short', year: 'numeric' })].filter(Boolean).join(' – ');
           return '<li class="' + esc(s.status) + (s === cur ? ' cur' : '') + '"' + (s === cur ? ' aria-current="step"' : '') + '><span class="d" aria-hidden="true">' + (s.status === 'done' ? '' : i + 1) + '</span><div class="kb-step-b">' +
-            '<div class="kb-stage-h"><b>' + esc(s.name) + approvedB(s) + '</b>' + stBadgeS(s) + '</div>' +
+            '<div class="kb-stage-h"><b>' + esc(s.name) + approvedB(s, p) + '</b>' + stBadgeS(s) + '</div>' +
             '<div class="row" style="gap:10px;flex-wrap:nowrap"><div style="flex:1">' + bar(pc) + '</div><small class="muted" style="white-space:nowrap">' + pc + '%</small></div>' +
             '<div class="kb-step-m">' + (dates ? '<span>' + esc(dates) + '</span>' : '') + (nRep ? '<button type="button" class="lnk" data-stg="' + esc(s.id) + '">' + nRepT(nRep) + ' →</button>' : '') +
             sActs.map(function (a) { var u = safeUrl(a.url); return u ? '<a class="lnk" href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + svg(IC.doc) + esc(a.title) + '</a>' : ''; }).join('') + '</div>' +

@@ -3,7 +3,13 @@
 // GET /api/account/projects → {projects: [{..., stages, progress, reports, documents, payments, camera}], documents: [документи без проєкту]}
 // Клієнт бачить лише свої проєкти (WHERE client_id = сесія). Дані заповнює менеджер: /api/admin/projects.
 // Працює й до міграції 0008 (без камери й платежів) і 0005 (порожньо, pending).
-import { cameraOf, client, json, noTable, progressOf, stageStatus, STAGE_STATUS, PAY_STATUS } from '../../_account.js';
+// POST /api/account/projects {action: 'approve', project_id, stage_id} — клієнт сам погоджує етап дизайн-проєкту (service 'design'),
+//   коли студія виставила його на приймання (status 'review') або вже виконала ('done'): approved_at = сьогодні, approved_by = 'client'.
+//   Лише свій проєкт (client_id = сесія), інакше 404; повторне погодження — ok без змін. Студії — Telegram (власник/менеджери +
+//   відповідальний), audit_log 'project.approve'. Ліміт — 30/год з IP.
+import { body, cameraOf, client, json, noTable, progressOf, stageStatus, STAGE_STATUS, PAY_STATUS } from '../../_account.js';
+import { escHtml, notifyStaff, notifyTeam } from '../../_alerts.js';
+import { audit } from '../../_roles.js';
 import { limited } from '../../_rate.js';
 
 const parse = (s, d) => { try { const v = JSON.parse(s); return Array.isArray(v) ? v : d; } catch { return d; } };
@@ -46,4 +52,33 @@ export async function onRequestGet({ request, env }) {
     if (noTable(e)) return json({ projects: [], documents: [], pending: true });
     throw e;
   }
+}
+
+export async function onRequestPost({ request, env }) {
+  const { c, error } = await client(request, env);
+  if (error) return error;
+  if (await limited(env, request, 'account-approve', 30)) return json({ error: 'Забагато запитів — спробуйте за кілька хвилин' }, 429);
+  const { d, error: e2 } = await body(request, 4 * 1024);
+  if (e2) return e2;
+  if (!d || d.action !== 'approve') return json({ error: 'Некоректний запит' }, 400);
+  const pid = Number.parseInt(d.project_id, 10), sid = String(d.stage_id || '');
+  let p = null;
+  try {
+    p = Number.isInteger(pid) ? await env.DB.prepare('SELECT * FROM projects WHERE id = ? AND client_id = ?').bind(pid, c.id).first() : null;
+  } catch (e) { if (!noTable(e)) throw e; }
+  const stages = p ? parse(p.stages, []) : [];
+  const i = p && p.service === 'design' ? stages.findIndex(s => s && s.id === sid) : -1;
+  if (i < 0) return json({ error: 'Етап не знайдено' }, 404);
+  const s = stages[i];
+  if (s.approved_at) return json({ ok: true, already: true, stage: { id: s.id, approved_at: s.approved_at } });
+  if (!['review', 'done'].includes(stageStatus(s))) return json({ error: 'Етап ще не готовий до погодження' }, 409);
+  const day = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Kyiv' });
+  stages[i] = { ...s, approved_at: day, approved_by: 'client' };
+  await env.DB.prepare("UPDATE projects SET stages = ?, updated_at = datetime('now') WHERE id = ? AND client_id = ?").bind(JSON.stringify(stages), pid, c.id).run();
+  const who = c.name || c.phone || 'Клієнт';
+  await audit(env, request, { client: c, staffId: null, name: who, role: 'client' }, 'project.approve', 'projects', pid, { stage_id: s.id, approved_at: null }, { stage_id: s.id, approved_at: day, by: 'client' });
+  const text = `✅ Клієнт погодив етап <b>${escHtml(s.name)}</b>\nОбʼєкт: ${escHtml(p.title)}\nКлієнт: ${escHtml(who)}`;
+  await notifyTeam(env, text, 'https://cas-develop.com/kabinet/admin#projects');
+  if (p.assignee_staff_id) await notifyStaff(env, p.assignee_staff_id, text, { inline_keyboard: [[{ text: '📋 Мої задачі', url: 'https://cas-develop.com/kabinet/team' }]] });
+  return json({ ok: true, stage: { id: s.id, approved_at: day } });
 }
