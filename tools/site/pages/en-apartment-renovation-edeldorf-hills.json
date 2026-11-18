@@ -1,0 +1,181 @@
+{
+ "slug": "apartment-renovation-edeldorf-hills",
+ "lang": "en",
+ "service": "Apartment renovation in Edeldorf Hills, Kyiv",
+ "title": "Apartment renovation in Edeldorf Hills (Kyiv residential complex) — turnkey | CAS",
+ "description": "Apartment renovation in Edeldorf Hills (Pecherskyi district, Kyiv): design project, turnkey renovation from $550/m², furnishing. 12-month warranty.",
+ "h1": "Turnkey apartment renovation in Edeldorf Hills",
+ "price": "from $550/m² · design, renovation and furniture in one contract",
+ "lead": "Edeldorf Hills is a premium-class new build by Futura Hata in Pechersk. If you have received the keys and are planning a renovation, we will take you from an empty apartment to a finished interior under one contract.",
+ "parent": [
+  "/en/apartment-renovation-kyiv-residential-complexes",
+  "Renovation in Kyiv residential complexes"
+ ],
+ "cards": [
+  [
+   "Turnkey renovation",
+   [
+    "inspection after the developer and measurements",
+    "rough and finishing works",
+    "electrics, plumbing, ventilation",
+    "approval of works with the management company"
+   ]
+  ],
+  [
+   "After the developer",
+   [
+    "checking wall and floor geometry",
+    "audit of electrics, water and ventilation",
+    "preparing the base for tiles",
+    "movement joints allowing for settlement"
+   ]
+  ],
+  [
+   "Design project",
+   [
+    "layout and furniture arrangement",
+    "3D visualisations of the rooms",
+    "working drawings for the crew",
+    "specification and estimate"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Renovating in a new premium building: where to start",
+   [
+    "An apartment in a newly completed building is a blank slate, but also a period when dozens of neighbours are renovating at once. Queues for the service lift, limited hours for noisy works and rules for bringing in materials are usually set by the management company — we plan deliveries around them, not the other way round.",
+    "Before building any walls, we check what the developer has handed over: wall and ceiling geometry, the screed or its absence, electricity and water inlets, the position of ventilation shafts. This determines whether wet zones can be moved, where the kitchen island will stand and how much levelling will cost.",
+    "A new monolithic frame settles, so the project provides for movement joints, proper preparation of the base for large-format tiles and painting after the walls have stabilised. That way no cracks appear at the joints of a premium interior a year later.",
+    "For reference: developer — Futura Hata. We do not represent the developer or the management company — we work directly with the apartment owner."
+   ]
+  ]
+ ],
+ "budget": {
+  "area": 100,
+  "h2": "Budget guide for a 100 m² apartment",
+  "p": "For a 100 m² apartment, here is a guide based on our base rates:"
+ },
+ "gallery": [
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1_xW-2dYf73g9R-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1lcczk9v-heAbx-900.webp",
+   "Diamond"
+  ]
+ ],
+ "steps": [
+  [
+   "Apartment inspection",
+   "We check the condition after the developer and take measurements."
+  ],
+  [
+   "Design",
+   "Layout, 3D, drawings for the crew."
+  ],
+  [
+   "Estimate and contract",
+   "Price and timeline are fixed."
+  ],
+  [
+   "Renovation",
+   "Rough and finishing works with reports."
+  ],
+  [
+   "Furniture and handover",
+   "We furnish and hand over the keys."
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "How much does an apartment renovation in Edeldorf Hills cost?",
+   "Turnkey renovation starts from $550/m² (labour and rough materials; finishing materials, furniture and appliances are extra, per the estimate), a design project from $30/m² (minimum $2,500), furnishing from $250/m². The calculation for a 100 m² apartment is in the budget guide above; we fix the exact amount in the estimate after the inspection."
+  ],
+  [
+   "When should I start the renovation in Edeldorf Hills?",
+   "The design project can be done before you receive the keys, based on the developer's floor plan. Then, as soon as access opens, we take control measurements and start work with ready drawings."
+  ],
+  [
+   "What do you check after the developer?",
+   "Wall and floor geometry, electricity and water inlets, ventilation, windows and reveals. We take the results into account in the project and estimate so you do not pay twice for rework."
+  ],
+  [
+   "What warranty do you give?",
+   "We hand over the apartment with a signed acceptance certificate; all completed works carry a 12-month warranty."
+  ],
+  [
+   "Can I follow the renovation remotely?",
+   "Yes. We send photo reports from the site via Telegram, and the price, timeline and payment stages are fixed in the contract."
+  ]
+ ],
+ "near": [
+  "Renovation in other Kyiv residential complexes",
+  [
+   [
+    "/en/apartment-renovation-triiinity",
+    "TRIIINITY residential complex"
+   ],
+   [
+    "/en/apartment-renovation-taryan-towers",
+    "Taryan Towers residential complex"
+   ],
+   [
+    "/en/apartment-renovation-bulvar-fontaniv",
+    "Bulvar Fontaniv residential complex"
+   ],
+   [
+    "/en/apartment-renovation-rusaniv-residence",
+    "Rusaniv Residence residential complex"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/en/apartment-renovation-kyiv-residential-complexes",
+   "Renovation in Kyiv residential complexes"
+  ],
+  [
+   "/en/apartment-renovation",
+   "Apartment renovation in Kyiv"
+  ],
+  [
+   "/en/new-build-renovation",
+   "New-build renovation"
+  ],
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/interior-design",
+   "Interior design"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Apartment furnishing"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Cost calculator"
+  ]
+ ]
+}

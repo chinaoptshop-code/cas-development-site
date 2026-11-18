@@ -1,0 +1,185 @@
+{
+ "slug": "apartment-renovation-unit-home",
+ "lang": "en",
+ "service": "Apartment renovation in UNIT.Home, Kyiv",
+ "title": "Apartment renovation in UNIT.Home (Kyiv residential complex) — turnkey | CAS",
+ "description": "Apartment renovation in UNIT.Home (Shevchenkivskyi district, Kyiv): design project, turnkey renovation from $550/m², furnishing. 12-month warranty.",
+ "h1": "Turnkey apartment renovation in UNIT.Home",
+ "price": "from $550/m² · design, renovation and furniture in one contract",
+ "lead": "UNIT.Home is a business-class residential complex by UDP on Gareth Jones Street, next to the UNIT.City innovation park. We renovate apartments here turnkey: a modern interior, appliances and furniture under one contract.",
+ "parent": [
+  "/en/apartment-renovation-kyiv-residential-complexes",
+  "Renovation in Kyiv residential complexes"
+ ],
+ "cards": [
+  [
+   "Turnkey renovation",
+   [
+    "inspection after the developer and measurements",
+    "rough and finishing works",
+    "electrics, plumbing, ventilation",
+    "approval of works with the management company"
+   ]
+  ],
+  [
+   "Design project",
+   [
+    "layout and furniture arrangement",
+    "3D visualisations of the rooms",
+    "working drawings for the crew",
+    "specification and estimate"
+   ]
+  ],
+  [
+   "Furnishing and fit-out",
+   [
+    "custom furniture and furniture from China",
+    "lighting and appliances",
+    "textiles and décor",
+    "styling before move-in"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Renovating an apartment for a modern city rhythm",
+   [
+    "Residents of complexes like this often work from home, so the project should provide a workplace from the start: a separate study or a niche with good light, enough sockets and cable channels for the internet, acoustic comfort for calls.",
+    "A modern business-class interior goes well with a smart home: lighting and climate control from a smartphone, leak sensors in the bathroom and kitchen, motorised curtains. We lay the wiring and equipment positions during the rough works.",
+    "The complex's management company usually regulates renovations: hours for noisy works, lift use and waste removal. We organise the work to meet these requirements.",
+    "For reference: developer — UDP, address — 8/12 Gareth Jones St. We do not represent the developer or the management company — we work directly with the apartment owner."
+   ]
+  ]
+ ],
+ "budget": {
+  "area": 70,
+  "h2": "Budget guide for a 70 m² apartment",
+  "p": "For a 70 m² apartment, here is a guide based on our base rates:"
+ },
+ "gallery": [
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1f8h2r5MBlLLf_-900.webp",
+   "Linden Penthouse"
+  ]
+ ],
+ "steps": [
+  [
+   "Apartment inspection",
+   "We check the condition after the developer and take measurements."
+  ],
+  [
+   "Design",
+   "Layout, 3D, drawings for the crew."
+  ],
+  [
+   "Estimate and contract",
+   "Price and timeline are fixed."
+  ],
+  [
+   "Renovation",
+   "Rough and finishing works with reports."
+  ],
+  [
+   "Furniture and handover",
+   "We furnish and hand over the keys."
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "How much does an apartment renovation in UNIT.Home cost?",
+   "Turnkey renovation starts from $550/m² (labour and rough materials; finishing materials, furniture and appliances are extra, per the estimate), a design project from $30/m² (minimum $2,500), furnishing from $250/m². The calculation for a 70 m² apartment is in the budget guide above; we fix the exact amount in the estimate after the inspection."
+  ],
+  [
+   "Do you install smart home systems?",
+   "Yes: control of lighting, climate and curtains, leak sensors, scenes. We lay the wiring and equipment positions during the rough works."
+  ],
+  [
+   "How do you set up a workplace at home?",
+   "We plan a study or a niche by the window, proper lighting, sockets and network, and sound insulation. We choose furniture to suit the way you work."
+  ],
+  [
+   "What warranty do you give?",
+   "We hand over the apartment with a signed acceptance certificate; all completed works carry a 12-month warranty."
+  ],
+  [
+   "Can I follow the renovation remotely?",
+   "Yes. We send photo reports from the site via Telegram, and the price, timeline and payment stages are fixed in the contract."
+  ]
+ ],
+ "near": [
+  "Renovation in other Kyiv residential complexes",
+  [
+   [
+    "/en/apartment-renovation-senat",
+    "Senat residential complex"
+   ],
+   [
+    "/en/apartment-renovation-life-story",
+    "Life Story residential complex"
+   ],
+   [
+    "/en/apartment-renovation-respublika",
+    "Respublika residential complex"
+   ],
+   [
+    "/en/apartment-renovation-novopecherski-lypky",
+    "Novopecherski Lypky residential complex"
+   ],
+   [
+    "/en/apartment-renovation-novyi-avtohraf",
+    "Novyi Avtohraf residential complex"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/en/apartment-renovation-kyiv-residential-complexes",
+   "Renovation in Kyiv residential complexes"
+  ],
+  [
+   "/en/apartment-renovation",
+   "Apartment renovation in Kyiv"
+  ],
+  [
+   "/en/new-build-renovation",
+   "New-build renovation"
+  ],
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/interior-design",
+   "Interior design"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Apartment furnishing"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Cost calculator"
+  ]
+ ]
+}
