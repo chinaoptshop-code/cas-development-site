@@ -1,0 +1,187 @@
+{
+ "slug": "design-renovation-zhytomyr",
+ "lang": "en",
+ "service": "Turnkey interior design, renovation and construction in Zhytomyr",
+ "title": "Interior design in Zhytomyr — renovation and houses | CAS",
+ "description": "Interior design in Zhytomyr: apartments, private houses and dachas on the Teteriv. Design from $30/m², renovation from $550/m², houses from $600/m².",
+ "h1": "Turnkey interior design, renovation and construction in Zhytomyr",
+ "price": "renovation from $550/m² · design from $30/m² · house from $600/m²",
+ "lead": "Interior design in Zhytomyr for city apartments, private houses and country dachas on the Teteriv. Zhytomyr is one of the regional centres closest to Kyiv, so site visits are easier to plan than in more distant regions.",
+ "parent": [
+  "/en/design-renovation-ukraine",
+  "Across Ukraine"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Zhytomyr",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Zhytomyr Oblast"
+   }
+  }
+ ],
+ "near": [
+  "Nearby: other cities",
+  [
+   [
+    "/en/design-renovation-vinnytsia",
+    "Vinnytsia"
+   ],
+   [
+    "/en/design-renovation-rivne",
+    "Rivne"
+   ],
+   [
+    "/en/design-renovation-chernihiv",
+    "Chernihiv"
+   ],
+   [
+    "/en/design-renovation-ukraine",
+    "All cities in Ukraine"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Interior design",
+   [
+    "measurements and layout",
+    "3D visualisations and working drawings",
+    "materials and furniture specification",
+    "designer supervision"
+   ]
+  ],
+  [
+   "Turnkey renovation",
+   [
+    "new-build and resale apartments",
+    "houses and cottages",
+    "works and rough materials from $550/m²",
+    "estimate before work starts"
+   ]
+  ],
+  [
+   "House construction",
+   [
+    "architectural design from $12/m²",
+    "shell from $600/m²",
+    "turnkey with finishing from $1,100/m²",
+    "utilities and roofing"
+   ]
+  ],
+  [
+   "Furniture and procurement",
+   [
+    "furnishing from $250/m²",
+    "custom kitchens and wardrobes",
+    "furniture and lighting direct from China",
+    "final styling"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Zhytomyr: private houses, granite riverbanks and forests",
+   [
+    "Zhytomyr has a large private housing sector, an old centre and estates of apartment blocks. Around it are forests and the rocky granite banks of the Teteriv, where many people keep a dacha or a holiday house.",
+    "Typical projects here are rebuilding an old family house, a holiday house in nature or an apartment for children who have moved to Kyiv. We can handle both the Zhytomyr and the Kyiv side if needed."
+   ]
+  ],
+  [
+   "Interior design in Zhytomyr",
+   [
+    "For houses by the forest and the river we base the design on natural materials — wood, stone, linen — and warm light, as in our A-Frame House and Hoda Estate. For city apartments, a practical layout and storage. Design project from $30 per m² (minimum $2,500); packages are on the [interior design studio](/en/interior-design) page."
+   ]
+  ],
+  [
+   "Turnkey renovation and house construction",
+   [
+    "We renovate houses and apartments, and convert dachas for year-round living: insulation, new services, a new roof. In the Zhytomyr region log and timber-frame houses fit well, as do classic aerated-block ones; plots by the Teteriv are often rocky, so the foundation is designed after the site survey.",
+    "Renovation is carried out by our salaried team: from $550 per m² for works and rough materials, with finishing materials, furniture and appliances priced separately per estimate. Scope, schedule and payment plan (50/50, 50/30/20 or in stages, from a 10% advance) are fixed in the contract; team travel is on individual terms. Architectural design from $12 per m², house shell from $600 per m², turnkey with finishing from $1,100 per m² — see [turnkey renovation](/en/turnkey-renovation) and [house construction](/en/house-construction)."
+   ]
+  ],
+  [
+   "Logistics, control and reports",
+   [
+    "Design and approvals run online; we travel for measurements and key stages on the schedule set in the contract, and the terms and costs of travel and team accommodation are individual. Between visits you get photo reports every 1–2 weeks, and an online camera on site 24/7 is available for an extra fee."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1DhAA8_vK0zo3E-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1xskjqBvCXgXuL-900.webp",
+   "Hodos Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "By phone or online: property, goals, budget."
+  ],
+  [
+   "Survey and brief",
+   "Measurements, wishes, initial data."
+  ],
+  [
+   "Design and estimate",
+   "Interior or architecture; price and schedule in the contract."
+  ],
+  [
+   "Works",
+   "Renovation or construction with photo reports."
+  ],
+  [
+   "Handover",
+   "Certificate, 12-month warranty on works."
+  ]
+ ],
+ "faq": [
+  [
+   "How much does a log house in the Zhytomyr region cost?",
+   "Shell from $600 per m², turnkey with finishing from $1,100 per m². The stages are fixed in the contract."
+  ],
+  [
+   "Can I order only a design project?",
+   "Yes, from $30 per m², minimum $2,500. The drawings work for any contractor; designer supervision can be added separately."
+  ],
+  [
+   "Can the design be done remotely?",
+   "Yes: online meetings, 3D and drawings in digital form; measurements and designer supervision with site visits on the schedule in the contract."
+  ]
+ ],
+ "rel": [
+  [
+   "/en/house-renovation",
+   "Turnkey house renovation"
+  ],
+  [
+   "/en/turnkey-procurement",
+   "Turnkey interior procurement"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Renovation cost calculator"
+  ],
+  [
+   "/en/contract-warranty-payment",
+   "Contract, warranty, payment (sample contract)"
+  ],
+  [
+   "/en/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

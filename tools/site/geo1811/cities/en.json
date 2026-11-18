@@ -1,0 +1,687 @@
+{
+ "slugs": {
+  "vinnytsia": "design-renovation-vinnytsia",
+  "zhytomyr": "design-renovation-zhytomyr",
+  "chernihiv": "design-renovation-chernihiv",
+  "cherkasy": "design-renovation-cherkasy",
+  "poltava": "design-renovation-poltava",
+  "ivano-frankivsk": "design-renovation-ivano-frankivsk",
+  "ternopil": "design-renovation-ternopil",
+  "uzhhorod": "design-renovation-uzhhorod",
+  "rivne": "design-renovation-rivne",
+  "lutsk": "design-renovation-lutsk",
+  "khmelnytskyi": "design-renovation-khmelnytskyi",
+  "chernivtsi": "design-renovation-chernivtsi",
+  "kropyvnytskyi": "design-renovation-kropyvnytskyi",
+  "irpin": "design-renovation-irpin",
+  "bucha": "design-renovation-bucha",
+  "hostomel": "design-renovation-hostomel",
+  "vyshneve": "design-renovation-vyshneve",
+  "boiarka": "design-renovation-boiarka",
+  "brovary": "design-renovation-brovary",
+  "boryspil": "design-renovation-boryspil",
+  "vyshhorod": "design-renovation-vyshhorod",
+  "obukhiv": "design-renovation-obukhiv",
+  "vasylkiv": "design-renovation-vasylkiv",
+  "fastiv": "design-renovation-fastiv",
+  "bila-tserkva": "design-renovation-bila-tserkva"
+ },
+ "tpl": {
+  "h1_c": "Turnkey interior design, renovation and construction {in}",
+  "h1_t": "Turnkey design, renovation and construction {in}",
+  "title_c": [
+   "Interior design in {n} — renovation and construction | CAS",
+   "Interior design in {n} — renovation and houses | CAS",
+   "Interior design and renovation in {n} | CAS"
+  ],
+  "title_t": [
+   "Turnkey renovation in {n} — design and houses | CAS",
+   "Turnkey renovation in {n} — design | CAS"
+  ],
+  "reg": "{n} Oblast",
+  "all_t": "All towns of the Kyiv region",
+  "des_h": "Interior design {in}",
+  "des_tail": "Design project from $30 per m² (minimum $2,500); packages are on the [interior design studio]({/dyzain-interieru-kyiv}) page.",
+  "ren_h": "Turnkey renovation and house construction",
+  "ren_c": "Renovation is carried out by our salaried team: from $550 per m² for works and rough materials, with finishing materials, furniture and appliances priced separately per estimate. Scope, schedule and payment plan (50/50, 50/30/20 or in stages, from a 10% advance) are fixed in the contract; team travel is on individual terms. Architectural design from $12 per m², house shell from $600 per m², turnkey with finishing from $1,100 per m² — see [turnkey renovation]({/remont-pid-klyuch-kyiv}) and [house construction]({/budivnytstvo-budynkiv-kyiv}).",
+  "ren_t": "The same salaried team as in Kyiv, at the same rates: renovation from $550 per m² (works and rough materials), and if CAS carries out the renovation, the final total stays within ±5% of the estimate. Architectural design from $12 per m², house shell from $600 per m², turnkey with finishing from $1,100 per m²; 12-month warranty on works. More on [turnkey renovation]({/remont-pid-klyuch-kyiv}) and [house construction]({/budivnytstvo-budynkiv-kyiv}).",
+  "log_h": "Logistics, control and reports",
+  "log_c": "Design and approvals run online; we travel for measurements and key stages on the schedule set in the contract, and the terms and costs of travel and team accommodation are individual. Between visits you get photo reports every 1–2 weeks, and an online camera on site 24/7 is available for an extra fee.",
+  "log_t": "Our site managers include visits to the town in their normal schedule, just as for Kyiv districts, and materials come from Kyiv warehouses. Between visits you get photo reports every 1–2 weeks; an online camera on site 24/7 is available for an extra fee.",
+  "fq": {
+   "design_cost": [
+    "How much does a design project {in} cost?",
+    "From $30 per m², minimum $2,500. The planning package starts from $6 per m², the full package with designer supervision from $45 per m²."
+   ],
+   "reno_cost": [
+    "How much does renovation {in} cost?",
+    "From $550 per m² for works and rough materials; finishing materials, furniture and appliances are separate, per estimate."
+   ],
+   "build": [
+    "Do you build houses {in} and the surrounding area?",
+    "Yes: architectural design from $12 per m², shell from $600 per m², turnkey with finishing from $1,100 per m²."
+   ],
+   "remote": [
+    "Can the design be done remotely?",
+    "Yes: online meetings, 3D and drawings in digital form; measurements and designer supervision with site visits on the schedule in the contract."
+   ],
+   "pay": [
+    "Can I pay for the renovation in stages?",
+    "Yes: 50/50, 50/30/20, 50/40/10 or split payments, starting from a 10% advance. The scheme is fixed in the contract."
+   ],
+   "same_prices": [
+    "Are prices {in} different from Kyiv?",
+    "No, the base rates are the same: design from $30 per m², renovation from $550 per m², furnishing from $250 per m²."
+   ],
+   "control": [
+    "How can I follow the works from another city or from abroad?",
+    "Photo reports every 1–2 weeks; an online camera on site 24/7 for an extra fee."
+   ],
+   "team": [
+    "Who will work on the site?",
+    "Our own salaried team, covering different levels of complexity and types of work. 12-month warranty on works."
+   ],
+   "design_only": [
+    "Can I order only a design project?",
+    "Yes, from $30 per m², minimum $2,500. The drawings work for any contractor; designer supervision can be added separately."
+   ],
+   "slope": [
+    "Can you build on a sloping plot?",
+    "Yes. The foundation, retaining walls and drainage are designed after we receive the site survey data."
+   ],
+   "rebuild": [
+    "Is it better to rebuild an old house or build a new one?",
+    "It depends on the foundation and walls. After a survey we give an estimate for both options, so you decide with the numbers in hand."
+   ],
+   "office": [
+    "Do you do offices and commercial premises {in}?",
+    "Offices from $350 per m² (works and rough materials); other commercial premises per estimate. For companies registered in Ukraine — invoices with or without VAT, individually."
+   ]
+  }
+ },
+ "cities": {
+  "vinnytsia": {
+   "n": "Vinnytsia",
+   "in": "in Vinnytsia",
+   "tag": "New residential complexes, Vyshenka and cottages above the Southern Bug.",
+   "d": "Interior design in Vinnytsia: new residential complexes, Vyshenka flats, suburban houses. Design from $30/m², renovation from $550/m², houses from $600/m².",
+   "lead": "Interior design in Vinnytsia for apartments in new residential complexes and older estates, and for private houses in the suburbs above the Southern Bug. We do the project remotely or with site visits; renovation and construction are carried out by our own team on individual terms.",
+   "h": "Vinnytsia: a compact city that keeps building",
+   "p": [
+    "Vinnytsia is a compact city on the Southern Bug with lively construction of new residential complexes and cottage communities on its outskirts. Next to them are Soviet-era estates such as Vyshenka, with typical panel-block flats that owners replan and update.",
+    "For many clients in Vinnytsia the key is balance: a quality project and execution without overpaying. That is why we offer several packages, from the planning package (from $6 per m²) to the full one with designer supervision (from $45 per m²)."
+   ],
+   "des": "New Vinnytsia complexes have open-plan layouts that are easy to get wrong without a project: the designer places rooms, kitchen and storage so that not a single metre is lost. In houses the focus is on stairs, light and the connection with the plot.",
+   "bld": "We renovate flats in shell condition and older homes with full replacement of services, as well as houses. In the suburbs we build one- and two-storey houses from aerated block, brick or timber frame; project, shell and finishing can be ordered together or in stages.",
+   "fk": [
+    "design_cost",
+    "pay",
+    "build"
+   ]
+  },
+  "zhytomyr": {
+   "n": "Zhytomyr",
+   "in": "in Zhytomyr",
+   "tag": "Private houses and dachas on the Teteriv.",
+   "d": "Interior design in Zhytomyr: apartments, private houses and dachas on the Teteriv. Design from $30/m², renovation from $550/m², houses from $600/m².",
+   "lead": "Interior design in Zhytomyr for city apartments, private houses and country dachas on the Teteriv. Zhytomyr is one of the regional centres closest to Kyiv, so site visits are easier to plan than in more distant regions.",
+   "h": "Zhytomyr: private houses, granite riverbanks and forests",
+   "p": [
+    "Zhytomyr has a large private housing sector, an old centre and estates of apartment blocks. Around it are forests and the rocky granite banks of the Teteriv, where many people keep a dacha or a holiday house.",
+    "Typical projects here are rebuilding an old family house, a holiday house in nature or an apartment for children who have moved to Kyiv. We can handle both the Zhytomyr and the Kyiv side if needed."
+   ],
+   "des": "For houses by the forest and the river we base the design on natural materials — wood, stone, linen — and warm light, as in our A-Frame House and Hoda Estate. For city apartments, a practical layout and storage.",
+   "bld": "We renovate houses and apartments, and convert dachas for year-round living: insulation, new services, a new roof. In the Zhytomyr region log and timber-frame houses fit well, as do classic aerated-block ones; plots by the Teteriv are often rocky, so the foundation is designed after the site survey.",
+   "faq": [
+    [
+     "How much does a log house in the Zhytomyr region cost?",
+     "Shell from $600 per m², turnkey with finishing from $1,100 per m². The stages are fixed in the contract."
+    ]
+   ],
+   "fk": [
+    "design_only",
+    "remote"
+   ]
+  },
+  "chernihiv": {
+   "n": "Chernihiv",
+   "in": "in Chernihiv",
+   "tag": "Rebuilding homes, houses above the Desna.",
+   "d": "Interior design, renovation and rebuilding in Chernihiv: apartments and private houses above the Desna. Design from $30/m², renovation from $550/m².",
+   "lead": "Interior design in Chernihiv, renovation of apartments and houses, and construction of new homes above the Desna. We run the project remotely or with site visits; renovation and construction are done by our team on individually agreed terms.",
+   "h": "Chernihiv: an ancient city that is rebuilding",
+   "p": [
+    "Chernihiv is one of Ukraine's oldest cities, with a low-rise centre, estates of apartment blocks and a large private sector along the Desna. Since 2022 many homes here have been restored or built anew.",
+    "For damaged houses we start with a survey: which parts of the structure can be kept and which need strengthening or replacing. Only then come the project, the estimate and the renovation, so that money does not go into finishes on an unreliable base."
+   ],
+   "des": "Rebuilding is a chance to rethink the layout: join the kitchen and living room, add a walk-in wardrobe and a second bathroom, plan energy-efficient systems. If the volume of the house changes, we do the interior together with the architecture.",
+   "bld": "We renovate apartments and houses, from major renovation with new services to finishing, and do [house reconstruction]({/rekonstruktsiia-budynku-kyiv}) after a survey. For plots near the Desna the project accounts for groundwater and waterproofing.",
+   "faq": [
+    [
+     "Do you take on restoring a damaged house?",
+     "Yes: survey, reconstruction project, estimate and works. Renovation from $550 per m², construction from $600 per m²."
+    ]
+   ],
+   "fk": [
+    "control",
+    "design_cost"
+   ]
+  },
+  "cherkasy": {
+   "n": "Cherkasy",
+   "in": "in Cherkasy",
+   "tag": "Apartments with a water view, houses among the pines.",
+   "d": "Interior design in Cherkasy: flats overlooking the Dnipro, houses in the pine forests. Design from $30/m², renovation from $550/m², houses from $600/m².",
+   "lead": "Interior design in Cherkasy for apartments overlooking the Kremenchuk Reservoir, houses among pine forests and country residences on the shore. We do the project remotely or with site visits; renovation and construction by our own team on individual terms.",
+   "h": "Cherkasy: a city of water and pines",
+   "p": [
+    "Cherkasy stretches along the Dnipro and the Kremenchuk Reservoir, with Sosnivka and pine forests next to it. The city is mostly Soviet-era blocks and new residential complexes, while the outskirts and the shore have private houses and dachas.",
+    "So requests here come in pairs: update a city apartment and fit out a house by the water for weekends or year-round living. If it is more convenient, we run both under one contract."
+   ],
+   "des": "For houses by the water — panoramic windows, terraces and natural materials that tolerate moisture; for apartments — light finishes, built-in wardrobes and well-planned lighting. The design can be combined with [furnishing]({/mebliuvannia-kvartyry-kyiv}) from $250 per m².",
+   "bld": "We renovate resale and new-build apartments, as well as houses and dachas. Near Cherkasy we build timber-frame, log and aerated-block houses for holidays or permanent living; on plots by the water we pay special attention to the foundation and drainage.",
+   "faq": [
+    [
+     "Do you build turnkey holiday houses near Cherkasy?",
+     "Yes: project, construction, finishing and furniture. Shell from $600 per m², turnkey from $1,100 per m²."
+    ],
+    [
+     "Can you furnish an apartment in Cherkasy?",
+     "Yes, from $250 per m²: selection, purchasing, delivery and setup. Delivery to Cherkasy is priced separately."
+    ]
+   ],
+   "fk": [
+    "remote"
+   ]
+  },
+  "poltava": {
+   "n": "Poltava",
+   "in": "in Poltava",
+   "tag": "A classical centre and homesteads above the Vorskla.",
+   "d": "Interior design in Poltava: apartments in the centre and new builds, private houses above the Vorskla. Design from $30/m², renovation from $550/m².",
+   "lead": "Interior design in Poltava for apartments in the classical centre and new residential complexes, and for private houses above the Vorskla and in the suburbs. The design project is done remotely or with site visits; renovation and construction by our team on individual terms.",
+   "h": "Poltava: a classical centre and green suburbs",
+   "p": [
+    "Poltava is a cosy city with a classicist centre around the Round Square, low-rise streets, estates of apartment blocks and a large private sector. On the slopes above the Vorskla and in the suburbs there are many homesteads with big plots.",
+    "With such homesteads the question is often whether to reconstruct the old house or build a new one. We price both options, so the decision rests on an estimate rather than a hunch."
+   ],
+   "des": "For houses on large plots the design also covers the space around: terrace, summer kitchen, entrance. For apartments in the centre — classical proportions with modern function; for new builds — well-thought-out storage.",
+   "bld": "We renovate apartments and houses, from major renovation with new services to finishing. In the Poltava region we build aerated-block, brick, timber-frame and log houses; sloping plots above the Vorskla need a careful foundation and drainage design, which we settle before work starts.",
+   "fk": [
+    "rebuild",
+    "reno_cost",
+    "remote"
+   ]
+  },
+  "ivano-frankivsk": {
+   "n": "Ivano-Frankivsk",
+   "in": "in Ivano-Frankivsk",
+   "tag": "New builds and chalets in the Carpathians; Hoda Estate.",
+   "d": "Interior design in Ivano-Frankivsk and the Carpathians: new-build flats, chalets and mountain houses. Design from $30/m², renovation from $550/m².",
+   "lead": "Interior design in Ivano-Frankivsk for apartments in new residential complexes, houses in the suburbs and chalets in the Carpathians. Among our projects is Hoda Estate, a 180 m² house in the Carpathians with wood, stone and mountain views.",
+   "h": "Frankivsk and the Carpathians: new builds and mountain houses",
+   "p": [
+    "Ivano-Frankivsk is one of the Ukrainian cities with the most active construction of new housing: many apartments are bought in new builds without finishing. The historic Austrian centre is compact, and beyond the city lie the Carpathian foothills and mountains with chalets, guest houses and cottages.",
+    "Our Hoda Estate is a design project for a 180 m² country house in the Carpathians: layout, 3D visualisations, natural materials and built-in furniture. We bring that experience — combining cosiness, mountain views and practicality — to projects in and around Frankivsk."
+   ],
+   "des": "For new-build apartments in Frankivsk — a layout for the family, a kitchen-living room, walk-in wardrobes. For mountain houses — wood, stone, a fireplace, large windows onto the view and practical utility zones for skis and boots.",
+   "bld": "We renovate new-build flats from shell condition and houses. In the Carpathians we build log, timber-frame and masonry houses designed for snow loads and slopes, planning the site layout and machinery access in advance; for guest complexes see [turnkey holiday resort]({/baza-vidpochynku-pid-klyuch}).",
+   "faq": [
+    [
+     "Do you design chalets and houses in the Carpathians?",
+     "Yes, for example Hoda Estate, a 180 m² house in the Carpathians. [See the project]({/proekty/hoda-estate})."
+    ],
+    [
+     "Do you build guest houses for rent?",
+     "Yes: project, construction, interior and furnishing. Shell from $600 per m², turnkey from $1,100 per m²."
+    ]
+   ],
+   "fk": [
+    "reno_cost"
+   ]
+  },
+  "ternopil": {
+   "n": "Ternopil",
+   "in": "in Ternopil",
+   "tag": "New complexes by the lake; renovation for owners abroad.",
+   "d": "Interior design in Ternopil: flats in new complexes by the lake and private houses. Design from $30/m², renovation from $550/m², houses from $600/m².",
+   "lead": "Interior design in Ternopil for apartments in new residential complexes, updates of older housing and private houses in the suburbs. We do the project remotely or with site visits; renovation and construction by our own team on agreed terms.",
+   "h": "Ternopil: a lakeside city with active construction",
+   "p": [
+    "Ternopil is a compact city around the large Ternopil Pond. In recent years many new residential complexes have gone up here, some overlooking the water, while estates such as Druzhba and Skhidnyi have plenty of standard flats being updated.",
+    "Many Ternopil residents work abroad and buy an apartment for the future, so the renovation has to be visible from a distance: photo reports, online approvals and, if desired, a camera on site."
+   ],
+   "des": "In new complexes — an open plan arranged for a specific family, with walk-in wardrobes and space for laundry. For apartments with a view of the lake — an interior that brings out the view, with the right curtains and lighting.",
+   "bld": "We renovate shell-condition and resale apartments as well as houses. In the suburbs of Ternopil we build aerated-block, brick and timber-frame houses; project, shell and finishing can be split into stages.",
+   "faq": [
+    [
+     "I live abroad. Can the renovation in Ternopil be managed remotely?",
+     "Yes: approvals online, photo reports every 1–2 weeks and an online camera 24/7 for an extra fee. The contract and payments can also be arranged remotely."
+    ]
+   ],
+   "fk": [
+    "design_cost",
+    "team"
+   ]
+  },
+  "uzhhorod": {
+   "n": "Uzhhorod",
+   "in": "in Uzhhorod",
+   "reg": "Zakarpattia Oblast",
+   "tag": "Czech functionalism and Transcarpathian guest houses.",
+   "d": "Interior design in Uzhhorod and Transcarpathia: Czech-era flats, new builds, houses and guest houses. Design from $30/m², renovation from $550/m².",
+   "lead": "Interior design in Uzhhorod for apartments in Czechoslovak-era buildings, new complexes on the Uzh river, private houses and Transcarpathian guest houses. We do the project remotely or with site visits; renovation and construction by our own team on individual terms.",
+   "h": "Uzhhorod: Czech functionalism, the Uzh and the mountains nearby",
+   "p": [
+    "Uzhhorod stands out for its interwar Czechoslovak architecture — functionalist buildings with clean lines and large windows, especially in the Malyi Halahov district. Nearby are the old town, new complexes on the Uzh and private houses with gardens.",
+    "The mild climate and the closeness of the EU border make Transcarpathia attractive both for living and for hospitality: guest houses, mini-hotels, wine estates. We run such properties as commercial projects, with a concept, an estimate and furnishing."
+   ],
+   "des": "In Czech-era buildings the interior brings out their character: simple forms, quality materials, original windows and stairs kept. For guest houses — a design that withstands a flow of guests and is easy to maintain; see also [hotel design]({/dyzain-hotelu-kyiv}).",
+   "bld": "We renovate apartments in older buildings and new builds, houses and small commercial premises. In Transcarpathia we build private houses and guest complexes from aerated block, brick, logs or timber frame, taking slopes and drainage into account.",
+   "faq": [
+    [
+     "Do you work with guest houses and mini-hotels in Transcarpathia?",
+     "Yes: concept, architecture, interior, renovation and furnishing. The cost is per estimate for the property."
+    ]
+   ],
+   "fk": [
+    "design_cost",
+    "remote"
+   ]
+  },
+  "rivne": {
+   "n": "Rivne",
+   "in": "in Rivne",
+   "tag": "New complexes and houses on Polissia plots.",
+   "d": "Interior design in Rivne: flats in new complexes and older buildings, suburban houses. Design from $30/m², renovation from $550/m², houses from $600/m².",
+   "lead": "Interior design in Rivne for apartments in new residential complexes and Soviet-era buildings, and for private houses in the suburbs and in Polissia. We do the project remotely or with site visits; renovation and construction by our team on individual terms.",
+   "h": "Rivne: a green city and Polissia plots",
+   "p": [
+    "Rivne is a green city of parks and apartment-block estates, where many new residential complexes have appeared in recent years. The suburbs and the surrounding Polissia region are private houses on large plots among forests and marshes.",
+    "Polissia plots often have high groundwater and peat soils. Getting the foundation and drainage right is critical here, and we settle them before any interior decisions."
+   ],
+   "des": "For Rivne apartments — a functional layout, storage and light; for houses — a warm palette with wood, a fireplace and large windows onto the garden. You can choose the planning, basic or full package with designer supervision.",
+   "bld": "We renovate apartments and houses, from new services to finishing. We build aerated-block, brick, timber-frame and log houses; the foundation is designed after the site survey data — see also [house design]({/proektuvannia-budynku-kyiv}).",
+   "faq": [
+    [
+     "Can you build on a plot with high groundwater?",
+     "Yes, but the foundation and drainage design come after the site survey data. Shell from $600 per m²."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "design_cost"
+   ]
+  },
+  "lutsk": {
+   "n": "Lutsk",
+   "in": "in Lutsk",
+   "reg": "Volyn Oblast",
+   "tag": "The old town, new complexes, houses by the Volyn lakes.",
+   "d": "Interior design in Lutsk: new complexes, flats in the old town, houses in Volyn. Design from $30/m², renovation from $550/m², construction from $600/m².",
+   "lead": "Interior design in Lutsk for apartments in new complexes and in the old town by Lutsk Castle, and for private houses in Volyn. We do the project remotely or with site visits; renovation and construction by our own team on individual terms.",
+   "h": "Lutsk: the castle, new districts and Volyn houses",
+   "p": [
+    "Lutsk has a historic centre around Lutsk Castle, Soviet-era estates and many new residential complexes. Around it lies Volyn with its lakes and forests, where people build houses for living and for holidays.",
+    "Being close to the Polish border means many clients live and work in the EU and fit out their Lutsk home from a distance. For them we organise the process so that most decisions are made online."
+   ],
+   "des": "For apartments in new Lutsk complexes — a family layout with plenty of storage; in the old town — respect for historic details. For houses in Volyn — a warm natural palette and direct access to the garden.",
+   "bld": "We renovate apartments and houses, from rough works to furniture, as well as individual rooms. In Volyn we build aerated-block, brick, timber-frame and log houses; for plots by the lakes, with attention to soils and waterproofing.",
+   "faq": [
+    [
+     "Can I fit out an apartment in Lutsk while living in Poland?",
+     "Yes: online approvals, photo reports, an online camera for an extra fee and video calls for key decisions."
+    ]
+   ],
+   "fk": [
+    "design_cost",
+    "build"
+   ]
+  },
+  "khmelnytskyi": {
+   "n": "Khmelnytskyi",
+   "in": "in Khmelnytskyi",
+   "tag": "Apartments, houses, shops and showrooms.",
+   "d": "Interior design in Khmelnytskyi: apartments in new complexes, houses, shops and offices. Design from $30/m², renovation from $550/m², offices from $350/m².",
+   "lead": "Interior design in Khmelnytskyi for apartments in new complexes and private houses, as well as shops, showrooms and offices in this trading city. We do the project remotely or with site visits; renovation and construction by our team on individual terms.",
+   "h": "Khmelnytskyi: a trading city with new districts",
+   "p": [
+    "Khmelnytskyi is known as a major trading hub of Podillia, with many entrepreneurs, shops and warehouses. Its housing is Soviet-era estates, new residential complexes and a private sector on the Southern Bug.",
+    "So besides apartments and houses we often talk about commercial premises: a shop, a showroom, an office. For those there is [commercial renovation]({/remont-komertsiinykh-prymishchen-kyiv}) and [turnkey business premises]({/biznes-pid-kliuch-kyiv}), with invoices for companies."
+   ],
+   "des": "For apartments — a family layout, a kitchen-living room, walk-in wardrobes; for shops and showrooms — customer flow, displays and lighting on the goods.",
+   "bld": "We renovate apartments, houses, offices and shops: offices from $350 per m² (works and rough materials). Near Khmelnytskyi we build aerated-block, brick and timber-frame houses; project, shell, finishing and furnishing can go under one contract or in stages.",
+   "faq": [
+    [
+     "Do you design and renovate shops in Khmelnytskyi?",
+     "Yes: concept, renovation and furnishing. The cost is per estimate for the premises; for companies registered in Ukraine — invoices with or without VAT, individually."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "pay"
+   ]
+  },
+  "chernivtsi": {
+   "n": "Chernivtsi",
+   "in": "in Chernivtsi",
+   "tag": "Austrian-era buildings and hillside plots.",
+   "d": "Interior design in Chernivtsi: flats in Austrian-era buildings, new complexes, Bukovina houses. Design from $30/m², renovation from $550/m².",
+   "lead": "Interior design in Chernivtsi for apartments in Austrian-era buildings in the historic centre, new complexes and private houses on the hills of Bukovina. We do the project remotely or with site visits; renovation and construction by our own team on individual terms.",
+   "h": "Chernivtsi: Austrian heritage and the hills of Bukovina",
+   "p": [
+    "Chernivtsi has a whole ensemble from the Austrian era: Viennese façades, buildings with high ceilings and stucco, and the Residence of Metropolitans, a UNESCO World Heritage site. The outskirts have new complexes, and the hills around are private houses overlooking the city and the Prut.",
+    "Chernivtsi is a city of sloping streets and plots with level differences. Houses here need retaining walls, drainage and terraces, while apartments in old buildings need a check of floors and services."
+   ],
+   "des": "For apartments in Austrian buildings — an interior that keeps the proportions and details, with a modern kitchen and bathroom. For hillside houses — terraces on several levels, panoramic windows and stairs as part of the interior.",
+   "bld": "We renovate apartments in older buildings, with a survey of floors and services, and in new builds, as well as houses. In Bukovina we build aerated-block, brick, log and timber-frame houses that take the terrain and soils into account.",
+   "faq": [
+    [
+     "Do you work with apartments in Chernivtsi's historic buildings?",
+     "Yes: a survey of floors and services, a project that respects the historic details, and renovation by our team."
+    ]
+   ],
+   "fk": [
+    "slope",
+    "design_cost"
+   ]
+  },
+  "kropyvnytskyi": {
+   "n": "Kropyvnytskyi",
+   "in": "in Kropyvnytskyi",
+   "reg": "Kirovohrad Oblast",
+   "tag": "A merchant-era centre and updates of older housing.",
+   "d": "Interior design in Kropyvnytskyi: apartments in the centre and in residential districts, private houses. Design from $30/m², renovation from $550/m².",
+   "lead": "Interior design in Kropyvnytskyi for apartments in the historic centre and residential districts, and for private houses on the Inhul and in the suburbs. The design project is done remotely or with site visits; renovation and construction by our team on agreed terms.",
+   "h": "Kropyvnytskyi: an old merchant city and a private sector",
+   "p": [
+    "Kropyvnytskyi lies in the very centre of Ukraine, with a 19th-century merchant centre, apartment-block estates and a large private sector along the Inhul. There are fewer new complexes than in bigger regional centres, so most requests are about updating existing homes.",
+    "For such homes an accurate estimate matters most: what to replace in the services, whether to level the walls, which structures to keep. We start with it, so the budget does not drift halfway through the renovation."
+   ],
+   "des": "For apartments in older buildings — replanning within the structure, new bathrooms and kitchens, built-in furniture; for houses — room for a large family, a terrace, a boiler room and a pantry. Packages from planning to full.",
+   "bld": "We renovate apartments and houses, from [major renovation]({/kapitalnyi-remont-kvartyry-kyiv}) to cosmetic. Near Kropyvnytskyi we build aerated-block, brick and timber-frame houses, from the architectural design to turnkey finishing.",
+   "fk": [
+    "reno_cost",
+    "pay",
+    "remote"
+   ]
+  },
+  "irpin": {
+   "n": "Irpin",
+   "in": "in Irpin",
+   "d": "Turnkey renovation in Irpin: flats in new complexes, private houses. Design from $30/m², renovation from $550/m², houses from $600/m². 12-month warranty.",
+   "lead": "Turnkey renovation in Irpin: apartments in new residential complexes, townhouses and private houses. We do the design project, renovation by our own salaried team and construction of houses from scratch — one team, one contract and an estimate before work starts.",
+   "h": "Housing in Irpin: new builds, townhouses and a private sector",
+   "p": [
+    "In recent years Irpin has become one of the main commuter towns for Kyiv residents: many apartments here are bought in new complexes, often unfinished or with a developer finish that owners want to redo right away. Nearby are townhouses and cottage communities among the pines, and closer to the Irpin river an older private sector.",
+    "Since 2022 some houses have gone through restoration, and for them we start with an inspection of the structure and services: what can be kept and what is better replaced before finishing. In new builds, the first step is checking the developer's screed, walls and wiring before laying tiles and fitting furniture."
+   ],
+   "des": "An apartment in an Irpin complex is often small and open-plan, and that is where a design project pays off fastest: a well-planned kitchen-living room, a walk-in wardrobe instead of a wasted corridor, light in every zone. For houses and townhouses we add stairs, terraces and the link with the plot.",
+   "bld": "We renovate apartments from shell condition or with a developer finish, townhouses and houses, and also do separate [rough renovation]({/chornovyi-remont-kvartyry-kyiv}). Plots in Irpin and nearby Vorzel and Stoianka are often narrow and wooded, so we design the house for the specific plot; we build from aerated block and brick, as well as [timber-frame houses]({/karkasnyi-budynok-pid-kliuch-kyiv}).",
+   "faq": [
+    [
+     "Do you renovate new-build flats with a developer finish?",
+     "Yes. First we assess what of the developer's work can stay (often part of the rough works) and what has to be redone, and only then draw up the estimate."
+    ],
+    [
+     "Do you take on houses that need restoration?",
+     "Yes: we start with an inspection of the structure and services, then [house reconstruction]({/rekonstruktsiia-budynku-kyiv}) or major renovation per estimate."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "team"
+   ]
+  },
+  "bucha": {
+   "n": "Bucha",
+   "in": "in Bucha",
+   "d": "Turnkey renovation in Bucha: apartments in new complexes, houses and cottages. Design from $30/m², renovation from $550/m², construction from $600/m².",
+   "lead": "Turnkey renovation in Bucha: apartments in residential complexes, cottages and private houses on quiet streets among the pines. CAS runs the project from the design to the furniture, with an estimate, a contract and its own team.",
+   "h": "Bucha: cottages, new complexes and houses in the forest",
+   "p": [
+    "In Bucha a private house in the forest stands next to low-rise complexes and townhouses. Many families move here from Kyiv for quiet and space, so the typical request is a home that works for everyday life: a study for working from home, walk-in wardrobes, a pantry, a terrace.",
+    "A large part of Bucha's housing was rebuilt or built anew after 2022. For these houses we plan modern systems — heating, ventilation, backup power — together with the interior from the start, not afterwards."
+   ],
+   "des": "In Bucha cottages a designer typically joins a large living room with the kitchen, adds a fireplace or a second lighting zone, and plans an entrance with room for seasonal clothes. In complex apartments — maximum storage and light on a small area.",
+   "bld": "We renovate apartments, townhouses and houses, from rough works to finishing, including [bathroom]({/remont-vannoi-kimnaty-kyiv}) and [kitchen]({/remont-kukhni-kyiv}) renovation separately. Plots in Bucha are mostly sandy and wooded: the foundation is designed after the site survey, and we also do [landscape design]({/landshaftnyi-dyzain-kyiv}) from $50 per 100 m².",
+   "fk": [
+    "reno_cost",
+    "design_only",
+    "build",
+    "control"
+   ]
+  },
+  "hostomel": {
+   "n": "Hostomel",
+   "in": "in Hostomel",
+   "d": "Turnkey renovation and house building in Hostomel: design from $12/m², shell from $600/m², turnkey from $1,100/m², renovation from $550/m².",
+   "lead": "Renovation from $550/m², houses from $600/m²: in Hostomel we handle turnkey renovation and construction, from the project to the furniture, with our own team, an estimate and a contract.",
+   "h": "Hostomel: private houses and new districts",
+   "p": [
+    "Hostomel is above all a town of private houses: homesteads on a few hundred square metres, new cottage communities and small complexes closer to the road to Kyiv. Many owners here do not renovate but build anew or substantially rebuild an old house.",
+    "For Hostomel plots we often do the whole package: [house design]({/proektuvannia-budynku-kyiv}), construction, systems, interior and landscaping. That way the joints between stages — foundation and floors, services and furniture — hold no surprises at the finishing stage."
+   ],
+   "des": "In a Hostomel house the design starts with the floor plans: where the bedrooms go, where the utility and boiler rooms are, how you walk from the terrace to the kitchen. Single-storey houses with a terrace and a pool, like our House 150, work especially well on small plots.",
+   "bld": "We renovate houses after purchase, replan old homesteads and update apartments in complexes; with an old house we first check the roof, walls and services. We build aerated-block and brick, [modular]({/modulnyi-budynok-kyiv}) and timber-frame houses, with the [house construction cost]({/vartist-budivnytstva-budynku-kyiv}) set out by stage in the contract.",
+   "faq": [
+    [
+     "How much does it cost to build a house in Hostomel?",
+     "Shell from $600 per m², turnkey with finishing from $1,100 per m². For a 150 m² house the base figure is 150 m² × $600 for the shell or 150 m² × $1,100 turnkey; the exact price comes from the estimate."
+    ],
+    [
+     "Do you do interiors for a house built by another contractor?",
+     "Yes. Design from $30 per m², renovation from $550 per m²; if CAS carries out the renovation, we keep within ±5% of the estimate."
+    ]
+   ],
+   "fk": [
+    "rebuild"
+   ]
+  },
+  "vyshneve": {
+   "n": "Vyshneve",
+   "in": "in Vyshneve",
+   "d": "Turnkey apartment renovation in Vyshneve: new builds at the Kyiv border, design from $30/m², renovation from $550/m², furniture. Own team, estimate ±5%.",
+   "lead": "Turnkey renovation in Vyshneve: mostly apartments in new builds right at the Kyiv city limits, and houses in the private sector. Design, renovation and furniture are handled by one team, as in the capital.",
+   "h": "Vyshneve: new builds right next to Kyiv",
+   "p": [
+    "Vyshneve has practically merged with Kyiv's Borshchahivka and Zhuliany, so the tasks here are the same as in the capital's new builds: a flat from the developer, an open plan and the need to fit a kitchen, living room and nursery into a compact area.",
+    "Next to the blocks, old private houses and dachas remain, which owners rebuild for year-round living. Here we often combine an apartment renovation for some family members with a house reconstruction for others."
+   ],
+   "des": "In Vyshneve apartments the most common request is [apartment design]({/dyzain-interieru-kvartyry-kyiv}) that turns a studio into separate rooms, or the reverse — joining the kitchen and living room. We make the drawings detailed enough that the crew decides nothing on the spot.",
+   "bld": "We renovate apartments from screed and plaster to furniture; for new builds see also [new-build renovation]({/remont-novobudovy-kyiv}). Private plots are small, so houses are usually compact, on two floors with a minimum of corridors; [house reconstruction]({/rekonstruktsiia-budynku-kyiv}) with a second floor added is possible after a survey.",
+   "faq": [
+    [
+     "Can the kitchen be joined with the living room in a new build?",
+     "It depends on the structure and on whether the flat has gas. We check this at the planning stage, before renovation starts."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "same_prices"
+   ]
+  },
+  "boiarka": {
+   "n": "Boiarka",
+   "in": "in Boiarka",
+   "d": "Turnkey house building and renovation in Boiarka and nearby villages: shell from $600/m², turnkey from $1,100/m², renovation from $550/m².",
+   "lead": "Renovation from $550/m², houses from $600/m²: in Boiarka we do turnkey renovation and build and reconstruct private houses. One in-house team, from the plot to the finished interior.",
+   "h": "Boiarka: a forest suburb of private houses",
+   "p": [
+    "Boiarka is surrounded by forest, and most requests here are about a private house: building a new one, adding a floor or putting in order a house bought as a fixer-upper. There are fewer apartments than in neighbouring Vyshneve, although new complexes are appearing too.",
+    "Some plots in Boiarka and the villages around are former dachas with thin walls and no proper systems. For them we honestly calculate which is better value: insulate and rebuild, or put up a new house."
+   ],
+   "des": "For a house in Boiarka the design often covers the façade and the plot too: large windows onto the forest, a terrace, an entrance with a vestibule. Inside — a fireplace or stove, a kitchen with an island and walk-in wardrobes, as in our Petrivtsi House.",
+   "bld": "We renovate houses and apartments: new services, insulation, levelled walls, finishing — for houses with a history, after a survey. We build from aerated block and brick, as well as [log houses]({/budynok-z-brusa-kyiv}) that look natural in the forest, designing around the trees on the plot and the groundwater level.",
+   "faq": [
+    [
+     "Do you do the engineering systems in a house?",
+     "Yes: heating, water supply, sewerage and electrics go into the house project and estimate."
+    ]
+   ],
+   "fk": [
+    "build",
+    "rebuild"
+   ]
+  },
+  "brovary": {
+   "n": "Brovary",
+   "in": "in Brovary",
+   "d": "Turnkey renovation of apartments and houses in Brovary: design from $30/m², renovation from $550/m², offices from $350/m², houses from $600/m².",
+   "lead": "Turnkey renovation in Brovary: apartments in panel blocks and new builds, private houses in the town and the villages around it, as well as offices and commercial premises. Design, renovation and construction by one CAS team.",
+   "h": "Brovary: from panel blocks to cottages on the left bank",
+   "p": [
+    "Brovary is a large town on the left bank with very varied housing: Soviet nine-storey panel blocks, new complexes, a private sector and cottage communities along the Chernihiv highway. Older flats typically need full replacement of services and levelled walls; new builds need renovation from scratch.",
+    "There are also many production sites, warehouses and offices, so besides homes we do [turnkey office renovation]({/remont-ofisu-pid-klyuch-kyiv}) from $350 per m² and [commercial premises]({/remont-komertsiinykh-prymishchen-kyiv}), with invoices for companies."
+   ],
+   "des": "In Brovary panel-block flats the designer first looks for space: where to build in wardrobes, how to enlarge the bathroom at the expense of the corridor, whether the kitchen can be joined with a room. For houses — floor plans, a terrace and a boiler room.",
+   "bld": "We renovate resale apartments with full replacement of wiring and plumbing — see [major apartment renovation]({/kapitalnyi-remont-kvartyry-kyiv}) — as well as new builds and houses. Plots in Brovary and nearby Krasylivka, Trebukhiv and Kniazhychi are usually flat, so a house can be planned freely: single-storey with a terrace or two storeys.",
+   "faq": [
+    [
+     "Do you work with panel buildings?",
+     "Yes. In panel buildings we do not touch load-bearing walls, and replanning stays within what the structure allows."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "office"
+   ]
+  },
+  "boryspil": {
+   "n": "Boryspil",
+   "in": "in Boryspil",
+   "d": "Turnkey renovation in Boryspil and house building in nearby villages: design from $30/m², renovation from $550/m², shell from $600/m².",
+   "lead": "Turnkey renovation in Boryspil: apartments, private houses and cottages in the villages along the Boryspil highway. We design, renovate and build with CAS's own team.",
+   "h": "Boryspil and the highway: houses for year-round living",
+   "p": [
+    "Boryspil is known for its airport, but for us it is above all a town of private houses and small complexes, plus villages and cottage communities along the highway: Hora, Shchaslyve, Velyka Oleksandrivka. People who work in Kyiv but want a house with a plot move here.",
+    "Houses here are often bought as a shell or ready for finishing, and then the key is not to redo what has been done but to continue properly: check the roof, windows, screed and services, and estimate exactly what is missing."
+   ],
+   "des": "For a house near Boryspil the design usually includes a living room with double-height space or large windows, a guest bedroom for relatives and a work area. Town apartments are more compact, so built-in furniture and storage matter.",
+   "bld": "We renovate houses after the developer and apartments in town, from rough works to furniture, plus [kitchen renovation]({/remont-kukhni-kyiv}) with [made-to-order kitchens]({/kukhni-i-shafy-na-zamovlennia-kyiv}) by our staff and partners. Plots on the left bank are mostly flat and open, so we design for wind and sun: a south-facing terrace and a sheltered entrance.",
+   "faq": [
+    [
+     "The house was bought as a shell. Where do we start?",
+     "With an inspection and a list of works: what has been done and what needs fixing. Then a design project and an estimate for completing the house."
+    ],
+    [
+     "Do you build in the villages near Boryspil?",
+     "Yes: Hora, Shchaslyve, Velyka Oleksandrivka and other places along this route. Shell from $600 per m², turnkey from $1,100 per m²."
+    ]
+   ],
+   "fk": [
+    "reno_cost"
+   ]
+  },
+  "vyshhorod": {
+   "n": "Vyshhorod",
+   "in": "in Vyshhorod",
+   "d": "Turnkey design, renovation and house building in Vyshhorod and Petrivtsi by the Kyiv Sea. Design from $30/m², renovation from $550/m², houses from $600/m².",
+   "lead": "Turnkey renovation in Vyshhorod and the villages nearby, by the Dnipro and the Kyiv Sea. One of our projects in this direction is Petrivtsi House, a 320 m² private house with architecture and interior in one project.",
+   "h": "Vyshhorod and Petrivtsi: houses by the water",
+   "p": [
+    "Vyshhorod stands on the high bank of the Dnipro next to the hydroelectric dam and the Kyiv Sea. Older apartment blocks, new complexes with water views and private houses mix here — in the town itself and in the villages along the road to Kyiv: Petrivtsi, Khotianivka, Liutizh.",
+    "Our Petrivtsi House is a 320 m² house in Petrivtsi: floor plans, a kitchen with an island and a fireplace, bathrooms, a laundry and a study. We bring that experience of a house for a large family by the water to every new project in the Vyshhorod area."
+   ],
+   "des": "By the water we build the interior around the view: panoramic windows, terraces, a living room opening onto the garden. Materials are chosen for the humidity — natural wood only where it can cope, stone and porcelain stoneware in wet areas.",
+   "bld": "We renovate apartments, from older blocks to new builds, and turnkey houses; for flats overlooking the Dnipro we often do [premium renovation]({/remont-premium-klasu-kyiv}) with quiet ventilation. Plots by the water need careful foundation and waterproofing design, starting from the site survey; the site plan and landscape are planned from the outset.",
+   "faq": [
+    [
+     "Which CAS project is near Vyshhorod?",
+     "Petrivtsi House, a 320 m² private house in Petrivtsi: architecture and interior design project. [See the project]({/proekty/petrivtsi-house})."
+    ]
+   ],
+   "fk": [
+    "build",
+    "reno_cost"
+   ]
+  },
+  "obukhiv": {
+   "n": "Obukhiv",
+   "in": "in Obukhiv",
+   "d": "Turnkey renovation of apartments and houses in Obukhiv, Ukrainka and Trypillia: design from $30/m², renovation from $550/m², construction from $600/m².",
+   "lead": "Turnkey renovation in Obukhiv, Ukrainka and the villages above the Dnipro south of Kyiv: apartments, private houses and country residences. Design, renovation, construction and landscaping by one team.",
+   "h": "The Obukhiv area: a town, the Dnipro and country houses",
+   "p": [
+    "Obukhiv is a small town with mostly Soviet-era housing and a private sector, and nearby are Ukrainka and Trypillia on the Dnipro and Kozyn closer to Kyiv. There are many country houses here, used both for permanent living and as a dacha with a view of the water.",
+    "For apartments in Obukhiv and Ukrainka the typical task is a major renovation of older housing. For houses above the Dnipro — terraces, large windows, a sauna or pool and landscaping of a sloping plot."
+   ],
+   "des": "On plots overlooking the Dnipro, interior design is closely tied to the architecture: where the windows are, where the living room faces, how you go down from the terrace to the garden. For apartments — a functional layout and light finishes.",
+   "bld": "We renovate apartments with full replacement of services, houses and cottages; details of the warranty are on the [contract, warranty, payment]({/dogovir-garantiya-oplata}) page. Plots above the Dnipro often slope, so we design for the terrain, retaining walls and drainage; for country residences see also [houses in Koncha-Zaspa and Kozyn]({/budynok-pid-kliuch-koncha-zaspa}).",
+   "faq": [
+    [
+     "Do you do landscaping for a house above the Dnipro?",
+     "Yes, landscape design from $50 per 100 m²: site plan, zoning, garden lighting, terraces."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "slope"
+   ]
+  },
+  "vasylkiv": {
+   "n": "Vasylkiv",
+   "in": "in Vasylkiv",
+   "d": "Turnkey renovation and construction in Vasylkiv: timber-frame, modular and masonry houses, renovation from $550/m², design from $30/m². Own CAS team.",
+   "lead": "Turnkey renovation in Vasylkiv and the surrounding villages: apartments in older buildings, private houses and new timber-frame and modular houses. Design, renovation and construction — from the project to the furniture.",
+   "h": "Vasylkiv: an old town on the Stuhna and a private sector",
+   "p": [
+    "Vasylkiv, on the Stuhna river, is one of the oldest towns in the Kyiv region. Housing here is mainly private houses of different ages and small apartment blocks, with few new complexes, so most requests are about renovating and rebuilding a house or building a new one on a family plot.",
+    "Plots in Vasylkiv and nearby villages are usually larger than closer to Kyiv, with room for a garage, outbuildings and a garden. We plan all of this in the site plan from the start, so the house does not get lost on the plot."
+   ],
+   "des": "For Vasylkiv houses we often do the interior together with the architecture: a simple volume, a warm interior with wood, a kitchen-living room opening onto the garden. For smaller budgets the planning package from $6 per m² works well.",
+   "bld": "We renovate houses and apartments: new roof and services, insulation, levelled walls, finishing; if you only need the home prepared, we do [rough renovation]({/chornovyi-remont-kvartyry-kyiv}). On large plots [timber-frame]({/karkasnyi-budynok-pid-kliuch-kyiv}) and [modular houses]({/modulnyi-budynok-kyiv}) work well, as do classic aerated-block ones.",
+   "faq": [
+    [
+     "Can I order only the floor plan of a house?",
+     "Yes, the planning package from $6 per m²: a measured plan, 2–3 layout options and a furniture plan."
+    ]
+   ],
+   "fk": [
+    "build",
+    "team"
+   ]
+  },
+  "fastiv": {
+   "n": "Fastiv",
+   "in": "in Fastiv",
+   "d": "Turnkey design, renovation and house building in Fastiv: architectural design from $12/m², shell from $600/m², renovation from $550/m². Contract.",
+   "lead": "Turnkey renovation in Fastiv and Fastiv district: apartments, private houses and new houses from scratch. Project, estimate, renovation and construction by CAS's own team.",
+   "h": "Fastiv: a railway town with private housing",
+   "p": [
+    "Fastiv is a major railway junction south-west of Kyiv, with a compact centre, a few apartment-block estates and a large private sector. Typical requests from here are renovating apartments in older buildings and rebuilding family houses.",
+    "Many houses in Fastiv and the district were built decades ago without a project: extensions, floors from different years, old services. Before renovating we do a survey to know what the new interior will rest on."
+   ],
+   "des": "For Fastiv houses the design often starts with replanning: getting rid of walk-through rooms, making a proper bathroom and a kitchen-living room. We prepare the drawings so that the estimate has no unknown works.",
+   "bld": "We renovate houses and apartments turnkey or individual rooms — a [bathroom]({/remont-vannoi-kimnaty-kyiv}), a kitchen, a WC. In Fastiv district we build aerated-block, brick and [timber-frame houses]({/karkasnyi-budynok-pid-kliuch-kyiv}), starting with [house design]({/proektuvannia-budynku-kyiv}) for the plot. Fastiv is further from Kyiv, so the crew works on site in blocks.",
+   "faq": [
+    [
+     "Do you work in Fastiv and the villages of the district?",
+     "Yes, in Fastiv and Fastiv district: design, renovation and construction. Site measurement is paid, priced individually."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "control"
+   ]
+  },
+  "bila-tserkva": {
+   "n": "Bila Tserkva",
+   "in": "in Bila Tserkva",
+   "d": "Turnkey renovation of apartments and houses in Bila Tserkva: design from $30/m², renovation from $550/m², houses from $600/m², offices from $350/m².",
+   "lead": "Turnkey renovation in Bila Tserkva, the largest city in the Kyiv region: apartments in new builds and older buildings, private houses, offices and restaurants. Design, renovation and construction by one CAS team.",
+   "h": "Bila Tserkva: a large city with its own housing market",
+   "p": [
+    "Bila Tserkva is a large city on the Ros river with its own centre, the Oleksandriia park, panel-block estates, new complexes and a big private sector. Its housing market is self-contained, so requests vary widely, from a cosmetic apartment refresh to a house from scratch.",
+    "For business owners in Bila Tserkva we also do [restaurant and café design]({/dyzain-restoranu-kafe-kyiv}), office renovation and [turnkey business premises]({/biznes-pid-kliuch-kyiv}), with invoices for companies."
+   ],
+   "des": "In Bila Tserkva new builds a design project makes the most of the open plan: separate bedrooms, a walk-in wardrobe, a kitchen-living room. In older buildings — replanning within what is permitted, new services and built-in furniture.",
+   "bld": "We renovate apartments, houses and commercial premises, from [cosmetic]({/kosmetychnyi-remont-kvartyry-kyiv}) to [major renovation]({/kapitalnyi-remont-kvartyry-kyiv}). Near Bila Tserkva we build aerated-block, brick, timber-frame and log houses; there is room for a single-storey house with a terrace and a pool, like our House 150. On large sites the crew works in blocks.",
+   "fk": [
+    "reno_cost",
+    "office",
+    "build"
+   ]
+  }
+ }
+}

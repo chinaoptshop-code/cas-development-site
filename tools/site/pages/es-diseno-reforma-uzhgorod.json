@@ -1,0 +1,187 @@
+{
+ "slug": "diseno-reforma-uzhgorod",
+ "lang": "es",
+ "service": "Interiorismo, reforma y construcción llave en mano en Úzhgorod",
+ "title": "Interiorismo en Úzhgorod — reforma y construcción | CAS",
+ "description": "Interiorismo en Úzhgorod y Transcarpatia: pisos de época checa, obra nueva, casas y casas rurales. Diseño desde $30/m², reforma desde $550/m².",
+ "h1": "Interiorismo, reforma y construcción llave en mano en Úzhgorod",
+ "price": "reforma desde $550/m² · diseño desde $30/m² · casa desde $600/m²",
+ "lead": "Interiorismo en Úzhgorod para pisos en edificios de la época checoslovaca, promociones nuevas junto al río Uzh, casas particulares y casas rurales de Transcarpatia. El proyecto, a distancia o con visitas; la obra, con nuestro propio equipo y condiciones individuales.",
+ "parent": [
+  "/es/diseno-reforma-ucrania",
+  "Toda Ucrania"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Úzhgorod",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Óblast de Transcarpatia"
+   }
+  }
+ ],
+ "near": [
+  "Cerca: otras ciudades",
+  [
+   [
+    "/es/diseno-reforma-ivano-frankivsk",
+    "Ivano-Frankivsk"
+   ],
+   [
+    "/es/diseno-reforma-leopolis",
+    "Leópolis"
+   ],
+   [
+    "/es/diseno-reforma-chernivtsi",
+    "Chernivtsí"
+   ],
+   [
+    "/es/diseno-reforma-ucrania",
+    "Todas las ciudades de Ucrania"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Diseño de interiores",
+   [
+    "medición y distribución",
+    "visualizaciones 3D y planos de ejecución",
+    "especificación de materiales y muebles",
+    "supervisión de autor"
+   ]
+  ],
+  [
+   "Reforma llave en mano",
+   [
+    "pisos de obra nueva y de segunda mano",
+    "casas y chalés",
+    "mano de obra y materiales base desde $550/m²",
+    "presupuesto antes de empezar"
+   ]
+  ],
+  [
+   "Construcción de casas",
+   [
+    "proyecto arquitectónico desde $12/m²",
+    "estructura desde $600/m²",
+    "llave en mano con acabados desde $1 100/m²",
+    "instalaciones y cubierta"
+   ]
+  ],
+  [
+   "Muebles y equipamiento",
+   [
+    "amueblamiento desde $250/m²",
+    "cocinas y armarios a medida",
+    "muebles e iluminación directos de China",
+    "estilismo final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Úzhgorod: funcionalismo checo, el Uzh y las montañas cerca",
+   [
+    "Úzhgorod destaca por su arquitectura checoslovaca de entreguerras: edificios funcionalistas de líneas limpias y grandes ventanas, sobre todo en el barrio de Mali Halahov. Cerca están el casco antiguo, la obra nueva junto al Uzh y casas con jardín.",
+    "El clima suave y la cercanía de la frontera con la UE hacen de Transcarpatia un buen lugar para vivir y para el turismo: casas rurales, pequeños hoteles, bodegas. Llevamos estos proyectos como comerciales, con concepto, presupuesto y equipamiento."
+   ]
+  ],
+  [
+   "Interiorismo en Úzhgorod",
+   [
+    "En los edificios de época checa, el interior subraya su carácter: formas sencillas, materiales de calidad, ventanas y escaleras originales conservadas. Para casas rurales, un diseño que aguanta el ir y venir de huéspedes y se mantiene con facilidad; vea también [diseño de hoteles](/es/diseno-hoteles). Proyecto de diseño desde $30 por m² (mínimo $2 500); los paquetes están en la página [estudio de interiorismo](/es/diseno-interiores)."
+   ]
+  ],
+  [
+   "Reforma llave en mano y construcción de casas",
+   [
+    "Reformamos pisos en edificios antiguos y de obra nueva, casas y pequeños locales comerciales. En Transcarpatia construimos casas y complejos turísticos de bloque, ladrillo, madera maciza o entramado, teniendo en cuenta las pendientes y el drenaje.",
+    "La reforma la ejecuta nuestro equipo en plantilla: desde $550 por m² de obra y materiales de base; los materiales de acabado, los muebles y los electrodomésticos van aparte, según presupuesto. El alcance, el calendario y el plan de pagos (50/50, 50/30/20 o por fases, con un anticipo desde el 10 %) constan en el contrato; el desplazamiento del equipo se acuerda de forma individual. Proyecto arquitectónico desde $12 por m², estructura desde $600 por m², casa llave en mano con acabados desde $1 100 por m²: más en [reforma llave en mano](/es/reforma-llave-en-mano) y [construcción de casas](/es/construccion-de-casas)."
+   ]
+  ],
+  [
+   "Logística, control e informes",
+   [
+    "El proyecto y las aprobaciones se llevan online; viajamos para las mediciones y las fases clave según el calendario del contrato, y las condiciones y el coste de los desplazamientos y del alojamiento del equipo son individuales. Entre visitas, informes fotográficos cada 1–2 semanas y, con coste adicional, cámara online en obra 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1iBBOM6KWCT5qH-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/18Gq2eFZpz_4sf-900.webp",
+   "Yacht VIP"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1jLCsJh1mIO_wX-900.webp",
+   "Smart Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "Consulta",
+   "Por teléfono o en línea: inmueble, objetivos, presupuesto."
+  ],
+  [
+   "Medición y briefing",
+   "Medidas, deseos, datos de partida."
+  ],
+  [
+   "Proyecto y presupuesto",
+   "Diseño o arquitectura; precio y calendario en el contrato."
+  ],
+  [
+   "Obras",
+   "Reforma o construcción con informes fotográficos."
+  ],
+  [
+   "Entrega",
+   "Acta y garantía de 12 meses sobre los trabajos."
+  ]
+ ],
+ "faq": [
+  [
+   "¿Trabajan con casas rurales y pequeños hoteles en Transcarpatia?",
+   "Sí: concepto, arquitectura, interiorismo, reforma y equipamiento. El coste se fija con un presupuesto para cada inmueble."
+  ],
+  [
+   "¿Cuánto cuesta un proyecto de diseño en Úzhgorod?",
+   "Desde $30 por m², mínimo $2 500. El paquete de distribución empieza en $6 por m² y el completo con dirección de diseño, en $45 por m²."
+  ],
+  [
+   "¿Se puede hacer el diseño a distancia?",
+   "Sí: reuniones online, 3D y planos en formato digital; las mediciones y la dirección de diseño, con visitas según el calendario del contrato."
+  ]
+ ],
+ "rel": [
+  [
+   "/es/reforma-casa-llave-en-mano",
+   "Reforma de casa llave en mano"
+  ],
+  [
+   "/es/equipamiento-llave-en-mano",
+   "Equipamiento de proyectos llave en mano"
+  ],
+  [
+   "/es/calculadora-reforma",
+   "Calculadora del coste de reforma"
+  ],
+  [
+   "/es/contrato-garantia-pago",
+   "Contrato, garantía y pago (modelo de contrato)"
+  ],
+  [
+   "/es/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

@@ -1,0 +1,187 @@
+{
+ "slug": "diseno-reforma-vinnytsia",
+ "lang": "es",
+ "service": "Interiorismo, reforma y construcción llave en mano en Vínnytsia",
+ "title": "Interiorismo en Vínnytsia — reforma y construcción | CAS",
+ "description": "Interiorismo en Vínnytsia: obra nueva, pisos en Vyshenka y casas en las afueras. Diseño desde $30/m², reforma desde $550/m², casas desde $600/m².",
+ "h1": "Interiorismo, reforma y construcción llave en mano en Vínnytsia",
+ "price": "reforma desde $550/m² · diseño desde $30/m² · casa desde $600/m²",
+ "lead": "Interiorismo en Vínnytsia para pisos en promociones nuevas y barrios antiguos, y para casas en las afueras junto al Bug Meridional. El proyecto, a distancia o con visitas; la reforma y la construcción, con nuestro propio equipo y condiciones individuales.",
+ "parent": [
+  "/es/diseno-reforma-ucrania",
+  "Toda Ucrania"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Vínnytsia",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Óblast de Vínnytsia"
+   }
+  }
+ ],
+ "near": [
+  "Cerca: otras ciudades",
+  [
+   [
+    "/es/diseno-reforma-jmelnytski",
+    "Jmelnytski"
+   ],
+   [
+    "/es/diseno-reforma-zhytomyr",
+    "Zhytómyr"
+   ],
+   [
+    "/es/diseno-reforma-odesa",
+    "Odesa"
+   ],
+   [
+    "/es/diseno-reforma-ucrania",
+    "Todas las ciudades de Ucrania"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Diseño de interiores",
+   [
+    "medición y distribución",
+    "visualizaciones 3D y planos de ejecución",
+    "especificación de materiales y muebles",
+    "supervisión de autor"
+   ]
+  ],
+  [
+   "Reforma llave en mano",
+   [
+    "pisos de obra nueva y de segunda mano",
+    "casas y chalés",
+    "mano de obra y materiales base desde $550/m²",
+    "presupuesto antes de empezar"
+   ]
+  ],
+  [
+   "Construcción de casas",
+   [
+    "proyecto arquitectónico desde $12/m²",
+    "estructura desde $600/m²",
+    "llave en mano con acabados desde $1 100/m²",
+    "instalaciones y cubierta"
+   ]
+  ],
+  [
+   "Muebles y equipamiento",
+   [
+    "amueblamiento desde $250/m²",
+    "cocinas y armarios a medida",
+    "muebles e iluminación directos de China",
+    "estilismo final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Vínnytsia: una ciudad compacta que no para de construir",
+   [
+    "Vínnytsia es una ciudad compacta a orillas del Bug Meridional, con mucha obra nueva y urbanizaciones de chalets en las afueras. Junto a ellas quedan barrios soviéticos como Vyshenka, con pisos de bloques prefabricados que sus dueños redistribuyen y renuevan.",
+    "Para muchos clientes de Vínnytsia lo importante es el equilibrio: un buen proyecto y una ejecución sin sobrecostes. Por eso ofrecemos varios paquetes, desde el de distribución (desde $6 por m²) hasta el completo con dirección de diseño (desde $45 por m²)."
+   ]
+  ],
+  [
+   "Interiorismo en Vínnytsia",
+   [
+    "Las promociones nuevas de Vínnytsia tienen plantas libres que es fácil estropear sin proyecto: el diseñador sitúa habitaciones, cocina y almacenaje para no perder ni un metro. En las casas, la clave son la escalera, la luz y la relación con la parcela. Proyecto de diseño desde $30 por m² (mínimo $2 500); los paquetes están en la página [estudio de interiorismo](/es/diseno-interiores)."
+   ]
+  ],
+  [
+   "Reforma llave en mano y construcción de casas",
+   [
+    "Reformamos pisos en bruto y viviendas de segunda mano con renovación completa de instalaciones, además de casas. En las afueras construimos casas de una y dos plantas de bloque de hormigón celular, ladrillo o entramado de madera; proyecto, estructura y acabados se pueden contratar juntos o por fases.",
+    "La reforma la ejecuta nuestro equipo en plantilla: desde $550 por m² de obra y materiales de base; los materiales de acabado, los muebles y los electrodomésticos van aparte, según presupuesto. El alcance, el calendario y el plan de pagos (50/50, 50/30/20 o por fases, con un anticipo desde el 10 %) constan en el contrato; el desplazamiento del equipo se acuerda de forma individual. Proyecto arquitectónico desde $12 por m², estructura desde $600 por m², casa llave en mano con acabados desde $1 100 por m²: más en [reforma llave en mano](/es/reforma-llave-en-mano) y [construcción de casas](/es/construccion-de-casas)."
+   ]
+  ],
+  [
+   "Logística, control e informes",
+   [
+    "El proyecto y las aprobaciones se llevan online; viajamos para las mediciones y las fases clave según el calendario del contrato, y las condiciones y el coste de los desplazamientos y del alojamiento del equipo son individuales. Entre visitas, informes fotográficos cada 1–2 semanas y, con coste adicional, cámara online en obra 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1LWScRofv3Y_4w-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/17MT3Ipm3yi6XJ-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1co4thni1Q8_1J-900.webp",
+   "Petrivtsi House"
+  ]
+ ],
+ "steps": [
+  [
+   "Consulta",
+   "Por teléfono o en línea: inmueble, objetivos, presupuesto."
+  ],
+  [
+   "Medición y briefing",
+   "Medidas, deseos, datos de partida."
+  ],
+  [
+   "Proyecto y presupuesto",
+   "Diseño o arquitectura; precio y calendario en el contrato."
+  ],
+  [
+   "Obras",
+   "Reforma o construcción con informes fotográficos."
+  ],
+  [
+   "Entrega",
+   "Acta y garantía de 12 meses sobre los trabajos."
+  ]
+ ],
+ "faq": [
+  [
+   "¿Cuánto cuesta un proyecto de diseño en Vínnytsia?",
+   "Desde $30 por m², mínimo $2 500. El paquete de distribución empieza en $6 por m² y el completo con dirección de diseño, en $45 por m²."
+  ],
+  [
+   "¿Se puede pagar la reforma por fases?",
+   "Sí: 50/50, 50/30/20, 50/40/10 o pagos fraccionados, con un anticipo desde el 10 %. El esquema consta en el contrato."
+  ],
+  [
+   "¿Construyen casas en Vínnytsia y alrededores?",
+   "Sí: proyecto arquitectónico desde $12 por m², estructura desde $600 por m², llave en mano con acabados desde $1 100 por m²."
+  ]
+ ],
+ "rel": [
+  [
+   "/es/reforma-casa-llave-en-mano",
+   "Reforma de casa llave en mano"
+  ],
+  [
+   "/es/equipamiento-llave-en-mano",
+   "Equipamiento de proyectos llave en mano"
+  ],
+  [
+   "/es/calculadora-reforma",
+   "Calculadora del coste de reforma"
+  ],
+  [
+   "/es/contrato-garantia-pago",
+   "Contrato, garantía y pago (modelo de contrato)"
+  ],
+  [
+   "/es/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

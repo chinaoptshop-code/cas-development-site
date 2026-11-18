@@ -1,0 +1,191 @@
+{
+ "slug": "projektowanie-remont-bojarka",
+ "lang": "pl",
+ "service": "Projekt, remont i budowa pod klucz w Bojarce",
+ "title": "Remont pod klucz w Bojarce — projekt i domy | CAS",
+ "description": "Budowa i remont domów pod klucz w Bojarce i okolicznych wsiach: stan surowy od $600/m², pod klucz od $1 100/m², remont od $550/m².",
+ "h1": "Projekt, remont i budowa pod klucz w Bojarce",
+ "price": "remont od $550/m² · projekt od $30/m² · dom od $600/m²",
+ "lead": "Remont od $550/m², domy od $600/m²: w Bojarce robimy remonty pod klucz, budujemy i przebudowujemy domy prywatne. Jeden własny zespół — od działki po gotowe wnętrze.",
+ "parent": [
+  "/pl/projektowanie-remont-obwod-kijowski",
+  "Obwód kijowski"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Bojarka",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Obwód kijowski"
+   }
+  }
+ ],
+ "near": [
+  "W pobliżu: inne miasta",
+  [
+   [
+    "/pl/projektowanie-remont-wyszniewe",
+    "Wyszniewe"
+   ],
+   [
+    "/pl/projektowanie-remont-wasylkow",
+    "Wasylków"
+   ],
+   [
+    "/pl/projektowanie-remont-fastow",
+    "Fastów"
+   ],
+   [
+    "/pl/projektowanie-remont-obwod-kijowski",
+    "Wszystkie miasta obwodu kijowskiego"
+   ],
+   [
+    "/pl/dom-pod-klucz-koncza-zaspa",
+    "Koncza-Zaspa, Kozyn, Puszcza-Wodyca"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Projekt wnętrz",
+   [
+    "pomiary i układ funkcjonalny",
+    "wizualizacje 3D i rysunki wykonawcze",
+    "specyfikacja materiałów i mebli",
+    "nadzór autorski"
+   ]
+  ],
+  [
+   "Remont pod klucz",
+   [
+    "mieszkania z rynku pierwotnego i wtórnego",
+    "domy i domy letniskowe",
+    "robocizna i materiały podstawowe od $550/m²",
+    "kosztorys przed startem prac"
+   ]
+  ],
+  [
+   "Budowa domu",
+   [
+    "projekt architektoniczny od $12/m²",
+    "stan surowy od $600/m²",
+    "pod klucz z wykończeniem od $1 100/m²",
+    "instalacje i dach"
+   ]
+  ],
+  [
+   "Meble i wyposażenie",
+   [
+    "umeblowanie od $250/m²",
+    "kuchnie i szafy na wymiar",
+    "meble i oświetlenie prosto z Chin",
+    "końcowa stylizacja"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Bojarka: leśne przedmieście z domami prywatnymi",
+   [
+    "Bojarkę otaczają lasy i większość zleceń dotyczy tu domu: postawić nowy, nadbudować piętro albo doprowadzić do porządku dom kupiony do remontu. Mieszkań jest mniej niż w sąsiednim Wyszniewem, choć nowe osiedla też powstają.",
+    "Część działek w Bojarce i okolicznych wsiach to dawne dacze z cienkimi ścianami i bez porządnych instalacji. Uczciwie liczymy, co się bardziej opłaca: ocieplić i przebudować czy postawić nowy dom."
+   ]
+  ],
+  [
+   "Projektowanie wnętrz w Bojarce",
+   [
+    "W domu w Bojarce projekt często obejmuje też elewację i działkę: duże okna na las, taras, wejście z wiatrołapem. Wewnątrz — kominek lub piec, kuchnia z wyspą i garderoby, jak w naszym Petrivtsi House. Projekt wnętrza od $30 za m² (minimum $2 500); pakiety — na stronie [studio projektowania wnętrz](/pl/projektowanie-wnetrz)."
+   ]
+  ],
+  [
+   "Remont pod klucz i budowa domu",
+   [
+    "Remontujemy domy i mieszkania: nowe instalacje, ocieplenie, wyrównanie ścian, wykończenie; domy z historią — po oględzinach. Budujemy z betonu komórkowego i cegły, a także [domy z bali](/pl/dom-z-bali), które naturalnie wyglądają w lesie, z uwzględnieniem drzew na działce i poziomu wód gruntowych.",
+    "Ten sam etatowy zespół co w Kijowie i te same stawki: remont od $550 za m² (robocizna i materiały budowlane), a jeśli remont wykonuje CAS, wynik końcowy mieści się w ±5% kosztorysu. Projekt architektoniczny od $12 za m², stan surowy od $600 za m², pod klucz z wykończeniem od $1 100 za m²; 12 miesięcy gwarancji na prace. Więcej: [remont pod klucz](/pl/remont-pod-klucz) i [budowa domów](/pl/budowa-domow)."
+   ]
+  ],
+  [
+   "Logistyka, kontrola i raporty",
+   [
+    "Kierownicy budów włączają wizyty w zwykły harmonogram, tak jak w dzielnicach Kijowa, a materiały wozimy z kijowskich hurtowni. Między wizytami — raporty zdjęciowe co 1–2 tygodnie; za dopłatą kamera online na budowie 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1co4thni1Q8_1J-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1jLCsJh1mIO_wX-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1LWScRofv3Y_4w-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ]
+ ],
+ "steps": [
+  [
+   "Konsultacja",
+   "Telefonicznie lub online: obiekt, zadania, budżet."
+  ],
+  [
+   "Pomiar i brief",
+   "Pomiary, oczekiwania, dane wyjściowe."
+  ],
+  [
+   "Projekt i kosztorys",
+   "Wnętrze lub architektura; cena i harmonogram w umowie."
+  ],
+  [
+   "Prace",
+   "Remont lub budowa z raportami zdjęciowymi."
+  ],
+  [
+   "Odbiór",
+   "Protokół i 12 miesięcy gwarancji na prace."
+  ]
+ ],
+ "faq": [
+  [
+   "Czy wykonujecie instalacje w domu?",
+   "Tak: ogrzewanie, wodociąg, kanalizację i elektrykę uwzględniamy w projekcie i kosztorysie domu."
+  ],
+  [
+   "Czy budujecie domy w Bojarce i okolicach?",
+   "Tak: projekt architektoniczny od $12 za m², stan surowy od $600 za m², pod klucz z wykończeniem od $1 100 za m²."
+  ],
+  [
+   "Co się bardziej opłaca: przebudować stary dom czy postawić nowy?",
+   "To zależy od fundamentów i ścian. Po oględzinach przygotowujemy kosztorys obu wariantów, żeby decyzja opierała się na liczbach."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-domu",
+   "Remont domu pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów remontu"
+  ],
+  [
+   "/pl/umowa-gwarancja-platnosc",
+   "Umowa, gwarancja, płatność (wzór umowy)"
+  ],
+  [
+   "/pl/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

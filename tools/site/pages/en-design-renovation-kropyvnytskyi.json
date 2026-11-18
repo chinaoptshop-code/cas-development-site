@@ -1,0 +1,187 @@
+{
+ "slug": "design-renovation-kropyvnytskyi",
+ "lang": "en",
+ "service": "Turnkey interior design, renovation and construction in Kropyvnytskyi",
+ "title": "Interior design and renovation in Kropyvnytskyi | CAS",
+ "description": "Interior design in Kropyvnytskyi: apartments in the centre and in residential districts, private houses. Design from $30/m², renovation from $550/m².",
+ "h1": "Turnkey interior design, renovation and construction in Kropyvnytskyi",
+ "price": "renovation from $550/m² · design from $30/m² · house from $600/m²",
+ "lead": "Interior design in Kropyvnytskyi for apartments in the historic centre and residential districts, and for private houses on the Inhul and in the suburbs. The design project is done remotely or with site visits; renovation and construction by our team on agreed terms.",
+ "parent": [
+  "/en/design-renovation-ukraine",
+  "Across Ukraine"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Kropyvnytskyi",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Kirovohrad Oblast"
+   }
+  }
+ ],
+ "near": [
+  "Nearby: other cities",
+  [
+   [
+    "/en/design-renovation-cherkasy",
+    "Cherkasy"
+   ],
+   [
+    "/en/design-renovation-dnipro",
+    "Dnipro"
+   ],
+   [
+    "/en/design-renovation-odesa",
+    "Odesa"
+   ],
+   [
+    "/en/design-renovation-ukraine",
+    "All cities in Ukraine"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Interior design",
+   [
+    "measurements and layout",
+    "3D visualisations and working drawings",
+    "materials and furniture specification",
+    "designer supervision"
+   ]
+  ],
+  [
+   "Turnkey renovation",
+   [
+    "new-build and resale apartments",
+    "houses and cottages",
+    "works and rough materials from $550/m²",
+    "estimate before work starts"
+   ]
+  ],
+  [
+   "House construction",
+   [
+    "architectural design from $12/m²",
+    "shell from $600/m²",
+    "turnkey with finishing from $1,100/m²",
+    "utilities and roofing"
+   ]
+  ],
+  [
+   "Furniture and procurement",
+   [
+    "furnishing from $250/m²",
+    "custom kitchens and wardrobes",
+    "furniture and lighting direct from China",
+    "final styling"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Kropyvnytskyi: an old merchant city and a private sector",
+   [
+    "Kropyvnytskyi lies in the very centre of Ukraine, with a 19th-century merchant centre, apartment-block estates and a large private sector along the Inhul. There are fewer new complexes than in bigger regional centres, so most requests are about updating existing homes.",
+    "For such homes an accurate estimate matters most: what to replace in the services, whether to level the walls, which structures to keep. We start with it, so the budget does not drift halfway through the renovation."
+   ]
+  ],
+  [
+   "Interior design in Kropyvnytskyi",
+   [
+    "For apartments in older buildings — replanning within the structure, new bathrooms and kitchens, built-in furniture; for houses — room for a large family, a terrace, a boiler room and a pantry. Packages from planning to full. Design project from $30 per m² (minimum $2,500); packages are on the [interior design studio](/en/interior-design) page."
+   ]
+  ],
+  [
+   "Turnkey renovation and house construction",
+   [
+    "We renovate apartments and houses, from [major renovation](/en/major-renovation) to cosmetic. Near Kropyvnytskyi we build aerated-block, brick and timber-frame houses, from the architectural design to turnkey finishing.",
+    "Renovation is carried out by our salaried team: from $550 per m² for works and rough materials, with finishing materials, furniture and appliances priced separately per estimate. Scope, schedule and payment plan (50/50, 50/30/20 or in stages, from a 10% advance) are fixed in the contract; team travel is on individual terms. Architectural design from $12 per m², house shell from $600 per m², turnkey with finishing from $1,100 per m² — see [turnkey renovation](/en/turnkey-renovation) and [house construction](/en/house-construction)."
+   ]
+  ],
+  [
+   "Logistics, control and reports",
+   [
+    "Design and approvals run online; we travel for measurements and key stages on the schedule set in the contract, and the terms and costs of travel and team accommodation are individual. Between visits you get photo reports every 1–2 weeks, and an online camera on site 24/7 is available for an extra fee."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1LWScRofv3Y_4w-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "By phone or online: property, goals, budget."
+  ],
+  [
+   "Survey and brief",
+   "Measurements, wishes, initial data."
+  ],
+  [
+   "Design and estimate",
+   "Interior or architecture; price and schedule in the contract."
+  ],
+  [
+   "Works",
+   "Renovation or construction with photo reports."
+  ],
+  [
+   "Handover",
+   "Certificate, 12-month warranty on works."
+  ]
+ ],
+ "faq": [
+  [
+   "How much does renovation in Kropyvnytskyi cost?",
+   "From $550 per m² for works and rough materials; finishing materials, furniture and appliances are separate, per estimate."
+  ],
+  [
+   "Can I pay for the renovation in stages?",
+   "Yes: 50/50, 50/30/20, 50/40/10 or split payments, starting from a 10% advance. The scheme is fixed in the contract."
+  ],
+  [
+   "Can the design be done remotely?",
+   "Yes: online meetings, 3D and drawings in digital form; measurements and designer supervision with site visits on the schedule in the contract."
+  ]
+ ],
+ "rel": [
+  [
+   "/en/house-renovation",
+   "Turnkey house renovation"
+  ],
+  [
+   "/en/turnkey-procurement",
+   "Turnkey interior procurement"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Renovation cost calculator"
+  ],
+  [
+   "/en/contract-warranty-payment",
+   "Contract, warranty, payment (sample contract)"
+  ],
+  [
+   "/en/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

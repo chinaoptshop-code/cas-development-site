@@ -1,0 +1,187 @@
+{
+ "slug": "design-renovation-jytomyr",
+ "lang": "fr",
+ "service": "Architecture d’intérieur, rénovation et construction à Jytomyr",
+ "title": "Architecture d’intérieur et rénovation à Jytomyr | CAS",
+ "description": "Architecture d’intérieur à Jytomyr : appartements, maisons et datchas au bord du Teteriv. Design dès $30/m², rénovation dès $550/m², maisons dès $600/m².",
+ "h1": "Architecture d’intérieur, rénovation et construction à Jytomyr",
+ "price": "rénovation dès $550/m² · design dès $30/m² · maison dès $600/m²",
+ "lead": "Architecture d’intérieur à Jytomyr pour les appartements en ville, les maisons individuelles et les datchas au bord du Teteriv. Jytomyr est l’un des chefs-lieux les plus proches de Kyiv : les visites de chantier s’y organisent plus facilement que dans les régions éloignées.",
+ "parent": [
+  "/fr/design-renovation-ukraine",
+  "Toute l’Ukraine"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Jytomyr",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Oblast de Jytomyr"
+   }
+  }
+ ],
+ "near": [
+  "À proximité : autres villes",
+  [
+   [
+    "/fr/design-renovation-vinnytsia",
+    "Vinnytsia"
+   ],
+   [
+    "/fr/design-renovation-rivne",
+    "Rivne"
+   ],
+   [
+    "/fr/design-renovation-tchernihiv",
+    "Tchernihiv"
+   ],
+   [
+    "/fr/design-renovation-ukraine",
+    "Toutes les villes d’Ukraine"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Architecture intérieure",
+   [
+    "relevé et plan d’aménagement",
+    "visualisations 3D et plans d’exécution",
+    "descriptif des matériaux et du mobilier",
+    "suivi du concepteur"
+   ]
+  ],
+  [
+   "Rénovation clé en main",
+   [
+    "appartements neufs et anciens",
+    "maisons et cottages",
+    "travaux et matériaux de gros œuvre dès $550/m²",
+    "devis avant le début des travaux"
+   ]
+  ],
+  [
+   "Construction de maison",
+   [
+    "projet architectural dès $12/m²",
+    "gros œuvre dès $600/m²",
+    "clé en main avec finitions dès $1 100/m²",
+    "réseaux et toiture"
+   ]
+  ],
+  [
+   "Mobilier et équipement",
+   [
+    "ameublement dès $250/m²",
+    "cuisines et placards sur mesure",
+    "mobilier et luminaires en direct de Chine",
+    "stylisme final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Jytomyr : maisons individuelles, rives de granit et forêts",
+   [
+    "Jytomyr compte beaucoup de maisons individuelles, un centre ancien et des quartiers d’immeubles. Autour s’étendent des forêts et les rives rocheuses en granit du Teteriv, où beaucoup possèdent une datcha ou une maison de vacances.",
+    "Les demandes typiques ici : rebâtir la vieille maison de famille, une maison de vacances en pleine nature ou un appartement pour des enfants partis vivre à Kyiv. Si besoin, nous prenons en charge à la fois la partie de Jytomyr et celle de Kyiv."
+   ]
+  ],
+  [
+   "Architecture d’intérieur à Jytomyr",
+   [
+    "Pour les maisons en bordure de forêt et de rivière, nous misons sur les matériaux naturels — bois, pierre, lin — et une lumière chaude, comme dans nos projets A-Frame House et Hoda Estate. Pour les appartements en ville, un plan pratique et des rangements. Projet de design à partir de $30 le m² (minimum $2 500) ; les formules sont détaillées sur la page [studio d’architecture d’intérieur](/fr/architecture-interieur)."
+   ]
+  ],
+  [
+   "Rénovation clé en main et construction de maisons",
+   [
+    "Nous rénovons maisons et appartements et rendons les datchas habitables à l’année : isolation, nouveaux réseaux, nouvelle toiture. Dans la région, les maisons en madriers et à ossature bois ont toute leur place, tout comme les maisons classiques en béton cellulaire ; les terrains au bord du Teteriv étant souvent rocheux, les fondations sont conçues après l’étude du sol.",
+    "La rénovation est réalisée par notre équipe salariée : à partir de $550 le m² pour les travaux et matériaux de base ; matériaux de finition, mobilier et électroménager en sus, sur devis. Le périmètre, le calendrier et l’échéancier (50/50, 50/30/20 ou par étapes, acompte à partir de 10 %) sont fixés au contrat ; le déplacement de l’équipe se négocie au cas par cas. Projet d’architecture à partir de $12 le m², gros œuvre à partir de $600 le m², clé en main avec finitions à partir de $1 100 le m² — voir [rénovation clé en main](/fr/renovation-cle-en-main) et [construction de maisons](/fr/construction-maison)."
+   ]
+  ],
+  [
+   "Logistique, suivi et rapports",
+   [
+    "Le projet et les validations se font en ligne ; nous nous déplaçons pour les relevés et les étapes clés selon le calendrier du contrat, les conditions et le coût des déplacements et de l’hébergement de l’équipe étant individuels. Entre deux visites, reportages photo toutes les 1 à 2 semaines et, en option payante, caméra en ligne sur le chantier 24 h/24."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1DhAA8_vK0zo3E-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1xskjqBvCXgXuL-900.webp",
+   "Hodos Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "Par téléphone ou en ligne : bien, objectifs, budget."
+  ],
+  [
+   "Relevé et brief",
+   "Mesures, souhaits, données de départ."
+  ],
+  [
+   "Projet et devis",
+   "Intérieur ou architecture ; prix et planning au contrat."
+  ],
+  [
+   "Travaux",
+   "Rénovation ou construction avec reportages photo."
+  ],
+  [
+   "Livraison",
+   "Procès-verbal, garantie de 12 mois sur les travaux."
+  ]
+ ],
+ "faq": [
+  [
+   "Combien coûte une maison en madriers dans la région de Jytomyr ?",
+   "Gros œuvre à partir de $600 le m², clé en main avec finitions à partir de $1 100 le m². Les étapes sont fixées au contrat."
+  ],
+  [
+   "Puis-je commander uniquement le projet de design ?",
+   "Oui, à partir de $30 le m², minimum $2 500. Les plans conviennent à n’importe quelle entreprise ; le suivi de chantier par le designer peut s’ajouter à part."
+  ],
+  [
+   "Le design peut-il se faire à distance ?",
+   "Oui : rendez-vous en ligne, 3D et plans au format numérique ; relevés et suivi de chantier par le designer lors de visites prévues au contrat."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/renovation-maison-cle-en-main",
+   "Rénovation de maison clé en main"
+  ],
+  [
+   "/fr/equipement-cle-en-main",
+   "Équipement de projets clé en main"
+  ],
+  [
+   "/fr/calculateur-renovation",
+   "Calculateur du coût de rénovation"
+  ],
+  [
+   "/fr/contrat-garantie-paiement",
+   "Contrat, garantie, paiement (modèle de contrat)"
+  ],
+  [
+   "/fr/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

@@ -1,0 +1,187 @@
+{
+ "slug": "projektowanie-remont-czernihow",
+ "lang": "pl",
+ "service": "Projektowanie wnętrz, remont i budowa pod klucz w Czernihowie",
+ "title": "Projektowanie wnętrz w Czernihowie — remont i budowa | CAS",
+ "description": "Projektowanie wnętrz, remont i odbudowa w Czernihowie: mieszkania i domy nad Desną. Projekt od $30/m², remont od $550/m², domy od $600/m².",
+ "h1": "Projektowanie wnętrz, remont i budowa pod klucz w Czernihowie",
+ "price": "remont od $550/m² · projekt od $30/m² · dom od $600/m²",
+ "lead": "Projektowanie wnętrz w Czernihowie, remont mieszkań i domów oraz budowa nowych domów nad Desną. Projekt prowadzimy zdalnie lub z dojazdem, remont i budowę — naszym zespołem na indywidualnie uzgodnionych warunkach.",
+ "parent": [
+  "/pl/projektowanie-remont-ukraina",
+  "Cała Ukraina"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Czernihów",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Obwód czernihowski"
+   }
+  }
+ ],
+ "near": [
+  "W pobliżu: inne miasta",
+  [
+   [
+    "/pl/projektowanie-remont-zytomierz",
+    "Żytomierz"
+   ],
+   [
+    "/pl/projektowanie-remont-czerkasy",
+    "Czerkasy"
+   ],
+   [
+    "/pl/projektowanie-remont-poltawa",
+    "Połtawa"
+   ],
+   [
+    "/pl/projektowanie-remont-ukraina",
+    "Wszystkie miasta Ukrainy"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Projekt wnętrz",
+   [
+    "pomiary i układ funkcjonalny",
+    "wizualizacje 3D i rysunki wykonawcze",
+    "specyfikacja materiałów i mebli",
+    "nadzór autorski"
+   ]
+  ],
+  [
+   "Remont pod klucz",
+   [
+    "mieszkania z rynku pierwotnego i wtórnego",
+    "domy i domy letniskowe",
+    "robocizna i materiały podstawowe od $550/m²",
+    "kosztorys przed startem prac"
+   ]
+  ],
+  [
+   "Budowa domu",
+   [
+    "projekt architektoniczny od $12/m²",
+    "stan surowy od $600/m²",
+    "pod klucz z wykończeniem od $1 100/m²",
+    "instalacje i dach"
+   ]
+  ],
+  [
+   "Meble i wyposażenie",
+   [
+    "umeblowanie od $250/m²",
+    "kuchnie i szafy na wymiar",
+    "meble i oświetlenie prosto z Chin",
+    "końcowa stylizacja"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Czernihów: dawne miasto, które się odbudowuje",
+   [
+    "Czernihów to jedno z najstarszych miast Ukrainy — z niską zabudową centrum, osiedlami bloków i dużą zabudową jednorodzinną wzdłuż Desny. Od 2022 roku wiele domów jest tu odbudowywanych lub stawianych od nowa.",
+    "W uszkodzonych domach zaczynamy od ekspertyzy: co z konstrukcji da się zachować, a co trzeba wzmocnić lub wymienić. Dopiero potem projekt, kosztorys i remont — żeby nie inwestować w wykończenie na niepewnej podstawie."
+   ]
+  ],
+  [
+   "Projektowanie wnętrz w Czernihowie",
+   [
+    "Odbudowa to okazja, by przemyśleć układ: połączyć kuchnię z salonem, dodać garderobę i drugą łazienkę, zaplanować energooszczędne instalacje. Jeśli zmienia się bryła domu, wnętrze projektujemy razem z architekturą. Projekt wnętrza od $30 za m² (minimum $2 500); pakiety — na stronie [studio projektowania wnętrz](/pl/projektowanie-wnetrz)."
+   ]
+  ],
+  [
+   "Remont pod klucz i budowa domu",
+   [
+    "Remontujemy mieszkania i domy — od remontu kapitalnego z nowymi instalacjami po wykończenie — a po ekspertyzie wykonujemy [przebudowę domu](/pl/przebudowa-domu). Na działkach nad Desną projekt uwzględnia poziom wód gruntowych i hydroizolację.",
+    "Remont wykonuje nasz etatowy zespół: od $550 za m² za robociznę i materiały budowlane; materiały wykończeniowe, meble i AGD — osobno, według kosztorysu. Zakres, harmonogram i plan płatności (50/50, 50/30/20 lub etapami, zaliczka od 10%) zapisujemy w umowie; dojazd zespołu — na warunkach indywidualnych. Projekt architektoniczny od $12 za m², stan surowy od $600 za m², dom pod klucz z wykończeniem od $1 100 za m² — więcej: [remont pod klucz](/pl/remont-pod-klucz) i [budowa domów](/pl/budowa-domow)."
+   ]
+  ],
+  [
+   "Logistyka, kontrola i raporty",
+   [
+    "Projekt i uzgodnienia prowadzimy online, a na pomiary i kluczowe etapy przyjeżdżamy według harmonogramu z umowy; warunki i koszt dojazdów oraz zakwaterowania zespołu ustalamy indywidualnie. Między wizytami — raporty zdjęciowe co 1–2 tygodnie, za dopłatą kamera online na budowie 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1co4thni1Q8_1J-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1F4OovwNYQPfoF-900.webp",
+   "House 150"
+  ]
+ ],
+ "steps": [
+  [
+   "Konsultacja",
+   "Telefonicznie lub online: obiekt, zadania, budżet."
+  ],
+  [
+   "Pomiar i brief",
+   "Pomiary, oczekiwania, dane wyjściowe."
+  ],
+  [
+   "Projekt i kosztorys",
+   "Wnętrze lub architektura; cena i harmonogram w umowie."
+  ],
+  [
+   "Prace",
+   "Remont lub budowa z raportami zdjęciowymi."
+  ],
+  [
+   "Odbiór",
+   "Protokół i 12 miesięcy gwarancji na prace."
+  ]
+ ],
+ "faq": [
+  [
+   "Czy podejmujecie się odbudowy uszkodzonego domu?",
+   "Tak: ekspertyza, projekt przebudowy, kosztorys i prace. Remont od $550 za m², budowa od $600 za m²."
+  ],
+  [
+   "Jak śledzić prace z innego miasta lub z zagranicy?",
+   "Raporty zdjęciowe co 1–2 tygodnie; za dopłatą kamera online na budowie 24/7."
+  ],
+  [
+   "Ile kosztuje projekt wnętrza w Czernihowie?",
+   "Od $30 za m², minimum $2 500. Pakiet funkcjonalny — od $6 za m², pełny z nadzorem autorskim — od $45 za m²."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-domu",
+   "Remont domu pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów remontu"
+  ],
+  [
+   "/pl/umowa-gwarancja-platnosc",
+   "Umowa, gwarancja, płatność (wzór umowy)"
+  ],
+  [
+   "/pl/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

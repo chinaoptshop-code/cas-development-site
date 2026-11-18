@@ -1,0 +1,187 @@
+{
+ "slug": "projektowanie-remont-luck",
+ "lang": "pl",
+ "service": "Projektowanie wnętrz, remont i budowa pod klucz w Łucku",
+ "title": "Projektowanie wnętrz w Łucku — remont i budowa | CAS",
+ "description": "Projektowanie wnętrz w Łucku: nowe osiedla, mieszkania na starym mieście, domy na Wołyniu. Projekt od $30/m², remont od $550/m², domy od $600/m².",
+ "h1": "Projektowanie wnętrz, remont i budowa pod klucz w Łucku",
+ "price": "remont od $550/m² · projekt od $30/m² · dom od $600/m²",
+ "lead": "Projektowanie wnętrz w Łucku — mieszkania na nowych osiedlach i na starym mieście przy zamku, domy prywatne na Wołyniu. Projekt zdalnie lub z dojazdem, remont i budowa — naszym zespołem na indywidualnych warunkach.",
+ "parent": [
+  "/pl/projektowanie-remont-ukraina",
+  "Cała Ukraina"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Łuck",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Obwód wołyński"
+   }
+  }
+ ],
+ "near": [
+  "W pobliżu: inne miasta",
+  [
+   [
+    "/pl/projektowanie-remont-rowne",
+    "Równe"
+   ],
+   [
+    "/pl/projektowanie-remont-lwow",
+    "Lwów"
+   ],
+   [
+    "/pl/projektowanie-remont-tarnopol",
+    "Tarnopol"
+   ],
+   [
+    "/pl/projektowanie-remont-ukraina",
+    "Wszystkie miasta Ukrainy"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Projekt wnętrz",
+   [
+    "pomiary i układ funkcjonalny",
+    "wizualizacje 3D i rysunki wykonawcze",
+    "specyfikacja materiałów i mebli",
+    "nadzór autorski"
+   ]
+  ],
+  [
+   "Remont pod klucz",
+   [
+    "mieszkania z rynku pierwotnego i wtórnego",
+    "domy i domy letniskowe",
+    "robocizna i materiały podstawowe od $550/m²",
+    "kosztorys przed startem prac"
+   ]
+  ],
+  [
+   "Budowa domu",
+   [
+    "projekt architektoniczny od $12/m²",
+    "stan surowy od $600/m²",
+    "pod klucz z wykończeniem od $1 100/m²",
+    "instalacje i dach"
+   ]
+  ],
+  [
+   "Meble i wyposażenie",
+   [
+    "umeblowanie od $250/m²",
+    "kuchnie i szafy na wymiar",
+    "meble i oświetlenie prosto z Chin",
+    "końcowa stylizacja"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Łuck: zamek, nowe dzielnice i wołyńskie domy",
+   [
+    "Łuck ma historyczne centrum wokół Zamku Lubarta, radzieckie osiedla i wiele nowych inwestycji. Wokół rozciąga się Wołyń z jeziorami i lasami, gdzie buduje się domy do mieszkania i na wypoczynek.",
+    "Bliskość polskiej granicy sprawia, że wielu klientów mieszka i pracuje w UE, a mieszkanie w Łucku urządza na odległość. Dla nich organizujemy proces tak, by większość decyzji zapadała online."
+   ]
+  ],
+  [
+   "Projektowanie wnętrz w Łucku",
+   [
+    "W mieszkaniach na nowych łuckich osiedlach — rodzinny układ i dużo przechowywania; na starym mieście — szacunek dla historycznych detali. W domach na Wołyniu — ciepła, naturalna paleta i bezpośrednie wyjścia do ogrodu. Projekt wnętrza od $30 za m² (minimum $2 500); pakiety — na stronie [studio projektowania wnętrz](/pl/projektowanie-wnetrz)."
+   ]
+  ],
+  [
+   "Remont pod klucz i budowa domu",
+   [
+    "Remontujemy mieszkania i domy — od prac surowych po meble — a także pojedyncze pomieszczenia. Na Wołyniu budujemy domy z betonu komórkowego, cegły, szkieletowe i z bali; przy jeziorach — ze szczególną uwagą na grunt i hydroizolację.",
+    "Remont wykonuje nasz etatowy zespół: od $550 za m² za robociznę i materiały budowlane; materiały wykończeniowe, meble i AGD — osobno, według kosztorysu. Zakres, harmonogram i plan płatności (50/50, 50/30/20 lub etapami, zaliczka od 10%) zapisujemy w umowie; dojazd zespołu — na warunkach indywidualnych. Projekt architektoniczny od $12 za m², stan surowy od $600 za m², dom pod klucz z wykończeniem od $1 100 za m² — więcej: [remont pod klucz](/pl/remont-pod-klucz) i [budowa domów](/pl/budowa-domow)."
+   ]
+  ],
+  [
+   "Logistyka, kontrola i raporty",
+   [
+    "Projekt i uzgodnienia prowadzimy online, a na pomiary i kluczowe etapy przyjeżdżamy według harmonogramu z umowy; warunki i koszt dojazdów oraz zakwaterowania zespołu ustalamy indywidualnie. Między wizytami — raporty zdjęciowe co 1–2 tygodnie, za dopłatą kamera online na budowie 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1xskjqBvCXgXuL-900.webp",
+   "Hodos Villa"
+  ],
+  [
+   "img/p/1F4OovwNYQPfoF-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/10NiUcZNhKMjmn-900.webp",
+   "Diamond"
+  ]
+ ],
+ "steps": [
+  [
+   "Konsultacja",
+   "Telefonicznie lub online: obiekt, zadania, budżet."
+  ],
+  [
+   "Pomiar i brief",
+   "Pomiary, oczekiwania, dane wyjściowe."
+  ],
+  [
+   "Projekt i kosztorys",
+   "Wnętrze lub architektura; cena i harmonogram w umowie."
+  ],
+  [
+   "Prace",
+   "Remont lub budowa z raportami zdjęciowymi."
+  ],
+  [
+   "Odbiór",
+   "Protokół i 12 miesięcy gwarancji na prace."
+  ]
+ ],
+ "faq": [
+  [
+   "Czy mogę urządzić mieszkanie w Łucku, mieszkając w Polsce?",
+   "Tak: uzgodnienia online, raporty zdjęciowe, za dopłatą kamera online, a przy kluczowych decyzjach — wideorozmowy."
+  ],
+  [
+   "Ile kosztuje projekt wnętrza w Łucku?",
+   "Od $30 za m², minimum $2 500. Pakiet funkcjonalny — od $6 za m², pełny z nadzorem autorskim — od $45 za m²."
+  ],
+  [
+   "Czy budujecie domy w Łucku i okolicach?",
+   "Tak: projekt architektoniczny od $12 za m², stan surowy od $600 za m², pod klucz z wykończeniem od $1 100 za m²."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-domu",
+   "Remont domu pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów remontu"
+  ],
+  [
+   "/pl/umowa-gwarancja-platnosc",
+   "Umowa, gwarancja, płatność (wzór umowy)"
+  ],
+  [
+   "/pl/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

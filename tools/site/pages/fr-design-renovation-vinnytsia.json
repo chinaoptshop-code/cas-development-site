@@ -1,0 +1,187 @@
+{
+ "slug": "design-renovation-vinnytsia",
+ "lang": "fr",
+ "service": "Architecture d’intérieur, rénovation et construction à Vinnytsia",
+ "title": "Architecture d’intérieur et rénovation à Vinnytsia | CAS",
+ "description": "Architecture d’intérieur à Vinnytsia : résidences neuves, appartements à Vychenka, maisons en périphérie. Design dès $30/m², rénovation dès $550/m².",
+ "h1": "Architecture d’intérieur, rénovation et construction à Vinnytsia",
+ "price": "rénovation dès $550/m² · design dès $30/m² · maison dès $600/m²",
+ "lead": "Architecture d’intérieur à Vinnytsia pour les appartements des résidences neuves et des quartiers anciens, et pour les maisons de la périphérie au bord du Boug méridional. Projet à distance ou avec déplacements ; rénovation et construction par notre propre équipe, à des conditions individuelles.",
+ "parent": [
+  "/fr/design-renovation-ukraine",
+  "Toute l’Ukraine"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Vinnytsia",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Oblast de Vinnytsia"
+   }
+  }
+ ],
+ "near": [
+  "À proximité : autres villes",
+  [
+   [
+    "/fr/design-renovation-khmelnytsky",
+    "Khmelnytsky"
+   ],
+   [
+    "/fr/design-renovation-jytomyr",
+    "Jytomyr"
+   ],
+   [
+    "/fr/design-renovation-odessa",
+    "Odessa"
+   ],
+   [
+    "/fr/design-renovation-ukraine",
+    "Toutes les villes d’Ukraine"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Architecture intérieure",
+   [
+    "relevé et plan d’aménagement",
+    "visualisations 3D et plans d’exécution",
+    "descriptif des matériaux et du mobilier",
+    "suivi du concepteur"
+   ]
+  ],
+  [
+   "Rénovation clé en main",
+   [
+    "appartements neufs et anciens",
+    "maisons et cottages",
+    "travaux et matériaux de gros œuvre dès $550/m²",
+    "devis avant le début des travaux"
+   ]
+  ],
+  [
+   "Construction de maison",
+   [
+    "projet architectural dès $12/m²",
+    "gros œuvre dès $600/m²",
+    "clé en main avec finitions dès $1 100/m²",
+    "réseaux et toiture"
+   ]
+  ],
+  [
+   "Mobilier et équipement",
+   [
+    "ameublement dès $250/m²",
+    "cuisines et placards sur mesure",
+    "mobilier et luminaires en direct de Chine",
+    "stylisme final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Vinnytsia : une ville compacte qui ne cesse de construire",
+   [
+    "Vinnytsia est une ville compacte sur le Boug méridional, où de nombreuses résidences neuves et lotissements de maisons sortent de terre en périphérie. À côté se trouvent des quartiers soviétiques comme Vychenka, avec des appartements typiques en panneaux préfabriqués que leurs propriétaires redistribuent et modernisent.",
+    "Pour beaucoup de clients de Vinnytsia, l’essentiel est l’équilibre : un bon projet et une réalisation sans surcoût. C’est pourquoi nous proposons plusieurs formules, du plan d’aménagement (à partir de $6 le m²) à la formule complète avec suivi de chantier (à partir de $45 le m²)."
+   ]
+  ],
+  [
+   "Architecture d’intérieur à Vinnytsia",
+   [
+    "Les résidences neuves de Vinnytsia offrent des plateaux libres qu’il est facile de gâcher sans projet : le designer place les pièces, la cuisine et les rangements sans perdre un seul mètre. Dans les maisons, l’enjeu est l’escalier, la lumière et le lien avec le terrain. Projet de design à partir de $30 le m² (minimum $2 500) ; les formules sont détaillées sur la page [studio d’architecture d’intérieur](/fr/architecture-interieur)."
+   ]
+  ],
+  [
+   "Rénovation clé en main et construction de maisons",
+   [
+    "Nous rénovons des appartements livrés bruts et des logements anciens avec réfection complète des réseaux, ainsi que des maisons. En périphérie, nous construisons des maisons de plain-pied ou à étage en béton cellulaire, en brique ou à ossature bois ; projet, gros œuvre et finitions se commandent ensemble ou par étapes.",
+    "La rénovation est réalisée par notre équipe salariée : à partir de $550 le m² pour les travaux et matériaux de base ; matériaux de finition, mobilier et électroménager en sus, sur devis. Le périmètre, le calendrier et l’échéancier (50/50, 50/30/20 ou par étapes, acompte à partir de 10 %) sont fixés au contrat ; le déplacement de l’équipe se négocie au cas par cas. Projet d’architecture à partir de $12 le m², gros œuvre à partir de $600 le m², clé en main avec finitions à partir de $1 100 le m² — voir [rénovation clé en main](/fr/renovation-cle-en-main) et [construction de maisons](/fr/construction-maison)."
+   ]
+  ],
+  [
+   "Logistique, suivi et rapports",
+   [
+    "Le projet et les validations se font en ligne ; nous nous déplaçons pour les relevés et les étapes clés selon le calendrier du contrat, les conditions et le coût des déplacements et de l’hébergement de l’équipe étant individuels. Entre deux visites, reportages photo toutes les 1 à 2 semaines et, en option payante, caméra en ligne sur le chantier 24 h/24."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1LWScRofv3Y_4w-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/17MT3Ipm3yi6XJ-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1co4thni1Q8_1J-900.webp",
+   "Petrivtsi House"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "Par téléphone ou en ligne : bien, objectifs, budget."
+  ],
+  [
+   "Relevé et brief",
+   "Mesures, souhaits, données de départ."
+  ],
+  [
+   "Projet et devis",
+   "Intérieur ou architecture ; prix et planning au contrat."
+  ],
+  [
+   "Travaux",
+   "Rénovation ou construction avec reportages photo."
+  ],
+  [
+   "Livraison",
+   "Procès-verbal, garantie de 12 mois sur les travaux."
+  ]
+ ],
+ "faq": [
+  [
+   "Combien coûte un projet de design à Vinnytsia ?",
+   "À partir de $30 le m², minimum $2 500. La formule plan d’aménagement démarre à $6 le m², la formule complète avec suivi de chantier par le designer à $45 le m²."
+  ],
+  [
+   "Peut-on payer la rénovation par étapes ?",
+   "Oui : 50/50, 50/30/20, 50/40/10 ou paiements échelonnés, acompte à partir de 10 %. Le schéma est fixé au contrat."
+  ],
+  [
+   "Construisez-vous des maisons à Vinnytsia et aux alentours ?",
+   "Oui : projet d’architecture à partir de $12 le m², gros œuvre à partir de $600 le m², clé en main avec finitions à partir de $1 100 le m²."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/renovation-maison-cle-en-main",
+   "Rénovation de maison clé en main"
+  ],
+  [
+   "/fr/equipement-cle-en-main",
+   "Équipement de projets clé en main"
+  ],
+  [
+   "/fr/calculateur-renovation",
+   "Calculateur du coût de rénovation"
+  ],
+  [
+   "/fr/contrat-garantie-paiement",
+   "Contrat, garantie, paiement (modèle de contrat)"
+  ],
+  [
+   "/fr/portfolio",
+   "Portfolio"
+  ]
+ ]
+}
