@@ -413,5 +413,19 @@
  "Погодити етап «{n}»? Студія отримає повідомлення.": "Approve the “{n}” stage? The studio will be notified.",
  "Етап погоджено — дякуємо!": "Stage approved — thank you!",
  "Етап не знайдено": "Stage not found",
- "Етап ще не готовий до погодження": "This stage is not ready for approval yet"
+ "Етап ще не готовий до погодження": "This stage is not ready for approval yet",
+ "Архітектурний проєкт": "Architectural design",
+ "Візуалізації": "Renderings",
+ "Креслення": "Drawings",
+ "Специфікація": "Specification",
+ "Правки: {n} з {m}": "Revisions: {n} of {m}",
+ "Правки: {n}": "Revisions: {n}",
+ "Є правки": "I have changes",
+ "Що змінити? Опишіть правки — дизайнер отримає їх одразу.": "What should change? Describe the revisions — the designer gets them right away.",
+ "Надіслати правки": "Send revisions",
+ "правки надіслано": "revisions sent",
+ "Правки надіслано — етап повернувся в роботу": "Revisions sent — the stage is back in progress",
+ "Ваші правки": "Your revisions",
+ "Етап уже погоджено": "This stage has already been approved",
+ "Опишіть, що змінити": "Describe what to change"
 }

@@ -421,8 +421,8 @@
   }
 
   /* ---------- проєкти ---------- */
-  var SERV = { design: T('Дизайн інтерʼєру'), repair: T('Ремонт'), build: T('Будівництво'), furnish: T('Комплектація й меблювання'), landscape: T('Ландшафтний дизайн'), other: T('Проєкт') };
-  var DOCK = { contract: [T('Договір'), 'DOC'], estimate: [T('Кошторис'), 'EST'], invoice: [T('Рахунок'), 'INV'], act: [T('Акт'), 'ACT'], design: [T('Дизайн-проєкт'), 'PDF'], other: [T('Документ'), 'FILE'] };
+  var SERV = { design: T('Дизайн інтерʼєру'), arch: T('Архітектурний проєкт'), repair: T('Ремонт'), build: T('Будівництво'), furnish: T('Комплектація й меблювання'), landscape: T('Ландшафтний дизайн'), other: T('Проєкт') };
+  var DOCK = { contract: [T('Договір'), 'DOC'], estimate: [T('Кошторис'), 'EST'], invoice: [T('Рахунок'), 'INV'], act: [T('Акт'), 'ACT'], design: [T('Дизайн-проєкт'), 'PDF'], render: [T('Візуалізації'), '3D'], drawing: [T('Креслення'), 'DWG'], spec: [T('Специфікація'), 'XLS'], other: [T('Документ'), 'FILE'] };
   var PST = function (s) { return T({ active: 'Триває', paused: 'На паузі', done: 'Завершено' }[s] || ''); };
   function docs(L) {
     return '<ul class="kb-docs">' + L.map(function (d) {
@@ -510,12 +510,46 @@
   var nRepT = function (n) { return T('Фотозвітів: {n}', { n: n }); };
   // дизайн-проєкт: етап погоджено клієнтом (approved_at у JSON етапу, ставить менеджер)
   // етап дизайн-проєкту на прийманні без погодження — кнопка «Погодити етап» (POST /api/account/projects, action approve)
+  // дизайн і архітектура: «Погодити етап» або «Є правки» (коментар → етап повертається в роботу, лічильник правок + 1)
+  var DESIGN_SVC = ['design', 'arch'];
+  function revB(s) { return s.revisions ? ' <small class="muted kb-revs">' + esc(s.rev_max ? T('Правки: {n} з {m}', { n: s.revisions, m: s.rev_max }) : T('Правки: {n}', { n: s.revisions })) + '</small>' : ''; }
   function approvedB(s, p) {
-    if (s.approved_at) return ' <span class="kb-ss done" title="' + esc(T('Погоджено')) + ' ' + esc(dfmt(s.approved_at)) + '">✓ ' + esc(T('погоджено')) + ' ' + esc(dfmt(s.approved_at, { day: 'numeric', month: 'short' })) + '</span>';
-    if (p && p.service === 'design' && s.id && (s.status === 'review' || s.status === 'done')) return ' <span class="kb-appr"><small>' + esc(T('чекає вашого погодження')) + '</small>' +
-      '<button type="button" class="btn sm" data-appr="' + esc(p.id + ':' + s.id) + '" data-nm="' + esc(s.name) + '">' + esc(T('Погодити етап')) + '</button></span>';
-    return '';
+    if (s.approved_at) return ' <span class="kb-ss done" title="' + esc(T('Погоджено')) + ' ' + esc(dfmt(s.approved_at)) + '">✓ ' + esc(T('погоджено')) + ' ' + esc(dfmt(s.approved_at, { day: 'numeric', month: 'short' })) + '</span>' + revB(s);
+    if (p && DESIGN_SVC.indexOf(p.service) >= 0 && s.id && (s.status === 'review' || s.status === 'done')) return ' <span class="kb-appr"><small>' + esc(T('чекає вашого погодження')) + '</small>' +
+      '<button type="button" class="btn sm" data-appr="' + esc(p.id + ':' + s.id) + '" data-nm="' + esc(s.name) + '">' + esc(T('Погодити етап')) + '</button>' +
+      '<button type="button" class="btn sm ghost" data-revq="' + esc(p.id + ':' + s.id) + '">' + esc(T('Є правки')) + '</button></span>' + revB(s);
+    return revB(s);
   }
+  // результати етапу (візуалізації, креслення, специфікації, акти) — документи з stage_id
+  function stageDocs(p, s) {
+    return s.id ? (p.documents || []).filter(function (x) { return x.stage_id === s.id; }).map(function (a) {
+      var u = safeUrl(a.url), k = DOCK[a.kind] || DOCK.other;
+      return u ? '<a class="lnk" href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + svg(IC.doc) + esc(a.title) + ' <small class="muted">' + esc(k[0]) + '</small></a>' : '';
+    }).join('') : '';
+  }
+  if (box) box.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-revq]'); if (!b) return;
+    e.preventDefault();
+    var w = b.closest('.kb-appr'), k = b.getAttribute('data-revq');
+    var f = document.createElement('form'); f.className = 'kb-revf';
+    f.innerHTML = '<label><span>' + esc(T('Що змінити? Опишіть правки — дизайнер отримає їх одразу.')) + '</span><textarea name="note" rows="3" maxlength="1000" required></textarea></label>' +
+      '<div class="row"><button type="submit" class="btn sm">' + esc(T('Надіслати правки')) + '</button><button type="button" class="btn sm ghost" data-x>' + esc(T('Скасувати')) + '</button></div>';
+    w.hidden = true; w.parentNode.insertBefore(f, w.nextSibling);
+    f.querySelector('textarea').focus();
+    f.querySelector('[data-x]').onclick = function () { f.remove(); w.hidden = false; };
+    f.onsubmit = function (ev) {
+      ev.preventDefault();
+      var note = f.elements.note.value.trim(), kk = k.split(':'), sb = f.querySelector('[type=submit]');
+      if (note.length < 3) { f.elements.note.focus(); return; }
+      sb.disabled = true;
+      api('/api/account/projects', { method: 'POST', body: { action: 'revise', project_id: +kk[0], stage_id: kk[1], note: note } }).then(function (r) {
+        var st = r && r.stage || {};
+        f.outerHTML = '<span class="kb-ss in_progress">' + esc(T('правки надіслано')) + '</span>' + revB(st);
+        w.remove();
+        toast(T('Правки надіслано — етап повернувся в роботу'));
+      }, function (er) { sb.disabled = false; toast(er.message, true); });
+    };
+  });
   if (box) box.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('[data-appr]'); if (!b) return;
     e.preventDefault();
@@ -613,14 +647,14 @@
         h += '<ol class="kb-steps">' + stages.map(function (s, i) {
           var pc = Math.max(0, Math.min(100, s.progress || 0));
           var nRep = R.filter(function (r) { return s.id && r.stage_id === s.id; }).length;
-          var sActs = acts.filter(function (x) { return s.id && x.stage_id === s.id; });
           var dates = [s.start && dfmt(s.start, { day: 'numeric', month: 'short' }), s.end && dfmt(s.end, { day: 'numeric', month: 'short', year: 'numeric' })].filter(Boolean).join(' – ');
           return '<li class="' + esc(s.status) + (s === cur ? ' cur' : '') + '"' + (s === cur ? ' aria-current="step"' : '') + '><span class="d" aria-hidden="true">' + (s.status === 'done' ? '' : i + 1) + '</span><div class="kb-step-b">' +
             '<div class="kb-stage-h"><b>' + esc(s.name) + approvedB(s, p) + '</b>' + stBadgeS(s) + '</div>' +
             '<div class="row" style="gap:10px;flex-wrap:nowrap"><div style="flex:1">' + bar(pc) + '</div><small class="muted" style="white-space:nowrap">' + pc + '%</small></div>' +
             '<div class="kb-step-m">' + (dates ? '<span>' + esc(dates) + '</span>' : '') + (nRep ? '<button type="button" class="lnk" data-stg="' + esc(s.id) + '">' + nRepT(nRep) + ' →</button>' : '') +
-            sActs.map(function (a) { var u = safeUrl(a.url); return u ? '<a class="lnk" href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + svg(IC.doc) + esc(a.title) + '</a>' : ''; }).join('') + '</div>' +
-            (s.note ? '<small class="muted">' + esc(s.note) + '</small>' : '') + '</div></li>';
+            stageDocs(p, s) + '</div>' +
+            (s.note ? '<small class="muted">' + esc(s.note) + '</small>' : '') +
+            (s.rev_note && !s.approved_at ? '<small class="muted kb-revn">' + esc(T('Ваші правки')) + ' (' + esc(dfmt(s.rev_at, { day: 'numeric', month: 'short' })) + '): «' + esc(s.rev_note) + '»</small>' : '') + '</div></li>';
         }).join('') + '</ol>';
       } else h += '<p class="muted">' + T('Етапи зʼявляться після підписання договору.') + '</p>';
       h += '</section>';

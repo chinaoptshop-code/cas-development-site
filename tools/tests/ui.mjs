@@ -165,6 +165,19 @@ await check('owner-crm-quick', 'OWNER', '/kabinet/admin#crm', W, async p => {
   p.once('dialog', d => d.accept()); await p.click('dialog[open] button.x'); await p.waitForTimeout(200);
   if (await p.$('dialog[open]')) throw new Error('картка не закрилась після підтвердження');
 });
+// Пропозиція з заявки: тип підставлено з тексту, площа → «від $2 550», «Зберегти розрахунок» → «Розрахунок», «Створити проєкт» → картка проєкту
+await check('owner-lead-offer', 'OWNER', '/kabinet/admin#crm', [1440], async p => {
+  await see(p, '[data-list]', 'Лід 2');
+  await p.locator('.kn-card', { hasText: 'Лід 2' }).first().locator('b').first().click(); await see(p, 'dialog[open] [data-offer]', 'Пропозиція');
+  if (await p.inputValue('dialog[open] [data-ok]') !== 'dz') throw new Error('тип не підставлено з «Дизайн інтерʼєру»');
+  await p.fill('dialog[open] [data-oa]', '85'); await see(p, 'dialog[open] [data-os]', 'від \\$2\u202f550');
+  await p.click('dialog[open] [data-osave]'); await p.waitForTimeout(800);
+  if (await p.inputValue('dialog[open] [name=status]') !== 'quote_sent') throw new Error('стадія не «Розрахунок»');
+  p.once('dialog', d => d.accept()); await p.click('dialog[open] [data-oconv]');
+  await see(p, '.pj-lead', 'З заявки'); await see(p, '[data-f] [name=title]');
+  if (!/Дизайн-проєкт/.test(await p.inputValue('[data-f] [name=title]'))) throw new Error('назва проєкту');
+  const n = await p.$$eval('.pj-stage', e => e.length); if (n !== 8) throw new Error('етапів дизайну ' + n);
+});
 // «Партнери»: список, фільтр за типом, картка, збереження статусу; CRM — фільтр «Бот пошуку»
 await check('owner-partners', 'OWNER', '/kabinet/admin#partners', W, async p => {
   await see(p, '[data-ptbl]', 'Бригада Тест'); await see(p, '[data-ptbl]', 'Тест Постач');
