@@ -1,0 +1,284 @@
+{
+ "slugs": {
+  "hub": "design-renovation-region-kyiv",
+  "lviv": "design-renovation-lviv",
+  "odesa": "design-renovation-odessa",
+  "dnipro": "design-renovation-dnipro"
+ },
+ "portfolio": "Portfolio",
+ "ua": "Design et rénovation dans toute l’Ukraine",
+ "ua_short": "Toute l’Ukraine",
+ "eu": "Rénovation et construction en Europe",
+ "all": "Toutes les villes d’Ukraine",
+ "other": "Autres régions",
+ "near": "À proximité : autres villes",
+ "hub": {
+  "area": "Région de Kyiv",
+  "service": "Design, rénovation et construction clé en main dans la région de Kyiv",
+  "title": "Rénovation clé en main, région de Kyiv — design et maisons | CAS",
+  "description": "Rénovation, architecture d’intérieur et construction de maisons clé en main dans la région de Kyiv : Irpin, Boutcha, Brovary. Équipe propre, prix de Kyiv.",
+  "h1": "Design, rénovation et construction clé en main dans la région de Kyiv",
+  "lead": "Rénovation clé en main dans la région de Kyiv : appartements neufs en banlieue, maisons individuelles et villas, construction à partir de zéro. Dans les villes et villages autour de Kyiv, nous travaillons avec la même équipe salariée et aux mêmes tarifs qu’à Kyiv.",
+  "places": [
+   "Villes de la région de Kyiv où nous travaillons",
+   "Chaque ville a son habitat, sa logistique et ses demandes typiques :"
+  ],
+  "towns": [
+   [
+    "Irpin",
+    "Résidences neuves, maisons de ville et maisons parmi les pins ; remise en état de logements."
+   ],
+   [
+    "Boutcha",
+    "Maisons et résidences basses pour vivre toute l’année hors de la ville."
+   ],
+   [
+    "Hostomel",
+    "Maisons individuelles, reconstruction d’anciennes propriétés, maisons neuves."
+   ],
+   [
+    "Vychneve",
+    "Immeubles neufs aux portes de Kyiv : une rénovation au niveau de la capitale."
+   ],
+   [
+    "Boïarka",
+    "Une banlieue forestière : maisons, datchas aménagées pour l’année, bois massif."
+   ],
+   [
+    "Brovary",
+    "La rive gauche : immeubles en panneaux, neuf, maisons et bureaux."
+   ],
+   [
+    "Boryspil",
+    "Maisons le long de l’autoroute : Hora, Chtchaslyve, Velyka Oleksandrivka."
+   ],
+   [
+    "Vychhorod",
+    "Au bord du Dniepr et de la mer de Kyiv ; Petrivtsi House, 320 m²."
+   ],
+   [
+    "Oboukhiv",
+    "Oboukhiv, Oukraïnka, Trypillia : maisons de campagne au-dessus du Dniepr."
+   ],
+   [
+    "Vasylkiv",
+    "Une ville ancienne sur la Stouhna : maisons à ossature bois et modulaires."
+   ],
+   [
+    "Fastiv",
+    "Reconstruction de maisons familiales et rénovation de l’habitat ancien."
+   ],
+   [
+    "Bila Tserkva",
+    "La plus grande ville de la région : appartements, maisons, locaux commerciaux."
+   ]
+  ],
+  "koncha": [
+   "Kontcha-Zaspa, Kozyn, Pouchtcha-Vodytsia",
+   "Maisons de campagne et résidences clé en main."
+  ],
+  "about": [
+   [
+    "La région de Kyiv par secteurs",
+    [
+     "Ouest : Irpin, Boutcha, Hostomel, avec des résidences neuves, des maisons de ville et des maisons en forêt. Sud-ouest : Vychneve, Boïarka, Fastiv, avec du neuf aux portes de Kyiv et beaucoup de maisons individuelles. Sud : Vasylkiv, Oboukhiv, Bila Tserkva, avec des propriétés familiales, des maisons au-dessus du Dniepr et une grande ville dotée de son propre marché immobilier.",
+     "Est : Brovary et Boryspil, avec la rive gauche, des terrains plats et des lotissements le long des routes. Nord : Vychhorod et Petrivtsi au bord de la mer de Kyiv, où nous avons conçu Petrivtsi House, 320 m². Et à part, les résidences de Kontcha-Zaspa, Kozyn et Pouchtcha-Vodytsia."
+    ]
+   ],
+   [
+    "Dans la région, les prix de Kyiv",
+    [
+     "Projet de design à partir de $30 le m² (minimum $2 500), rénovation clé en main à partir de $550 le m² (travaux et matériaux de base), gros œuvre d’une maison à partir de $600 le m², maison clé en main avec finitions à partir de $1 100 le m², ameublement à partir de $250 le m².",
+     "Si CAS réalise la rénovation, le total final ne s’écarte pas du devis de plus de ±5 %. Le relevé sur place est payant, son prix est fixé au cas par cas ; la consultation téléphonique est gratuite. Détails sur les pages [rénovation clé en main]({/remont-pid-klyuch-kyiv}) et [construction de maisons]({/budivnytstvo-budynkiv-kyiv})."
+    ]
+   ],
+   [
+    "Comment nous suivons les chantiers hors de la ville",
+    [
+     "Les conducteurs de travaux suivent les chantiers par secteur : une maison à Boutcha ou à Brovary reçoit autant d’attention qu’un appartement à Petchersk. Reportages photo toutes les 1 à 2 semaines, caméra en ligne sur le chantier 24 h/24 en option payante, et garantie de 12 mois sur les travaux."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Dans quelles villes de la région de Kyiv travaillez-vous ?",
+    "Irpin, Boutcha, Hostomel, Vychneve, Boïarka, Brovary, Boryspil, Vychhorod, Oboukhiv, Vasylkiv, Fastiv, Bila Tserkva, ainsi que les villages et lotissements voisins."
+   ],
+   [
+    "La rénovation est-elle plus chère dans la région qu’à Kyiv ?",
+    "Les tarifs de base sont les mêmes : rénovation à partir de $550 le m², design à partir de $30 le m², construction à partir de $600 le m²."
+   ],
+   [
+    "Qui travaille sur les chantiers de la région ?",
+    "Notre propre équipe salariée, adaptée à différents niveaux de complexité et types de travaux : la même qu’à Kyiv."
+   ],
+   [
+    "Construisez-vous des maisons à partir de zéro dans la région ?",
+    "Oui : projet d’architecture à partir de $12 le m², gros œuvre à partir de $600 le m², clé en main avec finitions à partir de $1 100 le m²."
+   ]
+  ]
+ },
+ "lviv": {
+  "name": "Lviv",
+  "region": "Oblast de Lviv",
+  "service": "Architecture d’intérieur, rénovation et construction clé en main à Lviv",
+  "title": "Architecture d’intérieur et rénovation à Lviv | CAS",
+  "description": "Architecture d’intérieur à Lviv, à distance ou sur place : design dès $30/m², rénovation dès $550/m², maison dès $600/m². Immeubles anciens, neuf, maisons.",
+  "h1": "Architecture d’intérieur, rénovation et construction clé en main à Lviv",
+  "lead": "Architecture d’intérieur à Lviv pour des appartements dans des immeubles de l’époque autrichienne, des résidences neuves et des maisons aux alentours. Nous réalisons le projet à distance ou avec des déplacements ; la rénovation et la construction sont confiées à l’équipe CAS, à des conditions convenues au cas par cas.",
+  "about": [
+   [
+    "Lviv : immeubles anciens, bâti d’avant-guerre et constructions neuves",
+    [
+     "L’habitat de Lviv est très varié. Le centre historique compte des immeubles des époques autrichienne et polonaise, avec de hauts plafonds, des planchers en bois, des moulures et des poêles en faïence ; Sykhiv et Levandivka sont des quartiers d’immeubles en panneaux ; la périphérie et les environs accueillent des résidences neuves et des maisons.",
+     "Un appartement dans un immeuble ancien demande une attention particulière : planchers, murs humides, vieux conduits de cheminée, restrictions dans les bâtiments protégés. Nous l’intégrons au projet : nous préservons les détails de valeur, comme les moulures ou le parquet, et dissimulons les nouveaux réseaux pour qu’ils ne heurtent pas l’histoire du bâtiment."
+    ]
+   ],
+   [
+    "Architecture d’intérieur à Lviv",
+    [
+     "Dans les immeubles anciens de Lviv, la demande type est un intérieur contemporain où l’on sent encore le bâtiment : portes restaurées, hautes fenêtres, éclairage sur plusieurs niveaux. Dans le neuf, un plan fonctionnel et des rangements ; dans les maisons des environs, une cheminée, une terrasse et une vue sur le jardin. À partir de $30 le m² (minimum $2 500) ; les formules sont sur la page [architecture d’intérieur]({/dyzain-interieru-kyiv})."
+    ]
+   ],
+   [
+    "Rénovation clé en main et construction de maisons",
+    [
+     "Dans un immeuble ancien, nous commençons par examiner planchers et murs ; dans le neuf, par contrôler les travaux du promoteur. Le périmètre, le calendrier et les paiements sont fixés dans le contrat, et les travaux sont réalisés par notre équipe salariée : à partir de $550 le m², déplacement de l’équipe à conditions individuelles.",
+     "Autour de Lviv, nous construisons des maisons en brique, en béton cellulaire, à ossature bois ou en bois massif, adaptées au climat humide : étanchéité soignée des fondations, façades ventilées, toiture de qualité. Gros œuvre à partir de $600 le m², clé en main à partir de $1 100 le m²."
+    ]
+   ],
+   [
+    "Logistique, suivi et rapports",
+    [
+     "Avec Lviv, nous travaillons par étapes : le projet se mène en ligne, et nous nous déplaçons pour les relevés, les étapes clés du chantier et la réception. Les conditions et le coût des déplacements sont individuels et fixés au contrat. Le mobilier et les luminaires de Chine (livraison en 35 à 70 jours) sont acheminés jusqu’au chantier ; le transport est chiffré à part."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Peut-on commander un projet de design pour Lviv à distance ?",
+    "Oui. Le concept, la 3D et les plans sont validés en ligne ; les relevés se font sur place ou selon un format convenu. Design à partir de $30 le m², minimum $2 500."
+   ],
+   [
+    "Travaillez-vous dans des immeubles historiques ?",
+    "Oui. Le projet tient compte des planchers, de l’humidité et des contraintes des bâtiments protégés ; les modifications de plan restent dans ce qui peut être autorisé."
+   ],
+   [
+    "Rénovez-vous à Lviv avec votre propre équipe ?",
+    "Oui, la rénovation à partir de $550 le m² (travaux et matériaux de base) est réalisée par notre équipe salariée. Déplacement et hébergement de l’équipe : conditions et coût individuels."
+   ]
+  ]
+ },
+ "odesa": {
+  "name": "Odessa",
+  "region": "Oblast d’Odessa",
+  "service": "Architecture d’intérieur, rénovation et construction clé en main à Odessa",
+  "title": "Architecture d’intérieur et rénovation à Odessa | CAS",
+  "description": "Architecture d’intérieur à Odessa : appartements du centre historique et tours face à la mer, maisons sur la côte. Design dès $30/m², rénovation dès $550/m².",
+  "h1": "Architecture d’intérieur, rénovation et construction clé en main à Odessa",
+  "lead": "Architecture d’intérieur à Odessa pour des appartements dans les immeubles du XIXᵉ siècle du centre, des tours d’Arcadia et du quartier de Fontan et des maisons au bord de la mer. Nous menons le projet à distance ou avec des déplacements ; la rénovation et la construction sont réalisées par notre équipe, à conditions individuelles.",
+  "about": [
+   [
+    "Odessa : centre historique, tours face à la mer et maisons sur la côte",
+    [
+     "Le centre d’Odessa compte des immeubles du XIXᵉ siècle aux hauts plafonds, avec cours intérieures et murs en calcaire coquillier local. Au bord de la mer, à Arcadia et dans le quartier de Fontan, des tours modernes aux baies panoramiques ; le long de la côte, des maisons et des résidences d’été.",
+     "L’air marin et l’humidité sont le principal défi pour un intérieur : ils attaquent le bois, le métal et l’enduit. Dans le projet, nous choisissons des matériaux et une quincaillerie qui résistent à ces conditions et prévoyons ventilation et étanchéité là où c’est essentiel."
+    ]
+   ],
+   [
+    "Architecture d’intérieur à Odessa",
+    [
+     "Dans les appartements avec vue sur la mer, nous composons l’intérieur autour du panorama : peu de cloisons dans le séjour, des matériaux naturels clairs, des terrasses. Dans l’ancien, nous retrouvons la hauteur sous plafond, les moulures et le parquet, avec une cuisine et une salle de bains modernes. À partir de $30 le m² (minimum $2 500) ; les formules sont sur la page [designer d’intérieur]({/dyzainer-interieru-kyiv})."
+    ]
+   ],
+   [
+    "Rénovation clé en main et construction de maisons",
+    [
+     "Dans les immeubles en calcaire coquillier, nous commençons par évaluer les murs et l’humidité ; dans le neuf, par la réception des travaux du promoteur. Notre équipe salariée intervient, le périmètre et l’échéancier sont fixés au contrat : à partir de $550 le m², déplacement de l’équipe à conditions individuelles.",
+     "Sur la côte près d’Odessa, nous construisons en tenant compte du sol et du vent : fondations selon les données du terrain, façades et toiture en matériaux résistants à l’humidité et au sel. Les villas avec piscine et terrasses, comme nos projets Smart Villa ou Dubai Villa, y trouvent naturellement leur place. Gros œuvre à partir de $600 le m², clé en main à partir de $1 100 le m²."
+    ]
+   ],
+   [
+    "Logistique, suivi et rapports",
+    [
+     "Odessa est loin de Kyiv, nous travaillons donc ainsi : design et validations en ligne, relevés et étapes clés sur place, reportages photo entre les deux. Les conditions et le coût des déplacements et de l’hébergement de l’équipe sont individuels et fixés au contrat."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Réalisez-vous des projets de design pour Odessa à distance ?",
+    "Oui : réunions en ligne, 3D et plans au format numérique. Relevés sur place ou selon un format convenu. Design à partir de $30 le m², minimum $2 500."
+   ],
+   [
+    "Quels matériaux choisissez-vous pour une maison en bord de mer ?",
+    "Des matériaux résistants à l’humidité et au sel : grès cérame, pierre, systèmes de façade et quincaillerie adaptés ; le bois seulement là où il est protégé."
+   ],
+   [
+    "Combien coûte une maison clé en main près d’Odessa ?",
+    "Gros œuvre à partir de $600 le m², clé en main avec finitions à partir de $1 100 le m². Logistique et déplacement de l’équipe : conditions et coût individuels."
+   ]
+  ]
+ },
+ "dnipro": {
+  "name": "Dnipro",
+  "region": "Oblast de Dnipropetrovsk",
+  "service": "Architecture d’intérieur, rénovation et construction clé en main à Dnipro",
+  "title": "Architecture d’intérieur et rénovation à Dnipro | CAS",
+  "description": "Architecture d’intérieur à Dnipro : neuf sur les quais, immeubles staliniens, maisons et bureaux. Design dès $30/m², rénovation dès $550/m², bureau dès $350/m².",
+  "h1": "Architecture d’intérieur, rénovation et construction clé en main à Dnipro",
+  "lead": "Architecture d’intérieur à Dnipro pour des appartements dans les tours des quais, de vastes logements staliniens du centre, des maisons et des bureaux. Nous réalisons le projet à distance ou avec des déplacements, et prenons en charge la rénovation et la construction avec notre propre équipe, à des conditions convenues.",
+  "about": [
+   [
+    "Dnipro : les quais, les immeubles staliniens et les quartiers d’affaires",
+    [
+     "Dnipro est une ville d’un million d’habitants avec de nombreux grands appartements : immeubles staliniens aux hauts plafonds dans le centre, constructions neuves le long des quais avec vue sur le fleuve, maisons sur la rive gauche et en périphérie.",
+     "C’est une ville d’affaires : au-delà des logements, il s’agit souvent de bureaux, de showrooms et de restaurants. Notre expérience en [design de bureaux]({/dyzain-ofisu-kyiv}) y est précieuse, par exemple Office Chicago, avec ses murs végétaux et son zonage sans cloisons pleines."
+    ]
+   ],
+   [
+    "Architecture d’intérieur à Dnipro",
+    [
+     "Dans les grands appartements de Dnipro, le projet comprend souvent une suite privée des propriétaires avec chambre, salle de bains et dressing, un espace invités séparé et un bureau. Pour les appartements sur les quais, des scénarios d’éclairage et un intérieur qui joue avec la vue sur le fleuve. À partir de $30 le m² (minimum $2 500) ; les formules sont sur la page [prix de l’architecture d’intérieur]({/vartist-dyzainu-interieru-kyiv})."
+    ]
+   ],
+   [
+    "Rénovation clé en main et construction de maisons",
+    [
+     "Nous rénovons appartements, maisons et bureaux ; les bureaux à partir de $350 le m² (travaux et matériaux de base). Dans les immeubles staliniens, nous prévoyons le remplacement complet des réseaux et la mise à niveau des plafonds ; périmètre et échéancier au contrat. Appartements à partir de $550 le m², déplacement de l’équipe à conditions individuelles.",
+     "En périphérie de Dnipro, nous construisons des maisons en béton cellulaire, en brique et à ossature bois, avec un projet d’architecture à partir de $12 le m². Plan de masse, garage, terrasse et piscine sont intégrés au projet dès le départ. Gros œuvre à partir de $600 le m², clé en main à partir de $1 100 le m²."
+    ]
+   ],
+   [
+    "Logistique, suivi et rapports",
+    [
+     "Nous menons le projet en ligne et nous déplaçons pour les relevés et les étapes clés selon le calendrier du contrat. Les conditions et le coût des déplacements et de l’hébergement de l’équipe sont individuels ; entre les visites, reportages photo toutes les 1 à 2 semaines."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Peut-on commander le design d’un appartement à Dnipro sans se déplacer sans cesse ?",
+    "Oui. La plupart des validations se font en ligne ; nous venons sur place pour les relevés et le suivi de design selon le calendrier. Design à partir de $30 le m², minimum $2 500."
+   ],
+   [
+    "Faites-vous des bureaux à Dnipro ?",
+    "Oui : design de bureaux et rénovation à partir de $350 le m² (travaux et matériaux de base). Pour les entreprises enregistrées en Ukraine, facture avec ou sans TVA, au cas par cas."
+   ],
+   [
+    "Combien coûte la rénovation d’un appartement à Dnipro ?",
+    "À partir de $550 le m² pour les travaux et matériaux de base ; matériaux de finition et électroménager à part. Déplacement de l’équipe à conditions individuelles."
+   ]
+  ]
+ },
+ "uahub": [
+  "Régions et villes avec leur propre page",
+  "Habitat local, logistique et projets typiques :",
+  {
+   "hub": "Irpin, Boutcha, Brovary, Boryspil et d’autres villes, aux prix de Kyiv.",
+   "lviv": "Immeubles anciens, constructions neuves et maisons aux alentours.",
+   "odesa": "Centre historique, tours face à la mer et maisons sur la côte.",
+   "dnipro": "Neuf sur les quais, immeubles staliniens, maisons et bureaux."
+  }
+ ]
+}

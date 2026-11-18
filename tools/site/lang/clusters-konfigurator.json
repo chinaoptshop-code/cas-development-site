@@ -2,6 +2,14 @@
  "_": "Конфігуратор інтерʼєру (tools/konfigurator/page.py)",
  "konfigurator": {
   "uk": "/konfigurator",
-  "ru": "/ru/konfigurator"
+  "ru": "/ru/konfigurator",
+  "en": "/en/interior-configurator",
+  "es": "/es/configurador-interiores",
+  "zh": "/zh/interior-configurator",
+  "pl": "/pl/konfigurator-wnetrz",
+  "de": "/de/interior-konfigurator",
+  "fr": "/fr/configurateur-interieur",
+  "pt": "/pt/configurador-interiores",
+  "ar": "/ar/interior-configurator"
  }
 }

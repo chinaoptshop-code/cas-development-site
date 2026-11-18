@@ -170,7 +170,7 @@
   ],
   [
    "/pt/portfolio",
-   "Консультація (портфоліо)"
+   "Portfólio"
   ]
  ],
  "area": [
@@ -178,5 +178,31 @@
    "@type": "Country",
    "name": "Ucrânia"
   }
+ ],
+ "places": [
+  "Regiões e cidades com página própria",
+  "Habitação local, logística e projetos típicos:",
+  [
+   {
+    "h": "Região de Kyiv",
+    "href": "/pt/design-remodelacao-regiao-kyiv",
+    "p": "Irpin, Bucha, Brovary, Boryspil e outras cidades, com preços de Kyiv."
+   },
+   {
+    "h": "Lviv",
+    "href": "/pt/design-remodelacao-lviv",
+    "p": "Edifícios históricos, construção nova e moradias nos arredores."
+   },
+   {
+    "h": "Odessa",
+    "href": "/pt/design-remodelacao-odessa",
+    "p": "Centro histórico, torres junto ao mar e moradias na costa."
+   },
+   {
+    "h": "Dnipro",
+    "href": "/pt/design-remodelacao-dnipro",
+    "p": "Construção nova junto ao rio, edifícios estalinistas, moradias e escritórios."
+   }
+  ]
  ]
 }

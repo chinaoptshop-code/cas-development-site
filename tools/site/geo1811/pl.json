@@ -1,0 +1,284 @@
+{
+ "slugs": {
+  "hub": "projektowanie-remont-obwod-kijowski",
+  "lviv": "projektowanie-remont-lwow",
+  "odesa": "projektowanie-remont-odessa",
+  "dnipro": "projektowanie-remont-dniepr"
+ },
+ "portfolio": "Portfolio",
+ "ua": "Projektowanie i remont w całej Ukrainie",
+ "ua_short": "Cała Ukraina",
+ "eu": "Remont i budowa w Europie",
+ "all": "Wszystkie miasta Ukrainy",
+ "other": "Inne regiony",
+ "near": "W pobliżu: inne miasta",
+ "hub": {
+  "area": "Obwód kijowski",
+  "service": "Projektowanie, remont i budowa pod klucz w obwodzie kijowskim",
+  "title": "Remont pod klucz w obwodzie kijowskim — projekt i domy | CAS",
+  "description": "Remont, projektowanie wnętrz i budowa domów pod klucz w obwodzie kijowskim: Irpień, Bucza, Browary, Boryspol, Biała Cerkiew. Własny zespół, ceny jak w Kijowie.",
+  "h1": "Projektowanie, remont i budowa pod klucz w obwodzie kijowskim",
+  "lead": "Remont pod klucz w obwodzie kijowskim: mieszkania w nowych osiedlach pod Kijowem, domy prywatne i rezydencje, budowa od podstaw. W miastach i wsiach regionu pracujemy tym samym etatowym zespołem i według tych samych stawek co w Kijowie.",
+  "places": [
+   "Miasta obwodu kijowskiego, w których pracujemy",
+   "Każde miasto ma własny charakter zabudowy, logistykę i typowe zadania:"
+  ],
+  "towns": [
+   [
+    "Irpień",
+    "Nowe osiedla, szeregowce i domy wśród sosen; odbudowa mieszkań."
+   ],
+   [
+    "Bucza",
+    "Domy i niskie osiedla do stałego życia za miastem."
+   ],
+   [
+    "Hostomel",
+    "Domy prywatne, przebudowa starych siedlisk, domy od zera."
+   ],
+   [
+    "Wyszniewe",
+    "Nowe bloki tuż przy granicy Kijowa — remont jak w stolicy."
+   ],
+   [
+    "Bojarka",
+    "Leśne przedmieście: domy, dacze do stałego zamieszkania, bale."
+   ],
+   [
+    "Browary",
+    "Lewy brzeg: bloki z wielkiej płyty, nowe budynki, domy i biura."
+   ],
+   [
+    "Boryspol",
+    "Domy wzdłuż trasy: Hora, Szczasływe, Wełyka Ołeksandriwka."
+   ],
+   [
+    "Wyszogród",
+    "Nad Dnieprem i Morzem Kijowskim; Petrivtsi House, 320 m²."
+   ],
+   [
+    "Obuchów",
+    "Obuchów, Ukrainka, Trypole — domy nad Dnieprem."
+   ],
+   [
+    "Wasylków",
+    "Stare miasto nad Stuhną: domy szkieletowe i modułowe."
+   ],
+   [
+    "Fastów",
+    "Przebudowa domów rodzinnych i remonty starszej zabudowy."
+   ],
+   [
+    "Biała Cerkiew",
+    "Największe miasto obwodu: mieszkania, domy, lokale komercyjne."
+   ]
+  ],
+  "koncha": [
+   "Koncza-Zaspa, Kozyn, Puszcza-Wodyca",
+   "Domy podmiejskie i rezydencje pod klucz."
+  ],
+  "about": [
+   [
+    "Obwód kijowski według kierunków",
+    [
+     "Zachód — Irpień, Bucza, Hostomel: nowe osiedla, szeregowce i domy w lesie. Południowy zachód — Wyszniewe, Bojarka, Fastów: nowe budynki przy granicy Kijowa i duża zabudowa jednorodzinna. Południe — Wasylków, Obuchów, Biała Cerkiew: rodzinne siedliska, domy nad Dnieprem i duże miasto z własnym rynkiem mieszkaniowym.",
+     "Wschód — Browary i Boryspol: lewy brzeg, płaskie działki i osiedla domów wzdłuż tras. Północ — Wyszogród i Petriwci nad Morzem Kijowskim, gdzie zaprojektowaliśmy Petrivtsi House, 320 m². Osobno — rezydencje podmiejskie w Konczy-Zaspie, Kozynie i Puszczy-Wodycy."
+    ]
+   ],
+   [
+    "Ceny w obwodzie — jak w Kijowie",
+    [
+     "Projekt wnętrza — od $30 za m² (minimum $2 500), remont pod klucz — od $550 za m² (robocizna i materiały budowlane), stan surowy domu — od $600 za m², dom pod klucz z wykończeniem — od $1 100 za m², umeblowanie — od $250 za m².",
+     "Jeśli remont wykonuje CAS, wynik końcowy nie odbiega od kosztorysu o więcej niż ±5%. Pomiar na miejscu jest płatny, koszt ustalamy indywidualnie; konsultacja telefoniczna jest bezpłatna. Szczegóły — na stronach [remont pod klucz]({/remont-pid-klyuch-kyiv}) i [budowa domów]({/budivnytstvo-budynkiv-kyiv})."
+    ]
+   ],
+   [
+    "Jak kontrolujemy budowy poza miastem",
+    [
+     "Kierownicy budów prowadzą obiekty według kierunków, więc dom w Buczy czy Browarach dostaje tyle samo uwagi co mieszkanie na Peczersku. Raporty zdjęciowe co 1–2 tygodnie, za dopłatą kamera online na budowie 24/7; na prace obowiązuje 12-miesięczna gwarancja."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "W których miastach obwodu kijowskiego pracujecie?",
+    "Irpień, Bucza, Hostomel, Wyszniewe, Bojarka, Browary, Boryspol, Wyszogród, Obuchów, Wasylków, Fastów, Biała Cerkiew oraz okoliczne wsie i osiedla domów."
+   ],
+   [
+    "Czy remont w obwodzie jest droższy niż w Kijowie?",
+    "Stawki bazowe są te same: remont od $550 za m², projekt od $30 za m², budowa od $600 za m²."
+   ],
+   [
+    "Kto pracuje na budowach w obwodzie?",
+    "Nasz własny etatowy zespół, dobrany do różnej złożoności i rodzajów prac — ten sam co w Kijowie."
+   ],
+   [
+    "Czy budujecie domy od podstaw w obwodzie?",
+    "Tak: projekt architektoniczny od $12 za m², stan surowy od $600 za m², pod klucz z wykończeniem od $1 100 za m²."
+   ]
+  ]
+ },
+ "lviv": {
+  "name": "Lwów",
+  "region": "Obwód lwowski",
+  "service": "Projektowanie wnętrz, remont i budowa pod klucz we Lwowie",
+  "title": "Projektowanie wnętrz we Lwowie — remont i budowa pod klucz | CAS",
+  "description": "Projektowanie wnętrz we Lwowie zdalnie lub z dojazdem: projekt od $30/m², remont od $550/m², dom od $600/m². Kamienice, nowe budynki, domy.",
+  "h1": "Projektowanie wnętrz, remont i budowa pod klucz we Lwowie",
+  "lead": "Projektowanie wnętrz we Lwowie — dla mieszkań w austriackich kamienicach, nowych osiedlach i domach pod miastem. Projekt robimy zdalnie lub z dojazdem, a remont i budowę — własnym zespołem CAS na warunkach ustalanych indywidualnie.",
+  "about": [
+   [
+    "Lwów: kamienice, przedwojenna zabudowa i nowe osiedla",
+    [
+     "Mieszkania we Lwowie są bardzo różne. W historycznym centrum — austriackie i polskie kamienice z wysokimi sufitami, drewnianymi stropami, sztukaterią i piecami kaflowymi; na Sychowie i Lewandówce — osiedla z wielkiej płyty; na obrzeżach i pod miastem — nowe osiedla i domy.",
+     "Mieszkanie w kamienicy wymaga szczególnej uwagi: stropy, wilgotne ściany, stare kominy, ograniczenia zmian w zabytkach. Uwzględniamy to w projekcie — zachowujemy cenne detale, takie jak sztukateria czy parkiet, a nowe instalacje ukrywamy tak, by nie kłóciły się z historią budynku."
+    ]
+   ],
+   [
+    "Projektowanie wnętrz we Lwowie",
+    [
+     "W lwowskich kamienicach typowe zamówienie to nowoczesne wnętrze, w którym czuć budynek: odnowione drzwi, wysokie okna, światło na kilku poziomach. W nowych budynkach — funkcjonalny układ i przechowywanie, w domach pod Lwowem — kominek, taras i widok na ogród. Cena — od $30 za m² (minimum $2 500), pakiety — na stronie [projektowanie wnętrz]({/dyzain-interieru-kyiv})."
+    ]
+   ],
+   [
+    "Remont pod klucz i budowa domu",
+    [
+     "Remont w kamienicy zaczynamy od oceny stropów i ścian, w nowym budynku — od sprawdzenia prac deweloperskich. Zakres, harmonogram i płatności zapisujemy w umowie, prace wykonuje nasz etatowy zespół: od $550 za m², dojazd zespołu — na warunkach indywidualnych.",
+     "Pod Lwowem budujemy domy z cegły i betonu komórkowego, szkieletowe i z bali — z myślą o wilgotnym klimacie: solidna hydroizolacja fundamentów, elewacje wentylowane, porządny dach. Stan surowy — od $600 za m², pod klucz — od $1 100 za m²."
+    ]
+   ],
+   [
+    "Logistyka, kontrola i raporty",
+    [
+     "Ze Lwowem wygodnie pracuje się etapami: projekt prowadzimy online, a na pomiary, kluczowe etapy remontu i odbiór przyjeżdżamy. Warunki i koszt dojazdów — indywidualnie, zapisane w umowie. Meble i oświetlenie z Chin (dostawa 35–70 dni) dowozimy na obiekt, koszt transportu liczymy osobno."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Czy można zamówić projekt dla Lwowa zdalnie?",
+    "Tak. Koncepcję, 3D i rysunki uzgadniamy online; pomiary — z dojazdem lub w uzgodnionym formacie. Projekt od $30 za m², minimum $2 500."
+   ],
+   [
+    "Czy pracujecie z mieszkaniami w zabytkowych kamienicach?",
+    "Tak. Projekt uwzględnia stropy, wilgoć i ograniczenia dla zabytków; zmiany układu — tylko w zakresie, który da się uzgodnić."
+   ],
+   [
+    "Czy remontujecie we Lwowie własnym zespołem?",
+    "Tak, remont od $550 za m² (robocizna i materiały budowlane) wykonuje nasz etatowy zespół. Dojazd i zakwaterowanie zespołu — warunki i koszt indywidualnie."
+   ]
+  ]
+ },
+ "odesa": {
+  "name": "Odessa",
+  "region": "Obwód odeski",
+  "service": "Projektowanie wnętrz, remont i budowa pod klucz w Odessie",
+  "title": "Projektowanie wnętrz w Odessie — remont i budowa pod klucz | CAS",
+  "description": "Projektowanie wnętrz w Odessie: mieszkania w zabytkowym centrum i wieżowcach nad morzem, domy na wybrzeżu. Projekt od $30/m², remont od $550/m².",
+  "h1": "Projektowanie wnętrz, remont i budowa pod klucz w Odessie",
+  "lead": "Projektowanie wnętrz w Odessie — dla mieszkań w XIX-wiecznych kamienicach centrum, wieżowców w Arkadii i przy drogach Fontańskich oraz domów nad morzem. Projekt prowadzimy zdalnie lub z dojazdem, remont i budowę — naszym zespołem na indywidualnych warunkach.",
+  "about": [
+   [
+    "Odessa: zabytkowe centrum, wieżowce nad morzem i domy na wybrzeżu",
+    [
+     "W centrum Odessy stoją XIX-wieczne kamienice z wysokimi sufitami, wewnętrznymi podwórzami i ścianami z miejscowego wapienia muszlowego. Nad morzem, w Arkadii i przy drogach Fontańskich, — nowoczesne wieżowce z panoramicznymi oknami, a wzdłuż wybrzeża — domy prywatne i letniskowe.",
+     "Morskie powietrze i wilgoć to główne wyzwanie dla wnętrza: działają na drewno, metal i tynk. W projekcie dobieramy materiały i okucia odporne na takie warunki, a wentylację i hydroizolację planujemy tam, gdzie to kluczowe."
+    ]
+   ],
+   [
+    "Projektowanie wnętrz w Odessie",
+    [
+     "W mieszkaniach z widokiem na morze wnętrze budujemy wokół panoramy: minimum ścianek w salonie, jasne naturalne materiały, tarasy. W starej zabudowie — przywrócenie wysokości sufitów, sztukaterii i parkietu razem z nowoczesną kuchnią i łazienką. Cena — od $30 za m² (minimum $2 500), pakiety — na stronie [projektant wnętrz]({/dyzainer-interieru-kyiv})."
+    ]
+   ],
+   [
+    "Remont pod klucz i budowa domu",
+    [
+     "Remont w budynkach z wapienia muszlowego zaczynamy od oceny ścian i wilgoci, w nowych budynkach — od odbioru prac deweloperskich. Pracuje nasz etatowy zespół, zakres i harmonogram płatności są w umowie: od $550 za m², dojazd zespołu — na warunkach indywidualnych.",
+     "Na wybrzeżu pod Odessą budujemy domy z uwzględnieniem gruntu i wiatru: fundament — według danych z działki, elewacje i dach — z materiałów odpornych na wilgoć i sól. Wille z basenami i tarasami, jak nasze projekty Smart Villa czy Dubai Villa, pasują tu szczególnie dobrze. Stan surowy — od $600 za m², pod klucz — od $1 100 za m²."
+    ]
+   ],
+   [
+    "Logistyka, kontrola i raporty",
+    [
+     "Odessa leży daleko od Kijowa, więc pracujemy tak: projekt i uzgodnienia — online, pomiary i kluczowe etapy — z dojazdem, pomiędzy nimi — raporty zdjęciowe. Warunki i koszt dojazdów oraz zakwaterowania zespołu — indywidualnie, w umowie."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Czy robicie projekt dla Odessy zdalnie?",
+    "Tak: spotkania online, 3D i rysunki w wersji elektronicznej. Pomiary — z dojazdem lub w uzgodnionym formacie. Projekt od $30 za m², minimum $2 500."
+   ],
+   [
+    "Jakie materiały dobieracie do domu nad morzem?",
+    "Odporne na wilgoć i sól: gres, kamień, systemy elewacyjne i okucia do takich warunków; drewno — tylko tam, gdzie jest osłonięte."
+   ],
+   [
+    "Ile kosztuje dom pod klucz pod Odessą?",
+    "Stan surowy — od $600 za m², pod klucz z wykończeniem — od $1 100 za m². Logistyka i dojazd zespołu — warunki i koszt indywidualnie."
+   ]
+  ]
+ },
+ "dnipro": {
+  "name": "Dniepr",
+  "region": "Obwód dniepropetrowski",
+  "service": "Projektowanie wnętrz, remont i budowa pod klucz w Dnieprze",
+  "title": "Projektowanie wnętrz w Dnieprze — remont i budowa pod klucz | CAS",
+  "description": "Projektowanie wnętrz w Dnieprze: nowe budynki nad rzeką, mieszkania w stalinowskich kamienicach, domy i biura. Projekt od $30/m², biuro od $350/m².",
+  "h1": "Projektowanie wnętrz, remont i budowa pod klucz w Dnieprze",
+  "lead": "Projektowanie wnętrz w Dnieprze — mieszkania w wieżowcach na nabrzeżu, przestronne mieszkania w stalinowskich kamienicach w centrum, domy prywatne i biura. Projekt robimy zdalnie lub z dojazdem, remont i budowę prowadzimy własnym zespołem na uzgodnionych warunkach.",
+  "about": [
+   [
+    "Dniepr: nabrzeże, stalinowskie kamienice i dzielnice biznesowe",
+    [
+     "Dniepr to milionowe miasto z wieloma przestronnymi mieszkaniami: stalinowskie kamienice z wysokimi sufitami w centrum, nowe budynki wzdłuż nabrzeża z widokiem na rzekę oraz domy prywatne na lewym brzegu i pod miastem.",
+     "To miasto biznesu, więc oprócz mieszkań często chodzi o biura, showroomy i restauracje. Pomaga tu nasze doświadczenie w [projektowaniu biur]({/dyzain-ofisu-kyiv}) — na przykład Office Chicago z zielonymi ścianami i strefowaniem bez pełnych ścian."
+    ]
+   ],
+   [
+    "Projektowanie wnętrz w Dnieprze",
+    [
+     "W dużych mieszkaniach w Dnieprze projekt często obejmuje prywatną strefę właścicieli z sypialnią, łazienką i garderobą, osobną część dla gości i gabinet. W mieszkaniach na nabrzeżu — scenariusze oświetlenia i wnętrze, które „pracuje” z widokiem na rzekę. Cena — od $30 za m² (minimum $2 500), pakiety — na stronie [cena projektu wnętrza]({/vartist-dyzainu-interieru-kyiv})."
+    ]
+   ],
+   [
+    "Remont pod klucz i budowa domu",
+    [
+     "Remontujemy mieszkania, domy i biura — biura od $350 za m² (robocizna i materiały budowlane). W stalinowskich kamienicach planujemy pełną wymianę instalacji i wyrównanie sufitów; zakres i harmonogram płatności — w umowie. Mieszkania — od $550 za m², dojazd zespołu — na warunkach indywidualnych.",
+     "Pod Dnieprem budujemy domy z betonu komórkowego, cegły i szkieletowe — z projektem architektonicznym od $12 za m². Plan zagospodarowania, garaż, taras i basen uwzględniamy w projekcie od razu. Stan surowy — od $600 za m², pod klucz — od $1 100 za m²."
+    ]
+   ],
+   [
+    "Logistyka, kontrola i raporty",
+    [
+     "Projekt prowadzimy online, na pomiary i kluczowe etapy prac przyjeżdżamy według harmonogramu z umowy. Warunki i koszt dojazdów oraz zakwaterowania zespołu — indywidualnie; między wizytami — raporty zdjęciowe co 1–2 tygodnie."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "Czy można zamówić projekt mieszkania w Dnieprze bez ciągłych podróży?",
+    "Tak. Większość uzgodnień odbywa się online; na obiekt przyjeżdżamy na pomiary i nadzór autorski według harmonogramu. Projekt od $30 za m², minimum $2 500."
+   ],
+   [
+    "Czy robicie biura w Dnieprze?",
+    "Tak: projekt biura i remont od $350 za m² (robocizna i materiały budowlane). Dla firm zarejestrowanych na Ukrainie — faktura z VAT lub bez, indywidualnie."
+   ],
+   [
+    "Ile kosztuje remont mieszkania w Dnieprze?",
+    "Od $550 za m² — robocizna i materiały budowlane; materiały wykończeniowe i sprzęt — osobno. Dojazd zespołu — na warunkach indywidualnych."
+   ]
+  ]
+ },
+ "uahub": [
+  "Regiony i miasta z własnymi stronami",
+  "Lokalna zabudowa, logistyka i typowe projekty:",
+  {
+   "hub": "Irpień, Bucza, Browary, Boryspol i inne miasta — ceny jak w Kijowie.",
+   "lviv": "Kamienice, nowe osiedla i domy pod miastem.",
+   "odesa": "Zabytkowe centrum, wieżowce nad morzem i domy na wybrzeżu.",
+   "dnipro": "Nowe budynki nad rzeką, stalinowskie kamienice, domy i biura."
+  }
+ ]
+}

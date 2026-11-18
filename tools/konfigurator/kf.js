@@ -1,23 +1,14 @@
-/* CAS Development — конфігуратор інтерʼєру (/konfigurator, /ru/konfigurator).
+/* CAS Development — конфігуратор інтерʼєру (/konfigurator, /ru/konfigurator і 8 мов: en, es, pl, de, fr, pt, zh, ar).
    Фото реальних проєктів + маски зон → WebGL-шейдер перефарбовує зону зі збереженням світлотіні фото
    (яскравість оригіналу / середня яскравість зони), текстури — процедурні тайли з перспективою площини.
    Джерело: tools/konfigurator/kf.js, збірка: python3 tools/konfigurator/page.py (додає KF = {cfg, scene, sw}). */
 (function () {
   'use strict';
   var d = document, W = window;
-  var LANG = d.documentElement.lang === 'ru' ? 'ru' : 'uk';
+  var LANG = (d.documentElement.lang || 'uk').slice(0, 2); if (!KF.tx[LANG]) LANG = 'uk';
   var C = KF.cfg, SC = KF.scene, SW = KF.sw, B = '/assets/konfigurator/';
   var RM = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var TX = {
-    uk: { orig: 'Як у проєкті', share: 'Посилання скопійовано', shared: 'Поділитися конфігурацією', saved: 'Картинку збережено',
-      nogl: 'Ваш браузер не показує WebGL — перемикання недоступне, але ви можете обрати матеріали й надіслати заявку.',
-      msg: 'Конфігуратор інтерʼєру', room: 'Кімната', style: 'Стиль', own: 'власна добірка', link: 'Посилання', before: 'до', after: 'після',
-      loading: 'Завантажуємо', split: 'Порівняння до і після', mat: 'Матеріал', pick: 'Оберіть', zone: 'зона' },
-    ru: { orig: 'Как в проекте', share: 'Ссылка скопирована', shared: 'Поделиться конфигурацией', saved: 'Картинка сохранена',
-      nogl: 'Ваш браузер не показывает WebGL — переключение недоступно, но вы можете выбрать материалы и отправить заявку.',
-      msg: 'Конфигуратор интерьера', room: 'Комната', style: 'Стиль', own: 'своя подборка', link: 'Ссылка', before: 'до', after: 'после',
-      loading: 'Загружаем', split: 'Сравнение до и после', mat: 'Материал', pick: 'Выберите', zone: 'зона' }
-  }[LANG];
+  var TX = KF.tx[LANG];  // рядки інтерфейсу — tools/konfigurator/i18n.json
   var $ = function (s, r) { return (r || d).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || d).querySelectorAll(s)); };
   var ROOMS = Object.keys(C.rooms);
@@ -337,7 +328,7 @@
     });
   }
   function showPoster() {  // без WebGL: просто фото кімнати
-    var o = room[st.room]; if (o && poster) { poster.removeAttribute('srcset'); poster.src = o.img.src; poster.alt = name({ uk: C.rooms[st.room].alt_uk, ru: C.rooms[st.room].alt_ru }); }
+    var o = room[st.room]; if (o && poster) { poster.removeAttribute('srcset'); poster.src = o.img.src; poster.alt = C.rooms[st.room]['alt_' + LANG] || C.rooms[st.room].alt_uk; }
   }
   var hiTimer;
   function pulse(zi) {
@@ -390,7 +381,7 @@
     elPs.innerHTML = Object.keys(C.presets).map(function (p) {
       var ps = C.presets[p], dots = ['wall', 'floor', 'sofa', 'table'].map(function (z) { return '<span style="' + swStyle(ps.living[z]) + '"></span>'; }).join('');
       return '<button type="button" class="ps" data-p="' + p + '" aria-pressed="false"><span class="ps-d" aria-hidden="true">' + dots + '</span>' +
-        '<b>' + name(ps) + '</b><small>' + (LANG === 'ru' ? ps.d_ru : ps.d_uk) + '</small></button>';
+        '<b>' + name(ps) + '</b><small>' + (ps['d_' + LANG] || ps.d_uk) + '</small></button>';
     }).join('');
   }
   function roving(box, sel, horiz) {  // стрілки ←→ (↑↓) між кнопками групи
@@ -531,7 +522,7 @@
     x.fillStyle = '#EDE8DF'; x.font = '600 ' + f + 'px Manrope, system-ui, sans-serif'; x.textBaseline = 'bottom';
     var p = st.preset[st.room];
     x.fillText('CAS Development · ' + name(C.rooms[st.room]) + (p ? ' · ' + name(C.presets[p]) : ''), f * 1.4, h - f * 1.2);
-    x.textAlign = 'right'; x.fillStyle = '#BF9148'; x.fillText('cas-develop.com/' + (LANG === 'ru' ? 'ru/' : '') + 'konfigurator', w - f * 1.4, h - f * 1.2);
+    x.textAlign = 'right'; x.fillStyle = '#BF9148'; x.fillText('cas-develop.com' + location.pathname.replace(/\.html$/, ''), w - f * 1.4, h - f * 1.2);
     s.c.toBlob(function (b) {
       var a = d.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'cas-' + st.room + (p ? '-' + p : '') + '.png';
       d.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
@@ -543,7 +534,7 @@
   var dlg = $('#zayavka');
   function summary() {
     var r = st.room, cr = C.rooms[r], p = st.preset[r];
-    var lines = [TX.msg + ' — ' + TX.room + ': ' + name(cr) + '; ' + TX.style + ': ' + (p ? name(C.presets[p]) : TX.own) + (st.eve ? ' (вечір)'.replace('вечір', LANG === 'ru' ? 'вечер' : 'вечір') : '') + '.'];
+    var lines = [TX.msg + ' — ' + TX.room + ': ' + name(cr) + '; ' + TX.style + ': ' + (p ? name(C.presets[p]) : TX.own) + (st.eve ? ' (' + TX.eve + ')' : '') + '.'];
     SC[r].zones.forEach(function (z) { var id = st.sel[r][z.id]; lines.push('• ' + name(cr.zones[z.id]) + ': ' + (id ? name(C.mat[id]) : TX.orig)); });
     lines.push(TX.link + ': ' + shareUrl());
     return lines.join('\n');
