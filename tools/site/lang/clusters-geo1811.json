@@ -1,5 +1,5 @@
 {
- "_": "Кластери гілки i18n/p2-1811 (18.11.2026): Київська область, Львів, Одеса, Дніпро мовами (tools/site/geo1811/gen.py). i18n.py зливає clusters-*.json з clusters.json за ключем.",
+ "_": "Кластери гілок i18n/p2-1811 і i18n/p3-1811 (18.11.2026): Київська область, обласні центри й міста Київщини мовами (tools/site/geo1811/gen.py). i18n.py зливає clusters-*.json з clusters.json за ключем.",
  "geo-kyiv-oblast": {
   "ar": "/ar/design-renovation-kyiv-region",
   "de": "/de/innenarchitektur-renovierung-oblast-kyjiw",
@@ -39,5 +39,255 @@
   "pl": "/pl/projektowanie-remont-dniepr",
   "pt": "/pt/design-remodelacao-dnipro",
   "zh": "/zh/design-renovation-dnipro"
+ },
+ "geo-vinnytsia": {
+  "ar": "/ar/design-renovation-vinnytsia",
+  "de": "/de/innenarchitektur-renovierung-winnyzja",
+  "en": "/en/design-renovation-vinnytsia",
+  "es": "/es/diseno-reforma-vinnytsia",
+  "fr": "/fr/design-renovation-vinnytsia",
+  "pl": "/pl/projektowanie-remont-winnica",
+  "pt": "/pt/design-remodelacao-vinnytsia",
+  "zh": "/zh/design-renovation-vinnytsia"
+ },
+ "geo-zhytomyr": {
+  "ar": "/ar/design-renovation-zhytomyr",
+  "de": "/de/innenarchitektur-renovierung-schytomyr",
+  "en": "/en/design-renovation-zhytomyr",
+  "es": "/es/diseno-reforma-zhytomyr",
+  "fr": "/fr/design-renovation-jytomyr",
+  "pl": "/pl/projektowanie-remont-zytomierz",
+  "pt": "/pt/design-remodelacao-jitomir",
+  "zh": "/zh/design-renovation-zhytomyr"
+ },
+ "geo-chernihiv": {
+  "ar": "/ar/design-renovation-chernihiv",
+  "de": "/de/innenarchitektur-renovierung-tschernihiw",
+  "en": "/en/design-renovation-chernihiv",
+  "es": "/es/diseno-reforma-chernihiv",
+  "fr": "/fr/design-renovation-tchernihiv",
+  "pl": "/pl/projektowanie-remont-czernihow",
+  "pt": "/pt/design-remodelacao-chernihiv",
+  "zh": "/zh/design-renovation-chernihiv"
+ },
+ "geo-cherkasy": {
+  "ar": "/ar/design-renovation-cherkasy",
+  "de": "/de/innenarchitektur-renovierung-tscherkassy",
+  "en": "/en/design-renovation-cherkasy",
+  "es": "/es/diseno-reforma-cherkasy",
+  "fr": "/fr/design-renovation-tcherkassy",
+  "pl": "/pl/projektowanie-remont-czerkasy",
+  "pt": "/pt/design-remodelacao-cherkasy",
+  "zh": "/zh/design-renovation-cherkasy"
+ },
+ "geo-poltava": {
+  "ar": "/ar/design-renovation-poltava",
+  "de": "/de/innenarchitektur-renovierung-poltawa",
+  "en": "/en/design-renovation-poltava",
+  "es": "/es/diseno-reforma-poltava",
+  "fr": "/fr/design-renovation-poltava",
+  "pl": "/pl/projektowanie-remont-poltawa",
+  "pt": "/pt/design-remodelacao-poltava",
+  "zh": "/zh/design-renovation-poltava"
+ },
+ "geo-ivano-frankivsk": {
+  "ar": "/ar/design-renovation-ivano-frankivsk",
+  "de": "/de/innenarchitektur-renovierung-iwano-frankiwsk",
+  "en": "/en/design-renovation-ivano-frankivsk",
+  "es": "/es/diseno-reforma-ivano-frankivsk",
+  "fr": "/fr/design-renovation-ivano-frankivsk",
+  "pl": "/pl/projektowanie-remont-iwano-frankiwsk",
+  "pt": "/pt/design-remodelacao-ivano-frankivsk",
+  "zh": "/zh/design-renovation-ivano-frankivsk"
+ },
+ "geo-ternopil": {
+  "ar": "/ar/design-renovation-ternopil",
+  "de": "/de/innenarchitektur-renovierung-ternopil",
+  "en": "/en/design-renovation-ternopil",
+  "es": "/es/diseno-reforma-ternopil",
+  "fr": "/fr/design-renovation-ternopil",
+  "pl": "/pl/projektowanie-remont-tarnopol",
+  "pt": "/pt/design-remodelacao-ternopil",
+  "zh": "/zh/design-renovation-ternopil"
+ },
+ "geo-uzhhorod": {
+  "ar": "/ar/design-renovation-uzhhorod",
+  "de": "/de/innenarchitektur-renovierung-uschhorod",
+  "en": "/en/design-renovation-uzhhorod",
+  "es": "/es/diseno-reforma-uzhgorod",
+  "fr": "/fr/design-renovation-oujhorod",
+  "pl": "/pl/projektowanie-remont-uzhorod",
+  "pt": "/pt/design-remodelacao-uzhhorod",
+  "zh": "/zh/design-renovation-uzhhorod"
+ },
+ "geo-rivne": {
+  "ar": "/ar/design-renovation-rivne",
+  "de": "/de/innenarchitektur-renovierung-riwne",
+  "en": "/en/design-renovation-rivne",
+  "es": "/es/diseno-reforma-rivne",
+  "fr": "/fr/design-renovation-rivne",
+  "pl": "/pl/projektowanie-remont-rowne",
+  "pt": "/pt/design-remodelacao-rivne",
+  "zh": "/zh/design-renovation-rivne"
+ },
+ "geo-lutsk": {
+  "ar": "/ar/design-renovation-lutsk",
+  "de": "/de/innenarchitektur-renovierung-luzk",
+  "en": "/en/design-renovation-lutsk",
+  "es": "/es/diseno-reforma-lutsk",
+  "fr": "/fr/design-renovation-loutsk",
+  "pl": "/pl/projektowanie-remont-luck",
+  "pt": "/pt/design-remodelacao-lutsk",
+  "zh": "/zh/design-renovation-lutsk"
+ },
+ "geo-khmelnytskyi": {
+  "ar": "/ar/design-renovation-khmelnytskyi",
+  "de": "/de/innenarchitektur-renovierung-chmelnyzkyj",
+  "en": "/en/design-renovation-khmelnytskyi",
+  "es": "/es/diseno-reforma-jmelnytski",
+  "fr": "/fr/design-renovation-khmelnytsky",
+  "pl": "/pl/projektowanie-remont-chmielnicki",
+  "pt": "/pt/design-remodelacao-khmelnytskyi",
+  "zh": "/zh/design-renovation-khmelnytskyi"
+ },
+ "geo-chernivtsi": {
+  "ar": "/ar/design-renovation-chernivtsi",
+  "de": "/de/innenarchitektur-renovierung-czernowitz",
+  "en": "/en/design-renovation-chernivtsi",
+  "es": "/es/diseno-reforma-chernivtsi",
+  "fr": "/fr/design-renovation-tchernivtsi",
+  "pl": "/pl/projektowanie-remont-czerniowce",
+  "pt": "/pt/design-remodelacao-chernivtsi",
+  "zh": "/zh/design-renovation-chernivtsi"
+ },
+ "geo-kropyvnytskyi": {
+  "ar": "/ar/design-renovation-kropyvnytskyi",
+  "de": "/de/innenarchitektur-renovierung-kropywnyzkyj",
+  "en": "/en/design-renovation-kropyvnytskyi",
+  "es": "/es/diseno-reforma-kropyvnytsky",
+  "fr": "/fr/design-renovation-kropyvnytsky",
+  "pl": "/pl/projektowanie-remont-kropywnycki",
+  "pt": "/pt/design-remodelacao-kropyvnytskyi",
+  "zh": "/zh/design-renovation-kropyvnytskyi"
+ },
+ "geo-irpin": {
+  "ar": "/ar/design-renovation-irpin",
+  "de": "/de/innenarchitektur-renovierung-irpin",
+  "en": "/en/design-renovation-irpin",
+  "es": "/es/diseno-reforma-irpin",
+  "fr": "/fr/design-renovation-irpin",
+  "pl": "/pl/projektowanie-remont-irpien",
+  "pt": "/pt/design-remodelacao-irpin",
+  "zh": "/zh/design-renovation-irpin"
+ },
+ "geo-bucha": {
+  "ar": "/ar/design-renovation-bucha",
+  "de": "/de/innenarchitektur-renovierung-butscha",
+  "en": "/en/design-renovation-bucha",
+  "es": "/es/diseno-reforma-bucha",
+  "fr": "/fr/design-renovation-boutcha",
+  "pl": "/pl/projektowanie-remont-bucza",
+  "pt": "/pt/design-remodelacao-bucha",
+  "zh": "/zh/design-renovation-bucha"
+ },
+ "geo-hostomel": {
+  "ar": "/ar/design-renovation-hostomel",
+  "de": "/de/innenarchitektur-renovierung-hostomel",
+  "en": "/en/design-renovation-hostomel",
+  "es": "/es/diseno-reforma-hostomel",
+  "fr": "/fr/design-renovation-hostomel",
+  "pl": "/pl/projektowanie-remont-hostomel",
+  "pt": "/pt/design-remodelacao-hostomel",
+  "zh": "/zh/design-renovation-hostomel"
+ },
+ "geo-vyshneve": {
+  "ar": "/ar/design-renovation-vyshneve",
+  "de": "/de/innenarchitektur-renovierung-wyschnewe",
+  "en": "/en/design-renovation-vyshneve",
+  "es": "/es/diseno-reforma-vyshneve",
+  "fr": "/fr/design-renovation-vychneve",
+  "pl": "/pl/projektowanie-remont-wyszniewe",
+  "pt": "/pt/design-remodelacao-vyshneve",
+  "zh": "/zh/design-renovation-vyshneve"
+ },
+ "geo-boiarka": {
+  "ar": "/ar/design-renovation-boiarka",
+  "de": "/de/innenarchitektur-renovierung-bojarka",
+  "en": "/en/design-renovation-boiarka",
+  "es": "/es/diseno-reforma-boiarka",
+  "fr": "/fr/design-renovation-boiarka",
+  "pl": "/pl/projektowanie-remont-bojarka",
+  "pt": "/pt/design-remodelacao-boiarka",
+  "zh": "/zh/design-renovation-boiarka"
+ },
+ "geo-brovary": {
+  "ar": "/ar/design-renovation-brovary",
+  "de": "/de/innenarchitektur-renovierung-browary",
+  "en": "/en/design-renovation-brovary",
+  "es": "/es/diseno-reforma-brovary",
+  "fr": "/fr/design-renovation-brovary",
+  "pl": "/pl/projektowanie-remont-browary",
+  "pt": "/pt/design-remodelacao-brovary",
+  "zh": "/zh/design-renovation-brovary"
+ },
+ "geo-boryspil": {
+  "ar": "/ar/design-renovation-boryspil",
+  "de": "/de/innenarchitektur-renovierung-boryspil",
+  "en": "/en/design-renovation-boryspil",
+  "es": "/es/diseno-reforma-boryspil",
+  "fr": "/fr/design-renovation-boryspil",
+  "pl": "/pl/projektowanie-remont-boryspol",
+  "pt": "/pt/design-remodelacao-boryspil",
+  "zh": "/zh/design-renovation-boryspil"
+ },
+ "geo-vyshhorod": {
+  "ar": "/ar/design-renovation-vyshhorod",
+  "de": "/de/innenarchitektur-renovierung-wyschhorod",
+  "en": "/en/design-renovation-vyshhorod",
+  "es": "/es/diseno-reforma-vyshhorod",
+  "fr": "/fr/design-renovation-vychhorod",
+  "pl": "/pl/projektowanie-remont-wyszogrod",
+  "pt": "/pt/design-remodelacao-vyshhorod",
+  "zh": "/zh/design-renovation-vyshhorod"
+ },
+ "geo-obukhiv": {
+  "ar": "/ar/design-renovation-obukhiv",
+  "de": "/de/innenarchitektur-renovierung-obuchiw",
+  "en": "/en/design-renovation-obukhiv",
+  "es": "/es/diseno-reforma-obukhiv",
+  "fr": "/fr/design-renovation-oboukhiv",
+  "pl": "/pl/projektowanie-remont-obuchow",
+  "pt": "/pt/design-remodelacao-obukhiv",
+  "zh": "/zh/design-renovation-obukhiv"
+ },
+ "geo-vasylkiv": {
+  "ar": "/ar/design-renovation-vasylkiv",
+  "de": "/de/innenarchitektur-renovierung-wasylkiw",
+  "en": "/en/design-renovation-vasylkiv",
+  "es": "/es/diseno-reforma-vasylkiv",
+  "fr": "/fr/design-renovation-vasylkiv",
+  "pl": "/pl/projektowanie-remont-wasylkow",
+  "pt": "/pt/design-remodelacao-vasylkiv",
+  "zh": "/zh/design-renovation-vasylkiv"
+ },
+ "geo-fastiv": {
+  "ar": "/ar/design-renovation-fastiv",
+  "de": "/de/innenarchitektur-renovierung-fastiw",
+  "en": "/en/design-renovation-fastiv",
+  "es": "/es/diseno-reforma-fastiv",
+  "fr": "/fr/design-renovation-fastiv",
+  "pl": "/pl/projektowanie-remont-fastow",
+  "pt": "/pt/design-remodelacao-fastiv",
+  "zh": "/zh/design-renovation-fastiv"
+ },
+ "geo-bila-tserkva": {
+  "ar": "/ar/design-renovation-bila-tserkva",
+  "de": "/de/innenarchitektur-renovierung-bila-zerkwa",
+  "en": "/en/design-renovation-bila-tserkva",
+  "es": "/es/diseno-reforma-bila-tserkva",
+  "fr": "/fr/design-renovation-bila-tserkva",
+  "pl": "/pl/projektowanie-remont-biala-cerkiew",
+  "pt": "/pt/design-remodelacao-bila-tserkva",
+  "zh": "/zh/design-renovation-bila-tserkva"
  }
 }

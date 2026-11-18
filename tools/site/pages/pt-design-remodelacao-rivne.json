@@ -1,0 +1,187 @@
+{
+ "slug": "design-remodelacao-rivne",
+ "lang": "pt",
+ "service": "Design de interiores e remodelação em Rivne",
+ "title": "Design de interiores em Rivne — remodelação | CAS",
+ "description": "Design de interiores em Rivne: apartamentos novos e antigos, moradias nos arredores. Design desde $30/m², remodelação desde $550/m², casas desde $600/m².",
+ "h1": "Design de interiores e remodelação em Rivne",
+ "price": "remodelação a partir de $550/m² · design a partir de $30/m² · moradia a partir de $600/m²",
+ "lead": "Design de interiores em Rivne para apartamentos em empreendimentos novos e prédios soviéticos, e para moradias nos arredores e na Polésia. O projeto faz-se à distância ou com deslocações; a remodelação e a construção, com a nossa equipa e condições individuais.",
+ "parent": [
+  "/pt/design-remodelacao-ucrania",
+  "Toda a Ucrânia"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Rivne",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Oblast de Rivne"
+   }
+  }
+ ],
+ "near": [
+  "Perto: outras cidades",
+  [
+   [
+    "/pt/design-remodelacao-lutsk",
+    "Lutsk"
+   ],
+   [
+    "/pt/design-remodelacao-jitomir",
+    "Jitomir"
+   ],
+   [
+    "/pt/design-remodelacao-ternopil",
+    "Ternopil"
+   ],
+   [
+    "/pt/design-remodelacao-ucrania",
+    "Todas as cidades da Ucrânia"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Design de interiores",
+   [
+    "levantamento e planta",
+    "visualizações 3D e desenhos de execução",
+    "mapa de materiais e mobiliário",
+    "acompanhamento do autor"
+   ]
+  ],
+  [
+   "Remodelação chave na mão",
+   [
+    "apartamentos novos e usados",
+    "moradias e casas de campo",
+    "mão de obra e materiais de base a partir de $550/m²",
+    "orçamento antes do início da obra"
+   ]
+  ],
+  [
+   "Construção de moradias",
+   [
+    "projeto de arquitetura a partir de $12/m²",
+    "estrutura a partir de $600/m²",
+    "chave na mão com acabamentos a partir de $1 100/m²",
+    "instalações e cobertura"
+   ]
+  ],
+  [
+   "Móveis e equipamento",
+   [
+    "mobiliário a partir de $250/m²",
+    "cozinhas e roupeiros por medida",
+    "móveis e iluminação diretos da China",
+    "decoração final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Rivne: uma cidade verde e terrenos da Polésia",
+   [
+    "Rivne é uma cidade verde de parques e bairros de prédios, onde nos últimos anos surgiram muitos empreendimentos novos. Os arredores e a Polésia em volta são moradias com terrenos grandes entre florestas e pântanos.",
+    "Os terrenos da Polésia têm muitas vezes o nível freático alto e solos de turfa. Aqui é decisivo projetar bem as fundações e a drenagem — resolvemos isso antes de qualquer decisão sobre o interior."
+   ]
+  ],
+  [
+   "Design de interiores em Rivne",
+   [
+    "Para apartamentos em Rivne, uma planta funcional, arrumação e luz; para moradias, uma paleta quente com madeira, lareira e grandes janelas para o jardim. Pode escolher o pacote de planta, o básico ou o completo com acompanhamento do designer. Projeto de design desde $30 por m² (mínimo $2 500); os pacotes estão na página [estúdio de design de interiores](/pt/design-de-interiores)."
+   ]
+  ],
+  [
+   "Remodelação chave na mão e construção de moradias",
+   [
+    "Remodelamos apartamentos e moradias, desde as instalações novas até aos acabamentos. Construímos casas de betão celular, tijolo, estrutura de madeira e troncos; as fundações são projetadas após o levantamento do terreno — veja também [projeto de moradia](/pt/projeto-de-moradia).",
+    "A remodelação é feita pela nossa equipa própria: desde $550 por m² de trabalhos e materiais de base; materiais de acabamento, mobiliário e eletrodomésticos à parte, conforme orçamento. O âmbito, o calendário e o plano de pagamentos (50/50, 50/30/20 ou por fases, com sinal a partir de 10%) ficam no contrato; a deslocação da equipa é acordada caso a caso. Projeto de arquitetura desde $12 por m², estrutura desde $600 por m², chave na mão com acabamentos desde $1 100 por m² — veja [remodelação chave na mão](/pt/remodelacao-chave-na-mao) e [construção de moradias](/pt/construcao-de-moradias)."
+   ]
+  ],
+  [
+   "Logística, acompanhamento e relatórios",
+   [
+    "O projeto e as aprovações decorrem online; deslocamo-nos para as medições e as fases-chave segundo o calendário do contrato, e as condições e o custo das deslocações e do alojamento da equipa são individuais. Entre visitas, relatórios fotográficos a cada 1–2 semanas e, com custo adicional, câmara online na obra 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1DhAA8_vK0zo3E-900.webp",
+   "A-Frame House"
+  ]
+ ],
+ "steps": [
+  [
+   "Consulta",
+   "Por telefone ou online: imóvel, objetivos, orçamento."
+  ],
+  [
+   "Levantamento e briefing",
+   "Medições, desejos, dados de partida."
+  ],
+  [
+   "Projeto e orçamento",
+   "Interiores ou arquitetura; preço e calendário no contrato."
+  ],
+  [
+   "Obra",
+   "Remodelação ou construção com relatórios fotográficos."
+  ],
+  [
+   "Entrega",
+   "Auto de receção e 12 meses de garantia sobre os trabalhos."
+  ]
+ ],
+ "faq": [
+  [
+   "É possível construir num terreno com nível freático alto?",
+   "Sim, mas o projeto de fundações e drenagem só se faz após o levantamento do terreno. Estrutura desde $600 por m²."
+  ],
+  [
+   "Quanto custa uma remodelação em Rivne?",
+   "Desde $550 por m² de trabalhos e materiais de base; materiais de acabamento, mobiliário e eletrodomésticos à parte, conforme orçamento."
+  ],
+  [
+   "Quanto custa um projeto de design em Rivne?",
+   "Desde $30 por m², mínimo $2 500. O pacote de planta começa nos $6 por m² e o completo com acompanhamento do designer nos $45 por m²."
+  ]
+ ],
+ "rel": [
+  [
+   "/pt/remodelacao-moradia",
+   "Remodelação de moradia chave na mão"
+  ],
+  [
+   "/pt/equipamento-chave-na-mao",
+   "Equipamento de projetos chave na mão"
+  ],
+  [
+   "/pt/calculadora-obras",
+   "Calculadora do custo de remodelação"
+  ],
+  [
+   "/pt/contrato-garantia-pagamento",
+   "Contrato, garantia e pagamento (minuta de contrato)"
+  ],
+  [
+   "/pt/portfolio",
+   "Portfólio"
+  ]
+ ]
+}

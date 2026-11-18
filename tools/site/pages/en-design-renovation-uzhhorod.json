@@ -1,0 +1,187 @@
+{
+ "slug": "design-renovation-uzhhorod",
+ "lang": "en",
+ "service": "Interior design, renovation and building in Uzhhorod",
+ "title": "Interior design in Uzhhorod — renovation and houses | CAS",
+ "description": "Interior design in Uzhhorod and Transcarpathia: Czech-era flats, new builds, houses and guest houses. Design from $30/m², renovation from $550/m².",
+ "h1": "Interior design, renovation and building in Uzhhorod",
+ "price": "renovation from $550/m² · design from $30/m² · house from $600/m²",
+ "lead": "Interior design in Uzhhorod for apartments in Czechoslovak-era buildings, new complexes on the Uzh river, private houses and Transcarpathian guest houses. We do the project remotely or with site visits; renovation and construction by our own team on individual terms.",
+ "parent": [
+  "/en/design-renovation-ukraine",
+  "Across Ukraine"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Uzhhorod",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Zakarpattia Oblast"
+   }
+  }
+ ],
+ "near": [
+  "Nearby: other cities",
+  [
+   [
+    "/en/design-renovation-ivano-frankivsk",
+    "Ivano-Frankivsk"
+   ],
+   [
+    "/en/design-renovation-lviv",
+    "Lviv"
+   ],
+   [
+    "/en/design-renovation-chernivtsi",
+    "Chernivtsi"
+   ],
+   [
+    "/en/design-renovation-ukraine",
+    "All cities in Ukraine"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Interior design",
+   [
+    "measurements and layout",
+    "3D visualisations and working drawings",
+    "materials and furniture specification",
+    "designer supervision"
+   ]
+  ],
+  [
+   "Turnkey renovation",
+   [
+    "new-build and resale apartments",
+    "houses and cottages",
+    "works and rough materials from $550/m²",
+    "estimate before work starts"
+   ]
+  ],
+  [
+   "House construction",
+   [
+    "architectural design from $12/m²",
+    "shell from $600/m²",
+    "turnkey with finishing from $1,100/m²",
+    "utilities and roofing"
+   ]
+  ],
+  [
+   "Furniture and procurement",
+   [
+    "furnishing from $250/m²",
+    "custom kitchens and wardrobes",
+    "furniture and lighting direct from China",
+    "final styling"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Uzhhorod: Czech functionalism, the Uzh and the mountains nearby",
+   [
+    "Uzhhorod stands out for its interwar Czechoslovak architecture — functionalist buildings with clean lines and large windows, especially in the Malyi Halahov district. Nearby are the old town, new complexes on the Uzh and private houses with gardens.",
+    "The mild climate and the closeness of the EU border make Transcarpathia attractive both for living and for hospitality: guest houses, mini-hotels, wine estates. We run such properties as commercial projects, with a concept, an estimate and furnishing."
+   ]
+  ],
+  [
+   "Interior design in Uzhhorod",
+   [
+    "In Czech-era buildings the interior brings out their character: simple forms, quality materials, original windows and stairs kept. For guest houses — a design that withstands a flow of guests and is easy to maintain; see also [hotel design](/en/hotel-design-fit-out). Design project from $30 per m² (minimum $2,500); packages are on the [interior design studio](/en/interior-design) page."
+   ]
+  ],
+  [
+   "Turnkey renovation and house construction",
+   [
+    "We renovate apartments in older buildings and new builds, houses and small commercial premises. In Transcarpathia we build private houses and guest complexes from aerated block, brick, logs or timber frame, taking slopes and drainage into account.",
+    "Renovation is carried out by our salaried team: from $550 per m² for works and rough materials, with finishing materials, furniture and appliances priced separately per estimate. Scope, schedule and payment plan (50/50, 50/30/20 or in stages, from a 10% advance) are fixed in the contract; team travel is on individual terms. Architectural design from $12 per m², house shell from $600 per m², turnkey with finishing from $1,100 per m² — see [turnkey renovation](/en/turnkey-renovation) and [house construction](/en/house-construction)."
+   ]
+  ],
+  [
+   "Logistics, control and reports",
+   [
+    "Design and approvals run online; we travel for measurements and key stages on the schedule set in the contract, and the terms and costs of travel and team accommodation are individual. Between visits you get photo reports every 1–2 weeks, and an online camera on site 24/7 is available for an extra fee."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1iBBOM6KWCT5qH-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/18Gq2eFZpz_4sf-900.webp",
+   "Yacht VIP"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1jLCsJh1mIO_wX-900.webp",
+   "Smart Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "By phone or online: property, goals, budget."
+  ],
+  [
+   "Survey and brief",
+   "Measurements, wishes, initial data."
+  ],
+  [
+   "Design and estimate",
+   "Interior or architecture; price and schedule in the contract."
+  ],
+  [
+   "Works",
+   "Renovation or construction with photo reports."
+  ],
+  [
+   "Handover",
+   "Certificate, 12-month warranty on works."
+  ]
+ ],
+ "faq": [
+  [
+   "Do you work with guest houses and mini-hotels in Transcarpathia?",
+   "Yes: concept, architecture, interior, renovation and furnishing. The cost is per estimate for the property."
+  ],
+  [
+   "How much does a design project in Uzhhorod cost?",
+   "From $30 per m², minimum $2,500. The planning package starts from $6 per m², the full package with designer supervision from $45 per m²."
+  ],
+  [
+   "Can the design be done remotely?",
+   "Yes: online meetings, 3D and drawings in digital form; measurements and designer supervision with site visits on the schedule in the contract."
+  ]
+ ],
+ "rel": [
+  [
+   "/en/house-renovation",
+   "Turnkey house renovation"
+  ],
+  [
+   "/en/turnkey-procurement",
+   "Turnkey interior procurement"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Renovation cost calculator"
+  ],
+  [
+   "/en/contract-warranty-payment",
+   "Contract, warranty, payment (sample contract)"
+  ],
+  [
+   "/en/portfolio",
+   "Portfolio"
+  ]
+ ]
+}
