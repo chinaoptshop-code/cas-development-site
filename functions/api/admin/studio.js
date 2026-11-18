@@ -4,6 +4,7 @@
 //   finance:  договори, сплачено, до оплати, прострочені платежі (по валютах), оплачені замовлення Оздоби за 30 днів,
 //   workload: навантаження кожного працівника (відкриті заявки, активні обʼєкти, проблеми, прострочки),
 //   overdue:  прострочені контакти, нові заявки поза SLA, прострочені платежі, відкриті проблеми, етапи з минулим дедлайном,
+//             прострочені задачі (project_tasks, 0012) і обʼєкти з минулою датою здачі (projects.deadline),
 //   projects: активні обʼєкти з прогресом }
 import { LEAD_STATUSES, ORDER_STATUSES, json } from '../../_lib.js';
 import { SLA_MIN, sqlTime } from '../../_alerts.js';
@@ -24,6 +25,9 @@ export async function onRequestGet({ request, env }) {
       LEFT JOIN staff s ON s.id = i.staff_id WHERE i.status = 'open' ORDER BY i.id DESC LIMIT 200`).all(), []);
   const S = await soft(env.DB.prepare('SELECT * FROM staff WHERE active = 1').all(), []);
   const PS = await soft(env.DB.prepare('SELECT * FROM project_staff').all(), []);
+  const TK = await soft(env.DB.prepare(`SELECT t.id, t.project_id, t.title, t.due_date, t.staff_id, p.title AS project_title, s.name AS staff_name FROM project_tasks t
+      JOIN projects p ON p.id = t.project_id LEFT JOIN staff s ON s.id = t.staff_id
+      WHERE t.done = 0 AND t.due_date IS NOT NULL AND t.due_date < ? AND p.status != 'done' ORDER BY t.due_date LIMIT 200`).bind(t).all(), []);
 
   const sum = rs => rs.reduce((m, o) => { const v = o.amount != null ? o.amount : o.total || 0; const c = o.currency || 'UAH'; m[c] = (m[c] || 0) + v; return m; }, {});
   const leads = O.filter(o => o.kind === 'lead'), orders = O.filter(o => o.kind === 'order');
@@ -60,13 +64,16 @@ export async function onRequestGet({ request, env }) {
     late: lateContact.filter(o => o.assignee_staff_id === s.id).length,
     projects: active.filter(p => onProject(s.id, p)).length,
     issues: ISS.filter(i => i.staff_id === s.id).length,
+    late_tasks: TK.filter(y => y.staff_id === s.id).length,
   }));
+  const lateDeadline = P.filter(p => p.deadline && p.deadline < t && p.status !== 'done').map(p => ({ project_id: p.id, project: p.title, deadline: p.deadline }));
   return json({
     today: t, funnel, ozdoba, finance: { projects: fin, ozdoba_paid_30d: ozdPaid },
     totals: { leads: leads.length, open_leads: leads.filter(o => !closed.includes(o.status)).length, orders: orders.length, active_projects: active.length, staff: S.length, issues: ISS.length },
     workload,
-    overdue: { contacts: lateContact.slice(0, 50), sla: lateSla.slice(0, 50), payments: overduePay.slice(0, 50), issues: ISS.slice(0, 50), stages: stages.slice(0, 50) },
+    overdue: { contacts: lateContact.slice(0, 50), sla: lateSla.slice(0, 50), payments: overduePay.slice(0, 50), issues: ISS.slice(0, 50), stages: stages.slice(0, 50),
+      tasks: TK.slice(0, 50), deadlines: lateDeadline.slice(0, 50) },
     projects: active.slice(0, 100).map(p => { const st = JSON.parse(p.stages || '[]'); return { id: p.id, title: p.title, client_name: p.client_name, service: p.service, progress: progressOf(st),
-      next_step: p.next_step, next_date: p.next_date, assignee_staff_id: p.assignee_staff_id, stage: (st.find(s => stageStatus(s) !== 'done') || {}).name || null }; }),
+      next_step: p.next_step, next_date: p.next_date, deadline: p.deadline || null, assignee_staff_id: p.assignee_staff_id, stage: (st.find(s => stageStatus(s) !== 'done') || {}).name || null }; }),
   });
 }

@@ -32,7 +32,8 @@
       var maxF = Math.max.apply(null, d.funnel.map(function (f) { return f.n; }).concat([1]));
       var maxO = Math.max.apply(null, d.ozdoba.map(function (f) { return f.n; }).concat([1]));
       var fin = d.finance.projects || {}, curs = Object.keys(fin);
-      var od = d.overdue, odN = od.contacts.length + od.sla.length + od.payments.length + od.stages.length + od.issues.length;
+      var od = d.overdue; od.tasks = od.tasks || []; od.deadlines = od.deadlines || [];
+      var odN = od.contacts.length + od.sla.length + od.payments.length + od.stages.length + od.issues.length + od.tasks.length + od.deadlines.length;
       var maxW = Math.max.apply(null, d.workload.map(function (w) { return w.open_leads + w.projects; }).concat([1]));
       var bar = function (f, max, board) {
         return '<button type="button" class="fn-row" data-go="' + board + ':' + f.key + '"><span class="fn-l">' + esc(f.label) + '</span><span class="fn-b"><i style="--w:' + Math.max(f.n ? 4 : 0, Math.round(f.n * 100 / max)) + '%"></i></span><b>' + f.n + '</b><small>' + sums(f.sum) + '</small></button>';
@@ -62,6 +63,8 @@
             od.contacts.map(function (o) { return '<li>⏰ ' + esc(o.number) + ' · ' + esc(o.name || '') + ' — контакт був ' + esc(o.next_contact) + (o.assignee ? ' · ' + esc(o.assignee) : '') + '</li>'; }).join('') +
             od.payments.map(function (y) { return '<li class="err">💸 ' + esc(y.project || '') + ': «' + esc(y.title) + '» ' + fmt(y.amount) + ' ' + esc(CUR[y.currency] || y.currency) + ' — до ' + esc(y.due_date) + '</li>'; }).join('') +
             od.stages.map(function (s) { return '<li>🧱 ' + esc(s.project) + ': етап «' + esc(s.stage) + '» — дедлайн ' + esc(s.end) + '</li>'; }).join('') +
+            od.deadlines.map(function (p) { return '<li class="err">🏁 ' + esc(p.project) + ': здача за договором ' + esc(p.deadline) + ' — прострочено</li>'; }).join('') +
+            od.tasks.map(function (y) { return '<li>📝 ' + esc(y.project_title) + ': задача «' + esc(y.title) + '» — термін ' + esc(y.due_date) + (y.staff_name ? ' <small>(' + esc(y.staff_name) + ')</small>' : '') + '</li>'; }).join('') +
             od.issues.map(function (i) { return '<li class="err">⚠ ' + esc(i.project_title) + ': ' + esc(String(i.note).slice(0, 90)) + ' <small>(' + esc(i.staff_name || '') + ')</small></li>'; }).join('') +
           '</ul>' : '<p class="ok">Прострочок немає 👌</p>') + '</section>' +
           '<section class="st-card s3"><h3>Обʼєкти в роботі</h3>' + (d.projects.length ? '<div class="pj">' + d.projects.map(function (p) {
