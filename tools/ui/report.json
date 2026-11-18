@@ -2127,12 +2127,12 @@
  {
   "page": "blog.html",
   "kind": "other",
-  "html_kb": 90.4,
-  "gzip_kb": 22.1,
+  "html_kb": 92.9,
+  "gzip_kb": 22.7,
   "css_kb": 14.0,
   "js_kb": 0.5,
   "font_sizes": 7,
-  "tags": 561,
+  "tags": 573,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -2292,7 +2292,7 @@
  {
   "page": "blog/budivnytstvo-mini-hotelyu-pid-kliuch.html",
   "kind": "article",
-  "html_kb": 55.9,
+  "html_kb": 55.8,
   "gzip_kb": 15.0,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2453,6 +2453,37 @@
   "webhook_copies": 0
  },
  {
+  "page": "blog/drenazh-i-avtopoliv-dilianky.html",
+  "kind": "article",
+  "html_kb": 50.8,
+  "gzip_kb": 14.2,
+  "css_kb": 14.2,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 404,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "blog/dyzain-i-remont-penthausa-pid-kliuch.html",
   "kind": "article",
   "html_kb": 60.6,
@@ -2593,7 +2624,7 @@
  {
   "page": "blog/dyzain-ofisu-z-choho-pochaty.html",
   "kind": "article",
-  "html_kb": 53.3,
+  "html_kb": 53.2,
   "gzip_kb": 15.8,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -2788,6 +2819,39 @@
   "prices_bad": [
    "$165 000",
    "$90 000"
+  ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/hazon-rulonnyi-chy-posivnyi.html",
+  "kind": "article",
+  "html_kb": 50.9,
+  "gzip_kb": 14.4,
+  "css_kb": 14.2,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 402,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$500"
   ],
   "facts_bad": [],
   "est_bad": [],
@@ -3289,6 +3353,37 @@
   "webhook_copies": 0
  },
  {
+  "page": "blog/landshaftne-osvitlennia-i-moshchennia-dorizhok.html",
+  "kind": "article",
+  "html_kb": 51.0,
+  "gzip_kb": 14.3,
+  "css_kb": 14.2,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 395,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "blog/landshaftnyi-dyzain-dilianky-z-choho-pochaty.html",
   "kind": "article",
   "html_kb": 54.2,
@@ -3316,6 +3411,39 @@
   ],
   "prices_bad": [
    "$500"
+  ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/landshaftnyi-dyzain-pid-kliuch-etapy.html",
+  "kind": "article",
+  "html_kb": 51.8,
+  "gzip_kb": 14.3,
+  "css_kb": 14.2,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 400,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$750"
   ],
   "facts_bad": [],
   "est_bad": [],
@@ -14907,12 +15035,12 @@
  {
   "page": "landshaftnyi-dyzain-kyiv.html",
   "kind": "land",
-  "html_kb": 57.1,
-  "gzip_kb": 15.5,
+  "html_kb": 57.4,
+  "gzip_kb": 15.9,
   "css_kb": 13.1,
   "js_kb": 1.1,
   "font_sizes": 6,
-  "tags": 593,
+  "tags": 595,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -31351,12 +31479,12 @@
  {
   "page": "ru/blog.html",
   "kind": "other",
-  "html_kb": 88.6,
-  "gzip_kb": 21.4,
+  "html_kb": 91.1,
+  "gzip_kb": 22.0,
   "css_kb": 14.0,
   "js_kb": 0.5,
   "font_sizes": 7,
-  "tags": 552,
+  "tags": 564,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -33216,12 +33344,12 @@
  {
   "page": "ru/landshaftnyy-dizayn-kiev.html",
   "kind": "land",
-  "html_kb": 56.7,
-  "gzip_kb": 15.2,
+  "html_kb": 57.0,
+  "gzip_kb": 15.4,
   "css_kb": 13.3,
   "js_kb": 1.1,
   "font_sizes": 6,
-  "tags": 586,
+  "tags": 588,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
