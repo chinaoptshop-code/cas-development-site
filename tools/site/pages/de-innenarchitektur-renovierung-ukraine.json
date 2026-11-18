@@ -170,7 +170,7 @@
   ],
   [
    "/de/portfolio",
-   "Консультація (портфоліо)"
+   "Portfolio"
   ]
  ],
  "area": [
@@ -178,5 +178,31 @@
    "@type": "Country",
    "name": "Ukraine"
   }
+ ],
+ "places": [
+  "Regionen und Städte mit eigenen Seiten",
+  "Örtliche Bebauung, Logistik und typische Projekte:",
+  [
+   {
+    "h": "Oblast Kyjiw",
+    "href": "/de/innenarchitektur-renovierung-oblast-kyjiw",
+    "p": "Irpin, Butscha, Browary, Boryspil und weitere Städte — Preise wie in Kyjiw."
+   },
+   {
+    "h": "Lwiw",
+    "href": "/de/innenarchitektur-renovierung-lwiw",
+    "p": "Altbauten, Neubauten und Häuser vor der Stadt."
+   },
+   {
+    "h": "Odessa",
+    "href": "/de/innenarchitektur-renovierung-odessa",
+    "p": "Historisches Zentrum, Hochhäuser am Meer und Häuser an der Küste."
+   },
+   {
+    "h": "Dnipro",
+    "href": "/de/innenarchitektur-renovierung-dnipro",
+    "p": "Neubauten am Ufer, Stalin-Bauten, Häuser und Büros."
+   }
+  ]
  ]
 }

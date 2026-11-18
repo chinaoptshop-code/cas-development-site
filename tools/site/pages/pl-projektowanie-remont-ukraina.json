@@ -170,7 +170,7 @@
   ],
   [
    "/pl/portfolio",
-   "Консультація (портфоліо)"
+   "Portfolio"
   ]
  ],
  "area": [
@@ -178,5 +178,31 @@
    "@type": "Country",
    "name": "Ukraina"
   }
+ ],
+ "places": [
+  "Regiony i miasta z własnymi stronami",
+  "Lokalna zabudowa, logistyka i typowe projekty:",
+  [
+   {
+    "h": "Obwód kijowski",
+    "href": "/pl/projektowanie-remont-obwod-kijowski",
+    "p": "Irpień, Bucza, Browary, Boryspol i inne miasta — ceny jak w Kijowie."
+   },
+   {
+    "h": "Lwów",
+    "href": "/pl/projektowanie-remont-lwow",
+    "p": "Kamienice, nowe osiedla i domy pod miastem."
+   },
+   {
+    "h": "Odessa",
+    "href": "/pl/projektowanie-remont-odessa",
+    "p": "Zabytkowe centrum, wieżowce nad morzem i domy na wybrzeżu."
+   },
+   {
+    "h": "Dniepr",
+    "href": "/pl/projektowanie-remont-dniepr",
+    "p": "Nowe budynki nad rzeką, stalinowskie kamienice, domy i biura."
+   }
+  ]
  ]
 }

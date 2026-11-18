@@ -1,0 +1,241 @@
+{
+ "slug": "design-renovation-region-kyiv",
+ "lang": "fr",
+ "service": "Design, rénovation et construction clé en main dans la région de Kyiv",
+ "title": "Rénovation clé en main, région de Kyiv — design et maisons | CAS",
+ "description": "Rénovation, architecture d’intérieur et construction de maisons clé en main dans la région de Kyiv : Irpin, Boutcha, Brovary. Équipe propre, prix de Kyiv.",
+ "h1": "Design, rénovation et construction clé en main dans la région de Kyiv",
+ "price": "rénovation dès $550/m² · design dès $30/m² · maison dès $600/m²",
+ "lead": "Rénovation clé en main dans la région de Kyiv : appartements neufs en banlieue, maisons individuelles et villas, construction à partir de zéro. Dans les villes et villages autour de Kyiv, nous travaillons avec la même équipe salariée et aux mêmes tarifs qu’à Kyiv.",
+ "places": [
+  "Villes de la région de Kyiv où nous travaillons",
+  "Chaque ville a son habitat, sa logistique et ses demandes typiques :",
+  [
+   {
+    "h": "Irpin",
+    "p": "Résidences neuves, maisons de ville et maisons parmi les pins ; remise en état de logements."
+   },
+   {
+    "h": "Boutcha",
+    "p": "Maisons et résidences basses pour vivre toute l’année hors de la ville."
+   },
+   {
+    "h": "Hostomel",
+    "p": "Maisons individuelles, reconstruction d’anciennes propriétés, maisons neuves."
+   },
+   {
+    "h": "Vychneve",
+    "p": "Immeubles neufs aux portes de Kyiv : une rénovation au niveau de la capitale."
+   },
+   {
+    "h": "Boïarka",
+    "p": "Une banlieue forestière : maisons, datchas aménagées pour l’année, bois massif."
+   },
+   {
+    "h": "Brovary",
+    "p": "La rive gauche : immeubles en panneaux, neuf, maisons et bureaux."
+   },
+   {
+    "h": "Boryspil",
+    "p": "Maisons le long de l’autoroute : Hora, Chtchaslyve, Velyka Oleksandrivka."
+   },
+   {
+    "h": "Vychhorod",
+    "p": "Au bord du Dniepr et de la mer de Kyiv ; Petrivtsi House, 320 m²."
+   },
+   {
+    "h": "Oboukhiv",
+    "p": "Oboukhiv, Oukraïnka, Trypillia : maisons de campagne au-dessus du Dniepr."
+   },
+   {
+    "h": "Vasylkiv",
+    "p": "Une ville ancienne sur la Stouhna : maisons à ossature bois et modulaires."
+   },
+   {
+    "h": "Fastiv",
+    "p": "Reconstruction de maisons familiales et rénovation de l’habitat ancien."
+   },
+   {
+    "h": "Bila Tserkva",
+    "p": "La plus grande ville de la région : appartements, maisons, locaux commerciaux."
+   },
+   {
+    "h": "Kontcha-Zaspa, Kozyn, Pouchtcha-Vodytsia",
+    "href": "/fr/maison-cle-en-main-kontcha-zaspa",
+    "p": "Maisons de campagne et résidences clé en main."
+   }
+  ]
+ ],
+ "area": [
+  {
+   "@type": "AdministrativeArea",
+   "name": "Région de Kyiv"
+  }
+ ],
+ "guarantees": true,
+ "near": [
+  "Autres régions",
+  [
+   [
+    "/fr/design-renovation-ukraine",
+    "Design et rénovation dans toute l’Ukraine"
+   ],
+   [
+    "/fr/renovation-construction-europe",
+    "Rénovation et construction en Europe"
+   ],
+   [
+    "/fr/design-renovation-lviv",
+    "Lviv"
+   ],
+   [
+    "/fr/design-renovation-odessa",
+    "Odessa"
+   ],
+   [
+    "/fr/design-renovation-dnipro",
+    "Dnipro"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Architecture intérieure",
+   [
+    "relevé et plan d’aménagement",
+    "visualisations 3D et plans d’exécution",
+    "descriptif des matériaux et du mobilier",
+    "suivi du concepteur"
+   ]
+  ],
+  [
+   "Rénovation clé en main",
+   [
+    "appartements neufs et anciens",
+    "maisons et cottages",
+    "travaux et matériaux de gros œuvre dès $550/m²",
+    "devis avant le début des travaux"
+   ]
+  ],
+  [
+   "Construction de maison",
+   [
+    "projet architectural dès $12/m²",
+    "gros œuvre dès $600/m²",
+    "clé en main avec finitions dès $1 100/m²",
+    "réseaux et toiture"
+   ]
+  ],
+  [
+   "Mobilier et équipement",
+   [
+    "ameublement dès $250/m²",
+    "cuisines et placards sur mesure",
+    "mobilier et luminaires en direct de Chine",
+    "stylisme final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "La région de Kyiv par secteurs",
+   [
+    "Ouest : Irpin, Boutcha, Hostomel, avec des résidences neuves, des maisons de ville et des maisons en forêt. Sud-ouest : Vychneve, Boïarka, Fastiv, avec du neuf aux portes de Kyiv et beaucoup de maisons individuelles. Sud : Vasylkiv, Oboukhiv, Bila Tserkva, avec des propriétés familiales, des maisons au-dessus du Dniepr et une grande ville dotée de son propre marché immobilier.",
+    "Est : Brovary et Boryspil, avec la rive gauche, des terrains plats et des lotissements le long des routes. Nord : Vychhorod et Petrivtsi au bord de la mer de Kyiv, où nous avons conçu Petrivtsi House, 320 m². Et à part, les résidences de Kontcha-Zaspa, Kozyn et Pouchtcha-Vodytsia."
+   ]
+  ],
+  [
+   "Dans la région, les prix de Kyiv",
+   [
+    "Projet de design à partir de $30 le m² (minimum $2 500), rénovation clé en main à partir de $550 le m² (travaux et matériaux de base), gros œuvre d’une maison à partir de $600 le m², maison clé en main avec finitions à partir de $1 100 le m², ameublement à partir de $250 le m².",
+    "Si CAS réalise la rénovation, le total final ne s’écarte pas du devis de plus de ±5 %. Le relevé sur place est payant, son prix est fixé au cas par cas ; la consultation téléphonique est gratuite. Détails sur les pages [rénovation clé en main](/fr/renovation-cle-en-main) et [construction de maisons](/fr/construction-maison)."
+   ]
+  ],
+  [
+   "Comment nous suivons les chantiers hors de la ville",
+   [
+    "Les conducteurs de travaux suivent les chantiers par secteur : une maison à Boutcha ou à Brovary reçoit autant d’attention qu’un appartement à Petchersk. Reportages photo toutes les 1 à 2 semaines, caméra en ligne sur le chantier 24 h/24 en option payante, et garantie de 12 mois sur les travaux."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1co4thni1Q8_1J-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1F4OovwNYQPfoF-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/1xskjqBvCXgXuL-900.webp",
+   "Hodos Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "Par téléphone ou en ligne : bien, objectifs, budget."
+  ],
+  [
+   "Relevé et brief",
+   "Mesures, souhaits, données de départ."
+  ],
+  [
+   "Projet et devis",
+   "Intérieur ou architecture ; prix et planning au contrat."
+  ],
+  [
+   "Travaux",
+   "Rénovation ou construction avec reportages photo."
+  ],
+  [
+   "Livraison",
+   "Procès-verbal, garantie de 12 mois sur les travaux."
+  ]
+ ],
+ "faq": [
+  [
+   "Dans quelles villes de la région de Kyiv travaillez-vous ?",
+   "Irpin, Boutcha, Hostomel, Vychneve, Boïarka, Brovary, Boryspil, Vychhorod, Oboukhiv, Vasylkiv, Fastiv, Bila Tserkva, ainsi que les villages et lotissements voisins."
+  ],
+  [
+   "La rénovation est-elle plus chère dans la région qu’à Kyiv ?",
+   "Les tarifs de base sont les mêmes : rénovation à partir de $550 le m², design à partir de $30 le m², construction à partir de $600 le m²."
+  ],
+  [
+   "Qui travaille sur les chantiers de la région ?",
+   "Notre propre équipe salariée, adaptée à différents niveaux de complexité et types de travaux : la même qu’à Kyiv."
+  ],
+  [
+   "Construisez-vous des maisons à partir de zéro dans la région ?",
+   "Oui : projet d’architecture à partir de $12 le m², gros œuvre à partir de $600 le m², clé en main avec finitions à partir de $1 100 le m²."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/renovation-maison-cle-en-main",
+   "Rénovation de maison clé en main"
+  ],
+  [
+   "/fr/equipement-cle-en-main",
+   "Équipement de projets clé en main"
+  ],
+  [
+   "/fr/calculateur-renovation",
+   "Calculateur du coût de rénovation"
+  ],
+  [
+   "/fr/contrat-garantie-paiement",
+   "Contrat, garantie, paiement (modèle de contrat)"
+  ],
+  [
+   "/fr/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

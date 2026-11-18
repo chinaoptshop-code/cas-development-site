@@ -1,0 +1,181 @@
+{
+ "slug": "eclairage-appartement-scenarios-circuits-et-erreurs",
+ "lang": "fr",
+ "title": "Éclairage d'un appartement : scénarios, circuits d'éclairage et erreurs courantes",
+ "translation_of": "osvitlennia-v-interieri-scenarii",
+ "seo_title": "Éclairage d'un appartement : scénarios et circuits",
+ "description": "Éclairage d'un appartement dans un projet de design : lumière générale, de travail et d'accent, scénarios par pièce, interrupteurs, température et erreurs.",
+ "lead": "Un seul lustre au milieu du plafond rend rarement un appartement chaleureux. La lumière, comme le mobilier, se prévoit à l'avance : où vous lisez, cuisinez, regardez un film, ce qui doit rester allumé la nuit. Nous expliquons comment l'éclairage d'un appartement s'organise dans un projet de design, ce que sont les scénarios et les circuits, et quelles erreurs s'évitent facilement dès les plans.",
+ "date": "2026-11-16",
+ "service": [
+  "/fr/design-appartement",
+  "Projet d'intérieur d'appartement"
+ ],
+ "photo": "img/p/1dHW-ciO1rn1E0-900.webp",
+ "photo_alt": "Séjour avec mur en pierre, niche TV et éclairage sur rail — appartement réalisé Tetris Hall",
+ "body": [
+  [
+   "h2",
+   "Trois couches de lumière dans chaque pièce"
+  ],
+  [
+   "p",
+   "Les architectes d'intérieur divisent l'éclairage d'un appartement en trois couches. Chacune a son rôle, et ensemble elles donnent une lumière qui s'adapte à toutes les situations."
+  ],
+  [
+   "ul",
+   [
+    "générale : une lumière homogène et diffuse pour voir toute la pièce — plafonniers, rails, éclairage indirect en périphérie",
+    "de travail : là où il faut de la précision — au-dessus du plan de travail, près du miroir, sur le bureau, à côté du fauteuil de lecture",
+    "d'accent : pour l'ambiance et la profondeur — niches, tableaux, étagères, mur texturé, lampadaires et lampes à poser"
+   ]
+  ],
+  [
+   "p",
+   "L'erreur que nous voyons le plus souvent : seulement de la lumière générale. La pièce est uniformément éclairée, mais plate, et identique le jour et le soir. Ajoutez une lumière de travail et d'accent, et le même espace change d'allure."
+  ],
+  [
+   "h2",
+   "Scénarios d'éclairage : de quoi s'agit-il et pourquoi"
+  ],
+  [
+   "p",
+   "Un scénario est un ensemble de luminaires qui s'allument ensemble pour une situation donnée. Un séjour en compte généralement plusieurs : lumière vive pour le ménage ou les invités, lumière douce du soir — éclairage indirect et lampadaire —, et cinéma, avec seulement un léger éclairage derrière la télévision. Dans la cuisine, une lumière de travail au-dessus du plan et une autre, séparée, au-dessus de la table."
+  ],
+  [
+   "p",
+   "Pour chaque scénario, le projet définit des circuits : quels luminaires sont reliés à un même interrupteur ou à un même canal de variateur. Les circuits se prévoient dans l'électricité avant les travaux : ensuite, il est difficile d'ajouter un câble séparé vers le luminaire voulu."
+  ],
+  [
+   "img",
+   "/img/p/17c2Uv-OmlrmLD-900.webp",
+   "Escalier avec éclairage des marches et suspensions — projet de design de la maison Pidgirland"
+  ],
+  [
+   "h2",
+   "L'éclairage pièce par pièce"
+  ],
+  [
+   "p",
+   "Séjour : le plus de scénarios — lumière générale, éclairage des niches et des étagères, lampadaire près du canapé, lumière au-dessus de la table basse ou de la table à manger. Si la télévision est au mur, un éclairage doux derrière elle réduit la fatigue visuelle."
+  ],
+  [
+   "p",
+   "Cuisine : une lumière de travail sur tout le plan, sans ombre des meubles hauts — éclairage linéaire dessous ou spots au-dessus du bord du plan. Au-dessus de l'îlot ou de la table, des suspensions à une hauteur qui n'éblouit pas les personnes assises."
+  ],
+  [
+   "p",
+   "Chambre : un minimum de lumière vive au plafond, davantage de lampes de chevet et d'éclairage indirect doux. Des interrupteurs près du lit pour ne pas se lever. Une veilleuse dans le couloir et la salle de bains qui ne réveille pas : éclairage bas avec détecteur de mouvement."
+  ],
+  [
+   "p",
+   "Salle de bains : une lumière homogène au miroir, des deux côtés ou au-dessus, pour éclairer le visage sans ombres, et des luminaires étanches dans la zone de douche."
+  ],
+  [
+   "gallery",
+   [
+    [
+     "/img/p/1NcVNNspIcdTWJ-900.webp",
+     "Cuisine-salle à manger aux façades claires, parquet, table à manger et éclairage sur rail — projet Edelweiss"
+    ],
+    [
+     "/img/p/1lcczk9v-heAbx-900.webp",
+     "Coin repas avec table en bois, suspensions linéaires et tableau — projet Diamond"
+    ]
+   ]
+  ],
+  [
+   "h2",
+   "Température de couleur et lampes"
+  ],
+  [
+   "p",
+   "La température de couleur détermine si la lumière est chaude, comme une ampoule à incandescence, ou froide, comme la lumière du jour. Pour les pièces de vie, on choisit généralement une lumière chaude, pour les zones de travail une lumière neutre. Règle principale : une seule température dans un même espace — des lampes de teintes différentes dans une pièce font désordre."
+  ],
+  [
+   "ul",
+   [
+    "une seule température pour toutes les lampes d'une pièce",
+    "des variateurs dans le séjour, la chambre et le coin repas",
+    "des drivers de qualité pour les rubans LED, pour éviter le scintillement",
+    "un accès aux alimentations de l'éclairage indirect — trappe ou panneau amovible"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1x1AqXqQMEpCTa-900.webp",
+   "Couloir d'un penthouse avec dressing vitré, étagères éclairées et murs plaqués noyer — projet Linden Penthouse"
+  ],
+  [
+   "h2",
+   "Interrupteurs, prises et domotique"
+  ],
+  [
+   "p",
+   "Les interrupteurs suivent les déplacements : à l'entrée de la pièce, la lumière générale ; près du canapé et du lit, les scénarios ; dans le couloir, des va-et-vient aux deux extrémités. Les prises pour lampadaires et lampes à poser se prévoient avec l'implantation du mobilier, pour éviter les rallonges."
+  ],
+  [
+   "p",
+   "Si vous voulez piloter la lumière depuis votre téléphone ou à la voix, la domotique se prévoit dès l'électricité : lignes séparées, emplacement du contrôleur, câble vers chaque circuit. Nous avons expliqué comment se planifient les réseaux d'un appartement clé en main dans l'article sur les [réseaux techniques](/fr/blog/reseaux-techniques-appartement-ordre-des-travaux)."
+  ],
+  [
+   "h2",
+   "Erreurs courantes d'éclairage d'un appartement"
+  ],
+  [
+   "ul",
+   [
+    "un lustre par pièce sans autre source de lumière",
+    "des spots en quadrillage régulier sur tout le plafond — la lumière est plate et le plafond semble troué",
+    "pas de lumière au-dessus du plan de travail de la cuisine",
+    "des suspensions au-dessus de la table trop hautes ou trop basses",
+    "des interrupteurs derrière la porte ou loin du lit",
+    "un ruban LED sans profilé ni diffuseur — on voit chaque point",
+    "un éclairage indirect posé sans accès à son alimentation"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1v3Yxy89lz6qSM-900.webp",
+   "Chambre avec lit rembourré, panneaux muraux clairs, lampes de chevet et éclairage indirect — projet Petrivtsi House"
+  ],
+  [
+   "h2",
+   "Combien coûte un projet de design avec plan d'éclairage"
+  ],
+  [
+   "p",
+   "Le plan d'éclairage fait partie du projet de design de CAS Development : emplacement des luminaires, circuits et scénarios, interrupteurs, descriptif des lampes et luminaires. Le projet coûte à partir de $30 le m², avec un minimum de $2 500 ; pour un appartement jusqu'à 83 m², le projet coûte précisément $2 500. Ce que comprend encore le projet, nous l'avons décrit dans l'article [ce que contient un projet d'architecture d'intérieur](/fr/blog/que-comprend-projet-architecture-interieur)."
+  ],
+  [
+   "p",
+   "Les travaux selon le projet démarrent à $550 le m² : travaux et matériaux de gros œuvre ; luminaires, matériaux de finition et mobilier à part, sur devis. Si CAS réalise les travaux, le total final ne s'écarte pas du devis de plus de ±5 %."
+  ],
+  [
+   "h2",
+   "Comment travaille CAS"
+  ],
+  [
+   "p",
+   "Nous réalisons le projet, le devis et la rénovation de l'appartement avec notre propre équipe, et choisissons les luminaires dans le descriptif avec le mobilier. Vous avez un seul interlocuteur, des rapports photo toutes les 1 à 2 semaines et une garantie de 12 mois sur les travaux. Exemple d'appartement réalisé avec un éclairage bien pensé : [Tetris Hall](/fr/proekty/tetris-hall)."
+  ]
+ ],
+ "faq": [
+  [
+   "Combien de scénarios d'éclairage faut-il dans un séjour ?",
+   "En général deux ou trois : lumière générale vive, lumière douce du soir et cinéma. Pour chaque scénario, le projet définit les circuits de luminaires et les interrupteurs."
+  ],
+  [
+   "Quelle température de lumière choisir pour un appartement ?",
+   "Chaude en général pour les pièces de vie, neutre pour les zones de travail. L'essentiel est une même température dans un même espace."
+  ],
+  [
+   "Quand faut-il prévoir l'éclairage ?",
+   "Avant les travaux, dans le projet de design : les circuits et les sorties pour luminaires sont intégrés à l'électricité avant l'enduit et les plafonds."
+  ],
+  [
+   "Le plan d'éclairage est-il compris dans le projet de design ?",
+   "Oui. Le projet à partir de $30 le m² comprend le plan des luminaires, les circuits, les interrupteurs et le descriptif."
+  ]
+ ]
+}

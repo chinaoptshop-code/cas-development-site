@@ -170,7 +170,7 @@
   ],
   [
    "/fr/portfolio",
-   "Консультація (портфоліо)"
+   "Portfolio"
   ]
  ],
  "area": [
@@ -178,5 +178,31 @@
    "@type": "Country",
    "name": "Ukraine"
   }
+ ],
+ "places": [
+  "Régions et villes avec leur propre page",
+  "Habitat local, logistique et projets typiques :",
+  [
+   {
+    "h": "Région de Kyiv",
+    "href": "/fr/design-renovation-region-kyiv",
+    "p": "Irpin, Boutcha, Brovary, Boryspil et d’autres villes, aux prix de Kyiv."
+   },
+   {
+    "h": "Lviv",
+    "href": "/fr/design-renovation-lviv",
+    "p": "Immeubles anciens, constructions neuves et maisons aux alentours."
+   },
+   {
+    "h": "Odessa",
+    "href": "/fr/design-renovation-odessa",
+    "p": "Centre historique, tours face à la mer et maisons sur la côte."
+   },
+   {
+    "h": "Dnipro",
+    "href": "/fr/design-renovation-dnipro",
+    "p": "Neuf sur les quais, immeubles staliniens, maisons et bureaux."
+   }
+  ]
  ]
 }

@@ -1,0 +1,43 @@
+{
+ "_": "Кластери гілки i18n/p2-1811 (18.11.2026): Київська область, Львів, Одеса, Дніпро мовами (tools/site/geo1811/gen.py). i18n.py зливає clusters-*.json з clusters.json за ключем.",
+ "geo-kyiv-oblast": {
+  "ar": "/ar/design-renovation-kyiv-region",
+  "de": "/de/innenarchitektur-renovierung-oblast-kyjiw",
+  "en": "/en/design-renovation-kyiv-region",
+  "es": "/es/diseno-reforma-region-kiev",
+  "fr": "/fr/design-renovation-region-kyiv",
+  "pl": "/pl/projektowanie-remont-obwod-kijowski",
+  "pt": "/pt/design-remodelacao-regiao-kyiv",
+  "zh": "/zh/design-renovation-kyiv-region"
+ },
+ "geo-lviv": {
+  "ar": "/ar/design-renovation-lviv",
+  "de": "/de/innenarchitektur-renovierung-lwiw",
+  "en": "/en/design-renovation-lviv",
+  "es": "/es/diseno-reforma-leopolis",
+  "fr": "/fr/design-renovation-lviv",
+  "pl": "/pl/projektowanie-remont-lwow",
+  "pt": "/pt/design-remodelacao-lviv",
+  "zh": "/zh/design-renovation-lviv"
+ },
+ "geo-odesa": {
+  "ar": "/ar/design-renovation-odesa",
+  "de": "/de/innenarchitektur-renovierung-odessa",
+  "en": "/en/design-renovation-odesa",
+  "es": "/es/diseno-reforma-odesa",
+  "fr": "/fr/design-renovation-odessa",
+  "pl": "/pl/projektowanie-remont-odessa",
+  "pt": "/pt/design-remodelacao-odessa",
+  "zh": "/zh/design-renovation-odesa"
+ },
+ "geo-dnipro": {
+  "ar": "/ar/design-renovation-dnipro",
+  "de": "/de/innenarchitektur-renovierung-dnipro",
+  "en": "/en/design-renovation-dnipro",
+  "es": "/es/diseno-reforma-dnipro",
+  "fr": "/fr/design-renovation-dnipro",
+  "pl": "/pl/projektowanie-remont-dniepr",
+  "pt": "/pt/design-remodelacao-dnipro",
+  "zh": "/zh/design-renovation-dnipro"
+ }
+}

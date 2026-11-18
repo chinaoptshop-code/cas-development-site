@@ -1,0 +1,187 @@
+{
+ "slug": "projektowanie-remont-lwow",
+ "lang": "pl",
+ "service": "Projektowanie wnętrz, remont i budowa pod klucz we Lwowie",
+ "title": "Projektowanie wnętrz we Lwowie — remont i budowa pod klucz | CAS",
+ "description": "Projektowanie wnętrz we Lwowie zdalnie lub z dojazdem: projekt od $30/m², remont od $550/m², dom od $600/m². Kamienice, nowe budynki, domy.",
+ "h1": "Projektowanie wnętrz, remont i budowa pod klucz we Lwowie",
+ "price": "remont od $550/m² · projekt od $30/m² · dom od $600/m²",
+ "lead": "Projektowanie wnętrz we Lwowie — dla mieszkań w austriackich kamienicach, nowych osiedlach i domach pod miastem. Projekt robimy zdalnie lub z dojazdem, a remont i budowę — własnym zespołem CAS na warunkach ustalanych indywidualnie.",
+ "parent": [
+  "/pl/projektowanie-remont-ukraina",
+  "Cała Ukraina"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Lwów",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Obwód lwowski"
+   }
+  }
+ ],
+ "near": [
+  "W pobliżu: inne miasta",
+  [
+   [
+    "/pl/projektowanie-remont-odessa",
+    "Odessa"
+   ],
+   [
+    "/pl/projektowanie-remont-dniepr",
+    "Dniepr"
+   ],
+   [
+    "/pl/projektowanie-remont-obwod-kijowski",
+    "Obwód kijowski"
+   ],
+   [
+    "/pl/projektowanie-remont-ukraina",
+    "Wszystkie miasta Ukrainy"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Projekt wnętrz",
+   [
+    "pomiary i układ funkcjonalny",
+    "wizualizacje 3D i rysunki wykonawcze",
+    "specyfikacja materiałów i mebli",
+    "nadzór autorski"
+   ]
+  ],
+  [
+   "Remont pod klucz",
+   [
+    "mieszkania z rynku pierwotnego i wtórnego",
+    "domy i domy letniskowe",
+    "robocizna i materiały podstawowe od $550/m²",
+    "kosztorys przed startem prac"
+   ]
+  ],
+  [
+   "Budowa domu",
+   [
+    "projekt architektoniczny od $12/m²",
+    "stan surowy od $600/m²",
+    "pod klucz z wykończeniem od $1 100/m²",
+    "instalacje i dach"
+   ]
+  ],
+  [
+   "Meble i wyposażenie",
+   [
+    "umeblowanie od $250/m²",
+    "kuchnie i szafy na wymiar",
+    "meble i oświetlenie prosto z Chin",
+    "końcowa stylizacja"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Lwów: kamienice, przedwojenna zabudowa i nowe osiedla",
+   [
+    "Mieszkania we Lwowie są bardzo różne. W historycznym centrum — austriackie i polskie kamienice z wysokimi sufitami, drewnianymi stropami, sztukaterią i piecami kaflowymi; na Sychowie i Lewandówce — osiedla z wielkiej płyty; na obrzeżach i pod miastem — nowe osiedla i domy.",
+    "Mieszkanie w kamienicy wymaga szczególnej uwagi: stropy, wilgotne ściany, stare kominy, ograniczenia zmian w zabytkach. Uwzględniamy to w projekcie — zachowujemy cenne detale, takie jak sztukateria czy parkiet, a nowe instalacje ukrywamy tak, by nie kłóciły się z historią budynku."
+   ]
+  ],
+  [
+   "Projektowanie wnętrz we Lwowie",
+   [
+    "W lwowskich kamienicach typowe zamówienie to nowoczesne wnętrze, w którym czuć budynek: odnowione drzwi, wysokie okna, światło na kilku poziomach. W nowych budynkach — funkcjonalny układ i przechowywanie, w domach pod Lwowem — kominek, taras i widok na ogród. Cena — od $30 za m² (minimum $2 500), pakiety — na stronie [projektowanie wnętrz](/pl/projektowanie-wnetrz)."
+   ]
+  ],
+  [
+   "Remont pod klucz i budowa domu",
+   [
+    "Remont w kamienicy zaczynamy od oceny stropów i ścian, w nowym budynku — od sprawdzenia prac deweloperskich. Zakres, harmonogram i płatności zapisujemy w umowie, prace wykonuje nasz etatowy zespół: od $550 za m², dojazd zespołu — na warunkach indywidualnych.",
+    "Pod Lwowem budujemy domy z cegły i betonu komórkowego, szkieletowe i z bali — z myślą o wilgotnym klimacie: solidna hydroizolacja fundamentów, elewacje wentylowane, porządny dach. Stan surowy — od $600 za m², pod klucz — od $1 100 za m²."
+   ]
+  ],
+  [
+   "Logistyka, kontrola i raporty",
+   [
+    "Ze Lwowem wygodnie pracuje się etapami: projekt prowadzimy online, a na pomiary, kluczowe etapy remontu i odbiór przyjeżdżamy. Warunki i koszt dojazdów — indywidualnie, zapisane w umowie. Meble i oświetlenie z Chin (dostawa 35–70 dni) dowozimy na obiekt, koszt transportu liczymy osobno."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1FRa0FI6iMHK5L-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/10NiUcZNhKMjmn-900.webp",
+   "Diamond"
+  ]
+ ],
+ "steps": [
+  [
+   "Konsultacja",
+   "Telefonicznie lub online: obiekt, zadania, budżet."
+  ],
+  [
+   "Pomiar i brief",
+   "Pomiary, oczekiwania, dane wyjściowe."
+  ],
+  [
+   "Projekt i kosztorys",
+   "Wnętrze lub architektura; cena i harmonogram w umowie."
+  ],
+  [
+   "Prace",
+   "Remont lub budowa z raportami zdjęciowymi."
+  ],
+  [
+   "Odbiór",
+   "Protokół i 12 miesięcy gwarancji na prace."
+  ]
+ ],
+ "faq": [
+  [
+   "Czy można zamówić projekt dla Lwowa zdalnie?",
+   "Tak. Koncepcję, 3D i rysunki uzgadniamy online; pomiary — z dojazdem lub w uzgodnionym formacie. Projekt od $30 za m², minimum $2 500."
+  ],
+  [
+   "Czy pracujecie z mieszkaniami w zabytkowych kamienicach?",
+   "Tak. Projekt uwzględnia stropy, wilgoć i ograniczenia dla zabytków; zmiany układu — tylko w zakresie, który da się uzgodnić."
+  ],
+  [
+   "Czy remontujecie we Lwowie własnym zespołem?",
+   "Tak, remont od $550 za m² (robocizna i materiały budowlane) wykonuje nasz etatowy zespół. Dojazd i zakwaterowanie zespołu — warunki i koszt indywidualnie."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-domu",
+   "Remont domu pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów remontu"
+  ],
+  [
+   "/pl/umowa-gwarancja-platnosc",
+   "Umowa, gwarancja, płatność (wzór umowy)"
+  ],
+  [
+   "/pl/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

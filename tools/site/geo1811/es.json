@@ -1,0 +1,284 @@
+{
+ "slugs": {
+  "hub": "diseno-reforma-region-kiev",
+  "lviv": "diseno-reforma-leopolis",
+  "odesa": "diseno-reforma-odesa",
+  "dnipro": "diseno-reforma-dnipro"
+ },
+ "portfolio": "Portfolio",
+ "ua": "Diseño y reforma en toda Ucrania",
+ "ua_short": "Toda Ucrania",
+ "eu": "Reforma y construcción en Europa",
+ "all": "Todas las ciudades de Ucrania",
+ "other": "Otras regiones",
+ "near": "Cerca: otras ciudades",
+ "hub": {
+  "area": "Región de Kiev",
+  "service": "Diseño, reforma y construcción llave en mano en la región de Kiev",
+  "title": "Reforma llave en mano en la región de Kiev — diseño y casas | CAS",
+  "description": "Reforma, interiorismo y construcción de casas llave en mano en la región de Kiev: Irpin, Bucha, Brovary, Boryspil. Equipo propio, precios como en Kiev.",
+  "h1": "Diseño, reforma y construcción llave en mano en la región de Kiev",
+  "lead": "Reforma llave en mano en la región de Kiev: pisos en obra nueva de las afueras, casas y chalés, construcción desde cero. En las ciudades y pueblos alrededor de Kiev trabajamos con el mismo equipo en plantilla y con las mismas tarifas que en Kiev.",
+  "places": [
+   "Ciudades de la región de Kiev donde trabajamos",
+   "Cada ciudad tiene su tipo de vivienda, su logística y sus encargos típicos:"
+  ],
+  "towns": [
+   [
+    "Irpin",
+    "Urbanizaciones nuevas, adosados y casas entre pinos; rehabilitación de viviendas."
+   ],
+   [
+    "Bucha",
+    "Chalés y edificios bajos para vivir todo el año fuera de la ciudad."
+   ],
+   [
+    "Hostomel",
+    "Casas unifamiliares, reconstrucción de fincas antiguas, casas desde cero."
+   ],
+   [
+    "Vyshneve",
+    "Obra nueva pegada a Kiev: reformas con nivel de capital."
+   ],
+   [
+    "Boiarka",
+    "Afueras boscosas: casas, dachas adaptadas para vivir todo el año, madera maciza."
+   ],
+   [
+    "Brovary",
+    "La margen izquierda: bloques de paneles, obra nueva, chalés y oficinas."
+   ],
+   [
+    "Boryspil",
+    "Casas a lo largo de la autovía: Hora, Shchaslyve, Velyka Oleksandrivka."
+   ],
+   [
+    "Vyshhorod",
+    "Junto al Dniéper y el mar de Kiev; Petrivtsi House, 320 m²."
+   ],
+   [
+    "Obukhiv",
+    "Obukhiv, Ukrainka, Trypillia: casas de campo sobre el Dniéper."
+   ],
+   [
+    "Vasylkiv",
+    "Ciudad antigua junto al Stuhna: casas de entramado de madera y modulares."
+   ],
+   [
+    "Fastiv",
+    "Reconstrucción de casas familiares y reforma de viviendas antiguas."
+   ],
+   [
+    "Bila Tserkva",
+    "La mayor ciudad de la región: pisos, casas y locales comerciales."
+   ]
+  ],
+  "koncha": [
+   "Koncha-Zaspa, Kozyn, Pushcha-Vodytsia",
+   "Casas de campo y residencias llave en mano."
+  ],
+  "about": [
+   [
+    "La región de Kiev por zonas",
+    [
+     "Oeste: Irpin, Bucha, Hostomel, con urbanizaciones nuevas, adosados y casas en el bosque. Suroeste: Vyshneve, Boiarka, Fastiv, con obra nueva junto al límite de Kiev y mucha vivienda unifamiliar. Sur: Vasylkiv, Obukhiv, Bila Tserkva, con fincas familiares, casas sobre el Dniéper y una gran ciudad con su propio mercado inmobiliario.",
+     "Este: Brovary y Boryspil, con la margen izquierda, parcelas llanas y urbanizaciones a lo largo de las autovías. Norte: Vyshhorod y Petrivtsi junto al mar de Kiev, donde diseñamos Petrivtsi House, de 320 m². Y aparte, las residencias de Koncha-Zaspa, Kozyn y Pushcha-Vodytsia."
+    ]
+   ],
+   [
+    "Precios en la región: los mismos que en Kiev",
+    [
+     "Proyecto de diseño desde $30 por m² (mínimo $2 500), reforma llave en mano desde $550 por m² (obra y materiales de base), estructura de una casa desde $600 por m², casa llave en mano con acabados desde $1 100 por m², amueblamiento desde $250 por m².",
+     "Si la reforma la hace CAS, el total final no se desvía del presupuesto más de un ±5 %. La toma de medidas en obra es de pago y se presupuesta individualmente; la consulta telefónica es gratuita. Más detalles en [reforma llave en mano]({/remont-pid-klyuch-kyiv}) y [construcción de casas]({/budivnytstvo-budynkiv-kyiv})."
+    ]
+   ],
+   [
+    "Cómo controlamos las obras fuera de la ciudad",
+    [
+     "Los jefes de obra llevan los proyectos por zonas, así que una casa en Bucha o en Brovary recibe la misma atención que un piso en Pechersk. Informes fotográficos cada 1–2 semanas, cámara online en obra 24/7 con coste adicional y 12 meses de garantía sobre los trabajos."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "¿En qué ciudades de la región de Kiev trabajan?",
+    "Irpin, Bucha, Hostomel, Vyshneve, Boiarka, Brovary, Boryspil, Vyshhorod, Obukhiv, Vasylkiv, Fastiv, Bila Tserkva y los pueblos y urbanizaciones cercanos."
+   ],
+   [
+    "¿La reforma en la región es más cara que en Kiev?",
+    "Las tarifas base son las mismas: reforma desde $550 por m², diseño desde $30 por m², construcción desde $600 por m²."
+   ],
+   [
+    "¿Quién trabaja en las obras de la región?",
+    "Nuestro propio equipo en plantilla, preparado para distintos niveles de complejidad y tipos de trabajo: el mismo que en Kiev."
+   ],
+   [
+    "¿Construyen casas desde cero en la región?",
+    "Sí: proyecto arquitectónico desde $12 por m², estructura desde $600 por m², llave en mano con acabados desde $1 100 por m²."
+   ]
+  ]
+ },
+ "lviv": {
+  "name": "Leópolis",
+  "region": "Óblast de Leópolis",
+  "service": "Interiorismo, reforma y construcción llave en mano en Leópolis",
+  "title": "Interiorismo en Leópolis (Lviv) — reforma y construcción | CAS",
+  "description": "Interiorismo en Leópolis (Lviv), a distancia o en persona: diseño desde $30/m², reforma desde $550/m², casa desde $600/m². Edificios históricos y obra nueva.",
+  "h1": "Interiorismo, reforma y construcción llave en mano en Leópolis",
+  "lead": "Interiorismo en Leópolis (Lviv) para pisos en edificios de la época austriaca, urbanizaciones nuevas y casas en las afueras. El proyecto de diseño lo hacemos a distancia o con visitas; la reforma y la construcción, con el equipo propio de CAS y en condiciones acordadas individualmente.",
+  "about": [
+   [
+    "Leópolis: edificios históricos, vivienda de preguerra y obra nueva",
+    [
+     "La vivienda en Leópolis es muy variada. En el centro histórico hay edificios de la época austriaca y polaca con techos altos, forjados de madera, molduras y estufas cerámicas; en Sykhiv y Levandivka, barrios de bloques de paneles; en la periferia y las afueras, urbanizaciones nuevas y chalés.",
+     "Un piso en un edificio histórico exige especial cuidado: forjados, humedad en los muros, chimeneas antiguas y límites a los cambios en edificios protegidos. Lo tenemos en cuenta en el proyecto: conservamos detalles valiosos como molduras o parqué y ocultamos las nuevas instalaciones para que no choquen con la historia del edificio."
+    ]
+   ],
+   [
+    "Interiorismo en Leópolis",
+    [
+     "En los edificios históricos de Leópolis lo habitual es pedir un interior moderno en el que se sienta la casa: puertas restauradas, ventanas altas, luz en varios niveles. En obra nueva, una distribución funcional y almacenaje; en las casas de las afueras, chimenea, terraza y vistas al jardín. Desde $30 por m² (mínimo $2 500); los paquetes, en [diseño de interiores]({/dyzain-interieru-kyiv})."
+    ]
+   ],
+   [
+    "Reforma llave en mano y construcción de casas",
+    [
+     "En un edificio histórico empezamos por revisar forjados y muros; en obra nueva, por comprobar los trabajos del promotor. El alcance, el calendario y los pagos quedan fijados en el contrato, y la obra la hace nuestro equipo en plantilla: desde $550 por m², desplazamiento del equipo en condiciones individuales.",
+     "En las afueras de Leópolis construimos casas de ladrillo, bloque de hormigón celular, entramado de madera y madera maciza pensadas para el clima húmedo: buena impermeabilización de la cimentación, fachadas ventiladas y una cubierta de calidad. Estructura desde $600 por m², llave en mano desde $1 100 por m²."
+    ]
+   ],
+   [
+    "Logística, control e informes",
+    [
+     "Con Leópolis trabajamos por etapas: el proyecto se lleva online y viajamos para las mediciones, las fases clave de la obra y la entrega. Las condiciones y el coste de los desplazamientos son individuales y constan en el contrato. Los muebles y la iluminación de China (entrega en 35–70 días) llegan hasta la obra; el transporte se calcula aparte."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "¿Se puede encargar un proyecto de diseño para Leópolis a distancia?",
+    "Sí. El concepto, el 3D y los planos se aprueban online; las mediciones, con visita o en un formato acordado. Diseño desde $30 por m², mínimo $2 500."
+   ],
+   [
+    "¿Trabajan con pisos en edificios históricos?",
+    "Sí. El proyecto tiene en cuenta los forjados, la humedad y las restricciones de los edificios protegidos; cambios de distribución solo dentro de lo que se puede aprobar."
+   ],
+   [
+    "¿Hacen reformas en Leópolis con su propio equipo?",
+    "Sí, la reforma desde $550 por m² (obra y materiales de base) la hace nuestro equipo en plantilla. Desplazamiento y alojamiento del equipo: condiciones y coste individuales."
+   ]
+  ]
+ },
+ "odesa": {
+  "name": "Odesa",
+  "region": "Óblast de Odesa",
+  "service": "Interiorismo, reforma y construcción llave en mano en Odesa",
+  "title": "Interiorismo en Odesa — reforma y construcción | CAS",
+  "description": "Interiorismo en Odesa: pisos en el centro histórico y en torres junto al mar, casas en la costa. Diseño desde $30/m², reforma desde $550/m².",
+  "h1": "Interiorismo, reforma y construcción llave en mano en Odesa",
+  "lead": "Interiorismo en Odesa para pisos en edificios del siglo XIX del centro, torres en Arcadia y en la zona de Fontan y casas junto al mar. Llevamos el proyecto a distancia o con visitas; la reforma y la construcción, con nuestro equipo en condiciones individuales.",
+  "about": [
+   [
+    "Odesa: centro histórico, torres frente al mar y casas en la costa",
+    [
+     "En el centro de Odesa hay edificios del siglo XIX con techos altos, patios interiores y muros de la caliza conchífera local. Junto al mar, en Arcadia y en la zona de Fontan, torres modernas con ventanales panorámicos, y a lo largo de la costa, casas y viviendas de verano.",
+     "El aire marino y la humedad son el gran reto para un interior: afectan a la madera, al metal y al enlucido. En el proyecto elegimos materiales y herrajes que resisten estas condiciones y prevemos ventilación e impermeabilización donde es crítico."
+    ]
+   ],
+   [
+    "Interiorismo en Odesa",
+    [
+     "En pisos con vistas al mar construimos el interior alrededor del panorama: pocas particiones en el salón, materiales naturales claros, terrazas. En los edificios antiguos recuperamos la altura de los techos, las molduras y el parqué junto con una cocina y un baño modernos. Desde $30 por m² (mínimo $2 500); los paquetes, en [diseñador de interiores]({/dyzainer-interieru-kyiv})."
+    ]
+   ],
+   [
+    "Reforma llave en mano y construcción de casas",
+    [
+     "En los edificios de caliza conchífera empezamos evaluando los muros y la humedad; en obra nueva, recepcionando los trabajos del promotor. Trabaja nuestro equipo en plantilla, y el alcance y el calendario de pagos constan en el contrato: desde $550 por m², desplazamiento del equipo en condiciones individuales.",
+     "En la costa cerca de Odesa construimos casas teniendo en cuenta el suelo y el viento: la cimentación según los datos de la parcela, fachadas y cubierta con materiales resistentes a la humedad y la sal. Las villas con piscina y terrazas, como nuestros proyectos Smart Villa o Dubai Villa, encajan especialmente bien aquí. Estructura desde $600 por m², llave en mano desde $1 100 por m²."
+    ]
+   ],
+   [
+    "Logística, control e informes",
+    [
+     "Odesa está lejos de Kiev, así que trabajamos así: diseño y aprobaciones online, mediciones y fases clave con visita, e informes fotográficos entre medias. Las condiciones y el coste de desplazamiento y alojamiento del equipo son individuales y constan en el contrato."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "¿Hacen proyectos de diseño para Odesa a distancia?",
+    "Sí: reuniones online, 3D y planos en formato digital. Mediciones con visita o en un formato acordado. Diseño desde $30 por m², mínimo $2 500."
+   ],
+   [
+    "¿Qué materiales eligen para una casa junto al mar?",
+    "Resistentes a la humedad y la sal: gres porcelánico, piedra, sistemas de fachada y herrajes para estas condiciones; madera solo donde está protegida."
+   ],
+   [
+    "¿Cuánto cuesta una casa llave en mano cerca de Odesa?",
+    "Estructura desde $600 por m², llave en mano con acabados desde $1 100 por m². Logística y desplazamiento del equipo: condiciones y coste individuales."
+   ]
+  ]
+ },
+ "dnipro": {
+  "name": "Dnipró",
+  "region": "Óblast de Dnipropetrovsk",
+  "service": "Interiorismo, reforma y construcción llave en mano en Dnipró",
+  "title": "Interiorismo en Dnipró — reforma y construcción | CAS",
+  "description": "Interiorismo en Dnipró: obra nueva junto al río, pisos de la época estalinista, casas y oficinas. Diseño desde $30/m², oficina desde $350/m².",
+  "h1": "Interiorismo, reforma y construcción llave en mano en Dnipró",
+  "lead": "Interiorismo en Dnipró para pisos en torres del paseo fluvial, amplios pisos estalinistas en el centro, casas y oficinas. Hacemos el proyecto de diseño a distancia o con visitas, y asumimos la reforma y la construcción con nuestro propio equipo en condiciones acordadas.",
+  "about": [
+   [
+    "Dnipró: el paseo fluvial, edificios estalinistas y barrios de negocios",
+    [
+     "Dnipró es una ciudad de un millón de habitantes con muchos pisos amplios: edificios estalinistas de techos altos en el centro, obra nueva a lo largo del paseo con vistas al río y casas en la margen izquierda y en las afueras.",
+     "Es una ciudad de negocios, así que además de viviendas a menudo se trata de oficinas, showrooms y restaurantes. Aquí nos ayuda la experiencia en [diseño de oficinas]({/dyzain-ofisu-kyiv}), por ejemplo Office Chicago, con muros vegetales y zonificación sin tabiques ciegos."
+    ]
+   ],
+   [
+    "Interiorismo en Dnipró",
+    [
+     "En los pisos grandes de Dnipró el proyecto suele incluir una zona privada de los propietarios con dormitorio, baño y vestidor, una zona de invitados independiente y un despacho. En los pisos junto al río, escenas de iluminación y un interior que dialoga con las vistas. Desde $30 por m² (mínimo $2 500); los paquetes, en [precio del diseño de interiores]({/vartist-dyzainu-interieru-kyiv})."
+    ]
+   ],
+   [
+    "Reforma llave en mano y construcción de casas",
+    [
+     "Reformamos pisos, casas y oficinas; oficinas desde $350 por m² (obra y materiales de base). En los edificios estalinistas prevemos la sustitución completa de instalaciones y la nivelación de techos; alcance y calendario de pagos, en el contrato. Pisos desde $550 por m², desplazamiento del equipo en condiciones individuales.",
+     "En las afueras de Dnipró construimos casas de bloque de hormigón celular, ladrillo y entramado de madera, con proyecto arquitectónico desde $12 por m². El plano general, el garaje, la terraza y la piscina se incluyen en el proyecto desde el principio. Estructura desde $600 por m², llave en mano desde $1 100 por m²."
+    ]
+   ],
+   [
+    "Logística, control e informes",
+    [
+     "Llevamos el proyecto online y viajamos para las mediciones y las fases clave según el calendario del contrato. Las condiciones y el coste de desplazamiento y alojamiento del equipo son individuales; entre visitas, informes fotográficos cada 1–2 semanas."
+    ]
+   ]
+  ],
+  "faq": [
+   [
+    "¿Puedo encargar el diseño de un piso en Dnipró sin viajar constantemente?",
+    "Sí. La mayoría de las aprobaciones son online; vamos a la obra para las mediciones y la dirección de diseño según calendario. Diseño desde $30 por m², mínimo $2 500."
+   ],
+   [
+    "¿Hacen oficinas en Dnipró?",
+    "Sí: diseño de oficinas y reforma desde $350 por m² (obra y materiales de base). Para empresas registradas en Ucrania, factura con o sin IVA, de forma individual."
+   ],
+   [
+    "¿Cuánto cuesta reformar un piso en Dnipró?",
+    "Desde $550 por m² por obra y materiales de base; acabados y electrodomésticos, aparte. Desplazamiento del equipo en condiciones individuales."
+   ]
+  ]
+ },
+ "uahub": [
+  "Regiones y ciudades con página propia",
+  "Vivienda local, logística y proyectos típicos:",
+  {
+   "hub": "Irpin, Bucha, Brovary, Boryspil y otras ciudades, con precios de Kiev.",
+   "lviv": "Edificios históricos, obra nueva y casas en las afueras.",
+   "odesa": "Centro histórico, torres frente al mar y casas en la costa.",
+   "dnipro": "Obra nueva junto al río, pisos estalinistas, casas y oficinas."
+  }
+ ]
+}

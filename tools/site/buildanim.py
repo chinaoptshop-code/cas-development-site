@@ -66,6 +66,10 @@ PAGES = {
     'es/index.html': ('house', 1), 'zh/index.html': ('house', 1), 'pl/index.html': ('house', 1),
     'de/index.html': ('house', 1), 'fr/index.html': ('house', 1), 'ar/index.html': ('house', 1),
     'pt/construcao-de-moradias.html': ('house', 0), 'pt/remodelacao-chave-na-mao.html': ('flat', 0), 'pt/calculadora-obras.html': ('flat', 0), 'pt/index.html': ('house', 1),
+    # «Будинок під ключ у Конча-Заспі» мовами (як uk budynok-pid-kliuch-koncha-zaspa.html; i18n/p2-1811, 18.11.2026)
+    'ru/dom-pod-klyuch-koncha-zaspa.html': ('house', 0), 'en/turnkey-house-koncha-zaspa.html': ('house', 0), 'es/casa-llave-en-mano-koncha-zaspa.html': ('house', 0),
+    'pl/dom-pod-klucz-koncza-zaspa.html': ('house', 0), 'de/haus-schluesselfertig-kontscha-saspa.html': ('house', 0), 'fr/maison-cle-en-main-kontcha-zaspa.html': ('house', 0),
+    'pt/moradia-chave-na-mao-koncha-zaspa.html': ('house', 0), 'zh/turnkey-house-koncha-zaspa.html': ('house', 0), 'ar/turnkey-house-koncha-zaspa.html': ('house', 0),
 }
 
 # стартовий матеріал стін у конфігураторі сцени «будинок» (block — газоблок за замовчуванням; brick, frame, brus)
