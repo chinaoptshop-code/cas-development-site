@@ -323,7 +323,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     function navState() { nx.disabled = !valid(cur); }
     function render() {
       var e = estimate(st.obj, st.svc, st.area, st.reg);
-      rh.textContent = t.est + ': ' + (e.sum != null ? t.from + ' ' + money(e.sum) : t.ind);
+      rh.textContent = t.est + ': ' + (e.sum != null ? t.from + ' ' + money(e.sum) + (window.casFx ? window.casFx(e.sum, lang) : '') : t.ind); /* ≈ €/₴ — fx.py */
       ul.textContent = '';
       e.lines.forEach(function (l) {
         var li = el('li'); li.appendChild(d.createTextNode((t.line[l.k] || l.k) + (l.r ? ' · ' + st.area + ' ' + t.m2 + ' × ' + l.r : '') + ' — '));
