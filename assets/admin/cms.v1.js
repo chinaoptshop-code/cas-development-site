@@ -273,7 +273,7 @@
   // Вкладки майстер-панелі власника (Студія, Персонал, Аудит) додає assets/admin/studio.v1.js через window.CASStudio.
   var TABS = [
     ['crm', 'CRM', ['leads.view_all', 'orders.view']], ['stats', 'Аналітика', ['leads.view_all']], ['orders', 'Замовлення Оздоби', ['orders.view']],
-    ['clients', 'Клієнти', ['clients.view']], ['projects', 'Обʼєкти', ['projects.view_all']], ['partners', 'Партнери', ['partners.base']], ['codes', 'Коди партнерів', ['partners.manage']],
+    ['clients', 'Клієнти', ['clients.view']], ['projects', 'Обʼєкти', ['projects.view_all']], ['partners', 'Контакти', ['partners.base']], ['codes', 'Коди партнерів', ['partners.manage']],
     ['products', 'Товари', ['cms.edit']], ['blog', 'Блог', ['cms.edit']], ['landings', 'Лендинги', ['cms.edit']], ['lang', 'Меню й футер', ['cms.edit']],
     ['pages', 'Сторінки', ['cms.edit']], ['media', 'Медіа', ['cms.edit']], ['history', 'Історія', ['cms.edit']],
   ];
@@ -989,6 +989,7 @@
       '<div class="f full"><span>Етапи: статус і прогрес <small data-pr></small></span><div data-st></div></div></form>' +
       '<div class="row pj-save"><button class="btn ghost" data-save>Зберегти проєкт</button><span class="err" data-dirty hidden>є незбережені зміни</span></div>' +
       '<h3>Задачі по етапах <small class="muted" data-tkn></small></h3><div data-tk></div>' +
+      '<h3>Контакти обʼєкта <small class="muted">(бригади, майстри, постачальники — бачить команда обʼєкта, не клієнт)</small></h3><div data-pct></div>' +
       ((d.issues || []).some(function (i) { return i.project_id === id; }) ? '<h3>Проблеми на обʼєкті (бачить лише команда)</h3><div data-iss></div>' : '') +
       '<h3>Фотозвіти</h3><div data-rep></div>' +
       '<form class="form two" data-rf style="margin-top:10px"><label class="f"><span>Дата</span><input name="date" type="date" value="' + today() + '"></label><label class="f"><span>Заголовок</span><input name="title" placeholder="Тиждень 5: стяжка й електрика"></label>' +
@@ -1084,6 +1085,7 @@
       return api(PAPI, { method: 'PATCH', body: b }).then(function () { dirty = false; toast(msg || 'Проєкт збережено'); reload(); }, fail);
     }
     $('[data-save]', L).onclick = function () { save(); };
+    projectContactsBlock(L, p, reload);
     // чекліст задач (migrations/0012): по етапах, виконавець, термін; працівник бачить свої в /kabinet/team («Сьогодні»)
     var tkEl = $('[data-tk]', L), TKS = (d.tasks || []).filter(function (t) { return t.project_id === id; }), TSTF = d._staff || [];
     if (d.tasks_ready === false) tkEl.innerHTML = '<p class="muted">Задачі зʼявляться після застосування міграції 0012 (автоматично під час деплою).</p>';
@@ -1209,72 +1211,127 @@
     });
   };
 
-  // ---------- Партнери (база з бота пошуку: /api/admin/partners, functions/_partners.js) ----------
-  // Підрядники, бригади, постачальники, ріелтори, будівельні компанії, дизайнери, яких бот відсіяв як «не клієнт», і додані вручну.
-  // Лише публічні контакти; статус і нотатки веде менеджер (бот їх не змінює). Права — partners.base, CSV — export.
+  // ---------- Контакти (/api/admin/partners, functions/_partners.js; migrations/0013 + 0015) ----------
+  // Один довідник: клієнти, підрядники, партнери, постачальники, ріелтори, бригади, майстри (+ будівельні компанії, дизайнери).
+  // Бот пошуку додає «не клієнтів»; заявка → проєкт додає клієнта. Звʼязки з обʼєктами й заявками — у картці контакту й у картці обʼєкта.
+  // Права — partners.base (власник, менеджер), CSV — export; працівники бачать контакти своїх обʼєктів у картці обʼєкта (contacts.linked).
+  var stars = function (n) { return n ? '<span class="ct-star" title="Оцінка ' + n + ' з 5" aria-label="Оцінка ' + n + ' з 5">' + '★'.repeat(n) + '<i>' + '★'.repeat(5 - n) + '</i></span>' : ''; };
+  var ctLinks = function (r) {
+    var d = digits(r.phone);
+    return [r.phone ? '<a href="tel:+' + d + '">' + esc(r.phone) + '</a>' : '', r.tg ? '<a href="https://t.me/' + esc(r.tg) + '" target="_blank" rel="noopener">@' + esc(r.tg) + '</a>' : '',
+      r.email ? '<a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a>' : ''].filter(Boolean).join('<br>');
+  };
   RENDER.partners = function (L) {
-    var S = { type: '', status: '', city: '', q: '' };
+    var S = { type: '', status: '', city: '', q: '', rating: '' };
     try { Object.assign(S, JSON.parse(localStorage.getItem('partnerFilters') || '{}') || {}); } catch (e) { /* noop */ }
-    var TYPES = {}, STS = {};
+    var TYPES = {}, STS = {}, READY = true;
+    var QT = [['', 'Усі'], ['client', 'Клієнти'], ['contractor', 'Підрядники'], ['crew', 'Бригади'], ['master', 'Майстри'], ['supplier', 'Постачальники'], ['partner', 'Партнери']];
     var opts = function (o, v) { return Object.keys(o).map(function (k) { return '<option value="' + k + '"' + (k === v ? ' selected' : '') + '>' + esc(o[k]) + '</option>'; }).join(''); };
-    var qs = function (csv) { return '/api/admin/partners?type=' + S.type + '&status=' + S.status + '&city=' + encodeURIComponent(S.city) + '&q=' + encodeURIComponent(S.q) + (csv ? '&format=csv' : ''); };
-    var host = function (u) { return String(u || '').replace(/^https?:\/\//, '').replace(/\/$/, '').slice(0, 40); };
+    var qs = function (csv) { return '/api/admin/partners?type=' + S.type + '&status=' + S.status + '&rating=' + S.rating + '&city=' + encodeURIComponent(S.city) + '&q=' + encodeURIComponent(S.q) + (csv ? '&format=csv' : ''); };
+    var save = function () { try { localStorage.setItem('partnerFilters', JSON.stringify(S)); } catch (e) { /* noop */ } };
     function list() {
       return api(qs()).then(function (d) {
-        TYPES = d.types; STS = d.statuses;
-        L.innerHTML = '<div class="tb"><input class="grow" type="search" data-f="q" placeholder="Пошук: імʼя, компанія, @username, телефон, тег, нотатки" aria-label="Пошук">' +
+        TYPES = d.types; STS = d.statuses; READY = d.ready !== false;
+        var tc = d.type_counts || {};
+        L.innerHTML = '<div class="tb"><input class="grow" type="search" data-f="q" placeholder="Пошук: імʼя, компанія, @username, телефон, пошта, тег, нотатки" aria-label="Пошук">' +
           '<select data-f="type" aria-label="Тип"><option value="">Усі типи</option>' + opts(TYPES, S.type) + '</select>' +
           '<select data-f="status" aria-label="Статус"><option value="">Усі статуси</option>' + opts(STS, S.status) + '</select>' +
-          '<input data-f="city" type="search" placeholder="Місто / область" aria-label="Місто або область" class="w-city">' +
-          '<button class="btn" type="button" data-new>+ Партнер</button>' + (can('export') ? '<a class="btn ghost" data-csv href="' + qs(true) + '" download>CSV</a>' : '') + '</div>' +
+          '<select data-f="rating" aria-label="Оцінка"><option value="">Будь-яка оцінка</option>' + [5, 4, 3].map(function (n) { return '<option value="' + n + '"' + (String(n) === String(S.rating) ? ' selected' : '') + '>від ' + n + '★</option>'; }).join('') + '</select>' +
+          '<input data-f="city" type="search" placeholder="Регіон / місто" aria-label="Регіон або місто" class="w-city">' +
+          '<button class="btn" type="button" data-new>+ Контакт</button>' + (can('export') ? '<a class="btn ghost" data-csv href="' + qs(true) + '" download>CSV</a>' : '') + '</div>' +
+          '<div class="crm-q" role="group" aria-label="Тип контакту">' + QT.map(function (q) { return '<button type="button" class="pill" data-qt="' + q[0] + '" aria-pressed="' + (S.type === q[0]) + '">' + q[1] + (q[0] && tc[q[0]] ? ' <small>' + tc[q[0]] + '</small>' : '') + '</button>'; }).join('') + '</div>' +
           '<p class="muted">' + d.rows.length + (d.rows.length >= 2000 ? '+' : '') + ' у списку · ' + Object.keys(STS).map(function (k) { return esc(STS[k]) + ': ' + (d.counts[k] || 0); }).join(' · ') +
-          '. Бот пошуку додає тих, кого відсіяв як «не клієнт»; повторна зустріч — «Разів» +1.</p>' +
-          (d.rows.length ? '<div class="tscroll"><table class="adm" data-ptbl><tr><th>Партнер</th><th>Тип</th><th>Місто</th><th>Контакти</th><th>Джерело</th><th>Разів</th><th>Востаннє</th><th>Статус</th></tr>' + d.rows.map(function (r) {
+          '. Бот пошуку додає підрядників і постачальників; «Створити проєкт» із заявки — клієнта.' + (READY ? '' : ' <b>Пошта й оцінка — після міграції 0015 (автоматично під час деплою).</b>') + '</p>' +
+          (d.rows.length ? '<div class="tscroll"><table class="adm" data-ptbl><tr><th>Контакт</th><th>Тип</th><th>Регіон</th><th>Звʼязок</th><th>Оцінка</th><th>Обʼєкти</th><th>Статус</th></tr>' + d.rows.map(function (r) {
             return '<tr class="clk" data-id="' + r.id + '" tabindex="0"><td><b>' + esc(r.name || r.company || '—') + '</b>' + (r.name && r.company ? '<br><small>' + esc(r.company) + '</small>' : '') +
               (r.tags.length ? '<br>' + r.tags.slice(0, 5).map(function (t) { return '<span class="pill">' + esc(t) + '</span>'; }).join(' ') : '') + '</td>' +
-              '<td>' + esc(r.type_label) + '</td><td>' + esc(r.city || '') + '</td><td><small>' + [r.tg ? '@' + esc(r.tg) : '', esc(r.phone || ''), esc(host(r.site))].filter(Boolean).join('<br>') + '</small></td>' +
-              '<td><small>' + esc(r.source_name || '') + '</small></td><td>' + r.times_seen + '</td><td><small>' + esc(String(r.last_seen || '').slice(0, 10)) + '</small></td>' +
+              '<td>' + esc(r.type_label) + '</td><td>' + esc(r.city || '') + '</td><td><small>' + ctLinks(r) + (r.site ? '<br>' + esc(String(r.site).replace(/^https?:\/\//, '').slice(0, 40)) : '') + '</small></td>' +
+              '<td>' + stars(r.rating) + '</td><td>' + (r.n_projects ? '🏗 ' + r.n_projects : '') + (r.n_leads ? ' 📋 ' + r.n_leads : '') + '</td>' +
               '<td><span class="pill' + (r.status === 'working' ? ' on' : r.status === 'rejected' ? ' warn' : '') + '">' + esc(r.status_label) + '</span></td></tr>';
-          }).join('') + '</table></div>' : '<p class="muted">Поки порожньо. Партнерів додає бот пошуку або кнопка «+ Партнер».</p>');
+          }).join('') + '</table></div>' : '<p class="muted">Поки порожньо. Додайте контакт кнопкою «+ Контакт».</p>');
         $$('[data-f]', L).forEach(function (el) {
-          var go = function () { S[el.dataset.f] = el.value.trim(); try { localStorage.setItem('partnerFilters', JSON.stringify(S)); } catch (e) { /* noop */ } list(); };
+          var go = function () { S[el.dataset.f] = el.value.trim(); save(); list(); };
           if (el.tagName === 'SELECT') el.onchange = go; else { el.value = S[el.dataset.f] || ''; el.oninput = debounce(go, 350); }
         });
+        $$('[data-qt]', L).forEach(function (b) { b.onclick = function () { S.type = b.dataset.qt; save(); list(); }; });
         var q = $('[data-f="q"]', L); if (q && S.q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
         $('[data-new]', L).onclick = function () { card(null); };
         $$('tr.clk', L).forEach(function (tr) {
-          var openCard = function () { api('/api/admin/partners?id=' + tr.dataset.id).then(function (x) { card(x.partner); }, function (e) { toast(e.message, true); }); };
+          var openCard = function () { open(+tr.dataset.id); };
           tr.onclick = openCard; tr.onkeydown = function (e) { if (e.key === 'Enter') openCard(); };
         });
       });
     }
-    function card(r) {
-      var n = !r; r = r || { type: 'other', status: 'new', tags: [], sources: [] };
+    function open(id) { return api('/api/admin/partners?id=' + id).then(function (x) { card(x.partner, x); }, function (e) { toast(e.message, true); }); }
+    function card(r, x) {
+      var n = !r; r = r || { type: S.type || 'other', status: 'new', tags: [], sources: [] }; x = x || { links: [], leads: [] };
       var f = function (k, label, type, ph) { return '<label class="fld"><span>' + label + '</span><input name="' + k + '" type="' + (type || 'text') + '" value="' + esc(k === 'tg' && r.tg ? '@' + r.tg : r[k] || '') + '"' + (ph ? ' placeholder="' + ph + '"' : '') + '></label>'; };
-      L.innerHTML = '<div class="tb"><button class="btn ghost sm" type="button" data-back>← До списку</button><b class="grow">' + (n ? 'Новий партнер' : esc(r.name || r.company || 'Партнер #' + r.id)) + '</b></div>' +
+      var pl = x.links.filter(function (l) { return l.project_id; }), ol = x.links.filter(function (l) { return l.order_id; });
+      L.innerHTML = '<div class="tb"><button class="btn ghost sm" type="button" data-back>← До списку</button><b class="grow">' + (n ? 'Новий контакт' : esc(r.name || r.company || 'Контакт #' + r.id)) + '</b>' + (n ? '' : stars(r.rating)) + '</div>' +
         '<form class="pform" data-pf>' + f('name', 'Імʼя') + f('company', 'Компанія') +
         '<label class="fld"><span>Тип</span><select name="type">' + opts(TYPES, r.type) + '</select></label>' +
         '<label class="fld"><span>Статус</span><select name="status">' + opts(STS, r.status) + '</select></label>' +
-        f('city', 'Місто / область') + f('tg', 'Telegram', 'text', '@username') + f('phone', 'Телефон', 'tel', '+380…') + f('site', 'Сайт', 'url', 'https://…') +
-        '<label class="fld"><span>Теги (через кому)</span><input name="tags" value="' + esc(r.tags.join(', ')) + '"></label>' +
-        '<label class="fld"><span>Нотатки</span><textarea name="notes" rows="4">' + esc(r.notes || '') + '</textarea></label>' +
+        f('city', 'Регіон / місто') + f('phone', 'Телефон', 'tel', '+380…') + f('tg', 'Telegram', 'text', '@username') + f('email', 'Пошта', 'email', 'name@…') + f('site', 'Сайт', 'url', 'https://…') +
+        '<label class="fld"><span>Оцінка</span><select name="rating"><option value="">— без оцінки —</option>' + [5, 4, 3, 2, 1].map(function (k) { return '<option value="' + k + '"' + (k === r.rating ? ' selected' : '') + '>' + '★'.repeat(k) + ' ' + k + '</option>'; }).join('') + '</select></label>' +
+        '<label class="fld"><span>Спеціалізація, теги (через кому)</span><input name="tags" value="' + esc(r.tags.join(', ')) + '" placeholder="плитка, електрика, гіпсокартон"></label>' +
+        '<label class="fld"><span>Нотатки (бачать власник і менеджер)</span><textarea name="notes" rows="4">' + esc(r.notes || '') + '</textarea></label>' +
         '<p><button class="btn" type="submit">' + (n ? 'Додати' : 'Зберегти') + '</button> <span class="err" data-m></span></p></form>' +
-        (n ? '' : '<p class="muted">Вперше: ' + esc(r.first_seen) + ' · востаннє: ' + esc(r.last_seen) + ' · разів: ' + r.times_seen + '</p>' +
+        (n ? '' : '<h3>Обʼєкти' + (pl.length ? ' · ' + pl.length : '') + '</h3>' + (pl.length ? '<ul class="plist ct-links">' + pl.map(function (l) {
+            return '<li><button type="button" class="lnk" data-pj="' + l.project_id + '">' + esc(l.project_title || 'Обʼєкт #' + l.project_id) + '</button>' + (l.role ? ' — ' + esc(l.role) : '') +
+              ' <button type="button" class="je-add" data-ul="' + l.id + '" aria-label="Відвʼязати">✕</button></li>'; }).join('') + '</ul>' : '<p class="muted">Ще не привʼязано. Привʼязати — у картці обʼєкта, блок «Контакти обʼєкта».</p>') +
+          '<h3>Заявки</h3>' + (ol.length || x.leads.length ? '<ul class="plist">' + ol.map(function (l) { return '<li>' + esc(l.order_number || '#' + l.order_id) + ' · ' + esc(l.order_service || '') + (l.role ? ' — ' + esc(l.role) : '') + '</li>'; }).join('') +
+            x.leads.map(function (o) { return '<li>' + esc(o.number) + ' · ' + esc(o.service || '') + ' <small class="muted">(той самий номер / Telegram)</small></li>'; }).join('') + '</ul>' : '<p class="muted">Заявок немає.</p>') +
+          '<p class="muted">Вперше: ' + esc(r.first_seen) + ' · востаннє: ' + esc(r.last_seen) + ' · разів: ' + r.times_seen + '</p>' +
           (r.sources.length ? '<h3>Де бачили</h3><ul class="plist">' + r.sources.map(function (s) {
             return '<li><small>' + esc(String(s.at || '').slice(0, 16)) + '</small> ' + esc(s.name || '') + (s.url && /^https?:\/\//.test(s.url) ? ' — <a href="' + esc(s.url) + '" target="_blank" rel="noopener noreferrer nofollow">повідомлення</a>' : '') + '</li>';
           }).join('') + '</ul>' : ''));
       $('[data-back]', L).onclick = list;
+      $$('[data-pj]', L).forEach(function (b) { b.onclick = function () { try { sessionStorage.setItem('pjOpen', b.dataset.pj); } catch (e) { /* noop */ } location.hash = '#projects'; }; });
+      $$('[data-ul]', L).forEach(function (b) { b.onclick = function () {
+        if (!confirm('Відвʼязати контакт від обʼєкта?')) return;
+        api('/api/admin/partners?link=' + b.dataset.ul, { method: 'DELETE' }).then(function () { toast('Відвʼязано'); open(r.id); }, function (e) { toast(e.message, true); });
+      }; });
       $('[data-pf]', L).onsubmit = function (e) {
         e.preventDefault(); var F = e.target, b = {};
-        ['name', 'company', 'type', 'status', 'city', 'tg', 'phone', 'site', 'notes'].forEach(function (k) { b[k] = F[k].value.trim(); });
+        ['name', 'company', 'type', 'status', 'city', 'tg', 'phone', 'email', 'site', 'notes'].forEach(function (k) { b[k] = F[k].value.trim(); });
+        if (!READY && !b.email) delete b.email;
+        b.rating = F.rating.value ? +F.rating.value : null; if (!READY && b.rating == null) delete b.rating;
         b.tags = F.tags.value.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
         if (!n) b.id = r.id;
-        api('/api/admin/partners', { method: n ? 'POST' : 'PATCH', body: b }).then(function () { toast(n ? 'Партнера додано' : 'Збережено'); list(); },
+        api('/api/admin/partners', { method: n ? 'POST' : 'PATCH', body: b }).then(function () { toast(n ? 'Контакт додано' : 'Збережено'); list(); },
           function (er) { $('[data-m]', L).textContent = er.message; });
       };
     }
     return list();
   };
+  // Картка обʼєкта → «Контакти обʼєкта»: бригади, майстри, постачальники (звʼязки contact_links). Власник і менеджер привʼязують
+  // з довідника (пошук ?find=), працівники обʼєкта лише бачать (contacts.linked) — список приходить у GET /api/admin/projects (contacts).
+  function projectContactsBlock(L, p, reload) {
+    var el = $('[data-pct]', L); if (!el) return;
+    var C = p.contacts || [], edit = can('partners.base');
+    el.innerHTML = (C.length ? '<ul class="plist ct-links">' + C.map(function (c) {
+      var k = c.contact;
+      return '<li><b>' + esc(k.name || k.company || '—') + '</b> <small class="muted">' + esc(k.type_label) + (c.role ? ' · ' + esc(c.role) : '') + '</small>' + (k.rating ? ' ' + stars(k.rating) : '') +
+        (ctLinks(k) ? '<br><small>' + ctLinks(k).replace(/<br>/g, ' · ') + '</small>' : '') + (edit ? ' <button type="button" class="je-add" data-ctx="' + c.link_id + '" aria-label="Відвʼязати">✕</button>' : '') + '</li>';
+    }).join('') + '</ul>' : '<p class="muted">Контактів ще немає' + (edit ? ' — знайдіть у довіднику й привʼяжіть (бригада, майстер, постачальник).' : '.') + '</p>') +
+      (edit ? '<div class="tb ct-add"><input type="search" class="grow" data-ctq placeholder="Знайти контакт: імʼя, @username, телефон, тег" aria-label="Знайти контакт"><input data-ctr placeholder="Роль на обʼєкті: плиточник…" aria-label="Роль на обʼєкті"></div><div data-ctres class="ct-res"></div>' : '');
+    $$('[data-ctx]', el).forEach(function (b) { b.onclick = function () {
+      if (!confirm('Відвʼязати контакт від обʼєкта?')) return;
+      api('/api/admin/partners?link=' + b.dataset.ctx, { method: 'DELETE' }).then(function () { toast('Відвʼязано'); reload(); }, function (e) { toast(e.message, true); });
+    }; });
+    var q = $('[data-ctq]', el); if (!q) return;
+    q.oninput = debounce(function () {
+      var v = q.value.trim(), res = $('[data-ctres]', el);
+      if (v.length < 2) { res.innerHTML = ''; return; }
+      api('/api/admin/partners?find=' + encodeURIComponent(v)).then(function (d) {
+        res.innerHTML = d.rows.length ? d.rows.map(function (k) { return '<button type="button" class="pill" data-ctl="' + k.id + '">' + esc(k.name || k.company) + ' · ' + esc(k.type_label) + '</button>'; }).join(' ') : '<span class="muted">Не знайдено — додайте у «Контакти».</span>';
+        $$('[data-ctl]', res).forEach(function (b) { b.onclick = function () {
+          api('/api/admin/partners', { method: 'POST', body: { action: 'link', contact_id: +b.dataset.ctl, project_id: p.id, role: $('[data-ctr]', el).value.trim() || null } })
+            .then(function () { toast('Контакт привʼязано'); reload(); }, function (e) { toast(e.message, true); });
+        }; });
+      }, function (e) { res.textContent = e.message; });
+    }, 300);
+  }
 
   // ---------- Товари Оздоби ----------
   var CAT = 'assets/ozdoba/catalog.json', ARCH = 'tools/products/archive.json';

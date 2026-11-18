@@ -34,6 +34,7 @@ import { normCode, normalizePhone } from '../../_lib.js';
 import { escHtml, notifyStaff } from '../../_alerts.js';
 import { audit, canSeeProject, need, orderScope, projectScope, shapeProject, staffById } from '../../_roles.js';
 import { limited } from '../../_rate.js';
+import { leadContact, projectContacts } from '../../_partners.js';
 
 // arch — архітектурний проєкт (будинок, комерційна будівля): ескіз, АР, КР, інженерні розділи, генплан, дозвільні документи
 const SERVICES = ['design', 'arch', 'repair', 'build', 'furnish', 'landscape', 'other'];
@@ -255,12 +256,13 @@ export async function onRequestGet({ request, env }) {
       const oids = [...new Set(P.map(p => p.order_id).filter(Boolean))];
       LD = oids.length ? (await env.DB.prepare(`SELECT id, number, source, ref_path FROM orders WHERE id IN (${oids.map(() => '?').join(',')})`).bind(...oids).all()).results : [];
     } catch (e) { if (!noTable(e)) throw e; }
+    const CT = await projectContacts(env, x, ids); // контакти обʼєкта (бригади, постачальники…) — migrations/0015
     const t = today();
     const projects = P.map(p => {
       const ld = p.order_id ? LD.find(o => o.id === p.order_id) : null;
       const tk = TK.filter(y => y.project_id === p.id);
       return shapeProject({ ...p, team: PS.filter(y => y.project_id === p.id), assignee_name: (AS.find(s => s.id === p.assignee_staff_id) || {}).name || null,
-        overdue: !!(p.deadline && p.deadline < t && p.status !== 'done'), progress: progressOf(p.stages),
+        overdue: !!(p.deadline && p.deadline < t && p.status !== 'done'), progress: progressOf(p.stages), contacts: CT[p.id] || [],
         ...(ld ? { lead: { id: ld.id, number: ld.number, source: ld.source, ...(x.can('leads.view_all') ? { ref_path: ld.ref_path } : {}) } } : {}), tasks_total: tk.length, tasks_done: tk.filter(y => y.done).length }, x);
     });
     return json({
@@ -404,7 +406,8 @@ export async function onRequestPost({ request, env }) {
       if (!j.ok) return res;
       if (!o.client_id) await env.DB.prepare('UPDATE orders SET client_id = ? WHERE id = ? AND client_id IS NULL').bind(cid, o.id).run();
       await tolerant(env.DB.prepare('UPDATE orders SET project_id = ? WHERE id = ?').bind(j.id, o.id).run());
-      await audit(env, request, x, 'lead.convert', 'orders', o.id, null, { project_id: j.id, client_id: cid, service: svc, area });
+      const contact = await leadContact(env, o, cid, j.id, x.staffId); // клієнт у «Контактах» + звʼязки (migrations/0015)
+      await audit(env, request, x, 'lead.convert', 'orders', o.id, null, { project_id: j.id, client_id: cid, service: svc, area, contact_id: contact });
       return json({ ok: true, id: j.id, client_id: cid });
     }
     if (d.type === 'task') {

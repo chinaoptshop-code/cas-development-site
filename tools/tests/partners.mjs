@@ -217,7 +217,7 @@ await it('фільтри: тип, статус, місто, пошук (@usernam
 await it('картка ?id=: теги й джерела масивами, без службових ключів', async () => {
   const r = await call(env, 'GET', '/api/admin/partners?id=' + crewId, { cookie: ck.MGR });
   eq(r.data.partner.tg, 'petro_crew'); eq(r.data.partner.sources.length, 2); ok(Array.isArray(r.data.partner.tags));
-  ok(!('company_key' in r.data.partner)); eq(r.data.partner.type_label, 'Бригада / підрядник');
+  ok(!('company_key' in r.data.partner)); eq(r.data.partner.type_label, 'Бригада');
   eq((await call(env, 'GET', '/api/admin/partners?id=99999', { cookie: ck.MGR })).status, 404);
 });
 await it('PATCH: статус/нотатки/контакт; аудит pbase.update; контакт іншого партнера → 409; невалідне → 400', async () => {
@@ -242,10 +242,10 @@ await it('POST вручну: новий → 200 і аудит pbase.create; ду
 describe('«Партнери»: CSV');
 await it('CSV (власник, менеджер): заголовок, @username, тип і статус підписами; аудит pbase.export', async () => {
   const r = await call(env, 'GET', '/api/admin/partners?format=csv', { cookie: ck.MGR });
-  eq(r.status, 200); ok(/text\/csv/.test(r.headers.get('content-type'))); ok(/attachment; filename="cas-partners-/.test(r.headers.get('content-disposition')));
+  eq(r.status, 200); ok(/text\/csv/.test(r.headers.get('content-type'))); ok(/attachment; filename="cas-contacts-/.test(r.headers.get('content-disposition')));
   const lines = r.text.replace(/^﻿/, '').trim().split('\r\n');
   ok(/^ID;Імʼя;Компанія;Тип/.test(lines[0]), lines[0]);
-  ok(lines.some(l => /@petro_crew/.test(l) && /Бригада \/ підрядник/.test(l) && /Цікавий/.test(l)));
+  ok(lines.some(l => /@petro_crew/.test(l) && /;Бригада;/.test(l) && /Цікавий/.test(l)));
   ok(await q1("SELECT 1 FROM audit_log WHERE action = 'pbase.export'"));
   const f = await call(env, 'GET', '/api/admin/partners?format=csv&type=supplier', { cookie: ck.OWNER });
   ok(!/petro_crew/.test(f.text) && /tile_supply/.test(f.text), 'CSV з фільтром');
@@ -254,6 +254,109 @@ await it('CSV-інʼєкція: імʼя з «=» отримує апостро�
   await botCall('POST', '/api/bot/partners', { name: '=HYPERLINK("http://evil.example")', tg: '@inject_test' });
   const r = await call(env, 'GET', '/api/admin/partners?format=csv&q=inject_test', { cookie: ck.OWNER });
   ok(/;"'=HYPERLINK\(""http:\/\/evil\.example""\)";/.test(r.text), r.text.split('\r\n')[1]);
+});
+
+// ===== «Контакти» (migrations/0015_contacts.sql): типи, email, оцінка, звʼязки з обʼєктами й заявками, права, клієнт не бачить =====
+describe('«Контакти»: один довідник (типи, email, оцінка, дедуплікація)');
+const adm = (m, path, body, cookie = ck.OWNER) => call(env, m, path, { cookie, body });
+let M1, PRJ, PRJ2, LNK;
+await it('10 типів (клієнт, підрядник, партнер, постачальник, ріелтор, бригада, майстер…); бот не може створити «Клієнта»', async () => {
+  const d = (await adm('GET', '/api/admin/partners')).data;
+  eq(Object.keys(d.types), ['client', 'contractor', 'partner', 'supplier', 'realtor', 'crew', 'master', 'builder', 'designer', 'other']);
+  eq(d.ready, true);
+  eq((await botCall('POST', '/api/bot/partners', { name: 'Хтось', type: 'client' })).status, 400);
+  const b = await botCall('POST', '/api/bot/partners', { name: 'Електрик Ігор', type: 'master', email: 'Igor.Electric@Example.com', city: 'Київ' });
+  eq(b.status, 200); eq((await q1('SELECT email FROM partners WHERE id = ?', b.data.id)).email, 'igor.electric@example.com');
+  const b2 = await botCall('POST', '/api/bot/partners', { name: 'Ігор', email: 'igor.electric@example.com', tg: '@igor_electric' });
+  eq([b2.data.id, b2.data.created], [b.data.id, false], 'той самий за поштою');
+  eq((await botCall('POST', '/api/bot/partners', { name: 'X', email: 'не пошта' })).status, 400);
+});
+await it('вручну: майстер з поштою й оцінкою; дубль телефону в іншому форматі → 409; оцінка поза 1–5 → 400; фільтр rating', async () => {
+  const r = await adm('POST', '/api/admin/partners', { name: 'Плиточник Андрій', type: 'master', phone: '067 555 44 33', email: 'andrii@example.com', rating: 4, tags: ['плитка', 'Київ'] });
+  eq(r.status, 200); M1 = r.data.id;
+  const p = await q1('SELECT * FROM partners WHERE id = ?', M1);
+  eq([p.phone, p.email, p.rating, p.type], ['+380675554433', 'andrii@example.com', 4, 'master']);
+  eq((await adm('POST', '/api/admin/partners', { name: 'Інший', phone: '+38 (067) 555-44-33' })).status, 409);
+  eq((await adm('POST', '/api/admin/partners', { name: 'Y', rating: 7 })).status, 400);
+  eq((await adm('PATCH', '/api/admin/partners', { id: M1, rating: 6 })).status, 400);
+  eq((await adm('GET', '/api/admin/partners?rating=4')).data.rows.map(x => x.id), [M1]);
+  eq((await adm('PATCH', '/api/admin/partners', { id: M1, rating: 5, notes: 'Акуратний' })).status, 200);
+  ok(await q1("SELECT 1 FROM audit_log WHERE action = 'pbase.update' AND entity_id = ? AND after LIKE '%rating%'", String(M1)));
+  eq((await adm('GET', '/api/admin/partners?find=Плиточ')).data.rows[0].id, M1, 'швидкий пошук для привʼязки');
+});
+
+describe('«Контакти»: звʼязки з обʼєктами й заявками, хто що бачить');
+await it('привʼязка до обʼєкта: роль, повтор оновлює; невідомий обʼєкт 404; без id → 400; дизайнер без partners.base → 403', async () => {
+  const dsid = (await q1("SELECT id FROM staff WHERE role = 'designer'")).id;
+  PRJ = (await adm('POST', '/api/admin/projects', { type: 'project', client_id: CL, title: 'Квартира для контактів', service: 'repair', assignee_staff_id: dsid })).data.id;
+  PRJ2 = (await adm('POST', '/api/admin/projects', { type: 'project', client_id: CL, title: 'Чужий обʼєкт', service: 'repair' })).data.id;
+  let r = await adm('POST', '/api/admin/partners', { action: 'link', contact_id: M1, project_id: PRJ, role: 'Плиточник' });
+  eq(r.status, 200); LNK = r.data.id;
+  r = await adm('POST', '/api/admin/partners', { action: 'link', contact_id: M1, project_id: PRJ, role: 'Плитка й стяжка' });
+  eq([r.status, r.data.id, r.data.updated], [200, LNK, true]);
+  await adm('POST', '/api/admin/partners', { action: 'link', contact_id: M1, project_id: PRJ2, role: 'Плиточник' });
+  eq((await adm('POST', '/api/admin/partners', { action: 'link', contact_id: M1, project_id: 999999 })).status, 404);
+  eq((await adm('POST', '/api/admin/partners', { action: 'link', contact_id: M1 })).status, 400);
+  eq((await adm('POST', '/api/admin/partners', { action: 'link', contact_id: M1, project_id: PRJ, role: '<b>x</b>' })).status, 400);
+  eq((await adm('POST', '/api/admin/partners', { action: 'link', contact_id: M1, project_id: PRJ }, ck.DES)).status, 403);
+  ok(await q1("SELECT 1 FROM audit_log WHERE action = 'contact.link' AND entity_id = ?", String(PRJ)));
+});
+await it('картка контакту: обʼєкти зі звʼязків і заявки з тим самим телефоном', async () => {
+  await adm('POST', '/api/admin/crm', { name: 'Андрій', phone: '0675554433', service: 'Плитка у ванній' });
+  const d = (await adm('GET', '/api/admin/partners?id=' + M1)).data;
+  eq(d.links.filter(l => l.project_id).map(l => l.project_title).sort(), ['Квартира для контактів', 'Чужий обʼєкт']);
+  eq(d.leads.map(o => o.service), ['Плитка у ванній']);
+  const row = (await adm('GET', '/api/admin/partners?q=Андрій')).data.rows.find(x => x.id === M1);
+  eq(row.n_projects, 2);
+});
+await it('дизайнер (contacts.linked): контакти лише свого обʼєкта, без оцінки й нотаток; бухгалтер — без контактів; клієнт — ніде', async () => {
+  const dd = (await adm('GET', '/api/admin/projects', undefined, ck.DES)).data;
+  eq(dd.projects.map(p => p.id), [PRJ], 'лише свій обʼєкт');
+  const c = dd.projects[0].contacts[0];
+  eq([c.role, c.contact.name, c.contact.phone, c.contact.type_label], ['Плитка й стяжка', 'Плиточник Андрій', '+380675554433', 'Майстер']);
+  ok(!('rating' in c.contact) && !('notes' in c.contact) && !('status' in c.contact), 'без внутрішніх полів');
+  const t = (await adm('GET', '/api/team/today', undefined, ck.DES)).data.projects.find(p => p.id === PRJ);
+  eq(t.contacts[0].contact.name, 'Плиточник Андрій');
+  const own = (await adm('GET', '/api/admin/projects')).data.projects.find(p => p.id === PRJ).contacts[0].contact;
+  eq(own.rating, 5, 'власник бачить оцінку');
+  const acc = (await adm('GET', '/api/admin/projects', undefined, ck.ACC)).data.projects.find(p => p.id === PRJ);
+  eq(acc.contacts, [], 'бухгалтер — без контактів');
+  eq((await adm('GET', '/api/admin/partners', undefined, ck.DES)).status, 403, 'довідник — лише partners.base');
+  const cl = await call(env, 'GET', '/api/account/projects', { cookie: ck.CL });
+  eq(cl.status, 200); ok(cl.data.projects.length >= 2);
+  ok(!/Плиточник|contacts|\+380675554433/.test(cl.text), 'клієнт не бачить контактів');
+});
+await it('заявка → проєкт: клієнт стає контактом «Клієнт» зі звʼязками; друга заявка з тим самим номером — той самий контакт', async () => {
+  const mk = async svc => (await adm('POST', '/api/admin/crm', { name: 'Ольга Клієнтка', phone: '0931112233', email: 'olga@example.com', service: svc, city: 'Львів' })).data.id;
+  const L1 = await mk('Дизайн квартири'), L2 = await mk('Ремонт квартири');
+  const p1 = (await adm('POST', '/api/admin/projects', { type: 'from_lead', order_id: L1 })).data.id;
+  const p2 = (await adm('POST', '/api/admin/projects', { type: 'from_lead', order_id: L2 })).data.id;
+  const cs = (await env.DB.prepare("SELECT * FROM partners WHERE phone = '+380931112233'").all()).results;
+  eq(cs.length, 1); eq([cs[0].type, cs[0].email, cs[0].status, cs[0].city], ['client', 'olga@example.com', 'working', 'Львів']);
+  ok(cs[0].client_id, 'привʼязано до акаунта клієнта');
+  const L = (await env.DB.prepare('SELECT project_id, order_id, role FROM contact_links WHERE contact_id = ? ORDER BY id').bind(cs[0].id).all()).results;
+  eq(L.map(x => [x.project_id, x.order_id, x.role]), [[p1, null, 'Клієнт'], [null, L1, 'Клієнт'], [p2, null, 'Клієнт'], [null, L2, 'Клієнт']]);
+});
+await it('відвʼязати: власник — так (аудит), дизайнер — 403', async () => {
+  eq((await call(env, 'DELETE', '/api/admin/partners?link=' + LNK, { cookie: ck.DES })).status, 403);
+  eq((await call(env, 'DELETE', '/api/admin/partners?link=' + LNK, { cookie: ck.OWNER })).status, 200);
+  ok(!(await q1('SELECT 1 FROM contact_links WHERE id = ?', LNK)));
+  ok(await q1("SELECT 1 FROM audit_log WHERE action = 'contact.unlink'"));
+  eq((await call(env, 'DELETE', '/api/admin/partners?link=' + LNK, { cookie: ck.OWNER })).status, 404);
+});
+await it('сумісність: база без 0015 — список працює, пошта/оцінка → 503, без них — ок; обʼєкти — contacts: []', async () => {
+  const oe = makeEnv(freshDB(14), { LEADBOT_KEY: KEY });
+  const o = await addClient(oe, { id: 111, name: 'Власник' });
+  const k = await login(oe, o);
+  await call(oe, 'GET', '/api/me', { cookie: k });
+  const g = await call(oe, 'GET', '/api/admin/partners', { cookie: k });
+  eq([g.status, g.data.ready], [200, false]);
+  eq((await call(oe, 'POST', '/api/admin/partners', { cookie: k, body: { name: 'A', email: 'a@example.com' } })).status, 503);
+  eq((await call(oe, 'POST', '/api/admin/partners', { cookie: k, body: { name: 'A', phone: '0671230000' } })).status, 200);
+  eq((await call(oe, 'POST', '/api/bot/partners', { body: { name: 'Бот', email: 'b@example.com' }, headers: { 'x-bot-key': KEY, noOrigin: true } })).status, 200, 'бот — без пошти, але без помилки');
+  const cl = await addClient(oe, { id: 990, name: 'К' });
+  const pid = (await call(oe, 'POST', '/api/admin/projects', { cookie: k, body: { type: 'project', client_id: cl, title: 'Т', service: 'repair' } })).data.id;
+  eq((await call(oe, 'GET', '/api/admin/projects', { cookie: k })).data.projects.find(p => p.id === pid).contacts, []);
 });
 
 if (process.argv[1] && process.argv[1].endsWith('partners.mjs')) process.exit(report() ? 1 : 0);

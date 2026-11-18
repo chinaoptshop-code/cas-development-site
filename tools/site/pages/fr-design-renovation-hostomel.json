@@ -1,0 +1,191 @@
+{
+ "slug": "design-renovation-hostomel",
+ "lang": "fr",
+ "service": "Design, rénovation et construction clé en main à Hostomel",
+ "title": "Rénovation clé en main à Hostomel — design et maisons | CAS",
+ "description": "Rénovation et construction de maisons clé en main à Hostomel : projet dès $12/m², gros œuvre dès $600/m², clé en main dès $1 100/m².",
+ "h1": "Design, rénovation et construction clé en main à Hostomel",
+ "price": "rénovation dès $550/m² · design dès $30/m² · maison dès $600/m²",
+ "lead": "Rénovation dès $550/m², maisons dès $600/m² : à Hostomel, nous menons rénovations clé en main et constructions, du projet aux meubles, avec notre propre équipe, un devis et un contrat.",
+ "parent": [
+  "/fr/design-renovation-region-kyiv",
+  "Région de Kyiv"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Hostomel",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Région de Kyiv"
+   }
+  }
+ ],
+ "near": [
+  "À proximité : autres villes",
+  [
+   [
+    "/fr/design-renovation-boutcha",
+    "Boutcha"
+   ],
+   [
+    "/fr/design-renovation-irpin",
+    "Irpin"
+   ],
+   [
+    "/fr/design-renovation-vychhorod",
+    "Vychhorod"
+   ],
+   [
+    "/fr/design-renovation-region-kyiv",
+    "Toutes les villes de la région de Kyiv"
+   ],
+   [
+    "/fr/maison-cle-en-main-kontcha-zaspa",
+    "Kontcha-Zaspa, Kozyn, Pouchtcha-Vodytsia"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Architecture intérieure",
+   [
+    "relevé et plan d’aménagement",
+    "visualisations 3D et plans d’exécution",
+    "descriptif des matériaux et du mobilier",
+    "suivi du concepteur"
+   ]
+  ],
+  [
+   "Rénovation clé en main",
+   [
+    "appartements neufs et anciens",
+    "maisons et cottages",
+    "travaux et matériaux de gros œuvre dès $550/m²",
+    "devis avant le début des travaux"
+   ]
+  ],
+  [
+   "Construction de maison",
+   [
+    "projet architectural dès $12/m²",
+    "gros œuvre dès $600/m²",
+    "clé en main avec finitions dès $1 100/m²",
+    "réseaux et toiture"
+   ]
+  ],
+  [
+   "Mobilier et équipement",
+   [
+    "ameublement dès $250/m²",
+    "cuisines et placards sur mesure",
+    "mobilier et luminaires en direct de Chine",
+    "stylisme final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Hostomel : maisons individuelles et nouveaux quartiers",
+   [
+    "Hostomel est avant tout une ville de maisons : propriétés sur quelques ares, nouveaux lotissements et petites résidences près de la route de Kyiv. Beaucoup de propriétaires ne rénovent pas : ils reconstruisent ou transforment en profondeur la vieille maison.",
+    "Pour les terrains de Hostomel, nous faisons souvent l’ensemble : [conception de maison](/fr/conception-maison), construction, réseaux, intérieur et aménagements extérieurs. Ainsi, les jonctions entre étapes — fondations et sols, réseaux et mobilier — ne réservent pas de surprise au moment des finitions."
+   ]
+  ],
+  [
+   "Architecture d’intérieur à Hostomel",
+   [
+    "Dans une maison à Hostomel, le design commence par les plans d’étage : où placer les chambres, le local technique et la chaufferie, comment passer de la terrasse à la cuisine. Les maisons de plain-pied avec terrasse et piscine, comme notre House 150, conviennent particulièrement aux petits terrains. Projet de design à partir de $30 le m² (minimum $2 500) ; les formules sont détaillées sur la page [studio d’architecture d’intérieur](/fr/architecture-interieur)."
+   ]
+  ],
+  [
+   "Rénovation clé en main et construction de maisons",
+   [
+    "Nous rénovons des maisons après achat, redistribuons d’anciennes propriétés et modernisons des appartements ; pour une vieille maison, nous vérifions d’abord toiture, murs et réseaux. Nous construisons en béton cellulaire et en brique, des maisons [modulaires](/fr/maison-modulaire) et à ossature bois, avec le [coût de construction](/fr/prix-construction-maison) détaillé par étape dans le contrat.",
+    "La même équipe salariée qu’à Kyiv, aux mêmes tarifs : rénovation à partir de $550 le m² (travaux et matériaux de base) et, si CAS réalise la rénovation, le total final reste dans une marge de ±5 % du devis. Projet d’architecture à partir de $12 le m², gros œuvre à partir de $600 le m², clé en main avec finitions à partir de $1 100 le m² ; garantie de 12 mois sur les travaux. Voir aussi [rénovation clé en main](/fr/renovation-cle-en-main) et [construction de maisons](/fr/construction-maison)."
+   ]
+  ],
+  [
+   "Logistique, suivi et rapports",
+   [
+    "Nos conducteurs de travaux intègrent les visites à leur planning habituel, comme pour les quartiers de Kyiv, et les matériaux partent des entrepôts de Kyiv. Entre deux visites, reportages photo toutes les 1 à 2 semaines ; en option payante, caméra en ligne sur le chantier 24 h/24."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1F4OovwNYQPfoF-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/1DhAA8_vK0zo3E-900.webp",
+   "A-Frame House"
+  ],
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1xskjqBvCXgXuL-900.webp",
+   "Hodos Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "Par téléphone ou en ligne : bien, objectifs, budget."
+  ],
+  [
+   "Relevé et brief",
+   "Mesures, souhaits, données de départ."
+  ],
+  [
+   "Projet et devis",
+   "Intérieur ou architecture ; prix et planning au contrat."
+  ],
+  [
+   "Travaux",
+   "Rénovation ou construction avec reportages photo."
+  ],
+  [
+   "Livraison",
+   "Procès-verbal, garantie de 12 mois sur les travaux."
+  ]
+ ],
+ "faq": [
+  [
+   "Combien coûte la construction d’une maison à Hostomel ?",
+   "Gros œuvre à partir de $600 le m², clé en main avec finitions à partir de $1 100 le m². Pour une maison de 150 m², le calcul de base est 150 m² × $600 pour le gros œuvre ou 150 m² × $1 100 clé en main ; le prix exact résulte du devis."
+  ],
+  [
+   "Aménagez-vous l’intérieur d’une maison construite par une autre entreprise ?",
+   "Oui. Design à partir de $30 le m², rénovation à partir de $550 le m² ; si CAS réalise la rénovation, nous restons dans la marge de ±5 % du devis."
+  ],
+  [
+   "Vaut-il mieux rénover la vieille maison ou en construire une neuve ?",
+   "Cela dépend des fondations et des murs. Après un diagnostic, nous chiffrons les deux options pour que vous décidiez chiffres en main."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/renovation-maison-cle-en-main",
+   "Rénovation de maison clé en main"
+  ],
+  [
+   "/fr/equipement-cle-en-main",
+   "Équipement de projets clé en main"
+  ],
+  [
+   "/fr/calculateur-renovation",
+   "Calculateur du coût de rénovation"
+  ],
+  [
+   "/fr/contrat-garantie-paiement",
+   "Contrat, garantie, paiement (modèle de contrat)"
+  ],
+  [
+   "/fr/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

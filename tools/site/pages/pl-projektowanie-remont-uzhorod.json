@@ -1,0 +1,187 @@
+{
+ "slug": "projektowanie-remont-uzhorod",
+ "lang": "pl",
+ "service": "Projektowanie wnętrz, remont i budowa w Użhorodzie",
+ "title": "Projektowanie wnętrz w Użhorodzie — remont i budowa | CAS",
+ "description": "Projektowanie wnętrz w Użhorodzie i na Zakarpaciu: mieszkania w czeskich kwartałach, nowe osiedla, domy i pensjonaty. Projekt od $30/m².",
+ "h1": "Projektowanie wnętrz, remont i budowa w Użhorodzie",
+ "price": "remont od $550/m² · projekt od $30/m² · dom od $600/m²",
+ "lead": "Projektowanie wnętrz w Użhorodzie — mieszkania w kamienicach z czasów czechosłowackich, nowe osiedla nad Użem, domy prywatne i zakarpackie pensjonaty. Projekt zdalnie lub z dojazdem, remont i budowa — naszym zespołem na indywidualnych warunkach.",
+ "parent": [
+  "/pl/projektowanie-remont-ukraina",
+  "Cała Ukraina"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Użhorod",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Obwód zakarpacki"
+   }
+  }
+ ],
+ "near": [
+  "W pobliżu: inne miasta",
+  [
+   [
+    "/pl/projektowanie-remont-iwano-frankiwsk",
+    "Iwano-Frankiwsk"
+   ],
+   [
+    "/pl/projektowanie-remont-lwow",
+    "Lwów"
+   ],
+   [
+    "/pl/projektowanie-remont-czerniowce",
+    "Czerniowce"
+   ],
+   [
+    "/pl/projektowanie-remont-ukraina",
+    "Wszystkie miasta Ukrainy"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Projekt wnętrz",
+   [
+    "pomiary i układ funkcjonalny",
+    "wizualizacje 3D i rysunki wykonawcze",
+    "specyfikacja materiałów i mebli",
+    "nadzór autorski"
+   ]
+  ],
+  [
+   "Remont pod klucz",
+   [
+    "mieszkania z rynku pierwotnego i wtórnego",
+    "domy i domy letniskowe",
+    "robocizna i materiały podstawowe od $550/m²",
+    "kosztorys przed startem prac"
+   ]
+  ],
+  [
+   "Budowa domu",
+   [
+    "projekt architektoniczny od $12/m²",
+    "stan surowy od $600/m²",
+    "pod klucz z wykończeniem od $1 100/m²",
+    "instalacje i dach"
+   ]
+  ],
+  [
+   "Meble i wyposażenie",
+   [
+    "umeblowanie od $250/m²",
+    "kuchnie i szafy na wymiar",
+    "meble i oświetlenie prosto z Chin",
+    "końcowa stylizacja"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Użhorod: czeski funkcjonalizm, Uż i bliskie góry",
+   [
+    "Użhorod wyróżnia się międzywojenną architekturą czechosłowacką — funkcjonalistycznymi budynkami o czystych liniach i dużych oknach, zwłaszcza w dzielnicy Mały Hałahów. Obok są stare miasto, nowe osiedla nad Użem i domy z ogrodami.",
+    "Łagodny klimat i bliskość granicy z UE sprawiają, że Zakarpacie przyciąga zarówno do życia, jak i do biznesu gościnnego: pensjonaty, małe hotele, winnice. Takie obiekty prowadzimy jak komercyjne — z koncepcją, kosztorysem i wyposażeniem."
+   ]
+  ],
+  [
+   "Projektowanie wnętrz w Użhorodzie",
+   [
+    "W budynkach z czasów czeskich wnętrze podkreśla ich charakter: proste formy, dobre materiały, zachowane okna i schody. W pensjonatach — projekt, który wytrzyma ruch gości i łatwo go utrzymać; zob. też [projektowanie hoteli](/pl/projektowanie-hoteli). Projekt wnętrza od $30 za m² (minimum $2 500); pakiety — na stronie [studio projektowania wnętrz](/pl/projektowanie-wnetrz)."
+   ]
+  ],
+  [
+   "Remont pod klucz i budowa domu",
+   [
+    "Remontujemy mieszkania w starszych budynkach i nowym budownictwie, domy i niewielkie lokale użytkowe. Na Zakarpaciu budujemy domy i kompleksy gościnne z betonu komórkowego, cegły, bali lub w konstrukcji szkieletowej, z uwzględnieniem spadków i odwodnienia.",
+    "Remont wykonuje nasz etatowy zespół: od $550 za m² za robociznę i materiały budowlane; materiały wykończeniowe, meble i AGD — osobno, według kosztorysu. Zakres, harmonogram i plan płatności (50/50, 50/30/20 lub etapami, zaliczka od 10%) zapisujemy w umowie; dojazd zespołu — na warunkach indywidualnych. Projekt architektoniczny od $12 za m², stan surowy od $600 za m², dom pod klucz z wykończeniem od $1 100 za m² — więcej: [remont pod klucz](/pl/remont-pod-klucz) i [budowa domów](/pl/budowa-domow)."
+   ]
+  ],
+  [
+   "Logistyka, kontrola i raporty",
+   [
+    "Projekt i uzgodnienia prowadzimy online, a na pomiary i kluczowe etapy przyjeżdżamy według harmonogramu z umowy; warunki i koszt dojazdów oraz zakwaterowania zespołu ustalamy indywidualnie. Między wizytami — raporty zdjęciowe co 1–2 tygodnie, za dopłatą kamera online na budowie 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1iBBOM6KWCT5qH-900.webp",
+   "Hoda Estate"
+  ],
+  [
+   "img/p/18Gq2eFZpz_4sf-900.webp",
+   "Yacht VIP"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1jLCsJh1mIO_wX-900.webp",
+   "Smart Villa"
+  ]
+ ],
+ "steps": [
+  [
+   "Konsultacja",
+   "Telefonicznie lub online: obiekt, zadania, budżet."
+  ],
+  [
+   "Pomiar i brief",
+   "Pomiary, oczekiwania, dane wyjściowe."
+  ],
+  [
+   "Projekt i kosztorys",
+   "Wnętrze lub architektura; cena i harmonogram w umowie."
+  ],
+  [
+   "Prace",
+   "Remont lub budowa z raportami zdjęciowymi."
+  ],
+  [
+   "Odbiór",
+   "Protokół i 12 miesięcy gwarancji na prace."
+  ]
+ ],
+ "faq": [
+  [
+   "Czy pracujecie z pensjonatami i małymi hotelami na Zakarpaciu?",
+   "Tak: koncepcja, architektura, wnętrza, remont i wyposażenie. Koszt — według kosztorysu dla obiektu."
+  ],
+  [
+   "Ile kosztuje projekt wnętrza w Użhorodzie?",
+   "Od $30 za m², minimum $2 500. Pakiet funkcjonalny — od $6 za m², pełny z nadzorem autorskim — od $45 za m²."
+  ],
+  [
+   "Czy projekt można zrobić zdalnie?",
+   "Tak: spotkania online, wizualizacje 3D i rysunki w wersji elektronicznej; pomiary i nadzór autorski — z dojazdem według harmonogramu z umowy."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-domu",
+   "Remont domu pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów remontu"
+  ],
+  [
+   "/pl/umowa-gwarancja-platnosc",
+   "Umowa, gwarancja, płatność (wzór umowy)"
+  ],
+  [
+   "/pl/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

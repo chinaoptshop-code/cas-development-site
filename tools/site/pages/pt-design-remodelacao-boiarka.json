@@ -1,0 +1,191 @@
+{
+ "slug": "design-remodelacao-boiarka",
+ "lang": "pt",
+ "service": "Design, remodelação e construção chave na mão em Boiarka",
+ "title": "Remodelação chave na mão em Boiarka | CAS",
+ "description": "Construção e remodelação de moradias chave na mão em Boiarka e arredores: estrutura desde $600/m², chave na mão desde $1 100/m².",
+ "h1": "Design, remodelação e construção chave na mão em Boiarka",
+ "price": "remodelação a partir de $550/m² · design a partir de $30/m² · moradia a partir de $600/m²",
+ "lead": "Remodelação desde $550/m², moradias desde $600/m²: em Boiarka fazemos remodelação chave na mão e construímos e reconstruímos moradias. Uma só equipa própria, do terreno ao interior concluído.",
+ "parent": [
+  "/pt/design-remodelacao-regiao-kyiv",
+  "Região de Kyiv"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Boiarka",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Região de Kyiv"
+   }
+  }
+ ],
+ "near": [
+  "Perto: outras cidades",
+  [
+   [
+    "/pt/design-remodelacao-vyshneve",
+    "Vyshneve"
+   ],
+   [
+    "/pt/design-remodelacao-vasylkiv",
+    "Vasylkiv"
+   ],
+   [
+    "/pt/design-remodelacao-fastiv",
+    "Fastiv"
+   ],
+   [
+    "/pt/design-remodelacao-regiao-kyiv",
+    "Todas as cidades da região de Kyiv"
+   ],
+   [
+    "/pt/moradia-chave-na-mao-koncha-zaspa",
+    "Koncha-Zaspa, Kozyn, Pushcha-Vodytsia"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Design de interiores",
+   [
+    "levantamento e planta",
+    "visualizações 3D e desenhos de execução",
+    "mapa de materiais e mobiliário",
+    "acompanhamento do autor"
+   ]
+  ],
+  [
+   "Remodelação chave na mão",
+   [
+    "apartamentos novos e usados",
+    "moradias e casas de campo",
+    "mão de obra e materiais de base a partir de $550/m²",
+    "orçamento antes do início da obra"
+   ]
+  ],
+  [
+   "Construção de moradias",
+   [
+    "projeto de arquitetura a partir de $12/m²",
+    "estrutura a partir de $600/m²",
+    "chave na mão com acabamentos a partir de $1 100/m²",
+    "instalações e cobertura"
+   ]
+  ],
+  [
+   "Móveis e equipamento",
+   [
+    "mobiliário a partir de $250/m²",
+    "cozinhas e roupeiros por medida",
+    "móveis e iluminação diretos da China",
+    "decoração final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Boiarka: um subúrbio florestal de moradias",
+   [
+    "Boiarka está rodeada de floresta e a maioria dos pedidos aqui é sobre uma moradia: construir uma nova, acrescentar um piso ou pôr em ordem uma casa comprada para remodelar. Há menos apartamentos do que na vizinha Vyshneve, embora também surjam empreendimentos novos.",
+    "Alguns terrenos em Boiarka e nas aldeias à volta são antigas datchas de paredes finas e sem instalações decentes. Para eles calculamos com honestidade o que compensa mais: isolar e reconstruir ou erguer uma casa nova."
+   ]
+  ],
+  [
+   "Design de interiores em Boiarka",
+   [
+    "Numa moradia em Boiarka, o design abrange muitas vezes a fachada e o terreno: grandes janelas para a floresta, terraço, entrada com antecâmara. No interior, lareira ou salamandra, cozinha com ilha e closets, como no nosso Petrivtsi House. Projeto de design desde $30 por m² (mínimo $2 500); os pacotes estão na página [estúdio de design de interiores](/pt/design-de-interiores)."
+   ]
+  ],
+  [
+   "Remodelação chave na mão e construção de moradias",
+   [
+    "Remodelamos moradias e apartamentos: instalações novas, isolamento, paredes niveladas, acabamentos — nas casas com história, após vistoria. Construímos em betão celular e tijolo e também [casas de troncos](/pt/casa-de-madeira), que ficam naturais na floresta, respeitando as árvores do terreno e o nível freático.",
+    "A mesma equipa própria que em Kyiv, com as mesmas tarifas: remodelação desde $550 por m² (trabalhos e materiais de base) e, se a remodelação for feita pela CAS, o total final fica dentro de ±5% do orçamento. Projeto de arquitetura desde $12 por m², estrutura desde $600 por m², chave na mão com acabamentos desde $1 100 por m²; 12 meses de garantia sobre os trabalhos. Mais em [remodelação chave na mão](/pt/remodelacao-chave-na-mao) e [construção de moradias](/pt/construcao-de-moradias)."
+   ]
+  ],
+  [
+   "Logística, acompanhamento e relatórios",
+   [
+    "Os nossos encarregados incluem as visitas no calendário habitual, tal como nos bairros de Kyiv, e os materiais saem de armazéns de Kyiv. Entre visitas, relatórios fotográficos a cada 1–2 semanas; com custo adicional, câmara online na obra 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1co4thni1Q8_1J-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/1jLCsJh1mIO_wX-900.webp",
+   "Smart Villa"
+  ],
+  [
+   "img/p/1LWScRofv3Y_4w-900.webp",
+   "House 150"
+  ],
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ]
+ ],
+ "steps": [
+  [
+   "Consulta",
+   "Por telefone ou online: imóvel, objetivos, orçamento."
+  ],
+  [
+   "Levantamento e briefing",
+   "Medições, desejos, dados de partida."
+  ],
+  [
+   "Projeto e orçamento",
+   "Interiores ou arquitetura; preço e calendário no contrato."
+  ],
+  [
+   "Obra",
+   "Remodelação ou construção com relatórios fotográficos."
+  ],
+  [
+   "Entrega",
+   "Auto de receção e 12 meses de garantia sobre os trabalhos."
+  ]
+ ],
+ "faq": [
+  [
+   "Fazem as instalações técnicas da casa?",
+   "Sim: aquecimento, água, esgotos e eletricidade entram no projeto e no orçamento da moradia."
+  ],
+  [
+   "Constroem moradias em Boiarka e arredores?",
+   "Sim: projeto de arquitetura desde $12 por m², estrutura desde $600 por m², chave na mão com acabamentos desde $1 100 por m²."
+  ],
+  [
+   "O que compensa mais: reabilitar a casa antiga ou construir uma nova?",
+   "Depende das fundações e das paredes. Depois de uma vistoria, orçamentamos as duas opções para que decida com números na mão."
+  ]
+ ],
+ "rel": [
+  [
+   "/pt/remodelacao-moradia",
+   "Remodelação de moradia chave na mão"
+  ],
+  [
+   "/pt/equipamento-chave-na-mao",
+   "Equipamento de projetos chave na mão"
+  ],
+  [
+   "/pt/calculadora-obras",
+   "Calculadora do custo de remodelação"
+  ],
+  [
+   "/pt/contrato-garantia-pagamento",
+   "Contrato, garantia e pagamento (minuta de contrato)"
+  ],
+  [
+   "/pt/portfolio",
+   "Portfólio"
+  ]
+ ]
+}

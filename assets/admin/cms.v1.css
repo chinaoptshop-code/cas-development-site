@@ -196,3 +196,9 @@
 .adm .crm-offer .of-sum{margin:8px 0;font-size:1.05rem}
 .adm .crm-offer .of-act{flex-wrap:wrap;gap:8px}
 .adm .pj-lead{margin:0 0 10px}
+/* Контакти: оцінка, звʼязки з обʼєктами, пошук для привʼязки */
+.adm .ct-star{color:var(--brass);letter-spacing:1px;white-space:nowrap}
+.adm .ct-star i{font-style:normal;opacity:.25}
+.adm .ct-links li{padding:6px 0}
+.adm .ct-add input{min-width:12rem}
+.adm .ct-res{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
