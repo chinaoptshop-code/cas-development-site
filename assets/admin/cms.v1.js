@@ -336,8 +336,10 @@
   // швидкі дії: дзвінок, Telegram, Viber, WhatsApp (номер з заявки)
   function quick(r) {
     var d = digits(r.phone);
-    if (d.length < 9) return '';
-    return '<span class="qa" data-qa>' +
+    // заявка бота пошуку часто лише з публічним Telegram автора (orders.contact_tg)
+    var tgu = r.contact_tg && /^[a-z][a-z0-9_]{3,31}$/i.test(r.contact_tg) ? '<a href="https://t.me/' + esc(r.contact_tg) + '" target="_blank" rel="noopener" aria-label="Telegram @' + esc(r.contact_tg) + '" title="Telegram @' + esc(r.contact_tg) + '">@TG</a>' : '';
+    if (d.length < 9) return tgu ? '<span class="qa" data-qa>' + tgu + '</span>' : '';
+    return '<span class="qa" data-qa>' + tgu +
       '<a href="tel:+' + d + '" aria-label="Подзвонити ' + esc(r.phone) + '" title="Подзвонити">📞</a>' +
       '<a href="https://t.me/+' + d + '" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">TG</a>' +
       '<a href="viber://chat?number=%2B' + d + '" aria-label="Viber" title="Viber">Vb</a>' +
@@ -367,7 +369,7 @@
     var saved = {}; try { saved = JSON.parse(localStorage.getItem('crmFilters') || '{}') || {}; } catch (e) { /* noop */ }
     var preset = null; try { preset = JSON.parse(sessionStorage.getItem('crmPreset') || 'null'); sessionStorage.removeItem('crmPreset'); } catch (e) { /* noop */ }
     var narrow = window.matchMedia && matchMedia('(max-width: 700px)').matches;
-    var S = Object.assign({ view: localStorage.getItem('crmView') || (narrow ? 'table' : 'kanban'), board: can('leads.view_all') ? 'lead' : 'order', kind: '', status: '', assignee: '', staff: '', city: '', min: '', max: '', overdue: false, due: false, q: '', place: '', ref: '', period: '', from: '', to: '' }, saved, preset || {}), ST = {}, LST = {}, OST = {}, rows = [], AS = [], STAFF = [];
+    var S = Object.assign({ view: localStorage.getItem('crmView') || (narrow ? 'table' : 'kanban'), board: can('leads.view_all') ? 'lead' : 'order', kind: '', status: '', assignee: '', staff: '', city: '', min: '', max: '', overdue: false, due: false, q: '', place: '', ref: '', period: '', from: '', to: '' }, saved, preset || {}), ST = {}, LST = {}, OST = {}, rows = [], AS = [], STAFF = [], OFFERS = [];
     if (!can('leads.view_all')) S.board = 'order'; if (!can('orders.view')) S.board = 'lead';
     var stOf = function (r) { return r.kind === 'lead' ? LST : OST; };
     var FKEYS = ['kind', 'status', 'assignee', 'staff', 'city', 'min', 'max', 'place', 'ref', 'period'];
@@ -462,7 +464,7 @@
       list.setAttribute('aria-busy', 'true');
       if (!rows.length) list.innerHTML = '<div class="skel-kn" aria-hidden="true">' + '<i></i>'.repeat(narrow ? 3 : 6) + '</div>';
       return api(qs()).then(function (d) {
-        ST = d.statuses; LST = d.lead_statuses || ST; OST = d.order_statuses || ST; rows = d.rows; AS = d.assignees; STAFF = d.staff || [];
+        ST = d.statuses; LST = d.lead_statuses || ST; OST = d.order_statuses || ST; rows = d.rows; AS = d.assignees; STAFF = d.staff || []; OFFERS = d.offers || [];
         var fs = $('[data-f=status]', L);
         if (fs.options.length < 3) {
           var g1 = document.createElement('optgroup'); g1.label = 'Заявки студії'; Object.keys(LST).forEach(function (k) { g1.appendChild(new Option(LST[k], k)); });
@@ -587,6 +589,78 @@
     window.addEventListener('keydown', function onK(e) { if (!document.contains(L)) { window.removeEventListener('keydown', onK); return; } if (e.ctrlKey || e.metaKey || e.altKey || dlg.open || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
       if (e.key === '/') { e.preventDefault(); $('[data-f=q]', L).focus(); }
       else if ((e.key === 'n' || e.key === 'N' || e.key === 'т' || e.key === 'Т') && can('leads.edit')) { e.preventDefault(); edit(null); } });
+    // ---------- Пропозиція з заявки: послуга × площа → «від $…» (ставки з сервера, functions/_rates.js) → проєкт однією кнопкою ----------
+    var usd = function (n) { return '$' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); };
+    function offerCalc(key, area, eu) {
+      var o = OFFERS.find(function (x) { return x.key === key; }); if (!o) return null;
+      var rate = o.rate ? o.rate[eu ? 1 : 0] : null, a = +String(area || '').replace(',', '.'), min = o.min ? o.min[eu ? 1 : 0] : null;
+      var from = rate == null || !(a > 0) ? null : Math.round(min ? Math.max(rate * a, min) : rate * a);
+      return { o: o, rate: rate, area: a, min: min, from: from };
+    }
+    function offerText(c, eu) {
+      if (!c || !(c.area > 0)) return '<span class="muted">Вкажіть площу — порахуємо «від».</span>';
+      if (c.rate == null) return '<b>За кошторисом</b> <span class="muted">— для ' + (eu ? 'Європи' : 'цієї послуги') + ' ставки «від» немає</span>';
+      return '<b>від ' + usd(c.from) + '</b> <span class="muted">' + usd(c.rate) + '/' + c.o.unit + ' × ' + String(c.area).replace('.', ',') + ' ' + c.o.unit +
+        (c.min && c.from === c.min && c.rate * c.area < c.min ? ' · мінімум ' + usd(c.min) : '') + '</span>';
+    }
+    // підказка без збереженої пропозиції: тип — за текстом послуги, площа — з «Площа: 85 м²» (бот пошуку, коментар)
+    function offerGuess(r) {
+      var t = String((r.service || '') + ' ' + (r.comment || '')).toLowerCase(), m = /площа:\s*([\d]+(?:[.,]\d+)?)/i.exec(r.comment || '');
+      var key = /архіт/.test(t) ? 'arch' : /ландшафт/.test(t) ? 'land' : /дизайн|інтерʼ?єр/.test(t) ? 'dz' : /офіс|комерц|магазин|ресторан/.test(t) ? 'office'
+        : /будинок|будів|котедж/.test(t) ? 'key' : /меблю|комплект/.test(t) ? 'furn' : /ремонт/.test(t) ? 'reno' : '';
+      return { key: key, area: m ? m[1].replace(',', '.') : '' };
+    }
+    function offerBlock(r) {
+      if (!OFFERS.length || !r.id) return '';
+      var f = r.offer || offerGuess(r), ed = can('leads.edit');
+      return '<section class="full crm-offer" data-offer aria-label="Пропозиція"><h3>Пропозиція' + (r.offer && f.at ? ' <small class="muted">· ' + esc(String(f.at).split('-').reverse().join('.')) + (f.by ? ', ' + esc(f.by) : '') + '</small>' : '') + '</h3>' +
+        '<div class="row of-row"><select data-ok aria-label="Послуга"' + (ed ? '' : ' disabled') + '>' + OFFERS.map(function (o) { return '<option value="' + o.key + '"' + (o.key === (f.key || OFFERS[0].key) ? ' selected' : '') + '>' + esc(o.label) + '</option>'; }).join('') + '</select>' +
+        '<label class="row of-a"><input data-oa type="number" inputmode="decimal" min="0" step="0.1" value="' + esc(f.area || '') + '" placeholder="Площа" aria-label="Площа"' + (ed ? '' : ' disabled') + '><span data-ou>м²</span></label>' +
+        '<span class="seg" role="group" aria-label="Регіон"><button type="button" data-rg="ua" aria-pressed="' + (f.region !== 'eu') + '">Україна</button><button type="button" data-rg="eu" aria-pressed="' + (f.region === 'eu') + '">Європа</button></span></div>' +
+        '<p class="of-sum" data-os aria-live="polite"></p>' +
+        '<div class="row of-act">' + (ed ? '<button type="button" class="btn sm" data-osave>' + (r.offer ? 'Оновити розрахунок' : 'Зберегти розрахунок') + '</button>' : '') +
+        (r.project_id ? '<button type="button" class="btn ghost sm" data-opj="' + r.project_id + '">Відкрити проєкт →</button>'
+          : can('projects.edit') ? '<button type="button" class="btn ghost sm" data-oconv>Створити проєкт</button>' : '') + '</div>' +
+        '<div data-osend></div></section>';
+    }
+    function offerBind(r, form) {
+      var B = $('[data-offer]', form); if (!B) return;
+      var eu = (r.offer || {}).region === 'eu';
+      var calc = function () {
+        var c = offerCalc($('[data-ok]', B).value, $('[data-oa]', B).value, eu);
+        $('[data-ou]', B).textContent = c ? c.o.unit : 'м²';
+        $('[data-os]', B).innerHTML = offerText(c, eu);
+        return c;
+      };
+      $('[data-ok]', B).onchange = calc; $('[data-oa]', B).oninput = calc;
+      $$('[data-rg]', B).forEach(function (b) { b.onclick = function () { eu = b.dataset.rg === 'eu'; $$('[data-rg]', B).forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); calc(); }; });
+      calc();
+      if (typeof offerSend === 'function') offerSend(r, B);
+      var sv = $('[data-osave]', B);
+      if (sv) sv.onclick = function () {
+        var c = calc(); if (!c || !(c.area > 0)) { $('[data-oa]', B).focus(); return; }
+        sv.disabled = true;
+        api('/api/admin/crm', { method: 'PATCH', body: { id: r.id, offer: { key: c.o.key, area: c.area, region: eu ? 'eu' : 'ua' } } }).then(function (x) {
+          r.offer = x.offer; if (x.status) { r.status = x.status; var se = form.elements.status; if (se) se.value = x.status; }
+          sv.disabled = false; sv.textContent = 'Оновити розрахунок'; toast('Розрахунок збережено: ' + (x.offer_line || ''));
+          if (typeof offerSend === 'function') offerSend(r, B);
+          load();
+        }, function (e) { sv.disabled = false; toast(e.message, true); });
+      };
+      var cv = $('[data-oconv]', B);
+      if (cv) cv.onclick = function () {
+        if (!confirm('Створити проєкт із заявки ' + r.number + '? Клієнт, контакт, джерело, тип і площа перейдуть у проєкт; етапи — за шаблоном.')) return;
+        cv.disabled = true;
+        api('/api/admin/projects', { method: 'POST', body: { type: 'from_lead', order_id: r.id } }).then(function (x) { toast('Проєкт створено'); openProject(x.id); },
+          function (e) { cv.disabled = false; toast(e.message, true); });
+      };
+      var op = $('[data-opj]', B); if (op) op.onclick = function () { openProject(+op.dataset.opj); };
+    }
+    function openProject(pid) {
+      try { sessionStorage.setItem('pjOpen', String(pid)); } catch (e) { /* noop */ }
+      if (dlg.open) dlg.close();
+      location.hash = '#projects';
+    }
     function edit(id) {
       var r = id ? rows.find(function (x) { return x.id === id; }) : { kind: 'lead', status: 'new', currency: 'UAH' };
       if (!r) return;
@@ -600,6 +674,7 @@
           (r.place ? '<p class="full muted">Джерело: ' + src(r) + (site ? ' <a href="' + esc(site) + '" target="_blank" rel="noopener">відкрити сторінку ↗</a>' : '') + (r.form ? ' · форма ' + esc(r.form) : '') + (r.lang ? ' · ' + esc(r.lang) : '') + (r.utm ? ' · UTM ' + esc(r.utm) : '') + '</p>' : '') +
           (r.ref_path ? '<p class="full muted">Сторінка-джерело: <a href="https://cas-develop.com' + esc(r.ref_path) + '" target="_blank" rel="noopener">' + esc(r.ref_path) + ' ↗</a></p>' : '') +
           (what(r) ? '<p class="full">' + esc(what(r)) + '</p>' : '') + (r.comment ? '<p class="full muted" style="white-space:pre-wrap">' + esc(r.comment) + '</p>' : '') +
+          (r.kind === 'lead' ? offerBlock(r) : '') +
           (r.kind === 'order' ? '<p class="full muted">Сума замовлення: ' + money(r.total) + (r.on_request ? ' + ' + r.on_request + ' поз. за запитом' : '') + ' · оплата: ' + esc(r.payment) + (r.delivery ? ' · ' + esc(r.delivery) : '') + '</p>' : '')
           : '<label class="f"><span>Імʼя</span><input name="name" autocomplete="off"></label><label class="f"><span>Телефон</span><input name="phone" type="tel" inputmode="tel" placeholder="+380 97 123 45 67"></label>' +
           '<label class="f"><span>Email</span><input name="email" type="email" inputmode="email"></label><label class="f"><span>Джерело</span><input name="source" placeholder="дзвінок, Instagram, рекомендація"></label>' +
@@ -620,7 +695,10 @@
         '<div class="full row stick-d"><button class="btn" type="submit" value="save">Зберегти</button><button class="btn ghost" type="submit" value="cancel" formnovalidate>Закрити</button><span class="err" data-e role="alert"></span></div>' +
         (id ? '<ul class="ev full" data-ev><li>Історія…</li></ul>' : '') + '</form>';
       var form = $('form', dlg), dirty = false;
-      form.addEventListener('input', function () { dirty = true; }); form.addEventListener('change', function () { dirty = true; });
+      // блок «Пропозиція» зберігається своїми кнопками — не позначає форму зміненою
+      var mark = function (e) { if (!e.target.closest('[data-offer]')) dirty = true; };
+      form.addEventListener('input', mark); form.addEventListener('change', mark);
+      if (r.kind === 'lead' && id) offerBind(r, form);
       $$('[data-nc]', form).forEach(function (b) { b.onclick = function () { form.elements.next_contact.value = kyivDate(Date.now() + (+b.dataset.nc) * 86400000); dirty = true; }; });
       var leave = function () { return !dirty || confirm('Закрити без збереження змін?'); };
       dlg.oncancel = function (e) { if (!leave()) e.preventDefault(); }; // Esc
@@ -765,6 +843,7 @@
   var dmy = function (s) { return s ? String(s).slice(0, 10).split('-').reverse().join('.') : ''; };
   var PAPI = '/api/admin/projects';
   RENDER.projects = function (L, cid, openId) {
+    if (!openId) try { openId = +sessionStorage.getItem('pjOpen') || null; sessionStorage.removeItem('pjOpen'); } catch (e) { /* noop */ } // з картки заявки
     L.innerHTML = '<p class="muted">Завантаження…</p>';
     return Promise.all([api('/api/admin/clients'), api(PAPI + (cid ? '?client_id=' + cid : '')), api('/api/admin/partner-codes').catch(function () { return { codes: [] }; }),
       can('staff.view') ? api('/api/admin/staff').catch(function () { return { staff: [] }; }) : Promise.resolve({ staff: [] })]).then(function (r) {
@@ -894,6 +973,7 @@
     var stName = function (sid) { var s = (p.stages || []).find(function (x) { return x.id === sid; }); return s ? s.name : ''; };
     L.innerHTML = '<div class="tb"><button class="btn ghost sm" data-back>← До списку</button><b class="grow">' + esc(p.title) + ' <small>· ' + esc(p.client_name || '#' + p.client_id) + '</small></b>' +
       '<span class="pj-prog" title="Загальна готовність — середнє етапів"><progress max="100" value="' + progressOf(p.stages) + '" aria-label="Готовність ' + progressOf(p.stages) + '%"></progress> <b>' + progressOf(p.stages) + '%</b></span><button class="btn danger sm" data-del>Видалити проєкт</button></div>' +
+      (p.lead ? '<p class="muted pj-lead">З заявки <b>' + esc(p.lead.number) + '</b>' + (p.lead.source ? ' · ' + esc(p.lead.source) : '') + (p.lead.ref_path ? ' · сторінка-джерело ' + esc(p.lead.ref_path) : '') + '</p>' : '') +
       '<form class="form two" data-f><label class="f full"><span>Назва</span><input name="title" value="' + esc(p.title) + '"></label>' +
       '<label class="f"><span>Послуга</span><select name="service">' + opt(SVC, p.service) + '</select></label><label class="f"><span>Стан</span><select name="status">' + opt(PST, p.status) + '</select></label>' +
       '<label class="f"><span>Адреса обʼєкта</span><input name="address" value="' + esc(p.address || '') + '"></label><label class="f"><span>Площа, м²</span><input name="area" type="number" min="0" step="0.1" value="' + esc(p.area == null ? '' : p.area) + '"></label>' +

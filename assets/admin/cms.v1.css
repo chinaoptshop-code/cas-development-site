@@ -186,3 +186,13 @@
   .adm .je-add{min-width:44px;min-height:34px}
 }
 .adm .crm-take{min-height:36px}
+
+/* CRM: пропозиція з заявки (послуга × площа → «від $…», «Створити проєкт», «Надіслати КП») */
+.adm .crm-offer{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:4px 0}
+.adm .crm-offer h3{margin:0 0 8px;font-size:1rem}
+.adm .crm-offer .of-row{flex-wrap:wrap;gap:8px}
+.adm .crm-offer select{flex:1 1 16rem;min-width:0}
+.adm .crm-offer .of-a input{width:7em}
+.adm .crm-offer .of-sum{margin:8px 0;font-size:1.05rem}
+.adm .crm-offer .of-act{flex-wrap:wrap;gap:8px}
+.adm .pj-lead{margin:0 0 10px}

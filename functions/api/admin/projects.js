@@ -13,6 +13,9 @@
 //                            deadline?, scheme?: '50/50'|'50/30/20'|'50/40/10'}
 //                           stages: [{id?, name, status?, progress, start?, end?, note?, approved_at?, revisions?}] — id етапу сервер ставить сам;
 //                           без stages — шаблон етапів за типом (TEMPLATES); scheme — графік платежів з привʼязкою до етапів (finance.edit)
+//          type 'from_lead': {order_id, title?} — заявка → проєкт (projects.edit + видима заявка): клієнт (leadClient), тип і площа з пропозиції
+//                           (orders.offer, migrations/0014), адреса — місто заявки, відповідальний — з заявки; заявка → «Проєкт: етапи», orders.project_id;
+//                           повторно → 409 {id}
 //          type 'task':     {project_id, title, stage_id?, staff_id?, due_date?, sort?}   (міграція 0012)
 //          type 'report':   {project_id, date, title?, note?, photos: ["https://…"], stage_id?}
 //          type 'document': {client_id, project_id?, order_id?, kind, title, url, stage_id?}   — акт етапу: kind 'act' + stage_id
@@ -27,9 +30,9 @@ import {
   admin, body, cameraOf, CURRENCIES, date, httpsUrl, int, json, bad, newStageKey, noTable, notReady,
   PAY_STATUS, progressOf, STAGE_STATUS, stageKey, stageStatus, txt,
 } from '../../_account.js';
-import { normCode } from '../../_lib.js';
+import { normCode, normalizePhone } from '../../_lib.js';
 import { escHtml, notifyStaff } from '../../_alerts.js';
-import { audit, canSeeProject, need, projectScope, shapeProject, staffById } from '../../_roles.js';
+import { audit, canSeeProject, need, orderScope, projectScope, shapeProject, staffById } from '../../_roles.js';
 import { limited } from '../../_rate.js';
 
 // arch — архітектурний проєкт (будинок, комерційна будівля): ескіз, АР, КР, інженерні розділи, генплан, дозвільні документи
@@ -247,11 +250,18 @@ export async function onRequestGet({ request, env }) {
       TK = ids.length ? (await env.DB.prepare(`SELECT t.*, s.name AS staff_name FROM project_tasks t LEFT JOIN staff s ON s.id = t.staff_id WHERE t.project_id IN (${q})
           ORDER BY t.done, t.sort, COALESCE(t.due_date, '9999'), t.id LIMIT 3000`).bind(...ids).all()).results : [];
     } catch (e) { if (!noTable(e)) throw e; tasksReady = false; }
+    let LD = []; // заявки, з яких виросли проєкти: номер і джерело (сторінка-джерело — лише leads.view_all)
+    try {
+      const oids = [...new Set(P.map(p => p.order_id).filter(Boolean))];
+      LD = oids.length ? (await env.DB.prepare(`SELECT id, number, source, ref_path FROM orders WHERE id IN (${oids.map(() => '?').join(',')})`).bind(...oids).all()).results : [];
+    } catch (e) { if (!noTable(e)) throw e; }
     const t = today();
     const projects = P.map(p => {
+      const ld = p.order_id ? LD.find(o => o.id === p.order_id) : null;
       const tk = TK.filter(y => y.project_id === p.id);
       return shapeProject({ ...p, team: PS.filter(y => y.project_id === p.id), assignee_name: (AS.find(s => s.id === p.assignee_staff_id) || {}).name || null,
-        overdue: !!(p.deadline && p.deadline < t && p.status !== 'done'), progress: progressOf(p.stages), tasks_total: tk.length, tasks_done: tk.filter(y => y.done).length }, x);
+        overdue: !!(p.deadline && p.deadline < t && p.status !== 'done'), progress: progressOf(p.stages),
+        ...(ld ? { lead: { id: ld.id, number: ld.number, source: ld.source, ...(x.can('leads.view_all') ? { ref_path: ld.ref_path } : {}) } } : {}), tasks_total: tk.length, tasks_done: tk.filter(y => y.done).length }, x);
     });
     return json({
       projects, reports: R, documents: D, payments: PAY, issues: ISS, tasks: TK, tasks_ready: tasksReady, online, services: SERVICES, statuses: STATUS, kinds: KINDS,
@@ -262,7 +272,7 @@ export async function onRequestGet({ request, env }) {
   });
 }
 
-const PERM = { project: 'projects.edit', document: 'projects.edit', payment: 'finance.edit', report: 'reports.upload', partner: 'partners.manage', issue: 'projects.edit', task: 'projects.edit_stage' };
+const PERM = { from_lead: 'projects.edit', project: 'projects.edit', document: 'projects.edit', payment: 'finance.edit', report: 'reports.upload', partner: 'partners.manage', issue: 'projects.edit', task: 'projects.edit_stage' };
 const deny = p => bad('Немає права: ' + p, 403);
 const permOk = (x, type) => (type === 'task' ? canTask(x) : x.can(PERM[type]));
 
@@ -297,6 +307,29 @@ async function assign(env, request, x, pr, d) {
 }
 const money = d => has(d, 'contract_amount') || has(d, 'contract_currency');
 const contractOf = d => ({ amount: num(d.contract_amount), currency: CURRENCIES.includes(d.contract_currency) ? d.contract_currency : 'USD' });
+
+const SVC_LABEL = { design: 'Дизайн-проєкт', arch: 'Архітектурний проєкт', repair: 'Ремонт', build: 'Будівництво', furnish: 'Комплектація', landscape: 'Ландшафт', other: 'Проєкт' };
+// тип проєкту за текстом заявки (коли пропозиції ще немає)
+export function guessService(t) {
+  const s = String(t || '').toLowerCase();
+  return /архіт|архпро|architect/.test(s) ? 'arch' : /дизайн|design|інтерʼ?єр|інтер'єр/.test(s) ? 'design' : /ландшафт|landscape|сад/.test(s) ? 'landscape'
+    : /будів|будинок|house|котедж|коробк/.test(s) ? 'build' : /ремонт|renovat|офіс|office/.test(s) ? 'repair' : /меблю|комплект|furnish/.test(s) ? 'furnish' : 'other';
+}
+// Клієнт для проєкту з заявки. Лише підтверджені звʼязки: заявка вже має client_id (подана з кабінету) → вхід за цим номером, підтверджений
+// Telegram-ботом (login_requests confirmed/used; телефон у профілі клієнт може вписати будь-який — йому не віримо) → новий запис clients
+// provider 'phone' (provider_id = номер: щойно клієнт увійде за номером, він побачить проєкт) або 'crm' без номера.
+export async function leadClient(env, o) {
+  if (o.client_id && await env.DB.prepare('SELECT 1 FROM clients WHERE id = ?').bind(o.client_id).first()) return o.client_id;
+  const phone = normalizePhone(o.phone);
+  if (phone) {
+    const lr = await env.DB.prepare("SELECT client_id FROM login_requests WHERE phone = ? AND status IN ('confirmed', 'used') AND client_id IS NOT NULL ORDER BY created_at DESC LIMIT 1").bind(phone).first().catch(() => null);
+    if (lr && await env.DB.prepare('SELECT 1 FROM clients WHERE id = ?').bind(lr.client_id).first()) return lr.client_id;
+  }
+  const [prov, pid] = phone ? ['phone', phone] : ['crm', 'lead-' + o.id];
+  await env.DB.prepare('INSERT OR IGNORE INTO clients (provider, provider_id, name, email, phone) VALUES (?, ?, ?, ?, ?)')
+    .bind(prov, pid, txt(o.name, 120), txt(o.email, 200), phone).run();
+  return (await env.DB.prepare('SELECT id FROM clients WHERE provider = ? AND provider_id = ?').bind(prov, pid).first()).id;
+}
 
 // створення проєкту: POST type 'project' і конверсія заявки (type 'from_lead')
 async function newProject(env, request, x, d) {
@@ -351,6 +384,29 @@ export async function onRequestPost({ request, env }) {
   if (!permOk(x, d.type)) return deny(PERM[d.type]);
   return run(async () => {
     if (d.type === 'project') return newProject(env, request, x, d);
+    if (d.type === 'from_lead') {
+      // заявка → проєкт однією кнопкою: клієнт, контакт, джерело (orders.source/ref_path через order_id), тип і площа з пропозиції
+      const args = [];
+      const o = await env.DB.prepare(`SELECT o.* FROM orders o WHERE o.id = ? AND o.kind = 'lead' AND ${orderScope(x, args)}`).bind(int(d.order_id) || 0, ...args).first();
+      if (!o) return bad('Заявку не знайдено', 404);
+      const ex = await env.DB.prepare('SELECT id FROM projects WHERE id = ? OR order_id = ? ORDER BY id LIMIT 1').bind(o.project_id || 0, o.id).first();
+      if (ex) return json({ error: 'Проєкт із цієї заявки вже створено', id: ex.id }, 409);
+      const cid = await leadClient(env, o);
+      let f = null; try { f = JSON.parse(o.offer || 'null'); } catch { /* noop */ }
+      const svc = f && SERVICES.includes(f.service) ? f.service : guessService(`${o.service || ''} ${o.comment || ''}`);
+      const area = f && f.area > 0 ? (f.unit === 'сотка' ? f.area * 100 : f.area) : null;
+      const st = o.assignee_staff_id ? await staffById(env, o.assignee_staff_id) : null;
+      const res = await newProject(env, request, x, {
+        client_id: cid, title: txt(d.title, 120) || `${SVC_LABEL[svc]} · ${o.name || o.number}`, service: svc, area, address: txt(o.city, 200), order_id: o.id,
+        ...(st && st.active ? { assignee_staff_id: st.id } : {}),
+      });
+      const j = await res.clone().json();
+      if (!j.ok) return res;
+      if (!o.client_id) await env.DB.prepare('UPDATE orders SET client_id = ? WHERE id = ? AND client_id IS NULL').bind(cid, o.id).run();
+      await tolerant(env.DB.prepare('UPDATE orders SET project_id = ? WHERE id = ?').bind(j.id, o.id).run());
+      await audit(env, request, x, 'lead.convert', 'orders', o.id, null, { project_id: j.id, client_id: cid, service: svc, area });
+      return json({ ok: true, id: j.id, client_id: cid });
+    }
     if (d.type === 'task') {
       const pr = await env.DB.prepare('SELECT id, title, stages FROM projects WHERE id = ?').bind(int(d.project_id)).first();
       if (!pr || !await canSeeProject(env, x, pr.id)) return bad('Проєкт не знайдено', 404);

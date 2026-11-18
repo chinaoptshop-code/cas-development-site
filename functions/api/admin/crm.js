@@ -8,6 +8,9 @@
 // GET  ?stats=1&days=7|30 — аналітика заявок (leads.view_all)
 // GET  ?events=<id> — історія статусів (лише видимого рядка)
 // POST {name, phone, email, service, source, comment, city, amount, currency, assignee_staff_id, next_contact} — нова заявка вручну (leads.edit)
+// PATCH {id, offer: {key, area, region: ua|eu} | null} — пропозиція з заявки (leads.edit, migrations/0014): сервер рахує «від $…» за ставками
+//   functions/_rates.js (ЗГЕНЕРОВАНО з CLAUDE.md; дизайн — не менше мінімуму; немає ставки — «за кошторисом»); Нова / В роботі → «Розрахунок»,
+//   рядок у історії. Перетворити заявку на проєкт — POST /api/admin/projects {type: 'from_lead', order_id}.
 // PATCH {id, status, crm_note, manager_note, next_contact, note, city} — leads.edit / orders.edit;
 //   amount, currency — finance.edit; assignee, assignee_staff_id — leads.assign. Заборонене поле → 403 (без часткового збереження).
 //   Перший перехід із «Нове» = «взяли в роботу»: taken_at, час реакції, сповіщення в Telegram (functions/_alerts.js).
@@ -15,6 +18,39 @@
 import { CLOSED, LEAD_STATUSES, ORDER_STATUSES, STATUSES, bad, json, nextLeadNumber, readJSON, statusLabel, statusesOf, str } from '../../_lib.js';
 import { SLA_MIN, escHtml, kyiv, kyivMidnight, notifyStaff, parseUtc, sqlTime, takeLead } from '../../_alerts.js';
 import { audit, diff, need, noTable, orderScope, shapeOrder, staffById } from '../../_roles.js';
+import { DESIGN, DMIN, RATES, cost, rateOf } from '../../_rates.js';
+
+// Пропозиція з заявки: тип послуги → ставка «від». Порядок — пріоритетні напрями студії (Михайло 18.11.2026): дизайн-проєкт,
+// ремонт під ключ, будівництво будинку, комерція; далі — решта. service — тип проєкту при конверсії (functions/api/admin/projects.js).
+export const OFFER = {
+  dz: { label: 'Дизайн-проєкт інтерʼєру', unit: 'м²', service: 'design' },
+  reno: { label: 'Ремонт під ключ (роботи + чорнові матеріали)', unit: 'м²', service: 'repair' },
+  key: { label: 'Будинок під ключ', unit: 'м²', service: 'build' },
+  box: { label: 'Будинок: коробка', unit: 'м²', service: 'build' },
+  office: { label: 'Комерція: ремонт офісу (роботи + чорнові матеріали)', unit: 'м²', service: 'repair' },
+  plan: { label: 'Дизайн: планувальний пакет', unit: 'м²', service: 'design' },
+  full: { label: 'Дизайн: повний пакет з авторським наглядом', unit: 'м²', service: 'design' },
+  arch: { label: 'Архітектурний проєкт будинку', unit: 'м²', service: 'arch' },
+  furn: { label: 'Меблювання й комплектація', unit: 'м²', service: 'furnish' },
+  land: { label: 'Ландшафтний дизайн', unit: 'сотка', service: 'landscape' },
+};
+// $1 100 — тисячі вузьким нерозривним пробілом U+202F (формат цін CLAUDE.md, uk)
+export const usd = n => '$' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f');
+export function offerOf(d, by) {
+  if (!d || typeof d !== 'object' || Array.isArray(d)) return { error: 'Пропозиція: очікуємо {key, area, region}' };
+  const key = String(d.key || ''), o = Object.prototype.hasOwnProperty.call(OFFER, key) ? OFFER[key] : null;
+  if (!o) return { error: 'Пропозиція: невідомий тип послуги' };
+  const area = Number(String(d.area ?? '').replace(',', '.').replace(/\s/g, ''));
+  if (!(area > 0) || area > 100000) return { error: `Пропозиція: площа — число більше 0 (${o.unit})` };
+  const eu = d.region === 'eu', a = Math.round(area * 10) / 10;
+  return { offer: { key, label: o.label, service: o.service, area: a, unit: o.unit, region: eu ? 'eu' : 'ua', rate: rateOf(key, eu),
+    min: DESIGN.includes(key) ? DMIN[eu ? 1 : 0] : null, from: cost(key, eu, a), at: new Date().toISOString().slice(0, 10), by: by || null } };
+}
+// «Дизайн-проєкт інтерʼєру: 85 м² — від $2 550 ($30/м²)»; без ставки — «за кошторисом»
+export const offerLine = f => `${f.label}: ${String(f.area).replace('.', ',')} ${f.unit} — ` + (f.from == null ? 'за кошторисом'
+  : `від ${usd(f.from)} (${usd(f.rate)}/${f.unit}${f.min && f.from === f.min && f.rate * f.area < f.min ? `, мінімум ${usd(f.min)}` : ''})`) + (f.region === 'eu' ? ', Європа' : '');
+const offerParse = s => { try { const v = JSON.parse(s || 'null'); return v && typeof v === 'object' ? v : null; } catch { return null; } };
+const OFFERS = Object.entries(OFFER).map(([key, v]) => ({ key, ...v, rate: RATES[key], min: DESIGN.includes(key) ? DMIN : null }));
 
 const CUR = ['UAH', 'USD', 'EUR'];
 const date = v => (v == null || v === '' ? null : /^\d{4}-\d{2}-\d{2}$/.test(String(v)) ? String(v) : undefined);
@@ -159,7 +195,7 @@ export async function onRequestGet({ request, env }) {
   try { ({ results } = await env.DB.prepare(sql).bind(...args).all()); }
   catch (e) { if (!noTable(e)) throw e; return bad('CRM оновлюється (міграція 0010) — спробуйте за кілька хвилин', 503); }
   const S = await staffMap(env);
-  const rows = results.map(o => shapeOrder({ ...o, items: JSON.parse(o.items || '[]'), place: placeOf(o), page: pageOf(o),
+  const rows = results.map(o => shapeOrder({ ...o, items: JSON.parse(o.items || '[]'), place: placeOf(o), page: pageOf(o), offer: offerParse(o.offer),
     assignee_name: o.assignee_staff_id && S.get(o.assignee_staff_id) ? S.get(o.assignee_staff_id).name : null,
     status_label: statusLabel(o.status, o.kind) }, x));
   if (!x.can('leads.view_all')) for (const r of rows) delete r.ref_path; // сторінка-джерело — власнику й менеджеру
@@ -172,7 +208,7 @@ export async function onRequestGet({ request, env }) {
   }
   const assignees = [...new Set(results.map(o => o.assignee).filter(Boolean))].sort();
   return json({
-    statuses: STATUSES, lead_statuses: LEAD_STATUSES, order_statuses: ORDER_STATUSES, rows, assignees,
+    statuses: STATUSES, lead_statuses: LEAD_STATUSES, order_statuses: ORDER_STATUSES, rows, assignees, offers: OFFERS,
     staff: x.can('staff.view') ? [...S.values()].filter(s => s.active).map(s => ({ id: s.id, name: s.name, role: s.role })) : [],
     me: { staff_id: x.staffId, role: x.role, perms: [...x.perms] },
   });
@@ -219,6 +255,14 @@ export async function onRequestPatch({ request, env }) {
   const changes = k => has(d, k) && String(d[k] ?? '') !== String(o[k] ?? '');
   if ((changes('amount') || (has(d, 'currency') && d.currency !== o.currency)) && !x.can('finance.edit')) return bad('Немає права змінювати суми', 403);
   if ((changes('assignee') || changes('assignee_staff_id')) && !x.can('leads.assign')) return bad('Немає права призначати відповідального', 403);
+  let offer; // undefined — не змінюємо, null — прибрати
+  if (has(d, 'offer')) {
+    if (o.kind !== 'lead') return bad('Пропозиція — лише для заявок студії');
+    if (d.offer === null) offer = null;
+    else { const r = offerOf(d.offer, x.name); if (r.error) return bad(r.error, 422); offer = r.offer; }
+    if (offer && d.status == null && ['new', 'in_work'].includes(o.status)) d.status = 'quote_sent';
+    if (offer && !str(d.note)) d.note = 'Розрахунок: ' + offerLine(offer);
+  }
   const ST = statusesOf(o.kind);
   const status = d.status == null ? o.status : (ST[d.status] ? d.status : null);
   if (!status) return bad('Невідомий статус для ' + (o.kind === 'lead' ? 'заявки' : 'замовлення'));
@@ -235,6 +279,10 @@ export async function onRequestPatch({ request, env }) {
   const assignee = st ? st.name : (changes('assignee_staff_id') && !staffId ? null : pick('assignee', 80));
   const next_ = { status, assignee, assignee_staff_id: staffId, crm_note: pick('crm_note', 4000), manager_note: pick('manager_note', 2000), amount,
     currency: CUR.includes(d.currency) ? d.currency : o.currency || 'UAH', next_contact: next, city: pick('city', 120) };
+  if (offer !== undefined) { // спершу пропозиція: до міграції 0014 — 503 без часткового збереження
+    try { await env.DB.prepare('UPDATE orders SET offer = ? WHERE id = ?').bind(offer ? JSON.stringify(offer) : null, o.id).run(); }
+    catch (e) { if (noTable(e)) return bad('Пропозиції зʼявляться після міграції 0014 — спробуйте за кілька хвилин', 503); throw e; }
+  }
   await env.DB.prepare(`UPDATE orders SET status = ?, assignee = ?, crm_note = ?, manager_note = ?, amount = ?, currency = ?, next_contact = ?,
       paid = ?, updated_at = datetime('now') WHERE id = ?`)
     .bind(status, next_.assignee, next_.crm_note, next_.manager_note, amount, next_.currency, next, status === 'paid' ? 1 : o.paid, o.id).run();
@@ -243,10 +291,10 @@ export async function onRequestPatch({ request, env }) {
     .bind(o.id, status, str(d.note, 1000), x.name).run();
   if (!o.taken_at && o.status === 'new' && status !== 'new') await takeLead(env, o.id, next_.assignee || x.name, 'CRM', new Date(), x.staffId);
   const dd = diff(o, next_, FIELDS);
-  if (dd || str(d.note)) await audit(env, request, x, o.kind === 'lead' ? 'lead.update' : 'order.update', 'orders', o.id, dd && dd.before,
-    { ...(dd ? dd.after : {}), ...(str(d.note) ? { note: str(d.note, 1000) } : {}) });
+  if (dd || str(d.note) || offer !== undefined) await audit(env, request, x, o.kind === 'lead' ? 'lead.update' : 'order.update', 'orders', o.id, dd && dd.before,
+    { ...(dd ? dd.after : {}), ...(str(d.note) ? { note: str(d.note, 1000) } : {}), ...(offer !== undefined ? { offer } : {}) });
   if (staffId && staffId !== o.assignee_staff_id && staffId !== x.staffId)
     await notifyStaff(env, staffId, `📌 Вам призначено ${o.kind === 'lead' ? 'заявку' : 'замовлення'} <b>${escHtml(o.number)}</b>${o.service ? `\nПослуга: ${escHtml(o.service)}` : ''}\nСтадія: ${escHtml(statusLabel(status, o.kind))}`,
       { inline_keyboard: [[{ text: '📋 Мої задачі', url: TEAM_URL }]] });
-  return json({ ok: true, status, status_label: statusLabel(status, o.kind) });
+  return json({ ok: true, status, status_label: statusLabel(status, o.kind), ...(offer !== undefined ? { offer, offer_line: offer ? offerLine(offer) : null } : {}) });
 }
