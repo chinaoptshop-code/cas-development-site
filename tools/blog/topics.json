@@ -1548,5 +1548,101 @@
   ],
   "status": "published",
   "note": "16.11.2026: ОК Михайла («Публікуй 5 нових статей»)"
+ },
+ {
+  "lang": "uk",
+  "slug": "landshaftnyi-dyzain-pid-kliuch-etapy",
+  "title": "Ландшафтний дизайн під ключ: етапи облаштування ділянки",
+  "keyword": "ландшафтний дизайн під ключ київ",
+  "service": [
+   "/landshaftnyi-dyzain-kyiv",
+   "Ландшафтний дизайн"
+  ],
+  "status": "draft",
+  "note": "17.11.2026: чернетка (тема «Ландшафт»), гілка content/blog-landscape — чекає ОК Михайла"
+ },
+ {
+  "lang": "uk",
+  "slug": "drenazh-i-avtopoliv-dilianky",
+  "title": "Дренаж і автополив ділянки: що закласти до газону",
+  "keyword": "дренаж і автополив ділянки",
+  "service": [
+   "/landshaftnyi-dyzain-kyiv",
+   "Ландшафтний дизайн"
+  ],
+  "status": "draft",
+  "note": "17.11.2026: чернетка (тема «Ландшафт»), гілка content/blog-landscape — чекає ОК Михайла"
+ },
+ {
+  "lang": "uk",
+  "slug": "hazon-rulonnyi-chy-posivnyi",
+  "title": "Газон на ділянці: рулонний чи посівний",
+  "keyword": "рулонний газон чи посівний",
+  "service": [
+   "/landshaftnyi-dyzain-kyiv",
+   "Ландшафтний дизайн"
+  ],
+  "status": "draft",
+  "note": "17.11.2026: чернетка (тема «Ландшафт»), гілка content/blog-landscape — чекає ОК Михайла"
+ },
+ {
+  "lang": "uk",
+  "slug": "landshaftne-osvitlennia-i-moshchennia-dorizhok",
+  "title": "Ландшафтне освітлення і мощення доріжок у саду",
+  "keyword": "освітлення саду і мощення доріжок",
+  "service": [
+   "/landshaftnyi-dyzain-kyiv",
+   "Ландшафтний дизайн"
+  ],
+  "status": "draft",
+  "note": "17.11.2026: чернетка (тема «Ландшафт»), гілка content/blog-landscape — чекає ОК Михайла"
+ },
+ {
+  "lang": "ru",
+  "slug": "landshaftnyy-dizayn-pod-klyuch-etapy",
+  "title": "Ландшафтный дизайн под ключ: этапы обустройства участка",
+  "keyword": "ландшафтный дизайн под ключ киев",
+  "service": [
+   "/ru/landshaftnyy-dizayn-kiev",
+   "Ландшафтный дизайн"
+  ],
+  "status": "draft",
+  "note": "17.11.2026: чернетка (тема «Ландшафт»), гілка content/blog-landscape — чекає ОК Михайла"
+ },
+ {
+  "lang": "ru",
+  "slug": "drenazh-i-avtopoliv-uchastka",
+  "title": "Дренаж и автополив участка: что заложить до газона",
+  "keyword": "дренаж и автополив участка",
+  "service": [
+   "/ru/landshaftnyy-dizayn-kiev",
+   "Ландшафтный дизайн"
+  ],
+  "status": "draft",
+  "note": "17.11.2026: чернетка (тема «Ландшафт»), гілка content/blog-landscape — чекає ОК Михайла"
+ },
+ {
+  "lang": "ru",
+  "slug": "gazon-rulonnyy-ili-posevnoy",
+  "title": "Газон на участке: рулонный или посевной",
+  "keyword": "рулонный газон или посевной",
+  "service": [
+   "/ru/landshaftnyy-dizayn-kiev",
+   "Ландшафтный дизайн"
+  ],
+  "status": "draft",
+  "note": "17.11.2026: чернетка (тема «Ландшафт»), гілка content/blog-landscape — чекає ОК Михайла"
+ },
+ {
+  "lang": "ru",
+  "slug": "landshaftnoe-osveshchenie-i-moshchenie-dorozhek",
+  "title": "Ландшафтное освещение и мощение дорожек в саду",
+  "keyword": "освещение сада и мощение дорожек",
+  "service": [
+   "/ru/landshaftnyy-dizayn-kiev",
+   "Ландшафтный дизайн"
+  ],
+  "status": "draft",
+  "note": "17.11.2026: чернетка (тема «Ландшафт»), гілка content/blog-landscape — чекає ОК Михайла"
  }
 ]
