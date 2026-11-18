@@ -808,9 +808,9 @@ def build(p):
     s = leadform.apply(s, path(lang, slug))  # форма: обовʼязковий лише телефон; швидка заявка біля першого CTA
     s = captions.apply(s, path(lang, slug))
     # шапка й футер: мова, перемикач на пару (hreflang) і посилання — з chrome.py
-    if any(x['t'] == 'map' for x in p.get('sections', [])):
-        s = casmap.assets(s)
-    elif any(x['t'] == 'pmap' for x in p.get('sections', [])):  # карта проєктів унизу сторінки — стилі не блокують рендер
+    # карти (офіс у контактах — під блоком контактів, проєкти — унизу сторінки): стилі не блокують рендер — розмір кадру й постер
+    # задає site-chrome.v1.css, cas-map.v1.css потрібен лише живій карті (MapLibre) після кліку/наближення (аудит швидкості 18.11.2026)
+    if any(x['t'] in ('map', 'pmap') for x in p.get('sections', [])):
         s = casmap.assets(s, lazy=True)
     s = page_assets(s, p.get('assets', []))
     s = chrome.apply(s, path(lang, slug))

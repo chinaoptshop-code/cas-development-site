@@ -88,5 +88,7 @@
 "img/p/hx-hotel": {"src": "img/p/1uq3Cj_SAUujWj", "ratio": 2, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.4},
 "img/p/hxm-hotel": {"src": "img/p/1uq3Cj_SAUujWj", "ratio": 0.8, "x": 0.45, "y": 0.5, "q": 62, "blur": 0.6},
 "img/p/hx-reno2": {"src": "img/p/1dHW-ciO1rn1E0", "ratio": 2, "x": 0.5, "y": 0.55, "q": 62, "blur": 0.4},
-"img/p/hxm-reno2": {"src": "img/p/1dHW-ciO1rn1E0", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6}
+"img/p/hxm-reno2": {"src": "img/p/1dHW-ciO1rn1E0", "ratio": 0.8, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.6},
+"img/p/1ZRiEBBWt3pzrB-m": {"src": "img/p/1ZRiEBBWt3pzrB", "ratio": 1.1, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.5},
+"img/1nqFOoTfr5BD-mp": {"src": "img/1nqFOoTfr5BD", "ratio": 1.2, "x": 0.5, "y": 0.5, "q": 62, "blur": 0.5}
 }

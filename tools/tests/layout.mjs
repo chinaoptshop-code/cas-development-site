@@ -410,7 +410,9 @@ async function run(path, w) {
     await page.goto(BASE + path, { waitUntil: 'load', timeout: 30000 });
     await page.waitForTimeout(400);
     // прокрутка донизу й назад: lazy-фото й скрипти після першої прокрутки
-    await page.evaluate(async () => { const H = () => document.documentElement.scrollHeight; for (let y = 0; y < H(); y += innerHeight * 0.8) { scrollTo(0, y); await new Promise(r => setTimeout(r, 90)); } scrollTo(0, 0); });
+    // кожен крок — після двох кадрів рендеру: IntersectionObserver ліниво-фото (data-p, site-chrome.v1.js) встигає побачити кожну позицію;
+    // інакше під навантаженням (--par 3) кадри пропускаються, частина фото лишається на заглушці 200w — хибні h-upscaled (18.11.2026: 122…431 між запусками)
+    await page.evaluate(async () => { const H = () => document.documentElement.scrollHeight, raf = () => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); for (let y = 0; y < H(); y += innerHeight * 0.8) { scrollTo(0, y); await raf(); await new Promise(r => setTimeout(r, 90)); } scrollTo(0, 0); });
     await page.waitForLoadState('networkidle', { timeout: 8000 }).catch(() => {});
     await page.waitForTimeout(500);
     const top = await page.evaluate(analyze, { touch, phase: 'top0' });
