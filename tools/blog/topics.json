@@ -1644,5 +1644,38 @@
   ],
   "status": "published",
   "note": "18.11.2026: ОК Михайла («публікуй»), тема «Ландшафт»"
+ },
+ {
+  "lang": "ru",
+  "slug": "stroitelstvo-doma-pod-klyuch-etapy-byudzhet",
+  "title": "Строительство дома под ключ в Киевской области: этапы и бюджет",
+  "keyword": "строительство дома под ключ",
+  "service": [
+   "/ru/stroitelstvo-domov-kiev",
+   "Строительство домов"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "elitnyy-remont-kvartiry-byudzhet",
+  "title": "Элитный ремонт квартиры: из чего складывается бюджет премиум-класса",
+  "keyword": "элитный ремонт квартиры",
+  "service": [
+   "/ru/remont-premium-klassa-kiev",
+   "Ремонт премиум-класса в Киеве"
+  ],
+  "status": "published"
+ },
+ {
+  "lang": "ru",
+  "slug": "remont-vannoy-komnaty-pod-klyuch-etapy",
+  "title": "Ремонт ванной комнаты под ключ: этапы, цена и типичные ошибки",
+  "keyword": "ремонт ванной комнаты под ключ",
+  "service": [
+   "/ru/remont-vannoy-kiev",
+   "Ремонт ванной"
+  ],
+  "status": "published"
  }
 ]
