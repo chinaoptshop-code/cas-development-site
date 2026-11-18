@@ -882,7 +882,7 @@
 | de/komplettsanierung-wohnung.html | land | 43.1 | 12.1 | 13.3 | 0.5 | 6 | 425 |
 | en/neoclassical-interior-design.html | land | 43.1 | 11.6 | 13.3 | 0.5 | 6 | 451 |
 | fr/commerce-cle-en-main.html | land | 43.1 | 13.3 | 13.3 | 0.5 | 6 | 391 |
-| fr/prix-renovation-bureaux.html | land | 43.1 | 11.8 | 13.3 | 0.5 | 6 | 422 |
+| fr/prix-renovation-bureaux.html | land | 43.1 | 11.9 | 13.3 | 0.5 | 6 | 422 |
 | fr/reconstruction-maison.html | land | 43.1 | 11.7 | 13.3 | 0.5 | 6 | 425 |
 | pl/projektowanie-remont-obwod-kijowski.html | land | 43.1 | 12.2 | 13.3 | 0.5 | 6 | 450 |
 | pt/espacos-comerciais-chave-na-mao.html | land | 43.1 | 13.2 | 13.3 | 0.5 | 6 | 394 |
@@ -1070,7 +1070,7 @@
 | es/reforma-obra-nueva.html | land | 41.3 | 11.1 | 13.3 | 0.5 | 6 | 406 |
 | es/servicios.html | land | 41.3 | 10.9 | 13.3 | 0.5 | 6 | 384 |
 | proekty/hodos-villa.html | land | 41.3 | 8.8 | 1.9 | 0.5 | 0 | 377 |
-| de/porenbetonhaus.html | land | 41.2 | 11.4 | 13.3 | 0.5 | 6 | 405 |
+| de/porenbetonhaus.html | land | 41.2 | 11.5 | 13.3 | 0.5 | 6 | 405 |
 | fr/design-renovation-lviv.html | land | 41.2 | 11.5 | 13.3 | 0.5 | 6 | 381 |
 | fr/maison-bois-massif.html | land | 41.2 | 11.3 | 13.3 | 0.5 | 6 | 402 |
 | pl/dom-z-betonu-komorkowego.html | land | 41.2 | 11.7 | 13.3 | 0.5 | 6 | 406 |
@@ -1099,7 +1099,7 @@
 | pl/remont-domu.html | land | 40.9 | 11.3 | 13.3 | 0.5 | 6 | 416 |
 | pt/design-remodelacao-odessa.html | land | 40.9 | 11.3 | 13.3 | 0.5 | 6 | 381 |
 | zh/office-renovation-cost.html | land | 40.9 | 11.9 | 13.3 | 0.5 | 6 | 422 |
-| de/leistungen.html | land | 40.8 | 10.9 | 13.3 | 0.5 | 6 | 385 |
+| de/leistungen.html | land | 40.8 | 11.0 | 13.3 | 0.5 | 6 | 385 |
 | de/neubauwohnung-ausbau.html | land | 40.8 | 11.2 | 13.3 | 0.5 | 6 | 407 |
 | en/modular-house.html | land | 40.8 | 11.3 | 13.3 | 0.5 | 6 | 412 |
 | es/diseno-reforma-leopolis.html | land | 40.8 | 11.4 | 13.3 | 0.5 | 6 | 382 |
@@ -1123,7 +1123,7 @@
 | de/holzbalkenhaus.html | land | 40.6 | 11.3 | 13.3 | 0.5 | 6 | 405 |
 | de/modulhaus.html | land | 40.6 | 11.4 | 13.3 | 0.5 | 6 | 404 |
 | en/timber-house.html | land | 40.6 | 11.2 | 13.3 | 0.5 | 6 | 413 |
-| fr/realisation-projet.html | land | 40.6 | 11.2 | 13.3 | 0.5 | 6 | 390 |
+| fr/realisation-projet.html | land | 40.6 | 11.3 | 13.3 | 0.5 | 6 | 390 |
 | pl/uslugi.html | land | 40.6 | 11.0 | 13.3 | 0.5 | 6 | 386 |
 | proekty/dubai-villa.html | land | 40.6 | 8.7 | 1.9 | 0.5 | 0 | 368 |
 | zh/open-space-office-design.html | land | 40.6 | 11.9 | 13.3 | 0.5 | 6 | 417 |
