@@ -115,7 +115,8 @@ function marquee(){
     $$('a,button,[tabindex]',c).concat(c.matches('a,button')?[c]:[]).forEach(function(x){x.setAttribute('tabindex','-1')});
     $$('img',c).forEach(function(im){im.classList.remove('ui-img','ui-img-in')});
     sc.appendChild(c);cl.push(c);
-    $$('img',c).forEach(function(im){['srcset','src'].forEach(function(a){var v=im.getAttribute('data-mq-'+a);if(v!=null){im.removeAttribute('data-mq-'+a);im.setAttribute(a,v)}})})});
+    $$('img',c).forEach(function(im){['srcset','src'].forEach(function(a){var v=im.getAttribute('data-mq-'+a);if(v!=null){im.removeAttribute('data-mq-'+a);im.setAttribute(a,v)}});
+     if(W.casLazy&&(im.hasAttribute('data-p')||im.hasAttribute('data-srcset')))W.casLazy(im)})}); // відкладене фото (оригінал ще не підвантажено) — копія теж
    // каруселі зі стрілками (.cv-nav від carousel()): пауза — у тому ж ряду перед ←/→, не поверх фото картки; стрічки без стрілок — кнопка в куті
    // стрічка під hero головних — без кнопки паузи (Михайло 11.11.2026): пауза при наведенні, дотику й фокусі
    if(!sc.matches('.hx-home~.xs-strip .xs-st')){

@@ -11,7 +11,7 @@
 Браузер бере файл ≥ ширина слота × DPR. Нові великі копії — tools/img/originals.py, AVIF — tools/img/build.py,
 <source type="image/avif"> з тими самими srcset/sizes — деплой (tools/img/picture.py).
 
-Слоти: strip (.xs-st; головна — .hx-home), proj (.xs-proj .xs-st, портфоліо — компактно через бюджет HTML),
+Слоти: strip (.xs-st; головна — .hx-home), proj (.xs-proj .xs-st, портфоліо: коротко data-p — лише ширини для ПК 1x/2x і телефона 3x, відкладено site-chrome.v1.js),
 covers (.xs-cv), svc (.xs-sv, з урахуванням flex-рядів; на головній — карусель), split (.xs-pic), pg (галерея /proekty, компактно), hero (.hx — лише ширші файли),
 gal (.gal лендингів), af / agf (фото статей блогу), tph (фото на сторінках дизайнера, captions.py),
 hxl (hero лендингів, tools/site/ux.py _hero_photo: телефон — кадр 4:5 у блоці ≤125vw заввишки, ПК — 2:1 у блоці ≤50vw; слот = 100vw, srcset ставить ux.py).
@@ -202,7 +202,7 @@ def pick(fam, lo, hi):
 def _slot(anc):
     """anc — класи предків від найближчого. → (слот, індекс предка-контейнера)"""
     for k, c in enumerate(anc):
-        if 'xs-st' in c: return ('proj' if any('xs-proj' in x for x in anc[k:]) else 'strip'), k
+        if 'xs-st' in c: return (('projw' if 'wd' in anc[0] else 'proj') if any('xs-proj' in x for x in anc[k:]) else 'strip'), k
         if 'xs-cv' in c: return 'covers', k
         if 'xs-sv' in c: return 'svc', k
         if 'xs-pic' in c: return 'split', k
@@ -275,11 +275,33 @@ def fix(tag, slot, home, i=0, n=1):
     elif slot == 'af': fn = w_af
     elif slot == 'agf': fn = lambda vw: cov((w_af(vw) - 12) / 2, .8)
     elif slot == 'tph': fn = lambda vw: cov(min(cont(vw), 760) - 2, 1.5)
-    elif slot == 'proj':  # портфоліо: ~620 фото, бюджет HTML — два кандидати 400/900 і sizes з двох частин
-        fn = lambda vw: cov(w_strip(vw, False), .75)
-        f = max(1.0, ar / .75)
-        cand = [(w, p) for w, p in fam if w in (400, 900)] or fam[-2:]
-        return _attr(_attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in cand)), 'sizes', f'(max-width:424px) {_fmt(66 * f)}vw, {math.ceil(280 * f)}px')
+    elif slot in ('proj', 'projw'):  # портфоліо: ~620 фото, бюджет HTML — sizes з двох частин і лише ті ширини, що справді потрібні
+        # клітинка .xs-proj .xs-st: min(66vw, 280px), кадр 3:4; a.wd (альбомне, rich._wd) — дві клітинки + gap 10, та сама висота.
+        # Файл має покрити cover: max(ширина кадру, висота × пропорція фото). Кандидати — найменші файли ≥ 0.95 × потреба
+        # на ПК 1x / 2x і телефоні 3x (клітинка ≤ 280 px: 402@3 → 265 px), тож телефон 3x бере велику копію, ПК 1x — малу (аудит 18.11.2026:
+        # раніше лише 400/900 за назвою — на 402@3 альбомні кадри й «900» без апскейлу (762 px) були розмиті).
+        wd = slot == 'projw'
+        need_px = lambda c: max(2 * c + 10 if wd else c, c * 4 / 3 * ar)
+        cand = []
+        for t in (need_px(280), 2 * need_px(280), 3 * need_px(280)):
+            x = next(((w, p) for w, p in fam if w >= .95 * t and w >= 380), fam[-1])
+            if x not in cand: cand.append(x)
+        cand.sort()
+        cand = [x for k, x in enumerate(cand) if k == len(cand) - 1 or cand[k + 1][0] > 1.25 * x[0]]  # сусідні ширини (1600/1685, 1600/1920) — лише більша: коротше
+        ph = max(1.32 if wd else .66, .88 * ar) * 100  # телефон ≤ 424: потреба в vw (+10 px gap для широкого кадру)
+        phs = f'calc({_fmt(math.ceil(ph * 10) / 10)}vw + 10px)' if wd and ph <= 132.05 else f'{_fmt(math.ceil(ph * 10) / 10)}vw'
+        sz = f'(max-width:424px) {phs}, {math.ceil(need_px(280))}px'
+        # відкладено (як плитки LIGHT): data-p="<id>:<назва>[=<ширина>],…" — site-chrome.v1.js ставить srcset за ~350 px до кадру,
+        # а не нативний lazy (на повільній мережі Chrome тягне за ~2500 px — великі копії 3x забирали смугу в LCP); src — мала копія (без JS)
+        ids = {re.match(r'/img/p/(.+)-(r?\d+)\.webp$', p).group(1) if re.match(r'/img/p/(.+)-(r?\d+)\.webp$', p) else None for _, p in cand}
+        if len(ids) == 1 and None not in ids:
+            pid = ids.pop()
+            tok = []
+            for w, p in cand:
+                n = p.rsplit('-', 1)[1][:-5]
+                tok.append(n if n == str(w) else f'{n}={w}')
+            return _attr(_attr(_attr(tag, 'srcset', None), 'data-p', f'{pid}:{",".join(tok)}'), 'sizes', sz)
+        return _attr(_attr(_attr(tag, 'data-p', None), 'srcset', ', '.join(f'{p} {w}w' for w, p in cand)), 'sizes', sz)
     elif slot == 'pg':  # /proekty: галерея 4:3, компактно
         f = max(1.0, ar / (4 / 3))
         # компактно: мала копія (~400) + найменша, що покриває ПК (360 px × обрізка × DPR 2); «900» без апскейлу буває 789 px —

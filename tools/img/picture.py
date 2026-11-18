@@ -35,10 +35,10 @@ def avif_set(ss):
 def wrap(tag):
     if re.search(r'\bid="', tag): return None
     ds = re.search(r'\bdata-srcset="([^"]+)"', tag)
-    dp = re.search(r'\bdata-p="([^:"]+):([\d,]+)"', tag)  # коротка форма плиток: <id>:<ширини> → /img/p/<id>-<w>.webp
+    dp = re.search(r'\bdata-p="([^:"]+):([\w,=]+)"', tag)  # коротка форма плиток: <id>:<ширини> → /img/p/<id>-<w>.webp; портфоліо — <назва>=<ширина> (sharp.py)
     if ds or dp:  # відкладене фото: AVIF — атрибутом для JS
         if 'data-av=' in tag: return None
-        av = avif_set(ds.group(1) if ds else ','.join(f'/img/p/{dp.group(1)}-{w}.webp {w}w' for w in dp.group(2).split(',')))
+        av = avif_set(ds.group(1) if ds else ','.join(f'/img/p/{dp.group(1)}-{w.split("=")[0]}.webp {w.split("=")[-1]}w' for w in dp.group(2).split(',')))
         g = (ds or dp).group(0)
         return tag.replace(g, g + f' data-av="{av}"', 1) if av else None
     if re.search(r'\bclass="ux-(?:tp|wb|tz)\b', tag): return None
