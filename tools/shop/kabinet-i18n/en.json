@@ -407,5 +407,11 @@
  "Профіль і реквізити": "Profile and invoice details",
  "Профіль і реквізити — кабінет": "Profile and invoice details — account",
  "Погоджено": "Approved",
- "погоджено": "approved"
+ "погоджено": "approved",
+ "чекає вашого погодження": "awaiting your approval",
+ "Погодити етап": "Approve stage",
+ "Погодити етап «{n}»? Студія отримає повідомлення.": "Approve the “{n}” stage? The studio will be notified.",
+ "Етап погоджено — дякуємо!": "Stage approved — thank you!",
+ "Етап не знайдено": "Stage not found",
+ "Етап ще не готовий до погодження": "This stage is not ready for approval yet"
 }

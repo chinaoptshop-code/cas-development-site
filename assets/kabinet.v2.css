@@ -372,3 +372,7 @@ a.kb-ord:hover{border-color:var(--brass)}
 [dir=rtl] .kb-items th,[dir=rtl] .kb-items td{text-align:right}
 [dir=rtl] .kb-items td.n,[dir=rtl] .kb-items th.n{text-align:left}
 [dir=rtl] .acc-prof img{float:right;margin-right:0;margin-left:12px}
+/* дизайн-проєкт: клієнт сам погоджує етап на прийманні (approvedB у kabinet.v2.js) */
+.kb-appr{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-top:8px;font-weight:400}
+.kb-appr small{color:var(--glow);font-size:var(--fs-small)}
+.kb-appr .btn,.kb-appr .btn.sm{min-height:44px;margin:0;display:inline-flex;align-items:center;justify-content:center}

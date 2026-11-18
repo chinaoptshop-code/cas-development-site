@@ -66,7 +66,7 @@ export async function onRequestGet({ request, env }) {
         if (p.status !== 'active') continue;
         if (p.next_date && p.next_date <= t && p.next_step) tasks.push({ kind: 'next', urgent: p.next_date < t, due: p.next_date, project_id: p.id, title: p.next_step, sub: p.title });
         for (const s of p.stages) if (s.status !== 'done' && s.end && s.end <= soon)
-          tasks.push({ kind: 'stage', urgent: s.end < t, due: s.end, project_id: p.id, stage_id: s.id, title: `Етап «${s.name}» — дедлайн ${s.end}`, sub: p.title });
+          tasks.push({ kind: 'stage', urgent: s.end < t, due: s.end, project_id: p.id, stage_id: s.id, title: `Етап «${s.name}»`, sub: p.title });
         if (x.can('reports.upload') && (!p.last_report || p.last_report <= day(-REPORT_EVERY)))
           tasks.push({ kind: 'report', urgent: false, due: t, project_id: p.id, title: 'Фотозвіт для клієнта', sub: p.title + (p.last_report ? ` · останній ${p.last_report}` : ' · ще не було') });
         for (const y of p.tasks) if (!y.done && y.mine)

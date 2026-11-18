@@ -407,5 +407,11 @@
  "Профіль і реквізити": "Profil und Rechnungsdaten",
  "Профіль і реквізити — кабінет": "Profil und Rechnungsdaten — Konto",
  "Погоджено": "Freigegeben",
- "погоджено": "freigegeben"
+ "погоджено": "freigegeben",
+ "чекає вашого погодження": "wartet auf Ihre Freigabe",
+ "Погодити етап": "Phase freigeben",
+ "Погодити етап «{n}»? Студія отримає повідомлення.": "Phase „{n}“ freigeben? Das Studio wird benachrichtigt.",
+ "Етап погоджено — дякуємо!": "Phase freigegeben – vielen Dank!",
+ "Етап не знайдено": "Phase nicht gefunden",
+ "Етап ще не готовий до погодження": "Die Phase ist noch nicht bereit zur Freigabe"
 }

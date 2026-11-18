@@ -12,7 +12,11 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var reduced = function () { return window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches; };
-  var swap = function (fn) { if (document.startViewTransition && !reduced()) document.startViewTransition(fn); else fn(); };
+  var swap = function (fn) {
+    if (!document.startViewTransition || reduced()) { fn(); return; }
+    var t = document.startViewTransition(fn); // перерваний перехід (поворот екрана) — не помилка
+    [t.ready, t.finished, t.updateCallbackDone].forEach(function (p) { if (p && p.catch) p.catch(function () { /* noop */ }); });
+  };
   var fmt = function (n) { return new Intl.NumberFormat('uk-UA').format(Math.round(n || 0)); };
   var CUR = { USD: '$', EUR: '€', UAH: '₴' };
   var digits = function (p) { return String(p || '').replace(/\D/g, ''); };
