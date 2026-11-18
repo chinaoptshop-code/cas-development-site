@@ -455,8 +455,10 @@ describe('CRM обʼєктів: шаблони етапів, дата здачі
 
   await it('GET віддає шаблони етапів за типом (одне джерело правди — сервер)', async () => {
     const d = await list();
-    eq(Object.keys(d.templates), ['design', 'repair', 'build', 'furnish', 'landscape', 'other']);
-    eq(d.templates.design[0], 'Обміри й ТЗ'); eq(d.templates.design.length, 7); eq(d.templates.build.length, 9); eq(d.templates.other, []);
+    eq(Object.keys(d.templates), ['design', 'arch', 'repair', 'build', 'furnish', 'landscape', 'other']);
+    eq(d.templates.design[0], 'Бриф'); eq(d.templates.design.length, 8); eq(d.templates.design[7], 'Авторський нагляд');
+    eq(d.templates.arch, ['Ескізний проєкт', 'АР — архітектурні рішення', 'КР — конструктивні рішення', 'ОВ / ВК / ЕО (за завданням)', 'Генплан', 'Супровід дозвільних документів']);
+    eq(d.design_services, ['design', 'arch']); eq(d.templates.build.length, 9); eq(d.templates.other, []);
     eq(Object.keys(d.schemes), ['50/50', '50/30/20', '50/40/10']);
   });
   await it('новий проєкт без stages → етапи з шаблону типу; явні stages — без шаблону', async () => {
@@ -465,7 +467,7 @@ describe('CRM обʼєктів: шаблони етапів, дата здачі
     eq(r.status, 200); D1 = r.data.id;
     const st = JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', D1)).stages);
     eq(st.map(s => s.name), tpl.design); ok(st.every(s => s.status === 'planned' && s.progress === 0));
-    eq(new Set(st.map(s => s.id)).size, 7, 'унікальні id етапів');
+    eq(new Set(st.map(s => s.id)).size, 8, 'унікальні id етапів');
     B1 = (await proj({ title: 'Будинок', service: 'build' })).data.id;
     eq(JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', B1)).stages).length, 9);
     O1 = (await proj({ title: 'Інше', service: 'nonsense' })).data.id;
@@ -667,6 +669,92 @@ describe('CRM обʼєктів: шаблони етапів, дата здачі
     eq((await call(ce, 'POST', '/api/admin/projects', { cookie: k.A, body: { type: 'payment', project_id: D1, title: 'x' } })).status, 403, 'права повернуто');
   });
 
+  describe('Проєктування (дизайн і архітектура): відповідальний етапу, круги правок, результати, «Потрібні правки» клієнта');
+  {
+    let AR;
+    const stg = async id => JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', id)).stages);
+    await it('архітектурний проєкт: шаблон АР/КР, прогрес у списку', async () => {
+      const r = await proj({ title: 'Будинок 180 м² — архпроєкт', service: 'arch', area: 180, assignee_staff_id: A });
+      eq(r.status, 200); AR = r.data.id;
+      const p = await get(AR);
+      eq(p.service, 'arch'); eq(p.stages.length, 6); eq(p.progress, 0);
+      eq((await list('?service=arch')).projects.map(x => x.id), [AR]);
+    });
+    await it('відповідальний етапу і rev_max: зберігаються, працівник потрапляє в команду й отримує Telegram; вимкнений/неіснуючий → 422', async () => {
+      const st = (await get(AR)).stages;
+      st[0].staff_id = B; st[0].rev_max = 2; st[0].end = day(-1); st[1].rev_max = 500;
+      bot.reset();
+      eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: AR, stages: st } })).status, 200);
+      const s2 = await stg(AR);
+      eq([s2[0].staff_id, s2[0].rev_max, s2[1].rev_max], [B, 2, 20]);
+      ok(await cq('SELECT 1 FROM project_staff WHERE project_id = ? AND staff_id = ?', AR, B), 'у команді');
+      ok(bot.calls.some(c => c.chat_id === '555' && /Вам призначено етап/.test(c.text)), 'Telegram відповідальному етапу');
+      bot.reset();
+      eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: AR, stages: (await get(AR)).stages } })).status, 200);
+      ok(!bot.calls.some(c => /Вам призначено етап/.test(c.text)), 'повторне збереження — без повторного сповіщення');
+      const bad1 = (await get(AR)).stages; bad1[2].staff_id = 99999;
+      eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: AR, stages: bad1 } })).status, 422);
+      eq((await call(ce, 'POST', '/api/admin/projects', { cookie: k.O, body: { type: 'project', client_id: cl, title: 'x', service: 'arch', stages: [{ name: 'Е', staff_id: 99999 }] } })).status, 422);
+    });
+    await it('кабінет працівника: «Мій етап» у «Сьогодні» (прострочений — urgent), відповідальний і правки — в етапах обʼєкта', async () => {
+      const r = await call(ce, 'GET', '/api/team/today', { cookie: k.B });
+      eq(r.status, 200);
+      const t = r.data.tasks.find(x => x.kind === 'stage' && x.project_id === AR);
+      ok(t && t.mine && t.urgent && /^Мій етап/.test(t.title), JSON.stringify(t));
+      const p = r.data.projects.find(x => x.id === AR);
+      eq([p.stages[0].mine, p.stages[0].staff_name], [true, 'Прораб Б']);
+    });
+    await it('клієнт не бачить staff_id етапу; результати етапу (render/drawing/spec) — з stage_id', async () => {
+      const sid = (await get(AR)).stages[0].id;
+      for (const kind of ['render', 'drawing', 'spec'])
+        eq((await call(ce, 'POST', '/api/admin/projects', { cookie: k.O, body: { type: 'document', client_id: cl, project_id: AR, kind, stage_id: sid, title: 'Ескіз ' + kind, url: 'https://example.com/' + kind + '.pdf' } })).status, 200);
+      const c = (await call(ce, 'GET', '/api/account/projects', { cookie: k.C })).data.projects.find(x => x.id === AR);
+      ok(!('staff_id' in c.stages[0]), 'staff_id приховано'); eq(c.stages[0].rev_max, 2);
+      eq(c.documents.filter(x => x.stage_id === sid).map(x => x.kind).sort(), ['drawing', 'render', 'spec']);
+    });
+    await it('«Потрібні правки»: лише етап на прийманні, коментар обовʼязковий; revisions + 1, етап у роботу, понад rev_max — over; Telegram і аудит', async () => {
+      const sid = (await get(AR)).stages[0].id;
+      const rv = (body, cookie = k.C) => call(ce, 'POST', '/api/account/projects', { cookie, body: { action: 'revise', project_id: AR, stage_id: sid, ...body } });
+      eq((await rv({ note: 'Зсунути вхід' })).status, 409, 'етап ще не на прийманні');
+      const review = () => call(ce, 'POST', '/api/team/action', { cookie: k.O, body: { type: 'stage', project_id: AR, stage_id: sid, status: 'review' } });
+      eq((await review()).status, 200);
+      eq((await rv({ note: 'ok' })).status, 422, 'закороткий коментар');
+      eq((await rv({ note: 'Зсунути вхід' }, k.B)).status, 404, 'чужий проєкт');
+      bot.reset();
+      const r = await rv({ note: 'Зсунути вхід на 1 м і додати навіс <b>' });
+      eq(r.status, 200); eq([r.data.stage.revisions, r.data.stage.over, r.data.stage.status], [1, false, 'in_progress']);
+      let s0 = (await stg(AR))[0];
+      eq([s0.status, s0.revisions, s0.rev_note], ['in_progress', 1, 'Зсунути вхід на 1 м і додати навіс <b>']);
+      eq(s0.hist.map(h => h.act), ['revise']); eq(s0.hist[0].note, 'Зсунути вхід на 1 м і додати навіс <b>');
+      ok(s0.progress <= 90);
+      ok(bot.calls.some(c => c.chat_id === '555' && /просить правки/.test(c.text) && /&lt;b&gt;/.test(c.text)), 'відповідальному етапу, HTML екрановано');
+      ok(bot.calls.some(c => c.chat_id === '444' && /просить правки/.test(c.text)), 'відповідальному обʼєкта');
+      ok(await cq("SELECT 1 FROM audit_log WHERE action = 'project.revise' AND entity_id = ? AND role = 'client'", String(AR)));
+      eq((await rv({ note: 'Ще раз' })).status, 409, 'етап у роботі — не можна');
+      await review(); await rv({ note: 'Друга правка' }); await review();
+      const r3 = await rv({ note: 'Третя правка' });
+      eq([r3.data.stage.revisions, r3.data.stage.over], [3, true], 'понад 2 круги за договором');
+      // адмінка зберігає коментар клієнта
+      eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: AR, stages: (await get(AR)).stages } })).status, 200);
+      s0 = (await stg(AR))[0]; eq([s0.revisions, s0.rev_note], [3, 'Третя правка']);
+      eq(s0.hist.map(h => h.act), ['revise', 'revise', 'revise'], 'історія етапу зберігається адмінкою');
+      ok(!('hist' in (await call(ce, 'GET', '/api/account/projects', { cookie: k.C })).data.projects.find(x => x.id === AR).stages[0]), 'клієнт історію не бачить');
+      await review();
+      eq((await call(ce, 'POST', '/api/account/projects', { cookie: k.C, body: { action: 'approve', project_id: AR, stage_id: sid } })).status, 200, 'погодження архітектури');
+      eq((await rv({ note: 'Після погодження' })).status, 409);
+      const t = (await call(ce, 'GET', '/api/team/today', { cookie: k.B })).data.projects.find(x => x.id === AR);
+      eq(t.stages[0].revisions, 3);
+    });
+    await it('«Потрібні правки» не для ремонту', async () => {
+      const r = await proj({ title: 'Ремонт без правок', service: 'repair' });
+      const sid = (await get(r.data.id)).stages[0].id;
+      await call(ce, 'POST', '/api/team/action', { cookie: k.O, body: { type: 'stage', project_id: r.data.id, stage_id: sid, status: 'review' } });
+      eq((await call(ce, 'POST', '/api/account/projects', { cookie: k.C, body: { action: 'revise', project_id: r.data.id, stage_id: sid, note: 'Переробити' } })).status, 404);
+      await call(ce, 'DELETE', '/api/admin/projects?type=project&id=' + r.data.id, { cookie: k.O });
+      await call(ce, 'DELETE', '/api/admin/projects?type=project&id=' + AR, { cookie: k.O });
+    });
+  }
+
   describe('Сумісність: база без міграції 0012');
   await it('дата здачі й задачі не ламають решту: створення з шаблоном, PATCH, GET, кабінет, студія', async () => {
     const oe = makeEnv(freshDB(11));
@@ -774,5 +862,7 @@ describe('Заявки: антиспам і валідація (/api/leads)');
 
 // «Партнери» і API бота пошуку (migrations/0013) — окремий файл, спільний звіт
 await import('./partners.mjs');
+// CRM v2: пропозиція з заявки й конверсія в проєкт (migrations/0014) — окремий файл, спільний звіт
+await import('./crm2.mjs');
 
 process.exit(report() ? 1 : 0);

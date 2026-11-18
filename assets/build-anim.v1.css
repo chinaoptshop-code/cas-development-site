@@ -364,6 +364,7 @@
 .bz-fig .chr.t{fill:#4a484d}.bz-fig .chr.r{fill:#2c2b2f}.bz-fig .chr.l{fill:#3a383d}
 .bz-fig .art{fill:#BF9148}.bz-fig .art2{fill:#5d7a8b}
 .bz-fig .spk{fill:#fff6dc;animation:bz-tw 1.4s ease-in-out infinite alternate}
+.bz-fig .bz-0 :is(.drn,.spk){animation:none} /* шар прихований (opacity 0) — без щокадрового перерахунку стилів */
 @keyframes bz-tw{from{opacity:.25}to{opacity:1}}
 .bz-fig .pcl{fill:#f3d7a6;opacity:.75}
 @media(prefers-reduced-motion:reduce){.bz-fig .spk{animation:none}}
@@ -458,7 +459,7 @@
 @media (prefers-reduced-motion:no-preference){
   .bz-dp,.bz-sp{animation:bz-pf 1.1s ease-out forwards}.bz-sp{animation-duration:.7s}
   @keyframes bz-pf{0%{opacity:.85;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--dx),var(--dy))}}
-  .bz-stars circle{animation:bz-tw 1.8s ease-in-out infinite alternate}
+  .bz-stars.is-on circle{animation:bz-tw 1.8s ease-in-out infinite alternate} /* лише видимі зорі (build-anim.v1.js camera) */
 }
 @media (prefers-reduced-motion:reduce){.bz-pf{display:none}}
 /* тап-зони ≥44 px: кнопки над сценою лишаються компактними, зону дотику розширює прозорий ::before (на 44 px за меншим виміром);
@@ -509,3 +510,4 @@
   .bz-cmp .bz-b{width:auto;min-width:0;height:34px;border-radius:999px;font-size:.8125rem;padding:0}}
 /* шапка сцени (лічильник · прогрес · «Рентген»): довгий підпис кнопки (de/pl/es) переноситься, а не виходить за край (768 px, Михайло 08.11.2026) */
 .bz-hd>.bz-xb{flex:0 1 auto;min-width:0;white-space:normal;line-height:1.2;text-align:center}
+.bz-run.bz-wip{visibility:hidden} /* до кінця збірки (build-anim.v1.js enhance): проміжні кадри без зсувів колонки етапів */

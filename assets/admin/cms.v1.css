@@ -146,6 +146,15 @@
 .adm .pj-tpl{margin:6px 0 0;padding-left:22px;color:var(--cream);font-size:var(--fs-small);columns:2 220px}
 .adm .pj-stage{border-bottom:1px dashed var(--line);margin-bottom:8px}
 .adm .pj-appr{margin:-2px 0 10px;font-size:var(--fs-small)}
+.adm .pj-rmax input{width:4.5em}
+.adm .pj-revn{margin:0 0 8px;padding:8px 12px;border-radius:14px;background:rgba(224,122,106,.12);font-size:var(--fs-small)}
+.adm .pj-hist{margin:0 0 10px;font-size:var(--fs-small)}
+.adm .pj-hist summary{min-height:44px;display:flex;align-items:center;cursor:pointer}
+.adm .pj-hist ul{margin:0;padding-left:18px}
+.adm .pj-dlv{margin:0 0 10px;font-size:var(--fs-small)}
+.adm .pj-stage input.late{border-color:#e07a6a}
+.adm .pj-prog{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.adm .pj-prog progress{width:90px}
 .adm .pj-tg{margin:0 0 12px}
 .adm .pj-tasks{list-style:none;margin:6px 0 0;padding:0}
 .adm .pj-task{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
@@ -177,3 +186,13 @@
   .adm .je-add{min-width:44px;min-height:34px}
 }
 .adm .crm-take{min-height:36px}
+
+/* CRM: пропозиція з заявки (послуга × площа → «від $…», «Створити проєкт», «Надіслати КП») */
+.adm .crm-offer{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:4px 0}
+.adm .crm-offer h3{margin:0 0 8px;font-size:1rem}
+.adm .crm-offer .of-row{flex-wrap:wrap;gap:8px}
+.adm .crm-offer select{flex:1 1 16rem;min-width:0}
+.adm .crm-offer .of-a input{width:7em}
+.adm .crm-offer .of-sum{margin:8px 0;font-size:1.05rem}
+.adm .crm-offer .of-act{flex-wrap:wrap;gap:8px}
+.adm .pj-lead{margin:0 0 10px}
