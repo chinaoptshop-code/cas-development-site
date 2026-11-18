@@ -6,6 +6,7 @@
 import { CLOSED, json, statusLabel } from '../../_lib.js';
 import { SLA_MIN, sqlTime } from '../../_alerts.js';
 import { cameraOf, progressOf, stageStatus, STAGE_STATUS } from '../../_account.js';
+import { projectContacts } from '../../_partners.js';
 import { PERMS, ROLES, need, noTable, orderScope, projectScope, shapeOrder, shapeProject } from '../../_roles.js';
 
 const parse = (s, d) => { try { const v = JSON.parse(s); return v == null ? d : v; } catch { return d; } };
@@ -40,6 +41,7 @@ export async function onRequestGet({ request, env }) {
       } catch (e) { if (!noTable(e)) throw e; }
       if (x.can('finance.view') && ids.length) payments = (await env.DB.prepare(`SELECT * FROM project_payments WHERE project_id IN (${q}) AND status != 'paid' ORDER BY COALESCE(due_date, '9999') LIMIT 200`).bind(...ids).all()).results;
       const SN = new Map((await env.DB.prepare('SELECT id, name FROM staff').all()).results.map(r => [r.id, r.name])); // відповідальні етапів
+      const CT = await projectContacts(env, x, ids); // контакти обʼєкта (contacts.linked) — бригади, постачальники, майстри
       projects = P.map(p => {
         const stages = parse(p.stages, []).map(s => ({ ...s, status: stageStatus(s), status_label: STAGE_STATUS[stageStatus(s)],
           ...(s.staff_id ? { staff_name: SN.get(s.staff_id) || null, mine: s.staff_id === x.staffId } : {}) }));
@@ -60,6 +62,7 @@ export async function onRequestGet({ request, env }) {
           issues: ISS.filter(i => i.project_id === p.id).map(i => ({ ...i, photos: parse(i.photos, []) })),
           payments: payments.filter(y => y.project_id === p.id),
           deadline: p.deadline || null,
+          contacts: CT[p.id] || [],
           tasks: TK.filter(y => y.project_id === p.id).map(y => ({ ...y, done: !!y.done, mine: y.staff_id === x.staffId,
             stage_name: (stages.find(s => s.id === y.stage_id) || {}).name || null })),
         }, x);
