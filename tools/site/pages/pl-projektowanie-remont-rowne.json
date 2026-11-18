@@ -1,0 +1,187 @@
+{
+ "slug": "projektowanie-remont-rowne",
+ "lang": "pl",
+ "service": "Projektowanie wnętrz, remont i budowa w Równem",
+ "title": "Projektowanie wnętrz w Równem — remont i budowa | CAS",
+ "description": "Projektowanie wnętrz w Równem: mieszkania na nowych osiedlach i w starszych blokach, domy pod miastem. Projekt od $30/m², remont od $550/m².",
+ "h1": "Projektowanie wnętrz, remont i budowa w Równem",
+ "price": "remont od $550/m² · projekt od $30/m² · dom od $600/m²",
+ "lead": "Projektowanie wnętrz w Równem — mieszkania na nowych osiedlach i w radzieckich blokach, domy pod miastem i na Polesiu. Projekt zdalnie lub z dojazdem, remont i budowa — naszym zespołem na indywidualnych warunkach.",
+ "parent": [
+  "/pl/projektowanie-remont-ukraina",
+  "Cała Ukraina"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Równe",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Obwód rówieński"
+   }
+  }
+ ],
+ "near": [
+  "W pobliżu: inne miasta",
+  [
+   [
+    "/pl/projektowanie-remont-luck",
+    "Łuck"
+   ],
+   [
+    "/pl/projektowanie-remont-zytomierz",
+    "Żytomierz"
+   ],
+   [
+    "/pl/projektowanie-remont-tarnopol",
+    "Tarnopol"
+   ],
+   [
+    "/pl/projektowanie-remont-ukraina",
+    "Wszystkie miasta Ukrainy"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Projekt wnętrz",
+   [
+    "pomiary i układ funkcjonalny",
+    "wizualizacje 3D i rysunki wykonawcze",
+    "specyfikacja materiałów i mebli",
+    "nadzór autorski"
+   ]
+  ],
+  [
+   "Remont pod klucz",
+   [
+    "mieszkania z rynku pierwotnego i wtórnego",
+    "domy i domy letniskowe",
+    "robocizna i materiały podstawowe od $550/m²",
+    "kosztorys przed startem prac"
+   ]
+  ],
+  [
+   "Budowa domu",
+   [
+    "projekt architektoniczny od $12/m²",
+    "stan surowy od $600/m²",
+    "pod klucz z wykończeniem od $1 100/m²",
+    "instalacje i dach"
+   ]
+  ],
+  [
+   "Meble i wyposażenie",
+   [
+    "umeblowanie od $250/m²",
+    "kuchnie i szafy na wymiar",
+    "meble i oświetlenie prosto z Chin",
+    "końcowa stylizacja"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Równe: zielone miasto i poleskie działki",
+   [
+    "Równe to zielone miasto parków i osiedli bloków, gdzie w ostatnich latach powstało wiele nowych inwestycji. Przedmieścia i otaczające je Polesie to domy na dużych działkach wśród lasów i bagien.",
+    "Działki na Polesiu często mają wysoki poziom wód gruntowych i grunty torfowe. Właściwy projekt fundamentu i drenażu jest tu kluczowy — ustalamy go przed jakimikolwiek decyzjami dotyczącymi wnętrza."
+   ]
+  ],
+  [
+   "Projektowanie wnętrz w Równem",
+   [
+    "W mieszkaniach w Równem — funkcjonalny układ, przechowywanie i światło; w domach — ciepła paleta z drewnem, kominek i duże okna na ogród. Do wyboru pakiet funkcjonalny, podstawowy lub pełny z nadzorem autorskim. Projekt wnętrza od $30 za m² (minimum $2 500); pakiety — na stronie [studio projektowania wnętrz](/pl/projektowanie-wnetrz)."
+   ]
+  ],
+  [
+   "Remont pod klucz i budowa domu",
+   [
+    "Remontujemy mieszkania i domy — od nowych instalacji po wykończenie. Budujemy domy z betonu komórkowego, cegły, szkieletowe i z bali; fundament projektujemy po badaniach działki — zob. też [projektowanie domu](/pl/projekt-domu).",
+    "Remont wykonuje nasz etatowy zespół: od $550 za m² za robociznę i materiały budowlane; materiały wykończeniowe, meble i AGD — osobno, według kosztorysu. Zakres, harmonogram i plan płatności (50/50, 50/30/20 lub etapami, zaliczka od 10%) zapisujemy w umowie; dojazd zespołu — na warunkach indywidualnych. Projekt architektoniczny od $12 za m², stan surowy od $600 za m², dom pod klucz z wykończeniem od $1 100 za m² — więcej: [remont pod klucz](/pl/remont-pod-klucz) i [budowa domów](/pl/budowa-domow)."
+   ]
+  ],
+  [
+   "Logistyka, kontrola i raporty",
+   [
+    "Projekt i uzgodnienia prowadzimy online, a na pomiary i kluczowe etapy przyjeżdżamy według harmonogramu z umowy; warunki i koszt dojazdów oraz zakwaterowania zespołu ustalamy indywidualnie. Między wizytami — raporty zdjęciowe co 1–2 tygodnie, za dopłatą kamera online na budowie 24/7."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1xSbwYmzFkTN2A-900.webp",
+   "Pidgirland"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1DhAA8_vK0zo3E-900.webp",
+   "A-Frame House"
+  ]
+ ],
+ "steps": [
+  [
+   "Konsultacja",
+   "Telefonicznie lub online: obiekt, zadania, budżet."
+  ],
+  [
+   "Pomiar i brief",
+   "Pomiary, oczekiwania, dane wyjściowe."
+  ],
+  [
+   "Projekt i kosztorys",
+   "Wnętrze lub architektura; cena i harmonogram w umowie."
+  ],
+  [
+   "Prace",
+   "Remont lub budowa z raportami zdjęciowymi."
+  ],
+  [
+   "Odbiór",
+   "Protokół i 12 miesięcy gwarancji na prace."
+  ]
+ ],
+ "faq": [
+  [
+   "Czy można budować na działce z wysokim poziomem wód gruntowych?",
+   "Tak, ale projekt fundamentu i drenażu przygotowujemy po badaniach działki. Stan surowy od $600 za m²."
+  ],
+  [
+   "Ile kosztuje remont w Równem?",
+   "Od $550 za m² za robociznę i materiały budowlane; materiały wykończeniowe, meble i AGD — osobno, według kosztorysu."
+  ],
+  [
+   "Ile kosztuje projekt wnętrza w Równem?",
+   "Od $30 za m², minimum $2 500. Pakiet funkcjonalny — od $6 za m², pełny z nadzorem autorskim — od $45 za m²."
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-domu",
+   "Remont domu pod klucz"
+  ],
+  [
+   "/pl/kompletacja-wnetrz",
+   "Kompletacja wnętrz pod klucz"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów remontu"
+  ],
+  [
+   "/pl/umowa-gwarancja-platnosc",
+   "Umowa, gwarancja, płatność (wzór umowy)"
+  ],
+  [
+   "/pl/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

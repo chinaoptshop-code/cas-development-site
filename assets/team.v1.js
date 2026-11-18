@@ -149,6 +149,13 @@
         (p.next_step ? '<p class="tm-next">Наступний крок: <b>' + esc(p.next_step) + '</b>' + (p.next_date ? ' · ' + dmy(p.next_date) : '') + '</p>' : '') +
         (p.deadline ? '<p class="' + (p.deadline < today() ? 'err' : 'muted') + '">Здача обʼєкта: ' + dmy(p.deadline) + (p.deadline < today() ? ' — прострочено' : '') + '</p>' : '') +
         checklist(p) +
+        // контакти обʼєкта (бригади, майстри, постачальники): лише перегляд, дзвінок одним дотиком
+        (p.contacts && p.contacts.length ? '<details class="tm-more"><summary>Контакти обʼєкта · ' + p.contacts.length + '</summary><ul class="tm-cts">' + p.contacts.map(function (c) {
+          var k = c.contact;
+          return '<li><b>' + esc(k.name || k.company || '') + '</b> <small class="muted">' + esc(k.type_label) + (c.role ? ' · ' + esc(c.role) : '') + '</small>' +
+            (k.phone ? '<a class="tm-btn ghost" href="tel:+' + digits(k.phone) + '">' + ic('phone') + esc(k.phone) + '</a>' : '') +
+            (k.tg ? '<a class="tm-btn ghost" href="https://t.me/' + esc(k.tg) + '" target="_blank" rel="noopener">@' + esc(k.tg) + '</a>' : '') + '</li>';
+        }).join('') + '</ul></details>' : '') +
         '<div class="tm-contacts">' + (p.address ? '<a class="tm-btn ghost" href="' + esc(mapUrl) + '" target="_blank" rel="noopener">' + ic('map') + esc(p.address) + '</a>' : '') +
         (p.client_phone ? '<a class="tm-btn ghost" href="tel:+' + digits(p.client_phone) + '">' + ic('phone') + 'Клієнт: ' + esc(p.client_phone) + '</a>' : '') + '</div>' +
         '<div class="tm-actions">' + (can('reports.upload') ? '<button class="tm-btn" data-act="report" data-p="' + p.id + '">' + ic('cam') + 'Фотозвіт</button>' : '') +

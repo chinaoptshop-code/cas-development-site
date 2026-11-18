@@ -862,5 +862,7 @@ describe('Заявки: антиспам і валідація (/api/leads)');
 
 // «Партнери» і API бота пошуку (migrations/0013) — окремий файл, спільний звіт
 await import('./partners.mjs');
+// CRM v2: пропозиція з заявки й конверсія в проєкт (migrations/0014) — окремий файл, спільний звіт
+await import('./crm2.mjs');
 
 process.exit(report() ? 1 : 0);

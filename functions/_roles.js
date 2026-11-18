@@ -26,7 +26,8 @@ export const PERMS = {
   'reports.upload': 'Фотозвіти',
   'issues.report': '«Проблема на обʼєкті»',
   'partners.manage': 'Коди партнерів',
-  'partners.base': 'База «Партнери» (підрядники, постачальники з бота пошуку)',
+  'partners.base': 'Довідник «Контакти» (клієнти, підрядники, партнери, бригади, майстри; бот пошуку)',
+  'contacts.linked': 'Контакти своїх обʼєктів (лише перегляд)',
   'cms.edit': 'Редагування сайту',
   'staff.view': 'Список працівників (для призначення)',
   'staff.manage': 'Додавати й деактивувати працівників, ролі',
@@ -34,7 +35,7 @@ export const PERMS = {
   'audit.view': 'Журнал аудиту',
 };
 const ALL = Object.keys(PERMS);
-const FIELD = ['projects.view_assigned', 'projects.edit_stage', 'clients.contacts', 'reports.upload', 'issues.report'];
+const FIELD = ['projects.view_assigned', 'projects.edit_stage', 'clients.contacts', 'reports.upload', 'issues.report', 'contacts.linked'];
 
 // home — куди веде вхід. Власник має все; staff.manage, audit.view і dashboard.studio — лише власник.
 export const ROLES = {

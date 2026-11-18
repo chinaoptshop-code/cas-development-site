@@ -1,0 +1,187 @@
+{
+ "slug": "design-renovation-ternopil",
+ "lang": "fr",
+ "service": "Design d’intérieur et rénovation à Ternopil",
+ "title": "Architecture d’intérieur et rénovation à Ternopil | CAS",
+ "description": "Architecture d’intérieur à Ternopil : appartements dans des résidences neuves près du lac, maisons. Design dès $30/m², rénovation dès $550/m².",
+ "h1": "Design d’intérieur et rénovation à Ternopil",
+ "price": "rénovation dès $550/m² · design dès $30/m² · maison dès $600/m²",
+ "lead": "Architecture d’intérieur à Ternopil pour les appartements des résidences neuves, la modernisation de logements anciens et les maisons de la périphérie. Projet à distance ou avec déplacements ; rénovation et construction par notre propre équipe, aux conditions convenues.",
+ "parent": [
+  "/fr/design-renovation-ukraine",
+  "Toute l’Ukraine"
+ ],
+ "area": [
+  {
+   "@type": "City",
+   "name": "Ternopil",
+   "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Oblast de Ternopil"
+   }
+  }
+ ],
+ "near": [
+  "À proximité : autres villes",
+  [
+   [
+    "/fr/design-renovation-lviv",
+    "Lviv"
+   ],
+   [
+    "/fr/design-renovation-khmelnytsky",
+    "Khmelnytsky"
+   ],
+   [
+    "/fr/design-renovation-ivano-frankivsk",
+    "Ivano-Frankivsk"
+   ],
+   [
+    "/fr/design-renovation-ukraine",
+    "Toutes les villes d’Ukraine"
+   ]
+  ]
+ ],
+ "cards": [
+  [
+   "Architecture intérieure",
+   [
+    "relevé et plan d’aménagement",
+    "visualisations 3D et plans d’exécution",
+    "descriptif des matériaux et du mobilier",
+    "suivi du concepteur"
+   ]
+  ],
+  [
+   "Rénovation clé en main",
+   [
+    "appartements neufs et anciens",
+    "maisons et cottages",
+    "travaux et matériaux de gros œuvre dès $550/m²",
+    "devis avant le début des travaux"
+   ]
+  ],
+  [
+   "Construction de maison",
+   [
+    "projet architectural dès $12/m²",
+    "gros œuvre dès $600/m²",
+    "clé en main avec finitions dès $1 100/m²",
+    "réseaux et toiture"
+   ]
+  ],
+  [
+   "Mobilier et équipement",
+   [
+    "ameublement dès $250/m²",
+    "cuisines et placards sur mesure",
+    "mobilier et luminaires en direct de Chine",
+    "stylisme final"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Ternopil : une ville au bord du lac qui construit beaucoup",
+   [
+    "Ternopil est une ville compacte autour du grand étang de Ternopil. Ces dernières années, de nombreuses résidences neuves y ont vu le jour, certaines avec vue sur l’eau, tandis que des quartiers comme Droujba ou Skhidnyi comptent beaucoup d’appartements standard à moderniser.",
+    "Beaucoup d’habitants de Ternopil travaillent à l’étranger et achètent un appartement pour plus tard : la rénovation doit donc pouvoir se suivre à distance — reportages photo, validations en ligne et, si souhaité, une caméra sur le chantier."
+   ]
+  ],
+  [
+   "Architecture d’intérieur à Ternopil",
+   [
+    "Dans le neuf, un plateau libre aménagé pour une famille précise, avec dressings et coin buanderie. Pour les appartements avec vue sur le lac, un intérieur qui met le paysage en valeur, avec les bons rideaux et le bon éclairage. Projet de design à partir de $30 le m² (minimum $2 500) ; les formules sont détaillées sur la page [studio d’architecture d’intérieur](/fr/architecture-interieur)."
+   ]
+  ],
+  [
+   "Rénovation clé en main et construction de maisons",
+   [
+    "Nous rénovons des appartements bruts et anciens, ainsi que des maisons. En périphérie de Ternopil, nous construisons des maisons en béton cellulaire, en brique et à ossature bois ; projet, gros œuvre et finitions peuvent être découpés en étapes.",
+    "La rénovation est réalisée par notre équipe salariée : à partir de $550 le m² pour les travaux et matériaux de base ; matériaux de finition, mobilier et électroménager en sus, sur devis. Le périmètre, le calendrier et l’échéancier (50/50, 50/30/20 ou par étapes, acompte à partir de 10 %) sont fixés au contrat ; le déplacement de l’équipe se négocie au cas par cas. Projet d’architecture à partir de $12 le m², gros œuvre à partir de $600 le m², clé en main avec finitions à partir de $1 100 le m² — voir [rénovation clé en main](/fr/renovation-cle-en-main) et [construction de maisons](/fr/construction-maison)."
+   ]
+  ],
+  [
+   "Logistique, suivi et rapports",
+   [
+    "Le projet et les validations se font en ligne ; nous nous déplaçons pour les relevés et les étapes clés selon le calendrier du contrat, les conditions et le coût des déplacements et de l’hébergement de l’équipe étant individuels. Entre deux visites, reportages photo toutes les 1 à 2 semaines et, en option payante, caméra en ligne sur le chantier 24 h/24."
+   ]
+  ]
+ ],
+ "gallery": [
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/17MT3Ipm3yi6XJ-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1co4thni1Q8_1J-900.webp",
+   "Petrivtsi House"
+  ],
+  [
+   "img/p/12W1z8tHakMPyY-900.webp",
+   "Linden Penthouse"
+  ]
+ ],
+ "steps": [
+  [
+   "Consultation",
+   "Par téléphone ou en ligne : bien, objectifs, budget."
+  ],
+  [
+   "Relevé et brief",
+   "Mesures, souhaits, données de départ."
+  ],
+  [
+   "Projet et devis",
+   "Intérieur ou architecture ; prix et planning au contrat."
+  ],
+  [
+   "Travaux",
+   "Rénovation ou construction avec reportages photo."
+  ],
+  [
+   "Livraison",
+   "Procès-verbal, garantie de 12 mois sur les travaux."
+  ]
+ ],
+ "faq": [
+  [
+   "J’habite à l’étranger. La rénovation à Ternopil peut-elle se gérer à distance ?",
+   "Oui : validations en ligne, reportages photo toutes les 1 à 2 semaines et, en option payante, caméra en ligne 24 h/24. Le contrat et les paiements peuvent aussi se faire à distance."
+  ],
+  [
+   "Combien coûte un projet de design à Ternopil ?",
+   "À partir de $30 le m², minimum $2 500. La formule plan d’aménagement démarre à $6 le m², la formule complète avec suivi de chantier par le designer à $45 le m²."
+  ],
+  [
+   "Qui travaillera sur le chantier ?",
+   "Notre propre équipe salariée, pour différents niveaux de complexité et types de travaux. Garantie de 12 mois sur les travaux."
+  ]
+ ],
+ "rel": [
+  [
+   "/fr/renovation-maison-cle-en-main",
+   "Rénovation de maison clé en main"
+  ],
+  [
+   "/fr/equipement-cle-en-main",
+   "Équipement de projets clé en main"
+  ],
+  [
+   "/fr/calculateur-renovation",
+   "Calculateur du coût de rénovation"
+  ],
+  [
+   "/fr/contrat-garantie-paiement",
+   "Contrat, garantie, paiement (modèle de contrat)"
+  ],
+  [
+   "/fr/portfolio",
+   "Portfolio"
+  ]
+ ]
+}

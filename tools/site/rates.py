@@ -6,6 +6,7 @@
 
 [Україна, Європа] у $; None — ставки немає → «за кошторисом». Європа — ~+50% до київських (Михайло 01.11.2026).
 У JS блок стоїть між /*rates*/ і /*/rates*/ (CAS_RATES, CAS_DMIN, casCost, casParseNum) — руками не правити.
+Сервер (пропозиція в CRM, functions/api/admin/crm.js) — functions/_rates.js, цілком ЗГЕНЕРОВАНО тут же.
 Тести математики — node tools/tests/calc.mjs (виконує той самий блок).
 """
 import json, os, re, sys
@@ -29,6 +30,7 @@ DMIN = [2500, 4000]          # мінімум за дизайн (усі паке
 
 CONSUMERS = ['assets/calc.v1.js', 'assets/quiz-core.v1.js', 'assets/build-anim.v1.js', 'assets/land-anim.v1.js',
              'assets/resort-plan.v1.js', 'assets/restaurant-anim.v1.js', 'assets/water-house.v1.js']
+FUNC = 'functions/_rates.js'
 RX = re.compile(r'/\*rates\*/.*?/\*/rates\*/', re.S)
 
 
@@ -57,6 +59,19 @@ def js():
             '/*/rates*/')
 
 
+def module():
+    """functions/_rates.js — ті самі ставки й формула, що casCost, для Pages Functions (ES-модуль)."""
+    return ('// ЗГЕНЕРОВАНО tools/site/rates.py — ставки CLAUDE.md [Україна, Європа], null — за кошторисом; руками не правити\n'
+            f'export const RATES = {json.dumps(RATES, separators=(",", ":"))};\n'
+            f'export const DMIN = {json.dumps(DMIN)};\n'
+            f'export const DESIGN = {json.dumps(list(DESIGN))};\n'
+            '// ставка регіону (eu — Європа, ~+50%) або null\n'
+            'export const rateOf = (k, eu) => { const r = RATES[k]; return r ? r[eu ? 1 : 0] : null; };\n'
+            '// сума «від»: ставка × площа (дизайн — не менше мінімуму), округлена; null — ставки немає або площа ≤ 0 (як casCost)\n'
+            'export function cost(k, eu, a) { const v = rateOf(k, eu); if (v == null || !(a > 0) || !Number.isFinite(a)) return null;'
+            ' let s = v * a; if (DESIGN.includes(k)) s = Math.max(s, DMIN[eu ? 1 : 0]); return Math.round(s); }\n')
+
+
 def main():
     check = '--check' in sys.argv
     block, bad = js(), []
@@ -70,10 +85,15 @@ def main():
             bad.append(rel)
             if not check:
                 open(p, 'w', encoding='utf-8').write(n)
+    fp, fm = os.path.join(ROOT, FUNC), module()
+    if not os.path.exists(fp) or open(fp, encoding='utf-8').read() != fm:
+        bad.append(FUNC)
+        if not check:
+            open(fp, 'w', encoding='utf-8').write(fm)
     if check:
         print('\n'.join(bad) if bad else 'Ставки: OK')
         sys.exit(1 if bad else 0)
-    print(f'Ставки: оновлено {len(bad)} з {len(CONSUMERS)} JS')
+    print(f'Ставки: оновлено {len(bad)} з {len(CONSUMERS) + 1} JS')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,687 @@
+{
+ "slugs": {
+  "vinnytsia": "diseno-reforma-vinnytsia",
+  "zhytomyr": "diseno-reforma-zhytomyr",
+  "chernihiv": "diseno-reforma-chernihiv",
+  "cherkasy": "diseno-reforma-cherkasy",
+  "poltava": "diseno-reforma-poltava",
+  "ivano-frankivsk": "diseno-reforma-ivano-frankivsk",
+  "ternopil": "diseno-reforma-ternopil",
+  "uzhhorod": "diseno-reforma-uzhgorod",
+  "rivne": "diseno-reforma-rivne",
+  "lutsk": "diseno-reforma-lutsk",
+  "khmelnytskyi": "diseno-reforma-jmelnytski",
+  "chernivtsi": "diseno-reforma-chernivtsi",
+  "kropyvnytskyi": "diseno-reforma-kropyvnytsky",
+  "irpin": "diseno-reforma-irpin",
+  "bucha": "diseno-reforma-bucha",
+  "hostomel": "diseno-reforma-hostomel",
+  "vyshneve": "diseno-reforma-vyshneve",
+  "boiarka": "diseno-reforma-boiarka",
+  "brovary": "diseno-reforma-brovary",
+  "boryspil": "diseno-reforma-boryspil",
+  "vyshhorod": "diseno-reforma-vyshhorod",
+  "obukhiv": "diseno-reforma-obukhiv",
+  "vasylkiv": "diseno-reforma-vasylkiv",
+  "fastiv": "diseno-reforma-fastiv",
+  "bila-tserkva": "diseno-reforma-bila-tserkva"
+ },
+ "tpl": {
+  "h1_c": "Interiorismo, reforma y construcción {in}",
+  "h1_t": "Diseño, reforma y construcción llave en mano {in}",
+  "title_c": [
+   "Interiorismo en {n} — reforma y construcción | CAS",
+   "Interiorismo en {n} — reforma y casas | CAS",
+   "Interiorismo y reforma en {n} | CAS"
+  ],
+  "title_t": [
+   "Reforma llave en mano en {n} — diseño y casas | CAS",
+   "Reforma llave en mano en {n} | CAS"
+  ],
+  "reg": "Óblast de {n}",
+  "all_t": "Todas las ciudades de la región de Kiev",
+  "des_h": "Interiorismo {in}",
+  "des_tail": "Proyecto de diseño desde $30 por m² (mínimo $2 500); los paquetes están en la página [estudio de interiorismo]({/dyzain-interieru-kyiv}).",
+  "ren_h": "Reforma llave en mano y construcción de casas",
+  "ren_c": "La reforma la ejecuta nuestro equipo en plantilla: desde $550 por m² de obra y materiales de base; los materiales de acabado, los muebles y los electrodomésticos van aparte, según presupuesto. El alcance, el calendario y el plan de pagos (50/50, 50/30/20 o por fases, con un anticipo desde el 10 %) constan en el contrato; el desplazamiento del equipo se acuerda de forma individual. Proyecto arquitectónico desde $12 por m², estructura desde $600 por m², casa llave en mano con acabados desde $1 100 por m²: más en [reforma llave en mano]({/remont-pid-klyuch-kyiv}) y [construcción de casas]({/budivnytstvo-budynkiv-kyiv}).",
+  "ren_t": "El mismo equipo en plantilla que en Kiev y con las mismas tarifas: reforma desde $550 por m² (obra y materiales de base) y, si la reforma la hace CAS, el total final no se desvía del presupuesto más de un ±5 %. Proyecto arquitectónico desde $12 por m², estructura desde $600 por m², llave en mano con acabados desde $1 100 por m²; 12 meses de garantía sobre los trabajos. Más en [reforma llave en mano]({/remont-pid-klyuch-kyiv}) y [construcción de casas]({/budivnytstvo-budynkiv-kyiv}).",
+  "log_h": "Logística, control e informes",
+  "log_c": "El proyecto y las aprobaciones se llevan online; viajamos para las mediciones y las fases clave según el calendario del contrato, y las condiciones y el coste de los desplazamientos y del alojamiento del equipo son individuales. Entre visitas, informes fotográficos cada 1–2 semanas y, con coste adicional, cámara online en obra 24/7.",
+  "log_t": "Nuestros jefes de obra incluyen las visitas en su calendario habitual, igual que en los barrios de Kiev, y los materiales salen de almacenes de Kiev. Entre visitas, informes fotográficos cada 1–2 semanas; con coste adicional, cámara online en obra 24/7.",
+  "fq": {
+   "design_cost": [
+    "¿Cuánto cuesta un proyecto de diseño {in}?",
+    "Desde $30 por m², mínimo $2 500. El paquete de distribución empieza en $6 por m² y el completo con dirección de diseño, en $45 por m²."
+   ],
+   "reno_cost": [
+    "¿Cuánto cuesta una reforma {in}?",
+    "Desde $550 por m² de obra y materiales de base; los materiales de acabado, los muebles y los electrodomésticos van aparte, según presupuesto."
+   ],
+   "build": [
+    "¿Construyen casas {in} y alrededores?",
+    "Sí: proyecto arquitectónico desde $12 por m², estructura desde $600 por m², llave en mano con acabados desde $1 100 por m²."
+   ],
+   "remote": [
+    "¿Se puede hacer el diseño a distancia?",
+    "Sí: reuniones online, 3D y planos en formato digital; las mediciones y la dirección de diseño, con visitas según el calendario del contrato."
+   ],
+   "pay": [
+    "¿Se puede pagar la reforma por fases?",
+    "Sí: 50/50, 50/30/20, 50/40/10 o pagos fraccionados, con un anticipo desde el 10 %. El esquema consta en el contrato."
+   ],
+   "same_prices": [
+    "¿Los precios {in} son distintos a los de Kiev?",
+    "No, las tarifas base son las mismas: diseño desde $30 por m², reforma desde $550 por m², amueblamiento desde $250 por m²."
+   ],
+   "control": [
+    "¿Cómo seguir la obra desde otra ciudad o desde el extranjero?",
+    "Informes fotográficos cada 1–2 semanas; con coste adicional, cámara online en obra 24/7."
+   ],
+   "team": [
+    "¿Quién trabajará en la obra?",
+    "Nuestro propio equipo en plantilla, para distintos niveles de complejidad y tipos de trabajo. 12 meses de garantía sobre los trabajos."
+   ],
+   "design_only": [
+    "¿Puedo encargar solo el proyecto de diseño?",
+    "Sí, desde $30 por m², mínimo $2 500. Los planos sirven para cualquier constructor; la dirección de diseño se añade aparte."
+   ],
+   "slope": [
+    "¿Construyen en parcelas con pendiente?",
+    "Sí. La cimentación, los muros de contención y el drenaje se proyectan tras recibir los datos del estudio de la parcela."
+   ],
+   "rebuild": [
+    "¿Qué compensa más: rehabilitar la casa vieja o construir una nueva?",
+    "Depende de la cimentación y los muros. Tras una inspección damos presupuesto de las dos opciones para que decida con cifras."
+   ],
+   "office": [
+    "¿Hacen oficinas y locales comerciales {in}?",
+    "Oficinas desde $350 por m² (obra y materiales de base); otros locales, según presupuesto. Para empresas registradas en Ucrania, factura con o sin IVA, de forma individual."
+   ]
+  }
+ },
+ "cities": {
+  "vinnytsia": {
+   "n": "Vínnytsia",
+   "in": "en Vínnytsia",
+   "tag": "Obra nueva, Vyshenka y chalets junto al Bug Meridional.",
+   "d": "Interiorismo en Vínnytsia: obra nueva, pisos en Vyshenka y casas en las afueras. Diseño desde $30/m², reforma desde $550/m², casas desde $600/m².",
+   "lead": "Interiorismo en Vínnytsia para pisos en promociones nuevas y barrios antiguos, y para casas en las afueras junto al Bug Meridional. El proyecto, a distancia o con visitas; la reforma y la construcción, con nuestro propio equipo y condiciones individuales.",
+   "h": "Vínnytsia: una ciudad compacta que no para de construir",
+   "p": [
+    "Vínnytsia es una ciudad compacta a orillas del Bug Meridional, con mucha obra nueva y urbanizaciones de chalets en las afueras. Junto a ellas quedan barrios soviéticos como Vyshenka, con pisos de bloques prefabricados que sus dueños redistribuyen y renuevan.",
+    "Para muchos clientes de Vínnytsia lo importante es el equilibrio: un buen proyecto y una ejecución sin sobrecostes. Por eso ofrecemos varios paquetes, desde el de distribución (desde $6 por m²) hasta el completo con dirección de diseño (desde $45 por m²)."
+   ],
+   "des": "Las promociones nuevas de Vínnytsia tienen plantas libres que es fácil estropear sin proyecto: el diseñador sitúa habitaciones, cocina y almacenaje para no perder ni un metro. En las casas, la clave son la escalera, la luz y la relación con la parcela.",
+   "bld": "Reformamos pisos en bruto y viviendas de segunda mano con renovación completa de instalaciones, además de casas. En las afueras construimos casas de una y dos plantas de bloque de hormigón celular, ladrillo o entramado de madera; proyecto, estructura y acabados se pueden contratar juntos o por fases.",
+   "fk": [
+    "design_cost",
+    "pay",
+    "build"
+   ]
+  },
+  "zhytomyr": {
+   "n": "Zhytómyr",
+   "in": "en Zhytómyr",
+   "tag": "Casas particulares y dachas junto al Téteriv.",
+   "d": "Interiorismo en Zhytómyr: pisos, casas y dachas junto al río Téteriv. Diseño desde $30/m², reforma desde $550/m², construcción desde $600/m².",
+   "lead": "Interiorismo en Zhytómyr para pisos en la ciudad, casas particulares y dachas junto al Téteriv. Zhytómyr es una de las capitales de región más cercanas a Kiev, así que las visitas a obra se organizan con más facilidad que en regiones lejanas.",
+   "h": "Zhytómyr: casas particulares, orillas de granito y bosques",
+   "p": [
+    "Zhytómyr tiene un gran parque de viviendas unifamiliares, un centro antiguo y barrios de bloques. Alrededor hay bosques y las orillas rocosas de granito del Téteriv, donde mucha gente tiene una dacha o una casa de descanso.",
+    "Los encargos típicos aquí son rehabilitar la vieja casa familiar, una casa de descanso en plena naturaleza o un piso para los hijos que se han ido a Kiev. Si hace falta, nos ocupamos tanto de la parte de Zhytómyr como de la de Kiev."
+   ],
+   "des": "Para casas junto al bosque y el río trabajamos con materiales naturales —madera, piedra, lino— y luz cálida, como en nuestros A-Frame House y Hoda Estate. Para pisos en la ciudad, una distribución práctica y buen almacenaje.",
+   "bld": "Reformamos casas y pisos, y adaptamos dachas para vivir todo el año: aislamiento, instalaciones nuevas, cubierta nueva. En la región encajan bien las casas de madera maciza y de entramado, además de las clásicas de bloque; las parcelas junto al Téteriv suelen ser pedregosas, así que la cimentación se proyecta tras el estudio del terreno.",
+   "faq": [
+    [
+     "¿Cuánto cuesta una casa de madera en la región de Zhytómyr?",
+     "Estructura desde $600 por m², llave en mano con acabados desde $1 100 por m². Las fases constan en el contrato."
+    ]
+   ],
+   "fk": [
+    "design_only",
+    "remote"
+   ]
+  },
+  "chernihiv": {
+   "n": "Cherníhiv",
+   "in": "en Cherníhiv",
+   "tag": "Reconstrucción de viviendas, casas junto al Desná.",
+   "d": "Interiorismo, reforma y reconstrucción en Cherníhiv: pisos y casas junto al Desná. Diseño desde $30/m², reforma desde $550/m², casas desde $600/m².",
+   "lead": "Interiorismo en Cherníhiv, reforma de pisos y casas y construcción de viviendas nuevas junto al Desná. El proyecto se lleva a distancia o con visitas; la reforma y la construcción, con nuestro equipo y condiciones acordadas de forma individual.",
+   "h": "Cherníhiv: una ciudad milenaria que se reconstruye",
+   "p": [
+    "Cherníhiv es una de las ciudades más antiguas de Ucrania, con un centro de poca altura, barrios de bloques y un gran sector de casas a lo largo del Desná. Desde 2022 muchas viviendas se están restaurando o construyendo de nuevo.",
+    "En las casas dañadas empezamos por una inspección: qué parte de la estructura se puede conservar y qué hay que reforzar o sustituir. Solo después llegan el proyecto, el presupuesto y la reforma, para no invertir en acabados sobre una base poco fiable."
+   ],
+   "des": "La reconstrucción es una ocasión para replantear la distribución: unir cocina y salón, añadir vestidor y un segundo baño, prever instalaciones eficientes. Si cambia el volumen de la casa, hacemos el interior junto con la arquitectura.",
+   "bld": "Reformamos pisos y casas, desde una reforma integral con instalaciones nuevas hasta los acabados, y hacemos [reconstrucción de casas]({/rekonstruktsiia-budynku-kyiv}) tras la inspección. En parcelas junto al Desná el proyecto tiene en cuenta el nivel freático y la impermeabilización.",
+   "faq": [
+    [
+     "¿Se encargan de restaurar una casa dañada?",
+     "Sí: inspección, proyecto de reconstrucción, presupuesto y obra. Reforma desde $550 por m², construcción desde $600 por m²."
+    ]
+   ],
+   "fk": [
+    "control",
+    "design_cost"
+   ]
+  },
+  "cherkasy": {
+   "n": "Cherkasy",
+   "in": "en Cherkasy",
+   "tag": "Pisos con vistas al agua, casas entre pinos.",
+   "d": "Interiorismo en Cherkasy: pisos con vistas al Dniéper y casas entre pinares. Diseño desde $30/m², reforma desde $550/m², casas desde $600/m².",
+   "lead": "Interiorismo en Cherkasy para pisos con vistas al embalse de Kremenchuk, casas entre pinares y residencias en la orilla. El proyecto, a distancia o con visitas; la reforma y la construcción, con nuestro propio equipo y condiciones individuales.",
+   "h": "Cherkasy: una ciudad de agua y pinos",
+   "p": [
+    "Cherkasy se extiende a lo largo del Dniéper y del embalse de Kremenchuk, con Sosnivka y sus pinares al lado. En la ciudad predominan los bloques soviéticos y la obra nueva; en las afueras y en la orilla, casas y dachas.",
+    "Por eso los encargos llegan en pareja: renovar el piso de la ciudad y acondicionar una casa junto al agua para el fin de semana o para vivir todo el año. Si resulta más cómodo, llevamos ambos con un solo contrato."
+   ],
+   "des": "Para casas junto al agua, ventanales, terrazas y materiales naturales resistentes a la humedad; para pisos, acabados claros, armarios empotrados y una iluminación bien pensada. El diseño puede completarse con [amueblamiento]({/mebliuvannia-kvartyry-kyiv}) desde $250 por m².",
+   "bld": "Reformamos pisos de segunda mano y de obra nueva, además de casas y dachas. Cerca de Cherkasy construimos casas de entramado, de madera maciza y de bloque para vacaciones o para vivir; en parcelas junto al agua cuidamos especialmente la cimentación y el drenaje.",
+   "faq": [
+    [
+     "¿Construyen casas de vacaciones llave en mano cerca de Cherkasy?",
+     "Sí: proyecto, construcción, acabados y muebles. Estructura desde $600 por m², llave en mano desde $1 100 por m²."
+    ],
+    [
+     "¿Pueden amueblar un piso en Cherkasy?",
+     "Sí, desde $250 por m²: selección, compra, entrega y montaje. El transporte hasta Cherkasy se calcula aparte."
+    ]
+   ],
+   "fk": [
+    "remote"
+   ]
+  },
+  "poltava": {
+   "n": "Poltava",
+   "in": "en Poltava",
+   "tag": "Centro clasicista y fincas junto al Vorskla.",
+   "d": "Interiorismo en Poltava: pisos en el centro y en obra nueva, casas junto al río Vorskla. Diseño desde $30/m², reforma desde $550/m².",
+   "lead": "Interiorismo en Poltava para pisos en el centro clasicista y en promociones nuevas, y para casas junto al Vorskla y en las afueras. El proyecto, a distancia o con visitas; la reforma y la construcción, con nuestro equipo y condiciones individuales.",
+   "h": "Poltava: centro clasicista y afueras verdes",
+   "p": [
+    "Poltava es una ciudad acogedora con un centro clasicista en torno a la Plaza Redonda, edificios bajos, barrios de bloques y un gran sector de casas. En las laderas sobre el Vorskla y en las afueras abundan las fincas con parcelas grandes.",
+    "En esas fincas suele plantearse si rehabilitar la casa vieja o construir una nueva. Presupuestamos ambas opciones para que la decisión se base en cifras y no en intuiciones."
+   ],
+   "des": "En casas con parcelas grandes, el diseño abarca también el exterior: terraza, cocina de verano, entrada. En pisos del centro, proporciones clásicas con funcionalidad moderna; en obra nueva, un almacenaje bien pensado.",
+   "bld": "Reformamos pisos y casas, desde la reforma integral con instalaciones nuevas hasta los acabados. En la región construimos casas de bloque, ladrillo, entramado y madera maciza; las parcelas en pendiente sobre el Vorskla exigen un proyecto cuidadoso de cimentación y drenaje, que resolvemos antes de empezar.",
+   "fk": [
+    "rebuild",
+    "reno_cost",
+    "remote"
+   ]
+  },
+  "ivano-frankivsk": {
+   "n": "Ivano-Frankivsk",
+   "in": "en Ivano-Frankivsk",
+   "tag": "Obra nueva y chalets en los Cárpatos; Hoda Estate.",
+   "d": "Interiorismo en Ivano-Frankivsk y los Cárpatos: pisos de obra nueva, chalets y casas de montaña. Diseño desde $30/m², reforma desde $550/m².",
+   "lead": "Interiorismo en Ivano-Frankivsk para pisos en promociones nuevas, casas en las afueras y chalets en los Cárpatos. Entre nuestros proyectos está Hoda Estate, una casa de 180 m² en los Cárpatos con madera, piedra y vistas a la montaña.",
+   "h": "Frankivsk y los Cárpatos: obra nueva y casas de montaña",
+   "p": [
+    "Ivano-Frankivsk es una de las ciudades ucranianas con más obra nueva: muchos pisos se compran sin reformar. El centro histórico austriaco es compacto, y fuera de la ciudad empiezan el Precárpato y los Cárpatos, con chalets, casas rurales y cottages.",
+    "Nuestro Hoda Estate es el proyecto de diseño de una casa de campo de 180 m² en los Cárpatos: distribución, visualizaciones 3D, materiales naturales y muebles a medida. Esa experiencia —unir calidez, vistas a la montaña y sentido práctico— la aplicamos a los proyectos de Frankivsk."
+   ],
+   "des": "Para pisos de obra nueva en Frankivsk, una distribución pensada para la familia, cocina-salón y vestidores. Para casas de montaña, madera, piedra, chimenea, grandes ventanas al paisaje y zonas prácticas para esquís y calzado.",
+   "bld": "Reformamos pisos de obra nueva desde cero y casas. En los Cárpatos construimos casas de madera maciza, de entramado y de obra, calculadas para la carga de nieve y las pendientes, y planificamos de antemano la implantación y el acceso de maquinaria; para complejos turísticos, vea [complejo vacacional llave en mano]({/baza-vidpochynku-pid-klyuch}).",
+   "faq": [
+    [
+     "¿Diseñan chalets y casas en los Cárpatos?",
+     "Sí, por ejemplo Hoda Estate, una casa de 180 m² en los Cárpatos. [Ver el proyecto]({/proekty/hoda-estate})."
+    ],
+    [
+     "¿Construyen casas rurales para alquilar?",
+     "Sí: proyecto, construcción, interiorismo y equipamiento. Estructura desde $600 por m², llave en mano desde $1 100 por m²."
+    ]
+   ],
+   "fk": [
+    "reno_cost"
+   ]
+  },
+  "ternopil": {
+   "n": "Ternópil",
+   "in": "en Ternópil",
+   "tag": "Obra nueva junto al lago; reformas para propietarios en el extranjero.",
+   "d": "Interiorismo en Ternópil: pisos en promociones junto al lago y casas particulares. Diseño desde $30/m², reforma desde $550/m², casas desde $600/m².",
+   "lead": "Interiorismo en Ternópil para pisos en promociones nuevas, renovación de viviendas antiguas y casas en las afueras. El proyecto, a distancia o con visitas; la reforma y la construcción, con nuestro propio equipo en las condiciones acordadas.",
+   "h": "Ternópil: una ciudad junto al lago con mucha obra nueva",
+   "p": [
+    "Ternópil es una ciudad compacta en torno al gran estanque de Ternópil. En los últimos años se han levantado muchas promociones nuevas, algunas con vistas al agua, mientras que barrios como Druzhba o Skhidni tienen muchos pisos estándar que se renuevan.",
+    "Muchos vecinos de Ternópil trabajan en el extranjero y compran un piso pensando en el futuro, así que la reforma tiene que poder seguirse a distancia: informes fotográficos, aprobaciones online y, si se desea, una cámara en obra."
+   ],
+   "des": "En la obra nueva, una planta libre organizada para cada familia, con vestidores y espacio para el lavadero. En pisos con vistas al lago, un interior que realza el paisaje, con las cortinas y la luz adecuadas.",
+   "bld": "Reformamos pisos en bruto y de segunda mano, además de casas. En las afueras de Ternópil construimos casas de bloque, ladrillo y entramado de madera; proyecto, estructura y acabados se pueden dividir en fases.",
+   "faq": [
+    [
+     "Vivo en el extranjero. ¿Se puede gestionar la reforma en Ternópil a distancia?",
+     "Sí: aprobaciones online, informes fotográficos cada 1–2 semanas y, con coste adicional, cámara online 24/7. El contrato y los pagos también se pueden formalizar a distancia."
+    ]
+   ],
+   "fk": [
+    "design_cost",
+    "team"
+   ]
+  },
+  "uzhhorod": {
+   "n": "Úzhgorod",
+   "in": "en Úzhgorod",
+   "reg": "Óblast de Transcarpatia",
+   "tag": "Funcionalismo checo y casas rurales de Transcarpatia.",
+   "d": "Interiorismo en Úzhgorod y Transcarpatia: pisos de época checa, obra nueva, casas y casas rurales. Diseño desde $30/m², reforma desde $550/m².",
+   "lead": "Interiorismo en Úzhgorod para pisos en edificios de la época checoslovaca, promociones nuevas junto al río Uzh, casas particulares y casas rurales de Transcarpatia. El proyecto, a distancia o con visitas; la obra, con nuestro propio equipo y condiciones individuales.",
+   "h": "Úzhgorod: funcionalismo checo, el Uzh y las montañas cerca",
+   "p": [
+    "Úzhgorod destaca por su arquitectura checoslovaca de entreguerras: edificios funcionalistas de líneas limpias y grandes ventanas, sobre todo en el barrio de Mali Halahov. Cerca están el casco antiguo, la obra nueva junto al Uzh y casas con jardín.",
+    "El clima suave y la cercanía de la frontera con la UE hacen de Transcarpatia un buen lugar para vivir y para el turismo: casas rurales, pequeños hoteles, bodegas. Llevamos estos proyectos como comerciales, con concepto, presupuesto y equipamiento."
+   ],
+   "des": "En los edificios de época checa, el interior subraya su carácter: formas sencillas, materiales de calidad, ventanas y escaleras originales conservadas. Para casas rurales, un diseño que aguanta el ir y venir de huéspedes y se mantiene con facilidad; vea también [diseño de hoteles]({/dyzain-hotelu-kyiv}).",
+   "bld": "Reformamos pisos en edificios antiguos y de obra nueva, casas y pequeños locales comerciales. En Transcarpatia construimos casas y complejos turísticos de bloque, ladrillo, madera maciza o entramado, teniendo en cuenta las pendientes y el drenaje.",
+   "faq": [
+    [
+     "¿Trabajan con casas rurales y pequeños hoteles en Transcarpatia?",
+     "Sí: concepto, arquitectura, interiorismo, reforma y equipamiento. El coste se fija con un presupuesto para cada inmueble."
+    ]
+   ],
+   "fk": [
+    "design_cost",
+    "remote"
+   ]
+  },
+  "rivne": {
+   "n": "Rivne",
+   "in": "en Rivne",
+   "tag": "Obra nueva y casas en parcelas de Polesia.",
+   "d": "Interiorismo en Rivne: pisos de obra nueva y antiguos, casas en las afueras. Diseño desde $30/m², reforma desde $550/m², casas desde $600/m².",
+   "lead": "Interiorismo en Rivne para pisos en promociones nuevas y edificios soviéticos, y para casas en las afueras y en Polesia. El proyecto, a distancia o con visitas; la reforma y la construcción, con nuestro equipo y condiciones individuales.",
+   "h": "Rivne: una ciudad verde y parcelas de Polesia",
+   "p": [
+    "Rivne es una ciudad verde de parques y barrios de bloques donde en los últimos años han surgido muchas promociones nuevas. Las afueras y la Polesia que la rodea son casas con parcelas grandes entre bosques y humedales.",
+    "Las parcelas de Polesia suelen tener el nivel freático alto y suelos de turba. Aquí es crucial proyectar bien la cimentación y el drenaje, y lo resolvemos antes de cualquier decisión de interiorismo."
+   ],
+   "des": "Para pisos en Rivne, una distribución funcional, almacenaje y luz; para casas, una paleta cálida con madera, chimenea y grandes ventanas al jardín. Se puede elegir el paquete de distribución, el básico o el completo con dirección de diseño.",
+   "bld": "Reformamos pisos y casas, desde las instalaciones nuevas hasta los acabados. Construimos casas de bloque, ladrillo, entramado y madera maciza; la cimentación se proyecta tras el estudio de la parcela; vea también [proyecto de casa]({/proektuvannia-budynku-kyiv}).",
+   "faq": [
+    [
+     "¿Se puede construir en una parcela con el nivel freático alto?",
+     "Sí, pero el proyecto de cimentación y drenaje se hace tras el estudio de la parcela. Estructura desde $600 por m²."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "design_cost"
+   ]
+  },
+  "lutsk": {
+   "n": "Lutsk",
+   "in": "en Lutsk",
+   "reg": "Óblast de Volinia",
+   "tag": "Casco antiguo, obra nueva y casas junto a los lagos de Volinia.",
+   "d": "Interiorismo en Lutsk: obra nueva, pisos en el casco antiguo y casas en Volinia. Diseño desde $30/m², reforma desde $550/m², casas desde $600/m².",
+   "lead": "Interiorismo en Lutsk para pisos en promociones nuevas y en el casco antiguo junto al castillo, y para casas en Volinia. El proyecto, a distancia o con visitas; la reforma y la construcción, con nuestro propio equipo y condiciones individuales.",
+   "h": "Lutsk: el castillo, barrios nuevos y casas de Volinia",
+   "p": [
+    "Lutsk tiene un centro histórico en torno a su castillo, barrios soviéticos y muchas promociones nuevas. Alrededor se extiende Volinia, con lagos y bosques donde se construyen casas para vivir y para descansar.",
+    "La cercanía de la frontera polaca hace que muchos clientes vivan y trabajen en la UE y preparen su vivienda en Lutsk a distancia. Para ellos organizamos el proceso de modo que la mayoría de decisiones se tomen online."
+   ],
+   "des": "En los pisos de las promociones nuevas, una distribución familiar con mucho almacenaje; en el casco antiguo, respeto por los detalles históricos. En las casas de Volinia, una paleta natural y cálida con salida directa al jardín.",
+   "bld": "Reformamos pisos y casas, desde la obra gruesa hasta los muebles, y también estancias sueltas. En Volinia construimos casas de bloque, ladrillo, entramado y madera maciza; en parcelas junto a los lagos, con especial atención al suelo y la impermeabilización.",
+   "faq": [
+    [
+     "¿Puedo preparar un piso en Lutsk viviendo en Polonia?",
+     "Sí: aprobaciones online, informes fotográficos, cámara online con coste adicional y videollamadas para las decisiones clave."
+    ]
+   ],
+   "fk": [
+    "design_cost",
+    "build"
+   ]
+  },
+  "khmelnytskyi": {
+   "n": "Jmelnytski",
+   "in": "en Jmelnytski",
+   "tag": "Pisos, casas, tiendas y showrooms.",
+   "d": "Interiorismo en Jmelnytski: pisos de obra nueva, casas, tiendas y oficinas. Diseño desde $30/m², reforma desde $550/m², oficinas desde $350/m².",
+   "lead": "Interiorismo en Jmelnytski para pisos de obra nueva y casas, y también tiendas, showrooms y oficinas en esta ciudad comercial. El proyecto, a distancia o con visitas; la reforma y la construcción, con nuestro equipo y condiciones individuales.",
+   "h": "Jmelnytski: una ciudad comercial con barrios nuevos",
+   "p": [
+    "Jmelnytski es conocida como gran centro comercial de Podolia, con muchos empresarios, tiendas y almacenes. Su vivienda la forman barrios soviéticos, promociones nuevas y casas junto al Bug Meridional.",
+    "Por eso, además de pisos y casas, hablamos a menudo de locales: una tienda, un showroom, una oficina. Para ellos están la [reforma de locales comerciales]({/remont-komertsiinykh-prymishchen-kyiv}) y el [negocio llave en mano]({/biznes-pid-kliuch-kyiv}), con factura para empresas."
+   ],
+   "des": "Para pisos, una distribución familiar, cocina-salón y vestidores; para tiendas y showrooms, el recorrido del cliente, los escaparates y la luz sobre el producto.",
+   "bld": "Reformamos pisos, casas, oficinas y tiendas: oficinas desde $350 por m² (obra y materiales de base). Cerca de Jmelnytski construimos casas de bloque, ladrillo y entramado; proyecto, estructura, acabados y amueblamiento pueden ir en un solo contrato o por fases.",
+   "faq": [
+    [
+     "¿Diseñan y reforman tiendas en Jmelnytski?",
+     "Sí: concepto, reforma y equipamiento. El coste, según presupuesto del local; para empresas registradas en Ucrania, factura con o sin IVA, de forma individual."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "pay"
+   ]
+  },
+  "chernivtsi": {
+   "n": "Chernivtsí",
+   "in": "en Chernivtsí",
+   "tag": "Edificios de época austriaca y parcelas en las colinas.",
+   "d": "Interiorismo en Chernivtsí: pisos en edificios austriacos, obra nueva y casas en Bucovina. Diseño desde $30/m², reforma desde $550/m².",
+   "lead": "Interiorismo en Chernivtsí para pisos en edificios austriacos del centro histórico, obra nueva y casas en las colinas de Bucovina. El proyecto, a distancia o con visitas; la reforma y la construcción, con nuestro propio equipo y condiciones individuales.",
+   "h": "Chernivtsí: herencia austriaca y colinas de Bucovina",
+   "p": [
+    "Chernivtsí conserva un conjunto de la época austriaca: fachadas vienesas, edificios con techos altos y molduras, y la Residencia de los Metropolitanos, Patrimonio de la Humanidad de la UNESCO. En las afueras hay obra nueva, y en las colinas, casas con vistas a la ciudad y al Prut.",
+    "Chernivtsí es una ciudad de calles en cuesta y parcelas con desniveles. Las casas necesitan muros de contención, drenaje y terrazas; los pisos en edificios antiguos, una revisión de forjados e instalaciones."
+   ],
+   "des": "En pisos de edificios austriacos, un interior que conserva proporciones y detalles, con cocina y baño modernos. En casas en ladera, terrazas a varios niveles, ventanales y la escalera como parte del interior.",
+   "bld": "Reformamos pisos en edificios antiguos, con revisión de forjados e instalaciones, y de obra nueva, además de casas. En Bucovina construimos casas de bloque, ladrillo, madera maciza y entramado adaptadas al relieve y al suelo.",
+   "faq": [
+    [
+     "¿Trabajan con pisos en edificios históricos de Chernivtsí?",
+     "Sí: revisión de forjados e instalaciones, un proyecto que respeta los detalles históricos y la reforma con nuestro equipo."
+    ]
+   ],
+   "fk": [
+    "slope",
+    "design_cost"
+   ]
+  },
+  "kropyvnytskyi": {
+   "n": "Kropyvnytsky",
+   "in": "en Kropyvnytsky",
+   "reg": "Óblast de Kirovohrad",
+   "tag": "Centro comercial del siglo XIX y renovación de viviendas antiguas.",
+   "d": "Interiorismo en Kropyvnytsky: pisos en el centro y en los barrios, casas particulares. Diseño desde $30/m², reforma desde $550/m².",
+   "lead": "Interiorismo en Kropyvnytsky para pisos en el centro histórico y en los barrios, y para casas junto al Inhul y en las afueras. El proyecto, a distancia o con visitas; la reforma y la construcción, con nuestro equipo en las condiciones acordadas.",
+   "h": "Kropyvnytsky: antigua ciudad de comerciantes y casas particulares",
+   "p": [
+    "Kropyvnytsky está en el centro mismo de Ucrania, con un centro comercial del siglo XIX, barrios de bloques y un gran sector de casas a lo largo del Inhul. Hay menos obra nueva que en las capitales de región más grandes, así que la mayoría de encargos son para renovar viviendas existentes.",
+    "En estas viviendas lo más valioso es un presupuesto exacto: qué cambiar en las instalaciones, si nivelar paredes, qué estructuras conservar. Empezamos por ahí, para que el presupuesto no se dispare a mitad de obra."
+   ],
+   "des": "En pisos antiguos, redistribución dentro de lo que permite la estructura, baños y cocinas nuevos, muebles empotrados; en casas, espacio para una familia grande, terraza, sala de calderas y despensa. Paquetes desde el de distribución hasta el completo.",
+   "bld": "Reformamos pisos y casas, desde la [reforma integral]({/kapitalnyi-remont-kvartyry-kyiv}) hasta la estética. Cerca de Kropyvnytsky construimos casas de bloque, ladrillo y entramado, desde el proyecto arquitectónico hasta los acabados llave en mano.",
+   "fk": [
+    "reno_cost",
+    "pay",
+    "remote"
+   ]
+  },
+  "irpin": {
+   "n": "Irpin",
+   "in": "en Irpin",
+   "d": "Reforma llave en mano en Irpin: pisos de obra nueva y casas. Diseño desde $30/m², reforma desde $550/m², casas desde $600/m². Garantía de 12 meses.",
+   "lead": "Reforma llave en mano en Irpin: pisos en promociones nuevas, adosados y casas. Hacemos el proyecto de diseño, la reforma con nuestro propio equipo en plantilla y la construcción de casas desde cero: un equipo, un contrato y un presupuesto antes de empezar.",
+   "h": "Vivienda en Irpin: obra nueva, adosados y casas",
+   "p": [
+    "En los últimos años Irpin se ha convertido en una de las principales ciudades dormitorio de Kiev: muchos pisos se compran en promociones nuevas, a menudo sin acabados o con un acabado de promotora que los dueños quieren rehacer enseguida. Cerca hay adosados y urbanizaciones entre pinos y, junto al río Irpin, casas más antiguas.",
+    "Desde 2022 algunas casas han pasado por una restauración, y en ellas empezamos inspeccionando estructura e instalaciones: qué conservar y qué conviene sustituir antes de los acabados. En la obra nueva, lo primero es revisar el recrecido, las paredes y la electricidad de la promotora antes de poner azulejo y muebles."
+   ],
+   "des": "Un piso en una promoción de Irpin suele ser pequeño y de planta libre, y ahí el proyecto se amortiza antes que en ningún sitio: una cocina-salón bien pensada, un vestidor en lugar de un pasillo inútil, luz en cada zona. En casas y adosados añadimos escalera, terrazas y la relación con la parcela.",
+   "bld": "Reformamos pisos en bruto o con acabado de promotora, adosados y casas, y también hacemos solo la [reforma en bruto]({/chornovyi-remont-kvartyry-kyiv}). Las parcelas de Irpin, Vorzel y Stoianka suelen ser estrechas y arboladas, así que proyectamos la casa para cada parcela; construimos de bloque y ladrillo, y también [casas de entramado]({/karkasnyi-budynok-pid-kliuch-kyiv}).",
+   "faq": [
+    [
+     "¿Reforman pisos de obra nueva con acabado de promotora?",
+     "Sí. Primero valoramos qué se puede conservar del trabajo de la promotora (a menudo parte de la obra gruesa) y qué hay que rehacer, y solo entonces hacemos el presupuesto."
+    ],
+    [
+     "¿Se ocupan de casas que necesitan restauración?",
+     "Sí: empezamos inspeccionando estructura e instalaciones y después hacemos [reconstrucción de la casa]({/rekonstruktsiia-budynku-kyiv}) o una reforma integral según presupuesto."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "team"
+   ]
+  },
+  "bucha": {
+   "n": "Bucha",
+   "in": "en Bucha",
+   "d": "Reforma llave en mano en Bucha: pisos de obra nueva, casas y chalets. Diseño desde $30/m², reforma desde $550/m², construcción desde $600/m².",
+   "lead": "Reforma llave en mano en Bucha: pisos en promociones, chalets y casas en calles tranquilas entre pinos. CAS lleva la obra desde el proyecto de diseño hasta los muebles, con presupuesto, contrato y equipo propio.",
+   "h": "Bucha: chalets, obra nueva y casas en el bosque",
+   "p": [
+    "En Bucha una casa en el bosque convive con promociones de poca altura y adosados. Muchas familias se mudan aquí desde Kiev buscando tranquilidad y espacio, así que el encargo típico es una casa para vivir a diario: despacho para teletrabajar, vestidores, despensa, terraza.",
+    "Buena parte de la vivienda de Bucha se reconstruyó o se levantó de nuevo después de 2022. En estas casas proyectamos instalaciones modernas —calefacción, ventilación, alimentación de respaldo— junto con el interior desde el principio, no después."
+   ],
+   "des": "En los chalets de Bucha el diseñador suele unir un gran salón con la cocina, añadir chimenea o una segunda zona de luz y planificar una entrada con sitio para la ropa de temporada. En los pisos, el máximo de almacenaje y luz en poca superficie.",
+   "bld": "Reformamos pisos, adosados y casas, desde la obra gruesa hasta los acabados, incluida la reforma de [baño]({/remont-vannoi-kimnaty-kyiv}) y [cocina]({/remont-kukhni-kyiv}) por separado. Las parcelas de Bucha son sobre todo arenosas y boscosas: la cimentación se proyecta tras el estudio del terreno y también hacemos [paisajismo]({/landshaftnyi-dyzain-kyiv}) desde $50 por cada 100 m².",
+   "fk": [
+    "reno_cost",
+    "design_only",
+    "build",
+    "control"
+   ]
+  },
+  "hostomel": {
+   "n": "Hostomel",
+   "in": "en Hostomel",
+   "d": "Reforma y construcción de casas llave en mano en Hostomel: proyecto desde $12/m², estructura desde $600/m², llave en mano desde $1 100/m².",
+   "lead": "Reforma desde $550/m², casas desde $600/m²: en Hostomel hacemos reformas llave en mano y construcción, desde el proyecto hasta los muebles, con equipo propio, presupuesto y contrato.",
+   "h": "Hostomel: casas particulares y barrios nuevos",
+   "p": [
+    "Hostomel es ante todo una ciudad de casas: viviendas con parcelas pequeñas, urbanizaciones nuevas y alguna promoción cerca de la carretera de Kiev. Muchos propietarios no reforman, sino que construyen de nuevo o rehacen a fondo la casa vieja.",
+    "En las parcelas de Hostomel solemos hacer el paquete completo: [proyecto de casa]({/proektuvannia-budynku-kyiv}), construcción, instalaciones, interiorismo y exteriores. Así las juntas entre fases —cimentación y suelos, instalaciones y muebles— no dan sorpresas en los acabados."
+   ],
+   "des": "En una casa de Hostomel el diseño empieza por las plantas: dónde van los dormitorios, el cuarto técnico y la caldera, cómo se pasa de la terraza a la cocina. Las casas de una planta con terraza y piscina, como nuestro House 150, funcionan especialmente bien en parcelas pequeñas.",
+   "bld": "Reformamos casas recién compradas, redistribuimos viviendas antiguas y renovamos pisos; en una casa vieja revisamos primero cubierta, muros e instalaciones. Construimos casas de bloque y ladrillo, [modulares]({/modulnyi-budynok-kyiv}) y de entramado, con el [coste de construcción]({/vartist-budivnytstva-budynku-kyiv}) desglosado por fases en el contrato.",
+   "faq": [
+    [
+     "¿Cuánto cuesta construir una casa en Hostomel?",
+     "Estructura desde $600 por m², llave en mano con acabados desde $1 100 por m². Para una casa de 150 m², el cálculo base es 150 m² × $600 la estructura o 150 m² × $1 100 llave en mano; el precio exacto, según presupuesto."
+    ],
+    [
+     "¿Hacen el interior de una casa construida por otra empresa?",
+     "Sí. Diseño desde $30 por m², reforma desde $550 por m²; si la reforma la hace CAS, nos mantenemos dentro del ±5 % del presupuesto."
+    ]
+   ],
+   "fk": [
+    "rebuild"
+   ]
+  },
+  "vyshneve": {
+   "n": "Vyshneve",
+   "in": "en Vyshneve",
+   "d": "Reforma de pisos llave en mano en Vyshneve: obra nueva junto a Kiev, diseño desde $30/m², reforma desde $550/m², muebles. Equipo propio.",
+   "lead": "Reforma llave en mano en Vyshneve: sobre todo pisos de obra nueva junto al límite de Kiev, y también casas. Diseño, reforma y muebles con un solo equipo, igual que en la capital.",
+   "h": "Vyshneve: obra nueva pegada a Kiev",
+   "p": [
+    "Vyshneve prácticamente se ha unido a los barrios kievitas de Borshchahivka y Zhuliany, así que aquí los retos son los de la obra nueva de la capital: un piso de promotora, planta libre y la necesidad de encajar cocina, salón y cuarto infantil en poca superficie.",
+    "Junto a los bloques quedan casas y dachas antiguas que sus dueños adaptan para vivir todo el año. Aquí combinamos a menudo la reforma de un piso para unos miembros de la familia y la reconstrucción de una casa para otros."
+   ],
+   "des": "En los pisos de Vyshneve lo más pedido es un [diseño de piso]({/dyzain-interieru-kvartyry-kyiv}) que convierta un estudio en habitaciones separadas, o al revés, que una cocina y salón. Hacemos los planos con tanto detalle que la cuadrilla no tenga que decidir nada sobre la marcha.",
+   "bld": "Reformamos pisos desde el recrecido y el enlucido hasta los muebles; para obra nueva, vea también [reforma de piso en obra nueva]({/remont-novobudovy-kyiv}). Las parcelas son pequeñas, así que las casas suelen ser compactas, de dos plantas y con pocos pasillos; tras una inspección es posible la [reconstrucción con una segunda planta]({/rekonstruktsiia-budynku-kyiv}).",
+   "faq": [
+    [
+     "¿Se puede unir la cocina con el salón en un piso de obra nueva?",
+     "Depende de la estructura y de si el piso tiene gas. Lo comprobamos en la fase de distribución, antes de empezar la reforma."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "same_prices"
+   ]
+  },
+  "boiarka": {
+   "n": "Boiarka",
+   "in": "en Boiarka",
+   "d": "Construcción y reforma de casas llave en mano en Boiarka y alrededores: estructura desde $600/m², llave en mano desde $1 100/m².",
+   "lead": "Reforma desde $550/m², casas desde $600/m²: en Boiarka hacemos reformas llave en mano y construimos y rehabilitamos casas. Un solo equipo propio, de la parcela al interior terminado.",
+   "h": "Boiarka: un barrio residencial entre bosques",
+   "p": [
+    "Boiarka está rodeada de bosques y la mayoría de encargos aquí son de casas: construir una nueva, añadir una planta o arreglar una casa comprada para reformar. Hay menos pisos que en la vecina Vyshneve, aunque también aparecen promociones nuevas.",
+    "Algunas parcelas de Boiarka y de los pueblos cercanos son antiguas dachas de muros finos y sin instalaciones en condiciones. En ellas calculamos con honestidad qué compensa más: aislar y rehacer, o levantar una casa nueva."
+   ],
+   "des": "En una casa de Boiarka el diseño suele abarcar también la fachada y la parcela: grandes ventanas al bosque, terraza, entrada con cortavientos. Dentro, chimenea o estufa, cocina con isla y vestidores, como en nuestro Petrivtsi House.",
+   "bld": "Reformamos casas y pisos: instalaciones nuevas, aislamiento, paredes niveladas y acabados; en casas con historia, tras una inspección. Construimos de bloque y ladrillo, y también [casas de madera maciza]({/budynok-z-brusa-kyiv}) que quedan naturales en el bosque, respetando los árboles de la parcela y el nivel freático.",
+   "faq": [
+    [
+     "¿Hacen también las instalaciones de la casa?",
+     "Sí: calefacción, agua, saneamiento y electricidad entran en el proyecto y en el presupuesto de la casa."
+    ]
+   ],
+   "fk": [
+    "build",
+    "rebuild"
+   ]
+  },
+  "brovary": {
+   "n": "Brovary",
+   "in": "en Brovary",
+   "d": "Reforma de pisos y casas llave en mano en Brovary: diseño desde $30/m², reforma desde $550/m², oficinas desde $350/m², casas desde $600/m².",
+   "lead": "Reforma llave en mano en Brovary: pisos en bloques prefabricados y de obra nueva, casas en la ciudad y en los pueblos de alrededor, y también oficinas y locales comerciales. Diseño, reforma y construcción con un solo equipo de CAS.",
+   "h": "Brovary: de los bloques prefabricados a los chalets de la orilla izquierda",
+   "p": [
+    "Brovary es una ciudad grande de la orilla izquierda con vivienda muy variada: bloques soviéticos de nueve plantas, obra nueva, casas y urbanizaciones a lo largo de la carretera de Cherníhiv. En los pisos antiguos lo típico es renovar todas las instalaciones y nivelar paredes; en la obra nueva, reformar desde cero.",
+    "También hay mucha industria, almacenes y oficinas, así que además de viviendas hacemos [reforma de oficinas llave en mano]({/remont-ofisu-pid-klyuch-kyiv}) desde $350 por m² y de [locales comerciales]({/remont-komertsiinykh-prymishchen-kyiv}), con factura para empresas."
+   ],
+   "des": "En los pisos de bloques prefabricados de Brovary el diseñador busca ante todo espacio: dónde empotrar armarios, cómo ampliar el baño a costa del pasillo, si se puede unir la cocina con una habitación. En las casas, plantas, terraza y sala de calderas.",
+   "bld": "Reformamos pisos de segunda mano renovando por completo electricidad y fontanería —vea [reforma integral de piso]({/kapitalnyi-remont-kvartyry-kyiv})—, además de obra nueva y casas. Las parcelas de Brovary y de Krasylivka, Trebukhiv o Kniazhychi suelen ser llanas, así que la casa se planifica con libertad: de una planta con terraza o de dos.",
+   "faq": [
+    [
+     "¿Trabajan en edificios de paneles prefabricados?",
+     "Sí. En los edificios de paneles no tocamos los muros de carga y la redistribución se queda dentro de lo que permite la estructura."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "office"
+   ]
+  },
+  "boryspil": {
+   "n": "Boryspil",
+   "in": "en Boryspil",
+   "d": "Reforma llave en mano en Boryspil y casas en los pueblos cercanos: diseño desde $30/m², reforma desde $550/m², estructura desde $600/m².",
+   "lead": "Reforma llave en mano en Boryspil: pisos, casas y chalets en los pueblos a lo largo de la carretera de Boryspil. Proyectamos, reformamos y construimos con el equipo propio de CAS.",
+   "h": "Boryspil y la carretera: casas para vivir todo el año",
+   "p": [
+    "Boryspil es conocida por su aeropuerto, pero para nosotros es sobre todo una ciudad de casas y pequeñas promociones, con pueblos y urbanizaciones a lo largo de la carretera: Hora, Shchaslyve, Velyka Oleksandrivka. Aquí se muda quien trabaja en Kiev pero quiere una casa con parcela.",
+    "Las casas se compran a menudo en estructura o listas para acabados, y entonces lo importante es no rehacer lo hecho, sino continuar bien: revisar cubierta, ventanas, recrecido e instalaciones y presupuestar justo lo que falta."
+   ],
+   "des": "En una casa cerca de Boryspil el diseño suele incluir un salón a doble altura o con grandes ventanas, un dormitorio de invitados para la familia y una zona de trabajo. Los pisos de la ciudad son más compactos, así que cuentan los muebles empotrados y el almacenaje.",
+   "bld": "Reformamos casas entregadas por promotoras y pisos en la ciudad, de la obra gruesa a los muebles, además de la [reforma de cocina]({/remont-kukhni-kyiv}) con [cocinas a medida]({/kukhni-i-shafy-na-zamovlennia-kyiv}) de nuestros trabajadores y socios. Las parcelas de la orilla izquierda son llanas y abiertas, así que proyectamos pensando en el viento y el sol: terraza al sur y entrada protegida.",
+   "faq": [
+    [
+     "La casa se compró en estructura. ¿Por dónde empezamos?",
+     "Por una inspección y una lista de trabajos: qué está hecho y qué hay que corregir. Después, el proyecto de diseño y el presupuesto para terminar la casa."
+    ],
+    [
+     "¿Construyen en los pueblos cerca de Boryspil?",
+     "Sí: Hora, Shchaslyve, Velyka Oleksandrivka y otras localidades de esta zona. Estructura desde $600 por m², llave en mano desde $1 100 por m²."
+    ]
+   ],
+   "fk": [
+    "reno_cost"
+   ]
+  },
+  "vyshhorod": {
+   "n": "Vyshhorod",
+   "in": "en Vyshhorod",
+   "d": "Diseño, reforma y casas llave en mano en Vyshhorod y Petrivtsi, junto al mar de Kiev. Diseño desde $30/m², reforma desde $550/m².",
+   "lead": "Reforma llave en mano en Vyshhorod y los pueblos cercanos, junto al Dniéper y el mar de Kiev. Uno de nuestros proyectos en la zona es Petrivtsi House, una casa de 320 m² con arquitectura e interiorismo en un mismo proyecto.",
+   "h": "Vyshhorod y Petrivtsi: casas junto al agua",
+   "p": [
+    "Vyshhorod se alza en la orilla alta del Dniéper, junto a la central hidroeléctrica y el mar de Kiev. Aquí se mezclan bloques antiguos, obra nueva con vistas al agua y casas, en la ciudad y en los pueblos de la carretera a Kiev: Petrivtsi, Khotianivka, Liutizh.",
+    "Nuestro Petrivtsi House es una casa de 320 m² en Petrivtsi: distribución de plantas, cocina con isla y chimenea, baños, lavadero y despacho. Esa experiencia con una casa para una familia grande junto al agua la llevamos a cada nuevo proyecto en la zona de Vyshhorod."
+   ],
+   "des": "Junto al agua el interior se construye en torno a las vistas: ventanales, terrazas, salón con salida al jardín. Los materiales se eligen pensando en la humedad: madera natural solo donde aguante, piedra y gres porcelánico en las zonas húmedas.",
+   "bld": "Reformamos pisos, desde bloques antiguos hasta obra nueva, y casas llave en mano; en pisos con vistas al Dniéper hacemos a menudo [reformas de gama alta]({/remont-premium-klasu-kyiv}) con ventilación silenciosa. Las parcelas junto al agua requieren un proyecto cuidadoso de cimentación e impermeabilización a partir del estudio del terreno; la implantación y el paisajismo se plantean desde el inicio.",
+   "faq": [
+    [
+     "¿Qué proyecto de CAS hay cerca de Vyshhorod?",
+     "Petrivtsi House, una casa de 320 m² en Petrivtsi: proyecto de arquitectura e interiorismo. [Ver el proyecto]({/proekty/petrivtsi-house})."
+    ]
+   ],
+   "fk": [
+    "build",
+    "reno_cost"
+   ]
+  },
+  "obukhiv": {
+   "n": "Obukhiv",
+   "in": "en Obukhiv",
+   "d": "Reforma de pisos y casas llave en mano en Obukhiv, Ukrainka y Trypillia: diseño desde $30/m², reforma desde $550/m², casas desde $600/m².",
+   "lead": "Reforma llave en mano en Obukhiv, Ukrainka y los pueblos junto al Dniéper al sur de Kiev: pisos, casas y residencias de campo. Diseño, reforma, construcción y paisajismo con un solo equipo.",
+   "h": "La zona de Obukhiv: ciudad, Dniéper y casas de campo",
+   "p": [
+    "Obukhiv es una ciudad pequeña con vivienda mayoritariamente soviética y casas particulares; cerca están Ukrainka y Trypillia, a orillas del Dniéper, y Kozyn, más próximo a Kiev. Abundan las casas de campo, que sirven tanto de vivienda habitual como de dacha con vistas al agua.",
+    "En los pisos de Obukhiv y Ukrainka la tarea típica es la reforma integral de viviendas antiguas. En las casas sobre el Dniéper, terrazas, grandes ventanas, sauna o piscina y el ajardinamiento de parcelas con desnivel."
+   ],
+   "des": "En parcelas con vistas al Dniéper, el interiorismo va unido a la arquitectura: dónde están las ventanas, hacia dónde mira el salón, cómo se baja de la terraza al jardín. En los pisos, una distribución funcional y acabados claros.",
+   "bld": "Reformamos pisos con instalaciones nuevas, casas y chalets; los detalles de la garantía, en [contrato, garantía y pago]({/dogovir-garantiya-oplata}). Las parcelas sobre el Dniéper suelen tener pendiente, así que proyectamos según el relieve, con muros de contención y drenaje; para residencias de campo, vea también [casas en Koncha-Zaspa y Kozyn]({/budynok-pid-kliuch-koncha-zaspa}).",
+   "faq": [
+    [
+     "¿Hacen paisajismo para una casa sobre el Dniéper?",
+     "Sí, paisajismo desde $50 por cada 100 m²: plano general, zonificación, iluminación exterior y terrazas."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "slope"
+   ]
+  },
+  "vasylkiv": {
+   "n": "Vasylkiv",
+   "in": "en Vasylkiv",
+   "d": "Reforma y construcción llave en mano en Vasylkiv: casas de entramado, modulares y de obra; reforma desde $550/m², diseño desde $30/m².",
+   "lead": "Reforma llave en mano en Vasylkiv y los pueblos de alrededor: pisos antiguos, casas particulares y casas nuevas de entramado y modulares. Diseño, reforma y construcción, del proyecto a los muebles.",
+   "h": "Vasylkiv: una ciudad antigua junto al Stuhna",
+   "p": [
+    "Vasylkiv, a orillas del río Stuhna, es una de las ciudades más antiguas de la región de Kiev. Su vivienda son sobre todo casas de distintas épocas y bloques pequeños, con poca obra nueva, así que la mayoría de encargos son reformar o rehacer una casa, o construir una nueva en la parcela familiar.",
+    "Las parcelas de Vasylkiv y alrededores suelen ser más grandes que cerca de Kiev, con sitio para garaje, anexos y huerto. Lo planificamos todo en el plano general desde el principio para que la casa no se pierda en la parcela."
+   ],
+   "des": "En las casas de Vasylkiv solemos hacer el interior junto con la arquitectura: un volumen sencillo, un interior cálido con madera, una cocina-salón con salida al jardín. Para presupuestos ajustados funciona el paquete de distribución, desde $6 por m².",
+   "bld": "Reformamos casas y pisos: cubierta e instalaciones nuevas, aislamiento, paredes niveladas, acabados; si solo hay que preparar la vivienda, hacemos la [reforma en bruto]({/chornovyi-remont-kvartyry-kyiv}). En parcelas grandes funcionan bien las [casas de entramado]({/karkasnyi-budynok-pid-kliuch-kyiv}) y las [modulares]({/modulnyi-budynok-kyiv}), además de las clásicas de bloque.",
+   "faq": [
+    [
+     "¿Puedo encargar solo la distribución de una casa?",
+     "Sí, el paquete de distribución desde $6 por m²: plano de medición, 2–3 variantes de distribución y plano de mobiliario."
+    ]
+   ],
+   "fk": [
+    "build",
+    "team"
+   ]
+  },
+  "fastiv": {
+   "n": "Fastiv",
+   "in": "en Fastiv",
+   "d": "Diseño, reforma y construcción de casas llave en mano en Fastiv: proyecto desde $12/m², estructura desde $600/m², reforma desde $550/m².",
+   "lead": "Reforma llave en mano en Fastiv y su distrito: pisos, casas particulares y casas nuevas desde cero. Proyecto, presupuesto, reforma y construcción con el equipo propio de CAS.",
+   "h": "Fastiv: una ciudad ferroviaria de casas particulares",
+   "p": [
+    "Fastiv es un gran nudo ferroviario al suroeste de Kiev, con un centro compacto, algunos barrios de bloques y un gran sector de casas. Desde aquí nos llegan sobre todo reformas de pisos antiguos y rehabilitaciones de casas familiares.",
+    "Muchas casas de Fastiv y su distrito se construyeron hace décadas sin proyecto: ampliaciones, forjados de distintas épocas, instalaciones viejas. Antes de reformar hacemos una inspección para saber sobre qué se apoyará el nuevo interior."
+   ],
+   "des": "En las casas de Fastiv el diseño suele empezar por la redistribución: eliminar habitaciones de paso, hacer un baño completo y una cocina-salón. Preparamos los planos para que el presupuesto no tenga trabajos desconocidos.",
+   "bld": "Reformamos casas y pisos llave en mano o estancias sueltas: [baño]({/remont-vannoi-kimnaty-kyiv}), cocina, aseo. En el distrito construimos casas de bloque, ladrillo y [entramado]({/karkasnyi-budynok-pid-kliuch-kyiv}), empezando por el [proyecto de casa]({/proektuvannia-budynku-kyiv}) para la parcela. Fastiv queda más lejos de Kiev, así que la cuadrilla trabaja en obra por bloques.",
+   "faq": [
+    [
+     "¿Trabajan en Fastiv y en los pueblos del distrito?",
+     "Sí, en Fastiv y su distrito: diseño, reforma y construcción. La toma de medidas es de pago y se presupuesta individualmente."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "control"
+   ]
+  },
+  "bila-tserkva": {
+   "n": "Bila Tserkva",
+   "in": "en Bila Tserkva",
+   "d": "Reforma de pisos y casas llave en mano en Bila Tserkva: diseño desde $30/m², reforma desde $550/m², casas desde $600/m², oficinas desde $350/m².",
+   "lead": "Reforma llave en mano en Bila Tserkva, la mayor ciudad de la región de Kiev: pisos de obra nueva y antiguos, casas, oficinas y restaurantes. Diseño, reforma y construcción con un solo equipo de CAS.",
+   "h": "Bila Tserkva: una gran ciudad con su propio mercado de vivienda",
+   "p": [
+    "Bila Tserkva es una ciudad grande a orillas del Ros, con su propio centro, el parque Oleksandriia, barrios de bloques prefabricados, obra nueva y un gran sector de casas. Su mercado de vivienda es independiente, así que los encargos son muy variados: desde un lavado de cara de un piso hasta una casa desde cero.",
+    "Para empresarios de Bila Tserkva hacemos también [diseño de restaurantes y cafeterías]({/dyzain-restoranu-kafe-kyiv}), reforma de oficinas y [negocio llave en mano]({/biznes-pid-kliuch-kyiv}), con factura para empresas."
+   ],
+   "des": "En la obra nueva de Bila Tserkva el proyecto aprovecha la planta libre: dormitorios separados, vestidor, cocina-salón. En pisos antiguos, redistribución dentro de lo permitido, instalaciones nuevas y muebles empotrados.",
+   "bld": "Reformamos pisos, casas y locales comerciales, desde la [reforma estética]({/kosmetychnyi-remont-kvartyry-kyiv}) hasta la [integral]({/kapitalnyi-remont-kvartyry-kyiv}). Cerca de Bila Tserkva construimos casas de bloque, ladrillo, entramado y madera maciza; hay espacio para una casa de una planta con terraza y piscina, como nuestro House 150. En obras grandes la cuadrilla trabaja por bloques.",
+   "fk": [
+    "reno_cost",
+    "office",
+    "build"
+   ]
+  }
+ }
+}

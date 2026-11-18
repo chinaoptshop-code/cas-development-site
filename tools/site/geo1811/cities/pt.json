@@ -1,0 +1,687 @@
+{
+ "slugs": {
+  "vinnytsia": "design-remodelacao-vinnytsia",
+  "zhytomyr": "design-remodelacao-jitomir",
+  "chernihiv": "design-remodelacao-chernihiv",
+  "cherkasy": "design-remodelacao-cherkasy",
+  "poltava": "design-remodelacao-poltava",
+  "ivano-frankivsk": "design-remodelacao-ivano-frankivsk",
+  "ternopil": "design-remodelacao-ternopil",
+  "uzhhorod": "design-remodelacao-uzhhorod",
+  "rivne": "design-remodelacao-rivne",
+  "lutsk": "design-remodelacao-lutsk",
+  "khmelnytskyi": "design-remodelacao-khmelnytskyi",
+  "chernivtsi": "design-remodelacao-chernivtsi",
+  "kropyvnytskyi": "design-remodelacao-kropyvnytskyi",
+  "irpin": "design-remodelacao-irpin",
+  "bucha": "design-remodelacao-bucha",
+  "hostomel": "design-remodelacao-hostomel",
+  "vyshneve": "design-remodelacao-vyshneve",
+  "boiarka": "design-remodelacao-boiarka",
+  "brovary": "design-remodelacao-brovary",
+  "boryspil": "design-remodelacao-boryspil",
+  "vyshhorod": "design-remodelacao-vyshhorod",
+  "obukhiv": "design-remodelacao-obukhiv",
+  "vasylkiv": "design-remodelacao-vasylkiv",
+  "fastiv": "design-remodelacao-fastiv",
+  "bila-tserkva": "design-remodelacao-bila-tserkva"
+ },
+ "tpl": {
+  "h1_c": "Design de interiores e remodelação {in}",
+  "h1_t": "Design, remodelação e construção chave na mão {in}",
+  "title_c": [
+   "Design de interiores {in} — remodelação e construção | CAS",
+   "Design de interiores {in} — remodelação | CAS",
+   "Design de interiores {in} | CAS"
+  ],
+  "title_t": [
+   "Remodelação chave na mão {in} — design e moradias | CAS",
+   "Remodelação chave na mão {in} | CAS"
+  ],
+  "reg": "Oblast de {n}",
+  "all_t": "Todas as cidades da região de Kyiv",
+  "des_h": "Design de interiores {in}",
+  "des_tail": "Projeto de design desde $30 por m² (mínimo $2 500); os pacotes estão na página [estúdio de design de interiores]({/dyzain-interieru-kyiv}).",
+  "ren_h": "Remodelação chave na mão e construção de moradias",
+  "ren_c": "A remodelação é feita pela nossa equipa própria: desde $550 por m² de trabalhos e materiais de base; materiais de acabamento, mobiliário e eletrodomésticos à parte, conforme orçamento. O âmbito, o calendário e o plano de pagamentos (50/50, 50/30/20 ou por fases, com sinal a partir de 10%) ficam no contrato; a deslocação da equipa é acordada caso a caso. Projeto de arquitetura desde $12 por m², estrutura desde $600 por m², chave na mão com acabamentos desde $1 100 por m² — veja [remodelação chave na mão]({/remont-pid-klyuch-kyiv}) e [construção de moradias]({/budivnytstvo-budynkiv-kyiv}).",
+  "ren_t": "A mesma equipa própria que em Kyiv, com as mesmas tarifas: remodelação desde $550 por m² (trabalhos e materiais de base) e, se a remodelação for feita pela CAS, o total final fica dentro de ±5% do orçamento. Projeto de arquitetura desde $12 por m², estrutura desde $600 por m², chave na mão com acabamentos desde $1 100 por m²; 12 meses de garantia sobre os trabalhos. Mais em [remodelação chave na mão]({/remont-pid-klyuch-kyiv}) e [construção de moradias]({/budivnytstvo-budynkiv-kyiv}).",
+  "log_h": "Logística, acompanhamento e relatórios",
+  "log_c": "O projeto e as aprovações decorrem online; deslocamo-nos para as medições e as fases-chave segundo o calendário do contrato, e as condições e o custo das deslocações e do alojamento da equipa são individuais. Entre visitas, relatórios fotográficos a cada 1–2 semanas e, com custo adicional, câmara online na obra 24/7.",
+  "log_t": "Os nossos encarregados incluem as visitas no calendário habitual, tal como nos bairros de Kyiv, e os materiais saem de armazéns de Kyiv. Entre visitas, relatórios fotográficos a cada 1–2 semanas; com custo adicional, câmara online na obra 24/7.",
+  "fq": {
+   "design_cost": [
+    "Quanto custa um projeto de design {in}?",
+    "Desde $30 por m², mínimo $2 500. O pacote de planta começa nos $6 por m² e o completo com acompanhamento do designer nos $45 por m²."
+   ],
+   "reno_cost": [
+    "Quanto custa uma remodelação {in}?",
+    "Desde $550 por m² de trabalhos e materiais de base; materiais de acabamento, mobiliário e eletrodomésticos à parte, conforme orçamento."
+   ],
+   "build": [
+    "Constroem moradias {in} e arredores?",
+    "Sim: projeto de arquitetura desde $12 por m², estrutura desde $600 por m², chave na mão com acabamentos desde $1 100 por m²."
+   ],
+   "remote": [
+    "O design pode ser feito à distância?",
+    "Sim: reuniões online, 3D e desenhos em formato digital; medições e acompanhamento do designer com visitas segundo o calendário do contrato."
+   ],
+   "pay": [
+    "Posso pagar a remodelação por fases?",
+    "Sim: 50/50, 50/30/20, 50/40/10 ou pagamentos fracionados, com sinal a partir de 10%. O esquema fica no contrato."
+   ],
+   "same_prices": [
+    "Os preços {in} são diferentes dos de Kyiv?",
+    "Não, as tarifas base são as mesmas: design desde $30 por m², remodelação desde $550 por m², mobiliário desde $250 por m²."
+   ],
+   "control": [
+    "Como acompanhar a obra a partir de outra cidade ou do estrangeiro?",
+    "Relatórios fotográficos a cada 1–2 semanas; com custo adicional, câmara online na obra 24/7."
+   ],
+   "team": [
+    "Quem trabalha na obra?",
+    "A nossa própria equipa, com profissionais para diferentes níveis de complexidade e tipos de trabalho. 12 meses de garantia sobre os trabalhos."
+   ],
+   "design_only": [
+    "Posso encomendar só o projeto de design?",
+    "Sim, desde $30 por m², mínimo $2 500. Os desenhos servem a qualquer empreiteiro; o acompanhamento do designer pode ser acrescentado à parte."
+   ],
+   "slope": [
+    "Constroem em terrenos inclinados?",
+    "Sim. As fundações, os muros de suporte e a drenagem são projetados depois de recebermos os dados do levantamento do terreno."
+   ],
+   "rebuild": [
+    "O que compensa mais: reabilitar a casa antiga ou construir uma nova?",
+    "Depende das fundações e das paredes. Depois de uma vistoria, orçamentamos as duas opções para que decida com números na mão."
+   ],
+   "office": [
+    "Fazem escritórios e espaços comerciais {in}?",
+    "Escritórios desde $350 por m² (trabalhos e materiais de base); outros espaços conforme orçamento. Para empresas registadas na Ucrânia, fatura com ou sem IVA, caso a caso."
+   ]
+  }
+ },
+ "cities": {
+  "vinnytsia": {
+   "n": "Vinnytsia",
+   "in": "em Vinnytsia",
+   "tag": "Novos empreendimentos, Vyshenka e moradias junto ao Bug Meridional.",
+   "d": "Design de interiores em Vinnytsia: empreendimentos novos, apartamentos em Vyshenka, moradias nos arredores. Design desde $30/m², remodelação desde $550/m².",
+   "lead": "Design de interiores em Vinnytsia para apartamentos em empreendimentos novos e bairros antigos, e para moradias nos arredores junto ao Bug Meridional. O projeto faz-se à distância ou com deslocações; a remodelação e a construção, com a nossa própria equipa e condições individuais.",
+   "h": "Vinnytsia: uma cidade compacta que não para de construir",
+   "p": [
+    "Vinnytsia é uma cidade compacta junto ao Bug Meridional, com muita construção de empreendimentos novos e urbanizações de moradias na periferia. Ao lado ficam bairros soviéticos como Vyshenka, com apartamentos típicos de blocos pré-fabricados que os proprietários redistribuem e renovam.",
+    "Para muitos clientes de Vinnytsia o importante é o equilíbrio: um bom projeto e uma execução sem custos a mais. Por isso temos vários pacotes, desde o de planta (desde $6 por m²) até ao completo com acompanhamento do designer (desde $45 por m²)."
+   ],
+   "des": "Os novos empreendimentos de Vinnytsia têm plantas livres fáceis de desperdiçar sem projeto: o designer distribui quartos, cozinha e arrumação para não perder um único metro. Nas moradias, o foco está na escada, na luz e na ligação ao terreno.",
+   "bld": "Remodelamos apartamentos em tosco e habitações usadas com substituição completa das instalações, bem como moradias. Nos arredores construímos moradias térreas e de dois pisos em betão celular, tijolo ou estrutura de madeira; projeto, estrutura e acabamentos podem ser encomendados em conjunto ou por fases.",
+   "fk": [
+    "design_cost",
+    "pay",
+    "build"
+   ]
+  },
+  "zhytomyr": {
+   "n": "Jitomir",
+   "in": "em Jitomir",
+   "tag": "Moradias e datchas junto ao Teteriv.",
+   "d": "Design de interiores em Jitomir: apartamentos, moradias e datchas junto ao rio Teteriv. Design desde $30/m², remodelação desde $550/m².",
+   "lead": "Design de interiores em Jitomir para apartamentos na cidade, moradias e datchas junto ao Teteriv. Jitomir é uma das capitais de região mais próximas de Kyiv, por isso as visitas à obra são mais fáceis de planear do que em regiões distantes.",
+   "h": "Jitomir: moradias, margens de granito e florestas",
+   "p": [
+    "Jitomir tem muitas moradias, um centro antigo e bairros de prédios. À volta há florestas e as margens rochosas de granito do Teteriv, onde muita gente tem uma datcha ou uma casa de férias.",
+    "Os pedidos típicos daqui são reconstruir a velha casa de família, uma casa de férias no meio da natureza ou um apartamento para os filhos que foram viver para Kyiv. Se for preciso, tratamos tanto da parte de Jitomir como da de Kyiv."
+   ],
+   "des": "Para casas junto à floresta e ao rio usamos materiais naturais — madeira, pedra, linho — e luz quente, como nos nossos projetos A-Frame House e Hoda Estate. Para apartamentos na cidade, uma planta prática e boa arrumação.",
+   "bld": "Remodelamos moradias e apartamentos e adaptamos datchas para viver todo o ano: isolamento, novas instalações, cobertura nova. Na região funcionam bem as casas de troncos e de estrutura de madeira, bem como as clássicas de betão celular; os terrenos junto ao Teteriv são muitas vezes rochosos, por isso as fundações são projetadas após o estudo do solo.",
+   "faq": [
+    [
+     "Quanto custa uma casa de troncos na região de Jitomir?",
+     "Estrutura desde $600 por m², chave na mão com acabamentos desde $1 100 por m². As fases ficam definidas no contrato."
+    ]
+   ],
+   "fk": [
+    "design_only",
+    "remote"
+   ]
+  },
+  "chernihiv": {
+   "n": "Chernihiv",
+   "in": "em Chernihiv",
+   "tag": "Reconstrução de habitações, moradias junto ao Desna.",
+   "d": "Design de interiores, remodelação e reconstrução em Chernihiv: apartamentos e moradias junto ao Desna. Design desde $30/m², remodelação desde $550/m².",
+   "lead": "Design de interiores em Chernihiv, remodelação de apartamentos e moradias e construção de habitações novas junto ao Desna. O projeto decorre à distância ou com deslocações; a remodelação e a construção, com a nossa equipa e condições acordadas caso a caso.",
+   "h": "Chernihiv: uma cidade milenar em reconstrução",
+   "p": [
+    "Chernihiv é uma das cidades mais antigas da Ucrânia, com um centro de construção baixa, bairros de prédios e muitas moradias ao longo do Desna. Desde 2022 muitas habitações estão a ser recuperadas ou construídas de raiz.",
+    "Nas casas danificadas começamos por uma vistoria: o que da estrutura se pode manter e o que é preciso reforçar ou substituir. Só depois vêm o projeto, o orçamento e a remodelação, para não investir em acabamentos sobre uma base pouco fiável."
+   ],
+   "des": "A reconstrução é uma oportunidade para repensar a planta: juntar cozinha e sala, acrescentar closet e uma segunda casa de banho, prever instalações eficientes. Se o volume da casa mudar, fazemos o interior em conjunto com a arquitetura.",
+   "bld": "Remodelamos apartamentos e moradias, desde a remodelação profunda com instalações novas até aos acabamentos, e fazemos a [reconstrução de moradias]({/rekonstruktsiia-budynku-kyiv}) após vistoria. Nos terrenos junto ao Desna, o projeto tem em conta o nível freático e a impermeabilização.",
+   "faq": [
+    [
+     "Assumem a recuperação de uma casa danificada?",
+     "Sim: vistoria, projeto de reconstrução, orçamento e obra. Remodelação desde $550 por m², construção desde $600 por m²."
+    ]
+   ],
+   "fk": [
+    "control",
+    "design_cost"
+   ]
+  },
+  "cherkasy": {
+   "n": "Cherkasy",
+   "in": "em Cherkasy",
+   "tag": "Apartamentos com vista para a água, moradias entre pinheiros.",
+   "d": "Design de interiores em Cherkasy: apartamentos com vista para o Dnipro, moradias entre pinhais. Design desde $30/m², remodelação desde $550/m².",
+   "lead": "Design de interiores em Cherkasy para apartamentos com vista para a albufeira de Kremenchuk, moradias entre pinhais e residências na margem. O projeto faz-se à distância ou com deslocações; a remodelação e a construção, com a nossa equipa própria e condições individuais.",
+   "h": "Cherkasy: uma cidade de água e pinheiros",
+   "p": [
+    "Cherkasy estende-se ao longo do Dnipro e da albufeira de Kremenchuk, com Sosnivka e os seus pinhais logo ao lado. Na cidade predominam os prédios soviéticos e os empreendimentos novos; na periferia e na margem, moradias e datchas.",
+    "Por isso os pedidos chegam muitas vezes aos pares: renovar o apartamento na cidade e preparar uma casa junto à água para o fim de semana ou para viver todo o ano. Se for mais prático, tratamos de ambos num só contrato."
+   ],
+   "des": "Para casas junto à água, janelas panorâmicas, terraços e materiais naturais resistentes à humidade; para apartamentos, acabamentos claros, roupeiros embutidos e iluminação bem pensada. O design pode ser completado com [mobiliário]({/mebliuvannia-kvartyry-kyiv}) desde $250 por m².",
+   "bld": "Remodelamos apartamentos usados e novos, bem como moradias e datchas. Perto de Cherkasy construímos casas de estrutura de madeira, de troncos e de betão celular, para férias ou para viver; nos terrenos junto à água damos especial atenção às fundações e à drenagem.",
+   "faq": [
+    [
+     "Constroem casas de férias chave na mão perto de Cherkasy?",
+     "Sim: projeto, construção, acabamentos e mobiliário. Estrutura desde $600 por m², chave na mão desde $1 100 por m²."
+    ],
+    [
+     "Podem mobilar um apartamento em Cherkasy?",
+     "Sim, desde $250 por m²: seleção, compra, entrega e montagem. O transporte até Cherkasy é calculado à parte."
+    ]
+   ],
+   "fk": [
+    "remote"
+   ]
+  },
+  "poltava": {
+   "n": "Poltava",
+   "in": "em Poltava",
+   "tag": "Centro clássico e quintas junto ao Vorskla.",
+   "d": "Design de interiores em Poltava: apartamentos no centro e em prédios novos, moradias junto ao rio Vorskla. Design desde $30/m², remodelação desde $550/m².",
+   "lead": "Design de interiores em Poltava para apartamentos no centro clássico e em empreendimentos novos, e para moradias junto ao Vorskla e nos arredores. O projeto faz-se à distância ou com deslocações; a remodelação e a construção, com a nossa equipa e condições individuais.",
+   "h": "Poltava: centro clássico e arredores verdes",
+   "p": [
+    "Poltava é uma cidade acolhedora com um centro classicista em torno da Praça Redonda, construção baixa, bairros de prédios e muitas moradias. Nas encostas sobre o Vorskla e nos arredores há muitas quintas com terrenos grandes.",
+    "Nestas quintas coloca-se muitas vezes a questão: reabilitar a casa antiga ou construir uma nova? Orçamentamos as duas opções para que a decisão assente num orçamento e não num palpite."
+   ],
+   "des": "Nas moradias com terrenos grandes, o design abrange também o exterior: terraço, cozinha de verão, entrada. Nos apartamentos do centro, proporções clássicas com funcionalidade moderna; nos prédios novos, arrumação bem pensada.",
+   "bld": "Remodelamos apartamentos e moradias, desde a remodelação profunda com instalações novas até aos acabamentos. Na região construímos casas de betão celular, tijolo, estrutura de madeira e troncos; os terrenos inclinados sobre o Vorskla exigem um projeto cuidadoso de fundações e drenagem, que resolvemos antes de começar.",
+   "fk": [
+    "rebuild",
+    "reno_cost",
+    "remote"
+   ]
+  },
+  "ivano-frankivsk": {
+   "n": "Ivano-Frankivsk",
+   "in": "em Ivano-Frankivsk",
+   "tag": "Prédios novos e chalés nos Cárpatos; Hoda Estate.",
+   "d": "Design de interiores em Ivano-Frankivsk e nos Cárpatos: apartamentos novos, chalés e casas de montanha. Design desde $30/m², remodelação desde $550/m².",
+   "lead": "Design de interiores em Ivano-Frankivsk para apartamentos em empreendimentos novos, moradias nos arredores e chalés nos Cárpatos. Entre os nossos projetos está o Hoda Estate, uma casa de 180 m² nos Cárpatos com madeira, pedra e vista para as montanhas.",
+   "h": "Frankivsk e os Cárpatos: prédios novos e casas de montanha",
+   "p": [
+    "Ivano-Frankivsk é uma das cidades ucranianas com mais construção nova: muitos apartamentos são comprados sem acabamentos. O centro histórico austríaco é compacto e, fora da cidade, começam a Pré-Carpátia e os Cárpatos, com chalés, casas de turismo rural e casas de campo.",
+    "O nosso Hoda Estate é o projeto de design de uma casa de campo de 180 m² nos Cárpatos: planta, visualizações 3D, materiais naturais e mobiliário embutido. Essa experiência — conciliar conforto, vista para a montanha e sentido prático — levamo-la para os projetos de Frankivsk e arredores."
+   ],
+   "des": "Para apartamentos novos em Frankivsk, uma planta pensada para a família, cozinha aberta para a sala e closets. Para casas de montanha, madeira, pedra, lareira, grandes janelas para a paisagem e zonas práticas para esquis e calçado.",
+   "bld": "Remodelamos apartamentos novos em tosco e moradias. Nos Cárpatos construímos casas de troncos, de estrutura de madeira e de alvenaria, calculadas para a carga de neve e as encostas, e planeamos com antecedência a implantação e o acesso de máquinas; para empreendimentos turísticos, veja também [complexo turístico chave na mão]({/baza-vidpochynku-pid-klyuch}).",
+   "faq": [
+    [
+     "Projetam chalés e casas nos Cárpatos?",
+     "Sim, por exemplo o Hoda Estate, uma casa de 180 m² nos Cárpatos. [Ver o projeto]({/proekty/hoda-estate})."
+    ],
+    [
+     "Constroem casas de hóspedes para arrendar?",
+     "Sim: projeto, construção, interiores e equipamento. Estrutura desde $600 por m², chave na mão desde $1 100 por m²."
+    ]
+   ],
+   "fk": [
+    "reno_cost"
+   ]
+  },
+  "ternopil": {
+   "n": "Ternopil",
+   "in": "em Ternopil",
+   "tag": "Prédios novos junto ao lago; remodelação para proprietários no estrangeiro.",
+   "d": "Design de interiores em Ternopil: apartamentos em empreendimentos junto ao lago e moradias. Design desde $30/m², remodelação desde $550/m².",
+   "lead": "Design de interiores em Ternopil para apartamentos em empreendimentos novos, renovação de habitações antigas e moradias nos arredores. O projeto faz-se à distância ou com deslocações; a remodelação e a construção, com a nossa equipa própria nas condições acordadas.",
+   "h": "Ternopil: uma cidade junto ao lago com muita construção",
+   "p": [
+    "Ternopil é uma cidade compacta em torno do grande lago de Ternopil. Nos últimos anos surgiram aqui muitos empreendimentos novos, alguns com vista para a água, enquanto bairros como Druzhba ou Skhidnyi têm muitos apartamentos padrão a renovar.",
+    "Muitos habitantes de Ternopil trabalham no estrangeiro e compram um apartamento a pensar no futuro, por isso a remodelação tem de ser acompanhável à distância: relatórios fotográficos, aprovações online e, se quiser, uma câmara na obra."
+   ],
+   "des": "Nos prédios novos, uma planta livre organizada para cada família, com closets e espaço para lavandaria. Nos apartamentos com vista para o lago, um interior que valoriza a paisagem, com os cortinados e a iluminação certos.",
+   "bld": "Remodelamos apartamentos em tosco e usados, bem como moradias. Nos arredores de Ternopil construímos casas de betão celular, tijolo e estrutura de madeira; projeto, estrutura e acabamentos podem ser divididos em fases.",
+   "faq": [
+    [
+     "Vivo no estrangeiro. A remodelação em Ternopil pode ser gerida à distância?",
+     "Sim: aprovações online, relatórios fotográficos a cada 1–2 semanas e, com custo adicional, câmara online 24/7. O contrato e os pagamentos também se tratam à distância."
+    ]
+   ],
+   "fk": [
+    "design_cost",
+    "team"
+   ]
+  },
+  "uzhhorod": {
+   "n": "Uzhhorod",
+   "in": "em Uzhhorod",
+   "reg": "Oblast da Transcarpátia",
+   "tag": "Funcionalismo checo e casas de turismo rural da Transcarpátia.",
+   "d": "Design de interiores em Uzhhorod e na Transcarpátia: apartamentos da época checa, prédios novos, moradias e turismo rural. Design desde $30/m².",
+   "lead": "Design de interiores em Uzhhorod para apartamentos em edifícios da época checoslovaca, empreendimentos novos junto ao rio Uzh, moradias e casas de turismo rural da Transcarpátia. O projeto faz-se à distância ou com deslocações; a obra, com a nossa equipa própria e condições individuais.",
+   "h": "Uzhhorod: funcionalismo checo, o Uzh e as montanhas ao lado",
+   "p": [
+    "Uzhhorod destaca-se pela arquitetura checoslovaca do entre-guerras — edifícios funcionalistas de linhas limpas e grandes janelas, sobretudo no bairro de Malyi Halahov. Ao lado ficam a cidade velha, os empreendimentos novos junto ao Uzh e moradias com jardim.",
+    "O clima ameno e a proximidade da fronteira com a UE tornam a Transcarpátia atraente tanto para viver como para o turismo: casas de turismo rural, pequenos hotéis, quintas vinícolas. Tratamos estes imóveis como projetos comerciais, com conceito, orçamento e equipamento."
+   ],
+   "des": "Nos edifícios da época checa, o interior realça o seu carácter: formas simples, bons materiais, janelas e escadas originais preservadas. Nas casas de turismo rural, um design que aguenta o movimento de hóspedes e é fácil de manter; veja também [design de hotéis]({/dyzain-hotelu-kyiv}).",
+   "bld": "Remodelamos apartamentos em edifícios antigos e novos, moradias e pequenos espaços comerciais. Na Transcarpátia construímos moradias e empreendimentos turísticos em betão celular, tijolo, troncos ou estrutura de madeira, tendo em conta as encostas e a drenagem.",
+   "faq": [
+    [
+     "Trabalham com casas de turismo rural e pequenos hotéis na Transcarpátia?",
+     "Sim: conceito, arquitetura, interiores, remodelação e equipamento. O custo é definido por orçamento para cada imóvel."
+    ]
+   ],
+   "fk": [
+    "design_cost",
+    "remote"
+   ]
+  },
+  "rivne": {
+   "n": "Rivne",
+   "in": "em Rivne",
+   "tag": "Prédios novos e moradias em terrenos da Polésia.",
+   "d": "Design de interiores em Rivne: apartamentos novos e antigos, moradias nos arredores. Design desde $30/m², remodelação desde $550/m², casas desde $600/m².",
+   "lead": "Design de interiores em Rivne para apartamentos em empreendimentos novos e prédios soviéticos, e para moradias nos arredores e na Polésia. O projeto faz-se à distância ou com deslocações; a remodelação e a construção, com a nossa equipa e condições individuais.",
+   "h": "Rivne: uma cidade verde e terrenos da Polésia",
+   "p": [
+    "Rivne é uma cidade verde de parques e bairros de prédios, onde nos últimos anos surgiram muitos empreendimentos novos. Os arredores e a Polésia em volta são moradias com terrenos grandes entre florestas e pântanos.",
+    "Os terrenos da Polésia têm muitas vezes o nível freático alto e solos de turfa. Aqui é decisivo projetar bem as fundações e a drenagem — resolvemos isso antes de qualquer decisão sobre o interior."
+   ],
+   "des": "Para apartamentos em Rivne, uma planta funcional, arrumação e luz; para moradias, uma paleta quente com madeira, lareira e grandes janelas para o jardim. Pode escolher o pacote de planta, o básico ou o completo com acompanhamento do designer.",
+   "bld": "Remodelamos apartamentos e moradias, desde as instalações novas até aos acabamentos. Construímos casas de betão celular, tijolo, estrutura de madeira e troncos; as fundações são projetadas após o levantamento do terreno — veja também [projeto de moradia]({/proektuvannia-budynku-kyiv}).",
+   "faq": [
+    [
+     "É possível construir num terreno com nível freático alto?",
+     "Sim, mas o projeto de fundações e drenagem só se faz após o levantamento do terreno. Estrutura desde $600 por m²."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "design_cost"
+   ]
+  },
+  "lutsk": {
+   "n": "Lutsk",
+   "in": "em Lutsk",
+   "reg": "Oblast da Volínia",
+   "tag": "Cidade velha, prédios novos e moradias junto aos lagos da Volínia.",
+   "d": "Design de interiores em Lutsk: prédios novos, apartamentos na cidade velha, moradias na Volínia. Design desde $30/m², remodelação desde $550/m².",
+   "lead": "Design de interiores em Lutsk para apartamentos em empreendimentos novos e na cidade velha junto ao castelo, e para moradias na Volínia. O projeto faz-se à distância ou com deslocações; a remodelação e a construção, com a nossa equipa própria e condições individuais.",
+   "h": "Lutsk: o castelo, bairros novos e moradias da Volínia",
+   "p": [
+    "Lutsk tem um centro histórico em torno do castelo, bairros soviéticos e muitos empreendimentos novos. À volta estende-se a Volínia, com lagos e florestas onde se constroem casas para viver e para descansar.",
+    "A proximidade da fronteira polaca faz com que muitos clientes vivam e trabalhem na UE e preparem a casa em Lutsk à distância. Para eles organizamos o processo de forma a que a maioria das decisões seja tomada online."
+   ],
+   "des": "Nos apartamentos dos novos empreendimentos de Lutsk, uma planta familiar com muita arrumação; na cidade velha, respeito pelos detalhes históricos. Nas moradias da Volínia, uma paleta natural e quente, com saídas diretas para o jardim.",
+   "bld": "Remodelamos apartamentos e moradias, desde os trabalhos de tosco até ao mobiliário, e também divisões isoladas. Na Volínia construímos casas de betão celular, tijolo, estrutura de madeira e troncos; junto aos lagos, com especial atenção ao solo e à impermeabilização.",
+   "faq": [
+    [
+     "Posso preparar um apartamento em Lutsk a viver na Polónia?",
+     "Sim: aprovações online, relatórios fotográficos, câmara online com custo adicional e videochamadas para as decisões importantes."
+    ]
+   ],
+   "fk": [
+    "design_cost",
+    "build"
+   ]
+  },
+  "khmelnytskyi": {
+   "n": "Khmelnytskyi",
+   "in": "em Khmelnytskyi",
+   "tag": "Apartamentos, moradias, lojas e showrooms.",
+   "d": "Design de interiores em Khmelnytskyi: apartamentos, moradias, lojas e escritórios. Design desde $30/m², remodelação desde $550/m².",
+   "lead": "Design de interiores em Khmelnytskyi para apartamentos novos e moradias, e também para lojas, showrooms e escritórios nesta cidade comercial. O projeto faz-se à distância ou com deslocações; a remodelação e a construção, com a nossa equipa e condições individuais.",
+   "h": "Khmelnytskyi: uma cidade comercial com bairros novos",
+   "p": [
+    "Khmelnytskyi é conhecida como um grande centro comercial da Podólia, com muitos empresários, lojas e armazéns. A habitação é feita de bairros soviéticos, empreendimentos novos e moradias junto ao Bug Meridional.",
+    "Por isso, além de apartamentos e moradias, falamos muitas vezes de espaços comerciais: uma loja, um showroom, um escritório. Para eles existem a [remodelação de espaços comerciais]({/remont-komertsiinykh-prymishchen-kyiv}) e o [negócio chave na mão]({/biznes-pid-kliuch-kyiv}), com fatura para empresas."
+   ],
+   "des": "Para apartamentos, uma planta familiar, cozinha aberta e closets; para lojas e showrooms, o percurso do cliente, as montras e a luz sobre o produto.",
+   "bld": "Remodelamos apartamentos, moradias, escritórios e lojas: escritórios desde $350 por m² (trabalhos e materiais de base). Perto de Khmelnytskyi construímos casas de betão celular, tijolo e estrutura de madeira; projeto, estrutura, acabamentos e mobiliário podem seguir num só contrato ou por fases.",
+   "faq": [
+    [
+     "Projetam e remodelam lojas em Khmelnytskyi?",
+     "Sim: conceito, remodelação e equipamento. O custo, conforme orçamento do espaço; para empresas registadas na Ucrânia, fatura com ou sem IVA, caso a caso."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "pay"
+   ]
+  },
+  "chernivtsi": {
+   "n": "Chernivtsi",
+   "in": "em Chernivtsi",
+   "tag": "Edifícios da época austríaca e terrenos nas colinas.",
+   "d": "Design de interiores em Chernivtsi: apartamentos em edifícios austríacos, prédios novos, moradias na Bucovina. Design desde $30/m².",
+   "lead": "Design de interiores em Chernivtsi para apartamentos em edifícios austríacos do centro histórico, empreendimentos novos e moradias nas colinas da Bucovina. O projeto faz-se à distância ou com deslocações; a remodelação e a construção, com a nossa equipa própria e condições individuais.",
+   "h": "Chernivtsi: herança austríaca e colinas da Bucovina",
+   "p": [
+    "Chernivtsi conserva um conjunto inteiro da época austríaca: fachadas vienenses, edifícios com tetos altos e estuques e a Residência dos Metropolitas, Património Mundial da UNESCO. Na periferia há empreendimentos novos e, nas colinas em volta, moradias com vista para a cidade e para o Prut.",
+    "Chernivtsi é uma cidade de ruas inclinadas e terrenos com desníveis. As moradias precisam de muros de suporte, drenagem e terraços; os apartamentos em edifícios antigos, de uma verificação de pavimentos e instalações."
+   ],
+   "des": "Nos apartamentos em edifícios austríacos, um interior que preserva proporções e detalhes, com cozinha e casa de banho modernas. Nas moradias em encosta, terraços a vários níveis, janelas panorâmicas e a escada como parte do interior.",
+   "bld": "Remodelamos apartamentos em edifícios antigos — com verificação de pavimentos e instalações — e novos, bem como moradias. Na Bucovina construímos casas de betão celular, tijolo, troncos e estrutura de madeira adaptadas ao relevo e ao solo.",
+   "faq": [
+    [
+     "Trabalham com apartamentos nos edifícios históricos de Chernivtsi?",
+     "Sim: verificação de pavimentos e instalações, um projeto que respeita os detalhes históricos e a remodelação pela nossa equipa."
+    ]
+   ],
+   "fk": [
+    "slope",
+    "design_cost"
+   ]
+  },
+  "kropyvnytskyi": {
+   "n": "Kropyvnytskyi",
+   "in": "em Kropyvnytskyi",
+   "reg": "Oblast de Kirovohrad",
+   "tag": "Centro mercantil e renovação de habitações antigas.",
+   "d": "Design de interiores em Kropyvnytskyi: apartamentos no centro e nos bairros, moradias. Design desde $30/m², remodelação desde $550/m².",
+   "lead": "Design de interiores em Kropyvnytskyi para apartamentos no centro histórico e nos bairros, e para moradias junto ao Inhul e nos arredores. O projeto faz-se à distância ou com deslocações; a remodelação e a construção, com a nossa equipa nas condições acordadas.",
+   "h": "Kropyvnytskyi: antiga cidade de mercadores e moradias",
+   "p": [
+    "Kropyvnytskyi fica no centro da Ucrânia, com um centro mercantil do século XIX, bairros de prédios e muitas moradias ao longo do Inhul. Há menos empreendimentos novos do que nas capitais de região maiores, por isso a maioria dos pedidos é para renovar habitações existentes.",
+    "Nestes imóveis o mais valioso é um orçamento rigoroso: o que substituir nas instalações, se é preciso nivelar paredes, que estruturas manter. Começamos por aí, para que o orçamento não derrape a meio da obra."
+   ],
+   "des": "Nos apartamentos antigos, redistribuição dentro dos limites da estrutura, casas de banho e cozinhas novas, mobiliário embutido; nas moradias, espaço para uma família grande, terraço, casa das máquinas e despensa. Pacotes desde o de planta até ao completo.",
+   "bld": "Remodelamos apartamentos e moradias, desde a [remodelação profunda]({/kapitalnyi-remont-kvartyry-kyiv}) até à de manutenção. Perto de Kropyvnytskyi construímos casas de betão celular, tijolo e estrutura de madeira, desde o projeto de arquitetura até aos acabamentos chave na mão.",
+   "fk": [
+    "reno_cost",
+    "pay",
+    "remote"
+   ]
+  },
+  "irpin": {
+   "n": "Irpin",
+   "in": "em Irpin",
+   "d": "Remodelação chave na mão em Irpin: apartamentos novos e moradias. Design desde $30/m², remodelação desde $550/m², moradias desde $600/m².",
+   "lead": "Remodelação chave na mão em Irpin: apartamentos em empreendimentos novos, moradias em banda e moradias isoladas. Fazemos o projeto de design, a remodelação com a nossa própria equipa e a construção de moradias de raiz — uma equipa, um contrato e um orçamento antes do início da obra.",
+   "h": "Habitação em Irpin: prédios novos, moradias em banda e isoladas",
+   "p": [
+    "Nos últimos anos Irpin tornou-se uma das principais cidades-dormitório de Kyiv: muitos apartamentos são comprados em empreendimentos novos, muitas vezes sem acabamentos ou com acabamentos do promotor que os proprietários querem refazer logo. Ao lado há moradias em banda e urbanizações entre pinheiros e, junto ao rio Irpin, moradias mais antigas.",
+    "Desde 2022 algumas casas passaram por uma recuperação, e nelas começamos pela inspeção da estrutura e das instalações: o que se pode manter e o que é melhor substituir antes dos acabamentos. Nos prédios novos, o primeiro passo é verificar a betonilha, as paredes e a eletricidade do promotor antes de assentar azulejos e montar móveis."
+   ],
+   "des": "Um apartamento num empreendimento de Irpin é muitas vezes pequeno e de planta livre — é aí que o projeto de design se paga mais depressa: uma cozinha-sala bem pensada, um closet em vez de um corredor inútil, luz em cada zona. Nas moradias, juntam-se a escada, os terraços e a ligação ao terreno.",
+   "bld": "Remodelamos apartamentos em tosco ou com acabamentos do promotor, moradias em banda e isoladas, e fazemos também apenas a [remodelação em tosco]({/chornovyi-remont-kvartyry-kyiv}). Os terrenos em Irpin, Vorzel e Stoianka são muitas vezes estreitos e arborizados, por isso projetamos a casa para cada terreno; construímos em betão celular e tijolo e também [casas de estrutura de madeira]({/karkasnyi-budynok-pid-kliuch-kyiv}).",
+   "faq": [
+    [
+     "Remodelam apartamentos novos com acabamentos do promotor?",
+     "Sim. Primeiro avaliamos o que do trabalho do promotor se pode manter (muitas vezes parte do tosco) e o que tem de ser refeito, e só então fazemos o orçamento."
+    ],
+    [
+     "Aceitam casas que precisam de recuperação?",
+     "Sim: começamos pela inspeção da estrutura e das instalações e depois vem a [reconstrução da moradia]({/rekonstruktsiia-budynku-kyiv}) ou uma remodelação profunda, conforme orçamento."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "team"
+   ]
+  },
+  "bucha": {
+   "n": "Bucha",
+   "in": "em Bucha",
+   "d": "Remodelação chave na mão em Bucha: apartamentos novos, moradias e casas de campo. Design desde $30/m², remodelação desde $550/m², construção desde $600/m².",
+   "lead": "Remodelação chave na mão em Bucha: apartamentos em empreendimentos, casas de campo e moradias em ruas sossegadas entre pinheiros. A CAS conduz a obra desde o projeto de design até ao mobiliário, com orçamento, contrato e equipa própria.",
+   "h": "Bucha: moradias, prédios novos e casas na floresta",
+   "p": [
+    "Em Bucha, uma moradia na floresta convive com empreendimentos baixos e moradias em banda. Muitas famílias mudam-se de Kyiv à procura de sossego e espaço, por isso o pedido típico é uma casa para viver no dia a dia: escritório para teletrabalho, closets, despensa, terraço.",
+    "Grande parte da habitação de Bucha foi reconstruída ou construída de raiz depois de 2022. Nestas casas projetamos as instalações modernas — aquecimento, ventilação, energia de reserva — em conjunto com o interior desde o início, e não depois."
+   ],
+   "des": "Nas moradias de Bucha, o designer costuma juntar uma sala grande à cozinha, acrescentar uma lareira ou uma segunda zona de luz e planear uma entrada com espaço para a roupa da estação. Nos apartamentos, o máximo de arrumação e luz numa área pequena.",
+   "bld": "Remodelamos apartamentos, moradias em banda e moradias, desde o tosco até aos acabamentos, incluindo a remodelação de [casa de banho]({/remont-vannoi-kimnaty-kyiv}) e [cozinha]({/remont-kukhni-kyiv}) em separado. Os terrenos de Bucha são sobretudo arenosos e arborizados: as fundações são projetadas após o estudo do solo, e fazemos também [arquitetura paisagista]({/landshaftnyi-dyzain-kyiv}) desde $50 por 100 m².",
+   "fk": [
+    "reno_cost",
+    "design_only",
+    "build",
+    "control"
+   ]
+  },
+  "hostomel": {
+   "n": "Hostomel",
+   "in": "em Hostomel",
+   "d": "Remodelação e construção de moradias chave na mão em Hostomel: projeto desde $12/m², estrutura desde $600/m², chave na mão desde $1 100/m².",
+   "lead": "Remodelação desde $550/m², moradias desde $600/m²: em Hostomel fazemos remodelação chave na mão e construção, do projeto ao mobiliário, com equipa própria, orçamento e contrato.",
+   "h": "Hostomel: moradias e bairros novos",
+   "p": [
+    "Hostomel é sobretudo uma cidade de moradias: casas em terrenos pequenos, novas urbanizações e alguns empreendimentos perto da estrada para Kyiv. Muitos proprietários não remodelam: constroem de raiz ou transformam profundamente a casa antiga.",
+    "Nos terrenos de Hostomel fazemos muitas vezes o pacote completo: [projeto de moradia]({/proektuvannia-budynku-kyiv}), construção, instalações, interiores e arranjos exteriores. Assim, as ligações entre fases — fundações e pavimentos, instalações e mobiliário — não trazem surpresas nos acabamentos."
+   ],
+   "des": "Numa moradia em Hostomel, o design começa pelas plantas: onde ficam os quartos, a zona técnica e a caldeira, como se passa do terraço para a cozinha. As moradias térreas com terraço e piscina, como o nosso House 150, funcionam particularmente bem em terrenos pequenos.",
+   "bld": "Remodelamos casas depois da compra, redistribuímos moradias antigas e renovamos apartamentos; numa casa antiga verificamos primeiro a cobertura, as paredes e as instalações. Construímos em betão celular e tijolo, casas [modulares]({/modulnyi-budynok-kyiv}) e de estrutura de madeira, com o [custo de construção]({/vartist-budivnytstva-budynku-kyiv}) discriminado por fases no contrato.",
+   "faq": [
+    [
+     "Quanto custa construir uma moradia em Hostomel?",
+     "Estrutura desde $600 por m², chave na mão com acabamentos desde $1 100 por m². Para uma casa de 150 m², o cálculo base é 150 m² × $600 pela estrutura ou 150 m² × $1 100 chave na mão; o preço exato vem do orçamento."
+    ],
+    [
+     "Fazem o interior de uma casa construída por outra empresa?",
+     "Sim. Design desde $30 por m², remodelação desde $550 por m²; se a remodelação for feita pela CAS, ficamos dentro de ±5% do orçamento."
+    ]
+   ],
+   "fk": [
+    "rebuild"
+   ]
+  },
+  "vyshneve": {
+   "n": "Vyshneve",
+   "in": "em Vyshneve",
+   "d": "Remodelação de apartamentos chave na mão em Vyshneve: prédios novos junto a Kyiv, design desde $30/m², remodelação desde $550/m², mobiliário.",
+   "lead": "Remodelação chave na mão em Vyshneve: sobretudo apartamentos em prédios novos mesmo no limite de Kyiv, e também moradias. Design, remodelação e mobiliário por uma só equipa, como na capital.",
+   "h": "Vyshneve: prédios novos colados a Kyiv",
+   "p": [
+    "Vyshneve praticamente se fundiu com os bairros de Borshchahivka e Zhuliany, em Kyiv, por isso os desafios são os mesmos dos prédios novos da capital: um apartamento do promotor, planta livre e a necessidade de encaixar cozinha, sala e quarto de criança numa área pequena.",
+    "Junto aos prédios ainda há moradias e datchas antigas que os proprietários adaptam para viver todo o ano. Aqui combinamos muitas vezes a remodelação de um apartamento para uns membros da família e a reconstrução de uma moradia para outros."
+   ],
+   "des": "Nos apartamentos de Vyshneve, o mais pedido é um [design de apartamento]({/dyzain-interieru-kvartyry-kyiv}) que transforma um estúdio em divisões separadas — ou o contrário, que junta cozinha e sala. Fazemos desenhos tão detalhados que a equipa não precisa de decidir nada na hora.",
+   "bld": "Remodelamos apartamentos desde a betonilha e o reboco até ao mobiliário; para prédios novos, veja também [remodelação de apartamento novo]({/remont-novobudovy-kyiv}). Os terrenos são pequenos, por isso as moradias são compactas, de dois pisos e com poucos corredores; após vistoria, é possível a [reconstrução com um segundo piso]({/rekonstruktsiia-budynku-kyiv}).",
+   "faq": [
+    [
+     "É possível juntar a cozinha à sala num apartamento novo?",
+     "Depende da estrutura e de o apartamento ter gás. Verificamos isso na fase de planta, antes do início da remodelação."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "same_prices"
+   ]
+  },
+  "boiarka": {
+   "n": "Boiarka",
+   "in": "em Boiarka",
+   "d": "Construção e remodelação de moradias chave na mão em Boiarka e arredores: estrutura desde $600/m², chave na mão desde $1 100/m².",
+   "lead": "Remodelação desde $550/m², moradias desde $600/m²: em Boiarka fazemos remodelação chave na mão e construímos e reconstruímos moradias. Uma só equipa própria, do terreno ao interior concluído.",
+   "h": "Boiarka: um subúrbio florestal de moradias",
+   "p": [
+    "Boiarka está rodeada de floresta e a maioria dos pedidos aqui é sobre uma moradia: construir uma nova, acrescentar um piso ou pôr em ordem uma casa comprada para remodelar. Há menos apartamentos do que na vizinha Vyshneve, embora também surjam empreendimentos novos.",
+    "Alguns terrenos em Boiarka e nas aldeias à volta são antigas datchas de paredes finas e sem instalações decentes. Para eles calculamos com honestidade o que compensa mais: isolar e reconstruir ou erguer uma casa nova."
+   ],
+   "des": "Numa moradia em Boiarka, o design abrange muitas vezes a fachada e o terreno: grandes janelas para a floresta, terraço, entrada com antecâmara. No interior, lareira ou salamandra, cozinha com ilha e closets, como no nosso Petrivtsi House.",
+   "bld": "Remodelamos moradias e apartamentos: instalações novas, isolamento, paredes niveladas, acabamentos — nas casas com história, após vistoria. Construímos em betão celular e tijolo e também [casas de troncos]({/budynok-z-brusa-kyiv}), que ficam naturais na floresta, respeitando as árvores do terreno e o nível freático.",
+   "faq": [
+    [
+     "Fazem as instalações técnicas da casa?",
+     "Sim: aquecimento, água, esgotos e eletricidade entram no projeto e no orçamento da moradia."
+    ]
+   ],
+   "fk": [
+    "build",
+    "rebuild"
+   ]
+  },
+  "brovary": {
+   "n": "Brovary",
+   "in": "em Brovary",
+   "d": "Remodelação chave na mão de apartamentos e moradias em Brovary: design desde $30/m², remodelação desde $550/m², escritórios desde $350/m².",
+   "lead": "Remodelação chave na mão em Brovary: apartamentos em prédios pré-fabricados e novos, moradias na cidade e nas aldeias à volta, e também escritórios e espaços comerciais. Design, remodelação e construção por uma só equipa CAS.",
+   "h": "Brovary: dos prédios pré-fabricados às moradias da margem esquerda",
+   "p": [
+    "Brovary é uma cidade grande da margem esquerda com habitação muito variada: prédios soviéticos pré-fabricados de nove pisos, empreendimentos novos, moradias e urbanizações ao longo da estrada de Chernihiv. Nos apartamentos antigos é típico substituir todas as instalações e nivelar as paredes; nos novos, remodelar de raiz.",
+    "Há também muitas fábricas, armazéns e escritórios, por isso além de habitação fazemos [remodelação de escritórios chave na mão]({/remont-ofisu-pid-klyuch-kyiv}) desde $350 por m² e de [espaços comerciais]({/remont-komertsiinykh-prymishchen-kyiv}), com fatura para empresas."
+   ],
+   "des": "Nos apartamentos pré-fabricados de Brovary, o designer procura antes de mais espaço: onde embutir roupeiros, como aumentar a casa de banho à custa do corredor, se dá para juntar a cozinha a um quarto. Nas moradias, plantas, terraço e casa das máquinas.",
+   "bld": "Remodelamos apartamentos usados com substituição completa da eletricidade e da canalização — veja [remodelação profunda de apartamento]({/kapitalnyi-remont-kvartyry-kyiv}) — e também apartamentos novos e moradias. Os terrenos de Brovary e de Krasylivka, Trebukhiv ou Kniazhychi são em geral planos, por isso a casa pode ser planeada livremente: térrea com terraço ou de dois pisos.",
+   "faq": [
+    [
+     "Trabalham em prédios de painéis pré-fabricados?",
+     "Sim. Nesses prédios não mexemos nas paredes estruturais e a redistribuição fica dentro do que a estrutura permite."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "office"
+   ]
+  },
+  "boryspil": {
+   "n": "Boryspil",
+   "in": "em Boryspil",
+   "d": "Remodelação chave na mão em Boryspil e moradias nas aldeias próximas: design desde $30/m², remodelação desde $550/m², estrutura desde $600/m².",
+   "lead": "Remodelação chave na mão em Boryspil: apartamentos, moradias e casas de campo nas aldeias ao longo da estrada de Boryspil. Projetamos, remodelamos e construímos com a equipa própria da CAS.",
+   "h": "Boryspil e a estrada: moradias para viver todo o ano",
+   "p": [
+    "Boryspil é conhecida pelo aeroporto, mas para nós é sobretudo uma cidade de moradias e pequenos empreendimentos, com aldeias e urbanizações ao longo da estrada: Hora, Shchaslyve, Velyka Oleksandrivka. Mudam-se para aqui pessoas que trabalham em Kyiv mas querem uma casa com terreno.",
+    "As moradias são muitas vezes compradas em estrutura ou prontas para acabamentos, e então o essencial é não refazer o que está feito, mas continuar bem: verificar cobertura, janelas, betonilha e instalações e orçamentar exatamente o que falta."
+   ],
+   "des": "Numa moradia perto de Boryspil, o design inclui normalmente uma sala em pé-direito duplo ou com grandes janelas, um quarto de hóspedes para a família e uma zona de trabalho. Os apartamentos na cidade são mais compactos, por isso contam o mobiliário embutido e a arrumação.",
+   "bld": "Remodelamos moradias entregues pelo promotor e apartamentos na cidade, do tosco ao mobiliário, além da [remodelação de cozinhas]({/remont-kukhni-kyiv}) com [cozinhas por medida]({/kukhni-i-shafy-na-zamovlennia-kyiv}) feitas pelos nossos profissionais e parceiros. Os terrenos da margem esquerda são sobretudo planos e abertos, por isso projetamos a pensar no vento e no sol: terraço a sul e entrada protegida.",
+   "faq": [
+    [
+     "A casa foi comprada em estrutura. Por onde começar?",
+     "Por uma vistoria e uma lista de trabalhos: o que está feito e o que é preciso corrigir. Depois, o projeto de design e o orçamento para concluir a casa."
+    ],
+    [
+     "Constroem nas aldeias perto de Boryspil?",
+     "Sim: Hora, Shchaslyve, Velyka Oleksandrivka e outras localidades nesta zona. Estrutura desde $600 por m², chave na mão desde $1 100 por m²."
+    ]
+   ],
+   "fk": [
+    "reno_cost"
+   ]
+  },
+  "vyshhorod": {
+   "n": "Vyshhorod",
+   "in": "em Vyshhorod",
+   "d": "Design, remodelação e moradias chave na mão em Vyshhorod e Petrivtsi, junto ao mar de Kyiv. Design desde $30/m², remodelação desde $550/m².",
+   "lead": "Remodelação chave na mão em Vyshhorod e nas aldeias próximas, junto ao Dnipro e ao mar de Kyiv. Um dos nossos projetos nesta zona é o Petrivtsi House, uma moradia de 320 m² com arquitetura e interiores num só projeto.",
+   "h": "Vyshhorod e Petrivtsi: moradias junto à água",
+   "p": [
+    "Vyshhorod ergue-se na margem alta do Dnipro, junto à central hidroelétrica e ao mar de Kyiv. Aqui misturam-se prédios antigos, empreendimentos novos com vista para a água e moradias — na própria cidade e nas aldeias ao longo da estrada para Kyiv: Petrivtsi, Khotianivka, Liutizh.",
+    "O nosso Petrivtsi House é uma moradia de 320 m² em Petrivtsi: plantas dos pisos, cozinha com ilha e lareira, casas de banho, lavandaria e escritório. Levamos essa experiência de uma casa para uma família grande junto à água a cada novo projeto na zona de Vyshhorod."
+   ],
+   "des": "Junto à água, o interior constrói-se em torno da vista: janelas panorâmicas, terraços, sala com saída para o jardim. Os materiais escolhem-se a pensar na humidade — madeira maciça só onde aguenta, pedra e grés porcelânico nas zonas húmidas.",
+   "bld": "Remodelamos apartamentos, de prédios antigos a novos, e moradias chave na mão; nos apartamentos com vista para o Dnipro fazemos muitas vezes [remodelação premium]({/remont-premium-klasu-kyiv}) com ventilação silenciosa. Os terrenos junto à água exigem um projeto cuidadoso de fundações e impermeabilização a partir do estudo do solo; a implantação e o paisagismo são planeados desde o início.",
+   "faq": [
+    [
+     "Que projeto da CAS existe perto de Vyshhorod?",
+     "O Petrivtsi House, uma moradia de 320 m² em Petrivtsi: projeto de arquitetura e de interiores. [Ver o projeto]({/proekty/petrivtsi-house})."
+    ]
+   ],
+   "fk": [
+    "build",
+    "reno_cost"
+   ]
+  },
+  "obukhiv": {
+   "n": "Obukhiv",
+   "in": "em Obukhiv",
+   "d": "Remodelação chave na mão de apartamentos e moradias em Obukhiv, Ukrainka e Trypillia: design desde $30/m², remodelação desde $550/m².",
+   "lead": "Remodelação chave na mão em Obukhiv, Ukrainka e nas aldeias junto ao Dnipro a sul de Kyiv: apartamentos, moradias e casas de campo. Design, remodelação, construção e paisagismo por uma só equipa.",
+   "h": "A zona de Obukhiv: cidade, Dnipro e casas de campo",
+   "p": [
+    "Obukhiv é uma cidade pequena com habitação maioritariamente soviética e moradias; perto ficam Ukrainka e Trypillia, na margem do Dnipro, e Kozyn, mais perto de Kyiv. Há muitas casas de campo, usadas tanto como residência permanente como datcha com vista para a água.",
+    "Nos apartamentos de Obukhiv e Ukrainka a tarefa típica é a remodelação profunda de habitação antiga. Nas moradias sobre o Dnipro, terraços, grandes janelas, sauna ou piscina e o arranjo de terrenos com desnível."
+   ],
+   "des": "Nos terrenos com vista para o Dnipro, o design de interiores está intimamente ligado à arquitetura: onde ficam as janelas, para onde olha a sala, como se desce do terraço para o jardim. Nos apartamentos, uma planta funcional e acabamentos claros.",
+   "bld": "Remodelamos apartamentos com substituição completa das instalações, moradias e casas de campo; os detalhes da garantia estão na página [contrato, garantia, pagamento]({/dogovir-garantiya-oplata}). Os terrenos sobre o Dnipro são muitas vezes inclinados, por isso projetamos segundo o relevo, com muros de suporte e drenagem; para residências, veja também [moradias em Koncha-Zaspa e Kozyn]({/budynok-pid-kliuch-koncha-zaspa}).",
+   "faq": [
+    [
+     "Fazem o paisagismo de uma moradia sobre o Dnipro?",
+     "Sim, arquitetura paisagista desde $50 por 100 m²: plano geral, zonamento, iluminação exterior e terraços."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "slope"
+   ]
+  },
+  "vasylkiv": {
+   "n": "Vasylkiv",
+   "in": "em Vasylkiv",
+   "d": "Remodelação e construção chave na mão em Vasylkiv: casas de estrutura de madeira, modulares e de alvenaria; remodelação desde $550/m².",
+   "lead": "Remodelação chave na mão em Vasylkiv e nas aldeias à volta: apartamentos antigos, moradias e casas novas de estrutura de madeira e modulares. Design, remodelação e construção, do projeto ao mobiliário.",
+   "h": "Vasylkiv: uma cidade antiga junto ao Stuhna",
+   "p": [
+    "Vasylkiv, junto ao rio Stuhna, é uma das cidades mais antigas da região de Kyiv. A habitação é sobretudo de moradias de várias épocas e pequenos prédios, com poucos empreendimentos novos, por isso a maioria dos pedidos é remodelar ou reconstruir uma casa, ou construir uma nova no terreno da família.",
+    "Os terrenos em Vasylkiv e nas aldeias próximas são em geral maiores do que perto de Kyiv, com espaço para garagem, anexos e horta. Planeamos tudo isso no plano geral desde o início, para que a casa não se perca no terreno."
+   ],
+   "des": "Nas moradias de Vasylkiv fazemos muitas vezes o interior em conjunto com a arquitetura: um volume simples, um interior acolhedor com madeira, uma cozinha-sala com saída para o jardim. Para orçamentos mais apertados, o pacote de planta desde $6 por m² funciona bem.",
+   "bld": "Remodelamos moradias e apartamentos: cobertura e instalações novas, isolamento, paredes niveladas, acabamentos; se só for preciso preparar a casa, fazemos a [remodelação em tosco]({/chornovyi-remont-kvartyry-kyiv}). Em terrenos grandes funcionam bem as [casas de estrutura de madeira]({/karkasnyi-budynok-pid-kliuch-kyiv}) e as [modulares]({/modulnyi-budynok-kyiv}), bem como as clássicas de betão celular.",
+   "faq": [
+    [
+     "Posso encomendar só a planta de uma moradia?",
+     "Sim, o pacote de planta desde $6 por m²: levantamento, 2–3 variantes de planta e plano de mobiliário."
+    ]
+   ],
+   "fk": [
+    "build",
+    "team"
+   ]
+  },
+  "fastiv": {
+   "n": "Fastiv",
+   "in": "em Fastiv",
+   "d": "Design, remodelação e construção de moradias chave na mão em Fastiv: projeto desde $12/m², estrutura desde $600/m², remodelação desde $550/m².",
+   "lead": "Remodelação chave na mão em Fastiv e no seu distrito: apartamentos, moradias e casas novas de raiz. Projeto, orçamento, remodelação e construção com a equipa própria da CAS.",
+   "h": "Fastiv: uma cidade ferroviária de moradias",
+   "p": [
+    "Fastiv é um grande nó ferroviário a sudoeste de Kyiv, com um centro compacto, alguns bairros de prédios e muitas moradias. Daqui chegam-nos sobretudo pedidos de remodelação de apartamentos antigos e de reconstrução de casas de família.",
+    "Muitas casas de Fastiv e do distrito foram construídas há décadas sem projeto: ampliações, lajes de épocas diferentes, instalações antigas. Antes de remodelar fazemos uma vistoria para saber sobre que base assenta o novo interior."
+   ],
+   "des": "Nas moradias de Fastiv, o design começa muitas vezes pela redistribuição: eliminar divisões de passagem, criar uma casa de banho completa e uma cozinha-sala. Preparamos os desenhos para que o orçamento não tenha trabalhos desconhecidos.",
+   "bld": "Remodelamos moradias e apartamentos chave na mão ou divisões isoladas — [casa de banho]({/remont-vannoi-kimnaty-kyiv}), cozinha, WC. No distrito construímos casas de betão celular, tijolo e [estrutura de madeira]({/karkasnyi-budynok-pid-kliuch-kyiv}), a começar pelo [projeto de moradia]({/proektuvannia-budynku-kyiv}) para o terreno. Fastiv fica mais longe de Kyiv, por isso a equipa trabalha na obra por blocos.",
+   "faq": [
+    [
+     "Trabalham em Fastiv e nas aldeias do distrito?",
+     "Sim, em Fastiv e no seu distrito: design, remodelação e construção. A medição é paga e orçamentada caso a caso."
+    ]
+   ],
+   "fk": [
+    "reno_cost",
+    "control"
+   ]
+  },
+  "bila-tserkva": {
+   "n": "Bila Tserkva",
+   "in": "em Bila Tserkva",
+   "d": "Remodelação chave na mão de apartamentos e moradias em Bila Tserkva: design desde $30/m², remodelação desde $550/m², escritórios desde $350/m².",
+   "lead": "Remodelação chave na mão em Bila Tserkva, a maior cidade da região de Kyiv: apartamentos novos e antigos, moradias, escritórios e restaurantes. Design, remodelação e construção por uma só equipa CAS.",
+   "h": "Bila Tserkva: uma cidade grande com mercado imobiliário próprio",
+   "p": [
+    "Bila Tserkva é uma cidade grande junto ao rio Ros, com o seu próprio centro, o parque Oleksandriia, bairros de prédios pré-fabricados, empreendimentos novos e muitas moradias. O mercado imobiliário é independente, por isso os pedidos são muito variados: de uma renovação ligeira de um apartamento a uma moradia de raiz.",
+    "Para empresários de Bila Tserkva fazemos também [design de restaurantes e cafés]({/dyzain-restoranu-kafe-kyiv}), remodelação de escritórios e [negócio chave na mão]({/biznes-pid-kliuch-kyiv}), com fatura para empresas."
+   ],
+   "des": "Nos prédios novos de Bila Tserkva, o projeto de design aproveita a planta livre: quartos separados, closet, cozinha-sala. Nos antigos, redistribuição dentro do permitido, instalações novas e mobiliário embutido.",
+   "bld": "Remodelamos apartamentos, moradias e espaços comerciais, desde a [renovação ligeira]({/kosmetychnyi-remont-kvartyry-kyiv}) até à [remodelação profunda]({/kapitalnyi-remont-kvartyry-kyiv}). Perto de Bila Tserkva construímos casas de betão celular, tijolo, estrutura de madeira e troncos; há espaço para uma moradia térrea com terraço e piscina, como o nosso House 150. Nas obras grandes, a equipa trabalha por blocos.",
+   "fk": [
+    "reno_cost",
+    "office",
+    "build"
+   ]
+  }
+ }
+}
