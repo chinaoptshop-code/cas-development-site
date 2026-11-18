@@ -23,6 +23,7 @@ from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import landing  # шаблон, екранування, пакети, ORG, sitemap (tools/site/landing.py)
 import chrome, i18n, leadform, ux
+import ldfix  # права на фото в ImageObject: creditText, copyrightNotice, creator, license, acquireLicensePage
 
 ROOT, B = landing.ROOT, landing.B
 e, a = landing.e, landing.a
@@ -109,6 +110,9 @@ def main_html(c, lang):
     return '\n'.join(o)
 
 
+LD_MAX = 10000  # байт JSON-LD «Повного проєкту» (сторінка ≤ 64 КБ разом із галереєю й формою)
+
+
 def ld(c, lang):
     t, n, u = c[lang], k(lang), url(c, lang)
     hl = i18n.meta(lang)['hreflang']
@@ -117,10 +121,12 @@ def ld(c, lang):
     imgs = [(x[0], x[n]) for x in c['vis']] + [(x[0], x[n]) for x in c['dw']]
     imgs += [(it[1], it[n + 1]) for r in c.get('rz', []) for it in r['items'] if it[0] == 'f'] + [(x[0], x[n]) for x in c.get('photos_extra', [])]
     seen, media = set(), []
+    rights = dict({'creditText': ldfix.CREDIT, 'copyrightNotice': ldfix.COPY}, **ldfix._meta(lang))
+    rights['creator'] = {'@id': landing.ORG['@id']}  # той самий вузол Organization, що й creator CreativeWork нижче (компактно)
     for i, cap in imgs:
         if i in seen: continue
-        seen.add(i)  # компактно (бюджет HTML лендингу 64 КБ): автор і права — на рівні галереї
-        media.append({'@type': 'ImageObject', 'contentUrl': B + big(i), 'caption': cap})
+        seen.add(i)  # метадані зображень Google — у кожному ImageObject (Search Console: license, acquireLicensePage, creator)
+        media.append(dict({'@type': 'ImageObject', 'contentUrl': B + big(i), 'caption': cap}, **rights))
     g = [{'@type': 'BreadcrumbList', 'itemListElement': crumbs},
          {'@type': 'WebPage', '@id': u + '#page', 'url': u, 'name': t['title'], 'inLanguage': hl, 'description': t['description'],
           'isPartOf': {'@type': 'WebSite', '@id': B + '#site', 'url': B, 'name': 'CAS Development'}, 'primaryImageOfPage': media[0]['contentUrl'],
@@ -130,7 +136,10 @@ def ld(c, lang):
           'isBasedOn': B.rstrip('/') + t['crumbs'][-1][0], 'hasPart': {'@id': u + '#gallery'}},
          {'@type': 'ImageGallery', '@id': u + '#gallery', 'name': f'{t["h1"]}: {t["vis_h2"]}, {t["dw_h2"]}', 'url': u, 'inLanguage': hl,
           'creator': {'@id': B + '#business'}, 'copyrightHolder': {'@id': B + '#business'}, 'associatedMedia': media}]
-    return json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False)
+    # бюджет HTML лендингу 64 КБ: JSON-LD компактно й ≤ LD_MAX — хвіст галереї без ImageObject (фото лишаються на сторінці)
+    while len(json.dumps(g, ensure_ascii=False, separators=(',', ':')).encode()) > LD_MAX and len(media) > 6:
+        media.pop()
+    return json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False, separators=(',', ':'))
 
 
 def og(c):

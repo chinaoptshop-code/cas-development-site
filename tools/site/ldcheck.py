@@ -144,8 +144,9 @@ def check_node(o, E, W, ctx):
             E('ImageObject без contentUrl/url')
         elif not has('contentUrl'):
             W('ImageObject без contentUrl')
-        if not any(has(k) for k in ('creator', 'creditText', 'copyrightNotice', 'license')):
-            W('ImageObject без creator/creditText/copyrightNotice/license (метадані зображень Google)')
+        miss = [k for k in ('creator', 'creditText', 'copyrightNotice', 'license', 'acquireLicensePage') if not has(k)]
+        if miss:  # Search Console «Метадані зображення»: license, acquireLicensePage, creator, creditText, copyrightNotice
+            W('ImageObject без ' + '/'.join(miss) + ' (метадані зображень Google)')
     if 'VideoObject' in ts:
         for k in ('name', 'thumbnailUrl', 'uploadDate'):
             if not has(k):

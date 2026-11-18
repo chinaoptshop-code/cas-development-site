@@ -1,6 +1,6 @@
 # Аудит сторінок cas-develop.com
 
-Сторінок: 1189 (MAIN 15, LAND 732, інші 365). HTML разом 61192 КБ, з них інлайн CSS 22087 КБ і JS 773 КБ.
+Сторінок: 1189 (MAIN 15, LAND 732, інші 365). HTML разом 61224 КБ, з них інлайн CSS 22087 КБ і JS 773 КБ.
 
 ## Проблеми
 
@@ -57,10 +57,10 @@
 | budivnytstvo-budynkiv-kyiv.html | land | 64.0 | 17.1 | 13.1 | 0.5 | 6 | 572 |
 | ru/stoimost-remonta-kvartiry-kiev.html | land | 64.0 | 17.3 | 13.7 | 2.5 | 6 | 564 |
 | es/blog.html | other | 63.7 | 15.5 | 14.0 | 0.5 | 7 | 479 |
+| proekty/monpark-povnyi-proekt.html | land | 63.7 | 13.4 | 13.6 | 0.5 | 6 | 519 |
 | remont-ofisu-pid-klyuch-kyiv.html | land | 63.7 | 19.7 | 13.0 | 0.5 | 6 | 507 |
 | ru/stroitelstvo-domov-kiev.html | land | 63.7 | 17.1 | 13.3 | 0.5 | 6 | 569 |
 | vartist-remontu-kvartyry-kyiv.html | land | 63.7 | 17.4 | 13.7 | 2.5 | 6 | 579 |
-| proekty/monpark-povnyi-proekt.html | land | 63.5 | 13.5 | 13.6 | 0.5 | 6 | 519 |
 | ru/remont-ofisa-kiev.html | land | 63.5 | 19.7 | 13.3 | 0.5 | 6 | 499 |
 | blog/remont-u-peredmisti-kyieva-shcho-vrakhuvaty.html | article | 63.3 | 17.9 | 14.2 | 0.5 | 6 | 450 |
 | blog/interier-pryvatnoho-budynku-premium-etapy.html | article | 63.1 | 19.4 | 14.2 | 0.5 | 6 | 434 |
@@ -762,6 +762,7 @@
 | ar/renovation-construction-europe.html | land | 45.0 | 11.8 | 13.3 | 0.5 | 6 | 400 |
 | en/house-construction-cost.html | land | 45.0 | 12.2 | 13.3 | 0.5 | 6 | 447 |
 | fr/equipement-cle-en-main.html | land | 45.0 | 14.0 | 13.3 | 0.5 | 6 | 391 |
+| proekty/edelweiss.html | land | 45.0 | 9.0 | 1.9 | 0.5 | 0 | 378 |
 | es/equipamiento-llave-en-mano.html | land | 44.9 | 13.9 | 13.3 | 0.5 | 6 | 393 |
 | fr/design-bureaux.html | land | 44.9 | 12.2 | 13.3 | 0.5 | 6 | 441 |
 | pt/design-de-escritorios.html | land | 44.9 | 12.1 | 13.3 | 0.5 | 6 | 446 |
@@ -803,6 +804,7 @@
 | pt/remodelacao-premium.html | land | 44.0 | 11.8 | 13.3 | 0.5 | 6 | 437 |
 | dyzain-i-remont-khmelnytskyi.html | land | 43.9 | 13.3 | 13.3 | 0.5 | 6 | 344 |
 | fr/architecture-interieur-neoclassique.html | land | 43.9 | 11.9 | 13.3 | 0.5 | 6 | 441 |
+| proekty/diamond.html | land | 43.9 | 8.7 | 1.9 | 0.5 | 0 | 366 |
 | ru/dizayn-i-remont-bucha.html | land | 43.9 | 12.3 | 13.3 | 0.5 | 6 | 350 |
 | zh/apartment-renovation.html | land | 43.9 | 12.5 | 13.3 | 0.5 | 6 | 425 |
 | ar/commercial-renovation.html | land | 43.8 | 11.5 | 13.3 | 0.5 | 6 | 408 |
@@ -830,7 +832,6 @@
 | en/apartment-replanning.html | land | 43.4 | 11.6 | 13.3 | 0.5 | 6 | 454 |
 | zh/house-interior-design.html | land | 43.4 | 12.7 | 13.3 | 0.5 | 6 | 474 |
 | ar/services.html | land | 43.3 | 11.3 | 13.3 | 0.5 | 6 | 382 |
-| proekty/edelweiss.html | land | 43.3 | 8.9 | 1.9 | 0.5 | 0 | 378 |
 | ar/design-implementation.html | land | 43.2 | 11.6 | 13.3 | 0.5 | 6 | 388 |
 | ar/kitchen-renovation.html | land | 43.2 | 11.4 | 13.3 | 0.5 | 6 | 402 |
 | de/grundrissaenderung-wohnung.html | land | 43.2 | 11.9 | 13.3 | 0.5 | 6 | 446 |
@@ -859,6 +860,8 @@
 | fr/commerce-cle-en-main.html | land | 43.0 | 13.3 | 13.3 | 0.5 | 6 | 391 |
 | fr/maison-ossature-bois.html | land | 43.0 | 11.8 | 13.3 | 0.5 | 6 | 413 |
 | pl/projektowanie-wnetrz-neoklasyka.html | land | 43.0 | 12.1 | 13.3 | 0.5 | 6 | 444 |
+| proekty/hoda-estate.html | land | 43.0 | 9.0 | 1.9 | 0.5 | 0 | 389 |
+| proekty/yacht-vip.html | land | 43.0 | 8.6 | 1.9 | 0.5 | 0 | 367 |
 | pt/casa-estrutura-madeira.html | land | 43.0 | 11.7 | 13.3 | 0.5 | 6 | 414 |
 | pt/perguntas-frequentes.html | land | 43.0 | 13.2 | 13.3 | 0.5 | 6 | 346 |
 | ru/referalnaya-programma.html | land | 43.0 | 11.3 | 13.3 | 0.5 | 6 | 360 |
@@ -916,6 +919,7 @@
 | dyzain-i-remont-vinnytsia.html | land | 42.5 | 11.9 | 13.3 | 0.5 | 6 | 341 |
 | dyzain-i-remont-vyshneve.html | land | 42.5 | 11.9 | 13.3 | 0.5 | 6 | 345 |
 | fr/design-bureau-open-space.html | land | 42.5 | 11.7 | 13.3 | 0.5 | 6 | 416 |
+| proekty/pidgirland.html | land | 42.5 | 8.8 | 1.9 | 0.5 | 0 | 379 |
 | ru/dizayn-i-remont-belaya-tserkov.html | land | 42.5 | 11.8 | 13.3 | 0.5 | 6 | 346 |
 | ru/dizayn-i-remont-boyarka.html | land | 42.5 | 11.9 | 13.3 | 0.5 | 6 | 344 |
 | ru/dizayn-i-remont-poltava.html | land | 42.5 | 11.8 | 13.3 | 0.5 | 6 | 342 |
@@ -934,7 +938,6 @@
 | fr/design-renovation-penthouse.html | land | 42.3 | 11.5 | 13.3 | 0.5 | 6 | 402 |
 | fr/renovation-construction-europe.html | land | 42.3 | 11.5 | 13.3 | 0.5 | 6 | 402 |
 | pl/biznes-pod-klucz.html | land | 42.3 | 13.4 | 13.3 | 0.5 | 6 | 397 |
-| proekty/diamond.html | land | 42.3 | 8.7 | 1.9 | 0.5 | 0 | 366 |
 | pt/fit-out-escritorios.html | land | 42.3 | 11.4 | 13.3 | 0.5 | 6 | 403 |
 | ru/dizayn-i-remont-zhitomir.html | land | 42.3 | 11.7 | 13.3 | 0.5 | 6 | 343 |
 | zh/office-design.html | land | 42.3 | 12.4 | 13.3 | 0.5 | 6 | 444 |
@@ -949,6 +952,7 @@
 | pt/remodelacao-construcao-europa.html | land | 42.2 | 11.4 | 13.3 | 0.5 | 6 | 403 |
 | zh/office-renovation.html | land | 42.2 | 11.9 | 13.3 | 0.5 | 6 | 414 |
 | de/innenarchitektur.html | land | 42.1 | 11.6 | 13.3 | 0.5 | 6 | 397 |
+| proekty/usa-house.html | land | 42.1 | 8.6 | 1.9 | 0.5 | 0 | 368 |
 | de/hoteldesign.html | land | 42.0 | 11.8 | 13.3 | 0.5 | 6 | 430 |
 | en/penthouse-design-renovation.html | land | 42.0 | 11.3 | 13.3 | 0.5 | 6 | 412 |
 | es/diseno-reforma-atico.html | land | 42.0 | 11.5 | 13.3 | 0.5 | 6 | 403 |
@@ -987,6 +991,7 @@
 | es/casa-hormigon-celular.html | land | 41.7 | 11.4 | 13.3 | 0.5 | 6 | 404 |
 | fr/design-amenagement-boutique.html | land | 41.7 | 11.5 | 13.3 | 0.5 | 6 | 401 |
 | fr/renovation-salle-de-bain.html | land | 41.7 | 11.2 | 13.3 | 0.5 | 6 | 405 |
+| proekty/linden-penthouse.html | land | 41.7 | 8.7 | 1.9 | 0.5 | 0 | 376 |
 | pt/remodelacao-apartamento-novo.html | land | 41.7 | 11.1 | 13.3 | 0.5 | 6 | 406 |
 | pt/remodelacao-moradia.html | land | 41.7 | 11.1 | 13.3 | 0.5 | 6 | 414 |
 | zh/interior-design-cost.html | land | 41.7 | 12.1 | 13.3 | 0.5 | 6 | 453 |
@@ -996,6 +1001,7 @@
 | fr/renovation-maison-cle-en-main.html | land | 41.6 | 11.1 | 13.3 | 0.5 | 6 | 410 |
 | pl/projekt-biura-open-space.html | land | 41.6 | 11.9 | 13.3 | 0.5 | 6 | 421 |
 | pl/umowa-gwarancja-platnosc.html | land | 41.6 | 11.7 | 13.3 | 0.5 | 6 | 409 |
+| proekty/kitana-beach.html | land | 41.6 | 8.7 | 1.9 | 0.5 | 0 | 365 |
 | pt/design-remodelacao-lojas-showrooms.html | land | 41.6 | 11.3 | 13.3 | 0.5 | 6 | 403 |
 | pt/remodelacao-lojas-espacos-comerciais.html | land | 41.6 | 11.0 | 13.3 | 0.5 | 6 | 411 |
 | zh/business-fit-out.html | land | 41.6 | 13.7 | 13.3 | 0.5 | 6 | 393 |
@@ -1013,14 +1019,13 @@
 | de/gewerberaeume-renovierung.html | land | 41.4 | 11.2 | 13.3 | 0.5 | 6 | 415 |
 | es/servicios.html | land | 41.4 | 10.9 | 13.3 | 0.5 | 6 | 384 |
 | fr/renovation-appartement-neuf.html | land | 41.4 | 11.1 | 13.3 | 0.5 | 6 | 405 |
-| proekty/yacht-vip.html | land | 41.4 | 8.5 | 1.9 | 0.5 | 0 | 367 |
 | zh/apartment-replanning.html | land | 41.4 | 12.0 | 13.3 | 0.5 | 6 | 443 |
 | zh/neoclassical-interior-design.html | land | 41.4 | 12.1 | 13.3 | 0.5 | 6 | 440 |
 | de/bauueberwachung.html | land | 41.3 | 11.3 | 13.3 | 0.5 | 6 | 401 |
 | es/diseno-reforma-tiendas.html | land | 41.3 | 11.3 | 13.3 | 0.5 | 6 | 403 |
 | es/reforma-locales-comerciales.html | land | 41.3 | 11.0 | 13.3 | 0.5 | 6 | 411 |
 | es/reforma-obra-nueva.html | land | 41.3 | 11.1 | 13.3 | 0.5 | 6 | 406 |
-| proekty/hoda-estate.html | land | 41.3 | 8.9 | 1.9 | 0.5 | 0 | 389 |
+| proekty/hodos-villa.html | land | 41.3 | 8.8 | 1.9 | 0.5 | 0 | 377 |
 | ar/contact.html | land | 41.2 | 11.5 | 13.3 | 0.5 | 6 | 342 |
 | de/porenbetonhaus.html | land | 41.2 | 11.5 | 13.3 | 0.5 | 6 | 405 |
 | es/reforma-bano.html | land | 41.2 | 11.2 | 13.3 | 0.5 | 6 | 406 |
@@ -1050,7 +1055,6 @@
 | es/casa-modular.html | land | 40.9 | 11.3 | 13.3 | 0.5 | 6 | 403 |
 | fr/renovation-cuisine.html | land | 40.9 | 11.0 | 13.3 | 0.5 | 6 | 404 |
 | pl/remont-domu.html | land | 40.9 | 11.3 | 13.3 | 0.5 | 6 | 416 |
-| proekty/pidgirland.html | land | 40.9 | 8.8 | 1.9 | 0.5 | 0 | 379 |
 | de/neubauwohnung-ausbau.html | land | 40.8 | 11.2 | 13.3 | 0.5 | 6 | 407 |
 | en/modular-house.html | land | 40.8 | 11.3 | 13.3 | 0.5 | 6 | 412 |
 | pl/uslugi.html | land | 40.8 | 11.0 | 13.3 | 0.5 | 6 | 386 |
@@ -1070,13 +1074,13 @@
 | de/modulhaus.html | land | 40.6 | 11.4 | 13.3 | 0.5 | 6 | 404 |
 | en/timber-house.html | land | 40.6 | 11.2 | 13.3 | 0.5 | 6 | 413 |
 | fr/realisation-projet.html | land | 40.6 | 11.3 | 13.3 | 0.5 | 6 | 390 |
+| proekty/dubai-villa.html | land | 40.6 | 8.7 | 1.9 | 0.5 | 0 | 368 |
 | zh/timber-frame-house.html | land | 40.6 | 12.0 | 13.3 | 0.5 | 6 | 412 |
 | en/kitchen-renovation.html | land | 40.5 | 10.9 | 13.3 | 0.5 | 6 | 416 |
 | es/ejecucion-proyecto-diseno.html | land | 40.5 | 11.1 | 13.3 | 0.5 | 6 | 392 |
 | es/reforma-cocina.html | land | 40.5 | 10.9 | 13.3 | 0.5 | 6 | 405 |
 | pt/design-de-interiores-apartamento.html | land | 40.5 | 10.6 | 13.3 | 0.5 | 6 | 391 |
 | zh/open-space-office-design.html | land | 40.5 | 11.9 | 13.3 | 0.5 | 6 | 417 |
-| proekty/usa-house.html | land | 40.4 | 8.5 | 1.9 | 0.5 | 0 | 368 |
 | en/townhouse-renovation.html | land | 40.3 | 11.0 | 13.3 | 0.5 | 6 | 393 |
 | es/reforma-adosado.html | land | 40.3 | 11.1 | 13.3 | 0.5 | 6 | 388 |
 | de/kuechenrenovierung.html | land | 40.2 | 11.0 | 13.3 | 0.5 | 6 | 406 |
@@ -1089,7 +1093,6 @@
 | pl/dom-z-bali.html | land | 40.2 | 11.5 | 13.3 | 0.5 | 6 | 406 |
 | zh/furnishing.html | land | 40.2 | 11.6 | 13.3 | 0.5 | 6 | 382 |
 | zh/renovation-crew.html | land | 40.2 | 11.5 | 13.3 | 0.5 | 6 | 409 |
-| proekty/linden-penthouse.html | land | 40.1 | 8.6 | 1.9 | 0.5 | 0 | 376 |
 | pt/designer-de-interiores.html | land | 40.1 | 10.7 | 13.3 | 0.5 | 6 | 387 |
 | zh/penthouse-design-renovation.html | land | 40.1 | 11.7 | 13.3 | 0.5 | 6 | 401 |
 | zh/renovation-construction-europe.html | land | 40.1 | 11.7 | 13.3 | 0.5 | 6 | 401 |
@@ -1103,7 +1106,7 @@
 | pl/realizacja-projektu.html | land | 39.9 | 11.4 | 13.3 | 0.5 | 6 | 394 |
 | pl/remont-kuchni.html | land | 39.9 | 11.1 | 13.3 | 0.5 | 6 | 407 |
 | pl/remont-szeregowca.html | land | 39.9 | 11.4 | 13.3 | 0.5 | 6 | 390 |
-| proekty/kitana-beach.html | land | 39.9 | 8.6 | 1.9 | 0.5 | 0 | 365 |
+| proekty/tetris-hall.html | land | 39.9 | 8.8 | 1.9 | 0.5 | 0 | 366 |
 | zh/aerated-concrete-house.html | land | 39.9 | 11.7 | 13.3 | 0.5 | 6 | 402 |
 | zh/commercial-renovation.html | land | 39.9 | 11.4 | 13.3 | 0.5 | 6 | 409 |
 | zh/house-renovation.html | land | 39.9 | 11.4 | 13.3 | 0.5 | 6 | 412 |
@@ -1122,7 +1125,6 @@
 | es/cocinas-armarios-a-medida.html | land | 39.6 | 10.8 | 13.3 | 0.5 | 6 | 383 |
 | es/proyecto-de-casa.html | land | 39.6 | 10.5 | 13.3 | 0.5 | 6 | 386 |
 | fr/rafraichissement-appartement.html | land | 39.6 | 10.9 | 13.3 | 0.5 | 6 | 384 |
-| proekty/hodos-villa.html | land | 39.6 | 8.7 | 1.9 | 0.5 | 0 | 377 |
 | de/kuechen-und-schraenke-nach-mass.html | land | 39.5 | 10.8 | 13.3 | 0.5 | 6 | 384 |
 | en/interior-designer.html | land | 39.5 | 10.6 | 13.3 | 0.5 | 6 | 396 |
 | zh/bathroom-renovation.html | land | 39.5 | 11.5 | 13.3 | 0.5 | 6 | 404 |
@@ -1145,8 +1147,8 @@
 | zh/kitchen-renovation.html | land | 39.1 | 11.3 | 13.3 | 0.5 | 6 | 403 |
 | zh/timber-house.html | land | 39.1 | 11.6 | 13.3 | 0.5 | 6 | 402 |
 | de/hausplanung.html | land | 39.0 | 10.5 | 13.3 | 0.5 | 6 | 387 |
+| proekty/yacht-restaurant.html | land | 39.0 | 8.3 | 1.9 | 0.5 | 0 | 349 |
 | pl/remont-kosmetyczny.html | land | 38.9 | 11.0 | 13.3 | 0.5 | 6 | 386 |
-| proekty/dubai-villa.html | land | 38.9 | 8.6 | 1.9 | 0.5 | 0 | 368 |
 | zh/design-implementation.html | land | 38.9 | 11.5 | 13.3 | 0.5 | 6 | 390 |
 | zh/modular-house.html | land | 38.9 | 11.6 | 13.3 | 0.5 | 6 | 401 |
 | pl/projekt-domu.html | land | 38.8 | 10.7 | 13.3 | 0.5 | 6 | 388 |
@@ -1154,7 +1156,6 @@
 | zh/townhouse-renovation.html | land | 38.6 | 11.4 | 13.3 | 0.5 | 6 | 386 |
 | zh/apartment-design.html | land | 38.5 | 10.9 | 13.3 | 0.5 | 6 | 389 |
 | zh/interior-designer.html | land | 38.4 | 11.1 | 13.3 | 0.5 | 6 | 385 |
-| proekty/tetris-hall.html | land | 38.2 | 8.7 | 1.9 | 0.5 | 0 | 366 |
 | zh/house-design.html | land | 38.2 | 10.9 | 13.3 | 0.5 | 6 | 384 |
 | fr/programme-de-parrainage.html | land | 38.1 | 10.4 | 13.3 | 0.5 | 6 | 354 |
 | pt/programa-de-recomendacao.html | land | 38.0 | 10.3 | 13.3 | 0.5 | 6 | 354 |
@@ -1163,29 +1164,28 @@
 | zh/cosmetic-renovation.html | land | 37.8 | 11.1 | 13.3 | 0.5 | 6 | 382 |
 | es/programa-de-referidos.html | land | 37.7 | 10.2 | 13.3 | 0.5 | 6 | 354 |
 | de/empfehlungsprogramm.html | land | 37.6 | 10.4 | 13.3 | 0.5 | 6 | 355 |
-| proekty/yacht-restaurant.html | land | 37.3 | 8.2 | 1.9 | 0.5 | 0 | 349 |
+| proekty/a-frame-house.html | land | 37.4 | 8.2 | 1.9 | 0.5 | 0 | 337 |
 | en/referral-programme.html | land | 37.2 | 10.1 | 13.3 | 0.5 | 6 | 357 |
 | proekty/petrivtsi-house.html | land | 37.1 | 8.2 | 1.9 | 0.5 | 0 | 371 |
 | pl/program-polecen.html | land | 37.0 | 10.5 | 13.3 | 0.5 | 6 | 356 |
+| proekty/monpark.html | land | 36.3 | 8.3 | 1.9 | 0.5 | 0 | 345 |
 | zh/referral-programme.html | land | 36.2 | 10.6 | 13.3 | 0.5 | 6 | 352 |
 | ru/usloviya-ispolzovaniya.html | land | 36.1 | 11.3 | 13.2 | 0.5 | 9 | 250 |
 | umovy-korystuvannia.html | land | 35.8 | 11.3 | 13.2 | 0.5 | 9 | 250 |
-| proekty/a-frame-house.html | land | 35.7 | 8.2 | 1.9 | 0.5 | 0 | 337 |
+| proekty/office-chicago.html | land | 35.4 | 8.0 | 1.9 | 0.5 | 0 | 334 |
+| proekty/smart-villa.html | land | 35.1 | 8.1 | 1.9 | 0.5 | 0 | 340 |
 | konfigurator.html | land | 35.0 | 10.5 | 9.7 | 0.5 | 5 | 330 |
 | ru/konfigurator.html | land | 35.0 | 10.6 | 9.7 | 0.5 | 5 | 330 |
-| proekty/monpark.html | land | 34.6 | 8.2 | 1.9 | 0.5 | 0 | 345 |
+| proekty/house-150.html | land | 34.9 | 8.1 | 1.9 | 0.5 | 0 | 338 |
+| proekty/yablu-rest.html | land | 34.5 | 7.8 | 1.9 | 0.5 | 0 | 326 |
 | ru/konfidentsialnost.html | land | 34.5 | 10.7 | 13.2 | 0.5 | 9 | 241 |
 | konfidentsiinist.html | land | 34.4 | 10.7 | 13.2 | 0.5 | 9 | 241 |
 | ar/terms-of-use.html | land | 33.8 | 10.5 | 13.2 | 0.5 | 9 | 233 |
-| proekty/office-chicago.html | land | 33.7 | 7.9 | 1.9 | 0.5 | 0 | 334 |
-| proekty/smart-villa.html | land | 33.4 | 8.1 | 1.9 | 0.5 | 0 | 340 |
-| proekty/house-150.html | land | 33.2 | 8.0 | 1.9 | 0.5 | 0 | 338 |
-| proekty/yablu-rest.html | land | 33.0 | 7.8 | 1.9 | 0.5 | 0 | 326 |
+| proekty/dolls-salon.html | land | 33.6 | 7.9 | 1.9 | 0.5 | 0 | 329 |
 | ar/privacy.html | land | 32.4 | 9.9 | 13.2 | 0.5 | 9 | 224 |
 | fr/conditions-utilisation.html | land | 32.0 | 10.0 | 13.2 | 0.5 | 9 | 232 |
 | pt/termos-de-utilizacao.html | land | 32.0 | 10.0 | 13.2 | 0.5 | 9 | 233 |
 | es/condiciones-de-uso.html | land | 31.9 | 10.0 | 13.2 | 0.5 | 9 | 233 |
-| proekty/dolls-salon.html | land | 31.9 | 7.8 | 1.9 | 0.5 | 0 | 329 |
 | de/nutzungsbedingungen.html | land | 31.6 | 10.0 | 13.2 | 0.5 | 9 | 234 |
 | pl/regulamin.html | land | 31.5 | 10.1 | 13.2 | 0.5 | 9 | 235 |
 | en/terms-of-use.html | land | 31.3 | 9.8 | 13.2 | 0.5 | 9 | 236 |
