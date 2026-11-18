@@ -19,6 +19,7 @@ import { CLOSED, LEAD_STATUSES, ORDER_STATUSES, STATUSES, bad, json, nextLeadNum
 import { SLA_MIN, escHtml, kyiv, kyivMidnight, notifyStaff, parseUtc, sqlTime, takeLead } from '../../_alerts.js';
 import { audit, diff, need, noTable, orderScope, shapeOrder, staffById } from '../../_roles.js';
 import { DESIGN, DMIN, RATES, cost, rateOf } from '../../_rates.js';
+import { kpText } from '../../_client_msgs.js';
 
 // Пропозиція з заявки: тип послуги → ставка «від». Порядок — пріоритетні напрями студії (Михайло 18.11.2026): дизайн-проєкт,
 // ремонт під ключ, будівництво будинку, комерція; далі — решта. service — тип проєкту при конверсії (functions/api/admin/projects.js).
@@ -196,6 +197,7 @@ export async function onRequestGet({ request, env }) {
   catch (e) { if (!noTable(e)) throw e; return bad('CRM оновлюється (міграція 0010) — спробуйте за кілька хвилин', 503); }
   const S = await staffMap(env);
   const rows = results.map(o => shapeOrder({ ...o, items: JSON.parse(o.items || '[]'), place: placeOf(o), page: pageOf(o), offer: offerParse(o.offer),
+    kp_text: offerParse(o.offer) ? kpText(offerParse(o.offer), o.lang, o.name) : null, // «Надіслати КП» — мовою заявки (10 мов)
     assignee_name: o.assignee_staff_id && S.get(o.assignee_staff_id) ? S.get(o.assignee_staff_id).name : null,
     status_label: statusLabel(o.status, o.kind) }, x));
   if (!x.can('leads.view_all')) for (const r of rows) delete r.ref_path; // сторінка-джерело — власнику й менеджеру
@@ -249,7 +251,55 @@ export async function onRequestPatch({ request, env }) {
   if (error) return error;
   let d;
   try { d = await readJSON(request, 16 * 1024); } catch { return bad('Некоректні дані'); }
+  if (d && d.bulk) return bulk(env, request, x, d.bulk);
+  if (d && has(d, 'offer_sent')) return offerSent(env, request, x, d);
+  return patchOne(env, request, x, d);
+}
+
+// «Надіслати КП»: менеджер відкрив Telegram / Viber / WhatsApp з готовим текстом (або скопіював) — лише журнал (історія + аудит),
+// сервер нічого не надсилає. Потрібна збережена пропозиція. Нова / В роботі → «Розрахунок».
+const KP_CH = { telegram: 'Telegram', viber: 'Viber', whatsapp: 'WhatsApp', copy: 'скопійовано' };
+async function offerSent(env, request, x, d) {
   const o = await visible(env, x, d.id);
+  if (!o || o.kind !== 'lead') return bad('Заявку не знайдено', 404);
+  if (!x.can('leads.edit')) return bad('Немає права змінювати цей запис', 403);
+  const ch = String(d.offer_sent || '');
+  if (!KP_CH[ch]) return bad('Канал: ' + Object.keys(KP_CH).join(' | '));
+  const f = offerParse(o.offer);
+  if (!f) return bad('Спершу збережіть розрахунок', 409);
+  return patchOne(env, request, x, { id: o.id, note: `КП надіслано (${KP_CH[ch]}): ${offerLine(f)}`, ...(['new', 'in_work'].includes(o.status) ? { status: 'quote_sent' } : {}) }, 'lead.offer_sent');
+}
+
+// Масові дії зі списку: {ids: [..≤100], status? | assignee_staff_id? | not_interested: 'причина'?} — кожен рядок окремо через ті самі
+// перевірки, що й PATCH одного (видимість, leads.edit / orders.edit, leads.assign). «Не цікаво» — заявка «Скасовано» з причиною в історії;
+// заявка бота пошуку (ext_hash) ще й у bot_feedback — бот перестане показувати схожі. Відповідь: {ok, done, results: [{id, ok | error}]}.
+async function bulk(env, request, x, b) {
+  if (!b || typeof b !== 'object' || !Array.isArray(b.ids) || !b.ids.length || b.ids.length > 100) return bad('ids: від 1 до 100');
+  const ids = [...new Set(b.ids.map(Number).filter(n => Number.isInteger(n) && n > 0))];
+  const acts = ['status', 'assignee_staff_id', 'not_interested'].filter(k => has(b, k));
+  if (acts.length !== 1) return bad('Одна дія: status, assignee_staff_id або not_interested');
+  const reason = acts[0] === 'not_interested' ? (str(b.not_interested, 300) || 'без причини') : null;
+  const results = [];
+  for (const id of ids) {
+    const body = acts[0] === 'status' ? { id, status: b.status, note: 'Масова зміна стадії' } : acts[0] === 'assignee_staff_id' ? { id, assignee_staff_id: b.assignee_staff_id }
+      : { id, status: 'cancelled', note: 'Не цікаво: ' + reason };
+    if (reason) { const o = await visible(env, x, id); if (o && o.kind !== 'lead') { results.push({ id, error: '«Не цікаво» — лише для заявок' }); continue; } }
+    const r = await patchOne(env, request, x, body);
+    const j = await r.json().catch(() => ({}));
+    if (r.status !== 200) { results.push({ id, error: j.error || String(r.status) }); continue; }
+    if (reason) {
+      const o = await env.DB.prepare('SELECT ext_hash FROM orders WHERE id = ?').bind(id).first().catch(() => null);
+      if (o && o.ext_hash) await env.DB.prepare(`INSERT INTO bot_feedback (lead_hash, verdict, reason) VALUES (?, 'not_interested', ?)
+          ON CONFLICT(lead_hash) DO UPDATE SET verdict = excluded.verdict, reason = excluded.reason, updated_at = datetime('now')`).bind(o.ext_hash, reason).run().catch(e => { if (!noTable(e)) throw e; });
+    }
+    results.push({ id, ok: true });
+  }
+  await audit(env, request, x, 'crm.bulk', 'orders', null, null, { action: acts[0], value: b[acts[0]] ?? null, ids, done: results.filter(r => r.ok).length });
+  return json({ ok: true, done: results.filter(r => r.ok).length, results });
+}
+
+async function patchOne(env, request, x, d, action) {
+  const o = await visible(env, x, d && d.id);
   if (!o) return bad('Запис не знайдено', 404); // чужий рядок — як неіснуючий: не підтверджуємо, що він є
   if (!x.can(o.kind === 'lead' ? 'leads.edit' : 'orders.edit')) return bad('Немає права змінювати цей запис', 403);
   const changes = k => has(d, k) && String(d[k] ?? '') !== String(o[k] ?? '');
@@ -291,10 +341,10 @@ export async function onRequestPatch({ request, env }) {
     .bind(o.id, status, str(d.note, 1000), x.name).run();
   if (!o.taken_at && o.status === 'new' && status !== 'new') await takeLead(env, o.id, next_.assignee || x.name, 'CRM', new Date(), x.staffId);
   const dd = diff(o, next_, FIELDS);
-  if (dd || str(d.note) || offer !== undefined) await audit(env, request, x, o.kind === 'lead' ? 'lead.update' : 'order.update', 'orders', o.id, dd && dd.before,
+  if (dd || str(d.note) || offer !== undefined) await audit(env, request, x, action || (o.kind === 'lead' ? 'lead.update' : 'order.update'), 'orders', o.id, dd && dd.before,
     { ...(dd ? dd.after : {}), ...(str(d.note) ? { note: str(d.note, 1000) } : {}), ...(offer !== undefined ? { offer } : {}) });
   if (staffId && staffId !== o.assignee_staff_id && staffId !== x.staffId)
     await notifyStaff(env, staffId, `📌 Вам призначено ${o.kind === 'lead' ? 'заявку' : 'замовлення'} <b>${escHtml(o.number)}</b>${o.service ? `\nПослуга: ${escHtml(o.service)}` : ''}\nСтадія: ${escHtml(statusLabel(status, o.kind))}`,
       { inline_keyboard: [[{ text: '📋 Мої задачі', url: TEAM_URL }]] });
-  return json({ ok: true, status, status_label: statusLabel(status, o.kind), ...(offer !== undefined ? { offer, offer_line: offer ? offerLine(offer) : null } : {}) });
+  return json({ ok: true, status, status_label: statusLabel(status, o.kind), ...(offer !== undefined ? { offer, offer_line: offer ? offerLine(offer) : null, kp_text: offer ? kpText(offer, o.lang, o.name) : null } : {}) });
 }

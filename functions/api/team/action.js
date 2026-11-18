@@ -65,6 +65,7 @@ export async function onRequestPost({ request, env }) {
     if (i < 0) return bad('Етап не знайдено', 404);
     const before = { ...stages[i], status: stageStatus(stages[i]) };
     stages[i] = { ...stages[i], status: d.status, progress: d.status === 'done' ? 100 : Math.max(Number(stages[i].progress) || 0, d.status === 'review' ? 90 : 10),
+      ...(d.status === 'review' && before.status !== 'review' ? { review_at: new Date().toLocaleString('sv-SE', { timeZone: 'Europe/Kyiv' }).slice(0, 16) } : {}),
       ...(d.status === 'done' && !stages[i].end ? { end: new Date().toISOString().slice(0, 10) } : {}) };
     await env.DB.prepare("UPDATE projects SET stages = ?, updated_at = datetime('now') WHERE id = ?").bind(JSON.stringify(stages), pid).run();
     await audit(env, request, x, 'project.stage', 'projects', pid, { stage_id: before.id, status: before.status, progress: before.progress }, { stage_id: before.id, status: d.status, progress: stages[i].progress });

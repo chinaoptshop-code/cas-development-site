@@ -173,10 +173,25 @@ await check('owner-lead-offer', 'OWNER', '/kabinet/admin#crm', [1440], async p =
   await p.fill('dialog[open] [data-oa]', '85'); await see(p, 'dialog[open] [data-os]', 'від \\$2\u202f550');
   await p.click('dialog[open] [data-osave]'); await p.waitForTimeout(800);
   if (await p.inputValue('dialog[open] [name=status]') !== 'quote_sent') throw new Error('стадія не «Розрахунок»');
+  await see(p, 'dialog[open] [data-osend]', 'Надіслати КП'); await see(p, 'dialog[open] .kp-text');
+  if (!/від \$2\u202f550/.test(await p.inputValue('dialog[open] .kp-text'))) throw new Error('текст КП без «від»');
+  if (!(await p.$('dialog[open] [data-sh=whatsapp]'))) throw new Error('немає кнопки WhatsApp');
   p.once('dialog', d => d.accept()); await p.click('dialog[open] [data-oconv]');
   await see(p, '.pj-lead', 'З заявки'); await see(p, '[data-f] [name=title]');
   if (!/Дизайн-проєкт/.test(await p.inputValue('[data-f] [name=title]'))) throw new Error('назва проєкту');
   const n = await p.$$eval('.pj-stage', e => e.length); if (n !== 8) throw new Error('етапів дизайну ' + n);
+});
+// Масові дії: у таблиці — прапорці, панель «Вибрано N» з підтвердженням → стадія змінюється для обраних
+await check('owner-crm-bulk', 'OWNER', '/kabinet/admin#crm', [1440, 402], async p => {
+  await see(p, '[data-list]', 'Лід');
+  if (!(await p.$('[data-sel]'))) { await p.click('[data-v=table]'); await p.waitForTimeout(500); }
+  const boxes = p.locator('[data-sel]'); if (await boxes.count() < 2) throw new Error('немає прапорців вибору');
+  await boxes.nth(0).click(); await boxes.nth(1).click();
+  await see(p, '[data-bulk]', 'Вибрано: 2');
+  const h = await p.$eval('[data-bulk] [data-bx]', b => b.getBoundingClientRect().height); if (h < 43.5) throw new Error('кнопка панелі < 44px');
+  p.once('dialog', d => d.accept()); await p.selectOption('[data-bulk] [data-bs]', 'in_work'); await p.waitForTimeout(900);
+  if (!(await p.$eval('[data-bulk]', b => b.hidden))) throw new Error('панель не сховалась після дії');
+  if (/,\s*<div class="kn-card|^,/.test(await p.innerHTML('[data-list]'))) throw new Error('коми між картками');
 });
 // «Партнери»: список, фільтр за типом, картка, збереження статусу; CRM — фільтр «Бот пошуку»
 await check('owner-partners', 'OWNER', '/kabinet/admin#partners', W, async p => {
