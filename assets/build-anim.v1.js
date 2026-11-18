@@ -1372,6 +1372,9 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     if (CMP) sec.classList.add('bz-cmp'); // компактна — до вставки: між вставкою й mode() (наступний кадр) кадр уже має свою висоту (CLS, коли блок у кадрі під час збірки)
     cta.parentNode.insertBefore(run, cta);
     sec.classList.add('bz-on');
+    // збірка йде трьома задачами: проміжні кадри (панель без сцени, сцена без пирога) мали іншу висоту колонки — на ПК вона «їхала»
+    // (CLS 0.016–0.024, коли блок уже в кадрі). Доріжка до кінця збірки невидима: місце те саме (висота .bz-run — з CSS), зсувів немає
+    if (!sec.hasAttribute('data-sw')) run.classList.add('bz-wip');
 
     // «пиріг»: список шарів з товщинами; наведення / фокус / тап — опис шару (aria-live)
     function renderPie(k, into) {
@@ -1402,7 +1405,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     function setPie(k) {
       if (k === pieKey) return;
       pieKey = k; pieSel = 0;
-      if (k) { renderPie(k, pie); pie.classList.remove('is-x'); void pie.offsetWidth; pie.classList.add('is-x'); pb.textContent = ui.pie + ' (' + data.pie[k][2].length + ')'; }
+      if (k) { renderPie(k, pie); pie.classList.add('is-x'); /* нові li — анімація шарів стартує сама, без примусової верстки (void offsetWidth) посеред кадру прокрутки */ pb.textContent = ui.pie + ' (' + data.pie[k][2].length + ')'; }
       else { pie.innerHTML = ''; if (fig.classList.contains('pie-open')) setPieOpen(false); }
       pie.classList.toggle('is-on', !!k); pb.classList.toggle('is-on', !!k); pb.disabled = !k;
     }
@@ -1479,7 +1482,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       svg = nsvg;
       svg.style.setProperty('--gw', 'url(#bz-gw-' + scene + ')'); svg.style.setProperty('--rg', 'url(#bz-rg-' + scene + ')');
       var gs = svg.querySelectorAll('g.bz-l[data-i]');
-      layers = [].map.call(gs, function (g) { var i = +g.getAttribute('data-i'), p = sc.parts[i]; return { g: g, p: p, k: -1, z: lz[i] ? 1 : 0 }; });
+      layers = [].map.call(gs, function (g) { var i = +g.getAttribute('data-i'), p = sc.parts[i]; if (!lz[i] && typeof p.v === 'string') g.__h = p.v; return { g: g, p: p, k: -1, z: lz[i] ? 1 : 0 }; });
       fillLazy(nlz);
       ghost = svg.querySelector('.ghost'); cam = svg.querySelector('g.bz-cam'); sky = svg.querySelector('.bz-sky'); stars = svg.querySelector('.bz-stars');
       act = -1; pieKey = undefined;
@@ -1512,20 +1515,32 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     function camera(s) {
       if (!cam || !VB) return;
       var t = rm ? 1 : clamp(s / (n * 0.5)), z = 1 + 0.12 * (1 - t) * (1 - t), cx = VB[0] + VB[2] / 2, cy = VB[1] + VB[3] * (0.62 - 0.12 * t);
-      cam.setAttribute('transform', z > 1.001 ? 'translate(' + cx.toFixed(1) + ' ' + cy.toFixed(1) + ') scale(' + z.toFixed(4) + ') translate(' + (-cx).toFixed(1) + ' ' + (-cy).toFixed(1) + ')' : '');
-      if (sky) { var e = clamp((s - (n - 1.8)) / 1.4); sky.style.opacity = (1 - e).toFixed(3); stars.style.opacity = clamp((s - (n - 1)) / 0.8).toFixed(3); }
+      var tr = z > 1.001 ? 'translate(' + cx.toFixed(1) + ' ' + cy.toFixed(1) + ') scale(' + z.toFixed(4) + ') translate(' + (-cx).toFixed(1) + ' ' + (-cy).toFixed(1) + ')' : '';
+      if (tr !== cam.__t) { cam.__t = tr; cam.setAttribute('transform', tr); } // той самий кадр — без запису (менше перерахунку стилів)
+      if (sky) {
+        var e = clamp((s - (n - 1.8)) / 1.4), so = clamp((s - (n - 1)) / 0.8); sky.style.opacity = (1 - e).toFixed(3); stars.style.opacity = so.toFixed(3);
+        if ((so > 0) !== stars.classList.contains('is-on')) stars.classList.toggle('is-on', so > 0); // зорі мерехтять лише видимі (CSS-анімація 26 кіл щокадру перераховувала стилі сцени)
+      }
     }
     // частинки: пил при кладці рядів і появі деталей, іскри — на мережах; лише при прокрутці вперед і без reduced-motion
     function puff(g, kind, row) {
       if (rm || !cam || !g.firstChild) return;
       var now = Date.now(); if (now - pLast < (row ? 70 : 140)) return; pLast = now;
-      // getBBox одразу після зміни DOM змушує браузер перерахувати верстку посеред кадру (довгі задачі при прокрутці, INP) —
-      // міряємо після відмалювання кадру, коли верстка вже чиста (частинки зʼявляються на ~16 мс пізніше, оку непомітно)
+      // частинки — після відмалювання кадру (зʼявляються на ~16 мс пізніше, оку непомітно): кадр прокрутки не росте
       W.requestAnimationFrame(function () { setTimeout(function () { puffNow(g, kind, row); }, 0); });
+    }
+    // габарити шару — з рядка його розмітки (точки polygon/path «x,y» і cx/cy кіл), без getBBox: той у задачі після кадру змушував
+    // перераховувати стилі й верстку всієї SVG-сцени (60–90 мс на телефоні CPU×4 на кожну хмарку пилу); кеш — за рядком
+    var bbC = { s: null, b: null };
+    function bbOf(h) {
+      if (bbC.s === h) return bbC.b;
+      var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9, m, re = /(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)|cx="(-?[\d.]+)" cy="(-?[\d.]+)"/g;
+      while ((m = re.exec(h))) { var x = +(m[1] != null ? m[1] : m[3]), y = +(m[1] != null ? m[2] : m[4]); if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+      bbC.s = h; return (bbC.b = x1 > x0 ? { x: x0, y: y0, width: x1 - x0, height: Math.max(0, y1 - y0) } : null);
     }
     function puffNow(g, kind, row) {
       if (!g.isConnected || !g.firstChild) return;
-      var b; try { b = g.getBBox(); } catch (e) { return; } if (!b.width) return;
+      var b = bbOf(g.__h != null ? g.__h : g.innerHTML); if (!b || !b.width) return;
       var cn = kind === 2 ? 'bz-sp' : 'bz-dp', h = '';
       for (var i = 0; i < (row ? 5 : 7); i++) {
         var x = b.x + b.width * (0.15 + 0.7 * Math.random()), y = row ? b.y + 2 : b.y + b.height * (0.2 + 0.5 * Math.random());
@@ -1535,7 +1550,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       setTimeout(function () { if (pg2.parentNode) pg2.parentNode.removeChild(pg2); }, 1300);
     }
     var fTok = 0;
-    function lazyNow(Ly) { Ly.z = 0; Ly.g.innerHTML = Ly.p.v; }
+    function lazyNow(Ly) { Ly.z = 0; Ly.g.innerHTML = Ly.g.__h = Ly.p.v; }
     function fillLazy(cnt) { // вміст відкладених шарів — порціями ≤ ~6 мс у простої, не більше порції на кадр (верстка нових вузлів — у своєму кадрі)
       var tok = ++fTok, j = 0; if (!cnt) return;
       var ric = function (f) { W.requestAnimationFrame(function () { if (W.requestIdleCallback) W.requestIdleCallback(f, { timeout: 150 }); else setTimeout(f, 0); }); };
@@ -1557,9 +1572,10 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
         if (Ly.z && k > 0) lazyNow(Ly);
         if (k === Ly.k) continue;
         var was = Ly.k; Ly.k = k;
-        if (p.m === 'g') { var h = p.v(k); if (h !== Ly.h) { var grew = Ly.h != null && h.length > Ly.h.length; Ly.h = h; Ly.g.innerHTML = h; if (grew && s > sPrev) puff(Ly.g, 0, 1); } continue; }
+        if (p.m === 'g') { var h = p.v(k); if (h !== Ly.h) { var grew = Ly.h != null && h.length > Ly.h.length; Ly.h = h; Ly.g.innerHTML = Ly.g.__h = h; if (grew && s > sPrev) puff(Ly.g, 0, 1); } continue; }
         if (was === 0 && k > 0 && s > sPrev) puff(Ly.g, p.n ? 2 : 0, 0);
         Ly.g.style.opacity = p.m === 'd' ? Math.min(1, k * 1.8) : k;
+        if ((k === 0) !== (was === 0)) Ly.g.classList.toggle('bz-0', k === 0); // невидимий шар: його нескінченні анімації (дрон, іскри) — на паузі
         // монтаж: деталь зʼявляється майже на місці й коротко «сідає» (кран опускає) — не висить над будинком
         if (p.m === 'd') { var dk = 1 - k; Ly.g.setAttribute('transform', k < 1 ? 'translate(0 ' + (-dk * dk * 10).toFixed(1) + ')' : ''); }
       }
@@ -1670,6 +1686,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
         placeCfg();
         render(0.6);
         mode();
+        run.classList.remove('bz-wip');
         if (above && nxt) { var dy = nxt.getBoundingClientRect().top - nxt0; if (Math.abs(dy) > 1) { var hs = d.documentElement.style; hs.scrollBehavior = 'auto'; W.scrollBy(0, dy); hs.scrollBehavior = ''; } } // без smooth з CSS
       });
     });

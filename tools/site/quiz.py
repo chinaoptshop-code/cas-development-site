@@ -10,6 +10,8 @@
 Окремої відправки в квізу немає: телефон і відповіді йдуть через спільну form#of (/assets/lead-form.v1.js), тож на сторінці
 лишається одна форма заявки. Тому блок ставимо лише на сторінки з form#of. Ставки орієнтира — лише з CLAUDE.md (див. quiz.v1.js).
 Генератори (landing.py) квізу не знають: build-all.sh запускає цей скрипт після них, перед chrome.py.
+quiz.v1.js — легкий завантажувач (секція + заготовка), ядро /assets/quiz-core.v1.js (кроки, ставки) він вантажить біля блоку (18.11.2026);
+версію ядра (?v=) у рядку /*qz:core*/ завантажувача пише sync_core() (до chrome.py — тоді ?v= завантажувача на сторінках теж свіжий).
 """
 import html, os, re, sys
 
@@ -81,10 +83,26 @@ def apply(s, rel):
     return s
 
 
+LOADER, CORE = 'assets/quiz.v1.js', '/assets/quiz-core.v1.js'
+CORE_RX = re.compile(r'/\*qz:core\*/.*?/\*/qz:core\*/')
+
+
+def sync_core(check=False):
+    """Версія ядра квізу в завантажувачі (/assets/* кешується immutable). True — рядок уже актуальний."""
+    import hashlib
+    v = hashlib.sha1(open(os.path.join(ROOT, CORE.lstrip('/')), 'rb').read()).hexdigest()[:8]
+    p = os.path.join(ROOT, LOADER)
+    s = open(p, encoding='utf-8').read()
+    n = CORE_RX.sub(lambda m: '/*qz:core*/var CORE = "' + CORE + '?v=' + v + '"; /*/qz:core*/', s)
+    if n != s and not check:
+        open(p, 'w', encoding='utf-8').write(n)
+    return n == s
+
+
 def main():
     import chrome
     check = '--check' in sys.argv
-    bad = []
+    bad = [] if sync_core(check) else [LOADER + ' (версія ядра quiz-core.v1.js)']
     for rel in PAGES:
         p = os.path.join(ROOT, rel)
         if not os.path.exists(p):

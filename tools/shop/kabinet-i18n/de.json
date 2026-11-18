@@ -413,5 +413,19 @@
  "Погодити етап «{n}»? Студія отримає повідомлення.": "Phase „{n}“ freigeben? Das Studio wird benachrichtigt.",
  "Етап погоджено — дякуємо!": "Phase freigegeben – vielen Dank!",
  "Етап не знайдено": "Phase nicht gefunden",
- "Етап ще не готовий до погодження": "Die Phase ist noch nicht bereit zur Freigabe"
+ "Етап ще не готовий до погодження": "Die Phase ist noch nicht bereit zur Freigabe",
+ "Архітектурний проєкт": "Architekturprojekt",
+ "Візуалізації": "Visualisierungen",
+ "Креслення": "Zeichnungen",
+ "Специфікація": "Spezifikation",
+ "Правки: {n} з {m}": "Korrekturen: {n} von {m}",
+ "Правки: {n}": "Korrekturen: {n}",
+ "Є правки": "Ich habe Änderungen",
+ "Що змінити? Опишіть правки — дизайнер отримає їх одразу.": "Was soll geändert werden? Beschreiben Sie die Korrekturen — der Designer erhält sie sofort.",
+ "Надіслати правки": "Korrekturen senden",
+ "правки надіслано": "Korrekturen gesendet",
+ "Правки надіслано — етап повернувся в роботу": "Korrekturen gesendet — die Phase ist wieder in Arbeit",
+ "Ваші правки": "Ihre Korrekturen",
+ "Етап уже погоджено": "Diese Phase ist bereits freigegeben",
+ "Опишіть, що змінити": "Beschreiben Sie, was geändert werden soll"
 }
