@@ -1677,5 +1677,125 @@
    "Ремонт ванной"
   ],
   "status": "published"
+ },
+ {
+  "lang": "uk",
+  "slug": "dyzain-kaviarni-planuvannia-bar-biudzhet",
+  "title": "Дизайн кавʼярні: планування, бар і бюджет невеликого закладу",
+  "keyword": "дизайн кавʼярні київ",
+  "service": [
+   "/dyzain-restoranu-kafe-kyiv",
+   "Дизайн ресторану й кафе"
+  ],
+  "status": "draft",
+  "note": "18.11.2026: чернетка на погодження Михайлу (GSC 28 днів до 16.11: «дизайн интерьера кофейни киев»); гілка content/blog-1911"
+ },
+ {
+  "lang": "ru",
+  "slug": "dizayn-kofeyni-planirovka-bar-byudzhet",
+  "title": "Дизайн кофейни: планировка, бар и бюджет небольшого заведения",
+  "keyword": "дизайн интерьера кофейни киев",
+  "service": [
+   "/ru/dizayn-restorana-kafe-kiev",
+   "Дизайн ресторана и кафе"
+  ],
+  "status": "draft",
+  "note": "18.11.2026: чернетка на погодження Михайлу (GSC 28 днів до 16.11: «дизайн интерьера кофейни киев»); гілка content/blog-1911"
+ },
+ {
+  "lang": "uk",
+  "slug": "remont-restoranu-etapy-hrafik-koshtorys",
+  "title": "Ремонт ресторану в Києві: етапи, графік до відкриття й кошторис",
+  "keyword": "ремонт ресторану київ",
+  "service": [
+   "/remont-restoranu-kafe-kyiv",
+   "Ремонт ресторану й кафе"
+  ],
+  "status": "draft",
+  "note": "18.11.2026: чернетка на погодження Михайлу (GSC 28 днів до 16.11: «ремонт ресторану київ»); гілка content/blog-1911"
+ },
+ {
+  "lang": "ru",
+  "slug": "remont-restorana-etapy-grafik-smeta",
+  "title": "Ремонт ресторана в Киеве: этапы, график до открытия и смета",
+  "keyword": "ремонт ресторана киев",
+  "service": [
+   "/ru/remont-restorana-kafe-kiev",
+   "Ремонт ресторана и кафе"
+  ],
+  "status": "draft",
+  "note": "18.11.2026: чернетка на погодження Михайлу (GSC 28 днів до 16.11: «ремонт ресторану київ»); гілка content/blog-1911"
+ },
+ {
+  "lang": "uk",
+  "slug": "modulnyi-budynok-pid-kliuch-etapy-i-tsina",
+  "title": "Модульний будинок під ключ: як його будують і з чого складається ціна",
+  "keyword": "модульний будинок під ключ",
+  "service": [
+   "/modulnyi-budynok-kyiv",
+   "Модульний будинок"
+  ],
+  "status": "draft",
+  "note": "18.11.2026: чернетка на погодження Михайлу (GSC 28 днів до 16.11: «модульные дома киев»); гілка content/blog-1911"
+ },
+ {
+  "lang": "ru",
+  "slug": "modulnyy-dom-pod-klyuch-etapy-i-tsena",
+  "title": "Модульный дом под ключ: как его строят и из чего складывается цена",
+  "keyword": "модульный дом под ключ",
+  "service": [
+   "/ru/modulnyy-dom-kiev",
+   "Модульный дом"
+  ],
+  "status": "draft",
+  "note": "18.11.2026: чернетка на погодження Михайлу (GSC 28 днів до 16.11: «модульные дома киев»); гілка content/blog-1911"
+ },
+ {
+  "lang": "uk",
+  "slug": "budynok-z-brusa-pid-kliuch-etapy-i-tsina",
+  "title": "Будинок з бруса під ключ: клеєний чи профільований, етапи й ціна",
+  "keyword": "будинок з бруса під ключ",
+  "service": [
+   "/budynok-z-brusa-kyiv",
+   "Будинок з бруса"
+  ],
+  "status": "draft",
+  "note": "18.11.2026: чернетка на погодження Михайлу (GSC 28 днів до 16.11: «строительство коттеджей / домов киев»); гілка content/blog-1911"
+ },
+ {
+  "lang": "ru",
+  "slug": "dom-iz-brusa-pod-klyuch-etapy-i-tsena",
+  "title": "Дом из бруса под ключ: клеёный или профилированный, этапы и цена",
+  "keyword": "дом из бруса под ключ",
+  "service": [
+   "/ru/dom-iz-brusa-kiev",
+   "Дом из бруса"
+  ],
+  "status": "draft",
+  "note": "18.11.2026: чернетка на погодження Михайлу (GSC 28 днів до 16.11: «строительство коттеджей / домов киев»); гілка content/blog-1911"
+ },
+ {
+  "lang": "uk",
+  "slug": "pryimannia-remontu-kvartyry-cheklist",
+  "title": "Приймання ремонту квартири: чекліст перед підписанням акта",
+  "keyword": "приймання ремонту квартири",
+  "service": [
+   "/avtorskyi-i-tekhnichnyi-nahliad-kyiv",
+   "Авторський і технічний нагляд"
+  ],
+  "status": "draft",
+  "note": "18.11.2026: чернетка на погодження Михайлу (GSC 28 днів до 16.11: «технадзор за ремонтом (сильний запит)»); гілка content/blog-1911"
+ },
+ {
+  "lang": "ru",
+  "slug": "priemka-remonta-kvartiry-cheklist",
+  "title": "Приёмка ремонта квартиры: чек-лист перед подписанием акта",
+  "keyword": "приемка ремонта квартиры",
+  "service": [
+   "/ru/avtorskiy-i-tehnicheskiy-nadzor-kiev",
+   "Авторский и технический надзор"
+  ],
+  "status": "draft",
+  "note": "18.11.2026: чернетка на погодження Михайлу (GSC 28 днів до 16.11: «технадзор за ремонтом (сильный запрос)»); гілка content/blog-1911"
  }
 ]
