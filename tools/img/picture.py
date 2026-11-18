@@ -35,12 +35,18 @@ def avif_set(ss):
 def wrap(tag):
     if re.search(r'\bid="', tag): return None
     ds = re.search(r'\bdata-srcset="([^"]+)"', tag)
-    dp = re.search(r'\bdata-p="([^:"]+):([\w,=]+)"', tag)  # коротка форма плиток: <id>:<ширини> → /img/p/<id>-<w>.webp; портфоліо — <назва>=<ширина> (sharp.py)
+    dp = re.search(r'\bdata-p="([^:"]+):([\w,=]+)(\*?)"', tag)  # коротка форма плиток: <id>:<ширини> → /img/p/<id>-<w>.webp; портфоліо — <назва>=<ширина> (sharp.py)
     if ds or dp:  # відкладене фото: AVIF — атрибутом для JS
         if 'data-av=' in tag: return None
         av = avif_set(ds.group(1) if ds else ','.join(f'/img/p/{dp.group(1)}-{w.split("=")[0]}.webp {w.split("=")[-1]}w' for w in dp.group(2).split(',')))
         g = (ds or dp).group(0)
-        return tag.replace(g, g + f' data-av="{av}"', 1) if av else None
+        pn = re.search(r'\bdata-pn="([^:"]+):([\d,]+)@', tag)  # портретна копія плитки для вужчих вікон (ux._tp_narrow): AVIF — лише якщо є всі
+        pid, ws = (pn.group(1), pn.group(2)) if pn else ((dp.group(1).removeprefix('tl-'), '600,900,1200') if dp and dp.group(3) else ('', ''))
+        if av and pid and avif_set(','.join(f'/img/p/{pid}-{w}.webp {w}w' for w in ws.split(','))):
+            g2 = g + ' data-avn'
+        else:
+            g2 = g
+        return tag.replace(g, g2 + f' data-av="{av}"', 1) if av else None
     if re.search(r'\bclass="ux-(?:tp|wb|tz)\b', tag): return None
     if 'fetchpriority="high"' in tag: return None  # перше фото (LCP): WebP декодується швидше на слабких телефонах
     if re.search(r'\bclass="ux-(?:tp|wb|tz)"', tag): return None  # фото плиток і тизерів: site-chrome.v1.css шукає їх прямим нащадком (>.ux-tp), у <picture> вони зникають

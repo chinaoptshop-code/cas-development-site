@@ -595,6 +595,35 @@ def _tp_ar(pid):
     return w / h
 
 
+def _tp_narrow(pid, sp):
+    """Плитка широка лише з 760/1100 px (--s3/--s4/--s6), а на телефоні — звичайна пів ряду 4:5: кадр 4:3 tl-<id> там обрізаний на ~40 %
+    і за DPR 3 тягнув 1200w (140–185 КБ замість 35–60 КБ; аудит швидкості 18.11.2026). data-pn="<id>:<ширини>@<до px>|<sizes>" —
+    site-chrome.v1.js на вужчому вікні бере портретну копію того ж фото (AVIF — data-avn, ставить деплой tools/img/picture.py);
+    типове — data-p="tl-<id>:<ширини>*" = data-pn="<id>:600,900,1200@759|calc(50vw - 21px)"."""
+    if not pid.startswith('tl-') or not sp:
+        return ''
+    base = pid[3:]
+    if not os.path.exists(os.path.join(ROOT, f'img/p/{base}-900.webp')):
+        return ''
+    fs = _tp_files(base)
+    if not all(n == w for n, w, h in fs):
+        return ''
+    a = fs[-1][1] / fs[-1][2]
+    fit = lambda W: 1 - min(a / _tp_aspect(W, sp), _tp_aspect(W, sp) / a) <= .3  # портрет у цьому кадрі видно щонайменше на 70 %
+    top = 0
+    for hi in (759, 1099):
+        if all(fit(W) for W in TP_W if W <= hi):
+            top = hi
+    if not top:
+        return ''
+    sz = _tp_sizes(sp, _tp_factors(a, sp)).split(',')
+    sz = sz[0].split(') ', 1)[1] if top == 759 else sz[0] + ',' + sz[1].split(') ', 1)[1]
+    ws = [n for n, w, h in fs if n >= 400]
+    if top == 759 and sz == 'calc(50vw - 21px)' and {600, 900, 1200} <= set(ws):
+        return '*'  # типовий випадок — зірочка в кінці data-p (бюджет HTML 64 КБ): та сама <id> без tl-, 600/900/1200, пів ряду телефона
+    return f' data-pn="{base}:{",".join(map(str, ws))}@{top}|{sz}"'
+
+
 def _tp_img(pid, slug, lang, sp, eager=False, wmin=400):
     name, kind, _ = TP_PROJ[slug]
     alt = f'{name} — {TP_WORD[kind].get(lang, TP_WORD[kind]["en"])}'  # коротко (бюджет HTML 64 КБ); статус і студія — на сторінці проєкту
@@ -610,7 +639,8 @@ def _tp_img(pid, slug, lang, sp, eager=False, wmin=400):
     if eager:
         lead = f'src="/img/p/{pid}-{mid}.webp" srcset="{srcset}"'
     elif all(n == w for n, w, h in fs):
-        lead = f'data-p="{pid}:{",".join(str(n) for n, w, h in fs)}"'
+        nw = _tp_narrow(pid, sp)
+        lead = f'data-p="{pid}:{",".join(str(n) for n, w, h in fs)}{nw if nw == "*" else ""}"' + (nw if nw != '*' else '')
     else:
         lead = f'data-srcset="{srcset}"'
     # eager-ряд — fetchpriority="low": на телефоні він під першим екраном і не має відбирати канал у LCP-фото hero (preload high;
@@ -690,18 +720,20 @@ def _hero_photo(m, rel, lang):
     e = _close(m, 'div', i)
     if e < 0:
         return m
-    if rel not in LIGHT:  # без повторів: якщо джерело кадру вже є на сторінці — другий кадр теми (HERO_ALT), інакше — інша тема
-        alt = HERO_ALT.get(cat)
-        chain = [cat] + (alt or [x for x in ('int', 'reno', 'house', 'rest', 'office') if x != cat])
-        for c in chain:
-            if CROPS[f'img/p/hx-{c}']['src'].rsplit('/', 1)[1] not in m:
-                cat = c
-                break
+    # тема без копій потрібної ширини (оригінал замалий: hxm-hotel — лише 600w, а телефону 402@3 треба ~1200w) — наступна з ланцюжка,
+    # а не розмите фото першого екрана (аудит h-upscaled 18.11.2026)
+    sharp_ok = lambda c: all(os.path.exists(os.path.join(ROOT, f'img/p/{f}.webp')) for f in (f'hxm-{c}-1200', f'hx-{c}-1600'))
+    alt = HERO_ALT.get(cat)
+    chain = [cat] + (alt or [x for x in ('int', 'reno', 'house', 'rest', 'office') if x != cat])
+    for c in chain:
+        if sharp_ok(c) and (rel in LIGHT or CROPS[f'img/p/hx-{c}']['src'].rsplit('/', 1)[1] not in m):
+            cat = c  # без повторів (крім LIGHT): якщо джерело кадру вже є на сторінці — другий кадр теми (HERO_ALT), інакше — інша тема
+            break
     name, kind, _ = TP_PROJ[HERO[cat]]
     kind = HERO_ROOM.get(cat, kind)
     alt = html.escape(f'{name} — {TP_WORD[kind].get(lang, TP_WORD[kind]["en"])}')
     ss = lambda b, ws: ','.join(f'/img/p/{b}-{w}.webp {w}w' for w in ws if os.path.exists(os.path.join(ROOT, f'img/p/{b}-{w}.webp')))
-    d = ss(f'hx-{cat}', (1200, 1600, 1920, 2560, 3000, 3200, 3840))  # ≥ 2000w — лише великі екрани (бюджет 450 КБ, tools/img/build.py)
+    d = ss(f'hx-{cat}', (1200, 1600, 1920, 2400, 2560, 3000, 3200, 3840))  # ≥ 2000w — лише великі екрани (бюджет 450 КБ, tools/img/build.py)
     top = d.rsplit(' ', 1)[0].rsplit('-', 1)[1][:-5]
     pic = (f'<div class="hxl"><picture class="hx-bg"><source media="(max-width:767px)" srcset="{ss(f"hxm-{cat}", (600, 900, 1200))}">'
            f'<img src="/img/p/hx-{cat}-1600.webp" srcset="{d}" fetchpriority="high" width="{top}" height="{int(top) // 2}" alt="{alt}"></picture>\n')
