@@ -27,7 +27,7 @@ RATES = {
 DESIGN = ('plan', 'dz', 'full')
 DMIN = [2500, 4000]          # мінімум за дизайн (усі пакети), Україна / Європа
 
-CONSUMERS = ['assets/calc.v1.js', 'assets/quiz.v1.js', 'assets/build-anim.v1.js', 'assets/land-anim.v1.js',
+CONSUMERS = ['assets/calc.v1.js', 'assets/quiz-core.v1.js', 'assets/build-anim.v1.js', 'assets/land-anim.v1.js',
              'assets/resort-plan.v1.js', 'assets/restaurant-anim.v1.js', 'assets/water-house.v1.js']
 RX = re.compile(r'/\*rates\*/.*?/\*/rates\*/', re.S)
 
