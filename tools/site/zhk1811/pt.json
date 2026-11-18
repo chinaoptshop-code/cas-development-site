@@ -1,0 +1,363 @@
+{
+ "slugs": {
+  "hub": "remodelacao-apartamentos-condominios-kyiv",
+  "novopecherski-lypky": "remodelacao-apartamento-novopecherski-lypky",
+  "edeldorf-hills": "remodelacao-apartamento-edeldorf-hills",
+  "triiinity": "remodelacao-apartamento-triiinity",
+  "taryan-towers": "remodelacao-apartamento-taryan-towers",
+  "bulvar-fontaniv": "remodelacao-apartamento-bulvar-fontaniv",
+  "linden-luxury-residences": "remodelacao-apartamento-linden-luxury-residences",
+  "greenville-pechersk": "remodelacao-apartamento-greenville-pechersk",
+  "maxima-residence": "remodelacao-apartamento-maxima-residence",
+  "nordica-residence": "remodelacao-apartamento-nordica-residence",
+  "hvardiiskyi": "remodelacao-apartamento-hvardiiskyi",
+  "a136-highlight-tower": "remodelacao-apartamento-a136-highlight-tower",
+  "montreal-house": "remodelacao-apartamento-montreal-house",
+  "senat": "remodelacao-apartamento-senat",
+  "life-story": "remodelacao-apartamento-life-story",
+  "respublika": "remodelacao-apartamento-respublika",
+  "podil-hrad": "remodelacao-apartamento-podil-hrad",
+  "unit-home": "remodelacao-apartamento-unit-home",
+  "novyi-avtohraf": "remodelacao-apartamento-novyi-avtohraf",
+  "rusaniv-residence": "remodelacao-apartamento-rusaniv-residence"
+ },
+ "t": {
+  "name": "Condomínio {n}",
+  "svc": "Remodelação de apartamentos no condomínio {n}, Kyiv",
+  "title": "Remodelação de apartamento em {n} (condomínio, Kyiv) — chave na mão | CAS",
+  "desc": "Remodelação chave na mão de apartamentos no condomínio {n} ({d}, Kyiv): projeto de design, remodelação desde $550/m², mobiliário.",
+  "desc_short": "Remodelação de apartamentos em {n} ({d}, Kyiv): design, remodelação chave na mão desde $550/m², mobiliário.",
+  "h1": "Remodelação chave na mão de apartamentos em {n}",
+  "price": "desde $550/m² · design, remodelação e mobiliário num só contrato",
+  "hub_short": "Remodelação em condomínios de Kyiv",
+  "rel": ["Remodelação de apartamentos em Kyiv", "Remodelação de apartamento novo", "Remodelação chave na mão", "Design de interiores", "Mobiliário do apartamento", "Calculadora de custos"],
+  "unit": "m²",
+  "area_from": "desde {a} {u}",
+  "area_plus": "{s} e maiores",
+  "ref": "Para referência: {x}. Não representamos o promotor nem a administração do condomínio — trabalhamos diretamente com o proprietário do apartamento.",
+  "ref_dev": "promotor — {dev}",
+  "ref_addr": "morada — {addr}",
+  "sep": "; ",
+  "ref_none": "Não representamos o promotor nem a administração do condomínio — trabalhamos diretamente com o proprietário do apartamento.",
+  "dist": {"pechersk": "distrito de Pechersk", "holosiiv": "distrito de Holosiiv", "podil": "distrito de Podil", "shevchenko": "distrito de Shevchenko", "dnipro": "distrito de Dnipro"},
+  "dist_h2": {"pechersk": "Distrito de Pechersk", "holosiiv": "Distrito de Holosiiv", "podil": "Distrito de Podil", "shevchenko": "Distrito de Shevchenko", "dnipro": "Distrito de Dnipro"},
+  "budget_h2": "Orçamento de referência para um apartamento de {a} m²",
+  "budget_p": "Para um apartamento de {a} m², a referência segundo as nossas tarifas base é:",
+  "price_q": "Quanto custa remodelar um apartamento em {n}?",
+  "price_a": "Remodelação chave na mão desde $550/m² (mão de obra e materiais de base; materiais de acabamento, mobiliário e eletrodomésticos à parte, conforme orçamento), projeto de design desde $30/m² (mínimo $2 500), mobiliário desde $250/m². O cálculo para um apartamento de {a} m² está no orçamento de referência acima; o valor exato fica fixado no orçamento após a visita.",
+  "faq_common": [
+   ["Que garantia dão?", "Entregamos o apartamento com auto de receção; os trabalhos realizados têm garantia de 12 meses."],
+   ["Posso acompanhar a obra à distância?", "Sim. Enviamos relatórios fotográficos da obra por Telegram, e o preço, os prazos e as fases de pagamento ficam no contrato."]
+  ],
+  "near": "Remodelação noutros condomínios de Kyiv",
+  "cards": {
+   "turnkey": ["Remodelação chave na mão", ["vistoria após o promotor e medições", "trabalhos de base e acabamentos", "eletricidade, canalização, ventilação", "aprovação das obras com a administração"]],
+   "design": ["Projeto de design", ["planta e disposição do mobiliário", "visualizações 3D das divisões", "desenhos de execução para a equipa", "especificação e orçamento"]],
+   "furnish": ["Mobiliário e equipamento", ["móveis por medida e da China", "iluminação e eletrodomésticos", "têxteis e decoração", "styling antes da mudança"]],
+   "large": ["Grande área", ["várias zonas de climatização", "ventilação com recuperação de calor", "casa inteligente e cenários de luz", "closets e divisões técnicas"]],
+   "duplex": ["Duplex", ["escada por medida", "instalações separadas para cada piso", "isolamento acústico da laje", "iluminação da escada"]],
+   "tower": ["Logística numa torre", ["verificação das medidas do elevador e dos vãos", "entregas por lotes segundo o horário do edifício", "proteção de átrios e elevadores", "remoção de entulho"]],
+   "terrace": ["Terraço", ["verificação da impermeabilização e pendentes", "pavimento resistente ao gelo", "iluminação e tomadas estanques", "mobiliário de exterior e plantas"]],
+   "newbuild": ["Após o promotor", ["verificação da geometria de paredes e pavimento", "auditoria de eletricidade, água e ventilação", "preparação da base para o revestimento", "juntas de dilatação por assentamento"]]
+  },
+  "cls_l": "Classe",
+  "cls": {"b": "business", "p": "premium", "bp": "business/premium", "cb": "conforto/business"},
+  "feat": {"many100": "muitos apartamentos com mais de 100 m² e duplex", "duplex_terr": "há duplex com terraço", "duplex_terr2": "há duplex e apartamentos com terraço", "4room": "há apartamentos de quatro assoalhadas", "duplex": "duplex"},
+  "addr_l": "Morada",
+  "dev_l": "Promotor — {dev}.",
+  "more": "Saber mais"
+ },
+ "hub": {
+  "service": "Remodelação de apartamentos em condomínios de Kyiv",
+  "title": "Remodelação de apartamentos em condomínios de Kyiv — chave na mão | CAS",
+  "description": "Remodelação de apartamentos em condomínios de Kyiv: Pechersk, Holosiiv, Podil, Shevchenko e Dnipro. Design desde $30/m², remodelação desde $550/m².",
+  "h1": "Remodelação de apartamentos em condomínios de Kyiv",
+  "lead": "19 condomínios residenciais de Kyiv (em ucraniano «ЖК», complexo residencial), da classe conforto à premium: para cada um, o que considerar na remodelação de um apartamento desse formato e um orçamento de referência. Escolha o seu condomínio ou deixe um pedido.",
+  "s1": ["Remodelação em construção nova de classe business e premium", [
+   "Um apartamento num condomínio moderno não são só metros quadrados, são também as regras do edifício: aprovação das obras com a administração, horário dos trabalhos ruidosos, fila para o monta-cargas e remoção de entulho. Tomamo-las em conta antes de começar, e uma só equipa trata do design, da remodelação e do mobiliário num único contrato.",
+   "Abaixo estão os condomínios de Kyiv para os quais preparámos páginas próprias: o que considerar na remodelação de apartamentos dessa classe e área, e um orçamento de referência segundo as nossas tarifas. Os dados sobre os condomínios são de referência, de fontes abertas; não representamos os promotores e trabalhamos diretamente com os proprietários."
+  ]],
+  "s2": ["O que as remodelações em condomínios têm em comum", [
+   "As tarifas são iguais para todos os condomínios: remodelação chave na mão desde $550/m² (mão de obra e materiais de base; materiais de acabamento, mobiliário e eletrodomésticos à parte, conforme orçamento), projeto de design desde $30/m² (mínimo $2 500), mobiliário desde $250/m². Se a CAS fizer a remodelação, o total não se desvia do orçamento mais de ±5%, e os trabalhos têm garantia de 12 meses.",
+   "A diferença está no formato: os duplex precisam de escada e instalações separadas por piso, os terraços de verificação da impermeabilização, as grandes áreas de ventilação e climatização bem pensadas, os apartamentos compactos de móveis embutidos precisos."
+  ]],
+  "gal": "Os nossos projetos de apartamentos",
+  "faq": ["Perguntas e respostas", [
+   ["O meu condomínio não está na lista — trabalham lá?", "Sim, remodelamos apartamentos em qualquer condomínio de Kyiv e da região. A lista inclui apenas os condomínios para os quais preparámos páginas com conselhos."],
+   ["Quanto custa remodelar um apartamento num condomínio?", "Remodelação chave na mão desde $550/m² (mão de obra e materiais de base; materiais de acabamento, mobiliário e eletrodomésticos à parte, conforme orçamento), projeto de design desde $30/m² (mínimo $2 500), mobiliário desde $250/m². O valor exato fica fixado no orçamento após a visita."],
+   ["Quem trata da aprovação da obra com a administração?", "Nós. Normalmente são precisos a lista de trabalhos, o calendário e os dados da equipa; também combinamos o monta-cargas e a remoção de entulho."],
+   ["Posso começar o projeto de design antes de receber as chaves?", "Sim, com base na planta do promotor. Quando houver acesso, fazemos medições de controlo e chegamos à obra com os desenhos prontos."]
+  ]],
+  "rel": "Outros serviços",
+  "rel_names": ["Apartamento em Pechersk", "Remodelação premium", "Design de interiores premium"],
+  "apt_link": "Remodelação em condomínios de Kyiv"
+ },
+ "zhk": {
+  "novopecherski-lypky": {
+   "addr": "rua Andriia Verkhohliada",
+   "lead": "Novopecherski Lypky é um bairro de classe business e premium em Pechersk, com muitos apartamentos acima de 100 m² e duplex. Tratamos de um imóvel assim desde as medições e o projeto de design até ao mobiliário e à entrega com auto.",
+   "h2": "O que considerar ao remodelar um apartamento em Novopecherski Lypky",
+   "p": [
+    "Segundo os dados de referência do promotor, City One Development (Stolitsa Group), as áreas vão de 50,6 a 225,7 m², e uma boa parte dos apartamentos tem mais de 100 m² ou dois pisos. Nestes apartamentos, a planta importa mais do que os acabamentos: onde fica a zona privada e a de receber, por onde passa a escada, quantas casas de banho são precisas e onde esconder as divisões técnicas.",
+    "Num duplex, projetamos as instalações dos dois pisos de uma vez: circuitos separados de aquecimento e climatização, ventilação das casas de banho, isolamento acústico da laje sob os quartos. A escada é um elemento à parte: encomenda-se depois dos trabalhos de base, com as fixações previstas antecipadamente.",
+    "Em edifícios desta classe costumam vigorar regras da administração: aprovação do plano de obras, horário dos trabalhos ruidosos, uso do monta-cargas e remoção de entulho. Conhecemo-las antes de começar e incluímo-las no calendário para que a obra não pare por falta de autorizações."
+   ],
+   "faq": [
+    ["Remodelam duplex?", "Sim. Projetamos os dois pisos em conjunto: escada, instalações, isolamento acústico da laje e iluminação da escada. A escada e os móveis embutidos são encomendados por medida depois dos trabalhos de base."],
+    ["Como se aprova a remodelação com a administração?", "Normalmente a administração pede um projeto ou lista de trabalhos, o calendário e os dados da equipa. Preparamos os documentos e combinamos o horário dos trabalhos ruidosos, o monta-cargas e a remoção de entulho antes de começar."]
+   ]
+  },
+  "edeldorf-hills": {
+   "addr": "",
+   "lead": "Edeldorf Hills é uma construção nova de classe premium da Futura Hata em Pechersk. Se já recebeu as chaves e planeia remodelar, acompanhamo-lo do apartamento vazio ao interior pronto, num só contrato.",
+   "h2": "Remodelar num edifício premium novo: por onde começar",
+   "p": [
+    "Um apartamento num edifício acabado de entregar é uma folha em branco, mas também um período em que dezenas de vizinhos remodelam ao mesmo tempo. Filas para o monta-cargas, horário limitado para trabalhos ruidosos e regras de entrada de materiais são normalmente fixados pela administração — planeamos as entregas em função delas, e não o contrário.",
+    "Antes de levantar paredes, verificamos o que o promotor entregou: geometria de paredes e tetos, betonilha ou a sua ausência, entradas de eletricidade e água, posição das condutas de ventilação. Disso depende se as zonas húmidas podem mudar de lugar, onde fica a ilha da cozinha e quanto custará o nivelamento.",
+    "O betão novo assenta, por isso o projeto prevê juntas de dilatação, uma boa preparação da base para revestimentos de grande formato e pintura depois de as paredes estabilizarem. Assim, ao fim de um ano não surgem fissuras nas juntas de um interior premium."
+   ],
+   "faq": [
+    ["Quando começar a remodelação em Edeldorf Hills?", "O projeto de design pode ser feito antes de receber as chaves, com base na planta do promotor. Assim que houver acesso, fazemos medições de controlo e começamos com os desenhos prontos."],
+    ["O que verificam após o promotor?", "A geometria de paredes e pavimento, as entradas de eletricidade e água, a ventilação, as janelas e as ombreiras. Consideramos os resultados no projeto e no orçamento para que não pague duas vezes por correções."]
+   ]
+  },
+  "triiinity": {
+   "addr": "rua Vasylia Tiutiunnyka, 39/2",
+   "lead": "TRIIINITY é um condomínio de classe premium da Seven Hills na rua Vasylia Tiutiunnyka. Os apartamentos vão de 53 a 125 m², e para cada formato oferecemos o ciclo completo: design, remodelação e mobiliário com uma só equipa.",
+   "h2": "Remodelação em TRIIINITY: formatos compactos e grandes",
+   "p": [
+    "A gama de 53–125 m² significa dois cenários distintos. Num apartamento de 53–60 m², o essencial é caber uma cozinha-sala completa, um closet e uma casa de banho confortável sem sensação de aperto: ajudam os móveis embutidos até ao teto, as portas ocultas e uma boa iluminação. Com mais de 100 m², há espaço para uma suite com casa de banho própria, um escritório e uma lavandaria separada.",
+    "O segmento premium pressupõe instalações que só se notam como conforto: climatização silenciosa com unidades ocultas, piso radiante nas casas de banho, controlo inteligente da iluminação. Incluímo-las na fase de projeto para não ter de abrir paredes já acabadas.",
+    "Um edifício deste nível costuma ter regras de obras da administração — horários, proteção das zonas comuns e remoção de entulho. Incluímo-las no calendário desde o primeiro dia."
+   ],
+   "faq": [
+    ["Como dar um ar premium a um apartamento pequeno?", "Com a planta e os detalhes: roupeiros embutidos até ao teto, portas ocultas, boa iluminação e uma paleta de materiais contida. Definimos isto no projeto antes da obra."],
+    ["É possível esconder ares condicionados e ventilação?", "Sim, se ficar previsto no projeto: sistemas de condutas ou de cassete, alçapões de inspeção, tetos falsos. Adaptamos a solução às exigências do edifício quanto à fachada e às redes."]
+   ]
+  },
+  "taryan-towers": {
+   "addr": "rua Ioanna Pavla II, 12",
+   "lead": "Taryan Towers é um complexo de torres de classe premium da Taryan Group na rua Ioanna Pavla II. Remodelamos apartamentos deste nível chave na mão: da planta e 3D ao mobiliário, à iluminação e aos têxteis.",
+   "h2": "Particularidades da remodelação numa torre premium",
+   "p": [
+    "Numa torre, a logística da obra é uma tarefa à parte. Materiais e móveis sobem no monta-cargas segundo um horário, e as peças grandes — frentes de cozinha, bancadas de pedra, revestimentos de grande formato — são verificadas antecipadamente face às medidas do elevador e dos vãos de porta. Caso contrário, é fácil encomendar uma placa que nunca chega ao apartamento.",
+    "Os apartamentos em Taryan Towers começam em 62–87 m² e há maiores. Nas áreas médias procuramos o equilíbrio: uma grande cozinha-sala, dois quartos e arrumação suficiente. Nos maiores, o zonamento e uma segunda casa de banho.",
+    "O envidraçado em altura traz muita luz e vistas, por isso o projeto contempla proteção solar, cortinas motorizadas e conforto térmico. As regras da obra são normalmente fixadas pela administração — combinamo-las antes de começar."
+   ],
+   "faq": [
+    ["Como entregam móveis grandes e pedra numa torre?", "Verificamos as medidas do monta-cargas e dos vãos logo na fase de projeto, dividimos as peças grandes em secções e combinamos a entrega com o horário do edifício."],
+    ["Tratam de cortinas e proteção solar?", "Sim, no âmbito do equipamento: calhas motorizadas, estores, tecidos de proteção solar. Os nichos para as calhas ficam previstos no teto durante a obra."]
+   ]
+  },
+  "bulvar-fontaniv": {
+   "addr": "rua Ioanna Pavla II, 6/1",
+   "lead": "Bulvar Fontaniv é um condomínio de classe premium na rua Ioanna Pavla II, 6/1, com apartamentos de 64 a 156 m². Remodelamos chave na mão: projeto, obra, mobiliário e decoração.",
+   "h2": "Remodelação em Bulvar Fontaniv: a que prestar atenção",
+   "p": [
+    "Com 64–156 m², a questão não é só o número de divisões, mas o modo de viver. Uma família com crianças precisa de quartos separados para os filhos, uma segunda casa de banho e um roupeiro à entrada; um casal, de uma ampla cozinha-sala, um escritório e um quarto de hóspedes. Mostramos opções de planta logo nas primeiras fases do projeto.",
+    "Em apartamentos com mais de 100 m², os percursos das instalações ficam mais longos, por isso projetamos ventilação, climatização e eletricidade juntamente com o mobiliário: o ar condicionado não sopra para a cama, e tomadas e iluminação coincidem com os roupeiros embutidos.",
+    "A administração de um condomínio assim costuma exigir horários acordados, proteção de átrios e elevadores e remoção de entulho em sacos. Tratamos nós dessas questões."
+   ],
+   "faq": [
+    ["É possível alterar a planta do apartamento?", "Dentro do que a estrutura do edifício e as normas permitem: não mexemos em paredes estruturais nem colocamos zonas húmidas sobre as divisões habitáveis dos vizinhos. Verificamos as opções na fase de projeto."],
+    ["Quanto tempo demora remodelar um apartamento com mais de 100 m²?", "Depende da complexidade do projeto e do horário do edifício. O prazo fica no contrato, a partir de 2 semanas; fixamo-lo depois do projeto de design e do orçamento."]
+   ]
+  },
+  "linden-luxury-residences": {
+   "addr": "rua Liuteranska, 14v",
+   "lead": "Linden Luxury Residences é um edifício-clube de classe premium da Budhouse Group na rua Liuteranska, com apartamentos de 75 a 556 m². Em imóveis assim, a remodelação é antes de mais um projeto e a coordenação de dezenas de fornecedores — e tratamos nós disso.",
+   "h2": "Remodelar um apartamento grande no centro histórico",
+   "p": [
+    "As áreas vão de 75 a 556 m²: de um apartamento urbano a uma residência com vários quartos, escritório, closets e zona de hóspedes. Em grandes áreas, o interior assenta num sistema: a mesma lógica de materiais, luz e portas em todas as divisões; caso contrário, o espaço fragmenta-se em «ilhas».",
+    "Quanto maior o apartamento, mais instalações: várias zonas de climatização, ventilação com recuperação de calor, tratamento de água, casa inteligente e por vezes sauna ou hammam. Projetamos estes sistemas com o interior, e não depois, para que os armários técnicos e as inspeções não acabem a meio da sala.",
+    "O centro da cidade e o formato de clube exigem respeito pelos vizinhos: a administração costuma regular rigorosamente os horários dos trabalhos ruidosos, a entrada de materiais e a remoção de entulho. Planeamos o calendário para que estas restrições não prolonguem a obra."
+   ],
+   "faq": [
+    ["Quem coordena os fornecedores num imóvel grande?", "Nós. Projeto, obra, instalações, mobiliário e iluminação num só contrato, com um gestor responsável e relatórios fotográficos por Telegram."],
+    ["Instalam ventilação com recuperação de calor e casa inteligente?", "Sim, incluímo-las no projeto juntamente com o interior: traçados, inspeções, quadros e cenários de controlo da luz e do clima."]
+   ]
+  },
+  "greenville-pechersk": {
+   "addr": "travessa Novopecherskyi, 5",
+   "lead": "Greenville na Pechersku é um condomínio de classe business na travessa Novopecherskyi, com apartamentos a partir de cerca de 73 m², incluindo duplex com terraço. Remodelamos chave na mão tendo em conta todos estes formatos.",
+   "h2": "Terraço e segundo piso: o que considerar na remodelação",
+   "p": [
+    "O terraço é a parte mais vulnerável do apartamento. Antes dos acabamentos, verificamos a impermeabilização e as pendentes feitas pelo promotor e não as danificamos ao fixar móveis ou luminárias. Escolhemos um pavimento resistente ao gelo com uma boa drenagem, e soluções estanques para a iluminação e as tomadas.",
+    "Um duplex precisa de uma escada e de um zonamento bem pensados: normalmente, em baixo a cozinha-sala e um WC de serviço, em cima os quartos e as casas de banho. Reforçamos a laje entre pisos com isolamento acústico e levamos a ventilação e a climatização separadamente a cada piso.",
+    "Áreas a partir de cerca de 73 m² permitem dois ou três quartos. A administração de classe business costuma aprovar o calendário de obras e a ordem de entrega dos materiais — preparamos esses documentos antes de começar."
+   ],
+   "faq": [
+    ["O que fazem com o terraço?", "Verificamos a impermeabilização e a drenagem e escolhemos pavimento resistente ao gelo, iluminação exterior, mobiliário e plantas. Nada é fixado de forma a danificar a camada impermeabilizante."],
+    ["Como resolvem a escada de um duplex?", "Projetamo-la com o interior: estrutura, guarda e iluminação. É encomendada por medidas exatas depois dos trabalhos de base."]
+   ]
+  },
+  "maxima-residence": {
+   "addr": "rua Yevhena Konovaltsia, 30",
+   "lead": "Maxima Residence é um condomínio de classe business da RIEL e da Bosphorus Development na rua Yevhena Konovaltsia, com apartamentos de 50 a 181 m². Conduzimos a remodelação chave na mão: design, obra, mobiliário e entrega com auto.",
+   "h2": "Remodelação em Maxima Residence: do T1 ao apartamento grande",
+   "p": [
+    "No condomínio há apartamentos compactos de cerca de 50 m² e grandes até 181 m². Num apartamento pequeno, a ergonomia é fundamental: cozinha-sala com ilha ou balcão, nicho para a máquina de lavar, um roupeiro em vez de uma divisão própria. Num grande, o zonamento, uma segunda casa de banho e espaço para um escritório.",
+    "Muitos proprietários de classe business remodelam para arrendar. Nesse caso, recomendamos materiais resistentes, uma paleta neutra e móveis fáceis de manter — o apartamento parece novo durante mais tempo e encontra inquilino mais depressa.",
+    "Num edifício novo, a administração costuma fixar o horário dos trabalhos ruidosos e as regras de uso do elevador. Consideramos isso no calendário e removemos nós o entulho."
+   ],
+   "faq": [
+    ["Remodelam apartamentos para arrendar?", "Sim. Escolhemos materiais resistentes, móveis práticos e um interior neutro que agrada à maioria dos inquilinos. Podemos equipar totalmente o apartamento antes da entrada."],
+    ["Posso começar pelo projeto de design e decidir a remodelação depois?", "Sim, o projeto de design é um serviço à parte desde $30/m². Mas a garantia de orçamento de ±5% só se aplica se a CAS fizer a remodelação."]
+   ]
+  },
+  "nordica-residence": {
+   "addr": "estrada Zaliznychne, 45A",
+   "lead": "Nordica Residence é um condomínio de classe business da RIEL na estrada Zaliznychne. Se planeia remodelar aqui um apartamento, fazemo-lo chave na mão: do projeto de design ao mobiliário e aos têxteis.",
+   "h2": "Sobriedade e praticidade escandinavas na remodelação",
+   "p": [
+    "O nome do condomínio sugere um estilo que agrada a muitos proprietários: paredes claras, madeira natural, pouca decoração e muita arrumação oculta. Um interior assim parece simples, mas exige execução precisa — paredes direitas, remates limpos e boa iluminação, porque nas superfícies lisas vê-se cada ondulação.",
+    "Em apartamentos de classe business de área média, recomendamos roupeiros embutidos no hall e nos quartos, uma cozinha até ao teto e um nicho próprio para a lavandaria — assim as divisões ficam livres de móveis a mais. Tudo fica no projeto com medidas ao centímetro.",
+    "Durante uma remodelação em construção nova, costumam vigorar as regras da administração sobre horários de ruído, proteção dos elevadores e remoção de entulho. Conhecemo-las no início e cumprimo-las."
+   ],
+   "faq": [
+    ["Fazem interiores de estilo escandinavo?", "Sim. Escolhemos materiais claros, madeira natural, arrumação oculta e luz quente. O estilo é escolha sua — nós apenas aconselhamos o que será prático."],
+    ["O que inclui a remodelação chave na mão?", "Trabalhos de base e acabamentos, eletricidade, canalização, ventilação, portas, revestimentos, pintura, montagem da cozinha e dos móveis. Mobiliário e decoração, se desejar."]
+   ]
+  },
+  "hvardiiskyi": {
+   "addr": "rua Henerala Almazova",
+   "lead": "Hvardiiskyi é um condomínio de classe business e premium da Kyivmiskbud na rua Henerala Almazova, no distrito de Pechersk. Remodelamos apartamentos chave na mão, com projeto de design e mobiliário.",
+   "h2": "Remodelação em Hvardiiskyi: a Pechersk tranquila e os formatos clássicos",
+   "p": [
+    "O condomínio fica na parte verde de Pechersk, e muitos proprietários querem manter essa sensação dentro de casa: tons naturais calmos, madeira, têxteis, luz suave. Num interior clássico importa a precisão dos pormenores — molduras, sancas, portas altas —, por isso definimo-los nos desenhos.",
+    "Em apartamentos de classe business e premium, vale a pena prever desde o início um bom isolamento acústico entre divisões e nas casas de banho, linhas elétricas separadas para os eletrodomésticos da cozinha e os ares condicionados, e um quadro com reserva para necessidades futuras.",
+    "A administração costuma definir o horário das obras e o procedimento de remoção de entulho. Incluímos estas regras no calendário e respondemos pela ordem nas zonas comuns."
+   ],
+   "faq": [
+    ["Fazem interiores clássicos com molduras?", "Sim. Definimos nos desenhos os perfis, a disposição das molduras, as sancas e as portas, e verificamos a execução em cada fase."],
+    ["É possível viver ao lado enquanto decorre a obra?", "Trabalhamos segundo o horário do edifício e protegemos as zonas comuns. Não incomodamos os vizinhos fora das horas permitidas."]
+   ]
+  },
+  "a136-highlight-tower": {
+   "addr": "rua Antonovycha, 136–138",
+   "lead": "A136 Highlight Tower é uma torre residencial de classe business na rua Antonovycha, 136–138. O nosso escritório também fica na rua Antonovycha, por isso a obra está perto. Remodelamos apartamentos chave na mão com projeto de design e mobiliário.",
+   "h2": "Remodelar um apartamento numa torre da rua Antonovycha",
+   "p": [
+    "Numa torre, o apartamento recebe muita luz e vistas, e com elas algumas tarefas: proteção solar, climatização sem correntes de ar, cortinas ou estores que não tapem a vista. Resolvemos estas questões no projeto de design, e não depois da mudança.",
+    "A logística numa torre é um tema à parte. Os materiais sobem no monta-cargas em horas acordadas, e as placas de grande formato e as bancadas são verificadas antecipadamente face às medidas do elevador. Removemos nós o entulho, sem o deixar nos átrios.",
+    "A administração de classe business costuma ter um regulamento de obras: horário de trabalhos ruidosos, proteção dos elevadores e das zonas comuns. Conhecemo-lo antes de começar e cumprimo-lo."
+   ],
+   "faq": [
+    ["Onde fica o vosso escritório?", "Na rua Antonovycha, 44, em Kyiv. Podemos reunir-nos no escritório ou na obra."],
+    ["E a proteção solar num apartamento com janelas grandes?", "Escolhemos cortinas, estores ou persianas motorizadas, prevemos nichos para as calhas e planeamos a posição dos ares condicionados."]
+   ]
+  },
+  "montreal-house": {
+   "addr": "rua Velyka Vasylkivska",
+   "lead": "Montreal House é um condomínio de classe business da Alliance Novobud na rua Velyka Vasylkivska, com apartamentos de 51 a 78 m² e maiores. Remodelamos chave na mão, para habitação própria ou para arrendar.",
+   "h2": "Remodelar um apartamento de 51–78 m² no centro",
+   "p": [
+    "Os apartamentos de área média no centro são um formato procurado, tanto para viver como para arrendar. Com 51–60 m² costuma escolher-se uma cozinha-sala e um quarto separado com closet; com 70–78 m², dois quartos e uma segunda casa de banho. A decisão final surge depois das medições e de várias opções de planta.",
+    "O centro significa ruído da rua, por isso recomendamos boas janelas, vedação das ombreiras e isolamento acústico das paredes dos quartos. Para arrendar: pavimentos resistentes, tintas laváveis e móveis fáceis de manter.",
+    "A remodelação num edifício de classe business costuma ser combinada com a administração: calendário de obras, uso do elevador, remoção de entulho. Tratamos nós dessa parte."
+   ],
+   "faq": [
+    ["Como reduzir o ruído da rua?", "Verificamos as janelas e as ombreiras, reforçamos se necessário o isolamento acústico das paredes do quarto e escolhemos cortinas espessas. As soluções ficam no projeto."],
+    ["Remodelam apartamentos no centro para arrendar?", "Sim, com materiais práticos e equipamento completo: móveis, eletrodomésticos e têxteis antes da entrada do inquilino."]
+   ]
+  },
+  "senat": {
+   "addr": "estrada Kiltseva, 3",
+   "lead": "Senat é um condomínio de classe business da GEOS na estrada Kiltseva, 3. Há de tudo: desde apartamentos compactos de 34 m² até 94 m², duplex e apartamentos com terraço. Encontramos soluções para cada formato e remodelamos chave na mão.",
+   "h2": "Do apartamento compacto ao duplex com terraço",
+   "p": [
+    "Num apartamento de 34–45 m², o principal é a multifuncionalidade: cama em estrado ou num nicho com cortina, cozinha com eletrodomésticos encastrados, roupeiros até ao teto, espelhos que ampliam o espaço. É nos apartamentos pequenos que o projeto de design se paga mais depressa — aqui os erros de medidas são os mais caros.",
+    "Os duplex e os apartamentos com terraço exigem outra abordagem: escada, isolamento acústico da laje, impermeabilização e drenagem do terraço, iluminação e tomadas exteriores. Detalhamos estes pontos separadamente nos desenhos.",
+    "A administração do condomínio costuma definir um regulamento de obras — horário dos trabalhos ruidosos e remoção de entulho. Cumprimo-lo e combinamos os pormenores antes de começar."
+   ],
+   "faq": [
+    ["Compensa um projeto de design para um apartamento pequeno?", "Sim: numa área pequena cada centímetro conta, e os erros nas medidas de móveis ou tomadas são os mais caros. O projeto custa desde $2 500."],
+    ["O que fazem com o terraço?", "Verificamos a impermeabilização e as pendentes e escolhemos pavimento resistente ao gelo, iluminação e tomadas estanques e mobiliário de exterior."]
+   ]
+  },
+  "life-story": {
+   "addr": "rua Metrolohichna, 13",
+   "lead": "Life Story é um condomínio de classe business da LEV Development na rua Metrolohichna, 13, com apartamentos a partir de 49,93 m². Remodelamos chave na mão para famílias que querem mudar-se para um interior pronto e bem pensado.",
+   "h2": "Remodelar um apartamento familiar em Holosiiv",
+   "p": [
+    "Holosiiv, com os seus parques e florestas, escolhe-se para uma vida familiar tranquila, e o interior deve acompanhá-la: revestimentos práticos que aguentem crianças e animais, arrumação suficiente e uma cozinha cómoda para cozinhar todos os dias.",
+    "Em apartamentos a partir de 50 m², muitas vezes é preciso escolher: dois quartos separados ou uma ampla cozinha-sala. Mostramos várias opções de planta e dispomos o mobiliário para que a decisão seja tomada no desenho, e não depois da obra.",
+    "A remodelação numa construção nova de classe business costuma seguir as regras da administração sobre horários de ruído, elevadores e remoção de entulho. Planeamos o trabalho tendo-as em conta."
+   ],
+   "faq": [
+    ["Que materiais escolher para uma família com crianças e animais?", "Resistentes: vinil de quartzo ou cerâmica no pavimento, tintas laváveis, tecidos antinódoas. Selecionamo-los na especificação do projeto."],
+    ["Podem mobilar o apartamento?", "Sim, o mobiliário custa desde $250/m²: móveis, iluminação, eletrodomésticos, têxteis e decoração segundo o projeto de design."]
+   ]
+  },
+  "respublika": {
+   "addr": "estrada Kiltseva, 1",
+   "lead": "Respublika é um grande condomínio residencial de classe conforto e business da KAN Development na estrada Kiltseva, 1. Remodelamos apartamentos chave na mão com orçamento fixo e garantia de 12 meses.",
+   "h2": "Remodelar um apartamento num grande condomínio",
+   "p": [
+    "Num condomínio desta escala, os apartamentos são muito diferentes, mas os proprietários partilham um desejo: um orçamento previsível. Por isso começamos pelo projeto de design e por um orçamento em que cada rubrica tem preço; se a nossa equipa fizer a remodelação, o total não se desvia do orçamento mais de ±5%.",
+    "Em apartamentos de classe conforto e business, aconselhamos investir no que é difícil mudar depois: eletricidade com reserva, boa impermeabilização da casa de banho, paredes direitas e a planta certa. A decoração e parte do mobiliário podem ser renovados mais tarde sem obras.",
+    "Num grande condomínio, muitos apartamentos são remodelados ao mesmo tempo, e a administração costuma regular os horários de ruído, os elevadores e a remoção de entulho. Planeamos as entregas para não perder tempo em filas."
+   ],
+   "faq": [
+    ["Como não ultrapassar o orçamento?", "Fixamos o orçamento antes de começar. Se a CAS fizer a remodelação, o total não se desvia do orçamento mais de ±5%."],
+    ["O que convém fazer bem logo e o que pode esperar?", "Logo: eletricidade, canalização, impermeabilização, nivelamento e planta. A decoração, parte do mobiliário e os têxteis podem ser comprados mais tarde."]
+   ]
+  },
+  "podil-hrad": {
+   "addr": "ruas Kozhumiatska / Dehtiarna",
+   "lead": "Podil Hrad é um condomínio de classe business da Kyivmiskbud nas ruas Kozhumiatska e Dehtiarna, no coração de Podil. Os apartamentos vão de 65,5 a 79 m², alguns com quatro assoalhadas — e remodelamos cada um chave na mão.",
+   "h2": "Como fazer caber quatro divisões em 79 m²",
+   "p": [
+    "Um apartamento de quatro assoalhadas com até 79 m² significa divisões compactas em que cada metro tem de trabalhar. Ajudam os roupeiros embutidos em vez de móveis soltos, as portas de correr, as camas com arrumação e uma cozinha até ao teto. Dispomos o mobiliário já no projeto para que cada divisão mantenha passagem e luz natural.",
+    "Em apartamentos de 65–79 m², compensa muitas vezes juntar a cozinha à sala e manter dois ou três quartos separados. Verificamos as opções face à estrutura do edifício: não mexemos em paredes estruturais nem em zonas húmidas.",
+    "A Podil histórica significa ruas estreitas e restrições ao transporte de mercadorias, por isso planeamos as entregas com antecedência. As regras da obra no edifício são normalmente fixadas pela administração — cumprimo-las."
+   ],
+   "faq": [
+    ["Como tornar confortável um apartamento de quatro assoalhadas numa área pequena?", "Com uma planta bem pensada e móveis embutidos: roupeiros até ao teto, portas de correr, camas com gavetas, uma cozinha compacta com ilha. Tudo é disposto no projeto."],
+    ["Como entregam os materiais em Podil?", "Planeamos as entregas tendo em conta as ruas estreitas e as regras do edifício; as peças grandes entram em horas acordadas."]
+   ]
+  },
+  "unit-home": {
+   "addr": "rua Gareth Jones, 8/12",
+   "lead": "UNIT.Home é um condomínio de classe business da UDP na rua Gareth Jones, ao lado do parque de inovação UNIT.City. Remodelamos aqui apartamentos chave na mão: interior moderno, eletrodomésticos e mobiliário num só contrato.",
+   "h2": "Remodelar um apartamento para o ritmo urbano atual",
+   "p": [
+    "Quem vive em condomínios assim trabalha muitas vezes a partir de casa, por isso o projeto deve prever desde o início um posto de trabalho: um escritório ou um nicho com boa luz, tomadas suficientes e calhas para a internet, conforto acústico para chamadas.",
+    "Um interior moderno de classe business combina bem com a casa inteligente: controlo da luz e do clima pelo telemóvel, sensores de fuga na casa de banho e na cozinha, cortinas motorizadas. Deixamos a cablagem e os pontos dos equipamentos previstos nos trabalhos de base.",
+    "A administração do condomínio costuma regular as obras: horário de ruído, uso dos elevadores e remoção de entulho. Organizamos o trabalho para cumprir estas exigências."
+   ],
+   "faq": [
+    ["Fazem casa inteligente?", "Sim: controlo da luz, do clima e das cortinas, sensores de fuga, cenários. Deixamos a cablagem e os pontos dos equipamentos previstos nos trabalhos de base."],
+    ["Como organizar um posto de trabalho em casa?", "Planeamos um escritório ou um nicho junto à janela, boa iluminação, tomadas e rede, isolamento acústico. Escolhemos os móveis segundo a sua forma de trabalhar."]
+   ]
+  },
+  "novyi-avtohraf": {
+   "addr": "rua Sviatoho Kniazia Romana Mstyslavycha, 26",
+   "lead": "Novyi Avtohraf é um condomínio de classe business da DIM na rua Sviatoho Kniazia Romana Mstyslavycha, 26, na margem esquerda. Remodelamos apartamentos chave na mão: do projeto de design ao mobiliário e à entrega com auto.",
+   "h2": "Remodelação num condomínio de várias torres de classe business",
+   "p": [
+    "Num grande condomínio em altura, muitos apartamentos são remodelados ao mesmo tempo, por isso o calendário torna-se decisivo: fila para o monta-cargas, horário dos trabalhos ruidosos, remoção de entulho. Planeamos as entregas de materiais por lotes segundo estas limitações para que a equipa nunca fique parada.",
+    "Os apartamentos de classe business são muitas vezes comprados tanto para habitar como para arrendar. Para habitação própria, aconselhamos investir na planta, no isolamento acústico e na arrumação; para arrendar, em revestimentos resistentes e móveis práticos.",
+    "Em altura, os apartamentos recebem muita luz, por isso importam a proteção solar e a colocação correta dos ares condicionados. Incluímos estas soluções no projeto, juntamente com as exigências do edifício quanto à fachada."
+   ],
+   "faq": [
+    ["Como não depender da fila do elevador?", "Planeamos as entregas com antecedência e por lotes e combinamo-las com a administração. Enquanto esperamos pelo material, a equipa avança noutras fases."],
+    ["Remodelam para arrendar?", "Sim: materiais práticos, interior neutro e equipamento completo antes da entrada do inquilino."]
+   ]
+  },
+  "rusaniv-residence": {
+   "addr": "rua Yevhena Sverstiuka, 54",
+   "lead": "Rusaniv Residence é um condomínio de classe business da Citex Development na rua Yevhena Sverstiuka, 54, com duplex de 104 a 179 m². Áreas assim exigem um projeto sólido — e é por aí que começamos.",
+   "h2": "Remodelação de um duplex de 104–179 m²",
+   "p": [
+    "Um duplex desta dimensão está mais próximo de uma moradia em banda do que de um apartamento comum. Por isso começamos por distribuir os pisos: zona de dia com cozinha-sala e WC de serviço, zona de noite com quartos, closets e casas de banho. Fazemos da escada o centro da composição, e não um obstáculo.",
+    "Em dois pisos, as instalações são mais complexas: climatização separada por piso, ventilação de cada casa de banho, piso radiante, iluminação da escada com sensores de movimento. Colocamos isolamento acústico na laje sob os quartos para que os passos em baixo não se ouçam em cima.",
+    "Em grandes áreas, o equipamento é especialmente importante: são precisos muitos móveis, luminárias e têxteis, e a logística deve ficar com um só fornecedor. As regras da obra no edifício são normalmente fixadas pela administração — tomamo-las em conta."
+   ],
+   "faq": [
+    ["Por onde começa a remodelação de um duplex?", "Pelo projeto de design: distribuição das zonas entre pisos, escada, instalações e isolamento acústico. Só depois elaboramos o orçamento e o calendário da obra."],
+    ["Podem equipar o apartamento por completo?", "Sim. Móveis por medida e da China, iluminação, eletrodomésticos, têxteis e decoração — até o apartamento estar pronto a habitar."]
+   ]
+  }
+ }
+}
