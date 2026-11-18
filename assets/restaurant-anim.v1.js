@@ -48,7 +48,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
   }
   function sg(c, a) { var o = ''; for (var i = 0; i < a.length; i += 6) o += 'M' + P(a[i], a[i + 1], a[i + 2]).join(',') + 'L' + P(a[i + 3], a[i + 4], a[i + 5]).join(','); return '<path class="' + c + '" d="' + o + '"/>'; }
   function sil(c, x, y, z, st, an) { // нейтральний силует (без облич): сидить або стоїть
-    return '<g class="rs-sil ' + c + '" transform="translate(' + P(x, y, z).join(',') + ')">' + (an || '') + '<path d="' + (st ? 'M-2 0L-2.4-8-3.4-9-3.6-15Q-3.4-17.4 0-17.5 3.4-17.4 3.6-15L3.4-9 2.4-8 2 0Z' : 'M-3.2 0L-3.5-7Q-3.4-9.6 0-9.7 3.4-9.6 3.5-7L3.2 0Z') + '"/><circle cy="' + (st ? -20 : -12.2) + '" r="2.4"/></g>';
+    return '<g class="rs-sil ' + c + '" transform="translate(' + P(x, y, z).join(',') + ') scale(1.3)">' + (an || '') + '<path d="' + (st ? 'M-2 0L-2.4-8-3.4-9-3.6-15Q-3.4-17.4 0-17.5 3.4-17.4 3.6-15L3.4-9 2.4-8 2 0Z' : 'M-3.2 0L-3.5-7Q-3.4-9.6 0-9.7 3.4-9.6 3.5-7L3.2 0Z') + '"/><circle cy="' + (st ? -20 : -12.2) + '" r="2.4"/></g>';
   }
   function chair(x0, x1, y0, y1, b0, b1) { // сидіння, чотири ніжки, спинка
     var a = [], e = 0.05; [x0 + e, x1 - e].forEach(function (x) { [y0 + e, y1 - e].forEach(function (y) { a.push(x, y, 0, x, y, 0.42); }); });
@@ -228,7 +228,8 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     add('glow', circ('rs-glow bar', bx - 0.2, (by0 + by1) / 2, 1.8, 2.2) + circ('rs-glow b2', 0.2, (by0 + by1) / 2, 2.2, 1.3) + circ('rs-glow k', (kx0 + kx1) / 2, ky1, 1.6, 2) + circ('rs-glow k', sx, 0.8, 2.3, 1.7), DUSK, 0.4);
     add('glow', wy('rs-signon', Dp, Wd * 0.34, Wd * 0.66, H - 0.45, H - 0.1) + circ('rs-glow a', Wd / 2, Dp + 0.4, H - 0.3, 2.2), DUSK, 0.5);
     // 13 гості: 4–8 нейтральних силуетів — за столами, біля бару, на терасі; офіціант між роздачею й залом
-    [0.12, 0.38, 0.62, 0.88].forEach(function (f, k) { var q = tabs[Math.floor(f * tabs.length)], fr = k % 2; if (q) add('furn', sil('s' + k % 3, q[0], q[1] + (fr ? 0.78 : -0.78), 0.47), 13, 0.1 + 0.15 * k, null, null, q[0] + q[1] + (fr ? 0.75 : -0.75)); });
+    // QA 18.11.2026: 4 сірі силуети під нічним шаром майже не було видно — етап «Гості» виглядав порожнім; тепер гості за 8 столами (по двоє за частиною), увечері — у теплому світлі залу
+    [0.06, 0.19, 0.31, 0.44, 0.56, 0.69, 0.81, 0.94].forEach(function (f, k) { var q = tabs[Math.floor(f * tabs.length)]; if (!q) return; [0, 1].forEach(function (fr) { if (fr && k % 3 === 1) return; add('furn', sil('s' + (k + fr) % 3, q[0], q[1] + (fr ? 0.78 : -0.78), 0.47), 13, 0.1 + 0.07 * k + 0.04 * fr, null, null, q[0] + q[1] + (fr ? 0.75 : -0.75)); }); });
     for (y = by0 + 0.4, n = 0; y < by1 - 0.2 && n < 2; y += 1.5, n++) add('furn', sil('s' + (n + 1), bx + 1.3, y, 0.8), 13, 0.5, null, null, bx + 1.31 + y);
     if (umb.length) add('ppl', sil('s0', umb[0] - 0.7, (ty0 + ty1) / 2 - 0.3, 0.55), 13, 0.4);
     if (tabs.length && !RM) {
@@ -277,7 +278,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     + '.rs-cyp{fill:#2f6a3a}.rs-cyp.b{fill:#24532c}.rs-bush.b{fill:#4f8f3e}.rs-grs{stroke:#7aa552;stroke-width:.8;fill:none}.rs-hedge.t{fill:#4a8a3c}.rs-hedge.r,.rs-hedge.l{fill:#33692b}'
     + '.rs-can3{fill:#f7f1e4}.rs-rib{stroke:#c2b192;stroke-width:.5;fill:none}.rs-val{fill:none;stroke:#BF9148;stroke-width:1.1}'
     + '.rs-glow.k{fill:url(#rs-gw2)}.rs-glow.b2{fill:url(#rs-gw3)}.rs-glow.a{fill:url(#rs-gw4)}.rs-glow.w{fill:url(#rs-gw5)}.rs-dusk .rs-glow.o{opacity:.45}'
-    + '.rs-sil{fill:#aeb2b8;stroke:#16191d;stroke-width:.7}.rs-sil.s1{fill:#9a9fa7}.rs-sil.s2{fill:#c0c3c7}.rs-sil.w{fill:#3a3e44}';
+    + '.rs-sil{fill:#aeb2b8;stroke:#16191d;stroke-width:.7}.rs-sil.s1{fill:#9a9fa7}.rs-sil.s2{fill:#c0c3c7}.rs-sil.w{fill:#3a3e44}.rs-dusk .rs-sil{fill:#ffe3b8;stroke:#2a1c10}.rs-dusk .rs-sil.s1{fill:#f4bf8c}.rs-dusk .rs-sil.s2{fill:#fff3dc}.rs-dusk .rs-sil.w{fill:#fff}';
   function target(i) { // кадр під фактичні пропорції сцени (402 — майже квадрат, 1440 — 2:1): обʼєкт етапу — по центру й цілий
     var f = FOC[i]; if (!f) return FULL;
     var c = [P(f[0], f[1], f[5]), P(f[2], f[1], f[4]), P(f[0], f[3], f[4]), P(f[2], f[3], f[4]), P(f[2], f[1], f[5]), P(f[0], f[3], f[5])], xs = c.map(function (q) { return +q[0]; }), ys = c.map(function (q) { return +q[1]; });
@@ -324,15 +325,21 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       vbT = target(i);
       if (i === N - 1) cl('rs_end');
     }
-    if (!vb || RM || force) vb = vbT.slice();
+    if (!vb || RM || force) { vb = vbT.slice(); cB = null; }
     if (!raf) tick();
   }
+  // камера (QA 18.11.2026): перехід viewBox за часом — 650 мс easeInOutCubic замість «0.12 відстані за кадр»: однаковий темп на 60/120 Гц і на повільному телефоні
+  // (там кадрів менше, а не довший хвіст субпіксельних перемальовок усього SVG); нова ціль посеред руху — з поточної точки, без зупинки (easeOut)
+  var cA = null, cB = null, cT = 0, cE = 0, cS = '';
   function tick() {
-    raf = 0;
-    var dn = 0;
-    for (var j = 0; j < 4; j++) { var dv = vbT[j] - vb[j]; if (Math.abs(dv) > 0.5) { vb[j] += dv * 0.12; dn = 1; } else vb[j] = vbT[j]; }
-    svg.setAttribute('viewBox', vb.map(function (v) { return v.toFixed(1); }).join(' '));
-    if (dn && !RM) raf = W.requestAnimationFrame(tick);
+    raf = 0; if (!vbT || !vb) return;
+    var t0 = W.performance ? W.performance.now() : Date.now();
+    if (!cB || cB.join() !== vbT.join()) { cE = cB && cA && cS && t0 - cT < 650 ? 1 : 0; cA = vb.slice(); cB = vbT.slice(); cT = t0; }
+    var t = RM ? 1 : Math.min(1, (t0 - cT) / 650), e = cE ? 1 - Math.pow(1 - t, 3) : t < 0.5 ? 4 * t * t * t : 1 - Math.pow(2 - 2 * t, 3) / 2;
+    for (var j = 0; j < 4; j++) vb[j] = cA[j] + (cB[j] - cA[j]) * e;
+    var s = vb.map(function (v) { return v.toFixed(1); }).join(' ');
+    if (s !== cS) { cS = s; svg.setAttribute('viewBox', s); }
+    if (t < 1) raf = W.requestAnimationFrame(tick);
   }
   function raw() { // прогрес за прокруткою, етапи (згладжування, ліміт швидкості й «один етап за клацання» — casDrive у site-chrome.v1.js)
     if (!run) return null;
