@@ -1,0 +1,317 @@
+{
+ "slug": "maison-en-beton-cellulaire-etape-par-etape",
+ "lang": "fr",
+ "title": "Construire une maison en béton cellulaire étape par étape : que contrôler à chaque phase",
+ "translation_of": "tekhnolohiia-budivnytstva-budynku-z-hazobloku-pokrokovo",
+ "seo_title": "Maison en béton cellulaire étape par étape",
+ "description": "Construire en béton cellulaire : dalle de fondation, premier rang, linteaux, chaînage, toiture, enveloppe isolante. Checklist de contrôle à chaque étape.",
+ "lead": "Construire en béton cellulaire pardonne moins qu'on ne le croit : les murs montent vite, mais la plupart des défauts se logent dans quelques points — le premier rang, les linteaux, le chaînage, les jonctions avec la toiture et les fenêtres. Nous suivons l'ordre des travaux tel que le mène un conducteur de travaux et, à chaque étape, montrons ce que le maître d'ouvrage doit vérifier tant que l'ouvrage est encore visible.",
+ "date": "2026-11-01",
+ "service": [
+  "/fr/construction-maison",
+  "Construction de maison"
+ ],
+ "photo": "img/p/1C16Cd6bvENPGL-900.webp",
+ "photo_alt": "Maison à étage avec piscine et salon extérieur en contrebas sur le terrain — projet Smart Villa",
+ "body": [
+  [
+   "h2",
+   "Construire en béton cellulaire : en quoi consiste le processus"
+  ],
+  [
+   "p",
+   "Le béton cellulaire (béton cellulaire autoclavé) est un matériau de maçonnerie léger comportant une multitude de petites bulles. Il garde bien sa forme, présente des cotes précises et se pose au mortier-colle en joint mince plutôt qu'en joint épais de mortier. En revanche, il est fragile en flexion, absorbe l'eau et supporte mal les tassements différentiels. Construire en béton cellulaire n'est donc pas seulement maçonner, c'est un système : support rigide, armatures, chaînages coulés, façade protégée de l'humidité et enveloppe isolante continue."
+  ],
+  [
+   "p",
+   "Si vous choisissez encore le matériau des murs, commencez par la comparaison de l'article [ossature bois, béton cellulaire ou madriers](/fr/blog/ossature-bois-beton-cellulaire-ou-madriers-avec-quoi-construire). Ici, nous partons du principe que la décision est prise et parcourons étape par étape le gros œuvre et l'enveloppe isolante."
+  ],
+  [
+   "ol",
+   [
+    "projet et étude de sol",
+    "fondation — le plus souvent une dalle coulée",
+    "coupure de capillarité et premier rang",
+    "murs, armatures de lits et linteaux",
+    "chaînage et planchers",
+    "toiture",
+    "fenêtres, isolation et façade — fermeture de l'enveloppe",
+    "réseaux, enduits et chapes"
+   ]
+  ],
+  [
+   "h2",
+   "Étape 0. Projet et étude de sol : la base de toutes les décisions"
+  ],
+  [
+   "p",
+   "La classe de densité et de résistance des blocs, l'épaisseur des murs, le type de fondation, le plan d'armatures et les dimensions des linteaux et chaînages sont fixés par l'étude structure du projet, et non par l'équipe sur place. Il faut pour cela des données de sol : portance, niveau de la nappe, sensibilité au gel. Sur un terrain, une dalle sur hérisson de sable suffit ; sur le terrain voisin, il faut des pieux ou une fondation plus profonde. Sans étude de sol, toutes ces décisions relèvent de la devinette."
+  ],
+  [
+   "p",
+   "Dans le [projet de maison](/fr/conception-maison), vérifiez qu'il n'y a pas seulement des façades et des plans, mais aussi les plans de fondation, le calepinage de la maçonnerie avec les baies, les détails de chaînage, de linteaux et de jonction avec la toiture, ainsi que l'étude thermique de l'enveloppe."
+  ],
+  [
+   "ul",
+   [
+    "un rapport d'étude de sol pour l'emprise exacte du bâtiment",
+    "plans d'exécution architecture et structure avec descriptif des matériaux",
+    "détails : soubassement, premier rang, linteaux, chaînage, sablière, tableaux de fenêtres",
+    "un plan des arrivées de réseaux pour poser les fourreaux avant le coulage",
+    "un devis par étapes pour comparer le réel au prévu"
+   ]
+  ],
+  [
+   "h2",
+   "Étape 1. Dalle de fondation"
+  ],
+  [
+   "p",
+   "Pour une maison en béton cellulaire, on choisit souvent un radier en béton armé : il travaille comme un plateau rigide unique et réduit le risque de tassements différentiels, qui fissurent la maçonnerie. Le radier peut être classique ou isolé (la dalle dite « suédoise »), avec du polystyrène extrudé dessous et en périphérie et les circuits du plancher chauffant intégrés. C'est l'ingénieur structure qui décide, d'après l'étude de sol, si un radier convient à votre terrain."
+  ],
+  [
+   "h3",
+   "Ce que l'on trouve habituellement sous la dalle"
+  ],
+  [
+   "ul",
+   [
+    "terre végétale décapée et fond de forme réglé",
+    "hérisson de sable ou de grave compacté par couches",
+    "géotextile pour que les couches ne se mélangent pas",
+    "béton de propreté ou autre support d'étanchéité, selon le projet",
+    "étanchéité et, pour un radier isolé, une couche de XPS",
+    "deux nappes d'armatures sur cales avec l'enrobage requis"
+   ]
+  ],
+  [
+   "h3",
+   "Ce qu'il faut contrôler à l'étape de la fondation"
+  ],
+  [
+   "ul",
+   [
+    "l'implantation des axes et des niveaux — une erreur ici se reporte sur tous les murs",
+    "le compactage de chaque couche du hérisson, pas seulement de la dernière",
+    "diamètres, espacements et recouvrements des aciers selon le plan, cales d'enrobage",
+    "fourreaux pour l'assainissement, l'eau et le câble d'arrivée, avant le coulage",
+    "la classe du béton sur les bons de livraison, un coulage continu et une vibration correcte",
+    "la cure : bâchage, humidification, protection contre le gel ; ne charger la dalle qu'après la résistance prévue au projet"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1F4OovwNYQPfoF-900.webp",
+   "Façade d'une maison de plain-pied de 150 m² avec carport — projet House 150",
+   "Une maison au plan simple est plus facile à protéger des tassements différentiels"
+  ],
+  [
+   "h2",
+   "Étape 2. Coupure de capillarité et premier rang"
+  ],
+  [
+   "p",
+   "Le premier rang est le plus important de toute la maçonnerie. Entre la fondation et le béton cellulaire, on pose une coupure de capillarité pour que l'humidité du béton et du sol ne remonte pas dans les murs poreux. Le premier rang se pose au mortier de ciment : son épaisseur rattrape les défauts de la dalle et permet de régler une horizontale parfaite au laser. Les rangs suivants se posent au mortier-colle en joint mince — de quelques millimètres en général —, et c'est précisément l'avantage du béton cellulaire sur une maçonnerie classique au mortier."
+  ],
+  [
+   "ul",
+   [
+    "l'horizontalité du premier rang se vérifie sur tout le périmètre, pas seulement aux angles",
+    "chaque rang est poncé ou raboté avant l'application de la colle",
+    "la colle s'applique au peigne sur toute la largeur du bloc",
+    "les joints verticaux de deux rangs successifs ne se superposent pas — harpage selon le projet",
+    "les blocs sans emboîtement se collent aussi sur leurs faces verticales",
+    "armatures de lits — aciers dans des saignées : en règle générale au premier rang, sous les baies et tous les quelques rangs selon le projet"
+   ]
+  ],
+  [
+   "h2",
+   "Étape 3. Murs, linteaux et baies"
+  ],
+  [
+   "p",
+   "Au-dessus des portes et fenêtres, le béton cellulaire ne peut pas travailler seul : sa résistance à la flexion est faible. On réalise donc des linteaux — en blocs en U servant de coffrage perdu aux aciers et au béton, en linteaux armés préfabriqués ou, pour les petites baies, en éléments métalliques sur calcul. La longueur d'appui du linteau est fixée par le projet ; selon la pratique du marché, au moins un quart de mètre de chaque côté."
+  ],
+  [
+   "h3",
+   "Ce qu'il faut contrôler pendant le montage des murs"
+  ],
+  [
+   "ul",
+   [
+    "l'aplomb des murs et des angles, les dimensions des baies — selon le descriptif des fenêtres avec jeu de pose",
+    "le ferraillage et le coulage des linteaux, l'isolation extérieure de la partie béton pour éviter un pont thermique",
+    "la liaison des cloisons intérieures aux murs porteurs — par attaches souples ou aciers, comme au projet",
+    "la protection de l'arase contre la pluie pendant les pauses : un béton cellulaire gorgé d'eau sèche longtemps",
+    "les travaux par temps froid — uniquement avec une colle hivernale et dans les températures admises par le fabricant"
+   ]
+  ],
+  [
+   "h2",
+   "Étape 4. Chaînage et planchers"
+  ],
+  [
+   "p",
+   "Le chaînage est une ceinture en béton armé coulée sur tous les murs porteurs au niveau des planchers et sous la toiture. Il lie les murs entre eux, répartit les charges ponctuelles des planchers et des chevrons et empêche la maçonnerie de s'ouvrir. Les blocs en U ou des blocs minces en rive extérieure, avec un isolant entre eux et le béton, servent souvent de coffrage : le chaînage ne devient pas ainsi une bande froide en façade."
+  ],
+  [
+   "p",
+   "Les planchers peuvent être coulés en place, en prédalles alvéolées ou en solives bois. Les dalles préfabriquées ne se posent sur le béton cellulaire que par l'intermédiaire d'un chaînage ou d'une poutre de répartition ; un plancher coulé est souvent bétonné en même temps que le chaînage. Le type de plancher influe sur les portées, l'acoustique et le passage des réseaux : il se choisit au stade du projet."
+  ],
+  [
+   "ul",
+   [
+    "un chaînage continu sur tout le périmètre, avec des aciers en L dans les angles",
+    "dans le chaînage sous toiture, des tiges ou ancrages pour la sablière posés avant le coulage",
+    "un isolant dans la partie extérieure du coffrage du chaînage",
+    "un appui des dalles de plancher au moins égal au projet, et uniquement sur le chaînage"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1jLCsJh1mIO_wX-900.webp",
+   "Villa à étage avec piscine et salon extérieur sur le terrain — projet Smart Villa",
+   "Dans une maison à étage, un chaînage est nécessaire à chaque niveau de plancher"
+  ],
+  [
+   "h2",
+   "Étape 5. Toiture"
+  ],
+  [
+   "p",
+   "La sablière — la pièce de bois qui reçoit les chevrons — est fixée au chaînage par des tiges scellées et isolée du béton par une couche d'étanchéité. Chevrons, liteaux et écrans fonctionnent comme un système, et les erreurs se traduisent ici par de la condensation, des taches au plafond des combles et un isolant humide. Pour une toiture en pente avec combles aménagés, la composition est généralement : couverture, liteaux, contre-liteaux avec lame d'air, écran de sous-toiture respirant, isolant entre chevrons, pare-vapeur aux joints adhésivés et finition intérieure."
+  ],
+  [
+   "p",
+   "La composition de chaque couche, les épaisseurs courantes et les erreurs les plus fréquentes sont détaillées à part dans l'article sur [les couches du mur, du plancher et de la toiture](/fr/blog/complexe-mur-plancher-toiture-maison-couches-erreurs)."
+  ],
+  [
+   "ul",
+   [
+    "ancrage de la sablière et fixation des chevrons par équerres ou étriers selon le projet",
+    "traitement fongicide et ignifuge du bois là où il est prévu",
+    "recouvrements et adhésivage des écrans, bon sens de pose de l'écran respirant",
+    "ventilation de la sous-toiture : entrée d'air en égout, sortie au faîtage",
+    "raccords aux murs, cheminées et conduits, gouttières et arrêts de neige"
+   ]
+  ],
+  [
+   "h2",
+   "Étape 6. Fenêtres, isolation et enveloppe isolante"
+  ],
+  [
+   "p",
+   "L'enveloppe isolante est une coque continue d'isolant et de couche étanche à l'air qui enveloppe la maison de la dalle au faîtage. Les points faibles ne sont pas les surfaces de mur, mais les jonctions : rive de dalle, chaînage, linteaux, tableaux de fenêtres, liaison mur-toiture. Si l'isolant y est interrompu, c'est là qu'apparaissent zones froides, condensation et moisissures, même si le mur est globalement épais."
+  ],
+  [
+   "p",
+   "L'épaisseur d'isolant est fixée par le calcul thermique. Avec le béton cellulaire, il importe que la perméabilité à la vapeur des couches augmente de l'intérieur vers l'extérieur : l'humidité des pièces traverse alors le mur au lieu de s'y accumuler. C'est pourquoi, selon la pratique du marché, on utilise plus souvent sur béton cellulaire une laine minérale sous enduit mince ou une façade ventilée ; les autres solutions, seulement sur calcul au projet."
+  ],
+  [
+   "ul",
+   [
+    "les fenêtres se posent en trois couches : bande intérieure étanche à la vapeur, mousse de pose, bande extérieure perspirante",
+    "si possible, la fenêtre est avancée dans le plan de l'isolant sur consoles : moins de ponts thermiques",
+    "isolant posé jointif, sans fentes, joints décalés et chevillé selon le plan",
+    "le soubassement et le bas de façade sont protégés des rejaillissements et de la neige",
+    "avant la façade, les murs doivent être secs : un béton cellulaire refermé évacue mal l'eau"
+   ]
+  ],
+  [
+   "img",
+   "/img/p/1kHF6cjS291puf-900.webp",
+   "Terrasse de Smart Villa avec canapés, éclairage et thuyas le long du mur — un projet CAS Development",
+   "Façade claire et coin détente : l'enveloppe isolante se pense avant la finition extérieure"
+  ],
+  [
+   "h2",
+   "Étape 7. Réseaux, enduits et chapes"
+  ],
+  [
+   "p",
+   "Une fois la toiture et les fenêtres posées, la maison est hors d'eau et les réseaux peuvent entrer : électricité, eau et évacuations, chauffage, ventilation. Les saignées dans le béton cellulaire se font à la rainureuse, sans outil à percussion, et l'on utilise des chevilles spéciales béton cellulaire pour les équipements suspendus. Après les réseaux en premier œuvre viennent les enduits et les chapes, des travaux humides qui apportent beaucoup d'eau dans la maison."
+  ],
+  [
+   "ul",
+   [
+    "primaire sur le béton cellulaire avant l'enduit, car il pompe rapidement l'eau du mortier",
+    "treillis d'armature aux jonctions de matériaux différents — béton cellulaire et chaînage en béton",
+    "bande périphérique de désolidarisation de la chape, surtout avec plancher chauffant",
+    "aération et séchage progressif avant les finitions"
+   ]
+  ],
+  [
+   "h2",
+   "Erreurs fréquentes en construction béton cellulaire"
+  ],
+  [
+   "ul",
+   [
+    "économiser sur l'étude de sol et une fondation « type » sans calcul",
+    "un premier rang collé sans mortier de réglage — et les défauts se reportent sur tout le mur",
+    "une maçonnerie au mortier ordinaire en joint épais : le joint devient un pont thermique",
+    "des linteaux en simple béton cellulaire, sans armature ou avec un appui trop court",
+    "un chaînage interrompu ou non isolé côté extérieur",
+    "un béton cellulaire laissé sans protection pendant l'hiver, et une façade refermée sur un mur humide",
+    "des jonctions de fenêtres et de toiture non vérifiées — première source d'infiltrations et de condensation"
+   ]
+  ],
+  [
+   "h2",
+   "Checklist des ouvrages cachés : quoi documenter par photo et procès-verbal"
+  ],
+  [
+   "p",
+   "Tout ce que la couche suivante recouvre doit être réceptionné avant de disparaître : armatures de la dalle et des chaînages, étanchéité, premier rang, linteaux, écrans et pare-vapeur, réservations pour les réseaux. Des photos avec un mètre, un niveau et un repère d'axes sont le meilleur document pour l'avenir. Comment organiser un contrôle indépendant : voir l'article sur le [contrôle technique de chantier](/fr/blog/controle-technique-renovation-appartement) ; pour une maison, le principe est le même."
+  ],
+  [
+   "ul",
+   [
+    "procès-verbal du ferraillage de la dalle avant coulage",
+    "photos de la coupure de capillarité et du premier rang avec le niveau",
+    "ferraillage des linteaux et du chaînage, tiges pour la sablière",
+    "écrans et pare-vapeur aux joints adhésivés avant le parement",
+    "pose des fenêtres : bandes périphériques avant l'enduit des tableaux",
+    "fourreaux et arrivées des réseaux, essais de pression des canalisations"
+   ]
+  ],
+  [
+   "h2",
+   "Comment nous construisons des maisons en béton cellulaire"
+  ],
+  [
+   "p",
+   "CAS Development mène la construction du projet à la remise des clés : projet architectural de maison à partir de $12/m², construction à partir de $600/m², maison clé en main à partir de $1 100/m². Pour repère : 150 m² × $600 = $90 000 pour le gros œuvre et 150 m² × $1 100 = $165 000 clé en main aux tarifs de base — le montant exact vient du devis après le projet. Contenu et prix en détail sur la page [coût de construction d'une maison](/fr/prix-construction-maison)."
+  ],
+  [
+   "p",
+   "Les travaux sont réalisés par notre propre équipe de salariés, un seul interlocuteur suit le chantier, les rapports photo arrivent toutes les 1 à 2 semaines et une caméra en ligne 24 h/24 est disponible en option payante. Délais et échéancier sont fixés au contrat, la garantie sur les travaux est de 12 mois. Nous construisons à Kyiv, dans la région de Kyiv, dans les autres régions d'Ukraine et en Europe."
+  ]
+ ],
+ "faq": [
+  [
+   "Quelle fondation choisir pour une maison en béton cellulaire ?",
+   "Il n'y a pas de solution universelle. On choisit souvent un radier, rigide, qui réduit le risque de tassements différentiels qui fissurent le béton cellulaire. La décision finale — radier, semelles filantes ou pieux — revient à l'ingénieur structure d'après l'étude de sol."
+  ],
+  [
+   "Le chaînage est-il obligatoire dans une maison en béton cellulaire ?",
+   "Oui, dans une maison type en béton cellulaire, on réalise un chaînage à chaque niveau de plancher et sous la toiture : il lie les murs, répartit les charges des planchers et des chevrons et reçoit la sablière. Ses dimensions et son ferraillage sont fixés par le projet."
+  ],
+  [
+   "Faut-il isoler une maison en béton cellulaire ?",
+   "Le plus souvent oui : l'épaisseur d'isolant est fixée par le calcul thermique. Avec le béton cellulaire, la perméabilité à la vapeur doit croître vers l'extérieur, d'où l'usage fréquent de la laine minérale ou de la façade ventilée."
+  ],
+  [
+   "Peut-on maçonner du béton cellulaire en hiver ?",
+   "Oui, avec des limites : colle hivernale, températures admises par le fabricant, protection de la maçonnerie contre la neige et l'humidité. Le bétonnage hivernal exige des mesures de cure spécifiques. Il est souvent plus économique de protéger le gros œuvre et de reprendre au printemps."
+  ],
+  [
+   "Qu'est-ce que le maître d'ouvrage doit surtout vérifier pendant le chantier ?",
+   "Les ouvrages cachés : ferraillage de la dalle et des chaînages, coupure de capillarité, horizontalité du premier rang, linteaux, écrans et pare-vapeur de toiture, pose des fenêtres. Mieux vaut les réceptionner par photo et procès-verbal avant qu'ils ne soient recouverts."
+  ],
+  [
+   "Combien coûte une maison en béton cellulaire chez CAS ?",
+   "Construction à partir de $600/m², maison clé en main à partir de $1 100/m², projet architectural à partir de $12/m². Le montant exact est fixé par le devis sur projet ; la consultation téléphonique est gratuite."
+  ]
+ ]
+}
