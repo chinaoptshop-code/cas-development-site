@@ -3150,12 +3150,12 @@
  {
   "page": "blog.html",
   "kind": "other",
-  "html_kb": 93.2,
-  "gzip_kb": 22.9,
+  "html_kb": 96.6,
+  "gzip_kb": 23.5,
   "css_kb": 14.0,
   "js_kb": 0.5,
   "font_sizes": 7,
-  "tags": 574,
+  "tags": 589,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -3279,7 +3279,7 @@
  {
   "page": "blog/budivnytstvo-budynku-pid-kliuch-etapy-biudzhet.html",
   "kind": "article",
-  "html_kb": 53.0,
+  "html_kb": 53.1,
   "gzip_kb": 14.4,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -3391,6 +3391,40 @@
   "google_fonts": false,
   "clarity": true,
   "hreflang": 11,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$165 000",
+   "$90 000"
+  ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/budynok-z-brusa-pid-kliuch-etapy-i-tsina.html",
+  "kind": "article",
+  "html_kb": 52.6,
+  "gzip_kb": 14.6,
+  "css_kb": 14.2,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 424,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
   "canonical": true,
   "h1_count": 1,
   "osocor": false,
@@ -3612,6 +3646,39 @@
   "webhook_copies": 0
  },
  {
+  "page": "blog/dyzain-kaviarni-planuvannia-bar-biudzhet.html",
+  "kind": "article",
+  "html_kb": 53.8,
+  "gzip_kb": 15.2,
+  "css_kb": 14.2,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 397,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$3 600"
+  ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "blog/dyzain-malenkoi-kvartyry-zberihannia.html",
   "kind": "article",
   "html_kb": 54.8,
@@ -3647,7 +3714,7 @@
  {
   "page": "blog/dyzain-ofisu-z-choho-pochaty.html",
   "kind": "article",
-  "html_kb": 53.2,
+  "html_kb": 53.3,
   "gzip_kb": 15.8,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -3816,7 +3883,7 @@
  {
   "page": "blog/hazoblok-chy-keramika-dlia-budynku.html",
   "kind": "article",
-  "html_kb": 56.4,
+  "html_kb": 56.3,
   "gzip_kb": 15.3,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -3987,7 +4054,7 @@
   "page": "blog/inzheneriia-restoranu-ventyliatsiia-kanalizatsiia-elektryka.html",
   "kind": "article",
   "html_kb": 52.2,
-  "gzip_kb": 14.0,
+  "gzip_kb": 14.1,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -4345,7 +4412,7 @@
  {
   "page": "blog/koshtorys-na-remont-yak-chytaty.html",
   "kind": "article",
-  "html_kb": 53.8,
+  "html_kb": 53.7,
   "gzip_kb": 14.5,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -4571,6 +4638,40 @@
   "webhook_copies": 0
  },
  {
+  "page": "blog/modulnyi-budynok-pid-kliuch-etapy-i-tsina.html",
+  "kind": "article",
+  "html_kb": 53.1,
+  "gzip_kb": 14.7,
+  "css_kb": 14.2,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 437,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$110 000",
+   "$66 000"
+  ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
   "page": "blog/ofis-pid-kliuch-u-biznes-tsentri.html",
   "kind": "article",
   "html_kb": 58.5,
@@ -4608,7 +4709,7 @@
  {
   "page": "blog/ofis-u-biznes-tsentri-shcho-uzghodyty-pered-remontom.html",
   "kind": "article",
-  "html_kb": 54.1,
+  "html_kb": 54.2,
   "gzip_kb": 14.4,
   "css_kb": 14.2,
   "js_kb": 0.5,
@@ -4670,8 +4771,8 @@
  {
   "page": "blog/oplata-remontu-chastynamy-skhemy-platezhiv.html",
   "kind": "article",
-  "html_kb": 63.3,
-  "gzip_kb": 17.8,
+  "html_kb": 63.2,
+  "gzip_kb": 17.7,
   "css_kb": 14.2,
   "js_kb": 0.5,
   "font_sizes": 6,
@@ -4899,6 +5000,37 @@
    "$4 500",
    "$90 000 "
   ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/pryimannia-remontu-kvartyry-cheklist.html",
+  "kind": "article",
+  "html_kb": 52.8,
+  "gzip_kb": 14.7,
+  "css_kb": 14.2,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 415,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [],
   "facts_bad": [],
   "est_bad": [],
   "webhook_copies": 0
@@ -5167,6 +5299,39 @@
   "prices_bad": [
    "$70 000 ",
    "$70 000       "
+  ],
+  "facts_bad": [],
+  "est_bad": [],
+  "webhook_copies": 0
+ },
+ {
+  "page": "blog/remont-restoranu-etapy-hrafik-koshtorys.html",
+  "kind": "article",
+  "html_kb": 53.5,
+  "gzip_kb": 14.7,
+  "css_kb": 14.2,
+  "js_kb": 0.5,
+  "font_sizes": 6,
+  "tags": 411,
+  "img_no_size": 0,
+  "img_no_alt": 0,
+  "fetchpriority_high": 1,
+  "onclick_nav": 0,
+  "h1_animated": false,
+  "google_fonts": false,
+  "clarity": true,
+  "hreflang": 3,
+  "canonical": true,
+  "h1_count": 1,
+  "osocor": false,
+  "mu": [
+   "#938c84"
+  ],
+  "bg2": [
+   "#100e0c"
+  ],
+  "prices_bad": [
+   "$6 000"
   ],
   "facts_bad": [],
   "est_bad": [],
@@ -5953,12 +6118,12 @@
  {
   "page": "budynok-z-brusa-kyiv.html",
   "kind": "land",
-  "html_kb": 53.1,
-  "gzip_kb": 14.9,
+  "html_kb": 53.8,
+  "gzip_kb": 15.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 503,
+  "tags": 510,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -20212,12 +20377,12 @@
  {
   "page": "modulnyi-budynok-kyiv.html",
   "kind": "land",
-  "html_kb": 54.0,
-  "gzip_kb": 15.1,
+  "html_kb": 54.6,
+  "gzip_kb": 15.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 509,
+  "tags": 516,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -37553,7 +37718,7 @@
  {
   "page": "remont-i-budivnytstvo-yevropa.html",
   "kind": "land",
-  "html_kb": 48.6,
+  "html_kb": 48.7,
   "gzip_kb": 13.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -38421,12 +38586,12 @@
  {
   "page": "remont-restoranu-kafe-kyiv.html",
   "kind": "land",
-  "html_kb": 60.9,
-  "gzip_kb": 17.5,
+  "html_kb": 61.6,
+  "gzip_kb": 17.7,
   "css_kb": 13.3,
   "js_kb": 3.3,
   "font_sizes": 6,
-  "tags": 552,
+  "tags": 559,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -38640,12 +38805,12 @@
  {
   "page": "ru/blog.html",
   "kind": "other",
-  "html_kb": 93.4,
-  "gzip_kb": 22.5,
+  "html_kb": 96.8,
+  "gzip_kb": 23.2,
   "css_kb": 14.0,
   "js_kb": 0.5,
   "font_sizes": 7,
-  "tags": 574,
+  "tags": 589,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -40006,7 +40171,7 @@
  {
   "page": "ru/dizayner-interera-kiev.html",
   "kind": "land",
-  "html_kb": 56.8,
+  "html_kb": 56.7,
   "gzip_kb": 14.9,
   "css_kb": 13.3,
   "js_kb": 0.5,
@@ -40068,12 +40233,12 @@
  {
   "page": "ru/dom-iz-brusa-kiev.html",
   "kind": "land",
-  "html_kb": 52.8,
-  "gzip_kb": 14.9,
+  "html_kb": 53.5,
+  "gzip_kb": 15.1,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 503,
+  "tags": 510,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -40567,12 +40732,12 @@
  {
   "page": "ru/modulnyy-dom-kiev.html",
   "kind": "land",
-  "html_kb": 53.6,
-  "gzip_kb": 15.2,
+  "html_kb": 54.2,
+  "gzip_kb": 15.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
-  "tags": 509,
+  "tags": 516,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -41745,12 +41910,12 @@
  {
   "page": "ru/remont-restorana-kafe-kiev.html",
   "kind": "land",
-  "html_kb": 60.8,
-  "gzip_kb": 17.5,
+  "html_kb": 61.6,
+  "gzip_kb": 17.7,
   "css_kb": 13.3,
   "js_kb": 3.3,
   "font_sizes": 6,
-  "tags": 552,
+  "tags": 559,
   "img_no_size": 0,
   "img_no_alt": 0,
   "fetchpriority_high": 1,
@@ -42374,7 +42539,7 @@
   "page": "vartist-remontu-ofisu-kyiv.html",
   "kind": "land",
   "html_kb": 55.2,
-  "gzip_kb": 15.2,
+  "gzip_kb": 15.3,
   "css_kb": 13.3,
   "js_kb": 0.5,
   "font_sizes": 6,
