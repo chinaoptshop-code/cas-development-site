@@ -1,0 +1,181 @@
+{
+ "slug": "apartment-renovation-maxima-residence",
+ "lang": "en",
+ "service": "Apartment renovation in Maxima Residence, Kyiv",
+ "title": "Apartment renovation in Maxima Residence (Kyiv residential complex) — turnkey | CAS",
+ "description": "Apartment renovation in Maxima Residence (Pecherskyi district, Kyiv): design project, turnkey renovation from $550/m², furnishing. 12-month warranty.",
+ "h1": "Turnkey apartment renovation in Maxima Residence",
+ "price": "from $550/m² · design, renovation and furniture in one contract",
+ "lead": "Maxima Residence is a business-class complex by RIEL and Bosphorus Development on Yevhena Konovaltsia Street, with apartments from 50 to 181 m². We run turnkey renovations: design, works, furniture and handover with a signed certificate.",
+ "parent": [
+  "/en/apartment-renovation-kyiv-residential-complexes",
+  "Renovation in Kyiv residential complexes"
+ ],
+ "cards": [
+  [
+   "Turnkey renovation",
+   [
+    "inspection after the developer and measurements",
+    "rough and finishing works",
+    "electrics, plumbing, ventilation",
+    "approval of works with the management company"
+   ]
+  ],
+  [
+   "Design project",
+   [
+    "layout and furniture arrangement",
+    "3D visualisations of the rooms",
+    "working drawings for the crew",
+    "specification and estimate"
+   ]
+  ],
+  [
+   "Furnishing and fit-out",
+   [
+    "custom furniture and furniture from China",
+    "lighting and appliances",
+    "textiles and décor",
+    "styling before move-in"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Renovating an apartment in Maxima Residence: from one-bedroom to large",
+   [
+    "The complex has both compact apartments of about 50 m² and large ones up to 181 m². In a small apartment ergonomics is key: a kitchen-living room with an island or breakfast bar, a niche for the washing machine, a wardrobe instead of a separate room. In a large one — zoning, a second bathroom and space for a study.",
+    "Many business-class owners renovate to let. In that case we recommend hard-wearing materials, a neutral palette and easy-care furniture — the apartment looks new for longer and finds a tenant faster.",
+    "In a new building the management company usually sets hours for noisy works and the procedure for using the lift. We take this into account in the schedule and remove construction waste ourselves.",
+    "For reference: developer — RIEL & Bosphorus Development, address — 30 Yevhena Konovaltsia St. We do not represent the developer or the management company — we work directly with the apartment owner."
+   ]
+  ]
+ ],
+ "budget": {
+  "area": 80,
+  "h2": "Budget guide for a 80 m² apartment",
+  "p": "For a 80 m² apartment, here is a guide based on our base rates:"
+ },
+ "gallery": [
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1f8h2r5MBlLLf_-900.webp",
+   "Linden Penthouse"
+  ]
+ ],
+ "steps": [
+  [
+   "Apartment inspection",
+   "We check the condition after the developer and take measurements."
+  ],
+  [
+   "Design",
+   "Layout, 3D, drawings for the crew."
+  ],
+  [
+   "Estimate and contract",
+   "Price and timeline are fixed."
+  ],
+  [
+   "Renovation",
+   "Rough and finishing works with reports."
+  ],
+  [
+   "Furniture and handover",
+   "We furnish and hand over the keys."
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "How much does an apartment renovation in Maxima Residence cost?",
+   "Turnkey renovation starts from $550/m² (works and rough materials; finishing materials, furniture and appliances are extra, per the estimate), a design project from $30/m² (minimum $2,500), furnishing from $250/m². The calculation for a 80 m² apartment is in the budget guide above; we fix the exact amount in the estimate after the inspection."
+  ],
+  [
+   "Do you renovate apartments for letting?",
+   "Yes. We choose hard-wearing materials, practical furniture and a neutral interior that appeals to most tenants. We can fully furnish the apartment before move-in."
+  ],
+  [
+   "Can I start with the design project and decide on the renovation later?",
+   "Yes, the design project is a separate service from $30/m². But the ±5% estimate guarantee applies only if CAS does the renovation."
+  ],
+  [
+   "What warranty do you give?",
+   "We hand over the apartment with a signed acceptance certificate; all completed works carry a 12-month warranty."
+  ],
+  [
+   "Can I follow the renovation remotely?",
+   "Yes. We send photo reports from the site via Telegram, and the price, timeline and payment stages are fixed in the contract."
+  ]
+ ],
+ "near": [
+  "Renovation in other Kyiv residential complexes",
+  [
+   [
+    "/en/apartment-renovation-nordica-residence",
+    "Nordica Residence residential complex"
+   ],
+   [
+    "/en/apartment-renovation-hvardiiskyi",
+    "Hvardiiskyi residential complex"
+   ],
+   [
+    "/en/apartment-renovation-novopecherski-lypky",
+    "Novopecherski Lypky residential complex"
+   ],
+   [
+    "/en/apartment-renovation-rusaniv-residence",
+    "Rusaniv Residence residential complex"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/en/apartment-renovation-kyiv-residential-complexes",
+   "Renovation in Kyiv residential complexes"
+  ],
+  [
+   "/en/apartment-renovation",
+   "Apartment renovation in Kyiv"
+  ],
+  [
+   "/en/new-build-renovation",
+   "New-build renovation"
+  ],
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/interior-design",
+   "Interior design"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Apartment furnishing"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Cost calculator"
+  ]
+ ]
+}

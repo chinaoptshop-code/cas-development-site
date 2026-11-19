@@ -1,0 +1,363 @@
+{
+ "slugs": {
+  "hub": "renovation-appartement-residences-kyiv",
+  "novopecherski-lypky": "renovation-appartement-novopecherski-lypky",
+  "edeldorf-hills": "renovation-appartement-edeldorf-hills",
+  "triiinity": "renovation-appartement-triiinity",
+  "taryan-towers": "renovation-appartement-taryan-towers",
+  "bulvar-fontaniv": "renovation-appartement-bulvar-fontaniv",
+  "linden-luxury-residences": "renovation-appartement-linden-luxury-residences",
+  "greenville-pechersk": "renovation-appartement-greenville-pechersk",
+  "maxima-residence": "renovation-appartement-maxima-residence",
+  "nordica-residence": "renovation-appartement-nordica-residence",
+  "hvardiiskyi": "renovation-appartement-hvardiiskyi",
+  "a136-highlight-tower": "renovation-appartement-a136-highlight-tower",
+  "montreal-house": "renovation-appartement-montreal-house",
+  "senat": "renovation-appartement-senat",
+  "life-story": "renovation-appartement-life-story",
+  "respublika": "renovation-appartement-respublika",
+  "podil-hrad": "renovation-appartement-podil-hrad",
+  "unit-home": "renovation-appartement-unit-home",
+  "novyi-avtohraf": "renovation-appartement-novyi-avtohraf",
+  "rusaniv-residence": "renovation-appartement-rusaniv-residence"
+ },
+ "t": {
+  "name": "Résidence {n}",
+  "svc": "Rénovation d’appartement dans la résidence {n}, Kyiv",
+  "title": "Rénovation d’appartement à {n} (résidence, Kyiv) — clé en main | CAS",
+  "desc": "Rénovation clé en main d’appartement dans la résidence {n} ({d}, Kyiv) : projet de design, rénovation à partir de $550/m², ameublement.",
+  "desc_short": "Rénovation d’appartement à {n} ({d}, Kyiv) : design, rénovation clé en main dès $550/m², ameublement.",
+  "h1": "Rénovation clé en main d’appartement à {n}",
+  "price": "à partir de $550/m² · design, rénovation et mobilier dans un seul contrat",
+  "hub_short": "Rénovation dans les résidences de Kyiv",
+  "rel": ["Rénovation d’appartement à Kyiv", "Rénovation d’appartement neuf", "Rénovation clé en main", "Architecture d’intérieur", "Ameublement d’appartement", "Calculateur de coût"],
+  "unit": "m²",
+  "area_from": "à partir de {a} {u}",
+  "area_plus": "{s} et plus",
+  "ref": "À titre indicatif : {x}. Nous ne représentons ni le promoteur ni le syndic : nous travaillons directement avec le propriétaire de l’appartement.",
+  "ref_dev": "promoteur — {dev}",
+  "ref_addr": "adresse — {addr}",
+  "sep": ", ",
+  "ref_none": "Nous ne représentons ni le promoteur ni le syndic : nous travaillons directement avec le propriétaire de l’appartement.",
+  "dist": {"pechersk": "arrondissement de Petchersk", "holosiiv": "arrondissement de Holossiiv", "podil": "arrondissement de Podil", "shevchenko": "arrondissement de Chevtchenko", "dnipro": "arrondissement de Dnipro"},
+  "dist_h2": {"pechersk": "Arrondissement de Petchersk", "holosiiv": "Arrondissement de Holossiiv", "podil": "Arrondissement de Podil", "shevchenko": "Arrondissement de Chevtchenko", "dnipro": "Arrondissement de Dnipro"},
+  "budget_h2": "Budget indicatif pour un appartement de {a} m²",
+  "budget_p": "Pour un appartement de {a} m², voici le repère selon nos tarifs de base :",
+  "price_q": "Combien coûte la rénovation d’un appartement à {n} ?",
+  "price_a": "Rénovation clé en main à partir de $550/m² (main-d’œuvre et matériaux de gros œuvre ; matériaux de finition, mobilier et électroménager en sus, sur devis), projet de design à partir de $30/m² (minimum $2 500), ameublement à partir de $250/m². Le calcul pour un appartement de {a} m² figure dans le budget indicatif ci-dessus ; le montant exact est fixé dans le devis après la visite.",
+  "faq_common": [
+   ["Quelle garantie donnez-vous ?", "Nous remettons l’appartement avec un procès-verbal de réception ; les travaux réalisés sont garantis 12 mois."],
+   ["Puis-je suivre la rénovation à distance ?", "Oui. Nous envoyons des rapports photo du chantier via Telegram, et le prix, les délais et les étapes de paiement sont fixés dans le contrat."]
+  ],
+  "near": "Rénovation dans d’autres résidences de Kyiv",
+  "cards": {
+   "turnkey": ["Rénovation clé en main", ["inspection après le promoteur et relevés", "gros œuvre et finitions", "électricité, plomberie, ventilation", "validation des travaux avec le syndic"]],
+   "design": ["Projet de design", ["plan et disposition du mobilier", "visualisations 3D des pièces", "plans d’exécution pour l’équipe", "descriptif et devis"]],
+   "furnish": ["Ameublement et équipement", ["mobilier sur mesure et de Chine", "éclairage et électroménager", "textiles et décoration", "home staging avant l’emménagement"]],
+   "large": ["Grande surface", ["plusieurs zones de climatisation", "ventilation double flux", "maison connectée et scénarios d’éclairage", "dressings et locaux techniques"]],
+   "duplex": ["Duplex", ["escalier sur mesure", "réseaux séparés pour chaque niveau", "isolation acoustique du plancher", "éclairage de l’escalier"]],
+   "tower": ["Logistique en tour", ["vérification des dimensions de l’ascenseur et des passages", "livraisons par lots selon le planning de l’immeuble", "protection des halls et ascenseurs", "évacuation des gravats"]],
+   "terrace": ["Terrasse", ["contrôle de l’étanchéité et des pentes", "revêtement résistant au gel", "éclairage et prises étanches", "mobilier d’extérieur et végétalisation"]],
+   "newbuild": ["Après le promoteur", ["contrôle de la géométrie des murs et du sol", "audit électricité, eau et ventilation", "préparation du support pour le carrelage", "joints de dilatation liés au tassement"]]
+  },
+  "cls_l": "Standing",
+  "cls": {"b": "affaires", "p": "premium", "bp": "affaires/premium", "cb": "confort/affaires"},
+  "feat": {"many100": "nombreux appartements de plus de 100 m² et duplex", "duplex_terr": "dont des duplex avec terrasse", "duplex_terr2": "dont des duplex et des appartements avec terrasse", "4room": "dont des quatre-pièces", "duplex": "duplex"},
+  "addr_l": "Adresse",
+  "dev_l": "Promoteur — {dev}.",
+  "more": "En savoir plus"
+ },
+ "hub": {
+  "service": "Rénovation d’appartements dans les résidences de Kyiv",
+  "title": "Rénovation d’appartements dans les résidences de Kyiv — clé en main | CAS",
+  "description": "Rénovation d’appartements dans les résidences de Kyiv : Petchersk, Holossiiv, Podil, Chevtchenko, Dnipro. Design dès $30/m², rénovation dès $550/m².",
+  "h1": "Rénovation d’appartements dans les résidences de Kyiv",
+  "lead": "19 résidences de Kyiv, du standing confort au premium : pour chacune, ce qu’il faut prévoir dans la rénovation d’un appartement de ce format et un budget indicatif. Choisissez votre résidence ou laissez une demande.",
+  "s1": ["Rénovation dans les immeubles neufs de standing affaires et premium", [
+   "Un appartement dans une résidence moderne, ce ne sont pas seulement des mètres carrés, mais aussi le règlement de l’immeuble : validation des travaux avec le syndic, horaires des travaux bruyants, file d’attente pour le monte-charge, évacuation des gravats. Nous en tenons compte avant de commencer, et une seule équipe mène le design, la rénovation et le mobilier dans un seul contrat.",
+   "Voici les résidences de Kyiv pour lesquelles nous avons préparé des pages dédiées : ce qu’il faut prévoir dans la rénovation d’appartements de ce standing et de cette surface, et un budget indicatif selon nos tarifs. Les informations sur les résidences sont données à titre indicatif, de sources ouvertes ; nous ne représentons pas les promoteurs et travaillons directement avec les propriétaires."
+  ]],
+  "s2": ["Ce qu’ont en commun les rénovations en résidence", [
+   "Les tarifs sont les mêmes pour toutes les résidences : rénovation clé en main à partir de $550/m² (main-d’œuvre et matériaux de gros œuvre ; matériaux de finition, mobilier et électroménager en sus, sur devis), projet de design à partir de $30/m² (minimum $2 500), ameublement à partir de $250/m². Si CAS réalise la rénovation, le total ne s’écarte pas du devis de plus de ±5 %, et les travaux sont garantis 12 mois.",
+   "La différence tient au format : les duplex demandent un escalier et des réseaux séparés par niveau, les terrasses un contrôle de l’étanchéité, les grandes surfaces une ventilation et une climatisation bien pensées, les petites surfaces des meubles intégrés précis."
+  ]],
+  "gal": "Nos projets d’appartements",
+  "faq": ["Questions et réponses", [
+   ["Ma résidence n’est pas dans la liste — intervenez-vous ?", "Oui, nous rénovons des appartements dans toute résidence de Kyiv et de sa région. La liste ne reprend que les résidences pour lesquelles nous avons préparé des pages de conseils."],
+   ["Combien coûte la rénovation d’un appartement en résidence ?", "Rénovation clé en main à partir de $550/m² (main-d’œuvre et matériaux de gros œuvre ; matériaux de finition, mobilier et électroménager en sus, sur devis), projet de design à partir de $30/m² (minimum $2 500), ameublement à partir de $250/m². Le montant exact est fixé dans le devis après la visite."],
+   ["Qui fait valider la rénovation par le syndic ?", "Nous. En général, il faut la liste des travaux, le planning et les coordonnées de l’équipe ; nous réservons aussi le monte-charge et organisons l’évacuation des gravats."],
+   ["Peut-on commencer le projet de design avant la remise des clés ?", "Oui, à partir du plan du promoteur. Dès l’accès obtenu, nous faisons des relevés de contrôle et arrivons sur le chantier avec des plans prêts."]
+  ]],
+  "rel": "Autres services",
+  "rel_names": ["Appartement à Petchersk", "Rénovation haut de gamme", "Architecture d’intérieur haut de gamme"],
+  "apt_link": "Rénovation dans les résidences de Kyiv"
+ },
+ "zhk": {
+  "novopecherski-lypky": {
+   "addr": "rue Andriia Verkhohliada",
+   "lead": "Novopecherski Lypky est un quartier de standing affaires et premium à Petchersk, avec de nombreux appartements de plus de 100 m² et des duplex. Nous prenons en charge un tel bien des relevés et du projet de design jusqu’au mobilier et à la réception avec procès-verbal.",
+   "h2": "Ce qu’il faut prévoir pour rénover un appartement à Novopecherski Lypky",
+   "p": [
+    "Selon les données du promoteur, City One Development (Stolitsa Group), les surfaces vont de 50,6 à 225,7 m², et une bonne partie des appartements dépasse 100 m² ou compte deux niveaux. Pour ces biens, le plan compte plus que les finitions : où placer l’espace privé et l’espace de réception, comment passe l’escalier, combien de salles de bains prévoir et où cacher les locaux techniques.",
+    "Dans un duplex, nous concevons les réseaux des deux niveaux d’emblée : circuits de chauffage et de climatisation séparés, ventilation des salles de bains, isolation acoustique du plancher sous les chambres. L’escalier est un ouvrage à part : il se commande après le gros œuvre, les réservations étant prévues à l’avance.",
+    "Dans les immeubles de ce standing, le syndic impose généralement des règles : validation du plan des travaux, horaires des travaux bruyants, usage du monte-charge, évacuation des gravats. Nous les connaissons avant de commencer et les intégrons au planning pour que le chantier ne s’arrête pas faute de laissez-passer."
+   ],
+   "faq": [
+    ["Rénovez-vous des duplex ?", "Oui. Nous concevons les deux niveaux ensemble : escalier, réseaux, isolation acoustique du plancher et éclairage de l’escalier. L’escalier et les meubles intégrés sont commandés sur relevés après le gros œuvre."],
+    ["Comment la rénovation est-elle validée par le syndic ?", "En général, le syndic demande un projet ou la liste des travaux, le planning et les coordonnées de l’équipe. Nous préparons les documents et convenons des horaires de travaux bruyants, du monte-charge et de l’évacuation des gravats avant le début du chantier."]
+   ]
+  },
+  "edeldorf-hills": {
+   "addr": "",
+   "lead": "Edeldorf Hills est un immeuble neuf de standing premium signé Futura Hata, à Petchersk. Si vous avez reçu les clés et prévoyez une rénovation, nous vous accompagnons de l’appartement vide à l’intérieur fini, dans un seul contrat.",
+   "h2": "Rénover dans un immeuble premium neuf : par où commencer",
+   "p": [
+    "Un appartement dans un immeuble tout juste livré est une page blanche, mais aussi une période où des dizaines de voisins rénovent en même temps. Files d’attente au monte-charge, horaires limités pour les travaux bruyants, règles de livraison des matériaux : c’est généralement le syndic qui les fixe, et nous planifions les approvisionnements en conséquence.",
+    "Avant de monter des cloisons, nous vérifions ce que le promoteur a livré : géométrie des murs et plafonds, chape ou absence de chape, arrivées d’électricité et d’eau, position des gaines de ventilation. Cela détermine si les pièces d’eau peuvent être déplacées, où placer l’îlot de cuisine et combien coûtera le ragréage.",
+    "Un bâtiment neuf en béton se tasse : le projet prévoit donc des joints de dilatation, une bonne préparation du support pour le carrelage grand format et la peinture une fois les murs stabilisés. Ainsi, aucune fissure n’apparaît aux jonctions d’un intérieur premium un an plus tard."
+   ],
+   "faq": [
+    ["Quand commencer la rénovation à Edeldorf Hills ?", "Le projet de design peut être réalisé avant la remise des clés, d’après le plan du promoteur. Dès l’accès ouvert, nous faisons des relevés de contrôle et démarrons avec des plans prêts."],
+    ["Que vérifiez-vous après le promoteur ?", "La géométrie des murs et du sol, les arrivées d’électricité et d’eau, la ventilation, les fenêtres et les tableaux. Nous en tenons compte dans le projet et le devis pour que vous ne payiez pas deux fois des reprises."]
+   ]
+  },
+  "triiinity": {
+   "addr": "39/2, rue Vasylia Tiutiunnyka",
+   "lead": "TRIIINITY est une résidence premium de Seven Hills, rue Vasylia Tiutiunnyka. Les appartements font de 53 à 125 m², et pour chaque format nous proposons le cycle complet : design, rénovation et mobilier par une seule équipe.",
+   "h2": "Rénover à TRIIINITY : petites et grandes surfaces",
+   "p": [
+    "La fourchette de 53 à 125 m² recouvre deux scénarios. Dans 53–60 m², l’enjeu est de loger une vraie cuisine-séjour, un dressing et une salle de bains confortable sans sensation d’exiguïté : meubles intégrés jusqu’au plafond, portes invisibles et éclairage soigné y aident. Au-delà de 100 m², il y a la place pour une suite parentale avec salle de bains, un bureau et une buanderie.",
+    "Le segment premium suppose des équipements qui ne se remarquent que par le confort : climatisation silencieuse aux unités dissimulées, plancher chauffant dans les salles de bains, pilotage intelligent de l’éclairage. Nous les intégrons dès le projet pour ne jamais ouvrir des murs finis.",
+    "Un immeuble de ce niveau a généralement un règlement de travaux du syndic : horaires, protection des parties communes, évacuation des gravats. Nous l’intégrons au planning dès le premier jour."
+   ],
+   "faq": [
+    ["Comment donner un caractère premium à un petit appartement ?", "Par le plan et les détails : placards intégrés jusqu’au plafond, portes invisibles, éclairage de qualité et palette de matériaux restreinte. Nous le fixons dans le projet de design avant le chantier."],
+    ["Peut-on dissimuler climatiseurs et ventilation ?", "Oui, si c’est prévu dans le projet : systèmes gainables ou cassettes, trappes de visite, faux plafonds. Nous adaptons la solution aux exigences de l’immeuble pour la façade et les réseaux."]
+   ]
+  },
+  "taryan-towers": {
+   "addr": "12, rue Jean-Paul-II",
+   "lead": "Taryan Towers est un ensemble de tours premium de Taryan Group, rue Jean-Paul-II. Nous rénovons les appartements de ce niveau clé en main : du plan et de la 3D au mobilier, à l’éclairage et aux textiles.",
+   "h2": "Les particularités d’une rénovation en tour premium",
+   "p": [
+    "Dans une tour, la logistique du chantier est une mission à part entière. Matériaux et mobilier montent par le monte-charge selon un planning, et les grandes pièces — façades de cuisine, plans en pierre, carrelage grand format — sont vérifiées à l’avance par rapport aux dimensions de l’ascenseur et des portes. Sinon, on commande facilement une plaque qui n’arrivera jamais dans l’appartement.",
+    "Les appartements de Taryan Towers commencent à 62–87 m², et il y en a de plus grands. Dans les surfaces moyennes, nous cherchons l’équilibre : grande cuisine-séjour, deux chambres et assez de rangements. Dans les plus grandes, le zonage et une seconde salle de bains.",
+    "Le vitrage en hauteur apporte beaucoup de lumière et de belles vues : le projet prévoit donc la protection solaire, des rideaux motorisés et le confort thermique. Le règlement des travaux est généralement fixé par le syndic — nous le validons avant de commencer."
+   ],
+   "faq": [
+    ["Comment livrez-vous grands meubles et pierre dans une tour ?", "Nous vérifions les dimensions du monte-charge et des passages dès le projet, divisons les grandes pièces en sections et calons la livraison sur le planning de l’immeuble."],
+    ["Vous occupez-vous des rideaux et de la protection solaire ?", "Oui, dans le cadre de l’équipement : rails motorisés, stores, tissus anti-soleil. Les réservations pour les rails sont prévues dans le plafond pendant la rénovation."]
+   ]
+  },
+  "bulvar-fontaniv": {
+   "addr": "6/1, rue Jean-Paul-II",
+   "lead": "Bulvar Fontaniv est une résidence premium au 6/1, rue Jean-Paul-II, avec des appartements de 64 à 156 m². Nous rénovons clé en main : projet, travaux, mobilier et décoration.",
+   "h2": "Rénover à Bulvar Fontaniv : les points d’attention",
+   "p": [
+    "Avec 64–156 m², la question n’est pas seulement le nombre de pièces, mais le mode de vie. Une famille avec enfants a besoin de chambres d’enfants séparées, d’une seconde salle de bains et d’un vestiaire à l’entrée ; un couple, d’une grande cuisine-séjour, d’un bureau et d’une chambre d’amis. Nous présentons des variantes de plan dès les premières étapes du projet.",
+    "Au-delà de 100 m², les réseaux s’allongent : nous concevons donc ventilation, climatisation et électricité avec le mobilier — le climatiseur ne souffle pas sur le lit, et prises et éclairages correspondent aux placards intégrés.",
+    "Le syndic d’une telle résidence impose généralement des horaires convenus, la protection des halls et des ascenseurs et l’évacuation des gravats en sacs. Nous prenons ces questions en charge."
+   ],
+   "faq": [
+    ["Peut-on modifier le plan de l’appartement ?", "Dans les limites permises par la structure et la réglementation : nous ne déplaçons pas les murs porteurs et ne plaçons pas de pièces d’eau au-dessus des pièces de vie des voisins. Les variantes sont vérifiées au stade du projet."],
+    ["Combien de temps dure la rénovation d’un appartement de plus de 100 m² ?", "Cela dépend de la complexité du projet et du planning de l’immeuble. Le délai figure au contrat, à partir de 2 semaines ; nous le fixons après le projet de design et le devis."]
+   ]
+  },
+  "linden-luxury-residences": {
+   "addr": "14v, rue Luteranska",
+   "lead": "Linden Luxury Residences est une résidence-club premium de Budhouse Group, rue Luteranska, avec des appartements de 75 à 556 m². Pour de tels biens, la rénovation est avant tout un projet et la coordination de dizaines d’intervenants — nous nous en chargeons.",
+   "h2": "Rénover un grand appartement dans le centre historique",
+   "p": [
+    "Les surfaces vont de 75 à 556 m² : de l’appartement citadin à la résidence avec plusieurs chambres, un bureau, des dressings et un espace invités. Sur de grandes surfaces, l’intérieur repose sur un système : une même logique de matériaux, de lumière et de portes dans toutes les pièces, sinon l’espace se fragmente en «îlots».",
+    "Plus l’appartement est grand, plus il y a d’équipements : plusieurs zones de climatisation, ventilation double flux, traitement de l’eau, maison connectée, parfois sauna ou hammam. Nous les concevons avec l’intérieur, pas après, pour que placards techniques et trappes n’apparaissent pas au milieu du séjour.",
+    "Le centre-ville et le format club imposent d’égards envers les voisins : le syndic réglemente en général strictement les horaires de travaux bruyants, les livraisons et l’évacuation des gravats. Nous planifions pour que ces contraintes n’allongent pas le chantier."
+   ],
+   "faq": [
+    ["Qui coordonne les intervenants sur un grand chantier ?", "Nous. Projet, travaux, réseaux, mobilier et éclairage dans un seul contrat, avec un responsable unique et des rapports photo via Telegram."],
+    ["Installez-vous ventilation double flux et maison connectée ?", "Oui, nous les intégrons au projet avec l’intérieur : tracés, trappes, tableaux et scénarios de pilotage de l’éclairage et du climat."]
+   ]
+  },
+  "greenville-pechersk": {
+   "addr": "5, ruelle Novopetcherskyi",
+   "lead": "Greenville na Pechersku est une résidence de standing affaires, ruelle Novopetcherskyi, avec des appartements à partir d’environ 73 m², dont des duplex avec terrasse. Nous rénovons clé en main en tenant compte de tous ces formats.",
+   "h2": "Terrasse et second niveau : ce qu’il faut prévoir",
+   "p": [
+    "La terrasse est le point le plus fragile d’un appartement. Avant les finitions, nous contrôlons l’étanchéité et les pentes réalisées par le promoteur et ne les abîmons pas en fixant meubles ou luminaires. Nous choisissons un revêtement résistant au gel avec une bonne évacuation des eaux, et des solutions étanches pour l’éclairage et les prises.",
+    "Un duplex demande un escalier et un zonage bien pensés : en général, cuisine-séjour et WC invités en bas, chambres et salles de bains en haut. Nous renforçons le plancher entre les niveaux par une isolation acoustique et distribuons ventilation et climatisation séparément à chaque étage.",
+    "À partir d’environ 73 m², on peut prévoir deux ou trois chambres. Le syndic d’une résidence de ce standing valide généralement le planning et l’ordre des livraisons — nous préparons ces documents avant de commencer."
+   ],
+   "faq": [
+    ["Que faites-vous de la terrasse ?", "Nous contrôlons l’étanchéité et l’évacuation, choisissons un revêtement résistant au gel, l’éclairage extérieur, le mobilier et la végétalisation. Rien n’est fixé de façon à abîmer la couche d’étanchéité."],
+    ["Comment concevez-vous l’escalier d’un duplex ?", "Avec l’intérieur : structure, garde-corps et éclairage. Il est commandé sur relevés précis après le gros œuvre."]
+   ]
+  },
+  "maxima-residence": {
+   "addr": "30, rue Ievhena Konovaltsia",
+   "lead": "Maxima Residence est une résidence de standing affaires de RIEL et Bosphorus Development, rue Ievhena Konovaltsia, avec des appartements de 50 à 181 m². Nous menons la rénovation clé en main : design, travaux, mobilier et réception avec procès-verbal.",
+   "h2": "Rénover à Maxima Residence : du deux-pièces au grand appartement",
+   "p": [
+    "La résidence compte de petits appartements d’environ 50 m² et de grands jusqu’à 181 m². Dans un petit, l’ergonomie est essentielle : cuisine-séjour avec îlot ou bar, niche pour le lave-linge, dressing au lieu d’une pièce séparée. Dans un grand : le zonage, une seconde salle de bains et la place pour un bureau.",
+    "Beaucoup de propriétaires de ce standing rénovent pour louer. Nous conseillons alors des matériaux résistants, une palette neutre et du mobilier facile d’entretien : l’appartement paraît neuf plus longtemps et trouve plus vite un locataire.",
+    "Dans un immeuble neuf, le syndic fixe en général les horaires des travaux bruyants et l’usage de l’ascenseur. Nous en tenons compte dans le planning et évacuons nous-mêmes les gravats."
+   ],
+   "faq": [
+    ["Rénovez-vous pour la location ?", "Oui. Nous choisissons des matériaux résistants, un mobilier pratique et un intérieur neutre qui plaît à la plupart des locataires. Nous pouvons équiper entièrement l’appartement avant l’entrée."],
+    ["Puis-je commencer par le projet de design et décider de la rénovation plus tard ?", "Oui, le projet de design est un service à part, à partir de $30/m². Mais la garantie de devis à ±5 % ne s’applique que si CAS réalise la rénovation."]
+   ]
+  },
+  "nordica-residence": {
+   "addr": "45A, chaussée Zaliznytchne",
+   "lead": "Nordica Residence est une résidence de standing affaires de RIEL, chaussée Zaliznytchne. Si vous prévoyez d’y rénover un appartement, nous le faisons clé en main : du projet de design au mobilier et aux textiles.",
+   "h2": "Sobriété et praticité scandinaves dans la rénovation",
+   "p": [
+    "Le nom de la résidence évoque un style apprécié de nombreux propriétaires : murs clairs, bois naturel, peu de décoration et beaucoup de rangements dissimulés. Un tel intérieur semble simple mais exige une exécution précise — murs droits, raccords nets et éclairage étudié, car sur les surfaces unies chaque ondulation se voit.",
+    "Dans les appartements de surface moyenne, nous recommandons des placards intégrés dans l’entrée et les chambres, une cuisine jusqu’au plafond et une niche buanderie séparée : les pièces sont ainsi libérées des meubles superflus. Tout est fixé dans le projet au centimètre près.",
+    "Pendant une rénovation dans le neuf, s’appliquent généralement les règles du syndic sur les horaires bruyants, la protection des ascenseurs et l’évacuation des gravats. Nous les vérifions au départ et les respectons."
+   ],
+   "faq": [
+    ["Réalisez-vous des intérieurs de style scandinave ?", "Oui. Nous choisissons des matériaux clairs, du bois naturel, des rangements dissimulés et une lumière chaude. Le style est votre choix ; nous conseillons seulement ce qui sera pratique."],
+    ["Que comprend une rénovation clé en main ?", "Gros œuvre et finitions, électricité, plomberie, ventilation, portes, carrelage, peinture, pose de la cuisine et du mobilier. Ameublement et décoration sur demande."]
+   ]
+  },
+  "hvardiiskyi": {
+   "addr": "rue Henerala Almazova",
+   "lead": "Hvardiiskyi est une résidence de standing affaires et premium de Kyivmiskbud, rue Henerala Almazova, dans l’arrondissement de Petchersk. Nous rénovons les appartements clé en main, avec projet de design et ameublement.",
+   "h2": "Rénover à Hvardiiskyi : un Petchersk paisible et des formats classiques",
+   "p": [
+    "La résidence se trouve dans la partie verte de Petchersk, et beaucoup de propriétaires veulent garder cette sensation à l’intérieur : teintes naturelles apaisantes, bois, textiles, lumière douce. Dans un intérieur classique, la précision des détails compte — moulures, corniches, portes hautes —, c’est pourquoi nous les définissons dans les plans.",
+    "Pour des appartements de standing affaires et premium, il vaut la peine de prévoir dès le départ une bonne isolation acoustique entre les pièces et dans les salles de bains, des circuits dédiés pour l’électroménager et les climatiseurs, et un tableau électrique avec de la réserve.",
+    "Le syndic fixe en général les horaires des travaux et la procédure d’évacuation des gravats. Nous intégrons ces règles au planning et répondons de la propreté des parties communes."
+   ],
+   "faq": [
+    ["Réalisez-vous des intérieurs classiques avec moulures ?", "Oui. Nous définissons dans les plans les profils, le calepinage des moulures, les corniches et les portes, et contrôlons l’exécution à chaque étape."],
+    ["Peut-on vivre à côté pendant les travaux ?", "Nous travaillons selon le planning de l’immeuble et protégeons les parties communes. Nous ne dérangeons pas les voisins en dehors des heures autorisées."]
+   ]
+  },
+  "a136-highlight-tower": {
+   "addr": "136–138, rue Antonovytcha",
+   "lead": "A136 Highlight Tower est une tour de standing affaires au 136–138, rue Antonovytcha. Notre bureau est aussi rue Antonovytcha : le chantier est tout proche. Nous rénovons les appartements clé en main avec projet de design et mobilier.",
+   "h2": "Rénover un appartement dans une tour de la rue Antonovytcha",
+   "p": [
+    "Dans une tour, l’appartement bénéficie de beaucoup de lumière et de vues, et avec elles de quelques enjeux : protection solaire, climatisation sans courants d’air, rideaux ou stores qui ne masquent pas la vue. Nous traitons ces questions dans le projet de design, pas après l’emménagement.",
+    "La logistique en tour est un sujet à part. Les matériaux montent par le monte-charge aux heures convenues, et les grandes dalles et plans de travail sont vérifiés à l’avance par rapport aux dimensions de l’ascenseur. Nous évacuons nous-mêmes les gravats, sans les laisser dans les halls.",
+    "Le syndic d’une résidence de ce standing a généralement un règlement de travaux : horaires bruyants, protection des ascenseurs et des parties communes. Nous en prenons connaissance avant de commencer et le respectons."
+   ],
+   "faq": [
+    ["Où se trouve votre bureau ?", "Au 44, rue Antonovytcha, à Kyiv. Nous pouvons nous rencontrer au bureau ou sur place."],
+    ["Et la protection solaire dans un appartement aux grandes baies ?", "Nous choisissons rideaux, stores ou volets motorisés, prévoyons des réservations pour les rails et étudions l’emplacement des climatiseurs."]
+   ]
+  },
+  "montreal-house": {
+   "addr": "rue Velyka Vasylkivska",
+   "lead": "Montreal House est une résidence de standing affaires d’Alliance Novobud, rue Velyka Vasylkivska, avec des appartements de 51 à 78 m² et plus. Nous rénovons clé en main, pour y vivre ou pour louer.",
+   "h2": "Rénover un appartement de 51–78 m² en centre-ville",
+   "p": [
+    "Les appartements de taille moyenne en centre-ville sont un format prisé, pour soi comme pour la location. Sur 51–60 m², on choisit en général une cuisine-séjour et une chambre séparée avec dressing ; sur 70–78 m², deux chambres et une seconde salle de bains. La décision finale se prend après les relevés et plusieurs variantes de plan.",
+    "Le centre, c’est le bruit de la rue : nous recommandons des fenêtres de qualité, l’étanchéité des tableaux et l’isolation acoustique des murs des chambres. Pour la location : sols résistants, peintures lessivables et mobilier facile d’entretien.",
+    "Une rénovation dans un immeuble de ce standing se valide généralement avec le syndic : planning, usage de l’ascenseur, évacuation des gravats. Nous nous chargeons de cette partie."
+   ],
+   "faq": [
+    ["Comment réduire le bruit de la rue ?", "Nous contrôlons fenêtres et tableaux, renforçons au besoin l’isolation acoustique des murs de la chambre et choisissons des rideaux épais. Les solutions sont intégrées au projet."],
+    ["Rénovez-vous des appartements du centre pour la location ?", "Oui, avec des matériaux pratiques et un équipement complet : meubles, électroménager, textiles, avant l’arrivée du locataire."]
+   ]
+  },
+  "senat": {
+   "addr": "3, route Kiltseva",
+   "lead": "Senat est une résidence de standing affaires de GEOS au 3, route Kiltseva. On y trouve de tout : des studios compacts de 34 m² jusqu’à 94 m², des duplex et des appartements avec terrasse. Nous trouvons des solutions pour chaque format et rénovons clé en main.",
+   "h2": "Du studio malin au duplex avec terrasse",
+   "p": [
+    "Dans 34–45 m², tout est question de multifonctionnalité : lit sur estrade ou niche avec rideau, cuisine à électroménager intégré, placards jusqu’au plafond, miroirs qui agrandissent l’espace. C’est dans les petits appartements que le projet de design est le plus vite rentabilisé : les erreurs de dimensions y coûtent le plus cher.",
+    "Les duplex et les appartements avec terrasse demandent une autre approche : escalier, isolation acoustique du plancher, étanchéité et évacuation de la terrasse, éclairage et prises extérieurs. Nous détaillons ces points séparément dans les plans.",
+    "Le syndic de la résidence fixe généralement un règlement de travaux — horaires bruyants et évacuation des gravats. Nous le respectons et convenons des détails avant de commencer."
+   ],
+   "faq": [
+    ["Un projet de design vaut-il la peine pour un petit appartement ?", "Oui : sur une petite surface, chaque centimètre compte, et les erreurs de dimensions de meubles ou de prises coûtent le plus cher. Projet à partir de $2 500."],
+    ["Que faites-vous de la terrasse ?", "Nous contrôlons l’étanchéité et les pentes, choisissons un revêtement résistant au gel, un éclairage et des prises étanches et du mobilier d’extérieur."]
+   ]
+  },
+  "life-story": {
+   "addr": "13, rue Metrolohitchna",
+   "lead": "Life Story est une résidence de standing affaires de LEV Development au 13, rue Metrolohitchna, avec des appartements à partir de 49,93 m². Nous rénovons clé en main pour les familles qui veulent emménager dans un intérieur prêt et bien pensé.",
+   "h2": "Rénover un appartement familial à Holossiiv",
+   "p": [
+    "On choisit Holossiiv, ses parcs et ses forêts, pour une vie de famille paisible, et l’intérieur doit l’accompagner : revêtements pratiques qui résistent aux enfants et aux animaux, rangements suffisants, cuisine où il est agréable de cuisiner chaque jour.",
+    "À partir de 50 m², il faut souvent choisir : deux chambres séparées ou une grande cuisine-séjour. Nous proposons plusieurs variantes de plan et disposons le mobilier pour que la décision se prenne sur plan, pas après les travaux.",
+    "Une rénovation dans un immeuble neuf de ce standing suit généralement les règles du syndic sur les horaires bruyants, les ascenseurs et l’évacuation des gravats. Nous organisons le travail en conséquence."
+   ],
+   "faq": [
+    ["Quels matériaux pour une famille avec enfants et animaux ?", "Des matériaux résistants : vinyle quartz ou carrelage au sol, peintures lessivables, tissus anti-taches. Nous les sélectionnons dans le descriptif du projet."],
+    ["Pouvez-vous meubler l’appartement ?", "Oui, l’ameublement commence à $250/m² : meubles, éclairage, électroménager, textiles et décoration selon le projet de design."]
+   ]
+  },
+  "respublika": {
+   "addr": "1, route Kiltseva",
+   "lead": "Respublika est un grand ensemble résidentiel de standing confort et affaires de KAN Development, au 1, route Kiltseva. Nous rénovons les appartements clé en main avec un devis ferme et une garantie de 12 mois.",
+   "h2": "Rénover un appartement dans un grand ensemble résidentiel",
+   "p": [
+    "Dans un ensemble de cette taille, les appartements sont très différents, mais les propriétaires ont un souhait commun : un budget prévisible. Nous commençons donc par le projet de design et un devis où chaque poste a son prix ; si notre équipe réalise la rénovation, le total ne s’écarte pas du devis de plus de ±5 %.",
+    "Pour ces appartements, nous conseillons d’investir dans ce qui est difficile à changer ensuite : électricité avec de la réserve, bonne étanchéité de la salle de bains, murs droits et plan bien conçu. La décoration et une partie du mobilier peuvent évoluer plus tard sans travaux.",
+    "Dans un grand ensemble, de nombreux appartements sont rénovés en même temps, et le syndic réglemente généralement horaires bruyants, ascenseurs et évacuation des gravats. Nous planifions les livraisons pour ne pas perdre de temps dans les files d’attente."
+   ],
+   "faq": [
+    ["Comment ne pas dépasser le budget ?", "Nous fixons le devis avant de commencer. Si CAS réalise la rénovation, le total ne s’écarte pas du devis de plus de ±5 %."],
+    ["Que faut-il bien faire tout de suite, et que peut-on reporter ?", "Tout de suite : électricité, plomberie, étanchéité, ragréage et plan. La décoration, une partie du mobilier et les textiles peuvent s’acheter plus tard."]
+   ]
+  },
+  "podil-hrad": {
+   "addr": "rues Kojoumiatska / Dehtiarna",
+   "lead": "Podil Hrad est une résidence de standing affaires de Kyivmiskbud, rues Kojoumiatska et Dehtiarna, au cœur même de Podil. Les appartements font de 65,5 à 79 m², dont des quatre-pièces — et nous rénovons chacun clé en main.",
+   "h2": "Comment loger quatre pièces dans 79 m²",
+   "p": [
+    "Un quatre-pièces de 79 m² au plus, ce sont des pièces compactes où chaque mètre doit servir. Placards intégrés plutôt qu’armoires, portes coulissantes, lits avec rangements et cuisine jusqu’au plafond y aident. Nous disposons le mobilier dès le projet pour que chaque pièce garde un passage et la lumière naturelle.",
+    "Dans 65–79 m², il est souvent judicieux de réunir cuisine et séjour et de garder deux ou trois chambres séparées. Nous vérifions les variantes au regard de la structure : nous ne déplaçons ni murs porteurs ni pièces d’eau.",
+    "Le Podil historique, ce sont des rues étroites et des restrictions pour les poids lourds : nous planifions donc les livraisons à l’avance. Le règlement des travaux est généralement fixé par le syndic — nous le respectons."
+   ],
+   "faq": [
+    ["Comment rendre confortable un quatre-pièces sur une petite surface ?", "Par un plan bien pensé et des meubles intégrés : placards jusqu’au plafond, portes coulissantes, lits à tiroirs, cuisine compacte avec îlot. Tout est disposé dès le projet."],
+    ["Comment livrez-vous les matériaux à Podil ?", "Nous planifions les livraisons en tenant compte des rues étroites et du règlement de l’immeuble, et acheminons les grandes pièces aux heures convenues."]
+   ]
+  },
+  "unit-home": {
+   "addr": "8/12, rue Gareth-Jones",
+   "lead": "UNIT.Home est une résidence de standing affaires d’UDP, rue Gareth-Jones, à côté du parc d’innovation UNIT.City. Nous y rénovons des appartements clé en main : intérieur moderne, électroménager et mobilier dans un seul contrat.",
+   "h2": "Rénover un appartement au rythme de la ville d’aujourd’hui",
+   "p": [
+    "Les habitants de ce type de résidence travaillent souvent chez eux : le projet doit donc prévoir d’emblée un poste de travail — bureau séparé ou niche bien éclairée, prises en nombre suffisant et goulottes pour internet, confort acoustique pour les appels.",
+    "Un intérieur moderne de ce standing se marie bien avec la maison connectée : pilotage de la lumière et du climat depuis le smartphone, détecteurs de fuite dans la salle de bains et la cuisine, rideaux motorisés. Câblage et emplacements des équipements sont prévus dès le gros œuvre.",
+    "Le syndic de la résidence réglemente en général les rénovations : horaires bruyants, usage des ascenseurs, évacuation des gravats. Nous organisons le travail pour répondre à ces exigences."
+   ],
+   "faq": [
+    ["Installez-vous la maison connectée ?", "Oui : pilotage de la lumière, du climat et des rideaux, détecteurs de fuite, scénarios. Câblage et emplacements des équipements sont prévus dès le gros œuvre."],
+    ["Comment aménager un poste de travail à la maison ?", "Nous prévoyons un bureau ou une niche près de la fenêtre, un bon éclairage, des prises et le réseau, l’isolation acoustique. Le mobilier est choisi selon votre façon de travailler."]
+   ]
+  },
+  "novyi-avtohraf": {
+   "addr": "26, rue Sviatoho Kniazia Romana Mstyslavytcha",
+   "lead": "Novyi Avtohraf est une résidence de standing affaires de DIM au 26, rue Sviatoho Kniazia Romana Mstyslavytcha, sur la rive gauche. Nous rénovons les appartements clé en main : du projet de design au mobilier et à la réception avec procès-verbal.",
+   "h2": "Rénover un appartement dans une grande résidence de standing affaires",
+   "p": [
+    "Dans un grand ensemble de tours, de nombreux appartements sont rénovés en même temps : le planning devient décisif — file d’attente au monte-charge, horaires bruyants, évacuation des gravats. Nous planifions les livraisons par lots selon ces contraintes pour que l’équipe ne reste jamais inactive.",
+    "Les appartements de ce standing sont souvent achetés pour y vivre comme pour louer. Pour votre propre logement, nous conseillons d’investir dans le plan, l’isolation acoustique et les rangements ; pour la location, dans des revêtements résistants et un mobilier pratique.",
+    "En hauteur, les appartements reçoivent beaucoup de lumière : la protection solaire et le bon emplacement des climatiseurs sont importants. Nous intégrons ces solutions au projet avec les exigences de l’immeuble pour la façade."
+   ],
+   "faq": [
+    ["Comment ne pas dépendre de la file d’attente à l’ascenseur ?", "Nous planifions les livraisons à l’avance et par lots, en accord avec le syndic. En attendant les matériaux, l’équipe avance sur d’autres étapes."],
+    ["Rénovez-vous pour la location ?", "Oui : matériaux pratiques, intérieur neutre et équipement complet avant l’arrivée du locataire."]
+   ]
+  },
+  "rusaniv-residence": {
+   "addr": "54, rue Ievhena Sverstiouka",
+   "lead": "Rusaniv Residence est une résidence de standing affaires de Citex Development au 54, rue Ievhena Sverstiouka, avec des duplex de 104 à 179 m². Ces surfaces exigent un projet solide — c’est par là que nous commençons.",
+   "h2": "Rénover un duplex de 104 à 179 m²",
+   "p": [
+    "Un duplex de cette taille ressemble davantage à une maison de ville qu’à un appartement classique. Nous commençons donc par répartir les niveaux : espace jour avec cuisine-séjour et WC invités, espace nuit avec chambres, dressings et salles de bains. L’escalier devient l’élément central de la composition, pas un obstacle.",
+    "Sur deux niveaux, les réseaux sont plus complexes : climatisation séparée par étage, ventilation de chaque salle de bains, plancher chauffant, éclairage de l’escalier à détection de présence. Nous plaçons l’isolation acoustique du plancher sous les chambres pour que les pas du bas ne s’entendent pas en haut.",
+    "Sur de grandes surfaces, l’équipement est particulièrement important : il faut beaucoup de meubles, de luminaires et de textiles, et mieux vaut confier la logistique à un seul prestataire. Le règlement des travaux est généralement fixé par le syndic — nous en tenons compte."
+   ],
+   "faq": [
+    ["Par quoi commence la rénovation d’un duplex ?", "Par le projet de design : répartition des espaces entre les niveaux, escalier, réseaux et isolation acoustique. Ce n’est qu’ensuite que nous établissons le devis et le planning."],
+    ["Pouvez-vous équiper entièrement l’appartement ?", "Oui. Mobilier sur mesure et de Chine, éclairage, électroménager, textiles et décoration — jusqu’à ce que l’appartement soit prêt à habiter."]
+   ]
+  }
+ }
+}

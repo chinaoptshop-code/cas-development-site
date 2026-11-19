@@ -7,7 +7,8 @@
 
 Що ловить (у тексті, alt/title/aria-label/placeholder, meta description/og, JSON-даних сцен):
   1. кирилицю в мовах без кирилиці (en es pl de fr pt zh ar) — крім перемикача мов;
-  2. латиницю в zh/ar поза білим списком (бренди, назви проєктів, месенджери, одиниці, коди матеріалів);
+  2. латиницю в zh/ar поза білим списком (бренди, назви проєктів, месенджери, одиниці, коди матеріалів — «latin_ok»;
+     власні назви-фрази: ЖК, забудовники, вулиці — «latin_names», прибираються цілком перед перевіркою);
   3. порушення глосарію tools/site/lang/glossary.json («avoid» — заборонені кальки/варіанти термінів);
   4. pt-BR-слова в pt (pt-PT) — частина глосарію;
   5. українські літери (і ї є ґ) у ru.
@@ -103,6 +104,11 @@ def latin_ok(lang):
     return set(w.lower() for w in g['latin_ok']) | set(w.lower() for w in g.get('latin_ok_' + lang, []))
 
 
+def latin_names():  # власні назви латиницею (ЖК, забудовники, вулиці): фраза цілком, довші — першими
+    ns = sorted(glossary().get('latin_names', []), key=len, reverse=True)
+    return re.compile(r'(?<![A-Za-z])(?:' + '|'.join(re.escape(n) for n in ns) + r')(?![A-Za-z])') if ns else None
+
+
 def run(langs, out=print):  # out=None — лише рахувати
     g = glossary()
     errs = 0
@@ -112,6 +118,7 @@ def run(langs, out=print):  # out=None — лише рахувати
             for rx in term.get('avoid', {}).get(lang, []):
                 rules.append((term['uk'], re.compile(rx), term.get(lang, '')))
         okl = latin_ok(lang) if lang in ('zh', 'ar') else None
+        names = latin_names() if okl is not None else None
         seen = {}
         for f in pages(lang):
             rel = os.path.relpath(f, ROOT)
@@ -122,7 +129,7 @@ def run(langs, out=print):  # out=None — лише рахувати
                 if lang == 'ru':
                     bad += ['українська літера в ru: ' + w for w in UKR.findall(t)]
                 if okl is not None:
-                    tt = URLISH.sub(' ', t)
+                    tt = URLISH.sub(' ', names.sub(' ', t) if names else t)
                     bad += ['латиниця: ' + w for w in LAT.findall(tt) if w.lower().strip('-') not in okl and len(w) > 1 and not re.search(r'\d', w)]  # марки/класи (B04, D500, OSB-3) — не текст
                 for uk, rx, use in rules:
                     for m in rx.finditer(t):

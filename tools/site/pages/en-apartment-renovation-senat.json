@@ -1,0 +1,181 @@
+{
+ "slug": "apartment-renovation-senat",
+ "lang": "en",
+ "service": "Apartment renovation in Senat, Kyiv",
+ "title": "Apartment renovation in Senat (Kyiv residential complex) — turnkey | CAS",
+ "description": "Apartment renovation in Senat (Holosiivskyi district, Kyiv): design project, turnkey renovation from $550/m², furnishing. 12-month warranty.",
+ "h1": "Turnkey apartment renovation in Senat",
+ "price": "from $550/m² · design, renovation and furniture in one contract",
+ "lead": "Senat is a business-class complex by GEOS at 3 Kiltseva Road. It has everything from compact 34 m² apartments to 94 m², two-level apartments and apartments with terraces. We find solutions for every format and renovate turnkey.",
+ "parent": [
+  "/en/apartment-renovation-kyiv-residential-complexes",
+  "Renovation in Kyiv residential complexes"
+ ],
+ "cards": [
+  [
+   "Turnkey renovation",
+   [
+    "inspection after the developer and measurements",
+    "rough and finishing works",
+    "electrics, plumbing, ventilation",
+    "approval of works with the management company"
+   ]
+  ],
+  [
+   "Two-level apartment",
+   [
+    "custom-designed staircase",
+    "separate engineering for each level",
+    "sound insulation of the floor slab",
+    "staircase lighting"
+   ]
+  ],
+  [
+   "Terrace",
+   [
+    "checking waterproofing and slopes",
+    "frost-resistant flooring",
+    "moisture-proof lighting and sockets",
+    "outdoor furniture and greenery"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "From a smart apartment to a two-level one with a terrace",
+   [
+    "In a 34–45 m² apartment multifunctionality is the main thing: a platform bed or a curtained niche, a kitchen with built-in appliances, floor-to-ceiling wardrobes, mirrors that widen the space. It is in small apartments that a design project pays off fastest — mistakes in dimensions cost the most here.",
+    "Two-level apartments and apartments with terraces need a different approach: a staircase, slab sound insulation, terrace waterproofing and drainage, outdoor lighting and sockets. We detail these elements separately in the drawings.",
+    "The complex's management company usually sets renovation rules — hours for noisy works and the waste removal procedure. We follow them and agree the details before starting.",
+    "For reference: developer — GEOS, address — 3 Kiltseva Rd. We do not represent the developer or the management company — we work directly with the apartment owner."
+   ]
+  ]
+ ],
+ "budget": {
+  "area": 60,
+  "h2": "Budget guide for a 60 m² apartment",
+  "p": "For a 60 m² apartment, here is a guide based on our base rates:"
+ },
+ "gallery": [
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1f8h2r5MBlLLf_-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1_xW-2dYf73g9R-900.webp",
+   "Edelweiss"
+  ]
+ ],
+ "steps": [
+  [
+   "Apartment inspection",
+   "We check the condition after the developer and take measurements."
+  ],
+  [
+   "Design",
+   "Layout, 3D, drawings for the crew."
+  ],
+  [
+   "Estimate and contract",
+   "Price and timeline are fixed."
+  ],
+  [
+   "Renovation",
+   "Rough and finishing works with reports."
+  ],
+  [
+   "Furniture and handover",
+   "We furnish and hand over the keys."
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "How much does an apartment renovation in Senat cost?",
+   "Turnkey renovation starts from $550/m² (works and rough materials; finishing materials, furniture and appliances are extra, per the estimate), a design project from $30/m² (minimum $2,500), furnishing from $250/m². The calculation for a 60 m² apartment is in the budget guide above; we fix the exact amount in the estimate after the inspection."
+  ],
+  [
+   "Is a design project worth it for a small apartment?",
+   "Yes: in a small space every centimetre counts, and mistakes in furniture or socket dimensions cost the most. A project starts from $2,500."
+  ],
+  [
+   "What do you do with the terrace?",
+   "We check the waterproofing and slopes and choose frost-resistant flooring, moisture-proof lighting and sockets, and outdoor furniture."
+  ],
+  [
+   "What warranty do you give?",
+   "We hand over the apartment with a signed acceptance certificate; all completed works carry a 12-month warranty."
+  ],
+  [
+   "Can I follow the renovation remotely?",
+   "Yes. We send photo reports from the site via Telegram, and the price, timeline and payment stages are fixed in the contract."
+  ]
+ ],
+ "near": [
+  "Renovation in other Kyiv residential complexes",
+  [
+   [
+    "/en/apartment-renovation-life-story",
+    "Life Story residential complex"
+   ],
+   [
+    "/en/apartment-renovation-respublika",
+    "Respublika residential complex"
+   ],
+   [
+    "/en/apartment-renovation-a136-highlight-tower",
+    "A136 Highlight Tower residential complex"
+   ],
+   [
+    "/en/apartment-renovation-greenville-pechersk",
+    "Greenville na Pechersku residential complex"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/en/apartment-renovation-kyiv-residential-complexes",
+   "Renovation in Kyiv residential complexes"
+  ],
+  [
+   "/en/apartment-renovation",
+   "Apartment renovation in Kyiv"
+  ],
+  [
+   "/en/new-build-renovation",
+   "New-build renovation"
+  ],
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/interior-design",
+   "Interior design"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Apartment furnishing"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Cost calculator"
+  ]
+ ]
+}

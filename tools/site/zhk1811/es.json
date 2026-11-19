@@ -1,0 +1,363 @@
+{
+ "slugs": {
+  "hub": "reforma-pisos-complejos-residenciales-kiev",
+  "novopecherski-lypky": "reforma-piso-novopecherski-lypky",
+  "edeldorf-hills": "reforma-piso-edeldorf-hills",
+  "triiinity": "reforma-piso-triiinity",
+  "taryan-towers": "reforma-piso-taryan-towers",
+  "bulvar-fontaniv": "reforma-piso-bulvar-fontaniv",
+  "linden-luxury-residences": "reforma-piso-linden-luxury-residences",
+  "greenville-pechersk": "reforma-piso-greenville-pechersk",
+  "maxima-residence": "reforma-piso-maxima-residence",
+  "nordica-residence": "reforma-piso-nordica-residence",
+  "hvardiiskyi": "reforma-piso-hvardiiskyi",
+  "a136-highlight-tower": "reforma-piso-a136-highlight-tower",
+  "montreal-house": "reforma-piso-montreal-house",
+  "senat": "reforma-piso-senat",
+  "life-story": "reforma-piso-life-story",
+  "respublika": "reforma-piso-respublika",
+  "podil-hrad": "reforma-piso-podil-hrad",
+  "unit-home": "reforma-piso-unit-home",
+  "novyi-avtohraf": "reforma-piso-novyi-avtohraf",
+  "rusaniv-residence": "reforma-piso-rusaniv-residence"
+ },
+ "t": {
+  "name": "Complejo residencial {n}",
+  "svc": "Reforma de pisos en {n}, Kiev",
+  "title": "Reforma de piso en {n} (complejo residencial, Kiev) — llave en mano | CAS",
+  "desc": "Reforma llave en mano de pisos en el complejo residencial {n} ({d}, Kiev): proyecto de diseño, reforma desde $550/m², amueblamiento.",
+  "desc_short": "Reforma de pisos en {n} ({d}, Kiev): diseño, reforma llave en mano desde $550/m², amueblamiento.",
+  "h1": "Reforma llave en mano de pisos en {n}",
+  "price": "desde $550/m² · diseño, reforma y muebles en un solo contrato",
+  "hub_short": "Reforma en complejos residenciales de Kiev",
+  "rel": ["Reforma de pisos en Kiev", "Reforma de obra nueva", "Reforma llave en mano", "Diseño de interiores", "Amueblamiento del piso", "Calculadora de costes"],
+  "unit": "m²",
+  "area_from": "desde {a} {u}",
+  "area_plus": "{s} y más",
+  "ref": "Como referencia: {x}. No representamos al promotor ni a la administración del edificio: trabajamos directamente con el propietario del piso.",
+  "ref_dev": "promotor — {dev}",
+  "ref_addr": "dirección — {addr}",
+  "sep": "; ",
+  "ref_none": "No representamos al promotor ni a la administración del edificio: trabajamos directamente con el propietario del piso.",
+  "dist": {"pechersk": "distrito de Pechersk", "holosiiv": "distrito de Holosiiv", "podil": "distrito de Podil", "shevchenko": "distrito de Shevchenko", "dnipro": "distrito de Dnipró"},
+  "dist_h2": {"pechersk": "Distrito de Pechersk", "holosiiv": "Distrito de Holosiiv", "podil": "Distrito de Podil", "shevchenko": "Distrito de Shevchenko", "dnipro": "Distrito de Dnipró"},
+  "budget_h2": "Presupuesto orientativo para un piso de {a} m²",
+  "budget_p": "Para un piso de {a} m², esta es la orientación según nuestras tarifas base:",
+  "price_q": "¿Cuánto cuesta reformar un piso en {n}?",
+  "price_a": "La reforma llave en mano, desde $550/m² (mano de obra y materiales de obra; materiales de acabado, muebles y electrodomésticos aparte, según presupuesto); el proyecto de diseño, desde $30/m² (mínimo $2 500); el amueblamiento, desde $250/m². El cálculo para un piso de {a} m² está en el presupuesto orientativo de arriba; el importe exacto lo fijamos en el presupuesto tras la visita.",
+  "faq_common": [
+   ["¿Qué garantía dan?", "Entregamos el piso con acta de recepción; los trabajos realizados tienen una garantía de 12 meses."],
+   ["¿Puedo seguir la reforma a distancia?", "Sí. Enviamos informes fotográficos de la obra por Telegram, y el precio, los plazos y las fases de pago se fijan en el contrato."]
+  ],
+  "near": "Reforma en otros complejos residenciales de Kiev",
+  "cards": {
+   "turnkey": ["Reforma llave en mano", ["revisión del piso tras el promotor y mediciones", "obra gruesa y acabados", "electricidad, fontanería, ventilación", "aprobación de las obras con la administración"]],
+   "design": ["Proyecto de diseño", ["distribución y colocación de muebles", "visualizaciones 3D de las estancias", "planos de ejecución para la cuadrilla", "especificación y presupuesto"]],
+   "furnish": ["Amueblamiento y equipamiento", ["muebles a medida y de China", "iluminación y electrodomésticos", "textiles y decoración", "estilismo antes de la mudanza"]],
+   "large": ["Gran superficie", ["varias zonas de climatización", "ventilación con recuperación de calor", "domótica y escenas de iluminación", "vestidores y cuartos técnicos"]],
+   "duplex": ["Dúplex", ["escalera a medida", "instalaciones separadas para cada nivel", "aislamiento acústico del forjado", "iluminación de la escalera"]],
+   "tower": ["Logística en una torre", ["comprobación de medidas del ascensor y los huecos", "entregas por lotes según el horario del edificio", "protección de vestíbulos y ascensores", "retirada de escombros"]],
+   "terrace": ["Terraza", ["revisión de impermeabilización y pendientes", "pavimento resistente a heladas", "iluminación y enchufes estancos", "muebles de exterior y vegetación"]],
+   "newbuild": ["Tras el promotor", ["comprobación de la geometría de paredes y suelo", "revisión de electricidad, agua y ventilación", "preparación de la base para el alicatado", "juntas de dilatación por asentamiento"]]
+  },
+  "cls_l": "Clase",
+  "cls": {"b": "business", "p": "premium", "bp": "business/premium", "cb": "confort/business"},
+  "feat": {"many100": "muchos pisos de más de 100 m² y dúplex", "duplex_terr": "hay dúplex con terraza", "duplex_terr2": "hay dúplex y pisos con terraza", "4room": "hay pisos de cuatro habitaciones", "duplex": "dúplex"},
+  "addr_l": "Dirección",
+  "dev_l": "Promotor: {dev}.",
+  "more": "Más información"
+ },
+ "hub": {
+  "service": "Reforma de pisos en complejos residenciales de Kiev",
+  "title": "Reforma de pisos en complejos residenciales de Kiev — llave en mano | CAS",
+  "description": "Reforma de pisos en complejos residenciales de Kiev: Pechersk, Holosiiv, Podil, Shevchenko y Dnipró. Diseño desde $30/m², reforma desde $550/m².",
+  "h1": "Reforma de pisos en complejos residenciales de Kiev",
+  "lead": "19 complejos residenciales de Kiev, de clase confort a premium: para cada uno, qué tener en cuenta al reformar un piso de ese formato y un presupuesto orientativo. Elija su complejo o déjenos una solicitud.",
+  "s1": ["Reformas en obra nueva de clase business y premium", [
+   "Un piso en un complejo residencial moderno no son solo metros, también son normas del edificio: aprobación de las obras con la administración del edificio, horario de trabajos ruidosos, turnos para el montacargas y retirada de escombros. Las tenemos en cuenta antes de empezar, y un solo equipo se encarga del diseño, la reforma y los muebles en un único contrato.",
+   "Abajo están los complejos residenciales de Kiev para los que hemos preparado páginas propias: qué tener en cuenta al reformar pisos de esa clase y superficie, y un presupuesto orientativo según nuestras tarifas. Los datos de los complejos son de referencia, de fuentes abiertas; no representamos a los promotores y trabajamos directamente con los propietarios."
+  ]],
+  "s2": ["Lo que tienen en común las reformas en complejos residenciales", [
+   "Las tarifas son las mismas para todos los complejos: reforma llave en mano desde $550/m² (mano de obra y materiales de obra; materiales de acabado, muebles y electrodomésticos aparte, según presupuesto), proyecto de diseño desde $30/m² (mínimo $2 500), amueblamiento desde $250/m². Si la reforma la hace CAS, el total no se desvía del presupuesto más de un ±5%, y los trabajos tienen 12 meses de garantía.",
+   "La diferencia está en el formato: los dúplex necesitan escalera e instalaciones separadas por nivel; las terrazas, revisar la impermeabilización; las grandes superficies, una ventilación y climatización bien pensadas; los pisos compactos, muebles empotrados precisos."
+  ]],
+  "gal": "Nuestros proyectos de pisos",
+  "faq": ["Preguntas y respuestas", [
+   ["Mi complejo no está en la lista: ¿trabajan allí?", "Sí, reformamos pisos en cualquier complejo residencial de Kiev y su región. La lista solo incluye los complejos para los que hemos preparado páginas con consejos."],
+   ["¿Cuánto cuesta reformar un piso en un complejo residencial?", "Reforma llave en mano desde $550/m² (mano de obra y materiales de obra; materiales de acabado, muebles y electrodomésticos aparte, según presupuesto), proyecto de diseño desde $30/m² (mínimo $2 500), amueblamiento desde $250/m². El importe exacto lo fijamos en el presupuesto tras la visita."],
+   ["¿Quién tramita la reforma con la administración del edificio?", "Nosotros. Normalmente se necesitan la lista de trabajos, el calendario y los datos de la cuadrilla; también coordinamos el montacargas y la retirada de escombros."],
+   ["¿Se puede empezar el proyecto de diseño antes de recibir las llaves?", "Sí, a partir del plano del promotor. Cuando hay acceso, hacemos mediciones de control y llegamos a la obra con los planos listos."]
+  ]],
+  "rel": "Otros servicios",
+  "rel_names": ["Piso en Pechersk", "Reforma premium", "Diseño de interiores premium"],
+  "apt_link": "Reforma en complejos residenciales de Kiev"
+ },
+ "zhk": {
+  "novopecherski-lypky": {
+   "addr": "calle Andriia Verkhohliada",
+   "lead": "Novopecherski Lypky es un barrio de clase business y premium en Pechersk, con muchos pisos de más de 100 m² y dúplex. Nos encargamos de todo: mediciones, proyecto de diseño, muebles y entrega con acta.",
+   "h2": "Qué tener en cuenta al reformar un piso en Novopecherski Lypky",
+   "p": [
+    "Según los datos de referencia del promotor, City One Development (Stolitsa Group), los pisos van de 50,6 a 225,7 m², y buena parte supera los 100 m² o tiene dos niveles. En estos pisos la distribución importa más que los acabados: dónde va la zona privada y la de invitados, por dónde pasa la escalera, cuántos baños hacen falta y dónde esconder los cuartos técnicos.",
+    "En un dúplex diseñamos las instalaciones de ambas plantas a la vez: circuitos separados de calefacción y climatización, ventilación de los baños, aislamiento acústico del forjado bajo los dormitorios. La escalera es una pieza aparte: se encarga después de la obra gruesa, con los anclajes previstos de antemano.",
+    "En edificios de esta clase suelen regir normas de la administración del edificio: aprobación del plan de obras, horario de trabajos ruidosos, uso del montacargas y retirada de escombros. Las conocemos antes de empezar y las incluimos en el calendario para que la obra no se pare por permisos o prohibiciones."
+   ],
+   "faq": [
+    ["¿Reforman dúplex?", "Sí. Diseñamos ambos niveles juntos: escalera, instalaciones, aislamiento acústico del forjado e iluminación de la escalera. La escalera y los muebles empotrados se encargan con medidas tras la obra gruesa."],
+    ["¿Cómo se aprueba la reforma con la administración del edificio?", "Normalmente pide un proyecto o una lista de trabajos, el calendario y los datos de la cuadrilla. Preparamos la documentación y acordamos el horario de trabajos ruidosos, el montacargas y la retirada de escombros antes de empezar."]
+   ]
+  },
+  "edeldorf-hills": {
+   "addr": "",
+   "lead": "Edeldorf Hills es una obra nueva de clase premium de Futura Hata en Pechersk. Si ya tiene las llaves y piensa reformar, le acompañamos desde el piso vacío hasta el interior terminado en un solo contrato.",
+   "h2": "Reforma en un edificio premium nuevo: por dónde empezar",
+   "p": [
+    "Un piso en un edificio recién entregado es una hoja en blanco, pero también un periodo en el que decenas de vecinos reforman a la vez. Las colas para el montacargas, el horario limitado de trabajos ruidosos y las normas de entrada de materiales las fija normalmente la administración del edificio: planificamos los suministros en función de ellas, no al revés.",
+    "Antes de levantar tabiques comprobamos lo que entregó el promotor: geometría de paredes y techos, el recrecido o su ausencia, acometidas de electricidad y agua, posición de los conductos de ventilación. De ello depende si se pueden mover las zonas húmedas, dónde irá la isla de cocina y cuánto costará nivelar.",
+    "El hormigón nuevo asienta, por eso el proyecto prevé juntas de dilatación, una buena preparación de la base para baldosas de gran formato y la pintura cuando las paredes se han estabilizado. Así, al cabo de un año no aparecen grietas en las juntas de un interior premium."
+   ],
+   "faq": [
+    ["¿Cuándo empezar la reforma en Edeldorf Hills?", "El proyecto de diseño puede hacerse antes de recibir las llaves, a partir del plano del promotor. En cuanto hay acceso, hacemos mediciones de control y empezamos con los planos listos."],
+    ["¿Qué revisan tras el promotor?", "La geometría de paredes y suelo, las acometidas de electricidad y agua, la ventilación, las ventanas y los derrames. Lo tenemos en cuenta en el proyecto y el presupuesto para que no pague dos veces por rehacer trabajos."]
+   ]
+  },
+  "triiinity": {
+   "addr": "calle Vasylia Tiutiunnyka, 39/2",
+   "lead": "TRIIINITY es un complejo residencial de clase premium de Seven Hills en la calle Vasylia Tiutiunnyka. Los pisos van de 53 a 125 m², y para cada formato ofrecemos el ciclo completo: diseño, reforma y muebles con un solo equipo.",
+   "h2": "Reforma de pisos en TRIIINITY: formatos compactos y grandes",
+   "p": [
+    "El rango de 53–125 m² supone dos escenarios distintos. En un piso de 53–60 m² lo clave es que quepan una cocina-salón completa, un vestidor y un baño cómodo sin sensación de agobio: ayudan los muebles empotrados hasta el techo, las puertas ocultas y una buena iluminación. Con más de 100 m² hay sitio para un dormitorio principal con baño propio, un despacho y un lavadero aparte.",
+    "El segmento premium implica instalaciones que solo se notan como confort: climatización silenciosa con unidades ocultas, suelo radiante en los baños, control inteligente de la iluminación. Las incluimos en la fase de proyecto para no tener que abrir paredes ya acabadas.",
+    "Un edificio de este nivel suele tener normas de reforma de la administración del edificio sobre horarios, protección de zonas comunes y retirada de escombros. Las incorporamos al calendario desde el primer día."
+   ],
+   "faq": [
+    ["¿Cómo hacer que un piso pequeño parezca premium?", "Con la distribución y los detalles: armarios empotrados hasta el techo, puertas ocultas, buena iluminación y una paleta de materiales contenida. Todo esto se define en el proyecto antes de la obra."],
+    ["¿Se pueden ocultar los aires acondicionados y la ventilación?", "Sí, si se prevé en el proyecto: sistemas por conductos o de cassette, trampillas de registro, falsos techos. Ajustamos la solución a las exigencias del edificio sobre fachada e instalaciones."]
+   ]
+  },
+  "taryan-towers": {
+   "addr": "calle Ioanna Pavla II, 12",
+   "lead": "Taryan Towers es un complejo en altura de clase premium de Taryan Group en la calle Ioanna Pavla II. Reformamos pisos de este nivel llave en mano: de la distribución y el 3D a los muebles, la iluminación y los textiles.",
+   "h2": "Particularidades de la reforma en una torre premium",
+   "p": [
+    "En una torre, la logística de la reforma es una tarea en sí misma. Materiales y muebles suben por el montacargas según un horario, y las piezas grandes —frentes de cocina, encimeras de piedra, baldosas de gran formato— se comprueban de antemano con las medidas del ascensor y de los huecos de puerta. Si no, es fácil pedir una placa que nunca llegará al piso.",
+    "Los pisos de Taryan Towers parten de 62–87 m² y hay mayores. En superficies medias solemos buscar el equilibrio: una gran cocina-salón, dos dormitorios y almacenaje suficiente. En los mayores, la zonificación y un segundo baño.",
+    "El acristalamiento en altura da mucha luz y vistas, por eso el proyecto contempla la protección solar, cortinas motorizadas y el confort térmico. Las normas de reforma suele fijarlas la administración del edificio: las acordamos antes de empezar."
+   ],
+   "faq": [
+    ["¿Cómo suben muebles grandes y piedra a una torre?", "Comprobamos las medidas del montacargas y los huecos ya en el proyecto, dividimos las piezas grandes en secciones y coordinamos la entrega con el horario del edificio."],
+    ["¿Se encargan de cortinas y protección solar?", "Sí, dentro del equipamiento: rieles motorizados, estores, tejidos de protección solar. Los huecos para los rieles se prevén en el techo durante la reforma."]
+   ]
+  },
+  "bulvar-fontaniv": {
+   "addr": "calle Ioanna Pavla II, 6/1",
+   "lead": "Bulvar Fontaniv es un complejo residencial de clase premium en la calle Ioanna Pavla II, 6/1, con pisos de 64 a 156 m². Reformamos llave en mano: proyecto, obra, muebles y decoración.",
+   "h2": "Reforma de pisos en Bulvar Fontaniv: en qué fijarse",
+   "p": [
+    "Con 64–156 m² la cuestión no es solo el número de habitaciones, sino cómo se vive. Una familia con niños necesita habitaciones infantiles separadas, un segundo baño y un vestidor en la entrada; una pareja, una amplia cocina-salón, un despacho y una habitación de invitados. Mostramos opciones de distribución en las primeras fases del proyecto.",
+    "En pisos de más de 100 m² los recorridos de las instalaciones son más largos, así que diseñamos ventilación, climatización y electricidad junto con los muebles: el aire acondicionado no sopla sobre la cama, y los enchufes y la iluminación coinciden con los armarios empotrados.",
+    "La administración del edificio de un complejo así suele exigir horarios acordados, protección de vestíbulos y ascensores y retirada de escombros en sacos. Nos ocupamos de todo ello."
+   ],
+   "faq": [
+    ["¿Se puede cambiar la distribución del piso?", "Dentro de lo que permiten la estructura del edificio y la normativa: no movemos muros de carga ni colocamos zonas húmedas sobre las estancias de los vecinos. Comprobamos las opciones en el proyecto."],
+    ["¿Cuánto dura la reforma de un piso de más de 100 m²?", "Depende de la complejidad del proyecto y del horario del edificio. El plazo figura en el contrato, desde 2 semanas; lo fijamos tras el proyecto de diseño y el presupuesto."]
+   ]
+  },
+  "linden-luxury-residences": {
+   "addr": "calle Liuteranska, 14v",
+   "lead": "Linden Luxury Residences es una casa club de clase premium de Budhouse Group en la calle Liuteranska, con pisos de 75 a 556 m². En estos inmuebles la reforma es ante todo un proyecto y la coordinación de decenas de proveedores, y de eso nos encargamos nosotros.",
+   "h2": "Reforma de un piso grande en el centro histórico",
+   "p": [
+    "Las superficies van de 75 a 556 m²: desde un piso urbano hasta una residencia con varios dormitorios, despacho, vestidores y zona de invitados. En grandes superficies el interior se sostiene en un sistema: una misma lógica de materiales, luz y puertas en todas las estancias; si no, el espacio se fragmenta en «islas».",
+    "Cuanto mayor es el piso, más instalaciones: varias zonas de climatización, ventilación con recuperación de calor, tratamiento de agua, domótica y a veces sauna o hammam. Las diseñamos junto con el interior, no después, para que los armarios técnicos y los registros no acaben en medio del salón.",
+    "El centro y el formato club exigen respeto por los vecinos: la administración del edificio suele regular estrictamente los horarios de trabajos ruidosos, la entrada de materiales y la retirada de escombros. Planificamos el calendario para que estas limitaciones no alarguen la obra."
+   ],
+   "faq": [
+    ["¿Quién coordina a los proveedores en un inmueble grande?", "Nosotros. Proyecto, obra, instalaciones, muebles e iluminación en un solo contrato, con un responsable único e informes fotográficos por Telegram."],
+    ["¿Instalan ventilación con recuperación de calor y domótica?", "Sí, las incluimos en el proyecto junto con el interior: trazados, registros, cuadros y escenas de control de iluminación y clima."]
+   ]
+  },
+  "greenville-pechersk": {
+   "addr": "callejón Novopecherskyi, 5",
+   "lead": "Greenville na Pechersku es un complejo de clase business en el callejón Novopecherskyi con pisos desde unos 73 m², entre ellos dúplex con terraza. Reformamos llave en mano teniendo en cuenta todos estos formatos.",
+   "h2": "Terraza y segundo nivel: qué tener en cuenta en la reforma",
+   "p": [
+    "La terraza es la parte más vulnerable del piso. Antes de los acabados comprobamos la impermeabilización y las pendientes que dejó el promotor y no las dañamos al fijar muebles o luminarias. Elegimos un pavimento resistente a heladas con un buen sistema de desagüe, y soluciones estancas para la iluminación y los enchufes.",
+    "Un dúplex necesita una escalera bien pensada y zonificación: normalmente abajo la cocina-salón y un aseo de cortesía, arriba los dormitorios y los baños. Reforzamos el forjado entre niveles con aislamiento acústico y llevamos la ventilación y la climatización por separado a cada planta.",
+    "Las superficies desde unos 73 m² permiten dos o tres dormitorios. La administración de un edificio de clase business suele aprobar el calendario de obras y el orden de entrada de materiales: preparamos esa documentación antes de empezar."
+   ],
+   "faq": [
+    ["¿Qué hacen con la terraza?", "Comprobamos la impermeabilización y el desagüe y elegimos pavimento resistente a heladas, iluminación exterior, muebles y vegetación. Nada se fija de forma que dañe la capa impermeable."],
+    ["¿Cómo resuelven la escalera de un dúplex?", "La diseñamos junto con el interior: estructura, barandilla e iluminación. Se encarga con medidas exactas tras la obra gruesa."]
+   ]
+  },
+  "maxima-residence": {
+   "addr": "calle Yevhena Konovaltsia, 30",
+   "lead": "Maxima Residence es un complejo de clase business de RIEL y Bosphorus Development en la calle Yevhena Konovaltsia, con pisos de 50 a 181 m². Llevamos la reforma llave en mano: diseño, obra, muebles y entrega con acta.",
+   "h2": "Reforma en Maxima Residence: del piso de un dormitorio al grande",
+   "p": [
+    "En el complejo hay pisos compactos de unos 50 m² y grandes de hasta 181 m². En un piso pequeño lo clave es la ergonomía: cocina-salón con isla o barra, un hueco para la lavadora, un armario vestidor en lugar de una habitación aparte. En uno grande, la zonificación, un segundo baño y sitio para un despacho.",
+    "Muchos propietarios de clase business reforman para alquilar. En ese caso recomendamos materiales resistentes, una paleta neutra y muebles fáciles de mantener: el piso parece nuevo más tiempo y encuentra inquilino antes.",
+    "En un edificio nuevo la administración del edificio suele fijar el horario de trabajos ruidosos y el uso del ascensor. Lo tenemos en cuenta en el calendario y retiramos nosotros los escombros."
+   ],
+   "faq": [
+    ["¿Reforman pisos para alquilar?", "Sí. Elegimos materiales resistentes, muebles prácticos y un interior neutro que guste a la mayoría de inquilinos. Podemos equipar el piso por completo antes de la entrada."],
+    ["¿Puedo empezar por el proyecto de diseño y decidir la reforma después?", "Sí, el proyecto de diseño es un servicio aparte desde $30/m². Pero la garantía de presupuesto ±5% solo se aplica si la reforma la hace CAS."]
+   ]
+  },
+  "nordica-residence": {
+   "addr": "carretera Zaliznychne, 45A",
+   "lead": "Nordica Residence es un complejo de clase business de RIEL en la carretera Zaliznychne. Si piensa reformar un piso aquí, lo hacemos llave en mano: del proyecto de diseño a los muebles y los textiles.",
+   "h2": "Sobriedad y practicidad escandinavas en la reforma",
+   "p": [
+    "El nombre del complejo sugiere un estilo que gusta a muchos propietarios: paredes claras, madera natural, poca decoración y mucho almacenaje oculto. Un interior así parece sencillo pero exige una ejecución precisa —paredes rectas, encuentros limpios y buena iluminación—, porque en las superficies lisas se ve cada ondulación.",
+    "En pisos de clase business de superficie media recomendamos armarios empotrados en el recibidor y los dormitorios, una cocina hasta el techo y un hueco aparte para la colada: así las estancias quedan libres de muebles sobrantes. Todo ello va en el proyecto con medidas al centímetro.",
+    "Durante una reforma en obra nueva suelen regir las normas de la administración del edificio sobre horarios de ruido, protección de ascensores y retirada de escombros. Las conocemos al inicio y las cumplimos."
+   ],
+   "faq": [
+    ["¿Hacen interiores de estilo escandinavo?", "Sí. Elegimos materiales claros, madera natural, almacenaje oculto y luz cálida. El estilo lo decide usted; nosotros solo aconsejamos lo que será práctico."],
+    ["¿Qué incluye la reforma llave en mano?", "Obra gruesa y acabados, electricidad, fontanería, ventilación, puertas, alicatado, pintura, montaje de cocina y muebles. Amueblamiento y decoración, si lo desea."]
+   ]
+  },
+  "hvardiiskyi": {
+   "addr": "calle Henerala Almazova",
+   "lead": "Hvardiiskyi es un complejo de clase business y premium de Kyivmiskbud en la calle Henerala Almazova, en el distrito de Pechersk. Reformamos pisos llave en mano, con proyecto de diseño y amueblamiento.",
+   "h2": "Reforma en Hvardiiskyi: el Pechersk tranquilo y los formatos clásicos",
+   "p": [
+    "El complejo está en la parte verde de Pechersk, y muchos propietarios quieren conservar esa sensación en casa: tonos naturales tranquilos, madera, textiles, luz suave. En un interior clásico importa la precisión de los detalles —molduras, cornisas, puertas altas—, así que los definimos en los planos.",
+    "En pisos de clase business y premium conviene prever desde el principio un buen aislamiento acústico entre estancias y en los baños, líneas eléctricas separadas para los electrodomésticos de cocina y los aires acondicionados, y un cuadro con reserva para necesidades futuras.",
+    "La administración del edificio suele fijar el horario de obras y el procedimiento de retirada de escombros. Incluimos estas normas en el calendario y respondemos del orden en las zonas comunes."
+   ],
+   "faq": [
+    ["¿Hacen interiores clásicos con molduras?", "Sí. Definimos en los planos los perfiles, la disposición de las molduras, las cornisas y las puertas, y revisamos la ejecución en cada fase."],
+    ["¿Se puede convivir con los vecinos mientras dura la reforma?", "Trabajamos según el horario del edificio y protegemos las zonas comunes. No molestamos a los vecinos fuera de las horas permitidas."]
+   ]
+  },
+  "a136-highlight-tower": {
+   "addr": "calle Antonovycha, 136–138",
+   "lead": "A136 Highlight Tower es una torre residencial de clase business en la calle Antonovycha, 136–138. Nuestra oficina también está en la calle Antonovycha, así que la obra nos queda cerca. Reformamos pisos llave en mano con proyecto de diseño y muebles.",
+   "h2": "Reforma de un piso en una torre de la calle Antonovycha",
+   "p": [
+    "En una torre, el piso recibe mucha luz y vistas, y con ellas algunas tareas: protección solar, climatización sin corrientes, cortinas o estores que no tapen la vista. Lo resolvemos en el proyecto de diseño, no después de mudarse.",
+    "La logística en una torre es un tema aparte. Los materiales suben por el montacargas en horas acordadas, y las placas de gran formato y las encimeras se comprueban antes con las medidas del ascensor. Retiramos nosotros los escombros, sin dejarlos en los vestíbulos.",
+    "La administración de un edificio de clase business suele tener un reglamento de obras: horario de trabajos ruidosos, protección de ascensores y zonas comunes. Lo conocemos antes de empezar y lo cumplimos."
+   ],
+   "faq": [
+    ["¿Dónde está su oficina?", "En la calle Antonovycha, 44, en Kiev. Podemos reunirnos en la oficina o en la obra."],
+    ["¿Y la protección solar en un piso con ventanales?", "Elegimos cortinas, estores o persianas motorizadas, prevemos huecos para los rieles y planificamos dónde van los aires acondicionados."]
+   ]
+  },
+  "montreal-house": {
+   "addr": "calle Velyka Vasylkivska",
+   "lead": "Montreal House es un complejo de clase business de Alliance Novobud en la calle Velyka Vasylkivska, con pisos de 51 a 78 m² y más. Reformamos llave en mano, para vivir o para alquilar.",
+   "h2": "Reforma de un piso de 51–78 m² en el centro",
+   "p": [
+    "Los pisos de superficie media en el centro son un formato muy buscado, tanto para uno mismo como para alquilar. Con 51–60 m² se suele elegir cocina-salón y un dormitorio aparte con vestidor; con 70–78 m², dos dormitorios y un segundo baño. La decisión final llega tras las mediciones y varias opciones de distribución.",
+    "El centro significa ruido de la calle, así que recomendamos buenas ventanas, sellado de derrames y aislamiento acústico en las paredes de los dormitorios. Para alquilar, suelos resistentes, pinturas lavables y muebles fáciles de mantener.",
+    "La reforma en un edificio de clase business suele acordarse con la administración del edificio: calendario de obras, uso del ascensor, retirada de escombros. De eso nos encargamos nosotros."
+   ],
+   "faq": [
+    ["¿Cómo reducir el ruido de la calle?", "Revisamos ventanas y derrames, reforzamos si hace falta el aislamiento acústico de las paredes del dormitorio y elegimos cortinas gruesas. Las soluciones van en el proyecto."],
+    ["¿Reforman pisos en el centro para alquilar?", "Sí, con materiales prácticos y equipamiento completo: muebles, electrodomésticos y textiles antes de que entre el inquilino."]
+   ]
+  },
+  "senat": {
+   "addr": "Kiltseva doroha, 3",
+   "lead": "Senat es un complejo de clase business de GEOS en Kiltseva doroha, 3. Hay de todo: desde pisos compactos de 34 m² hasta 94 m², dúplex y pisos con terraza. Buscamos soluciones para cada formato y reformamos llave en mano.",
+   "h2": "Del piso compacto al dúplex con terraza",
+   "p": [
+    "En un piso de 34–45 m² lo principal es la multifuncionalidad: cama en tarima o en una hornacina con cortina, cocina con electrodomésticos integrados, armarios hasta el techo, espejos que amplían el espacio. Es en los pisos pequeños donde el proyecto de diseño se amortiza antes: aquí los errores de medidas son los más caros.",
+    "Los dúplex y los pisos con terraza requieren otro enfoque: escalera, aislamiento acústico del forjado, impermeabilización y desagüe de la terraza, iluminación y enchufes exteriores. Detallamos estos puntos por separado en los planos.",
+    "La administración del edificio del complejo suele fijar un reglamento de obras: horario de trabajos ruidosos y retirada de escombros. Lo cumplimos y acordamos los detalles antes de empezar."
+   ],
+   "faq": [
+    ["¿Merece la pena un proyecto de diseño para un piso pequeño?", "Sí: en poca superficie cada centímetro cuenta, y los errores en las medidas de muebles o enchufes son los más caros. El proyecto, desde $2 500."],
+    ["¿Qué hacen con la terraza?", "Comprobamos la impermeabilización y las pendientes y elegimos pavimento resistente a heladas, iluminación y enchufes estancos y muebles de exterior."]
+   ]
+  },
+  "life-story": {
+   "addr": "calle Metrolohichna, 13",
+   "lead": "Life Story es un complejo de clase business de LEV Development en la calle Metrolohichna, 13, con pisos desde 49,93 m². Reformamos llave en mano para familias que quieren entrar a vivir en un interior listo y bien pensado.",
+   "h2": "Reforma de un piso familiar en Holosiiv",
+   "p": [
+    "Holosiiv, con sus parques y bosques, se elige para una vida familiar tranquila, y el interior debe acompañarla: acabados prácticos que aguanten a niños y mascotas, almacenaje suficiente y una cocina cómoda para cocinar a diario.",
+    "En pisos desde 50 m² a menudo hay que elegir: dos habitaciones separadas o una amplia cocina-salón. Mostramos varias opciones de distribución y colocamos los muebles para que la decisión se tome sobre el plano y no después de la reforma.",
+    "La reforma en una obra nueva de clase business suele seguir las normas de la administración del edificio sobre horario de ruido, ascensores y retirada de escombros. Planificamos el trabajo con ellas en mente."
+   ],
+   "faq": [
+    ["¿Qué materiales elegir para una familia con niños y mascotas?", "Resistentes: vinilo de cuarzo o baldosa en el suelo, pinturas lavables, tejidos antimanchas. Los seleccionamos en la especificación del proyecto."],
+    ["¿Pueden amueblar el piso?", "Sí, el amueblamiento parte de $250/m²: muebles, iluminación, electrodomésticos, textiles y decoración según el proyecto de diseño."]
+   ]
+  },
+  "respublika": {
+   "addr": "Kiltseva doroha, 1",
+   "lead": "Respublika es un gran complejo residencial de clase confort y business de KAN Development en Kiltseva doroha, 1. Reformamos pisos llave en mano con presupuesto cerrado y 12 meses de garantía.",
+   "h2": "Reforma de un piso en un gran complejo residencial",
+   "p": [
+    "En un complejo de esta escala los pisos son muy distintos, pero los propietarios comparten un deseo: un presupuesto previsible. Por eso empezamos con un proyecto de diseño y un presupuesto en el que cada partida tiene precio, y si la reforma la hace nuestro equipo, el total no se desvía más de un ±5%.",
+    "En pisos de clase confort y business aconsejamos invertir en lo que luego cuesta cambiar: electricidad con reserva, buena impermeabilización del baño, paredes rectas y una distribución acertada. La decoración y parte de los muebles pueden renovarse después sin obra.",
+    "En un gran complejo se reforman muchos pisos a la vez, y la administración del edificio suele regular horarios de ruido, ascensores y retirada de escombros. Planificamos los suministros para no perder tiempo en colas."
+   ],
+   "faq": [
+    ["¿Cómo no salirse del presupuesto?", "Fijamos el presupuesto antes de empezar. Si la reforma la hace CAS, el total no se desvía más de un ±5%."],
+    ["¿Qué conviene hacer bien desde el principio y qué puede esperar?", "Desde el principio: electricidad, fontanería, impermeabilización, nivelación y distribución. La decoración, parte de los muebles y los textiles pueden comprarse después."]
+   ]
+  },
+  "podil-hrad": {
+   "addr": "calles Kozhumiatska / Dehtiarna",
+   "lead": "Podil Hrad es un complejo de clase business de Kyivmiskbud en las calles Kozhumiatska y Dehtiarna, en pleno corazón de Podil. Los pisos van de 65,5 a 79 m², incluidos algunos de cuatro habitaciones, y reformamos cualquiera de ellos llave en mano.",
+   "h2": "Cómo encajar cuatro habitaciones en 79 m²",
+   "p": [
+    "Un piso de cuatro habitaciones de hasta 79 m² significa estancias compactas en las que cada metro debe trabajar. Ayudan los armarios empotrados en lugar de exentos, las puertas correderas, las camas con almacenaje y una cocina hasta el techo. Colocamos los muebles ya en el proyecto para que cada habitación conserve paso y luz natural.",
+    "En pisos de 65–79 m² a menudo compensa unir cocina y salón y mantener dos o tres dormitorios separados. Comprobamos las opciones según la estructura del edificio: no movemos muros de carga ni zonas húmedas.",
+    "El Podil histórico supone calles estrechas y limitaciones para el transporte de mercancías, así que planificamos las entregas con antelación. Las normas de reforma del edificio suele fijarlas la administración del edificio, y las cumplimos."
+   ],
+   "faq": [
+    ["¿Cómo hacer cómodo un piso de cuatro habitaciones en poca superficie?", "Con una distribución bien pensada y muebles empotrados: armarios hasta el techo, puertas correderas, camas con cajones y una cocina compacta con isla. Todo se coloca en el proyecto."],
+    ["¿Cómo llevan los materiales a Podil?", "Planificamos las entregas teniendo en cuenta las calles estrechas y las normas del edificio; las piezas grandes llegan en horas acordadas."]
+   ]
+  },
+  "unit-home": {
+   "addr": "calle Gareth Jones, 8/12",
+   "lead": "UNIT.Home es un complejo residencial de clase business de UDP en la calle Gareth Jones, junto al parque de innovación UNIT.City. Reformamos aquí pisos llave en mano: interior moderno, electrodomésticos y muebles en un solo contrato.",
+   "h2": "Reforma de un piso para el ritmo urbano actual",
+   "p": [
+    "Quienes viven en complejos así suelen trabajar desde casa, por eso el proyecto debe prever desde el principio un puesto de trabajo: un despacho o un rincón con buena luz, suficientes enchufes y canaletas para internet, y confort acústico para las llamadas.",
+    "Un interior moderno de clase business combina bien con la domótica: control de luz y clima desde el móvil, sensores de fugas en el baño y la cocina, cortinas motorizadas. El cableado y la ubicación de los equipos los dejamos previstos en la obra gruesa.",
+    "La administración del edificio del complejo suele regular las reformas: horario de ruido, uso de ascensores y retirada de escombros. Organizamos el trabajo para cumplir estas exigencias."
+   ],
+   "faq": [
+    ["¿Instalan domótica?", "Sí: control de luz, clima y cortinas, sensores de fugas y escenas. Dejamos el cableado y la ubicación de los equipos previstos en la obra gruesa."],
+    ["¿Cómo organizar un puesto de trabajo en casa?", "Planificamos un despacho o un rincón junto a la ventana, buena iluminación, enchufes y red, y aislamiento acústico. Elegimos los muebles según su forma de trabajar."]
+   ]
+  },
+  "novyi-avtohraf": {
+   "addr": "calle Sviatoho Kniazia Romana Mstyslavycha, 26",
+   "lead": "Novyi Avtohraf es un complejo de clase business de DIM en la calle Sviatoho Kniazia Romana Mstyslavycha, 26, en la margen izquierda. Reformamos pisos llave en mano: del proyecto de diseño a los muebles y la entrega con acta.",
+   "h2": "Reforma en un complejo de varias torres de clase business",
+   "p": [
+    "En un gran complejo en altura se reforman muchos pisos a la vez, así que el calendario es decisivo: la cola del montacargas, el horario de trabajos ruidosos, la retirada de escombros. Planificamos las entregas de materiales por lotes según estas limitaciones para que la cuadrilla no se quede parada.",
+    "Los pisos de clase business se compran tanto para vivir como para alquilar. Para vivienda propia aconsejamos invertir en distribución, aislamiento acústico y almacenaje; para alquiler, en acabados resistentes y muebles prácticos.",
+    "En altura los pisos reciben mucha luz, por eso importan la protección solar y la ubicación correcta de los aires acondicionados. Lo incluimos en el proyecto junto con las exigencias del edificio sobre la fachada."
+   ],
+   "faq": [
+    ["¿Cómo no depender de la cola del ascensor?", "Planificamos las entregas con antelación y por lotes y las acordamos con la administración del edificio. Mientras esperamos material, la cuadrilla avanza en otras fases."],
+    ["¿Reforman para alquilar?", "Sí: materiales prácticos, interior neutro y equipamiento completo antes de que entre el inquilino."]
+   ]
+  },
+  "rusaniv-residence": {
+   "addr": "calle Yevhena Sverstiuka, 54",
+   "lead": "Rusaniv Residence es un complejo de clase business de Citex Development en la calle Yevhena Sverstiuka, 54, con dúplex de 104 a 179 m². Estas superficies necesitan un proyecto sólido, y por ahí empezamos.",
+   "h2": "Reforma de un dúplex de 104–179 m²",
+   "p": [
+    "Un dúplex de este tamaño se parece más a una casa adosada que a un piso normal. Por eso empezamos repartiendo los niveles: zona de día con cocina-salón y aseo de cortesía, zona de noche con dormitorios, vestidores y baños. Hacemos de la escalera el centro de la composición, no un obstáculo.",
+    "En dos niveles las instalaciones son más complejas: climatización separada por planta, ventilación de cada baño, suelo radiante, iluminación de la escalera con detectores de movimiento. Ponemos aislamiento acústico en el forjado bajo los dormitorios para que arriba no se oigan los pasos de abajo.",
+    "En superficies grandes el equipamiento es especialmente importante: hacen falta muchos muebles, luminarias y textiles, y la logística conviene llevarla con un solo proveedor. Las normas de reforma del edificio suele fijarlas la administración del edificio, y las tenemos en cuenta."
+   ],
+   "faq": [
+    ["¿Por dónde empieza la reforma de un dúplex?", "Por el proyecto de diseño: reparto de zonas entre niveles, escalera, instalaciones y aislamiento acústico. Solo después elaboramos el presupuesto y el calendario de obra."],
+    ["¿Pueden equipar el piso por completo?", "Sí. Muebles a medida y de China, iluminación, electrodomésticos, textiles y decoración, hasta dejarlo listo para entrar a vivir."]
+   ]
+  }
+ }
+}

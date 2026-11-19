@@ -1,0 +1,181 @@
+{
+ "slug": "apartment-renovation-senat",
+ "lang": "zh",
+ "service": "基辅 Senat 住宅小区公寓装修",
+ "title": "基辅 Senat 住宅小区公寓装修 — 交钥匙 | CAS",
+ "description": "基辅 Senat 住宅小区（霍洛西伊夫区）公寓交钥匙装修：室内设计方案，装修 $550/m² 起，家具软装配套。工程质保 12 个月。",
+ "h1": "Senat 住宅小区公寓交钥匙装修",
+ "price": "$550/m² 起 · 设计、装修与家具一份合同",
+ "lead": "Senat 是 GEOS 在 Kiltseva 路 3 号开发的商务级小区。这里户型齐全：从 34 m² 的小户型到 94 m²，还有复式和带露台的户型。我们为每种户型找到合适方案并提供交钥匙装修。",
+ "parent": [
+  "/zh/apartment-renovation-kyiv-residential-complexes",
+  "基辅住宅小区装修"
+ ],
+ "cards": [
+  [
+   "交钥匙装修",
+   [
+    "开发商交付后验房与测量",
+    "基础施工与饰面施工",
+    "电路、给排水、通风",
+    "与物业公司协调施工"
+   ]
+  ],
+  [
+   "复式公寓",
+   [
+    "定制楼梯",
+    "每层独立的机电系统",
+    "楼板隔音",
+    "楼梯间照明"
+   ]
+  ],
+  [
+   "露台",
+   [
+    "检查防水与排水坡度",
+    "防冻地面材料",
+    "防潮灯具与插座",
+    "户外家具与绿化"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "从精巧小户型到带露台的复式",
+   [
+    "34–45 m² 的公寓最重要的是多功能：地台床或带帘的床位壁龛、嵌入式电器厨房、通顶柜、扩大空间感的镜面。恰恰是小户型的设计方案回本最快——这里尺寸错误的代价最高。",
+    "复式和带露台的户型需要不同的做法：楼梯、楼板隔音、露台防水与排水、户外灯具和插座。这些节点我们在图纸中单独详细绘制。",
+    "小区物业通常制定装修规定——噪音作业时间和垃圾清运流程。我们严格遵守，并在开工前协调好细节。",
+    "参考信息：开发商 — GEOS；地址 — Kiltseva 路 3 号。我们不代表开发商或物业公司，直接与公寓业主合作。"
+   ]
+  ]
+ ],
+ "budget": {
+  "area": 60,
+  "h2": "60 m² 公寓预算参考",
+  "p": "以 60 m² 公寓为例，按我们的基础费率估算如下："
+ },
+ "gallery": [
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1f8h2r5MBlLLf_-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1_xW-2dYf73g9R-900.webp",
+   "Edelweiss"
+  ]
+ ],
+ "steps": [
+  [
+   "验房",
+   "检查开发商交付状态并测量。"
+  ],
+  [
+   "方案设计",
+   "平面布局、3D 效果图、施工图。"
+  ],
+  [
+   "预算与合同",
+   "锁定价格与工期。"
+  ],
+  [
+   "施工",
+   "基础与饰面施工，定期汇报。"
+  ],
+  [
+   "家具与交付",
+   "完成配套，交付钥匙。"
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "Senat 的公寓装修多少钱？",
+   "交钥匙装修 $550/m² 起（含人工与基础材料；饰面材料、家具和家电另计，以预算为准），室内设计方案 $30/m² 起（最低 $2,500），家具软装配套 $250/m² 起。60 m² 公寓的估算见上方预算参考；准确金额在实地查看后写入预算。"
+  ],
+  [
+   "小户型值得做设计方案吗？",
+   "值得：小面积里每一厘米都重要，家具或插座的尺寸错误代价最高。设计方案 $2,500 起。"
+  ],
+  [
+   "露台怎么处理？",
+   "检查防水和坡度，选用防冻地面、防潮灯具和插座以及户外家具。"
+  ],
+  [
+   "装修有什么质保？",
+   "我们签署验收单交付公寓；已完成的工程享有 12 个月质保。"
+  ],
+  [
+   "可以远程跟进装修吗？",
+   "可以。我们通过 Telegram 发送工地照片汇报，价格、工期和付款阶段均写入合同。"
+  ]
+ ],
+ "near": [
+  "基辅其他住宅小区的装修",
+  [
+   [
+    "/zh/apartment-renovation-life-story",
+    "Life Story 住宅小区"
+   ],
+   [
+    "/zh/apartment-renovation-respublika",
+    "Respublika 住宅小区"
+   ],
+   [
+    "/zh/apartment-renovation-a136-highlight-tower",
+    "A136 Highlight Tower 住宅小区"
+   ],
+   [
+    "/zh/apartment-renovation-greenville-pechersk",
+    "Greenville na Pechersku 住宅小区"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/zh/apartment-renovation-kyiv-residential-complexes",
+   "基辅住宅小区装修"
+  ],
+  [
+   "/zh/apartment-renovation",
+   "基辅公寓装修"
+  ],
+  [
+   "/zh/new-build-renovation",
+   "新房装修"
+  ],
+  [
+   "/zh/turnkey-renovation",
+   "交钥匙装修"
+  ],
+  [
+   "/zh/interior-design",
+   "室内设计"
+  ],
+  [
+   "/zh/furnishing",
+   "公寓家具配套"
+  ],
+  [
+   "/zh/renovation-calculator",
+   "装修费用计算器"
+  ]
+ ]
+}

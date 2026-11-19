@@ -1,0 +1,181 @@
+{
+ "slug": "remont-mieszkania-montreal-house",
+ "lang": "pl",
+ "service": "Remont mieszkania na osiedlu Montreal House, Kijów",
+ "title": "Remont mieszkania na osiedlu Montreal House, Kijów — pod klucz | CAS",
+ "description": "Remont mieszkania pod klucz na osiedlu Montreal House (dzielnica Hołosijiwska, Kijów): projekt wnętrza, remont od $550/m², umeblowanie. Gwarancja 12 miesięcy.",
+ "h1": "Remont mieszkania pod klucz na osiedlu Montreal House",
+ "price": "od $550/m² · projekt, remont i meble w jednej umowie",
+ "lead": "Montreal House to kompleks klasy biznes od Alliance Novobud przy ul. Wełyka Wasylkiwska, z mieszkaniami od 51 do 78 m² i większymi. Remontujemy pod klucz — dla siebie i pod wynajem.",
+ "parent": [
+  "/pl/remont-mieszkan-osiedla-kijow",
+  "Remont na osiedlach Kijowa"
+ ],
+ "cards": [
+  [
+   "Remont pod klucz",
+   [
+    "oględziny mieszkania po deweloperze i pomiary",
+    "prace budowlane i wykończeniowe",
+    "elektryka, hydraulika, wentylacja",
+    "uzgodnienie prac z zarządcą"
+   ]
+  ],
+  [
+   "Projekt wnętrza",
+   [
+    "układ i ustawienie mebli",
+    "wizualizacje 3D pomieszczeń",
+    "rysunki wykonawcze dla ekipy",
+    "specyfikacja i kosztorys"
+   ]
+  ],
+  [
+   "Umeblowanie i wyposażenie",
+   [
+    "meble na wymiar i z Chin",
+    "oświetlenie i AGD",
+    "tekstylia i dekoracje",
+    "stylizacja przed wprowadzeniem się"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Remont mieszkania 51–78 m² w centrum",
+   [
+    "Mieszkania średniej wielkości w centrum to popularny format i dla siebie, i pod wynajem. Przy 51–60 m² zwykle wybiera się salon z kuchnią i osobną sypialnię z garderobą; przy 70–78 m² — dwie sypialnie i drugą łazienkę. Ostateczną decyzję podejmujemy po pomiarach i kilku wariantach układu.",
+    "Centrum to hałas ulicy, dlatego radzimy dobre okna, uszczelnienie ościeży i wygłuszenie ścian w sypialniach. Pod wynajem — odporną podłogę, farby zmywalne i meble łatwe w utrzymaniu.",
+    "Remont w budynku klasy biznes zwykle uzgadnia się z zarządcą: harmonogram prac, korzystanie z windy, wywóz gruzu. Tę część bierzemy na siebie.",
+    "Informacyjnie: deweloper — Alliance Novobud, adres — ul. Wełyka Wasylkiwska. Nie reprezentujemy dewelopera ani zarządcy budynku — pracujemy bezpośrednio z właścicielem mieszkania."
+   ]
+  ]
+ ],
+ "budget": {
+  "area": 65,
+  "h2": "Orientacyjny budżet dla mieszkania 65 m²",
+  "p": "Dla mieszkania 65 m² orientacyjne koszty według naszych stawek bazowych:"
+ },
+ "gallery": [
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1f8h2r5MBlLLf_-900.webp",
+   "Linden Penthouse"
+  ]
+ ],
+ "steps": [
+  [
+   "Oględziny mieszkania",
+   "Sprawdzamy stan po deweloperze, robimy pomiary."
+  ],
+  [
+   "Projekt",
+   "Układ, 3D, rysunki dla ekipy."
+  ],
+  [
+   "Kosztorys i umowa",
+   "Ustalamy cenę i terminy."
+  ],
+  [
+   "Remont",
+   "Prace surowe i wykończeniowe z raportami."
+  ],
+  [
+   "Meble i odbiór",
+   "Wyposażamy i przekazujemy klucze."
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "Ile kosztuje remont mieszkania na osiedlu Montreal House?",
+   "Remont pod klucz — od $550/m² (robocizna i materiały budowlane; materiały wykończeniowe, meble i AGD — osobno, według kosztorysu), projekt wnętrza — od $30/m² (minimum $2 500), umeblowanie — od $250/m². Wyliczenie dla mieszkania 65 m² znajduje się w bloku z orientacyjnym budżetem powyżej; dokładną kwotę ustalamy w kosztorysie po oględzinach."
+  ],
+  [
+   "Jak ograniczyć hałas z ulicy?",
+   "Sprawdzamy okna i ościeża, w razie potrzeby wzmacniamy wygłuszenie ścian sypialni, dobieramy gęste zasłony. Rozwiązania zapisujemy w projekcie."
+  ],
+  [
+   "Czy remontujecie mieszkania w centrum pod wynajem?",
+   "Tak, z praktycznymi materiałami i pełnym wyposażeniem: meble, AGD, tekstylia — przed wprowadzeniem się najemcy."
+  ],
+  [
+   "Jaka jest gwarancja na remont?",
+   "Oddajemy mieszkanie z protokołem odbioru; na wykonane prace obowiązuje gwarancja 12 miesięcy."
+  ],
+  [
+   "Czy mogę śledzić remont zdalnie?",
+   "Tak. Wysyłamy fotorelacje z budowy przez Telegram, a cenę, terminy i etapy płatności zapisujemy w umowie."
+  ]
+ ],
+ "near": [
+  "Remont na innych osiedlach Kijowa",
+  [
+   [
+    "/pl/remont-mieszkania-senat",
+    "Osiedle Senat"
+   ],
+   [
+    "/pl/remont-mieszkania-life-story",
+    "Osiedle Life Story"
+   ],
+   [
+    "/pl/remont-mieszkania-respublika",
+    "Osiedle Respublika"
+   ],
+   [
+    "/pl/remont-mieszkania-taryan-towers",
+    "Osiedle Taryan Towers"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/pl/remont-mieszkan-osiedla-kijow",
+   "Remont na osiedlach Kijowa"
+  ],
+  [
+   "/pl/remont-mieszkan",
+   "Remont mieszkań w Kijowie"
+  ],
+  [
+   "/pl/remont-mieszkania-deweloperskiego",
+   "Remont mieszkania deweloperskiego"
+  ],
+  [
+   "/pl/remont-pod-klucz",
+   "Remont pod klucz"
+  ],
+  [
+   "/pl/projektowanie-wnetrz",
+   "Projektowanie wnętrz"
+  ],
+  [
+   "/pl/umeblowanie-pod-klucz",
+   "Umeblowanie mieszkania"
+  ],
+  [
+   "/pl/kalkulator-remontu",
+   "Kalkulator kosztów"
+  ]
+ ]
+}

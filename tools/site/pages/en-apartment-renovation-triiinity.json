@@ -1,0 +1,181 @@
+{
+ "slug": "apartment-renovation-triiinity",
+ "lang": "en",
+ "service": "Apartment renovation in TRIIINITY, Kyiv",
+ "title": "Apartment renovation in TRIIINITY (Kyiv residential complex) — turnkey | CAS",
+ "description": "Apartment renovation in TRIIINITY (Pecherskyi district, Kyiv): design project, turnkey renovation from $550/m², furnishing. 12-month warranty.",
+ "h1": "Turnkey apartment renovation in TRIIINITY",
+ "price": "from $550/m² · design, renovation and furniture in one contract",
+ "lead": "TRIIINITY is a premium-class residential complex by Seven Hills on Vasylia Tiutiunnyka Street. Apartments here range from 53 to 125 m², and for every format we offer the full cycle: design, renovation and furniture by one team.",
+ "parent": [
+  "/en/apartment-renovation-kyiv-residential-complexes",
+  "Renovation in Kyiv residential complexes"
+ ],
+ "cards": [
+  [
+   "Turnkey renovation",
+   [
+    "inspection after the developer and measurements",
+    "rough and finishing works",
+    "electrics, plumbing, ventilation",
+    "approval of works with the management company"
+   ]
+  ],
+  [
+   "Design project",
+   [
+    "layout and furniture arrangement",
+    "3D visualisations of the rooms",
+    "working drawings for the crew",
+    "specification and estimate"
+   ]
+  ],
+  [
+   "Furnishing and fit-out",
+   [
+    "custom furniture and furniture from China",
+    "lighting and appliances",
+    "textiles and décor",
+    "styling before move-in"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Renovating an apartment in TRIIINITY: compact and large formats",
+   [
+    "The 53–125 m² range means two different scenarios. In a 53–60 m² apartment the key is to fit a full kitchen-living room, a wardrobe and a comfortable bathroom without feeling cramped: built-in floor-to-ceiling furniture, hidden doors and well-planned lighting help. Apartments of 100+ m² have room for a master bedroom with its own bathroom, a study and a separate laundry.",
+    "The premium segment implies engineering you only notice as comfort: quiet air conditioning with concealed units, underfloor heating in the bathrooms, smart lighting control. We build these systems in at the design stage so finished walls never have to be cut.",
+    "A building of this level usually has management-company renovation rules covering working hours, protection of common areas and removal of construction waste. We include them in the schedule from day one.",
+    "For reference: developer — Seven Hills, address — 39/2 Vasylia Tiutiunnyka St. We do not represent the developer or the management company — we work directly with the apartment owner."
+   ]
+  ]
+ ],
+ "budget": {
+  "area": 90,
+  "h2": "Budget guide for a 90 m² apartment",
+  "p": "For a 90 m² apartment, here is a guide based on our base rates:"
+ },
+ "gallery": [
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1lcczk9v-heAbx-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ]
+ ],
+ "steps": [
+  [
+   "Apartment inspection",
+   "We check the condition after the developer and take measurements."
+  ],
+  [
+   "Design",
+   "Layout, 3D, drawings for the crew."
+  ],
+  [
+   "Estimate and contract",
+   "Price and timeline are fixed."
+  ],
+  [
+   "Renovation",
+   "Rough and finishing works with reports."
+  ],
+  [
+   "Furniture and handover",
+   "We furnish and hand over the keys."
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "How much does an apartment renovation in TRIIINITY cost?",
+   "Turnkey renovation starts from $550/m² (works and rough materials; finishing materials, furniture and appliances are extra, per the estimate), a design project from $30/m² (minimum $2,500), furnishing from $250/m². The calculation for a 90 m² apartment is in the budget guide above; we fix the exact amount in the estimate after the inspection."
+  ],
+  [
+   "How can a small apartment feel premium?",
+   "Through the layout and the details: built-in floor-to-ceiling wardrobes, hidden doors, quality lighting and a restrained palette of materials. We set this in the design project before the renovation starts."
+  ],
+  [
+   "Can the air conditioners and ventilation be hidden?",
+   "Yes, if it is planned in the project: ducted or cassette systems, access hatches, suspended ceilings. We align the solution with the building's requirements for the façade and utility networks."
+  ],
+  [
+   "What warranty do you give?",
+   "We hand over the apartment with a signed acceptance certificate; all completed works carry a 12-month warranty."
+  ],
+  [
+   "Can I follow the renovation remotely?",
+   "Yes. We send photo reports from the site via Telegram, and the price, timeline and payment stages are fixed in the contract."
+  ]
+ ],
+ "near": [
+  "Renovation in other Kyiv residential complexes",
+  [
+   [
+    "/en/apartment-renovation-taryan-towers",
+    "Taryan Towers residential complex"
+   ],
+   [
+    "/en/apartment-renovation-bulvar-fontaniv",
+    "Bulvar Fontaniv residential complex"
+   ],
+   [
+    "/en/apartment-renovation-linden-luxury-residences",
+    "Linden Luxury Residences residential complex"
+   ],
+   [
+    "/en/apartment-renovation-senat",
+    "Senat residential complex"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/en/apartment-renovation-kyiv-residential-complexes",
+   "Renovation in Kyiv residential complexes"
+  ],
+  [
+   "/en/apartment-renovation",
+   "Apartment renovation in Kyiv"
+  ],
+  [
+   "/en/new-build-renovation",
+   "New-build renovation"
+  ],
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/interior-design",
+   "Interior design"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Apartment furnishing"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Cost calculator"
+  ]
+ ]
+}

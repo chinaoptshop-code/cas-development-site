@@ -1,0 +1,181 @@
+{
+ "slug": "apartment-renovation-linden-luxury-residences",
+ "lang": "en",
+ "service": "Apartment renovation in Linden Luxury Residences, Kyiv",
+ "title": "Apartment renovation in Linden Luxury Residences (Kyiv residential complex) — turnkey | CAS",
+ "description": "Apartment renovation in Linden Luxury Residences (Pecherskyi district, Kyiv): design project, turnkey renovation from $550/m², furnishing. 12-month warranty.",
+ "h1": "Turnkey apartment renovation in Linden Luxury Residences",
+ "price": "from $550/m² · design, renovation and furniture in one contract",
+ "lead": "Linden Luxury Residences is a premium-class club house by Budhouse Group on Liuteranska Street, with apartments from 75 to 556 m². For such properties, renovation is first of all a project and the coordination of dozens of contractors — and we take that on.",
+ "parent": [
+  "/en/apartment-renovation-kyiv-residential-complexes",
+  "Renovation in Kyiv residential complexes"
+ ],
+ "cards": [
+  [
+   "Turnkey renovation",
+   [
+    "inspection after the developer and measurements",
+    "rough and finishing works",
+    "electrics, plumbing, ventilation",
+    "approval of works with the management company"
+   ]
+  ],
+  [
+   "Large floor area",
+   [
+    "several air-conditioning zones",
+    "ventilation with heat recovery",
+    "smart home and lighting scenes",
+    "walk-in wardrobes and utility rooms"
+   ]
+  ],
+  [
+   "Design project",
+   [
+    "layout and furniture arrangement",
+    "3D visualisations of the rooms",
+    "working drawings for the crew",
+    "specification and estimate"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Renovating a large apartment in the historic centre",
+   [
+    "Areas here range from 75 to 556 m², from a city apartment to a residence with several bedrooms, a study, walk-in wardrobes and a guest zone. In large spaces the interior relies on a system: one logic of materials, lighting and doors in every room, otherwise the space breaks up into separate «islands».",
+    "The bigger the apartment, the more engineering: several air-conditioning zones, ventilation with heat recovery, water treatment, a smart home, sometimes a sauna or hammam. We design these systems together with the interior, not after it, so technical cabinets and access panels do not end up in the middle of the living room.",
+    "The city centre and the club format mean being considerate to neighbours: the management company usually strictly regulates noisy-work hours, deliveries of materials and waste removal. We plan the schedule so these limits do not drag the renovation out.",
+    "For reference: developer — Budhouse Group, address — 14v Liuteranska St. We do not represent the developer or the management company — we work directly with the apartment owner."
+   ]
+  ]
+ ],
+ "budget": {
+  "area": 150,
+  "h2": "Budget guide for a 150 m² apartment",
+  "p": "For a 150 m² apartment, here is a guide based on our base rates:"
+ },
+ "gallery": [
+  [
+   "img/p/1_xW-2dYf73g9R-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/1lcczk9v-heAbx-900.webp",
+   "Diamond"
+  ]
+ ],
+ "steps": [
+  [
+   "Apartment inspection",
+   "We check the condition after the developer and take measurements."
+  ],
+  [
+   "Design",
+   "Layout, 3D, drawings for the crew."
+  ],
+  [
+   "Estimate and contract",
+   "Price and timeline are fixed."
+  ],
+  [
+   "Renovation",
+   "Rough and finishing works with reports."
+  ],
+  [
+   "Furniture and handover",
+   "We furnish and hand over the keys."
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "How much does an apartment renovation in Linden Luxury Residences cost?",
+   "Turnkey renovation starts from $550/m² (works and rough materials; finishing materials, furniture and appliances are extra, per the estimate), a design project from $30/m² (minimum $2,500), furnishing from $250/m². The calculation for a 150 m² apartment is in the budget guide above; we fix the exact amount in the estimate after the inspection."
+  ],
+  [
+   "Who coordinates the contractors on a large property?",
+   "We do. Project, construction, engineering, furniture and lighting are under one contract with one responsible manager and photo reports via Telegram."
+  ],
+  [
+   "Do you install heat-recovery ventilation and smart home systems?",
+   "Yes, we include them in the project together with the interior: routing, access panels, distribution boards and control scenes for lighting and climate."
+  ],
+  [
+   "What warranty do you give?",
+   "We hand over the apartment with a signed acceptance certificate; all completed works carry a 12-month warranty."
+  ],
+  [
+   "Can I follow the renovation remotely?",
+   "Yes. We send photo reports from the site via Telegram, and the price, timeline and payment stages are fixed in the contract."
+  ]
+ ],
+ "near": [
+  "Renovation in other Kyiv residential complexes",
+  [
+   [
+    "/en/apartment-renovation-greenville-pechersk",
+    "Greenville na Pechersku residential complex"
+   ],
+   [
+    "/en/apartment-renovation-maxima-residence",
+    "Maxima Residence residential complex"
+   ],
+   [
+    "/en/apartment-renovation-nordica-residence",
+    "Nordica Residence residential complex"
+   ],
+   [
+    "/en/apartment-renovation-senat",
+    "Senat residential complex"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/en/apartment-renovation-kyiv-residential-complexes",
+   "Renovation in Kyiv residential complexes"
+  ],
+  [
+   "/en/apartment-renovation",
+   "Apartment renovation in Kyiv"
+  ],
+  [
+   "/en/new-build-renovation",
+   "New-build renovation"
+  ],
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/interior-design",
+   "Interior design"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Apartment furnishing"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Cost calculator"
+  ]
+ ]
+}

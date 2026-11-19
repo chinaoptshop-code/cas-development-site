@@ -566,11 +566,39 @@ BUDGET = {
 }
 
 
+# нові мови (сторінки ЖК мовами, tools/site/zhk1811/gen.py, 18.11.2026): «від» — поза <b> (zh — «起» після суми), ui.py читає data-est
+_BR = {
+    'en': ('from', '', 'm²', ['Turnkey renovation', 'Interior design project', 'Furnishing and fit-out'],
+           'Renovation from $550/m² covers works and rough materials; finishing materials and appliances are extra, per the estimate. A guide based on the studio’s base rates (design — minimum $2,500); the exact figure comes after the site survey and estimate. If CAS does the renovation, the final cost stays within ±5% of the estimate.'),
+    'es': ('desde', '', 'm²', ['Reforma llave en mano', 'Proyecto de diseño', 'Amueblamiento y equipamiento'],
+           'La reforma desde $550/m² incluye mano de obra y materiales de obra; los materiales de acabado y los electrodomésticos van aparte, según presupuesto. Orientación según las tarifas base del estudio (diseño — mínimo $2 500); el importe exacto, tras la medición y el presupuesto. Si la reforma la hace CAS, el total no se desvía del presupuesto más de un ±5%.'),
+    'pl': ('od', '', 'm²', ['Remont pod klucz', 'Projekt wnętrza', 'Umeblowanie i wyposażenie'],
+           'Remont od $550/m² obejmuje robociznę i materiały budowlane; materiały wykończeniowe i AGD — osobno, według kosztorysu. Orientacyjnie według stawek bazowych studia (projekt — minimum $2 500); dokładna kwota — po pomiarze i kosztorysie. Jeśli remont wykonuje CAS, wynik nie odbiega od kosztorysu o więcej niż ±5%.'),
+    'de': ('ab', '', 'm²', ['Schlüsselfertige Renovierung', 'Designprojekt', 'Einrichtung und Ausstattung'],
+           'Renovierung ab $550/m² umfasst Arbeit und Rohbaumaterial; Ausbaumaterial und Haushaltsgeräte separat, laut Kostenvoranschlag. Richtwert nach den Basissätzen des Studios (Design — mindestens $2 500); die genaue Summe nach Aufmaß und Kostenvoranschlag. Renoviert CAS, weicht das Ergebnis höchstens ±5 % vom Kostenvoranschlag ab.'),
+    'fr': ('à partir de', '', 'm²', ['Rénovation clé en main', 'Projet de design intérieur', 'Ameublement et équipement'],
+           'La rénovation à partir de $550/m² comprend la main-d’œuvre et les matériaux de gros œuvre ; matériaux de finition et électroménager en sus, sur devis. Repère selon les tarifs de base du studio (design — minimum $2 500) ; le montant exact après relevé et devis. Si CAS réalise la rénovation, le total ne s’écarte pas du devis de plus de ±5 %.'),
+    'pt': ('a partir de', '', 'm²', ['Remodelação chave na mão', 'Projeto de design de interiores', 'Mobiliário e equipamento'],
+           'A remodelação a partir de $550/m² inclui mão de obra e materiais de base; materiais de acabamento e eletrodomésticos à parte, conforme orçamento. Referência pelas tarifas base do estúdio (design — mínimo $2 500); o valor exato, após medição e orçamento. Se a CAS fizer a remodelação, o total não se desvia do orçamento mais de ±5%.'),
+    'zh': ('', '起', 'm²', ['交钥匙装修', '室内设计方案', '家具软装配套'],
+           '装修 $550/m² 起，含人工与基础材料；饰面材料与家电另计，以预算为准。按工作室基础费率估算（设计最低 $2,500）；准确金额以实地测量和预算为准。由 CAS 施工时，最终费用与预算偏差不超过 ±5%。'),
+    'ar': ('من', '', 'م²', ['تشطيب متكامل', 'مشروع التصميم الداخلي', 'التأثيث والتجهيز'],
+           'التشطيب من $550/م² يشمل الأعمال والمواد الأساسية؛ مواد التشطيب النهائي والأجهزة منفصلة حسب تقدير التكلفة. حساب استرشادي وفق الأسعار الأساسية للاستوديو (التصميم — حدّ أدنى $2 500)؛ المبلغ الدقيق بعد القياس وتقدير التكلفة. إذا نفّذت CAS الأعمال، لا تنحرف التكلفة النهائية عن التقدير بأكثر من ±5%.'),
+}
+for _l, (_pre, _post, _u, _n, _note) in _BR.items():
+    BUDGET[_l] = dict(pre=_pre, post=_post, unit=_u, rows=list(zip(_n, (550, 30, 250))), note=_note)
+
+
 def budget_html(lang, b):
     d, ar = BUDGET[lang], int(b['area'])
     li = []
     for name, r in d['rows']:
         v = max(ar * r, 2500) if r == 30 else ar * r
+        if 'unit' in d:  # нові мови: «від» поза <b>
+            u = d['unit']
+            li.append(f'<li>{e(name)} · <span style="white-space:nowrap">{ar} {u} × {money(r, lang)}/{u}</span> — ' + (f'{e(d["pre"])} ' if d['pre'] else '')
+                      + f'<b data-est="{ar}x{r}" style="color:var(--ac);white-space:nowrap">{money(v, lang)}</b>' + (f' {e(d["post"])}' if d['post'] else '') + '</li>')
+            continue
         li.append(f'<li>{e(name)} · <span style="white-space:nowrap">{ar} м² × {money(r)}/м²</span> — '
                   f'<b data-est="{ar}x{r}" style="color:var(--ac);white-space:nowrap">{d["pre"]} {money(v)}</b></li>')
     return ('<section><div class="w txt">' + f'<h2>{e(b["h2"])}</h2>' + (f'<p>{e(b["p"])}</p>' if b.get('p') else '')

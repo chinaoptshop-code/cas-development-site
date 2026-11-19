@@ -1,0 +1,363 @@
+{
+ "slugs": {
+  "hub": "remont-mieszkan-osiedla-kijow",
+  "novopecherski-lypky": "remont-mieszkania-novopecherski-lypky",
+  "edeldorf-hills": "remont-mieszkania-edeldorf-hills",
+  "triiinity": "remont-mieszkania-triiinity",
+  "taryan-towers": "remont-mieszkania-taryan-towers",
+  "bulvar-fontaniv": "remont-mieszkania-bulvar-fontaniv",
+  "linden-luxury-residences": "remont-mieszkania-linden-luxury-residences",
+  "greenville-pechersk": "remont-mieszkania-greenville-pechersk",
+  "maxima-residence": "remont-mieszkania-maxima-residence",
+  "nordica-residence": "remont-mieszkania-nordica-residence",
+  "hvardiiskyi": "remont-mieszkania-hvardiiskyi",
+  "a136-highlight-tower": "remont-mieszkania-a136-highlight-tower",
+  "montreal-house": "remont-mieszkania-montreal-house",
+  "senat": "remont-mieszkania-senat",
+  "life-story": "remont-mieszkania-life-story",
+  "respublika": "remont-mieszkania-respublika",
+  "podil-hrad": "remont-mieszkania-podil-hrad",
+  "unit-home": "remont-mieszkania-unit-home",
+  "novyi-avtohraf": "remont-mieszkania-novyi-avtohraf",
+  "rusaniv-residence": "remont-mieszkania-rusaniv-residence"
+ },
+ "t": {
+  "name": "Osiedle {n}",
+  "svc": "Remont mieszkania na osiedlu {n}, Kijów",
+  "title": "Remont mieszkania na osiedlu {n}, Kijów — pod klucz | CAS",
+  "desc": "Remont mieszkania pod klucz na osiedlu {n} ({d}, Kijów): projekt wnętrza, remont od $550/m², umeblowanie. Gwarancja 12 miesięcy.",
+  "desc_short": "Remont mieszkania na osiedlu {n} ({d}, Kijów): projekt, remont pod klucz od $550/m², umeblowanie.",
+  "h1": "Remont mieszkania pod klucz na osiedlu {n}",
+  "price": "od $550/m² · projekt, remont i meble w jednej umowie",
+  "hub_short": "Remont na osiedlach Kijowa",
+  "rel": ["Remont mieszkań w Kijowie", "Remont mieszkania deweloperskiego", "Remont pod klucz", "Projektowanie wnętrz", "Umeblowanie mieszkania", "Kalkulator kosztów"],
+  "unit": "m²",
+  "area_from": "od {a} {u}",
+  "area_plus": "{s} i większe",
+  "ref": "Informacyjnie: {x}. Nie reprezentujemy dewelopera ani zarządcy budynku — pracujemy bezpośrednio z właścicielem mieszkania.",
+  "ref_dev": "deweloper — {dev}",
+  "ref_addr": "adres — {addr}",
+  "sep": ", ",
+  "ref_none": "Nie reprezentujemy dewelopera ani zarządcy budynku — pracujemy bezpośrednio z właścicielem mieszkania.",
+  "dist": {"pechersk": "dzielnica Peczerska", "holosiiv": "dzielnica Hołosijiwska", "podil": "dzielnica Podilska", "shevchenko": "dzielnica Szewczenkiwska", "dnipro": "dzielnica Dniprowska"},
+  "dist_h2": {"pechersk": "Dzielnica Peczerska", "holosiiv": "Dzielnica Hołosijiwska", "podil": "Dzielnica Podilska", "shevchenko": "Dzielnica Szewczenkiwska", "dnipro": "Dzielnica Dniprowska"},
+  "budget_h2": "Orientacyjny budżet dla mieszkania {a} m²",
+  "budget_p": "Dla mieszkania {a} m² orientacyjne koszty według naszych stawek bazowych:",
+  "price_q": "Ile kosztuje remont mieszkania na osiedlu {n}?",
+  "price_a": "Remont pod klucz — od $550/m² (robocizna i materiały budowlane; materiały wykończeniowe, meble i AGD — osobno, według kosztorysu), projekt wnętrza — od $30/m² (minimum $2 500), umeblowanie — od $250/m². Wyliczenie dla mieszkania {a} m² znajduje się w bloku z orientacyjnym budżetem powyżej; dokładną kwotę ustalamy w kosztorysie po oględzinach.",
+  "faq_common": [
+   ["Jaka jest gwarancja na remont?", "Oddajemy mieszkanie z protokołem odbioru; na wykonane prace obowiązuje gwarancja 12 miesięcy."],
+   ["Czy mogę śledzić remont zdalnie?", "Tak. Wysyłamy fotorelacje z budowy przez Telegram, a cenę, terminy i etapy płatności zapisujemy w umowie."]
+  ],
+  "near": "Remont na innych osiedlach Kijowa",
+  "cards": {
+   "turnkey": ["Remont pod klucz", ["oględziny mieszkania po deweloperze i pomiary", "prace budowlane i wykończeniowe", "elektryka, hydraulika, wentylacja", "uzgodnienie prac z zarządcą"]],
+   "design": ["Projekt wnętrza", ["układ i ustawienie mebli", "wizualizacje 3D pomieszczeń", "rysunki wykonawcze dla ekipy", "specyfikacja i kosztorys"]],
+   "furnish": ["Umeblowanie i wyposażenie", ["meble na wymiar i z Chin", "oświetlenie i AGD", "tekstylia i dekoracje", "stylizacja przed wprowadzeniem się"]],
+   "large": ["Duży metraż", ["kilka stref klimatyzacji", "wentylacja z rekuperacją", "inteligentny dom i sceny świetlne", "garderoby i pomieszczenia techniczne"]],
+   "duplex": ["Mieszkanie dwupoziomowe", ["schody według indywidualnego projektu", "osobne instalacje dla każdego poziomu", "wygłuszenie stropu", "oświetlenie klatki schodowej"]],
+   "tower": ["Logistyka w wieżowcu", ["sprawdzenie wymiarów windy i otworów", "dostawy partiami według harmonogramu budynku", "zabezpieczenie holi i wind", "wywóz gruzu"]],
+   "terrace": ["Taras", ["kontrola hydroizolacji i spadków", "mrozoodporna nawierzchnia", "wodoodporne oświetlenie i gniazdka", "meble ogrodowe i zieleń"]],
+   "newbuild": ["Po deweloperze", ["kontrola geometrii ścian i podłogi", "audyt elektryki, wody i wentylacji", "przygotowanie podłoża pod płytki", "dylatacje z uwzględnieniem osiadania"]]
+  },
+  "cls_l": "Klasa",
+  "cls": {"b": "biznes", "p": "premium", "bp": "biznes/premium", "cb": "komfort/biznes"},
+  "feat": {"many100": "wiele mieszkań 100+ m² i dwupoziomowych", "duplex_terr": "są dwupoziomowe z tarasami", "duplex_terr2": "są dwupoziomowe i z tarasami", "4room": "są czteropokojowe", "duplex": "dwupoziomowe"},
+  "addr_l": "Adres",
+  "dev_l": "Deweloper — {dev}.",
+  "more": "Szczegóły"
+ },
+ "hub": {
+  "service": "Remont mieszkań na osiedlach Kijowa",
+  "title": "Remont mieszkań na osiedlach Kijowa — pod klucz | CAS",
+  "description": "Remont mieszkań pod klucz na osiedlach Kijowa: Peczersk, Hołosijiw, Podil, dzielnice Szewczenkiwska i Dniprowska. Projekt od $30/m², remont od $550/m².",
+  "h1": "Remont mieszkań na osiedlach Kijowa",
+  "lead": "19 osiedli mieszkaniowych Kijowa, od klasy komfort do premium: dla każdego — co uwzględnić przy remoncie mieszkania w takim formacie i orientacyjny budżet. Wybierz swoje osiedle albo zostaw zgłoszenie.",
+  "s1": ["Remonty w nowym budownictwie klasy biznes i premium", [
+   "Mieszkanie na nowoczesnym osiedlu to nie tylko metry, ale też zasady budynku: uzgodnienie prac z zarządcą, godziny głośnych prac, kolejka do windy towarowej i wywóz gruzu. Uwzględniamy je jeszcze przed startem, a projekt, remont i meble prowadzi jeden zespół w jednej umowie.",
+   "Poniżej — osiedla Kijowa, dla których przygotowaliśmy osobne strony: co uwzględnić przy remoncie mieszkań tej klasy i metrażu oraz orientacyjny budżet według naszych stawek. Dane o osiedlach są informacyjne, z otwartych źródeł; nie reprezentujemy deweloperów i pracujemy bezpośrednio z właścicielami mieszkań."
+  ]],
+  "s2": ["Co łączy remonty mieszkań na osiedlach", [
+   "Stawki są takie same dla wszystkich osiedli: remont pod klucz — od $550/m² (robocizna i materiały budowlane; materiały wykończeniowe, meble i AGD — osobno, według kosztorysu), projekt wnętrza — od $30/m² (minimum $2 500), umeblowanie — od $250/m². Jeśli remont wykonuje CAS, wynik nie odbiega od kosztorysu o więcej niż ±5%, a na prace obowiązuje gwarancja 12 miesięcy.",
+   "Różnica tkwi w formacie mieszkań: dwupoziomowe wymagają schodów i osobnych instalacji na każdym poziomie, tarasy — kontroli hydroizolacji, duże metraże — przemyślanej wentylacji i klimatyzacji, kompaktowe — precyzyjnych mebli w zabudowie."
+  ]],
+  "gal": "Nasze projekty mieszkań",
+  "faq": ["Pytania i odpowiedzi", [
+   ["Mojego osiedla nie ma na liście — czy tam pracujecie?", "Tak, remontujemy mieszkania na każdym osiedlu w Kijowie i obwodzie. Lista obejmuje tylko kompleksy, dla których przygotowaliśmy osobne strony z poradami."],
+   ["Ile kosztuje remont mieszkania na osiedlu?", "Remont pod klucz — od $550/m² (robocizna i materiały budowlane; materiały wykończeniowe, meble i AGD — osobno, według kosztorysu), projekt wnętrza — od $30/m² (minimum $2 500), umeblowanie — od $250/m². Dokładną kwotę ustalamy w kosztorysie po oględzinach."],
+   ["Kto uzgadnia remont z zarządcą?", "My. Zwykle potrzebna jest lista prac, harmonogram i dane ekipy; uzgadniamy też windę towarową i wywóz gruzu."],
+   ["Czy można zacząć projekt przed odbiorem kluczy?", "Tak, na podstawie rzutu mieszkania od dewelopera. Po uzyskaniu dostępu wykonujemy pomiary kontrolne i wchodzimy na budowę z gotowymi rysunkami."]
+  ]],
+  "rel": "Inne usługi",
+  "rel_names": ["Mieszkanie na Peczersku", "Remont premium", "Projektowanie wnętrz premium"],
+  "apt_link": "Remont na osiedlach Kijowa"
+ },
+ "zhk": {
+  "novopecherski-lypky": {
+   "addr": "ul. Andrija Werchohlada",
+   "lead": "Novopecherski Lypky to kwartał klasy biznes i premium na Peczersku, gdzie jest wiele mieszkań powyżej 100 m² i dwupoziomowych. Bierzemy taki obiekt od pomiarów i projektu wnętrza po meble i odbiór z protokołem.",
+   "h2": "Co uwzględnić przy remoncie mieszkania w Novopecherski Lypky",
+   "p": [
+    "Według danych dewelopera — City One Development (Stolitsa Group) — metraże wynoszą tu od 50,6 do 225,7 m², a znaczna część mieszkań ma ponad 100 m² lub dwa poziomy. W takich mieszkaniach układ jest ważniejszy niż wykończenie: gdzie będzie strefa prywatna, a gdzie gościnna, jak poprowadzić schody, ile łazienek potrzeba i gdzie ukryć pomieszczenia techniczne.",
+    "W mieszkaniu dwupoziomowym projektujemy instalacje od razu dla obu kondygnacji: osobne obiegi ogrzewania i klimatyzacji, wentylację łazienek, wygłuszenie stropu pod sypialniami. Schody to osobny element: zamawia się je po pracach budowlanych, a marki osadza wcześniej.",
+    "W budynkach tej klasy zwykle obowiązują zasady zarządcy: uzgodnienie projektu prac, godziny głośnych prac, korzystanie z windy towarowej i wywóz gruzu. Poznajemy je przed startem i wpisujemy w harmonogram, by remont nie stał przez przepustki czy zakazy."
+   ],
+   "faq": [
+    ["Czy remontujecie mieszkania dwupoziomowe?", "Tak. Projektujemy oba poziomy razem: schody, instalacje, wygłuszenie stropu i oświetlenie klatki schodowej. Schody i meble w zabudowie zamawiamy według pomiarów po pracach budowlanych."],
+    ["Jak uzgadnia się remont z zarządcą?", "Zwykle zarządca prosi o projekt lub listę prac, harmonogram i dane ekipy. Przygotowujemy dokumenty, uzgadniamy godziny głośnych prac, windę towarową i wywóz gruzu przed rozpoczęciem remontu."]
+   ]
+  },
+  "edeldorf-hills": {
+   "addr": "",
+   "lead": "Edeldorf Hills to nowa inwestycja klasy premium od Futura Hata na Peczersku. Jeśli odebrałeś klucze i planujesz remont, przeprowadzimy cię od pustego mieszkania do gotowego wnętrza w jednej umowie.",
+   "h2": "Remont w nowym budynku premium: od czego zacząć",
+   "p": [
+    "Mieszkanie w świeżo oddanym budynku to czysta karta, ale też okres, gdy remontują jednocześnie dziesiątki sąsiadów. Kolejki do windy towarowej, ograniczone godziny głośnych prac i zasady wnoszenia materiałów zwykle ustala zarządca — planujemy dostawy pod nie, a nie odwrotnie.",
+    "Zanim postawimy ściany, sprawdzamy, co przekazał deweloper: geometrię ścian i stropów, wylewkę lub jej brak, przyłącza prądu i wody, położenie kanałów wentylacyjnych. Od tego zależy, czy można przenieść strefy mokre, gdzie stanie wyspa kuchenna i ile będzie kosztować wyrównanie.",
+    "Nowy monolit osiada, dlatego w projekcie przewidujemy dylatacje, właściwe przygotowanie podłoża pod wielkoformatowe płytki i malowanie po ustabilizowaniu się ścian. Dzięki temu w wnętrzu premium po roku nie pojawiają się pęknięcia na łączeniach."
+   ],
+   "faq": [
+    ["Kiedy zacząć remont w Edeldorf Hills?", "Projekt wnętrza można zrobić jeszcze przed odbiorem kluczy — na podstawie rzutu od dewelopera. Gdy tylko pojawi się dostęp, wykonujemy pomiary kontrolne i ruszamy z gotowymi rysunkami."],
+    ["Co sprawdzacie po deweloperze?", "Geometrię ścian i podłogi, przyłącza prądu i wody, wentylację, okna i ościeża. Wyniki uwzględniamy w projekcie i kosztorysie, by nie płacić dwa razy za poprawki."]
+   ]
+  },
+  "triiinity": {
+   "addr": "ul. Wasyla Tiutiunnyka 39/2",
+   "lead": "TRIIINITY to osiedle klasy premium od Seven Hills przy ul. Wasyla Tiutiunnyka. Mieszkania mają tu od 53 do 125 m², a dla każdego formatu oferujemy pełen cykl: projekt, remont i meble jednym zespołem.",
+   "h2": "Remont mieszkania w TRIIINITY: formaty kompaktowe i duże",
+   "p": [
+    "Zakres 53–125 m² oznacza dwa różne scenariusze. W mieszkaniu 53–60 m² kluczowe jest zmieszczenie pełnego salonu z kuchnią, garderoby i wygodnej łazienki bez poczucia ciasnoty: pomagają meble w zabudowie do sufitu, ukryte drzwi i przemyślane światło. W mieszkaniach 100+ m² jest miejsce na sypialnię główną z łazienką, gabinet i osobną pralnię.",
+    "Segment premium zakłada instalacje, które widać tylko w komforcie: cichą klimatyzację z ukrytymi jednostkami, ogrzewanie podłogowe w łazienkach, inteligentne sterowanie światłem. Projektujemy je na etapie projektu, by nie kuć gotowych ścian.",
+    "Budynek tego poziomu zwykle ma zasady remontów od zarządcy — dotyczące godzin pracy, ochrony części wspólnych i wywozu gruzu. Uwzględniamy je w harmonogramie od pierwszego dnia."
+   ],
+   "faq": [
+    ["Jak sprawić, by małe mieszkanie było premium?", "Przez układ i detale: szafy w zabudowie do sufitu, ukryte drzwi, dobre światło i ograniczoną paletę materiałów. Zapisujemy to w projekcie przed startem remontu."],
+    ["Czy można ukryć klimatyzatory i wentylację?", "Tak, jeśli przewidzi się to w projekcie: systemy kanałowe lub kasetonowe, klapy rewizyjne, sufity podwieszane. Uzgadniamy rozwiązanie z wymaganiami budynku co do elewacji i instalacji."]
+   ]
+  },
+  "taryan-towers": {
+   "addr": "ul. Jana Pawła II 12",
+   "lead": "Taryan Towers to wysokościowy kompleks klasy premium od Taryan Group przy ul. Jana Pawła II. Remontujemy mieszkania tego poziomu pod klucz: od układu i 3D po meble, światło i tekstylia.",
+   "h2": "Specyfika remontu mieszkania w wieżowcu premium",
+   "p": [
+    "W wieżowcu logistyka remontu to osobne zadanie. Materiały i meble jadą windą towarową według harmonogramu, a duże elementy — fronty kuchenne, kamienne blaty, płytki wielkoformatowe — wcześniej sprawdzamy pod kątem wymiarów windy i otworów drzwiowych. Bez tego łatwo zamówić płytę, która nie dojedzie do mieszkania.",
+    "Mieszkania w Taryan Towers mają od 62–87 m² i więcej. W średnich metrażach zwykle szukamy równowagi: duży salon z kuchnią, dwie sypialnie i dość miejsca do przechowywania. W większych — strefowania i drugiej łazienki.",
+    "Przeszklenia na wysokości dają dużo światła i piękne widoki, dlatego w projekcie uwzględniamy ochronę przed słońcem, zasłony z napędem i komfort termiczny. Zasady remontu zwykle ustala zarządca — uzgadniamy je przed rozpoczęciem prac."
+   ],
+   "faq": [
+    ["Jak dostarczacie duże meble i kamień do wieżowca?", "Sprawdzamy wymiary windy towarowej i otworów już na etapie projektu, dzielimy duże elementy na sekcje, a dostawę uzgadniamy z harmonogramem budynku."],
+    ["Czy zajmujecie się zasłonami i ochroną przed słońcem?", "Tak, w ramach wyposażenia: karnisze z napędem, rolety, tkaniny przeciwsłoneczne. Wnęki na karnisze przewidujemy w suficie już podczas remontu."]
+   ]
+  },
+  "bulvar-fontaniv": {
+   "addr": "ul. Jana Pawła II 6/1",
+   "lead": "Bulvar Fontaniv to osiedle klasy premium przy ul. Jana Pawła II 6/1, z mieszkaniami od 64 do 156 m². Remontujemy pod klucz: projekt, prace budowlane, meble i dekoracje.",
+   "h2": "Remont mieszkania w Bulvar Fontaniv: na co zwrócić uwagę",
+   "p": [
+    "Przy 64–156 m² chodzi nie tylko o liczbę pokoi, ale o sposób życia. Rodzina z dziećmi potrzebuje osobnych pokoi dziecięcych, drugiej łazienki i garderoby przy wejściu; para — przestronnego salonu z kuchnią, gabinetu i pokoju gościnnego. Warianty układu pokazujemy na pierwszych etapach projektu.",
+    "W mieszkaniach powyżej 100 m² wydłużają się trasy instalacji, dlatego wentylację, klimatyzację i elektrykę projektujemy razem z meblami: tam, gdzie stoi łóżko, nie wieje klimatyzator, a gniazdka i podświetlenie pasują do zabudowy.",
+    "Zarządca w takim kompleksie zwykle ma wymagania: uzgodnione godziny prac, zabezpieczenie holi i wind, wywóz gruzu w workach. Bierzemy to na siebie."
+   ],
+   "faq": [
+    ["Czy można zmienić układ mieszkania?", "W granicach, na które pozwala konstrukcja budynku i przepisy: nie przenosimy ścian nośnych ani stref mokrych nad pokoje sąsiadów. Warianty sprawdzamy na etapie projektu."],
+    ["Ile trwa remont mieszkania powyżej 100 m²?", "Zależy od złożoności projektu i harmonogramu budynku. Termin zapisujemy w umowie, od 2 tygodni; ustalamy go po projekcie i kosztorysie."]
+   ]
+  },
+  "linden-luxury-residences": {
+   "addr": "ul. Luterańska 14w",
+   "lead": "Linden Luxury Residences to klubowy budynek klasy premium od Budhouse Group przy ul. Luterańskiej, z mieszkaniami od 75 do 556 m². Przy takich obiektach remont to przede wszystkim projekt i koordynacja dziesiątek wykonawców — bierzemy to na siebie.",
+   "h2": "Remont dużego mieszkania w historycznym centrum",
+   "p": [
+    "Metraże wynoszą tu od 75 do 556 m², czyli od miejskiego mieszkania po rezydencję z kilkoma sypialniami, gabinetem, garderobami i strefą gościnną. Na dużych powierzchniach wnętrze opiera się na systemie: jednej logice materiałów, światła i drzwi we wszystkich pomieszczeniach, inaczej przestrzeń rozpada się na osobne «wyspy».",
+    "Im większe mieszkanie, tym więcej instalacji: kilka stref klimatyzacji, wentylacja z rekuperacją, uzdatnianie wody, inteligentny dom, czasem sauna lub hammam. Projektujemy je razem z wnętrzem, a nie po nim, by szafy techniczne i rewizje nie pojawiały się na środku salonu.",
+    "Centrum miasta i format klubowy oznaczają uważność wobec sąsiadów: zarządca zwykle ściśle reguluje godziny głośnych prac, dostawy materiałów i wywóz gruzu. Planujemy harmonogram tak, by te ograniczenia nie wydłużały remontu."
+   ],
+   "faq": [
+    ["Kto koordynuje wykonawców przy dużym obiekcie?", "My. Projekt, prace budowlane, instalacje, meble i światło — w jednej umowie, z jednym odpowiedzialnym menedżerem i fotorelacjami w Telegramie."],
+    ["Czy robicie wentylację z rekuperacją i inteligentny dom?", "Tak, uwzględniamy je w projekcie razem z wnętrzem: trasy, rewizje, rozdzielnice i sceny sterowania światłem i klimatem."]
+   ]
+  },
+  "greenville-pechersk": {
+   "addr": "zaułek Nowopeczerski 5",
+   "lead": "Greenville na Pechersku to kompleks klasy biznes w zaułku Nowopeczerskim z mieszkaniami od ok. 73 m², wśród których są dwupoziomowe z tarasami. Remontujemy pod klucz z uwzględnieniem wszystkich tych formatów.",
+   "h2": "Taras i drugi poziom: co uwzględnić w remoncie",
+   "p": [
+    "Taras to najbardziej wrażliwe miejsce mieszkania. Przed wykończeniem sprawdzamy hydroizolację i spadki wykonane przez dewelopera i nie naruszamy ich mocowaniem mebli czy lamp. Nawierzchnię dobieramy mrozoodporną, z właściwym odwodnieniem, a oświetlenie i gniazdka — w wersji wodoodpornej.",
+    "Mieszkanie dwupoziomowe wymaga przemyślanych schodów i strefowania: zwykle na dole salon z kuchnią i WC dla gości, na górze sypialnie i łazienki. Strop między poziomami wzmacniamy wygłuszeniem, a wentylację i klimatyzację prowadzimy osobno dla każdej kondygnacji.",
+    "Metraże od ok. 73 m² pozwalają zmieścić dwie-trzy sypialnie. Zarządca klasy biznes zwykle uzgadnia harmonogram prac i tryb dostaw materiałów — przygotowujemy te dokumenty przed startem."
+   ],
+   "faq": [
+    ["Co robicie z tarasem?", "Sprawdzamy hydroizolację i odwodnienie, dobieramy mrozoodporną nawierzchnię, oświetlenie zewnętrzne, meble i zieleń. Niczego nie mocujemy tak, by uszkodzić warstwę hydroizolacji."],
+    ["Jak projektujecie schody w mieszkaniu dwupoziomowym?", "Projektujemy je razem z wnętrzem: konstrukcję, balustradę i podświetlenie. Zamawiamy według dokładnych pomiarów po pracach budowlanych."]
+   ]
+  },
+  "maxima-residence": {
+   "addr": "ul. Jewhena Konowalca 30",
+   "lead": "Maxima Residence to kompleks klasy biznes od RIEL i Bosphorus Development przy ul. Jewhena Konowalca, z mieszkaniami od 50 do 181 m². Prowadzimy remont pod klucz: projekt, prace, meble i odbiór z protokołem.",
+   "h2": "Remont mieszkania w Maxima Residence: od kawalerki po duże",
+   "p": [
+    "W kompleksie są zarówno kompaktowe mieszkania ok. 50 m², jak i duże — do 181 m². W małym mieszkaniu kluczowa jest ergonomia: salon z kuchnią z wyspą lub barem, wnęka na pralkę, garderoba zamiast osobnego pokoju. W dużym — strefowanie, druga łazienka i miejsce na gabinet.",
+    "Wielu właścicieli w klasie biznes remontuje pod wynajem. Wtedy radzimy materiały odporne na zużycie, neutralną paletę i meble łatwe w utrzymaniu — mieszkanie dłużej wygląda jak nowe i szybciej znajduje najemcę.",
+    "W nowym budynku zarządca zwykle ustala godziny głośnych prac i zasady korzystania z windy. Uwzględniamy to w harmonogramie, a gruz wywozimy sami."
+   ],
+   "faq": [
+    ["Czy remontujecie pod wynajem?", "Tak. Dobieramy odporne materiały, praktyczne meble i neutralne wnętrze, które podoba się większości najemców. Możemy w pełni wyposażyć mieszkanie przed wprowadzeniem."],
+    ["Czy można zacząć od projektu, a o remoncie zdecydować później?", "Tak, projekt wnętrza to osobna usługa od $30/m². Ale gwarancja kosztorysu ±5% obowiązuje tylko wtedy, gdy remont wykonuje CAS."]
+   ]
+  },
+  "nordica-residence": {
+   "addr": "Szosa Kolejowa 45A",
+   "lead": "Nordica Residence to kompleks klasy biznes od RIEL przy Szosie Kolejowej (Zaliznychne). Jeśli planujesz tu remont mieszkania, zrobimy go pod klucz: od projektu po meble i tekstylia.",
+   "h2": "Skandynawska powściągliwość i praktyczność w remoncie",
+   "p": [
+    "Nazwa kompleksu podpowiada kierunek bliski wielu tutejszym właścicielom: jasne ściany, naturalne drewno, minimum dekoracji i dużo ukrytego przechowywania. Takie wnętrze wygląda prosto, ale wymaga precyzyjnego wykonania — równych ścian, starannych połączeń i przemyślanego światła, bo na gładkich powierzchniach widać każdą falę.",
+    "W mieszkaniach klasy biznes o średnim metrażu radzimy szafy w zabudowie w przedpokoju i sypialniach, kuchnię do sufitu i osobną wnękę na pralkę — to uwalnia pokoje od zbędnych mebli. Wszystko zapisujemy w projekcie z dokładnością do centymetra.",
+    "Podczas remontu w nowym budynku zwykle obowiązują zasady zarządcy dotyczące godzin głośnych prac, zabezpieczenia wind i wywozu gruzu. Poznajemy je na starcie i przestrzegamy."
+   ],
+   "faq": [
+    ["Czy robicie wnętrza w stylu skandynawskim?", "Tak. Dobieramy jasne materiały, naturalne drewno, ukryte systemy przechowywania i ciepłe światło. Styl wybierasz ty — my tylko doradzamy, co będzie praktyczne."],
+    ["Co obejmuje remont pod klucz?", "Prace budowlane i wykończeniowe, elektrykę, hydraulikę, wentylację, drzwi, płytki, malowanie, montaż kuchni i mebli. Umeblowanie i dekoracje — na życzenie."]
+   ]
+  },
+  "hvardiiskyi": {
+   "addr": "ul. Generała Ałmazowa",
+   "lead": "Hvardiiskyi to kompleks klasy biznes i premium od Kyivmiskbud przy ul. Generała Ałmazowa w dzielnicy Peczerskiej. Remontujemy mieszkania pod klucz z projektem wnętrza i umeblowaniem.",
+   "h2": "Remont mieszkania w Hvardiiskyi: cichy Peczersk i klasyczne formaty",
+   "p": [
+    "Kompleks leży w zielonej części Peczerska, a wielu właścicieli chce zachować to wrażenie także w środku: spokojne naturalne barwy, drewno, tekstylia, miękkie światło. W klasycznym wnętrzu ważna jest precyzja detali — sztukaterie, gzymsy, wysokie drzwi — dlatego zapisujemy je w rysunkach.",
+    "W mieszkaniach klasy biznes i premium warto od razu przewidzieć dobre wygłuszenie między pokojami i w łazienkach, osobne obwody pod AGD i klimatyzatory oraz rozdzielnicę z zapasem na przyszłe potrzeby.",
+    "Zarządca zwykle określa godziny prac remontowych i tryb wywozu gruzu. Uwzględniamy te zasady w harmonogramie i odpowiadamy za porządek w częściach wspólnych."
+   ],
+   "faq": [
+    ["Czy robicie klasyczne wnętrza ze sztukaterią?", "Tak. W rysunkach zapisujemy profile, rozmieszczenie listew, gzymsy i drzwi, a wykonanie sprawdzamy na każdym etapie."],
+    ["Czy sąsiedzi mogą normalnie mieszkać w trakcie remontu?", "Pracujemy według harmonogramu budynku i zabezpieczamy części wspólne. Nie przeszkadzamy sąsiadom poza dozwolonymi godzinami."]
+   ]
+  },
+  "a136-highlight-tower": {
+   "addr": "ul. Antonowycza 136–138",
+   "lead": "A136 Highlight Tower to wieżowiec klasy biznes przy ul. Antonowycza 136–138. Nasze biuro też jest przy Antonowycza, więc do obiektu mamy blisko. Remontujemy mieszkania pod klucz z projektem wnętrza i meblami.",
+   "h2": "Remont mieszkania w wieżowcu przy Antonowycza",
+   "p": [
+    "W wieżowcu mieszkanie dostaje dużo światła i widoki, a wraz z nimi zadania: ochronę przed słońcem, klimatyzację bez przeciągów, zasłony czy rolety, które nie zasłaniają widoku. Te rozwiązania przemyślamy w projekcie, a nie po wprowadzeniu się.",
+    "Logistyka w wieżowcu to osobny temat. Materiały wjeżdżają windą towarową w uzgodnionych godzinach, a płyty wielkoformatowe i blaty wcześniej porównujemy z wymiarami windy. Gruz wywozimy sami, nie zostawiając go w holach.",
+    "Zarządca klasy biznes zwykle ma regulamin remontów: godziny głośnych prac, zabezpieczenie wind i części wspólnych. Zapoznajemy się z nim przed startem i go przestrzegamy."
+   ],
+   "faq": [
+    ["Gdzie jest wasze biuro?", "Przy ul. Antonowycza 44 w Kijowie. Możemy spotkać się w biurze lub na obiekcie."],
+    ["A co z ochroną przed słońcem w mieszkaniu z dużymi oknami?", "Dobieramy zasłony, rolety lub żaluzje z napędem, przewidujemy wnęki na karnisze i planujemy rozmieszczenie klimatyzatorów."]
+   ]
+  },
+  "montreal-house": {
+   "addr": "ul. Wełyka Wasylkiwska",
+   "lead": "Montreal House to kompleks klasy biznes od Alliance Novobud przy ul. Wełyka Wasylkiwska, z mieszkaniami od 51 do 78 m² i większymi. Remontujemy pod klucz — dla siebie i pod wynajem.",
+   "h2": "Remont mieszkania 51–78 m² w centrum",
+   "p": [
+    "Mieszkania średniej wielkości w centrum to popularny format i dla siebie, i pod wynajem. Przy 51–60 m² zwykle wybiera się salon z kuchnią i osobną sypialnię z garderobą; przy 70–78 m² — dwie sypialnie i drugą łazienkę. Ostateczną decyzję podejmujemy po pomiarach i kilku wariantach układu.",
+    "Centrum to hałas ulicy, dlatego radzimy dobre okna, uszczelnienie ościeży i wygłuszenie ścian w sypialniach. Pod wynajem — odporną podłogę, farby zmywalne i meble łatwe w utrzymaniu.",
+    "Remont w budynku klasy biznes zwykle uzgadnia się z zarządcą: harmonogram prac, korzystanie z windy, wywóz gruzu. Tę część bierzemy na siebie."
+   ],
+   "faq": [
+    ["Jak ograniczyć hałas z ulicy?", "Sprawdzamy okna i ościeża, w razie potrzeby wzmacniamy wygłuszenie ścian sypialni, dobieramy gęste zasłony. Rozwiązania zapisujemy w projekcie."],
+    ["Czy remontujecie mieszkania w centrum pod wynajem?", "Tak, z praktycznymi materiałami i pełnym wyposażeniem: meble, AGD, tekstylia — przed wprowadzeniem się najemcy."]
+   ]
+  },
+  "senat": {
+   "addr": "Kilcewa doroha 3",
+   "lead": "Senat to kompleks klasy biznes od GEOS przy Kilcewa doroha 3. Jest tu wszystko — od kompaktowych mieszkań 34 m² po 94 m², dwupoziomowe i z tarasami. Dobieramy rozwiązania do każdego formatu i remontujemy pod klucz.",
+   "h2": "Od kompaktowego mieszkania po dwupoziomowe z tarasem",
+   "p": [
+    "W mieszkaniu 34–45 m² najważniejsza jest wielofunkcyjność: łóżko na podeście lub wnęka z zasłoną, kuchnia z AGD do zabudowy, szafy do sufitu, lustra optycznie powiększające przestrzeń. To właśnie w małych mieszkaniach projekt zwraca się najszybciej — błędy w wymiarach są tu najdroższe.",
+    "Mieszkania dwupoziomowe i z tarasami wymagają innego podejścia: schodów, wygłuszenia stropu, hydroizolacji i odwodnienia tarasu, oświetlenia i gniazdek zewnętrznych. Te węzły rozpisujemy w rysunkach osobno.",
+    "Zarządca kompleksu zwykle ustala regulamin remontów — godziny głośnych prac i tryb wywozu gruzu. Przestrzegamy go i uzgadniamy szczegóły przed startem."
+   ],
+   "faq": [
+    ["Czy warto robić projekt dla małego mieszkania?", "Tak: na małej powierzchni liczy się każdy centymetr, a błędy w wymiarach mebli czy gniazdek kosztują najwięcej. Projekt — od $2 500."],
+    ["Co robicie z tarasem?", "Sprawdzamy hydroizolację i spadki, dobieramy mrozoodporną nawierzchnię, wodoodporne oświetlenie i gniazdka oraz meble ogrodowe."]
+   ]
+  },
+  "life-story": {
+   "addr": "ul. Metrołohiczna 13",
+   "lead": "Life Story to kompleks klasy biznes od LEV Development przy ul. Metrołohicznej 13, z mieszkaniami od 49,93 m². Remontujemy pod klucz dla rodzin, które chcą wprowadzić się do gotowego, przemyślanego wnętrza.",
+   "h2": "Remont rodzinnego mieszkania na Hołosijiwie",
+   "p": [
+    "Hołosijiw z parkami i lasami wybiera się dla spokojnego życia rodzinnego, a wnętrze powinno to wspierać: praktyczne nawierzchnie odporne na dzieci i zwierzęta, dużo miejsca do przechowywania, kuchnia wygodna do codziennego gotowania.",
+    "W mieszkaniach od 50 m² często pojawia się wybór: dwa osobne pokoje czy przestronny salon z kuchnią. Pokazujemy kilka wariantów układu i ustawiamy meble, by decyzja zapadła na rysunku, a nie po remoncie.",
+    "Remont w nowym budynku klasy biznes zwykle przebiega według zasad zarządcy — co do godzin głośnych prac, wind i wywozu gruzu. Planujemy pracę z ich uwzględnieniem."
+   ],
+   "faq": [
+    ["Jakie materiały wybrać dla rodziny z dziećmi i zwierzętami?", "Odporne: winyl kwarcowy lub płytki na podłodze, farby zmywalne, tkaniny odporne na plamy. Dobieramy je w specyfikacji projektu."],
+    ["Czy możecie umeblować mieszkanie?", "Tak, umeblowanie — od $250/m²: meble, światło, AGD, tekstylia i dekoracje według projektu wnętrza."]
+   ]
+  },
+  "respublika": {
+   "addr": "Kilcewa doroha 1",
+   "lead": "Respublika to duże osiedle klasy komfort i biznes od KAN Development przy Kilcewa doroha 1. Remontujemy mieszkania pod klucz ze stałym kosztorysem i gwarancją 12 miesięcy.",
+   "h2": "Remont mieszkania na dużym osiedlu",
+   "p": [
+    "W kompleksie tej skali mieszkania są bardzo różne, ale właścicieli łączy jedno: chcą przewidywalnego budżetu. Dlatego zaczynamy od projektu i kosztorysu, w którym każda pozycja ma cenę, a jeśli remont wykonuje nasz zespół, wynik nie odbiega od kosztorysu o więcej niż ±5%.",
+    "W mieszkaniach klasy komfort i biznes radzimy inwestować w to, co trudno zmienić później: elektrykę z zapasem, dobrą hydroizolację łazienki, równe ściany i właściwy układ. Dekoracje i część mebli można wymienić później bez remontu.",
+    "Na dużym osiedlu wiele mieszkań remontuje się jednocześnie, a zarządca zwykle reguluje godziny głośnych prac, windy i wywóz gruzu. Planujemy dostawy tak, by nie tracić czasu w kolejkach."
+   ],
+   "faq": [
+    ["Jak nie przekroczyć budżetu?", "Ustalamy kosztorys przed startem. Jeśli remont wykonuje CAS, wynik nie odbiega od kosztorysu o więcej niż ±5%."],
+    ["Co warto zrobić porządnie od razu, a co można odłożyć?", "Od razu — elektrykę, hydraulikę, hydroizolację, wyrównanie i układ. Dekoracje, część mebli i tekstylia można dokupić później."]
+   ]
+  },
+  "podil-hrad": {
+   "addr": "ul. Kożumiacka / Dehtiarna",
+   "lead": "Podil Hrad to kompleks klasy biznes od Kyivmiskbud przy ulicach Kożumiackiej i Dehtiarnej, w samym sercu Podołu. Mieszkania mają tu od 65,5 do 79 m², są też czteropokojowe — i każde wyremontujemy pod klucz.",
+   "h2": "Jak zmieścić cztery pokoje na 79 m²",
+   "p": [
+    "Mieszkanie czteropokojowe do 79 m² to kompaktowe pokoje, w których każdy metr musi pracować. Pomagają szafy w zabudowie zamiast wolnostojących, drzwi przesuwne, łóżka z systemami przechowywania i kuchnia do sufitu. Ustawiamy meble już w projekcie, by w każdym pokoju zostało przejście i naturalne światło.",
+    "W mieszkaniach 65–79 m² często opłaca się połączyć kuchnię z salonem i zostawić dwie-trzy osobne sypialnie. Warianty sprawdzamy z uwzględnieniem konstrukcji budynku: nie przenosimy ścian nośnych ani stref mokrych.",
+    "Historyczny Podół to wąskie ulice i ograniczenia dla transportu towarowego, dlatego dostawy materiałów planujemy z wyprzedzeniem. Zasady remontu w budynku zwykle ustala zarządca — przestrzegamy ich."
+   ],
+   "faq": [
+    ["Jak urządzić wygodnie czteropokojowe mieszkanie na niewielkim metrażu?", "Dzięki przemyślanemu układowi i meblom w zabudowie: szafom do sufitu, drzwiom przesuwnym, łóżkom z szufladami, kompaktowej kuchni z wyspą. Wszystko ustawiamy już w projekcie."],
+    ["Jak dostarczacie materiały na Podół?", "Planujemy dostawy z uwzględnieniem wąskich ulic i zasad budynku, duże elementy wwozimy w uzgodnionych godzinach."]
+   ]
+  },
+  "unit-home": {
+   "addr": "ul. Garetha Jonesa 8/12",
+   "lead": "UNIT.Home to osiedle klasy biznes od UDP przy ul. Garetha Jonesa, obok parku innowacji UNIT.City. Remontujemy tu mieszkania pod klucz: nowoczesne wnętrze, AGD i meble w jednej umowie.",
+   "h2": "Remont mieszkania pod współczesny miejski rytm",
+   "p": [
+    "Mieszkańcy takich kompleksów często pracują z domu, dlatego w projekcie warto od razu przewidzieć miejsce pracy: osobny gabinet lub wnękę z dobrym światłem, wystarczająco gniazdek i kanałów kablowych pod internet, komfort akustyczny do rozmów.",
+    "Nowoczesne wnętrze klasy biznes dobrze łączy się z inteligentnym domem: sterowanie światłem i klimatem ze smartfona, czujniki zalania w łazience i kuchni, zasłony z napędem. Okablowanie i miejsca na urządzenia przewidujemy już na etapie prac budowlanych.",
+    "Zarządca kompleksu zwykle reguluje remonty: godziny głośnych prac, korzystanie z wind i wywóz gruzu. Organizujemy pracę tak, by spełniać te wymagania."
+   ],
+   "faq": [
+    ["Czy robicie inteligentny dom?", "Tak: sterowanie światłem, klimatem i zasłonami, czujniki zalania, sceny. Okablowanie i miejsca na urządzenia przewidujemy już na etapie prac budowlanych."],
+    ["Jak urządzić miejsce pracy w domu?", "Planujemy gabinet lub wnękę przy oknie, właściwe oświetlenie, gniazdka i sieć, wygłuszenie. Meble dobieramy do twojego sposobu pracy."]
+   ]
+  },
+  "novyi-avtohraf": {
+   "addr": "ul. Świętego Księcia Romana Mścisławicza 26",
+   "lead": "Novyi Avtohraf to kompleks klasy biznes od DIM przy ul. Świętego Księcia Romana Mścisławicza 26, na lewym brzegu. Remontujemy mieszkania pod klucz: od projektu po meble i odbiór z protokołem.",
+   "h2": "Remont mieszkania w wielokondygnacyjnym kompleksie klasy biznes",
+   "p": [
+    "W dużym kompleksie wysokościowym jednocześnie remontuje się wiele mieszkań, dlatego kluczowy staje się harmonogram: kolejka do windy towarowej, godziny głośnych prac, wywóz gruzu. Planujemy dostawy materiałów partiami pod te ograniczenia, by ekipa nie stała bezczynnie.",
+    "Mieszkania klasy biznes często kupuje się zarówno dla siebie, jak i pod wynajem. Do własnego mieszkania radzimy inwestować w układ, wygłuszenie i systemy przechowywania; pod wynajem — w odporne nawierzchnie i praktyczne meble.",
+    "Na wysokości mieszkania dostają dużo światła, dlatego ważna jest ochrona przed słońcem i właściwe rozmieszczenie klimatyzatorów. Te rozwiązania zapisujemy w projekcie razem z wymaganiami budynku co do elewacji."
+   ],
+   "faq": [
+    ["Jak nie zależeć od kolejki do windy?", "Planujemy dostawy z wyprzedzeniem i partiami, uzgadniamy je z zarządcą. Gdy czekamy na materiał, ekipa pracuje na innych etapach."],
+    ["Czy remontujecie pod wynajem?", "Tak: praktyczne materiały, neutralne wnętrze i pełne wyposażenie przed wprowadzeniem się najemcy."]
+   ]
+  },
+  "rusaniv-residence": {
+   "addr": "ul. Jewhena Swerstiuka 54",
+   "lead": "Rusaniv Residence to kompleks klasy biznes od Citex Development przy ul. Jewhena Swerstiuka 54, gdzie mieszkania mają od 104 do 179 m² i dwa poziomy. Takie metraże wymagają mocnego projektu — od niego zaczynamy.",
+   "h2": "Remont mieszkania dwupoziomowego 104–179 m²",
+   "p": [
+    "Mieszkanie dwupoziomowe tej wielkości jest w odczuciu bliższe szeregowcowi niż zwykłemu mieszkaniu. Dlatego zaczynamy od podziału poziomów: strefa dzienna z salonem, kuchnią i WC dla gości, nocna — z sypialniami, garderobami i łazienkami. Schody czynimy centrum kompozycji, a nie przeszkodą.",
+    "Na dwóch poziomach instalacje są bardziej złożone: osobna klimatyzacja kondygnacji, wentylacja każdej łazienki, ogrzewanie podłogowe, oświetlenie schodów z czujnikami ruchu. Wygłuszenie stropu dajemy pod sypialniami, by kroków na dole nie było słychać na górze.",
+    "Przy dużych metrażach szczególnie ważne jest wyposażenie: mebli, światła i tekstyliów potrzeba dużo, a logistykę najlepiej prowadzi jeden wykonawca. Zasady remontu w budynku zwykle ustala zarządca — uwzględniamy je."
+   ],
+   "faq": [
+    ["Od czego zaczyna się remont mieszkania dwupoziomowego?", "Od projektu wnętrza: podziału stref między poziomy, schodów, instalacji i wygłuszenia. Dopiero potem sporządzamy kosztorys i harmonogram prac."],
+    ["Czy możecie w pełni wyposażyć mieszkanie?", "Tak. Meble na wymiar i z Chin, światło, AGD, tekstylia i dekoracje — aż do gotowości do wprowadzenia się."]
+   ]
+  }
+ }
+}

@@ -1,0 +1,181 @@
+{
+ "slug": "apartment-renovation-bulvar-fontaniv",
+ "lang": "en",
+ "service": "Apartment renovation in Bulvar Fontaniv, Kyiv",
+ "title": "Apartment renovation in Bulvar Fontaniv (Kyiv residential complex) — turnkey | CAS",
+ "description": "Apartment renovation in Bulvar Fontaniv (Pecherskyi district, Kyiv): design project, turnkey renovation from $550/m², furnishing. 12-month warranty.",
+ "h1": "Turnkey apartment renovation in Bulvar Fontaniv",
+ "price": "from $550/m² · design, renovation and furniture in one contract",
+ "lead": "Bulvar Fontaniv is a premium-class residential complex at 6/1 Ioanna Pavla II Street with apartments from 64 to 156 m². We renovate turnkey: project, construction works, furniture and décor.",
+ "parent": [
+  "/en/apartment-renovation-kyiv-residential-complexes",
+  "Renovation in Kyiv residential complexes"
+ ],
+ "cards": [
+  [
+   "Turnkey renovation",
+   [
+    "inspection after the developer and measurements",
+    "rough and finishing works",
+    "electrics, plumbing, ventilation",
+    "approval of works with the management company"
+   ]
+  ],
+  [
+   "Large floor area",
+   [
+    "several air-conditioning zones",
+    "ventilation with heat recovery",
+    "smart home and lighting scenes",
+    "walk-in wardrobes and utility rooms"
+   ]
+  ],
+  [
+   "Design project",
+   [
+    "layout and furniture arrangement",
+    "3D visualisations of the rooms",
+    "working drawings for the crew",
+    "specification and estimate"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Renovating an apartment in Bulvar Fontaniv: what to pay attention to",
+   [
+    "With 64–156 m², the question is not just the number of rooms but how you live. A family with children needs separate children's rooms, a second bathroom and a wardrobe by the entrance; a couple — a spacious kitchen-living room, a study and a guest room. We show layout options at the first stages of the design project.",
+    "In apartments over 100 m² the utility runs get longer, so we design ventilation, air conditioning and electrics together with the furniture: no draught from the air conditioner where the bed stands, and sockets and lighting match the built-in wardrobes.",
+    "The management company in a complex like this usually has renovation requirements: agreed working hours, protection of lobbies and lifts, waste removal in bags. We take these matters on ourselves.",
+    "For reference: address — 6/1 Ioanna Pavla II St. We do not represent the developer or the management company — we work directly with the apartment owner."
+   ]
+  ]
+ ],
+ "budget": {
+  "area": 110,
+  "h2": "Budget guide for a 110 m² apartment",
+  "p": "For a 110 m² apartment, here is a guide based on our base rates:"
+ },
+ "gallery": [
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1_xW-2dYf73g9R-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1f8h2r5MBlLLf_-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ]
+ ],
+ "steps": [
+  [
+   "Apartment inspection",
+   "We check the condition after the developer and take measurements."
+  ],
+  [
+   "Design",
+   "Layout, 3D, drawings for the crew."
+  ],
+  [
+   "Estimate and contract",
+   "Price and timeline are fixed."
+  ],
+  [
+   "Renovation",
+   "Rough and finishing works with reports."
+  ],
+  [
+   "Furniture and handover",
+   "We furnish and hand over the keys."
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "How much does an apartment renovation in Bulvar Fontaniv cost?",
+   "Turnkey renovation starts from $550/m² (works and rough materials; finishing materials, furniture and appliances are extra, per the estimate), a design project from $30/m² (minimum $2,500), furnishing from $250/m². The calculation for a 110 m² apartment is in the budget guide above; we fix the exact amount in the estimate after the inspection."
+  ],
+  [
+   "Can the apartment layout be changed?",
+   "Within the limits allowed by the building's structure and regulations: we do not move load-bearing walls or place wet zones above neighbours' living rooms. We check the options at the project stage."
+  ],
+  [
+   "How long does renovating an apartment over 100 m² take?",
+   "It depends on the complexity of the project and the building's schedule. The timeline is set in the contract, from 2 weeks; we fix it after the design project and estimate."
+  ],
+  [
+   "What warranty do you give?",
+   "We hand over the apartment with a signed acceptance certificate; all completed works carry a 12-month warranty."
+  ],
+  [
+   "Can I follow the renovation remotely?",
+   "Yes. We send photo reports from the site via Telegram, and the price, timeline and payment stages are fixed in the contract."
+  ]
+ ],
+ "near": [
+  "Renovation in other Kyiv residential complexes",
+  [
+   [
+    "/en/apartment-renovation-linden-luxury-residences",
+    "Linden Luxury Residences residential complex"
+   ],
+   [
+    "/en/apartment-renovation-greenville-pechersk",
+    "Greenville na Pechersku residential complex"
+   ],
+   [
+    "/en/apartment-renovation-maxima-residence",
+    "Maxima Residence residential complex"
+   ],
+   [
+    "/en/apartment-renovation-rusaniv-residence",
+    "Rusaniv Residence residential complex"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/en/apartment-renovation-kyiv-residential-complexes",
+   "Renovation in Kyiv residential complexes"
+  ],
+  [
+   "/en/apartment-renovation",
+   "Apartment renovation in Kyiv"
+  ],
+  [
+   "/en/new-build-renovation",
+   "New-build renovation"
+  ],
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/interior-design",
+   "Interior design"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Apartment furnishing"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Cost calculator"
+  ]
+ ]
+}
