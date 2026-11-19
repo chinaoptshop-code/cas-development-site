@@ -653,7 +653,7 @@
 | remont-kvartyry-zhk-hvardiiskyi.html | land | 48.9 | 13.3 | 13.3 | 0.5 | 6 | 432 |
 | remont-kvartyry-zhk-nordica-residence.html | land | 48.9 | 13.3 | 13.3 | 0.5 | 6 | 432 |
 | ar/design-renovation-ukraine.html | land | 48.8 | 12.6 | 13.3 | 0.5 | 6 | 471 |
-| es/construccion-de-casas.html | land | 48.8 | 13.6 | 13.3 | 0.5 | 6 | 510 |
+| es/construccion-de-casas.html | land | 48.8 | 13.7 | 13.3 | 0.5 | 6 | 510 |
 | es/diseno-restaurantes-cafeterias.html | land | 48.8 | 13.3 | 13.3 | 2.5 | 6 | 473 |
 | fr/amenagement-restaurant.html | land | 48.8 | 14.1 | 13.3 | 2.6 | 6 | 501 |
 | remont-kvartyry-zhk-respublika.html | land | 48.8 | 13.2 | 13.3 | 0.5 | 6 | 431 |
