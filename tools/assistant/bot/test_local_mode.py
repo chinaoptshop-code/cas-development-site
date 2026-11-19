@@ -6,6 +6,8 @@
 Фейковий claude — shell-скрипт із помилкою ліміту; фейкова Ollama — http.server у потоці;
 памʼять, стан і «репозиторій» зі скриптами — тимчасові теки.
 """
+import os as _os
+_os.environ["ASSISTANT_CAL_SCRIPT"] = "/nonexistent/cal.py"   # тести підміняють gcal.py
 import datetime, http.server, importlib, json, os, pathlib, stat, subprocess, sys, tempfile, threading, unittest
 
 HERE = pathlib.Path(__file__).resolve().parent
