@@ -571,7 +571,10 @@ def intent_calendar(text, t):
     if not CAL_RE.search(text):
         return None
     kind = "week" if re.search(r"тиж|недел", text, re.I) else "tomorrow" if re.search(r"завтра", text, re.I) else "today"
-    code, out = run_tool([_py(), bin_dir() / "gcal.py", kind], timeout=60)
+    calpy = pathlib.Path(os.environ.get("ASSISTANT_CAL_SCRIPT") or pathlib.Path.home() / "jarvis/scripts/cal.py")   # 19.11
+    code, out = run_tool(["/opt/homebrew/bin/python3", str(calpy), "list", kind], timeout=90) if calpy.exists() else (3, "")
+    if code != 0:
+        code, out = run_tool([_py(), bin_dir() / "gcal.py", kind], timeout=60)
     if code == 0:
         cal = "📅 " + out
     elif code == 3:
