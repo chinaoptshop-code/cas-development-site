@@ -23,7 +23,7 @@ await it('власник = перший id з ADMIN_TG_IDS (OWNER_TG_ID не з�
 });
 await it('інший адмін з ADMIN_TG_IDS → manager (рядок staff створено автоматично)', async () => {
   const r = await call(env, 'GET', '/api/me', { cookie: ck.MGR });
-  eq(r.data.client.staff.role, 'manager'); eq(r.data.client.home, '/kabinet/team');
+  eq(r.data.client.staff.role, 'manager'); eq(r.data.client.home, '/kabinet/admin');
   ok(await q1("SELECT 1 FROM staff WHERE client_id = ? AND role = 'manager'", MGR));
 });
 await it('клієнт — без ролі, дім /kabinet', async () => {

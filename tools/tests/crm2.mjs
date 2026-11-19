@@ -136,6 +136,142 @@ await it('заявка без телефону → клієнт «crm»; пра�
   eq((await call(env, 'POST', '/api/admin/projects', { cookie: ck.OWNER, body: { type: 'from_lead', order_id: 999999 } })).status, 404);
 });
 
+describe('«Надіслати КП»: текст мовою заявки (10 мов), журнал без надсилання з сервера');
+await it('kp_text у списку: uk — «від $2 550 ($30/м²)»; en — кома в тисячах; усі 10 мов без порожніх місць', async () => {
+  const r = (await rows()).rows.find(x => x.id === L1);
+  ok(r.kp_text.includes(`від $2${NB}550 ($30/м²)`), r.kp_text); ok(/^Добрий день, Клієнт, дякуємо/.test(r.kp_text)); ok(/безкоштовна/.test(r.kp_text));
+  const { kpText, LANGS } = await import('../../functions/_client_msgs.js');
+  const f = { key: 'reno', label: 'x', area: 1200, unit: 'м²', rate: 550, min: null, from: 660000 };
+  ok(kpText(f, 'en', 'Anna').includes('from $660,000 ($550/m²)'), kpText(f, 'en'));
+  ok(kpText(f, 'de').includes(`ab $660${NB}000 ($550/m²)`));
+  ok(kpText({ key: 'land', area: 6, unit: 'сотка', rate: 50, from: 300 }, 'en').includes('6 ares — from $300 ($50/are)'));
+  ok(kpText({ key: 'office', area: 100, unit: 'м²', rate: null, from: null }, 'fr').includes('sur devis'));
+  for (const l of LANGS) { const t = kpText(f, l, 'X'); ok(t && !/undefined|null/.test(t) && t.includes('cas-develop.com'), l + ': ' + t); }
+  eq(kpText(f, 'xx').slice(0, 11), 'Добрий день', 'невідома мова → uk');
+});
+await it('offer_sent: без розрахунку → 409, невідомий канал → 400; WhatsApp → рядок в історії й аудит lead.offer_sent', async () => {
+  const L = await lead({ phone: '0670000010' });
+  eq((await patch({ id: L, offer_sent: 'whatsapp' })).status, 409);
+  await patch({ id: L, offer: { key: 'reno', area: 50 } });
+  eq((await patch({ id: L, offer_sent: 'sms' })).status, 400);
+  eq((await patch({ id: L, offer_sent: 'whatsapp' })).status, 200);
+  ok(await q1("SELECT 1 FROM order_events WHERE order_id = ? AND note LIKE 'КП надіслано (WhatsApp): Ремонт під ключ%'", L));
+  ok(await q1("SELECT 1 FROM audit_log WHERE action = 'lead.offer_sent' AND entity_id = ?", String(L)));
+  eq((await patch({ id: L, offer_sent: 'telegram' }, ck.DES)).status, 404, 'чужа заявка дизайнера');
+});
+
+describe('Масові дії в CRM: стадія, відповідальний, «Не цікаво» — з правами на кожен рядок');
+await it('власник: стадія трьом; «Не цікаво» заявці бота → «Скасовано» + bot_feedback; відповідальний', async () => {
+  const a = await lead({ phone: '0670000020' }), b = await lead({ phone: '0670000021' }), c = await lead({ phone: '0670000022' });
+  let r = await patch({ bulk: { ids: [a, b, c], status: 'in_work' } });
+  eq([r.status, r.data.done], [200, 3]);
+  eq((await env.DB.prepare(`SELECT status FROM orders WHERE id IN (${a}, ${b}, ${c})`).all()).results.map(x => x.status), ['in_work', 'in_work', 'in_work']);
+  ok(await q1("SELECT 1 FROM order_events WHERE order_id = ? AND note = 'Масова зміна стадії'", a));
+  await DB.prepare("UPDATE orders SET source = 'finder', ext_hash = 'bulk-hash-1' WHERE id = ?").bind(c).run();
+  r = await patch({ bulk: { ids: [b, c], not_interested: 'не наш регіон' } });
+  eq(r.data.done, 2);
+  eq((await q1('SELECT status FROM orders WHERE id = ?', c)).status, 'cancelled');
+  ok(await q1("SELECT 1 FROM order_events WHERE order_id = ? AND note = 'Не цікаво: не наш регіон'", c));
+  eq((await q1("SELECT reason FROM bot_feedback WHERE lead_hash = 'bulk-hash-1'")).reason, 'не наш регіон');
+  r = await patch({ bulk: { ids: [a], assignee_staff_id: DES_ID } });
+  eq((await q1('SELECT assignee_staff_id FROM orders WHERE id = ?', a)).assignee_staff_id, DES_ID);
+  ok(await q1("SELECT 1 FROM audit_log WHERE action = 'crm.bulk'"));
+});
+await it('дизайнер: лише свої рядки, без призначення; невалідні запити → 400', async () => {
+  const mine = await lead({ phone: '0670000030', assignee_staff_id: DES_ID }), other = await lead({ phone: '0670000031' });
+  const r = await patch({ bulk: { ids: [mine, other], status: 'in_work' } }, ck.DES);
+  eq(r.status, 200); eq(r.data.done, 1);
+  eq(r.data.results.find(x => x.id === other).error, 'Запис не знайдено');
+  eq((await q1('SELECT status FROM orders WHERE id = ?', other)).status, 'new');
+  const r2 = await patch({ bulk: { ids: [mine], assignee_staff_id: null } }, ck.DES);
+  ok(/Немає права призначати/.test(r2.data.results[0].error));
+  eq((await patch({ bulk: { ids: [] , status: 'new' } })).status, 400);
+  eq((await patch({ bulk: { ids: Array.from({ length: 101 }, (_, i) => i + 1), status: 'new' } })).status, 400);
+  eq((await patch({ bulk: { ids: [mine], status: 'new', not_interested: 'x' } })).status, 400);
+});
+
+describe('Нагадування клієнту про погодження етапу й прохання про відгук (functions/_nudges.js, migrations/0016)');
+{
+  const { runNudges, kyivStamp } = await import('../../functions/_nudges.js');
+  const TGC = await addClient(env, { id: 5551, name: 'Ірина Телеграм' }); // provider telegram → бот може написати
+  const PHC = (await q1('SELECT client_id FROM projects WHERE id = ?', P1)).client_id; // клієнт за номером, без Telegram
+  const mkp = async (client_id, extra = {}) => (await call(env, 'POST', '/api/admin/projects', { cookie: ck.OWNER, body: { type: 'project', client_id, title: 'Дизайн для нагадувань', service: 'design', ...extra } })).data.id;
+  const toReview = async (pid, i = 0) => { const sid = JSON.parse((await q1('SELECT stages FROM projects WHERE id = ?', pid)).stages)[i].id;
+    eq((await call(env, 'POST', '/api/team/action', { cookie: ck.OWNER, body: { type: 'stage', project_id: pid, stage_id: sid, status: 'review' } })).status, 200); return sid; };
+  const rem = (body, cookie = ck.OWNER) => call(env, 'POST', '/api/admin/projects', { cookie, body: { type: 'remind', ...body } });
+  let PT, PP, SID;
+  await it('клієнт у Telegram: «Нагадати» → бот, текст мовою заявки з посиланням на кабінет; повтор раніше 48 год → 429; запис в історії етапу й аудит', async () => {
+    PT = await mkp(TGC); SID = await toReview(PT);
+    ok(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/.test(JSON.parse((await q1('SELECT stages FROM projects WHERE id = ?', PT)).stages)[0].review_at), 'review_at');
+    bot.reset();
+    const r = await rem({ project_id: PT, stage_id: SID });
+    eq([r.status, r.data.sent, r.data.channel], [200, true, 'telegram']);
+    const m = bot.calls.find(c => c.chat_id === '5551');
+    ok(m && /Ірина, етап «Бриф» проєкту «Дизайн для нагадувань» чекає вашого погодження/.test(m.text) && /\/kabinet\/obiekt\?p=\d+&lang=uk/.test(m.text), m && m.text);
+    const r2 = await rem({ project_id: PT, stage_id: SID });
+    eq(r2.status, 429); ok(r2.data.wait_h > 40);
+    const s0 = JSON.parse((await q1('SELECT stages FROM projects WHERE id = ?', PT)).stages)[0];
+    eq(s0.hist.at(-1).act, 'remind'); ok(s0.remind_at);
+    ok(await q1("SELECT 1 FROM audit_log WHERE action = 'client.remind' AND entity_id = ?", String(PT)));
+    eq((await call(env, 'GET', '/api/admin/projects', { cookie: ck.OWNER })).data.projects.find(p => p.id === PT).stages[0].remind_at, s0.remind_at, 'адмінка бачить і зберігає');
+  });
+  await it('без Telegram: текст для ручного надсилання (мова заявки), канал WhatsApp → лише журнал; не той етап/тип → 409/422; дизайнер → 403', async () => {
+    PP = await mkp(PHC); const sid = await toReview(PP);
+    await DB.prepare("UPDATE orders SET lang = 'en' WHERE id = ?").bind(L1).run(); await DB.prepare('UPDATE projects SET order_id = ? WHERE id = ?').bind(L1, PP).run();
+    const r = await rem({ project_id: PP, stage_id: sid });
+    eq([r.status, r.data.sent], [200, false]); ok(/is awaiting your approval/.test(r.data.text) && /lang=en/.test(r.data.text), r.data.text);
+    ok(!JSON.parse((await q1('SELECT stages FROM projects WHERE id = ?', PP)).stages)[0].remind_at, 'не надіслано — не рахується');
+    eq((await rem({ project_id: PP, stage_id: sid, channel: 'whatsapp' })).status, 200);
+    eq(JSON.parse((await q1('SELECT stages FROM projects WHERE id = ?', PP)).stages)[0].hist.at(-1).note, 'WhatsApp');
+    eq((await rem({ project_id: PP, stage_id: sid, channel: 'whatsapp' })).status, 429, 'той самий ліміт 48 год');
+    const other = JSON.parse((await q1('SELECT stages FROM projects WHERE id = ?', PP)).stages)[2].id;
+    eq((await rem({ project_id: PP, stage_id: other })).status, 409);
+    eq((await rem({ project_id: PP, stage_id: sid, channel: 'sms' })).status, 429);
+    eq((await rem({ project_id: PP, stage_id: sid }, ck.DES)).status, 403);
+  });
+  await it('автоматично (lead-sla): через ≥24 год приймання, вдень, не частіше 48 год; уночі — нічого', async () => {
+    const pid = await mkp(TGC), sid = await toReview(pid);
+    const st = JSON.parse((await q1('SELECT stages FROM projects WHERE id = ?', pid)).stages);
+    const day = new Date(); day.setUTCHours(10, 0, 0, 0); // 12:00–13:00 за Києвом
+    st[0].review_at = kyivStamp(new Date(day.getTime() - 30 * 3600000));
+    await DB.prepare('UPDATE projects SET stages = ? WHERE id = ?').bind(JSON.stringify(st), pid).run();
+    const night = new Date(day); night.setUTCHours(21, 30);
+    eq((await runNudges(env, new Request('https://cas-develop.com/api/admin/lead-sla'), night)).quiet, true);
+    bot.reset();
+    const r = await runNudges(env, new Request('https://cas-develop.com/api/admin/lead-sla'), day);
+    ok(r.reminders >= 1, JSON.stringify(r)); ok(bot.calls.some(c => c.chat_id === '5551' && /чекає вашого погодження/.test(c.text)));
+    const s0 = JSON.parse((await q1('SELECT stages FROM projects WHERE id = ?', pid)).stages)[0];
+    eq([s0.remind_n, s0.hist.at(-1).by], [1, 'автоматично']);
+    bot.reset();
+    await runNudges(env, new Request('https://cas-develop.com/api/admin/lead-sla'), new Date(day.getTime() + 3600000));
+    ok(!bot.calls.some(c => c.chat_id === '5551' && /чекає/.test(c.text)), 'не частіше 48 год');
+  });
+  await it('відгук у Google: лише «Завершено»; done_at ставиться; автоматично через 2 доби один раз; вручну — текст і журнал; повтор → 409', async () => {
+    eq((await call(env, 'POST', '/api/admin/projects', { cookie: ck.OWNER, body: { type: 'review_request', project_id: PT } })).status, 409, 'ще не завершено');
+    eq((await call(env, 'PATCH', '/api/admin/projects', { cookie: ck.OWNER, body: { id: PT, status: 'done' } })).status, 200);
+    ok((await q1('SELECT done_at FROM projects WHERE id = ?', PT)).done_at);
+    const day = new Date(); day.setUTCHours(10, 0, 0, 0);
+    bot.reset();
+    await runNudges(env, new Request('https://cas-develop.com/x'), day);
+    ok(!bot.calls.some(c => /відгук у Google/.test(c.text)), 'ще не минуло 2 доби');
+    await DB.prepare("UPDATE projects SET done_at = datetime('now', '-3 days') WHERE id = ?").bind(PT).run();
+    await runNudges(env, new Request('https://cas-develop.com/x'), day);
+    const m = bot.calls.find(c => c.chat_id === '5551' && /g\.page\/r\/CbaVqfJBXWLQEAE\/review/.test(c.text));
+    ok(m && /Проєкт «Дизайн для нагадувань» завершено/.test(m.text), JSON.stringify(bot.calls.map(c => c.text)));
+    eq((await q1('SELECT review_channel FROM projects WHERE id = ?', PT)).review_channel, 'telegram');
+    bot.reset(); await runNudges(env, new Request('https://cas-develop.com/x'), day);
+    ok(!bot.calls.some(c => /review/.test(c.text)), 'лише один раз');
+    eq((await call(env, 'POST', '/api/admin/projects', { cookie: ck.OWNER, body: { type: 'review_request', project_id: PT } })).status, 409);
+    await call(env, 'PATCH', '/api/admin/projects', { cookie: ck.OWNER, body: { id: PP, status: 'done' } });
+    const r = await call(env, 'POST', '/api/admin/projects', { cookie: ck.OWNER, body: { type: 'review_request', project_id: PP } });
+    eq(r.data.sent, false); ok(/Google review/.test(r.data.text), r.data.text);
+    eq((await call(env, 'POST', '/api/admin/projects', { cookie: ck.OWNER, body: { type: 'review_request', project_id: PP, channel: 'viber' } })).data.channel, 'viber');
+    ok(await q1("SELECT 1 FROM audit_log WHERE action = 'client.review' AND entity_id = ?", String(PP)));
+    await call(env, 'PATCH', '/api/admin/projects', { cookie: ck.OWNER, body: { id: PP, status: 'active' } });
+    eq((await q1('SELECT done_at FROM projects WHERE id = ?', PP)).done_at, null, 'знову в роботі — done_at знято');
+  });
+}
+
 describe('Сумісність: база без міграції 0014');
 await it('пропозиція → 503 без часткового збереження; конверсія працює (без orders.project_id)', async () => {
   const oe = makeEnv(freshDB(13));
