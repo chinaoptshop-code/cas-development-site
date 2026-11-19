@@ -30,7 +30,7 @@ import {
   admin, body, cameraOf, CURRENCIES, date, httpsUrl, int, json, bad, newStageKey, noTable, notReady,
   PAY_STATUS, progressOf, STAGE_STATUS, stageKey, stageStatus, txt,
 } from '../../_account.js';
-import { normCode, normalizePhone } from '../../_lib.js';
+import { dict, normCode, normalizePhone } from '../../_lib.js';
 import { escHtml, notifyStaff } from '../../_alerts.js';
 import { audit, canSeeProject, need, orderScope, projectScope, shapeProject, staffById } from '../../_roles.js';
 import { limited } from '../../_rate.js';
@@ -57,18 +57,23 @@ export const TEMPLATES = {
   other: [],
 };
 // Схеми оплати: частки й назви рядків; частина привʼязується до етапу шаблону (перший / середній / останній)
-export const SCHEMES = { '50/50': [50, 50], '50/30/20': [50, 30, 20], '50/40/10': [50, 40, 10] };
+export const SCHEMES = dict({ '50/50': [50, 50], '50/30/20': [50, 30, 20], '50/40/10': [50, 40, 10] });
 const today = () => new Date().toISOString().slice(0, 10);
 
-function stagesOf(v) {
+// Журнал етапу веде лише сервер: історію (hist), позначку «погодив сам клієнт» (approved_by), останню вимогу правок (rev_note / rev_at)
+// і відлік нагадувань (review_at, remind_at, remind_n) беремо із збереженого етапу з тим самим id (prev), а не з тіла запиту —
+// форму «Зберегти проєкт» не можна використати, щоб дописати погодження від імені клієнта, стерти історію чи обійти паузу 48 год.
+const prevStages = j => { try { const a = JSON.parse(j || '[]'); return new Map((Array.isArray(a) ? a : []).filter(s => s && s.id).map(s => [s.id, s])); } catch { return new Map(); } };
+function stagesOf(v, prev = new Map()) {
   if (!Array.isArray(v)) return null;
   const seen = new Set();
   return v.slice(0, 20).map(s => {
     let id = stageKey(s && s.id);
     if (!id || seen.has(id)) id = newStageKey();
     seen.add(id);
+    const was = prev.get(id) || {};
     const progress = Math.max(0, Math.min(100, int(s && s.progress) || 0));
-    const status = s && STAGE_STATUS[s.status] ? s.status : stageStatus({ progress });
+    const status = s && typeof s.status === 'string' && STAGE_STATUS[s.status] ? s.status : stageStatus({ progress });
     const out = {
       id, name: txt(s && s.name, 80) || 'Етап', status, progress: status === 'done' ? 100 : progress,
       start: date(s && s.start), end: date(s && s.end), note: txt(s && s.note, 300),
@@ -76,22 +81,22 @@ function stagesOf(v) {
     // дизайн-проєкт: дата погодження етапу клієнтом і кількість правок (лише якщо задано — JSON не роздуваємо)
     const ap = date(s && s.approved_at), rv = Math.max(0, Math.min(99, int(s && s.revisions) || 0));
     if (ap) out.approved_at = ap;
-    if (ap && s.approved_by === 'client') out.approved_by = 'client'; // погодив сам клієнт у кабінеті (POST /api/account/projects)
+    if (ap && was.approved_by === 'client' && was.approved_at === ap) out.approved_by = 'client'; // погодив сам клієнт у кабінеті (POST /api/account/projects)
     if (rv) out.revisions = rv;
     // відповідальний за етап (staff.id; перевірка активності — checkStageStaff) і кругів правок за договором
     const sid = int(s && s.staff_id), rm = int(s && s.rev_max);
     if (sid > 0) out.staff_id = sid;
     if (rm > 0) out.rev_max = Math.min(rm, 20);
-    // остання вимога правок від клієнта (POST /api/account/projects, action 'revise') — зберігаємо при «Зберегти проєкт»
-    const rn = txt(s && s.rev_note, 1000), ra = date(s && s.rev_at);
+    // остання вимога правок від клієнта (POST /api/account/projects, action 'revise') — лишається при «Зберегти проєкт»
+    const rn = txt(was.rev_note, 1000), ra = date(was.rev_at);
     if (rn && ra) { out.rev_note = rn; out.rev_at = ra; }
-    // історія погоджень і правок етапу (пише кабінет клієнта й нагадування) — зберігаємо як є, до 30 записів
+    // історія погоджень і правок етапу (пише кабінет клієнта й нагадування) — до 30 записів
     // нагадування клієнту (functions/_nudges.js): коли етап став «Приймання», останнє нагадування, скільки автоматичних
     const stamp = v => (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/.test(String(v || '')) ? String(v) : null);
-    if (stamp(s && s.review_at)) out.review_at = stamp(s.review_at);
-    if (stamp(s && s.remind_at)) out.remind_at = stamp(s.remind_at);
-    if (int(s && s.remind_n) > 0) out.remind_n = Math.min(int(s.remind_n), 99);
-    const hist = histOf(s && s.hist);
+    if (stamp(was.review_at)) out.review_at = stamp(was.review_at);
+    if (stamp(was.remind_at)) out.remind_at = stamp(was.remind_at);
+    if (int(was.remind_n) > 0) out.remind_n = Math.min(int(was.remind_n), 99);
+    const hist = histOf(was.hist);
     if (hist.length) out.hist = hist;
     return out;
   });
@@ -147,7 +152,7 @@ function projectFields(d, cur = {}) {
     address: h('address') ? txt(d.address, 200) : cur.address,
     area: h('area') ? (Number(d.area) > 0 && Number(d.area) < 1e6 ? Number(d.area) : null) : cur.area,
     status: h('status') ? (STATUS.includes(d.status) ? d.status : 'active') : (cur.status || 'active'),
-    stages: h('stages') ? JSON.stringify(stagesOf(d.stages) || []) : (cur.stages || '[]'),
+    stages: h('stages') ? JSON.stringify(stagesOf(d.stages, prevStages(cur.stages)) || []) : (cur.stages || '[]'),
     next_step: h('next_step') ? txt(d.next_step, 300) : cur.next_step,
     next_date: h('next_date') ? date(d.next_date) : cur.next_date,
     manager: h('manager') ? txt(d.manager, 80) : cur.manager,
@@ -166,7 +171,7 @@ function paymentFields(d, cur = {}, stagesJson) {
     currency: h('currency') ? (CURRENCIES.includes(d.currency) ? d.currency : 'USD') : (cur.currency || 'USD'),
     due_date: h('due_date') ? date(d.due_date) : (cur.due_date ?? null),
     paid_date: h('paid_date') ? date(d.paid_date) : (cur.paid_date ?? null),
-    status: h('status') ? (PAY_STATUS[d.status] ? d.status : 'planned') : (cur.status || 'planned'),
+    status: h('status') ? (typeof d.status === 'string' && PAY_STATUS[d.status] ? d.status : 'planned') : (cur.status || 'planned'),
     note: h('note') ? txt(d.note, 300) : (cur.note ?? null),
     sort: h('sort') ? (int(d.sort) || 0) : (cur.sort || 0),
   };
@@ -280,7 +285,7 @@ export async function onRequestGet({ request, env }) {
   });
 }
 
-const PERM = { remind: 'projects.edit', review_request: 'projects.edit', from_lead: 'projects.edit', project: 'projects.edit', document: 'projects.edit', payment: 'finance.edit', report: 'reports.upload', partner: 'partners.manage', issue: 'projects.edit', task: 'projects.edit_stage' };
+const PERM = dict({ remind: 'projects.edit', review_request: 'projects.edit', from_lead: 'projects.edit', project: 'projects.edit', document: 'projects.edit', payment: 'finance.edit', report: 'reports.upload', partner: 'partners.manage', issue: 'projects.edit', task: 'projects.edit_stage' });
 const deny = p => bad('Немає права: ' + p, 403);
 const permOk = (x, type) => (type === 'task' ? canTask(x) : x.can(PERM[type]));
 
@@ -388,7 +393,7 @@ export async function onRequestPost({ request, env }) {
   const { d, error: e1 } = await body(request, 32 * 1024);
   if (e1) return e1;
   if (await limited(env, request, 'admin-projects', 600)) return tooMany();
-  if (!PERM[d.type]) return bad('Невідомий type');
+  if (typeof d.type !== 'string' || !PERM[d.type]) return bad('Невідомий type');
   if (!permOk(x, d.type)) return deny(PERM[d.type]);
   return run(async () => {
     if (d.type === 'project') return newProject(env, request, x, d);
@@ -506,7 +511,7 @@ export async function onRequestPatch({ request, env }) {
   if (await limited(env, request, 'admin-projects', 600)) return tooMany();
   const type = d.type || 'project';
   const perm = type === 'payment' ? 'finance.edit' : type === 'report' ? 'reports.upload' : type === 'task' ? 'projects.edit_stage' : 'projects.edit';
-  if (!PERM[type] || type === 'partner' || type === 'document') return bad('Невідомий type');
+  if (typeof type !== 'string' || !PERM[type] || type === 'partner' || type === 'document') return bad('Невідомий type');
   if (type === 'task' ? !canTask(x) : !x.can(perm)) return deny(perm);
   return run(async () => {
     if (type === 'task') {
@@ -613,7 +618,7 @@ export async function onRequestDelete({ request, env }) {
   const perm = type === 'payment' ? 'finance.edit' : 'projects.edit';
   if (!x.can(perm)) return deny(perm);
   return run(async () => {
-    const table = { payment: 'project_payments', report: 'project_reports', document: 'documents', project: 'projects', task: 'project_tasks' }[type];
+    const table = dict({ payment: 'project_payments', report: 'project_reports', document: 'documents', project: 'projects', task: 'project_tasks' })[type]; // лише ці пʼять назв потрапляють у SQL
     if (!table) return bad('Невідомий type');
     const before = await env.DB.prepare(`SELECT * FROM ${table} WHERE id = ?`).bind(id).first();
     // лише видимий обʼєкт; документ без обʼєкта — лише з projects.view_all

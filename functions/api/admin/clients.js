@@ -20,7 +20,8 @@ export async function onRequestGet({ request, env }) {
       COUNT(o.id) AS orders, COALESCE(SUM(o.total), 0) AS total
     FROM clients c LEFT JOIN orders o ON o.client_id = c.id ${where} GROUP BY c.id ORDER BY c.id DESC LIMIT 500`);
   const { results } = await (q ? st.bind(`%${q}%`) : st).all();
-  return json({ clients: results.map(c => ({ ...c, ...(contacts ? {} : { email: undefined, phone: undefined, username: undefined, company: undefined }), ...(money ? {} : { total: undefined }) })) });
+  // clients.city — адреса за замовчуванням з профілю («місто, вулиця…»): як і телефон, лише з clients.contacts
+  return json({ clients: results.map(c => ({ ...c, ...(contacts ? {} : { email: undefined, phone: undefined, username: undefined, company: undefined, city: undefined }), ...(money ? {} : { total: undefined }) })) });
 }
 
 async function card(env, x, id) {
@@ -28,8 +29,8 @@ async function card(env, x, id) {
   if (!c) return bad('Клієнта не знайдено', 404);
   const contacts = x.can('clients.contacts'), money = x.can('finance.view');
   const client = {
-    id: c.id, provider: c.provider, name: c.name, city: c.city, created_at: c.created_at, last_login: c.last_login,
-    ...(contacts ? { phone: c.phone, email: c.email, username: c.username, company: c.company } : {}),
+    id: c.id, provider: c.provider, name: c.name, created_at: c.created_at, last_login: c.last_login,
+    ...(contacts ? { phone: c.phone, email: c.email, username: c.username, company: c.company, city: c.city } : {}),
   };
   const conds = ['o.client_id = ?'], args = [c.id];
   if (c.phone) { conds.push('o.phone = ?'); args.push(c.phone); }

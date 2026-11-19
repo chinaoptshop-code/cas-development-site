@@ -25,12 +25,12 @@ export async function onRequestPatch({ request, env }) {
   const o = await env.DB.prepare("SELECT * FROM orders WHERE id = ? AND kind != 'lead'").bind(Number(d.id)).first();
   if (!o) return bad('Замовлення не знайдено', 404);
   if (Array.isArray(d.prices) && d.prices.length && !x.can('finance.edit')) return bad('Немає права змінювати ціни', 403);
-  const status = d.status && ORDER_STATUSES[d.status] ? d.status : o.status;
+  const status = typeof d.status === 'string' && ORDER_STATUSES[d.status] ? d.status : o.status;
   let items = JSON.parse(o.items), total = o.total, discount = o.discount || 0;
   if (Array.isArray(d.prices)) { // менеджер проставляє ціну позиціям «за запитом»: [{index, price}]
     const sum = () => items.reduce((s, i) => s + (i.price || 0) * i.qty, 0);
     const ship = Math.max(0, (o.total || 0) - (sum() - discount)); // доставка, порахована при оформленні
-    for (const p of d.prices) if (items[p.index] && Number(p.price) >= 0) items[p.index].price = Math.round(Number(p.price));
+    for (const p of d.prices) if (p && Number.isInteger(p.index) && p.index >= 0 && items[p.index] && Number(p.price) >= 0) items[p.index].price = Math.round(Number(p.price)); // index — лише номер позиції
     discount = Math.round(sum() * (o.discount_pct || 0) / 100); // відсоток знижки замовлення лишається тим самим
     total = sum() - discount + ship;
   }

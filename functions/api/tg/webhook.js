@@ -46,7 +46,9 @@ async function onMessage(request, env, msg) {
   if (s) {
     await env.DB.prepare(`INSERT INTO tg_login_chats (chat_id, token, expires_at) VALUES (?1, ?2, ?3)
         ON CONFLICT(chat_id) DO UPDATE SET token = ?2, expires_at = ?3`).bind(chat, s[1], now + LOGIN_TTL).run();
-    return say('Щоб увійти на сайт CAS Development, натисніть «📱 Поділитися номером».', { reply_markup: {
+    // попередження: посилання на вхід може надіслати й стороння людина — номером ділиться лише той, хто сам почав вхід
+    return say('Щоб увійти на сайт CAS Development, натисніть «📱 Поділитися номером».\n\n'
+      + 'Натискайте, лише якщо ви самі щойно почали вхід на cas-develop.com. Якщо це посилання вам надіслав хтось інший — не діліться номером: ця людина отримає доступ до вашого кабінету.', { reply_markup: {
       keyboard: [[{ text: '📱 Поділитися номером', request_contact: true }]], one_time_keyboard: true, resize_keyboard: true } });
   }
 

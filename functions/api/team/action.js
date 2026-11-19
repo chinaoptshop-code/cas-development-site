@@ -6,13 +6,13 @@
 // POST {type: 'task', project_id, task_id, done?: true|false}                         — відмітити задачу (projects.edit_stage):
 //      лише свою або без виконавця (з projects.edit — будь-яку); міграція 0012, до неї — 503.
 // photos — адреси /api/media/<id> цього ж обʼєкта (POST /api/team/upload) або https-посилання.
-import { bad, json, readJSON } from '../../_lib.js';
+import { bad, dict, json, readJSON } from '../../_lib.js';
 import { escHtml, notifyTeam } from '../../_alerts.js';
 import { STAGE_STATUS, date, httpsUrl, int, noTable, notReady, stageStatus, txt } from '../../_account.js';
 import { audit, canSeeProject, need } from '../../_roles.js';
 import { limited } from '../../_rate.js';
 
-const PERM = { stage: 'projects.edit_stage', report: 'reports.upload', issue: 'issues.report', task: 'projects.edit_stage' };
+const PERM = dict({ stage: 'projects.edit_stage', report: 'reports.upload', issue: 'issues.report', task: 'projects.edit_stage' });
 const MEDIA = /\/api\/media\/([0-9a-f]{24})$/;
 
 async function photosOf(env, request, projectId, v) {
@@ -34,7 +34,7 @@ async function photosOf(env, request, projectId, v) {
 export async function onRequestPost({ request, env }) {
   let d;
   try { d = await readJSON(request, 32 * 1024); } catch { return bad('Некоректні дані'); }
-  const perm = PERM[d.type];
+  const perm = typeof d.type === 'string' ? PERM[d.type] : null;
   if (!perm) return bad('Невідома дія');
   const { x, error } = await need(request, env, perm);
   if (error) return error;
