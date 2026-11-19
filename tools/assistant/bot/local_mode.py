@@ -567,6 +567,54 @@ def intent_remind(text, t):
     return Reply(f"🔔 Записав на {DAY_ABBR[date.weekday()]} {when}: {what} (буде в ранковому брифінгу)")
 
 
+# «додай у календар завтра о 10 дзвінок Faik» — у локальному режимі: показ + кнопка «Додати» (Михайло 19.11).
+CAL_ADD_RE = re.compile(r"^\s*(?:додай|добав\w*|запиши|постав\w*|внеси)\s+(?:мені\s+|мне\s+)?(?:у|в|до)\s+календар\w*\s*[:,—-]?\s*(.+)$",
+                        re.I | re.S)
+
+
+def _cal_py():
+    return pathlib.Path(os.environ.get("ASSISTANT_CAL_SCRIPT") or pathlib.Path.home() / "jarvis/scripts/cal.py")
+
+
+def _cal_state_path():
+    return state_dir() / "cal-pending.json"
+
+
+def intent_cal_add(text, t):
+    m = CAL_ADD_RE.match(text)
+    if not m:
+        return None
+    date, hm, at, rest = parse_when(" " + m.group(1), t)
+    what = _clean_what(rest)
+    if not what or not date:
+        return Reply("Що й коли додати? Напиши: «додай у календар завтра о 10 дзвінок Faik».")
+    hm = hm or (10, 0)
+    start = datetime.datetime.combine(date, datetime.time(*hm))
+    st = _read_json(_cal_state_path(), {"items": {}})
+    cid = uuid.uuid4().hex[:8]
+    st["items"][cid] = {"title": what, "start": f"{start:%Y-%m-%d %H:%M}", "min": 60, "remind": 30, "status": "pending"}
+    _write_json(_cal_state_path(), st)
+    return Reply(f"📅 Додати в календар?\n«{what}»\n{DAY_ABBR[date.weekday()]} {start:%d.%m} о {start:%H:%M}, 1 год, нагадування за 30 хв.",
+                 markup={"inline_keyboard": [[{"text": "✅ Додати", "callback_data": f"cal:add:{cid}"},
+                                              {"text": "🚫 Скасувати", "callback_data": f"cal:drop:{cid}"}]]})
+
+
+def cal_button(rest):
+    """Натискання «cal:<дія>:<id>». Лише тут подія потрапляє в календар."""
+    action, _, cid = rest.partition(":")
+    st = _read_json(_cal_state_path(), {"items": {}})
+    it = st["items"].get(cid)
+    if not it or it["status"] != "pending":
+        return Reply("Цю подію вже оброблено або не знайдено.")
+    if action != "add":
+        it["status"] = "dropped"; _write_json(_cal_state_path(), st)
+        return Reply("🚫 Не додаю.")
+    code, out = run_tool(["/opt/homebrew/bin/python3", str(_cal_py()), "add", it["title"], it["start"],
+                          "--min", str(it["min"]), "--remind", str(it["remind"])], timeout=90)
+    it["status"] = "added" if code == 0 else "pending"; _write_json(_cal_state_path(), st)
+    return Reply("✅ " + out.splitlines()[0] if code == 0 else f"⚠️ Не додано: {out[-300:]}")
+
+
 def intent_calendar(text, t):
     if not CAL_RE.search(text):
         return None
@@ -750,7 +798,7 @@ def ollama_reply(text, t):
 
 
 # ---------- головний вхід ----------
-INTENTS = [intent_task, intent_remind, intent_pdf, intent_mail, intent_money, intent_calendar]
+INTENTS = [intent_cal_add, intent_task, intent_remind, intent_pdf, intent_mail, intent_money, intent_calendar]
 
 
 def handle_text(text, t=None):

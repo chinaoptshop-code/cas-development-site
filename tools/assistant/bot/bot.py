@@ -840,6 +840,15 @@ def on_button(cq, state):
         except Exception as e:
             LOG("editMessageReplyMarkup:", e)
         return
+    if act == "cal":                                       # календар з локального режиму: подія додається ЛИШЕ тут, після кнопки
+        r = local_mode.cal_button(n)
+        answer_cq(cq, r.text[:190])
+        try:
+            api("editMessageReplyMarkup", chat_id=OWNER, message_id=cq.get("message", {}).get("message_id"),
+                reply_markup=json.dumps({"inline_keyboard": []}))
+        except Exception as e:
+            LOG("editMessageReplyMarkup:", e)
+        send_text(r.text); return
     if act == "mail":                                      # лист із локального режиму: надсилається ЛИШЕ тут, після кнопки
         r = local_mode.mail_button(n)
         answer_cq(cq, r.text[:190])
