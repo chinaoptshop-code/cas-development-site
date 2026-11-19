@@ -9,9 +9,10 @@
 // приймаємо лише шлях того самого сайту (refPath нижче), інакше — null. Без міграції 0011 — зберігаємо без неї (fallback).
 import { bad, hexOf, json, nextLeadNumber, readJSON, same, sha256, str } from '../_lib.js';
 import { notifyNew } from '../_alerts.js';
-import { ipKey } from '../_rate.js';
+import { ipKey, limited } from '../_rate.js';
 
 const GLOBAL_PER_HOUR = 300;
+export const BAD_KEY_PER_HOUR = 20; // невірних ключів x-lead-key з однієї адреси на годину (далі 429) — як у /api/bot/*
 const noColumn = e => /no such column|has no column/i.test(String(e && e.message));
 // лише шлях того самого сайту: «/…», не «//host», без схеми, query, hash, пробілів, керівних символів і < > " ' \ ; ≤ 160 символів
 export const refPath = v => {
@@ -25,7 +26,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
   try { d = await readJSON(request, 16 * 1024); } catch { return bad('Некоректні дані'); }
   const key = request.headers.get('x-lead-key') || '';
   const trusted = !!env.LEAD_INGEST_KEY && same(key, env.LEAD_INGEST_KEY);
-  if (key && !trusted) return bad('Невірний ключ', 403);
+  if (key && !trusted) return await limited(env, request, 'lead-key-bad', BAD_KEY_PER_HOUR) ? bad('Забагато спроб, спробуйте пізніше', 429) : bad('Невірний ключ', 403);
   // антиспам без капчі: приховане поле (hp / website) заповнює лише бот; t_ms — мс від відкриття сторінки до відправки
   // (assets/lead-form.v1.js). Людина не встигає за 1,5 с; поле необовʼязкове — старі версії скрипта його не шлють.
   // Бот отримує «успіх», але заявка не зберігається й сповіщення немає.

@@ -28,6 +28,12 @@ export async function onRequestPost({ request, env }) {
   let c = await env.DB.prepare("SELECT * FROM clients WHERE provider = 'telegram' AND provider_id = ?").bind(tgId).first();
   if (!c) c = await upsertClient(env, { provider: 'phone', provider_id: phone, name: str(d.name, 120), username: str(d.username, 64) });
   await env.DB.prepare('UPDATE clients SET phone = ? WHERE id = ?').bind(phone, c.id).run();
+  // номер підтверджено ботом саме для цього акаунта (migrations/0017; до неї — пропускаємо): лише такий номер відкриває
+  // запрошення працівника; у іншого акаунта, якщо номер перейшов до нової людини, позначку знімаємо
+  try {
+    await env.DB.prepare('UPDATE clients SET phone_verified = NULL WHERE phone_verified = ? AND id <> ?').bind(phone, c.id).run();
+    await env.DB.prepare('UPDATE clients SET phone_verified = ? WHERE id = ?').bind(phone, c.id).run();
+  } catch { /* до 0017 */ }
   // Telegram id — щоб упізнати власника/працівника, що входить за номером (migrations/0010; до неї — пропускаємо)
   try { await env.DB.prepare('UPDATE clients SET tg_id = COALESCE(tg_id, ?) WHERE id = ?').bind(tgId, c.id).run(); } catch { /* до 0010 */ }
 

@@ -1,6 +1,6 @@
 // Помічники кабінету клієнта v2 (functions/api/account/*, functions/api/admin/projects.js).
 // Таблиці — migrations/0005_account.sql; працюють і до її застосування (порожні дані замість помилки).
-import { bad, currentClient, json, readJSON } from './_lib.js';
+import { bad, currentClient, dict, json, readJSON } from './_lib.js';
 import { need } from './_roles.js';
 
 // Етапи замовлення в кабінеті. Ключі — orders.status воронки 0004_crm.sql; старі статуси 0001 зводимо до них.
@@ -62,10 +62,10 @@ export const progressOf = stages => stages.length ? Math.round(stages.reduce((s,
 
 // ===== Онлайн-контроль обʼєкта (migrations/0008_online_control.sql) =====
 // Статуси етапу. Старі етапи без статусу виводимо з прогресу (0 → planned, 1–99 → in_progress, 100 → done).
-export const STAGE_STATUS = { planned: 'Заплановано', in_progress: 'В роботі', review: 'Приймання', done: 'Виконано', paused: 'Пауза' };
-export const stageStatus = s => (s && STAGE_STATUS[s.status] ? s.status
+export const STAGE_STATUS = dict({ planned: 'Заплановано', in_progress: 'В роботі', review: 'Приймання', done: 'Виконано', paused: 'Пауза' });
+export const stageStatus = s => (s && typeof s.status === 'string' && STAGE_STATUS[s.status] ? s.status
   : (Number(s && s.progress) || 0) >= 100 ? 'done' : (Number(s && s.progress) || 0) > 0 ? 'in_progress' : 'planned');
-export const PAY_STATUS = { planned: 'Заплановано', due: 'До оплати', paid: 'Оплачено' };
+export const PAY_STATUS = dict({ planned: 'Заплановано', due: 'До оплати', paid: 'Оплачено' });
 export const CURRENCIES = ['USD', 'UAH', 'EUR'];
 export const stageKey = v => (/^[a-z0-9]{1,12}$/.test(String(v || '')) ? String(v) : null);
 export const newStageKey = () => [...crypto.getRandomValues(new Uint8Array(5))].map(b => (b % 36).toString(36)).join('');

@@ -9,11 +9,14 @@
 import { bad, json, readJSON, same } from '../../_lib.js';
 import { ensureWebhook, runReport, runSla } from '../../_alerts.js';
 import { runNudges } from '../../_nudges.js';
+import { limited } from '../../_rate.js';
+import { BAD_KEY_PER_HOUR } from '../leads.js';
 
 const WEBHOOK_CHECK_S = 6 * 3600;
 
 export async function onRequestPost({ request, env }) {
-  if (!env.LEAD_INGEST_KEY || !same(request.headers.get('x-lead-key') || '', env.LEAD_INGEST_KEY)) return bad('Немає доступу', 403);
+  if (!env.LEAD_INGEST_KEY || !same(request.headers.get('x-lead-key') || '', env.LEAD_INGEST_KEY)) // перебір ключа — не більше 20 спроб на годину з адреси
+    return env.DB && await limited(env, request, 'lead-key-bad', BAD_KEY_PER_HOUR) ? bad('Забагато спроб, спробуйте пізніше', 429) : bad('Немає доступу', 403);
   let d = {};
   try { d = await readJSON(request, 4096) || {}; } catch { return bad('Некоректні дані'); }
   let now = new Date();

@@ -15,7 +15,7 @@
 //   amount, currency — finance.edit; assignee, assignee_staff_id — leads.assign. Заборонене поле → 403 (без часткового збереження).
 //   Перший перехід із «Нове» = «взяли в роботу»: taken_at, час реакції, сповіщення в Telegram (functions/_alerts.js).
 //   Кожна зміна — в audit_log (до/після).
-import { CLOSED, LEAD_STATUSES, ORDER_STATUSES, STATUSES, bad, json, nextLeadNumber, readJSON, statusLabel, statusesOf, str } from '../../_lib.js';
+import { CLOSED, LEAD_STATUSES, ORDER_STATUSES, STATUSES, bad, dict, json, nextLeadNumber, readJSON, statusLabel, statusesOf, str } from '../../_lib.js';
 import { SLA_MIN, escHtml, kyiv, kyivMidnight, notifyStaff, parseUtc, sqlTime, takeLead } from '../../_alerts.js';
 import { audit, diff, need, noTable, orderScope, shapeOrder, staffById } from '../../_roles.js';
 import { DESIGN, DMIN, RATES, cost, rateOf } from '../../_rates.js';
@@ -258,7 +258,7 @@ export async function onRequestPatch({ request, env }) {
 
 // «Надіслати КП»: менеджер відкрив Telegram / Viber / WhatsApp з готовим текстом (або скопіював) — лише журнал (історія + аудит),
 // сервер нічого не надсилає. Потрібна збережена пропозиція. Нова / В роботі → «Розрахунок».
-const KP_CH = { telegram: 'Telegram', viber: 'Viber', whatsapp: 'WhatsApp', copy: 'скопійовано' };
+const KP_CH = dict({ telegram: 'Telegram', viber: 'Viber', whatsapp: 'WhatsApp', copy: 'скопійовано' });
 async function offerSent(env, request, x, d) {
   const o = await visible(env, x, d.id);
   if (!o || o.kind !== 'lead') return bad('Заявку не знайдено', 404);
@@ -314,7 +314,7 @@ async function patchOne(env, request, x, d, action) {
     if (offer && !str(d.note)) d.note = 'Розрахунок: ' + offerLine(offer);
   }
   const ST = statusesOf(o.kind);
-  const status = d.status == null ? o.status : (ST[d.status] ? d.status : null);
+  const status = d.status == null ? o.status : (typeof d.status === 'string' && ST[d.status] ? d.status : null);
   if (!status) return bad('Невідомий статус для ' + (o.kind === 'lead' ? 'заявки' : 'замовлення'));
   const amount = has(d, 'amount') ? int(d.amount) : o.amount, next = has(d, 'next_contact') ? date(d.next_contact) : o.next_contact;
   if (amount === undefined) return bad('Сума — число');

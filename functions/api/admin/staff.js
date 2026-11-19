@@ -2,17 +2,41 @@
 // GET            — staff.view: активні працівники для призначення (id, імʼя, роль);
 //                  staff.manage (лише власник): усі з контактами-запрошеннями, статусом входу, навантаженням; + roles і perms.
 // POST {name, role, tg?, email?, phone?, note?}            — додати працівника (staff.manage). Вхід — тим акаунтом, що збігся
-//                  з tg / email / phone: перший вхід привʼязує його автоматично (functions/_roles.js findStaff).
+//                  з tg / email / phone: перший вхід привʼязує його автоматично (functions/_roles.js findStaff). Збіг — лише за
+//                  підтвердженим контактом: Telegram id, пошта входу через Google, номер, підтверджений ботом.
 // PATCH {id, name?, role?, active?, note?, tg?, email?, phone?, logout?: true} — змінити / деактивувати / «вийти на всіх пристроях».
 // Заборонено: призначати роль owner, змінювати власника, змінювати самого себе (ескалація) — 403. Усе — в audit_log.
 // Зміна tg/email/phone: хоча б один контакт (422), не чужий (409); привʼязаний акаунт відвʼязується, його сесії анулюються.
-import { bad, bumpSession, json, normalizePhone, readJSON, str } from '../../_lib.js';
+import { bad, bumpSession, clientByVerifiedPhone, json, normalizePhone, readJSON, str } from '../../_lib.js';
 import { ASSIGNABLE, PERMS, ROLES, audit, need, noTable } from '../../_roles.js';
 
 const tgOk = v => (v == null || v === '' ? null : /^\d{1,20}$/.test(String(v).trim()) ? String(v).trim() : undefined);
 const emailOk = v => (v == null || v === '' ? null : /^[^\s@]{1,64}@[^\s@]{1,190}\.[a-z]{2,}$/i.test(String(v).trim()) ? String(v).trim().toLowerCase() : undefined);
 const phoneOk = v => (v == null || v === '' ? null : normalizePhone(v) || undefined);
 const has = (d, k) => Object.prototype.hasOwnProperty.call(d, k);
+// Акаунт, який уже входив із цим контактом. Лише підтверджені контакти: Telegram id, пошта входу через Google, номер, підтверджений
+// ботом (functions/_lib.js) — телефон чи пошта, які людина сама вписала в профіль або в заявку, до працівника не привʼязують.
+async function accountOf(env, tg, email, phone) {
+  if (tg) {
+    const c = await env.DB.prepare("SELECT id FROM clients WHERE (provider = 'telegram' AND provider_id = ?1) OR tg_id = ?1 ORDER BY id LIMIT 1").bind(tg).first();
+    if (c) return c;
+  }
+  if (email) {
+    const c = await env.DB.prepare("SELECT id FROM clients WHERE provider = 'google' AND lower(email) = ? ORDER BY id LIMIT 1").bind(email).first();
+    if (c) return c;
+  }
+  return phone ? clientByVerifiedPhone(env, phone) : null;
+}
+// Чи є вже працівник із таким контактом (запрошення або його акаунт входу); exceptId — рядок, який редагують.
+async function staffDup(env, tg, email, phone, exceptId = 0) {
+  const dup = await env.DB.prepare(`SELECT s.id, s.name FROM staff s LEFT JOIN clients c ON c.id = s.client_id
+      WHERE s.id <> ?4 AND ((?1 IS NOT NULL AND (s.tg_id = ?1 OR (c.provider = 'telegram' AND c.provider_id = ?1) OR c.tg_id = ?1))
+         OR (?2 IS NOT NULL AND (s.email = ?2 OR (c.provider = 'google' AND lower(c.email) = ?2)))
+         OR (?3 IS NOT NULL AND (s.phone = ?3 OR (c.provider = 'phone' AND c.provider_id = ?3)))) LIMIT 1`).bind(tg, email, phone, exceptId).first();
+  if (dup) return dup;
+  const acc = phone ? await clientByVerifiedPhone(env, phone) : null; // номер, підтверджений ботом для акаунта Telegram (0017)
+  return acc ? env.DB.prepare('SELECT id, name FROM staff WHERE client_id = ? AND id <> ?').bind(acc.id, exceptId).first() : null;
+}
 const pub = s => ({ id: s.id, name: s.name, role: s.role, role_label: ROLES[s.role] ? ROLES[s.role].label : s.role, active: !!s.active });
 
 export async function onRequestGet({ request, env }) {
@@ -52,13 +76,10 @@ export async function onRequestPost({ request, env }) {
   if (email === undefined) return bad('Некоректна пошта', 422);
   if (phone === undefined) return bad('Некоректний номер телефону', 422);
   if (!tg && !email && !phone) return bad('Вкажіть Telegram id, пошту Google або телефон — за ним працівник увійде', 422);
-  const dup = await env.DB.prepare(`SELECT s.id, s.name FROM staff s LEFT JOIN clients c ON c.id = s.client_id
-      WHERE (?1 IS NOT NULL AND (s.tg_id = ?1 OR (c.provider = 'telegram' AND c.provider_id = ?1) OR c.tg_id = ?1))
-         OR (?2 IS NOT NULL AND (s.email = ?2 OR lower(c.email) = ?2)) OR (?3 IS NOT NULL AND (s.phone = ?3 OR c.phone = ?3)) LIMIT 1`).bind(tg, email, phone).first();
+  const dup = await staffDup(env, tg, email, phone);
   if (dup) return bad(`Такий працівник уже є: ${dup.name}`, 409);
   // акаунт уже існує (людина входила як клієнт) — привʼязуємо одразу
-  const acc = await env.DB.prepare(`SELECT id FROM clients WHERE (?1 IS NOT NULL AND ((provider = 'telegram' AND provider_id = ?1) OR tg_id = ?1))
-      OR (?2 IS NOT NULL AND lower(email) = ?2) OR (?3 IS NOT NULL AND phone = ?3) ORDER BY id LIMIT 1`).bind(tg, email, phone).first();
+  const acc = await accountOf(env, tg, email, phone);
   const r = await env.DB.prepare('INSERT INTO staff (client_id, name, role, tg_id, email, phone, note, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?)')
     .bind(acc ? acc.id : null, name, d.role, tg, email, phone, str(d.note, 300), x.staffId).run();
   const id = r.meta.last_row_id;
@@ -94,9 +115,7 @@ export async function onRequestPatch({ request, env }) {
   if (contactChanged) {
     if (!n.tg_id && !n.email && !n.phone) return bad('Вкажіть Telegram id, пошту Google або телефон — за ним працівник увійде', 422);
     const tg = same(n.tg_id, s.tg_id) ? null : n.tg_id, email = same(n.email, s.email) ? null : n.email, phone = same(n.phone, s.phone) ? null : n.phone;
-    const dup = await env.DB.prepare(`SELECT s.id, s.name FROM staff s LEFT JOIN clients c ON c.id = s.client_id
-        WHERE s.id <> ?4 AND ((?1 IS NOT NULL AND (s.tg_id = ?1 OR (c.provider = 'telegram' AND c.provider_id = ?1) OR c.tg_id = ?1))
-           OR (?2 IS NOT NULL AND (s.email = ?2 OR lower(c.email) = ?2)) OR (?3 IS NOT NULL AND (s.phone = ?3 OR c.phone = ?3))) LIMIT 1`).bind(tg, email, phone, s.id).first();
+    const dup = await staffDup(env, tg, email, phone, s.id);
     if (dup) return bad(`Такий контакт уже має працівник: ${dup.name}`, 409);
   }
   const unlink = !!(s.client_id && contactChanged);

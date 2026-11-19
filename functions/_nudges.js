@@ -3,16 +3,19 @@
 //     (remind_at у JSON етапу), автоматично — лише через ≥ 24 год після переходу на приймання (review_at), не більше 3 автонагадувань
 //     на етап (remind_n), лише 10:00–20:00 за Києвом; кожне — запис hist {act: 'remind'} і audit_log 'client.remind';
 //   • проєкт «Завершено» (projects.done_at, migrations/0016) → через ~2 доби одне прохання про відгук у Google (review_asked_at), audit 'client.review'.
-// Канал — Telegram-бот, якщо клієнт привʼязаний (вхід через Telegram або за номером через бота). Пошти для розсилок у студії немає —
+// Канал — Telegram-бот, якщо клієнт привʼязаний (вхід через Telegram або за номером через бота) і не вимкнув сповіщення в Telegram
+// у профілі кабінету (client_settings.notify_tg = 0 — бот не пише). Пошти для розсилок у студії немає —
 // без Telegram менеджер надсилає той самий текст сам (кнопки в адмінці: Telegram / Viber / WhatsApp), і це теж логується (channel).
 // Тексти 10 мовами — functions/_client_msgs.js; мова — мова заявки (orders.lang), потім налаштування клієнта, інакше uk.
 import { tg } from './_alerts.js';
-import { tgOf } from './_lib.js';
+import { dict, tgOf } from './_lib.js';
 import { langOf, remindText, reviewText } from './_client_msgs.js';
 import { audit, noTable } from './_roles.js';
 
 export const REMIND_GAP_H = 48, REMIND_AUTO_AFTER_H = 24, REMIND_AUTO_MAX = 3, REVIEW_AFTER_H = 48;
-export const CHANNELS = { telegram: 'Telegram-бот', telegram_manual: 'Telegram (вручну)', viber: 'Viber', whatsapp: 'WhatsApp', copy: 'скопійовано' };
+export const CHANNELS = dict({ telegram: 'Telegram-бот', telegram_manual: 'Telegram (вручну)', viber: 'Viber', whatsapp: 'WhatsApp', copy: 'скопійовано' });
+// канал, який менеджер може вказати сам («надіслав зі свого месенджера»); «telegram» у журналі означає лише «надіслав бот»
+const manual = ch => !!CHANNELS[ch] && ch !== 'telegram';
 const DESIGN = ['design', 'arch'];
 // «YYYY-MM-DD HH:MM» за Києвом (як hist етапу) і розбір назад у мілісекунди
 export const kyivStamp = (d = new Date()) => d.toLocaleString('sv-SE', { timeZone: 'Europe/Kyiv' }).slice(0, 16);
@@ -24,8 +27,14 @@ async function clientOf(env, p) {
   const c = await env.DB.prepare('SELECT * FROM clients WHERE id = ?').bind(p.client_id).first();
   let lang = null;
   if (p.order_id) { try { lang = (await env.DB.prepare('SELECT lang FROM orders WHERE id = ?').bind(p.order_id).first() || {}).lang; } catch (e) { if (!noTable(e)) throw e; } }
-  if (!lang) { try { lang = (await env.DB.prepare('SELECT lang FROM client_settings WHERE client_id = ?').bind(p.client_id).first() || {}).lang; } catch (e) { if (!noTable(e)) throw e; } }
-  return { c, lang: langOf(lang), chat: tgOf(c), name: c && c.name ? String(c.name).split(' ')[0] : null };
+  // налаштування клієнта: мова спілкування і «Сповіщення в Telegram» (кабінет → Профіль). Вимкнув — бот йому не пише:
+  // автоматичних нагадувань немає, а менеджер отримує готовий текст, щоб надіслати самому (як для клієнта без Telegram).
+  let mute = false;
+  try {
+    const s = await env.DB.prepare('SELECT lang, notify_tg FROM client_settings WHERE client_id = ?').bind(p.client_id).first();
+    if (s) { if (!lang) lang = s.lang; mute = s.notify_tg === 0; }
+  } catch (e) { if (!noTable(e)) throw e; }
+  return { c, lang: langOf(lang), chat: mute ? null : tgOf(c), name: c && c.name ? String(c.name).split(' ')[0] : null };
 }
 const send = async (env, chat, text) => !!(chat && await tg(env, 'sendMessage', { chat_id: String(chat), text, link_preview_options: { is_disabled: true } }));
 const parse = s => { try { const v = JSON.parse(s || '[]'); return Array.isArray(v) ? v : []; } catch { return []; } };
@@ -40,7 +49,7 @@ export async function remindStage(env, request, x, p, stageId, { channel = null,
   if (s.approved_at || !['review', 'done'].includes(st)) return { error: 'Етап не чекає погодження клієнта', status: 409 };
   if (s.remind_at && hoursSince(s.remind_at, now) < REMIND_GAP_H)
     return { error: `Нагадування вже було ${s.remind_at} — наступне не раніше ніж через ${REMIND_GAP_H} год`, status: 429, wait_h: Math.ceil(REMIND_GAP_H - hoursSince(s.remind_at, now)) };
-  if (channel && !CHANNELS[channel]) return { error: 'Невідомий канал', status: 400 };
+  if (channel && !manual(channel)) return { error: 'Невідомий канал', status: 400 };
   const k = await clientOf(env, p);
   const text = remindText(s.name, p.title, p.id, k.lang, k.name);
   let used = channel;
@@ -60,7 +69,7 @@ export async function remindStage(env, request, x, p, stageId, { channel = null,
 export async function askReview(env, request, x, p, { channel = null, auto = false, now = new Date() } = {}) {
   if (p.status !== 'done') return { error: 'Відгук просимо лише після завершення проєкту', status: 409 };
   if (p.review_asked_at) return { error: `Відгук уже просили ${p.review_asked_at}`, status: 409 };
-  if (channel && !CHANNELS[channel]) return { error: 'Невідомий канал', status: 400 };
+  if (channel && !manual(channel)) return { error: 'Невідомий канал', status: 400 };
   const k = await clientOf(env, p);
   const text = reviewText(p.title, k.lang, k.name);
   let used = channel;

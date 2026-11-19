@@ -4,7 +4,7 @@
 //   • field-level — без finance.view суми й платежі вирізаються з відповіді, без clients.contacts — телефони й пошта.
 // Деактивація працівника діє миттєво: staff.active перевіряється при кожному запиті (staffCtx), а сесії ще й
 // анулюються (clients.session_version += 1, functions/_lib.js).
-import { bad, currentClient, isAdmin, isOwner, normalizePhone, sha256, hexOf, clientIp, tgOf } from './_lib.js';
+import { bad, currentClient, isAdmin, isOwner, sha256, hexOf, clientIp, tgOf, verifiedEmail, verifiedPhone } from './_lib.js';
 
 export const PERMS = {
   'panel.admin': 'Панель CRM і сайту (/kabinet/admin)',
@@ -71,10 +71,12 @@ const ctxOf = (client, staff, role, extra = {}) => {
 };
 
 // Запрошення (staff без client_id) → привʼязати до акаунта, яким людина увійшла: Telegram id, пошта Google або телефон.
+// Лише підтверджені контакти (functions/_lib.js verifiedEmail / verifiedPhone): телефон чи пошта, вписані в профіль або взяті
+// із заявки, запрошення не відкривають.
 async function findStaff(env, c) {
   const row = await env.DB.prepare('SELECT * FROM staff WHERE client_id = ?').bind(c.id).first();
   if (row) return row;
-  const tg = tgOf(c), email = c.email ? c.email.toLowerCase() : null, phone = normalizePhone(c.phone);
+  const tg = tgOf(c), email = verifiedEmail(c), phone = verifiedPhone(c);
   if (!tg && !email && !phone) return null;
   const inv = await env.DB.prepare(`SELECT * FROM staff WHERE client_id IS NULL AND ((tg_id IS NOT NULL AND tg_id = ?1) OR (email IS NOT NULL AND email = ?2)
       OR (phone IS NOT NULL AND phone = ?3)) ORDER BY id LIMIT 1`).bind(tg, email, phone).first();
@@ -96,7 +98,7 @@ export async function staffCtx(request, env) {
       if (owner) {
         if (!row) {
           const r = await env.DB.prepare("INSERT INTO staff (client_id, name, role, tg_id, email, note) VALUES (?, ?, 'owner', ?, ?, 'Власник (OWNER_TG_ID / OWNER_EMAIL)')")
-            .bind(c.id, c.name || 'Власник', tgOf(c), c.email ? c.email.toLowerCase() : null).run();
+            .bind(c.id, c.name || 'Власник', tgOf(c), verifiedEmail(c)).run();
           row = await env.DB.prepare('SELECT * FROM staff WHERE id = ?').bind(r.meta.last_row_id).first();
         } else if (row.role !== 'owner' || !row.active) {
           await env.DB.prepare("UPDATE staff SET role = 'owner', active = 1, deactivated_at = NULL, updated_at = datetime('now') WHERE id = ?").bind(row.id).run();
@@ -111,7 +113,7 @@ export async function staffCtx(request, env) {
       }
       if (isAdmin(env, c)) { // перехід: старі адміни (ADMIN_TG_IDS / ADMIN_EMAILS / clients.role) → manager
         await env.DB.prepare("INSERT OR IGNORE INTO staff (client_id, name, role, tg_id, email, note) VALUES (?, ?, 'manager', ?, ?, 'Автоматично: був адміном (ADMIN_TG_IDS / ADMIN_EMAILS)')")
-          .bind(c.id, c.name || c.email || `Менеджер #${c.id}`, tgOf(c), c.email ? c.email.toLowerCase() : null).run();
+          .bind(c.id, c.name || c.email || `Менеджер #${c.id}`, tgOf(c), verifiedEmail(c)).run();
         const r2 = await env.DB.prepare('SELECT * FROM staff WHERE client_id = ?').bind(c.id).first();
         if (r2 && !r2.active) return ctxOf(c, null, null, { deactivated: true });
         return ctxOf(c, r2, r2 && ROLES[r2.role] && r2.role !== 'owner' ? r2.role : 'manager');
@@ -163,7 +165,8 @@ export function orderScope(x, args, alias = 'o') {
 
 // ===== Field-level =====
 const MONEY_O = ['amount', 'total', 'discount', 'discount_pct', 'payment', 'paid', 'promo', 'currency'];
-const CONTACT_O = ['phone', 'email', 'username', 'company', 'contact_tg'];
+// delivery — адреса доставки замовлення, client_city / client_email — адреса й пошта з профілю клієнта (JOIN clients)
+const CONTACT_O = ['phone', 'email', 'username', 'company', 'contact_tg', 'delivery', 'client_city', 'client_email'];
 export function shapeOrder(o, x) {
   const r = { ...o };
   if (!x.can('finance.view')) {

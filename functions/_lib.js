@@ -2,21 +2,24 @@
 // Секрети середовища: TELEGRAM_BOT_TOKEN (бот для входу), GOOGLE_CLIENT_ID, SESSION_SECRET (необовʼязково —
 // інакше генерується й зберігається в D1), ADMIN_TG_IDS / ADMIN_EMAILS (через кому), LEAD_WEBHOOK (n8n).
 
+// Довідник «ключ → підпис» без прототипу: пошук за рядком із запиту (статус, канал…) не знаходить «constructor», «__proto__», «toString».
+export const dict = o => Object.freeze(Object.assign(Object.create(null), o));
+
 // Воронка CRM (migrations/0004_crm.sql, 0010). Порядок ключів = порядок колонок канбану в /kabinet/admin.
 // Замовлення Оздоби (kind = order): new → in_work → quote_sent → paid → production → shipping → delivered | cancelled.
-export const ORDER_STATUSES = {
+export const ORDER_STATUSES = dict({
   new: 'Нове', in_work: 'В роботі', quote_sent: 'КП надіслано', paid: 'Оплачено',
   production: 'У виробництві', shipping: 'В дорозі', delivered: 'Доставлено', cancelled: 'Скасовано',
-};
+});
 // Заявки студії (kind = lead): заявка → розрахунок → договір → проєкт (етапи — у projects.stages) → здача → гарантія.
-export const LEAD_STATUSES = {
+export const LEAD_STATUSES = dict({
   new: 'Нова заявка', in_work: 'В роботі', quote_sent: 'Розрахунок', contract: 'Договір', project: 'Проєкт: етапи',
   handover: 'Здача', warranty: 'Гарантія', cancelled: 'Скасовано',
-};
-export const STATUSES = { ...ORDER_STATUSES, contract: 'Договір', project: 'Проєкт: етапи', handover: 'Здача', warranty: 'Гарантія' };
+});
+export const STATUSES = dict({ ...ORDER_STATUSES, contract: 'Договір', project: 'Проєкт: етапи', handover: 'Здача', warranty: 'Гарантія' });
 export const statusesOf = kind => (kind === 'lead' ? LEAD_STATUSES : ORDER_STATUSES);
 // старі статуси (до 0004) — лише для підписів, нові замовлення їх не отримують
-export const LEGACY_STATUSES = { confirmed: 'Підтверджено', awaiting_payment: 'Очікує оплату', ordered: 'Замовлено на фабриці' };
+export const LEGACY_STATUSES = dict({ confirmed: 'Підтверджено', awaiting_payment: 'Очікує оплату', ordered: 'Замовлено на фабриці' });
 export const statusLabel = (s, kind) => (kind && statusesOf(kind)[s]) || STATUSES[s] || LEGACY_STATUSES[s] || s;
 // закриті стадії: не рахуються як «відкриті» / прострочені
 export const CLOSED = ['delivered', 'cancelled', 'warranty'];
@@ -57,6 +60,20 @@ const COOKIE = 'cas_s';
 const DAYS = 30;       // клієнт
 const ADMIN_DAYS = 7;  // працівник / адмін: коротша сесія — менше шкоди від викраденої cookie
 
+// Підтверджені контакти акаунта — лише за ними впізнаємо працівника, адміна чи власника:
+//   пошта — тільки з входу через Google (її підтвердив Google); телефон — тільки підтверджений ботом (акаунт входу за номером
+//   або clients.phone_verified, migrations/0017). У clients.email / clients.phone можуть бути дані із заявки чи профілю,
+//   які людина вписала сама, — для прав доступу вони не годяться.
+export const verifiedEmail = c => (c && c.provider === 'google' && c.email ? String(c.email).toLowerCase() : null);
+export const verifiedPhone = c => (c ? normalizePhone(c.provider === 'phone' ? c.provider_id : c.phone_verified) : null);
+// Акаунт із підтвердженим номером: вхід за номером або номер, який бот підтвердив для акаунта Telegram (до 0017 — лише перше).
+export async function clientByVerifiedPhone(env, phone) {
+  if (!phone) return null;
+  const a = await env.DB.prepare("SELECT * FROM clients WHERE provider = 'phone' AND provider_id = ? LIMIT 1").bind(phone).first();
+  if (a) return a;
+  try { return await env.DB.prepare('SELECT * FROM clients WHERE phone_verified = ? ORDER BY id LIMIT 1').bind(phone).first(); } catch { return null; }
+}
+
 // Працівник студії (активний рядок staff, migrations/0010) або старий адмін (isAdmin) — сесія 7 днів.
 // До міграції 0010 таблиці staff немає — тоді лише isAdmin.
 export async function isStaffClient(env, c) {
@@ -65,7 +82,7 @@ export async function isStaffClient(env, c) {
   try {
     if (await env.DB.prepare('SELECT 1 FROM staff WHERE client_id = ? AND active = 1').bind(c.id).first()) return true;
     // запрошення, яке привʼяжеться при першому запиті (functions/_roles.js findStaff) — одразу видаємо сесію працівника
-    const tg = tgOf(c), email = c.email ? c.email.toLowerCase() : null, phone = normalizePhone(c.phone);
+    const tg = tgOf(c), email = verifiedEmail(c), phone = verifiedPhone(c);
     return !!(tg || email || phone) && !!await env.DB.prepare(`SELECT 1 FROM staff WHERE client_id IS NULL AND active = 1
         AND ((tg_id IS NOT NULL AND tg_id = ?1) OR (email IS NOT NULL AND email = ?2) OR (phone IS NOT NULL AND phone = ?3))`).bind(tg, email, phone).first();
   } catch { return false; }
@@ -113,26 +130,26 @@ const envList = (env, k) => (env[k] || '').split(',').map(s => s.trim().toLowerC
 // Telegram id клієнта: вхід через віджет (provider_id) або за номером через бота (clients.tg_id, 0010)
 export const tgOf = c => (c ? (c.provider === 'telegram' ? String(c.provider_id) : c.tg_id ? String(c.tg_id) : null) : null);
 
-// Старий «адмін» (до ролей): clients.role = 'admin', Telegram у ADMIN_TG_IDS або пошта в ADMIN_EMAILS.
+// Старий «адмін» (до ролей): clients.role = 'admin', Telegram у ADMIN_TG_IDS або пошта Google в ADMIN_EMAILS.
 // Після 0010 такі люди автоматично стають працівниками з роллю manager (functions/_roles.js), власник — owner.
 export function isAdmin(env, c) {
   if (!c) return false;
   if (c.role === 'admin') return true;
-  const tg = tgOf(c);
+  const tg = tgOf(c), email = verifiedEmail(c);
   return (!!tg && envList(env, 'ADMIN_TG_IDS').includes(tg))
-    || (!!c.email && envList(env, 'ADMIN_EMAILS').includes(c.email.toLowerCase()));
+    || (!!email && envList(env, 'ADMIN_EMAILS').includes(email));
 }
 
 // Власник (майстер-акаунт): OWNER_TG_ID / OWNER_EMAIL; якщо жодна не задана — перший id з ADMIN_TG_IDS.
 export function isOwner(env, c) {
   if (!c) return false;
-  const tg = tgOf(c);
+  const tg = tgOf(c), email = verifiedEmail(c);
   const owners = envList(env, 'OWNER_TG_ID'), mails = envList(env, 'OWNER_EMAIL');
   if (!owners.length && !mails.length) {
     const first = envList(env, 'ADMIN_TG_IDS')[0];
     return !!tg && !!first && tg === first;
   }
-  return (!!tg && owners.includes(tg)) || (!!c.email && mails.includes(c.email.toLowerCase()));
+  return (!!tg && owners.includes(tg)) || (!!email && mails.includes(email));
 }
 
 export async function upsertClient(env, p) {

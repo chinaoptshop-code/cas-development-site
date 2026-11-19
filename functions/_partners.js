@@ -3,15 +3,15 @@
 // Було: «Партнери» і бот пошуку заявок (migrations/0013_partners.sql). Спільне для бота (/api/bot/*) і адмінки (/api/admin/partners):
 // перевірка й обрізання полів (HTML не приймаємо), нормалізація контактів, дедуплікація й upsert, CSV.
 // Зберігаємо лише публічні контакти: Telegram @username, телефон, сайт. Опис для власника — tools/admin/README.md, «Партнери і бот пошуку».
-import { normalizePhone } from './_lib.js';
+import { dict, normalizePhone } from './_lib.js';
 
-export const PARTNER_TYPES = {
+export const PARTNER_TYPES = dict({
   client: 'Клієнт', contractor: 'Підрядник', partner: 'Партнер', supplier: 'Постачальник', realtor: 'Ріелтор', crew: 'Бригада', master: 'Майстер',
   builder: 'Будівельна компанія', designer: 'Дизайнер / архітектор', other: 'Інше',
-};
+});
 // бот пошуку зберігає лише «не клієнтів» — тип client йому заборонено
 export const BOT_TYPES = Object.keys(PARTNER_TYPES).filter(k => k !== 'client');
-export const PARTNER_STATUSES = { new: 'Новий', interesting: 'Цікавий', working: 'Співпрацюємо', rejected: 'Не цікавий' };
+export const PARTNER_STATUSES = dict({ new: 'Новий', interesting: 'Цікавий', working: 'Співпрацюємо', rejected: 'Не цікавий' });
 
 // Помилка перевірки: обробник повертає 400 з цим текстом
 export class Invalid extends Error {}
