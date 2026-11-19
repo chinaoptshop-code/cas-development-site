@@ -24,6 +24,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 IDS = json.load(open(os.path.join(ROOT, 'tools/img/drive-ids.json')))
 CROPS = json.load(open(os.path.join(ROOT, 'tools/img/crops.json')))
 CACHE = os.path.expanduser('~/.cache/cas-img')
+UPSCALED = os.environ.get('CAS_IMG_UPSCALED', '')  # тека з <id>.jpg після Real-ESRGAN (лише для малих оригіналів)
 FORCE = False
 Q = 81
 BIG_W, BIG_MAX = 2000, 450 * 1024  # копії ≥ 2000w: q ≤ 78 без згладжування, ≤ 450 КБ (Михайло 09.11.2026)
@@ -41,6 +42,9 @@ def original(base):
             data = r.read()
         Image.open(io.BytesIO(data)).verify()
         open(p, 'wb').write(data)
+    up = os.path.join(UPSCALED, fid + '.jpg')                 # Real-ESRGAN ×2 малих оригіналів (Михайло 18.11: «обробити 83+7»)
+    if UPSCALED and os.path.exists(up):
+        p = up
     return ImageOps.exif_transpose(Image.open(p)).convert('RGB')
 
 
