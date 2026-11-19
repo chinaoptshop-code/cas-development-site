@@ -671,8 +671,19 @@ def strip_think(s):
 
 
 def ollama_chat(text, history=None, system_extra="", timeout=None):
-    """Відповідь локальної моделі або None, якщо Ollama недоступна."""
-    url = os.environ.get("ASSISTANT_OLLAMA_URL", "http://127.0.0.1:11434").rstrip("/") + "/api/chat"
+    """Відповідь локальної моделі або None, якщо Ollama недоступна.
+    Адреси пробуємо по черзі: ASSISTANT_OLLAMA_URL (одна Ollama :11434, моделі на SSD — з 04.11), далі
+    ASSISTANT_OLLAMA_FALLBACK_URLS (типово порожньо; друга копія :11435 прибрана)."""
+    urls = [os.environ.get("ASSISTANT_OLLAMA_URL", "http://127.0.0.1:11434")]
+    urls += [u for u in os.environ.get("ASSISTANT_OLLAMA_FALLBACK_URLS", "").split(",") if u.strip()]
+    for u in dict.fromkeys(x.strip().rstrip("/") for x in urls):
+        ans = _ollama_chat_at(u + "/api/chat", text, history, system_extra, timeout)
+        if ans:
+            return ans
+    return None
+
+
+def _ollama_chat_at(url, text, history=None, system_extra="", timeout=None):
     model = os.environ.get("ASSISTANT_LOCAL_MODEL", "qwen3:8b")
     timeout = timeout or float(os.environ.get("ASSISTANT_OLLAMA_TIMEOUT", "120"))
     msgs = [{"role": "system", "content": SYSTEM + ("\n\n" + system_extra if system_extra else "")}]
@@ -697,6 +708,23 @@ def ollama_chat(text, history=None, system_extra="", timeout=None):
     return None
 
 
+def knowledge_context(text):
+    """Фрагменти бази знань CAS (RAG на bge-m3, ~/jarvis/scripts/knowledge.py) для локальної моделі; порожньо, якщо бази немає.
+    Вимикається ASSISTANT_KNOWLEDGE=0 (у тестах — щоб не ходити в справжню Ollama)."""
+    if os.environ.get("ASSISTANT_KNOWLEDGE", "1") == "0":
+        return ""
+    kdir = pathlib.Path(os.environ.get("ASSISTANT_KNOWLEDGE_DIR", str(pathlib.Path.home() / "jarvis/scripts")))
+    if not (kdir / "knowledge.py").exists():
+        return ""
+    try:
+        if str(kdir) not in sys.path:
+            sys.path.insert(0, str(kdir))
+        import knowledge
+        return knowledge.context(text)
+    except Exception:
+        return ""
+
+
 def ollama_reply(text, t):
     hist = []
     for j in _dialog(11):
@@ -708,6 +736,9 @@ def ollama_reply(text, t):
     extra = f"Зараз {t:%Y-%m-%d %H:%M} ({DAY_ABBR[t.weekday()]})."
     if items:
         extra += "\nВідкриті задачі з памʼяті:\n" + "\n".join(items)
+    kb = knowledge_context(text)
+    if kb:
+        extra += "\n\n" + kb
     ans = ollama_chat(text, hist, extra)
     if ans:
         return Reply(ans)

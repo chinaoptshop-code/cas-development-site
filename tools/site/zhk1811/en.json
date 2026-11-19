@@ -1,0 +1,602 @@
+{
+ "slugs": {
+  "hub": "apartment-renovation-kyiv-residential-complexes",
+  "novopecherski-lypky": "apartment-renovation-novopecherski-lypky",
+  "edeldorf-hills": "apartment-renovation-edeldorf-hills",
+  "triiinity": "apartment-renovation-triiinity",
+  "taryan-towers": "apartment-renovation-taryan-towers",
+  "bulvar-fontaniv": "apartment-renovation-bulvar-fontaniv",
+  "linden-luxury-residences": "apartment-renovation-linden-luxury-residences",
+  "greenville-pechersk": "apartment-renovation-greenville-pechersk",
+  "maxima-residence": "apartment-renovation-maxima-residence",
+  "nordica-residence": "apartment-renovation-nordica-residence",
+  "hvardiiskyi": "apartment-renovation-hvardiiskyi",
+  "a136-highlight-tower": "apartment-renovation-a136-highlight-tower",
+  "montreal-house": "apartment-renovation-montreal-house",
+  "senat": "apartment-renovation-senat",
+  "life-story": "apartment-renovation-life-story",
+  "respublika": "apartment-renovation-respublika",
+  "podil-hrad": "apartment-renovation-podil-hrad",
+  "unit-home": "apartment-renovation-unit-home",
+  "novyi-avtohraf": "apartment-renovation-novyi-avtohraf",
+  "rusaniv-residence": "apartment-renovation-rusaniv-residence"
+ },
+ "t": {
+  "name": "{n} residential complex",
+  "svc": "Apartment renovation in {n}, Kyiv",
+  "title": ["Apartment renovation in {n} (Kyiv residential complex) — turnkey | CAS", "Apartment renovation in {n}, Kyiv — turnkey | CAS", "Apartment renovation in {n}, Kyiv | CAS"],
+  "desc": "Turnkey apartment renovation in the {n} residential complex ({d}, Kyiv): design project, renovation from $550/m², furnishing. 12-month warranty.",
+  "desc_short": "Apartment renovation in {n} ({d}, Kyiv): design project, turnkey renovation from $550/m², furnishing. 12-month warranty.",
+  "h1": "Turnkey apartment renovation in {n}",
+  "price": "from $550/m² · design, renovation and furniture in one contract",
+  "hub_short": "Renovation in Kyiv residential complexes",
+  "rel": [
+   "Apartment renovation in Kyiv",
+   "New-build renovation",
+   "Turnkey renovation",
+   "Interior design",
+   "Apartment furnishing",
+   "Cost calculator"
+  ],
+  "unit": "m²",
+  "area_from": "from {a} {u}",
+  "area_plus": "{s} and larger",
+  "ref": "For reference: {x}. We do not represent the developer or the management company — we work directly with the apartment owner.",
+  "ref_dev": "developer — {dev}",
+  "ref_addr": "address — {addr}",
+  "sep": ", ",
+  "ref_none": "We do not represent the developer or the management company — we work directly with the apartment owner.",
+  "dist": {
+   "pechersk": "Pecherskyi district",
+   "holosiiv": "Holosiivskyi district",
+   "podil": "Podilskyi district",
+   "shevchenko": "Shevchenkivskyi district",
+   "dnipro": "Dniprovskyi district"
+  },
+  "dist_h2": {
+   "pechersk": "Pecherskyi district",
+   "holosiiv": "Holosiivskyi district",
+   "podil": "Podilskyi district",
+   "shevchenko": "Shevchenkivskyi district",
+   "dnipro": "Dniprovskyi district"
+  },
+  "budget_h2": "Budget guide for a {a} m² apartment",
+  "budget_p": "For a {a} m² apartment, here is a guide based on our base rates:",
+  "price_q": "How much does an apartment renovation in {n} cost?",
+  "price_a": "Turnkey renovation starts from $550/m² (works and rough materials; finishing materials, furniture and appliances are extra, per the estimate), a design project from $30/m² (minimum $2,500), furnishing from $250/m². The calculation for a {a} m² apartment is in the budget guide above; we fix the exact amount in the estimate after the inspection.",
+  "faq_common": [
+   [
+    "What warranty do you give?",
+    "We hand over the apartment with a signed acceptance certificate; all completed works carry a 12-month warranty."
+   ],
+   [
+    "Can I follow the renovation remotely?",
+    "Yes. We send photo reports from the site via Telegram, and the price, timeline and payment stages are fixed in the contract."
+   ]
+  ],
+  "near": "Renovation in other Kyiv residential complexes",
+  "cards": {
+   "turnkey": [
+    "Turnkey renovation",
+    [
+     "inspection after the developer and measurements",
+     "rough and finishing works",
+     "electrics, plumbing, ventilation",
+     "approval of works with the management company"
+    ]
+   ],
+   "design": [
+    "Design project",
+    [
+     "layout and furniture arrangement",
+     "3D visualisations of the rooms",
+     "working drawings for the crew",
+     "specification and estimate"
+    ]
+   ],
+   "furnish": [
+    "Furnishing and fit-out",
+    [
+     "custom furniture and furniture from China",
+     "lighting and appliances",
+     "textiles and décor",
+     "styling before move-in"
+    ]
+   ],
+   "large": [
+    "Large floor area",
+    [
+     "several air-conditioning zones",
+     "ventilation with heat recovery",
+     "smart home and lighting scenes",
+     "walk-in wardrobes and utility rooms"
+    ]
+   ],
+   "duplex": [
+    "Two-level apartment",
+    [
+     "custom-designed staircase",
+     "separate engineering for each level",
+     "sound insulation of the floor slab",
+     "staircase lighting"
+    ]
+   ],
+   "tower": [
+    "High-rise logistics",
+    [
+     "checking lift and doorway dimensions",
+     "deliveries in batches on the building's schedule",
+     "protection of lobbies and lifts",
+     "removal of construction waste"
+    ]
+   ],
+   "terrace": [
+    "Terrace",
+    [
+     "checking waterproofing and slopes",
+     "frost-resistant flooring",
+     "moisture-proof lighting and sockets",
+     "outdoor furniture and greenery"
+    ]
+   ],
+   "newbuild": [
+    "After the developer",
+    [
+     "checking wall and floor geometry",
+     "audit of electrics, water and ventilation",
+     "preparing the base for tiles",
+     "movement joints allowing for settlement"
+    ]
+   ]
+  },
+  "cls_l": "Class",
+  "cls": {
+   "b": "business",
+   "p": "premium",
+   "bp": "business/premium",
+   "cb": "comfort/business"
+  },
+  "feat": {
+   "many100": "many 100+ m² and two-level apartments",
+   "duplex_terr": "including two-level apartments with terraces",
+   "duplex_terr2": "including two-level apartments and apartments with terraces",
+   "4room": "including four-room apartments",
+   "duplex": "two-level"
+  },
+  "addr_l": "Address",
+  "dev_l": "Developer — {dev}.",
+  "more": "Details"
+ },
+ "hub": {
+  "service": "Apartment renovation in Kyiv residential complexes",
+  "title": "Apartment renovation in Kyiv residential complexes — turnkey | CAS",
+  "description": "Apartment renovation in Kyiv residential complexes: Pechersk, Holosiiv, Podil, Shevchenkivskyi, Dniprovskyi. Design from $30/m², renovation from $550/m².",
+  "h1": "Apartment renovation in Kyiv residential complexes",
+  "lead": "19 Kyiv residential complexes, from comfort to premium class: for each, what to consider when renovating an apartment of that format, and a budget guide. Choose your complex or leave a request.",
+  "s1": [
+   "Renovation in business- and premium-class new builds",
+   [
+    "An apartment in a modern residential complex comes not only with square metres but with house rules: approval of works with the management company, hours for noisy works, a queue for the service lift and waste removal. We take them into account before starting, and one team handles design, renovation and furniture under one contract.",
+    "Below are the Kyiv residential complexes for which we have prepared separate pages: what to consider when renovating apartments of that class and size, and a budget guide at our rates. Information about the complexes is for reference, from open sources; we do not represent the developers and work directly with apartment owners."
+   ]
+  ],
+  "s2": [
+   "What renovations in residential complexes have in common",
+   [
+    "The rates are the same for all complexes: turnkey renovation from $550/m² (works and rough materials; finishing materials, furniture and appliances are extra, per the estimate), a design project from $30/m² (minimum $2,500), furnishing from $250/m². If CAS does the renovation, the final cost stays within ±5% of the estimate, and the works carry a 12-month warranty.",
+    "The difference is in the apartment format: two-level apartments need a staircase and separate engineering for each level, terraces need a waterproofing check, large areas need well-planned ventilation and air conditioning, compact ones need precise built-in furniture."
+   ]
+  ],
+  "gal": "Our apartment projects",
+  "faq": [
+   "Questions and answers",
+   [
+    [
+     "My residential complex is not on the list — do you work there?",
+     "Yes, we renovate apartments in any residential complex in Kyiv and the Kyiv region. The list only shows the complexes for which we have prepared separate pages with advice."
+    ],
+    [
+     "How much does an apartment renovation in a residential complex cost?",
+     "Turnkey renovation from $550/m² (works and rough materials; finishing materials, furniture and appliances are extra, per the estimate), a design project from $30/m² (minimum $2,500), furnishing from $250/m². We fix the exact amount in the estimate after the inspection."
+    ],
+    [
+     "Who gets the renovation approved by the management company?",
+     "We do. As a rule, a list of works, a schedule and the crew's details are required; we also arrange the service lift and waste removal."
+    ],
+    [
+     "Can the design project start before I get the keys?",
+     "Yes, based on the developer's floor plan. Once we have access, we take control measurements and arrive on site with ready drawings."
+    ]
+   ]
+  ],
+  "rel": "Other services",
+  "rel_names": [
+   "Apartment in Pechersk",
+   "Premium renovation",
+   "Premium interior design"
+  ],
+  "apt_link": "Renovation in Kyiv residential complexes"
+ },
+ "zhk": {
+  "novopecherski-lypky": {
+   "addr": "Andriia Verkhohliada St",
+   "lead": "Novopecherski Lypky is a business- and premium-class quarter in Pechersk with many apartments over 100 m² and two-level layouts. We take on such a property from measurements and the design project to furniture and handover with a signed certificate.",
+   "h2": "What to consider when renovating an apartment in Novopecherski Lypky",
+   "p": [
+    "According to reference data from the developer, City One Development (Stolitsa Group), apartments here range from 50.6 to 225.7 m², and a large share are over 100 m² or on two levels. For such apartments the layout matters more than the finishes: where the private and guest zones go, how the staircase runs, how many bathrooms are needed and where to hide utility rooms.",
+    "In a two-level apartment we design the engineering for both floors at once: separate heating and air-conditioning circuits, bathroom ventilation, sound insulation of the slab under the bedrooms. The staircase is a separate unit: it is ordered after the rough works, with embedded parts prepared in advance.",
+    "Buildings of this class usually have management-company rules: approval of the works plan, hours for noisy works, use of the service lift and waste removal. We find them out before starting and build them into the schedule so the renovation does not stall over passes or bans."
+   ],
+   "faq": [
+    [
+     "Do you renovate two-level apartments?",
+     "Yes. We design both levels together: the staircase, engineering, slab sound insulation and staircase lighting. The staircase and built-in furniture are ordered to measurements after the rough works."
+    ],
+    [
+     "How is the renovation approved by the management company?",
+     "As a rule, the management company asks for a project or list of works, a schedule and the crew's details. We prepare the documents and agree the hours of noisy works, the service lift and waste removal before the renovation starts."
+    ]
+   ]
+  },
+  "edeldorf-hills": {
+   "addr": "",
+   "lead": "Edeldorf Hills is a premium-class new build by Futura Hata in Pechersk. If you have received the keys and are planning a renovation, we will take you from an empty apartment to a finished interior under one contract.",
+   "h2": "Renovating in a new premium building: where to start",
+   "p": [
+    "An apartment in a newly completed building is a blank slate, but also a period when dozens of neighbours are renovating at once. Queues for the service lift, limited hours for noisy works and rules for bringing in materials are usually set by the management company — we plan deliveries around them, not the other way round.",
+    "Before building any walls, we check what the developer has handed over: wall and ceiling geometry, the screed or its absence, electricity and water inlets, the position of ventilation shafts. This determines whether wet zones can be moved, where the kitchen island will stand and how much levelling will cost.",
+    "A new monolithic frame settles, so the project provides for movement joints, proper preparation of the base for large-format tiles and painting after the walls have stabilised. That way no cracks appear at the joints of a premium interior a year later."
+   ],
+   "faq": [
+    [
+     "When should I start the renovation in Edeldorf Hills?",
+     "The design project can be done before you receive the keys, based on the developer's floor plan. Then, as soon as access opens, we take control measurements and start work with ready drawings."
+    ],
+    [
+     "What do you check after the developer?",
+     "Wall and floor geometry, electricity and water inlets, ventilation, windows and reveals. We take the results into account in the project and estimate so you do not pay twice for rework."
+    ]
+   ]
+  },
+  "triiinity": {
+   "addr": "39/2 Vasylia Tiutiunnyka St",
+   "lead": "TRIIINITY is a premium-class residential complex by Seven Hills on Vasylia Tiutiunnyka Street. Apartments here range from 53 to 125 m², and for every format we offer the full cycle: design, renovation and furniture by one team.",
+   "h2": "Renovating an apartment in TRIIINITY: compact and large formats",
+   "p": [
+    "The 53–125 m² range means two different scenarios. In a 53–60 m² apartment the key is to fit a full kitchen-living room, a wardrobe and a comfortable bathroom without feeling cramped: built-in floor-to-ceiling furniture, hidden doors and well-planned lighting help. Apartments of 100+ m² have room for a master bedroom with its own bathroom, a study and a separate laundry.",
+    "The premium segment implies engineering you only notice as comfort: quiet air conditioning with concealed units, underfloor heating in the bathrooms, smart lighting control. We build these systems in at the design stage so finished walls never have to be cut.",
+    "A building of this level usually has management-company renovation rules covering working hours, protection of common areas and removal of construction waste. We include them in the schedule from day one."
+   ],
+   "faq": [
+    [
+     "How can a small apartment feel premium?",
+     "Through the layout and the details: built-in floor-to-ceiling wardrobes, hidden doors, quality lighting and a restrained palette of materials. We set this in the design project before the renovation starts."
+    ],
+    [
+     "Can the air conditioners and ventilation be hidden?",
+     "Yes, if it is planned in the project: ducted or cassette systems, access hatches, suspended ceilings. We align the solution with the building's requirements for the façade and utility networks."
+    ]
+   ]
+  },
+  "taryan-towers": {
+   "addr": "12 Ioanna Pavla II St",
+   "lead": "Taryan Towers is a premium-class high-rise complex by Taryan Group on Ioanna Pavla II Street. We renovate apartments of this level turnkey: from the layout and 3D to furniture, lighting and textiles.",
+   "h2": "Renovating an apartment in a premium high-rise",
+   "p": [
+    "In a high-rise, renovation logistics is a task of its own. Materials and furniture go up the service lift on a schedule, and large items — kitchen fronts, stone worktops, large-format tiles — are checked in advance against the lift and doorway dimensions. Otherwise it is easy to order a slab that will never reach the apartment.",
+    "Apartments in Taryan Towers start from 62–87 m² and go larger. In mid-size apartments we usually work on balance: a large kitchen-living room, two bedrooms and enough storage. In larger ones — on zoning and a second bathroom.",
+    "Glazing at height brings lots of light and great views, so the project accounts for sun protection, motorised curtains and temperature control. Renovation rules are usually set by the management company — we agree them before work starts."
+   ],
+   "faq": [
+    [
+     "How do you deliver large furniture and stone to a high-rise?",
+     "We check the dimensions of the service lift and doorways at the project stage, split large items into sections and coordinate deliveries with the building's schedule."
+    ],
+    [
+     "Do you do curtains and sun protection?",
+     "Yes, as part of the fit-out: motorised curtain tracks, roller blinds, sun-protection fabrics. Recesses for the tracks are built into the ceiling during the renovation."
+    ]
+   ]
+  },
+  "bulvar-fontaniv": {
+   "addr": "6/1 Ioanna Pavla II St",
+   "lead": "Bulvar Fontaniv is a premium-class residential complex at 6/1 Ioanna Pavla II Street with apartments from 64 to 156 m². We renovate turnkey: project, construction works, furniture and décor.",
+   "h2": "Renovating an apartment in Bulvar Fontaniv: what to pay attention to",
+   "p": [
+    "With 64–156 m², the question is not just the number of rooms but how you live. A family with children needs separate children's rooms, a second bathroom and a wardrobe by the entrance; a couple — a spacious kitchen-living room, a study and a guest room. We show layout options at the first stages of the design project.",
+    "In apartments over 100 m² the utility runs get longer, so we design ventilation, air conditioning and electrics together with the furniture: no draught from the air conditioner where the bed stands, and sockets and lighting match the built-in wardrobes.",
+    "The management company in a complex like this usually has renovation requirements: agreed working hours, protection of lobbies and lifts, waste removal in bags. We take these matters on ourselves."
+   ],
+   "faq": [
+    [
+     "Can the apartment layout be changed?",
+     "Within the limits allowed by the building's structure and regulations: we do not move load-bearing walls or place wet zones above neighbours' living rooms. We check the options at the project stage."
+    ],
+    [
+     "How long does renovating an apartment over 100 m² take?",
+     "It depends on the complexity of the project and the building's schedule. The timeline is set in the contract, from 2 weeks; we fix it after the design project and estimate."
+    ]
+   ]
+  },
+  "linden-luxury-residences": {
+   "addr": "14v Liuteranska St",
+   "lead": "Linden Luxury Residences is a premium-class club house by Budhouse Group on Liuteranska Street, with apartments from 75 to 556 m². For such properties, renovation is first of all a project and the coordination of dozens of contractors — and we take that on.",
+   "h2": "Renovating a large apartment in the historic centre",
+   "p": [
+    "Areas here range from 75 to 556 m², from a city apartment to a residence with several bedrooms, a study, walk-in wardrobes and a guest zone. In large spaces the interior relies on a system: one logic of materials, lighting and doors in every room, otherwise the space breaks up into separate «islands».",
+    "The bigger the apartment, the more engineering: several air-conditioning zones, ventilation with heat recovery, water treatment, a smart home, sometimes a sauna or hammam. We design these systems together with the interior, not after it, so technical cabinets and access panels do not end up in the middle of the living room.",
+    "The city centre and the club format mean being considerate to neighbours: the management company usually strictly regulates noisy-work hours, deliveries of materials and waste removal. We plan the schedule so these limits do not drag the renovation out."
+   ],
+   "faq": [
+    [
+     "Who coordinates the contractors on a large property?",
+     "We do. Project, construction, engineering, furniture and lighting are under one contract with one responsible manager and photo reports via Telegram."
+    ],
+    [
+     "Do you install heat-recovery ventilation and smart home systems?",
+     "Yes, we include them in the project together with the interior: routing, access panels, distribution boards and control scenes for lighting and climate."
+    ]
+   ]
+  },
+  "greenville-pechersk": {
+   "addr": "5 Novopecherskyi Ln",
+   "lead": "Greenville na Pechersku is a business-class complex in Novopecherskyi Lane with apartments from about 73 m², including two-level apartments with terraces. We renovate turnkey, taking all these formats into account.",
+   "h2": "Terrace and second level: what to consider in the renovation",
+   "p": [
+    "The terrace is the most vulnerable part of an apartment. Before finishing, we check the developer's waterproofing and slopes and never damage them when fixing furniture or lights. We choose frost-resistant flooring with a proper drainage system, and moisture-proof solutions for lighting and sockets.",
+    "A two-level apartment needs a well-designed staircase and zoning: usually the kitchen-living room and a guest WC downstairs, bedrooms and bathrooms upstairs. We reinforce the slab between levels with sound insulation and run ventilation and air conditioning separately for each floor.",
+    "Areas from about 73 m² allow for two or three bedrooms. A business-class management company usually approves the work schedule and the order of material deliveries — we prepare these documents before starting."
+   ],
+   "faq": [
+    [
+     "What do you do with the terrace?",
+     "We check the waterproofing and drainage and choose frost-resistant flooring, outdoor lighting, furniture and greenery. Nothing is fixed in a way that could damage the waterproofing layer."
+    ],
+    [
+     "How do you design the staircase in a two-level apartment?",
+     "We design the staircase together with the interior: structure, balustrade and lighting. It is ordered to exact measurements after the rough works."
+    ]
+   ]
+  },
+  "maxima-residence": {
+   "addr": "30 Yevhena Konovaltsia St",
+   "lead": "Maxima Residence is a business-class complex by RIEL and Bosphorus Development on Yevhena Konovaltsia Street, with apartments from 50 to 181 m². We run turnkey renovations: design, works, furniture and handover with a signed certificate.",
+   "h2": "Renovating an apartment in Maxima Residence: from one-bedroom to large",
+   "p": [
+    "The complex has both compact apartments of about 50 m² and large ones up to 181 m². In a small apartment ergonomics is key: a kitchen-living room with an island or breakfast bar, a niche for the washing machine, a wardrobe instead of a separate room. In a large one — zoning, a second bathroom and space for a study.",
+    "Many business-class owners renovate to let. In that case we recommend hard-wearing materials, a neutral palette and easy-care furniture — the apartment looks new for longer and finds a tenant faster.",
+    "In a new building the management company usually sets hours for noisy works and the procedure for using the lift. We take this into account in the schedule and remove construction waste ourselves."
+   ],
+   "faq": [
+    [
+     "Do you renovate apartments for letting?",
+     "Yes. We choose hard-wearing materials, practical furniture and a neutral interior that appeals to most tenants. We can fully furnish the apartment before move-in."
+    ],
+    [
+     "Can I start with the design project and decide on the renovation later?",
+     "Yes, the design project is a separate service from $30/m². But the ±5% estimate guarantee applies only if CAS does the renovation."
+    ]
+   ]
+  },
+  "nordica-residence": {
+   "addr": "45A Zaliznychne Hwy",
+   "lead": "Nordica Residence is a business-class complex by RIEL on Zaliznychne Highway. If you are planning to renovate an apartment here, we will do it turnkey: from the design project to furniture and textiles.",
+   "h2": "Scandinavian restraint and practicality in the renovation",
+   "p": [
+    "The name of the complex hints at a direction many owners here like: light walls, natural wood, minimal décor and lots of hidden storage. Such an interior looks simple but demands precise workmanship — straight walls, neat junctions and well-planned lighting, because every wave shows on plain surfaces.",
+    "In mid-size business-class apartments we recommend built-in wardrobes in the hallway and bedrooms, a floor-to-ceiling kitchen and a separate laundry niche — this frees the rooms from extra furniture. We put all of this in the project, accurate to the centimetre.",
+    "During a renovation in a new build, management-company rules on noisy-work hours, lift protection and waste removal usually apply. We find them out at the start and follow them."
+   ],
+   "faq": [
+    [
+     "Do you design Scandinavian-style interiors?",
+     "Yes. We choose light materials, natural wood, hidden storage and warm lighting. The style is your choice — we only advise on what will be practical."
+    ],
+    [
+     "What does a turnkey renovation include?",
+     "Rough and finishing works, electrics, plumbing, ventilation, doors, tiling, painting, installation of the kitchen and furniture. Furnishing and décor are optional."
+    ]
+   ]
+  },
+  "hvardiiskyi": {
+   "addr": "Henerala Almazova St",
+   "lead": "Hvardiiskyi is a business- and premium-class complex by Kyivmiskbud on Henerala Almazova Street in the Pecherskyi district. We renovate apartments turnkey, with a design project and furnishing.",
+   "h2": "Renovating an apartment in Hvardiiskyi: quiet Pechersk and classic formats",
+   "p": [
+    "The complex is in the green part of Pechersk, and many owners want to keep that feeling inside: calm natural shades, wood, textiles, soft light. In a classic interior precise details matter — mouldings, cornices, tall doors — so we specify these elements in the drawings.",
+    "For business- and premium-class apartments it is worth planning from the start for good sound insulation between rooms and in bathrooms, separate power lines for kitchen appliances and air conditioners, and a distribution board with spare capacity for future needs.",
+    "The management company usually sets renovation hours and the waste removal procedure. We build these rules into the schedule and are responsible for keeping common areas tidy."
+   ],
+   "faq": [
+    [
+     "Do you design classic interiors with mouldings?",
+     "Yes. We specify the profiles, moulding layout, cornices and doors in the drawings and check the workmanship at every stage."
+    ],
+    [
+     "Can neighbours live normally while the renovation is under way?",
+     "We work to the building's schedule and protect common areas. We do not disturb neighbours outside the permitted hours."
+    ]
+   ]
+  },
+  "a136-highlight-tower": {
+   "addr": "136–138 Antonovycha St",
+   "lead": "A136 Highlight Tower is a business-class high-rise at 136–138 Antonovycha Street. Our office is also on Antonovycha Street, so the site is close by. We renovate apartments turnkey with a design project and furniture.",
+   "h2": "Renovating an apartment in a high-rise on Antonovycha Street",
+   "p": [
+    "In a high-rise, an apartment gets lots of light and views, and with them some tasks: sun protection, air conditioning without draughts, curtains or blinds that do not block the view. We think these solutions through in the design project, not after you move in.",
+    "Logistics in a high-rise is a topic of its own. Materials go up the service lift at agreed hours, and large-format slabs and worktops are checked against the lift dimensions in advance. We remove construction waste ourselves without leaving it in the lobbies.",
+    "A business-class management company usually has renovation rules: hours for noisy works, protection of lifts and common areas. We study them before starting and follow them."
+   ],
+   "faq": [
+    [
+     "Where is your office?",
+     "At 44 Antonovycha Street in Kyiv. We can meet at the office or on site."
+    ],
+    [
+     "What about sun protection in an apartment with large windows?",
+     "We choose motorised curtains, roller blinds or shades, build in recesses for curtain tracks and plan where the air conditioners go."
+    ]
+   ]
+  },
+  "montreal-house": {
+   "addr": "Velyka Vasylkivska St",
+   "lead": "Montreal House is a business-class complex by Alliance Novobud on Velyka Vasylkivska Street, with apartments from 51 to 78 m² and larger. We renovate turnkey, both for living and for letting.",
+   "h2": "Renovating a 51–78 m² apartment in the centre",
+   "p": [
+    "Mid-size apartments in the centre are a popular format both for yourself and for letting. At 51–60 m² people usually choose a kitchen-living room and a separate bedroom with a wardrobe; at 70–78 m² — two bedrooms and a second bathroom. We make the final decision after measurements and several layout options.",
+    "The city centre means street noise, so we recommend quality windows, sealed reveals and sound insulation of bedroom walls. For letting — hard-wearing flooring, washable paints and easy-care furniture.",
+    "A renovation in a business-class building is usually agreed with the management company: work schedule, lift use, waste removal. We take this part on."
+   ],
+   "faq": [
+    [
+     "How can street noise be reduced?",
+     "We check the windows and reveals, reinforce the sound insulation of the bedroom walls if needed and choose heavy curtains. The solutions are built into the project."
+    ],
+    [
+     "Do you renovate apartments in the centre for letting?",
+     "Yes, with practical materials and complete fit-out: furniture, appliances and textiles before the tenant moves in."
+    ]
+   ]
+  },
+  "senat": {
+   "addr": "3 Kiltseva Rd",
+   "lead": "Senat is a business-class complex by GEOS at 3 Kiltseva Road. It has everything from compact 34 m² apartments to 94 m², two-level apartments and apartments with terraces. We find solutions for every format and renovate turnkey.",
+   "h2": "From a smart apartment to a two-level one with a terrace",
+   "p": [
+    "In a 34–45 m² apartment multifunctionality is the main thing: a platform bed or a curtained niche, a kitchen with built-in appliances, floor-to-ceiling wardrobes, mirrors that widen the space. It is in small apartments that a design project pays off fastest — mistakes in dimensions cost the most here.",
+    "Two-level apartments and apartments with terraces need a different approach: a staircase, slab sound insulation, terrace waterproofing and drainage, outdoor lighting and sockets. We detail these elements separately in the drawings.",
+    "The complex's management company usually sets renovation rules — hours for noisy works and the waste removal procedure. We follow them and agree the details before starting."
+   ],
+   "faq": [
+    [
+     "Is a design project worth it for a small apartment?",
+     "Yes: in a small space every centimetre counts, and mistakes in furniture or socket dimensions cost the most. A project starts from $2,500."
+    ],
+    [
+     "What do you do with the terrace?",
+     "We check the waterproofing and slopes and choose frost-resistant flooring, moisture-proof lighting and sockets, and outdoor furniture."
+    ]
+   ]
+  },
+  "life-story": {
+   "addr": "13 Metrolohichna St",
+   "lead": "Life Story is a business-class complex by LEV Development at 13 Metrolohichna Street, with apartments from 49.93 m². We renovate turnkey for families who want to move into a ready, well-thought-out interior.",
+   "h2": "Renovating a family apartment in Holosiiv",
+   "p": [
+    "People choose Holosiiv with its parks and forests for a calm family life, and the interior should support that: practical finishes that withstand children and pets, plenty of storage, a kitchen that is comfortable for everyday cooking.",
+    "In apartments from 50 m² there is often a choice: two separate rooms or a spacious kitchen-living room. We show several layout options and arrange the furniture so the decision is made on the drawing, not after the renovation.",
+    "A renovation in a business-class new build usually follows management-company rules on noisy-work hours, lifts and waste removal. We plan the work around these rules."
+   ],
+   "faq": [
+    [
+     "Which materials suit a family with children and pets?",
+     "Hard-wearing ones: quartz vinyl or tiles on the floor, washable paints, stain-resistant fabrics. We select them in the design project specification."
+    ],
+    [
+     "Can you furnish the apartment?",
+     "Yes, furnishing starts from $250/m²: furniture, lighting, appliances, textiles and décor according to the design project."
+    ]
+   ]
+  },
+  "respublika": {
+   "addr": "1 Kiltseva Rd",
+   "lead": "Respublika is a large comfort- and business-class residential complex by KAN Development at 1 Kiltseva Road. We renovate apartments turnkey with a fixed estimate and a 12-month warranty.",
+   "h2": "Renovating an apartment in a large residential complex",
+   "p": [
+    "In a complex of this scale the apartments are very different, but owners share one wish: a predictable budget. So we start with a design project and an estimate where every item has a price, and if our team does the renovation, the final cost stays within ±5% of the estimate.",
+    "For comfort- and business-class apartments we advise investing in what is hard to change later: electrics with spare capacity, quality bathroom waterproofing, straight walls and the right layout. Décor and some furniture can be updated later without a renovation.",
+    "In a large complex many apartments are renovated at once, and the management company usually regulates noisy-work hours, lifts and waste removal. We plan deliveries so as not to lose time in queues."
+   ],
+   "faq": [
+    [
+     "How do I stay within budget?",
+     "We fix the estimate before starting. If CAS does the renovation, the final cost stays within ±5% of the estimate."
+    ],
+    [
+     "What should be done well right away, and what can wait?",
+     "Right away: electrics, plumbing, waterproofing, levelling and the layout. Décor, some furniture and textiles can be bought later."
+    ]
+   ]
+  },
+  "podil-hrad": {
+   "addr": "Kozhumiatska / Dehtiarna St",
+   "lead": "Podil Hrad is a business-class complex by Kyivmiskbud on Kozhumiatska and Dehtiarna Streets, in the very heart of Podil. Apartments here range from 65.5 to 79 m², including four-room ones — and we will renovate each of them turnkey.",
+   "h2": "How to fit four rooms into 79 m²",
+   "p": [
+    "A four-room apartment of up to 79 m² means compact rooms, and every metre has to work. Built-in wardrobes instead of free-standing ones, sliding doors, beds with storage and a floor-to-ceiling kitchen help here. We arrange the furniture in the project so every room keeps a passage and natural light.",
+    "For 65–79 m² apartments it often pays to combine the kitchen with the living room and keep two or three separate bedrooms. We check the options against the building's structure: we do not move load-bearing walls or wet zones.",
+    "Historic Podil means narrow streets and restrictions for freight transport, so we plan material deliveries in advance. Renovation rules in the building are usually set by the management company — we follow them."
+   ],
+   "faq": [
+    [
+     "How can a four-room apartment be comfortable on a small area?",
+     "Through a well-thought-out layout and built-in furniture: floor-to-ceiling wardrobes, sliding doors, beds with drawers, a compact kitchen with an island. Everything is arranged in the project."
+    ],
+    [
+     "How do you deliver materials to Podil?",
+     "We plan deliveries around the narrow streets and the building's rules, and bring large items in at agreed hours."
+    ]
+   ]
+  },
+  "unit-home": {
+   "addr": "8/12 Gareth Jones St",
+   "lead": "UNIT.Home is a business-class residential complex by UDP on Gareth Jones Street, next to the UNIT.City innovation park. We renovate apartments here turnkey: a modern interior, appliances and furniture under one contract.",
+   "h2": "Renovating an apartment for a modern city rhythm",
+   "p": [
+    "Residents of complexes like this often work from home, so the project should provide a workplace from the start: a separate study or a niche with good light, enough sockets and cable channels for the internet, acoustic comfort for calls.",
+    "A modern business-class interior goes well with a smart home: lighting and climate control from a smartphone, leak sensors in the bathroom and kitchen, motorised curtains. We lay the wiring and equipment positions during the rough works.",
+    "The complex's management company usually regulates renovations: hours for noisy works, lift use and waste removal. We organise the work to meet these requirements."
+   ],
+   "faq": [
+    [
+     "Do you install smart home systems?",
+     "Yes: control of lighting, climate and curtains, leak sensors, scenes. We lay the wiring and equipment positions during the rough works."
+    ],
+    [
+     "How do you set up a workplace at home?",
+     "We plan a study or a niche by the window, proper lighting, sockets and network, and sound insulation. We choose furniture to suit the way you work."
+    ]
+   ]
+  },
+  "novyi-avtohraf": {
+   "addr": "26 Sviatoho Kniazia Romana Mstyslavycha St",
+   "lead": "Novyi Avtohraf is a business-class complex by DIM at 26 Sviatoho Kniazia Romana Mstyslavycha Street, on the left bank. We renovate apartments turnkey: from the design project to furniture and handover with a signed certificate.",
+   "h2": "Renovating an apartment in a multi-storey business-class complex",
+   "p": [
+    "In a large high-rise complex many apartments are being renovated at the same time, so the schedule becomes decisive: the queue for the service lift, hours for noisy works, waste removal. We plan material deliveries in batches around these limits so the crew is never idle.",
+    "Business-class apartments are often bought both to live in and to let. For your own home we advise investing in the layout, sound insulation and storage; for letting — in hard-wearing finishes and practical furniture.",
+    "High up, apartments get a lot of light, so sun protection and the right placement of air conditioners matter. We build these solutions into the project together with the building's façade requirements."
+   ],
+   "faq": [
+    [
+     "How can I avoid depending on the lift queue?",
+     "We plan deliveries ahead and in batches and agree them with the management company. While waiting for materials, the crew works on other stages."
+    ],
+    [
+     "Do you renovate for letting?",
+     "Yes: practical materials, a neutral interior and full fit-out before the tenant moves in."
+    ]
+   ]
+  },
+  "rusaniv-residence": {
+   "addr": "54 Yevhena Sverstiuka St",
+   "lead": "Rusaniv Residence is a business-class complex by Citex Development at 54 Yevhena Sverstiuka Street, where apartments range from 104 to 179 m² on two levels. Such areas need a strong project — and that is where we start.",
+   "h2": "Renovating a two-level apartment of 104–179 m²",
+   "p": [
+    "A two-level apartment of this size feels closer to a townhouse than to a regular apartment. So we start by distributing the levels: a day zone with a kitchen-living room and a guest WC, a night zone with bedrooms, wardrobes and bathrooms. We make the staircase the centrepiece rather than an obstacle.",
+    "On two levels the engineering is more complex: separate air conditioning for each floor, ventilation for every bathroom, underfloor heating, staircase lighting with motion sensors. We put sound insulation in the slab under the bedrooms so footsteps downstairs are not heard upstairs.",
+    "For large areas the fit-out is especially important: a lot of furniture, lighting and textiles is needed, and logistics are best handled by one contractor. Renovation rules in the building are usually set by the management company — we take them into account."
+   ],
+   "faq": [
+    [
+     "Where does the renovation of a two-level apartment start?",
+     "With the design project: distribution of zones between levels, the staircase, engineering and sound insulation. Only then do we draw up the estimate and the work schedule."
+    ],
+    [
+     "Can you fully furnish the apartment?",
+     "Yes. Custom furniture and furniture from China, lighting, appliances, textiles and décor — until the apartment is ready to move in."
+    ]
+   ]
+  }
+ }
+}

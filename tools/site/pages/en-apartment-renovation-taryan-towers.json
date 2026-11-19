@@ -1,0 +1,181 @@
+{
+ "slug": "apartment-renovation-taryan-towers",
+ "lang": "en",
+ "service": "Apartment renovation in Taryan Towers, Kyiv",
+ "title": "Apartment renovation in Taryan Towers, Kyiv — turnkey | CAS",
+ "description": "Apartment renovation in Taryan Towers (Pecherskyi district, Kyiv): design project, turnkey renovation from $550/m², furnishing. 12-month warranty.",
+ "h1": "Turnkey apartment renovation in Taryan Towers",
+ "price": "from $550/m² · design, renovation and furniture in one contract",
+ "lead": "Taryan Towers is a premium-class high-rise complex by Taryan Group on Ioanna Pavla II Street. We renovate apartments of this level turnkey: from the layout and 3D to furniture, lighting and textiles.",
+ "parent": [
+  "/en/apartment-renovation-kyiv-residential-complexes",
+  "Renovation in Kyiv residential complexes"
+ ],
+ "cards": [
+  [
+   "Turnkey renovation",
+   [
+    "inspection after the developer and measurements",
+    "rough and finishing works",
+    "electrics, plumbing, ventilation",
+    "approval of works with the management company"
+   ]
+  ],
+  [
+   "High-rise logistics",
+   [
+    "checking lift and doorway dimensions",
+    "deliveries in batches on the building's schedule",
+    "protection of lobbies and lifts",
+    "removal of construction waste"
+   ]
+  ],
+  [
+   "Design project",
+   [
+    "layout and furniture arrangement",
+    "3D visualisations of the rooms",
+    "working drawings for the crew",
+    "specification and estimate"
+   ]
+  ]
+ ],
+ "about": [
+  [
+   "Renovating an apartment in a premium high-rise",
+   [
+    "In a high-rise, renovation logistics is a task of its own. Materials and furniture go up the service lift on a schedule, and large items — kitchen fronts, stone worktops, large-format tiles — are checked in advance against the lift and doorway dimensions. Otherwise it is easy to order a slab that will never reach the apartment.",
+    "Apartments in Taryan Towers start from 62–87 m² and go larger. In mid-size apartments we usually work on balance: a large kitchen-living room, two bedrooms and enough storage. In larger ones — on zoning and a second bathroom.",
+    "Glazing at height brings lots of light and great views, so the project accounts for sun protection, motorised curtains and temperature control. Renovation rules are usually set by the management company — we agree them before work starts.",
+    "For reference: developer — Taryan Group, address — 12 Ioanna Pavla II St. We do not represent the developer or the management company — we work directly with the apartment owner."
+   ]
+  ]
+ ],
+ "budget": {
+  "area": 85,
+  "h2": "Budget guide for a 85 m² apartment",
+  "p": "For a 85 m² apartment, here is a guide based on our base rates:"
+ },
+ "gallery": [
+  [
+   "img/p/1nzb-w0NOCS1VA-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1rJCChE1lDiB_j-900.webp",
+   "Linden Penthouse"
+  ],
+  [
+   "img/p/1DL1BY7Tg6L5B5-900.webp",
+   "Edelweiss"
+  ],
+  [
+   "img/p/17c1WWHOs1rMHM-900.webp",
+   "Diamond"
+  ],
+  [
+   "img/p/1bXytwftMuIHBN-900.webp",
+   "Tetris Hall"
+  ],
+  [
+   "img/p/1f8h2r5MBlLLf_-900.webp",
+   "Linden Penthouse"
+  ]
+ ],
+ "steps": [
+  [
+   "Apartment inspection",
+   "We check the condition after the developer and take measurements."
+  ],
+  [
+   "Design",
+   "Layout, 3D, drawings for the crew."
+  ],
+  [
+   "Estimate and contract",
+   "Price and timeline are fixed."
+  ],
+  [
+   "Renovation",
+   "Rough and finishing works with reports."
+  ],
+  [
+   "Furniture and handover",
+   "We furnish and hand over the keys."
+  ]
+ ],
+ "guarantees": true,
+ "faq": [
+  [
+   "How much does an apartment renovation in Taryan Towers cost?",
+   "Turnkey renovation starts from $550/m² (works and rough materials; finishing materials, furniture and appliances are extra, per the estimate), a design project from $30/m² (minimum $2,500), furnishing from $250/m². The calculation for a 85 m² apartment is in the budget guide above; we fix the exact amount in the estimate after the inspection."
+  ],
+  [
+   "How do you deliver large furniture and stone to a high-rise?",
+   "We check the dimensions of the service lift and doorways at the project stage, split large items into sections and coordinate deliveries with the building's schedule."
+  ],
+  [
+   "Do you do curtains and sun protection?",
+   "Yes, as part of the fit-out: motorised curtain tracks, roller blinds, sun-protection fabrics. Recesses for the tracks are built into the ceiling during the renovation."
+  ],
+  [
+   "What warranty do you give?",
+   "We hand over the apartment with a signed acceptance certificate; all completed works carry a 12-month warranty."
+  ],
+  [
+   "Can I follow the renovation remotely?",
+   "Yes. We send photo reports from the site via Telegram, and the price, timeline and payment stages are fixed in the contract."
+  ]
+ ],
+ "near": [
+  "Renovation in other Kyiv residential complexes",
+  [
+   [
+    "/en/apartment-renovation-bulvar-fontaniv",
+    "Bulvar Fontaniv residential complex"
+   ],
+   [
+    "/en/apartment-renovation-linden-luxury-residences",
+    "Linden Luxury Residences residential complex"
+   ],
+   [
+    "/en/apartment-renovation-greenville-pechersk",
+    "Greenville na Pechersku residential complex"
+   ],
+   [
+    "/en/apartment-renovation-podil-hrad",
+    "Podil Hrad residential complex"
+   ]
+  ]
+ ],
+ "rel": [
+  [
+   "/en/apartment-renovation-kyiv-residential-complexes",
+   "Renovation in Kyiv residential complexes"
+  ],
+  [
+   "/en/apartment-renovation",
+   "Apartment renovation in Kyiv"
+  ],
+  [
+   "/en/new-build-renovation",
+   "New-build renovation"
+  ],
+  [
+   "/en/turnkey-renovation",
+   "Turnkey renovation"
+  ],
+  [
+   "/en/interior-design",
+   "Interior design"
+  ],
+  [
+   "/en/turnkey-furnishing",
+   "Apartment furnishing"
+  ],
+  [
+   "/en/renovation-cost-calculator",
+   "Cost calculator"
+  ]
+ ]
+}

@@ -1,0 +1,363 @@
+{
+ "slugs": {
+  "hub": "wohnungsrenovierung-wohnanlagen-kyjiw",
+  "novopecherski-lypky": "wohnungsrenovierung-novopecherski-lypky",
+  "edeldorf-hills": "wohnungsrenovierung-edeldorf-hills",
+  "triiinity": "wohnungsrenovierung-triiinity",
+  "taryan-towers": "wohnungsrenovierung-taryan-towers",
+  "bulvar-fontaniv": "wohnungsrenovierung-bulvar-fontaniv",
+  "linden-luxury-residences": "wohnungsrenovierung-linden-luxury-residences",
+  "greenville-pechersk": "wohnungsrenovierung-greenville-pechersk",
+  "maxima-residence": "wohnungsrenovierung-maxima-residence",
+  "nordica-residence": "wohnungsrenovierung-nordica-residence",
+  "hvardiiskyi": "wohnungsrenovierung-hvardiiskyi",
+  "a136-highlight-tower": "wohnungsrenovierung-a136-highlight-tower",
+  "montreal-house": "wohnungsrenovierung-montreal-house",
+  "senat": "wohnungsrenovierung-senat",
+  "life-story": "wohnungsrenovierung-life-story",
+  "respublika": "wohnungsrenovierung-respublika",
+  "podil-hrad": "wohnungsrenovierung-podil-hrad",
+  "unit-home": "wohnungsrenovierung-unit-home",
+  "novyi-avtohraf": "wohnungsrenovierung-novyi-avtohraf",
+  "rusaniv-residence": "wohnungsrenovierung-rusaniv-residence"
+ },
+ "t": {
+  "name": "Wohnanlage {n}",
+  "svc": "Wohnungsrenovierung in der Wohnanlage {n}, Kyjiw",
+  "title": ["Wohnungsrenovierung in {n} (Wohnanlage, Kyjiw) — schlüsselfertig | CAS", "Wohnungsrenovierung in {n}, Kyjiw — schlüsselfertig | CAS", "Wohnungsrenovierung in {n}, Kyjiw | CAS"],
+  "desc": "Schlüsselfertige Wohnungsrenovierung in der Wohnanlage {n} ({d}, Kyjiw): Designprojekt, Renovierung ab $550/m², Einrichtung.",
+  "desc_short": "Wohnungsrenovierung in {n} ({d}, Kyjiw): Design, schlüsselfertige Renovierung ab $550/m², Einrichtung.",
+  "h1": "Schlüsselfertige Wohnungsrenovierung in {n}",
+  "price": "ab $550/m² · Design, Renovierung und Möbel in einem Vertrag",
+  "hub_short": "Renovierung in Kyjiwer Wohnanlagen",
+  "rel": ["Wohnungsrenovierung in Kyjiw", "Ausbau von Neubauwohnungen", "Schlüsselfertige Renovierung", "Innenarchitektur", "Wohnungseinrichtung", "Kostenrechner"],
+  "unit": "m²",
+  "area_from": "ab {a} {u}",
+  "area_plus": "{s} und größer",
+  "ref": "Zur Information: {x}. Wir vertreten weder den Bauträger noch die Hausverwaltung — wir arbeiten direkt mit dem Wohnungseigentümer.",
+  "ref_dev": "Bauträger — {dev}",
+  "ref_addr": "Adresse — {addr}",
+  "sep": ", ",
+  "ref_none": "Wir vertreten weder den Bauträger noch die Hausverwaltung — wir arbeiten direkt mit dem Wohnungseigentümer.",
+  "dist": {"pechersk": "Bezirk Petschersk", "holosiiv": "Bezirk Holossijiw", "podil": "Bezirk Podil", "shevchenko": "Bezirk Schewtschenko", "dnipro": "Bezirk Dnipro"},
+  "dist_h2": {"pechersk": "Bezirk Petschersk", "holosiiv": "Bezirk Holossijiw", "podil": "Bezirk Podil", "shevchenko": "Bezirk Schewtschenko", "dnipro": "Bezirk Dnipro"},
+  "budget_h2": "Budget-Richtwert für eine Wohnung mit {a} m²",
+  "budget_p": "Für eine Wohnung mit {a} m² ergibt sich nach unseren Basissätzen folgender Richtwert:",
+  "price_q": "Was kostet eine Wohnungsrenovierung in {n}?",
+  "price_a": "Schlüsselfertige Renovierung ab $550/m² (Arbeit und Rohbaumaterial; Ausbaumaterial, Möbel und Haushaltsgeräte separat, laut Kostenvoranschlag), Designprojekt ab $30/m² (mindestens $2 500), Einrichtung ab $250/m². Die Rechnung für eine Wohnung mit {a} m² steht oben im Budget-Richtwert; die genaue Summe legen wir nach der Besichtigung im Kostenvoranschlag fest.",
+  "faq_common": [
+   ["Welche Gewährleistung gibt es?", "Wir übergeben die Wohnung mit Abnahmeprotokoll; auf die ausgeführten Arbeiten gilt eine Gewährleistung von 12 Monaten."],
+   ["Kann ich die Renovierung aus der Ferne verfolgen?", "Ja. Wir schicken Fotoberichte von der Baustelle per Telegram; Preis, Termine und Zahlungsetappen stehen im Vertrag."]
+  ],
+  "near": "Renovierung in anderen Kyjiwer Wohnanlagen",
+  "cards": {
+   "turnkey": ["Schlüsselfertige Renovierung", ["Besichtigung nach dem Bauträger und Aufmaß", "Roh- und Ausbauarbeiten", "Elektrik, Sanitär, Lüftung", "Abstimmung der Arbeiten mit der Hausverwaltung"]],
+   "design": ["Designprojekt", ["Grundriss und Möblierung", "3D-Visualisierungen der Räume", "Ausführungspläne für das Team", "Spezifikation und Kostenvoranschlag"]],
+   "furnish": ["Einrichtung und Ausstattung", ["Möbel nach Maß und aus China", "Licht und Haushaltsgeräte", "Textilien und Dekor", "Styling vor dem Einzug"]],
+   "large": ["Große Wohnfläche", ["mehrere Klimazonen", "Lüftung mit Wärmerückgewinnung", "Smart Home und Lichtszenen", "Ankleiden und Technikräume"]],
+   "duplex": ["Maisonettewohnung", ["Treppe nach individuellem Entwurf", "eigene Haustechnik für jede Ebene", "Schallschutz der Geschossdecke", "Beleuchtung des Treppenraums"]],
+   "tower": ["Logistik im Hochhaus", ["Prüfung der Aufzugs- und Türmaße", "Lieferungen in Etappen nach Hausplan", "Schutz von Foyers und Aufzügen", "Abtransport von Bauschutt"]],
+   "terrace": ["Terrasse", ["Prüfung von Abdichtung und Gefälle", "frostbeständiger Belag", "feuchtigkeitsgeschütztes Licht und Steckdosen", "Gartenmöbel und Begrünung"]],
+   "newbuild": ["Nach dem Bauträger", ["Prüfung der Wand- und Bodengeometrie", "Check von Elektrik, Wasser und Lüftung", "Vorbereitung des Untergrunds für Fliesen", "Dehnfugen wegen Setzung"]]
+  },
+  "cls_l": "Klasse",
+  "cls": {"b": "Business", "p": "Premium", "bp": "Business/Premium", "cb": "Komfort/Business"},
+  "feat": {"many100": "viele Wohnungen über 100 m² und Maisonetten", "duplex_terr": "auch Maisonetten mit Terrassen", "duplex_terr2": "auch Maisonetten und Wohnungen mit Terrassen", "4room": "auch Vierzimmerwohnungen", "duplex": "Maisonetten"},
+  "addr_l": "Adresse",
+  "dev_l": "Bauträger — {dev}.",
+  "more": "Mehr erfahren"
+ },
+ "hub": {
+  "service": "Wohnungsrenovierung in Kyjiwer Wohnanlagen",
+  "title": "Wohnungsrenovierung in Kyjiwer Wohnanlagen — schlüsselfertig | CAS",
+  "description": "Wohnungsrenovierung in Kyjiwer Wohnanlagen: Petschersk, Holossijiw, Podil, Schewtschenko und Dnipro. Design ab $30/m², Renovierung ab $550/m².",
+  "h1": "Wohnungsrenovierung in Kyjiwer Wohnanlagen",
+  "lead": "19 Wohnanlagen in Kyjiw, von Komfort- bis Premiumklasse: für jede, was bei der Renovierung einer Wohnung dieses Formats zu beachten ist, und ein Budget-Richtwert. Wählen Sie Ihre Anlage oder senden Sie eine Anfrage.",
+  "s1": ["Renovierung in Neubauten der Business- und Premiumklasse", [
+   "Eine Wohnung in einer modernen Wohnanlage bringt nicht nur Quadratmeter mit, sondern auch Hausregeln: Abstimmung der Arbeiten mit der Hausverwaltung, Zeiten für laute Arbeiten, Warteschlange am Lastenaufzug und Schuttabfuhr. Wir berücksichtigen sie schon vor dem Start, und Design, Renovierung und Möbel führt ein Team in einem Vertrag.",
+   "Unten finden Sie die Kyjiwer Wohnanlagen, für die wir eigene Seiten erstellt haben: was bei der Renovierung von Wohnungen dieser Klasse und Größe zu beachten ist, und ein Budget-Richtwert nach unseren Sätzen. Angaben zu den Anlagen dienen der Information und stammen aus offenen Quellen; wir vertreten keine Bauträger und arbeiten direkt mit den Eigentümern."
+  ]],
+  "s2": ["Was Renovierungen in Wohnanlagen gemeinsam haben", [
+   "Die Sätze sind für alle Anlagen gleich: schlüsselfertige Renovierung ab $550/m² (Arbeit und Rohbaumaterial; Ausbaumaterial, Möbel und Haushaltsgeräte separat, laut Kostenvoranschlag), Designprojekt ab $30/m² (mindestens $2 500), Einrichtung ab $250/m². Renoviert CAS, weicht das Ergebnis höchstens ±5 % vom Kostenvoranschlag ab, und auf die Arbeiten gilt eine Gewährleistung von 12 Monaten.",
+   "Der Unterschied liegt im Wohnungsformat: Maisonetten brauchen eine Treppe und eigene Haustechnik je Ebene, Terrassen eine Prüfung der Abdichtung, große Flächen durchdachte Lüftung und Klimatisierung, kompakte Wohnungen präzise Einbaumöbel."
+  ]],
+  "gal": "Unsere Wohnungsprojekte",
+  "faq": ["Fragen und Antworten", [
+   ["Meine Wohnanlage steht nicht auf der Liste — arbeiten Sie dort?", "Ja, wir renovieren Wohnungen in jeder Wohnanlage in Kyjiw und der Region Kyjiw. Die Liste enthält nur die Anlagen, für die wir eigene Seiten mit Tipps erstellt haben."],
+   ["Was kostet eine Wohnungsrenovierung in einer Wohnanlage?", "Schlüsselfertige Renovierung ab $550/m² (Arbeit und Rohbaumaterial; Ausbaumaterial, Möbel und Haushaltsgeräte separat, laut Kostenvoranschlag), Designprojekt ab $30/m² (mindestens $2 500), Einrichtung ab $250/m². Die genaue Summe legen wir nach der Besichtigung im Kostenvoranschlag fest."],
+   ["Wer stimmt die Renovierung mit der Hausverwaltung ab?", "Wir. In der Regel werden eine Liste der Arbeiten, ein Zeitplan und die Daten des Teams benötigt; außerdem klären wir Lastenaufzug und Schuttabfuhr."],
+   ["Kann das Designprojekt vor der Schlüsselübergabe beginnen?", "Ja, anhand des Grundrisses vom Bauträger. Sobald wir Zugang haben, nehmen wir ein Kontrollaufmaß und kommen mit fertigen Plänen auf die Baustelle."]
+  ]],
+  "rel": "Weitere Leistungen",
+  "rel_names": ["Wohnung in Petschersk", "Premium-Renovierung", "Premium-Innenarchitektur"],
+  "apt_link": "Renovierung in Kyjiwer Wohnanlagen"
+ },
+ "zhk": {
+  "novopecherski-lypky": {
+   "addr": "Andrija-Werchohljada-Straße",
+   "lead": "Novopecherski Lypky ist ein Quartier der Business- und Premiumklasse in Petschersk mit vielen Wohnungen über 100 m² und Maisonetten. Wir übernehmen ein solches Objekt vom Aufmaß und Designprojekt bis zu den Möbeln und der Übergabe mit Protokoll.",
+   "h2": "Was bei der Renovierung einer Wohnung in Novopecherski Lypky zu beachten ist",
+   "p": [
+    "Laut Angaben des Bauträgers City One Development (Stolitsa Group) haben die Wohnungen hier 50,6 bis 225,7 m², ein großer Teil liegt über 100 m² oder hat zwei Ebenen. Bei solchen Wohnungen ist der Grundriss wichtiger als das Finish: wo der private und wo der Gästebereich liegt, wie die Treppe verläuft, wie viele Bäder nötig sind und wo sich Technikräume verstecken lassen.",
+    "In einer Maisonette planen wir die Haustechnik gleich für beide Etagen: getrennte Heiz- und Klimakreise, Lüftung der Bäder, Schallschutz der Decke unter den Schlafzimmern. Die Treppe ist ein eigenes Bauteil: Sie wird nach den Rohbauarbeiten bestellt, die Einbauteile werden vorher gesetzt.",
+    "In Häusern dieser Klasse gelten meist Regeln der Hausverwaltung: Abstimmung des Arbeitsplans, Zeiten für laute Arbeiten, Nutzung des Lastenaufzugs und Schuttabfuhr. Wir klären sie vor dem Start und planen sie ein, damit die Renovierung nicht an Passierscheinen oder Verboten hängt."
+   ],
+   "faq": [
+    ["Renovieren Sie Maisonettewohnungen?", "Ja. Wir planen beide Ebenen zusammen: Treppe, Haustechnik, Deckenschallschutz und Beleuchtung des Treppenraums. Treppe und Einbaumöbel bestellen wir nach Aufmaß im Anschluss an die Rohbauarbeiten."],
+    ["Wie wird die Renovierung mit der Hausverwaltung abgestimmt?", "In der Regel verlangt die Hausverwaltung ein Projekt oder eine Liste der Arbeiten, einen Zeitplan und die Daten des Teams. Wir bereiten die Unterlagen vor und stimmen Zeiten für laute Arbeiten, Lastenaufzug und Schuttabfuhr vor Beginn ab."]
+   ]
+  },
+  "edeldorf-hills": {
+   "addr": "",
+   "lead": "Edeldorf Hills ist ein Neubau der Premiumklasse von Futura Hata in Petschersk. Wenn Sie die Schlüssel erhalten haben und eine Renovierung planen, begleiten wir Sie von der leeren Wohnung bis zum fertigen Interieur in einem Vertrag.",
+   "h2": "Renovierung im neuen Premium-Haus: womit beginnen",
+   "p": [
+    "Eine Wohnung in einem gerade fertiggestellten Haus ist ein unbeschriebenes Blatt, aber auch eine Zeit, in der Dutzende Nachbarn gleichzeitig renovieren. Warteschlangen am Lastenaufzug, begrenzte Zeiten für laute Arbeiten und Regeln für die Materialanlieferung legt meist die Hausverwaltung fest — wir planen die Lieferungen danach, nicht umgekehrt.",
+    "Bevor wir Wände stellen, prüfen wir, was der Bauträger übergeben hat: Geometrie von Wänden und Decken, Estrich oder dessen Fehlen, Strom- und Wasseranschlüsse, Lage der Lüftungsschächte. Davon hängt ab, ob Nassbereiche verlegt werden können, wo die Kücheninsel steht und was das Ausgleichen kostet.",
+    "Ein neuer Monolithbau setzt sich, deshalb sehen wir im Projekt Dehnfugen, eine richtige Untergrundvorbereitung für großformatige Fliesen und den Anstrich erst nach Stabilisierung der Wände vor. So entstehen im Premium-Interieur auch nach einem Jahr keine Risse an den Fugen."
+   ],
+   "faq": [
+    ["Wann sollte man die Renovierung in Edeldorf Hills beginnen?", "Das Designprojekt kann schon vor der Schlüsselübergabe anhand des Grundrisses vom Bauträger entstehen. Sobald der Zugang frei ist, nehmen wir ein Kontrollaufmaß und starten mit fertigen Plänen."],
+    ["Was prüfen Sie nach dem Bauträger?", "Wand- und Bodengeometrie, Strom- und Wasseranschlüsse, Lüftung, Fenster und Laibungen. Die Ergebnisse fließen in Projekt und Kostenvoranschlag ein, damit Sie Nacharbeiten nicht doppelt bezahlen."]
+   ]
+  },
+  "triiinity": {
+   "addr": "Wassylja-Tjutjunnyka-Straße 39/2",
+   "lead": "TRIIINITY ist eine Wohnanlage der Premiumklasse von Seven Hills in der Wassylja-Tjutjunnyka-Straße. Die Wohnungen haben 53 bis 125 m², und für jedes Format bieten wir den kompletten Zyklus: Design, Renovierung und Möbel aus einer Hand.",
+   "h2": "Wohnungsrenovierung in TRIIINITY: kompakte und große Formate",
+   "p": [
+    "Die Spanne von 53–125 m² bedeutet zwei verschiedene Szenarien. In einer Wohnung mit 53–60 m² geht es darum, eine vollwertige Wohnküche, eine Ankleide und ein bequemes Bad ohne Enge unterzubringen: Einbaumöbel bis zur Decke, verdeckte Türen und durchdachtes Licht helfen. Ab 100 m² ist Platz für ein Elternschlafzimmer mit eigenem Bad, ein Arbeitszimmer und einen separaten Hauswirtschaftsraum.",
+    "Das Premiumsegment verlangt Haustechnik, die man nur als Komfort bemerkt: leise Klimatisierung mit verdeckten Geräten, Fußbodenheizung in den Bädern, intelligente Lichtsteuerung. Diese Systeme planen wir in der Projektphase ein, damit keine fertigen Wände aufgestemmt werden müssen.",
+    "Ein Haus dieses Niveaus hat meist Renovierungsregeln der Hausverwaltung zu Arbeitszeiten, Schutz der Gemeinschaftsflächen und Abtransport von Bauschutt. Wir berücksichtigen sie vom ersten Tag an im Zeitplan."
+   ],
+   "faq": [
+    ["Wie wirkt eine kleine Wohnung hochwertig?", "Durch Grundriss und Details: Einbauschränke bis zur Decke, verdeckte Türen, gutes Licht und eine reduzierte Materialpalette. Das legen wir vor Beginn der Renovierung im Designprojekt fest."],
+    ["Lassen sich Klimageräte und Lüftung verstecken?", "Ja, wenn es im Projekt vorgesehen ist: Kanal- oder Kassettensysteme, Revisionsklappen, abgehängte Decken. Die Lösung stimmen wir mit den Vorgaben des Hauses zu Fassade und Leitungen ab."]
+   ]
+  },
+  "taryan-towers": {
+   "addr": "Johannes-Paul-II.-Straße 12",
+   "lead": "Taryan Towers ist ein Hochhauskomplex der Premiumklasse von Taryan Group in der Johannes-Paul-II.-Straße. Wir renovieren Wohnungen dieses Niveaus schlüsselfertig: vom Grundriss und 3D bis zu Möbeln, Licht und Textilien.",
+   "h2": "Besonderheiten der Renovierung in einem Premium-Hochhaus",
+   "p": [
+    "Im Hochhaus ist die Logistik der Renovierung eine eigene Aufgabe. Material und Möbel fahren nach Plan mit dem Lastenaufzug, große Teile — Küchenfronten, Steinarbeitsplatten, großformatige Fliesen — prüfen wir vorab auf die Maße von Aufzug und Türöffnungen. Sonst ist schnell eine Platte bestellt, die nie in der Wohnung ankommt.",
+    "Die Wohnungen in Taryan Towers beginnen bei 62–87 m², es gibt auch größere. Bei mittleren Flächen arbeiten wir meist an der Balance: große Wohnküche, zwei Schlafzimmer und genug Stauraum. Bei größeren an Zonierung und einem zweiten Bad.",
+    "Die Verglasung in der Höhe bringt viel Licht und schöne Aussichten, daher berücksichtigt das Projekt Sonnenschutz, motorisierte Vorhänge und Raumklima. Renovierungsregeln legt meist die Hausverwaltung fest — wir stimmen sie vor Arbeitsbeginn ab."
+   ],
+   "faq": [
+    ["Wie liefern Sie große Möbel und Stein ins Hochhaus?", "Wir prüfen die Maße von Lastenaufzug und Öffnungen schon in der Projektphase, teilen große Teile in Segmente und stimmen die Lieferung mit dem Zeitplan des Hauses ab."],
+    ["Übernehmen Sie Vorhänge und Sonnenschutz?", "Ja, im Rahmen der Ausstattung: motorisierte Vorhangschienen, Rollos, Sonnenschutzstoffe. Nischen für die Schienen sehen wir schon während der Renovierung in der Decke vor."]
+   ]
+  },
+  "bulvar-fontaniv": {
+   "addr": "Johannes-Paul-II.-Straße 6/1",
+   "lead": "Bulvar Fontaniv ist eine Wohnanlage der Premiumklasse in der Johannes-Paul-II.-Straße 6/1 mit Wohnungen von 64 bis 156 m². Wir renovieren schlüsselfertig: Projekt, Bauarbeiten, Möbel und Dekor.",
+   "h2": "Wohnungsrenovierung in Bulvar Fontaniv: worauf es ankommt",
+   "p": [
+    "Bei 64–156 m² geht es nicht nur um die Zahl der Zimmer, sondern um das Wohnszenario. Eine Familie mit Kindern braucht getrennte Kinderzimmer, ein zweites Bad und eine Garderobe am Eingang; ein Paar eine großzügige Wohnküche, ein Arbeitszimmer und ein Gästezimmer. Grundrissvarianten zeigen wir in den ersten Phasen des Designprojekts.",
+    "In Wohnungen über 100 m² werden die Leitungswege länger, deshalb planen wir Lüftung, Klimatisierung und Elektrik zusammen mit den Möbeln: Wo das Bett steht, bläst keine Klimaanlage, und Steckdosen und Beleuchtung passen zu den Einbauschränken.",
+    "Die Hausverwaltung einer solchen Anlage hat meist Anforderungen: abgestimmte Arbeitszeiten, Schutz von Foyers und Aufzügen, Schuttabfuhr in Säcken. Das übernehmen wir."
+   ],
+   "faq": [
+    ["Kann der Grundriss geändert werden?", "Im Rahmen dessen, was Statik und Vorschriften erlauben: Tragende Wände versetzen wir nicht, und Nassbereiche kommen nicht über Wohnräume der Nachbarn. Varianten prüfen wir in der Projektphase."],
+    ["Wie lange dauert die Renovierung einer Wohnung über 100 m²?", "Das hängt von der Komplexität des Projekts und dem Zeitplan des Hauses ab. Die Frist steht im Vertrag, ab 2 Wochen; wir legen sie nach Designprojekt und Kostenvoranschlag fest."]
+   ]
+  },
+  "linden-luxury-residences": {
+   "addr": "Lutheranska-Straße 14w",
+   "lead": "Linden Luxury Residences ist ein Clubhaus der Premiumklasse von Budhouse Group in der Lutheranska-Straße mit Wohnungen von 75 bis 556 m². Bei solchen Objekten ist Renovierung vor allem Projekt und Koordination Dutzender Gewerke — und das übernehmen wir.",
+   "h2": "Renovierung einer großen Wohnung im historischen Zentrum",
+   "p": [
+    "Die Flächen reichen hier von 75 bis 556 m², also von der Stadtwohnung bis zur Residenz mit mehreren Schlafzimmern, Arbeitszimmer, Ankleiden und Gästebereich. Auf großen Flächen trägt ein System das Interieur: eine einheitliche Logik von Materialien, Licht und Türen in allen Räumen, sonst zerfällt der Raum in einzelne «Inseln».",
+    "Je größer die Wohnung, desto mehr Haustechnik: mehrere Klimazonen, Lüftung mit Wärmerückgewinnung, Wasseraufbereitung, Smart Home, manchmal Sauna oder Hamam. Wir planen diese Systeme zusammen mit dem Interieur, nicht danach, damit Technikschränke und Revisionsöffnungen nicht mitten im Wohnzimmer landen.",
+    "Stadtzentrum und Clubformat bedeuten Rücksicht auf die Nachbarn: Die Hausverwaltung regelt meist streng die Zeiten für laute Arbeiten, Materialanlieferung und Schuttabfuhr. Wir planen so, dass diese Grenzen die Renovierung nicht in die Länge ziehen."
+   ],
+   "faq": [
+    ["Wer koordiniert die Gewerke bei einem großen Objekt?", "Wir. Projekt, Bauarbeiten, Haustechnik, Möbel und Licht in einem Vertrag mit einem verantwortlichen Manager und Fotoberichten per Telegram."],
+    ["Bauen Sie Lüftung mit Wärmerückgewinnung und Smart Home ein?", "Ja, wir planen sie zusammen mit dem Interieur: Leitungsführung, Revisionen, Verteiler und Szenen für Licht- und Klimasteuerung."]
+   ]
+  },
+  "greenville-pechersk": {
+   "addr": "Nowopetscherskyj-Gasse 5",
+   "lead": "Greenville na Pechersku ist ein Komplex der Businessklasse in der Nowopetscherskyj-Gasse mit Wohnungen ab etwa 73 m², darunter Maisonetten mit Terrassen. Wir renovieren schlüsselfertig und berücksichtigen all diese Formate.",
+   "h2": "Terrasse und zweite Ebene: was bei der Renovierung zählt",
+   "p": [
+    "Die Terrasse ist die empfindlichste Stelle einer Wohnung. Vor dem Ausbau prüfen wir Abdichtung und Gefälle des Bauträgers und beschädigen sie nicht durch die Befestigung von Möbeln oder Leuchten. Den Belag wählen wir frostbeständig mit richtiger Entwässerung, für Licht und Steckdosen feuchtigkeitsgeschützte Lösungen.",
+    "Eine Maisonette braucht eine durchdachte Treppe und Zonierung: unten meist Wohnküche und Gäste-WC, oben Schlafzimmer und Bäder. Die Decke zwischen den Ebenen verstärken wir mit Schallschutz, Lüftung und Klimatisierung führen wir für jede Etage getrennt.",
+    "Flächen ab etwa 73 m² erlauben zwei bis drei Schlafzimmer. Die Hausverwaltung der Businessklasse genehmigt meist Arbeitsplan und Ablauf der Materialanlieferung — wir bereiten diese Unterlagen vor dem Start vor."
+   ],
+   "faq": [
+    ["Was machen Sie mit der Terrasse?", "Wir prüfen Abdichtung und Entwässerung und wählen frostbeständigen Belag, Außenbeleuchtung, Möbel und Begrünung. Nichts wird so befestigt, dass die Abdichtungsschicht beschädigt wird."],
+    ["Wie gestalten Sie die Treppe in einer Maisonette?", "Wir entwerfen die Treppe zusammen mit dem Interieur: Konstruktion, Geländer und Beleuchtung. Bestellt wird nach genauem Aufmaß im Anschluss an die Rohbauarbeiten."]
+   ]
+  },
+  "maxima-residence": {
+   "addr": "Jewhena-Konowalzja-Straße 30",
+   "lead": "Maxima Residence ist ein Komplex der Businessklasse von RIEL und Bosphorus Development in der Jewhena-Konowalzja-Straße mit Wohnungen von 50 bis 181 m². Wir führen die Renovierung schlüsselfertig: Design, Arbeiten, Möbel und Übergabe mit Protokoll.",
+   "h2": "Wohnungsrenovierung in Maxima Residence: von der Zweizimmer- bis zur großen Wohnung",
+   "p": [
+    "Im Komplex gibt es kompakte Wohnungen um 50 m² und große bis 181 m². In einer kleinen Wohnung ist Ergonomie entscheidend: Wohnküche mit Insel oder Bartresen, eine Nische für die Waschmaschine, ein Ankleideschrank statt eines eigenen Raums. In einer großen: Zonierung, ein zweites Bad und Platz für ein Arbeitszimmer.",
+    "Viele Eigentümer in der Businessklasse renovieren zur Vermietung. Dann raten wir zu strapazierfähigen Materialien, neutraler Palette und pflegeleichten Möbeln — so sieht die Wohnung länger neu aus und findet schneller Mieter.",
+    "In einem neuen Haus legt die Hausverwaltung meist Zeiten für laute Arbeiten und die Aufzugsnutzung fest. Wir berücksichtigen das im Zeitplan und entsorgen den Bauschutt selbst."
+   ],
+   "faq": [
+    ["Renovieren Sie zur Vermietung?", "Ja. Wir wählen strapazierfähige Materialien, praktische Möbel und ein neutrales Interieur, das den meisten Mietern gefällt. Wir können die Wohnung bis zum Einzug komplett ausstatten."],
+    ["Kann ich mit dem Designprojekt beginnen und über die Renovierung später entscheiden?", "Ja, das Designprojekt ist eine eigene Leistung ab $30/m². Die Kostengarantie von ±5 % gilt aber nur, wenn CAS renoviert."]
+   ]
+  },
+  "nordica-residence": {
+   "addr": "Saliznytschne-Chaussee 45A",
+   "lead": "Nordica Residence ist ein Komplex der Businessklasse von RIEL an der Saliznytschne-Chaussee. Wenn Sie hier eine Renovierung planen, erledigen wir sie schlüsselfertig: vom Designprojekt bis zu Möbeln und Textilien.",
+   "h2": "Skandinavische Zurückhaltung und Praxis in der Renovierung",
+   "p": [
+    "Der Name des Komplexes deutet eine Richtung an, die vielen Eigentümern hier gefällt: helle Wände, natürliches Holz, wenig Dekor und viel verdeckter Stauraum. Ein solches Interieur wirkt schlicht, verlangt aber präzise Ausführung — gerade Wände, saubere Anschlüsse und durchdachtes Licht, denn auf einfarbigen Flächen sieht man jede Welle.",
+    "In mittelgroßen Wohnungen der Businessklasse empfehlen wir Einbauschränke in Flur und Schlafzimmern, eine Küche bis zur Decke und eine eigene Waschnische — das befreit die Räume von überflüssigen Möbeln. All das legen wir im Projekt zentimetergenau fest.",
+    "Bei der Renovierung im Neubau gelten meist Regeln der Hausverwaltung zu Lärmzeiten, Aufzugsschutz und Schuttabfuhr. Wir klären sie zu Beginn und halten uns daran."
+   ],
+   "faq": [
+    ["Gestalten Sie Interieurs im skandinavischen Stil?", "Ja. Wir wählen helle Materialien, natürliches Holz, verdeckten Stauraum und warmes Licht. Den Stil bestimmen Sie — wir beraten nur, was praktisch ist."],
+    ["Was umfasst eine schlüsselfertige Renovierung?", "Roh- und Ausbauarbeiten, Elektrik, Sanitär, Lüftung, Türen, Fliesen, Malerarbeiten, Montage von Küche und Möbeln. Einrichtung und Dekor nach Wunsch."]
+   ]
+  },
+  "hvardiiskyi": {
+   "addr": "Heneral-Almasow-Straße",
+   "lead": "Hvardiiskyi ist ein Komplex der Business- und Premiumklasse von Kyivmiskbud in der Heneral-Almasow-Straße im Bezirk Petschersk. Wir renovieren Wohnungen schlüsselfertig mit Designprojekt und Einrichtung.",
+   "h2": "Renovierung in Hvardiiskyi: ruhiges Petschersk und klassische Formate",
+   "p": [
+    "Der Komplex liegt im grünen Teil von Petschersk, und viele Eigentümer möchten dieses Gefühl auch drinnen bewahren: ruhige Naturtöne, Holz, Textilien, weiches Licht. Im klassischen Interieur kommt es auf präzise Details an — Stuckleisten, Gesimse, hohe Türen —, deshalb legen wir diese Elemente in den Plänen fest.",
+    "Bei Wohnungen der Business- und Premiumklasse lohnt es sich, von Anfang an guten Schallschutz zwischen den Räumen und in den Bädern, eigene Stromkreise für Küchengeräte und Klimaanlagen sowie einen Verteiler mit Reserve für künftigen Bedarf einzuplanen.",
+    "Die Hausverwaltung legt meist Renovierungszeiten und den Ablauf der Schuttabfuhr fest. Wir berücksichtigen diese Regeln im Zeitplan und sind für Ordnung in den Gemeinschaftsflächen verantwortlich."
+   ],
+   "faq": [
+    ["Gestalten Sie klassische Interieurs mit Stuckleisten?", "Ja. Profile, Leistenaufteilung, Gesimse und Türen legen wir in den Plänen fest und prüfen die Ausführung in jeder Phase."],
+    ["Können die Nachbarn während der Renovierung normal wohnen?", "Wir arbeiten nach dem Zeitplan des Hauses und schützen die Gemeinschaftsflächen. Außerhalb der erlaubten Zeiten stören wir die Nachbarn nicht."]
+   ]
+  },
+  "a136-highlight-tower": {
+   "addr": "Antonowytscha-Straße 136–138",
+   "lead": "A136 Highlight Tower ist ein Hochhaus der Businessklasse in der Antonowytscha-Straße 136–138. Unser Büro liegt ebenfalls in der Antonowytscha-Straße, das Objekt ist also nah. Wir renovieren Wohnungen schlüsselfertig mit Designprojekt und Möbeln.",
+   "h2": "Wohnungsrenovierung im Hochhaus an der Antonowytscha-Straße",
+   "p": [
+    "Im Hochhaus bekommt eine Wohnung viel Licht und Aussicht — und damit Aufgaben: Sonnenschutz, Klimatisierung ohne Zugluft, Vorhänge oder Rollos, die den Blick nicht verdecken. Diese Lösungen durchdenken wir im Designprojekt, nicht erst nach dem Einzug.",
+    "Logistik im Hochhaus ist ein eigenes Thema. Material fährt zu abgestimmten Zeiten mit dem Lastenaufzug, großformatige Platten und Arbeitsplatten gleichen wir vorab mit den Aufzugsmaßen ab. Den Bauschutt entsorgen wir selbst, ohne ihn in den Foyers zu lassen.",
+    "Eine Hausverwaltung der Businessklasse hat meist eine Renovierungsordnung: Zeiten für laute Arbeiten, Schutz von Aufzügen und Gemeinschaftsflächen. Wir machen uns vor dem Start damit vertraut und halten sie ein."
+   ],
+   "faq": [
+    ["Wo ist Ihr Büro?", "In der Antonowytscha-Straße 44 in Kyjiw. Wir können uns im Büro oder auf der Baustelle treffen."],
+    ["Und der Sonnenschutz bei großen Fenstern?", "Wir wählen motorisierte Vorhänge, Rollos oder Jalousien, planen Nischen für Vorhangschienen ein und durchdenken die Platzierung der Klimageräte."]
+   ]
+  },
+  "montreal-house": {
+   "addr": "Welyka-Wassylkiwska-Straße",
+   "lead": "Montreal House ist ein Komplex der Businessklasse von Alliance Novobud in der Welyka-Wassylkiwska-Straße mit Wohnungen von 51 bis 78 m² und größer. Wir renovieren schlüsselfertig — zum Selbstbewohnen und zur Vermietung.",
+   "h2": "Renovierung einer Wohnung mit 51–78 m² im Zentrum",
+   "p": [
+    "Mittelgroße Wohnungen im Zentrum sind ein beliebtes Format, sowohl zum Selbstbewohnen als auch zur Vermietung. Bei 51–60 m² wählt man meist eine Wohnküche und ein separates Schlafzimmer mit Ankleide; bei 70–78 m² zwei Schlafzimmer und ein zweites Bad. Die endgültige Entscheidung fällt nach dem Aufmaß und mehreren Grundrissvarianten.",
+    "Zentrum heißt Straßenlärm, daher empfehlen wir gute Fenster, abgedichtete Laibungen und Schallschutz der Schlafzimmerwände. Für die Vermietung: strapazierfähige Böden, abwaschbare Farben und pflegeleichte Möbel.",
+    "Eine Renovierung im Haus der Businessklasse wird meist mit der Hausverwaltung abgestimmt: Arbeitsplan, Aufzugsnutzung, Schuttabfuhr. Diesen Teil übernehmen wir."
+   ],
+   "faq": [
+    ["Wie lässt sich Straßenlärm verringern?", "Wir prüfen Fenster und Laibungen, verstärken bei Bedarf den Schallschutz der Schlafzimmerwände und wählen dichte Vorhänge. Die Lösungen fließen ins Projekt ein."],
+    ["Renovieren Sie Wohnungen im Zentrum zur Vermietung?", "Ja, mit praktischen Materialien und kompletter Ausstattung: Möbel, Geräte, Textilien — bis zum Einzug des Mieters."]
+   ]
+  },
+  "senat": {
+   "addr": "Kilzewa-Straße 3",
+   "lead": "Senat ist ein Komplex der Businessklasse von GEOS an der Kilzewa-Straße 3. Hier gibt es alles: von kompakten Wohnungen mit 34 m² bis zu 94 m², Maisonetten und Wohnungen mit Terrassen. Wir finden Lösungen für jedes Format und renovieren schlüsselfertig.",
+   "h2": "Von der Smart-Wohnung bis zur Maisonette mit Terrasse",
+   "p": [
+    "In einer Wohnung mit 34–45 m² zählt vor allem Multifunktionalität: Podestbett oder Nische mit Vorhang, Küche mit Einbaugeräten, Schränke bis zur Decke, Spiegel, die den Raum weiten. Gerade in kleinen Wohnungen amortisiert sich ein Designprojekt am schnellsten — Fehler bei den Maßen sind hier am teuersten.",
+    "Maisonetten und Wohnungen mit Terrassen brauchen einen anderen Ansatz: Treppe, Deckenschallschutz, Abdichtung und Entwässerung der Terrasse, Außenlicht und Steckdosen. Diese Details zeichnen wir in den Plänen gesondert aus.",
+    "Die Hausverwaltung des Komplexes legt meist eine Renovierungsordnung fest — Zeiten für laute Arbeiten und Ablauf der Schuttabfuhr. Wir halten sie ein und stimmen Details vor dem Start ab."
+   ],
+   "faq": [
+    ["Lohnt sich ein Designprojekt für eine kleine Wohnung?", "Ja: Auf kleiner Fläche zählt jeder Zentimeter, und Fehler bei Möbel- oder Steckdosenmaßen kosten am meisten. Ein Projekt gibt es ab $2 500."],
+    ["Was machen Sie mit der Terrasse?", "Wir prüfen Abdichtung und Gefälle und wählen frostbeständigen Belag, feuchtigkeitsgeschütztes Licht und Steckdosen sowie Gartenmöbel."]
+   ]
+  },
+  "life-story": {
+   "addr": "Metrolohitschna-Straße 13",
+   "lead": "Life Story ist ein Komplex der Businessklasse von LEV Development in der Metrolohitschna-Straße 13 mit Wohnungen ab 49,93 m². Wir renovieren schlüsselfertig für Familien, die in ein fertiges, durchdachtes Interieur einziehen möchten.",
+   "h2": "Renovierung einer Familienwohnung in Holossijiw",
+   "p": [
+    "Holossijiw mit seinen Parks und Wäldern wählt man für ein ruhiges Familienleben, und das Interieur soll das unterstützen: praktische Oberflächen, die Kindern und Haustieren standhalten, viel Stauraum und eine Küche, in der man gern täglich kocht.",
+    "In Wohnungen ab 50 m² stellt sich oft die Wahl: zwei separate Zimmer oder eine großzügige Wohnküche. Wir zeigen mehrere Grundrissvarianten und stellen die Möbel, damit die Entscheidung auf dem Plan fällt und nicht nach der Renovierung.",
+    "Renovierungen in Neubauten der Businessklasse folgen meist den Regeln der Hausverwaltung zu Lärmzeiten, Aufzügen und Schuttabfuhr. Wir planen die Arbeit entsprechend."
+   ],
+   "faq": [
+    ["Welche Materialien eignen sich für eine Familie mit Kindern und Haustieren?", "Strapazierfähige: Quarzvinyl oder Fliesen auf dem Boden, abwaschbare Farben, fleckabweisende Stoffe. Wir wählen sie in der Spezifikation des Designprojekts aus."],
+    ["Können Sie die Wohnung einrichten?", "Ja, Einrichtung ab $250/m²: Möbel, Licht, Geräte, Textilien und Dekor nach dem Designprojekt."]
+   ]
+  },
+  "respublika": {
+   "addr": "Kilzewa-Straße 1",
+   "lead": "Respublika ist eine große Wohnanlage der Komfort- und Businessklasse von KAN Development an der Kilzewa-Straße 1. Wir renovieren Wohnungen schlüsselfertig mit festem Kostenvoranschlag und 12 Monaten Gewährleistung.",
+   "h2": "Wohnungsrenovierung in einer großen Wohnanlage",
+   "p": [
+    "In einer Anlage dieser Größe sind die Wohnungen sehr unterschiedlich, doch die Eigentümer eint eines: Sie wollen ein planbares Budget. Deshalb beginnen wir mit Designprojekt und Kostenvoranschlag, in dem jede Position einen Preis hat, und renoviert unser Team, weicht das Ergebnis höchstens ±5 % davon ab.",
+    "Bei Wohnungen der Komfort- und Businessklasse raten wir, in das zu investieren, was sich später schwer ändern lässt: Elektrik mit Reserve, gute Badabdichtung, gerade Wände und ein richtiger Grundriss. Dekor und ein Teil der Möbel lassen sich später ohne Renovierung erneuern.",
+    "In einer großen Anlage wird in vielen Wohnungen gleichzeitig renoviert, und die Hausverwaltung regelt meist Lärmzeiten, Aufzüge und Schuttabfuhr. Wir planen die Lieferungen so, dass keine Zeit in Warteschlangen verloren geht."
+   ],
+   "faq": [
+    ["Wie bleibe ich im Budget?", "Wir legen den Kostenvoranschlag vor dem Start fest. Renoviert CAS, weicht das Ergebnis höchstens ±5 % davon ab."],
+    ["Was sollte man gleich ordentlich machen und was kann warten?", "Gleich: Elektrik, Sanitär, Abdichtung, Ausgleichen und Grundriss. Dekor, ein Teil der Möbel und Textilien können später dazukommen."]
+   ]
+  },
+  "podil-hrad": {
+   "addr": "Koschumjazka- / Dehtjarna-Straße",
+   "lead": "Podil Hrad ist ein Komplex der Businessklasse von Kyivmiskbud an der Koschumjazka- und Dehtjarna-Straße, mitten im Herzen von Podil. Die Wohnungen haben 65,5 bis 79 m², darunter Vierzimmerwohnungen — und jede renovieren wir schlüsselfertig.",
+   "h2": "Wie vier Zimmer auf 79 m² passen",
+   "p": [
+    "Eine Vierzimmerwohnung mit bis zu 79 m² bedeutet kompakte Zimmer, in denen jeder Meter arbeiten muss. Einbauschränke statt freistehender, Schiebetüren, Betten mit Stauraum und eine Küche bis zur Decke helfen. Wir stellen die Möbel schon im Projekt, damit in jedem Zimmer ein Durchgang und Tageslicht bleiben.",
+    "Bei 65–79 m² lohnt es sich oft, Küche und Wohnzimmer zu verbinden und zwei bis drei separate Schlafzimmer zu behalten. Varianten prüfen wir mit Blick auf die Statik des Hauses: Tragende Wände und Nassbereiche versetzen wir nicht.",
+    "Das historische Podil bedeutet enge Straßen und Einschränkungen für Lieferverkehr, deshalb planen wir die Materiallieferung vorausschauend. Renovierungsregeln im Haus legt meist die Hausverwaltung fest — wir halten sie ein."
+   ],
+   "faq": [
+    ["Wie wird eine Vierzimmerwohnung auf kleiner Fläche bequem?", "Durch durchdachten Grundriss und Einbaumöbel: Schränke bis zur Decke, Schiebetüren, Betten mit Schubladen, eine kompakte Küche mit Insel. Alles wird schon im Projekt gestellt."],
+    ["Wie liefern Sie Material nach Podil?", "Wir planen die Lieferung unter Berücksichtigung der engen Straßen und der Hausregeln und bringen große Teile zu abgestimmten Zeiten."]
+   ]
+  },
+  "unit-home": {
+   "addr": "Gareth-Jones-Straße 8/12",
+   "lead": "UNIT.Home ist eine Wohnanlage der Businessklasse von UDP in der Gareth-Jones-Straße, neben dem Innovationspark UNIT.City. Wir renovieren hier Wohnungen schlüsselfertig: modernes Interieur, Geräte und Möbel in einem Vertrag.",
+   "h2": "Wohnungsrenovierung für den modernen Stadtrhythmus",
+   "p": [
+    "Bewohner solcher Anlagen arbeiten oft von zu Hause, deshalb sollte das Projekt gleich einen Arbeitsplatz vorsehen: ein eigenes Arbeitszimmer oder eine Nische mit gutem Licht, genug Steckdosen und Kabelkanäle fürs Internet, akustischen Komfort für Telefonate.",
+    "Ein modernes Interieur der Businessklasse passt gut zum Smart Home: Licht- und Klimasteuerung per Smartphone, Wassermelder in Bad und Küche, motorisierte Vorhänge. Verkabelung und Gerätepositionen legen wir schon in der Rohbauphase an.",
+    "Die Hausverwaltung regelt Renovierungen meist: Zeiten für laute Arbeiten, Aufzugsnutzung und Schuttabfuhr. Wir organisieren die Arbeit so, dass diese Anforderungen erfüllt werden."
+   ],
+   "faq": [
+    ["Bauen Sie Smart-Home-Systeme ein?", "Ja: Steuerung von Licht, Klima und Vorhängen, Wassermelder, Szenen. Verkabelung und Gerätepositionen legen wir schon in der Rohbauphase an."],
+    ["Wie richte ich einen Arbeitsplatz zu Hause ein?", "Wir planen ein Arbeitszimmer oder eine Nische am Fenster, richtiges Licht, Steckdosen und Netzwerk, Schallschutz. Die Möbel wählen wir passend zu Ihrer Arbeitsweise."]
+   ]
+  },
+  "novyi-avtohraf": {
+   "addr": "Swjatoho-Knjasja-Romana-Mstyslawytscha-Straße 26",
+   "lead": "Novyi Avtohraf ist ein Komplex der Businessklasse von DIM in der Swjatoho-Knjasja-Romana-Mstyslawytscha-Straße 26 am linken Ufer. Wir renovieren Wohnungen schlüsselfertig: vom Designprojekt bis zu Möbeln und Übergabe mit Protokoll.",
+   "h2": "Wohnungsrenovierung in einem mehrgeschossigen Komplex der Businessklasse",
+   "p": [
+    "In einem großen Hochhauskomplex wird in vielen Wohnungen gleichzeitig renoviert, daher wird der Zeitplan entscheidend: Warteschlange am Lastenaufzug, Zeiten für laute Arbeiten, Schuttabfuhr. Wir planen die Materiallieferungen in Etappen nach diesen Grenzen, damit das Team nicht stillsteht.",
+    "Wohnungen der Businessklasse werden oft zum Selbstbewohnen und zur Vermietung gekauft. Für das eigene Zuhause raten wir, in Grundriss, Schallschutz und Stauraum zu investieren; für die Vermietung in strapazierfähige Oberflächen und praktische Möbel.",
+    "In der Höhe bekommen Wohnungen viel Licht, daher sind Sonnenschutz und die richtige Platzierung der Klimageräte wichtig. Diese Lösungen planen wir im Projekt zusammen mit den Fassadenvorgaben des Hauses."
+   ],
+   "faq": [
+    ["Wie werde ich unabhängig von der Aufzugsschlange?", "Wir planen Lieferungen im Voraus und in Etappen und stimmen sie mit der Hausverwaltung ab. Während wir auf Material warten, arbeitet das Team an anderen Etappen."],
+    ["Renovieren Sie zur Vermietung?", "Ja: praktische Materialien, neutrales Interieur und komplette Ausstattung bis zum Einzug des Mieters."]
+   ]
+  },
+  "rusaniv-residence": {
+   "addr": "Jewhena-Swerstjuka-Straße 54",
+   "lead": "Rusaniv Residence ist ein Komplex der Businessklasse von Citex Development in der Jewhena-Swerstjuka-Straße 54, wo die Wohnungen 104 bis 179 m² und zwei Ebenen haben. Solche Flächen brauchen ein starkes Projekt — damit beginnen wir.",
+   "h2": "Renovierung einer Maisonette mit 104–179 m²",
+   "p": [
+    "Eine Maisonette dieser Größe fühlt sich eher wie ein Reihenhaus an als wie eine normale Wohnung. Deshalb beginnen wir mit der Aufteilung der Ebenen: Tagbereich mit Wohnküche und Gäste-WC, Nachtbereich mit Schlafzimmern, Ankleiden und Bädern. Die Treppe machen wir zum gestalterischen Mittelpunkt, nicht zum Hindernis.",
+    "Auf zwei Ebenen ist die Haustechnik komplexer: getrennte Klimatisierung der Etagen, Lüftung jedes Bades, Fußbodenheizung, Treppenbeleuchtung mit Bewegungsmeldern. Schallschutz der Decke sehen wir unter den Schlafzimmern vor, damit Schritte unten oben nicht zu hören sind.",
+    "Bei großen Flächen ist die Ausstattung besonders wichtig: Es braucht viele Möbel, Leuchten und Textilien, und die Logistik führt am besten ein Auftragnehmer. Renovierungsregeln legt meist die Hausverwaltung fest — wir berücksichtigen sie."
+   ],
+   "faq": [
+    ["Womit beginnt die Renovierung einer Maisonette?", "Mit dem Designprojekt: Aufteilung der Zonen auf die Ebenen, Treppe, Haustechnik und Schallschutz. Erst danach erstellen wir Kostenvoranschlag und Zeitplan."],
+    ["Können Sie die Wohnung komplett ausstatten?", "Ja. Möbel nach Maß und aus China, Licht, Geräte, Textilien und Dekor — bis zur Bezugsfertigkeit."]
+   ]
+  }
+ }
+}
