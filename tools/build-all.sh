@@ -43,3 +43,4 @@ python3 tools/site/i18nlint.py --quiet || echo "::warning::Якість пере
 python3 tools/site/oztext.py --check | tail -n 3 || echo "::warning::Оздоба в текстах публічних сторінок (tools/site/oztext.py --check) — додати правило"
 python3 tools/site/seo.py --quiet || echo "::warning::SEO-перевірка (tools/site/seo.py) знайшла помилки — деплой не зупиняємо"
 python3 tools/site/ldcheck.py --strict | sed -n 3p || echo "::warning::JSON-LD (tools/site/ldcheck.py) — є помилки schema.org/Google, деплой не зупиняємо"
+python3 tools/site/filecount.py --quiet  # бюджет файлів деплою: попередження з 14 000, помилка з 15 000 (Михайло 19.11.2026)

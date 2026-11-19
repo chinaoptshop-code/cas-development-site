@@ -170,6 +170,7 @@
   Більші копії — `python3 tools/img/originals.py img/p/<id>` (оригінал з Google Drive за `tools/img/drive-ids.json`, 1200/1600/1920 без апскейлу), далі build.py.
   Стрічки й каруселі — без системного повзунка (`scrollbar-width:none`, кінець site-chrome.v1.css). Перевірка — Playwright 1920 (DPR 1/1.5/2), 2560, 402@3:
   файл ≥ 0.95 × слот × DPR.
+- Бюджет файлів деплою (Михайло 19.11.2026): на сайт — 13–14 тис. файлів (ліміт Cloudflare Pages 20 000, запас — на товари Оздоби); `python3 tools/site/filecount.py` (у build-all; попередження з 14 000, помилка з 15 000; `--orphans` — фото img/, на які ніщо не посилається, — видаляти з репозиторію, оригінали на Drive); що не сайт (службові нотатки, знімки, .github, img/lqip.json) — `EXCLUDE` там же, деплой прибирає `--prune`.
 - Швидкість (08.11.2026): фото нижче першого екрана — `loading="lazy"`; копії кадрів стрічок/каруселей (`marquee()`) — через інертний `<template>`, без cloneNode з src (інакше Chrome тягне всі копії);
   preload LCP-фото з `<picture>` — окремо для кожного `media` (`chrome.head_extras`); CSS/JS на сайті мініфікує деплой (esbuild, крок «Minify»), у репозиторії — читабельні.
   Критичний CSS (09.11.2026): рендер блокує лише `/assets/crit.v1.css` (правила першого екрана, ЗГЕНЕРОВАНО `tools/site/critcss.py` зі `site-chrome.v1.css` за списком `tools/site/critcss.json`, руками не правити);

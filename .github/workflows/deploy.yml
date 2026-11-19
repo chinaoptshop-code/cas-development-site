@@ -100,8 +100,10 @@ jobs:
           npx -y esbuild@0.24.0 assets/*.js assets/*.css assets/ozdoba/app.js assets/ozdoba/kp.v1.js
           --minify --charset=utf8 --legal-comments=none --outbase=assets --outdir=assets --allow-overwrite --log-level=warning
 
+      # Що не є сайтом (службові нотатки, знімки, .github, lqip.json …) — список EXCLUDE у tools/site/filecount.py; там же бюджет
+      # файлів (Михайло 19.11.2026: 13–14 тис., попередження 14 000, межа 15 000; ліміт Cloudflare Pages — 20 000).
       - name: 🧹 Exclude non-site files (tools, Claude config)
-        run: rm -rf tools .claude CLAUDE.md migrations
+        run: python3 tools/site/filecount.py --prune && rm -rf tools
 
       - name: 🚀 Deploy with Wrangler
         run: npx wrangler@3 pages deploy . --project-name=cas-development-site --branch=main --commit-dirty=true

@@ -29,7 +29,10 @@ def widths(href):
         return ''
     fam = sharp.family(href)
     ws = [w for w, p in fam if WIDTH.search(p) and p.startswith(WIDTH.sub('', href) + '-')]
-    return ','.join(str(w) for w in ws if w >= 600) if len(ws) > 1 else ''
+    # JS будує шлях з ширини (<база>-<w>.webp): лише файли, чия назва = справжня ширина («-900» без апскейлу буває 789 px —
+    # тоді «-789.webp» не існує, лайтбокс отримував 404; такий файл лишається в href)
+    ok = [w for w, p in fam if p == f'{WIDTH.sub("", href)}-{w}.webp' and w >= 600]
+    return ','.join(str(w) for w in ok) if len(ws) > 1 and ok else ''
 
 
 def _link(m):
