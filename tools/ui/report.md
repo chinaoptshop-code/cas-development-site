@@ -246,7 +246,7 @@
 | ozdoba/vanna-okremostoiacha-zi-shtuchnoho-kameniu-bila-139.html | other | 57.8 | 15.3 | 32.4 | 0.7 | 14 | 338 |
 | ozdoba/zamok-elektronnyi-hotelnyi-z-rfid-kartkoiu-538.html | other | 57.8 | 15.4 | 32.4 | 0.7 | 14 | 339 |
 | ozdoba/zmishuvach-dlia-rakovyny-nastinnyi-brashovana-latun-150.html | other | 57.8 | 15.3 | 32.4 | 0.7 | 14 | 340 |
-| baza-vidpochynku-pid-klyuch.html | land | 57.7 | 16.0 | 13.0 | 3.5 | 6 | 515 |
+| baza-vidpochynku-pid-klyuch.html | land | 57.7 | 15.9 | 13.0 | 3.5 | 6 | 515 |
 | blog/karkasnyi-budynok-pid-kliuch-etapy-i-tsina.html | article | 57.7 | 15.5 | 14.2 | 0.5 | 6 | 460 |
 | ozdoba/biokamin-nastilnyi-betonnyi-kruhlyi-513.html | other | 57.7 | 15.3 | 32.4 | 0.7 | 14 | 341 |
 | ozdoba/biokamin-nastilnyi-chasha-zi-sklianym-ekranom-183.html | other | 57.7 | 15.3 | 32.4 | 0.7 | 14 | 339 |
@@ -675,7 +675,7 @@
 | ar/office-design.html | land | 48.5 | 12.6 | 13.3 | 0.5 | 6 | 443 |
 | de/renovierungskosten-rechner.html | land | 48.5 | 13.8 | 13.3 | 2.0 | 6 | 498 |
 | en/restaurant-fit-out.html | land | 48.5 | 14.2 | 13.3 | 2.4 | 6 | 517 |
-| es/reforma-restaurantes.html | land | 48.5 | 13.9 | 13.3 | 2.5 | 6 | 504 |
+| es/reforma-restaurantes.html | land | 48.5 | 13.8 | 13.3 | 2.5 | 6 | 504 |
 | remont-kvartyry-zhk-montreal-house.html | land | 48.5 | 13.2 | 13.3 | 0.5 | 6 | 433 |
 | remont-kvartyry-zhk-novyi-avtohraf.html | land | 48.5 | 13.2 | 13.3 | 0.5 | 6 | 431 |
 | ar/general-contractor.html | land | 48.4 | 12.6 | 13.3 | 0.5 | 6 | 449 |
