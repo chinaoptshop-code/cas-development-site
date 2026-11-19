@@ -24,7 +24,7 @@
  "t": {
   "name": "Condomínio {n}",
   "svc": "Remodelação de apartamentos no condomínio {n}, Kyiv",
-  "title": "Remodelação de apartamento em {n} (condomínio, Kyiv) — chave na mão | CAS",
+  "title": ["Remodelação de apartamento em {n} (condomínio, Kyiv) — chave na mão | CAS", "Remodelação de apartamento em {n}, Kyiv — chave na mão | CAS", "Remodelação de apartamento em {n}, Kyiv | CAS"],
   "desc": "Remodelação chave na mão de apartamentos no condomínio {n} ({d}, Kyiv): projeto de design, remodelação desde $550/m², mobiliário.",
   "desc_short": "Remodelação de apartamentos em {n} ({d}, Kyiv): design, remodelação chave na mão desde $550/m², mobiliário.",
   "h1": "Remodelação chave na mão de apartamentos em {n}",
@@ -69,7 +69,7 @@
  },
  "hub": {
   "service": "Remodelação de apartamentos em condomínios de Kyiv",
-  "title": "Remodelação de apartamentos em condomínios de Kyiv — chave na mão | CAS",
+  "title": "Remodelação de apartamentos em condomínios de Kyiv | CAS",
   "description": "Remodelação de apartamentos em condomínios de Kyiv: Pechersk, Holosiiv, Podil, Shevchenko e Dnipro. Design desde $30/m², remodelação desde $550/m².",
   "h1": "Remodelação de apartamentos em condomínios de Kyiv",
   "lead": "19 condomínios residenciais de Kyiv, da classe conforto à premium: para cada um, o que considerar na remodelação de um apartamento desse formato e um orçamento de referência. Escolha o seu condomínio ou deixe um pedido.",

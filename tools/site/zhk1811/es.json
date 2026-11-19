@@ -24,7 +24,7 @@
  "t": {
   "name": "Complejo residencial {n}",
   "svc": "Reforma de pisos en {n}, Kiev",
-  "title": "Reforma de piso en {n} (complejo residencial, Kiev) — llave en mano | CAS",
+  "title": ["Reforma de piso en {n} (complejo residencial, Kiev) — llave en mano | CAS", "Reforma de piso en {n}, Kiev — llave en mano | CAS", "Reforma de piso en {n}, Kiev | CAS"],
   "desc": "Reforma llave en mano de pisos en el complejo residencial {n} ({d}, Kiev): proyecto de diseño, reforma desde $550/m², amueblamiento.",
   "desc_short": "Reforma de pisos en {n} ({d}, Kiev): diseño, reforma llave en mano desde $550/m², amueblamiento.",
   "h1": "Reforma llave en mano de pisos en {n}",
@@ -69,7 +69,7 @@
  },
  "hub": {
   "service": "Reforma de pisos en complejos residenciales de Kiev",
-  "title": "Reforma de pisos en complejos residenciales de Kiev — llave en mano | CAS",
+  "title": "Reforma de pisos en complejos residenciales de Kiev | CAS",
   "description": "Reforma de pisos en complejos residenciales de Kiev: Pechersk, Holosiiv, Podil, Shevchenko y Dnipró. Diseño desde $30/m², reforma desde $550/m².",
   "h1": "Reforma de pisos en complejos residenciales de Kiev",
   "lead": "19 complejos residenciales de Kiev, de clase confort a premium: para cada uno, qué tener en cuenta al reformar un piso de ese formato y un presupuesto orientativo. Elija su complejo o déjenos una solicitud.",

@@ -24,7 +24,7 @@
  "t": {
   "name": "Osiedle {n}",
   "svc": "Remont mieszkania na osiedlu {n}, Kijów",
-  "title": "Remont mieszkania na osiedlu {n}, Kijów — pod klucz | CAS",
+  "title": ["Remont mieszkania na osiedlu {n}, Kijów — pod klucz | CAS", "Remont mieszkania na osiedlu {n}, Kijów | CAS", "Remont mieszkania — {n}, Kijów | CAS"],
   "desc": "Remont mieszkania pod klucz na osiedlu {n} ({d}, Kijów): projekt wnętrza, remont od $550/m², umeblowanie. Gwarancja 12 miesięcy.",
   "desc_short": "Remont mieszkania na osiedlu {n} ({d}, Kijów): projekt, remont pod klucz od $550/m², umeblowanie.",
   "h1": "Remont mieszkania pod klucz na osiedlu {n}",

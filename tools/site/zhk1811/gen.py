@@ -79,6 +79,16 @@ def area(a, lang, T):
     return T['area_plus'].format(s=s) if k == 'p' else s
 
 
+def title(T, n):
+    """<title> до 60 символів (seo.py): "title" — рядок або варіанти від повного до короткого; « | CAS» landing.py знімає сам."""
+    vs = T['title'] if isinstance(T['title'], list) else [T['title']]
+    for v in vs:
+        t = v.format(n=n)
+        if len(t) <= 60 or len(t.replace(' | CAS', '')) <= 60:
+            return t
+    return vs[-1].format(n=n)
+
+
 def dump(p, out):
     json.dump(p, open(out, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     open(out, 'a', encoding='utf-8').write('\n')
@@ -116,7 +126,7 @@ def main():
             if len(desc) > 160:
                 desc = T['desc_short'].format(n=n, svc=T['svc'].format(n=n), d=T['dist'][dist])
             near = [[url[UK2KEY[x[0][21:]]], name[UK2KEY[x[0][21:]]]] for x in u['near'][1]]
-            p = {'slug': C['slugs'][k], 'lang': lang, 'service': T['svc'].format(n=n), 'title': T['title'].format(n=n), 'description': desc,
+            p = {'slug': C['slugs'][k], 'lang': lang, 'service': T['svc'].format(n=n), 'title': title(T, n), 'description': desc,
                  'h1': T['h1'].format(n=n), 'price': T['price'], 'lead': z['lead'], 'parent': [hub_url, T['hub_short']],
                  'cards': [T['cards'][c] for c in cards], 'about': [[z['h2'], z['p'] + [ref_p]]],
                  'budget': {'area': barea, 'h2': T['budget_h2'].format(a=barea), 'p': T['budget_p'].format(a=barea)},

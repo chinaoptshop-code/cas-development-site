@@ -24,7 +24,7 @@
  "t": {
   "name": "Résidence {n}",
   "svc": "Rénovation d’appartement dans la résidence {n}, Kyiv",
-  "title": "Rénovation d’appartement à {n} (résidence, Kyiv) — clé en main | CAS",
+  "title": ["Rénovation d’appartement à {n} (résidence, Kyiv) — clé en main | CAS", "Rénovation d’appartement à {n}, Kyiv — clé en main | CAS", "Rénovation d’appartement à {n}, Kyiv | CAS"],
   "desc": "Rénovation clé en main d’appartement dans la résidence {n} ({d}, Kyiv) : projet de design, rénovation à partir de $550/m², ameublement.",
   "desc_short": "Rénovation d’appartement à {n} ({d}, Kyiv) : design, rénovation clé en main dès $550/m², ameublement.",
   "h1": "Rénovation clé en main d’appartement à {n}",
@@ -69,7 +69,7 @@
  },
  "hub": {
   "service": "Rénovation d’appartements dans les résidences de Kyiv",
-  "title": "Rénovation d’appartements dans les résidences de Kyiv — clé en main | CAS",
+  "title": "Rénovation d’appartements dans les résidences de Kyiv | CAS",
   "description": "Rénovation d’appartements dans les résidences de Kyiv : Petchersk, Holossiiv, Podil, Chevtchenko, Dnipro. Design dès $30/m², rénovation dès $550/m².",
   "h1": "Rénovation d’appartements dans les résidences de Kyiv",
   "lead": "19 résidences de Kyiv, du standing confort au premium : pour chacune, ce qu’il faut prévoir dans la rénovation d’un appartement de ce format et un budget indicatif. Choisissez votre résidence ou laissez une demande.",

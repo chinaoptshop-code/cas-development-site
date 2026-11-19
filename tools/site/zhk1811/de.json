@@ -24,7 +24,7 @@
  "t": {
   "name": "Wohnanlage {n}",
   "svc": "Wohnungsrenovierung in der Wohnanlage {n}, Kyjiw",
-  "title": "Wohnungsrenovierung in {n} (Wohnanlage, Kyjiw) — schlüsselfertig | CAS",
+  "title": ["Wohnungsrenovierung in {n} (Wohnanlage, Kyjiw) — schlüsselfertig | CAS", "Wohnungsrenovierung in {n}, Kyjiw — schlüsselfertig | CAS", "Wohnungsrenovierung in {n}, Kyjiw | CAS"],
   "desc": "Schlüsselfertige Wohnungsrenovierung in der Wohnanlage {n} ({d}, Kyjiw): Designprojekt, Renovierung ab $550/m², Einrichtung.",
   "desc_short": "Wohnungsrenovierung in {n} ({d}, Kyjiw): Design, schlüsselfertige Renovierung ab $550/m², Einrichtung.",
   "h1": "Schlüsselfertige Wohnungsrenovierung in {n}",

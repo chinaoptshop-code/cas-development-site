@@ -24,7 +24,7 @@
  "t": {
   "name": "{n} residential complex",
   "svc": "Apartment renovation in {n}, Kyiv",
-  "title": "Apartment renovation in {n} (Kyiv residential complex) — turnkey | CAS",
+  "title": ["Apartment renovation in {n} (Kyiv residential complex) — turnkey | CAS", "Apartment renovation in {n}, Kyiv — turnkey | CAS", "Apartment renovation in {n}, Kyiv | CAS"],
   "desc": "Turnkey apartment renovation in the {n} residential complex ({d}, Kyiv): design project, renovation from $550/m², furnishing. 12-month warranty.",
   "desc_short": "Apartment renovation in {n} ({d}, Kyiv): design project, turnkey renovation from $550/m², furnishing. 12-month warranty.",
   "h1": "Turnkey apartment renovation in {n}",
