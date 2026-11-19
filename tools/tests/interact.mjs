@@ -201,8 +201,8 @@ await test('сцена «Ресторан»: на етапі «Гості» ви
   await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 });
   await scTab(p, 5); await p.waitForSelector('section.bz .rs-svg', { timeout: 10000 });
   await scGo(p, -1); await p.waitForTimeout(1500);
-  const r = await p.evaluate(() => { const s = [...document.querySelectorAll('.rs-svg .rs-e.on .rs-sil')]; const f = s.length ? getComputedStyle(s[0]).fill.match(/\d+/g).map(Number) : [0, 0, 0]; return { n: s.length, lum: (0.2126 * f[0] + 0.7152 * f[1] + 0.0722 * f[2]) / 255 }; });
-  must(r.n >= 10 && r.lum > 0.8, 'гості на останньому етапі: ' + JSON.stringify(r));
+  const r = await p.evaluate(() => { const s = [...document.querySelectorAll('.rs-svg .rs-e.on .rs-sil')]; const l = s.map(e => { const f = getComputedStyle(e).fill.match(/\d+/g).map(Number); return (0.2126 * f[0] + 0.7152 * f[1] + 0.0722 * f[2]) / 255; }); return { n: s.length, lum: +Math.max(0, ...l).toFixed(2) }; });
+  must(r.n >= 10 && r.lum > 0.85, 'гості на останньому етапі: ' + JSON.stringify(r));
 });
 // «Будинок на воді», етап «Здача»: був без видимої зміни відносно «Вечора» — знак «ключі» в кадрі лише на останньому етапі
 await test('сцена «Будинок на воді»: на етапі «Здача» — знак «ключі» в межах кадру', '/', 402, async p => {
