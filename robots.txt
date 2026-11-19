@@ -1,4 +1,4 @@
-# Одна політика для всіх: сайт відкритий, закриті лише API й кабінет.
+# Одна політика для всіх: сайт відкритий, закритий лише API (кабінет — noindex, див. нижче).
 # Пошукові й AI-краулери названі явно (відповіді ШІ з посиланням на сайт) — ті самі правила, що й для решти.
 # Короткий опис студії для ШІ: /llms.txt, повний — /llms-full.txt
 # Увага: якщо в Cloudflare увімкнено «Managed robots.txt» (AI Crawl Control), Cloudflare дописує ПЕРЕД цим файлом
@@ -28,7 +28,7 @@ User-agent: cohere-ai
 Allow: /
 # API кабінету й форм — не сторінки
 Disallow: /api/
-# кабінет клієнта й адмінка — особисті сторінки (ще й noindex у заголовках)
-Disallow: /kabinet
+# кабінет клієнта й адмінка (/kabinet…) — НЕ закривати тут: сторінки мають noindex (meta + X-Robots-Tag у _headers),
+# і Google має їх прочитати, щоб прибрати з індексу; Disallow давав у Search Console «Заблоковано файлом robots.txt» (19.11.2026)
 
 Sitemap: https://cas-develop.com/sitemap.xml
