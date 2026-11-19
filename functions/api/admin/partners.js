@@ -8,11 +8,15 @@
 // GET   ?find=<текст> — до 20 контактів для швидкого вибору (картка обʼєкта: «Привʼязати контакт»)
 // POST  {name, company, type, city, tg, phone, email, site, tags, notes, status, rating} — додати (той самий контакт/компанія → 409 з id)
 // POST  {action: 'link', contact_id, project_id | order_id, role?, note?} — привʼязати до обʼєкта або заявки (повтор — оновлює роль)
-// PATCH {id, …поля} — змінити (контакт іншого запису → 409)
+// PATCH {id, ver?, …поля} — змінити (контакт іншого запису → 409); ver — версія картки з GET ?id= (functions/_ver.js): картку відтоді
+//       змінив інший менеджер → 409 {conflict: true, partner} без змін
+// Записи (POST / PATCH / DELETE) — до 600 на годину на працівника (functions/_rate.js), далі 429.
 // DELETE ?link=<id> — відвʼязати
 import { bad, json, readJSON } from '../../_lib.js';
 import { Invalid, PARTNER_STATUSES, PARTNER_TYPES, findPartner, hasEmail, partnerInput, partnersCsv, shapePartner, text } from '../../_partners.js';
 import { audit, diff, need, noTable } from '../../_roles.js';
+import { TOO_MANY, staffLimited } from '../../_rate.js';
+import { conflict, contactVer, lastChange } from '../../_ver.js';
 
 const FIELDS = ['name', 'company', 'type', 'city', 'tg', 'phone', 'email', 'site', 'tags', 'notes', 'status', 'rating'];
 const has = (d, k) => Object.prototype.hasOwnProperty.call(d, k);
@@ -52,7 +56,7 @@ export async function onRequestGet({ request, env }) {
       } catch (e) { if (!noTable(e)) throw e; }
       const linked = new Set(links.map(l => l.order_id).filter(Boolean));
       const leads = (await contactLeads(env, r)).filter(o => !linked.has(o.id));
-      return json({ partner: shapePartner(r), links, leads, types: PARTNER_TYPES, statuses: PARTNER_STATUSES });
+      return json({ partner: { ...shapePartner(r), ver: await contactVer(r) }, links, leads, types: PARTNER_TYPES, statuses: PARTNER_STATUSES });
     }
     if (p('find')) {
       const q = p('find').replace(/^@/, '');
@@ -133,6 +137,7 @@ export async function onRequestPost({ request, env }) {
   if (error) return error;
   let d;
   try { d = await readJSON(request, 16 * 1024); } catch { return bad('Некоректні дані'); }
+  if (await staffLimited(env, request, x, 'contacts')) return bad(TOO_MANY, 429);
   try {
     if (d && d.action === 'link') return await link(env, request, x, d);
     let p, e2;
@@ -155,9 +160,12 @@ export async function onRequestPatch({ request, env }) {
   if (error) return error;
   let d;
   try { d = await readJSON(request, 16 * 1024); } catch { return bad('Некоректні дані'); }
+  if (await staffLimited(env, request, x, 'contacts')) return bad(TOO_MANY, 429);
   try {
     const o = await env.DB.prepare('SELECT * FROM partners WHERE id = ?').bind(Number(d && d.id) || 0).first();
     if (!o) return bad('Контакт не знайдено', 404);
+    if (d.ver != null && d.ver !== '' && String(d.ver) !== await contactVer(o))
+      return conflict('Контакт змінили, поки ви редагували', { partner: { ...shapePartner(o), ver: await contactVer(o) }, last: await lastChange(env, 'partners', o.id) });
     const ready = await hasEmail(env);
     // незмінені поля беремо з запису: PATCH {id, status} не вимагає повної картки
     const cur = { name: o.name, company: o.company, type: o.type, city: o.city, tg: o.tg, phone: o.phone, site: o.site, email: o.email ?? null, tags: JSON.parse(o.tags || '[]') };
@@ -175,7 +183,8 @@ export async function onRequestPatch({ request, env }) {
     if (ready) await env.DB.prepare('UPDATE partners SET email = ?, rating = ? WHERE id = ?').bind(p.email, next.rating, o.id).run();
     const dd = diff(o, next, FIELDS);
     if (dd) await audit(env, request, x, 'pbase.update', 'partners', o.id, dd.before, dd.after);
-    return json({ ok: true, partner: shapePartner({ ...o, ...next }) });
+    const saved = await env.DB.prepare('SELECT * FROM partners WHERE id = ?').bind(o.id).first();
+    return json({ ok: true, partner: { ...shapePartner(saved), ver: await contactVer(saved) } });
   } catch (e) { if (noTable(e)) return migrating(); throw e; }
 }
 
@@ -184,6 +193,8 @@ export async function onRequestDelete({ request, env }) {
   if (error) return error;
   const id = int(new URL(request.url).searchParams.get('link'));
   if (!id) return bad('Потрібен link');
+  if (await staffLimited(env, request, x, 'contacts')) return bad(TOO_MANY, 429);
+
   try {
     const l = await env.DB.prepare('SELECT * FROM contact_links WHERE id = ?').bind(id).first();
     if (!l) return bad('Звʼязок не знайдено', 404);

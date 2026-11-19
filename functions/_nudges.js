@@ -11,6 +11,7 @@ import { tg } from './_alerts.js';
 import { dict, tgOf } from './_lib.js';
 import { langOf, remindText, reviewText } from './_client_msgs.js';
 import { audit, noTable } from './_roles.js';
+import { updateStages } from './_ver.js';
 
 export const REMIND_GAP_H = 48, REMIND_AUTO_AFTER_H = 24, REMIND_AUTO_MAX = 3, REVIEW_AFTER_H = 48;
 export const CHANNELS = dict({ telegram: 'Telegram-бот', telegram_manual: 'Telegram (вручну)', viber: 'Viber', whatsapp: 'WhatsApp', copy: 'скопійовано' });
@@ -58,9 +59,15 @@ export async function remindStage(env, request, x, p, stageId, { channel = null,
     used = 'telegram';
   }
   const at = kyivStamp(now);
-  stages[i] = { ...s, remind_at: at, remind_n: (Number(s.remind_n) || 0) + (auto ? 1 : 0),
-    hist: [...(Array.isArray(s.hist) ? s.hist : []), { act: 'remind', at, by: auto ? 'автоматично' : (x && x.name) || null, note: CHANNELS[used] }].slice(-30) };
-  await env.DB.prepare('UPDATE projects SET stages = ? WHERE id = ?').bind(JSON.stringify(stages), p.id).run();
+  // позначку ставимо на свіжі етапи («порівняй і заміни», functions/_ver.js) — не затираємо те, що клієнт чи менеджер змінили, поки йшло повідомлення
+  await updateStages(env, p.id, fresh => {
+    const j = fresh.findIndex(y => y && y.id === stageId);
+    if (j < 0) return { skip: true };
+    const y = fresh[j], next = fresh.slice();
+    next[j] = { ...y, remind_at: at, remind_n: (Number(y.remind_n) || 0) + (auto ? 1 : 0),
+      hist: [...(Array.isArray(y.hist) ? y.hist : []), { act: 'remind', at, by: auto ? 'автоматично' : (x && x.name) || null, note: CHANNELS[used] }].slice(-30) };
+    return { stages: next };
+  }, { touch: false });
   await audit(env, request, x || { name: 'автоматично', role: 'system' }, 'client.remind', 'projects', p.id, null, { stage_id: s.id, channel: used, auto });
   return { ok: true, sent: used === 'telegram', channel: used, text };
 }

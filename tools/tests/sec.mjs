@@ -164,37 +164,44 @@ await it('«Зберегти проєкт» не дописує погоджен
     stages: [{ name: 'Планування', status: 'review', progress: 90, ...forged }, { name: 'Концепція', status: 'review', progress: 90 }] } });
   eq(p.status, 200);
   const stages = async () => JSON.parse((await q1('SELECT stages FROM projects WHERE id = ?', p.data.id)).stages);
+  // форма «Зберегти проєкт» — з версією картки (functions/_ver.js)
+  const save = async st => call(env, 'PATCH', '/api/admin/projects', { cookie: ck.MGR, body: { id: p.data.id, stages: st,
+    ver: (await call(env, 'GET', '/api/admin/projects', { cookie: ck.MGR })).data.projects.find(y => y.id === p.data.id).ver } });
   let s = await stages();
   eq([s[0].approved_at, s[0].approved_by, s[0].hist, s[0].rev_note, s[0].remind_at, s[0].remind_n], ['2026-11-01', undefined, undefined, undefined, undefined, undefined], 'новий проєкт');
   // те саме через PATCH наявного етапу
-  eq((await call(env, 'PATCH', '/api/admin/projects', { cookie: ck.MGR, body: { id: p.data.id, stages: [{ ...s[0], ...forged }, { ...s[1], ...forged, approved_at: null }] } })).status, 200);
+  eq((await save([{ ...s[0], ...forged }, { ...s[1], ...forged, approved_at: null }])).status, 200);
   s = await stages();
   eq([s[0].approved_by, s[0].hist, s[0].rev_note, s[0].remind_n, s[1].approved_by, s[1].hist, s[1].rev_note, s[1].remind_at], [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined], 'PATCH');
   // справжні дії: клієнт просить правки на 2-му етапі, менеджер нагадує про 1-й (знявши «погоджено»)
   eq((await call(env, 'POST', '/api/account/projects', { cookie: kc, body: { action: 'revise', project_id: p.data.id, stage_id: s[1].id, note: 'Пересунути стіну' } })).status, 200);
-  eq((await call(env, 'PATCH', '/api/admin/projects', { cookie: ck.MGR, body: { id: p.data.id, stages: (await stages()).map((y, i) => (i ? y : { ...y, approved_at: null })) } })).status, 200);
+  eq((await save((await stages()).map((y, i) => (i ? y : { ...y, approve: false })))).status, 200);
   const rem = body => call(env, 'POST', '/api/admin/projects', { cookie: ck.MGR, body: { type: 'remind', project_id: p.data.id, stage_id: s[0].id, ...body } });
   eq((await rem({ channel: 'telegram' })).status, 400, '«надіслав бот» вручну в журнал не записати');
   eq((await rem({ channel: 'constructor' })).status, 400);
   eq((await rem({ channel: 'viber' })).status, 200);
   s = await stages();
-  ok(s[0].remind_at && s[0].hist.length === 1 && s[1].hist.length === 1 && s[1].rev_note === 'Пересунути стіну');
+  eq(s[0].hist.map(h => h.act), ['unapprove', 'remind'], 'зняття погодження менеджером і нагадування — в історії');
+  ok(s[0].remind_at && s[1].hist.length === 1 && s[1].rev_note === 'Пересунути стіну');
   // стара форма без журналу (або зі стертим) — журнал, правки й пауза 48 год лишаються
   const wiped = s.map(({ hist, remind_at, remind_n, review_at, rev_note, rev_at, ...y }) => ({ ...y, hist: [], remind_at: '' }));
-  eq((await call(env, 'PATCH', '/api/admin/projects', { cookie: ck.MGR, body: { id: p.data.id, stages: wiped } })).status, 200);
+  eq((await save(wiped)).status, 200);
   const s2 = await stages();
   eq([s2[0].remind_at, s2[0].hist, s2[1].hist, s2[1].rev_note, s2[1].rev_at], [s[0].remind_at, s[0].hist, s[1].hist, 'Пересунути стіну', s[1].rev_at]);
   eq((await rem({ channel: 'viber' })).status, 429, 'нагадування — не частіше 48 год');
   // клієнт погодив → збереження форми лишає «погодив клієнт»; інша дата погодження — це вже позначка менеджера
-  eq((await call(env, 'PATCH', '/api/admin/projects', { cookie: ck.MGR, body: { id: p.data.id, stages: s2.map((y, i) => (i ? { ...y, status: 'review' } : y)) } })).status, 200);
+  eq((await save(s2.map((y, i) => (i ? { ...y, status: 'review' } : y)))).status, 200);
   eq((await call(env, 'POST', '/api/account/projects', { cookie: kc, body: { action: 'approve', project_id: p.data.id, stage_id: s[1].id } })).status, 200);
   let s3 = await stages();
   eq(s3[1].approved_by, 'client');
-  eq((await call(env, 'PATCH', '/api/admin/projects', { cookie: ck.MGR, body: { id: p.data.id, stages: s3 } })).status, 200);
+  eq((await save(s3)).status, 200);
   eq((await stages())[1].approved_by, 'client');
-  eq((await call(env, 'PATCH', '/api/admin/projects', { cookie: ck.MGR, body: { id: p.data.id, stages: s3.map((y, i) => (i ? { ...y, approved_at: '2026-01-01' } : y)) } })).status, 200);
+  // дата погодження з поля форми не діє (її веде сервер); інша дата — лише явною дією менеджера, і це вже його позначка
+  eq((await save(s3.map((y, i) => (i ? { ...y, approved_at: '2026-01-01' } : y)))).status, 200);
+  eq([(await stages())[1].approved_at, (await stages())[1].approved_by], [s3[1].approved_at, 'client']);
+  eq((await save(s3.map((y, i) => (i ? { ...y, approve: '2026-01-01' } : y)))).status, 200);
   s3 = await stages();
-  eq([s3[1].approved_at, s3[1].approved_by, s3[1].hist.length], ['2026-01-01', undefined, 2]);
+  eq([s3[1].approved_at, s3[1].approved_by, s3[1].hist.map(h => h.act)], ['2026-01-01', undefined, ['revise', 'approve', 'approve']]);
 });
 
 describe('Безпека: нагадування клієнту');

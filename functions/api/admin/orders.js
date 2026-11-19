@@ -2,6 +2,7 @@
 // ціна позицій «за запитом» (finance.edit). Поля — shapeOrder (functions/_roles.js), зміни — в audit_log.
 import { ORDER_STATUSES, bad, json, readJSON, str } from '../../_lib.js';
 import { audit, need, shapeOrder } from '../../_roles.js';
+import { TOO_MANY, staffLimited } from '../../_rate.js';
 
 export async function onRequestGet({ request, env }) {
   const { x, error } = await need(request, env, 'orders.view');
@@ -22,6 +23,7 @@ export async function onRequestPatch({ request, env }) {
   if (error) return error;
   let d;
   try { d = await readJSON(request); } catch { return bad('Некоректні дані'); }
+  if (await staffLimited(env, request, x, 'orders')) return bad(TOO_MANY, 429);
   const o = await env.DB.prepare("SELECT * FROM orders WHERE id = ? AND kind != 'lead'").bind(Number(d.id)).first();
   if (!o) return bad('Замовлення не знайдено', 404);
   if (Array.isArray(d.prices) && d.prices.length && !x.can('finance.edit')) return bad('Немає права змінювати ціни', 403);

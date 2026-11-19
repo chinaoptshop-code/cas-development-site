@@ -14,6 +14,7 @@ import { body, cameraOf, client, json, noTable, progressOf, stageStatus, STAGE_S
 import { escHtml, notifyStaff, notifyTeam } from '../../_alerts.js';
 import { audit } from '../../_roles.js';
 import { limited } from '../../_rate.js';
+import { updateStages } from '../../_ver.js';
 
 const parse = (s, d) => { try { const v = JSON.parse(s); return Array.isArray(v) ? v : d; } catch { return d; } };
 const pick = (o, keys) => Object.fromEntries(keys.map(k => [k, o[k] ?? null]));
@@ -66,22 +67,30 @@ export async function onRequestPost({ request, env }) {
   if (e2) return e2;
   if (!d || !['approve', 'revise'].includes(d.action)) return json({ error: 'Некоректний запит' }, 400);
   const pid = Number.parseInt(d.project_id, 10), sid = String(d.stage_id || '');
-  let p = null;
-  try {
-    p = Number.isInteger(pid) ? await env.DB.prepare('SELECT * FROM projects WHERE id = ? AND client_id = ?').bind(pid, c.id).first() : null;
-  } catch (e) { if (!noTable(e)) throw e; }
-  const stages = p ? parse(p.stages, []) : [];
-  const i = p && DESIGN.includes(p.service) ? stages.findIndex(s => s && s.id === sid) : -1;
-  if (i < 0) return json({ error: 'Етап не знайдено' }, 404);
-  const s = stages[i];
-  if (d.action === 'revise') return revise(request, env, c, p, stages, i, d);
-  if (s.approved_at) return json({ ok: true, already: true, stage: { id: s.id, approved_at: s.approved_at } });
-  if (!['review', 'done'].includes(stageStatus(s))) return json({ error: 'Етап ще не готовий до погодження' }, 409);
-  const day = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Kyiv' });
-  const who0 = c.name || c.phone || 'Клієнт';
-  stages[i] = { ...s, approved_at: day, approved_by: 'client', hist: [...(Array.isArray(s.hist) ? s.hist : []), { act: 'approve', at: stamp(), by: who0 }].slice(-30) };
-  await env.DB.prepare("UPDATE projects SET stages = ?, updated_at = datetime('now') WHERE id = ? AND client_id = ?").bind(JSON.stringify(stages), pid, c.id).run();
+  if (!Number.isInteger(pid)) return json({ error: 'Етап не знайдено' }, 404);
   const who = c.name || c.phone || 'Клієнт';
+  const day = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Kyiv' });
+  // Зміна — «порівняй і заміни» (functions/_ver.js, updateStages): якщо менеджер у цю ж мить зберіг картку, погодження
+  // застосовується до свіжих етапів, а не затирає його зміни. Перевірки стану етапу — усередині, на тих самих свіжих даних.
+  let r;
+  try {
+    r = await updateStages(env, pid, (stages, p) => {
+      const i = DESIGN.includes(p.service) ? stages.findIndex(s => s && s.id === sid) : -1;
+      if (i < 0) return { error: 'Етап не знайдено', status: 404 };
+      const s = stages[i];
+      if (d.action === 'revise') return reviseStage(stages, i, d, who, day);
+      if (s.approved_at) return { skip: true, already: true, s };
+      if (!['review', 'done'].includes(stageStatus(s))) return { error: 'Етап ще не готовий до погодження', status: 409 };
+      const next = stages.slice();
+      next[i] = { ...s, approved_at: day, approved_by: 'client', hist: [...(Array.isArray(s.hist) ? s.hist : []), { act: 'approve', at: stamp(), by: who }].slice(-30) };
+      return { stages: next, s };
+    }, { where: ' AND client_id = ?', args: [c.id] });
+  } catch (e) { if (!noTable(e)) throw e; r = { missing: true }; }
+  if (r.missing) return json({ error: 'Етап не знайдено' }, 404);
+  if (r.error) return json({ error: r.error }, r.status || 409);
+  const p = r.project, s = r.s;
+  if (d.action === 'revise') return revised(request, env, c, p, r, who);
+  if (r.already) return json({ ok: true, already: true, stage: { id: s.id, approved_at: s.approved_at } });
   await audit(env, request, { client: c, staffId: null, name: who, role: 'client' }, 'project.approve', 'projects', pid, { stage_id: s.id, approved_at: null }, { stage_id: s.id, approved_at: day, by: 'client' });
   const text = `✅ Клієнт погодив етап <b>${escHtml(s.name)}</b>\nОбʼєкт: ${escHtml(p.title)}\nКлієнт: ${escHtml(who)}`;
   await notifyTeam(env, text, 'https://cas-develop.com/kabinet/admin#projects');
@@ -99,18 +108,20 @@ async function toStaff(env, p, s, text) {
 }
 
 // «Є правки»: клієнт повертає етап у роботу з коментарем; лічильник правок + 1
-async function revise(request, env, c, p, stages, i, d) {
+function reviseStage(stages, i, d, who, day) {
   const s = stages[i];
-  if (s.approved_at) return json({ error: 'Етап уже погоджено' }, 409);
-  if (!['review', 'done'].includes(stageStatus(s))) return json({ error: 'Етап ще не готовий до погодження' }, 409);
+  if (s.approved_at) return { error: 'Етап уже погоджено', status: 409 };
+  if (!['review', 'done'].includes(stageStatus(s))) return { error: 'Етап ще не готовий до погодження', status: 409 };
   const note = String(d.note == null ? '' : d.note).replace(/[\u0000-\u0009\u000b-\u001f\u007f]/g, ' ').trim().slice(0, 1000);
-  if (note.length < 3) return json({ error: 'Опишіть, що змінити' }, 422);
-  const day = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Kyiv' });
+  if (note.length < 3) return { error: 'Опишіть, що змінити', status: 422 };
   const revisions = Math.min(99, (Number(s.revisions) || 0) + 1), over = !!(s.rev_max && revisions > s.rev_max);
-  const who = c.name || c.phone || 'Клієнт';
-  stages[i] = { ...s, status: 'in_progress', progress: Math.min(Number(s.progress) || 0, 90), revisions, rev_note: note, rev_at: day,
+  const next = stages.slice();
+  next[i] = { ...s, status: 'in_progress', progress: Math.min(Number(s.progress) || 0, 90), revisions, rev_note: note, rev_at: day,
     hist: [...(Array.isArray(s.hist) ? s.hist : []), { act: 'revise', at: stamp(), by: who, note }].slice(-30) };
-  await env.DB.prepare("UPDATE projects SET stages = ?, updated_at = datetime('now') WHERE id = ? AND client_id = ?").bind(JSON.stringify(stages), p.id, c.id).run();
+  return { stages: next, s, note, revisions, over };
+}
+async function revised(request, env, c, p, r, who) {
+  const { s, note, revisions, over } = r;
   await audit(env, request, { client: c, staffId: null, name: who, role: 'client' }, 'project.revise', 'projects', p.id,
     { stage_id: s.id, revisions: s.revisions || 0, status: stageStatus(s) }, { stage_id: s.id, revisions, status: 'in_progress', note });
   const text = `✏️ Клієнт просить правки: етап <b>${escHtml(s.name)}</b> (правка ${revisions}${s.rev_max ? ' з ' + s.rev_max : ''}${over ? ' — понад договір' : ''})\n` +

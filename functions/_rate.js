@@ -17,9 +17,10 @@ export const ipHash = async (request, salt) => hexOf(await sha256(salt + '|' + i
 
 // Зареєструвати спробу в кошику bucket; true — ліміт перевищено (спробу не записуємо).
 // peek = true — лише перевірити, не записуючи спробу (бот: вірний ключ після серії невдалих — functions/api/bot/_middleware.js).
-export async function limited(env, request, bucket, limit, windowS = 3600, peek = false) {
+// by — свій ключ замість IP (напр. акаунт працівника — staffLimited).
+export async function limited(env, request, bucket, limit, windowS = 3600, peek = false, by = null) {
   try {
-    const now = Math.floor(Date.now() / 1000), key = await ipHash(request, bucket);
+    const now = Math.floor(Date.now() / 1000), key = by != null ? hexOf(await sha256(bucket + '|' + by)) : await ipHash(request, bucket);
     // прибирання: лише старі записи цього кошика — швидко за індексом
     await env.DB.prepare('DELETE FROM rate_hits WHERE bucket = ? AND created_at < ?').bind(bucket, now - 86400).run();
     const r = await env.DB.prepare('SELECT COUNT(*) AS n FROM rate_hits WHERE bucket = ? AND ip_hash = ? AND created_at > ?')
@@ -33,3 +34,16 @@ export async function limited(env, request, bucket, limit, windowS = 3600, peek 
     throw e;
   }
 }
+
+// Ліміти записів працівників (19.11.2026) — на годину, на акаунт працівника, а не на IP: в офісі всі сидять за однією адресою,
+// а зламаний акаунт чи скрипт, що зациклився, міг би міняти адреси. Щедрі: звичайна робота (десятки змін на годину) до них не доходить,
+// а потік у сотні записів (спам нотатками, історією заявок, журналом «КП надіслано», аудитом) зупиняється з 429.
+//   crm      — заявки й замовлення CRM: нова заявка, зміна картки, перетягування на канбані, пропозиція;
+//   kp       — журнал «КП надіслано» (кожен запис — рядок в історії заявки й аудиті);
+//   bulk     — масові дії (до 100 заявок за раз);
+//   contacts — довідник контактів і привʼязки до обʼєктів; orders — замовлення Оздоби; codes — коди партнерів;
+//   staff    — персонал і ролі; repo — збереження сайту (коміт у GitHub).
+export const STAFF_LIMITS = Object.freeze({ crm: 600, kp: 120, bulk: 60, contacts: 600, orders: 600, codes: 120, staff: 120, repo: 300 });
+export const staffKey = x => 'staff:' + (x && (x.staffId || (x.client && x.client.id)) || '');
+export const staffLimited = (env, request, x, kind) => limited(env, request, 'staff-' + kind, STAFF_LIMITS[kind], 3600, false, staffKey(x));
+export const TOO_MANY = 'Забагато змін поспіль — зачекайте кілька хвилин';

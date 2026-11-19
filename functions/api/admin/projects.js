@@ -22,6 +22,10 @@
 //          type 'payment':  {project_id, title, stage_id?, pct?, amount?, currency?, due_date?, paid_date?, status?, note?, sort?}
 //          type 'partner':  {client_id, code}  — привʼязати особистий код партнера до клієнта (code: null — відвʼязати)
 // PATCH  /api/admin/projects {type: 'project'|'report'|'payment'|'issue'|'task', id, ...поля}  — змінити (task: done: true|false)
+//          Проєкт — з версією (functions/_ver.js): GET віддає projects[].ver, форма повертає {ver}; запис відтоді змінився (клієнт погодив
+//          етап чи попросив правки, інший менеджер зберіг картку) → 409 {conflict: true, ver, last} без змін. Зі списком етапів ver
+//          обовʼязковий (без нього 428). Погодження й лічильник правок уже збереженого етапу форма не перезаписує: їх змінює лише явна
+//          дія в етапі — approve: true | 'РРРР-ММ-ДД' | false і rev_delta: ±n (поля approved_at / revisions з форми ігноруються).
 // DELETE /api/admin/projects?type=project|report|document|payment|task&id=N
 // Камера (camera_url, міграція 0008): https без логіна/пароля в адресі; YouTube вбудовується (youtube-nocookie), кадр .jpg — картинкою,
 // решта — посилання в новій вкладці (functions/_account.js cameraOf). Записи — не частіше 600/год з IP (functions/_rate.js);
@@ -36,6 +40,7 @@ import { audit, canSeeProject, need, orderScope, projectScope, shapeProject, sta
 import { limited } from '../../_rate.js';
 import { leadContact, projectContacts } from '../../_partners.js';
 import { askReview, kyivStamp, remindStage } from '../../_nudges.js';
+import { conflict, lastChange, projectVer, projectVerById } from '../../_ver.js';
 
 // arch — архітектурний проєкт (будинок, комерційна будівля): ескіз, АР, КР, інженерні розділи, генплан, дозвільні документи
 const SERVICES = ['design', 'arch', 'repair', 'build', 'furnish', 'landscape', 'other'];
@@ -64,24 +69,46 @@ const today = () => new Date().toISOString().slice(0, 10);
 // і відлік нагадувань (review_at, remind_at, remind_n) беремо із збереженого етапу з тим самим id (prev), а не з тіла запиту —
 // форму «Зберегти проєкт» не можна використати, щоб дописати погодження від імені клієнта, стерти історію чи обійти паузу 48 год.
 const prevStages = j => { try { const a = JSON.parse(j || '[]'); return new Map((Array.isArray(a) ? a : []).filter(s => s && s.id).map(s => [s.id, s])); } catch { return new Map(); } };
-function stagesOf(v, prev = new Map()) {
+const clampRev = n => Math.max(0, Math.min(99, n || 0));
+// Погодження (approved_at / approved_by) і лічильник правок (revisions) змінюють і клієнт у кабінеті, і менеджер. Тому для вже
+// збереженого етапу їх теж беремо із запису, а не з форми: форма, відкрита до того, як клієнт погодив етап чи надіслав «Є правки»,
+// не може стерти дату погодження чи зменшити лічильник. Менеджер змінює їх лише явною дією в етапі:
+//   approve: true (сьогодні) | 'РРРР-ММ-ДД' | false (зняти погодження) — запис в історії етапу з іменем менеджера;
+//   rev_delta: ±n — додати / відняти правки відносно збереженого значення.
+// Новий етап (id ще немає в записі) бере approved_at / revisions як є — перезаписувати там нічого.
+function stagesOf(v, prev = new Map(), by = null) {
   if (!Array.isArray(v)) return null;
   const seen = new Set();
   return v.slice(0, 20).map(s => {
     let id = stageKey(s && s.id);
     if (!id || seen.has(id)) id = newStageKey();
     seen.add(id);
-    const was = prev.get(id) || {};
+    const isNew = !prev.has(id), was = prev.get(id) || {};
     const progress = Math.max(0, Math.min(100, int(s && s.progress) || 0));
     const status = s && typeof s.status === 'string' && STAGE_STATUS[s.status] ? s.status : stageStatus({ progress });
     const out = {
       id, name: txt(s && s.name, 80) || 'Етап', status, progress: status === 'done' ? 100 : progress,
       start: date(s && s.start), end: date(s && s.end), note: txt(s && s.note, 300),
     };
+    const hist = histOf(was.hist), op = s ? s.approve : undefined, opDate = date(op), delta = int(s && s.rev_delta) || 0;
+    let ap, apBy = null, rv;
+    if (isNew) {
+      ap = date(s && s.approved_at) || opDate || (op === true ? kyivStamp().slice(0, 10) : null);
+      rv = clampRev((int(s && s.revisions) || 0) + delta);
+    } else {
+      ap = date(was.approved_at); apBy = ap && was.approved_by === 'client' ? 'client' : null; rv = clampRev(int(was.revisions));
+      if (op === false) {
+        if (ap) hist.push({ act: 'unapprove', at: kyivStamp(), by: txt(by, 80) });
+        ap = null; apBy = null;
+      } else if (op === true ? !ap : (opDate && opDate !== ap)) { // позначка менеджера «Погоджено клієнтом» (інша дата — теж його позначка)
+        ap = opDate || kyivStamp().slice(0, 10); apBy = null;
+        hist.push({ act: 'approve', at: kyivStamp(), by: txt(by, 80), note: 'позначка в адмінці' });
+      }
+      if (delta) rv = clampRev(rv + delta);
+    }
     // дизайн-проєкт: дата погодження етапу клієнтом і кількість правок (лише якщо задано — JSON не роздуваємо)
-    const ap = date(s && s.approved_at), rv = Math.max(0, Math.min(99, int(s && s.revisions) || 0));
     if (ap) out.approved_at = ap;
-    if (ap && was.approved_by === 'client' && was.approved_at === ap) out.approved_by = 'client'; // погодив сам клієнт у кабінеті (POST /api/account/projects)
+    if (apBy) out.approved_by = apBy; // погодив сам клієнт у кабінеті (POST /api/account/projects)
     if (rv) out.revisions = rv;
     // відповідальний за етап (staff.id; перевірка активності — checkStageStaff) і кругів правок за договором
     const sid = int(s && s.staff_id), rm = int(s && s.rev_max);
@@ -96,12 +123,11 @@ function stagesOf(v, prev = new Map()) {
     if (stamp(was.review_at)) out.review_at = stamp(was.review_at);
     if (stamp(was.remind_at)) out.remind_at = stamp(was.remind_at);
     if (int(was.remind_n) > 0) out.remind_n = Math.min(int(was.remind_n), 99);
-    const hist = histOf(was.hist);
-    if (hist.length) out.hist = hist;
+    if (hist.length) out.hist = hist.slice(-30);
     return out;
   });
 }
-const HIST_ACT = ['approve', 'revise', 'remind'];
+const HIST_ACT = ['approve', 'unapprove', 'revise', 'remind'];
 export function histOf(v) {
   return Array.isArray(v) ? v.filter(h => h && HIST_ACT.includes(h.act) && /^\d{4}-\d{2}-\d{2}( \d{2}:\d{2})?$/.test(String(h.at || '')))
     .slice(-30).map(h => ({ act: h.act, at: String(h.at), by: txt(h.by, 80), ...(h.note ? { note: txt(h.note, 1000) } : {}) })) : [];
@@ -144,7 +170,7 @@ function stageIn(stagesJson, v) {
 const num = (v, max = 1e9) => (v === '' || v == null || !Number.isFinite(Number(v)) || Number(v) < 0 || Number(v) > max ? null : Math.round(Number(v) * 100) / 100);
 const has = (d, k) => Object.prototype.hasOwnProperty.call(d, k);
 
-function projectFields(d, cur = {}) {
+function projectFields(d, cur = {}, by = null) {
   const h = k => has(d, k);
   const p = {
     title: h('title') ? txt(d.title, 120) : cur.title,
@@ -152,7 +178,7 @@ function projectFields(d, cur = {}) {
     address: h('address') ? txt(d.address, 200) : cur.address,
     area: h('area') ? (Number(d.area) > 0 && Number(d.area) < 1e6 ? Number(d.area) : null) : cur.area,
     status: h('status') ? (STATUS.includes(d.status) ? d.status : 'active') : (cur.status || 'active'),
-    stages: h('stages') ? JSON.stringify(stagesOf(d.stages, prevStages(cur.stages)) || []) : (cur.stages || '[]'),
+    stages: h('stages') ? JSON.stringify(stagesOf(d.stages, prevStages(cur.stages), by) || []) : (cur.stages || '[]'),
     next_step: h('next_step') ? txt(d.next_step, 300) : cur.next_step,
     next_date: h('next_date') ? date(d.next_date) : cur.next_date,
     manager: h('manager') ? txt(d.manager, 80) : cur.manager,
@@ -237,8 +263,9 @@ export async function onRequestGet({ request, env }) {
     if (cid) args.push(cid);
     if (svc) args.push(svc);
     if (sts) args.push(sts);
-    const P = (await env.DB.prepare(`SELECT p.*, c.name AS client_name, c.phone AS client_phone FROM projects p LEFT JOIN clients c ON c.id = p.client_id${w} ORDER BY p.id DESC LIMIT 300`)
-      .bind(...args).all()).results.map(p => ({ ...p, stages: JSON.parse(p.stages || '[]').map(s => ({ ...s, status: stageStatus(s) })) }));
+    const RAW = (await env.DB.prepare(`SELECT p.*, c.name AS client_name, c.phone AS client_phone FROM projects p LEFT JOIN clients c ON c.id = p.client_id${w} ORDER BY p.id DESC LIMIT 300`)
+      .bind(...args).all()).results;
+    const P = RAW.map(p => ({ ...p, stages: JSON.parse(p.stages || '[]').map(s => ({ ...s, status: stageStatus(s) })) }));
     const ids = P.map(p => p.id), q = ids.map(() => '?').join(',');
     const R = ids.length ? (await env.DB.prepare(`SELECT * FROM project_reports WHERE project_id IN (${q}) ORDER BY date DESC LIMIT 1000`).bind(...ids).all())
       .results.map(r => ({ ...r, photos: JSON.parse(r.photos || '[]') })) : [];
@@ -268,11 +295,13 @@ export async function onRequestGet({ request, env }) {
       LD = oids.length ? (await env.DB.prepare(`SELECT id, number, source, ref_path FROM orders WHERE id IN (${oids.map(() => '?').join(',')})`).bind(...oids).all()).results : [];
     } catch (e) { if (!noTable(e)) throw e; }
     const CT = await projectContacts(env, x, ids); // контакти обʼєкта (бригади, постачальники…) — migrations/0015
+    const VER = new Map(); // версія картки для «Зберегти проєкт» (functions/_ver.js) — з рядка бази, як його прочитали
+    for (const r of RAW) VER.set(r.id, await projectVer(r, PS.filter(y => y.project_id === r.id)));
     const t = today();
     const projects = P.map(p => {
       const ld = p.order_id ? LD.find(o => o.id === p.order_id) : null;
       const tk = TK.filter(y => y.project_id === p.id);
-      return shapeProject({ ...p, team: PS.filter(y => y.project_id === p.id), assignee_name: (AS.find(s => s.id === p.assignee_staff_id) || {}).name || null,
+      return shapeProject({ ...p, ver: VER.get(p.id), team: PS.filter(y => y.project_id === p.id), assignee_name: (AS.find(s => s.id === p.assignee_staff_id) || {}).name || null,
         overdue: !!(p.deadline && p.deadline < t && p.status !== 'done'), progress: progressOf(p.stages), contacts: CT[p.id] || [],
         ...(ld ? { lead: { id: ld.id, number: ld.number, source: ld.source, ...(x.can('leads.view_all') ? { ref_path: ld.ref_path } : {}) } } : {}), tasks_total: tk.length, tasks_done: tk.filter(y => y.done).length }, x);
     });
@@ -579,7 +608,15 @@ export async function onRequestPatch({ request, env }) {
     const cur = await env.DB.prepare('SELECT * FROM projects WHERE id = ?').bind(int(d.id)).first();
     if (!cur || !await canSeeProject(env, x, cur.id)) return bad('Проєкт не знайдено', 404);
     if (money(d) && !x.can('finance.edit')) return deny('finance.edit');
-    const { p, error: e2 } = projectFields(d, cur);
+    // версія картки: зі списком етапів — обовʼязкова (весь список перезаписується); застаріла → 409 без змін
+    if (has(d, 'stages') && (d.ver == null || d.ver === '')) return bad('Панель оновилась — перезавантажте сторінку й повторіть зміну', 428);
+    const stale = async () => conflict('Проєкт змінився, поки ви редагували', { ver: await projectVerById(env, cur.id), last: await lastChange(env, 'projects', cur.id) });
+    if (d.ver != null && d.ver !== '') {
+      let team0 = [];
+      try { team0 = (await env.DB.prepare('SELECT staff_id, task FROM project_staff WHERE project_id = ?').bind(cur.id).all()).results; } catch (e) { if (!noTable(e)) throw e; }
+      if (String(d.ver) !== await projectVer(cur, team0)) return stale();
+    }
+    const { p, error: e2 } = projectFields(d, cur, x.name);
     if (e2) return bad(e2, 422);
     if (has(d, 'stages')) { // етап щойно став «Приймання» → review_at (відлік для нагадування клієнту)
       const prev = new Map(JSON.parse(cur.stages || '[]').map(y => [y.id, y]));
@@ -589,8 +626,10 @@ export async function onRequestPatch({ request, env }) {
     if (ss.error) return ss.error;
     const cam = cameraFields(d);
     if (cam && cam.error) return bad(cam.error, 422);
-    await env.DB.prepare(`UPDATE projects SET title = ?, service = ?, address = ?, area = ?, status = ?, stages = ?, next_step = ?, next_date = ?, manager = ?, updated_at = datetime('now') WHERE id = ?`)
-      .bind(p.title, p.service, p.address ?? null, p.area ?? null, p.status, p.stages, p.next_step ?? null, p.next_date ?? null, p.manager ?? null, cur.id).run();
+    // «порівняй і заміни»: пишемо, лише якщо етапи ті самі, що прочитали на початку запиту (клієнт міг погодити етап у цю ж мить)
+    const w = await env.DB.prepare(`UPDATE projects SET title = ?, service = ?, address = ?, area = ?, status = ?, stages = ?, next_step = ?, next_date = ?, manager = ?, updated_at = datetime('now') WHERE id = ? AND stages IS ?`)
+      .bind(p.title, p.service, p.address ?? null, p.area ?? null, p.status, p.stages, p.next_step ?? null, p.next_date ?? null, p.manager ?? null, cur.id, cur.stages).run();
+    if (!w.meta.changes) return stale();
     if (p.status !== cur.status && (p.status === 'done' || cur.status === 'done')) // для прохання про відгук через ~2 доби (migrations/0016)
       await tolerant(env.DB.prepare(`UPDATE projects SET done_at = ${p.status === 'done' ? "datetime('now')" : 'NULL'} WHERE id = ?`).bind(cur.id).run());
     // камера — окремо: до міграції 0008 решта проєкту зберігається, а камера — ні (поле порожнє — нічого не ламаємо)
@@ -606,7 +645,7 @@ export async function onRequestPatch({ request, env }) {
     if (Object.keys(changed).length || money(d)) await audit(env, request, x, 'project.update', 'projects', cur.id,
       Object.fromEntries(Object.keys(changed).map(k => [k, cur[k]]).concat(money(d) ? [['contract_amount', cur.contract_amount]] : [])),
       { ...changed, ...(money(d) ? { contract_amount: num(d.contract_amount) } : {}) });
-    return json({ ok: true });
+    return json({ ok: true, ver: await projectVerById(env, cur.id) });
   });
 }
 

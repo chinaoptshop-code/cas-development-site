@@ -5,6 +5,11 @@
 //   (CSV — право export; place — місце форми, див. placeOf; from / to — дати YYYY-MM-DD за Києвом, включно;
 //   ref — сторінка-джерело orders.ref_path, migrations/0011: поле, фільтр і колонка CSV — лише з leads.view_all, тобто власник і менеджер;
 //   source=finder або place=finder — заявки бота пошуку (POST /api/bot/leads, orders.source = 'finder', migrations/0013))
+//   Довгі списки (19.11.2026): &limit=<1…1000> (без нього — 1000) і &before=<id останнього рядка> — наступна сторінка (нові зверху);
+//   відповідь: rows, total (усього за фільтром), more (є ще), next (id для before), waiting (нових без відповіді за фільтром),
+//   by_status {lead: {new: n, …}, order: {…}} — лічильники стадій за тим самим фільтром (канбан показує «12 з 340»). Пошук і всі
+//   фільтри — на сервері, тож працюють по всій базі, а не лише по завантажених рядках. CSV — до 20 000 рядків.
+//   Кожен рядок має ver (functions/_ver.js): PATCH {id, ver, …} з картки → 409 {conflict: true, row}, якщо заявку відтоді змінили.
 // GET  ?stats=1&days=7|30 — аналітика заявок (leads.view_all)
 // GET  ?events=<id> — історія статусів (лише видимого рядка)
 // POST {name, phone, email, service, source, comment, city, amount, currency, assignee_staff_id, next_contact} — нова заявка вручну (leads.edit)
@@ -14,12 +19,15 @@
 // PATCH {id, status, crm_note, manager_note, next_contact, note, city} — leads.edit / orders.edit;
 //   amount, currency — finance.edit; assignee, assignee_staff_id — leads.assign. Заборонене поле → 403 (без часткового збереження).
 //   Перший перехід із «Нове» = «взяли в роботу»: taken_at, час реакції, сповіщення в Telegram (functions/_alerts.js).
-//   Кожна зміна — в audit_log (до/після).
+//   Кожна зміна — в audit_log (до/після). Ліміти записів — на працівника за годину (functions/_rate.js, STAFF_LIMITS): картки й канбан
+//   600, журнал «КП надіслано» 120, масові дії 60; далі 429.
 import { CLOSED, LEAD_STATUSES, ORDER_STATUSES, STATUSES, bad, dict, json, nextLeadNumber, readJSON, statusLabel, statusesOf, str } from '../../_lib.js';
 import { SLA_MIN, escHtml, kyiv, kyivMidnight, notifyStaff, parseUtc, sqlTime, takeLead } from '../../_alerts.js';
 import { audit, diff, need, noTable, orderScope, shapeOrder, staffById } from '../../_roles.js';
 import { DESIGN, DMIN, RATES, cost, rateOf } from '../../_rates.js';
 import { kpText } from '../../_client_msgs.js';
+import { TOO_MANY, staffLimited } from '../../_rate.js';
+import { conflict, lastChange, leadVer } from '../../_ver.js';
 
 // Пропозиція з заявки: тип послуги → ставка «від». Порядок — пріоритетні напрями студії (Михайло 18.11.2026): дизайн-проєкт,
 // ремонт під ключ, будівництво будинку, комерція; далі — решта. service — тип проєкту при конверсії (functions/api/admin/projects.js).
@@ -149,6 +157,17 @@ async function visible(env, x, id) {
   return env.DB.prepare(`SELECT o.* FROM orders o WHERE o.id = ? AND ${w}`).bind(Number(id) || 0, ...args).first();
 }
 
+// рядок списку CRM — у тому ж вигляді для GET і для відповіді про конфлікт версій (PATCH → 409 {row})
+async function shapeRow(o, x, S) {
+  const f = offerParse(o.offer);
+  const r = shapeOrder({ ...o, items: JSON.parse(o.items || '[]'), place: placeOf(o), page: pageOf(o), offer: f,
+    kp_text: f ? kpText(f, o.lang, o.name) : null, // «Надіслати КП» — мовою заявки (10 мов)
+    assignee_name: o.assignee_staff_id && S.get(o.assignee_staff_id) ? S.get(o.assignee_staff_id).name : null,
+    status_label: statusLabel(o.status, o.kind), ver: await leadVer(o) }, x);
+  if (!x.can('leads.view_all')) delete r.ref_path; // сторінка-джерело — власнику й менеджеру
+  return r;
+}
+
 async function staffMap(env) {
   try { return new Map((await env.DB.prepare('SELECT id, name, role, active FROM staff').all()).results.map(s => [s.id, s])); } catch (e) { if (noTable(e)) return new Map(); throw e; }
 }
@@ -169,7 +188,8 @@ export async function onRequestGet({ request, env }) {
   if (p('format') === 'csv' && !x.can('export')) return bad('Немає права на експорт', 403);
   if ((p('from') && !date(p('from'))) || (p('to') && !date(p('to')))) return bad('Дата — РРРР-ММ-ДД');
   const args = [];
-  let sql = 'SELECT o.*, c.username, c.provider, c.city AS client_city FROM orders o LEFT JOIN clients c ON c.id = o.client_id WHERE ' + orderScope(x, args) + where(p, args, x);
+  const csvOut = p('format') === 'csv';
+  let sql = ' FROM orders o LEFT JOIN clients c ON c.id = o.client_id WHERE ' + orderScope(x, args) + where(p, args, x);
   if (p('status') && STATUSES[p('status')]) { sql += ' AND o.status = ?'; args.push(p('status')); }
   if (p('status') === 'open') sql += ` AND o.status NOT IN (${CLOSED_SQL})`;
   if (p('assignee')) { sql += ' AND o.assignee = ?'; args.push(p('assignee')); }
@@ -191,17 +211,22 @@ export async function onRequestGet({ request, env }) {
     sql += ' AND (' + cols.map(c => c + ' LIKE ?').join(' OR ') + ')';
     for (let i = 0; i < cols.length; i++) args.push(`%${p('q')}%`);
   }
-  sql += ' ORDER BY o.id DESC LIMIT 1000';
-  let results;
-  try { ({ results } = await env.DB.prepare(sql).bind(...args).all()); }
-  catch (e) { if (!noTable(e)) throw e; return bad('CRM оновлюється (міграція 0010) — спробуйте за кілька хвилин', 503); }
+  // сторінка: limit рядків, старші за before (id); CSV — усе за фільтром (до 20 000)
+  const lim = csvOut ? 20000 : Math.max(1, Math.min(1000, /^\d+$/.test(p('limit')) ? +p('limit') : 1000));
+  const before = !csvOut && /^\d+$/.test(p('before')) ? +p('before') : 0;
+  let results, cnt = [];
+  try {
+    ({ results } = await env.DB.prepare('SELECT o.*, c.username, c.provider, c.city AS client_city' + sql + (before ? ' AND o.id < ?' : '') + ' ORDER BY o.id DESC LIMIT ' + (lim + 1))
+      .bind(...args, ...(before ? [before] : [])).all());
+    if (!csvOut) ({ results: cnt } = await env.DB.prepare(`SELECT o.kind AS kind, o.status AS status, COUNT(*) AS n,
+        SUM(CASE WHEN o.kind = 'lead' AND o.status = 'new' AND o.taken_at IS NULL THEN 1 ELSE 0 END) AS w` + sql + ' GROUP BY o.kind, o.status').bind(...args).all());
+  } catch (e) { if (!noTable(e)) throw e; return bad('CRM оновлюється (міграція 0010) — спробуйте за кілька хвилин', 503); }
+  const more = results.length > lim;
+  if (more) results.length = lim;
   const S = await staffMap(env);
-  const rows = results.map(o => shapeOrder({ ...o, items: JSON.parse(o.items || '[]'), place: placeOf(o), page: pageOf(o), offer: offerParse(o.offer),
-    kp_text: offerParse(o.offer) ? kpText(offerParse(o.offer), o.lang, o.name) : null, // «Надіслати КП» — мовою заявки (10 мов)
-    assignee_name: o.assignee_staff_id && S.get(o.assignee_staff_id) ? S.get(o.assignee_staff_id).name : null,
-    status_label: statusLabel(o.status, o.kind) }, x));
-  if (!x.can('leads.view_all')) for (const r of rows) delete r.ref_path; // сторінка-джерело — власнику й менеджеру
-  if (p('format') === 'csv') {
+  const rows = [];
+  for (const o of results) rows.push(await shapeRow(o, x, S));
+  if (csvOut) {
     await audit(env, request, x, 'crm.export', 'orders', null, null, { rows: rows.length, query: u.search.slice(0, 400) });
     return new Response(csv(rows), { headers: {
       'content-type': 'text/csv; charset=utf-8', 'cache-control': 'no-store',
@@ -209,8 +234,11 @@ export async function onRequestGet({ request, env }) {
     } });
   }
   const assignees = [...new Set(results.map(o => o.assignee).filter(Boolean))].sort();
+  const by_status = { lead: {}, order: {} };
+  for (const c of cnt) (by_status[c.kind === 'lead' ? 'lead' : 'order'])[c.status] = c.n;
   return json({
     statuses: STATUSES, lead_statuses: LEAD_STATUSES, order_statuses: ORDER_STATUSES, rows, assignees, offers: OFFERS,
+    total: cnt.reduce((n, c) => n + c.n, 0), waiting: cnt.reduce((n, c) => n + (c.w || 0), 0), by_status, more, next: more && rows.length ? rows[rows.length - 1].id : null,
     staff: x.can('staff.view') ? [...S.values()].filter(s => s.active).map(s => ({ id: s.id, name: s.name, role: s.role })) : [],
     me: { staff_id: x.staffId, role: x.role, perms: [...x.perms] },
   });
@@ -221,6 +249,7 @@ export async function onRequestPost({ request, env }) {
   if (error) return error;
   let d;
   try { d = await readJSON(request, 16 * 1024); } catch { return bad('Некоректні дані'); }
+  if (await staffLimited(env, request, x, 'crm')) return bad(TOO_MANY, 429);
   const phone = String(d.phone || '').replace(/[^\d+]/g, '').slice(0, 16);
   if (!phone && !str(d.name) && !str(d.email)) return bad('Вкажіть хоча б імʼя, телефон або email');
   if ((d.amount != null && d.amount !== '') && !x.can('finance.edit')) return bad('Немає права змінювати суми', 403);
@@ -251,6 +280,9 @@ export async function onRequestPatch({ request, env }) {
   if (error) return error;
   let d;
   try { d = await readJSON(request, 16 * 1024); } catch { return bad('Некоректні дані'); }
+  // ліміти — на працівника (functions/_rate.js): масова дія, журнал «КП надіслано» і звичайні зміни — окремі кошики
+  const kind = d && d.bulk ? 'bulk' : d && has(d, 'offer_sent') ? 'kp' : 'crm';
+  if (await staffLimited(env, request, x, kind)) return bad(TOO_MANY, 429);
   if (d && d.bulk) return bulk(env, request, x, d.bulk);
   if (d && has(d, 'offer_sent')) return offerSent(env, request, x, d);
   return patchOne(env, request, x, d);
@@ -302,6 +334,11 @@ async function patchOne(env, request, x, d, action) {
   const o = await visible(env, x, d && d.id);
   if (!o) return bad('Запис не знайдено', 404); // чужий рядок — як неіснуючий: не підтверджуємо, що він є
   if (!x.can(o.kind === 'lead' ? 'leads.edit' : 'orders.edit')) return bad('Немає права змінювати цей запис', 403);
+  // картка заявки зберігає з версією: якщо заявку відтоді змінив хтось інший (стадія, нотатки, відповідальний…) — 409 зі свіжим
+  // рядком, без змін. Швидкі дії (канбан, «Взяти в роботу», масові) версію не надсилають — вони змінюють одне поле.
+  if (d.ver != null && d.ver !== '' && String(d.ver) !== await leadVer(o))
+    return conflict(o.kind === 'lead' ? 'Заявку змінили, поки ви редагували' : 'Замовлення змінили, поки ви редагували',
+      { row: await shapeRow(o, x, await staffMap(env)), last: await lastChange(env, 'orders', o.id) });
   const changes = k => has(d, k) && String(d[k] ?? '') !== String(o[k] ?? '');
   if ((changes('amount') || (has(d, 'currency') && d.currency !== o.currency)) && !x.can('finance.edit')) return bad('Немає права змінювати суми', 403);
   if ((changes('assignee') || changes('assignee_staff_id')) && !x.can('leads.assign')) return bad('Немає права призначати відповідального', 403);
@@ -346,5 +383,6 @@ async function patchOne(env, request, x, d, action) {
   if (staffId && staffId !== o.assignee_staff_id && staffId !== x.staffId)
     await notifyStaff(env, staffId, `📌 Вам призначено ${o.kind === 'lead' ? 'заявку' : 'замовлення'} <b>${escHtml(o.number)}</b>${o.service ? `\nПослуга: ${escHtml(o.service)}` : ''}\nСтадія: ${escHtml(statusLabel(status, o.kind))}`,
       { inline_keyboard: [[{ text: '📋 Мої задачі', url: TEAM_URL }]] });
-  return json({ ok: true, status, status_label: statusLabel(status, o.kind), ...(offer !== undefined ? { offer, offer_line: offer ? offerLine(offer) : null, kp_text: offer ? kpText(offer, o.lang, o.name) : null } : {}) });
+  const fresh = await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(o.id).first();
+  return json({ ok: true, status, status_label: statusLabel(status, o.kind), ver: await leadVer(fresh || o), ...(offer !== undefined ? { offer, offer_line: offer ? offerLine(offer) : null, kp_text: offer ? kpText(offer, o.lang, o.name) : null } : {}) });
 }

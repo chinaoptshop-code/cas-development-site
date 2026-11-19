@@ -5,6 +5,7 @@
 // Кожен запит — лише для працівника з правом cms.edit (functions/_roles.js; сесія на сервері); токен GitHub — секрет GITHUB_CONTENT_TOKEN, клієнту не віддається.
 import { bad, json } from '../../_lib.js';
 import { audit, need } from '../../_roles.js';
+import { TOO_MANY, staffLimited } from '../../_rate.js';
 import { GhError, LIMITS, allowedPath, b64Size, generatedHtml, gh, htmlFrame } from '../../_gh.js';
 
 const NO_TOKEN = { error: 'Потрібен токен GitHub: додайте секрет SHOP_GITHUB_CONTENT_TOKEN (інструкція — tools/admin/README.md). Без нього редагування сайту вимкнене, CRM працює.', code: 'no_token' };
@@ -133,6 +134,7 @@ export async function onRequestPost({ request, env }) {
   const admin = x.client;
   const g = gh(env);
   if (!g) return json(NO_TOKEN, 503);
+  if (await staffLimited(env, request, x, 'repo')) return bad(TOO_MANY, 429);
   const len = +request.headers.get('content-length') || 0;
   if (len > LIMITS.body) return bad('Завеликий запит', 413);
   let d;
