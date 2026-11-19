@@ -44,6 +44,10 @@ await api('OWNER', 'GET', '/api/me'); await api('MGR', 'GET', '/api/me');
 const fore = await api('OWNER', 'POST', '/api/admin/staff', { name: 'Олег ' + DQ, role: 'foreman', tg: '333', note: P() });
 const des = await api('OWNER', 'POST', '/api/admin/staff', { name: 'Аня ' + SQ, role: 'designer', tg: '444', note: P() });
 ck.FORE = await login(env, FORE); ck.DES = await login(env, DES);
+// другий менеджер з «пасткою» в імені — його бачимо в діалозі «… змінився, поки ви редагували» (хто змінив останнім)
+const M2 = await addClient(env, { id: 555, name: 'Другий' });
+await api('OWNER', 'POST', '/api/admin/staff', { name: 'Другий ' + TAG, role: 'manager', tg: '555' });
+ck.M2 = await login(env, M2);
 const d0 = new Date(), iso = k => new Date(d0.getTime() + k * 86400000).toISOString().slice(0, 10);
 
 // ===== клієнт =====
@@ -197,6 +201,20 @@ console.log('Майстер-панель (власник)');
 for (const tab of ['studio', 'crm', 'stats', 'orders', 'clients', 'projects', 'partners', 'codes', 'team', 'audit'])
   await crawl('owner-' + tab, 'OWNER', '/kabinet/admin#' + tab, { cards: tab === 'projects' || tab === 'crm' ? 10 : 6 });
 await crawl('owner-crm-table', 'OWNER', '/kabinet/admin#crm', { cards: 0, extra: table });
+// одночасне редагування: діалог конфлікту версій (імʼя того, хто змінив) і примітка «не перенесено» (чуже й моє значення) — лише текст
+let conflicts = 0;
+const conflict = retry => async p => {
+  if (!(await p.$('[data-f] [name=next_step]'))) return;
+  const pr = await DB.prepare('SELECT id FROM projects WHERE title = ?').bind(await p.inputValue('[data-f] [name=title]')).first();
+  await p.fill('[data-f] [name=next_step]', ALL);
+  await api('M2', 'PATCH', '/api/admin/projects', { id: pr.id, next_step: DQ + ' ' + (n++) });
+  await p.click('[data-save]'); await p.waitForSelector('dialog.cf-dlg[open]', { timeout: 3000 });
+  if (retry) { await p.click('dialog.cf-dlg button[value=retry]'); await p.waitForSelector('[data-cfn]', { timeout: 3000 }); }
+  conflicts++;
+};
+await crawl('owner-conflict-dialog', 'OWNER', '/kabinet/admin#projects', { cards: 1, extra: conflict(false) });
+await crawl('owner-conflict-merge', 'OWNER', '/kabinet/admin#projects', { cards: 1, extra: conflict(true) });
+if (conflicts !== 2) { console.log('  ✗ конфлікт версій не відтворився (' + conflicts + ' з 2)'); fails++; }
 console.log('Робоча панель (менеджер)');
 for (const tab of ['crm', 'clients', 'projects', 'partners']) await crawl('manager-' + tab, 'MGR', '/kabinet/admin#' + tab, { cards: 4 });
 console.log('Кабінет працівника (прораб, дизайнер)');

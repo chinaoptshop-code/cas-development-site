@@ -676,9 +676,10 @@
       paint(h + '</div>');
       document.title = p.title + ' — ' + T('онлайн-контроль') + ' | CAS Development';
       lightbox();
-      // заявка на камеру — лише якщо камери ще немає
+      // камеру пропонуємо один раз — карткою «Камера 24/7» (camCard): форма заявки внизу схована, її відкриває кнопка картки
+      // «Підключити камеру 24/7» (якщо камери ще немає). Раніше форма була видна одразу — камера пропонувалась двічі.
       if (lead) {
-        lead.hidden = !!p.camera;
+        lead.hidden = true;
         var nm = document.getElementById('oName'), ph = document.getElementById('oPhone'), msg = document.getElementById('oMsg');
         if (nm && !nm.value) nm.value = c.name || '';
         if (ph && !ph.value) ph.value = c.phone || '';

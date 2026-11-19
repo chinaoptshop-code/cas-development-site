@@ -31,6 +31,59 @@
   }
   function api(path, opts) { return A.api(path, opts); }
 
+  // ===================== незбережені зміни: вкладки панелі, «← До списку», закриття сторінки =====================
+  // Редактор (картка проєкту, контакт, стаття, товар, файл…) реєструє «сторожа»: функцію, що повертає текст попередження, поки у формі
+  // є незбережені зміни. Перемикання вкладки панелі й закриття сторінки спершу питають. Сторож сам зникає разом із формою.
+  var GUARD = null;
+  function guardMsg() { try { return GUARD ? GUARD() || '' : ''; } catch (e) { return ''; } }
+  function canLeave() {
+    var m = guardMsg();
+    if (!m) { GUARD = null; return true; }
+    if (!confirm(m + '\n\nПерейти без збереження?')) return false;
+    GUARD = null; return true;
+  }
+  // root — форма (зміни в ній = «є що зберігати»), what — «контакті», «статті»… Повертає {dirty(), set(v), leave()}
+  // marker — елемент самого редактора (напр. кнопка «← До списку»): коли його вже немає на сторінці, сторож мовчить
+  function watchForm(root, what, skip, marker) {
+    var st = { v: false }, mk = marker || root;
+    var mark = function (e) { if (document.contains(mk) && (!skip || !e.target.closest(skip))) st.v = true; };
+    root.addEventListener('input', mark); root.addEventListener('change', mark);
+    GUARD = function () { return document.contains(mk) && st.v ? 'У ' + what + ' є незбережені зміни.' : ''; };
+    return { dirty: function () { return st.v; }, set: function (v) { st.v = !!v; }, leave: function () { if (!st.v || confirm('У ' + what + ' є незбережені зміни. Вийти без збереження?')) { st.v = false; return true; } return false; } };
+  }
+  addEventListener('beforeunload', function (e) { if (guardMsg()) { e.preventDefault(); e.returnValue = ''; } });
+
+  // ===================== одночасне редагування (версія картки, functions/_ver.js) =====================
+  // Сервер відхилив збереження (409 conflict): запис змінили, поки форма була відкрита. Питаємо, що робити:
+  //   retry  — «Оновити й повторити мої зміни»: свіжі дані + мої незбережені правки там, де вони не перетинаються з чужими;
+  //   reload — «Оновити без моїх змін»; cancel — лишитись у формі (напр. щоб скопіювати текст).
+  var isConflict = function (e) { return !!(e && e.status === 409 && e.data && e.data.conflict); };
+  function conflictDialog(title, last, what) {
+    var d = document.createElement('dialog'); d.className = 'cf-dlg'; d.setAttribute('aria-labelledby', 'cfT');
+    var who = last && (last.by || last.what) ? '<p class="cf-who">Остання зміна' + (last.at ? ' ' + when(last.at) : '') + ': <b>' + esc(last.by || 'інший користувач') + '</b>' + (last.what ? ' — ' + esc(last.what) : '') + '.</p>' : '';
+    d.innerHTML = '<form method="dialog"><h2 id="cfT">' + esc(title) + '</h2>' + who +
+      '<p class="muted">Ваші зміни ще не збережено. Можна оновити ' + esc(what) + ' і повторити свої зміни: там, де їх ніхто не чіпав, вони збережуться; якщо те саме поле змінив хтось інший — покажемо обидва значення.</p>' +
+      '<div class="cf-act"><button class="btn" value="retry">Оновити й повторити мої зміни</button><button class="btn ghost" value="reload">Оновити без моїх змін</button><button class="btn ghost" value="cancel">Повернутись до форми</button></div></form>';
+    (box || document.body).appendChild(d);
+    return new Promise(function (ok) {
+      d.addEventListener('close', function () { var v = d.returnValue || 'cancel'; d.parentNode.removeChild(d); ok(v); });
+      d.showModal(); var b = $('button[value=retry]', d); if (b) b.focus();
+    });
+  }
+  // Тристороннє злиття полів: base — що було у формі при відкритті, mine — що у формі зараз, fresh — свіжі дані.
+  // → {apply: {поле: моє значення, яке можна перенести}, clash: [{k, mine, fresh}] — поле змінили і я, і хтось інший (лишається свіже)}
+  function merge3(keys, base, mine, fresh, norm) {
+    var n = norm || function (v) { return String(v == null ? '' : v).trim(); }, out = { apply: {}, clash: [] };
+    keys.forEach(function (k) {
+      if (!(k in mine) || n(mine[k], k) === n(base[k], k)) return; // я цього поля не змінював
+      if (n(fresh[k], k) === n(mine[k], k)) return;                 // вже таке саме
+      if (n(fresh[k], k) === n(base[k], k)) out.apply[k] = mine[k]; else out.clash.push({ k: k, mine: mine[k], fresh: fresh[k] });
+    });
+    return out;
+  }
+  var clashNote = function (label, c) { return esc(label) + ': зараз «' + esc(c.fresh == null ? '' : c.fresh) + '», ваше значення «' + esc(c.mine == null ? '' : c.mine) + '» не перенесено'; };
+  var clashBox = function (list) { return '<div class="note cf-note" role="status" data-cfn><b>Ці поля змінив хтось інший — лишили свіже значення. Перевірте й за потреби виправте вручну:</b><ul>' + list.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul></div>'; };
+
   // ===================== репозиторій (GitHub через сервер) =====================
   var repo = {
     status: function () { return REPO ? Promise.resolve(REPO) : api('/api/admin/repo?op=status').then(function (d) { REPO = d; return d; }, function (e) { REPO = { token: false, message: e.message }; return REPO; }); },
@@ -220,6 +273,7 @@
         mode = b.dataset.m; $$('[data-m]', L).forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); draw();
       }; });
       $('[data-back]', L).onclick = function () { if (!/незбережені/.test(st.textContent) || confirm('Вийти без збереження?')) opts.back(); };
+      GUARD = function () { return document.contains(st) && /незбережені/.test(st.textContent) ? 'У файлі ' + path.split('/').pop() + ' є незбережені зміни.' : ''; };
       $('[data-save]', L).onclick = function () {
         if (mode === 'raw' && $('[data-je]', ed).textContent) return toast('Спершу виправте помилку JSON', true);
         var err = opts.validate && opts.validate(data);
@@ -297,8 +351,12 @@
       A.api('/api/auth/logout', { method: 'POST', body: { all: true } }).then(function () { location.href = '/kabinet'; });
     };
     var view = $('#admView');
+    var curTab = null;
     function open(t) {
       if (!RENDER[t] || !tabs.some(function (x) { return x[0] === t; })) t = first;
+      // незбережені зміни у відкритій формі — спершу питаємо; «ні» — лишаємось на вкладці (і адресу повертаємо)
+      if (curTab && !canLeave()) { try { history.replaceState(null, '', '#' + curTab); } catch (e) { /* noop */ } return; }
+      curTab = t;
       $$('.adm-tabs button', box).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.t === t); });
       try { history.replaceState(null, '', '#' + t); } catch (e) { /* noop */ }
       transition(function () {
@@ -307,7 +365,7 @@
         Promise.resolve(RENDER[t](L)).catch(function (e) { L.innerHTML = '<p class="err">' + esc(e.message) + '</p>'; });
       });
     }
-    $$('.adm-tabs button', box).forEach(function (b) { b.onclick = function () { open(b.dataset.t); b.scrollIntoView({ block: 'nearest', inline: 'center' }); }; });
+    $$('.adm-tabs button', box).forEach(function (b) { b.onclick = function () { open(b.dataset.t); if (curTab === b.dataset.t) b.scrollIntoView({ block: 'nearest', inline: 'center' }); }; });
     addEventListener('hashchange', function () { open(location.hash.slice(1)); }); // переходи з «Аналітики» в CRM з фільтром
     open(location.hash.slice(1) || first);
   }
@@ -389,6 +447,9 @@
     var narrow = window.matchMedia && matchMedia('(max-width: 700px)').matches;
     var S = Object.assign({ view: localStorage.getItem('crmView') || (narrow ? 'table' : 'kanban'), board: can('leads.view_all') ? 'lead' : 'order', kind: '', status: '', assignee: '', staff: '', city: '', min: '', max: '', overdue: false, due: false, q: '', place: '', ref: '', period: '', from: '', to: '' }, saved, preset || {}), ST = {}, LST = {}, OST = {}, rows = [], AS = [], STAFF = [], OFFERS = [];
     if (!can('leads.view_all')) S.board = 'order'; if (!can('orders.view')) S.board = 'lead';
+    // довгі списки: сервер віддає сторінками (нові зверху), решта — «Показати ще» / саме під час прокрутки списку; пошук і фільтри —
+    // на сервері, тож шукають по всій базі. TOTAL — усього за фільтром, BYST — лічильники стадій (канбан: «12 з 340»).
+    var PAGE = 200, TOTAL = 0, MORE = false, NEXT = null, BYST = { lead: {}, order: {} }, lastQ = '', PICK = false;
     var stOf = function (r) { return r.kind === 'lead' ? LST : OST; };
     var FKEYS = ['kind', 'status', 'assignee', 'staff', 'city', 'min', 'max', 'place', 'ref', 'period'];
     var nActive = function () { return FKEYS.filter(function (k) { return S[k]; }).length + (S.due ? 1 : 0) + (S.overdue ? 1 : 0); };
@@ -434,11 +495,11 @@
       if (S.period === 'today') return { from: t, to: t };
       return { from: kyivDate(Date.now() - (+S.period - 1) * 86400000), to: t };
     }
-    function qs(csv) {
+    function qs(csv, limit, before) {
       var r = range();
       return '/api/admin/crm?kind=' + S.kind + '&status=' + S.status + '&assignee=' + encodeURIComponent(S.assignee) + '&due=' + (S.due ? 1 : '') +
         '&staff=' + encodeURIComponent(S.staff) + '&city=' + encodeURIComponent(S.city) + '&min=' + encodeURIComponent(S.min) + '&max=' + encodeURIComponent(S.max) + '&overdue=' + (S.overdue ? 1 : '') +
-        '&place=' + encodeURIComponent(S.place) + '&ref=' + encodeURIComponent(S.ref || '') + '&from=' + r.from + '&to=' + r.to + '&q=' + encodeURIComponent(S.q) + (csv ? '&format=csv' : '');
+        '&place=' + encodeURIComponent(S.place) + '&ref=' + encodeURIComponent(S.ref || '') + '&from=' + r.from + '&to=' + r.to + '&q=' + encodeURIComponent(S.q) + (csv ? '&format=csv' : '') + (limit ? '&limit=' + limit : '') + (before ? '&before=' + before : '');
     }
     function segs() {
       $$('[data-v]', L).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.v === S.view); });
@@ -481,10 +542,51 @@
       var b = e.target.closest && e.target.closest('[data-ref]'); if (!b) return;
       e.preventDefault(); e.stopPropagation(); if (dlg.open) dlg.close(); S.ref = b.dataset.ref; var fi = $('[data-f=ref]', L); if (fi) fi.value = S.ref; segs(); load();
     }, true);
+    function sum() {
+      var waiting = TOTAL ? WAIT : 0;
+      $('[data-sum]', L).innerHTML = (rows.length < TOTAL ? 'Показано ' + rows.length + ' з ' + TOTAL : TOTAL + ' запис(ів)') + (waiting ? ' · <b class="err">нових без відповіді: ' + waiting + '</b>' : '');
+    }
+    var WAIT = 0;
+    // наступна сторінка: дописуємо рядки до вже показаних (вибір, прокрутка й відкриті фільтри лишаються)
+    function loadMore(btn) {
+      if (!MORE || !NEXT || list.getAttribute('aria-busy')) return;
+      list.setAttribute('aria-busy', 'true'); if (btn) { btn.disabled = true; btn.textContent = 'Завантаження…'; }
+      var q = qs();
+      return api(qs(false, PAGE, NEXT)).then(function (d) {
+        list.removeAttribute('aria-busy');
+        if (q !== qs()) return; // фільтр змінили, поки вантажилось
+        var have = {}; rows.forEach(function (r) { have[r.id] = 1; });
+        rows = rows.concat(d.rows.filter(function (r) { return !have[r.id]; }));
+        TOTAL = d.total; MORE = d.more; NEXT = d.next; WAIT = d.waiting || 0; BYST = d.by_status || BYST;
+        // екран лишається на місці: нові рядки зʼявляються нижче (інакше браузер «тримає» підвал і стрибає в кінець списку,
+        // а там знову кнопка — і список довантажився б увесь одразу)
+        var y = window.pageYOffset, kn = $('.kn', list), x = kn ? kn.scrollLeft : 0;
+        sum(); draw();
+        var kn2 = $('.kn', list); if (kn2 && x) kn2.scrollLeft = x;
+        window.scrollTo(0, y);
+      }, function (e) { list.removeAttribute('aria-busy'); toast(e.message, true); if (btn) { btn.disabled = false; btn.textContent = 'Показати ще'; } });
+    }
+    function moreRow() {
+      if (!MORE) return '';
+      var left = Math.max(0, TOTAL - rows.length);
+      return '<p class="crm-pg"><button type="button" class="cmp-more" data-more>Показати ще ' + Math.min(PAGE, left || PAGE) + '</button> <small class="muted">лишилось ' + left + ' · пошук і фільтри шукають по всіх ' + TOTAL + '</small></p>';
+    }
+    var moreIO = null;
+    function bindMore() {
+      var b = $('[data-more]', list); if (moreIO) { moreIO.disconnect(); moreIO = null; }
+      if (!b) return;
+      b.onclick = function () { loadMore(b); };
+      // список / таблиця: догортали до кінця — наступна сторінка вантажиться сама; канбан — лише кнопкою
+      if (S.view !== 'kanban' && window.IntersectionObserver) { moreIO = new IntersectionObserver(function (en) { if (en[0].isIntersecting) loadMore(b); }, { rootMargin: '300px' }); moreIO.observe(b); }
+    }
     function load() {
       list.setAttribute('aria-busy', 'true');
       if (!rows.length) list.innerHTML = '<div class="skel-kn" aria-hidden="true">' + '<i></i>'.repeat(narrow ? 3 : 6) + '</div>';
-      return api(qs()).then(function (d) {
+      // той самий фільтр (оновлення після зміни заявки) — стільки ж рядків, скільки вже показано; новий фільтр — перша сторінка
+      var q = qs(), n = q === lastQ ? Math.min(1000, Math.max(PAGE, rows.length)) : PAGE;
+      lastQ = q;
+      return api(qs(false, n)).then(function (d) {
+        TOTAL = d.total == null ? d.rows.length : d.total; MORE = !!d.more; NEXT = d.next || null; WAIT = d.waiting || 0; BYST = d.by_status || { lead: {}, order: {} };
         ST = d.statuses; LST = d.lead_statuses || ST; OST = d.order_statuses || ST; rows = d.rows; AS = d.assignees; STAFF = d.staff || []; OFFERS = d.offers || [];
         var fs = $('[data-f=status]', L);
         if (fs.options.length < 3) {
@@ -497,14 +599,14 @@
         var fa = $('[data-f=assignee]', L), cur = S.assignee;
         fa.length = 1; AS.forEach(function (a) { fa.add(new Option(a, a)); }); fa.value = cur;
         $('#crmAs').innerHTML = AS.map(function (a) { return '<option value="' + esc(a) + '">'; }).join('');
-        var waiting = rows.filter(function (r) { return r.kind === 'lead' && r.status === 'new' && !r.taken_at; }).length;
-        $('[data-sum]', L).innerHTML = rows.length + (rows.length >= 1000 ? '+ (показано перші 1000 — звузьте фільтр)' : '') + ' запис(ів)' + (waiting ? ' · <b class="err">нових без відповіді: ' + waiting + '</b>' : '');
+        sum();
         draw();
       }).then(function () { list.removeAttribute('aria-busy'); }, function (e) { list.removeAttribute('aria-busy'); list.innerHTML = '<p class="err">' + esc(e.message) + ' <button class="btn ghost sm" type="button" data-retry>Повторити</button></p>'; $('[data-retry]', list).onclick = load; });
     }
-    function card(r) {
-      return '<div class="kn-card' + (r.kind === 'lead' && r.status === 'new' && !r.taken_at ? ' fresh' : '') + '" draggable="true" data-id="' + r.id + '" tabindex="0" role="button" aria-label="' + esc(r.number + ' ' + label(r)) + '">' +
-        '<span class="row sp"><b>' + esc(r.number) + '</b><small>' + when(r.created_at) + '</small></span>' +
+    // pick — режим вибору на канбані: прапорець на картці, дотик до картки — вибрати / зняти (картка не відкривається й не перетягується)
+    function card(r, pick) {
+      return '<div class="kn-card' + (r.kind === 'lead' && r.status === 'new' && !r.taken_at ? ' fresh' : '') + (pick && SEL[r.id] ? ' picked' : '') + '" draggable="' + (pick ? 'false' : 'true') + '" data-id="' + r.id + '" tabindex="0" role="button" aria-label="' + esc(r.number + ' ' + label(r)) + '">' +
+        '<span class="row sp">' + (pick ? '<label class="sel-l">' + selBox(r) + '</label>' : '') + '<b>' + esc(r.number) + '</b><small>' + when(r.created_at) + '</small></span>' +
         '<span>' + esc(label(r)) + (r.phone && r.name ? ' · ' + esc(r.phone) : '') + '</span>' +
         (what(r) ? '<small>' + esc(what(r).slice(0, 90)) + '</small>' : '') + src(r) +
         '<span>' + (amountOf(r) != null ? '<b>' + money(amountOf(r), r.currency) + '</b> ' : '') + ((r.assignee_name || r.assignee) ? '<span class="who">· ' + esc(r.assignee_name || r.assignee) + '</span>' : '') + (r.city ? ' <small>· ' + esc(r.city) + '</small>' : '') + '</span>' +
@@ -523,17 +625,18 @@
     L.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-take]'); if (!b) return; e.preventDefault(); e.stopPropagation(); take(+b.dataset.take, b); }, true);
     function bindCards(root) {
       $$('.kn-card', root).forEach(function (c) {
-        c.onclick = function (e) { if (e.target.closest('[data-qa],select,[data-take]')) return; edit(+c.dataset.id); };
+        var pick = function () { var cb = $('[data-sel]', c); if (!cb) return false; cb.checked = !cb.checked; setSel(cb); return true; };
+        c.onclick = function (e) { if (e.target.closest('[data-qa],select,[data-take],.sel-l')) return; if (PICK && S.view === 'kanban' && pick()) return; edit(+c.dataset.id); };
         c.onkeydown = function (e) {
-          if ((e.key === 'Enter' || e.key === ' ') && e.target === c) { e.preventDefault(); edit(+c.dataset.id); return; }
+          if ((e.key === 'Enter' || e.key === ' ') && e.target === c) { e.preventDefault(); if (PICK && S.view === 'kanban' && pick()) return; edit(+c.dataset.id); return; }
           // клавіатура: Alt/Shift + ← / → — перемістити картку на сусідню стадію
-          if ((e.altKey || e.shiftKey) && (e.key === 'ArrowRight' || e.key === 'ArrowLeft') && c.closest('.kn')) {
+          if ((e.altKey || e.shiftKey) && (e.key === 'ArrowRight' || e.key === 'ArrowLeft') && c.closest('.kn') && !PICK) {
             e.preventDefault();
             var r = rows.find(function (x) { return x.id === +c.dataset.id; }), keys = Object.keys(stOf(r)), i = keys.indexOf(r.status) + (e.key === 'ArrowRight' ? 1 : -1);
             if (i >= 0 && i < keys.length) move(r.id, keys[i], true);
           }
         };
-        c.ondragstart = function (e) { e.dataTransfer.setData('text/plain', c.dataset.id); e.dataTransfer.effectAllowed = 'move'; c.classList.add('drag'); };
+        c.ondragstart = function (e) { if (PICK) { e.preventDefault(); return; } e.dataTransfer.setData('text/plain', c.dataset.id); e.dataTransfer.effectAllowed = 'move'; c.classList.add('drag'); };
         c.ondragend = function () { c.classList.remove('drag'); };
       });
     }
@@ -570,8 +673,8 @@
       if (!rows.length) { list.innerHTML = '<p class="muted">Записів немає' + (S.place || S.period || S.status || S.kind || S.q || S.due || S.assignee ? ' за цими фільтрами. <button class="btn ghost sm" type="button" data-clr>Скинути фільтри</button>' : '. Нові замовлення з Оздоби зʼявляються тут автоматично; заявки — з форм сайту або кнопкою «+ Заявка».') + '</p>'; var c = $('[data-clr]', list); if (c) c.onclick = function () { $('[data-reset]', L).click(); }; return; }
       if (S.view === 'table' && narrow) { // телефон: список карток зі статусом — без горизонтальної прокрутки
         // нова — лише «Взяти в роботу», стадія — після; ліворуч — вибір для масових дій
-        list.innerHTML = '<div class="crm-list">' + rows.map(function (r) { return (takeB(r) ? card(r) : card(r).replace(/<\/div>$/, '<div class="crm-st">' + stSelect(r) + '</div></div>')).replace('<span class="row sp">', '<span class="row sp"><label class="sel-l">' + selBox(r) + '</label>'); }).join('') + '</div>';
-        bindCards(list); bindSel(list);
+        list.innerHTML = '<div class="crm-list">' + rows.map(function (r) { return (takeB(r) ? card(r) : card(r).replace(/<\/div>$/, '<div class="crm-st">' + stSelect(r) + '</div></div>')).replace('<span class="row sp">', '<span class="row sp"><label class="sel-l">' + selBox(r) + '</label>'); }).join('') + '</div>' + moreRow();
+        bindCards(list); bindSel(list); bindMore();
         $$('[data-st]', list).forEach(function (s) { s.onchange = function () { patch({ id: +s.closest('.kn-card').dataset.id, status: s.value }); }; });
         tickSla(list);
         return;
@@ -583,24 +686,36 @@
             '<td>' + (amountOf(r) != null ? money(amountOf(r), r.currency) : '') + '</td>' +
             '<td>' + stSelect(r) + takeB(r) + '</td>' +
             '<td>' + esc(r.assignee_name || r.assignee) + '</td><td>' + react(r) + slaBadge(r) + '</td><td class="' + (isDue(r) ? 'err' : '') + '">' + esc(r.next_contact) + '</td></tr>';
-        }).join('') + '</tbody></table></div>';
+        }).join('') + '</tbody></table></div>' + moreRow();
         $$('tr.clk', list).forEach(function (tr) {
           tr.onclick = function (e) { if (e.target.closest('select,input,[data-qa],[data-take]')) return; edit(+tr.dataset.id); };
           $('[data-st]', tr).onchange = function () { patch({ id: +tr.dataset.id, status: this.value }); };
         });
-        bindSel(list);
+        bindSel(list); bindMore();
         tickSla(list);
         return;
       }
       var BT = S.board === 'order' ? OST : LST, br = rows.filter(function (r) { return r.kind === S.board; });
       var cols = S.status && BT[S.status] ? [S.status] : Object.keys(BT);
-      list.innerHTML = '<p class="kn-help muted">Перетягніть картку або виберіть її й натисніть <kbd>Alt</kbd>+<kbd>←</kbd>/<kbd>→</kbd>, щоб змінити стадію. <kbd>/</kbd> — пошук, <kbd>N</kbd> — нова заявка.</p><p class="sr" data-live aria-live="polite"></p>' +
-        '<div class="kn kn-' + S.board + '">' + cols.map(function (k) {
+      var canBulk = can(S.board === 'lead' ? 'leads.edit' : 'orders.edit');
+      // масові дії на канбані: «Вибрати кілька» → прапорці на картках і «вся колонка»; далі — та сама панель, що в таблиці
+      list.innerHTML = '<div class="row kn-top">' + (canBulk ? '<button type="button" class="pill kn-pick" data-pick aria-pressed="' + PICK + '">' + (PICK ? 'Готово' : 'Вибрати кілька') + '</button>' : '') +
+        '<p class="kn-help muted">' + (PICK ? 'Торкніться карток, які треба змінити разом, — унизу зʼявляться дії: стадія, відповідальний, «Не цікаво».'
+          : 'Перетягніть картку або виберіть її й натисніть <kbd>Alt</kbd>+<kbd>←</kbd>/<kbd>→</kbd>, щоб змінити стадію. <kbd>/</kbd> — пошук, <kbd>N</kbd> — нова заявка.') + '</p></div><p class="sr" data-live aria-live="polite"></p>' +
+        '<div class="kn kn-' + S.board + (PICK ? ' pick' : '') + '">' + cols.map(function (k) {
         var rs = br.filter(function (r) { return r.status === k || (!BT[r.status] && k === 'new'); });
         var sum = rs.reduce(function (s, r) { return s + ((r.currency || 'UAH') === 'UAH' ? (amountOf(r) || 0) : 0); }, 0);
-        return '<section class="kn-col" data-col="' + k + '" aria-label="' + esc(BT[k]) + '"><h3><span>' + BT[k] + ' · ' + rs.length + '</span><small>' + (sum ? money(sum) : '') + '</small></h3>' + (rs.length ? rs.map(card).join('') : '<p class="kn-empty">—</p>') + '</section>';
-      }).join('') + '</div>';
-      bindCards(list);
+        var all = (BYST[S.board] || {})[k], cnt = all > rs.length ? rs.length + ' з ' + all : rs.length; // завантажено не все — «12 з 340»
+        return '<section class="kn-col" data-col="' + k + '" aria-label="' + esc(BT[k]) + '"><h3><span>' + (PICK && rs.length ? '<label class="sel-l"><input type="checkbox" class="sel" data-colall="' + k + '"' + (rs.every(function (r) { return SEL[r.id]; }) ? ' checked' : '') + ' aria-label="Вибрати всю колонку «' + esc(BT[k]) + '»"></label>' : '') + BT[k] + ' · ' + cnt + '</span><small>' + (sum ? money(sum) : '') + '</small></h3>' +
+          (rs.length ? rs.map(function (r) { return card(r, PICK); }).join('') : '<p class="kn-empty">—</p>') + '</section>';
+      }).join('') + '</div>' + moreRow();
+      bindCards(list); bindMore();
+      var pb = $('[data-pick]', list);
+      if (pb) pb.onclick = function () { PICK = !PICK; if (!PICK) SEL = {}; draw(); var nb = $('[data-pick]', list); if (nb) nb.focus(); };
+      if (PICK) {
+        bindSel(list);
+        $$('[data-colall]', list).forEach(function (c) { c.onclick = function (e) { e.stopPropagation(); var on = c.checked; $$('[data-sel]', c.closest('.kn-col')).forEach(function (x) { x.checked = on; setSel(x, true); }); c.checked = on; bulkBar(); }; });
+      } else bulkBar();
       $$('.kn-col', list).forEach(function (col) {
         col.ondragover = function (e) { e.preventDefault(); col.classList.add('over'); };
         col.ondragleave = function (e) { if (!col.contains(e.relatedTarget)) col.classList.remove('over'); };
@@ -612,36 +727,47 @@
     // Сервер перевіряє кожен рядок окремо (видимість і права), відповідь — скільки змінено й що ні (functions/api/admin/crm.js, bulk).
     var SEL = {};
     var selBox = function (r) { return '<input type="checkbox" class="sel" data-sel="' + r.id + '"' + (SEL[r.id] ? ' checked' : '') + ' aria-label="Вибрати ' + esc(r.number) + '">'; };
+    // позначити / зняти один запис (прапорець у списку, таблиці чи на картці канбану)
+    function setSel(c, quiet) {
+      if (c.checked) SEL[c.dataset.sel] = 1; else delete SEL[c.dataset.sel];
+      var k = c.closest('.kn-card'); if (k && k.closest('.kn')) k.classList.toggle('picked', c.checked);
+      var col = c.closest('.kn-col'), ca = col && $('[data-colall]', col); if (ca) ca.checked = $$('[data-sel]', col).every(function (x) { return x.checked; });
+      if (!quiet) bulkBar();
+    }
     function bulkBar() {
       var ids = Object.keys(SEL).map(Number), bar = $('[data-bulk]', L);
       if (!bar) return;
-      bar.hidden = !ids.length; $('[data-bn]', bar).textContent = ids.length;
+      var picking = PICK && S.view === 'kanban';
+      bar.hidden = !ids.length && !picking; $('[data-bn]', bar).textContent = ids.length;
+      bar.classList.toggle('idle', !ids.length);
       var lead = ids.every(function (id) { var r = rows.find(function (x) { return x.id === id; }); return r && r.kind === 'lead'; });
       var T = lead ? LST : OST;
       $('[data-bs]', bar).innerHTML = '<option value="">Змінити стадію…</option>' + Object.keys(T).map(function (k) { return '<option value="' + k + '">' + esc(T[k]) + '</option>'; }).join('');
       var ba = $('[data-ba]', bar); ba.hidden = !can('leads.assign') || !STAFF.length;
       ba.innerHTML = '<option value="">Відповідальний…</option><option value="none">— зняти —</option>' + STAFF.map(function (x) { return '<option value="' + x.id + '">' + esc(x.name) + '</option>'; }).join('');
       $('[data-bni]', bar).hidden = !lead;
+      $('[data-bs]', bar).disabled = ba.disabled = $('[data-bni]', bar).disabled = !ids.length;
+      $('[data-bx]', bar).textContent = picking && !ids.length ? 'Вийти з вибору' : 'Скасувати вибір';
     }
     function bulkRun(body, what) {
       var ids = Object.keys(SEL).map(Number);
       if (!ids.length || !confirm(what + ' — ' + ids.length + ' запис(ів)?')) { bulkBar(); return; }
       api('/api/admin/crm', { method: 'PATCH', body: { bulk: Object.assign({ ids: ids }, body) } }).then(function (d) {
         var bad = d.results.filter(function (x) { return !x.ok; });
-        toast('Змінено: ' + d.done + (bad.length ? ' · не змінено ' + bad.length + ' (' + esc(bad[0].error) + ')' : ''), !!bad.length);
-        SEL = {}; load();
+        toast('Змінено: ' + d.done + (bad.length ? ' · не змінено ' + bad.length + ' (' + bad[0].error + ')' : ''), !!bad.length);
+        SEL = {}; PICK = false; load();
       }, function (e) { toast(e.message, true); });
     }
     function bindSel(root) {
-      $$('[data-sel]', root).forEach(function (c) { c.onclick = function (e) { e.stopPropagation(); if (c.checked) SEL[c.dataset.sel] = 1; else delete SEL[c.dataset.sel]; bulkBar(); }; });
+      $$('[data-sel]', root).forEach(function (c) { c.onclick = function (e) { e.stopPropagation(); setSel(c); }; });
       var all = $('[data-all]', root); if (all) all.onclick = function () { $$('[data-sel]', root).forEach(function (c) { c.checked = all.checked; if (all.checked) SEL[c.dataset.sel] = 1; else delete SEL[c.dataset.sel]; }); bulkBar(); };
       var bar = $('[data-bulk]', L);
       if (bar && !bar.dataset.on) {
         bar.dataset.on = 1;
         $('[data-bs]', bar).onchange = function () { var v = this.value; if (v) bulkRun({ status: v }, 'Стадія «' + ($('[data-bs] option:checked', bar).textContent) + '»'); };
         $('[data-ba]', bar).onchange = function () { var v = this.value; if (v) bulkRun({ assignee_staff_id: v === 'none' ? null : +v }, v === 'none' ? 'Зняти відповідального' : 'Відповідальний — ' + $('[data-ba] option:checked', bar).textContent); };
-        $('[data-bni]', bar).onclick = function () { var why = prompt('«Не цікаво» → стадія «Скасовано». Причина (для історії; заявки бота — бот більше не покаже схожі):', 'не наш профіль'); if (why !== null) { var ids = Object.keys(SEL); if (ids.length) api('/api/admin/crm', { method: 'PATCH', body: { bulk: { ids: ids.map(Number), not_interested: why || 'без причини' } } }).then(function (d) { toast('«Не цікаво»: ' + d.done + (d.done < ids.length ? ' з ' + ids.length : '')); SEL = {}; load(); }, function (e) { toast(e.message, true); }); } };
-        $('[data-bx]', bar).onclick = function () { SEL = {}; $$('[data-sel],[data-all]', L).forEach(function (c) { c.checked = false; }); bulkBar(); };
+        $('[data-bni]', bar).onclick = function () { var why = prompt('«Не цікаво» → стадія «Скасовано». Причина (для історії; заявки бота — бот більше не покаже схожі):', 'не наш профіль'); if (why !== null) { var ids = Object.keys(SEL); if (ids.length) api('/api/admin/crm', { method: 'PATCH', body: { bulk: { ids: ids.map(Number), not_interested: why || 'без причини' } } }).then(function (d) { toast('«Не цікаво»: ' + d.done + (d.done < ids.length ? ' з ' + ids.length : '')); SEL = {}; PICK = false; load(); }, function (e) { toast(e.message, true); }); } };
+        $('[data-bx]', bar).onclick = function () { var had = Object.keys(SEL).length; SEL = {}; if (PICK && (!had || S.view !== 'kanban')) PICK = false; if (S.view === 'kanban') draw(); else { $$('[data-sel],[data-all]', L).forEach(function (c) { c.checked = false; }); bulkBar(); } };
       }
       bulkBar();
     }
@@ -731,7 +857,9 @@
       if (dlg.open) dlg.close();
       location.hash = '#projects';
     }
-    function edit(id) {
+    // carry — після конфлікту версій: {values: мої зміни, які можна перенести на свіжу заявку, notes: що не перенесено}
+    var LLBL = { status: 'Стадія', assignee_staff_id: 'Відповідальний', assignee: 'Відповідальний', amount: 'Сума угоди', currency: 'Валюта', city: 'Область / місто', next_contact: 'Наступний контакт', crm_note: 'Нотатки', manager_note: 'Нотатка для клієнта' };
+    function edit(id, carry) {
       var r = id ? rows.find(function (x) { return x.id === id; }) : { kind: 'lead', status: 'new', currency: 'UAH' };
       if (!r) return;
       var f = function (k) { return esc(r[k] == null ? '' : r[k]); };
@@ -765,6 +893,10 @@
         '<div class="full row stick-d"><button class="btn" type="submit" value="save">Зберегти</button><button class="btn ghost" type="submit" value="cancel" formnovalidate>Закрити</button><span class="err" data-e role="alert"></span></div>' +
         (id ? '<ul class="ev full" data-ev><li>Історія…</li></ul>' : '') + '</form>';
       var form = $('form', dlg), dirty = false;
+      if (carry) { // мої зміни зі старої форми — на свіжу заявку
+        Object.keys(carry.values).forEach(function (k) { var el = form.elements[k]; if (el) { el.value = carry.values[k] == null ? '' : carry.values[k]; dirty = true; } });
+        if (carry.notes.length) form.firstElementChild.insertAdjacentHTML('afterend', '<div class="full">' + clashBox(carry.notes) + '</div>');
+      }
       // блок «Пропозиція» зберігається своїми кнопками — не позначає форму зміненою
       var mark = function (e) { if (!e.target.closest('[data-offer]')) dirty = true; };
       form.addEventListener('input', mark); form.addEventListener('change', mark);
@@ -787,14 +919,31 @@
         else if (b.amount !== '' && b.amount != null && !(+b.amount >= 0)) err = 'Сума — додатне число';
         if (err) { $('[data-e]', dlg).textContent = err; return; }
         var sv = $('button[value=save]', form); sv.disabled = true; sv.textContent = 'Зберігаємо…';
-        var p = id ? api('/api/admin/crm', { method: 'PATCH', body: Object.assign({ id: id }, b) })
+        // картка зберігає з версією заявки (r.ver): якщо її за цей час змінив інший менеджер — 409 зі свіжим рядком, далі — діалог
+        var p = id ? api('/api/admin/crm', { method: 'PATCH', body: Object.assign({ id: id, ver: r.ver }, b) })
           : api('/api/admin/crm', { method: 'POST', body: b }).then(function (d) { if (b.status !== 'new') return api('/api/admin/crm', { method: 'PATCH', body: { id: d.id, status: b.status } }); });
-        p.then(function () { dlg.close(); toast('Збережено'); load(); }, function (er) { sv.disabled = false; sv.textContent = 'Зберегти'; $('[data-e]', dlg).textContent = er.message; });
+        p.then(function () { dlg.close(); toast('Збережено'); load(); }, function (er) {
+          sv.disabled = false; sv.textContent = 'Зберегти';
+          if (!(id && isConflict(er) && er.data.row)) { $('[data-e]', dlg).textContent = er.message; return; }
+          conflictDialog(er.message, er.data.last, 'заявку').then(function (v) {
+            if (v === 'cancel') return;
+            var fresh = er.data.row, i = rows.findIndex(function (x) { return x.id === id; });
+            if (i >= 0) rows[i] = fresh;
+            if (v === 'reload') { edit(id); return; }
+            var m = merge3(Object.keys(b).filter(function (k) { return k !== 'note'; }), r, b, fresh), mine = Object.assign({}, m.apply);
+            if (b.note) mine.note = b.note;
+            var show = function (k, x) { return k === 'status' ? (stOf(fresh)[x] || x) : k === 'assignee_staff_id' ? ((STAFF.find(function (y) { return String(y.id) === String(x); }) || {}).name || (x ? '#' + x : '— не призначено —')) : x; };
+            if (m.clash.length) { edit(id, { values: mine, notes: m.clash.map(function (c) { return clashNote(LLBL[c.k] || c.k, { fresh: show(c.k, c.fresh), mine: show(c.k, c.mine) }); }) }); return; }
+            if (!Object.keys(mine).length) { dlg.close(); toast('Дані оновлено — ваші зміни вже були збережені'); load(); return; }
+            api('/api/admin/crm', { method: 'PATCH', body: Object.assign({ id: id, ver: fresh.ver }, mine) }).then(function () { dlg.close(); toast('Збережено — ваші зміни додано до свіжих даних'); load(); },
+              function (e2) { toast(e2.message, true); edit(id, { values: mine, notes: [] }); });
+          });
+        });
       };
       if (id) api('/api/admin/crm?events=' + id).then(function (d) {
         $('[data-ev]', dlg).innerHTML = d.events.map(function (e) { return '<li>' + when(e.created_at, true) + ' — ' + esc(e.label) + (e.note ? ': ' + esc(e.note) : '') + ' <small>(' + esc(e.author) + ')</small></li>'; }).join('') || '<li>Подій немає</li>';
       }, function () { var ev = $('[data-ev]', dlg); if (ev) ev.innerHTML = '<li>Історію не вдалося завантажити</li>'; });
-      dlg.showModal();
+      if (!dlg.open) dlg.showModal();
     }
     segs();
     return load();
@@ -898,7 +1047,7 @@
   var SVC = { design: 'Дизайн-проєкт', arch: 'Архітектурний проєкт', repair: 'Ремонт', build: 'Будівництво', furnish: 'Комплектація меблями', landscape: 'Ландшафт', other: 'Інше' };
   var PST = { active: 'Триває', paused: 'На паузі', done: 'Завершено' };
   var DKIND = { contract: 'Договір', estimate: 'Кошторис', invoice: 'Рахунок', act: 'Акт етапу', design: 'Дизайн-проєкт', render: 'Візуалізації', drawing: 'Креслення', spec: 'Специфікація', other: 'Інше' };
-  var HACT = { approve: '✓ погодив етап', revise: '✏️ попросив правки', remind: '🔔 нагадування клієнту' };
+  var HACT = { approve: '✓ погодив етап', unapprove: '✕ погодження знято', revise: '✏️ попросив правки', remind: '🔔 нагадування клієнту' };
   var DESIGN_SVC = ['design', 'arch']; // проєктування: погодження клієнтом, правки, результати етапів
   var SST = { planned: 'Заплановано', in_progress: 'В роботі', review: 'Приймання', done: 'Виконано', paused: 'Пауза' };
   var PAYST = { planned: 'Заплановано', due: 'До оплати', paid: 'Оплачено' };
@@ -912,7 +1061,7 @@
   var payLate = function (y) { return y.status !== 'paid' && !!y.due_date && y.due_date < today(); };
   var dmy = function (s) { return s ? String(s).slice(0, 10).split('-').reverse().join('.') : ''; };
   var PAPI = '/api/admin/projects';
-  RENDER.projects = function (L, cid, openId) {
+  RENDER.projects = function (L, cid, openId, carry) {
     if (!openId) try { openId = +sessionStorage.getItem('pjOpen') || null; sessionStorage.removeItem('pjOpen'); } catch (e) { /* noop */ } // з картки заявки
     L.innerHTML = '<p class="muted">Завантаження…</p>';
     return Promise.all([api('/api/admin/clients'), api(PAPI + (cid ? '?client_id=' + cid : '')), api('/api/admin/partner-codes').catch(function () { return { codes: [] }; }),
@@ -988,7 +1137,7 @@
       $('[data-fl]', L).onchange = function () { PF.late = this.checked; draw(); };
       $('[data-fq]', L).oninput = debounce(function () { PF.q = $('[data-fq]', L).value.trim(); draw(); }, 200);
       draw();
-      if (openId) projectForm(L, d, openId, cid);
+      if (openId) projectForm(L, d, openId, cid, carry);
     }, function (e) { L.innerHTML = '<p class="err">' + esc(e.message) + (/оновлюється/.test(e.message) ? ' (міграція 0005 ще не застосована — зʼявиться після деплою)' : '') + '</p>'; });
   };
   // «Новий проєкт»: тип → шаблон етапів (з сервера, d.templates), клієнт, адреса, площа, договір, здача, відповідальний, графік платежів
@@ -1011,7 +1160,8 @@
     var f = $('[data-nf]', L);
     var tpl = function () { var a = T[f.service.value] || []; $('[data-tpl]', L).innerHTML = a.length ? a.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') : '<li class="muted">Без шаблону — етапи додасте в картці проєкту</li>'; };
     f.service.onchange = tpl; tpl();
-    $('[data-back]', L).onclick = function () { RENDER.projects(L, cid); };
+    var wf = watchForm(f, 'формі нового проєкту');
+    $('[data-back]', L).onclick = function () { if (wf.leave()) RENDER.projects(L, cid); };
     f.onsubmit = function (e) {
       e.preventDefault();
       var F = f.elements, err = $('[data-e]', L);
@@ -1027,7 +1177,8 @@
         function (e2) { btn.disabled = false; err.textContent = e2.message; });
     };
   }
-  function projectForm(L, d, id, cid) {
+  // carry — мої незбережені зміни зі старої форми (після конфлікту версій): переносимо на свіжі дані те, що не перетинається з чужими змінами
+  function projectForm(L, d, id, cid, carry) {
     var p = d.projects.find(function (x) { return x.id === id; }); if (!p) return;
     var stages = clone(p.stages || []), reports = d.reports.filter(function (r) { return r.project_id === id; }), docs = d.documents.filter(function (x) { return x.client_id === p.client_id && (!x.project_id || x.project_id === id); });
     var pays = (d.payments || []).filter(function (x) { return x.project_id === id; });
@@ -1084,14 +1235,17 @@
     // результати етапу — документи цього проєкту з stage_id (візуалізації, креслення, специфікації, акти); клієнт бачить їх у кабінеті
     var stDocs = function (sid) { return sid ? docs.filter(function (x) { return x.project_id === id && x.stage_id === sid; }) : []; };
     // дизайн-проєкт: «Погоджено клієнтом» (дата) і лічильник правок — у JSON етапу; клієнт бачить «погоджено» в кабінеті
+    // погодження й лічильник правок веде сервер (їх змінює і клієнт у кабінеті): форма надсилає лише дію — _approve (true / false)
+    // і _rd (скільки правок додати чи відняти), а не готові значення
+    var revOf = function (s) { return Math.max(0, Math.min(99, (+s.revisions || 0) + (+s._rd || 0))); };
     var apprRow = function (s, i) {
       if (!isDesign()) return '';
       return '<div class="row pj-appr">' + (s.approved_at ? '<span class="pill on">✓ Погоджено клієнтом ' + dmy(s.approved_at) + (s.approved_by === 'client' ? ' (у кабінеті)' : '') + '</span><button type="button" class="btn ghost sm" data-unap="' + i + '">Скасувати погодження</button>'
         : '<button type="button" class="btn ghost sm" data-ap="' + i + '"' + (s.id ? '' : ' disabled title="Спершу збережіть проєкт"') + '>Погоджено клієнтом</button>') +
-        '<span class="muted">Правки:</span><button type="button" class="btn ghost sm" data-rv="' + i + '" data-dv="-1" aria-label="Менше правок">−</button><b data-rvn="' + i + '">' + (+s.revisions || 0) + '</b>' +
+        '<span class="muted">Правки:</span><button type="button" class="btn ghost sm" data-rv="' + i + '" data-dv="-1" aria-label="Менше правок">−</button><b data-rvn="' + i + '">' + revOf(s) + '</b>' +
         '<button type="button" class="btn ghost sm" data-rv="' + i + '" data-dv="1" aria-label="Ще одна правка">+</button>' +
         '<label class="row pj-rmax"><span class="muted">з</span><input type="number" min="0" max="20" data-k="rev_max" data-i="' + i + '" value="' + esc(s.rev_max || '') + '" placeholder="∞" aria-label="Кругів правок за договором"></label>' +
-        (s.rev_max && (+s.revisions || 0) > s.rev_max ? '<span class="pill warn">понад договір</span>' : '') + '</div>' +
+        (s.rev_max && revOf(s) > s.rev_max ? '<span class="pill warn">понад договір</span>' : '') + '</div>' +
         (s.rev_note && !s.approved_at ? '<p class="pj-revn"><b>Правки від клієнта ' + dmy(s.rev_at) + ':</b> «' + esc(s.rev_note) + '»</p>' : '') +
         (s.id && !s.approved_at && (s.status === 'review' || s.status === 'done') && can('projects.edit') ? '<div class="row pj-rem"><button type="button" class="btn ghost sm" data-rem="' + esc(s.id) + '">Нагадати клієнту</button>' +
           '<small class="muted">' + (s.remind_at ? 'нагадували ' + esc(s.remind_at) + ' · не частіше 1 разу на 48 год' : 'чекає погодження' + (s.review_at ? ' з ' + esc(s.review_at) : '') + '; автоматично — через добу, якщо клієнт у Telegram') + '</small></div><div data-remb="' + esc(s.id) + '"></div>' : '') +
@@ -1116,18 +1270,72 @@
         stages.splice(+x.dataset.sd, 1); drawStages(); setDirty(true); }; });
       $('[data-sa]', stEl).onclick = function () { stages.push({ name: '', progress: 0 }); drawStages(); setDirty(true); var n = $$('[data-k=name]', stEl).pop(); if (n) n.focus(); };
       $$('[data-rem]', stEl).forEach(function (x) { x.onclick = function () { nudge({ type: 'remind', project_id: id, stage_id: x.dataset.rem }, $('[data-remb="' + x.dataset.rem + '"]', stEl)); }; });
-      $$('[data-ap]', stEl).forEach(function (x) { x.onclick = function () { stages[+x.dataset.ap].approved_at = today(); save('Етап погоджено клієнтом'); }; });
-      $$('[data-unap]', stEl).forEach(function (x) { x.onclick = function () { if (confirm('Зняти позначку «погоджено»?')) { delete stages[+x.dataset.unap].approved_at; save('Погодження знято'); } }; });
-      $$('[data-rv]', stEl).forEach(function (x) { x.onclick = function () { var s = stages[+x.dataset.rv]; s.revisions = Math.max(0, Math.min(99, (+s.revisions || 0) + (+x.dataset.dv))); $('[data-rvn="' + x.dataset.rv + '"]', stEl).textContent = s.revisions; setDirty(true); }; });
+      var op = function (s, v, msg) { s._approve = v; save(msg).then(function (ok) { if (!ok) delete s._approve; }); };
+      $$('[data-ap]', stEl).forEach(function (x) { x.onclick = function () { op(stages[+x.dataset.ap], true, 'Етап погоджено клієнтом'); }; });
+      $$('[data-unap]', stEl).forEach(function (x) { x.onclick = function () { if (confirm('Зняти позначку «погоджено»?')) op(stages[+x.dataset.unap], false, 'Погодження знято'); }; });
+      $$('[data-rv]', stEl).forEach(function (x) { x.onclick = function () { var s = stages[+x.dataset.rv], was = revOf(s); s._rd = (+s._rd || 0) + (+x.dataset.dv); if (revOf(s) === was) s._rd -= +x.dataset.dv; $('[data-rvn="' + x.dataset.rv + '"]', stEl).textContent = revOf(s); setDirty(true); }; });
+    }
+    var formEl = $('[data-f]', L);
+    var snap = function () { var o = {}; new FormData(formEl).forEach(function (v, k) { o[k] = v; }); return o; };
+    var baseF = snap(); // поля, як їх показали при відкритті, — основа для злиття після конфлікту версій
+    var SK = ['name', 'status', 'progress', 'start', 'end', 'note', 'staff_id', 'rev_max'];
+    var SLBL = { name: 'назва', status: 'статус', progress: 'прогрес, %', start: 'початок', end: 'термін', note: 'примітка', staff_id: 'відповідальний', rev_max: 'кругів правок' };
+    var notes = [], carried = false;
+    if (carry) {
+      var showV = function (k, v) { return k === 'status' ? (SST[v] || v) : k === 'staff_id' ? ((STG.find(function (x) { return String(x.id) === String(v); }) || {}).name || (v ? '#' + v : '—')) : v; };
+      var nS = function (v, k) { return k === 'progress' ? String(+v || 0) : String(v == null ? '' : v).trim(); };
+      var fm = merge3(Object.keys(carry.mineF), carry.baseF, carry.mineF, baseF);
+      Object.keys(fm.apply).forEach(function (k) { var el = formEl.elements[k]; if (el) { el.value = fm.apply[k]; carried = true; } });
+      fm.clash.forEach(function (c) { var el = formEl.elements[c.k], lb = el && el.closest('label') && $('span', el.closest('label')); notes.push(clashNote(lb ? lb.textContent.replace(/\s*\(.*$/, '') : c.k, c)); });
+      var bSt = {}, mineIds = {};
+      (carry.baseSt || []).forEach(function (b) { if (b.id) bSt[b.id] = b; });
+      carry.mineSt.forEach(function (m) {
+        if (!m.id) { if (String(m.name || '').trim()) { stages.push(m); carried = true; } return; } // мій новий етап
+        mineIds[m.id] = 1;
+        var f = stages.find(function (x) { return x.id === m.id; }), b = bSt[m.id] || {};
+        if (!f) { notes.push('Етап «' + esc(m.name) + '» прибрав інший користувач — ваші зміни до нього не перенесено'); return; }
+        var r = merge3(SK, b, m, f, nS);
+        Object.keys(r.apply).forEach(function (k) { f[k] = r.apply[k]; carried = true; });
+        r.clash.forEach(function (c) { notes.push('Етап «' + esc(f.name) + '» — ' + clashNote(SLBL[c.k], { fresh: showV(c.k, c.fresh), mine: showV(c.k, c.mine) })); });
+        if (m._rd) { f._rd = m._rd; carried = true; }
+        if (m._approve === true && !f.approved_at) { f._approve = true; carried = true; }
+        if (m._approve === false && f.approved_at) { if (f.approved_by === 'client' && b.approved_by !== 'client') notes.push('Етап «' + esc(f.name) + '»: його щойно погодив клієнт — погодження не знято'); else { f._approve = false; carried = true; } }
+      });
+      (carry.baseSt || []).forEach(function (b) { // етапи, які я прибрав у старій формі
+        if (!b.id || mineIds[b.id]) return;
+        var i = stages.findIndex(function (x) { return x.id === b.id; }); if (i < 0) return;
+        var f = stages[i];
+        if (SK.every(function (k) { return nS(f[k], k) === nS(b[k], k); }) && (f.approved_at || '') === (b.approved_at || '') && (+f.revisions || 0) === (+b.revisions || 0)) { stages.splice(i, 1); carried = true; }
+        else notes.push('Етап «' + esc(f.name) + '» ви прибрали, але його змінив інший користувач (або клієнт) — етап залишено');
+      });
     }
     drawStages();
     $('[name=service]', L).onchange = function () { drawStages(); setDirty(true); };
-    ['input', 'change'].forEach(function (ev) { $('[data-f]', L).addEventListener(ev, function (e) { if (!e.target.closest('[data-ap],[data-unap]')) setDirty(true); }); });
-    addEventListener('beforeunload', function bu(e) { if (!document.contains(stEl)) { removeEventListener('beforeunload', bu); return; } if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+    ['input', 'change'].forEach(function (ev) { formEl.addEventListener(ev, function (e) { if (!e.target.closest('[data-ap],[data-unap]')) setDirty(true); }); });
+    GUARD = function () { return document.contains(stEl) && dirty ? 'У картці проєкту «' + p.title + '» є незбережені зміни.' : ''; }; // вкладки панелі й закриття сторінки
     $('[data-back]', L).onclick = back;
     var fail = function (e) { toast(e.message, true); };
     // команда: відповідальний + виконавці з задачею (project_staff); працівник отримує Telegram і бачить обʼєкт у /kabinet/team
     var team = (p.team || []).map(function (t) { return { id: t.staff_id, task: t.task || '' }; }), lead = p.assignee_staff_id || '', STF = [];
+    var baseTeam = clone(team), baseLead = lead;
+    if (carry) {
+      var tn = function (t) { return JSON.stringify((t || []).filter(function (x) { return x.id; }).map(function (x) { return [+x.id, x.task || '']; }).sort()); };
+      if (tn(carry.mineTeam) !== tn(carry.baseTeam)) {
+        if (tn(team) === tn(carry.baseTeam)) { team = clone(carry.mineTeam); carried = true; }
+        else if (tn(team) !== tn(carry.mineTeam)) notes.push('Команда обʼєкта: її змінив інший користувач — ваші зміни команди не перенесено');
+      }
+      if (String(carry.mineLead || '') !== String(carry.baseLead || '')) {
+        if (String(lead || '') === String(carry.baseLead || '')) { lead = carry.mineLead; carried = true; }
+        else if (String(lead || '') !== String(carry.mineLead || '')) notes.push('Відповідальний за обʼєкт: його змінив інший користувач — ваш вибір не перенесено');
+      }
+    }
+    // після конфлікту версій: без перетинів — одразу зберігаємо мої зміни поверх свіжих даних; з перетинами — показуємо, що не перенесено
+    var afterCarry = function () {
+      if (!carry) return;
+      if (notes.length) { formEl.insertAdjacentHTML('beforebegin', clashBox(notes)); setDirty(carried); toast('Дані оновлено. Частину ваших змін не перенесено — перевірте позначені поля й натисніть «Зберегти проєкт»', true); var cn = $('[data-cfn]', L); if (cn && cn.scrollIntoView) cn.scrollIntoView({ block: 'center' }); }
+      else if (carried) { setDirty(true); save('Проєкт збережено — ваші зміни додано до свіжих даних'); }
+      else toast('Дані оновлено — незбережених змін не було');
+    };
     function drawTeam() {
       var fs = $('[data-team]', L); if (!fs) return;
       var opts = function (v) { return '<option value="">— оберіть —</option>' + STF.map(function (x) { return '<option value="' + x.id + '"' + (String(x.id) === String(v) ? ' selected' : '') + '>' + esc(x.name) + ' · ' + esc(x.role_label) + '</option>'; }).join(''); };
@@ -1141,8 +1349,8 @@
       $$('[data-tx]', fs).forEach(function (x) { x.onclick = function () { team.splice(+x.dataset.tx, 1); drawTeam(); setDirty(true); }; });
       $('[data-ta]', fs).onclick = function () { team.push({ id: null, task: '' }); drawTeam(); setDirty(true); };
     }
-    if (can('staff.view')) api('/api/admin/staff').then(function (r) { STF = r.staff.filter(function (x) { return x.active; }); drawTeam(); }, function () { var fs = $('[data-team]', L); if (fs) fs.hidden = true; });
-    else { var tfs = $('[data-team]', L); if (tfs) tfs.hidden = true; }
+    if (can('staff.view')) api('/api/admin/staff').then(function (r) { STF = r.staff.filter(function (x) { return x.active; }); drawTeam(); }, function () { var fs = $('[data-team]', L); if (fs) fs.hidden = true; }).then(afterCarry);
+    else { var tfs = $('[data-team]', L); if (tfs) tfs.hidden = true; afterCarry(); }
     var iss = $('[data-iss]', L);
     if (iss) {
       iss.innerHTML = d.issues.filter(function (i) { return i.project_id === id; }).map(function (i) {
@@ -1152,12 +1360,26 @@
       }).join('');
       $$('[data-ir]', iss).forEach(function (b) { b.onclick = function () { api(PAPI, { method: 'PATCH', body: { type: 'issue', id: +b.dataset.ir, status: 'resolved' } }).then(function () { toast('Позначено вирішеним'); reload(); }, function (e) { toast(e.message, true); }); }; });
     }
+    // Зберегти: разом із версією картки (p.ver). Якщо проєкт за цей час змінився (клієнт погодив етап чи попросив правки, зберіг
+    // інший менеджер) — сервер нічого не пише (409), а ми питаємо: оновити й повторити мої зміни / оновити без них / лишитись у формі.
     function save(msg) {
-      var b = { type: 'project', id: id, stages: stages.filter(function (s) { return String(s.name || '').trim(); }) };
-      new FormData($('[data-f]', L)).forEach(function (v, k) { b[k] = v; });
+      var b = { type: 'project', id: id, ver: p.ver, stages: stages.filter(function (s) { return String(s.name || '').trim(); }).map(function (s) {
+        var o = {}; ['id'].concat(SK).forEach(function (k) { if (s[k] != null && s[k] !== '') o[k] = s[k]; });
+        if (s._approve != null) o.approve = s._approve;
+        if (s._rd) o.rev_delta = s._rd;
+        return o;
+      }) };
+      new FormData(formEl).forEach(function (v, k) { b[k] = v; });
       if (STF.length) { b.assignee_staff_id = lead ? +lead : null; b.staff = team.filter(function (t) { return t.id; }); }
       if (!can('finance.edit')) { delete b.contract_amount; delete b.contract_currency; }
-      return api(PAPI, { method: 'PATCH', body: b }).then(function () { dirty = false; toast(msg || 'Проєкт збережено'); reload(); }, fail);
+      return api(PAPI, { method: 'PATCH', body: b }).then(function () { dirty = false; toast(msg || 'Проєкт збережено'); reload(); return true; }, function (e) {
+        if (!isConflict(e)) { fail(e); return false; }
+        return conflictDialog('Проєкт змінився, поки ви редагували', e.data.last, 'картку проєкту').then(function (v) {
+          if (v === 'retry') { dirty = false; RENDER.projects(L, cid, id, { baseF: baseF, mineF: snap(), baseSt: p.stages || [], mineSt: stages, baseTeam: baseTeam, mineTeam: team, baseLead: baseLead, mineLead: lead }); }
+          else if (v === 'reload') { dirty = false; RENDER.projects(L, cid, id); }
+          return false;
+        });
+      });
     }
     $('[data-save]', L).onclick = function () { save(); };
     projectContactsBlock(L, p, reload);
@@ -1349,8 +1571,10 @@
         });
       });
     }
-    function open(id) { return api('/api/admin/partners?id=' + id).then(function (x) { card(x.partner, x); }, function (e) { toast(e.message, true); }); }
-    function card(r, x) {
+    function open(id, carry) { return api('/api/admin/partners?id=' + id).then(function (x) { card(x.partner, x, carry); }, function (e) { toast(e.message, true); }); }
+    var CLBL = { name: 'Імʼя', company: 'Компанія', type: 'Тип', status: 'Статус', city: 'Регіон / місто', phone: 'Телефон', tg: 'Telegram', email: 'Пошта', site: 'Сайт', rating: 'Оцінка', tags: 'Теги', notes: 'Нотатки' };
+    // carry — після конфлікту версій: {values, notes} (як у картці заявки)
+    function card(r, x, carry) {
       var n = !r; r = r || { type: S.type || 'other', status: 'new', tags: [], sources: [] }; x = x || { links: [], leads: [] };
       var f = function (k, label, type, ph) { return '<label class="fld"><span>' + label + '</span><input name="' + k + '" type="' + (type || 'text') + '" value="' + esc(k === 'tg' && r.tg ? '@' + r.tg : r[k] || '') + '"' + (ph ? ' placeholder="' + ph + '"' : '') + '></label>'; };
       var pl = x.links.filter(function (l) { return l.project_id; }), ol = x.links.filter(function (l) { return l.order_id; });
@@ -1372,7 +1596,12 @@
           (r.sources.length ? '<h3>Де бачили</h3><ul class="plist">' + r.sources.map(function (s) {
             return '<li><small>' + esc(String(s.at || '').slice(0, 16)) + '</small> ' + esc(s.name || '') + (s.url && /^https?:\/\//.test(s.url) ? ' — <a href="' + esc(s.url) + '" target="_blank" rel="noopener noreferrer nofollow">повідомлення</a>' : '') + '</li>';
           }).join('') + '</ul>' : ''));
-      $('[data-back]', L).onclick = list;
+      var pfm = $('[data-pf]', L), wf = watchForm(pfm, 'картці контакту');
+      if (carry) {
+        Object.keys(carry.values).forEach(function (k) { var el = pfm.elements[k], v = carry.values[k]; if (el) { el.value = k === 'tags' ? (v || []).join(', ') : v == null ? '' : v; wf.set(true); } });
+        if (carry.notes.length) pfm.insertAdjacentHTML('beforebegin', clashBox(carry.notes));
+      }
+      $('[data-back]', L).onclick = function () { if (wf.leave()) list(); };
       $$('[data-pj]', L).forEach(function (b) { b.onclick = function () { try { sessionStorage.setItem('pjOpen', b.dataset.pj); } catch (e) { /* noop */ } location.hash = '#projects'; }; });
       $$('[data-ul]', L).forEach(function (b) { b.onclick = function () {
         if (!confirm('Відвʼязати контакт від обʼєкта?')) return;
@@ -1384,9 +1613,22 @@
         if (!READY && !b.email) delete b.email;
         b.rating = F.rating.value ? +F.rating.value : null; if (!READY && b.rating == null) delete b.rating;
         b.tags = F.tags.value.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
-        if (!n) b.id = r.id;
-        api('/api/admin/partners', { method: n ? 'POST' : 'PATCH', body: b }).then(function () { toast(n ? 'Контакт додано' : 'Збережено'); list(); },
-          function (er) { $('[data-m]', L).textContent = er.message; });
+        if (!n) { b.id = r.id; b.ver = r.ver; } // версія картки: якщо контакт за цей час змінив інший менеджер — 409 і діалог
+        api('/api/admin/partners', { method: n ? 'POST' : 'PATCH', body: b }).then(function () { wf.set(false); toast(n ? 'Контакт додано' : 'Збережено'); list(); }, function (er) {
+          if (!(!n && isConflict(er) && er.data.partner)) { $('[data-m]', L).textContent = er.message; return; }
+          conflictDialog(er.message, er.data.last, 'картку контакту').then(function (v) {
+            if (v === 'cancel') return;
+            wf.set(false);
+            if (v === 'reload') { open(r.id); return; }
+            var fresh = er.data.partner, nrm = function (x, k) { return k === 'tags' ? (x || []).join(', ') : k === 'tg' ? String(x || '').replace(/^@/, '') : String(x == null ? '' : x).trim(); };
+            var m = merge3(Object.keys(CLBL), r, b, fresh, nrm);
+            var show = function (k, x) { return k === 'type' ? (TYPES[x] || x) : k === 'status' ? (STS[x] || x) : k === 'tags' ? (x || []).join(', ') : x; };
+            if (m.clash.length) { open(r.id, { values: m.apply, notes: m.clash.map(function (c) { return clashNote(CLBL[c.k], { fresh: show(c.k, c.fresh), mine: show(c.k, c.mine) }); }) }); return; }
+            if (!Object.keys(m.apply).length) { toast('Дані оновлено — ваші зміни вже були збережені'); list(); return; }
+            api('/api/admin/partners', { method: 'PATCH', body: Object.assign({ id: r.id, ver: fresh.ver }, m.apply) }).then(function () { toast('Збережено — ваші зміни додано до свіжих даних'); list(); },
+              function (e2) { toast(e2.message, true); open(r.id, { values: m.apply, notes: [] }); });
+          });
+        });
       };
     }
     return list();
@@ -1532,7 +1774,8 @@
       }).catch(function (e) { toast(e.message, true); });
     };
     if ($('[data-extra]', L)) jsonEditor($('[data-extra]', L), extra);
-    $('[data-back]', L).onclick = function () { productList(L, st); };
+    var wf = watchForm(L, 'картці товару', null, $('[data-back]', L));
+    $('[data-back]', L).onclick = function () { if (wf.leave()) productList(L, st); };
     function collect() {
       var fd = new FormData(form);
       ['name', 'cat', 'sub', 'unit', 'desc', 'cs', 'prio', 'art', 'en'].forEach(function (k) { it[k] = String(fd.get(k) || '').trim(); });
@@ -1712,7 +1955,8 @@
           $('[data-st]', L).textContent = 'Фото підготовлено (' + ph.w + '×' + ph.h + ') — збережеться разом зі статтею';
         }).catch(function (e) { toast(e.message, true); });
       }; });
-      $('[data-back]', L).onclick = function () { RENDER.blog(L); };
+      var wf = watchForm(L, 'статті', null, $('[data-back]', L));
+      $('[data-back]', L).onclick = function () { if (wf.leave()) RENDER.blog(L); };
       function collect() {
         var fd = new FormData(form), o = {};
         o.slug = String(fd.get('slug') || '').trim(); o.lang = fd.get('lang');
@@ -1907,6 +2151,8 @@
       draw();
       $$('[data-m]', L).forEach(function (b) { b.onclick = function () { sync(); dirty = false; mode = b.dataset.m; $$('[data-m]', L).forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); draw(); }; });
       $('[data-back]', L).onclick = function () { if (!/незбережені/.test($('[data-st]', L).textContent) || confirm('Вийти без збереження?')) RENDER.pages(L); };
+      var hst = $('[data-st]', L);
+      GUARD = function () { return document.contains(hst) && /незбережені/.test(hst.textContent) ? 'На сторінці ' + path + ' є незбережені зміни.' : ''; };
       $('[data-save]', L).onclick = function () {
         sync();
         var t = $('[data-title]', L).value.trim(), dsc = $('[data-desc]', L).value.trim().replace(/\s+/g, ' ');
