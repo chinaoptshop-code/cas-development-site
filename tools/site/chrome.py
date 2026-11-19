@@ -488,8 +488,10 @@ def _bad_selector(sel, ozd):
     return bool(OLD_SEL.search(sel) or CURSOR_SEL.search(sel) or (ozd and OZD_SEL.search(sel)))
 
 
-def prune_css(css, ozd=False):
-    """Прибирає з CSS правила старої шапки/футера (у т.ч. всередині @media); змішані списки селекторів — чистить."""
+def prune_css(css, ozd=False, bad=None):
+    """Прибирає з CSS правила старої шапки/футера (у т.ч. всередині @media); змішані списки селекторів — чистить.
+    bad(селектор) → True — свій критерій «мертвого» селектора (legacy_css)."""
+    bad = bad or (lambda sel: _bad_selector(sel, ozd))
     out, i, n = [], 0, len(css)
     while i < n:
         j = css.find('{', i)
@@ -503,7 +505,7 @@ def prune_css(css, ozd=False):
                 if css[k] == '{': depth += 1
                 elif css[k] == '}': depth -= 1
                 k += 1
-            inner = prune_css(css[j + 1:k - 1], ozd)
+            inner = prune_css(css[j + 1:k - 1], ozd, bad)
             if inner.strip():
                 out.append(pre + '{' + inner + '}')
             i = k; continue
@@ -521,7 +523,7 @@ def prune_css(css, ozd=False):
         lead = re.match(r'\s*(?:/\*.*?\*/\s*)*', pre, re.S).group(0)
         sels = pre[len(lead):]
         parts = [p for p in sels.split(',')]
-        keep = [p for p in parts if not _bad_selector(re.sub(r'/\*.*?\*/', '', p, flags=re.S), ozd)]
+        keep = [p for p in parts if not bad(re.sub(r'/\*.*?\*/', '', p, flags=re.S))]
         if len(keep) == len(parts):
             out.append(pre + body)
         elif keep:
@@ -530,6 +532,55 @@ def prune_css(css, ozd=False):
             out.append(lead.rstrip() + ('\n' if lead.strip() else ''))
         i = k + 1
     return ''.join(out)
+
+
+# Спільні інлайн-блоки <style id="ui-polish"> і <style id="m-fix"> писались для старої головної: світла тема (body.light),
+# інлайн-лайтбокси #lb/#plb/#sdlb/.lb, бічне меню .nsb, поява .reveal/.rv, картки .sv-card/.sp-card, стрічки .strip із .ui-sc…
+# Цієї розмітки на сайті вже немає (тему й reveal прибрано, лайтбокс — /assets/lightbox.v1.js, шапка — chrome.py), а правила
+# їхали в кожній сторінці: ~2,7 КБ з бюджету HTML 64 КБ. legacy_css() знімає правило лише тоді, коли його клас/id не трапляється
+# ні в розмітці сторінки, ні в її інлайн-скриптах (19.11.2026); класи, які ставить ui-polish.v1.js (.xp, .ui-sc, .ui-fade…),
+# живі, лише якщо на сторінці є блок, який він обгортає. Каскад решти правил не змінюється. Короткі назви, що збігаються
+# з класами SVG сцен (.slab, .lbl, .sl, .fl, .fc), не чіпаємо.
+_LEG_ID = ('lb', 'plb', 'sdlb', 'quickForm')
+_LEG_CLS = ('light', 'lb', 'strip-nav', 'strip-nav-l', 'strip-nav-r', 'hdesc', 'pf-fnav', 'pf-fnav-l', 'pf-fnav-r', 'sv-card', 'sv-toggle', 'sv-more',
+            'spc-cta', 'pcarousel-nav', 'proj-row-btn', 'proj-row-head', 'pf-view-btn', 'hbtns', 'prod-soon-sub', 'reveal', 'rv', 'rv-in', 'au',
+            'sp-card', 'sp-card-detail', 'proc-step', 'ps-more', 'nsb', 'nsb-ov', 'prs-nav', 'prs-nav-l', 'prs-nav-r', 'sp-card-hint', 'spc-time',
+            'pc-item-label', 'qf-sub', 'proj-cover-loc', 'sv-more-tag', 'mob-ct-lbl', 'ab-l', 'cr-label', 'sec-s', 'hbg-btn', 'lang-cycle',
+            'nsb-close', 'qf-close', 'calc-tab', 'ps-tog', 'splink', 'mob-contacts', 'mob-ct-btn')
+# класи, які додає /assets/ui-polish.v1.js: живі, якщо на сторінці є хоч один блок, який він шукає
+_LEG_JS = {('sv-more', 'sp-card-detail', 'ps-more'): ('xp', 'xp-in'),
+           ('proj-row-scroll', 'strip', 'pf-filter'): ('ui-sc', 'ui-fade', 'ui-fade-l', 'ui-fade-r', 'ui-ov', 'ui-cnt', 'ui-start', 'ui-end',
+                                                       'ui-nudge', 'ui-hint', 'ui-used', 'ui-touch')}
+_LEG_BLOCK = re.compile(r'(<style id="(?:ui-polish|m-fix)">)(.*?)(</style>)', re.S)
+_LEG_TOK = re.compile(r'([.#])([A-Za-z_][\w-]*)')
+_LEG_KF = re.compile(r'@keyframes ([\w-]+)\{(?:[^{}]*\{[^{}]*\})*[^{}]*\}')
+
+
+def legacy_css(s):
+    """Знімає зі спільних блоків ui-polish / m-fix правила для розмітки, якої на сторінці немає (див. вище). Ідемпотентно."""
+    if not _LEG_BLOCK.search(s):
+        return s
+    rest = _LEG_BLOCK.sub('', s)
+    words = set(re.findall(r'[A-Za-z_][\w-]*', ' '.join(re.findall(r'\b(?:class|id)="([^"]*)"', rest))))
+    for js in re.findall(r'<script(?![^>]*\bsrc=)(?![^>]*ld\+json)[^>]*>(.*?)</script>', rest, re.S):
+        words |= set(re.findall(r'[A-Za-z_][\w-]*', js))  # розмітка з інлайн-скриптів (ручні сторінки)
+    dead = {('#', t) for t in _LEG_ID if t not in words} | {('.', t) for t in _LEG_CLS if t not in words}
+    for need, cls in _LEG_JS.items():
+        if not any(t in words for t in need):
+            dead |= {('.', t) for t in cls if t not in words}
+    if not dead:
+        return s
+
+    def bad(sel):
+        return any((a, b) in dead for a, b in _LEG_TOK.findall(sel))
+
+    def fix(m):
+        css = prune_css(m.group(2), bad=bad)
+        # @keyframes, на які після чистки ніщо не посилається
+        css = _LEG_KF.sub(lambda k: k.group(0) if re.search(r'animation(?:-name)?:[^;}]*\b' + re.escape(k.group(1)) + r'\b', css) else '', css)
+        css = re.sub(r'@media[^{}]*\{\s*\}', '', css)
+        return m.group(1) + css + m.group(3)
+    return _LEG_BLOCK.sub(fix, s)
 
 
 # JS старої навігації на головних (тема й бічне меню)
@@ -1006,6 +1057,7 @@ def apply(s, rel):
     s = mbar_lead(s, lang, rel)
     s = viewport(s)
     s = mfix_min(s)
+    s = legacy_css(s)
     s = clarity(s)
     s = skip_and_main(s, lang)
     s = ui_polish_ext(s)
