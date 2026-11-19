@@ -3,6 +3,8 @@
 // API — справжні обробники functions/ через стенд tools/tests/harness.mjs (node:sqlite, мок Telegram), статичні файли — з репозиторію
 // з CSP із _headers. Зовнішні запити (Clarity, Telegram, Google) блокуються.
 //   node tools/tests/ui.mjs [--shots <тека>]     (скріни JPEG, стиснуті; без --shots — не зберігаються)
+//   CRM3_SHOTS=<тека> — PNG діалогу конфлікту версій і вибору на канбані (crm3-*.png)
+//   ONLY=owner-crm,client — лише перевірки, назва яких починається з одного з цих слів (для налагодження)
 import http from 'node:http';
 import { readFileSync, existsSync, statSync, mkdirSync } from 'node:fs';
 import { join, extname } from 'node:path';
@@ -15,6 +17,9 @@ let chromium;
 try { ({ chromium } = require('playwright')); } catch { ({ chromium } = require(join(execSync('npm root -g').toString().trim(), 'playwright'))); }
 const shotsDir = process.argv.includes('--shots') ? process.argv[process.argv.indexOf('--shots') + 1] : null;
 if (shotsDir) mkdirSync(shotsDir, { recursive: true });
+const crm3Dir = process.env.CRM3_SHOTS || null;
+if (crm3Dir) mkdirSync(crm3Dir, { recursive: true });
+const snap = async (page, name) => { if (crm3Dir) await page.screenshot({ path: join(crm3Dir, `crm3-${name}-${page.viewportSize().width}.png`) }); };
 
 // ===== дані =====
 const BOTKEY = 'test-leadbot-key-0123456789abcdef'; // фіктивний ключ лише для тестів
@@ -26,8 +31,9 @@ const OWNER = await addClient(env, { id: 111, name: 'Михайло' });
 const MGR = await addClient(env, { id: 222, name: 'Менеджер' });
 const FORE = await addClient(env, { id: 333, name: 'Олег' });
 const C1 = await addClient(env, { id: 900, name: 'Клієнт Тест', phone: '+380501112233' });
+const C2 = await addClient(env, { id: 901, name: 'Клієнт Другий', phone: '+380501112244' }); // клієнт проєктів для перевірки конфлікту версій
 const ck = {};
-for (const [k, id] of Object.entries({ OWNER, MGR, FORE, C1 })) ck[k] = await login(env, id);
+for (const [k, id] of Object.entries({ OWNER, MGR, FORE, C1, C2 })) ck[k] = await login(env, id);
 const api = async (who, m, p, body) => { const r = await call(env, m, p, { cookie: ck[who], body }); if (r.status >= 400) throw new Error(`${m} ${p} → ${r.status} ${r.text}`); return r.data; };
 await api('OWNER', 'GET', '/api/me');
 await api('MGR', 'GET', '/api/me');
@@ -50,6 +56,16 @@ await call(env, 'POST', '/api/bot/leads', { body: { hash: 'uitest-lead-0001', se
 await api('FORE', 'POST', '/api/team/action', { type: 'issue', project_id: P1, note: 'Протікає стояк у ванній' });
 await api('OWNER', 'POST', '/api/admin/projects', { type: 'project', client_id: C1, service: 'design', status: 'paused', title: 'Дизайн квартири, тест',
   stages: [{ name: 'Обміри й ТЗ', status: 'done', progress: 100, approved_at: iso(-3) }, { name: 'Планувальне рішення', status: 'review', progress: 90 }, { name: 'Концепція', progress: 0 }] });
+// CRM v3: проєкти для перевірки конфлікту версій (по одному на ширину — клієнт погоджує етап під час редагування),
+// заявки для вибору на канбані й для конфлікту в картці заявки
+const CF = {};
+for (const w of [402, 1440, 'clash']) CF[w] = (await api('OWNER', 'POST', '/api/admin/projects', { type: 'project', client_id: C2, service: 'design', title: 'Конфлікт версій ' + w,
+  stages: [{ name: 'Планування', status: 'review', progress: 90 }, { name: 'Концепція', progress: 0 }] })).id;
+const KB = {};
+for (const w of [402, 1440]) KB[w] = [(await api('OWNER', 'POST', '/api/admin/crm', { name: 'Канбан А ' + w, phone: '0672220' + w, service: 'Ремонт' })).id,
+  (await api('OWNER', 'POST', '/api/admin/crm', { name: 'Канбан Б ' + w, phone: '0672221' + w, service: 'Дизайн' })).id];
+const LC = (await api('OWNER', 'POST', '/api/admin/crm', { name: 'Заявка для конфлікту', phone: '0672229999', service: 'Ремонт офісу' })).id;
+const row = async (sql, ...a) => env.DB.prepare(sql).bind(...a).first();
 
 // ===== сервер =====
 const H = readFileSync(join(ROOT, '_headers'), 'utf8');
@@ -101,7 +117,9 @@ const BASE = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch();
 let fails = 0;
 const cookieOf = s => { const [name, value] = s.split('='); return { name, value: s.slice(name.length + 1), url: BASE }; };
+const only = process.env.ONLY ? process.env.ONLY.split(',') : null;
 async function check(label, who, path, widths, expect) {
+  if (only && !only.some(o => label.startsWith(o))) return;
   for (const w of widths) {
     const ctx = await browser.newContext({ viewport: { width: w, height: w < 600 ? 874 : 900 }, deviceScaleFactor: 1, isMobile: w < 600, hasTouch: w < 600, locale: 'uk-UA' }); // мова браузера — uk (кабінет клієнта бере її, якщо інших підказок немає)
     if (who) await ctx.addCookies([cookieOf(ck[who])]);
@@ -127,7 +145,7 @@ async function check(label, who, path, widths, expect) {
 }
 const see = async (page, sel, text) => {
   await page.waitForSelector(sel, { timeout: 8000 });
-  if (text) { const t = await page.textContent(sel); if (!new RegExp(text).test(t)) throw new Error(`${sel}: немає «${text}»`); }
+  if (text) { const t = await page.textContent(sel); if (!new RegExp(text).test(t)) throw new Error(`${sel}: немає «${text}» (є: «${String(t).replace(/\s+/g, ' ').trim().slice(0, 90)}»)`); }
 };
 const W = [402, 1440];
 let nAdd = 0;
@@ -241,6 +259,141 @@ await check('owner-project-contacts', 'OWNER', '/kabinet/admin#projects', [1440]
   await p.fill('[data-ctr]', 'Плитка'); await p.fill('[data-ctq]', 'Бригада'); await p.waitForSelector('[data-ctl]');
   await p.click('[data-ctl]'); await see(p, '[data-pct] .ct-links', 'Бригада Тест');
 });
+// ===== CRM v3 (19.11.2026) =====
+// Одночасне редагування: менеджер редагує картку проєкту, клієнт у цей час погоджує етап → «Зберегти» → діалог
+// «Проєкт змінився, поки ви редагували» → «Оновити й повторити мої зміни» → зміни менеджера збережено, погодження клієнта ціле
+await check('owner-project-conflict', 'OWNER', '/kabinet/admin#projects', W, async p => {
+  const w = p.viewportSize().width, pid = CF[w];
+  await p.locator('#admView .clk', { hasText: 'Конфлікт версій ' + w }).first().click(); await see(p, '[data-save]');
+  await p.fill('[data-f] [name=next_step]', 'Передати планування ' + w);
+  await p.fill('[data-st] [data-k=note][data-i="1"]', 'примітка менеджера');
+  const sid = JSON.parse((await row('SELECT stages FROM projects WHERE id = ?', pid)).stages)[0].id;
+  await api('C2', 'POST', '/api/account/projects', { action: 'approve', project_id: pid, stage_id: sid }); // клієнт погодив у своєму кабінеті
+  await p.click('[data-save]');
+  await see(p, 'dialog.cf-dlg[open]', 'Проєкт змінився, поки ви редагували'); await see(p, 'dialog.cf-dlg', 'клієнт погодив етап');
+  if (/Клієнт Другий/.test(await p.textContent('dialog.cf-dlg'))) throw new Error('у діалозі — імʼя клієнта');
+  const btns = await p.$$eval('dialog.cf-dlg .cf-act .btn', a => a.map(b => [b.textContent, Math.round(b.getBoundingClientRect().height), getComputedStyle(b).borderRadius]));
+  if (btns.length !== 3 || btns[0][0] !== 'Оновити й повторити мої зміни') throw new Error('кнопки діалогу: ' + JSON.stringify(btns));
+  if (btns.some(b => b[1] < 44 || parseFloat(b[2]) < 20)) throw new Error('кнопки діалогу < 44 px або не округлі: ' + JSON.stringify(btns));
+  const box = await p.$eval('dialog.cf-dlg', d => { const r = d.getBoundingClientRect(); return [r.left, r.right, innerWidth, r.bottom, innerHeight]; });
+  if (box[0] < 0 || box[1] > box[2] + 1 || box[3] > box[4] + 1) throw new Error('діалог виходить за екран: ' + box);
+  let st = JSON.parse((await row('SELECT stages FROM projects WHERE id = ?', pid)).stages);
+  if (!st[0].approved_at || st[1].note) throw new Error('сервер зберіг стару форму');
+  await snap(p, 'conflict');
+  await p.click('dialog.cf-dlg button[value=retry]');
+  await p.waitForFunction(() => /ваші зміни додано до свіжих даних/.test(document.body.textContent), null, { timeout: 8000 });
+  await p.waitForTimeout(700); await see(p, '[data-save]');
+  const pr = await row('SELECT next_step, stages FROM projects WHERE id = ?', pid); st = JSON.parse(pr.stages);
+  if (pr.next_step !== 'Передати планування ' + w || st[1].note !== 'примітка менеджера') throw new Error('зміни менеджера не збережено: ' + pr.next_step + ' / ' + st[1].note);
+  if (!st[0].approved_at || st[0].approved_by !== 'client' || !(st[0].hist || []).some(h => h.act === 'approve')) throw new Error('погодження клієнта втрачено: ' + JSON.stringify(st[0]));
+  await see(p, '[data-st]', 'Погоджено клієнтом'); await see(p, '[data-st]', 'у кабінеті');
+  if (!(await p.$eval('[data-dirty]', e => e.hidden))) throw new Error('позначка незбережених змін лишилась');
+});
+// те саме поле змінили обидва → свіже значення лишається, моє показано в примітці; нічого не зберігається само
+await check('owner-project-conflict-clash', 'OWNER', '/kabinet/admin#projects', [1440], async p => {
+  const pid = CF.clash;
+  await p.locator('#admView .clk', { hasText: 'Конфлікт версій clash' }).first().click(); await see(p, '[data-save]');
+  await p.fill('[data-f] [name=next_step]', 'Мій крок'); await p.fill('[data-f] [name=address]', 'вул. Моя, 5');
+  await api('MGR', 'PATCH', '/api/admin/projects', { id: pid, next_step: 'Крок іншого менеджера' });
+  await p.click('[data-save]'); await see(p, 'dialog.cf-dlg[open]', 'Проєкт змінився');
+  await p.click('dialog.cf-dlg button[value=retry]');
+  await see(p, '[data-cfn]', 'Крок іншого менеджера'); await see(p, '[data-cfn]', 'Мій крок');
+  if (await p.inputValue('[data-f] [name=next_step]') !== 'Крок іншого менеджера') throw new Error('у полі має лишитись свіже значення');
+  if (await p.inputValue('[data-f] [name=address]') !== 'вул. Моя, 5') throw new Error('мою зміну без перетину не перенесено');
+  if (await p.$eval('[data-dirty]', e => e.hidden)) throw new Error('перенесені зміни мають бути позначені як незбережені');
+  if ((await row('SELECT address FROM projects WHERE id = ?', pid)).address) throw new Error('з конфліктом поля нічого не має зберігатись само');
+  await p.click('[data-save]'); await p.waitForTimeout(900);
+  const pr = await row('SELECT address, next_step FROM projects WHERE id = ?', pid);
+  if (pr.address !== 'вул. Моя, 5' || pr.next_step !== 'Крок іншого менеджера') throw new Error('після перевірки не збережено: ' + JSON.stringify(pr));
+  // «Оновити без моїх змін» і «Повернутись до форми»
+  await see(p, '[data-save]'); await p.fill('[data-f] [name=manager]', 'Чернетка');
+  await api('MGR', 'PATCH', '/api/admin/projects', { id: pid, next_step: 'Ще один крок' });
+  await p.click('[data-save]'); await see(p, 'dialog.cf-dlg[open]'); await p.click('dialog.cf-dlg button[value=cancel]');
+  if (await p.inputValue('[data-f] [name=manager]') !== 'Чернетка') throw new Error('«Повернутись до форми» має лишити форму як є');
+  await p.click('[data-save]'); await see(p, 'dialog.cf-dlg[open]'); await p.click('dialog.cf-dlg button[value=reload]'); await p.waitForTimeout(900); await see(p, '[data-save]');
+  if (await p.inputValue('[data-f] [name=manager]') !== '' || await p.inputValue('[data-f] [name=next_step]') !== 'Ще один крок') throw new Error('«Оновити без моїх змін» має показати свіжі дані');
+});
+// картка заявки: інший менеджер змінив місто, я — нотатки → діалог → повторити → обидві зміни в базі
+await check('owner-lead-conflict', 'OWNER', '/kabinet/admin#crm', [1440], async p => {
+  await see(p, '[data-list]', 'Заявка для конфлікту');
+  await p.locator('.kn-card, tr.clk', { hasText: 'Заявка для конфлікту' }).first().click(); await see(p, 'dialog[open] form');
+  await p.fill('dialog[open] [name=crm_note]', 'Мої нотатки після дзвінка');
+  await api('MGR', 'PATCH', '/api/admin/crm', { id: LC, city: 'Одеса' });
+  await p.click('dialog[open] button[value=save]');
+  await see(p, 'dialog.cf-dlg[open]', 'Заявку змінили, поки ви редагували');
+  await p.click('dialog.cf-dlg button[value=retry]'); await p.waitForTimeout(900);
+  const o = await row('SELECT crm_note, city FROM orders WHERE id = ?', LC);
+  if (o.crm_note !== 'Мої нотатки після дзвінка' || o.city !== 'Одеса') throw new Error('злиття заявки: ' + JSON.stringify(o));
+  // те саме поле: моє значення не затирає чуже — примітка з обома
+  await p.locator('.kn-card, tr.clk', { hasText: 'Заявка для конфлікту' }).first().click(); await see(p, 'dialog[open] form');
+  await p.fill('dialog[open] [name=city]', 'Львів');
+  await api('MGR', 'PATCH', '/api/admin/crm', { id: LC, city: 'Харківська обл.' });
+  await p.click('dialog[open] button[value=save]'); await see(p, 'dialog.cf-dlg[open]');
+  await p.click('dialog.cf-dlg button[value=retry]');
+  await see(p, 'dialog[open] [data-cfn]', 'Харківська обл.'); await see(p, 'dialog[open] [data-cfn]', 'Львів');
+  if ((await row('SELECT city FROM orders WHERE id = ?', LC)).city !== 'Харківська обл.') throw new Error('чуже значення затерто');
+});
+// масові дії на канбані: «Вибрати кілька» → прапорці на картках → панель → стадія з підтвердженням
+await check('owner-crm-kanban-bulk', 'OWNER', '/kabinet/admin#crm', [1440, 402], async p => {
+  const w = p.viewportSize().width, [a, b] = KB[w];
+  await see(p, '[data-list]', 'Лід');
+  await p.click('[data-v=kanban]'); await see(p, '.kn .kn-card'); await p.waitForTimeout(350); // зміна вигляду — з плавним переходом
+  if (await p.$('.kn [data-sel]')) throw new Error('прапорці на канбані — лише в режимі вибору');
+  const pick = p.locator('[data-pick]');
+  const ph = await pick.evaluate(e => e.getBoundingClientRect().height);
+  if (ph < (w < 600 ? 43.5 : 35)) throw new Error('кнопка «Вибрати кілька» замала: ' + ph);
+  await pick.click(); await see(p, '.kn.pick [data-sel]'); await see(p, '[data-bulk]', 'Вибрано: 0');
+  for (const id of [a, b]) { const c = p.locator(`.kn-card[data-id="${id}"]`); await c.scrollIntoViewIfNeeded(); await c.locator('b').first().click(); } // дотик до картки — вибрати
+  if (await p.$('dialog[open]')) throw new Error('у режимі вибору картка не має відкриватись');
+  await see(p, '[data-bulk]', 'Вибрано: 2');
+  if ((await p.locator('.kn-card.picked').count()) !== 2) throw new Error('вибрані картки не підсвічено');
+  const z = await p.$eval(`.kn-card[data-id="${a}"] .sel-l`, e => { const r = e.getBoundingClientRect(); return [r.width, r.height]; });
+  if (z[0] < 43.5 || z[1] < 43.5) throw new Error('зона прапорця < 44 px: ' + z);
+  await p.locator(`.kn-card[data-id="${a}"]`).scrollIntoViewIfNeeded();
+  await snap(p, 'kanban');
+  let asked = ''; p.once('dialog', d => { asked = d.message(); d.accept(); });
+  await p.selectOption('[data-bulk] [data-bs]', 'in_work'); await p.waitForTimeout(1000);
+  if (!/2 запис/.test(asked)) throw new Error('немає підтвердження масової дії: ' + asked);
+  for (const id of [a, b]) if ((await row('SELECT status FROM orders WHERE id = ?', id)).status !== 'in_work') throw new Error('стадію не змінено');
+  if (await p.$('.kn.pick')) throw new Error('після дії режим вибору має вимкнутись');
+  // «вся колонка» і вихід з вибору без змін
+  await p.click('[data-pick]'); await see(p, '.kn.pick [data-colall]');
+  const col = p.locator('.kn-col', { has: p.locator('[data-colall]') }).first();
+  await col.locator('[data-colall]').click();
+  const n = await col.locator('.kn-card').count();
+  await see(p, '[data-bulk]', 'Вибрано: ' + n);
+  p.once('dialog', d => d.dismiss()); await p.selectOption('[data-bulk] [data-bs]', 'cancelled'); await p.waitForTimeout(400); // «ні» в підтвердженні — нічого не міняється
+  if ((await row("SELECT COUNT(*) AS n FROM orders WHERE status = 'cancelled' AND id IN (?, ?)", a, b)).n) throw new Error('дія виконалась без підтвердження');
+  await p.click('[data-bulk] [data-bx]'); await p.click('[data-bulk] [data-bx]').catch(() => {});
+  await p.waitForTimeout(300);
+  if (await p.$('.kn.pick')) throw new Error('«Скасувати вибір» / «Вийти з вибору» не вимкнули режим');
+  await p.click('[data-v=' + (w < 600 ? 'table' : 'kanban') + ']');
+});
+// незбережені зміни: перемикання вкладки панелі спершу питає («ні» — лишаємось у формі, «так» — переходимо)
+await check('owner-tab-guard', 'OWNER', '/kabinet/admin#projects', W, async p => {
+  await p.locator('#admView .clk', { hasText: 'Квартира, тестовий обʼєкт' }).first().click(); await see(p, '[data-save]');
+  let asked = 0; const no = d => { asked++; d.dismiss(); };
+  p.once('dialog', no); await p.click('.adm-tabs [data-t=crm]'); await p.waitForTimeout(300);
+  if (asked) throw new Error('без змін питати не треба'); p.off('dialog', no);
+  await see(p, '[data-list]'); await p.click('.adm-tabs [data-t=projects]');
+  await p.locator('#admView .clk', { hasText: 'Квартира, тестовий обʼєкт' }).first().click(); await see(p, '[data-save]');
+  await p.fill('[data-f] [name=manager]', 'Незбережений текст');
+  let msg = ''; p.once('dialog', d => { msg = d.message(); d.dismiss(); });
+  await p.click('.adm-tabs [data-t=crm]'); await p.waitForTimeout(300);
+  if (!/незбережені зміни/.test(msg)) throw new Error('перемикання вкладки не попередило: ' + msg);
+  if (await p.inputValue('[data-f] [name=manager]') !== 'Незбережений текст') throw new Error('після «ні» форма має лишитись');
+  if ((await p.getAttribute('.adm-tabs [data-t=projects]', 'aria-pressed')) !== 'true' || !/#projects$/.test(p.url())) throw new Error('вкладка / адреса змінились попри «ні»');
+  p.once('dialog', d => d.accept()); await p.click('.adm-tabs [data-t=crm]'); await see(p, '[data-list]');
+  if ((await p.getAttribute('.adm-tabs [data-t=crm]', 'aria-pressed')) !== 'true') throw new Error('після «так» вкладка не перемкнулась');
+  // картка контакту — той самий сторож
+  await p.click('.adm-tabs [data-t=partners]'); await see(p, '[data-ptbl]');
+  await p.locator('[data-ptbl] .clk').first().click(); await see(p, '[data-pf]');
+  await p.fill('[data-pf] [name=city]', 'Чернетка міста');
+  msg = ''; p.once('dialog', d => { msg = d.message(); d.dismiss(); });
+  await p.click('.adm-tabs [data-t=crm]'); await p.waitForTimeout(300);
+  if (!/картці контакту/.test(msg) || !(await p.$('[data-pf]'))) throw new Error('картка контакту: вкладка перемкнулась без попередження');
+  p.once('dialog', d => d.accept()); await p.click('[data-back]'); await see(p, '[data-ptbl]');
+});
 await check('owner-staff', 'OWNER', '/kabinet/admin#team', W, async p => { await see(p, '.staff-t', 'Олег');
   await p.click('details.add summary'); await see(p, '[data-add]');
   const n = ++nAdd; await p.fill('[data-add] [name=name]', 'Тест Менеджер ' + n); await p.selectOption('[data-add] [name=role]', 'manager'); await p.fill('[data-add] [name=email]', 'test.manager' + n + '@example.com');
@@ -273,6 +426,12 @@ await check('client-object', 'C1', '/kabinet/obiekt', W, async p => {
   await see(p, 'main', 'Квартира, тестовий обʼєкт');
   const t = await p.textContent('main');
   if (/Протікає стояк|Олег \(прораб\)/.test(t)) throw new Error('клієнт бачить внутрішні поля (проблема/працівник)');
+  // камеру пропонуємо один раз: картка «Камера 24/7» з кнопкою; форма заявки внизу зʼявляється лише після кнопки
+  if (await p.locator('[data-cam-lead]').count() !== 1) throw new Error('кнопка «Підключити камеру» має бути одна');
+  if (await p.isVisible('#kb-lead')) throw new Error('форма заявки на камеру видна одразу — камера пропонується двічі');
+  await p.click('[data-cam-lead]'); await p.waitForTimeout(700);
+  if (!(await p.isVisible('#kb-lead #oPhone'))) throw new Error('кнопка картки не відкрила форму заявки на камеру');
+  if ((await p.$eval('#of', f => f.dataset.service)) !== 'camera') throw new Error('форма не про камеру');
 });
 await check('client-approve', 'C1', '/kabinet/proekty', [402], async p => {
   await see(p, '#kb', 'Дизайн квартири, тест'); await see(p, '#kb', 'чекає вашого погодження');
@@ -343,6 +502,51 @@ await check('staff-stays-uk', 'FORE', '/kabinet/team?lang=en', [402], async p =>
 console.log('Чужий інтерфейс → 403');
 await check('denied-team-admin', 'FORE', '/kabinet/admin', [402], async (p, r) => { if (r.status() !== 403) throw new Error('статус ' + r.status()); await see(p, 'h1', 'не для вашого'); });
 await check('denied-client-team', 'C1', '/kabinet/team', [402], async (p, r) => { if (r.status() !== 403) throw new Error('статус ' + r.status()); });
+
+// Довгі списки: 450 заявок понад сторінку (200) — «Показано 200 з N», «Показати ще», пошук по всій базі, лічильники канбану «з N»
+console.log('CRM: довгі списки');
+{
+  const ins = env.DB.db.prepare(`INSERT INTO orders (number, kind, name, phone, items, service, source, status) VALUES (?, 'lead', ?, ?, '[]', 'Ремонт квартири', 'вручну', ?)`);
+  env.DB.db.exec('BEGIN');
+  for (let i = 1; i <= 450; i++) ins.run('CAS-P' + String(i).padStart(4, '0'), 'Масовий ' + i, '0683' + String(i).padStart(6, '0'), i % 3 ? 'new' : 'in_work');
+  env.DB.db.exec('COMMIT');
+}
+await check('owner-crm-pages', 'OWNER', '/kabinet/admin#crm', [1440, 402], async p => {
+  const w = p.viewportSize().width, rowSel = w < 600 ? '.crm-list .kn-card' : 'table.adm tbody tr';
+  const count = () => p.locator(rowSel).count();
+  const until = (fn, arg, what) => p.waitForFunction(fn, arg, { timeout: 8000 }).catch(async () => { throw new Error(what + ' (підсумок: «' + (await p.textContent('[data-sum]')) + '», рядків ' + await count() + ')'); });
+  const sumIs = re => until(r => { const e = document.querySelector('[data-sum]'); return !!e && new RegExp(r).test(e.textContent) && !document.querySelector('[data-list][aria-busy]'); }, re, 'очікували «' + re + '»');
+  const table = async () => { await p.click('[data-v=table]'); await p.waitForSelector(rowSel); await p.waitForTimeout(350); }; // зміна вигляду — з плавним переходом
+  await sumIs('Показано 200 з'); await table();
+  await see(p, '[data-more]', 'Показати ще 200');
+  if (await count() !== 200) throw new Error('перша сторінка: ' + await count());
+  if ((await p.$eval('[data-more]', b => b.getBoundingClientRect().height)) < 43.5) throw new Error('«Показати ще» < 44 px');
+  // список / таблиця: догортали до кінця — наступна сторінка вантажиться сама, екран лишається на місці (не стрибає в новий кінець
+  // і не тягне одразу все)
+  const y0 = await p.evaluate(() => { document.querySelector('[data-more]').scrollIntoView({ block: 'end' }); return scrollY; });
+  await sumIs('Показано 400 з'); await p.waitForTimeout(500);
+  if (await count() !== 400 || !(await p.$('[data-more]'))) throw new Error('після наступної сторінки екран має лишитись на місці, а не довантажити все одразу: ' + await count());
+  if (Math.abs((await p.evaluate(() => scrollY)) - y0) > 4) throw new Error('екран стрибнув після довантаження');
+  await p.evaluate(() => document.querySelector('[data-more]').scrollIntoView({ block: 'end' }));
+  await sumIs('^\\d+ запис');
+  if (await p.$('[data-more]')) throw new Error('усе завантажено, а кнопка лишилась');
+  // пошук — на сервері: знаходить найстарішу заявку, якої на першій сторінці не було
+  await p.reload({ waitUntil: 'networkidle' }); await sumIs('Показано 200 з'); await table();
+  if (/Лід 1(?!\d)/.test(await p.textContent('[data-list]'))) throw new Error('«Лід 1» не мав бути на першій сторінці');
+  await p.fill('[data-f=q]', 'Лід 1'); await sumIs('^1 запис');
+  await see(p, '[data-list]', 'Лід 1');
+  await p.fill('[data-f=q]', ''); await sumIs('Показано 200 з');
+  // швидкий фільтр «Нові» — теж по всій базі; канбан: у заголовку колонки «200 з 3xx»
+  await p.click('[data-qf=new]'); await sumIs('Показано 200 з 3\\d\\d');
+  await p.click('[data-v=kanban]'); await p.waitForSelector('.kn-col[data-col=new] h3'); await p.waitForTimeout(350);
+  await see(p, '.kn-col[data-col=new] h3', '200 з 3\\d\\d'); await see(p, '[data-more]');
+  // канбан: сама не довантажується — лише кнопкою «Показати ще»
+  await p.waitForTimeout(400); await sumIs('Показано 200 з 3\\d\\d');
+  await p.click('[data-more]'); await sumIs('^3\\d\\d запис');
+  if (/ з /.test(await p.textContent('.kn-col[data-col=new] h3')) || await p.$('[data-more]')) throw new Error('канбан: після «Показати ще» має бути вся колонка');
+  await p.click('[data-qf=all]'); await sumIs('Показано 200 з');
+  if (w < 600) await table();
+});
 
 await browser.close(); server.close();
 console.log(fails ? `\n${fails} FAIL` : '\nALL OK');

@@ -11,6 +11,7 @@ import { escHtml, notifyTeam } from '../../_alerts.js';
 import { STAGE_STATUS, date, httpsUrl, int, noTable, notReady, stageStatus, txt } from '../../_account.js';
 import { audit, canSeeProject, need } from '../../_roles.js';
 import { limited } from '../../_rate.js';
+import { updateStages } from '../../_ver.js';
 
 const PERM = dict({ stage: 'projects.edit_stage', report: 'reports.upload', issue: 'issues.report', task: 'projects.edit_stage' });
 const MEDIA = /\/api\/media\/([0-9a-f]{24})$/;
@@ -61,17 +62,22 @@ export async function onRequestPost({ request, env }) {
 
   if (d.type === 'stage') {
     if (!['in_progress', 'review', 'done'].includes(d.status)) return bad('Невідомий статус етапу', 422);
-    const i = stages.findIndex(s => s.id === d.stage_id);
-    if (i < 0) return bad('Етап не знайдено', 404);
-    const before = { ...stages[i], status: stageStatus(stages[i]) };
-    stages[i] = { ...stages[i], status: d.status, progress: d.status === 'done' ? 100 : Math.max(Number(stages[i].progress) || 0, d.status === 'review' ? 90 : 10),
-      ...(d.status === 'review' && before.status !== 'review' ? { review_at: new Date().toLocaleString('sv-SE', { timeZone: 'Europe/Kyiv' }).slice(0, 16) } : {}),
-      ...(d.status === 'done' && !stages[i].end ? { end: new Date().toISOString().slice(0, 10) } : {}) };
-    await env.DB.prepare("UPDATE projects SET stages = ?, updated_at = datetime('now') WHERE id = ?").bind(JSON.stringify(stages), pid).run();
-    await audit(env, request, x, 'project.stage', 'projects', pid, { stage_id: before.id, status: before.status, progress: before.progress }, { stage_id: before.id, status: d.status, progress: stages[i].progress });
+    // «порівняй і заміни» (functions/_ver.js): зміна статусу лягає на свіжі етапи — не затирає погодження клієнта чи збереження менеджера
+    const r = await updateStages(env, pid, st => {
+      const i = st.findIndex(s => s && s.id === d.stage_id);
+      if (i < 0) return { error: 'Етап не знайдено', status: 404 };
+      const before = { ...st[i], status: stageStatus(st[i]) }, next = st.slice();
+      next[i] = { ...st[i], status: d.status, progress: d.status === 'done' ? 100 : Math.max(Number(st[i].progress) || 0, d.status === 'review' ? 90 : 10),
+        ...(d.status === 'review' && before.status !== 'review' ? { review_at: new Date().toLocaleString('sv-SE', { timeZone: 'Europe/Kyiv' }).slice(0, 16) } : {}),
+        ...(d.status === 'done' && !st[i].end ? { end: new Date().toISOString().slice(0, 10) } : {}) };
+      return { stages: next, before, stage: next[i] };
+    });
+    if (r.missing || r.error) return bad(r.error || 'Етап не знайдено', r.status || 404);
+    const { before, stage } = r;
+    await audit(env, request, x, 'project.stage', 'projects', pid, { stage_id: before.id, status: before.status, progress: before.progress }, { stage_id: before.id, status: d.status, progress: stage.progress });
     if (d.status === 'done' || d.status === 'review')
-      await notifyTeam(env, `${d.status === 'done' ? '✅ Етап виконано' : '👀 Етап на прийманні'}: <b>${escHtml(stages[i].name)}</b>\nОбʼєкт: ${escHtml(pr.title)}\nВідмітив: ${escHtml(x.name)}`);
-    return json({ ok: true, stage: { ...stages[i], status_label: STAGE_STATUS[d.status] } });
+      await notifyTeam(env, `${d.status === 'done' ? '✅ Етап виконано' : '👀 Етап на прийманні'}: <b>${escHtml(stage.name)}</b>\nОбʼєкт: ${escHtml(pr.title)}\nВідмітив: ${escHtml(x.name)}`);
+    return json({ ok: true, stage: { ...stage, status_label: STAGE_STATUS[d.status] } });
   }
 
   const photos = await photosOf(env, request, pid, d.photos);

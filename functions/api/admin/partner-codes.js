@@ -2,6 +2,7 @@
 // GET — список; POST — створити; PATCH — вимкнути/увімкнути, змінити знижку чи імʼя. Зміни — в audit_log.
 import { bad, json, normCode, readJSON, str } from '../../_lib.js';
 import { audit, need } from '../../_roles.js';
+import { TOO_MANY, staffLimited } from '../../_rate.js';
 
 const TR = Object.fromEntries([...'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя'].map((c, n) => [c,
   ['A','B','V','H','G','D','E','IE','ZH','Z','Y','I','I','I','K','L','M','N','O','P','R','S','T','U','F','KH','TS','CH','SH','SHCH','','IU','IA'][n]]));
@@ -20,6 +21,7 @@ export async function onRequestPost({ request, env }) {
   if (error) return error;
   let d;
   try { d = await readJSON(request, 4096); } catch { return bad('Некоректні дані'); }
+  if (await staffLimited(env, request, x, 'codes')) return bad(TOO_MANY, 429);
   const name = str(d.name, 120);
   let code;
   if (d.code && String(d.code).trim()) {
@@ -43,6 +45,7 @@ export async function onRequestPatch({ request, env }) {
   if (error) return error;
   let d;
   try { d = await readJSON(request, 4096); } catch { return bad('Некоректні дані'); }
+  if (await staffLimited(env, request, x, 'codes')) return bad(TOO_MANY, 429);
   const p = await env.DB.prepare('SELECT * FROM partner_codes WHERE code = ?').bind(normCode(d.code)).first();
   if (!p) return bad('Код не знайдено', 404);
   const n = { active: d.active == null ? p.active : (d.active ? 1 : 0), discount: d.discount == null ? p.discount : pct(d.discount), name: d.name == null ? p.name : str(d.name, 120) };

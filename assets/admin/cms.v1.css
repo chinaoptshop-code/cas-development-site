@@ -216,3 +216,31 @@
 .adm .crm-bulk{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:5;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin-top:10px;
   border-radius:14px;background:var(--bg2,var(--bg));border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.18)}
 .adm .crm-bulk select,.adm .crm-bulk .btn{min-height:44px}
+/* Одночасне редагування (cms.v1.js — conflictDialog, clashBox): діалог «… змінився, поки ви редагували» — компактний і на телефоні
+   (не на весь екран), три кнопки стовпцем ≥44 px; примітка про поля, які не перенесено */
+.adm dialog.cf-dlg{width:min(34rem,calc(100vw - 32px));max-width:calc(100vw - 32px);height:fit-content;max-height:calc(100dvh - 32px);margin:auto;-webkit-hyphens:manual;hyphens:manual;border:1px solid var(--line);border-radius:16px;padding:20px;overflow:auto}
+.adm .cf-dlg h2{margin:0 0 10px;font-size:var(--fs-h3)}
+.adm .cf-dlg p{margin:0 0 10px;font-size:var(--fs-small);max-width:none;line-height:1.5;-webkit-hyphens:manual;hyphens:manual}
+.adm .cf-dlg .cf-who{color:var(--cream)}
+.adm .cf-act{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.adm .cf-act .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px}
+@media (max-width:700px){.adm .cf-act{flex-direction:column}.adm .cf-act .btn{width:100%}}
+.adm .cf-note{border-color:#e07a6a}
+.adm .cf-note ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px}
+/* Канбан: «Вибрати кілька» — режим вибору для масових дій (прапорець на картці й «вся колонка»); сторінки довгих списків («Показати ще») */
+.adm .kn-top{flex-wrap:nowrap;align-items:center;gap:10px;margin:0 0 8px}
+.adm .kn-top .kn-help{margin:0;-webkit-hyphens:manual;hyphens:manual}
+.kn.pick .kn-card .row.sp{justify-content:flex-start;gap:4px}
+.kn.pick .kn-card .row.sp>b{white-space:nowrap}
+.kn.pick .kn-card .row.sp>small{margin-left:auto;text-align:right}
+.adm button.kn-pick{min-height:36px;padding:4px 14px;font-size:var(--fs-small);color:var(--cream);flex:none}
+.adm button.kn-pick[aria-pressed=true]{background:var(--brass);border-color:var(--brass);color:var(--ink)}
+.kn.pick .kn-card{cursor:pointer}
+.kn.pick .qa,.kn.pick .crm-take{display:none}
+.kn-card.picked{border-color:var(--brass);background:rgba(191,145,72,.12)}
+.adm .kn-col h3>span{display:inline-flex;align-items:center}
+.adm .kn-col h3 .sel-l{margin:-10px 2px -10px -10px}
+.adm .crm-bulk.idle select,.adm .crm-bulk.idle [data-bni]{opacity:.5}
+.adm .crm-pg{margin:12px 0 0;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;max-width:none}
+.adm .crm-pg .cmp-more{margin:0;background:none;color:var(--cream);font:inherit;font-size:var(--fs-small);cursor:pointer}
+@media (pointer:coarse),(max-width:700px){.adm button.kn-pick{min-height:44px}.adm .kn-top{flex-wrap:wrap}}

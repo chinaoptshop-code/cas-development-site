@@ -9,6 +9,7 @@
 // Зміна tg/email/phone: хоча б один контакт (422), не чужий (409); привʼязаний акаунт відвʼязується, його сесії анулюються.
 import { bad, bumpSession, clientByVerifiedPhone, json, normalizePhone, readJSON, str } from '../../_lib.js';
 import { ASSIGNABLE, PERMS, ROLES, audit, need, noTable } from '../../_roles.js';
+import { TOO_MANY, staffLimited } from '../../_rate.js';
 
 const tgOk = v => (v == null || v === '' ? null : /^\d{1,20}$/.test(String(v).trim()) ? String(v).trim() : undefined);
 const emailOk = v => (v == null || v === '' ? null : /^[^\s@]{1,64}@[^\s@]{1,190}\.[a-z]{2,}$/i.test(String(v).trim()) ? String(v).trim().toLowerCase() : undefined);
@@ -67,6 +68,7 @@ export async function onRequestPost({ request, env }) {
   if (error) return error;
   let d;
   try { d = await readJSON(request, 8 * 1024); } catch { return bad('Некоректні дані'); }
+  if (await staffLimited(env, request, x, 'staff')) return bad(TOO_MANY, 429);
   const name = str(d.name, 80);
   if (!name) return bad('Вкажіть імʼя працівника', 422);
   if (d.role === 'owner') return bad('Роль «Власник» — лише одна, її не призначають', 403);
@@ -93,6 +95,7 @@ export async function onRequestPatch({ request, env }) {
   if (error) return error;
   let d;
   try { d = await readJSON(request, 8 * 1024); } catch { return bad('Некоректні дані'); }
+  if (await staffLimited(env, request, x, 'staff')) return bad(TOO_MANY, 429);
   const s = await env.DB.prepare('SELECT * FROM staff WHERE id = ?').bind(Number(d.id) || 0).first();
   if (!s) return bad('Працівника не знайдено', 404);
   if (s.role === 'owner') return bad('Власника змінити не можна (задається змінною OWNER_TG_ID / OWNER_EMAIL)', 403);

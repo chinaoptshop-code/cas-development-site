@@ -451,6 +451,8 @@ describe('CRM обʼєктів: шаблони етапів, дата здачі
   const proj = async (body, cookie = k.O) => call(ce, 'POST', '/api/admin/projects', { cookie, body: { type: 'project', client_id: cl, ...body } });
   const list = async (qs = '', cookie = k.O) => (await call(ce, 'GET', '/api/admin/projects' + qs, { cookie })).data;
   const get = async (id, cookie = k.O) => (await list('', cookie)).projects.find(p => p.id === id);
+  // «Зберегти проєкт»: форма повертає версію, з якою її відкрили (functions/_ver.js)
+  const save = async (id, stages, extra = {}, cookie = k.O) => call(ce, 'PATCH', '/api/admin/projects', { cookie, body: { id, ver: (await get(id)).ver, stages, ...extra } });
   let D1, R1, B1, O1;
 
   await it('GET віддає шаблони етапів за типом (одне джерело правди — сервер)', async () => {
@@ -515,14 +517,29 @@ describe('CRM обʼєктів: шаблони етапів, дата здачі
   });
 
   describe('CRM обʼєктів: погодження етапу дизайн-проєкту (approved_at, revisions)');
-  await it('approved_at і revisions зберігаються в етапі; некоректні — відкидаються; клієнт бачить «погоджено»', async () => {
+  await it('погодження менеджером (approve) і правки (rev_delta) зберігаються в етапі; некоректні — відкидаються; клієнт бачить «погоджено»', async () => {
     const st = (await get(D1)).stages;
-    st[0].approved_at = day(-2); st[0].revisions = 3; st[1].approved_at = 'вчора'; st[1].revisions = 500; st[2].revisions = -4;
-    eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: D1, stages: st } })).status, 200);
+    st[0].approve = day(-2); st[0].rev_delta = 3; st[1].approve = 'вчора'; st[1].rev_delta = 500; st[2].rev_delta = -4;
+    eq((await save(D1, st)).status, 200);
     const s2 = JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', D1)).stages);
     eq([s2[0].approved_at, s2[0].revisions], [day(-2), 3]);
     ok(!('approved_at' in s2[1])); eq(s2[1].revisions, 99, 'обмеження 99'); ok(!('revisions' in s2[2]), 'відʼємне → без поля');
     eq(s2.map(s => s.id), st.map(s => s.id), 'id етапів не змінились');
+    eq(s2[0].hist.map(h => [h.act, h.by]), [['approve', 'Власник']], 'позначка менеджера — в історії етапу');
+    // поля approved_at / revisions з форми для збереженого етапу ігноруються — лише явні дії
+    const st2 = (await get(D1)).stages; st2[0].approved_at = day(-9); st2[0].revisions = 0; delete st2[1].revisions; st2[1].approved_at = day(-1);
+    eq((await save(D1, st2)).status, 200);
+    const s3 = JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', D1)).stages);
+    eq([s3[0].approved_at, s3[0].revisions, s3[1].approved_at, s3[1].revisions], [day(-2), 3, undefined, 99]);
+    const st3 = (await get(D1)).stages; st3[1].rev_delta = -99; st3[1].approve = true;
+    eq((await save(D1, st3)).status, 200);
+    const s4 = JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', D1)).stages);
+    ok(!('revisions' in s4[1])); eq(s4[1].approved_at, new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Kyiv' }));
+    const st4 = (await get(D1)).stages; st4[1].approve = false;
+    eq((await save(D1, st4)).status, 200);
+    const s5 = JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', D1)).stages);
+    ok(!('approved_at' in s5[1])); eq(s5[1].hist.map(h => h.act), ['approve', 'unapprove']);
+    eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: D1, stages: st4 } })).status, 428, 'список етапів без версії не приймаємо');
     const c = await call(ce, 'GET', '/api/account/projects', { cookie: k.C });
     eq(c.data.projects.find(p => p.id === D1).stages[0].approved_at, day(-2));
   });
@@ -551,7 +568,7 @@ describe('CRM обʼєктів: шаблони етапів, дата здачі
     ok(await cq("SELECT 1 FROM audit_log WHERE action = 'project.approve' AND entity_id = ? AND role = 'client'", String(D1)));
     eq((await ap({ stage_id: sid })).data.already, true, 'повторно — без змін');
     // збереження проєкту в адмінці не губить «погодив клієнт»
-    eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: D1, stages: (await get(D1)).stages } })).status, 200);
+    eq((await save(D1, (await get(D1)).stages)).status, 200);
     eq(JSON.parse((await cq('SELECT stages FROM projects WHERE id = ?', D1)).stages)[2].approved_by, 'client');
   });
   await it('погодження клієнтом — лише для дизайн-проєкту', async () => {
@@ -684,16 +701,16 @@ describe('CRM обʼєктів: шаблони етапів, дата здачі
       const st = (await get(AR)).stages;
       st[0].staff_id = B; st[0].rev_max = 2; st[0].end = day(-1); st[1].rev_max = 500;
       bot.reset();
-      eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: AR, stages: st } })).status, 200);
+      eq((await save(AR, st)).status, 200);
       const s2 = await stg(AR);
       eq([s2[0].staff_id, s2[0].rev_max, s2[1].rev_max], [B, 2, 20]);
       ok(await cq('SELECT 1 FROM project_staff WHERE project_id = ? AND staff_id = ?', AR, B), 'у команді');
       ok(bot.calls.some(c => c.chat_id === '555' && /Вам призначено етап/.test(c.text)), 'Telegram відповідальному етапу');
       bot.reset();
-      eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: AR, stages: (await get(AR)).stages } })).status, 200);
+      eq((await save(AR, (await get(AR)).stages)).status, 200);
       ok(!bot.calls.some(c => /Вам призначено етап/.test(c.text)), 'повторне збереження — без повторного сповіщення');
       const bad1 = (await get(AR)).stages; bad1[2].staff_id = 99999;
-      eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: AR, stages: bad1 } })).status, 422);
+      eq((await save(AR, bad1)).status, 422);
       eq((await call(ce, 'POST', '/api/admin/projects', { cookie: k.O, body: { type: 'project', client_id: cl, title: 'x', service: 'arch', stages: [{ name: 'Е', staff_id: 99999 }] } })).status, 422);
     });
     await it('кабінет працівника: «Мій етап» у «Сьогодні» (прострочений — urgent), відповідальний і правки — в етапах обʼєкта', async () => {
@@ -735,7 +752,7 @@ describe('CRM обʼєктів: шаблони етапів, дата здачі
       const r3 = await rv({ note: 'Третя правка' });
       eq([r3.data.stage.revisions, r3.data.stage.over], [3, true], 'понад 2 круги за договором');
       // адмінка зберігає коментар клієнта
-      eq((await call(ce, 'PATCH', '/api/admin/projects', { cookie: k.O, body: { id: AR, stages: (await get(AR)).stages } })).status, 200);
+      eq((await save(AR, (await get(AR)).stages)).status, 200);
       s0 = (await stg(AR))[0]; eq([s0.revisions, s0.rev_note], [3, 'Третя правка']);
       eq(s0.hist.map(h => h.act), ['revise', 'revise', 'revise'], 'історія етапу зберігається адмінкою');
       ok(!('hist' in (await call(ce, 'GET', '/api/account/projects', { cookie: k.C })).data.projects.find(x => x.id === AR).stages[0]), 'клієнт історію не бачить');
@@ -866,5 +883,7 @@ await import('./partners.mjs');
 await import('./crm2.mjs');
 // Аудит безпеки 19.11.2026: підтверджені контакти працівників, вхід за номером, журнал етапу, довідники, заголовки — спільний звіт
 await import('./sec.mjs');
+// CRM v3 (19.11.2026): версії карток і одночасне редагування, ліміти записів працівників, сторінки довгих списків — спільний звіт
+await import('./crm3.mjs');
 
 process.exit(report() ? 1 : 0);

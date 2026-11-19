@@ -12,7 +12,8 @@
       body: opts.body ? JSON.stringify(opts.body) : undefined
     }).then(function (r) {
       return r.json().catch(function () { return {}; }).then(function (d) {
-        if (!r.ok) throw new Error(d.error ? T(d.error) : T('Помилка') + ' ' + r.status);
+        // status і data — для тих, кому потрібна не лише фраза (напр. 409 «запис змінили, поки ви редагували» в адмінці)
+        if (!r.ok) { var e = new Error(d.error ? T(d.error) : T('Помилка') + ' ' + r.status); e.status = r.status; e.data = d; throw e; }
         return d;
       });
     });
