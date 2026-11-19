@@ -181,6 +181,11 @@ def go_btn(lang, scene):
 
 
 def apply(s, rel):
+    # перемикач сцен <!--la:tab--> у блок дописують пізніші кроки (landanim/resort/waterhouse, ~0,35 КБ): його розмір беремо з наявного
+    # блока — інакше стислий варіант «вміщувався» лише тут, а готова сторінка виходила за бюджет (19.11.2026: +0,3 КБ srcset нових ширин фото)
+    old = RX.search(s)
+    tab = re.search(r'<!--la:tab-->.*?<!--/la:tab-->', old.group(0), re.S) if old else None
+    tab = len(tab.group(0).encode()) if tab else 0
     s = GO_RX.sub('', RX.sub('', s))
     if rel not in PAGES:
         return s
@@ -204,7 +209,9 @@ def apply(s, rel):
             go, gk = go_btn(lang, scene), mb.end(1)
     for tier in (0, 1, 2, 3):
         b = block(lang, scene, compact, tier, MAT.get(rel, ''), VAR.get(rel, 'new'), CFG.get(rel))
-        if len(fx.strip(s).encode()) + len(b.encode()) + len(go.encode()) + 30 <= limit - (RESERVE if tier == 0 else 0):  # +40 — ?v= від chrome.versions
+        # +30 — ?v= від chrome.versions; повний текст (tier 0) має запас RESERVE; стислі — з перемикачем сцен і до межі ui.py
+        # (той рахує КБ з одним знаком: 64,04 → 64,0 — ще в бюджеті, тому +50 байтів)
+        if len(fx.strip(s).encode()) + len(b.encode()) + len(go.encode()) + 30 <= (limit - RESERVE if tier == 0 else limit + 50 - tab):
             s = s[:k].rstrip('\n') + b + '\n' + s[k:]
             return s[:gk] + go + s[gk:] if go and gk < k else s
     return s
