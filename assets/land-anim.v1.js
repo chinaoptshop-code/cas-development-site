@@ -293,15 +293,21 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       vbT = target(i);
       if (i === N - 1) cl('la_end');
     }
-    if (!vb || RM || force) vb = vbT.slice();
-    tick();
+    if (!vb || RM || force) { vb = vbT.slice(); cB = null; }
+    if (!raf) tick();
   }
+  // камера (QA 18.11.2026): перехід viewBox за часом — 650 мс easeInOutCubic замість «0.12 відстані за кадр»: однаковий темп на 60/120 Гц і на повільному телефоні
+  // (там кадрів менше, а не довший хвіст субпіксельних перемальовок усього SVG); нова ціль посеред руху — з поточної точки, без зупинки (easeOut)
+  var cA = null, cB = null, cT = 0, cE = 0, cS = '';
   function tick() {
-    raf = 0;
-    var dn = 0;
-    for (var j = 0; j < 4; j++) { var dv = vbT[j] - vb[j]; if (Math.abs(dv) > 0.5) { vb[j] += dv * 0.14; dn = 1; } else vb[j] = vbT[j]; }
-    svg.setAttribute('viewBox', vb.map(function (v) { return v.toFixed(1); }).join(' '));
-    if (dn && !RM) raf = W.requestAnimationFrame(tick);
+    raf = 0; if (!vbT || !vb) return;
+    var t0 = W.performance ? W.performance.now() : Date.now();
+    if (!cB || cB.join() !== vbT.join()) { cE = cB && cA && cS && t0 - cT < 650 ? 1 : 0; cA = vb.slice(); cB = vbT.slice(); cT = t0; }
+    var t = RM ? 1 : Math.min(1, (t0 - cT) / 650), e = cE ? 1 - Math.pow(1 - t, 3) : t < 0.5 ? 4 * t * t * t : 1 - Math.pow(2 - 2 * t, 3) / 2;
+    for (var j = 0; j < 4; j++) vb[j] = cA[j] + (cB[j] - cA[j]) * e;
+    var s = vb.map(function (v) { return v.toFixed(1); }).join(' ');
+    if (s !== cS) { cS = s; svg.setAttribute('viewBox', s); }
+    if (t < 1) raf = W.requestAnimationFrame(tick);
   }
   function raw() { // прогрес за прокруткою, етапи (згладжування, ліміт швидкості й «один етап за клацання» — casDrive у site-chrome.v1.js)
     if (!run) return null;
