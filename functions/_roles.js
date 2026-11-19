@@ -40,7 +40,8 @@ const FIELD = ['projects.view_assigned', 'projects.edit_stage', 'clients.contact
 // home — куди веде вхід. Власник має все; staff.manage, audit.view і dashboard.studio — лише власник.
 export const ROLES = {
   owner: { label: 'Власник', home: '/kabinet/admin', perms: ALL },
-  manager: { label: 'Менеджер', home: '/kabinet/team', perms: ['panel.admin', 'leads.view_all', 'leads.edit', 'leads.assign', 'orders.view', 'orders.edit',
+  // CRM ведуть двоє — власник і менеджер (Михайло 18.11.2026): менеджер після входу одразу в панелі CRM
+  manager: { label: 'Менеджер', home: '/kabinet/admin', perms: ['panel.admin', 'leads.view_all', 'leads.edit', 'leads.assign', 'orders.view', 'orders.edit',
     'clients.view', 'clients.contacts', 'finance.view', 'finance.edit', 'projects.view_all', 'projects.edit', 'projects.edit_stage',
     'reports.upload', 'issues.report', 'partners.manage', 'partners.base', 'cms.edit', 'staff.view', 'export'] },
   designer: { label: 'Дизайнер', home: '/kabinet/team', perms: ['leads.view_assigned', 'leads.edit', ...FIELD] },

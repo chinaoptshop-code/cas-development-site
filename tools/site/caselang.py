@@ -281,7 +281,8 @@ def page_path(lang, slug):
 def build(slug, lang):
     import chrome
     t = Tr(lang, slug)
-    s = open(os.path.join(ROOT, 'proekty', slug + '.html'), encoding='utf-8').read()
+    import fx  # uk-сторінка без «(≈ … ₴)»: ключі перекладу — чистий uk-текст; другу валюту мови ставить chrome.apply() (tools/site/fx.py)
+    s = fx.strip(open(os.path.join(ROOT, 'proekty', slug + '.html'), encoding='utf-8').read())
     u = B + page_path(lang, slug)
     head, body = s.split('</head>', 1)
     head = re.sub(r'<title>(.*?)</title>', lambda m: '<title>' + html.escape(t(html.unescape(m.group(1))), quote=False) + '</title>', head, count=1)

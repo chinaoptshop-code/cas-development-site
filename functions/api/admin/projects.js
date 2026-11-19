@@ -35,6 +35,7 @@ import { escHtml, notifyStaff } from '../../_alerts.js';
 import { audit, canSeeProject, need, orderScope, projectScope, shapeProject, staffById } from '../../_roles.js';
 import { limited } from '../../_rate.js';
 import { leadContact, projectContacts } from '../../_partners.js';
+import { askReview, kyivStamp, remindStage } from '../../_nudges.js';
 
 // arch — архітектурний проєкт (будинок, комерційна будівля): ескіз, АР, КР, інженерні розділи, генплан, дозвільні документи
 const SERVICES = ['design', 'arch', 'repair', 'build', 'furnish', 'landscape', 'other'];
@@ -85,6 +86,11 @@ function stagesOf(v) {
     const rn = txt(s && s.rev_note, 1000), ra = date(s && s.rev_at);
     if (rn && ra) { out.rev_note = rn; out.rev_at = ra; }
     // історія погоджень і правок етапу (пише кабінет клієнта й нагадування) — зберігаємо як є, до 30 записів
+    // нагадування клієнту (functions/_nudges.js): коли етап став «Приймання», останнє нагадування, скільки автоматичних
+    const stamp = v => (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/.test(String(v || '')) ? String(v) : null);
+    if (stamp(s && s.review_at)) out.review_at = stamp(s.review_at);
+    if (stamp(s && s.remind_at)) out.remind_at = stamp(s.remind_at);
+    if (int(s && s.remind_n) > 0) out.remind_n = Math.min(int(s.remind_n), 99);
     const hist = histOf(s && s.hist);
     if (hist.length) out.hist = hist;
     return out;
@@ -274,7 +280,7 @@ export async function onRequestGet({ request, env }) {
   });
 }
 
-const PERM = { from_lead: 'projects.edit', project: 'projects.edit', document: 'projects.edit', payment: 'finance.edit', report: 'reports.upload', partner: 'partners.manage', issue: 'projects.edit', task: 'projects.edit_stage' };
+const PERM = { remind: 'projects.edit', review_request: 'projects.edit', from_lead: 'projects.edit', project: 'projects.edit', document: 'projects.edit', payment: 'finance.edit', report: 'reports.upload', partner: 'partners.manage', issue: 'projects.edit', task: 'projects.edit_stage' };
 const deny = p => bad('Немає права: ' + p, 403);
 const permOk = (x, type) => (type === 'task' ? canTask(x) : x.can(PERM[type]));
 
@@ -386,6 +392,15 @@ export async function onRequestPost({ request, env }) {
   if (!permOk(x, d.type)) return deny(PERM[d.type]);
   return run(async () => {
     if (d.type === 'project') return newProject(env, request, x, d);
+    if (d.type === 'remind' || d.type === 'review_request') {
+      // клієнту: «етап чекає погодження» (не частіше 1/48 год) або прохання про відгук (один раз) — functions/_nudges.js;
+      // channel порожній — Telegram-бот; без привʼязки — {sent: false, text}: менеджер надсилає сам і повідомляє канал (журнал)
+      const pr = await env.DB.prepare('SELECT * FROM projects WHERE id = ?').bind(int(d.project_id)).first();
+      if (!pr || !await canSeeProject(env, x, pr.id)) return bad('Проєкт не знайдено', 404);
+      const ch = d.channel ? String(d.channel) : null;
+      const r = d.type === 'remind' ? await remindStage(env, request, x, pr, String(d.stage_id || ''), { channel: ch }) : await askReview(env, request, x, pr, { channel: ch });
+      return r.error ? json({ error: r.error, wait_h: r.wait_h }, r.status) : json(r);
+    }
     if (d.type === 'from_lead') {
       // заявка → проєкт однією кнопкою: клієнт, контакт, джерело (orders.source/ref_path через order_id), тип і площа з пропозиції
       const args = [];
@@ -561,12 +576,18 @@ export async function onRequestPatch({ request, env }) {
     if (money(d) && !x.can('finance.edit')) return deny('finance.edit');
     const { p, error: e2 } = projectFields(d, cur);
     if (e2) return bad(e2, 422);
+    if (has(d, 'stages')) { // етап щойно став «Приймання» → review_at (відлік для нагадування клієнту)
+      const prev = new Map(JSON.parse(cur.stages || '[]').map(y => [y.id, y]));
+      p.stages = JSON.stringify(JSON.parse(p.stages).map(y => (y.status === 'review' && (!prev.get(y.id) || prev.get(y.id).status !== 'review') ? { ...y, review_at: kyivStamp() } : y)));
+    }
     const ss = has(d, 'stages') ? await checkStageStaff(env, p.stages, cur.stages) : { fresh: [] };
     if (ss.error) return ss.error;
     const cam = cameraFields(d);
     if (cam && cam.error) return bad(cam.error, 422);
     await env.DB.prepare(`UPDATE projects SET title = ?, service = ?, address = ?, area = ?, status = ?, stages = ?, next_step = ?, next_date = ?, manager = ?, updated_at = datetime('now') WHERE id = ?`)
       .bind(p.title, p.service, p.address ?? null, p.area ?? null, p.status, p.stages, p.next_step ?? null, p.next_date ?? null, p.manager ?? null, cur.id).run();
+    if (p.status !== cur.status && (p.status === 'done' || cur.status === 'done')) // для прохання про відгук через ~2 доби (migrations/0016)
+      await tolerant(env.DB.prepare(`UPDATE projects SET done_at = ${p.status === 'done' ? "datetime('now')" : 'NULL'} WHERE id = ?`).bind(cur.id).run());
     // камера — окремо: до міграції 0008 решта проєкту зберігається, а камера — ні (поле порожнє — нічого не ламаємо)
     if (cam && (cam.url || cam.note || cur.camera_url !== undefined)) await env.DB.prepare('UPDATE projects SET camera_url = ?, camera_note = ? WHERE id = ?').bind(cam.url, cam.note, cur.id).run();
     if (money(d)) { const m = contractOf(d); await env.DB.prepare('UPDATE projects SET contract_amount = ?, contract_currency = ? WHERE id = ?').bind(m.amount, m.currency, cur.id).run(); }

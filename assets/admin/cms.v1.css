@@ -202,3 +202,17 @@
 .adm .ct-links li{padding:6px 0}
 .adm .ct-add input{min-width:12rem}
 .adm .ct-res{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
+/* КП і нагадування клієнту: текст + кнопки месенджерів; масові дії CRM */
+.adm .kp-text{width:100%;box-sizing:border-box;font:inherit;font-size:16px;border-radius:14px;padding:10px 12px;margin:6px 0}
+.adm .share-bar{flex-wrap:wrap;gap:8px;margin:0 0 10px}
+.adm .share-bar .btn{min-height:44px;display:inline-flex;align-items:center}
+.adm .crm-offer h4{margin:12px 0 0;font-size:.95rem}
+.adm .pj-rem .btn,.adm .pj-review .btn,.adm .crm-offer .btn{min-height:44px}
+.adm .pj-rem,.adm .pj-review{flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 10px}
+.adm input.sel{width:22px;height:22px;accent-color:var(--brass);cursor:pointer;margin:0}
+.adm .sel-l{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;margin:-10px 0 -10px -10px}
+.adm td:first-child>input.sel{position:relative}
+.adm td:first-child>input.sel::before{content:"";position:absolute;inset:-11px}
+.adm .crm-bulk{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:5;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin-top:10px;
+  border-radius:14px;background:var(--bg2,var(--bg));border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.adm .crm-bulk select,.adm .crm-bulk .btn{min-height:44px}

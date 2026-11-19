@@ -26,6 +26,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'tools', 'ui'))
 import ui  # noqa: E402  бюджети сторінок (BUDGET, kind)
+import fx  # noqa: E402  «(≈ …)» біля цін не забирає місце блоку: chrome.apply() ставить її в межах бюджету останньою (tools/site/fx.py)
 
 RESERVE = 1024        # запас байтів після вставки повного тексту, інакше — лише назви етапів
 
@@ -203,7 +204,7 @@ def apply(s, rel):
             go, gk = go_btn(lang, scene), mb.end(1)
     for tier in (0, 1, 2, 3):
         b = block(lang, scene, compact, tier, MAT.get(rel, ''), VAR.get(rel, 'new'), CFG.get(rel))
-        if len(s.encode()) + len(b.encode()) + len(go.encode()) + 30 <= limit - (RESERVE if tier == 0 else 0):  # +40 — ?v= від chrome.versions
+        if len(fx.strip(s).encode()) + len(b.encode()) + len(go.encode()) + 30 <= limit - (RESERVE if tier == 0 else 0):  # +40 — ?v= від chrome.versions
             s = s[:k].rstrip('\n') + b + '\n' + s[k:]
             return s[:gk] + go + s[gk:] if go and gk < k else s
     return s
