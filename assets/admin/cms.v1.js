@@ -315,6 +315,24 @@
   window.CASAdminKit = { esc: esc, money: money, toast: toast, api: function (p, o) { return api(p, o); }, can: can, transition: transition, reduced: reduced,
     openClient: function (id) { if (window.CASStudio && window.CASStudio.clientCard) window.CASStudio.clientCard(id); } };
 
+  // Надіслати клієнту готовий текст зі свого месенджера (сервер нічого не шле): текст копіюється в буфер, відкривається чат.
+  // Telegram: чат за @username або номером (текст вставити), Viber — чернетка, WhatsApp — текст у полі. onSent(канал) — записати в журнал.
+  function shareBar(text, phone, tgu, onSent) {
+    var d = digits(phone), e = encodeURIComponent(text), u = tgu && /^[a-z][a-z0-9_]{3,31}$/i.test(tgu) ? tgu : '';
+    var L = [['telegram', 'Telegram', u ? 'https://t.me/' + u : d.length >= 9 ? 'https://t.me/+' + d : 'https://t.me/share/url?url=' + encodeURIComponent('https://cas-develop.com') + '&text=' + e],
+      ['viber', 'Viber', d.length >= 9 ? 'viber://chat?number=%2B' + d + '&draft=' + e : ''], ['whatsapp', 'WhatsApp', d.length >= 9 ? 'https://wa.me/' + d + '?text=' + e : '']];
+    var w = document.createElement('div'); w.className = 'row share-bar';
+    w.innerHTML = L.filter(function (x) { return x[2]; }).map(function (x) { return '<a class="btn sm ghost" data-sh="' + x[0] + '" href="' + esc(x[2]) + '" target="_blank" rel="noopener">' + x[1] + '</a>'; }).join('') +
+      '<button type="button" class="btn sm ghost" data-sh="copy">Скопіювати</button>';
+    $$('[data-sh]', w).forEach(function (b) { b.onclick = function (ev) {
+      var t = (w.previousElementSibling && w.previousElementSibling.tagName === 'TEXTAREA') ? w.previousElementSibling.value : text;
+      if (b.tagName === 'A' && t !== text) b.href = b.href.replace(e, encodeURIComponent(t));
+      try { navigator.clipboard.writeText(t); } catch (er) { /* noop */ }
+      if (b.dataset.sh === 'copy') { ev.preventDefault(); toast('Текст скопійовано'); }
+      if (onSent) onSent(b.dataset.sh === 'telegram' ? 'telegram' : b.dataset.sh);
+    }; });
+    return w;
+  }
   // ---------- CRM ----------
   // Джерело заявки: місце форми — частина source після «#» (assets/lead-form.v1.js), основна форма сторінки — «form»,
   // внесені вручну — «manual», Оздоба — «order» (functions/api/admin/crm.js, placeOf).
@@ -375,7 +393,8 @@
     var FKEYS = ['kind', 'status', 'assignee', 'staff', 'city', 'min', 'max', 'place', 'ref', 'period'];
     var nActive = function () { return FKEYS.filter(function (k) { return S[k]; }).length + (S.due ? 1 : 0) + (S.overdue ? 1 : 0); };
     var myId = ME && ME.id ? String(ME.id) : '';
-    var QUICK = [['all', 'Усі'], ['new', 'Нові'], ['due', 'Звʼязатися сьогодні'], ['overdue', 'Прострочені']].concat(myId && can('leads.view_all') ? [['mine', 'Мої']] : []);
+    // власник і менеджер: «Мої» — одразу після «Усі» (призначені мені), решта — швидкі стани
+    var QUICK = [['all', 'Усі']].concat(myId && can('leads.view_all') ? [['mine', 'Мої']] : []).concat([['new', 'Нові'], ['due', 'Звʼязатися сьогодні'], ['overdue', 'Прострочені']]);
     var QSET = { all: {}, new: { status: 'new' }, due: { due: true }, overdue: { overdue: true }, mine: { staff: myId } };
     var clearF = function () { FKEYS.concat(['from', 'to']).forEach(function (k) { S[k] = ''; }); S.due = false; S.overdue = false; };
     // активний швидкий фільтр: задано рівно його поля (пошук не враховуємо)
@@ -403,6 +422,8 @@
       // швидкі фільтри: один дотик замість розгортання панелі (ставлять ті самі S.*, що й панель)
       '<div class="crm-q" role="group" aria-label="Швидкі фільтри">' + QUICK.map(function (q) { return '<button type="button" class="pill" data-qf="' + q[0] + '" aria-pressed="false">' + q[1] + '</button>'; }).join('') + '</div>' +
       '<p class="muted crm-sum" data-sum aria-live="polite"></p><div data-list></div>' +
+      '<div class="crm-bulk row" data-bulk hidden role="region" aria-label="Масові дії"><span>Вибрано: <b data-bn>0</b></span><select data-bs aria-label="Стадія для вибраних"></select>' +
+      '<select data-ba aria-label="Відповідальний для вибраних"></select><button type="button" class="btn sm ghost" data-bni>Не цікаво</button><button type="button" class="btn sm ghost" data-bx>Скасувати вибір</button></div>' +
       '<dialog data-dlg aria-label="Заявка"></dialog><datalist id="crmAs"></datalist>';
     var list = $('[data-list]', L), dlg = $('[data-dlg]', L);
     // період → from/to (дати за Києвом)
@@ -548,24 +569,26 @@
     function draw() {
       if (!rows.length) { list.innerHTML = '<p class="muted">Записів немає' + (S.place || S.period || S.status || S.kind || S.q || S.due || S.assignee ? ' за цими фільтрами. <button class="btn ghost sm" type="button" data-clr>Скинути фільтри</button>' : '. Нові замовлення з Оздоби зʼявляються тут автоматично; заявки — з форм сайту або кнопкою «+ Заявка».') + '</p>'; var c = $('[data-clr]', list); if (c) c.onclick = function () { $('[data-reset]', L).click(); }; return; }
       if (S.view === 'table' && narrow) { // телефон: список карток зі статусом — без горизонтальної прокрутки
-        list.innerHTML = '<div class="crm-list">' + rows.map(function (r) { return takeB(r) ? card(r) : card(r).replace(/<\/div>$/, '<div class="crm-st">' + stSelect(r) + '</div></div>'); }) // нова — лише «Взяти в роботу», стадія — після.join('') + '</div>';
-        bindCards(list);
+        // нова — лише «Взяти в роботу», стадія — після; ліворуч — вибір для масових дій
+        list.innerHTML = '<div class="crm-list">' + rows.map(function (r) { return (takeB(r) ? card(r) : card(r).replace(/<\/div>$/, '<div class="crm-st">' + stSelect(r) + '</div></div>')).replace('<span class="row sp">', '<span class="row sp"><label class="sel-l">' + selBox(r) + '</label>'); }).join('') + '</div>';
+        bindCards(list); bindSel(list);
         $$('[data-st]', list).forEach(function (s) { s.onchange = function () { patch({ id: +s.closest('.kn-card').dataset.id, status: s.value }); }; });
         tickSla(list);
         return;
       }
       if (S.view === 'table') {
-        list.innerHTML = '<div class="tscroll"><table class="adm"><thead><tr><th>Номер</th><th>Дата</th><th>Клієнт</th><th>Що</th><th>Джерело</th><th>Сума</th><th>Статус</th><th>Відповідальний</th><th>Реакція / SLA</th><th>Контакт</th></tr></thead><tbody>' + rows.map(function (r) {
-          return '<tr class="clk" data-id="' + r.id + '"><td><b>' + esc(r.number) + '</b><br><small>' + (r.kind === 'lead' ? 'заявка' : 'замовлення') + '</small></td><td><small>' + when(r.created_at) + '</small></td>' +
+        list.innerHTML = '<div class="tscroll"><table class="adm"><thead><tr><th><input type="checkbox" class="sel" data-all aria-label="Вибрати всі"></th><th>Номер</th><th>Дата</th><th>Клієнт</th><th>Що</th><th>Джерело</th><th>Сума</th><th>Статус</th><th>Відповідальний</th><th>Реакція / SLA</th><th>Контакт</th></tr></thead><tbody>' + rows.map(function (r) {
+          return '<tr class="clk" data-id="' + r.id + '"><td>' + selBox(r) + '</td><td><b>' + esc(r.number) + '</b><br><small>' + (r.kind === 'lead' ? 'заявка' : 'замовлення') + '</small></td><td><small>' + when(r.created_at) + '</small></td>' +
             '<td>' + esc(label(r)) + '<br><small>' + esc(r.phone) + ' ' + esc(r.email) + '</small>' + quick(r) + '</td><td><small>' + esc(what(r).slice(0, 120)) + '</small></td><td>' + src(r) + '</td>' +
             '<td>' + (amountOf(r) != null ? money(amountOf(r), r.currency) : '') + '</td>' +
             '<td>' + stSelect(r) + takeB(r) + '</td>' +
             '<td>' + esc(r.assignee_name || r.assignee) + '</td><td>' + react(r) + slaBadge(r) + '</td><td class="' + (isDue(r) ? 'err' : '') + '">' + esc(r.next_contact) + '</td></tr>';
         }).join('') + '</tbody></table></div>';
         $$('tr.clk', list).forEach(function (tr) {
-          tr.onclick = function (e) { if (e.target.closest('select,[data-qa],[data-take]')) return; edit(+tr.dataset.id); };
+          tr.onclick = function (e) { if (e.target.closest('select,input,[data-qa],[data-take]')) return; edit(+tr.dataset.id); };
           $('[data-st]', tr).onchange = function () { patch({ id: +tr.dataset.id, status: this.value }); };
         });
+        bindSel(list);
         tickSla(list);
         return;
       }
@@ -584,6 +607,43 @@
         col.ondrop = function (e) { e.preventDefault(); col.classList.remove('over'); var id = +e.dataTransfer.getData('text/plain'); if (id) move(id, col.dataset.col); };
       });
       tickSla(list);
+    }
+    // ---------- Масові дії (список / таблиця): вибрати кілька → стадія / відповідальний / «Не цікаво» з підтвердженням ----------
+    // Сервер перевіряє кожен рядок окремо (видимість і права), відповідь — скільки змінено й що ні (functions/api/admin/crm.js, bulk).
+    var SEL = {};
+    var selBox = function (r) { return '<input type="checkbox" class="sel" data-sel="' + r.id + '"' + (SEL[r.id] ? ' checked' : '') + ' aria-label="Вибрати ' + esc(r.number) + '">'; };
+    function bulkBar() {
+      var ids = Object.keys(SEL).map(Number), bar = $('[data-bulk]', L);
+      if (!bar) return;
+      bar.hidden = !ids.length; $('[data-bn]', bar).textContent = ids.length;
+      var lead = ids.every(function (id) { var r = rows.find(function (x) { return x.id === id; }); return r && r.kind === 'lead'; });
+      var T = lead ? LST : OST;
+      $('[data-bs]', bar).innerHTML = '<option value="">Змінити стадію…</option>' + Object.keys(T).map(function (k) { return '<option value="' + k + '">' + esc(T[k]) + '</option>'; }).join('');
+      var ba = $('[data-ba]', bar); ba.hidden = !can('leads.assign') || !STAFF.length;
+      ba.innerHTML = '<option value="">Відповідальний…</option><option value="none">— зняти —</option>' + STAFF.map(function (x) { return '<option value="' + x.id + '">' + esc(x.name) + '</option>'; }).join('');
+      $('[data-bni]', bar).hidden = !lead;
+    }
+    function bulkRun(body, what) {
+      var ids = Object.keys(SEL).map(Number);
+      if (!ids.length || !confirm(what + ' — ' + ids.length + ' запис(ів)?')) { bulkBar(); return; }
+      api('/api/admin/crm', { method: 'PATCH', body: { bulk: Object.assign({ ids: ids }, body) } }).then(function (d) {
+        var bad = d.results.filter(function (x) { return !x.ok; });
+        toast('Змінено: ' + d.done + (bad.length ? ' · не змінено ' + bad.length + ' (' + esc(bad[0].error) + ')' : ''), !!bad.length);
+        SEL = {}; load();
+      }, function (e) { toast(e.message, true); });
+    }
+    function bindSel(root) {
+      $$('[data-sel]', root).forEach(function (c) { c.onclick = function (e) { e.stopPropagation(); if (c.checked) SEL[c.dataset.sel] = 1; else delete SEL[c.dataset.sel]; bulkBar(); }; });
+      var all = $('[data-all]', root); if (all) all.onclick = function () { $$('[data-sel]', root).forEach(function (c) { c.checked = all.checked; if (all.checked) SEL[c.dataset.sel] = 1; else delete SEL[c.dataset.sel]; }); bulkBar(); };
+      var bar = $('[data-bulk]', L);
+      if (bar && !bar.dataset.on) {
+        bar.dataset.on = 1;
+        $('[data-bs]', bar).onchange = function () { var v = this.value; if (v) bulkRun({ status: v }, 'Стадія «' + ($('[data-bs] option:checked', bar).textContent) + '»'); };
+        $('[data-ba]', bar).onchange = function () { var v = this.value; if (v) bulkRun({ assignee_staff_id: v === 'none' ? null : +v }, v === 'none' ? 'Зняти відповідального' : 'Відповідальний — ' + $('[data-ba] option:checked', bar).textContent); };
+        $('[data-bni]', bar).onclick = function () { var why = prompt('«Не цікаво» → стадія «Скасовано». Причина (для історії; заявки бота — бот більше не покаже схожі):', 'не наш профіль'); if (why !== null) { var ids = Object.keys(SEL); if (ids.length) api('/api/admin/crm', { method: 'PATCH', body: { bulk: { ids: ids.map(Number), not_interested: why || 'без причини' } } }).then(function (d) { toast('«Не цікаво»: ' + d.done + (d.done < ids.length ? ' з ' + ids.length : '')); SEL = {}; load(); }, function (e) { toast(e.message, true); }); } };
+        $('[data-bx]', bar).onclick = function () { SEL = {}; $$('[data-sel],[data-all]', L).forEach(function (c) { c.checked = false; }); bulkBar(); };
+      }
+      bulkBar();
     }
     function patch(body) { return api('/api/admin/crm', { method: 'PATCH', body: body }).then(function () { toast('Збережено'); return load(); }, function (e) { toast(e.message, true); load(); }); }
     window.addEventListener('keydown', function onK(e) { if (!document.contains(L)) { window.removeEventListener('keydown', onK); return; } if (e.ctrlKey || e.metaKey || e.altKey || dlg.open || /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
@@ -623,6 +683,16 @@
           : can('projects.edit') ? '<button type="button" class="btn ghost sm" data-oconv>Створити проєкт</button>' : '') + '</div>' +
         '<div data-osend></div></section>';
     }
+    // «Надіслати КП»: текст мовою заявки (functions/_client_msgs.js) → Telegram / Viber / WhatsApp / копія; кожне надсилання — в історії заявки
+    function offerSend(r, B) {
+      var box = $('[data-osend]', B); if (!box) return;
+      box.innerHTML = '';
+      if (!r.kp_text || !can('leads.edit')) return;
+      box.innerHTML = '<h4>Надіслати КП клієнту</h4><textarea class="kp-text" rows="5" aria-label="Текст КП">' + esc(r.kp_text) + '</textarea>';
+      box.appendChild(shareBar(r.kp_text, r.phone, r.contact_tg, function (ch) {
+        api('/api/admin/crm', { method: 'PATCH', body: { id: r.id, offer_sent: ch === 'telegram' ? 'telegram' : ch } }).then(function () { toast('КП: записано в історію заявки'); }, function (e) { toast(e.message, true); });
+      }));
+    }
     function offerBind(r, form) {
       var B = $('[data-offer]', form); if (!B) return;
       var eu = (r.offer || {}).region === 'eu';
@@ -641,7 +711,7 @@
         var c = calc(); if (!c || !(c.area > 0)) { $('[data-oa]', B).focus(); return; }
         sv.disabled = true;
         api('/api/admin/crm', { method: 'PATCH', body: { id: r.id, offer: { key: c.o.key, area: c.area, region: eu ? 'eu' : 'ua' } } }).then(function (x) {
-          r.offer = x.offer; if (x.status) { r.status = x.status; var se = form.elements.status; if (se) se.value = x.status; }
+          r.offer = x.offer; r.kp_text = x.kp_text; if (x.status) { r.status = x.status; var se = form.elements.status; if (se) se.value = x.status; }
           sv.disabled = false; sv.textContent = 'Оновити розрахунок'; toast('Розрахунок збережено: ' + (x.offer_line || ''));
           if (typeof offerSend === 'function') offerSend(r, B);
           load();
@@ -973,6 +1043,8 @@
     var stName = function (sid) { var s = (p.stages || []).find(function (x) { return x.id === sid; }); return s ? s.name : ''; };
     L.innerHTML = '<div class="tb"><button class="btn ghost sm" data-back>← До списку</button><b class="grow">' + esc(p.title) + ' <small>· ' + esc(p.client_name || '#' + p.client_id) + '</small></b>' +
       '<span class="pj-prog" title="Загальна готовність — середнє етапів"><progress max="100" value="' + progressOf(p.stages) + '" aria-label="Готовність ' + progressOf(p.stages) + '%"></progress> <b>' + progressOf(p.stages) + '%</b></span><button class="btn danger sm" data-del>Видалити проєкт</button></div>' +
+      (p.status === 'done' && can('projects.edit') ? '<div class="row pj-review">' + (p.review_asked_at ? '<span class="pill on">★ Відгук попросили ' + esc(String(p.review_asked_at).slice(0, 16)) + (p.review_channel ? ' · ' + esc(p.review_channel) : '') + '</span>'
+        : '<button type="button" class="btn sm" data-review>Попросити відгук у Google</button><small class="muted">' + (p.done_at ? 'автоматично — через 2 доби після завершення, якщо клієнт у Telegram' : 'один раз; текст мовою клієнта') + '</small>') + '</div><div data-reviewb></div>' : '') +
       (p.lead ? '<p class="muted pj-lead">З заявки <b>' + esc(p.lead.number) + '</b>' + (p.lead.source ? ' · ' + esc(p.lead.source) : '') + (p.lead.ref_path ? ' · сторінка-джерело ' + esc(p.lead.ref_path) : '') + '</p>' : '') +
       '<form class="form two" data-f><label class="f full"><span>Назва</span><input name="title" value="' + esc(p.title) + '"></label>' +
       '<label class="f"><span>Послуга</span><select name="service">' + opt(SVC, p.service) + '</select></label><label class="f"><span>Стан</span><select name="status">' + opt(PST, p.status) + '</select></label>' +
@@ -1021,10 +1093,12 @@
         '<label class="row pj-rmax"><span class="muted">з</span><input type="number" min="0" max="20" data-k="rev_max" data-i="' + i + '" value="' + esc(s.rev_max || '') + '" placeholder="∞" aria-label="Кругів правок за договором"></label>' +
         (s.rev_max && (+s.revisions || 0) > s.rev_max ? '<span class="pill warn">понад договір</span>' : '') + '</div>' +
         (s.rev_note && !s.approved_at ? '<p class="pj-revn"><b>Правки від клієнта ' + dmy(s.rev_at) + ':</b> «' + esc(s.rev_note) + '»</p>' : '') +
+        (s.id && !s.approved_at && (s.status === 'review' || s.status === 'done') && can('projects.edit') ? '<div class="row pj-rem"><button type="button" class="btn ghost sm" data-rem="' + esc(s.id) + '">Нагадати клієнту</button>' +
+          '<small class="muted">' + (s.remind_at ? 'нагадували ' + esc(s.remind_at) + ' · не частіше 1 разу на 48 год' : 'чекає погодження' + (s.review_at ? ' з ' + esc(s.review_at) : '') + '; автоматично — через добу, якщо клієнт у Telegram') + '</small></div><div data-remb="' + esc(s.id) + '"></div>' : '') +
         (s.hist && s.hist.length ? '<details class="pj-hist"><summary>Історія етапу · ' + s.hist.length + '</summary><ul>' + s.hist.slice().reverse().map(function (h) {
           return '<li><small class="muted">' + esc(h.at) + '</small> ' + esc(HACT[h.act] || h.act) + (h.by ? ' — ' + esc(h.by) : '') + (h.note ? ': «' + esc(h.note) + '»' : '') + '</li>'; }).join('') + '</ul></details>' : '') +
         (function () { var L2 = stDocs(s.id); return L2.length ? '<p class="pj-dlv"><span class="muted">Результати етапу:</span> ' + L2.map(function (x) { return '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(DKIND[x.kind] || '') + ': ' + esc(x.title) + '</a>'; }).join(' · ') + '</p>'
-          : s.id ? '<p class="pj-dlv muted">Результатів ще немає — додайте документ (Візуалізації / Креслення / Специфікація) з цим етапом нижче.</p>' : ''; })();
+          : ''; })(); // результати додаються у «Документи» нижче (тип Візуалізації / Креслення / Специфікація + етап)
     };
     function drawStages() {
       stEl.innerHTML = stages.map(function (s, i) {
@@ -1041,6 +1115,7 @@
         if (s.id && !confirm('Прибрати етап «' + (s.name || '') + '»? Фотозвіти, акти й платежі етапу залишаться без етапу. Зміна — після «Зберегти проєкт».')) return;
         stages.splice(+x.dataset.sd, 1); drawStages(); setDirty(true); }; });
       $('[data-sa]', stEl).onclick = function () { stages.push({ name: '', progress: 0 }); drawStages(); setDirty(true); var n = $$('[data-k=name]', stEl).pop(); if (n) n.focus(); };
+      $$('[data-rem]', stEl).forEach(function (x) { x.onclick = function () { nudge({ type: 'remind', project_id: id, stage_id: x.dataset.rem }, $('[data-remb="' + x.dataset.rem + '"]', stEl)); }; });
       $$('[data-ap]', stEl).forEach(function (x) { x.onclick = function () { stages[+x.dataset.ap].approved_at = today(); save('Етап погоджено клієнтом'); }; });
       $$('[data-unap]', stEl).forEach(function (x) { x.onclick = function () { if (confirm('Зняти позначку «погоджено»?')) { delete stages[+x.dataset.unap].approved_at; save('Погодження знято'); } }; });
       $$('[data-rv]', stEl).forEach(function (x) { x.onclick = function () { var s = stages[+x.dataset.rv]; s.revisions = Math.max(0, Math.min(99, (+s.revisions || 0) + (+x.dataset.dv))); $('[data-rvn="' + x.dataset.rv + '"]', stEl).textContent = s.revisions; setDirty(true); }; });
@@ -1086,6 +1161,18 @@
     }
     $('[data-save]', L).onclick = function () { save(); };
     projectContactsBlock(L, p, reload);
+    var rvb = $('[data-review]', L); if (rvb) rvb.onclick = function () { nudge({ type: 'review_request', project_id: id }, $('[data-reviewb]', L)); };
+    // нагадування / відгук: спершу Telegram-бот; без привʼязки — готовий текст і кнопки месенджерів, канал — у журнал
+    function nudge(body, slot) {
+      api(PAPI, { method: 'POST', body: body }).then(function (r) {
+        if (r.sent) { toast('Надіслано клієнту в Telegram'); reload(); return; }
+        if (!slot) return;
+        slot.innerHTML = '<p class="muted">Клієнт не привʼязав Telegram — надішліть зі свого месенджера (текст мовою клієнта, можна змінити):</p><textarea class="kp-text" rows="4">' + esc(r.text) + '</textarea>';
+        slot.appendChild(shareBar(r.text, r.phone || p.client_phone, null, function (ch) {
+          api(PAPI, { method: 'POST', body: Object.assign({}, body, { channel: ch === 'telegram' ? 'telegram_manual' : ch }) }).then(function () { toast('Записано в журнал'); }, function (e) { toast(e.message, true); });
+        }));
+      }, function (e) { toast(e.message, true); });
+    }
     // чекліст задач (migrations/0012): по етапах, виконавець, термін; працівник бачить свої в /kabinet/team («Сьогодні»)
     var tkEl = $('[data-tk]', L), TKS = (d.tasks || []).filter(function (t) { return t.project_id === id; }), TSTF = d._staff || [];
     if (d.tasks_ready === false) tkEl.innerHTML = '<p class="muted">Задачі зʼявляться після застосування міграції 0012 (автоматично під час деплою).</p>';

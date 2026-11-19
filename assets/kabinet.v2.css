@@ -383,3 +383,4 @@ a.kb-ord:hover{border-color:var(--brass)}
 .kb-revf .btn{min-height:44px;margin:0}
 .kb-revs{display:inline-block;margin-inline-start:6px;font-weight:400}
 .kb-revn{display:block;margin-top:4px}
+.kb-stage-h>.kb-ss{align-self:flex-start;flex:none}
