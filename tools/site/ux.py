@@ -225,6 +225,23 @@ def _lead_dup(hp):
 TEL = 'tel:+380978667755'
 # після . ! ? — обовʼязково пробіл («UNIT.City», «49.93 m²» — не кінець речення); після 。！？ пробілу може не бути
 SENT_RX = re.compile(r'(?:(?<=[.!?])\s+|(?<=[。！？])\s*)(?=[0-9A-ZА-ЯІЇЄҐÀ-ÝĄĆĘŁŃÓŚŹŻ¿¡«"\u4e00-\u9fff\u0600-\u06ff])')
+# скорочення з крапкою — не кінець речення (19.11.2026: лід ЖК рвався після «…на вул.» | «Ґарета Джонса…»). Усі мови сайту:
+# адреси (вул., просп., ул., ul., al., St., Str., Av., bd), звертання (Dr., Prof., Sr.), «приблизно/мінімум» перед числом (ок., ca., env., мін.),
+# z. B., p. ex., e.g.; однолітерні «м. Київ», «р. Дніпро», «г. Киев», «с. Козин», «д. 5», «м. ...» ар. — лише не після числа
+# («150 м. Робимо…», «з 2016 р. Працюємо…» — кінець речення); ініціал «Т. Шевченка» — теж не кінець. «і т. д.», «etc.», «usw.» — навмисно ні:
+# ними речення зазвичай і закінчується.
+_ABBR = (r'вул|просп|пр-т|пр|пл|бул|б-р|пров|наб|узв|туп|мкр|смт|обл|буд|корп|кв|оф|пов|ім|акад|проф|ст|напр|див|мін|макс|прибл|бл|т\.\s?ч'  # uk
+         r'|ул|пер|пгт|стр|эт|им|мин|ок|прим'  # ru
+         r'|St|Ave|Blvd|Rd|Dr|Mr|Mrs|Ms|Prof|No|vs|approx|e\.\s?g|i\.\s?e|min|max|est|sq|ft'  # en
+         r'|Av|Avda|Pza|Pl|núm|p\.\s?ej|aprox|Sr|Sra|Dra|Ud|Uds|pág|tel|mín|máx'  # es
+         r'|ul|al|pl|os|im|św|ks|np|tzw|ok|tel|godz|nr|m\.\s?in|tj|maks|pow|woj|gm'  # pl
+         r'|Str|Nr|Tel|z\.\s?B|d\.\s?h|u\.\s?a|ca|inkl|exkl|zzgl|ggf|evtl|bzw|mind|Abs|Art'  # de
+         r'|av|bd|boul|env|p\.\s?ex|ex|cf|tél|Ste'  # fr
+         r'|Trav|Lg|Pç|Eng|Arq'  # pt
+         r'|ص\.\s?ب|هـ')  # ar
+ABBR_RX = re.compile(r'(?<![\w.])(?:' + _ABBR + r')\.\s*$'
+                     r'|(?<![\w.])(?<!\d[ \u00a0\u202f])(?<!\d)(?:[мрсгдкшп]|см|[a-z]|[دمشص])\.\s*$'  # однолітерні («м. Київ», «z. B.», «p. ex.») і «см.» — не після числа
+                     r'|(?:^|(?<=[\s(«„“"]))(?<!\bà\s)(?<!\bto\s)(?<!\bдо\s)(?<!\bbis\s)(?<!\bdo\s)(?<!\ba\s)[A-ZА-ЯІЇЄҐ]\.\s*$')  # ініціал «Т. Шевченка» (не «FF&E.», не «de A à Z.», «від А до Я.»)
 
 
 def _lead_rest(hp):
@@ -241,7 +258,7 @@ def _lead_rest(hp):
     for x in SENT_RX.finditer(body):
         k = x.start()
         pre = body[:k]
-        if k < 12 or len(re.findall(r'<[a-z]', pre)) != len(re.findall(r'</', pre)):
+        if k < 12 or len(re.findall(r'<[a-z]', pre)) != len(re.findall(r'</', pre)) or ABBR_RX.search(pre):
             continue
         if not body[k:].strip():
             break
