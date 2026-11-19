@@ -930,7 +930,8 @@ def apply(s, rel):
                 out += [price_fmt(body[pos:m.start()], lang), m.group(0)]
                 pos = m.end()
             s = s[:i] + ''.join(out) + price_fmt(body[pos:], lang)
-        return prices_all(s, lang)
+        import fx  # друга валюта біля «від $…» (tools/site/fx.py)
+        return prices_all(fx.apply(s, lang, rel), lang)
     lang, path, alts = page_lang(s), rel_to_path(rel), alternates(s)
     if rel in [i18n.path_to_file(h) for h in HOME.values()]:
         alts.setdefault(lang, HOME[lang])
@@ -1050,7 +1051,10 @@ def apply(s, rel):
     s = CRIT_RX.sub('', s).replace('</head>', CSS_TAG + '\n</head>', 1)
     if JS_TAG not in s:
         s = s.replace('</body>', JS_TAG + '\n</body>', 1)
-    return full_css(s)
+    # «від $550/м² (≈ €500/м²)» de/fr/es/pt/pl, «(≈ 25 000 ₴/м²)» uk/ru — курси НБУ з tools/site/fx.json (Михайло 18.11.2026);
+    # останнім кроком: сторінка вже повна, і друга валюта не виходить за бюджет HTML (tools/site/fx.py)
+    import fx
+    return fx.apply(full_css(s), lang, rel)
 
 
 # Один viewport на всі сторінки: viewport-fit=cover — сторінка на весь екран iPhone (Dynamic Island, home indicator,
