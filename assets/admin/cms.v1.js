@@ -1098,7 +1098,7 @@
         (s.hist && s.hist.length ? '<details class="pj-hist"><summary>Історія етапу · ' + s.hist.length + '</summary><ul>' + s.hist.slice().reverse().map(function (h) {
           return '<li><small class="muted">' + esc(h.at) + '</small> ' + esc(HACT[h.act] || h.act) + (h.by ? ' — ' + esc(h.by) : '') + (h.note ? ': «' + esc(h.note) + '»' : '') + '</li>'; }).join('') + '</ul></details>' : '') +
         (function () { var L2 = stDocs(s.id); return L2.length ? '<p class="pj-dlv"><span class="muted">Результати етапу:</span> ' + L2.map(function (x) { return '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(DKIND[x.kind] || '') + ': ' + esc(x.title) + '</a>'; }).join(' · ') + '</p>'
-          : s.id ? '<p class="pj-dlv muted">Результатів ще немає — додайте документ (Візуалізації / Креслення / Специфікація) з цим етапом нижче.</p>' : ''; })();
+          : ''; })(); // результати додаються у «Документи» нижче (тип Візуалізації / Креслення / Специфікація + етап)
     };
     function drawStages() {
       stEl.innerHTML = stages.map(function (s, i) {

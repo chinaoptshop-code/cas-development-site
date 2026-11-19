@@ -951,7 +951,7 @@
 | de/komplettsanierung-wohnung.html | land | 43.1 | 12.1 | 13.3 | 0.5 | 6 | 425 |
 | en/neoclassical-interior-design.html | land | 43.1 | 11.6 | 13.3 | 0.5 | 6 | 451 |
 | fr/commerce-cle-en-main.html | land | 43.1 | 13.3 | 13.3 | 0.5 | 6 | 391 |
-| fr/prix-renovation-bureaux.html | land | 43.1 | 11.8 | 13.3 | 0.5 | 6 | 422 |
+| fr/prix-renovation-bureaux.html | land | 43.1 | 11.9 | 13.3 | 0.5 | 6 | 422 |
 | fr/reconstruction-maison.html | land | 43.1 | 11.7 | 13.3 | 0.5 | 6 | 425 |
 | pt/espacos-comerciais-chave-na-mao.html | land | 43.1 | 13.2 | 13.3 | 0.5 | 6 | 394 |
 | de/vertrag-gewaehrleistung-zahlung.html | land | 43.0 | 11.7 | 13.3 | 0.5 | 6 | 415 |
@@ -1102,7 +1102,7 @@
 | fr/design-renovation-kropyvnytsky.html | land | 41.3 | 11.4 | 13.3 | 0.5 | 6 | 384 |
 | fr/design-renovation-oujhorod.html | land | 41.3 | 11.5 | 13.3 | 0.5 | 6 | 384 |
 | proekty/hodos-villa.html | land | 41.3 | 8.8 | 1.9 | 0.5 | 0 | 377 |
-| de/porenbetonhaus.html | land | 41.2 | 11.4 | 13.3 | 0.5 | 6 | 405 |
+| de/porenbetonhaus.html | land | 41.2 | 11.5 | 13.3 | 0.5 | 6 | 405 |
 | en/design-renovation-irpin.html | land | 41.2 | 11.3 | 13.3 | 0.5 | 6 | 398 |
 | es/diseno-reforma-ivano-frankivsk.html | land | 41.2 | 11.2 | 13.3 | 0.5 | 6 | 386 |
 | fr/design-renovation-bila-tserkva.html | land | 41.2 | 11.3 | 13.3 | 0.5 | 6 | 388 |
@@ -1178,7 +1178,7 @@
 | zh/office-renovation-cost.html | land | 40.9 | 11.9 | 13.3 | 0.5 | 6 | 422 |
 | de/innenarchitektur-renovierung-hostomel.html | land | 40.8 | 11.4 | 13.3 | 0.5 | 6 | 388 |
 | de/innenarchitektur-renovierung-kropywnyzkyj.html | land | 40.8 | 11.4 | 13.3 | 0.5 | 6 | 386 |
-| de/leistungen.html | land | 40.8 | 10.9 | 13.3 | 0.5 | 6 | 385 |
+| de/leistungen.html | land | 40.8 | 11.0 | 13.3 | 0.5 | 6 | 385 |
 | de/neubauwohnung-ausbau.html | land | 40.8 | 11.2 | 13.3 | 0.5 | 6 | 407 |
 | en/design-renovation-bucha.html | land | 40.8 | 11.2 | 13.3 | 0.5 | 6 | 399 |
 | en/design-renovation-ivano-frankivsk.html | land | 40.8 | 11.1 | 13.3 | 0.5 | 6 | 393 |
@@ -1231,7 +1231,7 @@
 | es/diseno-reforma-ternopil.html | land | 40.6 | 11.3 | 13.3 | 0.5 | 6 | 385 |
 | es/diseno-reforma-vasylkiv.html | land | 40.6 | 11.3 | 13.3 | 0.5 | 6 | 389 |
 | es/diseno-reforma-vyshhorod.html | land | 40.6 | 11.2 | 13.3 | 0.5 | 6 | 387 |
-| fr/realisation-projet.html | land | 40.6 | 11.2 | 13.3 | 0.5 | 6 | 390 |
+| fr/realisation-projet.html | land | 40.6 | 11.3 | 13.3 | 0.5 | 6 | 390 |
 | pl/projektowanie-remont-iwano-frankiwsk.html | land | 40.6 | 11.4 | 13.3 | 0.5 | 6 | 388 |
 | pl/uslugi.html | land | 40.6 | 11.0 | 13.3 | 0.5 | 6 | 386 |
 | proekty/dubai-villa.html | land | 40.6 | 8.7 | 1.9 | 0.5 | 0 | 368 |
