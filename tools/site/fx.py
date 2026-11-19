@@ -93,6 +93,8 @@ def _text(t, lang, r, room=None):
         old = re.match(r'[ \u00a0]\(≈[ \u00a0][^,;()$]*?, ', rest)  # злита «(≈ X, мінімум …)» з попереднього проходу
         if not unit and not m.group(5) and not old and re.match(r'[ \u00a0]+[^\W\d_]', rest):
             continue  # «$30 le m²», «$50 por cada 100 m²» — одиниця словами: без другої валюти
+        if not unit and re.match(r'[ \u00a0]*[×=]', rest):
+            continue  # «від $550 × 300 м² = …» — множник у розрахунку, не ціна
         if re.match(r'\s*(?:до|to|bis|à|a|hasta|até|do)\s+\$', rest):
             continue  # «від $30 до $60» — діапазон словами не розриваємо
         s = '(≈' + NB + a + unit
