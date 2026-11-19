@@ -41,7 +41,9 @@ const IGN = /net::ERR_FAILED|ERR_BLOCKED|Failed to load resource|ERR_ABORTED/;
 // Chrome скасовує cross-document view transition, коли нова сторінка ще не ввімкнула @view-transition (так само з «Що ми робимо» → лендинг) — не помилка сайту
 const IGN_PE = /Transition was aborted because of invalid state/;
 async function test(name, path, w, fn) {
-  const ctx = await browser.newContext({ viewport: { width: w, height: w < 600 ? 874 : 900 }, deviceScaleFactor: 1, isMobile: w < 600, hasTouch: w < 600 });
+  const [vw, vh] = Array.isArray(w) ? w : [w, w < 600 ? 874 : 900], touch = vw < 600 || vh < 500; // [ширина, висота] — альбомний телефон
+  if (Array.isArray(w)) w = vw + '×' + vh;
+  const ctx = await browser.newContext({ viewport: { width: vw, height: vh }, deviceScaleFactor: 1, isMobile: touch, hasTouch: touch });
   await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => /n8n\./.test(r.request().url()) ? r.fulfill({ status: apiStatus, body: '{}' }) : r.abort());
   const page = await ctx.newPage();
   const errs = [];
@@ -178,6 +180,38 @@ for (const w of [402, 1440]) await test('сцена на головній: кл�
 const SCN = `(()=>{const ss=[...document.querySelectorAll('section.bz')].filter(s=>s.offsetParent&&s.getBoundingClientRect().height>50);return ss.find(x=>x.querySelector('nav.la-tab'))||ss[0]})()`;
 const scTab = async (p, i) => { const a = p.locator('section.bz nav.la-tab a').nth(i); await a.scrollIntoViewIfNeeded(); await a.click(); await p.waitForTimeout(2500); await p.evaluate(`${SCN}.scrollIntoView({block:'start'})`); await p.waitForTimeout(600); };
 const scGo = (p, k) => p.evaluate(`(()=>{const b=[...${SCN}.querySelectorAll('.sc-n,.bz-nav button')];b.at(${k}).click();return b.length})()`);
+// перемикач сцен головної не рухає сторінку (19.11.2026): H2 і панелі вкладок різної висоти давали стрибок до ~70 px (телефон) і ~50 px (ПК).
+// Тепер: спільний відступ H2 і 2 рядки під H2 на телефоні (site-chrome.v1.css) + секція тримає висоту найвищої показаної вкладки (завантажувач сцен).
+// Перше коло — блок може лише підрости (≤ 30 px телефон, ≤ 60 px ПК: довга назва на 2 рядки); друге коло — висота не змінюється зовсім.
+for (const w of [402, 1440]) await test('перемикач сцен головної: висота блоку не стрибає між вкладками', '/', w, async p => {
+  await wakeup(p);
+  await p.evaluate(() => { try { localStorage.setItem('casScHint', '1'); } catch (e) { } });
+  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 }); await p.waitForTimeout(800);
+  const H = () => p.evaluate(`Math.round(${SCN}.getBoundingClientRect().height)`);
+  const tab = async i => { const a = p.locator('section.bz nav.la-tab a').nth(i); await a.scrollIntoViewIfNeeded(); await a.click(); await p.waitForFunction(i => { const n = document.querySelector('section.bz nav.la-tab'); return n && n.getAttribute('aria-busy') !== 'true' && n.querySelectorAll('a')[i].hasAttribute('aria-current'); }, i, { timeout: 10000 }); await p.waitForTimeout(1800); return H(); };
+  const n = await p.locator('section.bz nav.la-tab a').count(); must(n === 6, 'вкладок перемикача: ' + n);
+  const h0 = await H(), first = [h0];
+  for (let i = 1; i < n; i++) first.push(await tab(i));
+  first.push(await tab(0));
+  must(first.every((h, i) => !i || h >= first[i - 1]), 'блок сцени зменшився при перемиканні: ' + first.join(' → '));
+  must(first.at(-1) - h0 <= (w < 600 ? 30 : 60), 'перше коло: блок підріс на ' + (first.at(-1) - h0) + ' px: ' + first.join(' → '));
+  const second = []; for (let i = 1; i < n; i++) second.push(await tab(i));
+  second.push(await tab(0));
+  must(second.every(h => Math.abs(h - first.at(-1)) <= 1), 'друге коло: висота змінюється: ' + first.at(-1) + ' → ' + second.join(' → '));
+});
+// альбомний телефон (≥768 px завширшки, низький екран): кадр і панель компактної сцени — у межах екрана під шапкою (було 423–520 px при 329 доступних)
+for (const vp of [[852, 393], [932, 430]]) await test('компактна сцена на альбомному телефоні: кадр і панель — у межах екрана', '/', vp, async p => {
+  await wakeup(p);
+  await p.evaluate(() => { try { localStorage.setItem('casScHint', '1'); } catch (e) { } });
+  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 }); await p.waitForTimeout(800);
+  const fit = () => p.evaluate(`(()=>{const r=${SCN}.querySelector('.bz-pin,.la-stick,.rp-grid').getBoundingClientRect(),hd=document.querySelector('header').getBoundingClientRect().height;return {row:Math.round(r.height),avail:Math.round(innerHeight-hd),next:!!${SCN}.querySelector('.bz-nx,.sc-next,.la-next')}})()`);
+  for (const i of [0, 2, 3]) {
+    if (i) { const a = p.locator('section.bz nav.la-tab a').nth(i); await a.scrollIntoViewIfNeeded(); await a.click(); await p.waitForTimeout(2600); }
+    const f = await fit();
+    must(f.row <= f.avail, 'вкладка ' + i + ': ряд сцени ' + f.row + ' px > ' + f.avail + ' px екрана під шапкою');
+    must(f.next, 'вкладка ' + i + ': немає кнопки «далі»');
+  }
+});
 // компактна «Будинок з нуля»: рестарт після ≥ 4 с поза кадром — одразу з етапу 01, без «перемотки» назад 05 → 04 → … → 01
 // (застарілий прогрес casDrive доганяв етап, який ставить go(); той самий drive на прокрутці перемикав етапи сцени поза кадром)
 await test('компактна сцена: рестарт після виходу з кадру — одразу з 01, без перемотки назад', '/', 402, async p => {

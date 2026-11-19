@@ -85,3 +85,15 @@
   .bz-cmp .bz-side>.sc-hint,.la-cmp .sc-side>.sc-hint{position:absolute;left:10px;right:10px;bottom:calc(100% + 16px);z-index:2;margin:0;padding:5px 10px;border-radius:10px;
     background:rgba(13,12,10,.8);color:#d8d0c4;font-size:.75rem;line-height:1.35;text-align:center;pointer-events:none}
 }
+/* альбомний телефон (852×393, 932×430: ≥768 px завширшки — два стовпці, але екран низький): панель етапу була на 25–190 px вища за екран (19.11.2026).
+   Компактні сцени головних тут — без рядка номерів (←/→, пауза й клікабельна прогрес-лінія лишаються) і без підказки жестів, щільніші відступи:
+   кадр і панель — у межах екрана під шапкою. Резерв висоти до збірки — site-chrome.v1.css (той самий media) */
+@media(min-width:768px) and (max-height:500px){
+  html .bz-cmp .bz-nav,html .la-cmp .sc-nums,html .bz-cmp .bz-side>.sc-hint,html .la-cmp .sc-side>.sc-hint{display:none}
+  html .bz-cmp .bz-side,html .la-cmp .sc-side{gap:8px}
+  html .bz-cmp .bz-ctl{gap:8px 10px}
+  .la-cmp .la-stick.sc-grid,html .bz-cmp .bz-pin{padding:6px 0}
+  .sc-side .la-cap,.sc-side .rp-cap{min-height:6.2rem}
+  .sc-side :is(.la-cap,.rp-cap) b,html .bz-cmp .bz-st b{font-size:1rem}
+  .sc-side :is(.la-cap,.rp-cap) span,html .bz-cmp .bz-st span{font-size:.8125rem;line-height:1.45}
+}

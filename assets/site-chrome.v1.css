@@ -508,13 +508,18 @@ html.sch-hide .pf-filter-wrap{top:0!important}
   .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{content:"";float:left;width:0;padding-top:calc((100% + 4px) * .4667 + 146px)}
 }
 @media(prefers-reduced-motion:no-preference) and (min-width:2200px){.js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 4px) * .4667 + 84px)}}
+@media(prefers-reduced-motion:no-preference) and (min-width:768px) and (max-height:500px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(max(min(60vh,540px),17.5rem) + 12px + 8px)}} /* альбомний телефон: панель без рядка номерів і підказки (scene-ui.v1.css, той самий media) — 274–312 px */
 @media(prefers-reduced-motion:no-preference) and (max-width:1099px){.bz:is([data-la],[data-rs]){--lx:112px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:1399px){.bz[data-wh]{--lx:112px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:900px){.js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 20px) * .7 + 671px)}}
 @media(prefers-reduced-motion:no-preference) and (max-width:767px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(min(40vh,340px) + clamp(22.5rem,calc(637px - 69vw),25rem) + 8px);height:calc(min(40svh,340px) + clamp(22.5rem,calc(637px - 69vw),25rem) + 8px)} /* панель вища на вузьких (переноси): 402+ — 22.5rem, 344 — 25rem */
   .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 20px) * .45 + 836px)}
   .bz:is([data-la],[data-rs]){--lx:162px}.bz[data-wh]{--lx:162px}}
-@media(max-width:767px){html body .hx-home~.bz h2{font-size:1.5rem;line-height:1.15}}
+/* перемикач сцен головних без стрибка (19.11.2026): H2 усіх шести вкладок — з тим самим відступом (блок «Будинок» мав 10 px, підтягнуті сцени — 24),
+   на телефоні H2 резервує 2 рядки (лише «Будинок з нуля…» вміщався в один: +27 px у решти); решту різниці (панелі етапів, довгі назви мовами)
+   тримає min-height секції — найвища з показаних вкладок (site-chrome.v1.js, завантажувач сцен). Резерв CLS нижче — про ol.bz-st, H2 у нього не входить */
+html body .hx-home~.bz h2{margin-bottom:10px}
+@media(max-width:767px){html body .hx-home~.bz h2{font-size:1.5rem;line-height:1.15;min-height:2.3em}}
 @media(max-width:659px){html body .hx-home~.bz .la-tab{padding-inline-end:28px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 30px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 30px),transparent)}
   html body[dir=rtl] .hx-home~.bz .la-tab,html[dir=rtl] body .hx-home~.bz .la-tab{-webkit-mask-image:linear-gradient(270deg,#000 calc(100% - 30px),transparent);mask-image:linear-gradient(270deg,#000 calc(100% - 30px),transparent)}} /* вкладки сцен на телефоні — ряд із прокруткою: край тане — видно, що є ще (обрізаний «Ком…» виглядав як помилка, аудит 11.11.2026) */ /* компактна сцена головної в межах екрана: заголовок — до 2 рядків (аудит 11.11.2026); до й після збірки однаковий */
 @media(prefers-reduced-motion:no-preference) and (max-width:419px){.bz[data-wh]{--lx:214px}}

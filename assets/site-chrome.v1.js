@@ -793,7 +793,7 @@
 (function () {
   var W = window, d = document, ss = d.querySelectorAll('section.bz[data-js]'); // кілька сцен на сторінці — кожна свій скрипт
   if (!ss.length) return;
-  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=3cb79fa2"; /*/sc:ui*/
+  /*sc:ui*/var SCUI = "/assets/scene-ui.v1.css?v=09f142ca"; /*/sc:ui*/
   var on = 0;
   function css(h) { if (!h || d.querySelector('link[href="' + h + '"]')) return; var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = h; d.head.appendChild(l); }
   function js(s) { var j = d.createElement('script'); j.src = s; j.async = true; j.onerror = function () { [].forEach.call(d.querySelectorAll('section.bz[data-js]'), function (x) { if (x.getAttribute('data-js') === s) x.classList.add('bz-no'); }); }; d.head.appendChild(j); } // скрипт сцени не завантажився — без резерву висоти
@@ -818,6 +818,14 @@
   if ((W.pageYOffset || 0) > 0) go(); else W.addEventListener('scroll', go, { passive: true });
 
   var keep = {}; // url#id → блок сцени (живий: після повернення працює без повторного запуску)
+  // головні (компактні сцени): перемикач не рухає сторінку — секція тримає висоту найвищої з уже показаних вкладок (H2 і панелі етапів різної
+  // довжини давали стрибок до ~70 px на телефоні й ~50 px на ПК); зміна ширини вікна — відлік заново. Спільну базу дає CSS (.hx-home~.bz h2).
+  var HM = d.querySelector('.hx-home') ? { w: W.innerWidth, h: 0 } : null;
+  if (HM) W.addEventListener('resize', function () {
+    if (W.innerWidth === HM.w) return;
+    HM.w = W.innerWidth; HM.h = 0;
+    [].forEach.call(d.querySelectorAll('section.bz[data-js]'), function (s) { s.style.minHeight = ''; });
+  });
   function key(u) { return u.pathname.replace(/\.html$/, '').replace(/\/index$/, '/') + '#' + u.hash.slice(1); }
   function load(u) {
     var k = key(u);
@@ -843,6 +851,7 @@
     go(); all(); // перемикач — уже біля сцени: її скрипт потрібен зараз
     load(u).then(function (x) {
       var top = nav.getBoundingClientRect().top;
+      if (HM) { HM.h = Math.max(HM.h, sec.getBoundingClientRect().height); x.style.minHeight = Math.round(HM.h) + 'px'; }
       var old = x.querySelector('nav.la-tab'); if (old && old !== nav) old.remove();
       var w = x.querySelector('.w') || x; w.insertBefore(nav, w.firstChild);
       [].forEach.call(nav.querySelectorAll('a'), function (b) { if (b === a) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
