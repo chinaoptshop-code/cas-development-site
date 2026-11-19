@@ -1538,16 +1538,33 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       while ((m = re.exec(h))) { var x = +(m[1] != null ? m[1] : m[3]), y = +(m[1] != null ? m[2] : m[4]); if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
       bbC.s = h; return (bbC.b = x1 > x0 ? { x: x0, y: y0, width: x1 - x0, height: Math.max(0, y1 - y0) } : null);
     }
+    // Хмарки — з пулу груп, створеного однією вставкою на збірку сцени (19.11.2026). Раніше кожна хмарка — це appendChild у g.bz-cam і removeChild
+    // через 1,3 с: вставка/видалення дитини камери змушувала браузер перерахувати стилі ВСЬОГО її піддерева (~2000 елементів сцени) через
+    // правила сайту з сусідніми комбінаторами й універсальним субʼєктом («> * + *», «~ *», «+ :not(…)») — 70–85 мс на телефоні CPU ×4 двічі на
+    // хмарку: найбільша причина довгих задач сцени. Тепер у дереві нічого не додається: колам ставимо координати, рух і згасання групи —
+    // Web Animations (без класів і перезапуску CSS-анімації). Одна анімована група на хмарку, а не 5–7 кіл.
+    var PF_N = 10, PF_C = 7, pfPool = null;
     function puffNow(g, kind, row) {
-      if (!g.isConnected || !g.firstChild) return;
+      if (!g.isConnected || !g.firstChild || !cam.animate) return;
       var b = bbOf(g.__h != null ? g.__h : g.innerHTML); if (!b || !b.width) return;
-      var cn = kind === 2 ? 'bz-sp' : 'bz-dp', h = '';
-      for (var i = 0; i < (row ? 5 : 7); i++) {
-        var x = b.x + b.width * (0.15 + 0.7 * Math.random()), y = row ? b.y + 2 : b.y + b.height * (0.2 + 0.5 * Math.random());
-        h += '<circle class="' + cn + '" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (1 + Math.random() * 1.6).toFixed(1) + '" style="--dx:' + ((Math.random() - 0.5) * 22).toFixed(1) + 'px;--dy:' + (-6 - Math.random() * 16).toFixed(1) + 'px;animation-delay:' + (i * 0.04).toFixed(2) + 's"/>';
+      if (!pfPool || pfPool.cam !== cam) {
+        var h = '', one = '<g class="bz-pf">' + new Array(PF_C + 1).join('<circle r="0"/>') + '</g>';
+        for (var q = 0; q < PF_N; q++) h += one;
+        var box = d.createElementNS('http://www.w3.org/2000/svg', 'g'); box.setAttribute('class', 'bz-pfs'); box.innerHTML = h; cam.appendChild(box);
+        pfPool = { cam: cam, g: [].slice.call(box.children), i: 0 };
       }
-      var pg2 = d.createElementNS('http://www.w3.org/2000/svg', 'g'); pg2.setAttribute('class', 'bz-pf'); pg2.innerHTML = h; cam.appendChild(pg2);
-      setTimeout(function () { if (pg2.parentNode) pg2.parentNode.removeChild(pg2); }, 1300);
+      var pg2 = pfPool.g[pfPool.i++ % PF_N], cs = pg2.childNodes, nn = row ? 5 : 7;
+      if (pg2.__a) pg2.__a.cancel();
+      pg2.setAttribute('fill', kind === 2 ? '#ffe9a0' : '#d8cdb8');
+      for (var i = 0; i < cs.length; i++) {
+        if (i >= nn) { cs[i].setAttribute('r', '0'); continue; }
+        var x = b.x + b.width * (0.15 + 0.7 * Math.random()), y = row ? b.y + 2 : b.y + b.height * (0.2 + 0.5 * Math.random());
+        cs[i].setAttribute('cx', x.toFixed(1)); cs[i].setAttribute('cy', y.toFixed(1)); cs[i].setAttribute('r', (1 + Math.random() * 1.6).toFixed(1));
+      }
+      var an = pg2.__a = pg2.animate([{ opacity: 0.85, transform: 'translate(0,0) scale(1)' },
+        { opacity: 0, transform: 'translate(' + ((Math.random() - 0.5) * 8).toFixed(1) + 'px,' + (-8 - Math.random() * 10).toFixed(1) + 'px) scale(1.55)' }],
+        { duration: kind === 2 ? 700 : 1050, easing: 'ease-out' });
+      an.onfinish = function () { if (pg2.__a === an) pg2.__a = null; }; // далі — opacity:0 з CSS (.bz-pf), анімація не тримається
     }
     var fTok = 0;
     function lazyNow(Ly) { Ly.z = 0; Ly.g.innerHTML = Ly.g.__h = Ly.p.v; }

@@ -455,10 +455,10 @@
 /* перемикач «Будинок / Ландшафт» (tools/site/landanim.py) */
 /* v4 (етап F): камера, небо день → вечір, частинки — assets/build-anim.v1.js camera()/puff() */
 .bz-sky,.bz-stars{pointer-events:none}.bz-stars{opacity:0}.bz-stars circle{fill:#fff6dc;opacity:.8}
-.bz-dp{fill:#d8cdb8;opacity:0}.bz-sp{fill:#ffe9a0;opacity:0}
+/* хмарки пилу/іскор: пул груп .bz-pf у g.bz-pfs (build-anim.v1.js puffNow) — рух і згасання групи через Web Animations, у DOM під час прокрутки
+   нічого не додається (вставка в g.bz-cam перераховувала стилі всієї сцени); кола розходяться масштабом групи від її низу */
+.bz-pf{opacity:0;pointer-events:none;transform-box:fill-box;transform-origin:50% 100%}
 @media (prefers-reduced-motion:no-preference){
-  .bz-dp,.bz-sp{animation:bz-pf 1.1s ease-out forwards}.bz-sp{animation-duration:.7s}
-  @keyframes bz-pf{0%{opacity:.85;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--dx),var(--dy))}}
   .bz-stars.is-on circle{animation:bz-tw 1.8s ease-in-out infinite alternate} /* лише видимі зорі (build-anim.v1.js camera) */
 }
 @media (prefers-reduced-motion:reduce){.bz-pf{display:none}}
