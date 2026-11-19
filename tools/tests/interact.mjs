@@ -174,6 +174,62 @@ for (const w of [402, 1440]) await test('сцена на головній: кл�
     must(p.url() === url, 'перемикач сцен перейшов на іншу сторінку: ' + p.url());
   }
 });
+// сцени головних (QA 18.11.2026): активна сцена — секція з перемикачем вкладок; кнопки номерів етапів — .sc-n (casSide) або .bz-nav (Будинок/Квартира)
+const SCN = `(()=>{const ss=[...document.querySelectorAll('section.bz')].filter(s=>s.offsetParent&&s.getBoundingClientRect().height>50);return ss.find(x=>x.querySelector('nav.la-tab'))||ss[0]})()`;
+const scTab = async (p, i) => { const a = p.locator('section.bz nav.la-tab a').nth(i); await a.scrollIntoViewIfNeeded(); await a.click(); await p.waitForTimeout(2500); await p.evaluate(`${SCN}.scrollIntoView({block:'start'})`); await p.waitForTimeout(600); };
+const scGo = (p, k) => p.evaluate(`(()=>{const b=[...${SCN}.querySelectorAll('.sc-n,.bz-nav button')];b.at(${k}).click();return b.length})()`);
+// компактна «Будинок з нуля»: рестарт після ≥ 4 с поза кадром — одразу з етапу 01, без «перемотки» назад 05 → 04 → … → 01
+// (застарілий прогрес casDrive доганяв етап, який ставить go(); той самий drive на прокрутці перемикав етапи сцени поза кадром)
+await test('компактна сцена: рестарт після виходу з кадру — одразу з 01, без перемотки назад', '/', 402, async p => {
+  await wakeup(p);
+  await p.evaluate(() => { try { localStorage.setItem('casScHint', '1'); } catch (e) { } });
+  await p.locator('#build-anim').scrollIntoViewIfNeeded();
+  await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 });
+  await p.evaluate(() => document.querySelector('#build-anim .bz-fig').scrollIntoView({ block: 'center' }));
+  await p.waitForFunction(() => +(document.querySelector('#build-anim .bz-ct').textContent.slice(0, 2)) >= 3, null, { timeout: 12000 }); // автопрогравання: 1.6 с + 3.5 с на етап
+  await p.evaluate(() => { const c = document.querySelector('#build-anim .bz-ct'); window.__ct = []; new MutationObserver(() => window.__ct.push(c.textContent.slice(0, 2))).observe(c, { childList: true, subtree: true, characterData: true }); });
+  await p.evaluate(() => window.scrollTo(0, 0)); await p.waitForTimeout(4800);
+  const away = await p.evaluate(() => window.__ct.splice(0));
+  must(!away.length, 'сцена поза кадром перемикала етапи: ' + away.join(' '));
+  await p.evaluate(() => document.querySelector('#build-anim .bz-fig').scrollIntoView({ block: 'center' })); await p.waitForTimeout(1500);
+  const back = await p.evaluate(() => window.__ct.filter((v, i, a) => v !== a[i - 1]));
+  must(back.length && back[0] === '01' && back.every(v => v === '01' || v === '02'), 'після повернення: ' + back.join(' → ') + ' (очікується одразу 01)');
+});
+// «Ресторан з нуля», етап «Гості»: силуети були сірі під нічним шаром і їх майже не було видно — етап виглядав порожнім
+await test('сцена «Ресторан»: на етапі «Гості» видно гостей (≥ 10 світлих силуетів)', '/', 1440, async p => {
+  await wakeup(p);
+  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 });
+  await scTab(p, 5); await p.waitForSelector('section.bz .rs-svg', { timeout: 10000 });
+  await scGo(p, -1); await p.waitForTimeout(1500);
+  const r = await p.evaluate(() => { const s = [...document.querySelectorAll('.rs-svg .rs-e.on .rs-sil')]; const l = s.map(e => { const f = getComputedStyle(e).fill.match(/\d+/g).map(Number); return (0.2126 * f[0] + 0.7152 * f[1] + 0.0722 * f[2]) / 255; }); return { n: s.length, lum: +Math.max(0, ...l).toFixed(2) }; });
+  must(r.n >= 10 && r.lum > 0.85, 'гості на останньому етапі: ' + JSON.stringify(r));
+});
+// «Будинок на воді», етап «Здача»: був без видимої зміни відносно «Вечора» — знак «ключі» в кадрі лише на останньому етапі
+await test('сцена «Будинок на воді»: на етапі «Здача» — знак «ключі» в межах кадру', '/', 402, async p => {
+  await wakeup(p);
+  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 });
+  await scTab(p, 4); await p.waitForSelector('section.bz .wh-svg', { timeout: 10000 });
+  await scGo(p, -2); await p.waitForTimeout(1200);
+  const on = () => p.evaluate(() => { const k = document.querySelector('.wh-svg .wh-key'), g = k && k.closest('.wh-e'), s = document.querySelector('.wh-svg').getBoundingClientRect(), r = k && k.getBoundingClientRect(); return k ? { on: g.classList.contains('on'), op: +getComputedStyle(g).opacity, inF: r.left >= s.left && r.right <= s.right && r.top >= s.top && r.bottom <= s.bottom && r.width > 20 } : null; });
+  const a = await on(); must(a && !a.on, '«ключі» видно до етапу «Здача»: ' + JSON.stringify(a));
+  await scGo(p, -1); await p.waitForTimeout(1500);
+  const b = await on(); must(b && b.on && b.op > 0.9 && b.inF, '«ключі» на етапі «Здача»: ' + JSON.stringify(b));
+});
+// «Комплекс»: кадр (генплан) фокусується, ←/→ з фокусом крокують зупинками — як у решти сцен (раніше SVG без tabindex: після кліку по кадру стрілки не працювали)
+await test('сцена «Комплекс»: фокус на кадрі, → / ← крокують зупинками', '/', 1440, async p => {
+  await wakeup(p);
+  await p.locator('#build-anim').scrollIntoViewIfNeeded(); await p.waitForSelector('#build-anim .bz-ct', { timeout: 10000 });
+  await scTab(p, 3); await p.waitForSelector('section.bz .rp-svg', { timeout: 10000 });
+  await p.evaluate(`(()=>{const b=${SCN}.querySelector('.sc-ap');if(b&&b.dataset.st==='on')b.click()})()`);
+  await scGo(p, 2); await p.waitForTimeout(600);
+  const cur = () => p.evaluate(`[...${SCN}.querySelectorAll('.sc-n')].findIndex(b=>b.getAttribute('aria-current')==='step')`);
+  must(await p.evaluate(() => document.querySelector('.rp-svg').tabIndex === 0), 'кадр «Комплексу» не фокусується (tabindex)');
+  await p.evaluate(() => document.querySelector('.rp-svg').focus());
+  const c0 = await cur(); await p.keyboard.press('ArrowRight'); await p.waitForTimeout(500);
+  const c1 = await cur(); await p.keyboard.press('ArrowLeft'); await p.waitForTimeout(500);
+  const c2 = await cur();
+  must(c1 === c0 + 1 && c2 === c0, `→/←: ${c0} → ${c1} → ${c2}`);
+});
 await test('пігулка «Звʼязатися»: меню й Esc', '/remont-kvartyr-kyiv', 402, async p => {
   await p.click('.mbar .mb-tg');
   must(await p.locator('.mbar.open').count(), 'меню не відкрилось');

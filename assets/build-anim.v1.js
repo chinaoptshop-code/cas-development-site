@@ -1614,7 +1614,9 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     // casDrive — лише після збірки й mode(): інакше його перший кадр (IO на вході) «знімає» прогрес до кінця збірки й потім повзе від 0.6
     var drive = null;
     function mkDrive() {
-      drive = W.casDrive ? W.casDrive({ n: function () { return n; }, min: 0.6, raw: target, view: run, render: function (c) { cur = c; render(c); } }) : null;
+      // компактна (головні) і reduced-motion — етапи ставить go() одразу (man), без прогресу за прокруткою: drive не потрібен. Інакше його застарілий
+      // внутрішній прогрес «доїжджав» до man після кожного go() — на рестарті автопрогравання сцена перемотувалась назад 05 → 01 за ~1.5 с (QA 18.11.2026)
+      drive = W.casDrive && !CMP ? W.casDrive({ n: function () { return n; }, min: 0.6, raw: target, view: run, render: function (c) { if (rm) return; cur = c; render(c); } }) : null;
       }
     function kick() { if (drive) drive.kick(); else { cur = target(); render(cur); } }
     function measure() { spC = null; top0 = parseFloat(W.getComputedStyle(pin).top) || 0; kick(); }

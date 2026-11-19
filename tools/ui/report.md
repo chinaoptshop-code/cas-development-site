@@ -675,7 +675,7 @@
 | ar/office-design.html | land | 48.5 | 12.6 | 13.3 | 0.5 | 6 | 443 |
 | de/renovierungskosten-rechner.html | land | 48.5 | 13.8 | 13.3 | 2.0 | 6 | 498 |
 | en/restaurant-fit-out.html | land | 48.5 | 14.2 | 13.3 | 2.4 | 6 | 517 |
-| es/reforma-restaurantes.html | land | 48.5 | 13.9 | 13.3 | 2.5 | 6 | 504 |
+| es/reforma-restaurantes.html | land | 48.5 | 13.8 | 13.3 | 2.5 | 6 | 504 |
 | remont-kvartyry-zhk-montreal-house.html | land | 48.5 | 13.2 | 13.3 | 0.5 | 6 | 433 |
 | remont-kvartyry-zhk-novyi-avtohraf.html | land | 48.5 | 13.2 | 13.3 | 0.5 | 6 | 431 |
 | ar/general-contractor.html | land | 48.4 | 12.6 | 13.3 | 0.5 | 6 | 449 |

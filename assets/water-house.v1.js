@@ -204,7 +204,8 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       add(q[0] < 0 && q[1] - q[0] + hx0 < hy1 ? 'terb' : 'glow', dot('wh2-hal', q[0], q[1], Z + 1.05, 8) + dot('wh-lamp', q[0], q[1], Z + 1.05, 2.2) + circ('wh-gl', q[0], q[1], Z + 1, 0.9) + (q[0] < 0 ? '' : '<line class="wh-streak" style="animation-delay:' + (k * 0.37).toFixed(2) + 's" x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '"/>'), DUSK, 0.3 + 0.5 * k / lamps.length);
     });
     // 12 здача: господарі на терасі, човен на воді
-    add('ppl', person('p0', hx0 + 2.5, ty0 + 0.6, Z) + person('p1', hx0 + 3.3, ty0 + 0.4, Z), 11, 0.2);
+    // господарі — над нічним шаром (у ppl їх гасило затемнення «Вечора»; QA 18.11.2026)
+    add('glow', person('p0', hx0 + 2.5, ty0 + 0.6, Z) + person('p1', hx0 + 3.3, ty0 + 0.4, Z), 11, 0.2);
     if (!RM) { var c0 = P(PW + 9, PD + 3, 0), c1 = P(-6, PD + 7, 0); add('ppl', '<g class="wh-boat"><animateMotion dur="26s" repeatCount="indefinite" path="M' + c0.join(',') + ' L' + c1.join(',') + '"/>' + '<path class="wh-hull" d="M-14,0 q14,7 28,0 l-4,-3 h-20z"/>' + person('p2', 0, 0, 0.1) + '</g>', 11, 0.5); }
     // збірка
     ['shore', 'pile'].forEach(function (k) { L[k].sort(function (a, b) { return a.d - b.d; }); });
@@ -216,6 +217,11 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     TR.forEach(function (t) { c.push(P(t[0] + 1, t[1] - 1, 3.4), P(t[0], t[1], 4.4)); });
     var xs = c.map(function (q) { return +q[0]; }), ys = c.map(function (q) { return +q[1]; });
     FULL = [Math.min.apply(0, xs) - 14, Math.min.apply(0, ys) - 14, Math.max.apply(0, xs) - Math.min.apply(0, xs) + 28, Math.max.apply(0, ys) - Math.min.apply(0, ys) + 28];
+    // 12 здача: знак «ключі» у вільному верхньому лівому куті кадру (вода) — як печатка «12 міс.» на «Будинку/Квартирі». QA 18.11.2026: етап «Здача»
+    // на 402 px нічим не відрізнявся від «Вечора» (господарі в кілька пікселів, човен — за кадром). Кут FULL завжди в кадрі: target() показує всю модель
+    var kx = FULL[0] + 46, ky = FULL[1] + 46, ko = { h: '<g class="wh-key"><circle cx="' + kx + '" cy="' + ky + '" r="34" class="k1"/><circle cx="' + kx + '" cy="' + ky + '" r="28" class="k2"/>'
+      + '<circle cx="' + (kx - 10) + '" cy="' + ky + '" r="7.5" class="k3"/><path class="k3" d="M' + (kx - 2.5) + ' ' + ky + 'h20M' + (kx + 11) + ' ' + ky + 'v7M' + (kx + 16) + ' ' + ky + 'v5"/></g>', k: 11.3, d: 0, id: id++, z: 0 };
+    html += '<g class="wh-e">' + ko.h + '</g>'; els.push(ko); els.sort(function (a, b) { return a.k - b.k; });
     FOC = [0, [0, 0, PW, PD, -2.6, Z], [0, 0, PW, PD, 0, Z], [0, 0, PW, PD, 0, Z], [bx - 3, SH - 2, bx + 3, 2, 0, Z + 1], [hx0, hy0, hx1, hy1, Z, zt], [hx0, hy0, hx1, hy1, Z, zr], 0, 0, [-1.5, hy1 - 1, PW, PD + 1, -0.6, Z + 1.5], 0, 0];
     svg.innerHTML = '<defs><linearGradient id="wh-wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f6f8f" stop-opacity=".78"/><stop offset="1" stop-color="#1b4a66" stop-opacity=".84"/></linearGradient>'
       + '<pattern id="wh-wd" width="40" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(150)"><path d="M0 1.5h17M21 1.5h19M0 4.2h9M13 4.2h27" stroke="#3a2614" stroke-width=".5" stroke-opacity=".5"/></pattern>'
@@ -235,7 +241,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
   // дошка обшивки: патерн, скошений уздовж площини стіни (x — стіна x=const)
   function bd(n, a) { return '<pattern id="wh2-p' + n + '" width="34" height="6" patternUnits="userSpaceOnUse" patternTransform="skewY(' + a + ')"><path d="M0 2.9h34M0 5.9h34M11 0v3M27 3v3" stroke="#3e2c1c" stroke-width=".55" stroke-opacity=".6" fill="none"/><path d="M0 .5h34M0 3.5h34" stroke="#e0c49c" stroke-width=".45" stroke-opacity=".3"/></pattern>'; }
   // стилі деталізації — свої класи wh2-* (основний CSS — water-house.v1.css); нових нескінченних анімацій немає
-  var CS = '.wh2-wb{fill:none;stroke:#cfe8f5;stroke-opacity:.17;stroke-width:.9;stroke-linecap:round}.wh2-dp{fill:url(#wh2-dg)}'
+  var CS = '.wh-key .k1{fill:#BF9148}.wh-key .k2{fill:none;stroke:#080709;stroke-width:.9;stroke-dasharray:2 2}.wh-key .k3{fill:none;stroke:#080709;stroke-width:4;stroke-linecap:round}.wh2-wb{fill:none;stroke:#cfe8f5;stroke-opacity:.17;stroke-width:.9;stroke-linecap:round}.wh2-dp{fill:url(#wh2-dg)}'
     + '.wh2-pr{fill:none;stroke:#d6eef8;stroke-opacity:.45;stroke-width:.6}.wh2-pd{fill:#04131c;opacity:.4}.wh2-uw{fill:#1d4e6a;opacity:.75}.wh2-gr{fill:url(#wh2-gp)}'
     + '.wh2-sl{fill:#6e5a3c}.wh2-wt{fill:#3a3022;opacity:.65}.wh2-st{fill:#8f8b82;stroke:#55524c;stroke-width:.4}.wh2-st.s1{fill:#aaa69c}.wh2-st.s2{fill:#74706a}'
     + '.wh2-fm{fill:none;stroke:#e6f6ff;stroke-opacity:.4;stroke-width:.8;stroke-dasharray:6 4}.wh2-rd{fill:none;stroke:#8f9e4a;stroke-width:.9;stroke-linecap:round}.wh2-ct{fill:none;stroke:#5a3e24;stroke-width:2.2;stroke-linecap:round}'
@@ -303,15 +309,21 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       vbT = target(i);
       if (i === N - 1) cl('wh_end');
     }
-    if (!vb || RM || force) vb = vbT.slice();
+    if (!vb || RM || force) { vb = vbT.slice(); cB = null; }
     if (!raf) tick();
   }
+  // камера (QA 18.11.2026): перехід viewBox за часом — 650 мс easeInOutCubic замість «0.12 відстані за кадр»: однаковий темп на 60/120 Гц і на повільному телефоні
+  // (там кадрів менше, а не довший хвіст субпіксельних перемальовок усього SVG); нова ціль посеред руху — з поточної точки, без зупинки (easeOut)
+  var cA = null, cB = null, cT = 0, cE = 0, cS = '';
   function tick() {
-    raf = 0;
-    var dn = 0;
-    for (var j = 0; j < 4; j++) { var dv = vbT[j] - vb[j]; if (Math.abs(dv) > 0.5) { vb[j] += dv * 0.12; dn = 1; } else vb[j] = vbT[j]; }
-    svg.setAttribute('viewBox', vb.map(function (v) { return v.toFixed(1); }).join(' '));
-    if (dn && !RM) raf = W.requestAnimationFrame(tick);
+    raf = 0; if (!vbT || !vb) return;
+    var t0 = W.performance ? W.performance.now() : Date.now();
+    if (!cB || cB.join() !== vbT.join()) { cE = cB && cA && cS && t0 - cT < 650 ? 1 : 0; cA = vb.slice(); cB = vbT.slice(); cT = t0; }
+    var t = RM ? 1 : Math.min(1, (t0 - cT) / 650), e = cE ? 1 - Math.pow(1 - t, 3) : t < 0.5 ? 4 * t * t * t : 1 - Math.pow(2 - 2 * t, 3) / 2;
+    for (var j = 0; j < 4; j++) vb[j] = cA[j] + (cB[j] - cA[j]) * e;
+    var s = vb.map(function (v) { return v.toFixed(1); }).join(' ');
+    if (s !== cS) { cS = s; svg.setAttribute('viewBox', s); }
+    if (t < 1) raf = W.requestAnimationFrame(tick);
   }
   function raw() { // прогрес за прокруткою, етапи (згладжування, ліміт швидкості й «один етап за клацання» — casDrive у site-chrome.v1.js)
     if (!run) return null;
