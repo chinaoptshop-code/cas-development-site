@@ -17,6 +17,9 @@ python3 -m venv /tmp/ogvenv && /tmp/ogvenv/bin/pip install pillow
   фото задано вручну в `BLOG_PHOTOS` у `make-og.py` (з повʼязаної послуги чи проєкту за темою).
 - Шрифт — Cormorant Garamond (`fonts/`, ліцензія SIL OFL 1.1, `fonts/OFL.txt`), з Google Fonts (google/fonts, ofl/cormorantgaramond).
 - Знак — текстовий «CAS DEVELOPMENT» (логотип SVG не рендериться й не перемальовується).
+- Статті блогу мовами en, es, pl, de, fr, pt, zh, ar — одна спільна картка без заголовка `img/og/blog-<id фото>.jpg`
+  (`render()` з порожнім `title`: фото + знак «CAS DEVELOPMENT» + домен; робить `og_images()` у `tools/blog/build.py`,
+  шлях — `og_path()`); картка із заголовком `img/og/<slug>.jpg` — лише uk і ru (бюджет файлів деплою, 19.11.2026).
 - JPEG progressive + optimize, якість підбирається автоматично, щоб файл був ≤ 120 КБ.
 
 ## Slug → фото

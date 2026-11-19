@@ -349,7 +349,7 @@ def build_article(a, arts):
     lang, t = a['lang'], L[a['lang']]
     s = shell(rd(TPL_UK), lang)
     url = url_of(a)
-    og = f"img/og/{a['slug']}.jpg"
+    og = og_path(a)
     og_url = B + og if os.path.exists(os.path.join(ROOT, og)) else B + 'img/og-cas.jpg'
     s = re.sub(r'<title>.*?</title>', f"<title>{esc(a.get('seo_title') or title_tag(a['title']))}</title>", s, count=1, flags=re.S)
     s = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{esc(a["description"])}">', s, count=1)
@@ -579,6 +579,17 @@ def related_blocks(items_by_lang, n_show=3):
 BUDGET_LAND = 64 * 1024 - 3072  # tools/ui/ui.py BUDGET html_kb land; запас 3 КБ — наступні кроки build-all (ux, сцени) ще додають розмітку
 
 
+OG_OWN = ('uk', 'ru')  # мови зі своєю OG-карткою статті (заголовок на картці); решта — спільна картка без тексту
+
+
+def og_path(a):
+    """OG-картка статті (бюджет файлів деплою, 19.11.2026): uk/ru — своя img/og/<slug>.jpg із заголовком;
+    en, es, pl, de, fr, pt, zh, ar — ОДНА спільна картка без тексту img/og/blog-<id фото>.jpg (фото статті + знак CAS,
+    заголовок мовою сторінки соцмережі беруть з og:title). Ключ — фото, а не стаття: статті з тим самим фото ділять файл."""
+    if a['lang'] in OG_OWN or not a.get('photo'): return f"img/og/{a['slug']}.jpg"
+    return 'img/og/blog-' + re.sub(r'-\d+$', '', os.path.splitext(os.path.basename(a['photo']))[0]) + '.jpg'
+
+
 def og_images(arts):
     p = os.path.join(ROOT, 'tools/og/make-og.py')
     try:
@@ -587,13 +598,14 @@ def og_images(arts):
         print('OG пропущено:', e); return
     black, mask = m.overlay()
     for a in arts:
-        out = os.path.join(ROOT, f"img/og/{a['slug']}.jpg")
+        rel = og_path(a)
+        out = os.path.join(ROOT, rel)
         if os.path.exists(out) or not a.get('photo'): continue
-        if a['lang'] in ('zh', 'ar'): continue  # шрифт OG (Cormorant) без ієрогліфів/арабиці: zh/ar — slug як у en, тож OG — англійської статті (або загальне)
-        img = m.render({'kind': 'blog', 'slug': a['slug'], 'title': a['title'], 'photo': a['photo'],
+        own = a['lang'] in OG_OWN  # спільна картка — без заголовка й мітки (шрифт OG — без ієрогліфів/арабиці; одна на всі мови)
+        img = m.render({'kind': 'blog', 'slug': a['slug'], 'title': a['title'] if own else '', 'photo': a['photo'],
                         'label': L[a['lang']].get('og_label', 'БЛОГ')}, black, mask)
         m.save(img, m.Path(out) if hasattr(m, 'Path') else __import__('pathlib').Path(out))
-        print('OG', a['slug'])
+        print('OG', rel)
 
 
 def sitemap(arts, langs):

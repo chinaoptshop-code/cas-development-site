@@ -164,7 +164,10 @@ def render(item, black, mask):
     title, sub = item["title"], None
     if item["kind"] == "proekty" and " — " in title:
         title, sub = title.split(" — ", 1)
-    tf, lines, ts = fit_title(d, title, maxw)
+    if title:
+        tf, lines, ts = fit_title(d, title, maxw)
+    else:  # без заголовка — спільна картка статті для всіх мов перекладу (tools/blog/build.py: og_shared)
+        tf, lines, ts = None, [], 0
     lh = int(ts * 1.08)
     sf = font(34, "Medium")
     block = lh * len(lines) + (54 if sub else 0)
@@ -172,8 +175,8 @@ def render(item, black, mask):
 
     # Брова: золота лінія + знак.
     ef = font(22, "Bold")
-    ey = y - 58
-    label = "CAS DEVELOPMENT" + ("  ·  ПРОЄКТ" if item["kind"] == "proekty" else "  ·  " + item.get("label", "БЛОГ"))
+    ey = y - 58 if title else H - pad - 21  # без заголовка — знак унизу, на лінії домену
+    label = "CAS DEVELOPMENT" + ("  ·  ПРОЄКТ" if item["kind"] == "proekty" else ("  ·  " + item.get("label", "БЛОГ") if title else ""))
 
     if sub:
         sub = sub[0].upper() + sub[1:]
@@ -184,7 +187,7 @@ def render(item, black, mask):
         if sub:
             t.text((pad, y + lh * len(lines) + 14), sub, font=sf, fill=255 if dr else (214, 205, 190))
         if dr:
-            sd.rectangle([pad, ey + 4, pad + 520, ey + 26], fill=160)
+            sd.rectangle([pad, ey + 4, pad + (520 if title else 400), ey + 26], fill=160)
             shadow = shadow.filter(ImageFilter.GaussianBlur(14)).point(lambda v: int(v * 0.6))
             img = Image.composite(black, img, shadow)
             d = ImageDraw.Draw(img)
