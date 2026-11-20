@@ -96,6 +96,12 @@ for (const pid of [PD, PR]) {
 await api('OWNER', 'POST', '/api/admin/projects', { type: 'document', client_id: C1, kind: 'other', title: P(), url: 'https://docs.example.com/b.pdf' });
 await api('OWNER', 'POST', '/api/admin/partner-codes', { code: 'XSS10', name: P(), discount: 10 }).catch(() => null);
 await api('MGR', 'POST', '/api/admin/projects', { type: 'from_lead', order_id: leads[0].id });
+// ===== задачі CRM v4: назва, примітка й коментар виконавця — будь-який текст (сервер не чистить, інтерфейс екранує) =====
+const gt = [];
+for (const [i, b] of [{ order_id: leads[0].id }, { project_id: PD, stage_id: sd[0].id }, { contact_id: cts[0] }, {}, { project_id: PR }].entries())
+  gt.push((await api('MGR', 'POST', '/api/admin/tasks', { title: pick(i), note: pick(i + 1), due_date: iso(i - 2), priority: i % 2 ? 'high' : 'normal', assignee_staff_id: i % 2 ? des.id : fore.id, ...b })).id);
+await api('FORE', 'PATCH', '/api/team/tasks', { id: gt[0], done: true, note: ALL });
+await api('DES', 'PATCH', '/api/team/tasks', { id: gt[1], done: true, note: TAG });
 
 // ===== сервер =====
 const H = readFileSync(join(ROOT, '_headers'), 'utf8');
@@ -198,9 +204,44 @@ async function crawl(label, who, path, { cards = 8, extra } = {}) {
 const table = async p => { const b = p.locator('[data-v=table]'); if (await b.count()) await b.first().click({ timeout: 1000 }); };
 
 console.log('Майстер-панель (власник)');
-for (const tab of ['studio', 'crm', 'stats', 'orders', 'clients', 'projects', 'partners', 'codes', 'team', 'audit'])
+for (const tab of ['studio', 'crm', 'tasks', 'stats', 'orders', 'clients', 'projects', 'partners', 'codes', 'team', 'audit'])
   await crawl('owner-' + tab, 'OWNER', '/kabinet/admin#' + tab, { cards: tab === 'projects' || tab === 'crm' ? 10 : 6 });
 await crawl('owner-crm-table', 'OWNER', '/kabinet/admin#crm', { cards: 0, extra: table });
+// CRM v4: задачі — усі перемикачі, правка на місці (назва й примітка в полях), виконані з коментарем; таблиця контактів — клітинки,
+// правка клітинки, попередній перегляд імпорту CSV з «пастками» в рядках
+let c4 = 0;
+const tasksAll = async p => {
+  for (const v of ['all', 'done', 'overdue']) { await p.click(`[data-v=${v}]`); await p.waitForTimeout(350); for (const b of await p.evaluate(probe)) throw new Error(b); }
+  await p.click('[data-v=all]'); await p.waitForTimeout(350);
+  await p.locator('.tk-row[data-src=p] [data-edit]').first().click(); await p.waitForSelector('.tk-edit [data-k=title]', { timeout: 3000 }); // задача етапу обʼєкта
+  if (!/__xss/.test(await p.inputValue('.tk-edit [data-k=title]'))) throw new Error('у формі правки задачі етапу немає тексту');
+  for (const b of await p.evaluate(probe)) throw new Error(b);
+  await p.click('.tk-edit [data-close]');
+  await p.locator('.tk-row[data-src=t] [data-edit]').first().click(); await p.waitForSelector('.tk-edit [data-k=note]', { timeout: 3000 });
+  if (!/__xss/.test(await p.inputValue('.tk-edit [data-k=title]'))) throw new Error('у формі правки немає тексту задачі');
+  c4++;
+};
+await crawl('owner-tasks-edit', 'OWNER', '/kabinet/admin#tasks', { cards: 0, extra: tasksAll });
+const ctTable = async p => {
+  await p.click('[data-mode=table]'); await p.waitForSelector('[data-ctbl] tr[data-id]', { timeout: 4000 });
+  await p.locator('[data-ctbl] td[data-c=city]').first().click(); await p.waitForSelector('td.editing input', { timeout: 3000 });
+  c4++;
+};
+await crawl('owner-contacts-table', 'OWNER', '/kabinet/admin#partners', { cards: 0, extra: ctTable });
+const ctImport = async p => {
+  if (!(await p.$('[data-ctbl]'))) { await p.click('[data-mode=table]'); await p.waitForSelector('[data-ctbl]', { timeout: 4000 }); }
+  await p.click('[data-imp]'); await p.waitForSelector('dialog.c4-imp[open]');
+  const q = v => '"' + v.replace(/"/g, '""') + '"';
+  const csv = `${q(DQ)};${q(SQ)};Місто\r\n${q(TAG)};0672229901;${q(SQ)}\r\n${q(DQ)};0672229902;${q(TAG)}\r\n${q(SQ)};${q(TAG)};Київ\r\n`;
+  await p.setInputFiles('dialog.c4-imp [data-file]', { name: 'x.csv', mimeType: 'text/csv', buffer: Buffer.from(csv, 'utf8') });
+  await p.waitForSelector('dialog.c4-imp [data-m]', { timeout: 3000 });
+  for (const b of await p.evaluate(probe)) throw new Error(b);
+  await p.selectOption('dialog.c4-imp [data-m="0"]', 'name'); await p.selectOption('dialog.c4-imp [data-m="1"]', 'phone'); await p.selectOption('dialog.c4-imp [data-m="2"]', 'city');
+  await p.click('dialog.c4-imp [data-go]'); await p.waitForSelector('dialog.c4-imp [data-psum]', { timeout: 4000 });
+  c4++;
+};
+await crawl('owner-contacts-import', 'OWNER', '/kabinet/admin#partners', { cards: 0, extra: ctImport });
+if (c4 !== 3) { console.log('  ✗ CRM v4: перевірки задач / таблиці / імпорту не дійшли до кінця (' + c4 + ' з 3)'); fails++; }
 // одночасне редагування: діалог конфлікту версій (імʼя того, хто змінив) і примітка «не перенесено» (чуже й моє значення) — лише текст
 let conflicts = 0;
 const conflict = retry => async p => {
@@ -218,7 +259,7 @@ if (conflicts !== 2) { console.log('  ✗ конфлікт версій не в�
 console.log('Робоча панель (менеджер)');
 for (const tab of ['crm', 'clients', 'projects', 'partners']) await crawl('manager-' + tab, 'MGR', '/kabinet/admin#' + tab, { cards: 4 });
 console.log('Кабінет працівника (прораб, дизайнер)');
-for (const who of ['FORE', 'DES']) for (const v of ['today', 'objects', 'leads', 'more'])
+for (const who of ['FORE', 'DES']) for (const v of ['today', 'objects', 'todo', 'leads', 'more'])
   await crawl(`${who.toLowerCase()}-${v}`, who, '/kabinet/team#' + v, { cards: 4 });
 console.log('Кабінет клієнта');
 for (const p of ['', '/obiekt', '/proekty', '/profil', '/zamovlennia', '/zamovlennia?n=OZD-' + ordNum, '/obrane']) await crawl('client' + (p || '/'), 'C1', '/kabinet' + p, { cards: 3 });

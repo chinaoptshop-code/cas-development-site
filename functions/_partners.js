@@ -128,7 +128,9 @@ const byLabel = dictn => v => {
   if (dictn[s]) return s;
   return Object.keys(dictn).find(k => dictn[k].toLowerCase() === s) || null;
 };
-export const typeKey = v => byLabel(PARTNER_TYPES)(v) || ({ клієнти: 'client', підрядники: 'contractor', партнери: 'partner', постачальники: 'supplier', ріелтори: 'realtor', бригади: 'crew', майстри: 'master', дизайнер: 'designer', архітектор: 'designer' })[String(v || '').trim().toLowerCase()] || null;
+// множина й короткі назви з таблиць Excel; dict() — щоб «constructor» / «__proto__» з файлу не знаходились у прототипі
+const TYPE_ALIASES = dict({ клієнти: 'client', підрядники: 'contractor', партнери: 'partner', постачальники: 'supplier', ріелтори: 'realtor', бригади: 'crew', майстри: 'master', дизайнер: 'designer', архітектор: 'designer' });
+export const typeKey = v => byLabel(PARTNER_TYPES)(v) || TYPE_ALIASES[String(v ?? '').trim().toLowerCase()] || null;
 export const statusKey = v => byLabel(PARTNER_STATUSES)(v);
 // Без права «Телефон, пошта й адреса клієнта» (clients.contacts) контактні поля не віддаються ні в таблиці, ні в CSV
 const CONTACT_FIELDS = ['phone', 'tg', 'email'];
