@@ -459,6 +459,7 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
 #calc .ct button[aria-pressed=true]{border-color:var(--ac);background:rgba(191,145,72,.12)}
 #calc .ct button[aria-pressed=true]::before{background:var(--ac);border-color:var(--ac)}
 #calc .ct button[aria-pressed=true]::after{content:"";position:absolute;inset-block-start:.8125rem;inset-inline-end:1.0625rem;width:.3125rem;height:.625rem;border:solid #140f08;border-width:0 2px 2px 0;transform:rotate(45deg)}
+#calc .ct button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 #calc .cv{display:grid;gap:16px}
 #calc .seg{display:flex;flex-wrap:wrap;gap:6px}
 #calc .seg.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}

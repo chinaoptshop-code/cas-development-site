@@ -345,6 +345,7 @@
 "#calc .ct button[aria-pressed=true]",
 "#calc .ct button[aria-pressed=true]::before",
 "#calc .ct button[aria-pressed=true]::after",
+"#calc .ct button:focus-visible",
 "#calc .cv",
 "#calc .cl",
 "#calc .seg",

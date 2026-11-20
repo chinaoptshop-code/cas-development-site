@@ -246,7 +246,8 @@ def styleguide(check=False):
     v = re.search(re.escape(JS_SRC) + r'\?v=[\w.-]+', cur)  # ?v= у src ставить chrome.versions — зберігаємо
     if v:
         new = new.replace(JS_SRC, v.group(0))
-    if new == cur:
+    norm = lambda x: x.replace('\u00a0', ' ')  # chrome.price_fmt ставить нерозривний пробіл у «від $…» — це не розбіжність
+    if norm(new) == norm(cur):
         return True
     if not check:
         open(SG, 'w', encoding='utf-8').write(s.replace(cur, new))

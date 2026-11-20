@@ -61,7 +61,7 @@ function casCalcInit() {
   var q = '', pk; try { q = new URLSearchParams(location.search).get('k') || ''; } catch (e) {}
   pk = casCalcPick(C, q); if (!Object.keys(pk).length) { pk = {}; C.df.forEach(function (id) { pk[id] = V[id]; }); }
   Object.keys(pk).forEach(function (id) { on(id, pk[id]); });
-  function rl(key, u) { var r = CAS_RATES[key][R]; return r == null ? C.est : C.frm + ' ' + f(r) + '/' + u; }
+  function rl(key, u) { var r = CAS_RATES[key][R]; return r == null ? C.est : C.frm + '\u00a0' + f(r) + '/' + u; } /* нерозривний пробіл — як у розмітці (chrome.price_fmt): текст плитки не змінюється після старту */
   function sync() {
     var b = IT.querySelectorAll('button'), i, j, id, g, vb, p, sm;
     for (i = 0; i < b.length; i++) {
