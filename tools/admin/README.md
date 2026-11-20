@@ -735,8 +735,8 @@ API — `functions/api/admin/tasks.js` (`GET ?view=&assignee=&link=&order_id=&pr
 `functions/api/admin/lead-sla.js` (відповідь `tasks: {assigned, done, digests}`); годинник у тестах — заголовок `x-test-now`
 (лише з `ALERTS_TEST_CLOCK=1`). Контакти — `functions/api/admin/partners.js`: `sort` / `dir` (лише колонки зі списку `SORT`),
 `limit` / `offset`, `archived=1`, `ver=1`, `facets=1`, `PATCH {id, archived}`, `{bulk: {ids, type | city | archive}}`,
-`POST {action: 'import', rows, type?, dry?}`; лічильники рядка — підзапитами (D1 приймає до 100 параметрів на запит — стенд
-`tools/tests/harness.mjs` тепер падає так само). Інтерфейс — `assets/admin/crm4.v1.{js,css}` (`window.CASCrm4`: вкладка, `taskBlock`,
+`POST {action: 'import', rows, type?, dry?}`; лічильники рядка — підзапитами, списки id — `IN_IDS` + `idsArg` з `functions/_lib.js`
+(D1 приймає до 100 параметрів на запит; `tools/tests/d1limit.mjs`). Інтерфейс — `assets/admin/crm4.v1.{js,css}` (`window.CASCrm4`: вкладка, `taskBlock`,
 `contactsTable`, імпорт; підключає `tools/shop/pages.py`), у `cms.v1.js` — лише точки підключення; кабінет працівника —
 `assets/team.v1.js` (`todo`, `todoDone`). Тести: `tools/tests/crm4.mjs` (у складі `run.mjs`), `sec.mjs` («задачі й таблиці контактів»),
 Playwright — `ui.mjs` (owner-tasks, owner-tasks-edit, owner-lead-tasks, owner-project-tasks, owner-contacts-table,

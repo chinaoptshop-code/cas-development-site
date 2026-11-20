@@ -3,7 +3,7 @@
 // Було: «Партнери» і бот пошуку заявок (migrations/0013_partners.sql). Спільне для бота (/api/bot/*) і адмінки (/api/admin/partners):
 // перевірка й обрізання полів (HTML не приймаємо), нормалізація контактів, дедуплікація й upsert, CSV.
 // Зберігаємо лише публічні контакти: Telegram @username, телефон, сайт. Опис для власника — tools/admin/README.md, «Партнери і бот пошуку».
-import { dict, normalizePhone } from './_lib.js';
+import { IN_IDS, dict, idsArg, normalizePhone } from './_lib.js';
 
 export const PARTNER_TYPES = dict({
   client: 'Клієнт', contractor: 'Підрядник', partner: 'Партнер', supplier: 'Постачальник', realtor: 'Ріелтор', crew: 'Бригада', master: 'Майстер',
@@ -196,7 +196,7 @@ export async function projectContacts(env, x, ids) {
   let rows = [];
   try {
     rows = (await env.DB.prepare(`SELECT l.id AS link_id, l.project_id, l.role, l.note AS link_note, c.* FROM contact_links l JOIN partners c ON c.id = l.contact_id
-        WHERE l.project_id IN (${ids.map(() => '?').join(',')}) ORDER BY l.id LIMIT 1000`).bind(...ids).all()).results;
+        WHERE l.project_id ${IN_IDS} ORDER BY l.id LIMIT 1000`).bind(idsArg(ids)).all()).results;
   } catch (e) { if (/no such table|no such column/i.test(String(e && e.message))) return {}; throw e; }
   const full = x.can('partners.base'), cts = x.can('clients.contacts');
   const out = {};

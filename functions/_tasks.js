@@ -15,7 +15,7 @@
 //   зведення «сьогодні й прострочені» — не більше одного на день на людину (task_digest). Усе — лише 10:00–20:00 за Києвом: подія
 //   поза цим часом чекає в черзі (assign_notified / done_notified = 0) до наступного проходу розкладу. Без Telegram — без сповіщення, без помилки.
 // Тексти задач — звичайний текст: сервер їх не чистить від «<», інтерфейс скрізь екранує (tools/tests/xss.mjs).
-import { dict } from './_lib.js';
+import { IN_IDS, dict, idsArg } from './_lib.js';
 import { escHtml, kyiv, notifyStaff } from './_alerts.js';
 import { ROLES, audit, canSeeProject, noTable, orderScope, projectScope, staffById } from './_roles.js';
 import { stagesArr, taskVer } from './_ver.js';
@@ -43,9 +43,7 @@ export function nowOf(env, request) {
   const d = t ? new Date(t) : new Date();
   return Number.isNaN(d.getTime()) ? new Date() : d;
 }
-// D1 приймає до 100 параметрів на запит — списки id ріжемо на порції
-async function byIds(ids, fn) { const out = []; for (let i = 0; i < ids.length; i += 80) out.push(...await fn(ids.slice(i, i + 80))); return out; }
-const marks = a => a.map(() => '?').join(',');
+// D1 приймає до 100 параметрів на запит — списки id передаємо одним параметром (IN_IDS + idsArg, functions/_lib.js)
 
 // Чи є таблиця (кеш лише ствердної відповіді: після міграції все вмикається без перезапуску)
 const READY = new WeakMap();
@@ -135,17 +133,17 @@ export async function shapeTasks(env, x, rows, now = new Date()) {
   const staff = new Map((await env.DB.prepare('SELECT id, name, role, active FROM staff').all()).results.map(s => [s.id, s]));
   const uniq = col => [...new Set(rows.map(r => r[col]).filter(Boolean))];
   const P = new Map(), O = new Map(), C = new Map();
-  for (const p of await byIds(uniq('project_id'), async ids => { const a = [...ids]; const w = projectScope(x, a); return (await env.DB.prepare(`SELECT p.id, p.title, p.stages FROM projects p WHERE p.id IN (${marks(ids)}) AND ${w}`).bind(...a).all()).results; })) P.set(p.id, p);
-  for (const o of await byIds(uniq('order_id'), async ids => { const a = [...ids]; const w = orderScope(x, a); return (await env.DB.prepare(`SELECT o.id, o.number, o.kind, o.service, o.name, o.phone FROM orders o WHERE o.id IN (${marks(ids)}) AND ${w}`).bind(...a).all()).results; })) O.set(o.id, o);
+  const some = async (ids, sql, args = []) => (ids.length ? (await env.DB.prepare(sql).bind(idsArg(ids), ...args).all()).results : []);
+  { const a = [], w = projectScope(x, a); for (const p of await some(uniq('project_id'), `SELECT p.id, p.title, p.stages FROM projects p WHERE p.id ${IN_IDS} AND ${w}`, a)) P.set(p.id, p); }
+  { const a = [], w = orderScope(x, a); for (const o of await some(uniq('order_id'), `SELECT o.id, o.number, o.kind, o.service, o.name, o.phone FROM orders o WHERE o.id ${IN_IDS} AND ${w}`, a)) O.set(o.id, o); }
   const cts = x.can('clients.contacts');
   if (x.can('partners.base') || x.can('contacts.linked')) {
     try {
-      for (const c of await byIds(uniq('contact_id'), async ids => {
-        if (x.can('partners.base')) return (await env.DB.prepare(`SELECT id, name, company, type, phone, tg FROM partners WHERE id IN (${marks(ids)})`).bind(...ids).all()).results;
-        const a = [...ids]; const w = projectScope(x, a); // contacts.linked: лише контакти, привʼязані до видимих працівнику обʼєктів
-        return (await env.DB.prepare(`SELECT c.id, c.name, c.company, c.type, c.phone, c.tg FROM partners c WHERE c.id IN (${marks(ids)})
-            AND EXISTS (SELECT 1 FROM contact_links l JOIN projects p ON p.id = l.project_id WHERE l.contact_id = c.id AND ${w})`).bind(...a).all()).results;
-      })) C.set(c.id, c);
+      const a = [], w = projectScope(x, a); // contacts.linked: лише контакти, привʼязані до видимих працівнику обʼєктів
+      const rowsC = x.can('partners.base') ? await some(uniq('contact_id'), `SELECT id, name, company, type, phone, tg FROM partners WHERE id ${IN_IDS}`)
+        : await some(uniq('contact_id'), `SELECT c.id, c.name, c.company, c.type, c.phone, c.tg FROM partners c WHERE c.id ${IN_IDS}
+            AND EXISTS (SELECT 1 FROM contact_links l JOIN projects p ON p.id = l.project_id WHERE l.contact_id = c.id AND ${w})`, a);
+      for (const c of rowsC) C.set(c.id, c);
     } catch (e) { if (!noTable(e)) throw e; }
   }
   const nm = id => (id && staff.get(id) ? staff.get(id).name : null);
@@ -311,7 +309,7 @@ const bullet = (t, extra = '') => `• ${t.priority === 'high' ? '❗ ' : ''}${e
 async function claim(env, col, ids) {
   const mine = [];
   for (const id of ids) if ((await env.DB.prepare(`UPDATE tasks SET ${col} = 1 WHERE id = ? AND ${col} = 0`).bind(id).run()).meta.changes) mine.push(id); // col — лише дві константи нижче
-  return mine.length ? byIds(mine, async part => (await env.DB.prepare(`SELECT * FROM tasks WHERE id IN (${marks(part)})`).bind(...part).all()).results) : [];
+  return mine.length ? (await env.DB.prepare(`SELECT * FROM tasks WHERE id ${IN_IDS}`).bind(idsArg(mine)).all()).results : [];
 }
 const group = (rows, key) => { const m = new Map(); for (const r of rows) { if (!m.has(r[key])) m.set(r[key], []); m.get(r[key]).push(r); } return m; };
 

@@ -23,6 +23,10 @@ export const LEGACY_STATUSES = dict({ confirmed: 'Підтверджено', awa
 export const statusLabel = (s, kind) => (kind && statusesOf(kind)[s]) || STATUSES[s] || LEGACY_STATUSES[s] || s;
 // закриті стадії: не рахуються як «відкриті» / прострочені
 export const CLOSED = ['delivered', 'cancelled', 'warranty'];
+// D1 приймає не більше 100 параметрів на запит. Список id (обʼєкти, заявки, контакти — їх буває сотні) передаємо ОДНИМ
+// параметром — JSON-масивом: `WHERE project_id ${IN_IDS}` + `.bind(idsArg(ids))`. Не писати `IN (${ids.map(() => '?')})`.
+export const IN_IDS = 'IN (SELECT value FROM json_each(?))';
+export const idsArg = ids => JSON.stringify(ids);
 
 export const json = (data, status = 200, headers = {}) =>
   new Response(JSON.stringify(data), { status, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...headers } });

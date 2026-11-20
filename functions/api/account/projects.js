@@ -12,6 +12,7 @@
 //   Студії й відповідальному етапу — Telegram, audit_log 'project.revise'.
 import { body, cameraOf, client, json, noTable, progressOf, stageStatus, STAGE_STATUS, PAY_STATUS } from '../../_account.js';
 import { escHtml, notifyStaff, notifyTeam } from '../../_alerts.js';
+import { IN_IDS, idsArg } from '../../_lib.js';
 import { audit } from '../../_roles.js';
 import { limited } from '../../_rate.js';
 import { updateStages } from '../../_ver.js';
@@ -28,15 +29,15 @@ export async function onRequestGet({ request, env }) {
     // SELECT * — щоб camera_url/camera_note (0008) підхопились, щойно міграцію застосують, і не ламали запит до неї
     const P = (await env.DB.prepare(`SELECT * FROM projects WHERE client_id = ?
         ORDER BY CASE status WHEN 'active' THEN 0 WHEN 'paused' THEN 1 ELSE 2 END, id DESC LIMIT 20`).bind(c.id).all()).results;
-    const ids = P.map(p => p.id), q = ids.map(() => '?').join(',');
+    const ids = P.map(p => p.id);
     const R = ids.length ? (await env.DB.prepare(`SELECT * FROM project_reports
-        WHERE project_id IN (${q}) ORDER BY date DESC, id DESC LIMIT 300`).bind(...ids).all()).results : [];
+        WHERE project_id ${IN_IDS} ORDER BY date DESC, id DESC LIMIT 300`).bind(idsArg(ids)).all()).results : [];
     const D = (await env.DB.prepare('SELECT * FROM documents WHERE client_id = ? ORDER BY id DESC LIMIT 200').bind(c.id).all()).results;
     let PAY = [];
     if (ids.length) {
       try {
         PAY = (await env.DB.prepare(`SELECT id, project_id, stage_id, title, pct, amount, currency, due_date, paid_date, status, note, sort
-            FROM project_payments WHERE project_id IN (${q}) ORDER BY sort, COALESCE(due_date, '9999'), id LIMIT 500`).bind(...ids).all()).results;
+            FROM project_payments WHERE project_id ${IN_IDS} ORDER BY sort, COALESCE(due_date, '9999'), id LIMIT 500`).bind(idsArg(ids)).all()).results;
       } catch (e) { if (!noTable(e)) throw e; }
     }
     const doc = x => pick(x, ['id', 'project_id', 'order_id', 'kind', 'title', 'url', 'stage_id', 'created_at']);
