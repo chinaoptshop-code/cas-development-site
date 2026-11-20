@@ -653,6 +653,7 @@ await check('owner-lead-tasks', 'OWNER', '/kabinet/admin#crm', W, async p => {
   const t = await row('SELECT order_id FROM tasks WHERE title = ?', title);
   if (!t || t.order_id !== LEAD1) throw new Error('задачу не привʼязано до заявки');
   await box44(p, 'dialog[open] [data-tasks] .tk-chk', 'прапорець у картці', 44);
+  { const over = await p.$eval('dialog[open]', d => d.scrollWidth - d.clientWidth); if (over > 2) throw new Error(`картка заявки гортається вбік на ${over}px`); }
   await p.locator('dialog[open] [data-tasks] .tk-chk').first().scrollIntoViewIfNeeded(); await snap4(p, 'lead-tasks');
   let asked = false; p.once('dialog', d => { asked = true; d.accept(); });
   await p.click('dialog[open] button.x'); await p.waitForTimeout(300);

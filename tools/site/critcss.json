@@ -412,6 +412,7 @@
 ".xs-links a::before",
 ".sch-cta,.sch-tel",
 "html body .hx .hero>*,html body .hero>:is(h1,p,.btns,.price),html body .ozd-hero>*",
+"html body .hero>article>h1",
 "html body .sch .sch-nav",
 "html body .sch .sch-burger",
 "html body .sch .sch-act",

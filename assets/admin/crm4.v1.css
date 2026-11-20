@@ -66,6 +66,9 @@
 .adm .tk-block>h3 small{font-family:"Manrope","Manrope Fallback",system-ui,sans-serif;font-size:var(--fs-small)}
 .adm .tk-block .tk-add{padding:8px 10px}
 .adm dialog .tk-block{grid-column:1/-1;border-top:1px solid var(--line);padding-top:4px}
+/* картка заявки на телефоні не гортається вбік: блоки форми не ширші за картку (довгі списки «Пропозиції» розпирали сітку) */
+.adm dialog form.form>*{min-width:0}
+.adm dialog .crm-offer select{max-width:100%;min-width:0}
 
 /* ===== таблиця контактів ===== */
 .adm .ct-tb select,.adm .ct-tb .btn,.adm .ct-tb input,.adm .ct-tb summary{min-height:40px}
@@ -119,7 +122,7 @@
 }
 @media (max-width:700px){
   .adm .tk-add{padding:8px;max-width:100%}
-  .adm .tk-add [data-qt]{flex:1 1 9rem}
+  .adm .tk-add [data-qt]{flex:1 1 100%}
   .adm .tk-optb{display:inline-flex;align-items:center;min-height:44px;order:3;flex:1 1 44%}
   .adm .tk-add .btn[data-qb]{order:4}
   .adm .tk-add:not(.open) .tk-opt{display:none}
