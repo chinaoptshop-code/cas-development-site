@@ -666,6 +666,40 @@ await test('кабінет: без кільця курсора', '/kabinet', 144
   await p.waitForTimeout(1500); await p.mouse.move(300, 400); await p.mouse.move(400, 420, { steps: 4 }); await p.waitForTimeout(300);
   must(await p.locator('.cur').count() === 0, 'у кабінеті є кільце курсора');
 });
+// Кільце курсора біля країв вікна (20.11.2026): RTL і LTR на 1024 / 1440 / 1920 — без горизонтальної прокрутки, кліки проходять крізь кільце,
+// стрілка над обкладинкою в RTL — «←»
+for (const [path, w] of [['/ar/', 1440], ['/ar/', 1920], ['/ar/services', 1024], ['/', 1024], ['/services', 1920]]) await test('курсор-супутник біля країв: без горизонтальної прокрутки, не перехоплює кліки', path, w, async p => {
+  await p.waitForFunction(() => document.querySelector('.cur'), null, { timeout: 8000 });
+  const H = 900, pts = [[w - 2, 300], [w - 1, H - 2], [1, 400], [2, H - 3], [w / 2, 2], [w - 30, 40], [30, 40]];
+  for (const [x, y] of pts) {
+    await p.mouse.move(Math.max(40, Math.min(w - 40, x)), Math.max(40, Math.min(H - 40, y))); await p.mouse.move(x, y, { steps: 4 }); await p.waitForTimeout(260);
+    const r = await p.evaluate(([x, y]) => { const h = document.documentElement, c = document.querySelector('.cur'), top = document.elementFromPoint(Math.min(x, innerWidth - 1), Math.min(y, innerHeight - 1));
+      return { sw: h.scrollWidth, cw: h.clientWidth, sx: Math.round(scrollX), bw: document.body.scrollWidth, hit: !!(top && top.closest('.cur')), pos: getComputedStyle(c).position, pe: getComputedStyle(c).pointerEvents }; }, [x, y]);
+    must(r.sw <= r.cw && r.sx === 0, `горизонтальна прокрутка з кільцем у точці ${x},${y}: scrollWidth ${r.sw} > ${r.cw}, scrollX ${r.sx}`);
+    must(!r.hit && r.pe === 'none' && r.pos === 'fixed', `кільце перехоплює точку ${x},${y}: ` + JSON.stringify(r));
+  }
+  // клік крізь кільце доходить до посилання шапки (1024 — меню в бургері, тож «Заявка»)
+  const a = p.locator('header .sch-nav a:visible, header a.sch-cta:visible').first(), bb = await a.boundingBox();
+  await a.evaluate(e => e.addEventListener('click', ev => { ev.preventDefault(); ev.stopImmediatePropagation(); window.__hit = 1; }, true));
+  await p.mouse.move(bb.x + bb.width / 2, bb.y + bb.height / 2, { steps: 5 }); await p.waitForTimeout(300);
+  must(await p.evaluate(() => document.querySelector('.cur').classList.contains('is-a')), 'над посиланням шапки кільце не збільшилось');
+  await p.mouse.click(bb.x + bb.width / 2, bb.y + bb.height / 2);
+  must(await p.evaluate(() => window.__hit === 1), 'клік під кільцем не дійшов до посилання');
+});
+// Сцена збирається трьома задачами; якщо людина за цей час прогорнула сторінку, компенсація висоти (scrollBy) не має повертати її назад
+// (20.11.2026: після швидкої прокрутки повз сцену й назад нагору сторінка стрибала на тисячі px униз).
+for (const [path, w] of [['/en/', 1440], ['/', 402], ['/ar/', [820, 1180]]]) await test('сцена: прокрутка під час збірки не скасовується (сторінка не стрибає)', path, w, async p => {
+  const r = await p.evaluate(async () => {
+    const sec = document.querySelector('section.bz[data-js], section.bz'); if (!sec) return { skip: 1 };
+    const jumped = new Promise(ok => { const mo = new MutationObserver(() => { if (sec.hasAttribute('data-bz-on')) { mo.disconnect(); scrollTo({ top: 0, behavior: 'instant' }); ok(true); } }); mo.observe(sec, { attributes: true }); setTimeout(() => ok(false), 9000); });
+    scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' }); // перша прокрутка вантажить скрипт сцени; сцена — вище екрана, збірка стартує
+    const built = await jumped; await new Promise(r => setTimeout(r, 1500));
+    return { built, y: Math.round(scrollY) };
+  });
+  if (r.skip) return;
+  must(r.built, 'сцена не почала збиратись за 9 с');
+  must(r.y === 0, `після повернення нагору сторінка сама прокрутилась на ${r.y}px`);
+});
 // Галерея /proekty (20.11.2026): мініатюри — data-srcset (sharp.py), до прокрутки вантажиться лише головне фото (LCP не ділить канал з галереєю);
 // при прокрутці site-chrome.v1.js ставить srcset за ~350 px до кадру, клітинки тримають 4:3 — без зсуву.
 for (const [path, w] of [['/proekty/yacht-vip', 402], ['/en/proekty/monpark', 1440]]) await test('галерея /proekty: спершу лише головне фото, мініатюри — при прокрутці, CLS 0', path, w, async p => {

@@ -537,6 +537,7 @@ html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.pr
 html body .sch .sch-nav{display:none}
 html body .sch .sch-burger{display:inline-flex}
 html body .sch .sch-act{margin-inline-start:auto}
+html body .hero>article>h1{max-width:calc(env(viewport-segment-width 0 0,50vw) - 3.5rem)!important}
 html body :is(form#of,#zayavka .lq){max-width:min(34rem,calc(env(viewport-segment-width 0 0,50vw) - 3.5rem))!important}}
 @media(vertical-viewport-segments:2) and (max-width:767px){html body .hx.hx-home .hero{min-height:calc(env(viewport-segment-height 0 0,50vh) - var(--sch-h,64px));padding-bottom:20px}
 html body main>.hx-home+section.xs-strip{padding-top:calc(env(viewport-segment-top 0 1,0px) - env(viewport-segment-bottom 0 0,0px) + 12px)!important}}

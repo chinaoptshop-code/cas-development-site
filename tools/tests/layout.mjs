@@ -1,6 +1,7 @@
 // Playwright-аудит верстки: сторінки сайту на різних ширинах, програмні перевірки класу «щось комусь заважає».
 //   node tools/tests/layout.mjs                      # швидкий набір (головні, послуги, про, контакти, портфоліо; 402 і 1440) — код 1 при помилках
 //   node tools/tests/layout.mjs --full [--out <тека>] [--widths 360,402,...] [--pages /a,/b] [--set core|uk|all]
+//   node tools/tests/layout.mjs --full --matrix --pages /,/services --out <тека>   # телефони, альбомні, складані, Duo з шарніром, iPad, ПК (MATRIX нижче)
 // Перевіряє: (a) секції/блоки в main вужчі за сусідів (shrink-to-fit у grid/flex), (b) текст поверх тексту/кнопок,
 // (c) контраст тексту на фото (піксельна проба під текстом), (d) фіксовані шапка/пігулка «Звʼязатися» над кнопками/полями/H1
 // (на старті й унизу сторінки), (e) горизонтальна прокрутка, (f) обрізаний текст, (g) тап-цілі < 44 px на тачі,
@@ -22,7 +23,15 @@ const FULL = process.argv.includes('--full');
 const OUT = arg('--out', null);
 if (OUT) mkdirSync(OUT, { recursive: true });
 const DPR = { 344: 3, 360: 3, 390: 3, 402: 3, 430: 3, 768: 2, 1024: 2, 1440: 1, 1920: 2, 2560: 1 };
-const WIDTHS = (arg('--widths', FULL ? '360,402,768,1024,1440,1920,2560' : '402,1440')).split(',').map(Number);
+// --matrix — матриця пристроїв із CLAUDE.md («Смартфони, складані й двоекранні»): «ШxВ@DPR», t — тач, h — шарнір 28 px посередині (Surface Duo, CDP displayFeature);
+// додатково перевіряє H1 у першому екрані (i-h1-fold) і H1/кнопки/поля під шарніром (j-hinge). Свій набір — --widths 852x393@3t,1114x720@2.5th,…
+const MATRIX = '344x882@3t,360x780@3t,390x844@3t,402x874@3t,430x932@3t,852x393@3t,932x430@3t,768x840@2t,884x1104@2t,1104x884@2t,1114x720@2.5th,820x1180@2t,1180x820@2t,1024x768@1,1280x720@1,1440x900@1,1920x1080@1,2560x1440@1';
+const WIDTHS = (arg('--widths', process.argv.includes('--matrix') ? MATRIX : FULL ? '360,402,768,1024,1440,1920,2560' : '402,1440')).split(',').map(x => /^\d+$/.test(x) ? Number(x) : x);
+const vpOf = spec => {
+  if (typeof spec === 'number') return { w: spec, h: spec < 600 ? 874 : spec < 1100 ? 1024 : Math.round(spec * 0.5625), dpr: DPR[spec] || 1, touch: spec < 1024, mobile: spec < 600, hinge: false };
+  const m = String(spec).match(/^(\d+)x(\d+)(?:@([\d.]+))?([th]*)$/); if (!m) throw new Error('--widths: ' + spec);
+  return { w: +m[1], h: +m[2], dpr: +(m[3] || 1), touch: m[4].includes('t'), mobile: m[4].includes('t') && Math.min(+m[1], +m[2]) < 600, hinge: m[4].includes('h') };
+};
 
 // ===== набори сторінок =====
 const CL = JSON.parse(readFileSync(join(ROOT, 'tools/site/lang/clusters.json'), 'utf8'));
@@ -247,7 +256,7 @@ function analyze(opts) {
     }  }
   }
   // (d) фіксовані шари над кнопками/полями/H1
-  const fixedEls = [...document.querySelectorAll('body *')].filter(e => { const p = cs(e).position; return (p === 'fixed' || p === 'sticky') && vis(e) && e.getBoundingClientRect().height > 0 && e.getBoundingClientRect().height < innerHeight * 0.6; });
+  const fixedEls = [...document.querySelectorAll('body *')].filter(e => { const p = cs(e).position; return (p === 'fixed' || p === 'sticky') && !e.matches('a.skip') && vis(e) && e.getBoundingClientRect().height > 0 && e.getBoundingClientRect().height < innerHeight * 0.6; });
   // на старті — H1 і кнопки першого екрана (hero); унизу сторінки — усе, що вже не відкрутити з-під шару
   const hero = main.firstElementChild;
   const targets = [...ints, ...document.querySelectorAll('h1')].filter(e => vis(e) && !fixedEls.some(f => f.contains(e)) && (opts.phase !== 'top0' || e.tagName === 'H1' || hero && hero.contains(e)));
@@ -398,10 +407,13 @@ const browser = await chromium.launch();
 const findings = [];
 const IGNORE_CONSOLE = /net::ERR_FAILED|ERR_BLOCKED|Failed to load resource|ERR_ABORTED|status of 404/;
 async function run(path, w) {
-  const dpr = DPR[w] || 1, touch = w < 1024;
-  const ctx = await browser.newContext({ viewport: { width: w, height: w < 600 ? 874 : w < 1100 ? 1024 : Math.round(w * 0.5625) }, deviceScaleFactor: dpr, isMobile: w < 600, hasTouch: touch, reducedMotion: 'reduce' });
+  const V = vpOf(w), dpr = V.dpr, touch = V.touch;
+  const ctx = await browser.newContext({ viewport: { width: V.w, height: V.h }, deviceScaleFactor: dpr, isMobile: V.mobile, hasTouch: touch, reducedMotion: 'reduce' });
   await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => r.abort());
   const page = await ctx.newPage();
+  // шарнір двоекранного пристрою: шов 28 px посередині довшої сторони (viewport segments у CSS сайту)
+  const seam = V.hinge ? (V.w > V.h ? { x: (V.w - 28) / 2, y: 0, w: 28, h: V.h } : { x: 0, y: (V.h - 28) / 2, w: V.w, h: 28 }) : null;
+  if (seam) { const cdp = await ctx.newCDPSession(page); await cdp.send('Emulation.setDeviceMetricsOverride', { width: V.w, height: V.h, deviceScaleFactor: dpr, mobile: V.mobile, displayFeature: { orientation: V.w > V.h ? 'vertical' : 'horizontal', offset: Math.round((Math.max(V.w, V.h) - 28) / 2), maskLength: 28 } }); }
   const errs = [];
   page.on('pageerror', e => errs.push('JS: ' + e.message));
   page.on('console', m => { const t = m.text(); if (m.type() === 'error' && !IGNORE_CONSOLE.test(t)) errs.push('console: ' + t.slice(0, 200)); });
@@ -416,6 +428,22 @@ async function run(path, w) {
     await page.waitForLoadState('networkidle', { timeout: 8000 }).catch(() => {});
     await page.waitForTimeout(500);
     const top = await page.evaluate(analyze, { touch, phase: 'top0' });
+    if (typeof w !== 'number') top.push(...await page.evaluate(seam => {
+      // перший екран: H1 цілком у вікні (i-h1-fold); під шарніром — жодних H1, кнопок, полів (j-hinge)
+      const out = [], vis = e => { const r = e.getBoundingClientRect(), s = getComputedStyle(e); return r.width > 1 && r.height > 1 && s.visibility !== 'hidden' && s.display !== 'none' && +s.opacity > 0.05; };
+      const rect = r => ({ x: Math.round(r.left), y: Math.round(r.top + scrollY), w: Math.round(r.width), h: Math.round(r.height) });
+      const path = e => { const a = []; for (let x = e; x && x !== document.body && a.length < 4; x = x.parentElement) a.unshift(x.tagName.toLowerCase() + (x.id ? '#' + x.id : x.classList.length ? '.' + [...x.classList].slice(0, 2).join('.') : '')); return a.join('>'); };
+      const h1 = [...document.querySelectorAll('h1')].find(vis);
+      if (h1) { const r = h1.getBoundingClientRect(); if (r.bottom > innerHeight + 1 || r.top < 0) out.push({ cls: 'i-h1-fold', sel: path(h1), msg: `H1 поза першим екраном: ${Math.round(r.top)}…${Math.round(r.bottom)} px при висоті вікна ${innerHeight}`, rect: rect(r) }); }
+      if (seam) for (const e of document.querySelectorAll('h1, main a.btn, main button, .sch a, .sch button, input, select, textarea, .mbar button, .mbar a')) {
+        if (!vis(e)) continue; const r = e.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) continue;
+        // H1 — за рядками тексту (блок ширший за текст), решта — за рамкою елемента
+        let rs = [r]; if (e.tagName === 'H1') { const g = document.createRange(); g.selectNodeContents(e); rs = [...g.getClientRects()]; }
+        const hit = rs.some(q => Math.min(q.right, seam.x + seam.w) - Math.max(q.left, seam.x) > 2 && Math.min(q.bottom, seam.y + seam.h) - Math.max(q.top, seam.y) > 2);
+        if (hit) out.push({ cls: 'j-hinge', sel: path(e), msg: `під шарніром: ${e.tagName.toLowerCase()} «${(e.textContent || e.value || '').trim().slice(0, 30)}»`, rect: rect(r) });
+      }
+      return out;
+    }, seam));
     const ci = top.findIndex(f => f.cls === '_contrast');
     const cand = ci >= 0 ? top.splice(ci, 1)[0].cand : [];
     rec.push(...top, ...await contrast(page, cand));
@@ -463,7 +491,7 @@ for (const f of findings) by[f.cls] = (by[f.cls] || 0) + 1;
 if (OUT) writeFileSync(join(OUT, 'findings.json'), JSON.stringify(findings, null, 1));
 console.log(`\nВерстка: ${PAGES.length} сторінок × ${WIDTHS.join('/')} — ` + (Object.entries(by).map(([k, v]) => `${k}: ${v}`).join(', ') || 'чисто'));
 // у швидкому режимі (тест) — помилкою вважаємо лише класи, які мають бути нулем завжди
-const HARD = /^(a-narrow|b-text-overlap|b-text-over-control|d-fixed-cover|e-hscroll|f-clipped|g-tap|h-distorted|js-error)$/;
+const HARD = /^(a-narrow|b-text-overlap|b-text-over-control|d-fixed-cover|e-hscroll|f-clipped|g-tap|h-distorted|i-h1-fold|j-hinge|js-error)$/;
 const hard = findings.filter(f => HARD.test(f.cls));
 for (const f of (FULL ? [] : hard).slice(0, 40)) console.log(`  ✗ ${f.page} @${f.w} ${f.cls}: ${f.msg} [${f.sel}]`);
 process.exit(!FULL && hard.length ? 1 : 0);
