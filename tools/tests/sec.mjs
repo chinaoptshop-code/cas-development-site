@@ -326,4 +326,69 @@ await it('кабінет: noindex і без кешу; адмінка — без 
   }
 });
 
+describe('Безпека: задачі й таблиці контактів (CRM v4)');
+await it('задачі: гість 401, клієнт 403, вимкнений працівник 403; працівник не читає й не змінює чужі задачі жодним параметром', async () => {
+  const T = (m, body, who, qs = '') => call(env, m, '/api/admin/tasks' + qs, { cookie: who ? ck[who] : undefined, body });
+  const mine = (await T('POST', { title: 'Задача дизайнерці', assignee_staff_id: DES_ID }, 'MGR')).data.id;
+  const other = (await T('POST', { title: 'Таємна задача менеджера', note: 'лише для менеджера' }, 'MGR')).data.id;
+  for (const path of ['/api/admin/tasks', '/api/team/tasks']) {
+    eq((await call(env, 'GET', path)).status, 401, path);
+    eq((await call(env, 'GET', path, { cookie: ck.EVE })).status, 403, path);
+    eq((await call(env, 'PATCH', path, { cookie: ck.EVE, body: { id: mine, done: true } })).status, 403, path);
+  }
+  eq((await T('POST', { title: 'x' }, 'EVE')).status, 403);
+  // жоден фільтр не розширює видимість: view, assignee, пошук за текстом чужої задачі
+  for (const qs of ['?view=any', '?view=all', '?view=done', '?assignee=none', '?q=' + encodeURIComponent('Таємна'), '?assignee=' + (await q1('SELECT id FROM staff WHERE client_id = ?', MGR)).id, '?limit=500&offset=0']) {
+    const r = await T('GET', undefined, 'DES', qs);
+    eq(r.status, 200, qs); ok(r.data.rows.every(t => t.assignee_staff_id === DES_ID) && !JSON.stringify(r.data).includes('Таємна'), 'чужа задача в ' + qs);
+    ok(!r.data.staff, 'список персоналу — лише tasks.manage');
+  }
+  eq((await T('GET', undefined, 'DES', '?count=1')).data.mine, 1);
+  // чужа: «виконано», правка, перепризначення на себе, видалення — 404 / 403; своя: лише «виконано», не правка
+  for (const b of [{ id: other, done: true }, { id: other, assignee_staff_id: DES_ID }, { id: other, title: 'зламано' }]) eq((await T('PATCH', b, 'DES')).status, 404, JSON.stringify(b));
+  for (const b of [{ id: mine, title: 'перейменувала' }, { id: mine, assignee_staff_id: null }, { id: mine, status: 'cancelled' }, { id: mine, done: true, due_date: '2030-01-01' }, { bulk: { ids: [other], done: true } }])
+    eq((await T('PATCH', b, 'DES')).status, 403, JSON.stringify(b));
+  eq((await call(env, 'DELETE', '/api/admin/tasks?id=' + mine, { cookie: ck.DES })).status, 403);
+  const t = await q1('SELECT title, status, assignee_staff_id FROM tasks WHERE id = ?', other);
+  eq([t.title, t.status], ['Таємна задача менеджера', 'open']);
+  eq((await q1('SELECT title, due_date, status FROM tasks WHERE id = ?', mine)).title, 'Задача дизайнерці');
+  // вимкнений працівник — як сторонній
+  await DB.prepare('UPDATE staff SET active = 0 WHERE id = ?').bind(DES_ID).run();
+  eq((await T('GET', undefined, 'DES')).status, 403); eq((await T('PATCH', { id: mine, done: true }, 'DES')).status, 403);
+  await DB.prepare('UPDATE staff SET active = 1 WHERE id = ?').bind(DES_ID).run();
+});
+await it('задачі: значення-пастки («__proto__», «constructor», SQL у параметрах) не проходять і нічого не ламають; годинник тестів у продакшні не діє', async () => {
+  const T = (m, body, qs = '') => call(env, m, '/api/admin/tasks' + qs, { cookie: ck.MGR, body });
+  for (const b of [{ title: 'x', priority: '__proto__' }, { title: 'x', priority: 'constructor' }]) eq((await T('POST', b)).status, 422, JSON.stringify(b));
+  const id = (await T('POST', { title: 'Пастки' })).data.id;
+  for (const st of ['__proto__', 'constructor', 'toString']) eq((await T('PATCH', { id, status: st })).status, 422, st);
+  for (const bad of ['1 OR 1=1', "1'; DROP TABLE tasks;--", 'p', 'p-1', '-5', '1.5', {}, []]) eq((await T('PATCH', { id: bad, done: true })).status, 400, JSON.stringify(bad));
+  eq((await T('PATCH', { bulk: { ids: ["1; DROP TABLE tasks"], done: true } })).status, 400);
+  for (const qs of ["?view=__proto__", "?view=all&assignee=1%20OR%201=1", "?link=constructor", "?order_id=1%20OR%201=1", "?q=%25%27%20OR%201=1--", "?limit=999999&offset=-5"]) eq((await T('GET', undefined, qs)).status, 200, qs);
+  ok(await q1('SELECT 1 FROM tasks WHERE id = ?', id), 'таблиця на місці');
+  // x-test-now діє лише з ALERTS_TEST_CLOCK=1 (у продакшні змінної немає): «майбутній» час не робить задачу простроченою
+  const tomorrow = new Date(Date.now() + 86400000).toLocaleDateString('sv-SE', { timeZone: 'Europe/Kyiv' });
+  await T('PATCH', { id, due_date: tomorrow });
+  const r = await call(env, 'GET', '/api/admin/tasks?view=overdue', { cookie: ck.MGR, headers: { 'x-test-now': '2099-01-01T12:00:00Z' } });
+  ok(!r.data.rows.some(x => x.id === id), 'заголовок x-test-now проігноровано');
+});
+await it('контакти: імпорт, масові дії, архів і таблиця — лише partners.base; сортування приймає тільки відомі колонки; типи-пастки відхиляються', async () => {
+  const K = (m, body, who, qs = '') => call(env, m, '/api/admin/partners' + qs, { cookie: who ? ck[who] : undefined, body });
+  const id = (await K('POST', { name: 'Контакт для перевірки доступу', phone: '0670007701' }, 'MGR')).data.id;
+  for (const who of ['DES', 'EVE', null]) {
+    const st = who ? 403 : 401;
+    eq((await K('GET', undefined, who, '?sort=name&ver=1')).status, st, String(who));
+    eq((await K('GET', undefined, who, '?format=csv')).status, st);
+    eq((await K('POST', { action: 'import', rows: [{ name: 'Чужий імпорт', phone: '0670007702' }] }, who)).status, st);
+    eq((await K('PATCH', { bulk: { ids: [id], archive: true } }, who)).status, st);
+    eq((await K('PATCH', { id, archived: true }, who)).status, st);
+  }
+  ok(!await q1("SELECT 1 FROM partners WHERE name = 'Чужий імпорт'") && !(await q1('SELECT archived_at FROM partners WHERE id = ?', id)).archived_at);
+  for (const sort of ["name; DROP TABLE partners", "(SELECT phone FROM partners LIMIT 1)", '__proto__', 'constructor', 'notes']) eq((await K('GET', undefined, 'MGR', '?sort=' + encodeURIComponent(sort) + '&dir=desc%3B')).status, 200, sort);
+  ok(await q1('SELECT 1 FROM partners WHERE id = ?', id));
+  for (const type of ['__proto__', 'constructor']) eq((await K('PATCH', { bulk: { ids: [id], type } }, 'MGR')).status, 400, type);
+  const r = await K('POST', { action: 'import', type: '__proto__', rows: [{ name: 'Тип-пастка', phone: '0670007703', type: 'constructor', status: '__proto__' }] }, 'MGR');
+  eq(r.data.created, 1); const row = await q1("SELECT type, status FROM partners WHERE name = 'Тип-пастка'"); eq([row.type, row.status], ['other', 'new'], 'невідомі тип і статус → типові');
+});
+
 if (process.argv[1] && process.argv[1].endsWith('sec.mjs')) process.exit(report() ? 1 : 0);

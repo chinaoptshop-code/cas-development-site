@@ -34,7 +34,7 @@ import {
   admin, body, cameraOf, CURRENCIES, date, httpsUrl, int, json, bad, newStageKey, noTable, notReady,
   PAY_STATUS, progressOf, STAGE_STATUS, stageKey, stageStatus, txt,
 } from '../../_account.js';
-import { dict, normCode, normalizePhone } from '../../_lib.js';
+import { IN_IDS, dict, idsArg, normCode, normalizePhone } from '../../_lib.js';
 import { escHtml, notifyStaff } from '../../_alerts.js';
 import { audit, canSeeProject, need, orderScope, projectScope, shapeProject, staffById } from '../../_roles.js';
 import { limited } from '../../_rate.js';
@@ -266,33 +266,33 @@ export async function onRequestGet({ request, env }) {
     const RAW = (await env.DB.prepare(`SELECT p.*, c.name AS client_name, c.phone AS client_phone FROM projects p LEFT JOIN clients c ON c.id = p.client_id${w} ORDER BY p.id DESC LIMIT 300`)
       .bind(...args).all()).results;
     const P = RAW.map(p => ({ ...p, stages: JSON.parse(p.stages || '[]').map(s => ({ ...s, status: stageStatus(s) })) }));
-    const ids = P.map(p => p.id), q = ids.map(() => '?').join(',');
-    const R = ids.length ? (await env.DB.prepare(`SELECT * FROM project_reports WHERE project_id IN (${q}) ORDER BY date DESC LIMIT 1000`).bind(...ids).all())
+    const ids = P.map(p => p.id);
+    const R = ids.length ? (await env.DB.prepare(`SELECT * FROM project_reports WHERE project_id ${IN_IDS} ORDER BY date DESC LIMIT 1000`).bind(idsArg(ids)).all())
       .results.map(r => ({ ...r, photos: JSON.parse(r.photos || '[]') })) : [];
     // документи: усі (projects.view_all) або лише привʼязані до видимих обʼєктів
     const D = x.can('projects.view_all')
       ? (await env.DB.prepare(`SELECT * FROM documents${cid ? ' WHERE client_id = ?' : ''} ORDER BY id DESC LIMIT 1000`).bind(...(cid ? [cid] : [])).all()).results
-      : ids.length ? (await env.DB.prepare(`SELECT * FROM documents WHERE project_id IN (${q}) ORDER BY id DESC LIMIT 1000`).bind(...ids).all()).results : [];
+      : ids.length ? (await env.DB.prepare(`SELECT * FROM documents WHERE project_id ${IN_IDS} ORDER BY id DESC LIMIT 1000`).bind(idsArg(ids)).all()).results : [];
     let PAY = [], online = true;
     try {
-      PAY = ids.length && x.can('finance.view') ? (await env.DB.prepare(`SELECT * FROM project_payments WHERE project_id IN (${q}) ORDER BY sort, COALESCE(due_date, '9999'), id LIMIT 2000`).bind(...ids).all()).results : [];
+      PAY = ids.length && x.can('finance.view') ? (await env.DB.prepare(`SELECT * FROM project_payments WHERE project_id ${IN_IDS} ORDER BY sort, COALESCE(due_date, '9999'), id LIMIT 2000`).bind(idsArg(ids)).all()).results : [];
     } catch (e) { if (!noTable(e)) throw e; online = false; }
     let PS = [], ISS = [], AS = [], TK = [];
     try {
-      PS = ids.length ? (await env.DB.prepare(`SELECT ps.project_id, ps.staff_id, ps.task, s.name, s.role FROM project_staff ps JOIN staff s ON s.id = ps.staff_id WHERE ps.project_id IN (${q})`).bind(...ids).all()).results : [];
-      AS = ids.length ? (await env.DB.prepare(`SELECT id, name FROM staff WHERE id IN (SELECT assignee_staff_id FROM projects WHERE id IN (${q}))`).bind(...ids).all()).results : [];
-      ISS = ids.length ? (await env.DB.prepare(`SELECT i.*, s.name AS staff_name FROM project_issues i LEFT JOIN staff s ON s.id = i.staff_id WHERE i.project_id IN (${q}) ORDER BY i.id DESC LIMIT 500`).bind(...ids).all()).results
+      PS = ids.length ? (await env.DB.prepare(`SELECT ps.project_id, ps.staff_id, ps.task, s.name, s.role FROM project_staff ps JOIN staff s ON s.id = ps.staff_id WHERE ps.project_id ${IN_IDS}`).bind(idsArg(ids)).all()).results : [];
+      AS = ids.length ? (await env.DB.prepare(`SELECT id, name FROM staff WHERE id IN (SELECT assignee_staff_id FROM projects WHERE id ${IN_IDS})`).bind(idsArg(ids)).all()).results : [];
+      ISS = ids.length ? (await env.DB.prepare(`SELECT i.*, s.name AS staff_name FROM project_issues i LEFT JOIN staff s ON s.id = i.staff_id WHERE i.project_id ${IN_IDS} ORDER BY i.id DESC LIMIT 500`).bind(idsArg(ids)).all()).results
         .map(i => ({ ...i, photos: JSON.parse(i.photos || '[]') })) : [];
     } catch (e) { if (!noTable(e)) throw e; }
     let tasksReady = true;
     try { // задачі (міграція 0012)
-      TK = ids.length ? (await env.DB.prepare(`SELECT t.*, s.name AS staff_name FROM project_tasks t LEFT JOIN staff s ON s.id = t.staff_id WHERE t.project_id IN (${q})
-          ORDER BY t.done, t.sort, COALESCE(t.due_date, '9999'), t.id LIMIT 3000`).bind(...ids).all()).results : [];
+      TK = ids.length ? (await env.DB.prepare(`SELECT t.*, s.name AS staff_name FROM project_tasks t LEFT JOIN staff s ON s.id = t.staff_id WHERE t.project_id ${IN_IDS}
+          ORDER BY t.done, t.sort, COALESCE(t.due_date, '9999'), t.id LIMIT 3000`).bind(idsArg(ids)).all()).results : [];
     } catch (e) { if (!noTable(e)) throw e; tasksReady = false; }
     let LD = []; // заявки, з яких виросли проєкти: номер і джерело (сторінка-джерело — лише leads.view_all)
     try {
       const oids = [...new Set(P.map(p => p.order_id).filter(Boolean))];
-      LD = oids.length ? (await env.DB.prepare(`SELECT id, number, source, ref_path FROM orders WHERE id IN (${oids.map(() => '?').join(',')})`).bind(...oids).all()).results : [];
+      LD = oids.length ? (await env.DB.prepare(`SELECT id, number, source, ref_path FROM orders WHERE id ${IN_IDS}`).bind(idsArg(oids)).all()).results : [];
     } catch (e) { if (!noTable(e)) throw e; }
     const CT = await projectContacts(env, x, ids); // контакти обʼєкта (бригади, постачальники…) — migrations/0015
     const VER = new Map(); // версія картки для «Зберегти проєкт» (functions/_ver.js) — з рядка бази, як його прочитали

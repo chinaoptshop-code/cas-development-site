@@ -3,11 +3,14 @@
 // прораб бачить адресу й телефон клієнта, але не суми; бухгалтер — суми, але не телефони.
 // Задачі проєкту (project_tasks, міграція 0012): чекліст обʼєкта (projects[].tasks) і мої невиконані — у «Сьогодні» як kind 'task'
 // (прострочені — urgent); відмітити — POST /api/team/action {type: 'task'}. До міграції — без задач.
-import { CLOSED, json, statusLabel } from '../../_lib.js';
+// Загальні задачі CRM (tasks, міграція 0018; functions/_tasks.js): todo — мої відкриті й виконані за останній час (вкладка «Задачі»),
+// відкриті — ще й у «Сьогодні» як kind 'todo'; відмітити — PATCH /api/team/tasks {id, done, note?}. До міграції — todo: [].
+import { CLOSED, IN_IDS, idsArg, json, statusLabel } from '../../_lib.js';
 import { SLA_MIN, sqlTime } from '../../_alerts.js';
 import { cameraOf, progressOf, stageStatus, STAGE_STATUS } from '../../_account.js';
 import { projectContacts } from '../../_partners.js';
 import { PERMS, ROLES, need, noTable, orderScope, projectScope, shapeOrder, shapeProject } from '../../_roles.js';
+import { canSeeTasks, listTasks, tasksReady } from '../../_tasks.js';
 
 const parse = (s, d) => { try { const v = JSON.parse(s); return v == null ? d : v; } catch { return d; } };
 const day = (n = 0) => new Date(Date.now() + n * 86400000).toISOString().slice(0, 10);
@@ -28,18 +31,18 @@ export async function onRequestGet({ request, env }) {
       const w = projectScope(x, args);
       const P = (await env.DB.prepare(`SELECT p.*, c.name AS client_name, c.phone AS client_phone FROM projects p LEFT JOIN clients c ON c.id = p.client_id
           WHERE ${w} AND p.status != 'done' ORDER BY CASE p.status WHEN 'active' THEN 0 ELSE 1 END, COALESCE(p.next_date, '9999'), p.id DESC LIMIT 100`).bind(...args).all()).results;
-      const ids = P.map(p => p.id), q = ids.map(() => '?').join(',');
-      const R = ids.length ? (await env.DB.prepare(`SELECT id, project_id, date, title, note, photos, stage_id, author_staff_id FROM project_reports WHERE project_id IN (${q}) ORDER BY date DESC, id DESC LIMIT 400`).bind(...ids).all()).results : [];
-      const PS = ids.length ? (await env.DB.prepare(`SELECT ps.project_id, ps.staff_id, ps.task, s.name, s.role FROM project_staff ps JOIN staff s ON s.id = ps.staff_id WHERE ps.project_id IN (${q})`).bind(...ids).all()).results : [];
+      const ids = P.map(p => p.id);
+      const R = ids.length ? (await env.DB.prepare(`SELECT id, project_id, date, title, note, photos, stage_id, author_staff_id FROM project_reports WHERE project_id ${IN_IDS} ORDER BY date DESC, id DESC LIMIT 400`).bind(idsArg(ids)).all()).results : [];
+      const PS = ids.length ? (await env.DB.prepare(`SELECT ps.project_id, ps.staff_id, ps.task, s.name, s.role FROM project_staff ps JOIN staff s ON s.id = ps.staff_id WHERE ps.project_id ${IN_IDS}`).bind(idsArg(ids)).all()).results : [];
       const ISS = ids.length ? (await env.DB.prepare(`SELECT i.id, i.project_id, i.stage_id, i.note, i.photos, i.status, i.created_at, s.name AS staff_name FROM project_issues i
-          LEFT JOIN staff s ON s.id = i.staff_id WHERE i.project_id IN (${q}) AND i.status = 'open' ORDER BY i.id DESC`).bind(...ids).all()).results : [];
-      const AS = ids.length ? (await env.DB.prepare(`SELECT id, name, role FROM staff WHERE id IN (SELECT assignee_staff_id FROM projects WHERE id IN (${q}))`).bind(...ids).all()).results : [];
+          LEFT JOIN staff s ON s.id = i.staff_id WHERE i.project_id ${IN_IDS} AND i.status = 'open' ORDER BY i.id DESC`).bind(idsArg(ids)).all()).results : [];
+      const AS = ids.length ? (await env.DB.prepare(`SELECT id, name, role FROM staff WHERE id IN (SELECT assignee_staff_id FROM projects WHERE id ${IN_IDS})`).bind(idsArg(ids)).all()).results : [];
       let TK = [];
       try {
         TK = ids.length ? (await env.DB.prepare(`SELECT t.id, t.project_id, t.stage_id, t.title, t.staff_id, t.due_date, t.done, t.done_at, s.name AS staff_name FROM project_tasks t
-            LEFT JOIN staff s ON s.id = t.staff_id WHERE t.project_id IN (${q}) ORDER BY t.done, t.sort, COALESCE(t.due_date, '9999'), t.id LIMIT 1000`).bind(...ids).all()).results : [];
+            LEFT JOIN staff s ON s.id = t.staff_id WHERE t.project_id ${IN_IDS} ORDER BY t.done, t.sort, COALESCE(t.due_date, '9999'), t.id LIMIT 1000`).bind(idsArg(ids)).all()).results : [];
       } catch (e) { if (!noTable(e)) throw e; }
-      if (x.can('finance.view') && ids.length) payments = (await env.DB.prepare(`SELECT * FROM project_payments WHERE project_id IN (${q}) AND status != 'paid' ORDER BY COALESCE(due_date, '9999') LIMIT 200`).bind(...ids).all()).results;
+      if (x.can('finance.view') && ids.length) payments = (await env.DB.prepare(`SELECT * FROM project_payments WHERE project_id ${IN_IDS} AND status != 'paid' ORDER BY COALESCE(due_date, '9999') LIMIT 200`).bind(idsArg(ids)).all()).results;
       const SN = new Map((await env.DB.prepare('SELECT id, name FROM staff').all()).results.map(r => [r.id, r.name])); // відповідальні етапів
       const CT = await projectContacts(env, x, ids); // контакти обʼєкта (contacts.linked) — бригади, постачальники, майстри
       projects = P.map(p => {
@@ -108,6 +111,15 @@ export async function onRequestGet({ request, env }) {
     if (!noTable(e)) throw e;
     return json({ me, tasks: [], projects: [], leads: [], pending: true });
   }
+  // ===== загальні задачі CRM, призначені мені =====
+  let todo = [], todoDone = [];
+  if (canSeeTasks(x) && x.staffId && await tasksReady(env)) {
+    const f = { assignee: x.staffId, limit: 300 };
+    todo = (await listTasks(env, x, { ...f, view: 'mine' })).rows.filter(y => y.src === 't'); // задачі етапів уже є вище (kind 'task')
+    todoDone = (await listTasks(env, x, { ...f, view: 'done', limit: 30 })).rows.filter(y => y.src === 't' && y.status === 'done');
+    for (const y of todo) tasks.push({ kind: 'todo', urgent: y.overdue, due: y.due_date || null, due_time: y.due_time || null, todo_id: y.id, title: y.title,
+      sub: [y.project && y.project.title, y.order && `заявка ${y.order.number}`, y.contact && (y.contact.name || y.contact.company)].filter(Boolean).join(' · ') });
+  }
   tasks.sort((a, b) => (b.urgent - a.urgent) || String(a.due).localeCompare(String(b.due)));
-  return json({ me, today: t, tasks, projects, leads });
+  return json({ me, today: t, tasks, projects, leads, todo, todo_done: todoDone });
 }

@@ -10,10 +10,12 @@ export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const FN = join(ROOT, 'functions');
 
 // ===== D1 на node:sqlite =====
+export const D1_MAX_PARAMS = 100;
 const norm = v => (v === undefined ? null : typeof v === 'boolean' ? (v ? 1 : 0) : v);
 class Stmt {
   constructor(db, sql, args = []) { this.db = db; this.sql = sql; this.args = args; }
-  bind(...a) { return new Stmt(this.db, this.sql, a.map(norm)); }
+  // D1 приймає ≤ 100 параметрів на запит (node:sqlite — 32 766): стенд падає так само, щоб список id у `IN (?,?,…)` не дожив до бою
+  bind(...a) { if (a.length > D1_MAX_PARAMS) throw new Error(`D1_ERROR: too many SQL variables (${a.length} > ${D1_MAX_PARAMS})`); return new Stmt(this.db, this.sql, a.map(norm)); }
   _s() { return this.db.prepare(this.sql); }
   async first(col) { const r = this._s().get(...this.args); const o = r ? { ...r } : null; return col && o ? o[col] : o; }
   async all() { return { results: this._s().all(...this.args).map(r => ({ ...r })), success: true }; }
@@ -111,10 +113,11 @@ export async function call(env, method, path, { cookie, body, headers = {}, raw 
   let i = 0;
   const next = async () => (i < mw.length ? (await load(mw[i++])).onRequest({ request, env, params, next, waitUntil: null }) : handler());
   const res = await next();
-  const text = await res.text();
+  const buf = new Uint8Array(await res.arrayBuffer());
+  const text = new TextDecoder().decode(buf); // як res.text(): BOM на початку не входить у текст — його показує поле bom
   let data = null;
   try { data = JSON.parse(text); } catch { /* html / csv */ }
-  return { status: res.status, data, text, headers: res.headers };
+  return { status: res.status, data, text, headers: res.headers, bom: buf[0] === 0xEF && buf[1] === 0xBB && buf[2] === 0xBF };
 }
 
 // Сесія для клієнта (як після входу)

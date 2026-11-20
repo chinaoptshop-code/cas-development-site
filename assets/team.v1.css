@@ -168,3 +168,24 @@ dialog.tm-sheet::backdrop{background:rgba(10,8,6,.5)}
 /* контакти обʼєкта */
 .tm-cts{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}
 .tm-cts li{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+
+/* «Мої задачі» (CRM v4): прапорець «виконано» 44 px, виконані — закреслені; коментар — в аркуші #tmSheet */
+.tm-todo{display:flex;gap:12px;align-items:flex-start;background:var(--tm-card);border:1px solid var(--tm-line);border-left:5px solid var(--tm-ink);border-radius:16px;padding:12px 14px}
+.tm-todo+.tm-todo{margin-top:10px}
+.tm-todo.urgent{border-left-color:var(--tm-warn)}
+.tm-todo.urgent .tm-tx small{color:var(--tm-warn);font-weight:600}
+.tm-cb{flex:0 0 44px;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--tm-ink);border-radius:12px;background:var(--tm-card);color:var(--tm-ink);cursor:pointer;padding:0}
+.tm-cb svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.tm-cb[aria-checked=true]{background:var(--tm-ok);border-color:var(--tm-ok);color:#fff}
+.tm-cb:focus-visible{outline:3px solid var(--tm-acc);outline-offset:2px}
+.tm-more .tm-todos{margin-top:10px}
+.tm-todo.done b{text-decoration:line-through;font-weight:500;opacity:.7}
+.tm-todo .tm-tx{flex:1;min-width:0;display:grid;gap:2px}
+.tm-todo .tm-tx b{overflow-wrap:anywhere}
+.tm-pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.tm-hi{font-weight:700}
+.tm-sh{display:grid;gap:10px}
+.tm-sh h3{margin:0}
+.tm-sh p{margin:0;overflow-wrap:anywhere}
+.tm-f{display:grid;gap:4px}
+.tm-f textarea{width:100%;min-height:88px;font:inherit;font-size:1rem;padding:10px 12px;border-radius:12px}

@@ -1,0 +1,139 @@
+/* CRM v4 (20.11.2026) у /kabinet/admin: вкладка «Задачі», блок «Задачі» в картках, таблиця контактів, імпорт CSV (assets/admin/crm4.v1.js).
+   Кольори й розміри — змінні панелі (cms.v1.css / studio.v1.css); цілі дотику ≥ 44 px; сторінка вбік не гортається — лише сама таблиця. */
+
+/* лічильник прострочених на вкладці */
+.adm-tabs .tab-n{display:inline-block;min-width:18px;margin-left:6px;padding:0 5px;border-radius:999px;background:#e07a6a;color:#1a0d0a;font-style:normal;font-size:11px;font-weight:700;line-height:18px;text-align:center;vertical-align:1px}
+
+/* швидке додавання */
+.adm .tk-add{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;margin:0 0 12px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.adm .tk-add [data-qt]{flex:1 1 16rem;min-width:0;min-height:44px;font-size:1rem}
+.adm .tk-add select,.adm .tk-add input[type=date]{min-height:44px}
+.adm .tk-add .btn{min-height:44px}
+.adm .tk-days{gap:6px}
+.adm .tk-opt{display:contents}
+.adm .tk-optb{display:none}
+.adm .c4-q .pill[aria-pressed=true] small{color:inherit;opacity:.8}
+.adm .tk-hi-l{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:var(--fs-small);color:var(--cream);cursor:pointer;white-space:nowrap}
+.adm .tk-hi-l input{width:20px;height:20px;accent-color:var(--brass);margin:0}
+.adm .tk-lp{margin:0 0 8px}.adm .tk-lp select,.adm .tk-lp input{min-height:40px}
+.adm .tk-lp .pill .lnk{background:none;border:0;color:inherit;cursor:pointer;font:inherit;padding:0 2px}
+
+/* перемикачі й фільтри */
+.adm .tk-views .pill.tk-od{border-color:#e07a6a;color:#e07a6a}
+.adm .tk-views .pill.tk-od[aria-pressed=true]{background:#e07a6a;border-color:#e07a6a;color:#1a0d0a}
+.adm .tk-tb select,.adm .tk-tb .btn,.adm .tk-tb input{min-height:40px}
+
+/* список */
+.adm .tk-g h3{margin:18px 0 4px;font-family:"Manrope","Manrope Fallback",system-ui,sans-serif;font-size:var(--fs-small);font-weight:700;color:var(--muted);letter-spacing:.02em}
+.adm .tk-g h3 small{font-weight:400}
+.adm .tk-g.late h3{color:#e07a6a}
+.adm .tk-list{list-style:none;margin:0;padding:0}
+.adm .tk-row{display:flex;align-items:flex-start;gap:4px;padding:4px 0;border-bottom:1px solid var(--line)}
+.adm .tk-row.late{box-shadow:inset 3px 0 0 #e07a6a}
+.adm .tk-chk{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-height:44px;cursor:pointer}
+.adm .tk-cb,.adm .tk-chk .sel{width:22px;height:22px;margin:0;accent-color:var(--brass);cursor:pointer}
+.adm .tk-cb:disabled{cursor:default;opacity:.5}
+.adm .tk-main{flex:1;min-width:0;padding:6px 0}
+.adm .tk-title{display:block;width:100%;background:none;border:0;padding:4px 0;margin:0;color:var(--cream);font:inherit;font-weight:600;text-align:left;cursor:pointer;overflow-wrap:anywhere;white-space:normal}
+.adm .tk-title:disabled{cursor:default;color:var(--cream);opacity:1}
+.adm .tk-title:not(:disabled):hover [data-tt]{text-decoration:underline;text-decoration-color:var(--brass);text-underline-offset:3px}
+.adm .tk-row.done .tk-title [data-tt]{text-decoration:line-through;color:var(--muted);font-weight:400}
+.adm .tk-hi{display:inline-block;border:1px solid var(--brass);border-radius:999px;padding:0 7px;font-size:11px;font-weight:600;color:var(--glow);vertical-align:1px}
+.adm .tk-meta{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;font-size:var(--fs-small);color:var(--muted)}
+.adm .tk-due.err{color:#e07a6a;font-weight:600}
+.adm .tk-ln{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.adm .tk-note{margin:4px 0 0;font-size:var(--fs-small);color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere;max-width:60em}
+.adm .tk-empty{padding:14px 0}
+.adm .tk-more{min-height:44px}
+
+/* правка на місці */
+.adm .tk-row.editing{display:block;padding:10px 0}
+.adm .tk-edit{display:grid;gap:8px;padding:12px;border:1px solid var(--brass);border-radius:14px;background:var(--surface)}
+.adm .tk-edit>input,.adm .tk-edit>textarea{width:100%}
+.adm .tk-edit textarea{min-height:56px}
+.adm .tk-f{display:grid;gap:2px;font-size:12px;color:var(--muted)}
+.adm .tk-f input,.adm .tk-f select{min-height:40px}
+.adm .tk-act .btn{min-height:40px}
+
+/* «Виконано» з кнопкою «Скасувати» */
+.adm-toast.tk-undo{display:flex;align-items:center;gap:12px}
+.adm-toast.tk-undo .btn{min-height:36px;margin:0;padding:5px 12px;width:auto;font-size:var(--fs-small);cursor:pointer}
+
+/* блок «Задачі» в картках */
+.adm .tk-block{margin:6px 0 10px}
+.adm .tk-block{min-width:0;max-width:100%}
+.adm .tk-block>h3{margin:14px 0 8px}
+.adm .tk-block>h3 small{font-family:"Manrope","Manrope Fallback",system-ui,sans-serif;font-size:var(--fs-small)}
+.adm .tk-block .tk-add{padding:8px 10px}
+.adm dialog .tk-block{grid-column:1/-1;border-top:1px solid var(--line);padding-top:4px}
+/* картка заявки на телефоні не гортається вбік: блоки форми не ширші за картку (довгі списки «Пропозиції» розпирали сітку) */
+.adm dialog form.form>*{min-width:0}
+.adm dialog .crm-offer select{max-width:100%;min-width:0}
+
+/* ===== таблиця контактів ===== */
+.adm .ct-tb select,.adm .ct-tb .btn,.adm .ct-tb input,.adm .ct-tb summary{min-height:40px}
+.adm .ct-cols{position:relative}
+.adm .ct-cols summary{list-style:none;display:inline-flex;align-items:center;cursor:pointer}
+.adm .ct-cols summary::-webkit-details-marker{display:none}
+.adm .ct-cols>div{position:absolute;z-index:30;top:calc(100% + 6px);right:0;display:grid;gap:2px;min-width:15rem;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.adm .ct-cols label{display:flex;align-items:center;gap:8px;min-height:36px;font-size:var(--fs-small);cursor:pointer}
+.adm .ct-cols input{width:18px;height:18px;accent-color:var(--brass);margin:0}
+.adm .ct-wrap{overflow:auto;max-width:100%;max-height:min(72vh,56rem);border:1px solid var(--line);border-radius:12px;overscroll-behavior-x:contain}
+.adm .ct-tbl{min-width:68rem;border-collapse:separate;border-spacing:0}
+.adm .ct-tbl thead th{position:sticky;top:0;z-index:2;background:var(--surface-2);padding:0;white-space:nowrap;border-bottom:1px solid var(--line)}
+.adm .ct-tbl thead th button{display:block;width:100%;min-height:44px;padding:8px;background:none;border:0;color:var(--muted);font:inherit;font-size:12px;font-weight:700;text-align:left;cursor:pointer}
+.adm .ct-tbl thead th[aria-sort=ascending] button,.adm .ct-tbl thead th[aria-sort=descending] button{color:var(--cream)}
+.adm .ct-tbl td{padding:6px 8px;vertical-align:middle;max-width:18rem;overflow-wrap:anywhere}
+.adm .ct-tbl .ct-s{width:44px;min-width:44px;text-align:center;padding:0}
+.adm .ct-tbl thead .ct-s{min-height:44px}
+.adm .ct-tbl td[data-e]{cursor:text}
+.adm .ct-tbl td[data-e]:hover{background:var(--surface)}
+.adm .ct-tbl td[data-e]:focus-visible{outline:2px solid var(--brass);outline-offset:-2px}
+.adm .ct-tbl td.editing{padding:2px}
+.adm .ct-tbl td.editing input,.adm .ct-tbl td.editing select{width:100%;min-width:8rem;min-height:40px}
+.adm .ct-tbl td[data-c=name]{font-weight:600;min-width:12rem}
+.adm .ct-tbl td[data-c=notes]{min-width:12rem;color:var(--muted)}
+.adm .ct-tbl td[data-c=phone]{white-space:nowrap}
+.adm .ct-tbl td[data-c=last_touch],.adm .ct-tbl td[data-c=links],.adm .ct-tbl td[data-c=open_tasks]{white-space:nowrap;color:var(--muted)}
+.adm .ct-open,.adm .ct-go{display:inline-flex;align-items:center;justify-content:center;min-width:28px;min-height:28px;margin-left:2px;border:1px solid var(--line);border-radius:8px;background:none;color:var(--muted);font:inherit;font-size:13px;line-height:1;text-decoration:none;cursor:pointer;position:relative;vertical-align:middle}
+.adm .ct-open::before,.adm .ct-go::before{content:'';position:absolute;inset:-8px}
+.adm .ct-open:hover,.adm .ct-go:hover{border-color:var(--brass);color:var(--glow)}
+.adm .ct-new td{background:var(--surface);padding:4px}
+.adm .ct-new input{width:100%;min-width:7rem;min-height:40px}
+.adm .ct-new .btn{min-height:40px;white-space:nowrap}
+.adm .ct-tbl tbody tr:last-child td{border-bottom:0}
+
+/* імпорт CSV */
+.adm dialog.c4-imp{width:min(60rem,calc(100vw - 32px))}
+.adm .c4-imp .ct-wrap{max-height:42vh;margin:0 0 12px}
+.adm .c4-imp table.adm{min-width:40rem}
+.adm .c4-imp th select{min-height:40px;max-width:12rem}
+.adm .c4-imp td{max-width:14rem;overflow-wrap:anywhere}
+.adm .c4-imp .pill{white-space:normal;border-radius:12px}
+.adm .c4-imp .row label{display:inline-flex;align-items:center;gap:8px;min-height:40px;font-size:var(--fs-small)}
+.adm .c4-imp input[type=file]{min-height:44px;max-width:100%}
+
+@media (pointer:coarse),(max-width:700px){
+  .adm .tk-add select,.adm .tk-add input[type=date],.adm .tk-tb select,.adm .tk-tb .btn,.adm .tk-tb input,.adm .tk-f input,.adm .tk-f select,.adm .tk-act .btn,
+  .adm .ct-tb select,.adm .ct-tb .btn,.adm .ct-tb input,.adm .ct-tb summary,.adm .tk-lp select,.adm .tk-lp input,.adm .ct-new input,.adm .ct-new .btn,
+  .adm .ct-tbl td.editing input,.adm .ct-tbl td.editing select,.adm .c4-imp th select,.adm-toast.tk-undo .btn{min-height:44px}
+  .adm .ct-open,.adm .ct-go{min-width:36px;min-height:36px}
+  .adm .tk-days .pill{min-height:44px}
+}
+@media (max-width:700px){
+  .adm .tk-add{padding:8px;max-width:100%}
+  .adm .tk-add [data-qt]{flex:1 1 100%}
+  .adm .tk-optb{display:inline-flex;align-items:center;min-height:44px;order:3;flex:1 1 44%}
+  .adm .tk-add .btn[data-qb]{order:4}
+  .adm .tk-add:not(.open) .tk-opt{display:none}
+  .adm .tk-add.open .tk-opt{display:flex;flex-wrap:wrap;gap:8px;flex:1 1 100%;order:2;align-items:center}
+  .adm .tk-add select,.adm .tk-add input[type=date]{flex:1 1 44%;min-width:0}
+  .adm .tk-add .btn[data-qb]{flex:1 1 44%}
+  .adm .tk-tb [data-flt]{display:flex;flex-wrap:wrap;gap:8px;flex:1 1 100%}
+  .adm .tk-tb [data-flt] select{flex:1 1 44%;min-width:0}
+  .adm .tk-f{flex:1 1 44%}
+  .adm .ct-wrap{max-height:70dvh}
+  .adm .ct-cols>div{right:auto;left:0}
+  .adm .ct-tb .seg{flex:1 1 100%}.adm .ct-tb .seg button{flex:1}
+  .adm dialog.c4-imp{width:calc(100vw - 16px);max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);padding:16px 12px}
+}
