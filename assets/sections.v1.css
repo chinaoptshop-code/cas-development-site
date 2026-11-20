@@ -156,26 +156,29 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .js .hx-home~.xs-svc .xs-sv>.xs-c{flex:0 0 calc((100% - 2rem) / 3);scroll-snap-align:start;min-width:0}
 .js .hx-home~.xs-svc .cv-nav{margin-top:.75rem}
 @media(min-width:1100px){.js .hx-home~.xs-svc .xs-sv>.xs-c{flex-basis:calc((100% - 3rem) / 4)}}
-/* «Що ми робимо» на головних, планшет і ПК (Михайло 20.11.2026): без видимого заголовка (h2 лишається для читачів екрана й пошуку); стрілки ‹ › — по боках ряду,
-   по центру його висоти (768–1199 px — поверх країв ряду, з 1200 px — у полях поза рядом, а сам ряд — майже на всю ширину вікна: 4 картки, з 2200 px — 5);
+/* «Що ми робимо» на головних (Михайло 20.11.2026, скріни ПК і телефона): без видимого заголовка (h2 лишається для читачів екрана й пошуку); стрілки ‹ › — по боках ряду,
+   по центру його висоти (до 1199 px — поверх країв ряду, з 1200 px — у полях поза рядом, а сам ряд — майже на всю ширину вікна: 4 картки, з 2200 px — 5);
    кнопка паузи видима лише при фокусі з клавіатури (автопрокрутка й так стає на паузу при наведенні, дотику й фокусі — marquee() у ui-polish.v1.js);
-   «Усі послуги →» — під рядом. Колонки під стрілки є в сітці одразу — без зсуву (CLS). Телефон (≤ 767 px) — без змін. Ширини — модель w_svc у tools/site/sharp.py. */
+   «Усі послуги →»: телефон — над рядом праворуч, з 768 px — під рядом. Місце під стрілки є в сітці одразу — без зсуву (CLS). Ширини — модель w_svc у tools/site/sharp.py. */
+.js .hx-home~.xs-svc>.w{display:grid;grid-template-columns:minmax(0,1fr);position:relative}
+.js .hx-home~.xs-svc .xs-head{grid-area:1/1;justify-content:flex-end;margin-bottom:.75rem}
+.js .hx-home~.xs-svc .xs-head h2{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.js .hx-home~.xs-svc .xs-sv,.js .hx-home~.xs-svc .xs-sv.cv-on{grid-area:2/1;margin-bottom:0}
+.js .hx-home~.xs-svc .cv-nav{display:contents}
+.js .hx-home~.xs-svc .cv-b{grid-area:2/1;align-self:center;z-index:2;margin-inline:-8px;background:rgba(8,7,9,.62)}
+.js .hx-home~.xs-svc .cv-b:hover{background:rgba(8,7,9,.85)}
+.js .hx-home~.xs-svc .cv-b:nth-last-child(2){justify-self:start}
+.js .hx-home~.xs-svc .cv-b:last-child{justify-self:end}
+.js .hx-home~.xs-svc .cv-b span{font-size:0}
+.js .hx-home~.xs-svc .cv-b span::before{font-size:1.75rem;line-height:1;position:relative;top:-.09em}
+.js .hx-home~.xs-svc .cv-b:nth-last-child(2) span::before{content:"‹"}
+.js .hx-home~.xs-svc .cv-b:last-child span::before{content:"›"}
+.js .hx-home~.xs-svc .cv-p{grid-area:2/1;align-self:end;justify-self:end;z-index:3;margin:0 .5rem .5rem;background:rgba(8,7,9,.85);opacity:0;pointer-events:none}
+.js .hx-home~.xs-svc .cv-p:focus-visible{opacity:1;pointer-events:auto}
 @media(min-width:768px){
-  .js .hx-home~.xs-svc>.w{display:grid;grid-template-columns:minmax(0,1fr);position:relative}
-  .js .hx-home~.xs-svc .xs-head{grid-area:2/1;justify-content:flex-end;margin:.875rem 0 0}
-  .js .hx-home~.xs-svc .xs-head h2{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .js .hx-home~.xs-svc .xs-sv,.js .hx-home~.xs-svc .xs-sv.cv-on{grid-area:1/1;margin-bottom:0}
-  .js .hx-home~.xs-svc .cv-nav{display:contents}
-  .js .hx-home~.xs-svc .cv-b{grid-area:1/1;align-self:center;z-index:2;margin-inline:.5rem;background:rgba(8,7,9,.62)}
-  .js .hx-home~.xs-svc .cv-b:hover{background:rgba(8,7,9,.85)}
-  .js .hx-home~.xs-svc .cv-b:nth-last-child(2){justify-self:start}
-  .js .hx-home~.xs-svc .cv-b:last-child{justify-self:end}
-  .js .hx-home~.xs-svc .cv-b span{font-size:0}
-  .js .hx-home~.xs-svc .cv-b span::before{font-size:1.75rem;line-height:1;position:relative;top:-.09em}
-  .js .hx-home~.xs-svc .cv-b:nth-last-child(2) span::before{content:"‹"}
-  .js .hx-home~.xs-svc .cv-b:last-child span::before{content:"›"}
-  .js .hx-home~.xs-svc .cv-p{grid-area:1/1;align-self:end;justify-self:end;z-index:3;margin:0 .5rem .5rem;background:rgba(8,7,9,.85);opacity:0;pointer-events:none}
-  .js .hx-home~.xs-svc .cv-p:focus-visible{opacity:1;pointer-events:auto}
+  .js .hx-home~.xs-svc .xs-head{grid-row:2;margin:.875rem 0 0}
+  .js .hx-home~.xs-svc .xs-sv,.js .hx-home~.xs-svc .xs-sv.cv-on,.js .hx-home~.xs-svc .cv-b,.js .hx-home~.xs-svc .cv-p{grid-row:1}
+  .js .hx-home~.xs-svc .cv-b{margin-inline:.5rem}
 }
 @media(min-width:1200px){
   .js .hx-home~.xs-svc>.w{max-width:min(100%,2560px);grid-template-columns:2.75rem minmax(0,1fr) 2.75rem;column-gap:.75rem}
@@ -191,6 +194,7 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
   .js .hx-home~.xs-svc .xs-sv{gap:10px;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}
   .js .hx-home~.xs-svc .xs-sv>.xs-c{flex:0 0 44%}
   .js .hx-home~.xs-svc .xs-sv .xs-c img{aspect-ratio:4/3!important;max-height:none}
+  .js .hx-home~.xs-svc .cv-b{align-self:start;margin-top:calc(.165*(100vw - 32px) - 22px)} /* стрілки — по центру фото (картка 44% ряду, фото 4:3), не поверх назви й ціни */
   .hx-home~.xs-strip .xs-st{grid-auto-columns:46%!important}
   .hx-home~.xs-svc .xs-note{text-align:start} /* «Для бізнесу: …» — від лівого краю, не під пігулкою «Зв'язатися» праворуч */
 }
