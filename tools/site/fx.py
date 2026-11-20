@@ -124,7 +124,9 @@ def strip(s):
     return _STRIP.sub(lambda m: m.group(1) + (' (' if m.group(0).endswith(', ') else ''), s) if '(≈' in s else s
 
 
-_SKIP = re.compile(r'<(script|style|title|textarea|pre|code|svg)\b[^>]*>.*?</\1\s*>|<!--.*?-->|<[^>]*>', re.S | re.I)
+# data-nofx — підпис, який одразу перемальовує JS лише в $ (ставки на плитках калькулятора, calc.py): друга валюта там дала б стрибок тексту
+_SKIP = re.compile(r'<(script|style|title|textarea|pre|code|svg)\b[^>]*>.*?</\1\s*>|<(?P<nofx>small|span|b|em)\b[^>]*\sdata-nofx\b[^>]*>.*?</(?P=nofx)\s*>'
+                   r'|<!--.*?-->|<[^>]*>', re.S | re.I)
 
 
 SKIPPED = {}  # сторінка → скільки цін лишилось без другої валюти через бюджет HTML (звіт — fx.py --report)

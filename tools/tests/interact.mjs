@@ -320,43 +320,52 @@ await test('калькулятор: площа → сума', '/kalkuliator-remo
   const after = await p.locator('main').innerText();
   must(after !== before && /\$\s?\d|\d[\d\s]*\s?\$/.test(after), 'сума не змінилась');
 });
+// калькулятор — кілька позицій одразу (Михайло 20.11.2026): плитки #cIt [data-k] (aria-pressed), уточнення #cV [data-k] [data-p], площа #cArea, сотки #cLand
+const cTile = (p, k) => p.locator(`#cIt [data-k="${k}"]`);
+const cOn = async (p, k) => (await cTile(p, k).getAttribute('aria-pressed')) === 'true';
+const cOnly = async (p, ...ks) => { for (const k of ['design', 'reno', 'furn', 'build', 'arch', 'land']) if ((await cOn(p, k)) !== ks.includes(k)) await cTile(p, k).click(); await p.waitForTimeout(150); };
+const cVar = async (p, k, v) => { await p.click(`#cV [data-k="${k}"] [data-p="${v}"]`); await p.waitForTimeout(100); };
 await test('калькулятор: 0 → «—», дизайн для 10 м² — мінімум $2 500, величезна площа обмежена', '/kalkuliator-remontu', 402, async p => {
   const set = async v => { await p.fill('#cArea', v); await p.dispatchEvent('#cArea', 'input'); await p.waitForTimeout(150); return p.textContent('#cSum'); };
-  const kind = async k => { await p.selectOption('#cKind', k); await p.waitForTimeout(150); };
-  const nb = s => s.replace(/[  ]/g, ' ');
+  const nb = s => s.replace(/[\u00a0\u202f]/g, ' ');
   must((await set('0')) === '—', 'площа 0 не дає «—»');
   must((await set('abc').catch(() => '—')) === '—', 'нечислове значення');
   must((await set('-5')) === '—', 'відʼємна площа');
-  await kind('remont'); await p.click('#cDz [data-p="dz"]'); await p.check('#cFurn');
+  await cOnly(p, 'design', 'reno', 'furn'); await cVar(p, 'design', 'dz');
   await set('10');
   must(nb(await p.textContent('#cRows')).includes('$2 500'), 'дизайн 10 м² не дорівнює мінімуму $2 500');
   const big = (await set('99999999')).replace(/\D/g, '');
   must(+big <= 100000 * (550 + 45 + 250) + 1, 'площа не обмежена: ' + big);
   // пакети дизайну: планувальний $6/м² і повний $45/м² — теж мінімум $2 500
-  await set('1000'); await p.click('#cDz [data-p="plan"]');
+  await set('1000'); await cVar(p, 'design', 'plan');
   must(nb(await p.textContent('#cRows')).includes('$6 000'), 'планувальний 1000 м² ≠ $6 000');
-  await p.click('#cDz [data-p="full"]'); await set('20');
+  await cVar(p, 'design', 'full'); await set('20');
   must(nb(await p.textContent('#cRows')).includes('$2 500'), 'повний 20 м² не дорівнює мінімуму $2 500');
   // ±5% — лише для ремонту
   must(/±5/.test(await p.textContent('#cNote')), 'немає ±5% для ремонту');
-  await kind('house'); must(!/±5/.test(await p.textContent('#cNote')), '±5% для будівництва');
-  must(await p.locator('#cFurnW').isHidden(), 'меблювання для коробки');
+  await cOnly(p, 'build'); must(!/±5/.test(await p.textContent('#cNote')), '±5% для будівництва');
+  must(await p.locator('#cV [data-k="build"]').isVisible() && await p.locator('#cV [data-k="reno"]').isHidden(), 'уточнення не лише для вибраних позицій');
+  // ремонт і будівництво — одна площа: вибір одного знімає інше
+  await cTile(p, 'reno').click(); await p.waitForTimeout(150);
+  must(await cOn(p, 'reno') && !(await cOn(p, 'build')) && await p.locator('#cRows li').count() === 1, 'ремонт і будівництво вибрані разом');
   // Європа: ремонт $850, дизайн мін. $4 000, меблювання $400; офіс і ландшафт — за кошторисом
-  await kind('remont'); await p.click('#cReg [data-r="1"]'); await p.click('#cDz [data-p="dz"]'); await set('10');
-  must(nb(await p.textContent('#cRows')).includes('$8 500') && nb(await p.textContent('#cRows')).includes('$4 000') && nb(await p.textContent('#cRows')).includes('$4 000'), 'ставки Європи: ' + await p.textContent('#cRows'));
-  await p.click('#cDz [data-p="plan"]');
+  await cOnly(p, 'design', 'reno', 'furn'); await p.click('#cReg [data-r="1"]'); await cVar(p, 'design', 'dz'); await set('10');
+  must(nb(await p.textContent('#cRows')).includes('$8 500') && (nb(await p.textContent('#cRows')).match(/\$4 000/g) || []).length === 2, 'ставки Європи: ' + await p.textContent('#cRows'));
+  await cVar(p, 'design', 'plan');
   must(/кошторис/.test(await p.textContent('#cRows')) && await p.locator('#cPlus').isVisible(), 'планувальний у Європі не «за кошторисом»');
-  await kind('office'); await p.click('#cDz [data-p="0"]'); await p.uncheck('#cFurn'); await p.waitForTimeout(150);
+  await cOnly(p, 'reno'); await cVar(p, 'reno', 'office');
   must(/кошторис/.test(await p.textContent('#cSum')) && await p.locator('#cSumL').isHidden(), 'офіс у Європі не «за кошторисом»');
-  await kind('land');
-  must((await p.inputValue('#cArea')) === '10' && /сот/.test(await p.textContent('#cAreaL')), 'ландшафт — не в сотках');
+  await cOnly(p, 'land');
+  must((await p.inputValue('#cLand')) === '10' && /сот/.test(await p.textContent('label[for="cLand"]')) && await p.locator('#cAreaW').isHidden(), 'ландшафт — не в сотках (своє поле)');
   must(/кошторис/.test(await p.textContent('#cSum')), 'ландшафт у Європі не «за кошторисом»');
-  await p.click('#cReg [data-r="0"]'); must(nb(await set('12.5')) === '$625', 'ландшафт 12,5 сотки ≠ $625');
+  await p.click('#cReg [data-r="0"]'); await p.fill('#cLand', '12.5'); await p.waitForTimeout(150);
+  must(nb(await p.textContent('#cSum')) === '$625', 'ландшафт 12,5 сотки ≠ $625');
   await p.click('#cSend'); await p.waitForTimeout(300);
   must((await p.inputValue('#oArea')) === '1250', 'сотки не перетворено на м² у формі');
   const ms = await p.inputValue('#oMsg'), sv = await p.getAttribute('#of', 'data-service');
   must(/Україна/.test(ms) && /Ландшафт/.test(ms) && /Ландшафт/.test(sv) && /Україна/.test(sv), 'регіон/послуга не в формі: ' + ms + ' | ' + sv);
-  await kind('remont'); must((await p.inputValue('#cArea')) !== '12.5', 'площа м² не відновилась після соток');
+  await cOnly(p, 'reno'); await cVar(p, 'reno', 'reno');
+  must(await p.locator('#cArea').isVisible() && (await p.inputValue('#cArea')) === '10' && await p.locator('#cLandW').isHidden(), 'поле м² не повернулось після соток');
   await p.click('#cReg [data-r="1"]');
   await set('60'); await p.click('#cSend'); await p.waitForTimeout(300);
   const m1 = await p.inputValue('#oMsg'); must(/Європа/.test(m1) && /Європа/.test(await p.getAttribute('#of', 'data-service')), 'Європа не в формі');
@@ -366,7 +375,8 @@ await test('калькулятор: 0 → «—», дизайн для 10 м² �
 await test('калькулятор: кома, помилка й стеля поля, розбивка рядками, Enter, підписи для читалки', '/kalkuliator-remontu', 402, async p => {
   const set = async v => { await p.fill('#cArea', v); await p.waitForTimeout(120); };
   must(await p.getAttribute('#cArea', 'inputmode') === 'decimal' && await p.locator('label[for="cArea"]').count() === 1, 'поле площі без inputmode/підпису');
-  must(await p.getAttribute('#cKind', 'id') && await p.locator('label[for="cKind"]').count() === 1, 'select без підпису');
+  must(await p.locator('#calc [role="group"][aria-labelledby="cItL"] #cIt').count() === 1 && (await p.textContent('#cItL')).trim().length > 3, 'плитки «Що порахувати» без підпису групи');
+  must(await p.locator('#cIt button[aria-pressed]').count() === 6 && await p.locator('#calc select, #calc input[type=checkbox]').count() === 0, 'плитки без aria-pressed або лишився список/прапорець');
   await set('75,6'); must((await p.textContent('#cSum')).replace(/\D/g, '') === String(76 * 550), 'кома в площі: ' + await p.textContent('#cSum'));
   must(await p.locator('#cRows li').count() === 1 && /76 м² × \$550\/м²/.test(await p.textContent('#cRows')), 'розбивка без «площа × ставка»: ' + await p.textContent('#cRows'));
   await set('abc');
@@ -377,7 +387,7 @@ await test('калькулятор: кома, помилка й стеля по�
   await set(''); must(await p.locator('#cAreaE').isHidden() && (await p.textContent('#cSum')) === '—', 'порожнє поле — помилка або сума');
   await p.fill('#cArea', '40'); await p.press('#cArea', 'Enter'); await p.waitForTimeout(100);
   must((await p.textContent('#cSum')).replace(/\D/g, '') === '22000', 'Enter не перерахував');
-  await p.click('#cDz [data-p="dz"]'); await p.check('#cFurn');
+  await cTile(p, 'design').click(); await cTile(p, 'furn').click(); await p.waitForTimeout(150);
   must(await p.locator('#cRows li').count() === 3 && /мінімум \$2\u202f500/.test(await p.textContent('#cRows')), 'дизайн 40 м² не показує мінімум: ' + await p.textContent('#cRows'));
   must(await p.getAttribute('#cSumP', 'aria-live') === 'polite', 'сума не озвучується');
   must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'горизонтальна прокрутка');
@@ -394,7 +404,7 @@ for (const [path, rx] of [['/ru/kalkulyator-remonta', /Калькулятор/],
   });
 }
 await test('калькулятор (ar, RTL): Європа й ландшафт', '/ar/renovation-calculator', 402, async p => {
-  await p.click('#cReg [data-r="1"]'); await p.selectOption('#cKind', 'land'); await p.waitForTimeout(150);
+  await p.click('#cReg [data-r="1"]'); await cOnly(p, 'land');
   must((await p.textContent('#cSum')).includes('المقايسة'), 'ar: ландшафт у Європі не «وفق المقايسة»');
   must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'ar: горизонтальна прокрутка');
 });
@@ -665,6 +675,88 @@ await test('prefers-reduced-motion: ні кільця курсора, ні хв�
 await test('кабінет: без кільця курсора', '/kabinet', 1440, async p => {
   await p.waitForTimeout(1500); await p.mouse.move(300, 400); await p.mouse.move(400, 420, { steps: 4 }); await p.waitForTimeout(300);
   must(await p.locator('.cur').count() === 0, 'у кабінеті є кільце курсора');
+});
+// ── Калькулятор: кілька позицій одразу (Михайло 20.11.2026) — дизайн + ремонт + меблювання на одну площу, телефон і ПК ──
+for (const w of [402, 1440]) {
+  await test('калькулятор, кілька позицій: дизайн + ремонт + меблювання → 3 рядки й сума → форма з усіма позиціями; успіх лише після 2xx', '/kalkuliator-remontu', w, async p => {
+    const nb = s => s.replace(/[  ]/g, ' '), num = s => +s.replace(/\D/g, '');
+    const top = () => p.evaluate(() => Math.round(document.getElementById('cItL').getBoundingClientRect().top + scrollY));
+    await p.locator('#cIt').scrollIntoViewIfNeeded();
+    // на старті — як і раніше: ремонт квартири, 60 м²
+    must(await cOn(p, 'reno') && await p.locator('#cIt button[aria-pressed="true"]').count() === 1 && num(await p.textContent('#cSum')) === 33000, 'типовий вибір — не ремонт 60 м²: ' + await p.textContent('#cSum'));
+    // плитки: ≥ 44 px, без горизонтальної прокрутки, стан — не лише кольором (галочка) і aria-pressed
+    const g = await p.evaluate(() => [...document.querySelectorAll('#cIt button')].map(b => { const r = b.getBoundingClientRect(); return [Math.round(r.width), Math.round(r.height)]; }));
+    must(g.length === 6 && g.every(x => x[0] >= 44 && x[1] >= 44), 'плитки менші за 44 px: ' + JSON.stringify(g));
+    const mark = k => p.evaluate(k => { const b = document.querySelector(`#cIt [data-k="${k}"]`); return getComputedStyle(b, '::after').content !== 'none'; }, k);
+    must(await mark('reno') && !(await mark('design')), 'галочка не відрізняє вибрану плитку');
+    const y0 = await top(), sy0 = await p.evaluate(() => scrollY);
+    await cTile(p, 'design').click(); await cTile(p, 'furn').click(); await p.waitForTimeout(200);
+    must(await top() === y0 && Math.abs(await p.evaluate(() => scrollY) - sy0) <= 1, 'вибір позиції зсунув блок або прокрутку');
+    must(await cOn(p, 'design') && await cOn(p, 'reno') && await cOn(p, 'furn') && await mark('design'), 'три позиції не вибрано');
+    must(await p.locator('#cV [data-k="design"]').isVisible() && await p.locator('#cV [data-k="reno"]').isVisible() && await p.locator('#cV [data-k="build"]').isHidden(), 'уточнення — не лише вибраних позицій');
+    must(await p.locator('#cV [data-k="design"] [aria-pressed="true"]').count() === 1 && await p.locator('#cV [data-k="design"] [data-p="dz"][aria-pressed="true"]').count() === 1, 'пакет дизайну — не один «Дизайн-проєкт»');
+    // 60 м²: дизайн — мінімум $2 500 (60 × $30 = $1 800), ремонт $33 000, меблювання $15 000
+    const li = async () => (await p.locator('#cRows li').allTextContents()).map(nb);
+    let r = await li();
+    must(r.length === 3 && /Дизайн-проєкт.*мінімум \$2 500/.test(r[0]) && /Ремонт квартири.*60 м² × \$550\/м².*\$33 000/.test(r[1]) && /Меблювання.*60 м² × \$250\/м².*\$15 000/.test(r[2]), 'рядки 60 м²: ' + JSON.stringify(r));
+    must(num(await p.textContent('#cSum')) === 50500 && await p.locator('#cSumL').isVisible() && /₴/.test(await p.textContent('#cSumX')), 'сума ≠ $50 500 або немає ≈ ₴: ' + await p.textContent('#cSumP'));
+    must((nb(await p.textContent('#cNote')).match(/\$2 500/g) || []).length === 1 && (nb(await p.textContent('#cNote')).match(/нижня межа/g) || []).length === 1, 'пояснення не одне: ' + await p.textContent('#cNote'));
+    // 100,4 м² (кома): мінімум уже не діє — $3 000 + $55 000 + $25 000; сума = сума рядків
+    await p.fill('#cArea', '100,4'); await p.waitForTimeout(150); r = await li();
+    must(r.length === 3 && !/мінімум/.test(r.join('')) && r.map(x => num(x.split('$').pop())).reduce((a, b) => a + b, 0) === 83000 && num(await p.textContent('#cSum')) === 83000, 'сума ≠ сумі рядків: ' + JSON.stringify(r));
+    // один пакет дизайну; ремонт: квартира АБО офіс — рядок один
+    await cVar(p, 'design', 'full'); await cVar(p, 'reno', 'office'); r = await li();
+    must(r.length === 3 && /Повний з наглядом.*\$4 500/.test(r[0]) && /Ремонт офісу.*\$35 000/.test(r[1]) && num(await p.textContent('#cSum')) === 64500, 'варіанти позицій: ' + JSON.stringify(r));
+    must(await p.locator('#cV [data-k="reno"] [aria-pressed="true"]').count() === 1, 'у ремонті вибрано два варіанти');
+    await cVar(p, 'design', 'dz'); await cVar(p, 'reno', 'reno'); await p.fill('#cArea', '60'); await p.waitForTimeout(150);
+    // клавіатура: пробіл на плитці перемикає
+    await cTile(p, 'arch').focus(); await p.keyboard.press('Space'); await p.waitForTimeout(100);
+    must(await cOn(p, 'arch') && (await li()).length === 4, 'пробіл не вибрав плитку');
+    await p.keyboard.press('Enter'); await p.waitForTimeout(100); must(!(await cOn(p, 'arch')), 'Enter не зняв плитку');
+    // нічого не вибрано — підказка, суми немає
+    await cOnly(p);
+    must(await p.locator('#cPick').isVisible() && await p.locator('#cSum').isHidden() && await p.locator('#cSumL').isHidden() && await p.locator('#cRows').isHidden() && !(await p.textContent('#cSumX')), 'нічого не вибрано — не підказка');
+    must(/Оберіть/.test(await p.textContent('#cPick')) && await p.locator('#cV').isHidden(), 'текст підказки / уточнення без позицій');
+    // ландшафт у сотках разом із позиціями за м²
+    for (const k of ['reno', 'design', 'furn', 'land']) await cTile(p, k).click(); // ремонт — перший вибраний → основна позиція заявки
+    await p.waitForTimeout(150);
+    must(await p.locator('#cArea').isVisible() && await p.locator('#cLand').isVisible(), 'для м² і соток — не два поля');
+    await p.fill('#cLand', '12,5'); await p.waitForTimeout(150); r = await li();
+    must(r.length === 4 && /Ландшафт.*12,5 сот\. × \$50\/сотку.*\$625/.test(r[3]) && num(await p.textContent('#cSum')) === 51125, 'ландшафт разом із м²: ' + JSON.stringify(r));
+    await cTile(p, 'land').click(); await p.waitForTimeout(150);
+    must(await p.locator('#cLandW').isHidden() && num(await p.textContent('#cSum')) === 50500, 'поле соток лишилось без ландшафту');
+    must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'горизонтальна прокрутка');
+    // → форма: усі позиції, площа, сума; основна позиція — перша вибрана (ремонт); успіх лише після 2xx
+    await p.click('#cSend'); await p.waitForTimeout(1200);
+    const sv = await p.getAttribute('#of', 'data-service'), ms = nb(await p.inputValue('#oMsg'));
+    must(/^Калькулятор: Ремонт квартири під ключ \+ Дизайн-проєкт інтерʼєру \+ Меблювання й комплектація · Україна$/.test(sv) && sv.length <= 200, 'data-service: ' + sv);
+    must(/Дизайн-проєкт інтерʼєру: мінімум \$2 500/.test(ms) && /Ремонт квартири під ключ · 60 м² × \$550\/м²: \$33 000/.test(ms) && /Меблювання й комплектація · 60 м² × \$250\/м²: \$15 000/.test(ms) && /= від \$50 500/.test(ms) && /Україна/.test(ms), 'коментар: ' + ms);
+    must((await p.inputValue('#oArea')) === '60' && (await p.getAttribute('#of', 'data-form')) === 'calc', 'площа/місце не в формі');
+    posts = []; apiStatus = 500;
+    await p.fill('#oPhone', '0671234567'); await p.click('#oBtn'); await p.waitForTimeout(1500);
+    const okVis = () => p.evaluate(() => { const e = document.getElementById('oOk'); return !!(e && e.offsetParent && getComputedStyle(e).display !== 'none' && e.textContent.trim().length > 5); });
+    must(posts.some(x => x.path === '/api/leads') && !(await okVis()), 'успіх показано при 500');
+    apiStatus = 200; await p.click('#oBtn'); await p.waitForTimeout(1500);
+    must(await okVis(), 'успіх не показано при 200');
+    const b = JSON.parse(posts.filter(x => x.path === '/api/leads').at(-1).body);
+    must(b.form === 'calc' && /#calc$/.test(b.source) && b.area === '60' && b.service === sv && b.service.length <= 200 && nb(b.message).length <= 1500, 'лід: ' + JSON.stringify(b));
+    must(['Дизайн-проєкт', 'Ремонт квартири', 'Меблювання', '$50 500'].every(x => nb(b.message).includes(x)), 'у ліді не всі позиції: ' + b.message);
+  });
+}
+await test('калькулятор, посилання ?k=: старе значення списку вибирає одну позицію, кілька — через кому', '/kalkuliator-remontu?k=housekey', 402, async p => {
+  must(await cOn(p, 'build') && await p.locator('#cIt button[aria-pressed="true"]').count() === 1 && await p.locator('#cV [data-k="build"] [data-p="key"][aria-pressed="true"]').count() === 1, '?k=housekey не вибрав «Будинок під ключ»');
+  must((await p.textContent('#cSum')).replace(/\D/g, '') === String(60 * 1100), '?k=housekey: сума ' + await p.textContent('#cSum'));
+  await p.goto(p.url().replace(/\?.*$/, '?k=design,remont,furn'), { waitUntil: 'load' }); await p.waitForTimeout(300);
+  must(await cOn(p, 'design') && await cOn(p, 'reno') && await cOn(p, 'furn') && (await p.textContent('#cSum')).replace(/\D/g, '') === '50500', '?k=design,remont,furn: ' + await p.textContent('#cSum'));
+  await p.goto(p.url().replace(/\?.*$/, '?k=%3Cb%3E,xyz'), { waitUntil: 'load' }); await p.waitForTimeout(300);
+  must(await cOn(p, 'reno') && await p.locator('#cIt button[aria-pressed="true"]').count() === 1, 'сміття в ?k= — не типовий вибір');
+});
+await test('калькулятор (ar, RTL), кілька позицій: галочка з боку кінця рядка, без горизонтальної прокрутки на 344 px', '/ar/renovation-calculator', [344, 760], async p => {
+  await cOnly(p, 'design', 'reno', 'furn', 'land');
+  must(await p.locator('#cRows li').count() === 4 && /\$/.test(await p.textContent('#cSum')), 'ar: немає 4 рядків і суми');
+  const side = await p.evaluate(() => { const b = document.querySelector('#cIt [data-k="reno"]'), r = b.getBoundingClientRect(), s = getComputedStyle(b, '::before'); return [parseFloat(s.left), r.width]; });
+  must(side[0] < side[1] / 2, 'ar: галочка не ліворуч (кінець рядка в RTL): ' + side);
+  must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'ar: горизонтальна прокрутка');
 });
 await browser.close(); server.close();
 console.log(fails ? `\n${fails} FAIL` : '\nВзаємодії: ALL OK');
