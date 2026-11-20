@@ -40,10 +40,10 @@ let fails = 0;
 const IGN = /net::ERR_FAILED|ERR_BLOCKED|Failed to load resource|ERR_ABORTED/;
 // Chrome скасовує cross-document view transition, коли нова сторінка ще не ввімкнула @view-transition (так само з «Що ми робимо» → лендинг) — не помилка сайту
 const IGN_PE = /Transition was aborted because of invalid state/;
-async function test(name, path, w, fn) {
+async function test(name, path, w, fn, opt) {
   const [vw, vh] = Array.isArray(w) ? w : [w, w < 600 ? 874 : 900], touch = vw < 600 || vh < 500; // [ширина, висота] — альбомний телефон
   if (Array.isArray(w)) w = vw + '×' + vh;
-  const ctx = await browser.newContext({ viewport: { width: vw, height: vh }, deviceScaleFactor: 1, isMobile: touch, hasTouch: touch });
+  const ctx = await browser.newContext({ viewport: { width: vw, height: vh }, deviceScaleFactor: 1, isMobile: touch, hasTouch: touch, ...(opt || {}) }); // opt — напр. { reducedMotion: 'reduce' }
   await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => /n8n\./.test(r.request().url()) ? r.fulfill({ status: apiStatus, body: '{}' }) : r.abort());
   const page = await ctx.newPage();
   const errs = [];
@@ -609,6 +609,61 @@ for (const [path, w] of [['/proekty/monpark', 1440], ['/tury/apartment-2025', 40
   must(r.contact.length && r.contact.every(h => h.endsWith('#zayavka')), 'посилання на контакти без #zayavka: ' + r.contact.join(' '));
   must(r.tel.join() === 'tel:+380978667755', 'tel: ' + r.tel.join());
   must(r.tg.join() === 'https://t.me/+380978667755' && r.wa.join() === 'https://wa.me/380978667755' && r.vb.join() === 'viber://chat?number=%2B380978667755', 'месенджери: ' + JSON.stringify(r));
+});
+// Курсор-супутник (ПК) і хвиля дотику (тач) — pointerFx() у ui-polish.v1.js (Михайло 20.11.2026)
+const curSt = p => p.evaluate(() => { const c = document.querySelector('.cur'); if (!c) return null; const r = c.firstChild.getBoundingClientRect(); return { on: c.classList.contains('is-on'), big: c.classList.contains('is-a'), g: c.getAttribute('data-g'), w: Math.round(r.width), x: Math.round(r.left + r.width / 2), y: Math.round(r.top + r.height / 2), pe: getComputedStyle(c).pointerEvents, ah: c.getAttribute('aria-hidden') }; });
+await test('курсор-супутник (ПК): зʼявляється після руху миші, більшає над посиланням, «→» над обкладинкою, зникає над полем форми', '/', 1440, async p => {
+  await p.waitForFunction(() => document.querySelector('.cur'), null, { timeout: 8000 }); // після load в idle
+  let c = await curSt(p); must(c && !c.on && c.pe === 'none' && c.ah === 'true', 'до руху миші кільце має бути сховане, aria-hidden і без pointer-events: ' + JSON.stringify(c));
+  must(await p.locator('.tap').count() === 0, 'на ПК не має бути елемента хвилі дотику');
+  must(await p.evaluate(() => getComputedStyle(document.body).cursor !== 'none' && getComputedStyle(document.documentElement).cursor !== 'none'), 'рідний курсор сховано');
+  await p.mouse.move(300, 500); await p.mouse.move(420, 520, { steps: 5 }); await p.waitForTimeout(450);
+  c = await curSt(p); must(c.on && !c.big && c.w >= 26 && c.w <= 30 && Math.abs(c.x - 420) <= 2 && Math.abs(c.y - 520) <= 2, 'кільце не наздогнало курсор над порожнім місцем: ' + JSON.stringify(c));
+  const cov = await p.locator('.xs-st a').first().boundingBox();
+  await p.mouse.move(cov.x + cov.width / 2, cov.y + cov.height / 2, { steps: 6 }); await p.waitForTimeout(450);
+  c = await curSt(p); must(c.on && c.big && c.g === 'g' && c.w >= 50, 'над обкладинкою проєкту — велике кільце зі стрілкою: ' + JSON.stringify(c));
+  must(await p.evaluate(() => /[→\u2192]/.test(getComputedStyle(document.querySelector('.cur'), '::after').content)), 'у кільці над обкладинкою немає «→»');
+  const nav = await p.locator('header .sch-nav a').first().boundingBox();
+  await p.mouse.move(nav.x + nav.width / 2, nav.y + nav.height / 2, { steps: 6 }); await p.waitForTimeout(450);
+  c = await curSt(p); must(c.on && c.big && !c.g && c.w >= 50, 'над посиланням меню — велике кільце без стрілки: ' + JSON.stringify(c));
+  await p.locator('#oPhone').scrollIntoViewIfNeeded(); const f = await p.locator('#oPhone').boundingBox();
+  await p.mouse.move(f.x + 40, f.y + f.height / 2, { steps: 4 }); await p.waitForTimeout(450);
+  c = await curSt(p); must(!c.on, 'над полем форми кільце має зникати: ' + JSON.stringify(c));
+  await p.mouse.move(f.x - 40, f.y - 70, { steps: 4 }); await p.waitForTimeout(450);
+  c = await curSt(p); must(c.on, 'після поля форми кільце не повернулось: ' + JSON.stringify(c));
+  const y0 = c.y; await p.mouse.wheel(0, -300); await p.waitForTimeout(350);
+  must((await curSt(p)).y === y0, 'кільце рухається під час прокрутки без руху миші');
+});
+await test('курсор-супутник: «+» над фото з лайтбоксом', '/proekty/yacht-vip', 1440, async p => {
+  await p.waitForFunction(() => document.querySelector('.cur'), null, { timeout: 8000 });
+  const a = p.locator('a[data-lb]').first(); await a.scrollIntoViewIfNeeded(); const bb = await a.boundingBox();
+  await p.mouse.move(bb.x + 10, bb.y + 10); await p.mouse.move(bb.x + bb.width / 2, bb.y + bb.height / 2, { steps: 5 }); await p.waitForTimeout(450);
+  const c = await curSt(p); must(c.on && c.big && c.g === 'p', 'над фото галереї — кільце з «+»: ' + JSON.stringify(c));
+});
+await test('тач: кільця курсора немає, хвиля зʼявляється на tap і зникає; прокрутка її не запускає', '/remont-kvartyr-kyiv', 402, async p => {
+  await p.waitForFunction(() => document.querySelector('.tap'), null, { timeout: 8000 });
+  must(await p.locator('.cur').count() === 0, 'на тач-екрані є кільце курсора');
+  const anims = () => p.evaluate(() => document.querySelector('.tap i').getAnimations().length);
+  const t = p.locator('main [data-c="x"]').first(); await t.scrollIntoViewIfNeeded(); const bb = await t.boundingBox();
+  const cdp = await p.context().newCDPSession(p); // свайп: палець їде > 10 px — хвилі немає
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: bb.x + 80, y: bb.y + 60 }] });
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: bb.x + 80, y: bb.y + 20 }] });
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await p.waitForTimeout(80); must(await anims() === 0, 'хвиля запустилась від свайпа');
+  await p.waitForTimeout(400);
+  const bb2 = await t.boundingBox(); const tx = Math.round(bb2.x + bb2.width / 2), ty = Math.round(bb2.y + 60);
+  await p.touchscreen.tap(tx, ty); await p.waitForTimeout(60);
+  const r = await p.evaluate(() => { const i = document.querySelector('.tap i'), b = i.getBoundingClientRect(); return { n: i.getAnimations().length, x: Math.round(b.left + b.width / 2), y: Math.round(b.top + b.height / 2), pe: getComputedStyle(i.parentNode).pointerEvents }; });
+  must(r.n === 1 && Math.abs(r.x - tx) <= 2 && Math.abs(r.y - ty) <= 2 && r.pe === 'none', 'хвиля не зʼявилась у точці дотику: ' + JSON.stringify(r) + ' / tap ' + tx + ',' + ty);
+  await p.waitForTimeout(500); must(await anims() === 0, 'хвиля не зникла за 0,5 с');
+});
+await test('prefers-reduced-motion: ні кільця курсора, ні хвилі дотику', '/', 1440, async p => {
+  await p.waitForTimeout(1500); await p.mouse.move(300, 400); await p.mouse.move(400, 420, { steps: 4 }); await p.waitForTimeout(300);
+  must(await p.locator('.cur').count() === 0 && await p.locator('.tap').count() === 0, 'є елементи курсора/хвилі при reduced-motion');
+}, { reducedMotion: 'reduce' });
+await test('кабінет: без кільця курсора', '/kabinet', 1440, async p => {
+  await p.waitForTimeout(1500); await p.mouse.move(300, 400); await p.mouse.move(400, 420, { steps: 4 }); await p.waitForTimeout(300);
+  must(await p.locator('.cur').count() === 0, 'у кабінеті є кільце курсора');
 });
 await browser.close(); server.close();
 console.log(fails ? `\n${fails} FAIL` : '\nВзаємодії: ALL OK');

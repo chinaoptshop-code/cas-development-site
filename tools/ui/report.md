@@ -539,7 +539,7 @@
 | ar/about.html | land | 49.3 | 12.9 | 9.1 | 0.5 | 5 | 456 |
 | ar/online-site-control.html | land | 49.3 | 11.9 | 9.1 | 0.5 | 5 | 619 |
 | blog/dyzain-ofisu-z-choho-pochaty.html | article | 49.2 | 14.5 | 9.9 | 0.5 | 5 | 414 |
-| ar/turnkey-house-koncha-zaspa.html | land | 49.1 | 12.9 | 9.1 | 0.5 | 5 | 520 |
+| ar/turnkey-house-koncha-zaspa.html | land | 49.1 | 12.8 | 9.1 | 0.5 | 5 | 520 |
 | en/house-construction.html | land | 49.1 | 13.5 | 9.1 | 0.5 | 5 | 552 |
 | ru/dizayn-remont-kvartiry-pechersk.html | land | 49.1 | 12.7 | 9.1 | 0.5 | 5 | 486 |
 | zh/index.html | land | 49.1 | 13.3 | 9.1 | 0.5 | 5 | 473 |
@@ -1202,7 +1202,7 @@
 | fr/ameublement-cle-en-main.html | land | 37.6 | 10.2 | 9.1 | 0.5 | 5 | 383 |
 | fr/maison-bois-massif.html | land | 37.6 | 10.3 | 9.1 | 0.5 | 5 | 409 |
 | pl/faq.html | land | 37.6 | 12.2 | 9.1 | 0.5 | 5 | 349 |
-| pl/projektowanie-wnetrz.html | land | 37.6 | 10.5 | 9.1 | 0.5 | 5 | 398 |
+| pl/projektowanie-wnetrz.html | land | 37.6 | 10.4 | 9.1 | 0.5 | 5 | 398 |
 | proekty/a-frame-house.html | land | 37.6 | 8.3 | 1.9 | 0.5 | 0 | 337 |
 | pt/design-remodelacao-bucha.html | land | 37.6 | 10.2 | 9.1 | 0.5 | 5 | 392 |
 | pt/servicos.html | land | 37.6 | 9.9 | 9.1 | 0.5 | 5 | 384 |

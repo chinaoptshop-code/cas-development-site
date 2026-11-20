@@ -234,8 +234,73 @@ function stripTap(){
   sc.addEventListener('dragstart',function(e){if(e.target.closest&&e.target.closest('a'))e.preventDefault()});
  });
 }
+/* Курсор-супутник (ПК) і хвиля дотику (тач) — Михайло 20.11.2026 «прикольна анімація на мишку… і щоб з телефону теж класно».
+   ПК (hover:hover і pointer:fine, вікно ≥ 1024 px): тонке золоте кільце .cur іде за курсором із запізненням (lerp у rAF, лише transform; цикл
+   зупиняється, щойно кільце наздогнало курсор); рідний курсор не ховаємо. Над посиланнями й кнопками кільце більшає й заливається; над обкладинками
+   й картками-посиланнями (стрічка, «Наші проєкти», «Що ми робимо», галерея лендингу) — «→» (RTL — «←», CSS), над фото з лайтбоксом — «+».
+   Над полями форм, відео, картою, 3D, кадром сцени (у нього свої шеврони) кільце зникає; так само — коли курсор іде з вікна. Прокрутка без руху
+   миші кільце не рухає (слухаємо лише pointermove). Тач (pointer:coarse): одна хвиля-кільце .tap від точки дотику на кнопках, картках і плитках —
+   лише tap (без руху > 10 px; прокрутка дає pointercancel), 350 мс, перехід за посиланням не затримує. prefers-reduced-motion — нічого.
+   Обидва елементи — aria-hidden, pointer-events:none, створюються один раз після load в idle (одна вставка в кінець body); далі в DOM нічого
+   не додається (Web Animations). Стилі — site-chrome.v1.css (не критичні). /kabinet — без цього. */
+function pointerFx(){
+ if(RM||!W.matchMedia||!W.requestAnimationFrame||/^\/(?:[a-z]{2}\/)?(?:kabinet|tury\/)/.test(location.pathname))return;
+ var fine=W.matchMedia('(hover:hover) and (pointer:fine)').matches,coarse=W.matchMedia('(pointer:coarse)').matches;
+ if(!fine&&!coarse)return;
+ var HIDE='input,textarea,select,video,iframe,canvas,[contenteditable],.maplibregl-map,.cmap,[data-cas-map],section.bz .bz-fig,section.bz svg,.clb',
+  GO='.xs-st a[href],.xs-cv a[href],.xs-svc .xs-c,.gal figure',LINK='a[href],button,summary,label,[role=button]',
+  TAP='.btn,.lq-go,.lq-b,.c-b,.cmp-more,.sch-cta,.mbar a,.mbar button,.la-tab a,.rel a,.xs-st a,.xs-cv a,.xs-svc .xs-c,.gal figure,[data-c="x"]';
+ function mk(c){var e=d.createElement('div');e.className=c;e.setAttribute('aria-hidden','true');e.appendChild(d.createElement('i'));d.body.appendChild(e);return e}
+ function kind(t){
+  if(!t||!t.closest)return'';
+  if(t.closest(HIDE))return'h';
+  if(t.closest('a[data-lb]'))return'p';
+  var g=t.closest(GO),a=t.closest(LINK);
+  if(g){
+   if(g.tagName==='A')return'g';
+   var m=g.querySelector('h3>a[href],figcaption a[href]'); // картка «Що ми робимо» / фігура галереї: посилання розтягнуте на всю картку
+   if(m&&(!a||a===m))return'g';
+  }
+  return a?'a':'';
+ }
+ function ring(){
+  var el=mk('cur'),x=0,y=0,tx=0,ty=0,raf=0,on=0,st='',tg=null,dirty=0;
+  function frame(){
+   raf=0;
+   if(dirty){dirty=0;var k=kind(tg);if(k!==st){st=k;el.classList.toggle('is-a',k==='a'||k==='g'||k==='p');if(k==='g'||k==='p')el.setAttribute('data-g',k);else el.removeAttribute('data-g');show(k!=='h')}}
+   var dx=tx-x,dy=ty-y;
+   if(Math.abs(dx)<.1&&Math.abs(dy)<.1){x=tx;y=ty}else{x+=dx*.22;y+=dy*.22;raf=W.requestAnimationFrame(frame)}
+   el.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
+  }
+  function show(v){if(v!==!!on){on=v?1:0;el.classList.toggle('is-on',v)}}
+  d.addEventListener('pointermove',function(e){
+   if(e.pointerType!=='mouse'||W.innerWidth<1024){if(on)show(false);return}
+   tx=e.clientX;ty=e.clientY;tg=e.target;dirty=1;
+   if(!on&&st!=='h'){x=tx;y=ty;show(true)} // перша поява — одразу під курсором, без «прильоту» з кута
+   if(!raf)raf=W.requestAnimationFrame(frame);
+  },{passive:true});
+  function off(){show(false);st=''}
+  d.documentElement.addEventListener('mouseleave',off);W.addEventListener('blur',off);
+  d.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')off()},{passive:true}); // дотик на гібридному екрані — кільце не лишається висіти
+ }
+ function ripple(){
+  var el=mk('tap'),ri=el.firstChild,tg=null,sx=0,sy=0,id=-1;
+  if(!ri.animate)return;
+  d.documentElement.classList.add('tfx'); // натискання картки-посилання (site-chrome.v1.css) — разом із хвилею
+  d.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'||!e.isPrimary){tg=null;return}tg=e.target.closest?e.target.closest(TAP):null;sx=e.clientX;sy=e.clientY;id=e.pointerId},{passive:true});
+  d.addEventListener('pointermove',function(e){if(tg&&e.pointerId===id&&(Math.abs(e.clientX-sx)>10||Math.abs(e.clientY-sy)>10))tg=null},{passive:true});
+  d.addEventListener('pointercancel',function(){tg=null},{passive:true});
+  d.addEventListener('pointerup',function(e){
+   if(!tg||e.pointerId!==id)return;tg=null;
+   el.style.transform='translate3d('+e.clientX.toFixed(0)+'px,'+e.clientY.toFixed(0)+'px,0)';
+   ri.animate([{opacity:.6,transform:'scale(.25)'},{opacity:0,transform:'scale(1)'}],{duration:350,easing:'cubic-bezier(.2,.7,.2,1)'});
+  },{passive:true});
+ }
+ function start(){(W.requestIdleCallback||function(f){setTimeout(f,200)})(function(){try{if(fine)ring();if(coarse)ripple()}catch(e){}},{timeout:2500})}
+ if(d.readyState==='complete')start();else W.addEventListener('load',start);
+}
 // кожен блок — окремою задачею (TBT: на /portfolio одна задача була 140–170 мс на телефоні CPU ×4; аудит швидкості 16.11.2026)
-function run(){var fs=[expanders,scrollers,imgFade,carousel,marquee,stripTap,heroSlides];(function next(){var f=fs.shift();try{f()}catch(e){}if(fs.length)setTimeout(next,0)})()}
+function run(){var fs=[expanders,scrollers,imgFade,carousel,marquee,stripTap,heroSlides,pointerFx];(function next(){var f=fs.shift();try{f()}catch(e){}if(fs.length)setTimeout(next,0)})()}
 // Safari/WebKit запускає defer-скрипти до повного site-chrome.v1.css у кінці <body>: стрічки й каруселі міряють ширину — чекаємо на CSS (Chrome — одразу)
 function css(go){var l=d.querySelector('link[href*="/assets/site-chrome.v1.css"]');if(!l||l.sheet)return go();var k=0,f=function(){if(!k++)go()};l.addEventListener('load',f);l.addEventListener('error',f);W.addEventListener('load',f)}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',function(){css(run)});else css(run);

@@ -956,3 +956,22 @@ a[data-lb]{cursor:zoom-in}
   .of-ct-m img{width:1.25rem;height:1.25rem}
 }
 @media (horizontal-viewport-segments:2){#zayavka .of-ct{display:none}} /* двоекранні: форма — в одному сегменті, без блоку через шарнір */
+/* ══ Курсор-супутник (ПК) і хвиля дотику (тач) — Михайло 20.11.2026; логіка — pointerFx() у /assets/ui-polish.v1.js, UI-kit /styleguide/#pointer ══
+   .cur — кільце 28 px за курсором (лише transform; збільшення — масштаб внутрішнього кола, без layout), над посиланнями — 52 px із заливкою,
+   «→»/«←»/«+» — ::after. .tap — хвиля від точки дотику (Web Animations). Обидва fixed, aria-hidden, pointer-events:none: не впливають на тап-цілі
+   й перевірки верстки. Рідний курсор не ховаємо. Натискання картки-посилання на тач — scale(.985) на :active. Без світіння й пульсацій; reduced-motion — нічого. */
+.cur,.tap{position:fixed;left:0;top:0;width:0;height:0;z-index:10040;pointer-events:none;contain:layout style size}
+.cur{opacity:0;transition:opacity .25s ease;will-change:transform}
+.cur.is-on{opacity:1}
+.cur i,.tap i{position:absolute;left:-26px;top:-26px;width:52px;height:52px;box-sizing:border-box;border:1.5px solid #bf9148;border-radius:50%}
+.cur i{transform:scale(.54);transition:transform .22s cubic-bezier(.2,.7,.2,1),background-color .2s ease,border-color .2s ease}
+.cur.is-a i{transform:scale(1);background-color:rgba(191,145,72,.16);border-color:rgba(191,145,72,.75)}
+.cur::after{content:"";position:absolute;left:-26px;top:-26px;width:52px;height:52px;display:grid;place-items:center;color:#f3eee6;font:500 1.125rem/1 "Manrope","Manrope Fallback",system-ui,sans-serif;opacity:0;transition:opacity .15s ease}
+.cur[data-g=g]::after{content:"\2192";opacity:1}[dir=rtl] .cur[data-g=g]::after{content:"\2190"}
+.cur[data-g=p]::after{content:"+";font-size:1.375rem;opacity:1}
+.tap i{left:-36px;top:-36px;width:72px;height:72px;opacity:0}
+@media(pointer:coarse) and (prefers-reduced-motion:no-preference){
+  .tfx .xs-cv a:active,.tfx .xs-svc .xs-c:active,.tfx .gal figure:active{transform:scale(.985);transition:transform .12s cubic-bezier(.2,.7,.2,1)} /* html.tfx ставить pointerFx() разом із хвилею (не критичний CSS); плитки data-c=x — без цього: тап тримає заголовок під пальцем (uxSet) */
+}
+@media(prefers-reduced-motion:reduce){.cur,.tap{display:none}}
+@media print{.cur,.tap{display:none}}
