@@ -261,7 +261,7 @@ article .gd-slot{margin:32px 0 0;padding:0}
 .gd .gd-go{margin:16px 0 0}.gd-ok{margin:14px 0 0}.gd-ok .btn{margin:8px 0 0}
 /* після 2xx: години відповіді + Telegram (lead-form.v1.js after(); Михайло 16.11.2026) */
 .lf-after{margin:12px 0 0;color:var(--mu,#8a837c);font-size:var(--fs-small,.8125rem);line-height:1.5}
-.lf-after .lf-tg{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin:8px 0 0;padding:0 18px;border:1px solid var(--ac,#bf9148);border-radius:999px;color:var(--tx,#ede8df);text-decoration:none;font-weight:600}
+.lf-after .lf-tg{display:flex;width:max-content;max-width:100%;align-items:center;gap:8px;min-height:44px;margin:10px 0 0;padding:0 18px;border:1px solid var(--ac,#bf9148);border-radius:999px;color:var(--tx,#ede8df);text-decoration:none;font-weight:600}
 .lf-after .lf-tg:hover,.lf-after .lf-tg:focus-visible{background:rgba(191,145,72,.12)}.lf-after .lf-tg img{width:20px;height:20px;flex:none}
 
 /* ══ Порівняння пакетів дизайну (.pk — tools/site/landing.py packages_html, /styleguide/#packages); телефон — свайп-картки */
