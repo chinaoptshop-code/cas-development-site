@@ -1,5 +1,6 @@
 [":root",
 "html",
+"html:not(.sb)",
 "#main:focus",
 "body",
 ".sch,.scf",

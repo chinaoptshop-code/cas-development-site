@@ -291,6 +291,37 @@ await test('форма: порожній телефон не надсилаєт�
   const b = JSON.parse(posts.at(-1).body); must(/380671234567|0671234567/.test(b.phone), 'телефон не в заявці');
   must(b.service, 'немає service');
 });
+// Перехід на …#zayavka з ІНШОЇ сторінки: сторінка стає на місце одразу (без плавної прокрутки ~10 000 px), шапка видима й не перекриває ціль;
+// у межах сторінки прокрутка до якоря лишається плавною (html.sb), reduced-motion — миттєво завжди.
+const hashRec = () => { window.__ys = []; const f = () => { window.__ys.push(Math.round(scrollY)); requestAnimationFrame(f); }; requestAnimationFrame(f); };
+for (const [path, w] of [['/remont-kvartyr-kyiv', 402], ['/', 1440], ['/ar/', 402], ['/contact', 402], ['/en/apartment-interior-design', 1440]]) await test('якір з іншої сторінки: #zayavka одразу на місці, шапка не перекриває', '/about', w, async p => {
+  await p.addInitScript(hashRec);
+  await p.goto(BASE + path + '#zayavka', { waitUntil: 'load' });
+  await p.waitForTimeout(1200);
+  const r = await p.evaluate(() => { const ys = window.__ys, y = scrollY, el = document.getElementById('zayavka').getBoundingClientRect(), h = document.querySelector('.sch').getBoundingClientRect();
+    return { mid: new Set(ys.filter(v => v > y * 0.1 && v < y * 0.9)).size, y, top: Math.round(el.top), hb: Math.round(h.bottom), end: y + innerHeight >= document.documentElement.scrollHeight - 2,
+      sb: getComputedStyle(document.documentElement).scrollBehavior, cls: document.documentElement.classList.contains('sb'), vh: innerHeight }; });
+  must(r.y > 1000, 'сторінка не перейшла до #zayavka: y=' + r.y);
+  must(r.mid <= 2, `плавна прокрутка при завантаженні з якорем: ${r.mid} проміжних положень`);
+  must(r.hb > 0, 'шапка схована після переходу на якір');
+  must((r.top >= r.hb - 1 && r.top < r.vh * 0.5) || (r.end && r.top < r.vh * 0.5), `#zayavka не під шапкою: top=${r.top}, шапка до ${r.hb}`);
+  must(r.cls && r.sb === 'smooth', 'після завантаження плавність у межах сторінки не ввімкнулась: ' + r.sb);
+});
+await test('якір у межах сторінки: прокрутка плавна (html.sb одразу, без #)', '/remont-kvartyr-kyiv', 1440, async p => {
+  must(await p.evaluate(() => document.documentElement.classList.contains('sb') && getComputedStyle(document.documentElement).scrollBehavior === 'smooth'), 'немає html.sb / scroll-behavior:smooth');
+  await p.evaluate(hashRec);
+  await p.evaluate(() => { location.hash = '#zayavka'; });
+  await p.waitForTimeout(1800);
+  const r = await p.evaluate(() => ({ n: new Set(window.__ys.filter(v => v > scrollY * 0.1 && v < scrollY * 0.9)).size, y: scrollY }));
+  must(r.y > 1000 && r.n >= 5, `перехід у межах сторінки не плавний: ${r.n} проміжних положень, y=${r.y}`);
+});
+await test('якір, reduced-motion: миттєво і з іншої сторінки, і в межах сторінки', '/about', 402, async p => {
+  await p.addInitScript(hashRec);
+  await p.goto(BASE + '/remont-kvartyr-kyiv#zayavka', { waitUntil: 'load' });
+  await p.waitForTimeout(800);
+  const r = await p.evaluate(() => ({ mid: new Set(window.__ys.filter(v => v > scrollY * 0.1 && v < scrollY * 0.9)).size, y: scrollY, sb: getComputedStyle(document.documentElement).scrollBehavior }));
+  must(r.y > 1000 && r.mid <= 2 && r.sb === 'auto', `reduced-motion: ${r.mid} проміжних положень, scroll-behavior ${r.sb}`);
+}, { reducedMotion: 'reduce' });
 await test('.lq-go → #zayavka з контекстом сцени', '/budivnytstvo-budynkiv-kyiv', 1440, async p => {
   await wakeup(p);
   const go = p.locator('.lq-go').first();

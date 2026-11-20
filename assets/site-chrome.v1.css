@@ -5,6 +5,8 @@
 /* Єдина шапка */
 :root{--sch-h:calc(64px + env(safe-area-inset-top,0px));--ease-out:cubic-bezier(.2,.7,.2,1)}
 html{scroll-padding-top:calc(var(--sch-h) + 12px)}
+html:not(.sb){scroll-behavior:auto!important}  /* сторінка, відкрита з #якорем, стає на місце одразу; плавність (клас .sb, site-chrome.v1.js) — лише для переходів у межах сторінки */
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
 #main:focus{outline:none}  /* фокус від «Перейти до змісту» (site-chrome.v1.js) — без рамки навколо всієї сторінки */
 @media (max-width:767px){html{scroll-padding-bottom:calc(84px + env(safe-area-inset-bottom))}}  /* фокус клавіатури не ховається під пігулкою «Звʼязатися» */
 body{padding-top:var(--sch-h)}

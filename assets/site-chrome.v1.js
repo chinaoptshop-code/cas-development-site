@@ -1,4 +1,15 @@
 /* Єдина шапка сайту: бургер і повноекранне меню (розмітка — tools/site/chrome.py). */
+/* Плавна прокрутка до якоря — лише в межах сторінки: html.sb вмикає scroll-behavior:smooth зі стилів сторінки (site-chrome.v1.css).
+   Сторінка, відкрита одразу з #якорем (…/remont#zayavka з іншої сторінки), стає на місце миттєво — клас зʼявляється після load
+   (перший стрибок браузера вже зроблено) або з першою дією відвідувача. */
+(function (W, h) {
+  function on() { h.classList.add('sb'); }
+  if (!location.hash || location.hash.length < 2) return on();
+  var ev = ['pointerdown', 'keydown', 'wheel', 'touchstart'], k = 0;
+  function go() { if (k++) return; ev.forEach(function (e) { W.removeEventListener(e, go, true); }); on(); }
+  ev.forEach(function (e) { W.addEventListener(e, go, { capture: true, passive: true }); });
+  if (document.readyState === 'complete') setTimeout(go, 0); else W.addEventListener('load', function () { setTimeout(go, 0); });
+})(window, document.documentElement);
 /* Формат чисел мови сторінки — той самий, що в текстах сайту (tools/site/i18n.py: num, usd): тисячі — «,» лише en ($1,100),
    інші мови — нерозривний пробіл ($1 100, 23 000 ₴); дріб — «.» en, «,» інші; $ — перед числом у всіх мовах.
    Спільні для сцен, квізу, калькулятора й Оздоби: window.casNum(n, мова?, знаків?), window.casUsd(n, мова?). */
@@ -314,7 +325,7 @@
   if (!W.matchMedia) return;
   var mob = W.matchMedia('(max-width:767px)');
   var app = /^\/(?:ozdoba|kabinet|konfigurator)(?:[\/.]|$)/.test(location.pathname); // власні інтерфейси: шапку не ховаємо
-  var y0 = W.pageYOffset || 0, acc = 0, raf = 0, hid = false;
+  var y0 = W.pageYOffset || 0, acc = 0, raf = 0, hid = false, jump = location.hash.length > 1; // jump — сторінку відкрито з #якорем: перший стрибок не ховає шапку
   function vhNow() { return W.innerHeight || 700; }
   // відкрите меню, список мов або діалог — нічого не ховаємо. Живі колекції замість querySelector на кожному кадрі прокрутки:
   // на сторінках зі сценами (тисячі SVG-вузлів) складний селектор обходив увесь DOM (~20 мс на кадр при CPU×4)
@@ -338,6 +349,7 @@
     if (!mob.matches) { set(false); return; }
     var y = W.pageYOffset || 0, dy = y - y0, vh = W.innerHeight || 700;
     y0 = y;
+    if (jump) { acc = 0; set(false); return; } // стрибок до якоря й довантаження блоків вище — не прокрутка людини
     if (y < 80 || busy()) { acc = 0; set(false); return; }
     if (y + vh >= (d.documentElement.scrollHeight || 0) - 120) { acc = 0; set(false); return; } // кінець сторінки — контакти видно
     acc = (dy > 0) === (acc > 0) ? acc + dy : dy; // накопичуємо рух в одному напрямку (без «тремтіння» від інерції)
@@ -345,6 +357,7 @@
     else if (acc < -36) set(false);
   }
   W.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+  if (jump) ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(function (e) { W.addEventListener(e, function () { jump = false; }, { capture: true, passive: true, once: true }); });
   var on = function () { if (!mob.matches) set(false); };
   mob.addEventListener ? mob.addEventListener('change', on) : mob.addListener(on);
   // фокус у текстовому полі на телефоні = відкрита клавіатура: панель звʼязку не перекриває поле
