@@ -12,7 +12,7 @@
 //       змінив інший менеджер → 409 {conflict: true, partner} без змін
 // Записи (POST / PATCH / DELETE) — до 600 на годину на працівника (functions/_rate.js), далі 429.
 // DELETE ?link=<id> — відвʼязати
-import { bad, json, readJSON } from '../../_lib.js';
+import { IN_IDS, bad, idsArg, json, readJSON } from '../../_lib.js';
 import { Invalid, PARTNER_STATUSES, PARTNER_TYPES, findPartner, hasEmail, partnerInput, partnersCsv, shapePartner, text } from '../../_partners.js';
 import { audit, diff, need, noTable } from '../../_roles.js';
 import { TOO_MANY, staffLimited } from '../../_rate.js';
@@ -94,7 +94,7 @@ export async function onRequestGet({ request, env }) {
     let nl = {};
     try { // скільки обʼєктів і заявок у кожного контакту
       const ids = results.map(r => r.id);
-      if (ids.length) for (const r of (await env.DB.prepare(`SELECT contact_id, COUNT(project_id) AS p, COUNT(order_id) AS o FROM contact_links WHERE contact_id IN (${ids.map(() => '?').join(',')}) GROUP BY contact_id`).bind(...ids).all()).results) nl[r.contact_id] = r;
+      if (ids.length) for (const r of (await env.DB.prepare(`SELECT contact_id, COUNT(project_id) AS p, COUNT(order_id) AS o FROM contact_links WHERE contact_id ${IN_IDS} GROUP BY contact_id`).bind(idsArg(ids)).all()).results) nl[r.contact_id] = r;
     } catch (e) { if (!noTable(e)) throw e; }
     return json({ types: PARTNER_TYPES, statuses: PARTNER_STATUSES, ready: await hasEmail(env),
       rows: results.map(r => ({ ...shapePartner(r), n_projects: (nl[r.id] || {}).p || 0, n_leads: (nl[r.id] || {}).o || 0 })),

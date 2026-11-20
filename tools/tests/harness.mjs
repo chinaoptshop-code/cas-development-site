@@ -10,10 +10,12 @@ export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const FN = join(ROOT, 'functions');
 
 // ===== D1 на node:sqlite =====
+export const D1_MAX_PARAMS = 100;
 const norm = v => (v === undefined ? null : typeof v === 'boolean' ? (v ? 1 : 0) : v);
 class Stmt {
   constructor(db, sql, args = []) { this.db = db; this.sql = sql; this.args = args; }
-  bind(...a) { return new Stmt(this.db, this.sql, a.map(norm)); }
+  // D1 приймає ≤ 100 параметрів на запит (node:sqlite — 32 766): стенд падає так само, щоб список id у `IN (?,?,…)` не дожив до бою
+  bind(...a) { if (a.length > D1_MAX_PARAMS) throw new Error(`D1_ERROR: too many SQL variables (${a.length} > ${D1_MAX_PARAMS})`); return new Stmt(this.db, this.sql, a.map(norm)); }
   _s() { return this.db.prepare(this.sql); }
   async first(col) { const r = this._s().get(...this.args); const o = r ? { ...r } : null; return col && o ? o[col] : o; }
   async all() { return { results: this._s().all(...this.args).map(r => ({ ...r })), success: true }; }
