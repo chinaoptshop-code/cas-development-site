@@ -137,7 +137,7 @@
         D = d; rows = o.only ? d.rows.filter(function (t) { return t.src === o.only; }) : d.rows;
         if (!keep) { sel = {}; }
         editing = null; draw(); if (o.onData) o.onData(d);
-      }, function (e) { el.innerHTML = '<p class="err">' + esc(e.message) + '</p>'; });
+      }, function (e) { el.innerHTML = '<p class="' + (e.status === 503 ? 'muted' : 'err') + '">' + esc(e.message) + '</p>'; });
     }
     var find = function (key) { return rows.filter(function (t) { return t.key === key; })[0]; };
     var changed = function () { badge(); if (o.onChange) o.onChange(); };

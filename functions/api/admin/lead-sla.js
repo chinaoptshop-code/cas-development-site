@@ -32,7 +32,9 @@ export async function onRequestPost({ request, env }) {
   const sla = await runSla(env, now);
   const report = await runReport(env, now);
   const nudges = await runNudges(env, request, now); // клієнтам: «етап чекає погодження» (48 год) і відгук у Google після завершення (functions/_nudges.js)
-  const tasks = await runTaskNotices(env, now); // працівникам: призначено / виконано з черги й зведення задач на сьогодні (раз на день)
+  // працівникам: призначено / виконано з черги й зведення задач на сьогодні (раз на день); збій тут не має зупиняти SLA заявок і звіт
+  let tasks;
+  try { tasks = await runTaskNotices(env, now); } catch (e) { console.log('task notices', e && e.message); tasks = { error: true }; }
   let webhook = null;
   const t = Math.floor(Date.now() / 1000);
   const last = await env.DB.prepare("SELECT value FROM settings WHERE key = 'tg_webhook_checked'").first();
