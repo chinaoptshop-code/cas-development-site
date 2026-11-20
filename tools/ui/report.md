@@ -735,12 +735,12 @@
 | de/gartengestaltung.html | land | 42.8 | 11.8 | 9.1 | 0.9 | 5 | 549 |
 | pl/projektowanie-ogrodow.html | land | 42.8 | 12.0 | 9.1 | 0.9 | 5 | 550 |
 | ar/apartment-renovation-bulvar-fontaniv.html | land | 42.7 | 11.0 | 9.1 | 0.5 | 5 | 411 |
-| ar/apartment-renovation-greenville-pechersk.html | land | 42.7 | 10.9 | 9.1 | 0.5 | 5 | 410 |
+| ar/apartment-renovation-greenville-pechersk.html | land | 42.7 | 11.0 | 9.1 | 0.5 | 5 | 410 |
 | ar/apartment-renovation-rusaniv-residence.html | land | 42.7 | 11.0 | 9.1 | 0.5 | 5 | 411 |
 | en/landscape-design.html | land | 42.7 | 11.6 | 9.1 | 0.9 | 5 | 557 |
 | proekty/pidgirland.html | land | 42.7 | 8.9 | 1.9 | 0.5 | 0 | 379 |
 | ar/apartment-renovation-maxima-residence.html | land | 42.6 | 11.0 | 9.1 | 0.5 | 5 | 410 |
-| ar/apartment-renovation-triiinity.html | land | 42.6 | 11.2 | 9.1 | 0.5 | 5 | 412 |
+| ar/apartment-renovation-triiinity.html | land | 42.6 | 11.1 | 9.1 | 0.5 | 5 | 412 |
 | ar/premium-renovation.html | land | 42.6 | 11.1 | 9.1 | 0.5 | 5 | 434 |
 | en/resort-design.html | land | 42.6 | 11.6 | 9.1 | 2.5 | 5 | 474 |
 | pl/osrodek-wypoczynkowy-pod-klucz.html | land | 42.6 | 12.0 | 9.1 | 2.5 | 5 | 465 |
@@ -932,7 +932,7 @@
 | ru/dizayn-i-remont-boyarka.html | land | 39.9 | 10.9 | 9.1 | 0.5 | 5 | 352 |
 | ru/dizayn-i-remont-chernovtsy.html | land | 39.9 | 10.8 | 9.1 | 0.5 | 5 | 349 |
 | ru/dizayn-i-remont-rovno.html | land | 39.9 | 10.8 | 9.1 | 0.5 | 5 | 351 |
-| ru/dizayn-i-remont-vinnitsa.html | land | 39.9 | 10.9 | 9.1 | 0.5 | 5 | 349 |
+| ru/dizayn-i-remont-vinnitsa.html | land | 39.9 | 10.8 | 9.1 | 0.5 | 5 | 349 |
 | ru/dizayn-i-remont-vishnevoe.html | land | 39.9 | 10.8 | 9.1 | 0.5 | 5 | 353 |
 | ru/dizayn-i-remont-vyshgorod.html | land | 39.9 | 10.8 | 9.1 | 0.5 | 5 | 352 |
 | ar/bathroom-renovation.html | land | 39.8 | 10.3 | 9.1 | 0.5 | 5 | 403 |
@@ -1252,7 +1252,7 @@
 | fr/renovation-locaux-commerciaux.html | land | 37.3 | 9.9 | 9.1 | 0.5 | 5 | 410 |
 | fr/renovation-maison-cle-en-main.html | land | 37.3 | 9.9 | 9.1 | 0.5 | 5 | 410 |
 | fr/services.html | land | 37.3 | 9.8 | 9.1 | 0.5 | 5 | 384 |
-| pt/design-remodelacao-bila-tserkva.html | land | 37.3 | 10.0 | 9.1 | 0.5 | 5 | 389 |
+| pt/design-remodelacao-bila-tserkva.html | land | 37.3 | 10.1 | 9.1 | 0.5 | 5 | 389 |
 | pt/design-remodelacao-hostomel.html | land | 37.3 | 10.2 | 9.1 | 0.5 | 5 | 387 |
 | zh/apartment-renovation-novyi-avtohraf.html | land | 37.3 | 10.7 | 9.1 | 0.5 | 5 | 412 |
 | zh/business-fit-out.html | land | 37.3 | 12.4 | 9.1 | 0.5 | 5 | 393 |
@@ -1262,7 +1262,7 @@
 | de/porenbetonhaus.html | land | 37.2 | 10.3 | 9.1 | 0.5 | 5 | 405 |
 | en/design-and-technical-supervision.html | land | 37.2 | 9.9 | 9.1 | 0.5 | 5 | 409 |
 | en/house-renovation.html | land | 37.2 | 9.8 | 9.1 | 0.5 | 5 | 427 |
-| es/diseno-reforma-ivano-frankivsk.html | land | 37.2 | 10.1 | 9.1 | 0.5 | 5 | 386 |
+| es/diseno-reforma-ivano-frankivsk.html | land | 37.2 | 10.0 | 9.1 | 0.5 | 5 | 386 |
 | es/reforma-casa-llave-en-mano.html | land | 37.2 | 9.8 | 9.1 | 0.5 | 5 | 414 |
 | es/servicios.html | land | 37.2 | 9.8 | 9.1 | 0.5 | 5 | 384 |
 | fr/design-renovation-oujhorod.html | land | 37.2 | 10.3 | 9.1 | 0.5 | 5 | 384 |
@@ -1594,7 +1594,7 @@
 | zh/house-design.html | land | 33.8 | 9.6 | 9.1 | 0.5 | 5 | 384 |
 | zh/custom-kitchens-wardrobes.html | land | 33.7 | 9.8 | 9.1 | 0.5 | 5 | 381 |
 | zh/rough-renovation.html | land | 33.6 | 9.8 | 9.1 | 0.5 | 5 | 383 |
-| es/programa-de-referidos.html | land | 33.5 | 9.0 | 9.1 | 0.5 | 5 | 354 |
+| es/programa-de-referidos.html | land | 33.5 | 9.1 | 9.1 | 0.5 | 5 | 354 |
 | zh/cosmetic-renovation.html | land | 33.5 | 9.8 | 9.1 | 0.5 | 5 | 382 |
 | de/empfehlungsprogramm.html | land | 33.4 | 9.2 | 9.1 | 0.5 | 5 | 355 |
 | en/referral-programme.html | land | 32.9 | 8.8 | 9.1 | 0.5 | 5 | 357 |

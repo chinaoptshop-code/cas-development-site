@@ -293,7 +293,7 @@ function pointerFx(){
   d.addEventListener('pointerup',function(e){
    if(!tg||e.pointerId!==id)return;tg=null;
    el.style.transform='translate3d('+e.clientX.toFixed(0)+'px,'+e.clientY.toFixed(0)+'px,0)';
-   ri.animate([{opacity:.6,transform:'scale(.25)'},{opacity:0,transform:'scale(1)'}],{duration:350,easing:'cubic-bezier(.2,.7,.2,1)'});
+   ri.animate([{opacity:.95,transform:'scale(.3)'},{opacity:.7,transform:'scale(.78)',offset:.45},{opacity:0,transform:'scale(1)'}],{duration:350,easing:'ease-out'});
   },{passive:true});
  }
  function start(){(W.requestIdleCallback||function(f){setTimeout(f,200)})(function(){try{if(fine)ring();if(coarse)ripple()}catch(e){}},{timeout:2500})}

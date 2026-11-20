@@ -41,6 +41,7 @@ const IGN = /net::ERR_FAILED|ERR_BLOCKED|Failed to load resource|ERR_ABORTED/;
 // Chrome скасовує cross-document view transition, коли нова сторінка ще не ввімкнула @view-transition (так само з «Що ми робимо» → лендинг) — не помилка сайту
 const IGN_PE = /Transition was aborted because of invalid state/;
 async function test(name, path, w, fn, opt) {
+  if (process.env.ONLY && !name.includes(process.env.ONLY)) return; // ONLY='частина назви' node tools/tests/interact.mjs — лише ці тести
   const [vw, vh] = Array.isArray(w) ? w : [w, w < 600 ? 874 : 900], touch = vw < 600 || vh < 500; // [ширина, висота] — альбомний телефон
   if (Array.isArray(w)) w = vw + '×' + vh;
   const ctx = await browser.newContext({ viewport: { width: vw, height: vh }, deviceScaleFactor: 1, isMobile: touch, hasTouch: touch, ...(opt || {}) }); // opt — напр. { reducedMotion: 'reduce' }
@@ -650,7 +651,7 @@ await test('тач: кільця курсора немає, хвиля зʼяв�
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: bb.x + 80, y: bb.y + 20 }] });
   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
   await p.waitForTimeout(80); must(await anims() === 0, 'хвиля запустилась від свайпа');
-  await p.waitForTimeout(400);
+  await p.waitForTimeout(400); await t.scrollIntoViewIfNeeded(); await p.waitForTimeout(300); // свайп прокрутив сторінку — плитку знову в кадр
   const bb2 = await t.boundingBox(); const tx = Math.round(bb2.x + bb2.width / 2), ty = Math.round(bb2.y + 60);
   await p.touchscreen.tap(tx, ty); await p.waitForTimeout(60);
   const r = await p.evaluate(() => { const i = document.querySelector('.tap i'), b = i.getBoundingClientRect(); return { n: i.getAnimations().length, x: Math.round(b.left + b.width / 2), y: Math.round(b.top + b.height / 2), pe: getComputedStyle(i.parentNode).pointerEvents }; });
