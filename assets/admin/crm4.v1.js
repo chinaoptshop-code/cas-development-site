@@ -35,7 +35,8 @@
     var o = '';
     if (t.project && hide !== 'project') o += '<button type="button" class="pill tk-ln" data-pj="' + t.project.id + '" title="Відкрити обʼєкт">' + esc(t.project.title) + (t.project.stage_name ? ' · ' + esc(t.project.stage_name) : '') + '</button>';
     else if (t.project && t.project.stage_name) o += '<span class="pill">етап «' + esc(t.project.stage_name) + '»</span>';
-    if (t.order && hide !== 'order') o += '<span class="pill">Заявка ' + esc(t.order.number) + (t.order.name ? ' · ' + esc(t.order.name) : '') + '</span>';
+    // привʼязана заявка — кнопка: відкриває її картку в «Заявках» (t.order сервер віддає лише в межах прав на заявки — як і сам список)
+    if (t.order && hide !== 'order') o += '<button type="button" class="pill tk-ln" data-ord="' + t.order.id + '" data-on="' + esc(t.order.number) + '" title="Відкрити заявку">Заявка ' + esc(t.order.number) + (t.order.name ? ' · ' + esc(t.order.name) : '') + '</button>';
     if (t.contact && hide !== 'contact') o += '<span class="pill">' + esc(t.contact.name || t.contact.company || 'Контакт') + '</span>';
     return o;
   }
@@ -153,6 +154,8 @@
       $$('[data-sel]', el).forEach(function (c) { c.onchange = function () { if (c.checked) sel[c.dataset.sel] = 1; else delete sel[c.dataset.sel]; if (o.onSelect) o.onSelect(Object.keys(sel)); }; });
       $$('[data-edit]', el).forEach(function (b) { b.onclick = function () { var t = find(b.dataset.edit); if (t && t.can.edit && !pick) edit(t); }; });
       $$('[data-pj]', el).forEach(function (b) { b.onclick = function () { try { sessionStorage.setItem('pjOpen', b.dataset.pj); } catch (e) { /* noop */ } var dl = b.closest('dialog'); if (dl && dl.open) dl.close(); if (location.hash === '#projects') location.reload(); else location.hash = '#projects'; }; });
+      // заявка: вкладка «Заявки» відкриває картку за id (RENDER.crm у cms.v1.js читає crmOpen; немає в списку — шукає за номером у межах прав)
+      $$('[data-ord]', el).forEach(function (b) { b.onclick = function () { try { sessionStorage.setItem('crmOpen', JSON.stringify({ id: +b.dataset.ord, n: b.dataset.on || '' })); } catch (e) { /* noop */ } var dl = b.closest('dialog'); if (dl && dl.open) dl.close(); if (location.hash === '#crm') location.reload(); else location.hash = '#crm'; }; });
       var m = $('[data-more]', el);
       if (m) m.onclick = function () {
         m.disabled = true;

@@ -640,6 +640,20 @@ await check('owner-tasks-edit', 'OWNER', '/kabinet/admin#tasks', W, async p => {
   await p.fill('[data-f=q]', 'заміру'); await p.waitForFunction(() => document.querySelectorAll('[data-list] .tk-row').length === 1, null, { timeout: 4000 });
   await p.fill('[data-f=q]', ''); await p.waitForFunction(() => document.querySelectorAll('[data-list] .tk-row').length > 3);
 });
+// «Задачі» → привʼязана заявка: клік по «Заявка №…» відкриває її картку у вкладці «Заявки» (і коли заявку ховає збережений фільтр списку)
+for (const [who, pre] of [['OWNER', false], ['MGR', true]]) await check('tasks-lead-open' + (pre ? '-filtered' : ''), who, '/kabinet/admin#tasks', [402, 1440], async p => {
+  await seeT(p, '[data-list]', 'Надіслати КП по ремонту квартири');
+  const num = (await row('SELECT number FROM orders WHERE id = ?', LEAD1)).number;
+  if (pre) await p.evaluate(() => localStorage.setItem('crmFilters', JSON.stringify({ board: 'lead', status: 'lost', kind: '', assignee: '', staff: '', city: '', min: '', max: '', overdue: false, due: false, place: '', ref: '', period: '', from: '', to: '' })));
+  const b = p.locator('.tk-row', { hasText: 'Надіслати КП по ремонту квартири' }).locator('[data-ord]');
+  if (!(await b.count())) throw new Error('привʼязана заявка в задачі — не кнопка');
+  if (!(await b.textContent()).includes(num)) throw new Error('на кнопці немає номера заявки');
+  await b.click();
+  await p.waitForFunction(() => location.hash === '#crm', null, { timeout: 4000 });
+  await seeT(p, 'dialog[open] h2', num);
+  await seeT(p, 'dialog[open] [data-tasks]', 'Надіслати КП по ремонту квартири');
+  if (pre) await p.evaluate(() => localStorage.removeItem('crmFilters'));
+});
 // картка заявки: блок «Задачі» з задачами цієї заявки, швидке додавання не закриває й не «бруднить» картку
 await check('owner-lead-tasks', 'OWNER', '/kabinet/admin#crm', W, async p => {
   const w = p.viewportSize().width;

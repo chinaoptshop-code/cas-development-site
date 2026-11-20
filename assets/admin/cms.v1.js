@@ -956,7 +956,20 @@
       if (!dlg.open) dlg.showModal();
     }
     segs();
-    return load();
+    // картка заявки за посиланням із «Задач» (crm4.v1.js ставить crmOpen = {id, n: номер}): є в завантаженому списку — відкриваємо; немає
+    // (фільтри, інша сторінка списку) — шукаємо за номером тим самим /api/admin/crm, тобто лише в межах прав на заявки
+    var want = null; try { want = JSON.parse(sessionStorage.getItem('crmOpen') || 'null'); sessionStorage.removeItem('crmOpen'); } catch (e) { /* noop */ }
+    return load().then(function () {
+      if (!want || !want.id) return;
+      if (rows.some(function (x) { return x.id === want.id; })) return edit(want.id);
+      var miss = function () { toast('Заявку ' + (want.n || '') + ' не знайдено або немає доступу', true); };
+      if (!want.n) return miss();
+      return api('/api/admin/crm?q=' + encodeURIComponent(want.n) + '&limit=20').then(function (d) {
+        var r = (d.rows || []).filter(function (x) { return x.id === want.id; })[0];
+        if (!r) return miss();
+        rows.push(r); edit(r.id);
+      }, miss);
+    });
   };
 
   // ---------- Аналітика: заявки за 7/30/90 днів по джерелах, сторінках, днях (GET /api/admin/crm?stats=1) ----------
