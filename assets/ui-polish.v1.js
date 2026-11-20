@@ -299,8 +299,31 @@ function pointerFx(){
  function start(){(W.requestIdleCallback||function(f){setTimeout(f,200)})(function(){try{if(fine)ring();if(coarse)ripple()}catch(e){}},{timeout:2500})}
  if(d.readyState==='complete')start();else W.addEventListener('load',start);
 }
+/* Safari без scroll anchoring (20.11.2026): секції з content-visibility:auto (sections.v1.css) до першого показу мають висоту-заглушку
+   (contain-intrinsic-size 640 px); справжня зʼявлялась, коли секція наближалась до екрана, — і вміст нижче стрибав на 90–240 px
+   (перехід на якір, прокрутка вгору з низу сторінки). Після load кожну таку секцію міряємо окремою задачею й записуємо справжню висоту вмісту
+   в contain-intrinsic-height; секція вище екрана — у тій самій задачі компенсуємо прокрутку (як keep() сцен). Зміна ширини вікна — перемір. */
+function cvSize(){
+ var list=$$('.xs-proj,.xs-strip,.xs-covers,.xs-svc');
+ if(!list.length||!W.CSS||!CSS.supports||!CSS.supports('content-visibility','auto')||!CSS.supports('contain-intrinsic-height','auto 1px'))return;
+ var q=[],busy=0,w0=W.innerWidth,t=0;
+ function one(){
+  var s=q.shift();if(!s){busy=0;return}
+  var st=s.style,b0=s.getBoundingClientRect().bottom;
+  st.contentVisibility='visible';
+  var r=s.getBoundingClientRect(),cs=W.getComputedStyle(s),
+   h=r.height-(parseFloat(cs.paddingTop)||0)-(parseFloat(cs.paddingBottom)||0)-(parseFloat(cs.borderTopWidth)||0)-(parseFloat(cs.borderBottomWidth)||0),dy=r.bottom-b0;
+  if(h>0)st.containIntrinsicHeight='auto '+(Math.round(h*100)/100)+'px';
+  st.contentVisibility='';
+  if(b0<=0&&Math.abs(dy)>1){var hs=d.documentElement.style;hs.scrollBehavior='auto';W.scrollBy(0,dy);hs.scrollBehavior=''}
+  setTimeout(one,0);
+ }
+ function all(){q=list.slice();if(!busy){busy=1;setTimeout(one,0)}}
+ if(d.readyState==='complete')all();else W.addEventListener('load',all,{once:true});
+ W.addEventListener('resize',function(){if(W.innerWidth===w0)return;w0=W.innerWidth;clearTimeout(t);t=setTimeout(all,250)},{passive:true});
+}
 // кожен блок — окремою задачею (TBT: на /portfolio одна задача була 140–170 мс на телефоні CPU ×4; аудит швидкості 16.11.2026)
-function run(){var fs=[expanders,scrollers,imgFade,carousel,marquee,stripTap,heroSlides,pointerFx];(function next(){var f=fs.shift();try{f()}catch(e){}if(fs.length)setTimeout(next,0)})()}
+function run(){var fs=[expanders,scrollers,imgFade,carousel,marquee,stripTap,heroSlides,pointerFx,cvSize];(function next(){var f=fs.shift();try{f()}catch(e){}if(fs.length)setTimeout(next,0)})()}
 // Safari/WebKit запускає defer-скрипти до повного site-chrome.v1.css у кінці <body>: стрічки й каруселі міряють ширину — чекаємо на CSS (Chrome — одразу)
 function css(go){var l=d.querySelector('link[href*="/assets/site-chrome.v1.css"]');if(!l||l.sheet)return go();var k=0,f=function(){if(!k++)go()};l.addEventListener('load',f);l.addEventListener('error',f);W.addEventListener('load',f)}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',function(){css(run)});else css(run);

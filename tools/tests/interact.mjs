@@ -322,6 +322,33 @@ await test('якір, reduced-motion: миттєво і з іншої сторі
   const r = await p.evaluate(() => ({ mid: new Set(window.__ys.filter(v => v > scrollY * 0.1 && v < scrollY * 0.9)).size, y: scrollY, sb: getComputedStyle(document.documentElement).scrollBehavior }));
   must(r.y > 1000 && r.mid <= 2 && r.sb === 'auto', `reduced-motion: ${r.mid} проміжних положень, scroll-behavior ${r.sb}`);
 }, { reducedMotion: 'reduce' });
+// Safari без scroll anchoring (емуляція html{overflow-anchor:none}): видимий вміст не зсувається сам, коли вище довантажуються стилі сцени,
+// секції з content-visibility:auto отримують справжню висоту або ініціалізується карусель «Наші проєкти» (резерв висоти + cvSize() в ui-polish.v1.js).
+// Міряємо зсув видимих блоків (rect.top) без дії людини: після стрибка до «Наших проєктів» одразу після load і під час прокрутки вгору з #zayavka.
+const noAnchor = () => {
+  const ins = () => { if (!document.documentElement) return setTimeout(ins, 0); const st = document.createElement('style'); st.textContent = 'html{overflow-anchor:none!important}'; document.documentElement.appendChild(st); }; ins();
+  const S = window.__sh = { max: 0, who: '', base: null };
+  window.__mark = () => { S.base = [...document.querySelectorAll('main>*, main>*>*, main>*>.w>*, .scf')].map(e => [e, e.getBoundingClientRect()]).filter(x => x[1].bottom > 0 && x[1].top < innerHeight).map(x => [x[0], x[1].top]); };
+  const f = () => { if (S.base) for (const [e, t] of S.base) { if (!e.isConnected) continue; const d = e.getBoundingClientRect().top - t; if (Math.abs(d) > Math.abs(S.max)) { S.max = Math.round(d); S.who = (e.id || String(e.className).slice(0, 24) || e.tagName) + ' @y' + Math.round(scrollY); } } requestAnimationFrame(f); };
+  requestAnimationFrame(f);
+};
+for (const path of ['/', '/en/', '/ar/', '/remont-kvartyr-kyiv']) for (const w of [402, 1440]) await test('без scroll anchoring (Safari): вміст не зсувається — ' + path, '/404.html', w, async p => {
+  await p.addInitScript(noAnchor);
+  // 1) одразу після load — стрибок до останньої секції перед формою
+  await p.goto(BASE + path, { waitUntil: 'load' }); await p.waitForTimeout(250);
+  await p.mouse.move(200, 300);
+  await p.evaluate(() => { const e = document.querySelector('.xs-covers') || document.getElementById('zayavka'); window.scrollTo({ top: e.getBoundingClientRect().top + scrollY - 60, behavior: 'instant' }); window.__mark(); });
+  await p.mouse.wheel(0, 1); await p.waitForTimeout(2500);
+  let r = await p.evaluate(() => window.__sh);
+  must(Math.abs(r.max) <= 4, `після стрибка до секції вміст зсунувся на ${r.max} px (${r.who})`);
+  // 2) сторінку відкрито з #zayavka; далі — прокрутка вгору кроками (секції й сцена вище отримують справжню висоту)
+  await p.goto(BASE + '/404.html'); await p.goto(BASE + path + '#zayavka', { waitUntil: 'load' }); await p.waitForTimeout(250);
+  await p.mouse.move(200, 300); await p.mouse.wheel(0, -1);
+  for (let i = 0; i < 40; i++) { const top = await p.evaluate(() => { window.scrollBy({ top: -400, behavior: 'instant' }); window.__mark(); return scrollY <= 0; }); await p.waitForTimeout(120); if (top) break; }
+  await p.waitForTimeout(600);
+  r = await p.evaluate(() => window.__sh);
+  must(Math.abs(r.max) <= 4, `прокрутка вгору з #zayavka: вміст зсунувся на ${r.max} px (${r.who})`);
+});
 await test('.lq-go → #zayavka з контекстом сцени', '/budivnytstvo-budynkiv-kyiv', 1440, async p => {
   await wakeup(p);
   const go = p.locator('.lq-go').first();
