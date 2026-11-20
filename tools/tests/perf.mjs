@@ -1,5 +1,6 @@
 // Швидкість основних типів сторінок: LCP, CLS, TBT (сума long tasks понад 50 мс), байти й запити першого завантаження.
 //   node tools/tests/perf.mjs [--pages /,/x] [--runs 2] [--json out.json]
+//   node tools/tests/perf.mjs --inp [--runs 3] [--only 'частина назви']   — відгук на дії (INP), див. ACTS нижче
 // «сцена» — TBT/CLS прокрутки колесом до першої сцени section.bz (або квізу) й ще 3 екрани крізь неї.
 // Профілі: «телефон» 402×874 DPR3, 1.6 Мбіт/с, RTT 150 мс, CPU ×4; «ПК» 1440×900 без обмежень. Статика — з репозиторію
 // (ті самі правила, що tools/tests/layout.mjs), зовнішні запити (Clarity тощо) блокуються; мініфікацію деплою не враховано.
@@ -78,6 +79,96 @@ async function measure(path, p) {
   }
   await ctx.close();
   return { lcp: Math.round(m.lcp), lcpEl: m.lcpEl.slice(0, 60), cls: +m.cls.toFixed(3), tbt: Math.round(initial.tbt), tbtScroll: Math.round(m.tbt - initial.tbt), tbtScene, clsScene, load, kb: Math.round(initial.bytes / 1024), reqs: initial.reqs, kbAfterScroll: Math.round(bytes / 1024) };
+}
+// ===== Відгук на дії (INP): node tools/tests/perf.mjs --inp [--runs 3] [--json out.json] =====
+// Event Timing (PerformanceObserver 'event', durationThreshold 16): тривалість взаємодії = від події до наступного кадру, найдовша з подій однієї дії
+// (pointerdown / pointerup / click / keydown). Мережа без обмежень (міряємо головний потік), телефон — CPU ×4. Дія > 200 мс на телефоні — код 1.
+// d — уся тривалість, in — затримка до обробника, js — обробники, pt — стиль/розкладка/малювання після них.
+const INP_MAX = 200;
+const center = (p, sel, n = 0) => p.locator(sel).nth(n).evaluate(e => e.scrollIntoView({ block: 'center', behavior: 'instant' }));
+const sceneReady = async (p, sel) => {
+  await p.mouse.wheel(0, 300); await p.waitForTimeout(400);
+  await p.locator(sel).scrollIntoViewIfNeeded(); await p.waitForSelector(sel + ' .bz-nx', { timeout: 15000 }); await p.waitForTimeout(1200);
+  const ap = p.locator(sel + ' .bz-ap').first(); if (await ap.count() && await ap.isVisible()) { await ap.click().catch(() => {}); await p.waitForTimeout(400); } // пауза автопрогравання
+  await center(p, sel + ' .bz-nx');
+};
+const ACTS = [
+  { name: 'плитка data-c="x": розгорнути', path: '/remont-kvartyr-kyiv', prep: p => center(p, '[data-c="x"] .ux-h', 1), sel: '[data-c="x"] .ux-h >> nth=1' },
+  { name: 'плитка data-c="x": згорнути', path: '/remont-kvartyr-kyiv', prep: async (p, hit) => { await center(p, '[data-c="x"] .ux-h', 1); await hit('[data-c="x"] .ux-h >> nth=1'); await p.waitForTimeout(700); }, sel: '[data-c="x"] .ux-h >> nth=1' },
+  { name: 'плитка з фото (послуги)', path: '/services', prep: p => center(p, '[data-c="x"] .ux-h', 0), sel: '[data-c="x"] .ux-h >> nth=0' },
+  { name: 'бургер: відкрити', path: '/', only: 'phone', sel: '.sch-burger' },
+  { name: 'бургер: закрити', path: '/', only: 'phone', prep: async (p, hit) => { await hit('.sch-burger'); await p.waitForTimeout(600); }, sel: '.sch-burger' },
+  { name: 'перемикач мови: меню', path: '/services', sel: '.sch-ld summary' },
+  { name: 'сцена (головна): наступний етап', path: '/', prep: p => sceneReady(p, '#build-anim'), sel: '#build-anim .bz-nx', twice: true },
+  { name: 'сцена (головна): попередній етап', path: '/', prep: async (p, hit) => { await sceneReady(p, '#build-anim'); await hit('#build-anim .bz-nx'); await p.waitForTimeout(900); }, sel: '#build-anim .bz-pv' },
+  { name: 'сцена (головна): → з клавіатури', path: '/', only: 'desktop', prep: async p => { await sceneReady(p, '#build-anim'); await p.locator('#build-anim .bz-nx').focus(); }, key: 'ArrowRight' },
+  { name: 'сцена (будівництво, повна): наступний етап', path: '/budivnytstvo-budynkiv-kyiv', prep: p => sceneReady(p, '#build-anim'), sel: '#build-anim .bz-nx', twice: true },
+  { name: 'сцена (головна): вкладка «Ландшафт»', path: '/', prep: async p => { await sceneReady(p, '#build-anim'); await center(p, 'nav.la-tab a', 2); }, sel: 'nav.la-tab a >> nth=2', settle: 2500 },
+  { name: 'лайтбокс: відкрити', path: '/proekty/monpark', prep: async p => { await center(p, 'a[data-lb]', 0); await p.waitForTimeout(900); }, sel: 'a[data-lb] >> nth=0' },
+  { name: 'лайтбокс: наступне фото', path: '/proekty/monpark', prep: async (p, hit) => { await center(p, 'a[data-lb]', 0); await p.waitForTimeout(900); await hit('a[data-lb] >> nth=0'); await p.waitForTimeout(1200); }, key: 'ArrowRight' },
+  { name: 'лайтбокс: закрити', path: '/proekty/monpark', prep: async (p, hit) => { await center(p, 'a[data-lb]', 0); await p.waitForTimeout(900); await hit('a[data-lb] >> nth=0'); await p.waitForTimeout(1200); }, key: 'Escape' },
+  { name: '«Звʼязатися»: меню', path: '/remont-kvartyr-kyiv', only: 'phone', sel: '.mbar .mb-tg' },
+  { name: 'квіз: варіант відповіді', path: '/remont-kvartyr-kyiv', prep: async p => { await p.mouse.wheel(0, 300); await p.waitForTimeout(400); await p.locator('[data-quiz]').first().scrollIntoViewIfNeeded(); await p.waitForSelector('.qz button, .qz label', { timeout: 10000 }); await center(p, '.qz button, .qz label'); await p.waitForTimeout(500); }, sel: '.qz button, .qz label', opt: true },
+  { name: 'калькулятор: цифра в полі площі', path: '/kalkuliator-remontu', prep: async p => { await center(p, '#cArea'); await p.locator('#cArea').focus(); }, key: '7' },
+  { name: 'FAQ: відкрити питання', path: '/about', prep: async p => { await center(p, 'details summary'); await p.waitForTimeout(300); }, sel: 'main details:not(.sch-ld) > summary', opt: true },
+  { name: '«Читати далі» (.c-b)', path: '/blog/avtorskyi-nahliad-navishcho', prep: async p => { await center(p, 'main .c-b'); await p.waitForTimeout(300); }, sel: 'main .c-b', opt: true },
+  { name: 'карусель «Що ми робимо»: →', path: '/', prep: async p => { await p.mouse.wheel(0, 300); await p.waitForTimeout(400); await center(p, '.xs-svc'); await p.waitForTimeout(600); }, sel: '.xs-svc .ui-next, .xs-svc [class*="next"], .xs-svc button >> nth=-1', opt: true },
+];
+async function inpOne(a, p) {
+  const ctx = await browser.newContext({ viewport: p.viewport, deviceScaleFactor: p.deviceScaleFactor, isMobile: !!p.isMobile, hasTouch: !!p.hasTouch });
+  await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => r.abort());
+  const page = await ctx.newPage();
+  const cdp = await ctx.newCDPSession(page);
+  await page.addInitScript(() => {
+    window.__ev = [];
+    new PerformanceObserver(l => { for (const e of l.getEntries()) window.__ev.push({ n: e.name, d: e.duration, id: e.interactionId, in: e.processingStart - e.startTime, js: e.processingEnd - e.processingStart }); }).observe({ type: 'event', durationThreshold: 16, buffered: true });
+  });
+  const hit = sel => p.hasTouch ? page.locator(sel).first().tap() : page.locator(sel).first().click();
+  let r = null;
+  try {
+    await page.goto(BASE + a.path, { waitUntil: 'load', timeout: 60000 });
+    await page.waitForTimeout(1200); // idle-ініціалізація (pointerFx, heroSlides, ліниві скрипти)
+    if (a.prep) await a.prep(page, hit);
+    await page.waitForTimeout(400);
+    if (p.cpu > 1) await cdp.send('Emulation.setCPUThrottlingRate', { rate: p.cpu });
+    await page.waitForTimeout(300);
+    const worst = { d: 0 };
+    for (let k = 0; k < (a.twice ? 2 : 1); k++) {
+      await page.evaluate(() => { window.__ev.length = 0; });
+      if (a.key) await page.keyboard.press(a.key); else await hit(a.sel);
+      await page.waitForTimeout(a.settle || 900);
+      const ev = (await page.evaluate(() => window.__ev)).filter(e => e.id > 0 || /^(pointerdown|pointerup|click|keydown|keyup)$/.test(e.n));
+      if (process.env.INP_DEBUG) console.log('   ', ev.map(e => `${e.n} d${Math.round(e.d)} in${Math.round(e.in)} js${Math.round(e.js)}`).join(' | '));
+      const top = ev.sort((x, y) => y.d - x.d)[0] || { n: '-', d: 8, in: 0, js: 0 }; // немає запису — швидше за 16 мс
+      if (top.d >= worst.d) Object.assign(worst, top);
+    }
+    r = { d: Math.round(worst.d), ev: worst.n, in: Math.round(worst.in), js: Math.round(worst.js), pt: Math.max(0, Math.round(worst.d - worst.in - worst.js)) };
+  } catch (e) { r = a.opt ? null : { err: String(e.message || e).split('\n')[0].slice(0, 120) }; }
+  await ctx.close();
+  return r;
+}
+if (process.argv.includes('--inp')) {
+  const res = []; let bad = 0;
+  const only = arg('--only', '');
+  for (const a of ACTS) {
+    if (only && !a.name.includes(only)) continue;
+    const row = { name: a.name, path: a.path };
+    for (const [name, p] of Object.entries(PROF)) {
+      if (a.only && a.only !== name) continue;
+      const rs = []; for (let i = 0; i < RUNS; i++) { const r = await inpOne(a, p); if (r) rs.push(r); }
+      if (!rs.length) continue;
+      const er = rs.find(r => r.err); if (er) { row[name] = er; bad++; continue; }
+      rs.sort((x, y) => x.d - y.d); row[name] = rs[(rs.length - 1) >> 1]; row[name].all = rs.map(r => r.d);
+      if (name === 'phone' && row[name].d > INP_MAX) bad++;
+    }
+    res.push(row);
+    const f = r => !r ? '      —' : r.err ? ' ПОМИЛКА: ' + r.err : `${String(r.d).padStart(4)} мс (${r.ev}: чекав ${r.in}, js ${r.js}, кадр ${r.pt}; ${r.all.join('/')})`;
+    console.log(`${row.phone && row.phone.d > INP_MAX ? '✗' : ' '} ${a.name.padEnd(44)} телефон ${f(row.phone).padEnd(58)} ПК ${f(row.desktop)}`);
+  }
+  if (arg('--json')) writeFileSync(arg('--json'), JSON.stringify(res, null, 1));
+  await browser.close(); server.close();
+  console.log(bad ? `\nINP: ${bad} дій повільніші за ${INP_MAX} мс на телефоні (або з помилкою)` : `\nINP: усі дії ≤ ${INP_MAX} мс на телефоні`);
+  process.exit(bad ? 1 : 0);
 }
 const out = [];
 for (const path of PAGES) for (const [name, p] of Object.entries(PROF)) {
