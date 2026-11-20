@@ -743,7 +743,10 @@ for (const w of [402, 1440]) {
     must(['Дизайн-проєкт', 'Ремонт квартири', 'Меблювання', '$50 500'].every(x => nb(b.message).includes(x)), 'у ліді не всі позиції: ' + b.message);
   });
 }
-await test('калькулятор, посилання ?k=: старе значення списку вибирає одну позицію, кілька — через кому', '/kalkuliator-remontu?k=housekey', 402, async p => {
+await test('калькулятор, посилання ?k=: старе значення списку вибирає одну позицію, кілька — через кому', '/kalkuliator-remontu?k=housekey#calc', 402, async p => {
+  // «Порахувати» з лендингу веде на …#calc (ux.py): з параметром вибору блок «Що порахувати» теж одразу в кадрі
+  await p.waitForTimeout(600);
+  must(await p.evaluate(() => { const r = document.getElementById('cItL').getBoundingClientRect(); return r.top > 0 && r.bottom < innerHeight; }), '…?k=…#calc: блок «Що порахувати» не в кадрі');
   must(await cOn(p, 'build') && await p.locator('#cIt button[aria-pressed="true"]').count() === 1 && await p.locator('#cV [data-k="build"] [data-p="key"][aria-pressed="true"]').count() === 1, '?k=housekey не вибрав «Будинок під ключ»');
   must((await p.textContent('#cSum')).replace(/\D/g, '') === String(60 * 1100), '?k=housekey: сума ' + await p.textContent('#cSum'));
   await p.goto(p.url().replace(/\?.*$/, '?k=design,remont,furn'), { waitUntil: 'load' }); await p.waitForTimeout(300);
