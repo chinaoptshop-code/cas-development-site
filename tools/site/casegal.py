@@ -40,7 +40,7 @@ def attr(tag, k):
 
 
 def parse(body):
-    return [[h, attr(t, 'src'), attr(t, 'srcset'), attr(t, 'sizes'), int(attr(t, 'width') or 0), int(attr(t, 'height') or 0), attr(t, 'alt'), attr(a, 'data-lb')]
+    return [[h, attr(t, 'src'), attr(t, 'srcset') or attr(t, 'data-srcset'), attr(t, 'sizes'), int(attr(t, 'width') or 0), int(attr(t, 'height') or 0), attr(t, 'alt'), attr(a, 'data-lb')]
             for h, a, t in ITEM.findall(body)]
 
 

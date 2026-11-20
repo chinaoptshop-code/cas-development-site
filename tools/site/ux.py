@@ -330,7 +330,7 @@ def _light_hero(m, rel, lang, full):
     elif rel in _quiz_pages():
         href = '#kalkulyator'
     elif CALC.get(lang) and i18n.path_to_file(CALC[lang]) != rel:
-        href = CALC[lang]
+        href = CALC[lang] + '#calc'  # одразу до калькулятора: без якоря людина бачила hero сторінки з ще однією кнопкою «Порахувати» (зайвий крок, 20.11.2026)
     elif QUIZ_ALT.get(lang) and i18n.path_to_file(QUIZ_ALT[lang]) in _quiz_pages() and i18n.path_to_file(QUIZ_ALT[lang]) != rel:
         href = QUIZ_ALT[lang] + '#kalkulyator'  # мови без сторінки калькулятора: квіз на «Ремонт під ключ»
     else:

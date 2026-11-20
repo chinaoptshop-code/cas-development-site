@@ -261,7 +261,7 @@ article .gd-slot{margin:32px 0 0;padding:0}
 .gd .gd-go{margin:16px 0 0}.gd-ok{margin:14px 0 0}.gd-ok .btn{margin:8px 0 0}
 /* після 2xx: години відповіді + Telegram (lead-form.v1.js after(); Михайло 16.11.2026) */
 .lf-after{margin:12px 0 0;color:var(--mu,#8a837c);font-size:var(--fs-small,.8125rem);line-height:1.5}
-.lf-after .lf-tg{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin:8px 0 0;padding:0 18px;border:1px solid var(--ac,#bf9148);border-radius:999px;color:var(--tx,#ede8df);text-decoration:none;font-weight:600}
+.lf-after .lf-tg{display:flex;width:max-content;max-width:100%;align-items:center;gap:8px;min-height:44px;margin:10px 0 0;padding:0 18px;border:1px solid var(--ac,#bf9148);border-radius:999px;color:var(--tx,#ede8df);text-decoration:none;font-weight:600}
 .lf-after .lf-tg:hover,.lf-after .lf-tg:focus-visible{background:rgba(191,145,72,.12)}.lf-after .lf-tg img{width:20px;height:20px;flex:none}
 
 /* ══ Порівняння пакетів дизайну (.pk — tools/site/landing.py packages_html, /styleguide/#packages); телефон — свайп-картки */
@@ -710,29 +710,39 @@ main :is(p,li,figcaption) a:not(.btn){overflow-wrap:anywhere}
    текст кнопок (.btn, кнопка заявки) — 14 px; на ПК шкала без змін */
 @media(max-width:767px){html:root{--fs-small:.8125rem}html body :is(.btn,.lq-b){font-size:.875rem}}
 html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]),.pmap,#karta,#faq){padding-block:var(--sp-sec)}
-/* ── Калькулятор вартості #calc (tools/site/calc.py, логіка — /assets/calc.v1.js; 9 мов). Був інлайн у кожній сторінці — бюджет HTML 64 КБ */
+/* ── Калькулятор вартості #calc (tools/site/calc.py, логіка — /assets/calc.v1.js; 10 мов). Був інлайн у кожній сторінці — бюджет HTML 64 КБ.
+   Кілька позицій одразу (20.11.2026): .ct — плитки-перемикачі «Що порахувати» (aria-pressed; вибрана — рамка, заливка й галочка), .cv — уточнення вибраних (.seg — один варіант) */
 #calc .cg{display:grid;gap:16px;max-width:640px}
-#calc select{width:100%;background:var(--bg2);border:1px solid var(--ln);color:var(--tx);padding:13px 14px;font:inherit;border-radius:6px}
 #calc .cl{display:block;margin-bottom:6px;font-size:var(--fs-small);color:var(--mu)}
+#calc .ct{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+@media(min-width:560px){#calc .ct{grid-template-columns:repeat(3,minmax(0,1fr))}}
+#calc .ct button{position:relative;min-height:4rem;padding:.625rem .75rem;padding-inline-end:2.5rem;border-radius:14px;border:1px solid var(--ln);background:none;color:var(--tx);font:inherit;font-size:var(--fs-small);line-height:1.25;text-align:start;cursor:pointer;overflow-wrap:anywhere}
+#calc .ct button small{display:block;margin-top:.125rem;color:var(--mu)}
+#calc .ct button::before{content:"";position:absolute;inset-block-start:.625rem;inset-inline-end:.625rem;width:1.25rem;height:1.25rem;box-sizing:border-box;border:1px solid rgba(191,145,72,.45);border-radius:.375rem}
+#calc .ct button[aria-pressed=true]{border-color:var(--ac);background:rgba(191,145,72,.12)}
+#calc .ct button[aria-pressed=true]::before{background:var(--ac);border-color:var(--ac)}
+#calc .ct button[aria-pressed=true]::after{content:"";position:absolute;inset-block-start:.8125rem;inset-inline-end:1.0625rem;width:.3125rem;height:.625rem;border:solid #140f08;border-width:0 2px 2px 0;transform:rotate(45deg)}
+#calc .ct button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+#calc .cv{display:grid;gap:16px}
 #calc .seg{display:flex;flex-wrap:wrap;gap:6px}
 #calc .seg.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 #calc .seg button{min-height:44px;padding:6px 14px;border-radius:999px;border:1px solid var(--ln);background:none;color:var(--tx);font:inherit;font-size:var(--fs-small);line-height:1.25;cursor:pointer}
 #calc .seg.g2 button{border-radius:12px;text-align:start}
+#calc .seg.g2 button:last-child:nth-child(odd){grid-column:1/-1}
+@media(min-width:560px){#calc .seg.g3{grid-template-columns:repeat(3,minmax(0,1fr))}#calc .seg.g2.g3 button:last-child:nth-child(odd){grid-column:auto}}
 #calc .seg button small{display:block;opacity:.75}
 #calc .seg button[aria-pressed=true]{background:var(--ac);border-color:var(--ac);color:#140f08}
 #calc .seg button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
-#calc .ck{display:flex;gap:10px;align-items:flex-start;color:var(--tx);min-height:44px}
-#calc .ck input{width:auto;margin-top:4px}
-#calc .ck small{color:var(--mu)}
 #calc [hidden]{display:none!important}
 #calc .ar{position:relative}
 #calc .ar input{padding-inline-end:3.2em}
 #calc .ar i{position:absolute;inset-inline-end:14px;bottom:14px;font-style:normal;color:var(--mu);pointer-events:none}
-#calc #cAreaE{margin:6px 0 0;font-size:var(--fs-small);color:var(--mu)}
-#calc #cAreaE.er{color:#e8a27c}
+#calc .ce{margin:-10px 0 0;font-size:var(--fs-small);color:var(--mu)}
+#calc .ce.er{color:#e8a27c}
 #calc input[aria-invalid=true]{border-color:#e8a27c}
 #calc .sum{border:1px solid var(--ln);background:var(--bg2);padding:20px;margin-top:2px;border-radius:14px}
 #calc .sum b{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h2);color:var(--ac);display:block;line-height:1.1}
+#calc .sum #cPick{color:var(--tx)}
 #calc .sum p{color:var(--mu);margin:8px 0 0;font-size:var(--fs-small)}
 #calc .sum #cPlus{color:var(--tx)}
 #calc .sum ul{list-style:none;margin:12px 0 0;padding:12px 0 0;border-top:1px solid var(--ln);display:grid;gap:6px;font-size:var(--fs-small)}
@@ -855,6 +865,7 @@ html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.pr
 @media(horizontal-viewport-segments:2){
   html body .hx .hero>*,html body .hero>:is(h1,p,.btns,.price),html body .ozd-hero>*{max-width:calc(env(viewport-segment-width 0 0,50vw) - 3.5rem)!important}
   html body .sch .sch-nav{display:none}html body .sch .sch-burger{display:inline-flex}html body .sch .sch-act{margin-inline-start:auto} /* меню шапки не під шарніром: кожен екран ~540 px — як планшет, бургер */
+  html body .hero>article>h1{max-width:calc(env(viewport-segment-width 0 0,50vw) - 3.5rem)!important} /* H1 статті блогу — у лівому сегменті, не під шарніром (аудит 20.11.2026) */
   html body :is(form#of,#zayavka .lq){max-width:min(34rem,calc(env(viewport-segment-width 0 0,50vw) - 3.5rem))!important}
 }
 @media(vertical-viewport-segments:2) and (max-width:767px){

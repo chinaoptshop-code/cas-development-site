@@ -511,3 +511,5 @@
 /* шапка сцени (лічильник · прогрес · «Рентген»): довгий підпис кнопки (de/pl/es) переноситься, а не виходить за край (768 px, Михайло 08.11.2026) */
 .bz-hd>.bz-xb{flex:0 1 auto;min-width:0;white-space:normal;line-height:1.2;text-align:center}
 .bz-run.bz-wip{visibility:hidden} /* до кінця збірки (build-anim.v1.js enhance): проміжні кадри без зсувів колонки етапів */
+/* 344 px: підсумок конфігурації «⚙ Газоблок · 2 поверхи · Скандинавський · 160 м²» вміщується без «…» (аудит 20.11.2026) */
+@media(max-width:359px){.bz-mats .bz-cb{padding-inline:8px}}

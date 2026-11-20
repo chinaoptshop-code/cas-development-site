@@ -3,7 +3,7 @@
 // Було: «Партнери» і бот пошуку заявок (migrations/0013_partners.sql). Спільне для бота (/api/bot/*) і адмінки (/api/admin/partners):
 // перевірка й обрізання полів (HTML не приймаємо), нормалізація контактів, дедуплікація й upsert, CSV.
 // Зберігаємо лише публічні контакти: Telegram @username, телефон, сайт. Опис для власника — tools/admin/README.md, «Партнери і бот пошуку».
-import { dict, normalizePhone } from './_lib.js';
+import { IN_IDS, dict, idsArg, normalizePhone } from './_lib.js';
 
 export const PARTNER_TYPES = dict({
   client: 'Клієнт', contractor: 'Підрядник', partner: 'Партнер', supplier: 'Постачальник', realtor: 'Ріелтор', crew: 'Бригада', master: 'Майстер',
@@ -115,6 +115,27 @@ export async function hasEmail(env) {
   return EMAIL_COL.get(env);
 }
 
+// Колонка partners.archived_at (migrations/0018): архів замість видалення. Кешуємо лише «так» — після міграції вмикається без перезапуску.
+const ARCH_COL = new WeakMap();
+export async function hasArchive(env) {
+  if (ARCH_COL.get(env)) return true;
+  try { await env.DB.prepare('SELECT archived_at FROM partners LIMIT 1').first(); ARCH_COL.set(env, true); return true; } catch { return false; }
+}
+// Тип / статус з імпорту: ключ («supplier») або підпис українською («Постачальник», будь-який регістр); невідоме → null
+const byLabel = dictn => v => {
+  if (v == null || v === '') return null;
+  const s = String(v).trim().toLowerCase();
+  if (dictn[s]) return s;
+  return Object.keys(dictn).find(k => dictn[k].toLowerCase() === s) || null;
+};
+// множина й короткі назви з таблиць Excel; dict() — щоб «constructor» / «__proto__» з файлу не знаходились у прототипі
+const TYPE_ALIASES = dict({ клієнти: 'client', підрядники: 'contractor', партнери: 'partner', постачальники: 'supplier', ріелтори: 'realtor', бригади: 'crew', майстри: 'master', дизайнер: 'designer', архітектор: 'designer' });
+export const typeKey = v => byLabel(PARTNER_TYPES)(v) || TYPE_ALIASES[String(v ?? '').trim().toLowerCase()] || null;
+export const statusKey = v => byLabel(PARTNER_STATUSES)(v);
+// Без права «Телефон, пошта й адреса клієнта» (clients.contacts) контактні поля не віддаються ні в таблиці, ні в CSV
+const CONTACT_FIELDS = ['phone', 'tg', 'email'];
+export const hideContacts = r => { const o = { ...r }; for (const k of CONTACT_FIELDS) if (k in o) o[k] = null; return o; };
+
 // Upsert з бота: новий → вставка; існуючий → дописуємо порожні поля, теги й джерело, last_seen = зараз, times_seen + 1.
 // Статус і нотатки — справа менеджера, бот їх не змінює; тип замінюємо лише якщо був «Інше».
 export async function upsertPartner(env, p) {
@@ -155,7 +176,7 @@ export const shapePartner = r => ({ ...r, tags: parseList(r.tags), sources: pars
 export function partnersCsv(rows) {
   const cols = [['id', 'ID'], ['name', 'Імʼя'], ['company', 'Компанія'], ['type', 'Тип'], ['city', 'Місто / область'], ['tg', 'Telegram'], ['phone', 'Телефон'],
     ['site', 'Сайт'], ['source_name', 'Джерело'], ['source_url', 'Посилання на повідомлення'], ['first_seen', 'Вперше'], ['last_seen', 'Востаннє'],
-    ['times_seen', 'Разів'], ['tags', 'Теги'], ['status', 'Статус'], ['email', 'Email'], ['rating', 'Оцінка'], ['notes', 'Нотатки']];
+    ['times_seen', 'Разів'], ['tags', 'Теги'], ['status', 'Статус'], ['email', 'Email'], ['rating', 'Оцінка'], ['notes', 'Нотатки'], ['archived_at', 'В архіві з']];
   const cell = v => {
     let s = v == null ? '' : String(v);
     if (typeof v !== 'number' && /^[=+\-@\t\r]/.test(s)) s = "'" + s;
@@ -175,7 +196,7 @@ export async function projectContacts(env, x, ids) {
   let rows = [];
   try {
     rows = (await env.DB.prepare(`SELECT l.id AS link_id, l.project_id, l.role, l.note AS link_note, c.* FROM contact_links l JOIN partners c ON c.id = l.contact_id
-        WHERE l.project_id IN (${ids.map(() => '?').join(',')}) ORDER BY l.id LIMIT 1000`).bind(...ids).all()).results;
+        WHERE l.project_id ${IN_IDS} ORDER BY l.id LIMIT 1000`).bind(idsArg(ids)).all()).results;
   } catch (e) { if (/no such table|no such column/i.test(String(e && e.message))) return {}; throw e; }
   const full = x.can('partners.base'), cts = x.can('clients.contacts');
   const out = {};

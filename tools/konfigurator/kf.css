@@ -32,10 +32,10 @@
 .kf-zones button[aria-selected=true]{background:var(--ac);border-color:var(--ac);color:#140f08;font-weight:600}
 .kf-zones i{position:absolute;top:3px;right:5px;width:6px;height:6px;border-radius:50%;background:var(--ac)}
 .kf-zones button[aria-selected=true] i{background:#140f08}
-.kf-sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px 2px;margin-bottom:22px}
+.kf-sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px 2px;margin-bottom:22px}
 .sw{display:grid;justify-items:center;align-content:start;gap:7px;background:none;border:0;padding:6px 2px;color:var(--mu);cursor:pointer;font:500 12px/1.25 "Manrope","Manrope Fallback",system-ui,sans-serif;border-radius:12px}
 .sw-i{width:52px;height:52px;border-radius:50%;background-color:#2a2622;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 3px 10px rgba(0,0,0,.4);transition:transform .35s cubic-bezier(.2,.9,.25,1.25),box-shadow .3s}
-.sw-n{text-align:center;max-width:76px;overflow-wrap:anywhere}
+.sw-n{text-align:center;max-width:100%;overflow-wrap:anywhere}
 .sw:hover .sw-i{transform:translateY(-2px) scale(1.07)}
 .sw[aria-pressed=true]{color:var(--tx)}
 .sw[aria-pressed=true] .sw-i{transform:scale(1.04);box-shadow:0 0 0 2px #16130f,0 0 0 3.5px var(--ac),0 8px 20px rgba(0,0,0,.5);animation:kf-pop .45s cubic-bezier(.2,.9,.25,1.3)}
@@ -121,4 +121,6 @@ a.card:hover{border-color:var(--ac);transform:translateY(-2px)}
   .kf-panned .kf-hint,.kf-nogl .kf-hint{opacity:0}
 }
 @media (max-width:420px){.kf-tool{min-width:38px;padding:0 9px}.kf-rooms button{padding:0 10px;font-size:12px}}
+/* тач: кнопки кімнат і панелі інструментів ≥ 44 px (було 40/42 і 38 px на вузьких — аудит 20.11.2026) */
+@media (pointer:coarse){.kf-rooms button,.kf-tool{min-height:44px}.kf-tool{min-width:44px}}
 @media (prefers-reduced-motion:reduce){.kf-panel,#kfCv,.sw-i,.ps,a.card{transition:none!important}.kf-busy::after,.sw[aria-pressed=true] .sw-i,.kf-dlg[open]{animation:none!important}}

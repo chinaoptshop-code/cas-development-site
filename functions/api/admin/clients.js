@@ -2,7 +2,7 @@
 // GET ?q=     — список з кількістю й сумою замовлень (сума — лише з finance.view, контакти — з clients.contacts)
 // GET ?id=N   — картка клієнта з усією історією: заявки й замовлення (за client_id або тим самим телефоном), події статусів,
 //               проєкти з етапами, платежі (finance.view), документи, проблеми на обʼєктах, журнал аудиту (audit.view)
-import { bad, json, statusLabel } from '../../_lib.js';
+import { IN_IDS, bad, idsArg, json, statusLabel } from '../../_lib.js';
 import { need, noTable, shapeOrder, shapeProject } from '../../_roles.js';
 
 const parse = (s, d) => { try { return JSON.parse(s); } catch { return d; } };
@@ -39,18 +39,18 @@ async function card(env, x, id) {
   if (x.can('orders.view')) scope.push("o.kind = 'order'");
   const O = scope.length ? (await env.DB.prepare(`SELECT o.* FROM orders o WHERE (${conds.join(' OR ')}) AND (${scope.join(' OR ')}) ORDER BY o.id DESC LIMIT 200`).bind(...args).all()).results : [];
   const oids = O.map(o => o.id);
-  const E = oids.length ? (await env.DB.prepare(`SELECT order_id, status, note, author, created_at FROM order_events WHERE order_id IN (${oids.map(() => '?').join(',')}) ORDER BY id DESC LIMIT 500`).bind(...oids).all()).results : [];
+  const E = oids.length ? (await env.DB.prepare(`SELECT order_id, status, note, author, created_at FROM order_events WHERE order_id ${IN_IDS} ORDER BY id DESC LIMIT 500`).bind(idsArg(oids)).all()).results : [];
   const kindOf = new Map(O.map(o => [o.id, o.kind]));
   const P = x.can('projects.view_all') ? (await soft(env.DB.prepare('SELECT * FROM projects WHERE client_id = ? ORDER BY id DESC LIMIT 50').bind(c.id).all(), { results: [] })).results : [];
-  const pids = P.map(p => p.id), pq = pids.map(() => '?').join(',');
-  const PAY = money && pids.length ? (await soft(env.DB.prepare(`SELECT * FROM project_payments WHERE project_id IN (${pq}) ORDER BY sort, id`).bind(...pids).all(), { results: [] })).results : [];
-  const ISS = pids.length ? (await soft(env.DB.prepare(`SELECT * FROM project_issues WHERE project_id IN (${pq}) ORDER BY id DESC LIMIT 100`).bind(...pids).all(), { results: [] })).results : [];
+  const pids = P.map(p => p.id);
+  const PAY = money && pids.length ? (await soft(env.DB.prepare(`SELECT * FROM project_payments WHERE project_id ${IN_IDS} ORDER BY sort, id`).bind(idsArg(pids)).all(), { results: [] })).results : [];
+  const ISS = pids.length ? (await soft(env.DB.prepare(`SELECT * FROM project_issues WHERE project_id ${IN_IDS} ORDER BY id DESC LIMIT 100`).bind(idsArg(pids)).all(), { results: [] })).results : [];
   const D = (await soft(env.DB.prepare('SELECT id, project_id, order_id, kind, title, url, created_at FROM documents WHERE client_id = ? ORDER BY id DESC LIMIT 100').bind(c.id).all(), { results: [] })).results;
   let AUD = [];
   if (x.can('audit.view')) {
-    const keys = [...oids.map(i => ['orders', String(i)]), ...pids.map(i => ['projects', String(i)])];
-    if (keys.length) AUD = (await soft(env.DB.prepare(`SELECT id, at, actor, role, action, entity, entity_id, before, after FROM audit_log WHERE ${keys.map(() => '(entity = ? AND entity_id = ?)').join(' OR ')} ORDER BY id DESC LIMIT 200`)
-      .bind(...keys.flat()).all(), { results: [] })).results;
+    if (oids.length || pids.length) AUD = (await soft(env.DB.prepare(`SELECT id, at, actor, role, action, entity, entity_id, before, after FROM audit_log
+        WHERE (entity = 'orders' AND entity_id ${IN_IDS}) OR (entity = 'projects' AND entity_id ${IN_IDS}) ORDER BY id DESC LIMIT 200`)
+      .bind(idsArg(oids.map(String)), idsArg(pids.map(String))).all(), { results: [] })).results;
   }
   return json({
     client,
