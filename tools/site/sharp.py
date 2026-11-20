@@ -26,6 +26,7 @@ VOID = {'img', 'br', 'hr', 'meta', 'link', 'input', 'source', 'wbr', 'area', 'co
 TAG = re.compile(r'<!--.*?-->|<(script|style)\b.*?</\1\s*>|<(/?)([a-zA-Z][\w:-]*)((?:[^>"\']|"[^"]*"|\'[^\']*\')*)>', re.S)
 CLS = re.compile(r'\bclass="([^"]*)"')
 _SZ, _FAM = {}, {}
+_CASE = False  # сторінка /proekty (proekt.v1.css) — ставить apply()
 
 
 # ---------- модель верстки (px CSS) ----------
@@ -258,7 +259,18 @@ def fix(tag, slot, home, i=0, n=1):
         return tag
     if slot == 'hero':  # перше фото: sizes лишаємо (100vw / 60vw), додаємо ширші файли тієї ж пропорції
         if not re.search(r'\ssrcset="', tag): return tag
-        return _attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in fam if w >= 400))
+        tag = _attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in fam if w >= 400))
+        if _CASE and 'max-width:900px' in tag:
+            # головне фото /proekty (proekt.v1.css: width:auto, max-width:100%, max-height:min(80svh,56rem)): слот = min(вміст .w, ширина з атрибута + рамка,
+            # 0.8 × висота вікна × пропорція). Було «100vw, 900px»: 402@3 → 1206 px → файл 1600w замість 1200w (Monpark 208 → 134 КБ),
+            # портретне фото на ПК 2x — 1920w замість 1200w; LCP телефона 2.4–4.2 с (аудит 20.11.2026). Без min() — щоб розумів і старий Safari.
+            wa = min(int((re.search(r'\swidth="(\d+)"', tag) or [0, 900])[1]), 900) + 2
+            vh = 80 * ar
+            desk = (f'{wa}px' if 480 * ar >= wa else
+                    f'{_fmt(math.ceil(vh * 10) / 10)}vh' if 1400 * .8 * ar <= wa else
+                    f'(max-height:{math.floor(wa / (.8 * ar))}px) {_fmt(math.ceil(vh * 10) / 10)}vh, {wa}px')
+            tag = _attr(tag, 'sizes', f'(max-width:767px) calc(100vw - 32px), {desk}')
+        return tag
     if slot == 'strip': fn = lambda vw: cov(w_strip(vw, home), .8)
     elif slot == 'covers': fn = lambda vw: cov(w_covers(vw), .8)
     elif slot == 'split': fn = w_split
@@ -314,7 +326,10 @@ def fix(tag, slot, home, i=0, n=1):
             cand = sorted({big[0], *mid, hi})
         else:
             cand = fam[-2:]
-        return _attr(_attr(tag, 'srcset', ', '.join(f'{p} {w}w' for w, p in cand)), 'sizes',
+        # відкладено (20.11.2026): srcset — у data-srcset, src — мала копія (без JS і для пошуковиків). З JS мініатюра прихована (proekt.v1.css:
+        # html.js .pg img[data-srcset]{display:none}, клітинка a — 4:3), тож нативний lazy її не тягне; site-chrome.v1.js ставить srcset за ~350 px до кадру.
+        # Раніше Chrome на повільній мережі тягнув перший ряд галереї (2 × 65–80 КБ) одразу й ділив канал з головним фото (LCP).
+        return _attr(_attr(_attr(tag, 'srcset', None), 'data-srcset', ', '.join(f'{p} {w}w' for w, p in cand)), 'sizes',
                      f'(max-width:599px) {_fmt(47 * f)}vw, (max-width:767px) {_fmt(96 * f)}vw, {math.ceil(360 * f)}px')
     else:
         return tag
@@ -328,6 +343,8 @@ def apply(s, rel=''):
     items = _scan(s)
     if not items: return s
     home = 'hx-home' in s
+    global _CASE
+    _CASE = '/assets/proekt.v1.css' in s
     cnt = {}
     for it in items:
         if it[3] == 'svc': cnt[it[4]] = cnt.get(it[4], 0) + 1

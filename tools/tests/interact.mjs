@@ -666,6 +666,21 @@ await test('кабінет: без кільця курсора', '/kabinet', 144
   await p.waitForTimeout(1500); await p.mouse.move(300, 400); await p.mouse.move(400, 420, { steps: 4 }); await p.waitForTimeout(300);
   must(await p.locator('.cur').count() === 0, 'у кабінеті є кільце курсора');
 });
+// Галерея /proekty (20.11.2026): мініатюри — data-srcset (sharp.py), до прокрутки вантажиться лише головне фото (LCP не ділить канал з галереєю);
+// при прокрутці site-chrome.v1.js ставить srcset за ~350 px до кадру, клітинки тримають 4:3 — без зсуву.
+for (const [path, w] of [['/proekty/yacht-vip', 402], ['/en/proekty/monpark', 1440]]) await test('галерея /proekty: спершу лише головне фото, мініатюри — при прокрутці, CLS 0', path, w, async p => {
+  const reqs = []; p.on('request', r => { if (/\/img\/p\//.test(r.url())) reqs.push(r.url()); });
+  await p.evaluate(() => { window.__cls = 0; new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; }).observe({ type: 'layout-shift' }); });
+  await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(700);
+  must(reqs.length === 1, `до прокрутки завантажено фото проєкту: ${reqs.length} (має бути 1 — головне)`);
+  const st0 = await p.evaluate(() => { const g = [...document.querySelectorAll('.pg img')], a = g[0].parentNode.getBoundingClientRect(); return { n: g.length, wait: g.filter(i => i.hasAttribute('data-srcset')).length, cell: a.width > 100 && Math.abs(a.width / a.height - 4 / 3) < .02 }; });
+  must(st0.n > 3 && st0.wait === st0.n && st0.cell, 'мініатюри не відкладені або клітинка не 4:3: ' + JSON.stringify(st0));
+  await p.evaluate(() => { window.__cls = 0; new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; }).observe({ type: 'layout-shift' }); });
+  await p.locator('.pg').scrollIntoViewIfNeeded(); await p.mouse.wheel(0, 500); await p.waitForTimeout(900);
+  const st = await p.evaluate(() => { const g = [...document.querySelectorAll('.pg img')], v = g.filter(i => { const r = i.parentNode.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; }); return { v: v.length, ok: v.filter(i => i.complete && i.naturalWidth > 0 && i.offsetWidth > 0 && !i.hasAttribute('data-srcset')).length, cls: window.__cls }; });
+  must(st.v > 0 && st.ok === st.v, `мініатюри в кадрі не завантажились: ${st.ok} з ${st.v}`);
+  must(st.cls < .01, 'зсув верстки при появі мініатюр: ' + st.cls.toFixed(3));
+});
 await browser.close(); server.close();
 console.log(fails ? `\n${fails} FAIL` : '\nВзаємодії: ALL OK');
 process.exit(fails ? 1 : 0);

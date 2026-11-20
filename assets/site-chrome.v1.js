@@ -902,8 +902,9 @@
    ['data-av','data-srcset','data-p','data-pn','data-avn'].forEach(function(a){im.removeAttribute(a)});im.setAttribute('srcset',s)}
   if(!('IntersectionObserver' in W)){l.forEach(set);W.casLazy=set;return}
   // scrollMargin — і в стрічках з горизонтальною прокруткою (портфоліо .xs-proj, 18.11.2026: data-p "<id>:<назва>[=<ширина>],…") наступні кадри — заздалегідь
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);set(e.target)}})},{rootMargin:'350px 0px',scrollMargin:'0px 600px'});
-  l.forEach(function(im){io.observe(im)});
+  // мініатюри галереї /proekty (.pg img[data-srcset]) до цього приховані (display:none — щоб нативний lazy не тягнув малу копію з src): стежимо за клітинкою-посиланням
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;io.unobserve(t);set(t.tagName=='IMG'?t:t.querySelector('img'))}})},{rootMargin:'350px 0px',scrollMargin:'0px 600px'});
+  l.forEach(function(im){io.observe(im.parentNode.matches('.pg>a')?im.parentNode:im)});
   W.casLazy=function(im){io.observe(im)}; // копії кадрів стрічок (marquee() в ui-polish.v1.js)
  }
  if(!l.some(function(im){return im.hasAttribute('data-av')})){go(0);return}
