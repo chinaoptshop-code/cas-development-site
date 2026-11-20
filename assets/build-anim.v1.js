@@ -1204,10 +1204,11 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
 
   function enhance(sec, data) {
     if (sec.hasAttribute('data-bz-on')) return;
-    sec.setAttribute('data-bz-on', '');
     // блок вище екрана (швидка прокрутка): після збірки він виросте на кілька екранів — тримаємо видимий вміст на місці самі,
-    // якщо скрол-якоріння браузера не спрацює (Safari без overflow-anchor, анімовані reveal-вузли), інакше CLS до 1.0
+    // якщо скрол-якоріння браузера не спрацює (Safari без overflow-anchor, анімовані reveal-вузли), інакше CLS до 1.0.
+    // Вимір — до data-bz-on: з ним знімається резерв висоти (site-chrome.v1.css), і різницю «резерв → зібраний блок» теж треба компенсувати.
     var above = sec.getBoundingClientRect().bottom <= 0, nxt = sec.nextElementSibling, nxt0 = above && nxt ? nxt.getBoundingClientRect().top : 0;
+    sec.setAttribute('data-bz-on', '');
     var ui = data.ui, scene = sec.getAttribute('data-bz') === 'flat' ? 'flat' : 'house';
     var ol = sec.querySelector('ol.bz-st'), cta = sec.querySelector('.bz-cta'); if (!cta) return;
     if (!ol) { ol = el('ol', 'bz-st'); cta.parentNode.insertBefore(ol, cta); } // сторінка на межі бюджету: список — лише з JSON
@@ -1697,16 +1698,25 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     // збірка трьома задачами (телефон CPU×4: жодної > 150 мс): панель етапів уже в DOM → кадр → сцена (лише шари поточного етапу) → кадр → заміри й прогрес;
     // блок у цей час поза кадром (start() чекає виходу з кадру) або щойно перемкнений на місці — проміжний кадр без сцени непомітний
     var nx = function (f) { if (W.requestAnimationFrame) W.requestAnimationFrame(function () { setTimeout(f, 0); }); else setTimeout(f, 16); };
+    // Вміст під блоком тримаємо на місці окремо в кожній із трьох задач: вимір «до» і компенсація — в одній задачі. Раніше «до» знімали на початку,
+    // а компенсували в кінці третьої задачі — різниця включала прокрутку людини за цей час, і scrollBy повертав сторінку назад (стрибок на тисячі px
+    // після швидкої прокрутки повз сцену й назад; аудит 20.11.2026).
+    var isUp = function () { return !!nxt && sec.getBoundingClientRect().bottom <= 0; };
+    var comp = function (t0) { var dy = nxt.getBoundingClientRect().top - t0; if (Math.abs(dy) > 1) { var hs = d.documentElement.style; hs.scrollBehavior = 'auto'; W.scrollBy(0, dy); hs.scrollBehavior = ''; } }; // без smooth з CSS
+    if (above && nxt) comp(nxt0);
     nx(function () {
+      var up = isUp(), t0 = up ? nxt.getBoundingClientRect().top : 0;
       build();
+      if (up) comp(t0);
       nx(function () {
+        var up2 = isUp(), t2 = up2 ? nxt.getBoundingClientRect().top : 0;
         mkDrive();
         placePie();
         placeCfg();
         render(0.6);
         mode();
         run.classList.remove('bz-wip');
-        if (above && nxt) { var dy = nxt.getBoundingClientRect().top - nxt0; if (Math.abs(dy) > 1) { var hs = d.documentElement.style; hs.scrollBehavior = 'auto'; W.scrollBy(0, dy); hs.scrollBehavior = ''; } } // без smooth з CSS
+        if (up2) comp(t2);
       });
     });
   }
