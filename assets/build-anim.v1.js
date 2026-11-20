@@ -23,6 +23,10 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
   if (!secs.length || !W.fetch || !W.Promise) return;
   var VER = {"ar.flat":"dd4e8c42","ar.house":"72f5497d","de.flat":"bef66e8c","de.house":"ea8c3b75","en.flat":"d6742522","en.house":"64297f67","es.flat":"a055bd91","es.house":"2981262c","fr.flat":"ccd5f01d","fr.house":"5dcf8861","pl.flat":"095e7c40","pl.house":"eea301c3","pt.flat":"50dec566","pt.house":"7b11d901","ru.flat":"7e279bbf","ru.house":"0173dbc5","uk.flat":"9a5703ba","uk.house":"80a10b51","zh.flat":"fab61a6a","zh.house":"ebb4c404"}; /*ver*/
   var MQ = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)');
+  // остання дія людини (тап, клавіша): фонові кроки збірки сцени й доливання шарів чекають ~0.3 с — обробник дії та її перші кадри не діляться потоком зі збіркою
+  var lastIn = 0;
+  ['pointerdown', 'keydown'].forEach(function (e) { W.addEventListener(e, function () { lastIn = Date.now(); }, { capture: true, passive: true }); });
+  function busyIn() { var sg = navigator.scheduling; return Date.now() - lastIn < 300 || !!(sg && sg.isInputPending && sg.isInputPending()); }
   var MOB = W.matchMedia && W.matchMedia('(max-width:767px)');
   var LOW = W.matchMedia && W.matchMedia('(min-width:768px) and (max-height:640px)'); // низький екран ПК-ширини (телефон у ландшафті): налаштування — за кнопкою ⚙, як на телефоні
   // головні (.hx-home): компактна сцена в межах екрана — без довгої sticky-доріжки; етапи крокує автопрогравання (casAuto) і кнопки ←/→ (Михайло 05.11.2026)
@@ -1425,6 +1429,17 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     }
 
     var fade = 0;
+    // Перша збірка — дрібнішими задачами (INP, 20.11.2026: тап по плитці поруч чекав на задачу збірки 80–140 мс, телефон CPU×4):
+    // геометрію сцени (flat()/house() — половина часу build()) рахує окрема задача pregen(), build() бере готову, якщо конфігурація та сама.
+    var pre = null;
+    function preKey() { return scene + '|' + fv + '|' + mat + '|' + JSON.stringify(C); }
+    function pregen() {
+      seq = scene === 'flat' ? data.flat : data.mats[mat]; n = seq.length; // як на початку build(): S(k) шукає етап у seq
+      if (scene === 'flat') { SY = K * 0.6; ZK = K * 0.8; } else { SY = K * 0.5; ZK = K; }
+      C.m = mat; bb = [1e9, 1e9, -1e9, -1e9];
+      var g = scene === 'flat' ? flat(S, ui, fv, lang) : house(C, S, ui);
+      pre = { k: preKey(), sc: g, bb: bb };
+    }
     function build() { // текст етапів (JSON = той самий текст, що в HTML для стартового матеріалу), кнопки, сцена
       seq = scene === 'flat' ? data.flat : data.mats[mat]; n = seq.length;
       if (scene === 'flat') { SY = K * 0.6; ZK = K * 0.8; } else { SY = K * 0.5; ZK = K; } // квартира — трохи «згори»: низькі перегородки не ховають кімнати
@@ -1442,8 +1457,10 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
         return b;
       });
       run.style.setProperty('--n', n);
-      bb = [1e9, 1e9, -1e9, -1e9];
-      C.m = mat; sc = scene === 'flat' ? flat(S, ui, fv, lang) : house(C, S, ui);
+      C.m = mat;
+      if (pre && pre.k === preKey()) { sc = pre.sc; bb = pre.bb; } // геометрію вже пораховано окремою задачею (pregen)
+      else { bb = [1e9, 1e9, -1e9, -1e9]; sc = scene === 'flat' ? flat(S, ui, fv, lang) : house(C, S, ui); }
+      pre = null;
       var body = '', nb = '', lz = {}, nlz = 0;
       // перша збірка частинами (TBT/INP, телефон CPU×4): одразу — лише шари до поточного етапу (+1), решта — порожні <g> на своєму місці (z-порядок той самий),
       // вміст доливає fillLazy() у простої; шар, до якого дійшов прогрес раніше, render() доливає сам (lazyNow)
@@ -1569,13 +1586,16 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     }
     var fTok = 0;
     function lazyNow(Ly) { Ly.z = 0; Ly.g.innerHTML = Ly.g.__h = Ly.p.v; }
-    function fillLazy(cnt) { // вміст відкладених шарів — порціями ≤ ~6 мс у простої, не більше порції на кадр (верстка нових вузлів — у своєму кадрі)
+    function fillLazy(cnt) { // вміст відкладених шарів — порціями у простої, не більше порції на кадр (верстка нових вузлів — у своєму кадрі)
       var tok = ++fTok, j = 0; if (!cnt) return;
       var ric = function (f) { W.requestAnimationFrame(function () { if (W.requestIdleCallback) W.requestIdleCallback(f, { timeout: 150 }); else setTimeout(f, 0); }); };
+      // порція — ≤ ~6 мс JS і ≤ ~120 нових вузлів: стилі й розкладка вставлених вузлів у наступному кадрі коштують у кілька разів більше за сам JS
+      // (було 280–660 вузлів на кадр = задачі 35–75 мс на телефоні CPU×4 протягом ~1 с після збірки; 20.11.2026)
       function chunk() {
         if (tok !== fTok) return;
-        var t0 = Date.now();
-        for (; j < layers.length && Date.now() - t0 < 6; j++) if (layers[j].z) lazyNow(layers[j]);
+        if (busyIn()) return ric(chunk); // людина щойно торкнулась екрана — порція зачекає
+        var t0 = Date.now(), nn = 0;
+        for (; j < layers.length && Date.now() - t0 < 6 && nn < 120; j++) if (layers[j].z) { var v = layers[j].p.v; if (typeof v === 'string') nn += v.split('<').length; lazyNow(layers[j]); }
         if (j < layers.length) ric(chunk);
       }
       ric(chunk);
@@ -1655,6 +1675,10 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     if (MQ) { if (MQ.addEventListener) MQ.addEventListener('change', mode); else if (MQ.addListener) MQ.addListener(mode); }
     if (LOW) { if (LOW.addEventListener) LOW.addEventListener('change', placeCfg); else if (LOW.addListener) LOW.addListener(placeCfg); }
     if (MOB) { if (MOB.addEventListener) { MOB.addEventListener('change', placePie); MOB.addEventListener('change', placeCfg); } else if (MOB.addListener) { MOB.addListener(placePie); MOB.addListener(placeCfg); } }
+    // Шари сцени (g.bz-l, ~225) мають will-change:opacity — кожен окремий шар композитора: під час прокрутки сцени зміна opacity не перемальовує SVG.
+    // Поки сцена поза екраном, ці шари лише обтяжують кожен кадр сторінки (Layerize/PrePaint: розгортання плитки поруч — +40 мс на телефоні CPU×4):
+    // поза кадром (із запасом 25 % екрана) клас .bz-far знімає will-change, на підході — повертає. Вигляд сцени не змінюється.
+    if ('IntersectionObserver' in W) new IntersectionObserver(function (es) { sec.classList.toggle('bz-far', !es[es.length - 1].isIntersecting); }, { rootMargin: '25% 0px 25% 0px' }).observe(fig);
     if (CMP && W.casAuto) W.casAuto({ root: run, view: fig, host: ctl, before: next, cls: 'bz-ap', // компактна: крок — go() без прокрутки сторінки
       step: function () { var a = Math.floor(man); if (a >= n - 1) return false; go(a + 1); return true; }, restart: function () { go(0); }, atEnd: function () { return Math.floor(man) >= n - 1; } });
     // жести (Михайло 05.11 «як тут прокручувати?», 06.11 «наводиш — прокручується; збоку — проклацувати»): колесо над кадром ±1 етап, клік/тап у лівій/правій
@@ -1704,19 +1728,28 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     var isUp = function () { return !!nxt && sec.getBoundingClientRect().bottom <= 0; };
     var comp = function (t0) { var dy = nxt.getBoundingClientRect().top - t0; if (Math.abs(dy) > 1) { var hs = d.documentElement.style; hs.scrollBehavior = 'auto'; W.scrollBy(0, dy); hs.scrollBehavior = ''; } }; // без smooth з CSS
     if (above && nxt) comp(nxt0);
-    nx(function () {
-      var up = isUp(), t0 = up ? nxt.getBoundingClientRect().top : 0;
-      build();
-      if (up) comp(t0);
-      nx(function () {
-        var up2 = isUp(), t2 = up2 ? nxt.getBoundingClientRect().top : 0;
-        mkDrive();
-        placePie();
-        placeCfg();
-        render(0.6);
-        mode();
-        run.classList.remove('bz-wip');
-        if (up2) comp(t2);
+    // людина щойно торкнулась екрана (тап по плитці, кнопці) — крок збірки чекає ~0.3 с: обробник дії та її перші кадри не діляться потоком зі збіркою
+    var calm = function (f, k) {
+      if (busyIn() && (k || 0) < 6) return setTimeout(function () { calm(f, (k || 0) + 1); }, 120);
+      f();
+    };
+    var nxc = function (f) { nx(function () { calm(f); }); };
+    nxc(function () {
+      try { pregen(); } catch (e) { pre = null; }
+      nxc(function () {
+        var up = isUp(), t0 = up ? nxt.getBoundingClientRect().top : 0;
+        build();
+        if (up) comp(t0);
+        nxc(function () {
+          var up2 = isUp(), t2 = up2 ? nxt.getBoundingClientRect().top : 0;
+          mkDrive();
+          placePie();
+          placeCfg();
+          render(0.6);
+          mode();
+          run.classList.remove('bz-wip');
+          if (up2) comp(t2);
+        });
       });
     });
   }
