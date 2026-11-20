@@ -76,9 +76,13 @@ def w_svc(vw, i, n, home):
     """Ширина й пропорція клітинки картки i з n (flex-wrap: basis 13rem, gap 16px; телефон — 2 колонки, головна — ряд зі свайпом)."""
     c = cont(vw)
     if home and vw <= 767: return .44 * c, 4 / 3
-    if home:  # головна — карусель (sections.v1.css): 3 картки в ряду до 1099 px, далі 4; gap 1rem; img max-height 12rem
+    if home and vw <= 1199:  # головна — карусель (sections.v1.css): 3 картки в ряду до 1099 px, далі 4; gap 1rem; img max-height 12rem
         w = (c - 2 * rem(vw)) / 3 if vw <= 1099 else (c - 3 * rem(vw)) / 4
         return w, max(1.6, w / (12 * rem(vw)))
+    if home:  # з 1200 px (Михайло 20.11.2026): ряд майже на всю ширину вікна (.w до 2560 px) мінус поля й дві колонки стрілок (2.75rem + .75rem); 4 картки, з 2200 px — 5; фото 16:10
+        r = rem(vw); k = 4 if vw <= 2199 else 5
+        rail = min(vw, 2560) - 2 * min(40, max(16, 1.5 * r)) - 7 * r
+        return (rail - (k - 1) * r) / k, 1.6
     if vw <= 599:
         if n % 2 and i == n - 1: return c, 16 / 7
         return (c - 10) / 2, 4 / 3
