@@ -357,7 +357,7 @@
 "#calc .seg button:focus-visible",
 "#calc .seg.g2 button:last-child:nth-child(odd)",
 "#calc .seg.g3",
-"#calc .seg.g3 button:last-child",
+"#calc .seg.g2.g3 button:last-child:nth-child(odd)",
 "#calc [hidden]",
 "#calc .ar",
 "#calc .ar input",

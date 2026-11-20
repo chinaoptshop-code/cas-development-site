@@ -729,7 +729,7 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
 #calc .seg button{min-height:44px;padding:6px 14px;border-radius:999px;border:1px solid var(--ln);background:none;color:var(--tx);font:inherit;font-size:var(--fs-small);line-height:1.25;cursor:pointer}
 #calc .seg.g2 button{border-radius:12px;text-align:start}
 #calc .seg.g2 button:last-child:nth-child(odd){grid-column:1/-1}
-@media(min-width:560px){#calc .seg.g3{grid-template-columns:repeat(3,minmax(0,1fr))}#calc .seg.g3 button:last-child{grid-column:auto}}
+@media(min-width:560px){#calc .seg.g3{grid-template-columns:repeat(3,minmax(0,1fr))}#calc .seg.g2.g3 button:last-child:nth-child(odd){grid-column:auto}}
 #calc .seg button small{display:block;opacity:.75}
 #calc .seg button[aria-pressed=true]{background:var(--ac);border-color:var(--ac);color:#140f08}
 #calc .seg button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
