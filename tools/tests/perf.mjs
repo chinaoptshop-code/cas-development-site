@@ -12,7 +12,7 @@ import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import zlib from 'node:zlib';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+const ROOT = process.env.PERF_ROOT || join(dirname(fileURLToPath(import.meta.url)), '..', '..'); // PERF_ROOT=<інша копія репозиторію> — порівняння «до/після» тим самим скриптом
 const require = createRequire(import.meta.url);
 let chromium;
 try { ({ chromium } = require('playwright')); } catch { ({ chromium } = require(join(execSync('npm root -g').toString().trim(), 'playwright'))); }
