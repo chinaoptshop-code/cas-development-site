@@ -1213,6 +1213,10 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     // Вимір — до data-bz-on: з ним знімається резерв висоти (site-chrome.v1.css), і різницю «резерв → зібраний блок» теж треба компенсувати.
     var above = sec.getBoundingClientRect().bottom <= 0, nxt = sec.nextElementSibling, nxt0 = above && nxt ? nxt.getBoundingClientRect().top : 0;
     sec.setAttribute('data-bz-on', '');
+    // збірка йде кількома задачами, проміжні стани нижчі за зібрану сцену (до −50 px на телефоні): на час збірки блок тримає висоту резерву —
+    // вміст нижче не сіпається, коли сцена збирається в кадрі (Safari без scroll anchoring; 20.11.2026). Без резерву (reduced-motion) — не тримаємо.
+    var holdOn = !(MQ && MQ.matches) && !sec.hasAttribute('data-sw'), hold0 = sec.style.minHeight;
+    if (holdOn) sec.style.minHeight = sec.getBoundingClientRect().height + 'px';
     var ui = data.ui, scene = sec.getAttribute('data-bz') === 'flat' ? 'flat' : 'house';
     var ol = sec.querySelector('ol.bz-st'), cta = sec.querySelector('.bz-cta'); if (!cta) return;
     if (!ol) { ol = el('ol', 'bz-st'); cta.parentNode.insertBefore(ol, cta); } // сторінка на межі бюджету: список — лише з JSON
@@ -1748,6 +1752,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
           render(0.6);
           mode();
           run.classList.remove('bz-wip');
+          if (holdOn) sec.style.minHeight = hold0;
           if (up2) comp(t2);
         });
       });
@@ -1776,16 +1781,24 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     return dataP[sc];
   }
   W.__casBAd = data;
-  // Збираємо одразу, щойно є CSS і дані, — і коли людина вже всередині блоку (верх вище екрана): висоту блоку до збірки тримає резерв
-  // (site-chrome.v1.css «Резерв висоти сцен» — та сама формула доріжки), тож вміст нижче не зсувається. Раніше в цьому випадку сцена чекала,
-  // доки блок вийде з кадру: на телефоні блок головної вищий за екран — при повільній мережі людина бачила лише список етапів, а сцена не
-  // зʼявлялась, доки не прогорнеш повз (так само падав sceneReady у perf.mjs --inp; 20.11.2026).
-  // Чекаємо виходу з кадру лише без резерву (prefers-reduced-motion: список етапів природної висоти — збірка зсунула б те, що людина читає).
+  // Збираємо одразу, щойно є CSS і дані, — і коли людина вже всередині блоку (верх вище екрана, блок тягнеться до низу екрана чи далі): висоту до
+  // збірки тримає резерв (site-chrome.v1.css «Резерв висоти сцен»), а що резерв компактної сцени на телефоні наближений (± до 40 px залежно від мови) —
+  // зміна висоти лишається нижче екрана. Раніше сцена завжди чекала, доки блок вийде з кадру: на телефоні блок головної вищий за екран — при повільній
+  // мережі людина бачила лише список етапів, а сцена не зʼявлялась, доки не прогорнеш повз (так само падав sceneReady у perf.mjs --inp; 20.11.2026).
+  // Чекаємо лише коли збірка зсунула б те, що людина бачить: видно низ блоку й вміст під ним (верх вище екрана) — до першої прокрутки, після якої це вже
+  // не так; без резерву (prefers-reduced-motion: список етапів природної висоти) — доки блок не вийде з кадру.
   function inView(sec) { var r = sec.getBoundingClientRect(); return r.top < 0 && r.bottom > 0; }
+  function tail(sec) { var r = sec.getBoundingClientRect(); return r.top < 0 && r.bottom > 0 && r.bottom < (W.innerHeight || 0); }
   function start(sec) {
     Promise.all([css(), data(sec.getAttribute('data-bz') === 'flat' ? 'flat' : 'house')]).then(function (r) {
-      var dt = r[1];
-      if (!(MQ && MQ.matches) || !inView(sec) || sec.hasAttribute('data-sw') || !('IntersectionObserver' in W)) return enhance(sec, dt); // data-sw — перемикач сцен на місці
+      var dt = r[1], rmq = !!(MQ && MQ.matches);
+      if (sec.hasAttribute('data-sw') || !(rmq ? inView(sec) && 'IntersectionObserver' in W : tail(sec))) return enhance(sec, dt); // data-sw — перемикач сцен на місці
+      if (!rmq) { // видно низ блоку: чекаємо прокрутки, після якої блок або поза кадром, або закриває низ екрана
+        var tk = 0, chk = function () { tk = 0; if (tail(sec)) return; W.removeEventListener('scroll', on); W.removeEventListener('resize', on); enhance(sec, dt); },
+          on = function () { if (!tk) tk = W.requestAnimationFrame(chk); };
+        W.addEventListener('scroll', on, { passive: true }); W.addEventListener('resize', on, { passive: true });
+        return;
+      }
       var o = new IntersectionObserver(function (es) { if (!es[es.length - 1].isIntersecting) { o.disconnect(); enhance(sec, dt); } });
       o.observe(sec);
     }).catch(function () { sec.classList.add('bz-no'); }); // без даних — лишається звичайний список етапів (bz-no знімає резерв висоти з site-chrome.v1.css)

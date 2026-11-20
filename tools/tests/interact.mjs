@@ -328,7 +328,7 @@ await test('якір, reduced-motion: миттєво і з іншої сторі
 const noAnchor = () => {
   const ins = () => { if (!document.documentElement) return setTimeout(ins, 0); const st = document.createElement('style'); st.textContent = 'html{overflow-anchor:none!important}'; document.documentElement.appendChild(st); }; ins();
   const S = window.__sh = { max: 0, who: '', base: null };
-  window.__mark = () => { S.base = [...document.querySelectorAll('main>*, main>*>*, main>*>.w>*, .scf')].map(e => [e, e.getBoundingClientRect()]).filter(x => x[1].bottom > 0 && x[1].top < innerHeight).map(x => [x[0], x[1].top]); };
+  window.__mark = () => { S.base = [...document.querySelectorAll('main>*, main>*>*, main>*>.w>*, .scf')].filter(e => !e.parentElement.closest('section.bz')) /* вміст самої сцени при збірці перебудовується — стежимо за блоком сцени й усім поза ним */.map(e => [e, e.getBoundingClientRect()]).filter(x => x[1].bottom > 0 && x[1].top < innerHeight).map(x => [x[0], x[1].top]); };
   const f = () => { if (S.base) for (const [e, t] of S.base) { if (!e.isConnected) continue; const d = e.getBoundingClientRect().top - t; if (Math.abs(d) > Math.abs(S.max)) { S.max = Math.round(d); S.who = (e.id || String(e.className).slice(0, 24) || e.tagName) + ' @y' + Math.round(scrollY); } } requestAnimationFrame(f); };
   requestAnimationFrame(f);
 };
