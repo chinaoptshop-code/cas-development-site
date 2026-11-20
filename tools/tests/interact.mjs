@@ -349,6 +349,22 @@ for (const path of ['/', '/en/', '/ar/', '/remont-kvartyr-kyiv']) for (const w o
   r = await p.evaluate(() => window.__sh);
   must(Math.abs(r.max) <= 4, `прокрутка вгору з #zayavka: вміст зсунувся на ${r.max} px (${r.who})`);
 });
+// Повільна мережа: CSS/дані сцени приходять, коли людина вже всередині блоку (верх блоку вище екрана; на телефоні блок головної вищий за екран).
+// Сцена збирається на місці (висоту тримає резерв site-chrome.v1.css) — раніше чекала, доки блок вийде з кадру, і не зʼявлялась (так падав і perf.mjs --inp).
+for (const [path, w, dy] of [['/', 402, 31], ['/remont-kvartyr-kyiv', 402, 200], ['/budivnytstvo-budynkiv-kyiv', 1440, 200]]) await test('сцена: збірка, коли людина вже всередині блоку (повільна мережа)', path, w, async p => {
+  await p.route(/\/assets\/(?:build-anim|scene-ui)/, async r => { await new Promise(ok => setTimeout(ok, 1200)); await r.continue().catch(() => {}); });
+  await p.evaluate(() => { window.__cls = 0; new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; }).observe({ type: 'layout-shift' }); });
+  await p.mouse.move(200, 300); await p.mouse.wheel(0, 300); await p.waitForTimeout(150);
+  await p.evaluate(dy => { const e = document.getElementById('build-anim'); window.scrollTo({ top: e.getBoundingClientRect().top + scrollY + dy, behavior: 'instant' }); }, dy);
+  await p.waitForTimeout(500);
+  const before = await p.evaluate(() => ({ cls: window.__cls, nx: Math.round(document.getElementById('build-anim').nextElementSibling.getBoundingClientRect().top), built: !!document.querySelector('#build-anim .bz-nx') }));
+  must(!before.built, 'сцена зібралась до приходу CSS/даних — тест не перевіряє збірку в кадрі');
+  await p.waitForSelector('#build-anim .bz-nx', { timeout: 8000 });
+  await p.waitForTimeout(900);
+  const after = await p.evaluate(() => ({ cls: window.__cls, nx: Math.round(document.getElementById('build-anim').nextElementSibling.getBoundingClientRect().top) }));
+  must(after.cls - before.cls <= 0.05, 'CLS збірки в кадрі ' + (after.cls - before.cls).toFixed(3));
+  must(Math.abs(after.nx - before.nx) <= 4, `блок під сценою зсунувся на ${after.nx - before.nx} px`);
+});
 await test('.lq-go → #zayavka з контекстом сцени', '/budivnytstvo-budynkiv-kyiv', 1440, async p => {
   await wakeup(p);
   const go = p.locator('.lq-go').first();

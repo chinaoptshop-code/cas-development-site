@@ -1743,13 +1743,16 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     return dataP[sc];
   }
   W.__casBAd = data;
-  // CLS = 0: блок перебудовується лише поза кадром. Якщо сторінка відкрилась одразу на ньому (якір, відновлення прокрутки),
-  // людина бачить звичайний список етапів, а сцена зʼявиться, щойно блок вийде з кадру (вище/нижче — скрол-якоріння тримає екран).
-  function inView(sec) { var r = sec.getBoundingClientRect(); return r.top < 0 && r.bottom > 0; } // верх блоку в кадрі (блок щойно зʼявився знизу) — збираємо одразу: над ним нічого не зсувається
+  // Збираємо одразу, щойно є CSS і дані, — і коли людина вже всередині блоку (верх вище екрана): висоту блоку до збірки тримає резерв
+  // (site-chrome.v1.css «Резерв висоти сцен» — та сама формула доріжки), тож вміст нижче не зсувається. Раніше в цьому випадку сцена чекала,
+  // доки блок вийде з кадру: на телефоні блок головної вищий за екран — при повільній мережі людина бачила лише список етапів, а сцена не
+  // зʼявлялась, доки не прогорнеш повз (так само падав sceneReady у perf.mjs --inp; 20.11.2026).
+  // Чекаємо виходу з кадру лише без резерву (prefers-reduced-motion: список етапів природної висоти — збірка зсунула б те, що людина читає).
+  function inView(sec) { var r = sec.getBoundingClientRect(); return r.top < 0 && r.bottom > 0; }
   function start(sec) {
     Promise.all([css(), data(sec.getAttribute('data-bz') === 'flat' ? 'flat' : 'house')]).then(function (r) {
       var dt = r[1];
-      if (!inView(sec) || sec.hasAttribute('data-sw') || !('IntersectionObserver' in W)) return enhance(sec, dt); // data-sw — перемикач сцен на місці
+      if (!(MQ && MQ.matches) || !inView(sec) || sec.hasAttribute('data-sw') || !('IntersectionObserver' in W)) return enhance(sec, dt); // data-sw — перемикач сцен на місці
       var o = new IntersectionObserver(function (es) { if (!es[es.length - 1].isIntersecting) { o.disconnect(); enhance(sec, dt); } });
       o.observe(sec);
     }).catch(function () { sec.classList.add('bz-no'); }); // без даних — лишається звичайний список етапів (bz-no знімає резерв висоти з site-chrome.v1.css)
