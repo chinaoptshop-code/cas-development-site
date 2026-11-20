@@ -52,6 +52,10 @@ function casCalcInit() {
   var D = document.getElementById('cCfg'); if (!D) return;
   var C = JSON.parse(D.textContent), $ = function (i) { return document.getElementById(i); }, f = function (n) { return casUsd(n); },
     R = 0, S = {}, V = {}, ord = [], IT = $('cIt'), VV = $('cV');
+  /* RTL (ar): «$2 500» одразу після арабських літер bidi показує як «2 500$» (цифри стають «арабським числом», «$» — нейтральний).
+     У видимих рядках результату й примітці ціна йде в ізоляті LTR (U+2066…U+2069) — «$» ліворуч від числа, як у casUsd і на плитках; у заявку — без них. */
+  var RTL = (document.documentElement.getAttribute('dir') || '') === 'rtl';
+  function iso(s) { return RTL ? String(s).replace(/\$\d[\d\u202f\u00a0,.]*\d|\$\d/g, function (m) { return '\u2066' + m + '\u2069'; }) : s; }
   C.it.forEach(function (t) { V[t[0]] = t[1][t[2]]; });
   function on(id, key) { /* вибрати позицію; несумісні з нею (C.x) — зняти */
     if (key) V[id] = key; S[id] = V[id]; if (ord.indexOf(id) < 0) ord.push(id);
@@ -103,14 +107,27 @@ function casCalcInit() {
     $('cSumL').hidden = !ok; $('cSum').hidden = !res.n; $('cPick').hidden = !!res.n; $('cSum').textContent = st;
     var X = $('cSumX'); if (!X) { X = document.createElement('span'); X.id = 'cSumX'; $('cSum').parentNode.insertBefore(X, $('cSum').nextSibling); } X.textContent = ok && window.casFx ? casFx(s) : ''; /* ≈ €/₴ — fx.py */ $('cPlus').hidden = !(ok && res.est);
     var ul = $('cRows'); ul.textContent = '';
-    labs.forEach(function (l) { var li = document.createElement('li'), sp = document.createElement('span'), em = document.createElement('em'); sp.textContent = l[0]; em.textContent = l[1]; li.appendChild(sp); li.appendChild(em); ul.appendChild(li); });
-    ul.hidden = !has; $('cNote').textContent = notes.join(' ');
+    labs.forEach(function (l) { var li = document.createElement('li'), sp = document.createElement('span'), em = document.createElement('em'); sp.textContent = iso(l[0]); em.textContent = iso(l[1]); li.appendChild(sp); li.appendChild(em); ul.appendChild(li); });
+    ul.hidden = !has; $('cNote').textContent = iso(notes.join(' '));
     var main = null; ord.forEach(function (id) { if (!main && S[id]) main = id; });
     return { a: a, sq: sq, rows: res.rows, t: labs.map(function (l) { return l[0] + ': ' + l[1]; }).join(' · '), s: st, ok: ok, est: res.est, has: has, n: res.n, main: main };
   }
   $('cReg').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) { R = +b.getAttribute('data-r'); calc(); } });
-  IT.addEventListener('click', function (e) { var b = e.target.closest('button'), id; if (b) { id = b.getAttribute('data-k'); if (S[id]) off(id); else on(id); calc(); } });
-  VV.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) { on(b.closest('[data-k]').getAttribute('data-k'), b.getAttribute('data-p')); calc(); } });
+  /* пояснення під плитками: вибір однієї з несумісних позицій (C.x) зняв іншу — «… рахуємо окремо — лишили “…”» (місце в розмітці зарезервоване,
+     висота блоку не змінюється; #cEx — aria-live для читача екрана). Наступна дія з плитками чи варіантами його прибирає. */
+  function excl(id) {
+    var ps = document.querySelectorAll('#calc .cx>[data-x]'), L = $('cEx'), i, t = '';
+    for (i = 0; i < ps.length; i++) { var hit = ps[i].getAttribute('data-x') === id; ps[i].classList.toggle('on', hit); if (hit) t = ps[i].textContent; }
+    if (L && L.textContent !== t) L.textContent = t;
+  }
+  IT.addEventListener('click', function (e) {
+    var b = e.target.closest('button'), id, ex = ''; if (!b) return;
+    id = b.getAttribute('data-k');
+    if (S[id]) off(id);
+    else { C.x.forEach(function (g) { if (g.indexOf(id) >= 0) g.forEach(function (o) { if (o !== id && S[o]) ex = id; }); }); on(id); }
+    excl(ex); calc();
+  });
+  VV.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) { on(b.closest('[data-k]').getAttribute('data-k'), b.getAttribute('data-p')); excl(''); calc(); } });
   ['cArea', 'cLand'].forEach(function (i) {
     $(i).addEventListener('input', calc); $(i).addEventListener('change', calc);
     $(i).addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); calc(); } });

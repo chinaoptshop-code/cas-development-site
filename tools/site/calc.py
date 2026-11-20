@@ -14,7 +14,7 @@
 (основна позиція — перша вибрана). Посилання з параметром: ?k=remont|office|house|housekey|design|arch|land (старі значення списку) або кілька
 через кому (?k=design,remont,furn; ще plan|dz|full|box|key) — вибирає ці позиції замість типової. UI-kit — /styleguide/#calc-sg (пише цей файл).
 """
-import json, os, re, sys
+import json, os, re, sys, html
 import i18n  # формат чисел мови: i18n.usd (у JS — casUsd із site-chrome.v1.js)
 import rates  # єдине джерело ставок (CLAUDE.md); у JS — блок /*rates*/ у calc.v1.js (CAS_RATES, casCost)
 
@@ -33,7 +33,7 @@ RENO = ['reno', 'office']        # ремонт: примітка про чор�
 # планувальний, дизайн-проєкт, повний з наглядом; it — назви плиток: дизайн, ремонт, будівництво (меблювання — furn, архпроєкт — k[5],
 # ландшафт — k[6]); vr / vb — варіанти ремонту (квартира, офіс) і будівництва (коробка, під ключ)
 T = {
-    'uk': dict(h='Калькулятор вартості', reg='Де обʼєкт', ua='Україна', eu='Європа', what='Що порахувати', pick='Оберіть, що порахувати',
+    'uk': dict(excl='Ремонт і будівництво рахуємо окремо — лишили «{k}».', h='Калькулятор вартості', reg='Де обʼєкт', ua='Україна', eu='Європа', what='Що порахувати', pick='Оберіть, що порахувати',
                it=['Дизайн інтерʼєру', 'Ремонт', 'Будівництво будинку'], vr=['Квартира', 'Офіс'], vb=['Коробка', 'Під ключ'],
                k=['Ремонт квартири під ключ', 'Ремонт офісу', 'Будівництво будинку (коробка)', 'Будинок під ключ з оздобленням',
                   'Дизайн-проєкт інтерʼєру', 'Архітектурний проєкт будинку', 'Ландшафтний дизайн'],
@@ -48,7 +48,7 @@ T = {
                n_eu='Європа: ставки приблизно на 50% вищі за київські.',
                send='Отримати точний кошторис', msg='Розрахунок з калькулятора', svc='Калькулятор', frm='від', m2='м²',
                bad='Вкажіть площу числом, наприклад 75 або 12,5.', mx='Порахували для максимуму: {m}.', mn='мінімум'),
-    'ru': dict(h='Калькулятор стоимости', reg='Где объект', ua='Украина', eu='Европа', what='Что посчитать', pick='Выберите, что посчитать',
+    'ru': dict(excl='Ремонт и строительство считаем отдельно — оставили «{k}».', h='Калькулятор стоимости', reg='Где объект', ua='Украина', eu='Европа', what='Что посчитать', pick='Выберите, что посчитать',
                it=['Дизайн интерьера', 'Ремонт', 'Строительство дома'], vr=['Квартира', 'Офис'], vb=['Коробка', 'Под ключ'],
                k=['Ремонт квартиры под ключ', 'Ремонт офиса', 'Строительство дома (коробка)', 'Дом под ключ с отделкой',
                   'Дизайн-проект интерьера', 'Архитектурный проект дома', 'Ландшафтный дизайн'],
@@ -63,7 +63,7 @@ T = {
                n_eu='Европа: ставки примерно на 50% выше киевских.',
                send='Получить точную смету', msg='Расчёт из калькулятора', svc='Калькулятор', frm='от', m2='м²',
                bad='Укажите площадь числом, например 75 или 12,5.', mx='Посчитали для максимума: {m}.', mn='минимум'),
-    'en': dict(h='Cost calculator', reg='Project location', ua='Ukraine', eu='Europe', what='What to include', pick='Choose what to include',
+    'en': dict(excl='Renovation and construction are estimated separately — kept “{k}”.', h='Cost calculator', reg='Project location', ua='Ukraine', eu='Europe', what='What to include', pick='Choose what to include',
                it=['Interior design', 'Renovation', 'House construction'], vr=['Apartment', 'Office'], vb=['Shell', 'Turnkey'],
                k=['Turnkey apartment renovation', 'Office renovation', 'House construction (shell)', 'Turnkey house with finishing',
                   'Interior design project', 'House architectural design', 'Landscape design'],
@@ -78,7 +78,7 @@ T = {
                n_eu='Europe: rates are about 50% higher than in Kyiv.',
                send='Get an exact estimate', msg='Calculator result', svc='Calculator', frm='from', m2='m²',
                bad='Enter the area as a number, e.g. 75 or 12.5.', mx='Calculated for the maximum: {m}.', mn='minimum'),
-    'es': dict(h='Calculadora de costes', reg='Ubicación', ua='Ucrania', eu='Europa', what='Qué calcular', pick='Elija qué calcular',
+    'es': dict(excl='La reforma y la construcción se calculan por separado: dejamos «{k}».', h='Calculadora de costes', reg='Ubicación', ua='Ucrania', eu='Europa', what='Qué calcular', pick='Elija qué calcular',
                it=['Diseño de interiores', 'Reforma', 'Construcción de casa'], vr=['Piso', 'Oficina'], vb=['Obra gris', 'Llave en mano'],
                k=['Reforma de piso llave en mano', 'Reforma de oficina', 'Construcción de casa (estructura)', 'Casa llave en mano con acabados',
                   'Proyecto de diseño de interiores', 'Proyecto arquitectónico de casa', 'Paisajismo'],
@@ -93,7 +93,7 @@ T = {
                n_eu='Europa: tarifas aproximadamente un 50% más altas que en Kiev.',
                send='Pedir presupuesto exacto', msg='Cálculo de la calculadora', svc='Calculadora', frm='desde', m2='m²',
                bad='Indique la superficie con un número, p. ej. 75 o 12,5.', mx='Calculado para el máximo: {m}.', mn='mínimo'),
-    'zh': dict(h='费用计算器', reg='项目所在地', ua='乌克兰', eu='欧洲', what='计算内容', pick='请选择要计算的项目',
+    'zh': dict(excl='装修和建房需分开估算，已保留“{k}”。', h='费用计算器', reg='项目所在地', ua='乌克兰', eu='欧洲', what='计算内容', pick='请选择要计算的项目',
                it=['室内设计', '装修', '住宅建造'], vr=['公寓', '办公室'], vb=['主体结构', '交钥匙'],
                k=['公寓交钥匙装修', '办公室装修', '住宅建造（主体结构）', '含精装的交钥匙住宅', '室内设计方案', '住宅建筑设计', '景观设计'],
                dz='设计', p=['平面布局', '设计方案', '全案含设计监督'],
@@ -107,7 +107,7 @@ T = {
                n_eu='欧洲：单价约比基辅高 50%。',
                send='获取准确预算', msg='计算器估算结果', svc='计算器', frm='起价', m2='m²',
                bad='请输入数字面积，例如 75 或 12.5。', mx='已按上限计算：{m}。', mn='最低'),
-    'pl': dict(h='Kalkulator kosztów', reg='Lokalizacja', ua='Ukraina', eu='Europa', what='Co policzyć', pick='Wybierz, co policzyć',
+    'pl': dict(excl='Remont i budowę liczymy osobno — zostawiliśmy „{k}”.', h='Kalkulator kosztów', reg='Lokalizacja', ua='Ukraina', eu='Europa', what='Co policzyć', pick='Wybierz, co policzyć',
                it=['Projektowanie wnętrz', 'Remont', 'Budowa domu'], vr=['Mieszkanie', 'Biuro'], vb=['Stan surowy', 'Pod klucz'],
                k=['Remont mieszkania pod klucz', 'Remont biura', 'Budowa domu (stan surowy)', 'Dom pod klucz z wykończeniem',
                   'Projekt wnętrza', 'Projekt architektoniczny domu', 'Projekt ogrodu'],
@@ -122,7 +122,7 @@ T = {
                n_eu='Europa: stawki ok. 50% wyższe niż w Kijowie.',
                send='Poproś o dokładny kosztorys', msg='Wynik z kalkulatora', svc='Kalkulator', frm='od', m2='m²',
                bad='Podaj powierzchnię liczbą, np. 75 lub 12,5.', mx='Policzono dla maksimum: {m}.', mn='minimum'),
-    'de': dict(h='Kostenrechner', reg='Standort', ua='Ukraine', eu='Europa', what='Leistungen wählen', pick='Wählen Sie, was berechnet werden soll',
+    'de': dict(excl='Renovierung und Hausbau berechnen wir getrennt – ausgewählt bleibt „{k}“.', h='Kostenrechner', reg='Standort', ua='Ukraine', eu='Europa', what='Leistungen wählen', pick='Wählen Sie, was berechnet werden soll',
                it=['Innenarchitektur', 'Renovierung', 'Hausbau'], vr=['Wohnung', 'Büro'], vb=['Rohbau', 'Schlüsselfertig'],
                k=['Wohnungsrenovierung schlüsselfertig', 'Büroumbau', 'Hausbau (Rohbau)', 'Haus schlüsselfertig mit Ausbau',
                   'Innenarchitektur-Projekt', 'Architekturplanung Haus', 'Gartengestaltung'],
@@ -137,7 +137,7 @@ T = {
                n_eu='Europa: Sätze rund 50 % über Kyjiw.',
                send='Genauen Kostenvoranschlag anfordern', msg='Ergebnis aus dem Rechner', svc='Rechner', frm='ab', m2='m²',
                bad='Geben Sie die Fläche als Zahl an, z. B. 75 oder 12,5.', mx='Berechnet für das Maximum: {m}.', mn='Minimum'),
-    'fr': dict(h='Calculateur de coût', reg='Localisation', ua='Ukraine', eu='Europe', what='Prestations à chiffrer', pick='Choisissez les prestations à chiffrer',
+    'fr': dict(excl='Rénovation et construction se calculent séparément : nous avons gardé « {k} ».', h='Calculateur de coût', reg='Localisation', ua='Ukraine', eu='Europe', what='Prestations à chiffrer', pick='Choisissez les prestations à chiffrer',
                it=['Design intérieur', 'Rénovation', 'Construction de maison'], vr=['Appartement', 'Bureau'], vb=['Gros œuvre', 'Clé en main'],
                k=['Rénovation d’appartement clé en main', 'Rénovation de bureau', 'Construction de maison (gros œuvre)', 'Maison clé en main avec finitions',
                   'Projet de design intérieur', 'Projet architectural de maison', 'Aménagement paysager'],
@@ -152,7 +152,7 @@ T = {
                n_eu='Europe : tarifs environ 50 % plus élevés qu’à Kyiv.',
                send='Obtenir un devis précis', msg='Calcul du calculateur', svc='Calculateur', frm='dès', m2='m²',
                bad='Indiquez la surface en chiffres, par ex. 75 ou 12,5.', mx='Calculé pour le maximum : {m}.', mn='minimum'),
-    'pt': dict(h='Calculadora de custos', reg='Localização', ua='Ucrânia', eu='Europa', what='O que calcular', pick='Escolha o que calcular',
+    'pt': dict(excl='A remodelação e a construção são calculadas em separado — mantivemos «{k}».', h='Calculadora de custos', reg='Localização', ua='Ucrânia', eu='Europa', what='O que calcular', pick='Escolha o que calcular',
                it=['Design de interiores', 'Remodelação', 'Construção de moradia'], vr=['Apartamento', 'Escritório'], vb=['Estrutura', 'Chave na mão'],
                k=['Remodelação de apartamento chave na mão', 'Remodelação de escritório', 'Construção de moradia (estrutura)', 'Moradia chave na mão com acabamentos',
                   'Projeto de design de interiores', 'Projeto de arquitetura de moradia', 'Arquitetura paisagista'],
@@ -167,7 +167,7 @@ T = {
                n_eu='Europa: tarifas cerca de 50% mais altas do que em Kyiv.',
                send='Pedir um orçamento exato', msg='Resultado da calculadora', svc='Calculadora', frm='a partir de', m2='m²',
                bad='Indique a área em números, p. ex. 75 ou 12,5.', mx='Calculado para o máximo: {m}.', mn='mínimo'),
-    'ar': dict(h='حاسبة التكلفة', reg='موقع المشروع', ua='أوكرانيا', eu='أوروبا', what='ما المطلوب حسابه', pick='اختر ما تريد حسابه',
+    'ar': dict(excl='نحسب التجديد والبناء كلًّا على حدة — أبقينا «{k}».', h='حاسبة التكلفة', reg='موقع المشروع', ua='أوكرانيا', eu='أوروبا', what='ما المطلوب حسابه', pick='اختر ما تريد حسابه',
                it=['التصميم الداخلي', 'التجديد', 'بناء منزل'], vr=['شقة', 'مكتب'], vb=['الهيكل', 'تسليم المفتاح'],
                k=['تجديد شقة بنظام تسليم المفتاح', 'تجديد مكتب', 'بناء منزل (هيكل)', 'منزل متكامل مع التشطيب',
                   'مشروع التصميم الداخلي', 'التصميم المعماري للمنزل', 'تنسيق الحدائق'],
@@ -215,11 +215,15 @@ def block(lang):
     opts = ''.join(f'<div role="group" aria-labelledby="cVL-{i}" data-k="{i}"{"" if i in DEFAULT else " hidden"}><span class="cl" id="cVL-{i}">{tile[i]}</span>'
                    f'<div class="seg g2{" g3" if len(ks) == 3 else ""}">' + ''.join(f'<button type="button" data-p="{k}" aria-pressed="{on(n == d)}">{var[k]}<small>{usd(RATE[k][0])}/{t["m2"]}</small></button>'
                                                     for n, k in enumerate(ks)) + '</div></div>' for i, ks, d in ITEMS if len(ks) > 1)
+    # пояснення, коли вибір однієї з несумісних позицій (EXCL) знімає іншу: обидва варіанти вже в розмітці (приховані, в одній клітинці сітки) —
+    # місце зарезервоване, блок не змінює висоту; текст для читача екрана — у #cEx (aria-live), його ставить calc.v1.js
+    excl = '<p class="cx">' + ''.join(f'<span data-x="{i}" aria-hidden="true">{html.escape(t["excl"].replace("{k}", tile[i]))}</span>' for g in EXCL for i in g) \
+        + '<span class="cxl" id="cEx" aria-live="polite"></span></p>'
     return f'''<section id="calc"><div class="w">
   <h2>{t["h"]}</h2>
   <div class="cg">
     <div role="group" aria-labelledby="cRegL"><span class="cl" id="cRegL">{t["reg"]}</span><div class="seg" id="cReg"><button type="button" data-r="0" aria-pressed="true">{t["ua"]}</button><button type="button" data-r="1" aria-pressed="false">{t["eu"]}</button></div></div>
-    <div role="group" aria-labelledby="cItL"><span class="cl" id="cItL">{t["what"]}</span><div class="ct" id="cIt">{tiles}</div></div>
+    <div role="group" aria-labelledby="cItL"><span class="cl" id="cItL">{t["what"]}</span><div class="ct" id="cIt">{tiles}</div>{excl}</div>
     <div class="cv" id="cV">{opts}</div>
     <div class="ar" id="cAreaW"><label for="cArea">{t["area"]}</label><input id="cArea" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="done" aria-describedby="cAreaE" value="60"><i aria-hidden="true">{t["m2"]}</i></div>
     <p class="ce" id="cAreaE" aria-live="polite" hidden></p>

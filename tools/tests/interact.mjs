@@ -477,6 +477,38 @@ for (const [path, rx] of [['/ru/kalkulyator-remonta', /Калькулятор/],
     must((await p.inputValue('#oArea')) === '81' && /\$/.test(await p.inputValue('#oMsg')), 'площа/розрахунок не в формі');
   });
 }
+// «Ремонт» і «Будівництво будинку» разом не вибираються: вибір одного знімає інше — під плитками пояснення мовою сторінки (aria-live), висота блоку та сама
+for (const [path, w, reno, build] of [['/kalkuliator-remontu', 402, 'Ремонт', 'Будівництво будинку'], ['/kalkuliator-remontu', 1440, 'Ремонт', 'Будівництво будинку'], ['/en/renovation-cost-calculator', 402, 'Renovation', 'House construction'],
+  ['/de/renovierungskosten-rechner', 344, 'Renovierung', 'Hausbau'], ['/ar/renovation-calculator', 402, 'التجديد', 'بناء منزل']]) await test('калькулятор, кілька позицій: пояснення, коли ремонт знімає будівництво (і навпаки), без стрибка висоти', path, w, async p => {
+  const st = () => p.evaluate(() => { const c = document.getElementById('calc'), on = c.querySelector('.cx>.on'), r = on && on.getBoundingClientRect(), nx = document.getElementById('cV').getBoundingClientRect(), it = document.getElementById('cIt').getBoundingClientRect();
+    return { vis: on ? on.textContent : '', x: on ? on.getAttribute('data-x') : '', live: document.getElementById('cEx').textContent, top: Math.round(document.getElementById('cSend').getBoundingClientRect().top + scrollY), fs: on ? parseFloat(getComputedStyle(on).fontSize) : 0,
+      fit: !on || (r.top >= it.bottom - 1 && (document.getElementById('cV').hidden || r.bottom <= nx.top + 1) && r.left >= 0 && r.right <= innerWidth), sw: document.documentElement.scrollWidth <= innerWidth }; });
+  const press = k => p.click(`#cIt button[data-k="${k}"]`);
+  let a = await st(); must(!a.vis && !a.live, 'пояснення видно до дії: ' + a.vis);
+  await press('build'); let b = await st(); // типово вибрано ремонт → будівництво його знімає
+  must(await p.getAttribute('#cIt button[data-k="reno"]', 'aria-pressed') === 'false', 'ремонт не знято');
+  must(b.x === 'build' && b.vis.includes(build) && b.live === b.vis, `немає пояснення про «${build}»: «${b.vis}» / aria-live «${b.live}»`);
+  must(b.fs >= 13 && b.fit && b.sw, `пояснення не вміщується під плитками або дрібне: ${b.fs}px, fit=${b.fit}`);
+  await press('reno'); let c = await st();
+  must(c.x === 'reno' && c.vis.includes(reno) && c.vis !== b.vis && c.live === c.vis, `немає пояснення про «${reno}»: «${c.vis}»`);
+  must(c.top === a.top, `висота блоку стрибнула: кнопка ${a.top} → ${c.top}`); // той самий вибір, що на старті (лише ремонт) — та сама висота
+  await press('design'); const d = await st(); must(!d.vis && !d.live, 'пояснення не зникло після наступної дії');
+  await press('design'); await press('reno'); await press('reno'); const e = await st(); must(!e.vis, 'пояснення зʼявилось без зняття іншої позиції');
+});
+// ar (RTL): ціна в рядку результату й примітці — «$» ліворуч від числа (як на плитках і в сумі), не «2 500$»
+await test('калькулятор (ar, RTL): мінімум дизайну — «$2 500», знак $ ліворуч від числа', '/ar/renovation-calculator?k=design', 402, async p => {
+  await p.fill('#cArea', '10');
+  const r = await p.evaluate(() => { const out = {};
+    for (const [k, el] of [['row', document.querySelector('#cRows em')], ['note', document.getElementById('cNote')]]) {
+      const tn = [...el.childNodes].find(n => n.nodeType === 3), t = tn.textContent, i = t.lastIndexOf('$'), rg = document.createRange();
+      rg.setStart(tn, i); rg.setEnd(tn, i + 1); const a = rg.getBoundingClientRect(); rg.setStart(tn, i + 1); rg.setEnd(tn, i + 2); const b = rg.getBoundingClientRect();
+      out[k] = { t, ok: a.left < b.left && Math.abs(a.top - b.top) < 4, iso: /⁦\$2 500⁩/.test(t) }; }
+    return out; });
+  must(r.row.iso && r.row.ok, 'рядок результату: «$» не ліворуч від числа — ' + JSON.stringify(r.row.t));
+  must(r.note.iso && r.note.ok, 'примітка: «$» не ліворуч від числа — ' + JSON.stringify(r.note.t));
+  await p.click('#cSend'); await p.waitForTimeout(400);
+  must(!/[⁦⁩]/.test(await p.inputValue('#oMsg')), 'службові знаки напрямку потрапили в коментар заявки');
+});
 await test('калькулятор (ar, RTL): Європа й ландшафт', '/ar/renovation-calculator', 402, async p => {
   await p.click('#cReg [data-r="1"]'); await cOnly(p, 'land');
   must((await p.textContent('#cSum')).includes('المقايسة'), 'ar: ландшафт у Європі не «وفق المقايسة»');

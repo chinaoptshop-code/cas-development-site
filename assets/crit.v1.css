@@ -478,6 +478,10 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
 #calc .ar input{padding-inline-end:3.2em}
 #calc .ar i{position:absolute;inset-inline-end:14px;bottom:14px;font-style:normal;color:var(--mu);pointer-events:none}
 #calc .ce{margin:-10px 0 0;font-size:var(--fs-small);color:var(--mu)}
+#calc .cx{display:grid;margin:6px 0 -10px;font-size:var(--fs-small);line-height:1.35;color:var(--mu)}
+#calc .cx>span{grid-area:1/1;visibility:hidden}
+#calc .cx>span.on{visibility:visible}
+#calc .cx>.cxl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 #calc .sum{border:1px solid var(--ln);background:var(--bg2);padding:20px;margin-top:2px;border-radius:14px}
 #calc .sum b{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h2);color:var(--ac);display:block;line-height:1.1}
 #calc .sum p{color:var(--mu);margin:8px 0 0;font-size:var(--fs-small)}
