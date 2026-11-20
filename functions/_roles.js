@@ -28,6 +28,8 @@ export const PERMS = {
   'partners.manage': 'Коди партнерів',
   'partners.base': 'Довідник «Контакти» (клієнти, підрядники, партнери, бригади, майстри; бот пошуку)',
   'contacts.linked': 'Контакти своїх обʼєктів (лише перегляд)',
+  'tasks.manage': 'Задачі: створювати, призначати, бачити всі',
+  'tasks.own': 'Свої задачі: бачити й відмічати виконаними',
   'cms.edit': 'Редагування сайту',
   'staff.view': 'Список працівників (для призначення)',
   'staff.manage': 'Додавати й деактивувати працівників, ролі',
@@ -35,7 +37,7 @@ export const PERMS = {
   'audit.view': 'Журнал аудиту',
 };
 const ALL = Object.keys(PERMS);
-const FIELD = ['projects.view_assigned', 'projects.edit_stage', 'clients.contacts', 'reports.upload', 'issues.report', 'contacts.linked'];
+const FIELD = ['projects.view_assigned', 'projects.edit_stage', 'clients.contacts', 'reports.upload', 'issues.report', 'contacts.linked', 'tasks.own'];
 
 // home — куди веде вхід. Власник має все; staff.manage, audit.view і dashboard.studio — лише власник.
 export const ROLES = {
@@ -43,14 +45,14 @@ export const ROLES = {
   // CRM ведуть двоє — власник і менеджер (Михайло 18.11.2026): менеджер після входу одразу в панелі CRM
   manager: { label: 'Менеджер', home: '/kabinet/admin', perms: ['panel.admin', 'leads.view_all', 'leads.edit', 'leads.assign', 'orders.view', 'orders.edit',
     'clients.view', 'clients.contacts', 'finance.view', 'finance.edit', 'projects.view_all', 'projects.edit', 'projects.edit_stage',
-    'reports.upload', 'issues.report', 'partners.manage', 'partners.base', 'cms.edit', 'staff.view', 'export'] },
+    'reports.upload', 'issues.report', 'partners.manage', 'partners.base', 'tasks.manage', 'tasks.own', 'cms.edit', 'staff.view', 'export'] },
   designer: { label: 'Дизайнер', home: '/kabinet/team', perms: ['leads.view_assigned', 'leads.edit', ...FIELD] },
   foreman: { label: 'Прораб', home: '/kabinet/team', perms: FIELD },
   furniture: { label: 'Мебляр', home: '/kabinet/team', perms: FIELD },
   surveyor: { label: 'Геодезист', home: '/kabinet/team', perms: FIELD },
   scan3d: { label: '3D-замір', home: '/kabinet/team', perms: FIELD },
   drone: { label: 'Зйомка з дрона', home: '/kabinet/team', perms: FIELD },
-  accountant: { label: 'Бухгалтер', home: '/kabinet/team', perms: ['finance.view', 'finance.edit', 'projects.view_all', 'orders.view', 'clients.view', 'export'] },
+  accountant: { label: 'Бухгалтер', home: '/kabinet/team', perms: ['finance.view', 'finance.edit', 'projects.view_all', 'orders.view', 'clients.view', 'tasks.own', 'export'] },
 };
 export const ASSIGNABLE = Object.keys(ROLES).filter(r => r !== 'owner');
 export const OWNER_ONLY = ['staff.manage', 'audit.view', 'dashboard.studio'];

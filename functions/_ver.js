@@ -41,13 +41,17 @@ export const leadVer = o => verOf(LEAD_KEYS.map(k => norm(o[k])));
 // Контакт довідника
 const CONTACT_KEYS = ['name', 'company', 'type', 'city', 'tg', 'phone', 'email', 'site', 'tags', 'notes', 'status', 'rating'];
 export const contactVer = r => verOf(CONTACT_KEYS.map(k => norm(r[k])));
+// Задача (migrations/0018): усе, що редагує форма; «виконано» — окрема дія одним дотиком, але й вона змінює версію
+const TASK_KEYS = ['title', 'note', 'status', 'priority', 'due_date', 'due_time', 'assignee_staff_id', 'order_id', 'project_id', 'stage_id', 'contact_id'];
+export const taskVer = t => verOf(TASK_KEYS.map(k => norm(t[k])));
 
 // Хто й коли востаннє змінив запис — для повідомлення про конфлікт (з audit_log; без імені клієнта — лише «клієнт»)
 const WHAT = {
   'project.approve': 'клієнт погодив етап', 'project.revise': 'клієнт попросив правки', 'project.update': 'збережено картку проєкту',
   'project.stage': 'змінено статус етапу', 'project.assign': 'змінено команду', 'client.remind': 'нагадування клієнту',
   'lead.update': 'змінено заявку', 'lead.offer_sent': 'надіслано КП', 'order.update': 'змінено замовлення', 'crm.bulk': 'масова дія',
-  'pbase.update': 'змінено контакт',
+  'pbase.update': 'змінено контакт', 'pbase.bulk': 'масова дія з контактами', 'pbase.archive': 'контакт в архіві', 'pbase.restore': 'контакт повернуто з архіву',
+  'gtask.update': 'змінено задачу', 'gtask.done': 'задачу виконано', 'gtask.reopen': 'задачу повернуто в роботу', 'gtask.bulk': 'масова дія із задачами',
 };
 export async function lastChange(env, entity, id) {
   try {
