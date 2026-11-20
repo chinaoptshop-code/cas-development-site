@@ -4,6 +4,7 @@
 // з CSP із _headers. Зовнішні запити (Clarity, Telegram, Google) блокуються.
 //   node tools/tests/ui.mjs [--shots <тека>]     (скріни JPEG, стиснуті; без --shots — не зберігаються)
 //   CRM3_SHOTS=<тека> — PNG діалогу конфлікту версій і вибору на канбані (crm3-*.png)
+//   CRM4_SHOTS=<тека> — PNG вкладки «Задачі», задач у картці заявки, таблиці контактів та імпорту CSV (crm4-*.png)
 //   ONLY=owner-crm,client — лише перевірки, назва яких починається з одного з цих слів (для налагодження)
 import http from 'node:http';
 import { readFileSync, existsSync, statSync, mkdirSync } from 'node:fs';
@@ -20,6 +21,9 @@ if (shotsDir) mkdirSync(shotsDir, { recursive: true });
 const crm3Dir = process.env.CRM3_SHOTS || null;
 if (crm3Dir) mkdirSync(crm3Dir, { recursive: true });
 const snap = async (page, name) => { if (crm3Dir) await page.screenshot({ path: join(crm3Dir, `crm3-${name}-${page.viewportSize().width}.png`) }); };
+const crm4Dir = process.env.CRM4_SHOTS || null;
+if (crm4Dir) mkdirSync(crm4Dir, { recursive: true });
+const snap4 = async (page, name) => { if (crm4Dir) await page.screenshot({ path: join(crm4Dir, `crm4-${name}-${page.viewportSize().width}.png`) }); };
 
 // ===== дані =====
 const BOTKEY = 'test-leadbot-key-0123456789abcdef'; // фіктивний ключ лише для тестів
@@ -66,6 +70,25 @@ for (const w of [402, 1440]) KB[w] = [(await api('OWNER', 'POST', '/api/admin/cr
   (await api('OWNER', 'POST', '/api/admin/crm', { name: 'Канбан Б ' + w, phone: '0672221' + w, service: 'Дизайн' })).id];
 const LC = (await api('OWNER', 'POST', '/api/admin/crm', { name: 'Заявка для конфлікту', phone: '0672229999', service: 'Ремонт офісу' })).id;
 const row = async (sql, ...a) => env.DB.prepare(sql).bind(...a).first();
+// CRM v4: задачі (загальні й до заявки / обʼєкта) і контакти для таблиці — усе вигадане
+const kd = n => new Date(Date.now() + n * 86400000).toLocaleDateString('sv-SE', { timeZone: 'Europe/Kyiv' });
+const LEAD1 = (await row("SELECT id FROM orders WHERE name = 'Лід 1'")).id;
+for (const t of [
+  { title: 'Надіслати КП по ремонту квартири', due_date: kd(0), order_id: LEAD1 },
+  { title: 'Замовити плитку для санвузла', due_date: kd(-2), assignee_staff_id: fore.id, project_id: P1, priority: 'high', note: 'Керамограніт 60×120, 14 м²' },
+  { title: 'Погодити дату заміру', due_date: kd(1), due_time: '11:00' },
+  { title: 'Оновити прайс постачальників', due_date: kd(4) },
+  { title: 'Зібрати відгуки після здачі' },
+]) await api('MGR', 'POST', '/api/admin/tasks', t);
+for (const w of [402, 1440]) await api('MGR', 'POST', '/api/admin/tasks', { title: 'Передзвонити прорабу ' + w, due_date: kd(0), assignee_staff_id: fore.id });
+for (const c of [
+  { name: 'Андрій Електрик (тест)', type: 'master', city: 'Київ', phone: '0670001101', tags: ['електрика'], rating: 5 },
+  { name: 'Віра Плиточниця (тест)', type: 'master', city: 'Бровари', phone: '0670001102', tags: ['плитка'], rating: 4 },
+  { company: 'ТОВ «Тестові вікна»', type: 'supplier', city: 'Львів', email: 'windows@example.com', tags: ['вікна'] },
+  { name: 'Гліб Підрядник (тест)', company: 'ФОП Тестовий', type: 'contractor', city: 'Одеса', tg: '@test_contractor_ua' },
+  { name: 'Дарина Ріелторка (тест)', type: 'realtor', city: 'Київ', phone: '0670001105' },
+  { name: 'Єгор Партнер (тест)', type: 'partner', city: 'Вінниця', phone: '0670001106' },
+]) await api('MGR', 'POST', '/api/admin/partners', c);
 
 // ===== сервер =====
 const H = readFileSync(join(ROOT, '_headers'), 'utf8');
@@ -546,6 +569,195 @@ await check('owner-crm-pages', 'OWNER', '/kabinet/admin#crm', [1440, 402], async
   if (/ з /.test(await p.textContent('.kn-col[data-col=new] h3')) || await p.$('[data-more]')) throw new Error('канбан: після «Показати ще» має бути вся колонка');
   await p.click('[data-qf=all]'); await sumIs('Показано 200 з');
   if (w < 600) await table();
+});
+
+// ===== CRM v4: задачі й таблиця контактів =====
+console.log('CRM v4: задачі, таблиця контактів');
+// елемент є й містить текст (чекаємо до 6 с: списки домальовуються після відповіді API)
+const seeT = async (p, sel, text) => {
+  try { await p.waitForFunction(([q, t]) => { const e = document.querySelector(q); return !!e && (!t || new RegExp(t).test(e.textContent)); }, [sel, text || ''], { timeout: 6000 }); }
+  catch { const t = await p.textContent(sel).catch(() => null); throw new Error(`${sel}: немає «${text}» (є: «${String(t).replace(/\s+/g, ' ').trim().slice(0, 110)}»)`); }
+};
+// ціль дотику: на телефоні — 44 px; на ПК кнопки панелі — 36 px (як у решти CRM); min — своя межа (прапорець «виконано» — 44 px скрізь)
+const box44 = async (p, sel, what, min) => {
+  const lim = min || (p.viewportSize().width < 600 ? 44 : 36);
+  const h = await p.$$eval(sel, els => els.filter(e => e.offsetParent).map(e => { const r = e.getBoundingClientRect(); return Math.min(r.width, r.height); }));
+  if (!h.length || h.some(x => x < lim - 0.5)) throw new Error(`${what}: ціль дотику < ${lim} px (${h.map(Math.round).slice(0, 4)})`);
+};
+// картка заявки «Лід 1» (після перевірки довгих списків вона не на першій сторінці — шукаємо на сервері)
+const openLead1 = async p => {
+  await p.waitForSelector('[data-f=q]'); await p.fill('[data-f=q]', 'Лід 1');
+  await p.waitForFunction(() => /^1 запис/.test((document.querySelector('[data-sum]') || {}).textContent || ''), null, { timeout: 6000 });
+  await p.locator('[data-list] :text("Лід 1")').first().click();
+};
+// вкладка «Задачі»: лічильник прострочених, групи за датою, швидке додавання (назва + Enter), прапорець ≥ 44 px, «Скасувати»
+await check('owner-tasks', 'OWNER', '/kabinet/admin#tasks', W, async p => {
+  const w = p.viewportSize().width;
+  await seeT(p, '.adm-tabs [data-t=tasks]', 'Задачі'); await seeT(p, '.adm-tabs [data-t=tasks] .tab-n', '^[1-9]');
+  await seeT(p, '[data-list] .tk-g.late', 'Прострочені'); await seeT(p, '[data-list]', 'Замовити плитку для санвузла'); await seeT(p, '[data-list]', 'Сьогодні');
+  await box44(p, '.tk-chk', 'прапорець «виконано»', 44); await box44(p, '.tk-views .pill', 'перемикач'); await box44(p, '[data-add] [data-qb]', '«Додати»');
+  const title = 'Купити зразки фарби ' + w;
+  await p.fill('[data-add] [data-qt]', title); await p.press('[data-add] [data-qt]', 'Enter');
+  await seeT(p, '[data-list]', title);
+  if (await p.inputValue('[data-add] [data-qt]') !== '') throw new Error('поле швидкого додавання не очистилось');
+  const t = await row('SELECT * FROM tasks WHERE title = ?', title);
+  if (!t || t.status !== 'open' || !t.assignee_staff_id) throw new Error('задачу не створено собі');
+  await snap4(p, 'tasks');
+  // «виконано» одним дотиком → зникає з відкритих, є «Скасувати»
+  await p.locator('.tk-row', { hasText: title }).locator('.tk-chk').click(); await seeT(p, '.tk-undo', 'Задачу виконано');
+  await p.waitForFunction(x => ![...document.querySelectorAll('[data-list] .tk-row')].some(r => r.textContent.includes(x)), title, { timeout: 4000 });
+  if ((await row('SELECT status FROM tasks WHERE id = ?', t.id)).status !== 'done') throw new Error('статус не done');
+  await p.click('.tk-undo [data-undo]'); await seeT(p, '[data-list]', title);
+  if ((await row('SELECT status FROM tasks WHERE id = ?', t.id)).status !== 'open') throw new Error('«Скасувати» не повернуло задачу');
+  // перемикачі: «Прострочені» — лише прострочені; «Виконані» — без відкритих
+  await p.click('[data-v=overdue]'); await p.waitForFunction(() => document.querySelector('[data-v=overdue]')?.getAttribute('aria-pressed') === 'true');
+  await p.waitForFunction(x => !document.querySelector('[data-list]').textContent.includes(x), title);
+  await seeT(p, '[data-list]', 'Замовити плитку для санвузла');
+  if (await p.locator('[data-list] .tk-row:not(.late)').count()) throw new Error('серед прострочених — не прострочена');
+  await p.click('[data-v=all]'); await seeT(p, '[data-list]', title);
+});
+// правка на місці (зі строком і виконавцем), скасування задачі; масові дії: вибрати кілька → перенести дату
+await check('owner-tasks-edit', 'OWNER', '/kabinet/admin#tasks', W, async p => {
+  await seeT(p, '[data-list]', 'Оновити прайс постачальників');
+  if (await p.getAttribute('[data-v=all]', 'aria-pressed') !== 'true') await p.click('[data-v=all]');
+  await p.locator('.tk-row', { hasText: 'Оновити прайс постачальників' }).locator('[data-edit]').click();
+  await seeT(p, '.tk-edit [data-k=title]');
+  await p.fill('.tk-edit [data-k=note]', 'Запитати три пропозиції'); await p.fill('.tk-edit [data-k=due_date]', kd(6)); await p.check('.tk-edit [data-k=priority]');
+  await box44(p, '.tk-edit [data-save]', '«Зберегти»');
+  await p.click('.tk-edit [data-save]'); await seeT(p, '[data-list]', 'Запитати три пропозиції');
+  const t = await row("SELECT * FROM tasks WHERE title = 'Оновити прайс постачальників'");
+  if (t.note !== 'Запитати три пропозиції' || t.due_date !== kd(6) || t.priority !== 'high') throw new Error('правка не збережена: ' + JSON.stringify([t.note, t.due_date, t.priority]));
+  await p.fill('.tk-edit [data-k=due_date]', kd(4)).catch(() => {}); // форма вже закрита — нічого
+  // масові дії
+  await p.click('[data-pick]'); await seeT(p, '[data-list] [data-sel]');
+  const a = p.locator('.tk-row', { hasText: 'Погодити дату заміру' }).locator('.tk-chk'), b = p.locator('.tk-row', { hasText: 'Зібрати відгуки після здачі' }).locator('.tk-chk');
+  await a.click(); await b.click(); await seeT(p, '[data-bulk]', 'Вибрано: 2');
+  await box44(p, '[data-bulk] .btn', 'кнопки масових дій');
+  await p.fill('[data-bulk] [data-bdate]', kd(9)); p.once('dialog', d => d.accept()); await p.click('[data-bulk] [data-bmove]');
+  await p.waitForFunction(() => document.querySelector('[data-bulk]').hidden, null, { timeout: 4000 });
+  const moved = (await env.DB.prepare("SELECT due_date FROM tasks WHERE title IN ('Погодити дату заміру', 'Зібрати відгуки після здачі')").all()).results.map(r => r.due_date);
+  if (moved.join() !== [kd(9), kd(9)].join()) throw new Error('дату не перенесено: ' + moved);
+  await p.fill('[data-f=q]', 'заміру'); await p.waitForFunction(() => document.querySelectorAll('[data-list] .tk-row').length === 1, null, { timeout: 4000 });
+  await p.fill('[data-f=q]', ''); await p.waitForFunction(() => document.querySelectorAll('[data-list] .tk-row').length > 3);
+});
+// картка заявки: блок «Задачі» з задачами цієї заявки, швидке додавання не закриває й не «бруднить» картку
+await check('owner-lead-tasks', 'OWNER', '/kabinet/admin#crm', W, async p => {
+  const w = p.viewportSize().width;
+  await openLead1(p);
+  await seeT(p, 'dialog[open] [data-tasks]', 'Надіслати КП по ремонту квартири');
+  if (/Замовити плитку/.test(await p.textContent('dialog[open] [data-tasks]'))) throw new Error('у картці — задача іншої привʼязки');
+  const title = 'Уточнити площу квартири ' + w;
+  await p.fill('dialog[open] [data-tasks] [data-qt]', title); await p.press('dialog[open] [data-tasks] [data-qt]', 'Enter');
+  await seeT(p, 'dialog[open] [data-tasks] [data-list]', title);
+  if (!(await p.$('dialog[open]'))) throw new Error('Enter у задачі закрив картку заявки');
+  const t = await row('SELECT order_id FROM tasks WHERE title = ?', title);
+  if (!t || t.order_id !== LEAD1) throw new Error('задачу не привʼязано до заявки');
+  await box44(p, 'dialog[open] [data-tasks] .tk-chk', 'прапорець у картці', 44);
+  await p.locator('dialog[open] [data-tasks] .tk-chk').first().scrollIntoViewIfNeeded(); await snap4(p, 'lead-tasks');
+  let asked = false; p.once('dialog', d => { asked = true; d.accept(); });
+  await p.click('dialog[open] button.x'); await p.waitForTimeout(300);
+  if (asked) throw new Error('додавання задачі позначило картку заявки зміненою');
+  if (await p.$('dialog[open]')) throw new Error('картка не закрилась');
+});
+// картки обʼєкта й контакту: той самий блок
+await check('owner-project-tasks', 'OWNER', '/kabinet/admin#projects', [1440], async p => {
+  await seeT(p, '#admView', 'Квартира, тестовий обʼєкт'); await p.locator('tr.clk', { hasText: 'Квартира, тестовий обʼєкт' }).first().click();
+  await seeT(p, '[data-gtk]', 'Замовити плитку для санвузла'); await seeT(p, '[data-gtk] [data-qst]', 'Чорнові роботи');
+});
+// контакти: режим «Таблиця» — вкладки типів з лічильниками, сортування, правка клітинки, вибір колонок, гортання лише всередині таблиці
+await check('owner-contacts-table', 'OWNER', '/kabinet/admin#partners', W, async p => {
+  const w = p.viewportSize().width;
+  await p.waitForSelector('[data-mode=table]'); await p.click('[data-mode=table]');
+  await seeT(p, '[data-ctbl]', 'Андрій Електрик'); await seeT(p, '[data-ty=master]', 'Майстри\\s*[2-9]'); await seeT(p, '[data-ty=supplier]', 'Постачальники');
+  const names = () => p.$$eval('[data-ctbl] tbody tr[data-id] td[data-c=name] [data-v]', e => e.map(x => x.textContent.trim()).filter(Boolean));
+  // сортування за містом: asc → desc
+  await p.click('[data-s=city]'); await p.waitForSelector('th[aria-sort=ascending] [data-s=city]');
+  const c1 = await p.$$eval('[data-ctbl] tbody tr[data-id] td[data-c=city]', e => e.map(x => x.textContent.trim()).filter(Boolean));
+  if (c1.join() !== c1.slice().sort((a, b) => (a < b ? -1 : a > b ? 1 : 0)).join()) throw new Error('місто не за зростанням: ' + c1);
+  await p.click('[data-s=city]'); await p.waitForSelector('th[aria-sort=descending] [data-s=city]');
+  await p.click('[data-s=name]'); await p.waitForSelector('th[aria-sort=ascending] [data-s=name]');
+  // закріплений заголовок і гортання лише всередині таблиці
+  if (await p.$eval('[data-ctbl] thead th', th => getComputedStyle(th).position) !== 'sticky') throw new Error('заголовок таблиці не закріплено');
+  if (w < 600 && !(await p.$eval('.ct-wrap', e => e.scrollWidth > e.clientWidth + 20))) throw new Error('на телефоні таблиця має гортатись усередині себе');
+  // вкладка типу
+  await p.click('[data-ty=master]'); await p.waitForFunction(() => document.querySelector('[data-ty=master]')?.getAttribute('aria-pressed') === 'true' && !/Тестові вікна/.test(document.querySelector('[data-ctbl]').textContent));
+  { const nm = await names(); if (!nm.includes('Андрій Електрик (тест)') || !nm.includes('Віра Плиточниця (тест)') || nm.some(x => /Ріелторка|Партнер|Підрядник/.test(x))) throw new Error('майстри: ' + nm); }
+  const town = w === 402 ? 'Вишгород' : 'Буча', tel = w === 402 ? '9' : '8';
+  // правка клітинки на місці (місто) — Enter зберігає; телефон нормалізується
+  const cell = p.locator('tr[data-id]', { hasText: 'Віра Плиточниця' }).locator('td[data-c=city]');
+  await cell.click(); await p.fill('td.editing input', town); await p.press('td.editing input', 'Enter');
+  await p.waitForFunction(t => !document.querySelector('td.editing') && [...document.querySelectorAll('td[data-c=city]')].some(td => td.textContent.trim() === t), town, { timeout: 4000 });
+  if ((await row("SELECT city FROM partners WHERE name LIKE 'Віра Плиточниця%'")).city !== town) throw new Error('клітинку не збережено');
+  const ph = p.locator('tr[data-id]', { hasText: 'Андрій Електрик' }).locator('td[data-c=phone]');
+  await ph.click(); await p.fill('td.editing input', '067 000 11 9' + tel); await p.press('td.editing input', 'Enter');
+  await p.waitForFunction(t => [...document.querySelectorAll('td[data-c=phone]')].some(td => td.textContent.includes('+38067000119' + t)), tel, { timeout: 4000 });
+  // Esc — без змін
+  await cell.click(); await p.fill('td.editing input', 'Не зберігати'); await p.press('td.editing input', 'Escape');
+  if (await p.$('td.editing')) throw new Error('Esc не закрив клітинку');
+  if ((await row("SELECT city FROM partners WHERE name LIKE 'Віра Плиточниця%'")).city !== town) throw new Error('Esc зберіг зміну');
+  // вибір колонок запамʼятовується
+  await p.click('.ct-cols summary'); await p.uncheck('[data-col=notes]'); await p.waitForFunction(() => !document.querySelector('[data-s=notes]'));
+  await p.reload({ waitUntil: 'networkidle' }); await seeT(p, '[data-ctbl]', 'Андрій Електрик');
+  if (await p.$('[data-s=notes]')) throw new Error('вибір колонок не запамʼятався');
+  await p.click('.ct-cols summary'); await p.check('[data-col=notes]'); await p.waitForSelector('[data-s=notes]'); await p.click('.ct-cols summary');
+  // швидке додавання рядка
+  await p.fill('[data-newrow] [data-n=name]', 'Жанна Нова (тест) ' + w); await p.fill('[data-newrow] [data-n=phone]', '06700012' + (w === 402 ? '01' : '02')); await p.press('[data-newrow] [data-n=phone]', 'Enter');
+  await seeT(p, '[data-ctbl]', 'Жанна Нова \\(тест\\) ' + w);
+  if ((await row('SELECT type FROM partners WHERE name = ?', 'Жанна Нова (тест) ' + w)).type !== 'master') throw new Error('новий рядок — не з типом відкритої вкладки');
+  await p.click('[data-ty=""]'); await seeT(p, '[data-ctbl]', 'Тестові вікна');
+  await box44(p, '[data-ctbl] thead th button', 'заголовок-сортування'); await box44(p, '.ct-tb [data-imp]', '«Імпорт CSV»');
+  await snap4(p, 'contacts-table');
+  // масова дія: місто для двох вибраних
+  await p.locator('tr[data-id]', { hasText: 'Дарина Ріелторка' }).locator('[data-sel]').check(); await p.locator('tr[data-id]', { hasText: 'Єгор Партнер' }).locator('[data-sel]').check();
+  await seeT(p, '[data-bulk]', 'Вибрано: 2'); await p.fill('[data-bcity]', 'Ірпінь'); p.once('dialog', d => d.accept()); await p.click('[data-bcgo]');
+  await p.waitForFunction(() => [...document.querySelectorAll('td[data-c=city]')].filter(td => td.textContent.trim() === 'Ірпінь').length === 2, null, { timeout: 4000 });
+  if (!(await p.$('[data-csv][href*="format=csv"][href*="sort=name"]'))) throw new Error('CSV має брати поточний фільтр і сортування');
+  await p.click('[data-mode=list]'); await seeT(p, '[data-ptbl]', 'Тестові вікна'); await p.click('[data-mode=table]'); await seeT(p, '[data-ctbl]');
+});
+// імпорт CSV: файл → зіставлення колонок (вгадано з заголовків) → попередній перегляд (новий / дубль / помилка) → імпорт лише нових
+await check('owner-contacts-import', 'OWNER', '/kabinet/admin#partners', W, async p => {
+  const w = p.viewportSize().width, u = w === 402 ? '41' : '42';
+  await p.waitForSelector('[data-mode]'); if (!(await p.$('[data-ctbl]'))) await p.click('[data-mode=table]');
+  await seeT(p, '[data-ctbl]', 'Андрій Електрик'); await p.click('[data-imp]'); await seeT(p, 'dialog.c4-imp[open]', 'Імпорт контактів з CSV');
+  const csv = '﻿Імʼя;Телефон;Місто;Спеціалізація;Тип\r\n' +
+    `Захар Сантехнік (тест ${w});067 000 ${u} 01;Київ;"сантехніка, опалення";Майстер\r\n` +
+    'Дарина та сама;+38 (067) 000-11-05;Київ;;\r\n' +
+    `Ілля Маляр (тест ${w});067000${u}02;Буча;малярні роботи;\r\n` +
+    'Кривий номер;12-34;Київ;;\r\n';
+  await p.setInputFiles('dialog.c4-imp [data-file]', { name: 'contacts.csv', mimeType: 'text/csv', buffer: Buffer.from(csv, 'utf8') });
+  await seeT(p, 'dialog.c4-imp', 'зіставте колонки');
+  const map = await p.$$eval('dialog.c4-imp [data-m]', e => e.map(x => x.value));
+  if (map.join() !== 'name,phone,city,tags,type') throw new Error('колонки не вгадано: ' + map);
+  await p.selectOption('dialog.c4-imp [data-dt]', 'crew');
+  await p.click('dialog.c4-imp [data-go]'); await seeT(p, 'dialog.c4-imp [data-psum]', 'Буде додано: 2');
+  const t = await p.textContent('dialog.c4-imp');
+  if (!/дублів \(пропустимо\): 1/.test(t) || !/з помилками \(пропустимо\): 1/.test(t) || !/вже є: Дарина Ріелторка/.test(t) || !/помилка: Телефон: некоректний номер/.test(t)) throw new Error('попередній перегляд: ' + t.replace(/\s+/g, ' ').slice(0, 300));
+  if (await row('SELECT 1 FROM partners WHERE name LIKE ?', `Захар Сантехнік (тест ${w})`)) throw new Error('перевірка вже записала рядок');
+  await snap4(p, 'import-preview');
+  await p.click('dialog.c4-imp [data-imp]'); await seeT(p, 'dialog.c4-imp [data-pdone]', 'Додано: 2');
+  await p.click('dialog.c4-imp [data-x]'); await seeT(p, '[data-ctbl]', `Захар Сантехнік \\(тест ${w}\\)`);
+  const a = await row('SELECT * FROM partners WHERE name = ?', `Захар Сантехнік (тест ${w})`), b = await row('SELECT * FROM partners WHERE name = ?', `Ілля Маляр (тест ${w})`);
+  if (a.type !== 'master' || a.phone !== `+38067000${u}01` || a.tags !== '["сантехніка","опалення"]' || b.type !== 'crew' || b.city !== 'Буча') throw new Error('імпорт: ' + JSON.stringify([a.type, a.phone, a.tags, b.type, b.city]));
+  if (await p.$('dialog.c4-imp')) throw new Error('діалог імпорту не закрився');
+});
+// менеджер: ті самі задачі й таблиця; працівник (прораб): «Задачі» — лише свої, «виконано» з коментарем, повернення
+await check('manager-tasks', 'MGR', '/kabinet/admin#tasks', [402], async p => { await seeT(p, '[data-list]', 'Замовити плитку для санвузла'); await seeT(p, '[data-add] [data-qt]'); });
+await check('team-todo', 'FORE', '/kabinet/team#todo', W, async p => {
+  const w = p.viewportSize().width, title = 'Передзвонити прорабу ' + w;
+  await seeT(p, '.tm-nav', 'Задачі'); await seeT(p, '#tmView', title);
+  const txt = await p.textContent('#tmView');
+  if (/Надіслати КП|Погодити дату заміру|Зібрати відгуки/.test(txt)) throw new Error('видно чужі задачі');
+  await box44(p, '.tm-cb', 'прапорець «виконано»', 44);
+  await snap4(p, 'team-todo');
+  await p.locator('.tm-todo', { hasText: title }).locator('.tm-cb').click();
+  await seeT(p, '#tmSheet[open]', 'Задачу виконано\\?'); await p.fill('#tmSheet textarea', 'Домовились на завтра о 10:00');
+  await p.click('#tmSheet button[type=submit]'); await p.waitForFunction(() => !document.querySelector('#tmSheet[open]'), null, { timeout: 4000 });
+  await p.waitForFunction(x => ![...document.querySelectorAll('#tmView > .tm-todos > .tm-todo')].some(e => e.textContent.includes(x)) && !!document.querySelector('.tm-more'), title, { timeout: 5000 });
+  const t = await row('SELECT status, done_note, done_by FROM tasks WHERE title = ?', title);
+  if (t.status !== 'done' || t.done_note !== 'Домовились на завтра о 10:00' || t.done_by !== fore.id) throw new Error('не виконано: ' + JSON.stringify(t));
+  await p.click('.tm-more summary'); await seeT(p, '.tm-more', 'Мій коментар: Домовились на завтра');
+  // «Сьогодні»: прострочена задача прораба з кнопкою «Виконано»
+  await p.click('.tm-nav [data-v=today]'); await seeT(p, '#tmView', 'Замовити плитку для санвузла'); await seeT(p, '#tmView [data-gdone]', 'Виконано');
 });
 
 await browser.close(); server.close();

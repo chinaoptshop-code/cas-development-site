@@ -3,11 +3,14 @@
 // прораб бачить адресу й телефон клієнта, але не суми; бухгалтер — суми, але не телефони.
 // Задачі проєкту (project_tasks, міграція 0012): чекліст обʼєкта (projects[].tasks) і мої невиконані — у «Сьогодні» як kind 'task'
 // (прострочені — urgent); відмітити — POST /api/team/action {type: 'task'}. До міграції — без задач.
+// Загальні задачі CRM (tasks, міграція 0018; functions/_tasks.js): todo — мої відкриті й виконані за останній час (вкладка «Задачі»),
+// відкриті — ще й у «Сьогодні» як kind 'todo'; відмітити — PATCH /api/team/tasks {id, done, note?}. До міграції — todo: [].
 import { CLOSED, IN_IDS, idsArg, json, statusLabel } from '../../_lib.js';
 import { SLA_MIN, sqlTime } from '../../_alerts.js';
 import { cameraOf, progressOf, stageStatus, STAGE_STATUS } from '../../_account.js';
 import { projectContacts } from '../../_partners.js';
 import { PERMS, ROLES, need, noTable, orderScope, projectScope, shapeOrder, shapeProject } from '../../_roles.js';
+import { canSeeTasks, listTasks, tasksReady } from '../../_tasks.js';
 
 const parse = (s, d) => { try { const v = JSON.parse(s); return v == null ? d : v; } catch { return d; } };
 const day = (n = 0) => new Date(Date.now() + n * 86400000).toISOString().slice(0, 10);
@@ -108,6 +111,15 @@ export async function onRequestGet({ request, env }) {
     if (!noTable(e)) throw e;
     return json({ me, tasks: [], projects: [], leads: [], pending: true });
   }
+  // ===== загальні задачі CRM, призначені мені =====
+  let todo = [], todoDone = [];
+  if (canSeeTasks(x) && x.staffId && await tasksReady(env)) {
+    const f = { assignee: x.staffId, limit: 300 };
+    todo = (await listTasks(env, x, { ...f, view: 'mine' })).rows.filter(y => y.src === 't'); // задачі етапів уже є вище (kind 'task')
+    todoDone = (await listTasks(env, x, { ...f, view: 'done', limit: 30 })).rows.filter(y => y.src === 't' && y.status === 'done');
+    for (const y of todo) tasks.push({ kind: 'todo', urgent: y.overdue, due: y.due_date || null, due_time: y.due_time || null, todo_id: y.id, title: y.title,
+      sub: [y.project && y.project.title, y.order && `заявка ${y.order.number}`, y.contact && (y.contact.name || y.contact.company)].filter(Boolean).join(' · ') });
+  }
   tasks.sort((a, b) => (b.urgent - a.urgent) || String(a.due).localeCompare(String(b.due)));
-  return json({ me, today: t, tasks, projects, leads });
+  return json({ me, today: t, tasks, projects, leads, todo, todo_done: todoDone });
 }

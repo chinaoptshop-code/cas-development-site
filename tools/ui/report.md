@@ -582,6 +582,7 @@
 | kabinet/zaboroneno.html | other | 47.3 | 12.8 | 32.5 | 0.7 | 14 | 212 |
 | rekonstruktsiia-budynku-kyiv.html | land | 47.2 | 12.2 | 9.1 | 0.5 | 5 | 466 |
 | remont-kvartyry-zhk-greenville-na-pechersku.html | land | 47.2 | 12.3 | 9.1 | 0.5 | 5 | 440 |
+| kabinet/admin.html | other | 47.1 | 12.6 | 32.5 | 0.7 | 14 | 211 |
 | remont-kvartyry-zhk-linden-luxury-residences.html | land | 47.1 | 12.3 | 9.1 | 0.5 | 5 | 440 |
 | remontna-bryhada-kyiv.html | land | 47.1 | 12.1 | 8.8 | 0.5 | 5 | 463 |
 | ru/dizayn-i-remont-ukraina.html | land | 47.1 | 12.2 | 9.1 | 0.5 | 5 | 496 |
@@ -592,7 +593,6 @@
 | ru/uslugi.html | land | 47.0 | 12.3 | 9.1 | 0.5 | 5 | 454 |
 | blog/budynok-na-vodi-pali-chy-pontony.html | article | 46.9 | 12.7 | 9.9 | 0.5 | 5 | 430 |
 | blog/kompleks-vidpochynku-pid-kliuch-z-choho-skladaietsia-koshtorys.html | article | 46.9 | 12.6 | 9.9 | 0.5 | 5 | 412 |
-| kabinet/admin.html | other | 46.9 | 12.6 | 32.5 | 0.7 | 14 | 210 |
 | ru/remont-v-novostroyke-kiev.html | land | 46.9 | 11.9 | 9.0 | 0.5 | 5 | 454 |
 | blog/proekt-budynku-shcho-vkhodyt.html | article | 46.8 | 12.5 | 9.9 | 0.5 | 5 | 400 |
 | fr/prix-renovation-appartement.html | land | 46.8 | 12.6 | 9.1 | 2.0 | 5 | 479 |

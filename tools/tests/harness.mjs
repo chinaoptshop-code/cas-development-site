@@ -113,10 +113,11 @@ export async function call(env, method, path, { cookie, body, headers = {}, raw 
   let i = 0;
   const next = async () => (i < mw.length ? (await load(mw[i++])).onRequest({ request, env, params, next, waitUntil: null }) : handler());
   const res = await next();
-  const text = await res.text();
+  const buf = new Uint8Array(await res.arrayBuffer());
+  const text = new TextDecoder().decode(buf); // як res.text(): BOM на початку не входить у текст — його показує поле bom
   let data = null;
   try { data = JSON.parse(text); } catch { /* html / csv */ }
-  return { status: res.status, data, text, headers: res.headers };
+  return { status: res.status, data, text, headers: res.headers, bom: buf[0] === 0xEF && buf[1] === 0xBB && buf[2] === 0xBF };
 }
 
 // Сесія для клієнта (як після входу)

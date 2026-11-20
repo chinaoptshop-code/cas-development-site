@@ -336,6 +336,12 @@
   function start() {
     var ext = window.CASStudio;
     if (ext && ext.tabs) ext.tabs.slice().reverse().forEach(function (t) { TABS.unshift([t.key, t.label, t.perms]); RENDER[t.key] = t.render; });
+    // CRM v4 (assets/admin/crm4.v1.js): вкладка «Задачі» — одразу після CRM
+    var ext4 = window.CASCrm4;
+    if (ext4 && ext4.tabs) ext4.tabs.forEach(function (t) {
+      var i = TABS.findIndex(function (x) { return x[0] === t.after; });
+      TABS.splice(i < 0 ? TABS.length : i + 1, 0, [t.key, t.label, t.perms]); RENDER[t.key] = t.render;
+    });
     var tabs = TABS.filter(function (t) { return !t[2] || t[2].some(can); });
     var first = tabs[0] ? tabs[0][0] : 'crm';
     box.className = 'adm';
@@ -368,9 +374,11 @@
     $$('.adm-tabs button', box).forEach(function (b) { b.onclick = function () { open(b.dataset.t); if (curTab === b.dataset.t) b.scrollIntoView({ block: 'nearest', inline: 'center' }); }; });
     addEventListener('hashchange', function () { open(location.hash.slice(1)); }); // переходи з «Аналітики» в CRM з фільтром
     open(location.hash.slice(1) || first);
+    if (ext4 && ext4.started && tabs.some(function (t) { return t[0] === 'tasks'; })) ext4.started(); // лічильник прострочених на вкладці
   }
   // для studio.v1.js: спільні помічники
   window.CASAdminKit = { esc: esc, money: money, toast: toast, api: function (p, o) { return api(p, o); }, can: can, transition: transition, reduced: reduced,
+    isConflict: function (e) { return isConflict(e); }, conflictDialog: function (t, l, w) { return conflictDialog(t, l, w); },
     openClient: function (id) { if (window.CASStudio && window.CASStudio.clientCard) window.CASStudio.clientCard(id); } };
 
   // Надіслати клієнту готовий текст зі свого месенджера (сервер нічого не шле): текст копіюється в буфер, відкривається чат.
@@ -891,15 +899,17 @@
         (r.kind === 'order' ? '<label class="f full"><span>Нотатка для клієнта (видно в його кабінеті)</span><input name="manager_note" value="' + f('manager_note') + '"></label>' : '') +
         (id ? '<label class="f full"><span>Коментар до зміни (в історію)</span><input name="note"></label>' : '') +
         '<div class="full row stick-d"><button class="btn" type="submit" value="save">Зберегти</button><button class="btn ghost" type="submit" value="cancel" formnovalidate>Закрити</button><span class="err" data-e role="alert"></span></div>' +
+        (id && window.CASCrm4 ? '<div class="full" data-tasks></div>' : '') +
         (id ? '<ul class="ev full" data-ev><li>Історія…</li></ul>' : '') + '</form>';
       var form = $('form', dlg), dirty = false;
       if (carry) { // мої зміни зі старої форми — на свіжу заявку
         Object.keys(carry.values).forEach(function (k) { var el = form.elements[k]; if (el) { el.value = carry.values[k] == null ? '' : carry.values[k]; dirty = true; } });
         if (carry.notes.length) form.firstElementChild.insertAdjacentHTML('afterend', '<div class="full">' + clashBox(carry.notes) + '</div>');
       }
-      // блок «Пропозиція» зберігається своїми кнопками — не позначає форму зміненою
-      var mark = function (e) { if (!e.target.closest('[data-offer]')) dirty = true; };
+      // блоки «Пропозиція» і «Задачі» зберігаються самі — не позначають форму зміненою
+      var mark = function (e) { if (!e.target.closest('[data-offer],[data-tasks]')) dirty = true; };
       form.addEventListener('input', mark); form.addEventListener('change', mark);
+      if (id && window.CASCrm4) window.CASCrm4.taskBlock($('[data-tasks]', form), { order_id: id });
       if (r.kind === 'lead' && id) offerBind(r, form);
       $$('[data-nc]', form).forEach(function (b) { b.onclick = function () { form.elements.next_contact.value = kyivDate(Date.now() + (+b.dataset.nc) * 86400000); dirty = true; }; });
       var leave = function () { return !dirty || confirm('Закрити без збереження змін?'); };
@@ -1212,6 +1222,7 @@
       '<div class="f full"><span>Етапи: статус і прогрес <small data-pr></small></span><div data-st></div></div></form>' +
       '<div class="row pj-save"><button class="btn ghost" data-save>Зберегти проєкт</button><span class="err" data-dirty hidden>є незбережені зміни</span></div>' +
       '<h3>Задачі по етапах <small class="muted" data-tkn></small></h3><div data-tk></div>' +
+      (window.CASCrm4 ? '<div data-gtk></div>' : '') +
       '<h3>Контакти обʼєкта <small class="muted">(бригади, майстри, постачальники — бачить команда обʼєкта, не клієнт)</small></h3><div data-pct></div>' +
       ((d.issues || []).some(function (i) { return i.project_id === id; }) ? '<h3>Проблеми на обʼєкті (бачить лише команда)</h3><div data-iss></div>' : '') +
       '<h3>Фотозвіти</h3><div data-rep></div>' +
@@ -1395,6 +1406,8 @@
         }));
       }, function (e) { toast(e.message, true); });
     }
+    // загальні задачі CRM, привʼязані до обʼєкта (вкладка «Задачі», migrations/0018) — окремо від чекліста етапів нижче
+    if (window.CASCrm4) window.CASCrm4.taskBlock($('[data-gtk]', L), { project_id: id }, { stages: (p.stages || []).filter(function (x) { return x.id; }).map(function (x) { return { id: x.id, name: x.name }; }) });
     // чекліст задач (migrations/0012): по етапах, виконавець, термін; працівник бачить свої в /kabinet/team («Сьогодні»)
     var tkEl = $('[data-tk]', L), TKS = (d.tasks || []).filter(function (t) { return t.project_id === id; }), TSTF = d._staff || [];
     if (d.tasks_ready === false) tkEl.innerHTML = '<p class="muted">Задачі зʼявляться після застосування міграції 0012 (автоматично під час деплою).</p>';
@@ -1538,11 +1551,21 @@
     var opts = function (o, v) { return Object.keys(o).map(function (k) { return '<option value="' + k + '"' + (k === v ? ' selected' : '') + '>' + esc(o[k]) + '</option>'; }).join(''); };
     var qs = function (csv) { return '/api/admin/partners?type=' + S.type + '&status=' + S.status + '&rating=' + S.rating + '&city=' + encodeURIComponent(S.city) + '&q=' + encodeURIComponent(S.q) + (csv ? '&format=csv' : ''); };
     var save = function () { try { localStorage.setItem('partnerFilters', JSON.stringify(S)); } catch (e) { /* noop */ } };
+    // режим «Таблиця» (CRM v4, assets/admin/crm4.v1.js): сортування, правка клітинки, масові дії, імпорт CSV; вибір запамʼятовується
+    var X4 = window.CASCrm4, MODE = 'list';
+    try { MODE = localStorage.getItem('contactsMode') === 'table' && X4 ? 'table' : 'list'; } catch (e) { /* noop */ }
+    var setMode = function (m) { MODE = m; try { localStorage.setItem('contactsMode', m); } catch (e) { /* noop */ } return list(); };
+    function table() {
+      var ready = Object.keys(TYPES).length ? Promise.resolve() : api('/api/admin/partners?limit=1').then(function (d) { TYPES = d.types; STS = d.statuses; READY = d.ready !== false; });
+      return ready.then(function () { return X4.contactsTable(L, { back: function () { setMode('list'); }, card: function (id) { if (id) open(id); else card(null); } }); });
+    }
     function list() {
+      if (MODE === 'table') return table();
       return api(qs()).then(function (d) {
         TYPES = d.types; STS = d.statuses; READY = d.ready !== false;
         var tc = d.type_counts || {};
-        L.innerHTML = '<div class="tb"><input class="grow" type="search" data-f="q" placeholder="Пошук: імʼя, компанія, @username, телефон, пошта, тег, нотатки" aria-label="Пошук">' +
+        L.innerHTML = '<div class="tb">' + (X4 ? '<div class="seg" role="group" aria-label="Вигляд контактів"><button type="button" data-mode="list" aria-pressed="true">Список</button><button type="button" data-mode="table" aria-pressed="false">Таблиця</button></div>' : '') +
+          '<input class="grow" type="search" data-f="q" placeholder="Пошук: імʼя, компанія, @username, телефон, пошта, тег, нотатки" aria-label="Пошук">' +
           '<select data-f="type" aria-label="Тип"><option value="">Усі типи</option>' + opts(TYPES, S.type) + '</select>' +
           '<select data-f="status" aria-label="Статус"><option value="">Усі статуси</option>' + opts(STS, S.status) + '</select>' +
           '<select data-f="rating" aria-label="Оцінка"><option value="">Будь-яка оцінка</option>' + [5, 4, 3].map(function (n) { return '<option value="' + n + '"' + (String(n) === String(S.rating) ? ' selected' : '') + '>від ' + n + '★</option>'; }).join('') + '</select>' +
@@ -1565,6 +1588,7 @@
         $$('[data-qt]', L).forEach(function (b) { b.onclick = function () { S.type = b.dataset.qt; save(); list(); }; });
         var q = $('[data-f="q"]', L); if (q && S.q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
         $('[data-new]', L).onclick = function () { card(null); };
+        var mt = $('[data-mode="table"]', L); if (mt) mt.onclick = function () { setMode('table'); };
         $$('tr.clk', L).forEach(function (tr) {
           var openCard = function () { open(+tr.dataset.id); };
           tr.onclick = openCard; tr.onkeydown = function (e) { if (e.key === 'Enter') openCard(); };
@@ -1587,7 +1611,8 @@
         '<label class="fld"><span>Спеціалізація, теги (через кому)</span><input name="tags" value="' + esc(r.tags.join(', ')) + '" placeholder="плитка, електрика, гіпсокартон"></label>' +
         '<label class="fld"><span>Нотатки (бачать власник і менеджер)</span><textarea name="notes" rows="4">' + esc(r.notes || '') + '</textarea></label>' +
         '<p><button class="btn" type="submit">' + (n ? 'Додати' : 'Зберегти') + '</button> <span class="err" data-m></span></p></form>' +
-        (n ? '' : '<h3>Обʼєкти' + (pl.length ? ' · ' + pl.length : '') + '</h3>' + (pl.length ? '<ul class="plist ct-links">' + pl.map(function (l) {
+        (n ? '' : '<div data-ctk></div>' + (r.archived_at ? '<p class="note">Контакт в архіві з ' + esc(String(r.archived_at).slice(0, 10)) + ' — у списку й пошуку не показується. <button type="button" class="btn sm ghost" data-unarch>Повернути з архіву</button></p>' : '') +
+          '<h3>Обʼєкти' + (pl.length ? ' · ' + pl.length : '') + '</h3>' + (pl.length ? '<ul class="plist ct-links">' + pl.map(function (l) {
             return '<li><button type="button" class="lnk" data-pj="' + l.project_id + '">' + esc(l.project_title || 'Обʼєкт #' + l.project_id) + '</button>' + (l.role ? ' — ' + esc(l.role) : '') +
               ' <button type="button" class="je-add" data-ul="' + l.id + '" aria-label="Відвʼязати">✕</button></li>'; }).join('') + '</ul>' : '<p class="muted">Ще не привʼязано. Привʼязати — у картці обʼєкта, блок «Контакти обʼєкта».</p>') +
           '<h3>Заявки</h3>' + (ol.length || x.leads.length ? '<ul class="plist">' + ol.map(function (l) { return '<li>' + esc(l.order_number || '#' + l.order_id) + ' · ' + esc(l.order_service || '') + (l.role ? ' — ' + esc(l.role) : '') + '</li>'; }).join('') +
@@ -1602,6 +1627,8 @@
         if (carry.notes.length) pfm.insertAdjacentHTML('beforebegin', clashBox(carry.notes));
       }
       $('[data-back]', L).onclick = function () { if (wf.leave()) list(); };
+      if (!n && X4) X4.taskBlock($('[data-ctk]', L), { contact_id: r.id });
+      var un = $('[data-unarch]', L); if (un) un.onclick = function () { api('/api/admin/partners', { method: 'PATCH', body: { id: r.id, archived: false } }).then(function () { toast('Контакт повернуто з архіву'); open(r.id); }, function (e) { toast(e.message, true); }); };
       $$('[data-pj]', L).forEach(function (b) { b.onclick = function () { try { sessionStorage.setItem('pjOpen', b.dataset.pj); } catch (e) { /* noop */ } location.hash = '#projects'; }; });
       $$('[data-ul]', L).forEach(function (b) { b.onclick = function () {
         if (!confirm('Відвʼязати контакт від обʼєкта?')) return;

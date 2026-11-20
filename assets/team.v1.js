@@ -32,6 +32,7 @@
     home: '<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/>',
     list: '<path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/>',
     money: '<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/>',
+    check: '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8 12.5 3 3 5-6"/>',
     more: '<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>'
   };
   var ic = function (k) { return '<svg viewBox="0 0 24 24" aria-hidden="true">' + SVG[k] + '</svg>'; };
@@ -83,6 +84,8 @@
   /* ---------- каркас ---------- */
   function tabs() {
     var t = [['today', 'Сьогодні', 'today', D.tasks.length], ['objects', 'Обʼєкти', 'home', D.projects.length]];
+    // «Мої задачі» (CRM v4, tasks, міграція 0018): задачі, які мені поставили власник чи менеджер
+    if (ME.perms.indexOf('tasks.own') >= 0 || ME.perms.indexOf('tasks.manage') >= 0) t.push(['todo', 'Задачі', 'check', (D.todo || []).length]);
     if (D.leads && (ME.perms.indexOf('leads.view_all') >= 0 || ME.perms.indexOf('leads.view_assigned') >= 0)) t.push(['leads', 'Заявки', 'list', D.leads.length]);
     if (ME.perms.indexOf('finance.view') >= 0) t.push(['money', 'Платежі', 'money', 0]);
     t.push(['more', 'Ще', 'more', 0]);
@@ -114,13 +117,13 @@
   }
   function draw() {
     var v = $('#tmView');
-    v.innerHTML = VIEW === 'objects' ? objects() : VIEW === 'leads' ? leads() : VIEW === 'money' ? money() : VIEW === 'more' ? more() : todayView();
+    v.innerHTML = VIEW === 'objects' ? objects() : VIEW === 'todo' ? todo() : VIEW === 'leads' ? leads() : VIEW === 'money' ? money() : VIEW === 'more' ? more() : todayView();
     bind(v);
   }
   var proj = function (id) { return D.projects.find(function (p) { return p.id === id; }); };
 
   /* ---------- Сьогодні ---------- */
-  var KIND = { report: ['cam', 'Фотозвіт'], stage: ['ok', 'Етап'], next: ['today', 'Наступний крок'], issue: ['warn', 'Проблема'], lead: ['list', 'Заявка'], contact: ['phone', 'Звʼязатися'], payment: ['money', 'Платіж'], task: ['ok', 'Задача'] };
+  var KIND = { report: ['cam', 'Фотозвіт'], stage: ['ok', 'Етап'], next: ['today', 'Наступний крок'], issue: ['warn', 'Проблема'], lead: ['list', 'Заявка'], contact: ['phone', 'Звʼязатися'], payment: ['money', 'Платіж'], task: ['ok', 'Задача'], todo: ['check', 'Задача'] };
   function todayView() {
     if (!D.tasks.length) return '<section class="tm-card tm-empty"><p class="big">🎉</p><h3>На сьогодні все</h3><p class="muted">Нових задач немає. Обʼєкти — у вкладці «Обʼєкти».</p></section>';
     return '<ul class="tm-tasks">' + D.tasks.map(function (t, i) {
@@ -129,10 +132,11 @@
       if (t.kind === 'report' && can('reports.upload')) btn = '<button class="tm-btn" data-act="report" data-p="' + t.project_id + '">' + ic('cam') + 'Зробити фотозвіт</button>';
       else if (t.kind === 'stage' && can('projects.edit_stage')) btn = '<button class="tm-btn" data-act="stage" data-p="' + t.project_id + '" data-s="' + esc(t.stage_id) + '">' + ic('ok') + 'Етап виконано</button>';
       else if (t.kind === 'task' && can('projects.edit_stage')) btn = '<button class="tm-btn" data-tdone="' + t.task_id + '" data-p="' + t.project_id + '">' + ic('ok') + 'Виконано</button>';
+      else if (t.kind === 'todo') btn = '<button class="tm-btn" data-gdone="' + t.todo_id + '">' + ic('ok') + 'Виконано</button>';
       else if (t.kind === 'issue' || t.kind === 'next') btn = '<button class="tm-btn ghost" data-open="' + t.project_id + '">Відкрити обʼєкт</button>';
       else if ((t.kind === 'lead' || t.kind === 'contact') && o) btn = (o.phone ? '<a class="tm-btn" href="tel:+' + digits(o.phone) + '">' + ic('phone') + 'Подзвонити</a>' : '') +
         (t.kind === 'lead' && can('leads.edit') ? '<button class="tm-btn ghost" data-take="' + o.id + '">Взяв у роботу</button>' : '');
-      return '<li class="tm-task' + (t.urgent ? ' urgent' : '') + '" style="--i:' + i + '"><span class="tm-ic">' + ic(k[0]) + '</span><div class="tm-tx"><small>' + esc(k[1]) + (t.due ? ' · ' + (t.due < today() ? 'прострочено з ' : t.kind === 'task' ? 'до ' : '') + dmy(t.due) : '') + '</small>' +
+      return '<li class="tm-task' + (t.urgent ? ' urgent' : '') + '" style="--i:' + i + '"><span class="tm-ic">' + ic(k[0]) + '</span><div class="tm-tx"><small>' + esc(k[1]) + (t.due ? ' · ' + (t.due < today() ? 'прострочено з ' : t.kind === 'task' || t.kind === 'todo' ? 'до ' : '') + dmy(t.due) + (t.due_time ? ' ' + esc(t.due_time) : '') : '') + '</small>' +
         '<b>' + esc(t.title) + '</b>' + (t.sub ? '<span class="muted">' + esc(t.sub) + '</span>' : '') + (p && p.address ? '<span class="muted">' + ic('map') + esc(p.address) + '</span>' : '') + '<div class="tm-row">' + btn + '</div></div></li>';
     }).join('') + '</ul>';
   }
@@ -197,6 +201,47 @@
 
   /* ---------- Заявки (менеджер, дизайнер) ---------- */
   var LST = { new: 'Нова заявка', in_work: 'В роботі', quote_sent: 'Розрахунок', contract: 'Договір', project: 'Проєкт: етапи', handover: 'Здача', warranty: 'Гарантія', cancelled: 'Скасовано' };
+  /* ---------- Задачі (CRM v4): лише мої; «виконано» — з коментарем; виконану можна повернути ---------- */
+  function todoRow(t) {
+    var done = t.status === 'done';
+    var where = [t.project && t.project.title, t.project && t.project.stage_name ? 'етап «' + t.project.stage_name + '»' : null, t.order ? 'заявка ' + t.order.number + (t.order.name ? ' · ' + t.order.name : '') : null,
+      t.contact ? (t.contact.name || t.contact.company) : null].filter(Boolean);
+    var tel = t.contact && t.contact.phone ? t.contact.phone : t.order && t.order.phone ? t.order.phone : '';
+    return '<li class="tm-todo' + (t.overdue ? ' urgent' : '') + (done ? ' done' : '') + '">' +
+      '<button type="button" class="tm-cb" role="checkbox" aria-checked="' + done + '" data-gt="' + t.id + '" aria-label="' + (done ? 'Повернути в роботу: ' : 'Виконано: ') + esc(t.title) + '">' + (done ? ic('ok') : '') + '</button>' +
+      '<div class="tm-tx"><small>' + (t.priority === 'high' ? '<b class="tm-hi">важлива</b> · ' : '') + (t.due_date ? (t.overdue ? 'прострочено з ' : 'до ') + dmy(t.due_date) + (t.due_time ? ' ' + esc(t.due_time) : '') : 'без строку') +
+      (t.created_by_name ? ' · від: ' + esc(t.created_by_name) : '') + '</small><b>' + esc(t.title) + '</b>' +
+      (t.note ? '<span class="muted tm-pre">' + esc(t.note) + '</span>' : '') + (where.length ? '<span class="muted">' + esc(where.join(' · ')) + '</span>' : '') +
+      (done && t.done_note ? '<span class="muted">Мій коментар: ' + esc(t.done_note) + '</span>' : '') +
+      (tel && !done ? '<div class="tm-row"><a class="tm-btn ghost" href="tel:+' + digits(tel) + '">' + ic('phone') + 'Подзвонити</a></div>' : '') + '</div></li>';
+  }
+  function todo() {
+    var T = D.todo || [], Dn = D.todo_done || [];
+    return (T.length ? '<ul class="tm-tasks tm-todos">' + T.map(todoRow).join('') + '</ul>'
+      : '<section class="tm-card tm-empty"><h3>Задач немає</h3><p class="muted">Коли власник або менеджер поставить вам задачу, вона зʼявиться тут, а в Telegram прийде сповіщення.</p></section>') +
+      (Dn.length ? '<details class="tm-more"><summary>Виконані · ' + Dn.length + '</summary><ul class="tm-tasks tm-todos">' + Dn.map(todoRow).join('') + '</ul></details>' : '');
+  }
+  // «Виконано»: аркуш з необовʼязковим коментарем (його побачить автор задачі); повернення — одним дотиком
+  function todoDone(id) {
+    var t = (D.todo || []).find(function (x) { return x.id === id; }); if (!t) return;
+    var dlg = $('#tmSheet');
+    dlg.innerHTML = '<form method="dialog" class="tm-sh"><h3>Задачу виконано?</h3><p><b>' + esc(t.title) + '</b></p>' +
+      '<label class="tm-f"><span>Коментар для автора (необовʼязково)</span><textarea name="note" rows="3" maxlength="1000" placeholder="Що зроблено, на що звернути увагу"></textarea></label>' +
+      '<p class="err" data-e role="alert"></p><div class="tm-row"><button class="tm-btn" type="submit" value="ok">' + ic('ok') + 'Виконано</button><button class="tm-btn ghost" type="button" data-close>Скасувати</button></div></form>';
+    $('[data-close]', dlg).onclick = function () { dlg.close(); };
+    $('form', dlg).onsubmit = function (e) {
+      e.preventDefault();
+      var b = $('button[type=submit]', dlg); b.disabled = true;
+      api('/api/team/tasks', { method: 'PATCH', body: { id: id, done: true, note: $('textarea', dlg).value.trim() || null } }).then(function () {
+        dlg.close(); toast('Задачу виконано — автор отримає сповіщення'); load(true);
+      }, function (er) { b.disabled = false; $('[data-e]', dlg).textContent = er.message; });
+    };
+    dlg.showModal();
+  }
+  function todoReopen(id) {
+    api('/api/team/tasks', { method: 'PATCH', body: { id: id, done: false } }).then(function () { toast('Задачу повернуто в роботу'); load(true); }, function (e) { toast('Не збережено: ' + e.message, true); });
+  }
+
   function leads() {
     if (!D.leads.length) return '<section class="tm-card tm-empty"><h3>Відкритих заявок немає</h3></section>';
     return '<ul class="tm-leads">' + D.leads.map(function (o) {
@@ -237,6 +282,8 @@
     $$('[data-act]', v).forEach(function (b) { b.onclick = function () { sheet(b.dataset.act, +b.dataset.p, b.dataset.s); }; });
     $$('[data-open]', v).forEach(function (b) { b.onclick = function () { go('objects'); setTimeout(function () { var el = $('#obj-' + b.dataset.open); if (el) { el.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' }); el.classList.add('flash'); } }, 60); }; });
     $$('[data-tdone]', v).forEach(function (b) { b.onclick = function () { setTask(+b.dataset.p, +b.dataset.tdone, true, b); }; });
+    $$('[data-gdone]', v).forEach(function (b) { b.onclick = function () { todoDone(+b.dataset.gdone); }; });
+    $$('[data-gt]', v).forEach(function (b) { b.onclick = function () { if (b.getAttribute('aria-checked') === 'true') todoReopen(+b.dataset.gt); else todoDone(+b.dataset.gt); }; });
     $$('[data-tchk]', v).forEach(function (c) { c.onchange = function () { setTask(+c.dataset.p, +c.dataset.tchk, c.checked, c); }; });
     $$('[data-take]', v).forEach(function (b) { b.onclick = function () { setLead(+b.dataset.take, 'in_work', b); }; });
     $$('[data-st]', v).forEach(function (s) { s.onchange = function () { setLead(+s.dataset.st, s.value, s); }; });
