@@ -114,13 +114,37 @@ a.card:hover{border-color:var(--ac);transform:translateY(-2px)}
   .kf-zones::-webkit-scrollbar,.kf-sw::-webkit-scrollbar{display:none}
   .kf-zones button{flex:none;scroll-snap-align:start}
   .kf-sw{display:flex;overflow-x:auto;gap:0;margin:0 -14px 18px;padding:0 10px;scrollbar-width:none;scroll-snap-type:x proximity}
-  .sw{flex:none;width:72px;scroll-snap-align:start}
+  /* назви матеріалів — повністю (було «Крейдяни…», «Мікроцем…»): до 2–3 рядків, 13 px, довгі слова — з переносом; смуга панелі вища на рядок назви (20.11.2026) */
+  .kf-stage{--peek:212px}
+  .sw{flex:none;width:84px;scroll-snap-align:start}
   .sw-i{width:48px;height:48px}
-  .sw-n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:68px}
+  .sw-n{font-size:13px;line-height:1.2;overflow-wrap:anywhere;hyphens:auto;-webkit-hyphens:auto}
+  .kf-grab{position:relative}.kf-grab::before{content:"";position:absolute;inset:-7px 0} /* зона дотику 44 px */
   .kf-hint{display:block;position:absolute;z-index:3;left:50%;top:52%;transform:translate(-50%,-50%);padding:8px 14px;white-space:nowrap;border-radius:999px;font-size:12.5px;font-weight:600;pointer-events:none;opacity:.95;transition:opacity .4s}
   .kf-panned .kf-hint,.kf-nogl .kf-hint{opacity:0}
 }
 @media (max-width:420px){.kf-tool{min-width:38px;padding:0 9px}.kf-rooms button{padding:0 10px;font-size:12px}}
+/* Альбомний телефон (852×393, 932×430…): фото ліворуч, панель матеріалів — колонкою праворуч (≤ 40 % ширини), а не шторкою на весь екран:
+   видно, що змінюється. Лід ховаємо (H1 лишається), зразки — сіткою з повними назвами. 20.11.2026 */
+@media (orientation:landscape) and (max-height:520px){
+  .kf-stage{height:calc(100svh - var(--sch-h,64px));min-height:0;max-height:none;--kfp:min(40vw,360px)}
+  .kf-head{left:14px;right:auto;top:10px;max-width:calc(100% - var(--kfp) - 88px)}
+  .kf-head h1{font-size:clamp(1.35rem,1rem + 1.6vw,1.9rem)}
+  .kf-head p{display:none}
+  .kf-eyebrow{margin-bottom:4px}
+  .kf-bar{display:contents}
+  .kf-rooms{position:absolute;z-index:3;left:12px;bottom:10px}
+  .kf-tools{position:absolute;z-index:3;left:auto;right:calc(var(--kfp) + 20px);bottom:10px;flex-direction:column;border-radius:24px}
+  .kf-panel{position:absolute;left:auto;right:8px;top:8px;bottom:8px;width:var(--kfp);max-height:none;border-radius:18px;border-bottom:1px solid rgba(191,145,72,.24);
+    transform:none!important;transition:none;z-index:5;padding-bottom:0}
+  .kf-grab{display:none}
+  .kf-scroll{padding:12px 12px 16px}
+  .kf-zones{flex-wrap:wrap;overflow:visible;margin:0 0 10px;padding:0}
+  .kf-sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:4px 2px;overflow:visible;margin:0 0 16px;padding:0}
+  .sw{width:auto}
+  .sw-n{font-size:13px;line-height:1.2;overflow-wrap:anywhere;hyphens:auto;-webkit-hyphens:auto}
+  .kf-hint{left:calc((100% - var(--kfp)) / 2)}
+}
 /* тач: кнопки кімнат і панелі інструментів ≥ 44 px (було 40/42 і 38 px на вузьких — аудит 20.11.2026) */
-@media (pointer:coarse){.kf-rooms button,.kf-tool{min-height:44px}.kf-tool{min-width:44px}}
+@media (pointer:coarse){.kf-rooms button,.kf-tool,.kf-zones button{min-height:44px}.kf-tool{min-width:44px}}
 @media (prefers-reduced-motion:reduce){.kf-panel,#kfCv,.sw-i,.ps,a.card{transition:none!important}.kf-busy::after,.sw[aria-pressed=true] .sw-i,.kf-dlg[open]{animation:none!important}}

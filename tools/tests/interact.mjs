@@ -365,6 +365,35 @@ for (const [path, w, dy] of [['/', 402, 31], ['/remont-kvartyr-kyiv', 402, 200],
   must(after.cls - before.cls <= 0.05, 'CLS збірки в кадрі ' + (after.cls - before.cls).toFixed(3));
   must(Math.abs(after.nx - before.nx) <= 4, `блок під сценою зсунувся на ${after.nx - before.nx} px`);
 });
+// Конфігуратор на телефоні (20.11.2026): назви матеріалів читаються повністю (без «…», ≥ 13 px), без горизонтальної прокрутки сторінки;
+// альбомний телефон — фото ліворуч (≥ 55 % ширини), панель матеріалів колонкою праворуч, цілі дотику ≥ 44 px
+const kfState = () => { const q = s => document.querySelector(s), vw = innerWidth, vh = innerHeight, pn = q('.kf-panel').getBoundingClientRect(), ns = [...document.querySelectorAll('#kfSw .sw-n')];
+  const cs = ns.map(e => getComputedStyle(e));
+  return { n: ns.length, cut: ns.filter((e, i) => e.scrollWidth > e.clientWidth + 1 || e.scrollHeight > e.clientHeight + 1 || cs[i].textOverflow === 'ellipsis' || cs[i].whiteSpace === 'nowrap').map(e => e.textContent).slice(0, 3),
+    fs: Math.min(...cs.map(c => parseFloat(c.fontSize))), sw: document.documentElement.scrollWidth - vw, panel: [Math.round(pn.left), Math.round(pn.top), Math.round(pn.right), Math.round(pn.bottom)], vw, vh,
+    small: [...document.querySelectorAll('#kfZones button, .kf-rooms button, .kf-tool, #kfSw .sw')].map(e => e.getBoundingClientRect()).filter(r => r.width > 0 && r.bottom > 0 && r.top < vh && (r.width < 43.5 || r.height < 43.5)).length }; };
+for (const [path, w] of [['/konfigurator', 344], ['/konfigurator', 402], ['/de/interior-konfigurator', 344], ['/es/configurador-interiores', 402], ['/ar/interior-configurator', 430]]) await test('конфігуратор, телефон: назви матеріалів повністю, ≥ 13 px', path, w, async p => {
+  await p.waitForSelector('#kfSw .sw-n', { timeout: 8000 });
+  const r = await p.evaluate(kfState);
+  must(r.n >= 6, 'немає зразків матеріалів');
+  must(!r.cut.length, 'назви обрізані: ' + r.cut.join(', '));
+  must(r.fs >= 13, 'кегль назв ' + r.fs + ' px');
+  must(r.sw <= 0, 'горизонтальна прокрутка сторінки: ' + r.sw + ' px');
+  must(!r.small, 'цілі дотику < 44 px: ' + r.small);
+});
+for (const [path, vp] of [['/konfigurator', [852, 393]], ['/konfigurator', [932, 430]], ['/ar/interior-configurator', [852, 393]], ['/de/interior-konfigurator', [667, 375]]]) await test('конфігуратор, альбомний телефон: фото ≥ 55 % ширини, панель праворуч', path, vp, async p => {
+  await p.waitForSelector('#kfSw .sw-n', { timeout: 8000 });
+  const r = await p.evaluate(kfState);
+  must(r.panel[0] >= r.vw * 0.55 && r.panel[2] <= r.vw + 1 && r.panel[3] <= r.vh + 1 && r.panel[1] >= 0, `панель закриває фото або виходить за екран: ${r.panel} на ${r.vw}×${r.vh}`);
+  must(!r.cut.length && r.fs >= 13, 'назви обрізані або дрібні: ' + r.cut.join(', ') + ' ' + r.fs);
+  must(r.sw <= 0, 'горизонтальна прокрутка сторінки: ' + r.sw + ' px');
+  must(!r.small, 'цілі дотику < 44 px: ' + r.small);
+  const h1 = await p.evaluate(() => { const h = document.querySelector('.kf-head h1').getBoundingClientRect(), pn = document.querySelector('.kf-panel').getBoundingClientRect(); return h.right <= pn.left && h.top >= 0 && h.bottom < innerHeight; });
+  must(h1, 'H1 під панеллю або поза екраном');
+  // вибір матеріалу з панелі працює, фото лишається видимим
+  await p.locator('#kfSw .sw').nth(1).tap(); await p.waitForTimeout(300);
+  must(await p.locator('#kfSw .sw').nth(1).getAttribute('aria-pressed') === 'true', 'матеріал не вибрано');
+});
 await test('.lq-go → #zayavka з контекстом сцени', '/budivnytstvo-budynkiv-kyiv', 1440, async p => {
   await wakeup(p);
   const go = p.locator('.lq-go').first();
