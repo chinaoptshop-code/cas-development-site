@@ -869,6 +869,7 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
 #calc .sum #cPick{color:var(--tx)}
 #calc .sum p{color:var(--mu);margin:8px 0 0;font-size:var(--fs-small)}
 #calc .sum #cPlus{color:var(--tx)}
+#calc .sum #cNote.gx{display:grid}#calc .sum #cNote.gx>span{grid-area:1/1}#calc .sum #cNote .gh{visibility:hidden} /* сума лише «за кошторисом»: місце речення про нижню межу лишається (calc.v1.js note()) */
 #calc .sum ul{list-style:none;margin:12px 0 0;padding:12px 0 0;border-top:1px solid var(--ln);display:grid;gap:6px;font-size:var(--fs-small)}
 #calc .sum li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px}
 #calc .sum li span{color:var(--mu)}

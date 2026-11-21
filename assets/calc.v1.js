@@ -136,6 +136,11 @@ function casCalcInit() {
     if (x.min) return [lab, C.mn + ' ' + f(x.v)];
     return [lab + ' · ' + casNum(x.a) + ' ' + au + ' × ' + f(x.r) + '/' + u, f(x.v)];
   }
+  function note(ns, est) { /* сума лише «за кошторисом» — без речення про нижню межу (C.nb, перше); висота — як з ним: невидимий шар повного тексту в тій самій клітинці сітки */
+    var N = $('cNote'), full = iso(ns.join(' ')); N.className = est ? 'gx' : '';
+    if (!est) { N.textContent = full; return; }
+    N.textContent = ''; [iso(ns.slice(1).join(' ')), full].forEach(function (t, i) { var e = document.createElement('span'); e.textContent = t; if (i) { e.className = 'gh'; e.setAttribute('aria-hidden', 'true'); } N.appendChild(e); });
+  }
   function calc() {
     sync();
     var a = area($('cArea'), $('cAreaE'), false, !$('cAreaW').hidden), sq = area($('cLand'), $('cLandE'), true, !!S.land), notes = [C.nb];
@@ -147,7 +152,7 @@ function casCalcInit() {
     var X = $('cSumX'); if (!X) { X = document.createElement('span'); X.id = 'cSumX'; $('cSum').parentNode.insertBefore(X, $('cSum').nextSibling); } X.textContent = ok && window.casFx ? casFx(s) : ''; /* ≈ €/₴ — fx.py */ $('cPlus').hidden = !(ok && res.est);
     var ul = $('cRows'); ul.textContent = '';
     labs.forEach(function (l) { var li = document.createElement('li'), sp = document.createElement('span'), em = document.createElement('em'); sp.textContent = iso(l[0]); em.textContent = iso(l[1]); li.appendChild(sp); li.appendChild(em); ul.appendChild(li); });
-    ul.hidden = !has; $('cNote').textContent = iso(notes.join(' '));
+    ul.hidden = !has; note(notes, !ok && res.est);
     var main = null; ord.forEach(function (id) { if (!main && S[id]) main = id; });
     return { a: a, sq: sq, rows: res.rows, t: labs.map(function (l) { return l[0] + ': ' + l[1]; }).join(' · '), s: st, ok: ok, est: res.est, has: has, n: res.n, main: main };
   }
