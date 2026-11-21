@@ -5,7 +5,8 @@
   python3 tools/site/rates.py --check   # код 1, якщо блок у якомусь JS застарів
 
 [Україна, Європа] у $; None — ставки немає → «за кошторисом». Європа — ~+50% до київських (Михайло 01.11.2026).
-У JS блок стоїть між /*rates*/ і /*/rates*/ (CAS_RATES, CAS_DMIN, casCost, casParseNum) — руками не правити.
+Типи будинку (HOUSE, Михайло 21.11.2026) — власні ставки «коробка» / «під ключ» для позиції «Будівництво будинку»; як вписати — коментар біля HOUSE.
+У JS блок стоїть між /*rates*/ і /*/rates*/ (CAS_RATES, CAS_DMIN, CAS_HT, casRate, casCost, casParseNum) — руками не правити.
 Сервер (пропозиція в CRM, functions/api/admin/crm.js) — functions/_rates.js, цілком ЗГЕНЕРОВАНО тут же.
 Тести математики — node tools/tests/calc.mjs (виконує той самий блок).
 """
@@ -28,16 +29,42 @@ RATES = {
 DESIGN = ('plan', 'dz', 'full')
 DMIN = [2500, 4000]          # мінімум за дизайн (усі пакети), Україна / Європа
 
+# Типи будинку для позиції «Будівництво будинку» (Михайло 21.11.2026: «може бути з різних категорій і різної ціни»).
+# !!! СТАВКИ ТИПІВ ЧЕКАЮТЬ ПІДТВЕРДЖЕННЯ ВЛАСНИКА — поки всі None; цифр не вигадувати, список робочий (каркасні, модульні, з бруса — з CLAUDE.md).
+# Формат: 'ключ': {'box': [Україна, Європа], 'key': [Україна, Європа]} у $ за м² — «коробка» і «під ключ»; None — ставки немає → «за кошторисом».
+#   Приклад (НЕ справжні цифри):  'frame': {'box': [500, 750], 'key': [900, None]},
+# Тип не вибрано («ще не визначились», типово) — діють базові RATES['box'] / RATES['key'], суми як до появи типів.
+# Ключ — значення ?t=… у посиланні калькулятора (після публікації не перейменовувати); порядок запису = порядок кнопок.
+# Новий тип — ще й назва 10 мовами: `hk` у T tools/site/calc.py (без назви calc.py зупиняється) і термін у tools/site/lang/glossary.json.
+# Після правок: python3 tools/site/rates.py (rates-блок у JS + functions/_rates.js), далі bash tools/build-all.sh; тести — node tools/tests/calc.mjs.
+HOUSE = {
+    'brick':    {'box': [None, None], 'key': [None, None]},   # цегла / газоблок
+    'frame':    {'box': [None, None], 'key': [None, None]},   # каркасний деревʼяний
+    'lstk':     {'box': [None, None], 'key': [None, None]},   # каркасний металевий (ЛСТК)
+    'sip':      {'box': [None, None], 'key': [None, None]},   # СІП-панелі
+    'sandwich': {'box': [None, None], 'key': [None, None]},   # сендвіч-панелі
+    'modular':  {'box': [None, None], 'key': [None, None]},   # модульний
+    'timber':   {'box': [None, None], 'key': [None, None]},   # з бруса
+}
+HOUSE_KEYS = ('box', 'key')  # ключі ставок RATES, які тип будинку замінює
+
 CONSUMERS = ['assets/calc.v1.js', 'assets/quiz-core.v1.js', 'assets/build-anim.v1.js', 'assets/land-anim.v1.js',
              'assets/resort-plan.v1.js', 'assets/restaurant-anim.v1.js', 'assets/water-house.v1.js']
 FUNC = 'functions/_rates.js'
 RX = re.compile(r'/\*rates\*/.*?/\*/rates\*/', re.S)
 
 
-def cost(k, region, area):
-    """Те саме, що casCost у JS: ставка × площа (дизайн — не менше мінімуму); None — ставки немає або площа ≤ 0."""
-    r = RATES.get(k)
-    v = r[1 if region else 0] if r else None
+def rate(k, region, t=None):
+    """Те саме, що casRate у JS: ставка «від» регіону. Тип будинку t (ключ HOUSE) замінює ставки коробки / під ключ своїми —
+    і None теж (за кошторисом); без типу або з невідомим типом — базові RATES."""
+    h = HOUSE.get(t) if t else None
+    r = h[k] if h and k in h else RATES.get(k)
+    return r[1 if region else 0] if r else None
+
+
+def cost(k, region, area, t=None):
+    """Те саме, що casCost у JS: ставка × площа (дизайн — не менше мінімуму); None — ставки немає або площа ≤ 0. t — тип будинку (HOUSE)."""
+    v = rate(k, region, t)
     if v is None or not area or area <= 0:
         return None
     s = v * area
@@ -49,9 +76,13 @@ def cost(k, region, area):
 def js():
     d = json.dumps(RATES, separators=(',', ':'))
     return ('/*rates*/ /* ЗГЕНЕРОВАНО tools/site/rates.py — ставки CLAUDE.md [Україна, Європа], null — за кошторисом; руками не правити */\n'
-            f'var CAS_RATES = {d}, CAS_DMIN = {json.dumps(DMIN)}, CAS_DZ = {json.dumps(list(DESIGN))};\n'
-            '/* сума рядка: ставка × площа (дизайн — не менше мінімуму), округлена; null — ставки немає (за кошторисом) або площа ≤ 0 */\n'
-            'function casCost(k, R, a) { var r = CAS_RATES[k], i = R ? 1 : 0, v = r ? r[i] : null; if (v == null || !(a > 0) || !isFinite(a)) return null;'
+            f'var CAS_RATES = {d}, CAS_DMIN = {json.dumps(DMIN)}, CAS_DZ = {json.dumps(list(DESIGN))},\n'
+            f'  CAS_HT = {json.dumps(HOUSE, separators=(",", ":"))}; /* типи будинку: свої ставки коробки / під ключ */\n'
+            '/* ставка регіону: тип будинку t (CAS_HT) замінює ставки коробки / під ключ своїми — і null теж; без типу чи з невідомим — CAS_RATES */\n'
+            'function casRate(k, R, t) { var h = t && Object.prototype.hasOwnProperty.call(CAS_HT, t) ? CAS_HT[t] : null,'
+            ' r = h && Object.prototype.hasOwnProperty.call(h, k) ? h[k] : CAS_RATES[k], v = r ? r[R ? 1 : 0] : null; return typeof v === \'number\' ? v : null; }\n'
+            '/* сума рядка: ставка × площа (дизайн — не менше мінімуму), округлена; null — ставки немає (за кошторисом) або площа ≤ 0; t — тип будинку */\n'
+            'function casCost(k, R, a, t) { var i = R ? 1 : 0, v = casRate(k, R, t); if (v == null || !(a > 0) || !isFinite(a)) return null;'
             ' var s = v * a; if (CAS_DZ.indexOf(k) >= 0) s = Math.max(s, CAS_DMIN[i]); return Math.round(s); }\n'
             '/* число з поля вводу: кома або крапка, пробіли між тисячами; NaN — не число */\n'
             'function casParseNum(s) { s = String(s == null ? \'\' : s).replace(/[\\s\\u00a0\\u202f]/g, \'\').replace(\',\', \'.\');'
@@ -65,10 +96,13 @@ def module():
             f'export const RATES = {json.dumps(RATES, separators=(",", ":"))};\n'
             f'export const DMIN = {json.dumps(DMIN)};\n'
             f'export const DESIGN = {json.dumps(list(DESIGN))};\n'
-            '// ставка регіону (eu — Європа, ~+50%) або null\n'
-            'export const rateOf = (k, eu) => { const r = RATES[k]; return r ? r[eu ? 1 : 0] : null; };\n'
+            '// типи будинку: свої ставки коробки / під ключ [Україна, Європа]; null — за кошторисом (ставки типів чекають підтвердження власника)\n'
+            f'export const HOUSE = {json.dumps(HOUSE, separators=(",", ":"))};\n'
+            '// ставка регіону (eu — Європа, ~+50%) або null; t — тип будинку (HOUSE): замінює ставки коробки / під ключ своїми, без типу чи з невідомим — RATES\n'
+            'export const rateOf = (k, eu, t) => { const h = t && Object.hasOwn(HOUSE, t) ? HOUSE[t] : null, r = h && Object.hasOwn(h, k) ? h[k] : (Object.hasOwn(RATES, k) ? RATES[k] : null);'
+            ' const v = r ? r[eu ? 1 : 0] : null; return typeof v === \'number\' ? v : null; };\n'
             '// сума «від»: ставка × площа (дизайн — не менше мінімуму), округлена; null — ставки немає або площа ≤ 0 (як casCost)\n'
-            'export function cost(k, eu, a) { const v = rateOf(k, eu); if (v == null || !(a > 0) || !Number.isFinite(a)) return null;'
+            'export function cost(k, eu, a, t) { const v = rateOf(k, eu, t); if (v == null || !(a > 0) || !Number.isFinite(a)) return null;'
             ' let s = v * a; if (DESIGN.includes(k)) s = Math.max(s, DMIN[eu ? 1 : 0]); return Math.round(s); }\n')
 
 

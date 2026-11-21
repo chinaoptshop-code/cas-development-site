@@ -360,6 +360,106 @@
     ]
    },
    "note": "формат ставить chrome.price_fmt (тисячі U+202F, en/zh — кома; «/» без пробілів); у zh — «$30/m² 起», не «每平方米 $30 起»"
+  },
+  {
+   "uk": "тип будинку",
+   "ru": "тип дома",
+   "en": "house type",
+   "es": "tipo de casa",
+   "pl": "typ domu",
+   "de": "Haustyp",
+   "fr": "type de maison",
+   "pt": "tipo de moradia",
+   "zh": "房屋类型",
+   "ar": "نوع المنزل",
+   "note": "ряд «Тип будинку» в калькуляторі (ht у T tools/site/calc.py); назви типів нижче — hk там же, ключі й ставки — HOUSE у tools/site/rates.py"
+  },
+  {
+   "uk": "цегла / газоблок",
+   "ru": "кирпич / газоблок",
+   "en": "brick / aerated concrete",
+   "es": "ladrillo / hormigón celular",
+   "pl": "cegła / beton komórkowy",
+   "de": "Ziegel / Porenbeton",
+   "fr": "brique / béton cellulaire",
+   "pt": "tijolo / betão celular",
+   "zh": "砖 / 加气块",
+   "ar": "طوب / خرسانة خلوية"
+  },
+  {
+   "uk": "каркасний будинок (деревʼяний каркас)",
+   "ru": "каркасный дом (деревянный каркас)",
+   "en": "timber-frame house (timber frame)",
+   "es": "casa de entramado de madera",
+   "pl": "dom szkieletowy (szkielet drewniany)",
+   "de": "Holzrahmenhaus",
+   "fr": "maison à ossature bois",
+   "pt": "casa de estrutura de madeira",
+   "zh": "木框架住宅",
+   "ar": "منزل بهيكل خشبي"
+  },
+  {
+   "uk": "каркасний металевий (ЛСТК)",
+   "ru": "каркасный металлический (ЛСТК)",
+   "en": "light steel frame",
+   "es": "entramado de acero ligero",
+   "pl": "szkielet stalowy",
+   "de": "Stahlleichtbau",
+   "fr": "ossature métallique légère",
+   "pt": "estrutura metálica leve",
+   "zh": "轻钢框架",
+   "ar": "هيكل فولاذي خفيف",
+   "note": "абревіатуру ЛСТК латиницею (LGSF/LSF) у zh/ar не писати — її немає в latin_ok"
+  },
+  {
+   "uk": "СІП-панелі",
+   "ru": "СИП-панели",
+   "en": "SIP panels",
+   "es": "paneles SIP",
+   "pl": "płyty SIP",
+   "de": "SIP-Paneele",
+   "fr": "panneaux SIP",
+   "pt": "painéis SIP",
+   "zh": "SIP 板",
+   "ar": "ألواح SIP",
+   "note": "SIP — у latin_ok"
+  },
+  {
+   "uk": "сендвіч-панелі",
+   "ru": "сэндвич-панели",
+   "en": "sandwich panels",
+   "es": "paneles sándwich",
+   "pl": "płyty warstwowe",
+   "de": "Sandwichpaneele",
+   "fr": "panneaux sandwich",
+   "pt": "painéis sandwich",
+   "zh": "夹芯板",
+   "ar": "ألواح ساندويتش"
+  },
+  {
+   "uk": "модульний будинок",
+   "ru": "модульный дом",
+   "en": "modular house",
+   "es": "casa modular",
+   "pl": "dom modułowy",
+   "de": "Modulhaus",
+   "fr": "maison modulaire",
+   "pt": "casa modular",
+   "zh": "模块化住宅",
+   "ar": "منزل معياري"
+  },
+  {
+   "uk": "будинок з бруса",
+   "ru": "дом из бруса",
+   "en": "timber house (solid timber)",
+   "es": "casa de madera maciza",
+   "pl": "dom z bali",
+   "de": "Holzbalkenhaus",
+   "fr": "maison en bois massif",
+   "pt": "casa de troncos (de madeira)",
+   "zh": "原木住宅",
+   "ar": "منزل من الخشب المصمت",
+   "note": "не плутати з каркасним (timber-frame / ossature bois / szkieletowy)"
   }
  ],
  "latin_ok": [
