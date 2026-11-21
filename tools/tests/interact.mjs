@@ -47,6 +47,8 @@ async function test(name, path, w, fn, opt) {
   const ctx = await browser.newContext({ viewport: { width: vw, height: vh }, deviceScaleFactor: 1, isMobile: touch, hasTouch: touch, ...(opt || {}) }); // opt — напр. { reducedMotion: 'reduce' }
   await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => /n8n\./.test(r.request().url()) ? r.fulfill({ status: apiStatus, body: '{}' }) : r.abort());
   const page = await ctx.newPage();
+  // CPU=4 node tools/tests/interact.mjs — сповільнений процесор (перевірка стійкості тестів до навантаження, як у повному наборі паралельно з іншими)
+  if (+process.env.CPU > 1) await (await ctx.newCDPSession(page)).send('Emulation.setCPUThrottlingRate', { rate: +process.env.CPU });
   const errs = [];
   page.on('pageerror', e => { if (!IGN_PE.test(e.message)) errs.push('JS: ' + e.message); });
   page.on('console', m => { if (m.type() === 'error' && !IGN.test(m.text())) errs.push('console: ' + m.text().slice(0, 160)); });
@@ -127,9 +129,12 @@ for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 402], ['/ar/', 1440]]
   must(bad === 0, `кадри без посилання/aria-label своєї мови: ${bad}`);
   await sc.evaluate(e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(400);
   if (w > 600) await p.mouse.move(5, 5);
-  const s0 = await sc.evaluate(e => Math.abs(e.scrollLeft)); await p.waitForTimeout(1500);
-  const s1 = await sc.evaluate(e => Math.abs(e.scrollLeft));
-  must(s1 - s0 > 5, `автопрокрутка стоїть (${s0}→${s1})`);
+  // автопрокрутка (~25 px/с) — очікування стану, не фіксована пауза: під навантаженням кадри рідшають (крок кадру ≤ 50 мс), а marquee() стартує
+  // лише після повного CSS і IntersectionObserver — за 1,5 с стрічка встигала зсунутись на ≤ 5 px. Суть та сама: стрічка їде сама, без дій людини.
+  await p.waitForFunction(e => e.classList.contains('mq-run'), await sc.elementHandle(), { timeout: 10000 }).catch(() => {});
+  const s0 = await sc.evaluate(e => Math.abs(e.scrollLeft));
+  const s1 = await p.waitForFunction(([e, s0]) => { const v = Math.abs(e.scrollLeft); return v - s0 > 5 && v; }, [await sc.elementHandle(), s0], { timeout: 10000, polling: 100 }).then(h => h.jsonValue()).catch(() => sc.evaluate(e => Math.abs(e.scrollLeft)));
+  must(s1 - s0 > 5, `автопрокрутка стоїть (${s0}→${s1} за 10 с)`);
   const bb = await sc.boundingBox();
   const cx = bb.x + bb.width * 0.3, cy = bb.y + bb.height * 0.5;
   // свайп / перетягування — без переходу
@@ -145,10 +150,15 @@ for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 402], ['/ar/', 1440]]
   }
   await p.waitForTimeout(700);
   must(p.url() === url0, `свайп відкрив ${p.url()}`);
+  // інерція свайпу під навантаженням триває довше: чекаємо, поки стрічка стане (2 заміри поспіль без зсуву), інакше кадр під точкою зміниться
+  // між пошуком href і тапом, а тап по стрічці, що ще їде, Chrome лише зупиняє (click немає)
+  await p.waitForFunction(e => { const v = e.scrollLeft, k = e.__st || (e.__st = { v: NaN, n: 0 }); k.n = Math.abs(v - k.v) < 1 ? k.n + 1 : 0; k.v = v; return k.n >= 2; }, await sc.elementHandle(), { timeout: 8000, polling: 150 }).catch(() => {});
   // тап / клік — відкриває кейс кадру під пальцем
-  const href = await p.evaluate(([x, y]) => document.elementFromPoint(x, y)?.closest('a')?.getAttribute('href'), [cx, cy]);
+  // точка — центр кадру, найближчого до 30 % ширини (позиція стрічки після автопрокрутки різна: фіксована точка потрапляла в проміжок між кадрами)
+  const tx = await sc.evaluate((e, x) => { const W = innerWidth, r = [...e.querySelectorAll(':scope>a')].map(a => a.getBoundingClientRect()).filter(b => b.left >= 0 && b.right <= W); r.sort((a, b) => Math.abs(a.left + a.width / 2 - x) - Math.abs(b.left + b.width / 2 - x)); return r.length ? r[0].left + r[0].width / 2 : x; }, cx);
+  const href = await p.evaluate(([x, y]) => document.elementFromPoint(x, y)?.closest('a')?.getAttribute('href'), [tx, cy]);
   must(href, 'під точкою немає посилання');
-  if (w < 600) await p.touchscreen.tap(cx, cy); else await p.mouse.click(cx, cy);
+  if (w < 600) await p.touchscreen.tap(tx, cy); else await p.mouse.click(tx, cy);
   await p.waitForURL(u => new URL(u).pathname.replace(/\.html$/, '') === href.replace(/\.html$/, ''), { timeout: 5000 }).catch(() => {});
   must(new URL(p.url()).pathname.replace(/\.html$/, '') === href, `тап: ${p.url()} замість ${href}`);
 });
