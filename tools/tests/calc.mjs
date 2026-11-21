@@ -34,13 +34,16 @@ it('ставки = CLAUDE.md: Україна й Європа (+~50%), null — �
           furn: [250, 400], plan: [6, null], dz: [30, 45], full: [45, null] });
   eq(JSON.parse(JSON.stringify(ctx.CAS_DMIN)), [2500, 4000], 'мінімум дизайну');
 });
-// Типи будинку (Михайло 21.11.2026): ставки типів ЧЕКАЮТЬ ПІДТВЕРДЖЕННЯ власника — у даних сайту всі null («за кошторисом»).
-// Коли власник підтвердить цифри: вписати в rates.HOUSE і CLAUDE.md, а тут замінити очікування на ці ставки (як у тесті вище).
+// Типи будинку: ставки коробка / під ключ — Михайло 21.11.2026 (Україна); Європа — ×1,5 за його правилом, угору до 50 (< 1 000) / 100 (≥ 1 000).
 const HT_KEYS = ['brick', 'frame', 'lstk', 'sip', 'sandwich', 'modular', 'timber'];
-it('типи будинку: список і ставки = rates.HOUSE; поки не підтверджені — жодної цифри (усі null)', () => {
+const HT_REAL = { brick: [450, 1100], frame: [350, 950], lstk: [450, 1150], sip: [300, 750], sandwich: [250, 450], modular: [300, 750], timber: [250, 550] };
+const eu15 = x => { const y = x * 1.5, st = y < 1000 ? 50 : 100; return Math.ceil(y / st) * st; };
+it('типи будинку: список і ставки = rates.HOUSE (Михайло 21.11.2026), Європа = ×1,5 з округленням угору', () => {
   const H = JSON.parse(JSON.stringify(ctx.CAS_HT));
   eq(Object.keys(H), HT_KEYS);
-  HT_KEYS.forEach(t => eq(H[t], { box: [null, null], key: [null, null] }, t));
+  HT_KEYS.forEach(t => { const [b, k] = HT_REAL[t]; eq(H[t], { box: [b, eu15(b)], key: [k, eu15(k)] }, t); });
+  eq([eu15(600), eu15(1100), eu15(550), eu15(250)], [900, 1700, 850, 400], 'правило = наявні ставки Європи');
+  eq(H.brick, { box: [450, 700], key: [1100, 1700] }); eq(H.sandwich, { box: [250, 400], key: [450, 700] });
 });
 it('casCost: ставка × площа', () => {
   eq(casCost('reno', 0, 60), 33000); eq(casCost('reno', 1, 60), 51000); eq(casCost('office', 0, 100), 35000);
@@ -172,8 +175,21 @@ it('посилання ?k=…: старі значення списку виби
   eq(pick(''), {}); eq(pick(null), {}); eq(pick('<script>,__proto__,constructor'), {});
 });
 
+it('типи будинку: суми за реальними ставками; без типу — базові $600 / $1 100', () => {
+  const s = (sel, R, a, t) => rows({ R, sel, a, s: 0, t }).s;
+  eq(s({ build: 'box' }, 0, 100, 'sandwich'), 25000, 'сендвіч, коробка, 100 м²');
+  eq(s({ build: 'key' }, 1, 100, 'brick'), 170000, 'цегла, під ключ, Європа, 100 м²');
+  eq(s({ build: 'key' }, 0, 120, 'frame'), 114000, 'каркасний деревʼяний, під ключ, 120 м²');
+  eq(s({ build: 'key' }, 1, 120, 'sip'), 144000, 'СІП, під ключ, Європа, 120 м²');
+  eq(s({ build: 'box' }, 0, 150, 'lstk'), 67500); eq(s({ build: 'key' }, 0, 150, 'lstk'), 172500);
+  eq(s({ build: 'box' }, 1, 100, 'timber'), 40000); eq(s({ build: 'key' }, 0, 80, 'modular'), 60000);
+  eq([s({ build: 'box' }, 0, 100), s({ build: 'key' }, 0, 100), s({ build: 'box' }, 1, 100), s({ build: 'key' }, 1, 100)], [60000, 110000, 90000, 170000], 'без типу');
+  const r = rows({ R: 0, sel: { build: 'key', arch: 'arch' }, a: 150, s: 0, t: 'frame' });
+  eq([r.rows.map(y => [y.key, y.r, y.v, y.t || '']), r.s, r.est], [[['key', 950, 142500, 'frame'], ['arch', 12, 1800, '']], 144300, false]);
+});
+
 // ── Тип будинку (Михайло 21.11.2026). ФІКСТУРА — лише тут: цифри нижче НЕ ставки CAS, а довільні числа для перевірки механізму
-// (у даних сайту всі типи без ставок). Окремий контекст — щоб фікстура не зачепила тести вище.
+// (у даних сайту всі типи мають ставки — фікстура перевіряє й тип без ставки). Окремий контекст — щоб фікстура не зачепила тести вище.
 const FIX = { frame: { box: [500, 750], key: [900, null] }, sip: { box: [null, null], key: [1000, 1500] } };
 const fx = vm.createContext({});
 vm.runInContext(read('assets/calc.v1.js'), fx);
@@ -188,13 +204,13 @@ it('тип будинку зі ставкою: коробка / під ключ 
   const r = frows({ R: 0, sel: { build: 'key', arch: 'arch', furn: 'furn' }, a: 100, s: 0, t: 'sip' });
   eq([fbrief(r), r.s, r.est], [[['furn', 250, 25000, ''], ['key', 1000, 100000, 'sip'], ['arch', 12, 1200, '']], 126200, false], 'тип діє лише на рядок будівництва');
 });
-it('тип без ставки → рядок «за кошторисом», решта позицій рахується; так само — у реальних даних сайту (усі типи без ставок)', () => {
+it('тип без ставки → рядок «за кошторисом», решта позицій рахується (фікстура; у даних сайту — усі типи зі ставками)', () => {
   const r = frows({ R: 0, sel: { build: 'box', arch: 'arch' }, a: 150, s: 0, t: 'sip' }); // фікстура: СІП, коробка — без ставки
   eq([fbrief(r), r.s, r.est, r.n], [[['box', null, null, 'sip'], ['arch', 12, 1800, '']], 1800, true, 2]);
   const e = frows({ R: 1, sel: { build: 'key', arch: 'arch' }, a: 150, s: 0, t: 'frame' }); // фікстура: каркасний під ключ у Європі — без ставки
   eq([fbrief(e), e.s, e.est], [[['key', null, null, 'frame'], ['arch', 18, 2700, '']], 2700, true]);
-  HT_KEYS.forEach(t => { const x = rows({ R: 0, sel: { build: 'key', arch: 'arch' }, a: 150, s: 0, t }); // дані сайту
-    eq([x.rows.map(y => [y.key, y.v, y.t || '']), x.s, x.est], [[['key', null, t], ['arch', 1800, '']], 1800, true], t); });
+  HT_KEYS.forEach(t => { const x = rows({ R: 0, sel: { build: 'key', arch: 'arch' }, a: 150, s: 0, t }); // дані сайту: кожен тип має ставку
+    eq([x.rows.map(y => [y.key, y.v, y.t || '']), x.s, x.est], [[['key', HT_REAL[t][1] * 150, t], ['arch', 1800, '']], HT_REAL[t][1] * 150 + 1800, false], t); });
 });
 it('без типу («ще не визначились») і з невідомим типом — базові $600 / $1 100 (Європа $900 / $1 700), результат як до появи типів', () => {
   for (const ctxRows of [frows, rows]) for (const t of [undefined, '', null, 'nope', '__proto__', 'constructor', 'BOX']) {
@@ -205,7 +221,7 @@ it('без типу («ще не визначились») і з невідом�
   // тип не чіпає інші позиції: ремонт, дизайн, меблювання, архпроєкт, ландшафт — ті самі суми з типом і без
   const sel = { design: 'dz', reno: 'reno', furn: 'furn', arch: 'arch', land: 'land' };
   eq(frows({ R: 0, sel, a: 80, s: 10, t: 'frame' }), frows({ R: 0, sel, a: 80, s: 10 }));
-  eq([fx.casCost('reno', 0, 100, 'frame'), fx.casCost('arch', 0, 100, 'frame'), fx.casCost('box', 0, 100), fx.casCost('box', 0, 100, 'timber')], [55000, 1200, 60000, null]);
+  eq([fx.casCost('reno', 0, 100, 'frame'), fx.casCost('arch', 0, 100, 'frame'), fx.casCost('box', 0, 100), fx.casCost('box', 0, 100, 'timber')], [55000, 1200, 60000, 25000]);
 });
 it('посилання ?k=house&t=<тип>: тип — лише зі списку конфігу; ?k= без t — як раніше', () => {
   const T = q => fx.casCalcType(C, q);
@@ -235,7 +251,8 @@ const SRV = await import(join(ROOT, 'functions/_rates.js'));
 it('сервер (functions/_rates.js): HOUSE = rates-блок; rateOf / cost з типом = casRate / casCost; без типу — як раніше', () => {
   eq(JSON.parse(JSON.stringify(SRV.HOUSE)), JSON.parse(JSON.stringify(ctx.CAS_HT)), 'HOUSE');
   eq([SRV.rateOf('box', false), SRV.rateOf('key', true), SRV.cost('key', false, 150), SRV.cost('dz', true, 10), SRV.rateOf('nope', false), SRV.rateOf('constructor', false)], [600, 1700, 165000, 4000, null, null]);
-  eq([SRV.rateOf('box', false, 'nope'), SRV.rateOf('box', false, '__proto__'), SRV.cost('box', false, 100, 'timber'), SRV.cost('reno', false, 100, 'timber')], [600, 600, null, 55000]);
+  eq([SRV.rateOf('box', false, 'nope'), SRV.rateOf('box', false, '__proto__'), SRV.cost('box', false, 100, 'timber'), SRV.cost('reno', false, 100, 'timber')], [600, 600, 25000, 55000]);
+  eq([SRV.cost('box', false, 100, 'sandwich'), SRV.cost('key', true, 100, 'brick'), SRV.rateOf('key', true, 'lstk')], [25000, 170000, 1800]);
   const keep = JSON.parse(JSON.stringify(SRV.HOUSE));
   try { // та сама фікстура на час перевірки
     Object.assign(SRV.HOUSE, JSON.parse(JSON.stringify(FIX)));

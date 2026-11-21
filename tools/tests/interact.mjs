@@ -947,7 +947,8 @@ await test('калькулятор, посилання ?k=: старе знач�
   must(await cOn(p, 'reno') && await p.locator('#cIt button[aria-pressed="true"]').count() === 1, 'сміття в ?k= — не типовий вибір');
 });
 // Тип будинку (Михайло 21.11.2026): ряд #cHt [data-t] під «Коробка / Під ключ», видно лише з «Будівництвом будинку»; один вибір, типово «ще не визначились»
-// (базові $600 / $1 100). У даних сайту типи без ставок («за кошторисом»), тому ставки типу в сценаріях — ФІКСТУРА: довільні числа в CAS_HT сторінки тесту.
+// (базові $600 / $1 100). Ставки типів — Михайло 21.11.2026 (rates.HOUSE): каркасний деревʼяний 350 / 950 (Європа 550 / 1 500), СІП 300 / 750 (450 / 1 200);
+// тип без ставки («за кошторисом») у даних сайту немає — для цього шляху ФІКСТУРА: null у CAS_HT сторінки тесту.
 const cType = async (p, t) => { await p.click(`#cHt [data-t="${t}"]`); await p.waitForTimeout(120); };
 const cTypeOn = p => p.locator('#cHt [aria-pressed="true"]').evaluateAll(b => b.map(x => x.getAttribute('data-t')));
 const cNb = s => s.replace(/[  ]/g, ' ');
@@ -973,41 +974,48 @@ for (const [path, w, wantLab] of [['/kalkuliator-remontu', 402, 'Тип буди
     await cTile(p, 'build').click(); await p.waitForTimeout(150);
     must(!(await cHtBox(p)).vis, 'ряд «Тип будинку» лишився без будівництва');
   });
-await test('калькулятор, тип будинку без ставки: рядок «за кошторисом» з назвою типу, решта рахується; заявка містить тип; «ще не визначились» — сума як раніше', '/kalkuliator-remontu', 402, async p => {
+await test('калькулятор, тип будинку зі ставкою: рядок з назвою типу, решта рахується; заявка містить тип; без ставки (фікстура) — «за кошторисом»; «ще не визначились» — сума як раніше', '/kalkuliator-remontu', 402, async p => {
   await cOnly(p, 'build', 'arch');
   must((await cDigits(p)) === String(60 * 600 + 60 * 12), 'без типу: ' + await p.textContent('#cSum'));
   await cType(p, 'frame');
-  const rows = cNb(await p.locator('#cRows li').allTextContents().then(a => a.join(' | ')));
-  must(/Будівництво будинку \(коробка\) · Каркасний деревʼяний\s*за кошторисом/.test(rows) && /Архітектурний проєкт будинку · 60 м² × \$12\/м²\s*\$720/.test(rows), 'рядки: ' + rows);
-  must((await cDigits(p)) === '720' && await p.locator('#cPlus').isVisible(), 'сума з типом без ставки: ' + await p.textContent('#cSum'));
-  must((await cTile(p, 'build').locator('small').textContent()) === 'за кошторисом', 'плитка будівництва: ' + await cTile(p, 'build').textContent());
-  must((await p.locator('#cHt [data-t="frame"] small').textContent()) === 'за кошторисом' && /\$600/.test(await p.locator('#cHt [data-t=""] small').textContent()), 'підписи кнопок типів');
+  let rows = cNb(await p.locator('#cRows li').allTextContents().then(a => a.join(' | ')));
+  must(/Будівництво будинку \(коробка\) · Каркасний деревʼяний · 60 м² × \$350\/м²\s*\$21 000/.test(rows) && /Архітектурний проєкт будинку · 60 м² × \$12\/м²\s*\$720/.test(rows), 'рядки: ' + rows);
+  must((await cDigits(p)) === String(60 * 350 + 720) && await p.locator('#cPlus').isHidden(), 'сума з типом: ' + await p.textContent('#cSum'));
+  must(cNb(await cTile(p, 'build').locator('small').textContent()) === 'від $350/м²', 'плитка будівництва: ' + await cTile(p, 'build').textContent());
+  must(cNb(await p.locator('#cHt [data-t="frame"] small').textContent()) === 'від $350/м²' && cNb(await p.locator('#cHt [data-t="sandwich"] small').textContent()) === 'від $250/м²' && /\$600/.test(await p.locator('#cHt [data-t=""] small').textContent()), 'підписи кнопок типів');
   await p.click('#cSend'); await p.waitForTimeout(300);
-  const sv = await p.getAttribute('#of', 'data-service'), msg = cNb(await p.inputValue('#oMsg'));
+  let sv = await p.getAttribute('#of', 'data-service'), msg = cNb(await p.inputValue('#oMsg'));
   must(sv === 'Калькулятор: Будівництво будинку (коробка) · Каркасний деревʼяний + Архітектурний проєкт будинку · Україна' && sv.length <= 200, 'data-service: ' + sv);
-  must(/Будівництво будинку \(коробка\) · Каркасний деревʼяний: за кошторисом/.test(msg) && /= від \$720 \+ позиції за кошторисом/.test(msg) && (await p.inputValue('#oArea')) === '60', '#oMsg: ' + msg);
+  must(/Будівництво будинку \(коробка\) · Каркасний деревʼяний · 60 м² × \$350\/м²: \$21 000/.test(msg) && /= від \$21 720/.test(msg) && (await p.inputValue('#oArea')) === '60', '#oMsg: ' + msg);
+  // тип без ставки — ФІКСТУРА (у даних сайту такого немає): рядок «за кошторисом», решта рахується
+  await p.evaluate(() => { CAS_HT.frame = { box: [null, null], key: [null, null] }; document.getElementById('calc').scrollIntoView(); });
+  await cType(p, 'timber'); await cType(p, 'frame');
+  rows = cNb(await p.locator('#cRows li').allTextContents().then(a => a.join(' | ')));
+  must(/Будівництво будинку \(коробка\) · Каркасний деревʼяний\s*за кошторисом/.test(rows) && (await cDigits(p)) === '720' && await p.locator('#cPlus').isVisible(), 'тип без ставки: ' + rows + ' / ' + await p.textContent('#cSum'));
+  must((await p.locator('#cHt [data-t="frame"] small').textContent()) === 'за кошторисом', 'підпис типу без ставки');
+  await p.click('#cSend'); await p.waitForTimeout(300); msg = cNb(await p.inputValue('#oMsg'));
+  must(/Каркасний деревʼяний: за кошторисом/.test(msg) && /= від \$720 \+ позиції за кошторисом/.test(msg), '#oMsg (без ставки): ' + msg);
   await p.evaluate(() => document.getElementById('calc').scrollIntoView()); await cType(p, '');
   must((await cDigits(p)) === String(60 * 600 + 60 * 12) && !/Каркасний/.test(await p.textContent('#cRows')), '«ще не визначились» не повернув базову суму');
   await cTile(p, 'reno').click(); await p.waitForTimeout(150); // ремонт знімає будівництво — тип більше ні на що не діє
   must(!(await cOn(p, 'build')) && (await cDigits(p)) === String(60 * 550 + 60 * 12) && /\$600/.test(await cTile(p, 'build').locator('small').textContent()), 'тип діє без будівництва');
 });
-await test('калькулятор, тип будинку зі ставкою (фікстура) і посилання ?k=house&t=<тип>: рахує за ставкою типу, «від $…/м²» на кнопці, Європа, під ключ', '/kalkuliator-remontu?k=house&t=frame#calc', 1440, async p => {
+await test('калькулятор, тип будинку і посилання ?k=house&t=<тип>: рахує за ставкою типу, «від $…/м²» на кнопці, Європа, під ключ', '/kalkuliator-remontu?k=house&t=frame#calc', 1440, async p => {
   must(await cOn(p, 'build') && JSON.stringify(await cTypeOn(p)) === '["frame"]' && await p.locator('#cV [data-k="build"] [data-p="box"][aria-pressed="true"]').count() === 1, '?k=house&t=frame не вибрав коробку каркасного');
-  must((await p.textContent('#cSum')) === 'за кошторисом', 'дані сайту: тип без ставки — ' + await p.textContent('#cSum'));
-  await p.evaluate(() => { CAS_HT.frame = { box: [500, 750], key: [900, null] }; }); // ФІКСТУРА (не ставки CAS): лише в цій вкладці тесту
+  must((await cDigits(p)) === String(60 * 350), 'коробка каркасного: ' + await p.textContent('#cSum'));
   await cVar(p, 'build', 'key');
-  must((await cDigits(p)) === String(60 * 900), 'під ключ за ставкою типу: ' + await p.textContent('#cSum'));
-  must(cNb(await p.locator('#cHt [data-t="frame"] small').textContent()) === 'від $900/м²' && cNb(await cTile(p, 'build').locator('small').textContent()) === 'від $900/м²', 'підпис ставки типу: ' + await p.locator('#cHt [data-t="frame"]').textContent());
-  must(cNb(await p.locator('#cHt [data-t=""] small').textContent()) === 'від $1 100/м²' && (await p.locator('#cHt [data-t="sip"] small').textContent()) === 'за кошторисом', 'підписи інших типів');
-  must(/Будинок під ключ з оздобленням · Каркасний деревʼяний · 60 м² × \$900\/м²\s*\$54 000/.test(cNb(await p.textContent('#cRows'))), 'рядок: ' + await p.textContent('#cRows'));
+  must((await cDigits(p)) === String(60 * 950), 'під ключ за ставкою типу: ' + await p.textContent('#cSum'));
+  must(cNb(await p.locator('#cHt [data-t="frame"] small').textContent()) === 'від $950/м²' && cNb(await cTile(p, 'build').locator('small').textContent()) === 'від $950/м²', 'підпис ставки типу: ' + await p.locator('#cHt [data-t="frame"]').textContent());
+  must(cNb(await p.locator('#cHt [data-t=""] small').textContent()) === 'від $1 100/м²' && cNb(await p.locator('#cHt [data-t="lstk"] small').textContent()) === 'від $1 150/м²', 'підписи інших типів');
+  must(/Будинок під ключ з оздобленням · Каркасний деревʼяний · 60 м² × \$950\/м²\s*\$57 000/.test(cNb(await p.textContent('#cRows'))), 'рядок: ' + await p.textContent('#cRows'));
   await cVar(p, 'build', 'box');
-  must((await cDigits(p)) === String(60 * 500) && cNb(await p.locator('#cV [data-k="build"] [data-p="box"] small').textContent()) === '$500/м²', 'коробка за ставкою типу: ' + await p.textContent('#cSum'));
+  must((await cDigits(p)) === String(60 * 350) && cNb(await p.locator('#cV [data-k="build"] [data-p="box"] small').textContent()) === '$350/м²', 'коробка за ставкою типу: ' + await p.textContent('#cSum'));
   await p.click('#cReg [data-r="1"]'); await p.waitForTimeout(120);
-  must((await cDigits(p)) === String(60 * 750), 'Європа, коробка: ' + await p.textContent('#cSum'));
+  must((await cDigits(p)) === String(60 * 550), 'Європа, коробка: ' + await p.textContent('#cSum'));
   await cVar(p, 'build', 'key');
-  must((await p.textContent('#cSum')) === 'за кошторисом' && (await p.locator('#cHt [data-t="frame"] small').textContent()) === 'за кошторисом', 'Європа, під ключ без ставки типу: ' + await p.textContent('#cSum'));
+  must((await cDigits(p)) === String(60 * 1500) && cNb(await p.locator('#cHt [data-t="frame"] small').textContent()) === 'від $1 500/м²', 'Європа, під ключ: ' + await p.textContent('#cSum'));
   await p.click('#cSend'); await p.waitForTimeout(300);
-  must(/Будинок під ключ з оздобленням · Каркасний деревʼяний · Європа$/.test(await p.getAttribute('#of', 'data-service')) && /Каркасний деревʼяний: за кошторисом/.test(await p.inputValue('#oMsg')), 'заявка: ' + await p.getAttribute('#of', 'data-service'));
+  must(/Будинок під ключ з оздобленням · Каркасний деревʼяний · Європа$/.test(await p.getAttribute('#of', 'data-service')) && /Каркасний деревʼяний · 60 м² × \$1[\s  ]500\/м²: \$90[\s  ]000/.test(await p.inputValue('#oMsg')), 'заявка: ' + await p.getAttribute('#of', 'data-service') + ' / ' + await p.inputValue('#oMsg'));
   // старі посилання: без t або з невідомим t — як раніше
   await p.goto(p.url().replace(/\?.*$/, '?k=housekey&t=nope'), { waitUntil: 'load' }); await p.waitForTimeout(300);
   must(JSON.stringify(await cTypeOn(p)) === '[""]' && (await cDigits(p)) === String(60 * 1100), '?k=housekey&t=nope: ' + await p.textContent('#cSum'));
@@ -1016,13 +1024,31 @@ await test('калькулятор, тип будинку зі ставкою (�
 });
 await test('калькулятор (ar, RTL), тип будинку: назва типу в рядку й заявці, ціна в рядку — «$…» ліворуч від числа', '/ar/renovation-calculator?k=housekey&t=sip', 402, async p => {
   must(JSON.stringify(await cTypeOn(p)) === '["sip"]' && /ألواح SIP/.test(await p.textContent('#cRows')), 'ar: тип не в рядку: ' + await p.textContent('#cRows'));
-  await p.evaluate(() => { CAS_HT.sip = { box: [null, null], key: [1000, 1500] }; }); // ФІКСТУРА (не ставки CAS)
+  await p.click('#cReg [data-r="1"]'); await p.waitForTimeout(120);
+  must((await cDigits(p)) === String(60 * 1200) && /⁦\$1[\s  ]200⁩/.test(await p.textContent('#cRows')), 'ar: Європа, СІП під ключ: ' + JSON.stringify(await p.textContent('#cRows')));
   await p.click('#cReg [data-r="0"]'); await p.waitForTimeout(120);
-  must((await cDigits(p)) === '60000' && /⁦\$1[  ]000⁩/.test(await p.textContent('#cRows')), 'ar: рядок зі ставкою типу: ' + JSON.stringify(await p.textContent('#cRows')));
+  must((await cDigits(p)) === String(60 * 750) && /⁦\$750⁩/.test(await p.textContent('#cRows')), 'ar: рядок зі ставкою типу: ' + JSON.stringify(await p.textContent('#cRows')));
   await p.click('#cSend'); await p.waitForTimeout(300);
   must(/ألواح SIP/.test(await p.getAttribute('#of', 'data-service')) && /ألواح SIP/.test(await p.inputValue('#oMsg')) && !/[⁦⁩]/.test(await p.inputValue('#oMsg')), 'ar: заявка без типу або зі службовими знаками');
   must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'ar: горизонтальна прокрутка');
 });
+// Сума лише «за кошторисом» (жодної позиції зі ставкою, напр. ремонт офісу в Європі): речення «Це нижня межа…» не показуємо; висота примітки — та сама (невидимий шар)
+for (const path of ['/kalkuliator-remontu', '/ru/kalkulyator-remonta', '/en/renovation-cost-calculator', '/es/calculadora-reforma', '/zh/renovation-calculator',
+  '/pl/kalkulator-remontu', '/de/renovierungskosten-rechner', '/fr/calculateur-renovation', '/pt/calculadora-obras', '/ar/renovation-calculator'])
+  await test('калькулятор: сума лише «за кошторисом» — без речення про нижню межу, висота примітки не змінюється', path + '?k=remont', 402, async p => {
+    const C = await p.evaluate(() => JSON.parse(document.getElementById('cCfg').textContent));
+    const st = () => p.evaluate(nb => { const n = document.getElementById('cNote'), vis = [...n.childNodes].filter(x => !(x.nodeType === 1 && x.classList.contains('gh'))).map(x => x.textContent).join('');
+      return { vis, has: vis.includes(nb), h: Math.round(n.getBoundingClientRect().height), sum: document.getElementById('cSum').textContent, plus: !document.getElementById('cPlus').hidden,
+        gh: [...n.querySelectorAll('.gh')].every(e => e.getAttribute('aria-hidden') === 'true' && getComputedStyle(e).visibility === 'hidden') }; }, C.nb);
+    await p.click('#cReg [data-r="1"]'); await p.waitForTimeout(150);
+    const a = await st(); must(a.has && /\d/.test(a.sum), 'Європа, ремонт квартири — немає суми або речення: ' + JSON.stringify(a));
+    await cVar(p, 'reno', 'office'); await p.waitForTimeout(100);
+    const b = await st();
+    must(b.sum === C.est && !b.has && !b.plus && b.gh, 'лише «за кошторисом» — речення лишилось: ' + JSON.stringify(b));
+    must(Math.abs(b.h - a.h) <= 1, `висота примітки змінилась: ${a.h} → ${b.h}`);
+    await cTile(p, 'design').click(); await p.waitForTimeout(150); // дизайн зі ставкою + офіс за кошторисом — речення повертається
+    const c = await st(); must(c.has && c.plus && /\d/.test(c.sum), 'з позицією зі ставкою речення не повернулось: ' + JSON.stringify(c));
+  });
 await test('калькулятор (ar, RTL), кілька позицій: галочка з боку кінця рядка, без горизонтальної прокрутки на 344 px', '/ar/renovation-calculator', [344, 760], async p => {
   await cOnly(p, 'design', 'reno', 'furn', 'land');
   must(await p.locator('#cRows li').count() === 4 && /\$/.test(await p.textContent('#cSum')), 'ar: немає 4 рядків і суми');
