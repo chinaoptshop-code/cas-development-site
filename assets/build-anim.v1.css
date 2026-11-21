@@ -121,6 +121,8 @@
 .bz-fig text{font:500 9px 'Manrope','Manrope Fallback',system-ui,sans-serif;fill:var(--mu,#938c84);letter-spacing:.06em}
 .bz-fig polyline,.bz-fig path.dra{fill:none;stroke-linecap:round;stroke-linejoin:round}
 .bz-fig polygon,.bz-fig path{stroke-linejoin:round}
+.bz-fig .bz-cam{transform-box:view-box;transform-origin:0 0} /* камера — CSS transform у координатах viewBox (та сама матриця, що раніше в атрибуті) */
+.bz:not(.bz-far) .bz-fig .bz-cam{will-change:transform}
 .bz:not(.bz-far) .bz-fig .bz-l{will-change:opacity} /* .bz-far — сцена поза екраном (build-anim.v1.js): без 225 шарів композитора */
 .bz-fig .ghost{transition:opacity .3s}
 .bz-fig .gh{fill:none;stroke:#BF9148;stroke-width:.8;stroke-dasharray:3 3}

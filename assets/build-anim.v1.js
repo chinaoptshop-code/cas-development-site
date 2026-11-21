@@ -1537,8 +1537,10 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     function camera(s) {
       if (!cam || !VB) return;
       var t = rm ? 1 : clamp(s / (n * 0.5)), z = 1 + 0.12 * (1 - t) * (1 - t), cx = VB[0] + VB[2] / 2, cy = VB[1] + VB[3] * (0.62 - 0.12 * t);
-      var tr = z > 1.001 ? 'translate(' + cx.toFixed(1) + ' ' + cy.toFixed(1) + ') scale(' + z.toFixed(4) + ') translate(' + (-cx).toFixed(1) + ' ' + (-cy).toFixed(1) + ')' : '';
-      if (tr !== cam.__t) { cam.__t = tr; cam.setAttribute('transform', tr); } // той самий кадр — без запису (менше перерахунку стилів)
+      // ЕКСПЕРИМЕНТ (гілка site/scene-camera-css, на перегляд Михайлу): та сама матриця, але CSS-властивістю transform на групі з will-change:transform
+      // (build-anim.v1.css) — рух камери виконує композитор, SVG не перемальовується щокадру. Атрибут transform перемальовував усю сцену.
+      var tr = z > 1.001 ? 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px) scale(' + z.toFixed(4) + ') translate(' + (-cx).toFixed(1) + 'px,' + (-cy).toFixed(1) + 'px)' : 'none';
+      if (tr !== cam.__t) { cam.__t = tr; cam.style.transform = tr; } // той самий кадр — без запису (менше перерахунку стилів)
       if (sky) {
         var e = clamp((s - (n - 1.8)) / 1.4), so = clamp((s - (n - 1)) / 0.8); sky.style.opacity = (1 - e).toFixed(3); stars.style.opacity = so.toFixed(3);
         if ((so > 0) !== stars.classList.contains('is-on')) stars.classList.toggle('is-on', so > 0); // зорі мерехтять лише видимі (CSS-анімація 26 кіл щокадру перераховувала стилі сцени)
