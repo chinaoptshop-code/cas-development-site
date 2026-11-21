@@ -130,8 +130,8 @@ body{padding-top:var(--sch-h)}
 .scf-col b{display:block;margin:0 0 10px;font-size:.75rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c-ac)}
 .scf address{font-style:normal;color:var(--c-tx)}
 .scf-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.125rem;font-weight:600;color:var(--c-tx);text-decoration:none}
-.scf-soc{display:flex;flex-wrap:nowrap;gap:clamp(2px,calc((100% - 7 * 2.875rem) / 6),.5rem)}
-.scf-soc a{display:inline-flex;flex:0 1 auto;min-width:0;align-items:center;justify-content:center;width:max(44px,2.875rem);height:max(44px,2.875rem);border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}
+.scf-soc{display:flex;flex-wrap:wrap;gap:.5rem}
+.scf-soc a{display:inline-flex;flex:none;align-items:center;justify-content:center;width:max(44px,2.875rem);height:max(44px,2.875rem);border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}
 .scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}
 .scf-soc .bi::before{width:1.375rem;height:1.375rem}
 .scf .scf-svc{position:static;margin:32px 0 0;padding:16px 0 0;border:0;border-top:1px solid var(--c-ln)}
@@ -584,11 +584,12 @@ html body .hxl>.hero{min-height:min(60vh,50vw,36rem);display:flex;flex-direction
 .hxl::before,[dir=rtl] .hxl::before{background:linear-gradient(0deg,var(--bg) 2%,rgba(8,7,9,.84) 38%,rgba(8,7,9,.3) 72%,rgba(8,7,9,.12) 100%)}}
 .crumbs+.hxl{margin-top:-.25rem}
 @media(max-width:767px){.crumbs+.hxl{margin-top:.375rem}}
-@media(max-width:419px){.scf-soc{gap:clamp(0px,calc((100% - 7 * 2.75rem) / 6),.5rem)}
-.scf-soc a{width:max(44px,2.75rem);height:max(44px,2.75rem)}}
+@media(max-width:759px){.scf-soc{display:grid;grid-template-columns:repeat(5,max-content)}}
+@media(max-width:419px){.scf-soc a{width:max(44px,2.75rem);height:max(44px,2.75rem)}}
 @media(min-width:760px) and (max-width:1099px){.scf-top{grid-template-columns:1.3fr 1fr}
 .scf-top>.scf-col:last-child{grid-column:1/-1}}
-@media(min-width:1100px){.scf-top{grid-template-columns:1.3fr 1fr minmax(23.25rem,1.2fr)}}
+@media(min-width:760px){.scf-soc{flex-wrap:nowrap}}
+@media(min-width:1100px){.scf-top{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto}}
 @media(min-width:768px) and (max-width:1023px){.hxl::before{background:linear-gradient(90deg,rgba(8,7,9,.88) 0,rgba(8,7,9,.66) 50%,rgba(8,7,9,.42) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}
 [dir=rtl] .hxl::before{background:linear-gradient(270deg,rgba(8,7,9,.88) 0,rgba(8,7,9,.66) 50%,rgba(8,7,9,.42) 100%),linear-gradient(0deg,var(--bg) 0,rgba(8,7,9,0) 32%)}}
 .gal figure{position:relative}

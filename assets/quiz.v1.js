@@ -27,7 +27,7 @@
     ar: ['احسب التكلفة التقديرية', 'أربعة أسئلة وسترى مبلغًا «يبدأ من» وفق أسعار الاستوديو.']
   };
   var t = H[lang] || H.uk;
-  /*qz:core*/var CORE = "/assets/quiz-core.v1.js?v=3509c149"; /*/qz:core*/
+  /*qz:core*/var CORE = "/assets/quiz-core.v1.js?v=fa5853cd"; /*/qz:core*/
   function el(tag, cls, txt) { var e = d.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
   var me = d.currentScript, CSS = me && me.src ? me.src.replace(/quiz\.v1\.js(\?v=(\w+))?.*$/, 'quiz.v1.css') : '';
   /* <script src="/assets/quiz.v1.js" data-quiz-obj="kv" data-quiz-svc="rem" defer> (tools/site/quiz.py) — секція квізу перед самим тегом:
