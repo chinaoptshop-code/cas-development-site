@@ -945,6 +945,48 @@ for (const [path, w] of [['/proekty/yacht-vip', 402], ['/en/proekty/monpark', 14
   must(st.v > 0 && st.ok === st.v, `мініатюри в кадрі не завантажились: ${st.ok} з ${st.v}`);
   must(st.cls < .01, 'зсув верстки при появі мініатюр: ' + st.cls.toFixed(3));
 });
+// «Бренди, з якими працюємо» (rich.py brands, 21.11.2026): назви текстом у <ul>, рух — marquee() (копії aria-hidden), пауза кнопкою й наведенням,
+// без горизонтальної прокрутки сторінки, висота блоку не стрибає (CLS), RTL — у зворотний бік; reduced-motion — статичний ряд із переносом
+for (const [path, w] of [['/about', 1440], ['/about', 402], ['/ar/about', 402], ['/de/ueber-uns', 344], ['/komplektatsiia-pid-kliuch-kyiv', 768]]) await test('стрічка брендів: рухається, пауза, без зсуву', path, w, async p => {
+  await p.evaluate(() => { window.__cls = 0; new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; }).observe({ type: 'layout-shift', buffered: true }); });
+  const ul = p.locator('.xs-brands .xs-bl');
+  must(await ul.count() === 1, 'немає стрічки брендів');
+  const h0 = await ul.evaluate(e => { e.closest('section').scrollIntoView({ block: 'center' }); return e.closest('section').offsetHeight; });
+  if (w >= 1024) await p.mouse.move(2, 2);
+  await p.waitForTimeout(900);
+  const st = await ul.evaluate(e => ({ li: e.querySelectorAll('li:not(.mq-c)').length, cl: e.querySelectorAll('li.mq-c').length, hid: [...e.querySelectorAll('li.mq-c')].every(x => x.getAttribute('aria-hidden') === 'true'),
+    img: e.closest('section').querySelectorAll('img,svg').length, h: e.closest('section').offsetHeight, hs: document.documentElement.scrollWidth - innerWidth, rtl: document.documentElement.dir === 'rtl' }));
+  must(st.li >= 10 && st.li <= 30 && st.cl === st.li && st.hid, 'назви/копії: ' + JSON.stringify(st));
+  must(st.img === 0, 'у стрічці брендів є зображення (лише назви текстом)');
+  must(st.hs <= 0, `горизонтальна прокрутка сторінки ${st.hs}px`);
+  must(Math.abs(st.h - h0) <= 1, `висота блоку змінилась ${h0}→${st.h}`);
+  const s0 = await ul.evaluate(e => e.scrollLeft); await p.waitForTimeout(1200); const s1 = await ul.evaluate(e => e.scrollLeft);
+  must(Math.abs(s1 - s0) > 10 && (st.rtl ? s1 < s0 : s1 > s0), `стрічка не рухається або не в той бік (${s0}→${s1})`);
+  const b = p.locator('.xs-brands .mq-ap');
+  must(await b.count() === 1, 'немає кнопки паузи');
+  const bb = await b.boundingBox(); must(bb.width >= 43.5 && bb.height >= 43.5, 'кнопка паузи < 44px');
+  const ub = await ul.boundingBox(); must(st.rtl ? bb.x + bb.width <= ub.x + 1 : bb.x >= ub.x + ub.width - 1, 'кнопка паузи поверх назв');
+  await b.click(); await p.waitForTimeout(250);
+  must(await b.getAttribute('aria-pressed') === 'true', 'aria-pressed після паузи');
+  const a0 = await ul.evaluate(e => e.scrollLeft); await p.waitForTimeout(900);
+  must(Math.abs(await ul.evaluate(e => e.scrollLeft) - a0) < 1, 'на паузі стрічка рухається');
+  await b.click(); await p.waitForTimeout(700);
+  if (w >= 1024) { // наведення миші — пауза
+    await p.mouse.move(ub.x + ub.width / 3, ub.y + ub.height / 2); await p.waitForTimeout(300);
+    const m0 = await ul.evaluate(e => e.scrollLeft); await p.waitForTimeout(900);
+    must(Math.abs(await ul.evaluate(e => e.scrollLeft) - m0) < 1, 'при наведенні стрічка рухається');
+  }
+  const cls = await p.evaluate(() => window.__cls);
+  must(cls <= 0.05, 'CLS ' + cls.toFixed(3));
+});
+for (const [path, w] of [['/about', 402], ['/ar/about', 1440]]) await test('стрічка брендів, reduced-motion: статичний ряд із переносом, без копій і кнопки', path, w, async p => {
+  const ul = p.locator('.xs-brands .xs-bl');
+  await ul.evaluate(e => e.closest('section').scrollIntoView({ block: 'center' })); await p.waitForTimeout(800);
+  const st = await ul.evaluate(e => ({ cl: e.querySelectorAll('li.mq-c').length, btn: e.closest('section').querySelectorAll('button').length, rows: new Set([...e.children].map(x => Math.round(x.getBoundingClientRect().top))).size,
+    over: e.scrollWidth - e.clientWidth, hs: document.documentElement.scrollWidth - innerWidth }));
+  must(st.cl === 0 && st.btn === 0, 'копії/кнопка при reduced-motion: ' + JSON.stringify(st));
+  must(st.rows >= 2 && st.over <= 1 && st.hs <= 0, 'ряд не переноситься або виходить за край: ' + JSON.stringify(st));
+}, { reducedMotion: 'reduce' });
 await browser.close(); server.close();
 console.log(fails ? `\n${fails} FAIL` : '\nВзаємодії: ALL OK');
 process.exit(fails ? 1 : 0);
