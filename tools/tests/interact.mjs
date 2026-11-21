@@ -423,6 +423,33 @@ await test('калькулятор: площа → сума', '/kalkuliator-remo
   const after = await p.locator('main').innerText();
   must(after !== before && /\$\s?\d|\d[\d\s]*\s?\$/.test(after), 'сума не змінилась');
 });
+// Роздільник тисяч U+202F (21.11.2026): у Manrope/Cormorant гліфа немає, Chrome малював ~0.1em («$1100»); свій гліф 0.2em — блок /*nn*/
+// у site-chrome.v1.css (tools/fonts/nnbsp.py), грані тих самих сімейств з unicode-range:U+202F, оголошені ПІСЛЯ основних.
+const nnW = p => p.evaluate(async () => {
+  await document.fonts.ready;
+  const out = [], w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n;
+  while ((n = w.nextNode())) {
+    const t = n.nodeValue, el = n.parentElement;
+    if (t.indexOf(' ') < 0 || !el || el.closest('script,style,template,noscript,svg') || !el.getClientRects().length) continue;
+    const fs = parseFloat(getComputedStyle(el).fontSize);
+    for (let i = 0; i < t.length; i++) if (t[i] === ' ') {
+      const r = document.createRange(); r.setStart(n, i); r.setEnd(n, i + 1);
+      const b = r.getBoundingClientRect(); if (b.height) out.push(+(b.width / fs).toFixed(3));
+    }
+  }
+  return out;
+});
+await test('роздільник тисяч U+202F видно: 0.2em у сумі калькулятора й рядках цін (uk, de, ar), не ~0.1em', '/kalkuliator-remontu', 402, async p => {
+  await p.locator('#cArea').fill('1200'); await p.locator('#cArea').dispatchEvent('input'); await p.waitForTimeout(300);
+  must(/ /.test(await p.locator('#cSum').innerText()), 'у сумі калькулятора немає U+202F');
+  for (const u of [null, '/vartist-budivnytstva-budynku-kyiv', '/de/renovierungskosten-rechner', '/ar/renovation-calculator']) {
+    if (u) { await p.goto(BASE + u, { waitUntil: 'load' }); await p.waitForTimeout(200); }
+    const ws = await nnW(p);
+    must(ws.length >= 2, `${u || 'калькулятор'}: у видимому тексті немає цін з U+202F`);
+    const bad = ws.filter(x => x < 0.18 || x > 0.24);
+    must(!bad.length, `${u || 'калькулятор'}: U+202F ${bad.slice(0, 4).join(', ')}em — має бути 0.2em (блок /*nn*/ у site-chrome.v1.css після основних @font-face)`);
+  }
+});
 // калькулятор — кілька позицій одразу (Михайло 20.11.2026): плитки #cIt [data-k] (aria-pressed), уточнення #cV [data-k] [data-p], площа #cArea, сотки #cLand
 const cTile = (p, k) => p.locator(`#cIt [data-k="${k}"]`);
 const cOn = async (p, k) => (await cTile(p, k).getAttribute('aria-pressed')) === 'true';
