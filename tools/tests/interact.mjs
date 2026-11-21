@@ -1093,6 +1093,43 @@ await test('WeChat на /contact (en): лише іконки з Behance і WeCha
   must(tip && tip.on && /WeChat number copied/.test(tip.txt), 'підказка en: ' + JSON.stringify(tip));
   must((await p.evaluate(() => navigator.clipboard.readText())) === WX, 'буфер (тач)');
 }, CLIP);
+// Лише іконки (Михайло 21.11.2026): під кнопкою форми — ряд Telegram · Viber · WhatsApp · WeChat без тексту «Або напишіть» (лише aria-label групи);
+// мобільне меню шапки — іконки (+ WeChat, Instagram); меню пігулки — ряд іконок (tel: першою) і текстова кнопка «Залишити номер»
+const ALT = { '/': 'Або напишіть', '/en/': 'Or message us', '/ar/': 'أو راسلنا' };
+for (const path of Object.keys(ALT)) for (const w of [402, 1440]) await test('форма: під кнопкою лише іконки месенджерів', path, w, async p => {
+  await p.locator('#oBtn').scrollIntoViewIfNeeded(); await p.waitForTimeout(300);
+  const r = await icoRow(p, '#of .lq-alt');
+  must(r.map(x => x.k).join() === 'telegram,viber,whatsapp,wechat', 'іконки: ' + r.map(x => x.k));
+  must(r.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'не іконки ≥ 44 px з aria-label: ' + JSON.stringify(r));
+  must(r.find(x => x.k === 'wechat').wx === WX, 'WeChat без data-wx');
+  const g = await p.evaluate(() => { const a = document.querySelector('#of .lq-alt'), b = document.getElementById('oBtn').getBoundingClientRect(), r = a.getBoundingClientRect();
+    return { txt: a.textContent.trim(), lab: a.getAttribute('aria-label'), role: a.getAttribute('role'), form: document.getElementById('of').innerText, below: r.top >= b.bottom - 1, vis: r.height > 0 }; });
+  must(!g.txt && g.role === 'group' && g.lab === ALT[path], 'група: ' + JSON.stringify({ txt: g.txt, lab: g.lab, role: g.role }));
+  must(!g.form.includes(ALT[path]) && g.below && g.vis, 'текст «' + ALT[path] + '» лишився у формі або ряд не під кнопкою');
+  must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'горизонтальна прокрутка');
+});
+for (const w of [344, 402]) await test('мобільне меню шапки: месенджери — лише іконки', '/', w, async p => {
+  await p.click('.sch-burger'); await p.waitForTimeout(400);
+  await p.locator('.sch-mmsg').scrollIntoViewIfNeeded();
+  const r = await icoRow(p, '.sch-mmsg');
+  must(r.map(x => x.k).join() === 'telegram,viber,whatsapp,wechat,instagram', 'іконки: ' + r.map(x => x.k));
+  must(r.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'не іконки ≥ 44 px з aria-label: ' + JSON.stringify(r));
+  must(await p.evaluate(() => [...document.querySelectorAll('.sch-mmsg a')].every(a => { const r = a.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth; })), 'іконка за краєм екрана');
+});
+for (const [path, w] of [['/', 402], ['/', 320], ['/ar/', 402], ['/ar/', 344], ['/en/apartment-renovation-cost', 430]]) await test('пігулка: меню — ряд іконок і «Залишити номер»', path, w, async p => {
+  await p.click('.mbar .mb-tg'); await p.waitForTimeout(400);
+  const r = await p.evaluate(() => { const m = document.querySelector('.mbar .mb-menu').getBoundingClientRect();
+    return { m: [m.left, m.right, innerWidth], rtl: document.dir === 'rtl' || document.documentElement.dir === 'rtl',
+      ic: [...document.querySelectorAll('.mbar .mb-menu a:not(.mb-lead)')].map(a => { const b = a.getBoundingClientRect(); return { h: a.getAttribute('href'), x: b.left, w: b.width, hh: b.height, t: b.top, txt: a.textContent.trim(), lab: a.getAttribute('aria-label') || '', v: !!a.offsetParent }; }),
+      lead: (() => { const a = document.querySelector('.mbar .mb-lead'), b = a.getBoundingClientRect(); return { h: a.getAttribute('href'), txt: a.textContent.trim(), w: b.width, hh: b.height, t: b.top }; })() }; });
+  must(r.ic.length === 5 && /^tel:/.test(r.ic[0].h) && /t\.me/.test(r.ic[1].h) && /wa\.me/.test(r.ic[2].h) && /^viber:/.test(r.ic[3].h) && /^weixin:/.test(r.ic[4].h), 'порядок: ' + r.ic.map(x => x.h));
+  must(r.ic.every(x => x.v && x.w >= 44 && x.hh >= 44 && !x.txt && x.lab), 'не іконки ≥ 44 px з aria-label: ' + JSON.stringify(r.ic));
+  must(r.ic.every(x => Math.abs(x.t - r.ic[0].t) < 2), 'іконки не в один ряд');
+  must(r.rtl ? r.ic[0].x > r.ic[4].x : r.ic[0].x < r.ic[4].x, 'RTL: ряд не дзеркальний');
+  must(r.lead.txt && /#zayavka$/.test(r.lead.h) && r.lead.hh >= 44 && r.lead.t > r.ic[0].t, '«Залишити номер»: ' + JSON.stringify(r.lead));
+  must(r.m[0] >= 0 && r.m[1] <= r.m[2], 'меню за краєм екрана: ' + r.m);
+  must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'горизонтальна прокрутка');
+});
 // Кільце курсора біля країв вікна (20.11.2026): RTL і LTR на 1024 / 1440 / 1920 — без горизонтальної прокрутки, кліки проходять крізь кільце,
 // стрілка над обкладинкою в RTL — «←»
 for (const [path, w] of [['/ar/', 1440], ['/ar/', 1920], ['/ar/services', 1024], ['/', 1024], ['/services', 1920]]) await test('курсор-супутник біля країв: без горизонтальної прокрутки, не перехоплює кліки', path, w, async p => {

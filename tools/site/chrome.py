@@ -396,7 +396,11 @@ def header(lang, path, alts, tools='', cta_href=None):
     items = ''.join(f'<a href="{h}"' + (' aria-current="page"' if current(lang, path, h) else '') + f'>{n}</a>' for h, n in _live(t['nav']))
     cta = cta_href or t['cta_href']
     tools_html = f'<div class="sch-tools">{tools}</div><!--/sch-tools-->' if tools.strip() else ''
-    msg = ''.join(f'<a class="bi bi-{k}" href="{u}" target="_blank" rel="noopener">{n}</a>' for k, n, u in MSG)  # іконки — CSS (.bi-*)
+    # месенджери мобільного меню — лише іконки, як у футері (Михайло 21.11.2026): назва — aria-label і title, іконки — CSS (.bi-*);
+    # + WeChat (клік копіює номер — a[data-wx] у site-chrome.v1.js; без JS — weixin://)
+    mrow = MSG[:3] + [x for x in SOCIAL if x[0] == 'wechat'] + MSG[3:]
+    msg = ''.join(f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '')
+                  + (f' data-wx="{WECHAT}"' if k == 'wechat' else '') + f' aria-label="{n}" title="{n}"></a>' for k, n, u in mrow)
     kab_cur = ' aria-current="page"' if path == KAB_HREF or path.startswith(KAB_HREF + '/') else ''
     kab = f'<a class="sch-kab" href="{KAB_HREF}" title="{t["kab_full"]}"{kab_cur}><span>{t["kab"]}</span></a>'
     # швидкі кнопки мобільного меню: кабінет і калькулятор вартості (якщо сторінка калькулятора цією мовою є)
@@ -431,7 +435,7 @@ def header(lang, path, alts, tools='', cta_href=None):
         f'  <nav class="sch-mnav" aria-label="{t["nav_label"]}">{items}</nav>\n'
         f'  <div class="sch-mlang" role="group" aria-label="{t["lang_label"]}">{lang_links(lang, alts, "sch-lang")}</div>\n'
         f'  <div class="sch-mcta"><a class="sch-cta" href="{cta}">{t["cta"]}</a><a class="sch-mtel" href="tel:{PHONE}">{PHONE_SVG}{PHONE_TXT}</a></div>\n'
-        f'  <div class="sch-mmsg">{msg}</div>\n'
+        f'  <div class="sch-mmsg" role="group" aria-label="{t["msg"]}">{msg}</div>\n'
         '</div></div>\n'
         '</header><!--/chrome:h-->'
     )
@@ -659,13 +663,13 @@ def mbar_logos(s):
 
 
 # Нижня панель → ОДНА компактна кнопка «Зв'язатися» в куті (Михайло 05.11.2026: «зменш "Залишити заявку" — до одного знизу»).
-# Тап відкриває невелике меню: Подзвонити (tel:), Telegram, WhatsApp, Viber, «Залишити номер» (до єдиної форми #zayavka;
+# Тап відкриває невелике меню: ряд іконок Подзвонити (tel:), Telegram, WhatsApp, Viber, WeChat (лише іконки, Михайло 21.11.2026 — mb_icons) і «Залишити номер» (до єдиної форми #zayavka;
 # /assets/lead-form.v1.js прокручує до поля телефону й ставить фокус). Посилання панелі з усіма атрибутами лишаються як були.
 # Стилі — «Кнопка Зв'язатися» в site-chrome.v1.css (.mbar[data-one]; на ПК панелі немає — у шапці телефон і «Заявка»),
 # відкриття/закриття — site-chrome.v1.js. Ідемпотентно: згенеровані частини (кнопка, обгортка, Viber, «Залишити номер») знімаємо й ставимо заново.
 MB_ONE = dict(uk=("Зв'язатися",), ru=('Связаться',), en=('Contact',), es=('Contactar',), zh=('联系我们',), pl=('Kontakt',), de=('Kontakt',), fr=('Contact',), pt=('Contactar',), ar=('تواصل معنا',))
 VIBER = 'viber://chat?number=%2B380978667755'
-MB_LEAD_RX = re.compile(r'<style id="mb-lead">.*?</style>|<a class="mb-(?:lead|vb)"[^>]*>.*?</a>\n?|<button type="button" class="mb-tg"[^>]*>.*?</button>\n?|<div class="mb-menu"[^>]*>\n?|</div><!--/mb-menu-->\n?', re.S)
+MB_LEAD_RX = re.compile(r'<style id="mb-lead">.*?</style>|<a class="mb-(?:lead|vb|wx)"[^>]*>.*?</a>\n?|<button type="button" class="mb-tg"[^>]*>.*?</button>\n?|<div class="mb-menu"[^>]*>\n?|</div><!--/mb-menu-->\n?', re.S)
 
 
 # Базова панель .mbar (стилі m-fix + посилання) для сторінок, що будуються без неї (каталог 3D-турів /tury і /<мова>/tury,
@@ -699,6 +703,28 @@ def mbar_add(s, lang):
     return s[:k] + bar + s[k:] if k >= 0 else s
 
 
+MB_NAMES = (('tel:', None), ('https://t.me/', 'Telegram'), ('https://wa.me/', 'WhatsApp'), ('viber://', 'Viber'), ('weixin://', 'WeChat ' + WECHAT))
+
+
+def mb_icons(body, lang):
+    """Меню пігулки — ряд іконок (Михайло 21.11.2026): з посилань панелі прибираємо видимий текст, назва — aria-label і title
+    (дзвінок — «Подзвонити» мовою сторінки, leadform._call; решта — назва месенджера за адресою). Ідемпотентно."""
+    import leadform
+    c = leadform._call(lang)
+    call = c[0] if c else 'Подзвонити'
+
+    def one(m):
+        tag, inner = m.group(1), m.group(2)
+        href = _attr(tag, 'href') or ''
+        name = next((call if n is None else n for pre, n in MB_NAMES if href.startswith(pre)), None)
+        if not name:
+            return m.group(0)
+        tag = re.sub(r'\s(?:aria-label|title)="[^"]*"', '', tag)[:-1] + f' aria-label="{html.escape(name)}" title="{html.escape(name)}">'
+        inner = ''.join(x.group(0) for x in re.finditer(r'<svg\b.*?</svg>|<img\b[^>]*>', inner, re.S))  # лише іконка
+        return tag + inner + '</a>'
+    return re.sub(r'(<a\b(?![^>]*class="mb-lead")[^>]*>)(.*?)</a>', one, body, flags=re.S)
+
+
 def mbar_lead(s, lang, rel=''):
     """Панель .mbar → кнопка «Зв'язатися» + меню (ідемпотентно)."""
     import leadform  # тексти легкої заявки (tools/site/leadform.py)
@@ -722,11 +748,14 @@ def mbar_lead(s, lang, rel=''):
     one = MB_ONE.get(lang, MB_ONE['en'])[0]
     m = re.match(r'(<!--m-fix--><div class="mbar")[^>]*>\n?', blk)  # aria-label панелі — «Швидкий зв'язок» мовою сторінки (landing.py FORM_UK шукає його в шаблоні)
     body = blk[m.end():].strip('\n')
-    vb = '' if 'viber://' in body else f'<a class="mb-vb" href="{VIBER}" target="_blank" rel="noopener"><img src="/assets/brand/viber.svg" width="32" height="32" alt="" loading="lazy" decoding="async">Viber</a>\n'
+    img = lambda n: f'<img src="/assets/brand/{n}.svg" width="32" height="32" alt="" loading="lazy" decoding="async">'
+    vb = '' if 'viber://' in body else f'<a class="mb-vb" href="{VIBER}" target="_blank" rel="noopener">{img("viber")}</a>\n'
+    wx = f'<a class="mb-wx" href="weixin://" data-wx="{WECHAT}" aria-label="WeChat {WECHAT}" title="WeChat {WECHAT}">{img("wechat")}</a>\n'
+    body = mb_icons(body, lang)
     aria = ((i18n.ui(lang) or {}).get('form') or {}).get('mbar') or {'ru': 'Быстрая связь'}.get(lang, "Швидкий зв'язок")
     out = (f'{m.group(1)} data-one role="navigation" aria-label="{aria}">\n'
            f'<button type="button" class="mb-tg" aria-expanded="false" aria-controls="mb-menu">{one}</button>\n'
-           f'<div class="mb-menu" id="mb-menu">\n{body}\n{vb}<a class="mb-lead" href="{href}">{lab}</a>\n</div><!--/mb-menu-->\n')
+           f'<div class="mb-menu" id="mb-menu">\n{body}\n{mb_icons(vb, lang)}{wx}<a class="mb-lead" href="{href}">{lab}</a>\n</div><!--/mb-menu-->\n')
     return head + out + s[e:]
 
 

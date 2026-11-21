@@ -8,8 +8,8 @@
 Що робить apply() (ідемпотентно; генератори — landing.py — викликають її перед chrome.apply()):
   • form#of: поле телефону — першим, type=tel, inputmode=tel, autocomplete=tel, підказка +380; «Імʼя (необовʼязково)»;
     площа й коментар — у згорнутому <details class="o-more"> «Додати коментар»; кнопка «дієслово + результат»
-    («Отримати розрахунок»); під нею лише альтернатива «Або напишіть: Telegram · Viber · WhatsApp» (.lq-alt, між
-    <!--lqx--> і <!--/lqx-->). Стандартну примітку .o-note («Передзвонимо й порахуємо…») і рядок довіри .lq-tr
+    («Отримати розрахунок»); під нею лише ряд іконок Telegram · Viber · WhatsApp · WeChat (.lq-alt, між <!--lqx--> і <!--/lqx-->;
+    Михайло 21.11.2026 — без тексту «Або напишіть», він лише aria-label групи). Стандартну примітку .o-note («Передзвонимо й порахуємо…») і рядок довіри .lq-tr
     (150+ проєктів…) прибрано (Михайло 08.11.2026) — apply() їх видаляє; власну примітку сторінки (інший текст) лишає.
   • Швидка заявка в один рядок (form.lq, між <!--lq--> і <!--/lq-->) — у hero лендингів послуг одразу після кнопок
     (.w.hero .btns), з рядком месенджерів; стандартна кнопка «Отримати кошторис» над нею стає «Подзвонити» (tel:, вторинна).
@@ -89,7 +89,9 @@ T = {
                after='نرد من الاثنين إلى الجمعة 10:00–20:00. إذا كان الأمر عاجلًا، راسلنا على Telegram', gd='احصل على دليل الأسعار', gd_msg='أريد دليل الأسعار'),
 }
 # месенджери — ті самі, що в шапці й нижній панелі (tools/site/chrome.py, MSG)
-MSG = (('Telegram', 'https://t.me/+380978667755'), ('Viber', 'viber://chat?number=%2B380978667755'), ('WhatsApp', 'https://wa.me/380978667755'))
+WECHAT = '+380 63 866 77 55'  # WeChat (Михайло 08.11.2026) — той самий, що chrome.WECHAT
+MSG = (('Telegram', 'https://t.me/+380978667755'), ('Viber', 'viber://chat?number=%2B380978667755'), ('WhatsApp', 'https://wa.me/380978667755'),
+       (f'WeChat {WECHAT}', 'weixin://'))
 
 STYLE_RX = re.compile(r'<style id="lead-ui">.*?</style>\n?', re.S)  # старий інлайн-CSS: тепер у /assets/site-chrome.v1.css
 QUICK_RX = re.compile(r'\n?[ \t]*<!--lq-->.*?<!--/lq-->', re.S)
@@ -112,11 +114,17 @@ def lang_of(s):
     return (m.group(1).lower() if m else 'uk') if (m and m.group(1).lower() in T) else 'uk'
 
 
+def alt_label(lang):
+    """Підпис ряду месенджерів під кнопкою («Або напишіть») — лише aria-label групи, без двокрапки."""
+    return re.sub(r'[\s:：]+$', '', T[lang]['alt'])
+
+
 def extras(lang):
-    """Рядок «Або напишіть: Telegram · Viber · WhatsApp» (рядок довіри .lq-tr прибрано — Михайло 08.11.2026)."""
-    t = T[lang]
-    links = ' · '.join(f'<a href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '') + f'>{n}</a>' for n, u in MSG)
-    return f'<!--lqx--><p class="lq-alt">{e(t["alt"])} {links}</p><!--/lqx-->'
+    """Під кнопкою форми — лише ряд іконок Telegram · Viber · WhatsApp · WeChat (Михайло 21.11.2026; раніше «Або напишіть: …» текстом),
+    як на картці біля форми: назва — aria-label/title, «Або напишіть» — aria-label групи; WeChat (a[data-wx]) копіює номер, без JS — weixin://."""
+    links = ''.join(f'<a class="bi bi-{n.split()[0].lower()}" href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '')
+                    + (f' data-wx="{WECHAT}"' if u.startswith('weixin:') else '') + f' aria-label="{a(n)}" title="{a(n)}"></a>' for n, u in MSG)
+    return f'<!--lqx--><p class="lq-alt" role="group" aria-label="{a(alt_label(lang))}">{links}</p><!--/lqx-->'
 
 
 # стандартні примітки під кнопкою (усі мови) — прибираємо; власна примітка сторінки (інший текст) лишається
@@ -218,7 +226,7 @@ def upgrade_form(s, lang):
     else:
         s = s[:lo] + re.sub(r'(<details class="o-more"><summary>)([^<]*)', lambda x: x.group(1) + _keep(x.group(2), e(t['more'])), s[lo:hi], count=1) + s[hi:]
         hi = s.find('</form>', lo)
-    # під кнопкою — лише «Або напишіть: …» (стандартна примітка й рядок довіри — прибрані, Михайло 08.11.2026)
+    # під кнопкою — лише ряд іконок месенджерів (стандартна примітка й рядок довіри — прибрані, Михайло 08.11.2026; іконки — 21.11.2026)
     f = s[lo:hi]
     f = X_RX.sub('', f)
     f = NOTE_RX.sub(lambda m: '' if _NB(m.group(1)) in STD_NOTES else m.group(0), f)
@@ -384,6 +392,7 @@ def apply(s, rel):
     s = STYLE_RX.sub('', s)
     if 'data-lf="keep"' in s:  # власна форма сторінки (landing.py "form_html", напр. реферальна): не переписуємо, без швидкої заявки
         s = QUICK_RX.sub('', s)
+        s = X_RX.sub(lambda m: extras(lang_of(s)), s)  # ряд месенджерів під кнопкою (згенерована частина) — і у власній формі
         s = hero_call(s, lang_of(s))  # але перша кнопка hero — «Подзвонити», як на інших мовах контактів (QA 03.11.2026)
     elif 'id="of"' in s or '<!--lq-->' in s:
         lang = lang_of(s)

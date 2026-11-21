@@ -222,13 +222,16 @@
   }
   function focusEl(el) { if (!el) return; try { el.focus({ preventScroll: false }); } catch (x) { el.focus(); } }
   function el(tag, cls, text) { var x = document.createElement(tag); if (cls) x.className = cls; if (text != null) x.textContent = text; return x; }
-  // «Або напишіть: Telegram · Viber · WhatsApp» — для форм, які будує скрипт (рядок довіри й примітку прибрано — Михайло 08.11.2026)
+  // під кнопкою — лише ряд іконок Telegram · Viber · WhatsApp · WeChat (Михайло 21.11.2026; як tools/site/leadform.py extras) — для форм, які будує скрипт:
+  // назва — aria-label/title, «Або напишіть» — aria-label групи; WeChat (a[data-wx]) копіює номер — обробник у site-chrome.v1.js
   function extras() {
-    var f = document.createDocumentFragment(), p = el('p', 'lq-alt', t.alt + ' ');
-    MSG.forEach(function (m, i) {
-      var a = el('a', '', m[0]); a.href = m[1];
+    var f = document.createDocumentFragment(), p = el('p', 'lq-alt');
+    p.setAttribute('role', 'group'); p.setAttribute('aria-label', t.alt.replace(/[\s:：]+$/, ''));
+    MSG.concat([['WeChat +380 63 866 77 55', 'weixin://']]).forEach(function (m) {
+      var k = m[0].split(' ')[0].toLowerCase(), a = el('a', 'bi bi-' + k); a.href = m[1];
       if (/^https:/.test(m[1])) { a.target = '_blank'; a.rel = 'noopener'; }
-      if (i) p.appendChild(document.createTextNode(' · '));
+      if (k === 'wechat') a.setAttribute('data-wx', '+380 63 866 77 55');
+      a.setAttribute('aria-label', m[0]); a.title = m[0];
       p.appendChild(a);
     });
     f.appendChild(p);
@@ -237,7 +240,7 @@
   // клік на месенджер біля форми — теж контакт: рахуємо в Clarity
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('.lq-alt a');
-    if (a) clarity('lead_msg', a.textContent.trim().toLowerCase(), 'lead_msg_app');
+    if (a) clarity('lead_msg', (a.getAttribute('aria-label') || a.textContent).trim().split(' ')[0].toLowerCase(), 'lead_msg_app');
   });
 
   var $ = function (id) { return document.getElementById(id); };

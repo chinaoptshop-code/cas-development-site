@@ -333,7 +333,7 @@
   if (!s || !m) return;
   s.addEventListener('click', function () { if (!m.hasAttribute('tabindex')) m.setAttribute('tabindex', '-1'); try { m.focus({ preventScroll: true }); } catch (x) { m.focus(); } });
 })();
-// ── Кнопка «Зв'язатися» (.mbar[data-one], tools/site/chrome.py mbar_lead): тап — меню (Подзвонити, Telegram, WhatsApp, Viber, «Залишити номер»);
+// ── Кнопка «Зв'язатися» (.mbar[data-one], tools/site/chrome.py mbar_lead): тап — меню (ряд іконок: Подзвонити, Telegram, WhatsApp, Viber, WeChat; «Залишити номер» — текстом);
 // закривається повторним тапом, тапом поза меню, Esc і після вибору пункту. «Залишити номер» прокручує до форми — /assets/lead-form.v1.js.
 (function () {
   var d = document, bar = d.querySelector('.mbar[data-one]');
