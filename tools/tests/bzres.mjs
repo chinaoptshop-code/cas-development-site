@@ -105,9 +105,9 @@ if (WRITE) {
     const byW = new Map();
     for (const [w, lang, v] of rules) { const k = w === WIDTHS[0] ? 0 : w; if (!byW.has(k)) byW.set(k, []); byW.get(k).push(lang + ':' + v); }
     for (const w of [...byW.keys()].sort((a, b) => a - b)) {
-      // одне значення для кількох мов — один селектор
+      // одне значення для кількох мов — один селектор; на .bz, не на html (інакше critcss.mjs вважає правило першоекранним)
       const g = new Map(); for (const x of byW.get(w)) { const [l, v] = x.split(':'); if (!g.has(v)) g.set(v, []); g.get(v).push(l); }
-      const r = [...g].map(([v, ls]) => (ls.length > 1 ? `html:is(${ls.map(l => `:lang(${l})`).join(',')})` : `html:lang(${ls[0]})`) + `{--bzr:${v}px}`).join('');
+      const r = [...g].map(([v, ls]) => (ls.length > 1 ? `.bz[data-bz-c]:is(${ls.map(l => `:lang(${l})`).join(',')})` : `.bz[data-bz-c]:lang(${ls[0]})`) + `{--bzr:${v}px}`).join('');
       out.push((w ? `@media(min-width:${w}px) and (max-width:767px)` : `@media(max-width:767px)`) + media + `{${r}}`);
     }
     console.log(`  ×${H}: ${rules.length} поправок, ${byW.size} діапазонів ширин`);
