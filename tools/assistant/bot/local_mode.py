@@ -567,7 +567,7 @@ def intent_remind(text, t):
     return Reply(f"🔔 Записав на {DAY_ABBR[date.weekday()]} {when}: {what} (буде в ранковому брифінгу)")
 
 
-# «додай у календар завтра о 10 дзвінок Faik» — у локальному режимі: показ + кнопка «Додати» (Михайло 19.11).
+# «додай у календар завтра о 10 дзвінок з підрядником» — у локальному режимі: показ + кнопка «Додати» (Михайло 19.11).
 CAL_ADD_RE = re.compile(r"^\s*(?:додай|добав\w*|запиши|постав\w*|внеси)\s+(?:мені\s+|мне\s+)?(?:у|в|до)\s+календар\w*\s*[:,—-]?\s*(.+)$",
                         re.I | re.S)
 
@@ -587,7 +587,7 @@ def intent_cal_add(text, t):
     date, hm, at, rest = parse_when(" " + m.group(1), t)
     what = _clean_what(rest)
     if not what or not date:
-        return Reply("Що й коли додати? Напиши: «додай у календар завтра о 10 дзвінок Faik».")
+        return Reply("Що й коли додати? Напиши: «додай у календар завтра о 10 дзвінок з підрядником».")
     hm = hm or (10, 0)
     start = datetime.datetime.combine(date, datetime.time(*hm))
     st = _read_json(_cal_state_path(), {"items": {}})
