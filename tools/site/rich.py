@@ -20,6 +20,8 @@
   team     — команда: {"h2", "items": [{"h", "role", "p"}], "crew": {"h3", "p", "groups": [{"label", "p", "people": [[імʼя, роль]]}]}}
   project  — проєкт портфоліо: {"id", "h2", "href", "status", "meta", "p"?, "items": [{"img", "srcset", "alt"}]}
   pmap     — «Карта проєктів» (tools/site/casmap.py)
+  brands   — «Бренди, з якими працюємо»: {"t": "brands"} — заголовок мовою сторінки й один ряд назв (BRANDS нижче), що їде сам
+              (marquee() у ui-polish.v1.js); на сервісних лендингах — "brands": true у JSON сторінки (landing.py)
 """
 import html, os, re
 
@@ -27,7 +29,7 @@ from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CSS = 'assets/sections.v1.css'
-TYPES = {'svc', 'covers', 'strip', 'split', 'facts', 'cta', 'contacts', 'team', 'project', 'pmap'}
+TYPES = {'svc', 'covers', 'strip', 'split', 'facts', 'cta', 'contacts', 'team', 'project', 'pmap', 'brands'}
 e = lambda s: html.escape(s, quote=False)
 a = lambda s: html.escape(s, quote=True)
 MDLINK = re.compile(r'\[([^\]]+)\]\((/[^)\s]*|https?://[^)\s]+|tel:[^)\s]+|#[^)\s]*)\)')
@@ -282,7 +284,69 @@ def pmap(x, lang='uk'):
     return casmap.projects_html(lang).replace('<section class="pmap"', '<section class="pmap xs-pmap"', 1) + '\n'
 
 
+# «Бренди, з якими працюємо» (Михайло 21.11.2026: «анімаційна лента… 10–20 стандартних компаній з виробництва елементів інтерʼєру»;
+# того ж дня: «залишай всіх, додай ще середній клас; лиши де є, на головну не треба; договори/логотипи поки не треба»).
+# Список і місця затверджено. Угод про партнерство немає, тому без слів «партнер / офіційний / дилер» і без логотипів: лише назви текстом
+# шрифтом сайту. Правити тут (одне місце для всіх мов). Категорія — (преміум, середній клас); на сайті не показуємо: порядок у стрічці —
+# brands_order() (преміум і середній клас чергуються, категорії — по колу). Брендів російського походження не додаємо.
+# Нова назва латиницею — і в glossary.json (однослівна — latin_ok, з кількох слів — latin_names), інакше i18nlint лається на zh/ar.
+BRANDS = (
+    ('меблі', ('Poliform', 'Minotti', 'Molteni&C'), ('BoConcept', 'Calligaris')),
+    ('фурнітура й плити', ('Blum', 'Egger'), ('Hettich', 'Häfele', 'GTV')),
+    ('освітлення', ('Flos', 'Artemide', 'Delta Light'), ('Eglo', 'Nowodvorski', 'TK Lighting')),
+    ('розетки й електрика', ('Schneider Electric', 'Legrand', 'Jung', 'Gira'), ('ABB', 'Hager')),
+    ('сантехніка', ('Grohe', 'Hansgrohe', 'Geberit', 'Villeroy & Boch'), ('Ideal Standard', 'Roca', 'Cersanit', 'Kolo')),
+    ('техніка', ('Miele', 'Bosch'), ('Gorenje', 'Electrolux')),
+    ('плитка', ('Porcelanosa', 'Atlas Concorde'), ('Golden Tile', 'Opoczno')),
+    ('підлога', (), ('Quick-Step', 'Tarkett')),
+    ('фарби й суміші', ('Tikkurila',), ('Caparol', 'Ceresit')),
+    ('клімат', ('Daikin',), ()),
+)
+
+
+def _rr(lists):
+    """По колу: перша назва кожної категорії, потім друга… — сусідні назви з різних категорій."""
+    out, i = [], 0
+    while any(i < len(x) for x in lists):
+        out += [x[i] for x in lists if i < len(x)]
+        i += 1
+    return out
+
+
+def brands_order():
+    """Порядок у стрічці: преміум і середній клас чергуються (решта довшого ряду — у кінці), категорії — по колу."""
+    p, m = _rr([c[1] for c in BRANDS]), _rr([c[2] for c in BRANDS])
+    out = [n for pair in zip(p, m) for n in pair]
+    return out + p[len(m):] + m[len(p):]
+
+
+# заголовок і підписи кнопки паузи (data-mq: «пауза|далі» — marquee() бере їх замість «фото»)
+BRANDS_T = {
+    'uk': ('Бренди, з якими працюємо', 'Зупинити стрічку брендів', 'Запустити стрічку брендів'),
+    'ru': ('Бренды, с которыми работаем', 'Остановить ленту брендов', 'Запустить ленту брендов'),
+    'en': ('Brands we work with', 'Pause the brand strip', 'Play the brand strip'),
+    'es': ('Marcas con las que trabajamos', 'Pausar la franja de marcas', 'Reanudar la franja de marcas'),
+    'zh': ('我们常用的品牌', '暂停品牌滚动', '继续品牌滚动'),
+    'pl': ('Marki, z którymi pracujemy', 'Zatrzymaj pasek marek', 'Wznów pasek marek'),
+    'de': ('Marken, mit denen wir arbeiten', 'Markenlauf anhalten', 'Markenlauf starten'),
+    'fr': ('Les marques avec lesquelles nous travaillons', 'Mettre en pause le défilement des marques', 'Relancer le défilement des marques'),
+    'pt': ('Marcas com que trabalhamos', 'Pausar a faixa de marcas', 'Retomar a faixa de marcas'),
+    'ar': ('العلامات التجارية التي نعمل بها', 'إيقاف شريط العلامات التجارية', 'تشغيل شريط العلامات التجارية'),
+}
+
+
+def brands(x, lang='uk'):
+    """Один ряд назв (без фото, ~0.7 КБ): <ul> у DOM — для читачів екрана й без JS; рух, пауза при наведенні/дотику/фокусі й кнопка ❚❚/▶ —
+    marquee() у ui-polish.v1.js (копії назв — aria-hidden, через <template>); reduced-motion — статичний ряд із переносом (sections.v1.css)."""
+    h, p0, p1 = BRANDS_T.get(lang) or BRANDS_T['en']
+    li = ''.join(f'<li>{e(n)}</li>' for n in brands_order())
+    ul = f'<ul class="xs-bl" tabindex="0" aria-label="{a(h)}" data-mq="{a(p0 + "|" + p1)}">{li}</ul>'
+    return wrap(x, f'<h2>{e(x.get("h2") or h)}</h2><div class="xs-brw">{ul}</div>', 'xs-brands')
+
+
 def render(lang, x):
+    if x['t'] == 'brands':
+        return [brands(x, lang)]
     if x['t'] == 'pmap':
         return [pmap(x, lang)]
     if x['t'] == 'strip':
@@ -291,4 +355,37 @@ def render(lang, x):
 
 
 def used(p):
-    return bool(p.get('hero_img')) or any(x['t'] in TYPES or x.get('kicker') or x.get('link') for x in p.get('sections', []))
+    return bool(p.get('hero_img')) or bool(p.get('brands')) or any(x['t'] in TYPES or x.get('kicker') or x.get('link') for x in p.get('sections', []))
+
+
+# UI-kit: живий приклад «Бренди, з якими працюємо» у /styleguide/#sections (між <!--brands-sg--> … <!--/brands-sg-->, перед <!--/sg-sections-->);
+# стилі й рух — ті самі файли, що на сторінках (sections.v1.css, ui-polish.v1.js — підключаємо в styleguide, якщо їх там немає).
+SG = os.path.join(ROOT, 'styleguide', 'index.html')
+
+
+def styleguide(check=False):
+    s = open(SG, encoding='utf-8').read()
+    blk = ('<!--brands-sg--><p class="sg-note" id="brands-sg"><code>brands</code> — «Бренди, з якими працюємо»: <code>{"t": "brands"}</code> у секціях '
+           '(«Про студію» 10 мов) або <code>"brands": true</code> у JSON лендингу (комплектація, меблювання — перед формою). Назви текстом шрифтом сайту, '
+           'без логотипів і слова «партнери» (список — <code>BRANDS</code> у <code>tools/site/rich.py</code>, чекає підтвердження власника); рух — '
+           '<code>marquee()</code> у <code>/assets/ui-polish.v1.js</code> (~25 px/с, пауза при наведенні, дотику й фокусі, кнопка ❚❚/▶ у кінці ряду, копії — '
+           '<code>aria-hidden</code>), <code>prefers-reduced-motion</code> — статичний ряд із переносом.</p>' + brands({}, 'uk').rstrip('\n') + '<!--/brands-sg-->')
+    end = '</div></section><!--/sg-sections-->'  # кінець .sg-demo і секції #sections — приклад іде всередину
+    n = re.sub(r'<!--brands-sg-->.*?<!--/brands-sg-->', lambda _: blk, s, count=1, flags=re.S) if '<!--brands-sg-->' in s else s.replace(end, blk + '\n' + end, 1)
+    if '<link rel="stylesheet" href="/assets/sections.v1.css' not in n:
+        n = n.replace('<link rel="stylesheet" href="/assets/media.v1.css', '<link rel="stylesheet" href="/assets/sections.v1.css"><link rel="stylesheet" href="/assets/media.v1.css', 1)
+    if '<script src="/assets/ui-polish.v1.js' not in n:
+        n = n.replace('<script src="/assets/site-chrome.v1.js', '<script src="/assets/ui-polish.v1.js" defer></script>\n<script src="/assets/site-chrome.v1.js', 1)
+    sp = lambda t: t.replace('\u00a0', ' ').replace('\u202f', ' ')  # нерозривні пробіли ставить chrome.py
+    if check:
+        return sp(n) == sp(s)
+    if sp(n) != sp(s):
+        open(SG, 'w', encoding='utf-8').write(n)
+        print('rich.py: /styleguide/#sections — приклад «Бренди» оновлено')
+    return True
+
+
+if __name__ == '__main__':
+    import sys
+    if not styleguide('--check' in sys.argv) and '--check' in sys.argv:
+        sys.exit('rich.py: /styleguide/#sections застарів — python3 tools/site/rich.py')

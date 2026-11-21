@@ -94,7 +94,7 @@ function marquee(){
  var L=({uk:['Пауза прокрутки фото','Прокручувати фото'],ru:['Пауза прокрутки фото','Прокручивать фото'],en:['Pause photo scrolling','Play photo scrolling'],
   es:['Pausar desplazamiento de fotos','Reanudar desplazamiento de fotos'],zh:['暂停照片滚动','继续照片滚动'],pl:['Wstrzymaj przewijanie zdjęć','Wznów przewijanie zdjęć'],
   de:['Foto-Lauf anhalten','Foto-Lauf starten'],fr:['Mettre le défilement en pause','Relancer le défilement'],pt:['Pausar o deslizamento das fotos','Retomar o deslizamento das fotos'],ar:['إيقاف تمرير الصور','تشغيل تمرير الصور']})[(d.documentElement.lang||'uk').slice(0,2)]||['Pause','Play'];
- var list=$$('.xs-st,.vgrid,.strip,.xs-cv,.hx-home~.xs-svc .xs-sv');if(!list.length)return;
+ var list=$$('.xs-st,.vgrid,.strip,.xs-cv,.hx-home~.xs-svc .xs-sv,.xs-bl');if(!list.length)return; // .xs-bl — «Бренди, з якими працюємо» (rich.py brands, 21.11.2026)
  var st=d.createElement('style');
  st.textContent='.mq-bar{position:relative;height:0;z-index:3}.mq-ap{position:absolute;top:.5rem;inset-inline-end:.5rem;width:2.75rem;height:2.75rem;border-radius:50%;border:1px solid rgba(191,145,72,.7);background:rgba(8,7,9,.62);color:#EDE8DF;font:600 .8125rem/1 system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}.mq-ap:focus-visible{outline:2px solid #BF9148;outline-offset:2px}.mq-run{scroll-snap-type:none!important;scroll-behavior:auto!important}';
  d.head.appendChild(st);
@@ -102,6 +102,7 @@ function marquee(){
   if(sc.__mq)return;sc.__mq=1;
   var items=Array.prototype.filter.call(sc.children,function(c){return c.nodeType===1});
   if(items.length<3)return;
+  var LB=(sc.getAttribute('data-mq')||'').split('|');if(LB.length<2)LB=L; // свої підписи кнопки (data-mq="пауза|далі"), інакше — «фото»
   var cl=[],half=0,pos=0,live=false,stop=false,hover=false,hold=0,raf=0,lt=0,tm=0,bar=null,btn=null,rtl=((sc.closest('[dir]')||{}).dir||'')==='rtl'; // без getComputedStyle на кожну стрічку (примусовий перерахунок стилів; /portfolio — 21 стрічка)
   function noId(x){if(x.id)x.removeAttribute('id')}
   function setup(){
@@ -130,7 +131,7 @@ function marquee(){
    sc.classList.add('mq-run'); // без scroll-snap, поки стрічка рухається й на паузі: інакше на паузі кадр «відскакує» до краю
    return true;
   }
-  function lab(){if(!btn)return;btn.setAttribute('aria-label',L[stop?1:0]);btn.title=L[stop?1:0];btn.innerHTML='<span aria-hidden="true">'+(stop?'▶':'❚❚')+'</span>';btn.setAttribute('aria-pressed',stop?'true':'false')}
+  function lab(){if(!btn)return;btn.setAttribute('aria-label',LB[stop?1:0]);btn.title=LB[stop?1:0];btn.innerHTML='<span aria-hidden="true">'+(stop?'▶':'❚❚')+'</span>';btn.setAttribute('aria-pressed',stop?'true':'false')}
   function measure(){half=Math.abs(cl[0].offsetLeft-items[0].offsetLeft)}
   function sync(){pos=Math.abs(sc.scrollLeft);measure();if(half&&pos>=half)pos-=half}
   function act(){return live&&!stop&&!hover&&!d.hidden&&Date.now()>=hold}

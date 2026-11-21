@@ -31,7 +31,14 @@ def telegram_block():
     return f"📩 Telegram: {len(chats)} чатів з непрочитаним ({names})."
 
 
+CAL = Path(os.environ.get("ASSISTANT_CAL_SCRIPT") or Path.home() / "jarvis/scripts/cal.py")          # Google Календар через n8n-підключення (19.11)
+
+
 def calendar_block(kind):
+    if CAL.exists():
+        code, out = L.run_tool(["/opt/homebrew/bin/python3", str(CAL), "list", kind], timeout=90)
+        if code == 0:
+            return "📅 " + ("подій немає" if out.strip() == "подій немає" else out.replace("\n", "\n   "))
     code, out = L.run_tool([L._py(), L.bin_dir() / "gcal.py", kind], timeout=60)
     if code == 0:
         return "📅 " + out.replace("\n", "\n   ")

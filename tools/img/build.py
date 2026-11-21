@@ -2,20 +2,28 @@
 """Image pipeline for cas-develop.com (static site).
 
 What it does (idempotent, never deletes/renames files, keeps dimensions):
-  1. Re-encodes oversized WebP in place:
+  1. Re-encodes oversized WebP in place — ONLY new or changed files (see "State" below):
        - size inversion: a narrower variant of the same photo is heavier than a wider one;
        - over-quality: bytes per pixel above BPP_LIMIT;
        - hero / first-screen images (read from HTML, read-only) above HERO_MAX bytes (< 2000w)
          or HERO_MAX_BIG (≥ 2000w: only big screens fetch them — q ≤ 78, no smoothing).
-  2. Writes an .avif next to every .webp (quality picked per image by binary search:
+  2. Writes an .avif next to every new/changed .webp (quality picked per image by binary search:
      aim ~40% smaller than WebP, never below SSIM_MIN vs the WebP).
   3. Writes img/lqip.json: "img/p/<name>" -> tiny blurred WebP data URI (<= 300 bytes).
-  4. Writes tools/img/report.md.
+  4. Writes tools/img/report.md (only when something was processed).
 
-Run from the repo root:  python tools/img/build.py [--force] [--jobs N]
+State (21.11.2026): tools/img/state.json — "img/…webp" -> sha1 of the file as the pipeline left it.
+A file is processed only if it is NEW (not in the state and has no .avif yet) or CHANGED (sha1 differs).
+A file with an .avif that is missing from the state (made by an older build.py or on another machine) is adopted as is.
+So a second run — and a run after `git checkout` (mtimes are meaningless there), or after pages changed which
+photos count as "hero" — touches nothing in img/. Before: every run re-planned ALL files against the current HTML
+(115 existing sharp 1200–1920w copies of article/project photos would be squeezed to 120 KB) and compared mtimes.
+
+Run from the repo root:  python tools/img/build.py [--check] [--force] [--no-webp] [--jobs N]
+  --check   dry run: prints what would be re-encoded / written and why, changes nothing (exit 1 if there is work)
 Needs Pillow >= 11.2 (built-in AVIF) and numpy.
 """
-import argparse, base64, glob, io, json, os, re, sys, time
+import argparse, base64, glob, hashlib, io, json, os, re, sys, time
 from collections import defaultdict
 from multiprocessing import Pool
 
@@ -34,6 +42,7 @@ HERO_BLUR = (0, 0.4, 0.6, 0.8, 1.0)  # pre-smoothing radii tried only when a her
 BPP_LIMIT = 0.22         # bytes per pixel above which a WebP counts as over-quality
 REENC_MIN_GAIN = 0.12    # re-encode only if it saves >= 12%
 LQIP_MAX = 300
+STATE = os.path.join(ROOT, "tools", "img", "state.json")
 SKIP_NAMES = {"og-cas.jpg"}  # Open Graph image: crawlers need JPEG, not part of page images
 
 # ---------------------------------------------------------------- SSIM ----------
@@ -166,11 +175,11 @@ def task_webp(args):
     return dict(path=path, reasons=reasons, before=before, after=before, q=None, ssim=None, done=False)
 
 def task_avif(args):
-    path, cap, force = args
+    path, cap, todo = args
     full = os.path.join(ROOT, path)
     out = os.path.splitext(full)[0] + ".avif"
     w = os.path.getsize(full)
-    if not force and os.path.exists(out) and os.path.getmtime(out) >= os.path.getmtime(full):
+    if not todo:  # WebP той самий, що в state.json, і AVIF є — не чіпаємо (mtime після git checkout нічого не означає)
         return dict(path=path, webp=w, avif=os.path.getsize(out), q=None, ssim=None, cached=True, note="")
     img = load(full)
     ref = _gray(img)
@@ -301,26 +310,99 @@ def plan_webp(files, heroes):
                 jobs[p] = (p, reasons, cap)
     return list(jobs.values()), info
 
+# ---------------------------------------------------------------- state ---------
+def sha(path):
+    h = hashlib.sha1()
+    with open(os.path.join(ROOT, path), "rb") as f:
+        for b in iter(lambda: f.read(1 << 20), b""):
+            h.update(b)
+    return h.hexdigest()[:16]
+
+def load_state():
+    try:
+        return json.load(open(STATE, encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+def save_state(state):
+    body = json.dumps(dict(sorted(state.items())), ensure_ascii=False, separators=(",", ":"), indent=0) + "\n"
+    try:
+        if open(STATE, encoding="utf-8").read() == body:
+            return
+    except OSError:
+        pass
+    with open(STATE, "w", encoding="utf-8") as f:
+        f.write(body)
+
+def classify(files, state):
+    """→ (sig, fresh, why, noavif): fresh — нові або змінені WebP (лише вони проходять перекодування й дають новий AVIF/LQIP);
+    noavif — WebP без змін, але AVIF зник. Файл з AVIF, якого немає в state.json, приймаємо як є (зробив старий build.py)."""
+    sig, fresh, why, noavif = {}, set(), {}, set()
+    for p in files:
+        sig[p] = sha(p)
+        has_avif = os.path.exists(os.path.join(ROOT, os.path.splitext(p)[0] + ".avif"))
+        known = state.get(p)
+        if known is None and not has_avif:
+            fresh.add(p); why[p] = "new"
+        elif known is not None and known != sig[p]:
+            fresh.add(p); why[p] = "changed"
+        elif not has_avif:
+            noavif.add(p)
+    return sig, fresh, why, noavif
+
 # ---------------------------------------------------------------- main ----------
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--force", action="store_true", help="re-encode all AVIF even if up to date")
     ap.add_argument("--jobs", type=int, default=max(1, (os.cpu_count() or 4) - 2))
     ap.add_argument("--no-webp", action="store_true", help="skip WebP re-encoding step")
+    ap.add_argument("--check", action="store_true", help="dry run: print what would be re-encoded/written, change nothing (exit 1 if there is work)")
     a = ap.parse_args()
     if not features.check("avif"):
         sys.exit("Pillow without AVIF support: pip install 'pillow>=11.2'")
     t0 = time.time()
     files, skipped = collect()
+    state = load_state()
+    sig, fresh, why, noavif = classify(files, state)
+    try:
+        lqip_old = json.load(open(os.path.join(ROOT, "img", "lqip.json"), encoding="utf-8"))
+    except (OSError, ValueError):
+        lqip_old = {}
+    key = lambda p: os.path.splitext(p)[0]
+    lq_todo = sorted(p for p in files if p in fresh or key(p) not in lqip_old)
+    lq_gone = sorted(set(lqip_old) - {key(p) for p in files})
+    av_todo = set(files) if a.force else fresh | noavif
+    idle = not fresh and not av_todo and not lq_todo and not lq_gone
+    print(f"WebP: {len(files)} files — new/changed: {len(fresh)}, AVIF to write: {len(av_todo)}, LQIP to add: {len(lq_todo)}, to drop: {len(lq_gone)}", flush=True)
+    if idle:  # нічого нового — нічого не читаємо з HTML і не пишемо (лише state.json, якщо його ще немає / зʼявились прийняті файли)
+        if not a.check:
+            save_state(sig)
+        print("Nothing to do: no new or changed WebP in img/.")
+        return 0
     heroes = hero_images()
     hero_files = sorted(p for p in heroes if p in set(files))
+    plan = lambda: [j for j in plan_webp(files, set(hero_files))[0] if j[0] in fresh]  # наявні файли не перекодовуємо
+    if a.check:
+        jobs = [] if a.no_webp else plan()
+        for p in sorted(fresh):
+            print(f"  {why[p]}: {p}")
+        for p, reasons, cap in sorted(jobs):
+            print(f"  WebP re-encode candidate: {p} — {', '.join(reasons)} (now {kb(os.path.getsize(os.path.join(ROOT, p)))}, cap {kb(cap)})")
+        for p in sorted(av_todo):
+            print(f"  AVIF: {key(p)}.avif" + (" (missing)" if p in noavif else ""))
+        for p in lq_todo:
+            if p not in fresh: print(f"  LQIP add: {key(p)}")
+        for k in lq_gone:
+            print(f"  LQIP drop: {k}")
+        print("Dry run (--check): nothing written. Run without --check to process.")
+        return 1
     webp_before = {p: os.path.getsize(os.path.join(ROOT, p)) for p in files}
     with Pool(a.jobs) as pool:
         reenc = []
-        if not a.no_webp:
+        if not a.no_webp and fresh:
             seen = set()
             for _ in range(3):  # re-plan: capping a hero can create a new size inversion
-                jobs = [j for j in plan_webp(files, set(hero_files))[0] if (j[0], tuple(j[1])) not in seen]
+                jobs = [j for j in plan() if (j[0], tuple(j[1])) not in seen]
                 if not jobs:
                     break
                 seen |= {(j[0], tuple(j[1])) for j in jobs}
@@ -335,18 +417,21 @@ def main():
                             r.update(after=done[r["path"]]["after"], q=done[r["path"]]["q"], ssim=done[r["path"]]["ssim"])
                     done[r["path"]] = r
                 reenc = list(done.values())
-        print(f"AVIF: {len(files)} files", flush=True)
+        print(f"AVIF: {len(av_todo)} of {len(files)} files", flush=True)
         av = []
-        for i, r in enumerate(pool.imap_unordered(task_avif, [(p, hero_cap(p) if p in heroes else 10**9, a.force) for p in files], chunksize=4)):
+        for i, r in enumerate(pool.imap_unordered(task_avif, [(p, hero_cap(p) if p in heroes else 10**9, p in av_todo) for p in files], chunksize=4)):
             av.append(r)
-            if i % 100 == 0:
+            if i % 500 == 0:
                 print(f"  {i}/{len(files)}", flush=True)
-        lq = dict(pool.map(task_lqip, files, chunksize=16))
-    lqip = {os.path.splitext(p)[0]: lq[p] for p in sorted(lq)}
-    with open(os.path.join(ROOT, "img", "lqip.json"), "w") as f:
-        json.dump(lqip, f, ensure_ascii=False, separators=(",", ":"), indent=0)
+        lq = dict(pool.map(task_lqip, lq_todo, chunksize=16))
+    lqip = {key(p): (lq[p] if p in lq else lqip_old[key(p)]) for p in sorted(files)}
+    if lqip != lqip_old:
+        with open(os.path.join(ROOT, "img", "lqip.json"), "w") as f:
+            json.dump(lqip, f, ensure_ascii=False, separators=(",", ":"), indent=0)
     webp_after = {p: os.path.getsize(os.path.join(ROOT, p)) for p in files}
+    save_state({p: (sha(p) if p in fresh else sig[p]) for p in files})  # перекодовані — з новим хешем
     write_report(files, skipped, webp_before, webp_after, reenc, av, lqip, heroes, hero_files, time.time() - t0)
+    return 0
 
 def kb(n):
     return f"{n/1024:.1f} KB"
@@ -397,4 +482,4 @@ def write_report(files, skipped, wb, wa, reenc, av, lqip, heroes, hero_files, dt
     print("\n".join(L[:14]))
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

@@ -19,13 +19,14 @@
 ```bash
 python3.12 -m venv /tmp/imgvenv && /tmp/imgvenv/bin/pip install 'pillow>=11.2' numpy
 cd <корінь репо>
-/tmp/imgvenv/bin/python tools/img/build.py            # лише нові/змінені (AVIF старший за WebP — пропускається)
+/tmp/imgvenv/bin/python tools/img/build.py --check    # сухий прогін: що було б перекодовано/записано й чому, нічого не змінює (код 1, якщо є робота)
+/tmp/imgvenv/bin/python tools/img/build.py            # лише нові/змінені WebP (за tools/img/state.json, не за mtime)
 /tmp/imgvenv/bin/python tools/img/build.py --force    # перекодувати всі AVIF
 /tmp/imgvenv/bin/python tools/img/build.py --no-webp  # не чіпати WebP, лише AVIF + LQIP
 ```
 
 Опції: `--jobs N` (паралельні процеси, за замовчуванням ядра − 2). Повний прогін ~1640 файлів на Mac mini M4 — кілька хвилин.
-Повторний запуск безпечний: уже перекодовані WebP більше не потрапляють під критерії.
+Повторний запуск нічого не змінює в `img/` (21.11.2026): `tools/img/state.json` — «шлях WebP → sha1 файлу, яким його лишив конвеєр». Перекодування WebP, новий AVIF і LQIP — лише для нових файлів (немає в state.json і ще без `.avif`) і змінених (інший sha1); файл з `.avif`, якого немає в state.json (зробив старий build.py чи інша машина), приймається як є. Раніше кожен запуск звіряв УСІ файли з поточним HTML і порівнював mtime: після `git checkout` чи появи великих копій 1200–1920w у srcset першого фото статей і /proekty скрипт брався стискати 115 наявних файлів до 120 КБ (hero) — тепер наявних не чіпає. Якщо фото замінено під тією самою назвою — воно «змінене» й пройде конвеєр знову; `state.json` комітити разом із фото.
 
 Нові фото: поклади `.webp` в `img/` або `img/p/` і запусти скрипт — зʼявляться `.avif` і запис у `lqip.json`.
 Параметри (поріг SSIM, ціль AVIF, ліміт hero) — константи на початку `build.py`.

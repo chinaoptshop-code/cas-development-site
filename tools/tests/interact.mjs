@@ -47,6 +47,8 @@ async function test(name, path, w, fn, opt) {
   const ctx = await browser.newContext({ viewport: { width: vw, height: vh }, deviceScaleFactor: 1, isMobile: touch, hasTouch: touch, ...(opt || {}) }); // opt — напр. { reducedMotion: 'reduce' }
   await ctx.route(/^https?:\/\/(?!127\.0\.0\.1)/, r => /n8n\./.test(r.request().url()) ? r.fulfill({ status: apiStatus, body: '{}' }) : r.abort());
   const page = await ctx.newPage();
+  // CPU=4 node tools/tests/interact.mjs — сповільнений процесор (перевірка стійкості тестів до навантаження, як у повному наборі паралельно з іншими)
+  if (+process.env.CPU > 1) await (await ctx.newCDPSession(page)).send('Emulation.setCPUThrottlingRate', { rate: +process.env.CPU });
   const errs = [];
   page.on('pageerror', e => { if (!IGN_PE.test(e.message)) errs.push('JS: ' + e.message); });
   page.on('console', m => { if (m.type() === 'error' && !IGN.test(m.text())) errs.push('console: ' + m.text().slice(0, 160)); });
@@ -127,9 +129,12 @@ for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 402], ['/ar/', 1440]]
   must(bad === 0, `кадри без посилання/aria-label своєї мови: ${bad}`);
   await sc.evaluate(e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(400);
   if (w > 600) await p.mouse.move(5, 5);
-  const s0 = await sc.evaluate(e => Math.abs(e.scrollLeft)); await p.waitForTimeout(1500);
-  const s1 = await sc.evaluate(e => Math.abs(e.scrollLeft));
-  must(s1 - s0 > 5, `автопрокрутка стоїть (${s0}→${s1})`);
+  // автопрокрутка (~25 px/с) — очікування стану, не фіксована пауза: під навантаженням кадри рідшають (крок кадру ≤ 50 мс), а marquee() стартує
+  // лише після повного CSS і IntersectionObserver — за 1,5 с стрічка встигала зсунутись на ≤ 5 px. Суть та сама: стрічка їде сама, без дій людини.
+  await p.waitForFunction(e => e.classList.contains('mq-run'), await sc.elementHandle(), { timeout: 10000 }).catch(() => {});
+  const s0 = await sc.evaluate(e => Math.abs(e.scrollLeft));
+  const s1 = await p.waitForFunction(([e, s0]) => { const v = Math.abs(e.scrollLeft); return v - s0 > 5 && v; }, [await sc.elementHandle(), s0], { timeout: 10000, polling: 100 }).then(h => h.jsonValue()).catch(() => sc.evaluate(e => Math.abs(e.scrollLeft)));
+  must(s1 - s0 > 5, `автопрокрутка стоїть (${s0}→${s1} за 10 с)`);
   const bb = await sc.boundingBox();
   const cx = bb.x + bb.width * 0.3, cy = bb.y + bb.height * 0.5;
   // свайп / перетягування — без переходу
@@ -145,10 +150,15 @@ for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 402], ['/ar/', 1440]]
   }
   await p.waitForTimeout(700);
   must(p.url() === url0, `свайп відкрив ${p.url()}`);
+  // інерція свайпу під навантаженням триває довше: чекаємо, поки стрічка стане (2 заміри поспіль без зсуву), інакше кадр під точкою зміниться
+  // між пошуком href і тапом, а тап по стрічці, що ще їде, Chrome лише зупиняє (click немає)
+  await p.waitForFunction(e => { const v = e.scrollLeft, k = e.__st || (e.__st = { v: NaN, n: 0 }); k.n = Math.abs(v - k.v) < 1 ? k.n + 1 : 0; k.v = v; return k.n >= 2; }, await sc.elementHandle(), { timeout: 8000, polling: 150 }).catch(() => {});
   // тап / клік — відкриває кейс кадру під пальцем
-  const href = await p.evaluate(([x, y]) => document.elementFromPoint(x, y)?.closest('a')?.getAttribute('href'), [cx, cy]);
+  // точка — центр кадру, найближчого до 30 % ширини (позиція стрічки після автопрокрутки різна: фіксована точка потрапляла в проміжок між кадрами)
+  const tx = await sc.evaluate((e, x) => { const W = innerWidth, r = [...e.querySelectorAll(':scope>a')].map(a => a.getBoundingClientRect()).filter(b => b.left >= 0 && b.right <= W); r.sort((a, b) => Math.abs(a.left + a.width / 2 - x) - Math.abs(b.left + b.width / 2 - x)); return r.length ? r[0].left + r[0].width / 2 : x; }, cx);
+  const href = await p.evaluate(([x, y]) => document.elementFromPoint(x, y)?.closest('a')?.getAttribute('href'), [tx, cy]);
   must(href, 'під точкою немає посилання');
-  if (w < 600) await p.touchscreen.tap(cx, cy); else await p.mouse.click(cx, cy);
+  if (w < 600) await p.touchscreen.tap(tx, cy); else await p.mouse.click(tx, cy);
   await p.waitForURL(u => new URL(u).pathname.replace(/\.html$/, '') === href.replace(/\.html$/, ''), { timeout: 5000 }).catch(() => {});
   must(new URL(p.url()).pathname.replace(/\.html$/, '') === href, `тап: ${p.url()} замість ${href}`);
 });
@@ -365,6 +375,26 @@ for (const [path, w, dy] of [['/', 402, 31], ['/remont-kvartyr-kyiv', 402, 200],
   must(after.cls - before.cls <= 0.05, 'CLS збірки в кадрі ' + (after.cls - before.cls).toFixed(3));
   must(Math.abs(after.nx - before.nx) <= 4, `блок під сценою зсунувся на ${after.nx - before.nx} px`);
 });
+// Резерв компактної сцени головних (21.11.2026): висота блоку до збірки (резерв site-chrome.v1.css, --bzr за мовою й шириною — tools/tests/bzres.mjs)
+// і після неї розходиться ≤ 8 px (було −38…+45 px: es/fr/pt +43, zh −19 на 402), CLS збірки в кадрі ≤ 0.05. Повна матриця ширин 320…767 — bzres.mjs.
+for (const w of [402, 1440, [375, 667]]) for (const lg of ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'pt', 'ar']) if (!Array.isArray(w) || ['uk', 'pl', 'zh'].includes(lg)) await test('резерв компактної сцени головної: до/після збірки ≤ 8 px', lg === 'uk' ? '/' : `/${lg}/`, w, async p => {
+  let go; const gate = new Promise(ok => go = ok);
+  await p.route(/\/assets\/build-anim\.v1\.js/, async r => { await gate; await r.continue().catch(() => {}); });
+  await p.evaluate(() => { window.__cls = 0; new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; }).observe({ type: 'layout-shift' }); });
+  await p.mouse.move(100, 300); await p.mouse.wheel(0, 300); await p.waitForTimeout(300);
+  await p.evaluate(() => document.getElementById('build-anim').scrollIntoView({ block: 'start', behavior: 'instant' }));
+  await p.waitForTimeout(400);
+  const h = () => p.evaluate(() => ({ h: document.getElementById('build-anim').getBoundingClientRect().height, cls: window.__cls }));
+  const a = await h();
+  must(!(await p.evaluate(() => document.getElementById('build-anim').hasAttribute('data-bz-on'))), 'сцена зібралась до приходу скрипта — тест не бачить резерву');
+  go();
+  await p.waitForSelector('#build-anim .bz-nx', { timeout: 10000 });
+  await p.waitForFunction(() => !document.getElementById('build-anim').style.minHeight, null, { timeout: 10000 });
+  await p.waitForTimeout(500);
+  const b = await h(), d = Math.round(b.h - a.h);
+  must(Math.abs(d) <= 8, `резерв ${Math.round(a.h)} px, після збірки ${Math.round(b.h)} px (${d > 0 ? '+' : ''}${d}) — переміряй: node tools/tests/bzres.mjs --write`);
+  must(b.cls - a.cls <= 0.05, 'CLS збірки в кадрі ' + (b.cls - a.cls).toFixed(3));
+});
 // Конфігуратор на телефоні (20.11.2026): назви матеріалів читаються повністю (без «…», ≥ 13 px), без горизонтальної прокрутки сторінки;
 // альбомний телефон — фото ліворуч (≥ 55 % ширини), панель матеріалів колонкою праворуч, цілі дотику ≥ 44 px
 const kfState = () => { const q = s => document.querySelector(s), vw = innerWidth, vh = innerHeight, pn = q('.kf-panel').getBoundingClientRect(), ns = [...document.querySelectorAll('#kfSw .sw-n')];
@@ -422,6 +452,33 @@ await test('калькулятор: площа → сума', '/kalkuliator-remo
   await inp.dispatchEvent('input'); await inp.dispatchEvent('change'); await p.waitForTimeout(500);
   const after = await p.locator('main').innerText();
   must(after !== before && /\$\s?\d|\d[\d\s]*\s?\$/.test(after), 'сума не змінилась');
+});
+// Роздільник тисяч U+202F (21.11.2026): у Manrope/Cormorant гліфа немає, Chrome малював ~0.1em («$1100»); свій гліф 0.2em — блок /*nn*/
+// у site-chrome.v1.css (tools/fonts/nnbsp.py), грані тих самих сімейств з unicode-range:U+202F, оголошені ПІСЛЯ основних.
+const nnW = p => p.evaluate(async () => {
+  await document.fonts.ready;
+  const out = [], w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n;
+  while ((n = w.nextNode())) {
+    const t = n.nodeValue, el = n.parentElement;
+    if (t.indexOf(' ') < 0 || !el || el.closest('script,style,template,noscript,svg') || !el.getClientRects().length) continue;
+    const fs = parseFloat(getComputedStyle(el).fontSize);
+    for (let i = 0; i < t.length; i++) if (t[i] === ' ') {
+      const r = document.createRange(); r.setStart(n, i); r.setEnd(n, i + 1);
+      const b = r.getBoundingClientRect(); if (b.height) out.push(+(b.width / fs).toFixed(3));
+    }
+  }
+  return out;
+});
+await test('роздільник тисяч U+202F видно: 0.2em у сумі калькулятора й рядках цін (uk, de, ar), не ~0.1em', '/kalkuliator-remontu', 402, async p => {
+  await p.locator('#cArea').fill('1200'); await p.locator('#cArea').dispatchEvent('input'); await p.waitForTimeout(300);
+  must(/ /.test(await p.locator('#cSum').innerText()), 'у сумі калькулятора немає U+202F');
+  for (const u of [null, '/vartist-budivnytstva-budynku-kyiv', '/de/renovierungskosten-rechner', '/ar/renovation-calculator']) {
+    if (u) { await p.goto(BASE + u, { waitUntil: 'load' }); await p.waitForTimeout(200); }
+    const ws = await nnW(p);
+    must(ws.length >= 2, `${u || 'калькулятор'}: у видимому тексті немає цін з U+202F`);
+    const bad = ws.filter(x => x < 0.18 || x > 0.24);
+    must(!bad.length, `${u || 'калькулятор'}: U+202F ${bad.slice(0, 4).join(', ')}em — має бути 0.2em (блок /*nn*/ у site-chrome.v1.css після основних @font-face)`);
+  }
 });
 // калькулятор — кілька позицій одразу (Михайло 20.11.2026): плитки #cIt [data-k] (aria-pressed), уточнення #cV [data-k] [data-p], площа #cArea, сотки #cLand
 const cTile = (p, k) => p.locator(`#cIt [data-k="${k}"]`);
@@ -1022,6 +1079,48 @@ for (const [path, w] of [['/proekty/yacht-vip', 402], ['/en/proekty/monpark', 14
   must(st.v > 0 && st.ok === st.v, `мініатюри в кадрі не завантажились: ${st.ok} з ${st.v}`);
   must(st.cls < .01, 'зсув верстки при появі мініатюр: ' + st.cls.toFixed(3));
 });
+// «Бренди, з якими працюємо» (rich.py brands, 21.11.2026): назви текстом у <ul>, рух — marquee() (копії aria-hidden), пауза кнопкою й наведенням,
+// без горизонтальної прокрутки сторінки, висота блоку не стрибає (CLS), RTL — у зворотний бік; reduced-motion — статичний ряд із переносом
+for (const [path, w] of [['/about', 1440], ['/about', 402], ['/ar/about', 402], ['/de/ueber-uns', 344], ['/komplektatsiia-pid-kliuch-kyiv', 768]]) await test('стрічка брендів: рухається, пауза, без зсуву', path, w, async p => {
+  await p.evaluate(() => { window.__cls = 0; new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; }).observe({ type: 'layout-shift', buffered: true }); });
+  const ul = p.locator('.xs-brands .xs-bl');
+  must(await ul.count() === 1, 'немає стрічки брендів');
+  const h0 = await ul.evaluate(e => { e.closest('section').scrollIntoView({ block: 'center' }); return e.closest('section').offsetHeight; });
+  if (w >= 1024) await p.mouse.move(2, 2);
+  await p.waitForTimeout(900);
+  const st = await ul.evaluate(e => ({ li: e.querySelectorAll('li:not(.mq-c)').length, cl: e.querySelectorAll('li.mq-c').length, hid: [...e.querySelectorAll('li.mq-c')].every(x => x.getAttribute('aria-hidden') === 'true'),
+    img: e.closest('section').querySelectorAll('img,svg').length, h: e.closest('section').offsetHeight, hs: document.documentElement.scrollWidth - innerWidth, rtl: document.documentElement.dir === 'rtl' }));
+  must(st.li >= 10 && st.li <= 60 && st.cl === st.li && st.hid, 'назви/копії: ' + JSON.stringify(st));
+  must(st.img === 0, 'у стрічці брендів є зображення (лише назви текстом)');
+  must(st.hs <= 0, `горизонтальна прокрутка сторінки ${st.hs}px`);
+  must(Math.abs(st.h - h0) <= 1, `висота блоку змінилась ${h0}→${st.h}`);
+  const s0 = await ul.evaluate(e => e.scrollLeft); await p.waitForTimeout(1200); const s1 = await ul.evaluate(e => e.scrollLeft);
+  must(Math.abs(s1 - s0) > 10 && (st.rtl ? s1 < s0 : s1 > s0), `стрічка не рухається або не в той бік (${s0}→${s1})`);
+  const b = p.locator('.xs-brands .mq-ap');
+  must(await b.count() === 1, 'немає кнопки паузи');
+  const bb = await b.boundingBox(); must(bb.width >= 43.5 && bb.height >= 43.5, 'кнопка паузи < 44px');
+  const ub = await ul.boundingBox(); must(st.rtl ? bb.x + bb.width <= ub.x + 1 : bb.x >= ub.x + ub.width - 1, 'кнопка паузи поверх назв');
+  await b.click(); await p.waitForTimeout(250);
+  must(await b.getAttribute('aria-pressed') === 'true', 'aria-pressed після паузи');
+  const a0 = await ul.evaluate(e => e.scrollLeft); await p.waitForTimeout(900);
+  must(Math.abs(await ul.evaluate(e => e.scrollLeft) - a0) < 1, 'на паузі стрічка рухається');
+  await b.click(); await p.waitForTimeout(700);
+  if (w >= 1024) { // наведення миші — пауза
+    await p.mouse.move(ub.x + ub.width / 3, ub.y + ub.height / 2); await p.waitForTimeout(300);
+    const m0 = await ul.evaluate(e => e.scrollLeft); await p.waitForTimeout(900);
+    must(Math.abs(await ul.evaluate(e => e.scrollLeft) - m0) < 1, 'при наведенні стрічка рухається');
+  }
+  const cls = await p.evaluate(() => window.__cls);
+  must(cls <= 0.05, 'CLS ' + cls.toFixed(3));
+});
+for (const [path, w] of [['/about', 402], ['/ar/about', 1440]]) await test('стрічка брендів, reduced-motion: статичний ряд із переносом, без копій і кнопки', path, w, async p => {
+  const ul = p.locator('.xs-brands .xs-bl');
+  await ul.evaluate(e => e.closest('section').scrollIntoView({ block: 'center' })); await p.waitForTimeout(800);
+  const st = await ul.evaluate(e => ({ cl: e.querySelectorAll('li.mq-c').length, btn: e.closest('section').querySelectorAll('button').length, rows: new Set([...e.children].map(x => Math.round(x.getBoundingClientRect().top))).size,
+    over: e.scrollWidth - e.clientWidth, hs: document.documentElement.scrollWidth - innerWidth }));
+  must(st.cl === 0 && st.btn === 0, 'копії/кнопка при reduced-motion: ' + JSON.stringify(st));
+  must(st.rows >= 2 && st.over <= 1 && st.hs <= 0, 'ряд не переноситься або виходить за край: ' + JSON.stringify(st));
+}, { reducedMotion: 'reduce' });
 await browser.close(); server.close();
 console.log(fails ? `\n${fails} FAIL` : '\nВзаємодії: ALL OK');
 process.exit(fails ? 1 : 0);
