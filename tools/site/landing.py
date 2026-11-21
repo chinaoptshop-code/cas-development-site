@@ -746,6 +746,8 @@ def main_html(p):
           '<section><div class="w">', f'  <h2>{t["rel"]}</h2>',
           '  <div class="rel">' + ''.join(f'<a href="{u}">{e(n)}</a>' for u, n in p['rel']) + '</div>',
           '</div></section>\n']
+    if p.get('brands'):  # «Бренди, з якими працюємо» (rich.brands; комплектація й меблювання) — останнім перед формою: не розриває серію плиток LIGHT
+        o += richsec.render(p['lang'], {'t': 'brands'})
     return '\n'.join(o)
 
 
