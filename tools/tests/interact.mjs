@@ -1056,6 +1056,43 @@ await test('калькулятор (ar, RTL), кілька позицій: га�
   must(side[0] < side[1] / 2, 'ar: галочка не ліворуч (кінець рядка в RTL): ' + side);
   must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'ar: горизонтальна прокрутка');
 });
+// WeChat і Behance (Михайло 21.11.2026): месенджери й соцмережі — лише іконки без підпису «Месенджери» (футер, картка біля форми #zayavka, /contact);
+// клік по WeChat копіює номер +380 63 866 77 55 і показує підказку мовою сторінки (aria-live), Behance — у футері й на /contact, не біля форми
+const WX = '+380 63 866 77 55', CLIP = { permissions: ['clipboard-read', 'clipboard-write'] };
+const wxTip = p => p.evaluate(() => { const t = document.querySelector('.wx-t'); return t ? { on: t.classList.contains('on'), txt: t.textContent, live: t.getAttribute('aria-live'), pos: getComputedStyle(t).position } : null; });
+const icoRow = (p, sel) => p.evaluate(sel => [...document.querySelectorAll(sel + ' a')].map(a => { const r = a.getBoundingClientRect();
+  return { k: (a.className.match(/bi-(\w+)/) || [])[1], w: Math.round(r.width), h: Math.round(r.height), txt: a.textContent.trim(), lab: a.getAttribute('aria-label') || '', href: a.getAttribute('href'), wx: a.getAttribute('data-wx') }; }), sel);
+await test('WeChat: є у футері й біля форми, клік копіює номер; Behance — у футері; без підпису «Месенджери»', '/', 1440, async p => {
+  const f = await icoRow(p, '.scf-soc');
+  must(f.map(x => x.k).join() === 'telegram,viber,whatsapp,instagram,youtube,linkedin,tiktok,behance,wechat', 'футер: ' + f.map(x => x.k));
+  must(f.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'футер: кнопки не іконки ≥ 44 px: ' + JSON.stringify(f));
+  must(f.find(x => x.k === 'behance').href === 'https://www.behance.net/mykhailol2' && f.find(x => x.k === 'wechat').wx === WX && f.find(x => x.k === 'wechat').lab.includes(WX), 'футер: Behance / WeChat');
+  must(!(await p.evaluate(() => [...document.querySelectorAll('.scf b')].some(b => /Месенджери/.test(b.textContent)))), 'футер: підпис «Месенджери» лишився');
+  const top = await p.evaluate(() => { const s = document.querySelector('.scf-soc').getBoundingClientRect(), r = document.querySelector('.scf-soc').closest('.scf-top').getBoundingClientRect(); return [s.top - r.top, s.height]; });
+  must(top[0] <= 2 && top[1] < 60, 'футер: ряд іконок не вгорі колонки або в два ряди на 1440: ' + top);
+  await p.locator('.scf-soc .bi-wechat').scrollIntoViewIfNeeded(); await p.click('.scf-soc .bi-wechat'); await p.waitForTimeout(300);
+  let tip = await wxTip(p);
+  must(tip && tip.on && tip.live === 'polite' && tip.pos === 'fixed' && /Номер WeChat скопійовано/.test(tip.txt) && tip.txt.includes(WX), 'підказка: ' + JSON.stringify(tip));
+  must((await p.evaluate(() => navigator.clipboard.readText())) === WX, 'буфер: ' + await p.evaluate(() => navigator.clipboard.readText()));
+  must(p.url().startsWith('http'), 'сторінка пішла з сайту: ' + p.url());
+  // картка контактів біля форми (≥ 1024 px)
+  await p.evaluate(() => { navigator.clipboard.writeText(''); document.getElementById('zayavka').scrollIntoView(); }); await p.waitForTimeout(800);
+  const c = await icoRow(p, '#zayavka .of-ct-m');
+  must(c.map(x => x.k).join() === 'telegram,whatsapp,viber,wechat' && c.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'картка біля форми: ' + JSON.stringify(c));
+  must(!(await p.evaluate(() => [...document.querySelectorAll('#zayavka .of-ct-l')].some(l => /Месенджери/.test(l.textContent)))), 'картка: підпис «Месенджери» лишився');
+  await p.click('#zayavka .of-ct-m .bi-wechat'); await p.waitForTimeout(300);
+  must((await p.evaluate(() => navigator.clipboard.readText())) === WX && (await wxTip(p)).on, 'картка: WeChat не скопіював номер');
+}, CLIP);
+await test('WeChat на /contact (en): лише іконки з Behance і WeChat, підказка англійською', '/en/contact', 402, async p => {
+  const r = await icoRow(p, '.xs-msg');
+  must(['behance', 'wechat'].every(k => r.some(x => x.k === k)) && r.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), '/contact: ' + JSON.stringify(r));
+  must(!(await p.$('.xs-msg-h')) && (await p.getAttribute('.xs-msg', 'aria-label')) === 'Messengers', '/contact: підпис над рядом лишився або немає aria-label');
+  must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'горизонтальна прокрутка');
+  await p.locator('.xs-msg .bi-wechat').scrollIntoViewIfNeeded(); await p.locator('.xs-msg .bi-wechat').tap(); await p.waitForTimeout(300);
+  const tip = await wxTip(p);
+  must(tip && tip.on && /WeChat number copied/.test(tip.txt), 'підказка en: ' + JSON.stringify(tip));
+  must((await p.evaluate(() => navigator.clipboard.readText())) === WX, 'буфер (тач)');
+}, CLIP);
 // Кільце курсора біля країв вікна (20.11.2026): RTL і LTR на 1024 / 1440 / 1920 — без горизонтальної прокрутки, кліки проходять крізь кільце,
 // стрілка над обкладинкою в RTL — «←»
 for (const [path, w] of [['/ar/', 1440], ['/ar/', 1920], ['/ar/services', 1024], ['/', 1024], ['/services', 1920]]) await test('курсор-супутник біля країв: без горизонтальної прокрутки, не перехоплює кліки', path, w, async p => {

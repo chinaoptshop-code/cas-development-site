@@ -364,7 +364,8 @@ MAP = 'https://maps.google.com/?cid=15015666645432112566'
 
 
 # засновник (Михайло 09.11.2026): особисті LinkedIn і TikTok — sameAs засновника, не студії (профілі студії — SAME_AS)
-FOUNDER_SAME_AS = ['https://www.linkedin.com/in/mykhailo-litovchuk-818846244', 'https://www.tiktok.com/@li_mi_tless']
+FOUNDER_SAME_AS = ['https://www.linkedin.com/in/mykhailo-litovchuk-818846244', 'https://www.tiktok.com/@li_mi_tless',
+                   'https://www.behance.net/mykhailol2']  # Behance Михайла — 21.11.2026
 FOUNDER = {'uk': ('Михайло', 'Засновник і CEO'), 'ru': ('Михаил', 'Основатель и CEO')}  # інші мови — латиницею
 def founder(lang):
     n, r = FOUNDER.get(lang, ('Mykhailo', 'Founder and CEO'))

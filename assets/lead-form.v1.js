@@ -495,18 +495,20 @@
       if (box || !mq.matches) return place();
       var c = CT[lang] || CT.en || CT.uk;
       box = el('aside', 'of-ct'); box.setAttribute('aria-label', c[0]);
-      var row = function (lab, body) { var d = el('div', 'of-ct-r'); d.appendChild(el('span', 'of-ct-l', lab)); d.appendChild(body); box.appendChild(d); };
+      var row = function (lab, body) { var d = el('div', 'of-ct-r'); if (lab) d.appendChild(el('span', 'of-ct-l', lab)); d.appendChild(body); box.appendChild(d); };
       var tel = el('a', 'of-ct-tel', '+380 97 866 77 55'); tel.href = 'tel:+380978667755'; tel.dir = 'ltr';
       row(c[1], tel);
-      var ms = el('div', 'of-ct-m');
-      [['Telegram', 'https://t.me/+380978667755', 'telegram'], ['WhatsApp', 'https://wa.me/380978667755', 'whatsapp'], ['Viber', 'viber://chat?number=%2B380978667755', 'viber']].forEach(function (m) {
-        var a = el('a'); a.href = m[1]; if (/^http/.test(m[1])) { a.target = '_blank'; a.rel = 'noopener'; }
-        var i = el('img'); i.src = '/assets/brand/' + m[2] + '.svg'; i.width = i.height = 24; i.alt = ''; i.decoding = 'async';
-        a.appendChild(i); a.appendChild(document.createTextNode(m[0]));
-        a.addEventListener('click', function () { clarity('lead_msg', m[0], 'lead_msg'); });
+      // месенджери — лише іконки, як у футері (Михайло 21.11.2026: без підпису «Месенджери»); назва — aria-label/title, підпис c[2] — aria-label ряду.
+      // WeChat: клік копіює номер і показує підказку (wxCopy у site-chrome.v1.js, делегований обробник a[data-wx]); без JS — weixin://
+      var ms = el('div', 'of-ct-m'); ms.setAttribute('role', 'group'); ms.setAttribute('aria-label', c[2]);
+      [['Telegram', 'https://t.me/+380978667755', 'telegram'], ['WhatsApp', 'https://wa.me/380978667755', 'whatsapp'], ['Viber', 'viber://chat?number=%2B380978667755', 'viber'],
+       ['WeChat +380 63 866 77 55', 'weixin://', 'wechat']].forEach(function (m) {
+        var a = el('a', 'bi bi-' + m[2]); a.href = m[1]; if (/^http/.test(m[1])) { a.target = '_blank'; a.rel = 'noopener'; }
+        a.setAttribute('aria-label', m[0]); a.title = m[0]; if (m[2] === 'wechat') a.setAttribute('data-wx', '+380 63 866 77 55');
+        a.addEventListener('click', function () { clarity('lead_msg', m[0].split(' ')[0], 'lead_msg'); });
         ms.appendChild(a);
       });
-      row(c[2], ms);
+      row('', ms);
       row(c[3], el('span', 'of-ct-v', c[4]));
       row(c[5], el('span', 'of-ct-v', c[6]));
       w.classList.add('of-ct-w');

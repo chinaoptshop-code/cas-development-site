@@ -114,7 +114,7 @@ body{padding-top:var(--sch-h)}
 .sch-mmsg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .sch-mmsg a{display:flex;align-items:center;gap:10px;min-height:46px;padding:0 12px;border:1px solid var(--c-ln);border-radius:12px;
   font-size:.875rem;color:var(--c-tx);text-decoration:none}
-.bi::before{content:"";flex:none;width:20px;height:20px;background:center/contain no-repeat}.bi-telegram::before{background-image:url(/assets/brand/telegram.svg)}.bi-viber::before{background-image:url(/assets/brand/viber.svg)}.bi-whatsapp::before{background-image:url(/assets/brand/whatsapp.svg)}.bi-instagram::before{background-image:url(/assets/brand/instagram-96.png)}.bi-youtube::before{background-image:url(/assets/brand/youtube.svg)}.bi-wechat::before{background-image:url(/assets/brand/wechat.svg)}.bi-linkedin::before{background-image:url(/assets/brand/linkedin.svg)}.bi-tiktok::before{background-image:url(/assets/brand/tiktok.svg)}
+.bi::before{content:"";flex:none;width:20px;height:20px;background:center/contain no-repeat}.bi-telegram::before{background-image:url(/assets/brand/telegram.svg)}.bi-viber::before{background-image:url(/assets/brand/viber.svg)}.bi-whatsapp::before{background-image:url(/assets/brand/whatsapp.svg)}.bi-instagram::before{background-image:url(/assets/brand/instagram-96.png)}.bi-youtube::before{background-image:url(/assets/brand/youtube.svg)}.bi-wechat::before{background-image:url(/assets/brand/wechat.svg)}.bi-linkedin::before{background-image:url(/assets/brand/linkedin.svg)}.bi-tiktok::before{background-image:url(/assets/brand/tiktok.svg)}.bi-behance::before{background-image:url(/assets/brand/behance.svg)}
 html.sch-lock,html.sch-lock body{overflow:hidden}
 html.sch-lock .mbar{display:none!important}
 @media(min-width:1080px){.sch-menu{display:none!important}}
@@ -129,7 +129,7 @@ html.sch-lock .mbar{display:none!important}
 .scf address{font-style:normal;color:var(--c-tx)}
 .scf-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.125rem;font-weight:600;color:var(--c-tx);text-decoration:none}
 /* месенджери й соцмережі — один ряд однакових кнопок-іконок (Михайло 08.11.2026), назва — aria-label/title */
-.scf-soc{display:flex;flex-wrap:nowrap;gap:clamp(2px,calc((100% - 7 * 2.875rem) / 6),.5rem)}.scf-soc a{display:inline-flex;flex:0 1 auto;min-width:0;align-items:center;justify-content:center;width:max(44px,2.875rem);height:max(44px,2.875rem);border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}.scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}.scf-soc .bi::before{width:1.375rem;height:1.375rem}
+.scf-soc{display:flex;flex-wrap:wrap;gap:.5rem}.scf-soc a{display:inline-flex;flex:none;align-items:center;justify-content:center;width:max(44px,2.875rem);height:max(44px,2.875rem);border:1px solid var(--c-ln);border-radius:.75rem;transition:border-color .2s}.scf-soc a:hover,.scf-soc a:focus-visible{border-color:var(--c-ac)}.scf-soc .bi::before{width:1.375rem;height:1.375rem}
 .scf .scf-svc{position:static;margin:32px 0 0;padding:16px 0 0;border:0;border-top:1px solid var(--c-ln)}
 .scf .scf-svc summary{display:flex;align-items:center;justify-content:center;min-height:44px;list-style:none;cursor:pointer;
   font-size:.75rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--c-ac);float:none}
@@ -1060,11 +1060,14 @@ html body main>.pmap{grid-column:1/-1;width:100%;box-sizing:border-box}
 .js [data-c=x]:not(.c-o):has(>.ux-wb){width:100%;box-sizing:border-box}
 /* футер, соцмережі (11.11.2026): 7 кнопок 46 px + проміжки не влазили в 328 px (360) — горизонтальна прокрутка 26 px на всіх сторінках;
    на вузьких телефонах кнопки 44 px, проміжок ділить залишок ряду (один ряд, як і раніше) */
-@media(max-width:419px){.scf-soc{gap:clamp(0px,calc((100% - 7 * 2.75rem) / 6),.5rem)}.scf-soc a{width:max(44px,2.75rem);height:max(44px,2.75rem)}}
+/* 21.11.2026: 9 кнопок (+ Behance, WeChat) — на телефоні два рівні ряди 5 + 4 (≥ 44 px, проміжок .5rem), з 760 px — один ряд */
+@media(max-width:759px){.scf-soc{display:grid;grid-template-columns:repeat(5,max-content)}}
+@media(max-width:419px){.scf-soc a{width:max(44px,2.75rem);height:max(44px,2.75rem)}}
 /* футер на планшетах і ноутбуках (11.11.2026): ряд соцмереж ~23.1rem не влазив у третю колонку (768–1240 px) — вилазив за край,
    а колонка «Контакти» стискалась до слова в рядку. 760–1099: бренд і контакти поруч, месенджери — окремим рядом; з 1100 — третя колонка не вужча за ряд */
 @media(min-width:760px) and (max-width:1099px){.scf-top{grid-template-columns:1.3fr 1fr}.scf-top>.scf-col:last-child{grid-column:1/-1}}
-@media(min-width:1100px){.scf-top{grid-template-columns:1.3fr 1fr minmax(23.25rem,1.2fr)}}
+@media(min-width:760px){.scf-soc{flex-wrap:nowrap}}
+@media(min-width:1100px){.scf-top{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto}} /* третя колонка = ряд іконок (9 × 2.875rem + проміжки) */
 /* hero лендингів на планшетах (11.11.2026): H1 займає майже всю ширину, а бічний градієнт праворуч (RTL — ліворуч) майже прозорий —
    світлі місця фото (лампи, вікна) під кінцем заголовка давали контраст < 3; на 768–1023 px дальній край темніший */
 @media(min-width:768px) and (max-width:1023px){
@@ -1087,9 +1090,9 @@ a[data-lb]{cursor:zoom-in}
   a.of-ct-tel{display:inline-flex;align-items:center;min-height:44px;font-size:1.375rem;font-weight:600;color:var(--tx,#ede8df);text-decoration:none;white-space:nowrap}
   a.of-ct-tel:hover{color:var(--ac,#bf9148)}
   .of-ct-m{display:flex;flex-wrap:wrap;gap:.5rem}
-  .of-ct-m a{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 .875rem;border:1px solid var(--ln,rgba(191,145,72,.35));border-radius:999px;color:var(--tx,#ede8df);font-size:var(--fs-small,.8125rem);font-weight:600;text-decoration:none}
+  .of-ct-m a{display:inline-flex;align-items:center;justify-content:center;flex:none;width:max(44px,2.875rem);height:max(44px,2.875rem);border:1px solid var(--ln,rgba(191,145,72,.35));border-radius:.75rem;text-decoration:none} /* лише іконки, як у футері (21.11.2026) */
   .of-ct-m a:hover,.of-ct-m a:focus-visible{border-color:var(--ac,#bf9148)}
-  .of-ct-m img{width:1.25rem;height:1.25rem}
+  .of-ct-m .bi::before{width:1.375rem;height:1.375rem}
 }
 @media (horizontal-viewport-segments:2){#zayavka .of-ct{display:none}} /* двоекранні: форма — в одному сегменті, без блоку через шарнір */
 /* ══ Курсор-супутник (ПК) і хвиля дотику (тач) — Михайло 20.11.2026; логіка — pointerFx() у /assets/ui-polish.v1.js, UI-kit /styleguide/#pointer ══
@@ -1111,3 +1114,7 @@ a[data-lb]{cursor:zoom-in}
 }
 @media(prefers-reduced-motion:reduce){.cur,.tap{display:none}}
 @media print{.cur,.tap{display:none}}
+/* WeChat: підказка «Номер скопійовано» (Михайло 21.11.2026; обробник a[data-wx] — site-chrome.v1.js): fixed над пігулкою, без зсуву верстки й без перехоплення дотиків */
+.wx-t{position:fixed;left:0;right:0;margin:0 auto;width:max-content;bottom:calc(5.5rem + env(safe-area-inset-bottom,0px));z-index:10050;max-width:calc(100vw - 32px);box-sizing:border-box;padding:.75rem 1rem;border:1px solid var(--c-ac,#BF9148);border-radius:.75rem;background:var(--c-bg2,#100e0c);color:var(--c-tx,#EDE8DF);font-size:.875rem;line-height:1.4;text-align:center;pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s}.wx-t bdi{white-space:nowrap}
+.wx-t.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.wx-t{transition:none;transform:none}}

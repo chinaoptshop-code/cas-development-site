@@ -103,16 +103,18 @@ def hero_bg(h, full=False):
     return f'<picture class="hx-bg"{hs}>{src}{img(h, sizes=f"(max-width:767px) {ms}, 100vw", eager=True)}</picture>'
 
 
-def msgs():
-    return ('<p class="xs-msg">'
-            f'<a class="bi bi-telegram" href="{TG}" target="_blank" rel="noopener">Telegram</a>'
-            f'<a class="bi bi-viber" href="{VB}">Viber</a>'
-            f'<a class="bi bi-whatsapp" href="{WA}" target="_blank" rel="noopener">WhatsApp</a>'
-            f'<a class="bi bi-instagram" href="{IG}" target="_blank" rel="noopener">Instagram</a>'
-            f'<a class="bi bi-linkedin" href="{LI}" target="_blank" rel="noopener">LinkedIn</a>'
-            f'<a class="bi bi-tiktok" href="https://www.tiktok.com/@li_mi_tless" target="_blank" rel="noopener">TikTok</a>'
-            # WeChat (Михайло 08.11.2026): додають за номером телефону; weixin:// відкриває застосунок
-            f'<a class="bi bi-wechat" href="weixin://" title="WeChat: +380 63 866 77 55">WeChat +380 63 866 77 55</a></p>')
+MSGS = [('telegram', 'Telegram', TG), ('viber', 'Viber', VB), ('whatsapp', 'WhatsApp', WA), ('instagram', 'Instagram', IG), ('linkedin', 'LinkedIn', LI),
+        ('tiktok', 'TikTok', 'https://www.tiktok.com/@li_mi_tless'), ('behance', 'Behance', 'https://www.behance.net/mykhailol2'),  # Behance Михайла — 21.11.2026
+        # WeChat (Михайло 08.11.2026): додають за номером; клік копіює номер (site-chrome.v1.js), на телефоні далі відкриває застосунок; без JS — weixin://
+        ('wechat', 'WeChat +380 63 866 77 55', 'weixin://')]
+
+
+def msgs(label=''):
+    """Месенджери й соцмережі — лише іконки, як у футері (Михайло 21.11.2026: без підпису «Месенджери», мінімум тексту); назва — aria-label і title."""
+    lab = f' role="group" aria-label="{a(label)}"' if label else ''
+    return (f'<p class="xs-msg"{lab}>' + ''.join(
+        f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '')
+        + (' data-wx="+380 63 866 77 55"' if k == 'wechat' else '') + f' aria-label="{n}" title="{n}"></a>' for k, n, u in MSGS) + '</p>')
 
 
 def btns(bs):
@@ -243,8 +245,8 @@ def contacts(x):
     if x.get('review'):  # відгук у Google — основний профіль GBP (Михайло 17.11.2026), текст мовою сторінки
         o += (f'<p class="xs-rev"><a href="{GREVIEW}" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
               f'<path d="{STAR}"/></svg>{e(x["review"])}</a></p>')
-    mh = f'<p class="kick xs-msg-h">{e(x["msgs_h"])}</p>' if x.get('msgs_h') else ''
-    return wrap(x, o + (mh + msgs() if x.get('msgs') else ''), 'xs-contacts')
+    # підпис «Месенджери» (msgs_h) — лише для читачів екрана: aria-label ряду іконок (Михайло 21.11.2026)
+    return wrap(x, o + (msgs(x.get('msgs_h', '')) if x.get('msgs') else ''), 'xs-contacts')
 
 
 def team(x):

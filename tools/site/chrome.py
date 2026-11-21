@@ -215,6 +215,12 @@ if re.match(r'^https://www\.youtube\.com/(@[\w.\-]+|channel/UC[\w-]{22})$', _MED
 SOCIAL.append(('linkedin', 'LinkedIn', 'https://www.linkedin.com/in/mykhailo-litovchuk-818846244'))
 # TikTok Михайла «Міша під ключ» — Михайло 09.11.2026
 SOCIAL.append(('tiktok', 'TikTok', 'https://www.tiktok.com/@li_mi_tless'))
+# Behance Михайла — Михайло 21.11.2026
+SOCIAL.append(('behance', 'Behance', 'https://www.behance.net/mykhailol2'))
+# WeChat (Михайло 08.11.2026, у футері — 21.11.2026): веб-посилання на чат за номером немає — клік копіює номер і показує підказку
+# (обробник a[data-wx] у site-chrome.v1.js), на телефоні далі відкриває застосунок; без JS — weixin://
+WECHAT = '+380 63 866 77 55'
+SOCIAL.append(('wechat', f'WeChat {WECHAT}', 'weixin://'))
 SOCIAL_K = {x[0] for x in SOCIAL}
 SOC_LABEL = {'uk': 'Соцмережі', 'ru': 'Соцсети', 'en': 'Social media', 'es': 'Redes sociales', 'zh': '社交媒体', 'pl': 'Media społecznościowe',
              'de': 'Soziale Medien', 'fr': 'Réseaux sociaux', 'pt': 'Redes sociais', 'ar': 'التواصل الاجتماعي'}
@@ -433,11 +439,12 @@ def header(lang, path, alts, tools='', cta_href=None):
 
 def footer(lang, alts):
     t = T[lang]
-    # месенджери й соцмережі — один ряд однакових кнопок-іконок (Михайло 08.11.2026); назва — aria-label і title
+    # месенджери й соцмережі — один ряд однакових кнопок-іконок (Михайло 08.11.2026); назва — aria-label і title;
+    # без видимого підпису «Месенджери» — лише іконки (Михайло 21.11.2026), підпис лишається в aria-label групи
     soc_l = t.get('soc') or SOC_LABEL.get(lang, SOC_LABEL['en'])
     row = [x for x in MSG if x[0] not in SOCIAL_K] + SOCIAL
     soc = ''.join(f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '')
-                  + f' aria-label="{n}" title="{n}"></a>' for k, n, u in row)
+                  + (f' data-wx="{WECHAT}"' if k == 'wechat' else '') + f' aria-label="{n}" title="{n}"></a>' for k, n, u in row)
     groups = ''.join(f'<div><b>{g}</b>' + ''.join(f'<a href="{h}">{n}</a>' for h, n in links) + '</div>' for g, links in [(g, _live(x)) for g, x in t['groups']] if links)
     langs = lang_links(lang, alts, 'scf-lang')
     # «Умови використання» — поруч із політикою, коротка назва (Михайло 09.11.2026); посилання — лише коли сторінка є
@@ -448,7 +455,7 @@ def footer(lang, alts):
         '  <div class="scf-top">\n'
         f'    <div class="scf-brand">{LOGO.format(home=HOME[lang], label=t["home_label"])}<p>{t["tagline"]}</p></div>\n'
         f'    <div class="scf-col"><b>{t["contacts"]}</b><address>{t["address"]}</address><a class="scf-tel" href="tel:{PHONE}">{PHONE_TXT}</a></div>\n'
-        f'    <div class="scf-col"><b>{t["msg"]}</b><div class="scf-soc" role="group" aria-label="{t["msg"]} · {soc_l}">{soc}</div></div>\n'
+        f'    <div class="scf-col scf-ms"><div class="scf-soc" role="group" aria-label="{t["msg"]} · {soc_l}">{soc}</div></div>\n'
         '  </div>\n'
         f'  <details class="scf-svc"><summary>{t["svc"]}</summary><nav class="scf-svc-g" aria-label="{t["svc_label"]}">{groups}</nav></details>\n'
         f'  <div class="scf-bot"><div class="scf-langs" role="group" aria-label="{t["lang"]}">{langs}</div>'

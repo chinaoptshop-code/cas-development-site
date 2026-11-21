@@ -70,7 +70,8 @@ KEY_UK_MORE = ['/dyzainer-interieru-kyiv', '/dyzain-interieru-kvartyry-kyiv', '/
                '/budynok-z-hazobloku-pid-kliuch-kyiv', '/heneralnyi-pidriadnyk-kyiv', '/dyzain-i-remont-ukraina', '/blog']
 # профілі студії (Knowledge Graph) і засновника; Google Business Profile — cid
 SAME_AS = ['https://www.instagram.com/cas_development/', 'https://www.youtube.com/@cas_development', 'https://maps.google.com/?cid=15015666645432112566']
-FOUNDER_SAME_AS = ['https://www.linkedin.com/in/mykhailo-litovchuk-818846244', 'https://www.tiktok.com/@li_mi_tless']
+FOUNDER_SAME_AS = ['https://www.linkedin.com/in/mykhailo-litovchuk-818846244', 'https://www.tiktok.com/@li_mi_tless',
+                   'https://www.behance.net/mykhailol2']  # Behance Михайла — 21.11.2026
 LABEL = {'home': 'Home', 'services': 'Services & prices', 'about': 'About', 'portfolio': 'Portfolio', 'design': 'Interior design', 'renovation': 'Turnkey renovation',
          'construction': 'House construction', 'house-design': 'House architecture', 'office': 'Office renovation', 'business': 'Business fit-out',
          'furnishing': 'Furnishing', 'landscape': 'Landscape design', 'restaurant': 'Restaurant design', 'calculator': 'Cost calculator',

@@ -33,6 +33,33 @@
     return ' (\u2248\u00a0' + s + ')';
   };
 })(window);
+/* WeChat (Михайло 21.11.2026): веб-посилання на чат за номером немає, weixin:// лише відкриває застосунок. Клік по a[data-wx] (футер, картка біля
+   форми #zayavka, /contact — один делегований обробник): номер — у буфер, коротка підказка мовою сторінки (fixed, aria-live — верстку не зсуває),
+   на тач-пристрої далі пробуємо відкрити застосунок. Без JS — звичайне посилання weixin:// з title. */
+(function (d) {
+  var TX = { uk: ['Номер WeChat скопійовано:', 'WeChat:'], ru: ['Номер WeChat скопирован:', 'WeChat:'], en: ['WeChat number copied:', 'WeChat:'],
+    es: ['Número de WeChat copiado:', 'WeChat:'], zh: ['微信号已复制：', '微信：'], pl: ['Numer WeChat skopiowany:', 'WeChat:'], de: ['WeChat-Nummer kopiert:', 'WeChat:'],
+    fr: ['Numéro WeChat copié :', 'WeChat :'], pt: ['Número do WeChat copiado:', 'WeChat:'], ar: ['تم نسخ رقم WeChat:', 'WeChat:'] }, box, tm;
+  function say(t, n) {
+    if (!box) { box = d.createElement('div'); box.className = 'wx-t'; box.setAttribute('role', 'status'); box.setAttribute('aria-live', 'polite'); d.body.appendChild(box); }
+    var b = d.createElement('bdi'); b.dir = 'ltr'; b.textContent = n; box.textContent = t; box.appendChild(b); /* номер — одним рядком, LTR і в ar */ box.classList.add('on'); clearTimeout(tm); tm = setTimeout(function () { box.classList.remove('on'); }, 3500);
+  }
+  function legacy(s) { var t = d.createElement('textarea'), r = false; t.value = s; t.setAttribute('readonly', ''); t.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+    d.body.appendChild(t); t.select(); try { r = d.execCommand('copy'); } catch (e) {} t.remove(); return r; }
+  function copy(s, cb) {
+    try { if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(s).then(function () { cb(true); }, function () { cb(legacy(s)); }); } catch (e) {}
+    cb(legacy(s));
+  }
+  d.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-wx]'); if (!a || e.button || e.ctrlKey || e.metaKey) return;
+    e.preventDefault();
+    var n = a.getAttribute('data-wx'), l = (d.documentElement.lang || 'uk').slice(0, 2).toLowerCase(), t = TX[l] || TX.en;
+    copy(n, function (ok) {
+      say((ok ? t[0] : t[1]) + (l === 'zh' ? '' : ' '), n);
+      if (window.matchMedia && matchMedia('(pointer:coarse)').matches) setTimeout(function () { location.href = a.getAttribute('href') || 'weixin://'; }, 1200);
+    });
+  });
+})(document);
 /* Safari/WebKit запускає defer-скрипти, не дочекавшись повного site-chrome.v1.css у кінці <body> (Chrome чекає): усе нижче міряє верстку
    (стрічки, згортання data-c, сцени, ліниві фото) — тож стартує лише після цього CSS. Chrome — без змін (CSS уже готовий). */
 (function (go) {
