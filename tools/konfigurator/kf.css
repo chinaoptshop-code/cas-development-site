@@ -144,6 +144,10 @@ a.card:hover{border-color:var(--ac);transform:translateY(-2px)}
   .sw{width:auto}
   .sw-n{font-size:13px;line-height:1.2;overflow-wrap:anywhere;hyphens:auto;-webkit-hyphens:auto}
   .kf-hint{left:calc((100% - var(--kfp)) / 2)}
+  /* контраст на фото: панель щільніша (під нею світлі стіни й диван), назви зразків світліші; затінення під H1 сильніше */
+  .kf-panel{background:rgba(16,14,12,.9)}
+  .sw{color:#cfc7bb}
+  .kf-shade{background:linear-gradient(180deg,rgba(8,7,9,.8) 0,rgba(8,7,9,.5) 34%,rgba(8,7,9,.08) 60%,rgba(8,7,9,.08) 74%,rgba(8,7,9,.6) 100%)}
 }
 /* тач: кнопки кімнат і панелі інструментів ≥ 44 px (було 40/42 і 38 px на вузьких — аудит 20.11.2026) */
 @media (pointer:coarse){.kf-rooms button,.kf-tool,.kf-zones button{min-height:44px}.kf-tool{min-width:44px}}
