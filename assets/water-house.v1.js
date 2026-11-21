@@ -7,7 +7,7 @@
   'use strict';
   /*rates*/ /* ЗГЕНЕРОВАНО tools/site/rates.py — ставки CLAUDE.md [Україна, Європа], null — за кошторисом; руками не правити */
 var CAS_RATES = {"reno":[550,850],"office":[350,null],"box":[600,900],"key":[1100,1700],"arch":[12,18],"land":[50,null],"furn":[250,400],"plan":[6,null],"dz":[30,45],"full":[45,null]}, CAS_DMIN = [2500, 4000], CAS_DZ = ["plan", "dz", "full"],
-  CAS_HT = {"brick":{"box":[null,null],"key":[null,null]},"frame":{"box":[null,null],"key":[null,null]},"lstk":{"box":[null,null],"key":[null,null]},"sip":{"box":[null,null],"key":[null,null]},"sandwich":{"box":[null,null],"key":[null,null]},"modular":{"box":[null,null],"key":[null,null]},"timber":{"box":[null,null],"key":[null,null]}}; /* типи будинку: свої ставки коробки / під ключ */
+  CAS_HT = {"brick":{"box":[450,700],"key":[1100,1700]},"frame":{"box":[350,550],"key":[950,1500]},"lstk":{"box":[450,700],"key":[1150,1800]},"sip":{"box":[300,450],"key":[750,1200]},"sandwich":{"box":[250,400],"key":[450,700]},"modular":{"box":[300,450],"key":[750,1200]},"timber":{"box":[250,400],"key":[550,850]}}; /* типи будинку: свої ставки коробки / під ключ */
 /* ставка регіону: тип будинку t (CAS_HT) замінює ставки коробки / під ключ своїми — і null теж; без типу чи з невідомим — CAS_RATES */
 function casRate(k, R, t) { var h = t && Object.prototype.hasOwnProperty.call(CAS_HT, t) ? CAS_HT[t] : null, r = h && Object.prototype.hasOwnProperty.call(h, k) ? h[k] : CAS_RATES[k], v = r ? r[R ? 1 : 0] : null; return typeof v === 'number' ? v : null; }
 /* сума рядка: ставка × площа (дизайн — не менше мінімуму), округлена; null — ставки немає (за кошторисом) або площа ≤ 0; t — тип будинку */
