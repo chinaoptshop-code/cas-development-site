@@ -565,6 +565,7 @@ def related_blocks(items_by_lang, n_show=3):
         else:
             rel = ['Інші послуги', 'Другие услуги'] + [(i18n.ui(l) or {}).get('landing', {}).get('rel', '') for l in i18n.LANGS]
             anchor = (re.search(r'<section><div class="w"(?: data-c="\w")?>\s*<h2(?: data-i="\w+")?>(' + '|'.join(re.escape(x) for x in rel if x) + r')</h2>', s)
+                      or re.search(r'<section class="xs-brands">', s)  # «Бренди, з якими працюємо» (rich.brands) — останнім перед формою, без розриву серії плиток
                       or re.search(r'<section id="zayavka">', s))
             if not anchor: continue
             s = s[:anchor.start()] + block + s[anchor.start():]

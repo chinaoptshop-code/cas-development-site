@@ -202,3 +202,21 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 @media(min-width:1367px){
   .xs-svc:not(.hx-home~.xs-svc) .xs-sv>.xs-c:first-child:nth-last-child(5),.xs-svc:not(.hx-home~.xs-svc) .xs-sv>.xs-c:first-child:nth-last-child(5)~.xs-c{flex-basis:calc((100% - 64px) / 5)}
 }
+/* «Бренди, з якими працюємо» (rich.py brands, Михайло 21.11.2026): назви текстом шрифтом сайту (без логотипів), один ряд у межах .w (--cw);
+   рух — marquee() у ui-polish.v1.js (~25 px/с, пауза при наведенні/дотику/фокусі, кнопка ❚❚/▶ у кінці ряду — місце під неї зарезервоване, CLS 0);
+   роздільник — маленька крапка (у кожної назви однакова — шов кола не видно); prefers-reduced-motion — статичний ряд із переносом */
+.xs-brands h2{margin-bottom:.875rem}
+.xs-brw{position:relative}
+.xs-bl{display:flex;flex-wrap:nowrap;list-style:none;margin:0;padding:0;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+.xs-bl::-webkit-scrollbar{display:none}
+.xs-bl>li{flex:none;position:relative;margin:0;padding-block:.25rem;padding-inline:0 2.5rem;white-space:nowrap;font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:500;font-size:1.5rem;line-height:2.25rem;color:var(--tx,#EDE8DF)}
+.xs-bl>li::after{content:'';position:absolute;top:50%;inset-inline-end:1.09375rem;width:.3125rem;height:.3125rem;margin-top:-.15625rem;border-radius:50%;background:var(--ac,#BF9148);opacity:.7}
+.xs-bl>li:last-child::after{content:none}
+.xs-bl:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:4px;border-radius:4px}
+.xs-bl.mq-run{-webkit-mask-image:linear-gradient(90deg,transparent,#000 1.5rem,#000 calc(100% - 1.5rem),transparent);mask-image:linear-gradient(90deg,transparent,#000 1.5rem,#000 calc(100% - 1.5rem),transparent)}
+@media(prefers-reduced-motion:no-preference){.js .xs-brw{padding-inline-end:3.5rem}}
+.xs-brw>.mq-bar{position:absolute;top:0;bottom:0;inset-inline-end:0;width:2.75rem;height:auto}
+.xs-brw .mq-ap{top:50%;inset-inline-end:0;margin-top:-1.375rem;background:transparent;color:var(--tx,#EDE8DF)}
+.xs-brw .mq-ap:hover{background:rgba(191,145,72,.12)}
+@media(max-width:767px){.xs-bl>li{font-size:1.3125rem;padding-inline-end:2rem}.xs-bl>li::after{inset-inline-end:.84375rem}}
+@media(prefers-reduced-motion:reduce){.xs-bl{flex-wrap:wrap;overflow:visible}.xs-bl>li{padding-block:0;padding-inline-end:1.75rem;font-size:1.125rem;line-height:1.875rem}.xs-bl>li::after{inset-inline-end:.71875rem}}
