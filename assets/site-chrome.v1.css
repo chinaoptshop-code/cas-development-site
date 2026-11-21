@@ -516,9 +516,123 @@ html.sch-hide .pf-filter-wrap{top:0!important}
 @media(prefers-reduced-motion:no-preference) and (max-width:1099px){.bz:is([data-la],[data-rs]){--lx:112px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:1399px){.bz[data-wh]{--lx:112px}}
 @media(prefers-reduced-motion:no-preference) and (max-width:900px){.js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 20px) * .7 + 671px)}}
-@media(prefers-reduced-motion:no-preference) and (max-width:767px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(min(40vh,340px) + clamp(22.5rem,calc(637px - 69vw),25rem) + 8px);height:calc(min(40svh,340px) + clamp(22.5rem,calc(637px - 69vw),25rem) + 8px)} /* панель вища на вузьких (переноси): 402+ — 22.5rem, 344 — 25rem */
+@media(prefers-reduced-motion:no-preference) and (max-width:767px){.js body:has(.hx-home) .bz[data-bz-c]:not(.bz-on):not(.bz-no):not([data-sw])>.w>ol.bz-st{height:calc(min(40vh,340px) + clamp(22.5rem,calc(637px - 69vw),25rem) + 8px + var(--bzr,0px));height:calc(min(40svh,340px) + clamp(22.5rem,calc(637px - 69vw),25rem) + 8px + var(--bzr,0px))} /* панель вища на вузьких (переноси): 402+ — 22.5rem, 344 — 25rem; переноси тексту етапу й ціни мовами — --bzr (блок bzr нижче, tools/tests/bzres.mjs) */
   .js .bz[data-rp]:not(.rp-on):not(.bz-no)>.w>.rp-list::before{padding-top:calc((100% + 20px) * .45 + 836px)}
   .bz:is([data-la],[data-rs]){--lx:162px}.bz[data-wh]{--lx:162px}}
+/*bzr*/ /* ЗГЕНЕРОВАНО tools/tests/bzres.mjs --write: поправка резерву компактної сцени головних за мовою й шириною (--bzr, у формулі резерву @media(max-width:767px)); руками не правити */
+@media(max-width:767px){html:is(:lang(uk),:lang(ru),:lang(en),:lang(de),:lang(fr)){--bzr:23px}html:is(:lang(es),:lang(pt)){--bzr:26px}html:lang(zh){--bzr:-36px}html:lang(pl){--bzr:43px}html:lang(ar){--bzr:5px}}
+@media(min-width:321px) and (max-width:767px){html:lang(pl){--bzr:26px}}
+@media(min-width:331px) and (max-width:767px){html:lang(uk){--bzr:6px}}
+@media(min-width:332px) and (max-width:767px){html:is(:lang(ru),:lang(fr)){--bzr:6px}}
+@media(min-width:335px) and (max-width:767px){html:lang(en){--bzr:6px}}
+@media(min-width:338px) and (max-width:767px){html:lang(ar){--bzr:-13px}}
+@media(min-width:343px) and (max-width:767px){html:lang(de){--bzr:6px}}
+@media(min-width:353px) and (max-width:767px){html:lang(zh){--bzr:-29px}html:is(:lang(de),:lang(fr)){--bzr:13px}html:lang(pt){--bzr:32px}html:lang(ar){--bzr:-6px}}
+@media(min-width:354px) and (max-width:767px){html:is(:lang(uk),:lang(ru),:lang(en),:lang(es)){--bzr:13px}html:lang(pl){--bzr:33px}}
+@media(min-width:360px) and (max-width:767px){html:lang(pt){--bzr:18px}}
+@media(min-width:363px) and (max-width:767px){html:is(:lang(es),:lang(fr)){--bzr:20px}html:lang(zh){--bzr:-22px}html:lang(de){--bzr:18px}html:lang(ar){--bzr:-1px}}
+@media(min-width:364px) and (max-width:767px){html:is(:lang(uk),:lang(ru)){--bzr:20px}html:lang(en){--bzr:18px}html:lang(pl){--bzr:40px}}
+@media(min-width:366px) and (max-width:767px){html:lang(de){--bzr:1px}html:lang(ar){--bzr:-18px}}
+@media(min-width:368px) and (max-width:767px){html:lang(en){--bzr:2px}}
+@media(min-width:371px) and (max-width:767px){html:lang(pt){--bzr:25px}}
+@media(min-width:373px) and (max-width:767px){html:lang(zh){--bzr:-15px}}
+@media(min-width:374px) and (max-width:767px){html:is(:lang(uk),:lang(es),:lang(fr)){--bzr:27px}html:lang(ru){--bzr:26px}html:lang(pl){--bzr:46px}}
+@media(min-width:375px) and (max-width:767px){html:lang(ar){--bzr:-11px}}
+@media(min-width:376px) and (max-width:767px){html:lang(de){--bzr:8px}}
+@media(min-width:378px) and (max-width:767px){html:lang(en){--bzr:-12px}}
+@media(min-width:379px) and (max-width:767px){html:lang(pl){--bzr:27px}}
+@media(min-width:380px) and (max-width:767px){html:lang(ru){--bzr:11px}html:lang(pl){--bzr:10px}}
+@media(min-width:381px) and (max-width:767px){html:lang(pt){--bzr:32px}}
+@media(min-width:382px) and (max-width:767px){html:lang(uk){--bzr:-9px}}
+@media(min-width:383px) and (max-width:767px){html:lang(zh){--bzr:-9px}}
+@media(min-width:384px) and (max-width:767px){html:is(:lang(es),:lang(fr)){--bzr:34px}}
+@media(min-width:385px) and (max-width:767px){html:lang(ar){--bzr:-4px}}
+@media(min-width:386px) and (max-width:767px){html:lang(de){--bzr:15px}}
+@media(min-width:387px) and (max-width:767px){html:lang(en){--bzr:-5px}}
+@media(min-width:390px) and (max-width:767px){html:lang(zh){--bzr:-24px}html:lang(pl){--bzr:17px}}
+@media(min-width:391px) and (max-width:767px){html:lang(ru){--bzr:18px}}
+@media(min-width:392px) and (max-width:767px){html:lang(uk){--bzr:-2px}html:lang(pt){--bzr:39px}}
+@media(min-width:394px) and (max-width:767px){html:is(:lang(es),:lang(fr)){--bzr:41px}}
+@media(min-width:395px) and (max-width:767px){html:lang(ar){--bzr:2px}}
+@media(min-width:396px) and (max-width:767px){html:lang(de){--bzr:21px}}
+@media(min-width:397px) and (max-width:767px){html:lang(en){--bzr:1px}}
+@media(min-width:399px) and (max-width:767px){html:lang(zh){--bzr:-19px}}
+@media(min-width:400px) and (max-width:767px){html:lang(pl){--bzr:22px}}
+@media(min-width:401px) and (max-width:767px){html:lang(ru){--bzr:2px}}
+@media(min-width:402px) and (max-width:767px){html:lang(uk){--bzr:2px}html:lang(pt){--bzr:43px}}
+@media(min-width:418px) and (max-width:767px){html:lang(fr){--bzr:23px}}
+@media(min-width:430px) and (max-width:767px){html:lang(pt){--bzr:23px}}
+@media(min-width:449px) and (max-width:767px){html:lang(de){--bzr:2px}}
+@media(min-width:451px) and (max-width:767px){html:lang(es){--bzr:22px}}
+@media(min-width:465px) and (max-width:767px){html:lang(es){--bzr:2px}}
+@media(min-width:481px) and (max-width:767px){html:lang(fr){--bzr:2px}}
+@media(min-width:501px) and (max-width:767px){html:lang(pt){--bzr:2px}}
+@media(min-width:502px) and (max-width:767px){html:lang(pl){--bzr:2px}}
+@media(min-width:525px) and (max-width:767px){html:lang(ar){--bzr:-16px}}
+@media(min-width:537px) and (max-width:767px){html:lang(en){--bzr:-18px}}
+@media(min-width:538px) and (max-width:767px){html:lang(uk){--bzr:-18px}}
+@media(min-width:544px) and (max-width:767px){html:lang(ru){--bzr:-18px}}
+@media(min-width:611px) and (max-width:767px){html:lang(fr){--bzr:-18px}}
+@media(min-width:620px) and (max-width:767px){html:lang(pt){--bzr:-18px}}
+@media(min-width:645px) and (max-width:767px){html:lang(de){--bzr:-18px}}
+@media(min-width:658px) and (max-width:767px){html:lang(es){--bzr:-18px}}
+@media(min-width:682px) and (max-width:767px){html:lang(pl){--bzr:-18px}}
+@media(min-width:740px) and (max-width:767px){html:lang(zh){--bzr:-38px}}
+@media(max-width:767px) and (max-height:700px){html:is(:lang(uk),:lang(en),:lang(ar)){--bzr:-27px}html:is(:lang(ru),:lang(de),:lang(pt)){--bzr:-9px}html:lang(es){--bzr:-10px}html:lang(zh){--bzr:-66px}html:lang(pl){--bzr:-8px}html:lang(fr){--bzr:-25px}}
+@media(min-width:331px) and (max-width:767px) and (max-height:700px){html:lang(es){--bzr:-25px}}
+@media(min-width:332px) and (max-width:767px) and (max-height:700px){html:lang(ru){--bzr:-27px}}
+@media(min-width:336px) and (max-width:767px) and (max-height:700px){html:lang(pt){--bzr:-25px}}
+@media(min-width:338px) and (max-width:767px) and (max-height:700px){html:lang(ar){--bzr:-48px}}
+@media(min-width:340px) and (max-width:767px) and (max-height:700px){html:lang(de){--bzr:-25px}}
+@media(min-width:343px) and (max-width:767px) and (max-height:700px){html:lang(ar){--bzr:-64px}}
+@media(min-width:345px) and (max-width:767px) and (max-height:700px){html:lang(en){--bzr:-45px}}
+@media(min-width:353px) and (max-width:767px) and (max-height:700px){html:lang(uk){--bzr:-22px}html:lang(ru){--bzr:-23px}html:is(:lang(es),:lang(de),:lang(fr),:lang(pt)){--bzr:-18px}html:lang(pl){--bzr:-4px}html:lang(ar){--bzr:-57px}}
+@media(min-width:354px) and (max-width:767px) and (max-height:700px){html:lang(en){--bzr:-38px}html:lang(zh){--bzr:-59px}}
+@media(min-width:355px) and (max-width:767px) and (max-height:700px){html:lang(ru){--bzr:-38px}html:lang(pl){--bzr:-17px}}
+@media(min-width:357px) and (max-width:767px) and (max-height:700px){html:lang(uk){--bzr:-36px}}
+@media(min-width:363px) and (max-width:767px) and (max-height:700px){html:is(:lang(es),:lang(fr),:lang(pt)){--bzr:-11px}html:lang(de){--bzr:-13px}}
+@media(min-width:364px) and (max-width:767px) and (max-height:700px){html:is(:lang(ru),:lang(en)){--bzr:-31px}html:lang(zh){--bzr:-55px}html:lang(ar){--bzr:-50px}}
+@media(min-width:365px) and (max-width:767px) and (max-height:700px){html:lang(zh){--bzr:-70px}html:lang(pl){--bzr:-10px}}
+@media(min-width:366px) and (max-width:767px) and (max-height:700px){html:lang(de){--bzr:-30px}}
+@media(min-width:367px) and (max-width:767px) and (max-height:700px){html:lang(uk){--bzr:-29px}}
+@media(min-width:373px) and (max-width:767px) and (max-height:700px){html:is(:lang(es),:lang(fr)){--bzr:-4px}html:lang(pt){--bzr:-5px}}
+@media(min-width:374px) and (max-width:767px) and (max-height:700px){html:lang(ar){--bzr:-43px}}
+@media(min-width:375px) and (max-width:767px) and (max-height:700px){html:lang(ru){--bzr:-24px}html:lang(en){--bzr:-26px}html:lang(zh){--bzr:-63px}}
+@media(min-width:376px) and (max-width:767px) and (max-height:700px){html:lang(de){--bzr:-23px}}
+@media(min-width:377px) and (max-width:767px) and (max-height:700px){html:lang(uk){--bzr:-24px}}
+@media(min-width:378px) and (max-width:767px) and (max-height:700px){html:lang(en){--bzr:-43px}html:lang(pl){--bzr:-5px}}
+@media(min-width:380px) and (max-width:767px) and (max-height:700px){html:lang(pl){--bzr:-22px}}
+@media(min-width:382px) and (max-width:767px) and (max-height:700px){html:lang(uk){--bzr:-40px}}
+@media(min-width:383px) and (max-width:767px) and (max-height:700px){html:lang(fr){--bzr:3px}}
+@media(min-width:384px) and (max-width:767px) and (max-height:700px){html:lang(ar){--bzr:-36px}}
+@media(min-width:385px) and (max-width:767px) and (max-height:700px){html:lang(ru){--bzr:-17px}html:lang(pt){--bzr:2px}}
+@media(min-width:386px) and (max-width:767px) and (max-height:700px){html:lang(es){--bzr:3px}html:lang(zh){--bzr:-56px}html:lang(de){--bzr:-16px}}
+@media(min-width:387px) and (max-width:767px) and (max-height:700px){html:lang(en){--bzr:-36px}}
+@media(min-width:390px) and (max-width:767px) and (max-height:700px){html:lang(pl){--bzr:-15px}}
+@media(min-width:392px) and (max-width:767px) and (max-height:700px){html:lang(uk){--bzr:-33px}}
+@media(min-width:394px) and (max-width:767px) and (max-height:700px){html:lang(fr){--bzr:10px}html:lang(ar){--bzr:-29px}}
+@media(min-width:395px) and (max-width:767px) and (max-height:700px){html:lang(ru){--bzr:-11px}html:lang(pt){--bzr:8px}}
+@media(min-width:396px) and (max-width:767px) and (max-height:700px){html:lang(es){--bzr:9px}html:lang(zh){--bzr:-50px}html:lang(de){--bzr:-11px}}
+@media(min-width:397px) and (max-width:767px) and (max-height:700px){html:lang(en){--bzr:-30px}}
+@media(min-width:401px) and (max-width:767px) and (max-height:700px){html:lang(ru){--bzr:-29px}html:lang(pl){--bzr:-10px}}
+@media(min-width:402px) and (max-width:767px) and (max-height:700px){html:lang(uk){--bzr:-29px}html:lang(pt){--bzr:-8px}}
+@media(min-width:418px) and (max-width:767px) and (max-height:700px){html:lang(fr){--bzr:-8px}}
+@media(min-width:419px) and (max-width:767px) and (max-height:700px){html:lang(de){--bzr:-29px}}
+@media(min-width:421px) and (max-width:767px) and (max-height:700px){html:lang(es){--bzr:-8px}}
+@media(min-width:465px) and (max-width:767px) and (max-height:700px){html:lang(es){--bzr:-29px}}
+@media(min-width:469px) and (max-width:767px) and (max-height:700px){html:lang(pl){--bzr:-29px}}
+@media(min-width:481px) and (max-width:767px) and (max-height:700px){html:lang(fr){--bzr:-29px}}
+@media(min-width:489px) and (max-width:767px) and (max-height:700px){html:lang(ar){--bzr:-45px}}
+@media(min-width:501px) and (max-width:767px) and (max-height:700px){html:lang(en){--bzr:-48px}html:lang(pt){--bzr:-29px}}
+@media(min-width:502px) and (max-width:767px) and (max-height:700px){html:lang(uk){--bzr:-48px}}
+@media(min-width:508px) and (max-width:767px) and (max-height:700px){html:lang(ru){--bzr:-48px}}
+@media(min-width:569px) and (max-width:767px) and (max-height:700px){html:lang(fr){--bzr:-48px}}
+@media(min-width:578px) and (max-width:767px) and (max-height:700px){html:lang(pt){--bzr:-48px}}
+@media(min-width:601px) and (max-width:767px) and (max-height:700px){html:lang(de){--bzr:-48px}}
+@media(min-width:613px) and (max-width:767px) and (max-height:700px){html:lang(es){--bzr:-48px}}
+@media(min-width:635px) and (max-width:767px) and (max-height:700px){html:lang(pl){--bzr:-48px}}
+@media(min-width:690px) and (max-width:767px) and (max-height:700px){html:lang(zh){--bzr:-66px}}
+/*/bzr*/
 /* перемикач сцен головних без стрибка (19.11.2026): H2 усіх шести вкладок — з тим самим відступом (блок «Будинок» мав 10 px, підтягнуті сцени — 24),
    на телефоні H2 резервує 2 рядки (лише «Будинок з нуля…» вміщався в один: +27 px у решти); решту різниці (панелі етапів, довгі назви мовами)
    тримає min-height секції — найвища з показаних вкладок (site-chrome.v1.js, завантажувач сцен). Резерв CLS нижче — про ol.bz-st, H2 у нього не входить */

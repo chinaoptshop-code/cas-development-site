@@ -375,6 +375,26 @@ for (const [path, w, dy] of [['/', 402, 31], ['/remont-kvartyr-kyiv', 402, 200],
   must(after.cls - before.cls <= 0.05, 'CLS збірки в кадрі ' + (after.cls - before.cls).toFixed(3));
   must(Math.abs(after.nx - before.nx) <= 4, `блок під сценою зсунувся на ${after.nx - before.nx} px`);
 });
+// Резерв компактної сцени головних (21.11.2026): висота блоку до збірки (резерв site-chrome.v1.css, --bzr за мовою й шириною — tools/tests/bzres.mjs)
+// і після неї розходиться ≤ 8 px (було −38…+45 px: es/fr/pt +43, zh −19 на 402), CLS збірки в кадрі ≤ 0.05. Повна матриця ширин 320…767 — bzres.mjs.
+for (const w of [402, 1440, [375, 667]]) for (const lg of ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'pt', 'ar']) if (!Array.isArray(w) || ['uk', 'pl', 'zh'].includes(lg)) await test('резерв компактної сцени головної: до/після збірки ≤ 8 px', lg === 'uk' ? '/' : `/${lg}/`, w, async p => {
+  let go; const gate = new Promise(ok => go = ok);
+  await p.route(/\/assets\/build-anim\.v1\.js/, async r => { await gate; await r.continue().catch(() => {}); });
+  await p.evaluate(() => { window.__cls = 0; new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; }).observe({ type: 'layout-shift' }); });
+  await p.mouse.move(100, 300); await p.mouse.wheel(0, 300); await p.waitForTimeout(300);
+  await p.evaluate(() => document.getElementById('build-anim').scrollIntoView({ block: 'start', behavior: 'instant' }));
+  await p.waitForTimeout(400);
+  const h = () => p.evaluate(() => ({ h: document.getElementById('build-anim').getBoundingClientRect().height, cls: window.__cls }));
+  const a = await h();
+  must(!(await p.evaluate(() => document.getElementById('build-anim').hasAttribute('data-bz-on'))), 'сцена зібралась до приходу скрипта — тест не бачить резерву');
+  go();
+  await p.waitForSelector('#build-anim .bz-nx', { timeout: 10000 });
+  await p.waitForFunction(() => !document.getElementById('build-anim').style.minHeight, null, { timeout: 10000 });
+  await p.waitForTimeout(500);
+  const b = await h(), d = Math.round(b.h - a.h);
+  must(Math.abs(d) <= 8, `резерв ${Math.round(a.h)} px, після збірки ${Math.round(b.h)} px (${d > 0 ? '+' : ''}${d}) — переміряй: node tools/tests/bzres.mjs --write`);
+  must(b.cls - a.cls <= 0.05, 'CLS збірки в кадрі ' + (b.cls - a.cls).toFixed(3));
+});
 // Конфігуратор на телефоні (20.11.2026): назви матеріалів читаються повністю (без «…», ≥ 13 px), без горизонтальної прокрутки сторінки;
 // альбомний телефон — фото ліворуч (≥ 55 % ширини), панель матеріалів колонкою праворуч, цілі дотику ≥ 44 px
 const kfState = () => { const q = s => document.querySelector(s), vw = innerWidth, vh = innerHeight, pn = q('.kf-panel').getBoundingClientRect(), ns = [...document.querySelectorAll('#kfSw .sw-n')];
