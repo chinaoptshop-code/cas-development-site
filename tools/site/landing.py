@@ -123,6 +123,8 @@ def translate_tpl(s, lang):
     for k, uk in FORM_UK.items():
         if uk not in s and k in ('close', 'prev', 'next', 'menu'):  # підписи лайтбокса — тепер у /assets/ui-polish.v1.js (за мовою)
             continue
+        if uk not in s and k == 'call':  # меню пігулки — лише іконки (21.11.2026): «Подзвонити» мовою сторінки ставить chrome.mb_icons (aria-label)
+            continue
         assert uk in s, f'шаблон: нема рядка {uk}'
         core = _core(uk)
         if uk.startswith("'"):
