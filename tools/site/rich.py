@@ -284,21 +284,42 @@ def pmap(x, lang='uk'):
     return casmap.projects_html(lang).replace('<section class="pmap"', '<section class="pmap xs-pmap"', 1) + '\n'
 
 
-# «Бренди, з якими працюємо» (Михайло 21.11.2026: «анімаційна лента… 10–20 стандартних компаній з виробництва елементів інтерʼєру»).
-# РОБОЧИЙ СПИСОК — чекає підтвердження власника; угод про партнерство не підтверджено, тому без слів «партнер / офіційний / дилер»
-# і без логотипів: лише назви текстом шрифтом сайту. Правити тут (одне місце для всіх мов); категорії — лише для порядку, на сайті не показуємо.
-# Нова назва латиницею — і в latin_ok глосарію (tools/site/lang/glossary.json), інакше i18nlint лається на zh/ar.
+# «Бренди, з якими працюємо» (Михайло 21.11.2026: «анімаційна лента… 10–20 стандартних компаній з виробництва елементів інтерʼєру»;
+# того ж дня: «залишай всіх, додай ще середній клас; лиши де є, на головну не треба; договори/логотипи поки не треба»).
+# Список і місця затверджено. Угод про партнерство немає, тому без слів «партнер / офіційний / дилер» і без логотипів: лише назви текстом
+# шрифтом сайту. Правити тут (одне місце для всіх мов). Категорія — (преміум, середній клас); на сайті не показуємо: порядок у стрічці —
+# brands_order() (преміум і середній клас чергуються, категорії — по колу). Брендів російського походження не додаємо.
+# Нова назва латиницею — і в glossary.json (однослівна — latin_ok, з кількох слів — latin_names), інакше i18nlint лається на zh/ar.
 BRANDS = (
-    ('меблі', ('Poliform', 'Minotti', 'Molteni&C')),
-    ('фурнітура й плити', ('Blum', 'Egger')),
-    ('освітлення', ('Flos', 'Artemide', 'Delta Light')),
-    ('розетки й електрика', ('Schneider Electric', 'Legrand', 'Jung', 'Gira')),
-    ('сантехніка', ('Grohe', 'Hansgrohe', 'Geberit', 'Villeroy & Boch')),
-    ('техніка', ('Miele', 'Bosch')),
-    ('плитка', ('Porcelanosa', 'Atlas Concorde')),
-    ('фарби', ('Tikkurila',)),
-    ('клімат', ('Daikin',)),
+    ('меблі', ('Poliform', 'Minotti', 'Molteni&C'), ('BoConcept', 'Calligaris')),
+    ('фурнітура й плити', ('Blum', 'Egger'), ('Hettich', 'Häfele', 'GTV')),
+    ('освітлення', ('Flos', 'Artemide', 'Delta Light'), ('Eglo', 'Nowodvorski', 'TK Lighting')),
+    ('розетки й електрика', ('Schneider Electric', 'Legrand', 'Jung', 'Gira'), ('ABB', 'Hager')),
+    ('сантехніка', ('Grohe', 'Hansgrohe', 'Geberit', 'Villeroy & Boch'), ('Ideal Standard', 'Roca', 'Cersanit', 'Kolo')),
+    ('техніка', ('Miele', 'Bosch'), ('Gorenje', 'Electrolux')),
+    ('плитка', ('Porcelanosa', 'Atlas Concorde'), ('Golden Tile', 'Opoczno')),
+    ('підлога', (), ('Quick-Step', 'Tarkett')),
+    ('фарби й суміші', ('Tikkurila',), ('Caparol', 'Ceresit')),
+    ('клімат', ('Daikin',), ()),
 )
+
+
+def _rr(lists):
+    """По колу: перша назва кожної категорії, потім друга… — сусідні назви з різних категорій."""
+    out, i = [], 0
+    while any(i < len(x) for x in lists):
+        out += [x[i] for x in lists if i < len(x)]
+        i += 1
+    return out
+
+
+def brands_order():
+    """Порядок у стрічці: преміум і середній клас чергуються (решта довшого ряду — у кінці), категорії — по колу."""
+    p, m = _rr([c[1] for c in BRANDS]), _rr([c[2] for c in BRANDS])
+    out = [n for pair in zip(p, m) for n in pair]
+    return out + p[len(m):] + m[len(p):]
+
+
 # заголовок і підписи кнопки паузи (data-mq: «пауза|далі» — marquee() бере їх замість «фото»)
 BRANDS_T = {
     'uk': ('Бренди, з якими працюємо', 'Зупинити стрічку брендів', 'Запустити стрічку брендів'),
@@ -318,7 +339,7 @@ def brands(x, lang='uk'):
     """Один ряд назв (без фото, ~0.7 КБ): <ul> у DOM — для читачів екрана й без JS; рух, пауза при наведенні/дотику/фокусі й кнопка ❚❚/▶ —
     marquee() у ui-polish.v1.js (копії назв — aria-hidden, через <template>); reduced-motion — статичний ряд із переносом (sections.v1.css)."""
     h, p0, p1 = BRANDS_T.get(lang) or BRANDS_T['en']
-    li = ''.join(f'<li>{e(n)}</li>' for _, ns in BRANDS for n in ns)
+    li = ''.join(f'<li>{e(n)}</li>' for n in brands_order())
     ul = f'<ul class="xs-bl" tabindex="0" aria-label="{a(h)}" data-mq="{a(p0 + "|" + p1)}">{li}</ul>'
     return wrap(x, f'<h2>{e(x.get("h2") or h)}</h2><div class="xs-brw">{ul}</div>', 'xs-brands')
 

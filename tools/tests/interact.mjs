@@ -956,7 +956,7 @@ for (const [path, w] of [['/about', 1440], ['/about', 402], ['/ar/about', 402], 
   await p.waitForTimeout(900);
   const st = await ul.evaluate(e => ({ li: e.querySelectorAll('li:not(.mq-c)').length, cl: e.querySelectorAll('li.mq-c').length, hid: [...e.querySelectorAll('li.mq-c')].every(x => x.getAttribute('aria-hidden') === 'true'),
     img: e.closest('section').querySelectorAll('img,svg').length, h: e.closest('section').offsetHeight, hs: document.documentElement.scrollWidth - innerWidth, rtl: document.documentElement.dir === 'rtl' }));
-  must(st.li >= 10 && st.li <= 30 && st.cl === st.li && st.hid, 'назви/копії: ' + JSON.stringify(st));
+  must(st.li >= 10 && st.li <= 60 && st.cl === st.li && st.hid, 'назви/копії: ' + JSON.stringify(st));
   must(st.img === 0, 'у стрічці брендів є зображення (лише назви текстом)');
   must(st.hs <= 0, `горизонтальна прокрутка сторінки ${st.hs}px`);
   must(Math.abs(st.h - h0) <= 1, `висота блоку змінилась ${h0}→${st.h}`);

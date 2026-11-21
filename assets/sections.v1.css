@@ -219,4 +219,4 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-brw .mq-ap{top:50%;inset-inline-end:0;margin-top:-1.375rem;background:transparent;color:var(--tx,#EDE8DF)}
 .xs-brw .mq-ap:hover{background:rgba(191,145,72,.12)}
 @media(max-width:767px){.xs-bl>li{font-size:1.3125rem;padding-inline-end:2rem}.xs-bl>li::after{inset-inline-end:.84375rem}}
-@media(prefers-reduced-motion:reduce){.xs-bl{flex-wrap:wrap;overflow:visible}.xs-bl>li{padding-block:0;font-size:1.25rem;line-height:2rem}}
+@media(prefers-reduced-motion:reduce){.xs-bl{flex-wrap:wrap;overflow:visible}.xs-bl>li{padding-block:0;padding-inline-end:1.75rem;font-size:1.125rem;line-height:1.875rem}.xs-bl>li::after{inset-inline-end:.71875rem}}
