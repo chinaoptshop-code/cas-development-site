@@ -7,6 +7,7 @@
  "description": "Einrichtung: was ein Einrichtungsprofi macht, wann sich der eigene Kauf von Möbeln und Licht lohnt und wann ein Team. Wo man spart, plus Checkliste.",
  "lead": "Die Einrichtung ist alles, was eine renovierte Wohnung oder ein Haus zum Zuhause macht: Möbel, Licht, Textilien, Deko, Geräte. Sie können sie selbst übernehmen oder einem Einrichtungsprofi übergeben. Wir erklären, woraus diese Arbeit besteht, wann der eigene Einkauf wirklich spart und wann er zu Mehrkosten und Verzögerungen führt.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/objekteinrichtung",
   "Objekteinrichtung"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was die Einrichtung des Interieurs ist"
+   "Was ist die Einrichtung eines Interieurs?"
   ],
   [
    "p",
@@ -44,7 +45,7 @@
   ],
   [
    "h2",
-   "Was ein Einrichtungsprofi macht: die Phasen"
+   "Was macht ein Einrichtungsprofi, und wie läuft die Arbeit?"
   ],
   [
    "ol",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Selbst einrichten: wann es sich lohnt"
+   "Wann lohnt es sich wirklich, selbst einzurichten?"
   ],
   [
    "p",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "Wann man die Einrichtung einem Team übergeben sollte"
+   "Wann sollte man die Einrichtung einem Team übergeben?"
   ],
   [
    "ul",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Vergleich: selbst oder mit Profi"
+   "Selbst oder mit Profi: Was ist der Unterschied?"
   ],
   [
    "ul",
@@ -153,11 +154,11 @@
   ],
   [
    "h2",
-   "Wie man bei der Einrichtung spart"
+   "Wie spart man bei der Einrichtung?"
   ],
   [
    "p",
-   "Sparen bei der Einrichtung heißt selten, das Billigste zu kaufen. Viel mehr bringen die richtigen Prioritäten und die Reihenfolge der Käufe."
+   "Sparen gelingt mit den richtigen Prioritäten und der richtigen Reihenfolge der Käufe, nicht mit dem Billigsten."
   ],
   [
    "ul",
@@ -186,11 +187,11 @@
   ],
   [
    "h2",
-   "Was die Einrichtung kostet"
+   "Was kostet die Einrichtung einer Wohnung?"
   ],
   [
    "p",
-   "Das Einrichtungsbudget hat zwei Teile: die Kosten der Dinge selbst und die Arbeit für Auswahl, Einkauf, Logistik und Montage. Bei CAS Development kostet die [Möblierung einer Wohnung](/de/einrichtung-schluesselfertig) ab $250 pro m². Für eine 75-m²-Wohnung lautet die Orientierung 75 m² × $250 = $18 750. Die genaue Summe hängt von Spezifikation, Möbelniveau und Zahl der Maßanfertigungen ab. Sind Möbel schon vorhanden oder ziehen mit, sinkt das Budget anteilig — das zeigt die Spezifikation schon vor dem Einkauf."
+   "Bei CAS Development kostet die [Möblierung einer Wohnung](/de/einrichtung-schluesselfertig) ab $250 pro m²; das Einrichtungsbudget umfasst die Kosten der Dinge selbst und die Arbeit für Auswahl, Einkauf, Logistik und Montage. Für eine 75-m²-Wohnung lautet die Orientierung 75 m² × $250 = $18 750. Die genaue Summe hängt von Spezifikation, Möbelniveau und Zahl der Maßanfertigungen ab. Sind Möbel schon vorhanden oder ziehen mit, sinkt das Budget anteilig — das zeigt die Spezifikation schon vor dem Einkauf."
   ],
   [
    "p",

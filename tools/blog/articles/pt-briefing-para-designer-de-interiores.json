@@ -7,6 +7,7 @@
  "description": "Briefing para o designer de interiores: família, divisões, arrumação, instalações, estilo e orçamento a pensar antes. Checklist para preencher antes da reunião.",
  "lead": "O briefing para um designer de interiores é uma descrição curta de como vive e do que espera do novo espaço. Quanto mais preciso, menos alterações à planta e mais depressa o projeto chega ao orçamento. Explicamos o que escrever e deixamos uma checklist que se preenche numa noite.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pt/designer-de-interiores",
   "Designer de interiores"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Para que serve o briefing"
+   "Para que serve o briefing para o designer de interiores?"
   ],
   [
    "p",
-   "O designer não consegue adivinhar que cozinha todas as noites, guarda bicicletas em casa ou trabalha a partir de casa dois dias por semana. Sem isso, a planta sai «média» e depois é refeita: mudam-se tomadas, acrescentam-se roupeiros, troca-se o quarto com o escritório. O briefing evita essas voltas antes do primeiro esboço."
+   "O briefing serve para que a planta corresponda à sua rotina logo à primeira: o designer não consegue adivinhar que cozinha todas as noites, guarda bicicletas em casa ou trabalha a partir de casa dois dias por semana. Sem isso, a planta sai «média» e depois é refeita: mudam-se tomadas, acrescentam-se roupeiros, troca-se o quarto com o escritório. O briefing evita essas voltas antes do primeiro esboço."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Quem vai viver: família e rotinas"
+   "O que escrever sobre a família e as rotinas?"
   ],
   [
    "ul",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Divisão a divisão"
+   "O que escrever sobre cada divisão?"
   ],
   [
    "h3",
@@ -82,11 +83,11 @@
   ],
   [
    "h2",
-   "Estilo e referências"
+   "Como mostrar ao designer o estilo de que gosta?"
   ],
   [
    "p",
-   "Não precisa de saber o nome do estilo. Junte 15–20 interiores de que gosta e alguns de que não gosta. A cada imagem acrescente uma frase: o que gosta exatamente — cor, luz, material, móveis. Indique o que muda consigo da casa atual. Se o estilo ainda não está claro, leia [Design de interiores: por onde começar](/pt/blog/design-interiores-por-onde-comecar)."
+   "Junte 15–20 interiores de que gosta e alguns de que não gosta — não precisa de saber o nome do estilo. A cada imagem acrescente uma frase: o que gosta exatamente — cor, luz, material, móveis. Indique o que muda consigo da casa atual. Se o estilo ainda não está claro, leia [Design de interiores: por onde começar](/pt/blog/design-interiores-por-onde-comecar)."
   ],
   [
    "gallery",
@@ -103,7 +104,7 @@
   ],
   [
    "h2",
-   "Instalações e desejos técnicos"
+   "Que desejos técnicos incluir no briefing?"
   ],
   [
    "ul",
@@ -118,11 +119,11 @@
   ],
   [
    "h2",
-   "Orçamento e prazos"
+   "O briefing deve incluir orçamento e prazos?"
   ],
   [
    "p",
-   "O orçamento faz parte do briefing, não é segredo. Indique um valor aproximado para projeto, remodelação e móveis, ou pelo menos um limite. Como referência, o [projeto de interiores de um apartamento](/pt/design-de-interiores-apartamento) na CAS custa a partir de $30 por m², mínimo $2 500. A remodelação chave na mão começa nos $550 por m²: mão de obra e materiais de base; acabamentos, móveis e eletrodomésticos orçamentam-se à parte. Para 80 m²: 80 m² × $550 = $44 000. Calcule a sua área na [calculadora de remodelação](/pt/calculadora-obras). Indique também a data de mudança: os prazos ficam no contrato."
+   "Sim: o orçamento faz parte do briefing, não é segredo. Indique um valor aproximado para projeto, remodelação e móveis, ou pelo menos um limite. Como referência, o [projeto de interiores de um apartamento](/pt/design-de-interiores-apartamento) na CAS custa a partir de $30 por m², mínimo $2 500. A remodelação chave na mão começa nos $550 por m²: mão de obra e materiais de base; acabamentos, móveis e eletrodomésticos orçamentam-se à parte. Para 80 m²: 80 m² × $550 = $44 000. Calcule a sua área na [calculadora de remodelação](/pt/calculadora-obras). Indique também a data de mudança: os prazos ficam no contrato."
   ],
   [
    "h2",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "O que vem depois"
+   "O que acontece depois do briefing?"
   ],
   [
    "p",

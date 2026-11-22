@@ -7,6 +7,7 @@
  "description": "Contrôle technique d'une rénovation d'appartement : ce qu'il vérifie, réception des travaux cachés, différence avec le suivi du designer, quand il est rentable.",
  "lead": "Le contrôle technique d'une rénovation est utile quand vous ne pouvez pas passer chaque jour sur le chantier ou que vous n'êtes pas sûr de juger la qualité des travaux cachés. Son rôle : repérer une erreur tant qu'elle coûte encore peu à corriger. Voici ce qu'il vérifie, quand il se justifie et comment l'organiser.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/fr/suivi-de-chantier",
   "Suivi du designer et contrôle technique"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Qu'est-ce que le contrôle technique"
+   "Qu'est-ce que le contrôle technique d'une rénovation ?"
   ],
   [
    "p",
@@ -41,7 +42,7 @@
   ],
   [
    "h2",
-   "La différence avec le suivi du designer"
+   "En quoi diffère-t-il du suivi du designer ?"
   ],
   [
    "p",
@@ -68,7 +69,7 @@
   ],
   [
    "h2",
-   "Quand il est particulièrement nécessaire"
+   "Quand le contrôle technique est-il particulièrement nécessaire ?"
   ],
   [
    "ul",
@@ -83,7 +84,7 @@
   ],
   [
    "h2",
-   "Ce qu'il vérifie : checklist des travaux cachés"
+   "Que vérifie le contrôle sur les travaux cachés ?"
   ],
   [
    "h3",
@@ -148,11 +149,11 @@
   ],
   [
    "h2",
-   "Comment le contrôle fait économiser"
+   "Le contrôle technique est-il rentable ?"
   ],
   [
    "p",
-   "L'économie ne vient pas d'un prix de rénovation plus bas, mais de moins de reprises, qui coûtent toujours plus cher que de bien faire du premier coup. Un défaut d'étanchéité vu avant le carrelage se répare localement ; après, il faut démonter la salle de bain. Un mauvais tracé de câble vu avant l'enduit se corrige en minutes ; après, ce sont des saignées dans un mur fini."
+   "Oui, il est rentable : l'économie ne vient pas d'un prix de rénovation plus bas, mais de moins de reprises, qui coûtent toujours plus cher que de bien faire du premier coup. Un défaut d'étanchéité vu avant le carrelage se répare localement ; après, il faut démonter la salle de bain. Un mauvais tracé de câble vu avant l'enduit se corrige en minutes ; après, ce sont des saignées dans un mur fini."
   ],
   [
    "p",
@@ -160,7 +161,7 @@
   ],
   [
    "h2",
-   "Comment l'organiser"
+   "Comment organiser le contrôle technique ?"
   ],
   [
    "ol",
@@ -178,7 +179,7 @@
   ],
   [
    "h2",
-   "Signaux d'alerte"
+   "Quels signaux montrent qu'un contrôle s'impose ?"
   ],
   [
    "ul",
