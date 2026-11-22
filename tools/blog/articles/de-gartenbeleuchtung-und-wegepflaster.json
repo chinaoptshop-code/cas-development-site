@@ -7,6 +7,7 @@
  "description": "Gartenbeleuchtung und Wegepflaster: wie man Wege plant, welche Materialien passen, was man womit beleuchtet und warum Kabel vor dem Pflaster liegen.",
  "lead": "Wege und Licht nutzen Sie auf dem Grundstück jeden Tag. Wir erklären, wie man Gartenbeleuchtung und Wegepflaster gemeinsam plant, welche Materialien sich eignen, was beleuchtet wird und warum das Kabel vor dem Pflaster in die Erde muss.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/de/gartengestaltung",
   "Gartengestaltung und Außenanlagen"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Erst die Wege, dann das Material"
+   "Wo sollten Wege auf dem Grundstück verlaufen?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Wegepflaster: welche Materialien sich eignen"
+   "Welches Material eignet sich für Wegepflaster?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "Gartenbeleuchtung: was man wozu beleuchtet"
+   "Was beleuchtet man im Garten und wozu?"
   ],
   [
    "p",
@@ -93,7 +94,7 @@
   ],
   [
    "h2",
-   "Warum das Kabel vor dem Pflaster liegt"
+   "Warum liegt das Kabel vor dem Pflaster?"
   ],
   [
    "p",
@@ -119,7 +120,7 @@
   ],
   [
    "h2",
-   "Was Beleuchtung und Pflaster kosten"
+   "Was kosten Beleuchtung und Pflaster?"
   ],
   [
    "p",
