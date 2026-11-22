@@ -7,6 +7,7 @@
  "description": "Supervisión técnica de la reforma de un piso: qué revisa, recepción de trabajos ocultos, en qué se diferencia de la de autor y cuándo compensa.",
  "lead": "La supervisión técnica de una reforma hace falta cuando no puedes estar en obra a diario o no estás seguro de poder juzgar la calidad de los trabajos ocultos. Su tarea es detectar un error mientras corregirlo aún es barato. Explicamos qué revisa, cuándo tiene sentido y cómo organizarla.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/es/supervision-de-obra",
   "Supervisión del diseñador y técnica"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Qué es la supervisión técnica"
+   "¿Qué es la supervisión técnica de una reforma?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "En qué se diferencia de la supervisión del diseñador"
+   "¿En qué se diferencia de la supervisión del diseñador?"
   ],
   [
    "p",
@@ -72,7 +73,7 @@
   ],
   [
    "h2",
-   "Cuándo es especialmente necesaria"
+   "¿Cuándo es especialmente necesaria la supervisión técnica?"
   ],
   [
    "ul",
@@ -91,11 +92,11 @@
   ],
   [
    "h2",
-   "Qué revisa: checklist de trabajos ocultos"
+   "¿Qué revisa la supervisión en los trabajos ocultos?"
   ],
   [
    "p",
-   "Estos son los trabajos más importantes de comprobar antes de cerrarlos. Puedes usar la lista incluso sin supervisor, comparándola con los informes fotográficos del contratista."
+   "Revisa sobre todo los trabajos ocultos: estos son los más importantes de comprobar antes de cerrarlos. Puedes usar la lista incluso sin supervisor, comparándola con los informes fotográficos del contratista."
   ],
   [
    "h3",
@@ -164,11 +165,11 @@
   ],
   [
    "h2",
-   "Cómo ahorra dinero la supervisión técnica"
+   "¿Compensa la supervisión técnica y cómo ahorra dinero?"
   ],
   [
    "p",
-   "El ahorro no viene de un precio de reforma más bajo, sino de menos trabajos rehechos, que siempre cuestan más que hacerlo bien a la primera."
+   "Sí, compensa: el ahorro no viene de un precio de reforma más bajo, sino de menos trabajos rehechos, que siempre cuestan más que hacerlo bien a la primera."
   ],
   [
    "ul",
@@ -185,7 +186,7 @@
   ],
   [
    "h2",
-   "Cómo organizar la supervisión técnica"
+   "¿Cómo organizar la supervisión técnica?"
   ],
   [
    "ol",
@@ -203,7 +204,7 @@
   ],
   [
    "h2",
-   "Obra nueva o vivienda de segunda mano"
+   "¿Qué cambia en obra nueva y en vivienda de segunda mano?"
   ],
   [
    "p",
@@ -215,7 +216,7 @@
   ],
   [
    "h2",
-   "Señales de alarma"
+   "¿Qué señales indican que ya hace falta supervisión?"
   ],
   [
    "ul",
