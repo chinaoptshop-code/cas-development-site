@@ -140,7 +140,7 @@
 | ozdoba/liustra-liniina-latunna-zi-sklianymy-dyskamy-584.html | other | 58.7 | 15.4 | 32.4 | 0.7 | 14 | 347 |
 | ozdoba/liustra-liniina-led-z-arkoiu-minimalizm-585.html | other | 58.7 | 15.4 | 32.4 | 0.7 | 14 | 347 |
 | ozdoba/lizhko-vulychne-kruhle-z-navisom-pletinnia-543.html | other | 58.7 | 15.4 | 32.4 | 0.7 | 14 | 345 |
-| ozdoba/myika-robocha-stantsiia-z-doshkoiu-i-518.html | other | 58.7 | 15.3 | 32.4 | 0.7 | 14 | 342 |
+| ozdoba/myika-robocha-stantsiia-z-doshkoiu-i-518.html | other | 58.7 | 15.4 | 32.4 | 0.7 | 14 | 342 |
 | ozdoba/obihrivach-vulychnyi-hazovyi-piramida-425.html | other | 58.7 | 15.4 | 32.4 | 0.7 | 14 | 345 |
 | ozdoba/parovyi-kamin-vstavka-3d-z-pultom-514.html | other | 58.7 | 15.4 | 32.4 | 0.7 | 14 | 348 |
 | ozdoba/perhola-bioklimatychna-aliuminiieva-z-lameliamy-178.html | other | 58.7 | 15.6 | 32.4 | 0.7 | 14 | 344 |
@@ -1240,7 +1240,7 @@
 | fr/design-renovation-ivano-frankivsk.html | land | 38.4 | 10.2 | 9.1 | 0.5 | 5 | 390 |
 | fr/maison-modulaire.html | land | 38.4 | 10.5 | 9.1 | 0.5 | 5 | 413 |
 | pl/projekt-biura-open-space.html | land | 38.4 | 10.8 | 9.1 | 0.5 | 5 | 426 |
-| proekty/a-frame-house.html | land | 38.4 | 8.4 | 1.9 | 0.5 | 0 | 341 |
+| proekty/a-frame-house.html | land | 38.4 | 8.3 | 1.9 | 0.5 | 0 | 341 |
 | zh/apartment-renovation-montreal-house.html | land | 38.4 | 10.8 | 9.1 | 0.5 | 5 | 420 |
 | zh/apartment-renovation-podil-hrad.html | land | 38.4 | 11.0 | 9.1 | 0.5 | 5 | 420 |
 | zh/apartment-renovation-triiinity.html | land | 38.4 | 11.0 | 9.1 | 0.5 | 5 | 419 |
@@ -1484,8 +1484,8 @@
 | pl/projektowanie-remont-dniepr.html | land | 37.0 | 10.2 | 9.1 | 0.5 | 5 | 390 |
 | pl/projektowanie-remont-fastow.html | land | 37.0 | 10.3 | 9.1 | 0.5 | 5 | 396 |
 | pl/projektowanie-remont-lwow.html | land | 37.0 | 10.4 | 9.1 | 0.5 | 5 | 389 |
-| pl/projektowanie-remont-odessa.html | land | 37.0 | 10.4 | 9.1 | 0.5 | 5 | 388 |
-| pl/projektowanie-remont-tarnopol.html | land | 37.0 | 10.2 | 9.1 | 0.5 | 5 | 392 |
+| pl/projektowanie-remont-odessa.html | land | 37.0 | 10.3 | 9.1 | 0.5 | 5 | 388 |
+| pl/projektowanie-remont-tarnopol.html | land | 37.0 | 10.3 | 9.1 | 0.5 | 5 | 392 |
 | pl/projektowanie-remont-wyszniewe.html | land | 37.0 | 10.3 | 9.1 | 0.5 | 5 | 395 |
 | en/apartment-interior-design.html | land | 36.9 | 9.5 | 9.1 | 0.5 | 5 | 410 |
 | en/design-renovation-odesa.html | land | 36.9 | 9.9 | 9.1 | 0.5 | 5 | 393 |
