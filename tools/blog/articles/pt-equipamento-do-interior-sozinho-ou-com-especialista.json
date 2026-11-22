@@ -7,6 +7,7 @@
  "description": "Equipamento do interior: o que faz o especialista, quando compensa comprar móveis e iluminação sozinho e quando entregar a uma equipa. Onde poupar e checklist.",
  "lead": "O equipamento do interior é tudo o que transforma um apartamento ou uma casa remodelados num lar: móveis, iluminação, têxteis, decoração, eletrodomésticos. Pode tratar disso sozinho ou entregar a um especialista. Explicamos em que consiste este trabalho, quando comprar por conta própria poupa mesmo e quando acaba em gastos extra e atrasos.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pt/equipamento-chave-na-mao",
   "Equipamento chave na mão"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "O que é o equipamento do interior"
+   "O que é o equipamento do interior?"
   ],
   [
    "p",
@@ -44,7 +45,7 @@
   ],
   [
    "h2",
-   "O que faz o especialista: etapas do trabalho"
+   "O que faz o especialista e como decorre o trabalho?"
   ],
   [
    "ol",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Equipar sozinho: quando compensa"
+   "Quando é que equipar sozinho compensa mesmo?"
   ],
   [
    "p",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "Quando entregar o equipamento a uma equipa"
+   "Quando entregar o equipamento a uma equipa?"
   ],
   [
    "ul",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Comparação: sozinho ou com especialista"
+   "Sozinho ou com especialista: qual é a diferença?"
   ],
   [
    "ul",
@@ -153,11 +154,11 @@
   ],
   [
    "h2",
-   "Como poupar no equipamento"
+   "Como poupar no equipamento do interior?"
   ],
   [
    "p",
-   "Poupar no equipamento raramente é comprar o mais barato. Dão muito mais as prioridades certas e a ordem das compras."
+   "Poupa-se com as prioridades certas e a ordem das compras, não comprando o mais barato."
   ],
   [
    "ul",
@@ -186,11 +187,11 @@
   ],
   [
    "h2",
-   "Quanto custa o equipamento"
+   "Quanto custa equipar um apartamento?"
   ],
   [
    "p",
-   "O orçamento do equipamento tem duas partes: o custo dos próprios artigos e o trabalho de seleção, compra, logística e montagem. Na CAS Development o [mobiliário de um apartamento](/pt/mobiliario-chave-na-mao) custa a partir de $250 por m². Para um apartamento de 75 m², a referência é 75 m² × $250 = $18 750. O valor exato depende da especificação, da gama dos móveis e do número de peças por medida. Se parte dos móveis já existe ou vem consigo, o orçamento baixa na proporção — vê-se na especificação antes de começar as compras."
+   "Na CAS Development o [mobiliário de um apartamento](/pt/mobiliario-chave-na-mao) custa a partir de $250 por m²; o orçamento do equipamento inclui o custo dos próprios artigos e o trabalho de seleção, compra, logística e montagem. Para um apartamento de 75 m², a referência é 75 m² × $250 = $18 750. O valor exato depende da especificação, da gama dos móveis e do número de peças por medida. Se parte dos móveis já existe ou vem consigo, o orçamento baixa na proporção — vê-se na especificação antes de começar as compras."
   ],
   [
    "p",

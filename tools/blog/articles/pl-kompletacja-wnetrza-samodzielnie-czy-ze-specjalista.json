@@ -7,6 +7,7 @@
  "description": "Kompletacja wnętrza: co robi specjalista, kiedy opłaca się kupować meble i oświetlenie samemu, a kiedy zlecić to zespołowi. Gdzie realnie oszczędzić i lista.",
  "lead": "Kompletacja wnętrza to wszystko, co zmienia wyremontowane mieszkanie czy dom w miejsce do życia: meble, światło, tekstylia, dekoracje, AGD. Można wziąć ją na siebie albo zlecić specjaliście. Wyjaśniamy, z czego składa się ta praca, kiedy samodzielne zakupy naprawdę oszczędzają, a kiedy kończą się przepłatami i opóźnieniami.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/kompletacja-wnetrz",
   "Kompletacja wnętrz pod klucz"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Czym jest kompletacja wnętrza"
+   "Czym jest kompletacja wnętrza?"
   ],
   [
    "p",
@@ -44,7 +45,7 @@
   ],
   [
    "h2",
-   "Co robi specjalista: etapy pracy"
+   "Co robi specjalista i jak przebiega praca?"
   ],
   [
    "ol",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Samodzielna kompletacja: kiedy się opłaca"
+   "Kiedy samodzielna kompletacja naprawdę się opłaca?"
   ],
   [
    "p",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "Kiedy warto zlecić kompletację zespołowi"
+   "Kiedy warto zlecić kompletację zespołowi?"
   ],
   [
    "ul",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Porównanie: samodzielnie czy ze specjalistą"
+   "Samodzielnie czy ze specjalistą: na czym polega różnica?"
   ],
   [
    "ul",
@@ -153,11 +154,11 @@
   ],
   [
    "h2",
-   "Jak zaoszczędzić na kompletacji"
+   "Jak zaoszczędzić na kompletacji wnętrza?"
   ],
   [
    "p",
-   "Oszczędność w kompletacji rzadko polega na kupowaniu najtaniej. Dużo więcej dają właściwe priorytety i kolejność zakupów."
+   "Oszczędzać pomagają właściwe priorytety i kolejność zakupów, a nie szukanie najtańszych rzeczy."
   ],
   [
    "ul",
@@ -186,11 +187,11 @@
   ],
   [
    "h2",
-   "Ile kosztuje kompletacja"
+   "Ile kosztuje kompletacja mieszkania?"
   ],
   [
    "p",
-   "Budżet kompletacji składa się z dwóch części: kosztu samych rzeczy i pracy przy doborze, zakupach, logistyce i montażu. W CAS Development [umeblowanie mieszkania](/pl/umeblowanie-pod-klucz) — od $250 za m². Dla mieszkania 75 m² orientacyjnie: 75 m² × $250 = $18 750. Dokładna kwota zależy od specyfikacji, klasy mebli i liczby pozycji na wymiar. Jeśli część mebli już jest lub przyjeżdża, budżet maleje proporcjonalnie — widać to w specyfikacji jeszcze przed startem zakupów."
+   "W CAS Development [umeblowanie mieszkania](/pl/umeblowanie-pod-klucz) kosztuje od $250 za m²; budżet kompletacji obejmuje koszt samych rzeczy i pracę przy doborze, zakupach, logistyce i montażu. Dla mieszkania 75 m² orientacyjnie: 75 m² × $250 = $18 750. Dokładna kwota zależy od specyfikacji, klasy mebli i liczby pozycji na wymiar. Jeśli część mebli już jest lub przyjeżdża, budżet maleje proporcjonalnie — widać to w specyfikacji jeszcze przed startem zakupów."
   ],
   [
    "p",
