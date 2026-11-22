@@ -357,7 +357,7 @@ cas-develop.com*
 | Координати | 50.4335971, 30.5131241 |
 | Телефон | +380 97 866 77 55 (у полях без пробілів: +380978667755) |
 | Сайт | https://cas-develop.com/ (у GBP: `https://cas-develop.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp`; у каталогах: `?utm_source=<каталог>&utm_medium=referral&utm_campaign=citations`) |
-| E-mail | china.opt.shop@gmail.com (так зараз на сайті). **Рекомендація:** завести поштову скриньку на домені, наприклад info@cas-develop.com, і використати її ще до масової реєстрації, щоб потім не міняти в 40 місцях |
+| E-mail | info@cas-develop.com (на сайті з 22.11.2026; пересилання Cloudflare Email Routing на пошту власника). Використовувати цю адресу в усіх каталогах і профілях |
 | Рік заснування | 2016 |
 | Години | **як у Google Business Profile** (скопіювати звідти) |
 | Зона обслуговування | Київ і Київська область, уся Україна (ремонт і будівництво в усіх областях), Європа |
