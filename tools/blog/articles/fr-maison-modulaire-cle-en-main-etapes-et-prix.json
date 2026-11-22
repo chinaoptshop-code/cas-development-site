@@ -7,6 +7,7 @@
  "description": "Maison modulaire clé en main à Kyiv et sa région : à qui elle convient, étapes du projet à l’emménagement et contenu du prix. Clé en main dès $1 100/m².",
  "lead": "Une maison modulaire clé en main s’assemble à partir de blocs prêts : l’essentiel du travail se fait en usine, et il reste sur le terrain les fondations, le montage et les raccordements. Nous expliquons à qui convient cette technologie, comment la construction se déroule étape par étape, ce que comprend le prix clé en main et ce qui est chiffré à part.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/fr/maison-modulaire",
   "Maison modulaire"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Qu’est-ce qu’une maison modulaire"
+   "Qu'est-ce qu'une maison modulaire ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "À qui convient une maison modulaire"
+   "À qui convient une maison modulaire ?"
   ],
   [
    "ul",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Les étapes : du projet à l’emménagement"
+   "Quelles étapes du projet à l'emménagement ?"
   ],
   [
    "ol",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "Ce que comprend le prix clé en main"
+   "Que comprend le prix clé en main ?"
   ],
   [
    "p",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "Combien coûte une maison modulaire clé en main"
+   "Combien coûte une maison modulaire clé en main ?"
   ],
   [
    "p",
@@ -123,7 +124,7 @@
   ],
   [
    "h2",
-   "Modulaire, ossature bois ou béton cellulaire"
+   "Modulaire, ossature bois ou béton cellulaire ?"
   ],
   [
    "p",

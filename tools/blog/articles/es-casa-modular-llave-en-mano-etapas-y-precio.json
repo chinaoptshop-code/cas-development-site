@@ -7,6 +7,7 @@
  "description": "Casa modular llave en mano en Kiev y su región: para quién es, etapas del proyecto a la mudanza y qué incluye el precio. Llave en mano desde $1 100/m².",
  "lead": "Una casa modular llave en mano se monta con bloques prefabricados: la mayor parte del trabajo se hace en fábrica, y en la parcela quedan la cimentación, el montaje y las conexiones. Te explicamos a quién le conviene esta tecnología, cómo avanza la construcción por etapas, qué incluye el precio llave en mano y qué se calcula aparte.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/es/casa-modular",
   "Casa modular"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Qué es una casa modular"
+   "¿Qué es una casa modular?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "A quién le conviene una casa modular"
+   "¿A quién le conviene una casa modular?"
   ],
   [
    "ul",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Etapas: del proyecto a la mudanza"
+   "¿Qué etapas hay del proyecto a la mudanza?"
   ],
   [
    "ol",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "Qué incluye el precio llave en mano"
+   "¿Qué incluye el precio llave en mano?"
   ],
   [
    "p",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta una casa modular llave en mano"
+   "¿Cuánto cuesta una casa modular llave en mano?"
   ],
   [
    "p",
@@ -123,7 +124,7 @@
   ],
   [
    "h2",
-   "Modular, de entramado ligero o de hormigón celular"
+   "¿Modular, entramado o hormigón celular?"
   ],
   [
    "p",

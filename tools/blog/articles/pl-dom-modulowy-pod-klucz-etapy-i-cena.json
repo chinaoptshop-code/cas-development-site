@@ -7,6 +7,7 @@
  "description": "Dom modułowy pod klucz w Kijowie i okolicach: dla kogo, etapy od projektu do zamieszkania i co wchodzi w cenę. Pod klucz — od $1 100/m².",
  "lead": "Dom modułowy pod klucz składa się z gotowych bloków: większość prac wykonuje się w hali, a na działce zostają fundament, montaż i połączenia. Wyjaśniamy, komu pasuje ta technologia, jak przebiega budowa etap po etapie, co wchodzi w cenę pod klucz, a co liczy się osobno.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pl/dom-modulowy",
   "Dom modułowy"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Czym jest dom modułowy"
+   "Czym jest dom modułowy?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Komu pasuje dom modułowy"
+   "Dla kogo jest dom modułowy?"
   ],
   [
    "ul",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Etapy: od projektu do zamieszkania"
+   "Jakie są etapy od projektu do zamieszkania?"
   ],
   [
    "ol",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "Co wchodzi w cenę pod klucz"
+   "Co obejmuje cena pod klucz?"
   ],
   [
    "p",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje dom modułowy pod klucz"
+   "Ile kosztuje dom modułowy pod klucz?"
   ],
   [
    "p",
@@ -123,7 +124,7 @@
   ],
   [
    "h2",
-   "Modułowy, szkieletowy czy z betonu komórkowego"
+   "Modułowy, szkieletowy czy z betonu komórkowego?"
   ],
   [
    "p",

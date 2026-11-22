@@ -7,6 +7,7 @@
  "description": "Modulhaus schlüsselfertig in Kyjiw und Umgebung: für wen es passt, die Phasen von der Planung bis zum Einzug und was im Preis enthalten ist. Ab $1 100/m².",
  "lead": "Ein schlüsselfertiges Modulhaus wird aus fertigen Raumzellen zusammengesetzt: Der Großteil der Arbeit erfolgt im Werk, auf dem Grundstück bleiben Fundament, Montage und Anschlüsse. Wir erklären, für wen diese Bauweise passt, wie der Bau Phase für Phase abläuft, was im schlüsselfertigen Preis enthalten ist und was separat berechnet wird.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/de/modulhaus",
   "Modulhaus"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was ein Modulhaus ist"
+   "Was ist ein Modulhaus?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Für wen ein Modulhaus passt"
+   "Für wen eignet sich ein Modulhaus?"
   ],
   [
    "ul",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Phasen: von der Planung bis zum Einzug"
+   "Welche Phasen gibt es bis zum Einzug?"
   ],
   [
    "ol",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "Was im schlüsselfertigen Preis enthalten ist"
+   "Was ist im schlüsselfertigen Preis enthalten?"
   ],
   [
    "p",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "Was ein schlüsselfertiges Modulhaus kostet"
+   "Was kostet ein schlüsselfertiges Modulhaus?"
   ],
   [
    "p",
@@ -123,7 +124,7 @@
   ],
   [
    "h2",
-   "Modulhaus, Holzrahmen oder Porenbeton"
+   "Modulhaus, Holzrahmen oder Porenbeton?"
   ],
   [
    "p",
