@@ -140,6 +140,17 @@ def price_fmt(t, lang=None):
 
 _PR_ATTR = re.compile(r'(\s(?:alt|title|aria-label|content|data-xs)=")([^"]*\$[^"]*)(")')
 
+# ar (RTL): «$2 500» — в ізоляті LTR (U+2066 … U+2069), інакше алгоритм bidi після арабських літер ставить «$» праворуч
+# від числа («2 500$»). Лише видимий текст <body> і data-xs плиток (content:attr()); title/meta/alt/JSON-LD — без ізоляції.
+# Те саме, що iso() у /assets/calc.v1.js; ідемпотентно (старі ізоляти прибираємо й ставимо заново).
+_ISO_NUM = r'\d(?:[\d\u202f\u00a0,.]*\d)?'
+_ISO_RX = re.compile(r'\$' + _ISO_NUM + r'(?:[–-]\$?' + _ISO_NUM + ')?')
+
+
+def price_iso(t):
+    t = t.replace('\u2066', '').replace('\u2069', '')
+    return _ISO_RX.sub(lambda m: '\u2066' + m.group(0) + '\u2069', t) if '$' in t else t
+
 
 def prices_all(s, lang=None):
     """Формат цін поза текстом <body>: <title>, атрибути (meta description, alt, data-xs…), JSON-LD."""
@@ -148,9 +159,14 @@ def prices_all(s, lang=None):
     s = re.sub(r'(<title>)(.*?)(</title>)', lambda m: m.group(1) + price_fmt(m.group(2), lang) + m.group(3), s, count=1, flags=re.S)
     s = re.sub(r'<script type="application/ld\+json">.*?</script>|<script\b.*?</script>|<style\b.*?</style>|<!--.*?-->|<[a-zA-Z][^<>]*\$[^<>]*>',
                lambda m: price_fmt(m.group(0), lang) if m.group(0).startswith('<script type="application/ld+json">')
-               else _PR_ATTR.sub(lambda a: a.group(1) + price_fmt(a.group(2), lang) + a.group(3), m.group(0))
+               else _PR_ATTR.sub(lambda a: a.group(1) + _attr_price(a, lang) + a.group(3), m.group(0))
                if m.group(0)[1:2].isalpha() and not m.group(0).startswith(('<script', '<style')) else m.group(0), s, flags=re.S)
     return s
+
+
+def _attr_price(a, lang):
+    t = price_fmt(a.group(2), lang)
+    return price_iso(t) if lang == 'ar' and a.group(1).endswith('data-xs="') else t
 
 
 def _nb_text(t, lang=None):
@@ -179,6 +195,8 @@ def nbsp_prices(s, lang=None):
             x = _nb_text(x, lang)
             if prev != '<span class="nw">':
                 x = _NB_RANGE.sub(lambda r: '<span class="nw">' + r.group(1) + '</span>', x)
+            if lang == 'ar':
+                x = price_iso(x)
         parts.append(x)
         if m:  # тег, коментар або цілий блок <script>/<style>/… — без змін
             parts.append(m.group(0))

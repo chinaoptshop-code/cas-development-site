@@ -125,7 +125,7 @@ FALLBACK = 'dm'
 
 
 def plain(t):
-    t = re.sub(r'<[^>]+>', ' ', t)
+    t = re.sub(r'<[^>]+>', ' ', t).replace('\u2066', '').replace('\u2069', '')  # ізоляти цін ar (chrome.price_iso)
     return re.sub(r'\s+', ' ', html.unescape(t).replace(' ', ' ')).strip().lower()
 
 
