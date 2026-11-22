@@ -92,6 +92,10 @@ def block(lang):
 
 def apply(s, lang):
     date = CK[lang][0]
+    norm = lambda x: x.replace('\u00a0', ' ').replace('\u202f', ' ')  # noqa: E731 — нерозривні пробіли ставить chrome.apply()
+    cur = BLOCK.search(s)
+    if cur and norm(cur.group(0)) == norm(block(lang)):
+        return re.sub(r'(<p class="date">)[^<]*(</p>)', lambda m: m.group(1) + date + m.group(2), s, count=1)
     s = BLOCK.sub('', s)
     i = s.find('<main')
     hs = [m.start() for m in H2.finditer(s, i)]

@@ -8,7 +8,7 @@
 .btoc{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:8px;margin:0 0 32px}
 .btoc a{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--ln,rgba(191,145,72,.22));padding:12px 14px;text-decoration:none;min-height:44px;line-height:1.35;font-size:var(--fs-small)}
 .btoc a:hover,.btoc a:focus-visible{border-color:var(--ac,#BF9148)}
-.btoc b{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:1.25em;color:var(--ac,#BF9148);line-height:1}
+.btoc b{font-family:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;font-weight:400;font-size:1.25em;color:var(--ac,#BF9148);line-height:1;flex:none}
 /* телефон: зміст-плитки у 2 колонки (11 плиток в одну колонку займали ~1,5 екрана до першого розділу) */
 @media (max-width:599px){.btoc{grid-template-columns:1fr 1fr;gap:6px}.btoc a{padding:10px 10px;gap:8px;overflow-wrap:anywhere;hyphens:auto}}
 .bsec{scroll-margin-top:84px}
