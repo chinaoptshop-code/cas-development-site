@@ -7,6 +7,7 @@
  "description": "Drenagem e rega automática do terreno: quando drenar, que sistemas existem, como dividir a rega em zonas e porque tudo vai antes da calçada e da relva.",
  "lead": "Num terreno, a água ou está a mais ou falta — e muitas vezes as duas coisas, em meses diferentes. Explicamos quando é precisa drenagem, como funciona a rega automática e porque ambos os sistemas se instalam antes da relva e dos caminhos.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pt/arquitetura-paisagista",
   "Arquitetura paisagista e arranjo de terrenos"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Como perceber que o terreno precisa de drenagem"
+   "Como perceber que o terreno precisa de drenagem?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Que sistemas de drenagem existem"
+   "Que sistemas de drenagem existem?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Rega automática: de que é composta"
+   "De que é composta a rega automática?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Porque a drenagem e a rega vêm antes da relva"
+   "Porque vêm a drenagem e a rega antes da relva?"
   ],
   [
    "p",
@@ -118,7 +119,7 @@
   ],
   [
    "h2",
-   "Manutenção dos sistemas"
+   "Como fazer a manutenção da drenagem e da rega?"
   ],
   [
    "p",
@@ -130,7 +131,7 @@
   ],
   [
    "h2",
-   "Quanto custam a drenagem e a rega"
+   "Quanto custam a drenagem e a rega?"
   ],
   [
    "p",

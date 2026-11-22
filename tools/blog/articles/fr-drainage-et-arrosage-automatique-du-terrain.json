@@ -7,6 +7,7 @@
  "description": "Drainage et arrosage automatique : quand drainer, quels systèmes choisir, comment découper l'arrosage en zones et pourquoi tout se pose avant le gazon.",
  "lead": "Sur un terrain, l'eau est soit en excès, soit en manque — et souvent les deux, selon les mois. Nous expliquons quand un drainage est nécessaire, comment fonctionne l'arrosage automatique et pourquoi les deux systèmes se posent avant le gazon et les allées.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/fr/architecture-paysagere",
   "Architecture paysagère et aménagement de terrain"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Comment savoir si le terrain a besoin d'un drainage"
+   "Comment savoir si le terrain a besoin d'un drainage ?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Les différents systèmes de drainage"
+   "Quels systèmes de drainage existe-t-il ?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Arrosage automatique : de quoi il se compose"
+   "De quoi se compose un arrosage automatique ?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Pourquoi drainage et arrosage passent avant le gazon"
+   "Pourquoi drainage et arrosage passent-ils avant le gazon ?"
   ],
   [
    "p",
@@ -118,7 +119,7 @@
   ],
   [
    "h2",
-   "Entretien des systèmes"
+   "Comment entretenir drainage et arrosage ?"
   ],
   [
    "p",
@@ -130,7 +131,7 @@
   ],
   [
    "h2",
-   "Combien coûtent drainage et arrosage"
+   "Combien coûtent drainage et arrosage ?"
   ],
   [
    "p",

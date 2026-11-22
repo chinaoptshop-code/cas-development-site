@@ -7,6 +7,7 @@
  "description": "Drenaż i automatyczne nawadnianie działki: kiedy potrzebny jest drenaż, jakie są systemy, jak podzielić podlewanie na strefy i czemu przed trawnikiem.",
  "lead": "Wody na działce bywa albo za dużo, albo za mało — a często jedno i drugie w różnych miesiącach. Wyjaśniamy, kiedy potrzebny jest drenaż, jak działa automatyczne nawadnianie i dlaczego oba systemy układa się przed trawnikiem i ścieżkami.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektowanie-ogrodow",
   "Projektowanie ogrodów i zagospodarowanie działki"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Jak rozpoznać, że działka potrzebuje drenażu"
+   "Jak rozpoznać, że działka potrzebuje drenażu?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Jakie są systemy drenażowe"
+   "Jakie są systemy drenażowe?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Automatyczne nawadnianie: z czego się składa"
+   "Z czego składa się automatyczne nawadnianie?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Dlaczego drenaż i nawadnianie robi się przed trawnikiem"
+   "Dlaczego drenaż i nawadnianie robi się przed trawnikiem?"
   ],
   [
    "p",
@@ -118,7 +119,7 @@
   ],
   [
    "h2",
-   "Obsługa systemów"
+   "Jak serwisować drenaż i nawadnianie?"
   ],
   [
    "p",
@@ -130,7 +131,7 @@
   ],
   [
    "h2",
-   "Ile kosztują drenaż i nawadnianie"
+   "Ile kosztują drenaż i nawadnianie?"
   ],
   [
    "p",

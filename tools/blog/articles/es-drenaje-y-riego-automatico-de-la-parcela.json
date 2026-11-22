@@ -7,6 +7,7 @@
  "description": "Drenaje y riego automático de la parcela: cuándo hace falta drenar, qué sistemas hay, cómo se zonifica el riego y por qué va antes del césped.",
  "lead": "En una parcela el agua sobra o falta, y a menudo ambas cosas en distintos meses. Explicamos cuándo hace falta drenaje, cómo funciona el riego automático y por qué los dos sistemas se instalan antes del césped y los caminos.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/es/paisajismo",
   "Paisajismo y urbanización de parcelas"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Cómo saber si la parcela necesita drenaje"
+   "¿Cómo saber si la parcela necesita drenaje?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Qué sistemas de drenaje existen"
+   "¿Qué sistemas de drenaje existen?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Riego automático: de qué se compone"
+   "¿De qué se compone el riego automático?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Por qué el drenaje y el riego van antes del césped"
+   "¿Por qué el drenaje y el riego van antes del césped?"
   ],
   [
    "p",
@@ -118,7 +119,7 @@
   ],
   [
    "h2",
-   "Mantenimiento de los sistemas"
+   "¿Cómo se mantienen el drenaje y el riego?"
   ],
   [
    "p",
@@ -130,7 +131,7 @@
   ],
   [
    "h2",
-   "Cuánto cuestan el drenaje y el riego"
+   "¿Cuánto cuestan el drenaje y el riego?"
   ],
   [
    "p",
