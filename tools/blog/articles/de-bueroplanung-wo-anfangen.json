@@ -5,8 +5,9 @@
  "title": "Büroplanung: wo anfangen — Briefing, Grundriss und Budget",
  "seo_title": "Büroplanung: wo anfangen — Briefing, Grundriss, Budget",
  "description": "Büroplanung: wo anfangen — Team-Briefing, Zonen, Stil und Marke, was ein Büro-Designprojekt umfasst und was es kostet (ab $30/m², mind. $2 500).",
- "lead": "Büroplanung — wo fangen Sie an, wenn Sie zum ersten Mal Räume für Ihr Team einrichten? Wir erklären die Reihenfolge: Briefing, Grundriss, Stil und Marke, Unterlagen und Budget, damit das Büro für Mitarbeitende und Kunden funktioniert.",
+ "lead": "Büroplanung beginnt nicht mit Bildern, sondern mit einem Briefing und einem Grundriss, der zur Arbeitsweise des Teams passt – auch wenn Sie zum ersten Mal Räume einrichten. Wir erklären die Reihenfolge: Briefing, Grundriss, Stil und Marke, Unterlagen und Budget, damit das Büro für Mitarbeitende und Kunden funktioniert.",
  "date": "2026-10-26",
+ "modified": "2026-11-22",
  "service": [
   "/de/bueroplanung",
   "Büroplanung und Büroumbau in Kyjiw"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Büroplanung: wo anfangen"
+   "Womit beginnt die Büroplanung?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "Das Briefing: welche Antworten vorbereiten"
+   "Welche Antworten sollten Sie für das Briefing vorbereiten?"
   ],
   [
    "ul",
@@ -43,7 +44,7 @@
   ],
   [
    "h2",
-   "Grundriss: Zonen und Wege"
+   "Wie plant man Zonen und Wege im Büro?"
   ],
   [
    "p",
@@ -57,7 +58,7 @@
   ],
   [
    "h2",
-   "Stil und Marke im Raum"
+   "Wie bringt man Stil und Marke des Unternehmens in den Raum?"
   ],
   [
    "p",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "Was ein Büro-Designprojekt umfasst"
+   "Was umfasst ein Büro-Designprojekt?"
   ],
   [
    "ul",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Fehler, die Sie vermeiden sollten"
+   "Welche Fehler sollte man bei der Büroplanung vermeiden?"
   ],
   [
    "ul",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Was Büroplanung kostet"
+   "Was kostet Bürodesign?"
   ],
   [
    "p",

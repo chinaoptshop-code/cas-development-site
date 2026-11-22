@@ -5,8 +5,9 @@
  "title": "Projekt biura: od czego zacząć — brief, układ i budżet",
  "seo_title": "Projekt biura: od czego zacząć — brief, układ, budżet",
  "description": "Projekt biura: od czego zacząć — brief zespołu, strefy, styl i marka, co obejmuje projekt biura i ile kosztuje (od $30/m², min. $2 500).",
- "lead": "Projekt biura — od czego zacząć, jeśli po raz pierwszy urządzasz przestrzeń dla zespołu? Wyjaśniamy kolejność: brief, układ, styl i marka, dokumentacja i budżet, żeby biuro działało dla ludzi i dla klientów.",
+ "lead": "Projekt biura zaczyna się nie od obrazków, lecz od briefu i układu dopasowanego do tego, jak będzie pracował zespół — nawet jeśli urządzasz przestrzeń po raz pierwszy. Wyjaśniamy kolejność: brief, układ, styl i marka, dokumentacja i budżet, żeby biuro działało dla ludzi i dla klientów.",
  "date": "2026-10-26",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektowanie-biur",
   "Projekt i remont biura w Kijowie"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Projekt biura: od czego zacząć"
+   "Od czego zacząć projekt biura?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "Brief: jakie odpowiedzi przygotować"
+   "Jakie odpowiedzi przygotować do briefu?"
   ],
   [
    "ul",
@@ -43,7 +44,7 @@
   ],
   [
    "h2",
-   "Układ: strefy i ciągi komunikacyjne"
+   "Jak zaplanować strefy i trasy w biurze?"
   ],
   [
    "p",
@@ -57,7 +58,7 @@
   ],
   [
    "h2",
-   "Styl i marka w przestrzeni"
+   "Jak przenieść styl i markę firmy do przestrzeni?"
   ],
   [
    "p",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "Co obejmuje projekt biura"
+   "Co obejmuje projekt biura?"
   ],
   [
    "ul",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Błędy, których warto uniknąć"
+   "Jakich błędów unikać w projekcie biura?"
   ],
   [
    "ul",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje projekt biura"
+   "Ile kosztuje projekt biura?"
   ],
   [
    "p",
