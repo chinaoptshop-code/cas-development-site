@@ -157,7 +157,7 @@ ANIM = _anim_urls()
 #          (a.ux-calc → квіз / калькулятор сторінки / калькулятор мови / форма), без рядка довіри (з 08.11.2026), .facts і WhatsApp;
 #   секції — плитки (data-c="x" на <div class="w">): іконка + назва (H2) + рядок «від $…» (data-xs); тап — розгортає на місці.
 #          Текст лишається в DOM (SEO, FAQPage). Не плитки: форма, калькулятор, квіз, гід, «Будинок з нуля», карта, контакти.
-LIGHT_CLUSTERS = ('home', 'services', 'about', 'contact', 'design', 'renovation', 'construction', 'calculator', 'landscape', 'resort', 'restaurant', 'office', 'furnishing')
+LIGHT_CLUSTERS = ('home', 'services', 'about', 'contact', 'design', 'worldwide', 'renovation', 'construction', 'calculator', 'landscape', 'resort', 'restaurant', 'office', 'furnishing')
 LIGHT_EXTRA = ('/portfolio', '/remont-kvartyr-kyiv', '/ru/remont-kvartir-kiev', '/vartist-remontu-kvartyry-kyiv', '/ru/stoimost-remonta-kvartiry-kiev')
 # ручні uk-сторінки: класи секцій, що стають плитками (h2 — нащадок секції; атрибут — на самій <section>)
 LIGHT_CUSTOM = {
