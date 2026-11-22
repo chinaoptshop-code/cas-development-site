@@ -7,6 +7,7 @@
  "description": "Was vor dem Umbau in der Restaurant-Haustechnik einzuplanen ist: Küchenlüftung und Abzug, Abwasser mit Fettabscheidern, Elektrik, Reihenfolge.",
  "lead": "Gäste sehen Gastraum, Bar und Möbel, doch ein Restaurant lebt von dem, was in der Decke und unter dem Boden steckt. Wir zeigen, welche Netze vor dem Umbau einzuplanen sind, damit die Küche funktioniert und es im Gastraum nicht nach Frittiertem riecht. Auf unserer Website lässt sich dieser Weg in der Szene „Restaurant von Grund auf“ durchscrollen — 14 Phasen im Schnitt.",
  "date": "2026-11-04",
+ "modified": "2026-11-22",
  "service": [
   "/de/restaurantdesign",
   "Restaurant- und Cafédesign"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Mit Aufmaß und Küchentechnologie beginnen"
+   "1. Womit beginnt die Haustechnik eines Restaurants?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "2. Lüftung: Küche getrennt, Gastraum getrennt"
+   "2. Wie trennt man Lüftung von Küche und Gastraum?"
   ],
   [
    "ul",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "3. Abwasser und Fettabscheider"
+   "3. Wozu braucht ein Restaurant Fettabscheider?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "4. Küchenelektrik"
+   "4. Wie viel Leistung braucht die Küche?"
   ],
   [
    "ul",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Schwachstrom, Wasser und Sicherheit"
+   "Welche Schwachstrom- und Sicherheitssysteme braucht es?"
   ],
   [
    "p",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Wie die Haustechnik das Design des Gastraums beeinflusst"
+   "Wie beeinflusst die Technik das Design des Gastraums?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "5. Reihenfolge der Arbeiten"
+   "5. In welcher Reihenfolge wird gearbeitet?"
   ],
   [
    "ol",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "6. Wo man nicht sparen sollte"
+   "6. Wo darf man nicht sparen?"
   ],
   [
    "p",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Was es kostet"
+   "Was kostet die Planung?"
   ],
   [
    "p",

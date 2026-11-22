@@ -7,6 +7,7 @@
  "description": "Qué prever en las instalaciones de un restaurante antes de la reforma: extracción de cocina, saneamiento con separadores de grasa, electricidad y orden.",
  "lead": "Los clientes ven la sala, la barra y los muebles, pero un restaurante se sostiene sobre lo que hay en el techo y bajo el suelo. Le contamos qué redes prever antes de la reforma para que la cocina funcione y la sala no huela a fritura. En nuestra web puede recorrer este camino en la escena «Restaurante desde cero»: 14 etapas en sección.",
  "date": "2026-11-04",
+ "modified": "2026-11-22",
  "service": [
   "/es/diseno-restaurantes-cafeterias",
   "Diseño de restaurantes y cafeterías"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Empezar por la medición y la tecnología de la cocina"
+   "1. ¿Por dónde empiezan las instalaciones de un restaurante?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "2. Ventilación: cocina por un lado, sala por otro"
+   "2. ¿Cómo separar la ventilación de cocina y sala?"
   ],
   [
    "ul",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "3. Saneamiento y separadores de grasa"
+   "3. ¿Para qué necesita un restaurante separadores de grasa?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "4. Electricidad de la cocina"
+   "4. ¿Cuánta potencia necesita la cocina?"
   ],
   [
    "ul",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Baja tensión, agua y seguridad"
+   "¿Qué sistemas de baja tensión y seguridad hacen falta?"
   ],
   [
    "p",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Cómo influyen las instalaciones en el diseño de la sala"
+   "¿Cómo influyen las instalaciones en el diseño de la sala?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "5. Orden de los trabajos"
+   "5. ¿En qué orden se hacen los trabajos?"
   ],
   [
    "ol",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "6. En qué no ahorrar"
+   "6. ¿En qué no conviene ahorrar?"
   ],
   [
    "p",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta"
+   "¿Cuánto cuesta?"
   ],
   [
    "p",
