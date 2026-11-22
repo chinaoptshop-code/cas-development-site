@@ -7,6 +7,7 @@
  "description": "Brief dla projektanta wnętrz: co przemyśleć o rodzinie, pokojach, przechowywaniu, instalacjach, stylu i budżecie. Checklista do wypełnienia przed spotkaniem.",
  "lead": "Brief dla projektanta wnętrz to krótki opis tego, jak żyjecie i czego oczekujecie od nowej przestrzeni. Im dokładniej go wypełnicie, tym mniej poprawek w układzie i tym szybciej projekt dojdzie do kosztorysu. Wyjaśniamy, co w nim napisać, i dajemy checklistę do wypełnienia w jeden wieczór.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektant-wnetrz",
   "Projektant wnętrz"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Po co projektantowi brief"
+   "Po co projektantowi wnętrz brief?"
   ],
   [
    "p",
-   "Projektant nie zgadnie, że gotujecie co wieczór, trzymacie w domu rowery albo dwa razy w tygodniu pracujecie zdalnie. Bez tych informacji układ wychodzi „przeciętny”, a potem się go przerabia: przenosi gniazdka, dodaje szafy, zamienia sypialnię z gabinetem. Brief usuwa te pętle jeszcze przed pierwszym szkicem."
+   "Brief sprawia, że układ od razu pasuje do waszego codziennego życia: projektant nie zgadnie, że gotujecie co wieczór, trzymacie w domu rowery albo dwa razy w tygodniu pracujecie zdalnie. Bez tych informacji układ wychodzi „przeciętny”, a potem się go przerabia: przenosi gniazdka, dodaje szafy, zamienia sypialnię z gabinetem. Brief usuwa te pętle jeszcze przed pierwszym szkicem."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Kto będzie mieszkał: rodzina i scenariusze dnia"
+   "Co napisać o rodzinie i scenariuszach dnia?"
   ],
   [
    "ul",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Pokój po pokoju"
+   "Co napisać w briefie o każdym pokoju?"
   ],
   [
    "h3",
@@ -82,11 +83,11 @@
   ],
   [
    "h2",
-   "Styl i inspiracje"
+   "Jak pokazać projektantowi styl, który się podoba?"
   ],
   [
    "p",
-   "Nie trzeba znać nazwy stylu. Wystarczy 15–20 zdjęć wnętrz, które się podobają, i kilka takich, które zdecydowanie nie. Do każdego zdjęcia dopiszcie jedno zdanie: co dokładnie się podoba — kolor, światło, materiał, meble. Zaznaczcie też rzeczy, które przeprowadzają się z obecnego mieszkania. Jeśli styl nie jest jeszcze jasny, przeczytajcie [Projekt wnętrz: od czego zacząć](/pl/blog/projekt-wnetrza-od-czego-zaczac)."
+   "Wystarczy 15–20 zdjęć wnętrz, które się podobają, i kilka takich, które zdecydowanie nie — nazwy stylu znać nie trzeba. Do każdego zdjęcia dopiszcie jedno zdanie: co dokładnie się podoba — kolor, światło, materiał, meble. Zaznaczcie też rzeczy, które przeprowadzają się z obecnego mieszkania. Jeśli styl nie jest jeszcze jasny, przeczytajcie [Projekt wnętrz: od czego zacząć](/pl/blog/projekt-wnetrza-od-czego-zaczac)."
   ],
   [
    "gallery",
@@ -103,7 +104,7 @@
   ],
   [
    "h2",
-   "Instalacje i życzenia techniczne"
+   "Jakie życzenia techniczne wpisać do briefu?"
   ],
   [
    "ul",
@@ -118,11 +119,11 @@
   ],
   [
    "h2",
-   "Budżet i terminy"
+   "Czy w briefie pisać o budżecie i terminach?"
   ],
   [
    "p",
-   "Budżet to część briefu, a nie tajemnica. Podajcie orientacyjną kwotę na projekt, remont i meble albo przynajmniej górną granicę. Dla orientacji: [projekt wnętrz mieszkania](/pl/projekt-wnetrza-mieszkania) w CAS — od $30 za m², minimum $2 500. Remont pod klucz — od $550 za m²: robocizna i materiały budowlane, a materiały wykończeniowe, meble i sprzęt liczone osobno według kosztorysu. Dla mieszkania 80 m²: 80 m² × $550 = $44 000. Swoją kwotę sprawdzicie w [kalkulatorze remontu](/pl/kalkulator-remontu). Podajcie też datę przeprowadzki — terminy remontu zapisuje się w umowie."
+   "Tak: budżet to część briefu, a nie tajemnica. Podajcie orientacyjną kwotę na projekt, remont i meble albo przynajmniej górną granicę. Dla orientacji: [projekt wnętrz mieszkania](/pl/projekt-wnetrza-mieszkania) w CAS — od $30 za m², minimum $2 500. Remont pod klucz — od $550 za m²: robocizna i materiały budowlane, a materiały wykończeniowe, meble i sprzęt liczone osobno według kosztorysu. Dla mieszkania 80 m²: 80 m² × $550 = $44 000. Swoją kwotę sprawdzicie w [kalkulatorze remontu](/pl/kalkulator-remontu). Podajcie też datę przeprowadzki — terminy remontu zapisuje się w umowie."
   ],
   [
    "h2",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Co po briefie"
+   "Co dzieje się po briefie?"
   ],
   [
    "p",

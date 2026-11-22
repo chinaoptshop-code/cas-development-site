@@ -7,6 +7,7 @@
  "description": "Technische Bauüberwachung bei der Wohnungsrenovierung: was sie prüft, verdeckte Arbeiten, Unterschied zur künstlerischen Oberleitung, wann sie sich lohnt.",
  "lead": "Eine technische Bauüberwachung braucht man, wenn man nicht täglich auf der Baustelle sein kann oder nicht sicher ist, die Qualität verdeckter Arbeiten beurteilen zu können. Ihre Aufgabe: einen Fehler erkennen, solange er noch günstig zu beheben ist. Hier erfahren Sie, was sie prüft, wann sie sinnvoll ist und wie man sie organisiert.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/bauueberwachung",
   "Künstlerische und technische Bauüberwachung"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was technische Bauüberwachung ist"
+   "Was ist eine technische Bauüberwachung?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Der Unterschied zur künstlerischen Oberleitung"
+   "Wie unterscheidet sie sich von der künstlerischen Oberleitung?"
   ],
   [
    "p",
@@ -72,7 +73,7 @@
   ],
   [
    "h2",
-   "Wann die Bauüberwachung besonders wichtig ist"
+   "Wann ist die Bauüberwachung besonders wichtig?"
   ],
   [
    "ul",
@@ -91,11 +92,11 @@
   ],
   [
    "h2",
-   "Was geprüft wird: Checkliste verdeckter Arbeiten"
+   "Was prüft die Bauüberwachung bei verdeckten Arbeiten?"
   ],
   [
    "p",
-   "Die folgenden Arbeiten sollten vor dem Schließen geprüft werden. Die Liste lässt sich auch ohne Bauüberwachung nutzen, im Abgleich mit den Fotoberichten des Unternehmens."
+   "Geprüft werden vor allem verdeckte Arbeiten – die folgenden sollten vor dem Schließen kontrolliert werden. Die Liste lässt sich auch ohne Bauüberwachung nutzen, im Abgleich mit den Fotoberichten des Unternehmens."
   ],
   [
    "h3",
@@ -164,11 +165,11 @@
   ],
   [
    "h2",
-   "Wie die Bauüberwachung Geld spart"
+   "Lohnt sich die Bauüberwachung, und wie spart sie Geld?"
   ],
   [
    "p",
-   "Die Ersparnis entsteht nicht durch einen niedrigeren Renovierungspreis, sondern durch weniger Nacharbeiten – und die kosten immer mehr, als es gleich richtig zu machen."
+   "Ja, sie lohnt sich: Die Ersparnis entsteht nicht durch einen niedrigeren Renovierungspreis, sondern durch weniger Nacharbeiten – und die kosten immer mehr, als es gleich richtig zu machen."
   ],
   [
    "ul",
@@ -185,7 +186,7 @@
   ],
   [
    "h2",
-   "So organisieren Sie die Bauüberwachung"
+   "Wie organisiert man die Bauüberwachung?"
   ],
   [
    "ol",
@@ -203,7 +204,7 @@
   ],
   [
    "h2",
-   "Neubau oder Bestandswohnung"
+   "Was ist im Neubau anders als in einer Bestandswohnung?"
   ],
   [
    "p",
@@ -215,7 +216,7 @@
   ],
   [
    "h2",
-   "Warnsignale"
+   "Welche Warnsignale zeigen, dass es ohne Aufsicht nicht geht?"
   ],
   [
    "ul",

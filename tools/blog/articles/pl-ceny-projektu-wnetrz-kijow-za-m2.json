@@ -5,8 +5,9 @@
  "title": "Ceny projektu wnętrz w Kijowie: koszt za m² i co zawiera każdy pakiet",
  "seo_title": "Ceny projektu wnętrz w Kijowie: $6, $30, $45 za m² (2026)",
  "description": "Ile kosztuje projekt wnętrz w Kijowie: układ od $6/m², projekt od $30/m² (min. $2 500), pełny z nadzorem autorskim od $45/m². Co zawiera każdy pakiet.",
- "lead": "Projekt wnętrz w Kijowie kosztuje różnie w zależności od tego, ile dokumentacji potrzebujecie: od układu za $6/m² do pełnego projektu z nadzorem autorskim od $45/m². Cenę liczy się za m², więc wyjaśniamy, co zawiera każdy pakiet, i liczymy przykłady dla mieszkań 40, 80 i 120 m².",
+ "lead": "Projekt wnętrz w Kijowie kosztuje od $6/m² za sam układ i od $45/m² za pełny projekt z nadzorem autorskim. Cenę liczy się za m², więc wyjaśniamy, co zawiera każdy pakiet, i liczymy przykłady dla mieszkań 40, 80 i 120 m².",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektowanie-wnetrz",
   "Projekt wnętrz"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Od czego zależy cena"
+   "Od czego zależy cena projektu wnętrz?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "Trzy pakiety i ich ceny"
+   "Ile kosztuje projekt wnętrz w Kijowie za m²?"
   ],
   [
    "ul",
@@ -46,15 +47,15 @@
   ],
   [
    "h2",
-   "Pakiet funkcjonalny"
+   "Kiedy wystarczy sam pakiet funkcjonalny?"
   ],
   [
    "p",
-   "Układ to fundament każdego wnętrza: decyduje, gdzie stoją kuchnia, szafy i łóżko, ile jest miejsca do przechowywania i jak się chodzi po mieszkaniu. Pakiet pasuje do prostego remontu, gdy sami wybieracie materiały i meble. Nie ma w nim wizualizacji ani rysunków wykonawczych, więc część decyzji — np. gdzie gniazdka i jak ułożyć płytki — podejmie ekipa."
+   "Pakiet funkcjonalny wystarczy przy prostym remoncie, gdy sami wybieracie materiały i meble. Układ to fundament każdego wnętrza: decyduje, gdzie stoją kuchnia, szafy i łóżko, ile jest miejsca do przechowywania i jak się chodzi po mieszkaniu. Nie ma w nim wizualizacji ani rysunków wykonawczych, więc część decyzji — np. gdzie gniazdka i jak ułożyć płytki — podejmie ekipa."
   ],
   [
    "h2",
-   "Pakiet podstawowy"
+   "Co zawiera pakiet podstawowy?"
   ],
   [
    "p",
@@ -62,11 +63,11 @@
   ],
   [
    "h2",
-   "Pakiet pełny z nadzorem autorskim"
+   "Po co nadzór autorski w pakiecie pełnym?"
   ],
   [
    "p",
-   "Nawet najlepsze rysunki nie gwarantują efektu, jeśli nikt nie porównuje pracy z projektem. Nadzór autorski to regularne wizyty projektanta według harmonogramu w umowie: odpowiada na pytania ekipy, sprawdza zgodność z rysunkami i pomaga, gdy trzeba coś zmienić. Jeśli remont robi inny wykonawca, warunki i koszt nadzoru ustalamy indywidualnie — zob. [nadzór autorski i techniczny](/pl/nadzor-autorski-i-techniczny)."
+   "Nadzór autorski pilnuje, by remont był zgodny z projektem: nawet najlepsze rysunki nie gwarantują efektu, jeśli nikt nie porównuje z nimi pracy. Nadzór autorski to regularne wizyty projektanta według harmonogramu w umowie: odpowiada na pytania ekipy, sprawdza zgodność z rysunkami i pomaga, gdy trzeba coś zmienić. Jeśli remont robi inny wykonawca, warunki i koszt nadzoru ustalamy indywidualnie — zob. [nadzór autorski i techniczny](/pl/nadzor-autorski-i-techniczny)."
   ],
   [
    "img",
@@ -76,11 +77,11 @@
   ],
   [
    "h2",
-   "Przykłady: 40, 80 i 120 m²"
+   "Ile kosztuje projekt mieszkania 40, 80 i 120 m²?"
   ],
   [
    "p",
-   "Poniżej wyliczenie według stawek bazowych. To dolna granica: orientacyjnie, dokładnie — według kosztorysu."
+   "Projekt podstawowy mieszkania 40 lub 80 m² kosztuje od $2 500 (obowiązuje minimum), a 120 m² — od $3 600. To dolna granica: orientacyjnie, dokładnie — według kosztorysu."
   ],
   [
    "ul",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "Co zaplanować osobno"
+   "Co poza projektem zaplanować w budżecie osobno?"
   ],
   [
    "ul",

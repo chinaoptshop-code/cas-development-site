@@ -7,6 +7,7 @@
  "description": "Brief pour architecte d'intérieur : famille, pièces, rangements, réseaux, style et budget à préparer. Checklist à remplir avant le premier rendez-vous.",
  "lead": "Le brief pour un architecte d'intérieur décrit brièvement votre façon de vivre et ce que vous attendez du nouvel espace. Plus il est précis, moins il y a de reprises du plan et plus vite le projet arrive au devis. Voici quoi y écrire, avec une checklist à remplir en une soirée.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/fr/designer-interieur",
   "Architecte d'intérieur"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "À quoi sert le brief"
+   "À quoi sert le brief pour un architecte d'intérieur ?"
   ],
   [
    "p",
-   "Un architecte d'intérieur ne peut pas deviner que vous cuisinez tous les soirs, rangez des vélos chez vous ou télétravaillez deux jours par semaine. Sans cela, le plan devient « moyen » puis il est refait : prises déplacées, placards ajoutés, chambre et bureau intervertis. Le brief évite ces allers-retours avant la première esquisse."
+   "Le brief permet d'obtenir dès le départ un plan adapté à votre quotidien : un architecte d'intérieur ne peut pas deviner que vous cuisinez tous les soirs, rangez des vélos chez vous ou télétravaillez deux jours par semaine. Sans cela, le plan devient « moyen » puis il est refait : prises déplacées, placards ajoutés, chambre et bureau intervertis. Le brief évite ces allers-retours avant la première esquisse."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Qui vivra là : famille et journées types"
+   "Que dire de la famille et des journées types ?"
   ],
   [
    "ul",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Pièce par pièce"
+   "Que faut-il écrire pour chaque pièce ?"
   ],
   [
    "h3",
@@ -82,11 +83,11 @@
   ],
   [
    "h2",
-   "Style et références"
+   "Comment montrer le style qui vous plaît ?"
   ],
   [
    "p",
-   "Inutile de connaître le nom d'un style. Rassemblez 15 à 20 intérieurs qui vous plaisent et quelques-uns qui vous déplaisent. Ajoutez à chaque image une phrase : ce qui vous plaît exactement — couleur, lumière, matière, meubles. Notez ce qui déménage avec vous. Si le style n'est pas encore clair, lisez [Architecture intérieure : par où commencer](/fr/blog/architecture-interieur-par-ou-commencer)."
+   "Rassemblez 15 à 20 intérieurs qui vous plaisent et quelques-uns qui vous déplaisent ; inutile de connaître le nom d'un style. Ajoutez à chaque image une phrase : ce qui vous plaît exactement — couleur, lumière, matière, meubles. Notez ce qui déménage avec vous. Si le style n'est pas encore clair, lisez [Architecture intérieure : par où commencer](/fr/blog/architecture-interieur-par-ou-commencer)."
   ],
   [
    "gallery",
@@ -103,7 +104,7 @@
   ],
   [
    "h2",
-   "Réseaux et souhaits techniques"
+   "Quels souhaits techniques mettre dans le brief ?"
   ],
   [
    "ul",
@@ -118,11 +119,11 @@
   ],
   [
    "h2",
-   "Budget et délais"
+   "Faut-il parler du budget et des délais ?"
   ],
   [
    "p",
-   "Le budget fait partie du brief, ce n'est pas un secret. Indiquez une somme indicative pour le projet, les travaux et les meubles, ou au moins un plafond. Pour repère, un [projet d'intérieur d'appartement](/fr/design-appartement) chez CAS démarre à $30 le m², minimum $2 500. La rénovation clé en main démarre à $550 le m² : travaux et matériaux de gros œuvre ; matériaux de finition, meubles et électroménager sont chiffrés à part. Pour 80 m² : 80 m² × $550 = $44 000. Estimez votre surface avec le [calculateur de rénovation](/fr/calculateur-renovation). Donnez aussi la date d'emménagement : les délais figurent au contrat."
+   "Oui : le budget fait partie du brief, ce n'est pas un secret. Indiquez une somme indicative pour le projet, les travaux et les meubles, ou au moins un plafond. Pour repère, un [projet d'intérieur d'appartement](/fr/design-appartement) chez CAS démarre à $30 le m², minimum $2 500. La rénovation clé en main démarre à $550 le m² : travaux et matériaux de gros œuvre ; matériaux de finition, meubles et électroménager sont chiffrés à part. Pour 80 m² : 80 m² × $550 = $44 000. Estimez votre surface avec le [calculateur de rénovation](/fr/calculateur-renovation). Donnez aussi la date d'emménagement : les délais figurent au contrat."
   ],
   [
    "h2",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Après le brief"
+   "Que se passe-t-il après le brief ?"
   ],
   [
    "p",
