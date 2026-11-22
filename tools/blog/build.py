@@ -151,7 +151,7 @@ def fmt_date(d, lang):
     return f'{int(dd)} {MONTHS[lang][int(m) - 1]} {y}'
 
 
-LINK = re.compile(r'\[([^\[\]]+)\]\((/[a-z0-9/_-]*)\)')
+LINK = re.compile(r'\[([^\[\]]+)\]\((/[a-z0-9/_-]*(?:\?[a-z0-9=,_&;-]+)?(?:#[a-z0-9_-]+)?)\)')  # ?k=…#calc — калькулятор з вибором (22.11.2026)
 
 
 def inline(s):
@@ -215,7 +215,7 @@ def check_links(a):
         for v in (val if isinstance(val, list) else [val]):
             if kind in ('h2', 'h3') and '](' in v: errs.append(f'посилання в заголовку: {v[:40]}')
             for anchor, href in LINK.findall(v):
-                p = href.strip('/')
+                p = href.split('#')[0].split('?')[0].strip('/')
                 if not (os.path.exists(os.path.join(ROOT, p + '.html')) or os.path.exists(os.path.join(ROOT, p, 'index.html'))):
                     errs.append(f'посилання {href}: сторінки немає')
                 mark = L.get(a['lang'], {}).get('other_lang_mark')
