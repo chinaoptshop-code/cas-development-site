@@ -97,6 +97,10 @@
      [
       "/en/business-fit-out",
       "Turnkey commercial fit-out"
+     ],
+     [
+      "/en/townhouse-renovation",
+      "Townhouse renovation"
      ]
     ]
    ],
@@ -126,6 +130,10 @@
      [
       "/en/landscape-design",
       "Landscape design"
+     ],
+     [
+      "/en/neoclassical-interior-design",
+      "Neoclassical interiors"
      ]
     ]
    ],
@@ -143,6 +151,10 @@
      [
       "/en/resort-design",
       "Holiday resort design"
+     ],
+     [
+      "/en/aerated-concrete-house",
+      "Aerated concrete house"
      ]
     ]
    ],
@@ -197,6 +209,23 @@
      [
       "/en/portfolio",
       "Portfolio"
+     ]
+    ]
+   ],
+   [
+    "Geography",
+    [
+     [
+      "/en/design-renovation-ukraine",
+      "Across Ukraine"
+     ],
+     [
+      "/en/design-renovation-kyiv-region",
+      "Kyiv region"
+     ],
+     [
+      "/en/renovation-construction-europe",
+      "Europe"
      ]
     ]
    ]

@@ -85,6 +85,10 @@
      [
       "/es/paisajismo",
       "Paisajismo"
+     ],
+     [
+      "/es/diseno-interiores-neoclasico",
+      "Interiorismo neoclásico"
      ]
     ]
    ],
@@ -134,6 +138,14 @@
      [
       "/es/complejo-turistico-llave-en-mano",
       "Complejo turístico llave en mano"
+     ],
+     [
+      "/es/reforma-adosado",
+      "Reforma de adosado"
+     ],
+     [
+      "/es/casa-hormigon-celular",
+      "Casa de hormigón celular"
      ]
     ]
    ],
@@ -180,6 +192,23 @@
      [
       "/es/portfolio",
       "Portafolio"
+     ]
+    ]
+   ],
+   [
+    "Geografía",
+    [
+     [
+      "/es/diseno-reforma-ucrania",
+      "En toda Ucrania"
+     ],
+     [
+      "/es/diseno-reforma-region-kiev",
+      "Región de Kiev"
+     ],
+     [
+      "/es/reforma-construccion-europa",
+      "Europa"
      ]
     ]
    ]

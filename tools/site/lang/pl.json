@@ -97,6 +97,10 @@
      [
       "/pl/biznes-pod-klucz",
       "Lokale biznesowe pod klucz"
+     ],
+     [
+      "/pl/remont-szeregowca",
+      "Remont szeregowca"
      ]
     ]
    ],
@@ -126,6 +130,10 @@
      [
       "/pl/projektowanie-ogrodow",
       "Projektowanie ogrodów"
+     ],
+     [
+      "/pl/projektowanie-wnetrz-neoklasyka",
+      "Wnętrza neoklasyczne"
      ]
     ]
    ],
@@ -143,6 +151,10 @@
      [
       "/pl/osrodek-wypoczynkowy-pod-klucz",
       "Ośrodek wypoczynkowy pod klucz"
+     ],
+     [
+      "/pl/dom-z-betonu-komorkowego",
+      "Dom z betonu komórkowego"
      ]
     ]
    ],
@@ -193,6 +205,23 @@
      [
       "/pl/portfolio",
       "Portfolio"
+     ]
+    ]
+   ],
+   [
+    "Geografia",
+    [
+     [
+      "/pl/projektowanie-remont-ukraina",
+      "Cała Ukraina"
+     ],
+     [
+      "/pl/projektowanie-remont-obwod-kijowski",
+      "Obwód kijowski"
+     ],
+     [
+      "/pl/remont-i-budowa-europa",
+      "Europa"
      ]
     ]
    ]

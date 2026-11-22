@@ -85,6 +85,10 @@
      [
       "/ar/landscape-design",
       "تنسيق الحدائق"
+     ],
+     [
+      "/ar/neoclassical-interior-design",
+      "تصميم داخلي نيوكلاسيكي"
      ]
     ]
    ],
@@ -134,6 +138,14 @@
      [
       "/ar/resort-turnkey",
       "منتجع بنظام تسليم المفتاح"
+     ],
+     [
+      "/ar/townhouse-renovation",
+      "تجديد التاون هاوس"
+     ],
+     [
+      "/ar/aerated-concrete-house",
+      "منزل من الخرسانة الخلوية"
      ]
     ]
    ],
@@ -180,6 +192,23 @@
      [
       "/ar/portfolio",
       "المشاريع"
+     ]
+    ]
+   ],
+   [
+    "مناطق العمل",
+    [
+     [
+      "/ar/design-renovation-ukraine",
+      "في جميع أنحاء أوكرانيا"
+     ],
+     [
+      "/ar/design-renovation-kyiv-region",
+      "منطقة كييف"
+     ],
+     [
+      "/ar/renovation-construction-europe",
+      "أوروبا"
      ]
     ]
    ]

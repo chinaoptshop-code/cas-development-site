@@ -85,6 +85,10 @@
      [
       "/fr/architecture-paysagere",
       "Architecture paysagère"
+     ],
+     [
+      "/fr/architecture-interieur-neoclassique",
+      "Intérieur néoclassique"
      ]
     ]
    ],
@@ -134,6 +138,14 @@
      [
       "/fr/base-de-loisirs-cle-en-main",
       "Base de loisirs clé en main"
+     ],
+     [
+      "/fr/renovation-maison-de-ville",
+      "Rénovation de maison de ville"
+     ],
+     [
+      "/fr/maison-beton-cellulaire",
+      "Maison en béton cellulaire"
      ]
     ]
    ],
@@ -180,6 +192,23 @@
      [
       "/fr/portfolio",
       "Portfolio"
+     ]
+    ]
+   ],
+   [
+    "Géographie",
+    [
+     [
+      "/fr/design-renovation-ukraine",
+      "Toute l’Ukraine"
+     ],
+     [
+      "/fr/design-renovation-region-kyiv",
+      "Région de Kyiv"
+     ],
+     [
+      "/fr/renovation-construction-europe",
+      "Europe"
      ]
     ]
    ]
