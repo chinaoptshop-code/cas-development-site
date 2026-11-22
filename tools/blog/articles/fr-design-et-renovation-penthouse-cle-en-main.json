@@ -7,6 +7,7 @@
  "description": "Design et rénovation d’un penthouse clé en main : baies, terrasse, réseaux, éclairage, rangements. Étapes, budget et ce qu’il ne faut pas rogner.",
  "lead": "Un penthouse n’est pas seulement un grand appartement : c’est un type de bien à part, avec baies panoramiques, terrasse, réseaux complexes et exigences élevées sur chaque détail. Voici ce qu’il faut considérer avant de commencer, comment construire le budget et comment mener le projet pour que le résultat corresponde à la visualisation.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/architecture-interieur",
   "Architecture d’intérieur"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce qui distingue un penthouse d’un appartement classique"
+   "En quoi un penthouse diffère-t-il d'un appartement ?"
   ],
   [
    "p",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Architecture d’intérieur d’un penthouse : par où commencer"
+   "Par où commencer le projet d'un penthouse ?"
   ],
   [
    "p",
@@ -59,7 +60,7 @@
   ],
   [
    "h2",
-   "Les réseaux : invisibles, mais ressentis chaque jour"
+   "Pourquoi les réseaux d'un penthouse sont-ils plus complexes ?"
   ],
   [
    "p",
@@ -81,7 +82,7 @@
   ],
   [
    "h2",
-   "La terrasse : un projet dans le projet"
+   "Comment concevoir la terrasse d'un penthouse ?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Éclairage, rangements et matériaux"
+   "Comment traiter lumière, rangements et matériaux ?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Combien coûtent le design et la rénovation d’un penthouse"
+   "Combien coûte un penthouse clé en main ?"
   ],
   [
    "p",
@@ -144,7 +145,7 @@
   ],
   [
    "h2",
-   "Mener la rénovation pour que le résultat corresponde à la visualisation"
+   "Comment obtenir un résultat fidèle aux visuels ?"
   ],
   [
    "p",
@@ -173,7 +174,7 @@
   ],
   [
    "h2",
-   "Les erreurs qui coûtent le plus dans un penthouse"
+   "Quelles erreurs coûtent le plus cher ?"
   ],
   [
    "ul",

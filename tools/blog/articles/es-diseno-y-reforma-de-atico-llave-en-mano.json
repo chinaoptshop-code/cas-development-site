@@ -7,6 +7,7 @@
  "description": "Diseño y reforma de un ático llave en mano: ventanales, terraza, instalaciones, iluminación y almacenaje. Etapas, presupuesto y en qué no recortar.",
  "lead": "Un ático no es solo un piso grande: es un tipo de inmueble propio, con ventanales panorámicos, terraza, instalaciones complejas y altas expectativas en cada detalle. Te contamos qué considerar antes de empezar, cómo construir el presupuesto y cómo llevar el proyecto para que el resultado coincida con la visualización.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/es/diseno-interiores",
   "Diseño de interiores"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "En qué se diferencia un ático de un piso normal"
+   "¿En qué se diferencia un ático de un piso normal?"
   ],
   [
    "p",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Diseño de interiores de un ático: por dónde empezar"
+   "¿Por dónde empezar el proyecto de un ático?"
   ],
   [
    "p",
@@ -59,7 +60,7 @@
   ],
   [
    "h2",
-   "Instalaciones: invisibles, pero se notan a diario"
+   "¿Por qué las instalaciones de un ático son más complejas?"
   ],
   [
    "p",
@@ -81,7 +82,7 @@
   ],
   [
    "h2",
-   "La terraza: un proyecto dentro del proyecto"
+   "¿Cómo diseñar la terraza de un ático?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Iluminación, almacenaje y materiales"
+   "¿Cómo resolver luz, almacenaje y materiales?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta diseñar y reformar un ático llave en mano"
+   "¿Cuánto cuesta un ático llave en mano?"
   ],
   [
    "p",
@@ -144,7 +145,7 @@
   ],
   [
    "h2",
-   "Llevar la reforma para que el resultado coincida con la visualización"
+   "¿Cómo lograr que el resultado coincida con el render?"
   ],
   [
    "p",
@@ -173,7 +174,7 @@
   ],
   [
    "h2",
-   "Los errores que más cuestan en un ático"
+   "¿Qué errores salen más caros en un ático?"
   ],
   [
    "ul",
