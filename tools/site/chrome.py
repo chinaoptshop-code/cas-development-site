@@ -764,11 +764,11 @@ def mbar_lead(s, lang, rel=''):
 
 # Microsoft Clarity: вантажимо ЛИШЕ після першої дії відвідувача (scroll/pointerdown/keydown/touchstart), без таймера
 # (Михайло 03.11.2026) — не заважає LCP/TBT і не рахує ботів/відмови без дій. Будь-яку стару вставку замінюємо на цю.
-# Згода (Михайло 22.11.2026, «роби покращення» після SEO-розбору): регіон — за часовим поясом браузера, без сервера.
-# Україна (Europe/Kyiv|Kiev|Uzhgorod|Zaporozhye) — як раніше, банера немає; решта (і пояс невідомий) — opt-in: Clarity не вантажиться,
-# доки людина не натисне «Прийняти» (плашка й кнопка «Cookies» у футері — site-chrome.v1.js). Вибір — localStorage cas_ck = "1|дата" / "0|дата";
-# "0" вимикає Clarity і в Україні. window.casCk — {ua, v, n — чи вже вантажили, g() — завантажити, f('add'|'remove') — слухачі першої дії};
-# виклики consentv2 / consent(false) — у site-chrome.v1.js (бюджет HTML 64 КБ: сніпет мінімальний). Без «<» у коді (CLARITY_RX).
+# Cookies (Михайло 22.11.2026: «додавай, але Clarity нехай і без згоди працює відразу»): Clarity для всіх — після першої дії, згоди
+# не чекає; не вантажиться лише, якщо людина відмовилась (localStorage cas_ck = "0|дата"). Плашка-повідомлення «Добре / Відхилити»
+# поза Україною (часовий пояс браузера; Europe/Kyiv|Kiev|Uzhgorod|Zaporozhye — без плашки) і посилання «Cookies» у футері — site-chrome.v1.js.
+# window.casCk — {ua, v, n — чи вже вантажили, g() — завантажити, f('add'|'remove') — слухачі першої дії}; сигнали згоди Clarity
+# (consentv2 лише після «Добре») — у site-chrome.v1.js. Сніпет мінімальний — бюджет HTML 64 КБ. Без «<» у коді (CLARITY_RX).
 CLARITY_ID = 'z19wl000eu'
 CLARITY = ('<script>(function(w,d,i){var q=w.clarity=w.clarity||function(){(q.q=q.q||[]).push(arguments)},c="",z="",'
            'E=["scroll","pointerdown","keydown","touchstart"],o={passive:true},k=w.casCk={n:0};'
@@ -776,7 +776,7 @@ CLARITY = ('<script>(function(w,d,i){var q=w.clarity=w.clarity||function(){(q.q=
            'k.v=c=c[0]||"";k.ua=/^Europe\\/(Kiev|Kyiv|Uzh|Zap)/.test(z);'
            'k.f=function(a){E.forEach(function(e){w[a+"EventListener"](e,k.g,o)})};'
            'k.g=function(){if(k.n++)return;k.f("remove");var t=d.createElement("script");t.async=1;t.src="https://www.clarity.ms/tag/"+i;d.head.appendChild(t)};'
-           'if(c=="1"||k.ua&&c!="0")k.f("add")})(window,document,"' + CLARITY_ID + '");</script>')
+           'if(c!="0")k.f("add")})(window,document,"' + CLARITY_ID + '");</script>')
 CLARITY_RX = re.compile(r'<script>\(function\([^<]*?clarity[^<]*?</script>')
 
 

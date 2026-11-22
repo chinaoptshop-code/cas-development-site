@@ -1249,10 +1249,11 @@ for (const w of [344, 1440]) await test('cookies, Київ: плашки нем�
   await p.mouse.wheel(0, 400); await p.waitForTimeout(800);
   must(rq.length >= 1, 'Clarity не запитано після прокрутки');
 }, { timezoneId: 'Europe/Kyiv' });
-for (const [path, w] of [['/en/services', 344], ['/en/services', 402], ['/en/', 1440]]) await test('cookies, Берлін: плашка, до вибору Clarity немає; «Прийняти» → Clarity і після перезавантаження', path, w, async p => {
+for (const [path, w] of [['/en/services', 344], ['/en/services', 402], ['/en/', 1440]]) await test('cookies, Берлін: плашка; Clarity після першої дії й до вибору, без сигналу згоди; «Добре» → consentv2, плашки більше немає', path, w, async p => {
   const rq = clarityReqs(p);
   await p.evaluate(() => { window.__ls = 0; new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__ls += e.value; }).observe({ type: 'layout-shift' }); });
   await p.waitForFunction(() => document.querySelector('.ck.on'), null, { timeout: 6000 });
+  must(rq.length === 0, 'Clarity до першої дії');
   const s = await ckState(p);
   must(s.role === 'region' && s.lab, 'плашка без role/aria-label');
   must(!s.act, 'плашка забрала фокус');
@@ -1262,31 +1263,35 @@ for (const [path, w] of [['/en/services', 344], ['/en/services', 402], ['/en/', 
   const h1 = await p.locator('h1').boundingBox(); must(h1.y + h1.height <= s.r[0] || h1.y >= s.r[1], 'плашка накриває H1');
   for (let i = 0; i < 4; i++) { await p.mouse.wheel(0, 500); await p.waitForTimeout(250); }
   await p.keyboard.press('Escape'); await p.waitForTimeout(300);
-  must(rq.length === 0, 'Clarity до згоди (після прокрутки/Esc)');
+  must(rq.length >= 1, 'Clarity не завантажився після прокрутки (згоди не чекаємо — Михайло 22.11.2026)');
+  must(!(await p.evaluate(() => [...((window.clarity || {}).q || [])].some(a => /^consent/.test(a[0])))), 'сигнал згоди Clarity до «Добре»');
   const ls = await p.evaluate(() => window.__ls); must(ls === 0, 'зсув верстки ' + ls);
   await p.evaluate(() => scrollTo(0, document.documentElement.scrollHeight)); await p.waitForTimeout(300);
   const ov = await p.evaluate(() => { const c = document.querySelector('.ck').getBoundingClientRect(); return [...document.querySelectorAll('.scf a')].filter(a => { const r = a.getBoundingClientRect(); return r.height > 0 && a.checkVisibility({ visibilityProperty: true }) && r.bottom > c.top && r.top < c.bottom && r.right > c.left && r.left < c.right; }).map(a => a.textContent.trim()).slice(0, 3); });
   must(ov.length === 0, 'унизу сторінки плашка накриває футер: ' + ov.join(', '));
   await p.click('.ck-b button[data-v="1"]'); await p.waitForTimeout(600);
-  must(rq.length >= 1, '«Прийняти» не завантажив Clarity');
   must(await p.evaluate(() => [...((window.clarity || {}).q || [])].some(a => a[0] === 'consentv2' && a[1].analytics_Storage === 'granted' && a[1].ad_Storage === 'denied')), 'немає clarity("consentv2", analytics granted)');
-  const a = await ckState(p); must(!a.on && /^1\|\d{4}-\d\d-\d\d$/.test(a.ls), 'після «Прийняти»: ' + JSON.stringify(a));
+  const a = await ckState(p); must(!a.on && /^1\|\d{4}-\d\d-\d\d$/.test(a.ls), 'після «Добре»: ' + JSON.stringify(a));
   await p.evaluate(() => scrollTo(0, 0)); const n0 = rq.length; await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(2200);
   must(!(await ckState(p)).on, 'плашка після перезавантаження');
   await p.keyboard.press('Tab'); await p.waitForTimeout(800);
-  must(rq.length > n0, 'після згоди Clarity не вантажиться після дії');
+  must(rq.length > n0, 'після «Добре» Clarity не вантажиться після дії');
 }, { timezoneId: 'Europe/Berlin' });
 await test('cookies, Берлін: «Відхилити» — Clarity немає й після перезавантаження', '/de/', 402, async p => {
   const rq = clarityReqs(p);
   await p.mouse.wheel(0, 900); await p.waitForTimeout(300);
   await p.waitForFunction(() => document.querySelector('.ck.on'), null, { timeout: 6000 });
+  must(rq.length >= 1, 'Clarity не завантажився після прокрутки');
+  await p.evaluate(() => { document.cookie = '_clck=t;path=/'; document.cookie = '_clsk=t;path=/'; });
   await p.click('.ck-b button[data-v="0"]'); await p.waitForTimeout(400);
+  must(!/_cl(ck|sk)=/.test(await p.evaluate(() => document.cookie)), 'cookies Clarity не видалено');
   const a = await ckState(p); must(!a.on && /^0\|/.test(a.ls), 'після «Відхилити»: ' + JSON.stringify(a));
+  must(await p.evaluate(() => { const q = [...((window.clarity || {}).q || [])]; return q.some(a => a[0] === 'consentv2' && a[1].analytics_Storage === 'denied') && q.some(a => a[0] === 'consent' && a[1] === false); }), 'немає consentv2 denied / consent(false) після «Відхилити»');
   await p.mouse.wheel(0, 300); await p.waitForTimeout(500);
-  await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(2200);
+  const n0 = rq.length; await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(2200);
   must(!(await ckState(p)).on, 'плашка після перезавантаження');
   await p.mouse.wheel(0, 300); await p.keyboard.press('Tab'); await p.waitForTimeout(800);
-  must(rq.length === 0, 'Clarity після «Відхилити»');
+  must(rq.length === n0, 'Clarity після «Відхилити» і перезавантаження');
 }, { timezoneId: 'Europe/Berlin' });
 for (const [path, w, tz] of [['/', 344, 'Europe/Kyiv'], ['/', 402, 'Europe/Kyiv'], ['/en/', 402, 'Europe/Berlin'], ['/ar/', 1440, 'Asia/Dubai']]) await test('cookies: «Cookies» у футері відкриває плашку з поточним станом', path, w, async p => {
   const rq = clarityReqs(p);

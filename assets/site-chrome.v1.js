@@ -965,24 +965,25 @@
  t.src='data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADrbWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAETAAAAIQAAAChpaW5mAAAAAAABAAAAGmluZmUCAAAAAAEAAGF2MDFDb2xvcgAAAABqaXBycAAAAEtpcGNvAAAAFGlzcGUAAAAAAAAAAQAAAAEAAAAQcGl4aQAAAAADCAgIAAAADGF2MUOBAAwAAAAAE2NvbHJuY2x4AAEADQAGgAAAABdpcG1hAAAAAAAAAAEAAQQBAoMEAAAAKW1kYXQSAAoIGAAGiAhoNCAyExlHh4Yhh5555oAAAJBAyRxhQr4=';
 })();
 });
-/* Згода на cookies (Михайло 22.11.2026, «роби покращення» після SEO-розбору). Стан і завантажувач Clarity — window.casCk (сніпет CLARITY
-   у <head>, tools/site/chrome.py: ua, v, n, g(), f()); виклики Consent API v2 Clarity — тут. Україна за часовим поясом — без плашки (Clarity після першої дії), решта — opt-in.
-   Плашка: лише поза Україною й доки немає вибору; після load в idle, position:fixed (без зсуву верстки); поки під нею опинилися б H1
-   чи кнопки першого екрана — схована (зʼявляється, щойно їх прокрутили); фокус не забирає, Esc нічого не робить.
-   «Cookies» у футері (a[data-ck]) відкриває ту саму плашку з поточним станом (і в Україні). Вибір — localStorage cas_ck = "1|дата" / "0|дата".
-   Поки плашка видима, html.ck-p додає внизу сторінки місце під неї (кінець футера не ховається). */
+/* Cookies (Михайло 22.11.2026: «додавай, але Clarity нехай і без згоди працює відразу»). Clarity — для всіх після першої дії
+   (сніпет CLARITY у <head>, tools/site/chrome.py; стан — window.casCk: ua, v, n, g(), f()), не вантажиться лише після відмови (cas_ck = "0|дата").
+   Плашка-повідомлення «Добре / Відхилити»: лише поза Україною (часовий пояс) і доки немає вибору; після load в idle, position:fixed (без зсуву
+   верстки); поки під нею опинилися б H1 чи кнопки першого екрана — схована (зʼявляється, щойно їх прокрутили); фокус не забирає, Esc нічого не робить.
+   «Cookies» у футері (a[data-ck]) відкриває її з поточним станом (і в Україні). Сигнал згоди Clarity (consentv2) — ЛИШЕ після «Добре»
+   (мовчання — не згода); «Відхилити» — consentv2 denied + consent(false) (Clarity стирає свої cookies і зупиняє запис), наші _clck/_clsk теж
+   прибираємо. Поки плашка видима, html.ck-p додає внизу сторінки місце під неї (кінець футера не ховається). */
 (function (W, d) {
   var TX = {
-    uk: ['Ми використовуємо cookies для аналітики.', 'Детальніше', 'Прийняти', 'Відхилити', 'Аналітика ввімкнена', 'Аналітика вимкнена'],
-    ru: ['Мы используем cookies для аналитики.', 'Подробнее', 'Принять', 'Отклонить', 'Аналитика включена', 'Аналитика выключена'],
-    en: ['We use cookies for analytics.', 'Learn more', 'Accept', 'Decline', 'Analytics is on', 'Analytics is off'],
-    es: ['Usamos cookies para analítica.', 'Más información', 'Aceptar', 'Rechazar', 'Analítica activada', 'Analítica desactivada'],
-    pl: ['Używamy plików cookies do analityki.', 'Więcej', 'Akceptuję', 'Odrzucam', 'Analityka włączona', 'Analityka wyłączona'],
-    de: ['Wir verwenden Cookies für Analysen.', 'Mehr erfahren', 'Akzeptieren', 'Ablehnen', 'Analyse aktiv', 'Analyse deaktiviert'],
-    fr: ['Nous utilisons des cookies pour la mesure d’audience.', 'En savoir plus', 'Accepter', 'Refuser', 'Mesure d’audience activée', 'Mesure d’audience désactivée'],
-    pt: ['Utilizamos cookies para análise.', 'Saber mais', 'Aceitar', 'Recusar', 'Análise ativada', 'Análise desativada'],
-    zh: ['我们使用 cookies 进行访问分析。', '了解更多', '接受', '拒绝', '访问分析已开启', '访问分析已关闭'],
-    ar: ['نستخدم ملفات تعريف الارتباط (cookies) للتحليلات.', 'المزيد', 'قبول', 'رفض', 'التحليلات مفعّلة', 'التحليلات معطّلة']
+    uk: ['Ми використовуємо cookies для аналітики.', 'Детальніше', 'Добре', 'Відхилити', 'Аналітика ввімкнена', 'Аналітика вимкнена'],
+    ru: ['Мы используем cookies для аналитики.', 'Подробнее', 'Хорошо', 'Отклонить', 'Аналитика включена', 'Аналитика выключена'],
+    en: ['We use cookies for analytics.', 'Learn more', 'OK', 'Decline', 'Analytics is on', 'Analytics is off'],
+    es: ['Usamos cookies para analítica.', 'Más información', 'De acuerdo', 'Rechazar', 'Analítica activada', 'Analítica desactivada'],
+    pl: ['Używamy plików cookies do analityki.', 'Więcej', 'OK', 'Odrzucam', 'Analityka włączona', 'Analityka wyłączona'],
+    de: ['Wir verwenden Cookies für Analysen.', 'Mehr erfahren', 'OK', 'Ablehnen', 'Analyse aktiv', 'Analyse deaktiviert'],
+    fr: ['Nous utilisons des cookies pour la mesure d’audience.', 'En savoir plus', 'D’accord', 'Refuser', 'Mesure d’audience activée', 'Mesure d’audience désactivée'],
+    pt: ['Utilizamos cookies para análise.', 'Saber mais', 'OK', 'Recusar', 'Análise ativada', 'Análise desativada'],
+    zh: ['我们使用 cookies 进行访问分析。', '了解更多', '好的', '拒绝', '访问分析已开启', '访问分析已关闭'],
+    ar: ['نستخدم ملفات تعريف الارتباط (cookies) للتحليلات.', 'المزيد', 'حسنًا', 'رفض', 'التحليلات مفعّلة', 'التحليلات معطّلة']
   };
   var PP = { uk: '/konfidentsiinist', ru: '/ru/konfidentsialnost', en: '/en/privacy-policy', es: '/es/privacidad', pl: '/pl/polityka-prywatnosci',
     de: '/de/datenschutz', fr: '/fr/confidentialite', pt: '/pt/privacidade', zh: '/zh/privacy', ar: '/ar/privacy' };
@@ -1029,11 +1030,10 @@
     box.classList.toggle('on', !hide);
   }
   function onScroll() { if (!raf) raf = requestAnimationFrame(place); }
-  function sync() {
+  function sync(manual) {
     var v = get(), t = TX[lang()];
     [].forEach.call(box.querySelectorAll('button'), function (k) { k.setAttribute('aria-pressed', String(k.getAttribute('data-v') === v)); });
-    var c = ck(), onNow = v === '1' || (v !== '0' && c && c.ua);
-    st.textContent = v || (c && c.ua) ? ' · ' + (onNow ? t[4] : t[5]) : '';
+    st.textContent = manual ? ' · ' + (v === '0' ? t[5] : t[4]) : ''; /* стан — лише коли відкрили з футера */
   }
   function close() {
     if (!box) return;
@@ -1046,13 +1046,18 @@
     if (c) {
       c.v = v;
       if (v === '1') { if (W.clarity) W.clarity('consentv2', GRANT); c.g(); }
-      else { c.f('remove'); if (c.n && W.clarity) { W.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'denied' }); W.clarity('consent', false); } }
+      else {
+        c.f('remove');
+        if (c.n && W.clarity) { W.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'denied' }); W.clarity('consent', false); }
+        var dm = location.hostname.replace(/^www\./, '');
+        ['_clck', '_clsk'].forEach(function (n) { ['', ';domain=' + dm, ';domain=.' + dm].forEach(function (x) { d.cookie = n + '=;path=/;max-age=0' + x; }); });
+      }
     }
     close();
     if (back) { var a = d.querySelector('a[data-ck]'); if (a) a.focus(); }
   }
   function show(manual) {
-    build(); sync();
+    build(); sync(manual);
     if (manual) { auto = false; box.classList.add('on'); pad(true); var k = box.querySelector('button'); if (k) k.focus({ preventScroll: true }); return; }
     auto = true; place(); pad(true);
     W.addEventListener('scroll', onScroll, { passive: true }); W.addEventListener('resize', onScroll, { passive: true });
@@ -1062,7 +1067,7 @@
     e.preventDefault(); show(true);
   });
   var c = ck();
-  if (c && c.v === '1' && W.clarity) W.clarity('consentv2', GRANT); /* згода з попередньої сторінки — Clarity ставить свої cookies (виклик у черзі до завантаження тегу) */
+  if (c && c.v === '1' && W.clarity) W.clarity('consentv2', GRANT); /* «Добре» на попередній сторінці — сигнал згоди (у черзі до завантаження тегу); без вибору — жодного сигналу */
   if (!c || c.ua || get()) return; /* Україна або вже вибрали — плашка лише з футера */
   function idle() { (W.requestIdleCallback || function (f) { setTimeout(f, 200); })(function () { show(false); }, { timeout: 2500 }); }
   if (d.readyState === 'complete') idle(); else W.addEventListener('load', idle);
