@@ -43,6 +43,7 @@ def versions(s):
 # tools/site/critcss.py, список — node tools/tests/critcss.mjs); повний /assets/site-chrome.v1.css — останнім у <body>:
 # контент Chrome малює з критичним, defer-скрипти виконуються вже після повного файлу, каскад після нього — як раніше.
 import critcss  # noqa: E402
+import cssbundle  # noqa: E402  спільні інлайн-стилі <head> → /assets/ib-*.css (tools/site/cssbundle.py)
 critcss.write()  # критичний файл — з поточного site-chrome.v1.css (до ?v=)
 # коротко (rel без лапок, crit.v1.css): сторінки на межі бюджету HTML 64 КБ (tools/ui/ui.py)
 CSS_TAG = f'<link rel=stylesheet href="/assets/crit.v1.css?v={_ver("/assets/crit.v1.css")}">'
@@ -1031,6 +1032,9 @@ def apply(s, rel):
             s = s[:i] + ''.join(out) + price_fmt(body[pos:], lang)
         import fx  # друга валюта біля «від $…» (tools/site/fx.py)
         return prices_all(fx.apply(s, lang, rel), lang)
+    # спільні інлайн-стилі <head>, винесені у /assets/ib-*.css (tools/site/cssbundle.py), — назад інлайн: усі кроки нижче бачать
+    # сторінку як раніше; останнім кроком (перед fx — бюджет) bundle() виносить їх знову
+    s = cssbundle.expand(s)
     lang, path, alts = page_lang(s), rel_to_path(rel), alternates(s)
     if rel in [i18n.path_to_file(h) for h in HOME.values()]:
         alts.setdefault(lang, HOME[lang])
@@ -1154,7 +1158,9 @@ def apply(s, rel):
     # «від $550/м² (≈ €500/м²)» de/fr/es/pt/pl, «(≈ 25 000 ₴/м²)» uk/ru — курси НБУ з tools/site/fx.json (Михайло 18.11.2026);
     # останнім кроком: сторінка вже повна, і друга валюта не виходить за бюджет HTML (tools/site/fx.py)
     import fx
-    return fx.apply(full_css(s), lang, rel)
+    # шаблонні інлайн-блоки <head> (шрифти, базові стилі шаблону, m-fix, .rel/.gal, стаття, ui-polish) → один /assets/ib-<хеш>.css
+    # на місці останнього блоку (каскад той самий; бюджет HTML 64 КБ, 22.11.2026)
+    return fx.apply(cssbundle.bundle(full_css(s)), lang, rel)
 
 
 # Один viewport на всі сторінки: viewport-fit=cover — сторінка на весь екран iPhone (Dynamic Island, home indicator,
@@ -1221,3 +1227,7 @@ if __name__ == '__main__':
         sys.exit(1 if bad else 0)
     n = sum(apply_file(r) for r in files)
     print(f'Шапка/футер оновлено: {n} з {len(files)} сторінок')
+    if not args:  # повний прогін: прибрати /assets/ib-*.css, на які вже не посилається жодна сторінка
+        g = cssbundle.prune()
+        if g:
+            print(f'cssbundle: видалено {len(g)} зайвих ib-*.css')

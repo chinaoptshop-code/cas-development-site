@@ -40,6 +40,7 @@ from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import chrome  # єдина шапка/футер (tools/site/chrome.py)
+import cssbundle  # спільні інлайн-стилі <head> → /assets/ib-*.css (tools/site/cssbundle.py)
 import i18n  # мови, словники, hreflang-кластери (tools/site/i18n.py)
 import captions  # підписи галерей «обʼєкт · статус» (tools/site/captions.py)
 import leadform  # легка заявка: лише телефон, швидка заявка в hero (tools/site/leadform.py)
@@ -798,7 +799,7 @@ def ld(p):
 
 def build(p):
     lang, slug = p['lang'], p['slug']
-    s = leadform.QUICK_RX.sub('', open(os.path.join(ROOT, TPL[lang]), encoding='utf-8').read())  # швидку заявку ставить leadform
+    s = leadform.QUICK_RX.sub('', cssbundle.expand(open(os.path.join(ROOT, TPL[lang]), encoding='utf-8').read()))  # швидку заявку ставить leadform; інлайн-CSS шаблону — з /assets/ib-*.css (cssbundle.py)
     s = ux.strip(s)  # іконки/згортання шаблону ставить chrome.apply() заново
     u = url(lang, slug)
     if lang not in ('uk', 'ru'):
