@@ -7,6 +7,7 @@
  "description": "Coffee shop design in Kyiv: how to plan the bar and seating, which services to design before the fit-out and what a project costs — from $30/m², minimum $2,500.",
  "lead": "In a small coffee shop every metre has a job: the same floor area has to hold the bar, the queue, the display case and seats where a guest will want to stay a little longer. Here is where coffee shop design starts, how to plan the bar and the seating area, which services to design before the fit-out and what the project costs.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/en/restaurant-design",
   "Restaurant & café design"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Where coffee shop design starts"
+   "Where does coffee shop design start?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "The bar is the heart of the layout"
+   "Why is the bar the heart of a coffee shop layout?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "The seating area: how many seats and what kind"
+   "How many seats, and what kind, does the room need?"
   ],
   [
    "p",
@@ -77,7 +78,7 @@
   ],
   [
    "h2",
-   "Atmosphere: light, materials and acoustics"
+   "How do light, materials and acoustics set the mood?"
   ],
   [
    "p",
@@ -98,7 +99,7 @@
   ],
   [
    "h2",
-   "How much coffee shop design costs"
+   "How much does coffee shop design cost?"
   ],
   [
    "p",
@@ -110,7 +111,7 @@
   ],
   [
    "h2",
-   "Mistakes that are expensive to fix"
+   "Which coffee shop mistakes are expensive to fix?"
   ],
   [
    "ul",

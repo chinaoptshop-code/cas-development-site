@@ -7,6 +7,7 @@
  "description": "Design d’un coffee shop à Kyiv : organiser le bar et la salle, réseaux à prévoir avant les travaux et coût du projet — dès $30/m², minimum $2 500.",
  "lead": "Dans un petit coffee shop, chaque mètre travaille : sur la même surface, il faut loger le bar, la file d’attente, la vitrine et des places où le client aura envie de rester plus longtemps. Nous expliquons par où commence le design d’un coffee shop, comment organiser le bar et la salle, quels réseaux prévoir avant les travaux et combien coûte le projet.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/fr/design-restaurant-cafe",
   "Design de restaurant et de café"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Par où commence le design d’un coffee shop"
+   "Par où commence le design d'un coffee shop ?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Le bar, cœur de l’aménagement"
+   "Pourquoi le bar est-il le cœur de l'aménagement ?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "La salle : combien de places et lesquelles"
+   "Combien de places, et lesquelles, prévoir en salle ?"
   ],
   [
    "p",
@@ -77,7 +78,7 @@
   ],
   [
    "h2",
-   "Ambiance : lumière, matériaux et acoustique"
+   "Comment lumière, matériaux et acoustique créent l'ambiance ?"
   ],
   [
    "p",
@@ -98,7 +99,7 @@
   ],
   [
    "h2",
-   "Combien coûte le design d’un coffee shop"
+   "Combien coûte le design d'un coffee shop ?"
   ],
   [
    "p",
@@ -110,7 +111,7 @@
   ],
   [
    "h2",
-   "Les erreurs qui coûtent cher à corriger"
+   "Quelles erreurs coûtent cher à corriger ?"
   ],
   [
    "ul",
