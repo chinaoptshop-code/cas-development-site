@@ -7,6 +7,7 @@
  "description": "Matériaux d’un intérieur haut de gamme : pierre, placage, bois massif et laiton — où les utiliser, par quoi les remplacer, comment les associer.",
  "lead": "La pierre naturelle, le placage bois et le laiton sont les matériaux qui donnent le plus souvent à un intérieur son caractère luxueux. Chacun a son tempérament : la pierre absorbe les taches, le placage n’aime pas l’air sec et le laiton change de couleur. Voici où ces matériaux fonctionnent le mieux, ce qui peut les remplacer et comment les associer pour que l’intérieur se bonifie avec le temps.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/architecture-interieur",
   "Architecture d’intérieur"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Pourquoi les matériaux déterminent le niveau d’un intérieur"
+   "Pourquoi les matériaux font-ils le niveau d'un intérieur ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Pierre naturelle : marbre, travertin, granit, quartzite"
+   "Quelle pierre naturelle choisir ?"
   ],
   [
    "p",
@@ -55,7 +56,7 @@
   ],
   [
    "h2",
-   "Pierre naturelle ou grès cérame"
+   "Pierre naturelle ou grès cérame ?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "La pierre dans la salle de bains"
+   "La pierre naturelle convient-elle à la salle de bains ?"
   ],
   [
    "p",
@@ -71,7 +72,7 @@
   ],
   [
    "h2",
-   "Placage et bois massif : la chaleur du bois"
+   "En quoi le placage diffère-t-il du bois massif ?"
   ],
   [
    "p",
@@ -112,7 +113,7 @@
   ],
   [
    "h2",
-   "Le laiton : un métal vivant"
+   "Comment le laiton évolue-t-il avec le temps ?"
   ],
   [
    "p",
@@ -134,7 +135,7 @@
   ],
   [
    "h2",
-   "L’éclairage décide de l’aspect d’un matériau"
+   "Comment la lumière change-t-elle un matériau ?"
   ],
   [
    "p",
@@ -142,7 +143,7 @@
   ],
   [
    "h2",
-   "Comment associer les matériaux"
+   "Comment associer les matériaux ?"
   ],
   [
    "p",
@@ -160,7 +161,7 @@
   ],
   [
    "h2",
-   "Entretien : pour que les matériaux vieillissent bien"
+   "Comment entretenir les matériaux naturels ?"
   ],
   [
    "p",
@@ -174,7 +175,7 @@
   ],
   [
    "h2",
-   "Comment nous choisissons les matériaux dans un projet"
+   "Comment choisissons-nous les matériaux ?"
   ],
   [
    "p",
