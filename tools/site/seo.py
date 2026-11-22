@@ -20,7 +20,9 @@
   • сирітські сторінки: на сторінку немає жодного посилання з вмісту інших сторінок (шапка/футер не рахуються);
   • глибина кліків (22.11.2026): кожна сторінка з sitemap досяжна за ≤ 3 кліки (BFS по <a href>, з шапкою/футером)
     від головної СВОЄЇ мови — інакше помилка (з 22.11.2026 і для «досяжних лише через інші мови»: міста, хаби й сироти мов —
-    у групах футера «Усі послуги студії», tools/site/lang/<мова>.json).
+    у групах футера «Усі послуги студії», tools/site/lang/<мова>.json);
+  • підписи фото (22.11.2026): змістовне <img> без непорожнього alt — помилка (декоративні: aria-hidden, role=presentation/none,
+    іконка в <a>/<button> з aria-label чи текстом — не рахуються).
 """
 import collections, glob, html, json, os, re, sys
 
@@ -88,6 +90,42 @@ def depth_check(graph, locs):
 
 
 def err(page, msg): ERR.append(f'{page}: {msg}')
+
+
+# Підписи фото (22.11.2026): змістовне <img> без непорожнього alt — помилка зі списком. Декоративні не рахуються: aria-hidden,
+# role="presentation"/"none", а також іконка всередині <a>/<button> з aria-label або власним текстом (назва посилання вже є).
+NOALT = []
+_IMG = re.compile(r'<img\b[^>]*>')
+_OPEN = re.compile(r'<(a|button)\b([^>]*)>|</(a|button)>')
+
+
+def no_alt(s):
+    out = []
+    for m in _IMG.finditer(s):
+        t = m.group(0)
+        a = re.search(r'\balt="([^"]*)"', t)
+        if a and a.group(1).strip() or re.search(r'aria-hidden="?true|role="?(?:presentation|none)\b', t):
+            continue
+        # найближчий відкритий <a>/<button> перед фото
+        tag, depth = None, 0
+        for x in reversed(list(_OPEN.finditer(s, max(0, m.start() - 1500), m.start()))):
+            if x.group(3):
+                depth += 1
+            elif depth:
+                depth -= 1
+            else:
+                tag = x
+                break
+        if tag:
+            end = s.find('</' + tag.group(1) + '>', m.end())
+            inner = re.sub(r'<[^>]+>', '', s[tag.end():end if end > 0 else m.end()]).strip()
+            if re.search(r'aria-label="[^"]*\S', tag.group(2)) or inner:
+                continue
+        src = re.search(r'\b(?:src|data-p|data-srcset)="([^" ]*)', t)
+        out.append(src.group(1) if src else t[:80])
+    return out
+
+
 def warn(page, msg): WARN.append(f'{page}: {msg}')
 
 
@@ -233,6 +271,8 @@ def main():
             l = l.rstrip('/') or '/'
             if l != (u.rstrip('/') or '/'):
                 inbound[l].add(u)
+        for t in no_alt(s):
+            NOALT.append(f'{rel}: {t}')
         # JSON-LD — перевіряємо і на noindex-сторінках
         lds = re.findall(r'<script type="application/ld\+json">(.*?)</script>', s, re.S)
         alltypes = set()
@@ -349,6 +389,8 @@ def main():
             warn(r['rel'], 'сирітська сторінка (немає посилань з вмісту інших сторінок)')
     for u, src in sorted(broken.items()):
         err(sorted(src)[0], f'бите внутрішнє посилання {u} (сторінок: {len(src)})')
+    if NOALT:
+        err('img alt', f'змістовні фото без alt ({len(NOALT)}): ' + '; '.join(NOALT[:30]) + (' …' if len(NOALT) > 30 else ''))
     idx = sum(1 for r in rows.values() if not r['noindex'])
     if not quiet:
         for x in ERR: print('ПОМИЛКА', x)

@@ -91,7 +91,7 @@ def build(b=None):
         for i in rows:
             mp = b.min_price(d, i)
             price = 'за запитом' if mp is None else ('від ' if b.is_from(d, i) else '') + b.money(mp)
-            img = f'<img src="/{i["img"]}-400.webp" width=44 height=44 alt="" loading=lazy>' if i.get('img') else ''
+            img = f'<img src="/{i["img"]}-400.webp" width=44 height=44 alt="" role=none loading=lazy>' if i.get('img') else ''  # мініатюра поруч із назвою в тому ж рядку — декоративна (seo.py: role=none)
             trs.append(f'<tr><td>{img}<td>OZD-{i["id"]}<td><a href="/ozdoba/{i["slug"]}">{e(i["name"])}</a><td>{unit(i)}<td>{price}')
         toc.append(f'<a href="#{slug}">{e(cat)}</a>')
         secs.append(f'<section class="pr-cat" id="{slug}"><h2>{e(cat)}<small>{b.plural(len(rows))}</small></h2>'

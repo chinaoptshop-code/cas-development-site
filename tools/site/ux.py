@@ -686,7 +686,8 @@ def _teasers(m, lang):
         img = re.sub(r'sizes="[^"]*"', f'sizes="{sz}"', img)
         img = re.sub(r'data-p="([^:"]+):([\d,]+)"', lambda y: 'data-srcset="' + ','.join(f'/img/p/{y.group(1)}-{v}.webp {v}w' for v in y.group(2).split(',')) + '"', img)
         src = re.search(r'/img/p/[^ ]+-900\.webp', img).group(0)  # без JS (тизер видно й без нього) — одне фото 900w
-        return x.group(0) + img + f'<noscript><img class="ux-tz" src="{src}" width="{w}" height="{h}" alt="" loading="lazy"></noscript>'
+        alt = re.search(r'alt="([^"]*)"', img).group(1)  # той самий опис, що й у основного фото (seo.py: змістовне фото без alt)
+        return x.group(0) + img + f'<noscript><img class="ux-tz" src="{src}" width="{w}" height="{h}" alt="{alt}" loading="lazy"></noscript>'
     return re.sub(r'<section class="(rp-teaser(?: rs-teaser)?)"><div class="w">', add, m)
 
 
