@@ -20,6 +20,7 @@ ROOT = os.path.dirname(os.path.dirname(HERE))
 OUT = os.path.join(ROOT, 'assets', 'konfigurator')
 sys.path.insert(0, os.path.join(ROOT, 'tools', 'site'))
 import chrome, i18n  # noqa: E402
+import cssbundle  # noqa: E402  спільні інлайн-стилі <head> → /assets/ib-*.css
 import leadform  # noqa: E402  легка заявка (tools/site/leadform.py)
 
 
@@ -197,9 +198,11 @@ ICON = {
 
 def head_bits():
     """Шрифти (id=cas-fonts) і ui-polish (токени розмірів, фокус) — з наявної ручної сторінки, щоб не розходились."""
-    s = open(os.path.join(ROOT, 'kalkuliator-remontu.html'), encoding='utf-8').read()
+    # сторінка може бути вже зі спільним /assets/ib-*.css (tools/site/cssbundle.py) — беремо інлайн-блоки з нього
+    s = cssbundle.expand(open(os.path.join(ROOT, 'kalkuliator-remontu.html'), encoding='utf-8').read())
     fonts = re.search(r'<style id="cas-fonts">.*?</style>', s, re.S).group(0)
-    polish = re.search(r'<!--ui-polish--><script>document\.documentElement\.classList\.add\(\'js\'\)</script><style id="ui-polish">.*?</style><!--/ui-polish-->', s, re.S).group(0)
+    polish = ("<!--ui-polish--><script>document.documentElement.classList.add('js')</script>"
+              + re.search(r'<style id="ui-polish">.*?</style>', s, re.S).group(0) + '<!--/ui-polish-->')
     clarity = chrome.CLARITY
     return fonts, polish, clarity
 
