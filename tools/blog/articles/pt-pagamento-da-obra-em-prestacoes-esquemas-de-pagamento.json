@@ -7,6 +7,7 @@
  "description": "Pagar a obra em prestações: esquemas 50/50, 50/30/20, 50/40/10, início a partir de 10% de adiantamento. O que se paga à parte e como ligar pagamentos às fases.",
  "lead": "Pagar a remodelação em prestações é uma prática normal que protege o cliente e o empreiteiro. Mas o esquema de pagamentos tem de ser claro: o que paga exatamente, o que desencadeia o pagamento seguinte e o que acontece se algo mudar. Analisamos os esquemas mais comuns, exemplos e as cláusulas do contrato a que convém estar atento.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pt/contrato-garantia-pagamento",
   "Contrato de remodelação, garantia e pagamento"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Porque dividir o pagamento da obra em partes"
+   "Porquê pagar a obra em prestações?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Que esquemas de pagamento existem"
+   "Que esquemas de pagamento existem?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "O que paga exatamente"
+   "O que está exatamente a pagar?"
   ],
   [
    "p",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Exemplo: como calcular a base do esquema de pagamento"
+   "Como calcular a base do esquema de pagamento?"
   ],
   [
    "p",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Como escolher o esquema para a sua situação"
+   "Como escolher o esquema para a sua situação?"
   ],
   [
    "h3",
@@ -169,7 +170,7 @@
   ],
   [
    "h2",
-   "Como ligar os pagamentos às fases e à receção"
+   "Como ligar pagamentos a etapas e receção?"
   ],
   [
    "p",
@@ -191,7 +192,7 @@
   ],
   [
    "h2",
-   "Sinais de alerta nas condições de pagamento"
+   "Que condições de pagamento são sinais de alerta?"
   ],
   [
    "ul",
@@ -210,7 +211,7 @@
   ],
   [
    "h2",
-   "Checklist: o que o contrato deve dizer sobre o pagamento"
+   "O que deve dizer o contrato sobre o pagamento?"
   ],
   [
    "ul",

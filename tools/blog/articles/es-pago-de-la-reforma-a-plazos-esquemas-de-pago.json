@@ -7,6 +7,7 @@
  "description": "Pagar la reforma por partes: esquemas 50/50, 50/30/20, 50/40/10 y anticipo desde el 10%. Qué se paga aparte, cómo vincular los pagos a las fases.",
  "lead": "Pagar la reforma por partes es una práctica normal que protege tanto al cliente como a la empresa. Pero el esquema de pagos debe ser claro: qué paga exactamente, qué da paso al siguiente pago y qué ocurre si algo cambia. Repasamos los esquemas habituales, ejemplos y las cláusulas del contrato a las que conviene prestar atención.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/es/contrato-garantia-pago",
   "Contrato de reforma, garantía y pago"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Por qué dividir el pago de la reforma en partes"
+   "¿Por qué pagar la reforma a plazos?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Qué esquemas de pago existen"
+   "¿Qué esquemas de pago de reforma existen?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Qué paga exactamente"
+   "¿Qué está pagando exactamente?"
   ],
   [
    "p",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Ejemplo: cómo calcular la base del esquema de pago"
+   "¿Cómo calcular la base del esquema de pago?"
   ],
   [
    "p",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Cómo elegir el esquema según su situación"
+   "¿Cómo elegir el esquema según su situación?"
   ],
   [
    "h3",
@@ -169,7 +170,7 @@
   ],
   [
    "h2",
-   "Cómo vincular los pagos a las fases y a la recepción"
+   "¿Cómo vincular los pagos a etapas y recepción?"
   ],
   [
    "p",
@@ -191,7 +192,7 @@
   ],
   [
    "h2",
-   "Señales de alarma en las condiciones de pago"
+   "¿Qué condiciones de pago son señales de alarma?"
   ],
   [
    "ul",
@@ -210,7 +211,7 @@
   ],
   [
    "h2",
-   "Checklist: qué debe decir el contrato sobre el pago"
+   "¿Qué debe decir el contrato sobre el pago?"
   ],
   [
    "ul",

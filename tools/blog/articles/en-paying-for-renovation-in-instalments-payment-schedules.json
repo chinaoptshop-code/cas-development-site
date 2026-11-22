@@ -7,6 +7,7 @@
  "description": "Paying for a renovation in instalments: 50/50, 50/30/20, 50/40/10 schedules, start from a 10% advance. What is paid separately, linking payments to stages.",
  "lead": "Paying for a renovation in instalments is normal practice that protects both the client and the contractor. But the payment schedule must be clear: what exactly you are paying for, what triggers the next payment and what happens if something changes. We go through common schedules, examples and the contract clauses worth checking.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/en/contract-warranty-payment",
   "Renovation contract, warranty and payment"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Why split payment for a renovation into instalments"
+   "Why split renovation payments into instalments?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "What renovation payment schedules exist"
+   "Which renovation payment schedules exist?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "What exactly you are paying for"
+   "What exactly are you paying for?"
   ],
   [
    "p",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Example: how to calculate the base for a payment schedule"
+   "How do you calculate the base for a payment schedule?"
   ],
   [
    "p",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "How to choose a schedule for your situation"
+   "How do you choose a schedule for your situation?"
   ],
   [
    "h3",
@@ -169,7 +170,7 @@
   ],
   [
    "h2",
-   "How to link payments to stages and acceptance"
+   "How do you link payments to stages and acceptance?"
   ],
   [
    "p",
@@ -191,7 +192,7 @@
   ],
   [
    "h2",
-   "Warning signs in payment terms"
+   "Which payment terms are warning signs?"
   ],
   [
    "ul",
@@ -210,7 +211,7 @@
   ],
   [
    "h2",
-   "Checklist: what the contract should say about payment"
+   "What should the contract say about payment?"
   ],
   [
    "ul",

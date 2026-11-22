@@ -7,6 +7,7 @@
  "description": "Płatność za remont w częściach: schematy 50/50, 50/30/20, 50/40/10, start od 10% zaliczki. Co płaci się osobno i jak powiązać płatności z etapami.",
  "lead": "Płacenie za remont w częściach to normalna praktyka, która chroni i inwestora, i wykonawcę. Ale schemat płatności musi być jasny: za co dokładnie płacisz, co uruchamia kolejną płatność i co się dzieje, gdy coś się zmieni. Omawiamy popularne schematy, przykłady i zapisy umowy, na które warto zwrócić uwagę.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/umowa-gwarancja-platnosc",
   "Umowa na remont, gwarancja i płatność"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Po co dzielić płatność za remont na części"
+   "Po co dzielić płatność za remont na raty?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Jakie są schematy płatności za remont"
+   "Jakie są schematy płatności za remont?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Za co dokładnie płacisz"
+   "Za co dokładnie płacisz?"
   ],
   [
    "p",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Przykład: jak policzyć podstawę schematu płatności"
+   "Jak policzyć podstawę schematu płatności?"
   ],
   [
    "p",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Jak dobrać schemat do swojej sytuacji"
+   "Jak wybrać schemat płatności do swojej sytuacji?"
   ],
   [
    "h3",
@@ -169,7 +170,7 @@
   ],
   [
    "h2",
-   "Jak powiązać płatności z etapami i odbiorem"
+   "Jak powiązać płatności z etapami i odbiorem?"
   ],
   [
    "p",
@@ -191,7 +192,7 @@
   ],
   [
    "h2",
-   "Sygnały ostrzegawcze w warunkach płatności"
+   "Jakie warunki płatności powinny zaniepokoić?"
   ],
   [
    "ul",
@@ -210,7 +211,7 @@
   ],
   [
    "h2",
-   "Checklista: co powinno być w umowie w sprawie płatności"
+   "Co powinna mówić umowa o płatnościach?"
   ],
   [
    "ul",
