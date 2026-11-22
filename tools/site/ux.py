@@ -330,7 +330,7 @@ def _light_hero(m, rel, lang, full):
     elif rel in _quiz_pages():
         href = '#kalkulyator'
     elif CALC.get(lang) and i18n.path_to_file(CALC[lang]) != rel:
-        href = CALC[lang] + '#calc'  # одразу до калькулятора: без якоря людина бачила hero сторінки з ще однією кнопкою «Порахувати» (зайвий крок, 20.11.2026)
+        href = CALC[lang] + (('?' + html.escape(_calc_q()[rel])) if rel in _calc_q() else '') + '#calc'  # одразу до калькулятора: без якоря людина бачила hero сторінки з ще однією кнопкою «Порахувати» (зайвий крок, 20.11.2026)
     elif QUIZ_ALT.get(lang) and i18n.path_to_file(QUIZ_ALT[lang]) in _quiz_pages() and i18n.path_to_file(QUIZ_ALT[lang]) != rel:
         href = QUIZ_ALT[lang] + '#kalkulyator'  # мови без сторінки калькулятора: квіз на «Ремонт під ключ»
     else:
@@ -338,6 +338,23 @@ def _light_hero(m, rel, lang, full):
     t = UX.get(lang, UX.get('en', UX['uk']))
     btn = f'\n    <a class="btn ux-calc" href="{href}">{html.escape(t.get("calc", UX["uk"]["calc"]))}</a>'
     return m[:a + 4] + btn + m[a + 4:]
+
+
+def _calc_q(_c={}):
+    """«Порахувати» з вибором у калькуляторі (22.11.2026): поле "calc_q" сторінки tools/site/pages/<мова>-<slug>.json,
+    напр. "k=key&t=modular" → /ru/kalkulyator-remonta?k=key&t=modular#calc. Ключ — шлях файлу сторінки."""
+    if 'm' not in _c:
+        import glob, json
+        _c['m'] = {}
+        for f in glob.glob(os.path.join(ROOT, 'tools/site/pages/*.json')):
+            try:
+                p = json.load(open(f, encoding='utf-8'))
+            except Exception:
+                continue
+            q = p.get('calc_q')
+            if q and re.fullmatch(r'[a-z0-9=&,_-]+', q):
+                _c['m'][i18n.meta(p['lang'])['prefix'] + p['slug'] + '.html'] = q
+    return _c['m']
 
 
 def _quiz_pages(_c={}):
