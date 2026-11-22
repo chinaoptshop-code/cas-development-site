@@ -965,3 +965,110 @@
  t.src='data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADrbWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAETAAAAIQAAAChpaW5mAAAAAAABAAAAGmluZmUCAAAAAAEAAGF2MDFDb2xvcgAAAABqaXBycAAAAEtpcGNvAAAAFGlzcGUAAAAAAAAAAQAAAAEAAAAQcGl4aQAAAAADCAgIAAAADGF2MUOBAAwAAAAAE2NvbHJuY2x4AAEADQAGgAAAABdpcG1hAAAAAAAAAAEAAQQBAoMEAAAAKW1kYXQSAAoIGAAGiAhoNCAyExlHh4Yhh5555oAAAJBAyRxhQr4=';
 })();
 });
+/* Cookies (Михайло 22.11.2026: «додавай, але Clarity нехай і без згоди працює відразу»). Clarity — для всіх після першої дії
+   (сніпет CLARITY у <head>, tools/site/chrome.py; стан — window.casCk: ua, v, n, g(), f()), не вантажиться лише після відмови (cas_ck = "0|дата").
+   Плашка-повідомлення «Добре / Відхилити»: лише поза Україною (часовий пояс) і доки немає вибору; після load в idle, position:fixed (без зсуву
+   верстки); поки під нею опинилися б H1 чи кнопки першого екрана — схована (зʼявляється, щойно їх прокрутили); фокус не забирає, Esc нічого не робить.
+   «Cookies» у футері (a[data-ck]) відкриває її з поточним станом (і в Україні). Сигнал згоди Clarity (consentv2) — ЛИШЕ після «Добре»
+   (мовчання — не згода); «Відхилити» — consentv2 denied + consent(false) (Clarity стирає свої cookies і зупиняє запис), наші _clck/_clsk теж
+   прибираємо. Поки плашка видима, html.ck-p додає внизу сторінки місце під неї (кінець футера не ховається). */
+(function (W, d) {
+  var TX = {
+    uk: ['Ми використовуємо cookies для аналітики.', 'Детальніше', 'Добре', 'Відхилити', 'Аналітика ввімкнена', 'Аналітика вимкнена'],
+    ru: ['Мы используем cookies для аналитики.', 'Подробнее', 'Хорошо', 'Отклонить', 'Аналитика включена', 'Аналитика выключена'],
+    en: ['We use cookies for analytics.', 'Learn more', 'OK', 'Decline', 'Analytics is on', 'Analytics is off'],
+    es: ['Usamos cookies para analítica.', 'Más información', 'De acuerdo', 'Rechazar', 'Analítica activada', 'Analítica desactivada'],
+    pl: ['Używamy plików cookies do analityki.', 'Więcej', 'OK', 'Odrzucam', 'Analityka włączona', 'Analityka wyłączona'],
+    de: ['Wir verwenden Cookies für Analysen.', 'Mehr erfahren', 'OK', 'Ablehnen', 'Analyse aktiv', 'Analyse deaktiviert'],
+    fr: ['Nous utilisons des cookies pour la mesure d’audience.', 'En savoir plus', 'D’accord', 'Refuser', 'Mesure d’audience activée', 'Mesure d’audience désactivée'],
+    pt: ['Utilizamos cookies para análise.', 'Saber mais', 'OK', 'Recusar', 'Análise ativada', 'Análise desativada'],
+    zh: ['我们使用 cookies 进行访问分析。', '了解更多', '好的', '拒绝', '访问分析已开启', '访问分析已关闭'],
+    ar: ['نستخدم ملفات تعريف الارتباط (cookies) للتحليلات.', 'المزيد', 'حسنًا', 'رفض', 'التحليلات مفعّلة', 'التحليلات معطّلة']
+  };
+  var PP = { uk: '/konfidentsiinist', ru: '/ru/konfidentsialnost', en: '/en/privacy-policy', es: '/es/privacidad', pl: '/pl/polityka-prywatnosci',
+    de: '/de/datenschutz', fr: '/fr/confidentialite', pt: '/pt/privacidade', zh: '/zh/privacy', ar: '/ar/privacy' };
+  var GRANT = { ad_Storage: 'denied', analytics_Storage: 'granted' }; /* реклами немає — лише аналітика */
+  var K = 'cas_ck', box = null, st = null, auto = false, raf = 0;
+  function ck() { return W.casCk || null; }
+  function get() { try { return (W.localStorage.getItem(K) || '').charAt(0); } catch (e) { return (ck() || {}).v || ''; } }
+  function put(v) { try { W.localStorage.setItem(K, v + '|' + new Date().toISOString().slice(0, 10)); } catch (e) {} }
+  function lang() { var l = (d.documentElement.lang || 'uk').slice(0, 2).toLowerCase(); return TX[l] ? l : 'en'; }
+  function build() {
+    if (box) return box;
+    var l = lang(), t = TX[l], a = d.querySelector('a[data-ck]');
+    box = d.createElement('div'); box.className = 'ck'; box.setAttribute('role', 'region'); box.setAttribute('aria-label', 'Cookies');
+    if (d.querySelector('.mbar[data-one]')) box.classList.add('ck-up'); /* телефон: над пігулкою «Звʼязатися» */
+    var p = d.createElement('p'), m = d.createElement('a');
+    m.href = a ? a.getAttribute('href') : PP[l] + '#cookies'; m.textContent = t[1];
+    st = d.createElement('span'); st.className = 'ck-st'; st.setAttribute('aria-live', 'polite');
+    p.appendChild(d.createTextNode(t[0] + ' ')); p.appendChild(m); p.appendChild(st);
+    var b = d.createElement('div'); b.className = 'ck-b';
+    [['1', t[2]], ['0', t[3]]].forEach(function (x) {
+      var k = d.createElement('button'); k.type = 'button'; k.setAttribute('data-v', x[0]); k.textContent = x[1];
+      k.addEventListener('click', function () { choose(x[0]); }); b.appendChild(k);
+    });
+    box.appendChild(p); box.appendChild(b); d.body.appendChild(box);
+    return box;
+  }
+  function pad(on) {
+    var h = d.documentElement;
+    if (on && box) h.style.setProperty('--ckh', Math.ceil(innerHeight - box.getBoundingClientRect().top + 8) + 'px');
+    h.classList.toggle('ck-p', !!on);
+  }
+  /* H1 і кнопки першого екрана, які плашка зараз накрила б */
+  function blocks() {
+    var r = box.getBoundingClientRect(), main = d.querySelector('main'), hero = main && main.firstElementChild;
+    var els = [].slice.call(d.querySelectorAll('h1')).concat(hero ? [].slice.call(hero.querySelectorAll('a.btn,button,input,select,textarea')) : []);
+    return els.some(function (e) {
+      var q = e.getBoundingClientRect();
+      return q.width > 1 && q.height > 1 && q.bottom > r.top && q.top < r.bottom && q.right > r.left && q.left < r.right;
+    });
+  }
+  function place() {
+    raf = 0; if (!box || !auto) return;
+    var hide = blocks();
+    box.classList.toggle('on', !hide);
+  }
+  function onScroll() { if (!raf) raf = requestAnimationFrame(place); }
+  function sync(manual) {
+    var v = get(), t = TX[lang()];
+    [].forEach.call(box.querySelectorAll('button'), function (k) { k.setAttribute('aria-pressed', String(k.getAttribute('data-v') === v)); });
+    st.textContent = manual ? ' · ' + (v === '0' ? t[5] : t[4]) : ''; /* стан — лише коли відкрили з футера */
+  }
+  function close() {
+    if (!box) return;
+    box.classList.remove('on'); auto = false; pad(false);
+    W.removeEventListener('scroll', onScroll); W.removeEventListener('resize', onScroll);
+  }
+  function choose(v) {
+    var c = ck(), back = box && box.contains(d.activeElement);
+    put(v);
+    if (c) {
+      c.v = v;
+      if (v === '1') { if (W.clarity) W.clarity('consentv2', GRANT); c.g(); }
+      else {
+        c.f('remove');
+        if (c.n && W.clarity) { W.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'denied' }); W.clarity('consent', false); }
+        var dm = location.hostname.replace(/^www\./, '');
+        ['_clck', '_clsk'].forEach(function (n) { ['', ';domain=' + dm, ';domain=.' + dm].forEach(function (x) { d.cookie = n + '=;path=/;max-age=0' + x; }); });
+      }
+    }
+    close();
+    if (back) { var a = d.querySelector('a[data-ck]'); if (a) a.focus(); }
+  }
+  function show(manual) {
+    build(); sync(manual);
+    if (manual) { auto = false; box.classList.add('on'); pad(true); var k = box.querySelector('button'); if (k) k.focus({ preventScroll: true }); return; }
+    auto = true; place(); pad(true);
+    W.addEventListener('scroll', onScroll, { passive: true }); W.addEventListener('resize', onScroll, { passive: true });
+  }
+  d.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-ck]'); if (!a || e.button || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    e.preventDefault(); show(true);
+  });
+  var c = ck();
+  if (c && c.v === '1' && W.clarity) W.clarity('consentv2', GRANT); /* «Добре» на попередній сторінці — сигнал згоди (у черзі до завантаження тегу); без вибору — жодного сигналу */
+  if (!c || c.ua || get() || /^\/kabinet/.test(location.pathname)) return; /* Україна, вже вибрали або кабінет (свої нижні панелі) — плашка лише з футера */
+  function idle() { (W.requestIdleCallback || function (f) { setTimeout(f, 200); })(function () { show(false); }, { timeout: 2500 }); }
+  if (d.readyState === 'complete') idle(); else W.addEventListener('load', idle);
+})(window, document);

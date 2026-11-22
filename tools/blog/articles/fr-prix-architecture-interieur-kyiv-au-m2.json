@@ -5,8 +5,9 @@
  "title": "Prix de l'architecture intérieure à Kyiv : coût au m² et contenu de chaque formule",
  "seo_title": "Prix architecture intérieure à Kyiv : $6, $30, $45 le m²",
  "description": "Architecture intérieure à Kyiv : plan dès $6/m², projet dès $30/m² (min. $2 500), formule complète avec suivi dès $45/m². Contenu des formules.",
- "lead": "L'architecture intérieure à Kyiv coûte plus ou moins cher selon la documentation nécessaire : du plan d'aménagement à $6/m² au projet complet avec suivi du designer dès $45/m². Le prix se calcule au m² ; nous expliquons donc le contenu de chaque formule et chiffrons des exemples pour 40, 80 et 120 m².",
+ "lead": "L'architecture intérieure à Kyiv coûte dès $6/m² pour le plan d'aménagement et dès $45/m² pour le projet complet avec suivi du designer. Le prix se calcule au m² ; nous expliquons donc le contenu de chaque formule et chiffrons des exemples pour 40, 80 et 120 m².",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/fr/architecture-interieur",
   "Architecture intérieure"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "De quoi dépend le prix"
+   "De quoi dépend le prix d'un projet d'intérieur ?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "Trois formules et leurs prix"
+   "Combien coûte l'architecture intérieure à Kyiv au m² ?"
   ],
   [
    "ul",
@@ -46,15 +47,15 @@
   ],
   [
    "h2",
-   "Formule aménagement"
+   "Quand la formule aménagement suffit-elle ?"
   ],
   [
    "p",
-   "Le plan est le socle de tout intérieur : il fixe la place de la cuisine, des placards et du lit, le volume de rangement et la circulation. La formule convient à une rénovation simple où vous choisissez vous-même matériaux et meubles. Sans visuels ni plans d'exécution, l'entreprise prendra certaines décisions seule, comme la position des prises ou la pose du carrelage."
+   "La formule aménagement suffit pour une rénovation simple où vous choisissez vous-même matériaux et meubles. Le plan est le socle de tout intérieur : il fixe la place de la cuisine, des placards et du lit, le volume de rangement et la circulation. Sans visuels ni plans d'exécution, l'entreprise prendra certaines décisions seule, comme la position des prises ou la pose du carrelage."
   ],
   [
    "h2",
-   "Formule de base"
+   "Que comprend la formule de base ?"
   ],
   [
    "p",
@@ -62,11 +63,11 @@
   ],
   [
    "h2",
-   "Formule complète avec suivi du designer"
+   "À quoi sert le suivi du designer dans la formule complète ?"
   ],
   [
    "p",
-   "Même les meilleurs plans ne garantissent rien si personne ne compare le chantier au projet. Le suivi, ce sont des visites régulières selon le calendrier du contrat : le designer répond aux questions, vérifie la conformité aux plans et aide quand il faut modifier quelque chose. Si une autre entreprise rénove, conditions et coût sont fixés au cas par cas — voir [suivi du designer et contrôle technique](/fr/suivi-de-chantier)."
+   "Le suivi du designer garantit que le chantier respecte le projet : même les meilleurs plans ne servent à rien si personne ne compare les travaux avec eux. Le suivi, ce sont des visites régulières selon le calendrier du contrat : le designer répond aux questions, vérifie la conformité aux plans et aide quand il faut modifier quelque chose. Si une autre entreprise rénove, conditions et coût sont fixés au cas par cas — voir [suivi du designer et contrôle technique](/fr/suivi-de-chantier)."
   ],
   [
    "img",
@@ -76,11 +77,11 @@
   ],
   [
    "h2",
-   "Exemples : 40, 80 et 120 m²"
+   "Combien coûte le projet pour 40, 80 et 120 m² ?"
   ],
   [
    "p",
-   "Calcul aux tarifs de base du studio. C'est la limite basse : indicatif, le chiffre exact vient du devis."
+   "Le projet de base coûte dès $2 500 pour 40 ou 80 m² (le minimum s'applique) et dès $3 600 pour 120 m². C'est la limite basse : indicatif, le chiffre exact vient du devis."
   ],
   [
    "ul",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "À prévoir à part"
+   "Que prévoir à part dans le budget, en plus du projet ?"
   ],
   [
    "ul",

@@ -7,6 +7,7 @@
  "description": "Briefing für den Innenarchitekten: Familie, Räume, Stauraum, Haustechnik, Stil und Budget vorab durchdenken. Checkliste zum Ausfüllen vor dem ersten Termin.",
  "lead": "Ein Briefing für den Innenarchitekten beschreibt kurz, wie Sie leben und was Sie vom neuen Raum erwarten. Je genauer es ist, desto weniger Grundrissänderungen gibt es und desto schneller kommt das Projekt zur Kostenschätzung. Hier steht, was hineingehört, plus eine Checkliste für einen Abend.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/innenarchitekt",
   "Innenarchitekt"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Wozu ein Briefing"
+   "Wozu braucht der Innenarchitekt ein Briefing?"
   ],
   [
    "p",
-   "Ein Innenarchitekt kann nicht erraten, dass Sie jeden Abend kochen, Fahrräder in der Wohnung abstellen oder zweimal pro Woche im Homeoffice arbeiten. Ohne diese Angaben wird der Grundriss “durchschnittlich„ und später umgeplant: Steckdosen wandern, Schränke kommen dazu, Schlafzimmer und Arbeitszimmer tauschen. Das Briefing erspart diese Schleifen vor der ersten Skizze."
+   "Ein Briefing sorgt dafür, dass der Grundriss von Anfang an zu Ihrem Alltag passt: Ein Innenarchitekt kann nicht erraten, dass Sie jeden Abend kochen, Fahrräder in der Wohnung abstellen oder zweimal pro Woche im Homeoffice arbeiten. Ohne diese Angaben wird der Grundriss “durchschnittlich„ und später umgeplant: Steckdosen wandern, Schränke kommen dazu, Schlafzimmer und Arbeitszimmer tauschen. Das Briefing erspart diese Schleifen vor der ersten Skizze."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Wer dort lebt: Familie und Tagesabläufe"
+   "Was schreibt man über Familie und Tagesabläufe?"
   ],
   [
    "ul",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Raum für Raum"
+   "Was gehört für jeden Raum ins Briefing?"
   ],
   [
    "h3",
@@ -82,11 +83,11 @@
   ],
   [
    "h2",
-   "Stil und Referenzen"
+   "Wie zeigt man dem Planer, welcher Stil gefällt?"
   ],
   [
    "p",
-   "Den Namen eines Stils müssen Sie nicht kennen. Sammeln Sie 15–20 Interieurs, die Ihnen gefallen, und einige, die Ihnen gar nicht gefallen. Notieren Sie zu jedem Bild einen Satz: was genau gefällt – Farbe, Licht, Material, Möbel. Markieren Sie, was aus der jetzigen Wohnung mitkommt. Wenn der Stil noch offen ist, lesen Sie [Innenarchitektur: wo anfangen](/de/blog/innenarchitektur-wo-anfangen)."
+   "Sammeln Sie 15–20 Interieurs, die Ihnen gefallen, und einige, die Ihnen gar nicht gefallen – den Namen eines Stils müssen Sie nicht kennen. Notieren Sie zu jedem Bild einen Satz: was genau gefällt – Farbe, Licht, Material, Möbel. Markieren Sie, was aus der jetzigen Wohnung mitkommt. Wenn der Stil noch offen ist, lesen Sie [Innenarchitektur: wo anfangen](/de/blog/innenarchitektur-wo-anfangen)."
   ],
   [
    "gallery",
@@ -103,7 +104,7 @@
   ],
   [
    "h2",
-   "Haustechnik und technische Wünsche"
+   "Welche technischen Wünsche gehören ins Briefing?"
   ],
   [
    "ul",
@@ -118,11 +119,11 @@
   ],
   [
    "h2",
-   "Budget und Termine"
+   "Gehören Budget und Termine ins Briefing?"
   ],
   [
    "p",
-   "Das Budget gehört ins Briefing und ist kein Geheimnis. Nennen Sie eine ungefähre Summe für Planung, Renovierung und Möbel oder zumindest eine Obergrenze. Zur Orientierung: ein [Innenarchitekturprojekt für eine Wohnung](/de/wohnungsdesign) kostet bei CAS ab $30 pro m², mindestens $2 500. Schlüsselfertige Renovierung ab $550 pro m²: Arbeiten und Rohbaumaterial, Ausbaumaterial, Möbel und Geräte werden gesondert kalkuliert. Für 80 m²: 80 m² × $550 = $44 000. Ihre Fläche rechnen Sie im [Renovierungsrechner](/de/renovierungskosten-rechner) durch. Nennen Sie auch den Einzugstermin – die Bauzeit wird im Vertrag festgelegt."
+   "Ja: Das Budget gehört ins Briefing und ist kein Geheimnis. Nennen Sie eine ungefähre Summe für Planung, Renovierung und Möbel oder zumindest eine Obergrenze. Zur Orientierung: ein [Innenarchitekturprojekt für eine Wohnung](/de/wohnungsdesign) kostet bei CAS ab $30 pro m², mindestens $2 500. Schlüsselfertige Renovierung ab $550 pro m²: Arbeiten und Rohbaumaterial, Ausbaumaterial, Möbel und Geräte werden gesondert kalkuliert. Für 80 m²: 80 m² × $550 = $44 000. Ihre Fläche rechnen Sie im [Renovierungsrechner](/de/renovierungskosten-rechner) durch. Nennen Sie auch den Einzugstermin – die Bauzeit wird im Vertrag festgelegt."
   ],
   [
    "h2",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Was nach dem Briefing kommt"
+   "Was passiert nach dem Briefing?"
   ],
   [
    "p",

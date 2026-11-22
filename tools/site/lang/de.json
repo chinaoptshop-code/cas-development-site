@@ -93,6 +93,10 @@
      [
       "/de/gewerbe-schluesselfertig",
       "Gewerberäume schlüsselfertig"
+     ],
+     [
+      "/de/reihenhaus-renovierung",
+      "Reihenhaus-Renovierung"
      ]
     ]
    ],
@@ -122,6 +126,10 @@
      [
       "/de/gartengestaltung",
       "Gartengestaltung"
+     ],
+     [
+      "/de/neoklassische-innenarchitektur",
+      "Neoklassische Innenarchitektur"
      ]
     ]
    ],
@@ -139,6 +147,10 @@
      [
       "/de/ferienanlage-schluesselfertig",
       "Ferienanlage schlüsselfertig"
+     ],
+     [
+      "/de/porenbetonhaus",
+      "Porenbetonhaus"
      ]
     ]
    ],
@@ -185,6 +197,23 @@
      [
       "/de/portfolio",
       "Portfolio"
+     ]
+    ]
+   ],
+   [
+    "Regionen",
+    [
+     [
+      "/de/innenarchitektur-renovierung-ukraine",
+      "Ganze Ukraine"
+     ],
+     [
+      "/de/innenarchitektur-renovierung-oblast-kyjiw",
+      "Oblast Kyjiw"
+     ],
+     [
+      "/de/renovierung-bau-europa",
+      "Europa"
      ]
     ]
    ]

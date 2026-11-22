@@ -7,6 +7,7 @@
  "description": "Fiscalização técnica da remodelação de um apartamento: o que verifica, receção de trabalhos ocultos, diferença face ao designer e quando compensa.",
  "lead": "A fiscalização técnica de uma remodelação faz falta quando não pode estar na obra todos os dias ou não tem a certeza de saber avaliar a qualidade dos trabalhos ocultos. A sua função é detetar um erro enquanto corrigi-lo ainda é barato. Explicamos o que verifica, quando se justifica e como organizá-la.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pt/acompanhamento-fiscalizacao-obra",
   "Acompanhamento do designer e fiscalização técnica"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "O que é a fiscalização técnica"
+   "O que é a fiscalização técnica de uma remodelação?"
   ],
   [
    "p",
@@ -41,7 +42,7 @@
   ],
   [
    "h2",
-   "Diferença face ao acompanhamento do designer"
+   "Em que difere do acompanhamento do designer?"
   ],
   [
    "p",
@@ -68,7 +69,7 @@
   ],
   [
    "h2",
-   "Quando é especialmente necessária"
+   "Quando é especialmente necessária a fiscalização técnica?"
   ],
   [
    "ul",
@@ -83,7 +84,7 @@
   ],
   [
    "h2",
-   "O que verifica: checklist de trabalhos ocultos"
+   "O que verifica a fiscalização nos trabalhos ocultos?"
   ],
   [
    "h3",
@@ -148,11 +149,11 @@
   ],
   [
    "h2",
-   "Como a fiscalização poupa dinheiro"
+   "A fiscalização compensa e como poupa dinheiro?"
   ],
   [
    "p",
-   "A poupança não vem de um preço de remodelação mais baixo, mas de menos trabalho refeito, que custa sempre mais do que fazer bem à primeira. Uma falha de impermeabilização vista antes do azulejo é uma reparação local; depois, é desmontar a casa de banho. Um mau traçado de cabo visto antes do reboco corrige-se depressa; depois, são roços numa parede acabada."
+   "Sim, compensa: a poupança não vem de um preço de remodelação mais baixo, mas de menos trabalho refeito, que custa sempre mais do que fazer bem à primeira. Uma falha de impermeabilização vista antes do azulejo é uma reparação local; depois, é desmontar a casa de banho. Um mau traçado de cabo visto antes do reboco corrige-se depressa; depois, são roços numa parede acabada."
   ],
   [
    "p",
@@ -160,7 +161,7 @@
   ],
   [
    "h2",
-   "Como organizar a fiscalização"
+   "Como organizar a fiscalização técnica?"
   ],
   [
    "ol",
@@ -178,7 +179,7 @@
   ],
   [
    "h2",
-   "Sinais de alerta"
+   "Que sinais mostram que a fiscalização já é precisa?"
   ],
   [
    "ul",

@@ -5,8 +5,9 @@
  "title": "Innenarchitektur-Preise in Kyjiw: Kosten pro m² und was jedes Paket enthält",
  "seo_title": "Innenarchitektur-Preise in Kyjiw: $6, $30, $45 pro m² (2026)",
  "description": "Was Innenarchitektur in Kyjiw kostet: Grundriss ab $6/m², Designprojekt ab $30/m² (mind. $2 500), voll mit Oberleitung ab $45/m². Inhalt der Pakete.",
- "lead": "Innenarchitektur in Kyjiw kostet je nach benötigtem Planungsumfang unterschiedlich viel: vom Grundriss für $6/m² bis zum vollen Projekt mit künstlerischer Oberleitung ab $45/m². Abgerechnet wird pro m² – deshalb erklären wir, was jedes Paket enthält, und rechnen Beispiele für 40, 80 und 120 m².",
+ "lead": "Innenarchitektur in Kyjiw kostet ab $6/m² für den Grundriss und ab $45/m² für das volle Projekt mit künstlerischer Oberleitung. Abgerechnet wird pro m² – deshalb erklären wir, was jedes Paket enthält, und rechnen Beispiele für 40, 80 und 120 m².",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/de/innenarchitektur",
   "Innenarchitektur"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Wovon der Preis abhängt"
+   "Wovon hängt der Preis für Innenarchitektur ab?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "Drei Pakete und ihre Preise"
+   "Was kostet Innenarchitektur in Kyjiw pro m²?"
   ],
   [
    "ul",
@@ -46,15 +47,15 @@
   ],
   [
    "h2",
-   "Grundrisspaket"
+   "Wann reicht das Grundrisspaket allein?"
   ],
   [
    "p",
-   "Der Grundriss ist das Fundament jedes Interieurs: Er legt fest, wo Küche, Schränke und Bett stehen, wie viel Stauraum es gibt und wie man sich bewegt. Das Paket passt zu einer einfachen Renovierung, bei der Sie Materialien und Möbel selbst wählen. Visualisierungen und Ausführungspläne fehlen, also entscheiden die Handwerker manches selbst – etwa Steckdosenlage oder Fliesenverlegung."
+   "Das Grundrisspaket reicht für eine einfache Renovierung, bei der Sie Materialien und Möbel selbst wählen. Der Grundriss ist das Fundament jedes Interieurs: Er legt fest, wo Küche, Schränke und Bett stehen, wie viel Stauraum es gibt und wie man sich bewegt. Visualisierungen und Ausführungspläne fehlen, also entscheiden die Handwerker manches selbst – etwa Steckdosenlage oder Fliesenverlegung."
   ],
   [
    "h2",
-   "Basispaket"
+   "Was enthält das Basispaket?"
   ],
   [
    "p",
@@ -62,11 +63,11 @@
   ],
   [
    "h2",
-   "Volles Paket mit künstlerischer Oberleitung"
+   "Wozu die künstlerische Oberleitung im vollen Paket?"
   ],
   [
    "p",
-   "Selbst die besten Pläne garantieren kein Ergebnis, wenn niemand die Arbeit mit dem Projekt abgleicht. Oberleitung heißt regelmäßige Baustellenbesuche laut Vertrag: Der Designer beantwortet Fragen, prüft die Übereinstimmung mit den Plänen und hilft bei Änderungen vor Ort. Renoviert ein anderes Unternehmen, werden Bedingungen und Kosten individuell vereinbart – siehe [künstlerische und technische Bauüberwachung](/de/bauueberwachung)."
+   "Die künstlerische Oberleitung sorgt dafür, dass die Renovierung dem Projekt entspricht: Selbst die besten Pläne garantieren nichts, wenn niemand die Arbeit mit ihnen abgleicht. Oberleitung heißt regelmäßige Baustellenbesuche laut Vertrag: Der Designer beantwortet Fragen, prüft die Übereinstimmung mit den Plänen und hilft bei Änderungen vor Ort. Renoviert ein anderes Unternehmen, werden Bedingungen und Kosten individuell vereinbart – siehe [künstlerische und technische Bauüberwachung](/de/bauueberwachung)."
   ],
   [
    "img",
@@ -76,11 +77,11 @@
   ],
   [
    "h2",
-   "Beispiele: 40, 80 und 120 m²"
+   "Was kostet das Design für 40, 80 und 120 m²?"
   ],
   [
    "p",
-   "Berechnung zu den Basissätzen des Studios. Das ist die Untergrenze: ungefähr, genau nach Kostenschätzung."
+   "Das Basisprojekt kostet für 40 oder 80 m² ab $2 500 (es gilt das Minimum), für 120 m² ab $3 600. Das ist die Untergrenze: ungefähr, genau nach Kostenschätzung."
   ],
   [
    "ul",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "Was gesondert einzuplanen ist"
+   "Was ist neben dem Design gesondert einzuplanen?"
   ],
   [
    "ul",

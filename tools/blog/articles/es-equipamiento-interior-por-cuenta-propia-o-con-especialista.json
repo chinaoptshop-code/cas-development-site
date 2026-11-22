@@ -7,6 +7,7 @@
  "description": "Equipamiento del interior: qué hace el especialista, cuándo compensa comprar muebles e iluminación por su cuenta y cuándo encargarlo. Dónde ahorrar y lista.",
  "lead": "El equipamiento del interior es todo lo que convierte un piso o una casa reformados en un hogar: muebles, iluminación, textiles, decoración, electrodomésticos. Puede asumirlo usted o encargarlo a un especialista. Explicamos de qué se compone este trabajo, cuándo comprar por su cuenta ahorra de verdad y cuándo acaba en sobrecostes y retrasos.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/es/equipamiento-llave-en-mano",
   "Equipamiento llave en mano"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Qué es el equipamiento del interior"
+   "¿Qué es el equipamiento del interior?"
   ],
   [
    "p",
@@ -44,7 +45,7 @@
   ],
   [
    "h2",
-   "Qué hace el especialista: etapas del trabajo"
+   "¿Qué hace el especialista y cómo es el trabajo?"
   ],
   [
    "ol",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Equipar por su cuenta: cuándo compensa"
+   "¿Cuándo compensa de verdad equipar por su cuenta?"
   ],
   [
    "p",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "Cuándo conviene encargar el equipamiento a un equipo"
+   "¿Cuándo conviene encargar el equipamiento a un equipo?"
   ],
   [
    "ul",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Comparación: por su cuenta o con especialista"
+   "Por su cuenta o con especialista: ¿qué diferencia hay?"
   ],
   [
    "ul",
@@ -153,11 +154,11 @@
   ],
   [
    "h2",
-   "Cómo ahorrar en el equipamiento"
+   "¿Cómo ahorrar en el equipamiento?"
   ],
   [
    "p",
-   "Ahorrar en el equipamiento rara vez significa comprar lo más barato. Dan mucho más unas prioridades correctas y el orden de compra."
+   "Se ahorra con unas prioridades correctas y un buen orden de compra, no comprando lo más barato."
   ],
   [
    "ul",
@@ -186,11 +187,11 @@
   ],
   [
    "h2",
-   "Cuánto cuesta el equipamiento"
+   "¿Cuánto cuesta equipar un piso?"
   ],
   [
    "p",
-   "El presupuesto de equipamiento tiene dos partes: el coste de los propios artículos y el trabajo de selección, compra, logística y montaje. En CAS Development el [amueblamiento de un piso](/es/amueblamiento-llave-en-mano) cuesta desde $250 por m². Para un piso de 75 m² la referencia es 75 m² × $250 = $18 750. El importe exacto depende de la especificación, la gama de los muebles y el número de piezas a medida. Si parte de los muebles ya existe o se muda, el presupuesto baja en proporción, y se ve en la especificación antes de empezar a comprar."
+   "En CAS Development el [amueblamiento de un piso](/es/amueblamiento-llave-en-mano) cuesta desde $250 por m²; el presupuesto de equipamiento incluye el coste de los propios artículos y el trabajo de selección, compra, logística y montaje. Para un piso de 75 m² la referencia es 75 m² × $250 = $18 750. El importe exacto depende de la especificación, la gama de los muebles y el número de piezas a medida. Si parte de los muebles ya existe o se muda, el presupuesto baja en proporción, y se ve en la especificación antes de empezar a comprar."
   ],
   [
    "p",

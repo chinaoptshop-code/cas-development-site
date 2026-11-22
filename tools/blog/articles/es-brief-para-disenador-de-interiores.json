@@ -7,6 +7,7 @@
  "description": "Brief para el diseñador de interiores: qué pensar sobre familia, estancias, almacenaje, instalaciones, estilo y presupuesto. Checklist para la primera reunión.",
  "lead": "El brief para un diseñador de interiores es una descripción breve de cómo vives y qué esperas del nuevo espacio. Cuanto más preciso sea, menos cambios habrá en la distribución y antes llegará el proyecto al presupuesto. Te contamos qué incluir y te damos un checklist que se rellena en una tarde.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/es/disenador-interiores",
   "Diseñador de interiores"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Para qué sirve el brief"
+   "¿Para qué sirve el brief para el diseñador de interiores?"
   ],
   [
    "p",
-   "El diseñador no puede adivinar que cocinas cada noche, guardas bicicletas en casa o teletrabajas dos días por semana. Sin esa información la distribución sale «media» y luego se rehace: se mueven enchufes, se añaden armarios, se intercambian dormitorio y despacho. El brief elimina esas vueltas antes del primer boceto."
+   "El brief sirve para que la distribución se ajuste a tu día a día desde el principio: el diseñador no puede adivinar que cocinas cada noche, guardas bicicletas en casa o teletrabajas dos días por semana. Sin esa información la distribución sale «media» y luego se rehace: se mueven enchufes, se añaden armarios, se intercambian dormitorio y despacho. El brief elimina esas vueltas antes del primer boceto."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Quién vivirá: familia y rutinas"
+   "¿Qué escribir sobre la familia y las rutinas?"
   ],
   [
    "ul",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Estancia por estancia"
+   "¿Qué escribir sobre cada estancia?"
   ],
   [
    "h3",
@@ -82,11 +83,11 @@
   ],
   [
    "h2",
-   "Estilo y referencias"
+   "¿Cómo mostrar al diseñador el estilo que te gusta?"
   ],
   [
    "p",
-   "No hace falta saber el nombre del estilo. Reúne 15–20 interiores que te gusten y algunos que no. A cada imagen añade una frase: qué te gusta exactamente — color, luz, material, muebles. Señala qué se muda de tu casa actual. Si aún no tienes claro el estilo, lee [Diseño de interiores: por dónde empezar](/es/blog/diseno-interiores-por-donde-empezar)."
+   "Reúne 15–20 interiores que te gusten y algunos que no; no hace falta saber el nombre del estilo. A cada imagen añade una frase: qué te gusta exactamente — color, luz, material, muebles. Señala qué se muda de tu casa actual. Si aún no tienes claro el estilo, lee [Diseño de interiores: por dónde empezar](/es/blog/diseno-interiores-por-donde-empezar)."
   ],
   [
    "gallery",
@@ -103,7 +104,7 @@
   ],
   [
    "h2",
-   "Instalaciones y deseos técnicos"
+   "¿Qué deseos técnicos incluir en el brief?"
   ],
   [
    "ul",
@@ -118,11 +119,11 @@
   ],
   [
    "h2",
-   "Presupuesto y plazos"
+   "¿Hay que incluir presupuesto y plazos en el brief?"
   ],
   [
    "p",
-   "El presupuesto forma parte del brief, no es un secreto. Indica una cifra orientativa para proyecto, reforma y muebles, o al menos un límite. Como referencia, el [proyecto de interiores de un piso](/es/diseno-interiores-piso) en CAS cuesta desde $30 por m², mínimo $2 500. La reforma llave en mano, desde $550 por m²: mano de obra y materiales de obra; acabados, muebles y electrodomésticos se presupuestan aparte. Para 80 m²: 80 m² × $550 = $44 000. Calcula tu superficie en la [calculadora de reforma](/es/calculadora-reforma). Indica también la fecha de mudanza: los plazos se fijan en el contrato."
+   "Sí: el presupuesto forma parte del brief, no es un secreto. Indica una cifra orientativa para proyecto, reforma y muebles, o al menos un límite. Como referencia, el [proyecto de interiores de un piso](/es/diseno-interiores-piso) en CAS cuesta desde $30 por m², mínimo $2 500. La reforma llave en mano, desde $550 por m²: mano de obra y materiales de obra; acabados, muebles y electrodomésticos se presupuestan aparte. Para 80 m²: 80 m² × $550 = $44 000. Calcula tu superficie en la [calculadora de reforma](/es/calculadora-reforma). Indica también la fecha de mudanza: los plazos se fijan en el contrato."
   ],
   [
    "h2",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Qué viene después"
+   "¿Qué pasa después del brief?"
   ],
   [
    "p",

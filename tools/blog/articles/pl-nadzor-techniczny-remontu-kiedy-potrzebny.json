@@ -7,6 +7,7 @@
  "description": "Nadzór inwestorski nad remontem mieszkania: co sprawdza, odbiór robót zakrytych, czym różni się od nadzoru autorskiego i kiedy się opłaca.",
  "lead": "Nadzór inwestorski nad remontem jest potrzebny, gdy nie możesz codziennie bywać na budowie albo nie masz pewności, czy ocenisz jakość robót zakrytych. Jego zadanie to wychwycić błąd, póki jego naprawa jest tania. Wyjaśniamy, co sprawdza nadzór, kiedy ma sens i jak go zorganizować.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/nadzor-autorski-i-techniczny",
   "Nadzór autorski i techniczny"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Czym jest nadzór inwestorski"
+   "Czym jest nadzór inwestorski nad remontem?"
   ],
   [
    "p",
@@ -45,11 +46,11 @@
   ],
   [
    "h2",
-   "Czym różni się od nadzoru autorskiego"
+   "Czym nadzór inwestorski różni się od autorskiego?"
   ],
   [
    "p",
-   "Te usługi bywają mylone, choć odpowiadają na różne pytania. Nadzór autorski to kontrola projektanta: czy efekt odpowiada koncepcji, materiałom i detalom. Nadzór inwestorski to kontrola inżyniera: czy roboty są wykonane poprawnie technicznie."
+   "Różnica tkwi w tym, co się kontroluje: nadzór autorski — koncepcję projektanta, inwestorski — techniczną poprawność robót. Nadzór autorski to kontrola projektanta: czy efekt odpowiada koncepcji, materiałom i detalom. Nadzór inwestorski to kontrola inżyniera: czy roboty są wykonane poprawnie technicznie."
   ],
   [
    "ul",
@@ -72,7 +73,7 @@
   ],
   [
    "h2",
-   "Kiedy nadzór inwestorski jest szczególnie potrzebny"
+   "Kiedy nadzór inwestorski jest szczególnie potrzebny?"
   ],
   [
    "ul",
@@ -91,11 +92,11 @@
   ],
   [
    "h2",
-   "Co sprawdza nadzór: lista robót zakrytych"
+   "Co sprawdza nadzór w robotach zakrytych?"
   ],
   [
    "p",
-   "Poniżej roboty, które najważniej sprawdzić przed zakryciem. Listy można używać także bez inspektora, porównując ją z fotorelacjami wykonawcy."
+   "Nadzór sprawdza przede wszystkim roboty zakryte — poniżej te, które najważniej sprawdzić przed zakryciem. Listy można używać także bez inspektora, porównując ją z fotorelacjami wykonawcy."
   ],
   [
    "h3",
@@ -164,11 +165,11 @@
   ],
   [
    "h2",
-   "Jak nadzór inwestorski oszczędza pieniądze"
+   "Czy nadzór się zwraca i jak oszczędza pieniądze?"
   ],
   [
    "p",
-   "Nadzór kosztuje, więc warto zapytać, czy się zwraca. Oszczędność nie bierze się z niższej ceny remontu, tylko z mniejszej liczby poprawek — a poprawki zawsze kosztują więcej niż zrobienie dobrze za pierwszym razem."
+   "Tak, nadzór się zwraca, choć nie zniżką. Oszczędność nie bierze się z niższej ceny remontu, tylko z mniejszej liczby poprawek — a poprawki zawsze kosztują więcej niż zrobienie dobrze za pierwszym razem."
   ],
   [
    "ul",
@@ -185,7 +186,7 @@
   ],
   [
    "h2",
-   "Jak zorganizować nadzór inwestorski"
+   "Jak zorganizować nadzór inwestorski?"
   ],
   [
    "ol",
@@ -203,7 +204,7 @@
   ],
   [
    "h2",
-   "Nowe budownictwo czy rynek wtórny"
+   "Czym różni się nadzór w nowym budynku i na rynku wtórnym?"
   ],
   [
    "p",
@@ -215,7 +216,7 @@
   ],
   [
    "h2",
-   "Sygnały ostrzegawcze, że nadzór jest konieczny"
+   "Jakie sygnały mówią, że nadzór jest konieczny?"
   ],
   [
    "ul",

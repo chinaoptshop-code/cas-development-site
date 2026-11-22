@@ -34,7 +34,7 @@ class _Text(HTMLParser):
 
     def handle_starttag(self, t, a):
         a = dict(a)
-        if t in ('style', 'svg'):
+        if t in ('style', 'svg', 'code'):  # <code> — технічні імена (cas_ck, cas_lang…), не текст мови
             self.skip += 1
         elif t == 'script':
             if a.get('type') == 'application/json':
@@ -50,7 +50,7 @@ class _Text(HTMLParser):
                 self.out.append((k, a[k]))
 
     def handle_endtag(self, t):
-        if t in ('style', 'svg'):
+        if t in ('style', 'svg', 'code'):
             self.skip = max(0, self.skip - 1)
         elif t == 'script':
             if self.js:

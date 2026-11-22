@@ -1039,6 +1039,10 @@ html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.pr
   body:has(.mbar[data-one]) .scf-legal{flex-direction:column;align-items:flex-start;gap:0;min-height:48px;padding-inline-end:11.5rem;line-height:1.35;overflow-wrap:break-word;hyphens:auto}  /* 320 px (WCAG 1.4.10, зум 400 %): довге слово поруч із пігулкою переноситься, без горизонтальної прокрутки */
   body:has(.mbar[data-one]) .scf-legal a{min-height:32px;min-width:44px;position:relative}
   body:has(.mbar[data-one]) .scf-legal a::before{content:"";position:absolute;inset:-6px 0}
+  /* «Cookies» (22.11.2026) — у першому ряду, над пігулкою (у її колонці): футер не росте; політика, умови й © — як були, поруч із пігулкою */
+  body:has(.mbar[data-one]) .scf-legal{display:grid;grid-template-columns:minmax(0,1fr) 11.5rem;align-items:start;padding-inline-end:0}
+  body:has(.mbar[data-one]) .scf-legal>*{grid-column:1}
+  body:has(.mbar[data-one]) .scf-legal>a[data-ck]{grid-column:2;grid-row:1;justify-self:start;display:inline-flex;align-items:center;padding-inline:14px 8px}
 }
 /* резерв відео/турів (CLS, /assets/media.v1.css може прийти пізніше за розмітку): кадр 16:9 і сітка — ті самі, що в media.v1.css */
 .lt3,.lyt{position:relative;display:block;overflow:hidden;aspect-ratio:16/9}.lt3 img,.lyt img{display:block;width:100%;height:100%;object-fit:cover}
@@ -1125,3 +1129,24 @@ a[data-lb]{cursor:zoom-in}
 .wx-t{position:fixed;left:0;right:0;margin:0 auto;width:max-content;bottom:calc(5.5rem + env(safe-area-inset-bottom,0px));z-index:10050;max-width:calc(100vw - 32px);box-sizing:border-box;padding:.75rem 1rem;border:1px solid var(--c-ac,#BF9148);border-radius:.75rem;background:var(--c-bg2,#100e0c);color:var(--c-tx,#EDE8DF);font-size:.875rem;line-height:1.4;text-align:center;pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s}.wx-t bdi{white-space:nowrap}
 .wx-t.on{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.wx-t{transition:none;transform:none}}
+/* Плашка згоди на cookies (Михайло 22.11.2026; site-chrome.v1.js): поза Україною, доки немає вибору, і з кнопки «Cookies» у футері.
+   position:fixed — без зсуву верстки; телефон — на всю ширину над пігулкою «Звʼязатися» (.ck-up), ПК — картка в куті (RTL — дзеркально);
+   «Прийняти» / «Відхилити» — однакові за розміром і виглядом. Поки видима — місце внизу сторінки (html.ck-p, --ckh). */
+.ck{position:fixed;z-index:790;inset-inline:max(14px,env(safe-area-inset-left,0px)) max(14px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));
+  box-sizing:border-box;padding:.75rem .875rem;border:1px solid rgba(191,145,72,.55);border-radius:14px;background:var(--c-bg2,#100e0c);color:var(--c-tx,#EDE8DF);
+  font-size:.875rem;line-height:1.4;box-shadow:0 6px 24px rgba(0,0,0,.35);visibility:hidden;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s,visibility 0s .2s}
+.ck.on{visibility:visible;opacity:1;transform:none;transition:opacity .2s,transform .2s}
+.ck p{margin:0 0 .625rem}
+.ck p a{color:var(--c-ac,#BF9148);text-decoration:underline;text-underline-offset:2px;position:relative}
+.ck p a::before{content:"";position:absolute;inset:-12px -4px}
+.ck-st{color:var(--c-mu,#a39b8f)}
+.ck-b{display:flex;gap:.5rem}
+.ck-b button{flex:1 1 0;min-height:44px;padding:0 1rem;border:1px solid #bf9148;border-radius:999px;background:transparent;color:inherit;font:inherit;font-weight:600;cursor:pointer}
+.ck-b button:hover,.ck-b button:focus-visible{background:rgba(191,145,72,.14)}
+.ck-b button:focus-visible{outline:2px solid #f3d7a6;outline-offset:2px}
+.ck-b button[aria-pressed=true]{background:rgba(191,145,72,.22)}
+@media(max-width:767px){.ck.ck-up{bottom:calc(72px + env(safe-area-inset-bottom,0px))}}
+@media(min-width:768px){.ck{inset-inline-end:auto;max-width:25rem}}
+html.ck-p body::after{content:"";display:block;height:var(--ckh,0px)}
+@media(prefers-reduced-motion:reduce){.ck,.ck.on{transition:none;transform:none}}
+@media print{.ck{display:none}}

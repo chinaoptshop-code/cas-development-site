@@ -464,6 +464,9 @@
  ],
  "latin_ok": [
   "CAS",
+  "Cookies",
+  "localStorage",
+  "sessionStorage",
   "Development",
   "CAS Development",
   "Telegram",

@@ -7,6 +7,7 @@
  "description": "Équipement de l'intérieur : rôle du spécialiste, quand acheter meubles et luminaires soi-même, quand confier à une équipe. Où économiser, checklist.",
  "lead": "L'équipement de l'intérieur, c'est tout ce qui transforme un appartement ou une maison rénovés en lieu de vie : meubles, éclairage, textiles, déco, électroménager. Vous pouvez vous en charger ou le confier à un spécialiste. Nous expliquons en quoi consiste ce travail, quand acheter soi-même fait vraiment économiser et quand cela tourne aux surcoûts et aux retards.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/fr/equipement-cle-en-main",
   "Équipement clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Qu'est-ce que l'équipement de l'intérieur"
+   "Qu'est-ce que l'équipement de l'intérieur ?"
   ],
   [
    "p",
@@ -44,7 +45,7 @@
   ],
   [
    "h2",
-   "Ce que fait le spécialiste : les étapes"
+   "Que fait le spécialiste, et comment se déroule le travail ?"
   ],
   [
    "ol",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "S'équiper soi-même : quand c'est rentable"
+   "Quand s'équiper soi-même est-il vraiment rentable ?"
   ],
   [
    "p",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "Quand confier l'équipement à une équipe"
+   "Quand confier l'équipement à une équipe ?"
   ],
   [
    "ul",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Comparaison : seul ou avec un spécialiste"
+   "Seul ou avec un spécialiste : quelle différence ?"
   ],
   [
    "ul",
@@ -153,11 +154,11 @@
   ],
   [
    "h2",
-   "Comment économiser sur l'équipement"
+   "Comment économiser sur l'équipement ?"
   ],
   [
    "p",
-   "Économiser sur l'équipement consiste rarement à acheter le moins cher. Les bonnes priorités et l'ordre des achats rapportent bien davantage."
+   "On économise grâce aux bonnes priorités et à l'ordre des achats, bien plus qu'en achetant le moins cher."
   ],
   [
    "ul",
@@ -186,11 +187,11 @@
   ],
   [
    "h2",
-   "Combien coûte l'équipement"
+   "Combien coûte l'équipement d'un appartement ?"
   ],
   [
    "p",
-   "Le budget d'équipement comprend deux parts : le coût des articles et le travail de sélection, d'achat, de logistique et de pose. Chez CAS Development, l'[ameublement d'un appartement](/fr/ameublement-cle-en-main) démarre à $250 le m². Pour un appartement de 75 m², le repère est 75 m² × $250 = $18 750. Le montant exact dépend de la spécification, du niveau du mobilier et du nombre d'articles sur mesure. Si une partie des meubles existe déjà ou déménage, le budget baisse d'autant — on le voit dans la spécification avant le début des achats."
+   "Chez CAS Development, l'[ameublement d'un appartement](/fr/ameublement-cle-en-main) démarre à $250 le m² ; le budget d'équipement comprend le coût des articles et le travail de sélection, d'achat, de logistique et de pose. Pour un appartement de 75 m², le repère est 75 m² × $250 = $18 750. Le montant exact dépend de la spécification, du niveau du mobilier et du nombre d'articles sur mesure. Si une partie des meubles existe déjà ou déménage, le budget baisse d'autant — on le voit dans la spécification avant le début des achats."
   ],
   [
    "p",
