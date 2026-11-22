@@ -21,11 +21,12 @@ e = lambda s: html.escape(s, quote=True)
 JS, CSS = '/assets/restaurant-anim.v1.js', '/assets/restaurant-anim.v1.css'
 RX = re.compile(r'\n?<!--rs-->.*?<!--/rs-->', re.S)
 TRX = re.compile(r'\n?<!--rs:t-->.*?<!--/rs:t-->', re.S)
-CASE = {'ru': '/ru/proekty/monpark-polnyy-proekt'}  # кейс Monpark; інші мови — українська сторінка кейсу
-
-
 def _cl(uk):
     return i18n.cluster_of(uk) or {'uk': uk}
+
+
+# кейс Monpark: мови — «Повний проєкт» своєю мовою (глибина ≤ 3 кліки від головної, seo.py), uk — сторінка кейсу
+CASE = dict(_cl('/proekty/monpark-povnyi-proekt'), uk='/proekty/monpark')
 
 
 DESIGN = _cl('/dyzain-restoranu-kafe-kyiv')

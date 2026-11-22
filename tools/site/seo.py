@@ -17,7 +17,10 @@
   • sitemap.xml: усі індексовані сторінки є, noindex-сторінок і неіснуючих URL немає, у кожного <url> є <lastmod>;
   • robots.txt: є Sitemap:, не закрито весь сайт;
   • og:image — файл існує, twitter:card є; внутрішні посилання (href/src/srcset) ведуть на наявні файли або правила _redirects (0 «404»);
-  • сирітські сторінки: на сторінку немає жодного посилання з вмісту інших сторінок (шапка/футер не рахуються).
+  • сирітські сторінки: на сторінку немає жодного посилання з вмісту інших сторінок (шапка/футер не рахуються);
+  • глибина кліків (22.11.2026): кожна сторінка з sitemap досяжна за ≤ 3 кліки (BFS по <a href>, з шапкою/футером)
+    від головної своєї мови або від uk-головної — інакше помилка зі списком; глибше 3 від головної СВОЄЇ мови
+    (досяжні лише через інші мови) — одне попередження на мову з кількістю й прикладами.
 """
 import collections, glob, html, json, os, re, sys
 
@@ -35,6 +38,53 @@ LEGAL = {'konfidentsiinist.html', 'ru/konfidentsialnost.html', 'en/privacy-polic
 CJK = ('zh', 'ar')
 
 ERR, WARN = [], []
+DEPTH = 3  # кліків від головної
+
+
+def _norm_u(u):
+    u = html.unescape(u.split('#')[0].split('?')[0])
+    if u.endswith('/index.html'):
+        u = u[:-10]
+    elif u.endswith('.html'):
+        u = u[:-5]
+    return u.rstrip('/') or '/'
+
+
+def _bfs(graph, start, limit=DEPTH):
+    d, q = {start: 0}, collections.deque([start])
+    while q:
+        u = q.popleft()
+        if d[u] >= limit:
+            continue
+        for v in graph.get(u, ()):
+            if v not in d:
+                d[v] = d[u] + 1
+                q.append(v)
+    return d
+
+
+def depth_check(graph, locs):
+    """Глибина кліків: помилка — сторінка sitemap глибше DEPTH і від головної своєї мови, і від uk-головної;
+    попередження (зведене по мовах) — глибше DEPTH лише від головної своєї мови."""
+    homes = {'uk': _bfs(graph, '/')}
+    deep, own = [], collections.defaultdict(list)
+    for u in sorted(locs):
+        n = _norm_u(u)
+        m = re.match(r'/([a-z]{2})(?:/|$)', n)
+        lang = m.group(1) if m and ('/' + m.group(1)) in graph else 'uk'
+        if lang not in homes:
+            homes[lang] = _bfs(graph, '/' + lang)
+        if n in homes[lang]:
+            continue
+        if n in homes['uk']:
+            own[lang].append(n)
+        else:
+            deep.append(n)
+    if deep:
+        err('sitemap.xml', f'глибше {DEPTH} кліків від головної своєї мови й від uk-головної ({len(deep)}): ' + ', '.join(deep))
+    for lang, lst in sorted(own.items()):
+        warn('sitemap.xml', f'{lang}: {len(lst)} сторінок глибше {DEPTH} кліків від /{lang} (досяжні лише через інші мови), напр. '
+             + ', '.join(lst[:5]))
 
 
 def err(page, msg): ERR.append(f'{page}: {msg}')
@@ -158,6 +208,7 @@ def main():
     rows, titles, descs = {}, collections.defaultdict(list), collections.defaultdict(list)
     broken = collections.defaultdict(set)
     inbound = collections.defaultdict(set)
+    graph = {}  # сторінка → посилання (<a href>, з шапкою/футером) — для глибини кліків
     for rel in pages():
         s = open(os.path.join(ROOT, rel), encoding='utf-8').read()
         head = s.split('</head>')[0]
@@ -167,6 +218,16 @@ def main():
             warn(rel, 'юридичний шаблон без noindex')
         lang = (re.search(r'<html[^>]*\blang="([a-z]{2})', s) or [None, 'uk'])[1]
         rows[u] = dict(rel=rel, noindex=noindex)
+        here = _norm_u(u)
+        gl = graph[here] = set()
+        for h in re.findall(r'<a\b[^>]*?\shref="([^"]+)"', s):
+            if h.startswith(B):
+                h = h[len(B):] or '/'
+            if re.match(r'^(?:[a-z][\w+.-]*:|#|//)', h):
+                continue
+            if not h.startswith('/'):
+                h = os.path.normpath(os.path.join('/' + os.path.dirname(rel), h))
+            gl.add(_norm_u(h))
         body = re.sub(r'<!--chrome:h-->.*?<!--/chrome:h-->|<!--chrome:f-->.*?<!--/chrome:f-->', '', s.split('</head>', 1)[-1], flags=re.S)
         for l in set(re.findall(r'<a\b[^>]*href="(?:' + re.escape(B) + r')?(/[^"#?]*)', body)):
             l = l.rstrip('/') or '/'
@@ -277,6 +338,7 @@ def main():
     for u in locs:
         if u not in rows:
             err('sitemap.xml', f'URL без файлу: {u}')
+    depth_check(graph, [u for u in locs if not rows.get(u, {}).get('noindex')])
     rb = open(os.path.join(ROOT, 'robots.txt'), encoding='utf-8').read()
     if f'Sitemap: {B}/sitemap.xml' not in rb:
         err('robots.txt', 'немає Sitemap:')
