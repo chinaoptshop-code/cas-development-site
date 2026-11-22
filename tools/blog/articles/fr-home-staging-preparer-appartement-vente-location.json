@@ -7,6 +7,7 @@
  "description": "Home staging d'un appartement : quoi désencombrer, quoi réparer, quel mobilier, quelle lumière et quels textiles pour photos et visites. Dès $250/m².",
  "lead": "Un acheteur ou un locataire décide en quelques secondes devant les photos s'il appelle. Le home staging consiste à préparer un appartement à la vente ou à la location pour qu'il paraisse soigné et lisible en photo comme en visite. Voici par où commencer, quoi réparer, quels meubles et textiles ajouter et quand il est plus simple de commander un ameublement clé en main.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/fr/ameublement-cle-en-main",
   "Ameublement clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce qu'est le home staging et à quoi il sert"
+   "Qu'est-ce que le home staging et à quoi sert-il ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Étape 1 : désencombrer et nettoyer"
+   "Étape 1 : que retirer avant les visites ?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Étape 2 : petites réparations"
+   "Étape 2 : quelles petites réparations faire ?"
   ],
   [
    "p",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Étape 3 : mobilier et disposition"
+   "Étape 3 : comment disposer le mobilier ?"
   ],
   [
    "p",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Étape 4 : lumière, textiles et décoration"
+   "Étape 4 : qu'apportent lumière, textiles et déco ?"
   ],
   [
    "p",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Seul ou avec un ameublement clé en main"
+   "Seul ou avec un ameublement clé en main ?"
   ],
   [
    "p",
@@ -130,7 +131,7 @@
   ],
   [
    "h2",
-   "Liste de contrôle avant les photos et les visites"
+   "Que vérifier avant les photos et les visites ?"
   ],
   [
    "ul",

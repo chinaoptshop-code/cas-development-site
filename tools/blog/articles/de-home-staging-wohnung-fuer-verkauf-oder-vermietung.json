@@ -7,6 +7,7 @@
  "description": "Home Staging einer Wohnung: was weg muss, was zu reparieren ist, wie man Möbel, Licht und Textilien für Fotos und Besichtigungen wählt. Einrichtung ab $250/m².",
  "lead": "Käufer oder Mieter entscheiden in wenigen Sekunden beim Blick auf die Fotos, ob sie anrufen. Home Staging bedeutet, eine Wohnung für Verkauf oder Vermietung so vorzubereiten, dass sie auf Fotos und bei Besichtigungen gepflegt und klar wirkt. Wir zeigen, womit Sie beginnen, was zu reparieren ist, welche Möbel und Textilien Sie ergänzen und wann eine schlüsselfertige Einrichtung einfacher ist.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/de/einrichtung-schluesselfertig",
   "Einrichtung schlüsselfertig"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was Home Staging ist und wozu es dient"
+   "Was ist Home Staging und wozu dient es?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Schritt 1: Entrümpeln und Sauberkeit"
+   "Schritt 1: Was muss vor Besichtigungen weg?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Schritt 2: kleine Reparaturen"
+   "Schritt 2: Welche kleinen Reparaturen lohnen sich?"
   ],
   [
    "p",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Schritt 3: Möbel und Anordnung"
+   "Schritt 3: Wie stellt man die Möbel?"
   ],
   [
    "p",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Schritt 4: Licht, Textilien und Deko"
+   "Schritt 4: Was bringen Licht, Textilien und Deko?"
   ],
   [
    "p",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Selbst oder mit schlüsselfertiger Einrichtung"
+   "Selbst machen oder mit schlüsselfertiger Einrichtung?"
   ],
   [
    "p",
@@ -130,7 +131,7 @@
   ],
   [
    "h2",
-   "Checkliste vor Fotos und Besichtigungen"
+   "Was ist vor Fotos und Besichtigungen zu prüfen?"
   ],
   [
    "ul",

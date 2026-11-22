@@ -7,6 +7,7 @@
  "description": "Home staging an apartment: what to clear, what to fix, how to choose furniture, light and textiles for photos and viewings. Furnishing from $250/m².",
  "lead": "A buyer or tenant decides whether to call within seconds of looking at the photos. Home staging means preparing an apartment for sale or rent so it looks cared for and easy to read in photos and at viewings. Here is where to start, what to fix, which furniture and textiles to add and when it is simpler to order turnkey furnishing.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/en/turnkey-furnishing",
   "Turnkey furnishing"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "What home staging is and why you need it"
+   "What is home staging and why do you need it?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Step 1: decluttering and cleaning"
+   "Step 1: what should you clear before viewings?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Step 2: minor repairs"
+   "Step 2: which minor repairs are worth doing?"
   ],
   [
    "p",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Step 3: furniture and arrangement"
+   "Step 3: how should you arrange the furniture?"
   ],
   [
    "p",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Step 4: light, textiles and decor"
+   "Step 4: what do light, textiles and decor add?"
   ],
   [
    "p",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "On your own or with turnkey furnishing"
+   "Do it yourself or with turnkey furnishing?"
   ],
   [
    "p",
@@ -130,7 +131,7 @@
   ],
   [
    "h2",
-   "Checklist before photos and viewings"
+   "What should you check before photos and viewings?"
   ],
   [
    "ul",
