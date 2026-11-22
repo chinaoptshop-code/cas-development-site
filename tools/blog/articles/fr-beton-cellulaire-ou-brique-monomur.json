@@ -7,6 +7,7 @@
  "description": "Béton cellulaire ou brique monomur : résistance, isolation, pose, finitions, fixations et coût. Construction dès $600/m², clé en main dès $1 100/m².",
  "lead": "Le béton cellulaire et la brique monomur sont les deux matériaux les plus courants pour une maison maçonnée en Ukraine. Tous deux donnent des murs chauds et durables, mais ils se comportent différemment à la pose, à la finition et pour les fixations. Nous les comparons simplement, pour que vous choisissiez le matériau avec votre architecte et non d'après la publicité.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/fr/construction-maison",
   "Construction de maison"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Béton cellulaire et brique monomur : de quoi parle-t-on"
+   "Qu'est-ce que le béton cellulaire et la brique monomur ?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Résistance et planchers"
+   "Quel bloc supporte mieux les planchers ?"
   ],
   [
    "p",
@@ -49,7 +50,7 @@
   ],
   [
    "h2",
-   "Chaleur, humidité et isolation"
+   "Faut-il isoler une maison en béton cellulaire ou en brique ?"
   ],
   [
    "p",
@@ -83,7 +84,7 @@
   ],
   [
    "h2",
-   "Pose, finitions et fixations"
+   "Quel matériau est le plus simple à poser et à finir ?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "Que choisir : en bref"
+   "Que choisir : béton cellulaire ou brique ?"
   ],
   [
    "ul",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Combien coûte une maison en béton cellulaire ou en brique"
+   "Combien coûte une maison en béton cellulaire ou en brique ?"
   ],
   [
    "p",

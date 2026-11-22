@@ -7,6 +7,7 @@
  "description": "Porenbeton oder Hochlochziegel: Festigkeit, Wärme, Mauern, Ausbau, Befestigung und Rohbaukosten. Hausbau ab $600/m², schlüsselfertig ab $1 100/m².",
  "lead": "Porenbeton und Hochlochziegel sind die zwei gängigsten Materialien für ein gemauertes Haus in der Ukraine. Beide ergeben warme, langlebige Wände, verhalten sich aber beim Mauern, im Ausbau und bei der Befestigung unterschiedlich. Wir vergleichen sie in einfachen Worten, damit Sie das Material mit Ihrem Architekten wählen und nicht nach der Werbung.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/de/hausbau",
   "Hausbau"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Porenbeton und Hochlochziegel: was das ist"
+   "Was sind Porenbeton und Hochlochziegel?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Festigkeit und Decken"
+   "Welcher Stein trägt Decken besser?"
   ],
   [
    "p",
@@ -49,7 +50,7 @@
   ],
   [
    "h2",
-   "Wärme, Feuchtigkeit und Dämmung"
+   "Braucht ein Porenbeton- oder Ziegelhaus Dämmung?"
   ],
   [
    "p",
@@ -83,7 +84,7 @@
   ],
   [
    "h2",
-   "Mauern, Ausbau und Befestigung"
+   "Welches Material lässt sich leichter verarbeiten?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "Was wählen: kurzes Fazit"
+   "Was wählen: Porenbeton oder Ziegel?"
   ],
   [
    "ul",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Was ein Haus aus Porenbeton oder Ziegel kostet"
+   "Was kostet ein Haus aus Porenbeton oder Ziegel?"
   ],
   [
    "p",
