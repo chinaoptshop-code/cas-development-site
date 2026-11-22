@@ -7,6 +7,7 @@
  "description": "Casa de madera llave en mano: laminada o perfilada, asentamiento y calendario, etapas y precio: estructura desde $600/m², llave en mano desde $1 100/m².",
  "lead": "Una casa de madera llave en mano se elige por la madera viva en el interior y por una calidez difícil de conseguir con otros materiales. Te contamos en qué se diferencian la madera laminada y la perfilada, cómo influye el asentamiento en el calendario, cómo avanza la construcción por etapas y de qué se compone el precio.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/es/casa-de-madera",
   "Casa de madera"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Madera laminada o perfilada"
+   "¿Madera laminada o perfilada: cuál elegir?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "El asentamiento y lo que supone para el calendario"
+   "¿Qué es el asentamiento y cómo afecta al calendario?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Etapas de la construcción de una casa de madera"
+   "¿Qué etapas tiene la construcción de una casa de troncos?"
   ],
   [
    "ol",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Estructura, envolvente térmica y llave en mano"
+   "¿En qué se diferencian obra gris, envolvente y llave en mano?"
   ],
   [
    "ul",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta una casa de madera"
+   "¿Cuánto cuesta una casa de vigas de madera?"
   ],
   [
    "p",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "Cómo hacer que la madera dure"
+   "¿Cómo hacer que una casa de madera dure?"
   ],
   [
    "p",

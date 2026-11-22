@@ -7,6 +7,7 @@
  "description": "Casa de madeira chave na mão: lamelada ou perfilada, assentamento e calendário, etapas e preço — estrutura desde $600/m², chave na mão desde $1 100/m².",
  "lead": "Uma casa de madeira chave na mão escolhe-se pela madeira viva no interior e por um conforto difícil de conseguir com outros materiais. Explicamos em que diferem a madeira lamelada colada e a perfilada, como o assentamento influencia o calendário, como decorre a construção por etapas e de que se compõe o preço.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pt/casa-de-madeira",
   "Casa de madeira"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Madeira lamelada colada ou perfilada"
+   "Madeira lamelada ou perfilada: qual escolher?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "O assentamento e o que significa para o calendário"
+   "O que é o assentamento e como afeta o calendário?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Etapas da construção de uma casa de madeira"
+   "Quais são as etapas de uma casa em toros?"
   ],
   [
    "ol",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Estrutura, envolvente térmica e chave na mão"
+   "Em que diferem estrutura, envolvente e chave na mão?"
   ],
   [
    "ul",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Quanto custa uma casa de madeira"
+   "Quanto custa uma casa em vigas de madeira?"
   ],
   [
    "p",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "Como fazer a madeira durar"
+   "Como fazer durar uma casa de madeira?"
   ],
   [
    "p",

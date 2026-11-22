@@ -7,6 +7,7 @@
  "description": "Holzhaus aus Balken schlüsselfertig: Brettschichtholz oder Profilbalken, Setzung, Bauphasen und Preis — Rohbau ab $600/m², schlüsselfertig ab $1 100/m².",
  "lead": "Ein schlüsselfertiges Holzhaus aus Balken wählt man wegen des lebendigen Holzes im Innenraum und einer Behaglichkeit, die andere Baustoffe kaum bieten. Wir erklären, worin sich Brettschichtholz und Profilbalken unterscheiden, wie die Setzung den Zeitplan beeinflusst, wie der Bau Phase für Phase abläuft und woraus sich der Preis ergibt.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/de/holzbalkenhaus",
   "Holzhaus aus Balken"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Brettschichtholz oder Profilbalken"
+   "Brettschichtholz oder Profilbalken: was wählen?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Die Setzung und was sie für den Zeitplan bedeutet"
+   "Was ist Setzung und wie wirkt sie auf den Zeitplan?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Bauphasen eines Holzhauses aus Balken"
+   "Welche Bauphasen hat ein Blockhaus?"
   ],
   [
    "ol",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Rohbau, thermische Hülle und schlüsselfertig"
+   "Was unterscheidet Rohbau, Dämmhülle und schlüsselfertig?"
   ],
   [
    "ul",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Was ein Holzhaus aus Balken kostet"
+   "Was kostet ein Haus aus Holzbalken?"
   ],
   [
    "p",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "Wie Holz lange hält"
+   "Wie hält ein Holzhaus lange?"
   ],
   [
    "p",
