@@ -5,8 +5,9 @@
  "title": "Holzrahmen, Porenbeton oder Blockbohlen: woraus man ein Haus baut",
  "seo_title": "Holzrahmen, Porenbeton oder Blockbohlen?",
  "description": "Holzrahmen, Porenbeton oder Blockbohlen: Vergleich nach Bautempo, Dämmung, Ausbau und Budget – und wie man das Wandmaterial zum Grundstück wählt.",
- "lead": "Holzrahmen, Porenbeton oder Blockbohlen — das ist die erste technische Frage künftiger Hausbesitzer. Eine einzig richtige Antwort gibt es nicht: Jede Technologie hat ihre Stärken und Anforderungen. Wir vergleichen sie nach dem, was das Leben im Haus und das Budget wirklich beeinflusst, und erklären, warum die Entscheidung zusammen mit der Planung fallen sollte und nicht an ihrer Stelle.",
+ "lead": "Eine einzig richtige Antwort auf „Holzrahmen, Porenbeton oder Blockbohlen“ gibt es nicht: Jede Technologie hat ihre Stärken und Anforderungen, deshalb wählen künftige Hausbesitzer das Material passend zu Grundstück, Fristen und Budget. Wir vergleichen sie nach dem, was das Leben im Haus und das Budget wirklich beeinflusst, und erklären, warum die Entscheidung zusammen mit der Planung fallen sollte und nicht an ihrer Stelle.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/hausbau",
   "Hausbau"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Woraus man ein Haus baut: erst die Fragen, dann das Material"
+   "Woraus baut man ein Haus: Holzrahmen, Porenbeton oder Blockbohlen?"
   ],
   [
    "p",
-   "Debatten „Holzrahmen gegen Porenbeton“ werden oft geführt, als sei eine Technologie immer besser. Tatsächlich beantwortet das Wandmaterial mehrere konkrete Fragen: wie Sie im Haus leben, wo das Grundstück liegt, welche Fristen und welches Budget es gibt, wie wichtig Wärme, Ruhe und geringe Pflege sind. Sind die Antworten klar, verengt sich die Wahl meist auf ein, zwei Optionen."
+   "Das Wandmaterial wählt man nicht danach, was „immer besser“ ist, sondern als Antwort auf mehrere konkrete Fragen: wie Sie im Haus leben, wo das Grundstück liegt, welche Fristen und welches Budget es gibt, wie wichtig Wärme, Ruhe und geringe Pflege sind. Sind die Antworten klar, verengt sich die Wahl meist auf ein, zwei Optionen."
   ],
   [
    "ul",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Holzrahmenhaus"
+   "Was ist ein Holzrahmenhaus und für wen eignet es sich?"
   ],
   [
    "p",
@@ -84,7 +85,7 @@
   ],
   [
    "h2",
-   "Haus aus Porenbeton"
+   "Was ist ein Porenbetonhaus und für wen eignet es sich?"
   ],
   [
    "p",
@@ -136,7 +137,7 @@
   ],
   [
    "h2",
-   "Haus aus Blockbohlen"
+   "Was ist ein Blockbohlenhaus und warum wählt man es?"
   ],
   [
    "p",
@@ -174,11 +175,11 @@
   ],
   [
    "h2",
-   "Haustechnik und Energieeffizienz: was wichtiger ist als die Wände"
+   "Was beeinflusst außer den Wänden die Wärme im Haus?"
   ],
   [
    "p",
-   "Wohnkomfort hängt nicht allein von den Wänden ab. Fenster, Dach, Dämmung von Fundament und Sockel, Lüftung und Heizung beeinflussen Wärme und Heizkosten nicht weniger als das Wandmaterial. Ein Haus mit den besten Wänden, aber kalten Anschlüssen an den Fenstern und ohne durchdachte Lüftung bleibt unbehaglich."
+   "Außer den Wänden beeinflussen Fenster, Dach, Dämmung von Fundament und Sockel, Lüftung und Heizung Wärme und Heizkosten nicht weniger. Ein Haus mit den besten Wänden, aber kalten Anschlüssen an den Fenstern und ohne durchdachte Lüftung bleibt unbehaglich."
   ],
   [
    "ul",
@@ -237,7 +238,7 @@
   ],
   [
    "h2",
-   "Was ein Haus kostet und wovon der Preis abhängt"
+   "Was kostet ein Haus und wovon hängt der Preis ab?"
   ],
   [
    "p",
@@ -253,7 +254,7 @@
   ],
   [
    "h2",
-   "Typische Fehler bei der Wahl der Bauweise"
+   "Welche Fehler passieren bei der Wahl der Bauweise?"
   ],
   [
    "ul",
