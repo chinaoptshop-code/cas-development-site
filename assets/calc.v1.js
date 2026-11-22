@@ -101,7 +101,7 @@ function casCalcInit() {
   });
   function ht(id) { return id === C.hi && S[id] ? H : ''; } /* тип будинку діє лише на вибрану позицію будівництва */
   function nm(id) { return casCalcName(C, S[id], ht(id)); } /* назва вибраної позиції для заявки */
-  function rl(key, u, t) { var r = casRate(key, R, t); return r == null ? C.est : C.frm + '\u00a0' + f(r) + '/' + u; } /* нерозривний пробіл — як у розмітці (chrome.price_fmt): текст плитки не змінюється після старту */
+  function rl(key, u, t) { var r = casRate(key, R, t); return r == null ? C.est : iso(C.frm + '\u00a0' + f(r) + '/' + u); } /* ar: «$…» в ізоляті LTR, як у розмітці (chrome.price_iso) */ /* нерозривний пробіл — як у розмітці (chrome.price_fmt): текст плитки не змінюється після старту */
   function sync() {
     var b = IT.querySelectorAll('button'), i, j, id, g, vb, p, sm;
     for (i = 0; i < b.length; i++) {
@@ -116,7 +116,7 @@ function casCalcInit() {
         sm = vb[j].querySelector('small');
         if (hg) { p = vb[j].getAttribute('data-t'); vb[j].setAttribute('aria-pressed', String(p === H)); if (sm) sm.textContent = rl(V[id], C.m2, p); continue; }
         p = vb[j].getAttribute('data-p'); vb[j].setAttribute('aria-pressed', String(p === V[id]));
-        r = casRate(p, R, ht(id)); if (sm) sm.textContent = r == null ? C.est : f(r) + '/' + C.m2;
+        r = casRate(p, R, ht(id)); if (sm) sm.textContent = r == null ? C.est : iso(f(r) + '/' + C.m2);
       }
     }
     VV.hidden = !vis; /* порожній блок уточнень не лишає зайвого проміжку */
