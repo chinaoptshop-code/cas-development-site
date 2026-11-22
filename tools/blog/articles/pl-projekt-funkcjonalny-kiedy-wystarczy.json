@@ -5,8 +5,9 @@
  "title": "Projekt funkcjonalny: kiedy wystarczy, a kiedy potrzebny jest pełny projekt wnętrz",
  "seo_title": "Projekt funkcjonalny mieszkania: kiedy wystarczy",
  "description": "Projekt funkcjonalny mieszkania lub domu: co zawiera, kiedy wystarczy do remontu, a kiedy potrzebny jest pełny projekt wnętrz. Pakiety, ceny, checklista.",
- "lead": "Projekt funkcjonalny mieszkania lub domu to najkrótsza droga od pustych ścian do jasnego planu: gdzie ściany, meble i strefy mokre. Czasem to wystarczy, czasem nie. Wyjaśniamy, co zawiera pakiet, kiedy jest wystarczający i kiedy oszczędność na rysunkach kończy się poprawkami.",
+ "lead": "Projekt funkcjonalny mieszkania lub domu kosztuje od $6/m² i jest najkrótszą drogą od pustych ścian do jasnego planu: gdzie ściany, meble i strefy mokre. Czasem to wystarczy, czasem nie. Wyjaśniamy, co zawiera pakiet, kiedy jest wystarczający i kiedy oszczędność na rysunkach kończy się poprawkami.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projekt-wnetrza-mieszkania",
   "Projekt wnętrz mieszkania"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Czym jest projekt funkcjonalny"
+   "Czym jest projekt funkcjonalny?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Co zawiera pakiet"
+   "Co obejmuje pakiet funkcjonalny?"
   ],
   [
    "ul",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Kiedy projekt funkcjonalny wystarczy"
+   "Kiedy wystarczy projekt funkcjonalny?"
   ],
   [
    "ul",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Jak przebiega praca"
+   "Jak przebiega praca nad układem?"
   ],
   [
    "ol",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Kiedy potrzebny jest pełny projekt"
+   "Kiedy potrzebny jest pełny projekt wnętrza?"
   ],
   [
    "ul",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Porównanie pakietów"
+   "Czym różnią się pakiety projektu?"
   ],
   [
    "ul",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Ile to kosztuje"
+   "Ile kosztuje projekt funkcjonalny, a ile pełny?"
   ],
   [
    "p",
@@ -149,7 +150,7 @@
   ],
   [
    "h2",
-   "Typowe błędy"
+   "Jakie błędy popełnia się przy wyborze pakietu?"
   ],
   [
    "ul",

@@ -5,8 +5,9 @@
  "title": "Plan d'aménagement : quand il suffit et quand il faut un projet d'architecture intérieure complet",
  "seo_title": "Plan d'aménagement d'un appartement : quand il suffit",
  "description": "Plan d'aménagement d'un appartement ou d'une maison : contenu, quand il suffit pour rénover et quand un projet complet s'impose. Formules, prix et checklist.",
- "lead": "Le plan d'aménagement d'un appartement ou d'une maison est le chemin le plus court entre des murs nus et un plan clair : où vont les cloisons, les meubles et les pièces humides. Parfois cela suffit, parfois non. Voici ce que contient la formule, quand elle suffit et quand économiser sur les plans finit en reprises.",
+ "lead": "Le plan d'aménagement d'un appartement ou d'une maison coûte dès $6/m² et reste le chemin le plus court entre des murs nus et un plan clair : où vont les cloisons, les meubles et les pièces humides. Parfois cela suffit, parfois non. Voici ce que contient la formule, quand elle suffit et quand économiser sur les plans finit en reprises.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/fr/design-appartement",
   "Projet d'intérieur d'appartement"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Qu'est-ce qu'un plan d'aménagement"
+   "Qu'est-ce qu'un plan d'aménagement ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Ce que comprend la formule"
+   "Que comprend le pack aménagement ?"
   ],
   [
    "ul",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Quand le plan d'aménagement suffit"
+   "Quand le plan d'aménagement suffit-il ?"
   ],
   [
    "ul",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Déroulement du travail"
+   "Comment se déroule le travail sur le plan ?"
   ],
   [
    "ol",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Quand il faut un projet complet"
+   "Quand faut-il un projet complet ?"
   ],
   [
    "ul",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Comparatif des formules"
+   "En quoi les packs de projet diffèrent-ils ?"
   ],
   [
    "ul",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Combien ça coûte"
+   "Combien coûtent le plan d'aménagement et le projet complet ?"
   ],
   [
    "p",
@@ -149,7 +150,7 @@
   ],
   [
    "h2",
-   "Erreurs typiques"
+   "Quelles erreurs commet-on en choisissant un pack ?"
   ],
   [
    "ul",

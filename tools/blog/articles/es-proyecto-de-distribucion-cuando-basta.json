@@ -5,8 +5,9 @@
  "title": "Proyecto de distribución: cuándo basta y cuándo hace falta un proyecto de interiores completo",
  "seo_title": "Proyecto de distribución de un piso: cuándo basta",
  "description": "Proyecto de distribución de un piso o casa: qué incluye, cuándo basta para la reforma y cuándo hace falta el proyecto completo. Paquetes, precios y checklist.",
- "lead": "El proyecto de distribución de un piso o una casa es el camino más corto de las paredes vacías a un plano claro: dónde van tabiques, muebles y zonas húmedas. A veces basta, a veces no. Explicamos qué incluye, cuándo es suficiente y cuándo ahorrar en planos acaba en obras repetidas.",
+ "lead": "El proyecto de distribución de un piso o una casa cuesta desde $6/m² y es el camino más corto de las paredes vacías a un plano claro: dónde van tabiques, muebles y zonas húmedas. A veces basta, a veces no. Explicamos qué incluye, cuándo es suficiente y cuándo ahorrar en planos acaba en obras repetidas.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/es/diseno-interiores-piso",
   "Proyecto de interiores de un piso"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Qué es un proyecto de distribución"
+   "¿Qué es un proyecto de distribución?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Qué incluye el paquete"
+   "¿Qué incluye el paquete de distribución?"
   ],
   [
    "ul",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Cuándo basta la distribución"
+   "¿Cuándo basta con la distribución?"
   ],
   [
    "ul",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Cómo se trabaja"
+   "¿Cómo se trabaja la distribución?"
   ],
   [
    "ol",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Cuándo hace falta el proyecto completo"
+   "¿Cuándo hace falta un proyecto completo?"
   ],
   [
    "ul",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Comparación de paquetes"
+   "¿En qué se diferencian los paquetes de proyecto?"
   ],
   [
    "ul",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta"
+   "¿Cuánto cuestan la distribución y el proyecto completo?"
   ],
   [
    "p",
@@ -149,7 +150,7 @@
   ],
   [
    "h2",
-   "Errores típicos"
+   "¿Qué errores se cometen al elegir paquete?"
   ],
   [
    "ul",

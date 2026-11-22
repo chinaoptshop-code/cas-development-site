@@ -5,8 +5,9 @@
  "title": "Grundrissplanung: wann sie reicht und wann ein vollständiges Innenarchitekturprojekt nötig ist",
  "seo_title": "Grundrissplanung für die Wohnung: wann sie reicht",
  "description": "Grundrissplanung für Wohnung oder Haus: Inhalt, wann sie für die Renovierung reicht und wann ein volles Projekt nötig ist. Pakete, Preise, Checkliste.",
- "lead": "Eine Grundrissplanung ist der kürzeste Weg von leeren Wänden zu einem klaren Plan: wo Wände, Möbel und Nassbereiche liegen. Manchmal genügt das, manchmal nicht. Hier lesen Sie, was das Paket enthält, wann es reicht und wann Sparen an Plänen zu Nacharbeiten führt.",
+ "lead": "Eine Grundrissplanung kostet ab $6/m² und ist der kürzeste Weg von leeren Wänden zu einem klaren Plan: wo Wände, Möbel und Nassbereiche liegen. Manchmal genügt das, manchmal nicht. Hier lesen Sie, was das Paket enthält, wann es reicht und wann Sparen an Plänen zu Nacharbeiten führt.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/wohnungsdesign",
   "Innenarchitekturprojekt für die Wohnung"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was eine Grundrissplanung ist"
+   "Was ist eine Grundrissplanung?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Was das Paket enthält"
+   "Was umfasst das Planungspaket?"
   ],
   [
    "ul",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Wann die Grundrissplanung reicht"
+   "Wann reicht eine Grundrissplanung?"
   ],
   [
    "ul",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Wie die Arbeit abläuft"
+   "Wie läuft die Arbeit am Grundriss ab?"
   ],
   [
    "ol",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Wann ein vollständiges Projekt nötig ist"
+   "Wann braucht man ein vollständiges Designprojekt?"
   ],
   [
    "ul",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Paketvergleich"
+   "Wie unterscheiden sich die Designpakete?"
   ],
   [
    "ul",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Was es kostet"
+   "Was kosten Grundrissplanung und vollständiges Projekt?"
   ],
   [
    "p",
@@ -149,7 +150,7 @@
   ],
   [
    "h2",
-   "Typische Fehler"
+   "Welche Fehler passieren bei der Wahl des Pakets?"
   ],
   [
    "ul",
