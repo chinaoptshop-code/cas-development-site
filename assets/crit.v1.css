@@ -112,6 +112,8 @@ body{padding-top:var(--sch-h)}
 .sch-mmsg{display:flex;flex-wrap:wrap;gap:8px}
 .sch-mmsg a{display:inline-flex;align-items:center;justify-content:center;flex:none;width:max(46px,2.875rem);height:max(46px,2.875rem);border:1px solid var(--c-ln);border-radius:12px;
   text-decoration:none}
+.sch-mmsg a:hover,.sch-mmsg a:focus-visible{border-color:var(--c-ac)}
+.sch-mmsg .bi::before{width:1.375rem;height:1.375rem}
 .bi::before{content:"";flex:none;width:20px;height:20px;background:center/contain no-repeat}
 .bi-telegram::before{background-image:url(/assets/brand/telegram.svg)}
 .bi-viber::before{background-image:url(/assets/brand/viber.svg)}
@@ -121,6 +123,7 @@ body{padding-top:var(--sch-h)}
 .bi-wechat::before{background-image:url(/assets/brand/wechat.svg)}
 .bi-linkedin::before{background-image:url(/assets/brand/linkedin.svg)}
 .bi-tiktok::before{background-image:url(/assets/brand/tiktok.svg)}
+.bi-behance::before{background-image:url(/assets/brand/behance.svg)}
 @media(min-width:1080px){.sch-menu{display:none!important}}
 .scf{position:static;display:block;margin:0;padding:48px 0 calc(28px + env(safe-area-inset-bottom));border-top:1px solid var(--c-ln);background:var(--c-bg);
   color:var(--c-mu);font-size:var(--fs-body,1rem);line-height:1.6}
@@ -205,8 +208,12 @@ details.o-more>summary::after,details.o-more[open]>summary::after{content:none!i
 details.o-more>summary::before{content:"+ "}
 details.o-more>*+*{margin-top:12px}
 .lq-alt,.lq-tr{font-size:var(--fs-small,.8125rem);line-height:1.5;margin:6px 0 0;color:var(--mu,#8a837c);max-width:34em}
+.lq-alt{display:flex;flex-wrap:wrap;gap:.5rem}
 .lq-alt a{display:inline-flex;align-items:center;justify-content:center;flex:none;width:max(44px,2.875rem);height:max(44px,2.875rem);border:1px solid var(--ln,rgba(191,145,72,.35));border-radius:.75rem;text-decoration:none}
+.lq-alt a:hover,.lq-alt a:focus-visible{border-color:var(--ac,#bf9148)}
+.lq-alt .bi::before{width:1.375rem;height:1.375rem}
 :is(.lq,#of) :is(.o-note,.lq-alt,.lq-tr,.lq-l){font-size:var(--fs-small,.8125rem);line-height:1.5}
+:is(.lq,#of) .lq-alt{margin:12px 0 0}
 .lq-b,#oBtn{transition:transform .15s ease,filter .2s ease,opacity .2s ease}
 @media(hover:hover){.lq-b:not(:disabled):hover,#oBtn:not(:disabled):hover{filter:brightness(1.08)}}
 .lq-b:not(:disabled):active,#oBtn:not(:disabled):active{transform:scale(.97)}
@@ -284,6 +291,7 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
 .mbar[data-one] .mb-menu a.mb-call svg{width:20px;height:20px;margin-inline:4px}
 .mbar[data-one] .mb-menu img{width:26px!important;height:26px!important}
 .mbar[data-one] .mb-menu a.mb-lead{border:1px solid rgba(191,145,72,.6);color:#f3d7a6;justify-content:center;margin-top:4px}
+.mbar[data-one] .mb-menu a:not(.mb-lead){justify-content:center;width:48px;padding:0;border:1px solid rgba(191,145,72,.35);border-radius:12px}
 .mbar[data-one] .mb-menu a.mb-call{border-color:#bf9148}
 .mbar[data-one] .mb-menu a.mb-call svg{margin:0}
 .mbar[data-one] .mb-menu a.mb-lead{grid-column:1/-1;white-space:normal;text-align:center;line-height:1.25}}
@@ -339,6 +347,7 @@ main figcaption a{display:inline-block;padding-block:12px;margin-block:-12px}}
 :root:lang(pl){--ux-a:"Animacja realizacji";--ux-as:"Interaktywne"}
 :root:lang(de){--ux-a:"Bauablauf als Animation";--ux-as:"Interaktiv"}
 :root:lang(fr){--ux-a:"Animation du chantier";--ux-as:"Interactif"}
+:root:lang(pt-PT){--ux-a:"Animação da obra";--ux-as:"Interativo"}
 :root:lang(ar){--ux-a:"رسوم متحركة للتنفيذ";--ux-as:"تفاعلي"}
 .ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none;overflow:visible}
 .js h2[data-i]{position:relative;padding-inline-start:1.32em}
@@ -423,6 +432,7 @@ main :is(p,li,figcaption) a:not(.btn){overflow-wrap:anywhere}
 .js .w[data-c=x]:not(.c-o):has(>h2[data-i=cs])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=cs])::before{background-image:url(/img/tiles/cs.webp)}
 .js .w[data-c=x]:not(.c-o):has(>h2[data-i=de])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=de])::before{background-image:url(/img/tiles/de.webp)}
 .js .w[data-c=x]:not(.c-o):has(>h2[data-i=dm])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=dm])::before{background-image:url(/img/tiles/dm.webp)}
+.js .w[data-c=x]:not(.c-o):has(>h2[data-i=fl])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=fl])::before{background-image:url(/img/tiles/fl.webp)}
 .js .w[data-c=x]:not(.c-o):has(>h2[data-i=fq])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=fq])::before{background-image:url(/img/tiles/fq.webp)}
 .js .w[data-c=x]:not(.c-o):has(>h2[data-i=fu])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=fu])::before{background-image:url(/img/tiles/fu.webp)}
 .js .w[data-c=x]:not(.c-o):has(>h2[data-i=gp])::before,.js [data-c=x]:not(.w,.c-o):has(>h2[data-i=gp])::before{background-image:url(/img/tiles/gp.webp)}
@@ -487,6 +497,7 @@ html body :is(main,main>div[id^="p-"])>section:not([data-c=x],:has(>.w[data-c=x]
 #calc .cx>.cxl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 #calc .sum{border:1px solid var(--ln);background:var(--bg2);padding:20px;margin-top:2px;border-radius:14px}
 #calc .sum b{font-family:"Cormorant Garamond","Cormorant Fallback",serif;font-size:var(--fs-h2);color:var(--ac);display:block;line-height:1.1}
+#calc .sum #cPick{color:var(--tx)}
 #calc .sum p{color:var(--mu);margin:8px 0 0;font-size:var(--fs-small)}
 #calc .sum #cPlus{color:var(--tx)}
 #calc .sum ul{list-style:none;margin:12px 0 0;padding:12px 0 0;border-top:1px solid var(--ln);display:grid;gap:6px;font-size:var(--fs-small)}
