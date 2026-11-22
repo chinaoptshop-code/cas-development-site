@@ -7,6 +7,7 @@
  "description": "A brief for your interior designer: family, rooms, storage, engineering, style and budget to think through. A checklist to fill in before the first meeting.",
  "lead": "A brief for an interior designer is a short description of how you live and what you expect from the new space. The more precise it is, the fewer layout revisions you will go through and the sooner the project reaches a cost estimate. Here is what to put in it, plus a checklist you can fill in over one evening.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/en/interior-designer",
   "Interior designer"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Why an interior designer needs a brief"
+   "Why does an interior designer need a brief?"
   ],
   [
    "p",
-   "A designer cannot guess that you cook every evening, keep bikes at home or work from home twice a week. Without this, the layout ends up \"average\" and then gets redone: sockets move, wardrobes are added, the bedroom and the study swap places. A brief removes those loops before the first sketch."
+   "A brief makes the layout fit your daily life the first time: a designer cannot guess that you cook every evening, keep bikes at home or work from home twice a week. Without this, the layout ends up \"average\" and then gets redone: sockets move, wardrobes are added, the bedroom and the study swap places. A brief removes those loops before the first sketch."
   ],
   [
    "p",
@@ -32,11 +33,11 @@
   ],
   [
    "h2",
-   "Who will live there: family and daily routines"
+   "What should the brief say about family and routines?"
   ],
   [
    "p",
-   "Start with people, not rooms. Describe each resident and an ordinary day. Zoning grows out of this: where quiet is needed, where guests gather, where sports gear goes."
+   "Start with people, not rooms: describe each resident and an ordinary day. Zoning grows out of this: where quiet is needed, where guests gather, where sports gear goes."
   ],
   [
    "ul",
@@ -56,11 +57,11 @@
   ],
   [
    "h2",
-   "Room by room: what to write about each zone"
+   "What should the brief say about each room?"
   ],
   [
    "p",
-   "Then go through every room. No need to be professional — write as you would explain to a friend. The designer will translate it into layouts and drawings."
+   "Go through every room and describe it in plain words, as you would explain to a friend — no need to be professional. The designer will translate it into layouts and drawings."
   ],
   [
    "h3",
@@ -94,11 +95,11 @@
   ],
   [
    "h2",
-   "Style and references"
+   "How do you show the designer a style you like?"
   ],
   [
    "p",
-   "You do not need to know the name of a style. Collect 15–20 interiors you like and a few you definitely dislike — the second list is often more useful, because it rules options out at once."
+   "Collect 15–20 interiors you like and a few you definitely dislike — you do not need to know the name of a style."
   ],
   [
    "ul",
@@ -128,7 +129,7 @@
   ],
   [
    "h2",
-   "Engineering and technical wishes"
+   "Which technical wishes go into the brief?"
   ],
   [
    "ul",
@@ -147,11 +148,11 @@
   ],
   [
    "h2",
-   "Budget and timing"
+   "Should the brief cover budget and timing?"
   ],
   [
    "p",
-   "The budget is part of the brief, not a secret from the designer. Write an approximate sum for the project, renovation and furniture, or at least an overall limit. For reference, an [apartment design project](/en/apartment-interior-design) at CAS starts at $30 per m², minimum $2 500. Turnkey renovation starts at $550 per m²: works and rough materials, while finishing materials, furniture and appliances are estimated separately. For an 80 m² flat: 80 m² × $550 = $44 000. You can estimate your own area in the [renovation calculator](/en/renovation-cost-calculator); the exact figure comes from the estimate after the project."
+   "Yes: the budget is part of the brief, not a secret from the designer. Write an approximate sum for the project, renovation and furniture, or at least an overall limit. For reference, an [apartment design project](/en/apartment-interior-design) at CAS starts at $30 per m², minimum $2 500. Turnkey renovation starts at $550 per m²: works and rough materials, while finishing materials, furniture and appliances are estimated separately. For an 80 m² flat: 80 m² × $550 = $44 000. You can estimate your own area in the [renovation calculator](/en/renovation-cost-calculator); the exact figure comes from the estimate after the project."
   ],
   [
    "p",
@@ -194,7 +195,7 @@
   ],
   [
    "h2",
-   "What happens after the brief"
+   "What happens after the brief?"
   ],
   [
    "p",

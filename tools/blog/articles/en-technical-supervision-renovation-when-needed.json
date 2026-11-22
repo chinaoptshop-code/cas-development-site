@@ -7,6 +7,7 @@
  "description": "Technical supervision of an apartment renovation: what it checks, sign-off of concealed works, how it differs from designer supervision and when it pays off.",
  "lead": "Technical supervision of a renovation is needed when you cannot be on site every day or are not sure you can judge the quality of concealed works. Its job is to spot a mistake while it is still cheap to fix. Here is what technical supervision checks, when it makes sense and how to organise it.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/en/design-and-technical-supervision",
   "Designer and technical supervision"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "What technical supervision is"
+   "What is technical supervision of a renovation?"
   ],
   [
    "p",
@@ -45,11 +46,11 @@
   ],
   [
    "h2",
-   "How it differs from designer supervision"
+   "How does it differ from designer supervision?"
   ],
   [
    "p",
-   "The two services are often confused, though they answer different questions. Designer supervision is the designer's control: does the result match the concept, materials and details. Technical supervision is the engineer's control: are the works done correctly from a technical point of view."
+   "The two services are often confused, but the difference is in what they control. Designer supervision is the designer's control: does the result match the concept, materials and details. Technical supervision is the engineer's control: are the works done correctly from a technical point of view."
   ],
   [
    "ul",
@@ -72,7 +73,7 @@
   ],
   [
    "h2",
-   "When technical supervision is especially needed"
+   "When is technical supervision especially needed?"
   ],
   [
    "ul",
@@ -91,11 +92,11 @@
   ],
   [
    "h2",
-   "What it checks: a checklist of concealed works"
+   "What does it check in concealed works?"
   ],
   [
    "p",
-   "Below are the works most important to check before they are closed. You can use the list even without a supervisor, comparing it with the contractor's photo reports."
+   "Technical supervision checks concealed works first of all — the ones most important to see before they are closed; the list is below. You can use the list even without a supervisor, comparing it with the contractor's photo reports."
   ],
   [
    "h3",
@@ -164,11 +165,11 @@
   ],
   [
    "h2",
-   "How technical supervision saves money"
+   "Does technical supervision pay off?"
   ],
   [
    "p",
-   "Supervision costs money, so it is fair to ask whether it pays off. The saving does not come from a lower renovation price — it comes from fewer reworks, and rework always costs more than doing it right the first time."
+   "Yes, supervision pays off, even though it costs money. The saving does not come from a lower renovation price — it comes from fewer reworks, and rework always costs more than doing it right the first time."
   ],
   [
    "ul",
@@ -185,7 +186,7 @@
   ],
   [
    "h2",
-   "How to organise technical supervision"
+   "How do you organise supervision and when should it visit?"
   ],
   [
    "ol",
@@ -203,7 +204,7 @@
   ],
   [
    "h2",
-   "New build or older housing"
+   "How does it differ in a new build and older housing?"
   ],
   [
    "p",
@@ -215,7 +216,7 @@
   ],
   [
    "h2",
-   "Warning signs that you need supervision"
+   "Which signals say you need supervision?"
   ],
   [
    "ul",

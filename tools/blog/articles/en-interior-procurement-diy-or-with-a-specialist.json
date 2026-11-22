@@ -7,6 +7,7 @@
  "description": "Interior procurement: what a specialist does, when buying furniture and lighting yourself pays off, when to hand it to a team. Where to save, plus a checklist.",
  "lead": "Interior procurement is everything that turns a renovated apartment or house into a home: furniture, lighting, textiles, decor, appliances. You can take it on yourself or hand it to a procurement specialist. We explain what the work consists of, when buying yourself really saves money and when it turns into overpayments and delays.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/en/turnkey-procurement",
   "Turnkey procurement"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "What interior procurement is"
+   "What is interior procurement?"
   ],
   [
    "p",
@@ -44,7 +45,7 @@
   ],
   [
    "h2",
-   "What a procurement specialist does: the stages"
+   "What does a procurement specialist do, and how does the work go?"
   ],
   [
    "ol",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Doing procurement yourself: when it pays off"
+   "When does doing procurement yourself really pay off?"
   ],
   [
    "p",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "When to hand procurement to a team"
+   "When should you hand procurement to a team?"
   ],
   [
    "ul",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Comparison: yourself or with a specialist"
+   "Yourself or with a specialist: what is the difference?"
   ],
   [
    "ul",
@@ -153,11 +154,11 @@
   ],
   [
    "h2",
-   "How to save on procurement"
+   "How can you save on interior procurement?"
   ],
   [
    "p",
-   "Saving on procurement rarely means buying the cheapest. The right priorities and order of purchases give far more."
+   "Savings come from the right priorities and order of purchases, not from hunting for the cheapest."
   ],
   [
    "ul",
@@ -186,11 +187,11 @@
   ],
   [
    "h2",
-   "What procurement costs"
+   "How much does procurement for an apartment cost?"
   ],
   [
    "p",
-   "The procurement budget has two parts: the cost of the items themselves and the work of selecting, purchasing, logistics and installation. At CAS Development [apartment furnishing](/en/turnkey-furnishing) starts from $250 per m². For a 75 m² apartment the guide figure is 75 m² × $250 = $18,750. The exact sum depends on the specification, the level of furniture and the number of custom items. If some furniture already exists or is moving with you, the budget falls proportionally — this is visible in the specification before purchasing starts."
+   "At CAS Development [apartment furnishing](/en/turnkey-furnishing) starts from $250 per m²: the procurement budget is the cost of the items themselves plus the work of selecting, purchasing, logistics and installation. For a 75 m² apartment the guide figure is 75 m² × $250 = $18,750. The exact sum depends on the specification, the level of furniture and the number of custom items. If some furniture already exists or is moving with you, the budget falls proportionally — this is visible in the specification before purchasing starts."
   ],
   [
    "p",
