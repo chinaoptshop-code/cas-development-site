@@ -7,6 +7,7 @@
  "description": "Mini hotel llave en mano: formato y número de habitaciones, proyecto, obra nueva o reconversión, equipamiento y apertura. Diseño desde $30/m².",
  "lead": "Un mini hotel es un negocio en el que cada decisión de los planos influye después en los ingresos: cuántas habitaciones caben, lo rápido que se limpian, lo resistentes que son los acabados. Le contamos cómo es la construcción de un mini hotel llave en mano, desde el concepto y el proyecto hasta el equipamiento y los primeros huéspedes.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/es/diseno-hoteles",
   "Diseño y equipamiento de hoteles llave en mano"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Concepto: para quién es el hotel"
+   "¿Para qué huésped se construye el mini hotel?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Parcela o edificio existente"
+   "¿Construir desde cero o reconvertir un edificio?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "Proyecto: habitaciones y circulaciones"
+   "¿Por dónde empieza el proyecto de un mini hotel?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Construcción del mini hotel e instalaciones"
+   "¿En qué se diferencian las instalaciones de un hotel?"
   ],
   [
    "p",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "Equipamiento de habitaciones y zonas comunes"
+   "¿Cómo se equipan habitaciones y zonas comunes?"
   ],
   [
    "p",
@@ -118,7 +119,7 @@
   ],
   [
    "h2",
-   "Restaurante y apertura"
+   "¿Para qué un restaurante y cómo se abre?"
   ],
   [
    "p",
@@ -135,7 +136,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta y cómo trabajamos"
+   "¿Cuánto cuesta un mini hotel llave en mano?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Minihotel schlüsselfertig bauen: Format und Zimmerzahl, Planung, Neubau oder Umbau, Ausstattung der Zimmer und Eröffnung. Design ab $30/m².",
  "lead": "Ein Minihotel ist ein Geschäft, in dem jede Entscheidung in den Plänen später den Umsatz beeinflusst: wie viele Zimmer hineinpassen, wie schnell sie zu reinigen sind, wie strapazierfähig die Oberflächen sind. Wir zeigen, wie ein schlüsselfertiges Minihotel entsteht — vom Konzept und Projekt bis zur Ausstattung und den ersten Gästen.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/de/hoteldesign",
   "Hoteldesign und schlüsselfertige Ausstattung"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Konzept: für wen das Hotel ist"
+   "Für welchen Gast wird das Minihotel gebaut?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Grundstück oder bestehendes Gebäude"
+   "Neu bauen oder ein Gebäude umbauen?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "Planung: Zimmer und Wege"
+   "Womit beginnt die Planung eines Minihotels?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Bau des Minihotels und Haustechnik"
+   "Was unterscheidet Hoteltechnik von einem Wohnhaus?"
   ],
   [
    "p",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "Ausstattung von Zimmern und öffentlichen Bereichen"
+   "Wie stattet man Zimmer und öffentliche Bereiche aus?"
   ],
   [
    "p",
@@ -118,7 +119,7 @@
   ],
   [
    "h2",
-   "Restaurant und Eröffnung"
+   "Wozu ein Restaurant, und wie eröffnet man?"
   ],
   [
    "p",
@@ -135,7 +136,7 @@
   ],
   [
    "h2",
-   "Was es kostet und wie wir arbeiten"
+   "Was kostet ein Minihotel schlüsselfertig?"
   ],
   [
    "p",

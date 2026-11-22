@@ -7,6 +7,7 @@
  "description": "Budowa mini-hotelu pod klucz: format i liczba pokoi, projekt, budowa od zera lub przebudowa, wyposażenie pokoi i otwarcie. Projekt od $30/m².",
  "lead": "Mini-hotel to biznes, w którym każda decyzja na rysunkach wpływa potem na przychód: ile pokoi się zmieści, jak szybko można je sprzątać, jak trwałe są okładziny. Opowiadamy, jak przebiega budowa mini-hotelu pod klucz — od koncepcji i projektu po wyposażenie i pierwszych gości.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektowanie-hoteli",
   "Projektowanie i wyposażenie hoteli pod klucz"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Koncepcja: dla kogo jest ten hotel"
+   "Dla jakiego gościa powstaje minihotel?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Działka czy gotowy budynek"
+   "Budować od zera czy przebudować budynek?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "Projekt: pokoje i ciągi komunikacyjne"
+   "Od czego zaczyna się projekt minihotelu?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Budowa mini-hotelu i instalacje"
+   "Czym instalacje hotelu różnią się od domu?"
   ],
   [
    "p",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "Wyposażenie pokoi i stref publicznych"
+   "Jak wyposażyć pokoje i strefy wspólne?"
   ],
   [
    "p",
@@ -118,7 +119,7 @@
   ],
   [
    "h2",
-   "Restauracja i otwarcie"
+   "Po co minihotelowi restauracja i jak go otworzyć?"
   ],
   [
    "p",
@@ -135,7 +136,7 @@
   ],
   [
    "h2",
-   "Ile to kosztuje i jak pracujemy"
+   "Ile kosztuje minihotel pod klucz?"
   ],
   [
    "p",
