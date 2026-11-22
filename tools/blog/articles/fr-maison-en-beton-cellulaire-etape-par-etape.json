@@ -7,6 +7,7 @@
  "description": "Construire en béton cellulaire : dalle de fondation, premier rang, linteaux, chaînage, toiture, enveloppe isolante. Checklist de contrôle à chaque étape.",
  "lead": "Construire en béton cellulaire pardonne moins qu'on ne le croit : les murs montent vite, mais la plupart des défauts se logent dans quelques points — le premier rang, les linteaux, le chaînage, les jonctions avec la toiture et les fenêtres. Nous suivons l'ordre des travaux tel que le mène un conducteur de travaux et, à chaque étape, montrons ce que le maître d'ouvrage doit vérifier tant que l'ouvrage est encore visible.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/fr/construction-maison",
   "Construction de maison"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Construire en béton cellulaire : en quoi consiste le processus"
+   "Qu'est-ce que le béton cellulaire et quelles sont les étapes ?"
   ],
   [
    "p",
@@ -41,7 +42,7 @@
   ],
   [
    "h2",
-   "Étape 0. Projet et étude de sol : la base de toutes les décisions"
+   "Étape 0. Qui fixe le bloc, la fondation et les armatures ?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Étape 1. Dalle de fondation"
+   "Étape 1. Pourquoi une dalle de fondation ?"
   ],
   [
    "p",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Étape 2. Coupure de capillarité et premier rang"
+   "Étape 2. Pourquoi le premier rang est-il décisif ?"
   ],
   [
    "p",
@@ -126,7 +127,7 @@
   ],
   [
    "h2",
-   "Étape 3. Murs, linteaux et baies"
+   "Étape 3. Pourquoi des linteaux au-dessus des baies ?"
   ],
   [
    "p",
@@ -148,7 +149,7 @@
   ],
   [
    "h2",
-   "Étape 4. Chaînage et planchers"
+   "Étape 4. À quoi sert le chaînage ?"
   ],
   [
    "p",
@@ -175,7 +176,7 @@
   ],
   [
    "h2",
-   "Étape 5. Toiture"
+   "Étape 5. Comment fixer la toiture aux murs ?"
   ],
   [
    "p",
@@ -197,7 +198,7 @@
   ],
   [
    "h2",
-   "Étape 6. Fenêtres, isolation et enveloppe isolante"
+   "Étape 6. Qu'est-ce que l'enveloppe isolante, et les fenêtres ?"
   ],
   [
    "p",
@@ -225,7 +226,7 @@
   ],
   [
    "h2",
-   "Étape 7. Réseaux, enduits et chapes"
+   "Étape 7. Quand passer aux réseaux, enduits et chapes ?"
   ],
   [
    "p",
@@ -242,7 +243,7 @@
   ],
   [
    "h2",
-   "Erreurs fréquentes en construction béton cellulaire"
+   "Quelles erreurs commet-on en béton cellulaire ?"
   ],
   [
    "ul",
@@ -258,7 +259,7 @@
   ],
   [
    "h2",
-   "Checklist des ouvrages cachés : quoi documenter par photo et procès-verbal"
+   "Quels ouvrages cachés documenter par photo et PV ?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Casa de hormigón celular: losa de cimentación, primera hilada, dinteles, zuncho, cubierta y envolvente térmica. Checklist de control por fases.",
  "lead": "Construir con hormigón celular perdona menos de lo que parece: los muros se levantan rápido, pero la mayoría de los defectos se concentran en unos pocos puntos —la primera hilada, los dinteles, el zuncho y los encuentros con la cubierta y las ventanas—. Repasamos la secuencia de trabajos tal como la lleva un jefe de obra y, en cada fase, mostramos qué debe comprobar el cliente mientras los trabajos aún están a la vista.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/es/construccion-de-casas",
   "Construcción de casas"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Construir una casa de hormigón celular: de qué consta el proceso"
+   "¿Qué es el hormigón celular y cuáles son las fases de obra?"
   ],
   [
    "p",
@@ -41,7 +42,7 @@
   ],
   [
    "h2",
-   "Fase 0. Proyecto y geotecnia: la base de todas las decisiones"
+   "Fase 0. ¿Quién define el bloque, la cimentación y el armado?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Fase 1. Losa de cimentación"
+   "Fase 1. ¿Por qué una losa de cimentación?"
   ],
   [
    "p",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Fase 2. Barrera antihumedad y primera hilada"
+   "Fase 2. ¿Por qué la primera hilada es la más importante?"
   ],
   [
    "p",
@@ -126,7 +127,7 @@
   ],
   [
    "h2",
-   "Fase 3. Muros, dinteles y huecos"
+   "Fase 3. ¿Para qué sirven los dinteles en los huecos?"
   ],
   [
    "p",
@@ -148,7 +149,7 @@
   ],
   [
    "h2",
-   "Fase 4. Zuncho y forjados"
+   "Fase 4. ¿Para qué sirve el zuncho?"
   ],
   [
    "p",
@@ -175,7 +176,7 @@
   ],
   [
    "h2",
-   "Fase 5. Cubierta"
+   "Fase 5. ¿Cómo se fija la cubierta a los muros?"
   ],
   [
    "p",
@@ -197,7 +198,7 @@
   ],
   [
    "h2",
-   "Fase 6. Ventanas, aislamiento y envolvente térmica"
+   "Fase 6. ¿Qué es la envolvente térmica y cómo se montan las ventanas?"
   ],
   [
    "p",
@@ -225,7 +226,7 @@
   ],
   [
    "h2",
-   "Fase 7. Instalaciones, enlucidos y soleras"
+   "Fase 7. ¿Cuándo empiezan instalaciones, enlucidos y soleras?"
   ],
   [
    "p",
@@ -242,7 +243,7 @@
   ],
   [
    "h2",
-   "Errores habituales al construir con hormigón celular"
+   "¿Qué errores se cometen al construir con hormigón celular?"
   ],
   [
    "ul",
@@ -258,7 +259,7 @@
   ],
   [
    "h2",
-   "Checklist de trabajos ocultos: qué registrar con fotos y actas"
+   "¿Qué trabajos ocultos registrar con fotos y actas?"
   ],
   [
    "p",

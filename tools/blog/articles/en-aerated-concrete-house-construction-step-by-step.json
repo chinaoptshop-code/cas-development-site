@@ -7,6 +7,7 @@
  "description": "Aerated concrete house construction: slab foundation, first course, lintels, ring beam, roof, thermal envelope. A checklist of what to inspect at every stage.",
  "lead": "Aerated concrete construction is less forgiving than it looks: the walls go up quickly, but most defects are built into a few details — the first course, lintels, ring beam, and the roof and window junctions. We go through the sequence of works the way a site manager runs it and, at each stage, show what the client should check while the work is still visible.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/en/house-construction",
   "House construction"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Building an aerated concrete house: what the process consists of"
+   "What is aerated concrete and what are the building stages?"
   ],
   [
    "p",
@@ -41,7 +42,7 @@
   ],
   [
    "h2",
-   "Stage 0. Design and ground investigation — the basis for every decision"
+   "Stage 0. Who decides the block grade, foundation and reinforcement?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Stage 1. Slab foundation"
+   "Stage 1. Why choose a slab foundation for aerated concrete?"
   ],
   [
    "p",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Stage 2. Damp-proof course and the first course of blocks"
+   "Stage 2. Why is the first course of blocks the most important?"
   ],
   [
    "p",
@@ -126,7 +127,7 @@
   ],
   [
    "h2",
-   "Stage 3. Walls, lintels and openings"
+   "Stage 3. Why do openings need lintels?"
   ],
   [
    "p",
@@ -148,7 +149,7 @@
   ],
   [
    "h2",
-   "Stage 4. Ring beam and floor slabs"
+   "Stage 4. What is a ring beam for?"
   ],
   [
    "p",
@@ -175,7 +176,7 @@
   ],
   [
    "h2",
-   "Stage 5. Roof"
+   "Stage 5. How is the roof fixed to aerated concrete walls?"
   ],
   [
    "p",
@@ -197,7 +198,7 @@
   ],
   [
    "h2",
-   "Stage 6. Windows, insulation and the thermal envelope"
+   "Stage 6. What is the thermal envelope and how are windows fitted?"
   ],
   [
    "p",
@@ -225,7 +226,7 @@
   ],
   [
    "h2",
-   "Stage 7. Services, plaster and screeds"
+   "Stage 7. When do services, plaster and screeds start?"
   ],
   [
    "p",
@@ -242,7 +243,7 @@
   ],
   [
    "h2",
-   "Common mistakes when building with aerated concrete"
+   "What mistakes are made when building with aerated concrete?"
   ],
   [
    "ul",
@@ -258,7 +259,7 @@
   ],
   [
    "h2",
-   "Checklist of concealed works: what to record with photos and sign-offs"
+   "Which concealed works should be recorded with photos and sign-offs?"
   ],
   [
    "p",
