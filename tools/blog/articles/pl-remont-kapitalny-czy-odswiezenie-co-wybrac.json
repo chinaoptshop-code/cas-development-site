@@ -5,8 +5,9 @@
  "title": "Remont kapitalny czy odświeżenie: czego potrzebuje twoje mieszkanie",
  "seo_title": "Remont kapitalny czy odświeżenie: co wybrać",
  "description": "Remont kapitalny czy odświeżenie mieszkania: co obejmuje każdy, kiedy wystarczy odświeżenie, a kiedy trzeba wymienić instalacje, i ile to kosztuje.",
- "lead": "Remont kapitalny czy odświeżenie — od tego pytania zaczyna się większość zapytań o mieszkania z rynku wtórnego. Odświeżenie jest szybsze i tańsze, remont kapitalny rozwiązuje problemy na lata. Wyjaśniamy, czym się różnią, po czym poznać, że odświeżenie już nie pomoże, i jak nie przepłacić w żadnym z przypadków.",
+ "lead": "Odświeżenie jest szybsze i tańsze, a remont kapitalny rozwiązuje problemy na lata — i od tego wyboru zaczyna się większość zapytań o mieszkania z rynku wtórnego. Wyjaśniamy, czym się różnią, po czym poznać, że odświeżenie już nie pomoże, i jak nie przepłacić w żadnym z przypadków.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/remont-kapitalny-mieszkania",
   "Remont kapitalny mieszkania w Kijowie"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Remont kapitalny czy odświeżenie: na czym polega różnica"
+   "Czym remont kapitalny różni się od odświeżenia?"
   ],
   [
    "p",
-   "Różnica nie leży w budżecie ani w tym, jak ładny będzie efekt. Kluczowe pytanie brzmi: czy remont dotyka tego, co ukryte w ścianach i podłodze. Odświeżenie odnawia powierzchnie: ściany, sufity, podłogi, drzwi, oświetlenie. Remont kapitalny sięga głębiej: wymienia instalacje, wyrównuje podłoża, zmienia układ, strefy mokre i elektrykę."
+   "Kluczowa różnica polega na tym, czy remont dotyka tego, co ukryte w ścianach i podłodze, a nie na budżecie ani na tym, jak ładny będzie efekt. Odświeżenie odnawia powierzchnie: ściany, sufity, podłogi, drzwi, oświetlenie. Remont kapitalny sięga głębiej: wymienia instalacje, wyrównuje podłoża, zmienia układ, strefy mokre i elektrykę."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Co obejmuje odświeżenie"
+   "Co obejmuje odświeżenie mieszkania?"
   ],
   [
    "p",
@@ -57,7 +58,7 @@
   ],
   [
    "h2",
-   "Co obejmuje remont kapitalny"
+   "Co obejmuje remont kapitalny?"
   ],
   [
    "p",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "Kiedy wystarczy odświeżenie"
+   "Kiedy wystarczy odświeżenie?"
   ],
   [
    "ul",
@@ -128,7 +129,7 @@
   ],
   [
    "h2",
-   "Kiedy potrzebny jest remont kapitalny"
+   "Kiedy potrzebny jest remont kapitalny?"
   ],
   [
    "p",
@@ -191,7 +192,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje remont kapitalny i odświeżenie"
+   "Ile kosztuje remont kapitalny, a ile odświeżenie?"
   ],
   [
    "p",
@@ -207,7 +208,7 @@
   ],
   [
    "h2",
-   "Typowe błędy przy wyborze"
+   "Jakie błędy popełnia się przy wyborze?"
   ],
   [
    "ul",
