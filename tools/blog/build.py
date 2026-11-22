@@ -626,6 +626,11 @@ def main():
     arts = load()
     ARTS[:] = arts
     bad = {a['_file']: check(a) for a in arts}
+    seen = {}  # одна мова + slug = одна сторінка: другий JSON мовчки перезаписував би перший (22.11.2026)
+    for a in arts:
+        k = (a.get('lang'), a.get('slug'))
+        if k in seen: bad[a['_file']].append(f'той самий slug {k[1]} ({k[0]}) уже в {seen[k]}')
+        else: seen[k] = a['_file']
     bad = {k: v for k, v in bad.items() if v}
     if bad:
         for k, v in bad.items(): print('❌', k, '—', '; '.join(v))
