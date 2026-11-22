@@ -7,6 +7,7 @@
  "description": "Biuro pod klucz w kijowskim biurowcu: co ustalić z wynajmującym, jak uzgodnić instalacje, remont od $350/m², meble i oświetlenie z Chin partiami.",
  "lead": "Biuro pod klucz w biurowcu to nie tylko projekt i remont: jest wynajmujący, zarządca i regulamin budynku. Opowiadamy, co sprawdzić przed startem, jak przebiega uzgadnianie instalacji i jak wyposażyć biuro w meble i oświetlenie z Chin.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/pl/biznes-pod-klucz",
   "Lokale biznesowe pod klucz"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Co sprawdzić u wynajmującego i zarządcy"
+   "Co sprawdzić u wynajmującego i zarządcy?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Instalacje i uzgodnienia: jak to zwykle przebiega"
+   "Jak zwykle przebiegają uzgodnienia instalacji?"
   ],
   [
    "p",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Projekt, remont i kompletacja jednym zespołem"
+   "Po co projekt, remont i wyposażenie w jednym zespole?"
   ],
   [
    "p",
@@ -119,7 +120,7 @@
   ],
   [
    "h2",
-   "Odbiór biura"
+   "Jak odebrać biuro po remoncie?"
   ],
   [
    "p",

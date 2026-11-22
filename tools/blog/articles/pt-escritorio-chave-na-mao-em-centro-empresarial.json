@@ -7,6 +7,7 @@
  "description": "Escritório chave na mão num centro empresarial de Kyiv: o que esclarecer com o senhorio, aprovar as redes, obra desde $350/m², mobiliário e luz da China.",
  "lead": "Um escritório chave na mão num centro empresarial não é só design e obra: há um senhorio, uma empresa gestora e regras do edifício. Explicamos o que verificar antes de começar, como se aprovam as redes técnicas e como equipar o escritório com mobiliário e iluminação da China.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/pt/espacos-comerciais-chave-na-mao",
   "Espaços comerciais chave na mão"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "O que verificar com o senhorio e a empresa gestora"
+   "O que verificar com o senhorio e a gestão do edifício?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Redes técnicas e aprovações: como costuma ser"
+   "Como decorrem normalmente instalações e aprovações?"
   ],
   [
    "p",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Design, obra e equipamento com uma só equipa"
+   "Porquê design, obra e equipamento na mesma equipa?"
   ],
   [
    "p",
@@ -119,7 +120,7 @@
   ],
   [
    "h2",
-   "Receção do escritório"
+   "Como receber o escritório no fim da obra?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Bureau clé en main en centre d'affaires à Kyiv : quoi voir avec le bailleur, valider les réseaux, rénovation dès $350/m², mobilier et luminaires de Chine.",
  "lead": "Un bureau clé en main dans un centre d'affaires, ce n'est pas seulement du design et des travaux : il y a un bailleur, un gestionnaire et le règlement de l'immeuble. Voici ce qu'il faut vérifier avant de commencer, comment se valident les réseaux et comment équiper le bureau en mobilier et éclairage venus de Chine.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/fr/commerce-cle-en-main",
   "Commerce clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce qu'il faut vérifier auprès du bailleur et du gestionnaire"
+   "Que vérifier avec le bailleur et le gestionnaire ?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Réseaux et autorisations : comment cela se passe en général"
+   "Comment se passent réseaux et autorisations ?"
   ],
   [
    "p",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Design, travaux et équipement par une seule équipe"
+   "Pourquoi design, travaux et équipement par une seule équipe ?"
   ],
   [
    "p",
@@ -119,7 +120,7 @@
   ],
   [
    "h2",
-   "La réception du bureau"
+   "Comment réceptionner le bureau ?"
   ],
   [
    "p",
