@@ -7,6 +7,7 @@
  "description": "Reforma llave en mano de locales en Kiev: tienda, salón de belleza, oficina. Etapas, qué encarece el presupuesto, un cálculo de ejemplo y errores frecuentes.",
  "lead": "La reforma llave en mano de un local comercial tiene un objetivo: que el negocio empiece a facturar cuanto antes y sin rehacer nada. Estas son las etapas para acondicionar una tienda, un salón de belleza o una oficina, qué encarece el presupuesto y cómo calcularlo al principio.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/es/reforma-locales-comerciales",
   "Reforma de locales comerciales"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "En qué se diferencia una reforma comercial de una residencial"
+   "¿En qué se diferencia la reforma de un local de la de una vivienda?"
   ],
   [
    "p",
-   "En un piso reformas para ti, y las preguntas principales son la comodidad y la estética. En un local, el espacio tiene que trabajar para los ingresos: atraer clientes desde la calle, guiarlos por la tienda, permitir que el personal trabaje con eficacia y soportar un flujo diario de gente. Cada decisión, del suelo a la iluminación, se juzga también por su efecto en el negocio."
+   "Un local tiene que trabajar para los ingresos, no solo para la comodidad y la estética como un piso: atraer clientes desde la calle, guiarlos por la tienda, permitir que el personal trabaje con eficacia y soportar un flujo diario de gente. Cada decisión, del suelo a la iluminación, se juzga también por su efecto en el negocio."
   ],
   [
    "p",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Tienda, salón, oficina: qué importa en cada uno"
+   "¿Qué importa en una tienda, un salón o una oficina?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Etapas de la reforma de un local"
+   "¿Cuáles son las etapas de la reforma de un local?"
   ],
   [
    "ol",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Alquiler y aprobaciones: qué aclarar antes"
+   "¿Qué acordar con el propietario antes de las obras?"
   ],
   [
    "p",
@@ -110,7 +111,7 @@
   ],
   [
    "h2",
-   "Qué encarece el presupuesto"
+   "¿Qué determina el presupuesto de la reforma de un local?"
   ],
   [
    "p",
@@ -143,7 +144,7 @@
   ],
   [
    "h2",
-   "Un cálculo de presupuesto de ejemplo"
+   "¿Cómo calcular el presupuesto de reforma de un local?"
   ],
   [
    "p",
@@ -159,7 +160,7 @@
   ],
   [
    "h2",
-   "Errores frecuentes de los empresarios"
+   "¿Qué errores cometen los dueños de negocios?"
   ],
   [
    "ul",

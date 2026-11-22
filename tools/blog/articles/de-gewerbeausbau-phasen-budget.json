@@ -7,6 +7,7 @@
  "description": "Schlüsselfertiger Gewerbeausbau in Kyjiw: Laden, Kosmetiksalon, Büro. Arbeitsphasen, Kostentreiber, eine Beispielrechnung und typische Fehler.",
  "lead": "Ein schlüsselfertiger Gewerbeausbau hat ein Ziel: Das Geschäft soll so früh wie möglich und ohne Nacharbeiten Umsatz machen. Hier sind die Phasen für den Ausbau eines Ladens, Kosmetiksalons oder Büros, die Kostentreiber und wie man zu Beginn ein Budget rechnet.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/gewerberaeume-renovierung",
   "Gewerberäume renovieren"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Wie sich ein Gewerbeausbau vom Wohnungsausbau unterscheidet"
+   "Worin unterscheidet sich der Gewerbeausbau von einer Wohnungsrenovierung?"
   ],
   [
    "p",
-   "In einer Wohnung renovieren Sie für sich selbst, und es geht vor allem um Komfort und Ästhetik. In Gewerberäumen muss die Fläche für den Umsatz arbeiten: Kunden von der Straße anziehen, sie durch den Raum führen, effizientes Arbeiten des Personals ermöglichen und einem täglichen Besucherstrom standhalten. Jede Entscheidung – vom Boden bis zum Licht – wird auch nach ihrer Wirkung auf das Geschäft bewertet."
+   "Gewerberäume müssen für den Umsatz arbeiten, nicht nur für Komfort und Ästhetik wie eine Wohnung: Kunden von der Straße anziehen, sie durch den Raum führen, effizientes Arbeiten des Personals ermöglichen und einem täglichen Besucherstrom standhalten. Jede Entscheidung – vom Boden bis zum Licht – wird auch nach ihrer Wirkung auf das Geschäft bewertet."
   ],
   [
    "p",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Laden, Salon, Büro: was jeweils zählt"
+   "Worauf kommt es bei Laden, Salon und Büro an?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Phasen eines Gewerbeausbaus"
+   "Welche Phasen hat der Ausbau von Gewerberäumen?"
   ],
   [
    "ol",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Miete und Genehmigungen: was vorab zu klären ist"
+   "Was sollte man vor den Arbeiten mit dem Vermieter klären?"
   ],
   [
    "p",
@@ -110,7 +111,7 @@
   ],
   [
    "h2",
-   "Was den Kostenvoranschlag treibt"
+   "Was bestimmt den Kostenvoranschlag beim Gewerbeausbau?"
   ],
   [
    "p",
@@ -143,7 +144,7 @@
   ],
   [
    "h2",
-   "Eine Beispielrechnung"
+   "Wie berechnet man das Budget für einen Gewerbeausbau?"
   ],
   [
    "p",
@@ -159,7 +160,7 @@
   ],
   [
    "h2",
-   "Typische Fehler von Unternehmern"
+   "Welche Fehler machen Geschäftsinhaber?"
   ],
   [
    "ul",

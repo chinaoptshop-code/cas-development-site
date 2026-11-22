@@ -7,6 +7,7 @@
  "description": "Aménagement clé en main de locaux à Kyiv : boutique, salon de beauté, bureau. Étapes, ce qui pèse sur le devis, un exemple de budget et les erreurs fréquentes.",
  "lead": "L’aménagement clé en main d’un local commercial a un objectif : que l’activité génère des revenus le plus tôt possible et sans reprises. Voici les étapes pour aménager une boutique, un salon de beauté ou un bureau, ce qui pèse sur le devis et comment estimer le budget au départ.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/renovation-locaux-commerciaux",
   "Rénovation de locaux commerciaux"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Ce qui distingue un aménagement commercial d’une rénovation de logement"
+   "En quoi l’aménagement d’un local commercial diffère-t-il d’un logement ?"
   ],
   [
    "p",
-   "Dans un appartement, on rénove pour soi : confort et esthétique sont les questions principales. Dans un local commercial, l’espace doit travailler pour le chiffre d’affaires : attirer les clients depuis la rue, les guider dans la surface, permettre au personnel de travailler efficacement et supporter un flux quotidien. Chaque décision, du sol à l’éclairage, se juge aussi par son effet sur l’activité."
+   "Un local commercial doit travailler pour le chiffre d’affaires, et pas seulement pour le confort et l’esthétique comme un appartement : attirer les clients depuis la rue, les guider dans la surface, permettre au personnel de travailler efficacement et supporter un flux quotidien. Chaque décision, du sol à l’éclairage, se juge aussi par son effet sur l’activité."
   ],
   [
    "p",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Boutique, salon, bureau : ce qui compte pour chacun"
+   "Qu’est-ce qui compte pour une boutique, un salon ou un bureau ?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Les étapes d’un aménagement commercial"
+   "Quelles sont les étapes de l’aménagement d’un local commercial ?"
   ],
   [
    "ol",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Bail et autorisations : ce qu’il faut clarifier avant"
+   "Que convenir avec le bailleur avant les travaux ?"
   ],
   [
    "p",
@@ -110,7 +111,7 @@
   ],
   [
    "h2",
-   "Ce qui pèse sur le devis"
+   "Qu’est-ce qui fait le devis d’un local commercial ?"
   ],
   [
    "p",
@@ -143,7 +144,7 @@
   ],
   [
    "h2",
-   "Un exemple de calcul de budget"
+   "Comment chiffrer le budget d’un local commercial ?"
   ],
   [
    "p",
@@ -159,7 +160,7 @@
   ],
   [
    "h2",
-   "Erreurs fréquentes des chefs d’entreprise"
+   "Quelles erreurs font les chefs d’entreprise ?"
   ],
   [
    "ul",
