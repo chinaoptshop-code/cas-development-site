@@ -7,6 +7,7 @@
  "description": "Devis de rénovation : sa structure, comment lire les postes, quoi vérifier avant le contrat et comment lier les paiements 50/50 ou 50/30/20 aux étapes.",
  "lead": "Le devis de rénovation d'un appartement est le document principal qui montre ce que vous payez exactement. Nous expliquons de quelles parties il se compose, comment lire les postes, ce qu'il faut regarder avant de signer le contrat et comment relier le devis aux paiements par étapes.",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/fr/renovation-appartement",
   "Rénovation d’appartement clé en main à Kyiv"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "À quoi sert un devis"
+   "À quoi sert un devis de rénovation ?"
   ],
   [
    "p",
-   "La phrase « rénovation de l'appartement pour tant » ne dit rien de ce qui sera fait. Le devis décompose cette somme en travaux et matériaux précis, avec quantités et prix. Il permet de comparer les offres de plusieurs entreprises, de voir où une marge a été prévue et de savoir à l'avance ce qu'il faudra payer en plus."
+   "Le devis décompose le montant de la rénovation en travaux et matériaux précis, avec quantités et prix, car la phrase « rénovation de l'appartement pour tant » ne dit rien de ce qui sera fait. Il permet de comparer les offres de plusieurs entreprises, de voir où une marge a été prévue et de savoir à l'avance ce qu'il faudra payer en plus."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "De quoi se compose un devis de rénovation d'appartement"
+   "De quoi se compose le devis de rénovation d'un appartement ?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Comment lire les postes et quoi vérifier"
+   "Comment lire les postes et que vérifier ?"
   ],
   [
    "ol",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Ce que comprend le tarif et ce qui est en plus"
+   "Que comprend le tarif et qu'est-ce qui est en plus ?"
   ],
   [
    "p",
@@ -82,11 +83,11 @@
   ],
   [
    "h2",
-   "Le devis et le contrat"
+   "Le devis doit-il faire partie du contrat ?"
   ],
   [
    "p",
-   "Le devis doit être une annexe du contrat de travaux, pas un message isolé dans une messagerie. Avec lui, le contrat fixe le périmètre, les délais, l'échéancier et la garantie. Les délais commencent à 2 semaines selon le volume."
+   "Oui, le devis doit être une annexe du contrat de travaux, pas un message isolé dans une messagerie. Avec lui, le contrat fixe le périmètre, les délais, l'échéancier et la garantie. Les délais commencent à 2 semaines selon le volume."
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Comment lier le devis aux paiements"
+   "Comment relier le devis aux paiements ?"
   ],
   [
    "p",
@@ -121,7 +122,7 @@
   ],
   [
    "h2",
-   "Comment comparer les devis de plusieurs entreprises"
+   "Comment comparer les devis de plusieurs entreprises ?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Kostenvoranschlag für die Renovierung: Aufbau, Positionen lesen, was vor dem Vertrag zu prüfen ist und wie Zahlungen 50/50 oder 50/30/20 an Phasen hängen.",
  "lead": "Der Kostenvoranschlag für eine Wohnungsrenovierung ist das wichtigste Dokument, das zeigt, wofür Sie genau bezahlen. Wir erklären, aus welchen Abschnitten er besteht, wie man die Positionen liest, worauf Sie vor der Vertragsunterzeichnung achten sollten und wie man ihn mit Zahlungen nach Phasen verknüpft.",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/de/wohnungsrenovierung",
   "Wohnungsrenovierung schlüsselfertig in Kyjiw"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Wozu ein Kostenvoranschlag nötig ist"
+   "Wozu braucht man einen Kostenvoranschlag für die Renovierung?"
   ],
   [
    "p",
-   "Der Satz „Wohnungsrenovierung für so und so viel“ sagt nichts darüber aus, was gemacht wird. Der Kostenvoranschlag zerlegt diese Summe in konkrete Arbeiten und Materialien mit Mengen und Preisen. Damit lassen sich Angebote verschiedener Auftragnehmer vergleichen, versteckte Reserven erkennen und vorab sehen, was separat zu bezahlen ist."
+   "Der Kostenvoranschlag zerlegt die Renovierungssumme in konkrete Arbeiten und Materialien mit Mengen und Preisen, denn der Satz „Wohnungsrenovierung für so und so viel“ sagt nichts darüber aus, was gemacht wird. Damit lassen sich Angebote verschiedener Auftragnehmer vergleichen, versteckte Reserven erkennen und vorab sehen, was separat zu bezahlen ist."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Woraus ein Kostenvoranschlag für die Wohnungsrenovierung besteht"
+   "Woraus besteht ein Kostenvoranschlag für eine Wohnungsrenovierung?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Positionen lesen: was zu prüfen ist"
+   "Wie liest man die Positionen und was prüft man?"
   ],
   [
    "ol",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Was der Satz umfasst und was separat ist"
+   "Was ist im Satz enthalten und was kostet extra?"
   ],
   [
    "p",
@@ -82,11 +83,11 @@
   ],
   [
    "h2",
-   "Kostenvoranschlag und Vertrag"
+   "Sollte der Kostenvoranschlag Teil des Vertrags sein?"
   ],
   [
    "p",
-   "Der Kostenvoranschlag sollte eine Anlage zum Bauvertrag sein, keine lose Nachricht im Messenger. Zusammen mit ihm legt der Vertrag Leistungsumfang, Fristen, Zahlungsplan und Gewährleistung fest. Die Ausführungsfristen beginnen bei 2 Wochen, je nach Umfang."
+   "Ja, der Kostenvoranschlag sollte eine Anlage zum Bauvertrag sein, keine lose Nachricht im Messenger. Zusammen mit ihm legt der Vertrag Leistungsumfang, Fristen, Zahlungsplan und Gewährleistung fest. Die Ausführungsfristen beginnen bei 2 Wochen, je nach Umfang."
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Wie man den Kostenvoranschlag mit Zahlungen verknüpft"
+   "Wie verknüpft man den Kostenvoranschlag mit den Zahlungen?"
   ],
   [
    "p",
@@ -121,7 +122,7 @@
   ],
   [
    "h2",
-   "Wie man Kostenvoranschläge verschiedener Auftragnehmer vergleicht"
+   "Wie vergleicht man Kostenvoranschläge verschiedener Firmen?"
   ],
   [
    "p",

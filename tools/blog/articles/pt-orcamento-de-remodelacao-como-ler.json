@@ -7,6 +7,7 @@
  "description": "Orçamento de remodelação: estrutura, como ler as rubricas, o que verificar antes do contrato e como ligar pagamentos 50/50 ou 50/30/20 às etapas.",
  "lead": "O orçamento de remodelação de um apartamento é o documento principal que mostra o que está exatamente a pagar. Explicamos de que secções se compõe, como ler as rubricas, a que prestar atenção antes de assinar o contrato e como ligar o orçamento a pagamentos por etapas.",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/pt/remodelacao-apartamentos",
   "Remodelação de apartamentos chave na mão em Kyiv"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Para que serve o orçamento"
+   "Para que serve um orçamento de remodelação?"
   ],
   [
    "p",
-   "A frase «remodelação do apartamento por tanto» não diz nada sobre o que vai ser feito. O orçamento decompõe esse valor em trabalhos e materiais concretos, com quantidades e preços. Graças a ele é possível comparar propostas de vários empreiteiros, perceber onde há margem e saber antecipadamente o que terá de pagar à parte."
+   "O orçamento decompõe o valor da remodelação em trabalhos e materiais concretos, com quantidades e preços, porque a frase «remodelação do apartamento por tanto» não diz nada sobre o que vai ser feito. Graças a ele é possível comparar propostas de vários empreiteiros, perceber onde há margem e saber antecipadamente o que terá de pagar à parte."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "De que se compõe o orçamento de remodelação de um apartamento"
+   "De que se compõe o orçamento de remodelação de um apartamento?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Como ler as rubricas e o que verificar"
+   "Como ler as rubricas e o que verificar?"
   ],
   [
    "ol",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "O que entra na tarifa e o que é à parte"
+   "O que inclui a tarifa e o que se paga à parte?"
   ],
   [
    "p",
@@ -82,11 +83,11 @@
   ],
   [
    "h2",
-   "O orçamento e o contrato"
+   "O orçamento deve fazer parte do contrato?"
   ],
   [
    "p",
-   "O orçamento deve ser um anexo do contrato de empreitada, e não uma mensagem solta numa aplicação. Juntamente com ele, o contrato fixa o âmbito dos trabalhos, os prazos, o plano de pagamentos e a garantia. Os prazos começam em 2 semanas, consoante o volume."
+   "Sim, o orçamento deve ser um anexo do contrato de empreitada, e não uma mensagem solta numa aplicação. Juntamente com ele, o contrato fixa o âmbito dos trabalhos, os prazos, o plano de pagamentos e a garantia. Os prazos começam em 2 semanas, consoante o volume."
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Como ligar o orçamento aos pagamentos"
+   "Como ligar o orçamento aos pagamentos?"
   ],
   [
    "p",
@@ -121,7 +122,7 @@
   ],
   [
    "h2",
-   "Como comparar orçamentos de vários empreiteiros"
+   "Como comparar orçamentos de vários empreiteiros?"
   ],
   [
    "p",

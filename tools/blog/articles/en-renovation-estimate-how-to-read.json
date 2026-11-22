@@ -7,6 +7,7 @@
  "description": "A renovation estimate: what it consists of, how to read the items, what to check before the contract and how to tie 50/50 or 50/30/20 payments to stages.",
  "lead": "An apartment renovation estimate is the main document that shows what exactly you are paying for. We explain which sections it consists of, how to read the items, what to look at before signing the contract and how to link the estimate to stage payments.",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/en/apartment-renovation",
   "Turnkey apartment renovation in Kyiv"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Why you need an estimate"
+   "Why do you need a renovation estimate?"
   ],
   [
    "p",
-   "The phrase “an apartment renovation for so much” says nothing about what will be done. An estimate breaks that sum down into specific works and materials with quantities and prices. It lets you compare offers from different contractors, see where a margin has been built in and know in advance what you will have to pay for separately."
+   "An estimate breaks the renovation sum down into specific works and materials with quantities and prices, because the phrase “an apartment renovation for so much” says nothing about what will be done. It lets you compare offers from different contractors, see where a margin has been built in and know in advance what you will have to pay for separately."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "What an apartment renovation estimate consists of"
+   "What does an apartment renovation estimate consist of?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "How to read the items and what to check"
+   "How do you read the items and what should you check?"
   ],
   [
    "ol",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "What the rate includes and what is separate"
+   "What does the renovation rate include and what is extra?"
   ],
   [
    "p",
@@ -82,11 +83,11 @@
   ],
   [
    "h2",
-   "The estimate and the contract"
+   "Should the estimate be part of the contract?"
   ],
   [
    "p",
-   "The estimate should be an annex to the construction contract, not a separate message in a messenger. Together with it the contract sets the scope of works, timing, payment scheme and warranty. Work timing starts from 2 weeks, depending on the scope."
+   "Yes, the estimate should be an annex to the construction contract, not a separate message in a messenger. Together with it the contract sets the scope of works, timing, payment scheme and warranty. Work timing starts from 2 weeks, depending on the scope."
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "How to link the estimate to payments"
+   "How do you link the estimate to payments?"
   ],
   [
    "p",
@@ -121,7 +122,7 @@
   ],
   [
    "h2",
-   "How to compare estimates from different contractors"
+   "How do you compare estimates from different contractors?"
   ],
   [
    "p",
