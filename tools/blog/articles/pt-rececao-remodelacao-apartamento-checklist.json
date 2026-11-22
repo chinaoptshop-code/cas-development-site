@@ -7,6 +7,7 @@
  "description": "Receção da remodelação de um apartamento: o que verificar em paredes, azulejos, eletricidade e canalização, que documentos pedir e como registar os defeitos.",
  "lead": "Um auto assinado significa que a obra foi aceite, e os defeitos que eram visíveis durante a vistoria são depois mais difíceis de provar. Reunimos uma checklist para a receção da remodelação de um apartamento: o que preparar, o que verificar em cada divisão, que documentos pedir ao empreiteiro e como registar as observações.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pt/acompanhamento-fiscalizacao-obra",
   "Acompanhamento do designer e fiscalização técnica"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Receber por etapas e não apenas no fim"
+   "Porquê receber a obra por etapas e não só no fim?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "O que levar"
+   "O que levar para a receção da obra?"
   ],
   [
    "ul",
@@ -47,7 +48,7 @@
   ],
   [
    "h2",
-   "Paredes, tetos e pavimento"
+   "Como verificar paredes, tetos e pavimento?"
   ],
   [
    "ul",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Casa de banho e azulejos"
+   "O que verificar na casa de banho e nos azulejos?"
   ],
   [
    "ul",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Eletricidade, iluminação e instalações"
+   "Como verificar eletricidade, iluminação e instalações?"
   ],
   [
    "ul",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "Portas, janelas e mobiliário embutido"
+   "O que observar em portas, janelas e mobiliário embutido?"
   ],
   [
    "ul",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Documentos que convém receber"
+   "Que documentos receber depois da obra?"
   ],
   [
    "ul",
@@ -128,7 +129,7 @@
   ],
   [
    "h2",
-   "Como registar as observações"
+   "Como registar as observações na receção?"
   ],
   [
    "p",

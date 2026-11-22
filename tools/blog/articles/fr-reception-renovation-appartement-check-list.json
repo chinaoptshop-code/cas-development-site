@@ -7,6 +7,7 @@
  "description": "Réception de la rénovation d’un appartement : murs, carrelage, électricité et plomberie à vérifier, documents à demander et réserves à noter.",
  "lead": "Un procès-verbal signé signifie que vous avez accepté les travaux, et les défauts visibles lors de la visite sont ensuite plus difficiles à prouver. Nous avons réuni une check-list pour la réception de la rénovation d’un appartement : quoi préparer, quoi vérifier dans chaque pièce, quels documents demander à l’entreprise et comment noter les réserves.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/fr/suivi-de-chantier",
   "Suivi du designer et contrôle technique"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Réceptionner par étapes, pas seulement à la fin"
+   "Pourquoi réceptionner par étapes et pas seulement à la fin ?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Ce qu’il faut apporter"
+   "Que faut-il apporter à la réception ?"
   ],
   [
    "ul",
@@ -47,7 +48,7 @@
   ],
   [
    "h2",
-   "Murs, plafonds et sol"
+   "Comment vérifier murs, plafonds et sol ?"
   ],
   [
    "ul",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Salle de bains et carrelage"
+   "Que vérifier dans la salle de bains et le carrelage ?"
   ],
   [
    "ul",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Électricité, éclairage et réseaux"
+   "Comment contrôler électricité, éclairage et réseaux ?"
   ],
   [
    "ul",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "Portes, fenêtres et mobilier intégré"
+   "Que regarder sur portes, fenêtres et mobilier intégré ?"
   ],
   [
    "ul",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Les documents à obtenir"
+   "Quels documents obtenir après les travaux ?"
   ],
   [
    "ul",
@@ -128,7 +129,7 @@
   ],
   [
    "h2",
-   "Comment noter les réserves"
+   "Comment noter les réserves à la réception ?"
   ],
   [
    "p",

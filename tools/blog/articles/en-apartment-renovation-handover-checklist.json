@@ -7,6 +7,7 @@
  "description": "Accepting an apartment renovation: what to check in walls, tiling, electrics and plumbing, which documents to get from the contractor and how to record defects.",
  "lead": "A signed certificate means you have accepted the work, and defects that were visible during the inspection are harder to prove later. We have put together a checklist for accepting an apartment renovation: what to prepare, what to check in each room, which documents to get from the contractor and how to record your remarks.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/en/design-and-technical-supervision",
   "Designer and technical supervision"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Accept stage by stage, not only at the end"
+   "Why accept a renovation stage by stage, not only at the end?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "What to bring"
+   "What should you bring to the handover?"
   ],
   [
    "ul",
@@ -47,7 +48,7 @@
   ],
   [
    "h2",
-   "Walls, ceilings and floors"
+   "How do you check walls, ceilings and floors?"
   ],
   [
    "ul",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Bathroom and tiling"
+   "What to check in the bathroom and tiling?"
   ],
   [
    "ul",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Electrics, lighting and building services"
+   "How do you check electrics, lighting and services?"
   ],
   [
    "ul",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "Doors, windows and built-in furniture"
+   "What to look for in doors, windows and built-ins?"
   ],
   [
    "ul",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Documents worth getting"
+   "Which documents should you get after the renovation?"
   ],
   [
    "ul",
@@ -128,7 +129,7 @@
   ],
   [
    "h2",
-   "How to record your remarks"
+   "How do you record remarks at the handover?"
   ],
   [
    "p",
