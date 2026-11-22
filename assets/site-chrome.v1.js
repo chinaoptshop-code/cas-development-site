@@ -966,7 +966,7 @@
 })();
 });
 /* Згода на cookies (Михайло 22.11.2026, «роби покращення» після SEO-розбору). Стан і завантажувач Clarity — window.casCk (сніпет CLARITY
-   у <head>, tools/site/chrome.py): Україна за часовим поясом — без плашки (Clarity після першої дії), решта — opt-in.
+   у <head>, tools/site/chrome.py: ua, v, n, g(), f()); виклики Consent API v2 Clarity — тут. Україна за часовим поясом — без плашки (Clarity після першої дії), решта — opt-in.
    Плашка: лише поза Україною й доки немає вибору; після load в idle, position:fixed (без зсуву верстки); поки під нею опинилися б H1
    чи кнопки першого екрана — схована (зʼявляється, щойно їх прокрутили); фокус не забирає, Esc нічого не робить.
    «Cookies» у футері (a[data-ck]) відкриває ту саму плашку з поточним станом (і в Україні). Вибір — localStorage cas_ck = "1|дата" / "0|дата".
@@ -986,6 +986,7 @@
   };
   var PP = { uk: '/konfidentsiinist', ru: '/ru/konfidentsialnost', en: '/en/privacy-policy', es: '/es/privacidad', pl: '/pl/polityka-prywatnosci',
     de: '/de/datenschutz', fr: '/fr/confidentialite', pt: '/pt/privacidade', zh: '/zh/privacy', ar: '/ar/privacy' };
+  var GRANT = { ad_Storage: 'denied', analytics_Storage: 'granted' }; /* реклами немає — лише аналітика */
   var K = 'cas_ck', box = null, st = null, auto = false, raf = 0;
   function ck() { return W.casCk || null; }
   function get() { try { return (W.localStorage.getItem(K) || '').charAt(0); } catch (e) { return (ck() || {}).v || ''; } }
@@ -1042,7 +1043,11 @@
   function choose(v) {
     var c = ck(), back = box && box.contains(d.activeElement);
     put(v);
-    if (c) { if (v === '1') c.load(); else c.off(); }
+    if (c) {
+      c.v = v;
+      if (v === '1') { if (W.clarity) W.clarity('consentv2', GRANT); c.g(); }
+      else { c.f('remove'); if (c.n && W.clarity) { W.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'denied' }); W.clarity('consent', false); } }
+    }
     close();
     if (back) { var a = d.querySelector('a[data-ck]'); if (a) a.focus(); }
   }
@@ -1057,6 +1062,7 @@
     e.preventDefault(); show(true);
   });
   var c = ck();
+  if (c && c.v === '1' && W.clarity) W.clarity('consentv2', GRANT); /* згода з попередньої сторінки — Clarity ставить свої cookies (виклик у черзі до завантаження тегу) */
   if (!c || c.ua || get()) return; /* Україна або вже вибрали — плашка лише з футера */
   function idle() { (W.requestIdleCallback || function (f) { setTimeout(f, 200); })(function () { show(false); }, { timeout: 2500 }); }
   if (d.readyState === 'complete') idle(); else W.addEventListener('load', idle);

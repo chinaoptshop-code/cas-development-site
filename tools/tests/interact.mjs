@@ -1269,6 +1269,7 @@ for (const [path, w] of [['/en/services', 344], ['/en/services', 402], ['/en/', 
   must(ov.length === 0, 'унизу сторінки плашка накриває футер: ' + ov.join(', '));
   await p.click('.ck-b button[data-v="1"]'); await p.waitForTimeout(600);
   must(rq.length >= 1, '«Прийняти» не завантажив Clarity');
+  must(await p.evaluate(() => [...((window.clarity || {}).q || [])].some(a => a[0] === 'consentv2' && a[1].analytics_Storage === 'granted' && a[1].ad_Storage === 'denied')), 'немає clarity("consentv2", analytics granted)');
   const a = await ckState(p); must(!a.on && /^1\|\d{4}-\d\d-\d\d$/.test(a.ls), 'після «Прийняти»: ' + JSON.stringify(a));
   await p.evaluate(() => scrollTo(0, 0)); const n0 = rq.length; await p.reload({ waitUntil: 'load' }); await p.waitForTimeout(2200);
   must(!(await ckState(p)).on, 'плашка після перезавантаження');

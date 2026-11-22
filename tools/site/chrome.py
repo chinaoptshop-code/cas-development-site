@@ -399,7 +399,7 @@ def header(lang, path, alts, tools='', cta_href=None):
     # месенджери мобільного меню — лише іконки, як у футері (Михайло 21.11.2026): назва — aria-label і title, іконки — CSS (.bi-*);
     # + WeChat (клік копіює номер — a[data-wx] у site-chrome.v1.js; без JS — weixin://)
     mrow = MSG[:3] + [x for x in SOCIAL if x[0] == 'wechat'] + MSG[3:]
-    msg = ''.join(f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '')
+    msg = ''.join(f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank"' if u.startswith('http') else '')
                   + (f' data-wx="{WECHAT}"' if k == 'wechat' else '') + f' aria-label="{n}"></a>' for k, n, u in mrow)  # без title: меню лише на тачі, а бюджет HTML 64 КБ
     kab_cur = ' aria-current="page"' if path == KAB_HREF or path.startswith(KAB_HREF + '/') else ''
     kab = f'<a class="sch-kab" href="{KAB_HREF}" title="{t["kab_full"]}"{kab_cur}><span>{t["kab"]}</span></a>'
@@ -442,12 +442,13 @@ def header(lang, path, alts, tools='', cta_href=None):
 
 
 def footer(lang, alts):
+    # target="_blank" без rel="noopener": браузери ставлять noopener для _blank самі (HTML, 2021+), а бюджет HTML 64 КБ (22.11.2026)
     t = T[lang]
     # месенджери й соцмережі — один ряд однакових кнопок-іконок (Михайло 08.11.2026); назва — aria-label і title;
     # без видимого підпису «Месенджери» — лише іконки (Михайло 21.11.2026), підпис лишається в aria-label групи
     soc_l = t.get('soc') or SOC_LABEL.get(lang, SOC_LABEL['en'])
     row = [x for x in MSG if x[0] not in SOCIAL_K] + SOCIAL
-    soc = ''.join(f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '')
+    soc = ''.join(f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank"' if u.startswith('http') else '')
                   + (f' data-wx="{WECHAT}"' if k == 'wechat' else '') + f' aria-label="{n}" title="{n}"></a>' for k, n, u in row)
     groups = ''.join(f'<div><b>{g}</b>' + ''.join(f'<a href="{h}">{n}</a>' for h, n in links) + '</div>' for g, links in [(g, _live(x)) for g, x in t['groups']] if links)
     langs = lang_links(lang, alts, 'scf-lang')
@@ -766,19 +767,16 @@ def mbar_lead(s, lang, rel=''):
 # Згода (Михайло 22.11.2026, «роби покращення» після SEO-розбору): регіон — за часовим поясом браузера, без сервера.
 # Україна (Europe/Kyiv|Kiev|Uzhgorod|Zaporozhye) — як раніше, банера немає; решта (і пояс невідомий) — opt-in: Clarity не вантажиться,
 # доки людина не натисне «Прийняти» (плашка й кнопка «Cookies» у футері — site-chrome.v1.js). Вибір — localStorage cas_ck = "1|дата" / "0|дата";
-# "0" вимикає Clarity і в Україні. window.casCk — стан і load()/off() для плашки. Без «<» у коді (CLARITY_RX).
+# "0" вимикає Clarity і в Україні. window.casCk — {ua, v, n — чи вже вантажили, g() — завантажити, f('add'|'remove') — слухачі першої дії};
+# виклики consentv2 / consent(false) — у site-chrome.v1.js (бюджет HTML 64 КБ: сніпет мінімальний). Без «<» у коді (CLARITY_RX).
 CLARITY_ID = 'z19wl000eu'
-CLARITY = ('<script>(function(w,d,i){w.clarity=w.clarity||function(){(w.clarity.q=w.clarity.q||[]).push(arguments)};'
-           'var c="",z="";try{c=(localStorage.getItem("cas_ck")||"").charAt(0)}catch(e){}'
-           'try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}'
-           'var ua=/^Europe\\/(Kyiv|Kiev|Uzhgorod|Zaporozhye)$/.test(z),E=["scroll","pointerdown","keydown","touchstart"],o={passive:true},done=0;'
-           'function off(){E.forEach(function(e){w.removeEventListener(e,g,o)})}'
-           'function g(){if(done)return;done=1;off();'
-           'if(c==="1")w.clarity("consentv2",{ad_Storage:"denied",analytics_Storage:"granted"});'
-           'var t=d.createElement("script");t.async=1;t.src="https://www.clarity.ms/tag/"+i;d.head.appendChild(t)}'
-           'w.casCk={ua:ua,v:c,on:function(){return done},load:function(){c=w.casCk.v="1";if(done)w.clarity("consentv2",{ad_Storage:"denied",analytics_Storage:"granted"});else g()},'
-           'off:function(){c=w.casCk.v="0";off();if(done){w.clarity("consentv2",{ad_Storage:"denied",analytics_Storage:"denied"});w.clarity("consent",false)}}};'
-           'if(c==="1"||ua&&c!=="0")E.forEach(function(e){w.addEventListener(e,g,o)})})(window,document,"' + CLARITY_ID + '");</script>')
+CLARITY = ('<script>(function(w,d,i){var q=w.clarity=w.clarity||function(){(q.q=q.q||[]).push(arguments)},c="",z="",'
+           'E=["scroll","pointerdown","keydown","touchstart"],o={passive:true},k=w.casCk={n:0};'
+           'try{c=localStorage.cas_ck||""}catch(e){}try{z=Intl.DateTimeFormat().resolvedOptions().timeZone}catch(e){}'
+           'k.v=c=c[0]||"";k.ua=/^Europe\\/(Kiev|Kyiv|Uzh|Zap)/.test(z);'
+           'k.f=function(a){E.forEach(function(e){w[a+"EventListener"](e,k.g,o)})};'
+           'k.g=function(){if(k.n++)return;k.f("remove");var t=d.createElement("script");t.async=1;t.src="https://www.clarity.ms/tag/"+i;d.head.appendChild(t)};'
+           'if(c=="1"||k.ua&&c!="0")k.f("add")})(window,document,"' + CLARITY_ID + '");</script>')
 CLARITY_RX = re.compile(r'<script>\(function\([^<]*?clarity[^<]*?</script>')
 
 
