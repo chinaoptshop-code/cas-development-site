@@ -7,6 +7,7 @@
  "description": "Ce que comprend une rénovation clé en main à Kyiv : projet, démolition, réseaux, gros œuvre et finitions, mobilier, réception. Prix à partir de $550/m².",
  "lead": "Une rénovation clé en main à Kyiv, c'est un seul prestataire qui vous mène du projet à l'appartement fini. Nous passons en revue la liste complète des travaux : ce que comprend exactement une telle rénovation et où s'arrête la responsabilité de l'entreprise.",
  "date": "2026-10-24",
+ "modified": "2026-11-22",
  "service": [
   "/fr/renovation-cle-en-main",
   "Rénovation clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce que signifie clé en main"
+   "Que signifie une rénovation clé en main ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Projet et devis"
+   "Par quoi commence une rénovation clé en main ?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "Démolition et préparation"
+   "Que comprennent la démolition et la préparation ?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Réseaux techniques"
+   "Pourquoi poser les réseaux avant les finitions ?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Gros œuvre"
+   "Que comprend le gros œuvre ?"
   ],
   [
    "p",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Finitions"
+   "Que comprennent les finitions ?"
   ],
   [
    "p",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Mobilier et équipement"
+   "Quand prévoir le mobilier et l’équipement ?"
   ],
   [
    "p",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Réception"
+   "Comment se passe la réception ?"
   ],
   [
    "p",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Exemple de calcul"
+   "Combien coûte la rénovation clé en main d’un appartement de 60 m² ?"
   ],
   [
    "p",

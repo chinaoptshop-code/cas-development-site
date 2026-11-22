@@ -7,6 +7,7 @@
  "description": "Design de interiores de restaurantes e cafés passo a passo: conceito, sala e cozinha, iluminação, materiais, 3D e orçamento — guia de um estúdio de Kyiv.",
  "lead": "O interior de um espaço de restauração não é decoração: é uma ferramenta de venda. Influencia o número de lugares, a rapidez da equipa e a vontade dos clientes de voltar. Explicamos por onde começar o design de um restaurante ou café.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pt/design-restaurantes-cafes",
   "Design de restaurantes e cafés"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. O conceito e o cliente"
+   "Por onde começar o design de um restaurante ou café?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "2. Distribuição da sala e da cozinha"
+   "Como planear a sala e a cozinha?"
   ],
   [
    "ul",
@@ -59,7 +60,7 @@
   ],
   [
    "h2",
-   "3. Ambiente: iluminação e materiais"
+   "Como criam a luz e os materiais a atmosfera?"
   ],
   [
    "p",
@@ -93,7 +94,7 @@
   ],
   [
    "h2",
-   "4. 3D antes da obra"
+   "Porquê fazer 3D antes da obra do restaurante?"
   ],
   [
    "p",
@@ -105,11 +106,11 @@
   ],
   [
    "h2",
-   "5. Desenhos de execução e compras"
+   "O que incluem os desenhos de execução e as compras?"
   ],
   [
    "p",
-   "Desenhos para os construtores, especificações de móveis e iluminação, orçamento. Móveis, iluminação e decoração podem vir diretamente da China, o que reduz bastante o orçamento de abertura. As encomendas devem ser feitas logo após aprovar o projeto, para que o [equipamento chave na mão](/pt/equipamento-chave-na-mao) chegue no fim da obra."
+   "A documentação de execução inclui desenhos para os construtores, especificações de móveis e iluminação e o orçamento. Móveis, iluminação e decoração podem vir diretamente da China, o que reduz bastante o orçamento de abertura. As encomendas devem ser feitas logo após aprovar o projeto, para que o [equipamento chave na mão](/pt/equipamento-chave-na-mao) chegue no fim da obra."
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Quanto custa o design de um restaurante"
+   "Quanto custa o design de um restaurante?"
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Erros comuns dos donos de restaurantes"
+   "Que erros cometem os donos de restaurantes?"
   ],
   [
    "ul",
@@ -147,7 +148,7 @@
   ],
   [
    "h2",
-   "Checklist antes de contactar um designer"
+   "O que preparar antes de contactar um designer?"
   ],
   [
    "ol",

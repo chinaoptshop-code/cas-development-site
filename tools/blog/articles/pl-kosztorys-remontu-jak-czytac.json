@@ -7,6 +7,7 @@
  "description": "Kosztorys remontu mieszkania: z czego się składa, jak czytać pozycje, co sprawdzić przed umową i jak powiązać płatności 50/50, 50/30/20 lub 50/40/10 z etapami.",
  "lead": "Kosztorys remontu mieszkania to główny dokument, z którego widać, za co dokładnie płacisz. Wyjaśniamy, z jakich części się składa, jak czytać pozycje, na co zwrócić uwagę przed podpisaniem umowy i jak powiązać kosztorys z płatnościami za etapy.",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/pl/remont-mieszkan",
   "Remont mieszkań pod klucz w Kijowie"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Po co jest kosztorys"
+   "Po co kosztorys remontu?"
   ],
   [
    "p",
-   "Zdanie „remont mieszkania za tyle a tyle” nic nie mówi o tym, co zostanie zrobione. Kosztorys rozkłada tę kwotę na konkretne prace i materiały z ilościami i cenami. Dzięki niemu można porównać oferty różnych wykonawców, zobaczyć, gdzie jest zapas, i z góry wiedzieć, za co trzeba będzie zapłacić osobno."
+   "Kosztorys rozkłada kwotę remontu na konkretne prace i materiały z ilościami i cenami, bo zdanie „remont mieszkania za tyle a tyle” nic nie mówi o tym, co zostanie zrobione. Dzięki niemu można porównać oferty różnych wykonawców, zobaczyć, gdzie jest zapas, i z góry wiedzieć, za co trzeba będzie zapłacić osobno."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Z czego składa się kosztorys remontu mieszkania"
+   "Z czego składa się kosztorys remontu mieszkania?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Jak czytać pozycje i co sprawdzić"
+   "Jak czytać pozycje i co sprawdzić?"
   ],
   [
    "ol",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Co wchodzi w stawkę, a co osobno"
+   "Co obejmuje stawka, a co płaci się osobno?"
   ],
   [
    "p",
@@ -82,11 +83,11 @@
   ],
   [
    "h2",
-   "Kosztorys i umowa"
+   "Czy kosztorys powinien być częścią umowy?"
   ],
   [
    "p",
-   "Kosztorys powinien być załącznikiem do umowy o roboty, a nie osobną wiadomością w komunikatorze. Razem z nim umowa ustala zakres prac, terminy, schemat płatności i gwarancję. Terminy prac — od 2 tygodni, zależnie od zakresu."
+   "Tak, kosztorys powinien być załącznikiem do umowy o roboty, a nie osobną wiadomością w komunikatorze. Razem z nim umowa ustala zakres prac, terminy, schemat płatności i gwarancję. Terminy prac — od 2 tygodni, zależnie od zakresu."
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Jak powiązać kosztorys z płatnościami"
+   "Jak powiązać kosztorys z płatnościami?"
   ],
   [
    "p",
@@ -121,7 +122,7 @@
   ],
   [
    "h2",
-   "Jak porównywać kosztorysy różnych wykonawców"
+   "Jak porównywać kosztorysy różnych wykonawców?"
   ],
   [
    "p",

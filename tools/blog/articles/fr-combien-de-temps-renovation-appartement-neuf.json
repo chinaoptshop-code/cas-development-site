@@ -7,6 +7,7 @@
  "description": "Durée de rénovation d'un appartement neuf : étapes, temps de séchage, meubles sur mesure, autorisations. Ce qui allonge les délais et comment les réduire.",
  "lead": "La durée de rénovation d'un appartement neuf ne dépend pas seulement de la surface. Le délai se compose d'étapes successives, de pauses techniques et de livraisons de matériaux et de meubles sur mesure. Nous voyons de quoi il se compose, ce qui retarde le plus souvent les travaux et ce que l'on peut faire avant le démarrage pour emménager à temps.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/fr/renovation-appartement-neuf",
   "Rénovation d’appartement neuf"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Combien de temps dure la rénovation d'un appartement neuf : la réponse courte"
+   "Combien de temps dure la rénovation d’un appartement neuf ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "De quoi se compose la durée des travaux"
+   "De quoi se compose le délai de rénovation ?"
   ],
   [
    "p",
@@ -59,7 +60,7 @@
   ],
   [
    "h2",
-   "Ce qui influe le plus sur les délais"
+   "Qu’est-ce qui influe le plus sur les délais ?"
   ],
   [
    "h3",
@@ -132,7 +133,7 @@
   ],
   [
    "h2",
-   "Les pauses techniques : ce qu'on ne peut pas accélérer"
+   "Quelles pauses techniques ne peut-on pas accélérer ?"
   ],
   [
    "p",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Comment réduire les délais sans perdre en qualité"
+   "Comment raccourcir les délais sans perdre en qualité ?"
   ],
   [
    "ul",
@@ -194,7 +195,7 @@
   ],
   [
    "h2",
-   "Causes fréquentes de retard"
+   "Pourquoi les rénovations prennent-elles le plus souvent du retard ?"
   ],
   [
    "ul",
@@ -213,7 +214,7 @@
   ],
   [
    "h2",
-   "Les délais au contrat : ce qu'il faut vérifier"
+   "Que vérifier dans le contrat concernant les délais ?"
   ],
   [
    "p",

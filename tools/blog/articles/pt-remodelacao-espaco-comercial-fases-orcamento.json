@@ -7,6 +7,7 @@
  "description": "Remodelação chave na mão de espaços comerciais em Kyiv: loja, salão de beleza, escritório. Fases, o que pesa no orçamento, exemplo de cálculo e erros comuns.",
  "lead": "A remodelação chave na mão de um espaço comercial tem um objetivo: pôr o negócio a faturar o mais cedo possível e sem retrabalho. Eis as fases para preparar uma loja, um salão de beleza ou um escritório, o que pesa no orçamento e como calculá-lo no início.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pt/remodelacao-lojas-espacos-comerciais",
   "Remodelação de espaços comerciais"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Em que difere uma remodelação comercial de uma residencial"
+   "Em que difere a remodelação de um espaço comercial da de uma casa?"
   ],
   [
    "p",
-   "Num apartamento remodela-se para si, e as questões principais são o conforto e a estética. Num espaço comercial, o espaço tem de trabalhar para a receita: atrair clientes da rua, guiá-los pela loja, permitir que a equipa trabalhe com eficiência e aguentar um fluxo diário de pessoas. Cada decisão — do pavimento à iluminação — é também avaliada pelo efeito no negócio."
+   "Um espaço comercial tem de trabalhar para a receita, e não só para o conforto e a estética como um apartamento: atrair clientes da rua, guiá-los pela loja, permitir que a equipa trabalhe com eficiência e aguentar um fluxo diário de pessoas. Cada decisão — do pavimento à iluminação — é também avaliada pelo efeito no negócio."
   ],
   [
    "p",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Loja, salão, escritório: o que importa em cada um"
+   "O que importa numa loja, num salão ou num escritório?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Fases da remodelação de um espaço comercial"
+   "Quais são as etapas da remodelação de um espaço comercial?"
   ],
   [
    "ol",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Arrendamento e autorizações: o que esclarecer antes"
+   "O que acordar com o senhorio antes da obra?"
   ],
   [
    "p",
@@ -110,7 +111,7 @@
   ],
   [
    "h2",
-   "O que pesa no orçamento"
+   "O que determina o orçamento de um espaço comercial?"
   ],
   [
    "p",
@@ -143,7 +144,7 @@
   ],
   [
    "h2",
-   "Um exemplo de cálculo de orçamento"
+   "Como calcular o orçamento da remodelação de um espaço comercial?"
   ],
   [
    "p",
@@ -159,7 +160,7 @@
   ],
   [
    "h2",
-   "Erros comuns dos empresários"
+   "Que erros cometem os donos de negócios?"
   ],
   [
    "ul",

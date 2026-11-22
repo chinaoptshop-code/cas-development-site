@@ -5,8 +5,9 @@
  "title": "Was ein Innenarchitektur-Projekt umfasst: alle Unterlagen im Überblick",
  "seo_title": "Was umfasst ein Innenarchitektur-Projekt?",
  "description": "Was ein Designprojekt umfasst: Aufmaß, Grundriss, 3D, Ausführungspläne, Spezifikation, Kostenvoranschlag. Wozu jedes Dokument dient.",
- "lead": "Ein Innenarchitektur-Projekt ist viel mehr als schöne Bilder. Hier erfahren Sie, was ein Designprojekt enthält, aus welchen Unterlagen es besteht, wie die Handwerker sie nutzen und warum eine Renovierung ohne Ausführungspläne fast immer teurer wird.",
+ "lead": "Ein Innenarchitektur-Projekt ist ein vollständiger Satz Unterlagen – Aufmaß, Grundrissplanung, 3D-Visualisierungen, Ausführungspläne, Spezifikation und Kostenvoranschlag – und damit viel mehr als schöne Bilder. Hier erfahren Sie, was ein Designprojekt enthält, aus welchen Unterlagen es besteht, wie die Handwerker sie nutzen und warum eine Renovierung ohne Ausführungspläne fast immer teurer wird.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/wohnungsdesign",
   "Innenarchitektur beauftragen"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Aufmaß und Bestandsplan"
+   "Womit beginnt ein Innenarchitektur-Projekt?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "2. Grundrissplanung"
+   "Wie entwickelt der Designer den Grundriss der Wohnung?"
   ],
   [
    "p",
@@ -36,11 +37,11 @@
   ],
   [
    "h2",
-   "3. Konzept und 3D-Visualisierungen"
+   "Wozu braucht man 3D-Visualisierungen vor der Renovierung?"
   ],
   [
    "p",
-   "Stil, Farben, Texturen und Licht – als 3D-Bilder jedes Raums. In dieser Phase sehen Sie das künftige Interieur und ändern es vor der Freigabe, solange Änderungen auf der Baustelle nichts kosten. Idealerweise zeigt das 3D nicht nur den Gesamteindruck, sondern die realen Materialien und Möbel, die in die Spezifikation eingehen."
+   "3D-Visualisierungen zeigen Stil, Farben, Texturen und Licht jedes Raums, damit Sie das künftige Interieur sehen und vor der Freigabe ändern können, solange Änderungen auf der Baustelle nichts kosten. Idealerweise zeigt das 3D nicht nur den Gesamteindruck, sondern die realen Materialien und Möbel, die in die Spezifikation eingehen."
   ],
   [
    "gallery",
@@ -61,7 +62,7 @@
   ],
   [
    "h2",
-   "4. Ausführungspläne"
+   "Welche Ausführungspläne gehören zum Designprojekt?"
   ],
   [
    "ul",
@@ -84,7 +85,7 @@
   ],
   [
    "h2",
-   "5. Spezifikation und Kostenvoranschlag"
+   "Wozu braucht das Projekt Spezifikation und Kostenvoranschlag?"
   ],
   [
    "p",
@@ -101,11 +102,11 @@
   ],
   [
    "h2",
-   "Künstlerische Oberleitung"
+   "Ist die künstlerische Oberleitung im Designprojekt enthalten?"
   ],
   [
    "p",
-   "Während der Renovierung kommt der Designer auf die Baustelle, prüft die Projekttreue und hilft bei Fragen, die vor Ort entstehen. Das ist eine separate Leistung, aber genau sie hilft, das Ergebnis aus dem 3D zu erreichen. Besonders nötig ist sie bei komplexen Decken, verdeckten Türen, beleuchteten Nischen oder vielen Einbaumöbeln. Bei Objekten im Ausland läuft sie online: Wir prüfen Fotos und Videos der wichtigen Phasen und beantworten die Fragen des ausführenden Unternehmens."
+   "Die künstlerische Oberleitung ist eine separate Leistung: Während der Renovierung kommt der Designer auf die Baustelle, prüft die Projekttreue und hilft bei Fragen vor Ort – und genau sie hilft, das Ergebnis aus dem 3D zu erreichen. Besonders nötig ist sie bei komplexen Decken, verdeckten Türen, beleuchteten Nischen oder vielen Einbaumöbeln. Bei Objekten im Ausland läuft sie online: Wir prüfen Fotos und Videos der wichtigen Phasen und beantworten die Fragen des ausführenden Unternehmens."
   ],
   [
    "p",
@@ -113,7 +114,7 @@
   ],
   [
    "h2",
-   "Checkliste: Was Sie vor der Renovierung im Projekt prüfen sollten"
+   "Was sollten Sie vor der Renovierung im Projekt prüfen?"
   ],
   [
    "ul",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Typische Fehler"
+   "Welche Fehler im Projekt verteuern die Renovierung?"
   ],
   [
    "ul",
@@ -147,7 +148,7 @@
   ],
   [
    "h2",
-   "Was ein Designprojekt kostet und wie CAS arbeitet"
+   "Was kostet ein Innenarchitektur-Projekt bei CAS?"
   ],
   [
    "p",

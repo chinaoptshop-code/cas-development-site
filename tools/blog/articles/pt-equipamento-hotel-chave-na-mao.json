@@ -7,6 +7,7 @@
  "description": "Equipamento chave na mão de um hotel ou aparthotel: quarto-modelo, casas de banho, lobby, têxteis, entrega da China em 35–70 dias e referência de orçamento.",
  "lead": "Equipar um hotel ou aparthotel significa comprar dezenas de artigos iguais que têm de aguentar todos os dias hóspedes, limpezas e malas. Explicamos por onde começar, em que difere um aparthotel de um hotel clássico, como não falhar a data de abertura e como partir de conjuntos-tipo para a especificação.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pt/espacos-comerciais-chave-na-mao",
   "Espaços comerciais chave na mão"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "O que inclui o equipamento de um hotel"
+   "O que inclui o equipamento de um hotel?"
   ],
   [
    "p",
@@ -39,11 +40,11 @@
   ],
   [
    "h2",
-   "O quarto-modelo: testar antes de replicar"
+   "Porquê montar primeiro um quarto-modelo?"
   ],
   [
    "p",
-   "Um erro num quarto multiplica-se por todo o hotel. Por isso recomendamos montar primeiro um quarto-modelo: cama, mesas de cabeceira, luzes de leitura, roupeiro, secretária, cortinas e uma casa de banho com todos os acessórios. Com ele testam-se os cenários do hóspede: há espaço para abrir a mala, há tomadas suficientes junto à cama e à secretária, a luz encandeia, é fácil limpar debaixo da cama e no duche?"
+   "O quarto-modelo é necessário porque um erro num quarto se multiplica por todo o hotel. Por isso recomendamos montar primeiro um quarto-modelo: cama, mesas de cabeceira, luzes de leitura, roupeiro, secretária, cortinas e uma casa de banho com todos os acessórios. Com ele testam-se os cenários do hóspede: há espaço para abrir a mala, há tomadas suficientes junto à cama e à secretária, a luz encandeia, é fácil limpar debaixo da cama e no duche?"
   ],
   [
    "p",
@@ -57,7 +58,7 @@
   ],
   [
    "h2",
-   "Aparthotéis: em que difere o equipamento"
+   "Em que difere o equipamento de um aparthotel?"
   ],
   [
    "p",
@@ -79,7 +80,7 @@
   ],
   [
    "h2",
-   "Requisitos para móveis e materiais"
+   "Que requisitos têm os móveis e materiais de hotel?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Lobby, receção e corredores"
+   "Como equipar o lobby, a receção e os corredores?"
   ],
   [
    "p",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Zona de pequenos-almoços, restaurante e esplanada"
+   "De que precisam a zona de pequenos-almoços, o restaurante e o terraço?"
   ],
   [
    "p",
@@ -122,11 +123,11 @@
   ],
   [
    "h2",
-   "Têxteis e consumíveis: quanto prever"
+   "Quantos têxteis e consumíveis prever?"
   ],
   [
    "p",
-   "Os têxteis são o que mais vezes se calcula a olho e depois se compra à pressa. Roupa de cama, toalhas e roupões não se preveem num jogo por quarto, mas com reserva: um no quarto, outro na lavandaria e outro para substituir o que se gasta. O mesmo vale para os utensílios dos apartamentos e a loiça dos pequenos-almoços. Mais vale escolher uma gama que se possa reencomendar do que procurar um tom parecido um ano depois."
+   "Preveja três jogos de têxteis por quarto, porque são o que mais vezes se calcula a olho e depois se compra à pressa. Roupa de cama, toalhas e roupões não se preveem num jogo por quarto, mas com reserva: um no quarto, outro na lavandaria e outro para substituir o que se gasta. O mesmo vale para os utensílios dos apartamentos e a loiça dos pequenos-almoços. Mais vale escolher uma gama que se possa reencomendar do que procurar um tom parecido um ano depois."
   ],
   [
    "h2",
@@ -150,7 +151,7 @@
   ],
   [
    "h2",
-   "Quem decide e como se aprova"
+   "Quem decide e como se aprova?"
   ],
   [
    "p",
@@ -158,7 +159,7 @@
   ],
   [
    "h2",
-   "Prazos: como não falhar a data de abertura"
+   "Como não falhar a data de abertura?"
   ],
   [
    "p",
@@ -172,7 +173,7 @@
   ],
   [
    "h2",
-   "Orçamento: uma referência com as nossas tarifas"
+   "De que se compõe o orçamento de um hotel?"
   ],
   [
    "p",

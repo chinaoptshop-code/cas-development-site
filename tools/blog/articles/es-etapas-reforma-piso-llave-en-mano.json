@@ -7,6 +7,7 @@
  "description": "Etapas de la reforma llave en mano paso a paso: proyecto, demolición, instalaciones, obra gruesa, acabados, muebles y entrega, y qué errores evitar.",
  "lead": "Las etapas de una reforma de piso llave en mano siguen una secuencia clara: cada una se apoya en la anterior. Repasamos el orden de los trabajos, qué comprobar en cada paso y qué errores obligan con más frecuencia a rehacer.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/es/reforma-pisos",
   "Reforma de pisos llave en mano en Kiev"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Etapas de la reforma llave en mano en resumen"
+   "¿Cuáles son las etapas de una reforma de piso llave en mano?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Qué preparar antes de empezar"
+   "¿Qué preparar antes de empezar?"
   ],
   [
    "p",
@@ -54,7 +55,7 @@
   ],
   [
    "h2",
-   "Etapas preparatorias: proyecto y demolición"
+   "¿Qué incluyen las etapas previas: proyecto y demolición?"
   ],
   [
    "h3",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Instalaciones y obra gruesa"
+   "¿Qué incluyen las instalaciones y la obra gruesa?"
   ],
   [
    "h3",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Acabados, muebles y entrega"
+   "¿Qué incluyen los acabados, los muebles y la entrega?"
   ],
   [
    "h3",
@@ -167,7 +168,7 @@
   ],
   [
    "h2",
-   "Errores típicos durante la reforma"
+   "¿Qué errores se cometen durante la reforma?"
   ],
   [
    "ul",
@@ -181,7 +182,7 @@
   ],
   [
    "h2",
-   "Cómo controlar la reforma"
+   "¿Cómo controlar la reforma de un piso?"
   ],
   [
    "p",

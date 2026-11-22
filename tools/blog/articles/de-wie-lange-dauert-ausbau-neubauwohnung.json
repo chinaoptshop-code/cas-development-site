@@ -7,6 +7,7 @@
  "description": "Wie lange der Ausbau einer Neubauwohnung dauert: Phasen, Trocknungszeiten, Maßmöbel, Genehmigungen. Was die Fristen verlängert und wie man sie kürzt.",
  "lead": "Wie lange der Ausbau einer Neubauwohnung dauert, hängt nicht nur von der Fläche ab. Die Frist besteht aus aufeinanderfolgenden Phasen, technologischen Pausen und Lieferungen von Materialien und Maßmöbeln. Wir zeigen, woraus sie sich zusammensetzt, was die Arbeiten am häufigsten verzögert und was sich vor dem Start tun lässt, um pünktlich einzuziehen.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/neubauwohnung-ausbau",
   "Ausbau von Neubauwohnungen"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Wie lange der Ausbau einer Neubauwohnung dauert: die kurze Antwort"
+   "Wie lange dauert die Renovierung einer Neubauwohnung?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Woraus die Renovierungsdauer besteht"
+   "Woraus setzt sich die Renovierungsdauer zusammen?"
   ],
   [
    "p",
@@ -59,7 +60,7 @@
   ],
   [
    "h2",
-   "Was die Fristen am stärksten beeinflusst"
+   "Was beeinflusst die Dauer am stärksten?"
   ],
   [
    "h3",
@@ -132,7 +133,7 @@
   ],
   [
    "h2",
-   "Technologische Pausen: was sich nicht beschleunigen lässt"
+   "Welche technologischen Pausen lassen sich nicht abkürzen?"
   ],
   [
    "p",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Wie man die Fristen ohne Qualitätsverlust verkürzt"
+   "Wie verkürzt man die Dauer ohne Qualitätsverlust?"
   ],
   [
    "ul",
@@ -194,7 +195,7 @@
   ],
   [
    "h2",
-   "Typische Ursachen für Verzögerungen"
+   "Warum verzögern sich Renovierungen am häufigsten?"
   ],
   [
    "ul",
@@ -213,7 +214,7 @@
   ],
   [
    "h2",
-   "Fristen im Vertrag: was zu prüfen ist"
+   "Was sollte man im Vertrag zu den Fristen prüfen?"
   ],
   [
    "p",

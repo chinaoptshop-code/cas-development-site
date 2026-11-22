@@ -5,8 +5,9 @@
  "title": "Ce que comprend un projet d’architecture d’intérieur : l’ensemble des documents",
  "seo_title": "Que comprend un projet d’architecture d’intérieur ?",
  "description": "Ce que comprend un projet de design d’intérieur : relevé, agencement, 3D, plans d’exécution, descriptifs, devis. À quoi sert chaque document et quoi vérifier.",
- "lead": "Un projet d’architecture d’intérieur, c’est bien plus que de belles images. Voici ce qu’il comprend, de quels documents il se compose, comment l’équipe de chantier les utilise et pourquoi une rénovation sans plans d’exécution finit presque toujours par coûter plus cher.",
+ "lead": "Un projet d’architecture d’intérieur est un dossier complet — relevé, agencement, visualisations 3D, plans d’exécution, descriptif et devis —, bien plus que de belles images. Voici ce qu’il comprend, de quels documents il se compose, comment l’équipe de chantier les utilise et pourquoi une rénovation sans plans d’exécution finit presque toujours par coûter plus cher.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/design-appartement",
   "Commander un design d’intérieur"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Relevé et plan de l’existant"
+   "Par quoi commence un projet d’architecture d’intérieur ?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "2. Agencement"
+   "Comment le designer conçoit-il l’agencement de l’appartement ?"
   ],
   [
    "p",
@@ -36,11 +37,11 @@
   ],
   [
    "h2",
-   "3. Concept et visualisations 3D"
+   "À quoi servent les visualisations 3D avant les travaux ?"
   ],
   [
    "p",
-   "Style, couleurs, textures et éclairage, en images 3D de chaque pièce. À ce stade, vous voyez l’intérieur futur et apportez des modifications avant validation, quand changer ne coûte rien sur le chantier. Idéalement, la 3D montre non seulement l’ambiance générale, mais les matériaux et meubles réels qui figureront au descriptif."
+   "Les visualisations 3D montrent le style, les couleurs, les textures et l’éclairage de chaque pièce : vous voyez l’intérieur futur et apportez des modifications avant validation, quand changer ne coûte rien sur le chantier. Idéalement, la 3D montre non seulement l’ambiance générale, mais les matériaux et meubles réels qui figureront au descriptif."
   ],
   [
    "gallery",
@@ -61,7 +62,7 @@
   ],
   [
    "h2",
-   "4. Plans d’exécution"
+   "Quels plans d’exécution comprend un projet ?"
   ],
   [
    "ul",
@@ -84,7 +85,7 @@
   ],
   [
    "h2",
-   "5. Descriptif et devis"
+   "Pourquoi un projet a-t-il besoin d’un descriptif et d’un devis ?"
   ],
   [
    "p",
@@ -101,11 +102,11 @@
   ],
   [
    "h2",
-   "Suivi du designer"
+   "Le suivi du designer est-il inclus dans le projet ?"
   ],
   [
    "p",
-   "Pendant les travaux, le designer vient sur le chantier, vérifie la conformité au projet et aide à régler les questions qui surgissent. C’est un service à part, mais c’est lui qui permet d’obtenir le résultat vu en 3D. Il est particulièrement utile pour les plafonds complexes, les portes invisibles, les niches éclairées ou beaucoup de sur-mesure. Pour les biens à l’étranger, le suivi se fait en ligne : nous examinons photos et vidéos des étapes clés et répondons aux questions de l’entrepreneur."
+   "Le suivi du designer est un service à part : pendant les travaux, le designer vient sur le chantier, vérifie la conformité au projet et aide à régler les questions sur place, et c’est lui qui permet d’obtenir le résultat vu en 3D. Il est particulièrement utile pour les plafonds complexes, les portes invisibles, les niches éclairées ou beaucoup de sur-mesure. Pour les biens à l’étranger, le suivi se fait en ligne : nous examinons photos et vidéos des étapes clés et répondons aux questions de l’entrepreneur."
   ],
   [
    "p",
@@ -113,7 +114,7 @@
   ],
   [
    "h2",
-   "Check-list : ce qu’il faut vérifier avant les travaux"
+   "Que vérifier dans un projet avant les travaux ?"
   ],
   [
    "ul",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Erreurs fréquentes"
+   "Quelles erreurs de projet rendent les travaux plus chers ?"
   ],
   [
    "ul",
@@ -147,7 +148,7 @@
   ],
   [
    "h2",
-   "Combien coûte un projet et comment travaille CAS"
+   "Combien coûte un projet d’architecture d’intérieur chez CAS ?"
   ],
   [
    "p",

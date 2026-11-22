@@ -4,8 +4,9 @@
  "title": "Dom na wodzie: pale czy pontony i od czego zacząć",
  "translation_of": "budynok-na-vodi-pali-chy-pontony",
  "description": "Dom na wodzie pod klucz: pale czy pontony, pomiar głębokości, media z brzegu, taras nad wodą, etapy budowy i cena od $600 za m².",
- "lead": "Dom nad wodą to ulubiony format ośrodków wypoczynkowych i prywatnych działek nad jeziorem lub rzeką. Wyjaśniamy, na czym się go stawia, jak doprowadzić media i od jakiego kroku zacząć. Na naszej stronie wszystkie 12 etapów można przewinąć w scenie „Dom na wodzie”.",
+ "lead": "Dom nad wodą stawia się na palach lub pontonach — to ulubiony format ośrodków wypoczynkowych i prywatnych działek nad jeziorem lub rzeką. Wyjaśniamy, na czym się go stawia, jak doprowadzić media i od jakiego kroku zacząć. Na naszej stronie wszystkie 12 etapów można przewinąć w scenie „Dom na wodzie”.",
  "date": "2026-11-07",
+ "modified": "2026-11-22",
  "service": [
   "/pl/osrodek-wypoczynkowy-pod-klucz",
   "Ośrodek wypoczynkowy pod klucz"
@@ -15,7 +16,7 @@
  "body": [
   [
    "h2",
-   "1. Zacząć od wody i dna"
+   "Od czego zacząć budowę domu na wodzie?"
   ],
   [
    "p",
@@ -23,7 +24,7 @@
   ],
   [
    "h2",
-   "2. Pale czy pontony"
+   "Pale czy pontony: co wybrać dla domu na wodzie?"
   ],
   [
    "ul",
@@ -35,15 +36,15 @@
   ],
   [
    "h2",
-   "3. Rama, pokład i kładka"
+   "Jak połączyć dom na wodzie z brzegiem?"
   ],
   [
    "p",
-   "Na fundamencie montuje się ramę i pokład, potem kładkę na brzeg. Kładka to nie tylko wejście, ale i trasa mediów: biegną nią z brzegu woda, kanalizacja i prąd."
+   "Dom łączy z brzegiem kładka: montuje się ją po ramie i pokładzie na fundamencie. Kładka to nie tylko wejście, ale i trasa mediów: biegną nią z brzegu woda, kanalizacja i prąd."
   ],
   [
    "h2",
-   "4. Media z brzegu"
+   "Jak doprowadzić wodę, kanalizację i prąd z brzegu?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "5. Konstrukcja, dach, elewacja"
+   "Z czego budować konstrukcję, dach i elewację?"
   ],
   [
    "p",
@@ -59,19 +60,19 @@
   ],
   [
    "h2",
-   "6. Powierzchnia i format"
+   "Jaką powierzchnię może mieć dom na wodzie?"
   ],
   [
    "p",
-   "W scenie na naszej stronie można wybrać 60, 100 lub 150 m² — od kompaktowego domku dla ośrodka po pełnowymiarowy dom dla rodziny. W ośrodkach wypoczynkowych domy na wodzie często łączy się z domkami na brzegu i strefą wspólną — widać to w interaktywnym planie „Ośrodek wypoczynkowy”."
+   "Dom na wodzie może być kompaktowym domkiem dla ośrodka albo pełnowymiarowym domem dla rodziny — w scenie na naszej stronie można wybrać 60, 100 lub 150 m². W ośrodkach wypoczynkowych domy na wodzie często łączy się z domkami na brzegu i strefą wspólną — widać to w interaktywnym planie „Ośrodek wypoczynkowy”."
   ],
   [
    "h2",
-   "Materiały odporne na wodę"
+   "Jakie materiały wytrzymują stałą wilgoć?"
   ],
   [
    "p",
-   "Nad wodą wszystko pracuje w stałej wilgoci, na wietrze i przy wahaniach temperatury. Dlatego do konstrukcji pod pokładem wybiera się materiały zabezpieczone przed gniciem i korozją, na pokład — deskę tarasową, która nie jest śliska po deszczu, a na elewację — systemy wentylowane, które szybko schną. Ocieplenie robimy z zapasem: od spodu dom jest wychładzany przez wodę i wiatr mocniej niż dom na lądzie."
+   "Do domu na wodzie wybiera się materiały odporne na stałą wilgoć, wiatr i wahania temperatury: do konstrukcji pod pokładem — zabezpieczone przed gniciem i korozją, na pokład — deskę tarasową, która nie jest śliska po deszczu, a na elewację — systemy wentylowane, które szybko schną. Ocieplenie robimy z zapasem: od spodu dom jest wychładzany przez wodę i wiatr mocniej niż dom na lądzie."
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Ile trwa budowa"
+   "Ile trwa budowa domu na wodzie?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "Ile to kosztuje"
+   "Ile kosztuje dom na wodzie?"
   ],
   [
    "p",

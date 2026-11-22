@@ -7,6 +7,7 @@
  "description": "Les étapes d'une rénovation clé en main : projet, démolition, réseaux, gros œuvre, finitions, mobilier, réception — et les erreurs à éviter.",
  "lead": "Les étapes d'une rénovation d'appartement clé en main suivent un ordre strict : chacune s'appuie sur la précédente. Nous passons en revue l'ordre des travaux, ce qu'il faut vérifier à chaque étape et les erreurs qui obligent le plus souvent à refaire.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/fr/renovation-appartement",
   "Rénovation d’appartement clé en main à Kyiv"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Les étapes de la rénovation clé en main en bref"
+   "Quelles sont les étapes d'une rénovation d'appartement clé en main ?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Ce qu'il faut préparer avant de commencer"
+   "Que préparer avant le démarrage ?"
   ],
   [
    "p",
@@ -54,7 +55,7 @@
   ],
   [
    "h2",
-   "Étapes préparatoires : projet et démolition"
+   "Que comprennent les étapes préparatoires : projet et démolition ?"
   ],
   [
    "h3",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Réseaux et gros œuvre"
+   "Que comprennent les réseaux et le gros œuvre ?"
   ],
   [
    "h3",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Finitions, mobilier et réception"
+   "Que comprennent les finitions, le mobilier et la réception ?"
   ],
   [
    "h3",
@@ -167,7 +168,7 @@
   ],
   [
    "h2",
-   "Erreurs fréquentes pendant les travaux"
+   "Quelles erreurs commet-on pendant la rénovation ?"
   ],
   [
    "ul",
@@ -181,7 +182,7 @@
   ],
   [
    "h2",
-   "Comment contrôler la rénovation"
+   "Comment contrôler la rénovation d'un appartement ?"
   ],
   [
    "p",

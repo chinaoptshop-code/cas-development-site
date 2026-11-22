@@ -7,6 +7,7 @@
  "description": "Cuánto dura la reforma de un piso de obra nueva: etapas, pausas técnicas, muebles a medida y permisos. Qué alarga los plazos y cómo acortarlos.",
  "lead": "Lo que dura la reforma de un piso de obra nueva no depende solo de la superficie. El plazo se compone de etapas sucesivas, pausas técnicas y entregas de materiales y muebles a medida. Vemos de qué se compone, qué retrasa más a menudo la obra y qué puede hacerse antes de empezar para entrar a vivir a tiempo.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/es/reforma-obra-nueva",
   "Reforma de piso de obra nueva"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Cuánto dura la reforma de obra nueva: respuesta corta"
+   "¿Cuánto dura la reforma de un piso de obra nueva?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "De qué se compone el plazo de la reforma"
+   "¿De qué se compone el plazo de la reforma?"
   ],
   [
    "p",
@@ -59,7 +60,7 @@
   ],
   [
    "h2",
-   "Qué influye más en los plazos"
+   "¿Qué influye más en los plazos?"
   ],
   [
    "h3",
@@ -132,7 +133,7 @@
   ],
   [
    "h2",
-   "Pausas técnicas: lo que no se puede acelerar"
+   "¿Qué pausas técnicas no se pueden acelerar?"
   ],
   [
    "p",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Cómo acortar los plazos sin perder calidad"
+   "¿Cómo acortar los plazos sin perder calidad?"
   ],
   [
    "ul",
@@ -194,7 +195,7 @@
   ],
   [
    "h2",
-   "Causas típicas de retrasos"
+   "¿Por qué se retrasan con más frecuencia las reformas?"
   ],
   [
    "ul",
@@ -213,7 +214,7 @@
   ],
   [
    "h2",
-   "Los plazos en el contrato: qué comprobar"
+   "¿Qué revisar en el contrato sobre los plazos?"
   ],
   [
    "p",

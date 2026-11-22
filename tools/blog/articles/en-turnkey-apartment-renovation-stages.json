@@ -7,6 +7,7 @@
  "description": "Turnkey apartment renovation stages step by step: design, demolition, services, rough and finishing works, furniture, handover — and the mistakes to avoid.",
  "lead": "The stages of a turnkey apartment renovation follow a strict sequence: each step relies on the previous one. We go through the order of works, what to check at every step and which mistakes most often force rework.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/en/apartment-renovation",
   "Turnkey apartment renovation in Kyiv"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Turnkey apartment renovation stages in brief"
+   "What are the stages of a turnkey apartment renovation?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "What to prepare before the start"
+   "What should you prepare before the start?"
   ],
   [
    "p",
@@ -54,7 +55,7 @@
   ],
   [
    "h2",
-   "Preparatory stages: design and demolition"
+   "What do the preparatory stages, design and demolition, involve?"
   ],
   [
    "h3",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Services and rough works"
+   "What do building services and rough works involve?"
   ],
   [
    "h3",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Finishing works, furniture and handover"
+   "What do finishing, furniture and handover involve?"
   ],
   [
    "h3",
@@ -167,7 +168,7 @@
   ],
   [
    "h2",
-   "Common mistakes during renovation"
+   "What mistakes are made during a renovation?"
   ],
   [
    "ul",
@@ -181,7 +182,7 @@
   ],
   [
    "h2",
-   "How to control the renovation"
+   "How do you keep control of an apartment renovation?"
   ],
   [
    "p",

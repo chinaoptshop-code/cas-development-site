@@ -5,8 +5,9 @@
  "translation_of": "inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit",
  "seo_title": "Instalaciones del piso: orden de trabajos y controles",
  "description": "Instalaciones del piso en una reforma integral: proyecto, electricidad, fontanería, ventilación, climatización, suelo radiante. Orden y controles.",
- "lead": "Las instalaciones son la parte de la reforma que no se ve tras la entrega, pero deciden si salta el automático, si se inunda al vecino y si aparece moho en el baño. Explicamos en qué orden se instalan la electricidad, la fontanería, la ventilación y el suelo radiante, qué soluciones son habituales según la práctica del mercado y qué comprobar mientras las paredes aún no están enlucidas.",
+ "lead": "Las instalaciones de un piso se hacen en un orden estricto —proyecto, electricidad, fontanería, ventilación, suelo radiante y comprobaciones antes del enlucido—, porque esta parte de la reforma, invisible tras la entrega, decide si salta el automático, si se inunda al vecino y si aparece moho en el baño. Explicamos en qué orden se instalan la electricidad, la fontanería, la ventilación y el suelo radiante, qué soluciones son habituales según la práctica del mercado y qué comprobar mientras las paredes aún no están enlucidas.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/es/reforma-llave-en-mano",
   "Reforma llave en mano"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Instalaciones de un piso: por qué el orden importa más que las marcas"
+   "¿En qué orden se hacen las instalaciones de un piso?"
   ],
   [
    "p",
-   "Un grifo caro no evita una fuga en una unión mal hecha, ni un buen cable salva un circuito sobrecargado. La mayoría de los problemas de instalaciones no vienen de los materiales, sino de una secuencia equivocada y de la falta de comprobaciones antes de cerrar. Por eso, en una reforma integral las instalaciones siguen un proyecto y un orden claro: primero las decisiones sobre el papel, luego el tendido, después las pruebas y solo entonces enlucido, solera y acabados."
+   "Las instalaciones se hacen en una secuencia estricta, con comprobaciones antes de cerrar las paredes: la mayoría de los problemas no vienen de los materiales, sino de un orden equivocado, y un grifo caro no evita una fuga en una unión mal hecha, ni un buen cable salva un circuito sobrecargado. Por eso, en una reforma integral las instalaciones siguen un proyecto y un orden claro: primero las decisiones sobre el papel, luego el tendido, después las pruebas y solo entonces enlucido, solera y acabados."
   ],
   [
    "ol",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Fase 0. Proyecto: qué decidir antes de la primera roza"
+   "¿Qué decidir en el proyecto antes de la primera roza?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Electricidad"
+   "¿Cómo se distribuye la electricidad en un piso?"
   ],
   [
    "h3",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Fontanería y saneamiento"
+   "¿Cómo se hacen la fontanería y el saneamiento?"
   ],
   [
    "h3",
@@ -180,7 +181,7 @@
   ],
   [
    "h2",
-   "Ventilación y climatización"
+   "¿Cómo instalar la ventilación y la climatización?"
   ],
   [
    "p",
@@ -201,7 +202,7 @@
   ],
   [
    "h2",
-   "Suelo radiante"
+   "¿Qué suelo radiante se usa en un piso?"
   ],
   [
    "p",
@@ -225,7 +226,7 @@
   ],
   [
    "h2",
-   "Cómo afectan las instalaciones a la altura de techos y al nivel de suelos"
+   "¿Cómo afectan las instalaciones a la altura de techos y niveles de suelo?"
   ],
   [
    "p",
@@ -237,11 +238,11 @@
   ],
   [
    "h2",
-   "Documentos y normas: qué debe recibir"
+   "¿Qué documentos debe recibir tras la reforma?"
   ],
   [
    "p",
-   "Los trabajos se ejecutan conforme a la normativa de edificación vigente, al reglamento de instalaciones eléctricas y a las exigencias de los fabricantes. Para usted como cliente, más que la lista de normas, importan los documentos que quedan tras la reforma. Los necesitará cuando, años después, quiera colgar una balda, cambiar el termo o localizar una fuga."
+   "Tras la reforma debe recibir los esquemas finales de obra, fotos de los trabajos ocultos, el esquema del cuadro, las actas de mediciones y las fichas de los equipos; los trabajos se ejecutan conforme a la normativa de edificación vigente, al reglamento de instalaciones eléctricas y a las exigencias de los fabricantes. Los necesitará cuando, años después, quiera colgar una balda, cambiar el termo o localizar una fuga."
   ],
   [
    "ul",
@@ -259,7 +260,7 @@
   ],
   [
    "h2",
-   "Errores habituales en las instalaciones de un piso"
+   "¿Qué errores se cometen en las instalaciones de un piso?"
   ],
   [
    "ul",

@@ -5,8 +5,9 @@
  "title": "Altes Haus umbauen oder neu bauen: was sich mehr lohnt",
  "seo_title": "Altes Haus umbauen oder neu bauen?",
  "description": "Altes Haus umbauen oder neu bauen: wie man den Zustand bewertet, wann sich ein Umbau lohnt, wann ein Neubau besser ist und wie man die Budgets vergleicht.",
- "lead": "Ein altes Haus umbauen oder auf demselben Grundstück neu bauen — vor dieser Entscheidung stehen Besitzer von Datschen, Elternhäusern oder gekauften Häusern mit Geschichte. Das Gefühl will erhalten, der Taschenrechner manchmal abreißen. Wir zeigen, wie man auf Fakten entscheidet: was zu untersuchen ist, wann ein Umbau sinnvoll ist und woraus beide Budgets bestehen.",
+ "lead": "Ein Umbau des alten Hauses lohnt sich bei tragfähigem Fundament und intakten Wänden, ein Neubau dagegen bei schwacher Konstruktion — vor dieser Entscheidung stehen Besitzer von Datschen, Elternhäusern oder gekauften Häusern mit Geschichte. Das Gefühl will erhalten, der Taschenrechner manchmal abreißen. Wir zeigen, wie man auf Fakten entscheidet: was zu untersuchen ist, wann ein Umbau sinnvoll ist und woraus beide Budgets bestehen.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/hausumbau",
   "Schlüsselfertiger Hausumbau"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Umbau oder Neubau: womit man anfängt"
+   "Umbau oder Neubau: Womit fängt die Entscheidung an?"
   ],
   [
    "p",
-   "Die meisten Eigentümer fragen „was ist billiger“. Besser fragt man anders: Was bringt Ihnen das Haus, in dem Sie leben möchten, zu vernünftigen Kosten und ohne Überraschungen? Manchmal hat ein altes Haus eine solide Substanz, eine gute Lage auf dem Grundstück und einen Charakter, der sich zu erhalten lohnt. Manchmal verbergen sich hinter frischem Putz ein schwaches Fundament, morsche Decken und ein Grundriss, der ohne Komplettabriss nicht zu retten ist."
+   "Fragen Sie nicht zuerst „was ist billiger“, sondern was Ihnen das Haus bringt, in dem Sie leben möchten – zu vernünftigen Kosten und ohne Überraschungen. Manchmal hat ein altes Haus eine solide Substanz, eine gute Lage auf dem Grundstück und einen Charakter, der sich zu erhalten lohnt. Manchmal verbergen sich hinter frischem Putz ein schwaches Fundament, morsche Decken und ein Grundriss, der ohne Komplettabriss nicht zu retten ist."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Was ein Umbau ist und wie er sich von einer Renovierung unterscheidet"
+   "Worin unterscheidet sich ein Umbau von einer Renovierung?"
   ],
   [
    "p",
@@ -57,11 +58,11 @@
   ],
   [
    "h2",
-   "Gutachten: ohne es keine Entscheidung"
+   "Braucht man vor der Entscheidung ein Gutachten des Hauses?"
   ],
   [
    "p",
-   "Bevor man Kostenvoranschläge vergleicht, muss man den Zustand des Hauses kennen. Das Gutachten erstellen Ingenieure: Sie bewerten die Konstruktion, dokumentieren Mängel und sagen, was erhalten, was verstärkt und was ersetzt werden muss. Besonders wichtig ist es bei Häusern, die lange unbeheizt standen, mehrere Besitzer und ungenehmigte „Anbauten“ erlebt haben oder Holzbalkendecken besitzen."
+   "Ja, ohne Gutachten keine Entscheidung: Bevor man Kostenvoranschläge vergleicht, muss man den Zustand des Hauses kennen. Das Gutachten erstellen Ingenieure: Sie bewerten die Konstruktion, dokumentieren Mängel und sagen, was erhalten, was verstärkt und was ersetzt werden muss. Besonders wichtig ist es bei Häusern, die lange unbeheizt standen, mehrere Besitzer und ungenehmigte „Anbauten“ erlebt haben oder Holzbalkendecken besitzen."
   ],
   [
    "ul",
@@ -88,7 +89,7 @@
   ],
   [
    "h2",
-   "Wann sich ein Umbau lohnt"
+   "Wann lohnt sich der Umbau eines alten Hauses?"
   ],
   [
    "ul",
@@ -127,7 +128,7 @@
   ],
   [
    "h2",
-   "Wann sich ein Neubau mehr lohnt"
+   "Wann sind Abriss und Neubau die bessere Wahl?"
   ],
   [
    "ul",
@@ -169,7 +170,7 @@
   ],
   [
    "h2",
-   "So vergleichen Sie die Budgets beider Varianten"
+   "Wie vergleicht man die Budgets von Umbau und Neubau?"
   ],
   [
    "p",
@@ -209,7 +210,7 @@
   ],
   [
    "h2",
-   "Typische Fehler"
+   "Welche Fehler machen Besitzer alter Häuser?"
   ],
   [
    "ul",

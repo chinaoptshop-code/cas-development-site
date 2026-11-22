@@ -5,8 +5,9 @@
  "title": "Przebudowa starego domu czy nowy dom: co bardziej się opłaca",
  "seo_title": "Przebudowa starego domu czy nowy dom",
  "description": "Przebudowa starego domu czy budowa nowego: jak ocenić stan domu, kiedy przebudowa ma sens, kiedy lepiej budować od zera i jak policzyć budżet obu wariantów.",
- "lead": "Przebudowa starego domu czy budowa nowego na tej samej działce — przed tą decyzją stają właściciele domku letniskowego, rodzinnego domu czy kupionego domu z historią. Emocje każą zachować, kalkulator czasem — zburzyć. Pokazujemy, jak zdecydować na podstawie faktów: co zbadać, kiedy przebudowa ma sens i z czego składa się budżet obu wariantów.",
+ "lead": "Przebudowa starego domu ma sens przy solidnych fundamentach i ścianach, a nowy dom bardziej się opłaca, gdy konstrukcja jest słaba — przed tą decyzją stają właściciele domku letniskowego, rodzinnego domu czy kupionego domu z historią. Emocje każą zachować, kalkulator czasem — zburzyć. Pokazujemy, jak zdecydować na podstawie faktów: co zbadać, kiedy przebudowa ma sens i z czego składa się budżet obu wariantów.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/przebudowa-domu",
   "Przebudowa domu pod klucz"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Przebudowa czy nowy dom: od czego zacząć"
+   "Przebudowa czy nowy dom: od czego zacząć decyzję?"
   ],
   [
    "p",
-   "Większość właścicieli formułuje pytanie jako „co taniej”. Lepiej pytać inaczej: co da dom, w którym chcesz mieszkać, za rozsądne pieniądze i bez niespodzianek. Czasem stary dom ma solidną podstawę, dobre położenie na działce i charakter, który warto zachować. Czasem pod świeżym tynkiem kryją się słaby fundament, przegniłe stropy i układ, którego nie da się uratować bez pełnej rozbiórki."
+   "Nie zaczynaj od pytania „co taniej”, tylko od tego, który wariant da dom, w którym chcesz mieszkać, za rozsądne pieniądze i bez niespodzianek. Czasem stary dom ma solidną podstawę, dobre położenie na działce i charakter, który warto zachować. Czasem pod świeżym tynkiem kryją się słaby fundament, przegniłe stropy i układ, którego nie da się uratować bez pełnej rozbiórki."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Czym jest przebudowa i czym różni się od remontu"
+   "Czym przebudowa różni się od remontu?"
   ],
   [
    "p",
@@ -57,11 +58,11 @@
   ],
   [
    "h2",
-   "Ekspertyza domu: bez niej nie ma decyzji"
+   "Czy przed decyzją potrzebna jest ekspertyza domu?"
   ],
   [
    "p",
-   "Zanim porównasz kosztorysy, musisz wiedzieć, w jakim stanie jest dom. Ekspertyzę wykonują inżynierowie: oceniają konstrukcję, dokumentują wady i wskazują, co można zachować, co wzmocnić, a co wymienić. Jest szczególnie ważna w domach, które długo stały nieogrzewane, przeszły przez kilku właścicieli i niezgłoszone „dobudówki” albo mają drewniane stropy."
+   "Tak, bez ekspertyzy nie ma decyzji: zanim porównasz kosztorysy, musisz wiedzieć, w jakim stanie jest dom. Ekspertyzę wykonują inżynierowie: oceniają konstrukcję, dokumentują wady i wskazują, co można zachować, co wzmocnić, a co wymienić. Jest szczególnie ważna w domach, które długo stały nieogrzewane, przeszły przez kilku właścicieli i niezgłoszone „dobudówki” albo mają drewniane stropy."
   ],
   [
    "ul",
@@ -88,7 +89,7 @@
   ],
   [
    "h2",
-   "Kiedy przebudowa się opłaca"
+   "Kiedy przebudowa starego domu się opłaca?"
   ],
   [
    "ul",
@@ -127,7 +128,7 @@
   ],
   [
    "h2",
-   "Kiedy bardziej opłaca się nowy dom"
+   "Kiedy lepiej wyburzyć dom i zbudować nowy?"
   ],
   [
    "ul",
@@ -169,7 +170,7 @@
   ],
   [
    "h2",
-   "Jak policzyć budżet obu wariantów"
+   "Jak porównać budżet przebudowy i nowego domu?"
   ],
   [
    "p",
@@ -209,7 +210,7 @@
   ],
   [
    "h2",
-   "Typowe błędy"
+   "Jakie błędy popełniają właściciele starych domów?"
   ],
   [
    "ul",

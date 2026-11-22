@@ -7,6 +7,7 @@
  "description": "Comment choisir un architecte d'intérieur : 10 questions avant le contrat, portfolio, contenu du projet, devis, suivi de chantier et signaux d'alerte.",
  "lead": "Le choix du designer influe non seulement sur l'aspect de l'appartement, mais aussi sur le budget des travaux. Voici comment choisir un architecte d'intérieur : 10 questions à poser avant de signer, ce qu'il faut regarder dans le portfolio et les signaux qui doivent alerter.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/fr/designer-interieur",
   "Architecte d'intérieur"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "10 questions à poser au designer"
+   "Quelles 10 questions poser à un designer ?"
   ],
   [
    "ol",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Comment choisir un architecte d'intérieur sur portfolio"
+   "Comment choisir un architecte d’intérieur sur son portfolio ?"
   ],
   [
    "p",
@@ -68,7 +69,7 @@
   ],
   [
    "h2",
-   "Ce que doit contenir le contrat"
+   "Que doit contenir le contrat avec le designer ?"
   ],
   [
    "ul",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Designer indépendant ou studio"
+   "Designer indépendant ou studio : que choisir ?"
   ],
   [
    "p",
@@ -99,7 +100,7 @@
   ],
   [
    "h2",
-   "Signaux d'alerte"
+   "Quels signaux d’alerte doivent vous inquiéter ?"
   ],
   [
    "ul",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Erreurs fréquentes des clients"
+   "Quelles erreurs font les clients ?"
   ],
   [
    "ul",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Pourquoi il est avantageux qu'une seule équipe fasse le design et les travaux"
+   "Pourquoi confier le design et les travaux à une seule équipe ?"
   ],
   [
    "p",

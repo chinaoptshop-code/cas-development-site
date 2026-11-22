@@ -7,6 +7,7 @@
  "description": "Wie man einen Innenarchitekten auswählt: 10 Fragen vor dem Vertrag, Portfolio, Projektumfang, Kostenvoranschlag, Oberleitung, Warnsignale und Checkliste.",
  "lead": "Von der Wahl des Designers hängt nicht nur das Aussehen der Wohnung ab, sondern auch das Renovierungsbudget. Wir zeigen, wie man einen Innenarchitekten auswählt: 10 Fragen, die man vor der Unterschrift stellen sollte, worauf man im Portfolio achtet und welche Signale misstrauisch machen sollten.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/de/innenarchitekt",
   "Innenarchitekt"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "10 Fragen an den Designer"
+   "Welche 10 Fragen sollten Sie einem Designer stellen?"
   ],
   [
    "ol",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Wie man einen Innenarchitekten am Portfolio erkennt"
+   "Wie wählt man einen Innenarchitekten nach dem Portfolio?"
   ],
   [
    "p",
@@ -68,7 +69,7 @@
   ],
   [
    "h2",
-   "Was im Vertrag stehen sollte"
+   "Was sollte im Vertrag mit dem Designer stehen?"
   ],
   [
    "ul",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Freier Designer oder Studio"
+   "Freier Designer oder Studio: Was wählen?"
   ],
   [
    "p",
@@ -99,7 +100,7 @@
   ],
   [
    "h2",
-   "Warnsignale"
+   "Welche Warnsignale sollten Sie stutzig machen?"
   ],
   [
    "ul",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Typische Fehler von Bauherren"
+   "Welche Fehler machen Auftraggeber?"
   ],
   [
    "ul",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Warum es sich lohnt, wenn ein Team Design und Renovierung übernimmt"
+   "Warum lohnt es sich, wenn ein Team Design und Renovierung übernimmt?"
   ],
   [
    "p",

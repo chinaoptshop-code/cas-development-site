@@ -7,6 +7,7 @@
  "description": "Réaliser un projet de design : où le concept se perd pendant les travaux, pourquoi plans, suivi du designer et équipe unique comptent. Dès $550/m².",
  "lead": "La réalisation est l'étape où une belle visualisation devient un véritable intérieur ou s'éloigne peu à peu des plans. Voici où le concept se perd le plus souvent et comment l'éviter.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/realisation-projet",
   "Réalisation du projet"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Pourquoi le concept se perd justement sur le chantier"
+   "Pourquoi le concept se perd-il sur le chantier ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Où le concept se perd le plus souvent"
+   "Où le concept se perd-il le plus souvent ?"
   ],
   [
    "ul",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Ce qu'il faut pour réaliser fidèlement un projet de design"
+   "De quoi a besoin une réalisation fidèle du projet ?"
   ],
   [
    "p",
@@ -64,11 +65,11 @@
   ],
   [
    "h2",
-   "Le rôle du suivi de chantier par le designer"
+   "À quoi sert le suivi du designer pendant la réalisation ?"
   ],
   [
    "p",
-   "Une erreur repérée avant d'être recouverte de carrelage ou de plaques de plâtre se corrige assez facilement. Plus tard, c'est bien plus cher, parfois impossible sans démontage. Le suivi n'est donc pas une formalité mais un moyen de voir les écarts à temps. Il est d'autant plus important que le projet comporte de nombreux détails précis et des meubles sur mesure."
+   "Le suivi du designer repère les erreurs avant qu'elles ne soient recouvertes de carrelage ou de plaques de plâtre, quand elles se corrigent encore assez facilement. Plus tard, c'est bien plus cher, parfois impossible sans démontage. Le suivi n'est donc pas une formalité mais un moyen de voir les écarts à temps. Il est d'autant plus important que le projet comporte de nombreux détails précis et des meubles sur mesure."
   ],
   [
    "img",
@@ -77,7 +78,7 @@
   ],
   [
    "h2",
-   "Pourquoi confier design et travaux à une seule équipe"
+   "Pourquoi confier design et travaux à une seule équipe ?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Combien ça coûte"
+   "Combien coûte la réalisation d'un projet ?"
   ],
   [
    "p",

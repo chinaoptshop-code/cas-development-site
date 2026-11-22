@@ -7,6 +7,7 @@
  "description": "What a turnkey renovation in Kyiv includes: design, demolition, services, rough and finishing works, furniture, handover. Price from $550/m².",
  "lead": "A turnkey renovation in Kyiv means one contractor takes you from the design to a finished apartment. We go through the full list of works: what exactly such a renovation includes and where the contractor's responsibility ends.",
  "date": "2026-10-24",
+ "modified": "2026-11-22",
  "service": [
   "/en/turnkey-renovation",
   "Turnkey renovation"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "What a turnkey renovation means"
+   "What does a turnkey renovation mean?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Design and estimate"
+   "Where does a turnkey renovation start?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "Demolition and preparation"
+   "What do demolition and preparation include?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Building services"
+   "Why are building services installed before finishing?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Rough works"
+   "What do rough works include?"
   ],
   [
    "p",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Finishing works"
+   "What do finishing works include?"
   ],
   [
    "p",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Furniture and procurement"
+   "When should furniture and procurement be planned?"
   ],
   [
    "p",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Handover"
+   "How does the handover work?"
   ],
   [
    "p",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Example calculation"
+   "How much does a turnkey renovation of a 60 m² apartment cost?"
   ],
   [
    "p",

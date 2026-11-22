@@ -7,6 +7,7 @@
  "description": "Parede, pavimento e cobertura de uma moradia: ordem das camadas, espessuras de isolamento, barreiras de vapor e membranas, ligações e erros caros.",
  "lead": "A solução construtiva de parede, pavimento e cobertura é a ordem das camadas de que depende uma casa quente e seca daqui a dez anos. Um erro numa camada não se vê de imediato: aparece como condensação, bolor nos cantos, isolamento molhado e contas de aquecimento. Explicamos de que se compõe cada elemento, que espessuras são típicas na prática do mercado e onde a solução mais vezes «falha».",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pt/projeto-de-moradia",
   "Projeto e design de moradia unifamiliar"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Parede, pavimento e cobertura: porquê tantas camadas"
+   "Porque têm tantas camadas a parede, o pavimento e a cobertura?"
   ],
   [
    "p",
@@ -43,7 +44,7 @@
   ],
   [
    "h2",
-   "Camadas da parede"
+   "De que camadas se compõe uma parede?"
   ],
   [
    "h3",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Camadas do pavimento"
+   "De que camadas se compõe um pavimento?"
   ],
   [
    "h3",
@@ -172,7 +173,7 @@
   ],
   [
    "h2",
-   "Camadas da cobertura"
+   "Porque é que a casa perde mais calor pela cobertura?"
   ],
   [
    "p",
@@ -232,11 +233,11 @@
   ],
   [
    "h2",
-   "Ligações onde a solução mais vezes falha"
+   "Em que ligações se rompe mais vezes a solução construtiva?"
   ],
   [
    "p",
-   "Montar o plano corrente de uma parede ou cobertura não é difícil. Os problemas surgem onde se encontram elementos diferentes: o isolamento e a camada estanque têm de passar de um para o outro sem interrupções."
+   "A solução construtiva rompe-se mais vezes nas ligações: montar o plano corrente de uma parede ou cobertura não é difícil. Os problemas surgem onde se encontram elementos diferentes: o isolamento e a camada estanque têm de passar de um para o outro sem interrupções."
   ],
   [
    "ul",
@@ -250,11 +251,11 @@
   ],
   [
    "h2",
-   "Estanquidade e ventilação: o outro lado da envolvente"
+   "Porque precisa uma casa isolada de ventilação?"
   ],
   [
    "p",
-   "Quanto mais isolada e estanque é uma casa, menos ar se renova pelas frinchas. É bom para o calor, mas a humidade da respiração, da cozinha e dos duches já não sai sozinha. Por isso a envolvente projeta-se com a ventilação: natural, com admissões e condutas de extração bem pensadas, ou mecânica com recuperação de calor. Caso contrário, a condensação aparece nas superfícies mais frias — ombreiras, cantos, ligações parede-teto."
+   "Uma casa isolada e estanque precisa de ventilação, porque quanto mais isolada está, menos ar se renova pelas frinchas. É bom para o calor, mas a humidade da respiração, da cozinha e dos duches já não sai sozinha. Por isso a envolvente projeta-se com a ventilação: natural, com admissões e condutas de extração bem pensadas, ou mecânica com recuperação de calor. Caso contrário, a condensação aparece nas superfícies mais frias — ombreiras, cantos, ligações parede-teto."
   ],
   [
    "ul",
@@ -267,7 +268,7 @@
   ],
   [
    "h2",
-   "Como ler as camadas no projeto"
+   "Como ler as camadas no projeto?"
   ],
   [
    "p",

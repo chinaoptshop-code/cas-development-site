@@ -7,6 +7,7 @@
  "description": "Ile trwa remont mieszkania deweloperskiego: etapy, przerwy technologiczne, meble na wymiar i uzgodnienia. Co wydłuża terminy i jak je skrócić.",
  "lead": "Ile trwa remont mieszkania w nowym budownictwie, zależy nie tylko od powierzchni. Termin składa się z kolejnych etapów, przerw technologicznych, dostaw materiałów i mebli na wymiar. Omawiamy, z czego się składa, co najczęściej opóźnia prace i co można zrobić przed startem, by wprowadzić się na czas.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/remont-mieszkania-deweloperskiego",
   "Remont mieszkania deweloperskiego"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ile trwa remont mieszkania deweloperskiego: krótka odpowiedź"
+   "Ile trwa remont mieszkania w nowym budynku?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Z czego składa się termin remontu"
+   "Z czego składa się czas remontu?"
   ],
   [
    "p",
@@ -59,7 +60,7 @@
   ],
   [
    "h2",
-   "Co najbardziej wpływa na terminy"
+   "Co najbardziej wpływa na terminy remontu?"
   ],
   [
    "h3",
@@ -132,7 +133,7 @@
   ],
   [
    "h2",
-   "Przerwy technologiczne: czego nie da się przyspieszyć"
+   "Których przerw technologicznych nie da się przyspieszyć?"
   ],
   [
    "p",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Jak skrócić terminy bez utraty jakości"
+   "Jak skrócić czas remontu bez utraty jakości?"
   ],
   [
    "ul",
@@ -194,7 +195,7 @@
   ],
   [
    "h2",
-   "Typowe przyczyny opóźnień"
+   "Dlaczego remonty najczęściej się opóźniają?"
   ],
   [
    "ul",
@@ -213,7 +214,7 @@
   ],
   [
    "h2",
-   "Terminy w umowie: co sprawdzić"
+   "Co sprawdzić w umowie w sprawie terminów?"
   ],
   [
    "p",

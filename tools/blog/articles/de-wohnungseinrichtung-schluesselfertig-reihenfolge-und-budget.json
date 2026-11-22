@@ -5,8 +5,9 @@
  "title": "Schlüsselfertige Wohnungseinrichtung: Möbel, Licht, Textilien — Reihenfolge und Budget",
  "seo_title": "Wohnungseinrichtung schlüsselfertig: Reihenfolge, Budget",
  "description": "Schlüsselfertige Wohnungseinrichtung: was zuerst und was zuletzt kaufen, wie man das Budget für Möbel, Licht und Textilien plant. Einrichtung ab $250/m².",
- "lead": "Eine schlüsselfertige Wohnungseinrichtung heißt nicht „ins Möbelhaus fahren und ein Sofa kaufen“. Es ist eine Abfolge von Einkäufen, bei der Möbel, Licht, Sanitärobjekte und Textilien zum richtigen Zeitpunkt auf der Baustelle ankommen. Wir zeigen, womit man beginnt, womit man endet und wie man das Budget berechnet.",
+ "lead": "Eine schlüsselfertige Wohnungseinrichtung ist eine Abfolge von Einkäufen, bei der Möbel, Licht, Sanitärobjekte und Textilien zum richtigen Zeitpunkt auf der Baustelle ankommen – und nicht „ins Möbelhaus fahren und ein Sofa kaufen“. Wir zeigen, womit man beginnt, womit man endet und wie man das Budget berechnet.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/objekteinrichtung",
   "Objekteinrichtung"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was eine schlüsselfertige Wohnungseinrichtung ist"
+   "Was ist eine schlüsselfertige Wohnungseinrichtung?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Einkaufsreihenfolge: was zuerst kaufen"
+   "Was kauft man zuerst?"
   ],
   [
    "p",
@@ -49,7 +50,7 @@
   ],
   [
    "h2",
-   "Mittlere Phase: Ausbau und Polstermöbel"
+   "Was bestellt man nach den Rohbauarbeiten?"
   ],
   [
    "p",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Was zuletzt kaufen: Textilien und Deko"
+   "Was kauft man zuletzt?"
   ],
   [
    "p",
@@ -83,7 +84,7 @@
   ],
   [
    "h2",
-   "Wie man das Einrichtungsbudget berechnet"
+   "Was kostet die Einrichtung einer Wohnung?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Typische Fehler"
+   "Welche Fehler passieren bei der Einrichtung?"
   ],
   [
    "ul",

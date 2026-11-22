@@ -7,6 +7,7 @@
  "description": "Jak wybrać projektanta wnętrz: 10 pytań przed umową, portfolio, zakres projektu, kosztorys, nadzór autorski, sygnały ostrzegawcze i lista kontrolna.",
  "lead": "Od wyboru projektanta zależy nie tylko wygląd mieszkania, ale i budżet remontu. Opowiadamy, jak wybrać projektanta wnętrz: 10 pytań, które warto zadać przed podpisaniem umowy, czego szukać w portfolio i jakie sygnały powinny zaniepokoić.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektant-wnetrz",
   "Projektant wnętrz"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "10 pytań do projektanta"
+   "Jakie 10 pytań zadać projektantowi?"
   ],
   [
    "ol",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Jak wybrać projektanta wnętrz po portfolio"
+   "Jak wybrać projektanta wnętrz po portfolio?"
   ],
   [
    "p",
@@ -68,7 +69,7 @@
   ],
   [
    "h2",
-   "Co powinno być w umowie"
+   "Co powinno być w umowie z projektantem?"
   ],
   [
    "ul",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Projektant indywidualny czy studio"
+   "Projektant freelancer czy studio: co wybrać?"
   ],
   [
    "p",
@@ -99,7 +100,7 @@
   ],
   [
    "h2",
-   "Sygnały ostrzegawcze"
+   "Jakie sygnały ostrzegawcze powinny zaniepokoić?"
   ],
   [
    "ul",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Typowe błędy inwestora"
+   "Jakie błędy popełniają klienci?"
   ],
   [
    "ul",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Dlaczego opłaca się, gdy projekt i remont robi jeden zespół"
+   "Dlaczego opłaca się, gdy projekt i remont robi jedna ekipa?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Was eine schlüsselfertige Renovierung in Kyjiw umfasst: Projekt, Rückbau, Haustechnik, Rohbau und Ausbau, Möbel, Übergabe. Preis ab $550/m².",
  "lead": "Eine schlüsselfertige Renovierung in Kyjiw bedeutet, dass ein Auftragnehmer Sie vom Projekt bis zur fertigen Wohnung begleitet. Wir gehen die vollständige Leistungsliste durch: was eine solche Renovierung genau umfasst und wo die Verantwortung des Auftragnehmers endet.",
  "date": "2026-10-24",
+ "modified": "2026-11-22",
  "service": [
   "/de/renovierung-schluesselfertig",
   "Schlüsselfertige Renovierung"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was schlüsselfertig bedeutet"
+   "Was bedeutet schlüsselfertige Renovierung?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Projekt und Kostenvoranschlag"
+   "Womit beginnt eine schlüsselfertige Renovierung?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "Rückbau und Vorbereitung"
+   "Was gehört zu Abbruch und Vorbereitung?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Haustechnik"
+   "Warum wird die Haustechnik vor dem Ausbau verlegt?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Rohbauarbeiten"
+   "Was gehört zu den Rohbauarbeiten?"
   ],
   [
    "p",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Ausbauarbeiten"
+   "Was gehört zu den Ausbauarbeiten?"
   ],
   [
    "p",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Möbel und Ausstattung"
+   "Wann plant man Möbel und Ausstattung?"
   ],
   [
    "p",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Übergabe"
+   "Wie läuft die Übergabe ab?"
   ],
   [
    "p",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Beispielrechnung"
+   "Was kostet die schlüsselfertige Renovierung einer 60-m²-Wohnung?"
   ],
   [
    "p",

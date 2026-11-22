@@ -4,8 +4,9 @@
  "title": "Maison sur l'eau : pieux ou pontons, et par où commencer",
  "translation_of": "budynok-na-vodi-pali-chy-pontony",
  "description": "Maison sur l'eau clé en main : pieux ou pontons, relevé bathymétrique, réseaux depuis la rive, terrasse sur l'eau, étapes du chantier, prix dès $600 le m².",
- "lead": "La maison sur l'eau est un format très prisé des complexes de loisirs et des terrains privés au bord d'un lac ou d'une rivière. Voici sur quoi elle repose, comment amener les réseaux et par quelle étape commencer. Sur notre site, vous pouvez faire défiler les 12 étapes dans la scène « Maison sur l'eau ».",
+ "lead": "Posée sur pieux ou sur pontons, la maison sur l'eau est un format très prisé des complexes de loisirs et des terrains privés au bord d'un lac ou d'une rivière. Voici sur quoi elle repose, comment amener les réseaux et par quelle étape commencer. Sur notre site, vous pouvez faire défiler les 12 étapes dans la scène « Maison sur l'eau ».",
  "date": "2026-11-07",
+ "modified": "2026-11-22",
  "service": [
   "/fr/base-de-loisirs-cle-en-main",
   "Complexe de vacances clé en main"
@@ -15,7 +16,7 @@
  "body": [
   [
    "h2",
-   "1. Commencer par l'eau et le fond"
+   "Par où commencer la construction d'une maison sur l'eau ?"
   ],
   [
    "p",
@@ -23,7 +24,7 @@
   ],
   [
    "h2",
-   "2. Pieux ou pontons"
+   "Pieux ou pontons : que choisir pour une maison sur l'eau ?"
   ],
   [
    "ul",
@@ -35,15 +36,15 @@
   ],
   [
    "h2",
-   "3. Ossature, platelage et passerelle"
+   "Comment relier une maison sur l'eau à la rive ?"
   ],
   [
    "p",
-   "Sur la fondation, on pose l'ossature et le platelage, puis la passerelle vers la rive. La passerelle n'est pas qu'un accès : c'est aussi le chemin des réseaux, par lequel arrivent de la rive l'eau, l'assainissement et l'électricité."
+   "C'est une passerelle qui relie la maison à la rive : on la pose après l'ossature et le platelage sur la fondation. La passerelle n'est pas qu'un accès : c'est aussi le chemin des réseaux, par lequel arrivent de la rive l'eau, l'assainissement et l'électricité."
   ],
   [
    "h2",
-   "4. Réseaux depuis la rive"
+   "Comment amener l'eau, l'assainissement et l'électricité depuis la rive ?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "5. Structure, toiture, façade"
+   "En quoi construire l'ossature, la toiture et la façade ?"
   ],
   [
    "p",
@@ -59,19 +60,19 @@
   ],
   [
    "h2",
-   "6. Surface et format"
+   "Quelle surface peut avoir une maison sur l'eau ?"
   ],
   [
    "p",
-   "Dans la scène de notre site, vous pouvez choisir 60, 100 ou 150 m², du chalet compact pour un complexe à la vraie maison familiale. Dans les complexes de loisirs, les maisons sur l'eau sont souvent associées à des chalets sur la rive et à un espace commun, comme le montre le plan de masse interactif « Complexe de loisirs »."
+   "Une maison sur l'eau va du chalet compact pour un complexe à la vraie maison familiale : dans la scène de notre site, vous pouvez choisir 60, 100 ou 150 m². Dans les complexes de loisirs, les maisons sur l'eau sont souvent associées à des chalets sur la rive et à un espace commun, comme le montre le plan de masse interactif « Complexe de loisirs »."
   ],
   [
    "h2",
-   "Des matériaux qui résistent à l'eau"
+   "Quels matériaux résistent à l'humidité permanente ?"
   ],
   [
    "p",
-   "Au bord de l'eau, tout travaille dans l'humidité permanente, le vent et les écarts de température. On choisit donc pour la structure sous le platelage des matériaux protégés contre la pourriture et la corrosion, pour le sol des lames de terrasse non glissantes après la pluie, et pour la façade des systèmes ventilés qui sèchent vite. L'isolation est prévue avec une marge : par-dessous, l'eau et le vent refroidissent la maison plus qu'une maison à terre."
+   "Pour une maison sur l'eau, on choisit des matériaux qui résistent à l'humidité permanente, au vent et aux écarts de température : pour la structure sous le platelage, des matériaux protégés contre la pourriture et la corrosion, pour le sol des lames de terrasse non glissantes après la pluie, et pour la façade des systèmes ventilés qui sèchent vite. L'isolation est prévue avec une marge : par-dessous, l'eau et le vent refroidissent la maison plus qu'une maison à terre."
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Combien de temps dure la construction"
+   "Combien de temps dure la construction d'une maison sur l'eau ?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "Combien ça coûte"
+   "Combien coûte une maison sur l'eau ?"
   ],
   [
    "p",

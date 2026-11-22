@@ -7,6 +7,7 @@
  "description": "Trabalhos de base e acabamentos num apartamento: o que inclui cada fase, o que se verifica entre elas e porque não poupar na base. Desde 50/m².",
  "lead": "Os trabalhos de base num apartamento são tudo o que depois desaparece sob os acabamentos: paredes, pavimentos, infraestruturas. Os acabamentos são o que vê e toca todos os dias. Explicamos como diferem, o que inclui cada fase e porque é mais simples entregar ambas ao mesmo empreiteiro.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pt/remodelacao-chave-na-mao",
   "Remodelação chave na mão"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Base e acabamentos: a diferença em resumo"
+   "Em que diferem os trabalhos de base dos acabamentos?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "O que incluem os trabalhos de base num apartamento"
+   "O que incluem os trabalhos de base num apartamento?"
   ],
   [
    "p",
@@ -55,7 +56,7 @@
   ],
   [
    "h2",
-   "O que incluem os acabamentos"
+   "O que incluem os acabamentos?"
   ],
   [
    "p",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "O que acontece entre a base e os acabamentos"
+   "O que se verifica entre a base e os acabamentos?"
   ],
   [
    "p",
@@ -101,11 +102,11 @@
   ],
   [
    "h2",
-   "Porque não se pode «poupar na base»"
+   "Pode poupar-se nos trabalhos de base?"
   ],
   [
    "p",
-   "A tentação é conhecida: a base não se vê, então porque não fazê-la mais barata e mais depressa. Na verdade, é exatamente aí que a poupança se transforma nos maiores custos:"
+   "Poupar na base é má ideia, mesmo que a tentação seja conhecida: não se vê, então porque não fazê-la mais barata e mais depressa. Na verdade, é exatamente aí que a poupança se transforma nos maiores custos:"
   ],
   [
    "ul",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "As duas fases no orçamento de uma remodelação chave na mão"
+   "Como entram a base e os acabamentos no orçamento?"
   ],
   [
    "p",
@@ -147,7 +148,7 @@
   ],
   [
    "h2",
-   "Quando trazer os móveis"
+   "Quando levar os móveis?"
   ],
   [
    "p",

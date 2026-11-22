@@ -7,6 +7,7 @@
  "description": "Schlüsselfertige Ausstattung für Hotel oder Aparthotel: Musterzimmer, Bäder, Lobby, Textilien, Lieferung aus China in 35–70 Tagen und ein Budgetrichtwert.",
  "lead": "Ein Hotel oder Aparthotel auszustatten heißt, Dutzende gleicher Artikel zu kaufen, die jeden Tag Gäste, Reinigung und Koffer überstehen müssen. Hier erfahren Sie, wo man anfängt, wie sich ein Aparthotel vom klassischen Hotel unterscheidet, wie man den Eröffnungstermin hält und wie Typensets als Ausgangsspezifikation dienen.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/gewerbe-schluesselfertig",
   "Gewerbe schlüsselfertig"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was die Hotelausstattung umfasst"
+   "Was gehört zur Hotelausstattung?"
   ],
   [
    "p",
@@ -39,11 +40,11 @@
   ],
   [
    "h2",
-   "Das Musterzimmer: testen vor dem Vervielfältigen"
+   "Warum zuerst ein Musterzimmer einrichten?"
   ],
   [
    "p",
-   "Ein Fehler in einem Zimmer vervielfacht sich im ganzen Hotel. Deshalb empfehlen wir, zuerst ein Musterzimmer einzurichten: Bett, Nachttische, Leseleuchten, Schrank, Schreibtisch, Vorhänge und ein Bad mit allen Accessoires. Daran werden Gästeszenarien getestet: Gibt es Platz zum Öffnen des Koffers, genug Steckdosen an Bett und Schreibtisch, blendet das Licht, lässt sich unter dem Bett und in der Dusche leicht reinigen?"
+   "Ein Musterzimmer braucht man, weil sich ein Fehler in einem Zimmer im ganzen Hotel vervielfacht. Deshalb empfehlen wir, zuerst ein Musterzimmer einzurichten: Bett, Nachttische, Leseleuchten, Schrank, Schreibtisch, Vorhänge und ein Bad mit allen Accessoires. Daran werden Gästeszenarien getestet: Gibt es Platz zum Öffnen des Koffers, genug Steckdosen an Bett und Schreibtisch, blendet das Licht, lässt sich unter dem Bett und in der Dusche leicht reinigen?"
   ],
   [
    "p",
@@ -57,7 +58,7 @@
   ],
   [
    "h2",
-   "Aparthotels: wie sich die Ausstattung unterscheidet"
+   "Wie unterscheidet sich die Ausstattung eines Aparthotels?"
   ],
   [
    "p",
@@ -79,7 +80,7 @@
   ],
   [
    "h2",
-   "Anforderungen an Möbel und Materialien"
+   "Welche Anforderungen gelten für Hotelmöbel und Materialien?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Lobby, Rezeption und Flure"
+   "Wie gestaltet man Lobby, Rezeption und Flure?"
   ],
   [
    "p",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Frühstücksbereich, Restaurant und Terrasse"
+   "Was brauchen Frühstücksbereich, Restaurant und Terrasse?"
   ],
   [
    "p",
@@ -122,11 +123,11 @@
   ],
   [
    "h2",
-   "Textilien und Verbrauchsmaterial: wie viel man einplant"
+   "Wie viele Textilien und Verbrauchsartikel sollte man einplanen?"
   ],
   [
    "p",
-   "Textilien werden am häufigsten nach Augenmaß geschätzt und dann in Eile nachgekauft. Bettwäsche, Handtücher und Bademäntel braucht man nicht in einem Set pro Zimmer, sondern mit Reserve: eines im Zimmer, eines in der Wäscherei und eines als Ersatz für Verschlissenes. Dasselbe gilt für Küchenutensilien in Apartments und Geschirr im Frühstücksbereich. Besser eine nachbestellbare Serie wählen, als ein Jahr später einen ähnlichen Farbton zu suchen."
+   "Planen Sie drei Textilsets pro Zimmer ein, denn Textilien werden am häufigsten nach Augenmaß geschätzt und dann in Eile nachgekauft. Bettwäsche, Handtücher und Bademäntel braucht man nicht in einem Set pro Zimmer, sondern mit Reserve: eines im Zimmer, eines in der Wäscherei und eines als Ersatz für Verschlissenes. Dasselbe gilt für Küchenutensilien in Apartments und Geschirr im Frühstücksbereich. Besser eine nachbestellbare Serie wählen, als ein Jahr später einen ähnlichen Farbton zu suchen."
   ],
   [
    "h2",
@@ -150,7 +151,7 @@
   ],
   [
    "h2",
-   "Wer entscheidet und wie Freigaben laufen"
+   "Wer entscheidet und wie laufen Freigaben?"
   ],
   [
    "p",
@@ -158,7 +159,7 @@
   ],
   [
    "h2",
-   "Zeitplan: wie man den Eröffnungstermin hält"
+   "Wie verpasst man den Eröffnungstermin nicht?"
   ],
   [
    "p",
@@ -172,7 +173,7 @@
   ],
   [
    "h2",
-   "Budget: ein Richtwert zu unseren Sätzen"
+   "Woraus besteht das Hotelbudget?"
   ],
   [
    "p",

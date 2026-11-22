@@ -5,8 +5,9 @@
  "title": "Projeto de layout: quando basta e quando é preciso um projeto de interiores completo",
  "seo_title": "Projeto de layout de um apartamento: quando basta",
  "description": "Projeto de layout de um apartamento ou moradia: o que inclui, quando basta para remodelar e quando é preciso o projeto completo. Pacotes, preços, checklist.",
- "lead": "O projeto de layout de um apartamento ou moradia é o caminho mais curto entre paredes vazias e uma planta clara: onde ficam paredes, móveis e zonas húmidas. Às vezes basta, às vezes não. Explicamos o que inclui, quando é suficiente e quando poupar nos desenhos acaba em trabalho refeito.",
+ "lead": "O projeto de layout de um apartamento ou moradia custa desde $6/m² e é o caminho mais curto entre paredes vazias e uma planta clara: onde ficam paredes, móveis e zonas húmidas. Às vezes basta, às vezes não. Explicamos o que inclui, quando é suficiente e quando poupar nos desenhos acaba em trabalho refeito.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pt/design-de-interiores-apartamento",
   "Projeto de interiores de apartamento"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "O que é um projeto de layout"
+   "O que é um projeto de layout?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "O que inclui o pacote"
+   "O que inclui o pacote de layout?"
   ],
   [
    "ul",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Quando o layout basta"
+   "Quando basta o projeto de layout?"
   ],
   [
    "ul",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Como decorre o trabalho"
+   "Como decorre o trabalho no layout?"
   ],
   [
    "ol",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Quando é preciso o projeto completo"
+   "Quando é preciso um projeto completo?"
   ],
   [
    "ul",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Comparação de pacotes"
+   "Em que diferem os pacotes de projeto?"
   ],
   [
    "ul",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Quanto custa"
+   "Quanto custam o layout e o projeto completo?"
   ],
   [
    "p",
@@ -149,7 +150,7 @@
   ],
   [
    "h2",
-   "Erros típicos"
+   "Que erros se cometem ao escolher o pacote?"
   ],
   [
    "ul",

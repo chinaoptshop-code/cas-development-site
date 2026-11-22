@@ -7,6 +7,7 @@
  "description": "Przegrody ściany, podłogi i dachu domu jednorodzinnego: kolejność warstw, typowe grubości ocieplenia, paroizolacja i membrany, węzły i drogie błędy.",
  "lead": "Układ warstw ściany, podłogi i dachu decyduje o tym, czy w domu będzie ciepło i sucho za dziesięć lat. Błąd w jednej warstwie nie widać od razu: wychodzi jako kondensacja, pleśń w narożnikach, mokra izolacja i rachunki za ogrzewanie. Wyjaśniamy, z czego składa się każda przegroda, jakie grubości są typowe w praktyce rynkowej i gdzie układ najczęściej się „rwie”.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projekt-domu",
   "Projekt domu jednorodzinnego"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ściana, podłoga i dach: po co tyle warstw"
+   "Dlaczego przegrody ściany, podłogi i dachu mają tyle warstw?"
   ],
   [
    "p",
@@ -43,7 +44,7 @@
   ],
   [
    "h2",
-   "Układ warstw ściany"
+   "Z jakich warstw składa się ściana?"
   ],
   [
    "h3",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Układ warstw podłogi"
+   "Z jakich warstw składa się podłoga?"
   ],
   [
    "h3",
@@ -172,7 +173,7 @@
   ],
   [
    "h2",
-   "Układ warstw dachu"
+   "Dlaczego dom traci najwięcej ciepła przez dach?"
   ],
   [
    "p",
@@ -232,11 +233,11 @@
   ],
   [
    "h2",
-   "Węzły, w których układ najczęściej się rwie"
+   "W których węzłach układ warstw najczęściej się przerywa?"
   ],
   [
    "p",
-   "Złożenie płaszczyzny ściany czy dachu nie jest trudne. Problemy pojawiają się tam, gdzie spotykają się różne przegrody: izolacja i warstwa szczelna muszą przechodzić z jednej w drugą bez przerw."
+   "Układ warstw najczęściej przerywa się w węzłach: złożenie płaszczyzny ściany czy dachu nie jest trudne. Problemy pojawiają się tam, gdzie spotykają się różne przegrody: izolacja i warstwa szczelna muszą przechodzić z jednej w drugą bez przerw."
   ],
   [
    "ul",
@@ -250,11 +251,11 @@
   ],
   [
    "h2",
-   "Szczelność i wentylacja: druga strona ciepłej obudowy"
+   "Po co ocieplonemu domowi wentylacja?"
   ],
   [
    "p",
-   "Im lepiej ocieplony i szczelniejszy dom, tym mniej powietrza wymienia się przez nieszczelności. To dobre dla ciepła, ale wilgoć z oddechu, kuchni i prysznica przestaje uchodzić sama. Dlatego ciepłą obudowę projektuje się razem z wentylacją: grawitacyjną z przemyślanymi nawiewami i kanałami wywiewnymi albo mechaniczną z odzyskiem ciepła. Inaczej kondensat pojawia się na najzimniejszych powierzchniach — ościeżach, narożnikach, stykach ściany z sufitem."
+   "Ocieplony, szczelny dom potrzebuje wentylacji, bo im lepiej jest ocieplony, tym mniej powietrza wymienia się przez nieszczelności. To dobre dla ciepła, ale wilgoć z oddechu, kuchni i prysznica przestaje uchodzić sama. Dlatego ciepłą obudowę projektuje się razem z wentylacją: grawitacyjną z przemyślanymi nawiewami i kanałami wywiewnymi albo mechaniczną z odzyskiem ciepła. Inaczej kondensat pojawia się na najzimniejszych powierzchniach — ościeżach, narożnikach, stykach ściany z sufitem."
   ],
   [
    "ul",
@@ -267,7 +268,7 @@
   ],
   [
    "h2",
-   "Jak czytać układ warstw w projekcie"
+   "Jak czytać układ warstw w projekcie?"
   ],
   [
    "p",

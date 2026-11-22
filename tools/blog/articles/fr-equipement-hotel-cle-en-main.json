@@ -7,6 +7,7 @@
  "description": "Équipement clé en main d’un hôtel ou apparthôtel : chambre témoin, salles de bains, lobby, linge, livraison de Chine en 35 à 70 jours et repère de budget.",
  "lead": "Équiper un hôtel ou un apparthôtel, c’est acheter des dizaines d’articles identiques qui doivent supporter chaque jour les clients, le ménage et les valises. Voici par où commencer, en quoi un apparthôtel diffère d’un hôtel classique, comment tenir la date d’ouverture et comment partir d’ensembles types pour le descriptif.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/commerce-cle-en-main",
   "Commerce clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce que comprend l’équipement d’un hôtel"
+   "Que comprend l’équipement d’un hôtel ?"
   ],
   [
    "p",
@@ -39,11 +40,11 @@
   ],
   [
    "h2",
-   "La chambre témoin : tester avant de dupliquer"
+   "Pourquoi aménager d’abord une chambre témoin ?"
   ],
   [
    "p",
-   "Une erreur dans une chambre se multiplie dans tout l’hôtel. Nous recommandons donc d’aménager d’abord une chambre témoin : lit, chevets, liseuses, armoire, bureau, rideaux et une salle de bains avec tous ses accessoires. On y teste les scénarios du client : peut-on ouvrir sa valise, y a-t-il assez de prises près du lit et du bureau, la lumière éblouit-elle, est-il facile de nettoyer sous le lit et dans la douche ?"
+   "Une chambre témoin est nécessaire, car une erreur dans une chambre se multiplie dans tout l’hôtel. Nous recommandons donc d’aménager d’abord une chambre témoin : lit, chevets, liseuses, armoire, bureau, rideaux et une salle de bains avec tous ses accessoires. On y teste les scénarios du client : peut-on ouvrir sa valise, y a-t-il assez de prises près du lit et du bureau, la lumière éblouit-elle, est-il facile de nettoyer sous le lit et dans la douche ?"
   ],
   [
    "p",
@@ -57,7 +58,7 @@
   ],
   [
    "h2",
-   "Apparthôtels : ce qui change dans l’équipement"
+   "En quoi l’équipement d’un appart-hôtel diffère-t-il ?"
   ],
   [
    "p",
@@ -79,7 +80,7 @@
   ],
   [
    "h2",
-   "Exigences pour le mobilier et les matériaux"
+   "Quelles exigences pour le mobilier et les matériaux d’hôtel ?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Lobby, réception et couloirs"
+   "Comment aménager le lobby, la réception et les couloirs ?"
   ],
   [
    "p",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Petit-déjeuner, restaurant et terrasse"
+   "Que faut-il pour l’espace petit-déjeuner, le restaurant et la terrasse ?"
   ],
   [
    "p",
@@ -122,11 +123,11 @@
   ],
   [
    "h2",
-   "Linge et consommables : combien prévoir"
+   "Combien de linge et de consommables prévoir ?"
   ],
   [
    "p",
-   "Le linge est ce que l’on estime le plus souvent à l’œil avant d’en racheter dans l’urgence. Draps, serviettes et peignoirs ne se prévoient pas à un jeu par chambre, mais avec réserve : un jeu en chambre, un à la blanchisserie, un pour remplacer l’usé. Idem pour la batterie de cuisine des appartements et la vaisselle du petit-déjeuner. Mieux vaut une gamme qu’on peut recommander que chercher une teinte proche un an plus tard."
+   "Prévoyez trois jeux de linge par chambre, car c’est ce que l’on estime le plus souvent à l’œil avant d’en racheter dans l’urgence. Draps, serviettes et peignoirs ne se prévoient pas à un jeu par chambre, mais avec réserve : un jeu en chambre, un à la blanchisserie, un pour remplacer l’usé. Idem pour la batterie de cuisine des appartements et la vaisselle du petit-déjeuner. Mieux vaut une gamme qu’on peut recommander que chercher une teinte proche un an plus tard."
   ],
   [
    "h2",
@@ -150,7 +151,7 @@
   ],
   [
    "h2",
-   "Qui décide et comment se font les validations"
+   "Qui décide et comment valider ?"
   ],
   [
    "p",
@@ -158,7 +159,7 @@
   ],
   [
    "h2",
-   "Délais : comment tenir la date d’ouverture"
+   "Comment ne pas manquer la date d’ouverture ?"
   ],
   [
    "p",
@@ -172,7 +173,7 @@
   ],
   [
    "h2",
-   "Budget : un repère à nos tarifs"
+   "De quoi se compose le budget d’un hôtel ?"
   ],
   [
    "p",

@@ -5,8 +5,9 @@
  "title": "Kompletacja mieszkania pod klucz: meble, światło, tekstylia — kolejność i budżet",
  "seo_title": "Kompletacja mieszkania pod klucz: kolejność i budżet",
  "description": "Kompletacja mieszkania pod klucz: co kupić najpierw, co na końcu, jak ułożyć budżet na meble, światło i tekstylia. Umeblowanie od $250/m².",
- "lead": "Kompletacja mieszkania pod klucz to nie „pojechać do salonu i kupić sofę”. To kolejność zakupów, w której meble, światło, ceramika i tekstylia trafiają na obiekt we właściwym momencie. Opowiadamy, od czego zacząć, czym skończyć i jak policzyć budżet.",
+ "lead": "Kompletacja mieszkania pod klucz to kolejność zakupów, w której meble, światło, ceramika i tekstylia trafiają na obiekt we właściwym momencie, a nie „pojechać do salonu i kupić sofę”. Opowiadamy, od czego zacząć, czym skończyć i jak policzyć budżet.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pl/kompletacja-wnetrz",
   "Kompletacja wnętrz pod klucz"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Czym jest kompletacja mieszkania pod klucz"
+   "Czym jest kompletacja mieszkania pod klucz?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Kolejność zakupów: co kupić najpierw"
+   "Co kupić najpierw?"
   ],
   [
    "p",
@@ -49,7 +50,7 @@
   ],
   [
    "h2",
-   "Etap środkowy: wykończenie i meble tapicerowane"
+   "Co zamawiać po pracach surowych?"
   ],
   [
    "p",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Co kupić na końcu: tekstylia i dekoracje"
+   "Co kupić na końcu?"
   ],
   [
    "p",
@@ -83,7 +84,7 @@
   ],
   [
    "h2",
-   "Jak policzyć budżet na kompletację"
+   "Ile kosztuje kompletacja mieszkania?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Typowe błędy"
+   "Jakie błędy popełnia się przy kompletacji?"
   ],
   [
    "ul",

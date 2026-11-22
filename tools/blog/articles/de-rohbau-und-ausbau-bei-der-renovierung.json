@@ -7,6 +7,7 @@
  "description": "Rohbauarbeiten und Ausbau bei der Wohnungsrenovierung: was jede Phase umfasst, was dazwischen geprüft wird und warum man am Rohbau nicht spart. Ab $550 pro m².",
  "lead": "Rohbauarbeiten in einer Wohnung sind alles, was später unter dem Ausbau verschwindet: Wände, Böden, Haustechnik. Der Ausbau ist das, was Sie jeden Tag sehen und berühren. Hier erfahren Sie, wie sich beides unterscheidet, was jede Phase umfasst und warum es einfacher ist, beides einer Firma zu übertragen.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/renovierung-schluesselfertig",
   "Schlüsselfertige Renovierung"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Rohbau und Ausbau: der Unterschied in Kürze"
+   "Worin unterscheiden sich Rohbau- und Ausbauarbeiten?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "Was Rohbauarbeiten in einer Wohnung umfassen"
+   "Was gehört zu den Rohbauarbeiten in einer Wohnung?"
   ],
   [
    "p",
@@ -55,7 +56,7 @@
   ],
   [
    "h2",
-   "Was der Ausbau umfasst"
+   "Was gehört zu den Ausbauarbeiten?"
   ],
   [
    "p",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Was zwischen Rohbau und Ausbau passiert"
+   "Was wird zwischen Rohbau- und Ausbauphase geprüft?"
   ],
   [
    "p",
@@ -101,11 +102,11 @@
   ],
   [
    "h2",
-   "Warum man “am Rohbau nicht sparen„ kann"
+   "Kann man bei den Rohbauarbeiten sparen?"
   ],
   [
    "p",
-   "Die Versuchung ist bekannt: Rohbauarbeiten sieht man nicht, also warum nicht billiger und schneller. Tatsächlich werden genau hier Einsparungen zu den größten Kosten:"
+   "Bei den Rohbauarbeiten zu sparen lohnt sich nicht, auch wenn die Versuchung bekannt ist: Man sieht sie nicht, also warum nicht billiger und schneller. Tatsächlich werden genau hier Einsparungen zu den größten Kosten:"
   ],
   [
    "ul",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "Beide Phasen im Kostenvoranschlag einer schlüsselfertigen Renovierung"
+   "Wie erscheinen Rohbau- und Ausbauarbeiten im Kostenvoranschlag?"
   ],
   [
    "p",
@@ -147,7 +148,7 @@
   ],
   [
    "h2",
-   "Wann die Möbel kommen"
+   "Wann sollten die Möbel geliefert werden?"
   ],
   [
    "p",

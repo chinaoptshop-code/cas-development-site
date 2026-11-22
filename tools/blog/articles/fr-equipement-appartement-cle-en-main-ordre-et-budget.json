@@ -5,8 +5,9 @@
  "title": "Équipement d'un appartement clé en main : mobilier, éclairage, textiles — ordre et budget",
  "seo_title": "Équiper un appartement clé en main : ordre et budget",
  "description": "Équipement d'un appartement clé en main : quoi acheter en premier et en dernier, comment budgéter mobilier, éclairage et textiles. Ameublement dès $250/m².",
- "lead": "Équiper un appartement clé en main, ce n'est pas « aller en magasin acheter un canapé ». C'est une suite d'achats où mobilier, éclairage, sanitaires et textiles arrivent sur le chantier au bon moment. Voici par où commencer, comment finir et comment calculer le budget.",
+ "lead": "Équiper un appartement clé en main, c'est une suite d'achats où mobilier, éclairage, sanitaires et textiles arrivent sur le chantier au bon moment, et non « aller en magasin acheter un canapé ». Voici par où commencer, comment finir et comment calculer le budget.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/equipement-cle-en-main",
   "Équipement clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce qu'est l'équipement clé en main d'un appartement"
+   "Qu'est-ce que l'équipement clé en main d'un appartement ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "L'ordre des achats : quoi acheter en premier"
+   "Que faut-il acheter en premier ?"
   ],
   [
    "p",
@@ -49,7 +50,7 @@
   ],
   [
    "h2",
-   "L'étape intermédiaire : finitions et mobilier rembourré"
+   "Que commander après le gros œuvre ?"
   ],
   [
    "p",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Quoi acheter en dernier : textiles et décoration"
+   "Que faut-il acheter en dernier ?"
   ],
   [
    "p",
@@ -83,7 +84,7 @@
   ],
   [
    "h2",
-   "Comment calculer le budget d'équipement"
+   "Combien coûte l'équipement d'un appartement ?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Erreurs fréquentes"
+   "Quelles erreurs commet-on en équipant un appartement ?"
   ],
   [
    "ul",

@@ -5,8 +5,9 @@
  "title": "Szkielet, beton komórkowy czy drewno z bali: z czego budować dom",
  "seo_title": "Szkielet, beton komórkowy czy bale: z czego budować",
  "description": "Szkielet, beton komórkowy czy bale: porównanie szybkości, ocieplenia, wykończenia i budżetu oraz jak dobrać materiał ścian do działki i stylu życia.",
- "lead": "Szkielet, beton komórkowy czy drewno z bali — to pierwsze pytanie techniczne przyszłych właścicieli domu. Nie ma jednej słusznej odpowiedzi: każda technologia ma swoje mocne strony i wymagania. Porównujemy je pod kątem tego, co naprawdę wpływa na życie w domu i budżet, i wyjaśniamy, dlaczego decyzję warto podejmować razem z projektem, a nie zamiast niego.",
+ "lead": "Nie ma jednej słusznej odpowiedzi na pytanie „szkielet, beton komórkowy czy drewno z bali”: każda technologia ma swoje mocne strony i wymagania, więc przyszli właściciele domu dobierają materiał do działki, terminów i budżetu. Porównujemy je pod kątem tego, co naprawdę wpływa na życie w domu i budżet, i wyjaśniamy, dlaczego decyzję warto podejmować razem z projektem, a nie zamiast niego.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/budowa-domow",
   "Budowa domów"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Z czego budować dom: najpierw pytania, potem materiał"
+   "Z czego budować dom: szkielet, beton komórkowy czy bale?"
   ],
   [
    "p",
-   "Spory „szkielet kontra beton komórkowy” często toczą się tak, jakby jedna technologia była zawsze lepsza. W rzeczywistości materiał ścian to odpowiedź na kilka konkretnych pytań: jak będziesz mieszkać w domu, gdzie leży działka, jakie są terminy i budżet, jak ważne są ciepło, cisza i minimum konserwacji. Gdy odpowiedzi są jasne, wybór zwykle zawęża się do jednej-dwóch opcji."
+   "Materiał ścian wybiera się nie według tego, co jest „zawsze lepsze”, ale jako odpowiedź na kilka konkretnych pytań: jak będziesz mieszkać w domu, gdzie leży działka, jakie są terminy i budżet, jak ważne są ciepło, cisza i minimum konserwacji. Gdy odpowiedzi są jasne, wybór zwykle zawęża się do jednej-dwóch opcji."
   ],
   [
    "ul",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Dom szkieletowy"
+   "Czym jest dom szkieletowy i dla kogo jest?"
   ],
   [
    "p",
@@ -84,7 +85,7 @@
   ],
   [
    "h2",
-   "Dom z betonu komórkowego"
+   "Czym jest dom z betonu komórkowego i dla kogo jest?"
   ],
   [
    "p",
@@ -136,7 +137,7 @@
   ],
   [
    "h2",
-   "Dom z bali"
+   "Czym jest dom z bali i dlaczego się go wybiera?"
   ],
   [
    "p",
@@ -174,11 +175,11 @@
   ],
   [
    "h2",
-   "Instalacje i efektywność energetyczna: co ważniejsze od ścian"
+   "Co poza ścianami wpływa na ciepło w domu?"
   ],
   [
    "p",
-   "Komfort w domu zależy nie tylko od ścian. Okna, dach, ocieplenie fundamentu i cokołu, wentylacja i system grzewczy razem wpływają na ciepło i rachunki nie mniej niż materiał ścian. Dom z najlepszymi ścianami, ale z zimnymi węzłami przy oknach i bez przemyślanej wentylacji będzie niekomfortowy."
+   "Poza ścianami na ciepło i rachunki nie mniej wpływają okna, dach, ocieplenie fundamentu i cokołu, wentylacja i system grzewczy. Dom z najlepszymi ścianami, ale z zimnymi węzłami przy oknach i bez przemyślanej wentylacji będzie niekomfortowy."
   ],
   [
    "ul",
@@ -237,7 +238,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje dom i od czego zależy cena"
+   "Ile kosztuje dom i od czego zależy cena?"
   ],
   [
    "p",
@@ -253,7 +254,7 @@
   ],
   [
    "h2",
-   "Typowe błędy przy wyborze technologii"
+   "Jakie błędy popełnia się przy wyborze technologii?"
   ],
   [
    "ul",

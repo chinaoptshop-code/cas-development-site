@@ -5,8 +5,9 @@
  "translation_of": "inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit",
  "seo_title": "Instalacje w mieszkaniu: kolejność prac i kontrole",
  "description": "Instalacje w mieszkaniu pod klucz: projekt, elektryka i rozdzielnica, wod-kan, wentylacja, klimatyzacja, ogrzewanie podłogowe. Kolejność prac i kontrole.",
- "lead": "Instalacje to ta część remontu, której po odbiorze nie widać, ale to one decydują, czy będzie wybijać bezpiecznik, czy zalejesz sąsiadów i czy w łazience pojawi się pleśń. Wyjaśniamy, w jakiej kolejności układa się elektrykę, wod-kan, wentylację i ogrzewanie podłogowe, jakie rozwiązania są typowe według praktyki rynkowej i co sprawdzić, póki ściany nie są jeszcze otynkowane.",
+ "lead": "Instalacje w mieszkaniu prowadzi się w ścisłej kolejności — projekt, elektryka, hydraulika, wentylacja, ogrzewanie podłogowe i kontrole przed tynkiem — bo to ta niewidoczna po odbiorze część remontu decyduje, czy będzie wybijać bezpiecznik, czy zalejesz sąsiadów i czy w łazience pojawi się pleśń. Wyjaśniamy, w jakiej kolejności układa się elektrykę, wod-kan, wentylację i ogrzewanie podłogowe, jakie rozwiązania są typowe według praktyki rynkowej i co sprawdzić, póki ściany nie są jeszcze otynkowane.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/remont-pod-klucz",
   "Remont pod klucz"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Instalacje w mieszkaniu: dlaczego kolejność jest ważniejsza niż marki"
+   "W jakiej kolejności prowadzi się instalacje w mieszkaniu?"
   ],
   [
    "p",
-   "Drogi kran nie uchroni przed przeciekiem na źle wykonanym połączeniu, a dobry kabel — przed przeciążonym obwodem. Większość problemów z instalacjami bierze się nie z materiałów, lecz z niewłaściwej kolejności i braku kontroli przed zakryciem. Dlatego w remoncie pod klucz instalacje prowadzi się według projektu i w jasnym porządku: najpierw decyzje na papierze, potem układanie, potem próby, a dopiero potem tynk, wylewka i wykończenie."
+   "Instalacje prowadzi się w ścisłej kolejności, z kontrolami przed zakryciem ścian: większość problemów bierze się nie z materiałów, lecz z niewłaściwej kolejności, a drogi kran nie uchroni przed przeciekiem na źle wykonanym połączeniu, tak jak dobry kabel — przed przeciążonym obwodem. Dlatego w remoncie pod klucz instalacje prowadzi się według projektu i w jasnym porządku: najpierw decyzje na papierze, potem układanie, potem próby, a dopiero potem tynk, wylewka i wykończenie."
   ],
   [
    "ol",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Etap 0. Projekt: co ustalić przed pierwszą bruzdą"
+   "Co ustalić w projekcie przed pierwszą bruzdą?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Elektryka"
+   "Jak rozprowadzić elektrykę w mieszkaniu?"
   ],
   [
    "h3",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Wod-kan"
+   "Jak wykonać hydraulikę i kanalizację w mieszkaniu?"
   ],
   [
    "h3",
@@ -180,7 +181,7 @@
   ],
   [
    "h2",
-   "Wentylacja i klimatyzacja"
+   "Jak zrobić wentylację i klimatyzację?"
   ],
   [
    "p",
@@ -201,7 +202,7 @@
   ],
   [
    "h2",
-   "Ogrzewanie podłogowe"
+   "Jakie ogrzewanie podłogowe robi się w mieszkaniu?"
   ],
   [
    "p",
@@ -225,7 +226,7 @@
   ],
   [
    "h2",
-   "Jak instalacje wpływają na wysokość sufitów i poziom podłóg"
+   "Jak instalacje wpływają na wysokość sufitów i poziom podłóg?"
   ],
   [
    "p",
@@ -237,11 +238,11 @@
   ],
   [
    "h2",
-   "Dokumenty i normy: co powinieneś otrzymać"
+   "Jakie dokumenty powinieneś otrzymać po remoncie?"
   ],
   [
    "p",
-   "Prace wykonuje się zgodnie z obowiązującymi przepisami budowlanymi, zasadami budowy instalacji elektrycznych i wymaganiami producentów urządzeń. Dla Ciebie jako inwestora ważniejsza od listy norm jest dokumentacja, która zostaje po remoncie. Przyda się, gdy za kilka lat zechcesz powiesić półkę, wymienić bojler albo znaleźć przeciek."
+   "Po remoncie powinieneś otrzymać schematy powykonawcze, zdjęcia robót zakrytych, schemat rozdzielnicy, protokoły pomiarów i dokumentację urządzeń, a same prace wykonuje się zgodnie z obowiązującymi przepisami budowlanymi, zasadami budowy instalacji elektrycznych i wymaganiami producentów urządzeń. Przyda się, gdy za kilka lat zechcesz powiesić półkę, wymienić bojler albo znaleźć przeciek."
   ],
   [
    "ul",
@@ -259,7 +260,7 @@
   ],
   [
    "h2",
-   "Typowe błędy w instalacjach mieszkania"
+   "Jakie błędy popełnia się przy instalacjach w mieszkaniu?"
   ],
   [
    "ul",

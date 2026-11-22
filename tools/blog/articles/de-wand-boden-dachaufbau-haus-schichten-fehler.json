@@ -7,6 +7,7 @@
  "description": "Wand-, Boden- und Dachaufbau eines Einfamilienhauses: Schichtenfolge, typische Dämmstärken, Dampfbremsen und Membranen, Anschlüsse und teure Fehler.",
  "lead": "Der Aufbau von Wand, Boden und Dach ist die Schichtenfolge, von der abhängt, ob ein Haus in zehn Jahren noch warm und trocken ist. Ein Fehler in einer Schicht zeigt sich nicht sofort: Er kommt als Kondensat, Schimmel in Ecken, nasse Dämmung und hohe Heizkosten zum Vorschein. Wir erklären, woraus jede Konstruktion besteht, welche Dicken in der Praxis üblich sind und wo der Aufbau am häufigsten „reißt“.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/hausplanung",
   "Planung eines Einfamilienhauses"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Wand-, Boden- und Dachaufbau: warum so viele Schichten"
+   "Warum haben Wand-, Boden- und Dachaufbau so viele Schichten?"
   ],
   [
    "p",
@@ -43,7 +44,7 @@
   ],
   [
    "h2",
-   "Wandaufbau"
+   "Aus welchen Schichten besteht ein Wandaufbau?"
   ],
   [
    "h3",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Bodenaufbau"
+   "Aus welchen Schichten besteht ein Bodenaufbau?"
   ],
   [
    "h3",
@@ -172,7 +173,7 @@
   ],
   [
    "h2",
-   "Dachaufbau"
+   "Warum verliert ein Haus über das Dach die meiste Wärme?"
   ],
   [
    "p",
@@ -232,11 +233,11 @@
   ],
   [
    "h2",
-   "Anschlüsse, an denen der Aufbau am häufigsten reißt"
+   "An welchen Anschlüssen reißt der Aufbau am häufigsten?"
   ],
   [
    "p",
-   "Die Fläche einer Wand oder eines Dachs herzustellen ist nicht schwer. Probleme entstehen dort, wo verschiedene Bauteile zusammentreffen: Dämmung und Luftdichtheitsebene müssen ohne Unterbrechung von einem ins andere übergehen."
+   "Am häufigsten reißt der Aufbau an den Anschlüssen: Die Fläche einer Wand oder eines Dachs herzustellen ist nicht schwer. Probleme entstehen dort, wo verschiedene Bauteile zusammentreffen: Dämmung und Luftdichtheitsebene müssen ohne Unterbrechung von einem ins andere übergehen."
   ],
   [
    "ul",
@@ -250,11 +251,11 @@
   ],
   [
    "h2",
-   "Luftdichtheit und Lüftung: die Kehrseite der warmen Hülle"
+   "Warum braucht ein gedämmtes Haus eine Lüftung?"
   ],
   [
    "p",
-   "Je besser gedämmt und dichter ein Haus ist, desto weniger Luft tauscht sich über Fugen aus. Das ist gut für die Wärme, aber Feuchte aus Atmung, Kochen und Duschen entweicht nicht mehr von selbst. Deshalb plant man die warme Hülle zusammen mit der Lüftung: natürlich mit durchdachten Zuluftöffnungen und Abluftkanälen oder mechanisch mit Wärmerückgewinnung. Sonst bildet sich Kondensat an den kältesten Flächen — Laibungen, Ecken, Wand-Decken-Übergängen."
+   "Ein gedämmtes, dichtes Haus braucht eine Lüftung, denn je besser es gedämmt ist, desto weniger Luft tauscht sich über Fugen aus. Das ist gut für die Wärme, aber Feuchte aus Atmung, Kochen und Duschen entweicht nicht mehr von selbst. Deshalb plant man die warme Hülle zusammen mit der Lüftung: natürlich mit durchdachten Zuluftöffnungen und Abluftkanälen oder mechanisch mit Wärmerückgewinnung. Sonst bildet sich Kondensat an den kältesten Flächen — Laibungen, Ecken, Wand-Decken-Übergängen."
   ],
   [
    "ul",
@@ -267,7 +268,7 @@
   ],
   [
    "h2",
-   "So lesen Sie den Aufbau in der Planung"
+   "Wie liest man den Aufbau in den Plänen?"
   ],
   [
    "p",
