@@ -5,8 +5,9 @@
  "translation_of": "inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit",
  "seo_title": "Réseaux techniques d'un appartement : ordre et contrôles",
  "description": "Réseaux d'un appartement clé en main : projet, électricité, plomberie, ventilation, climatisation, plancher chauffant. Ordre des travaux et contrôles.",
- "lead": "Les réseaux techniques sont la partie de la rénovation qu'on ne voit plus après la livraison, mais ce sont eux qui décident si le disjoncteur saute, si l'on inonde les voisins et si la moisissure apparaît dans la salle de bains. Nous expliquons dans quel ordre on pose l'électricité, la plomberie, la ventilation et le plancher chauffant, quelles solutions sont courantes selon la pratique du marché et ce qu'il faut vérifier tant que les murs ne sont pas enduits.",
+ "lead": "Les réseaux techniques d'un appartement se posent dans un ordre strict — étude, électricité, plomberie, ventilation, plancher chauffant et contrôles avant enduit —, car cette partie invisible après la livraison décide si le disjoncteur saute, si l'on inonde les voisins et si la moisissure apparaît dans la salle de bains. Nous expliquons dans quel ordre on pose l'électricité, la plomberie, la ventilation et le plancher chauffant, quelles solutions sont courantes selon la pratique du marché et ce qu'il faut vérifier tant que les murs ne sont pas enduits.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/fr/renovation-cle-en-main",
   "Rénovation clé en main"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Réseaux techniques d'un appartement : pourquoi l'ordre compte plus que les marques"
+   "Dans quel ordre pose-t-on les réseaux techniques d'un appartement ?"
   ],
   [
    "p",
-   "Un mitigeur haut de gamme n'empêche pas une fuite sur un raccord mal fait, et un bon câble ne sauve pas un circuit surchargé. La plupart des problèmes ne viennent pas des matériaux, mais d'un mauvais enchaînement et de l'absence de contrôles avant fermeture. C'est pourquoi, dans une rénovation clé en main, les réseaux suivent un projet et un ordre clair : d'abord les décisions sur le papier, puis la pose, puis les essais, et seulement ensuite enduit, chape et finitions."
+   "Les réseaux se posent dans un ordre strict, avec des contrôles avant la fermeture des murs : la plupart des problèmes ne viennent pas des matériaux mais d'un mauvais enchaînement, et un mitigeur haut de gamme n'empêche pas une fuite sur un raccord mal fait, pas plus qu'un bon câble ne sauve un circuit surchargé. C'est pourquoi, dans une rénovation clé en main, les réseaux suivent un projet et un ordre clair : d'abord les décisions sur le papier, puis la pose, puis les essais, et seulement ensuite enduit, chape et finitions."
   ],
   [
    "ol",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Étape 0. Le projet : que décider avant la première saignée"
+   "Que décider dans l'étude avant la première saignée ?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Électricité"
+   "Comment répartir l'électricité dans un appartement ?"
   ],
   [
    "h3",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Plomberie et évacuations"
+   "Comment réaliser la plomberie et les évacuations ?"
   ],
   [
    "h3",
@@ -180,7 +181,7 @@
   ],
   [
    "h2",
-   "Ventilation et climatisation"
+   "Comment installer la ventilation et la climatisation ?"
   ],
   [
    "p",
@@ -201,7 +202,7 @@
   ],
   [
    "h2",
-   "Plancher chauffant"
+   "Quel plancher chauffant choisir en appartement ?"
   ],
   [
    "p",
@@ -225,7 +226,7 @@
   ],
   [
    "h2",
-   "Comment les réseaux influencent la hauteur sous plafond et les niveaux de sol"
+   "Comment les réseaux influencent-ils la hauteur sous plafond et les niveaux de sol ?"
   ],
   [
    "p",
@@ -237,11 +238,11 @@
   ],
   [
    "h2",
-   "Documents et normes : ce que vous devez recevoir"
+   "Quels documents devez-vous recevoir après la rénovation ?"
   ],
   [
    "p",
-   "Les travaux sont réalisés conformément aux normes de construction en vigueur, aux règles des installations électriques et aux prescriptions des fabricants. Pour vous, maître d'ouvrage, la liste des normes compte moins que les documents qui restent après la rénovation. Vous en aurez besoin quand, quelques années plus tard, il faudra fixer une étagère, changer le chauffe-eau ou trouver une fuite."
+   "Après la rénovation, vous devez recevoir les plans de récolement, les photos des travaux cachés, le schéma du tableau, les procès-verbaux de mesures et les notices des équipements ; les travaux eux-mêmes sont réalisés conformément aux normes de construction en vigueur, aux règles des installations électriques et aux prescriptions des fabricants. Vous en aurez besoin quand, quelques années plus tard, il faudra fixer une étagère, changer le chauffe-eau ou trouver une fuite."
   ],
   [
    "ul",
@@ -259,7 +260,7 @@
   ],
   [
    "h2",
-   "Erreurs fréquentes sur les réseaux d'un appartement"
+   "Quelles erreurs commet-on sur les réseaux d'un appartement ?"
   ],
   [
    "ul",

@@ -5,8 +5,9 @@
  "translation_of": "inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit",
  "seo_title": "Instalações do apartamento: ordem e verificações",
  "description": "Instalações num apartamento chave na mão: projeto, eletricidade e quadro, águas e esgotos, ventilação, ar condicionado, piso radiante. Ordem e verificações.",
- "lead": "As instalações técnicas são a parte da obra que não se vê depois da entrega, mas são elas que decidem se o disjuntor dispara, se inunda o vizinho e se aparece bolor na casa de banho. Explicamos por que ordem se instalam a eletricidade, as águas e esgotos, a ventilação e o piso radiante, que soluções são habituais segundo a prática do mercado e o que verificar enquanto as paredes ainda não estão rebocadas.",
+ "lead": "As instalações técnicas de um apartamento fazem-se por uma ordem rigorosa — projeto, eletricidade, canalização, ventilação, piso radiante e verificações antes do reboco —, porque esta parte da obra, invisível depois da entrega, decide se o disjuntor dispara, se inunda o vizinho e se aparece bolor na casa de banho. Explicamos por que ordem se instalam a eletricidade, as águas e esgotos, a ventilação e o piso radiante, que soluções são habituais segundo a prática do mercado e o que verificar enquanto as paredes ainda não estão rebocadas.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pt/remodelacao-chave-na-mao",
   "Remodelação chave na mão"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Instalações técnicas: porque a ordem conta mais do que as marcas"
+   "Por que ordem se fazem as instalações técnicas de um apartamento?"
   ],
   [
    "p",
-   "Uma torneira cara não evita uma fuga numa ligação mal feita, nem um bom cabo salva um circuito sobrecarregado. A maior parte dos problemas não vem dos materiais, mas de uma sequência errada e da falta de verificações antes de fechar. Por isso, numa remodelação chave na mão, as instalações seguem um projeto e uma ordem clara: primeiro as decisões no papel, depois a instalação, depois os ensaios e só então reboco, betonilha e acabamentos."
+   "As instalações fazem-se por uma sequência rigorosa, com verificações antes de fechar as paredes: a maior parte dos problemas não vem dos materiais, mas de uma ordem errada, e uma torneira cara não evita uma fuga numa ligação mal feita, nem um bom cabo salva um circuito sobrecarregado. Por isso, numa remodelação chave na mão, as instalações seguem um projeto e uma ordem clara: primeiro as decisões no papel, depois a instalação, depois os ensaios e só então reboco, betonilha e acabamentos."
   ],
   [
    "ol",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Fase 0. Projeto: o que decidir antes do primeiro roço"
+   "O que decidir no projeto antes do primeiro roço?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Eletricidade"
+   "Como se distribui a eletricidade num apartamento?"
   ],
   [
    "h3",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Águas e esgotos"
+   "Como se fazem a canalização e os esgotos?"
   ],
   [
    "h3",
@@ -180,7 +181,7 @@
   ],
   [
    "h2",
-   "Ventilação e ar condicionado"
+   "Como instalar ventilação e climatização?"
   ],
   [
    "p",
@@ -201,7 +202,7 @@
   ],
   [
    "h2",
-   "Piso radiante"
+   "Que piso radiante se usa num apartamento?"
   ],
   [
    "p",
@@ -225,7 +226,7 @@
   ],
   [
    "h2",
-   "Como as instalações afetam o pé-direito e os níveis dos pavimentos"
+   "Como influenciam as instalações o pé-direito e os níveis de piso?"
   ],
   [
    "p",
@@ -237,11 +238,11 @@
   ],
   [
    "h2",
-   "Documentos e normas: o que deve receber"
+   "Que documentos deve receber depois da obra?"
   ],
   [
    "p",
-   "Os trabalhos são executados de acordo com as normas de construção em vigor, as regras das instalações elétricas e as exigências dos fabricantes. Para si, como dono de obra, mais do que a lista de normas importam os documentos que ficam depois da obra. Vão ser precisos quando, daqui a uns anos, quiser pendurar uma prateleira, trocar o termoacumulador ou encontrar uma fuga."
+   "Depois da obra deve receber as telas finais, fotos dos trabalhos ocultos, o esquema do quadro, os relatórios de medições e as fichas dos equipamentos; os trabalhos são executados de acordo com as normas de construção em vigor, as regras das instalações elétricas e as exigências dos fabricantes. Vão ser precisos quando, daqui a uns anos, quiser pendurar uma prateleira, trocar o termoacumulador ou encontrar uma fuga."
   ],
   [
    "ul",
@@ -259,7 +260,7 @@
   ],
   [
    "h2",
-   "Erros comuns nas instalações de um apartamento"
+   "Que erros se cometem nas instalações de um apartamento?"
   ],
   [
    "ul",

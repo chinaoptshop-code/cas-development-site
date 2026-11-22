@@ -5,8 +5,9 @@
  "translation_of": "inzhenerni-merezhi-v-kvartyri-pid-kliuch-poriadok-robit",
  "seo_title": "Haustechnik in der Wohnung: Reihenfolge und Prüfungen",
  "description": "Haustechnik bei der Komplettsanierung: Planung, Elektrik und Verteiler, Sanitär und Abwasser, Lüftung, Klimaanlage, Fußbodenheizung. Reihenfolge und Prüfungen.",
- "lead": "Die Haustechnik ist der Teil der Sanierung, den man nach der Übergabe nicht sieht – aber sie entscheidet, ob die Sicherung fliegt, ob der Nachbar unter Wasser steht und ob im Bad Schimmel wächst. Wir erklären, in welcher Reihenfolge Elektrik, Sanitär, Lüftung und Fußbodenheizung verlegt werden, welche Lösungen marktüblich sind und was man prüfen sollte, solange die Wände noch nicht verputzt sind.",
+ "lead": "Die Haustechnik einer Wohnung wird in fester Reihenfolge verlegt – Planung, Elektro, Sanitär, Lüftung, Fußbodenheizung und Prüfungen vor dem Putz –, denn dieser nach der Übergabe unsichtbare Teil der Sanierung entscheidet, ob die Sicherung fliegt, ob der Nachbar unter Wasser steht und ob im Bad Schimmel wächst. Wir erklären, in welcher Reihenfolge Elektrik, Sanitär, Lüftung und Fußbodenheizung verlegt werden, welche Lösungen marktüblich sind und was man prüfen sollte, solange die Wände noch nicht verputzt sind.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/renovierung-schluesselfertig",
   "Schlüsselfertige Renovierung"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Haustechnik in der Wohnung: warum die Reihenfolge wichtiger ist als Marken"
+   "In welcher Reihenfolge wird die Haustechnik in der Wohnung verlegt?"
   ],
   [
    "p",
-   "Eine teure Armatur schützt nicht vor einem Leck an einer unsauberen Verbindung, und gutes Kabel nicht vor einem überlasteten Stromkreis. Die meisten Probleme entstehen nicht durch Material, sondern durch falsche Abfolge und fehlende Prüfungen vor dem Verschließen. Deshalb folgt die Haustechnik bei einer Komplettsanierung einem Plan und einer klaren Reihenfolge: erst Entscheidungen auf Papier, dann Verlegung, dann Prüfung – und erst danach Putz, Estrich und Ausbau."
+   "Die Haustechnik wird in fester Abfolge verlegt, mit Prüfungen vor dem Verschließen der Wände: Die meisten Probleme entstehen nicht durch Material, sondern durch falsche Reihenfolge – eine teure Armatur schützt nicht vor einem Leck an einer unsauberen Verbindung, und gutes Kabel nicht vor einem überlasteten Stromkreis. Deshalb folgt die Haustechnik bei einer Komplettsanierung einem Plan und einer klaren Reihenfolge: erst Entscheidungen auf Papier, dann Verlegung, dann Prüfung – und erst danach Putz, Estrich und Ausbau."
   ],
   [
    "ol",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Phase 0. Planung: was vor dem ersten Schlitz feststehen muss"
+   "Was muss vor dem ersten Schlitz geplant sein?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Elektrik"
+   "Wie wird die Elektrik in der Wohnung verteilt?"
   ],
   [
    "h3",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Sanitär und Abwasser"
+   "Wie werden Sanitär und Abwasser in der Wohnung ausgeführt?"
   ],
   [
    "h3",
@@ -180,7 +181,7 @@
   ],
   [
    "h2",
-   "Lüftung und Klimatisierung"
+   "Wie richtet man Lüftung und Klimaanlage ein?"
   ],
   [
    "p",
@@ -201,7 +202,7 @@
   ],
   [
    "h2",
-   "Fußbodenheizung"
+   "Welche Fußbodenheizung kommt in Wohnungen zum Einsatz?"
   ],
   [
    "p",
@@ -225,7 +226,7 @@
   ],
   [
    "h2",
-   "Wie die Haustechnik Raumhöhen und Bodenniveaus beeinflusst"
+   "Wie beeinflusst die Haustechnik Deckenhöhen und Bodenniveaus?"
   ],
   [
    "p",
@@ -237,11 +238,11 @@
   ],
   [
    "h2",
-   "Unterlagen und Normen: was Sie erhalten sollten"
+   "Welche Unterlagen sollten Sie nach der Sanierung erhalten?"
   ],
   [
    "p",
-   "Die Arbeiten werden nach geltenden Baunormen, den Regeln für elektrische Anlagen und den Vorgaben der Gerätehersteller ausgeführt. Für Sie als Bauherr sind weniger die Normenlisten wichtig als die Unterlagen, die nach der Sanierung bleiben. Sie brauchen sie, wenn Sie in ein paar Jahren ein Regal aufhängen, den Warmwasserspeicher tauschen oder ein Leck suchen."
+   "Nach der Sanierung sollten Sie Bestandspläne, Fotos der verdeckten Arbeiten, den Verteilerplan, Messprotokolle und Gerätepässe erhalten; die Arbeiten selbst werden nach geltenden Baunormen, den Regeln für elektrische Anlagen und den Vorgaben der Gerätehersteller ausgeführt. Sie brauchen sie, wenn Sie in ein paar Jahren ein Regal aufhängen, den Warmwasserspeicher tauschen oder ein Leck suchen."
   ],
   [
    "ul",
@@ -259,7 +260,7 @@
   ],
   [
    "h2",
-   "Typische Fehler in der Haustechnik einer Wohnung"
+   "Welche Fehler passieren bei der Haustechnik einer Wohnung?"
   ],
   [
    "ul",
