@@ -5,8 +5,9 @@
  "title": "Budowa domu pod klucz w obwodzie kijowskim: etapy i budżet",
  "seo_title": "Budowa domu pod klucz: etapy i budżet",
  "description": "Budowa domu jednorodzinnego pod klucz w obwodzie kijowskim: od projektu do przeprowadzki. Etapy, składniki budżetu, ceny od $600/m², pod klucz od $1 100/m².",
- "lead": "Dom to największa inwestycja większości rodzin. Wyjaśniamy, jak przebiega budowa pod klucz od działki do przeprowadzki, z czego składa się budżet i jak go nie przekroczyć.",
+ "lead": "Dom to największa inwestycja większości rodzin: budowa kosztuje od $600/m², a z wykończeniem pod klucz od $1 100/m². Wyjaśniamy, jak przebiega budowa pod klucz od działki do przeprowadzki, z czego składa się budżet i jak go nie przekroczyć.",
  "date": "2026-10-22",
+ "modified": "2026-11-22",
  "service": [
   "/pl/budowa-domow",
   "Budowa domów"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ile to kosztuje"
+   "Ile kosztuje budowa domu pod klucz?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "Etapy budowy"
+   "Jakie są etapy budowy domu?"
   ],
   [
    "ol",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Z czego składa się budżet"
+   "Z czego składa się budżet budowy?"
   ],
   [
    "ul",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Dlaczego zaczynać od projektu"
+   "Dlaczego budowę zaczyna się od projektu?"
   ],
   [
    "p",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "Jak nie przekroczyć budżetu"
+   "Jak nie przekroczyć budżetu budowy?"
   ],
   [
    "ul",
@@ -91,7 +92,7 @@
   ],
   [
    "h2",
-   "Działka: co sprawdzić przed projektem"
+   "Co sprawdzić na działce przed projektem?"
   ],
   [
    "ul",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Materiały ścian"
+   "Jaki materiał ścian wybrać dla domu?"
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Instalacje — serce domu"
+   "Jakich instalacji potrzebuje dom jednorodzinny?"
   ],
   [
    "p",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Raporty i kontrola"
+   "Jak kontrolować postęp budowy?"
   ],
   [
    "p",
@@ -137,7 +138,7 @@
   ],
   [
    "h2",
-   "Przykład wyliczenia"
+   "Ile kosztuje dom 150 m²?"
   ],
   [
    "p",
@@ -145,7 +146,7 @@
   ],
   [
    "h2",
-   "Co warto ustalić na starcie"
+   "Co ustalić na starcie budowy?"
   ],
   [
    "ul",
