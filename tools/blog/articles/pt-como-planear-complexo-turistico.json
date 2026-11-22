@@ -7,6 +7,7 @@
  "description": "Como planear um complexo turístico ou glamping: formato, terreno, plano geral, casas A-frame ou modulares, restaurante e spa, construção chave na mão e custo.",
  "lead": "Um complexo turístico é um negócio em que a arquitetura influencia diretamente a ocupação e o gasto médio. Veja como planear um complexo e passar da ideia à abertura sem custos desnecessários.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pt/complexo-turistico-chave-na-mao",
   "Complexo turístico chave na mão"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Formato e hóspede"
+   "1. Para que hóspede se constrói o complexo?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "2. O terreno e o plano geral"
+   "2. Como planear o terreno e o plano geral?"
   ],
   [
    "ul",
@@ -54,7 +55,7 @@
   ],
   [
    "h2",
-   "3. As casas"
+   "3. Que casas escolher?"
   ],
   [
    "p",
@@ -88,7 +89,7 @@
   ],
   [
    "h2",
-   "4. Restaurante, spa e espaços comuns"
+   "4. Para que servem restaurante, spa e espaços comuns?"
   ],
   [
    "p",
@@ -105,7 +106,7 @@
   ],
   [
    "h2",
-   "5. Infraestruturas e paisagismo"
+   "5. Quando planear infraestruturas e arranjos exteriores?"
   ],
   [
    "p",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "6. Fases até à abertura"
+   "6. Como abrir o complexo por fases?"
   ],
   [
    "ol",
@@ -145,7 +146,7 @@
   ],
   [
    "h2",
-   "Quanto custa um complexo turístico"
+   "Quanto custa um complexo de férias?"
   ],
   [
    "p",
@@ -157,7 +158,7 @@
   ],
   [
    "h2",
-   "Erros comuns ao criar um complexo"
+   "Que erros se cometem ao criar um complexo?"
   ],
   [
    "ul",
