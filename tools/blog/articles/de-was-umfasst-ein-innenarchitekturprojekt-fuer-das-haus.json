@@ -7,6 +7,7 @@
  "description": "Was ein Innenarchitekturprojekt fürs Haus umfasst: Aufmaß, Grundrisse, 3D, Pläne für Treppe und Decken, Licht, Spezifikationen und Kostenschätzung. Ab $30/m².",
  "lead": "Ein Haus ist komplexer als eine Wohnung: Treppe, Luftraum, Kamin, Heizraum, Terrasse, mehrere Bäder. Hier steht, was ein Innenarchitekturprojekt für das Haus umfasst, wie es sich vom Architekturprojekt unterscheidet und welche Unterlagen Bauleute und Tischler brauchen, um ohne Raten zu arbeiten.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/de/hausinterieur",
   "Innenarchitektur für das Haus"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Innenarchitektur und Architekturprojekt"
+   "Was unterscheidet Design- und Architekturprojekt?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Aufmaß, Briefing und Geschossgrundrisse"
+   "Womit beginnt das Designprojekt eines Hauses?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Konzept und 3D jedes Raums"
+   "Was umfassen Konzept und 3D der Räume?"
   ],
   [
    "p",
@@ -66,7 +67,7 @@
   ],
   [
    "h2",
-   "Ausführungspläne: was beim Haus dazukommt"
+   "Welche Ausführungspläne braucht ein Haus?"
   ],
   [
    "p",
@@ -94,7 +95,7 @@
   ],
   [
    "h2",
-   "Licht, Maßmöbel und Spezifikation"
+   "Was gehört zu Lichtplan, Maßmöbeln und Spezifikation?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Checkliste für das Hausprojekt"
+   "Was gehört in das Designprojekt eines Hauses?"
   ],
   [
    "ul",
@@ -123,7 +124,7 @@
   ],
   [
    "h2",
-   "Was ein Innenarchitekturprojekt fürs Haus kostet"
+   "Was kostet das Designprojekt eines Hauses?"
   ],
   [
    "p",

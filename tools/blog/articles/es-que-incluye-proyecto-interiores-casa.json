@@ -7,6 +7,7 @@
  "description": "Qué incluye el proyecto de interiores de una casa: medición, plantas, 3D, planos de escalera y techos, luz, especificaciones y presupuesto. Desde $30/m².",
  "lead": "Una casa es más compleja que un piso: escalera, doble altura, chimenea, sala de calderas, terraza, varios baños. Explicamos qué incluye el proyecto de interiores de una casa, en qué se diferencia del proyecto arquitectónico y qué documentos necesitan constructores y carpinteros para trabajar sin adivinar.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/es/diseno-interiores-casa",
   "Diseño de interiores de casa"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Proyecto de interiores y proyecto arquitectónico"
+   "¿En qué se diferencia el proyecto de diseño del arquitectónico?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Medición, brief y plantas"
+   "¿Por dónde empieza el proyecto de diseño de una casa?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Concepto y 3D de cada estancia"
+   "¿Qué incluyen el concepto y el 3D de cada estancia?"
   ],
   [
    "p",
@@ -66,7 +67,7 @@
   ],
   [
    "h2",
-   "Planos de ejecución: lo específico de una casa"
+   "¿Qué planos de ejecución son propios de una casa?"
   ],
   [
    "p",
@@ -94,7 +95,7 @@
   ],
   [
    "h2",
-   "Iluminación, muebles a medida y especificación"
+   "¿Qué abarcan iluminación, muebles a medida y especificación?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Checklist del proyecto de una casa"
+   "¿Qué debe contener el proyecto de diseño de una casa?"
   ],
   [
    "ul",
@@ -123,7 +124,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta el proyecto de interiores de una casa"
+   "¿Cuánto cuesta el proyecto de diseño de una casa?"
   ],
   [
    "p",

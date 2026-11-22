@@ -7,6 +7,7 @@
  "description": "O que inclui o projeto de interiores de uma moradia: levantamento, plantas, 3D, escada e tetos, iluminação, especificações e orçamento. Desde $30/m².",
  "lead": "Uma moradia é mais complexa do que um apartamento: escada, pé-direito duplo, lareira, casa das máquinas, terraço, várias casas de banho. Explicamos o que inclui o projeto de interiores de uma moradia, em que difere do projeto de arquitetura e que documentos permitem a construtores e carpinteiros trabalhar sem adivinhar.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/pt/design-de-interiores-moradia",
   "Design de interiores de moradia"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Projeto de interiores e projeto de arquitetura"
+   "Em que difere o projeto de design do de arquitetura?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Levantamento, briefing e plantas"
+   "Por onde começa o projeto de design de uma moradia?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Conceito e 3D de cada divisão"
+   "O que incluem o conceito e o 3D de cada divisão?"
   ],
   [
    "p",
@@ -66,7 +67,7 @@
   ],
   [
    "h2",
-   "Desenhos de execução: o que é próprio de uma moradia"
+   "Que desenhos de execução são próprios de uma moradia?"
   ],
   [
    "p",
@@ -94,7 +95,7 @@
   ],
   [
    "h2",
-   "Iluminação, móveis por medida e especificação"
+   "O que abrangem iluminação, móveis por medida e especificação?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Checklist do projeto de moradia"
+   "O que deve conter o projeto de design de uma moradia?"
   ],
   [
    "ul",
@@ -123,7 +124,7 @@
   ],
   [
    "h2",
-   "Quanto custa o projeto de interiores de uma moradia"
+   "Quanto custa o projeto de design de uma moradia?"
   ],
   [
    "p",

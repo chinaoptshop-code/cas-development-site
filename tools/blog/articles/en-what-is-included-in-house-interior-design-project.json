@@ -7,6 +7,7 @@
  "description": "What a house interior design project includes: survey, floor plans, 3D, stair and ceiling drawings, lighting, specifications and estimate. Price from $30/m².",
  "lead": "A house is more complex than an apartment: stairs, double-height spaces, a fireplace, a boiler room, a terrace, several bathrooms. Here is what a house interior design project includes, how it differs from the architectural project and which documents builders and joiners need to work without guessing.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/en/house-interior-design",
   "House interior design"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Design project vs architectural project"
+   "How does a design project differ from an architectural one?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Survey, brief and floor plans"
+   "Where does a house design project start?"
   ],
   [
    "p",
@@ -49,7 +50,7 @@
   ],
   [
    "h2",
-   "Concept and 3D of every room"
+   "What do the concept and 3D of each room include?"
   ],
   [
    "p",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Working drawings: what is specific to a house"
+   "Which working drawings are specific to a house?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Lighting, bespoke furniture and specification"
+   "What do the lighting plan, bespoke furniture and specification cover?"
   ],
   [
    "p",
@@ -118,7 +119,7 @@
   ],
   [
    "h2",
-   "Checklist: what a house design project should contain"
+   "What should a house design project contain?"
   ],
   [
    "ul",
@@ -139,7 +140,7 @@
   ],
   [
    "h2",
-   "How much a house design project costs"
+   "How much does a house design project cost?"
   ],
   [
    "p",
