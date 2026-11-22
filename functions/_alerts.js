@@ -4,6 +4,7 @@
 // Таблиці й поля — migrations/0006_lead_alerts.sql; інструкція — tools/admin/README.md, «Сповіщення про заявки».
 // TELEGRAM_API_BASE — лише для локальних тестів (мок Bot API); у продакшні не задається.
 import { hmac, sha256 } from './_lib.js';
+import { refHost, refHostLabel } from './_refhost.js';
 
 export const CRM_URL = 'https://cas-develop.com/kabinet/admin#crm';
 export const SLA_MIN = 15;        // перше нагадування, якщо заявку не взяли за 15 хв
@@ -82,6 +83,8 @@ export function leadText(o, x = {}) {
   const order = o.kind === 'order';
   const utm = x.utm_source ? [x.utm_source, x.utm_medium, x.utm_campaign].filter(Boolean).join(' / ') : '';
   const page = x.page && x.page !== o.source ? x.page : '';
+  // зовнішнє джерело візиту (orders.ref_host, migrations/0019): «Google (google.com.ua)», невідомий сайт — сам хост
+  const rh = refHost(o.ref_host || x.ref_host || ''), rhn = rh && refHostLabel(rh), rhLabel = rh ? (rhn === rh ? rh : `${rhn} (${rh})`) : '';
   let comment = x.message != null ? x.message : o.comment;
   if (x.area && x.message != null) comment = [comment, `Площа: ${x.area}`].filter(Boolean).join('\n');
   return [
@@ -95,6 +98,7 @@ export function leadText(o, x = {}) {
     x.form ? `Форма: ${esc(cut(x.form, 40))}` : null,
     comment ? `💬 ${esc(cut(comment, 1500))}` : null,
     utm ? `UTM: ${esc(cut(utm, 200))}` : null,
+    rh ? `Джерело: ${esc(rhLabel)}` : null,
     `🕒 ${kyiv(parseUtc(o.created_at)).hm}, ${kyiv(parseUtc(o.created_at)).dmy} (Київ)`,
   ].filter(Boolean).join('\n');
 }

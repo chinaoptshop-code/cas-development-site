@@ -51,7 +51,7 @@ await api('OWNER', 'POST', '/api/admin/projects', { type: 'payment', project_id:
 await api('OWNER', 'POST', '/api/admin/projects', { type: 'payment', project_id: P1, title: 'Після чорнових', amount: 15000, due_date: iso(-1) });
 for (const [i, s] of ['Ремонт квартири', 'Дизайн інтерʼєру', 'Будівництво будинку'].entries())
   await call(env, 'POST', '/api/leads', { body: { name: 'Лід ' + (i + 1), phone: '067111223' + i, service: s, source: 'cas-develop.com/remont-kvartyr-kyiv#prices' }, headers: { ip: '10.0.1.' + i } });
-await call(env, 'POST', '/api/leads', { body: { name: 'Лід з кейсу', phone: '0671112299', service: 'Дизайн інтерʼєру', source: 'cas-develop.com/dyzain-interieru-kyiv', ref_path: '/proekty/monpark' }, headers: { ip: '10.0.1.9' } });
+await call(env, 'POST', '/api/leads', { body: { name: 'Лід з кейсу', phone: '0671112299', service: 'Дизайн інтерʼєру', source: 'cas-develop.com/dyzain-interieru-kyiv', ref_path: '/proekty/monpark', ref_host: 'www.google.com.ua' }, headers: { ip: '10.0.1.9' } });
 // бот пошуку: партнери й заявка «В CRM» (functions/api/bot/*)
 for (const b of [{ name: 'Бригада Тест', type: 'crew', city: 'Київ', tg: '@test_crew_ua', tags: ['плитка'], source_name: 'Тестова група', source_url: 'https://t.me/test_group/1' },
   { company: 'ТОВ «Тест Постач»', type: 'supplier', city: 'Львів', site: 'https://supplier.example.com' }])
@@ -184,6 +184,16 @@ await check('owner-crm-ref', 'OWNER', '/kabinet/admin#crm', W, async p => {
   const t = await p.textContent('[data-list]');
   if (!/Лід з кейсу/.test(t) || /Лід 1/.test(t)) throw new Error('фільтр за сторінкою-джерелом не працює');
   await p.locator('[data-list] :text("Лід з кейсу")').first().click(); await see(p, 'dialog[open]', 'Сторінка-джерело: /proekty/monpark');
+  await see(p, 'dialog[open]', 'Зовнішнє джерело: Google \\(google\\.com\\.ua\\)');
+});
+// зовнішнє джерело візиту (orders.ref_host): позначка «↗ Google» у списку, фільтр «Звідки прийшли»
+await check('owner-crm-rh', 'OWNER', '/kabinet/admin#crm', W, async p => {
+  await see(p, '[data-list]', '↗ Google');
+  await p.evaluate(() => { const d = document.querySelector('details.crm-more'); if (d) d.open = true; });
+  await p.selectOption('[data-f=rh]', 'google'); await p.waitForTimeout(600);
+  const t = await p.textContent('[data-list]');
+  if (!/Лід з кейсу/.test(t) || /Лід 1/.test(t)) throw new Error('фільтр «Звідки прийшли: Google» не працює');
+  await p.selectOption('[data-f=rh]', ''); await p.waitForTimeout(300);
 });
 // CRM: швидкі фільтри (один дотик), «Взяти в роботу» на новій заявці — без відкриття картки; у картці — дати «Завтра/+3 дні»
 await check('owner-crm-quick', 'OWNER', '/kabinet/admin#crm', W, async p => {

@@ -4,6 +4,8 @@
 // GET  ?kind=&status=&q=&assignee=&staff=<id|none>&city=&min=&max=&due=1&overdue=1&place=&ref=&from=&to=&format=csv — список
 //   (CSV — право export; place — місце форми, див. placeOf; from / to — дати YYYY-MM-DD за Києвом, включно;
 //   ref — сторінка-джерело orders.ref_path, migrations/0011: поле, фільтр і колонка CSV — лише з leads.view_all, тобто власник і менеджер;
+//   rh — зовнішнє джерело візиту orders.ref_host, migrations/0019: ключ із REF_SOURCES (google, chatgpt, instagram…), any — будь-яке,
+//   other — не з відомих; у рядку — ref_host і людська назва ref_src, колонка CSV «Зовнішнє джерело» — так само лише з leads.view_all;
 //   source=finder або place=finder — заявки бота пошуку (POST /api/bot/leads, orders.source = 'finder', migrations/0013))
 //   Довгі списки (19.11.2026): &limit=<1…1000> (без нього — 1000) і &before=<id останнього рядка> — наступна сторінка (нові зверху);
 //   відповідь: rows, total (усього за фільтром), more (є ще), next (id для before), waiting (нових без відповіді за фільтром),
@@ -28,6 +30,7 @@ import { DESIGN, DMIN, RATES, cost, rateOf } from '../../_rates.js';
 import { kpText } from '../../_client_msgs.js';
 import { TOO_MANY, staffLimited } from '../../_rate.js';
 import { conflict, lastChange, leadVer } from '../../_ver.js';
+import { refHostLabel, refHostWhere } from '../../_refhost.js';
 
 // Пропозиція з заявки: тип послуги → ставка «від». Порядок — пріоритетні напрями студії (Михайло 18.11.2026): дизайн-проєкт,
 // ремонт під ключ, будівництво будинку, комерція; далі — решта. service — тип проєкту при конверсії (functions/api/admin/projects.js).
@@ -87,6 +90,8 @@ function where(p, args, x) {
   if (ref && x && x.can('leads.view_all')) { // точний шлях або початок («/proekty/» — усі кейси); LIKE-символи екрануємо
     sql += " AND o.ref_path LIKE ? ESCAPE '\\'"; args.push(ref.slice(0, 160).replace(/[\\%_]/g, c => '\\' + c) + (ref.endsWith('/') ? '%' : ''));
   }
+  const rh = p('rh') && x && x.can('leads.view_all') ? refHostWhere(p('rh')) : null;
+  if (rh) { sql += rh.sql; args.push(...rh.args); }
   const from = date(p('from')), to = date(p('to'));
   if (from) { sql += ' AND o.created_at >= ?'; args.push(sqlTime(kyivMidnight(from))); }
   if (to) { sql += ' AND o.created_at < ?'; args.push(sqlTime(new Date(kyivMidnight(to).getTime() + 86400000))); }
@@ -123,7 +128,7 @@ async function stats(env, days) {
     reaction: { n: r.length, avg: r.length ? Math.round(r.reduce((s, x) => s + x, 0) / r.length) : null,
       within: r.filter(x => x <= SLA_MIN).length, sla: SLA_MIN },
     funnel: group(() => 'all')[0] || null,
-    by_place: group(placeOf), by_page: group(pageOf, 40), by_ref: group(o => o.ref_path || null, 40), by_form: group(o => o.form || null, 20), by_lang: group(o => o.lang || null, 12),
+    by_place: group(placeOf), by_page: group(pageOf, 40), by_ref: group(o => o.ref_path || null, 40), by_host: group(o => refHostLabel(o.ref_host), 40), by_form: group(o => o.form || null, 20), by_lang: group(o => o.lang || null, 12),
     by_day: days_.map(d => ({ date: d, n: perDay[d] })),
   };
 }
@@ -131,7 +136,7 @@ async function stats(env, days) {
 function csv(rows) {
   const cols = [['number', 'Номер'], ['kind', 'Тип'], ['created_at', 'Створено'], ['status', 'Статус'], ['name', 'Клієнт'], ['phone', 'Телефон'],
     ['contact_tg', 'Telegram'], ['email', 'Email'], ['service', 'Послуга / товари'], ['amount', 'Сума'], ['currency', 'Валюта'], ['assignee', 'Відповідальний'],
-    ['next_contact', 'Наступний контакт'], ['reaction_min', 'Реакція, хв'], ['city', 'Місто / область'], ['source', 'Джерело'], ['place', 'Місце форми'], ['ref_path', 'Сторінка-джерело'], ['form', 'Форма'], ['lang', 'Мова'], ['utm', 'UTM'], ['taken_at', 'Взято в роботу'], ['crm_note', 'Нотатки'], ['comment', 'Коментар клієнта'], ['payment', 'Оплата'], ['delivery', 'Доставка']];
+    ['next_contact', 'Наступний контакт'], ['reaction_min', 'Реакція, хв'], ['city', 'Місто / область'], ['source', 'Джерело'], ['place', 'Місце форми'], ['ref_path', 'Сторінка-джерело'], ['ref_src', 'Зовнішнє джерело'], ['form', 'Форма'], ['lang', 'Мова'], ['utm', 'UTM'], ['taken_at', 'Взято в роботу'], ['crm_note', 'Нотатки'], ['comment', 'Коментар клієнта'], ['payment', 'Оплата'], ['delivery', 'Доставка']];
   // CSV-інʼєкція: текст з публічної форми, що починається з = + - @ (або табуляції), Excel/Таблиці виконали б як формулу —
   // додаємо апостроф (числа на кшталт суми лишаються числами)
   const cell = v => {
@@ -164,7 +169,8 @@ async function shapeRow(o, x, S) {
     kp_text: f ? kpText(f, o.lang, o.name) : null, // «Надіслати КП» — мовою заявки (10 мов)
     assignee_name: o.assignee_staff_id && S.get(o.assignee_staff_id) ? S.get(o.assignee_staff_id).name : null,
     status_label: statusLabel(o.status, o.kind), ver: await leadVer(o) }, x);
-  if (!x.can('leads.view_all')) delete r.ref_path; // сторінка-джерело — власнику й менеджеру
+  if (r.ref_host) r.ref_src = refHostLabel(r.ref_host) === r.ref_host ? r.ref_host : `${refHostLabel(r.ref_host)} (${r.ref_host})`;
+  if (!x.can('leads.view_all')) { delete r.ref_path; delete r.ref_host; delete r.ref_src; } // сторінка-джерело й зовнішнє джерело — власнику й менеджеру
   return r;
 }
 

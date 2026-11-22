@@ -7,8 +7,11 @@
 // Аналітика (migrations/0009_lead_meta.sql): form, lang, utm — окремими колонками; без міграції заявка зберігається без них.
 // Сторінка-джерело (migrations/0011_lead_ref.sql): ref_path — попередня сторінка сайту (lead-form.v1.js, з document.referrer);
 // приймаємо лише шлях того самого сайту (refPath нижче), інакше — null. Без міграції 0011 — зберігаємо без неї (fallback).
+// Зовнішнє джерело візиту (migrations/0019_lead_ref_host.sql): ref_host — хост чужого сайту, з якого прийшли (Google, ChatGPT…;
+// браузер тримає його в sessionStorage); лише валідне імʼя хоста (refHost у functions/_refhost.js), інакше — null; без 0019 — без поля.
 import { bad, hexOf, json, nextLeadNumber, readJSON, same, sha256, str } from '../_lib.js';
 import { notifyNew } from '../_alerts.js';
+import { refHost } from '../_refhost.js';
 import { ipKey, limited } from '../_rate.js';
 
 const GLOBAL_PER_HOUR = 300;
@@ -50,10 +53,11 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const number = await nextLeadNumber(env);
   const base = [number, str(d.name, 120) || 'Без імені', phone, str(d.service, 200), str(d.source || d.page, 200), comment];
   const utm = d.utm_source ? [d.utm_source, d.utm_medium, d.utm_campaign].filter(Boolean).map(x => str(x, 60)).join(' / ') : null;
-  // колонки аналітики: з 0011 — ref_path, з 0009 — form, lang, utm; якщо міграцію ще не застосовано — пробуємо коротший набір
-  const meta = [['form', str(d.form, 40)], ['lang', str(d.lang, 8)], ['utm', utm], ['ref_path', refPath(d.ref_path)]];
+  // колонки аналітики: з 0019 — ref_host, з 0011 — ref_path, з 0009 — form, lang, utm; якщо міграцію ще не застосовано — пробуємо коротший набір
+  const host = refHost(d.ref_host);
+  const meta = [['form', str(d.form, 40)], ['lang', str(d.lang, 8)], ['utm', utm], ['ref_path', refPath(d.ref_path)], ['ref_host', host]];
   let r;
-  for (const cols of [meta, meta.slice(0, 3), []]) {
+  for (const cols of [meta, meta.slice(0, 4), meta.slice(0, 3), []]) {
     try {
       r = await env.DB.prepare(`INSERT INTO orders (number, kind, name, phone, items, service, source, comment, status${cols.map(c => ', ' + c[0]).join('')})
           VALUES (?, 'lead', ?, ?, '[]', ?, ?, ?, 'new'${', ?'.repeat(cols.length)})`).bind(...base, ...cols.map(c => c[1])).run();
@@ -63,7 +67,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
   await env.DB.prepare("INSERT INTO order_events (order_id, status, author) VALUES (?, 'new', ?)").bind(r.meta.last_row_id, str(d.form, 40) || 'site').run();
   const alert = notifyNew(env, r.meta.last_row_id, {
     page: str(d.page, 300), form: str(d.form, 40), message: str(d.message, 1500) || '', area: str(d.area, 40),
-    utm_source: str(d.utm_source, 60), utm_medium: str(d.utm_medium, 60), utm_campaign: str(d.utm_campaign, 60),
+    utm_source: str(d.utm_source, 60), utm_medium: str(d.utm_medium, 60), utm_campaign: str(d.utm_campaign, 60), ref_host: host,
   });
   if (typeof waitUntil === 'function') waitUntil(alert); else await alert;
   return json({ ok: true, number });

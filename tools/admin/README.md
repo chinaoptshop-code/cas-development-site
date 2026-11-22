@@ -136,6 +136,11 @@ GitHub і створіть новий (кроки 2–6).
   інакше — `null`; колонка `orders.ref_path` — міграція `migrations/0011_lead_ref.sql` (деплой застосовує міграції сам:
   `wrangler d1 migrations apply` у `.github/workflows/deploy.yml`; до міграції заявка зберігається без поля). `crm.js`: `?ref=`,
   `by_ref` у `?stats=1`, CSV; поле вирізається без `leads.view_all`. Тести — `node tools/tests/run.mjs`, `node tools/tests/ui.mjs`.
+- **Зовнішнє джерело** (з 22.11.2026): з якого сайту людина прийшла на cas-develop.com (Google, ChatGPT, Perplexity, Instagram, Telegram…),
+  навіть без UTM — у списку позначка «↗ Google», у картці рядок «Зовнішнє джерело: Google (google.com.ua)», у фільтрах — «Звідки прийшли»,
+  в «Аналітиці» — «По зовнішніх джерелах», у CSV — колонка «Зовнішнє джерело», у Telegram — «Джерело: …»; бачать ті самі ролі, що й сторінку-джерело.
+  Браузер запамʼятовує лише хост (без шляху й параметрів) у sessionStorage на першому заході в сесії й шле його з заявкою (`ref_host`);
+  сервер (`functions/_refhost.js`) приймає лише валідне імʼя хоста, колонка `orders.ref_host` — міграція `0019_lead_ref_host.sql` (застосовує деплой).
 
 ## 8. Сповіщення про заявки (Telegram, 15 хвилин)
 

@@ -434,6 +434,74 @@ describe('Сторінка-джерело заявки (orders.ref_path, migrati
   });
 }
 
+describe('Зовнішнє джерело візиту (orders.ref_host, migrations/0019): прийом, перевірка, CRM, фільтр, CSV, Telegram, ролі');
+{
+  const he = makeEnv(freshDB());
+  const hq = (sql, ...a) => he.DB.prepare(sql).bind(...a).first();
+  const o = await addClient(he, { id: 111, name: 'Власник' }), m = await addClient(he, { id: 222, name: 'Менеджер' });
+  const hc = { O: await login(he, o), M: await login(he, m) };
+  await call(he, 'GET', '/api/me', { cookie: hc.M });
+  let n = 0;
+  const lead = async host => {
+    n++;
+    const r = await call(he, 'POST', '/api/leads', { body: { phone: '06800000' + String(10 + n), service: 'Дизайн', source: 'cas-develop.com/dyzain-interieru-kyiv', form: 'landing', ref_path: '/proekty/monpark', ref_host: host }, headers: { ip: '10.8.0.' + n } });
+    eq(r.status, 200, 'заявка прийнята');
+    return hq('SELECT id, ref_host, ref_path FROM orders WHERE number = ?', r.data.number);
+  };
+  let G, C, E;
+  await it('валідний хост зберігається (нижній регістр, без www.); Telegram — рядок «Джерело: …»', async () => {
+    bot.reset();
+    G = await lead('www.Google.com.ua'); eq(G.ref_host, 'google.com.ua'); eq(G.ref_path, '/proekty/monpark');
+    ok(bot.calls.some(c => c.method === 'sendMessage' && /Джерело: Google \(google\.com\.ua\)/.test(c.text)), 'Telegram: Джерело: Google (google.com.ua)');
+    C = await lead('chatgpt.com'); eq(C.ref_host, 'chatgpt.com');
+    E = await lead('example.org'); eq(E.ref_host, 'example.org');
+    bot.reset(); await lead('l.instagram.com');
+    ok(bot.calls.some(c => /Джерело: Instagram \(l\.instagram\.com\)/.test(c.text || '')), 'Telegram: Instagram');
+    bot.reset(); await lead(undefined);
+    ok(bot.calls.length && bot.calls.every(c => !/Джерело:/.test(c.text || '')), 'без джерела — без рядка');
+  });
+  await it('сміття → null: скрипти, шляхи, схеми, порт, IP, задовге, наш домен, не рядок (заявка зберігається)', async () => {
+    for (const bad of ['<script>alert(1)</script>', 'evil.com/path', 'https://evil.com', 'evil.com:8080', 'evil.com?x=1', 'ev il.com', '"><img src=x>.com', 'localhost',
+      '192.168.0.1', '-evil.com', 'evil-.com', 'a..b.com', 'x'.repeat(78) + '.com', 'cas-develop.com', 'www.cas-develop.com', 'x.pages.dev', 123, { h: 'google.com' }, ['google.com'], ''])
+      eq((await lead(bad)).ref_host, null, 'відхилено: ' + JSON.stringify(bad));
+  });
+  await it('CRM менеджера: ref_host і ref_src (людська назва), фільтр ?rh=, аналітика by_host', async () => {
+    const all = await call(he, 'GET', '/api/admin/crm?kind=lead', { cookie: hc.M });
+    eq(all.status, 200);
+    const g = all.data.rows.find(x => x.id === G.id);
+    eq(g.ref_host, 'google.com.ua'); eq(g.ref_src, 'Google (google.com.ua)');
+    eq(all.data.rows.find(x => x.id === E.id).ref_src, 'example.org', 'невідомий сайт — сам хост');
+    const ids = async q => (await call(he, 'GET', '/api/admin/crm?kind=lead&rh=' + q, { cookie: hc.M })).data.rows.map(x => x.id).sort((a, b) => a - b);
+    eq(await ids('google'), [G.id]); eq(await ids('chatgpt'), [C.id]); eq(await ids('other'), [E.id]);
+    eq((await ids('any')).length, 4, 'any — усі з джерелом');
+    eq((await ids('nonsense')).length, n, 'невідомий ключ — фільтр ігнорується');
+    const st = await call(he, 'GET', '/api/admin/crm?stats=1', { cookie: hc.O });
+    ok(st.data.by_host.some(x => x.key === 'Google' && x.n === 1) && st.data.by_host.some(x => x.key === 'example.org'), 'by_host');
+  });
+  await it('CSV: колонка «Зовнішнє джерело» з назвою й хостом', async () => {
+    const c = await call(he, 'GET', '/api/admin/crm?format=csv&kind=lead', { cookie: hc.O });
+    eq(c.status, 200); ok(/;Зовнішнє джерело;/.test(c.text.split('\r\n')[0]), 'заголовок'); ok(c.text.includes(';Google (google.com.ua);'), 'значення');
+  });
+  await it('дизайнер (лише призначені): ref_host / ref_src не бачить, ?rh= ігнорується', async () => {
+    const s = await call(he, 'POST', '/api/admin/staff', { cookie: hc.O, body: { name: 'Дизайнер', role: 'designer', email: 'des2@example.com' } });
+    eq(s.status, 200);
+    hc.D = await login(he, await addClient(he, { provider: 'google', id: 'g-des2', name: 'D', email: 'des2@example.com' }));
+    eq((await call(he, 'PATCH', '/api/admin/crm', { cookie: hc.O, body: { id: G.id, assignee_staff_id: s.data.id } })).status, 200);
+    const r = await call(he, 'GET', '/api/admin/crm?rh=chatgpt', { cookie: hc.D });
+    eq(r.status, 200); eq(r.data.rows.map(x => x.id), [G.id]);
+    ok(!('ref_host' in r.data.rows[0]) && !('ref_src' in r.data.rows[0]), 'без ref_host / ref_src');
+  });
+  await it('база без міграції 0019: заявка з ref_host зберігається з ref_path (0011); без 0011 — з form (0009)', async () => {
+    for (const up of [18, 10]) {
+      const oe = makeEnv(freshDB(up));
+      const r = await call(oe, 'POST', '/api/leads', { body: { phone: '0501112288', form: 'landing', ref_path: '/proekty/monpark', ref_host: 'google.com' } });
+      eq(r.status, 200, 'міграції до ' + up);
+      const row = await oe.DB.prepare('SELECT * FROM orders WHERE number = ?').bind(r.data.number).first();
+      ok(!('ref_host' in row)); eq(row.form, 'landing'); if (up >= 11) eq(row.ref_path, '/proekty/monpark');
+    }
+  });
+}
+
 describe('CRM обʼєктів: шаблони етапів, дата здачі, графік за схемою, фільтри (migrations/0012)');
 {
   const ce = makeEnv(freshDB());

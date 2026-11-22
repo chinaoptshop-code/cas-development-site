@@ -10,6 +10,19 @@
   ev.forEach(function (e) { W.addEventListener(e, go, { capture: true, passive: true }); });
   if (document.readyState === 'complete') setTimeout(go, 0); else W.addEventListener('load', function () { setTimeout(go, 0); });
 })(window, document.documentElement);
+/* Зовнішнє джерело візиту (orders.ref_host, migrations/0019): на першому заході в сесії, якщо прийшли з чужого сайту, —
+   лише хост document.referrer (без шляху й параметрів, нижній регістр, без «www.», ≤ 80) у sessionStorage; форма заявки
+   (lead-form.v1.js) шле його як ref_host. Без cookie, localStorage і сторонніх запитів. */
+(function () {
+  try {
+    var K = 'cas_rh', S = W_ss();
+    if (!S || S.getItem(K) != null || !document.referrer) return;
+    var r = new URL(document.referrer), hn = r.hostname.toLowerCase().replace(/^www\./, '');
+    if (!/^https?:$/.test(r.protocol) || r.host === location.host || /(^|\.)cas-develop\.com$|\.pages\.dev$/.test(hn)) return;
+    if (hn.length <= 80 && /^[a-z0-9.-]+\.[a-z0-9-]+$/.test(hn)) S.setItem(K, hn);
+  } catch (x) { /* приватний режим / без sessionStorage */ }
+  function W_ss() { try { return window.sessionStorage; } catch (x) { return null; } }
+})();
 /* Формат чисел мови сторінки — той самий, що в текстах сайту (tools/site/i18n.py: num, usd): тисячі — «,» лише en ($1,100),
    інші мови — нерозривний пробіл ($1 100, 23 000 ₴); дріб — «.» en, «,» інші; $ — перед числом у всіх мовах.
    Спільні для сцен, квізу, калькулятора й Оздоби: window.casNum(n, мова?, знаків?), window.casUsd(n, мова?). */

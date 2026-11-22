@@ -57,7 +57,10 @@ await call(env, 'POST', '/api/account/addresses', { cookie: ck.C1, body: { kind:
 // ===== заявки з сайту (будь-хто) =====
 for (let i = 0; i < 4; i++) await call(env, 'POST', '/api/leads', { headers: { ip: '10.0.2.' + i }, body: {
   name: pick(i), phone: '06711122' + (30 + i), service: pick(i + 1), source: i % 2 ? 'cas-develop.com/x#' + pick(i) : pick(i + 2), page: pick(i), form: pick(i + 3),
-  lang: i ? 'uk' : 'x">', message: pick(i + 1), area: pick(i + 2), utm_source: pick(i), utm_medium: pick(i + 1), utm_campaign: pick(i + 2), ref_path: '/proekty/monpark' } });
+  lang: i ? 'uk' : 'x">', message: pick(i + 1), area: pick(i + 2), utm_source: pick(i), utm_medium: pick(i + 1), utm_campaign: pick(i + 2), ref_path: '/proekty/monpark', ref_host: i % 2 ? 'www.google.com.ua' : pick(i) } });
+// зовнішнє джерело (orders.ref_host): сервер приймає лише імʼя хоста, тож пастку кладемо прямо в базу (стара / обхідна заявка) —
+// картка, позначка, фільтр і аналітика CRM мають показати її текстом
+await DB.prepare("UPDATE orders SET ref_host = ? WHERE id = (SELECT MIN(id) FROM orders WHERE kind = 'lead')").bind(ALL).run();
 const leads = (await api('MGR', 'GET', '/api/admin/crm?kind=lead')).rows;
 // ===== CRM: нотатки, історія, пропозиція, відповідальний-дизайнер =====
 for (const [i, o] of leads.entries()) await api('MGR', 'PATCH', '/api/admin/crm', { id: o.id, crm_note: P(), manager_note: P(), note: P(), city: P(), assignee_staff_id: i % 2 ? des.id : fore.id });

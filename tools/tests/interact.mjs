@@ -772,6 +772,22 @@ await test('кейс → «Хочу так само» → лендинг: у з�
   must(b.ref_path === '/proekty/monpark', 'сторінка-джерело не окремим полем ref_path: ' + b.ref_path);
   must(b.service && !/#/.test(b.source), 'service/source: ' + JSON.stringify(b));
 });
+// зовнішнє джерело візиту (orders.ref_host, 22.11.2026): з Google на кейс → лендинг → заявка: ref_host = лише хост, у sessionStorage — так само
+await test('зовнішнє джерело: прийшли з Google → інша сторінка → у заявці ref_host лише хост; без чужого referrer — немає', '/404.html', 402, async p => {
+  await p.goto(BASE + '/proekty/monpark', { waitUntil: 'load', referer: 'https://www.Google.com.ua/search?q=remont&utm=x' }); await p.waitForTimeout(300);
+  must(await p.evaluate(() => sessionStorage.getItem('cas_rh')) === 'google.com.ua', 'sessionStorage cas_rh: ' + await p.evaluate(() => sessionStorage.getItem('cas_rh')));
+  must(await p.evaluate(() => !/cas_rh/.test(document.cookie) && localStorage.getItem('cas_rh') == null), 'джерело не лише в sessionStorage');
+  const a = p.locator('main a[href$="#zayavka"]').first();
+  await Promise.all([p.waitForNavigation(), a.click()]); await p.waitForTimeout(500);
+  await p.locator('#of').scrollIntoViewIfNeeded();
+  const b = await submitOf(p);
+  must(b.ref_host === 'google.com.ua', 'ref_host: ' + b.ref_host);
+  must(b.ref_path === '/proekty/monpark', 'ref_path поруч: ' + b.ref_path);
+  await p.evaluate(() => sessionStorage.clear());
+  await p.goto(BASE + '/remont-kvartyr-kyiv#zayavka', { waitUntil: 'load' }); await p.waitForTimeout(300);
+  const c = await submitOf(p, '0671234568');
+  must(!('ref_host' in c), 'без зовнішнього referrer — ref_host: ' + c.ref_host);
+});
 // «Гід з цінами» (16.11.2026): не друга форма, а кнопка → єдина форма #zayavka з контекстом; після 2xx — «Завантажити гід»
 for (const [path, w, re] of [['/ru/kalkulyator-remonta', 402, /гид по ценам/], ['/vartist-remontu-kvartyry-kyiv', 1440, /гід з цінами/]]) await test('«Гід з цінами»: кнопка → #zayavka, контекст guide, без другої форми; 200 — посилання на PDF', path, w, async p => {
   await p.evaluate(() => document.querySelector('.gd-slot').scrollIntoView({ block: 'center' })); await p.waitForTimeout(800);

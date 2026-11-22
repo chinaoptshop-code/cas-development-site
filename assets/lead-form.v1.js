@@ -9,6 +9,7 @@
    Після 2xx у кожному блоці успіху (#oOk, .lq-ok, .qz-ok) — рядок «Відповідаємо Пн–Пт 10:00–20:00. Якщо терміново — напишіть у Telegram» + кнопка
    Telegram (Михайло 16.11.2026; тексти — AF нижче, їх пише tools/site/leadform.py sync_js з leadform.T[мова]['after'/'gd'/'gd_msg']).
    Сторінка-джерело (попередня сторінка сайту) — окреме поле ref_path (CRM, migrations/0011_lead_ref.sql) і, як раніше, рядок «Перед цим: …» у коментарі.
+   Зовнішнє джерело візиту (хост чужого сайту з першого заходу в сесії, sessionStorage «cas_rh») — поле ref_host (migrations/0019_lead_ref_host.sql).
    Розмітку й тексти ставить tools/site/leadform.py; стилі — /assets/site-chrome.v1.css («Легка заявка»);
    сторінки без розмітки leadform.py (кабінет, динамічні) скрипт дооформлює сам.
    Мова повідомлень — з <html lang>. Надсилаємо в /api/leads (CRM + Telegram) і в n8n; успіх — лише після 2xx хоча б від одного;
@@ -160,6 +161,7 @@
     var timer = setTimeout(fail, 12000);
     data.t_ms = Date.now() - T0;
     var rp = refPath(); if (rp) data.ref_path = rp;
+    var rh = refHost(); if (rh) data.ref_host = rh;
     var tr = rp ? 'Перед цим: ' + rp : ''; if (tr && String(data.message || '').indexOf(tr) < 0) data.message = (data.message ? data.message + '\n' : '') + tr; // рядок — для n8n і старих звітів
     var body = JSON.stringify(data);
     [API, HOOK].forEach(function (url) {
@@ -174,6 +176,18 @@
       var r = document.referrer ? new URL(document.referrer) : null;
       if (!r || r.host !== location.host || r.pathname === location.pathname) return '';
       return decodeURIComponent(r.pathname).slice(0, 160);
+    } catch (x) { return ''; }
+  }
+  // зовнішнє джерело візиту: хост чужого сайту, з якого прийшли на першому заході в сесії (запамʼятовує site-chrome.v1.js у sessionStorage
+  // «cas_rh»; якщо його ще немає — та сама перевірка тут). Лише хост, ≤ 80 символів — сервер перевіряє (functions/_refhost.js refHost)
+  function refHost() {
+    try {
+      var S = window.sessionStorage, v = S.getItem('cas_rh');
+      if (v == null && document.referrer) {
+        var r = new URL(document.referrer), hn = r.hostname.toLowerCase().replace(/^www\./, '');
+        if (/^https?:$/.test(r.protocol) && r.host !== location.host && !/(^|\.)cas-develop\.com$|\.pages\.dev$/.test(hn) && hn.length <= 80 && /^[a-z0-9.-]+\.[a-z0-9-]+$/.test(hn)) { v = hn; S.setItem('cas_rh', v); }
+      }
+      return v && v.length <= 80 ? v : '';
     } catch (x) { return ''; }
   }
   /*af*/
