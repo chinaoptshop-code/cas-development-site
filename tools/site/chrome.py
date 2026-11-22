@@ -400,7 +400,7 @@ def header(lang, path, alts, tools='', cta_href=None):
     # + WeChat (клік копіює номер — a[data-wx] у site-chrome.v1.js; без JS — weixin://)
     mrow = MSG[:3] + [x for x in SOCIAL if x[0] == 'wechat'] + MSG[3:]
     msg = ''.join(f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '')
-                  + (f' data-wx="{WECHAT}"' if k == 'wechat' else '') + f' aria-label="{n}" title="{n}"></a>' for k, n, u in mrow)
+                  + (f' data-wx="{WECHAT}"' if k == 'wechat' else '') + f' aria-label="{n}"></a>' for k, n, u in mrow)  # без title: меню лише на тачі, а бюджет HTML 64 КБ
     kab_cur = ' aria-current="page"' if path == KAB_HREF or path.startswith(KAB_HREF + '/') else ''
     kab = f'<a class="sch-kab" href="{KAB_HREF}" title="{t["kab_full"]}"{kab_cur}><span>{t["kab"]}</span></a>'
     # швидкі кнопки мобільного меню: кабінет і калькулятор вартості (якщо сторінка калькулятора цією мовою є)
@@ -719,7 +719,7 @@ def mb_icons(body, lang):
         name = next((call if n is None else n for pre, n in MB_NAMES if href.startswith(pre)), None)
         if not name:
             return m.group(0)
-        tag = re.sub(r'\s(?:aria-label|title)="[^"]*"', '', tag)[:-1] + f' aria-label="{html.escape(name)}" title="{html.escape(name)}">'
+        tag = re.sub(r'\s(?:aria-label|title)="[^"]*"', '', tag)[:-1] + f' aria-label="{html.escape(name)}">'  # без title: пігулка лише на телефоні (бюджет HTML)
         inner = ''.join(x.group(0) for x in re.finditer(r'<svg\b.*?</svg>|<img\b[^>]*>', inner, re.S))  # лише іконка
         return tag + inner + '</a>'
     return re.sub(r'(<a\b(?![^>]*class="mb-lead")[^>]*>)(.*?)</a>', one, body, flags=re.S)
@@ -750,7 +750,7 @@ def mbar_lead(s, lang, rel=''):
     body = blk[m.end():].strip('\n')
     img = lambda n: f'<img src="/assets/brand/{n}.svg" width="32" height="32" alt="" loading="lazy" decoding="async">'
     vb = '' if 'viber://' in body else f'<a class="mb-vb" href="{VIBER}" target="_blank" rel="noopener">{img("viber")}</a>\n'
-    wx = f'<a class="mb-wx" href="weixin://" data-wx="{WECHAT}" aria-label="WeChat {WECHAT}" title="WeChat {WECHAT}">{img("wechat")}</a>\n'
+    wx = f'<a class="mb-wx" href="weixin://" data-wx="{WECHAT}" aria-label="WeChat {WECHAT}">{img("wechat")}</a>\n'
     body = mb_icons(body, lang)
     aria = ((i18n.ui(lang) or {}).get('form') or {}).get('mbar') or {'ru': 'Быстрая связь'}.get(lang, "Швидкий зв'язок")
     out = (f'{m.group(1)} data-one role="navigation" aria-label="{aria}">\n'
