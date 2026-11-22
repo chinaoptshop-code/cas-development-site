@@ -7,6 +7,7 @@
  "description": "Capas de muro, suelo y cubierta de una vivienda: orden, espesores típicos de aislamiento, barreras de vapor y membranas, encuentros y errores caros.",
  "lead": "La sección constructiva de muro, suelo y cubierta es el orden de capas del que depende que la casa siga cálida y seca dentro de diez años. Un error en una capa no se ve enseguida: aparece como condensación, moho en las esquinas, aislamiento mojado y facturas de calefacción. Explicamos de qué se compone cada elemento, qué espesores son típicos en la práctica del mercado y dónde se «rompe» más a menudo la sección.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/es/proyecto-de-casa",
   "Proyecto y diseño de casa unifamiliar"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Muro, suelo y cubierta: por qué tantas capas"
+   "¿Por qué la sección de muro, suelo y cubierta tiene tantas capas?"
   ],
   [
    "p",
@@ -43,7 +44,7 @@
   ],
   [
    "h2",
-   "Sección del muro"
+   "¿De qué capas se compone un muro?"
   ],
   [
    "h3",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Sección del suelo"
+   "¿De qué capas se compone un suelo?"
   ],
   [
    "h3",
@@ -172,7 +173,7 @@
   ],
   [
    "h2",
-   "Sección de la cubierta"
+   "¿Por qué la casa pierde más calor por la cubierta?"
   ],
   [
    "p",
@@ -232,11 +233,11 @@
   ],
   [
    "h2",
-   "Encuentros donde más se rompe la sección"
+   "¿En qué encuentros se rompe con más frecuencia la sección?"
   ],
   [
    "p",
-   "Montar el plano de un muro o una cubierta no es difícil. Los problemas aparecen donde se encuentran elementos distintos: el aislamiento y la capa estanca deben pasar de uno a otro sin interrupciones."
+   "La sección se rompe con más frecuencia en los encuentros: montar el plano de un muro o una cubierta no es difícil. Los problemas aparecen donde se encuentran elementos distintos: el aislamiento y la capa estanca deben pasar de uno a otro sin interrupciones."
   ],
   [
    "ul",
@@ -250,11 +251,11 @@
   ],
   [
    "h2",
-   "Estanqueidad y ventilación: la otra cara de la envolvente"
+   "¿Por qué una casa aislada necesita ventilación?"
   ],
   [
    "p",
-   "Cuanto mejor aislada y más estanca es una casa, menos aire se renueva por rendijas. Es bueno para el calor, pero la humedad de la respiración, la cocina y la ducha ya no sale sola. Por eso la envolvente se proyecta junto con la ventilación: natural, con admisiones y conductos de extracción bien pensados, o mecánica con recuperación de calor. Si no, la condensación aparece en las superficies más frías: derrames, esquinas, encuentros muro-techo."
+   "Una casa aislada y estanca necesita ventilación, porque cuanto mejor aislada está, menos aire se renueva por rendijas. Es bueno para el calor, pero la humedad de la respiración, la cocina y la ducha ya no sale sola. Por eso la envolvente se proyecta junto con la ventilación: natural, con admisiones y conductos de extracción bien pensados, o mecánica con recuperación de calor. Si no, la condensación aparece en las superficies más frías: derrames, esquinas, encuentros muro-techo."
   ],
   [
    "ul",
@@ -267,7 +268,7 @@
   ],
   [
    "h2",
-   "Cómo leer la sección en el proyecto"
+   "¿Cómo leer las capas en el proyecto?"
   ],
   [
    "p",

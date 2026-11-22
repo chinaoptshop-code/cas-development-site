@@ -7,6 +7,7 @@
  "description": "Mur, plancher et toiture d'une maison : ordre des couches, épaisseurs d'isolant, pare-vapeur et membranes, jonctions et erreurs coûteuses.",
  "lead": "Le complexe d'un mur, d'un plancher ou d'une toiture, c'est l'ordre des couches dont dépend une maison encore chaude et sèche dans dix ans. Une erreur dans une couche ne se voit pas tout de suite : elle se manifeste par de la condensation, des moisissures dans les angles, un isolant mouillé et des factures de chauffage. Nous expliquons la composition de chaque paroi, les épaisseurs courantes sur le marché et où le complexe « se rompt » le plus souvent.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/fr/conception-maison",
   "Conception et design de maison individuelle"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Mur, plancher et toiture : pourquoi tant de couches"
+   "Pourquoi les complexes de mur, de plancher et de toiture ont-ils autant de couches ?"
   ],
   [
    "p",
@@ -43,7 +44,7 @@
   ],
   [
    "h2",
-   "Complexe du mur"
+   "De quelles couches se compose un complexe de mur ?"
   ],
   [
    "h3",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Complexe du plancher"
+   "De quelles couches se compose un complexe de plancher ?"
   ],
   [
    "h3",
@@ -172,7 +173,7 @@
   ],
   [
    "h2",
-   "Complexe de toiture"
+   "Pourquoi une maison perd-elle le plus de chaleur par la toiture ?"
   ],
   [
    "p",
@@ -232,11 +233,11 @@
   ],
   [
    "h2",
-   "Les jonctions où le complexe se rompt le plus souvent"
+   "À quels points singuliers le complexe se rompt-il le plus souvent ?"
   ],
   [
    "p",
-   "Monter le plan courant d'un mur ou d'un toit n'est pas difficile. Les problèmes apparaissent là où se rencontrent des parois différentes : l'isolant et la couche étanche à l'air doivent passer de l'une à l'autre sans interruption."
+   "Le complexe se rompt le plus souvent aux points singuliers : monter le plan courant d'un mur ou d'un toit n'est pas difficile. Les problèmes apparaissent là où se rencontrent des parois différentes : l'isolant et la couche étanche à l'air doivent passer de l'une à l'autre sans interruption."
   ],
   [
    "ul",
@@ -250,11 +251,11 @@
   ],
   [
    "h2",
-   "Étanchéité à l'air et ventilation : l'autre face de l'enveloppe"
+   "Pourquoi une maison isolée a-t-elle besoin de ventilation ?"
   ],
   [
    "p",
-   "Plus une maison est isolée et étanche, moins l'air se renouvelle par les fuites. C'est bon pour la chaleur, mais l'humidité de la respiration, de la cuisine et des douches ne s'évacue plus seule. L'enveloppe se conçoit donc avec la ventilation : naturelle, avec entrées d'air et conduits d'extraction bien pensés, ou mécanique double flux. Sinon la condensation apparaît sur les surfaces les plus froides — tableaux, angles, jonctions mur-plafond."
+   "Une maison isolée et étanche a besoin de ventilation, car plus elle est isolée, moins l'air se renouvelle par les fuites. C'est bon pour la chaleur, mais l'humidité de la respiration, de la cuisine et des douches ne s'évacue plus seule. L'enveloppe se conçoit donc avec la ventilation : naturelle, avec entrées d'air et conduits d'extraction bien pensés, ou mécanique double flux. Sinon la condensation apparaît sur les surfaces les plus froides — tableaux, angles, jonctions mur-plafond."
   ],
   [
    "ul",
@@ -267,7 +268,7 @@
   ],
   [
    "h2",
-   "Comment lire le complexe dans le projet"
+   "Comment lire un complexe dans les plans ?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Wall, floor and roof build-ups of a private house: layer order, typical insulation thicknesses, vapour barriers and membranes, junctions and costly mistakes.",
  "lead": "A wall, floor or roof build-up is the order of layers that decides whether the house stays warm and dry ten years from now. A mistake in one layer is not visible at once: it shows up as condensation, mould in corners, wet insulation and heating bills. We explain what each construction consists of, which thicknesses are typical in market practice and where the build-up most often “breaks”.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/en/house-design",
   "Private house design"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Wall, floor and roof build-ups: why so many layers"
+   "Why do wall, floor and roof build-ups have so many layers?"
   ],
   [
    "p",
@@ -43,7 +44,7 @@
   ],
   [
    "h2",
-   "Wall build-up"
+   "What layers make up a wall build-up?"
   ],
   [
    "h3",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Floor build-up"
+   "What layers make up a floor build-up?"
   ],
   [
    "h3",
@@ -172,7 +173,7 @@
   ],
   [
    "h2",
-   "Roof build-up"
+   "Why does a house lose the most heat through the roof?"
   ],
   [
    "p",
@@ -232,11 +233,11 @@
   ],
   [
    "h2",
-   "Junctions where the build-up most often breaks"
+   "At which junctions does the build-up most often break?"
   ],
   [
    "p",
-   "Assembling the plane of a wall or roof is not difficult. Problems appear where different constructions meet: the insulation and the airtight layer must pass from one to the other without breaks."
+   "The build-up most often breaks at junctions: assembling the plane of a wall or roof is not difficult. Problems appear where different constructions meet: the insulation and the airtight layer must pass from one to the other without breaks."
   ],
   [
    "ul",
@@ -250,11 +251,11 @@
   ],
   [
    "h2",
-   "Airtightness and ventilation: the other side of the thermal envelope"
+   "Why does an insulated house need ventilation?"
   ],
   [
    "p",
-   "The better insulated and more airtight a house is, the less air is exchanged through gaps. That is good for heat, but moisture from breathing, cooking and showers no longer escapes on its own. So the thermal envelope is designed together with ventilation: natural with well-planned inlets and extract ducts, or mechanical with heat recovery. Otherwise condensation appears on the coldest surfaces — reveals, corners, wall-ceiling junctions."
+   "An insulated, airtight house needs ventilation, because the better it is insulated, the less air is exchanged through gaps. That is good for heat, but moisture from breathing, cooking and showers no longer escapes on its own. So the thermal envelope is designed together with ventilation: natural with well-planned inlets and extract ducts, or mechanical with heat recovery. Otherwise condensation appears on the coldest surfaces — reveals, corners, wall-ceiling junctions."
   ],
   [
    "ul",
@@ -267,7 +268,7 @@
   ],
   [
    "h2",
-   "How to read the build-up in the design"
+   "How do you read a build-up in the design drawings?"
   ],
   [
    "p",
