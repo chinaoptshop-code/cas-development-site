@@ -7,6 +7,7 @@
  "description": "Etapas da remodelação chave na mão: projeto, demolição, redes, trabalhos de base, acabamentos, mobiliário e entrega — e os erros a evitar.",
  "lead": "As etapas de uma remodelação de apartamento chave na mão seguem uma sequência rigorosa: cada uma assenta na anterior. Vemos a ordem dos trabalhos, o que verificar em cada passo e que erros mais vezes obrigam a refazer.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/pt/remodelacao-apartamentos",
   "Remodelação de apartamentos chave na mão em Kyiv"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Etapas da remodelação chave na mão em resumo"
+   "Quais são as etapas de uma remodelação de apartamento chave na mão?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "O que preparar antes de começar"
+   "O que preparar antes do arranque?"
   ],
   [
    "p",
@@ -54,7 +55,7 @@
   ],
   [
    "h2",
-   "Etapas preparatórias: projeto e demolição"
+   "O que incluem as etapas preparatórias: projeto e demolição?"
   ],
   [
    "h3",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Redes técnicas e trabalhos de base"
+   "O que incluem as instalações e os trabalhos de base?"
   ],
   [
    "h3",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Acabamentos, mobiliário e entrega"
+   "O que incluem os acabamentos, os móveis e a entrega?"
   ],
   [
    "h3",
@@ -167,7 +168,7 @@
   ],
   [
    "h2",
-   "Erros comuns durante a remodelação"
+   "Que erros se cometem durante a obra?"
   ],
   [
    "ul",
@@ -181,7 +182,7 @@
   ],
   [
    "h2",
-   "Como controlar a remodelação"
+   "Como controlar a remodelação de um apartamento?"
   ],
   [
    "p",

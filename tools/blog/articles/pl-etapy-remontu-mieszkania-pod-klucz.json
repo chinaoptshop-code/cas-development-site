@@ -7,6 +7,7 @@
  "description": "Etapy remontu mieszkania pod klucz krok po kroku: projekt, rozbiórka, instalacje, prace surowe i wykończeniowe, meble, odbiór — i błędy do uniknięcia.",
  "lead": "Etapy remontu mieszkania pod klucz idą w ścisłej kolejności: każdy kolejny opiera się na poprzednim. Omawiamy kolejność prac, co sprawdzać na każdym kroku i jakie błędy najczęściej zmuszają do przeróbek.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/pl/remont-mieszkan",
   "Remont mieszkań pod klucz w Kijowie"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Etapy remontu mieszkania pod klucz w skrócie"
+   "Jakie są etapy remontu mieszkania pod klucz?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Co przygotować przed startem"
+   "Co przygotować przed startem?"
   ],
   [
    "p",
@@ -54,7 +55,7 @@
   ],
   [
    "h2",
-   "Etapy przygotowawcze: projekt i rozbiórka"
+   "Co obejmują etapy przygotowawcze: projekt i demontaż?"
   ],
   [
    "h3",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Instalacje i prace surowe"
+   "Co obejmują instalacje i prace surowe?"
   ],
   [
    "h3",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Wykończenie, meble i odbiór"
+   "Co obejmują wykończenie, meble i odbiór?"
   ],
   [
    "h3",
@@ -167,7 +168,7 @@
   ],
   [
    "h2",
-   "Typowe błędy podczas remontu"
+   "Jakie błędy popełnia się podczas remontu?"
   ],
   [
    "ul",
@@ -181,7 +182,7 @@
   ],
   [
    "h2",
-   "Jak kontrolować remont"
+   "Jak kontrolować remont mieszkania?"
   ],
   [
    "p",

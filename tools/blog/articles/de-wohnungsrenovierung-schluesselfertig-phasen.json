@@ -7,6 +7,7 @@
  "description": "Phasen der schlüsselfertigen Wohnungsrenovierung: Projekt, Rückbau, Haustechnik, Rohbau, Ausbau, Möbel, Übergabe — und welche Fehler Sie vermeiden.",
  "lead": "Die Phasen einer schlüsselfertigen Wohnungsrenovierung folgen einer klaren Reihenfolge: Jeder Schritt baut auf dem vorherigen auf. Wir gehen die Reihenfolge der Arbeiten durch, zeigen, was bei jedem Schritt zu prüfen ist und welche Fehler am häufigsten Nacharbeit erzwingen.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/de/wohnungsrenovierung",
   "Wohnungsrenovierung schlüsselfertig in Kyjiw"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Die Phasen der schlüsselfertigen Renovierung im Überblick"
+   "Welche Phasen hat eine schlüsselfertige Wohnungsrenovierung?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Was vor dem Start vorzubereiten ist"
+   "Was sollte man vor dem Start vorbereiten?"
   ],
   [
    "p",
@@ -54,7 +55,7 @@
   ],
   [
    "h2",
-   "Vorbereitende Phasen: Projekt und Rückbau"
+   "Was gehört zu den Vorbereitungsphasen Planung und Abbruch?"
   ],
   [
    "h3",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Haustechnik und Rohbau"
+   "Was gehört zu Haustechnik und Rohbauarbeiten?"
   ],
   [
    "h3",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Ausbau, Möbel und Übergabe"
+   "Was gehört zu Ausbau, Möbeln und Übergabe?"
   ],
   [
    "h3",
@@ -167,7 +168,7 @@
   ],
   [
    "h2",
-   "Typische Fehler bei der Renovierung"
+   "Welche Fehler passieren bei der Renovierung?"
   ],
   [
    "ul",
@@ -181,7 +182,7 @@
   ],
   [
    "h2",
-   "Wie man die Renovierung kontrolliert"
+   "Wie behält man die Kontrolle über die Renovierung?"
   ],
   [
    "p",
