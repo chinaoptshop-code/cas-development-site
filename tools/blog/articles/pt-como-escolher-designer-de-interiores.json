@@ -7,6 +7,7 @@
  "description": "Como escolher um designer de interiores: 10 perguntas antes do contrato, portefólio, conteúdo do projeto, orçamento, acompanhamento, sinais de alerta e lista.",
  "lead": "Da escolha do designer depende não só o aspeto do apartamento, mas também o orçamento da obra. Explicamos como escolher um designer de interiores: 10 perguntas a fazer antes de assinar, o que procurar no portefólio e que sinais devem pô-lo de sobreaviso.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/pt/designer-de-interiores",
   "Designer de interiores"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "10 perguntas ao designer"
+   "Que 10 perguntas fazer a um designer?"
   ],
   [
    "ol",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Como escolher um designer de interiores pelo portefólio"
+   "Como escolher um designer de interiores pelo portefólio?"
   ],
   [
    "p",
@@ -68,7 +69,7 @@
   ],
   [
    "h2",
-   "O que deve estar no contrato"
+   "O que deve constar do contrato com o designer?"
   ],
   [
    "ul",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Designer independente ou estúdio"
+   "Designer independente ou estúdio: o que escolher?"
   ],
   [
    "p",
@@ -99,7 +100,7 @@
   ],
   [
    "h2",
-   "Sinais de alerta"
+   "Que sinais de alerta devem deixá-lo de pé atrás?"
   ],
   [
    "ul",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Erros comuns do cliente"
+   "Que erros cometem os clientes?"
   ],
   [
    "ul",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Porque compensa que design e obra sejam feitos pela mesma equipa"
+   "Porque compensa que a mesma equipa faça o design e a obra?"
   ],
   [
    "p",

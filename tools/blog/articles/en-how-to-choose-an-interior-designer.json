@@ -7,6 +7,7 @@
  "description": "How to choose an interior designer: 10 questions before the contract, portfolio, project scope, estimate, designer supervision, red flags and a checklist.",
  "lead": "The choice of designer affects not only how your apartment looks but also the renovation budget. Here is how to choose an interior designer: 10 questions to ask before signing a contract, what to look for in a portfolio and which signals should put you on guard.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/en/interior-designer",
   "Interior designer"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "10 questions for a designer"
+   "Which 10 questions should you ask a designer?"
   ],
   [
    "ol",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "How to choose an interior designer by portfolio"
+   "How do you choose an interior designer by portfolio?"
   ],
   [
    "p",
@@ -68,7 +69,7 @@
   ],
   [
    "h2",
-   "What the contract should include"
+   "What should the contract with a designer include?"
   ],
   [
    "ul",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "A freelance designer or a studio"
+   "Freelance designer or studio: which to choose?"
   ],
   [
    "p",
@@ -99,7 +100,7 @@
   ],
   [
    "h2",
-   "Red flags"
+   "Which red flags should put you on guard?"
   ],
   [
    "ul",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Common client mistakes"
+   "What mistakes do clients make?"
   ],
   [
    "ul",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Why it pays when one team does design and renovation"
+   "Why does it pay when one team does design and renovation?"
   ],
   [
    "p",

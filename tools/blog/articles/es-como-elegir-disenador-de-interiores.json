@@ -7,6 +7,7 @@
  "description": "Cómo elegir un diseñador de interiores: 10 preguntas antes del contrato, portafolio, contenido del proyecto, presupuesto, supervisión y señales de alarma.",
  "lead": "De la elección del diseñador depende no solo el aspecto del piso, sino también el presupuesto de la reforma. Le contamos cómo elegir un diseñador de interiores: 10 preguntas que conviene hacer antes de firmar, qué buscar en el portafolio y qué señales deben ponerle en guardia.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/es/disenador-interiores",
   "Diseñador de interiores"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "10 preguntas para el diseñador"
+   "¿Qué 10 preguntas hacer a un diseñador?"
   ],
   [
    "ol",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Cómo elegir un diseñador de interiores por su portafolio"
+   "¿Cómo elegir diseñador de interiores por su portafolio?"
   ],
   [
    "p",
@@ -68,7 +69,7 @@
   ],
   [
    "h2",
-   "Qué debe incluir el contrato"
+   "¿Qué debe incluir el contrato con el diseñador?"
   ],
   [
    "ul",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Diseñador independiente o estudio"
+   "¿Diseñador independiente o estudio: qué elegir?"
   ],
   [
    "p",
@@ -99,7 +100,7 @@
   ],
   [
    "h2",
-   "Señales de alarma"
+   "¿Qué señales de alarma deben ponerte en guardia?"
   ],
   [
    "ul",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Errores típicos del cliente"
+   "¿Qué errores cometen los clientes?"
   ],
   [
    "ul",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Por qué conviene que diseño y reforma los haga un solo equipo"
+   "¿Por qué compensa que un mismo equipo haga diseño y reforma?"
   ],
   [
    "p",
