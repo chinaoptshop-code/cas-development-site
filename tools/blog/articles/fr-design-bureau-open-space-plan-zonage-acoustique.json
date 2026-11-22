@@ -7,6 +7,7 @@
  "description": "Design de bureau open space : placer postes, salles de réunion et cuisine, zoner sans murs pleins et maîtriser le bruit. Design à partir de $30/m².",
  "lead": "Un bureau ouvert est plus souple que des bureaux fermés, mais il ne fonctionne que si les zones, les passages, la lumière et le son sont pensés. Voici comment aborder le design d'un bureau open space : par où commencer, comment zoner l'espace et que faire du bruit dès le projet.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/fr/design-bureau-open-space",
   "Design de bureaux open space pour entreprises IT"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Par où commencer : l'équipe et ses façons de travailler"
+   "Par où commencer le design d'un open space ?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Le plan d'un bureau open space"
+   "Comment concevoir le plan d'un open space ?"
   ],
   [
    "p",
@@ -54,7 +55,7 @@
   ],
   [
    "h2",
-   "Zoner sans murs pleins"
+   "Comment zoner un bureau sans murs pleins ?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "L'acoustique en open space"
+   "Comment réduire le bruit en open space ?"
   ],
   [
    "p",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Éclairage, prises et réseaux"
+   "Comment prévoir éclairage, prises et réseaux ?"
   ],
   [
    "p",
@@ -126,7 +127,7 @@
   ],
   [
    "h2",
-   "Ce qu'il faut vérifier dans le projet avant les travaux"
+   "Que vérifier dans le projet avant les travaux ?"
   ],
   [
    "ul",
@@ -142,7 +143,7 @@
   ],
   [
    "h2",
-   "Combien coûtent le design et la rénovation d'un bureau"
+   "Combien coûtent le design et la rénovation d'un bureau ?"
   ],
   [
    "p",
