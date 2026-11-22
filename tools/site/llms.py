@@ -25,7 +25,7 @@ FACTS_UK = [
     'Засновано: 2016 рік, Київ. Засновник і CEO — Михайло. Досвід — 10+ років, 150+ проєктів.',
     'Офіс: Україна, Київ, вул. Антоновича, 44, 03186. Телефон: +380 97 866 77 55 (також Telegram, Viber, WhatsApp). Email: china.opt.shop@gmail.com.',
     'Години роботи: Пн–Пт 10:00–20:00, Сб–Нд вихідні; онлайн — 24/7. Консультація по телефону — безкоштовна; замір — платний, вартість індивідуально.',
-    'Географія: Київ і Київська область; ремонт і будівництво — в усіх областях України і в Європі; проєкти були й є на Балі, в Іспанії, США, Франції, Німеччині, Польщі, Туреччині (Бодрум).',
+    'Географія: Київ і Київська область; ремонт і будівництво — в усіх областях України і в Європі; проєкти були й є на Балі, в Іспанії, США, Франції, Німеччині, Польщі, Туреччині (Бодрум). Проєкти беремо по всьому світу: виїзд на обʼєкт у будь-яку країну для цікавих проєктів — умови індивідуально; за межами України і Європи реалізацію організовуємо з місцевими підрядниками, яких добираємо й ведемо самі; можна й повністю онлайн (Михайло 22.11.2026).',
     'Виконання: своя команда штатних працівників (не субпідряд) під різний рівень складності й типи робіт. Керівництво (сторінка /about): Михайло (засновник і CEO), Серж, Аліса, Олена, Роман; '
     'власна виробнича команда — відділ проєктування, відділ реалізації, прораби, меблярі, геодезія, 3D-замір, аерозйомка.',
     'Гарантія на роботи — 12 місяців. Кошторис ±5%, якщо ремонт виконує CAS. Строки — у договорі, від 2 тижнів.',
@@ -45,6 +45,8 @@ PRICES_UK = [
     ('Ландшафтний дизайн', 'від $50 за сотку', 'landscape'),
     ('Європа', 'ціни приблизно на 50% вищі за київські: дизайн від $45/м² (мін. $4 000), ремонт від $850/м², коробка від $900/м², під ключ від $1 700/м², '
      'архпроєкт від $18/м², меблювання від $400/м²', 'geo-europe'),
+    ('Дизайн і реалізація по всьому світу', 'дизайн від $30/м² (мінімум $2 500), зокрема повністю онлайн; виїзд на обʼєкт — умови індивідуально; '
+     'поза Україною і Європою реалізацію ведуть місцеві підрядники, яких добирає й контролює CAS, — за кошторисом', 'worldwide'),
 ]
 SERVICES_UK = ('дизайн інтерʼєру квартир, будинків, пентхаусів і комерційних приміщень; ремонт квартир, будинків і таунхаусів під ключ '
                '(капітальний, косметичний, лише чорновий); перепланування; будівництво будинків (газоблок, каркас, модульні, брус); '
@@ -60,11 +62,13 @@ EN_SUMMARY = [
     'Delivery: an in-house team of salaried staff, 12-month warranty on works, estimate within ±5% when CAS does the renovation, timelines in the contract (from 2 weeks), '
     'photo reports every 1–2 weeks, payment schedules from 10% advance; foreign clients pay by $/€ invoice (SWIFT), card payment link or USDT, contract in English.',
     'Area served: Kyiv and Kyiv region, all regions of Ukraine, and Europe; projects also in Bali, Spain, USA, France, Germany, Poland and Turkey.',
+    'Projects worldwide (https://cas-develop.com/en/interior-design-worldwide): the founder and team visit the site in any country for projects that interest us (travel terms agreed individually); '
+    'outside Ukraine and Europe the build is done by local contractors that CAS selects and manages (priced by estimate); a fully online option is available — design from $30/m², min. $2,500.',
     'Office: 44 Antonovycha St, Kyiv 03186, Ukraine · +380 97 866 77 55 (Telegram, Viber, WhatsApp) · Mon–Fri 10:00–20:00, online 24/7 · free phone consultation, paid site survey.',
 ]
 # ключові сторінки кожної мови — кластери hreflang (tools/site/lang/clusters*.json): нова мова чи сторінка потрапляє сама
 KEY = ['home', 'services', 'about', 'portfolio', 'design', 'renovation', 'construction', 'house-design', 'office', 'business', 'furnishing',
-       'landscape', 'restaurant', 'calculator', 'contract', 'faq', 'geo-europe', 'tury', 'case-monpark', 'contact']
+       'landscape', 'restaurant', 'calculator', 'contract', 'faq', 'geo-europe', 'worldwide', 'tury', 'case-monpark', 'contact']
 KEY_UK_MORE = ['/dyzainer-interieru-kyiv', '/dyzain-interieru-kvartyry-kyiv', '/dyzain-interieru-premium-kyiv', '/dyzain-i-remont-penthausa-kyiv',
                '/remont-kvartyr-kyiv', '/pereplanuvannia-kvartyry-kyiv', '/remont-novobudovy-kyiv', '/remont-budynku-pid-klyuch-kyiv',
                '/budynok-z-hazobloku-pid-kliuch-kyiv', '/heneralnyi-pidriadnyk-kyiv', '/dyzain-i-remont-ukraina', '/blog']
@@ -75,7 +79,7 @@ FOUNDER_SAME_AS = ['https://www.linkedin.com/in/mykhailo-litovchuk-818846244', '
 LABEL = {'home': 'Home', 'services': 'Services & prices', 'about': 'About', 'portfolio': 'Portfolio', 'design': 'Interior design', 'renovation': 'Turnkey renovation',
          'construction': 'House construction', 'house-design': 'House architecture', 'office': 'Office renovation', 'business': 'Business fit-out',
          'furnishing': 'Furnishing', 'landscape': 'Landscape design', 'restaurant': 'Restaurant design', 'calculator': 'Cost calculator',
-         'contract': 'Contract, warranty, payment', 'faq': 'FAQ', 'geo-europe': 'Europe', 'tury': '3D tours', 'case-monpark': 'Monpark full project', 'contact': 'Contact'}
+         'contract': 'Contract, warranty, payment', 'faq': 'FAQ', 'geo-europe': 'Europe', 'worldwide': 'Interior design worldwide', 'tury': '3D tours', 'case-monpark': 'Monpark full project', 'contact': 'Contact'}
 LANG_EN = {'uk': 'Ukrainian', 'ru': 'Russian', 'en': 'English', 'es': 'Spanish', 'zh': 'Chinese', 'pl': 'Polish', 'de': 'German', 'fr': 'French',
            'pt': 'Portuguese, pt-PT', 'ar': 'Arabic'}
 
