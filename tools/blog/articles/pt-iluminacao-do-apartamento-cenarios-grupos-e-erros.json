@@ -7,6 +7,7 @@
  "description": "Iluminação do apartamento no projeto de design: luz geral, de trabalho e de destaque, cenários por divisão, interruptores, temperatura de cor e erros.",
  "lead": "Um só candeeiro no meio do teto raramente torna um apartamento acolhedor. A luz, tal como os móveis, planeia-se com antecedência: onde lê, cozinha, vê um filme, o que deve ficar aceso à noite. Explicamos como funciona a iluminação do apartamento num projeto de design, o que são cenários e grupos e que erros é fácil evitar na fase dos desenhos.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/pt/design-de-interiores-apartamento",
   "Encomendar um design de interiores"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Três camadas de luz em cada divisão"
+   "Que três camadas de luz precisa cada divisão?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Cenários de iluminação: o que são e para que servem"
+   "O que são cenários de iluminação e para que servem?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Iluminação divisão a divisão"
+   "Que iluminação precisa cada divisão?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Temperatura de cor e lâmpadas"
+   "Que temperatura de cor e lâmpadas escolher?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Interruptores, tomadas e domótica"
+   "Onde colocar interruptores e tomadas?"
   ],
   [
    "p",
@@ -120,7 +121,7 @@
   ],
   [
    "h2",
-   "Erros comuns na iluminação do apartamento"
+   "Que erros de iluminação evitar no apartamento?"
   ],
   [
    "ul",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Quanto custa um projeto de design com plano de iluminação"
+   "Quanto custa um projeto de design com plano de iluminação?"
   ],
   [
    "p",

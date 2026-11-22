@@ -7,6 +7,7 @@
  "description": "Oświetlenie mieszkania w projekcie wnętrza: światło ogólne, robocze i akcentowe, sceny dla każdego pokoju, włączniki, barwa światła i typowe błędy.",
  "lead": "Jeden żyrandol na środku sufitu rzadko sprawia, że mieszkanie jest przytulne. Światło, tak jak meble, planuje się z wyprzedzeniem: gdzie czytasz, gotujesz, oglądasz film, co ma świecić w nocy. Wyjaśniamy, jak wygląda oświetlenie mieszkania w projekcie wnętrza, czym są sceny i grupy i jakich błędów łatwo uniknąć na etapie rysunków.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projekt-wnetrza-mieszkania",
   "Projekt wnętrz mieszkania"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Trzy warstwy światła w każdym pokoju"
+   "Jakich trzech warstw światła potrzebuje każdy pokój?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Sceny oświetlenia: czym są i po co"
+   "Czym są sceny oświetlenia i po co one?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Oświetlenie pokój po pokoju"
+   "Jakie oświetlenie potrzebne jest w każdym pokoju?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Barwa światła i źródła"
+   "Jaką barwę światła i źródła wybrać?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Włączniki, gniazdka i inteligentny dom"
+   "Gdzie umieścić włączniki i gniazdka?"
   ],
   [
    "p",
@@ -120,7 +121,7 @@
   ],
   [
    "h2",
-   "Typowe błędy w oświetleniu mieszkania"
+   "Jakich błędów w oświetleniu mieszkania unikać?"
   ],
   [
    "ul",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje projekt wnętrza z planem oświetlenia"
+   "Ile kosztuje projekt wnętrza z planem oświetlenia?"
   ],
   [
    "p",

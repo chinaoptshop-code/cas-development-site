@@ -7,6 +7,7 @@
  "description": "Iluminación del piso en el proyecto de diseño: luz general, de trabajo y de acento, escenas para cada estancia, interruptores, temperatura de color y errores.",
  "lead": "Una lámpara en mitad del techo rara vez hace acogedor un piso. La luz, como los muebles, se planifica de antemano: dónde lee, cocina o ve una película, qué debe quedar encendido de noche. Explicamos cómo se organiza la iluminación del piso en un proyecto de diseño, qué son las escenas y los grupos y qué errores son fáciles de evitar en la fase de planos.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/es/diseno-interiores-piso",
   "Proyecto de interiores de un piso"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Tres capas de luz en cada estancia"
+   "¿Qué tres capas de luz necesita cada estancia?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Escenas de iluminación: qué son y para qué sirven"
+   "¿Qué son las escenas de iluminación y para qué sirven?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Iluminación por estancias"
+   "¿Qué iluminación necesita cada estancia?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Temperatura de color y lámparas"
+   "¿Qué temperatura de color y qué lámparas elegir?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Interruptores, enchufes y domótica"
+   "¿Dónde colocar interruptores y enchufes?"
   ],
   [
    "p",
@@ -120,7 +121,7 @@
   ],
   [
    "h2",
-   "Errores habituales en la iluminación del piso"
+   "¿Qué errores de iluminación conviene evitar?"
   ],
   [
    "ul",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta un proyecto de diseño con plan de iluminación"
+   "¿Cuánto cuesta un proyecto de diseño con plan de iluminación?"
   ],
   [
    "p",

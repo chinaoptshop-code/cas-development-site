@@ -7,6 +7,7 @@
  "description": "Apartment lighting in a design project: ambient, task and accent light, scenes for every room, switches, lamp colour temperature and common mistakes.",
  "lead": "A single chandelier in the middle of the ceiling rarely makes an apartment cosy. Light, like furniture, is planned in advance: where you read, cook and watch a film, and what should glow at night. We explain how apartment lighting works in a design project, what scenes and groups are, and which mistakes are easy to avoid at the drawings stage.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/en/apartment-interior-design",
   "Order an interior design"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Three layers of light in every room"
+   "Which three layers of light does every room need?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Lighting scenes: what they are and why you need them"
+   "What are lighting scenes and why do you need them?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Lighting room by room"
+   "What lighting does each room need?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Colour temperature and lamps"
+   "Which colour temperature and lamps should you choose?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Switches, sockets and smart home"
+   "Where should switches and sockets go?"
   ],
   [
    "p",
@@ -120,7 +121,7 @@
   ],
   [
    "h2",
-   "Common apartment lighting mistakes"
+   "Which apartment lighting mistakes should you avoid?"
   ],
   [
    "ul",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "What a design project with a lighting plan costs"
+   "How much does a design project with a lighting plan cost?"
   ],
   [
    "p",
