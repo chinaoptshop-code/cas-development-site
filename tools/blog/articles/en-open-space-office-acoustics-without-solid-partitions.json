@@ -7,6 +7,7 @@
  "description": "Open-plan office acoustics without solid walls: panels, ceilings, textiles, green walls, focus rooms, zoning. Office fit-out from $350/m², design from $30/m².",
  "lead": "An open-plan office gives you space and easy conversation, but noise quickly turns from an advantage into a problem. Here is how to plan open-space acoustics so the office stays quiet while remaining bright and open, without a row of solid partitions.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/en/office-design",
   "Office design and renovation in Kyiv"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Where the noise in an open-plan office comes from"
+   "Where does the noise in an open-plan office come from?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Sound-absorbing panels and ceilings"
+   "Which panels and ceilings absorb sound?"
   ],
   [
    "p",
@@ -40,7 +41,7 @@
   ],
   [
    "h2",
-   "Carpets and textiles"
+   "Do carpets and textiles help against noise?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "Green walls and furniture as acoustic screens"
+   "Can green walls and furniture act as acoustic screens?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Zoning: focus rooms and phone booths"
+   "Why does an open space need focus rooms and phone booths?"
   ],
   [
    "p",
@@ -98,7 +99,7 @@
   ],
   [
    "h2",
-   "Placing noisy zones and glass meeting rooms"
+   "Where should noisy zones and glass meeting rooms go?"
   ],
   [
    "p",
@@ -115,7 +116,7 @@
   ],
   [
    "h2",
-   "What it costs"
+   "How much does open-space acoustics cost?"
   ],
   [
    "p",

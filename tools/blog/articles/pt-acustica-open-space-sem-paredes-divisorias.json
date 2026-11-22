@@ -7,6 +7,7 @@
  "description": "Acústica de open space sem paredes divisórias: painéis, tetos, têxteis, paredes verdes, salas de foco e zonamento. Remodelação de escritório desde $350/m².",
  "lead": "Um escritório aberto dá espaço e comunicação fácil, mas o ruído depressa passa de vantagem a problema. Explicamos como tratar a acústica de um open space para que haja silêncio e o espaço continue luminoso e aberto, sem uma fila de paredes divisórias opacas.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/pt/design-de-escritorios",
   "Design e remodelação de escritórios em Kyiv"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "De onde vem o ruído num escritório aberto"
+   "De onde vem o ruído num escritório aberto?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Painéis e tetos fonoabsorventes"
+   "Que painéis e tetos absorvem o som?"
   ],
   [
    "p",
@@ -40,7 +41,7 @@
   ],
   [
    "h2",
-   "Alcatifas e têxteis"
+   "Alcatifas e têxteis ajudam contra o ruído?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "Paredes verdes e mobiliário como barreiras acústicas"
+   "Paredes verdes e mobiliário servem de barreira acústica?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Zonamento: salas de foco e cabines telefónicas"
+   "Para que servem salas de foco e cabines telefónicas?"
   ],
   [
    "p",
@@ -98,7 +99,7 @@
   ],
   [
    "h2",
-   "Localização das zonas ruidosas e salas de reuniões em vidro"
+   "Onde colocar as zonas ruidosas e as salas em vidro?"
   ],
   [
    "p",
@@ -115,7 +116,7 @@
   ],
   [
    "h2",
-   "Quanto custa"
+   "Quanto custa a acústica de um open space?"
   ],
   [
    "p",
