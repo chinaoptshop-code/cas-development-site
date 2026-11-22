@@ -7,6 +7,7 @@
  "description": "Schönheitssalon schlüsselfertig in Kyjiw: Anordnung der Arbeitsplätze, Designprojekt, Umbau mit Lüftung und Waschbecken, Möbel, Spiegel und Licht aus China.",
  "lead": "Ein schlüsselfertiger Schönheitssalon ist ein Raum, in dem die Stylisten gern arbeiten und die Kundschaft gern wiederkommt. Wir erklären, wie man die Arbeitsplätze plant, was in den Umbau gehört, welche Ausstattung und Möbel passen und wie man das Budget bis zur Eröffnung berechnet.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/gewerbe-schluesselfertig",
   "Gewerbe schlüsselfertig"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Womit man beginnt: Format und Leistungen"
+   "Womit beginnt die Eröffnung eines Salons?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Anordnung der Arbeitsplätze"
+   "Wie plant man die Arbeitsplätze?"
   ],
   [
    "p",
@@ -61,7 +62,7 @@
   ],
   [
    "h2",
-   "Das Designprojekt des Salons"
+   "Was umfasst das Designprojekt eines Salons?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Umbau: was in die Haustechnik gehört"
+   "Was muss die Haustechnik eines Salons leisten?"
   ],
   [
    "p",
@@ -113,7 +114,7 @@
   ],
   [
    "h2",
-   "Empfang, Wartebereich und Eingang"
+   "Wie gestaltet man Empfang, Wartebereich und Eingang?"
   ],
   [
    "p",
@@ -134,7 +135,7 @@
   ],
   [
    "h2",
-   "Möbel, Spiegel und Ausstattung"
+   "Welche Möbel und Geräte braucht ein Salon?"
   ],
   [
    "p",
@@ -152,7 +153,7 @@
   ],
   [
    "h2",
-   "Phasen der Eröffnung eines schlüsselfertigen Salons"
+   "Welche Phasen hat ein schlüsselfertiger Salon?"
   ],
   [
    "ol",

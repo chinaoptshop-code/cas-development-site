@@ -7,6 +7,7 @@
  "description": "Salon urody pod klucz w Kijowie: układ stanowisk, projekt wnętrza, remont z wentylacją i myjkami, meble, lustra i oświetlenie z Chin. Etapy i budżet.",
  "lead": "Salon urody pod klucz to przestrzeń, w której stylistkom wygodnie się pracuje, a klienci chcą wracać. Wyjaśniamy, jak zaplanować stanowiska, co uwzględnić w remoncie, jakie wyposażenie i meble wybrać i jak policzyć budżet przed otwarciem.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pl/biznes-pod-klucz",
   "Lokale biznesowe pod klucz"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Od czego zacząć: format i usługi"
+   "Od czego zacząć otwarcie salonu kosmetycznego?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Układ stanowisk pracy"
+   "Jak zaplanować stanowiska pracy?"
   ],
   [
    "p",
@@ -61,7 +62,7 @@
   ],
   [
    "h2",
-   "Projekt wnętrza salonu"
+   "Co zawiera projekt salonu?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Remont: co uwzględnić w instalacjach"
+   "Co uwzględnić w instalacjach salonu?"
   ],
   [
    "p",
@@ -113,7 +114,7 @@
   ],
   [
    "h2",
-   "Recepcja, strefa oczekiwania i wejście"
+   "Jak zaprojektować recepcję, poczekalnię i wejście?"
   ],
   [
    "p",
@@ -134,7 +135,7 @@
   ],
   [
    "h2",
-   "Meble, lustra i wyposażenie"
+   "Jakie meble i sprzęt są potrzebne w salonie?"
   ],
   [
    "p",
@@ -152,7 +153,7 @@
   ],
   [
    "h2",
-   "Etapy otwarcia salonu pod klucz"
+   "Jakie są etapy otwarcia salonu pod klucz?"
   ],
   [
    "ol",

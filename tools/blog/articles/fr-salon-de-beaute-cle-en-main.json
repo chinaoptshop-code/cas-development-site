@@ -7,6 +7,7 @@
  "description": "Salon de beauté clé en main à Kyiv : implantation des postes, projet de design, travaux avec ventilation et bacs, mobilier, miroirs et luminaires de Chine.",
  "lead": "Un salon de beauté clé en main, c'est un lieu où les professionnels travaillent à l'aise et où les clients ont envie de revenir. Nous expliquons comment implanter les postes, quoi prévoir dans les travaux, quels équipements et quel mobilier choisir, et comment calculer le budget avant l'ouverture.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/commerce-cle-en-main",
   "Commerce clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Par où commencer : format et prestations"
+   "Par où commencer l'ouverture d'un salon de beauté ?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Implantation des postes de travail"
+   "Comment agencer les postes de travail ?"
   ],
   [
    "p",
@@ -61,7 +62,7 @@
   ],
   [
    "h2",
-   "Le projet de design du salon"
+   "Que comprend le projet de design d'un salon ?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Travaux : ce qu'il faut prévoir dans les réseaux"
+   "Que prévoir dans les réseaux d'un salon ?"
   ],
   [
    "p",
@@ -113,7 +114,7 @@
   ],
   [
    "h2",
-   "Accueil, attente et entrée"
+   "Comment concevoir accueil, attente et entrée ?"
   ],
   [
    "p",
@@ -134,7 +135,7 @@
   ],
   [
    "h2",
-   "Mobilier, miroirs et équipement"
+   "Quels meubles et équipements pour un salon ?"
   ],
   [
    "p",
@@ -152,7 +153,7 @@
   ],
   [
    "h2",
-   "Les étapes d'ouverture d'un salon clé en main"
+   "Quelles étapes pour un salon clé en main ?"
   ],
   [
    "ol",
