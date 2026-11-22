@@ -5,8 +5,9 @@
  "title": "Restructurer une maison ancienne ou construire neuf : que choisir",
  "seo_title": "Maison ancienne ou construire neuf : que choisir",
  "description": "Restructurer une maison ancienne ou construire neuf : évaluer son état, quand la restructuration se justifie, quand repartir de zéro, comparer les budgets.",
- "lead": "Restructurer une maison ancienne ou en construire une neuve sur le même terrain : c'est la décision des propriétaires d'une maison de campagne, de la maison familiale ou d'une maison achetée avec son histoire. L'émotion pousse à garder, la calculatrice parfois à démolir. Nous voyons comment décider sur des faits : quoi diagnostiquer, quand la restructuration a du sens et de quoi se composent les deux budgets.",
+ "lead": "Restructurer une maison ancienne a du sens si les fondations et les murs sont sains, alors que construire neuf devient plus avantageux si la structure est faible : c'est la décision des propriétaires d'une maison de campagne, de la maison familiale ou d'une maison achetée avec son histoire. L'émotion pousse à garder, la calculatrice parfois à démolir. Nous voyons comment décider sur des faits : quoi diagnostiquer, quand la restructuration a du sens et de quoi se composent les deux budgets.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/fr/reconstruction-maison",
   "Reconstruction de maison clé en main"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Restructuration ou maison neuve : par où commencer"
+   "Restructuration ou maison neuve : par où commencer ?"
   ],
   [
    "p",
-   "La plupart des propriétaires posent la question en termes de « qu'est-ce qui coûte moins cher ». Mieux vaut la poser autrement : qu'est-ce qui vous donne la maison où vous voulez vivre, pour un budget raisonnable et sans surprises ? Parfois une maison ancienne a une base solide, une bonne implantation sur le terrain et un caractère qui mérite d'être gardé. Parfois un enduit neuf cache des fondations faibles, des planchers pourris et un plan impossible à sauver sans tout démolir."
+   "Ne commencez pas par « qu'est-ce qui coûte moins cher », mais par l'option qui vous donne la maison où vous voulez vivre, pour un budget raisonnable et sans surprises. Parfois une maison ancienne a une base solide, une bonne implantation sur le terrain et un caractère qui mérite d'être gardé. Parfois un enduit neuf cache des fondations faibles, des planchers pourris et un plan impossible à sauver sans tout démolir."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Qu'est-ce qu'une restructuration et en quoi diffère-t-elle d'une rénovation"
+   "En quoi une restructuration diffère-t-elle d'une rénovation ?"
   ],
   [
    "p",
@@ -57,11 +58,11 @@
   ],
   [
    "h2",
-   "Le diagnostic de la maison : sans lui, pas de décision"
+   "Faut-il un diagnostic de la maison avant de décider ?"
   ],
   [
    "p",
-   "Avant de comparer des devis, il faut connaître l'état de la maison. Le diagnostic est réalisé par des ingénieurs : ils évaluent la structure, relèvent les défauts et concluent sur ce qu'on peut garder, renforcer ou remplacer. Il est particulièrement important pour les maisons restées longtemps sans chauffage, passées entre plusieurs mains avec des « ajouts » non déclarés, ou à planchers bois."
+   "Oui, sans diagnostic pas de décision : avant de comparer des devis, il faut connaître l'état de la maison. Le diagnostic est réalisé par des ingénieurs : ils évaluent la structure, relèvent les défauts et concluent sur ce qu'on peut garder, renforcer ou remplacer. Il est particulièrement important pour les maisons restées longtemps sans chauffage, passées entre plusieurs mains avec des « ajouts » non déclarés, ou à planchers bois."
   ],
   [
    "ul",
@@ -88,7 +89,7 @@
   ],
   [
    "h2",
-   "Quand la restructuration est plus avantageuse"
+   "Quand restructurer une maison ancienne est-il plus avantageux ?"
   ],
   [
    "ul",
@@ -127,7 +128,7 @@
   ],
   [
    "h2",
-   "Quand construire neuf est plus avantageux"
+   "Quand vaut-il mieux démolir et construire neuf ?"
   ],
   [
    "ul",
@@ -169,7 +170,7 @@
   ],
   [
    "h2",
-   "Comment chiffrer le budget des deux options"
+   "Comment comparer le budget d'une restructuration et d'une maison neuve ?"
   ],
   [
    "p",
@@ -209,7 +210,7 @@
   ],
   [
    "h2",
-   "Erreurs fréquentes"
+   "Quelles erreurs font les propriétaires de maisons anciennes ?"
   ],
   [
    "ul",

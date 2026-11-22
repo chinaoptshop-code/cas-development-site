@@ -5,8 +5,9 @@
  "title": "Reabilitar uma casa antiga ou construir uma nova: o que compensa",
  "seo_title": "Reabilitar casa antiga ou construir nova",
  "description": "Reabilitar uma casa antiga ou construir nova: como avaliar o estado da casa, quando compensa reabilitar, quando construir de raiz e comparar orçamentos.",
- "lead": "Reabilitar uma casa antiga ou construir uma nova no mesmo terreno é uma decisão que enfrentam os donos de uma casa de campo, da casa de família ou de uma casa comprada com história. A emoção puxa para manter, a calculadora às vezes para demolir. Vemos como decidir com factos: o que inspecionar, quando a reabilitação faz sentido e de que se compõem ambos os orçamentos.",
+ "lead": "Reabilitar uma casa antiga faz sentido quando as fundações e as paredes estão sãs, e construir uma nova compensa quando a estrutura é fraca: é uma decisão que enfrentam os donos de uma casa de campo, da casa de família ou de uma casa comprada com história. A emoção puxa para manter, a calculadora às vezes para demolir. Vemos como decidir com factos: o que inspecionar, quando a reabilitação faz sentido e de que se compõem ambos os orçamentos.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pt/reconstrucao-de-moradias",
   "Reconstrução de moradias chave na mão"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Reabilitação ou casa nova: por onde começar"
+   "Por onde começar: reabilitar ou construir uma casa nova?"
   ],
   [
    "p",
-   "A maioria dos proprietários põe a questão como «o que é mais barato». É melhor perguntar de outra forma: o que lhe dá a casa em que quer viver, por um valor razoável e sem surpresas. Às vezes uma casa antiga tem uma base sólida, boa implantação no terreno e um carácter que vale a pena manter. Às vezes o reboco novo esconde fundações fracas, pavimentos podres e uma planta que não se salva sem demolir tudo."
+   "Não comece por «o que é mais barato», mas pela opção que lhe dá a casa em que quer viver, por um valor razoável e sem surpresas. Às vezes uma casa antiga tem uma base sólida, boa implantação no terreno e um carácter que vale a pena manter. Às vezes o reboco novo esconde fundações fracas, pavimentos podres e uma planta que não se salva sem demolir tudo."
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "O que é a reabilitação e em que difere da remodelação"
+   "Em que difere a reabilitação da remodelação?"
   ],
   [
    "p",
@@ -57,11 +58,11 @@
   ],
   [
    "h2",
-   "Inspeção da casa: sem ela não há decisão"
+   "É preciso inspecionar a casa antes de decidir?"
   ],
   [
    "p",
-   "Antes de comparar orçamentos é preciso saber em que estado está a casa. A inspeção é feita por engenheiros: avaliam a estrutura, registam defeitos e concluem o que se pode manter, o que reforçar e o que substituir. É especialmente importante em casas que estiveram muito tempo sem aquecimento, passaram por vários donos e «acrescentos» não legalizados ou têm pavimentos de madeira."
+   "Sim, sem inspeção não há decisão: antes de comparar orçamentos é preciso saber em que estado está a casa. A inspeção é feita por engenheiros: avaliam a estrutura, registam defeitos e concluem o que se pode manter, o que reforçar e o que substituir. É especialmente importante em casas que estiveram muito tempo sem aquecimento, passaram por vários donos e «acrescentos» não legalizados ou têm pavimentos de madeira."
   ],
   [
    "ul",
@@ -88,7 +89,7 @@
   ],
   [
    "h2",
-   "Quando compensa reabilitar"
+   "Quando compensa reabilitar uma casa antiga?"
   ],
   [
    "ul",
@@ -127,7 +128,7 @@
   ],
   [
    "h2",
-   "Quando compensa construir uma casa nova"
+   "Quando é melhor demolir e construir uma casa nova?"
   ],
   [
    "ul",
@@ -169,7 +170,7 @@
   ],
   [
    "h2",
-   "Como comparar o orçamento das duas opções"
+   "Como comparar o orçamento da reabilitação e de uma casa nova?"
   ],
   [
    "p",
@@ -209,7 +210,7 @@
   ],
   [
    "h2",
-   "Erros comuns"
+   "Que erros cometem os donos de casas antigas?"
   ],
   [
    "ul",
