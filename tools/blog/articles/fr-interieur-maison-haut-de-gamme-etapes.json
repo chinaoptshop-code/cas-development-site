@@ -7,6 +7,7 @@
  "description": "Intérieur d’une maison haut de gamme pas à pas : brief, concept, plans d’exécution, devis, finitions et ameublement. Le bon ordre et un repère de budget.",
  "lead": "L’intérieur d’une maison haut de gamme se construit par étapes, et chacune conditionne la suivante : du brief et du concept aux plans d’exécution, aux finitions et à la pose du mobilier. Voici l’ordre qui fonctionne, ce qu’il faut valider à chaque étape et comment bâtir un budget sans surprises.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/realisation-projet",
   "Réalisation du projet"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce qui distingue l’intérieur d’une maison de celui d’un appartement"
+   "En quoi l'intérieur d'une maison diffère-t-il d'un appartement ?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Étape 1. Brief et concept"
+   "Étape 1. Par où commence l'intérieur d'une maison ?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Étape 2. Intérieur et architecture ensemble"
+   "Étape 2. Quand lancer intérieur et architecture ensemble ?"
   ],
   [
    "p",
@@ -72,7 +73,7 @@
   ],
   [
    "h2",
-   "Étape 3. Plans d’exécution"
+   "Étape 3. Que sont les plans d'exécution ?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Escaliers, doubles hauteurs et transitions"
+   "Comment concevoir escaliers, doubles hauteurs et transitions ?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Étape 4. Devis et planning"
+   "Étape 4. À quoi servent le devis et le planning ?"
   ],
   [
    "p",
@@ -126,7 +127,7 @@
   ],
   [
    "h2",
-   "Étape 5. Finitions et contrôle qualité"
+   "Étape 5. Comment préserver le projet pendant les travaux ?"
   ],
   [
    "p",
@@ -144,7 +145,7 @@
   ],
   [
    "h2",
-   "Étape 6. Mobilier, éclairage, textiles et décoration"
+   "Étape 6. Quand passer au mobilier, à la lumière et au décor ?"
   ],
   [
    "p",
@@ -171,7 +172,7 @@
   ],
   [
    "h2",
-   "Ce qui fait le plus souvent déraper délais et budget"
+   "Qu'est-ce qui fait déraper délais et budget ?"
   ],
   [
    "ul",

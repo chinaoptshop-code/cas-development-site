@@ -7,6 +7,7 @@
  "description": "Bürobeleuchtung: Grund-, Arbeits- und Akzentlicht, Stromschienen, Blendung auf Bildschirmen, Farbtemperatur nach Zonen. Bürodesign ab $30/m².",
  "lead": "Bürobeleuchtung ist keine Frage der Zahl der Leuchten an der Decke, sondern eines Szenarios: Wo arbeiten Menschen am Bildschirm, wo sprechen sie, wo erholen sie sich? Wir erklären die drei Lichtebenen, Stromschienensysteme und die Lichtwahl für jede Zone.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/de/bueroplanung",
   "Büroplanung und Büroumbau in Kyjiw"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Drei Lichtebenen: Grund-, Arbeits- und Akzentlicht"
+   "Welche drei Lichtebenen braucht ein Büro?"
   ],
   [
    "p",
-   "Gleichmäßiges Licht aus identischen Panels über die ganze Decke ist die einfachste Lösung, aber nicht die beste. In einem gut beleuchteten Büro arbeitet Licht in Ebenen, und jede Ebene hat ihre Aufgabe."
+   "In einem gut beleuchteten Büro arbeitet Licht in Ebenen, und jede Ebene hat ihre Aufgabe. Gleichmäßiges Licht aus identischen Panels über die ganze Decke ist die einfachste Lösung, aber nicht die beste."
   ],
   [
    "ul",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Strom- und Magnetschienen: wann sie sich lohnen"
+   "Wann lohnen sich Strom- und Magnetschienen?"
   ],
   [
    "p",
@@ -58,7 +59,7 @@
   ],
   [
    "h2",
-   "Blendung auf Bildschirmen: wohin das Licht relativ zum Tisch gehört"
+   "Wohin mit dem Licht, damit Bildschirme nicht blenden?"
   ],
   [
    "p",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Farbtemperatur nach Zonen"
+   "Welche Farbtemperatur passt zu welcher Zone?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Licht in Besprechungsräumen und in der Küche-Café"
+   "Welches Licht brauchen Besprechungsraum und Küche-Café?"
   ],
   [
    "p",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Wie sich das in Planung und Kostenvoranschlag einfügt"
+   "Wann plant man die Bürobeleuchtung?"
   ],
   [
    "p",

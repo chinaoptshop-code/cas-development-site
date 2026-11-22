@@ -7,6 +7,7 @@
  "description": "Conception de maison à Kyiv : ce que comprend le projet (plan, façades, structure, réseaux) et son prix. Projet de design à partir de $30/m², minimum $2 500.",
  "lead": "La conception d'une maison à Kyiv est la première étape avant la construction : elle détermine à la fois le confort de vie et le budget. Voici de quoi se compose un projet de maison, à quoi il sert et combien il coûte.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/conception-maison",
   "Conception et design de maison individuelle"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce qu'est un projet de maison"
+   "Qu'est-ce qu'un projet de maison ?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "Ce que comprend un projet de maison"
+   "Que comprend un projet de maison ?"
   ],
   [
    "ul",
@@ -42,7 +43,7 @@
   ],
   [
    "h2",
-   "À quoi sert le projet"
+   "À quoi sert un projet de maison ?"
   ],
   [
    "ol",
@@ -55,7 +56,7 @@
   ],
   [
    "h2",
-   "Ce que l'on perd sans projet"
+   "Que perd-on à construire sans projet ?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Combien coûte un projet de maison"
+   "Combien coûte un projet de maison ?"
   ],
   [
    "p",
@@ -79,7 +80,7 @@
   ],
   [
    "h2",
-   "Conception et construction dans une même équipe"
+   "Pourquoi confier conception et construction à une seule équipe ?"
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Ce qu'il faut préparer avant de commencer"
+   "Que préparer avant de lancer la conception ?"
   ],
   [
    "ul",

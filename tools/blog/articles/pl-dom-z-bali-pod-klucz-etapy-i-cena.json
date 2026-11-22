@@ -7,6 +7,7 @@
  "description": "Dom z bali pod klucz: bal klejony czy profilowany, jak osiadanie wpływa na harmonogram, etapy budowy i cena — stan surowy od $600/m², pod klucz od $1 100/m².",
  "lead": "Dom z bali pod klucz wybiera się dla żywego drewna we wnętrzu i przytulności, którą trudno uzyskać z innych materiałów. Wyjaśniamy, czym różni się bal klejony od profilowanego, jak osiadanie wpływa na harmonogram, jak przebiega budowa etap po etapie i z czego składa się cena.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pl/dom-z-bali",
   "Dom z bali"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Bal klejony czy profilowany"
+   "Bal klejony czy profilowany: co wybrać?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Osiadanie i co oznacza dla harmonogramu"
+   "Czym jest osiadanie i jak wpływa na harmonogram?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Etapy budowy domu z bali"
+   "Jakie są etapy budowy domu z bali?"
   ],
   [
    "ol",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Stan surowy, przegrody termiczne i pod klucz"
+   "Czym różnią się stan surowy, przegrody i pod klucz?"
   ],
   [
    "ul",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje dom z bali"
+   "Ile kosztuje dom z bali?"
   ],
   [
    "p",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "Jak sprawić, by drewno służyło długo"
+   "Jak sprawić, by dom drewniany służył długo?"
   ],
   [
    "p",

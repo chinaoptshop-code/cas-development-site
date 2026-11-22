@@ -7,6 +7,7 @@
  "description": "Cómo planificar un complejo turístico o glamping: formato, parcela, plan maestro, cabañas A-frame o modulares, restaurante, spa y coste.",
  "lead": "Un complejo turístico es un negocio en el que la arquitectura influye directamente en la ocupación y el gasto medio. Así se planifica un complejo para pasar de la idea a la apertura sin gastos innecesarios.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/es/complejo-turistico-llave-en-mano",
   "Diseño de complejos turísticos"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "1. Formato y huésped"
+   "1. ¿Para qué huésped se construye el complejo?"
   ],
   [
    "p",
-   "¿Para quién es el complejo: familias, parejas, grupos de empresa, pescadores? ¿Todo el año o de temporada? De eso dependen el número y tipo de cabañas, el restaurante, el spa y las zonas infantiles y deportivas. Un complejo abierto todo el año necesita casas aisladas, calefacción y actividades de invierno; uno de temporada da más peso a terrazas, playa y espacios abiertos."
+   "El formato del complejo lo define su huésped —familias, parejas, grupos de empresa o pescadores— y si abre todo el año o por temporada. De eso dependen el número y tipo de cabañas, el restaurante, el spa y las zonas infantiles y deportivas. Un complejo abierto todo el año necesita casas aisladas, calefacción y actividades de invierno; uno de temporada da más peso a terrazas, playa y espacios abiertos."
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "2. La parcela y el plan maestro"
+   "2. ¿Cómo planificar la parcela y el plan maestro?"
   ],
   [
    "ul",
@@ -54,7 +55,7 @@
   ],
   [
    "h2",
-   "3. Las cabañas"
+   "3. ¿Qué cabañas elegir?"
   ],
   [
    "p",
@@ -88,7 +89,7 @@
   ],
   [
    "h2",
-   "4. Restaurante, spa y espacios comunes"
+   "4. ¿Para qué sirven el restaurante, el spa y los espacios comunes?"
   ],
   [
    "p",
@@ -105,7 +106,7 @@
   ],
   [
    "h2",
-   "5. Instalaciones y paisajismo"
+   "5. ¿Cuándo planificar instalaciones y urbanización?"
   ],
   [
    "p",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "6. Etapas de lanzamiento"
+   "6. ¿Cómo abrir el complejo por fases?"
   ],
   [
    "ol",
@@ -145,7 +146,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta un complejo turístico"
+   "¿Cuánto cuesta un complejo vacacional?"
   ],
   [
    "p",
@@ -157,7 +158,7 @@
   ],
   [
    "h2",
-   "Errores frecuentes al crear un complejo"
+   "¿Qué errores se cometen al crear un complejo?"
   ],
   [
    "ul",

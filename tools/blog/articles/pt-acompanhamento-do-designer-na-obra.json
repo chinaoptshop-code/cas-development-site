@@ -7,6 +7,7 @@
  "description": "Acompanhamento do designer numa remodelação: o que inclui, quando é necessário, como poupa orçamento e garante o interior que viu nas visualizações 3D.",
  "lead": "Até um projeto perfeito pode ser estragado em obra. O acompanhamento do designer é o controlo da remodelação pelo designer, para que siga o projeto e o interior final fique exatamente como na visualização 3D.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pt/design-de-interiores",
   "Design de interiores"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "O que é o acompanhamento do designer"
+   "O que é o acompanhamento do designer?"
   ],
   [
    "p",
-   "Um projeto de design é composto por desenhos, alçados de paredes, plantas de iluminação e tomadas e especificações de materiais e móveis. Mas os desenhos não se constroem sozinhos: é a equipa de obra que os lê, e cada profissional pode interpretar um pormenor à sua maneira. O acompanhamento do designer significa que o autor do projeto participa na obra: o designer visita o local, verifica se tudo é executado segundo os desenhos e resolve as dúvidas que surgem durante os trabalhos."
+   "O acompanhamento do designer significa que o autor do projeto participa na obra: o designer visita o local, verifica se tudo é executado segundo os desenhos e resolve as dúvidas que surgem durante os trabalhos. Um projeto de design é composto por desenhos, alçados de paredes, plantas de iluminação e tomadas e especificações de materiais e móveis. Mas os desenhos não se constroem sozinhos: é a equipa de obra que os lê, e cada profissional pode interpretar um pormenor à sua maneira."
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "O que inclui o acompanhamento do designer"
+   "O que inclui o acompanhamento do designer?"
   ],
   [
    "ul",
@@ -61,7 +62,7 @@
   ],
   [
    "h2",
-   "Quando o acompanhamento é especialmente importante"
+   "Quando é o acompanhamento especialmente importante?"
   ],
   [
    "ul",
@@ -79,7 +80,7 @@
   ],
   [
    "h2",
-   "Como o acompanhamento do designer poupa dinheiro"
+   "Como poupa dinheiro o acompanhamento do designer?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "Em que fases o designer visita a obra"
+   "Em que fases o designer visita a obra?"
   ],
   [
    "ol",
@@ -119,7 +120,7 @@
   ],
   [
    "h2",
-   "Erros típicos sem acompanhamento do designer"
+   "Que erros acontecem sem acompanhamento do designer?"
   ],
   [
    "ul",
@@ -133,7 +134,7 @@
   ],
   [
    "h2",
-   "Checklist: como organizar o acompanhamento do designer"
+   "Como organizar o acompanhamento do designer?"
   ],
   [
    "ul",

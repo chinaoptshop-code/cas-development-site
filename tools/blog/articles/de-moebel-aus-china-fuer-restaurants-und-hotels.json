@@ -7,6 +7,7 @@
  "description": "Möbel aus China für Restaurants, Cafés und Hotels: was sich zu importieren lohnt, wie man die Spezifikation schreibt, Lieferzeiten und Qualitätskontrolle.",
  "lead": "Die Ausstattung eines Restaurants, Cafés oder Hotels aus China ermöglicht es, Möbel, Licht, Geschirr und Textilien in einer Sendung direkt ab Fabrik zu kaufen. Hier erfahren Sie, was sich lohnt, wie man die Spezifikation vorbereitet, wie lange die Lieferung dauert und wie man den Eröffnungstermin hält.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/objekteinrichtung",
   "Objekteinrichtung"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Wie sich die Gastronomie-Ausstattung von einer Wohnung unterscheidet"
+   "Was unterscheidet HoReCa-Ausstattung von einer Wohnung?"
   ],
   [
    "p",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Was sich aus China lohnt"
+   "Was lohnt sich aus China für ein Lokal?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Die Spezifikation ist die Grundlage der Bestellung"
+   "Warum ist die Spezifikation die Grundlage?"
   ],
   [
    "p",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "So läuft die Ausstattung eines Lokals"
+   "Wie läuft die Ausstattung eines Lokals ab?"
   ],
   [
    "ol",
@@ -142,7 +143,7 @@
   ],
   [
    "h2",
-   "Hotels und Minihotels: worauf es ankommt"
+   "Was ist bei Hotels und Minihotels zu beachten?"
   ],
   [
    "p",
@@ -160,7 +161,7 @@
   ],
   [
    "h2",
-   "Qualität vor dem Versand prüfen"
+   "Wie prüft man die Qualität vor dem Versand?"
   ],
   [
    "p",
@@ -176,7 +177,7 @@
   ],
   [
    "h2",
-   "Typische Fehler"
+   "Welche Fehler sind typisch?"
   ],
   [
    "ul",

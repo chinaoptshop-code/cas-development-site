@@ -7,6 +7,7 @@
  "description": "Turnkey mini-hotel construction: format and room count, design, new build or conversion, room procurement and opening. Design from $30/m².",
  "lead": "A mini-hotel is a business in which every decision in the drawings later affects revenue: how many rooms fit, how quickly they can be cleaned, how durable the finishes are. Here is how turnkey mini-hotel construction goes — from concept and design to procurement and the first guests.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/en/hotel-design-fit-out",
   "Hotel design and turnkey fit-out"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Concept: who the hotel is for"
+   "Which guest is the mini-hotel built for?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "A plot or an existing building"
+   "Build from scratch or convert an existing building?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "Design: room count and flows"
+   "Where does a mini-hotel design start?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Mini-hotel construction and building services"
+   "How do hotel building services differ from a house?"
   ],
   [
    "p",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "Procurement for rooms and public areas"
+   "How are rooms and public areas furnished?"
   ],
   [
    "p",
@@ -118,7 +119,7 @@
   ],
   [
    "h2",
-   "Restaurant and opening"
+   "Why does a mini-hotel need a restaurant, and how does it open?"
   ],
   [
    "p",
@@ -135,7 +136,7 @@
   ],
   [
    "h2",
-   "What it costs and how we work"
+   "How much does a turnkey mini-hotel cost?"
   ],
   [
    "p",

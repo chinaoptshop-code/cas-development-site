@@ -7,6 +7,7 @@
  "description": "Maison en bois massif clé en main : lamellé-collé ou profilé, tassement et planning, étapes et prix — gros œuvre dès $600/m², clé en main dès $1 100/m².",
  "lead": "On choisit une maison en bois massif clé en main pour le bois vivant à l’intérieur et pour un confort difficile à obtenir avec d’autres matériaux. Nous expliquons ce qui distingue le lamellé-collé du bois profilé, comment le tassement influe sur le planning, comment la construction se déroule étape par étape et de quoi se compose le prix.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/fr/maison-bois-massif",
   "Maison en bois massif"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Lamellé-collé ou bois profilé"
+   "Bois lamellé-collé ou profilé : que choisir ?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Le tassement et ce qu’il implique pour le planning"
+   "Qu'est-ce que le tassement et quel effet sur le planning ?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Les étapes de construction d’une maison en bois massif"
+   "Quelles sont les étapes d'une maison en madriers ?"
   ],
   [
    "ol",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Gros œuvre, enveloppe thermique et clé en main"
+   "Gros œuvre, enveloppe ou clé en main : quelle différence ?"
   ],
   [
    "ul",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Combien coûte une maison en bois massif"
+   "Combien coûte une maison en madriers ?"
   ],
   [
    "p",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "Comment faire durer le bois"
+   "Comment faire durer une maison en bois ?"
   ],
   [
    "p",

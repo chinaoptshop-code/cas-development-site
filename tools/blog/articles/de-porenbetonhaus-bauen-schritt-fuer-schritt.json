@@ -7,6 +7,7 @@
  "description": "Bauablauf beim Porenbetonhaus: Bodenplatte, erste Steinlage, Stürze, Ringanker, Dach, wärmedämmende Hülle. Checkliste, was in jeder Phase zu prüfen ist.",
  "lead": "Der Bau mit Porenbeton verzeiht weniger, als es scheint: Die Wände wachsen schnell, doch die meisten Mängel entstehen an wenigen Details – der ersten Steinlage, den Stürzen, dem Ringanker sowie den Anschlüssen an Dach und Fenster. Wir gehen den Bauablauf so durch, wie ihn ein Bauleiter führt, und zeigen in jeder Phase, was der Bauherr prüfen sollte, solange die Arbeiten noch sichtbar sind.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/hausbau",
   "Hausbau"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ein Porenbetonhaus bauen: woraus der Prozess besteht"
+   "Was ist Porenbeton und welche Bauphasen gibt es?"
   ],
   [
    "p",
@@ -41,7 +42,7 @@
   ],
   [
    "h2",
-   "Phase 0. Planung und Baugrund – die Grundlage aller Entscheidungen"
+   "Phase 0. Wer legt Steinsorte, Fundament und Bewehrung fest?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Phase 1. Bodenplatte"
+   "Phase 1. Warum eine Bodenplatte für Porenbeton?"
   ],
   [
    "p",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Phase 2. Horizontalsperre und erste Steinlage"
+   "Phase 2. Warum ist die erste Steinlage die wichtigste?"
   ],
   [
    "p",
@@ -126,7 +127,7 @@
   ],
   [
    "h2",
-   "Phase 3. Wände, Stürze und Öffnungen"
+   "Phase 3. Wozu braucht man Stürze über Öffnungen?"
   ],
   [
    "p",
@@ -148,7 +149,7 @@
   ],
   [
    "h2",
-   "Phase 4. Ringanker und Decken"
+   "Phase 4. Wozu dient der Ringanker?"
   ],
   [
    "p",
@@ -175,7 +176,7 @@
   ],
   [
    "h2",
-   "Phase 5. Dach"
+   "Phase 5. Wie wird das Dach am Porenbeton befestigt?"
   ],
   [
    "p",
@@ -197,7 +198,7 @@
   ],
   [
    "h2",
-   "Phase 6. Fenster, Dämmung und wärmedämmende Hülle"
+   "Phase 6. Was ist die Dämmhülle und wie setzt man Fenster?"
   ],
   [
    "p",
@@ -225,7 +226,7 @@
   ],
   [
    "h2",
-   "Phase 7. Haustechnik, Putz und Estrich"
+   "Phase 7. Wann beginnen Haustechnik, Putz und Estrich?"
   ],
   [
    "p",
@@ -242,7 +243,7 @@
   ],
   [
    "h2",
-   "Typische Fehler beim Bauen mit Porenbeton"
+   "Welche Fehler passieren beim Bauen mit Porenbeton?"
   ],
   [
    "ul",
@@ -258,7 +259,7 @@
   ],
   [
    "h2",
-   "Checkliste verdeckter Arbeiten: was mit Foto und Protokoll festzuhalten ist"
+   "Welche verdeckten Arbeiten sind zu dokumentieren?"
   ],
   [
    "p",

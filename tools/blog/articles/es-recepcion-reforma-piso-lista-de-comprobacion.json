@@ -7,6 +7,7 @@
  "description": "Recepción de la reforma de un piso: qué revisar en paredes, alicatado, electricidad y fontanería, qué documentos pedir al contratista y cómo anotar defectos.",
  "lead": "Un acta firmada significa que has aceptado el trabajo, y los defectos que se veían durante la visita son después más difíciles de demostrar. Hemos reunido una lista de comprobación para la recepción de la reforma de un piso: qué preparar, qué revisar en cada estancia, qué documentos pedir al contratista y cómo anotar las observaciones.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/es/supervision-de-obra",
   "Supervisión del diseñador y técnica"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Recibir por etapas y no solo al final"
+   "¿Por qué recibir la reforma por etapas y no solo al final?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Qué llevar"
+   "¿Qué llevar a la recepción de la reforma?"
   ],
   [
    "ul",
@@ -47,7 +48,7 @@
   ],
   [
    "h2",
-   "Paredes, techos y suelo"
+   "¿Cómo revisar paredes, techos y suelo?"
   ],
   [
    "ul",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Baño y alicatado"
+   "¿Qué revisar en el baño y el alicatado?"
   ],
   [
    "ul",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Electricidad, iluminación e instalaciones"
+   "¿Cómo comprobar electricidad, iluminación e instalaciones?"
   ],
   [
    "ul",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "Puertas, ventanas y muebles a medida"
+   "¿Qué mirar en puertas, ventanas y muebles a medida?"
   ],
   [
    "ul",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Documentos que conviene recibir"
+   "¿Qué documentos recibir tras la reforma?"
   ],
   [
    "ul",
@@ -128,7 +129,7 @@
   ],
   [
    "h2",
-   "Cómo anotar las observaciones"
+   "¿Cómo anotar las observaciones en la recepción?"
   ],
   [
    "p",

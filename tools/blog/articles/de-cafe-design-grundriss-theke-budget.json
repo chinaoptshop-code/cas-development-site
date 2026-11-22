@@ -7,6 +7,7 @@
  "description": "Café-Design in Kyjiw: Theke und Gastraum planen, Haustechnik vor dem Ausbau festlegen und was das Projekt kostet — ab $30/m², mindestens $2 500.",
  "lead": "In einem kleinen Café arbeitet jeder Quadratmeter: Auf derselben Fläche müssen Theke, Warteschlange, Vitrine und Plätze unterkommen, an denen der Gast gern länger bleibt. Wir erklären, womit Café-Design beginnt, wie man Theke und Gastraum plant, welche Haustechnik vor dem Ausbau feststehen muss und was das Projekt kostet.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/de/restaurantdesign",
   "Restaurant- und Cafédesign"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Womit Café-Design beginnt"
+   "Womit beginnt das Design eines Cafés?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Die Theke ist das Herz der Planung"
+   "Warum ist die Theke das Herz der Planung?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "Der Gastraum: wie viele Plätze und welche"
+   "Wie viele und welche Plätze braucht der Gastraum?"
   ],
   [
    "p",
@@ -77,7 +78,7 @@
   ],
   [
    "h2",
-   "Atmosphäre: Licht, Materialien und Akustik"
+   "Wie schaffen Licht, Material und Akustik Atmosphäre?"
   ],
   [
    "p",
@@ -98,7 +99,7 @@
   ],
   [
    "h2",
-   "Was Café-Design kostet"
+   "Was kostet das Design eines Cafés?"
   ],
   [
    "p",
@@ -110,7 +111,7 @@
   ],
   [
    "h2",
-   "Fehler, deren Korrektur teuer ist"
+   "Welche Fehler im Café sind teuer zu beheben?"
   ],
   [
    "ul",

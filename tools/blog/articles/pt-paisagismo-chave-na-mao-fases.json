@@ -7,6 +7,7 @@
  "description": "Paisagismo chave na mão: o que inclui, por que ordem se arranja o terreno, quem responde pelo resultado e como se calcula o custo. Projeto desde $50/100 m².",
  "lead": "Paisagismo chave na mão é quando uma só equipa leva o terreno desde a visita e o projeto até à relva, à iluminação e à rega afinada. Explicamos de que fases é composto o arranjo, porque a ordem dos trabalhos conta mais do que a escolha das plantas e como se calcula o custo.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pt/arquitetura-paisagista",
   "Arquitetura paisagista e arranjo de terrenos"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "O que significa paisagismo chave na mão"
+   "O que significa paisagismo chave na mão?"
   ],
   [
    "p",
@@ -40,7 +41,7 @@
   ],
   [
    "h2",
-   "Fase 1. Visita, topografia e projeto"
+   "Fase 1. Por onde começa o arranjo do terreno?"
   ],
   [
    "p",
@@ -58,7 +59,7 @@
   ],
   [
    "h2",
-   "Fase 2. Movimentação de terras e modelação"
+   "Fase 2. Para que servem a terraplanagem e a modelação?"
   ],
   [
    "p",
@@ -66,7 +67,7 @@
   ],
   [
    "h2",
-   "Fase 3. Tudo o que fica debaixo de terra"
+   "Fase 3. O que vai debaixo do chão antes da calçada?"
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Fase 4. Calçada, terraços e pequenas estruturas"
+   "Fase 4. Quando se fazem calçada, terraços e estruturas?"
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Fase 5. Terra, relva e plantação"
+   "Fase 5. Quando entram a relva e as plantas?"
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Quanto custa o paisagismo chave na mão"
+   "Quanto custa o paisagismo chave na mão?"
   ],
   [
    "p",

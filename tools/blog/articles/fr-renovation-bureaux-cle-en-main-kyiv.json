@@ -7,6 +7,7 @@
  "description": "Rénovation de bureaux clé en main à Kyiv : agencement, salles de réunion, réseaux, travaux en centre d’affaires, mobilier. Dès 50/m².",
  "lead": "Un bureau est un outil qui doit servir votre équipe et vos clients. Voici comment planifier une rénovation de bureaux clé en main pour obtenir un espace confortable, ne perdre aucun jour de travail et rester dans le devis.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/renovation-bureaux",
   "Rénovation de bureaux dès $350/m²"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Commencez par le brief, pas par la couleur des murs"
+   "Par où commencer la rénovation d'un bureau ?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Ce qu’il faut prévoir dans l’agencement"
+   "Que prévoir dans le plan du bureau ?"
   ],
   [
    "ul",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Les réseaux : invisibles, mais ressentis chaque jour"
+   "De quels réseaux un bureau a-t-il besoin ?"
   ],
   [
    "p",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Rénover sans arrêter le travail"
+   "Peut-on rénover sans arrêter l'activité ?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Le mobilier en parallèle des travaux"
+   "Quand commander le mobilier de bureau ?"
   ],
   [
    "p",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Combien coûte une rénovation de bureaux clé en main"
+   "Combien coûte une rénovation de bureau clé en main ?"
   ],
   [
    "p",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Erreurs fréquentes"
+   "Quelles erreurs commet-on en rénovant un bureau ?"
   ],
   [
    "ul",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Check-list avant de démarrer"
+   "Que vérifier avant de démarrer ?"
   ],
   [
    "ol",

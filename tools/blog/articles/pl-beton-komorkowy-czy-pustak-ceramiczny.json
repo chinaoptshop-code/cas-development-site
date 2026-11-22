@@ -7,6 +7,7 @@
  "description": "Beton komórkowy czy pustak ceramiczny: wytrzymałość, ciepło, murowanie, wykończenie, mocowania i koszt. Budowa od $600/m², pod klucz od $1 100/m².",
  "lead": "Beton komórkowy i pustak ceramiczny to dwa najpopularniejsze materiały na dom murowany w Ukrainie. Oba dają ciepłe i trwałe ściany, ale inaczej zachowują się przy murowaniu, wykańczaniu i mocowaniu. Porównujemy je prostymi słowami, żebyś mógł wybrać materiał razem z architektem, a nie na podstawie reklamy.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/pl/budowa-domow",
   "Budowa domów"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Beton komórkowy i pustak ceramiczny: czym są"
+   "Czym są beton komórkowy i pustak ceramiczny?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Wytrzymałość i stropy"
+   "Który materiał lepiej przenosi stropy?"
   ],
   [
    "p",
@@ -49,7 +50,7 @@
   ],
   [
    "h2",
-   "Ciepło, wilgoć i ocieplenie"
+   "Czy dom z betonu komórkowego lub ceramiki trzeba ocieplać?"
   ],
   [
    "p",
@@ -83,7 +84,7 @@
   ],
   [
    "h2",
-   "Murowanie, wykończenie i mocowania"
+   "Który materiał łatwiej murować i wykańczać?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "Co wybrać: krótkie podsumowanie"
+   "Co wybrać: beton komórkowy czy ceramikę?"
   ],
   [
    "ul",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje dom z betonu komórkowego lub ceramiki"
+   "Ile kosztuje dom z betonu komórkowego lub ceramiki?"
   ],
   [
    "p",

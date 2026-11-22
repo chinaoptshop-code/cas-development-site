@@ -7,6 +7,7 @@
  "description": "Payer la rénovation en plusieurs fois : échéanciers 50/50, 50/30/20, 50/40/10, acompte dès 10 %. Ce qui se paie à part et comment lier les paiements aux étapes.",
  "lead": "Payer une rénovation en plusieurs fois est une pratique normale qui protège le client comme l'entreprise. Mais l'échéancier doit être clair : ce que vous payez exactement, ce qui déclenche le paiement suivant et ce qui se passe si quelque chose change. Nous passons en revue les échéanciers courants, des exemples et les clauses du contrat à vérifier.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/fr/contrat-garantie-paiement",
   "Contrat de rénovation, garantie et paiement"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Pourquoi fractionner le paiement d'une rénovation"
+   "Pourquoi payer la rénovation en plusieurs fois ?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Quels échéanciers de paiement existent"
+   "Quels échéanciers de paiement existent ?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Ce que vous payez exactement"
+   "Que payez-vous exactement ?"
   ],
   [
    "p",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Exemple : calculer la base de l'échéancier"
+   "Comment calculer la base de l'échéancier ?"
   ],
   [
    "p",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Choisir l'échéancier selon votre situation"
+   "Quel échéancier choisir selon votre situation ?"
   ],
   [
    "h3",
@@ -169,7 +170,7 @@
   ],
   [
    "h2",
-   "Lier les paiements aux étapes et à la réception"
+   "Comment lier paiements, étapes et réception ?"
   ],
   [
    "p",
@@ -191,7 +192,7 @@
   ],
   [
    "h2",
-   "Signaux d'alerte dans les conditions de paiement"
+   "Quelles conditions de paiement doivent alerter ?"
   ],
   [
    "ul",
@@ -210,7 +211,7 @@
   ],
   [
    "h2",
-   "Checklist : ce que le contrat doit prévoir sur le paiement"
+   "Que doit prévoir le contrat sur le paiement ?"
   ],
   [
    "ul",

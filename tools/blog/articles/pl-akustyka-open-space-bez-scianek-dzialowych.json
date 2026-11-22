@@ -7,6 +7,7 @@
  "description": "Akustyka open space bez pełnych ścianek: panele, sufity, tekstylia, ściany z roślin, pokoje do skupienia i strefy. Remont biura od $350/m², projekt od $30/m².",
  "lead": "Otwarte biuro daje przestrzeń i swobodny kontakt, ale hałas szybko zamienia się z zalety w problem. Wyjaśniamy, jak zaplanować akustykę open space, żeby było cicho, a przestrzeń pozostała jasna i otwarta — bez rzędu pełnych ścianek działowych.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektowanie-biur",
   "Projekt i remont biura w Kijowie"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Skąd bierze się hałas w otwartym biurze"
+   "Skąd bierze się hałas w otwartym biurze?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Panele i sufity dźwiękochłonne"
+   "Jakie panele i sufity pochłaniają dźwięk?"
   ],
   [
    "p",
@@ -40,7 +41,7 @@
   ],
   [
    "h2",
-   "Wykładziny i tekstylia"
+   "Czy wykładziny i tekstylia pomagają na hałas?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "Ściany z roślin i meble jako ekrany akustyczne"
+   "Czy ściany z roślin i meble działają jak ekrany akustyczne?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Strefy: pokoje do skupienia i budki telefoniczne"
+   "Po co w open space pokoje do skupienia i budki?"
   ],
   [
    "p",
@@ -98,7 +99,7 @@
   ],
   [
    "h2",
-   "Rozmieszczenie głośnych stref i szklane sale spotkań"
+   "Gdzie umieścić głośne strefy i szklane sale spotkań?"
   ],
   [
    "p",
@@ -115,7 +116,7 @@
   ],
   [
    "h2",
-   "Ile to kosztuje"
+   "Ile kosztuje akustyka biura open space?"
   ],
   [
    "p",

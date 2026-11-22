@@ -7,6 +7,7 @@
  "description": "Abnahme der Wohnungsrenovierung: was an Wänden, Fliesen, Elektrik und Sanitär zu prüfen ist, welche Unterlagen Sie erhalten und wie Mängel notiert werden.",
  "lead": "Ein unterschriebenes Abnahmeprotokoll bedeutet, dass Sie die Arbeit abgenommen haben, und Mängel, die bei der Begehung sichtbar waren, lassen sich später schwerer nachweisen. Wir haben eine Checkliste für die Abnahme der Wohnungsrenovierung zusammengestellt: was vorzubereiten ist, was in jedem Raum zu prüfen ist, welche Unterlagen der Auftragnehmer übergibt und wie Sie Ihre Anmerkungen festhalten.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/de/bauueberwachung",
   "Künstlerische und technische Bauüberwachung"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "In Etappen abnehmen, nicht nur am Ende"
+   "Warum in Etappen abnehmen und nicht erst am Ende?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Was Sie mitbringen sollten"
+   "Was sollten Sie zur Abnahme mitbringen?"
   ],
   [
    "ul",
@@ -47,7 +48,7 @@
   ],
   [
    "h2",
-   "Wände, Decken und Boden"
+   "Wie prüft man Wände, Decken und Boden?"
   ],
   [
    "ul",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Bad und Fliesen"
+   "Was ist im Bad und an den Fliesen zu prüfen?"
   ],
   [
    "ul",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Elektrik, Licht und Haustechnik"
+   "Wie prüft man Elektrik, Licht und Haustechnik?"
   ],
   [
    "ul",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "Türen, Fenster und Einbaumöbel"
+   "Worauf achten bei Türen, Fenstern und Einbaumöbeln?"
   ],
   [
    "ul",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Unterlagen, die Sie erhalten sollten"
+   "Welche Unterlagen gehören zur Abnahme?"
   ],
   [
    "ul",
@@ -128,7 +129,7 @@
   ],
   [
    "h2",
-   "Wie Anmerkungen festgehalten werden"
+   "Wie hält man Mängel bei der Abnahme fest?"
   ],
   [
    "p",

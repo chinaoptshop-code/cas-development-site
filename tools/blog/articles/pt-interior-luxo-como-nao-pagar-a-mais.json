@@ -7,6 +7,7 @@
  "description": "Como não pagar a mais por um interior de luxo: em que não cortar, onde poupar sem perder o efeito, como evitar retrabalho e como orçamentar com tarifas reais.",
  "lead": "Um interior de luxo não tem de ser caro em cada pormenor. O custo a mais raramente vem dos materiais caros — vem do retrabalho, das compras caóticas e do dinheiro gasto onde ninguém repara. Explicamos em que não se deve poupar, onde se pode poupar sem perder o efeito e como construir o orçamento.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pt/equipamento-chave-na-mao",
   "Equipamento chave na mão"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Pagar a mais não é o mesmo que um preço alto"
+   "O que significa realmente pagar a mais por um interior?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Onde não se deve poupar"
+   "Onde não se deve poupar num interior de luxo?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Onde poupar sem perder o efeito"
+   "Onde se pode poupar sem perder o efeito?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Destaque e fundo: distribuir o orçamento por zonas"
+   "Como dividir o orçamento entre destaque e fundo?"
   ],
   [
    "p",
@@ -98,7 +99,7 @@
   ],
   [
    "h2",
-   "Retrabalho: o dinheiro mais caro de uma obra"
+   "Porque é o retrabalho o dinheiro mais caro de uma obra?"
   ],
   [
    "p",
@@ -120,7 +121,7 @@
   ],
   [
    "h2",
-   "Mobilar com uma só especificação"
+   "Porquê mobilar com uma única especificação?"
   ],
   [
    "p",
@@ -132,7 +133,7 @@
   ],
   [
    "h2",
-   "Como ler um orçamento para não pagar a mais"
+   "Como ler um orçamento para não pagar a mais?"
   ],
   [
    "p",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Um orçamento de exemplo com as nossas tarifas"
+   "Quanto custa um apartamento de 150 m² às nossas tarifas?"
   ],
   [
    "p",
@@ -179,7 +180,7 @@
   ],
   [
    "h2",
-   "Tempo também é dinheiro"
+   "Porque é que os atrasos também custam dinheiro?"
   ],
   [
    "p",
@@ -187,7 +188,7 @@
   ],
   [
    "h2",
-   "Checklist antes de começar"
+   "O que verificar antes de começar?"
   ],
   [
    "ol",

@@ -7,6 +7,7 @@
  "description": "Home staging de um apartamento: o que retirar, o que reparar, como escolher móveis, luz e têxteis para fotos e visitas. Mobiliário a partir de $250/m².",
  "lead": "Um comprador ou inquilino decide se liga em poucos segundos a olhar para as fotos. O home staging é preparar um apartamento para venda ou arrendamento de forma que, nas fotos e nas visitas, pareça cuidado e fácil de perceber. Explicamos por onde começar, o que reparar, que móveis e têxteis acrescentar e quando é mais simples encomendar mobiliário chave na mão.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/pt/mobiliario-chave-na-mao",
   "Mobiliário chave na mão"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "O que é home staging e para que serve"
+   "O que é home staging e para que serve?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Passo 1: arrumar e limpar"
+   "Passo 1: o que retirar antes das visitas?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Passo 2: pequenas reparações"
+   "Passo 2: que pequenas reparações fazer?"
   ],
   [
    "p",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Passo 3: móveis e disposição"
+   "Passo 3: como dispor os móveis?"
   ],
   [
    "p",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Passo 4: luz, têxteis e decoração"
+   "Passo 4: o que acrescentam luz, têxteis e decoração?"
   ],
   [
    "p",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Por conta própria ou com mobiliário chave na mão"
+   "Por conta própria ou com mobiliário chave na mão?"
   ],
   [
    "p",
@@ -130,7 +131,7 @@
   ],
   [
    "h2",
-   "Lista de verificação antes das fotos e visitas"
+   "O que verificar antes das fotos e visitas?"
   ],
   [
    "ul",

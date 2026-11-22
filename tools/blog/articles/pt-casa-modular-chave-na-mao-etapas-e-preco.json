@@ -7,6 +7,7 @@
  "description": "Casa modular chave na mão em Kyiv e na região: para quem é indicada, etapas do projeto à mudança e o que o preço inclui. Chave na mão a partir de $1 100/m².",
  "lead": "Uma casa modular chave na mão é montada com blocos pré-fabricados: a maior parte do trabalho faz-se em fábrica e no terreno ficam as fundações, a montagem e as ligações. Explicamos a quem se adequa esta tecnologia, como decorre a construção por etapas, o que o preço chave na mão inclui e o que é calculado à parte.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pt/casa-modular",
   "Casa modular"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "O que é uma casa modular"
+   "O que é uma casa modular?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Para quem é indicada uma casa modular"
+   "A quem convém uma casa modular?"
   ],
   [
    "ul",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Etapas: do projeto à mudança"
+   "Quais são as etapas do projeto à mudança?"
   ],
   [
    "ol",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "O que o preço chave na mão inclui"
+   "O que inclui o preço chave na mão?"
   ],
   [
    "p",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "Quanto custa uma casa modular chave na mão"
+   "Quanto custa uma casa modular chave na mão?"
   ],
   [
    "p",
@@ -123,7 +124,7 @@
   ],
   [
    "h2",
-   "Modular, estrutura leve ou betão celular"
+   "Modular, estrutura de madeira ou betão celular?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "So planen Sie eine Ferienanlage oder ein Glamping: Format, Grundstück, Masterplan, A-Frame- oder Modulhäuser, Restaurant, Spa, Bau und Kosten.",
  "lead": "Eine Ferienanlage ist ein Geschäft, bei dem die Architektur Auslastung und Durchschnittsumsatz direkt beeinflusst. So planen Sie eine Anlage und kommen ohne unnötige Kosten von der Idee bis zur Eröffnung.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/ferienanlage-schluesselfertig",
   "Ferienanlage schlüsselfertig"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "1. Format und Gast"
+   "1. Für welchen Gast wird die Anlage gebaut?"
   ],
   [
    "p",
-   "Für wen ist die Anlage: Familien, Paare, Firmengruppen, Angler? Ganzjährig oder saisonal? Davon hängen Zahl und Typ der Häuser, Restaurant, Spa, Kinder- und Sportbereiche ab. Eine ganzjährige Anlage braucht gedämmte Häuser, Heizung und Winterangebote; eine saisonale setzt stärker auf Terrassen, Strand und offene Flächen."
+   "Das Format der Anlage bestimmt der Gast – Familien, Paare, Firmengruppen oder Angler – und ob sie ganzjährig oder saisonal betrieben wird. Davon hängen Zahl und Typ der Häuser, Restaurant, Spa, Kinder- und Sportbereiche ab. Eine ganzjährige Anlage braucht gedämmte Häuser, Heizung und Winterangebote; eine saisonale setzt stärker auf Terrassen, Strand und offene Flächen."
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "2. Das Grundstück und der Masterplan"
+   "2. Wie plant man Grundstück und Masterplan?"
   ],
   [
    "ul",
@@ -54,7 +55,7 @@
   ],
   [
    "h2",
-   "3. Die Häuser"
+   "3. Welche Häuser wählen?"
   ],
   [
    "p",
@@ -88,7 +89,7 @@
   ],
   [
    "h2",
-   "4. Restaurant, Spa und Gemeinschaftsbereiche"
+   "4. Wozu Restaurant, Spa und Gemeinschaftsbereiche?"
   ],
   [
    "p",
@@ -105,7 +106,7 @@
   ],
   [
    "h2",
-   "5. Versorgung und Landschaftsgestaltung"
+   "5. Wann plant man Versorgung und Außenanlagen?"
   ],
   [
    "p",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "6. Phasen bis zur Eröffnung"
+   "6. Wie eröffnet man die Anlage in Etappen?"
   ],
   [
    "ol",
@@ -145,7 +146,7 @@
   ],
   [
    "h2",
-   "Was eine Ferienanlage kostet"
+   "Was kostet eine Ferienanlage?"
   ],
   [
    "p",
@@ -157,7 +158,7 @@
   ],
   [
    "h2",
-   "Typische Fehler bei der Entwicklung einer Ferienanlage"
+   "Welche Fehler passieren bei Ferienanlagen?"
   ],
   [
    "ul",

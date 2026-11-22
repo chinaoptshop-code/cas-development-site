@@ -7,6 +7,7 @@
  "description": "Iluminación de oficina: luz general, de trabajo y de acento, sistemas de carril, reflejos en pantallas, temperatura de color por zonas. Diseño desde $30/m².",
  "lead": "La iluminación de una oficina no es cuestión del número de luminarias en el techo, sino de un escenario: dónde se trabaja frente a la pantalla, dónde se habla, dónde se descansa. Repasamos las tres capas de luz, los sistemas de carril y la elección de la luz para cada zona.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/es/diseno-oficinas",
   "Diseño y reforma de oficinas en Kiev"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Tres capas de luz: general, de trabajo y de acento"
+   "¿Qué tres capas de luz necesita una oficina?"
   ],
   [
    "p",
-   "Una luz uniforme de paneles iguales por todo el techo es la solución más sencilla, pero no la mejor. En una oficina bien iluminada, la luz trabaja por capas y cada capa cumple su función."
+   "En una oficina bien iluminada, la luz trabaja por capas y cada capa cumple su función. Una luz uniforme de paneles iguales por todo el techo es la solución más sencilla, pero no la mejor."
   ],
   [
    "ul",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Sistemas de carril y magnéticos: cuándo compensan"
+   "¿Cuándo compensan los carriles y sistemas magnéticos?"
   ],
   [
    "p",
@@ -58,7 +59,7 @@
   ],
   [
    "h2",
-   "Reflejos en las pantallas: dónde colocar la luz respecto a la mesa"
+   "¿Dónde colocar la luz para evitar reflejos en pantallas?"
   ],
   [
    "p",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Temperatura de color por zonas"
+   "¿Qué temperatura de color elegir para cada zona?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Luz en las salas de reuniones y en el office-cafetería"
+   "¿Qué luz necesitan las salas de reuniones y el office?"
   ],
   [
    "p",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Cómo encaja en el proyecto y el presupuesto"
+   "¿Cuándo se diseña la iluminación de la oficina?"
   ],
   [
    "p",

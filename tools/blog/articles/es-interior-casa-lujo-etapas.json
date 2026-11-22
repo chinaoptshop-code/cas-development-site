@@ -7,6 +7,7 @@
  "description": "Interior de una casa de lujo paso a paso: briefing, concepto, planos, presupuesto, acabados y amueblamiento. El orden correcto y una referencia de coste.",
  "lead": "El interior de una casa de lujo se construye por etapas, y cada una condiciona la siguiente: del briefing y el concepto a los planos de ejecución, los acabados y el montaje de los muebles. Este es el orden que funciona, qué aprobar en cada paso y cómo hacer un presupuesto sin sorpresas.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/es/ejecucion-proyecto-diseno",
   "Ejecución del proyecto de diseño"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "En qué se diferencia el interior de una casa del de un piso"
+   "¿En qué se diferencia el interior de una casa del de un piso?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Etapa 1. Briefing y concepto"
+   "Etapa 1. ¿Por dónde empieza el interior de una casa?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Etapa 2. Interior y arquitectura a la vez"
+   "Etapa 2. ¿Cuándo empezar interior y arquitectura a la vez?"
   ],
   [
    "p",
@@ -72,7 +73,7 @@
   ],
   [
    "h2",
-   "Etapa 3. Planos de ejecución"
+   "Etapa 3. ¿Qué son los planos de ejecución?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Escaleras, dobles alturas y transiciones"
+   "¿Cómo diseñar escaleras, dobles alturas y transiciones?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Etapa 4. Presupuesto y calendario"
+   "Etapa 4. ¿Para qué sirven el presupuesto y el calendario?"
   ],
   [
    "p",
@@ -126,7 +127,7 @@
   ],
   [
    "h2",
-   "Etapa 5. Acabados y control de calidad"
+   "Etapa 5. ¿Cómo evitar que el proyecto se simplifique en obra?"
   ],
   [
    "p",
@@ -144,7 +145,7 @@
   ],
   [
    "h2",
-   "Etapa 6. Muebles, iluminación, textiles y decoración"
+   "Etapa 6. ¿Cuándo llegan muebles, iluminación y decoración?"
   ],
   [
    "p",
@@ -171,7 +172,7 @@
   ],
   [
    "h2",
-   "Qué rompe con más frecuencia el plazo y el presupuesto"
+   "¿Qué rompe con más frecuencia el plazo y el presupuesto?"
   ],
   [
    "ul",

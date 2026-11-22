@@ -7,6 +7,7 @@
  "description": "Projeto de uma moradia em Kyiv: o que inclui (planta, fachadas, estrutura, redes) e quanto custa. Projeto de design a partir de $30/m², mínimo $2 500.",
  "lead": "O projeto de uma moradia em Kyiv é o primeiro passo para a construção e determina tanto o conforto de viver nela como o orçamento. Explicamos de que se compõe um projeto de moradia, para que serve e quanto custa.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pt/projeto-de-moradia",
   "Projeto e design de moradia unifamiliar"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "O que é o projeto de uma moradia"
+   "O que é o projeto de uma moradia?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "O que inclui o projeto de uma moradia"
+   "O que inclui o projeto de uma moradia?"
   ],
   [
    "ul",
@@ -42,7 +43,7 @@
   ],
   [
    "h2",
-   "Para que serve o projeto"
+   "Para que serve o projeto de uma moradia?"
   ],
   [
    "ol",
@@ -55,7 +56,7 @@
   ],
   [
    "h2",
-   "O que se perde sem projeto"
+   "O que se perde ao construir sem projeto?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Quanto custa o projeto de uma moradia"
+   "Quanto custa o projeto de uma moradia?"
   ],
   [
    "p",
@@ -79,7 +80,7 @@
   ],
   [
    "h2",
-   "Projeto e construção na mesma equipa"
+   "Porquê projeto e construção na mesma equipa?"
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "O que preparar antes de começar"
+   "O que preparar antes de começar o projeto?"
   ],
   [
    "ul",

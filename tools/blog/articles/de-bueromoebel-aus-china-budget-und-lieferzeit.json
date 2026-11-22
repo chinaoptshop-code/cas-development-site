@@ -7,6 +7,7 @@
  "description": "Büromöbel nach Maß aus China: was man bestellen kann, wie Spezifikation und Budget entstehen, Lieferung in 35–70 Tagen und Einplanung in den Umbau.",
  "lead": "Büromöbel aus China sind ein Weg, Arbeitsplätze, Besprechungsräume und Empfang nach eigenem Konzept auszustatten statt mit dem, was gerade auf Lager ist. Wir erklären, wie man das Budget berechnet, mit welchen Lieferzeiten man rechnen sollte und wie sich die Lieferung in den Sanierungsplan einfügt.",
  "date": "2026-10-26",
+ "modified": "2026-11-22",
  "service": [
   "/de/objekteinrichtung",
   "Objekteinrichtung"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was man fürs Büro bestellen kann"
+   "Welche Möbel kann man fürs Büro bestellen?"
   ],
   [
    "p",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Stückzahlen und Spezifikation"
+   "Wie werden Stückzahlen und Spezifikation festgelegt?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Wie man das Budget für Büromöbel aus China berechnet"
+   "Wie berechnet man das Budget für Büromöbel aus China?"
   ],
   [
    "ol",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Modelle auswählen: worauf man achten sollte"
+   "Wie wählt man Büromöbel-Modelle aus?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Lieferzeit: 35–70 Tage und wie man sie in die Sanierung einplant"
+   "Wie lange dauert die Lieferung und wie plant man sie ein?"
   ],
   [
    "p",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Zahlung und Vertrag"
+   "Wie laufen Zahlung und Vertrag?"
   ],
   [
    "p",

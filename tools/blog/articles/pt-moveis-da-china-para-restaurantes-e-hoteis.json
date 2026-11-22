@@ -7,6 +7,7 @@
  "description": "Móveis da China para restaurantes, cafés e hotéis: o que compensa importar, como escrever a especificação, prazos de entrega e controlo de qualidade.",
  "lead": "Equipar um restaurante, café ou hotel a partir da China permite comprar móveis, iluminação, loiça e têxteis num só envio diretamente da fábrica. Explicamos o que compensa encomendar, como preparar a especificação, quanto demora a entrega e como não falhar a data de abertura.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pt/equipamento-chave-na-mao",
   "Equipamento chave na mão"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Em que difere o equipamento HoReCa de mobilar um apartamento"
+   "Em que difere o equipamento HoReCa de um apartamento?"
   ],
   [
    "p",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "O que compensa importar da China"
+   "O que compensa trazer da China para um espaço?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "A especificação é a base da encomenda"
+   "Porque é a especificação a base da encomenda?"
   ],
   [
    "p",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Como funciona o equipamento de um espaço"
+   "Como decorre o equipamento de um espaço?"
   ],
   [
    "ol",
@@ -142,7 +143,7 @@
   ],
   [
    "h2",
-   "Hotéis e mini-hotéis: o que considerar"
+   "O que considerar num hotel ou mini-hotel?"
   ],
   [
    "p",
@@ -160,7 +161,7 @@
   ],
   [
    "h2",
-   "Como verificar a qualidade antes do envio"
+   "Como verificar a qualidade antes do envio?"
   ],
   [
    "p",
@@ -176,7 +177,7 @@
   ],
   [
    "h2",
-   "Erros típicos"
+   "Que erros são típicos?"
   ],
   [
    "ul",

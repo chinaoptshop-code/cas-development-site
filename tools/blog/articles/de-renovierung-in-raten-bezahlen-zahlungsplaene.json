@@ -7,6 +7,7 @@
  "description": "Renovierung in Teilzahlungen: Zahlungspläne 50/50, 50/30/20, 50/40/10, Start ab 10 % Anzahlung. Was separat bezahlt wird, wie man Zahlungen an Etappen bindet.",
  "lead": "Eine Renovierung in Teilen zu bezahlen ist übliche Praxis und schützt Auftraggeber wie Auftragnehmer. Doch der Zahlungsplan muss klar sein: wofür genau Sie zahlen, was die nächste Zahlung auslöst und was passiert, wenn sich etwas ändert. Wir gehen gängige Zahlungspläne, Beispiele und die Vertragsklauseln durch, auf die es ankommt.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/vertrag-gewaehrleistung-zahlung",
   "Renovierungsvertrag, Gewährleistung und Zahlung"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Warum man die Zahlung für eine Renovierung aufteilt"
+   "Warum die Renovierung in Raten bezahlen?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Welche Zahlungspläne es gibt"
+   "Welche Zahlungsmodelle gibt es?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Wofür Sie genau bezahlen"
+   "Wofür genau bezahlen Sie?"
   ],
   [
    "p",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Beispiel: wie man die Basis für den Zahlungsplan berechnet"
+   "Wie berechnet man die Basis für den Zahlungsplan?"
   ],
   [
    "p",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Wie man den passenden Zahlungsplan wählt"
+   "Welches Zahlungsmodell passt zu Ihrer Lage?"
   ],
   [
    "h3",
@@ -169,7 +170,7 @@
   ],
   [
    "h2",
-   "Wie man Zahlungen an Etappen und Abnahme bindet"
+   "Wie koppelt man Zahlungen an Etappen und Abnahme?"
   ],
   [
    "p",
@@ -191,7 +192,7 @@
   ],
   [
    "h2",
-   "Warnsignale bei den Zahlungsbedingungen"
+   "Welche Zahlungsbedingungen sind Warnsignale?"
   ],
   [
    "ul",
@@ -210,7 +211,7 @@
   ],
   [
    "h2",
-   "Checkliste: was im Vertrag zur Zahlung stehen sollte"
+   "Was muss der Vertrag zur Zahlung regeln?"
   ],
   [
    "ul",

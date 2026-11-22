@@ -7,6 +7,7 @@
  "description": "Renovierung und Bau in Europa mit dem ukrainischen CAS-Team: Preise ab, Online-Planung, eigenes Team, Logistik, lokale Vorschriften, Aufsicht, Vertrag.",
  "lead": "Renovierung und Bau in Europa mit einem ukrainischen Team wählen Menschen, die eine Wohnung oder ein Haus in Polen, Deutschland, Spanien oder Frankreich gekauft haben und das gewohnte Kyjiwer Niveau von Planung und Ausführung wollen – ein Team, ein Ansprechpartner, Kommunikation in der eigenen Sprache. So arbeiten wir im Ausland: Leistungen, Kosten, Logistik, lokale Vorschriften und Kontrolle aus der Ferne.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/renovierung-bau-europa",
   "Renovierung und Bau in Europa"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Für wen"
+   "Für wen eignet sich ein ukrainisches Team in Europa?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Was wir in Europa machen"
+   "Was macht CAS in Europa?"
   ],
   [
    "ul",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Ukrainisches Team oder lokales Unternehmen"
+   "Ukrainisches Team oder lokales Unternehmen?"
   ],
   [
    "p",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Preise in Europa"
+   "Was kostet es in Europa und warum mehr als in Kyjiw?"
   ],
   [
    "p",
@@ -93,7 +94,7 @@
   ],
   [
    "h2",
-   "Ablauf"
+   "Wie läuft das Projekt ab?"
   ],
   [
    "ol",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Lokale Vorschriften und Genehmigungen"
+   "Welche lokalen Vorschriften und Genehmigungen gelten?"
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Logistik"
+   "Wie ist die Logistik organisiert?"
   ],
   [
    "p",
@@ -131,7 +132,7 @@
   ],
   [
    "h2",
-   "Kontrolle aus der Ferne"
+   "Wie wird aus der Ferne kontrolliert?"
   ],
   [
    "ul",
@@ -145,7 +146,7 @@
   ],
   [
    "h2",
-   "Vertrag und Zahlung"
+   "Wie laufen Vertrag und Zahlung?"
   ],
   [
    "p",

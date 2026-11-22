@@ -7,6 +7,7 @@
  "description": "Grundriss einer Wohnung in Kyjiw ändern: welche Wände versetzt werden können, was mit Küche und Bad geht, wann eine Genehmigung nötig ist, Kosten.",
  "lead": "Ein neuer Grundriss ist der günstigste Weg zu einer völlig anderen Wohnung auf denselben Quadratmetern. Doch nicht jede Wand lässt sich entfernen und nicht jedes Bad verlegen. Wir erklären, was meist geändert wird, wo die Grenzen liegen, wie man die Idee vor der Renovierung prüft und was Planung und Arbeiten kosten.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/de/grundrissaenderung-wohnung",
   "Grundrissänderung von Wohnungen in Kyjiw: Planung und Umbau"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was in einer Wohnung am häufigsten geändert wird"
+   "Was wird im Wohnungsgrundriss am häufigsten geändert?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Was man bei einer Grundrissänderung ändern kann und was besser nicht"
+   "Was darf man am Grundriss ändern und was besser nicht?"
   ],
   [
    "p",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "Küche, Bad und Ankleide: wo die meisten Details stecken"
+   "Wo stecken die meisten Details: Küche, Bad, Ankleide?"
   ],
   [
    "p",
@@ -94,7 +95,7 @@
   ],
   [
    "h2",
-   "Wie man eine Grundrissidee vor der Renovierung prüft"
+   "Wie prüft man eine Grundrissidee vor der Renovierung?"
   ],
   [
    "ol",
@@ -112,7 +113,7 @@
   ],
   [
    "h2",
-   "Grundrissänderung zusammen mit der Renovierung"
+   "Warum den Grundriss zusammen mit der Renovierung ändern?"
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Was eine Grundrissänderung kostet"
+   "Was kostet eine Grundrissänderung?"
   ],
   [
    "p",

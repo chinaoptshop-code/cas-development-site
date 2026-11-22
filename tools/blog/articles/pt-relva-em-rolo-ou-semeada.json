@@ -7,6 +7,7 @@
  "description": "Relva em rolo ou semeada: em que diferem, qual escolher para o seu terreno, como se prepara a base e como cuidar da relva no primeiro ano.",
  "lead": "Relva em rolo ou semeada — é a pergunta que quase todos os proprietários de moradias fazem. Comparamos as duas opções, explicamos de que depende a escolha e porque o resultado depende mais da preparação da base do que da própria relva.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pt/arquitetura-paisagista",
   "Arquitetura paisagista e arranjo de terrenos"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Relva em rolo ou semeada: em resumo"
+   "Em que difere a relva em rolo da semeada?"
   ],
   [
    "p",
@@ -34,7 +35,7 @@
   ],
   [
    "h2",
-   "Quando escolher relva em rolo"
+   "Quando é melhor a relva em rolo?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Quando basta a relva semeada"
+   "Quando basta a relva semeada?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "A base conta mais do que o tipo de relva"
+   "Porque importa mais a base do que o tipo de relva?"
   ],
   [
    "p",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Sombra, taludes e locais onde a relva não é precisa"
+   "Onde a relva cresce mal ou não faz falta?"
   ],
   [
    "p",
@@ -104,7 +105,7 @@
   ],
   [
    "h2",
-   "Cuidados com a relva no primeiro ano"
+   "Como cuidar da relva no primeiro ano?"
   ],
   [
    "ul",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "Quanto custam a relva e o projeto do terreno"
+   "Quanto custam a relva e o projeto do terreno?"
   ],
   [
    "p",

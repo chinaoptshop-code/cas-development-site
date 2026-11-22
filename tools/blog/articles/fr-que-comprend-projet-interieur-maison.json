@@ -7,6 +7,7 @@
  "description": "Ce que comprend un projet d'intérieur de maison : relevé, plans d'étages, 3D, plans d'escalier et de plafonds, éclairage, spécifications et devis. Dès $30/m².",
  "lead": "Une maison est plus complexe qu'un appartement : escalier, double hauteur, cheminée, chaufferie, terrasse, plusieurs salles de bain. Voici ce que comprend un projet d'intérieur pour une maison, en quoi il diffère du projet architectural et quels documents permettent aux entreprises et menuisiers de travailler sans deviner.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/fr/architecture-interieur-maison",
   "Architecture intérieure de maison"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Projet d'intérieur et projet architectural"
+   "Projet de design ou projet d'architecture : quelle différence ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Relevé, brief et plans d'étages"
+   "Par où commence le projet de design d'une maison ?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Concept et 3D de chaque pièce"
+   "Que comprennent le concept et la 3D des pièces ?"
   ],
   [
    "p",
@@ -66,7 +67,7 @@
   ],
   [
    "h2",
-   "Plans d'exécution : ce qui est propre à la maison"
+   "Quels plans d'exécution sont propres à une maison ?"
   ],
   [
    "p",
@@ -94,7 +95,7 @@
   ],
   [
    "h2",
-   "Éclairage, meubles sur mesure et spécification"
+   "Que couvrent éclairage, sur-mesure et descriptif ?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Checklist du projet de maison"
+   "Que doit contenir le projet de design d'une maison ?"
   ],
   [
    "ul",
@@ -123,7 +124,7 @@
   ],
   [
    "h2",
-   "Combien coûte un projet d'intérieur de maison"
+   "Combien coûte le projet de design d'une maison ?"
   ],
   [
    "p",

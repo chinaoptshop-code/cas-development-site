@@ -7,6 +7,7 @@
  "description": "Obra de escritório num centro de negócios: o que acordar com o senhorio — projeto, instalações, segurança contra incêndio, horários e logística.",
  "lead": "A remodelação de um escritório num centro de negócios não começa pela demolição, mas por uma conversa com o senhorio. Explicamos o que convém acordar com antecedência para a obra não parar a meio e o orçamento não crescer por causa das exigências do edifício.",
  "date": "2026-10-26",
+ "modified": "2026-11-22",
  "service": [
   "/pt/remodelacao-escritorios",
   "Remodelação de escritórios desde $350/m²"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Porque as autorizações são a primeira fase da obra"
+   "Porque são as aprovações a primeira fase da obra?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "O contrato de arrendamento: o que verificar"
+   "O que verificar no contrato de arrendamento?"
   ],
   [
    "ul",
@@ -46,7 +47,7 @@
   ],
   [
    "h2",
-   "Projeto e alteração da planta"
+   "O projeto e a alteração da planta precisam de aprovação?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Instalações do edifício: ventilação, ar condicionado, eletricidade, deteção de incêndio"
+   "O que acordar sobre ventilação, climatização e eletricidade?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Horários, acesso e logística"
+   "Quando se pode trabalhar e como entram os materiais?"
   ],
   [
    "p",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "O que incluir no orçamento"
+   "O que incluir no orçamento num centro de negócios?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Checklist antes de começar"
+   "O que verificar antes de começar a obra?"
   ],
   [
    "ol",

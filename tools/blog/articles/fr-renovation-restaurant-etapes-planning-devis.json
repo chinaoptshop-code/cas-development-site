@@ -7,6 +7,7 @@
  "description": "Rénovation d’un restaurant à Kyiv clé en main : points à vérifier dans le local, étapes des travaux, planning jusqu’à l’ouverture et composition du devis.",
  "lead": "La rénovation d’un restaurant se mène pour une date précise : le loyer court déjà, le personnel est recruté, l’ouverture est annoncée. Nous voyons ce qu’il faut vérifier dans le local avant de démarrer, comment se déroule la rénovation d’un restaurant étape par étape, comment bâtir le planning jusqu’à l’ouverture et de quoi se compose le devis.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/fr/amenagement-restaurant",
   "Aménagement de restaurants et cafés"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "En quoi la rénovation d’un restaurant diffère de celle d’un appartement"
+   "En quoi rénover un restaurant diffère-t-il d'un appartement ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Ce qu’il faut vérifier dans le local avant de démarrer"
+   "Que vérifier dans le local avant de démarrer ?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Les étapes de la rénovation d’un restaurant"
+   "Quelles sont les étapes de la rénovation d'un restaurant ?"
   ],
   [
    "ol",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "Comment bâtir le planning jusqu’à la date d’ouverture"
+   "Comment caler le planning sur la date d'ouverture ?"
   ],
   [
    "p",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "De quoi se compose le devis de rénovation d’un restaurant"
+   "De quoi se compose le devis ?"
   ],
   [
    "p",
@@ -133,7 +134,7 @@
   ],
   [
    "h2",
-   "Rafraîchir un établissement en activité"
+   "Comment rafraîchir un établissement en activité ?"
   ],
   [
    "p",

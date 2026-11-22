@@ -7,6 +7,7 @@
  "description": "Proyecto de una casa en Kiev: qué incluye (distribución, fachadas, estructura, instalaciones) y cuánto cuesta. Proyecto de diseño desde $30/m², mínimo $2 500.",
  "lead": "El proyecto de una casa en Kiev es el primer paso hacia la construcción y determina tanto la comodidad de vivir en ella como el presupuesto. Le contamos de qué se compone un proyecto de casa, para qué sirve y cuánto cuesta.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/es/proyecto-de-casa",
   "Proyecto y diseño de casa unifamiliar"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Qué es el proyecto de una casa"
+   "¿Qué es el proyecto de una casa?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "Qué incluye el proyecto de una casa"
+   "¿Qué incluye el proyecto de una casa?"
   ],
   [
    "ul",
@@ -42,7 +43,7 @@
   ],
   [
    "h2",
-   "Para qué sirve el proyecto"
+   "¿Para qué sirve el proyecto de una casa?"
   ],
   [
    "ol",
@@ -55,7 +56,7 @@
   ],
   [
    "h2",
-   "Qué se pierde sin proyecto"
+   "¿Qué se pierde al construir sin proyecto?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta el proyecto de una casa"
+   "¿Cuánto cuesta el proyecto de una casa?"
   ],
   [
    "p",
@@ -79,7 +80,7 @@
   ],
   [
    "h2",
-   "Proyecto y construcción en un solo equipo"
+   "¿Por qué proyecto y obra en un solo equipo?"
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Qué preparar antes de empezar"
+   "¿Qué preparar antes de empezar el proyecto?"
   ],
   [
    "ul",

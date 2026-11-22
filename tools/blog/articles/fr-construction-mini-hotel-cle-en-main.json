@@ -7,6 +7,7 @@
  "description": "Mini-hôtel clé en main : format et nombre de chambres, projet, neuf ou reconversion, équipement des chambres et ouverture. Design dès $30/m².",
  "lead": "Un mini-hôtel est une activité où chaque décision prise sur plan influe ensuite sur le chiffre d'affaires : combien de chambres tiennent, à quelle vitesse on les nettoie, quelle est la résistance des revêtements. Voici comment se déroule la construction d'un mini-hôtel clé en main, du concept et du projet à l'équipement et aux premiers clients.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/fr/design-hotel",
   "Design et aménagement d’hôtels clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Le concept : pour qui est l'hôtel"
+   "Pour quel client construit-on le mini-hôtel ?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Un terrain ou un bâtiment existant"
+   "Construire à neuf ou reconvertir un bâtiment ?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "Le projet : chambres et circulations"
+   "Par où commence le projet d'un mini-hôtel ?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Construction du mini-hôtel et réseaux techniques"
+   "En quoi les réseaux d'un hôtel diffèrent-ils d'une maison ?"
   ],
   [
    "p",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "Équipement des chambres et des espaces communs"
+   "Comment équiper chambres et espaces communs ?"
   ],
   [
    "p",
@@ -118,7 +119,7 @@
   ],
   [
    "h2",
-   "Restaurant et ouverture"
+   "Pourquoi un restaurant, et comment ouvrir ?"
   ],
   [
    "p",
@@ -135,7 +136,7 @@
   ],
   [
    "h2",
-   "Combien ça coûte et comment nous travaillons"
+   "Combien coûte un mini-hôtel clé en main ?"
   ],
   [
    "p",

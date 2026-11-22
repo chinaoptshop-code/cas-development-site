@@ -7,6 +7,7 @@
  "description": "Wohnungsbeleuchtung im Designprojekt: Grund-, Arbeits- und Akzentlicht, Lichtszenen für jeden Raum, Schalter, Farbtemperatur und typische Fehler.",
  "lead": "Ein einzelner Kronleuchter in der Deckenmitte macht eine Wohnung selten gemütlich. Licht plant man wie Möbel im Voraus: Wo lesen, kochen, schauen Sie einen Film, was soll nachts leuchten? Wir erklären, wie Wohnungsbeleuchtung im Designprojekt aufgebaut ist, was Szenen und Gruppen sind und welche Fehler sich schon in der Zeichnung vermeiden lassen.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/de/wohnungsdesign",
   "Wohnungsdesign ab $30/m²"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Drei Lichtebenen in jedem Raum"
+   "Welche drei Lichtebenen braucht jeder Raum?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Lichtszenen: was das ist und wozu"
+   "Was sind Lichtszenen und wozu dienen sie?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Beleuchtung Raum für Raum"
+   "Welche Beleuchtung braucht welcher Raum?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Farbtemperatur und Leuchtmittel"
+   "Welche Farbtemperatur und Leuchtmittel wählen?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Schalter, Steckdosen und Smart Home"
+   "Wohin gehören Schalter und Steckdosen?"
   ],
   [
    "p",
@@ -120,7 +121,7 @@
   ],
   [
    "h2",
-   "Typische Fehler bei der Wohnungsbeleuchtung"
+   "Welche Beleuchtungsfehler sollte man vermeiden?"
   ],
   [
    "ul",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Was ein Designprojekt mit Lichtplan kostet"
+   "Was kostet ein Designprojekt mit Lichtplan?"
   ],
   [
    "p",

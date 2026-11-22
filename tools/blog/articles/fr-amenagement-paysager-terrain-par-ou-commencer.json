@@ -7,6 +7,7 @@
  "description": "Aménagement paysager d'un terrain : visite, zonage, drainage, arrosage et éclairage, plantations et ordre des travaux. Projet à partir de $50 les 100 m².",
  "lead": "Un beau jardin ne commence pas par le choix des plantes, mais par le relief, l'eau et les cheminements. Nous expliquons par où commencer l'aménagement paysager d'un terrain, ce que comprend le projet, dans quel ordre se font les travaux et combien coûte le projet.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/fr/architecture-paysagere",
   "Architecture paysagère et aménagement de terrain"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Par où commencer l'aménagement paysager"
+   "Par où commencer l'aménagement paysager ?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Visite du terrain : relief, sol et eau"
+   "Qu'évalue-t-on lors de la visite du terrain ?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Ce que comprend un projet d'aménagement paysager"
+   "Que comprend un projet paysager ?"
   ],
   [
    "ul",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Les étapes de l'aménagement du terrain"
+   "Dans quel ordre aménager le terrain ?"
   ],
   [
    "ol",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Comment ne pas se tromper de plantes et d'entretien"
+   "Comment bien choisir plantes et entretien ?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Combien coûte l'aménagement paysager"
+   "Combien coûte l'aménagement paysager ?"
   ],
   [
    "p",

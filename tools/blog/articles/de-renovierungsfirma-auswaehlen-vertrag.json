@@ -7,6 +7,7 @@
  "description": "Renovierungsteam in Kyjiw wählen: was Vertrag, Kostenvoranschlag und Zahlungsplan enthalten müssen. Renovierung ab $550/m². Checkliste.",
  "lead": "Ein Renovierungsteam in Kyjiw kann hervorragend oder problematisch sein, doch am Anfang wirken beide gleich: selbstbewusste Worte und ein angenehmer Preis. Den Unterschied sieht man im Vertrag. Wir zeigen, worauf man vor der Unterschrift achten sollte.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/handwerkerteam",
   "Handwerkerteam in Kyjiw"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Warum der Vertrag wichtiger ist als Versprechen"
+   "Warum zählt der Vertrag mehr als Versprechen?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Wer genau Vertragspartei ist"
+   "Wer genau ist Vertragspartei?"
   ],
   [
    "p",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Leistungsverzeichnis und Kostenvoranschlag"
+   "Was gehört ins Leistungsverzeichnis und den Kostenvoranschlag?"
   ],
   [
    "p",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Bauzeit- und Zahlungsplan"
+   "Wie koppelt man Bauzeitplan und Zahlungen?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "Abnahme und Gewährleistung"
+   "Wie läuft die Abnahme, welche Gewährleistung gilt?"
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Kontrolle auf der Baustelle: wer berichtet und wie"
+   "Wer berichtet auf der Baustelle und wie?"
   ],
   [
    "p",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Warnsignale"
+   "Welche Warnsignale sollten Sie stutzig machen?"
   ],
   [
    "ul",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Beispielrechnung zum Vergleich von Angeboten"
+   "Wie vergleicht man Angebote anhand von Zahlen?"
   ],
   [
    "p",

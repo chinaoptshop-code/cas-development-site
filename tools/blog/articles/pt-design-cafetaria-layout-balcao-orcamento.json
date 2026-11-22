@@ -7,6 +7,7 @@
  "description": "Design de uma cafetaria em Kyiv: como planear o balcão e a sala, que instalações prever antes da obra e quanto custa — a partir de $30/m², mínimo $2 500.",
  "lead": "Numa cafetaria pequena, cada metro trabalha: na mesma área é preciso encaixar o balcão, a fila, a montra e lugares onde o cliente tenha vontade de ficar mais tempo. Explicamos por onde começa o design de uma cafetaria, como planear o balcão e a sala, que instalações prever antes da obra e quanto custa o projeto.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pt/design-restaurantes-cafes",
   "Design de restaurantes e cafés"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Por onde começa o design de uma cafetaria"
+   "Por onde começa o design de uma cafetaria?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "O balcão é o coração do layout"
+   "Porque é o balcão o coração do layout?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "A sala: quantos lugares e de que tipo"
+   "Quantos lugares, e de que tipo, precisa a sala?"
   ],
   [
    "p",
@@ -77,7 +78,7 @@
   ],
   [
    "h2",
-   "Ambiente: luz, materiais e acústica"
+   "Como criam ambiente a luz, os materiais e a acústica?"
   ],
   [
    "p",
@@ -98,7 +99,7 @@
   ],
   [
    "h2",
-   "Quanto custa o design de uma cafetaria"
+   "Quanto custa o design de uma cafetaria?"
   ],
   [
    "p",
@@ -110,7 +111,7 @@
   ],
   [
    "h2",
-   "Erros que saem caros de corrigir"
+   "Que erros numa cafetaria saem caros de corrigir?"
   ],
   [
    "ul",

@@ -7,6 +7,7 @@
  "description": "Choisir un studio d’architecture d’intérieur à Kyiv : 10 questions sur le contenu, le suivi, la réalisation, le prix dès $30/m² et le contrat.",
  "lead": "Un studio d’architecture d’intérieur, ce ne sont pas seulement de belles visualisations : ce sont aussi des plans d’exécution, un accompagnement pendant les travaux et un contrat clair. Voici 10 questions à poser à un studio avant de signer, avec la raison de chacune — que vous viviez à Kyiv ou que vous commandiez le projet depuis l’étranger.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/architecture-interieur",
   "Architecture d’intérieur"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Choisir un studio à Kyiv : pourquoi les questions comptent plus que le portfolio"
+   "Pourquoi les questions comptent-elles plus que le portfolio ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Questions 1–3 : ce que comprend le projet"
+   "Questions 1–3 : que comprend le projet ?"
   ],
   [
    "ol",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Questions 4–5 : ce qui se passe après le design"
+   "Questions 4–5 : que se passe-t-il après le design ?"
   ],
   [
    "ol",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "Questions 6–7 : l’argent"
+   "Questions 6–7 : combien coûtent projet et travaux ?"
   ],
   [
    "ol",
@@ -88,7 +89,7 @@
   ],
   [
    "h2",
-   "Questions 8–10 : le contrat et la collaboration"
+   "Questions 8–10 : que doit dire le contrat ?"
   ],
   [
    "ol",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Check-list avant de signer"
+   "Que vérifier avant de signer ?"
   ],
   [
    "ul",

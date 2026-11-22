@@ -7,6 +7,7 @@
  "description": "Reforma de oficina llave en mano en Kiev: distribución, salas de reuniones, instalaciones, obra en un centro de negocios y muebles. Desde 50/m².",
  "lead": "Una oficina es una herramienta que debe trabajar para tu equipo y tus clientes. Así se planifica una reforma de oficina llave en mano para lograr un espacio cómodo, no perder días de trabajo y mantenerse dentro del presupuesto.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/es/reforma-oficinas",
   "Reforma de oficinas desde $350/m²"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Empieza por el briefing, no por el color de las paredes"
+   "¿Por dónde empezar la reforma de una oficina?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Qué prever en la distribución de una oficina"
+   "¿Qué prever en la distribución de la oficina?"
   ],
   [
    "ul",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Instalaciones: invisibles, pero se notan cada día"
+   "¿Qué instalaciones necesita una oficina?"
   ],
   [
    "p",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Reformar sin detener el trabajo"
+   "¿Se puede reformar sin parar la actividad?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Los muebles, en paralelo con la reforma"
+   "¿Cuándo pedir los muebles de oficina?"
   ],
   [
    "p",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta una reforma de oficina llave en mano"
+   "¿Cuánto cuesta reformar una oficina llave en mano?"
   ],
   [
    "p",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Errores frecuentes al reformar una oficina"
+   "¿Qué errores se cometen al reformar una oficina?"
   ],
   [
    "ul",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Checklist antes de empezar"
+   "¿Qué comprobar antes de empezar?"
   ],
   [
    "ol",

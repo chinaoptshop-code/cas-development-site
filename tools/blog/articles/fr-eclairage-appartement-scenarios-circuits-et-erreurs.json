@@ -7,6 +7,7 @@
  "description": "Éclairage d'un appartement dans un projet de design : lumière générale, de travail et d'accent, scénarios par pièce, interrupteurs, température et erreurs.",
  "lead": "Un seul lustre au milieu du plafond rend rarement un appartement chaleureux. La lumière, comme le mobilier, se prévoit à l'avance : où vous lisez, cuisinez, regardez un film, ce qui doit rester allumé la nuit. Nous expliquons comment l'éclairage d'un appartement s'organise dans un projet de design, ce que sont les scénarios et les circuits, et quelles erreurs s'évitent facilement dès les plans.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/fr/design-appartement",
   "Projet d'intérieur d'appartement"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Trois couches de lumière dans chaque pièce"
+   "Quelles trois couches de lumière dans chaque pièce ?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Scénarios d'éclairage : de quoi s'agit-il et pourquoi"
+   "Qu'est-ce qu'un scénario d'éclairage et à quoi sert-il ?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "L'éclairage pièce par pièce"
+   "Quel éclairage prévoir dans chaque pièce ?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Température de couleur et lampes"
+   "Quelle température de couleur et quelles lampes choisir ?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Interrupteurs, prises et domotique"
+   "Où placer interrupteurs et prises ?"
   ],
   [
    "p",
@@ -120,7 +121,7 @@
   ],
   [
    "h2",
-   "Erreurs courantes d'éclairage d'un appartement"
+   "Quelles erreurs d'éclairage éviter ?"
   ],
   [
    "ul",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Combien coûte un projet de design avec plan d'éclairage"
+   "Combien coûte un projet de design avec plan d'éclairage ?"
   ],
   [
    "p",

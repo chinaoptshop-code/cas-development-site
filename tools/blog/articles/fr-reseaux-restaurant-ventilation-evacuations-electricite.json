@@ -7,6 +7,7 @@
  "description": "Ce qu'il faut prévoir dans les réseaux d'un restaurant avant travaux : extraction de cuisine, évacuations avec bacs à graisse, électricité, ordre.",
  "lead": "Les clients voient la salle, le bar et le mobilier, mais un restaurant repose sur ce qui se trouve dans le plafond et sous le sol. Voici les réseaux à prévoir avant les travaux pour que la cuisine fonctionne et que la salle ne sente pas la friture. Sur notre site, vous pouvez parcourir ce chemin dans la scène « Restaurant de A à Z » : 14 étapes en coupe.",
  "date": "2026-11-04",
+ "modified": "2026-11-22",
  "service": [
   "/fr/design-restaurant-cafe",
   "Design de restaurant et de café"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Commencer par le relevé et la technologie de la cuisine"
+   "1. Par où commencer les réseaux d'un restaurant ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "2. Ventilation : la cuisine d'un côté, la salle de l'autre"
+   "2. Comment séparer la ventilation cuisine et salle ?"
   ],
   [
    "ul",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "3. Évacuations et bacs à graisse"
+   "3. Pourquoi un restaurant a-t-il besoin de bacs à graisse ?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "4. Électricité de la cuisine"
+   "4. Quelle puissance électrique pour la cuisine ?"
   ],
   [
    "ul",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Courants faibles, eau et sécurité"
+   "Quels courants faibles et systèmes de sécurité ?"
   ],
   [
    "p",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Comment les réseaux influencent le design de la salle"
+   "Comment les réseaux influencent-ils le design de la salle ?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "5. L'ordre des travaux"
+   "5. Dans quel ordre mener les travaux ?"
   ],
   [
    "ol",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "6. Sur quoi ne pas économiser"
+   "6. Sur quoi ne pas économiser ?"
   ],
   [
    "p",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Combien ça coûte"
+   "Combien coûtent le design et les réseaux ?"
   ],
   [
    "p",

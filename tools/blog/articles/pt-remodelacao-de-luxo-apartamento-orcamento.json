@@ -7,6 +7,7 @@
  "description": "Remodelação de luxo de um apartamento em Kyiv: desde $550/m² em mão de obra e base, acabamentos e mobiliário conforme orçamento, ±5% e 12 meses de garantia.",
  "lead": "Uma remodelação de luxo em Kyiv não são só materiais caros, mas pormenores complexos, redes técnicas e o controlo de cada etapa oculta. Explicamos de que partes se compõe o orçamento de uma remodelação premium, o que inclui a tarifa a partir de $550/m² e o que se calcula à parte.",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/pt/remodelacao-premium",
   "Remodelação premium em Kyiv"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Em que difere uma remodelação premium de uma normal"
+   "Em que difere uma remodelação premium de uma comum?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "De que se compõe o orçamento de uma remodelação de luxo"
+   "De que se compõe o orçamento de uma remodelação de luxo?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "O que inclui a tarifa a partir de $550/m²"
+   "O que inclui a tarifa desde $550/m²?"
   ],
   [
    "p",
@@ -68,7 +69,7 @@
   ],
   [
    "h2",
-   "Como manter o orçamento dentro do previsto"
+   "Como manter o orçamento dentro da estimativa?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "Quem faz os trabalhos"
+   "Quem executa uma remodelação de luxo?"
   ],
   [
    "p",
@@ -103,7 +104,7 @@
   ],
   [
    "h2",
-   "Controlo, relatórios e câmara online"
+   "Como acompanhar a obra sem lá ir?"
   ],
   [
    "p",
@@ -111,7 +112,7 @@
   ],
   [
    "h2",
-   "Contrato, pagamento e garantia"
+   "O que fixam o contrato, o pagamento e a garantia?"
   ],
   [
    "p",

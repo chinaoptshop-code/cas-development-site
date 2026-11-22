@@ -7,6 +7,7 @@
  "description": "Mini-hotel chave na mão: formato e número de quartos, projeto, obra nova ou reconversão, equipamento dos quartos e abertura. Design desde $30/m².",
  "lead": "Um mini-hotel é um negócio em que cada decisão nos desenhos influencia depois a receita: quantos quartos cabem, quão depressa se limpam, quão resistentes são os revestimentos. Explicamos como decorre a construção de um mini-hotel chave na mão, do conceito e projeto ao equipamento e aos primeiros hóspedes.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/pt/design-hoteis",
   "Design e equipamento de hotéis chave na mão"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Conceito: para quem é o hotel"
+   "Para que hóspede se constrói o mini-hotel?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Um terreno ou um edifício existente"
+   "Construir de raiz ou reconverter um edifício?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "Projeto: quartos e circulações"
+   "Por onde começa o projeto de um mini-hotel?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Construção do mini-hotel e redes técnicas"
+   "Em que diferem as instalações de um hotel de uma casa?"
   ],
   [
    "p",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "Equipamento de quartos e zonas comuns"
+   "Como equipar quartos e zonas comuns?"
   ],
   [
    "p",
@@ -118,7 +119,7 @@
   ],
   [
    "h2",
-   "Restaurante e abertura"
+   "Para que serve o restaurante e como abrir?"
   ],
   [
    "p",
@@ -135,7 +136,7 @@
   ],
   [
    "h2",
-   "Quanto custa e como trabalhamos"
+   "Quanto custa um mini-hotel chave na mão?"
   ],
   [
    "p",

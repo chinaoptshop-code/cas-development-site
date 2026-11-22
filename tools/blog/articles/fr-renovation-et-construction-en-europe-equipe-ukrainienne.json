@@ -7,6 +7,7 @@
  "description": "Rénovation et construction en Europe avec l'équipe ukrainienne de CAS : prix, conception en ligne, équipe propre, logistique, règles locales, suivi.",
  "lead": "La rénovation et la construction en Europe avec une équipe ukrainienne attirent ceux qui ont acheté un appartement ou une maison en Pologne, en Allemagne, en Espagne ou en France et veulent retrouver le niveau de conception et de réalisation connu à Kyiv : une équipe, un interlocuteur, une communication dans leur langue. Voici comment nous travaillons à l'étranger : prestations, coûts, logistique, règles locales et contrôle à distance.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/fr/renovation-construction-europe",
   "Rénovation et construction en Europe"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Pour qui"
+   "À qui s'adresse une équipe ukrainienne en Europe ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Ce que nous faisons en Europe"
+   "Que fait CAS en Europe ?"
   ],
   [
    "ul",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Équipe ukrainienne ou entreprise locale"
+   "Équipe ukrainienne ou entreprise locale ?"
   ],
   [
    "p",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Prix en Europe"
+   "Combien ça coûte en Europe, et pourquoi plus qu'à Kyiv ?"
   ],
   [
    "p",
@@ -93,7 +94,7 @@
   ],
   [
    "h2",
-   "Le déroulement"
+   "Comment se déroule le projet ?"
   ],
   [
    "ol",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Règles locales et autorisations"
+   "Quelles règles et autorisations locales s'appliquent ?"
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Logistique"
+   "Comment la logistique est-elle organisée ?"
   ],
   [
    "p",
@@ -131,7 +132,7 @@
   ],
   [
    "h2",
-   "Contrôle à distance"
+   "Comment suivre le chantier à distance ?"
   ],
   [
    "ul",
@@ -145,7 +146,7 @@
   ],
   [
    "h2",
-   "Contrat et paiement"
+   "Comment se passent contrat et paiement ?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Drainage und automatische Bewässerung: wann man drainiert, welche Systeme es gibt, wie man in Zonen bewässert und warum alles vor den Rasen kommt.",
  "lead": "Wasser auf dem Grundstück ist entweder zu viel oder zu wenig – oft beides, nur in verschiedenen Monaten. Wir erklären, wann eine Drainage nötig ist, wie eine automatische Bewässerung aufgebaut ist und warum beide Systeme vor Rasen und Wegen verlegt werden.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/de/gartengestaltung",
   "Gartengestaltung und Außenanlagen"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Woran man erkennt, dass das Grundstück eine Drainage braucht"
+   "Woran erkennt man, dass das Grundstück Drainage braucht?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Welche Drainagesysteme es gibt"
+   "Welche Drainagesysteme gibt es?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Automatische Bewässerung: woraus sie besteht"
+   "Woraus besteht eine automatische Bewässerung?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Warum Drainage und Bewässerung vor den Rasen kommen"
+   "Warum kommen Drainage und Bewässerung vor den Rasen?"
   ],
   [
    "p",
@@ -118,7 +119,7 @@
   ],
   [
    "h2",
-   "Wartung der Systeme"
+   "Wie wartet man Drainage und Bewässerung?"
   ],
   [
    "p",
@@ -130,7 +131,7 @@
   ],
   [
    "h2",
-   "Was Drainage und Bewässerung kosten"
+   "Was kosten Drainage und Bewässerung?"
   ],
   [
    "p",

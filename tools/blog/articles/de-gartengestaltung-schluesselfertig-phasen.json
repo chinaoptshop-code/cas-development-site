@@ -7,6 +7,7 @@
  "description": "Schlüsselfertige Gartengestaltung: Leistungen, Reihenfolge der Arbeiten, Verantwortung für das Ergebnis und Kosten. Planung ab $50 pro 100 m².",
  "lead": "Schlüsselfertige Gartengestaltung heißt: Ein Team begleitet das Grundstück von Besichtigung und Planung bis zu Rasen, Licht und eingestellter Bewässerung. Wir erklären, aus welchen Phasen die Gestaltung besteht, warum die Reihenfolge wichtiger ist als die Pflanzenwahl und wie die Kosten berechnet werden.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/de/gartengestaltung",
   "Gartengestaltung und Außenanlagen"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was schlüsselfertige Gartengestaltung bedeutet"
+   "Was bedeutet schlüsselfertige Gartengestaltung?"
   ],
   [
    "p",
@@ -40,7 +41,7 @@
   ],
   [
    "h2",
-   "Phase 1. Besichtigung, Vermessung und Planung"
+   "Phase 1. Womit beginnt die Gestaltung?"
   ],
   [
    "p",
@@ -58,7 +59,7 @@
   ],
   [
    "h2",
-   "Phase 2. Erdarbeiten und Geländemodellierung"
+   "Phase 2. Wozu Erdarbeiten und Geländemodellierung?"
   ],
   [
    "p",
@@ -66,7 +67,7 @@
   ],
   [
    "h2",
-   "Phase 3. Alles unter der Erde"
+   "Phase 3. Was kommt vor dem Pflaster in den Boden?"
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Phase 4. Pflaster, Terrassen und Gartenelemente"
+   "Phase 4. Wann folgen Pflaster, Terrassen, Kleinbauten?"
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Phase 5. Boden, Rasen und Bepflanzung"
+   "Phase 5. Wann werden Rasen und Pflanzen gesetzt?"
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Was schlüsselfertige Gartengestaltung kostet"
+   "Was kostet schlüsselfertige Gartengestaltung?"
   ],
   [
    "p",

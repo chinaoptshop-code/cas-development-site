@@ -7,6 +7,7 @@
  "description": "Acoustique d'un open space sans cloisons pleines : panneaux, plafonds, textiles, murs végétaux, salles de concentration et zonage. Rénovation dès $350/m².",
  "lead": "Un bureau ouvert offre de l'espace et des échanges spontanés, mais le bruit passe vite du statut d'atout à celui de problème. Voici comment traiter l'acoustique d'un open space pour qu'il reste calme, lumineux et ouvert, sans aligner des cloisons pleines.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/fr/design-bureaux",
   "Design et rénovation de bureaux à Kyiv"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "D'où vient le bruit dans un bureau ouvert"
+   "D'où vient le bruit dans un bureau ouvert ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Panneaux et plafonds absorbants"
+   "Quels panneaux et plafonds absorbent le son ?"
   ],
   [
    "p",
@@ -40,7 +41,7 @@
   ],
   [
    "h2",
-   "Moquettes et textiles"
+   "Moquettes et textiles réduisent-ils le bruit ?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "Murs végétaux et mobilier comme écrans acoustiques"
+   "Murs végétaux et mobilier font-ils écran acoustique ?"
   ],
   [
    "p",
@@ -86,7 +87,7 @@
   ],
   [
    "h2",
-   "Zonage : salles de concentration et cabines téléphoniques"
+   "Pourquoi prévoir des salles de concentration et des cabines ?"
   ],
   [
    "p",
@@ -98,7 +99,7 @@
   ],
   [
    "h2",
-   "Placer les zones bruyantes et les salles de réunion vitrées"
+   "Où placer les zones bruyantes et les salles vitrées ?"
   ],
   [
    "p",
@@ -115,7 +116,7 @@
   ],
   [
    "h2",
-   "Combien ça coûte"
+   "Combien coûte l'acoustique d'un open space ?"
   ],
   [
    "p",

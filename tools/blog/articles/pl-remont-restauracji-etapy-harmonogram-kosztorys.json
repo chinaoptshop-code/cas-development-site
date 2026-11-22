@@ -7,6 +7,7 @@
  "description": "Remont restauracji w Kijowie pod klucz: co sprawdzić w lokalu, etapy prac, jak ułożyć harmonogram do dnia otwarcia i z czego składa się kosztorys.",
  "lead": "Remont restauracji prowadzi się pod konkretną datę: czynsz już biegnie, personel jest zatrudniony, otwarcie zapowiedziane. Wyjaśniamy, co sprawdzić w lokalu przed startem, jak przebiega remont restauracji etap po etapie, jak ułożyć harmonogram do otwarcia i z czego składa się kosztorys.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pl/remont-restauracji",
   "Remont restauracji i kawiarni"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Czym remont restauracji różni się od remontu mieszkania"
+   "Czym remont restauracji różni się od remontu mieszkania?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Co sprawdzić w lokalu przed startem"
+   "Co sprawdzić w lokalu przed startem?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Etapy remontu restauracji"
+   "Jakie etapy ma remont restauracji?"
   ],
   [
    "ol",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "Jak ułożyć harmonogram do dnia otwarcia"
+   "Jak ułożyć harmonogram pod datę otwarcia?"
   ],
   [
    "p",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "Z czego składa się kosztorys remontu restauracji"
+   "Z czego składa się kosztorys remontu restauracji?"
   ],
   [
    "p",
@@ -133,7 +134,7 @@
   ],
   [
    "h2",
-   "Odświeżenie działającego lokalu"
+   "Jak odświeżyć działający lokal?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Luxus-Interieur ohne Mehrkosten: woran man nicht sparen sollte, wo es ohne Wirkungsverlust geht, wie man Nacharbeiten vermeidet und budgetiert.",
  "lead": "Ein Luxus-Interieur muss nicht in jedem Detail teuer sein. Mehrkosten entstehen selten durch teure Materialien, sondern durch Nacharbeiten, chaotische Einkäufe und Geld, das dort ausgegeben wird, wo es niemand bemerkt. Hier erfahren Sie, woran man nicht sparen sollte, wo es ohne Wirkungsverlust geht und wie man ein Budget aufbaut.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/objekteinrichtung",
   "Objekteinrichtung"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Zu viel zahlen ist nicht dasselbe wie ein hoher Preis"
+   "Was heißt es wirklich, zu viel zu bezahlen?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Woran man nicht sparen sollte"
+   "Wo sollte man im Luxusinterieur nicht sparen?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Wo man ohne Wirkungsverlust sparen kann"
+   "Wo kann man sparen, ohne an Wirkung zu verlieren?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Akzent und Hintergrund: das Budget nach Zonen verteilen"
+   "Wie verteilt man das Budget auf Akzent und Hintergrund?"
   ],
   [
    "p",
@@ -98,7 +99,7 @@
   ],
   [
    "h2",
-   "Nacharbeiten: das teuerste Geld einer Renovierung"
+   "Warum sind Nacharbeiten das teuerste Geld?"
   ],
   [
    "p",
@@ -120,7 +121,7 @@
   ],
   [
    "h2",
-   "Einrichten nach einer Spezifikation"
+   "Warum alles über eine Spezifikation ausstatten?"
   ],
   [
    "p",
@@ -132,7 +133,7 @@
   ],
   [
    "h2",
-   "Einen Kostenvoranschlag lesen, um nicht zu viel zu zahlen"
+   "Wie liest man einen Kostenvoranschlag richtig?"
   ],
   [
    "p",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Ein Beispielbudget zu unseren Sätzen"
+   "Was kostet eine 150-m²-Wohnung zu unseren Sätzen?"
   ],
   [
    "p",
@@ -179,7 +180,7 @@
   ],
   [
    "h2",
-   "Zeit ist auch Geld"
+   "Warum kosten Verzögerungen auch Geld?"
   ],
   [
    "p",
@@ -187,7 +188,7 @@
   ],
   [
    "h2",
-   "Checkliste vor dem Start"
+   "Was ist vor dem Start zu prüfen?"
   ],
   [
    "ol",

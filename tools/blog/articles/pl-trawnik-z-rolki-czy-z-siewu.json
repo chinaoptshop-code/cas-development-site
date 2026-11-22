@@ -7,6 +7,7 @@
  "description": "Trawnik z rolki czy z siewu: czym się różnią, co wybrać na działkę, jak przygotować podłoże i jak pielęgnować trawnik w pierwszym roku.",
  "lead": "Trawnik z rolki czy z siewu — to pytanie zadaje sobie niemal każdy właściciel domu. Porównujemy oba warianty, wyjaśniamy, od czego zależy wybór i dlaczego efekt w obu przypadkach bardziej zależy od przygotowania podłoża niż od samego trawnika.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektowanie-ogrodow",
   "Projektowanie ogrodów i zagospodarowanie działki"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Trawnik z rolki czy z siewu: w skrócie"
+   "Czym trawnik z rolki różni się od siewu?"
   ],
   [
    "p",
@@ -34,7 +35,7 @@
   ],
   [
    "h2",
-   "Kiedy lepiej wybrać trawnik z rolki"
+   "Kiedy lepiej wybrać trawnik z rolki?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Kiedy wystarczy trawnik z siewu"
+   "Kiedy wystarczy trawnik z siewu?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Podłoże ważniejsze niż wybór trawnika"
+   "Dlaczego podłoże jest ważniejsze niż rodzaj trawnika?"
   ],
   [
    "p",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Cień, skarpy i miejsca, gdzie trawnik nie jest potrzebny"
+   "Gdzie trawnik źle rośnie lub jest zbędny?"
   ],
   [
    "p",
@@ -104,7 +105,7 @@
   ],
   [
    "h2",
-   "Pielęgnacja trawnika w pierwszym roku"
+   "Jak pielęgnować trawnik w pierwszym roku?"
   ],
   [
    "ul",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje trawnik i projekt działki"
+   "Ile kosztuje trawnik i projekt działki?"
   ],
   [
    "p",

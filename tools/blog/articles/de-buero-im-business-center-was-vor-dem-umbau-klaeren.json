@@ -7,6 +7,7 @@
  "description": "Büroumbau im Business Center: was vor dem Start mit dem Vermieter zu klären ist – Planung, Haustechnik, Brandschutz, Bauzeiten und Logistik. Mit Checkliste.",
  "lead": "Der Büroumbau im Business Center beginnt nicht mit dem Abriss, sondern mit einem Gespräch mit dem Vermieter. Wir zeigen, was man vorab klären sollte, damit die Arbeiten nicht auf halber Strecke stoppen und der Kostenvoranschlag nicht wegen Gebäudevorgaben wächst.",
  "date": "2026-10-26",
+ "modified": "2026-11-22",
  "service": [
   "/de/bueroumbau",
   "Büroumbau ab $350/m²"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Warum Abstimmungen die erste Phase des Büroumbaus im Business Center sind"
+   "Warum stehen Genehmigungen am Anfang?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Der Mietvertrag: was zu prüfen ist"
+   "Was ist im Mietvertrag zu prüfen?"
   ],
   [
    "ul",
@@ -46,7 +47,7 @@
   ],
   [
    "h2",
-   "Planung und Grundrissänderungen"
+   "Müssen Planung und Grundrissänderung genehmigt werden?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Gebäudetechnik: Lüftung, Klima, Elektrik, Brandmeldeanlage"
+   "Was ist bei Lüftung, Klima und Elektrik abzustimmen?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Bauzeiten, Zutritt und Logistik"
+   "Wann darf gearbeitet werden, wie kommt Material hinein?"
   ],
   [
    "p",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "Was in den Kostenvoranschlag gehört"
+   "Was gehört in den Kostenvoranschlag im Bürogebäude?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Checkliste vor dem Start"
+   "Was ist vor Baubeginn zu prüfen?"
   ],
   [
    "ol",

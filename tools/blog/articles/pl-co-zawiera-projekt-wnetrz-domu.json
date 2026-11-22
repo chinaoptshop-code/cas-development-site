@@ -7,6 +7,7 @@
  "description": "Co zawiera projekt wnętrz domu: pomiary, rzuty pięter, 3D, rysunki schodów i sufitów, oświetlenie, specyfikacje i kosztorys. Cena od $30/m².",
  "lead": "Dom jest bardziej złożony niż mieszkanie: schody, antresola, kominek, kotłownia, taras, kilka łazienek. Wyjaśniamy, co zawiera projekt wnętrz domu, czym różni się od projektu architektonicznego i jakie dokumenty są potrzebne, by budowlańcy i stolarze pracowali bez zgadywania.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektowanie-wnetrz-domu",
   "Projekt wnętrz domu"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Projekt wnętrz a projekt architektoniczny"
+   "Czym projekt wnętrz różni się od architektonicznego?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Pomiary, brief i rzuty pięter"
+   "Od czego zaczyna się projekt wnętrz domu?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Koncepcja i 3D każdego pomieszczenia"
+   "Co obejmują koncepcja i 3D pomieszczeń?"
   ],
   [
    "p",
@@ -66,7 +67,7 @@
   ],
   [
    "h2",
-   "Rysunki wykonawcze: co jest specyficzne dla domu"
+   "Jakie rysunki wykonawcze są specyficzne dla domu?"
   ],
   [
    "p",
@@ -94,7 +95,7 @@
   ],
   [
    "h2",
-   "Oświetlenie, meble na wymiar i specyfikacja"
+   "Co obejmują plan światła, meble na wymiar i specyfikacja?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Checklista projektu domu"
+   "Co powinien zawierać projekt wnętrz domu?"
   ],
   [
    "ul",
@@ -123,7 +124,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje projekt wnętrz domu"
+   "Ile kosztuje projekt wnętrz domu?"
   ],
   [
    "p",

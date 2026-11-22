@@ -7,6 +7,7 @@
  "description": "Hausplanung in Kyjiw: was ein Hausprojekt umfasst — Grundriss, Fassaden, Tragwerk, Haustechnik — und was es kostet. Designprojekt ab $30/m², mindestens $2 500.",
  "lead": "Die Hausplanung in Kyjiw ist der erste Schritt zum Bau und bestimmt sowohl den Wohnkomfort als auch das Budget. Wir erklären, woraus ein Hausprojekt besteht, wozu man es braucht und was es kostet.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/hausplanung",
   "Planung eines Einfamilienhauses"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was ein Hausprojekt ist"
+   "Was ist ein Hausprojekt?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "Was ein Hausprojekt umfasst"
+   "Was umfasst ein Hausprojekt?"
   ],
   [
    "ul",
@@ -42,7 +43,7 @@
   ],
   [
    "h2",
-   "Wozu ein Projekt nötig ist"
+   "Wozu braucht man ein Hausprojekt?"
   ],
   [
    "ol",
@@ -55,7 +56,7 @@
   ],
   [
    "h2",
-   "Was man ohne Projekt verliert"
+   "Was verliert man, wenn man ohne Projekt baut?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Was ein Hausprojekt kostet"
+   "Was kostet ein Hausprojekt?"
   ],
   [
    "p",
@@ -79,7 +80,7 @@
   ],
   [
    "h2",
-   "Planung und Bau in einem Team"
+   "Warum Planung und Bau aus einer Hand?"
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Was Sie vor dem Start vorbereiten sollten"
+   "Was sollten Sie vor dem Planungsstart vorbereiten?"
   ],
   [
    "ul",

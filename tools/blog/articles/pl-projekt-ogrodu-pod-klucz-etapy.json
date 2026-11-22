@@ -7,6 +7,7 @@
  "description": "Ogród pod klucz: co obejmuje, w jakiej kolejności urządza się działkę, kto odpowiada za efekt i jak liczy się koszt. Projekt od $50 za ar.",
  "lead": "Ogród pod klucz to sytuacja, gdy jeden zespół prowadzi działkę od oględzin i projektu aż po trawnik, oświetlenie i ustawione nawadnianie. Wyjaśniamy, z jakich etapów składają się prace, dlaczego kolejność jest ważniejsza niż wybór roślin i jak liczy się koszt.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektowanie-ogrodow",
   "Projektowanie ogrodów i zagospodarowanie działki"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Co oznacza ogród pod klucz"
+   "Co oznacza projekt ogrodu pod klucz?"
   ],
   [
    "p",
@@ -40,7 +41,7 @@
   ],
   [
    "h2",
-   "Etap 1. Oględziny, geodezja i projekt"
+   "Etap 1. Od czego zaczyna się urządzanie działki?"
   ],
   [
    "p",
@@ -58,7 +59,7 @@
   ],
   [
    "h2",
-   "Etap 2. Roboty ziemne i niwelacja"
+   "Etap 2. Po co roboty ziemne i niwelacja terenu?"
   ],
   [
    "p",
@@ -66,7 +67,7 @@
   ],
   [
    "h2",
-   "Etap 3. Wszystko, co pod ziemią"
+   "Etap 3. Co układa się pod ziemią przed nawierzchnią?"
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Etap 4. Nawierzchnie, tarasy i mała architektura"
+   "Etap 4. Kiedy powstają nawierzchnie, tarasy i mała architektura?"
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Etap 5. Ziemia, trawnik i nasadzenia"
+   "Etap 5. Kiedy sadzi się trawnik i rośliny?"
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje ogród pod klucz"
+   "Ile kosztuje ogród pod klucz?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Projekt domu w Kijowie: co zawiera — układ, elewacje, konstrukcja, instalacje — i ile kosztuje. Projekt od $30/m², minimum $2 500.",
  "lead": "Projekt domu w Kijowie to pierwszy krok do budowy, który określa i wygodę życia, i budżet. Opowiadamy, z czego składa się projekt domu, po co jest potrzebny i ile kosztuje.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projekt-domu",
   "Projekt domu jednorodzinnego"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Czym jest projekt domu"
+   "Czym jest projekt domu?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "Co zawiera projekt domu"
+   "Co zawiera projekt domu?"
   ],
   [
    "ul",
@@ -42,7 +43,7 @@
   ],
   [
    "h2",
-   "Po co jest projekt"
+   "Po co jest projekt domu?"
   ],
   [
    "ol",
@@ -55,7 +56,7 @@
   ],
   [
    "h2",
-   "Co się traci bez projektu"
+   "Co się traci, budując bez projektu?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje projekt domu"
+   "Ile kosztuje projekt domu?"
   ],
   [
    "p",
@@ -79,7 +80,7 @@
   ],
   [
    "h2",
-   "Projekt i budowa w jednym zespole"
+   "Dlaczego projekt i budowa w jednym zespole?"
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Co przygotować przed startem"
+   "Co przygotować przed rozpoczęciem projektu?"
   ],
   [
    "ul",

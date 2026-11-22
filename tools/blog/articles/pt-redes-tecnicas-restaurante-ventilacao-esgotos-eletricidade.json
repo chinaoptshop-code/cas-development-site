@@ -7,6 +7,7 @@
  "description": "O que prever nas redes de um restaurante antes da obra: exaustão da cozinha, esgotos com separadores de gorduras, eletricidade e ordem dos trabalhos.",
  "lead": "Os clientes veem a sala, o bar e o mobiliário, mas um restaurante assenta no que está no teto e debaixo do chão. Explicamos que redes prever antes da obra para que a cozinha funcione e a sala não cheire a fritos. No nosso site pode percorrer este caminho na cena «Restaurante do zero»: 14 etapas em corte.",
  "date": "2026-11-04",
+ "modified": "2026-11-22",
  "service": [
   "/pt/design-restaurantes-cafes",
   "Design de restaurantes e cafés"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Começar pela medição e pela tecnologia da cozinha"
+   "1. Por onde começam as instalações de um restaurante?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "2. Ventilação: cozinha separada, sala separada"
+   "2. Como separar a ventilação da cozinha e da sala?"
   ],
   [
    "ul",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "3. Esgotos e separadores de gorduras"
+   "3. Porque precisa um restaurante de separadores de gordura?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "4. Eletricidade da cozinha"
+   "4. Quanta potência precisa a cozinha?"
   ],
   [
    "ul",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Baixa tensão, água e segurança"
+   "Que sistemas de baixa tensão e segurança são precisos?"
   ],
   [
    "p",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Como as redes influenciam o design da sala"
+   "Como influenciam as instalações o design da sala?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "5. Ordem dos trabalhos"
+   "5. Por que ordem se fazem os trabalhos?"
   ],
   [
    "ol",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "6. Onde não poupar"
+   "6. Em que não se deve poupar?"
   ],
   [
    "p",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Quanto custa"
+   "Quanto custam o design e as instalações?"
   ],
   [
    "p",

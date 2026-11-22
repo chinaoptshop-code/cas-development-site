@@ -7,6 +7,7 @@
  "description": "Penthouse schlüsselfertig planen und renovieren: Panoramaverglasung, Terrasse, Haustechnik, Licht, Stauraum. Phasen, Budget und wo nicht sparen.",
  "lead": "Ein Penthouse ist nicht einfach eine große Wohnung, sondern ein eigener Objekttyp: Panoramafenster, Terrasse, komplexe Haustechnik und hohe Erwartungen an jedes Detail. Hier erfahren Sie, was vor dem Start zu bedenken ist, wie man das Budget aufbaut und wie man das Projekt führt, damit das Ergebnis der Visualisierung entspricht.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/innenarchitektur",
   "Innenarchitektur"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Wie sich ein Penthouse von einer normalen Wohnung unterscheidet"
+   "Was unterscheidet ein Penthouse von einer Wohnung?"
   ],
   [
    "p",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Penthouse-Innenarchitektur: womit man beginnt"
+   "Womit beginnt das Designprojekt eines Penthouse?"
   ],
   [
    "p",
@@ -59,7 +60,7 @@
   ],
   [
    "h2",
-   "Haustechnik: unsichtbar, aber jeden Tag spürbar"
+   "Warum ist die Haustechnik im Penthouse aufwendiger?"
   ],
   [
    "p",
@@ -81,7 +82,7 @@
   ],
   [
    "h2",
-   "Die Terrasse: ein Projekt im Projekt"
+   "Wie plant man die Penthouse-Terrasse?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Licht, Stauraum und Materialien"
+   "Wie löst man Licht, Stauraum und Materialien?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Was Design und Renovierung eines Penthouses kosten"
+   "Was kostet ein Penthouse schlüsselfertig?"
   ],
   [
    "p",
@@ -144,7 +145,7 @@
   ],
   [
    "h2",
-   "Die Renovierung so führen, dass das Ergebnis der Visualisierung entspricht"
+   "Wie entspricht das Ergebnis der Visualisierung?"
   ],
   [
    "p",
@@ -173,7 +174,7 @@
   ],
   [
    "h2",
-   "Die teuersten Fehler im Penthouse"
+   "Welche Fehler kosten im Penthouse am meisten?"
   ],
   [
    "ul",

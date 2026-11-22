@@ -7,6 +7,7 @@
  "description": "Kostenvoranschlag einer Ferienanlage: Lageplan, Häuschen mit 30–60 m², Hauptgebäude, Pool, Strand und Bar, Technikbereich, Netze, Bauabschnitte.",
  "lead": "Der Kostenvoranschlag einer Ferienanlage ist kein einzelner Preis pro Meter, sondern eine Reihe von Gebäuden mit jeweils eigenem Satz. Wir zeigen, woraus er besteht und wie man den Bau in Abschnitte teilt. Auf unserer Website lässt sich die Zusammensetzung im interaktiven Lageplan „Ferienkomplex“ selbst zusammenstellen.",
  "date": "2026-11-10",
+ "modified": "2026-11-22",
  "service": [
   "/de/ferienanlage-schluesselfertig",
   "Ferienanlage schlüsselfertig"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Der Lageplan — Grundlage des Kostenvoranschlags"
+   "1. Warum ist der Masterplan die Basis der Kosten?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "2. Häuschen"
+   "2. Welchen Anteil haben die Häuser am Budget?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "3. Das Hauptgebäude"
+   "3. Was gehört zum Hauptgebäude?"
   ],
   [
    "p",
@@ -44,7 +45,7 @@
   ],
   [
    "h2",
-   "4. Freizeit und Außenanlagen"
+   "4. Was ist für Freizeit und Außenanlagen einzuplanen?"
   ],
   [
    "ul",
@@ -57,7 +58,7 @@
   ],
   [
    "h2",
-   "5. Technikbereich und Netze"
+   "5. Was umfassen Technikbereich und Netze?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "6. Design und Einrichtung"
+   "6. Was kosten Design und Einrichtung?"
   ],
   [
    "p",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "Was oft vergessen wird"
+   "Was wird im Kostenvoranschlag oft vergessen?"
   ],
   [
    "ul",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Wie man das Budget ohne Qualitätsverlust senkt"
+   "Wie senkt man das Budget ohne Qualitätsverlust?"
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Wie wir kalkulieren"
+   "Wie berechnen wir die Kosten einer Anlage?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "7. Bauabschnitte"
+   "7. Wie baut man in Bauabschnitten?"
   ],
   [
    "ol",

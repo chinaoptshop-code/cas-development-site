@@ -7,6 +7,7 @@
  "description": "Turnkey modular house in Kyiv and the region: who it suits, the stages from design to moving in and what the price includes. Turnkey from $1,100/m².",
  "lead": "A turnkey modular house is assembled from ready-made units: most of the work is done in the factory, and what remains on the plot is the foundation, installation and connections. We explain who this technology suits, how construction goes stage by stage, what the turnkey price includes and what is priced separately.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/en/modular-house",
   "Modular house"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "What a modular house is"
+   "What is a modular house?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Who a modular house suits"
+   "Who is a modular house right for?"
   ],
   [
    "ul",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Stages: from design to moving in"
+   "What are the stages from design to moving in?"
   ],
   [
    "ol",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "What the turnkey price includes"
+   "What does the turnkey price include?"
   ],
   [
    "p",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "How much a turnkey modular house costs"
+   "How much does a turnkey modular house cost?"
   ],
   [
    "p",
@@ -123,7 +124,7 @@
   ],
   [
    "h2",
-   "Modular, timber frame or aerated concrete"
+   "Modular, timber frame or aerated concrete: which to choose?"
   ],
   [
    "p",

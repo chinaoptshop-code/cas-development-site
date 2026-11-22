@@ -7,6 +7,7 @@
  "description": "Co założyć w instalacjach restauracji przed remontem: wentylacja i wyciąg kuchni, kanalizacja z separatorami tłuszczu, elektryka, kolejność prac.",
  "lead": "Goście widzą salę, bar i meble, a restauracja opiera się na tym, co w suficie i pod podłogą. Opowiadamy, jakie sieci założyć przed remontem, żeby kuchnia działała, a na sali nie pachniało smażonym. Na naszej stronie tę drogę można przewinąć w scenie „Restauracja od zera” — 14 etapów w przekroju.",
  "date": "2026-11-04",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektowanie-restauracji",
   "Projektowanie restauracji i kawiarni"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Zacząć od pomiaru i technologii kuchni"
+   "1. Od czego zacząć instalacje restauracji?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "2. Wentylacja: kuchnia osobno, sala osobno"
+   "2. Jak rozdzielić wentylację kuchni i sali?"
   ],
   [
    "ul",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "3. Kanalizacja i separatory tłuszczu"
+   "3. Po co restauracji separatory tłuszczu?"
   ],
   [
    "p",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "4. Elektryka kuchni"
+   "4. Ile mocy potrzebuje kuchnia?"
   ],
   [
    "ul",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Słabe prądy, woda i bezpieczeństwo"
+   "Jakie instalacje niskoprądowe i bezpieczeństwa są potrzebne?"
   ],
   [
    "p",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Jak instalacje wpływają na projekt sali"
+   "Jak instalacje wpływają na projekt sali?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "5. Kolejność prac"
+   "5. W jakiej kolejności prowadzić prace?"
   ],
   [
    "ol",
@@ -106,7 +107,7 @@
   ],
   [
    "h2",
-   "6. Na czym nie oszczędzać"
+   "6. Na czym nie oszczędzać?"
   ],
   [
    "p",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Ile to kosztuje"
+   "Ile kosztują projekt i instalacje restauracji?"
   ],
   [
    "p",

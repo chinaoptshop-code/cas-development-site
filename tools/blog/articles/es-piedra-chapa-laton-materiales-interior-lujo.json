@@ -7,6 +7,7 @@
  "description": "Materiales de un interior de lujo: piedra natural, chapa de madera, madera maciza y latón. Dónde usarlos, con qué sustituirlos, cómo combinarlos y cuidarlos.",
  "lead": "La piedra natural, la chapa de madera y el latón son los materiales que más a menudo hacen que un interior se sienta lujoso. Cada uno tiene su carácter: la piedra absorbe manchas, la chapa no tolera el aire seco y el latón cambia de color. Te contamos dónde funcionan mejor, qué puede sustituirlos y cómo combinarlos para que el interior mejore con los años.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/es/diseno-interiores",
   "Diseño de interiores"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Por qué los materiales definen el nivel de un interior"
+   "¿Por qué los materiales definen el nivel de un interior?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Piedra natural: mármol, travertino, granito, cuarcita"
+   "¿Qué piedra natural elegir?"
   ],
   [
    "p",
@@ -55,7 +56,7 @@
   ],
   [
    "h2",
-   "Piedra natural o porcelánico"
+   "¿Piedra natural o porcelánico?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "La piedra en el baño"
+   "¿Conviene la piedra natural en el baño?"
   ],
   [
    "p",
@@ -71,7 +72,7 @@
   ],
   [
    "h2",
-   "Chapa y madera maciza: la calidez de la madera"
+   "¿En qué se diferencia la chapa de la madera maciza?"
   ],
   [
    "p",
@@ -112,7 +113,7 @@
   ],
   [
    "h2",
-   "El latón: un metal vivo"
+   "¿Cómo cambia el latón con el tiempo?"
   ],
   [
    "p",
@@ -134,7 +135,7 @@
   ],
   [
    "h2",
-   "La iluminación decide cómo se ve un material"
+   "¿Cómo cambia la luz el aspecto de un material?"
   ],
   [
    "p",
@@ -142,7 +143,7 @@
   ],
   [
    "h2",
-   "Cómo combinar materiales"
+   "¿Cómo combinar materiales en un interior de lujo?"
   ],
   [
    "p",
@@ -160,7 +161,7 @@
   ],
   [
    "h2",
-   "Cuidado: para que los materiales envejezcan bien"
+   "¿Cómo cuidar los materiales naturales?"
   ],
   [
    "p",
@@ -174,7 +175,7 @@
   ],
   [
    "h2",
-   "Cómo seleccionamos los materiales en un proyecto"
+   "¿Cómo elegimos los materiales en el proyecto?"
   ],
   [
    "p",

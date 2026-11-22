@@ -7,6 +7,7 @@
  "description": "Vertrag über ein Interior-Design-Projekt: welche Klauseln er braucht, wie man Portfolio und Team eines Studios prüft und welche Warnzeichen zum Absagen raten.",
  "lead": "Der Vertrag über ein Interior-Design-Projekt ist das Dokument, in dem Sie Monate später nachsehen, was das Studio genau liefern sollte, wie viele Korrekturen bezahlt sind und wer einen Fehler in einer Zeichnung behebt. Wir zeigen, wie man ein Studio vor der Unterschrift prüft: worauf im Portfolio zu achten ist, welche Punkte in Vertrag und Anlagen gehören und welche Signale nahelegen, ein anderes Team zu suchen.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/de/wohnungsdesign",
   "Wohnungsdesign ab $30/m²"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Warum man ein Studio prüfen und nicht nur nach Geschmack wählen sollte"
+   "Warum ein Studio prüfen statt nach Geschmack wählen?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "So prüfen Sie das Portfolio eines Studios"
+   "Wie prüft man das Portfolio eines Studios?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Wer an Ihrem Projekt arbeitet"
+   "Wer arbeitet an Ihrem Projekt?"
   ],
   [
    "p",
@@ -112,7 +113,7 @@
   ],
   [
    "h2",
-   "Aufmaß und Briefing: womit ein Projekt beginnt"
+   "Warum Aufmaß und Briefing vor dem Vertrag?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Was ein Vertrag über ein Interior-Design-Projekt enthalten sollte"
+   "Was gehört in einen Vertrag über ein Designprojekt?"
   ],
   [
    "p",
@@ -193,7 +194,7 @@
   ],
   [
    "h2",
-   "Reines Planungsstudio oder Studio mit vollem Leistungsumfang"
+   "Reines Planungsstudio oder voller Leistungsumfang?"
   ],
   [
    "p",
@@ -205,7 +206,7 @@
   ],
   [
    "h2",
-   "Was Sie am Ende in der Hand haben sollten"
+   "Was sollten Sie am Ende in der Hand haben?"
   ],
   [
    "p",
@@ -213,7 +214,7 @@
   ],
   [
    "h2",
-   "Warnzeichen: wann man besser nicht unterschreibt"
+   "Wann unterschreibt man besser nicht?"
   ],
   [
    "p",
@@ -234,7 +235,7 @@
   ],
   [
    "h2",
-   "Was ein Designprojekt kostet und wie man Angebote vergleicht"
+   "Wie vergleicht man Preise für Designprojekte?"
   ],
   [
    "p",
@@ -261,7 +262,7 @@
   ],
   [
    "h2",
-   "Typische Konflikte mit einem Studio und wie man sie vermeidet"
+   "Wie vermeidet man typische Konflikte mit einem Studio?"
   ],
   [
    "ul",
@@ -279,7 +280,7 @@
   ],
   [
    "h2",
-   "Checkliste vor der Vertragsunterzeichnung"
+   "Was ist vor der Vertragsunterzeichnung zu prüfen?"
   ],
   [
    "ul",

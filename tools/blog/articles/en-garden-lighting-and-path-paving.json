@@ -7,6 +7,7 @@
  "description": "Garden lighting and path paving: how to plan routes, which materials to choose, what to light and how, and why cables go in before the paving.",
  "lead": "Paths and lights are what you use on your plot every day. We explain how to plan garden lighting and path paving together, which materials to choose, what to light and why the cable must go into the ground before the paving.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/en/landscape-design",
   "Landscape design and garden landscaping"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Routes first, material second"
+   "Where should paths run on a plot?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Path paving: which materials to choose"
+   "Which material should you choose for paving paths?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "Garden lighting: what to light and why"
+   "What should you light in a garden, and why?"
   ],
   [
    "p",
@@ -93,7 +94,7 @@
   ],
   [
    "h2",
-   "Why the cable goes in before the paving"
+   "Why does the cable go in before the paving?"
   ],
   [
    "p",
@@ -119,7 +120,7 @@
   ],
   [
    "h2",
-   "What lighting and paving cost"
+   "How much do lighting and paving cost?"
   ],
   [
    "p",

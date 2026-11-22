@@ -7,6 +7,7 @@
  "description": "Interieur eines Luxushauses Schritt für Schritt: Briefing, Konzept, Ausführungspläne, Kostenvoranschlag, Ausbau und Einrichtung. Budgetrichtwert.",
  "lead": "Das Interieur eines Luxushauses entsteht in Phasen, und jede prägt die nächste: vom Briefing und Konzept über Ausführungspläne bis zu Ausbau und Möbelmontage. Hier ist die Reihenfolge, die funktioniert, was in jedem Schritt freizugeben ist und wie man ein Budget ohne Überraschungen aufstellt.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/umsetzung-designprojekt",
   "Umsetzung des Designprojekts"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Wie sich ein Hausinterieur von einer Wohnung unterscheidet"
+   "Was unterscheidet ein Hausinterieur von einer Wohnung?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Phase 1. Briefing und Konzept"
+   "Phase 1. Womit beginnt das Interieur eines Hauses?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Phase 2. Interieur und Architektur zusammen"
+   "Phase 2. Wann Interieur und Architektur zusammen?"
   ],
   [
    "p",
@@ -72,7 +73,7 @@
   ],
   [
    "h2",
-   "Phase 3. Ausführungspläne"
+   "Phase 3. Was sind Ausführungspläne?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Treppen, Lufträume und Übergänge"
+   "Wie plant man Treppen, Lufträume und Übergänge?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Phase 4. Kostenvoranschlag und Zeitplan"
+   "Phase 4. Wozu Kostenvoranschlag und Zeitplan?"
   ],
   [
    "p",
@@ -126,7 +127,7 @@
   ],
   [
    "h2",
-   "Phase 5. Ausbau und Qualitätskontrolle"
+   "Phase 5. Wie bleibt der Entwurf beim Bau erhalten?"
   ],
   [
    "p",
@@ -144,7 +145,7 @@
   ],
   [
    "h2",
-   "Phase 6. Möbel, Licht, Textilien und Dekor"
+   "Phase 6. Wann kommen Möbel, Licht und Dekor?"
   ],
   [
    "p",
@@ -171,7 +172,7 @@
   ],
   [
    "h2",
-   "Was Zeitplan und Budget am häufigsten sprengt"
+   "Was sprengt Zeitplan und Budget am häufigsten?"
   ],
   [
    "ul",

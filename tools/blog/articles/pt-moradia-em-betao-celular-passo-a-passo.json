@@ -7,6 +7,7 @@
  "description": "Construção de moradia em betão celular: laje de fundação, primeira fiada, vergas, cintagem, cobertura e envolvente térmica. Checklist de controlo por fase.",
  "lead": "Construir em betão celular perdoa menos do que parece: as paredes sobem depressa, mas a maioria dos defeitos fica em poucos pormenores — a primeira fiada, as vergas, a cintagem, as ligações com a cobertura e as janelas. Percorremos a sequência dos trabalhos como a conduz um encarregado de obra e, em cada fase, mostramos o que o dono de obra deve verificar enquanto os trabalhos ainda estão à vista.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pt/construcao-de-moradias",
   "Construção de moradias"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Construir em betão celular: de que é feito o processo"
+   "O que é o betão celular e quais são as fases da obra?"
   ],
   [
    "p",
@@ -41,7 +42,7 @@
   ],
   [
    "h2",
-   "Fase 0. Projeto e geotecnia — a base de todas as decisões"
+   "Fase 0. Quem define o bloco, a fundação e as armaduras?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Fase 1. Laje de fundação"
+   "Fase 1. Porquê uma laje de fundação?"
   ],
   [
    "p",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Fase 2. Corte de capilaridade e primeira fiada"
+   "Fase 2. Porque é a primeira fiada a mais importante?"
   ],
   [
    "p",
@@ -126,7 +127,7 @@
   ],
   [
    "h2",
-   "Fase 3. Paredes, vergas e vãos"
+   "Fase 3. Para que servem as vergas nos vãos?"
   ],
   [
    "p",
@@ -148,7 +149,7 @@
   ],
   [
    "h2",
-   "Fase 4. Cintagem e lajes"
+   "Fase 4. Para que serve a cintagem?"
   ],
   [
    "p",
@@ -175,7 +176,7 @@
   ],
   [
    "h2",
-   "Fase 5. Cobertura"
+   "Fase 5. Como se fixa a cobertura às paredes?"
   ],
   [
    "p",
@@ -197,7 +198,7 @@
   ],
   [
    "h2",
-   "Fase 6. Janelas, isolamento e envolvente térmica"
+   "Fase 6. O que é a envolvente térmica e como montar as janelas?"
   ],
   [
    "p",
@@ -225,7 +226,7 @@
   ],
   [
    "h2",
-   "Fase 7. Instalações, rebocos e betonilhas"
+   "Fase 7. Quando começam instalações, rebocos e betonilhas?"
   ],
   [
    "p",
@@ -242,7 +243,7 @@
   ],
   [
    "h2",
-   "Erros comuns na construção em betão celular"
+   "Que erros se cometem na construção em betão celular?"
   ],
   [
    "ul",
@@ -258,7 +259,7 @@
   ],
   [
    "h2",
-   "Checklist de trabalhos ocultos: o que registar com fotos e autos"
+   "Que trabalhos ocultos registar com fotos e autos?"
   ],
   [
    "p",

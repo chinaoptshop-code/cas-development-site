@@ -7,6 +7,7 @@
  "description": "Schlüsselfertiges Büro in einem Kyjiwer Businesscenter: was mit dem Vermieter zu klären ist, Haustechnik abstimmen, Umbau ab $350/m², Möbel und Licht aus China.",
  "lead": "Ein schlüsselfertiges Büro im Businesscenter ist nicht nur Design und Umbau: Es gibt einen Vermieter, eine Verwaltung und Hausregeln. Wir zeigen, was vor dem Start zu prüfen ist, wie die Haustechnik abgestimmt wird und wie man das Büro mit Möbeln und Leuchten aus China ausstattet.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/de/gewerbe-schluesselfertig",
   "Gewerbe schlüsselfertig"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Was mit Vermieter und Verwaltung zu klären ist"
+   "Was ist mit Vermieter und Verwaltung zu klären?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Haustechnik und Genehmigungen: wie es meist abläuft"
+   "Wie laufen Haustechnik und Genehmigungen meist ab?"
   ],
   [
    "p",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Design, Umbau und Ausstattung aus einer Hand"
+   "Warum Design, Umbau und Ausstattung aus einer Hand?"
   ],
   [
    "p",
@@ -119,7 +120,7 @@
   ],
   [
    "h2",
-   "Übergabe des Büros"
+   "Wie nimmt man das Büro ab?"
   ],
   [
    "p",

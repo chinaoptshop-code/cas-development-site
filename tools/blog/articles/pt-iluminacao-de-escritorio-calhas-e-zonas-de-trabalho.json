@@ -7,6 +7,7 @@
  "description": "Iluminação de escritório: luz geral, de trabalho e de destaque, sistemas de calha, reflexos nos ecrãs, temperatura de cor por zona. Design desde $30/m².",
  "lead": "A iluminação de um escritório não é uma questão de quantas luminárias há no teto, mas de um cenário: onde se trabalha ao ecrã, onde se conversa, onde se descansa. Analisamos as três camadas de luz, os sistemas de calha e a escolha da luz para cada zona.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/pt/design-de-escritorios",
   "Design e remodelação de escritórios em Kyiv"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Três camadas de luz: geral, de trabalho e de destaque"
+   "Que três camadas de luz precisa um escritório?"
   ],
   [
    "p",
-   "Uma luz uniforme de painéis iguais por todo o teto é a solução mais simples, mas não a melhor. Num escritório bem iluminado, a luz funciona por camadas, e cada camada tem a sua função."
+   "Num escritório bem iluminado, a luz funciona por camadas, e cada camada tem a sua função. Uma luz uniforme de painéis iguais por todo o teto é a solução mais simples, mas não a melhor."
   ],
   [
    "ul",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Calhas e sistemas magnéticos: quando compensam"
+   "Quando compensam calhas e sistemas magnéticos?"
   ],
   [
    "p",
@@ -58,7 +59,7 @@
   ],
   [
    "h2",
-   "Reflexos nos ecrãs: onde colocar a luz em relação à secretária"
+   "Onde colocar a luz para evitar reflexos nos ecrãs?"
   ],
   [
    "p",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Temperatura de cor por zona"
+   "Que temperatura de cor escolher para cada zona?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Luz nas salas de reuniões e na copa-cafetaria"
+   "Que luz precisam as salas de reuniões e a copa?"
   ],
   [
    "p",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Como isto se encaixa no projeto e no orçamento"
+   "Quando se projeta a iluminação do escritório?"
   ],
   [
    "p",

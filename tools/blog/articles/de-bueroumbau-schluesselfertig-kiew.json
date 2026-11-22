@@ -7,6 +7,7 @@
  "description": "Schlüsselfertiger Büroumbau in Kyjiw: Grundriss, Besprechungsräume, Haustechnik, Arbeiten im Businesscenter, Möbel. Ab $350/m² und wie Sie im Budget bleiben.",
  "lead": "Ein Büro ist ein Werkzeug, das für Ihr Team und Ihre Kunden arbeiten soll. So planen Sie einen schlüsselfertigen Büroumbau, damit Sie einen komfortablen Raum erhalten, keine Arbeitstage verlieren und im Kostenrahmen bleiben.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/bueroumbau",
   "Büroumbau ab $350/m²"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Beginnen Sie mit dem Briefing, nicht mit der Wandfarbe"
+   "Womit beginnt ein Büroumbau?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Was in einen Büro-Grundriss gehört"
+   "Was gehört in die Büroplanung?"
   ],
   [
    "ul",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Haustechnik: unsichtbar, aber jeden Tag spürbar"
+   "Welche Haustechnik braucht ein Büro?"
   ],
   [
    "p",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Umbau ohne Arbeitsunterbrechung"
+   "Kann man umbauen, ohne den Betrieb zu stoppen?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Möbel parallel zur Renovierung"
+   "Wann bestellt man die Büromöbel?"
   ],
   [
    "p",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Was ein schlüsselfertiger Büroumbau kostet"
+   "Was kostet ein schlüsselfertiger Büroumbau?"
   ],
   [
    "p",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Typische Fehler beim Büroumbau"
+   "Welche Fehler passieren beim Büroumbau?"
   ],
   [
    "ul",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Checkliste vor dem Start"
+   "Was ist vor dem Start zu prüfen?"
   ],
   [
    "ol",

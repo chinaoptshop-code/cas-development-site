@@ -7,6 +7,7 @@
  "description": "Mobilier de Chine pour restaurants, cafés et hôtels : ce qu’il vaut la peine d’importer, comment rédiger le descriptif, délais de livraison et contrôle qualité.",
  "lead": "Équiper un restaurant, un café ou un hôtel depuis la Chine permet d’acheter mobilier, luminaires, vaisselle et linge en un seul envoi directement d’usine. Voici ce qu’il vaut la peine de commander, comment préparer le descriptif, combien de temps prend la livraison et comment tenir la date d’ouverture.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/equipement-cle-en-main",
   "Équipement clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce qui distingue l’équipement CHR de l’ameublement d’un appartement"
+   "En quoi l'équipement HoReCa diffère-t-il d'un appartement ?"
   ],
   [
    "p",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "Ce qu’il vaut la peine d’importer de Chine"
+   "Que vaut-il la peine d'importer de Chine ?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Le descriptif, base de la commande"
+   "Pourquoi le descriptif est-il la base de la commande ?"
   ],
   [
    "p",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Comment se déroule l’équipement d’un établissement"
+   "Comment se déroule l'équipement d'un établissement ?"
   ],
   [
    "ol",
@@ -142,7 +143,7 @@
   ],
   [
    "h2",
-   "Hôtels et petits hôtels : ce qu’il faut prévoir"
+   "Que prévoir pour un hôtel ou un mini-hôtel ?"
   ],
   [
    "p",
@@ -160,7 +161,7 @@
   ],
   [
    "h2",
-   "Vérifier la qualité avant expédition"
+   "Comment vérifier la qualité avant l'expédition ?"
   ],
   [
    "p",
@@ -176,7 +177,7 @@
   ],
   [
    "h2",
-   "Erreurs typiques"
+   "Quelles erreurs sont typiques ?"
   ],
   [
    "ul",

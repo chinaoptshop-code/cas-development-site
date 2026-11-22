@@ -7,6 +7,7 @@
  "description": "Devis d'une base de loisirs : plan masse, cabanes de 30 à 60 m², bâtiment principal, piscine, plage et bar, zone technique, réseaux, phases.",
  "lead": "Le devis d'une base de loisirs n'est pas un prix unique au mètre, mais un ensemble de bâtiments, chacun avec son tarif. Nous voyons de quoi il se compose et comment découper la construction en phases. Sur notre site, vous pouvez composer l'ensemble vous-même dans le plan masse interactif « Complexe de loisirs ».",
  "date": "2026-11-10",
+ "modified": "2026-11-22",
  "service": [
   "/fr/base-de-loisirs-cle-en-main",
   "Complexe de vacances clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Le plan masse, base du devis"
+   "1. Pourquoi le plan masse fonde-t-il le devis ?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "2. Les cabanes"
+   "2. Quelle part du budget pour les cabanes ?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "3. Le bâtiment principal"
+   "3. Que comprend le bâtiment principal ?"
   ],
   [
    "p",
@@ -44,7 +45,7 @@
   ],
   [
    "h2",
-   "4. Loisirs et aménagements extérieurs"
+   "4. Que prévoir pour loisirs et extérieurs ?"
   ],
   [
    "ul",
@@ -57,7 +58,7 @@
   ],
   [
    "h2",
-   "5. Zone technique et réseaux"
+   "5. Que comprennent zone technique et réseaux ?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "6. Design et ameublement"
+   "6. Combien coûtent design et ameublement ?"
   ],
   [
    "p",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "Ce que l'on oublie souvent"
+   "Qu'oublie-t-on souvent dans le devis ?"
   ],
   [
    "ul",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Comment réduire le budget sans perdre en qualité"
+   "Comment réduire le budget sans perdre en qualité ?"
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Comment nous chiffrons"
+   "Comment chiffrons-nous un complexe ?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "7. Les phases de construction"
+   "7. Comment construire par tranches ?"
   ],
   [
    "ol",

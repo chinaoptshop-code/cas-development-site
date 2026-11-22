@@ -7,6 +7,7 @@
  "description": "Projekt biura open space: jak rozplanować stanowiska, sale spotkań i kuchnię, strefować bez pełnych ścian i poradzić sobie z hałasem. Projekt od $30/m².",
  "lead": "Otwarte biuro jest bardziej elastyczne niż gabinety, ale działa tylko wtedy, gdy przemyślano strefy, przejścia, światło i dźwięk. Omawiamy, jak podejść do projektu biura open space: od czego zacząć, jak strefować przestrzeń i co zrobić z hałasem już na etapie projektu.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projekt-biura-open-space",
   "Projekt biura open space dla firmy IT"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Od czego zacząć: zespół i scenariusze pracy"
+   "Od czego zacząć projekt biura open space?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Układ biura open space"
+   "Jak zaplanować układ biura open space?"
   ],
   [
    "p",
@@ -54,7 +55,7 @@
   ],
   [
    "h2",
-   "Strefowanie bez pełnych ścian"
+   "Jak podzielić biuro na strefy bez pełnych ścian?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Akustyka w open space"
+   "Jak ograniczyć hałas w open space?"
   ],
   [
    "p",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Światło, gniazdka i instalacje"
+   "Jak zaplanować światło, gniazdka i instalacje?"
   ],
   [
    "p",
@@ -126,7 +127,7 @@
   ],
   [
    "h2",
-   "Co sprawdzić w projekcie przed remontem"
+   "Co sprawdzić w projekcie przed remontem?"
   ],
   [
    "ul",
@@ -142,7 +143,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje projekt i remont biura"
+   "Ile kosztuje projekt i remont biura?"
   ],
   [
    "p",

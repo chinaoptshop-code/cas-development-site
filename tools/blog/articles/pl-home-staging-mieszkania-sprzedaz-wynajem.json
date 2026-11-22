@@ -7,6 +7,7 @@
  "description": "Home staging mieszkania: co usunąć, co naprawić, jak dobrać meble, światło i tekstylia do zdjęć i prezentacji. Umeblowanie od $250/m².",
  "lead": "Kupujący lub najemca decyduje, czy zadzwonić, w kilka sekund oglądania zdjęć. Home staging to przygotowanie mieszkania do sprzedaży lub wynajmu tak, by na zdjęciach i podczas prezentacji wyglądało na zadbane i zrozumiałe. Opowiadamy, od czego zacząć, co naprawić, jakie meble i tekstylia dodać i kiedy prościej zamówić umeblowanie pod klucz.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/pl/umeblowanie-pod-klucz",
   "Umeblowanie pod klucz"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Czym jest home staging i po co go robić"
+   "Czym jest home staging i po co go robić?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Krok 1: porządki i czystość"
+   "Krok 1: co usunąć przed prezentacją?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Krok 2: drobne naprawy"
+   "Krok 2: jakie drobne naprawy zrobić?"
   ],
   [
    "p",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Krok 3: meble i ustawienie"
+   "Krok 3: jak ustawić meble?"
   ],
   [
    "p",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Krok 4: światło, tekstylia i dekor"
+   "Krok 4: co dają światło, tekstylia i dekor?"
   ],
   [
    "p",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Samodzielnie czy z umeblowaniem pod klucz"
+   "Samodzielnie czy z umeblowaniem pod klucz?"
   ],
   [
    "p",
@@ -130,7 +131,7 @@
   ],
   [
    "h2",
-   "Lista kontrolna przed zdjęciami i prezentacjami"
+   "Co sprawdzić przed zdjęciami i prezentacjami?"
   ],
   [
    "ul",

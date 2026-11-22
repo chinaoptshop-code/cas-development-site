@@ -7,6 +7,7 @@
  "description": "Oświetlenie ogrodu i nawierzchnie ścieżek: jak zaplanować trasy, jakie materiały wybrać, co i czym podświetlić oraz dlaczego kable układa się przed płytami.",
  "lead": "Ścieżki i światło to to, z czego korzystasz na działce codziennie. Wyjaśniamy, jak planować oświetlenie ogrodu i nawierzchnie ścieżek razem, jakie materiały wybrać, co podświetlić i dlaczego kabel musi trafić do ziemi przed płytami.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektowanie-ogrodow",
   "Projektowanie ogrodów i zagospodarowanie działki"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Najpierw trasy, potem materiał"
+   "Gdzie prowadzić ścieżki na działce?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Nawierzchnie ścieżek: jakie materiały wybrać"
+   "Jaki materiał wybrać na nawierzchnię ścieżek?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "Oświetlenie ogrodu: co i po co podświetlać"
+   "Co i po co podświetlać w ogrodzie?"
   ],
   [
    "p",
@@ -93,7 +94,7 @@
   ],
   [
    "h2",
-   "Dlaczego kabel układa się przed płytami"
+   "Dlaczego kabel układa się przed płytami?"
   ],
   [
    "p",
@@ -119,7 +120,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje oświetlenie i nawierzchnie"
+   "Ile kosztuje oświetlenie i nawierzchnie?"
   ],
   [
    "p",

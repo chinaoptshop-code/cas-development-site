@@ -7,6 +7,7 @@
  "description": "Home staging de un piso: qué retirar, qué arreglar, cómo elegir muebles, luz y textiles para fotos y visitas. Amueblamiento desde $250/m².",
  "lead": "Un comprador o inquilino decide si llamar en pocos segundos mirando las fotos. El home staging es preparar un piso para la venta o el alquiler de modo que en las fotos y en la visita se vea cuidado y fácil de entender. Le contamos por dónde empezar, qué arreglar, qué muebles y textiles añadir y cuándo es más sencillo encargar el amueblamiento llave en mano.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/es/amueblamiento-llave-en-mano",
   "Amueblamiento llave en mano"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Qué es el home staging y para qué sirve"
+   "¿Qué es el home staging y para qué sirve?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Paso 1: despejar y limpiar"
+   "Paso 1: ¿qué retirar antes de las visitas?"
   ],
   [
    "p",
@@ -45,7 +46,7 @@
   ],
   [
    "h2",
-   "Paso 2: pequeños arreglos"
+   "Paso 2: ¿qué pequeños arreglos hacer?"
   ],
   [
    "p",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Paso 3: muebles y distribución"
+   "Paso 3: ¿cómo distribuir los muebles?"
   ],
   [
    "p",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Paso 4: luz, textiles y decoración"
+   "Paso 4: ¿qué aportan la luz, los textiles y la decoración?"
   ],
   [
    "p",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Por su cuenta o con amueblamiento llave en mano"
+   "¿Por su cuenta o con amueblamiento llave en mano?"
   ],
   [
    "p",
@@ -130,7 +131,7 @@
   ],
   [
    "h2",
-   "Lista de control antes de las fotos y las visitas"
+   "¿Qué revisar antes de las fotos y las visitas?"
   ],
   [
    "ul",

@@ -7,6 +7,7 @@
  "description": "Salón de belleza llave en mano en Kiev: distribución de puestos, proyecto de diseño, reforma con ventilación y lavacabezas, muebles, espejos y luz de China.",
  "lead": "Un salón de belleza llave en mano es un espacio donde los profesionales trabajan cómodos y los clientes quieren volver. Le contamos cómo distribuir los puestos de trabajo, qué prever en la reforma, qué equipamiento y mobiliario elegir y cómo calcular el presupuesto antes de abrir.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/es/negocio-llave-en-mano",
   "Negocio llave en mano"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Por dónde empezar: formato y servicios"
+   "¿Por dónde empezar a abrir un salón de belleza?"
   ],
   [
    "p",
@@ -39,7 +40,7 @@
   ],
   [
    "h2",
-   "Distribución de los puestos de trabajo"
+   "¿Cómo distribuir los puestos de trabajo?"
   ],
   [
    "p",
@@ -61,7 +62,7 @@
   ],
   [
    "h2",
-   "El proyecto de diseño del salón"
+   "¿Qué incluye el proyecto de diseño del salón?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Reforma: qué prever en las instalaciones"
+   "¿Qué prever en las instalaciones del salón?"
   ],
   [
    "p",
@@ -113,7 +114,7 @@
   ],
   [
    "h2",
-   "Recepción, zona de espera y entrada"
+   "¿Cómo diseñar recepción, espera y entrada?"
   ],
   [
    "p",
@@ -134,7 +135,7 @@
   ],
   [
    "h2",
-   "Mobiliario, espejos y equipamiento"
+   "¿Qué muebles y equipos necesita un salón?"
   ],
   [
    "p",
@@ -152,7 +153,7 @@
   ],
   [
    "h2",
-   "Fases para abrir un salón llave en mano"
+   "¿Qué etapas tiene abrir un salón llave en mano?"
   ],
   [
    "ol",

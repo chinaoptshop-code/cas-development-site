@@ -7,6 +7,7 @@
  "description": "Éclairage de jardin et pavage des allées : tracer les cheminements, choisir les matériaux, quoi éclairer et pourquoi les câbles passent avant le pavage.",
  "lead": "Les allées et l'éclairage, c'est ce que vous utilisez chaque jour sur votre terrain. Nous expliquons comment concevoir ensemble l'éclairage du jardin et le pavage des allées, quels matériaux choisir, quoi éclairer et pourquoi le câble doit être enterré avant les dalles.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/fr/architecture-paysagere",
   "Architecture paysagère et aménagement de terrain"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "D'abord les cheminements, ensuite le matériau"
+   "Où tracer les allées sur le terrain ?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Pavage des allées : quels matériaux choisir"
+   "Quel matériau choisir pour paver les allées ?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "Éclairage du jardin : quoi éclairer et pourquoi"
+   "Que faut-il éclairer au jardin, et pourquoi ?"
   ],
   [
    "p",
@@ -93,7 +94,7 @@
   ],
   [
    "h2",
-   "Pourquoi le câble passe avant le pavage"
+   "Pourquoi le câble passe-t-il avant le pavage ?"
   ],
   [
    "p",
@@ -119,7 +120,7 @@
   ],
   [
    "h2",
-   "Combien coûtent l'éclairage et le pavage"
+   "Combien coûtent l'éclairage et le pavage ?"
   ],
   [
    "p",

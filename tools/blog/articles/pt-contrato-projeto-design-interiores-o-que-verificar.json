@@ -7,6 +7,7 @@
  "description": "Contrato de design de interiores: que cláusulas deve ter, como verificar o portefólio e a equipa do estúdio e que sinais de alerta indicam desistir.",
  "lead": "O contrato do projeto de design de interiores é o documento a que vai recorrer meses depois para saber o que exatamente o estúdio tinha de fazer, quantas revisões estão pagas e quem corrige um erro num desenho. Vemos como verificar um estúdio antes de assinar: o que procurar no portefólio, que cláusulas devem estar no contrato e nos anexos e que sinais indicam que é melhor procurar outra equipa.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pt/design-de-interiores-apartamento",
   "Encomendar um design de interiores"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Porque convém verificar o estúdio e não escolhê-lo só pelo gosto"
+   "Porquê verificar um estúdio e não só escolhê-lo pelo gosto?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Como verificar o portefólio de um estúdio"
+   "Como verificar o portfólio de um estúdio?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Quem vai trabalhar no seu projeto"
+   "Quem vai trabalhar no seu projeto?"
   ],
   [
    "p",
@@ -112,7 +113,7 @@
   ],
   [
    "h2",
-   "Levantamento e briefing: por onde começa o projeto"
+   "Porquê levantamento e briefing antes do contrato?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "O que deve ter o contrato de projeto de design de interiores"
+   "O que deve conter o contrato de projeto de interiores?"
   ],
   [
    "p",
@@ -193,7 +194,7 @@
   ],
   [
    "h2",
-   "Estúdio só de projeto ou de ciclo completo"
+   "Estúdio só de projeto ou de ciclo completo?"
   ],
   [
    "p",
@@ -205,7 +206,7 @@
   ],
   [
    "h2",
-   "O que deve receber no fim"
+   "O que deve receber no fim?"
   ],
   [
    "p",
@@ -213,7 +214,7 @@
   ],
   [
    "h2",
-   "Sinais de alerta: quando é melhor não assinar"
+   "Quando é melhor não assinar?"
   ],
   [
    "p",
@@ -234,7 +235,7 @@
   ],
   [
    "h2",
-   "Quanto custa um projeto de design e como comparar propostas"
+   "Como comparar preços de projetos de design?"
   ],
   [
    "p",
@@ -261,7 +262,7 @@
   ],
   [
    "h2",
-   "Conflitos típicos com o estúdio e como os evitar"
+   "Como evitar conflitos típicos com um estúdio?"
   ],
   [
    "ul",
@@ -279,7 +280,7 @@
   ],
   [
    "h2",
-   "Checklist antes de assinar o contrato"
+   "O que verificar antes de assinar o contrato?"
   ],
   [
    "ul",

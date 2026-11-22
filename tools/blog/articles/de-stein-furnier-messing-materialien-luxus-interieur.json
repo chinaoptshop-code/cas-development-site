@@ -7,6 +7,7 @@
  "description": "Materialien eines Luxus-Interieurs: Naturstein, Furnier, Massivholz und Messing – wo man sie einsetzt, womit ersetzt, wie kombiniert und pflegt.",
  "lead": "Naturstein, Holzfurnier und Messing sind die Materialien, die ein Interieur am häufigsten luxuriös wirken lassen. Jedes hat seinen Charakter: Stein nimmt Flecken auf, Furnier mag keine trockene Luft, und Messing verändert seine Farbe. Hier erfahren Sie, wo diese Materialien am besten wirken, was sie ersetzen kann und wie man sie so kombiniert, dass das Interieur mit den Jahren schöner wird.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/innenarchitektur",
   "Innenarchitektur"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Warum Materialien das Niveau eines Interieurs bestimmen"
+   "Warum bestimmen Materialien das Niveau eines Interieurs?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Naturstein: Marmor, Travertin, Granit, Quarzit"
+   "Welchen Naturstein wählen?"
   ],
   [
    "p",
@@ -55,7 +56,7 @@
   ],
   [
    "h2",
-   "Naturstein oder Feinsteinzeug"
+   "Naturstein oder Feinsteinzeug?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Stein im Bad"
+   "Eignet sich Naturstein fürs Bad?"
   ],
   [
    "p",
@@ -71,7 +72,7 @@
   ],
   [
    "h2",
-   "Furnier und Massivholz: die Wärme des Holzes"
+   "Was unterscheidet Furnier von Massivholz?"
   ],
   [
    "p",
@@ -112,7 +113,7 @@
   ],
   [
    "h2",
-   "Messing: ein lebendiges Metall"
+   "Wie verändert sich Messing mit der Zeit?"
   ],
   [
    "p",
@@ -134,7 +135,7 @@
   ],
   [
    "h2",
-   "Das Licht entscheidet, wie ein Material wirkt"
+   "Wie verändert Licht die Wirkung eines Materials?"
   ],
   [
    "p",
@@ -142,7 +143,7 @@
   ],
   [
    "h2",
-   "Wie man Materialien kombiniert"
+   "Wie kombiniert man Materialien im Luxusinterieur?"
   ],
   [
    "p",
@@ -160,7 +161,7 @@
   ],
   [
    "h2",
-   "Pflege: damit Materialien schön altern"
+   "Wie pflegt man Naturmaterialien?"
   ],
   [
    "p",
@@ -174,7 +175,7 @@
   ],
   [
    "h2",
-   "Wie wir Materialien im Projekt auswählen"
+   "Wie wählen wir Materialien im Projekt aus?"
   ],
   [
    "p",

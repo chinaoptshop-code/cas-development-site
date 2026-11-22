@@ -7,6 +7,7 @@
  "description": "Remont i budowa w Europie z ukraińską ekipą CAS: ceny „od”, projekt online, własny zespół, logistyka materiałów, lokalne wymogi, nadzór i umowa.",
  "lead": "Remont i budowę w Europie z ukraińską ekipą wybierają ci, którzy kupili mieszkanie lub dom w Polsce, Niemczech, Hiszpanii czy Francji i chcą znanego z Kijowa poziomu projektu i realizacji — z jednym zespołem, jednym managerem i rozmową w ojczystym języku. Opowiadamy, jak pracujemy za granicą: co robimy, ile to kosztuje, jak wygląda logistyka, lokalne wymogi i kontrola na odległość.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/remont-i-budowa-europa",
   "Remont i budowa w Europie"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Dla kogo"
+   "Dla kogo jest ukraińska ekipa w Europie?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Co robimy w Europie"
+   "Co CAS robi w Europie?"
   ],
   [
    "ul",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Ukraińska ekipa czy lokalny wykonawca"
+   "Ukraińska ekipa czy lokalna firma?"
   ],
   [
    "p",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Ceny w Europie"
+   "Ile to kosztuje w Europie i dlaczego więcej niż w Kijowie?"
   ],
   [
    "p",
@@ -93,7 +94,7 @@
   ],
   [
    "h2",
-   "Jak wygląda proces"
+   "Jak przebiega proces?"
   ],
   [
    "ol",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Lokalne przepisy i pozwolenia"
+   "Jakie lokalne przepisy i pozwolenia obowiązują?"
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Logistyka"
+   "Jak zorganizowana jest logistyka?"
   ],
   [
    "p",
@@ -131,7 +132,7 @@
   ],
   [
    "h2",
-   "Nadzór na odległość"
+   "Jak kontrolować budowę na odległość?"
   ],
   [
    "ul",
@@ -145,7 +146,7 @@
   ],
   [
    "h2",
-   "Umowa i płatności"
+   "Jak wyglądają umowa i płatności?"
   ],
   [
    "p",

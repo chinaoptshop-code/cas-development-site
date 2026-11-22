@@ -7,6 +7,7 @@
  "description": "Odbiór remontu mieszkania: co sprawdzić w ścianach, płytkach, elektryce i hydraulice, jakie dokumenty wziąć od wykonawcy i jak zapisać uwagi.",
  "lead": "Podpisany protokół oznacza, że prace zostały przyjęte, a wady widoczne podczas oględzin trudniej później udowodnić. Zebraliśmy listę kontrolną odbioru remontu mieszkania: co przygotować, co sprawdzić w każdym pomieszczeniu, jakie dokumenty wziąć od wykonawcy i jak zapisać uwagi.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pl/nadzor-autorski-i-techniczny",
   "Nadzór autorski i techniczny"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Odbierać etapami, a nie tylko na końcu"
+   "Dlaczego odbierać remont etapami, a nie tylko na końcu?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Co zabrać ze sobą"
+   "Co zabrać na odbiór remontu?"
   ],
   [
    "ul",
@@ -47,7 +48,7 @@
   ],
   [
    "h2",
-   "Ściany, sufity i podłoga"
+   "Jak sprawdzić ściany, sufity i podłogę?"
   ],
   [
    "ul",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Łazienka i płytki"
+   "Co sprawdzić w łazience i na płytkach?"
   ],
   [
    "ul",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Elektryka, oświetlenie i instalacje"
+   "Jak sprawdzić elektrykę, oświetlenie i instalacje?"
   ],
   [
    "ul",
@@ -97,7 +98,7 @@
   ],
   [
    "h2",
-   "Drzwi, okna i meble w zabudowie"
+   "Na co patrzeć w drzwiach, oknach i zabudowie?"
   ],
   [
    "ul",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Dokumenty, które warto otrzymać"
+   "Jakie dokumenty otrzymać po remoncie?"
   ],
   [
    "ul",
@@ -128,7 +129,7 @@
   ],
   [
    "h2",
-   "Jak zapisywać uwagi"
+   "Jak zapisywać uwagi podczas odbioru?"
   ],
   [
    "p",

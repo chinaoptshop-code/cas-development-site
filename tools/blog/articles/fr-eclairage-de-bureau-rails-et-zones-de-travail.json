@@ -7,6 +7,7 @@
  "description": "Éclairage de bureau : lumière générale, de travail et d'accent, systèmes sur rail, reflets sur les écrans, température de couleur par zone. Design dès $30/m².",
  "lead": "L'éclairage d'un bureau, ce n'est pas un nombre de luminaires au plafond, c'est un scénario : où l'on travaille sur écran, où l'on discute, où l'on se repose. Nous passons en revue les trois couches de lumière, les systèmes sur rail et le choix de la lumière pour chaque zone.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/fr/design-bureaux",
   "Design et rénovation de bureaux à Kyiv"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Trois couches de lumière : générale, de travail et d'accent"
+   "Quelles trois couches de lumière dans un bureau ?"
   ],
   [
    "p",
-   "Une lumière uniforme issue de panneaux identiques sur tout le plafond est la solution la plus simple, mais pas la meilleure. Dans un bureau bien éclairé, la lumière fonctionne par couches, et chaque couche a sa mission."
+   "Dans un bureau bien éclairé, la lumière fonctionne par couches, et chaque couche a sa mission. Une lumière uniforme issue de panneaux identiques sur tout le plafond est la solution la plus simple, mais pas la meilleure."
   ],
   [
    "ul",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Rails et systèmes magnétiques : quand ils se justifient"
+   "Quand rails et systèmes magnétiques se justifient-ils ?"
   ],
   [
    "p",
@@ -58,7 +59,7 @@
   ],
   [
    "h2",
-   "Reflets sur les écrans : où placer la lumière par rapport au bureau"
+   "Où placer la lumière pour éviter les reflets sur écran ?"
   ],
   [
    "p",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Température de couleur par zone"
+   "Quelle température de couleur pour chaque zone ?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "La lumière en salle de réunion et dans la cuisine-café"
+   "Quelle lumière en salle de réunion et cuisine-café ?"
   ],
   [
    "p",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Comment cela s'intègre au projet et au devis"
+   "Quand concevoir l'éclairage du bureau ?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Entreprise générale à Kyiv ou corps de métier séparés pour un local commercial : responsabilités, contrat et devis. Bureaux dès $350/m².",
  "lead": "Une entreprise générale à Kyiv prend en charge tout le chantier, tandis que des équipes séparées donnent plus de contrôle mais aussi plus de tracas. Nous voyons en quoi les deux approches diffèrent pour un bureau, une boutique ou un restaurant, et quand chacune convient.",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/fr/entreprise-generale",
   "Entreprise générale à Kyiv"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "La différence entre les deux schémas"
+   "Entreprise générale ou équipes séparées : quelle différence ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Quand des équipes séparées se justifient"
+   "Quand des équipes séparées se justifient-elles ?"
   ],
   [
    "p",
@@ -40,7 +41,7 @@
   ],
   [
    "h2",
-   "Quand un local commercial a besoin d'une entreprise générale à Kyiv"
+   "Quand un local commercial a-t-il besoin d'une entreprise générale ?"
   ],
   [
    "p",
@@ -64,7 +65,7 @@
   ],
   [
    "h2",
-   "Combien ça coûte : chiffrer sans surprise"
+   "Combien coûtent des travaux avec une entreprise générale ?"
   ],
   [
    "p",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Contrat, devis et reporting : ce qu'il faut exiger dans tous les cas"
+   "Qu'exiger dans le contrat, le devis et le reporting ?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Comment choisir pour votre local"
+   "Comment choisir le schéma pour votre local ?"
   ],
   [
    "p",

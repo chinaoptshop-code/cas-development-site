@@ -7,6 +7,7 @@
  "description": "Office lighting: ambient, task and accent light, track systems, screen glare, colour temperature by zone. Office design from $30/m².",
  "lead": "Office lighting is not about the number of fittings on the ceiling but about a scenario: where people work at a screen, where they talk and where they relax. We look at the three layers of light, track systems and choosing light for each zone.",
  "date": "2026-10-27",
+ "modified": "2026-11-22",
  "service": [
   "/en/office-design",
   "Office design and renovation in Kyiv"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Three layers of light: ambient, task and accent"
+   "Which three layers of light does an office need?"
   ],
   [
    "p",
-   "Even light from identical panels across the whole ceiling is the simplest solution, but not the best. In a well-lit office, light works in layers, and each layer has its own job."
+   "In a well-lit office, light works in layers, and each layer has its own job. Even light from identical panels across the whole ceiling is the simplest solution, but not the best."
   ],
   [
    "ul",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "Track and magnetic systems: when they make sense"
+   "When do track and magnetic systems make sense?"
   ],
   [
    "p",
@@ -58,7 +59,7 @@
   ],
   [
    "h2",
-   "Screen glare: where to place light relative to the desk"
+   "Where should light go to avoid glare on screens?"
   ],
   [
    "p",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Colour temperature by zone"
+   "Which colour temperature suits each zone?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Light in meeting rooms and the kitchen-café"
+   "What light do meeting rooms and the kitchen-café need?"
   ],
   [
    "p",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "How this fits into the design and estimate"
+   "When should office lighting be designed?"
   ],
   [
    "p",

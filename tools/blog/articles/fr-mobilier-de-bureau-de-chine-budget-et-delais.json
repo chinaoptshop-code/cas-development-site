@@ -7,6 +7,7 @@
  "description": "Mobilier de bureau sur mesure en Chine : quoi commander, établir le descriptif et le budget, livraison en 35 à 70 jours et calage dans le chantier.",
  "lead": "Le mobilier de bureau de Chine permet d'équiper postes de travail, salles de réunion et accueil selon votre projet, et non avec ce qu'il reste en stock. Nous expliquons comment calculer le budget, quels délais prévoir et comment caler la livraison dans le planning des travaux.",
  "date": "2026-10-26",
+ "modified": "2026-11-22",
  "service": [
   "/fr/equipement-cle-en-main",
   "Équipement clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce que l'on peut commander pour un bureau"
+   "Quels meubles commander pour un bureau ?"
   ],
   [
    "p",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Quantités et descriptif"
+   "Comment fixer quantités et descriptif ?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Comment calculer le budget du mobilier de bureau de Chine"
+   "Comment budgéter le mobilier de bureau de Chine ?"
   ],
   [
    "ol",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Choisir les modèles : à quoi faire attention"
+   "Comment choisir les modèles de mobilier de bureau ?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Délais : 35 à 70 jours et comment les intégrer aux travaux"
+   "Quels délais depuis la Chine et comment les caler sur les travaux ?"
   ],
   [
    "p",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Paiement et contrat"
+   "Comment se passent paiement et contrat ?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Technologia budowy domu z betonu komórkowego: płyta fundamentowa, pierwsza warstwa, nadproża, wieniec, dach, ciepła obudowa. Checklista kontroli etapów.",
  "lead": "Technologia budowy domu z betonu komórkowego wybacza mniej, niż się wydaje: ściany rosną szybko, ale większość wad powstaje w kilku detalach — pierwszej warstwie, nadprożach, wieńcu, połączeniach z dachem i oknami. Omawiamy kolejność prac tak, jak prowadzi ją kierownik budowy, i na każdym etapie pokazujemy, co warto sprawdzić inwestorowi, póki prace nie zostały zakryte kolejną warstwą.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/budowa-domow",
   "Budowa domów"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Technologia budowy domu z betonu komórkowego: z czego składa się proces"
+   "Czym jest beton komórkowy i jakie są etapy budowy?"
   ],
   [
    "p",
@@ -41,7 +42,7 @@
   ],
   [
    "h2",
-   "Etap 0. Projekt i geotechnika — podstawa wszystkich decyzji"
+   "Etap 0. Kto ustala bloczek, fundament i zbrojenie?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Etap 1. Płyta fundamentowa"
+   "Etap 1. Dlaczego płyta fundamentowa?"
   ],
   [
    "p",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Etap 2. Izolacja pozioma i pierwsza warstwa muru"
+   "Etap 2. Dlaczego pierwsza warstwa muru jest najważniejsza?"
   ],
   [
    "p",
@@ -126,7 +127,7 @@
   ],
   [
    "h2",
-   "Etap 3. Ściany, nadproża i otwory"
+   "Etap 3. Po co nadproża nad otworami?"
   ],
   [
    "p",
@@ -148,7 +149,7 @@
   ],
   [
    "h2",
-   "Etap 4. Wieniec i strop"
+   "Etap 4. Po co jest wieniec?"
   ],
   [
    "p",
@@ -175,7 +176,7 @@
   ],
   [
    "h2",
-   "Etap 5. Dach"
+   "Etap 5. Jak mocować dach do ścian z betonu komórkowego?"
   ],
   [
    "p",
@@ -197,7 +198,7 @@
   ],
   [
    "h2",
-   "Etap 6. Okna, ocieplenie i ciepła obudowa"
+   "Etap 6. Czym jest ciepła obudowa i jak montować okna?"
   ],
   [
    "p",
@@ -225,7 +226,7 @@
   ],
   [
    "h2",
-   "Etap 7. Instalacje, tynki i wylewki"
+   "Etap 7. Kiedy zaczynać instalacje, tynki i wylewki?"
   ],
   [
    "p",
@@ -242,7 +243,7 @@
   ],
   [
    "h2",
-   "Typowe błędy przy budowie z betonu komórkowego"
+   "Jakie błędy popełnia się przy budowie z betonu komórkowego?"
   ],
   [
    "ul",
@@ -258,7 +259,7 @@
   ],
   [
    "h2",
-   "Checklista robót zanikających: co dokumentować zdjęciem i protokołem"
+   "Jakie roboty zanikające dokumentować zdjęciem i protokołem?"
   ],
   [
    "p",
