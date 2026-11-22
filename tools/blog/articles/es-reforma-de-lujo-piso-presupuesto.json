@@ -7,6 +7,7 @@
  "description": "Reforma de lujo de un piso en Kiev: desde $550/m² en mano de obra y obra gruesa, acabados y muebles según presupuesto, ±5% y garantía de 12 meses.",
  "lead": "Una reforma de lujo en Kiev no son solo materiales caros, sino detalles complejos, instalaciones y control de cada etapa oculta. Explicamos de qué partes se compone el presupuesto de una reforma premium, qué incluye la tarifa desde $550/m² y qué se calcula aparte.",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/es/reforma-premium",
   "Reforma premium en Kiev"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "En qué se diferencia una reforma premium de una normal"
+   "¿En qué se diferencia una reforma premium de una estándar?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "De qué se compone el presupuesto de una reforma de lujo"
+   "¿De qué se compone el presupuesto de una reforma de lujo?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Qué incluye la tarifa desde $550/m²"
+   "¿Qué incluye la tarifa desde $550/m²?"
   ],
   [
    "p",
@@ -68,7 +69,7 @@
   ],
   [
    "h2",
-   "Cómo mantener el presupuesto"
+   "¿Cómo mantener el presupuesto dentro de la estimación?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "Quién hace los trabajos"
+   "¿Quién ejecuta una reforma de lujo?"
   ],
   [
    "p",
@@ -103,7 +104,7 @@
   ],
   [
    "h2",
-   "Control, informes y cámara online"
+   "¿Cómo controlar la obra sin desplazarse?"
   ],
   [
    "p",
@@ -111,7 +112,7 @@
   ],
   [
    "h2",
-   "Contrato, pago y garantía"
+   "¿Qué fijan el contrato, el pago y la garantía?"
   ],
   [
    "p",

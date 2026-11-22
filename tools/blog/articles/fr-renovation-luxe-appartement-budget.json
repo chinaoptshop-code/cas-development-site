@@ -7,6 +7,7 @@
  "description": "Rénovation de luxe d'un appartement à Kyiv : dès $550/m² pour travaux et gros œuvre, finitions et mobilier sur devis, ±5 % et garantie de 12 mois.",
  "lead": "Une rénovation de luxe à Kyiv, ce ne sont pas seulement des matériaux chers, mais des détails complexes, des réseaux et le contrôle de chaque étape cachée. Nous expliquons de quelles parties se compose le budget d'une rénovation premium, ce que comprend le tarif à partir de $550/m² et ce qui est chiffré à part.",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/fr/renovation-haut-de-gamme",
   "Rénovation haut de gamme à Kyiv"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce qui distingue une rénovation premium d'une rénovation classique"
+   "Qu'est-ce qui distingue une rénovation premium ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "De quoi se compose le budget d'une rénovation de luxe"
+   "De quoi se compose le budget d'une rénovation de luxe ?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Ce que comprend le tarif à partir de $550/m²"
+   "Que comprend le tarif à partir de $550/m² ?"
   ],
   [
    "p",
@@ -68,7 +69,7 @@
   ],
   [
    "h2",
-   "Comment tenir le budget dans les limites du devis"
+   "Comment tenir le budget dans le devis ?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "Qui réalise les travaux"
+   "Qui réalise une rénovation de luxe ?"
   ],
   [
    "p",
@@ -103,7 +104,7 @@
   ],
   [
    "h2",
-   "Contrôle, rapports et caméra en ligne"
+   "Comment suivre le chantier sans s'y rendre ?"
   ],
   [
    "p",
@@ -111,7 +112,7 @@
   ],
   [
    "h2",
-   "Contrat, paiement et garantie"
+   "Que fixent le contrat, le paiement et la garantie ?"
   ],
   [
    "p",
