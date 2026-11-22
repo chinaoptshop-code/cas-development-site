@@ -7,6 +7,7 @@
  "description": "Umowa na projekt wnętrza: jakie punkty musi zawierać, jak sprawdzić portfolio i zespół studia oraz jakie czerwone flagi oznaczają, że lepiej zrezygnować.",
  "lead": "Umowa na projekt wnętrza to dokument, w którym za kilka miesięcy będziesz sprawdzać, co dokładnie studio miało zrobić, ile poprawek jest opłaconych i kto poprawia błąd w rysunku. Pokazujemy, jak sprawdzić studio jeszcze przed podpisem: czego szukać w portfolio, jakie punkty muszą być w umowie i załącznikach i jakie sygnały oznaczają, że lepiej poszukać innego zespołu.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projekt-wnetrza-mieszkania",
   "Projekt wnętrz mieszkania"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Dlaczego studio trzeba sprawdzić, a nie tylko wybrać według gustu"
+   "Dlaczego studio trzeba sprawdzić, a nie tylko wybrać na oko?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Jak sprawdzić portfolio studia"
+   "Jak sprawdzić portfolio studia projektowego?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Kto będzie pracował nad twoim projektem"
+   "Kto będzie pracował nad Twoim projektem?"
   ],
   [
    "p",
@@ -112,7 +113,7 @@
   ],
   [
    "h2",
-   "Pomiary i brief: od czego zaczyna się projekt"
+   "Po co pomiary i brief przed umową?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Co powinno być w umowie na projekt wnętrza"
+   "Co powinna zawierać umowa na projekt wnętrza?"
   ],
   [
    "p",
@@ -193,7 +194,7 @@
   ],
   [
    "h2",
-   "Studio tylko od projektu czy pełnego cyklu"
+   "Studio tylko projektowe czy pełnego cyklu?"
   ],
   [
    "p",
@@ -205,7 +206,7 @@
   ],
   [
    "h2",
-   "Co powinieneś dostać na koniec"
+   "Co powinieneś otrzymać na koniec?"
   ],
   [
    "p",
@@ -213,7 +214,7 @@
   ],
   [
    "h2",
-   "Czerwone flagi: kiedy lepiej nie podpisywać"
+   "Kiedy lepiej nie podpisywać umowy?"
   ],
   [
    "p",
@@ -234,7 +235,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje projekt wnętrza i jak porównywać oferty"
+   "Jak porównywać ceny projektów wnętrz?"
   ],
   [
    "p",
@@ -261,7 +262,7 @@
   ],
   [
    "h2",
-   "Typowe konflikty ze studiem i jak ich uniknąć"
+   "Jak uniknąć typowych konfliktów ze studiem?"
   ],
   [
    "ul",
@@ -279,7 +280,7 @@
   ],
   [
    "h2",
-   "Lista kontrolna przed podpisaniem umowy"
+   "Co sprawdzić przed podpisaniem umowy?"
   ],
   [
    "ul",

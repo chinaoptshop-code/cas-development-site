@@ -7,6 +7,7 @@
  "description": "Contrat de projet d'architecture d'intérieur : clauses indispensables, vérifier portfolio et équipe du studio, signaux qui doivent vous faire renoncer.",
  "lead": "Le contrat de projet d'architecture d'intérieur est le document que vous consulterez des mois plus tard pour savoir ce que le studio devait faire exactement, combien de révisions sont payées et qui corrige une erreur de plan. Nous voyons comment vérifier un studio avant de signer : quoi chercher dans le portfolio, quelles clauses doivent figurer au contrat et dans ses annexes, et quels signaux invitent à chercher une autre équipe.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/fr/design-appartement",
   "Projet d'intérieur d'appartement"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Pourquoi vérifier un studio plutôt que le choisir au goût"
+   "Pourquoi vérifier un studio plutôt que le choisir au goût ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Comment vérifier le portfolio d'un studio"
+   "Comment vérifier le portfolio d'un studio ?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Qui travaillera sur votre projet"
+   "Qui travaillera sur votre projet ?"
   ],
   [
    "p",
@@ -112,7 +113,7 @@
   ],
   [
    "h2",
-   "Relevé et brief : par où commence un projet"
+   "Pourquoi le relevé et le brief avant le contrat ?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Ce que doit contenir un contrat de projet d'architecture d'intérieur"
+   "Que doit contenir un contrat de projet d'intérieur ?"
   ],
   [
    "p",
@@ -193,7 +194,7 @@
   ],
   [
    "h2",
-   "Studio de conception seule ou à cycle complet"
+   "Studio de conception seule ou cycle complet ?"
   ],
   [
    "p",
@@ -205,7 +206,7 @@
   ],
   [
    "h2",
-   "Ce que vous devez recevoir à la fin"
+   "Que devez-vous recevoir à la fin ?"
   ],
   [
    "p",
@@ -213,7 +214,7 @@
   ],
   [
    "h2",
-   "Signaux d'alerte : quand il vaut mieux ne pas signer"
+   "Quand vaut-il mieux ne pas signer ?"
   ],
   [
    "p",
@@ -234,7 +235,7 @@
   ],
   [
    "h2",
-   "Combien coûte un projet de design et comment comparer les offres"
+   "Comment comparer les prix d'un projet de design ?"
   ],
   [
    "p",
@@ -261,7 +262,7 @@
   ],
   [
    "h2",
-   "Conflits typiques avec un studio et comment les éviter"
+   "Comment éviter les conflits typiques avec un studio ?"
   ],
   [
    "ul",
@@ -279,7 +280,7 @@
   ],
   [
    "h2",
-   "Checklist avant de signer le contrat"
+   "Que vérifier avant de signer le contrat ?"
   ],
   [
    "ul",
