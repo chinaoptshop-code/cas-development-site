@@ -7,6 +7,7 @@
  "description": "Gros œuvre et finitions d’un appartement : ce que comprend chaque étape, le contrôle entre les deux et pourquoi soigner le gros œuvre. Dès 50/m².",
  "lead": "Le gros œuvre d’un appartement, c’est tout ce qui disparaît ensuite sous les finitions : murs, sols, réseaux. Les finitions, c’est ce que vous voyez et touchez chaque jour. Voici en quoi ils diffèrent, ce que comprend chaque étape et pourquoi il est plus simple de confier les deux à une seule entreprise.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/renovation-cle-en-main",
   "Rénovation clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Gros œuvre et finitions : la différence en bref"
+   "Quelle différence entre gros œuvre et finitions ?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "Ce que comprend le gros œuvre d’un appartement"
+   "Que comprend le gros œuvre d’un appartement ?"
   ],
   [
    "p",
@@ -55,7 +56,7 @@
   ],
   [
    "h2",
-   "Ce que comprennent les finitions"
+   "Que comprennent les finitions ?"
   ],
   [
    "p",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Ce qui se passe entre le gros œuvre et les finitions"
+   "Que vérifie-t-on entre le gros œuvre et les finitions ?"
   ],
   [
    "p",
@@ -101,11 +102,11 @@
   ],
   [
    "h2",
-   "Pourquoi on ne peut pas « économiser sur le gros œuvre »"
+   "Peut-on économiser sur le gros œuvre ?"
   ],
   [
    "p",
-   "La tentation est connue : le gros œuvre ne se voit pas, pourquoi ne pas le faire moins cher et plus vite. En réalité, c’est précisément là que les économies deviennent les plus grosses dépenses :"
+   "Économiser sur le gros œuvre est une mauvaise idée, même si la tentation est connue : il ne se voit pas, pourquoi ne pas le faire moins cher et plus vite. En réalité, c’est précisément là que les économies deviennent les plus grosses dépenses :"
   ],
   [
    "ul",
@@ -122,7 +123,7 @@
   ],
   [
    "h2",
-   "Les deux étapes dans un devis clé en main"
+   "Comment le gros œuvre et les finitions figurent-ils dans le devis ?"
   ],
   [
    "p",
@@ -147,7 +148,7 @@
   ],
   [
    "h2",
-   "Quand faire livrer les meubles"
+   "Quand faire livrer les meubles ?"
   ],
   [
    "p",
