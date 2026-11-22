@@ -7,6 +7,7 @@
  "description": "Remodelação e construção na Europa com a equipa ucraniana da CAS: preços desde, design online, equipa própria, logística, regras locais, acompanhamento.",
  "lead": "A remodelação e construção na Europa com uma equipa ucraniana é a escolha de quem comprou casa na Polónia, Alemanha, Espanha ou França e quer o nível de projeto e execução que conhecia em Kyiv: uma equipa, um gestor e comunicação na própria língua. Explicamos como trabalhamos no estrangeiro: o que fazemos, quanto custa e como se tratam a logística, as regras locais e o controlo à distância.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pt/remodelacao-construcao-europa",
   "Remodelação e construção na Europa"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Para quem"
+   "Para quem é uma equipa ucraniana na Europa?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "O que fazemos na Europa"
+   "O que faz a CAS na Europa?"
   ],
   [
    "ul",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Equipa ucraniana ou empreiteiro local"
+   "Equipa ucraniana ou empresa local?"
   ],
   [
    "p",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Preços na Europa"
+   "Quanto custa na Europa e porquê mais do que em Kyiv?"
   ],
   [
    "p",
@@ -93,7 +94,7 @@
   ],
   [
    "h2",
-   "Como decorre o processo"
+   "Como decorre o processo?"
   ],
   [
    "ol",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Regras locais e licenças"
+   "Que regras e licenças locais se aplicam?"
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Logística"
+   "Como se organiza a logística?"
   ],
   [
    "p",
@@ -131,7 +132,7 @@
   ],
   [
    "h2",
-   "Controlo à distância"
+   "Como se controla a obra à distância?"
   ],
   [
    "ul",
@@ -145,7 +146,7 @@
   ],
   [
    "h2",
-   "Contrato e pagamentos"
+   "Como funcionam o contrato e o pagamento?"
   ],
   [
    "p",

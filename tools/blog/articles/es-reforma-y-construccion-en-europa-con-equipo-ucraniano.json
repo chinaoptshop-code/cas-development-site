@@ -7,6 +7,7 @@
  "description": "Reforma y construcción en Europa con el equipo ucraniano de CAS: precios desde, diseño online, equipo propio, logística, normas locales y supervisión.",
  "lead": "La reforma y construcción en Europa con un equipo ucraniano la eligen quienes han comprado piso o casa en Polonia, Alemania, España o Francia y quieren el nivel de proyecto y ejecución que conocían en Kiev: un equipo, un gestor y comunicación en su idioma. Contamos cómo trabajamos fuera: qué hacemos, cuánto cuesta y cómo se organizan la logística, las normas locales y el control a distancia.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/es/reforma-construccion-europa",
   "Reforma y construcción en Europa"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Para quién es"
+   "¿Para quién es un equipo ucraniano en Europa?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Qué hacemos en Europa"
+   "¿Qué hace CAS en Europa?"
   ],
   [
    "ul",
@@ -53,7 +54,7 @@
   ],
   [
    "h2",
-   "Equipo ucraniano o contratista local"
+   "¿Equipo ucraniano o empresa local?"
   ],
   [
    "p",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Precios en Europa"
+   "¿Cuánto cuesta en Europa y por qué más que en Kiev?"
   ],
   [
    "p",
@@ -93,7 +94,7 @@
   ],
   [
    "h2",
-   "Cómo es el proceso"
+   "¿Cómo es el proceso?"
   ],
   [
    "ol",
@@ -109,7 +110,7 @@
   ],
   [
    "h2",
-   "Normas locales y permisos"
+   "¿Qué normas y permisos locales se aplican?"
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Logística"
+   "¿Cómo se organiza la logística?"
   ],
   [
    "p",
@@ -131,7 +132,7 @@
   ],
   [
    "h2",
-   "Control a distancia"
+   "¿Cómo se controla la obra a distancia?"
   ],
   [
    "ul",
@@ -145,7 +146,7 @@
   ],
   [
    "h2",
-   "Contrato y pagos"
+   "¿Cómo funcionan el contrato y el pago?"
   ],
   [
    "p",
