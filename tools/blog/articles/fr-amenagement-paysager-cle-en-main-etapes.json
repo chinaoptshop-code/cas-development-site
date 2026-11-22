@@ -7,6 +7,7 @@
  "description": "Aménagement paysager clé en main : contenu, ordre des travaux sur le terrain, qui répond du résultat et calcul du coût. Projet dès $50 les 100 m².",
  "lead": "L'aménagement paysager clé en main, c'est une seule équipe qui mène le terrain de la visite et du projet jusqu'au gazon, à l'éclairage et à l'arrosage réglé. Nous expliquons les étapes de l'aménagement, pourquoi l'ordre des travaux compte plus que le choix des plantes et comment se calcule le coût.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/fr/architecture-paysagere",
   "Architecture paysagère et aménagement de terrain"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce que signifie un aménagement paysager clé en main"
+   "Que signifie un aménagement paysager clé en main ?"
   ],
   [
    "p",
@@ -40,7 +41,7 @@
   ],
   [
    "h2",
-   "Étape 1. Visite, relevé et projet"
+   "Étape 1. Par où commence l'aménagement ?"
   ],
   [
    "p",
@@ -58,7 +59,7 @@
   ],
   [
    "h2",
-   "Étape 2. Terrassement et nivellement"
+   "Étape 2. Pourquoi terrassement et nivellement ?"
   ],
   [
    "p",
@@ -66,7 +67,7 @@
   ],
   [
    "h2",
-   "Étape 3. Tout ce qui est enterré"
+   "Étape 3. Que pose-t-on sous terre avant le pavage ?"
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Étape 4. Pavage, terrasses et petits ouvrages"
+   "Étape 4. Quand faire pavage, terrasses et ouvrages ?"
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Étape 5. Terre, gazon et plantations"
+   "Étape 5. Quand semer le gazon et planter ?"
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Combien coûte un aménagement paysager clé en main"
+   "Combien coûte un aménagement paysager clé en main ?"
   ],
   [
    "p",

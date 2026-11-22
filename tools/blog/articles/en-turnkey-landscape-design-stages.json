@@ -7,6 +7,7 @@
  "description": "Turnkey landscape design: what it includes, the order of works on a plot, who answers for the result and how the cost is calculated. Design from $50/100 m².",
  "lead": "Turnkey landscape design means one team takes the plot from the survey and design all the way to the lawn, lighting and a set-up irrigation system. We explain the stages of the work, why the order of works matters more than the choice of plants and how the cost is calculated.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/en/landscape-design",
   "Landscape design and garden landscaping"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "What turnkey landscape design means"
+   "What does turnkey landscape design mean?"
   ],
   [
    "p",
@@ -40,7 +41,7 @@
   ],
   [
    "h2",
-   "Stage 1. Inspection, survey and design"
+   "Stage 1. Where does landscaping a plot start?"
   ],
   [
    "p",
@@ -58,7 +59,7 @@
   ],
   [
    "h2",
-   "Stage 2. Earthworks and grading"
+   "Stage 2. Why are earthworks and grading needed?"
   ],
   [
    "p",
@@ -66,7 +67,7 @@
   ],
   [
    "h2",
-   "Stage 3. Everything underground"
+   "Stage 3. What goes underground before the paving?"
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Stage 4. Paving, terraces and garden structures"
+   "Stage 4. When are paving, terraces and structures built?"
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Stage 5. Soil, lawn and planting"
+   "Stage 5. When do the lawn and plants go in?"
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "What turnkey landscape design costs"
+   "How much does turnkey landscape design cost?"
   ],
   [
    "p",

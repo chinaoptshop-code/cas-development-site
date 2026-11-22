@@ -7,6 +7,7 @@
  "description": "Paisajismo llave en mano: qué incluye, en qué orden se acondiciona la parcela, quién responde del resultado y cuánto cuesta. Proyecto desde $50/100 m².",
  "lead": "Paisajismo llave en mano significa que un mismo equipo lleva la parcela desde la visita y el proyecto hasta el césped, la iluminación y el riego ajustado. Explicamos de qué fases consta el acondicionamiento, por qué el orden de los trabajos importa más que la elección de las plantas y cómo se calcula el coste.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/es/paisajismo",
   "Paisajismo y urbanización de parcelas"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Qué significa paisajismo llave en mano"
+   "¿Qué significa paisajismo llave en mano?"
   ],
   [
    "p",
@@ -40,7 +41,7 @@
   ],
   [
    "h2",
-   "Fase 1. Visita, topografía y proyecto"
+   "Etapa 1. ¿Por dónde empieza el acondicionamiento?"
   ],
   [
    "p",
@@ -58,7 +59,7 @@
   ],
   [
    "h2",
-   "Fase 2. Movimiento de tierras y nivelación"
+   "Etapa 2. ¿Para qué el movimiento de tierras y la nivelación?"
   ],
   [
    "p",
@@ -66,7 +67,7 @@
   ],
   [
    "h2",
-   "Fase 3. Todo lo que va bajo tierra"
+   "Etapa 3. ¿Qué va bajo tierra antes del pavimento?"
   ],
   [
    "p",
@@ -87,7 +88,7 @@
   ],
   [
    "h2",
-   "Fase 4. Pavimentos, terrazas y elementos de jardín"
+   "Etapa 4. ¿Cuándo se hacen pavimentos, terrazas y estructuras?"
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Fase 5. Tierra, césped y plantación"
+   "Etapa 5. ¿Cuándo se ponen el césped y las plantas?"
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta el paisajismo llave en mano"
+   "¿Cuánto cuesta el paisajismo llave en mano?"
   ],
   [
    "p",
