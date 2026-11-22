@@ -7,6 +7,7 @@
  "description": "Generalunternehmer in Kyjiw oder einzelne Teams fürs Gewerbeobjekt: Verantwortung, Vertrag und Kostenvoranschlag. Büroumbau ab $350/m².",
  "lead": "Ein Generalunternehmer in Kyjiw übernimmt das ganze Objekt, einzelne Teams geben mehr Kontrolle, aber auch mehr Aufwand. Wir zeigen, wie sich beide Ansätze für Büro, Laden oder Restaurant unterscheiden und wann welcher passt.",
  "date": "2026-10-31",
+ "modified": "2026-11-22",
  "service": [
   "/de/generalunternehmer",
   "Generalunternehmer in Kyjiw"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Der Unterschied zwischen beiden Modellen"
+   "Was unterscheidet Generalunternehmer und einzelne Gewerke?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Wann einzelne Teams sinnvoll sind"
+   "Wann sind einzelne Teams sinnvoll?"
   ],
   [
    "p",
@@ -40,7 +41,7 @@
   ],
   [
    "h2",
-   "Wann ein Gewerbeobjekt einen Generalunternehmer in Kyjiw braucht"
+   "Wann braucht ein Gewerbeobjekt einen Generalunternehmer?"
   ],
   [
    "p",
@@ -64,7 +65,7 @@
   ],
   [
    "h2",
-   "Was es kostet: ohne Überraschungen rechnen"
+   "Was kostet eine Renovierung mit Generalunternehmer?"
   ],
   [
    "p",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Vertrag, Kostenvoranschlag und Berichte: was Sie in jedem Fall verlangen sollten"
+   "Was gehört in Vertrag, Kostenvoranschlag und Berichte?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Wie Sie für Ihr Objekt wählen"
+   "Wie wählt man das Modell für sein Objekt?"
   ],
   [
    "p",
