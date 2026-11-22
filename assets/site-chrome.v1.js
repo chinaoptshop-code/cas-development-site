@@ -1068,7 +1068,7 @@
   });
   var c = ck();
   if (c && c.v === '1' && W.clarity) W.clarity('consentv2', GRANT); /* «Добре» на попередній сторінці — сигнал згоди (у черзі до завантаження тегу); без вибору — жодного сигналу */
-  if (!c || c.ua || get()) return; /* Україна або вже вибрали — плашка лише з футера */
+  if (!c || c.ua || get() || /^\/kabinet/.test(location.pathname)) return; /* Україна, вже вибрали або кабінет (свої нижні панелі) — плашка лише з футера */
   function idle() { (W.requestIdleCallback || function (f) { setTimeout(f, 200); })(function () { show(false); }, { timeout: 2500 }); }
   if (d.readyState === 'complete') idle(); else W.addEventListener('load', idle);
 })(window, document);
