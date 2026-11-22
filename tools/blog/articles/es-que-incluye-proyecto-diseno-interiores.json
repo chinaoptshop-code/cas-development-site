@@ -5,8 +5,9 @@
  "title": "Qué incluye un proyecto de diseño de interiores: el juego completo de documentos",
  "seo_title": "Qué incluye un proyecto de diseño de interiores",
  "description": "Qué incluye un proyecto de interiorismo: medición, distribución, 3D, planos de ejecución, especificaciones y presupuesto. Qué revisar.",
- "lead": "Un proyecto de diseño de interiores es mucho más que imágenes bonitas. Te contamos qué incluye, de qué documentos se compone, cómo los usa la cuadrilla y por qué una reforma sin planos de ejecución casi siempre acaba costando más.",
+ "lead": "Un proyecto de diseño de interiores es un juego completo de documentos —medición, distribución, visualizaciones 3D, planos de ejecución, especificación y presupuesto—, mucho más que imágenes bonitas. Te contamos qué incluye, de qué documentos se compone, cómo los usa la cuadrilla y por qué una reforma sin planos de ejecución casi siempre acaba costando más.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/es/diseno-interiores-piso",
   "Encargar un diseño de interiores"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Medición y plano del estado actual"
+   "¿Por dónde empieza un proyecto de diseño de interiores?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "2. Distribución"
+   "¿Cómo desarrolla el diseñador la distribución del piso?"
   ],
   [
    "p",
@@ -36,11 +37,11 @@
   ],
   [
    "h2",
-   "3. Concepto y visualizaciones 3D"
+   "¿Para qué sirven las visualizaciones 3D antes de la reforma?"
   ],
   [
    "p",
-   "Estilo, colores, texturas e iluminación, en imágenes 3D de cada estancia. En esta fase ves el futuro interior y haces cambios antes de aprobarlo, cuando cambiar no cuesta nada en obra. Lo ideal es que el 3D muestre no solo el aspecto general, sino los materiales y muebles reales que entrarán en la especificación."
+   "Las visualizaciones 3D muestran el estilo, los colores, las texturas y la iluminación de cada estancia, para que veas el futuro interior y hagas cambios antes de aprobarlo, cuando cambiar no cuesta nada en obra. Lo ideal es que el 3D muestre no solo el aspecto general, sino los materiales y muebles reales que entrarán en la especificación."
   ],
   [
    "gallery",
@@ -61,7 +62,7 @@
   ],
   [
    "h2",
-   "4. Planos de ejecución"
+   "¿Qué planos de ejecución incluye el proyecto?"
   ],
   [
    "ul",
@@ -84,7 +85,7 @@
   ],
   [
    "h2",
-   "5. Especificación y presupuesto"
+   "¿Para qué necesita el proyecto especificación y presupuesto?"
   ],
   [
    "p",
@@ -101,11 +102,11 @@
   ],
   [
    "h2",
-   "Supervisión del diseñador"
+   "¿Está incluida la supervisión del diseñador en el proyecto?"
   ],
   [
    "p",
-   "Durante la reforma, el diseñador visita la obra, comprueba que se cumple el proyecto y ayuda a resolver las dudas que surgen. Es un servicio aparte, pero es lo que te ayuda a obtener el resultado que viste en 3D. Es especialmente necesaria si el proyecto tiene techos complejos, puertas ocultas, hornacinas iluminadas o muchos muebles a medida. Para inmuebles en el extranjero se hace en línea: revisamos fotos y vídeos de las etapas clave y respondemos a las preguntas del contratista."
+   "La supervisión del diseñador es un servicio aparte: durante la reforma, el diseñador visita la obra, comprueba que se cumple el proyecto y ayuda a resolver las dudas in situ, y es lo que te ayuda a obtener el resultado que viste en 3D. Es especialmente necesaria si el proyecto tiene techos complejos, puertas ocultas, hornacinas iluminadas o muchos muebles a medida. Para inmuebles en el extranjero se hace en línea: revisamos fotos y vídeos de las etapas clave y respondemos a las preguntas del contratista."
   ],
   [
    "p",
@@ -113,7 +114,7 @@
   ],
   [
    "h2",
-   "Checklist: qué revisar en un proyecto antes de la reforma"
+   "¿Qué revisar en un proyecto antes de la reforma?"
   ],
   [
    "ul",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Errores frecuentes"
+   "¿Qué errores de proyecto encarecen la reforma?"
   ],
   [
    "ul",
@@ -147,7 +148,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta un proyecto y cómo trabaja CAS"
+   "¿Cuánto cuesta un proyecto de diseño de interiores en CAS?"
   ],
   [
    "p",
