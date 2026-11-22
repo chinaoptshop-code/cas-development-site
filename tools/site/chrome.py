@@ -453,6 +453,8 @@ def footer(lang, alts):
     langs = lang_links(lang, alts, 'scf-lang')
     # «Умови використання» — поруч із політикою, коротка назва (Михайло 09.11.2026); посилання — лише коли сторінка є
     terms = ''.join(f'<a href="{h}">{n}</a>' for h, n in _live([t['terms']])) if t.get('terms') else ''
+    # «Cookies» (Михайло 22.11.2026): плашка вибору аналітики (site-chrome.v1.js, a[data-ck]); без JS — розділ #cookies політики
+    ck = f'<a href="{t["privacy"][0]}#cookies" data-ck>Cookies</a>'
     return (
         '<!--chrome:f--><footer class="scf">\n'
         '<div class="scf-in">\n'
@@ -463,7 +465,7 @@ def footer(lang, alts):
         '  </div>\n'
         f'  <details class="scf-svc"><summary>{t["svc"]}</summary><nav class="scf-svc-g" aria-label="{t["svc_label"]}">{groups}</nav></details>\n'
         f'  <div class="scf-bot"><div class="scf-langs" role="group" aria-label="{t["lang"]}">{langs}</div>'
-        f'<div class="scf-legal"><a href="{t["privacy"][0]}">{t["privacy"][1]}</a>{terms}<span>{t["copy"].split(" · ")[0]}</span></div></div>\n'
+        f'<div class="scf-legal"><a href="{t["privacy"][0]}">{t["privacy"][1]}</a>{terms}{ck}<span>{t["copy"].split(" · ")[0]}</span></div></div>\n'
         '</div>\n'
         '</footer><!--/chrome:f-->'
     )
@@ -761,12 +763,22 @@ def mbar_lead(s, lang, rel=''):
 
 # Microsoft Clarity: вантажимо ЛИШЕ після першої дії відвідувача (scroll/pointerdown/keydown/touchstart), без таймера
 # (Михайло 03.11.2026) — не заважає LCP/TBT і не рахує ботів/відмови без дій. Будь-яку стару вставку замінюємо на цю.
+# Згода (Михайло 22.11.2026, «роби покращення» після SEO-розбору): регіон — за часовим поясом браузера, без сервера.
+# Україна (Europe/Kyiv|Kiev|Uzhgorod|Zaporozhye) — як раніше, банера немає; решта (і пояс невідомий) — opt-in: Clarity не вантажиться,
+# доки людина не натисне «Прийняти» (плашка й кнопка «Cookies» у футері — site-chrome.v1.js). Вибір — localStorage cas_ck = "1|дата" / "0|дата";
+# "0" вимикає Clarity і в Україні. window.casCk — стан і load()/off() для плашки. Без «<» у коді (CLARITY_RX).
 CLARITY_ID = 'z19wl000eu'
 CLARITY = ('<script>(function(w,d,i){w.clarity=w.clarity||function(){(w.clarity.q=w.clarity.q||[]).push(arguments)};'
-           'var E=["scroll","pointerdown","keydown","touchstart"],o={passive:true},done=0;'
-           'function g(){if(done)return;done=1;E.forEach(function(e){w.removeEventListener(e,g,o)});'
+           'var c="",z="";try{c=(localStorage.getItem("cas_ck")||"").charAt(0)}catch(e){}'
+           'try{z=Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(e){}'
+           'var ua=/^Europe\\/(Kyiv|Kiev|Uzhgorod|Zaporozhye)$/.test(z),E=["scroll","pointerdown","keydown","touchstart"],o={passive:true},done=0;'
+           'function off(){E.forEach(function(e){w.removeEventListener(e,g,o)})}'
+           'function g(){if(done)return;done=1;off();'
+           'if(c==="1")w.clarity("consentv2",{ad_Storage:"denied",analytics_Storage:"granted"});'
            'var t=d.createElement("script");t.async=1;t.src="https://www.clarity.ms/tag/"+i;d.head.appendChild(t)}'
-           'E.forEach(function(e){w.addEventListener(e,g,o)})})(window,document,"' + CLARITY_ID + '");</script>')
+           'w.casCk={ua:ua,v:c,on:function(){return done},load:function(){c=w.casCk.v="1";if(done)w.clarity("consentv2",{ad_Storage:"denied",analytics_Storage:"granted"});else g()},'
+           'off:function(){c=w.casCk.v="0";off();if(done){w.clarity("consentv2",{ad_Storage:"denied",analytics_Storage:"denied"});w.clarity("consent",false)}}};'
+           'if(c==="1"||ua&&c!=="0")E.forEach(function(e){w.addEventListener(e,g,o)})})(window,document,"' + CLARITY_ID + '");</script>')
 CLARITY_RX = re.compile(r'<script>\(function\([^<]*?clarity[^<]*?</script>')
 
 
@@ -1006,7 +1018,9 @@ def apply(s, rel):
     """Ставить єдину шапку/футер у HTML сторінки `rel` (шлях від кореня сайту). Ідемпотентно."""
     s = _HM_RM.sub('', s)  # маркери :has() — заново після ux.apply (генератори шукають точні рядки розмітки)
     rel = rel.replace(os.sep, '/')
-    if os.path.basename(rel) in SKIP and '/' not in rel or rel.startswith('google'):
+    if os.path.basename(rel) in SKIP and '/' not in rel:
+        return clarity(s)  # сторонні шаблони — лише сніпет Clarity зі згодою (без згоди поза Україною не вантажиться)
+    if rel.startswith('google'):
         return s
     if re.match(r'(?:[a-z]{2}/)?tury/', rel):  # повноекранні 3D-тури (uk, en, ru) — без шапки/футера; лише формат цін
         lang = page_lang(s)
@@ -1202,7 +1216,7 @@ def apply_file(rel):
 
 if __name__ == '__main__':
     args = [a for a in sys.argv[1:] if not a.startswith('--')]
-    files = args or pages()
+    files = args or pages() + sorted(r for r in SKIP if os.path.exists(os.path.join(ROOT, r)))
     if '--check' in sys.argv:
         bad = [r for r in files if apply(open(os.path.join(ROOT, r), encoding='utf-8').read(), r) != open(os.path.join(ROOT, r), encoding='utf-8').read()]
         print('\n'.join(bad) if bad else 'Шапка/футер: OK')
