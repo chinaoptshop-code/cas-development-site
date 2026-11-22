@@ -7,6 +7,7 @@
  "description": "Supervisión del diseñador durante una reforma: qué incluye, cuándo es necesaria, cómo ahorra presupuesto y garantiza el interior de las visualizaciones 3D.",
  "lead": "Incluso un diseño perfecto puede estropearse en obra. La supervisión del diseñador es el control de la reforma para que siga el proyecto y el interior terminado sea exactamente como en la visualización 3D.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/es/diseno-interiores",
   "Diseño de interiores"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Qué es la supervisión del diseñador"
+   "¿Qué es la supervisión del diseñador?"
   ],
   [
    "p",
-   "Un proyecto de diseño se compone de planos, alzados de paredes, planos de iluminación y enchufes, y especificaciones de materiales y muebles. Pero los planos no se construyen solos: los lee la cuadrilla, y cada operario puede interpretar un detalle a su manera. La supervisión del diseñador significa que el autor del proyecto participa en la reforma: el diseñador visita la obra, comprueba que todo se ejecuta según los planos y resuelve las dudas que surgen durante los trabajos."
+   "La supervisión del diseñador significa que el autor del proyecto participa en la reforma: el diseñador visita la obra, comprueba que todo se ejecuta según los planos y resuelve las dudas que surgen durante los trabajos. Un proyecto de diseño se compone de planos, alzados de paredes, planos de iluminación y enchufes, y especificaciones de materiales y muebles. Pero los planos no se construyen solos: los lee la cuadrilla, y cada operario puede interpretar un detalle a su manera."
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Qué incluye la supervisión del diseñador"
+   "¿Qué incluye la supervisión del diseñador?"
   ],
   [
    "ul",
@@ -61,7 +62,7 @@
   ],
   [
    "h2",
-   "Cuándo la supervisión es especialmente importante"
+   "¿Cuándo es especialmente importante la supervisión?"
   ],
   [
    "ul",
@@ -79,7 +80,7 @@
   ],
   [
    "h2",
-   "Cómo ahorra dinero la supervisión del diseñador"
+   "¿Cómo ahorra dinero la supervisión del diseñador?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "En qué etapas visita el diseñador la obra"
+   "¿En qué etapas visita el diseñador la obra?"
   ],
   [
    "ol",
@@ -119,7 +120,7 @@
   ],
   [
    "h2",
-   "Errores típicos sin supervisión del diseñador"
+   "¿Qué errores aparecen sin supervisión del diseñador?"
   ],
   [
    "ul",
@@ -133,7 +134,7 @@
   ],
   [
    "h2",
-   "Checklist: cómo organizar la supervisión del diseñador"
+   "¿Cómo organizar la supervisión del diseñador?"
   ],
   [
    "ul",

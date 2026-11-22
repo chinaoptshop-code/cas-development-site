@@ -7,6 +7,7 @@
  "description": "Suivi de chantier par le designer pendant une rénovation : ce qu’il comprend, quand il est nécessaire, comment il protège le budget et l’intérieur vu en 3D.",
  "lead": "Même un projet parfait peut être gâché sur le chantier. Le suivi par le designer consiste à contrôler la rénovation pour qu’elle respecte le projet et que l’intérieur fini ressemble exactement à la visualisation 3D.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/architecture-interieur",
   "Architecture d’intérieur"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Ce qu’est le suivi de chantier par le designer"
+   "Qu'est-ce que le suivi de chantier par le designer ?"
   ],
   [
    "p",
-   "Un projet de design comprend des plans, des élévations murales, des plans d’éclairage et de prises, et des descriptifs des matériaux et du mobilier. Mais les plans ne se construisent pas tout seuls : l’équipe les lit, et chaque artisan peut interpréter un détail à sa façon. Le suivi par le designer signifie que l’auteur du projet participe aux travaux : il vient sur le chantier, vérifie que tout est réalisé selon les plans et règle les questions qui surgissent en cours de route."
+   "Le suivi par le designer signifie que l’auteur du projet participe aux travaux : il vient sur le chantier, vérifie que tout est réalisé selon les plans et règle les questions qui surgissent en cours de route. Un projet de design comprend des plans, des élévations murales, des plans d’éclairage et de prises, et des descriptifs des matériaux et du mobilier. Mais les plans ne se construisent pas tout seuls : l’équipe les lit, et chaque artisan peut interpréter un détail à sa façon."
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "Ce que comprend le suivi du designer"
+   "Que comprend le suivi du designer ?"
   ],
   [
    "ul",
@@ -61,7 +62,7 @@
   ],
   [
    "h2",
-   "Quand le suivi est particulièrement important"
+   "Quand le suivi du designer est-il indispensable ?"
   ],
   [
    "ul",
@@ -79,7 +80,7 @@
   ],
   [
    "h2",
-   "Comment le suivi du designer fait économiser"
+   "Comment le suivi du designer fait-il économiser ?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "À quelles étapes le designer vient sur le chantier"
+   "À quelles étapes le designer vient-il sur le chantier ?"
   ],
   [
    "ol",
@@ -119,7 +120,7 @@
   ],
   [
    "h2",
-   "Erreurs typiques sans suivi du designer"
+   "Quelles erreurs surviennent sans suivi du designer ?"
   ],
   [
    "ul",
@@ -133,7 +134,7 @@
   ],
   [
    "h2",
-   "Check-list : organiser le suivi du designer"
+   "Comment organiser le suivi du designer ?"
   ],
   [
    "ul",
