@@ -252,7 +252,7 @@ T = {
                                  ('/ozdoba', 'Оздоба — меблі з Китаю'), ('/kalkuliator-remontu', 'Калькулятор вартості'),
                                  ('/pytannya', 'Часті питання'), ('/dogovir-garantiya-oplata', 'Договір, гарантія, оплата'), ('/referalna-prohrama', 'Реферальна програма'), ('/blog', 'Блог: ціни й поради')]),
             ('Географія', [('/dyzain-i-remont-kyivska-oblast', 'Київська область'), ('/dyzain-i-remont-ukraina', 'Дизайн і ремонт по Україні'),
-                           ('/remont-i-budivnytstvo-yevropa', 'Ремонт і будівництво в Європі')]),
+                           ('/remont-i-budivnytstvo-yevropa', 'Ремонт і будівництво в Європі'), ('/dyzain-interieru-po-vsomu-svitu', 'По всьому світу')]),
         ]),
     'ru': dict(
         nav=[('/ru/uslugi', 'Услуги'), ('/ru/portfolio', 'Портфолио'), ('/ozdoba', 'Оздоба'), ('/ru/blog', 'Блог'),
@@ -279,7 +279,7 @@ T = {
                                    ('/ozdoba', 'Оздоба — мебель из Китая'), ('/ru/kalkulyator-remonta', 'Калькулятор стоимости'),
                                    ('/ru/voprosy', 'Частые вопросы'), ('/ru/dogovor-garantiya-oplata', 'Договор, гарантия, оплата'), ('/ru/referalnaya-programma', 'Реферальная программа'), ('/ru/blog', 'Блог: цены и советы')]),
             ('География', [('/ru/dizayn-i-remont-kievskaya-oblast', 'Киевская область'), ('/ru/dizayn-i-remont-ukraina', 'Дизайн и ремонт по Украине'),
-                           ('/ru/remont-i-stroitelstvo-evropa', 'Ремонт и строительство в Европе')]),
+                           ('/ru/remont-i-stroitelstvo-evropa', 'Ремонт и строительство в Европе'), ('/ru/dizayn-interera-po-vsemu-miru', 'По всему миру')]),
         ]),
 }
 for _l in LANGS:  # нові мови — словник chrome з tools/site/lang/<мова>.json
