@@ -7,6 +7,7 @@
  "description": "Co obejmuje remont pod klucz w Kijowie: projekt, rozbiórka, instalacje, prace surowe i wykończeniowe, meble, odbiór. Cena od $550/m².",
  "lead": "Remont pod klucz w Kijowie to sytuacja, w której jeden wykonawca prowadzi cię od projektu do gotowego mieszkania. Omawiamy pełną listę prac: co dokładnie wchodzi w taki remont i gdzie kończy się odpowiedzialność wykonawcy.",
  "date": "2026-10-24",
+ "modified": "2026-11-22",
  "service": [
   "/pl/remont-pod-klucz",
   "Remont pod klucz"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Co oznacza remont pod klucz"
+   "Co oznacza remont pod klucz?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Projekt i kosztorys"
+   "Od czego zaczyna się remont pod klucz?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "Rozbiórka i przygotowanie"
+   "Co obejmuje demontaż i przygotowanie?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Instalacje"
+   "Dlaczego instalacje prowadzi się przed wykończeniem?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Prace stanu surowego"
+   "Co obejmują prace surowe?"
   ],
   [
    "p",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Prace wykończeniowe"
+   "Co obejmują prace wykończeniowe?"
   ],
   [
    "p",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Meble i kompletacja"
+   "Kiedy planować meble i kompletację?"
   ],
   [
    "p",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Odbiór obiektu"
+   "Jak wygląda odbiór?"
   ],
   [
    "p",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Przykład wyliczenia"
+   "Ile kosztuje remont pod klucz mieszkania 60 m²?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "O que inclui uma remodelação chave na mão em Kyiv: projeto, demolição, redes, trabalhos de base e acabamentos, mobiliário e entrega. Desde $550/m².",
  "lead": "Uma remodelação chave na mão em Kyiv significa que um único empreiteiro o leva do projeto ao apartamento pronto. Vemos a lista completa de trabalhos: o que inclui exatamente esta remodelação e onde termina a responsabilidade do empreiteiro.",
  "date": "2026-10-24",
+ "modified": "2026-11-22",
  "service": [
   "/pt/remodelacao-chave-na-mao",
   "Remodelação chave na mão"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "O que significa chave na mão"
+   "O que significa uma remodelação chave na mão?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Projeto e orçamento"
+   "Por onde começa uma remodelação chave na mão?"
   ],
   [
    "p",
@@ -50,7 +51,7 @@
   ],
   [
    "h2",
-   "Demolição e preparação"
+   "O que incluem a demolição e a preparação?"
   ],
   [
    "p",
@@ -67,7 +68,7 @@
   ],
   [
    "h2",
-   "Redes técnicas"
+   "Porque se fazem as instalações antes dos acabamentos?"
   ],
   [
    "p",
@@ -90,7 +91,7 @@
   ],
   [
    "h2",
-   "Trabalhos de base"
+   "O que incluem os trabalhos de base?"
   ],
   [
    "p",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Acabamentos"
+   "O que incluem os acabamentos?"
   ],
   [
    "p",
@@ -125,7 +126,7 @@
   ],
   [
    "h2",
-   "Mobiliário e equipamento"
+   "Quando planear os móveis e o equipamento?"
   ],
   [
    "p",
@@ -138,7 +139,7 @@
   ],
   [
    "h2",
-   "Entrega da obra"
+   "Como decorre a entrega?"
   ],
   [
    "p",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Exemplo de cálculo"
+   "Quanto custa remodelar chave na mão um apartamento de 60 m²?"
   ],
   [
    "p",
