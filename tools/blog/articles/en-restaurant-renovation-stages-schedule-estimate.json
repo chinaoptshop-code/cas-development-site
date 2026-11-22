@@ -7,6 +7,7 @@
  "description": "Turnkey restaurant renovation in Kyiv: what to check in the premises, the stages of work, a schedule to the opening date and what the estimate covers.",
  "lead": "A restaurant renovation runs to a fixed date: the rent is already being paid, the staff are hired and the opening is announced. We look at what to check in the premises before the start, how a restaurant renovation goes stage by stage, how to build a schedule to the opening and what makes up the estimate.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/en/restaurant-fit-out",
   "Restaurant & café fit-out"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "How a restaurant renovation differs from an apartment renovation"
+   "How does a restaurant renovation differ from an apartment?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "What to check in the premises before the start"
+   "What should you check in the premises before starting?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Stages of a restaurant renovation"
+   "What are the stages of a restaurant renovation?"
   ],
   [
    "ol",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "How to build a schedule to the opening date"
+   "How do you schedule the works to the opening date?"
   ],
   [
    "p",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "What a restaurant renovation estimate consists of"
+   "What does a restaurant renovation estimate consist of?"
   ],
   [
    "p",
@@ -133,7 +134,7 @@
   ],
   [
    "h2",
-   "Refreshing a working venue"
+   "How do you refresh a venue that is already open?"
   ],
   [
    "p",

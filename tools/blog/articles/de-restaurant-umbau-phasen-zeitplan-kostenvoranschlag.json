@@ -7,6 +7,7 @@
  "description": "Restaurant-Umbau in Kyjiw schlüsselfertig: was in den Räumen zu prüfen ist, die Bauphasen, der Zeitplan bis zur Eröffnung und der Kostenvoranschlag.",
  "lead": "Ein Restaurant-Umbau läuft auf ein festes Datum zu: Die Miete läuft bereits, das Personal ist eingestellt, die Eröffnung angekündigt. Wir zeigen, was vor dem Start in den Räumen zu prüfen ist, wie ein Restaurant-Umbau Phase für Phase abläuft, wie der Zeitplan bis zur Eröffnung entsteht und woraus der Kostenvoranschlag besteht.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/de/restaurant-ausbau",
   "Restaurant- und Café-Ausbau"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Worin sich ein Restaurant-Umbau von einer Wohnungsrenovierung unterscheidet"
+   "Was unterscheidet eine Restaurantrenovierung?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Was vor dem Start in den Räumen zu prüfen ist"
+   "Was ist vor dem Start in den Räumen zu prüfen?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Phasen eines Restaurant-Umbaus"
+   "Welche Phasen hat eine Restaurantrenovierung?"
   ],
   [
    "ol",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "Wie der Zeitplan bis zum Eröffnungstermin entsteht"
+   "Wie plant man bis zum Eröffnungstermin?"
   ],
   [
    "p",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "Woraus der Kostenvoranschlag für einen Restaurant-Umbau besteht"
+   "Woraus besteht der Kostenvoranschlag?"
   ],
   [
    "p",
@@ -133,7 +134,7 @@
   ],
   [
    "h2",
-   "Auffrischung eines laufenden Lokals"
+   "Wie erneuert man ein laufendes Lokal?"
   ],
   [
    "p",

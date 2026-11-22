@@ -7,6 +7,7 @@
  "description": "Reforma de un restaurante en Kiev llave en mano: qué revisar en el local, etapas de la obra, cómo planificar hasta la apertura y qué incluye el presupuesto.",
  "lead": "La reforma de un restaurante se hace contra una fecha concreta: el alquiler ya corre, el personal está contratado y la apertura está anunciada. Vemos qué revisar en el local antes de empezar, cómo avanza la reforma de un restaurante por etapas, cómo montar el calendario hasta la apertura y de qué se compone el presupuesto.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/es/reforma-restaurantes",
   "Reforma de restaurantes y cafeterías"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "En qué se diferencia la reforma de un restaurante de la de un piso"
+   "¿En qué se diferencia reformar un restaurante de un piso?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Qué revisar en el local antes de empezar"
+   "¿Qué revisar en el local antes de empezar?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Etapas de la reforma de un restaurante"
+   "¿Qué etapas tiene la reforma de un restaurante?"
   ],
   [
    "ol",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "Cómo montar el calendario hasta la fecha de apertura"
+   "¿Cómo planificar la obra hasta la fecha de apertura?"
   ],
   [
    "p",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "De qué se compone el presupuesto de la reforma de un restaurante"
+   "¿De qué se compone el presupuesto?"
   ],
   [
    "p",
@@ -133,7 +134,7 @@
   ],
   [
    "h2",
-   "Renovar un local en funcionamiento"
+   "¿Cómo renovar un local que ya funciona?"
   ],
   [
    "p",

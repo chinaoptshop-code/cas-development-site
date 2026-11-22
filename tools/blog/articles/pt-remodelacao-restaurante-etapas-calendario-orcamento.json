@@ -7,6 +7,7 @@
  "description": "Remodelação de um restaurante em Kyiv chave na mão: o que verificar no espaço, etapas da obra, calendário até à abertura e o que compõe o orçamento.",
  "lead": "A remodelação de um restaurante faz-se para uma data concreta: a renda já está a correr, a equipa está contratada e a abertura foi anunciada. Vemos o que verificar no espaço antes de começar, como decorre a remodelação de um restaurante por etapas, como montar o calendário até à abertura e de que se compõe o orçamento.",
  "date": "2026-11-18",
+ "modified": "2026-11-22",
  "service": [
   "/pt/remodelacao-restaurantes-cafes",
   "Remodelação de restaurantes e cafés"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Em que difere a remodelação de um restaurante da de um apartamento"
+   "Em que difere a remodelação de um restaurante de um apartamento?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "O que verificar no espaço antes de começar"
+   "O que verificar no espaço antes de começar?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Etapas da remodelação de um restaurante"
+   "Quais são as etapas da remodelação de um restaurante?"
   ],
   [
    "ol",
@@ -75,7 +76,7 @@
   ],
   [
    "h2",
-   "Como montar o calendário até à data de abertura"
+   "Como planear a obra até à data de abertura?"
   ],
   [
    "p",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "De que se compõe o orçamento da remodelação de um restaurante"
+   "De que se compõe o orçamento?"
   ],
   [
    "p",
@@ -133,7 +134,7 @@
   ],
   [
    "h2",
-   "Renovar um espaço em funcionamento"
+   "Como renovar um espaço que já funciona?"
   ],
   [
    "p",
