@@ -7,6 +7,7 @@
  "description": "Alteração da planta de um apartamento em Kyiv: que paredes se podem mudar, o que fazer com a cozinha e a casa de banho, quando é precisa licença e quanto custa.",
  "lead": "Alterar a planta é a forma mais barata de ter uma casa completamente diferente nos mesmos metros quadrados. Mas nem todas as paredes se podem retirar e nem todas as casas de banho se podem mudar. Explicamos o que normalmente se altera, onde estão os limites, como testar a ideia antes da obra e quanto custam o projeto e os trabalhos.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/pt/redistribuicao-apartamento",
   "Redistribuição de apartamentos em Kyiv: projeto e obra"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "O que mais se altera num apartamento"
+   "O que mais se altera na planta de um apartamento?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "O que se pode e o que não convém mudar ao alterar a planta"
+   "O que se pode e o que não convém mudar na planta?"
   ],
   [
    "p",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "Cozinha, casa de banho e closet: onde há mais pormenores"
+   "Onde há mais pormenores: cozinha, casa de banho ou closet?"
   ],
   [
    "p",
@@ -94,7 +95,7 @@
   ],
   [
    "h2",
-   "Como testar a ideia de alteração antes da obra"
+   "Como testar a alteração da planta antes da obra?"
   ],
   [
    "ol",
@@ -112,7 +113,7 @@
   ],
   [
    "h2",
-   "Alterar a planta juntamente com a obra"
+   "Porquê alterar a planta juntamente com a obra?"
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Quanto custa alterar a planta de um apartamento"
+   "Quanto custa alterar a planta de um apartamento?"
   ],
   [
    "p",

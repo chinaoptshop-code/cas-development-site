@@ -7,6 +7,7 @@
  "description": "Redistribuir un piso en Kiev: qué tabiques se pueden mover, qué pasa con cocina y baño, cuándo hace falta autorización y cuánto cuesta.",
  "lead": "Redistribuir el piso es la forma más barata de tener una vivienda completamente distinta en los mismos metros. Pero no todos los muros se pueden quitar ni todos los baños se pueden trasladar. Explicamos qué se suele cambiar, dónde están los límites, cómo comprobar la idea antes de la reforma y cuánto cuestan el proyecto y la obra.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/es/redistribucion-piso",
   "Redistribución de pisos en Kiev: proyecto y reforma"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Qué se cambia con más frecuencia en un piso"
+   "¿Qué se cambia más a menudo al redistribuir un piso?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Qué se puede y qué no conviene cambiar al redistribuir el piso"
+   "¿Qué se puede y qué no conviene cambiar en la distribución?"
   ],
   [
    "p",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "Cocina, baño y vestidor: donde hay más matices"
+   "¿Dónde hay más matices: cocina, baño o vestidor?"
   ],
   [
    "p",
@@ -94,7 +95,7 @@
   ],
   [
    "h2",
-   "Cómo comprobar la idea de redistribución antes de la reforma"
+   "¿Cómo comprobar la idea de redistribución antes de la reforma?"
   ],
   [
    "ol",
@@ -112,7 +113,7 @@
   ],
   [
    "h2",
-   "Redistribución junto con la reforma"
+   "¿Por qué redistribuir junto con la reforma?"
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta redistribuir un piso"
+   "¿Cuánto cuesta redistribuir un piso?"
   ],
   [
    "p",

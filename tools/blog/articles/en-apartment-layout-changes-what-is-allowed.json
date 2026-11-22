@@ -7,6 +7,7 @@
  "description": "Changing an apartment layout in Kyiv: which walls can be moved, what about the kitchen and bathroom, when approval is needed and what design and works cost.",
  "lead": "Changing the layout is the cheapest way to get a completely different home within the same square metres. But not every wall can be removed and not every bathroom can be moved. We explain what is usually changed, where the limits lie, how to test the idea before the renovation and what the design and works cost.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/en/apartment-replanning",
   "Apartment replanning in Kyiv: design and renovation"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "What is most often changed in an apartment"
+   "What is most often changed in an apartment layout?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "What can and cannot be changed in an apartment layout"
+   "What can and cannot be changed in an apartment layout?"
   ],
   [
    "p",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "Kitchen, bathroom and walk-in wardrobe: where the details matter most"
+   "Where do the details matter most: kitchen, bathroom or wardrobe?"
   ],
   [
    "p",
@@ -94,7 +95,7 @@
   ],
   [
    "h2",
-   "How to test a layout idea before the renovation"
+   "How do you test a layout idea before the renovation?"
   ],
   [
    "ol",
@@ -112,7 +113,7 @@
   ],
   [
    "h2",
-   "Layout changes together with the renovation"
+   "Why change the layout together with the renovation?"
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "What a layout change costs"
+   "How much does an apartment layout change cost?"
   ],
   [
    "p",

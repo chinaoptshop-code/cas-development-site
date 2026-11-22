@@ -7,6 +7,7 @@
  "description": "Redistribuer un appartement à Kyiv : quels murs déplacer, cuisine et salle de bains, quand une autorisation est nécessaire et combien cela coûte.",
  "lead": "Redistribuer un appartement est le moyen le moins cher d'obtenir un logement complètement différent dans les mêmes mètres carrés. Mais tous les murs ne peuvent pas être supprimés, ni toutes les salles de bains déplacées. Nous expliquons ce que l'on change habituellement, où sont les limites, comment tester l'idée avant les travaux et ce que coûtent le projet et les travaux.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/fr/reamenagement-appartement",
   "Réaménagement d’appartement à Kyiv : plan et travaux"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Ce que l'on change le plus souvent dans un appartement"
+   "Que change-t-on le plus souvent dans un appartement ?"
   ],
   [
    "p",
@@ -51,7 +52,7 @@
   ],
   [
    "h2",
-   "Ce que l'on peut et ce qu'il vaut mieux ne pas changer"
+   "Que peut-on changer et que vaut-il mieux garder ?"
   ],
   [
    "p",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "Cuisine, salle de bains et dressing : là où il y a le plus de nuances"
+   "Cuisine, salle de bains, dressing : où sont les pièges ?"
   ],
   [
    "p",
@@ -94,7 +95,7 @@
   ],
   [
    "h2",
-   "Comment tester une idée de redistribution avant les travaux"
+   "Comment tester une redistribution avant les travaux ?"
   ],
   [
    "ol",
@@ -112,7 +113,7 @@
   ],
   [
    "h2",
-   "Redistribuer en même temps que la rénovation"
+   "Pourquoi redistribuer pendant la rénovation ?"
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Combien coûte une redistribution"
+   "Combien coûte une redistribution d'appartement ?"
   ],
   [
    "p",
