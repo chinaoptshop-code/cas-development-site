@@ -7,6 +7,7 @@
  "description": "How long a new-build apartment renovation takes: stages, technological pauses, built-in furniture and approvals. What drags timing out and how to shorten it.",
  "lead": "How long a new-build renovation takes depends on more than the area. The timing is made up of consecutive stages, technological pauses and deliveries of materials and built-in furniture. We look at what it consists of, what most often delays the works and what can be done before the start to move in on time.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/en/new-build-renovation",
   "New-build apartment renovation"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "How long a new-build renovation takes: the short answer"
+   "How long does a new-build apartment renovation take?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "What the renovation timing consists of"
+   "What does the renovation timeline consist of?"
   ],
   [
    "p",
@@ -59,7 +60,7 @@
   ],
   [
    "h2",
-   "What affects the timing most"
+   "What affects the renovation timing most?"
   ],
   [
    "h3",
@@ -132,7 +133,7 @@
   ],
   [
    "h2",
-   "Technological pauses: what cannot be rushed"
+   "Which technological pauses cannot be rushed?"
   ],
   [
    "p",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "How to shorten the timing without losing quality"
+   "How can you shorten the timeline without losing quality?"
   ],
   [
    "ul",
@@ -194,7 +195,7 @@
   ],
   [
    "h2",
-   "Common causes of delays"
+   "Why are renovations most often delayed?"
   ],
   [
    "ul",
@@ -213,7 +214,7 @@
   ],
   [
    "h2",
-   "Timing in the contract: what to check"
+   "What should you check in the contract about timing?"
   ],
   [
    "p",

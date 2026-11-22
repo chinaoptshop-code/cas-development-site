@@ -7,6 +7,7 @@
  "description": "Quanto demora remodelar um apartamento novo: etapas, pausas técnicas, móveis por medida e aprovações. O que atrasa os prazos e como encurtá-los.",
  "lead": "O tempo que demora a remodelação de um apartamento novo não depende só da área. O prazo é feito de etapas sucessivas, pausas técnicas e entregas de materiais e móveis por medida. Vemos de que se compõe, o que mais atrasa a obra e o que se pode fazer antes de começar para se mudar a tempo.",
  "date": "2026-11-01",
+ "modified": "2026-11-22",
  "service": [
   "/pt/remodelacao-apartamento-novo",
   "Remodelação de apartamento novo"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Quanto tempo demora remodelar um apartamento novo: resposta curta"
+   "Quanto tempo demora a remodelação de um apartamento novo?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "De que se compõe o prazo da obra"
+   "De que se compõe o prazo da obra?"
   ],
   [
    "p",
@@ -59,7 +60,7 @@
   ],
   [
    "h2",
-   "O que mais influencia os prazos"
+   "O que mais influencia os prazos?"
   ],
   [
    "h3",
@@ -132,7 +133,7 @@
   ],
   [
    "h2",
-   "Pausas técnicas: o que não se pode acelerar"
+   "Que pausas técnicas não se podem acelerar?"
   ],
   [
    "p",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Como encurtar os prazos sem perder qualidade"
+   "Como encurtar os prazos sem perder qualidade?"
   ],
   [
    "ul",
@@ -194,7 +195,7 @@
   ],
   [
    "h2",
-   "Causas comuns de atrasos"
+   "Porque é que as obras se atrasam com mais frequência?"
   ],
   [
    "ul",
@@ -213,7 +214,7 @@
   ],
   [
    "h2",
-   "Os prazos no contrato: o que verificar"
+   "O que verificar no contrato quanto aos prazos?"
   ],
   [
    "p",
