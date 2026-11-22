@@ -7,6 +7,7 @@
  "description": "Como escolher uma equipa de obras em Kyiv: o que tem de constar no contrato, no orçamento e no calendário de pagamentos. Remodelação chave na mão desde $550/m².",
  "lead": "Uma equipa de obras em Kyiv pode ser excelente ou problemática, mas no início as duas parecem iguais: palavras seguras e um preço agradável. A diferença vê-se no contrato. Vemos o que analisar antes de assinar.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pt/equipa-de-obras",
   "Equipa de obras em Kyiv"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Porque o contrato conta mais do que as promessas"
+   "Porque conta mais o contrato do que as promessas?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Quem é exatamente a parte do contrato"
+   "Quem é exatamente a parte do contrato?"
   ],
   [
    "p",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Lista de trabalhos e orçamento"
+   "O que deve incluir a lista de trabalhos e o orçamento?"
   ],
   [
    "p",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Calendário de obra e de pagamentos"
+   "Como ligar o calendário da obra aos pagamentos?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "Receção dos trabalhos e garantia"
+   "Como se recebem os trabalhos e que garantia há?"
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Controlo em obra: quem informa e como"
+   "Quem informa em obra e como?"
   ],
   [
    "p",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Sinais de alerta"
+   "Que sinais de alerta devem preocupar?"
   ],
   [
    "ul",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Exemplo de cálculo para comparar propostas"
+   "Como comparar propostas com números?"
   ],
   [
    "p",

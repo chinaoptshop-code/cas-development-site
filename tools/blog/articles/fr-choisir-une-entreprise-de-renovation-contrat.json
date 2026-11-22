@@ -7,6 +7,7 @@
  "description": "Choisir une équipe de rénovation à Kyiv : contrat, devis et échéancier, ce qu'ils doivent contenir. Rénovation clé en main dès $550/m². Checklist.",
  "lead": "Une équipe de rénovation à Kyiv peut être excellente ou source d'ennuis, mais au départ les deux se ressemblent : un discours assuré et un prix séduisant. La différence se voit dans le contrat. Voici ce qu'il faut regarder avant de signer.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/equipe-renovation",
   "Équipe de rénovation à Kyiv"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Pourquoi le contrat compte plus que les promesses"
+   "Pourquoi le contrat compte-t-il plus que les promesses ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Qui est exactement partie au contrat"
+   "Qui est exactement partie au contrat ?"
   ],
   [
    "p",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Descriptif des travaux et devis"
+   "Que doivent contenir le descriptif et le devis ?"
   ],
   [
    "p",
@@ -74,7 +75,7 @@
   ],
   [
    "h2",
-   "Planning des travaux et des paiements"
+   "Comment lier le planning des travaux aux paiements ?"
   ],
   [
    "p",
@@ -95,7 +96,7 @@
   ],
   [
    "h2",
-   "Réception des travaux et garantie"
+   "Comment réceptionner les travaux, quelle garantie ?"
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Contrôle sur le chantier : qui rend compte et comment"
+   "Qui rend compte sur le chantier, et comment ?"
   ],
   [
    "p",
@@ -141,7 +142,7 @@
   ],
   [
    "h2",
-   "Signaux d'alerte"
+   "Quels signaux d'alerte doivent inquiéter ?"
   ],
   [
    "ul",
@@ -155,7 +156,7 @@
   ],
   [
    "h2",
-   "Exemple de calcul pour comparer les offres"
+   "Comment comparer les offres chiffres à l'appui ?"
   ],
   [
    "p",
