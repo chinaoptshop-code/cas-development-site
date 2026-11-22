@@ -7,6 +7,7 @@
  "description": "Cómo no pagar de más por un interior de lujo: en qué no recortar, dónde ahorrar sin perder el efecto, cómo evitar rehacer y cómo presupuestar.",
  "lead": "Un interior de lujo no tiene por qué ser caro en cada detalle. El sobrecoste rara vez viene de los materiales caros: viene de rehacer trabajos, de compras caóticas y de dinero gastado donde nadie lo nota. Te contamos en qué no conviene ahorrar, dónde sí se puede sin perder el efecto y cómo construir el presupuesto.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/es/equipamiento-llave-en-mano",
   "Equipamiento llave en mano"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Pagar de más no es lo mismo que un precio alto"
+   "¿Qué significa realmente pagar de más por un interior?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "En qué no conviene ahorrar"
+   "¿Dónde no conviene ahorrar en un interior de lujo?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Dónde ahorrar sin perder el efecto"
+   "¿Dónde se puede ahorrar sin perder el efecto?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Acento y fondo: repartir el presupuesto por zonas"
+   "¿Cómo repartir el presupuesto entre acentos y fondo?"
   ],
   [
    "p",
@@ -98,7 +99,7 @@
   ],
   [
    "h2",
-   "Rehacer trabajos: el dinero más caro de una reforma"
+   "¿Por qué rehacer trabajos es el dinero más caro?"
   ],
   [
    "p",
@@ -120,7 +121,7 @@
   ],
   [
    "h2",
-   "Amueblar con una sola especificación"
+   "¿Por qué amueblar con una sola especificación?"
   ],
   [
    "p",
@@ -132,7 +133,7 @@
   ],
   [
    "h2",
-   "Cómo leer un presupuesto para no pagar de más"
+   "¿Cómo leer un presupuesto para no pagar de más?"
   ],
   [
    "p",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Un presupuesto de ejemplo con nuestras tarifas"
+   "¿Cuánto cuesta un piso de 150 m² con nuestras tarifas?"
   ],
   [
    "p",
@@ -179,7 +180,7 @@
   ],
   [
    "h2",
-   "El tiempo también es dinero"
+   "¿Por qué los retrasos también cuestan dinero?"
   ],
   [
    "p",
@@ -187,7 +188,7 @@
   ],
   [
    "h2",
-   "Checklist antes de empezar"
+   "¿Qué comprobar antes de empezar?"
   ],
   [
    "ol",

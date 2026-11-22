@@ -7,6 +7,7 @@
  "description": "Intérieur haut de gamme sans surcoût : sur quoi ne pas rogner, où économiser sans perdre l’effet, comment éviter les reprises et budgéter.",
  "lead": "Un intérieur haut de gamme n’a pas à être cher dans chaque détail. Le surcoût vient rarement des matériaux chers : il vient des reprises, des achats désordonnés et de l’argent dépensé là où personne ne le remarque. Voici sur quoi ne pas économiser, où l’on peut le faire sans perdre l’effet et comment construire un budget.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/equipement-cle-en-main",
   "Équipement clé en main"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Payer trop cher n’est pas un prix élevé"
+   "Que signifie vraiment payer trop cher ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Ce sur quoi il ne faut pas économiser"
+   "Sur quoi ne faut-il pas économiser ?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Où économiser sans perdre l’effet"
+   "Où économiser sans perdre l'effet ?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Accent et fond : répartir le budget par zones"
+   "Comment répartir le budget entre accent et fond ?"
   ],
   [
    "p",
@@ -98,7 +99,7 @@
   ],
   [
    "h2",
-   "Les reprises : l’argent le plus cher d’une rénovation"
+   "Pourquoi les reprises coûtent-elles le plus cher ?"
   ],
   [
    "p",
@@ -120,7 +121,7 @@
   ],
   [
    "h2",
-   "Meubler sur un seul descriptif"
+   "Pourquoi meubler sur un seul descriptif ?"
   ],
   [
    "p",
@@ -132,7 +133,7 @@
   ],
   [
    "h2",
-   "Lire un devis pour ne pas payer trop"
+   "Comment lire un devis pour ne pas payer trop ?"
   ],
   [
    "p",
@@ -153,7 +154,7 @@
   ],
   [
    "h2",
-   "Un exemple de budget à nos tarifs"
+   "Quel budget pour 150 m² à nos tarifs ?"
   ],
   [
    "p",
@@ -179,7 +180,7 @@
   ],
   [
    "h2",
-   "Le temps, c’est aussi de l’argent"
+   "Pourquoi les retards coûtent-ils aussi de l'argent ?"
   ],
   [
    "p",
@@ -187,7 +188,7 @@
   ],
   [
    "h2",
-   "Check-list avant de démarrer"
+   "Que vérifier avant de démarrer ?"
   ],
   [
    "ol",
