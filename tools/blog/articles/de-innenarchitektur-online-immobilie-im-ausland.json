@@ -7,6 +7,7 @@
  "description": "Innenarchitektur aus der Ferne für Villa oder Wohnung im Ausland: wie ein Kyjiwer Studio online arbeitet, was wir von Ihnen brauchen und was es kostet.",
  "lead": "Innenarchitektur online ist ein absolut praktikables Format, wenn Sie eine Villa in den VAE, eine Wohnung in Europa oder ein Haus in den USA gekauft haben und ein Designteam mit klarem Ablauf, vollständigen Plänen und einem Ansprechpartner wollen. So läuft die Zusammenarbeit aus der Ferne, das brauchen wir von Ihnen, und so wird das Projekt an ein anderes Land angepasst.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/innenarchitektur",
   "Innenarchitektur"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Für wen das Online-Format geeignet ist"
+   "Für wen eignet sich Innenarchitektur online?"
   ],
   [
    "p",
@@ -33,7 +34,7 @@
   ],
   [
    "h2",
-   "Wie Innenarchitektur aus der Ferne funktioniert"
+   "Wie funktioniert Innenarchitektur aus der Ferne?"
   ],
   [
    "p",
@@ -62,7 +63,7 @@
   ],
   [
    "h2",
-   "Kommunikation und Zeitzonen"
+   "Wie arbeitet man über Zeitzonen hinweg?"
   ],
   [
    "p",
@@ -70,7 +71,7 @@
   ],
   [
    "h2",
-   "Was wir von Ihnen brauchen"
+   "Was brauchen wir von Ihnen?"
   ],
   [
    "p",
@@ -88,7 +89,7 @@
   ],
   [
    "h2",
-   "Anpassung des Designs an Ihr Land"
+   "Wie wird das Design an Ihr Land angepasst?"
   ],
   [
    "p",
@@ -115,7 +116,7 @@
   ],
   [
    "h2",
-   "Spezifikationen und Beschaffung"
+   "Wie laufen Spezifikation und Einkauf im Ausland?"
   ],
   [
    "p",
@@ -127,7 +128,7 @@
   ],
   [
    "h2",
-   "Was das Designpaket umfasst"
+   "Was umfasst das Online-Designpaket?"
   ],
   [
    "ul",
@@ -145,7 +146,7 @@
   ],
   [
    "h2",
-   "Bauphase und künstlerische Oberleitung"
+   "Wer setzt das Projekt vor Ort um?"
   ],
   [
    "p",
@@ -163,7 +164,7 @@
   ],
   [
    "h2",
-   "Wenn die Immobilie vermietet werden soll"
+   "Wie bereitet man eine Immobilie zur Vermietung vor?"
   ],
   [
    "p",
@@ -171,7 +172,7 @@
   ],
   [
    "h2",
-   "Fehler, die Sie vermeiden sollten"
+   "Welche Fehler sollten Sie vermeiden?"
   ],
   [
    "ul",
@@ -188,7 +189,7 @@
   ],
   [
    "h2",
-   "Was Innenarchitektur online kostet"
+   "Was kostet Innenarchitektur online?"
   ],
   [
    "p",
