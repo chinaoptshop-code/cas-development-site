@@ -7,6 +7,7 @@
  "description": "Projekt małego mieszkania: szafy do sufitu, ukryte drzwi, wnęki, podświetlenie, meble wielofunkcyjne. 10 rozwiązań do przechowywania, typowe błędy i checklista.",
  "lead": "W małym mieszkaniu liczy się każdy centymetr. Projekt małego mieszkania to przede wszystkim przemyślane przechowywanie: zebraliśmy rozwiązania, których używamy najczęściej, żeby rzeczy miały swoje miejsce, a przestrzeń pozostała lekka.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projekt-wnetrza-mieszkania",
   "Projekt wnętrz mieszkania"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Zacznij od układu"
+   "Od czego zacząć projekt małego mieszkania?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "10 rozwiązań do przechowywania i przestrzeni"
+   "Jakie 10 rozwiązań daje miejsce do przechowywania?"
   ],
   [
    "ol",
@@ -64,7 +65,7 @@
   ],
   [
    "h2",
-   "Jak sprawić, by przestrzeń wydawała się większa"
+   "Jak optycznie powiększyć przestrzeń?"
   ],
   [
    "p",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Meble na wymiar: gdzie dają najwięcej"
+   "Gdzie meble na wymiar dają najwięcej?"
   ],
   [
    "ul",
@@ -103,7 +104,7 @@
   ],
   [
    "h2",
-   "Typowe błędy w projekcie małego mieszkania"
+   "Jakie błędy popełnia się w małym mieszkaniu?"
   ],
   [
    "ul",
@@ -121,7 +122,7 @@
   ],
   [
    "h2",
-   "Checklista przed startem remontu"
+   "Co sprawdzić przed rozpoczęciem remontu?"
   ],
   [
    "ul",
@@ -135,7 +136,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje projekt małego mieszkania"
+   "Ile kosztuje projekt małego mieszkania?"
   ],
   [
    "p",

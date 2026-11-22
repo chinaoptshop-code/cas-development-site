@@ -7,6 +7,7 @@
  "description": "Aménager un petit appartement : placards jusqu'au plafond, portes invisibles, niches, éclairage intégré, meubles transformables. 10 idées, erreurs et checklist.",
  "lead": "Dans un petit appartement, chaque centimètre compte. Aménager un petit appartement, c'est avant tout penser les rangements : nous avons réuni les solutions que nous utilisons le plus souvent pour que chaque chose ait sa place et que l'espace reste léger.",
  "date": "2026-10-21",
+ "modified": "2026-11-22",
  "service": [
   "/fr/design-appartement",
   "Projet d'intérieur d'appartement"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Commencer par le plan"
+   "Par où commencer le design d'un petit appartement ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "10 solutions de rangement et d'espace"
+   "Quelles 10 idées pour gagner du rangement ?"
   ],
   [
    "ol",
@@ -64,7 +65,7 @@
   ],
   [
    "h2",
-   "Comment agrandir visuellement l'espace"
+   "Comment agrandir visuellement l'espace ?"
   ],
   [
    "p",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Le mobilier sur mesure : là où il rapporte le plus"
+   "Où le mobilier sur mesure apporte-t-il le plus ?"
   ],
   [
    "ul",
@@ -103,7 +104,7 @@
   ],
   [
    "h2",
-   "Erreurs fréquentes dans l'aménagement d'un petit appartement"
+   "Quelles erreurs commet-on dans un petit appartement ?"
   ],
   [
    "ul",
@@ -121,7 +122,7 @@
   ],
   [
    "h2",
-   "Checklist avant le début des travaux"
+   "Que vérifier avant de lancer les travaux ?"
   ],
   [
    "ul",
@@ -135,7 +136,7 @@
   ],
   [
    "h2",
-   "Combien coûte le projet de design d'un petit appartement"
+   "Combien coûte le projet d'un petit appartement ?"
   ],
   [
    "p",
