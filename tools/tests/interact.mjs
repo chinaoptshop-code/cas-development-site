@@ -480,6 +480,30 @@ await test('роздільник тисяч U+202F видно: 0.2em у сумі
     must(!bad.length, `${u || 'калькулятор'}: U+202F ${bad.slice(0, 4).join(', ')}em — має бути 0.2em (блок /*nn*/ у site-chrome.v1.css після основних @font-face)`);
   }
 });
+// ar (RTL): «$2 500», не «2 500$» — ціни у видимому тексті й data-xs в ізоляті LTR U+2066…U+2069 (chrome.price_iso, як iso() у calc.v1.js)
+for (const u of ['/ar/interior-design', '/ar/interior-design-worldwide', '/ar/apartment-renovation-cost']) {
+  await test('ar: знак $ ліворуч від числа (ізолят LTR) — рядок ціни hero, текст, data-xs', u, 402, async p => {
+    const r = await p.evaluate(() => {
+      const out = { n: 0, bad: [], xs: [] }, w = document.createTreeWalker(document.querySelector('main') || document.body, NodeFilter.SHOW_TEXT);
+      for (let t; (t = w.nextNode());) {
+        const s = t.nodeValue, rx = /\$(?=\d)/g;
+        for (let m; (m = rx.exec(s));) {
+          const a = document.createRange(), b = document.createRange();
+          a.setStart(t, m.index); a.setEnd(t, m.index + 1); b.setStart(t, m.index + 1); b.setEnd(t, m.index + 2);
+          const ra = a.getClientRects()[0], rb = b.getClientRects()[0];
+          if (!ra || !rb || !ra.width || Math.abs(ra.top - rb.top) > 4) continue; // приховане або перенос рядка
+          out.n++;
+          if (ra.left > rb.left) out.bad.push(s.slice(Math.max(0, m.index - 12), m.index + 8));
+        }
+      }
+      document.querySelectorAll('[data-xs*="$"]').forEach(e => { if (!/\u2066\$\d[^\u2069]*\u2069/.test(e.dataset.xs)) out.xs.push(e.dataset.xs); });
+      return out;
+    });
+    must(r.n >= 1, 'не знайдено видимих цін «$…»');
+    must(!r.bad.length, `«$» праворуч від числа: ${r.bad.slice(0, 3).join(' | ')}`);
+    must(!r.xs.length, `data-xs без ізоляту: ${r.xs.slice(0, 2).join(' | ')}`);
+  });
+}
 // калькулятор — кілька позицій одразу (Михайло 20.11.2026): плитки #cIt [data-k] (aria-pressed), уточнення #cV [data-k] [data-p], площа #cArea, сотки #cLand
 const cTile = (p, k) => p.locator(`#cIt [data-k="${k}"]`);
 const cOn = async (p, k) => (await cTile(p, k).getAttribute('aria-pressed')) === 'true';
