@@ -7,6 +7,7 @@
  "description": "Meble biurowe na zamówienie z Chin: co można zamówić, jak przygotować specyfikację i budżet, dostawa 35–70 dni i jak wpasować ją w harmonogram remontu.",
  "lead": "Meble biurowe z Chin to sposób na wyposażenie stanowisk pracy, sal spotkań i recepcji według własnego projektu, a nie z tego, co jest na magazynie. Wyjaśniamy, jak policzyć budżet, na jakie terminy się nastawić i jak wpasować dostawę w harmonogram remontu.",
  "date": "2026-10-26",
+ "modified": "2026-11-22",
  "service": [
   "/pl/kompletacja-wnetrz",
   "Kompletacja wnętrz pod klucz"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Co można zamówić do biura"
+   "Jakie meble można zamówić do biura?"
   ],
   [
    "p",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Ilości i specyfikacja"
+   "Jak ustala się ilości i specyfikację?"
   ],
   [
    "p",
@@ -56,7 +57,7 @@
   ],
   [
    "h2",
-   "Jak policzyć budżet na meble biurowe z Chin"
+   "Jak policzyć budżet na meble biurowe z Chin?"
   ],
   [
    "ol",
@@ -80,7 +81,7 @@
   ],
   [
    "h2",
-   "Jak wybrać modele: na co zwracać uwagę"
+   "Jak wybrać modele mebli biurowych?"
   ],
   [
    "p",
@@ -102,7 +103,7 @@
   ],
   [
    "h2",
-   "Terminy: 35–70 dni i jak wpasować je w remont"
+   "Ile trwa dostawa z Chin i jak wpasować ją w remont?"
   ],
   [
    "p",
@@ -114,7 +115,7 @@
   ],
   [
    "h2",
-   "Płatność i umowa"
+   "Jak wyglądają płatność i umowa?"
   ],
   [
    "p",
