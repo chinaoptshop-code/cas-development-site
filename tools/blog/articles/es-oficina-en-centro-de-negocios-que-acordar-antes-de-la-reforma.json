@@ -7,6 +7,7 @@
  "description": "Reforma de oficina en un centro de negocios: qué acordar con el arrendador — proyecto, instalaciones, incendios, horarios y logística. Checklist.",
  "lead": "La reforma de una oficina en un centro de negocios no empieza con el derribo, sino con una conversación con el arrendador. Le contamos qué conviene acordar de antemano para que la obra no se pare a mitad de camino y el presupuesto no crezca por las exigencias del edificio.",
  "date": "2026-10-26",
+ "modified": "2026-11-22",
  "service": [
   "/es/reforma-oficinas",
   "Reforma de oficinas desde $350/m²"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Por qué las autorizaciones son la primera fase de la reforma"
+   "¿Por qué las autorizaciones son la primera fase?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "El contrato de arrendamiento: qué revisar"
+   "¿Qué revisar en el contrato de arrendamiento?"
   ],
   [
    "ul",
@@ -46,7 +47,7 @@
   ],
   [
    "h2",
-   "Proyecto y redistribución"
+   "¿Hay que aprobar el proyecto y la redistribución?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Instalaciones del edificio: ventilación, climatización, electricidad, detección de incendios"
+   "¿Qué acordar sobre ventilación, climatización y electricidad?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Horario de obra, acceso y logística"
+   "¿Cuándo se puede trabajar y cómo entran los materiales?"
   ],
   [
    "p",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "Qué incluir en el presupuesto"
+   "¿Qué incluir en el presupuesto en un centro de negocios?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Checklist antes de empezar"
+   "¿Qué comprobar antes de empezar las obras?"
   ],
   [
    "ol",

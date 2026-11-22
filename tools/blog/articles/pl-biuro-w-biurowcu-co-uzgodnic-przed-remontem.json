@@ -7,6 +7,7 @@
  "description": "Remont biura w biurowcu: co uzgodnić z wynajmującym przed startem — projekt, instalacje, ochronę przeciwpożarową, harmonogram prac i logistykę. Checklista.",
  "lead": "Remont biura w biurowcu zaczyna się nie od rozbiórki, lecz od rozmowy z wynajmującym. Wyjaśniamy, co warto uzgodnić wcześniej, żeby prace nie stanęły w połowie, a kosztorys nie urósł przez wymagania budynku.",
  "date": "2026-10-26",
+ "modified": "2026-11-22",
  "service": [
   "/pl/remont-biura",
   "Remont biura od $350/m²"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Dlaczego uzgodnienia to pierwszy etap remontu biura w biurowcu"
+   "Dlaczego uzgodnienia to pierwszy etap remontu biura?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Umowa najmu: co sprawdzić"
+   "Co sprawdzić w umowie najmu?"
   ],
   [
    "ul",
@@ -46,7 +47,7 @@
   ],
   [
    "h2",
-   "Projekt i zmiana układu"
+   "Czy projekt i zmiany układu trzeba uzgadniać?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Instalacje budynku: wentylacja, klimatyzacja, elektryka, sygnalizacja pożarowa"
+   "Co uzgodnić w sprawie wentylacji, klimatyzacji i elektryki?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Harmonogram prac, dostęp i logistyka"
+   "Kiedy można pracować i jak dowozić materiały?"
   ],
   [
    "p",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "Co uwzględnić w kosztorysie"
+   "Co uwzględnić w kosztorysie remontu w biurowcu?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Checklista przed startem"
+   "Co sprawdzić przed rozpoczęciem prac?"
   ],
   [
    "ol",

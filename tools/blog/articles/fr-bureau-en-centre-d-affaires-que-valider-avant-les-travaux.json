@@ -7,6 +7,7 @@
  "description": "Bureau en centre d'affaires : que valider avec le bailleur avant les travaux — projet, réseaux, sécurité incendie, horaires et logistique. Checklist.",
  "lead": "L'aménagement d'un bureau dans un centre d'affaires ne commence pas par la démolition, mais par une discussion avec le bailleur. Nous expliquons ce qu'il faut valider à l'avance pour que le chantier ne s'arrête pas à mi-parcours et que le devis ne gonfle pas à cause des exigences de l'immeuble.",
  "date": "2026-10-26",
+ "modified": "2026-11-22",
  "service": [
   "/fr/renovation-bureaux",
   "Rénovation de bureaux dès $350/m²"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Pourquoi les autorisations sont la première étape"
+   "Pourquoi les autorisations viennent-elles en premier ?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Le bail : ce qu'il faut vérifier"
+   "Que vérifier dans le bail ?"
   ],
   [
    "ul",
@@ -46,7 +47,7 @@
   ],
   [
    "h2",
-   "Projet et réaménagement"
+   "Faut-il faire valider le projet et le réaménagement ?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Réseaux de l'immeuble : ventilation, climatisation, électricité, détection incendie"
+   "Que valider pour ventilation, climatisation et électricité ?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Horaires, accès et logistique"
+   "Quand travailler et comment livrer les matériaux ?"
   ],
   [
    "p",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "Ce qu'il faut prévoir au devis"
+   "Que prévoir au devis en centre d'affaires ?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Checklist avant de commencer"
+   "Que vérifier avant le début des travaux ?"
   ],
   [
    "ol",

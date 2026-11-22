@@ -7,6 +7,7 @@
  "description": "Office fit-out in a business centre: what to agree with the landlord first — design, building services, fire safety, work hours and logistics. Checklist.",
  "lead": "An office fit-out in a business centre starts not with demolition but with a conversation with the landlord. We explain what to agree in advance so the work does not stall halfway and the estimate does not grow because of the building's requirements.",
  "date": "2026-10-26",
+ "modified": "2026-11-22",
  "service": [
   "/en/office-renovation",
   "Office renovation from $350/m²"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Why approvals are the first stage of an office fit-out in a business centre"
+   "Why are approvals the first stage of a fit-out in a business centre?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "The lease: what to check"
+   "What should you check in the lease?"
   ],
   [
    "ul",
@@ -46,7 +47,7 @@
   ],
   [
    "h2",
-   "Design and layout changes"
+   "Do the design and layout changes need approval?"
   ],
   [
    "p",
@@ -60,7 +61,7 @@
   ],
   [
    "h2",
-   "Building services: ventilation, air conditioning, electrics, fire alarm"
+   "What must be agreed on ventilation, air conditioning and electrics?"
   ],
   [
    "p",
@@ -78,7 +79,7 @@
   ],
   [
    "h2",
-   "Work schedule, access and logistics"
+   "When can works be done, and how do materials get in?"
   ],
   [
    "p",
@@ -96,7 +97,7 @@
   ],
   [
    "h2",
-   "What to include in the estimate"
+   "What should the estimate for a business-centre fit-out include?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "Checklist before you start"
+   "What should you check before works start?"
   ],
   [
    "ol",
