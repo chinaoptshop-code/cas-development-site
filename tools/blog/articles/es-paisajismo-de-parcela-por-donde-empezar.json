@@ -7,6 +7,7 @@
  "description": "Paisajismo de una parcela: visita, zonificación, drenaje, riego e iluminación, plantas y orden de los trabajos. El proyecto cuesta desde $50 por cada 100 m².",
  "lead": "Un buen jardín no empieza eligiendo plantas, sino por el relieve, el agua y los recorridos. Explicamos por dónde empezar el paisajismo de una parcela, qué incluye el proyecto, en qué orden van los trabajos y cuánto cuesta el proyecto.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/es/paisajismo",
   "Paisajismo y urbanización de parcelas"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Por dónde empezar el paisajismo de una parcela"
+   "¿Por dónde empezar el paisajismo de la parcela?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Visita a la parcela: relieve, suelo y agua"
+   "¿Qué se evalúa en la visita a la parcela?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Qué incluye un proyecto de paisajismo"
+   "¿Qué incluye un proyecto de paisajismo?"
   ],
   [
    "ul",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Etapas del acondicionamiento de la parcela"
+   "¿En qué orden se acondiciona la parcela?"
   ],
   [
    "ol",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Cómo no equivocarse con las plantas y el mantenimiento"
+   "¿Cómo acertar con las plantas y el mantenimiento?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta el paisajismo"
+   "¿Cuánto cuesta el paisajismo?"
   ],
   [
    "p",

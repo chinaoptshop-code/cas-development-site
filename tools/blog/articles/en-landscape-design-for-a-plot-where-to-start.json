@@ -7,6 +7,7 @@
  "description": "Landscape design for a plot: site survey, zoning, drainage, irrigation and lighting, planting and order of works. A project costs from $50 per 100 m².",
  "lead": "A good garden starts not with choosing plants but with terrain, water and routes. We explain where to start landscape design for a plot, what the project includes, in what order the works go and how much the project costs.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/en/landscape-design",
   "Landscape design and garden landscaping"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Where to start landscape design for a plot"
+   "Where do you start landscape design for a plot?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Site survey: terrain, soil and water"
+   "What does a site survey assess?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "What a landscape design project includes"
+   "What does a landscape design project include?"
   ],
   [
    "ul",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Stages of landscaping the plot"
+   "In what order is a plot landscaped?"
   ],
   [
    "ol",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "How not to go wrong with plants and maintenance"
+   "How do you get plants and maintenance right?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "How much landscape design costs"
+   "How much does landscape design cost?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Projekt ogrodu na działce: oględziny, strefy, drenaż, nawadnianie i oświetlenie, rośliny i kolejność prac. Ile kosztuje projekt — od $50 za ar.",
  "lead": "Dobry ogród zaczyna się nie od wyboru roślin, lecz od ukształtowania terenu, wody i ścieżek. Wyjaśniamy, od czego zacząć projekt ogrodu, co zawiera projekt, w jakiej kolejności idą prace i ile kosztuje projekt.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/pl/projektowanie-ogrodow",
   "Projektowanie ogrodów i zagospodarowanie działki"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Od czego zacząć projekt ogrodu na działce"
+   "Od czego zacząć projekt ogrodu?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Oględziny działki: teren, grunt i woda"
+   "Co ocenia się podczas oględzin działki?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Co zawiera projekt ogrodu"
+   "Co zawiera projekt architektury krajobrazu?"
   ],
   [
    "ul",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Etapy urządzania działki"
+   "W jakiej kolejności urządza się działkę?"
   ],
   [
    "ol",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Jak nie pomylić się z roślinami i pielęgnacją"
+   "Jak nie pomylić się z roślinami i pielęgnacją?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje projekt ogrodu"
+   "Ile kosztuje projekt ogrodu?"
   ],
   [
    "p",

@@ -7,6 +7,7 @@
  "description": "Gartengestaltung fürs Grundstück: Begehung, Zonierung, Drainage, Bewässerung und Licht, Pflanzen und Reihenfolge der Arbeiten. Projekt ab $50 pro 100 m².",
  "lead": "Ein guter Garten beginnt nicht mit der Pflanzenwahl, sondern mit Gelände, Wasser und Wegen. Wir erklären, wo man bei der Gartengestaltung anfängt, was das Projekt umfasst, in welcher Reihenfolge gearbeitet wird und was das Projekt kostet.",
  "date": "2026-11-16",
+ "modified": "2026-11-22",
  "service": [
   "/de/gartengestaltung",
   "Gartengestaltung und Außenanlagen"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Wo die Gartengestaltung beginnt"
+   "Wo beginnt die Gartengestaltung?"
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Begehung: Gelände, Boden und Wasser"
+   "Was wird bei der Begehung bewertet?"
   ],
   [
    "p",
@@ -63,7 +64,7 @@
   ],
   [
    "h2",
-   "Was ein Gartenprojekt umfasst"
+   "Was umfasst ein Gartenprojekt?"
   ],
   [
    "ul",
@@ -82,7 +83,7 @@
   ],
   [
    "h2",
-   "Phasen der Grundstücksgestaltung"
+   "In welcher Reihenfolge gestaltet man das Grundstück?"
   ],
   [
    "ol",
@@ -107,7 +108,7 @@
   ],
   [
    "h2",
-   "Wie man bei Pflanzen und Pflege keine Fehler macht"
+   "Wie wählt man Pflanzen und Pflege richtig?"
   ],
   [
    "p",
@@ -124,7 +125,7 @@
   ],
   [
    "h2",
-   "Was Gartengestaltung kostet"
+   "Was kostet Gartengestaltung?"
   ],
   [
    "p",
