@@ -7,6 +7,7 @@
  "description": "Innenarchitektur für Restaurant und Café Schritt für Schritt: Konzept, Gastraum und Küche, Licht, Materialien, 3D und Budget – Leitfaden aus Kyjiw.",
  "lead": "Das Interieur eines Lokals ist keine Dekoration, sondern ein Verkaufsinstrument. Es beeinflusst die Zahl der Plätze, wie schnell das Personal arbeitet und ob Gäste wiederkommen. Hier erfahren Sie, wo das Design eines Restaurants oder Cafés beginnt.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/restaurantdesign",
   "Restaurant- und Cafédesign"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Konzept und Gast"
+   "Womit beginnt man beim Design eines Restaurants oder Cafés?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "2. Gastraum und Küche planen"
+   "Wie plant man Gastraum und Küche?"
   ],
   [
    "ul",
@@ -59,7 +60,7 @@
   ],
   [
    "h2",
-   "3. Atmosphäre: Licht und Materialien"
+   "Wie schaffen Licht und Materialien Atmosphäre?"
   ],
   [
    "p",
@@ -93,7 +94,7 @@
   ],
   [
    "h2",
-   "4. 3D vor der Renovierung"
+   "Warum 3D-Visualisierungen vor der Renovierung des Lokals?"
   ],
   [
    "p",
@@ -105,11 +106,11 @@
   ],
   [
    "h2",
-   "5. Ausführungspläne und Beschaffung"
+   "Was umfassen Ausführungspläne und Beschaffung?"
   ],
   [
    "p",
-   "Pläne für die Bauleute, Möbel- und Lichtspezifikationen, Kostenvoranschlag. Möbel, Leuchten und Dekor lassen sich direkt aus China beziehen, was das Eröffnungsbudget spürbar senkt. Bestellt werden sollte gleich nach Freigabe des Entwurfs, damit die [Objekteinrichtung](/de/objekteinrichtung) zum Ende der Renovierung eintrifft."
+   "Zur Ausführungsplanung gehören Pläne für die Bauleute, Möbel- und Lichtspezifikationen sowie der Kostenvoranschlag. Möbel, Leuchten und Dekor lassen sich direkt aus China beziehen, was das Eröffnungsbudget spürbar senkt. Bestellt werden sollte gleich nach Freigabe des Entwurfs, damit die [Objekteinrichtung](/de/objekteinrichtung) zum Ende der Renovierung eintrifft."
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Was Restaurantdesign kostet"
+   "Was kostet Restaurantdesign?"
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Typische Fehler von Gastronomen"
+   "Welche Fehler machen Gastronomen?"
   ],
   [
    "ul",
@@ -147,7 +148,7 @@
   ],
   [
    "h2",
-   "Checkliste vor dem ersten Kontakt mit einem Designer"
+   "Was sollten Sie vorbereiten, bevor Sie einen Designer kontaktieren?"
   ],
   [
    "ol",

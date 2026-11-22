@@ -7,6 +7,7 @@
  "description": "Design d’intérieur de restaurant et de café pas à pas : concept, salle et cuisine, éclairage, matériaux, 3D et budget — le guide d’un studio de Kyiv.",
  "lead": "L’intérieur d’un établissement n’est pas de la décoration : c’est un outil de vente. Il influe sur le nombre de couverts, la rapidité du service et l’envie des clients de revenir. Voici par où commencer le design d’un restaurant ou d’un café.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/fr/design-restaurant-cafe",
   "Design de restaurant et de café"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Le concept et le client"
+   "Par où commencer le design d’un restaurant ou d’un café ?"
   ],
   [
    "p",
@@ -32,7 +33,7 @@
   ],
   [
    "h2",
-   "2. Agencement de la salle et de la cuisine"
+   "Comment agencer la salle et la cuisine ?"
   ],
   [
    "ul",
@@ -59,7 +60,7 @@
   ],
   [
    "h2",
-   "3. L’ambiance : éclairage et matériaux"
+   "Comment la lumière et les matériaux créent-ils l’atmosphère ?"
   ],
   [
    "p",
@@ -93,7 +94,7 @@
   ],
   [
    "h2",
-   "4. La 3D avant les travaux"
+   "Pourquoi faire des vues 3D avant les travaux ?"
   ],
   [
    "p",
@@ -105,11 +106,11 @@
   ],
   [
    "h2",
-   "5. Plans d’exécution et achats"
+   "Que comprennent les plans d’exécution et les achats ?"
   ],
   [
    "p",
-   "Plans pour les entreprises, descriptifs du mobilier et de l’éclairage, devis. Mobilier, luminaires et décoration peuvent venir directement de Chine, ce qui réduit nettement le budget d’ouverture. Les commandes doivent partir dès la validation du projet, pour que l’[équipement clé en main](/fr/equipement-cle-en-main) arrive à la fin des travaux."
+   "Le dossier d’exécution comprend les plans pour les entreprises, les descriptifs du mobilier et de l’éclairage, et le devis. Mobilier, luminaires et décoration peuvent venir directement de Chine, ce qui réduit nettement le budget d’ouverture. Les commandes doivent partir dès la validation du projet, pour que l’[équipement clé en main](/fr/equipement-cle-en-main) arrive à la fin des travaux."
   ],
   [
    "p",
@@ -117,7 +118,7 @@
   ],
   [
    "h2",
-   "Combien coûte le design d’un restaurant"
+   "Combien coûte le design d’un restaurant ?"
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Erreurs fréquentes des restaurateurs"
+   "Quelles erreurs font les restaurateurs ?"
   ],
   [
    "ul",
@@ -147,7 +148,7 @@
   ],
   [
    "h2",
-   "Check-list avant de contacter un designer"
+   "Que préparer avant de contacter un designer ?"
   ],
   [
    "ol",
