@@ -7,6 +7,7 @@
  "description": "Kosztorys ośrodka wypoczynkowego: plan zagospodarowania, domki 30–60 m², budynek główny, basen, plaża i bar, strefa techniczna, sieci, etapy.",
  "lead": "Kosztorys ośrodka wypoczynkowego to nie jedna cena za metr, lecz zestaw obiektów, każdy z własną stawką. Omawiamy, z czego się składa i jak podzielić budowę na etapy. Na naszej stronie skład można samodzielnie złożyć w interaktywnym planie „Kompleks wypoczynkowy”.",
  "date": "2026-11-10",
+ "modified": "2026-11-22",
  "service": [
   "/pl/osrodek-wypoczynkowy-pod-klucz",
   "Ośrodek wypoczynkowy pod klucz"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. Plan zagospodarowania — podstawa kosztorysu"
+   "1. Dlaczego plan zagospodarowania jest podstawą kosztorysu?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "2. Domki"
+   "2. Jaką część budżetu zajmują domki?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "3. Budynek główny"
+   "3. Co obejmuje budynek główny?"
   ],
   [
    "p",
@@ -44,7 +45,7 @@
   ],
   [
    "h2",
-   "4. Rekreacja i zagospodarowanie"
+   "4. Co uwzględnić na rekreację i zagospodarowanie?"
   ],
   [
    "ul",
@@ -57,7 +58,7 @@
   ],
   [
    "h2",
-   "5. Strefa techniczna i sieci"
+   "5. Co obejmuje strefa techniczna i sieci?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "6. Projekt wnętrz i umeblowanie"
+   "6. Ile kosztują projekt i umeblowanie?"
   ],
   [
    "p",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "O czym często się zapomina"
+   "Czego często brakuje w kosztorysie?"
   ],
   [
    "ul",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Jak zmniejszyć budżet bez utraty jakości"
+   "Jak obniżyć budżet bez utraty jakości?"
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Jak liczymy"
+   "Jak liczymy kosztorys ośrodka?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "7. Etapy budowy"
+   "7. Jak budować ośrodek etapami?"
   ],
   [
    "ol",

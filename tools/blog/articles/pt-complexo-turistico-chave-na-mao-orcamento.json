@@ -7,6 +7,7 @@
  "description": "Orçamento de um complexo turístico: planta geral, bungalows de 30–60 m², edifício principal, piscina, praia e bar, zona técnica, redes e fases.",
  "lead": "O orçamento de um complexo turístico não é um único preço por metro, mas um conjunto de edifícios, cada um com a sua tarifa. Vemos de que se compõe e como dividir a construção em fases. No nosso site pode montar a composição na planta geral interativa «Complexo de lazer».",
  "date": "2026-11-10",
+ "modified": "2026-11-22",
  "service": [
   "/pt/complexo-turistico-chave-na-mao",
   "Complexo turístico chave na mão"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. A planta geral, base do orçamento"
+   "1. Porque é o plano geral a base do orçamento?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "2. Bungalows"
+   "2. Que parte do orçamento levam as casas?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "3. O edifício principal"
+   "3. O que inclui o edifício principal?"
   ],
   [
    "p",
@@ -44,7 +45,7 @@
   ],
   [
    "h2",
-   "4. Lazer e arranjos exteriores"
+   "4. O que prever para lazer e arranjos exteriores?"
   ],
   [
    "ul",
@@ -57,7 +58,7 @@
   ],
   [
    "h2",
-   "5. Zona técnica e redes"
+   "5. O que incluem a zona técnica e as redes?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "6. Design e mobiliário"
+   "6. Quanto custam o design e o mobiliário?"
   ],
   [
    "p",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "O que muitas vezes se esquece"
+   "O que se esquece muitas vezes no orçamento?"
   ],
   [
    "ul",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Como reduzir o orçamento sem perder qualidade"
+   "Como reduzir o orçamento sem perder qualidade?"
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Como calculamos"
+   "Como calculamos o orçamento de um complexo?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "7. Fases de construção"
+   "7. Como construir por fases?"
   ],
   [
    "ol",

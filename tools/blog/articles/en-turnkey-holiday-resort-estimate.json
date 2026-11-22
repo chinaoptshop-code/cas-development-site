@@ -7,6 +7,7 @@
  "description": "What a holiday resort estimate consists of: master plan, 30–60 m² cabins, main building, pool, beach and bar, technical zone, utilities, construction phases.",
  "lead": "A holiday resort estimate is not one price per metre but a set of buildings, each with its own rate. We look at what it consists of and how to split construction into phases. On our site you can assemble the mix yourself in the interactive “Holiday complex” master plan.",
  "date": "2026-11-10",
+ "modified": "2026-11-22",
  "service": [
   "/en/resort-design",
   "Holiday resort design"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. The master plan — the basis of the estimate"
+   "1. Why is the master plan the basis of the estimate?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "2. Cabins"
+   "2. What share of the budget do the cabins take?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "3. The main building"
+   "3. What goes into the main building?"
   ],
   [
    "p",
@@ -44,7 +45,7 @@
   ],
   [
    "h2",
-   "4. Leisure and landscaping"
+   "4. What should be budgeted for leisure and landscaping?"
   ],
   [
    "ul",
@@ -57,7 +58,7 @@
   ],
   [
    "h2",
-   "5. Technical zone and utilities"
+   "5. What do the technical zone and utilities include?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "6. Design and furnishing"
+   "6. How much do design and furnishing cost?"
   ],
   [
    "p",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "What is often forgotten"
+   "What is often left out of the estimate?"
   ],
   [
    "ul",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "How to reduce the budget without losing quality"
+   "How do you cut the budget without losing quality?"
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "How we calculate"
+   "How do we calculate a resort estimate?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "7. Construction phases"
+   "7. How do you build a resort in phases?"
   ],
   [
    "ol",

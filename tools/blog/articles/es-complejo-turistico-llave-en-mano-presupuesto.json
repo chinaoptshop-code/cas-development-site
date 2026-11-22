@@ -7,6 +7,7 @@
  "description": "Presupuesto de un complejo turístico: plan general, bungalós de 30–60 m², edificio principal, piscina, playa y bar, zona técnica, redes y fases.",
  "lead": "El presupuesto de un complejo turístico no es un único precio por metro, sino un conjunto de edificios, cada uno con su tarifa. Vemos de qué se compone y cómo dividir la construcción en fases. En nuestra web puede montar la composición usted mismo en el plan general interactivo «Complejo de descanso».",
  "date": "2026-11-10",
+ "modified": "2026-11-22",
  "service": [
   "/es/complejo-turistico-llave-en-mano",
   "Diseño de complejos turísticos"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "1. El plan general, base del presupuesto"
+   "1. ¿Por qué el plan maestro es la base del presupuesto?"
   ],
   [
    "p",
@@ -24,7 +25,7 @@
   ],
   [
    "h2",
-   "2. Bungalós"
+   "2. ¿Qué parte del presupuesto se llevan las cabañas?"
   ],
   [
    "p",
@@ -36,7 +37,7 @@
   ],
   [
    "h2",
-   "3. El edificio principal"
+   "3. ¿Qué incluye el edificio principal?"
   ],
   [
    "p",
@@ -44,7 +45,7 @@
   ],
   [
    "h2",
-   "4. Ocio y urbanización"
+   "4. ¿Qué prever para ocio y urbanización?"
   ],
   [
    "ul",
@@ -57,7 +58,7 @@
   ],
   [
    "h2",
-   "5. Zona técnica y redes"
+   "5. ¿Qué incluyen la zona técnica y las redes?"
   ],
   [
    "p",
@@ -65,7 +66,7 @@
   ],
   [
    "h2",
-   "6. Diseño y amueblamiento"
+   "6. ¿Cuánto cuestan el diseño y el amueblamiento?"
   ],
   [
    "p",
@@ -73,7 +74,7 @@
   ],
   [
    "h2",
-   "Lo que se olvida a menudo"
+   "¿Qué se suele olvidar en el presupuesto?"
   ],
   [
    "ul",
@@ -92,7 +93,7 @@
   ],
   [
    "h2",
-   "Cómo reducir el presupuesto sin perder calidad"
+   "¿Cómo reducir el presupuesto sin perder calidad?"
   ],
   [
    "p",
@@ -100,7 +101,7 @@
   ],
   [
    "h2",
-   "Cómo calculamos"
+   "¿Cómo calculamos el presupuesto de un complejo?"
   ],
   [
    "p",
@@ -108,7 +109,7 @@
   ],
   [
    "h2",
-   "7. Fases de construcción"
+   "7. ¿Cómo construir por fases?"
   ],
   [
    "ol",
