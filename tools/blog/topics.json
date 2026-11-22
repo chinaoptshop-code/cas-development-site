@@ -1807,5 +1807,18 @@
   "status": "published",
   "note": "18.11.2026: опубліковано 18.11.2026 (ОК Михайла 18.11.2026) (GSC 28 днів до 16.11: «технадзор за ремонтом (сильный запрос)»); гілка content/blog-1911",
   "date": "2026-11-18"
+ },
+ {
+  "lang": "en",
+  "slug": "guest-room-renovation-cost",
+  "title": "Guest room renovation cost: what drives it and how to estimate",
+  "keyword": "guest room renovation cost",
+  "service": [
+   "/en/interior-design-worldwide",
+   "Interior design worldwide"
+  ],
+  "status": "draft",
+  "note": "22.11.2026: чернетка — tools/blog/drafts/en-guest-room-renovation-cost.json (НЕ в articles/, щоб build-all не опублікував); GSC: /en/blog 61 показ, поз. ~9 без окремої статті. Після ОК Михайла — перенести в tools/blog/articles/, build.py, status published.",
+  "date": "2026-11-22"
  }
 ]
