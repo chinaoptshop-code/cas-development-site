@@ -7,6 +7,7 @@
  "description": "Ejecución de un proyecto de diseño: dónde se pierde la idea en la reforma y por qué importan los planos, la supervisión y un solo equipo. Desde $550/m².",
  "lead": "La ejecución es la etapa en la que una bonita visualización se convierte en un interior real o se va alejando poco a poco de los planos. Le contamos dónde se pierde la idea con más frecuencia y cómo evitarlo.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/es/ejecucion-proyecto-diseno",
   "Ejecución del proyecto de diseño"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Por qué la idea se pierde justo en la obra"
+   "¿Por qué se pierde el concepto en la obra?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Dónde se pierde la idea con más frecuencia"
+   "¿Dónde se pierde el concepto con más frecuencia?"
   ],
   [
    "ul",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Qué hace falta para ejecutar con precisión un proyecto de diseño"
+   "¿Qué hace falta para ejecutar un proyecto con precisión?"
   ],
   [
    "p",
@@ -64,11 +65,11 @@
   ],
   [
    "h2",
-   "El papel de la supervisión del diseñador"
+   "¿Para qué sirve la supervisión del diseñador en la ejecución?"
   ],
   [
    "p",
-   "Un error detectado antes de taparlo con azulejo o placa de yeso se corrige con relativa facilidad. Más tarde cuesta mucho más y a veces ya es imposible sin desmontar. Por eso la supervisión no es una formalidad, sino una forma de ver a tiempo las desviaciones. Es especialmente importante cuando el proyecto tiene muchos detalles precisos y muebles a medida."
+   "La supervisión del diseñador detecta los errores antes de taparlos con azulejo o placa de yeso, cuando aún se corrigen con relativa facilidad. Más tarde cuesta mucho más y a veces ya es imposible sin desmontar. Por eso la supervisión no es una formalidad, sino una forma de ver a tiempo las desviaciones. Es especialmente importante cuando el proyecto tiene muchos detalles precisos y muebles a medida."
   ],
   [
    "img",
@@ -77,7 +78,7 @@
   ],
   [
    "h2",
-   "Por qué es mejor confiar diseño y reforma a un solo equipo"
+   "¿Por qué encargar diseño y reforma a un solo equipo?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Cuánto cuesta"
+   "¿Cuánto cuesta ejecutar un proyecto de diseño?"
   ],
   [
    "p",

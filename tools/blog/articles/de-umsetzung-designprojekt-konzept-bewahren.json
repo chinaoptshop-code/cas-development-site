@@ -7,6 +7,7 @@
  "description": "Designprojekt umsetzen: wo das Konzept bei der Renovierung verloren geht und warum Pläne, Oberleitung und ein Team zählen. Schlüsselfertig ab $550/m².",
  "lead": "Die Umsetzung ist die Phase, in der eine schöne Visualisierung entweder zum echten Interieur wird oder sich allmählich von den Plänen entfernt. Wir zeigen, wo das Konzept am häufigsten verloren geht und wie man das verhindert.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/de/umsetzung-designprojekt",
   "Umsetzung des Designprojekts"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Warum das Konzept gerade auf der Baustelle verloren geht"
+   "Warum geht das Konzept gerade auf der Baustelle verloren?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Wo das Konzept am häufigsten verloren geht"
+   "Wo geht das Konzept am häufigsten verloren?"
   ],
   [
    "ul",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Was eine genaue Umsetzung des Designprojekts braucht"
+   "Was braucht die präzise Umsetzung eines Designprojekts?"
   ],
   [
    "p",
@@ -64,11 +65,11 @@
   ],
   [
    "h2",
-   "Die Rolle der künstlerischen Oberleitung"
+   "Wozu dient die künstlerische Oberleitung bei der Umsetzung?"
   ],
   [
    "p",
-   "Ein Fehler, der bemerkt wird, bevor Fliesen oder Gipskarton ihn verdecken, lässt sich vergleichsweise leicht beheben. Später ist das viel teurer und manchmal ohne Rückbau gar nicht mehr möglich. Deshalb ist die Oberleitung keine Formalität, sondern ein Weg, Abweichungen rechtzeitig zu sehen. Besonders wichtig ist sie, wenn ein Projekt viele präzise Details und Einbaumöbel enthält."
+   "Die künstlerische Oberleitung erkennt Fehler, bevor Fliesen oder Gipskarton sie verdecken – dann lassen sie sich vergleichsweise leicht beheben. Später ist das viel teurer und manchmal ohne Rückbau gar nicht mehr möglich. Deshalb ist die Oberleitung keine Formalität, sondern ein Weg, Abweichungen rechtzeitig zu sehen. Besonders wichtig ist sie, wenn ein Projekt viele präzise Details und Einbaumöbel enthält."
   ],
   [
    "img",
@@ -77,7 +78,7 @@
   ],
   [
    "h2",
-   "Warum Design und Renovierung besser bei einem Team liegen"
+   "Warum Design und Renovierung in eine Hand geben?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Was es kostet"
+   "Was kostet die Umsetzung eines Designprojekts?"
   ],
   [
    "p",

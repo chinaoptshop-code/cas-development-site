@@ -7,6 +7,7 @@
  "description": "Realizacja projektu wnętrza: gdzie gubi się zamysł podczas remontu i dlaczego ważne są rysunki, nadzór autorski i jeden zespół. Remont pod klucz od $550/m².",
  "lead": "Realizacja projektu wnętrza to etap, na którym piękna wizualizacja albo staje się prawdziwym wnętrzem, albo stopniowo rozchodzi się z rysunkami. Opowiadamy, gdzie najczęściej gubi się zamysł i jak tego uniknąć.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pl/realizacja-projektu",
   "Realizacja projektu"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Dlaczego zamysł gubi się właśnie na budowie"
+   "Dlaczego koncepcja gubi się właśnie na budowie?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Gdzie najczęściej gubi się zamysł"
+   "Gdzie koncepcja gubi się najczęściej?"
   ],
   [
    "ul",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "Czego potrzeba do dokładnej realizacji projektu wnętrza"
+   "Czego potrzeba do dokładnej realizacji projektu wnętrza?"
   ],
   [
    "p",
@@ -64,11 +65,11 @@
   ],
   [
    "h2",
-   "Rola nadzoru autorskiego"
+   "Po co nadzór autorski podczas realizacji?"
   ],
   [
    "p",
-   "Błąd zauważony, zanim zakryto go płytkami czy płytą g-k, poprawia się stosunkowo łatwo. Później jest to znacznie droższe, a czasem już niemożliwe bez rozbiórki. Dlatego nadzór działa nie jako formalność, lecz jako sposób, by w porę zobaczyć odchylenia. Jest szczególnie ważny, gdy w projekcie jest wiele precyzyjnych detali i mebli na wymiar."
+   "Nadzór autorski wyłapuje błędy, zanim zakryje się je płytkami czy płytą g-k — wtedy poprawia się je stosunkowo łatwo. Później jest to znacznie droższe, a czasem już niemożliwe bez rozbiórki. Dlatego nadzór działa nie jako formalność, lecz jako sposób, by w porę zobaczyć odchylenia. Jest szczególnie ważny, gdy w projekcie jest wiele precyzyjnych detali i mebli na wymiar."
   ],
   [
    "img",
@@ -77,7 +78,7 @@
   ],
   [
    "h2",
-   "Dlaczego projekt i remont lepiej powierzyć jednemu zespołowi"
+   "Dlaczego projekt i remont lepiej powierzyć jednej ekipie?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Ile to kosztuje"
+   "Ile kosztuje realizacja projektu wnętrza?"
   ],
   [
    "p",

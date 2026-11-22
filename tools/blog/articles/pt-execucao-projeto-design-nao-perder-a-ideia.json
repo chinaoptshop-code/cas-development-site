@@ -7,6 +7,7 @@
  "description": "Execução de um projeto de design: onde a ideia se perde na obra e porque contam os desenhos, o acompanhamento e uma só equipa. Desde $550/m².",
  "lead": "A execução é a etapa em que uma bela visualização se torna um interior real ou se vai afastando dos desenhos. Explicamos onde a ideia se perde com mais frequência e como o evitar.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/pt/execucao-projeto-design",
   "Execução do projeto de design"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Porque a ideia se perde precisamente em obra"
+   "Porque se perde o conceito na obra?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Onde a ideia se perde com mais frequência"
+   "Onde se perde o conceito com mais frequência?"
   ],
   [
    "ul",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "O que é preciso para executar com rigor um projeto de design"
+   "O que é preciso para executar o projeto com precisão?"
   ],
   [
    "p",
@@ -64,11 +65,11 @@
   ],
   [
    "h2",
-   "O papel do acompanhamento do designer"
+   "Para que serve o acompanhamento do designer na execução?"
   ],
   [
    "p",
-   "Um erro detetado antes de ser coberto por azulejo ou gesso cartonado corrige-se com relativa facilidade. Mais tarde é muito mais caro e às vezes já impossível sem desmontar. Por isso o acompanhamento não é uma formalidade, mas uma forma de ver os desvios a tempo. É especialmente importante quando o projeto tem muitos pormenores precisos e móveis por medida."
+   "O acompanhamento do designer deteta os erros antes de serem cobertos por azulejo ou gesso cartonado, quando ainda se corrigem com relativa facilidade. Mais tarde é muito mais caro e às vezes já impossível sem desmontar. Por isso o acompanhamento não é uma formalidade, mas uma forma de ver os desvios a tempo. É especialmente importante quando o projeto tem muitos pormenores precisos e móveis por medida."
   ],
   [
    "img",
@@ -77,7 +78,7 @@
   ],
   [
    "h2",
-   "Porque é melhor entregar design e obra a uma só equipa"
+   "Porquê entregar design e obra à mesma equipa?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "Quanto custa"
+   "Quanto custa executar um projeto de design?"
   ],
   [
    "p",

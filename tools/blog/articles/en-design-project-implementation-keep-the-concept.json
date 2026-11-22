@@ -7,6 +7,7 @@
  "description": "Implementing a design project: where the concept gets lost during renovation and why drawings, designer supervision and one team matter. Turnkey from $550/m².",
  "lead": "Implementation is the stage at which a beautiful visualisation either becomes a real interior or gradually drifts away from the drawings. Here is where the concept is most often lost and how to avoid it.",
  "date": "2026-10-25",
+ "modified": "2026-11-22",
  "service": [
   "/en/design-implementation",
   "Design implementation"
@@ -16,7 +17,7 @@
  "body": [
   [
    "h2",
-   "Why the concept gets lost on site"
+   "Why does the concept get lost on site?"
   ],
   [
    "p",
@@ -28,7 +29,7 @@
   ],
   [
    "h2",
-   "Where the concept is most often lost"
+   "Where is the concept most often lost?"
   ],
   [
    "ul",
@@ -48,7 +49,7 @@
   ],
   [
    "h2",
-   "What precise implementation of a design project needs"
+   "What does precise implementation of a design project need?"
   ],
   [
    "p",
@@ -64,11 +65,11 @@
   ],
   [
    "h2",
-   "The role of designer supervision"
+   "Why is designer supervision needed during implementation?"
   ],
   [
    "p",
-   "A mistake noticed before it is covered with tiles or plasterboard is relatively easy to fix. Later it is much more expensive, and sometimes impossible without dismantling. So supervision works not as a formality but as a way to see deviations in time. It matters especially when a project has many precise details and built-in furniture."
+   "Designer supervision catches mistakes before they are covered with tiles or plasterboard, when they are still relatively easy to fix. Later it is much more expensive, and sometimes impossible without dismantling. So supervision works not as a formality but as a way to see deviations in time. It matters especially when a project has many precise details and built-in furniture."
   ],
   [
    "img",
@@ -77,7 +78,7 @@
   ],
   [
    "h2",
-   "Why design and renovation are best given to one team"
+   "Why give design and renovation to one team?"
   ],
   [
    "p",
@@ -89,7 +90,7 @@
   ],
   [
    "h2",
-   "What it costs"
+   "How much does implementing a design project cost?"
   ],
   [
    "p",
