@@ -337,6 +337,9 @@ def handle(msg, state):
         slug = state.pop("blog_edit")
         subprocess.Popen([str(BLOG), "revise", slug, content], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
         send_text(f"Переробляю статтю «{slug}» — нове прев'ю прийде сюди (кілька хвилин)."); return
+    if kind == "текст" and SONG_ASK.search(content) and ROUTER.use_claude():   # пісня — окремою чистою сесією (23.11)
+        if song_request(content, msg):
+            return
     t = state.get("tasks", {}).get(str(state.get("editing") or ""))
     if t and t.get("status") == "draft":                    # Михайло пише правки до чернетки для групи
         state.pop("editing", None)
@@ -382,6 +385,34 @@ def handle(msg, state):
         threading.Thread(target=voice_only, daemon=True).start()
     else:
         deliver(out)
+
+
+# Пісні на запит (23.11): денна розмова памʼятала старе «ace-step не встановлено» і бот видавав лише текст.
+# Тому запит на пісню йде в НОВУ сесію з чіткою задачею: текст → ~/jarvis/scripts/song.sh (ACE-Step 1.5 локально) → mp3 сам у Telegram.
+SONG_ASK = re.compile(r"(з?генер\w*|зроби|створи|напиши|надішли|скинь|хочу|давай|generate|make|create)\b.{0,40}(пісн|песн|трек|song|track|музик|мелоді|джингл|біт\b)"
+                      r"|аудіо пісні|пісню\b.{0,20}(аудіо|mp3|звук)", re.I | re.S)
+
+
+def song_request(content, msg):
+    prev = ((msg.get("reply_to_message") or {}).get("text") or "")[:3000]
+    prompt = (f"Михайло в Telegram просить пісню: «{content}».\n"
+              + (f"Він відповідає на твоє повідомлення з текстом пісні — візьми цей текст:\n{prev}\n" if prev else "")
+              + "ACE-Step 1.5 ВСТАНОВЛЕНО на Mac mini (ComfyUI на SSD) — не шукай його в PATH і не пропонуй Suno/Udio/Higgsfield.\n"
+              "1) Якщо тексту немає — напиши сам (мова й жанр — як просить; [Verse]/[Chorus]/[Bridge]/[Outro], короткі рядки; «поменше тексту» — 2 куплети й приспів).\n"
+              "2) Запиши текст у tools/assistant/tmp/lyrics-<слово>.txt (Write).\n"
+              "3) Запусти: ~/jarvis/scripts/song.sh --title \"Назва\" --tags \"жанр, настрій, інструменти, вокал англійською через кому\" "
+              "--lyrics-file tools/assistant/tmp/lyrics-<слово>.txt --lang <uk|en|ru|…> --seconds <тривалість, до 240; за замовч. 120> --variants 2\n"
+              "4) Відповідь Михайлу (останнім абзацом, коротко, українською): назва, стиль, «генерую N варіанти ~X хв — mp3 прийдуть сюди». "
+              "Текст пісні в відповідь не вставляй. Якщо song.sh повернув помилку — так і скажи.")
+    LOG("пісня →", content[:80])
+    remember("Михайло", content)
+    api("sendChatAction", chat_id=OWNER, action="typing")
+    try:
+        out = run_claude(prompt, str(uuid.uuid4()), False, turns=12)
+    except ClaudeUnavailable:
+        return False                                          # хай далі звичайний шлях (локальний режим чесно скаже)
+    deliver(out)
+    return True
 
 
 def menu_message(text, state):
