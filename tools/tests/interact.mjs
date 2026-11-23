@@ -1104,7 +1104,7 @@ const icoRow = (p, sel) => p.evaluate(sel => [...document.querySelectorAll(sel +
   return { k: (a.className.match(/bi-(\w+)/) || [])[1], w: Math.round(r.width), h: Math.round(r.height), txt: a.textContent.trim(), lab: a.getAttribute('aria-label') || '', href: a.getAttribute('href'), wx: a.getAttribute('data-wx') }; }), sel);
 await test('WeChat: є у футері й біля форми, клік копіює номер; Behance — у футері; без підпису «Месенджери»', '/', 1440, async p => {
   const f = await icoRow(p, '.scf-soc');
-  must(f.map(x => x.k).join() === 'telegram,viber,whatsapp,instagram,youtube,linkedin,tiktok,behance,wechat', 'футер: ' + f.map(x => x.k));
+  must(f.map(x => x.k).join() === 'telegram,viber,whatsapp,instagram,youtube,linkedin,tiktok,behance,wechat,chat', 'футер: ' + f.map(x => x.k));
   must(f.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'футер: кнопки не іконки ≥ 44 px: ' + JSON.stringify(f));
   must(f.find(x => x.k === 'behance').href === 'https://www.behance.net/mykhailol2' && f.find(x => x.k === 'wechat').wx === WX && f.find(x => x.k === 'wechat').lab.includes(WX), 'футер: Behance / WeChat');
   must(!(await p.evaluate(() => [...document.querySelectorAll('.scf b')].some(b => /Месенджери/.test(b.textContent)))), 'футер: підпис «Месенджери» лишився');
@@ -1118,7 +1118,7 @@ await test('WeChat: є у футері й біля форми, клік копі
   // картка контактів біля форми (≥ 1024 px)
   await p.evaluate(() => { navigator.clipboard.writeText(''); document.getElementById('zayavka').scrollIntoView(); }); await p.waitForTimeout(800);
   const c = await icoRow(p, '#zayavka .of-ct-m');
-  must(c.map(x => x.k).join() === 'telegram,whatsapp,viber,wechat' && c.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'картка біля форми: ' + JSON.stringify(c));
+  must(/^telegram,whatsapp,viber,wechat(,chat)?$/.test(c.map(x => x.k).join()) && c.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'картка біля форми: ' + JSON.stringify(c));
   must(!(await p.evaluate(() => [...document.querySelectorAll('#zayavka .of-ct-l')].some(l => /Месенджери/.test(l.textContent)))), 'картка: підпис «Месенджери» лишився');
   await p.click('#zayavka .of-ct-m .bi-wechat'); await p.waitForTimeout(300);
   must((await p.evaluate(() => navigator.clipboard.readText())) === WX && (await wxTip(p)).on, 'картка: WeChat не скопіював номер');
@@ -1139,7 +1139,7 @@ const ALT = { '/': 'Або напишіть', '/en/': 'Or message us', '/ar/': '
 for (const path of Object.keys(ALT)) for (const w of [402, 1440]) await test('форма: під кнопкою лише іконки месенджерів', path, w, async p => {
   await p.locator('#oBtn').scrollIntoViewIfNeeded(); await p.waitForTimeout(300);
   const r = await icoRow(p, '#of .lq-alt');
-  must(r.map(x => x.k).join() === 'telegram,viber,whatsapp,wechat', 'іконки: ' + r.map(x => x.k));
+  must(r.map(x => x.k).join() === 'telegram,viber,whatsapp,wechat,chat', 'іконки: ' + r.map(x => x.k));
   must(r.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'не іконки ≥ 44 px з aria-label: ' + JSON.stringify(r));
   must(r.find(x => x.k === 'wechat').wx === WX, 'WeChat без data-wx');
   const g = await p.evaluate(() => { const a = document.querySelector('#of .lq-alt'), b = document.getElementById('oBtn').getBoundingClientRect(), r = a.getBoundingClientRect();
@@ -1152,7 +1152,7 @@ for (const w of [344, 402]) await test('мобільне меню шапки: м
   await p.click('.sch-burger'); await p.waitForTimeout(400);
   await p.locator('.sch-mmsg').scrollIntoViewIfNeeded();
   const r = await icoRow(p, '.sch-mmsg');
-  must(r.map(x => x.k).join() === 'telegram,viber,whatsapp,wechat,instagram', 'іконки: ' + r.map(x => x.k));
+  must(r.map(x => x.k).join() === 'telegram,viber,whatsapp,wechat,instagram,chat', 'іконки: ' + r.map(x => x.k));
   must(r.every(x => x.w >= 44 && x.h >= 44 && !x.txt && x.lab), 'не іконки ≥ 44 px з aria-label: ' + JSON.stringify(r));
   must(await p.evaluate(() => [...document.querySelectorAll('.sch-mmsg a')].every(a => { const r = a.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth; })), 'іконка за краєм екрана');
 });

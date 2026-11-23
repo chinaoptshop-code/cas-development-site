@@ -107,6 +107,8 @@ async function ctxOf(w, { lang = 'uk-UA', cookie } = {}) {
 const noHScroll = page => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1);
 async function openChat(page, w) {
   if (w < 768) {
+    // кружечки ховаються при прокрутці вниз (html.mb-hide); після перезавантаження браузер відновлює прокрутку — на початок сторінки
+    await page.evaluate(() => window.scrollTo(0, 0)); await page.waitForFunction(() => !document.documentElement.classList.contains('mb-hide'), null, { timeout: 5000 }).catch(() => {});
     await page.click('.mbar[data-one] > a.mb-bot[data-chat]');   // кружечок бота поруч із кружечком дзвінка (Михайло 23.11.2026)
   } else {
     const a = page.locator('.scf-soc a[data-chat]');
