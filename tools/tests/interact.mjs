@@ -1,5 +1,5 @@
 // Playwright: логіка взаємодій сайту — бургер (фокус-пастка, Esc), перемикач мов, плитки data-c (розгортання без стрибка прокрутки),
-// каруселі/стрічки (стрілки, пауза), сцени (клік у правій чверті кадру, ←/→, перемикач сцен на головній без переходу),
+// каруселі/стрічки (стрілки з боків, без кнопки паузи), сцени (клік у правій чверті кадру, ←/→, перемикач сцен на головній без переходу),
 // пігулка «Звʼязатися», форма заявки (валідація, успіх лише після 2xx — ендпоінти підмінено), .lq-go → контекст у формі, квіз, калькулятор, карта.
 //   node tools/tests/interact.mjs        (код 1 при помилках)
 import http from 'node:http';
@@ -102,7 +102,7 @@ for (const w of [402, 1440]) await test('карусель «Що ми робим
   await wakeup(p);
   const row = p.locator('.xs-sv').first();
   await row.scrollIntoViewIfNeeded(); await p.waitForTimeout(300);
-  const nx = p.locator('.cv-b').nth(1);
+  const nx = p.locator('.xs-svc .cv-r').first();
   must(await nx.count(), 'немає кнопок каруселі');
   const box = await nx.boundingBox(); must(box && box.width >= 43.5 && box.height >= 43.5, 'кнопка каруселі < 44px');
   const s0 = await row.evaluate(e => e.scrollLeft);
@@ -110,14 +110,46 @@ for (const w of [402, 1440]) await test('карусель «Що ми робим
   const s1 = await row.evaluate(e => e.scrollLeft);
   must(Math.abs(s1 - s0) > 20, `→ не гортає (${s0}→${s1})`);
 });
-await test('карусель «Наші проєкти»: кнопка паузи', '/', 1440, async p => {
+// Михайло 23.11.2026: стрілки каруселей — з боків ряду поверх фото (ліворуч і праворуч), не під рядом; кнопки паузи немає ніде
+for (const [path, w] of [['/', 402], ['/', 1440], ['/ar/', 402]]) await test('каруселі: стрілки з боків на фото, без ряду кнопок і паузи', path, w, async p => {
   await wakeup(p);
-  const b = p.locator('.xs-covers .cv-p').first();
-  await p.locator('.xs-cv').first().scrollIntoViewIfNeeded(); await p.waitForTimeout(600);
-  must(await b.count(), 'немає кнопки паузи каруселі');
-  const a0 = await b.getAttribute('aria-pressed');
-  await b.click(); await p.waitForTimeout(200);
-  must(await b.getAttribute('aria-pressed') !== a0, 'aria-pressed не змінився');
+  for (const sel of ['.xs-sv', '.xs-cv']) {
+    const row = p.locator(sel).first();
+    await row.evaluate(e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(700);
+    const st = await row.evaluate(e => {
+      const sec = e.closest('section'), r = e.getBoundingClientRect(), im = e.querySelector('img').getBoundingClientRect(), q = c => { const b = sec.querySelector(c); return b ? b.getBoundingClientRect() : null; };
+      const l = q('.cv-l'), rr = q('.cv-r'), nav = sec.querySelector('.cv-nav');
+      return { n: sec.querySelectorAll('.cv-b').length, navH: nav ? nav.offsetHeight : -1, rtl: document.documentElement.dir === 'rtl', row: [r.left, r.right, r.top, r.bottom], im: [im.top, im.bottom],
+        l: l && [l.left, l.right, l.top, l.bottom, l.width, l.height], r: rr && [rr.left, rr.right, rr.top, rr.bottom, rr.width, rr.height], below: sec.getBoundingClientRect().bottom - r.bottom };
+    });
+    must(st.n === 2 && st.l && st.r, sel + ': має бути рівно дві стрілки');
+    must(st.navH === 0, sel + ': .cv-nav займає місце (' + st.navH + ' px)');
+    for (const b of [st.l, st.r]) {
+      must(b[4] >= 43.5 && b[5] >= 43.5, sel + ': стрілка < 44px');
+      must(b[2] >= st.im[0] - 1 && b[3] <= st.im[1] + 1, sel + ': стрілка не на фото (' + JSON.stringify([b, st.im]) + ')');
+      must(Math.abs((b[2] + b[3]) / 2 - (st.im[0] + st.im[1]) / 2) <= 3, sel + ': стрілка не по центру фото');
+    }
+    const [first, last] = st.rtl ? [st.r, st.l] : [st.l, st.r], mid = (st.row[0] + st.row[1]) / 2;
+    must(first[1] < mid && last[0] > mid && first[0] >= -1 && last[1] <= w + 1, sel + ': стрілки не з боків ряду ' + JSON.stringify([first, last, st.row]));
+    must(first[0] - Math.max(0, st.row[0]) <= 40 && Math.min(w, st.row[1]) - last[1] <= 40, sel + ': стрілки далеко від країв');
+  }
+  must(await p.locator('.cv-p, .mq-ap, .mq-bar').count() === 0, 'лишилась кнопка паузи');
+  const hs = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth); must(hs <= 0, `горизонтальна прокрутка сторінки ${hs}px`);
+  const cls = await p.evaluate(() => window.__cls); must(cls == null || cls <= 0.05, 'CLS ' + cls);
+});
+await test('карусель «Наші проєкти»: ‹ гортає назад, наведення зупиняє автопрокрутку', '/', 1440, async p => {
+  await wakeup(p);
+  const row = p.locator('.xs-cv').first();
+  await row.evaluate(e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(600);
+  const bb = await row.boundingBox();
+  await p.mouse.move(bb.x + bb.width / 2, bb.y + bb.height / 2); await p.waitForTimeout(400);
+  const a0 = await row.evaluate(e => e.scrollLeft); await p.waitForTimeout(900);
+  must(Math.abs(await row.evaluate(e => e.scrollLeft) - a0) < 1, 'при наведенні карусель рухається');
+  await p.locator('.xs-covers .cv-r').first().click(); await p.waitForTimeout(900);
+  const s1 = await row.evaluate(e => e.scrollLeft);
+  await p.locator('.xs-covers .cv-l').first().click(); await p.waitForTimeout(900);
+  const s2 = await row.evaluate(e => e.scrollLeft);
+  must(s1 - a0 > 20 && s1 - s2 > 20, `стрілки не гортають (${a0}→${s1}→${s2})`);
 });
 // стрічка під hero головних (Михайло 11.11.2026): без кнопки паузи, автопрокрутка, кадри — посилання на кейс своєї мови; тап відкриває, свайп — ні
 for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 402], ['/ar/', 1440]]) await test('стрічка фото під hero: кадри-посилання, тап/свайп, без паузи', path, w, async p => {
@@ -1402,7 +1434,7 @@ for (const [path, w] of [['/proekty/yacht-vip', 402], ['/en/proekty/monpark', 14
   must(st.v > 0 && st.ok === st.v, `мініатюри в кадрі не завантажились: ${st.ok} з ${st.v}`);
   must(st.cls < .01, 'зсув верстки при появі мініатюр: ' + st.cls.toFixed(3));
 });
-// «Бренди, з якими працюємо» (rich.py brands, 21.11.2026): назви текстом у <ul>, рух — marquee() (копії aria-hidden), пауза кнопкою й наведенням,
+// «Бренди, з якими працюємо» (rich.py brands, 21.11.2026): назви текстом у <ul>, рух — marquee() (копії aria-hidden), пауза наведенням/дотиком/фокусом (кнопки паузи немає — Михайло 23.11.2026),
 // без горизонтальної прокрутки сторінки, висота блоку не стрибає (CLS), RTL — у зворотний бік; reduced-motion — статичний ряд із переносом
 for (const [path, w] of [['/about', 1440], ['/about', 402], ['/ar/about', 402], ['/de/ueber-uns', 344], ['/komplektatsiia-pid-kliuch-kyiv', 768]]) await test('стрічка брендів: рухається, пауза, без зсуву', path, w, async p => {
   await p.evaluate(() => { window.__cls = 0; new PerformanceObserver(l => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; }).observe({ type: 'layout-shift', buffered: true }); });
@@ -1419,15 +1451,8 @@ for (const [path, w] of [['/about', 1440], ['/about', 402], ['/ar/about', 402], 
   must(Math.abs(st.h - h0) <= 1, `висота блоку змінилась ${h0}→${st.h}`);
   const s0 = await ul.evaluate(e => e.scrollLeft); await p.waitForTimeout(1200); const s1 = await ul.evaluate(e => e.scrollLeft);
   must(Math.abs(s1 - s0) > 10 && (st.rtl ? s1 < s0 : s1 > s0), `стрічка не рухається або не в той бік (${s0}→${s1})`);
-  const b = p.locator('.xs-brands .mq-ap');
-  must(await b.count() === 1, 'немає кнопки паузи');
-  const bb = await b.boundingBox(); must(bb.width >= 43.5 && bb.height >= 43.5, 'кнопка паузи < 44px');
-  const ub = await ul.boundingBox(); must(st.rtl ? bb.x + bb.width <= ub.x + 1 : bb.x >= ub.x + ub.width - 1, 'кнопка паузи поверх назв');
-  await b.click(); await p.waitForTimeout(250);
-  must(await b.getAttribute('aria-pressed') === 'true', 'aria-pressed після паузи');
-  const a0 = await ul.evaluate(e => e.scrollLeft); await p.waitForTimeout(900);
-  must(Math.abs(await ul.evaluate(e => e.scrollLeft) - a0) < 1, 'на паузі стрічка рухається');
-  await b.click(); await p.waitForTimeout(700);
+  must(await p.locator('.xs-brands button, .xs-brands .mq-bar').count() === 0, 'у стрічки брендів є кнопка (паузи немає з 23.11.2026)');
+  const ub = await ul.boundingBox();
   if (w >= 1024) { // наведення миші — пауза
     await p.mouse.move(ub.x + ub.width / 3, ub.y + ub.height / 2); await p.waitForTimeout(300);
     const m0 = await ul.evaluate(e => e.scrollLeft); await p.waitForTimeout(900);

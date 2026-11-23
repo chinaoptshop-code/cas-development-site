@@ -62,12 +62,13 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 @media(min-width:768px){.xs-cv{grid-auto-columns:calc((100% - 2 * 12px) / 3)}}
 @media(min-width:1100px){.xs-cv{grid-auto-columns:calc((100% - 3 * 12px) / 4)}}
 @media(min-width:1700px){.xs-cv{grid-auto-columns:calc((100% - 4 * 12px) / 5)}}
-.cv-nav{display:flex;justify-content:flex-end;gap:.625rem;margin-top:.75rem}
-.js .xs-cv:not(.cv-on){margin-bottom:3.5rem} /* місце під кнопки ←/→ (.cv-nav: .75rem + 2.75rem) до carousel() — висота секції не змінюється після показу (Safari без scroll anchoring) */
-.cv-b,.cv-p{width:2.75rem;height:2.75rem;border-radius:50%;border:1px solid rgba(191,145,72,.7);background:transparent;color:var(--tx,#EDE8DF);font:500 1.125rem/1 system-ui,sans-serif;cursor:pointer;display:grid;place-items:center;padding:0} /* rem: на широких екранах росте з флюїдним масштабом, ≥44 px */
-.cv-b:hover,.cv-p:hover{background:rgba(191,145,72,.12)}.cv-b:focus-visible,.cv-p:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
+/* стрілки каруселей — з боків ряду поверх фото (Михайло 23.11.2026; carousel() у ui-polish.v1.js): .cv-nav — смужка нульової висоти перед рядом,
+   тож висота секції та сама з кнопками й без (без резерву й без зсуву); --cvy — середина фото першої картки; кнопки паузи немає */
+.cv-nav{position:relative;height:0;z-index:3}
+.cv-b{position:absolute;top:var(--cvy,7rem);margin-top:-1.375rem;width:2.75rem;height:2.75rem;border-radius:50%;border:1px solid rgba(191,145,72,.75);background:rgba(8,7,9,.66);color:#EDE8DF;font:400 1.5rem/1 system-ui,sans-serif;cursor:pointer;display:grid;place-items:center;padding:0 0 .15em} /* rem: на широких екранах росте з флюїдним масштабом, ≥44 px */
+.cv-l{inset-inline-start:.5rem}.cv-r{inset-inline-end:.5rem}
+.cv-b:hover{background:rgba(8,7,9,.86);border-color:var(--ac,#BF9148)}.cv-b:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
 [dir=rtl] .cv-b span{display:inline-block;transform:scaleX(-1)}
-.cv-p{font-size:.8125rem;font-weight:600;margin-inline-end:.375rem} /* пауза автопрокрутки каруселі (marquee() у ui-polish.v1.js) — перед ←/→ */
 .xs-cv a{position:relative;display:block;text-decoration:none;overflow:hidden;border:1px solid var(--ln)}
 .xs-cv img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
 .xs-cv span{position:absolute;inset:auto 0 0;padding:56px 16px 14px;background:linear-gradient(rgba(8,7,9,0),rgba(8,7,9,.72) 45%,rgba(8,7,9,.94));text-shadow:0 1px 3px rgba(0,0,0,.7)}
@@ -154,13 +155,11 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-svc .xs-c{position:relative}.xs-svc .xs-c h3 a::after{content:"";position:absolute;inset:0}.xs-svc .xs-cb>:is(.xs-links,details,ul,p:has(a)){position:relative;z-index:1} /* картка — посилання цілком (фото, назва), інші посилання й розгортання — над ним */
 .hx-home~.xs-svc .xs-cb>p:not([class]),.hx-home~.xs-svc .xs-cb>.xs-links{display:none!important}
 /* «Що ми робимо» на головних — карусель як «Наші проєкти» (Михайло 08.11.2026): один ряд на всіх ширинах, свайп/scroll-snap,
-   кнопки ←/→ під рядом (carousel() у ui-polish.v1.js), повільна автопрокрутка marquee() (пауза при наведенні/тачі/дії, reduced-motion — статично).
-   Місце під кнопки (.cv-nav: 0.75rem + 44 px) резервує margin ряду до появи кнопок — без зсуву (CLS). Ширини — модель w_svc у tools/site/sharp.py. */
-.js .hx-home~.xs-svc .xs-sv{flex-wrap:nowrap;align-items:stretch;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;margin-bottom:3.5rem}
-.js .hx-home~.xs-svc .xs-sv.cv-on{margin-bottom:0}
+   стрілки ‹ › з боків ряду поверх фото (carousel() у ui-polish.v1.js; Михайло 23.11.2026), повільна автопрокрутка marquee() (пауза при наведенні/тачі/дії, reduced-motion — статично).
+   Ширини — модель w_svc у tools/site/sharp.py. */
+.js .hx-home~.xs-svc .xs-sv{flex-wrap:nowrap;align-items:stretch;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
 .js .hx-home~.xs-svc .xs-sv::-webkit-scrollbar{display:none}
 .js .hx-home~.xs-svc .xs-sv>.xs-c{flex:0 0 calc((100% - 2rem) / 3);scroll-snap-align:start;min-width:0}
-.js .hx-home~.xs-svc .cv-nav{margin-top:.75rem}
 @media(min-width:1100px){.js .hx-home~.xs-svc .xs-sv>.xs-c{flex-basis:calc((100% - 3rem) / 4)}}
 @media(max-width:767px){
   .js .hx-home~.xs-svc .xs-sv{gap:10px;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}
@@ -216,9 +215,5 @@ main>.hx-home+section.xs-strip{padding-top:12px!important}
 .xs-bl>li:last-child::after{content:none}
 .xs-bl:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:4px;border-radius:4px}
 .xs-bl.mq-run{-webkit-mask-image:linear-gradient(90deg,transparent,#000 1.5rem,#000 calc(100% - 1.5rem),transparent);mask-image:linear-gradient(90deg,transparent,#000 1.5rem,#000 calc(100% - 1.5rem),transparent)}
-@media(prefers-reduced-motion:no-preference){.js .xs-brw{padding-inline-end:3.5rem}}
-.xs-brw>.mq-bar{position:absolute;top:0;bottom:0;inset-inline-end:0;width:2.75rem;height:auto}
-.xs-brw .mq-ap{top:50%;inset-inline-end:0;margin-top:-1.375rem;background:transparent;color:var(--tx,#EDE8DF)}
-.xs-brw .mq-ap:hover{background:rgba(191,145,72,.12)}
 @media(max-width:767px){.xs-bl>li{font-size:1.3125rem;padding-inline-end:2rem}.xs-bl>li::after{inset-inline-end:.84375rem}}
 @media(prefers-reduced-motion:reduce){.xs-bl{flex-wrap:wrap;overflow:visible}.xs-bl>li{padding-block:0;padding-inline-end:1.75rem;font-size:1.125rem;line-height:1.875rem}.xs-bl>li::after{inset-inline-end:.71875rem}}
