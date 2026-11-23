@@ -103,6 +103,11 @@ const ACTS = [
   { name: 'сцена (головна): попередній етап', path: '/', prep: async (p, hit) => { await sceneReady(p, '#build-anim'); await hit('#build-anim .bz-nx'); await p.waitForTimeout(900); }, sel: '#build-anim .bz-pv' },
   { name: 'сцена (головна): → з клавіатури', path: '/', only: 'desktop', prep: async p => { await sceneReady(p, '#build-anim'); await p.locator('#build-anim .bz-nx').focus(); }, key: 'ArrowRight' },
   { name: 'сцена (будівництво, повна): наступний етап', path: '/budivnytstvo-budynkiv-kyiv', prep: p => sceneReady(p, '#build-anim'), sel: '#build-anim .bz-nx', twice: true },
+  // огляд моделі (23.11.2026): кнопка «+», крок обертання з клавіатури (перепроєкція всіх видимих шарів) і «скинути» після повороту
+  { name: 'модель (головна): «+» наблизити', path: '/', prep: p => sceneReady(p, '#build-anim'), sel: '#build-anim .bz-zi' },
+  { name: 'модель (головна): крок обертання Shift+→', path: '/', prep: async p => { await sceneReady(p, '#build-anim'); await p.locator('#build-anim .bz-fig').focus(); }, key: 'Shift+ArrowRight', twice: true },
+  { name: 'модель (головна): «скинути» після повороту', path: '/', prep: async p => { await sceneReady(p, '#build-anim'); await p.locator('#build-anim .bz-fig').focus(); await p.keyboard.press('Shift+ArrowRight'); await p.keyboard.press('Shift+ArrowDown'); await p.waitForTimeout(600); }, sel: '#build-anim .bz-zr', settle: 1200 },
+  { name: 'модель (будівництво, повна): крок обертання', path: '/budivnytstvo-budynkiv-kyiv', prep: async p => { await sceneReady(p, '#build-anim'); await p.locator('#build-anim .bz-fig').focus(); }, key: 'Shift+ArrowRight', twice: true },
   { name: 'сцена (головна): вкладка «Ландшафт»', path: '/', prep: async p => { await sceneReady(p, '#build-anim'); await center(p, 'nav.la-tab a', 2); }, sel: 'nav.la-tab a >> nth=2', settle: 2500 },
   { name: 'лайтбокс: відкрити', path: '/proekty/monpark', prep: async p => { await center(p, 'a[data-lb]', 0); await p.waitForTimeout(900); }, sel: 'a[data-lb] >> nth=0' },
   { name: 'лайтбокс: наступне фото', path: '/proekty/monpark', prep: async (p, hit) => { await center(p, 'a[data-lb]', 0); await p.waitForTimeout(900); await hit('a[data-lb] >> nth=0'); await p.waitForTimeout(1200); }, key: 'ArrowRight' },

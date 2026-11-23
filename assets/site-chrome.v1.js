@@ -704,6 +704,8 @@
      • клік / тап у лівій або правій чверті кадру (≥ 44 px; RTL — дзеркально) — попередній / наступний етап; на миші — курсор-рука й ледь помітний
        шеврон ‹ › біля краю (reduced-motion — без анімації); кнопки, посилання, поля й панелі o.skip поверх кадру не чіпаємо; після перетягування — не клік.
      • свайп / перетягування мишею ←/→ — етап назад/вперед; ←/→ при фокусі в блоці (o.root).
+     • o.orbit (сцени «Будинок/Квартира з нуля», Михайло 23.11.2026 «у кадрі — модель, не етапи»): свайп/перетягування етап НЕ крокує — обертає модель
+       (build-anim.v1.js), Shift + ←/→ і Ctrl/⌘ + колесо — теж її; тап у чверті, ←/→, колесо — етапи, як і в решти сцен; шеврон не заходить на кнопки огляду внизу кадру.
      Підказка мовою сторінки — один раз (o.hint), зникає після першої дії (localStorage, з try/catch).
      o: {root, view (де слухаємо), zone? (елемент або функція → кадр; за замовчуванням view), skip? (селектор панелей поверх кадру), go(i), cur() → етап,
          n() → кількість, hint?, before?} */
@@ -717,15 +719,26 @@
     fr: ['Étapes : survolez et tournez la molette, ou cliquez sur un côté · se lit toute seule', 'Étapes : glissez ou touchez un côté de la scène · se lit toute seule'],
     pt: ['Fases: passe o cursor e rode a roda, ou clique num dos lados · reproduz-se sozinha', 'Fases: deslize ou toque num dos lados da cena · reproduz-se sozinha'],
     ar: ['المراحل: مرّر المؤشر وأدر العجلة أو انقر على أحد الجانبين · تعمل تلقائيًا', 'المراحل: اسحب أو المس أحد جانبي المشهد · تعمل تلقائيًا'] };
+  // o.orbit — у кадрі модель (сцена «Будинок/Квартира з нуля», build-anim.v1.js, Михайло 23.11.2026): підказка — про поворот і масштаб моделі
+  var HINT_O = { uk: ['Потягніть мишкою — поверніть модель · Ctrl + колесо — наблизити', 'Потягніть — поверніть модель · щипок — наблизьте'],
+    ru: ['Потяните мышью — поверните модель · Ctrl + колесо — приблизить', 'Потяните — поверните модель · щипок — приблизьте'],
+    en: ['Drag with the mouse to turn the model · Ctrl + wheel to zoom', 'Drag to turn the model · pinch to zoom'],
+    es: ['Arrastra con el ratón para girar el modelo · Ctrl + rueda para acercar', 'Arrastra para girar el modelo · pellizca para acercar'],
+    zh: ['用鼠标拖动可旋转模型 · Ctrl + 滚轮可缩放', '拖动可旋转模型 · 双指捏合可缩放'],
+    pl: ['Przeciągnij myszą, aby obrócić model · Ctrl + kółko — przybliżenie', 'Przeciągnij, aby obrócić model · zsuń lub rozsuń palce, aby przybliżyć'],
+    de: ['Mit der Maus ziehen – Modell drehen · Strg + Mausrad – zoomen', 'Ziehen – Modell drehen · mit zwei Fingern zoomen'],
+    fr: ['Faites glisser avec la souris pour tourner la maquette · Ctrl + molette pour zoomer', 'Faites glisser pour tourner la maquette · pincez pour zoomer'],
+    pt: ['Arraste com o rato para rodar o modelo · Ctrl + roda para aproximar', 'Arraste para rodar o modelo · afaste dois dedos para aproximar'],
+    ar: ['اسحب بالفأرة لتدوير النموذج · Ctrl + العجلة للتكبير', 'اسحب لتدوير النموذج · باعد بإصبعين للتكبير'] };
   var FINE = W.matchMedia && W.matchMedia('(hover: hover) and (pointer: fine)').matches, CTRL = 'button,a,input,select,textarea,label,summary,[role=button]';
   function seen(v) { try { if (v) W.localStorage.setItem('casScHint', '1'); return W.localStorage.getItem('casScHint') === '1'; } catch (e) { return !!v; } }
   var chev = null; // один шеврон на сторінку (position:fixed у body — без зсуву макета)
-  function chv(r, side, y, dis) {
+  function chv(r, side, y, dis, pad) { // pad — смуга знизу кадру без шеврона (кнопки огляду моделі)
     if (!chev) { chev = d.createElement('span'); chev.className = 'sc-chev'; chev.setAttribute('aria-hidden', 'true'); chev.dir = 'ltr'; d.body.appendChild(chev); }
     if (!r) { chev.classList.remove('is-on'); return; }
     chev.textContent = side < 0 ? '‹' : '›'; chev.classList.toggle('is-dis', !!dis);
     chev.style.left = Math.round(side < 0 ? r.left + 10 : r.right - 54) + 'px';
-    chev.style.top = Math.round(Math.max(r.top + 8, Math.min(r.bottom - 52, y - 22))) + 'px';
+    chev.style.top = Math.round(Math.max(r.top + 8, Math.min(r.bottom - 52 - (pad || 0), y - 22))) + 'px';
     chev.classList.add('is-on');
   }
   W.casGest = function (o) {
@@ -739,7 +752,7 @@
     function step(k) { var c = cur(), t = Math.max(0, Math.min(n() - 1, c + k)); if (t === c) return false; tg = t; tStep = Date.now(); o.go(t); done(); return true; }
     function done() { if (hint) { hint.classList.add('is-off'); var h = hint; hint = null; setTimeout(function () { if (h.parentNode) h.parentNode.removeChild(h); }, 400); } seen(1); }
     if (o.hint && !seen()) {
-      hint = d.createElement('p'); hint.className = 'sc-hint'; hint.textContent = (HINT[lang] || HINT.en)[FINE ? 0 : 1].split(RM ? ' · ' : '\u0000')[0]; // reduced-motion — без «програється сама»
+      hint = d.createElement('p'); hint.className = 'sc-hint'; hint.textContent = o.orbit ? (HINT_O[lang] || HINT_O.en)[FINE ? 0 : 1] : (HINT[lang] || HINT.en)[FINE ? 0 : 1].split(RM ? ' · ' : '\u0000')[0]; // reduced-motion — без «програється сама»
       o.hint.insertBefore(hint, o.before || null);
     }
     // обʼєкти в самому SVG-кадрі з role=button (генплан «Комплексу») — не панелі керування: свайп і клік збоку з них теж крокують
@@ -758,7 +771,7 @@
       if (n() > 1 && inZone(e.target) && !off(e.target)) { q = edge(e); s = q[0]; }
       if (!s) { z.removeAttribute('data-scz'); chv(null); return; }
       var k = rtl ? -s : s, c = cur(), dis = (k < 0 && c <= 0) || (k > 0 && c >= n() - 1);
-      z.setAttribute('data-scz', dis ? 'x' : s < 0 ? 'p' : 'n'); chv(q[1], s, e.clientY, dis);
+      z.setAttribute('data-scz', dis ? 'x' : s < 0 ? 'p' : 'n'); chv(q[1], s, e.clientY, dis, o.orbit ? 52 : 0);
     }
     v.addEventListener('pointermove', function (e) {
       if (pid === e.pointerId && Math.abs(e.clientX - x0) + Math.abs(e.clientY - y0) > 10) moved = true;
@@ -768,6 +781,7 @@
     W.addEventListener('scroll', function () { if (chev && chev.classList.contains('is-on')) chv(null); }, { passive: true });
     v.addEventListener('pointerup', function (e) {
       if (pid !== e.pointerId) return; pid = null;
+      if (o.orbit) return; // перетягування в кадрі обертає модель (build-anim.v1.js), етапи — тап у чверті, ←/→, кнопки
       var dx = e.clientX - x0, dy = e.clientY - y0;
       if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
       step((dx < 0) !== rtl ? 1 : -1);
@@ -784,7 +798,7 @@
       if (FINE) hov(e); // оновити шеврон: на краю етапів — тьмяний
     }, true);
     v.addEventListener('wheel', function (e) {
-      if (e.ctrlKey) return; // масштаб сторінки
+      if (e.ctrlKey || (o.orbit && e.metaKey)) return; // масштаб сторінки (o.orbit: масштаб моделі — build-anim.v1.js)
       var dl = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX * (rtl ? -1 : 1) : e.deltaY; if (!dl) return;
       if (n() < 2 || !inZone(e.target) || (o.skip && e.target.closest && e.target.closest(o.skip))) return; // панелі поверх кадру й поза ним — сторінка
       var r = zone().getBoundingClientRect(), vis = (Math.min(r.bottom, W.innerHeight) - Math.max(r.top, 0)) / Math.max(1, Math.min(r.height, W.innerHeight));
@@ -799,7 +813,7 @@
     }, { passive: false });
     o.root.addEventListener('keydown', function (e) {
       if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || (e.target.closest && e.target.closest('input,select,textarea,.bz-nav'))) return;
-      var k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!k) return;
+      var k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!k || (o.orbit && e.shiftKey)) return; // Shift + ←/→ — поворот моделі
       if (rtl) k = -k;
       if (step(k)) e.preventDefault();
     });

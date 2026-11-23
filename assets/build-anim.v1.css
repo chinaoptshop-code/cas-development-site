@@ -513,3 +513,20 @@
 .bz-run.bz-wip{visibility:hidden} /* до кінця збірки (build-anim.v1.js enhance): проміжні кадри без зсувів колонки етапів */
 /* 344 px: підсумок конфігурації «⚙ Газоблок · 2 поверхи · Скандинавський · 160 м²» вміщується без «…» (аудит 20.11.2026) */
 @media(max-width:359px){.bz-mats .bz-cb{padding-inline:8px}}
+/* огляд моделі (Михайло 23.11.2026 «крутити й приближати модельку»; логіка — build-anim.v1.js «огляд моделі»): кнопки «+ − ↺» у куті кадру — поверх сцени
+   (absolute: висота кадру й резерв ті самі), не на печатці (вгорі праворуч) і не на шевронах чвертей (casGest їх тримає вище); RTL — праворуч */
+.bz-ob{position:absolute;right:8px;bottom:8px;z-index:3;display:flex;gap:6px} /* повна сцена: праворуч (ліворуч унизу — підпис конфігурації .bz-cap) */
+.bz-cmp .bz-ob{right:auto;left:8px}[dir=rtl] .bz-cmp .bz-ob{left:auto;right:8px} /* головні: ліворуч (RTL — праворуч), печатка «12 міс.» — угорі праворуч */
+.bz-xr .bz-ob{bottom:auto;top:8px} /* «Квартира», рентген: унизу — легенда мереж */
+.bz-ob button{width:44px;height:44px;flex:none;border-radius:50%;border:1px solid var(--ln,rgba(191,145,72,.22));background:rgba(13,12,10,.72);color:var(--tx,#EDE8DF);padding:0;
+  display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .25s,color .25s}
+.bz-ob i{width:18px;height:18px;background:currentColor;-webkit-mask:var(--bzm) center/contain no-repeat;mask:var(--bzm) center/contain no-repeat}
+.bz-zi{--bzm:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E")}
+.bz-zo{--bzm:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E")}
+.bz-zr{--bzm:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8'/%3E%3Cpath d='M3 3v5h5'/%3E%3C/svg%3E")}
+.bz-ob button:disabled{opacity:.35;cursor:default}
+@media(hover:hover){.bz-ob button:not(:disabled):hover{border-color:var(--ac,#BF9148)}}
+.bz-ob button:focus-visible,.bz-fig:focus-visible{outline:2px solid var(--ac,#BF9148);outline-offset:2px}
+.bz-fig>svg{cursor:grab;-webkit-user-select:none;user-select:none}.bz-gc{display:none;position:absolute;inset:0;z-index:2;cursor:grabbing} /* .bz-gc — лише на час перетягування мишею */
+.bz-fig>svg[data-scz=p],.bz-fig>svg[data-scz=n]{cursor:pointer} /* чверті кадру — етапи (casGest) */
+@media(max-width:767px){.bz.bz-cmp .bz-side>.sc-hint{bottom:calc(100% + 66px)}} /* телефон: підказка жестів поверх кадру — над кнопками огляду */

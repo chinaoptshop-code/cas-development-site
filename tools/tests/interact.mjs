@@ -240,6 +240,154 @@ await test('компактна сцена: рестарт після виход�
   const back = await p.evaluate(() => window.__ct.filter((v, i, a) => v !== a[i - 1]));
   must(back.length && back[0] === '01' && back.every(v => v === '01' || v === '02'), 'після повернення: ' + back.join(' → ') + ' (очікується одразу 01)');
 });
+// ── огляд моделі «Будинок/Квартира з нуля» (Михайло 23.11.2026 «крутити й приближати модельку»; build-anim.v1.js «огляд моделі»):
+//    перетягування обертає (не етап), «скинути» — рівно та сама розмітка кадру, вертикальний свайп — сторінка, щипок і Ctrl+колесо — масштаб моделі
+//    (масштаб сторінки — 1), тап у чверті — етап, кнопки + − ↺ і клавіші, повернута модель будує наступні етапи без помилок, RTL, reduced-motion, інші сцени — як були
+const orb = p => p.evaluate(() => { const s = document.querySelector('#build-anim'); return s && s.__bzOrb ? s.__bzOrb() : null; });
+const bzStep = p => p.evaluate(() => [...document.querySelectorAll('#build-anim .bz-nav .bz-b')].findIndex(b => b.getAttribute('aria-current') === 'step'));
+// розмітка кадру без пулу частинок (координати хмарок пилу випадкові): камера, viewBox, візерунки
+const bzSnap = p => p.evaluate(() => { const s = document.querySelector('#build-anim .bz-fig > svg'), c = s.querySelector('g.bz-cam').cloneNode(true); c.querySelectorAll('.bz-pfs').forEach(e => e.remove()); return c.innerHTML + '|' + s.getAttribute('viewBox') + '|' + s.querySelector('defs').innerHTML; });
+const bzNodes = p => p.evaluate(() => { const c = document.querySelector('#build-anim .bz-fig > svg g.bz-cam'); return c.querySelectorAll('*').length - c.querySelectorAll('.bz-pfs, .bz-pfs *').length; });
+async function bzReady(p) {
+  await wakeup(p);
+  await p.evaluate(() => { try { localStorage.setItem('casScHint', '1'); } catch (e) { } });
+  await p.locator('#build-anim').scrollIntoViewIfNeeded();
+  await p.waitForSelector('#build-anim .bz-nav .bz-b', { timeout: 15000 });
+  await p.evaluate(() => { const a = document.querySelector('#build-anim .bz-ap'); if (a && a.getAttribute('data-st') === 'on') a.click(); });
+  await p.evaluate(() => document.querySelector('#build-anim .bz-fig').scrollIntoView({ block: 'center', behavior: 'instant' }));
+  let a = '', b = await bzSnap(p); // доливання шарів (fillLazy) — у простої: чекаємо, поки розмітка кадру стане
+  for (let i = 0; i < 20 && a !== b; i++) { await p.waitForTimeout(400); a = b; b = await bzSnap(p); }
+  return p.locator('#build-anim .bz-fig > svg').boundingBox();
+}
+const drag = async (p, x, y, dx, dy, o) => { if (o && o.shift) await p.keyboard.down('Shift'); await p.mouse.move(x, y); await p.mouse.down(); await p.mouse.move(x + dx, y + dy, { steps: 12 }); await p.mouse.up(); if (o && o.shift) await p.keyboard.up('Shift'); await p.waitForTimeout(250); };
+for (const [path, w] of [['/', 1440], ['/budivnytstvo-budynkiv-kyiv', 1440], ['/remont-kvartyr-kyiv', 1440], ['/', 402]]) await test('модель: перетягування мишею повертає модель (не етап), «скинути» — рівно початкова розмітка кадру', path, w, async p => {
+  const bb = await bzReady(p); must(bb, 'немає кадру сцени');
+  const s0 = await bzSnap(p), st0 = await bzStep(p), pt0 = await p.evaluate(() => document.querySelector('#build-anim .bz-fig > svg g.bz-cam polygon').getAttribute('points'));
+  must(await p.locator('#build-anim .bz-zr').isDisabled(), '«скинути» активна в типовому вигляді');
+  await drag(p, bb.x + bb.width / 2, bb.y + bb.height / 2, -bb.width * 0.3, bb.height * 0.15);
+  const o = await orb(p), pt1 = await p.evaluate(() => document.querySelector('#build-anim .bz-fig > svg g.bz-cam polygon').getAttribute('points'));
+  must(o && o.rot && o.t < -0.1 && o.p > o.p0, 'перетягування не повернуло модель: ' + JSON.stringify(o));
+  must(pt1 !== pt0, 'координати точок не змінились після повороту');
+  must(await bzStep(p) === st0, `перетягування змінило етап: ${st0} → ${await bzStep(p)}`);
+  must(!(await p.evaluate(() => document.querySelector('#build-anim .bz-fig > svg g.bz-cam').innerHTML.includes('NaN'))), 'NaN у розмітці повернутої моделі');
+  must(await p.evaluate(() => !String(getSelection()).trim()), 'перетягування виділило текст сторінки');
+  await p.click('#build-anim .bz-zr'); await p.waitForTimeout(900);
+  const o2 = await orb(p);
+  must(!o2.rot && o2.t === 0 && o2.z === 1, '«скинути» не повернула типовий вигляд: ' + JSON.stringify(o2));
+  must(await bzSnap(p) === s0, '«скинути»: розмітка кадру не та сама, що до повороту');
+  // Shift + перетягування на 1× — без зсуву; наближена — пересувається
+  await p.click('#build-anim .bz-zi'); await p.waitForTimeout(500);
+  const vb0 = await p.getAttribute('#build-anim .bz-fig > svg', 'viewBox');
+  await drag(p, bb.x + bb.width / 2, bb.y + bb.height / 2, 80, 40, { shift: 1 });
+  const vb1 = await p.getAttribute('#build-anim .bz-fig > svg', 'viewBox');
+  must(vb1 !== vb0 && !(await orb(p)).rot, 'Shift + перетягування не пересуває наближену модель (або повертає її): ' + vb0 + ' → ' + vb1);
+});
+await test('модель: свайп пальцем обертає й не крокує етап; вертикальний свайп — прокрутка сторінки; тап у чверті — етап', '/', 402, async p => {
+  const bb = await bzReady(p), g = await touches(p);
+  const st0 = await bzStep(p), cy = bb.y + bb.height / 2;
+  await g.swipe(bb.x + bb.width * 0.62, cy, bb.x + bb.width * 0.38, cy + 6);
+  const o = await orb(p);
+  must(o.rot && o.t < -0.05, 'горизонтальний свайп не повернув модель: ' + JSON.stringify(o));
+  must(Math.abs(o.p - o.p0) < 1e-6, 'один палець змінив нахил: ' + JSON.stringify(o));
+  must(await bzStep(p) === st0, `свайп змінив етап: ${st0} → ${await bzStep(p)}`);
+  const y0 = await p.evaluate(() => scrollY);
+  await g.swipe(bb.x + bb.width / 2, cy + 60, bb.x + bb.width / 2, cy - 120);
+  const y1 = await p.evaluate(() => scrollY), o2 = await orb(p);
+  must(y1 - y0 > 40, `вертикальний свайп у кадрі не прокрутив сторінку: ${y0} → ${y1}`);
+  must(Math.abs(o2.t - o.t) < 1e-6, 'вертикальний свайп повернув модель');
+  await p.evaluate(() => document.querySelector('#build-anim .bz-fig').scrollIntoView({ block: 'center', behavior: 'instant' })); await p.waitForTimeout(300);
+  const b2 = await p.locator('#build-anim .bz-fig > svg').boundingBox(), st1 = await bzStep(p);
+  await p.touchscreen.tap(b2.x + b2.width * 0.92, b2.y + b2.height * 0.4); await p.waitForTimeout(600);
+  must(await bzStep(p) === st1 + 1, `тап у правій чверті: етап ${st1} → ${await bzStep(p)}`);
+  must(Math.abs((await orb(p)).t - o.t) < 1e-6, 'тап у чверті змінив кут');
+});
+await test('модель: щипок масштабує модель, масштаб сторінки лишається 1; подвійний тап — 1×', '/', 402, async p => {
+  const bb = await bzReady(p), g = await touches(p), cx = bb.x + bb.width / 2, cy = bb.y + bb.height / 2;
+  const st0 = await bzStep(p);
+  await g.pinch(cx, cy, 30, 110);
+  const o = await orb(p), sc = await p.evaluate(() => visualViewport.scale);
+  must(o.z > 1.5, 'щипок не наблизив модель: ' + JSON.stringify(o));
+  must(Math.abs(sc - 1) < 1e-3, 'щипок у кадрі змінив масштаб сторінки: ' + sc);
+  must(await bzStep(p) === st0, 'щипок змінив етап');
+  await g.dbl(cx, cy); await p.waitForTimeout(400);
+  must((await orb(p)).z === 1, 'подвійний тап у середині кадру не повернув 1×: ' + JSON.stringify(await orb(p)));
+});
+await test('модель: Ctrl + колесо — масштаб моделі, звичайне колесо — етап; кнопки + − ↺ і клавіші', '/', 1440, async p => {
+  const bb = await bzReady(p), cx = bb.x + bb.width / 2, cy = bb.y + bb.height / 2;
+  await p.mouse.move(cx, cy);
+  await p.keyboard.down('Control'); await p.mouse.wheel(0, -240); await p.keyboard.up('Control'); await p.waitForTimeout(400);
+  let o = await orb(p);
+  must(o.z > 1.2, 'Ctrl + колесо не наблизило модель: ' + JSON.stringify(o));
+  must(Math.abs(await p.evaluate(() => visualViewport.scale) - 1) < 1e-3, 'Ctrl + колесо змінило масштаб сторінки');
+  const st0 = await bzStep(p), sy = await p.evaluate(() => scrollY);
+  await p.mouse.wheel(0, 120); await p.waitForTimeout(700);
+  must(await bzStep(p) === st0 + 1 && await p.evaluate(() => scrollY) === sy, `звичайне колесо над кадром: етап ${st0} → ${await bzStep(p)} (як і раніше — +1 етап без прокрутки)`);
+  await p.click('#build-anim .bz-zr'); await p.waitForTimeout(700);
+  await p.click('#build-anim .bz-zi'); await p.waitForTimeout(500);
+  const z1 = (await orb(p)).z; must(z1 > 1.4, '«+» не наблизила: ' + z1);
+  await p.click('#build-anim .bz-zo'); await p.waitForTimeout(500);
+  must((await orb(p)).z < z1, '«−» не віддалила');
+  must(await p.locator('#build-anim .bz-zr').isDisabled() && await p.locator('#build-anim .bz-zo').isDisabled(), '1× і типовий кут: «−» і «скинути» мають бути неактивні');
+  // клавіші з фокусом на кадрі: Shift + → / ↓ — поворот і нахил, + — масштаб, 0 — типовий вигляд; → без Shift — етап
+  await p.focus('#build-anim .bz-fig');
+  const st1 = await bzStep(p);
+  await p.keyboard.press('Shift+ArrowRight'); await p.keyboard.press('Shift+ArrowDown'); await p.waitForTimeout(300);
+  o = await orb(p); must(o.rot && o.t > 0 && o.p > o.p0, 'Shift + →/↓ не повернули модель: ' + JSON.stringify(o));
+  must(await bzStep(p) === st1, 'Shift + → змінив етап');
+  await p.keyboard.press('+'); await p.waitForTimeout(400); must((await orb(p)).z > 1.2, 'клавіша + не наблизила');
+  await p.keyboard.press('0'); await p.waitForTimeout(800); o = await orb(p); must(!o.rot && o.z === 1, 'клавіша 0 не скинула вигляд: ' + JSON.stringify(o));
+  await p.keyboard.press('ArrowRight'); await p.waitForTimeout(500);
+  must(await bzStep(p) === st1 + 1, '→ з фокусом на кадрі не крокує етап');
+  // кнопки — у кадрі, ≥ 44 px, не на печатці (угорі праворуч)
+  const r = await p.evaluate(() => { const f = document.querySelector('#build-anim .bz-fig').getBoundingClientRect(); return [...document.querySelectorAll('#build-anim .bz-ob button')].map(b => { const q = b.getBoundingClientRect(); return { w: q.width, h: q.height, in: q.left >= f.left && q.right <= f.right && q.bottom <= f.bottom && q.top >= f.top, low: q.top > f.top + f.height / 2 }; }); });
+  must(r.length === 3 && r.every(b => b.w >= 44 && b.h >= 44 && b.in && b.low), 'кнопки огляду: ' + JSON.stringify(r));
+});
+for (const w of [402, 1440]) await test('модель: повернута модель будує наступні етапи без помилок і без «розсипаних» шарів', w > 600 ? '/budivnytstvo-budynkiv-kyiv' : '/', w, async p => {
+  const bb = await bzReady(p);
+  if (w > 600) await drag(p, bb.x + bb.width / 2, bb.y + bb.height / 2, bb.width * 0.25, -bb.height * 0.1);
+  else { const g = await touches(p); await g.swipe(bb.x + bb.width * 0.35, bb.y + bb.height / 2, bb.x + bb.width * 0.65, bb.y + bb.height / 2); }
+  must((await orb(p)).rot, 'модель не повернулась');
+  const n = await p.locator('#build-anim .bz-nav .bz-b').count();
+  for (const k of [3, Math.floor(n / 2), n - 1]) {
+    await p.locator('#build-anim .bz-nav .bz-b').nth(k).evaluate(e => e.click()); await p.waitForTimeout(w > 600 ? 2200 : 900);
+    await p.evaluate(() => document.querySelector('#build-anim .bz-fig').scrollIntoView({ block: 'center', behavior: 'instant' })); await p.waitForTimeout(600);
+  }
+  must((await orb(p)).rot, 'кут скинувся під час етапів');
+  const html = await p.evaluate(() => document.querySelector('#build-anim .bz-fig > svg g.bz-cam').innerHTML);
+  must(!html.includes('NaN'), 'NaN у розмітці');
+  const n1 = await bzNodes(p);
+  await p.click('#build-anim .bz-zr'); await p.waitForTimeout(900);
+  const n0 = await bzNodes(p);
+  must(n1 === n0, `вузлів у кадрі: повернута ${n1}, типова ${n0} (на тому самому етапі)`);
+});
+await test('модель (ar, RTL): кнопки праворуч у кадрі, свайп обертає й не крокує етап', '/ar/', 402, async p => {
+  const bb = await bzReady(p), g = await touches(p);
+  const r = await p.evaluate(() => { const f = document.querySelector('#build-anim .bz-fig').getBoundingClientRect(), o = document.querySelector('#build-anim .bz-ob').getBoundingClientRect(); return { fr: f.right, or: o.right, ol: o.left, fl: f.left }; });
+  must(r.fr - r.or < 24 && r.ol - r.fl > 100, 'RTL: кнопки огляду не праворуч: ' + JSON.stringify(r));
+  const st0 = await bzStep(p);
+  await g.swipe(bb.x + bb.width * 0.4, bb.y + bb.height / 2, bb.x + bb.width * 0.6, bb.y + bb.height / 2);
+  must((await orb(p)).rot && await bzStep(p) === st0, 'RTL: свайп не повернув модель або змінив етап');
+  must(await p.getAttribute('#build-anim .bz-zr', 'aria-label') === 'إعادة ضبط العرض', 'RTL: назва кнопки «скинути» не арабською');
+});
+await test('модель (reduced-motion): перетягування працює, «скинути» — одразу', '/', 1440, async p => {
+  const bb = await bzReady(p);
+  await drag(p, bb.x + bb.width / 2, bb.y + bb.height / 2, 160, 0);
+  must((await orb(p)).rot, 'reduced-motion: перетягування не повернуло модель');
+  await p.click('#build-anim .bz-zr'); await p.waitForTimeout(80);
+  const o = await orb(p); must(!o.rot && o.z === 1, 'reduced-motion: «скинути» не миттєве: ' + JSON.stringify(o));
+}, { reducedMotion: 'reduce' });
+await test('модель: інші сцени (Ландшафт) — свайп, як і раніше, крокує етап', '/', 402, async p => {
+  await bzReady(p);
+  await scTab(p, 2);
+  const svg = p.locator(`section.bz:has(nav.la-tab) .la-svg`).first(); await svg.scrollIntoViewIfNeeded(); await p.waitForTimeout(400);
+  await p.evaluate(`(()=>{const b=${SCN}.querySelector('.sc-ap');if(b&&b.getAttribute('data-st')==='on')b.click()})()`);
+  const st = () => p.evaluate(`[...${SCN}.querySelectorAll('.sc-n')].findIndex(b=>b.hasAttribute('aria-current'))`);
+  const bb = await svg.boundingBox(), s0 = await st(), g = await touches(p);
+  await g.swipe(bb.x + bb.width * 0.75, bb.y + bb.height / 2, bb.x + bb.width * 0.25, bb.y + bb.height / 2);
+  await p.waitForTimeout(400);
+  must(await st() === s0 + 1, `Ландшафт: свайп ← не крокує етап (${s0} → ${await st()})`);
+  must(!(await p.locator(`section.bz:has(nav.la-tab) .bz-ob`).count()), 'Ландшафт: кнопки огляду моделі в чужій сцені');
+});
 // «Ресторан з нуля», етап «Гості»: силуети були сірі під нічним шаром і їх майже не було видно — етап виглядав порожнім
 await test('сцена «Ресторан»: на етапі «Гості» видно гостей (≥ 10 світлих силуетів)', '/', 1440, async p => {
   await wakeup(p);

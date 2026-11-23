@@ -52,11 +52,21 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
 
   /* ---------- ізометрія: x → вправо-вниз, y → вліво-вниз, z → вгору (1 м = K px) ---------- */
   var K = 18, CX = K * 0.8660254, SY = K * 0.5, ZK = K, bb; // квартира — диметрія «згори» (SY, ZK — у build)
+  // огляд моделі (Михайло 23.11.2026 «крутити й приближати модельку»): OV — загальна ортогональна проєкція [ax, ay, bx, by, bz, ox, oy]
+  // (a = x·ax + y·ay + ox, b = x·bx + y·by + z·bz + oy; рахує orbM()); null — типова ізометрія, рядки розмітки ті самі, що й без огляду.
+  // wb — габарити моделі у світі (м): за ними огляд вписує повернуту модель у той самий кадр
+  var OV = null, wb = [1e9, 1e9, 1e9, -1e9, -1e9, -1e9];
   function P(x, y, z) {
-    var a = (x - y) * CX, b = (x + y) * SY - z * ZK;
+    var a, b;
+    if (OV) { a = x * OV[0] + y * OV[1] + OV[5]; b = x * OV[2] + y * OV[3] + z * OV[4] + OV[6]; }
+    else {
+      a = (x - y) * CX; b = (x + y) * SY - z * ZK;
+      if (x < wb[0]) wb[0] = x; if (y < wb[1]) wb[1] = y; if (z < wb[2]) wb[2] = z; if (x > wb[3]) wb[3] = x; if (y > wb[4]) wb[4] = y; if (z > wb[5]) wb[5] = z;
+    }
     if (a < bb[0]) bb[0] = a; if (b < bb[1]) bb[1] = b; if (a > bb[2]) bb[2] = a; if (b > bb[3]) bb[3] = b;
     return a.toFixed(1) + ',' + b.toFixed(1);
   }
+  function vz() { return OV ? -OV[4] : ZK; } // px на метр по вертикалі (силуети, ялини)
   function pp(a) { var o = []; for (var i = 0; i < a.length; i += 3) o.push(P(a[i], a[i + 1], a[i + 2])); return o.join(' '); }
   function pg(c, a) { return '<polygon class="' + c + '" points="' + pp(a) + '"/>'; }
   function pl(c, a) { return '<polyline class="' + c + '" points="' + pp(a) + '"/>'; }
@@ -69,7 +79,9 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
   function rz(Z, x0, x1, y0, y1) { return [x0, y0, Z, x1, y0, Z, x1, y1, Z, x0, y1, Z]; }
   function box(c, x0, x1, y0, y1, z0, z1) { return pg(c + ' t', rz(z1, x0, x1, y0, y1)) + pg(c + ' r', rx(x1, y0, y1, z0, z1)) + pg(c + ' l', ry(y1, x0, x1, z0, z1)); }
   function circ(c, x, y, z, r) { var q = P(x, y, z).split(','); return '<circle class="' + c + '" cx="' + q[0] + '" cy="' + q[1] + '" r="' + r + '"/>'; }
-  function txt(c, x, y, z, rot, s) { var q = P(x, y, z).split(','); return '<text class="' + c + '" transform="translate(' + q[0] + ' ' + q[1] + ') rotate(' + rot + ')">' + esc(s) + '</text>'; }
+  function txt(c, x, y, z, rot, s) { // rot: 30 — уздовж x, −30 — уздовж y (в огляді — кут проєкції тієї осі)
+    var q = P(x, y, z).split(','); if (OV && rot) rot = +(Math.atan2(rot > 0 ? OV[2] : -OV[3], rot > 0 ? OV[0] : -OV[1]) * 180 / Math.PI).toFixed(1);
+    return '<text class="' + c + '" transform="translate(' + q[0] + ' ' + q[1] + ') rotate(' + rot + ')">' + esc(s) + '</text>'; }
   function tree(x, y, h, r) { return pl('tk', [x, y, 0, x, y, h]) + circ('cr', x, y, h + r / K * 0.9, r) + circ('cr2', x - 0.25, y + 0.25, h + r / K * 1.2, r * 0.55); }
   function clipO(o, z0, z1) { var a = Math.max(o[2], z0), b = Math.min(o[3], z1); return b - a > 0.02 ? [o[0], o[1], a, b] : null; }
   function range(a, b, st) { var o = []; for (var v = a; v <= b + 1e-6; v += st) o.push(+v.toFixed(3)); return o; }
@@ -95,14 +107,16 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
   function fh(f, rings) { return '<path fill="' + f + '" fill-rule="evenodd" d="' + rings.map(function (a) { return 'M' + pp(a).replace(/ /g, 'L') + 'Z'; }).join('') + '"/>'; }
   function ln(s, w, a) { return '<polyline fill="none" stroke="' + s + '" stroke-width="' + w + '" points="' + pp(a) + '"/>'; }
   function bxf(f, x0, x1, y0, y1, z0, z1) { return fz(f[0], rz(z1, x0, x1, y0, y1)) + fz(f[1], rx(x1, y0, y1, z0, z1)) + fz(f[2], ry(y1, x0, x1, z0, z1)); }
-  function ell(f, x, y, z, r, o) { var q = P(x, y, z).split(','); return '<ellipse fill="' + f + '"' + (o ? ' opacity="' + o + '"' : '') + ' cx="' + q[0] + '" cy="' + q[1] + '" rx="' + (r * 1.414 * CX).toFixed(1) + '" ry="' + (r * 1.414 * SY).toFixed(1) + '"/>'; } // коло радіуса r (м) на підлозі / землі
+  function ell(f, x, y, z, r, o) { var q = P(x, y, z).split(','); return '<ellipse fill="' + f + '"' + (o ? ' opacity="' + o + '"' : '') + ' cx="' + q[0] + '" cy="' + q[1] + '" rx="' + (r * (OV ? Math.sqrt(OV[0] * OV[0] + OV[1] * OV[1]) : 1.414 * CX)).toFixed(1) + '" ry="' + (r * (OV ? Math.sqrt(OV[2] * OV[2] + OV[3] * OV[3]) : 1.414 * SY)).toFixed(1) + '"/>'; } // коло радіуса r (м) на підлозі / землі
   function dot(f, q, dx, dy, r) { return '<circle fill="' + f + '" cx="' + (+q[0] + dx).toFixed(1) + '" cy="' + (+q[1] + dy).toFixed(1) + '" r="' + r.toFixed(1) + '"/>'; }
-  function mx(f, s, e) { var m = f === 't' ? [CX, SY, -CX, SY, 0, 0] : f === 'l' ? [CX, SY, 0, -ZK].concat(e || [0, 0]) : [-CX, SY, 0, -ZK].concat(e || [0, 0]); return 'matrix(' + m.map(function (v, i) { return +(i < 4 ? v * s : v).toFixed(3); }).join(' ') + ')'; }
+  function mx(f, s, e) {
+    var m = OV ? (f === 't' ? [OV[0], OV[2], OV[1], OV[3], OV[5], OV[6]] : (f === 'l' ? [OV[0], OV[2], 0, OV[4]] : [OV[1], OV[3], 0, OV[4]]).concat(e || [OV[5], OV[6]])) :
+      f === 't' ? [CX, SY, -CX, SY, 0, 0] : f === 'l' ? [CX, SY, 0, -ZK].concat(e || [0, 0]) : [-CX, SY, 0, -ZK].concat(e || [0, 0]); return 'matrix(' + m.map(function (v, i) { return +(i < 4 ? v * s : v).toFixed(3); }).join(' ') + ')'; }
   // візерунок у площині грані: t — верх (x, y), l — y = const (x, z), r — x = const (y, z); s — метрів на одиницю візерунка
   function ip(id, f, s, w, h, body) { return '<pattern id="bz-' + id + '" width="' + w + '" height="' + h + '" patternUnits="userSpaceOnUse" patternTransform="' + mx(f, s) + '">' + body + '</pattern>'; }
   // вертикальний градієнт у площині грані (l: y = pl, r: x = pl) від z0 до z1; st — [[offset, колір, непрозорість], …]
   function lgr(id, f, pl, z0, z1, st) {
-    return '<linearGradient id="bz-' + id + '" gradientUnits="userSpaceOnUse" x1="0" y1="' + z0 + '" x2="0" y2="' + z1 + '" gradientTransform="' + mx(f, 1, f === 'l' ? [-pl * CX, pl * SY] : [pl * CX, pl * SY]) + '">' +
+    return '<linearGradient id="bz-' + id + '" gradientUnits="userSpaceOnUse" x1="0" y1="' + z0 + '" x2="0" y2="' + z1 + '" gradientTransform="' + mx(f, 1, OV ? (f === 'l' ? [pl * OV[1] + OV[5], pl * OV[3] + OV[6]] : [pl * OV[0] + OV[5], pl * OV[2] + OV[6]]) : f === 'l' ? [-pl * CX, pl * SY] : [pl * CX, pl * SY]) + '">' +
       st.map(function (q) { return '<stop offset="' + q[0] + '" stop-color="' + q[1] + '" stop-opacity="' + q[2] + '"/>'; }).join('') + '</linearGradient>';
   }
   function spk(n, w, h, sd, cols, r0, r1) { var s = ''; for (var i = 0; i < n; i++) { var r = []; for (var j = 0; j < 3; j++) { sd = (sd * 9301 + 49297) % 233280; r.push(sd / 233280); } s += '<circle cx="' + (r[0] * w).toFixed(2) + '" cy="' + (r[1] * h).toFixed(2) + '" r="' + (r0 + (r1 - r0) * r[2]).toFixed(2) + '" fill="' + cols[i % cols.length] + '"/>'; } return s; }
@@ -111,7 +125,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     '-.1,-.84 .1,-.84 .14,-.77 .135,-.5 .112,-.5 .115,-.3 .065,-.28 .058,0 .016,0 .01,-.27 -.01,-.27 -.016,0 -.058,0 -.065,-.28 -.115,-.3 -.112,-.5 -.135,-.5 -.14,-.77'];
   function man(x, y, z, h, f, v) {
     var q = P(x, y, z).split(',');
-    return ell('rgba(0,0,0,.3)', x + 0.12, y + 0.12, z, 0.22) + '<g fill="' + f + '" transform="translate(' + q[0] + ' ' + q[1] + ') scale(' + (h * ZK).toFixed(1) + ')"><circle cx="0" cy="-.925" r=".072"/><polygon points="' + MAN[v] + '"/></g>';
+    return ell('rgba(0,0,0,.3)', x + 0.12, y + 0.12, z, 0.22) + '<g fill="' + f + '" transform="translate(' + q[0] + ' ' + q[1] + ') scale(' + (h * vz()).toFixed(1) + ')"><circle cx="0" cy="-.925" r=".072"/><polygon points="' + MAN[v] + '"/></g>';
   }
   // дерево: тінь, стовбур, крона з кількох відтінків (світло зліва-згори); k — ялина
   function tree2(x, y, h, r, k) {
@@ -120,7 +134,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       var q = P(x, y, 0).split(','), cx = +q[0], by = +q[1];
       s += ln('#3b2e22', 2, [x, y, 0, x, y, 0.5]);
       [[1, 0.42], [0.8, 0.7], [0.58, 0.98]].forEach(function (t, i) {
-        var w = r * t[0], b = by - h * ZK * (0.12 + i * 0.26), tp = b - h * ZK * t[1] * 0.62;
+        var w = r * t[0], b = by - h * vz() * (0.12 + i * 0.26), tp = b - h * vz() * t[1] * 0.62;
         s += '<polygon fill="#22311f" points="' + [cx - w, b, cx + w, b + w * 0.18, cx, tp].map(function (v) { return v.toFixed(1); }).join(' ') + '"/><polygon fill="#30442b" points="' + [cx - w, b, cx - w * 0.1, b + w * 0.1, cx, tp].map(function (v) { return v.toFixed(1); }).join(' ') + '"/>';
       });
       return s;
@@ -135,11 +149,13 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
   }
 
   // візерунки матеріалів в ізометрії: l — грань уздовж x (skewY 30°), r — уздовж y (skewY −30°)
+  // візерунок фасаду в ізометрії: l — грань уздовж x (skewY 30°), r — уздовж y (skewY −30°); в огляді — та сама грань у його проєкції
+  function skw(f) { return OV ? 'matrix(' + (f === 'l' ? [OV[0], OV[2]] : [-OV[1], -OV[3]]).map(function (v) { return +(v / CX).toFixed(4); }).concat([0, +(-OV[4] / ZK).toFixed(4), +OV[5].toFixed(1), +OV[6].toFixed(1)]).join(' ') + ')' : 'skewY(' + (f === 'l' ? 30 : -30) + ')'; }
   function pats(sc) {
     var o = '';
     function p(id, w, h, fills, paths) {
       ['l', 'r'].forEach(function (f, i) {
-        o += '<pattern id="bz-' + id + '-' + f + '" width="' + w + '" height="' + h + '" patternUnits="userSpaceOnUse" patternTransform="skewY(' + (f === 'l' ? 30 : -30) + ')">' +
+        o += '<pattern id="bz-' + id + '-' + f + '" width="' + w + '" height="' + h + '" patternUnits="userSpaceOnUse" patternTransform="' + skw(f) + '">' +
           '<rect width="' + w + '" height="' + h + '" fill="' + fills[i] + '"/>' + paths.map(function (q) { return '<path d="' + q[0] + '" stroke="' + q[1] + '" stroke-width="' + (q[2] || 0.6) + '" fill="none"/>'; }).join('') + '</pattern>';
       });
     }
@@ -836,6 +852,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
   // текст, що лежить на підлозі (z): d — уздовж y (читається вгору-вправо), інакше уздовж x
   function tf(c, x, y, z, s, d) {
     var q = P(x, y, z).split(','), u = d ? [CX, -SY] : [CX, SY], v = d ? [CX, SY] : [-CX, SY];
+    if (OV) { u = d ? [-OV[1], -OV[3]] : [OV[0], OV[2]]; v = d ? [OV[0], OV[2]] : [OV[1], OV[3]]; }
     return '<text class="' + c + '" transform="matrix(' + [u[0] / K, u[1] / K, v[0] / K, v[1] / K, +q[0], +q[1]].map(function (t) { return +t.toFixed(3); }).join(' ') + ')">' + esc(s) + '</text>';
   }
   function flat(S, ui, V, lang) {
@@ -1232,7 +1249,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     var hd0 = data.hdef || { t: 'two', s: 'scandi', a: 160 }, cf0 = (sec.getAttribute('data-bz-cfg') || '').split(',');
     var C = { m: mat, t: cf0[0] || hd0.t, s: cf0[1] || hd0.s, a: +(cf0[2] || hd0.a), g: '', r: 0, lang: lang }, hint = '', cfgOpen = false;
     hfix(C, 'm'); mat = C.m;
-    var seq, n, lis = [], sc, svg, layers = [], ghost, cam, sky, stars, VB, pLast = 0, sPrev = 0, act = -1, cur = 0, top0 = 0, rm = !!(MQ && MQ.matches), man = 0, pieKey = null, pieSel = 0;
+    var seq, n, lis = [], sc, svg, layers = [], ghost, cam, sky, stars, VB, vbS = '', pLast = 0, sPrev = 0, act = -1, cur = 0, top0 = 0, rm = !!(MQ && MQ.matches), man = 0, pieKey = null, pieSel = 0;
     function S(k) { return seq.indexOf(k); }
     function pieOf(k) {
       var a = data.pieAt[scene][k]; if (a && typeof a === 'object') a = a[mat];
@@ -1443,9 +1460,9 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     function pregen() {
       seq = scene === 'flat' ? data.flat : data.mats[mat]; n = seq.length; // як на початку build(): S(k) шукає етап у seq
       if (scene === 'flat') { SY = K * 0.6; ZK = K * 0.8; } else { SY = K * 0.5; ZK = K; }
-      C.m = mat; bb = [1e9, 1e9, -1e9, -1e9];
+      C.m = mat; bb = [1e9, 1e9, -1e9, -1e9]; OV = null; wb = [1e9, 1e9, 1e9, -1e9, -1e9, -1e9]; // геометрія й габарити — завжди в типовому вигляді (огляд — orbRe після збірки)
       var g = scene === 'flat' ? flat(S, ui, fv, lang) : house(C, S, ui);
-      pre = { k: preKey(), sc: g, bb: bb };
+      pre = { k: preKey(), sc: g, bb: bb, wb: wb };
     }
     function build() { // текст етапів (JSON = той самий текст, що в HTML для стартового матеріалу), кнопки, сцена
       seq = scene === 'flat' ? data.flat : data.mats[mat]; n = seq.length;
@@ -1465,8 +1482,9 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       });
       run.style.setProperty('--n', n);
       C.m = mat;
-      if (pre && pre.k === preKey()) { sc = pre.sc; bb = pre.bb; } // геометрію вже пораховано окремою задачею (pregen)
-      else { bb = [1e9, 1e9, -1e9, -1e9]; sc = scene === 'flat' ? flat(S, ui, fv, lang) : house(C, S, ui); }
+      OV = null; // кадр (viewBox, резерв) — завжди з типового вигляду; повернутий огляд накладає orbRe() у кінці build()
+      if (pre && pre.k === preKey()) { sc = pre.sc; bb = pre.bb; wb = pre.wb; } // геометрію вже пораховано окремою задачею (pregen)
+      else { bb = [1e9, 1e9, -1e9, -1e9]; wb = [1e9, 1e9, 1e9, -1e9, -1e9, -1e9]; sc = scene === 'flat' ? flat(S, ui, fv, lang) : house(C, S, ui); }
       pre = null;
       var body = '', nb = '', lz = {}, nlz = 0;
       // перша збірка частинами (TBT/INP, телефон CPU×4): одразу — лише шари до поточного етапу (+1), решта — порожні <g> на своєму місці (z-порядок той самий),
@@ -1483,7 +1501,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       if (scene === 'flat') body = '<g class="bz-sc">' + body + '</g><g class="bz-nt">' + nb + '</g>'; else body += nb;
       var pad = 12, vb = [bb[0] - pad, bb[1] - pad - 30, bb[2] - bb[0] + pad * 2, bb[3] - bb[1] + pad * 2 + 30].map(function (v) { return v.toFixed(0); }).join(' ');
       var h2 = sec.querySelector('h2'), old = fig.querySelector('svg:not(.bz-out)');
-      VB = vb.split(' ').map(Number);
+      VB = vb.split(' ').map(Number); vbS = vb;
       var skyH = '';
       if (scene !== 'flat') { // небо: день → вечір за прокруткою (зорі на останньому етапі)
         skyH = '<rect class="bz-sky" x="' + VB[0] + '" y="' + VB[1] + '" width="' + VB[2] + '" height="' + VB[3] + '" fill="url(#bz-sk-' + scene + ')"/><g class="bz-stars">';
@@ -1507,7 +1525,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       svg = nsvg;
       svg.style.setProperty('--gw', 'url(#bz-gw-' + scene + ')'); svg.style.setProperty('--rg', 'url(#bz-rg-' + scene + ')');
       var gs = svg.querySelectorAll('g.bz-l[data-i]');
-      layers = [].map.call(gs, function (g) { var i = +g.getAttribute('data-i'), p = sc.parts[i]; if (!lz[i] && typeof p.v === 'string') g.__h = p.v; return { g: g, p: p, k: -1, z: lz[i] ? 1 : 0 }; });
+      layers = [].map.call(gs, function (g) { var i = +g.getAttribute('data-i'), p = sc.parts[i]; if (!lz[i] && typeof p.v === 'string') g.__h = p.v; return { g: g, p: p, i: i, k: -1, z: lz[i] ? 1 : 0 }; });
       fillLazy(nlz);
       ghost = svg.querySelector('.ghost'); cam = svg.querySelector('g.bz-cam'); sky = svg.querySelector('.bz-sky'); stars = svg.querySelector('.bz-stars');
       act = -1; pieKey = undefined;
@@ -1518,6 +1536,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       setHl('');
       msg();
       reserve();
+      orbRe();
     }
     function msg() { // конфігурація → коментар заявки (lead-form.v1.js читає data-msg найближчого предка форми)
       if (cpt && data.cta) { // головна: перемикач сцени міняє заклик і послугу заявки
@@ -1609,12 +1628,14 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     }
     function render(s) {
       if (!sc) return; // сцена ще збирається (жест, resize, casAuto до кінця збірки)
+      useV(); // ріст рядів (p.m 'g') малюємо в проєкції цієї сцени й поточному огляді
       for (var j = 0; j < layers.length; j++) {
         var Ly = layers[j], p = Ly.p, k = p.s < -1 ? 1 : clamp((s - p.s) / 0.25);
         if (p.e >= 0) k *= 1 - clamp((s - p.e) / 0.25);
         k = Math.round(k * 100) / 100;
         if (p.e >= 0 && xr && p.n) k = p.s < -1 ? 1 : clamp((s - p.s) / 0.25); // рентген: прокладені мережі видно й під оздобленням
         if (Ly.z && k > 0) lazyNow(Ly);
+        if (Ly.o && k > 0) orbFix(Ly); // шар був невидимий, коли повернули модель, — переводимо в поточний огляд, щойно він зʼявляється
         if (k === Ly.k) continue;
         var was = Ly.k; Ly.k = k;
         if (p.m === 'g') { var h = p.v(k); if (h !== Ly.h) { var grew = Ly.h != null && h.length > Ly.h.length; Ly.h = h; Ly.g.innerHTML = Ly.g.__h = h; if (grew && s > sPrev) puff(Ly.g, 0, 1); } continue; }
@@ -1690,8 +1711,257 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
       step: function () { var a = Math.floor(man); if (a >= n - 1) return false; go(a + 1); return true; }, restart: function () { go(0); }, atEnd: function () { return Math.floor(man) >= n - 1; } });
     // жести (Михайло 05.11 «як тут прокручувати?», 06.11 «наводиш — прокручується; збоку — проклацувати»): колесо над кадром ±1 етап, клік/тап у лівій/правій
     // чверті кадру, свайп, ←/→; компактна — ще й підказка один раз. Повна sticky: крок — go(), тобто плавна прокрутка до етапу (casDrive веде далі)
-    if (W.casGest) W.casGest({ root: run, view: fig, zone: function () { return fig.querySelector('svg:not(.bz-out)'); }, go: go,
-      cur: function () { return CMP ? Math.floor(man) : Math.max(0, act); }, n: function () { return n; }, hint: CMP ? side : null, before: ctl });
+    // orbit: 1 — у кадрі модель, а не етапи: перетягування обертає її (див. «огляд моделі» нижче), етапи — тап у чверті кадру, ←/→, кнопки й номери
+    var gest = W.casGest ? W.casGest({ root: run, view: fig, zone: function () { return fig.querySelector('svg:not(.bz-out)'); }, go: go,
+      cur: function () { return CMP ? Math.floor(man) : Math.max(0, act); }, n: function () { return n; }, hint: CMP ? side : null, before: ctl, orbit: 1 }) : null;
+    /* ---------- огляд моделі (Михайло 23.11.2026: «пальчиком або мишкою крутити… і приближати саму модельку, …де там ці всі елементи встановлюються») ----------
+       Модель — справжні 3D-координати (м) через одну проєкцію P(): огляд міняє її кут (азимут ± ORB_T від типового, нахил ORB_PA…ORB_PB) і перепроєктовує
+       наявні вузли НА МІСЦІ — лише атрибути геометрії (points, d, cx…), без вставки й видалення вузлів (див. puffNow: вставка перераховує стилі всієї сцени);
+       масштаб і зсув — viewBox (вектор, різко на будь-якому масштабі). Малюються лише грані, видимі з типового кута (верх, +x, +y), і порядок «художника» під нього —
+       тож поворот обмежено передньою чвертю, де ті самі грані видимі й порядок той самий (повні 360° — інша модель сцени: усі грані й сортування за глибиною).
+       Типовий вигляд — рівно та сама розмітка й viewBox (OV = null). Шари майбутніх етапів переходять у поточний кут, коли зʼявляються (orbFix у render), —
+       сцена й далі будується в повернутому вигляді. Нічого не рахується до першого жесту. Жести: перетягування (миша — поворот і нахил, Shift / середня кнопка — зсув;
+       палець — горизонтально поворот, вертикально — прокрутка сторінки), два пальці — щипок (масштаб + зсув) або паралельно (нахил/поворот), Ctrl/⌘ + колесо,
+       подвійний клік/тап у середині кадру, кнопки «+ − ↺» у куті кадру, клавіші з фокусом на кадрі: Shift + ←/→/↑/↓, +, −, 0. Етапи — тап у чверті кадру, ←/→, кнопки, номери. */
+    var ORB_T = 0.66, ORB_PA = scene === 'flat' ? 0.5 : 0.36, ORB_PB = 1.05, ZMAX = 4; // ±38°, нахил ~21…60° (квартира ~29…60°), масштаб 1…4
+    var SY0 = scene === 'flat' ? K * 0.6 : K * 0.5, ZK0 = scene === 'flat' ? K * 0.8 : K, P0 = Math.asin(SY0 / CX);
+    var vw = { t: 0, p: P0, z: 1, vx: 0, vy: 0, M: null }, oWb = null, oS = null, oUsed = 0, oRaf = 0, oDirty = 0, oTw = 0;
+    function RMq() { return !!(MQ && MQ.matches); }
+    function useV() { if (scene === 'flat') { SY = K * 0.6; ZK = K * 0.8; } else { SY = K * 0.5; ZK = K; } OV = vw ? vw.M : null; }
+    function clampT(v) { return Math.max(-ORB_T, Math.min(ORB_T, v)); }
+    function clampP(v) { return Math.max(ORB_PA, Math.min(ORB_PB, v)); }
+    // проєкція огляду: ортогональна, азимут 45° + t, нахил p; той самий масштаб, що й типова (s), вписана в її габарити (f ≤ 1) і з тим самим екранним центром моделі
+    function orbM() {
+      if (Math.abs(vw.t) < 1e-3 && Math.abs(vw.p - P0) < 1e-3) { vw.t = 0; vw.p = P0; return null; }
+      var w = oWb || wb, s = CX * Math.SQRT2, kz = ZK0 / (s * Math.cos(P0)), th = Math.PI / 4 + vw.t, st = Math.sin(th), ct = Math.cos(th), sp = Math.sin(vw.p), cp = Math.cos(vw.p);
+      var u = [s * st, -s * ct, s * sp * ct, s * sp * st, -s * cp * kz], e0 = [1e9, 1e9, -1e9, -1e9], e1 = [1e9, 1e9, -1e9, -1e9];
+      function ex(e, a, b) { if (a < e[0]) e[0] = a; if (b < e[1]) e[1] = b; if (a > e[2]) e[2] = a; if (b > e[3]) e[3] = b; }
+      for (var i = 0; i < 8; i++) {
+        var x = w[i & 1 ? 3 : 0], y = w[i & 2 ? 4 : 1], z = w[i & 4 ? 5 : 2];
+        ex(e0, (x - y) * CX, (x + y) * SY0 - z * ZK0); ex(e1, x * u[0] + y * u[1], x * u[2] + y * u[3] + z * u[4]);
+      }
+      // вписування — з кожного боку від центру моделі окремо: повернута модель не виходить за типові габарити ні вліво, ні вправо, ні вгору, ні вниз
+      var cx = (w[0] + w[3]) / 2, cy = (w[1] + w[4]) / 2, cz = (w[2] + w[5]) / 2, ca = (cx - cy) * CX, cb = (cx + cy) * SY0 - cz * ZK0, ua = cx * u[0] + cy * u[1], ub = cx * u[2] + cy * u[3] + cz * u[4];
+      var f = Math.min(1, (ca - e0[0]) / Math.max(1, ua - e1[0]), (e0[2] - ca) / Math.max(1, e1[2] - ua), (cb - e0[1]) / Math.max(1, ub - e1[1]), (e0[3] - cb) / Math.max(1, e1[3] - ub));
+      var m = u.map(function (v) { return v * f; });
+      return m.concat([ca - (cx * m[0] + cy * m[1]), cb - (cx * m[2] + cy * m[3] + cz * m[4])]);
+    }
+    // нова розмітка тієї самої будови → лише змінені атрибути геометрії. «Слоти» — [елемент, атрибут, значення] у порядку рядка (порядок атрибутів
+    // у DOM = порядок у розмітці), знімаються з DOM один раз на вміст шару; далі кадр — один прохід регулярним виразом по новому рядку й setAttribute
+    // лише зміненого. false — будова інша (тоді шар — innerHTML, як і раніше)
+    var GEO = { points: 1, d: 1, cx: 1, cy: 1, r: 1, rx: 1, ry: 1, x: 1, y: 1, x1: 1, y1: 1, x2: 1, y2: 1, transform: 1, patternTransform: 1, gradientTransform: 1 },
+      GRE = / (points|d|cx|cy|r|rx|ry|x|y|x1|y1|x2|y2|transform|patternTransform|gradientTransform)="([^"]*)"/g;
+    function slots(els) {
+      var o = [];
+      for (var i = 0; i < els.length; i++) { var e = els[i], at = e.attributes; if (e.hasAttribute('data-i')) continue; for (var j = 0; j < at.length; j++) if (GEO[at[j].name] === 1) o.push(e, at[j].name, at[j].value); }
+      return o;
+    }
+    function morph(sl, h) {
+      var m, i = 0; GRE.lastIndex = 0;
+      while ((m = GRE.exec(h))) {
+        if (sl[i + 1] !== m[1]) return false;
+        if (sl[i + 2] !== m[2]) { sl[i].setAttribute(m[1], m[2]); sl[i + 2] = m[2]; }
+        i += 3;
+      }
+      return i === sl.length;
+    }
+    // «скелет» камери, як у build(): статичні частини — розмітка, шари — порожні <g data-i> (їх вміст — orbFix); пул частинок пропускаємо
+    function skel(ps) {
+      var b = '', nb = '';
+      ps.forEach(function (p, i) { var h = p.s < -1 && p.e < 0 && !p.c ? (typeof p.v === 'function' ? '' : p.v) : '<g data-i="' + i + '"></g>'; if (p.n) nb += h; else b += h; });
+      return scene === 'flat' ? '<g class="bz-sc">' + b + '</g><g class="bz-nt">' + nb + '</g>' : b + nb;
+    }
+    function skelEls(e, o) { for (var c = e.firstElementChild; c; c = c.nextElementSibling) { if (c.getAttribute('class') === 'bz-pfs') continue; o.push(c); if (!c.hasAttribute('data-i')) skelEls(c, o); } return o; }
+    function orbFix(Ly) {
+      Ly.o = 0; useV();
+      var p = Ly.p, h = p.m === 'g' ? p.v(Ly.k) : p.v;
+      if (p.m === 'g') Ly.h = h;
+      if (!Ly.sl || Ly.slH !== Ly.g.__h) Ly.sl = slots(Ly.g.getElementsByTagName('*')); // вміст шару змінився (ріст рядів, доливання) — слоти заново
+      if (!morph(Ly.sl, h)) { Ly.g.innerHTML = h; Ly.sl = null; }
+      Ly.g.__h = Ly.slH = h;
+    }
+    function reproj() {
+      if (!sc || !svg || !cam) return;
+      useV(); if (!oS) oS = {};
+      var b0 = bb; bb = [1e9, 1e9, -1e9, -1e9];
+      var g = scene === 'flat' ? flat(S, ui, fv, lang) : house(C, S, ui);
+      bb = b0;
+      if (g.parts.length !== sc.parts.length) return;
+      if (!oS.pt) { // візерунки матеріалів у <defs>: грань і масштаб — з типового patternTransform (skewY — pats(), matrix — ip()/mx()); далі — ті самі skw()/mx() в огляді
+        oS.pt = []; var OV0 = OV; OV = null;
+        [].forEach.call(svg.querySelectorAll('defs > pattern'), function (e) {
+          var t = e.getAttribute('patternTransform'), q = t && /^matrix\(([^)]+)\)$/.exec(t), a = q && q[1].split(' ').map(Number);
+          if (t === skw('l')) oS.pt.push([e, t, 'l']); else if (t === skw('r')) oS.pt.push([e, t, 'r']);
+          else if (a && a.length === 6) { var f = a[2] ? 't' : a[0] > 0 ? 'l' : 'r', sc0 = Math.abs(a[0]) / CX; if (mx(f, sc0) === t) oS.pt.push([e, t, f, sc0]); }
+        });
+        OV = OV0;
+      }
+      oS.pt.forEach(function (q) { var v = q.length > 3 ? mx(q[2], q[3]) : skw(q[2]); if (q[1] !== v) { q[0].setAttribute('patternTransform', v); q[1] = v; } });
+      if (!oS.st) oS.st = slots(skelEls(cam, []));
+      if (!morph(oS.st, skel(g.parts))) oS.st = null;
+      // видимі шари — зараз; майбутні (k = 0) — коли зʼявляться; ще не залиті (z) — fillLazy/lazyNow візьмуть нову розмітку з Ly.p
+      for (var j = 0; j < layers.length; j++) { var Ly = layers[j]; Ly.p = g.parts[Ly.i]; if (Ly.z) continue; if (Ly.k > 0) orbFix(Ly); else Ly.o = 1; }
+    }
+    // масштаб і зсув — viewBox у межах типового кадру (VB); 1× — рівно типовий рядок viewBox
+    function vbSet() {
+      if (!svg || !VB) return;
+      if (vw.z <= 1.001) { vw.z = 1; vw.vx = VB[0] + VB[2] / 2; vw.vy = VB[1] + VB[3] / 2; if (svg.getAttribute('viewBox') !== vbS) svg.setAttribute('viewBox', vbS); }
+      else {
+        var w = VB[2] / vw.z, h = VB[3] / vw.z;
+        vw.vx = Math.max(VB[0] + w / 2, Math.min(VB[0] + VB[2] - w / 2, vw.vx)); vw.vy = Math.max(VB[1] + h / 2, Math.min(VB[1] + VB[3] - h / 2, vw.vy));
+        svg.setAttribute('viewBox', [vw.vx - w / 2, vw.vy - h / 2, w, h].map(function (v) { return v.toFixed(1); }).join(' '));
+      }
+      var ov = vw.M || vw.z > 1 ? 'hidden' : ''; if (svg.style.overflow !== ov) svg.style.overflow = ov; // повернута / наближена модель — у межах кадру (повна сцена: svg з overflow:visible); запис лише при зміні — інакше перерахунок стилів усієї сцени
+    }
+    // точка екрана → координати viewBox (preserveAspectRatio meet) і навпаки: точку q моделі — під точку екрана (щипок, колесо)
+    function vbK() { var r = svg.getBoundingClientRect(), w = VB[2] / vw.z, h = VB[3] / vw.z, k = Math.min(r.width / w, r.height / h); return { r: r, w: w, h: h, k: k, l: r.left + (r.width - w * k) / 2, t: r.top + (r.height - h * k) / 2 }; }
+    function toVB(x, y) { var q = vbK(); return [vw.vx - q.w / 2 + (x - q.l) / q.k, vw.vy - q.h / 2 + (y - q.t) / q.k]; }
+    function pin2(p, x, y) { var q = vbK(); vw.vx = p[0] - (x - q.l) / q.k + q.w / 2; vw.vy = p[1] - (y - q.t) / q.k + q.h / 2; }
+    function zoomAt(z2, x, y) {
+      var p = x == null ? null : toVB(x, y);
+      vw.z = Math.max(1, Math.min(ZMAX, z2));
+      if (p) pin2(p, x, y);
+      oAsk(2);
+    }
+    function oApply(k) {
+      if (!svg) return;
+      if (k & 1) { var was = !!vw.M; vw.M = orbM(); if (vw.M || was) reproj(); }
+      vbSet(); oUpd();
+    }
+    function oFrame() { oRaf = 0; var k = oDirty; oDirty = 0; if (k) oApply(k); }
+    function oAsk(k) { oDirty |= k; if (!oRaf) oRaf = W.requestAnimationFrame(oFrame); }
+    // плавний перехід (кнопки, скидання); reduced-motion — одразу
+    function tween(to, ms) {
+      if (oTw) W.cancelAnimationFrame(oTw); oTw = 0;
+      var fr = { t: vw.t, p: vw.p, z: vw.z, vx: vw.vx, vy: vw.vy }, t0 = Date.now(), keys = ['t', 'p', 'z', 'vx', 'vy'];
+      var rot = Math.abs(to.t - vw.t) > 1e-4 || Math.abs(to.p - vw.p) > 1e-4;
+      function fin() { keys.forEach(function (q) { vw[q] = to[q]; }); oTw = 0; oApply(rot ? 3 : 2); }
+      if (RMq() || !ms) return fin();
+      (function stp() {
+        oTw = W.requestAnimationFrame(function () {
+          var e = Math.min(1, (Date.now() - t0) / ms); if (e >= 1) return fin();
+          e = 1 - Math.pow(1 - e, 3); keys.forEach(function (q) { vw[q] = fr[q] + (to[q] - fr[q]) * e; });
+          oApply(rot ? 3 : 2); stp();
+        });
+      })();
+    }
+    function oReset() { oStart(); tween({ t: 0, p: P0, z: 1, vx: VB ? VB[0] + VB[2] / 2 : 0, vy: VB ? VB[1] + VB[3] / 2 : 0 }, 420); }
+    function zoomBtn(f) { oStart(); var z2 = Math.max(1, Math.min(ZMAX, vw.z * f)); tween({ t: vw.t, p: vw.p, z: z2, vx: vw.vx, vy: vw.vy }, 220); }
+    // перша дія огляду: підказка зникає, нахил кадру за курсором (мікровзаємодія) вимикається, аналітика — один раз
+    function oStart() {
+      if (oUsed) return; oUsed = 1;
+      if (svg) svg.style.transform = '';
+      if (gest && gest.done) gest.done();
+      cl('build_anim_orbit');
+    }
+    // кнопки в куті кадру (absolute — висота кадру та сама; RTL — дзеркально, CSS)
+    var OL = { uk: ['Наблизити модель', 'Віддалити модель', 'Скинути вигляд', 'Огляд моделі'], ru: ['Приблизить модель', 'Отдалить модель', 'Сбросить вид', 'Просмотр модели'],
+      en: ['Zoom in', 'Zoom out', 'Reset view', 'Model view'], es: ['Acercar el modelo', 'Alejar el modelo', 'Restablecer la vista', 'Vista del modelo'],
+      zh: ['放大模型', '缩小模型', '重置视图', '模型视图'], pl: ['Przybliż model', 'Oddal model', 'Przywróć widok', 'Widok modelu'],
+      de: ['Modell vergrößern', 'Modell verkleinern', 'Ansicht zurücksetzen', 'Modellansicht'], fr: ['Zoomer sur la maquette', 'Dézoomer la maquette', 'Réinitialiser la vue', 'Vue de la maquette'],
+      pt: ['Aproximar o modelo', 'Afastar o modelo', 'Repor a vista', 'Vista do modelo'], ar: ['تكبير النموذج', 'تصغير النموذج', 'إعادة ضبط العرض', 'عرض النموذج'] }[lang];
+    var ob = el('div', 'bz-ob'); ob.setAttribute('role', 'group'); ob.setAttribute('aria-label', OL[3]);
+    function oBtn(c, i, f) { var b = el('button', c, '<i aria-hidden="true"></i>'); b.type = 'button'; b.setAttribute('aria-label', OL[i]); b.title = OL[i]; b.addEventListener('click', f); ob.appendChild(b); return b; }
+    var bIn = oBtn('bz-zi', 0, function () { zoomBtn(1.6); }), bOut = oBtn('bz-zo', 1, function () { zoomBtn(1 / 1.6); }), bRs = oBtn('bz-zr', 2, function () { oReset(); });
+    function dis(b, v) { if (b.disabled !== v) b.disabled = v; }
+    function oUpd() {
+      var a = d.activeElement, z1 = vw.z <= 1.001;
+      dis(bOut, z1); dis(bIn, vw.z >= ZMAX - 0.01); dis(bRs, z1 && !vw.M && !oTw);
+      if (a && a.disabled && ob.contains(a)) try { fig.focus({ preventScroll: true }); } catch (e) { } // кнопка щойно вимкнулась — фокус на кадр (клавіші огляду працюють далі)
+    }
+    oUpd();
+    fig.appendChild(ob);
+    var gc = el('span', 'bz-gc'); gc.setAttribute('aria-hidden', 'true'); fig.appendChild(gc);
+    sec.__bzOrb = function () { return { t: vw.t, p: vw.p, p0: P0, z: vw.z, rot: !!vw.M }; }; // стан огляду — для тестів (tools/tests/interact.mjs «модель: …»)
+    if (!CMP) { fig.tabIndex = 0; fig.setAttribute('role', 'group'); fig.setAttribute('aria-label', ui.nav || ''); } // повна сцена: кадр у фокусі — клавіші етапів і огляду
+    // після кожної збірки (інша технологія, конфігурація): огляд — у новій сцені, габарити — нові
+    function orbRe() {
+      oS = null; oWb = wb.slice();
+      if (!svg) return;
+      if (oUsed) svg.style.transform = '';
+      var was = !!vw.M; vw.M = orbM(); if (vw.M || was) reproj();
+      vbSet(); oUpd();
+    }
+    // жести в кадрі: лише над самою моделлю (не над кнопками й панелями поверх кадру)
+    var OSKIP = '.bz-ob,.bz-mats,.bz-pie,.bz-lg,.bz-cfg,.bz-cap,button,a,input,select,textarea,label,summary';
+    function inZ(t) { return !!(t && svg && (t === svg || svg.contains(t)) && !(t.closest && t.closest(OSKIP))); }
+    function midZone(x) { var r = svg.getBoundingClientRect(), ew = Math.max(44, r.width * 0.25); return x - r.left > ew && x - r.left < r.width - ew; } // чверті кадру — етапи (casGest)
+    var oP = null, tch = null, lastTap = null;
+    fig.addEventListener('pointerdown', function (e) {
+      if (!sc || tch || oP || !inZ(e.target) || (e.button && e.button !== 1)) return;
+      oP = { id: e.pointerId, x: e.clientX, y: e.clientY, x0: e.clientX, y0: e.clientY, m: e.button === 1 || e.shiftKey ? 'p' : 'r', on: false, tp: e.pointerType };
+      if (e.button === 1) e.preventDefault(); // середня кнопка — без автопрокрутки браузера
+    });
+    fig.addEventListener('pointermove', function (e) {
+      if (!oP || e.pointerId !== oP.id) return;
+      var ax = Math.abs(e.clientX - oP.x0), ay = Math.abs(e.clientY - oP.y0);
+      if (!oP.on) {
+        if (ax + ay <= 10) return; // ≤ 10 px — ще тап (casGest: тап у чверті — етап)
+        if (oP.tp === 'touch' && ay > ax) { oP = null; return; } // вертикально пальцем — прокрутка сторінки (touch-action: pan-y), людина не «застрягає» в кадрі
+        oP.on = true; oP.r = svg.getBoundingClientRect(); oStart();
+        if (oP.tp === 'mouse') gc.style.display = 'block'; // курсор «стиснута рука» — окремий шар поверх кадру: курсор самого SVG успадковують ~2000 вузлів сцени (перерахунок стилів)
+        try { fig.setPointerCapture(e.pointerId); } catch (er) { }
+      }
+      var dx = e.clientX - oP.x, dy = e.clientY - oP.y, r = oP.r; oP.x = e.clientX; oP.y = e.clientY;
+      if (oP.m === 'p') { if (vw.z > 1) { var q = vbK(); vw.vx -= dx / q.k; vw.vy -= dy / q.k; oAsk(2); } return; }
+      vw.t = clampT(vw.t + dx / Math.max(200, r.width) * 1.6); // через увесь кадр ≈ 90°
+      if (oP.tp !== 'touch') vw.p = clampP(vw.p + dy / Math.max(160, r.height) * 1.2); // миша: вниз — погляд вище (як «взяти» модель)
+      oAsk(1);
+    });
+    function oEnd(e) {
+      if (!oP || (e && e.pointerId !== oP.id)) return;
+      var was = oP.on, tp = oP.tp; oP = null; if (gc.style.display) gc.style.display = '';
+      if (was || !e || e.type !== 'pointerup' || tp !== 'touch' || !midZone(e.clientX) || !inZ(e.target)) return;
+      // подвійний тап у середині кадру — наблизити в точку / повернути 1×
+      var t = Date.now();
+      if (lastTap && t - lastTap.t < 320 && Math.abs(e.clientX - lastTap.x) + Math.abs(e.clientY - lastTap.y) < 40) { lastTap = null; dbl(e.clientX, e.clientY); }
+      else lastTap = { t: t, x: e.clientX, y: e.clientY };
+    }
+    fig.addEventListener('pointerup', oEnd); fig.addEventListener('pointercancel', oEnd); fig.addEventListener('lostpointercapture', function (e) { if (oP && oP.on && e.target === fig) oEnd(e); }); // палець: неявне захоплення SVG переходить на кадр — це не кінець жесту
+    function dbl(x, y) { oStart(); if (vw.z > 1.05) tween({ t: vw.t, p: vw.p, z: 1, vx: vw.vx, vy: vw.vy }, 260); else { var p = toVB(x, y), z0 = vw.z; vw.z = 2.2; pin2(p, x, y); var to = { t: vw.t, p: vw.p, z: 2.2, vx: vw.vx, vy: vw.vy }; vw.z = z0; vbSet(); tween(to, 260); } }
+    fig.addEventListener('dblclick', function (e) { if (e.pointerType === 'touch' || !inZ(e.target) || !midZone(e.clientX)) return; e.preventDefault(); dbl(e.clientX, e.clientY); });
+    // Ctrl/⌘ + колесо (і щипок трекпада — це теж ctrl+wheel) над моделлю — масштаб у точку курсора; звичайне колесо — як було (casGest: етапи / сторінка)
+    fig.addEventListener('wheel', function (e) {
+      if (!(e.ctrlKey || e.metaKey) || !inZ(e.target)) return;
+      e.preventDefault(); oStart();
+      var dy = e.deltaMode ? e.deltaY * 33 : e.deltaY; dy = Math.max(-40, Math.min(40, dy));
+      zoomAt(vw.z * Math.exp(-dy * 0.006), e.clientX, e.clientY);
+    }, { passive: false });
+    // два пальці (Touch Events: pointer-події з touch-action: pan-y для щипка ненадійні): щипок — масштаб навколо середини й зсув за нею;
+    // паралельний рух без щипка на 1× — нахил (вертикаль) і поворот (горизонталь). Масштаб сторінки поза кадром — як завжди (viewport не чіпаємо)
+    function tPts(e) { var a = e.touches[0], b = e.touches[1]; return { d: Math.max(1, Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY)), x: (a.clientX + b.clientX) / 2, y: (a.clientY + b.clientY) / 2 }; }
+    fig.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 2 || !sc || !inZ(e.target)) return;
+      if (oP) { oP = null; gc.style.display = ''; }
+      var q = tPts(e); tch = { d: q.d, x: q.x, y: q.y, z: vw.z, t: vw.t, p: vw.p, q: toVB(q.x, q.y), m: '' };
+    }, { passive: true });
+    fig.addEventListener('touchmove', function (e) {
+      if (!tch) return;
+      if (e.touches.length !== 2) { tch = null; return; }
+      if (e.cancelable) e.preventDefault();
+      var q = tPts(e), r = svg.getBoundingClientRect();
+      if (!tch.m) {
+        var dd = Math.abs(q.d - tch.d), dm = Math.hypot(q.x - tch.x, q.y - tch.y); if (dd < 10 && dm < 10) return;
+        tch.m = dd >= dm * 0.6 || tch.z > 1.05 ? 'z' : 'o'; oStart();
+      }
+      if (tch.m === 'z') { vw.z = Math.max(1, Math.min(ZMAX, tch.z * q.d / tch.d)); pin2(tch.q, q.x, q.y); oAsk(2); return; }
+      vw.t = clampT(tch.t + (q.x - tch.x) / Math.max(200, r.width) * 1.6); vw.p = clampP(tch.p + (q.y - tch.y) / Math.max(160, r.height) * 1.2); oAsk(1);
+    }, { passive: false });
+    fig.addEventListener('touchend', function (e) { if (tch && e.touches.length < 2) tch = null; }, { passive: true });
+    fig.addEventListener('touchcancel', function () { tch = null; }, { passive: true });
+    fig.addEventListener('gesturestart', function (e) { if (inZ(e.target)) e.preventDefault(); }); // Safari iOS: щипок у кадрі — модель, не сторінка
+    fig.addEventListener('selectstart', function (e) { if (oP || (e.target && e.target.nodeType === 1 && inZ(e.target))) e.preventDefault(); }); // перетягування не виділяє текст сторінки
+    // клавіші з фокусом на кадрі (або на кнопках огляду): Shift + ←/→ — поворот, Shift + ↑/↓ — нахил, + / − — масштаб, 0 — типовий вигляд; ←/→ без Shift — етапи (casGest)
+    run.addEventListener('keydown', function (e) {
+      if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || !fig.contains(e.target) || (e.target.closest && e.target.closest('input,select,textarea,.bz-pie,.bz-cfg,.bz-mats,.bz-lg'))) return;
+      var k = e.key, a = 0;
+      if (e.shiftKey && (k === 'ArrowLeft' || k === 'ArrowRight')) { vw.t = clampT(vw.t + (k === 'ArrowRight' ? 0.13 : -0.13)); a = 1; }
+      else if (e.shiftKey && (k === 'ArrowUp' || k === 'ArrowDown')) { vw.p = clampP(vw.p + (k === 'ArrowDown' ? 0.09 : -0.09)); a = 1; }
+      else if (k === '+' || k === '=') { e.preventDefault(); return zoomBtn(1.4); }
+      else if (k === '-' || k === '_' || k === '−') { e.preventDefault(); return zoomBtn(1 / 1.4); }
+      else if (k === '0') { e.preventDefault(); return oReset(); }
+      if (a) { e.preventDefault(); oStart(); oAsk(1); }
+    });
     // низ панелі компактної сцени — як у решти вкладок (casSide: .la-foot): ціна «від» + одне посилання-заклик (аудит 11.11.2026: у «Квартири» не було ні ціни, ні заклику в панелі,
     // а під сценою стояв окремий блок .bz-cta — тепер він схований на головних, контекст сцени у форму переносить той самий .lq-go)
     // кадр компактної сцени фокусується кліком/Tab — ←/→ крокують, як у решти вкладок (у тих фокус бере сам SVG; аудит 11.11.2026)
@@ -1714,7 +1984,7 @@ function casParseNum(s) { s = String(s == null ? '' : s).replace(/[\s\u00a0\u202
     // мікровзаємодії (лише миша, без prefers-reduced-motion): легкий нахил сцени за курсором і «магнітна» кнопка CTA
     if (W.matchMedia && W.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       fig.addEventListener('pointermove', function (e) {
-        if (rm || e.target.closest('.bz-mats,.bz-pie,.bz-lg,.bz-cfg')) return;
+        if (rm || oUsed || oP || e.target.closest('.bz-mats,.bz-pie,.bz-lg,.bz-cfg,.bz-ob')) return; // огляд моделі — без нахилу кадру за курсором
         var r = fig.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
         svg.style.transform = 'perspective(1600px) rotateX(' + (-y * 5).toFixed(2) + 'deg) rotateY(' + (x * 7).toFixed(2) + 'deg)';
       });
