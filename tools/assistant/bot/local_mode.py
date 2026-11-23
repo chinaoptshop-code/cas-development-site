@@ -175,6 +175,8 @@ class Reply:
     text: str
     files: list = dataclasses.field(default_factory=list)
     markup: dict = None
+    extra: list = dataclasses.field(default_factory=list)   # ще повідомлення після text (довгий /caps)
+    background: object = None   # callable → Reply: довга робота; бот запускає у фоні й надсилає результат, коли готово
 
 
 DAY_ABBR = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"]
@@ -521,6 +523,8 @@ HELP_TEXT = ("Зараз локальний режим (Claude недоступ�
              "• «пошта» — непрочитане; «надішли лист на адреса, тема: …, текст: …» — лише кнопкою\n"
              "• «баланс», «витрати за місяць» — Монобанк\n"
              "• «pdf: текст» — PDF; голосові розшифровую\n"
+             "• «згенеруй пісню про …» — локальний генератор музики, якщо встановлено\n"
+             "• /caps — що вмію й що встановлено на Mac\n"
              "Решту відповідає локальна модель — простіше, ніж Claude. /local auto|on|off — режим.")
 
 
@@ -698,6 +702,60 @@ def intent_pdf(text, t):
     return Reply(f"⚠️ PDF не вийшов ({out[-200:]}).")
 
 
+# ---------- музика: локальний генератор з реєстру можливостей ----------
+MUSIC_RE = re.compile(r"(?:згенеруй|згенерувати|зроби|створи|напиши|запиши|сгенерируй|сделай|создай|напиши|generate|make|compose)\s+"
+                      r"(?:мені\s+|мне\s+|me\s+|a\s+)?(?:нову\s+|новую\s+|коротку\s+|короткую\s+)?"
+                      r"(пісн\w*|песн\w*|музик\w*|трек\w*|мелоді\w*|мелоди\w*|джингл\w*|song|music|track|jingle)\b", re.I)
+
+
+def _music_args(text, m):
+    rest = text[m.end():]
+    a = {}
+    d = re.search(r"(\d{1,3})\s*(с\b|сек\w*|секунд\w*|s\b|sec\w*|хв\w*|мин\w*|min\w*)", rest, re.I)
+    if d:                                            # тривалість — першою, щоб не потрапила в стиль
+        n = int(d.group(1)) * (60 if d.group(2).lower().startswith(("хв", "мин", "min")) else 1)
+        a["duration"] = str(max(10, min(n, 600)))
+        rest = rest[:d.start()] + rest[d.end():]
+    for key, pat in (("lyrics", r"(?:слова|текст|lyrics)\s*[:\-—]\s*(.+)$"),
+                     ("style", r"(?:стиль|в стилі|в стиле|style|жанр)\s*[:\-—]?\s*([^,.;\n]+)")):
+        mm = re.search(pat, rest, re.I | re.S)
+        if mm:
+            a[key] = mm.group(1).strip()
+            rest = rest[:mm.start()] + rest[mm.end():]
+    a["prompt"] = re.sub(r"^\s*(?:про|о|об|about|на тему)\s+", "", re.sub(r"\s{2,}", " ", rest).strip(" ,.:;—-"), flags=re.I)
+    return {k: v for k, v in a.items() if v}
+
+
+def intent_music(text, t):
+    m = MUSIC_RE.search(text)
+    if not m:
+        return None
+    import capabilities as C
+    rows = [(c, s) for c, s in C.statuses() if c.category == "музика" and not c.paid]
+    ready = [c for c, s in rows if s.ok and c.run]
+    if not ready:
+        why = "; ".join(f"{c.name}: {'; '.join(s.reasons)}" for c, s in rows) or \
+              f"у реєстрі немає локального генератора музики (опис кладуть у {C.caps_dir()})"
+        hint = next((c.install for c, s in rows if c.install), "")
+        return Reply("🎵 Локально згенерувати музику зараз не можу — " + why + "." + (f"\nЯк поставити: {hint}" if hint else "")
+                     + "\nПлатні сервіси (Higgsfield тощо) сам не вмикаю — лише з твого явного дозволу. /caps — що є на Mac.")
+    cap, args = ready[0], _music_args(text, m)
+
+    def job():
+        ok, path, msg = C.run_cap(cap.key, args)
+        return Reply(f"🎵 Готово: {cap.name}", files=[path]) if ok else Reply(f"⚠️ {cap.name}: не вийшло — {msg}")
+    return Reply(f"🎵 Генерую локально ({cap.name}) — надішлю, коли буде готово (до {max(1, cap.timeout // 60)} хв).",
+                 background=job)
+
+
+def caps_block(mode="local"):
+    try:
+        import capabilities as C
+        return C.prompt_block(mode)
+    except Exception:
+        return ""
+
+
 # ---------- Ollama ----------
 def _dialog(n=10):
     p = memory_dir() / ".dialog.jsonl"
@@ -797,6 +855,9 @@ def ollama_reply(text, t):
     kb = knowledge_context(text)
     if kb:
         extra += "\n\n" + kb
+    cb = caps_block("local")                     # факти про встановлене — модель не вигадує «не встановлено»
+    if cb:
+        extra += "\n\n" + cb
     ans = ollama_chat(text, hist, extra)
     if ans:
         return Reply(ans)
@@ -805,7 +866,7 @@ def ollama_reply(text, t):
 
 
 # ---------- головний вхід ----------
-INTENTS = [intent_cal_add, intent_task, intent_remind, intent_pdf, intent_mail, intent_money, intent_calendar]
+INTENTS = [intent_cal_add, intent_task, intent_remind, intent_music, intent_pdf, intent_mail, intent_money, intent_calendar]
 
 
 def handle_text(text, t=None):

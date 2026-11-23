@@ -1,0 +1,20 @@
+{
+  "$comment": "Приклад для ~/.assistant/capabilities.d/ на Mac mini (поза репозиторієм). Шляхи — лише через змінні оточення з ~/.assistant.env: ACE_STEP_PYTHON (python із venv ACE-Step) і ACE_STEP_SCRIPT (скрипт-генератор, підключений до бота). Аргументи в run мають збігатися з тим, що приймає ваш скрипт; {prompt} — текст прохання, {style}, {lyrics}, {duration} — з повідомлення або defaults, {out} — шлях, куди скрипт має записати аудіо (або надрукувати шлях останнім рядком).",
+  "key": "music-ace-step",
+  "name": "Генератор пісень ACE-Step (локально)",
+  "category": "музика",
+  "local": true,
+  "paid": false,
+  "check": [
+    {"file": "${ACE_STEP_SCRIPT}", "why": "скрипт генератора не знайдено (ACE_STEP_SCRIPT)"},
+    {"cmd": "${ACE_STEP_PYTHON:-python3}"}
+  ],
+  "run": ["${ACE_STEP_PYTHON:-python3}", "${ACE_STEP_SCRIPT}",
+          "--prompt", "{style}, {prompt}", "--lyrics", "{lyrics}", "--duration", "{duration}", "--out", "{out}"],
+  "defaults": {"style": "pop", "lyrics": "[instrumental]", "duration": "60", "prompt": ""},
+  "out_ext": ".wav",
+  "timeout": 1800,
+  "intent": "«згенеруй пісню про … стиль: … слова: … 90 с»",
+  "install": "ACE-Step у venv на Mac mini; задати ACE_STEP_PYTHON і ACE_STEP_SCRIPT у ~/.assistant.env",
+  "version": ["${ACE_STEP_PYTHON:-python3}", "-c", "import importlib.metadata as m; print('ACE-Step', m.version('ace-step'))"]
+}

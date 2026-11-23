@@ -30,6 +30,7 @@ COMMANDS = [   # (команда, опис у меню Telegram)
     ("remind", "Нагадування: /remind завтра о 10 дзвінок"),
     ("money", "Баланс; /money витрати місяць"),
     ("mail", "Непрочитана пошта"),
+    ("caps", "Що вмію й які програми встановлені"),
     ("menu", "Показати кнопки під полем вводу"),
     ("help", "Що вміє бот"),
     ("new", "Почати нову розмову"),
@@ -41,7 +42,21 @@ KEYBOARD = {"keyboard": [[{"text": "📅 Сьогодні"}, {"text": "📥 Вх
             "resize_keyboard": True, "is_persistent": True,
             "input_field_placeholder": "Напиши або обери дію"}
 HIDE = {"remove_keyboard": True}
-LOCAL = {"today", "tomorrow", "inbox", "tasks", "remind", "money", "mail", "menu", "hide", "help"}   # без моделі
+LOCAL = {"today", "tomorrow", "inbox", "tasks", "remind", "money", "mail", "menu", "hide", "help", "caps"}   # без моделі
+# «що ти вмієш», «які програми встановлені» … (uk/ru/en) — як /caps, без моделі: відповідь із реєстру можливостей,
+# а не «з голови» (23.11: бот казав «ace-step не встановлено», хоча генератор стояв на Mac mini)
+CAPS_TEXT = re.compile(
+    r"^\s*(?:а\s+)?(?:"
+    r"що\s+(?:ти\s+)?(?:вмієш|можеш)(?:\s+робити)?|що\s+ти\s+вмієш\s+робити|які\s+(?:в\s+тебе\s+|у\s+тебе\s+)?(?:є\s+)?(?:твої\s+)?функції|"
+    r"твої\s+(?:функції|можливості)|які\s+(?:в\s+тебе\s+)?(?:є\s+)?можливості|"
+    r"які\s+(?:програми|інструменти)\s+(?:в\s+тебе\s+|у\s+тебе\s+)?(?:є|встановлені|встановлено)(?:\s+на\s+(?:мак\w*|mac\w*|компʼютері|комп'ютері))?|"
+    r"що\s+(?:в\s+тебе\s+|у\s+тебе\s+)?встановлено|"
+    r"что\s+(?:ты\s+)?(?:умеешь|можешь)(?:\s+делать)?|какие\s+(?:у\s+тебя\s+)?(?:есть\s+)?(?:твои\s+)?(?:функции|возможности)|"
+    r"твои\s+(?:функции|возможности)|какие\s+(?:программы|инструменты)\s+(?:у\s+тебя\s+)?(?:есть|установлены|установлено)(?:\s+на\s+\w+)?|"
+    r"что\s+(?:у\s+тебя\s+)?установлено|"
+    r"what\s+can\s+you\s+do|your\s+(?:capabilities|functions|features)|what(?:'s|\s+is)\s+installed|"
+    r"which\s+(?:programs|tools|apps)\s+(?:are\s+)?installed"
+    r")\s*[?!.]*\s*$", re.I)
 AWAIT_MIN = 10                              # «➕ Нова» / «/remind» чекають наступне повідомлення 10 хв
 TASK_BUTTONS = 5
 
@@ -52,6 +67,7 @@ HELP = ("Кнопки внизу й меню «/» працюють без ШІ 
         "/remind завтра о 10 дзвінок з підрядником — нагадування\n"
         "/money — баланс, /money витрати місяць — витрати\n"
         "/mail — непрочитана пошта\n"
+        "/caps — що вмію й які програми встановлені на Mac (/caps refresh — перевірити заново)\n"
         "/menu — показати кнопки, /hide — сховати\n"
         "Усе інше пиши словами або голосом — відповідає Claude (або локальна модель, коли Claude недоступний).")
 
@@ -65,6 +81,8 @@ def parse(text):
     s = (text or "").strip()
     if s in BUTTONS:
         return BUTTONS[s], ""
+    if len(s) <= 80 and CAPS_TEXT.match(s):
+        return "caps", ""
     m = re.match(r"^/([a-z]+)(?:@\w+)?(?:\s+(.*))?$", s, re.S)
     if m and m.group(1) in LOCAL:
         return m.group(1), (m.group(2) or "").strip()
@@ -130,9 +148,18 @@ def _money(args, t):
     return L.intent_money(args if L.MONEY_RE.search(args or "") else "баланс " + (args or ""), t)
 
 
-def command(cmd, args="", t=None):
+def caps_view(args="", mode_line=""):
+    """/caps: згрупований список із реєстру (capabilities.py) — без моделі; довгий — кількома повідомленнями."""
+    import capabilities as C
+    parts = C.render(refresh=(args or "").strip().lower() in ("refresh", "оновити", "обнови", "r"), mode_line=mode_line)
+    return L.Reply(parts[0], extra=parts[1:])
+
+
+def command(cmd, args="", t=None, mode_line=""):
     """(Reply, очікування) для команди меню."""
     t = t or L.now()
+    if cmd == "caps":
+        return caps_view(args, mode_line), None
     if cmd in ("today", "tomorrow"):
         return day_view(cmd, t), None
     if cmd == "tasks":

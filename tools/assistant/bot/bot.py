@@ -21,7 +21,8 @@ MODEL = os.environ.get("CLAUDE_MODEL", "sonnet")
 MAX_TURNS = os.environ.get("CLAUDE_MAX_TURNS", "25")
 ALLOWED = os.environ.get("CLAUDE_ALLOWED_TOOLS",
     "Read,Write,Edit,Glob,Grep,Bash(tools/assistant/*),Bash(tools/telegram/*),Bash(pandoc*),Bash(ffmpeg*),Bash(ls*),Bash(cat*),Bash(date*),"
-    "Bash(python3 ~/jarvis/scripts/cal.py*)")                    # календар Михайла (19.11) — лише в особистому чаті, не в групах
+    "Bash(python3 ~/jarvis/scripts/cal.py*),"                    # календар Михайла (19.11) — лише в особистому чаті, не в групах
+    "Bash(python3 tools/assistant/bot/capabilities.py*)")        # реєстр можливостей: --check, --run … --bg (23.11)
 # Робочі групи команди: бот відповідає там, лише коли його тегнули або відповіли на його повідомлення.
 # Задачу виконує тільки після кнопки «В роботу» від Михайла. Типово — CAS Design.
 GROUPS = {int(x) for x in os.environ.get("ASSISTANT_GROUPS", "-1003501825627").split(",") if x.strip()}
@@ -39,9 +40,13 @@ INBOX = MEMORY / "inbox-files"
 API = f"https://api.telegram.org/bot{TOKEN}/"
 LOG = lambda *a: print(datetime.datetime.now().strftime("%H:%M:%S"), *a, flush=True)
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import capabilities  # noqa: E402  що встановлено на машині й що платне — факти для моделі й /caps (23.11)
 import local_mode  # noqa: E402  локальний режим, коли Claude недоступний
 import menu  # noqa: E402  команди, постійна клавіатура й inline-кнопки — без моделі (23.11)
 ROUTER = local_mode.Router()
+capabilities.LOG = lambda *a: LOG("[caps]", *a)
+if os.environ.get("ASSISTANT_CAPS_AUTOALLOW") == "1":   # одне місце: локальні інструменти реєстру — у дозволені, платні MCP — геть
+    ALLOWED = capabilities.recommended_allowlist(ALLOWED)
 
 
 class ClaudeUnavailable(Exception):
@@ -244,7 +249,20 @@ tools/assistant/bin/md2pdf.sh <файл.md> (напряму, без «bash» п�
 SEND_FILE: /повний/шлях/до/файлу
 Коли показуєш переписку чи говориш про конкретну людину/чат із Telegram Михайла — додай окремий рядок
 OPEN_CHAT: @нік | Імʼя   (або числовий id замість ніка, якщо ніка немає; до 5 таких рядків) — я зроблю кнопку «Відкрити чат».
-Якщо просять «всю переписку», а повідомлень більше ~15 — у відповіді коротко, а повний текст файлом (Markdown → PDF, SEND_FILE).{context_block() if fresh else ""}{recent_block()}"""
+Якщо просять «всю переписку», а повідомлень більше ~15 — у відповіді коротко, а повний текст файлом (Markdown → PDF, SEND_FILE).
+{caps_section(content, fresh)}{context_block() if fresh else ""}{recent_block()}"""
+
+
+def caps_section(content, fresh):
+    """Факти про встановлене (реєстр capabilities.py). Повний блок — на початку розмови дня і коли питання про
+    інструменти/генерацію; інакше — один рядок-нагадування (блок уже є в розмові, токени не дублюємо)."""
+    try:
+        if fresh or capabilities.relevant(content):
+            return "\n" + capabilities.prompt_block("claude") + "\n"
+        return "\n" + capabilities.short_hint() + "\n"
+    except Exception as e:
+        LOG("реєстр можливостей:", repr(e)[:150])
+        return ""
 
 
 def run_claude(prompt, session, resume, tools=ALLOWED, turns=None, _final=False):
@@ -285,12 +303,29 @@ def claude_down(reason):
     raise ClaudeUnavailable(reason)
 
 
+def run_background(fn):
+    """Довга робота (генерація музики тощо) — окремим потоком; тести підміняють на синхронний виклик."""
+    import threading
+    threading.Thread(target=fn, daemon=True).start()
+
+
 def deliver_local(r):
-    """Відповідь локального режиму (local_mode.Reply): текст, кнопки, файли."""
-    send_text(r.text or "✅ Зроблено.", markup=r.markup)
+    """Відповідь локального режиму (local_mode.Reply): текст, кнопки, файли; extra — ще повідомлення;
+    background — довга робота: результат (Reply) надсилається, коли готовий."""
+    send_text(r.text or "✅ Зроблено.", markup=r.markup if not r.extra else None)
+    for i, part in enumerate(r.extra or []):
+        send_text(part, markup=r.markup if i == len(r.extra) - 1 else None)
     for f in r.files:
         if os.path.isfile(f):
             send_file(f, pathlib.Path(f).name)
+    if r.background:
+        def bg():
+            try:
+                res = r.background()
+            except Exception as e:
+                res = local_mode.Reply(f"⚠️ Фонова задача впала: {e!r}"[:300])
+            deliver_local(res)
+        run_background(bg)
     LOG("← (локально)", (r.text or "")[:80])
     remember("Помічник", r.text)
     if MEMORY_SYNC.exists():
@@ -301,7 +336,7 @@ def handle(msg, state):
     text = msg.get("text") or ""
     if text.startswith("/start"):
         send_text("Привіт, Михайле! Я на зв'язку. Пиши текстом або голосовим. Кнопки внизу й меню «/» працюють "
-                  "миттєво, без ШІ; /help — що вмію, /new — нова розмова, /status.", markup=menu.KEYBOARD); return
+                  "миттєво, без ШІ; /help — команди, /caps — що вмію й що встановлено, /new — нова розмова, /status.", markup=menu.KEYBOARD); return
     if text.startswith("/status"):
         send_text(f"Працюю. Модель: {MODEL}. Режим: {ROUTER.describe()}. Пам'ять: {MEMORY}. "
                   f"Розмова від {state.get('day') or 'ще не починалась'}."); return
@@ -392,7 +427,17 @@ def menu_message(text, state):
                 api("sendChatAction", chat_id=OWNER, action="typing")
             except Exception:
                 pass
-        r, wait = menu.command(*cmd)
+        if cmd[0] == "caps":                                  # /caps — перевірка програм до ~3 с
+            try:
+                api("sendChatAction", chat_id=OWNER, action="typing")
+            except Exception:
+                pass
+            mode = ROUTER.mode()
+            line = ("Зараз локальний режим (Claude недоступний або /local on): працюють команди й локальні інструменти вище."
+                    if mode == "local" else "Зараз режим Claude: модель бачить цей список і перевіряє його перед «не можу».")
+            r, wait = menu.command(cmd[0], cmd[1], mode_line=line)
+        else:
+            r, wait = menu.command(*cmd)
         if wait:
             state["menu_await"] = {"kind": wait, "at": time.time()}
         deliver_local(r)

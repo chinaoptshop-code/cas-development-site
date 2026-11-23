@@ -64,6 +64,8 @@ Google Drive для комп'ютера. Для бота це звичайні M
 | Непрочитана пошта / лист лише кнопкою «Надіслати» | `/mail`, «пошта»; «надішли лист на …, тема: …, текст: …» | без моделі |
 | Подія в календарі (лише кнопкою «Додати») | «додай у календар завтра о 10 …» | без моделі (у режимі Claude — Claude через `cal.py`) |
 | PDF | «pdf: текст», «зроби pdf» | без моделі (локально) / Claude |
+| Що вмію й які програми встановлені (✅ / ⚠️ причина / 💳 платне) | `/caps`, `/caps refresh`, «що ти вмієш», «які програми встановлені» | без моделі |
+| Пісня / музика локальним генератором (ACE-Step, якщо описаний у `capabilities.d`) | «згенеруй пісню про … стиль: … 90 с» | локально без моделі; у режимі Claude — Claude через `capabilities.py --run … --bg` |
 | Режим і нова розмова | `/status`, `/new`, `/local on|off|auto` | — |
 | Задачі команди й клієнтів (групи, особисті чати) | тег бота в групі, повідомлення боту | кнопки «В роботу / Відхилити», «Надіслати / Редагувати / Не надсилати», «Дозволити / Відхилити» |
 | Інші кнопки | статті блогу (`blog:`), ліди (`lead:`), Оздоба (підпис «оздоба <id>») | скрипти `~/jarvis/scripts` |
@@ -76,7 +78,7 @@ Google Drive для комп'ютера. Для бота це звичайні M
 
 - **Меню «/»**: при старті бот викликає `setMyCommands` лише для чату власника (`scope: chat`, `ASSISTANT_CHAT_ID`);
   спершу `getMyCommands` — якщо список той самий, нічого не змінює. Команди: `/today`, `/tomorrow`, `/inbox`,
-  `/tasks`, `/remind`, `/money`, `/mail`, `/menu`, `/help`, `/new`, `/status` (`/hide` працює, але в меню не показана).
+  `/tasks`, `/remind`, `/money`, `/mail`, `/caps`, `/menu`, `/help`, `/new`, `/status` (`/hide` працює, але в меню не показана).
 - **Постійна клавіатура** під полем вводу (`is_persistent`, `resize_keyboard`): «📅 Сьогодні · 📥 Вхідні» /
   «✅ Задачі · 💰 Гроші» — те саме, що `/today`, `/inbox`, `/tasks`, `/money`. Показують `/start`, `/menu` і `/help`;
   `/hide` прибирає.
@@ -102,13 +104,83 @@ cd ~/cas-development-site
 git fetch origin && git pull --no-rebase origin main      # або: git checkout assistant-menu-2311 && git pull
 python3 -m unittest discover -s tools/assistant/bot -p 'test_*.py'     # усі тести асистента
 launchctl kickstart -k gui/$(id -u)/com.assistant.bot     # перезапуск бота (служба з install.sh, KeepAlive)
-tail -n 20 ~/Library/Logs/assistant/bot.log               # «бот @… запущено», «меню команд оновлено: 11»
+tail -n 20 ~/Library/Logs/assistant/bot.log               # «бот @… запущено», «меню команд оновлено: 12»
 ```
 
 Якщо `kickstart` недоступний: `launchctl unload ~/Library/LaunchAgents/com.assistant.bot.plist && launchctl load
 ~/Library/LaunchAgents/com.assistant.bot.plist` (або заново `tools/assistant/bot/install.sh` — перестворить усі служби).
 Далі в чаті з ботом: `/start` — зʼявиться клавіатура; меню «/» оновлюється в Telegram за кілька секунд
 (інколи треба перезайти в чат).
+
+## Що бот уміє й знає про себе (23.11.2026)
+
+Раніше бот відповідав про свої можливості «з голови» моделі: казав «ace-step не встановлено», хоча генератор
+стояв на Mac mini, а іншим разом сам пішов у платний Higgsfield. Тепер є **реєстр можливостей**
+`bot/capabilities.py` — знання бота про себе беруться з перевірки машини, а не з памʼяті моделі.
+
+**Звідки записи.**
+- Вбудовані: те, що є в коді (Claude, Ollama, база знань, задачі й нагадування, PDF, pandoc, ffmpeg, Whisper,
+  голос Gemini, Telegram, календар, пошта, Монобанк, вхідні, блог, Оздоба, відгуки).
+- Машинні: JSON-файли в `~/.assistant/capabilities.d/` (або `ASSISTANT_CAPS_DIR`) **на Mac mini, поза репозиторієм**:
+  тут описують локально встановлені інструменти — ACE-Step, FLUX, Real-ESRGAN тощо. Запис з тим самим `key`, що
+  й вбудований, замінює вбудований.
+- Платні / хмарні (`PAID`): Higgsfield, Canva AI, Gamma, Figma AI, Adobe Firefly, Anthropic API, suno.com.
+  Їх не перевіряємо й не викликаємо — лише з явного дозволу Михайла в цьому ж зверненні.
+
+**Формат файлу в `capabilities.d`** — один обʼєкт або список обʼєктів:
+
+| Поле | Обовʼязкове | Що це |
+|---|---|---|
+| `key` | так | латиниця, цифри, `.`, `_`, `-` (до 64), напр. `music-ace-step` |
+| `name` | так | назва для людини |
+| `category` | так | `текст`, `голос`, `календар`, `пошта`, `гроші`, `PDF`, `документи`, `зображення`, `музика`, `відео`, `файли`, `telegram`, `сайт`, `інше` |
+| `check` | ні | список перевірок, усі мають пройти: `{"cmd": "ffmpeg"}` (PATH або повний шлях), `{"file": "…"}`, `{"dir": "…"}`, `{"env": "ЗМІННА"}`, `{"module": "назва", "python": "…"}` (тайм-аут 3 с), `{"ollama": "модель"}` (`/api/tags`, 2 с), `{"http": "url"}` (2 с), `{"script": "x.sh"}` (у `tools/assistant/bin`), `{"any": [ … ]}` — хоч одна; до будь-якої — `"why": "своя причина"` |
+| `run` | ні | argv-шаблон запуску (без shell): `${ЗМІННА}`, `${ЗМІННА:-типово}`, `~` — з оточення; `{prompt}`, `{style}`, `{lyrics}`, `{duration}` … — з повідомлення або `defaults`; `{out}` — куди записати результат (або надрукувати шлях останнім рядком), `{out_dir}` |
+| `defaults`, `out_ext`, `timeout` | ні | значення плейсхолдерів, розширення файлу результату (`.wav`), тайм-аут у секундах (1800, макс. 7200) |
+| `call`, `intent`, `install`, `note` | ні | як викликати (для моделі), фраза для бота, як поставити (показується, коли немає), примітка |
+| `version` | ні | команда, перший рядок виводу — версія в `/caps` (тайм-аут 2 с) |
+| `allow` | ні | шаблони для `CLAUDE_ALLOWED_TOOLS`; типово — `Bash(<перша команда run>*)` |
+| `paid`, `local` | ні | `true`/`false`; `paid: true` — у списку «💳», в allowlist не потрапляє |
+
+Невалідний файл чи запис бот пропускає, пише попередження в журнал і показує його внизу `/caps` — не падає.
+Шляхи — тільки через змінні з `~/.assistant.env`, у репозиторій реальні шляхи не потрапляють.
+
+**Приклад для генератора пісень** — `bot/capabilities.example/music-ace-step.json`. На Mac mini:
+```bash
+mkdir -p ~/.assistant/capabilities.d
+cp tools/assistant/bot/capabilities.example/music-ace-step.json ~/.assistant/capabilities.d/
+# у ~/.assistant.env: ACE_STEP_PYTHON=<python із venv ACE-Step>  ACE_STEP_SCRIPT=<скрипт-генератор бота>
+# і звірити аргументи "run" з тим, що приймає скрипт (--prompt/--lyrics/--duration/--out)
+```
+
+**Перевірити.**
+```bash
+python3 tools/assistant/bot/capabilities.py                 # таблиця ✅ / ⚠️ причина / 💳
+python3 tools/assistant/bot/capabilities.py --check music-ace-step    # код 0 — є, 1 — немає (+ чому й як поставити)
+python3 tools/assistant/bot/capabilities.py --json
+python3 tools/assistant/bot/capabilities.py --prompt        # блок, який бачить модель
+python3 tools/assistant/bot/capabilities.py --run music-ace-step --arg prompt="про море" --arg duration=30
+```
+У Telegram: `/caps` (кеш 10 хв, `ASSISTANT_CAPS_TTL`), `/caps refresh` — перевірити заново.
+Перевірки дешеві (PATH, файли, змінні; Python-модуль ≤ 3 с, Ollama/HTTP ≤ 2 с, паралельно), нічого довгого не запускають.
+
+**Що бачить модель.** У запит до Claude (`claude -p`) на початку розмови дня й у кожному повідомленні про
+інструменти, генерацію, програми додається блок «Твої можливості на цій машині зараз» (що є і як викликати, чого
+немає й чому, що платне) і правила; в інших повідомленнях — один рядок-нагадування. Локальна модель (Ollama)
+отримує той самий список (без команд — вона нічого не запускає). Вимкнути блок: `ASSISTANT_CAPS_PROMPT=0`.
+
+**Правило локальне / платне.** Спершу локальні інструменти. Платні й хмарні генератори не викликати й не
+пропонувати як дію, якщо є локальний аналог; локального немає — назвати, якого саме й чому (причина з реєстру), і
+спитати дозволу; сторонні сайти (suno.com) — лише як довідка на пряме питання. Те саме — у `playbooks/00-core.md`.
+
+**Allowlist.** Claude запускає інструмент реєстру командою
+`python3 tools/assistant/bot/capabilities.py --run <ключ> --bg --arg prompt="…"`: генерація йде у фоні, готовий файл
+приходить Михайлу через `tg-out.sh` (тайм-аут — із запису). Цей CLI уже в типовому `CLAUDE_ALLOWED_TOOLS` бота.
+Якщо `CLAUDE_ALLOWED_TOOLS` задано в `~/.assistant.env` — два способи:
+- `python3 tools/assistant/bot/capabilities.py --allowlist` друкує рекомендований список: поточний + CLI реєстру +
+  `Bash(<команда>*)` локальних інструментів, **без платних MCP** (Higgsfield, Canva AI, Gamma…) — вставити в env;
+- або `ASSISTANT_CAPS_AUTOALLOW=1` у `~/.assistant.env` — бот сам додає локальні інструменти й прибирає платні при
+  старті (групи команди отримують базовий список без цього).
 
 ## Як це працює
 
@@ -247,6 +319,7 @@ Thinking вимкнено (`"think": false` у запиті; стара Ollama �
 ```bash
 python3 -m unittest tools/assistant/bot/test_local_mode.py -v     # фейкові claude, Ollama і памʼять
 python3 -m unittest tools/assistant/bot/test_menu.py -v           # меню, клавіатура, кнопки
+python3 -m unittest tools/assistant/bot/test_capabilities.py -v   # реєстр можливостей, /caps, генератор музики
 python3 tools/assistant/bot/local_mode.py status                   # поточний режим
 DRY=1 CLAUDE_BIN=/usr/bin/false tools/assistant/bin/run-playbook.sh morning
                                      # брифінг без Claude: лише друкує, стан роутера не змінює, нічого не шле
