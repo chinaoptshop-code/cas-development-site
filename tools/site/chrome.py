@@ -420,6 +420,7 @@ def header(lang, path, alts, tools='', cta_href=None):
     mrow = MSG[:3] + [x for x in SOCIAL if x[0] == 'wechat'] + MSG[3:]
     msg = ''.join(f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank"' if u.startswith('http') else '')
                   + (f' data-wx="{WECHAT}"' if k == 'wechat' else '') + f' aria-label="{n}"></a>' for k, n, u in mrow)  # без title: меню лише на тачі, а бюджет HTML 64 КБ
+    msg += flags.chat_icon(lang, title=False)  # чат на сайті — лише іконкою, коли CHAT_PUBLIC (tools/site/flags.py)
     kab_cur = ' aria-current="page"' if path == KAB_HREF or path.startswith(KAB_HREF + '/') else ''
     kab = f'<a class="sch-kab" href="{KAB_HREF}" title="{t["kab_full"]}"{kab_cur}><span>{t["kab"]}</span></a>'
     # швидкі кнопки мобільного меню: кабінет і калькулятор вартості (якщо сторінка калькулятора цією мовою є)
@@ -469,6 +470,7 @@ def footer(lang, alts):
     row = [x for x in MSG if x[0] not in SOCIAL_K] + SOCIAL
     soc = ''.join(f'<a class="bi bi-{k}" href="{u}"' + (' target="_blank"' if u.startswith('http') else '')
                   + (f' data-wx="{WECHAT}"' if k == 'wechat' else '') + f' aria-label="{n}" title="{n}"></a>' for k, n, u in row)
+    soc += flags.chat_icon(lang)  # чат на сайті — ще одна іконка ряду, коли CHAT_PUBLIC (tools/site/flags.py)
     groups = ''.join(f'<div><b>{g}</b>' + ''.join(f'<a href="{h}">{n}</a>' for h, n in links) + '</div>' for g, links in [(g, _live(x)) for g, x in t['groups']] if links)
     langs = lang_links(lang, alts, 'scf-lang')
     # «Умови використання» — поруч із політикою, коротка назва (Михайло 09.11.2026); посилання — лише коли сторінка є
@@ -691,7 +693,7 @@ def mbar_logos(s):
 # відкриття/закриття — site-chrome.v1.js. Ідемпотентно: згенеровані частини (кнопка, обгортка, Viber, «Залишити номер») знімаємо й ставимо заново.
 MB_ONE = dict(uk=("Зв'язатися",), ru=('Связаться',), en=('Contact',), es=('Contactar',), zh=('联系我们',), pl=('Kontakt',), de=('Kontakt',), fr=('Contact',), pt=('Contactar',), ar=('تواصل معنا',))
 VIBER = 'viber://chat?number=%2B380978667755'
-MB_LEAD_RX = re.compile(r'<style id="mb-lead">.*?</style>|<a class="mb-(?:lead|vb|wx)"[^>]*>.*?</a>\n?|<button type="button" class="mb-tg"[^>]*>.*?</button>\n?|<div class="mb-menu"[^>]*>\n?|</div><!--/mb-menu-->\n?', re.S)
+MB_LEAD_RX = re.compile(r'<style id="mb-lead">.*?</style>|<a class="mb-(?:lead|vb|wx|chat)"[^>]*>.*?</a>\n?|<button type="button" class="mb-tg"[^>]*>.*?</button>\n?|<div class="mb-menu"[^>]*>\n?|</div><!--/mb-menu-->\n?', re.S)
 
 
 # Базова панель .mbar (стилі m-fix + посилання) для сторінок, що будуються без неї (каталог 3D-турів /tury і /<мова>/tury,
@@ -777,7 +779,7 @@ def mbar_lead(s, lang, rel=''):
     aria = ((i18n.ui(lang) or {}).get('form') or {}).get('mbar') or {'ru': 'Быстрая связь'}.get(lang, "Швидкий зв'язок")
     out = (f'{m.group(1)} data-one role="navigation" aria-label="{aria}">\n'
            f'<button type="button" class="mb-tg" aria-expanded="false" aria-controls="mb-menu">{one}</button>\n'
-           f'<div class="mb-menu" id="mb-menu">\n{body}\n{mb_icons(vb, lang)}{wx}<a class="mb-lead" href="{href}">{lab}</a>\n</div><!--/mb-menu-->\n')
+           f'<div class="mb-menu" id="mb-menu">\n{body}\n{mb_icons(vb, lang)}{wx}{flags.chat_icon(lang, img=True)}<a class="mb-lead" href="{href}">{lab}</a>\n</div><!--/mb-menu-->\n')
     return head + out + s[e:]
 
 

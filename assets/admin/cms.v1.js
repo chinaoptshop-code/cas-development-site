@@ -364,11 +364,12 @@
     var ext = window.CASStudio;
     if (ext && ext.tabs) ext.tabs.slice().reverse().forEach(function (t) { TABS.unshift([t.key, t.label, t.perms]); RENDER[t.key] = t.render; });
     // CRM v4 (assets/admin/crm4.v1.js): вкладка «Задачі» — одразу після CRM
-    var ext4 = window.CASCrm4;
-    if (ext4 && ext4.tabs) ext4.tabs.forEach(function (t) {
+    // чат на сайті (assets/admin/chat.v1.js): вкладка «Чат» — одразу після CRM, перед «Задачами»
+    var ext4 = window.CASCrm4, extC = window.CASChatAdm;
+    [ext4, extC].forEach(function (ext) { if (ext && ext.tabs) ext.tabs.forEach(function (t) {
       var i = TABS.findIndex(function (x) { return x[0] === t.after; });
       TABS.splice(i < 0 ? TABS.length : i + 1, 0, [t.key, t.label, t.perms]); RENDER[t.key] = t.render;
-    });
+    }); });
     var tabs = TABS.filter(function (t) { return !t[2] || t[2].some(can); });
     var first = tabs[0] ? tabs[0][0] : 'crm';
     box.className = 'adm';
@@ -403,6 +404,7 @@
     addEventListener('hashchange', function () { open(location.hash.slice(1)); }); // переходи з «Аналітики» в CRM з фільтром
     open(location.hash.slice(1) || first);
     if (ext4 && ext4.started && tabs.some(function (t) { return t[0] === 'tasks'; })) ext4.started(); // лічильник прострочених на вкладці
+    if (extC && extC.started && tabs.some(function (t) { return t[0] === 'chat'; })) extC.started(); // непрочитані розмови на вкладці
   }
   // для studio.v1.js: спільні помічники
   window.CASAdminKit = { esc: esc, money: money, toast: toast, api: function (p, o) { return api(p, o); }, can: can, transition: transition, reduced: reduced,
@@ -436,7 +438,7 @@
   var srcName = function (r) { var s = String(r.ref_src || r.ref_host || ''); return s.replace(/ \(.*\)$/, '').slice(0, 34); };
   var PLACES = [['form', 'Форма сторінки'], ['#prices', 'Після цін (#prices)'], ['#portfolio', 'Після портфоліо (#portfolio)'],
     ['#project', 'Сторінка проєкту (#project)'], ['#services', 'Послуги (#services)'], ['#blog-mid', 'Стаття, середина (#blog-mid)'],
-    ['#blog-end', 'Стаття, кінець (#blog-end)'], ['manual', 'Вручну / дзвінок'], ['finder', 'Бот пошуку'], ['order', 'Замовлення Оздоби']];
+    ['#blog-end', 'Стаття, кінець (#blog-end)'], ['manual', 'Вручну / дзвінок'], ['finder', 'Бот пошуку'], ['chat', 'Чат на сайті'], ['order', 'Замовлення Оздоби']];
   var placeLabel = function (k) { var p = PLACES.find(function (x) { return x[0] === k; }); return p ? p[1].replace(/ \(#.*\)$/, '') : k; };
   var SLA = 15; // хв, як SLA_MIN у functions/_alerts.js
   var utc = function (s) { return new Date(String(s || '').replace(' ', 'T') + 'Z'); };

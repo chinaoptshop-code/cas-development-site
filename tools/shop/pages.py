@@ -58,9 +58,11 @@ ADMIN = """<main class="acc">
 <link rel="stylesheet" href="/assets/admin/cms.v1.css?v=__CMSCSS__">
 <link rel="stylesheet" href="/assets/admin/studio.v1.css?v=__STCSS__">
 <link rel="stylesheet" href="/assets/admin/crm4.v1.css?v=__C4CSS__">
+<link rel="stylesheet" href="/assets/admin/chat.v1.css?v=__CHCSS__">
 <script src="/assets/account.v1.js?v=__ACCV__" defer></script>
 <script src="/assets/admin/studio.v1.js?v=__STJS__" defer></script>
 <script src="/assets/admin/crm4.v1.js?v=__C4JS__" defer></script>
+<script src="/assets/admin/chat.v1.js?v=__CHJS__" defer></script>
 <script src="/assets/admin/cms.v1.js?v=__CMSJS__" defer></script>
 """
 
@@ -128,6 +130,7 @@ def page(s, title, body, path):
         body = body.replace('__CMSJS__', h('assets', 'admin', 'cms.v1.js')).replace('__CMSCSS__', h('assets', 'admin', 'cms.v1.css'))
         body = body.replace('__STJS__', h('assets', 'admin', 'studio.v1.js')).replace('__STCSS__', h('assets', 'admin', 'studio.v1.css'))
         body = body.replace('__C4JS__', h('assets', 'admin', 'crm4.v1.js')).replace('__C4CSS__', h('assets', 'admin', 'crm4.v1.css'))  # CRM v4: задачі, таблиця контактів
+        body = body.replace('__CHJS__', h('assets', 'admin', 'chat.v1.js')).replace('__CHCSS__', h('assets', 'admin', 'chat.v1.css'))  # чат на сайті
     if '__TMJS__' in body:
         body = body.replace('__TMJS__', h('assets', 'team.v1.js')).replace('__TMCSS__', h('assets', 'team.v1.css'))
     s = s[:a] + body + '\n' + s[b:]

@@ -1150,3 +1150,4 @@ a[data-lb]{cursor:zoom-in}
 html.ck-p body::after{content:"";display:block;height:var(--ckh,0px)}
 @media(prefers-reduced-motion:reduce){.ck,.ck.on{transition:none;transform:none}}
 @media print{.ck{display:none}}
+.bi-chat::before{background-image:url(/assets/brand/chat.svg)} /* чат на сайті (a[data-chat], assets/chat.v1.js; CHAT_PUBLIC у tools/site/flags.py) */

@@ -30,6 +30,8 @@ export const PERMS = {
   'contacts.linked': 'Контакти своїх обʼєктів (лише перегляд)',
   'tasks.manage': 'Задачі: створювати, призначати, бачити всі',
   'tasks.own': 'Свої задачі: бачити й відмічати виконаними',
+  'chat.view': 'Чат на сайті: розмови й файли відвідувачів',
+  'chat.reply': 'Чат на сайті: відповідати, повертати боту, створювати заявку',
   'cms.edit': 'Редагування сайту',
   'staff.view': 'Список працівників (для призначення)',
   'staff.manage': 'Додавати й деактивувати працівників, ролі',
@@ -45,7 +47,7 @@ export const ROLES = {
   // CRM ведуть двоє — власник і менеджер (Михайло 18.11.2026): менеджер після входу одразу в панелі CRM
   manager: { label: 'Менеджер', home: '/kabinet/admin', perms: ['panel.admin', 'leads.view_all', 'leads.edit', 'leads.assign', 'orders.view', 'orders.edit',
     'clients.view', 'clients.contacts', 'finance.view', 'finance.edit', 'projects.view_all', 'projects.edit', 'projects.edit_stage',
-    'reports.upload', 'issues.report', 'partners.manage', 'partners.base', 'tasks.manage', 'tasks.own', 'cms.edit', 'staff.view', 'export'] },
+    'reports.upload', 'issues.report', 'partners.manage', 'partners.base', 'tasks.manage', 'tasks.own', 'chat.view', 'chat.reply', 'cms.edit', 'staff.view', 'export'] },
   designer: { label: 'Дизайнер', home: '/kabinet/team', perms: ['leads.view_assigned', 'leads.edit', ...FIELD] },
   foreman: { label: 'Прораб', home: '/kabinet/team', perms: FIELD },
   furniture: { label: 'Мебляр', home: '/kabinet/team', perms: FIELD },

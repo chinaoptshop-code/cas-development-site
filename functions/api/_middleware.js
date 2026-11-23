@@ -10,11 +10,15 @@
 // не мають Origin/Sec-Fetch-Site і шлють JSON — їх перевірка не зачіпає; там свої секрети в заголовках.
 //
 // Розмір тіла: Content-Length понад 64 КБ → 413 (окрім /api/admin/repo — фото до 30 МБ, ліміти в functions/_gh.js;
-// /api/team/upload — фото з обʼєкта до 1,5 МБ у base64).
+// /api/team/upload — фото з обʼєкта до 1,5 МБ у base64; /api/chat/upload — файл відвідувача чату до 50 МБ сирими байтами,
+// /api/bot/chat — відповідь воркера чату з аудіо до 6 МБ у base64; functions/_chat.js).
+// Чат (/api/chat/upload) — єдиний виняток із «лише JSON»: тіло — сирі байти файлу; Origin там однаково перевіряється
+// (і тут, і в functions/api/chat/_middleware.js — без Origin свого сайту 403), а cookie чат не використовує взагалі.
 // Відповіді API: nosniff, заборона фреймів, CSP default-src 'none', no-store — JSON не може стати сторінкою.
 
 const OWN = ['https://cas-develop.com', 'https://www.cas-develop.com'];
-const BIG = { '/api/admin/repo': 31 * 1024 * 1024, '/api/team/upload': 2.3 * 1024 * 1024 };
+const BIG = { '/api/admin/repo': 31 * 1024 * 1024, '/api/team/upload': 2.3 * 1024 * 1024, '/api/chat/upload': 50 * 1024 * 1024 + 4096, '/api/bot/chat': 9 * 1024 * 1024 };
+const RAW = new Set(['/api/chat/upload']); // тіло — не JSON
 const MAX = 64 * 1024;
 const SAFE = new Set(['GET', 'HEAD', 'OPTIONS']);
 
@@ -31,7 +35,7 @@ export function csrfCheck(request) {
   const len = request.headers.get('content-length');
   const hasBody = len ? +len > 0 : !!request.body && request.method !== 'DELETE';
   const ct = request.headers.get('content-type') || '';
-  if (hasBody && !/^application\/json\b/i.test(ct)) return deny('Очікуємо JSON', 415);
+  if (hasBody && !RAW.has(url.pathname) && !/^application\/json\b/i.test(ct)) return deny('Очікуємо JSON', 415);
   if (len && +len > (BIG[url.pathname] || MAX)) return deny('Завеликий запит', 413);
   return null;
 }

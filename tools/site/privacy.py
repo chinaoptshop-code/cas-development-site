@@ -4,7 +4,9 @@
 перед третім <h2> («Навіщо» й відповідники) і дату «Оновлено …». Ідемпотентно. Якір #cookies — посилання «Cookies» у футері
 (chrome.footer) без JS і «Детальніше» на плашці згоди (site-chrome.v1.js).
 Факти — за кодом (22.11.2026): cookies cas_s / cas_pl (functions/_lib.js), cas_lang (kabinet-i18n.v1.js); localStorage cas_ck,
-casScHint, обране й налаштування кабінету; sessionStorage cas_rh (lead-form.v1.js / site-chrome.v1.js); Clarity — chrome.CLARITY (для всіх після першої дії; відмова — «Відхилити» / «Cookies», Михайло 22.11.2026).
+casScHint, обране й налаштування кабінету; sessionStorage cas_rh (lead-form.v1.js / site-chrome.v1.js);
+чат на сайті (23.11.2026, assets/chat.v1.js): localStorage cas_chat — sid і токен розмови, sessionStorage cas_chat — режим перевірки ?chat=1
+(речення для розділу й абзац про чат 10 мовами — чернетка tools/chat/privacy-draft.md, додати в тексти нижче після погодження власником); Clarity — chrome.CLARITY (для всіх після першої дії; відмова — «Відхилити» / «Cookies», Михайло 22.11.2026).
 Запуск: python3 tools/site/privacy.py (у build-all перед terms.py), --check — код 1, якщо щось змінилося б.
 """
 import os, re, sys

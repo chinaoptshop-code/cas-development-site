@@ -1072,3 +1072,57 @@
   function idle() { (W.requestIdleCallback || function (f) { setTimeout(f, 200); })(function () { show(false); }, { timeout: 2500 }); }
   if (d.readyState === 'complete') idle(); else W.addEventListener('load', idle);
 })(window, document);
+/* Чат на сайті (23.11.2026; Михайло: «не віконце, а іконка»): чат — лише іконка a[data-chat] у рядах месенджерів (меню пігулки «Звʼязатися», футер,
+   мобільне меню шапки, під формою .lq-alt і біля форми .of-ct-m); панель розмови (/assets/chat.v1.{js,css}) вантажиться й відкривається тільки
+   після тапу по іконці — сама ніколи. CHAT_PUBLIC (tools/site/flags.py) = True — іконки ставить генератор; поки False — нічого немає, крім
+   режиму перевірки ?chat=1 (запамʼятовується в sessionStorage cas_chat): тоді іконки додає цей блок у ті самі ряди. Кабінет — без чату. */
+(function (W, d) {
+  /*chat:v*/var CHV = {js: "c9da9af0", css: "9309a232"};/*/chat:v*/
+  var on = false, ss = null;
+  try { ss = W.sessionStorage; } catch (e) { /* noop */ }
+  if (/[?&]chat=1(?:&|$)/.test(location.search)) { on = true; try { ss.setItem('cas_chat', '1'); } catch (e) { /* noop */ } }
+  else try { on = ss.getItem('cas_chat') === '1'; } catch (e) { /* noop */ }
+  if (/^\/kabinet/.test(location.pathname) || (!on && !d.querySelector('a[data-chat]'))) return;
+  var L = (d.documentElement.lang || 'uk').slice(0, 2).toLowerCase();
+  var NAME = { uk: 'Чат з помічником', ru: 'Чат с помощником', en: 'Chat with our assistant', es: 'Chat con el asistente', zh: '与助手聊天', pl: 'Czat z asystentem',
+    de: 'Chat mit dem Assistenten', fr: 'Discuter avec l’assistant', pt: 'Chat com o assistente', ar: 'الدردشة مع المساعد' }[L] || 'Chat';
+  var st = null;
+  function load() {
+    if (st) return st;
+    st = new Promise(function (ok, no) {
+      var l = d.createElement('link'); l.rel = 'stylesheet'; l.href = '/assets/chat.v1.css?v=' + CHV.css; d.head.appendChild(l);
+      var s = d.createElement('script'); s.src = '/assets/chat.v1.js?v=' + CHV.js; s.async = true;
+      s.onload = function () { var go = function () { ok(W.casChat); }; if (l.sheet) go(); else { l.onload = go; l.onerror = go; } };
+      s.onerror = function () { st = null; no(); }; d.head.appendChild(s);
+    });
+    return st;
+  }
+  // тап по іконці (делегування: іконки є й у рядах, які скрипти будують пізніше)
+  d.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-chat]');
+    if (!a) return;
+    e.preventDefault();
+    load().then(function (c) { if (c) c.open(a); }, function () { location.href = 'https://t.me/+380978667755'; });
+  });
+  // та сама іконка в рядах месенджерів, де її ще немає: у режимі перевірки ?chat=1 — у всіх (як при CHAT_PUBLIC = True — tools/site/flags.py chat_icon),
+  // при CHAT_PUBLIC — лише в рядах, які будує lead-form.v1.js (.lq-alt, .of-ct-m біля форми); статичні генератор уже має
+  function icon(img) {
+    var a = d.createElement('a'); a.href = '#chat'; a.setAttribute('data-chat', ''); a.setAttribute('aria-label', NAME); a.title = NAME;
+    if (img) { a.className = 'mb-chat'; var i = d.createElement('img'); i.src = '/assets/brand/chat.svg'; i.width = 32; i.height = 32; i.alt = ''; i.decoding = 'async'; a.appendChild(i); }
+    else a.className = 'bi bi-chat';
+    return a;
+  }
+  function put() {
+    [].forEach.call(d.querySelectorAll('.scf-soc,.sch-mmsg,.lq-alt,.of-ct-m'), function (r) { if (!r.querySelector('a[data-chat]')) r.appendChild(icon(false)); });
+    var m = d.querySelector('.mbar[data-one] .mb-menu');
+    if (m && !m.querySelector('a[data-chat]')) m.insertBefore(icon(true), m.querySelector('.mb-lead'));
+  }
+  function start() {
+    put();
+    // ряди біля форми lead-form.v1.js будує, коли форма близько до екрана, — дописуємо іконку й туди
+    // при CHAT_PUBLIC стежимо лише за блоком форми (сцени й каруселі вставляють вузли — їх не чіпаємо)
+    var root = on ? d.body : (d.getElementById('zayavka') || (d.getElementById('of') || {}).parentNode);
+    if (W.MutationObserver && root) { var q = 0; new MutationObserver(function () { if (!q) q = requestAnimationFrame(function () { q = 0; put(); }); }).observe(root, { childList: true, subtree: true }); }
+  }
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', start); else start();
+})(window, document);
