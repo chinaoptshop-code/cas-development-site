@@ -64,7 +64,7 @@
     }
     L.innerHTML = '<div class="ch-top"><div class="seg" role="group" aria-label="Фільтр розмов">' + FILTERS.map(function (f) {
       return '<button type="button" data-st="' + f[0] + '" aria-pressed="' + (S.state === f[0]) + '">' + f[1] + ' <small data-n="' + (f[0] || 'all') + '"></small></button>';
-    }).join('') + '</div><input type="search" data-q placeholder="Пошук: текст, файл, номер заявки" aria-label="Пошук у розмовах"><span class="ch-on" data-on></span></div>' +
+    }).join('') + '</div><input type="search" data-q placeholder="Пошук: текст, файл, номер заявки" aria-label="Пошук у розмовах"><span class="ch-on" data-on></span><span class="ch-store" data-store hidden></span></div>' +
       '<ul class="ch-list" data-list aria-live="polite"><li class="ch-empty">Завантажуємо…</li></ul><div data-more></div>';
     function load(before) {
       var q = '?limit=50' + (S.state ? '&state=' + S.state : '') + (S.q ? '&q=' + encodeURIComponent(S.q) : '') + (before ? '&before=' + before : '');
@@ -73,12 +73,15 @@
         Object.keys(d.counts || {}).forEach(function (k) { var n = $('[data-n="' + k + '"]', L); if (n) n.textContent = d.counts[k] || ''; });
         var on = $('[data-on]', L); on.className = 'ch-on' + (d.online ? ' ok' : ''); on.textContent = d.online ? 'Помічник на звʼязку' : 'Помічник офлайн (Mac mini не пінгує)';
         tabBadge(d.counts && d.counts.unread);
+        var stb = $('[data-store]', L), gb = function (n) { return (n / 1073741824).toFixed(1).replace('.', ','); };
+        if (d.storage) { stb.hidden = false; stb.textContent = 'Сховище: ' + gb(d.storage.used) + ' з ' + gb(d.storage.cap) + ' ГБ'; stb.classList.toggle('warn', d.storage.used >= d.storage.cap * 0.8); } else stb.hidden = true;
         var ul = $('[data-list]', L);
         ul.innerHTML = rows.length ? rows.map(function (r) {
           return '<li><button type="button" class="ch-row' + (r.unread ? ' unread' : '') + '" data-id="' + r.id + '">' +
             '<span class="ch-r1"><span class="pill st-' + esc(r.state) + '">' + esc(ST[r.state] || r.state) + '</span> <b>#' + r.id + '</b> · ' + esc((r.lang || '').toUpperCase()) +
             ' · <span class="ch-page">' + esc(r.page || '/') + '</span>' + (r.lead ? ' · <span class="pill on">' + esc(r.lead.number) + '</span>' : '') +
-            (r.files ? ' · 📎 ' + r.files : '') + (r.waiting_reply && r.state !== 'closed' ? ' · <span class="pill warn">без відповіді</span>' : '') + '<time>' + when(r.last_at) + '</time></span>' +
+            (r.files ? ' · 📎 ' + r.files : '') + (r.handoff_reason === 'limit' ? ' · <span class="pill warn" title="' + esc(r.handoff_label || '') + '">ліміт</span>' : '') +
+            (r.waiting_reply && r.state !== 'closed' ? ' · <span class="pill warn">без відповіді</span>' : '') + '<time>' + when(r.last_at) + '</time></span>' +
             '<span class="ch-r2" dir="auto">' + (r.last_role ? '<i>' + esc(ROLE[r.last_role] || r.last_role) + ':</i> ' : '') + esc(r.last_text || '') + '</span></button></li>';
         }).join('') : '<li class="ch-empty">Розмов немає.</li>';
         $$('.ch-row', ul).forEach(function (b) { b.onclick = function () { stop(); card(L, +b.dataset.id); }; });
@@ -105,7 +108,9 @@
       var keep = $('[data-reply]', box) ? $('[data-reply]', box).value : '';
       box.innerHTML = '<div class="ch-head"><h2>Розмова #' + s.id + '</h2><span class="pill st-' + esc(s.state) + '">' + esc(ST[s.state] || s.state) + '</span>' +
         '<span>' + esc((s.lang || '').toUpperCase()) + ' · ' + esc(s.page || '/') + (s.ref_host ? ' · з ' + esc(s.ref_host) : '') + ' · почали ' + when(s.created_at) + '</span>' +
-        (lead ? '<span class="pill on">Заявка ' + esc(lead.number || '#' + lead.id) + '</span>' : '') + '</div>' +
+        (lead ? '<span class="pill on">Заявка ' + esc(lead.number || '#' + lead.id) + '</span>' : '') +
+        (s.handoff_reason === 'limit' ? '<span class="pill warn" data-limit>ліміт</span><span class="ch-why">Бот замовк: ' + esc(s.handoff_label || 'ліміт розмови') + '. Відповідає людина.</span>'
+          : s.handoff_label ? '<span class="ch-why">Чому людина: ' + esc(s.handoff_label) + '</span>' : '') + '</div>' +
         '<ol class="ch-msgs" data-msgs>' + d.messages.map(msgHtml).join('') + '</ol>' +
         (d.can_reply ? '<form class="ch-reply" data-form><label for="chReply">Відповідь людини (бот у цій розмові замовкне, доки не повернете йому)</label>' +
           '<textarea id="chReply" data-reply rows="3" maxlength="8000" placeholder="Напишіть відповідь відвідувачу…"></textarea>' +

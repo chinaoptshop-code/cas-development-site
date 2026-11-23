@@ -2,7 +2,7 @@
 // chat.reply — відповідь людини, зміна стану, заявка з розмови. Обидва — власник і менеджер. Ліміт записів — STAFF_LIMITS.chat (functions/_rate.js).
 // Токен, sid і хеш IP відвідувача назовні не віддаємо; текст і імена файлів — дані (адмінка вставляє їх лише через esc / textContent).
 //
-// GET  ?state=bot|waiting|staff|closed|unread&q=&limit=1..200&before=<id> — список розмов (нові зверху): {rows, more, next, counts}
+// GET  ?state=bot|waiting|staff|closed|unread&q=&limit=1..200&before=<id> — список розмов (нові зверху): {rows, more, next, counts, online, storage: {used, cap}|null}
 // GET  ?id=<n> — розмова з повідомленнями й файлами: {session, messages}; позначає розмову переглянутою
 // GET  ?file=<24 hex> — байти файлу (як вкладення)
 // POST {id, text} — відповідь людини (role staff): стан staff, бот у розмові більше не відповідає, доки не повернуть «боту»
@@ -11,9 +11,9 @@
 import { bad, json, normalizePhone, readJSON, str } from '../../_lib.js';
 import { audit, need } from '../../_roles.js';
 import { TOO_MANY, staffLimited } from '../../_rate.js';
-import { ChatError, FILE_RE, L, STATES, addMessage, botOnline, clean, fileResponse, leadFromChat, messages, wrap } from '../../_chat.js';
+import { ChatError, FILE_RE, HANDOFF, L, STATES, addMessage, botOnline, clean, fileResponse, hasR2, leadFromChat, messages, r2Cap, r2Used, wrap } from '../../_chat.js';
 
-const pub = s => ({ id: s.id, state: s.state, handoff_reason: s.handoff_reason || null, lang: s.lang, page: s.page, ref_host: s.ref_host, created_at: s.created_at, last_at: s.last_at,
+const pub = s => ({ id: s.id, state: s.state, handoff_reason: s.handoff_reason || null, handoff_label: s.handoff_reason ? HANDOFF[s.handoff_reason] || null : null, lang: s.lang, page: s.page, ref_host: s.ref_host, created_at: s.created_at, last_at: s.last_at,
   last_user_at: s.last_user_at, last_bot_at: s.last_bot_at, msgs: s.msgs, files: s.files ?? undefined, bytes: s.bytes,
   unread: s.last_user_id > s.staff_seen_id, waiting_reply: s.last_user_id > s.answered_upto,
   lead: s.order_id ? { id: s.order_id, number: s.number || null } : null, last_text: s.last_text ?? undefined, last_role: s.last_role ?? undefined });
@@ -66,7 +66,9 @@ export const onRequestGet = ({ request, env }) => wrap(async () => {
   const c = await env.DB.prepare(`SELECT state, COUNT(*) AS n, SUM(CASE WHEN last_user_id > staff_seen_id THEN 1 ELSE 0 END) AS unread FROM chat_sessions WHERE msgs > 0 GROUP BY state`).all();
   const counts = { all: 0, unread: 0 };
   for (const r of c.results) { counts[r.state] = r.n; counts.all += r.n; counts.unread += r.unread || 0; }
-  return json({ rows, more, next: more ? rows[rows.length - 1].id : null, counts, online: await botOnline(env) });
+  // «Сховище: X з Y ГБ» — лише коли R2 привʼязано (файли чату; стеля — CHAT_R2_CAP_GB)
+  const storage = hasR2(env) ? { used: await r2Used(env), cap: r2Cap(env) } : null;
+  return json({ rows, more, next: more ? rows[rows.length - 1].id : null, counts, online: await botOnline(env), storage });
 });
 
 async function target(env, d) {

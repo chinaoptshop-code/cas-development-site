@@ -16,22 +16,47 @@ import { ipKey } from './_rate.js';
 
 export const LANGS = ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'pt', 'ar'];
 export const STATES = ['bot', 'waiting', 'staff', 'closed'];
+// Ліміти чату (Михайло 23.11.2026: «зроби якісь обмеження в чаті, щоб мені клієнти всі токени не використали»). Таблиця й як змінити —
+// tools/admin/README.md, розділ 21 «Ліміти чату». Частину можна перевизначити змінною оточення Pages без деплою коду — ENV_LIMITS нижче, lim(env).
 export const L = Object.freeze({
-  text: 4000,            // знаків у повідомленні відвідувача
+  text: 2000,            // знаків у повідомленні відвідувача (довше — 413 {too_long, max}; віконце показує лічильник і не шле)
   botText: 8000,         // знаків у відповіді бота / людини
-  startIpHour: 10,       // нових розмов з однієї адреси на годину
-  startAllHour: 600,     // нових розмов на весь сайт на годину
-  msgSessHour: 40, msgSessDay: 200, msgIpHour: 150,
-  upIpHour: 60, upIpDay: 200, filesSess: 30,
+  startIpHour: 10, startIpDay: 5,   // нових розмов з однієї адреси: на годину / на добу (24 год)
+  startAllHour: 600,                // нових розмов на весь сайт на годину
+  msgSessHour: 40, msgSessDay: 200, msgIpHour: 150, msgIpDay: 300,
+  upIpHour: 60, upIpDay: 200, filesSess: 12, filesMsg: 5,
   contactIpHour: 5,
-  fileR2: 50 * 1024 * 1024, sessR2: 150 * 1024 * 1024,
+  // розмір файлів: з R2 (binding MEDIA, Михайло 23.11.2026 «збільши до 10 МБ один файл») / без R2 — байти в D1 (база спільна з CRM)
+  fileR2: 10 * 1024 * 1024, sessR2: 50 * 1024 * 1024,
   fileD1: 1.5 * 1024 * 1024, sessD1: 6 * 1024 * 1024,
+  r2CapGB: 8,              // стеля всіх файлів чату в R2 (безкоштовно — 10 ГБ); ≥ 80 % — одне сповіщення, на стелі — лише малі файли (у D1)
   audio: 6 * 1024 * 1024,  // аудіо-відповідь бота (після base64)
+  convAnswers: 20,         // відповідей бота на розмову; далі — «далі відповість менеджер» (handoff limit)
+  convMsgs: 30,            // повідомлень відвідувача, що йдуть боту; 31-ше й далі — менеджеру
+  voiceConv: 2,            // голосових відповідей бота на розмову (Михайло 23.11.2026: «одне або два… а потім лише текстом»)
+  dayStarts: 300,          // нових розмов на весь сайт за добу (Київ); далі — «залиште номер»
+  dayAnswers: 500,         // відповідей бота на весь сайт за добу (Київ); далі — режим «залиште номер», як офлайн
   lock: 120,               // с: воркер узяв розмову; повторна видача — після
   online: 180,             // с: воркер вважається живим після останнього ping
   typing: 30,              // с: «друкує…» після typing: true
-  keepDays: 30, keepFilesDays: 14, orphanHours: 24,
+  keepDays: 30, keepFilesDays: 14, keepLeadFilesDays: 180, orphanHours: 24,
 });
+// змінні оточення Pages (Settings → Variables): ціле число в межах [min, max]; інше — типове значення з L
+export const ENV_LIMITS = Object.freeze({
+  convAnswers: ['CHAT_CONV_ANSWERS', 1, 200], convMsgs: ['CHAT_CONV_MSGS', 1, 300], voiceConv: ['CHAT_VOICE_PER_CONV', 0, 10],
+  dayStarts: ['CHAT_DAY_STARTS', 1, 20000], dayAnswers: ['CHAT_DAY_ANSWERS', 1, 50000],
+  startIpDay: ['CHAT_IP_STARTS', 1, 100], msgIpDay: ['CHAT_IP_MSGS', 10, 5000], r2CapGB: ['CHAT_R2_CAP_GB', 1, 9],
+});
+export function lim(env) {
+  const o = { ...L };
+  for (const [k, [name, lo, hi]] of Object.entries(ENV_LIMITS)) {
+    const v = env && env[name];
+    if (v == null || String(v).trim() === '') continue;
+    const n = Number(String(v).trim());
+    if (Number.isInteger(n)) o[k] = Math.max(lo, Math.min(hi, n));
+  }
+  return o;
+}
 export const MSG_LINKS = { telegram: 'https://t.me/+380978667755', whatsapp: 'https://wa.me/380978667755', viber: 'viber://chat?number=%2B380978667755' };
 export const ADMIN_URL = id => `https://cas-develop.com/kabinet/admin?cs=${id}#chat`;
 
@@ -234,11 +259,49 @@ export async function readCapped(request, max) {
 }
 
 export const hasR2 = env => !!(env.MEDIA && typeof env.MEDIA.put === 'function');
-export const limits = env => (hasR2(env) ? { file: L.fileR2, session: L.sessR2, r2: true } : { file: L.fileD1, session: L.sessD1, r2: false });
+// ліміти, які бачить віконце: з R2 — 10 / 50 МБ; R2 на стелі (store_full) — файл лише до ліміту D1 (1,5 МБ, лягає в D1); без R2 — 1,5 / 6 МБ
+export const limits = (env, full = false) => (hasR2(env)
+  ? { file: full ? L.fileD1 : L.fileR2, session: L.sessR2, r2: true, ...(full ? { store_full: true } : {}) }
+  : { file: L.fileD1, session: L.sessD1, r2: false });
 
-export async function putFile(env, s, f, bytes) {
+// ===== стеля сховища R2 (Михайло 23.11.2026: «постав стелю» — щоб ніколи не вийти за безкоштовні 10 ГБ) =====
+// Скільки байтів файлів чату лежить у R2 — SUM(size) за chat_files з r2_key; кеш у памʼяті ізоляту на 5 хв (+ свої завантаження одразу).
+// Фото обʼєктів (team/upload.js) теж ідуть у MEDIA, але це окремий префікс і невеликий обсяг — стеля рахує лише файли чату.
+const R2C = { t: 0, used: 0 };
+export const r2Reset = () => { R2C.t = 0; R2C.used = 0; R2C.armed = undefined; };
+export const r2Cap = env => lim(env).r2CapGB * 1024 ** 3;
+export async function r2Used(env, t = Date.now()) {
+  if (!hasR2(env)) return 0;
+  if (R2C.t && t - R2C.t < 300000) return R2C.used;
+  const r = await env.DB.prepare('SELECT COALESCE(SUM(size), 0) AS n FROM chat_files WHERE r2_key IS NOT NULL').first();
+  R2C.t = t; R2C.used = Number(r && r.n) || 0;
+  return R2C.used;
+}
+// сповіщення один раз (ключ у settings); знову — лише після того, як місце звільниться (< 70 %)
+async function once(env, key) {
+  const r = await env.DB.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, datetime('now'))").bind(key).run();
+  return !!r.meta.changes;
+}
+const forget = (env, ...keys) => env.DB.prepare(`DELETE FROM settings WHERE key IN (${keys.map(() => '?').join(', ')})`).bind(...keys).run();
+const gb = n => (n / 1024 ** 3).toFixed(1).replace('.', ',');
+// стан сховища перед завантаженням: {r2 — класти в R2, full — R2 на стелі (великі файли не приймаємо, малі — у D1)}
+export async function storage(env, len = 0) {
+  if (!hasR2(env)) return { r2: false, full: false };
+  const used = await r2Used(env), cap = r2Cap(env);
+  if (used < cap * 0.7) { if (R2C.armed !== true) { R2C.armed = true; await forget(env, 'chat_r2_80', 'chat_r2_cap'); } }
+  else R2C.armed = false;
+  if (used >= cap * 0.8 && await once(env, 'chat_r2_80'))
+    await notifyAdmins(env, `📦 <b>Сховище чату заповнене на ${Math.round(used / cap * 100)} %</b>\n${gb(used)} з ${gb(cap)} ГБ (R2). Файли розмов без заявки видаляються через ${L.keepFilesDays} діб, із заявкою — через ${L.keepLeadFilesDays}.`);
+  const full = used + len > cap;
+  if (full && await once(env, 'chat_r2_cap'))
+    await notifyAdmins(env, `⛔ <b>Стеля сховища чату</b>: ${gb(used)} з ${gb(cap)} ГБ. Великі файли відвідувачам не приймаємо (пропонуємо Telegram / WhatsApp), малі — до 1,5 МБ — ідуть у D1.`);
+  return { r2: !full, full, used, cap };
+}
+
+export async function putFile(env, s, f, bytes, toR2 = hasR2(env)) {
   const id = newFileId();
-  if (hasR2(env)) {
+  if (toR2 && hasR2(env)) {
+    R2C.used += bytes.length;
     const key = `chat/${s.sid}/${id}`;
     await env.MEDIA.put(key, bytes, { httpMetadata: { contentType: f.mime } });
     await env.DB.prepare('INSERT INTO chat_files (id, session_id, role, name, mime, kind, size, r2_key) VALUES (?, ?, ?, ?, ?, ?, ?, ?)')
@@ -272,6 +335,7 @@ export async function fileResponse(env, f) {
 export async function deleteFiles(env, rows) {
   if (!rows.length) return 0;
   if (hasR2(env)) for (const f of rows) if (f.r2_key) { try { await env.MEDIA.delete(f.r2_key); } catch (e) { console.log('chat r2 delete', e && e.message); } }
+  if (rows.some(f => f.r2_key)) R2C.t = 0; // місце звільнилось — перерахувати
   await env.DB.prepare(`DELETE FROM chat_files WHERE id ${IN_IDS}`).bind(idsArg(rows.map(f => f.id))).run();
   return rows.length;
 }
@@ -373,10 +437,84 @@ export async function notifyChat(env, text, id) {
     return n;
   } catch (e) { console.log('notifyChat', e && e.message); return 0; }
 }
+// службове сповіщення власнику й менеджерам (без кнопки розмови)
+export async function notifyAdmins(env, text) {
+  try {
+    let n = 0;
+    for (const chat of await alertIds(env)) if (await tg(env, 'sendMessage', { chat_id: chat, text, parse_mode: 'HTML', link_preview_options: { is_disabled: true } })) n++;
+    return n;
+  } catch (e) { console.log('notifyAdmins', e && e.message); return 0; }
+}
+
+// ===== добові лічильники сайту (доба — за Києвом; рядок settings на добу й лічильник, без запису на кожен poll) =====
+// chat_day|2026-11-23|starts — нових розмов, …|answers — відповідей бота. Старі рядки прибирає runChatCleanup.
+export const DAY_KEY = (what, at = new Date()) => `chat_day|${kyiv(at).date}|${what}`;
+export async function dayCount(env, what, at = new Date()) {
+  const r = await env.DB.prepare('SELECT value FROM settings WHERE key = ?').bind(DAY_KEY(what, at)).first();
+  return Number(r && r.value) || 0;
+}
+export async function dayInc(env, what, at = new Date()) {
+  await env.DB.prepare("INSERT INTO settings (key, value) VALUES (?1, '1') ON CONFLICT(key) DO UPDATE SET value = CAST(value AS INTEGER) + 1").bind(DAY_KEY(what, at)).run();
+}
+// добову стелю вичерпано: 'answers' — бот мовчить до кінця доби (чат — «залиште номер», як офлайн); 'starts' — нових розмов не відкриваємо.
+// Адмінам — одне сповіщення на добу на кожну стелю.
+export async function dayFull(env, what, at = new Date()) {
+  const n = await dayCount(env, what, at), max = what === 'starts' ? lim(env).dayStarts : lim(env).dayAnswers;
+  if (n < max) return false;
+  if (await once(env, DAY_KEY('note_' + what, at)))
+    await notifyAdmins(env, `⏸ <b>Добовий ліміт чату вичерпано</b>: ${what === 'starts' ? `нових розмов ${n} з ${max}` : `відповідей бота ${n} з ${max}`} (${kyiv(at).dmy}).\n` +
+      'До кінця доби за Києвом віконце пропонує залишити номер або написати в месенджер; повідомлення зберігаються для менеджера. Змінити — змінна ' +
+      (what === 'starts' ? 'CHAT_DAY_STARTS' : 'CHAT_DAY_ANSWERS') + ' у Cloudflare Pages.');
+  return true;
+}
+
+// те саме для частих читань (poll віконця): кеш у памʼяті ізоляту на хвилину
+const DAYC = new Map();
+export async function dayFullCached(env, what, t = Date.now()) {
+  const e = DAYC.get(what);
+  if (e && t - e.t < 60000) return e.v;
+  const v = await dayFull(env, what);
+  DAYC.set(what, { t, v });
+  return v;
+}
+export const dayReset = () => DAYC.clear();
+
+// ===== ліміт розмови: бот замовкає, далі — людина (handoff з причиною limit) =====
+export const LIMIT_MSG = dict({
+  uk: 'Далі вам відповість менеджер. Залиште, будь ласка, номер телефону — зателефонуємо в робочий час (Пн–Пт 10:00–20:00), або напишіть у Telegram, WhatsApp чи Viber.',
+  ru: 'Дальше вам ответит менеджер. Оставьте, пожалуйста, номер телефона — перезвоним в рабочее время (Пн–Пт 10:00–20:00), или напишите в Telegram, WhatsApp или Viber.',
+  en: 'A manager will take it from here. Please leave your phone number and we will call you during working hours (Mon–Fri 10:00–20:00, Kyiv time), or message us on Telegram, WhatsApp or Viber.',
+  es: 'A partir de aquí le atenderá un gestor. Déjenos su teléfono y le llamaremos en horario laboral (lun–vie 10:00–20:00, hora de Kiev), o escríbanos por Telegram, WhatsApp o Viber.',
+  zh: '接下来将由经理为您服务。请留下电话号码，我们会在工作时间（周一至周五 10:00–20:00，基辅时间）给您回电，或通过 Telegram、WhatsApp、Viber 联系我们。',
+  pl: 'Dalej odpowie menedżer. Proszę zostawić numer telefonu — oddzwonimy w godzinach pracy (pn–pt 10:00–20:00, czas kijowski), lub napisać na Telegramie, WhatsAppie albo Viberze.',
+  de: 'Ab hier übernimmt ein Manager. Hinterlassen Sie bitte Ihre Telefonnummer – wir rufen zu den Geschäftszeiten zurück (Mo–Fr 10:00–20:00, Kyjiwer Zeit) –, oder schreiben Sie uns über Telegram, WhatsApp oder Viber.',
+  fr: 'Un responsable va prendre le relais. Laissez-nous votre numéro et nous vous rappellerons aux heures ouvrables (lun–ven 10:00–20:00, heure de Kyiv), ou écrivez-nous sur Telegram, WhatsApp ou Viber.',
+  pt: 'A partir daqui responde-lhe um gestor. Deixe o seu número de telefone e ligamos no horário de trabalho (seg–sex 10:00–20:00, hora de Kyiv), ou escreva-nos no Telegram, WhatsApp ou Viber.',
+  ar: 'سيتابع معك أحد المديرين من هنا. اترك رقم هاتفك وسنتصل بك خلال ساعات العمل (الاثنين–الجمعة 10:00–20:00 بتوقيت كييف)، أو راسلنا عبر Telegram أو WhatsApp أو Viber.',
+});
+// відповідей бота в розмові (усього й голосових) — для стелі розмови й бюджету в черзі воркера
+export async function botCounts(env, sessionId) {
+  const r = await env.DB.prepare("SELECT COUNT(*) AS n, SUM(CASE WHEN audio_id IS NOT NULL THEN 1 ELSE 0 END) AS v FROM chat_messages WHERE session_id = ? AND role = 'bot'").bind(sessionId).first();
+  return { answers: Number(r && r.n) || 0, voice: Number(r && r.v) || 0 };
+}
+export const isCapped = s => s.handoff_reason === 'limit';
+// Розмова дійшла стелі: стан waiting з причиною limit (воркер її більше не отримує), системне повідомлення мовою розмови
+// й одне сповіщення адмінам. Розмову, яку веде людина (staff), не чіпаємо. Повторно — нічого (уже limit).
+export async function capConversation(env, s, why) {
+  const u = await env.DB.prepare("UPDATE chat_sessions SET state = 'waiting', handoff_reason = 'limit', lock_until = NULL, typing_until = NULL, last_at = datetime('now') WHERE id = ? AND state IN ('bot', 'waiting', 'closed') AND COALESCE(handoff_reason, '') <> 'limit'").bind(s.id).run();
+  if (!u.meta.changes) return false;
+  await addMessage(env, s, 'system', LIMIT_MSG[langOf(s.lang)]);
+  const text = [`🙋 <b>Чат на сайті: ліміт розмови — далі людина</b>`, `Розмова #${s.id} · ${escHtml((s.lang || 'uk').toUpperCase())} · ${escHtml(s.page || '/')}`,
+    `Причина: ${escHtml(HANDOFF.limit)}${why ? ' — ' + escHtml(why) : ''}`].join('\n');
+  await notifyChat(env, text, s.id);
+  return true;
+}
+
 // Причини handoff (поле handoff_reason від воркера, tools/chat/API.md) — підпис у Telegram і адмінці
 export const HANDOFF = dict({
   asks_human: 'Клієнт просить людину або дзвінок', big_project: 'Великий обʼєкт (комерція, будинок, великий бюджет)',
   complaint: 'Скарга', complex: 'Складне питання', other: 'Інше',
+  limit: 'Ліміт чату: бот вичерпав відповіді на цю розмову',
 });
 // «Потрібна людина»: стан waiting + сповіщення власнику й менеджерам (адресати заявок) — одразу, у будь-який час
 // renotify (воркер, 23.11.2026): розмова вже waiting, але зʼявилось нове для людини (клієнт обрав час дзвінка) — сповістити ще раз.
@@ -427,7 +565,8 @@ export async function runChatNotices(env, at = new Date()) {
 
 // ===== очищення за терміном (розклад /api/admin/lead-sla) =====
 // розмови без заявки: остання подія > 30 діб тому — видаляємо разом із повідомленнями й файлами;
-// файли розмов без заявки старші за 14 діб і файли, завантажені, але не надіслані за добу, — видаляємо (повідомлення лишаються).
+// файли розмов без заявки старші за 14 діб, із заявкою — за 180 діб, і файли, завантажені, але не надіслані за добу, — видаляємо
+// (з R2 — теж, MEDIA.delete; повідомлення лишаються). Так стеля сховища звільняється сама.
 export async function runChatCleanup(env, at = new Date()) {
   try {
     const t = at.getTime(), iso = ms => new Date(ms).toISOString().slice(0, 19).replace('T', ' ');
@@ -441,9 +580,11 @@ export async function runChatCleanup(env, at = new Date()) {
       await env.DB.prepare(`DELETE FROM chat_sessions WHERE id ${IN_IDS}`).bind(idsArg(sids)).run();
     }
     const { results: stale } = await env.DB.prepare(`SELECT f.id, f.r2_key FROM chat_files f JOIN chat_sessions s ON s.id = f.session_id
-        WHERE (s.order_id IS NULL AND f.created_at < ?) OR (f.message_id IS NULL AND f.created_at < ?) ORDER BY f.created_at LIMIT 500`)
-      .bind(iso(t - L.keepFilesDays * 86400000), iso(t - L.orphanHours * 3600000)).all();
+        WHERE (s.order_id IS NULL AND f.created_at < ?) OR (s.order_id IS NOT NULL AND f.created_at < ?) OR (f.message_id IS NULL AND f.created_at < ?) ORDER BY f.created_at LIMIT 500`)
+      .bind(iso(t - L.keepFilesDays * 86400000), iso(t - L.keepLeadFilesDays * 86400000), iso(t - L.orphanHours * 3600000)).all();
     files += await deleteFiles(env, stale);
+    // добові лічильники старші за 3 доби
+    await env.DB.prepare("DELETE FROM settings WHERE key LIKE 'chat_day|%' AND substr(key, 10, 10) < ?").bind(kyiv(new Date(t - 3 * 86400000)).date).run();
     return { sessions: sids.length, files };
   } catch (e) {
     if (noTable(e)) return { skipped: 'no_migration' };

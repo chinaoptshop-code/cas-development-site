@@ -346,7 +346,7 @@
   if (!s || !m) return;
   s.addEventListener('click', function () { if (!m.hasAttribute('tabindex')) m.setAttribute('tabindex', '-1'); try { m.focus({ preventScroll: true }); } catch (x) { m.focus(); } });
 })();
-// ── Кнопка «Зв'язатися» (.mbar[data-one], tools/site/chrome.py mbar_lead): тап — меню (ряд іконок: Подзвонити, Telegram, WhatsApp, Viber, WeChat; «Залишити номер» — текстом);
+// ── Кружечок «Зв'язатися» (.mbar[data-one] .mb-tg, tools/site/chrome.py mbar_lead; поруч — кружечок бота a.mb-bot): тап — меню (ряд іконок: Подзвонити, Telegram, WhatsApp, Viber, WeChat; «Залишити номер» — текстом);
 // закривається повторним тапом, тапом поза меню, Esc і після вибору пункту. «Залишити номер» прокручує до форми — /assets/lead-form.v1.js.
 (function () {
   var d = document, bar = d.querySelector('.mbar[data-one]');
@@ -1106,16 +1106,16 @@
   });
   // та сама іконка в рядах месенджерів, де її ще немає: у режимі перевірки ?chat=1 — у всіх (як при CHAT_PUBLIC = True — tools/site/flags.py chat_icon),
   // при CHAT_PUBLIC — лише в рядах, які будує lead-form.v1.js (.lq-alt, .of-ct-m біля форми); статичні генератор уже має
-  function icon(img) {
-    var a = d.createElement('a'); a.href = '#chat'; a.setAttribute('data-chat', ''); a.setAttribute('aria-label', NAME); a.title = NAME;
-    if (img) { a.className = 'mb-chat'; var i = d.createElement('img'); i.src = '/assets/brand/chat.svg'; i.width = 32; i.height = 32; i.alt = ''; i.decoding = 'async'; a.appendChild(i); }
-    else a.className = 'bi bi-chat';
+  // circle — кружечок бота поруч із кружечком дзвінка в куті телефона (.mbar[data-one] a.mb-bot; іконка — CSS-маска), інакше — іконка ряду
+  function icon(circle) {
+    var a = d.createElement('a'); a.href = d.getElementById('zayavka') ? '#zayavka' : '#chat'; a.setAttribute('data-chat', ''); a.setAttribute('aria-label', NAME); a.title = NAME;
+    a.className = circle ? 'mb-bot' : 'bi bi-chat';
     return a;
   }
   function put() {
     [].forEach.call(d.querySelectorAll('.scf-soc,.sch-mmsg,.lq-alt,.of-ct-m'), function (r) { if (!r.querySelector('a[data-chat]')) r.appendChild(icon(false)); });
-    var m = d.querySelector('.mbar[data-one] .mb-menu');
-    if (m && !m.querySelector('a[data-chat]')) m.insertBefore(icon(true), m.querySelector('.mb-lead'));
+    var b = d.querySelector('.mbar[data-one]');
+    if (b && !b.querySelector('a.mb-bot')) b.insertBefore(icon(true), b.querySelector('.mb-tg'));
   }
   function start() {
     put();

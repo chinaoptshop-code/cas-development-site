@@ -8,3 +8,7 @@ binding = "DB"
 database_name = "cas-shop"
 database_id = "__D1_ID__"
 migrations_dir = "migrations"
+
+# R2 (файли чату й фото обʼєктів, binding MEDIA): блок [[r2_buckets]] тут НЕ тримаємо — деплой (.github/workflows/deploy.yml,
+# крок «R2 для файлів») дописує його в робочу копію лише якщо bucket cas-media існує, інакше `pages deploy` впав би.
+# Інструкція власнику — tools/admin/README.md, розділ 21.

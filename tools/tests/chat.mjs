@@ -44,7 +44,7 @@ let A;
 await it('start → sid 32 hex, token 64 hex, привітання мовою, ліміти з R2; у D1 — лише хеш токена й IP', async () => {
   A = await start(env, { lang: 'en', page: 'https://cas-develop.com/en/interior-design?x=1', ref_host: 'www.Google.com' });
   eq(A.status, 200); ok(/^[0-9a-f]{32}$/.test(A.sid)); ok(/^[0-9a-f]{64}$/.test(A.token));
-  ok(/CAS Development/.test(A.hello) && /Hello/.test(A.hello)); eq(A.limits, { file: 50 * 1024 * 1024, session: 150 * 1024 * 1024, r2: true });
+  ok(/CAS Development/.test(A.hello) && /Hello/.test(A.hello)); eq(A.limits, { file: 10 * 1024 * 1024, session: 50 * 1024 * 1024, r2: true }); eq(A.text_max, 2000); eq(A.files_msg, 5); eq(A.limit, null);
   ok(A.accept.includes('.dwg') && A.accept.includes('.3ds') && !A.accept.includes('.svg') && !A.accept.includes('.html'));
   const s = await q1('SELECT * FROM chat_sessions WHERE sid = ?', A.sid);
   eq(s.lang, 'en'); eq(s.page, '/en/interior-design'); eq(s.ref_host, 'google.com'); eq(s.state, 'bot');
@@ -65,13 +65,14 @@ await it('send: текст і опитування; порожнє — 422; за
   eq((await poll(A, r.data.id)).data.messages.length, 0, 'after — лише нові');
   eq((await send(A, { text: '   ' })).status, 422);
   eq((await send(A, {})).status, 422);
-  eq((await send(A, { text: 'я'.repeat(4300) })).status, 413);
+  const tl = await send(A, { text: 'я'.repeat(2001) });
+  eq(tl.status, 413); eq(tl.data.too_long, true); eq(tl.data.max, 2000);
   eq((await send(A, { text: { a: 1 } })).status, 400);
-  // ≤ 4000 знаків приймаємо, керівні символи прибираємо
-  const long = await send(A, { text: 'a\u0000b‮c' + 'я'.repeat(4100 - 10) });
+  // рівно 2000 знаків (після очищення: керівні символи й пробіли по краях не рахуються) — приймаємо без обрізання
+  const long = await send(A, { text: '  a\u0000b‮c' + 'я'.repeat(1997) + '  ' });
   eq(long.status, 200);
   const m = await q1('SELECT text FROM chat_messages WHERE id = ?', long.data.id);
-  eq(m.text.length, 4000); ok(m.text.startsWith('abc'));
+  eq(m.text.length, 2000); ok(m.text.startsWith('abc'));
 });
 await it('чужий / невірний токен, чужий sid → 404 (не підтверджуємо існування)', async () => {
   const B2 = await start();
@@ -145,7 +146,7 @@ await it('файл віддаємо лише своїй розмові: attachme
   eq((await call(env, 'GET', '/api/chat/file/' + fPng)).status, 404, 'без токена');
   eq((await call(env, 'GET', '/api/chat/file/zz', { headers: A.h })).status, 404);
 });
-await it('без R2: до 1,5 МБ у D1, більший файл → 413 {too_big, alt: Telegram/WhatsApp}; з R2 — до 50 МБ', async () => {
+await it('без R2: до 1,5 МБ у D1, більший файл → 413 {too_big, alt: Telegram/WhatsApp}; з R2 — до 10 МБ', async () => {
   const D = await start(envD1);
   eq(D.limits, { file: 1.5 * 1024 * 1024, session: 6 * 1024 * 1024, r2: false });
   const okR = await up(D, 'a.jpg', pad(JPG, 1024 * 1024), 'image/jpeg', envD1);
@@ -156,8 +157,11 @@ await it('без R2: до 1,5 МБ у D1, більший файл → 413 {too_b
   eq(big.status, 413); eq(big.data.too_big, true); ok(/t\.me/.test(big.data.alt.telegram) && /wa\.me/.test(big.data.alt.whatsapp));
   const got = await call(envD1, 'GET', '/api/chat/file/' + okR.data.file_id, { headers: D.h });
   eq(got.status, 200); eq(got.text.length > 0, true);
-  // з R2 — 10 МБ проходить
-  eq((await up(A, 'big.pdf', pad(PDF, 10 * 1024 * 1024))).status, 200);
+  // з R2 — 10 МБ проходить, більше — 413
+  const A2 = await start();
+  eq((await up(A2, 'big.pdf', pad(PDF, 10 * 1024 * 1024))).status, 200);
+  const over = await up(A2, 'big2.pdf', pad(PDF, 10 * 1024 * 1024 + 1));
+  eq(over.status, 413); eq(over.data.max, 10 * 1024 * 1024);
   // понад 50 МБ відсікає ще спільний middleware за Content-Length
   const { csrfCheck } = await import('../../functions/api/_middleware.js');
   const req = n => new Request('https://cas-develop.com/api/chat/upload', { method: 'POST', headers: { origin: 'https://cas-develop.com', 'content-type': 'application/pdf', 'content-length': String(n) } });
@@ -165,25 +169,26 @@ await it('без R2: до 1,5 МБ у D1, більший файл → 413 {too_b
   const other = new Request('https://cas-develop.com/api/chat/send', { method: 'POST', headers: { origin: 'https://cas-develop.com', 'content-type': 'text/plain', 'content-length': '5' } });
   eq(csrfCheck(other).status, 415, 'решта /api/chat — лише JSON');
 });
-await it('ліміт байтів розмови без R2 (6 МБ) і кількості файлів (30) → 413', async () => {
+await it('ліміт байтів розмови без R2 (6 МБ) і кількості файлів (12) → 413', async () => {
   const D = await start(envD1);
   let last;
   for (let i = 0; i < 5; i++) last = await up(D, `p${i}.jpg`, pad(JPG, 1.4 * 1024 * 1024), 'image/jpeg', envD1);
   eq(last.status, 413); eq(last.data.session_full, true);
   const E = await start();
   await DB.prepare('UPDATE chat_sessions SET bytes = 0 WHERE sid = ?').bind(E.sid).run();
-  for (let i = 0; i < 30; i++) await DB.prepare("INSERT INTO chat_files (id, session_id, name, mime, kind, size, data) VALUES (?, (SELECT id FROM chat_sessions WHERE sid = ?), 'x.png', 'image/png', 'image', 1, x'00')")
+  for (let i = 0; i < 12; i++) await DB.prepare("INSERT INTO chat_files (id, session_id, name, mime, kind, size, data) VALUES (?, (SELECT id FROM chat_sessions WHERE sid = ?), 'x.png', 'image/png', 'image', 1, x'00')")
     .bind(String(i).padStart(24, 'a'), E.sid).run();
   const r = await up(E, 'one.png', PNG, 'image/png');
   eq(r.status, 413); eq(r.data.too_many, true);
 });
 
 describe('Чат: ліміти');
-await it('нових розмов з однієї адреси — 10 на годину, далі 429', async () => {
+await it('нових розмов з однієї адреси — 5 на добу (і 10 на годину), далі 429 {ip_full}', async () => {
   const ip = '10.66.6.6';
   let last;
-  for (let i = 0; i < 11; i++) last = await start(env, { lang: 'uk' }, ip);
-  eq(last.status, 429);
+  for (let i = 0; i < 5; i++) { last = await start(env, { lang: 'uk' }, ip); eq(last.status, 200, 'розмова ' + (i + 1)); }
+  last = await start(env, { lang: 'uk' }, ip);
+  eq(last.status, 429); eq(last.ip_full, true);
   eq((await start(env, { lang: 'uk' }, '10.66.6.7')).status, 200);
 });
 await it('повідомлень у розмові — 40 на годину, далі 429', async () => {

@@ -379,20 +379,24 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
 @media(max-width:379px){.mbar{gap:6px!important}.mbar a{gap:4px!important}.mbar img{width:24px!important;height:24px!important}}
 /* найвужчі */
 @media(max-width:359px){.mbar a:not(.mb-call){font-size:0!important;gap:0!important}.mbar a:not(.mb-call) img{width:28px!important;height:28px!important}}
-/* кнопка «Зв'язатися» (Михайло 05.11.2026): замість панелі на всю ширину — одна пігулка в куті (≥44 px, не перекриває кнопки hero),
-   тап — меню-лист: Подзвонити, Telegram, WhatsApp, Viber, «Залишити номер» (до форми #zayavka). Розмітка — tools/site/chrome.py mbar_lead(),
-   відкриття — site-chrome.v1.js. На ПК панелі немає (у шапці телефон і «Заявка»). RTL — у лівому куті. */
+/* Два кружечки в куті (Михайло 23.11.2026: «кружечок "подзвонити"… а біля нього кружечок з ботом-асистентом»; раніше — пігулка «Зв'язатися», 05.11.2026):
+   .mb-tg — дзвінок (латунна заливка, слухавка; у самому куті), тап — меню-лист: ряд іконок Подзвонити, Telegram, WhatsApp, Viber, WeChat і «Залишити номер» (до форми #zayavka);
+   .mb-bot — бот-помічник (темний з латунною рамкою, бульбашка чату), тап — панель чату (a[data-chat], CHAT_PUBLIC або ?chat=1).
+   Обидва 56 px, без видимого тексту (назва — aria-label/title), RTL — у лівому куті. Розмітка — tools/site/chrome.py mbar_lead(), відкриття — site-chrome.v1.js.
+   На ПК панелі немає (у шапці телефон і «Заявка»). */
 @media(max-width:767px){
-  body:has(>.mbar[data-one]),body:has(.mbar[data-one]){padding-bottom:calc(76px + env(safe-area-inset-bottom))}
-  .mbar[data-one]{display:block;left:auto;right:auto;inset-inline-end:max(14px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom));width:auto;
+  body:has(>.mbar[data-one]),body:has(.mbar[data-one]){padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+  .mbar[data-one]{display:flex;flex-direction:row;align-items:flex-end;gap:10px;left:auto;right:auto;inset-inline-end:max(14px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom));width:auto;
     padding:0!important;background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none}
-  .mbar[data-one] .mb-tg{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px 0 16px;border-radius:999px;border:1px solid #bf9148;background:#bf9148;color:#14120f;
-    font:600 .9375rem/1 "Manrope","Manrope Fallback",system-ui,sans-serif;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.45)}
-  .mbar[data-one] .mb-tg::before{content:"";width:18px;height:18px;flex:none;background:currentColor;
-    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z'/%3E%3C/svg%3E") center/contain no-repeat;
-    mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z'/%3E%3C/svg%3E") center/contain no-repeat}
-  .mbar[data-one].open .mb-tg::before{-webkit-mask-image:none;mask-image:none;content:"\00d7";background:none;font-size:22px;line-height:18px;text-align:center}
-  .mbar[data-one] .mb-tg:focus-visible{outline:2px solid #f3d7a6;outline-offset:3px}
+  .mbar[data-one] .mb-tg,.mbar[data-one]>.mb-bot{position:relative;display:grid;place-items:center;flex:none;width:56px;height:56px;min-width:0;min-height:0;margin:0;padding:0;box-sizing:border-box;border-radius:50%;
+    font:400 26px/1 "Manrope","Manrope Fallback",system-ui,sans-serif;cursor:pointer;overflow:visible;box-shadow:0 6px 18px rgba(0,0,0,.42);-webkit-tap-highlight-color:transparent}
+  .mbar[data-one] .mb-tg{border:1px solid #bf9148;background:#bf9148;color:#14120f}
+  .mbar[data-one]>.mb-bot{border:1.5px solid #bf9148;background:#14120f;color:#e2bf86}
+  .mbar[data-one] .mb-tg::before,.mbar[data-one]>.mb-bot::before{content:"";width:24px;height:24px;background:currentColor;
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z'/%3E%3C/svg%3E") center/contain no-repeat}
+  .mbar[data-one]>.mb-bot::before{width:26px;height:26px;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M4.5 3.5h15A2.5 2.5 0 0 1 22 6v9.5a2.5 2.5 0 0 1-2.5 2.5H11l-5 4v-4H4.5A2.5 2.5 0 0 1 2 15.5V6a2.5 2.5 0 0 1 2.5-2.5zM6.6 10.75a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0zM10.6 10.75a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0zM14.6 10.75a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill-rule='evenodd' d='M4.5 3.5h15A2.5 2.5 0 0 1 22 6v9.5a2.5 2.5 0 0 1-2.5 2.5H11l-5 4v-4H4.5A2.5 2.5 0 0 1 2 15.5V6a2.5 2.5 0 0 1 2.5-2.5zM6.6 10.75a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0zM10.6 10.75a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0zM14.6 10.75a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0z'/%3E%3C/svg%3E")}
+  .mbar[data-one].open .mb-tg::before{-webkit-mask-image:none;mask-image:none;content:"\00d7";background:none;width:auto;height:auto;font-size:30px;line-height:1;margin-top:-2px}
+  .mbar[data-one] .mb-tg:focus-visible,.mbar[data-one]>.mb-bot:focus-visible{outline:2px solid #f3d7a6;outline-offset:3px}
   .mbar[data-one] .mb-menu{display:none;position:absolute;bottom:calc(100% + 10px);inset-inline-end:0;grid-template-columns:repeat(5,48px);width:max-content;max-width:calc(100vw - 28px);box-sizing:border-box;padding:8px;gap:6px;
     background:rgba(14,13,12,.97);border:1px solid rgba(191,145,72,.35);border-radius:16px;box-shadow:0 12px 36px rgba(0,0,0,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
   .mbar[data-one].open .mb-menu{display:grid}
@@ -406,9 +410,6 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
   .mbar[data-one] .mb-menu a:not(.mb-lead){justify-content:center;width:48px;padding:0;border:1px solid rgba(191,145,72,.35);border-radius:12px}
   .mbar[data-one] .mb-menu a.mb-call{border-color:#bf9148}.mbar[data-one] .mb-menu a.mb-call svg{margin:0}
   .mbar[data-one] .mb-menu a.mb-lead{grid-column:1/-1;white-space:normal;text-align:center;line-height:1.25}
-  /* 6 іконок (з чатом a.mb-chat — CHAT_PUBLIC або ?chat=1) — в один ряд і на 344 px: 6 × 44 + 5 × 4 + 2 × 6 + 2 = 298 ≤ 100vw − 28 */
-  .mbar[data-one] .mb-menu:has(>.mb-chat){grid-template-columns:repeat(6,44px);gap:4px;padding:6px}
-  .mbar[data-one] .mb-menu:has(>.mb-chat) a:not(.mb-lead){width:44px;min-height:44px}
   @media(prefers-reduced-motion:no-preference){.mbar[data-one].open .mb-menu{animation:mb-in .22s var(--ease-out,ease) both}}
 }
 @keyframes mb-in{from{opacity:0;transform:translate3d(0,8px,0)}}
@@ -1039,11 +1040,11 @@ html body :is(.xs-st,.xs-cv,.xs-sv,.vgrid,.strip,.pk,.tm-ph,.proj-row-scroll,.pr
   @media(max-width:439px){.scf-langs{display:grid;grid-template-columns:repeat(5,1fr)}}
   body:has(.mbar[data-one]):has(.scf){padding-bottom:0}
   body:has(.mbar[data-one]) .scf{padding-bottom:calc(14px + env(safe-area-inset-bottom))}
-  body:has(.mbar[data-one]) .scf-legal{flex-direction:column;align-items:flex-start;gap:0;min-height:48px;padding-inline-end:11.5rem;line-height:1.35;overflow-wrap:break-word;hyphens:auto}  /* 320 px (WCAG 1.4.10, зум 400 %): довге слово поруч із пігулкою переноситься, без горизонтальної прокрутки */
+  body:has(.mbar[data-one]) .scf-legal{flex-direction:column;align-items:flex-start;gap:0;min-height:48px;padding-inline-end:9rem;line-height:1.35;overflow-wrap:break-word;hyphens:auto}  /* 320 px (WCAG 1.4.10, зум 400 %): довге слово поруч із пігулкою переноситься, без горизонтальної прокрутки */
   body:has(.mbar[data-one]) .scf-legal a{min-height:32px;min-width:44px;position:relative}
   body:has(.mbar[data-one]) .scf-legal a::before{content:"";position:absolute;inset:-6px 0}
-  /* «Cookies» (22.11.2026) — у першому ряду, над пігулкою (у її колонці): футер не росте; політика, умови й © — як були, поруч із пігулкою */
-  body:has(.mbar[data-one]) .scf-legal{display:grid;grid-template-columns:minmax(0,1fr) 11.5rem;align-items:start;padding-inline-end:0}
+  /* «Cookies» (22.11.2026) — у першому ряду, над кружечками (у їхній колонці 9rem: 2 × 56 + 10 + 14 px): футер не росте; політика, умови й © — як були, поруч із пігулкою */
+  body:has(.mbar[data-one]) .scf-legal{display:grid;grid-template-columns:minmax(0,1fr) 9rem;align-items:start;padding-inline-end:0}
   body:has(.mbar[data-one]) .scf-legal>*{grid-column:1}
   body:has(.mbar[data-one]) .scf-legal>a[data-ck]{grid-column:2;grid-row:1;justify-self:start;display:inline-flex;align-items:center;padding-inline:14px 8px}
 }
@@ -1148,7 +1149,7 @@ a[data-lb]{cursor:zoom-in}
 .ck-b button:hover,.ck-b button:focus-visible{background:rgba(191,145,72,.14)}
 .ck-b button:focus-visible{outline:2px solid #f3d7a6;outline-offset:2px}
 .ck-b button[aria-pressed=true]{background:rgba(191,145,72,.22)}
-@media(max-width:767px){.ck.ck-up{bottom:calc(72px + env(safe-area-inset-bottom,0px))}}
+@media(max-width:767px){.ck.ck-up{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
 @media(min-width:768px){.ck{inset-inline-end:auto;max-width:25rem}}
 html.ck-p body::after{content:"";display:block;height:var(--ckh,0px)}
 @media(prefers-reduced-motion:reduce){.ck,.ck.on{transition:none;transform:none}}

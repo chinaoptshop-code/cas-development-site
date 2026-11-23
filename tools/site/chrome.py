@@ -686,14 +686,15 @@ def mbar_logos(s):
     return s[:k] + blk + s[e:]
 
 
-# Нижня панель → ОДНА компактна кнопка «Зв'язатися» в куті (Михайло 05.11.2026: «зменш "Залишити заявку" — до одного знизу»).
-# Тап відкриває невелике меню: ряд іконок Подзвонити (tel:), Telegram, WhatsApp, Viber, WeChat (лише іконки, Михайло 21.11.2026 — mb_icons) і «Залишити номер» (до єдиної форми #zayavka;
+# Нижня панель → ОДНА компактна кнопка «Зв'язатися» в куті (Михайло 05.11.2026: «зменш "Залишити заявку" — до одного знизу»);
+# з 23.11.2026 — круглі кнопки без тексту: кружечок дзвінка (меню нижче) і поруч кружечок бота-помічника (a.mb-bot[data-chat], лише CHAT_PUBLIC).
+# Тап по кружечку дзвінка відкриває невелике меню: ряд іконок Подзвонити (tel:), Telegram, WhatsApp, Viber, WeChat (лише іконки, Михайло 21.11.2026 — mb_icons) і «Залишити номер» (до єдиної форми #zayavka;
 # /assets/lead-form.v1.js прокручує до поля телефону й ставить фокус). Посилання панелі з усіма атрибутами лишаються як були.
 # Стилі — «Кнопка Зв'язатися» в site-chrome.v1.css (.mbar[data-one]; на ПК панелі немає — у шапці телефон і «Заявка»),
 # відкриття/закриття — site-chrome.v1.js. Ідемпотентно: згенеровані частини (кнопка, обгортка, Viber, «Залишити номер») знімаємо й ставимо заново.
 MB_ONE = dict(uk=("Зв'язатися",), ru=('Связаться',), en=('Contact',), es=('Contactar',), zh=('联系我们',), pl=('Kontakt',), de=('Kontakt',), fr=('Contact',), pt=('Contactar',), ar=('تواصل معنا',))
 VIBER = 'viber://chat?number=%2B380978667755'
-MB_LEAD_RX = re.compile(r'<style id="mb-lead">.*?</style>|<a class="mb-(?:lead|vb|wx|chat)"[^>]*>.*?</a>\n?|<button type="button" class="mb-tg"[^>]*>.*?</button>\n?|<div class="mb-menu"[^>]*>\n?|</div><!--/mb-menu-->\n?', re.S)
+MB_LEAD_RX = re.compile(r'<style id="mb-lead">.*?</style>|<a class="mb-(?:lead|vb|wx|chat|bot)"[^>]*>.*?</a>\n?|<button type="button" class="mb-tg"[^>]*>.*?</button>\n?|<div class="mb-menu"[^>]*>\n?|</div><!--/mb-menu-->\n?', re.S)
 
 
 # Базова панель .mbar (стилі m-fix + посилання) для сторінок, що будуються без неї (каталог 3D-турів /tury і /<мова>/tury,
@@ -777,10 +778,21 @@ def mbar_lead(s, lang, rel=''):
     wx = f'<a class="mb-wx" href="weixin://" data-wx="{WECHAT}" aria-label="WeChat {WECHAT}">{img("wechat")}</a>\n'
     body = mb_icons(body, lang)
     aria = ((i18n.ui(lang) or {}).get('form') or {}).get('mbar') or {'ru': 'Быстрая связь'}.get(lang, "Швидкий зв'язок")
-    out = (f'{m.group(1)} data-one role="navigation" aria-label="{aria}">\n'
-           f'<button type="button" class="mb-tg" aria-expanded="false" aria-controls="mb-menu">{one}</button>\n'
-           f'<div class="mb-menu" id="mb-menu">\n{body}\n{mb_icons(vb, lang)}{wx}{flags.chat_icon(lang, img=True)}<a class="mb-lead" href="{href}">{lab}</a>\n</div><!--/mb-menu-->\n')
+    # два кружечки (Михайло 23.11.2026: «кружечок "подзвонити"… а біля нього кружечок з ботом-асистентом»): видимого тексту немає,
+    # назва — aria-label/title; іконки — CSS-маски (.mb-tg — слухавка, .mb-bot — чат), бот — перед дзвінком (дзвінок у самому куті)
+    one = one.replace('"', '&quot;')
+    out = (f'{m.group(1)} data-one role="navigation" aria-label="{aria}">\n{flags.chat_icon(lang, circle=True, href=href)}'
+           f'<button type="button" class="mb-tg" aria-expanded="false" aria-controls="mb-menu" aria-label="{one}" title="{one}"></button>\n'
+           f'<div class="mb-menu" id="mb-menu">\n{body}\n{mb_icons(vb, lang)}{wx}<a class="mb-lead" href="{href}">{lab}</a>\n</div><!--/mb-menu-->\n')
     return head + out + s[e:]
+
+
+def chat_href(s, lang):
+    """Іконки чату (a[data-chat]) без JS ведуть до форми заявки: на сторінці без #zayavka — до форми мови (T[lang]['cta_href'])."""
+    if 'data-chat' not in s or 'id="zayavka"' in s:
+        return s
+    to = T.get(lang, T['uk'])['cta_href'] if 'id="lead"' not in s else '#lead'
+    return re.sub(r'href="#(?:zayavka|chat)"(?= data-chat)', f'href="{to}"', s)
 
 
 # Microsoft Clarity: вантажимо ЛИШЕ після першої дії відвідувача (scroll/pointerdown/keydown/touchstart), без таймера
@@ -1127,6 +1139,7 @@ def apply(s, rel):
         s = mbar_add(s, lang)
     s = mbar_logos(s)
     s = mbar_lead(s, lang, rel)
+    s = chat_href(s, lang)
     s = viewport(s)
     s = mfix_min(s)
     s = legacy_css(s)

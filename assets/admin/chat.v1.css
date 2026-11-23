@@ -6,6 +6,9 @@
 .adm .ch-on{font-size:var(--fs-small);color:var(--err,#e07a6a)}
 .adm .ch-on::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:1px}
 .adm .ch-on.ok{color:var(--ok,#8fc79a)}
+.adm .ch-store{font-size:var(--fs-small);color:var(--muted)}
+.adm .ch-store.warn{color:var(--err,#e07a6a)}
+.adm .ch-why{flex-basis:100%;font-size:var(--fs-small);color:var(--muted)}
 .adm .ch-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .adm .ch-row{display:grid;gap:4px;width:100%;text-align:left;min-height:56px;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--cream);font:inherit;cursor:pointer}
 .adm .ch-row:hover,.adm .ch-row:focus-visible{border-color:var(--brass)}
