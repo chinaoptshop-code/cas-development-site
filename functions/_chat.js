@@ -157,9 +157,15 @@ export async function botOnline(env, t = now()) {
     return !!r && t - Number(r.value) <= L.online;
   } catch { return false; }
 }
-export async function setPing(env, t = now()) {
+// every — писати не частіше, ніж раз на стільки секунд (черга опитується кожні 3–5 с: без цього ~20 тис. записів у базу на добу;
+// «онлайн» — пінг не старший за L.online = 180 с, тож 30 с запасу досить). Памʼять — на ізолят; POST /ping пише завжди.
+const PING = { t: 0 };
+export async function setPing(env, t = now(), every = 0) {
+  if (every && t - PING.t < every) return;
   await env.DB.prepare("INSERT INTO settings (key, value) VALUES ('chat_bot_ping', ?1) ON CONFLICT(key) DO UPDATE SET value = ?1").bind(String(t)).run();
+  PING.t = t;
 }
+export const pingReset = () => { PING.t = 0; };
 
 // ===== текст =====
 // керівні символи (крім \n і \t) прибираємо, \r\n → \n, обрізаємо пробіли по краях

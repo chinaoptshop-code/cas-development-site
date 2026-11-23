@@ -514,6 +514,53 @@ await it('poll / file / status: потік з однієї адреси → 429 
   hotReset();
 });
 
+// 23.11.2026: воркер опитує чергу кожні 3–5 с. Лічильник у D1 (rate_hits) читав на кожне опитування всі запити за годину й за день
+// вичерпав безкоштовний ліміт D1 (5 млн прочитаних рядків); ще ~20 тис. записів на добу давав пінг. Тепер — памʼять ізоляту й рідкий пінг.
+await it('воркер: 60 опитувань черги не пишуть у rate_hits і пишуть пінг не частіше ніж раз на 30 с; /ping пише завжди', async () => {
+  const C = await import('../../functions/_chat.js');
+  C.pingReset();
+  const hits = async () => (await q1('SELECT COUNT(*) AS n FROM rate_hits')).n;
+  const before = await hits();
+  await DB.prepare("UPDATE settings SET value = '1' WHERE key = 'chat_bot_ping'").run();
+  let writes = 0;
+  for (let i = 0; i < 60; i++) {
+    const r = await botCall('GET', '/api/bot/chat?limit=1'); eq(r.status, 200);
+    const v = (await q1("SELECT value FROM settings WHERE key = 'chat_bot_ping'")).value;
+    if (v !== '1') { writes++; await DB.prepare("UPDATE settings SET value = '1' WHERE key = 'chat_bot_ping'").run(); }
+  }
+  eq(await hits(), before, 'опитування черги не пишуть у rate_hits');
+  eq(writes, 1, 'пінг за серію опитувань записано один раз');
+  await botCall('POST', '/api/bot/chat/ping', {});
+  ok((await q1("SELECT value FROM settings WHERE key = 'chat_bot_ping'")).value !== '1', 'POST /ping пише одразу');
+  eq(await hits(), before, 'пінг теж не пише у rate_hits');
+});
+await it('черга й пінг читають лише розмови, що чекають відповіді (частковий індекс chat_sessions_pending, міграція 0022)', async () => {
+  const plan = sql => DB.db.prepare('EXPLAIN QUERY PLAN ' + sql).all().map(r => r.detail).join(' | ');
+  const src = (await import('node:fs')).readFileSync(new URL('../../functions/api/bot/chat/index.js', import.meta.url), 'utf8');
+  const cond = "state IN ('bot', 'waiting') AND last_user_id > answered_upto";
+  ok(src.includes('WHERE ' + cond), 'умова черги в index.js дослівно як в індексі');
+  const p1 = plan(`SELECT * FROM chat_sessions WHERE ${cond} AND COALESCE(handoff_reason, '') <> 'limit' AND (lock_until IS NULL OR lock_until < 5) ORDER BY last_user_at, id LIMIT 15`);
+  const p2 = plan(`SELECT COUNT(*) AS n FROM chat_sessions WHERE ${cond}`);
+  ok(/chat_sessions_pending/.test(p1) && !/TEMP B-TREE/.test(p1), p1); ok(/chat_sessions_pending/.test(p2), p2);
+  // у частковому індексі — лише ті, хто чекає: 40 відповіданих розмов туди не потрапляють
+  const n0 = DB.db.prepare(`SELECT COUNT(*) AS n FROM chat_sessions INDEXED BY chat_sessions_pending WHERE ${cond}`).get().n;
+  const all = DB.db.prepare('SELECT COUNT(*) AS n FROM chat_sessions').get().n;
+  ok(all > n0, `усього розмов ${all}, у черзі ${n0}`);
+});
+await it('ліміт запитів бота — у памʼяті: понад межу → 429, інша адреса — працює; серія невірних ключів блокує й вірний', async () => {
+  const R = await import('../../functions/_rate.js');
+  const req = ip => new Request('https://x/', { headers: { 'cf-connecting-ip': ip } });
+  let last = false; for (let i = 0; i < 6; i++) last = R.memLimited(req('10.250.0.1'), 't-mem', 5, 3600, 1000);
+  eq(last, true); eq(R.memLimited(req('10.250.0.2'), 't-mem', 5, 3600, 1000), false);
+  eq(R.memLimited(req('10.250.0.1'), 't-mem', 5, 3600, 1000 + 3600 * 1000), false, 'нове вікно');
+  const bad = ip => call(env, 'GET', '/api/bot/chat?limit=1', { headers: { 'x-bot-key': 'wrong-key-' + 'x'.repeat(24), ip, noOrigin: true } });
+  const good = ip => call(env, 'GET', '/api/bot/chat?limit=1', { headers: { 'x-bot-key': KEY, ip, noOrigin: true } });
+  eq((await good('10.250.1.1')).status, 200);
+  for (let i = 0; i < 21; i++) await bad('10.250.1.1');
+  eq((await good('10.250.1.1')).status, 429, 'після серії невірних ключів вірний теж 429 (кеш «чисто» скинуто)');
+  eq((await good('10.250.1.2')).status, 200);
+});
+
 describe('Чат: версії панелі в завантажувачі site-chrome.v1.js');
 await it('блок /*chat:v*/ відповідає assets/chat.v1.{js,css} (інакше — python3 tools/chat/ver.py)', async () => {
   const { createHash } = await import('node:crypto');

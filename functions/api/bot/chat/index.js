@@ -23,7 +23,7 @@ export const onRequestGet = ({ request, env }) => wrap(async () => {
   const limit = Math.max(1, Math.min(10, parseInt(u.searchParams.get('limit'), 10) || 5));
   const lock = Math.max(30, Math.min(600, parseInt(u.searchParams.get('lock'), 10) || L.lock));
   const t = now();
-  await setPing(env, t); // забрати чергу = бути живим
+  await setPing(env, t, 30); // забрати чергу = бути живим (запис у базу — не частіше ніж раз на 30 с)
   const X = lim(env), dayLeft = Math.max(0, X.dayAnswers - await dayCount(env, 'answers'));
   const budget = { day_answers_left: dayLeft, day_answers_max: X.dayAnswers };
   if (!dayLeft) { await dayFull(env, 'answers'); return json({ items: [], budget }); }

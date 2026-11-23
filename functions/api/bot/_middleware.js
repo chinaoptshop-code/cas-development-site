@@ -2,14 +2,18 @@
 // Автентифікація: заголовок X-Bot-Key = секрет Cloudflare Pages LEADBOT_KEY. Порівнюємо рівночасово (sha256 обох → same()),
 // тож ні вміст, ні довжина ключа не вгадуються за часом відповіді. Без ключа / невірний → 401; секрет не задано → 503.
 // Ліміти (rate_hits, functions/_rate.js): невдалих спроб ключа — 20 / год з IP (далі 429 навіть з вірним ключем — до кінця вікна),
-// запитів з вірним ключем — 1200 / год з IP; черга чату на сайті (/api/bot/chat*) — окремий кошик 4000 / год (воркер опитує кожні 3–5 с). Cookie й права працівників тут не діють: бот — не людина.
+// запитів з вірним ключем — 1200 / год з IP; черга чату на сайті (/api/bot/chat*) — окремий кошик 4000 / год (воркер опитує кожні 3–5 с).
+// Запити з ВІРНИМ ключем рахуємо в памʼяті ізоляту (memLimited), не в D1 (23.11.2026): лічильник у базі на кожне опитування читав усі
+// запити за годину й за день вичерпав добовий ліміт D1; перевірку «чи не було серії невірних ключів з цієї адреси» памʼятаємо 60 с. Cookie й права працівників тут не діють: бот — не людина.
 // CSRF-перевірка спільного middleware (functions/api/_middleware.js) бота не зачіпає: без Origin, тіло — JSON.
 import { bad, hexOf, sha256, same } from '../../_lib.js';
-import { limited } from '../../_rate.js';
+import { ipKey, limited, memLimited } from '../../_rate.js';
 
 export const BAD_PER_HOUR = 20;
 export const OK_PER_HOUR = 1200;
 export const CHAT_PER_HOUR = 4000;
+const CLEAN = new Map(); // адреса → коли востаннє перевірили, що серії невірних ключів немає
+export const cleanReset = () => CLEAN.clear();
 const digest = async s => hexOf(await sha256('leadbot|' + s));
 
 export async function onRequest({ request, env, next }) {
@@ -17,11 +21,18 @@ export async function onRequest({ request, env, next }) {
   const key = request.headers.get('x-bot-key') || '';
   const good = !!key && key.length <= 512 && same(await digest(key), await digest(String(env.LEADBOT_KEY)));
   if (!good) {
+    CLEAN.delete(ipKey(request)); // після невірного ключа — знову перевіряти базу
     if (await limited(env, request, 'bot-bad', BAD_PER_HOUR)) return bad('Забагато спроб, спробуйте пізніше', 429);
     return bad(key ? 'Невірний ключ' : 'Потрібен ключ X-Bot-Key', 401);
   }
-  if (await limited(env, request, 'bot-bad', BAD_PER_HOUR, 3600, true)) return bad('Забагато спроб, спробуйте пізніше', 429);
+  // серія невірних ключів з цієї адреси блокує й вірний — до кінця вікна; «чисто» памʼятаємо 60 с (без запиту в базу на кожне опитування)
+  const ip = ipKey(request), t = Date.now(), seen = CLEAN.get(ip);
+  if (!(seen && t - seen < 60000)) {
+    if (await limited(env, request, 'bot-bad', BAD_PER_HOUR, 3600, true)) return bad('Забагато спроб, спробуйте пізніше', 429);
+    if (CLEAN.size > 2000) CLEAN.clear();
+    CLEAN.set(ip, t);
+  }
   const chat = /^\/api\/bot\/chat(\/|$)/.test(new URL(request.url).pathname);
-  if (await limited(env, request, chat ? 'bot-chat' : 'bot', chat ? CHAT_PER_HOUR : OK_PER_HOUR)) return bad('Забагато запитів, спробуйте пізніше', 429);
+  if (memLimited(request, chat ? 'bot-chat' : 'bot', chat ? CHAT_PER_HOUR : OK_PER_HOUR)) return bad('Забагато запитів, спробуйте пізніше', 429);
   return next();
 }
