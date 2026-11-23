@@ -6,7 +6,7 @@
 """
 import re
 
-import rates
+from estimate import rates  # noqa: E402  (estimate додає tools/site у sys.path)
 
 F = re.I | re.U
 N = r"(?<![\d.,])(\d{1,3}(?:[ ,.\u202f\u00a0]\d{3})+(?![\d])|\d{1,6}(?:[.,]\d{1,2})?)"
@@ -60,6 +60,7 @@ CALL = (r"зателефон|подзвон|передзвон|дзвінок|д
 COMPLAINT = (r"скарг|жалоб|обман|шахра|жахлив|претензі|претензи|поверніть гроші|верните деньги|не відповідаєте|не отвечаете|ужасн|кошмар|"
              r"complain|terrible|awful|\bscam|refund|disappointed|unacceptable|queja|estafa|reclam|投诉|骗|退款|skarg|oszust|reklamac|beschwerde|betrug|"
              r"unverschämt|plainte|arnaque|inadmissible|reclamação|burla|vergonha|شكوى|احتيال|استرداد")
+HOUSE_TYPES_RX = "|".join(rx for _, rx in HOUSE)
 PHONE = re.compile(r"(?<![\w])\+?\d[\d \-()]{7,16}\d(?![\w])")
 
 
@@ -117,16 +118,18 @@ def from_text(text, p=None):
         for k, rx in PKG:
             if has(rx, t):
                 p["items"]["design"] = k
-    if has(BOX, t):
-        p["items"]["build"] = "box"
-    elif has(KEY, t):
-        reno_word = has(r"ремонт|renovat|refurb|reforma|remont|renovier|sanier|rénov|装修|تشطيب", t)
-        if "build" in p["items"] or (not reno_word and has(r"(будин\w*|дом\w*|house|home|casa|haus|maison|moradia|dom\w*|منزل|别墅)\W{0,3}(?:" + KEY + ")", t)):
-            p["items"]["build"] = "key"
     for k, rx in HOUSE:
         if has(rx, t):
             p["house_type"] = k
             break
+    reno_word = has(r"ремонт|renovat|refurb|reforma|remont|renovier|sanier|rénov|装修|تشطيب", t)
+    if p.get("house_type") and has(HOUSE_TYPES_RX, t) and not reno_word and not has(dict(OBJECT)["apartment"], t):
+        p["items"].setdefault("build", None)          # «будинок з бруса 120 м²» — будівництво
+    if has(BOX, t):
+        p["items"]["build"] = "box"
+    elif has(KEY, t):
+        if "build" in p["items"] or (not reno_word and has(r"(будин\w*|дом\w*|house|home|casa|haus|maison|moradia|dom\w*|منزل|别墅)\W{0,3}(?:" + KEY + ")", t)):
+            p["items"]["build"] = "key"
     for k, rx in OBJECT:
         if has(rx, t):
             p["object"] = k

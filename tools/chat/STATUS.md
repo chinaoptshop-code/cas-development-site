@@ -14,6 +14,6 @@ tools/chat/ver.py — у build-all (або запускати після пра�
 - [x] Шар 1: клієнт API (`api.py`, backoff, ліміт розміру файлу), цикл (`worker.py`: пінг, черга, 1–2 розмови, typing, 409, release), конфіг `~/.cas-chat/env` (`config.py`), фейковий API і тести `test_loop.py`
 - [x] Шар 2: попередній кошторис кодом (`estimate.py` за rates.py, підписи — cCfg калькулятора 10 мов; коробка + ремонт, комерція, поза Україною й Європою), параметри з розмови (`params.py`, 10 мов, перевірка пропозицій моделі), фрази (`texts.py`), тести `test_estimate.py` (звірка з casCalcRows у node)
 - [x] Шар 3: розбір файлів (`parsers/`: фото + vision Ollama, аудіо → transcribe.sh, відео → кадри + звук, PDF текст/скан, Excel/CSV з перерахунком кошторису, DOCX, DXF (ezdxf або свій читач), DWG через ODA/LibreDWG, 3DS — свій читач чанків; SKP/IFC/RVT/ZIP — менеджеру); окремий процес з тайм-аутом і лімітами, zip-бомби, тимчасова тека видаляється; тести `test_parsers.py`
-- [ ] Шар 4: модель, правила, перевірки відповіді
+- [x] Шар 4: `brain.py` (файли → паспорти, параметри → кошторис кодом, текст моделі + шаблони 10 мов), `llm.py` (local Ollama типово; api — лише CHAT_LLM=api), `prompts.py` (дані клієнта в окремому блоці), `checks.py` (мова, заборонені теми, суми лише з estimate, 2 спроби → шаблон + complex); спільні факти `tools/assistant/bot/client_rules.py` (PUBLIC + факти 23.11), бот імпортує їх; тести `test_brain.py`
 - [ ] Шар 5: голос, дзвінок
 - [ ] Шар 6: install.sh, README, --selftest

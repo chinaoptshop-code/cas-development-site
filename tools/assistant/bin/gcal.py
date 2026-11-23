@@ -42,7 +42,13 @@ def events(kind):
             all_day = "date" in s
             start = (datetime.datetime.fromisoformat(s["date"]).replace(tzinfo=TZ) if all_day
                      else datetime.datetime.fromisoformat(s["dateTime"].replace("Z", "+00:00")).astimezone(TZ))
-            out.append({"start": start.isoformat(), "all_day": all_day, "title": e.get("summary") or "(без назви)",
+            en = e.get("end", {})
+            try:   # кінець події — для вільних проміжків чату на сайті (tools/chat/worker/slots.py), 23.11.2026
+                end = (datetime.datetime.fromisoformat(en["date"]).replace(tzinfo=TZ) if all_day
+                       else datetime.datetime.fromisoformat(en["dateTime"].replace("Z", "+00:00")).astimezone(TZ)).isoformat()
+            except (KeyError, ValueError):
+                end = None
+            out.append({"start": start.isoformat(), "end": end, "all_day": all_day, "title": e.get("summary") or "(без назви)",
                         "location": e.get("location", "")})
     return sorted(out, key=lambda x: x["start"])
 
