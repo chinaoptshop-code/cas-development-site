@@ -438,6 +438,59 @@ await check('manager-panel', 'MGR', '/kabinet/admin', [1440], async p => {
   if (/Студія|Персонал|Аудит/.test(await p.textContent('.adm-tabs'))) throw new Error('менеджер бачить вкладки власника');
   if (!/Контакти/.test(await p.textContent('.adm-tabs'))) throw new Error('менеджер не бачить «Контакти»');
 });
+// Денний / нічний режим (23.11.2026): html[data-adm-theme] з <head> (pages.py), кнопка .adm-thm (cms.v1.js), палітра — assets/admin/theme.v1.css.
+// Без вибору — за системою (і змінюється разом з нею), клік — день/ніч з aria-pressed, вибір у localStorage переживає перезавантаження.
+const themeState = p => p.evaluate(() => {
+  const lum = c => { const v = (c.match(/[\d.]+/g) || [0, 0, 0]).slice(0, 3).map(x => { x /= 255; return x <= .03928 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4; }); return .2126 * v[0] + .7152 * v[1] + .0722 * v[2]; };
+  const t = document.querySelector('.adm-thm'), r = t && t.getBoundingClientRect(), card = document.querySelector('.kn-card');
+  let saved = null; try { saved = localStorage.getItem('cas_adm_theme'); } catch (e) { /* noop */ }
+  return { th: document.documentElement.getAttribute('data-adm-theme'), cs: getComputedStyle(document.documentElement).colorScheme, saved,
+    bg: lum(getComputedStyle(document.body).backgroundColor), fg: lum(getComputedStyle(document.querySelector('main h1')).color),
+    card: card ? lum(getComputedStyle(card).backgroundColor) : null, tab: lum(getComputedStyle(document.querySelector('.adm-tabs button')).color),
+    head: lum(getComputedStyle(document.querySelector('header.sch')).backgroundColor),
+    pr: t && t.getAttribute('aria-pressed'), label: t && t.getAttribute('aria-label'), title: t && t.title, w: r ? r.width : 0, h: r ? r.height : 0 };
+});
+const themeWait = (p, th) => p.waitForFunction(x => document.documentElement.getAttribute('data-adm-theme') === x, th, { timeout: 4000 });
+const themeIs = (s, th, where) => {
+  const day = th === 'light';
+  if (s.th !== th || s.cs !== th) throw new Error(`${where}: тема ${s.th} / color-scheme ${s.cs}, чекали ${th}`);
+  if (s.pr !== String(day)) throw new Error(`${where}: aria-pressed ${s.pr}`);
+  if (day ? !(s.bg > .7 && s.fg < .05 && s.tab < .2 && (s.card == null || s.card > .7)) : !(s.bg < .02 && s.fg > .7 && (s.card == null || s.card < .02)))
+    throw new Error(`${where}: кольори не ${day ? 'денні' : 'нічні'} ${JSON.stringify(s)}`);
+  if (s.head > .02) throw new Error(`${where}: шапка сайту не темна`);
+};
+await check('owner-theme', 'OWNER', '/kabinet/admin#crm', W, async p => {
+  await see(p, '#admView', 'Лід'); await see(p, '.adm-thm');
+  let s = await themeState(p);
+  if (s.saved) throw new Error('вибір збережено без кліку');
+  themeIs(s, 'light', 'система світла, без вибору'); // Playwright емулює prefers-color-scheme: light
+  await p.emulateMedia({ colorScheme: 'dark' }); await themeWait(p, 'dark'); themeIs(await themeState(p), 'dark', 'система стала темною');
+  s = await themeState(p);
+  if (s.w < 44 || s.h < 44) throw new Error(`перемикач ${s.w}×${s.h} < 44 px`);
+  if (s.label !== 'Денний режим' || s.title !== 'Денний режим') throw new Error('підпис перемикача: ' + s.label + ' / ' + s.title);
+  await p.click('.adm-thm'); s = await themeState(p); themeIs(s, 'light', 'після кліку');
+  if (s.saved !== 'light' || s.title !== 'Нічний режим') throw new Error('після кліку: ' + JSON.stringify([s.saved, s.title]));
+  await p.reload({ waitUntil: 'networkidle' }); await see(p, '.adm-thm');
+  themeIs(await themeState(p), 'light', 'після перезавантаження (система темна, вибір — день)');
+  await p.click('.adm-thm'); s = await themeState(p); themeIs(s, 'dark', 'повторний клік');
+  if (s.saved !== 'dark') throw new Error('ніч не збережено');
+  await p.emulateMedia({ colorScheme: 'light' }); await p.reload({ waitUntil: 'networkidle' }); await see(p, '.adm-thm');
+  themeIs(await themeState(p), 'dark', 'збережена ніч при світлій системі');
+  await p.evaluate(() => localStorage.removeItem('cas_adm_theme'));
+});
+await check('owner-theme-manager', 'MGR', '/kabinet/admin#tasks', [402], async p => {
+  await see(p, '[data-list]', 'Замовити плитку'); await p.emulateMedia({ colorScheme: 'dark' }); await themeWait(p, 'dark');
+  await p.click('.adm-thm'); themeIs(await themeState(p), 'light', 'менеджер, день');
+  await p.click('.adm-thm'); themeIs(await themeState(p), 'dark', 'менеджер, ніч');
+  await p.evaluate(() => localStorage.removeItem('cas_adm_theme'));
+});
+// тема адмінки не діє на кабінет клієнта й працівника (у них свої теми)
+for (const [who, path] of [['C1', '/kabinet/obiekt'], ['FORE', '/kabinet/team']]) await check('owner-theme-scope ' + path, who, path, [402], async p => {
+  await p.evaluate(() => localStorage.setItem('cas_adm_theme', 'light')); await p.reload({ waitUntil: 'networkidle' });
+  if (await p.evaluate(() => document.documentElement.hasAttribute('data-adm-theme') || !!document.querySelector('link[href*="admin/theme.v1.css"], .adm-thm')))
+    throw new Error('тема адмінки потрапила на ' + path);
+  await p.evaluate(() => localStorage.removeItem('cas_adm_theme'));
+});
 console.log('Кабінет працівника (прораб)');
 await check('team-today', 'FORE', '/kabinet/team', W, async p => {
   await see(p, '.tm-tasks'); await see(p, '.tm-hello', 'Прораб');
