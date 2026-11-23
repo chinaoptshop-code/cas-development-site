@@ -43,8 +43,9 @@ export async function limited(env, request, bucket, limit, windowS = 3600, peek 
 //   bulk     — масові дії (до 100 заявок за раз);
 //   contacts — довідник контактів і привʼязки до обʼєктів; orders — замовлення Оздоби; codes — коди партнерів;
 //   staff    — персонал і ролі; repo — збереження сайту (коміт у GitHub);
+//   chat     — відповіді людини в чаті на сайті, зміна стану розмови, заявка з розмови;
 //   tasks    — задачі (створення, правка, «виконано»); import — порції імпорту контактів з CSV (до 100 рядків у порції).
-export const STAFF_LIMITS = Object.freeze({ crm: 600, kp: 120, bulk: 60, contacts: 600, orders: 600, codes: 120, staff: 120, repo: 300, tasks: 600, import: 120 });
+export const STAFF_LIMITS = Object.freeze({ crm: 600, kp: 120, bulk: 60, contacts: 600, orders: 600, codes: 120, staff: 120, repo: 300, tasks: 600, import: 120, chat: 600 });
 export const staffKey = x => 'staff:' + (x && (x.staffId || (x.client && x.client.id)) || '');
 export const staffLimited = (env, request, x, kind) => limited(env, request, 'staff-' + kind, STAFF_LIMITS[kind], 3600, false, staffKey(x));
 export const TOO_MANY = 'Забагато змін поспіль — зачекайте кілька хвилин';

@@ -6,6 +6,7 @@
 //   ref — сторінка-джерело orders.ref_path, migrations/0011: поле, фільтр і колонка CSV — лише з leads.view_all, тобто власник і менеджер;
 //   rh — зовнішнє джерело візиту orders.ref_host, migrations/0019: ключ із REF_SOURCES (google, chatgpt, instagram…), any — будь-яке,
 //   other — не з відомих; у рядку — ref_host і людська назва ref_src, колонка CSV «Зовнішнє джерело» — так само лише з leads.view_all;
+//   source=chat або place=chat — заявки з чату на сайті (POST /api/chat/contact, orders.source = 'chat', migrations/0021);
 //   source=finder або place=finder — заявки бота пошуку (POST /api/bot/leads, orders.source = 'finder', migrations/0013))
 //   Довгі списки (19.11.2026): &limit=<1…1000> (без нього — 1000) і &before=<id останнього рядка> — наступна сторінка (нові зверху);
 //   відповідь: rows, total (усього за фільтром), more (є ще), next (id для before), waiting (нових без відповіді за фільтром),
@@ -69,7 +70,7 @@ const date = v => (v == null || v === '' ? null : /^\d{4}-\d{2}-\d{2}$/.test(Str
 const int = v => (v == null || v === '' ? null : Number.isFinite(+v) && +v >= 0 ? Math.round(+v) : undefined);
 const SITE = "(o.source LIKE '%cas-develop.com%' OR o.source LIKE '%.pages.dev%')";
 // місце форми: «#prices» … з source; основна форма сторінки — «form»; вручну / дзвінок — «manual»; Оздоба — «order»
-export const placeOf = o => o.kind === 'order' ? 'order' : o.source === 'finder' ? 'finder'
+export const placeOf = o => o.kind === 'order' ? 'order' : o.source === 'finder' ? 'finder' : o.source === 'chat' ? 'chat'
   : !/cas-develop\.com|\.pages\.dev/.test(o.source || '') ? 'manual' : (/#([\w-]+)$/.exec(o.source || '') || [, 'form'])[1].replace(/^(?!form$)/, '#');
 // сторінка без домену, «#місця» і мовного кореня: cas-develop.com/remont-kvartyr-kyiv#prices → /remont-kvartyr-kyiv
 export const pageOf = o => { const m = /(?:cas-develop\.com|\.pages\.dev)(\/[^#?\s]*)?/.exec(o.source || ''); return m ? (m[1] || '/') : null; };
@@ -83,7 +84,8 @@ function where(p, args, x) {
   const pl = p('place');
   if (pl === 'order') sql += " AND o.kind = 'order'";
   else if (pl === 'finder' || p('source') === 'finder') sql += " AND o.kind = 'lead' AND o.source = 'finder'";
-  else if (pl === 'manual') sql += " AND o.kind = 'lead' AND COALESCE(o.source, '') NOT IN ('finder') AND COALESCE(o.source, '') NOT LIKE '%cas-develop.com%' AND COALESCE(o.source, '') NOT LIKE '%.pages.dev%'";
+  else if (pl === 'chat' || p('source') === 'chat') sql += " AND o.kind = 'lead' AND o.source = 'chat'"; // чат на сайті (functions/_chat.js)
+  else if (pl === 'manual') sql += " AND o.kind = 'lead' AND COALESCE(o.source, '') NOT IN ('finder', 'chat') AND COALESCE(o.source, '') NOT LIKE '%cas-develop.com%' AND COALESCE(o.source, '') NOT LIKE '%.pages.dev%'";
   else if (pl === 'form') sql += ` AND o.kind = 'lead' AND ${SITE} AND o.source NOT LIKE '%#%'`;
   else if (/^#[\w-]{1,40}$/.test(pl)) { sql += ' AND o.source LIKE ?'; args.push('%' + pl); }
   const ref = p('ref');

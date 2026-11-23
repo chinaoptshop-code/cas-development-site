@@ -195,7 +195,7 @@ const fill = async (kind, cid, n = STAFF_LIMITS[kind]) => { // вичерпат�
   for (let i = 0; i < n; i++) if (await limited(env, req, 'staff-' + kind, STAFF_LIMITS[kind], 3600, false, staffKey(x))) throw new Error('ліміт спрацював зарано: ' + i);
 };
 await it('ліміти щедрі: CRM 600, КП 120, масові 60, контакти 600, замовлення 600, коди 120, персонал 120, сайт 300 на годину', async () => {
-  eq(STAFF_LIMITS, { crm: 600, kp: 120, bulk: 60, contacts: 600, orders: 600, codes: 120, staff: 120, repo: 300, tasks: 600, import: 120 });
+  eq(STAFF_LIMITS, { crm: 600, kp: 120, bulk: 60, contacts: 600, orders: 600, codes: 120, staff: 120, repo: 300, tasks: 600, import: 120, chat: 600 });
 });
 let LIM;
 await it('нотатки / картки CRM: 600 змін — ок, далі 429; інший працівник з тієї ж адреси працює; без часткових змін', async () => {

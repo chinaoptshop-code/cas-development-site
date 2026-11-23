@@ -408,7 +408,7 @@
   var srcName = function (r) { var s = String(r.ref_src || r.ref_host || ''); return s.replace(/ \(.*\)$/, '').slice(0, 34); };
   var PLACES = [['form', 'Форма сторінки'], ['#prices', 'Після цін (#prices)'], ['#portfolio', 'Після портфоліо (#portfolio)'],
     ['#project', 'Сторінка проєкту (#project)'], ['#services', 'Послуги (#services)'], ['#blog-mid', 'Стаття, середина (#blog-mid)'],
-    ['#blog-end', 'Стаття, кінець (#blog-end)'], ['manual', 'Вручну / дзвінок'], ['finder', 'Бот пошуку'], ['order', 'Замовлення Оздоби']];
+    ['#blog-end', 'Стаття, кінець (#blog-end)'], ['manual', 'Вручну / дзвінок'], ['finder', 'Бот пошуку'], ['chat', 'Чат на сайті'], ['order', 'Замовлення Оздоби']];
   var placeLabel = function (k) { var p = PLACES.find(function (x) { return x[0] === k; }); return p ? p[1].replace(/ \(#.*\)$/, '') : k; };
   var SLA = 15; // хв, як SLA_MIN у functions/_alerts.js
   var utc = function (s) { return new Date(String(s || '').replace(' ', 'T') + 'Z'); };
