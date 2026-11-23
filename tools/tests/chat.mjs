@@ -280,7 +280,7 @@ await it('handoff → стан waiting і сповіщення власнику 
   const msgs = bot.calls.filter(c => c.method === 'sendMessage');
   eq(msgs.length, 2); ok(/потрібна людина/.test(msgs[0].text)); ok(msgs[0].text.includes('&lt;b&gt;'), 'текст у Telegram екранується');
   ok(/Великий обʼєкт/.test(msgs[0].text)); eq((await q1('SELECT handoff_reason FROM chat_sessions WHERE sid = ?', Q.sid)).handoff_reason, 'big_project');
-  ok(msgs[0].reply_markup.inline_keyboard[0][0].url.endsWith(`/kabinet/admin?cs=${last.id}#chat`));
+  ok(msgs[0].reply_markup.inline_keyboard[0][0].url.endsWith(`/kabinet/admin?cs=${last.id}#chat`)); eq(msgs[0].reply_markup.inline_keyboard[0][0].text, '💬 Відкрити розмову');
   eq((await poll(Q)).data.state, 'waiting');
   // повторний handoff не дублює сповіщення
   await send(Q, { text: 'Ще питання' });

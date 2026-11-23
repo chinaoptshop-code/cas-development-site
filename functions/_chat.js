@@ -8,7 +8,7 @@
 // Віддаємо лише як вкладення (content-disposition: attachment, nosniff, CSP sandbox), активні типи (HTML, SVG, JS…) не приймаємо зовсім.
 // Вміст повідомлень і файлів — недовірені дані: ніде не стає розміткою (віконце й адмінка — textContent / esc), воркер — лише як дані.
 import { bad, dict, hexOf, json, nextLeadNumber, normalizePhone, same, sha256, str } from './_lib.js';
-import { kyiv, notifyNew, notifyTeam, escHtml } from './_alerts.js';
+import { alertIds, kyiv, notifyNew, tg, escHtml } from './_alerts.js';
 import { refHost } from './_refhost.js';
 import { IN_IDS, idsArg } from './_lib.js';
 import { noTable } from './_roles.js';
@@ -348,6 +348,15 @@ export async function leadFromChat(env, s, { phone, name, by, waitUntil } = {}) 
   return { id, number };
 }
 
+// Сповіщення про чат власнику й менеджерам (ті самі адресати, що й заявки — alertIds) з URL-кнопкою «Відкрити розмову» в адмінці
+export async function notifyChat(env, text, id) {
+  try {
+    let n = 0;
+    for (const chat of await alertIds(env)) if (await tg(env, 'sendMessage', { chat_id: chat, text, parse_mode: 'HTML', link_preview_options: { is_disabled: true },
+      reply_markup: { inline_keyboard: [[{ text: '💬 Відкрити розмову', url: ADMIN_URL(id) }]] } })) n++;
+    return n;
+  } catch (e) { console.log('notifyChat', e && e.message); return 0; }
+}
 // Причини handoff (поле handoff_reason від воркера, tools/chat/API.md) — підпис у Telegram і адмінці
 export const HANDOFF = dict({
   asks_human: 'Клієнт просить людину або дзвінок', big_project: 'Великий обʼєкт (комерція, будинок, великий бюджет)',
@@ -360,7 +369,7 @@ export async function handoff(env, s, code, reason) {
   const last = await env.DB.prepare("SELECT text FROM chat_messages WHERE session_id = ? AND role = 'user' AND text IS NOT NULL ORDER BY id DESC LIMIT 1").bind(s.id).first();
   const text = [`🙋 <b>Чат на сайті: потрібна людина</b>`, `Розмова #${s.id} · ${escHtml((s.lang || 'uk').toUpperCase())} · ${escHtml(s.page || '/')}`,
     `Причина: ${escHtml(HANDOFF[code || 'other'])}${reason ? ' — ' + escHtml(str(reason, 200)) : ''}`, last ? `Останнє: «${escHtml(str(last.text, 300))}»` : null].filter(Boolean).join('\n');
-  return notifyTeam(env, text, ADMIN_URL(s.id));
+  return notifyChat(env, text, s.id);
 }
 
 // ===== «Нова розмова» адмінам (Михайло 23.11.2026): одне повідомлення на розмову при першому повідомленні відвідувача =====
@@ -377,7 +386,7 @@ export async function notifyNewChat(env, id) {
   const t = first && first.text ? str(first.text, 200) : '';
   const text = [`💬 <b>Нова розмова в чаті на сайті</b> #${s.id}`, `${escHtml((s.lang || 'uk').toUpperCase())} · ${escHtml(s.page || '/')}${s.ref_host ? ' · з ' + escHtml(s.ref_host) : ''}`,
     t ? `«${escHtml(t)}${first.text.length > 200 ? '…' : ''}»` : null, files && files.n ? `📎 файлів: ${files.n}` : null].filter(Boolean).join('\n');
-  return notifyTeam(env, text, ADMIN_URL(s.id));
+  return notifyChat(env, text, s.id);
 }
 // черга «нових розмов» (до 20 за запуск, найстаріші спершу); розмови старші за 3 доби — лише позначаємо, без повідомлення
 export async function runChatNotices(env, at = new Date()) {
