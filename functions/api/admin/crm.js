@@ -25,7 +25,7 @@
 //   Кожна зміна — в audit_log (до/після). Ліміти записів — на працівника за годину (functions/_rate.js, STAFF_LIMITS): картки й канбан
 //   600, журнал «КП надіслано» 120, масові дії 60; далі 429.
 import { CLOSED, LEAD_STATUSES, ORDER_STATUSES, STATUSES, bad, dict, json, nextLeadNumber, readJSON, statusLabel, statusesOf, str } from '../../_lib.js';
-import { SLA_MIN, escHtml, kyiv, kyivMidnight, notifyStaff, parseUtc, sqlTime, takeLead } from '../../_alerts.js';
+import { SLA_MIN, escHtml, kyiv, kyivMidnight, leadActions, notifyStaff, parseUtc, sqlTime, takeLead } from '../../_alerts.js';
 import { audit, diff, need, noTable, orderScope, shapeOrder, staffById } from '../../_roles.js';
 import { DESIGN, DMIN, RATES, cost, rateOf } from '../../_rates.js';
 import { kpText } from '../../_client_msgs.js';
@@ -158,7 +158,7 @@ const FIELDS = ['status', 'assignee', 'assignee_staff_id', 'crm_note', 'manager_
 const TEAM_URL = 'https://cas-develop.com/kabinet/team';
 
 // рядок CRM з видимістю для ctx (або null — не існує / чужий)
-async function visible(env, x, id) {
+export async function visible(env, x, id) {
   const args = [];
   const w = orderScope(x, args);
   return env.DB.prepare(`SELECT o.* FROM orders o WHERE o.id = ? AND ${w}`).bind(Number(id) || 0, ...args).first();
@@ -338,7 +338,8 @@ async function bulk(env, request, x, b) {
   return json({ ok: true, done: results.filter(r => r.ok).length, results });
 }
 
-async function patchOne(env, request, x, d, action) {
+// Також кнопки бота в Telegram (functions/_bot.js): той самий шлях — ті самі права, історія, аудит і сповіщення.
+export async function patchOne(env, request, x, d, action) {
   const o = await visible(env, x, d && d.id);
   if (!o) return bad('Запис не знайдено', 404); // чужий рядок — як неіснуючий: не підтверджуємо, що він є
   if (!x.can(o.kind === 'lead' ? 'leads.edit' : 'orders.edit')) return bad('Немає права змінювати цей запис', 403);
@@ -390,7 +391,7 @@ async function patchOne(env, request, x, d, action) {
     { ...(dd ? dd.after : {}), ...(str(d.note) ? { note: str(d.note, 1000) } : {}), ...(offer !== undefined ? { offer } : {}) });
   if (staffId && staffId !== o.assignee_staff_id && staffId !== x.staffId)
     await notifyStaff(env, staffId, `📌 Вам призначено ${o.kind === 'lead' ? 'заявку' : 'замовлення'} <b>${escHtml(o.number)}</b>${o.service ? `\nПослуга: ${escHtml(o.service)}` : ''}\nСтадія: ${escHtml(statusLabel(status, o.kind))}`,
-      { inline_keyboard: [[{ text: '📋 Мої задачі', url: TEAM_URL }]] });
+      o.kind === 'lead' ? leadActions(o.id, st && ['owner', 'manager'].includes(st.role) ? undefined : TEAM_URL) : { inline_keyboard: [[{ text: '📋 Мої задачі', url: TEAM_URL }]] });
   const fresh = await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(o.id).first();
   return json({ ok: true, status, status_label: statusLabel(status, o.kind), ver: await leadVer(fresh || o), ...(offer !== undefined ? { offer, offer_line: offer ? offerLine(offer) : null, kp_text: offer ? kpText(offer, o.lang, o.name) : null } : {}) });
 }

@@ -10,9 +10,9 @@ on:
   workflow_dispatch:
     inputs:
       task:
-        description: 'sla — звичайний запуск; report — надіслати звіт за сьогодні зараз; webhook — поставити вебхук бота (навіть замість чужого)'
+        description: 'sla — звичайний запуск; report — надіслати звіт за сьогодні зараз; webhook — поставити вебхук бота (навіть замість чужого); commands — оновити меню команд бота в чатах працівників'
         type: choice
-        options: [sla, report, webhook]
+        options: [sla, report, webhook, commands]
         default: sla
 
 concurrency:
@@ -38,6 +38,7 @@ jobs:
           case "$TASK" in
             report)  BODY='{"task":"report"}' ;;
             webhook) BODY='{"task":"webhook","force":true}' ;;
+            commands) BODY='{"task":"commands"}' ;;
             *)       BODY='{}' ;;
           esac
           code=$(curl -sS -o out.json -w '%{http_code}' --max-time 60 -X POST https://cas-develop.com/api/admin/lead-sla \

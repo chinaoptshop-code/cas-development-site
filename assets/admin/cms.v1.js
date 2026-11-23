@@ -1182,7 +1182,11 @@
     var fin = can('finance.edit') && d.online !== false;
     L.innerHTML = '<div class="tb"><button class="btn ghost sm" data-back>← До списку</button><b class="grow">Новий проєкт</b></div>' +
       '<form class="form two" data-nf><label class="f"><span>Тип проєкту</span><select name="service" required>' + Object.keys(SVC).map(function (k) { return '<option value="' + k + '"' + (k === defSvc ? ' selected' : '') + '>' + SVC[k] + '</option>'; }).join('') + '</select></label>' +
-      '<label class="f"><span>Клієнт</span><select name="client_id" required><option value="">— оберіть клієнта —</option>' + clients.map(function (c) { return '<option value="' + c.id + '"' + (c.id === cid ? ' selected' : '') + '>' + esc((c.name || 'Клієнт #' + c.id) + (c.phone ? ' · ' + c.phone : '')) + '</option>'; }).join('') + '</select></label>' +
+      '<label class="f"><span>Клієнт</span><select name="client_id" required><option value="">— оберіть клієнта —</option><option value="new"' + (!clients.length ? ' selected' : '') + '>+ Новий клієнт — вписати</option>' + clients.map(function (c) { return '<option value="' + c.id + '"' + (c.id === cid ? ' selected' : '') + '>' + esc((c.name || 'Клієнт #' + c.id) + (c.phone ? ' · ' + c.phone : '')) + '</option>'; }).join('') + '</select></label>' +
+      // новий клієнт: імʼя (обовʼязково) і телефон (за бажанням) — запис створює сервер разом із проєктом
+      '<label class="f" data-nc hidden><span>Імʼя нового клієнта</span><input name="nc_name" maxlength="120" autocomplete="off"></label>' +
+      '<label class="f" data-nc hidden><span>Телефон <small class="muted">(необовʼязково)</small></span><input name="nc_phone" type="tel" inputmode="tel" maxlength="24" autocomplete="off" placeholder="+380…">' +
+        '<small class="muted">Клієнт побачить проєкт у кабінеті, коли увійде за цим номером.</small></label>' +
       '<label class="f full"><span>Назва</span><input name="title" required maxlength="120" placeholder="Дизайн квартири, ЖК … / Ремонт офісу на …"></label>' +
       '<label class="f"><span>Адреса обʼєкта</span><input name="address" maxlength="200"></label><label class="f"><span>Площа, м²</span><input name="area" type="number" min="0" step="0.1"></label>' +
       (can('finance.edit') ? '<label class="f"><span>Сума договору</span><span class="row"><input name="contract_amount" type="number" min="0" step="1" class="grow"><select name="contract_currency" aria-label="Валюта"><option>USD</option><option>UAH</option><option>EUR</option></select></span></label>' : '') +
@@ -1195,20 +1199,26 @@
     var f = $('[data-nf]', L);
     var tpl = function () { var a = T[f.service.value] || []; $('[data-tpl]', L).innerHTML = a.length ? a.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') : '<li class="muted">Без шаблону — етапи додасте в картці проєкту</li>'; };
     f.service.onchange = tpl; tpl();
+    var ncShow = function (focus) { var on = f.client_id.value === 'new'; [].forEach.call(f.querySelectorAll('[data-nc]'), function (el) { el.hidden = !on; }); if (on && focus) f.nc_name.focus(); };
+    f.client_id.onchange = function () { ncShow(true); }; ncShow(false);
+    f.nc_name.oninput = function () { var e0 = $('[data-e]', L); if (/нового клієнта/.test(e0.textContent)) e0.textContent = ''; };
     var wf = watchForm(f, 'формі нового проєкту');
     $('[data-back]', L).onclick = function () { if (wf.leave()) RENDER.projects(L, cid); };
     f.onsubmit = function (e) {
       e.preventDefault();
       var F = f.elements, err = $('[data-e]', L);
-      if (!F.client_id.value) { err.textContent = 'Оберіть клієнта (клієнт має хоча б раз увійти на сайт)'; F.client_id.focus(); return; }
+      var isNew = F.client_id.value === 'new';
+      if (!F.client_id.value) { err.textContent = 'Оберіть клієнта зі списку або «+ Новий клієнт»'; F.client_id.focus(); return; }
+      if (isNew && !F.nc_name.value.trim()) { err.textContent = 'Вкажіть імʼя нового клієнта'; F.nc_name.focus(); return; }
       if (!F.title.value.trim()) { err.textContent = 'Вкажіть назву проєкту'; F.title.focus(); return; }
-      var b = { type: 'project', client_id: +F.client_id.value, title: F.title.value.trim(), service: F.service.value, address: F.address.value, area: F.area.value };
+      var b = { type: 'project', title: F.title.value.trim(), service: F.service.value, address: F.address.value, area: F.area.value };
       if (F.deadline && !F.deadline.disabled && F.deadline.value) b.deadline = F.deadline.value;
       if (F.assignee_staff_id && F.assignee_staff_id.value) b.assignee_staff_id = +F.assignee_staff_id.value;
       if (F.contract_amount && F.contract_amount.value !== '') { b.contract_amount = F.contract_amount.value; b.contract_currency = F.contract_currency.value; }
       if (F.scheme && F.scheme.value) b.scheme = F.scheme.value;
+      if (isNew) b.new_client = { name: F.nc_name.value.trim(), phone: F.nc_phone.value.trim() }; else b.client_id = +F.client_id.value;
       var btn = $('button[type=submit]', f); btn.disabled = true; err.textContent = '';
-      api(PAPI, { method: 'POST', body: b }).then(function (x) { toast('Проєкт створено — етапи за шаблоном «' + SVC[b.service] + '»'); RENDER.projects(L, cid && b.client_id !== cid ? null : cid, x.id); },
+      api(PAPI, { method: 'POST', body: b }).then(function (x) { toast('Проєкт створено — етапи за шаблоном «' + SVC[b.service] + '»' + (isNew ? '; клієнта додано' : '')); RENDER.projects(L, cid && b.client_id !== cid ? null : cid, x.id); },
         function (e2) { btn.disabled = false; err.textContent = e2.message; });
     };
   }

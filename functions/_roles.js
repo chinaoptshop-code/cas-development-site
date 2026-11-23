@@ -93,8 +93,13 @@ async function findStaff(env, c) {
 // deactivated: true — працівника вимкнено (доступ до команди закрито, як у звичайного клієнта).
 export async function staffCtx(request, env) {
   if (CACHE.has(request)) return CACHE.get(request);
-  const p = (async () => {
-    const c = await currentClient(request, env);
+  const p = (async () => ctxForClient(env, await currentClient(request, env)))();
+  CACHE.set(request, p);
+  return p;
+}
+
+// Контекст для акаунта c (з cookie сесії або знайденого за Telegram id — staffCtxTg)
+async function ctxForClient(env, c) {
     if (!c) return ctxOf(null, null, null);
     const owner = isOwner(env, c);
     try {
@@ -128,9 +133,39 @@ export async function staffCtx(request, env) {
       // міграція 0010 ще не застосована: як раніше — адміни бачать усе (owner/manager без рядка staff)
       return ctxOf(c, null, owner ? 'owner' : isAdmin(env, c) ? 'manager' : null, { legacy: true });
     }
-  })();
-  CACHE.set(request, p);
-  return p;
+}
+
+// Хто натиснув кнопку / написав боту сайту (functions/api/tg/webhook.js, functions/_bot.js). Telegram id тут підтверджений: вебхук
+// приймає лише запити з секретом (X-Telegram-Bot-Api-Secret-Token), а from.id ставить сам Telegram. Шукаємо так само, як при вході на сайт:
+//   1) акаунт входу (Telegram або вхід за номером через бота — clients.tg_id), до якого привʼязано працівника;
+//   2) працівник із цим Telegram id у запрошенні (staff.tg_id) — його акаунт або, якщо він ще не входив на сайт, саме запрошення;
+//   3) будь-який акаунт із цим Telegram (власник / старі адміни з ADMIN_TG_IDS стають працівниками, як у staffCtx);
+//   4) акаунта ще немає — лише власник / адмін зі змінних (без рядка staff — staffId null).
+// Вимкнений працівник → {deactivated: true}, ролі немає. Повертає той самий ctx, що й staffCtx: права перевіряються тими самими x.can().
+export async function staffCtxTg(env, tgId) {
+  const id = String(tgId == null ? '' : tgId);
+  if (!/^\d{1,20}$/.test(id) || !env.DB) return ctxOf(null, null, null);
+  const byClient = sql => env.DB.prepare(sql).bind(id).first();
+  try {
+    const c = await byClient(`SELECT c.* FROM clients c JOIN staff s ON s.client_id = c.id WHERE (c.provider = 'telegram' AND c.provider_id = ?1) OR c.tg_id = ?1
+        ORDER BY s.active DESC, s.id LIMIT 1`);
+    if (c) return ctxForClient(env, c);
+    const s = await byClient('SELECT * FROM staff WHERE tg_id = ?1 ORDER BY active DESC, id LIMIT 1');
+    if (s && s.client_id) {
+      const c2 = await env.DB.prepare('SELECT * FROM clients WHERE id = ?').bind(s.client_id).first();
+      if (c2) return ctxForClient(env, c2);
+    }
+    const c3 = await byClient("SELECT * FROM clients WHERE (provider = 'telegram' AND provider_id = ?1) OR tg_id = ?1 ORDER BY CASE WHEN provider = 'telegram' THEN 0 ELSE 1 END, id LIMIT 1");
+    if (c3) return ctxForClient(env, c3);
+    const pseudo = { id: null, provider: 'telegram', provider_id: id, name: s ? s.name : null };
+    if (isOwner(env, pseudo)) return ctxOf(pseudo, s && s.role === 'owner' ? s : null, 'owner');
+    if (s) return s.active ? ctxOf(pseudo, s, ROLES[s.role] && s.role !== 'owner' ? s.role : 'manager') : ctxOf(pseudo, null, null, { deactivated: true });
+    return ctxOf(pseudo, null, isAdmin(env, pseudo) ? 'manager' : null);
+  } catch (e) {
+    if (!noTable(e)) throw e;
+    const pseudo = { id: null, provider: 'telegram', provider_id: id };
+    return ctxOf(pseudo, null, isOwner(env, pseudo) ? 'owner' : isAdmin(env, pseudo) ? 'manager' : null, { legacy: true });
+  }
 }
 
 // Перевірка права: повертає ctx або {error: Response}. perm — рядок або масив (досить одного).

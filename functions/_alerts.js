@@ -106,6 +106,13 @@ export const leadKeyboard = id => ({ inline_keyboard: [
   [{ text: '✅ Взяв у роботу', callback_data: `take:${id}` }],
   [{ text: '📋 Відкрити в CRM', url: CRM_URL }],
 ] });
+// Після «Взяв у роботу» — дії із заявкою просто в Telegram (functions/_bot.js, tools/admin/README.md, розділ 19). callback_data —
+// лише id і код дії: сервер не довіряє тексту кнопок і перевіряє права на кожне натискання.
+export const leadActions = (id, url = CRM_URL) => ({ inline_keyboard: [
+  [{ text: '📞 Подзвонив', callback_data: `l:${id}:c` }, { text: '🔕 Не додзвонився', callback_data: `l:${id}:n` }],
+  [{ text: '📝 Задача', callback_data: `l:${id}:t` }, { text: '➡️ Статус', callback_data: `l:${id}:s` }, { text: '👤 Передати', callback_data: `l:${id}:a` }],
+  [{ text: url === CRM_URL ? '📋 Відкрити в CRM' : '📋 Мій кабінет', url }],
+] });
 
 async function sendAll(env, orderId, kind, text, keyboard) {
   let sent = 0;
@@ -157,7 +164,7 @@ async function markTaken(env, o, who, min) {
   const full = leadText(o) + '\n\n' + done;
   for (const a of results) {
     await tg(env, 'editMessageText', { chat_id: a.chat_id, message_id: a.message_id, parse_mode: 'HTML', link_preview_options: { is_disabled: true },
-      text: a.kind === 'new' ? full : `⏰ ${esc(o.number)}: ${done}`, reply_markup: { inline_keyboard: [[{ text: '📋 Відкрити в CRM', url: CRM_URL }]] } });
+      text: a.kind === 'new' ? full : `⏰ ${esc(o.number)}: ${done}`, reply_markup: leadActions(o.id) });
   }
 }
 
@@ -256,6 +263,45 @@ export async function ensureWebhook(env, origin, force = false) {
   if (info.url && info.url !== url && !force) return { webhook: 'foreign', host: (() => { try { return new URL(info.url).host; } catch { return '?'; } })() };
   const ok = await tg(env, 'setWebhook', { url, secret_token: await webhookSecret(env), allowed_updates: ['message', 'callback_query'] });
   return { webhook: ok ? 'set' : 'error', previous: info.url ? 'replaced' : 'none' };
+}
+
+// ===== Команди бота (functions/_bot.js) =====
+// Список команд у меню Telegram — лише в особистих чатах працівників (scope chat): клієнти, що входять на сайт через цього ж бота,
+// команд не бачать. Ставиться при /start працівника, з перевіркою вебхука (раз на 6 год, лише якщо список чатів чи команд змінився)
+// і вручну — POST /api/admin/lead-sla {"task": "commands"} (GitHub Actions → «⏰ Заявки — SLA 15 хв і звіт» → commands).
+export const BOT_COMMANDS = [
+  { command: 'today', description: 'Сьогодні: нові заявки й мої задачі' },
+  { command: 'leads', description: 'Заявки без відповіді' },
+  { command: 'tasks', description: 'Мої відкриті задачі' },
+  { command: 'lead', description: 'Картка заявки: /lead LD-2611-0001' },
+  { command: 'task', description: 'Нова задача: /task Подзвонити завтра 11:00' },
+  { command: 'stats', description: 'Статистика заявок за 7 днів' },
+  { command: 'help', description: 'Що вміє бот' },
+];
+const COMMANDS_VER = 1;
+export async function setCommandsFor(env, chat) {
+  const a = await tg(env, 'setMyCommands', { commands: BOT_COMMANDS, scope: { type: 'chat', chat_id: String(chat) } });
+  await tg(env, 'setChatMenuButton', { chat_id: String(chat), menu_button: { type: 'commands' } });
+  return !!a;
+}
+// Чати працівників: адресати «усього» + активні працівники з Telegram (запрошення або акаунт входу)
+export async function staffChats(env) {
+  const set = new Set(await alertIds(env));
+  try {
+    const { results } = await env.DB.prepare(`SELECT s.tg_id, c.provider, c.provider_id, c.tg_id AS ctg FROM staff s LEFT JOIN clients c ON c.id = s.client_id WHERE s.active = 1`).all();
+    for (const r of results) for (const v of [r.tg_id, r.provider === 'telegram' ? r.provider_id : null, r.ctg]) if (v && /^\d{1,20}$/.test(String(v))) set.add(String(v));
+  } catch { /* до 0010 */ }
+  return [...set].sort();
+}
+export async function ensureCommands(env, force = false) {
+  if (!env.TELEGRAM_BOT_TOKEN) return { commands: 'no_token' };
+  const chats = await staffChats(env), key = `${COMMANDS_VER}|${chats.join(',')}`;
+  const last = await env.DB.prepare("SELECT value FROM settings WHERE key = 'tg_commands'").first();
+  if (!force && last && last.value === key) return { commands: 'ok', chats: chats.length };
+  let n = 0;
+  for (const c of chats) if (await setCommandsFor(env, c)) n++;
+  if (n === chats.length) await env.DB.prepare("INSERT INTO settings (key, value) VALUES ('tg_commands', ?1) ON CONFLICT(key) DO UPDATE SET value = ?1").bind(key).run();
+  return { commands: 'set', chats: chats.length, ok: n };
 }
 
 // ===== Працівникам (migrations/0010) =====
