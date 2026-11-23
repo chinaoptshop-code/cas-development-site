@@ -88,22 +88,18 @@ function imgFade(){
 }
 /* Стрічки фото (.xs-st — стрічка під hero й галереї проєктів, .vgrid — «Відео з обʼєктів» на телефоні, .strip): повільна автопрокрутка
    ~25 px/с безшовним колом (копія кадрів — aria-hidden, без фокуса), лише в кадрі (IntersectionObserver) і на видимій вкладці; пауза при наведенні,
-   фокусі, тачі/колесі (9 с), кнопка ❚❚/▶ (44 px, aria-label; стрічка під hero головних — без неї, Михайло 11.11.2026); prefers-reduced-motion — статично. Висота блоку не змінюється (CLS 0). Михайло 03.11.2026. */
+   фокусі, тачі/колесі (9 с); кнопки паузи немає ніде (Михайло 23.11.2026: «прибери… з зупинкою анімації»; під hero — з 11.11.2026); prefers-reduced-motion — статично. Висота блоку не змінюється (CLS 0). Михайло 03.11.2026. */
 function marquee(){
  if(RM||!('IntersectionObserver' in W)||!W.requestAnimationFrame)return;
- var L=({uk:['Пауза прокрутки фото','Прокручувати фото'],ru:['Пауза прокрутки фото','Прокручивать фото'],en:['Pause photo scrolling','Play photo scrolling'],
-  es:['Pausar desplazamiento de fotos','Reanudar desplazamiento de fotos'],zh:['暂停照片滚动','继续照片滚动'],pl:['Wstrzymaj przewijanie zdjęć','Wznów przewijanie zdjęć'],
-  de:['Foto-Lauf anhalten','Foto-Lauf starten'],fr:['Mettre le défilement en pause','Relancer le défilement'],pt:['Pausar o deslizamento das fotos','Retomar o deslizamento das fotos'],ar:['إيقاف تمرير الصور','تشغيل تمرير الصور']})[(d.documentElement.lang||'uk').slice(0,2)]||['Pause','Play'];
  var list=$$('.xs-st,.vgrid,.strip,.xs-cv,.hx-home~.xs-svc .xs-sv,.xs-bl');if(!list.length)return; // .xs-bl — «Бренди, з якими працюємо» (rich.py brands, 21.11.2026)
  var st=d.createElement('style');
- st.textContent='.mq-bar{position:relative;height:0;z-index:3}.mq-ap{position:absolute;top:.5rem;inset-inline-end:.5rem;width:2.75rem;height:2.75rem;border-radius:50%;border:1px solid rgba(191,145,72,.7);background:rgba(8,7,9,.62);color:#EDE8DF;font:600 .8125rem/1 system-ui,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}.mq-ap:focus-visible{outline:2px solid #BF9148;outline-offset:2px}.mq-run{scroll-snap-type:none!important;scroll-behavior:auto!important}';
+ st.textContent='.mq-run{scroll-snap-type:none!important;scroll-behavior:auto!important}';
  d.head.appendChild(st);
  list.forEach(function(sc){
   if(sc.__mq)return;sc.__mq=1;
   var items=Array.prototype.filter.call(sc.children,function(c){return c.nodeType===1});
   if(items.length<3)return;
-  var LB=(sc.getAttribute('data-mq')||'').split('|');if(LB.length<2)LB=L; // свої підписи кнопки (data-mq="пауза|далі"), інакше — «фото»
-  var cl=[],half=0,pos=0,live=false,stop=false,hover=false,hold=0,raf=0,lt=0,tm=0,bar=null,btn=null,rtl=((sc.closest('[dir]')||{}).dir||'')==='rtl'; // без getComputedStyle на кожну стрічку (примусовий перерахунок стилів; /portfolio — 21 стрічка)
+  var cl=[],half=0,pos=0,live=false,hover=false,hold=0,raf=0,lt=0,tm=0,rtl=((sc.closest('[dir]')||{}).dir||'')==='rtl'; // без getComputedStyle на кожну стрічку (примусовий перерахунок стилів; /portfolio — 21 стрічка)
   function noId(x){if(x.id)x.removeAttribute('id')}
   function setup(){
    if(cl.length)return true;
@@ -118,23 +114,13 @@ function marquee(){
     sc.appendChild(c);cl.push(c);
     $$('img',c).forEach(function(im){['srcset','src'].forEach(function(a){var v=im.getAttribute('data-mq-'+a);if(v!=null){im.removeAttribute('data-mq-'+a);im.setAttribute(a,v)}});
      if(W.casLazy&&(im.hasAttribute('data-p')||im.hasAttribute('data-srcset')))W.casLazy(im)})}); // відкладене фото (оригінал ще не підвантажено) — копія теж
-   // каруселі зі стрілками (.cv-nav від carousel()): пауза — у тому ж ряду перед ←/→, не поверх фото картки; стрічки без стрілок — кнопка в куті
-   // стрічка під hero головних — без кнопки паузи (Михайло 11.11.2026): пауза при наведенні, дотику й фокусі
-   if(!sc.matches('.hx-home~.xs-strip .xs-st')){
-    var nav=sc.nextElementSibling&&sc.nextElementSibling.classList.contains('cv-nav')?sc.nextElementSibling:null;
-    btn=d.createElement('button');btn.type='button';btn.className=nav?'cv-p':'mq-ap';
-    if(nav)nav.insertBefore(btn,nav.firstChild);
-    else{bar=d.createElement('div');bar.className='mq-bar';bar.appendChild(btn);sc.parentNode.insertBefore(bar,sc)}
-    lab();
-    btn.addEventListener('click',function(){stop=!stop;lab();if(!stop){hold=0;sync()}go()});
-   }
+   // без кнопки паузи (Михайло 23.11.2026): пауза — при наведенні, дотику й фокусі
    sc.classList.add('mq-run'); // без scroll-snap, поки стрічка рухається й на паузі: інакше на паузі кадр «відскакує» до краю
    return true;
   }
-  function lab(){if(!btn)return;btn.setAttribute('aria-label',LB[stop?1:0]);btn.title=LB[stop?1:0];btn.innerHTML='<span aria-hidden="true">'+(stop?'▶':'❚❚')+'</span>';btn.setAttribute('aria-pressed',stop?'true':'false')}
   function measure(){half=Math.abs(cl[0].offsetLeft-items[0].offsetLeft)}
   function sync(){pos=Math.abs(sc.scrollLeft);measure();if(half&&pos>=half)pos-=half}
-  function act(){return live&&!stop&&!hover&&!d.hidden&&Date.now()>=hold}
+  function act(){return live&&!hover&&!d.hidden&&Date.now()>=hold}
   function frame(ts){
    raf=0;if(!act()){lt=0;return}
    var dt=lt?Math.min(50,ts-lt):16;lt=ts;
@@ -142,7 +128,7 @@ function marquee(){
    var r=W.devicePixelRatio||1,v=Math.round(pos*r)/r;sc.scrollLeft=rtl?-v:v;
    raf=W.requestAnimationFrame(frame);
   }
-  function go(){clearTimeout(tm);if(act()){if(!raf){sync();raf=W.requestAnimationFrame(frame)}}else if(live&&!stop&&!hover&&Date.now()<hold)tm=setTimeout(go,hold-Date.now()+50)}
+  function go(){clearTimeout(tm);if(act()){if(!raf){sync();raf=W.requestAnimationFrame(frame)}}else if(live&&!hover&&Date.now()<hold)tm=setTimeout(go,hold-Date.now()+50)}
   function pause(ms){hold=Math.max(hold,Date.now()+ms);go()}
   sc.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')hover=true});
   sc.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse'){hover=false;pause(600)}});
@@ -154,8 +140,10 @@ function marquee(){
  });
 }
 /* Карусель «Наші проєкти» на головних (.xs-cv, Михайло 05.11.2026) і «Що ми робимо» на головних (.hx-home~.xs-svc .xs-sv, Михайло 08.11.2026):
-   один ряд, scroll-snap, свайп/тачпад, кнопки ←/→ (44 px, aria-label) під рядом; автопрокрутка — marquee() вище (пауза при наведенні/тачі,
-   кнопка ❚❚/▶; reduced-motion — статично). Натискання стрілки — пауза 9 с. Клас .cv-on знімає резерв місця під кнопки (sections.v1.css). */
+   один ряд, scroll-snap, свайп/тачпад; стрілки ‹ › (44 px, aria-label) — З БОКІВ ряду поверх фото, ліворуч і праворуч (Михайло 23.11.2026:
+   «стрілочки перенеси… щоб справа зліва були, а не знизу»; ряду кнопок під каруселлю й кнопки паузи більше немає). .cv-nav — смужка нульової
+   висоти ПЕРЕД рядом (висота секції не змінюється), кнопки — absolute на рівні середини фото (--cvy ставить ResizeObserver, без примусової верстки).
+   Автопрокрутка — marquee() вище (пауза при наведенні/тачі/фокусі; reduced-motion — статично). Натискання стрілки — пауза 9 с. */
 function carousel(){
  var lg=(d.documentElement.lang||'uk').slice(0,2),
  LP=({uk:['Попередні проєкти','Наступні проєкти'],ru:['Предыдущие проекты','Следующие проекты'],en:['Previous projects','Next projects'],es:['Proyectos anteriores','Proyectos siguientes'],
@@ -166,8 +154,8 @@ function carousel(){
   if(sc.__cv)return;sc.__cv=1;
   var L=sc.classList.contains('xs-sv')?LS:LP;
   var nav=d.createElement('div');nav.className='cv-nav';
-  [[-1,'←',L[0]],[1,'→',L[1]]].forEach(function(x){
-   var b=d.createElement('button');b.type='button';b.className='cv-b';b.setAttribute('aria-label',x[2]);b.title=x[2];b.innerHTML='<span aria-hidden="true">'+x[1]+'</span>';
+  [[-1,'‹',L[0]],[1,'›',L[1]]].forEach(function(x){
+   var b=d.createElement('button');b.type='button';b.className='cv-b '+(x[0]<0?'cv-l':'cv-r');b.setAttribute('aria-label',x[2]);b.title=x[2];b.innerHTML='<span aria-hidden="true">'+x[1]+'</span>';
    b.addEventListener('click',function(){
     try{sc.dispatchEvent(new Event('wheel'))}catch(e){} // marquee(): пауза 9 с
     var cs=W.getComputedStyle(sc),it=sc.firstElementChild,step=it?it.getBoundingClientRect().width+(parseFloat(cs.columnGap)||12):sc.clientWidth*.8,rtl=cs.direction==='rtl';
@@ -175,7 +163,10 @@ function carousel(){
    });
    nav.appendChild(b);
   });
-  sc.parentNode.insertBefore(nav,sc.nextSibling);sc.classList.add('cv-on');
+  sc.parentNode.insertBefore(nav,sc);sc.classList.add('cv-on');
+  // середина фото першої картки відносно верху ряду → --cvy (картка «Що ми робимо» — фото зверху, текст нижче; обкладинка проєкту — фото на всю картку)
+  function mid(){var im=sc.querySelector('img'),r=sc.getBoundingClientRect(),q=(im||sc).getBoundingClientRect();if(q.height>0)nav.style.setProperty('--cvy',Math.round(q.top-r.top+q.height/2)+'px')}
+  if('ResizeObserver' in W)new ResizeObserver(mid).observe(sc);else W.requestAnimationFrame(mid);
  });
 }
 /* Слайд-шоу фону hero головних (Михайло 09.11.2026; список — data-hs на picture.hx-bg, ставить tools/site/rich.py HERO_SLIDES):

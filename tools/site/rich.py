@@ -322,27 +322,20 @@ def brands_order():
     return out + p[len(m):] + m[len(p):]
 
 
-# заголовок і підписи кнопки паузи (data-mq: «пауза|далі» — marquee() бере їх замість «фото»)
+# заголовок секції (кнопки паузи стрічки немає з 23.11.2026 — Михайло: «прибери… з зупинкою анімації»)
 BRANDS_T = {
-    'uk': ('Бренди, з якими працюємо', 'Зупинити стрічку брендів', 'Запустити стрічку брендів'),
-    'ru': ('Бренды, с которыми работаем', 'Остановить ленту брендов', 'Запустить ленту брендов'),
-    'en': ('Brands we work with', 'Pause the brand strip', 'Play the brand strip'),
-    'es': ('Marcas con las que trabajamos', 'Pausar la franja de marcas', 'Reanudar la franja de marcas'),
-    'zh': ('我们常用的品牌', '暂停品牌滚动', '继续品牌滚动'),
-    'pl': ('Marki, z którymi pracujemy', 'Zatrzymaj pasek marek', 'Wznów pasek marek'),
-    'de': ('Marken, mit denen wir arbeiten', 'Markenlauf anhalten', 'Markenlauf starten'),
-    'fr': ('Les marques avec lesquelles nous travaillons', 'Mettre en pause le défilement des marques', 'Relancer le défilement des marques'),
-    'pt': ('Marcas com que trabalhamos', 'Pausar a faixa de marcas', 'Retomar a faixa de marcas'),
-    'ar': ('العلامات التجارية التي نعمل بها', 'إيقاف شريط العلامات التجارية', 'تشغيل شريط العلامات التجارية'),
+    'uk': 'Бренди, з якими працюємо', 'ru': 'Бренды, с которыми работаем', 'en': 'Brands we work with', 'es': 'Marcas con las que trabajamos',
+    'zh': '我们常用的品牌', 'pl': 'Marki, z którymi pracujemy', 'de': 'Marken, mit denen wir arbeiten', 'fr': 'Les marques avec lesquelles nous travaillons',
+    'pt': 'Marcas com que trabalhamos', 'ar': 'العلامات التجارية التي نعمل بها',
 }
 
 
 def brands(x, lang='uk'):
-    """Один ряд назв (без фото, ~0.7 КБ): <ul> у DOM — для читачів екрана й без JS; рух, пауза при наведенні/дотику/фокусі й кнопка ❚❚/▶ —
+    """Один ряд назв (без фото, ~0.7 КБ): <ul> у DOM — для читачів екрана й без JS; рух і пауза при наведенні/дотику/фокусі —
     marquee() у ui-polish.v1.js (копії назв — aria-hidden, через <template>); reduced-motion — статичний ряд із переносом (sections.v1.css)."""
-    h, p0, p1 = BRANDS_T.get(lang) or BRANDS_T['en']
+    h = BRANDS_T.get(lang) or BRANDS_T['en']
     li = ''.join(f'<li>{e(n)}</li>' for n in brands_order())
-    ul = f'<ul class="xs-bl" tabindex="0" aria-label="{a(h)}" data-mq="{a(p0 + "|" + p1)}">{li}</ul>'
+    ul = f'<ul class="xs-bl" tabindex="0" aria-label="{a(h)}">{li}</ul>'
     return wrap(x, f'<h2>{e(x.get("h2") or h)}</h2><div class="xs-brw">{ul}</div>', 'xs-brands')
 
 
@@ -370,7 +363,7 @@ def styleguide(check=False):
     blk = ('<!--brands-sg--><p class="sg-note" id="brands-sg"><code>brands</code> — «Бренди, з якими працюємо»: <code>{"t": "brands"}</code> у секціях '
            '(«Про студію» 10 мов) або <code>"brands": true</code> у JSON лендингу (комплектація, меблювання — перед формою). Назви текстом шрифтом сайту, '
            'без логотипів і слова «партнери» (список — <code>BRANDS</code> у <code>tools/site/rich.py</code>, чекає підтвердження власника); рух — '
-           '<code>marquee()</code> у <code>/assets/ui-polish.v1.js</code> (~25 px/с, пауза при наведенні, дотику й фокусі, кнопка ❚❚/▶ у кінці ряду, копії — '
+           '<code>marquee()</code> у <code>/assets/ui-polish.v1.js</code> (~25 px/с, пауза при наведенні, дотику й фокусі, без кнопки паузи, копії —'
            '<code>aria-hidden</code>), <code>prefers-reduced-motion</code> — статичний ряд із переносом.</p>' + brands({}, 'uk').rstrip('\n') + '<!--/brands-sg-->')
     end = '</div></section><!--/sg-sections-->'  # кінець .sg-demo і секції #sections — приклад іде всередину
     n = re.sub(r'<!--brands-sg-->.*?<!--/brands-sg-->', lambda _: blk, s, count=1, flags=re.S) if '<!--brands-sg-->' in s else s.replace(end, blk + '\n' + end, 1)
