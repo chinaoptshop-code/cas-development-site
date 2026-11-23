@@ -857,7 +857,7 @@
 | pt/redistribuicao-apartamento.html | land | 33.6 | 8.6 | 0.0 | 0.6 | 0 | 472 |
 | zh/interior-design-worldwide.html | land | 33.6 | 9.2 | 0.0 | 0.6 | 0 | 462 |
 | ar/shop-showroom-design.html | land | 33.5 | 8.4 | 0.0 | 0.6 | 0 | 420 |
-| de/hausbau-kosten.html | land | 33.5 | 8.9 | 0.0 | 0.6 | 0 | 457 |
+| de/hausbau-kosten.html | land | 33.5 | 9.0 | 0.0 | 0.6 | 0 | 457 |
 | fr/architecture-interieur-haut-de-gamme.html | land | 33.5 | 8.7 | 0.0 | 0.6 | 0 | 452 |
 | fr/prix-architecture-interieur.html | land | 33.5 | 8.8 | 0.0 | 0.6 | 0 | 476 |
 | fr/renovation-appartement-novopecherski-lypky.html | land | 33.5 | 8.6 | 0.0 | 0.6 | 0 | 432 |
@@ -1121,7 +1121,7 @@
 | pl/projektowanie-wnetrz-neoklasyka.html | land | 31.7 | 8.7 | 0.0 | 0.6 | 0 | 464 |
 | pl/remont-mieszkania-edeldorf-hills.html | land | 31.7 | 8.8 | 0.0 | 0.6 | 0 | 435 |
 | pl/remont-mieszkania-maxima-residence.html | land | 31.7 | 8.6 | 0.0 | 0.6 | 0 | 435 |
-| pl/remont-mieszkania-taryan-towers.html | land | 31.7 | 8.8 | 0.0 | 0.6 | 0 | 436 |
+| pl/remont-mieszkania-taryan-towers.html | land | 31.7 | 8.7 | 0.0 | 0.6 | 0 | 436 |
 | pt/design-de-interiores.html | land | 31.7 | 8.2 | 0.0 | 0.6 | 0 | 418 |
 | pt/design-remodelacao-apartamento-pechersk.html | land | 31.7 | 8.1 | 0.0 | 0.6 | 0 | 435 |
 | pt/espacos-comerciais-chave-na-mao.html | land | 31.7 | 9.9 | 0.0 | 0.6 | 0 | 414 |
@@ -1298,7 +1298,7 @@
 | fr/design-renovation-tchernivtsi.html | land | 30.0 | 8.0 | 0.0 | 0.6 | 0 | 403 |
 | fr/design-renovation-vinnytsia.html | land | 30.0 | 8.0 | 0.0 | 0.6 | 0 | 403 |
 | fr/renovation-appartement-neuf.html | land | 30.0 | 7.7 | 0.0 | 0.6 | 0 | 425 |
-| pl/dom-z-betonu-komorkowego.html | land | 30.0 | 8.2 | 0.0 | 0.6 | 0 | 426 |
+| pl/dom-z-betonu-komorkowego.html | land | 30.0 | 8.3 | 0.0 | 0.6 | 0 | 426 |
 | pt/design-remodelacao-brovary.html | land | 30.0 | 8.0 | 0.0 | 0.6 | 0 | 408 |
 | pt/design-remodelacao-uzhhorod.html | land | 30.0 | 8.0 | 0.0 | 0.6 | 0 | 405 |
 | ru/konfigurator.html | land | 30.0 | 8.9 | 2.1 | 0.6 | 0 | 347 |

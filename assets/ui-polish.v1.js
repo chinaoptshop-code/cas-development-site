@@ -87,7 +87,7 @@ function imgFade(){
  });
 }
 /* Стрічки фото (.xs-st — стрічка під hero й галереї проєктів, .vgrid — «Відео з обʼєктів» на телефоні, .strip): повільна автопрокрутка
-   ~25 px/с безшовним колом (копія кадрів — aria-hidden, без фокуса), лише в кадрі (IntersectionObserver) і на видимій вкладці; пауза при наведенні,
+   ~25 px/с безшовним колом (копія кадрів — aria-hidden, без фокуса), лише в кадрі (IntersectionObserver) і на видимій вкладці; пауза при дотику, перетягуванні,
    фокусі, тачі/колесі (9 с); кнопки паузи немає ніде (Михайло 23.11.2026: «прибери… з зупинкою анімації»; під hero — з 11.11.2026); prefers-reduced-motion — статично. Висота блоку не змінюється (CLS 0). Михайло 03.11.2026. */
 function marquee(){
  if(RM||!('IntersectionObserver' in W)||!W.requestAnimationFrame)return;
@@ -130,10 +130,11 @@ function marquee(){
   }
   function go(){clearTimeout(tm);if(act()){if(!raf){sync();raf=W.requestAnimationFrame(frame)}}else if(live&&!hover&&Date.now()<hold)tm=setTimeout(go,hold-Date.now()+50)}
   function pause(ms){hold=Math.max(hold,Date.now()+ms);go()}
-  sc.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')hover=true});
-  sc.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse'){hover=false;pause(600)}});
+  // наведення курсора стрічку НЕ зупиняє (Михайло 24.11.2026: «щоб не зупинялась анімація при наведенні курсора»); пауза — дотик, перетягування,
+  // колесо, стрілки (9 с) і фокус із клавіатури (:focus-visible — клік мишею по картці фокус теж дає, але зупиняти через нього не треба)
   ['touchstart','pointerdown','wheel'].forEach(function(n){sc.addEventListener(n,function(){pause(9000)},{passive:true})});
-  sc.addEventListener('focusin',function(){hover=true});sc.addEventListener('focusout',function(){hover=false;pause(600)});
+  sc.addEventListener('focusin',function(e){var k=false;try{k=e.target.matches(':focus-visible')}catch(_){k=true}if(k)hover=true});
+  sc.addEventListener('focusout',function(){if(hover){hover=false;pause(600)}});
   d.addEventListener('visibilitychange',function(){go()});
   W.addEventListener('resize',function(){if(cl.length){measure();go()}},{passive:true});
   new IntersectionObserver(function(es){live=es[es.length-1].isIntersecting;if(live&&!setup())live=false;go()},{rootMargin:'0px 0px -10% 0px'}).observe(sc);
@@ -226,6 +227,56 @@ function stripTap(){
   sc.addEventListener('dragstart',function(e){if(e.target.closest&&e.target.closest('a'))e.preventDefault()});
  });
 }
+/* Перетягування мишкою (Михайло 24.11.2026: «клацаючи і зажимаючи ліву кнопку миші на всіх анімованих прокрутах… протягнути… і покрутити
+   вправо-вліво»): на всіх рядах, що рухаються самі або гортаються (стрічки фото, «Що ми робимо», «Наші проєкти», бренди, відео, перемикач сцен),
+   затиснута ліва кнопка + рух тягне ряд за курсором; відпустив з рухом — коротка інерція (reduced-motion — без неї). Клік без руху працює як
+   раніше (картка-посилання відкривається), після перетягування клік гаситься. Тач не чіпаємо — там рідний свайп. Один делегований
+   pointerdown на документі; слухачі руху — лише на час жесту; у DOM нічого не додаємо, крім класу .dg на ряду. */
+function dragScroll(){
+ if(!W.PointerEvent)return;
+ var SEL='.xs-st,.vgrid,.strip,.xs-cv,.xs-sv,.xs-bl,.la-tab',sc=null,x0=0,l0=0,on=false,lx=0,lt=0,v=0,raf=0,kill=0,half=0,sg=1;
+ // нескінченні стрічки (marquee(): друга половина — копії .mq-c): на краю перескакуємо на таку саму картинку з іншої половини — тягнути можна без кінця
+ function wrap(x){if(!half)return x;var a=x*sg;a=((a%half)+half)%half;return a*sg}
+ var st=d.createElement('style');
+ st.textContent='.dg{cursor:grabbing!important;scroll-snap-type:none!important;scroll-behavior:auto!important;-webkit-user-select:none;user-select:none}.dg *{cursor:grabbing!important}';
+ d.head.appendChild(st);
+ function end(){
+  d.removeEventListener('pointermove',move,true);d.removeEventListener('pointerup',up,true);d.removeEventListener('pointercancel',up,true);
+ }
+ function move(e){
+  if(!sc)return;
+  var dx=e.clientX-x0;
+  if(!on){if(Math.abs(dx)<6)return;on=true;sc.classList.add('dg');try{sc.setPointerCapture(e.pointerId)}catch(_){}}
+  var t=e.timeStamp||Date.now();if(t>lt){v=(e.clientX-lx)/(t-lt);lx=e.clientX;lt=t}
+  sc.scrollLeft=wrap(l0-dx);e.preventDefault();
+ }
+ function up(e){
+  end();var s=sc;sc=null;if(!s)return;
+  if(!on)return;
+  kill=Date.now();
+  try{s.releasePointerCapture(e.pointerId)}catch(_){}
+  try{s.dispatchEvent(new Event('wheel'))}catch(_){} // marquee(): пауза 9 с після дії
+  var t=e.timeStamp||Date.now();if(t-lt>80)v=0;
+  if(RM||Math.abs(v)<0.25){s.classList.remove('dg');return}
+  var p=t;(function glide(ts){ // інерція: швидкість гасне ~0.3 с
+   var dt=Math.min(32,(ts||p)-p);p=ts||p;s.scrollLeft=wrap(s.scrollLeft-v*dt);v*=Math.pow(0.992,dt*6);
+   if(Math.abs(v)>0.02&&!sc)raf=W.requestAnimationFrame(glide);else s.classList.remove('dg');
+  })(0);
+ }
+ d.addEventListener('pointerdown',function(e){
+  if(e.pointerType!=='mouse'||e.button!==0||!e.target.closest)return;
+  var s=e.target.closest(SEL);if(!s||s.scrollWidth<=s.clientWidth+8)return;
+  if(e.target.closest('button,input,select,textarea,[contenteditable]'))return;
+  if(raf){W.cancelAnimationFrame(raf);raf=0}
+  var c=s.querySelector('.mq-c'),f=s.firstElementChild;half=c&&f&&c.parentNode===s?Math.abs(c.offsetLeft-f.offsetLeft):0;
+  sg=((s.closest('[dir]')||{}).dir||'')==='rtl'?-1:1;
+  sc=s;on=false;x0=lx=e.clientX;l0=s.scrollLeft;lt=e.timeStamp||Date.now();v=0;
+  d.addEventListener('pointermove',move,true);d.addEventListener('pointerup',up,true);d.addEventListener('pointercancel',up,true);
+ },true);
+ // після перетягування — без переходу за посиланням і без рідного «перетягування» фото чи посилання
+ d.addEventListener('click',function(e){if(Date.now()-kill<350&&e.target.closest&&e.target.closest(SEL)){e.preventDefault();e.stopPropagation()}},true);
+ d.addEventListener('dragstart',function(e){if(e.target.closest&&e.target.closest(SEL))e.preventDefault()});
+}
 /* Курсор-супутник (ПК) і хвиля дотику (тач) — Михайло 20.11.2026 «прикольна анімація на мишку… і щоб з телефону теж класно».
    ПК (hover:hover і pointer:fine, вікно ≥ 1024 px): тонке золоте кільце .cur іде за курсором із запізненням (lerp у rAF, лише transform; цикл
    зупиняється, щойно кільце наздогнало курсор); рідний курсор не ховаємо. Над посиланнями й кнопками кільце більшає й заливається; над обкладинками
@@ -315,7 +366,7 @@ function cvSize(){
  W.addEventListener('resize',function(){if(W.innerWidth===w0)return;w0=W.innerWidth;clearTimeout(t);t=setTimeout(all,250)},{passive:true});
 }
 // кожен блок — окремою задачею (TBT: на /portfolio одна задача була 140–170 мс на телефоні CPU ×4; аудит швидкості 16.11.2026)
-function run(){var fs=[expanders,scrollers,imgFade,carousel,marquee,stripTap,heroSlides,pointerFx,cvSize];(function next(){var f=fs.shift();try{f()}catch(e){}if(fs.length)setTimeout(next,0)})()}
+function run(){var fs=[expanders,scrollers,imgFade,carousel,marquee,stripTap,dragScroll,heroSlides,pointerFx,cvSize];(function next(){var f=fs.shift();try{f()}catch(e){}if(fs.length)setTimeout(next,0)})()}
 // Safari/WebKit запускає defer-скрипти до повного site-chrome.v1.css у кінці <body>: стрічки й каруселі міряють ширину — чекаємо на CSS (Chrome — одразу)
 function css(go){var l=d.querySelector('link[href*="/assets/site-chrome.v1.css"]');if(!l||l.sheet)return go();var k=0,f=function(){if(!k++)go()};l.addEventListener('load',f);l.addEventListener('error',f);W.addEventListener('load',f)}
 if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',function(){css(run)});else css(run);

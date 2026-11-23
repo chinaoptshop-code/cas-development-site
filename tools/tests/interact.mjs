@@ -137,19 +137,41 @@ for (const [path, w] of [['/', 402], ['/', 1440], ['/ar/', 402]]) await test('к
   const hs = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth); must(hs <= 0, `горизонтальна прокрутка сторінки ${hs}px`);
   const cls = await p.evaluate(() => window.__cls); must(cls == null || cls <= 0.05, 'CLS ' + cls);
 });
-await test('карусель «Наші проєкти»: ‹ гортає назад, наведення зупиняє автопрокрутку', '/', 1440, async p => {
+// Михайло 24.11.2026: курсор над рядом автопрокрутку НЕ зупиняє; затиснута ліва кнопка + рух тягне ряд (усі стрічки й каруселі), клік без руху — перехід
+await test('карусель «Наші проєкти»: під курсором рухається далі, ‹ › гортають', '/', 1440, async p => {
   await wakeup(p);
   const row = p.locator('.xs-cv').first();
   await row.evaluate(e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(600);
   const bb = await row.boundingBox();
   await p.mouse.move(bb.x + bb.width / 2, bb.y + bb.height / 2); await p.waitForTimeout(400);
-  const a0 = await row.evaluate(e => e.scrollLeft); await p.waitForTimeout(900);
-  must(Math.abs(await row.evaluate(e => e.scrollLeft) - a0) < 1, 'при наведенні карусель рухається');
+  const h0 = await row.evaluate(e => e.scrollLeft);
+  await p.waitForFunction(([s, v]) => Math.abs(document.querySelector(s).scrollLeft - v) > 8, ['.xs-cv', h0], { timeout: 6000 }).catch(() => {});
+  must(Math.abs(await row.evaluate(e => e.scrollLeft) - h0) > 8, 'під курсором карусель зупинилась');
+  const a0 = await row.evaluate(e => e.scrollLeft);
   await p.locator('.xs-covers .cv-r').first().click(); await p.waitForTimeout(900);
   const s1 = await row.evaluate(e => e.scrollLeft);
   await p.locator('.xs-covers .cv-l').first().click(); await p.waitForTimeout(900);
   const s2 = await row.evaluate(e => e.scrollLeft);
   must(s1 - a0 > 20 && s1 - s2 > 20, `стрілки не гортають (${a0}→${s1}→${s2})`);
+});
+for (const [path, sel] of [['/', '.hx-home~.xs-strip .xs-st'], ['/', '.xs-sv'], ['/', '.xs-cv'], ['/about', '.xs-bl'], ['/ar/', '.xs-cv']]) await test('перетягування мишкою тягне ряд, клік після нього не відкриває посилання: ' + sel, path, 1440, async p => {
+  await wakeup(p);
+  const row = p.locator(sel).first();
+  await row.evaluate(e => e.scrollIntoView({ block: 'center' })); await p.waitForTimeout(1200);
+  const bb = await row.boundingBox(), cx = bb.x + bb.width / 2, cy = bb.y + bb.height / 2, url = p.url();
+  await p.mouse.move(cx, cy); await p.waitForTimeout(200);
+  const info = await row.evaluate(e => { const c = e.querySelector('.mq-c'), f = e.firstElementChild; return { s: e.scrollLeft, half: c ? Math.abs(c.offsetLeft - f.offsetLeft) : 0, rtl: document.documentElement.dir === 'rtl' }; });
+  await p.mouse.down();
+  for (let i = 1; i <= 8; i++) { await p.mouse.move(cx - i * 25, cy); await p.waitForTimeout(16); }
+  const mid = await row.evaluate(e => ({ s: e.scrollLeft, dg: e.classList.contains('dg') }));
+  must(mid.dg, 'під час перетягування немає класу .dg');
+  // ряд пішов за курсором на ~200 px (нескінченна стрічка — з точністю до довжини кола)
+  let moved = mid.s - info.s - 200; if (info.half) moved = ((moved % info.half) + info.half) % info.half, moved = Math.min(moved, info.half - moved);
+  must(Math.abs(moved) <= 40, `ряд не пішов за курсором: ${info.s}→${mid.s} (коло ${info.half})`);
+  await p.waitForTimeout(150); await p.mouse.up(); await p.waitForTimeout(700);
+  must(p.url() === url, 'після перетягування відкрилось посилання: ' + p.url());
+  must(!(await row.evaluate(e => e.classList.contains('dg'))), 'клас .dg лишився після перетягування');
+  must(await p.locator('#lb.on, .lb.on, [data-lb-open]').count() === 0, 'після перетягування відкрився лайтбокс');
 });
 // стрічка під hero головних (Михайло 11.11.2026): без кнопки паузи, автопрокрутка, кадри — посилання на кейс своєї мови; тап відкриває, свайп — ні
 for (const [path, w] of [['/', 402], ['/', 1440], ['/en/', 402], ['/ar/', 1440]]) await test('стрічка фото під hero: кадри-посилання, тап/свайп, без паузи', path, w, async p => {
@@ -1453,10 +1475,11 @@ for (const [path, w] of [['/about', 1440], ['/about', 402], ['/ar/about', 402], 
   must(Math.abs(s1 - s0) > 10 && (st.rtl ? s1 < s0 : s1 > s0), `стрічка не рухається або не в той бік (${s0}→${s1})`);
   must(await p.locator('.xs-brands button, .xs-brands .mq-bar').count() === 0, 'у стрічки брендів є кнопка (паузи немає з 23.11.2026)');
   const ub = await ul.boundingBox();
-  if (w >= 1024) { // наведення миші — пауза
+  if (w >= 1024) { // курсор над стрічкою її не зупиняє (Михайло 24.11.2026)
     await p.mouse.move(ub.x + ub.width / 3, ub.y + ub.height / 2); await p.waitForTimeout(300);
-    const m0 = await ul.evaluate(e => e.scrollLeft); await p.waitForTimeout(900);
-    must(Math.abs(await ul.evaluate(e => e.scrollLeft) - m0) < 1, 'при наведенні стрічка рухається');
+    const m0 = await ul.evaluate(e => e.scrollLeft);
+    await p.waitForFunction(v => Math.abs(document.querySelector('.xs-brands .xs-bl').scrollLeft - v) > 8, m0, { timeout: 6000 }).catch(() => {});
+    must(Math.abs(await ul.evaluate(e => e.scrollLeft) - m0) > 8, 'під курсором стрічка зупинилась');
   }
   const cls = await p.evaluate(() => window.__cls);
   must(cls <= 0.05, 'CLS ' + cls.toFixed(3));
