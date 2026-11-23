@@ -2,7 +2,8 @@
 // Сторінки — з репозиторію з CSP і Permissions-Policy з _headers; API — справжні обробники functions/ через стенд harness.mjs (node:sqlite, мок
 // Telegram, фейковий R2); «воркер Mac mini» — виклики /api/bot/chat з цього скрипту. Зовнішні запити блокуються.
 //   node tools/tests/chatui.mjs [--shots <тека>]     (PNG deviceScaleFactor 2; без --shots — не зберігаються)
-// Перевіряє: прапорець вимкнено — без ?chat=1 іконки й модуля немає; ?chat=1 — іконка в рядах месенджерів, панель лише після тапу; 402 і 1440;
+// Перевіряє: CHAT_PUBLIC = True (з 23.11.2026) — кружечок бота поруч із кружечком дзвінка (телефон) та іконка в рядах месенджерів, модуль і панель
+// лише після тапу; сторінка без розмітки чату (як при False) + ?chat=1 — JS додає кружечок і іконки; меню дзвінка — 5 іконок; 402 і 1440; ліміти (лічильник, «далі менеджер»);
 // текст, відповідь бота з розрахунком і голосом, файл, запис голосу, номер → заявка, офлайн, ar (RTL) і en, клавіатура (Esc, Tab у межах панелі),
 // без горизонтальної прокрутки, JS-помилок і порушень CSP; текст із розміткою ніде не стає розміткою (віконце й адмінка).
 import http from 'node:http';
@@ -21,7 +22,7 @@ const shot = async (page, name) => { if (shots) await page.screenshot({ path: jo
 
 const KEY = 'test-leadbot-key-0123456789abcdef'; // фіктивний ключ лише для тестів
 const R2 = new Map();
-const env = makeEnv(freshDB(), { LEADBOT_KEY: KEY, MEDIA: { async put(k, v) { R2.set(k, new Uint8Array(v)); }, async get(k) { return R2.has(k) ? { body: R2.get(k) } : null; }, async delete(k) { R2.delete(k); } },
+const env = makeEnv(freshDB(), { LEADBOT_KEY: KEY, CHAT_IP_STARTS: '100', /* усі запити стенду — з однієї адреси */ MEDIA: { async put(k, v) { R2.set(k, new Uint8Array(v)); }, async get(k) { return R2.has(k) ? { body: R2.get(k) } : null; }, async delete(k) { R2.delete(k); } },
   ASSETS: { fetch: async req => new Response(readFileSync(join(ROOT, new URL(req.url).pathname.slice(1) + '.html')), { headers: { 'content-type': 'text/html' } }) } });
 const OWNER = await addClient(env, { id: 111, name: 'Михайло' });
 const ckOwner = await login(env, OWNER);
@@ -106,8 +107,7 @@ async function ctxOf(w, { lang = 'uk-UA', cookie } = {}) {
 const noHScroll = page => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1);
 async function openChat(page, w) {
   if (w < 768) {
-    await page.click('.mbar[data-one] .mb-tg');
-    await page.click('.mb-menu a[data-chat]');
+    await page.click('.mbar[data-one] > a.mb-bot[data-chat]');   // кружечок бота поруч із кружечком дзвінка (Михайло 23.11.2026)
   } else {
     const a = page.locator('.scf-soc a[data-chat]');
     await a.scrollIntoViewIfNeeded();
@@ -121,32 +121,47 @@ for (const w of [402, 1440]) {
   console.log(`\nЧат на сайті — ${w} px`);
   const { ctx, page, errs } = await ctxOf(w);
   await env.DB.prepare("DELETE FROM settings WHERE key = 'chat_bot_ping'").run(); // воркер ще не пінгував
-  await step('без ?chat=1 (CHAT_PUBLIC = False): ні іконки, ні модуля', async () => {
+  await step('CHAT_PUBLIC = True: іконка в рядах месенджерів і (телефон) кружечок бота поруч із кружечком дзвінка; модуль і панель — лише після тапу', async () => {
     await page.goto(BASE + '/', { waitUntil: 'networkidle' });
-    ok(!(await page.$('a[data-chat]')), 'іконка є без ?chat=1');
+    for (const sel of ['.scf-soc a[data-chat]', '.sch-mmsg a[data-chat]', '.mbar[data-one] > a.mb-bot[data-chat]']) ok(await page.$(sel), 'немає ' + sel);
+    ok(!(await page.$('.mb-menu a[data-chat]')), 'у меню дзвінка іконки чату вже немає (окремий кружечок)');
+    ok((await page.getAttribute('.scf-soc a[data-chat]', 'href')) === '#zayavka', 'без JS — до форми заявки');
     ok(!(await page.evaluate(() => [...document.scripts].some(s => /chat\.v1\.js/.test(s.src)))), 'модуль завантажено без потреби');
-  });
-  await step('?chat=1: іконка в рядах месенджерів (пігулка, футер, мобільне меню), панель сама не відкривається, модуль не вантажиться до тапу', async () => {
-    await page.goto(BASE + '/?chat=1', { waitUntil: 'networkidle' });
-    await page.waitForTimeout(300);
-    for (const sel of ['.scf-soc a[data-chat]', '.sch-mmsg a[data-chat]', '.mb-menu a.mb-chat[data-chat]']) ok(await page.$(sel), 'немає ' + sel);
+    ok(!(await page.$('.cht')), 'панель відкрилась сама');
     const a = await page.$('.scf-soc a[data-chat]');
     ok(/Чат/.test(await a.getAttribute('aria-label')) && await a.getAttribute('title'), 'aria-label/title');
     const box = await a.boundingBox(); ok(box.width >= 44 && box.height >= 44, 'іконка ≥ 44 px: ' + JSON.stringify(box));
-    ok(!(await page.$('.cht')), 'панель відкрилась сама');
-    ok(!(await page.evaluate(() => [...document.scripts].some(s => /chat\.v1\.js/.test(s.src)))), 'модуль до тапу');
-    if (w >= 768) { await page.locator('.scf-soc').scrollIntoViewIfNeeded(); await shot(page, 'chat-icon-footer'); }
-    else {
+    if (w >= 768) {
+      ok(!(await page.isVisible('.mbar')), 'на ПК кружечків немає');
+      await page.locator('.scf-soc').scrollIntoViewIfNeeded(); await shot(page, 'chat-icon-footer');
+    } else {
+      const c = await page.$$eval('.mbar[data-one] > .mb-bot, .mbar[data-one] > .mb-tg', xs => xs.map(x => ({ c: x.className, l: x.getAttribute('aria-label'), r: x.getBoundingClientRect().toJSON() })));
+      ok(c.length === 2 && c[0].c === 'mb-bot' && c[1].c === 'mb-tg', 'бот, потім дзвінок: ' + JSON.stringify(c));
+      ok(c.every(x => x.r.width >= 44 && x.r.height >= 44 && Math.abs(x.r.width - x.r.height) < 1 && x.r.left >= 0 && x.r.right <= w && x.l), 'кружечки ≥ 44 px у межах екрана з aria-label');
+      ok(c[0].r.right <= c[1].r.left - 4 && Math.abs(c[0].r.top - c[1].r.top) < 1, 'кружечки не перекриваються, в один ряд');
       await page.click('.mbar[data-one] .mb-tg'); await page.waitForTimeout(250);
-      // 6 іконок (дзвінок, Telegram, WhatsApp, Viber, WeChat, чат) — в один ряд, кожна ≥ 44 px, меню в межах екрана
+      ok((await page.getAttribute('.mbar[data-one] .mb-tg', 'aria-expanded')) === 'true', 'aria-expanded');
+      // 5 іконок (дзвінок, Telegram, WhatsApp, Viber, WeChat) — в один ряд, кожна ≥ 44 px, меню в межах екрана
       const ic = await page.$$eval('.mb-menu a:not(.mb-lead)', xs => xs.map(x => x.getBoundingClientRect().toJSON()));
-      ok(ic.length === 6, 'іконок у меню: ' + ic.length);
+      ok(ic.length === 5, 'іконок у меню: ' + ic.length);
       ok(ic.every(r => Math.abs(r.top - ic[0].top) < 1 && r.width >= 44 && r.height >= 44 && r.left >= 0 && r.right <= w), 'не в один ряд / < 44 px: ' + JSON.stringify(ic.map(r => [r.left, r.top, r.width])));
       await shot(page, 'chat-icon-pill'); await page.click('.mbar[data-one] .mb-tg');
     }
+  });
+  await step('сторінка без розмітки чату (як при CHAT_PUBLIC = False) + ?chat=1: JS додає кружечок бота й іконки; режим запамʼятовується', async () => {
+    await page.route(BASE + '/services', async r => {
+      const html = readFileSync(join(ROOT, 'services.html'), 'utf8').replace(/<a class="(?:mb-bot|bi bi-chat)"[^>]*data-chat[^>]*><\/a>\n?/g, '');
+      await r.fulfill({ status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'content-security-policy': headerOf('/services', 'Content-Security-Policy').join(', ') }, body: html });
+    });
+    await page.goto(BASE + '/services', { waitUntil: 'networkidle' });
+    ok(!(await page.$('a[data-chat]')), 'без ?chat=1 і без розмітки — чату немає');
+    await page.goto(BASE + '/?chat=1', { waitUntil: 'networkidle' });
     // режим перевірки запамʼятовується на наступних сторінках вкладки
     await page.goto(BASE + '/services', { waitUntil: 'networkidle' });
+    await page.waitForTimeout(200);
     ok(await page.$('.scf-soc a[data-chat]'), 'sessionStorage cas_chat');
+    if (w < 768) ok(await page.$('.mbar[data-one] > a.mb-bot[data-chat]'), 'кружечок бота додав JS');
+    await page.unroute(BASE + '/services');
   });
   await step('тап по іконці → панель: dialog, фокус у полі, дисклеймер, привітання, офлайн, без горизонтальної прокрутки', async () => {
     await page.goto(BASE + '/', { waitUntil: 'networkidle' });
@@ -160,7 +175,7 @@ for (const w of [402, 1440]) {
     ok(await page.isVisible('.cht-off'), 'воркер ще не пінгував — офлайн');
     ok(await noHScroll(page), 'горизонтальна прокрутка');
     ok(!(await page.evaluate(() => getComputedStyle(document.documentElement).overflow === 'hidden')), 'overflow:hidden на <html>');
-    for (const b of await page.$$('.cht .cht-ib, .cht .btn, .cht-lv')) { const bb = await b.boundingBox(); if (bb && bb.width) ok(bb.width >= 44 && bb.height >= 44, 'кнопка < 44 px: ' + (await b.getAttribute('class')) + ' ' + JSON.stringify(bb)); }
+    for (const b of await page.$$('.cht .cht-ib, .cht .btn, .cht-lv')) { const bb = await b.boundingBox(); if (bb && bb.width) ok(bb.width >= 43.9 && bb.height >= 43.9, 'кнопка < 44 px: ' + (await b.getAttribute('class')) + ' ' + JSON.stringify(bb)); }
     await shot(page, 'chat-offline');
   });
   await step('Esc закриває й повертає фокус на іконку; Tab не виходить з панелі', async () => {
@@ -226,12 +241,42 @@ for (const w of [402, 1440]) {
     await page.waitForFunction(k => document.querySelectorAll('.cht-me').length > k, n, { timeout: 8000 });
     ok(await page.$('.cht-me:last-of-type .cht-play'), 'голосове — плеєр у бульбашці');
   });
+  await step('ліміти: лічильник символів з 80 % межі; задовге — зрозуміле повідомлення, не надсилається', async () => {
+    await page.fill('.cht-in', 'а'.repeat(1500));
+    ok(await page.isHidden('.cht-cnt'), 'до 80 % — без лічильника');
+    await page.fill('.cht-in', 'а'.repeat(1700));
+    ok(await page.isVisible('.cht-cnt') && /1700 \/ 2000/.test(await page.textContent('.cht-cnt')), 'лічильник');
+    await page.fill('.cht-in', 'а'.repeat(2100));
+    ok(await page.$eval('.cht-cnt', e => e.classList.contains('over')), 'понад межу — червоний');
+    const n = await page.$$eval('.cht-me', x => x.length);
+    await page.click('.cht-send');
+    await page.waitForFunction(() => [...document.querySelectorAll('.cht-err')].some(e => /задовге — до 2000/.test(e.textContent)));
+    ok((await page.$$eval('.cht-me', x => x.length)) === n, 'не надіслано');
+    await page.fill('.cht-in', '');
+  });
+  await step('ліміт розмови (handoff limit від воркера): «Далі вам відповість менеджер», месенджери, рядок номера відкритий', async () => {
+    const n0 = await page.$$eval('.cht-me', x => x.length);
+    await page.fill('.cht-in', 'Ще одне питання');
+    await page.click('.cht-send');
+    await page.waitForFunction(k => document.querySelectorAll('.cht-me').length > k, n0);
+    await page.waitForTimeout(300);
+    const it = (await bot('GET', '/api/bot/chat?limit=5')).data.items.find(x => x.sid === sid);
+    ok(it, 'розмова в черзі');
+    const r = await bot('POST', '/api/bot/chat', { sid, reply_to: it.last_user_id, handoff: true, handoff_reason: 'limit', reason: 'бюджет воркера (тест)' });
+    ok(r.status === 200 && r.data.limit === 'conv', JSON.stringify(r.data));
+    await page.waitForSelector('.cht-off.cht-lim:not([hidden])', { timeout: 15000 });
+    ok(/Далі вам відповість менеджер/.test(await page.textContent('.cht-off')));
+    ok(await page.$('.cht-off a[href^="https://t.me/"]') && await page.$('.cht-off a[href^="viber://"]'), 'месенджери');
+    ok(await page.isVisible('.cht-pf'), 'рядок номера відкритий');
+    ok(/Далі вам відповість менеджер/.test(await page.textContent('.cht-sys:not(.cht-err)')), 'системне повідомлення сайту');
+    ok(!(await bot('GET', '/api/bot/chat?limit=5')).data.items.some(x => x.sid === sid), 'бот більше не отримує розмову');
+    await shot(page, 'chat-limit');
+  });
   await step('«Залишити номер» → заявка CRM (source=chat) і «Дякуємо» в розмові', async () => {
-    await page.click('.cht-lv');
+    if (await page.isHidden('.cht-pf')) await page.click('.cht-lv'); // після ліміту рядок уже відкритий
     await page.fill('.cht-pf input', '+380 67 000 00 0' + (w % 10));
     await page.click('.cht-ps');
-    await page.waitForSelector('.cht-sys:not(.cht-err)', { timeout: 6000 });
-    ok(/Дякуємо/.test(await page.textContent('.cht-sys:not(.cht-err)')));
+    await page.waitForFunction(() => [...document.querySelectorAll('.cht-sys:not(.cht-err)')].some(e => /Дякуємо/.test(e.textContent)), null, { timeout: 6000 });
     const o = await env.DB.prepare("SELECT o.source, o.form FROM chat_sessions s JOIN orders o ON o.id = s.order_id WHERE s.sid = ?").bind(sid).first();
     ok(o && o.source === 'chat' && o.form === 'chat', JSON.stringify(o));
   });

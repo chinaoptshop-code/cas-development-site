@@ -43,13 +43,20 @@ GET /api/bot/chat?limit=5&lock=120
   "sid": "9f3c…(32 hex)", "lang": "uk", "page": "/remont-kvartyr-kyiv", "state": "bot",
   "lead": {"number": "LD-2611-0042"} ,
   "lock_until": 1763900120, "last_user_id": 1234,
+  "budget": {"answers_left": 17, "msgs_left": 26, "voice_left": 2},
   "history": [ {"id": 1201, "role": "user|bot|staff|system", "text": "…", "files": [], "audio": {"id": "…", "mime": "audio/ogg", "dur": 12.0},
                 "estimate": {…}, "author": "Михайло", "at": "2026-11-23 10:15:00"} ],
   "pending": [ {"id": 1233, "text": "Ось план", "files": [{"id": "a1b2…(24 hex)", "name": "plan.pdf", "mime": "application/pdf", "kind": "pdf", "size": 834221}],
                 "at": "2026-11-23 10:16:02"},
                {"id": 1234, "text": "Скільки буде ремонт?", "files": [], "at": "…"} ]
-}]}
+}],
+ "budget": {"day_answers_left": 463, "day_answers_max": 500}}
 ```
+- **Бюджет (ліміти, Михайло 23.11.2026; таблиця — `tools/admin/README.md`, розділ 21 «Ліміти чату»).** `items[].budget` — скільки ще можна
+  в цій розмові: `answers_left` (відповідей бота; стеля `CHAT_CONV_ANSWERS`, типово 20), `msgs_left` (повідомлень відвідувача, що йдуть боту;
+  `CHAT_CONV_MSGS`, 30), `voice_left` (голосових відповідей; `CHAT_VOICE_PER_CONV`, 2). Верхній `budget.day_answers_left` — відповідей бота
+  на весь сайт до кінця доби за Києвом (`CHAT_DAY_ANSWERS`, 500). Добову стелю вичерпано — `items: []` (воркер нічого не витрачає).
+  Розмови на стелі (`handoff_reason: limit`) у черзі немає взагалі — їх веде людина.
 - `history` — до 30 останніх повідомлень розмови, крім `pending` (відповіді бота й людини, системні, уже відповідені повідомлення
   відвідувача), за часом. `pending` — повідомлення відвідувача без відповіді (до 20), за часом.
 - `lead` — заявка CRM, якщо людина вже лишила номер (тоді не просити номер удруге).
@@ -81,6 +88,14 @@ POST /api/bot/chat
   **`409 {"conflict": true, "last_user_id": 1236}`**: відповідь не записано, перечитати чергу (розмова знову там) і відповісти на все разом.
 - Розмову взяла людина (`staff`) або закрили (`closed`) — **`409 {"state": "staff"}`**: не відповідати.
 - Треба хоча б одне з `text`, `audio`, `estimate` або `handoff: true` — інакше `422`.
+- **Стелі (до запису; воркер тоді нічого не зберігає й далі не витрачає):** розмова дійшла `CHAT_CONV_ANSWERS` відповідей або вже на стелі —
+  **`409 {"limit": "conv"}`** (розмова переходить до людини: `waiting` + `handoff_reason: limit`, системне «Далі вам відповість менеджер…»
+  мовою розмови й одне сповіщення адмінам); добова стеля відповідей сайту — **`409 {"limit": "day"}`**. Відповідь, що вичерпала стелю
+  розмови, приймається (`200 {"limit": "conv"}`), а наступне повідомлення відвідувача — вже менеджеру.
+- **Голос — не більше `CHAT_VOICE_PER_CONV` (2) на розмову** (Михайло 23.11.2026: «одне або два… а потім лише текстом»): понад межу
+  `audio` не зберігається, текст лишається — `200 {"audio_dropped": true}` (лише `audio` без тексту понад межу — `422`).
+- Воркер сам вичерпав свій бюджет (модель, токени, доба) — `{"handoff": true, "handoff_reason": "limit", "reason": "…"}` без тексту:
+  сайт ставить стан ліміту й сам пише відвідувачу «Далі вам відповість менеджер…».
 - `audio.mime`: `audio/ogg` (opus, рекомендовано), `audio/mpeg`, `audio/mp4`, `audio/webm`, `audio/wav`, `audio/aac`; `dur` — секунди (0…600).
   У панелі — плеєр «Голосова відповідь» (▶/❚❚, без автозапуску). **Голосом (клонованим голосом Михайла) відповідати, коли відвідувач
   надіслав голосове**; текст відповіді все одно передавати в `text` (його читають і менеджери в адмінці).
@@ -127,6 +142,7 @@ POST /api/bot/chat {"sid": "…", "release": true}   → зняти блокув
 | `complaint` | скарга |
 | `complex` | складне питання, на яке немає підтвердженої відповіді; «файл для менеджера» (SKP, IFC, RVT, ZIP) |
 | `other` | інше |
+| `limit` | бюджет вичерпано (воркер або стеля сайту): бот замовкає, розмову веде людина; черга її більше не видає |
 
 `reason` — коротко своїми словами (≤ 200, у Telegram).
 
@@ -142,7 +158,7 @@ POST /api/bot/chat {"sid": "…", "release": true}   → зняти блокув
 | стан | що означає | черга бота |
 |---|---|---|
 | `bot` | відповідає помічник | так |
-| `waiting` | помічник покликав людину (handoff) | так |
+| `waiting` | помічник покликав людину (handoff) | так (крім `handoff_reason: limit` — ні) |
 | `staff` | відповідає менеджер з адмінки — **бот мовчить** | ні (`409`) |
 | `closed` | закрита в адмінці; нове повідомлення відвідувача → знову `bot` | ні, доки не напише |
 
@@ -188,15 +204,16 @@ curl -sS -X POST "$B/api/bot/chat" -H "$K" -H 'content-type: application/json' \
 Без cookie; `sid` + `token` — заголовки `x-chat-sid` / `x-chat-token` (або поля тіла POST; у параметрах адреси — ні, з 23.11.2026). POST — лише з `Origin` свого сайту.
 | ендпоінт | що | ліміти |
 |---|---|---|
-| `GET /api/chat/status` | `{online, limits:{file,session,r2}, accept, alt}` без розмови | — |
-| `POST /api/chat/start {lang, page, ref_host?}` | `{sid, token, hello, online, limits, accept, alt}` — панель викликає лише при першому надсиланні | 10/год з IP, 600/год на сайт |
-| `POST /api/chat/send {text?, files?:[file_id]}` | `{id, state}`; текст ≤ 4 000; порожнє — 422; файли — свої й ще не надіслані | 40/год і 200/добу на розмову, 150/год з IP |
-| `POST /api/chat/upload` (сирі байти; `x-file-name`, `content-type`) | `{file_id, name, mime, kind, size}`; 415 — тип/сигнатура; 413 `{too_big, max, alt}` | R2: 50 МБ/файл, 150 МБ/розмову; без R2: 1,5 МБ і 6 МБ; 30 файлів/розмову; 60/год і 200/добу з IP |
-| `GET /api/chat/poll?after=<id>` | `{messages, state, typing, online, lead, last_id}` | — |
+| `GET /api/chat/status` | `{online, limit: 'day'\|null, limits:{file,session,r2,store_full?}, text_max, files_msg, accept, alt}` без розмови | — |
+| `POST /api/chat/start {lang, page, ref_host?}` | `{sid, token, hello, online, limit, limits, text_max, files_msg, accept, alt}` — панель викликає лише при першому надсиланні | 10/год і 5/добу з IP (`CHAT_IP_STARTS`), 600/год і 300/добу на сайт (`CHAT_DAY_STARTS`): 429 `{day_full \| ip_full, alt}` |
+| `POST /api/chat/send {text?, files?:[file_id]}` | `{id, state, limit}`; текст ≤ 2 000 (довше — 413 `{too_long, max}`); ≤ 5 файлів (400 `{too_many_files}`); порожнє — 422; на стелі розмови — зберігається для менеджера, `limit: 'conv'` | 40/год і 200/добу на розмову, 150/год і 300/добу з IP (`CHAT_IP_MSGS`) |
+| `POST /api/chat/upload` (сирі байти; `x-file-name`, `content-type`) | `{file_id, name, mime, kind, size}`; 415 — тип/сигнатура; 413 `{too_big, max, alt, store_full?}` | R2: 10 МБ/файл, 50 МБ/розмову, стеля сховища 8 ГБ (`CHAT_R2_CAP_GB`; на стелі — лише до 1,5 МБ, у D1); без R2: 1,5 МБ і 6 МБ; 12 файлів/розмову; 60/год і 200/добу з IP |
+| `GET /api/chat/poll?after=<id>` | `{messages, state, typing, online, limit: 'conv'\|'day'\|null, lead, last_id}` | — |
 | `GET /api/chat/file/<id>` | свій файл / аудіо бота (attachment, nosniff, sandbox) | — |
 | `POST /api/chat/contact {phone, name?}` | заявка CRM `source=chat`, `form=chat`, `ref_path`, `ref_host` + сповіщення адмінам; повторно — та сама | 5/год з IP |
 
-Терміни: розмова без заявки — 30 діб, файли без заявки — 14 діб, завантажені й не надіслані — 1 доба (розклад `/api/admin/lead-sla`).
+Терміни: розмова без заявки — 30 діб, файли без заявки — 14 діб, файли розмови із заявкою — 180 діб, завантажені й не надіслані — 1 доба
+(розклад `/api/admin/lead-sla`; обʼєкти R2 видаляються теж — так звільняється стеля сховища).
 
 ## 8. Воркер (Mac mini) — `tools/chat/worker/`
 
@@ -204,6 +221,8 @@ curl -sS -X POST "$B/api/bot/chat" -H "$K" -H 'content-type: application/json' \
 (`tools/chat/worker/install.sh`), опис — `tools/chat/worker/README.md`. Типово — локальні моделі (Ollama), платний API лише з `CHAT_LLM=api`.
 Запис на дзвінок: воркер пропонує 3 вільні проміжки з календаря Михайла (`tools/assistant/bin/gcal.py`, Пн–Пт 10:00–20:00 Київ) текстом
 («1) Вт 24.11, 10:00»), обраний час — `handoff asks_human` + `renotify`; подію в календар ставить менеджер.
+Ліміти воркера (токени відповіді, обрізання історії й файлів, кадри відео й сторінки PDF у vision, добовий і по-розмовний облік,
+обовʼязкова стеля `CHAT_API_DAY_TOKENS` для платного API) — `tools/chat/worker/README.md`, «Ліміти»; `run.py --usage`.
 
 ## 9. Наступні кроки (не в цій гілці)
 

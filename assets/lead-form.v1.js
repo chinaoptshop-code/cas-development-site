@@ -543,7 +543,7 @@
 
   /* ---------- 3. «Залишити номер» (нижня панель) і кнопки-якорі #zayavka / #lead: прокрутка й фокус на телефоні ---------- */
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a.mb-lead, a[href="#zayavka"], a[href="#lead"]');
+    var a = e.target.closest && e.target.closest('a.mb-lead, a[href="#zayavka"]:not([data-chat]), a[href="#lead"]:not([data-chat])'); // іконки чату (a[data-chat] → #zayavka лише без JS) відкривають панель
     if (!a) return;
     var vis = function (x) { return !!x && x.offsetParent !== null && getComputedStyle(x).visibility !== 'hidden'; };
     if (!document.querySelector('form.lq') && !$('oPhone')) buildAll(); // місця .lq-slot ще не зібрані (далеко від екрана)

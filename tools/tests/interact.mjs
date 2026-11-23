@@ -1170,6 +1170,41 @@ for (const [path, w] of [['/', 402], ['/', 320], ['/ar/', 402], ['/ar/', 344], [
   must(r.m[0] >= 0 && r.m[1] <= r.m[2], 'меню за краєм екрана: ' + r.m);
   must(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'горизонтальна прокрутка');
 });
+// Два кружечки в куті телефона (Михайло 23.11.2026): дзвінок (у самому куті, меню) і бот-помічник (поруч, панель чату; CHAT_PUBLIC);
+// ≥ 44 px, однакові, не перекривають одне одного й край екрана, RTL — дзеркально; без видимого тексту, з aria-label/title; на ПК — немає
+for (const [path, w, h] of [['/', 344, 740], ['/', 402, 874], ['/ar/', 344, 740], ['/ar/', 402, 874], ['/en/apartment-renovation-cost', 430, 932], ['/services', 360, 640]]) await test('кружечки: дзвінок і бот поруч, ≥ 44 px, без перекриття', path, [w, h], async p => {
+  const r = await p.evaluate(() => [...document.querySelectorAll('.mbar[data-one] > .mb-bot, .mbar[data-one] > .mb-tg')].map(e => { const b = e.getBoundingClientRect(), cs = getComputedStyle(e);
+    return { c: e.className, x: b.left, r: b.right, t: b.top, b: b.bottom, w: b.width, h: b.height, rad: cs.borderRadius, txt: e.textContent.trim(), lab: e.getAttribute('aria-label') || '', ti: e.getAttribute('title') || '', vw: innerWidth, vh: innerHeight, rtl: document.documentElement.dir === 'rtl' }; }));
+  must(r.length === 2 && r[0].c === 'mb-bot' && r[1].c === 'mb-tg', 'кружечки: ' + JSON.stringify(r.map(x => x.c)));
+  must(r.every(x => x.w >= 44 && x.h >= 44 && Math.abs(x.w - x.h) < 1 && Math.abs(x.w - r[0].w) < 1 && /50%|9999|28px/.test(x.rad)), 'не круглі / різні / < 44 px: ' + JSON.stringify(r));
+  must(r.every(x => !x.txt && x.lab && x.ti), 'видимий текст або без aria-label/title: ' + JSON.stringify(r.map(x => [x.txt, x.lab])));
+  must(r.every(x => x.x >= 8 && x.r <= x.vw - 8 && x.b <= x.vh - 8), 'за краєм екрана: ' + JSON.stringify(r));
+  must(Math.abs(r[0].t - r[1].t) < 1, 'не в один ряд');
+  const [bot, tel] = r;
+  must(r[0].rtl ? tel.r <= bot.x - 6 : bot.r <= tel.x - 6, 'перекриваються або без проміжку: ' + JSON.stringify(r));
+  must(r[0].rtl ? tel.x < 30 : tel.r > tel.vw - 30, 'дзвінок не в самому куті (RTL — лівому)');
+  // тап по боту — панель чату; кружечки під панеллю не видно (поле вводу не перекрите)
+  await p.click('.mbar[data-one] > .mb-bot');
+  await p.waitForSelector('.cht:not([hidden])', { timeout: 8000 });
+  const cover = await p.evaluate(() => { const t = document.querySelector('.cht-in').getBoundingClientRect(); const e = document.elementFromPoint(t.left + t.width / 2, t.top + t.height / 2); return !!(e && e.closest('.cht')); });
+  must(cover, 'поле вводу чату перекрите');
+  await p.waitForFunction(() => document.activeElement && document.activeElement.classList.contains('cht-in'), null, { timeout: 3000 });
+  await p.keyboard.press('Escape'); await p.waitForTimeout(200);
+  must(await p.evaluate(() => !!document.activeElement.closest('.mbar')), 'фокус не повернувся на кружечок');
+});
+await test('кружечки на ПК: немає (у шапці телефон і «Заявка»)', '/', 1440, async p => {
+  must(!(await p.locator('.mbar').isVisible()) && !(await p.locator('.mbar .mb-bot').isVisible()), 'кружечки на ПК');
+});
+await test('кружечок дзвінка: aria-expanded/controls, ✕ у відкритому стані, клік поза — закриває', '/', 402, async p => {
+  const tg = p.locator('.mbar[data-one] .mb-tg');
+  must((await tg.getAttribute('aria-controls')) === 'mb-menu' && (await tg.getAttribute('aria-expanded')) === 'false', 'aria');
+  must(/Зв.язатися/.test(await tg.getAttribute('aria-label')), 'aria-label: ' + await tg.getAttribute('aria-label'));
+  await tg.click(); await p.waitForTimeout(250);
+  must((await tg.getAttribute('aria-expanded')) === 'true', 'не відкрилось');
+  must(await p.evaluate(() => /×/.test(getComputedStyle(document.querySelector('.mbar .mb-tg'), '::before').content)), 'немає ✕');
+  await p.mouse.click(40, 300); await p.waitForTimeout(250);
+  must((await tg.getAttribute('aria-expanded')) === 'false', 'клік поза меню не закрив');
+});
 // Кільце курсора біля країв вікна (20.11.2026): RTL і LTR на 1024 / 1440 / 1920 — без горизонтальної прокрутки, кліки проходять крізь кільце,
 // стрілка над обкладинкою в RTL — «←»
 for (const [path, w] of [['/ar/', 1440], ['/ar/', 1920], ['/ar/services', 1024], ['/', 1024], ['/services', 1920]]) await test('курсор-супутник біля країв: без горизонтальної прокрутки, не перехоплює кліки', path, w, async p => {
