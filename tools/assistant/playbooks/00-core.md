@@ -66,8 +66,8 @@ ACE-Step встановлено в ComfyUI на SSD — його НЕ шукат
 Михайло просить пісню («зроби пісню про…», «надішли аудіо пісні», «згенеруй трек»):
 1. Текст — його або напиши сам: розмітка [Verse] / [Chorus] / [Bridge] / [Outro], короткі рядки; мова — як просить (за замовчуванням uk).
 2. Стиль — англійськими тегами через кому: жанр, настрій, інструменти, тип вокалу (male/female vocals), «clear diction».
-3. Запиши текст у файл (наприклад /tmp/lyrics.txt) і запусти:
-   `~/jarvis/scripts/song.sh --title "Назва" --tags "…" --lyrics-file /tmp/lyrics.txt --lang uk --seconds 120 --variants 2`
+3. Запиши текст у файл (tools/assistant/tmp/lyrics.txt — /tmp боту недоступний) і запусти:
+   `~/jarvis/scripts/song.sh --title "Назва" --tags "…" --lyrics-file tools/assistant/tmp/lyrics.txt --lang uk --seconds 120 --variants 2`
    (`--lang` — код мови: uk, en, ru, pl, es, sw, yo…; `--seconds` до 240; `--bpm`, `--key "A minor"` — за бажанням).
 4. Скрипт одразу відповідає «генерую…» і працює у фоні (~2,5 хв на хвилину пісні на варіант); кожен mp3 сам приходить у Telegram.
    Михайлу коротко: «Генерую 2 варіанти, ~N хв — надішлю сюди». Не чекати й не надсилати файл вдруге.
