@@ -9,7 +9,7 @@
 // GET    /api/admin/projects[?client_id=N&service=design&status=active]
 //          → {projects, reports, documents, payments, tasks, online, templates, schemes, …}; tasks — [] до міграції 0012
 // POST   /api/admin/projects {type, ...}            — створити:
-//          type 'project':  {client_id, title, service?, address?, area?, status?, stages?, next_step?, next_date?, manager?, camera_url?, camera_note?,
+//          type 'project':  {client_id | new_client: {name, phone?}, title, service?, address?, area?, status?, stages?, next_step?, next_date?, manager?, camera_url?, camera_note?,
 //                            deadline?, scheme?: '50/50'|'50/30/20'|'50/40/10'}
 //                           stages: [{id?, name, status?, progress, start?, end?, note?, approved_at?, revisions?}] — id етапу сервер ставить сам;
 //                           без stages — шаблон етапів за типом (TEMPLATES); scheme — графік платежів з привʼязкою до етапів (finance.edit)
@@ -362,22 +362,40 @@ export function guessService(t) {
 // provider 'phone' (provider_id = номер: щойно клієнт увійде за номером, він побачить проєкт) або 'crm' без номера.
 export async function leadClient(env, o) {
   if (o.client_id && await env.DB.prepare('SELECT 1 FROM clients WHERE id = ?').bind(o.client_id).first()) return o.client_id;
-  const phone = normalizePhone(o.phone);
+  return clientByContact(env, { name: o.name, email: o.email, phone: normalizePhone(o.phone) }, 'lead-' + o.id);
+}
+// Запис clients за контактом, який вписав працівник (заявка або «Новий клієнт» у формі проєкту): номер, яким уже входили через
+// Telegram-бот, → той самий клієнт; інакше provider 'phone' (provider_id = номер) або 'crm' без номера (crmKey — унікальний ключ запису).
+async function clientByContact(env, c, crmKey) {
+  const phone = c.phone || null;
   if (phone) {
     const lr = await env.DB.prepare("SELECT client_id FROM login_requests WHERE phone = ? AND status IN ('confirmed', 'used') AND client_id IS NOT NULL ORDER BY created_at DESC LIMIT 1").bind(phone).first().catch(() => null);
     if (lr && await env.DB.prepare('SELECT 1 FROM clients WHERE id = ?').bind(lr.client_id).first()) return lr.client_id;
   }
-  const [prov, pid] = phone ? ['phone', phone] : ['crm', 'lead-' + o.id];
+  const [prov, pid] = phone ? ['phone', phone] : ['crm', crmKey];
   await env.DB.prepare('INSERT OR IGNORE INTO clients (provider, provider_id, name, email, phone) VALUES (?, ?, ?, ?, ?)')
-    .bind(prov, pid, txt(o.name, 120), txt(o.email, 200), phone).run();
+    .bind(prov, pid, txt(c.name, 120), txt(c.email, 200), phone).run();
   return (await env.DB.prepare('SELECT id FROM clients WHERE provider = ? AND provider_id = ?').bind(prov, pid).first()).id;
+}
+// «Новий клієнт» у формі проєкту: {name, phone?} — імʼя обовʼязкове, номер — за бажанням (за ним клієнт потім увійде й побачить проєкт)
+function newClientOf(d) {
+  const nc = d.new_client;
+  if (!nc || typeof nc !== 'object' || Array.isArray(nc)) return null;
+  const name = txt(nc.name, 120), raw = nc.phone == null ? '' : String(nc.phone).trim();
+  if (!name) return { error: 'Вкажіть імʼя нового клієнта' };
+  const phone = raw ? normalizePhone(raw) : null;
+  if (raw && !phone) return { error: 'Телефон клієнта — у форматі +380XXXXXXXXX або міжнародному з «+»' };
+  return { name, phone };
 }
 
 // створення проєкту: POST type 'project' і конверсія заявки (type 'from_lead')
 async function newProject(env, request, x, d) {
   if ((money(d) || d.scheme) && !x.can('finance.edit')) return deny('finance.edit');
-  const cl = await env.DB.prepare('SELECT id FROM clients WHERE id = ?').bind(int(d.client_id)).first();
-  if (!cl) return bad('Клієнта не знайдено', 404);
+  // клієнт: наявний (client_id) або новий, якого менеджер вписав сам (new_client) — запис створюємо після перевірки решти полів
+  const nc = int(d.client_id) ? null : newClientOf(d);
+  if (nc && nc.error) return bad(nc.error, 422);
+  let cl = nc ? null : await env.DB.prepare('SELECT id FROM clients WHERE id = ?').bind(int(d.client_id)).first();
+  if (!cl && !nc) return bad('Клієнта не знайдено', 404);
   // без етапів — шаблон за типом проєкту
   const svc = SERVICES.includes(d.service) ? d.service : 'other';
   const { p, error: e2 } = projectFields(Array.isArray(d.stages) ? d : { ...d, stages: TEMPLATES[svc].map(name => ({ name, status: 'planned', progress: 0 })) });
@@ -386,6 +404,7 @@ async function newProject(env, request, x, d) {
   if (ss.error) return ss.error;
   const cam = cameraFields(d);
   if (cam && cam.error) return bad(cam.error, 422);
+  if (nc) cl = { id: await clientByContact(env, nc, 'manual-' + crypto.randomUUID()) };
   const r = await env.DB.prepare('INSERT INTO projects (client_id, title, service, address, area, status, stages, next_step, next_date, manager) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')
     .bind(cl.id, p.title, p.service, p.address ?? null, p.area ?? null, p.status, p.stages, p.next_step ?? null, p.next_date ?? null, p.manager ?? null).run();
   const pid = r.meta.last_row_id;
@@ -412,8 +431,8 @@ async function newProject(env, request, x, d) {
   const a = await assign(env, request, x, { id: pid, title: p.title, assignee_staff_id: null }, d);
   if (a.error) return a.error;
   await stageAssigned(env, x, pid, p.title, ss.fresh);
-  await audit(env, request, x, 'project.create', 'projects', pid, null, { client_id: cl.id, ...p, deadline: dl ? dl.v : null, scheme: SCHEMES[d.scheme] ? d.scheme : null });
-  return json({ ok: true, id: pid });
+  await audit(env, request, x, 'project.create', 'projects', pid, null, { client_id: cl.id, ...(nc ? { new_client: true } : {}), ...p, deadline: dl ? dl.v : null, scheme: SCHEMES[d.scheme] ? d.scheme : null });
+  return json({ ok: true, id: pid, client_id: cl.id });
 }
 
 export async function onRequestPost({ request, env }) {

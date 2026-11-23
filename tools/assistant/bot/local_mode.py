@@ -633,7 +633,14 @@ def intent_calendar(text, t):
     days = [d0 + datetime.timedelta(days=i) for i in range(7 if kind == "week" else 1)]
     items = open_items(days, t)
     tasks = ("\n🗒 Задачі:\n" + "\n".join(items)) if items else "\n🗒 Відкритих задач на цей період у памʼяті немає."
-    return Reply(cal + "\n" + tasks)
+    return Reply(cal + "\n" + tasks, markup=day_markup(kind) if kind != "week" else None)
+
+
+def day_markup(kind):
+    """Кнопки під «що сьогодні/завтра» (menu.py обробляє m:c:…): інший день і «Оновити»."""
+    other = ("📅 Сьогодні", "today") if kind == "tomorrow" else ("📅 Завтра", "tomorrow")
+    return {"inline_keyboard": [[{"text": other[0], "callback_data": f"m:c:{other[1]}"},
+                                 {"text": "🔄 Оновити", "callback_data": f"m:c:{kind}"}]]}
 
 
 def intent_mail(text, t):

@@ -16,7 +16,7 @@
 //   поза цим часом чекає в черзі (assign_notified / done_notified = 0) до наступного проходу розкладу. Без Telegram — без сповіщення, без помилки.
 // Тексти задач — звичайний текст: сервер їх не чистить від «<», інтерфейс скрізь екранує (tools/tests/xss.mjs).
 import { IN_IDS, dict, idsArg } from './_lib.js';
-import { escHtml, kyiv, notifyStaff } from './_alerts.js';
+import { escHtml, kyiv, notifyStaff, sqlTime } from './_alerts.js';
 import { ROLES, audit, canSeeProject, noTable, orderScope, projectScope, staffById } from './_roles.js';
 import { stagesArr, taskVer } from './_ver.js';
 
@@ -301,7 +301,12 @@ export async function stageTaskEdit(env, request, x, id, d) {
 
 // ===== сповіщення =====
 const homeUrl = s => 'https://cas-develop.com' + (s && ROLES[s.role] && ROLES[s.role].home === '/kabinet/admin' ? '/kabinet/admin#tasks' : '/kabinet/team#todo');
-const kb = s => ({ inline_keyboard: [[{ text: '📋 Мої задачі', url: homeUrl(s) }]] });
+// Кнопки задач у Telegram (functions/_bot.js, README розділ 19): «✅ Виконано» і «⏰ Завтра»; callback_data — лише «k:<id>:<дія>»
+// (задача етапу — id «p<число>»), права сервер перевіряє на кожне натискання. Одна задача — дві великі кнопки, кілька — рядок на задачу (до 8).
+export const taskRef = t => (t.src === 'p' ? 'p' : '') + t.id;
+export const taskRow = (t, single) => [{ text: single ? '✅ Виконано' : '✅ ' + cut(t.title, 28), callback_data: `k:${taskRef(t)}:d` }, { text: '⏰ Завтра', callback_data: `k:${taskRef(t)}:m` }];
+export const taskButtons = list => list.slice(0, 8).map(t => taskRow(t, list.length === 1));
+const kb = (s, list = []) => ({ inline_keyboard: [...taskButtons(list), [{ text: '📋 Мої задачі', url: homeUrl(s) }]] });
 const dueText = t => (t.due_date ? dm(t.due_date) + (t.due_time ? ' ' + t.due_time : '') : '');
 const cut = (s, n) => { s = String(s || ''); return s.length > n ? s.slice(0, n - 1) + '…' : s; };
 const bullet = (t, extra = '') => `• ${t.priority === 'high' ? '❗ ' : ''}${escHtml(cut(t.title, 160))}${extra}`;
@@ -325,7 +330,7 @@ export async function notifyAssigned(env, ids, now = new Date()) {
         ? [`📝 <b>Вам призначено задачу</b>`, `${list[0].priority === 'high' ? '❗ ' : ''}${escHtml(cut(list[0].title, 300))}`, dueText(list[0]) ? `Строк: ${dueText(list[0])}` : null,
           list[0].note ? `💬 ${escHtml(cut(list[0].note, 400))}` : null, by && by.id !== sid ? `Поставив(ла): ${escHtml(by.name)}` : null].filter(Boolean).join('\n')
         : [`📝 <b>Вам призначено задач: ${list.length}</b>`, ...list.slice(0, 15).map(t => bullet(t, dueText(t) ? ` — до ${dueText(t)}` : '')), list.length > 15 ? `…і ще ${list.length - 15}` : null].filter(Boolean).join('\n');
-      sent += await notifyStaff(env, sid, text, kb(s));
+      sent += await notifyStaff(env, sid, text, kb(s, list));
     }
   } catch (e) { if (!noTable(e)) console.log('notifyAssigned', e && e.message); }
   return sent;
@@ -348,6 +353,27 @@ export async function notifyDone(env, ids, now = new Date()) {
   return sent;
 }
 
+// Нагадування в точний час (tasks.remind_at, migrations/0020; ставить бот — «🔕 Не додзвонився», /task з часом): виконавцю — коли час настав,
+// один раз (поле обнуляється «порівняй і заміни» — два проходи розкладу не надішлють двічі). До міграції — нічого.
+async function sendReminders(env, now) {
+  let rows;
+  try { rows = (await env.DB.prepare('SELECT * FROM tasks WHERE remind_at IS NOT NULL AND remind_at <= ? ORDER BY remind_at, id LIMIT 100').bind(sqlTime(now)).all()).results; }
+  catch (e) { if (noTable(e)) return 0; throw e; }
+  let sent = 0;
+  for (const t of rows) {
+    const u = await env.DB.prepare('UPDATE tasks SET remind_at = NULL WHERE id = ? AND remind_at = ?').bind(t.id, t.remind_at).run();
+    if (!u.meta.changes || t.status !== 'open' || !t.assignee_staff_id) continue;
+    const s = await staffById(env, t.assignee_staff_id);
+    const o = t.order_id ? await env.DB.prepare('SELECT id, number FROM orders WHERE id = ?').bind(t.order_id).first() : null;
+    const text = [`⏰ <b>Нагадування</b>`, `${t.priority === 'high' ? '❗ ' : ''}${escHtml(cut(t.title, 300))}`, dueText(t) ? `Строк: ${dueText(t)}` : null,
+      t.note ? `💬 ${escHtml(cut(t.note, 400))}` : null].filter(Boolean).join('\n');
+    const k = kb(s, [t]);
+    if (o) k.inline_keyboard.splice(1, 0, [{ text: `📋 Заявка ${o.number}`, callback_data: `l:${o.id}:v` }]);
+    sent += await notifyStaff(env, t.assignee_staff_id, text, k);
+  }
+  return sent;
+}
+
 // Прохід розкладу (/api/admin/lead-sla, кожні 5 хв), лише 10:00–20:00 за Києвом:
 //   1) сповіщення з черги (призначено / виконано поза робочими годинами);
 //   2) зведення «сьогодні й прострочені» кожному активному працівнику, в якого вони є, — раз на день (перший прохід після 10:00).
@@ -360,6 +386,7 @@ export async function runTaskNotices(env, now = new Date()) {
     const ids = async col => (await env.DB.prepare(`SELECT id FROM tasks WHERE ${col} = 0 ORDER BY id LIMIT 100`).all()).results.map(r => r.id);
     out.assigned = await notifyAssigned(env, await ids('assign_notified'), now);
     out.done = await notifyDone(env, await ids('done_notified'), now);
+    out.reminders = await sendReminders(env, now);
     const k = kyiv(now), stage = await hasTable(env, 'project_tasks'), weekend = [0, 6].includes(new Date(k.date + 'T12:00:00Z').getUTCDay());
     const { results } = await env.DB.prepare(`SELECT u.src, u.id, u.title, u.priority, u.due_date, u.due_time, u.assignee_staff_id FROM ${union(stage)} JOIN staff s ON s.id = u.assignee_staff_id AND s.active = 1
         WHERE u.status = 'open' AND u.due_date IS NOT NULL AND u.due_date <= ? ORDER BY u.due_date, COALESCE(u.due_time, '99'), u.id LIMIT 2000`).bind(k.date).all();
@@ -373,7 +400,7 @@ export async function runTaskNotices(env, now = new Date()) {
       const text = [`🗓 <b>Задачі на сьогодні, ${dm(k.date)}</b>`,
         ...part('Сьогодні', todayL, t => bullet(t, t.due_time ? ` — ${t.due_time}` : '')),
         ...part('Прострочені', late, t => bullet(t, ` — з ${dm(t.due_date)}`))].filter(v => v != null).join('\n');
-      out.digests += await notifyStaff(env, sid, text, kb(s));
+      out.digests += await notifyStaff(env, sid, text, kb(s, [...todayL, ...late]));
     }
   } catch (e) { if (!noTable(e)) throw e; out.pending = true; }
   return out;

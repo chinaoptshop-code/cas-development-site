@@ -5,10 +5,11 @@
 //                             + нагадування клієнтам про погодження етапів і прохання про відгук (functions/_nudges.js, 10:00–20:00 Києва);
 //                             + задачі CRM (functions/_tasks.js, 10:00–20:00 Києва): сповіщення з черги й ранкове зведення «сьогодні й прострочені»;
 //   {"task": "report"}      — надіслати звіт за сьогодні зараз;
-//   {"task": "webhook", "force": true} — поставити вебхук бота, навіть якщо зараз стоїть чужий.
+//   {"task": "webhook", "force": true} — поставити вебхук бота, навіть якщо зараз стоїть чужий;
+//   {"task": "commands"}    — оновити меню команд бота в чатах працівників зараз (functions/_bot.js; само — з перевіркою вебхука).
 // {"now": "<ISO>"} — підміна годинника лише для локальних тестів (ALERTS_TEST_CLOCK=1 у .dev.vars).
 import { bad, json, readJSON, same } from '../../_lib.js';
-import { ensureWebhook, runReport, runSla } from '../../_alerts.js';
+import { ensureCommands, ensureWebhook, runReport, runSla } from '../../_alerts.js';
 import { runNudges } from '../../_nudges.js';
 import { runTaskNotices } from '../../_tasks.js';
 import { limited } from '../../_rate.js';
@@ -28,6 +29,7 @@ export async function onRequestPost({ request, env }) {
 
   if (d.task === 'report') return json({ ok: true, report: await runReport(env, now, true) });
   if (d.task === 'webhook') return json({ ok: true, ...(await ensureWebhook(env, origin, !!d.force)) });
+  if (d.task === 'commands') return json({ ok: true, ...(await ensureCommands(env, true)) });
 
   const sla = await runSla(env, now);
   const report = await runReport(env, now);
@@ -40,6 +42,8 @@ export async function onRequestPost({ request, env }) {
   const last = await env.DB.prepare("SELECT value FROM settings WHERE key = 'tg_webhook_checked'").first();
   if (!last || t - Number(last.value) > WEBHOOK_CHECK_S) {
     webhook = await ensureWebhook(env, origin);
+    // меню команд — лише коли вебхук наш (інакше кнопки й команди обробляє інша програма)
+    if (webhook.webhook === 'ok' || webhook.webhook === 'set') { try { Object.assign(webhook, await ensureCommands(env)); } catch (e) { console.log('commands', e && e.message); } }
     if (webhook.webhook === 'ok' || webhook.webhook === 'set' || webhook.webhook === 'foreign')
       await env.DB.prepare("INSERT INTO settings (key, value) VALUES ('tg_webhook_checked', ?1) ON CONFLICT(key) DO UPDATE SET value = ?1").bind(String(t)).run();
   }
