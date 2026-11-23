@@ -13,6 +13,7 @@ html[data-adm-theme=light],html[data-adm-theme=light] body{
   --brass:#A87A33;--glow:#7A5418;--cream:#1E1913;--muted:#645B51;--ok:#3B7426;
   --bg:#F3EDE3;--bg2:#FBF8F3;--tx:#1E1913;--mu:#645B51;--ac:#A87A33;--ln:rgba(122,90,42,.30);
   --err:#AE3E2C;--err-hi:#A3392A;--on-err:#fff;--on-ac:#1B1408;--hi:#1E1913;
+  --warn:#8A5A0E;--ch-bub:rgba(168,122,51,.10);
   --cmd:var(--brass);--cmd-2:var(--glow);
   --shadow:0 8px 24px rgba(70,50,20,.16);--shadow-s:0 6px 18px rgba(70,50,20,.12)}
 /* День, власник (як графіт уночі — холодніший папір і сталевий акцент) */

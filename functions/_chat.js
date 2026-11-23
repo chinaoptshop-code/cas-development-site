@@ -2,7 +2,7 @@
 // і адмінки (/api/admin/chat). Контракт для воркера Mac mini — tools/chat/API.md; інструкція власнику — tools/admin/README.md, «Чат на сайті».
 //
 // Відвідувач без акаунта й cookie: start → {sid, token}; далі кожен запит несе sid + token (заголовки x-chat-sid / x-chat-token
-// або поля тіла / параметри адреси). sid — 128 біт випадкових, token — 256 біт; у D1 — лише hex(sha256('chat|' + token)),
+// або поля тіла; у параметрах адреси токен не приймаємо — він не має потрапляти в журнали й історію). sid — 128 біт випадкових, token — 256 біт; у D1 — лише hex(sha256('chat|' + token)),
 // порівняння рівночасове (same). Невірний sid або токен → 404 «Розмову не знайдено» (не підтверджуємо, що розмова існує).
 // Файли: R2 (binding MEDIA), якщо привʼязано, — до 50 МБ на файл і 150 МБ на розмову; без R2 — байти в D1, до 1,5 МБ на файл і 6 МБ на розмову.
 // Віддаємо лише як вкладення (content-disposition: attachment, nosniff, CSP sandbox), активні типи (HTML, SVG, JS…) не приймаємо зовсім.
@@ -12,6 +12,7 @@ import { alertIds, kyiv, notifyNew, tg, escHtml } from './_alerts.js';
 import { refHost } from './_refhost.js';
 import { IN_IDS, idsArg } from './_lib.js';
 import { noTable } from './_roles.js';
+import { ipKey } from './_rate.js';
 
 export const LANGS = ['uk', 'ru', 'en', 'es', 'zh', 'pl', 'de', 'fr', 'pt', 'ar'];
 export const STATES = ['bot', 'waiting', 'staff', 'closed'];
@@ -78,13 +79,26 @@ export function ownOrigin(request) {
   return !!o && (o === new URL(request.url).origin || OWN.includes(o));
 }
 
-// sid і token запиту: заголовки → тіло → параметри адреси
+// sid і token запиту: заголовки → тіло (не параметри адреси: URL з токеном лишився б у журналах запитів та історії браузера)
 export function creds(request, body) {
-  const u = new URL(request.url);
-  const sid = request.headers.get('x-chat-sid') || (body && body.sid) || u.searchParams.get('sid') || '';
-  const token = request.headers.get('x-chat-token') || (body && body.token) || u.searchParams.get('token') || '';
+  const sid = request.headers.get('x-chat-sid') || (body && body.sid) || '';
+  const token = request.headers.get('x-chat-token') || (body && body.token) || '';
   return { sid: String(sid), token: String(token) };
 }
+
+// Дешевий ліміт читань (GET poll / file / status) — у памʼяті ізоляту, без запису в D1 на кожен запит (віконце опитує раз на 2–10 с;
+// цикл з однієї адреси інакше давав би 3–5 читань D1 на запит). Не глобальний (ізолятів кілька), але зупиняє простий потік із 429.
+// Ключ — та сама адреса, що й у rate_hits (IPv6 — /64); мапа обмежена й очищується цілком, коли переросте.
+const HOT = new Map();
+export const HOT_LIMITS = Object.freeze({ poll: [90, 60], file: [120, 60], status: [30, 60] });
+export function hotLimited(request, bucket, t = Date.now()) {
+  const [max, win] = HOT_LIMITS[bucket] || [60, 60];
+  const k = bucket + '|' + ipKey(request);
+  let e = HOT.get(k);
+  if (!e || t - e.t >= win * 1000) { if (HOT.size > 20000) HOT.clear(); e = { t, n: 0 }; HOT.set(k, e); }
+  return ++e.n > max;
+}
+export const hotReset = () => HOT.clear();
 
 export class ChatError extends Error { constructor(msg, status = 400, extra = {}) { super(msg); this.status = status; this.extra = extra; } }
 export const NOT_FOUND = 'Розмову не знайдено';

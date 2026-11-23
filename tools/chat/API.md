@@ -180,7 +180,7 @@ curl -sS -X POST "$B/api/bot/chat" -H "$K" -H 'content-type: application/json' \
 
 ## 7. Публічний API панелі (для довідки; воркер його не викликає)
 
-Без cookie; `sid` + `token` — заголовки `x-chat-sid` / `x-chat-token` (або поля тіла / параметри адреси). POST — лише з `Origin` свого сайту.
+Без cookie; `sid` + `token` — заголовки `x-chat-sid` / `x-chat-token` (або поля тіла POST; у параметрах адреси — ні, з 23.11.2026). POST — лише з `Origin` свого сайту.
 | ендпоінт | що | ліміти |
 |---|---|---|
 | `GET /api/chat/status` | `{online, limits:{file,session,r2}, accept, alt}` без розмови | — |

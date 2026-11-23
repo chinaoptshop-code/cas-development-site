@@ -80,8 +80,9 @@ await it('чужий / невірний токен, чужий sid → 404 (не
   eq((await call(env, 'GET', '/api/chat/poll', { headers: { 'x-chat-sid': 'f'.repeat(32), 'x-chat-token': A.token } })).status, 404);
   eq((await call(env, 'GET', '/api/chat/poll')).status, 404);
   eq((await send({ h: { 'x-chat-sid': A.sid, 'x-chat-token': B2.token } }, { text: 'hi' })).status, 404);
-  // sid і token параметрами адреси — теж працюють (curl)
-  eq((await call(env, 'GET', `/api/chat/poll?sid=${A.sid}&token=${A.token}`)).status, 200);
+  // sid і token параметрами адреси — ні (токен не має лишатися в журналах і історії)
+  eq((await call(env, 'GET', `/api/chat/poll?sid=${A.sid}&token=${A.token}`)).status, 404);
+  eq((await call(env, 'GET', '/api/chat/poll', { headers: A.h })).status, 200);
 });
 await it('POST без Origin свого сайту → 403 (чат — лише для браузера); чужий Origin → 403', async () => {
   eq((await call(env, 'POST', '/api/chat/start', { body: { lang: 'uk' }, headers: { noOrigin: true, ip: nextIp() } })).status, 403);
@@ -468,6 +469,33 @@ await it('база без міграції 0021: чат — чесний 503, р
   eq(sla.status, 200); eq(sla.data.chat.skipped, 'no_migration');
   // без D1 зовсім
   eq((await call(makeEnv(null), 'POST', '/api/chat/start', { body: {}, headers: { ip: nextIp() } })).status, 503);
+});
+
+describe('Чат: ліміт читань без запису в D1');
+await it('poll / file / status: потік з однієї адреси → 429 (у памʼяті ізоляту), інша адреса — працює; D1 rate_hits не росте', async () => {
+  const c = await start();
+  const before = (await q1('SELECT COUNT(*) AS n FROM rate_hits')).n;
+  let last = 0;
+  for (let i = 0; i < 95; i++) last = (await poll(c)).status;
+  eq(last, 429, 'після 90 опитувань за хвилину');
+  eq((await q1('SELECT COUNT(*) AS n FROM rate_hits')).n, before, 'опитування не пишуть у rate_hits');
+  const other = await start();
+  eq((await poll(other)).status, 200);
+  // невірний токен теж рахується (перебір не дає безлімітних читань D1)
+  const bad = { ...c.h, 'x-chat-token': '0'.repeat(64), ip: nextIp() };
+  const codes = new Set();
+  for (let i = 0; i < 92; i++) codes.add((await call(env, 'GET', '/api/chat/poll', { headers: bad })).status);
+  ok(codes.has(404) && codes.has(429), [...codes].join(','));
+  const ip = nextIp();
+  let st = 0;
+  for (let i = 0; i < 31; i++) st = (await call(env, 'GET', '/api/chat/status', { headers: { ip } })).status;
+  eq(st, 429);
+  const { hotLimited, hotReset } = await import(new URL('../../functions/_chat.js', import.meta.url));
+  const fake = { headers: new Headers({ 'cf-connecting-ip': '10.99.0.1' }) };
+  for (let i = 0; i < 120; i++) hotLimited(fake, 'file', 1000);
+  ok(hotLimited(fake, 'file', 1000), '121-й файл за хвилину');
+  ok(!hotLimited(fake, 'file', 1000 + 61000), 'нова хвилина — знову можна');
+  hotReset();
 });
 
 describe('Чат: версії панелі в завантажувачі site-chrome.v1.js');

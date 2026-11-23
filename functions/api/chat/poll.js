@@ -1,11 +1,12 @@
-// GET /api/chat/poll?after=<id> (sid і token — заголовками x-chat-sid / x-chat-token або параметрами) →
+// GET /api/chat/poll?after=<id> (sid і token — лише заголовками x-chat-sid / x-chat-token) →
 //   {messages: [{id, role: user|bot|staff|system, text, files: [{id, name, mime, kind, size}], audio?: {id, mime, dur}, estimate?, author?, at}],
 //    state: bot|waiting|staff|closed, typing, online, lead: {number}|null, last_id}
 // Лише повідомлення цієї розмови (до 100 за раз, далі — наступний запит з after). Віконце опитує 2 → 5 → 10 с, на прихованій вкладці — пауза.
 import { json } from '../../_lib.js';
-import { botOnline, messages, now, session, wrap } from '../../_chat.js';
+import { ChatError, botOnline, hotLimited, messages, now, session, wrap } from '../../_chat.js';
 
 export const onRequestGet = ({ request, env }) => wrap(async () => {
+  if (hotLimited(request, 'poll')) throw new ChatError('Забагато запитів — зачекайте хвилину', 429);
   const s = await session(env, request);
   const after = Math.max(0, parseInt(new URL(request.url).searchParams.get('after'), 10) || 0);
   const list = await messages(env, s.id, 'm.id > ?', [after], 100);
