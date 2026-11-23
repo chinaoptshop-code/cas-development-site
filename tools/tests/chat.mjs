@@ -290,6 +290,17 @@ await it('handoff → стан waiting і сповіщення власнику 
   const l2 = (await q1('SELECT last_user_id FROM chat_sessions WHERE sid = ?', Q.sid)).last_user_id;
   eq((await botCall('POST', '/api/bot/chat', { sid: Q.sid, reply_to: l2, text: 'Менеджер скоро буде', handoff: true })).data.notified, 0);
   eq(bot.calls.length, 0);
+  // renotify: клієнт обрав час дзвінка — нове для людини, сповіщаємо вдруге (лише з reason; без reason — ні)
+  await send(Q, { text: '2' });
+  const l3 = (await q1('SELECT last_user_id FROM chat_sessions WHERE sid = ?', Q.sid)).last_user_id;
+  eq((await botCall('POST', '/api/bot/chat', { sid: Q.sid, reply_to: l3, text: 'Записав', handoff: true, handoff_reason: 'asks_human', renotify: true })).data.notified, 0, 'без reason');
+  await send(Q, { text: 'Вт о 10' });
+  const l4 = (await q1('SELECT last_user_id FROM chat_sessions WHERE sid = ?', Q.sid)).last_user_id;
+  const rn = await botCall('POST', '/api/bot/chat', { sid: Q.sid, reply_to: l4, text: 'Записав: Вт 24.11, 10:00', handoff: true, handoff_reason: 'asks_human', reason: 'Клієнт просить дзвінок Вт 24.11, 10:00 (Київ)', renotify: true });
+  eq([rn.status, rn.data.state, rn.data.notified], [200, 'waiting', 2]);
+  const m2 = bot.calls.filter(c => c.method === 'sendMessage');
+  ok(/Клієнт просить людину або дзвінок — Клієнт просить дзвінок Вт 24\.11, 10:00/.test(m2[0].text), m2[0].text);
+  eq((await q1('SELECT handoff_reason FROM chat_sessions WHERE sid = ?', Q.sid)).handoff_reason, 'asks_human');
 });
 await it('воркер мовчить > 3 хв → online: false у start і poll', async () => {
   await DB.prepare("UPDATE settings SET value = ? WHERE key = 'chat_bot_ping'").bind(String(Math.floor(Date.now() / 1000) - 400)).run();

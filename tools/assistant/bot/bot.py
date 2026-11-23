@@ -512,11 +512,9 @@ def client_answer(prompt):
 # Голосом — лише у відповідь на голосове і лише коротке (≈15 с), щоб не «жерло». Gemini TTS, голос Algieba,
 # темп ×1,17, «CAS» вимовляється «КАС Девелопмент». Ключ — з облікових даних n8n (не з файлів).
 VOICE_MAX = 220
-TTS_MODEL, TTS_VOICE, TTS_TEMPO, TTS_CRED = "gemini-3.8-flash-tts", "Algieba", 1.17, "JSMl9lvZ1DExgDFd"
-FFMPEG = next((f for f in ("/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg", "/opt/homebrew/bin/ffmpeg") if os.path.exists(f)), "ffmpeg")
-_tts_key = {"v": "", "at": 0}
+import tts  # noqa: E402  синтез — спільний із чатом на сайті (tools/chat/worker/voice.py), 23.11.2026
+TTS_MODEL, TTS_VOICE, TTS_TEMPO, TTS_CRED, FFMPEG, CLONE_VOICE = tts.TTS_MODEL, tts.TTS_VOICE, tts.TTS_TEMPO, tts.TTS_CRED, tts.FFMPEG, tts.CLONE_VOICE
 # Клон голосу Михайла — у розмовах із ним і з Сержем (197958492), природний темп; решті — Algieba ×1,17
-CLONE_VOICE = os.environ.get("TTS_CLONE_VOICE", "voice_0xudst09wbpu")
 OWN_CHATS = {int(x) for x in os.environ.get("TTS_CLONE_CHATS", "439131779,197958492").split(",") if x.strip()}
 CLONE_ON = os.environ.get("TTS_CLONE", "all") != "off"   # Михайло 21.10: його голосом з усіма, клієнтам — як AI-помічник
 AI_INTRO = "Вітаю! Я AI-помічник КАС Девелопмент. "
@@ -559,13 +557,7 @@ def needs_intro(chat):
 
 
 def tts_key():
-    if _tts_key["v"] and time.time() - _tts_key["at"] < 3600:
-        return _tts_key["v"]
-    out = subprocess.run(["docker", "exec", "n8n", "sh", "-c",
-                          f"n8n export:credentials --id={TTS_CRED} --decrypted --output=/tmp/g.json >/dev/null 2>&1; cat /tmp/g.json; rm -f /tmp/g.json"],
-                         capture_output=True, text=True, timeout=60).stdout
-    _tts_key.update(v=json.loads(out[out.index("["):])[0]["data"]["apiKey"], at=time.time())
-    return _tts_key["v"]
+    return tts.key()
 
 
 def speak_owner(text):
@@ -592,34 +584,16 @@ def speak(text, chat=None, reply_to=None, limit=VOICE_MAX):
         say = AI_INTRO + say
     prompt = say   # 24.10: без інструкції-префікса — Gemini TTS іноді зачитував її вголос («заглушка» на початку голосового)
     try:
-        body = {"contents": [{"parts": [{"text": prompt}]}], "generationConfig": {"responseModalities": ["AUDIO"],
-                "speechConfig": {"voiceConfig": {"voice": CLONE_VOICE} if clone else {"prebuiltVoiceConfig": {"voiceName": TTS_VOICE}}}}}
-        req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{TTS_MODEL}:generateContent",
-                                     data=json.dumps(body).encode(), headers={"x-goog-api-key": tts_key(), "content-type": "application/json"})
-        with urllib.request.urlopen(req, timeout=90) as r:
-            d = json.load(r)
-        part = next(p["inlineData"] for p in d["candidates"][0]["content"]["parts"] if "inlineData" in p)
-        raw = __import__("base64").b64decode(part["data"])
-        tmp = pathlib.Path(tempfile.mkdtemp())
-        src = tmp / "a.wav"
-        if raw[:4] != b"RIFF":                                  # сирий PCM 24 кГц моно 16 біт
-            import struct
-            rate = int((re.search(r"rate=(\d+)", part.get("mimeType", "")) or [0, 24000])[1])
-            raw = b"RIFF" + struct.pack("<I", 36 + len(raw)) + b"WAVEfmt " + struct.pack("<IHHIIHH", 16, 1, 1, rate, rate * 2, 2, 16) + b"data" + struct.pack("<I", len(raw)) + raw
-        src.write_bytes(raw)
-        ogg = tmp / "voice.ogg"
-        subprocess.run([FFMPEG, "-loglevel", "error", "-y", "-i", str(src), *([] if clone else ["-filter:a", f"atempo={TTS_TEMPO}"]), "-c:a", "libopus", "-b:a", "48k", str(ogg)],
-                       check=True, timeout=60)
+        ogg_bytes = tts.synth_ogg(prompt, clone)
         boundary = "----voice" + str(int(time.time()))
         parts = [f"--{boundary}\r\nContent-Disposition: form-data; name=\"chat_id\"\r\n\r\n{chat or OWNER}\r\n".encode()]
         if reply_to:
             parts.append(f"--{boundary}\r\nContent-Disposition: form-data; name=\"reply_to_message_id\"\r\n\r\n{reply_to}\r\n".encode())
         parts.append(f"--{boundary}\r\nContent-Disposition: form-data; name=\"voice\"; filename=\"voice.ogg\"\r\nContent-Type: audio/ogg\r\n\r\n".encode()
-                     + ogg.read_bytes() + f"\r\n--{boundary}--\r\n".encode())
+                     + ogg_bytes + f"\r\n--{boundary}--\r\n".encode())
         rq = urllib.request.Request(API + "sendVoice", data=b"".join(parts), headers={"Content-Type": f"multipart/form-data; boundary={boundary}"})
         with urllib.request.urlopen(rq, timeout=120) as r:
             ok = json.load(r).get("ok")
-        shutil.rmtree(tmp, ignore_errors=True)
         LOG("голос:", "надіслано" if ok else "не вдалось", len(plain), "зн.")
         return bool(ok)
     except Exception as e:
@@ -683,15 +657,7 @@ def deliver(out, chat=None, reply_to=None):
 # усе інше — задача, яку Михайло погоджує, а відповідь переглядає перед відправкою.
 # Команда (учасники робочих груп) отримує робочу інформацію, клієнти — лише клієнтську.
 ME = {}
-PUBLIC = """CAS Development — дизайн інтерʼєру, ремонт і будівництво під ключ, меблі й комплектація напряму з Китаю.
-Київ, вул. Антоновича, 44 · +380 97 866 77 55 · cas-develop.com · Instagram @cas_development
-Калькулятор ремонту: https://quiz.china-opt-shop.pp.ua · 150+ реалізованих проєктів, працюємо з 2016 року.
-Ціни «від» (як на сайті): дизайн-проєкт від $30/м² (мінімальний бюджет $2 500), ремонт під ключ від $550/м²,
-ремонт офісу від $350/м², меблювання від $250/м², будівництво від $600/м², будівництво з ремонтом під ключ від $1 100/м².
-Кошторис ремонту ±5%, якщо ремонт за проєктом робить CAS. Гарантія на роботи — 12 місяців.
-Своя команда штатних працівників — під різну складність і тип робіт. Оплата — схема під клієнта: 50/50, 50/30/20, 50/40/10
-або розбивка на етапи, старт від 10% авансу. Фотозвіти раз на 1–2 тижні; онлайн-камера на обʼєкті 24/7 — за доп. оплату.
-Договір, гарантія й оплата: https://cas-develop.com/dogovir-garantiya-oplata"""
+from client_rules import CLIENT_RULES, PUBLIC  # noqa: E402  спільні факти з чатом на сайті (tools/chat/worker), 23.11.2026
 STANDARD = [   # (шаблон, кому, відповідь) — перший збіг; повідомлення довші за 120 знаків ідуть у задачу
     (r"(команд|що ти (вмієш|можеш)|що вмієш|що можеш|допомог|help|/help)", "team", "HELP_TEAM"),
     (r"(команд|що ти (вмієш|можеш)|що вмієш|що можеш|допомог|help|/help)", "client", "HELP_CLIENT"),
@@ -805,8 +771,7 @@ def handle_external(msg, state):
                 kind, path = describe(msg)
                 att = f"\nВкладення ({kind}): {path}"
             prompt = (f"Ти AI-помічник Михайла, CAS Development. Пише клієнт.\n{PUBLIC}\n"
-                      f"Відповідай лише клієнтською інформацією: послуги, як працюємо, етапи, контакти, ціни «від».\n"
-                      f"Нічого внутрішнього — інші клієнти, суми договорів, ціни підрядників, особисте Михайла.\n"
+                      f"{CLIENT_RULES}"
                       f"Не пропонуй дзвінків — краще продовжити тут.\n"
                       f"Повідомлення клієнта: {text or '(без тексту)'}{att}\n"
                       f"Відповідь клієнту (до 10 рядків, ввічливо, на «ви», мовою клієнта). {ANSWER_RULE}")
