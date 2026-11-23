@@ -22,7 +22,7 @@ MAX_TURNS = os.environ.get("CLAUDE_MAX_TURNS", "25")
 ALLOWED = os.environ.get("CLAUDE_ALLOWED_TOOLS",
     "Read,Write,Edit,Glob,Grep,Bash(tools/assistant/*),Bash(tools/telegram/*),Bash(pandoc*),Bash(ffmpeg*),Bash(ls*),Bash(cat*),Bash(date*),"
     "Bash(python3 ~/jarvis/scripts/cal.py*),"                    # календар Михайла (19.11) — лише в особистому чаті, не в групах
-    "Bash(~/jarvis/scripts/song.sh*)")                           # пісні локально, ACE-Step (23.11) — теж лише особистий чат
+    "Bash(~/jarvis/scripts/song.sh*),Bash(python3 ~/jarvis/scripts/caps-scan.py*)")  # пісні + інвентар можливостей локально, ACE-Step (23.11) — теж лише особистий чат
 # Робочі групи команди: бот відповідає там, лише коли його тегнули або відповіли на його повідомлення.
 # Задачу виконує тільки після кнопки «В роботу» від Михайла. Типово — CAS Design.
 GROUPS = {int(x) for x in os.environ.get("ASSISTANT_GROUPS", "-1003501825627").split(",") if x.strip()}
