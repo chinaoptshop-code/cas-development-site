@@ -21,13 +21,14 @@ MODEL = os.environ.get("CLAUDE_MODEL", "sonnet")
 MAX_TURNS = os.environ.get("CLAUDE_MAX_TURNS", "25")
 ALLOWED = os.environ.get("CLAUDE_ALLOWED_TOOLS",
     "Read,Write,Edit,Glob,Grep,Bash(tools/assistant/*),Bash(tools/telegram/*),Bash(pandoc*),Bash(ffmpeg*),Bash(ls*),Bash(cat*),Bash(date*),"
-    "Bash(python3 ~/jarvis/scripts/cal.py*)")                    # календар Михайла (19.11) — лише в особистому чаті, не в групах
+    "Bash(python3 ~/jarvis/scripts/cal.py*),"                    # календар Михайла (19.11) — лише в особистому чаті, не в групах
+    "Bash(~/jarvis/scripts/song.sh*)")                           # пісні локально, ACE-Step (23.11) — теж лише особистий чат
 # Робочі групи команди: бот відповідає там, лише коли його тегнули або відповіли на його повідомлення.
 # Задачу виконує тільки після кнопки «В роботу» від Михайла. Типово — CAS Design.
 GROUPS = {int(x) for x in os.environ.get("ASSISTANT_GROUPS", "-1003501825627").split(",") if x.strip()}
 # У групі відповідь бачить уся команда — тому без пошти й особистого Telegram Михайла.
 GROUP_ALLOWED = ",".join(t for t in re.split(r",\s*", ALLOWED)
-                         if t and not t.startswith("mcp__claude_ai_Gmail") and "tools/telegram" not in t and "cal.py" not in t)
+                         if t and not t.startswith("mcp__claude_ai_Gmail") and "tools/telegram" not in t and "cal.py" not in t and "song.sh" not in t)
 # Клієнту — без памʼяті й файлів Михайла: лише веб (наш сайт) і читання вкладення з inbox-files.
 CLIENT_ALLOWED = "WebFetch,WebSearch,Read(" + str(MEMORY / "inbox-files") + "/**)"
 TEAM_TASKS = MEMORY / "02 Задачі команди.md"
