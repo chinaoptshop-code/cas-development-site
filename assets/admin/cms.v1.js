@@ -333,6 +333,33 @@
   ];
   var RENDER = {};
 
+  // ===================== денний / нічний режим =====================
+  // Тему ставить інлайн-скрипт у <head> (tools/shop/pages.py → html[data-adm-theme]); тут — лише кнопка-перемикач і збереження вибору.
+  // Кольори — змінні в assets/admin/theme.v1.css. Без збереженого вибору тема йде за системною (і змінюється разом з нею).
+  var THEME_KEY = 'cas_adm_theme';
+  var THEME_BTN = '<button type="button" class="adm-thm" aria-label="Денний режим" aria-pressed="false" title="Денний режим">' +
+    '<svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>' +
+    '<svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg></button>';
+  function themeGet() { return document.documentElement.getAttribute('data-adm-theme') === 'light' ? 'light' : 'dark'; }
+  function themeSet(t, btn, save) {
+    document.documentElement.setAttribute('data-adm-theme', t);
+    if (save) try { localStorage.setItem(THEME_KEY, t); } catch (e) { /* приватне вікно — без збереження */ }
+    if (btn) { btn.setAttribute('aria-pressed', t === 'light'); btn.title = t === 'light' ? 'Нічний режим' : 'Денний режим'; }
+  }
+  function themeInit(btn) {
+    if (!btn) return;
+    themeSet(themeGet(), btn, false);
+    btn.onclick = function () { themeSet(themeGet() === 'light' ? 'dark' : 'light', btn, true); };
+    var saved = null; try { saved = localStorage.getItem(THEME_KEY); } catch (e) { /* noop */ }
+    if (!saved && window.matchMedia) {
+      var mq = matchMedia('(prefers-color-scheme: light)'), on = function () {
+        var s = null; try { s = localStorage.getItem(THEME_KEY); } catch (e) { /* noop */ }
+        if (!s) themeSet(mq.matches ? 'light' : 'dark', btn, false);
+      };
+      if (mq.addEventListener) mq.addEventListener('change', on);
+    }
+  }
+
   function start() {
     var ext = window.CASStudio;
     if (ext && ext.tabs) ext.tabs.slice().reverse().forEach(function (t) { TABS.unshift([t.key, t.label, t.perms]); RENDER[t.key] = t.render; });
@@ -350,8 +377,9 @@
     if (h1) h1.textContent = ME && ME.owner ? 'Майстер-панель студії' : 'Робоча панель: CRM і сайт';
     box.innerHTML = '<div class="adm-who"><span class="adm-badge">' + esc(ME ? ME.role_label : '') + '</span> <b>' + esc(ME ? ME.name : '') + '</b>' +
       (ME && !ME.owner ? ' · <a href="/kabinet/team">Мій кабінет працівника</a>' : ' · <a href="/kabinet/team">Вигляд працівника</a>') +
-      ' · <button type="button" class="lnk" data-out-all>Вийти на всіх пристроях</button></div>' +
+      ' · <button type="button" class="lnk" data-out-all>Вийти на всіх пристроях</button>' + THEME_BTN + '</div>' +
       '<nav class="adm-tabs" aria-label="Розділи панелі">' + tabs.map(function (t) { return '<button type="button" data-t="' + t[0] + '" aria-pressed="false">' + t[1] + '</button>'; }).join('') + '</nav><div id="admView"></div>';
+    themeInit($('.adm-thm', box));
     $('[data-out-all]', box).onclick = function () {
       if (!confirm('Вийти з усіх пристроїв (телефон, ноутбук…)? Доведеться увійти заново.')) return;
       A.api('/api/auth/logout', { method: 'POST', body: { all: true } }).then(function () { location.href = '/kabinet'; });
