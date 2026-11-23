@@ -749,3 +749,22 @@ API — `functions/api/admin/tasks.js` (`GET ?view=&assignee=&link=&order_id=&pr
 Playwright — `ui.mjs` (owner-tasks, owner-tasks-edit, owner-lead-tasks, owner-project-tasks, owner-contacts-table,
 owner-contacts-import, manager-tasks, team-todo; `CRM4_SHOTS=<тека>` — скріни), `xss.mjs` (owner-tasks, owner-tasks-edit,
 owner-contacts-table, owner-contacts-import, fore-/des-todo).
+
+## 19. Денний і нічний режим адмінки (з 23.11.2026)
+
+- **Де перемикач:** кругла кнопка-іконка (сонце / місяць, 44 px) праворуч у рядку з роллю й іменем над вкладками
+  /kabinet/admin («Денний режим», `aria-pressed`). Клік перемикає одразу, без перезавантаження.
+- **Яка тема відкривається:** збережений вибір (localStorage `cas_adm_theme` = `light` | `dark`, у кожному браузері свій) →
+  інакше тема системи (`prefers-color-scheme`, і змінюється разом із системою, доки нічого не вибрано) → інакше ніч.
+  Тему ставить маленький інлайн-скрипт у `<head>` сторінки адмінки (`ADMIN_HEAD` у `tools/shop/pages.py`) ще до першого кадру — без мигання.
+- **Що охоплено:** уся робоча область адмінки (CRM, канбан, таблиці, картки, діалоги, задачі, контакти, редактор, тости, масові дії).
+  Шапка й футер сайту лишаються темними. Кабінет клієнта (/kabinet, /kabinet/obiekt…) не змінюється; кабінет працівника
+  /kabinet/team має свою «польову» світлу тему (`assets/team.v1.css`) і перемикача не має.
+- **Палітра:** день — тепла папірова (менеджер) і холодніша зі сталевим акцентом (власник, як графіт уночі); ніч — як і було.
+  `color-scheme: light | dark` на `<html>` — рідні селекти, календар дати, прапорці й прокрутка в тон.
+- **Як додати колір (розробнику):** лише через змінні. Палітра дня — `assets/admin/theme.v1.css` (`html[data-adm-theme=light] …`).
+  Новий колір у `cms.v1.css` / `crm4.v1.css` / `studio.v1.css` чи в розмітці з JS — `var(--назва,<колір ночі>)`, а денне значення
+  змінної — у theme.v1.css (як `--err`, `--err-hi`, `--on-err`, `--on-ac`, `--on-cmd`, `--hi`, `--shadow`). Жорстко зашитий колір у
+  світлій темі зламається (біле на білому). Контраст — WCAG AA в обох темах (текст ≥ 4.5:1, межі полів і фокус ≥ 3:1).
+- Тести: `ui.mjs` — `owner-theme` (система, клік, збереження, 44 px, шапка темна), `owner-theme-manager`, `owner-theme-scope …`
+  (тема не потрапляє в кабінет клієнта й працівника): `ONLY=owner-theme node tools/tests/ui.mjs`.
