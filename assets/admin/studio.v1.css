@@ -3,8 +3,8 @@
    менеджер (body.adm-manager) — тепла робоча тема сайту без змін. */
 body.adm-owner{--ink:#0b0d10;--surface:#11151a;--surface-2:#171c23;--line:rgba(140,170,200,.18);--cmd:#6fb6dc;--cmd-2:#9fd0ea;background:#0b0d10}
 body.adm-owner main.acc{background:radial-gradient(1200px 500px at 85% -120px,rgba(111,182,220,.10),transparent 70%)}
-body.adm-owner .adm-tabs button[aria-pressed=true]{border-bottom-color:var(--cmd);color:#fff}
-body.adm-owner .adm .seg button[aria-pressed=true]{background:var(--cmd);color:#06121a}
+body.adm-owner .adm-tabs button[aria-pressed=true]{border-bottom-color:var(--cmd);color:var(--hi,#fff)}
+body.adm-owner .adm .seg button[aria-pressed=true]{background:var(--cmd);color:var(--on-cmd,#06121a)}
 body.adm-owner .kn-col{background:linear-gradient(180deg,var(--surface-2),var(--surface))}
 body.adm-manager{--cmd:var(--brass);--cmd-2:var(--glow)}
 .adm-who{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:var(--fs-small);color:var(--muted);margin:-4px 0 12px}
@@ -34,7 +34,7 @@ body.adm-manager{--cmd:var(--brass);--cmd-2:var(--glow)}
 .kpi:nth-child(2){animation-delay:.04s}.kpi:nth-child(3){animation-delay:.08s}.kpi:nth-child(4){animation-delay:.12s}.kpi:nth-child(5){animation-delay:.16s}.kpi:nth-child(6){animation-delay:.2s}
 .kpi small{color:var(--muted);font-size:12px}
 .kpi b{font-size:1.6rem;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--cream)}
-.kpi.warn{border-color:#e07a6a}.kpi.warn b{color:#f0a090}
+.kpi.warn{border-color:var(--err,#e07a6a)}.kpi.warn b{color:var(--err-hi,#f0a090)}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .st-grid{display:grid;gap:12px}
 @media(min-width:980px){.st-grid{grid-template-columns:repeat(3,1fr)}.st-grid .s2{grid-column:span 2}.st-grid .s3{grid-column:1/-1}}
@@ -70,7 +70,7 @@ body.adm-manager{--cmd:var(--brass);--cmd-2:var(--glow)}
 .perm-t .yes{color:var(--cmd-2);font-size:16px}.perm-t .no{color:var(--muted)}
 .team-fs{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:8px}
 .team-fs legend{color:var(--cream);font-weight:600;padding:0 6px}
-.ord.issue.open{border-color:#e07a6a}
+.ord.issue.open{border-color:var(--err,#e07a6a)}
 
 /* аудит */
 .aud{list-style:none;margin:0;padding:0;display:grid;gap:2px}
@@ -78,7 +78,7 @@ body.adm-manager{--cmd:var(--brass);--cmd-2:var(--glow)}
 .aud time{color:var(--muted);font-variant-numeric:tabular-nums}
 .aud .who{display:grid}.aud .who small{color:var(--muted)}
 .aud .chgs{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:2px}
-.chg{font-size:12px;color:var(--muted)}.chg del{color:#e07a6a}.chg ins{color:var(--ok);text-decoration:none}
+.chg{font-size:12px;color:var(--muted)}.chg del{color:var(--err,#e07a6a)}.chg ins{color:var(--ok);text-decoration:none}
 @media(max-width:700px){.aud li{grid-template-columns:1fr}}
 
 /* картка клієнта */

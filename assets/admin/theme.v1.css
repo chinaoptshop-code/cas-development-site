@@ -1,0 +1,52 @@
+/* /kabinet/admin — денний і нічний режим (23.11.2026). Підключається в <head> лише сторінки адмінки (tools/shop/pages.py),
+   атрибут html[data-adm-theme] ставить інлайн-скрипт там же ще до першого кадру (без мигання); перемикач — кнопка .adm-thm
+   у рядку .adm-who (assets/admin/cms.v1.js, вибір — localStorage cas_adm_theme). Тема лише перевизначає змінні:
+   нові кольори в CSS/JS адмінки — тільки через var(--…) (для нових змінних — з запасним значенням нічної теми, як var(--err,#e07a6a)).
+   Ніч — як було: змінні :root з шаблону сторінки, власник — графітова тема studio.v1.css. Шапка й футер сайту лишаються темними. */
+
+html[data-adm-theme=dark]{color-scheme:dark}
+html[data-adm-theme=light]{color-scheme:light}
+
+/* День, менеджер (тепла тема сайту): папір, темний текст, латунь. Змінні — і на body, бо body.adm-owner перевизначає їх там. */
+html[data-adm-theme=light],html[data-adm-theme=light] body{
+  --ink:#F3EDE3;--surface:#FBF8F3;--surface-2:#ECE3D5;--line:rgba(122,90,42,.30);
+  --brass:#A87A33;--glow:#7A5418;--cream:#1E1913;--muted:#645B51;--ok:#3B7426;
+  --bg:#F3EDE3;--bg2:#FBF8F3;--tx:#1E1913;--mu:#645B51;--ac:#A87A33;--ln:rgba(122,90,42,.30);
+  --err:#AE3E2C;--err-hi:#A3392A;--on-err:#fff;--on-ac:#1B1408;--hi:#1E1913;
+  --cmd:var(--brass);--cmd-2:var(--glow);
+  --shadow:0 8px 24px rgba(70,50,20,.16);--shadow-s:0 6px 18px rgba(70,50,20,.12)}
+/* День, власник (як графіт уночі — холодніший папір і сталевий акцент) */
+html[data-adm-theme=light] body.adm-owner{
+  --ink:#EEF1F4;--surface:#FAFBFC;--surface-2:#E1E7ED;--line:rgba(48,78,108,.26);
+  --cream:#161A1F;--muted:#56606A;--tx:#161A1F;--mu:#56606A;--bg:#EEF1F4;--bg2:#FAFBFC;--ln:rgba(48,78,108,.26);
+  --cmd:#28678A;--cmd-2:#1D5373;--on-cmd:#fff;background:var(--ink)}
+html[data-adm-theme=light] body.adm-owner main.acc{background:radial-gradient(1200px 500px at 85% -120px,rgba(40,103,138,.08),transparent 70%)}
+/* поля форм: межа з ui-polish (--ui-field) — у тон */
+html[data-adm-theme=light] body{--ui-field:#8A735F}
+html[data-adm-theme=light] body.adm-owner{--ui-field:#6F7F8E}
+
+/* шапка, мобільне меню й футер сайту — завжди нічні (свої кольори --c-*; тут повертаємо змінні шаблону для .ico тощо) */
+html[data-adm-theme=light] .sch,html[data-adm-theme=light] .scf{
+  --ink:#080709;--surface:#100e0c;--surface-2:#17140f;--line:rgba(191,145,72,.22);--brass:#BF9148;--glow:#E2C08A;--cream:#EDE8DF;--muted:#938c84;
+  --bg:#080709;--bg2:#100e0c;--tx:#EDE8DF;--mu:#938c84;--ac:#BF9148;--ln:rgba(191,145,72,.22);color-scheme:dark}
+
+/* поодинокі правила шаблону з кольором у коді */
+html[data-adm-theme=light] .acc-err{color:var(--err)}
+html[data-adm-theme=light] .adm dialog::backdrop,html[data-adm-theme=light] dialog.cc::backdrop{background:rgba(40,30,15,.42)}
+html[data-adm-theme=light] .adm .pill.src{border-color:rgba(122,90,42,.45)}
+html[data-adm-theme=light] .kn-card.picked{background:rgba(163,118,47,.14)}
+/* посилання без класу в main (site-chrome.v1.css: світла латунь #D4AE6E, наведення — кремове) — у день темна латунь */
+html[data-adm-theme=light] :where(main a:not([class])){color:var(--glow);text-decoration-color:rgba(122,84,24,.5)}
+html[data-adm-theme=light] :where(main a:not([class])):hover{color:var(--cream);text-decoration-color:currentColor}
+html[data-adm-theme=light] :where(main a:not([class])):focus-visible{outline-color:var(--brass)}
+/* підписи на латунній заливці — без прозорості; зірки оцінки — темніша латунь */
+html[data-adm-theme=light] .adm .c4-q .pill[aria-pressed=true] small{opacity:1}
+html[data-adm-theme=light] .adm .ct-star{color:var(--glow)}
+
+/* перемикач теми: кругла кнопка-іконка 44 px праворуч у рядку .adm-who */
+.adm-thm{display:inline-grid;place-items:center;width:44px;height:44px;margin:-6px 0 -6px auto;padding:0;border:1px solid var(--line);border-radius:999px;
+  background:var(--surface);color:var(--cream);cursor:pointer;flex:none}
+.adm-thm:hover{border-color:var(--brass)}
+.adm-thm svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.adm-thm .i-moon,html[data-adm-theme=light] .adm-thm .i-sun{display:none}
+html[data-adm-theme=light] .adm-thm .i-moon{display:block}

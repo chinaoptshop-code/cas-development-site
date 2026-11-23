@@ -64,6 +64,15 @@ ADMIN = """<main class="acc">
 <script src="/assets/admin/cms.v1.js?v=__CMSJS__" defer></script>
 """
 
+# Денний / нічний режим адмінки (23.11.2026): тему ставимо в <head> до першого кадру — збережений вибір (localStorage cas_adm_theme,
+# перемикач .adm-thm у cms.v1.js) → системна prefers-color-scheme → ніч. Палітра — лише змінні в assets/admin/theme.v1.css
+# (render-blocking, у <head>, бо решта CSS адмінки підключена в <body>). CSP /kabinet* дозволяє інлайн-скрипти ('unsafe-inline').
+ADMIN_HEAD = """<script>(function(h){var t;try{t=localStorage.getItem('cas_adm_theme')}catch(e){}
+if(t!=='light'&&t!=='dark')try{t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}catch(e){t='dark'}
+h.setAttribute('data-adm-theme',t)})(document.documentElement)</script>
+<link rel="stylesheet" href="/assets/admin/theme.v1.css?v=__THCSS__">
+</head>"""
+
 # Кабінет працівника /kabinet/team (прораб, мебляр, геодезист, 3D, дрон, дизайнер, менеджер, бухгалтер) — assets/team.v1.{js,css}.
 # Mobile-first, власна «польова» світла тема (читається на сонці на обʼєкті). Доступ — functions/kabinet/_middleware.js + /api/team/*.
 TEAM = """<main class="acc tm-page">
@@ -134,6 +143,7 @@ if __name__ == '__main__':
     sh = shell()
     import kabinet_v2
     kabinet_v2.build(sh, page)
-    page(sh, 'Облік замовлень', ADMIN, 'kabinet/admin')
+    th = hashlib.sha256(open(os.path.join(ROOT, 'assets/admin/theme.v1.css'), 'rb').read()).hexdigest()[:8]
+    page(sh.replace('</head>', ADMIN_HEAD.replace('__THCSS__', th), 1), 'Облік замовлень', ADMIN, 'kabinet/admin')
     page(sh, 'Кабінет працівника', TEAM, 'kabinet/team')
     page(sh, 'Немає доступу', DENIED, 'kabinet/zaboroneno')
