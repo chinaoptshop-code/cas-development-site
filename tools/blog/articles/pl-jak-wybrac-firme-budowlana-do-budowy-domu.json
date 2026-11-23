@@ -6,7 +6,8 @@
  "seo_title": "Jak wybrać firmę budowlaną do budowy domu pod Kijowem",
  "description": "Jak wybrać firmę budowlaną do budowy domu w Kijowie i obwodzie: co porównywać w cenie za m², co musi być w umowie, jak płacić. Stan surowy od $600/m².",
  "lead": "Dom buduje się raz, a wykonawcę wybiera spośród kilkunastu podobnych ofert z ceną „od” za metr. Podpowiadamy, jak wybrać firmę budowlaną do budowy domu w Kijowie lub obwodzie: co porównywać w kosztorysach, co musi znaleźć się w umowie i jak powiązać płatności z etapami.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/pl/budowa-domow",
   "Budowa domów"
@@ -17,15 +18,15 @@
  "body": [
   [
    "h2",
-   "Najpierw projekt, potem wykonawca"
+   "Dlaczego najpierw potrzebny jest projekt, a potem wykonawca?"
   ],
   [
    "p",
-   "Bez projektu każda firma wycenia własny dom: jedna zakłada ławy fundamentowe, druga płytę, trzecia nie liczy stropów. Takich ofert nie da się porównać. Projekt architektoniczny z częścią konstrukcyjną daje ilości: ile betonu, bloczków, zbrojenia, jaki dach. Mając go, można wysłać to samo zapytanie do kilku firm i dostać kosztorysy, które naprawdę da się położyć obok siebie."
+   "Projekt potrzebny jest przed wykonawcą, bo bez niego każda firma wycenia własny dom: jedna zakłada ławy fundamentowe, druga płytę, trzecia nie liczy stropów. Takich ofert nie da się porównać. Projekt architektoniczny z częścią konstrukcyjną daje ilości: ile betonu, bloczków, zbrojenia, jaki dach. Mając go, można wysłać to samo zapytanie do kilku firm i dostać kosztorysy, które naprawdę da się położyć obok siebie."
   ],
   [
    "p",
-   "W CAS projekt architektoniczny domu kosztuje od $12/m²: projekt koncepcyjny i wykonawczy z częścią architektoniczną i konstrukcyjną; projekty instalacji i plan zagospodarowania działki dochodzą na zlecenie. Jeśli masz już projekt, kosztorys powstaje na jego podstawie. Zawartość dokumentacji omówiliśmy w artykule [projekt domu: co zawiera](/pl/blog/projekt-domu-co-zawiera-i-ile-kosztuje)."
+   "W CAS projekt architektoniczny domu kosztuje od $12/m²: projekt koncepcyjny i wykonawczy z częścią architektoniczną i konstrukcyjną; projekty instalacji i plan zagospodarowania działki dochodzą na zlecenie. Jeśli masz już projekt, kosztorys powstaje na jego podstawie. Zawartość dokumentacji omówiliśmy w artykule [projekt domu: co zawiera](/pl/blog/projekt-domu-co-zawiera-i-ile-kosztuje). Co i jak budujemy, opisujemy na stronie [budowa domów pod klucz w Kijowie i okolicach](/pl/budowa-domow)."
   ],
   [
    "img",
@@ -34,11 +35,11 @@
   ],
   [
    "h2",
-   "Jak porównywać cenę budowy za metr"
+   "Jak porównywać cenę budowy za metr?"
   ],
   [
    "p",
-   "„Stan surowy” i „pod klucz” w różnych firmach oznaczają inny zakres prac, dlatego porównywanie gołej kwoty za metr nie ma sensu. Poproś każdego wykonawcę o pisemną odpowiedź, czy w cenie są:"
+   "Cenę za metr można porównywać tylko razem z zakresem prac, bo „stan surowy” i „pod klucz” w różnych firmach oznaczają co innego. Poproś każdego wykonawcę o pisemną odpowiedź, czy w cenie są:"
   ],
   [
    "ul",
@@ -53,11 +54,15 @@
   ],
   [
    "p",
-   "Dla orientacji: w CAS stan surowy kosztuje od $600/m². To przygotowanie działki, fundament, ściany nośne i działowe, stropy, dach oraz przepusty pod instalacje. Dom pod klucz, z ociepleniem, oknami i elewacją, instalacjami wewnętrznymi i wykończeniem — od $1 100/m². Dla domu 150 m² dolna granica to: stan surowy — od $90 000 (150 × $600 = $90 000), pod klucz — od $165 000 (150 × $1 100 = $165 000). Sieci zewnętrzne, studnię, szambo, meble i ogród liczy się osobno. Więcej w artykule [dom pod klucz czy stan surowy](/pl/blog/dom-pod-klucz-czy-stan-surowy)."
+   "Dla orientacji: w CAS stan surowy kosztuje od $600/m². To przygotowanie działki, fundament, ściany nośne i działowe, stropy, dach oraz przepusty pod instalacje. Dom pod klucz, z ociepleniem, oknami i elewacją, instalacjami wewnętrznymi i wykończeniem — od $1 100/m². Dla domu 150 m² dolna granica to: stan surowy — od $90 000 (150 × $600 = $90 000), pod klucz — od $165 000 (150 × $1 100 = $165 000). Sieci zewnętrzne, studnię, szambo, meble i ogród liczy się osobno. Więcej w artykule [dom pod klucz czy stan surowy](/pl/blog/dom-pod-klucz-czy-stan-surowy). Stawka zależy też od technologii: w [kalkulatorze kosztów](/pl/kalkulator-remontu?k=house) można wybrać typ domu — od cegły i betonu komórkowego po szkielet drewniany, dom modułowy lub z bali — i zobaczyć orientacyjną kwotę."
   ],
   [
    "h2",
-   "Co sprawdzić w firmie przed umową"
+   "Co sprawdzić w firmie budowlanej przed umową?"
+  ],
+  [
+   "p",
+   "Przed umową sprawdź, kto ją podpisuje, jakie realizacje można zobaczyć, kto pracuje na budowie i jak firma raportuje:"
   ],
   [
    "ul",
@@ -80,7 +85,11 @@
   ],
   [
    "h2",
-   "Umowa z firmą budowlaną: co musi być zapisane"
+   "Co musi być zapisane w umowie z firmą budowlaną?"
+  ],
+  [
+   "p",
+   "W umowie muszą być projekt, kosztorys z ilościami, harmonogram etapów, płatności według protokołów, odbiór prac zanikowych i gwarancja:"
   ],
   [
    "ul",
@@ -106,7 +115,7 @@
   ],
   [
    "h2",
-   "Płatność: zaliczka i etapy"
+   "Jak płacić za budowę domu?"
   ],
   [
    "p",
@@ -114,7 +123,11 @@
   ],
   [
    "h2",
-   "Sygnały ostrzegawcze"
+   "Jakie sygnały powinny zaniepokoić?"
+  ],
+  [
+   "p",
+   "Zaniepokoić powinny cena bez zakresu prac, rezygnacja z projektu i umowa bez kosztorysu:"
   ],
   [
    "ul",

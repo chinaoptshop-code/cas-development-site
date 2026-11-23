@@ -6,7 +6,8 @@
  "seo_title": "How to choose a house building company near Kyiv",
  "description": "How to choose a building company for a house in Kyiv and the region: what to compare in the price per m², what the contract must say. Shell from $600/m².",
  "lead": "You build a house once, yet you pick the contractor from a dozen similar offers with a “from” price per metre. Here is how to choose a building company for a house in Kyiv or the region: what to compare in the estimates, what the contract must contain and how to tie payment to stages.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/en/house-construction",
   "House construction"
@@ -17,15 +18,15 @@
  "body": [
   [
    "h2",
-   "The design first, the contractor second"
+   "Why do you need the design before the contractor?"
   ],
   [
    "p",
-   "Without a design, every company prices a house of its own: one allows for a strip foundation, another for a slab, a third leaves out the floor slabs. Such offers cannot be compared. An architectural design with a structural section gives quantities: how much concrete, how many blocks, how much rebar, what kind of roof. With it you can send the same request to several companies and get estimates that can genuinely be laid side by side."
+   "The design comes before the contractor because, without it, every company prices a house of its own: one allows for a strip foundation, another for a slab, a third leaves out the floor slabs. Such offers cannot be compared. An architectural design with a structural section gives quantities: how much concrete, how many blocks, how much rebar, what kind of roof. With it you can send the same request to several companies and get estimates that can genuinely be laid side by side."
   ],
   [
    "p",
-   "At CAS, the architectural design of a house costs from $12/m²: a concept and a detailed design with architectural and structural drawings; building services sections and the site plan are added on request. If you already have a design, the estimate is based on it. We went through the set of documents in the article on [what a house design project includes](/en/blog/house-design-project-what-is-included)."
+   "At CAS, the architectural design of a house costs from $12/m²: a concept and a detailed design with architectural and structural drawings; building services sections and the site plan are added on request. If you already have a design, the estimate is based on it. We went through the set of documents in the article on [what a house design project includes](/en/blog/house-design-project-what-is-included). What we build and how is described on the [turnkey house construction in Kyiv and the region](/en/house-construction) page."
   ],
   [
    "img",
@@ -34,11 +35,11 @@
   ],
   [
    "h2",
-   "How to compare the construction price per metre"
+   "How do you compare the construction price per metre?"
   ],
   [
    "p",
-   "“Shell” and “turnkey” mean a different scope of works at different companies, so comparing a bare figure per metre makes no sense. Ask each contractor to confirm in writing whether the price includes:"
+   "A price per metre can only be compared together with the list of works, because “shell” and “turnkey” mean a different scope at different companies. Ask each contractor to confirm in writing whether the price includes:"
   ],
   [
    "ul",
@@ -53,11 +54,15 @@
   ],
   [
    "p",
-   "As a guide: at CAS the shell costs from $600/m². That covers site preparation, the foundation, load-bearing walls and partitions, floor slabs, the roof and embedded sleeves for services. A turnkey house, with the thermal envelope, internal services and finishes, costs from $1,100/m². For a 150 m² house the lower bound is: shell — from $90,000 (150 × $600 = $90,000), turnkey — from $165,000 (150 × $1,100 = $165,000). External utilities, a borehole, a septic tank, furniture and landscaping are priced separately. More in the article on [a turnkey house versus a shell](/en/blog/turnkey-house-vs-shell)."
+   "As a guide: at CAS the shell costs from $600/m². That covers site preparation, the foundation, load-bearing walls and partitions, floor slabs, the roof and embedded sleeves for services. A turnkey house, with the thermal envelope, internal services and finishes, costs from $1,100/m². For a 150 m² house the lower bound is: shell — from $90,000 (150 × $600 = $90,000), turnkey — from $165,000 (150 × $1,100 = $165,000). External utilities, a borehole, a septic tank, furniture and landscaping are priced separately. More in the article on [a turnkey house versus a shell](/en/blog/turnkey-house-vs-shell). The rate also depends on the technology: in the [cost calculator](/en/renovation-cost-calculator?k=house) you can choose the house type, from brick and aerated block to timber frame, modular or log, and see the guide figure for it."
   ],
   [
    "h2",
-   "What to check about the company before the contract"
+   "What should you check about a building company before the contract?"
+  ],
+  [
+   "p",
+   "Before the contract, find out who signs it, which projects you can see, who works on site and how the company reports:"
   ],
   [
    "ul",
@@ -80,7 +85,11 @@
   ],
   [
    "h2",
-   "The contract with a building company: what must be written down"
+   "What must be written into the contract with a building company?"
+  ],
+  [
+   "p",
+   "The contract should include the design, an estimate with quantities, a stage schedule, payment against certificates, acceptance of concealed works and a warranty:"
   ],
   [
    "ul",
@@ -106,7 +115,7 @@
   ],
   [
    "h2",
-   "Payment: the advance and the stages"
+   "How do you pay for building a house?"
   ],
   [
    "p",
@@ -114,7 +123,11 @@
   ],
   [
    "h2",
-   "Warning signs"
+   "Which warning signs should put you on guard?"
+  ],
+  [
+   "p",
+   "A price without a list of works, a refusal to work from a design and a contract without an estimate should all put you on guard:"
   ],
   [
    "ul",

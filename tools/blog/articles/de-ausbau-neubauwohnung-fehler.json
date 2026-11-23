@@ -6,7 +6,8 @@
  "seo_title": "Ausbau einer Neubauwohnung: 8 teure Fehler",
  "description": "Ausbau einer Neubauwohnung in Kyjiw: 8 Fehler, deren Korrektur teuer wird – vom Start ohne Projekt bis zu falsch gesetzten Steckdosen. Ausbau ab $550/m².",
  "lead": "Eine neue Wohnung wirkt wie ein einfaches Objekt: Die Wände sind gerade, die Rohre neu, abzureißen gibt es nichts. Doch die Fehler entstehen in den ersten Wochen und werden erst sichtbar, wenn alles unter Fliesen und Farbe verschwunden ist. Wir gehen acht Fehler durch, wegen derer der Ausbau einer Neubauwohnung in Kyjiw nachgebessert werden muss, und erklären, wie Sie jeden davon vermeiden.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/de/neubauwohnung-ausbau",
   "Ausbau von Neubauwohnungen"
@@ -16,7 +17,11 @@
  "body": [
   [
    "h2",
-   "Vor dem Start: Projekt und Prüfung der Wohnung"
+   "Welche Fehler passieren schon vor dem Start?"
+  ],
+  [
+   "p",
+   "Vor dem Start kosten zwei Fehler am meisten: ohne Projekt beginnen und die Wohnung nach dem Bauträger nicht prüfen. Wie der Ausbau selbst abläuft, beschreibt die Seite [Ausbau von Neubauwohnungen](/de/neubauwohnung-ausbau)."
   ],
   [
    "h3",
@@ -36,7 +41,11 @@
   ],
   [
    "h2",
-   "Haustechnik: was später nicht mehr zu sehen ist"
+   "Welche Fehler bei der Haustechnik sind am teuersten zu beheben?"
+  ],
+  [
+   "p",
+   "Bei der Haustechnik ist am teuersten zu beheben, was ohne Möbelplan verlegt wurde, und das Sparen an Abdichtung und verdeckten Arbeiten: Später liegt all das unter den Oberflächen."
   ],
   [
    "h3",
@@ -61,7 +70,11 @@
   ],
   [
    "h2",
-   "Termine und Reihenfolge der Arbeiten"
+   "Welche Fehler passieren bei Terminen und Reihenfolge der Arbeiten?"
+  ],
+  [
+   "p",
+   "Bei den Terminen gibt es zwei Fehler: Setzung und Trocknungspausen werden nicht eingeplant, und Möbel und Türen werden erst nach der Renovierung bestellt."
   ],
   [
    "h3",
@@ -86,7 +99,11 @@
   ],
   [
    "h2",
-   "Geld, Vertrag und Hausordnung"
+   "Welche Fehler passieren bei Kostenvoranschlag, Vertrag und Hausordnung?"
+  ],
+  [
+   "p",
+   "Hier gibt es zwei Fehler: einem Kostenvoranschlag ohne Mengen zustimmen und die Regeln des Hauses für Renovierungen nicht klären."
   ],
   [
    "h3",
@@ -120,7 +137,11 @@
   ],
   [
    "h2",
-   "Kurze Checkliste vor dem Start"
+   "Was sollten Sie vor dem Start prüfen?"
+  ],
+  [
+   "p",
+   "Vor dem Ausbau einer Neubauwohnung prüfen Sie sechs Punkte:"
   ],
   [
    "ol",

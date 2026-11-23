@@ -6,7 +6,8 @@
  "seo_title": "Remodelação de apartamento novo: 8 erros caros",
  "description": "Remodelação de um apartamento novo em Kyiv: 8 erros que saem caros de corrigir, do arranque sem projeto às tomadas fora do sítio. Remodelação desde $550/m².",
  "lead": "Um apartamento novo parece uma obra simples: as paredes estão direitas, a canalização é recente e não há nada para demolir. Mas os erros cometem-se nas primeiras semanas e só se veem quando já está tudo tapado com azulejo e tinta. Analisamos oito erros que obrigam a refazer a remodelação de um apartamento novo em Kyiv e explicamos como evitar cada um.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/pt/remodelacao-apartamento-novo",
   "Remodelação de apartamento novo"
@@ -16,7 +17,11 @@
  "body": [
   [
    "h2",
-   "Antes de começar: projeto e verificação do apartamento"
+   "Que erros se cometem antes mesmo de começar?"
+  ],
+  [
+   "p",
+   "Antes de começar, dois erros custam mais: arrancar sem projeto e não verificar o apartamento entregue pelo promotor. Como decorre a remodelação em si, descrevemos na página [remodelação de apartamento novo](/pt/remodelacao-apartamento-novo)."
   ],
   [
    "h3",
@@ -36,7 +41,11 @@
   ],
   [
    "h2",
-   "Instalações técnicas: o que depois não se vê"
+   "Que erros nas instalações técnicas são os mais caros de corrigir?"
+  ],
+  [
+   "p",
+   "Nas instalações, o mais caro de corrigir são os traçados feitos sem planta de mobiliário e a poupança na impermeabilização e nos trabalhos ocultos: depois, tudo fica tapado pelos acabamentos."
   ],
   [
    "h3",
@@ -61,7 +70,11 @@
   ],
   [
    "h2",
-   "Prazos e sequência dos trabalhos"
+   "Que erros se cometem nos prazos e na sequência dos trabalhos?"
+  ],
+  [
+   "p",
+   "Nos prazos erra-se de duas formas: ignoram-se o assentamento e as pausas de secagem, e o mobiliário e as portas só se encomendam depois da obra."
   ],
   [
    "h3",
@@ -86,7 +99,11 @@
   ],
   [
    "h2",
-   "Dinheiro, contrato e regras do edifício"
+   "Que erros se cometem no orçamento, no contrato e nas regras do edifício?"
+  ],
+  [
+   "p",
+   "Aqui há dois erros: aceitar um orçamento sem quantidades e não conhecer as regras do edifício para obras."
   ],
   [
    "h3",
@@ -120,7 +137,11 @@
   ],
   [
    "h2",
-   "Checklist breve antes de começar"
+   "O que verificar antes de começar a obra?"
+  ],
+  [
+   "p",
+   "Antes de começar a remodelação de um apartamento novo, verifique seis pontos:"
   ],
   [
    "ol",

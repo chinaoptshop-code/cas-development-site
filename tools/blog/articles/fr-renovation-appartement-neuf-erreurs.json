@@ -6,7 +6,8 @@
  "seo_title": "Rénovation d’appartement neuf : 8 erreurs coûteuses",
  "description": "Rénovation d’un appartement neuf à Kyiv : 8 erreurs coûteuses à corriger, du démarrage sans projet aux prises mal placées. Rénovation dès $550/m².",
  "lead": "Un appartement neuf semble un chantier simple : les murs sont droits, les tuyaux récents, il n’y a rien à démolir. Pourtant, les erreurs se commettent dès les premières semaines et ne se voient qu’une fois tout recouvert de carrelage et de peinture. Nous passons en revue huit erreurs qui obligent à reprendre la rénovation d’un appartement neuf à Kyiv, et expliquons comment éviter chacune d’elles.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/fr/renovation-appartement-neuf",
   "Rénovation d’appartement neuf"
@@ -16,7 +17,11 @@
  "body": [
   [
    "h2",
-   "Avant le démarrage : projet et vérification de l’appartement"
+   "Quelles erreurs commet-on avant même le démarrage ?"
+  ],
+  [
+   "p",
+   "Avant le démarrage, deux erreurs coûtent le plus cher : commencer sans projet et ne pas vérifier l’appartement livré par le promoteur. Le déroulement de la rénovation elle-même est décrit sur la page [rénovation d’appartement neuf](/fr/renovation-appartement-neuf)."
   ],
   [
    "h3",
@@ -36,7 +41,11 @@
   ],
   [
    "h2",
-   "Réseaux techniques : ce qu’on ne verra plus ensuite"
+   "Quelles erreurs sur les réseaux techniques coûtent le plus cher à corriger ?"
+  ],
+  [
+   "p",
+   "Sur les réseaux, le plus coûteux à corriger, ce sont les gaines posées sans plan du mobilier et les économies sur l’étanchéité et les travaux cachés : ensuite, tout est recouvert par les finitions."
   ],
   [
    "h3",
@@ -61,7 +70,11 @@
   ],
   [
    "h2",
-   "Délais et ordre des travaux"
+   "Quelles erreurs commet-on sur les délais et l’ordre des travaux ?"
+  ],
+  [
+   "p",
+   "Sur les délais, on se trompe deux fois : on ignore le tassement et les temps de séchage, et on commande les meubles et les portes seulement après les travaux."
   ],
   [
    "h3",
@@ -86,7 +99,11 @@
   ],
   [
    "h2",
-   "Argent, contrat et règlement de l’immeuble"
+   "Quelles erreurs commet-on sur le devis, le contrat et le règlement de l’immeuble ?"
+  ],
+  [
+   "p",
+   "Ici, deux erreurs : accepter un devis sans quantités et ne pas se renseigner sur le règlement de l’immeuble pour les travaux."
   ],
   [
    "h3",
@@ -120,7 +137,11 @@
   ],
   [
    "h2",
-   "Courte check-list avant le démarrage"
+   "Que vérifier avant le démarrage des travaux ?"
+  ],
+  [
+   "p",
+   "Avant de rénover un appartement neuf, vérifiez six points :"
   ],
   [
    "ol",

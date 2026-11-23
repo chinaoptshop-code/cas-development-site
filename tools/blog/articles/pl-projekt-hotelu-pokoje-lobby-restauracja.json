@@ -5,7 +5,8 @@
  "translation_of": "dyzain-hotelu-nomernyi-fond-lobi",
  "description": "Projekt hotelu: pokój typowy, pokój wzorcowy przed powieleniem, trwałe materiały, lobby i restauracja. Co ustalić przed wyborem stylu. Projekt od $30/m².",
  "lead": "W hotelu projekt liczy się w pieniądzach: ile minut zajmuje sprzątanie pokoju, ile lat wytrzyma wykładzina w korytarzu, czy przechodzień z ulicy wejdzie do restauracji. Opowiadamy, jak zbudowany jest projekt hotelu, od pokoju typowego po lobby i restaurację, i co warto ustalić jeszcze przed wyborem stylu.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/pl/projektowanie-hoteli",
   "Projektowanie i wyposażenie hoteli pod klucz"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Od czego zaczyna się projekt hotelu"
+   "Od czego zaczyna się projekt hotelu?"
   ],
   [
    "p",
-   "Pierwsze pytanie brzmi: kim jest gość i jak długo zostaje. Podróżujący służbowo na jedną noc, rodzina na tydzień i para na weekend oczekują od pokoju czegoś innego: biurka, aneksu kuchennego albo wanny z widokiem. Od odpowiedzi zależą typy pokoi, powierzchnia stref ogólnodostępnych i budżet na pokój. Styl wybiera się dopiero potem."
+   "Projekt hotelu zaczyna się od gościa: kim jest i jak długo zostaje. Podróżujący służbowo na jedną noc, rodzina na tydzień i para na weekend oczekują od pokoju czegoś innego: biurka, aneksu kuchennego albo wanny z widokiem. Od odpowiedzi zależą typy pokoi, powierzchnia stref ogólnodostępnych i budżet na pokój. Styl wybiera się dopiero potem. Jak prowadzimy takie projekty, opisujemy na stronie [projektowanie i wyposażenie hoteli pod klucz](/pl/projektowanie-hoteli)."
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Pokój typowy: jeden schemat dla wszystkich pokoi"
+   "Jak zaprojektować pokój typowy dla wszystkich pokoi?"
   ],
   [
    "p",
@@ -61,11 +62,11 @@
   ],
   [
    "h2",
-   "Pokój wzorcowy przed powieleniem"
+   "Po co robić pokój wzorcowy przed powieleniem?"
   ],
   [
    "p",
-   "Zanim zamówisz meble do całego hotelu, warto jeden pokój wykonać w całości: z wykończeniem, meblami, oświetleniem i tekstyliami. Sprawdza się w nim to, czego nie widać na wizualizacji. Czy pokojowej wygodnie zmienia się pościel i myje pod łóżkiem, czy drzwiczki szafy nie uderzają w drzwi wejściowe, jak wygląda światło wieczorem, czy wystarcza haczyków."
+   "Pokój wzorcowy pokazuje błędy, zanim powtórzą się w każdym pokoju, dlatego zanim zamówisz meble do całego hotelu, warto jeden pokój wykonać w całości: z wykończeniem, meblami, oświetleniem i tekstyliami. Sprawdza się w nim to, czego nie widać na wizualizacji. Czy pokojowej wygodnie zmienia się pościel i myje pod łóżkiem, czy drzwiczki szafy nie uderzają w drzwi wejściowe, jak wygląda światło wieczorem, czy wystarcza haczyków."
   ],
   [
    "p",
@@ -73,11 +74,11 @@
   ],
   [
    "h2",
-   "Materiały, które wytrzymują hotel"
+   "Jakie materiały wytrzymują eksploatację hotelu?"
   ],
   [
    "p",
-   "Pokój hotelowy zużywa się szybciej niż mieszkanie: walizki, wózki pokojowych, częste sprzątanie. Dlatego materiały dobiera się pod kątem tego, jak się starzeją i czyszczą."
+   "Hotel potrzebuje materiałów, które łatwo się czyści i które wolno się zużywają, bo pokój hotelowy zużywa się szybciej niż mieszkanie: walizki, wózki pokojowych, częste sprzątanie. Dlatego materiały dobiera się pod kątem tego, jak się starzeją i czyszczą."
   ],
   [
    "ul",
@@ -95,11 +96,11 @@
   ],
   [
    "h2",
-   "Lobby i recepcja"
+   "Jak zaplanować lobby i recepcję?"
   ],
   [
    "p",
-   "Lobby odpowiada za pierwsze wrażenie, a jednocześnie jest miejscem pracy personelu. Ladę recepcyjną ustawia się tak, żeby recepcjonista widział wejście i windy, a gość od razu wiedział, dokąd iść. Obok potrzebne są miejsce na bagaż, strefa oczekiwania i pokój zaplecza za ladą."
+   "Lobby planuje się jednocześnie jako pierwsze wrażenie gościa i jako miejsce pracy personelu. Ladę recepcyjną ustawia się tak, żeby recepcjonista widział wejście i windy, a gość od razu wiedział, dokąd iść. Obok potrzebne są miejsce na bagaż, strefa oczekiwania i pokój zaplecza za ladą."
   ],
   [
    "p",
@@ -112,11 +113,11 @@
   ],
   [
    "h2",
-   "Restauracja i śniadania"
+   "Jak zaplanować restaurację i śniadania w hotelu?"
   ],
   [
    "p",
-   "Restauracja w hotelu ma dwie grupy odbiorców: gości na śniadaniu i odwiedzających z miasta wieczorem. Ci drudzy potrzebują osobnego wejścia z ulicy albo widocznej drogi przez lobby, inaczej sala po śniadaniu będzie stała pusta."
+   "Restaurację w hotelu planuje się dla dwóch grup: gości na śniadaniu i odwiedzających z miasta wieczorem. Ci drudzy potrzebują osobnego wejścia z ulicy albo widocznej drogi przez lobby, inaczej sala po śniadaniu będzie stała pusta."
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Ile kosztuje projekt hotelu i jak pracujemy"
+   "Ile kosztuje projekt hotelu i jak pracujemy?"
   ],
   [
    "p",

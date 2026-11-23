@@ -6,7 +6,8 @@
  "seo_title": "Remote renovation in Ukraine: contract, payment, control",
  "description": "Remote renovation while you are abroad: what to put in the contract, how to pay from abroad, how to follow the site online and accept the works without a trip.",
  "lead": "The apartment or house is in Ukraine, while you live in another country and visit once every few months. A remote renovation is possible in this situation if every decision is fixed on paper and the progress of the works is visible without travelling. Here is how to organise the contract, payment from abroad and control of the site.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/en/online-site-control",
   "Online site control"
@@ -17,11 +18,11 @@
  "body": [
   [
    "h2",
-   "Remote renovation: what to prepare before the start"
+   "What should you prepare before a remote renovation starts?"
   ],
   [
    "p",
-   "From a distance you cannot drop in and point to where a socket should go. That is why a remote renovation rests on the design: layout, electrics, plumbing, wall elevations and a materials specification. The more detailed the design, the fewer questions arise in the middle of the works. The design project itself can also be done online — see the page on [design and renovation across Ukraine](/en/design-renovation-ukraine)."
+   "A remote renovation needs a detailed design before it starts, because from a distance you cannot drop in and point to where a socket should go. That is why a remote renovation rests on the design: layout, electrics, plumbing, wall elevations and a materials specification. The more detailed the design, the fewer questions arise in the middle of the works. The design project itself can also be done online — see the page on [design and renovation across Ukraine](/en/design-renovation-ukraine). How to follow the works without travelling is shown on the [online control of renovation and construction](/en/online-site-control) page."
   ],
   [
    "p",
@@ -37,7 +38,7 @@
   ],
   [
    "h2",
-   "The contract: what to write down when you are not nearby"
+   "What should the contract say if you are not around?"
   ],
   [
    "p",
@@ -58,15 +59,15 @@
   ],
   [
    "p",
-   "CAS formalises renovation and construction with a contract for works; for foreign clients we prepare the contract in English. We send a sample on request, so you can read it calmly before signing. How the document is structured is described on the [contract, warranty and payment](/en/contract-warranty-payment) page."
+   "CAS formalises renovation and construction with a contract for works; for foreign clients we prepare the contract in English. How the document is structured is described on the [contract, warranty and payment](/en/contract-warranty-payment) page."
   ],
   [
    "h2",
-   "Payment from abroad"
+   "How do you pay for a renovation from abroad?"
   ],
   [
    "p",
-   "Payment is divided into parts under the schedule in the contract: 50/50, 50/30/20, 50/40/10, or a stage-by-stage split starting from a 10% advance. Payments are tied to stage certificates, so you can always see exactly what you are paying for."
+   "From abroad, the renovation is paid in parts under the schedule in the contract: 50/50, 50/30/20, 50/40/10, or a stage-by-stage split starting from a 10% advance. Payments are tied to stage certificates, so you can always see exactly what you are paying for."
   ],
   [
    "p",
@@ -86,11 +87,11 @@
   ],
   [
    "h2",
-   "Control: what you can see online"
+   "How do you control a renovation online?"
   ],
   [
    "p",
-   "A CAS client sees their project in the client account on the website. You sign in with Telegram, Google or a phone number; the account works in ten languages. Inside:"
+   "A renovation is controlled online through photo reports, stage certificates and the client account on the website. You sign in with Telegram, Google or a phone number; the account works in ten languages. Inside:"
   ],
   [
    "ul",
@@ -103,7 +104,7 @@
   ],
   [
    "p",
-   "If you want to see the site at any moment, for an extra fee we install a 24/7 camera; only you have the link to the stream. The demo on the [online site control](/en/online-site-control) page shows what the account looks like."
+   "If you want to see the site at any moment, for an extra fee we install a 24/7 camera; only you have the link to the stream. The demo on the online site control page shows what the account looks like."
   ],
   [
    "p",
@@ -116,7 +117,7 @@
   ],
   [
    "h2",
-   "Materials and furniture without you being present"
+   "How are materials and furniture agreed without you on site?"
   ],
   [
    "p",
@@ -133,11 +134,11 @@
   ],
   [
    "h2",
-   "Acceptance of the works and the warranty"
+   "How are the works accepted from a distance, and what is the warranty?"
   ],
   [
    "p",
-   "We hand over stages against certificates, and accept concealed works before they are covered, recording them in photos. The final acceptance is best done in person: come for a day or two, walk through the apartment with the design in hand and sign the certificate. If you cannot come, your representative can accept the works. The [renovation handover checklist](/en/blog/apartment-renovation-handover-checklist) tells you what to check. The works carry a 12-month warranty from the day the final certificate is signed."
+   "We hand over stages against certificates, and accept concealed works before they are covered, recording them in photos. The final acceptance is best done in person: come for a day or two, walk through the apartment with the design in hand and sign the certificate. If you cannot come, your representative can accept the works. The [renovation handover checklist](/en/blog/apartment-renovation-handover-checklist) tells you what to check. The works carry a 12-month warranty."
   ],
   [
    "h2",
@@ -159,11 +160,11 @@
   ],
   [
    "How do I follow the renovation from a distance?",
-   "The client account shows the stages with a completion percentage, photo reports every 1–2 weeks, documents and the payment schedule. A 24/7 camera on site is available for an extra fee."
+   "Through photo reports every 1–2 weeks and stage certificates; the client account on the website shows the stages with a completion percentage, photos, documents and the payment schedule. A 24/7 camera on site is available for an extra fee."
   ],
   [
-   "Can the contract be signed in English?",
-   "Yes, for foreign clients we prepare the contract in English. We will send a sample on request."
+   "Can the contract be drawn up in English?",
+   "Yes, for foreign clients we prepare the contract in English."
   ]
  ]
 }

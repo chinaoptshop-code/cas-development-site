@@ -6,7 +6,8 @@
  "seo_title": "New-build apartment renovation: 8 costly mistakes",
  "description": "Renovating a new-build apartment in Kyiv: 8 mistakes that are expensive to fix, from starting without a design to misplaced sockets. Renovation from $550/m².",
  "lead": "A new apartment looks like an easy job: the walls are straight, the pipes are fresh and there is nothing to demolish. But the mistakes are built in during the first weeks and only show once everything is covered with tiles and paint. We go through eight mistakes that force a new-build apartment renovation in Kyiv to be redone, and explain how to avoid each one.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/en/new-build-renovation",
   "New-build apartment renovation"
@@ -16,7 +17,11 @@
  "body": [
   [
    "h2",
-   "Before the start: the design and an inspection of the apartment"
+   "Which mistakes are made before the renovation even starts?"
+  ],
+  [
+   "p",
+   "Before the start, two mistakes cost the most: starting without a design and not inspecting the apartment after the developer. How the renovation itself runs is described on the [new-build apartment renovation](/en/new-build-renovation) page."
   ],
   [
    "h3",
@@ -36,7 +41,11 @@
   ],
   [
    "h2",
-   "Building services: what you will not see later"
+   "Which building-services mistakes are the most expensive to fix?"
+  ],
+  [
+   "p",
+   "In building services, the costliest things to fix are wiring and plumbing laid out without a furniture plan, and savings on waterproofing and concealed works: later, all of it is hidden under the finishes."
   ],
   [
    "h3",
@@ -61,7 +70,11 @@
   ],
   [
    "h2",
-   "Timing and the sequence of works"
+   "What goes wrong with timing and the sequence of works?"
+  ],
+  [
+   "p",
+   "Timing goes wrong in two ways: settlement and curing pauses are ignored, and furniture and doors are ordered only after the renovation."
   ],
   [
    "h3",
@@ -86,7 +99,11 @@
   ],
   [
    "h2",
-   "Money, the contract and the building rules"
+   "What goes wrong with the estimate, the contract and the building rules?"
+  ],
+  [
+   "p",
+   "There are two mistakes here: accepting an estimate without quantities and not finding out the building’s renovation rules."
   ],
   [
    "h3",
@@ -120,7 +137,11 @@
   ],
   [
    "h2",
-   "A short checklist before the start"
+   "What should you check before the renovation starts?"
+  ],
+  [
+   "p",
+   "Before a new-build renovation starts, check six points:"
   ],
   [
    "ol",

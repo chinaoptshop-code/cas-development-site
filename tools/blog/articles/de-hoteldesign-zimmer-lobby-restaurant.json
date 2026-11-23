@@ -5,7 +5,8 @@
  "translation_of": "dyzain-hotelu-nomernyi-fond-lobi",
  "description": "Hoteldesign: Standardzimmer, Musterzimmer vor der Serie, strapazierfähige Materialien, Lobby und Restaurant. Was vor dem Stil zu klären ist. Design ab $30/m².",
  "lead": "Im Hotel wird Design in Geld gerechnet: wie viele Minuten die Reinigung eines Zimmers dauert, wie viele Jahre der Belag im Flur hält, ob ein Passant von der Straße ins Restaurant kommt. Wir zeigen, wie Hoteldesign aufgebaut ist, vom Standardzimmer bis zu Lobby und Restaurant, und was Sie klären sollten, bevor Sie einen Stil wählen.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/de/hoteldesign",
   "Hoteldesign und schlüsselfertige Ausstattung"
@@ -16,11 +17,11 @@
  "body": [
   [
    "h2",
-   "Womit Hoteldesign beginnt"
+   "Womit beginnt Hoteldesign?"
   ],
   [
    "p",
-   "Die erste Frage lautet: Wer ist der Gast, und wie lange bleibt er? Der Geschäftsreisende für eine Nacht, die Familie für eine Woche und das Paar fürs Wochenende erwarten vom Zimmer Unterschiedliches: einen Schreibtisch, eine Kitchenette oder eine Badewanne mit Aussicht. Von der Antwort hängen die Zimmertypen, die Fläche der öffentlichen Bereiche und das Budget pro Zimmer ab. Der Stil wird erst danach gewählt."
+   "Hoteldesign beginnt beim Gast: Wer ist er, und wie lange bleibt er? Der Geschäftsreisende für eine Nacht, die Familie für eine Woche und das Paar fürs Wochenende erwarten vom Zimmer Unterschiedliches: einen Schreibtisch, eine Kitchenette oder eine Badewanne mit Aussicht. Von der Antwort hängen die Zimmertypen, die Fläche der öffentlichen Bereiche und das Budget pro Zimmer ab. Der Stil wird erst danach gewählt. Wie wir solche Projekte betreuen, beschreibt die Seite [Hoteldesign und schlüsselfertige Ausstattung](/de/hoteldesign)."
   ],
   [
    "p",
@@ -38,7 +39,7 @@
   ],
   [
    "h2",
-   "Das Standardzimmer: ein Schema für den gesamten Zimmerbestand"
+   "Wie entwirft man ein Standardzimmer für den gesamten Zimmerbestand?"
   ],
   [
    "p",
@@ -61,11 +62,11 @@
   ],
   [
    "h2",
-   "Das Musterzimmer vor der Serie"
+   "Wozu ein Musterzimmer vor der Serie?"
   ],
   [
    "p",
-   "Bevor Möbel für das ganze Hotel bestellt werden, lohnt es sich, ein Zimmer komplett fertigzustellen: mit Oberflächen, Möbeln, Licht und Textilien. Darin wird geprüft, was die Visualisierung nicht zeigt. Kann die Reinigungskraft bequem die Wäsche wechseln und unter dem Bett wischen, schlagen die Schranktüren an die Eingangstür, wie wirkt das Licht am Abend, reichen die Haken?"
+   "Ein Musterzimmer zeigt Fehler, bevor sie sich in jedem Zimmer wiederholen; deshalb lohnt es sich, vor der Möbelbestellung für das ganze Hotel ein Zimmer komplett fertigzustellen: mit Oberflächen, Möbeln, Licht und Textilien. Darin wird geprüft, was die Visualisierung nicht zeigt. Kann die Reinigungskraft bequem die Wäsche wechseln und unter dem Bett wischen, schlagen die Schranktüren an die Eingangstür, wie wirkt das Licht am Abend, reichen die Haken?"
   ],
   [
    "p",
@@ -73,11 +74,11 @@
   ],
   [
    "h2",
-   "Materialien, die ein Hotel aushalten"
+   "Welche Materialien halten den Hotelbetrieb aus?"
   ],
   [
    "p",
-   "Ein Hotelzimmer verschleißt schneller als eine Wohnung: Koffer, Etagenwagen, häufige Reinigung. Deshalb wählt man Materialien danach aus, wie sie altern und wie sie sich reinigen lassen."
+   "Ein Hotel braucht Materialien, die sich leicht reinigen lassen und langsam verschleißen, denn ein Hotelzimmer verschleißt schneller als eine Wohnung: Koffer, Etagenwagen, häufige Reinigung. Deshalb wählt man Materialien danach aus, wie sie altern und wie sie sich reinigen lassen."
   ],
   [
    "ul",
@@ -95,11 +96,11 @@
   ],
   [
    "h2",
-   "Lobby und Rezeption"
+   "Wie plant man Lobby und Rezeption?"
   ],
   [
    "p",
-   "Die Lobby sorgt für den ersten Eindruck und ist zugleich Arbeitsplatz des Personals. Der Empfangstresen steht so, dass der Rezeptionist Eingang und Aufzüge im Blick hat und der Gast sofort versteht, wohin er gehen muss. Daneben braucht es Platz für Gepäck, einen Wartebereich und ein Backoffice hinter dem Tresen."
+   "Die Lobby wird zugleich als erster Eindruck für den Gast und als Arbeitsplatz des Personals geplant. Der Empfangstresen steht so, dass der Rezeptionist Eingang und Aufzüge im Blick hat und der Gast sofort versteht, wohin er gehen muss. Daneben braucht es Platz für Gepäck, einen Wartebereich und ein Backoffice hinter dem Tresen."
   ],
   [
    "p",
@@ -112,11 +113,11 @@
   ],
   [
    "h2",
-   "Restaurant und Frühstück"
+   "Wie plant man Restaurant und Frühstück im Hotel?"
   ],
   [
    "p",
-   "Ein Hotelrestaurant hat zwei Zielgruppen: Hausgäste beim Frühstück und Besucher aus der Stadt am Abend. Für Letztere braucht es einen eigenen Eingang von der Straße oder einen gut sichtbaren Weg durch die Lobby, sonst steht der Gastraum nach dem Frühstück leer."
+   "Ein Hotelrestaurant plant man für zwei Zielgruppen: Hausgäste beim Frühstück und Besucher aus der Stadt am Abend. Für Letztere braucht es einen eigenen Eingang von der Straße oder einen gut sichtbaren Weg durch die Lobby, sonst steht der Gastraum nach dem Frühstück leer."
   ],
   [
    "p",
@@ -129,7 +130,7 @@
   ],
   [
    "h2",
-   "Was Hoteldesign kostet und wie wir arbeiten"
+   "Was kostet Hoteldesign, und wie arbeiten wir?"
   ],
   [
    "p",

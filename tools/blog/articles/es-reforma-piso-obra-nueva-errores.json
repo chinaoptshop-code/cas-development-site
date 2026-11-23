@@ -6,7 +6,8 @@
  "seo_title": "Reforma de piso de obra nueva: 8 errores caros",
  "description": "Reforma de un piso de obra nueva en Kiev: 8 errores que sale caro corregir, desde empezar sin proyecto hasta enchufes mal situados. Reforma desde $550/m².",
  "lead": "Un piso nuevo parece una obra sencilla: las paredes están rectas, las tuberías son recientes y no hay nada que demoler. Pero los errores se cometen en las primeras semanas y solo se ven cuando todo está ya tapado con azulejo y pintura. Repasamos ocho errores por los que la reforma de un piso de obra nueva en Kiev acaba teniendo que rehacerse y explicamos cómo evitar cada uno.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/es/reforma-obra-nueva",
   "Reforma de piso de obra nueva"
@@ -16,7 +17,11 @@
  "body": [
   [
    "h2",
-   "Antes de empezar: proyecto y revisión del piso"
+   "¿Qué errores se cometen antes incluso de empezar?"
+  ],
+  [
+   "p",
+   "Antes de empezar, los dos errores más caros son arrancar sin proyecto y no revisar el piso que entrega la promotora. Cómo transcurre la propia reforma lo describimos en la página [reforma de piso de obra nueva](/es/reforma-obra-nueva)."
   ],
   [
    "h3",
@@ -36,7 +41,11 @@
   ],
   [
    "h2",
-   "Instalaciones: lo que después no se ve"
+   "¿Qué errores en las instalaciones son los más caros de corregir?"
+  ],
+  [
+   "p",
+   "En las instalaciones, lo más caro de corregir es la distribución hecha sin plano de muebles y el ahorro en impermeabilización y trabajos ocultos: después todo queda tapado por los acabados."
   ],
   [
    "h3",
@@ -61,7 +70,11 @@
   ],
   [
    "h2",
-   "Plazos y orden de los trabajos"
+   "¿Qué errores se cometen con los plazos y el orden de los trabajos?"
+  ],
+  [
+   "p",
+   "Con los plazos se falla dos veces: no se tienen en cuenta el asentamiento ni las pausas de secado, y los muebles y las puertas se encargan solo después de la reforma."
   ],
   [
    "h3",
@@ -86,7 +99,11 @@
   ],
   [
    "h2",
-   "Dinero, contrato y normas del edificio"
+   "¿Qué errores se cometen con el presupuesto, el contrato y las normas del edificio?"
+  ],
+  [
+   "p",
+   "Aquí hay dos errores: aceptar un presupuesto sin cantidades y no informarse de las normas del edificio para las obras."
   ],
   [
    "h3",
@@ -120,7 +137,11 @@
   ],
   [
    "h2",
-   "Lista de comprobación breve antes de empezar"
+   "¿Qué comprobar antes de empezar la reforma?"
+  ],
+  [
+   "p",
+   "Antes de empezar la reforma de un piso de obra nueva, comprueba seis puntos:"
   ],
   [
    "ol",

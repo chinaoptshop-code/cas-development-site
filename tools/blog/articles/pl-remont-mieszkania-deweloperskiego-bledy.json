@@ -6,7 +6,8 @@
  "seo_title": "Remont mieszkania deweloperskiego: 8 kosztownych błędów",
  "description": "Remont mieszkania deweloperskiego w Kijowie: 8 błędów, które drogo się naprawia — od startu bez projektu po gniazdka nie pod meble. Remont od $550/m².",
  "lead": "Nowe mieszkanie wygląda na prosty obiekt: ściany równe, rury świeże, niczego nie trzeba wyburzać. Błędy popełnia się jednak w pierwszych tygodniach, a widać je dopiero wtedy, gdy wszystko jest już zakryte płytkami i farbą. Omawiamy osiem błędów, przez które remont mieszkania deweloperskiego w Kijowie trzeba poprawiać, i wyjaśniamy, jak uniknąć każdego z nich.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/pl/remont-mieszkania-deweloperskiego",
   "Remont mieszkania deweloperskiego"
@@ -16,7 +17,11 @@
  "body": [
   [
    "h2",
-   "Przed startem: projekt i sprawdzenie mieszkania"
+   "Jakie błędy popełnia się jeszcze przed startem remontu?"
+  ],
+  [
+   "p",
+   "Przed startem najwięcej kosztują dwa błędy: zacząć bez projektu i nie sprawdzić mieszkania po deweloperze. Jak przebiega sam remont, opisujemy na stronie [remont mieszkania deweloperskiego](/pl/remont-mieszkania-deweloperskiego)."
   ],
   [
    "h3",
@@ -36,7 +41,11 @@
   ],
   [
    "h2",
-   "Instalacje: to, czego potem nie widać"
+   "Których błędów w instalacjach naprawa kosztuje najwięcej?"
+  ],
+  [
+   "p",
+   "W instalacjach najdrożej poprawia się rozprowadzenie bez planu mebli i oszczędności na hydroizolacji i pracach zakrytych: potem wszystko jest pod wykończeniem."
   ],
   [
    "h3",
@@ -61,7 +70,11 @@
   ],
   [
    "h2",
-   "Terminy i kolejność prac"
+   "Jakie błędy popełnia się przy terminach i kolejności prac?"
+  ],
+  [
+   "p",
+   "Przy terminach myli się dwa razy: nie uwzględnia się osiadania i przerw technologicznych oraz zamawia meble i drzwi dopiero po remoncie."
   ],
   [
    "h3",
@@ -86,7 +99,11 @@
   ],
   [
    "h2",
-   "Pieniądze, umowa i regulamin budynku"
+   "Jakie błędy popełnia się przy kosztorysie, umowie i regulaminie budynku?"
+  ],
+  [
+   "p",
+   "Tu są dwa błędy: zgodzić się na kosztorys bez ilości i nie sprawdzić regulaminu remontów w budynku."
   ],
   [
    "h3",
@@ -120,7 +137,11 @@
   ],
   [
    "h2",
-   "Krótka lista kontrolna przed startem"
+   "Co sprawdzić przed startem remontu?"
+  ],
+  [
+   "p",
+   "Przed startem remontu mieszkania deweloperskiego sprawdź sześć punktów:"
   ],
   [
    "ol",

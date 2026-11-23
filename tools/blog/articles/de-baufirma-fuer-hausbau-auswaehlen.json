@@ -6,7 +6,8 @@
  "seo_title": "Baufirma für den Hausbau bei Kyjiw auswählen",
  "description": "Baufirma für ein Haus in Kyjiw und Umgebung auswählen: was am Quadratmeterpreis zu vergleichen ist, was im Vertrag stehen muss. Rohbau ab $600/m².",
  "lead": "Ein Haus baut man einmal, den Auftragnehmer aber wählt man aus einem Dutzend ähnlicher Angebote mit einem „ab“-Preis pro Quadratmeter. Wir zeigen, wie Sie eine Baufirma für ein Haus in Kyjiw oder im Umland auswählen: was in den Kostenvoranschlägen zu vergleichen ist, was im Vertrag stehen muss und wie sich die Zahlung an Etappen binden lässt.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/de/hausbau",
   "Hausbau"
@@ -17,15 +18,15 @@
  "body": [
   [
    "h2",
-   "Erst das Projekt, dann der Auftragnehmer"
+   "Warum braucht man das Projekt vor dem Auftragnehmer?"
   ],
   [
    "p",
-   "Ohne Projekt kalkuliert jede Firma ihr eigenes Haus: Die eine setzt ein Streifenfundament an, die andere eine Bodenplatte, die dritte lässt die Decken weg. Solche Angebote sind nicht vergleichbar. Eine Architekturplanung mit Tragwerksplanung liefert die Mengen: wie viel Beton, Steine und Bewehrung, welches Dach. Damit können Sie dieselbe Anfrage an mehrere Firmen schicken und erhalten Kostenvoranschläge, die sich wirklich nebeneinanderlegen lassen."
+   "Das Projekt kommt vor dem Auftragnehmer, denn ohne Projekt kalkuliert jede Firma ihr eigenes Haus: Die eine setzt ein Streifenfundament an, die andere eine Bodenplatte, die dritte lässt die Decken weg. Solche Angebote sind nicht vergleichbar. Eine Architekturplanung mit Tragwerksplanung liefert die Mengen: wie viel Beton, Steine und Bewehrung, welches Dach. Damit können Sie dieselbe Anfrage an mehrere Firmen schicken und erhalten Kostenvoranschläge, die sich wirklich nebeneinanderlegen lassen."
   ],
   [
    "p",
-   "Bei CAS kostet die Architekturplanung eines Hauses ab $12/m²: Entwurfs- und Ausführungsplanung mit Architektur- und Tragwerksplanung; Fachplanungen der Haustechnik und der Lageplan kommen nach Aufgabenstellung hinzu. Liegt bereits ein Projekt vor, wird der Kostenvoranschlag danach erstellt. Den Umfang der Unterlagen haben wir im Artikel [Hausplanung: was dazugehört](/de/blog/hausplanung-was-gehoert-dazu-und-was-kostet-sie) erläutert."
+   "Bei CAS kostet die Architekturplanung eines Hauses ab $12/m²: Entwurfs- und Ausführungsplanung mit Architektur- und Tragwerksplanung; Fachplanungen der Haustechnik und der Lageplan kommen nach Aufgabenstellung hinzu. Liegt bereits ein Projekt vor, wird der Kostenvoranschlag danach erstellt. Den Umfang der Unterlagen haben wir im Artikel [Hausplanung: was dazugehört](/de/blog/hausplanung-was-gehoert-dazu-und-was-kostet-sie) erläutert. Was und wie wir bauen, beschreibt die Seite [Schlüsselfertiger Hausbau in Kyjiw und Umgebung](/de/hausbau)."
   ],
   [
    "img",
@@ -34,11 +35,11 @@
   ],
   [
    "h2",
-   "Wie man den Baupreis pro Quadratmeter vergleicht"
+   "Wie vergleicht man den Baupreis pro Quadratmeter?"
   ],
   [
    "p",
-   "„Rohbau“ und „schlüsselfertig“ bedeuten bei jeder Firma einen anderen Leistungsumfang; eine nackte Zahl pro Quadratmeter zu vergleichen, ergibt daher keinen Sinn. Bitten Sie jeden Auftragnehmer, schriftlich zu beantworten, ob im Preis enthalten sind:"
+   "Einen Quadratmeterpreis kann man nur zusammen mit dem Leistungsverzeichnis vergleichen, denn „Rohbau“ und „schlüsselfertig“ bedeuten bei jeder Firma einen anderen Umfang. Bitten Sie jeden Auftragnehmer, schriftlich zu beantworten, ob im Preis enthalten sind:"
   ],
   [
    "ul",
@@ -53,11 +54,15 @@
   ],
   [
    "p",
-   "Zur Orientierung: Bei CAS kostet der Rohbau ab $600/m². Das umfasst die Vorbereitung des Grundstücks, das Fundament, tragende Wände und Trennwände, Decken, Dach und Leerrohre für die Haustechnik. Ein schlüsselfertiges Haus mit thermischer Hülle, Haustechnik und Innenausbau kostet ab $1 100/m². Für ein Haus mit 150 m² liegt die Untergrenze bei: Rohbau — ab $90 000 (150 × $600 = $90 000), schlüsselfertig — ab $165 000 (150 × $1 100 = $165 000). Äußere Netze, Brunnen, Klärgrube, Möbel und Gartengestaltung werden separat berechnet. Mehr dazu im Artikel [Schlüsselfertiges Haus oder Rohbau](/de/blog/schluesselfertiges-haus-oder-rohbau)."
+   "Zur Orientierung: Bei CAS kostet der Rohbau ab $600/m². Das umfasst die Vorbereitung des Grundstücks, das Fundament, tragende Wände und Trennwände, Decken, Dach und Leerrohre für die Haustechnik. Ein schlüsselfertiges Haus mit thermischer Hülle, Haustechnik und Innenausbau kostet ab $1 100/m². Für ein Haus mit 150 m² liegt die Untergrenze bei: Rohbau — ab $90 000 (150 × $600 = $90 000), schlüsselfertig — ab $165 000 (150 × $1 100 = $165 000). Äußere Netze, Brunnen, Klärgrube, Möbel und Gartengestaltung werden separat berechnet. Mehr dazu im Artikel [Schlüsselfertiges Haus oder Rohbau](/de/blog/schluesselfertiges-haus-oder-rohbau). Der Satz hängt auch von der Bauweise ab: Im [Kostenrechner](/de/renovierungskosten-rechner?k=house) können Sie den Haustyp wählen, von Ziegel und Porenbeton bis Holzrahmen, Modul- oder Blockbohlenhaus, und sehen den Richtwert dafür."
   ],
   [
    "h2",
-   "Was Sie vor Vertragsschluss an der Firma prüfen sollten"
+   "Was sollten Sie vor Vertragsschluss an der Baufirma prüfen?"
+  ],
+  [
+   "p",
+   "Klären Sie vor dem Vertrag, wer unterschreibt, welche Objekte Sie sehen können, wer auf der Baustelle arbeitet und wie die Firma berichtet:"
   ],
   [
    "ul",
@@ -80,7 +85,11 @@
   ],
   [
    "h2",
-   "Vertrag mit der Baufirma: was schriftlich festgehalten sein muss"
+   "Was muss im Vertrag mit der Baufirma stehen?"
+  ],
+  [
+   "p",
+   "In den Vertrag gehören Projekt, Kostenvoranschlag mit Mengen, Etappenplan, Zahlung gegen Abnahmeprotokolle, Abnahme verdeckter Arbeiten und Gewährleistung:"
   ],
   [
    "ul",
@@ -106,7 +115,7 @@
   ],
   [
    "h2",
-   "Zahlung: Anzahlung und Etappen"
+   "Wie wird der Hausbau bezahlt?"
   ],
   [
    "p",
@@ -114,7 +123,11 @@
   ],
   [
    "h2",
-   "Warnsignale"
+   "Welche Warnsignale sollten Sie stutzig machen?"
+  ],
+  [
+   "p",
+   "Stutzig machen sollten ein Preis ohne Leistungsverzeichnis, der Verzicht auf ein Projekt und ein Vertrag ohne Kostenvoranschlag:"
   ],
   [
    "ul",

@@ -6,7 +6,8 @@
  "seo_title": "Como escolher a empresa para construir uma moradia",
  "description": "Como escolher uma empresa de construção para uma moradia em Kyiv e na região: o que comparar no preço por m², o que o contrato deve prever. Tosco desde $600/m².",
  "lead": "Uma casa constrói-se uma vez, mas o empreiteiro escolhe-se entre uma dúzia de propostas parecidas, com um preço «a partir de» por metro quadrado. Explicamos como escolher uma empresa de construção para uma moradia em Kyiv ou na região: o que comparar nos orçamentos, o que deve constar do contrato e como ligar o pagamento às etapas.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/pt/construcao-de-moradias",
   "Construção de moradias"
@@ -17,15 +18,15 @@
  "body": [
   [
    "h2",
-   "Primeiro o projeto, depois o empreiteiro"
+   "Porque é preciso o projeto antes do empreiteiro?"
   ],
   [
    "p",
-   "Sem projeto, cada empresa orçamenta a sua própria casa: uma prevê sapatas contínuas, outra um ensoleiramento, a terceira não conta as lajes. Não é possível comparar propostas assim. Um projeto de arquitetura com a parte de estruturas dá quantidades: quanto betão, quantos blocos, quanta armadura, que cobertura. Com ele, pode enviar-se o mesmo pedido a várias empresas e receber orçamentos que se conseguem realmente pôr lado a lado."
+   "O projeto vem antes do empreiteiro porque, sem ele, cada empresa orçamenta a sua própria casa: uma prevê sapatas contínuas, outra um ensoleiramento, a terceira não conta as lajes. Não é possível comparar propostas assim. Um projeto de arquitetura com a parte de estruturas dá quantidades: quanto betão, quantos blocos, quanta armadura, que cobertura. Com ele, pode enviar-se o mesmo pedido a várias empresas e receber orçamentos que se conseguem realmente pôr lado a lado."
   ],
   [
    "p",
-   "Na CAS, o projeto de arquitetura de uma moradia custa a partir de $12/m²: estudo prévio e projeto de execução com arquitetura e estruturas; as especialidades técnicas e a planta de implantação são acrescentadas conforme o programa. Se já existir projeto, o orçamento é feito a partir dele. Analisámos o conteúdo da documentação no artigo [projeto de moradia: o que inclui](/pt/blog/projeto-de-moradia-o-que-inclui-e-quanto-custa)."
+   "Na CAS, o projeto de arquitetura de uma moradia custa a partir de $12/m²: estudo prévio e projeto de execução com arquitetura e estruturas; as especialidades técnicas e a planta de implantação são acrescentadas conforme o programa. Se já existir projeto, o orçamento é feito a partir dele. Analisámos o conteúdo da documentação no artigo [projeto de moradia: o que inclui](/pt/blog/projeto-de-moradia-o-que-inclui-e-quanto-custa). O que construímos e como está descrito na página [construção de moradias chave na mão em Kyiv e na região](/pt/construcao-de-moradias)."
   ],
   [
    "img",
@@ -34,11 +35,11 @@
   ],
   [
    "h2",
-   "Como comparar o preço de construção por metro quadrado"
+   "Como comparar o preço de construção por metro quadrado?"
   ],
   [
    "p",
-   "«Tosco» e «chave na mão» significam, em cada empresa, um conjunto diferente de trabalhos, pelo que não faz sentido comparar apenas o número por metro quadrado. Convém pedir a cada empreiteiro que responda por escrito se o preço inclui:"
+   "O preço por metro quadrado só se compara com a lista de trabalhos ao lado, porque «tosco» e «chave na mão» significam coisas diferentes em cada empresa. Convém pedir a cada empreiteiro que responda por escrito se o preço inclui:"
   ],
   [
    "ul",
@@ -53,11 +54,15 @@
   ],
   [
    "p",
-   "Como referência: na CAS, a estrutura em tosco custa a partir de $600/m². Inclui a preparação do terreno, as fundações, as paredes resistentes e divisórias, as lajes, a cobertura e as passagens para as redes. Uma moradia chave na mão, com envolvente térmica, redes interiores e acabamentos, custa a partir de $1 100/m². Para uma moradia de 150 m², o limite inferior é: tosco — a partir de $90 000 (150 × $600 = $90 000), chave na mão — a partir de $165 000 (150 × $1 100 = $165 000). As redes exteriores, o furo, a fossa séptica, o mobiliário e o paisagismo são calculados à parte. Mais informação no artigo [moradia chave na mão ou em tosco](/pt/blog/moradia-chave-na-mao-ou-em-tosco)."
+   "Como referência: na CAS, a estrutura em tosco custa a partir de $600/m². Inclui a preparação do terreno, as fundações, as paredes resistentes e divisórias, as lajes, a cobertura e as passagens para as redes. Uma moradia chave na mão, com envolvente térmica, redes interiores e acabamentos, custa a partir de $1 100/m². Para uma moradia de 150 m², o limite inferior é: tosco — a partir de $90 000 (150 × $600 = $90 000), chave na mão — a partir de $165 000 (150 × $1 100 = $165 000). As redes exteriores, o furo, a fossa séptica, o mobiliário e o paisagismo são calculados à parte. Mais informação no artigo [moradia chave na mão ou em tosco](/pt/blog/moradia-chave-na-mao-ou-em-tosco). A tarifa depende também da tecnologia: na [calculadora de custos](/pt/calculadora-obras?k=house) pode escolher o tipo de moradia, do tijolo e do betão celular à estrutura em madeira, ao modular ou à madeira maciça, e ver o valor de referência."
   ],
   [
    "h2",
-   "O que verificar na empresa antes do contrato"
+   "O que verificar numa empresa de construção antes do contrato?"
+  ],
+  [
+   "p",
+   "Antes do contrato, saiba quem o assina, que obras pode ver, quem trabalha na obra e como a empresa reporta:"
   ],
   [
    "ul",
@@ -80,7 +85,11 @@
   ],
   [
    "h2",
-   "Contrato com a empresa de construção: o que deve ficar escrito"
+   "O que deve ficar escrito no contrato com a empresa de construção?"
+  ],
+  [
+   "p",
+   "O contrato deve incluir o projeto, um orçamento com quantidades, o calendário das etapas, pagamentos contra autos, a receção dos trabalhos ocultos e a garantia:"
   ],
   [
    "ul",
@@ -106,7 +115,7 @@
   ],
   [
    "h2",
-   "Pagamento: adiantamento e etapas"
+   "Como se paga a construção de uma moradia?"
   ],
   [
    "p",
@@ -114,7 +123,11 @@
   ],
   [
    "h2",
-   "Sinais de alerta"
+   "Que sinais devem deixá-lo de pé atrás?"
+  ],
+  [
+   "p",
+   "Devem deixá-lo de pé atrás um preço sem lista de trabalhos, a recusa de um projeto e um contrato sem orçamento:"
   ],
   [
    "ul",

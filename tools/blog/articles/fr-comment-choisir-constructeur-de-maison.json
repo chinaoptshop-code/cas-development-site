@@ -6,7 +6,8 @@
  "seo_title": "Choisir un constructeur de maison près de Kyiv",
  "description": "Comment choisir un constructeur de maison à Kyiv et dans sa région : que comparer dans le prix au m², que doit prévoir le contrat. Gros œuvre dès $600/m².",
  "lead": "On ne construit sa maison qu’une fois, mais on choisit l’entreprise parmi une dizaine d’offres semblables affichant un prix « à partir de » au mètre carré. Voici comment choisir un constructeur de maison à Kyiv ou dans sa région : que comparer dans les devis, que doit contenir le contrat et comment lier le paiement aux étapes.",
- "date": "2026-11-20",
+ "date": "2026-11-23",
+ "modified": "2026-11-23",
  "service": [
   "/fr/construction-maison",
   "Construction de maison"
@@ -17,15 +18,15 @@
  "body": [
   [
    "h2",
-   "D’abord le projet, ensuite l’entreprise"
+   "Pourquoi faut-il le projet avant l’entreprise ?"
   ],
   [
    "p",
-   "Sans projet, chaque entreprise chiffre sa propre maison : l’une prévoit des semelles filantes, l’autre un radier, la troisième ne compte pas les planchers. Impossible de comparer de telles offres. Un projet architectural avec son volet structure donne des quantités : combien de béton, de blocs, d’armatures, quelle couverture. Avec lui, vous pouvez adresser la même demande à plusieurs entreprises et recevoir des devis que l’on peut réellement poser côte à côte."
+   "Le projet passe avant l’entreprise, car sans lui chaque entreprise chiffre sa propre maison : l’une prévoit des semelles filantes, l’autre un radier, la troisième ne compte pas les planchers. Impossible de comparer de telles offres. Un projet architectural avec son volet structure donne des quantités : combien de béton, de blocs, d’armatures, quelle couverture. Avec lui, vous pouvez adresser la même demande à plusieurs entreprises et recevoir des devis que l’on peut réellement poser côte à côte."
   ],
   [
    "p",
-   "Chez CAS, le projet architectural d’une maison coûte à partir de $12/m² : esquisse et dossier d’exécution avec plans d’architecture et de structure ; les lots techniques et le plan de masse s’ajoutent selon le cahier des charges. Si vous avez déjà un projet, le devis est établi d’après celui-ci. Nous avons détaillé le contenu du dossier dans l’article [projet de maison : contenu et prix](/fr/blog/projet-de-maison-contenu-et-prix)."
+   "Chez CAS, le projet architectural d’une maison coûte à partir de $12/m² : esquisse et dossier d’exécution avec plans d’architecture et de structure ; les lots techniques et le plan de masse s’ajoutent selon le cahier des charges. Si vous avez déjà un projet, le devis est établi d’après celui-ci. Nous avons détaillé le contenu du dossier dans l’article [projet de maison : contenu et prix](/fr/blog/projet-de-maison-contenu-et-prix). Ce que nous construisons et comment est décrit sur la page [construction de maisons clé en main à Kyiv et dans sa région](/fr/construction-maison)."
   ],
   [
    "img",
@@ -34,11 +35,11 @@
   ],
   [
    "h2",
-   "Comment comparer le prix de construction au mètre carré"
+   "Comment comparer le prix de construction au mètre carré ?"
   ],
   [
    "p",
-   "« Gros œuvre » et « clé en main » recouvrent des prestations différentes d’une entreprise à l’autre ; comparer un chiffre brut au mètre carré n’a donc pas de sens. Demandez à chaque entreprise de préciser par écrit si le prix comprend :"
+   "Un prix au mètre carré ne se compare qu’avec la liste des travaux, car « gros œuvre » et « clé en main » recouvrent des prestations différentes d’une entreprise à l’autre. Demandez à chaque entreprise de préciser par écrit si le prix comprend :"
   ],
   [
    "ul",
@@ -53,11 +54,15 @@
   ],
   [
    "p",
-   "À titre de repère : chez CAS, le gros œuvre coûte à partir de $600/m². Cela comprend la préparation du terrain, les fondations, les murs porteurs et les cloisons, les planchers, la couverture et les réservations pour les réseaux. Une maison clé en main, avec enveloppe thermique, réseaux intérieurs et finitions, coûte à partir de $1 100/m². Pour une maison de 150 m², le plancher est le suivant : gros œuvre — à partir de $90 000 (150 × $600 = $90 000), clé en main — à partir de $165 000 (150 × $1 100 = $165 000). Les réseaux extérieurs, le forage, la fosse septique, le mobilier et l’aménagement paysager sont chiffrés à part. Plus de détails dans l’article [maison clé en main ou gros œuvre](/fr/blog/maison-cle-en-main-ou-hors-d-eau)."
+   "À titre de repère : chez CAS, le gros œuvre coûte à partir de $600/m². Cela comprend la préparation du terrain, les fondations, les murs porteurs et les cloisons, les planchers, la couverture et les réservations pour les réseaux. Une maison clé en main, avec enveloppe thermique, réseaux intérieurs et finitions, coûte à partir de $1 100/m². Pour une maison de 150 m², le plancher est le suivant : gros œuvre — à partir de $90 000 (150 × $600 = $90 000), clé en main — à partir de $165 000 (150 × $1 100 = $165 000). Les réseaux extérieurs, le forage, la fosse septique, le mobilier et l’aménagement paysager sont chiffrés à part. Plus de détails dans l’article [maison clé en main ou gros œuvre](/fr/blog/maison-cle-en-main-ou-hors-d-eau). Le tarif dépend aussi de la technique : dans le [calculateur de coût](/fr/calculateur-renovation?k=house), vous pouvez choisir le type de maison, de la brique et du béton cellulaire à l’ossature bois, au modulaire ou au bois massif, et voir l’ordre de grandeur correspondant."
   ],
   [
    "h2",
-   "Que vérifier auprès de l’entreprise avant le contrat"
+   "Que vérifier auprès d’une entreprise de construction avant le contrat ?"
+  ],
+  [
+   "p",
+   "Avant le contrat, demandez qui signe, quels chantiers vous pouvez voir, qui travaille sur place et comment l’entreprise rend compte :"
   ],
   [
    "ul",
@@ -80,7 +85,11 @@
   ],
   [
    "h2",
-   "Le contrat avec le constructeur : ce qui doit être écrit"
+   "Que doit contenir le contrat avec l’entreprise de construction ?"
+  ],
+  [
+   "p",
+   "Le contrat doit contenir le projet, un devis avec quantités, un planning par étapes, des paiements sur procès-verbaux, la réception des travaux cachés et la garantie :"
   ],
   [
    "ul",
@@ -106,7 +115,7 @@
   ],
   [
    "h2",
-   "Paiement : acompte et étapes"
+   "Comment payer la construction d’une maison ?"
   ],
   [
    "p",
@@ -114,7 +123,11 @@
   ],
   [
    "h2",
-   "Signaux d’alerte"
+   "Quels signaux doivent vous alerter ?"
+  ],
+  [
+   "p",
+   "Un prix sans liste de travaux, un refus de travailler sur projet et un contrat sans devis doivent vous alerter :"
   ],
   [
    "ul",

@@ -334,8 +334,9 @@
    "/remont-novobudovy-kyiv",
    "Ремонт у новобудові"
   ],
-  "status": "draft",
-  "note": "20.11.2026: чернетка, гілка content/blog-2011, чекає ОК Михайла; ru-пара і переклади en, es, pl, de, fr, pt, zh, ar готові в гілці"
+  "status": "published",
+  "note": "23.11.2026: опубліковано 23.11.2026 (ОК Михайла 23.11.2026 «Блог публікуй»); ru-пара й переклади en, es, pl, de, fr, pt, zh, ar; гілка content/blog-2011",
+  "date": "2026-11-23"
  },
  {
   "lang": "uk",
@@ -832,8 +833,9 @@
    "/dyzain-hotelu-kyiv",
    "Дизайн і ремонт готелю"
   ],
-  "status": "draft",
-  "note": "SEO-аудит 25.10.2026: комерційний запит, сегмент від $5 000; 20.11.2026: чернетка, гілка content/blog-2011, чекає ОК Михайла; ru-пара і переклади en, es, pl, de, fr, pt, zh, ar готові в гілці"
+  "status": "published",
+  "note": "23.11.2026: опубліковано 23.11.2026 (ОК Михайла 23.11.2026 «Блог публікуй»); ru-пара й переклади en, es, pl, de, fr, pt, zh, ar; гілка content/blog-2011",
+  "date": "2026-11-23"
  },
  {
   "lang": "ru",
@@ -1818,11 +1820,11 @@
    "/en/interior-design-worldwide",
    "Interior design worldwide"
   ],
-  "status": "draft",
-  "note": "22.11.2026: чернетка — tools/blog/drafts/en-guest-room-renovation-cost.json (НЕ в articles/, щоб build-all не опублікував); GSC: /en/blog 61 показ, поз. ~9 без окремої статті. Після ОК Михайла — перенести в tools/blog/articles/, build.py, status published.",
-  "date": "2026-11-22"
-  },
-  {
+  "status": "published",
+  "note": "23.11.2026: опубліковано 23.11.2026 (ОК Михайла 23.11.2026 «Блог публікуй»); лише en, без uk-оригіналу (GSC: /en/blog без окремої статті)",
+  "date": "2026-11-23"
+ },
+ {
   "lang": "uk",
   "slug": "skilky-koshtuie-kvartyra-pid-kliuch-dyzain-remont-mebli",
   "title": "Скільки коштує квартира під ключ у Києві: дизайн, ремонт і меблі",
@@ -1831,8 +1833,9 @@
    "/vartist-remontu-kvartyry-kyiv",
    "Вартість ремонту квартири"
   ],
-  "status": "draft",
-  "note": "20.11.2026: чернетка, гілка content/blog-2011, чекає ОК Михайла; ru-пара і переклади en, es, pl, de, fr, pt, zh, ar готові в гілці"
+  "status": "published",
+  "note": "23.11.2026: опубліковано 23.11.2026 (ОК Михайла 23.11.2026 «Блог публікуй»); ru-пара й переклади en, es, pl, de, fr, pt, zh, ar; гілка content/blog-2011",
+  "date": "2026-11-23"
  },
  {
   "lang": "uk",
@@ -1843,8 +1846,9 @@
    "/budivnytstvo-budynkiv-kyiv",
    "Будівництво будинків"
   ],
-  "status": "draft",
-  "note": "20.11.2026: чернетка, гілка content/blog-2011, чекає ОК Михайла; ru-пара і переклади en, es, pl, de, fr, pt, zh, ar готові в гілці"
+  "status": "published",
+  "note": "23.11.2026: опубліковано 23.11.2026 (ОК Михайла 23.11.2026 «Блог публікуй»); ru-пара й переклади en, es, pl, de, fr, pt, zh, ar; гілка content/blog-2011",
+  "date": "2026-11-23"
  },
  {
   "lang": "uk",
@@ -1855,7 +1859,8 @@
    "/onlain-kontrol",
    "Онлайн-контроль обʼєкта"
   ],
-  "status": "draft",
-  "note": "20.11.2026: чернетка, гілка content/blog-2011, чекає ОК Михайла; ru-пара і переклади en, es, pl, de, fr, pt, zh, ar готові в гілці"
+  "status": "published",
+  "note": "23.11.2026: опубліковано 23.11.2026 (ОК Михайла 23.11.2026 «Блог публікуй»); ru-пара й переклади en, es, pl, de, fr, pt, zh, ar; гілка content/blog-2011",
+  "date": "2026-11-23"
  }
 ]
