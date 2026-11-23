@@ -359,4 +359,59 @@ await it('сумісність: база без 0015 — список працю
   eq((await call(oe, 'GET', '/api/admin/projects', { cookie: k })).data.projects.find(p => p.id === pid).contacts, []);
 });
 
+describe('Бот пошуку: запит чи реклама (functions/_leadintent.js)');
+const AD = '🎉 У СЕЛІ ВІДКРИВСЯ БУДМАРКЕТ! Запрошуємо сусідів до нашого магазину будівельних матеріалів! У нас ви знайдете все необхідне для ремонту, будівництва та домашніх справ. Заходьте знайомитися, будемо раді кожному!';
+await it('спільні приклади tools/leadbot/cases.json: вердикт сайту = вердикт бота', async () => {
+  const fs = await import('node:fs');
+  const { leadIntent } = await import('../../functions/_leadintent.js');
+  const cases = JSON.parse(fs.readFileSync(new URL('../leadbot/cases.json', import.meta.url)));
+  ok(cases.length >= 30);
+  for (const c of cases) eq(leadIntent(c.t).verdict, c.v, c.t.slice(0, 70));
+  eq(leadIntent('Шукаю роботу, електрик').kind, 'jobseek'); eq(leadIntent('Вакансія: продавець, зарплата 25 000').kind, 'vacancy');
+  eq(leadIntent(null).verdict, 'unclear');
+});
+await it('functions/_leadintent.js відповідає rules.json (python3 tools/leadbot/gen.py)', async () => {
+  const fs = await import('node:fs');
+  const js = fs.readFileSync(new URL('../../functions/_leadintent.js', import.meta.url), 'utf8');
+  const rules = JSON.parse(fs.readFileSync(new URL('../leadbot/rules.json', import.meta.url)));
+  for (const side of ['offer', 'request']) for (const r of rules[side]) ok(js.includes(JSON.stringify(r.re)), 'правило ' + r.id + ' є у згенерованому файлі');
+});
+await it('реклама магазину (Михайло 23.11.2026) → заявка НЕ створюється, сповіщення немає, hash — у bot_feedback', async () => {
+  bot.reset();
+  const before = (await q1("SELECT COUNT(*) AS n FROM orders WHERE source = 'finder'")).n;
+  const r = await botCall('POST', '/api/bot/leads', { hash: 'lead-ad-0001', service: 'Будинок', score: 70, estimate: 'за кошторисом', text: AD,
+    source_name: 'Чат громади', source_url: 'https://t.me/some_chat/481983', author: { name: 'Катерина' }, notify: true });
+  eq(r.status, 200); eq(r.data.skipped, true); eq(r.data.intent, 'offer'); eq(r.data.kind, 'ad'); ok(r.data.reasons.length >= 2); eq(r.data.number, undefined);
+  eq((await q1("SELECT COUNT(*) AS n FROM orders WHERE source = 'finder'")).n, before);
+  eq(bot.calls.filter(c => c.method === 'sendMessage').length, 0, 'адмінам нічого не надіслано');
+  const f = await q1("SELECT * FROM bot_feedback WHERE lead_hash = 'lead-ad-0001'");
+  eq(f.verdict, 'spam'); ok(/^авто: не клієнт/.test(f.reason));
+  const g = await botCall('GET', '/api/bot/feedback?since=2000-01-01');
+  ok(g.data.items.some(x => x.hash === 'lead-ad-0001'), 'бот бачить відсів у feedback');
+});
+await it('вакансія й «шукаю роботу» → теж не заявка; оцінка менеджера в bot_feedback не перезаписується', async () => {
+  eq((await botCall('POST', '/api/bot/leads', { text: 'Шукаємо працівників у бригаду, зарплата від 30 000', source_url: 'https://t.me/x/2' })).data.kind, 'vacancy');
+  eq((await botCall('POST', '/api/bot/leads', { text: 'Шукаю роботу, електрик з досвідом', source_url: 'https://t.me/x/3' })).data.kind, 'jobseek');
+  await botCall('POST', '/api/bot/feedback', { hash: 'lead-ad-0002', verdict: 'interesting', reason: 'менеджер: цікаво' });
+  await botCall('POST', '/api/bot/leads', { hash: 'lead-ad-0002', text: AD, source_url: 'https://t.me/x/4' });
+  eq((await q1("SELECT verdict FROM bot_feedback WHERE lead_hash = 'lead-ad-0002'")).verdict, 'interesting');
+});
+await it('force: true (людина свідомо натиснула «В CRM») → заявка створюється з позначкою; force не boolean → 400', async () => {
+  const r = await botCall('POST', '/api/bot/leads', { hash: 'lead-ad-0003', text: AD, source_url: 'https://t.me/x/5', force: true });
+  eq(r.status, 200); ok(/^LD-/.test(r.data.number)); eq(r.data.intent, 'offer');
+  ok(/Намір: схоже на рекламу — додано вручну/.test((await q1('SELECT comment FROM orders WHERE id = ?', r.data.id)).comment));
+  eq((await botCall('POST', '/api/bot/leads', { text: AD, source_url: 'https://t.me/x/6', force: 'yes' })).status, 400);
+});
+await it('справжній запит проходить: «Намір: запит …» у коментарі; неясний текст — з позначкою «перевірте»', async () => {
+  bot.reset();
+  const r = await botCall('POST', '/api/bot/leads', { hash: 'lead-rq-0001', service: 'Ремонт квартири', text: 'Порадьте, будь ласка, бригаду для ремонту квартири 60 м² у Бучі', source_url: 'https://t.me/x/7', notify: true });
+  eq(r.data.intent, 'request'); eq(r.data.notified, true);
+  ok(/Намір: запит \(/.test((await q1('SELECT comment FROM orders WHERE id = ?', r.data.id)).comment));
+  ok(bot.calls.some(c => c.method === 'sendMessage'), 'сповіщення про справжній запит є');
+  const u = await botCall('POST', '/api/bot/leads', { hash: 'lead-rq-0002', service: 'Ремонт', text: 'Ремонт квартир, офісів. Дизайн.', source_url: 'https://t.me/x/8' });
+  eq(u.data.intent, 'unclear'); ok(/Намір: неясно — перевірте, чи це не реклама/.test((await q1('SELECT comment FROM orders WHERE id = ?', u.data.id)).comment));
+  const n = await botCall('POST', '/api/bot/leads', { hash: 'lead-rq-0003', service: 'Дизайн', source_url: 'https://t.me/x/9' });
+  eq(n.data.intent, null, 'без тексту фільтр не застосовується');
+});
+
 if (process.argv[1] && process.argv[1].endsWith('partners.mjs')) process.exit(report() ? 1 : 0);

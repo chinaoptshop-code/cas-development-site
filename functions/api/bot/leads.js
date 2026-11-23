@@ -6,8 +6,14 @@
 // hash — ідентифікатор ліда в боті: та сама заявка вдруге не створюється ({ok, duplicate: true, number}).
 // Сповіщення адмінам у Telegram («Взяв у роботу», SLA) — лише якщо notify === true (functions/_alerts.js notifyNew).
 // Лише публічні контакти автора; уривок повідомлення — до 1500 символів; HTML не приймаємо (400).
+// Запит чи реклама (23.11.2026, functions/_leadintent.js — ЗГЕНЕРОВАНО з tools/leadbot/rules.json): текст, де автор сам щось
+// пропонує (реклама магазину чи бригади, продаж/оренда, вакансія, «шукаю роботу»), заявкою НЕ стає — відповідь
+// {ok, skipped: true, intent: 'offer', kind, reasons} без запису в CRM і без сповіщення; hash лягає в bot_feedback (verdict spam,
+// «авто: …») — бот бачить це у GET /api/bot/feedback. force: true (людина в боті натиснула «В CRM» свідомо) — фільтр не діє.
+// У коментарі заявки — рядок «Намір: запит …» або «Намір: неясно — перевірте, чи це не реклама».
 import { bad, json, nextLeadNumber, readJSON } from '../../_lib.js';
 import { notifyNew } from '../../_alerts.js';
+import { leadIntent } from '../../_leadintent.js';
 import { Invalid, phoneOf, text, tgUser, url } from '../../_partners.js';
 import { noTable } from '../../_roles.js';
 import { leadHash } from './feedback.js';
@@ -23,12 +29,13 @@ function input(d) {
     score = Math.round(score);
   }
   if (d.notify != null && typeof d.notify !== 'boolean') throw new Invalid('notify: true або false');
+  if (d.force != null && typeof d.force !== 'boolean') throw new Invalid('force: true або false');
   const L = {
     hash: leadHash(d.hash), service: text(d.service, 200, 'service'), city: text(d.city, 120, 'city'), area: text(d.area, 40, 'area'),
     budget: text(d.budget, 80, 'budget'), estimate: text(d.estimate, 1000, 'estimate', true), score,
     source_name: text(d.source_name, 160, 'source_name'), source_url: url(d.source_url, 300, 'source_url'),
     text: text(d.text ?? d.message, 1500, 'text', true),
-    name: text(a.name ?? d.name, 120, 'name'), tg: tgUser(a.tg ?? d.tg), phone: phoneOf(a.phone ?? d.phone), notify: d.notify === true,
+    name: text(a.name ?? d.name, 120, 'name'), tg: tgUser(a.tg ?? d.tg), phone: phoneOf(a.phone ?? d.phone), notify: d.notify === true, force: d.force === true,
   };
   if (!L.service && !L.text) throw new Invalid('Потрібна послуга (service) або текст повідомлення (text)');
   if (!L.tg && !L.phone && !L.source_url) throw new Invalid('Потрібен публічний контакт автора (author.tg / author.phone) або посилання на повідомлення (source_url)');
@@ -44,8 +51,18 @@ export async function onRequestPost({ request, env, waitUntil }) {
       const dup = await env.DB.prepare("SELECT id, number FROM orders WHERE kind = 'lead' AND ext_hash = ?").bind(L.hash).first();
       if (dup) return json({ ok: true, duplicate: true, id: dup.id, number: dup.number });
     }
+    const it = L.text ? leadIntent(L.text) : null;
+    if (it && it.verdict === 'offer' && !L.force) {
+      if (L.hash) {
+        await env.DB.prepare("INSERT INTO bot_feedback (lead_hash, verdict, reason) VALUES (?, 'spam', ?) ON CONFLICT(lead_hash) DO NOTHING")
+          .bind(L.hash, ('авто: не клієнт — ' + it.reasons.join('; ')).slice(0, 500)).run();
+      }
+      return json({ ok: true, skipped: true, intent: 'offer', kind: it.kind, reasons: it.reasons });
+    }
+    const intentLine = !it ? null : it.verdict === 'request' ? `Намір: запит (${it.reasons.slice(0, 3).join('; ')})`
+      : it.verdict === 'offer' ? 'Намір: схоже на рекламу — додано вручну' : 'Намір: неясно — перевірте, чи це не реклама';
     const comment = [
-      L.text ? `Повідомлення: ${L.text}` : null,
+      L.text ? `Повідомлення: ${L.text}` : null, intentLine,
       L.area ? `Площа: ${L.area}` : null, L.budget ? `Бюджет: ${L.budget}` : null,
       L.estimate ? `Оцінка бота: ${L.estimate}` : null, L.score != null ? `Скор: ${L.score}/100` : null,
       L.source_name || L.source_url ? `Джерело: ${[L.source_name, L.source_url].filter(Boolean).join(' — ')}` : null,
@@ -61,7 +78,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
       const alert = notifyNew(env, id, { form: 'finder', page: L.source_url });
       if (typeof waitUntil === 'function') waitUntil(alert); else await alert;
     }
-    return json({ ok: true, id, number, notified: L.notify });
+    return json({ ok: true, id, number, notified: L.notify, intent: it ? it.verdict : null });
   } catch (e) {
     if (noTable(e)) return bad('CRM ще не готова до заявок бота (міграція 0013)', 503);
     throw e;
