@@ -103,6 +103,11 @@ def analyze(data, meta, lang="uk", timeout=240, tmp_root=None, inproc=False):
                 p = fail(kind, "файл", "розбір повернув некоректні дані", manager=kind in IMPORTANT)
     finally:
         shutil.rmtree(work, ignore_errors=True)
+    u = p.pop("usage", None)   # витрати vision дочірнього процесу → облік воркера (usage.py)
+    if u and not inproc:
+        import ollama
+        if ollama.METER:
+            ollama.METER("local", tokens=u.get("tokens", 0), seconds=u.get("seconds", 0), calls=u.get("calls", 1))
     p["name"], p["ext"], p["size"] = name, ext, len(data)
     p["important"] = kind in IMPORTANT
     p["voice"] = kind == "audio" and str(meta.get("name") or "").startswith("voice-")

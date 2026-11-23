@@ -102,3 +102,11 @@
 @keyframes cht-rec{50%{opacity:.35}}
 /* іконка чату в рядах месенджерів (a[data-chat]): нове повідомлення, поки панель закрита — кільце (::before/::after іконок зайняті)*/
 a[data-chat].cht-new{box-shadow:0 0 0 2px #e07a6a;border-radius:999px}
+/* ліміти (23.11.2026): лічильник символів над полем (з 80 % межі), стан «далі відповість менеджер» / добовий ліміт — текст + месенджери */
+.cht-f{position:relative}
+.cht-cnt{position:absolute;inset-inline-end:16px;top:-20px;padding:0 6px;border-radius:6px;background:var(--c-bg);font-size:.75rem;line-height:18px;color:var(--c-mu);font-variant-numeric:tabular-nums;pointer-events:none}
+.cht-cnt.over{color:#e8836f;font-weight:600}
+.cht-cnt[hidden]{display:none}
+.cht-off p{margin:0}
+.cht-off .cht-alt{justify-content:flex-start;margin-top:6px}
+.cht-off:not(.cht-lim) .cht-alt{display:none}

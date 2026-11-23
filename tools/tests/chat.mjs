@@ -524,4 +524,188 @@ await it('блок /*chat:v*/ відповідає assets/chat.v1.{js,css} (ін
   ok(sc.includes(`var CHV = {js: "${h('chat.v1.js')}", css: "${h('chat.v1.css')}"};`), 'застарілі версії панелі: python3 tools/chat/ver.py');
 });
 
+describe('Чат: ліміти розмови, доби й сховища (Михайло 23.11.2026)');
+const C = await import('../../functions/_chat.js');
+const envL = (vars = {}, r2 = false) => makeEnv(freshDB(), { LEADBOT_KEY: KEY, ...(r2 ? { MEDIA: fakeR2() } : {}), ...vars });
+const lastUser = async (e, c) => (await e.DB.prepare('SELECT last_user_id FROM chat_sessions WHERE sid = ?').bind(c.sid).first()).last_user_id;
+const tgMsgs = re => bot.calls.filter(c => c.method === 'sendMessage' && re.test(c.text));
+const answer = async (e, c, extra = {}) => botCall('POST', '/api/bot/chat', { sid: c.sid, reply_to: await lastUser(e, c), text: 'Відповідь', ...extra }, e);
+const queue = e => botCall('GET', '/api/bot/chat?limit=10', undefined, e);
+await it('змінні оточення: ціле в межах [min, max], інше — типове значення', async () => {
+  eq(C.lim({}).convAnswers, 20); eq(C.lim({}).convMsgs, 30); eq(C.lim({}).dayAnswers, 500); eq(C.lim({}).dayStarts, 300); eq(C.lim({}).voiceConv, 2);
+  eq(C.lim({ CHAT_CONV_ANSWERS: '999' }).convAnswers, 200); eq(C.lim({ CHAT_CONV_ANSWERS: '0' }).convAnswers, 1);
+  eq(C.lim({ CHAT_CONV_ANSWERS: 'abc' }).convAnswers, 20); eq(C.lim({ CHAT_CONV_ANSWERS: '2.5' }).convAnswers, 20); eq(C.lim({ CHAT_DAY_ANSWERS: ' 42 ' }).dayAnswers, 42);
+  eq(C.lim({ CHAT_R2_CAP_GB: '50' }).r2CapGB, 9); eq(C.lim({ CHAT_VOICE_PER_CONV: '0' }).voiceConv, 0);
+});
+await it('відповідей бота на розмову: до межі — працює; на межі — waiting/limit, системне «Далі відповість менеджер» і одне сповіщення; далі — 409, черги немає', async () => {
+  const e = envL({ CHAT_CONV_ANSWERS: '3' }); C.dayReset();
+  const c = await start(e);
+  for (let i = 0; i < 2; i++) {
+    await send(c, { text: 'питання ' + i }, e);
+    const q = (await queue(e)).data;
+    eq(q.items.length, 1); eq(q.items[0].budget.answers_left, 3 - i); eq(q.items[0].budget.voice_left, 2); eq(q.items[0].budget.msgs_left, 30 - i - 1);
+    const r = await answer(e, c); eq(r.status, 200); eq(r.data.limit, null); eq(r.data.state, 'bot');
+  }
+  await send(c, { text: 'третє' }, e);
+  bot.reset();
+  const r3 = await answer(e, c);
+  eq(r3.status, 200); eq(r3.data.limit, 'conv'); eq(r3.data.state, 'waiting');
+  eq(tgMsgs(/ліміт розмови/).length, 2, 'одне сповіщення (двом адресатам)');
+  const p = (await poll(c, 0, e)).data;
+  eq(p.limit, 'conv'); eq(p.state, 'waiting');
+  const sys = p.messages.filter(m => m.role === 'system');
+  eq(sys.length, 1); ok(/Далі вам відповість менеджер/.test(sys[0].text));
+  // нові повідомлення відвідувача зберігаються для менеджера, бот їх не отримує
+  bot.reset();
+  const s4 = await send(c, { text: 'а ще?' }, e);
+  eq(s4.status, 200); eq(s4.data.limit, 'conv'); eq(s4.data.state, 'waiting');
+  eq((await queue(e)).data.items.length, 0, 'розмова на стелі не в черзі');
+  eq(bot.calls.filter(x => x.method === 'sendMessage' && /ліміт/.test(x.text)).length, 0, 'повторного сповіщення немає');
+  const r4 = await answer(e, c); eq(r4.status, 409); eq(r4.data.limit, 'conv');
+  eq((await poll(c, 0, e)).data.messages.filter(m => m.role === 'system').length, 1, 'системне — один раз');
+  // адмінка: позначка «ліміт»
+  const ow = await addClient(e, { id: 111, name: 'Власник' }); const ck2 = await login(e, ow); await call(e, 'GET', '/api/me', { cookie: ck2 });
+  const sid = (await e.DB.prepare('SELECT id FROM chat_sessions WHERE sid = ?').bind(c.sid).first()).id;
+  const card = await call(e, 'GET', '/api/admin/chat?id=' + sid, { cookie: ck2 });
+  eq(card.data.session.handoff_reason, 'limit'); ok(/Ліміт чату/.test(card.data.session.handoff_label));
+  eq((await call(e, 'GET', '/api/admin/chat', { cookie: ck2 })).data.storage, null, 'без R2 — рядка «Сховище» немає');
+});
+await it('повідомлень відвідувача на розмову: 31-ше (CHAT_CONV_MSGS) — менеджеру; людина в розмові (staff) — без ліміту', async () => {
+  const e = envL({ CHAT_CONV_MSGS: '3' });
+  const c = await start(e);
+  for (let i = 0; i < 3; i++) eq((await send(c, { text: 'm' + i }, e)).data.limit, null);
+  bot.reset();
+  const r = await send(c, { text: 'm3' }, e);
+  eq(r.status, 200); eq(r.data.limit, 'conv'); eq(r.data.state, 'waiting'); eq(tgMsgs(/ліміт розмови/).length, 2);
+  eq((await e.DB.prepare('SELECT handoff_reason FROM chat_sessions WHERE sid = ?').bind(c.sid).first()).handoff_reason, 'limit');
+  const s = await start(e);
+  for (let i = 0; i < 3; i++) await send(s, { text: 'x' + i }, e);
+  await e.DB.prepare("UPDATE chat_sessions SET state = 'staff' WHERE sid = ?").bind(s.sid).run();
+  const st = await send(s, { text: 'людина відповідає' }, e);
+  eq(st.data.state, 'staff'); eq(st.data.limit, null);
+});
+await it('голос: не більше 2 голосових відповідей на розмову — третє аудіо не зберігаємо, текст лишається', async () => {
+  const e = envL();
+  const c = await start(e);
+  const audio = { mime: 'audio/ogg', data: Buffer.from(OGG).toString('base64'), dur: 3 };
+  for (let i = 0; i < 3; i++) {
+    await send(c, { text: 'голос ' + i }, e);
+    const r = await answer(e, c, { audio });
+    eq(r.status, 200); eq(!!r.data.audio_dropped, i === 2, 'відповідь ' + (i + 1));
+  }
+  const n = await e.DB.prepare("SELECT COUNT(*) AS n FROM chat_files WHERE role = 'bot'").first();
+  eq(n.n, 2);
+  await send(c, { text: 'ще' }, e);
+  eq((await queue(e)).data.items[0].budget.voice_left, 0);
+  eq((await answer(e, c, { text: null, audio })).status, 422, 'лише аудіо понад межу — порожня відповідь');
+});
+await it('добова стеля відповідей бота: черга порожня з budget 0, 409 day, віконце — офлайн «залиште номер», одне сповіщення; наступна доба — знову', async () => {
+  const e = envL({ CHAT_DAY_ANSWERS: '2' }); C.dayReset();
+  const cs = [await start(e), await start(e), await start(e)];
+  for (const c of cs) await send(c, { text: 'привіт' }, e);
+  eq((await answer(e, cs[0])).status, 200); eq((await answer(e, cs[1])).status, 200);
+  bot.reset();
+  const q = (await queue(e)).data;
+  eq(q.items.length, 0); eq(q.budget.day_answers_left, 0); eq(q.budget.day_answers_max, 2);
+  const r = await answer(e, cs[2]); eq(r.status, 409); eq(r.data.limit, 'day');
+  eq(tgMsgs(/Добовий ліміт чату/).length, 2, 'одне сповіщення двом адресатам');
+  await queue(e); await answer(e, cs[2]);
+  eq(tgMsgs(/Добовий ліміт чату/).length, 2, 'не повторюється');
+  C.dayReset();
+  await botCall('POST', '/api/bot/chat/ping', {}, e);
+  const st = await call(e, 'GET', '/api/chat/status', { headers: { ip: nextIp() } });
+  eq(st.data.limit, 'day'); eq(st.data.online, false);
+  const p = (await poll(cs[2], 0, e)).data; eq(p.limit, 'day'); eq(p.online, false);
+  eq((await send(cs[2], { text: 'ау' }, e)).status, 200, 'повідомлення зберігаються для менеджера');
+  // наступна доба за Києвом: лічильник — новий ключ (вчорашній рядок не заважає)
+  const today = C.DAY_KEY('answers');
+  await e.DB.prepare('UPDATE settings SET key = ? WHERE key = ?').bind(C.DAY_KEY('answers', new Date(Date.now() - 86400000)), today).run();
+  C.dayReset();
+  eq((await queue(e)).data.items.length, 1); eq((await answer(e, cs[2])).status, 200);
+  // очищення прибирає лічильники старші за 3 доби
+  await e.DB.prepare("INSERT INTO settings (key, value) VALUES ('chat_day|2000-01-01|answers', '9')").run();
+  await C.runChatCleanup(e);
+  eq(await e.DB.prepare("SELECT value FROM settings WHERE key = 'chat_day|2000-01-01|answers'").first(), null);
+});
+await it('добова стеля нових розмов (CHAT_DAY_STARTS) і з однієї адреси: 429 {day_full | ip_full, alt}; спам з багатьох адрес теж упирається в добову стелю', async () => {
+  const e = envL({ CHAT_DAY_STARTS: '4' });
+  bot.reset();
+  const rs = [];
+  for (let i = 0; i < 6; i++) rs.push(await start(e, { lang: 'uk' }, '10.90.0.' + (i + 1)));
+  eq(rs.map(r => r.status), [200, 200, 200, 200, 429, 429]);
+  eq(rs[4].day_full, true); ok(/t\.me/.test(rs[4].alt.telegram));
+  eq(tgMsgs(/Добовий ліміт чату/).length, 2, 'одне сповіщення');
+  const e2 = envL({ CHAT_IP_STARTS: '2' });
+  const ip = '10.91.0.1';
+  eq((await start(e2, { lang: 'uk' }, ip)).status, 200); eq((await start(e2, { lang: 'uk' }, ip)).status, 200);
+  const third = await start(e2, { lang: 'uk' }, ip); eq(third.status, 429); eq(third.ip_full, true);
+  await e2.DB.prepare("UPDATE rate_hits SET created_at = created_at - 90000 WHERE bucket = 'chat-start-d'").run();
+  await e2.DB.prepare("UPDATE rate_hits SET created_at = created_at - 90000 WHERE bucket = 'chat-start'").run();
+  eq((await start(e2, { lang: 'uk' }, ip)).status, 200, 'за добу — знову');
+});
+await it('повідомлень з адреси за добу (CHAT_IP_MSGS) і файлів в одному повідомленні (≤ 5)', async () => {
+  const e = envL({ CHAT_IP_MSGS: '10' });
+  const ip = '10.92.0.1';
+  const a = await start(e, { lang: 'uk' }, ip), b = await start(e, { lang: 'uk' }, ip);
+  let last;
+  for (let i = 0; i < 6; i++) await send(a, { text: 'a' + i }, e);
+  for (let i = 0; i < 5; i++) last = await send(b, { text: 'b' + i }, e);
+  eq(last.status, 429, '11-те з однієї адреси за добу');
+  const c = await start(e);
+  const ids = [];
+  for (let i = 0; i < 6; i++) ids.push((await up(c, `p${i}.png`, PNG, 'image/png', e)).data.file_id);
+  const r = await send(c, { files: ids }, e);
+  eq(r.status, 400); eq(r.data.too_many_files, true); eq(r.data.max, 5);
+  eq((await send(c, { files: ids.slice(0, 5) }, e)).status, 200);
+});
+await it('сховище R2: 10 / 50 МБ; ≥ 80 % стелі — одне сповіщення; на стелі великі — 413 store_full, малі — у D1 (одне сповіщення); адмінка «Сховище»', async () => {
+  const e = envL({ CHAT_R2_CAP_GB: '1' }, true); C.r2Reset();
+  const c = await start(e);
+  eq(c.limits, { file: 10 * 1024 * 1024, session: 50 * 1024 * 1024, r2: true });
+  const sess = (await e.DB.prepare('SELECT id FROM chat_sessions WHERE sid = ?').bind(c.sid).first()).id;
+  const fill = async n => e.DB.prepare("INSERT INTO chat_files (id, session_id, name, mime, kind, size, r2_key) VALUES (?, ?, 'old.pdf', 'application/pdf', 'pdf', ?, 'chat/x/' || ?)")
+    .bind(Math.random().toString(16).slice(2).padEnd(24, '0').slice(0, 24), sess, n, String(n)).run();
+  await fill(0.85 * 1024 ** 3); C.r2Reset(); bot.reset();
+  const ok1 = await up(c, 'a.pdf', pad(PDF, 2 * 1024 * 1024), 'application/pdf', e);
+  eq(ok1.status, 200); ok((await e.DB.prepare('SELECT r2_key FROM chat_files WHERE id = ?').bind(ok1.data.file_id).first()).r2_key, 'ще є місце — у R2');
+  eq(tgMsgs(/заповнене на/).length, 2);
+  await up(c, 'b.pdf', pad(PDF, 1024), 'application/pdf', e);
+  eq(tgMsgs(/заповнене на/).length, 2, '80 % — один раз');
+  await fill(0.15 * 1024 ** 3); C.r2Reset(); bot.reset();
+  const big = await up(c, 'big.pdf', pad(PDF, 3 * 1024 * 1024), 'application/pdf', e);
+  eq(big.status, 413); eq(big.data.store_full, true); eq(big.data.max, 1.5 * 1024 * 1024); ok(/t\.me/.test(big.data.alt.telegram));
+  eq(tgMsgs(/Стеля сховища/).length, 2);
+  const small = await up(c, 's.png', PNG, 'image/png', e);
+  eq(small.status, 200);
+  const row = await e.DB.prepare('SELECT r2_key, data FROM chat_files WHERE id = ?').bind(small.data.file_id).first();
+  ok(!row.r2_key && row.data, 'малий файл на стелі — у D1, не падаємо');
+  eq(tgMsgs(/Стеля сховища/).length, 2, 'стеля — одне сповіщення');
+  const st = await call(e, 'GET', '/api/chat/status', { headers: { ip: nextIp() } });
+  eq(st.data.limits.store_full, true); eq(st.data.limits.file, 1.5 * 1024 * 1024);
+  const ow = await addClient(e, { id: 111, name: 'Власник' }); const ck2 = await login(e, ow); await call(e, 'GET', '/api/me', { cookie: ck2 });
+  const adm = (await call(e, 'GET', '/api/admin/chat', { cookie: ck2 })).data;
+  eq(adm.storage.cap, 1024 ** 3); ok(adm.storage.used >= 1024 ** 3);
+  // місце звільнилось (< 70 %) — сповіщення знову можливі
+  await e.DB.prepare("DELETE FROM chat_files WHERE name = 'old.pdf'").run(); C.r2Reset();
+  eq((await up(c, 'c.pdf', pad(PDF, 2 * 1024 * 1024), 'application/pdf', e)).status, 200);
+  eq(await e.DB.prepare("SELECT key FROM settings WHERE key IN ('chat_r2_80', 'chat_r2_cap')").first(), null);
+  C.r2Reset();
+});
+await it('очищення: файли розмов із заявкою — через 180 діб (і з R2), молодші — лишаються', async () => {
+  const e = envL({}, true); C.r2Reset();
+  const c = await start(e);
+  await send(c, { text: 'з номером' }, e);
+  eq((await call(e, 'POST', '/api/chat/contact', { body: { phone: '+380671112233' }, headers: c.h })).status, 200);
+  const f1 = (await up(c, 'a.png', PNG, 'image/png', e)).data.file_id, f2 = (await up(c, 'b.png', PNG, 'image/png', e)).data.file_id;
+  await send(c, { files: [f1, f2] }, e);
+  const k1 = (await e.DB.prepare('SELECT r2_key FROM chat_files WHERE id = ?').bind(f1).first()).r2_key;
+  await e.DB.prepare("UPDATE chat_files SET created_at = datetime('now', '-181 days') WHERE id = ?").bind(f1).run();
+  await e.DB.prepare("UPDATE chat_files SET created_at = datetime('now', '-100 days') WHERE id = ?").bind(f2).run();
+  ok(e.MEDIA.m.has(k1));
+  await C.runChatCleanup(e);
+  ok(!e.MEDIA.m.has(k1), 'обʼєкт видалено з R2');
+  eq(await e.DB.prepare('SELECT id FROM chat_files WHERE id = ?').bind(f1).first(), null);
+  ok(await e.DB.prepare('SELECT id FROM chat_files WHERE id = ?').bind(f2).first(), 'молодший за 180 діб — лишається');
+});
+
 if (process.argv[1] && process.argv[1].endsWith('chat.mjs')) process.exit(report() ? 1 : 0);

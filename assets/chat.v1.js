@@ -15,82 +15,82 @@
       leave: 'Залишити номер', phone: 'Ваш телефон', phoneSend: 'Передзвоніть мені', phoneBad: 'Перевірте номер телефону', you: 'Ви', bot: 'Помічник', mgr: 'Менеджер',
       big: 'Файл завеликий для чату (до {max}). Надішліть його в Telegram або WhatsApp:', type: 'Такий тип файлу не приймаємо. Можна: фото, відео, аудіо, PDF, Excel, Word, DWG, DXF, 3DS, SKP, IFC, RVT, ZIP.', mismatch: 'Файл пошкоджений або не того типу.',
       many: 'Забагато повідомлень поспіль — зачекайте трохи.', net: 'Немає звʼязку. Спробуйте ще раз.', upl: 'Завантаження…', drop: 'Відпустіть, щоб прикріпити файли', remove: 'Прибрати файл',
-      est: 'Попередній розрахунок', total: 'Разом', from: 'від', smeta: 'за кошторисом', voice: 'Голосова відповідь', play: 'Слухати', pause: 'Пауза', rec: 'Запис', micErr: 'Немає доступу до мікрофона.', file: 'Файл', eu: 'Європа' },
+      est: 'Попередній розрахунок', total: 'Разом', from: 'від', smeta: 'за кошторисом', voice: 'Голосова відповідь', play: 'Слухати', pause: 'Пауза', rec: 'Запис', micErr: 'Немає доступу до мікрофона.', file: 'Файл', eu: 'Європа', long: 'Повідомлення задовге — до {max} знаків. Скоротіть його або надішліть частинами.', fmany: 'В одному повідомленні — до {max} файлів. Решту надішліть наступним повідомленням.', limit: 'Далі вам відповість менеджер. Залиште номер — зателефонуємо в робочий час (Пн–Пт 10:00–20:00), або напишіть у месенджер:', dayOff: 'Помічник на сьогодні вже відповів багатьом — залиште номер, і менеджер звʼяжеться з вами (Пн–Пт 10:00–20:00), або напишіть у месенджер:', full: 'Чат зараз не може почати нову розмову. Залиште номер у формі заявки або напишіть у месенджер:', form: 'Форма заявки' },
     ru: { title: 'Помощник CAS', disc: 'Отвечает AI-помощник студии. Расчёт предварительный, точный — после замера и сметы.', hello: 'Здравствуйте! Я помощник студии CAS Development. Расскажите об объекте: что планируете, площадь, город — посчитаю ориентировочную стоимость. Можно прислать фото, план, PDF или голосовое.',
       ph: 'Напишите сообщение…', send: 'Отправить', attach: 'Прикрепить файлы', mic: 'Записать голосовое', stop: 'Остановить и отправить', cancel: 'Отменить', close: 'Закрыть чат', fresh: 'Новый разговор', freshQ: 'Начать новый разговор? Текущий останется у студии.',
       typing: 'Помощник печатает…', staff: 'Отвечает менеджер', waiting: 'Зовём менеджера…', online: 'На связи', offline: 'Сейчас помощник офлайн — оставьте номер, ответим в рабочее время Пн–Пт 10:00–20:00.',
       leave: 'Оставить номер', phone: 'Ваш телефон', phoneSend: 'Перезвоните мне', phoneBad: 'Проверьте номер телефона', you: 'Вы', bot: 'Помощник', mgr: 'Менеджер',
       big: 'Файл слишком большой для чата (до {max}). Отправьте его в Telegram или WhatsApp:', type: 'Такой тип файла не принимаем. Можно: фото, видео, аудио, PDF, Excel, Word, DWG, DXF, 3DS, SKP, IFC, RVT, ZIP.', mismatch: 'Файл повреждён или не того типа.',
       many: 'Слишком много сообщений подряд — подождите немного.', net: 'Нет связи. Попробуйте ещё раз.', upl: 'Загрузка…', drop: 'Отпустите, чтобы прикрепить файлы', remove: 'Убрать файл',
-      est: 'Предварительный расчёт', total: 'Итого', from: 'от', smeta: 'по смете', voice: 'Голосовой ответ', play: 'Слушать', pause: 'Пауза', rec: 'Запись', micErr: 'Нет доступа к микрофону.', file: 'Файл', eu: 'Европа' },
+      est: 'Предварительный расчёт', total: 'Итого', from: 'от', smeta: 'по смете', voice: 'Голосовой ответ', play: 'Слушать', pause: 'Пауза', rec: 'Запись', micErr: 'Нет доступа к микрофону.', file: 'Файл', eu: 'Европа', long: 'Сообщение слишком длинное — до {max} знаков. Сократите его или отправьте частями.', fmany: 'В одном сообщении — до {max} файлов. Остальные отправьте следующим сообщением.', limit: 'Дальше вам ответит менеджер. Оставьте номер — перезвоним в рабочее время (Пн–Пт 10:00–20:00), или напишите в мессенджер:', dayOff: 'Помощник сегодня уже ответил многим — оставьте номер, и менеджер свяжется с вами (Пн–Пт 10:00–20:00), или напишите в мессенджер:', full: 'Чат сейчас не может начать новый разговор. Оставьте номер в форме заявки или напишите в мессенджер:', form: 'Форма заявки' },
     en: { title: 'CAS assistant', disc: 'You are chatting with the studio’s AI assistant. Estimates are preliminary; the exact price comes after measurements and a detailed quote.', hello: 'Hello! I am the CAS Development studio assistant. Tell me about your project — what you plan, the area and the city — and I will give you an approximate cost. You can send photos, a floor plan, a PDF or a voice message.',
       ph: 'Type a message…', send: 'Send', attach: 'Attach files', mic: 'Record a voice message', stop: 'Stop and send', cancel: 'Cancel', close: 'Close chat', fresh: 'New conversation', freshQ: 'Start a new conversation? The current one stays with the studio.',
       typing: 'Assistant is typing…', staff: 'A manager is replying', waiting: 'Calling a manager…', online: 'Online', offline: 'The assistant is offline right now — leave your number and we will reply during working hours, Mon–Fri 10:00–20:00 (Kyiv time).',
       leave: 'Leave your number', phone: 'Your phone', phoneSend: 'Call me back', phoneBad: 'Please check the phone number', you: 'You', bot: 'Assistant', mgr: 'Manager',
       big: 'This file is too large for the chat (up to {max}). Please send it via Telegram or WhatsApp:', type: 'This file type is not accepted. Allowed: photos, video, audio, PDF, Excel, Word, DWG, DXF, 3DS, SKP, IFC, RVT, ZIP.', mismatch: 'The file is damaged or of the wrong type.',
       many: 'Too many messages in a row — please wait a moment.', net: 'No connection. Please try again.', upl: 'Uploading…', drop: 'Drop to attach files', remove: 'Remove file',
-      est: 'Preliminary estimate', total: 'Total', from: 'from', smeta: 'on quote', voice: 'Voice reply', play: 'Play', pause: 'Pause', rec: 'Recording', micErr: 'No access to the microphone.', file: 'File', eu: 'Europe' },
+      est: 'Preliminary estimate', total: 'Total', from: 'from', smeta: 'on quote', voice: 'Voice reply', play: 'Play', pause: 'Pause', rec: 'Recording', micErr: 'No access to the microphone.', file: 'File', eu: 'Europe', long: 'The message is too long — up to {max} characters. Please shorten it or send it in parts.', fmany: 'Up to {max} files per message. Please send the rest in the next message.', limit: 'A manager will take it from here. Leave your number and we will call you during working hours (Mon–Fri 10:00–20:00, Kyiv time), or message us:', dayOff: 'The assistant has already answered many people today — leave your number and a manager will contact you (Mon–Fri 10:00–20:00, Kyiv time), or message us:', full: 'The chat cannot start a new conversation right now. Leave your number in the request form or message us:', form: 'Request form' },
     es: { title: 'Asistente CAS', disc: 'Responde el asistente de IA del estudio. El cálculo es orientativo; el exacto, tras la medición y el presupuesto.', hello: '¡Hola! Soy el asistente del estudio CAS Development. Cuénteme su proyecto: qué planea, la superficie y la ciudad, y le daré un coste orientativo. Puede enviar fotos, un plano, un PDF o un mensaje de voz.',
       ph: 'Escriba un mensaje…', send: 'Enviar', attach: 'Adjuntar archivos', mic: 'Grabar un mensaje de voz', stop: 'Detener y enviar', cancel: 'Cancelar', close: 'Cerrar el chat', fresh: 'Nueva conversación', freshQ: '¿Empezar una nueva conversación? La actual se queda en el estudio.',
       typing: 'El asistente está escribiendo…', staff: 'Responde un gestor', waiting: 'Llamando a un gestor…', online: 'En línea', offline: 'El asistente no está disponible ahora: deje su número y le responderemos en horario laboral, lun–vie 10:00–20:00 (hora de Kiev).',
       leave: 'Dejar mi número', phone: 'Su teléfono', phoneSend: 'Llámenme', phoneBad: 'Revise el número de teléfono', you: 'Usted', bot: 'Asistente', mgr: 'Gestor',
       big: 'El archivo es demasiado grande para el chat (hasta {max}). Envíelo por Telegram o WhatsApp:', type: 'No aceptamos este tipo de archivo. Se admiten: fotos, vídeo, audio, PDF, Excel, Word, DWG, DXF, 3DS, SKP, IFC, RVT, ZIP.', mismatch: 'El archivo está dañado o no es del tipo indicado.',
       many: 'Demasiados mensajes seguidos: espere un momento.', net: 'Sin conexión. Inténtelo de nuevo.', upl: 'Subiendo…', drop: 'Suelte para adjuntar', remove: 'Quitar archivo',
-      est: 'Cálculo orientativo', total: 'Total', from: 'desde', smeta: 'según presupuesto', voice: 'Respuesta de voz', play: 'Escuchar', pause: 'Pausa', rec: 'Grabando', micErr: 'Sin acceso al micrófono.', file: 'Archivo', eu: 'Europa' },
+      est: 'Cálculo orientativo', total: 'Total', from: 'desde', smeta: 'según presupuesto', voice: 'Respuesta de voz', play: 'Escuchar', pause: 'Pausa', rec: 'Grabando', micErr: 'Sin acceso al micrófono.', file: 'Archivo', eu: 'Europa', long: 'El mensaje es demasiado largo: hasta {max} caracteres. Acórtelo o envíelo por partes.', fmany: 'Hasta {max} archivos por mensaje. Envíe el resto en el siguiente mensaje.', limit: 'A partir de aquí le atenderá un gestor. Deje su número y le llamaremos en horario laboral (lun–vie 10:00–20:00, hora de Kiev), o escríbanos:', dayOff: 'El asistente ya ha respondido a muchas personas hoy: deje su número y un gestor le contactará (lun–vie 10:00–20:00, hora de Kiev), o escríbanos:', full: 'Ahora el chat no puede iniciar una nueva conversación. Deje su número en el formulario o escríbanos:', form: 'Formulario de solicitud' },
     zh: { title: 'CAS 助手', disc: '由工作室的 AI 助手回答。计算为初步估算，准确价格以测量和预算为准。', hello: '您好！我是 CAS Development 工作室的助手。请介绍您的项目：计划做什么、面积和城市——我会给出大致费用。可以发送照片、平面图、PDF 或语音。',
       ph: '输入消息…', send: '发送', attach: '附加文件', mic: '录制语音', stop: '停止并发送', cancel: '取消', close: '关闭聊天', fresh: '新对话', freshQ: '开始新对话？当前对话会保留在工作室。',
       typing: '助手正在输入…', staff: '经理正在回复', waiting: '正在呼叫经理…', online: '在线', offline: '助手目前离线——请留下电话，我们将在工作时间回复：周一至周五 10:00–20:00（基辅时间）。',
       leave: '留下电话', phone: '您的电话', phoneSend: '请给我回电', phoneBad: '请检查电话号码', you: '您', bot: '助手', mgr: '经理',
       big: '文件太大，无法在聊天中发送（上限 {max}）。请通过 Telegram 或 WhatsApp 发送：', type: '不接受此类文件。可以发送：照片、视频、音频、PDF、Excel、Word、DWG、DXF、3DS、SKP、IFC、RVT、ZIP。', mismatch: '文件已损坏或类型不符。',
       many: '消息太频繁——请稍候。', net: '没有网络连接，请重试。', upl: '正在上传…', drop: '松开即可附加文件', remove: '移除文件',
-      est: '初步估算', total: '合计', from: '起', smeta: '按预算', voice: '语音回复', play: '播放', pause: '暂停', rec: '录音中', micErr: '无法使用麦克风。', file: '文件', eu: '欧洲' },
+      est: '初步估算', total: '合计', from: '起', smeta: '按预算', voice: '语音回复', play: '播放', pause: '暂停', rec: '录音中', micErr: '无法使用麦克风。', file: '文件', eu: '欧洲', long: '消息太长——最多 {max} 个字符。请缩短或分几条发送。', fmany: '每条消息最多 {max} 个文件。其余的请在下一条消息中发送。', limit: '接下来将由经理为您服务。请留下电话，我们会在工作时间（周一至周五 10:00–20:00，基辅时间）回电，或通过即时通讯联系我们：', dayOff: '助手今天已回复了很多人——请留下电话，经理会与您联系（周一至周五 10:00–20:00，基辅时间），或通过即时通讯联系我们：', full: '聊天暂时无法开始新对话。请在申请表中留下电话，或通过即时通讯联系我们：', form: '申请表' },
     pl: { title: 'Asystent CAS', disc: 'Odpowiada asystent AI studia. Wycena jest wstępna, dokładna — po pomiarze i kosztorysie.', hello: 'Dzień dobry! Jestem asystentem studia CAS Development. Proszę opisać obiekt: co Pan/Pani planuje, metraż i miasto — policzę orientacyjny koszt. Można wysłać zdjęcia, plan, PDF lub wiadomość głosową.',
       ph: 'Napisz wiadomość…', send: 'Wyślij', attach: 'Dołącz pliki', mic: 'Nagraj wiadomość głosową', stop: 'Zatrzymaj i wyślij', cancel: 'Anuluj', close: 'Zamknij czat', fresh: 'Nowa rozmowa', freshQ: 'Rozpocząć nową rozmowę? Obecna zostanie w studiu.',
       typing: 'Asystent pisze…', staff: 'Odpowiada menedżer', waiting: 'Wzywamy menedżera…', online: 'Online', offline: 'Asystent jest teraz offline — proszę zostawić numer, odpowiemy w godzinach pracy: pn–pt 10:00–20:00 (czas kijowski).',
       leave: 'Zostaw numer', phone: 'Twój telefon', phoneSend: 'Proszę o telefon', phoneBad: 'Sprawdź numer telefonu', you: 'Ty', bot: 'Asystent', mgr: 'Menedżer',
       big: 'Plik jest za duży na czat (do {max}). Wyślij go przez Telegram lub WhatsApp:', type: 'Nie przyjmujemy takiego typu pliku. Można: zdjęcia, wideo, audio, PDF, Excel, Word, DWG, DXF, 3DS, SKP, IFC, RVT, ZIP.', mismatch: 'Plik jest uszkodzony lub innego typu.',
       many: 'Za dużo wiadomości naraz — chwilę poczekaj.', net: 'Brak połączenia. Spróbuj ponownie.', upl: 'Przesyłanie…', drop: 'Upuść, aby dołączyć pliki', remove: 'Usuń plik',
-      est: 'Wstępna wycena', total: 'Razem', from: 'od', smeta: 'wg kosztorysu', voice: 'Odpowiedź głosowa', play: 'Odtwórz', pause: 'Pauza', rec: 'Nagrywanie', micErr: 'Brak dostępu do mikrofonu.', file: 'Plik', eu: 'Europa' },
+      est: 'Wstępna wycena', total: 'Razem', from: 'od', smeta: 'wg kosztorysu', voice: 'Odpowiedź głosowa', play: 'Odtwórz', pause: 'Pauza', rec: 'Nagrywanie', micErr: 'Brak dostępu do mikrofonu.', file: 'Plik', eu: 'Europa', long: 'Wiadomość jest za długa — do {max} znaków. Skróć ją lub wyślij w częściach.', fmany: 'Do {max} plików w jednej wiadomości. Resztę wyślij w kolejnej.', limit: 'Dalej odpowie menedżer. Zostaw numer — oddzwonimy w godzinach pracy (pn–pt 10:00–20:00, czas kijowski), lub napisz na komunikatorze:', dayOff: 'Asystent odpowiedział już dziś wielu osobom — zostaw numer, a menedżer się z Tobą skontaktuje (pn–pt 10:00–20:00, czas kijowski), lub napisz na komunikatorze:', full: 'Czat nie może teraz rozpocząć nowej rozmowy. Zostaw numer w formularzu zgłoszenia lub napisz na komunikatorze:', form: 'Formularz zgłoszenia' },
     de: { title: 'CAS-Assistent', disc: 'Es antwortet der KI-Assistent des Studios. Die Kalkulation ist vorläufig; den genauen Preis gibt es nach Aufmaß und Kostenvoranschlag.', hello: 'Guten Tag! Ich bin der Assistent des Studios CAS Development. Erzählen Sie mir von Ihrem Objekt – Vorhaben, Fläche, Stadt –, und ich nenne Ihnen einen ungefähren Preis. Sie können Fotos, einen Grundriss, ein PDF oder eine Sprachnachricht senden.',
       ph: 'Nachricht schreiben…', send: 'Senden', attach: 'Dateien anhängen', mic: 'Sprachnachricht aufnehmen', stop: 'Stoppen und senden', cancel: 'Abbrechen', close: 'Chat schließen', fresh: 'Neues Gespräch', freshQ: 'Neues Gespräch beginnen? Das aktuelle bleibt beim Studio.',
       typing: 'Der Assistent schreibt…', staff: 'Ein Manager antwortet', waiting: 'Wir rufen einen Manager…', online: 'Online', offline: 'Der Assistent ist gerade offline – hinterlassen Sie Ihre Nummer, wir antworten zu den Geschäftszeiten: Mo–Fr 10:00–20:00 (Kyjiwer Zeit).',
       leave: 'Nummer hinterlassen', phone: 'Ihre Telefonnummer', phoneSend: 'Bitte zurückrufen', phoneBad: 'Bitte prüfen Sie die Telefonnummer', you: 'Sie', bot: 'Assistent', mgr: 'Manager',
       big: 'Die Datei ist für den Chat zu groß (bis {max}). Bitte senden Sie sie per Telegram oder WhatsApp:', type: 'Dieser Dateityp wird nicht angenommen. Möglich: Fotos, Video, Audio, PDF, Excel, Word, DWG, DXF, 3DS, SKP, IFC, RVT, ZIP.', mismatch: 'Die Datei ist beschädigt oder hat den falschen Typ.',
       many: 'Zu viele Nachrichten hintereinander – bitte kurz warten.', net: 'Keine Verbindung. Bitte erneut versuchen.', upl: 'Wird hochgeladen…', drop: 'Loslassen, um Dateien anzuhängen', remove: 'Datei entfernen',
-      est: 'Vorläufige Kalkulation', total: 'Summe', from: 'ab', smeta: 'laut Kostenvoranschlag', voice: 'Sprachantwort', play: 'Abspielen', pause: 'Pause', rec: 'Aufnahme', micErr: 'Kein Zugriff auf das Mikrofon.', file: 'Datei', eu: 'Europa' },
+      est: 'Vorläufige Kalkulation', total: 'Summe', from: 'ab', smeta: 'laut Kostenvoranschlag', voice: 'Sprachantwort', play: 'Abspielen', pause: 'Pause', rec: 'Aufnahme', micErr: 'Kein Zugriff auf das Mikrofon.', file: 'Datei', eu: 'Europa', long: 'Die Nachricht ist zu lang – bis zu {max} Zeichen. Bitte kürzen oder in Teilen senden.', fmany: 'Bis zu {max} Dateien pro Nachricht. Den Rest bitte mit der nächsten Nachricht senden.', limit: 'Ab hier übernimmt ein Manager. Hinterlassen Sie Ihre Nummer – wir rufen zu den Geschäftszeiten zurück (Mo–Fr 10:00–20:00, Kyjiwer Zeit) –, oder schreiben Sie uns:', dayOff: 'Der Assistent hat heute schon vielen geantwortet – hinterlassen Sie Ihre Nummer, ein Manager meldet sich (Mo–Fr 10:00–20:00, Kyjiwer Zeit), oder schreiben Sie uns:', full: 'Der Chat kann gerade kein neues Gespräch beginnen. Hinterlassen Sie Ihre Nummer im Anfrageformular oder schreiben Sie uns:', form: 'Anfrageformular' },
     fr: { title: 'Assistant CAS', disc: 'C’est l’assistant IA du studio qui répond. Le calcul est indicatif ; le prix exact vient après le métré et le devis.', hello: 'Bonjour ! Je suis l’assistant du studio CAS Development. Parlez-moi de votre projet — ce que vous prévoyez, la surface, la ville — et je vous donnerai un coût indicatif. Vous pouvez envoyer des photos, un plan, un PDF ou un message vocal.',
       ph: 'Écrivez un message…', send: 'Envoyer', attach: 'Joindre des fichiers', mic: 'Enregistrer un message vocal', stop: 'Arrêter et envoyer', cancel: 'Annuler', close: 'Fermer le chat', fresh: 'Nouvelle conversation', freshQ: 'Commencer une nouvelle conversation ? L’actuelle reste au studio.',
       typing: 'L’assistant écrit…', staff: 'Un responsable répond', waiting: 'Nous appelons un responsable…', online: 'En ligne', offline: 'L’assistant est hors ligne pour le moment — laissez votre numéro, nous répondrons aux heures ouvrables : lun–ven 10:00–20:00 (heure de Kyiv).',
       leave: 'Laisser mon numéro', phone: 'Votre téléphone', phoneSend: 'Rappelez-moi', phoneBad: 'Vérifiez le numéro de téléphone', you: 'Vous', bot: 'Assistant', mgr: 'Responsable',
       big: 'Ce fichier est trop volumineux pour le chat (jusqu’à {max}). Envoyez-le via Telegram ou WhatsApp :', type: 'Ce type de fichier n’est pas accepté. Possibles : photos, vidéo, audio, PDF, Excel, Word, DWG, DXF, 3DS, SKP, IFC, RVT, ZIP.', mismatch: 'Le fichier est endommagé ou n’est pas du bon type.',
       many: 'Trop de messages d’affilée — patientez un instant.', net: 'Pas de connexion. Réessayez.', upl: 'Envoi…', drop: 'Déposez pour joindre', remove: 'Retirer le fichier',
-      est: 'Calcul indicatif', total: 'Total', from: 'à partir de', smeta: 'sur devis', voice: 'Réponse vocale', play: 'Écouter', pause: 'Pause', rec: 'Enregistrement', micErr: 'Pas d’accès au micro.', file: 'Fichier', eu: 'Europe' },
+      est: 'Calcul indicatif', total: 'Total', from: 'à partir de', smeta: 'sur devis', voice: 'Réponse vocale', play: 'Écouter', pause: 'Pause', rec: 'Enregistrement', micErr: 'Pas d’accès au micro.', file: 'Fichier', eu: 'Europe', long: 'Le message est trop long — jusqu’à {max} caractères. Raccourcissez-le ou envoyez-le en plusieurs fois.', fmany: 'Jusqu’à {max} fichiers par message. Envoyez le reste dans le message suivant.', limit: 'Un responsable va prendre le relais. Laissez votre numéro, nous vous rappellerons aux heures ouvrables (lun–ven 10:00–20:00, heure de Kyiv), ou écrivez-nous :', dayOff: 'L’assistant a déjà répondu à beaucoup de monde aujourd’hui — laissez votre numéro et un responsable vous contactera (lun–ven 10:00–20:00, heure de Kyiv), ou écrivez-nous :', full: 'Le chat ne peut pas commencer de nouvelle conversation pour le moment. Laissez votre numéro dans le formulaire ou écrivez-nous :', form: 'Formulaire de demande' },
     pt: { title: 'Assistente CAS', disc: 'Responde o assistente de IA do estúdio. O cálculo é indicativo; o exato, após a medição e o orçamento.', hello: 'Olá! Sou o assistente do estúdio CAS Development. Fale-me do seu projeto — o que planeia, a área e a cidade — e dou-lhe um custo indicativo. Pode enviar fotografias, uma planta, um PDF ou uma mensagem de voz.',
       ph: 'Escreva uma mensagem…', send: 'Enviar', attach: 'Anexar ficheiros', mic: 'Gravar mensagem de voz', stop: 'Parar e enviar', cancel: 'Cancelar', close: 'Fechar o chat', fresh: 'Nova conversa', freshQ: 'Começar uma nova conversa? A atual fica no estúdio.',
       typing: 'O assistente está a escrever…', staff: 'Responde um gestor', waiting: 'A chamar um gestor…', online: 'Online', offline: 'O assistente está offline neste momento — deixe o seu número e respondemos no horário de trabalho: seg–sex 10:00–20:00 (hora de Kyiv).',
       leave: 'Deixar o número', phone: 'O seu telefone', phoneSend: 'Liguem-me', phoneBad: 'Verifique o número de telefone', you: 'Você', bot: 'Assistente', mgr: 'Gestor',
       big: 'O ficheiro é demasiado grande para o chat (até {max}). Envie-o pelo Telegram ou WhatsApp:', type: 'Não aceitamos este tipo de ficheiro. Pode enviar: fotografias, vídeo, áudio, PDF, Excel, Word, DWG, DXF, 3DS, SKP, IFC, RVT, ZIP.', mismatch: 'O ficheiro está danificado ou não é do tipo indicado.',
       many: 'Demasiadas mensagens seguidas — aguarde um pouco.', net: 'Sem ligação. Tente novamente.', upl: 'A enviar…', drop: 'Largue para anexar', remove: 'Remover ficheiro',
-      est: 'Cálculo indicativo', total: 'Total', from: 'desde', smeta: 'por orçamento', voice: 'Resposta de voz', play: 'Ouvir', pause: 'Pausa', rec: 'A gravar', micErr: 'Sem acesso ao microfone.', file: 'Ficheiro', eu: 'Europa' },
+      est: 'Cálculo indicativo', total: 'Total', from: 'desde', smeta: 'por orçamento', voice: 'Resposta de voz', play: 'Ouvir', pause: 'Pausa', rec: 'A gravar', micErr: 'Sem acesso ao microfone.', file: 'Ficheiro', eu: 'Europa', long: 'A mensagem é demasiado longa — até {max} caracteres. Encurte-a ou envie-a em partes.', fmany: 'Até {max} ficheiros por mensagem. Envie os restantes na mensagem seguinte.', limit: 'A partir daqui responde-lhe um gestor. Deixe o seu número e ligamos no horário de trabalho (seg–sex 10:00–20:00, hora de Kyiv), ou escreva-nos:', dayOff: 'O assistente já respondeu hoje a muitas pessoas — deixe o seu número e um gestor contacta-o (seg–sex 10:00–20:00, hora de Kyiv), ou escreva-nos:', full: 'Neste momento o chat não pode iniciar uma nova conversa. Deixe o seu número no formulário de pedido ou escreva-nos:', form: 'Formulário de pedido' },
     ar: { title: 'مساعد CAS', disc: 'يجيبك مساعد الاستوديو بالذكاء الاصطناعي. الحساب تقريبي، والسعر الدقيق بعد القياس وإعداد التقدير.', hello: 'مرحبًا! أنا مساعد استوديو CAS Development. أخبرني عن مشروعك: ما الذي تخطط له والمساحة والمدينة، وسأعطيك تكلفة تقريبية. يمكنك إرسال صور أو مخطط أو ملف PDF أو رسالة صوتية.',
       ph: 'اكتب رسالة…', send: 'إرسال', attach: 'إرفاق ملفات', mic: 'تسجيل رسالة صوتية', stop: 'إيقاف وإرسال', cancel: 'إلغاء', close: 'إغلاق المحادثة', fresh: 'محادثة جديدة', freshQ: 'بدء محادثة جديدة؟ تبقى المحادثة الحالية لدى الاستوديو.',
       typing: 'المساعد يكتب…', staff: 'يرد عليك المدير', waiting: 'نستدعي المدير…', online: 'متصل', offline: 'المساعد غير متصل الآن — اترك رقمك وسنرد خلال ساعات العمل: الاثنين–الجمعة 10:00–20:00 (بتوقيت كييف).',
       leave: 'اترك رقمك', phone: 'رقم هاتفك', phoneSend: 'اتصلوا بي', phoneBad: 'تحقق من رقم الهاتف', you: 'أنت', bot: 'المساعد', mgr: 'المدير',
       big: 'الملف كبير جدًا للمحادثة (حتى {max}). أرسله عبر Telegram أو WhatsApp:', type: 'لا نقبل هذا النوع من الملفات. المسموح: صور، فيديو، صوت، PDF، Excel، Word، DWG، DXF، 3DS، SKP، IFC، RVT، ZIP.', mismatch: 'الملف تالف أو من نوع مختلف.',
       many: 'رسائل كثيرة متتالية — انتظر قليلًا.', net: 'لا يوجد اتصال. حاول مرة أخرى.', upl: 'جارٍ الرفع…', drop: 'أفلت لإرفاق الملفات', remove: 'إزالة الملف',
-      est: 'حساب تقريبي', total: 'المجموع', from: 'من', smeta: 'حسب التقدير', voice: 'رد صوتي', play: 'استماع', pause: 'إيقاف مؤقت', rec: 'تسجيل', micErr: 'لا يمكن الوصول إلى الميكروفون.', file: 'ملف', eu: 'أوروبا' }
+      est: 'حساب تقريبي', total: 'المجموع', from: 'من', smeta: 'حسب التقدير', voice: 'رد صوتي', play: 'استماع', pause: 'إيقاف مؤقت', rec: 'تسجيل', micErr: 'لا يمكن الوصول إلى الميكروفون.', file: 'ملف', eu: 'أوروبا', long: 'الرسالة طويلة جدًا — حتى {max} حرف. اختصرها أو أرسلها على أجزاء.', fmany: 'حتى {max} ملفات في الرسالة الواحدة. أرسل الباقي في الرسالة التالية.', limit: 'سيتابع معك أحد المديرين من هنا. اترك رقمك وسنتصل بك خلال ساعات العمل (الاثنين–الجمعة 10:00–20:00 بتوقيت كييف)، أو راسلنا:', dayOff: 'أجاب المساعد اليوم على كثيرين — اترك رقمك وسيتواصل معك المدير (الاثنين–الجمعة 10:00–20:00 بتوقيت كييف)، أو راسلنا:', full: 'لا يمكن للمحادثة بدء محادثة جديدة الآن. اترك رقمك في نموذج الطلب أو راسلنا:', form: 'نموذج الطلب' }
   };
   var t = T[LG] || T.en, RTL = LG === 'ar';
   var ACCEPT = '.jpg,.jpeg,.png,.webp,.heic,.heif,.mp4,.mov,.webm,.ogg,.oga,.opus,.mp3,.m4a,.aac,.wav,.pdf,.xlsx,.xls,.csv,.docx,.dwg,.dxf,.3ds,.skp,.ifc,.rvt,.zip';
-  var ALT = { telegram: 'https://t.me/+380978667755', whatsapp: 'https://wa.me/380978667755' };
-  var LIM = { file: 1.5 * 1048576 }, ONLINE = true;
+  var ALT = { telegram: 'https://t.me/+380978667755', whatsapp: 'https://wa.me/380978667755', viber: 'viber://chat?number=%2B380978667755' };
+  var LIM = { file: 1.5 * 1048576 }, ONLINE = true, LIMIT = null, TMAX = 2000, FMAX = 5; // ліміти чату — functions/_chat.js L (start/status/poll)
   var reduced = W.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var KEY = 'cas_chat';
   var store = { get: function () { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } },
     set: function (v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) { /* приватне вікно — розмова лише до перезавантаження */ } },
     del: function () { try { localStorage.removeItem(KEY); } catch (e) { /* noop */ } } };
   var S = store.get() || null; // {sid, token}
-  var last = 0, state = 'bot', seen = {}, pending = [], timer = null, delay = 2000, opener = null, box, log, ta, stEl, typingEl, attEl, phRow, offEl, recBar, fileIn;
+  var last = 0, state = 'bot', seen = {}, pending = [], timer = null, delay = 2000, opener = null, box, log, ta, stEl, typingEl, attEl, phRow, offEl, offP, cntEl, recBar, fileIn;
 
   // ===== утиліти =====
   function el(tag, cls, text) { var x = d.createElement(tag); if (cls) x.className = cls; if (text != null) x.textContent = text; return x; }
@@ -111,12 +111,31 @@
       return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok) { var e = new Error(j.error || r.status); e.status = r.status; e.data = j; throw e; } return j; });
     });
   }
-  function errText(e) { return !e || !e.status ? t.net : e.status === 429 ? t.many : e.status === 415 ? (e.data && e.data.mismatch ? t.mismatch : t.type) : (e.data && e.data.error) || t.net; }
+  function errText(e) {
+    var j = (e && e.data) || {};
+    return !e || !e.status ? t.net : j.too_long ? t.long.replace('{max}', j.max || TMAX) : j.too_many_files ? t.fmany.replace('{max}', j.max || FMAX) : e.status === 429 ? t.many
+      : e.status === 415 ? (j.mismatch ? t.mismatch : t.type) : j.error || t.net;
+  }
   function note(text, links) {
     var li = el('li', 'cht-m cht-sys cht-err'); li.setAttribute('role', 'status');
     li.appendChild(el('p', 'cht-t', text));
-    if (links) { var p = el('p', 'cht-alt'); [['Telegram', ALT.telegram], ['WhatsApp', ALT.whatsapp]].forEach(function (x) { var a = el('a', 'cht-chip', x[0]); a.href = x[1]; a.target = '_blank'; a.rel = 'noopener'; p.appendChild(a); }); li.appendChild(p); }
+    if (links) li.appendChild(chips(links === 'form'));
     log.appendChild(li); down();
+  }
+  // Telegram / WhatsApp / Viber (+ форма заявки на сторінці, якщо є) — коли бот не відповідає або файл завеликий
+  function chips(form) {
+    var p = el('p', 'cht-alt');
+    [['Telegram', ALT.telegram], ['WhatsApp', ALT.whatsapp], ['Viber', ALT.viber]].forEach(function (x) { if (!x[1]) return; var a = el('a', 'cht-chip', x[0]); a.href = x[1]; a.target = '_blank'; a.rel = 'noopener'; p.appendChild(a); });
+    var z = form && d.getElementById('zayavka');
+    if (z) { var a = el('a', 'cht-chip', t.form); a.href = '#zayavka'; a.onclick = function () { close(); }; p.appendChild(a); }
+    return p;
+  }
+  function limits(j) {
+    if (!j) return;
+    LIM = j.limits || LIM; if (j.text_max) TMAX = j.text_max; if (j.files_msg) FMAX = j.files_msg;
+    if (j.alt) { ALT.telegram = j.alt.telegram || ALT.telegram; ALT.whatsapp = j.alt.whatsapp || ALT.whatsapp; ALT.viber = j.alt.viber || ALT.viber; }
+    if ('limit' in j) LIMIT = j.limit || null;
+    if ('online' in j) ONLINE = !!j.online;
   }
   function down() { if (log) log.scrollTop = log.scrollHeight; }
   // розмова: створюємо лише коли людина щось надсилає (порожніх розмов у базі немає)
@@ -124,7 +143,11 @@
     if (S) return Promise.resolve(S);
     var rh = ''; try { rh = sessionStorage.getItem('cas_rh') || ''; } catch (e) { /* noop */ }
     return req('POST', '/api/chat/start', { lang: LG, page: location.pathname, ref_host: rh || undefined }).then(function (j) {
-      S = { sid: j.sid, token: j.token }; store.set(S); LIM = j.limits || LIM; ONLINE = !!j.online; upd(); return S;
+      S = { sid: j.sid, token: j.token }; store.set(S); limits(j); upd(); return S;
+    }, function (e) {
+      // добова стеля нових розмов або забагато розмов з цієї адреси — «залиште номер у формі або напишіть у месенджер»
+      if (e.status === 429 && e.data && (e.data.day_full || e.data.ip_full)) { e.shown = true; note(t.full, 'form'); }
+      throw e;
     });
   }
 
@@ -213,8 +236,8 @@
       var before = last;
       (j.messages || []).forEach(render);
       if (j.last_id) last = Math.max(last, j.last_id);
-      state = j.state; ONLINE = !!j.online;
-      typingEl.hidden = !j.typing;
+      state = j.state; limits(j);
+      typingEl.hidden = !j.typing || !!LIMIT;
       upd();
       if (last > before) { down(); delay = 2000; if (box.hidden) mark(true); }
       else delay = j.typing ? 2000 : delay < 5000 ? 5000 : 10000;
@@ -229,7 +252,11 @@
     if (!stEl) return;
     stEl.textContent = state === 'staff' ? t.staff : state === 'waiting' ? t.waiting : ONLINE ? t.online : '';
     stEl.className = 'cht-st' + (state === 'bot' && ONLINE ? ' ok' : '');
-    var off = !ONLINE && state === 'bot';
+    // ліміт розмови (далі менеджер) або добовий ліміт бота — як офлайн: текст, месенджери й відкритий рядок номера
+    var lim = LIMIT === 'conv' && state !== 'staff' ? t.limit : LIMIT === 'day' && state === 'bot' ? t.dayOff : '';
+    var off = !!lim || (!ONLINE && state === 'bot');
+    offP.textContent = lim || t.offline;
+    offEl.classList.toggle('cht-lim', !!lim);
     offEl.hidden = !off;
     // офлайн — рядок номера відкритий сам; помічник повернувся — ховаємо, якщо людина його не відкривала й нічого не вписала
     if (off && phRow.querySelector('form').hidden) { phone(true); phRow.dataset.auto = '1'; }
@@ -241,12 +268,18 @@
     var text = ta.value.trim(), ready = pending.filter(function (p) { return p.id; }), loading = pending.some(function (p) { return !p.id && !p.err; });
     if (loading) return;
     if (!text && !ready.length) { ta.focus(); return; }
+    if (text.length > TMAX) { note(t.long.replace('{max}', TMAX)); ta.focus(); return; } // не обрізаємо мовчки — просимо скоротити
     var sb = box.querySelector('.cht-send'); sb.disabled = true;
     ensure().then(function () { return req('POST', '/api/chat/send', { text: text || undefined, files: ready.map(function (p) { return p.id; }) }); }).then(function () {
-      ta.value = ''; grow(); pending = []; drawAtt(); typingEl.hidden = !(ONLINE && state === 'bot'); poll();
-    }, function (e) { note(errText(e)); }).then(function () { sb.disabled = false; });
+      ta.value = ''; grow(); pending = []; drawAtt(); typingEl.hidden = !(ONLINE && state === 'bot' && !LIMIT); poll();
+    }, function (e) { if (!e.shown) note(errText(e)); }).then(function () { sb.disabled = false; });
   }
-  function grow() { ta.style.height = 'auto'; ta.style.height = Math.min(ta.scrollHeight, 140) + 'px'; }
+  // висота поля й лічильник символів (з 80 % межі; понад межу — червоний, надіслати не можна)
+  function grow() {
+    ta.style.height = 'auto'; ta.style.height = Math.min(ta.scrollHeight, 140) + 'px';
+    var n = ta.value.trim().length;
+    cntEl.hidden = n < TMAX * 0.8; cntEl.textContent = n + ' / ' + TMAX; cntEl.classList.toggle('over', n > TMAX);
+  }
 
   // ===== файли =====
   function addFiles(list) {
@@ -254,6 +287,7 @@
       var ext = (/\.([a-z0-9]{1,5})$/i.exec(f.name) || [])[1];
       if (!ext || ACCEPT.split(',').indexOf('.' + ext.toLowerCase()) < 0) { note(t.type); return; }
       if (f.size > LIM.file) { note(t.big.replace('{max}', size(LIM.file)), true); return; }
+      if (pending.length >= FMAX) { note(t.fmany.replace('{max}', FMAX)); return; }
       var p = { f: f, name: f.name, size: f.size, pr: 0 };
       pending.push(p); drawAtt(); upload(p);
     });
@@ -338,7 +372,7 @@
     var hi = el('li', 'cht-m cht-bot cht-hello'); var hh = el('div', 'cht-h'); hh.appendChild(el('b', null, t.bot)); hi.appendChild(hh); hi.appendChild(el('p', 'cht-t', t.hello)); log.appendChild(hi);
     box.appendChild(log);
     typingEl = el('p', 'cht-typing', t.typing); typingEl.hidden = true; typingEl.setAttribute('aria-live', 'polite'); box.appendChild(typingEl);
-    offEl = el('p', 'cht-off', t.offline); offEl.hidden = true; box.appendChild(offEl);
+    offEl = el('div', 'cht-off'); offEl.hidden = true; offEl.setAttribute('role', 'status'); offP = el('p', null, t.offline); offEl.appendChild(offP); offEl.appendChild(chips(false)); box.appendChild(offEl);
     // «Залишити номер»
     phRow = el('div', 'cht-ph');
     var lv = el('button', 'cht-lv'); lv.type = 'button'; lv.appendChild(svg(I.phone)); lv.appendChild(d.createTextNode(t.leave)); lv.setAttribute('aria-expanded', 'false'); lv.setAttribute('aria-controls', 'chtPh');
@@ -362,9 +396,10 @@
     var f = el('form', 'cht-f'); f.noValidate = true;
     fileIn = el('input'); fileIn.type = 'file'; fileIn.multiple = true; fileIn.accept = ACCEPT; fileIn.hidden = true; fileIn.tabIndex = -1;
     var ab = ibtn('cht-clip', t.attach, 'clip');
-    ta = el('textarea', 'cht-in'); ta.rows = 1; ta.maxLength = 4000; ta.placeholder = t.ph; ta.setAttribute('aria-label', t.ph); ta.dir = 'auto';
+    ta = el('textarea', 'cht-in'); ta.rows = 1; ta.placeholder = t.ph; ta.setAttribute('aria-label', t.ph); ta.dir = 'auto'; ta.setAttribute('aria-describedby', 'chtCnt');
+    cntEl = el('span', 'cht-cnt'); cntEl.id = 'chtCnt'; cntEl.hidden = true; cntEl.setAttribute('aria-live', 'polite'); cntEl.dir = 'ltr';
     var sb = ibtn('cht-send', t.send, 'send'); sb.type = 'submit';
-    f.appendChild(fileIn); f.appendChild(ab); f.appendChild(ta);
+    f.appendChild(fileIn); f.appendChild(ab); f.appendChild(ta); f.appendChild(cntEl);
     if (canRec()) { var mb = ibtn('cht-mic', t.mic, 'mic'); f.appendChild(mb); mb.onclick = startRec; }
     f.appendChild(sb); box.appendChild(f);
     recBar = el('div', 'cht-rec'); recBar.hidden = true;
@@ -418,7 +453,7 @@
     box.classList.toggle('cht-rm-anim', !!reduced);
     if (W.visualViewport) box.style.setProperty('--chvh', W.visualViewport.height + 'px');
     mark(false); upd();
-    req('GET', '/api/chat/status').then(function (j) { LIM = j.limits || LIM; ONLINE = !!j.online; upd(); }, function () { /* noop */ });
+    req('GET', '/api/chat/status').then(function (j) { limits(j); upd(); }, function () { /* noop */ });
     if (S) poll(); else schedule();
     down();
     setTimeout(function () { try { ta.focus({ preventScroll: true }); } catch (e) { ta.focus(); } }, 30);

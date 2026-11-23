@@ -3,7 +3,7 @@ import json
 import os
 
 from . import stt, vision
-from .common import MAX_PIXELS, MAX_VIDEO_S, fail, passport, run, which
+from .common import MAX_PIXELS, MAX_VIDEO_S, env_int, fail, passport, run, which
 
 
 def image(path, work, lang):
@@ -72,7 +72,8 @@ def video(path, work, lang):
     warns = []
     if (meta.get("duration") or 0) > MAX_VIDEO_S:
         warns.append(f"відео довше за {MAX_VIDEO_S // 60} хв — переглянуто лише початок")
-    n = 6 if dur >= 20 else 4
+    top = env_int("CHAT_VIDEO_FRAMES", 6, 1, 8)   # стеля кадрів у vision (config.LIMITS)
+    n = top if dur >= 20 else min(4, top)
     frames = []
     for i in range(n):
         out = os.path.join(work, f"f{i}.jpg")

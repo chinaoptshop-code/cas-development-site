@@ -282,13 +282,13 @@ async function once(env, key) {
   const r = await env.DB.prepare("INSERT OR IGNORE INTO settings (key, value) VALUES (?, datetime('now'))").bind(key).run();
   return !!r.meta.changes;
 }
-const forget = (env, ...keys) => env.DB.prepare(`DELETE FROM settings WHERE key IN (${keys.map(() => '?').join(', ')})`).bind(...keys).run();
+const forget = env => env.DB.prepare("DELETE FROM settings WHERE key IN ('chat_r2_80', 'chat_r2_cap')").run();
 const gb = n => (n / 1024 ** 3).toFixed(1).replace('.', ',');
 // стан сховища перед завантаженням: {r2 — класти в R2, full — R2 на стелі (великі файли не приймаємо, малі — у D1)}
 export async function storage(env, len = 0) {
   if (!hasR2(env)) return { r2: false, full: false };
   const used = await r2Used(env), cap = r2Cap(env);
-  if (used < cap * 0.7) { if (R2C.armed !== true) { R2C.armed = true; await forget(env, 'chat_r2_80', 'chat_r2_cap'); } }
+  if (used < cap * 0.7) { if (R2C.armed !== true) { R2C.armed = true; await forget(env); } }
   else R2C.armed = false;
   if (used >= cap * 0.8 && await once(env, 'chat_r2_80'))
     await notifyAdmins(env, `📦 <b>Сховище чату заповнене на ${Math.round(used / cap * 100)} %</b>\n${gb(used)} з ${gb(cap)} ГБ (R2). Файли розмов без заявки видаляються через ${L.keepFilesDays} діб, із заявкою — через ${L.keepLeadFilesDays}.`);

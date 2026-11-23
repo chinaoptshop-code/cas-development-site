@@ -7,6 +7,7 @@ import datetime
 import re
 
 import checks
+import config
 import estimate as E
 import params as P
 import prompts
@@ -32,6 +33,7 @@ class Brain:
         self.now = now or (lambda: datetime.datetime.now(SL.TZ))
         self.log = log or (lambda *a: None)
         self._llm_ok = None
+        self.lim = config.limits(cfg)
 
     # ---------- модель ----------
     def llm_ok(self):
@@ -47,7 +49,7 @@ class Brain:
     # ---------- файли ----------
     def files(self, pending, fetch, lang):
         out = []
-        limit = int(self.cfg.num("CHAT_MAX_FILE_MB", 60) * 1024 * 1024)
+        limit = int(self.cfg.num("CHAT_MAX_FILE_MB", 12) * 1024 * 1024)
         for m in pending:
             for f in (m.get("files") or [])[:12]:
                 meta = {"name": f.get("name"), "kind": f.get("kind"), "mime": f.get("mime")}
@@ -74,6 +76,12 @@ class Brain:
     def respond(self, conv, fetch):
         lang = conv.get("lang") if conv.get("lang") in LANGS else "uk"
         pending, history = conv.get("pending") or [], conv.get("history") or []
+        # бюджет моделі вичерпано (розмова або доба; llm.Metered) — нічого не розбираємо й не генеруємо: handoff limit без тексту,
+        # сайт сам додає «Далі відповість менеджер…» мовою розмови (functions/_chat.js capConversation)
+        why = getattr(self.llm, "exhausted", lambda: None)() if self.llm is not None else None
+        if why:
+            self.log("ліміт:", why, "— розмову передано людині")
+            return Outcome(text="", handoff="limit", reason=why, notes=["limit"])
         passports = self.files(pending, fetch, lang)
         transcripts = [p.get("transcript") for p in passports if p.get("kind") in ("audio", "video") and p.get("transcript")]
         voice_in = any(p.get("kind") == "audio" for p in passports)
@@ -93,10 +101,11 @@ class Brain:
                     p["area"], area_src = ps["area_m2"], ps
                     break
         # модель лише пропонує параметри — код перевіряє
-        lines = self.conv_lines(history, pending, transcripts)
+        lines = self.conv_lines(history, pending, transcripts, self.lim["CHAT_HISTORY_LINES"], self.lim["CHAT_HISTORY_CHARS"])
+        pp = self.prompt_passports(passports)
         model_on = self.llm_ok()
         if model_on:
-            m = parse_json(self.llm.complete(prompts.EXTRACT_SYSTEM, prompts.extract_user(lines, passports), json_mode=True, max_tokens=400))
+            m = parse_json(self.llm.complete(prompts.EXTRACT_SYSTEM, prompts.extract_user(lines, pp), json_mode=True, max_tokens=self.lim["CHAT_EXTRACT_TOKENS"]))
             ev_nums = [ps.get("area_m2") for ps in passports] + [a for ps in passports for a in (ps.get("numbers") or {}).get("areas", []) or []]
             P.merge_model(p, m, old_user + new_texts + [ps.get("text", "") for ps in passports], ev_nums)
         p = P.finalize(p, lang)
@@ -152,7 +161,7 @@ class Brain:
                 "call_slots": bool(slot_list), "file_notes": bool(manager_files or failed)}
         model_text, unsure, why = "", False, None
         if model_on:
-            model_text, unsure, why = self.generate(lang, lines, passports, plan, allowed)
+            model_text, unsure, why = self.generate(lang, lines, pp, plan, allowed)
             if why == "checks":
                 model_text = ""
                 if not reason_code:
@@ -207,18 +216,32 @@ class Brain:
                     out.handoff, out.reason, out.renotify = reason_code, reason, True
             else:
                 out.handoff, out.reason = reason_code, reason
-        if voice_in and self.voice and self.cfg.get("CHAT_TTS", "on") != "off":
+        if voice_in and self.voice and self.cfg.get("CHAT_TTS", "on") != "off" and self.voice_left(conv) > 0:
             out.audio = self.voice(text, lang)
         out.notes = [f"lang={lang}", f"files={len(passports)}", f"model={'on' if model_on else 'off'}", f"est={'yes' if est else 'no'}"]
         return out
 
     # ---------- допоміжне ----------
+    def voice_left(self, conv):
+        """Голосових відповідей ще можна в цій розмові (Михайло 23.11.2026: «одне або два… а потім лише текстом»).
+        Рахуємо з історії (відповіді бота з audio — переживає перезапуск воркера) і з бюджету черги сайту (voice_left), менше з двох."""
+        used = sum(1 for m in conv.get("history") or [] if m.get("role") == "bot" and m.get("audio"))
+        left = self.lim["CHAT_VOICE_PER_CONV"] - used
+        b = (conv.get("budget") or {}).get("voice_left")
+        return min(left, b) if isinstance(b, int) else left
+
+    def prompt_passports(self, passports):
+        """Паспорти файлів для запиту моделі: не більше CHAT_PASSPORTS, витяг кожного — до CHAT_PASSPORT_CHARS знаків."""
+        n, c = self.lim["CHAT_PASSPORTS"], self.lim["CHAT_PASSPORT_CHARS"]
+        return [{**p, "text": (p.get("text") or "")[:c]} for p in passports[:n]]
+
     def generate(self, lang, lines, passports, plan, allowed):
         """→ (текст, unsure, причина невдачі). Дві спроби; не пройшло — (\"\", True, \"checks\")."""
         feedback = ""
         for attempt in range(2):
+            # друга спроба — єдина перегенерація; кожна (і невдала) рахується в бюджет (llm.Metered → usage.py)
             raw = self.llm.complete(prompts.reply_system(lang, "https://cas-develop.com/" + E.CALC_PAGES.get(lang, E.CALC_PAGES["uk"])) + feedback,
-                                    prompts.reply_user(lines, passports, plan), json_mode=True)
+                                    prompts.reply_user(lines, passports, plan), json_mode=True, max_tokens=self.lim["CHAT_MAX_TOKENS"])
             if raw is None:
                 return "", False, "no_model"
             d = parse_json(raw) or {"reply": raw}
@@ -239,10 +262,11 @@ class Brain:
         return "", True, "checks"
 
     @staticmethod
-    def conv_lines(history, pending, transcripts):
+    def conv_lines(history, pending, transcripts, keep=12, max_chars=6000):
+        """Рядки розмови для запиту: останні keep реплік історії + нові; разом ≤ max_chars (відкидаємо найстаріші рядки історії)."""
         who = {"user": "Клієнт", "bot": "Помічник", "staff": "Менеджер", "system": "Система"}
         out = []
-        for m in history[-12:]:
+        for m in history[-keep:]:
             t = (m.get("text") or "").strip()
             if t:
                 out.append(f"{who.get(m.get('role'), 'Клієнт')}: {t[:800]}")
@@ -252,6 +276,12 @@ class Brain:
             out.append("Клієнт (нове): " + (t[:2000] or "(без тексту)") + (f" [файли: {fs}]" if fs else ""))
         for t in transcripts:
             out.append("Клієнт (голос/звук, розпізнано): " + t[:2000])
+        n_hist = min(len(history[-keep:]), sum(1 for m in history[-keep:] if (m.get("text") or "").strip()))
+        while n_hist and sum(len(x) for x in out) > max_chars:
+            out.pop(0); n_hist -= 1
+        if sum(len(x) for x in out) > max_chars:   # самі нові вже довші — обрізаємо кожне пропорційно
+            k = max_chars / max(1, sum(len(x) for x in out))
+            out = [x[: max(80, int(len(x) * k))] for x in out]
         return out
 
     @staticmethod

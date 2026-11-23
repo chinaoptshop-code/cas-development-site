@@ -7,6 +7,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 
 from api import ApiError
+from usage import nothing
 
 
 def short(sid):
@@ -66,7 +67,8 @@ class Worker:
         self.lock = int(cfg.num("CHAT_LOCK", 180))
         self._busy, self._mx = set(), threading.Lock()
         self._last_ping = -1e9
-        self.stats = {"replied": 0, "conflict": 0, "taken": 0, "failed": 0}
+        self.stats = {"replied": 0, "conflict": 0, "taken": 0, "failed": 0, "limited": 0}
+        self.usage = getattr(getattr(brain, "llm", None), "usage", None)   # облік витрат (usage.py) — витрати потоку → ця розмова
         self.printed = []      # --dry: що відповіли б
 
     # ---------- один крок ----------
@@ -102,8 +104,8 @@ class Worker:
         sid = conv.get("sid", "")
         t0 = time.time()
         try:
-            with Heartbeat(self.api, sid, log=self.log) as hb:
-                out = self.brain.respond(conv, fetch=lambda f: self.api.file(f["id"], int(self.cfg.num("CHAT_MAX_FILE_MB", 60) * 1024 * 1024)))
+            with Heartbeat(self.api, sid, log=self.log) as hb, (self.usage.bind(sid) if self.usage else nothing()):
+                out = self.brain.respond(conv, fetch=lambda f: self.api.file(f["id"], int(self.cfg.num("CHAT_MAX_FILE_MB", 12) * 1024 * 1024)))
             if out is None:
                 self.api.release(sid); return "released"
             if self.dry:
@@ -114,6 +116,12 @@ class Worker:
             self.api.reply(sid, conv["last_user_id"], text=out.text, audio=out.audio, estimate=out.estimate,
                            handoff=out.handoff, reason=out.reason, renotify=out.renotify)
             self.stats["replied"] += 1
+            if out.handoff == "limit":
+                self.stats["limited"] += 1
+                if self.usage:
+                    self.usage.bump("limited")
+            if out.audio and self.usage:
+                self.usage.bump("voice")
             self.log(short(sid), "відповідь", f"{time.time() - t0:.1f}с", "handoff=" + (out.handoff or "-"),
                      "est" if out.estimate else "", "audio" if out.audio else "")
             return "replied"
@@ -122,6 +130,11 @@ class Worker:
                 self.stats["conflict"] += 1; self.log(short(sid), "409: відвідувач написав ще — розмова повернеться в чергу"); return "conflict"
             if e.taken:
                 self.stats["taken"] += 1; self.log(short(sid), "409: розмову веде людина"); return "taken"
+            if e.limited:   # стеля сайту (розмова або доба) — відповідь не прийнято, нічого більше не витрачаємо
+                self.stats["limited"] += 1; self.log(short(sid), "409: ліміт сайту", e.data.get("limit"))
+                if e.data.get("limit") == "day":
+                    self._release(sid)
+                return "limited"
             self.stats["failed"] += 1; self.log(short(sid), "помилка API", e.status)
             self._release(sid); return "failed"
         except Exception as e:  # обробка впала — розмова одразу знову в черзі

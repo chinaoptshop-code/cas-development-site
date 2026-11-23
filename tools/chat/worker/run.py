@@ -5,6 +5,7 @@
   python3 tools/chat/worker/run.py --selftest   # що вміє на цій машині: формати, модель, API (ping), календар, голос
   python3 tools/chat/worker/run.py --once       # один прохід черги й вихід
   python3 tools/chat/worker/run.py --once --dry # не надсилати відповіді — надрукувати їх (розмова повертається в чергу)
+  python3 tools/chat/worker/run.py --usage      # що витрачено сьогодні (виклики, токени, секунди) і чинні ліміти
 
 Налаштування — ~/.cas-chat/env (див. README.md). Типово локальні моделі (Ollama); платний API — лише CHAT_LLM=api (рішення власника).
 """
@@ -21,7 +22,7 @@ HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from config import REPO, Config  # noqa: E402
 
-PASS_ENV = ("CHAT_OLLAMA_URL", "CHAT_VISION_MODEL", "CHAT_STT_CMD", "CHAT_CAL_CMD", "TG_PYTHON", "TG_VENV", "TG_WHISPER_MODEL",
+PASS_ENV = ("CHAT_OLLAMA_URL", "CHAT_VISION_MODEL", "CHAT_VIDEO_FRAMES", "CHAT_PDF_VISION_PAGES", "CHAT_VISION_IMAGES", "CHAT_USAGE_FILE", "CHAT_STT_CMD", "CHAT_CAL_CMD", "TG_PYTHON", "TG_VENV", "TG_WHISPER_MODEL",
             "ASSISTANT_GCAL_IDS", "ASSISTANT_TZ", "TTS_CLONE_VOICE")
 
 
@@ -42,8 +43,41 @@ def build(cfg, dry=False):
     log = Log(cfg.on("CHAT_DEBUG"))
     api = Api(cfg.base, cfg.key)
     voice = Voice() if (cfg.get("CHAT_TTS") or "on") != "off" else None
-    brain = Brain(cfg, llm=llm.backend(cfg), voice=voice, calendar=(cfg.get("CHAT_CALENDAR") or "on") != "off", log=log)
+    brain = Brain(cfg, llm=llm.backend(cfg, log=log), voice=voice, calendar=(cfg.get("CHAT_CALENDAR") or "on") != "off", log=log)
     return Worker(cfg, api, brain, dry=dry, log=log)
+
+
+# ---------------- ліміти й облік ----------------
+def limits_table(cfg):
+    import config
+    lim = config.limits(cfg)
+    rows = []
+    for k, (dflt, lo, hi, what) in config.LIMITS.items():
+        v = lim[k]
+        rows.append((k, "не задано" if v is None else f"{v:,}".replace(",", " "), f"{lo}…{hi}", what))
+    w = [max(len(r[i]) for r in rows) for i in range(3)]
+    return "\n".join(f"{r[0]:<{w[0]}}  {r[1]:>{w[1]}}  {r[2]:<{w[2]}}  {r[3]}" for r in rows)
+
+
+def usage_report(cfg, usage=None):
+    import config
+    from usage import Usage
+    u = (usage or Usage()).today()
+    lim = config.limits(cfg)
+    mode = (cfg.get("CHAT_LLM") or "local").lower()
+    api_cap = lim["CHAT_API_DAY_TOKENS"]
+    loc = u["local"]
+    lines = [f"Витрати чату за {u['day']} (доба за Києвом, скидання о 00:00; файл {Usage().path}):",
+             f"  локальна модель: викликів {loc['calls']} з {lim['CHAT_LOCAL_DAY_CALLS']}, ~{loc['tokens']} токенів, "
+             f"{int(loc['seconds'])} с з {lim['CHAT_LOCAL_DAY_SECONDS']} с",
+             f"  платний API:     викликів {u['api']['calls']}, ~{u['api']['tokens']} токенів" +
+             (f" з {api_cap}" if api_cap else "") + ("" if mode == "api" else " (вимкнено — CHAT_LLM=local)"),
+             f"  голосових відповідей: {u.get('voice', 0)}; передано людині через ліміт: {u.get('limited', 0)}; розмов з витратами: {len(u['convs'])}"]
+    top = sorted(u["convs"].items(), key=lambda kv: -kv[1]["tokens"])[:5]
+    if top:
+        lines.append("  найвитратніші розмови (sid, ~токени / межа на розмову " + str(lim["CHAT_CONV_TOKENS"]) + "):")
+        lines += [f"    {k}… {v['tokens']} ({v['calls']} викл., {int(v['seconds'])} с)" for k, v in top]
+    return "\n".join(lines) + "\n\nЛіміти:\n" + limits_table(cfg)
 
 
 # ---------------- самоперевірка ----------------
@@ -136,7 +170,15 @@ def selftest(cfg):
     for r in rows:
         print(f"{r[0]:<{w[0]}}  {r[1]:<{w[1]}}  {r[2]:<{w[2]}}  {r[3]}")
     print("\n" + repr(cfg))
+    if mode == "api" and config_limits(cfg)["CHAT_API_DAY_TOKENS"] is None:
+        print("\nУВАГА: CHAT_LLM=api без CHAT_API_DAY_TOKENS — платний API не вмикається, працює локальна модель.")
+    print("\nЧинні ліміти (~/.cas-chat/env; README.md «Ліміти»):\n" + limits_table(cfg))
     return 0 if ok_all else 1
+
+
+def config_limits(cfg):
+    import config
+    return config.limits(cfg)
 
 
 def single_instance():
@@ -157,6 +199,9 @@ def main(argv=None):
     export(cfg)
     if "--selftest" in argv:
         return selftest(cfg)
+    if "--usage" in argv:
+        print(usage_report(cfg))
+        return 0
     if not cfg.key:
         print("Немає LEADBOT_KEY (~/.cas-chat/env або змінна оточення) — див. tools/chat/worker/README.md", file=sys.stderr)
         return 2

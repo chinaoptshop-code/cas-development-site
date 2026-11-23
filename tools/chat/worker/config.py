@@ -27,9 +27,46 @@ DEFAULTS = {
     "CHAT_CALENDAR": "on",            # on | off — пропонувати вільні проміжки з календаря
     "CHAT_DEBUG": "0",                # 1 — у журнал і тексти (лише для налагодження на Mac mini)
     "CHAT_TMP": "",                   # тека для тимчасових файлів (типово — системна)
-    "CHAT_MAX_FILE_MB": "60",
+    "CHAT_MAX_FILE_MB": "12",         # з R2 сайт приймає до 10 МБ на файл (functions/_chat.js L.fileR2), без R2 — 1,5 МБ
     "CHAT_FILE_TIMEOUT": "240",       # с на розбір одного файлу (відео/DWG — найдовші)
 }
+
+
+# ---------------- ліміти (Михайло 23.11.2026: «щоб клієнти всі токени не використали») ----------------
+# Однакові для обох бекендів (local і api). Значення — у ~/.cas-chat/env або змінних оточення; межі [min, max] — захист від описок.
+# Таблиця з поясненнями — README.md, розділ «Ліміти». Сайт має свої стелі (functions/_chat.js L: відповідей на розмову й на добу) —
+# воркер бачить залишок у черзі (budget) і нічого не витрачає понад нього.
+LIMITS = {
+    # ключ: (типово, min, max, що це)
+    "CHAT_MAX_TOKENS":        (600, 100, 2000, "токенів у відповіді моделі (max output)"),
+    "CHAT_EXTRACT_TOKENS":    (400, 100, 1000, "токенів у JSON витягу параметрів"),
+    "CHAT_HISTORY_LINES":     (12, 2, 40, "останніх реплік історії в запиті"),
+    "CHAT_HISTORY_CHARS":     (6000, 1000, 30000, "знаків історії й нових повідомлень у запиті (найстаріше відкидається)"),
+    "CHAT_PASSPORT_CHARS":    (1500, 200, 6000, "знаків витягу з одного файлу в запиті"),
+    "CHAT_PASSPORTS":         (8, 1, 12, "паспортів файлів у запиті"),
+    "CHAT_VIDEO_FRAMES":      (6, 1, 8, "кадрів відео в vision-модель"),
+    "CHAT_PDF_VISION_PAGES":  (3, 1, 6, "сторінок скану PDF у vision-модель"),
+    "CHAT_VISION_IMAGES":     (6, 1, 8, "зображень в одному виклику vision-моделі"),
+    "CHAT_VOICE_PER_CONV":    (2, 0, 10, "голосових відповідей на розмову (далі — лише текст; Михайло 23.11.2026)"),
+    "CHAT_CONV_TOKENS":       (40000, 2000, 400000, "приблизних токенів на розмову за добу (обидва бекенди)"),
+    "CHAT_LOCAL_DAY_CALLS":   (3000, 50, 50000, "викликів локальної моделі на добу"),
+    "CHAT_LOCAL_DAY_SECONDS": (21600, 600, 86400, "секунд обчислень локальної моделі на добу (6 год)"),
+    "CHAT_API_DAY_TOKENS":    (None, 1000, 5000000, "ОБОВʼЯЗКОВО для CHAT_LLM=api: токенів платного API на добу (рекомендовано 200000)"),
+    "CHAT_API_CONV_TOKENS":   (20000, 1000, 200000, "токенів платного API на розмову за добу"),
+}
+
+
+def limits(cfg):
+    """→ {ключ: int|None} з межами; CHAT_API_DAY_TOKENS без значення — None (api тоді не вмикається)."""
+    out = {}
+    for k, (dflt, lo, hi, _) in LIMITS.items():
+        raw = cfg.get(k) if cfg is not None else None
+        try:
+            v = int(float(raw)) if raw not in (None, "") else dflt
+        except (TypeError, ValueError):
+            v = dflt
+        out[k] = None if v is None else max(lo, min(hi, v))
+    return out
 
 
 def _read_file(p):

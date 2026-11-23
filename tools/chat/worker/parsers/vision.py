@@ -5,6 +5,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import ollama  # noqa: E402
+from .common import env_int  # noqa: E402
 
 PROMPT = ("Ти допомагаєш студії дизайну інтерʼєру, ремонту й будівництва. Опиши {what} коротко (до 5 речень) українською: "
           "що це (приміщення, фасад, ділянка, план, креслення, кошторис), стан (новобудова без ремонту, старий ремонт, будівництво), "
@@ -18,7 +19,7 @@ def describe(paths, what="фото", timeout=180):
     if not model:
         return None, None
     imgs = []
-    for p in paths[:6]:
+    for p in paths[:env_int("CHAT_VISION_IMAGES", 6, 1, 8)]:
         try:
             with open(p, "rb") as f:
                 b = f.read()

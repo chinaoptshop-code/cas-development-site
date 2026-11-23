@@ -10,6 +10,14 @@ import subprocess
 import zipfile
 
 MAX_TEXT = 4000            # знаків витягу тексту в паспорті
+def env_int(name, default, lo, hi):
+    """Ліміт з оточення (run.py експортує ~/.cas-chat/env; межі — config.LIMITS)."""
+    try:
+        return max(lo, min(hi, int(float(os.environ.get(name) or default))))
+    except ValueError:
+        return default
+
+
 MAX_PAGES = 300            # PDF: сторінок рахуємо до…
 TEXT_PAGES = 40            # …текст беремо з перших N
 MAX_ROWS = 5000            # таблиці: рядків на аркуш

@@ -21,6 +21,11 @@ class ApiError(Exception):
         return self.status == 409 and bool(self.data.get("conflict"))
 
     @property
+    def limited(self):
+        """Стеля сайту: розмова ('conv' — далі людина) або доба ('day'); functions/api/bot/chat/index.js."""
+        return self.status == 409 and self.data.get("limit") in ("conv", "day")
+
+    @property
     def taken(self):
         """Розмову веде людина / закрито — бот мовчить."""
         return self.status == 409 and self.data.get("state") in ("staff", "closed")
@@ -29,6 +34,7 @@ class ApiError(Exception):
 class Api:
     def __init__(self, base, key, timeout=30, retries=3, sleep=time.sleep, ua="cas-chat-worker/1"):
         self.base, self._key, self.timeout, self.retries, self.sleep, self.ua = base.rstrip("/"), key, timeout, retries, sleep, ua
+        self.budget = {}
 
     def _req(self, method, path, body=None, raw=False, max_bytes=None):
         data = None if body is None else json.dumps(body, ensure_ascii=False).encode()
@@ -62,8 +68,11 @@ class Api:
         return self._req("POST", "/api/bot/chat/ping", {})
 
     def queue(self, limit=2, lock=180):
+        """→ розмови; self.budget — залишок добового бюджету сайту ({day_answers_left, day_answers_max} або {})."""
         q = urllib.parse.urlencode({"limit": max(1, min(10, int(limit))), "lock": max(30, min(600, int(lock)))})
-        return (self._req("GET", f"/api/bot/chat?{q}") or {}).get("items", [])
+        d = self._req("GET", f"/api/bot/chat?{q}") or {}
+        self.budget = d.get("budget") or {}
+        return d.get("items", [])
 
     def file(self, fid, max_bytes):
         if not (isinstance(fid, str) and len(fid) == 24 and all(c in "0123456789abcdef" for c in fid)):

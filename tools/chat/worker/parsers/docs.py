@@ -7,7 +7,7 @@ import re
 import zipfile
 
 from . import vision
-from .common import (MAX_PAGES, MAX_ROWS, MAX_SHEETS, TEXT_PAGES, clip, fail, find_areas, find_sums, passport, run, to_num, which,
+from .common import (MAX_PAGES, MAX_ROWS, MAX_SHEETS, TEXT_PAGES, clip, env_int, fail, find_areas, find_sums, passport, run, to_num, which,
                      zip_safe)
 
 
@@ -70,7 +70,7 @@ def pdf(path, work, lang):
     scan = len(re.sub(r"\s", "", text)) < 40 * max(1, min(n or 1, TEXT_PAGES))
     desc = None
     if scan:
-        imgs = _pdf_images(path, work)
+        imgs = _pdf_images(path, work, pages=env_int("CHAT_PDF_VISION_PAGES", 3, 1, 6))
         desc, model = vision.describe(imgs, what="сторінки PDF (скан: план, креслення чи кошторис)") if imgs else (None, None)
         if not desc:
             warns.append("скан без текстового шару — " + ("немає vision-моделі" if imgs and not model else "текст не розпізнано"))
