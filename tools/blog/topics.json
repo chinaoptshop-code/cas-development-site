@@ -332,9 +332,10 @@
   "keyword": "ремонт новобудови київ",
   "service": [
    "/remont-novobudovy-kyiv",
-   "Ремонт новобудови"
+   "Ремонт у новобудові"
   ],
-  "status": "todo"
+  "status": "draft",
+  "note": "20.11.2026: чернетка, гілка content/blog-2011, чекає ОК Михайла; ru-пара і переклади en, es, pl, de, fr, pt, zh, ar готові в гілці"
  },
  {
   "lang": "uk",
@@ -829,10 +830,10 @@
   "keyword": "дизайн готелю",
   "service": [
    "/dyzain-hotelu-kyiv",
-   "Дизайн готелю"
+   "Дизайн і ремонт готелю"
   ],
-  "status": "todo",
-  "note": "SEO-аудит 25.10.2026: комерційний запит, сегмент від $5 000"
+  "status": "draft",
+  "note": "SEO-аудит 25.10.2026: комерційний запит, сегмент від $5 000; 20.11.2026: чернетка, гілка content/blog-2011, чекає ОК Михайла; ru-пара і переклади en, es, pl, de, fr, pt, zh, ar готові в гілці"
  },
  {
   "lang": "ru",
@@ -1820,5 +1821,41 @@
   "status": "draft",
   "note": "22.11.2026: чернетка — tools/blog/drafts/en-guest-room-renovation-cost.json (НЕ в articles/, щоб build-all не опублікував); GSC: /en/blog 61 показ, поз. ~9 без окремої статті. Після ОК Михайла — перенести в tools/blog/articles/, build.py, status published.",
   "date": "2026-11-22"
+  },
+  {
+  "lang": "uk",
+  "slug": "skilky-koshtuie-kvartyra-pid-kliuch-dyzain-remont-mebli",
+  "title": "Скільки коштує квартира під ключ у Києві: дизайн, ремонт і меблі",
+  "keyword": "квартира під ключ київ ціна",
+  "service": [
+   "/vartist-remontu-kvartyry-kyiv",
+   "Вартість ремонту квартири"
+  ],
+  "status": "draft",
+  "note": "20.11.2026: чернетка, гілка content/blog-2011, чекає ОК Михайла; ru-пара і переклади en, es, pl, de, fr, pt, zh, ar готові в гілці"
+ },
+ {
+  "lang": "uk",
+  "slug": "yak-vybraty-budivelnu-kompaniiu-dlia-budynku",
+  "title": "Як вибрати будівельну компанію для будинку: договір, кошторис, оплата",
+  "keyword": "будівельна компанія київ будинок",
+  "service": [
+   "/budivnytstvo-budynkiv-kyiv",
+   "Будівництво будинків"
+  ],
+  "status": "draft",
+  "note": "20.11.2026: чернетка, гілка content/blog-2011, чекає ОК Михайла; ru-пара і переклади en, es, pl, de, fr, pt, zh, ar готові в гілці"
+ },
+ {
+  "lang": "uk",
+  "slug": "remont-dystantsiino-z-za-kordonu-dohovir-oplata-kontrol",
+  "title": "Ремонт в Україні дистанційно: договір, оплата з-за кордону й контроль",
+  "keyword": "ремонт дистанційно з-за кордону",
+  "service": [
+   "/onlain-kontrol",
+   "Онлайн-контроль обʼєкта"
+  ],
+  "status": "draft",
+  "note": "20.11.2026: чернетка, гілка content/blog-2011, чекає ОК Михайла; ru-пара і переклади en, es, pl, de, fr, pt, zh, ar готові в гілці"
  }
 ]
