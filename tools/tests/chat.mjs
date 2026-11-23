@@ -470,4 +470,14 @@ await it('база без міграції 0021: чат — чесний 503, р
   eq((await call(makeEnv(null), 'POST', '/api/chat/start', { body: {}, headers: { ip: nextIp() } })).status, 503);
 });
 
+describe('Чат: версії панелі в завантажувачі site-chrome.v1.js');
+await it('блок /*chat:v*/ відповідає assets/chat.v1.{js,css} (інакше — python3 tools/chat/ver.py)', async () => {
+  const { createHash } = await import('node:crypto');
+  const { readFileSync } = await import('node:fs');
+  const { ROOT } = await import('./harness.mjs');
+  const h = f => createHash('sha1').update(readFileSync(ROOT + '/assets/' + f)).digest('hex').slice(0, 8);
+  const sc = readFileSync(ROOT + '/assets/site-chrome.v1.js', 'utf8');
+  ok(sc.includes(`var CHV = {js: "${h('chat.v1.js')}", css: "${h('chat.v1.css')}"};`), 'застарілі версії панелі: python3 tools/chat/ver.py');
+});
+
 if (process.argv[1] && process.argv[1].endsWith('chat.mjs')) process.exit(report() ? 1 : 0);

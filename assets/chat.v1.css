@@ -83,7 +83,8 @@
 .cht[dir=rtl] .cht-send svg,.cht[dir=rtl] .cht-clip svg{transform:scaleX(-1)}
 .cht-rec{flex:none;display:flex;align-items:center;gap:10px;padding:8px 12px;border-top:1px solid var(--c-ln)}
 .cht-dot{width:10px;height:10px;border-radius:50%;background:#e07a6a;flex:none}
-.cht-rt{flex:1;font-variant-numeric:tabular-nums;direction:ltr;text-align:start}
+.cht-rt{flex:1;min-width:0;white-space:nowrap;font-variant-numeric:tabular-nums;direction:ltr;text-align:start}
+.cht-rec .btn{padding:0 14px}
 .cht-dz{position:absolute;inset:8px;display:none;place-items:center;border:2px dashed var(--c-ac);border-radius:14px;background:rgba(8,7,9,.86);color:var(--c-tx);pointer-events:none;font-weight:600}
 .cht-drag .cht-dz{display:grid}
 /* ПК і планшет: картка в куті */
