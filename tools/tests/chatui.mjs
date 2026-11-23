@@ -136,7 +136,14 @@ for (const w of [402, 1440]) {
     ok(!(await page.$('.cht')), 'панель відкрилась сама');
     ok(!(await page.evaluate(() => [...document.scripts].some(s => /chat\.v1\.js/.test(s.src)))), 'модуль до тапу');
     if (w >= 768) { await page.locator('.scf-soc').scrollIntoViewIfNeeded(); await shot(page, 'chat-icon-footer'); }
-    else { await page.click('.mbar[data-one] .mb-tg'); await page.waitForTimeout(250); await shot(page, 'chat-icon-pill'); await page.click('.mbar[data-one] .mb-tg'); }
+    else {
+      await page.click('.mbar[data-one] .mb-tg'); await page.waitForTimeout(250);
+      // 6 іконок (дзвінок, Telegram, WhatsApp, Viber, WeChat, чат) — в один ряд, кожна ≥ 44 px, меню в межах екрана
+      const ic = await page.$$eval('.mb-menu a:not(.mb-lead)', xs => xs.map(x => x.getBoundingClientRect().toJSON()));
+      ok(ic.length === 6, 'іконок у меню: ' + ic.length);
+      ok(ic.every(r => Math.abs(r.top - ic[0].top) < 1 && r.width >= 44 && r.height >= 44 && r.left >= 0 && r.right <= w), 'не в один ряд / < 44 px: ' + JSON.stringify(ic.map(r => [r.left, r.top, r.width])));
+      await shot(page, 'chat-icon-pill'); await page.click('.mbar[data-one] .mb-tg');
+    }
     // режим перевірки запамʼятовується на наступних сторінках вкладки
     await page.goto(BASE + '/services', { waitUntil: 'networkidle' });
     ok(await page.$('.scf-soc a[data-chat]'), 'sessionStorage cas_chat');

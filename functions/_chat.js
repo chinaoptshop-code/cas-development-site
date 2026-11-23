@@ -93,7 +93,9 @@ const HOT = new Map();
 export const HOT_LIMITS = Object.freeze({ poll: [90, 60], file: [120, 60], status: [30, 60] });
 export function hotLimited(request, bucket, t = Date.now()) {
   const [max, win] = HOT_LIMITS[bucket] || [60, 60];
-  const k = bucket + '|' + ipKey(request);
+  const ip = ipKey(request);
+  if (!ip) return false; // без адреси — лише локальний стенд (на Cloudflare cf-connecting-ip є завжди)
+  const k = bucket + '|' + ip;
   let e = HOT.get(k);
   if (!e || t - e.t >= win * 1000) { if (HOT.size > 20000) HOT.clear(); e = { t, n: 0 }; HOT.set(k, e); }
   return ++e.n > max;
