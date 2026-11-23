@@ -40,6 +40,7 @@ API = f"https://api.telegram.org/bot{TOKEN}/"
 LOG = lambda *a: print(datetime.datetime.now().strftime("%H:%M:%S"), *a, flush=True)
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import local_mode  # noqa: E402  локальний режим, коли Claude недоступний
+import menu  # noqa: E402  команди, постійна клавіатура й inline-кнопки — без моделі (23.11)
 ROUTER = local_mode.Router()
 
 
@@ -299,7 +300,8 @@ def deliver_local(r):
 def handle(msg, state):
     text = msg.get("text") or ""
     if text.startswith("/start"):
-        send_text("Привіт, Михайле! Я на зв'язку. Пиши текстом або голосовим. Команди: /new — почати нову розмову, /status."); return
+        send_text("Привіт, Михайле! Я на зв'язку. Пиши текстом або голосовим. Кнопки внизу й меню «/» працюють "
+                  "миттєво, без ШІ; /help — що вмію, /new — нова розмова, /status.", markup=menu.KEYBOARD); return
     if text.startswith("/status"):
         send_text(f"Працюю. Модель: {MODEL}. Режим: {ROUTER.describe()}. Пам'ять: {MEMORY}. "
                   f"Розмова від {state.get('day') or 'ще не починалась'}."); return
@@ -310,6 +312,8 @@ def handle(msg, state):
         send_text(f"Режим: {ROUTER.describe()}.\n/local on — завжди локально, /local off — завжди Claude, /local auto — автоматично."); return
     if text.startswith("/new"):
         state["day"] = ""; state.pop("sid", None); send_text("Нова розмова. Пам'ять збережена, контекст чату очищено."); return
+    if menu_message(text, state):                            # /today, «📅 Сьогодні», «➕ Нова» … — без Claude й Ollama
+        return
     kind, content = describe(msg)
     # «оздоба <id> [ціна …] [хар: …]» з фото чи без — товар на сторінці «Продукти» (~/jarvis/scripts/ozdoba.sh, без Claude).
     # Альбом: підпис лише на першому фото — решта того ж media_group_id ідуть у галерею (--add).
@@ -373,6 +377,80 @@ def handle(msg, state):
         threading.Thread(target=voice_only, daemon=True).start()
     else:
         deliver(out)
+
+
+def menu_message(text, state):
+    """Команда меню, кнопка постійної клавіатури або наступне повідомлення після «➕ Нова» / «/remind».
+    True — оброблено локально (без моделі). Звичайний текст — False: далі Claude / локальний режим, як раніше."""
+    cmd = menu.parse(text) if text else None
+    if cmd:
+        state.pop("menu_await", None)
+        LOG("меню:", cmd[0], cmd[1][:40])
+        remember("Михайло", text)
+        if cmd[0] in ("today", "tomorrow", "inbox", "money", "mail"):   # скрипти календаря/банку/пошти — до хвилини
+            try:
+                api("sendChatAction", chat_id=OWNER, action="typing")
+            except Exception:
+                pass
+        r, wait = menu.command(*cmd)
+        if wait:
+            state["menu_await"] = {"kind": wait, "at": time.time()}
+        deliver_local(r)
+        return True
+    aw = state.get("menu_await")
+    if aw and text and not text.startswith("/"):
+        state.pop("menu_await", None)
+        if time.time() - aw.get("at", 0) < menu.AWAIT_MIN * 60:
+            remember("Михайло", text)
+            deliver_local(menu.awaited(aw["kind"], text))
+            return True
+    return False
+
+
+def menu_button(cq, state):
+    """Inline-кнопки меню «m:…»: календар, «Виконано», «➕ Нова», нагадування. Дію робить menu.button (ідемпотентно)."""
+    m = cq.get("message", {})
+    if (m.get("chat") or {}).get("id", OWNER) != OWNER:
+        answer_cq(cq, "Не той чат"); return
+    b = menu.button(cq.get("data"))
+    LOG("кнопка меню", cq.get("data"), "→", b.toast[:60])
+    answer_cq(cq, b.toast)
+    if b.await_kind:
+        state["menu_await"] = {"kind": b.await_kind, "at": time.time()}
+    mid = m.get("message_id")
+    if b.edit:
+        try:
+            api("editMessageText", chat_id=OWNER, message_id=mid, text=(b.edit.text or "—")[:3900],
+                reply_markup=json.dumps(b.edit.markup) if b.edit.markup else None)
+        except Exception as e:                                # «message is not modified» — те саме вже на екрані
+            body = ""
+            try:
+                body = e.read().decode("utf-8", "replace") if hasattr(e, "read") else ""
+            except Exception:
+                pass
+            if "not modified" not in body:
+                LOG("editMessageText:", e, body[:120])
+                send_text(b.edit.text, markup=b.edit.markup)
+    if b.note:
+        try:
+            api("editMessageText", chat_id=OWNER, message_id=mid, text=((m.get("text") or "")[:3700] + "\n\n" + b.note),
+                reply_markup=json.dumps({"inline_keyboard": []}))
+        except Exception as e:
+            LOG("editMessageText:", e)
+    if b.send:
+        send_text(b.send.text, markup=b.send.markup)
+
+
+def sync_commands():
+    """Меню «/» лише в чаті власника (scope chat). Ідемпотентно: setMyCommands — тільки коли список змінився."""
+    scope = json.dumps({"type": "chat", "chat_id": OWNER})
+    want = menu.commands_payload()
+    try:
+        if api("getMyCommands", scope=scope) != want:
+            api("setMyCommands", commands=json.dumps(want, ensure_ascii=False), scope=scope)
+            LOG("меню команд оновлено:", len(want))
+    except Exception as e:
+        LOG("setMyCommands:", e)
 
 
 ANSWER_RULE = ("Саму відповідь обгорни рядками ===ВІДПОВІДЬ=== і ===КІНЕЦЬ=== — усе поза ними (хід роботи, "
@@ -822,6 +900,8 @@ def on_button(cq, state):
     if cq.get("from", {}).get("id") != OWNER:
         answer_cq(cq, "Погоджує лише Михайло"); return
     act, _, n = (cq.get("data") or "").partition(":")
+    if act == "m":                                         # меню (23.11): календар, задачі, нагадування
+        menu_button(cq, state); return
     if act == "blog":                                      # автоблог (~/jarvis/scripts/blog.sh): ОК / правки до статті
         blog_button(n, cq, state); return
     if act in ("allow", "deny"):
@@ -1057,6 +1137,7 @@ def main():
     state = load_state()
     global ME
     ME = api("getMe"); LOG(f"бот @{ME['username']} запущено; власник {OWNER}; групи {sorted(GROUPS)}; пам'ять {MEMORY}")
+    sync_commands()
     for t in [t for t in state.get("tasks", {}).values() if t.get("status") == "work"]:
         LOG("продовжую обірвану задачу", t["n"])                # перезапуск бота посеред роботи
         try:
@@ -1069,8 +1150,8 @@ def main():
         except Exception as e:
             LOG("getUpdates:", e); time.sleep(5); continue
         try:                                               # нагадування з часом (локальний режим): «нагадай через 30 хв …»
-            for txt in local_mode.due_reminders():
-                send_text("🔔 Нагадування: " + txt)
+            for r in menu.due_reminders():                # з кнопками «+1 год / Завтра 10:00 / Готово» (23.11)
+                send_text("🔔 Нагадування: " + r["text"], markup=menu.reminder_markup(r["id"]))
         except Exception as e:
             LOG("нагадування:", e)
         for u in updates:
