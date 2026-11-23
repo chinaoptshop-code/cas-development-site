@@ -409,9 +409,9 @@
   W.addEventListener('hashchange', function () { acc = 0; set(false); });
   // клавіатура (зокрема ПК із зумом 200 %+, де діє телефонний макет): фокус у схованій шапці чи пігулці — показуємо їх (далі тримає busy())
   d.addEventListener('focusin', function (e) { var t = e.target; if (hid && t && t.closest && t.closest('.sch,.mbar')) { acc = 0; set(false); } });
-  // елемент під фокусом опинився під пігулкою «Звʼязатися» (кут екрана) — трохи прокручуємо, щоб його було видно (WCAG 2.4.11)
+  // елемент під фокусом опинився під кружечками в куті екрана — трохи прокручуємо, щоб його було видно (WCAG 2.4.11)
   d.addEventListener('focusin', function (e) {
-    var t = e.target, b = mob.matches && d.querySelector('.mbar[data-one] .mb-tg');
+    var t = e.target, b = mob.matches && d.querySelector('.mbar[data-one]'); // обидва кружечки (дзвінок і бот) — прямокутник панелі без меню
     if (!b || !t || !t.getBoundingClientRect || (t.closest && t.closest('.mbar'))) return;
     requestAnimationFrame(function () { // після власної прокрутки браузера до елемента
       if (d.activeElement !== t || hid) return;
