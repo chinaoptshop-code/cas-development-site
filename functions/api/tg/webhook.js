@@ -1,11 +1,15 @@
 // Вебхук бота сайту (TELEGRAM_BOT_TOKEN). Ставить його POST /api/admin/lead-sla (ensureWebhook у functions/_alerts.js).
 // Telegram підписує кожен запит заголовком X-Telegram-Bot-Api-Secret-Token (= webhookSecret, виводиться з токена бота).
-//  • callback_query «take:<id>» — кнопка «✅ Взяв у роботу» в сповіщенні про заявку; приймаємо лише від ADMIN_TG_IDS / OWNER_TG_ID (вимкнених працівників — ні, functions/_alerts.js alertIds);
+//  • callback_query — кнопки керування (functions/_bot.js, README розділ 19): «take:<id>» («✅ Взяв у роботу»), «l:<id>:<дія>» (заявка),
+//    «k:<id>:<дія>» (задача). Приймаємо лише від працівника, якого сервер упізнав за Telegram id (staffCtxTg), з правами як у CRM;
+//  • команди працівника в особистому чаті (/today /leads /tasks /lead /task /stats /help, кнопки «Сьогодні · Заявки · Задачі») — functions/_bot.js;
+//    у групах — лише /help (без даних); чужим — нічого;
 //  • повідомлення — вхід на сайт за номером (протокол tools/shop/PHONE_LOGIN.md): /start login_<token> → кнопка
 //    «📱 Поділитися номером» → contact → та сама перевірка, що й POST /api/auth/phone/confirm (викликаємо її напряму).
 // Відповідаємо Telegram завжди 200 (інакше він повторює апдейт), помилки — лише в лог.
 import { bad, botSignature, json, readJSON, same } from '../../_lib.js';
-import { alertIds, adminName, fmtMin, staffIdByTg, takeLead, tg, webhookSecret } from '../../_alerts.js';
+import { tg, webhookSecret } from '../../_alerts.js';
+import { GROUP_HELP, onCallback, onCommand } from '../../_bot.js';
 import { onRequestPost as confirmPhone } from '../auth/phone/confirm.js';
 
 const LOGIN_TTL = 600;
@@ -16,7 +20,7 @@ export async function onRequestPost({ request, env }) {
   let u;
   try { u = await readJSON(request, 64 * 1024); } catch { return json({ ok: true }); }
   try {
-    if (u.callback_query) await onCallback(env, u.callback_query);
+    if (u.callback_query) await onCallback(env, request, u.callback_query);
     else if (u.message) await onMessage(request, env, u.message);
   } catch (e) {
     console.log('tg webhook', e && e.message);
@@ -24,23 +28,15 @@ export async function onRequestPost({ request, env }) {
   return json({ ok: true });
 }
 
-async function onCallback(env, cq) {
-  const answer = (text, alert = false) => tg(env, 'answerCallbackQuery', { callback_query_id: cq.id, text, show_alert: alert });
-  const from = cq.from || {};
-  if (!(await alertIds(env)).includes(String(from.id))) return answer('Немає доступу', true);
-  const m = /^take:(\d{1,12})$/.exec(String(cq.data || ''));
-  if (!m) return answer('');
-  const r = await takeLead(env, Number(m[1]), await adminName(env, from), 'Telegram', new Date(), await staffIdByTg(env, from.id));
-  if (r.error) return answer('Заявку не знайдено', true);
-  if (r.already) return answer(`Уже взяв ${r.o.assignee || 'інший менеджер'}${r.o.reaction_min != null ? ` (за ${fmtMin(r.o.reaction_min)})` : ''}`, true);
-  return answer(`Заявка ваша. Час реакції — ${fmtMin(r.min)}`);
-}
-
 async function onMessage(request, env, msg) {
   const chat = String(msg.chat && msg.chat.id), from = msg.from || {};
   const say = (text, extra = {}) => tg(env, 'sendMessage', { chat_id: chat, text, ...extra });
   const now = Math.floor(Date.now() / 1000);
   const text = String(msg.text || '').trim();
+  if (msg.chat && msg.chat.type && msg.chat.type !== 'private') { // групи: лише /help, без жодних даних
+    if (/^\/help(@\w+)?$/i.test(text)) await say(GROUP_HELP);
+    return;
+  }
 
   const s = /^\/start login_([0-9a-f]{32})$/.exec(text);
   if (s) {
@@ -73,6 +69,5 @@ async function onMessage(request, env, msg) {
     return say(reply, { reply_markup: { remove_keyboard: true } });
   }
 
-  if (/^\/start\b/.test(text) && (await alertIds(env)).includes(String(from.id)))
-    return say('Готово: сюди приходитимуть нові заявки з сайту й замовлення Оздоби, нагадування й щоденний звіт.');
+  if (text) await onCommand(env, request, msg); // працівнику — команди; чужим — нічого
 }

@@ -76,7 +76,8 @@ await it('власник призначає дизайнерці задачу з
   const m = tg(444);
   eq(m.length, 1); ok(/Вам призначено задачу/.test(m[0].text) && /&lt;b&gt;до зустрічі&lt;\/b&gt;/.test(m[0].text), 'текст задачі в Telegram екрановано');
   ok(m[0].text.includes(`Строк: ${day(1).slice(8)}.${day(1).slice(5, 7)} 14:30`) && /Поставив\(ла\): Власник/.test(m[0].text), m[0].text);
-  eq(m[0].reply_markup.inline_keyboard[0][0].url, 'https://cas-develop.com/kabinet/team#todo', 'працівнику — посилання в кабінет працівника');
+  eq(m[0].reply_markup.inline_keyboard.at(-1)[0].url, 'https://cas-develop.com/kabinet/team#todo', 'працівнику — посилання в кабінет працівника');
+  ok(/^k:\d+:d$/.test(m[0].reply_markup.inline_keyboard[0][0].callback_data), 'під задачею — кнопка «✅ Виконано» (k:<id>:d)');
   const t = await q1('SELECT * FROM tasks WHERE id = ?', T2);
   eq([t.title, t.note, t.assign_notified, t.order_id, t.due_time], ['Підготувати планування <b>до зустрічі</b>', 'Два варіанти\nз кухнею-вітальнею', 1, LD, '14:30'], 'текст зберігається як є');
 });
@@ -128,7 +129,7 @@ await it('дизайнерка відмічає «виконано» з коме
   eq([t.status, t.done_by, t.done_note, t.done_notified], ['done', S.DES, 'Надіслала <i>два</i> варіанти', 1]); ok(/^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d$/.test(t.done_at));
   const m = tg(111);
   eq(m.length, 1); ok(/Задачу виконано/.test(m[0].text) && /Виконав\(ла\): Дизайнерка Тест/.test(m[0].text) && /&lt;i&gt;два&lt;\/i&gt;/.test(m[0].text), m[0].text);
-  eq(m[0].reply_markup.inline_keyboard[0][0].url, 'https://cas-develop.com/kabinet/admin#tasks', 'власнику — посилання в панель');
+  eq(m[0].reply_markup.inline_keyboard.at(-1)[0].url, 'https://cas-develop.com/kabinet/admin#tasks', 'власнику — посилання в панель');
   const again = await T('PATCH', { id: T2, done: true, note: 'ще раз' }, 'DES');
   eq([again.status, again.data.changed], [200, false]); eq(tg(111).length, 1, 'друге сповіщення не йде');
   eq((await q1('SELECT done_note FROM tasks WHERE id = ?', T2)).done_note, 'Надіслала <i>два</i> варіанти', 'коментар не перезаписано');
