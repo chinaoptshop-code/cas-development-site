@@ -8,12 +8,12 @@
 .adm textarea.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;min-height:420px;white-space:pre;tab-size:2}
 .adm .btn{display:inline-block;width:auto;padding:9px 16px;margin:0;font-size:var(--fs-small);text-decoration:none;cursor:pointer}
 .adm .btn.sm{padding:5px 10px}
-.adm .btn.danger{border-color:#e07a6a;color:#e07a6a;background:none}
+.adm .btn.danger{border-color:var(--err,#e07a6a);color:var(--err,#e07a6a);background:none}
 .adm .row{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
 .adm .tb{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;margin:0 0 14px}
 .adm .grow{flex:1;min-width:180px}
 .adm .muted,.adm small{color:var(--muted)}
-.adm .err{color:#e07a6a}
+.adm .err{color:var(--err,#e07a6a)}
 .adm .ok{color:var(--ok)}
 .adm .note{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 16px;color:var(--muted);font-size:var(--fs-small);margin:0 0 14px;max-width:none}
 .adm .note b{color:var(--cream)}
@@ -24,7 +24,7 @@
 .adm .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 8px;font-size:12px;color:var(--muted);white-space:nowrap}
 .adm button.pill{background:none;font:inherit;font-size:12px;cursor:pointer;min-height:24px}.adm button.pill:hover{border-color:var(--brass);color:var(--glow)}
 .adm .pill.on{border-color:var(--brass);color:var(--glow)}
-.adm .pill.warn{border-color:#e07a6a;color:#e07a6a}
+.adm .pill.warn{border-color:var(--err,#e07a6a);color:var(--err,#e07a6a)}
 .adm .thumb{width:48px;height:48px;object-fit:contain;border-radius:8px;background:var(--surface-2)}
 /* форми */
 .adm .form{display:grid;gap:12px;max-width:none}
@@ -56,7 +56,7 @@
 .kn-col h3{font-size:var(--fs-small);margin:0 0 4px;display:flex;justify-content:space-between;color:var(--cream);font-family:inherit}
 .kn-card{background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 10px;cursor:grab;font-size:var(--fs-small);display:grid;gap:3px}
 .kn-card b{font-size:13px}
-.kn-card .due{color:#e07a6a}
+.kn-card .due{color:var(--err,#e07a6a)}
 .adm dialog{background:var(--surface);color:var(--cream);border:1px solid var(--line);border-radius:16px;padding:20px;width:min(720px,calc(100vw - 32px));max-height:calc(100vh - 40px)}
 .adm dialog::backdrop{background:rgba(0,0,0,.6)}
 .adm dialog h2{font-size:var(--fs-h3);margin:0 0 12px}
@@ -66,7 +66,7 @@
 .adm iframe.pv{width:100%;height:70vh;border:1px solid var(--line);border-radius:12px;background:#fff}
 .adm .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
 .adm .seg button{background:none;border:0;color:var(--muted);padding:7px 14px;cursor:pointer;font:inherit;font-size:var(--fs-small)}
-.adm .seg button[aria-pressed=true]{background:var(--brass);color:#0d0b09}
+.adm .seg button[aria-pressed=true]{background:var(--brass);color:var(--on-ac,#0d0b09)}
 /* медіа */
 .adm .drop{border:2px dashed var(--line);border-radius:14px;padding:26px;text-align:center;color:var(--muted);cursor:pointer}
 .adm .drop.over{border-color:var(--brass);color:var(--cream)}
@@ -74,8 +74,8 @@
 .adm .media figure{margin:0;border:1px solid var(--line);border-radius:12px;padding:8px;background:var(--surface)}
 .adm .media img{width:100%;height:140px;object-fit:cover;border-radius:8px;display:block}
 .adm .media figcaption{font-size:12px;word-break:break-all;margin-top:6px;display:grid;gap:6px}
-.adm-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--surface-2);border:1px solid var(--brass);color:var(--cream);border-radius:12px;padding:12px 18px;z-index:100;max-width:calc(100vw - 32px);font-size:var(--fs-small);box-shadow:0 8px 30px rgba(0,0,0,.5)}
-.adm-toast.err{border-color:#e07a6a}
+.adm-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--surface-2);border:1px solid var(--brass);color:var(--cream);border-radius:12px;padding:12px 18px;z-index:100;max-width:calc(100vw - 32px);font-size:var(--fs-small);box-shadow:var(--shadow,0 8px 30px rgba(0,0,0,.5))}
+.adm-toast.err{border-color:var(--err,#e07a6a)}
 /* CRM: джерело, SLA, швидкі дії, фільтри (assets/admin/cms.v1.js, RENDER.crm) */
 .adm [hidden]{display:none!important}
 .adm .row.sp{justify-content:space-between;flex-wrap:nowrap}
@@ -91,7 +91,7 @@
 .kn-card.fresh{border-color:var(--brass);box-shadow:inset 3px 0 0 var(--brass)}
 .kn-card:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
 .sla{font-size:12px;font-weight:700;color:var(--glow)}
-.sla.over{color:#ff8f7d}
+.sla.over{color:var(--err-hi,#ff8f7d)}
 .qa{display:inline-flex;gap:6px;flex-wrap:wrap;margin-top:4px}
 .qa a{display:inline-grid;place-items:center;min-width:36px;height:32px;padding:0 8px;border:1px solid var(--line);border-radius:9px;color:var(--cream);text-decoration:none;font-size:12px;font-weight:700}
 .qa a:hover,.qa a:focus-visible{border-color:var(--brass);color:var(--glow)}
@@ -100,7 +100,7 @@
 .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:0 0 18px}
 .kpi>div{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--surface);display:grid;gap:2px}
 .kpi b{font-family:"Cormorant Garamond","Cormorant Fallback",Georgia,serif;font-size:34px;font-weight:500;line-height:1.1;color:var(--glow)}
-.kpi b.err{color:#ff8f7d}
+.kpi b.err{color:var(--err-hi,#ff8f7d)}
 .kpi span{font-size:var(--fs-small);color:var(--cream)}
 .kpi em{font-style:normal;font-weight:700}
 .kpi small{font-size:12px}
@@ -152,7 +152,7 @@
 .adm .pj-hist summary{min-height:44px;display:flex;align-items:center;cursor:pointer}
 .adm .pj-hist ul{margin:0;padding-left:18px}
 .adm .pj-dlv{margin:0 0 10px;font-size:var(--fs-small)}
-.adm .pj-stage input.late{border-color:#e07a6a}
+.adm .pj-stage input.late{border-color:var(--err,#e07a6a)}
 .adm .pj-prog{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .adm .pj-prog progress{width:90px}
 .adm .pj-tg{margin:0 0 12px}
@@ -161,7 +161,7 @@
 .adm .pj-task label{flex:1;min-width:200px;min-height:32px;cursor:pointer}
 .adm .pj-task input[type=checkbox]{width:20px;height:20px;accent-color:var(--brass)}
 .adm .pj-task.done label span{text-decoration:line-through;color:var(--muted)}
-.adm .pj-task.late{border-left:3px solid #e07a6a;padding-left:8px}
+.adm .pj-task.late{border-left:3px solid var(--err,#e07a6a);padding-left:8px}
 .adm table.adm tr.late td{background:rgba(224,122,106,.07)}
 @media (max-width:700px){
   .adm .pj-filters .seg{display:flex;flex-wrap:wrap;width:100%;border-radius:14px}
@@ -173,7 +173,7 @@
 /* CRM: швидкі фільтри, «Взяти в роботу» одним дотиком, швидкі дати наступного контакту (RENDER.crm у cms.v1.js) */
 .crm-q{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
 .adm .crm-q .pill,.adm .nc-q .pill{min-height:36px;padding:4px 14px;font-size:var(--fs-small);color:var(--cream)}
-.adm .crm-q .pill[aria-pressed=true]{background:var(--brass);border-color:var(--brass);color:var(--ink)}
+.adm .crm-q .pill[aria-pressed=true]{background:var(--brass);border-color:var(--brass);color:var(--on-ac,var(--ink))}
 .adm .crm-take{margin-top:6px;border-radius:999px;font-weight:700}
 .adm .nc-q{gap:6px;margin-top:6px}
 /* Обʼєкт: «Зберегти проєкт» завжди під рукою внизу екрана; без змін — контурна, зі змінами — заливка й позначка */
@@ -214,7 +214,7 @@
 .adm td:first-child>input.sel{position:relative}
 .adm td:first-child>input.sel::before{content:"";position:absolute;inset:-11px}
 .adm .crm-bulk{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:5;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;margin-top:10px;
-  border-radius:14px;background:var(--bg2,var(--bg));border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  border-radius:14px;background:var(--bg2,var(--bg));border:1px solid var(--line);box-shadow:var(--shadow-s,0 8px 24px rgba(0,0,0,.18))}
 .adm .crm-bulk select,.adm .crm-bulk .btn{min-height:44px}
 /* Одночасне редагування (cms.v1.js — conflictDialog, clashBox): діалог «… змінився, поки ви редагували» — компактний і на телефоні
    (не на весь екран), три кнопки стовпцем ≥44 px; примітка про поля, які не перенесено */
@@ -225,7 +225,7 @@
 .adm .cf-act{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .adm .cf-act .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px}
 @media (max-width:700px){.adm .cf-act{flex-direction:column}.adm .cf-act .btn{width:100%}}
-.adm .cf-note{border-color:#e07a6a}
+.adm .cf-note{border-color:var(--err,#e07a6a)}
 .adm .cf-note ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px}
 /* Канбан: «Вибрати кілька» — режим вибору для масових дій (прапорець на картці й «вся колонка»); сторінки довгих списків («Показати ще») */
 .adm .kn-top{flex-wrap:nowrap;align-items:center;gap:10px;margin:0 0 8px}
@@ -234,7 +234,7 @@
 .kn.pick .kn-card .row.sp>b{white-space:nowrap}
 .kn.pick .kn-card .row.sp>small{margin-left:auto;text-align:right}
 .adm button.kn-pick{min-height:36px;padding:4px 14px;font-size:var(--fs-small);color:var(--cream);flex:none}
-.adm button.kn-pick[aria-pressed=true]{background:var(--brass);border-color:var(--brass);color:var(--ink)}
+.adm button.kn-pick[aria-pressed=true]{background:var(--brass);border-color:var(--brass);color:var(--on-ac,var(--ink))}
 .kn.pick .kn-card{cursor:pointer}
 .kn.pick .qa,.kn.pick .crm-take{display:none}
 .kn-card.picked{border-color:var(--brass);background:rgba(191,145,72,.12)}

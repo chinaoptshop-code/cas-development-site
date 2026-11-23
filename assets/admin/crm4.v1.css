@@ -2,7 +2,7 @@
    Кольори й розміри — змінні панелі (cms.v1.css / studio.v1.css); цілі дотику ≥ 44 px; сторінка вбік не гортається — лише сама таблиця. */
 
 /* лічильник прострочених на вкладці */
-.adm-tabs .tab-n{display:inline-block;min-width:18px;margin-left:6px;padding:0 5px;border-radius:999px;background:#e07a6a;color:#1a0d0a;font-style:normal;font-size:11px;font-weight:700;line-height:18px;text-align:center;vertical-align:1px}
+.adm-tabs .tab-n{display:inline-block;min-width:18px;margin-left:6px;padding:0 5px;border-radius:999px;background:var(--err,#e07a6a);color:var(--on-err,#1a0d0a);font-style:normal;font-size:11px;font-weight:700;line-height:18px;text-align:center;vertical-align:1px}
 
 /* швидке додавання */
 .adm .tk-add{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;margin:0 0 12px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
@@ -19,17 +19,17 @@
 .adm .tk-lp .pill .lnk{background:none;border:0;color:inherit;cursor:pointer;font:inherit;padding:0 2px}
 
 /* перемикачі й фільтри */
-.adm .tk-views .pill.tk-od{border-color:#e07a6a;color:#e07a6a}
-.adm .tk-views .pill.tk-od[aria-pressed=true]{background:#e07a6a;border-color:#e07a6a;color:#1a0d0a}
+.adm .tk-views .pill.tk-od{border-color:var(--err,#e07a6a);color:var(--err,#e07a6a)}
+.adm .tk-views .pill.tk-od[aria-pressed=true]{background:var(--err,#e07a6a);border-color:var(--err,#e07a6a);color:var(--on-err,#1a0d0a)}
 .adm .tk-tb select,.adm .tk-tb .btn,.adm .tk-tb input{min-height:40px}
 
 /* список */
 .adm .tk-g h3{margin:18px 0 4px;font-family:"Manrope","Manrope Fallback",system-ui,sans-serif;font-size:var(--fs-small);font-weight:700;color:var(--muted);letter-spacing:.02em}
 .adm .tk-g h3 small{font-weight:400}
-.adm .tk-g.late h3{color:#e07a6a}
+.adm .tk-g.late h3{color:var(--err,#e07a6a)}
 .adm .tk-list{list-style:none;margin:0;padding:0}
 .adm .tk-row{display:flex;align-items:flex-start;gap:4px;padding:4px 0;border-bottom:1px solid var(--line)}
-.adm .tk-row.late{box-shadow:inset 3px 0 0 #e07a6a}
+.adm .tk-row.late{box-shadow:inset 3px 0 0 var(--err,#e07a6a)}
 .adm .tk-chk{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-height:44px;cursor:pointer}
 .adm .tk-cb,.adm .tk-chk .sel{width:22px;height:22px;margin:0;accent-color:var(--brass);cursor:pointer}
 .adm .tk-cb:disabled{cursor:default;opacity:.5}
@@ -40,7 +40,7 @@
 .adm .tk-row.done .tk-title [data-tt]{text-decoration:line-through;color:var(--muted);font-weight:400}
 .adm .tk-hi{display:inline-block;border:1px solid var(--brass);border-radius:999px;padding:0 7px;font-size:11px;font-weight:600;color:var(--glow);vertical-align:1px}
 .adm .tk-meta{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;font-size:var(--fs-small);color:var(--muted)}
-.adm .tk-due.err{color:#e07a6a;font-weight:600}
+.adm .tk-due.err{color:var(--err,#e07a6a);font-weight:600}
 .adm .tk-ln{max-width:100%;overflow:hidden;text-overflow:ellipsis}
 .adm .tk-note{margin:4px 0 0;font-size:var(--fs-small);color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere;max-width:60em}
 .adm .tk-empty{padding:14px 0}
@@ -75,7 +75,7 @@
 .adm .ct-cols{position:relative}
 .adm .ct-cols summary{list-style:none;display:inline-flex;align-items:center;cursor:pointer}
 .adm .ct-cols summary::-webkit-details-marker{display:none}
-.adm .ct-cols>div{position:absolute;z-index:30;top:calc(100% + 6px);right:0;display:grid;gap:2px;min-width:15rem;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);box-shadow:0 8px 30px rgba(0,0,0,.5)}
+.adm .ct-cols>div{position:absolute;z-index:30;top:calc(100% + 6px);right:0;display:grid;gap:2px;min-width:15rem;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);box-shadow:var(--shadow,0 8px 30px rgba(0,0,0,.5))}
 .adm .ct-cols label{display:flex;align-items:center;gap:8px;min-height:36px;font-size:var(--fs-small);cursor:pointer}
 .adm .ct-cols input{width:18px;height:18px;accent-color:var(--brass);margin:0}
 .adm .ct-wrap{overflow:auto;max-width:100%;max-height:min(72vh,56rem);border:1px solid var(--line);border-radius:12px;overscroll-behavior-x:contain}
