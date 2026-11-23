@@ -25,7 +25,7 @@ ALLOWED = os.environ.get("CLAUDE_ALLOWED_TOOLS",
     "Bash(python3 tools/assistant/bot/capabilities.py*)")        # реєстр можливостей: --check, --run … --bg (23.11)
 # Робочі групи команди: бот відповідає там, лише коли його тегнули або відповіли на його повідомлення.
 # Задачу виконує тільки після кнопки «В роботу» від Михайла. Типово — CAS Design.
-GROUPS = {int(x) for x in os.environ.get("ASSISTANT_GROUPS", "-1003501825627").split(",") if x.strip()}
+GROUPS = {int(x) for x in os.environ.get("ASSISTANT_GROUPS", "").split(",") if x.strip()}
 # У групі відповідь бачить уся команда — тому без пошти й особистого Telegram Михайла.
 GROUP_ALLOWED = ",".join(t for t in re.split(r",\s*", ALLOWED)
                          if t and not t.startswith("mcp__claude_ai_Gmail") and "tools/telegram" not in t and "cal.py" not in t)
@@ -559,8 +559,8 @@ def client_answer(prompt):
 VOICE_MAX = 220
 import tts  # noqa: E402  синтез — спільний із чатом на сайті (tools/chat/worker/voice.py), 23.11.2026
 TTS_MODEL, TTS_VOICE, TTS_TEMPO, TTS_CRED, FFMPEG, CLONE_VOICE = tts.TTS_MODEL, tts.TTS_VOICE, tts.TTS_TEMPO, tts.TTS_CRED, tts.FFMPEG, tts.CLONE_VOICE
-# Клон голосу Михайла — у розмовах із ним і з Сержем (197958492), природний темп; решті — Algieba ×1,17
-OWN_CHATS = {int(x) for x in os.environ.get("TTS_CLONE_CHATS", "439131779,197958492").split(",") if x.strip()}
+# Клон голосу Михайла — у розмовах із ним і з довіреними (TTS_CLONE_CHATS у ~/.assistant.env), природний темп; решті — Algieba ×1,17
+OWN_CHATS = {int(x) for x in os.environ.get("TTS_CLONE_CHATS", "").split(",") if x.strip()}
 CLONE_ON = os.environ.get("TTS_CLONE", "all") != "off"   # Михайло 21.10: його голосом з усіма, клієнтам — як AI-помічник
 AI_INTRO = "Вітаю! Я AI-помічник КАС Девелопмент. "
 INTRO_FILE = MEMORY / ".voice-intro.json"
