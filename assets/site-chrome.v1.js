@@ -1077,7 +1077,7 @@
    після тапу по іконці — сама ніколи. CHAT_PUBLIC (tools/site/flags.py) = True — іконки ставить генератор; поки False — нічого немає, крім
    режиму перевірки ?chat=1 (запамʼятовується в sessionStorage cas_chat): тоді іконки додає цей блок у ті самі ряди. Кабінет — без чату. */
 (function (W, d) {
-  /*chat:v*/var CHV = {js: "c9da9af0", css: "9309a232"};/*/chat:v*/
+  /*chat:v*/var CHV = {js: "fc006c56", css: "9309a232"};/*/chat:v*/
   var on = false, ss = null;
   try { ss = W.sessionStorage; } catch (e) { /* noop */ }
   if (/[?&]chat=1(?:&|$)/.test(location.search)) { on = true; try { ss.setItem('cas_chat', '1'); } catch (e) { /* noop */ } }

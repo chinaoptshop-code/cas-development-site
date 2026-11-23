@@ -133,7 +133,7 @@
     return fetch('/api/chat/file/' + encodeURIComponent(id), { headers: hdr(), credentials: 'omit' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.blob(); });
   }
   function player(id, label, dur) {
-    var w = el('div', 'cht-pl'), b = el('button', 'cht-ib cht-play'), lab = el('span', 'cht-pll', label + (dur ? ' · ' + Math.round(dur) + ' s' : '')), a = null;
+    var w = el('div', 'cht-pl'), b = el('button', 'cht-ib cht-play'), lab = el('span', 'cht-pll', label + (dur ? ' · ' + Math.floor(dur / 60) + ':' + ('0' + Math.round(dur % 60)).slice(-2) : '')), a = null;
     b.type = 'button'; b.setAttribute('aria-label', t.play + ': ' + label); b.appendChild(svg(I.play));
     var set = function (on) { b.innerHTML = ''; b.appendChild(svg(on ? I.pause : I.play)); b.setAttribute('aria-label', (on ? t.pause : t.play) + ': ' + label); b.setAttribute('aria-pressed', on ? 'true' : 'false'); };
     b.onclick = function () {
@@ -177,7 +177,10 @@
     seen[m.id] = 1;
     var li = el('li', 'cht-m cht-' + (m.role === 'user' ? 'me' : m.role === 'system' ? 'sys' : m.role)); li.dataset.id = m.id;
     if (m.role !== 'system') { var h = el('div', 'cht-h'); h.appendChild(el('b', null, m.role === 'user' ? t.you : m.role === 'staff' ? (m.author || t.mgr) : t.bot)); h.appendChild(el('time', null, hhmm(m.at))); li.appendChild(h); }
-    if (m.text) { var tp = el('p', 'cht-t', m.text); tp.dir = 'auto'; li.appendChild(tp); }
+    // відповіді помічника й менеджера: тисячі в сумах — вузький нерозривний пробіл (U+202F, як chrome.price_fmt), щоб «$33 000» не рвалось на два рядки
+    var nn = function (x) { return x.replace(/((?:^|[^\d\u202f])\d{1,3}|\u202f\d{3})[ \u00a0](?=\d{3}(?!\d))/g, '$1\u202f'); };
+    var tx = m.role === 'user' ? m.text : nn(nn(String(m.text || '')));
+    if (m.text) { var tp = el('p', 'cht-t', tx); tp.dir = 'auto'; li.appendChild(tp); }
     if (m.files && m.files.length) {
       var fw = el('div', 'cht-files');
       m.files.forEach(function (f) {
