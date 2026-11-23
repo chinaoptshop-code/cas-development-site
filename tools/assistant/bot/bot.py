@@ -347,6 +347,14 @@ def handle(msg, state):
         send_text(f"Режим: {ROUTER.describe()}.\n/local on — завжди локально, /local off — завжди Claude, /local auto — автоматично."); return
     if text.startswith("/new"):
         state["day"] = ""; state.pop("sid", None); send_text("Нова розмова. Пам'ять збережена, контекст чату очищено."); return
+    if SONGS_DIRECT and SONGS_ASK.search(text or "") and not re.search(r"https?://", text or ""):   # пісні — напряму в локальний генератор (23.11)
+        LOG("пісні →", text[:80]); remember("Михайло", text)
+        try:
+            r = subprocess.run([sys.executable, str(SONGS_BATCH), text], capture_output=True, text=True, timeout=60)
+            send_text((r.stdout.strip() or "🎵 Генерую — пісні прийдуть сюди.")[:900])
+        except Exception as e:
+            send_text(f"Не вдалося запустити генератор пісень: {e}")
+        return
     if menu_message(text, state):                            # /today, «📅 Сьогодні», «➕ Нова» … — без Claude й Ollama
         return
     kind, content = describe(msg)
@@ -412,6 +420,14 @@ def handle(msg, state):
         threading.Thread(target=voice_only, daemon=True).start()
     else:
         deliver(out)
+
+
+# Пісні — без Claude й Ollama-відповідей: бот сам запускає пакетний генератор (тексти — локальна модель, музика — ACE-Step).
+# Урок 23.11: Claude на «10 пісень» генерував їх синхронно й падав по таймауту, а локальний режим не впізнавав «згенеруй ще 10 пісень».
+SONGS_DIRECT = os.environ.get("ASSISTANT_SONGS_DIRECT") == "1"           # вмикається в ~/.assistant.env на Mac mini
+SONGS_BATCH = pathlib.Path(os.path.expanduser(os.environ.get("SONGS_BATCH", "~/jarvis/scripts/songs-batch.py")))
+SONGS_ASK = re.compile(r"(?=.*(пісн|песн|трек\w*|song|track|музик|мелоді|джингл|мінусовк))"
+                       r"(?=.*(з?генер|зроби|створи|склади|напиши|надішл|скинь|хочу|давай|запусти|аудіо|audio|mp3|generate|make|create|compose))", re.I | re.S)
 
 
 def menu_message(text, state):
