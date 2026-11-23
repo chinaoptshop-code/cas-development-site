@@ -248,10 +248,14 @@ OPEN_CHAT: @нік | Імʼя   (або числовий id замість ні�
 Якщо просять «всю переписку», а повідомлень більше ~15 — у відповіді коротко, а повний текст файлом (Markdown → PDF, SEND_FILE).{context_block() if fresh else ""}{recent_block()}"""
 
 
+# Платні генератори (кредити/підписка) боту недоступні взагалі — спершу локальні (Михайло 23.11: «все локально генерувати»).
+PAID_BLOCKED = os.environ.get("ASSISTANT_PAID_BLOCKED", "mcp__claude_ai_higsfield,mcp__claude_ai_Adobe_for_creativity,mcp__claude_ai_Gamma,mcp__claude_ai_Canva")
+
+
 def run_claude(prompt, session, resume, tools=ALLOWED, turns=None, _final=False):
     """session — id розмови. Михайло веде одну розмову на день (resume), задачі команди — кожна окремо.
     Раніше тут був --continue, і задача з групи ставала «останньою розмовою» — Михайло продовжив би її."""
-    cmd = [CLAUDE, "-p", "--model", MODEL, "--max-turns", str(turns or MAX_TURNS), "--allowedTools", tools, "--output-format", "text"]
+    cmd = [CLAUDE, "-p", "--model", MODEL, "--max-turns", str(turns or MAX_TURNS), "--allowedTools", tools, "--disallowedTools", PAID_BLOCKED, "--output-format", "text"]
     cmd += ["--resume", session] if resume else ["--session-id", session]
     cmd.append(prompt)
     try:
