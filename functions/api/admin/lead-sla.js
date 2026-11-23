@@ -4,7 +4,7 @@
 //                             звіт о 20:45 Києва (раз на добу) і перевірка вебхука бота (раз на 6 год);
 //                             + нагадування клієнтам про погодження етапів і прохання про відгук (functions/_nudges.js, 10:00–20:00 Києва);
 //                             + задачі CRM (functions/_tasks.js, 10:00–20:00 Києва): сповіщення з черги й ранкове зведення «сьогодні й прострочені»;
-//                             + чат на сайті: видалення розмов без заявки старших за 30 діб і файлів без заявки старших за 14 діб (functions/_chat.js);
+//                             + чат на сайті: видалення розмов без заявки старших за 30 діб і файлів без заявки старших за 14 діб і черга «нова розмова» адмінам (10:00–20:00 Києва) (functions/_chat.js);
 //   {"task": "report"}      — надіслати звіт за сьогодні зараз;
 //   {"task": "webhook", "force": true} — поставити вебхук бота, навіть якщо зараз стоїть чужий.
 // {"now": "<ISO>"} — підміна годинника лише для локальних тестів (ALERTS_TEST_CLOCK=1 у .dev.vars).
@@ -12,7 +12,7 @@ import { bad, json, readJSON, same } from '../../_lib.js';
 import { ensureWebhook, runReport, runSla } from '../../_alerts.js';
 import { runNudges } from '../../_nudges.js';
 import { runTaskNotices } from '../../_tasks.js';
-import { runChatCleanup } from '../../_chat.js';
+import { runChatCleanup, runChatNotices } from '../../_chat.js';
 import { limited } from '../../_rate.js';
 import { BAD_KEY_PER_HOUR } from '../leads.js';
 
@@ -38,7 +38,7 @@ export async function onRequestPost({ request, env }) {
   let tasks;
   try { tasks = await runTaskNotices(env, now); } catch (e) { console.log('task notices', e && e.message); tasks = { error: true }; }
   let chat;
-  try { chat = await runChatCleanup(env, now); } catch (e) { console.log('chat cleanup', e && e.message); chat = { error: true }; }
+  try { chat = { ...(await runChatCleanup(env, now)), notices: await runChatNotices(env, now) }; } catch (e) { console.log('chat cleanup', e && e.message); chat = { error: true }; }
   let webhook = null;
   const t = Math.floor(Date.now() / 1000);
   const last = await env.DB.prepare("SELECT value FROM settings WHERE key = 'tg_webhook_checked'").first();

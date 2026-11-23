@@ -274,10 +274,12 @@ await it('typing і release; порожня відповідь — 422; нева
 await it('handoff → стан waiting і сповіщення власнику й менеджерам у Telegram з посиланням на розмову', async () => {
   bot.reset();
   const last = (await q1('SELECT last_user_id, id FROM chat_sessions WHERE sid = ?', Q.sid));
-  const r = await botCall('POST', '/api/bot/chat', { sid: Q.sid, reply_to: last.last_user_id, text: 'Передаю менеджеру', handoff: true, reason: 'Складний обʼєкт <b>' });
+  eq((await botCall('POST', '/api/bot/chat', { sid: Q.sid, reply_to: last.last_user_id, text: 'x', handoff: true, handoff_reason: 'vip' })).status, 400, 'невідома причина');
+  const r = await botCall('POST', '/api/bot/chat', { sid: Q.sid, reply_to: last.last_user_id, text: 'Передаю менеджеру', handoff: true, handoff_reason: 'big_project', reason: 'Будинок 300 м² <b>' });
   eq(r.status, 200); eq(r.data.state, 'waiting'); eq(r.data.notified, 2);
   const msgs = bot.calls.filter(c => c.method === 'sendMessage');
   eq(msgs.length, 2); ok(/потрібна людина/.test(msgs[0].text)); ok(msgs[0].text.includes('&lt;b&gt;'), 'текст у Telegram екранується');
+  ok(/Великий обʼєкт/.test(msgs[0].text)); eq((await q1('SELECT handoff_reason FROM chat_sessions WHERE sid = ?', Q.sid)).handoff_reason, 'big_project');
   ok(msgs[0].reply_markup.inline_keyboard[0][0].url.endsWith(`/kabinet/admin?cs=${last.id}#chat`));
   eq((await poll(Q)).data.state, 'waiting');
   // повторний handoff не дублює сповіщення
@@ -293,6 +295,32 @@ await it('воркер мовчить > 3 хв → online: false у start і pol
   eq((await start()).online, false);
   await botCall('POST', '/api/bot/chat/ping', {});
   eq((await poll(Q)).data.online, true);
+});
+
+describe('Чат: «нова розмова» адмінам у Telegram');
+await it('перше повідомлення: 10:00–20:00 Київ — одразу, поза вікном — черга; одне повідомлення на розмову', async () => {
+  const { runChatNotices, workHours } = await import('../../functions/_chat.js');
+  bot.reset();
+  const C = await start(env, { lang: 'de', page: '/de/' });
+  await send(C, { text: 'Hallo <script>alert(1)</script> ' + 'x'.repeat(300) });
+  const row = () => q1('SELECT * FROM chat_sessions WHERE sid = ?', C.sid);
+  const sent = () => bot.calls.filter(c => c.method === 'sendMessage' && /Нова розмова/.test(c.text));
+  if (workHours(new Date())) { ok((await row()).notified_at, 'у робочий час — одразу'); eq(sent().length, 2); }
+  else { eq((await row()).notified_at, null, 'поза вікном — у черзі'); eq(sent().length, 0); }
+  await DB.prepare('UPDATE chat_sessions SET notified_at = NULL WHERE sid = ?').bind(C.sid).run();
+  bot.reset();
+  eq((await runChatNotices(env, new Date('2026-11-23T21:00:00Z'))).quiet, true, '23:00 Київ — тиша');
+  eq(sent().length, 0);
+  const r = await runChatNotices(env, new Date('2026-11-23T10:00:00Z'));
+  ok(r.sent >= 1, JSON.stringify(r));
+  const cid = (await row()).id;
+  const m = sent().find(c => c.text.includes('#' + cid));
+  ok(m, 'повідомлення про цю розмову'); ok(m.text.includes('&lt;script&gt;') && !m.text.includes('<script>'), 'екранується'); ok(/DE · \/de\//.test(m.text));
+  ok(m.text.length < 600, 'лише перші ~200 знаків'); ok(m.reply_markup.inline_keyboard[0][0].url.includes('/kabinet/admin?cs='));
+  bot.reset();
+  await send(C, { text: 'Ще' });
+  eq((await runChatNotices(env, new Date('2026-11-23T10:05:00Z'))).sent, 0, 'друге повідомлення — без нового сповіщення');
+  eq(sent().length, 0);
 });
 
 describe('Чат: номер відвідувача → заявка CRM');

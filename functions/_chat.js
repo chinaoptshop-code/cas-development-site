@@ -8,7 +8,7 @@
 // Віддаємо лише як вкладення (content-disposition: attachment, nosniff, CSP sandbox), активні типи (HTML, SVG, JS…) не приймаємо зовсім.
 // Вміст повідомлень і файлів — недовірені дані: ніде не стає розміткою (віконце й адмінка — textContent / esc), воркер — лише як дані.
 import { bad, dict, hexOf, json, nextLeadNumber, normalizePhone, same, sha256, str } from './_lib.js';
-import { notifyNew, notifyTeam, escHtml } from './_alerts.js';
+import { kyiv, notifyNew, notifyTeam, escHtml } from './_alerts.js';
 import { refHost } from './_refhost.js';
 import { IN_IDS, idsArg } from './_lib.js';
 import { noTable } from './_roles.js';
@@ -348,14 +348,50 @@ export async function leadFromChat(env, s, { phone, name, by, waitUntil } = {}) 
   return { id, number };
 }
 
-// «Потрібна людина»: стан waiting + сповіщення власнику й менеджерам (адресати заявок)
-export async function handoff(env, s, reason) {
-  const u = await env.DB.prepare("UPDATE chat_sessions SET state = 'waiting', last_at = datetime('now') WHERE id = ? AND state IN ('bot', 'closed')").bind(s.id).run();
+// Причини handoff (поле handoff_reason від воркера, tools/chat/API.md) — підпис у Telegram і адмінці
+export const HANDOFF = dict({
+  asks_human: 'Клієнт просить людину або дзвінок', big_project: 'Великий обʼєкт (комерція, будинок, великий бюджет)',
+  complaint: 'Скарга', complex: 'Складне питання', other: 'Інше',
+});
+// «Потрібна людина»: стан waiting + сповіщення власнику й менеджерам (адресати заявок) — одразу, у будь-який час
+export async function handoff(env, s, code, reason) {
+  const u = await env.DB.prepare("UPDATE chat_sessions SET state = 'waiting', handoff_reason = ?, last_at = datetime('now') WHERE id = ? AND state IN ('bot', 'closed')").bind(code || 'other', s.id).run();
   if (!u.meta.changes) return 0;
   const last = await env.DB.prepare("SELECT text FROM chat_messages WHERE session_id = ? AND role = 'user' AND text IS NOT NULL ORDER BY id DESC LIMIT 1").bind(s.id).first();
-  const text = [`💬 <b>Чат на сайті: потрібна людина</b>`, `Розмова #${s.id} · ${escHtml(s.lang || 'uk')} · ${escHtml(s.page || '/')}`,
-    reason ? `Причина: ${escHtml(str(reason, 200))}` : null, last ? `Останнє: «${escHtml(str(last.text, 300))}»` : null].filter(Boolean).join('\n');
+  const text = [`🙋 <b>Чат на сайті: потрібна людина</b>`, `Розмова #${s.id} · ${escHtml((s.lang || 'uk').toUpperCase())} · ${escHtml(s.page || '/')}`,
+    `Причина: ${escHtml(HANDOFF[code || 'other'])}${reason ? ' — ' + escHtml(str(reason, 200)) : ''}`, last ? `Останнє: «${escHtml(str(last.text, 300))}»` : null].filter(Boolean).join('\n');
   return notifyTeam(env, text, ADMIN_URL(s.id));
+}
+
+// ===== «Нова розмова» адмінам (Михайло 23.11.2026): одне повідомлення на розмову при першому повідомленні відвідувача =====
+// 10:00–20:00 за Києвом — одразу; поза вікном — черга (notified_at IS NULL), її розбирає розклад /api/admin/lead-sla (runChatNotices).
+const WORK = [10, 20];
+export const workHours = d => { const h = kyiv(d).h; return h >= WORK[0] && h < WORK[1]; };
+export async function notifyNewChat(env, id) {
+  // спершу «забираємо» (два запуски не надішлють двічі), потім шлемо
+  const u = await env.DB.prepare("UPDATE chat_sessions SET notified_at = datetime('now') WHERE id = ? AND notified_at IS NULL AND last_user_id > 0").bind(id).run();
+  if (!u.meta.changes) return 0;
+  const s = await env.DB.prepare('SELECT * FROM chat_sessions WHERE id = ?').bind(id).first();
+  const first = await env.DB.prepare("SELECT text FROM chat_messages WHERE session_id = ? AND role = 'user' ORDER BY id LIMIT 1").bind(id).first();
+  const files = await env.DB.prepare("SELECT COUNT(*) AS n FROM chat_files WHERE session_id = ? AND role = 'user' AND message_id IS NOT NULL").bind(id).first();
+  const t = first && first.text ? str(first.text, 200) : '';
+  const text = [`💬 <b>Нова розмова в чаті на сайті</b> #${s.id}`, `${escHtml((s.lang || 'uk').toUpperCase())} · ${escHtml(s.page || '/')}${s.ref_host ? ' · з ' + escHtml(s.ref_host) : ''}`,
+    t ? `«${escHtml(t)}${first.text.length > 200 ? '…' : ''}»` : null, files && files.n ? `📎 файлів: ${files.n}` : null].filter(Boolean).join('\n');
+  return notifyTeam(env, text, ADMIN_URL(s.id));
+}
+// черга «нових розмов» (до 20 за запуск, найстаріші спершу); розмови старші за 3 доби — лише позначаємо, без повідомлення
+export async function runChatNotices(env, at = new Date()) {
+  try {
+    if (!workHours(at)) return { quiet: true };
+    await env.DB.prepare("UPDATE chat_sessions SET notified_at = datetime('now') WHERE notified_at IS NULL AND last_user_id > 0 AND created_at < datetime('now', '-3 days')").run();
+    const { results } = await env.DB.prepare('SELECT id FROM chat_sessions WHERE notified_at IS NULL AND last_user_id > 0 ORDER BY id LIMIT 20').all();
+    let sent = 0;
+    for (const r of results) sent += (await notifyNewChat(env, r.id)) ? 1 : 0;
+    return { quiet: false, due: results.length, sent };
+  } catch (e) {
+    if (noTable(e)) return { skipped: 'no_migration' };
+    throw e;
+  }
 }
 
 // ===== очищення за терміном (розклад /api/admin/lead-sla) =====

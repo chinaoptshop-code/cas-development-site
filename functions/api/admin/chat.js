@@ -13,7 +13,7 @@ import { audit, need } from '../../_roles.js';
 import { TOO_MANY, staffLimited } from '../../_rate.js';
 import { ChatError, FILE_RE, L, STATES, addMessage, botOnline, clean, fileResponse, leadFromChat, messages, wrap } from '../../_chat.js';
 
-const pub = s => ({ id: s.id, state: s.state, lang: s.lang, page: s.page, ref_host: s.ref_host, created_at: s.created_at, last_at: s.last_at,
+const pub = s => ({ id: s.id, state: s.state, handoff_reason: s.handoff_reason || null, lang: s.lang, page: s.page, ref_host: s.ref_host, created_at: s.created_at, last_at: s.last_at,
   last_user_at: s.last_user_at, last_bot_at: s.last_bot_at, msgs: s.msgs, files: s.files ?? undefined, bytes: s.bytes,
   unread: s.last_user_id > s.staff_seen_id, waiting_reply: s.last_user_id > s.answered_upto,
   lead: s.order_id ? { id: s.order_id, number: s.number || null } : null, last_text: s.last_text ?? undefined, last_role: s.last_role ?? undefined });

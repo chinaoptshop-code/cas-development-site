@@ -1,0 +1,50 @@
+/* «Чат на сайті» у /kabinet/admin (assets/admin/chat.v1.js). Кольори й розміри — змінні панелі (cms.v1.css); цілі дотику ≥ 44 px. */
+.adm .ch-top{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin:0 0 12px}
+.adm .ch-top .seg button{min-height:44px}
+.adm .ch-top .seg small{opacity:.7;margin-left:2px}
+.adm .ch-top [data-q]{flex:1 1 16rem;min-width:0;min-height:44px}
+.adm .ch-on{font-size:var(--fs-small);color:#e07a6a}
+.adm .ch-on::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:1px}
+.adm .ch-on.ok{color:#8fc79a}
+.adm .ch-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.adm .ch-row{display:grid;gap:4px;width:100%;text-align:left;min-height:56px;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--cream);font:inherit;cursor:pointer}
+.adm .ch-row:hover,.adm .ch-row:focus-visible{border-color:var(--brass)}
+.adm .ch-row.unread{box-shadow:inset 3px 0 0 var(--brass)}
+.adm .ch-r1{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;font-size:var(--fs-small);color:var(--muted)}
+.adm .ch-r1 b{color:var(--cream)}
+.adm .ch-r1 time{margin-left:auto}
+.adm .ch-page{max-width:22rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.adm .ch-r2{color:var(--cream);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.adm .ch-r2 i{color:var(--muted);font-style:normal}
+.adm .ch-empty{color:var(--muted);padding:14px}
+.adm .pill.st-waiting{border-color:#e0b46a;color:#e0b46a}
+.adm .pill.st-staff{border-color:var(--brass);color:var(--glow)}
+.adm .ch-head{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin:10px 0 12px;color:var(--muted);font-size:var(--fs-small)}
+.adm .ch-head h2{margin:0;font-size:1.25rem;color:var(--cream)}
+.adm .ch-msgs{list-style:none;margin:0 0 14px;padding:12px;display:flex;flex-direction:column;gap:10px;max-height:62vh;overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--ink)}
+.adm .ch-m{max-width:min(46rem,88%);padding:10px 12px;border-radius:14px;border:1px solid var(--line);background:var(--surface)}
+.adm .ch-m.ch-user{align-self:flex-start}
+.adm .ch-m.ch-bot,.adm .ch-m.ch-staff{align-self:flex-end;background:rgba(191,145,72,.09)}
+.adm .ch-m.ch-staff{border-color:var(--brass)}
+.adm .ch-m.ch-system{align-self:center;background:none;border-style:dashed;color:var(--muted);font-size:var(--fs-small)}
+.adm .ch-h{display:flex;gap:8px;font-size:12px;color:var(--muted);margin-bottom:4px}
+.adm .ch-t{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--cream)}
+.adm .ch-files{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.adm .ch-file{min-height:44px;padding:6px 12px;border:1px solid var(--line);border-radius:12px;background:var(--ink);color:var(--cream);font:inherit;font-size:var(--fs-small);cursor:pointer;text-align:left;max-width:100%;overflow-wrap:anywhere}
+.adm .ch-file:hover{border-color:var(--brass)}
+.adm .ch-file small{color:var(--muted)}
+.adm .ch-play{margin-top:8px;min-height:44px}
+.adm .ch-m audio{display:block;margin-top:8px;max-width:100%}
+.adm .ch-est{width:100%;margin-top:10px;border-collapse:collapse;font-size:var(--fs-small)}
+.adm .ch-est caption{text-align:left;color:var(--muted);padding-bottom:4px}
+.adm .ch-est th,.adm .ch-est td{padding:6px 4px;border-top:1px solid var(--line);text-align:left;vertical-align:top;font-weight:400}
+.adm .ch-est td:last-child{text-align:right;white-space:nowrap;color:var(--cream)}
+.adm .ch-est th small{display:block;color:var(--muted)}
+.adm .ch-est tfoot th,.adm .ch-est tfoot td{font-weight:700;color:var(--cream)}
+.adm .ch-note{margin:6px 0 0;font-size:12px;color:var(--muted)}
+.adm .ch-reply{display:grid;gap:8px}
+.adm .ch-reply label{font-size:var(--fs-small);color:var(--muted)}
+.adm .ch-reply textarea{width:100%;min-height:88px;font-size:1rem}
+.adm .ch-reply .row{display:flex;flex-wrap:wrap;gap:8px}
+.adm .ch-reply .btn{min-height:44px}
+@media (max-width:700px){.adm .ch-m{max-width:94%}.adm .ch-r1 time{margin-left:0}}

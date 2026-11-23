@@ -15,6 +15,9 @@ CREATE TABLE IF NOT EXISTS chat_sessions (
   ip_hash       TEXT,
   state         TEXT NOT NULL DEFAULT 'bot',       -- bot | waiting (чекає людину) | staff (відповідає людина) | closed
   order_id      INTEGER REFERENCES orders(id),     -- заявка CRM, якщо лишили номер або менеджер створив
+  client_id     INTEGER REFERENCES clients(id),    -- наступний етап: той самий чат у кабінеті клієнта (/kabinet); на сайті — NULL
+  notified_at   TEXT,                              -- коли адмінам пішло «нова розмова» (NULL — ще ні: поза 10:00–20:00 Київ чекає в черзі)
+  handoff_reason TEXT,                             -- чому воркер покликав людину: asks_human | big_project | complaint | complex | other
   last_user_id  INTEGER NOT NULL DEFAULT 0,        -- id останнього повідомлення відвідувача
   answered_upto INTEGER NOT NULL DEFAULT 0,        -- до якого повідомлення відвідувача включно вже є відповідь (бот або людина)
   lock_until    INTEGER,                           -- unix-час: воркер узяв розмову в роботу (повторна видача — після)
@@ -30,6 +33,8 @@ CREATE TABLE IF NOT EXISTS chat_sessions (
 CREATE INDEX IF NOT EXISTS chat_sessions_queue ON chat_sessions(state, last_user_id, answered_upto);
 CREATE INDEX IF NOT EXISTS chat_sessions_last ON chat_sessions(last_at);
 CREATE INDEX IF NOT EXISTS chat_sessions_order ON chat_sessions(order_id);
+CREATE INDEX IF NOT EXISTS chat_sessions_client ON chat_sessions(client_id);
+CREATE INDEX IF NOT EXISTS chat_sessions_notify ON chat_sessions(notified_at, last_user_id);
 
 CREATE TABLE IF NOT EXISTS chat_messages (
   id          INTEGER PRIMARY KEY AUTOINCREMENT,
