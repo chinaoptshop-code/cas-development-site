@@ -49,7 +49,7 @@
       return '<button type="button" class="ch-file" data-f="' + i + '"><b>' + esc(f.name) + '</b> <small>' + esc(KIND[f.kind] || f.kind) + ' · ' + size(f.size) + '</small></button>';
     }).join('');
     return '<li class="ch-m ch-' + esc(m.role) + '" data-id="' + m.id + '"><div class="ch-h"><b>' + esc(m.role === 'staff' && m.author ? m.author : ROLE[m.role] || m.role) + '</b> <time>' + when(m.at) + '</time></div>' +
-      (m.text ? '<p class="ch-t">' + esc(m.text) + '</p>' : '') + (files ? '<div class="ch-files">' + files + '</div>' : '') +
+      (m.text ? '<p class="ch-t" dir="auto">' + esc(m.text) + '</p>' : '') + (files ? '<div class="ch-files">' + files + '</div>' : '') +
       (m.audio ? '<button type="button" class="btn sm ghost ch-play" data-a="' + esc(m.audio.id) + '">▶ Аудіо-відповідь' + (m.audio.dur ? ' · ' + Math.round(m.audio.dur) + ' с' : '') + '</button>' : '') +
       estimateHtml(m.estimate) + '</li>';
   }
@@ -79,7 +79,7 @@
             '<span class="ch-r1"><span class="pill st-' + esc(r.state) + '">' + esc(ST[r.state] || r.state) + '</span> <b>#' + r.id + '</b> · ' + esc((r.lang || '').toUpperCase()) +
             ' · <span class="ch-page">' + esc(r.page || '/') + '</span>' + (r.lead ? ' · <span class="pill on">' + esc(r.lead.number) + '</span>' : '') +
             (r.files ? ' · 📎 ' + r.files : '') + (r.waiting_reply && r.state !== 'closed' ? ' · <span class="pill warn">без відповіді</span>' : '') + '<time>' + when(r.last_at) + '</time></span>' +
-            '<span class="ch-r2">' + (r.last_role ? '<i>' + esc(ROLE[r.last_role] || r.last_role) + ':</i> ' : '') + esc(r.last_text || '') + '</span></button></li>';
+            '<span class="ch-r2" dir="auto">' + (r.last_role ? '<i>' + esc(ROLE[r.last_role] || r.last_role) + ':</i> ' : '') + esc(r.last_text || '') + '</span></button></li>';
         }).join('') : '<li class="ch-empty">Розмов немає.</li>';
         $$('.ch-row', ul).forEach(function (b) { b.onclick = function () { stop(); card(L, +b.dataset.id); }; });
         var mo = $('[data-more]', L);

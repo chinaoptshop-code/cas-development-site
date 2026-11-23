@@ -20,6 +20,28 @@ import re
 
 OZDOBA_PUBLIC = False
 
+# CHAT_PUBLIC — чи показувати чат з AI-помічником (23.11.2026; функції — /api/chat/*, панель — assets/chat.v1.{js,css}, інструкція —
+# tools/admin/README.md «Чат на сайті», контракт воркера — tools/chat/API.md). Михайло: «не віконце, а іконка» — чат на сайті лише іконкою.
+# False (до перевірки власником): у HTML нічого немає; чат відкривається лише в режимі перевірки — сторінка з ?chat=1 (запамʼятовується
+#   в sessionStorage): site-chrome.v1.js сам додає іконку в ряди месенджерів і вантажить панель після тапу. API працює в обох випадках.
+# True: іконка чату (a.bi-chat[data-chat], aria-label/title мовою сторінки) — ще одна в рядах месенджерів: меню пігулки «Звʼязатися»
+#   (chrome.mbar_lead), футер і мобільне меню шапки (chrome.header/footer), під кнопкою форми .lq-alt (leadform.extras); ряди, які будує
+#   lead-form.v1.js (.lq-alt, .of-ct-m біля форми), іконку отримують від site-chrome.v1.js. НЕ в шапці на ПК і НЕ плаваюча в куті.
+#   Панель — лише після тапу. Увімкнути: CHAT_PUBLIC = True і `bash tools/build-all.sh` (усі сторінки змінюються на кілька сотень байтів).
+CHAT_PUBLIC = False
+CHAT_NAME = {'uk': 'Чат з помічником', 'ru': 'Чат с помощником', 'en': 'Chat with our assistant', 'es': 'Chat con el asistente', 'zh': '与助手聊天',
+             'pl': 'Czat z asystentem', 'de': 'Chat mit dem Assistenten', 'fr': 'Discuter avec l’assistant', 'pt': 'Chat com o assistente', 'ar': 'الدردشة مع المساعد'}
+
+
+def chat_icon(lang, img=False, title=True):
+    """Іконка чату для ряду месенджерів (лише при CHAT_PUBLIC; інакше ''). img=True — для меню пігулки (там іконки — <img>)."""
+    if not CHAT_PUBLIC:
+        return ''
+    n = CHAT_NAME.get(lang, CHAT_NAME['en'])
+    if img:
+        return f'<a class="mb-chat" href="#chat" data-chat aria-label="{n}"><img src="/assets/brand/chat.svg" width="32" height="32" alt="" loading="lazy" decoding="async"></a>'
+    return f'<a class="bi bi-chat" href="#chat" data-chat aria-label="{n}"' + (f' title="{n}"' if title else '') + '></a>'
+
 # сторінки самої Оздоби (шлях файлу від кореня): ozdoba.html, ozdoba/*, en/ozdoba.html, pl/ozdoba.html
 OZ_FILE = re.compile(r'(?:[a-z]{2}/)?ozdoba(?:\.html$|/)')
 # посилання на Оздобу (href): /ozdoba, /ozdoba/…, /ozdoba#…, /en/ozdoba, абсолютні https://cas-develop.com/ozdoba…

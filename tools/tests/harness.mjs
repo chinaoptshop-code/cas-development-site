@@ -117,7 +117,7 @@ export async function call(env, method, path, { cookie, body, headers = {}, raw 
   const text = new TextDecoder().decode(buf); // як res.text(): BOM на початку не входить у текст — його показує поле bom
   let data = null;
   try { data = JSON.parse(text); } catch { /* html / csv */ }
-  return { status: res.status, data, text, headers: res.headers, bom: buf[0] === 0xEF && buf[1] === 0xBB && buf[2] === 0xBF };
+  return { status: res.status, data, text, buf, headers: res.headers, bom: buf[0] === 0xEF && buf[1] === 0xBB && buf[2] === 0xBF }; // buf — сирі байти (файли чату)
 }
 
 // Сесія для клієнта (як після входу)

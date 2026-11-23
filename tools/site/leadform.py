@@ -124,6 +124,8 @@ def extras(lang):
     як на картці біля форми: назва — aria-label/title, «Або напишіть» — aria-label групи; WeChat (a[data-wx]) копіює номер, без JS — weixin://."""
     links = ''.join(f'<a class="bi bi-{n.split()[0].lower()}" href="{u}"' + (' target="_blank" rel="noopener"' if u.startswith('http') else '')
                     + (f' data-wx="{WECHAT}"' if u.startswith('weixin:') else '') + f' aria-label="{a(n)}" title="{a(n)}"></a>' for n, u in MSG)
+    import flags
+    links += flags.chat_icon(lang)  # чат на сайті — лише іконкою, коли CHAT_PUBLIC (tools/site/flags.py)
     return f'<!--lqx--><p class="lq-alt" role="group" aria-label="{a(alt_label(lang))}">{links}</p><!--/lqx-->'
 
 
