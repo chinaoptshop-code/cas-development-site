@@ -150,3 +150,35 @@ class LoopTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RunTests(unittest.TestCase):
+    def test_selftest_and_no_key(self):
+        import os
+        import subprocess
+        import tempfile
+        with tempfile.TemporaryDirectory() as home:
+            env = {k: v for k, v in os.environ.items() if k != "LEADBOT_KEY"}
+            env.update(HOME=home, CHAT_OLLAMA_URL="http://127.0.0.1:9", CHAT_CALENDAR="off")
+            run = str(pathlib.Path(__file__).resolve().parent / "run.py")
+            r = subprocess.run([sys.executable, run, "--selftest"], capture_output=True, text=True, env=env, timeout=120)
+            self.assertIn("DWG", r.stdout); self.assertIn("LEADBOT_KEY", r.stdout); self.assertEqual(r.returncode, 1)
+            self.assertIn("local (безкоштовно)", r.stdout)
+            r = subprocess.run([sys.executable, run, "--once"], capture_output=True, text=True, env=env, timeout=60)
+            self.assertEqual(r.returncode, 2); self.assertIn("LEADBOT_KEY", r.stderr)
+
+    def test_once_dry_against_fake(self):
+        import os
+        import subprocess
+        import tempfile
+        srv = FakeApi()
+        try:
+            c = srv.conv(); srv.add_user(c.sid, "Ремонт квартири 60 м², скільки?")
+            with tempfile.TemporaryDirectory() as home:
+                env = dict(os.environ, HOME=home, LEADBOT_KEY=KEY, CHAT_BASE=srv.url, CHAT_OLLAMA_URL="http://127.0.0.1:9", CHAT_CALENDAR="off", CHAT_TTS="off")
+                r = subprocess.run([sys.executable, str(pathlib.Path(__file__).resolve().parent / "run.py"), "--once", "--dry"],
+                                   capture_output=True, text=True, env=env, timeout=120)
+            self.assertEqual(r.returncode, 0, r.stderr)
+            self.assertIn("33", r.stdout); self.assertEqual(srv.replies, [], "--dry нічого не надсилає")
+        finally:
+            srv.close()
