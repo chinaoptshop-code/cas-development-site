@@ -220,8 +220,12 @@ def context_block():
             + (f"— Відкриті задачі й нагадування (02 Задачі.md):\n{t}\n" if t else ""))
 
 
+SONG_NOTE = ("\nВАЖЛИВО: генератор пісень ACE-Step 1.5 ВСТАНОВЛЕНО на Mac mini (~/jarvis/scripts/song.sh, див. 00-core «Пісні на запит»). "
+             "Якщо раніше в цій розмові ти писав, що його немає, або радив Suno/Higgsfield/claude.ai — це була помилка. Платні сервіси недоступні.\n")
+
+
 def build_prompt(kind, content, caption, fresh=False):
-    return f"""Ти персональний помічник Михайла. Ти працюєш на його Mac mini, це режим «локальний бот».
+    return SONG_NOTE + f"""Ти персональний помічник Михайла. Ти працюєш на його Mac mini, це режим «локальний бот».
 Правила: прочитай tools/assistant/playbooks/00-core.md і tools/assistant/playbooks/inbox.md (та інші сценарії за потреби).
 Пам'ять — локальна папка {MEMORY} (Markdown-файли: 00 Профіль.md, 01 Цілі.md, 02 Задачі.md, 03 Звички і спорт.md,
 04 Читання.md, 05 Рішення.md, 06 Люди.md, 07 Компанія.md, Журнал YYYY-MM.md, папки Зустрічі/, Тижні/, Документи/).
@@ -389,14 +393,22 @@ def handle(msg, state):
 
 # Пісні на запит (23.11): денна розмова памʼятала старе «ace-step не встановлено» і бот видавав лише текст.
 # Тому запит на пісню йде в НОВУ сесію з чіткою задачею: текст → ~/jarvis/scripts/song.sh (ACE-Step 1.5 локально) → mp3 сам у Telegram.
-SONG_ASK = re.compile(r"(з?генер\w*|зроби|створи|напиши|надішли|скинь|хочу|давай|generate|make|create)\b.{0,40}(пісн|песн|трек|song|track|музик|мелоді|джингл|біт\b)"
-                      r"|аудіо пісні|пісню\b.{0,20}(аудіо|mp3|звук)", re.I | re.S)
+SONG_ASK = re.compile(r"(?=.*(пісн|песн|трек|song|track|музик|мелоді|джингл|брейкбіт|техно|афрохаус|house|techno))"
+                      r"(?=.*(генер|зроби|створи|надішл|скинь|хочу|давай|запусти|аудіо|audio|mp3|озвуч|послухати|generate|make|create|лише написав текстом))",
+                      re.I | re.S)
 
 
 def song_request(content, msg):
     prev = ((msg.get("reply_to_message") or {}).get("text") or "")[:3000]
+    if not prev:                                              # «зроби аудіо до тих пісень» — останні тексти пісень з розмови
+        try:
+            rows = [json.loads(l) for l in (MEMORY / ".dialog.jsonl").read_text().splitlines()[-30:] if l.strip()]
+            songs = [r.get("text", "") for r in rows if r.get("who") != "Михайло" and "[Chorus]" in r.get("text", "")][-2:]
+            prev = "\n\n---\n\n".join(t[:2500] for t in songs)
+        except Exception:
+            prev = ""
     prompt = (f"Михайло в Telegram просить пісню: «{content}».\n"
-              + (f"Він відповідає на твоє повідомлення з текстом пісні — візьми цей текст:\n{prev}\n" if prev else "")
+              + (f"Тексти пісень з розмови (якщо Михайло просить аудіо до них — візьми ці тексти, кожна пісня — окремий запуск song.sh):\n{prev}\n" if prev else "")
               + "ACE-Step 1.5 ВСТАНОВЛЕНО на Mac mini (ComfyUI на SSD) — не шукай його в PATH і не пропонуй Suno/Udio/Higgsfield.\n"
               "1) Якщо тексту немає — напиши сам (мова й жанр — як просить; [Verse]/[Chorus]/[Bridge]/[Outro], короткі рядки; «поменше тексту» — 2 куплети й приспів).\n"
               "2) Запиши текст у tools/assistant/tmp/lyrics-<слово>.txt (Write).\n"
