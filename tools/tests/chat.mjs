@@ -239,6 +239,7 @@ await it('файл для воркера: /api/bot/chat/file?id= з ключем
 await it('застарілий reply_to → 409 {conflict, last_user_id}; актуальний — відповідь з estimate й аудіо у відвідувача', async () => {
   const stale = await botCall('POST', '/api/bot/chat', { sid: Q.sid, reply_to: item.pending[0].id, text: 'x' });
   eq(stale.status, 409); eq(stale.data.conflict, true); eq(stale.data.last_user_id, item.last_user_id);
+  ok((await botCall('GET', '/api/bot/chat?limit=10')).data.items.some(x => x.sid === Q.sid), '409 conflict знімає блокування — розмова знову в черзі');
   const est = { currency: 'USD', region: 'ua', lines: [{ label: 'Ремонт під ключ (роботи + чорнові матеріали)', qty: 60, unit: 'м²', rate: 550, from: 33000 },
     { label: 'Дизайн-проєкт інтерʼєру', qty: 60, unit: 'м²', rate: 30, from: 2500, note: 'мінімум $2 500' }], total_from: 35500, note: 'Розрахунок попередній' };
   const audio = { mime: 'audio/ogg', data: Buffer.from(OGG).toString('base64'), dur: 4.2 };

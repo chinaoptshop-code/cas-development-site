@@ -58,6 +58,8 @@ export const onRequestPost = ({ request, env }) => wrap(async () => {
   if (s.state === 'staff' || s.state === 'closed') throw new ChatError('Розмову веде людина — бот не відповідає', 409, { state: s.state });
   const replyTo = Number(d.reply_to);
   if (!Number.isInteger(replyTo) || replyTo < 1) throw new ChatError('reply_to: id останнього повідомлення відвідувача з pending');
+  // відвідувач написав ще: знімаємо блокування — розмова одразу знову в черзі з усіма повідомленнями
+  if (replyTo !== s.last_user_id) await env.DB.prepare('UPDATE chat_sessions SET lock_until = NULL WHERE id = ?').bind(s.id).run();
   if (replyTo !== s.last_user_id) throw new ChatError('Відвідувач уже написав ще — перечитайте чергу', 409, { conflict: true, last_user_id: s.last_user_id });
   if (d.text != null && typeof d.text !== 'string') throw new ChatError('text: рядок');
   const text = clean(d.text, L.botText);
